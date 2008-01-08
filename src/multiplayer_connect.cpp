@@ -893,7 +893,7 @@ void connect::side::resolve_random()
 connect::connect(game_display& disp, const config& game_config, const game_data& data,
 		chat& c, config& gamelist, const create::parameters& params,
 		mp::controller default_controller) :
-	mp::ui(disp, _("Game Lobby"), game_config, c, gamelist),
+	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
 	game_data_(data),
 	level_(),
 	state_(),
@@ -1505,6 +1505,9 @@ void connect::load_game()
 		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 		level_["random_seed"] = lexical_cast<std::string>(state_.get_random_seed());
 	}
+
+	// Add the map name to the title.
+	append_to_title(" - " + level_["name"]);
 
 	const std::string& era = params_.era;
 

@@ -166,7 +166,8 @@ protected:
 	// Returns the current gamelist
 	config& gamelist() { return gamelist_; };
 
-	const gui::widget& title() const;
+	void append_to_title(const std::string& name);
+	const gui::label& title() const;
 
 private:
 	/** Set to true when the widgets are intialized. Allows delayed

@@ -188,9 +188,9 @@ handler_vector wait::leader_preview_pane::handler_members() {
 }
 
 
-wait::wait(game_display& disp, const config& cfg, const game_data& data, mp::chat& c, config& gamelist) :
+wait::wait(game_display& disp, const config& cfg, const game_data& data,
+		mp::chat& c, config& gamelist) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
-
 	cancel_button_(disp.video(), _("Cancel")),
 	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
@@ -224,6 +224,9 @@ void wait::join_game(bool observe)
 			break;
 	}
 
+	// Add the map name to the title.
+	append_to_title(": " + level_["name"]);
+	
 	if (!observe) {
 		const config::child_list& sides_list = level_.get_children("side");
 
@@ -524,5 +527,5 @@ void wait::generate_menu()
 	}
 }
 
-}
+} // namespace mp
 

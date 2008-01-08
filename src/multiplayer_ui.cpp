@@ -726,7 +726,11 @@ void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 	user_list_ = list;
 }
 
-const gui::widget& ui::title() const
+void ui::append_to_title(const std::string& text) {
+	title_.set_text(title_.get_text() + text);
+}
+
+const gui::label& ui::title() const
 {
 	return title_;
 }
