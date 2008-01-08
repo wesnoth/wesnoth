@@ -1767,9 +1767,9 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			int green = (RGB & 0x0000FF00)>>8;
 			int blue  = (RGB & 0x000000FF);
 
-			std::string c_start="<";
-			std::string c_sep=",";
-			std::string c_end=">";
+			static const std::string c_start="<";
+			static const std::string c_sep=",";
+			static const std::string c_end=">";
 			std::stringstream color;
 			color<< c_start << red << c_sep << green << c_sep << blue << c_end;
 			std::string str;
