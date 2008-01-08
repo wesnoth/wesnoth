@@ -40,6 +40,7 @@
 #include <stack>
 #include <string>
 
+#define DBG_FT LOG_STREAM(debug, display)
 #define LOG_FT LOG_STREAM(info, display)
 #define WRN_FT LOG_STREAM(warn, display)
 #define ERR_FT LOG_STREAM(err, display)
@@ -536,7 +537,7 @@ unsigned int text_cache::max_size_ = 50;
 
 void text_cache::resize(unsigned int size)
 {
-	LOG_FT << "Text cache: resize from: " << max_size_ << " to: "
+	DBG_FT << "Text cache: resize from: " << max_size_ << " to: "
 		<< size << " items in cache: " << cache_.size() << '\n';
 
 	while(size < cache_.size()) {
@@ -560,7 +561,7 @@ text_surface &text_cache::find(text_surface const &t)
 		cache_.push_front(t);
 	}
 	if (++lookup_ % 1000 == 0) {
-		LOG_FT << "Text cache: " << lookup_ << " lookups, " << (hit_ / 10) << "% hits\n";
+		DBG_FT << "Text cache: " << lookup_ << " lookups, " << (hit_ / 10) << "% hits\n";
 		hit_ = 0;
 	}
 	return cache_.front();

@@ -51,6 +51,7 @@
 
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)
+#define DBG_DP LOG_STREAM(debug, display)
 
 namespace {
 #ifdef USE_TINY_GUI
@@ -1052,7 +1053,7 @@ bool display::draw_init()
 	}
 
 	if(invalidateAll_) {
-		INFO_DP << "draw() with invalidateAll\n";
+		DBG_DP << "draw() with invalidateAll\n";
 		gamemap::location topleft;
 		gamemap::location bottomright;
 		get_visible_hex_bounds(topleft, bottomright);
@@ -1615,7 +1616,7 @@ void display::bounds_check_position(int& xpos, int& ypos)
 
 void display::invalidate_all()
 {
-	INFO_DP << "invalidate_all()\n";
+	DBG_DP << "invalidate_all()\n";
 	invalidateAll_ = true;
 	invalidated_.clear();
 	update_rect(map_area());
