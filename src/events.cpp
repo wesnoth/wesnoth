@@ -476,9 +476,9 @@ int discard(Uint32 event_mask)
 	for (unsigned int i=0; i < keepers.size(); ++i)
 	{
 		if(SDL_PushEvent(&keepers[i]) != 0) {
-                       ERR_GEN << "failed to return an event to the queue.";
-                }
-        }
+			ERR_GEN << "failed to return an event to the queue.";
+		}
+	}
 
 	return discard_count;
 }
