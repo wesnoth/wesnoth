@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=254
+UnitCount=255
 Type=0
 Ver=1
 ObjFiles=
@@ -2608,7 +2608,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit255]
-FileName=src\wml_exception.hpp
+FileName=src\ai_village.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2616,14 +2616,3 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
-
-[Unit256]
-FileName=src\wml_exception.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
