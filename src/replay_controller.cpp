@@ -284,48 +284,45 @@ void replay_controller::play_turn(){
 			(!recorder.at_end())){
 
 		play_side(player_number_ - 1, false);
-		// NOTE play_side increased player_number_ so play_slice can start with 
-		// a player number which is an invalid team. The other question is why
-		// do we send the player number to play_side if it has access to it.
-		// If player_number_ > teams_.size() we will later trigger the assert in
-		// play_controller::current_team().
-		if(static_cast<size_t>(player_number_) <= teams_.size()) {
-			play_slice();
-		}
+		play_slice();
+
+		player_number_++;
+		update_teams();
+		update_gui();
 	}
+	status_.next_turn();
+	finish_turn();
 
 	player_number_ = 1;
 	current_turn_++;
 }
 
-void replay_controller::play_side(const unsigned int team_index, bool){
+void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 	if (recorder.at_end()){
 		return;
 	}
+	// If a side is empty skip over it.
+	if (current_team().is_empty()) return;
 
 	try{
-		play_controller::init_side(team_index, true);
+		play_controller::init_side(player_number_ - 1, true);
 
-		//if a side is dead, don't do their turn
-		if(!current_team().is_empty() && team_units(units_,player_number_) > 0) {
-
-			DBG_REPLAY << "doing replay " << player_number_ << "\n";
-			try {
-				::do_replay(*gui_,map_,gameinfo_,units_,teams_,
-					player_number_,status_,gamestate_);
-			} catch(replay::error&) {
-				if(!continue_replay()) {
-					throw;
-				}
+		DBG_REPLAY << "doing replay " << player_number_ << "\n";
+		try {
+			::do_replay(*gui_, map_, gameinfo_, units_, teams_,
+					player_number_, status_, gamestate_);
+		} catch(replay::error&) {
+			if(!continue_replay()) {
+				throw;
 			}
+		}
 
-			finish_side_turn();
+		finish_side_turn();
 
-			for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-				if(uit->second.side() != static_cast<size_t>(player_number_)) {
-					//this is necessary for replays in order to show possible movements
-					uit->second.new_turn();
-				}
+		// This is necessary for replays in order to show possible movements.
+		for (unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
+			if (uit->second.side() != static_cast<size_t>(player_number_)) {
+				uit->second.new_turn();
 			}
 		}
 	}
@@ -337,15 +334,6 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 		//VICTORY/DEFEAT end_level_exception shall not return to title screen
 		if ((e.result != VICTORY) && (e.result != DEFEAT)) { throw e; }
 	}
-
-	player_number_++;
-
-	if(static_cast<size_t>(player_number_) > teams_.size()) {
-		status_.next_turn();
-		finish_turn();
-	}
-	update_teams();
-	update_gui();
 }
 
 void replay_controller::update_teams(){

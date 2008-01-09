@@ -29,6 +29,7 @@
 #include "sound.hpp"
 #include "upload_log.hpp"
 
+#define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 
 playsingle_controller::playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
@@ -452,40 +453,37 @@ void playsingle_controller::play_turn(bool save)
 	LOG_NG << "turn: " << status_.turn() << "\n";
 
 	for(player_number_ = first_player_; player_number_ <= teams_.size(); player_number_++) {
-		// If a side is dead, don't do their turn
-		if(!teams_[player_number_ - 1].is_empty() && team_units(units_,player_number_) > 0) {
-			init_side(player_number_ - 1);
+		// If a side is empty skip over it.
+		if (current_team().is_empty()) continue;
 
-			if (replaying_){
-				// YogiHH: I can't see why we
-				// need another key_handler here
-				// in addition to the one defined
-				// in play_controller.
-				// Since this is causing problems
-				// with double execution of hotkeys,
-				// I will comment it out
-				/*
-				const hotkey::basic_handler
-				key_events_handler(gui_);
-				*/
-				LOG_NG << "doing replay " << player_number_ << "\n";
-				try {
-					replaying_ = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
-										  player_number_,status_,gamestate_);
-				} catch(replay::error&) {
-					gui::message_dialog(*gui_,"",_("The file you have tried to load is corrupt")).show();
+		init_side(player_number_ - 1);
 
-					replaying_ = false;
-				}
-				LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
+		if (replaying_) {
+			LOG_NG << "doing replay " << player_number_ << "\n";
+			try {
+				replaying_ = ::do_replay(*gui_, map_, gameinfo_, units_, teams_,
+						player_number_, status_, gamestate_);
+			} catch(replay::error&) {
+				gui::message_dialog(*gui_,"",_("The file you have tried to load is corrupt")).show();
+
+				replaying_ = false;
 			}
-			else{
-				play_side(player_number_, save);
+			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
+		} else {
+			// If a side is dead end the turn.
+			if ((current_team().is_human() && team_units(units_, player_number_) == 0))
+			{
+				turn_info turn_data(gameinfo_, gamestate_, status_, *gui_, map_,
+						teams_, player_number_, units_, replay_sender_, undo_stack_);
+				recorder.end_turn();
+				turn_data.sync_network();
+				continue;
 			}
-
-			finish_side_turn();
-			check_victory(units_,teams_);
+			play_side(player_number_, save);
 		}
+
+		finish_side_turn();
+		check_victory(units_,teams_);
 	}
 
 	// Time has run out
@@ -655,7 +653,7 @@ void playsingle_controller::play_ai_turn(){
 	const cursor::setter cursor_setter(cursor::WAIT);
 
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
-						map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
+			map_, teams_, player_number_, units_, replay_sender_, undo_stack_);
 
 	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data, gamestate_);
 	util::scoped_ptr<ai_interface> ai_obj(create_ai(current_team().ai_algorithm(),ai_info));
