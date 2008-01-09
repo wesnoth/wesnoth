@@ -83,6 +83,7 @@ public:
 	void add_players(const game& other_game, const bool observer = true);
 
 	void start_game();
+	void start_next_scenario();
 	//! A user (player only?) asks for the next scenario to advance to.
 	void load_next_scenario(const player_map::const_iterator user) const;
 
@@ -97,7 +98,7 @@ public:
 	bool filter_commands(const network::connection player, config& cfg) const;
 	//! Process [turn].
 	bool process_turn(config data, const player_map::const_iterator user);
-	//! Set the description to the number of slots.
+	//! Set the description to the number of available slots.
 	//! Returns true iff the number of slots has changed.
 	bool describe_slots();
 
@@ -106,7 +107,6 @@ public:
 	void send_data(const config& data, const network::connection exclude=0) const;
 
 	void record_data(const config& data);
-	void reset_history();
 
 	//! The full scenario data.
 	config& level() { return level_; }
@@ -139,8 +139,9 @@ private:
 	void send_data_team(const config& data, const std::string& team,
 			const network::connection exclude=0) const;
 	void send_data_observers(const config& data, const network::connection exclude=0) const;
-	//!	Send observer join of all the observers in the game to the user.
-	void send_observerjoin(const network::connection sock) const;
+	//! Send [observer] tags of all the observers in the game to the user or
+	//! everyone if none given.
+	void send_observerjoins(const network::connection sock=0) const;
 	//! In case of a host transfer, notify the new host about its status.
 	void notify_new_host();
 	//! Convenience function for finding a user by name.
@@ -178,6 +179,9 @@ private:
 	side_vector sides_;
 	std::vector<bool> sides_taken_;
 	std::vector<std::string> side_controllers_;
+	
+	//! Number of non-empty sides.
+	int nsides_;
 	bool started_;
 
 	//! The current scenario data.

@@ -1114,9 +1114,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 
 		// Record the full scenario in g->level()
 		g->level() = s;
-		g->reset_history();
-		// Re-assign sides.
-		g->update_side_data();
+		g->start_next_scenario();
 		// When the host advances tell everyone that the next scenario data is
 		// available.
 		g->send_data(config("notify_next_scenario"), sock);

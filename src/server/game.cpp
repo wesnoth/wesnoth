@@ -83,21 +83,16 @@ std::string describe_turns(int turn, const std::string& num_turns)
 void game::start_game()
 {
 	started_ = true;
-
-	//set all side controllers to 'human' so that observers will understand that they can't
-	//take control of any sides if they happen to have the same name as one of the descriptions
-	
+	nsides_ = 0;
 	for(config::child_itors sides = level_.child_range("side");
 		sides.first != sides.second; ++sides.first)
 	{
-		if ((**sides.first)["controller"] != "null")
-			(**sides.first)["controller"] = "human";
+		if ((**sides.first)["controller"] != "null") nsides_++;
 	}
-
-	int turn =  lexical_cast_default<int>(level()["turn_at"], 1);
-	end_turn_ = (turn - 1) * level_.get_children("side").size();
-	if(description()) {
-		description()->values["turn"] = describe_turns(turn, level()["turns"]);
+	int turn =  lexical_cast_default<int>(level_["turn_at"], 1);
+	end_turn_ = (turn - 1) * nsides_;
+	if (description_) {
+		(*description_)["turn"] = describe_turns(turn, level_["turns"]);
 	} else {
 		ERR_GAME << "ERROR: Game without description_ started. (" << id_ << ")\n";
 	}
@@ -105,21 +100,26 @@ void game::start_game()
 	allow_observers_ = level_["observer"] != "no";
 
 	// Send [observer] tags for all observers that are already in the game.
-	for(user_vector::const_iterator ob = observers_.begin();
-		ob != observers_.end(); ++ob)
+	send_observerjoins();
+}
+
+//! Resets a couple of things when advancing to the next scenario.
+void game::start_next_scenario() {
+	nsides_ = 0;
+	for(config::child_itors sides = level_.child_range("side");
+		sides.first != sides.second; ++sides.first)
 	{
-		const player_map::const_iterator obs = player_info_->find(*ob);
-		if (obs == player_info_->end()) {
-			ERR_GAME << "Game: " << id_
-				<< " ERROR: Can not find observer in player_info_. (socket: "
-				<< *ob << ")\n";
-			continue;
-		}
-		config observer_join;
-		observer_join.add_child("observer").values["name"] = obs->second.name();
-		// Send observer join to everyone except the new observer.
-		send_data(observer_join, *ob);
+		if ((**sides.first)["controller"] != "null") nsides_++;
 	}
+	end_turn_ = 0;
+	if (description_) {
+		(*description_)["turn"] = describe_turns(1, level_["turns"]);
+	} else {
+		ERR_GAME << "ERROR: Game without description_ started. (" << id_ << ")\n";
+	}
+	history_.clear();
+	// Re-assign sides.
+	update_side_data();
 }
 
 //! Figures out which side to take and tells that side to the game owner.
@@ -702,21 +702,17 @@ bool game::process_commands(const config& cfg) {
 }
 
 bool game::end_turn() {
-	//it's a new turn every time each side in the game ends their turn.
+	// It's a new turn every time each side in the game ends their turn.
 	++end_turn_;
 
-	const size_t nsides = level_.get_children("side").size();
+	if (nsides_ == 0 || (end_turn_%nsides_) != 0) return false;
 
-	if(nsides == 0 || (end_turn_%nsides) != 0) {
-		return false;
-	}
-
-	const size_t turn = end_turn_/nsides + 1;
+	const int turn = end_turn_/nsides_ + 1;
 
 	if (description_ == NULL) {
 		return false;
 	}
-	description_->values["turn"] = describe_turns(int(turn), level()["turns"]);
+	description_->values["turn"] = describe_turns(turn, level()["turns"]);
 
 	return true;
 }
@@ -740,7 +736,7 @@ void game::add_player(const network::connection player, const bool observer) {
 	}
 	user->second.mark_available(id_, name_);
 	DBG_GAME << debug_player_info();
-	if (!observer && take_side(user)) {
+	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
 	} else if (!allow_observers_) {
@@ -757,7 +753,6 @@ void game::add_player(const network::connection player, const bool observer) {
 	send_user_list();
 	// Send the user the game data.
 	network::send_data(level_, player, true);
-	//if the game has already started, we add the player as an observer
 	if(started_) {
 		//tell this player that the game has started
 		network::send_data(config("start_game"), player, true);
@@ -766,7 +761,7 @@ void game::add_player(const network::connection player, const bool observer) {
 		// Send observer join of all the observers in the game to the new player
 		// only once the game started. The client forgets about it anyway
 		// otherwise.
-		send_observerjoin(player);
+		send_observerjoins(player);
 	}
 }
 
@@ -907,7 +902,7 @@ void game::load_next_scenario(const player_map::const_iterator user) const {
 	// Send the player the history of the game to-date.
 	network::send_data(history_, user->first, true);
 	// Send observer join of all the observers in the game to the user.
-	send_observerjoin(user->first);
+	send_observerjoins(user->first);
 }
 
 void game::send_data(const config& data, const network::connection exclude) const
@@ -951,27 +946,32 @@ void game::send_data_observers(const config& data, const network::connection exc
 	}
 }
 
-//!	Send observer join of all the observers in the game to the user.
-void game::send_observerjoin(const network::connection sock) const {
+//! Send [observer] tags of all the observers in the game to the user or
+//! everyone if none given.
+void game::send_observerjoins(const network::connection sock) const {
 	for (user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
-		if (*ob != sock) {
-			const player_map::const_iterator obs = player_info_->find(*ob);
-			if (obs != player_info_->end()) {
-				config cfg;
-				cfg.add_child("observer").values["name"] = obs->second.name();
-				network::send_data(cfg, sock, true);
-			}
+		if (*ob == sock) continue;
+		const player_map::const_iterator obs = player_info_->find(*ob);
+		if (obs == player_info_->end()) {
+			ERR_GAME << "Game: " << id_
+				<< " ERROR: Can not find observer in player_info_. (socket: "
+				<< *ob << ")\n";
+			continue;
+		}
+		config cfg;
+		cfg.add_child("observer").values["name"] = obs->second.name();
+		if (sock == 0) {
+			// Send to everyone except the observer in question.
+			send_data(cfg, *ob);
+		} else {
+			// Send to the (new) user.
+			network::send_data(cfg, sock, true);
 		}
 	}
 }
 
 void game::record_data(const config& data) {
 	history_.append(data);
-}
-
-void game::reset_history() {
-	history_.clear();
-	end_turn_ = 0;
 }
 
 void game::set_description(config* desc) {
