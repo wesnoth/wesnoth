@@ -212,6 +212,10 @@ void wait::join_game(bool observe)
 	for(;;) {
 		network::connection data_res = dialogs::network_receive_dialog(disp(),
 				_("Getting game data..."), level_);
+		if (!data_res) {
+			set_result(QUIT);
+			return;
+		}
 		check_response(data_res, level_);
 		if(level_.child("leave_game")) {
 			set_result(QUIT);

@@ -176,6 +176,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 		data.clear();
 		network::connection data_res = dialogs::network_receive_dialog(
 				disp,_("Reading from Server..."),data);
+		if (!data_res) return ABORT_SERVER;
 		mp::check_response(data_res, data);
 
 		// Backwards-compatibility "version" attribute

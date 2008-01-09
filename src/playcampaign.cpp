@@ -456,11 +456,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				cfg.clear();
 				network::connection data_res = dialogs::network_receive_dialog(disp,
 						msg, cfg);
-				if(!data_res)
-					// FIXME: Why say timeout if the dialog was aborted?
-					//! @todo Check when this error is caught. Maybe rather
-					//! use 'return QUIT'?
-					throw network::error(_("Connection timed out"));
+				if(!data_res) return QUIT;
 			} while(cfg.child("next_scenario") == NULL);
 
 			if(cfg.child("next_scenario")) {

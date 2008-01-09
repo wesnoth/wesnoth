@@ -1395,7 +1395,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 
 	sock = dialogs::network_send_dialog(disp(),_("Sending add-on"),data,sock);
 	if(!sock) {
-		gui::show_error_message(disp(), _("Connection timed out"));
+		return;
 	} else if(data.child("error")) {
 		gui::show_error_message(disp(), _("The server responded with an error: \"") +
 		                        (*data.child("error"))["message"].str() + '"');
