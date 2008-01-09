@@ -243,6 +243,10 @@ void play_controller::save_game(){
 	menu_handler_.save_game("",gui::OK_CANCEL);
 }
 
+void play_controller::save_replay(){
+	menu_handler_.save_game("", gui::OK_CANCEL, false, true);
+}
+
 void play_controller::save_map(){
 	menu_handler_.save_map();
 }
@@ -534,6 +538,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 
 	// Commands that have some preconditions:
 	case hotkey::HOTKEY_SAVE_GAME:
+	case hotkey::HOTKEY_SAVE_REPLAY:
 		return !events::commands_disabled;
 
 	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:

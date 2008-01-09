@@ -84,7 +84,7 @@ public:
 	void show_statistics(const unsigned int team_num);
 	void unit_list();
 	void status_table(int selected=0);
-	void save_game(const std::string& message, gui::DIALOG_TYPE dialog_type, const bool has_exit_button=false);
+	void save_game(const std::string& message, gui::DIALOG_TYPE dialog_type, const bool has_exit_button=false, const bool replay=false);
 	void save_map();
 	void load_game();
 	void preferences();

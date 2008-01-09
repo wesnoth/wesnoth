@@ -684,14 +684,18 @@ private:
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
-		const bool has_exit_button)
+		const bool has_exit_button, const bool replay)
 	{
 		std::stringstream stream;
 
 		const std::string ellipsed_name = font::make_text_ellipsis(gamestate_.label,
 				font::SIZE_NORMAL, 200);
-		stream << ellipsed_name << " " << _("Turn")
-			   << " " << status_.turn();
+		if (replay) {
+			stream << ellipsed_name << " " << _("replay");
+		} else {
+			stream << ellipsed_name << " " << _("Turn")
+				   << " " << status_.turn();
+		}
 		std::string label = stream.str();
 		if(dialog_type == gui::NULL_DIALOG && message != "") {
 			label = message;
@@ -720,7 +724,8 @@ private:
 			}
 
 			config snapshot;
-			write_game_snapshot(snapshot);
+			if (!replay)
+				write_game_snapshot(snapshot);
 			try {
 				recorder.save_game(label, snapshot, gamestate_.starting_pos);
 				if(dialog_type != gui::NULL_DIALOG) {
