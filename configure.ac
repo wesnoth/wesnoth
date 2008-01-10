@@ -59,6 +59,7 @@ AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([1.9 tar-ustar foreign])
 AM_GNU_GETTEXT([external])
 AC_PROG_RANLIB
+AC_PYTHON_DEVEL(>='2.4')
 
 #######################################################################
 # Configuration options                                               #
@@ -409,21 +410,13 @@ if test "x$python" = "xyes"; then
 	if test "x$pythonfound" = "xyes"; then
 		AC_MSG_CHECKING(Python version and location)
 		PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
-		PYTHON_VERSION_MAJOR=[`$PYTHON -c "import sys; print '%d' % (sys.version_info[0]);"`]
-		PYTHON_VERSION_MINOR=[`$PYTHON -c "import sys; print '%d' % (sys.version_info[1]);"`]
-		PYTHON_VERSION="${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}"
 		AC_MSG_RESULT([$PYTHON, $PYTHON_VERSION, $PYTHON_PREFIX])
 
-		AC_MSG_CHECKING(whether Python is at least 2.4)
-		if test $PYTHON_VERSION_MAJOR -lt 2 -o $PYTHON_VERSION_MAJOR -eq 2 -a $PYTHON_VERSION_MINOR -lt 4; then
-			AC_MSG_RESULT(no)
-			AC_MSG_WARN([*** Wesnoth requires at least Python 2.4, Python support disabled.])
-			pythonfound=no
-		fi
 		if test "x$pythonfound" = "xyes"; then
 			AC_MSG_RESULT(yes)
 
 			PYTHON_CFLAGS="-DHAVE_PYTHON -I$PYTHON_PREFIX/include/python$PYTHON_VERSION"
+
 
 			OLD_CPPFLAGS="$CPPFLAGS"
 			OLD_CXXFLAGS="$CXXFLAGS"
@@ -431,6 +424,7 @@ if test "x$python" = "xyes"; then
 			CXXFLAGS="$CXXFLAGS $PYTHON_CFLAGS"
 
 			AC_CHECK_HEADER([Python.h],
+
 					[],
 					[AC_MSG_WARN([*** Python include files not found! You should install Python development package. Python support disabled]); pythonfound=no])
 			CPPFLAGS="$OLD_CPPFLAGS"
