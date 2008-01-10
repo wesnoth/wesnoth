@@ -396,62 +396,26 @@ AC_SUBST([FRIBIDI_LIBS])
 AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes -a "x$fribidi" = xyes ])
 
 # python
-if test "x$python" = "xyes"; then
-	pythonfound=yes
-	if test "x$PYTHON" = "x"; then
-		AC_PATH_PROG(PYTHON, python, none)
-	fi
+if test "x$PYTHON_VERSION" != "x"; then
+	AC_MSG_CHECKING(Python directory prefix)
+	PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
+	AC_MSG_RESULT([$PYTHON, $PYTHON_VERSION, $PYTHON_PREFIX])
 
-	if test "x$PYTHON" = "xnone"; then
-    	AC_MSG_WARN([*** Python interpreter not found, Python support disabled.])
-		pythonfound=no
-	fi
+	PYTHON_CFLAGS="-DHAVE_PYTHON -I$PYTHON_PREFIX/include/python$PYTHON_VERSION"
 
-	if test "x$pythonfound" = "xyes"; then
-		AC_MSG_CHECKING(Python version and location)
-		PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
-		AC_MSG_RESULT([$PYTHON, $PYTHON_VERSION, $PYTHON_PREFIX])
+	OLD_CPPFLAGS="$CPPFLAGS"
+	OLD_CXXFLAGS="$CXXFLAGS"
+	CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS"
+	CXXFLAGS="$CXXFLAGS $PYTHON_CFLAGS"
+	CPPFLAGS="$OLD_CPPFLAGS"
+	CXXFLAGS="$OLD_CXXFLAGS"
 
-		PYTHON_CFLAGS="-DHAVE_PYTHON -I$PYTHON_PREFIX/include/python$PYTHON_VERSION"
+	AC_SUBST([PYTHON_CFLAGS])
+	AC_SUBST([PYTHON_EXTRA_LIBS])
 
-		OLD_CPPFLAGS="$CPPFLAGS"
-		OLD_CXXFLAGS="$CXXFLAGS"
-		CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS"
-		CXXFLAGS="$CXXFLAGS $PYTHON_CFLAGS"
-
-		AC_CHECK_HEADER([Python.h],
-
-				[],
-				[AC_MSG_WARN([*** Python include files not found! You should install Python development package. Python support disabled]); pythonfound=no])
-		CPPFLAGS="$OLD_CPPFLAGS"
-		CXXFLAGS="$OLD_CXXFLAGS"
-
-		if test "x$pythonfound" = "xyes"; then
-			AC_SUBST([PYTHON_CFLAGS])
-
-			pythonfound=no
-			for pylibpath in '/usr/lib' $PYTHON_PREFIX/lib $PYTHON_PREFIX/lib/python$PYTHON_VERSION/config; do
-				eval `echo unset ac_cv_lib_python$PYTHON_VERSION'___'Py_Finalize | tr '.' '_'`
-
-				save_LIBS=$LIBS
-				LIBS="$LIBS -L$pylibpath"
-				AC_CHECK_LIB(python$PYTHON_VERSION, Py_Finalize, PYTHON_LIBS="-L$pylibpath -lpython$PYTHON_VERSION $PYTHON_DEPS"; pythonfound=yes,,$PYTHON_DEPS)
-				LIBS=$save_LIBS
-				if test "x$pythonfound" = "xyes"; then
-					break
-				fi
-			done
-
-			if test "x$pythonfound" != "xyes"; then
-				AC_MSG_WARN(*** Python development libraries required, Python support disabled)
-			fi
-			AC_SUBST([PYTHON_LIBS])
-
-			AC_SUBST(pkgpythondir)
-			if test "x$python_install" = "xyes"; then
-				pkgpythondir=$PYTHON_PREFIX"/lib/python"$PYTHON_VERSION"/site-packages/wesnoth"
-			fi
-		fi
+	AC_SUBST(pkgpythondir)
+	if test "x$python_install" = "xyes"; then
+		pkgpythondir=$PYTHON_PREFIX"/lib/python"$PYTHON_VERSION"/site-packages/wesnoth"
 	fi
 fi
 AM_CONDITIONAL([PYTHON], [test "x$pythonfound" = xyes -a "x$python" = xyes ])
