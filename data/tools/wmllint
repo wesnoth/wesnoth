@@ -491,6 +491,107 @@ def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
     return tag in map(lambda x: x[0], tagstack)
 
+# Sanity checking
+
+# Associations for the ability sanity checks.
+# Note: Depends on ABILITY_EXTRA_HEAL not occurring outside ABILITY_CURES.
+notepairs = (
+    ("movement_type=undeadspirit", "{SPECIAL_NOTES_SPIRIT}"),
+    ("type=arcane", "{SPECIAL_NOTES_ARCANE}"),
+    ("{ABILITY_HEALS}", "{SPECIAL_NOTES_HEALS}"),
+    #("{ABILITY_EXTRA_HEAL}", "{SPECIAL_NOTES_EXTRA_HEAL}"),
+    ("{ABILITY_UNPOISON}", "{SPECIAL_NOTES_UNPOISON}"),
+    ("{ABILITY_CURES}", "{SPECIAL_NOTES_CURES}"),
+    ("{ABILITY_REGENERATES}", "{SPECIAL_NOTES_REGENERATES}"),
+    ("{ABILITY_STEADFAST}", "{SPECIAL_NOTES_STEADFAST}"),
+    ("{ABILITY_LEADERSHIP_LEVEL_", "{SPECIAL_NOTES_LEADERSHIP}"), # No } deliberately
+    ("{ABILITY_SKIRMISHER}", "{SPECIAL_NOTES_SKIRMISHER}"),
+    ("{ABILITY_ILLUMINATES}", "{SPECIAL_NOTES_ILLUMINATES}"),
+    ("{ABILITY_TELEPORT}", "{SPECIAL_NOTES_TELEPORT}"),
+    ("{ABILITY_AMBUSH}", "{SPECIAL_NOTES_AMBUSH}"),
+    ("{ABILITY_NIGHTSTALK}", "{SPECIAL_NOTES_NIGHTSTALK}"),
+    ("{ABILITY_CONCEALMENT}", "{SPECIAL_NOTES_CONCEALMENT}"),
+    ("{ABILITY_SUBMERGE}", "{SPECIAL_NOTES_SUBMERGE}"),
+    ("{ABILITY_FEEDING}", "{SPECIAL_NOTES_FEEDING}"),
+    ("{WEAPON_SPECIAL_BERSERK}", "{SPECIAL_NOTES_BERSERK}"),
+    ("{WEAPON_SPECIAL_BACKSTAB}", "{SPECIAL_NOTES_BACKSTAB}"),
+    ("{WEAPON_SPECIAL_PLAGUE", "{SPECIAL_NOTES_PLAGUE}"),	# No } deliberately
+    ("{WEAPON_SPECIAL_SLOW}", "{SPECIAL_NOTES_SLOW}"),
+    ("{WEAPON_SPECIAL_STONE}", "{SPECIAL_NOTES_STONE}"),
+    ("{WEAPON_SPECIAL_MARKSMAN}", "{SPECIAL_NOTES_MARKSMAN}"),
+    ("{WEAPON_SPECIAL_MAGICAL}", "{SPECIAL_NOTES_MAGICAL}"),
+    ("{WEAPON_SPECIAL_SWARM}", "{SPECIAL_NOTES_SWARM}"),
+    ("{WEAPON_SPECIAL_CHARGE}", "{SPECIAL_NOTES_CHARGE}"),
+    ("{WEAPON_SPECIAL_DRAIN}", "{SPECIAL_NOTES_DRAIN}"),
+    ("{WEAPON_SPECIAL_FIRSTSTRIKE}", "{SPECIAL_NOTES_FIRSTSTRIKE}"),
+    ("{WEAPON_SPECIAL_POISON}", "{SPECIAL_NOTES_POISON}"),
+    )
+
+trait_note = dict(notepairs)
+note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
+
+def sanity_check(filename, lines):
+    "Perform sanity and considtency checks on input lines"
+    in_unit = False
+    traits = []
+    notes = []
+    unit_id = ""
+    in_attack_filter = False
+    has_special_notes = False
+    for i in range(len(lines)):
+        if "[attack_filter]" in lines[i]:
+            in_attack_filter = True
+            continue
+        elif "[/attack_filter]" in lines[i]:
+            in_attack_filter = False
+            continue
+        if "[unit]" in lines[i]:
+            in_unit = i+1
+            continue
+        elif "[/unit]" in lines[i]:
+            #print '"%s", %d: unit has traits %s and notes %s' \
+            #      % (filename, in_unit, traits, notes)
+            if unit_id:
+                missing_notes = []
+                for trait in traits:
+                    tn = trait_note[trait]
+                    if tn not in notes and tn not in missing_notes:
+                        missing_notes.append(tn)
+                missing_traits = []
+                for note in notes:
+                    nt = note_trait[note]
+                    if nt not in traits and nt not in missing_traits:
+                        missing_traits.append(nt)
+                if (notes or traits) and not has_special_notes:
+                    missing_notes = ["{SPECIAL_NOTES}"] + missing_notes
+                if missing_notes:
+                    print '"%s", line %d: unit%s is missing notes +%s' \
+                          % (filename, in_unit, unit_id, "+".join(missing_notes))
+                if missing_traits:
+                    print '"%s", line %d: unit%s is missing traits %s' \
+                          % (filename, in_unit, unit_id, "+".join(missing_traits))
+                if not (notes or traits) and has_special_notes:
+                    print '"%s", line %d: unit%s has superfluous {SPECIAL_NOTES}' \
+                          % (filename, in_unit, unit_id)
+            in_unit = None
+            traits = []
+            notes = []
+            unit_id = ""
+            has_special_notes = False
+        if in_unit and not in_attack_filter:
+            if "id=" in lines[i] and not unit_id:
+                (dummy, unit_id) = lines[i].strip().split("=")
+                if unit_id[0] == "_":
+                    unit_id = unit_id[1:].strip()
+                unit_id = " " + unit_id
+            if "{SPECIAL_NOTES}" in lines[i]:
+                has_special_notes = True
+            for (p, q) in notepairs:
+                if p in lines[i]:
+                    traits.append(p)
+                if q in lines[i]:
+                    notes.append(q)
+
 # Syntax transformations
 
 leading_ws = re.compile(r"^\s*")
@@ -515,7 +616,7 @@ def hack_syntax(filename, lines):
     # set modcount to nonzero when you actually change any.
     global versions
     modcount = 0
-    # Ensure that every attack has a translatable description."
+    # Ensure that every attack has a translatable description.
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
@@ -1308,6 +1409,8 @@ def translator(filename, mapxforms, textxform):
     if tagstack:
         print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
     tagstack = []
+    # Perform semantic sanity checks
+    sanity_check(filename, newdata)
     # OK, now perform WML rewrites
     (newdata, hacked) = hack_syntax(filename, newdata)
     # Run everything together
