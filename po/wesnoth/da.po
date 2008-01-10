@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-07 22:30+0100\n"
-"PO-Revision-Date: 2008-01-01 13:44+0200\n"
+"PO-Revision-Date: 2008-01-07 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -79,9 +79,8 @@ msgid "Packagers"
 msgstr "Pakkere"
 
 #: data/core/about.cfg:589
-#, fuzzy
 msgid "Miscellaneous contributors"
-msgstr "Diverse"
+msgstr "Forskellige bidragsydere"
 
 #: data/core/about.cfg:709
 msgid "Internationalization Managers"
@@ -1055,7 +1054,6 @@ msgstr ""
 "til."
 
 #: data/core/help.cfg:259
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1073,18 +1071,14 @@ msgstr ""
 "\n"
 "\n"
 "De fleste enheder har 3 niveauer, men der er undtagelser. Udvalgte enheder "
-"(så som <ref>dst=unit_Mage text=Magiske</ref>) kan have fire. Når en enhed "
+"(såsom <ref>dst=unit_Mage text=Magiske</ref>) kan have fire. Når en enhed "
 "har nået sit maksimale niveau, kan den have en efter maksimum opgradering "
 "(MNF). MNF vil ændre enheden hver gang den når et erfaringsniveau, men "
 "enheden vil blive på samme niveau. Den typiske MNF effekt er at øge enhedens "
-"maksimale liv med 3.  Den første MNF vil normalt blive nået med 100 "
+"maksimale liv med 3. Den første MNF vil normalt blive nået med 100 "
 "erfaringspoint (80 erfaringspoint for intelligente enheder). Muligheden for "
 "at opnå en ekstra MNF øges dog proportionalt for hver MNF der opnås, så det "
-"er ofte mere brugbart at forfremme sine enheder på lavere niveau.\n"
-"\n"
-"Bemærk at kun en lille gruppe af enheder, for eksempel nekrofagen vil kunne "
-"helbredes med MNF effekter. De fleste enheder modtager kun bonusen til deres "
-"maksimale liv."
+"er ofte mere brugbart at forfremme sine enheder på lavere niveau."
 
 #: data/core/help.cfg:264
 msgid "Healing"
@@ -1278,7 +1272,7 @@ msgstr ""
 
 #: data/core/help.cfg:297
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "Bidragydere"
 
 #: data/core/help.cfg:303
 msgid "License"
@@ -2196,6 +2190,9 @@ msgid ""
 "Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
+"\n"
+"Skift et logdomæne til et andet logniveau..\n"
+"\n"
 
 #: data/core/help.cfg:676
 msgid ""
@@ -2208,12 +2205,14 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:679
-#, fuzzy
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
 "\n"
-msgstr "Hent temaudvælgelsesmenuen."
+msgstr ""
+"\n"
+"Hent temaudvælgelsesmenuen.\n"
+"\n"
 
 #: data/core/help.cfg:682
 msgid ""
@@ -2236,14 +2235,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"Gem spillet og forlad scenariet (uden prompt).\n"
-"\n"
+"Gem spillet og forlad scenariet (uden prompt)."
 
 #: data/core/help.cfg:691
 msgid "Multiplayer commands"
@@ -2272,8 +2269,8 @@ msgid ""
 msgstr ""
 "\n"
 "Ændr spiller for siden (skriv her nummeret på siden) til brugernavn (skriv "
-"her kaldenavnet på spiller eller observatør).\n"
-"\n"
+"her kaldenavnet på spiller eller observatør). Du kan undersøge hvilken side "
+"hver spiller tilhører i "
 
 #: data/core/help.cfg:701
 msgid ""
@@ -3990,6 +3987,8 @@ msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+" Denne enhed kan gemme sig i landsbyer (med undtagelsen af vandlandsbyer), "
+"og forblive uopdaget af sine fjender, undtagen dem der står nær ved den."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -3999,13 +3998,11 @@ msgstr ""
 "overfladen."
 
 #: data/core/macros/special-notes.cfg:53
-#, fuzzy
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Fodring:\n"
-"Denne enhed modtager 1 liv til sit maksimum, hver kan den dræber en levende "
+" Denne enhed modtager 1 liv til sit maksimum, hver kan den dræber en levende "
 "enhed."
 
 #: data/core/macros/special-notes.cfg:56
@@ -4629,23 +4626,20 @@ msgid "- King Konrad, 536YW"
 msgstr "- Kong Konrad, 536YW"
 
 #: data/hardwired/tips.cfg:15
-#, fuzzy
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
 "Omringelsestaktikken i form af to enheder er særdeles magtfuld, specielt mod "
-"lavererangerende enheder. Ved at placere to enheder på modsatte felter "
-"omkring en fjende bliver deres kontrolzone afgrænset til et flet i alle "
-"retninger."
+"hurtige fjender. Ved at placere to enheder på modsatte felter omkring en "
+"fjende bliver deres kontrolzone afgrænset til et felt i alle retninger."
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr "- Gweddrys erindringer, 627UW"
 
 #: data/hardwired/tips.cfg:19
-#, fuzzy
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
 "castle tile. That will let you chose which hex you put a new unit in. "
@@ -4657,14 +4651,13 @@ msgstr ""
 "tidligere."
 
 #: data/hardwired/tips.cfg:23
-#, fuzzy
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
-"Her er nogle hjælpfulde oversigtsbilleder i hovedmenuen: For eksempel "
-"»statustabellen« vil vise dig hvad fjenden er i gang med, og hvordan du "
+"Der er nogle hjælpfulde oversigtsbilleder i hovedmenuen: For eksempel "
+"»statustabellen« vil vise dig, hvad fjenden er i gang med, og hvordan du "
 "klarer dig sammenlignet med fjenden."
 
 #: data/hardwired/tips.cfg:27
@@ -4714,7 +4707,6 @@ msgid "- The Wesnoth Community"
 msgstr "- Wesnoth-fællesskabet"
 
 #: data/hardwired/tips.cfg:43
-#, fuzzy
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
@@ -4739,17 +4731,16 @@ msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
 msgstr "- Håndbog i taktisk analyse volume 1 - Haldric 2., 42YW"
 
 #: data/hardwired/tips.cfg:51
-#, fuzzy
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
 "what you're facing. In this case, long-range scouting units are worth their "
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
-"Hvis du spiller i tåge eller sløring ved du ikke hvad du står over for. I "
-"dette tilfælde, er langtrækkende spejdere prisen værd. Forsøg at vælge "
-"spejdere som nemt kan bevæge sig rundt i terrænet, da enheder kan se lige så "
-"langt som de kan flytte sig i en runde."
+"Hvis du spiller med »tåge« eller »sløring«, ved du ikke, hvad du står over "
+"for. I dette tilfælde, er langtrækkende spejdere prisen værd. Forsøg at "
+"vælge spejdere som nemt kan bevæge sig rundt i terrænet, da enheder kan se "
+"lige så langt, som de kan flytte sig i en runde."
 
 #: data/hardwired/tips.cfg:55
 msgid ""
@@ -4782,6 +4773,11 @@ msgid ""
 "not be removed unless the unit regenerates, or spends a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Forgiftede enheder vil miste 8 liv hver runde indtil de er 1 liv fra døden. "
+"De vil forblive her indtil giften er fjernet. Naturlæger kan forhindre en "
+"forgiftet enhed i at miste mere liv, men giften vil ikke blive fjernet med "
+"mindre enheden regenererer, eller bliver en runde i en landsby eller tæt på "
+"en anden enhed med »kurere«-evnen."
 
 #: data/hardwired/tips.cfg:67
 msgid ""
@@ -4794,7 +4790,6 @@ msgstr ""
 "og erfaren hær."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -4802,52 +4797,47 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Enheder har kontrolzoner, der dækker felterne ved siden af dem. Hvis en "
-"enhed bevæger sig ind i en fjendes kontrolzone, kan den ikke rykke længere i "
-"den runde. Dette betyder at enheder kan have to tomme felter mellem sig og "
-"stadig skabe en barriere for fjenden. (Enheder på level 0 er for skrøbelige "
-"til at kontrolere felterne omkring dem og stifinder-enheder er dygtige nok "
-"til ikke at blive påvirket af kontrolzonerne."
+"Enheder på niveau 1 og højere har »kontrolzoner«, der dækker felterne ved "
+"siden af dem. Hvis en enhed bevæger sig ind i en fjendes kontrolzone, kan "
+"den ikke rykke længere i den runde. Dette betyder at enheder kan have to "
+"tomme felter mellem sig og stadig skabe en barriere for fjenden. Stifinder-"
+"enheder er dygtige nok til ikke at blive påvirket af kontrolzonerne."
 
 #: data/hardwired/tips.cfg:75
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
 "always have a 70% chance to hit, and units with the 'marksman' ability will "
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
-"Chancen for at ramme en enhed afhænger normalt af hvor egnet en enhed er til "
-"at forsvare sig i det terræn den står i. Magiske angreb har en 70 % chance "
-"for ta ramme både under angreb og forsvar. Ekspertangreb har mindst 60 % "
-"chance for at ramme under angreb."
+"Chancen for at ramme en enhed afhænger normalt af, hvor egnet en enhed er "
+"til at forsvare sig, i det terræn den står i. Magiske angreb har en 70 % "
+"chance for at ramme både under angreb og forsvar. Ekspertangreb har mindst "
+"60 % chance for at ramme under angreb."
 
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Håndbog i taktisk analyse volume 2. - Haldric 2., 43YW"
 
 #: data/hardwired/tips.cfg:79
-#, fuzzy
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
 "Enheder, der er placeret i landsbyer får helbredt 8 liv i begyndelsen af "
-"deres runde."
+"deres runde, eller de bliver helbredt for forgiftning."
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Flyt ikke en skadet enhed hvis det ikke er nødvendigt--lad den hvile. Hvis "
+"Flyt ikke en skadet enhed, hvis det ikke er nødvendigt - lad den hvile. Hvis "
 "en enhed ikke flytter sig eller angriber, vil den kureres for 2 liv i "
 "begyndelsen af dens næste runde."
 
 #: data/hardwired/tips.cfg:87
-#, fuzzy
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
@@ -4862,22 +4852,20 @@ msgid "- Sir Kaylan, 498YW"
 msgstr "- Ridder Kaylan, 498YW"
 
 #: data/hardwired/tips.cfg:91
-#, fuzzy
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
 "Rytterenheder er generelt modstandsdygtige overfor angreb med klinge- eller "
-"slag-våben, men de er sårbare overfor angreb med stik-våben, herunder buer "
-"og spyd."
+"slagvåben, men de er sårbare overfor angreb med stikvåben, herunder buer og "
+"spyd."
 
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
 msgstr "- Ridder Kaylan, 502YW"
 
 #: data/hardwired/tips.cfg:95
-#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain eight experience points for "
@@ -4886,19 +4874,18 @@ msgid ""
 msgstr ""
 "At påføre det dræbende slag til en fjendtlig enhed er den bedste måde at "
 "opnå erfaring. Enheder, som dræber en fjende, modtager 8 erfaringspoint for "
-"hvert niveau den dræbte enhed har."
+"hvert niveau den dræbte enhed har, og 4 erfarlingspoint for en enhed på "
+"niveau 0."
 
 #: data/hardwired/tips.cfg:99
-#, fuzzy
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
 "Elverenheder bevæger sig og kæmper godt i skoven. Dværgeenheder bevæger sig "
-"og kæmper godt i bakker og bjerge."
+"og kæmper godt i bakker, bjerge og huler."
 
 #: data/hardwired/tips.cfg:103
-#, fuzzy
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
@@ -4955,7 +4942,6 @@ msgstr ""
 "dig og lade dig bruge deres tårn til at rekruttere fra."
 
 #: data/hardwired/tips.cfg:123
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
@@ -4964,7 +4950,6 @@ msgstr ""
 "men sårbare overfor slag, ild og magiske angreb."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
@@ -4974,7 +4959,6 @@ msgstr ""
 "enheder med at stige hurtigere i niveau."
 
 #: data/hardwired/tips.cfg:131
-#, fuzzy
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
 "the village and attack you, while enjoying the defense and healing of the "
@@ -5059,7 +5043,6 @@ msgstr ""
 "angreb."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
@@ -5073,7 +5056,6 @@ msgstr ""
 "brugbart at forsøge at forfremme lavere rangerende enheder."
 
 #: data/hardwired/tips.cfg:175
-#, fuzzy
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
 "are limited by its maximum movement. Remember this when deciding what unit "
@@ -5092,7 +5074,6 @@ msgstr ""
 "Placer musen over et af disse for at få en forklaring eller beskrivelse."
 
 #: data/hardwired/tips.cfg:183
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
@@ -5134,6 +5115,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Hvis en fjende har større fordel af en sjælden terræntype end du har, vil en "
+"besættelse af dette terræn fratage fjenden dennes fordel."
 
 #: data/hardwired/tips.cfg:199
 msgid ""
@@ -5141,6 +5124,9 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Få enheder har et godt forsvar i vand; en linje af angribere langs kanten af "
+"en flod kan tildele store tab. Elver kan bruge kanten af en skov på en "
+"lignende måde, og dværge kan gøre det samme med bjerge."
 
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
@@ -5374,7 +5360,7 @@ msgstr ""
 
 #: src/config_adapter.cpp:156
 msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
+msgstr "Ens sidedefinition for side '$side|'."
 
 #: src/dialogs.cpp:112
 msgid "Advance Unit"
@@ -5409,9 +5395,8 @@ msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Filen eksisterer allerede. Vil du overskrive den?"
 
 #: src/dialogs.cpp:275
-#, fuzzy
 msgid "Filter: "
-msgstr "Evner: "
+msgstr "Filter: "
 
 #: src/dialogs.cpp:342
 msgid "Do you really want to delete this game?"
@@ -6166,9 +6151,8 @@ msgid "Reading files and creating cache."
 msgstr "Læser filer og opretter mellemlager."
 
 #: src/map.cpp:342
-#, fuzzy
 msgid "A map without a header is not supported"
-msgstr "Tilfældige kort med en skæv bredde understøttes ikke."
+msgstr "Et kort uden overskrift understøttes ikke"
 
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
@@ -7238,9 +7222,8 @@ msgid "End scenario"
 msgstr "Afslut scenarie"
 
 #: src/playmp_controller.cpp:318
-#, fuzzy
 msgid "Waiting for next scenario..."
-msgstr "Afventer spilstart..."
+msgstr "Afventer næste scenarie..."
 
 #: src/playmp_controller.cpp:447
 msgid ""
