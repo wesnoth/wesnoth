@@ -408,35 +408,21 @@ if test "x$python" = "xyes"; then
 	fi
 
 	if test "x$pythonfound" = "xyes"; then
-		AC_MSG_CHECKING(Python version and location)
+		AC_MSG_CHECKING(Python directory prefix)
 		PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
-		PYTHON_VERSION_MAJOR=[`$PYTHON -c "import sys; print '%d' % (sys.version_info[0]);"`]
-		PYTHON_VERSION_MINOR=[`$PYTHON -c "import sys; print '%d' % (sys.version_info[1]);"`]
-		PYTHON_VERSION="${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}"
 		AC_MSG_RESULT([$PYTHON, $PYTHON_VERSION, $PYTHON_PREFIX])
 
 		PYTHON_CFLAGS="-DHAVE_PYTHON -I$PYTHON_PREFIX/include/python$PYTHON_VERSION"
 
 		OLD_CPPFLAGS="$CPPFLAGS"
 		OLD_CXXFLAGS="$CXXFLAGS"
-		CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS"
+		CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS $PYTHON_CPPFLAGS"
 		CXXFLAGS="$CXXFLAGS $PYTHON_CFLAGS"
 
 		AC_SUBST([PYTHON_CFLAGS])
 
-		pythonfound=no
-		for pylibpath in '/usr/lib' $PYTHON_PREFIX/lib $PYTHON_PREFIX/lib/python$PYTHON_VERSION/config; do
-			eval `echo unset ac_cv_lib_python$PYTHON_VERSION'___'Py_Finalize | tr '.' '_'`
-
-			save_LIBS=$LIBS
-			LIBS="$LIBS -L$pylibpath"
-			AC_CHECK_LIB(python$PYTHON_VERSION, Py_Finalize, PYTHON_LIBS="-L$pylibpath -lpython$PYTHON_VERSION $PYTHON_DEPS"; pythonfound=yes,,$PYTHON_DEPS)
-			LIBS=$save_LIBS
-			if test "x$pythonfound" = "xyes"; then
-				break
-			fi
-		done
-
+		PYTHON_LIBS=$PYTHON_LDFLAGS
+		LIBS="$LIBS $PYTHON_LDFLAGS"
 		if test "x$pythonfound" != "xyes"; then
 			AC_MSG_WARN(*** Python development libraries required, Python support disabled)
 		fi
