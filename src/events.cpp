@@ -32,12 +32,6 @@
 
 #define ERR_GEN LOG_STREAM(err, general)
 #define INFO_GEN LOG_STREAM(info, general)
-#define INPUT_MASK (SDL_EVENTMASK(SDL_KEYDOWN)|\
-			               SDL_EVENTMASK(SDL_KEYUP)|\
-			               SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)|\
-			               SDL_EVENTMASK(SDL_MOUSEBUTTONUP)|\
-			               SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|\
-			               SDL_EVENTMASK(SDL_JOYBUTTONUP))
 
 unsigned input_blocker::instance_count = 0; //static initialization
 

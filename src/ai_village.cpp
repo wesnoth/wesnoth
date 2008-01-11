@@ -16,6 +16,8 @@
 //! The village capturing part of the AI.
 //! ai::get_villages and ai::find_villages are based on ai::get_villages is ai.cpp
 
+#include "global.hpp"
+
 #include "ai.hpp"
 #include "log.hpp"
 
@@ -162,13 +164,13 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 
 	// Find our units who can move.
 	treachmap reachmap;	
-	for(unit_map::const_iterator itor = units_.begin();
-			itor != units_.end(); ++itor) {
+	for(unit_map::const_iterator u_itor = units_.begin();
+			u_itor != units_.end(); ++u_itor) {
 
-		if(itor->second.side() == team_num_ 
-				&& itor->second.movement_left()) {
+		if(u_itor->second.side() == team_num_ 
+				&& u_itor->second.movement_left()) {
 
-			reachmap.insert(std::make_pair(itor->first,	std::vector<gamemap::location>()));
+			reachmap.insert(std::make_pair(u_itor->first,	std::vector<gamemap::location>()));
 		}
 	}
 
@@ -613,22 +615,23 @@ static void dispatch_complex(
 			matrix[u][v_index] = true;
 		}
 	}
-	for(std::vector<size_t>::const_iterator itor = units_per_village.begin();
-			itor != units_per_village.end(); ++itor) {
+	for(std::vector<size_t>::const_iterator upv_it = units_per_village.begin();
+			upv_it != units_per_village.end(); ++upv_it) {
 
-		assert(*itor >=2);
+		assert(*upv_it >=2);
 	}
 
 	if(debug) {
 		// Print header
 		std::cerr << "Reach matrix:\n\nvillage";
-		for(size_t v = 0; v < village_count; ++v) {
+		size_t u, v;
+		for(v = 0; v < village_count; ++v) {
 			std::cerr << '\t' << villages[v];
 		}
 		std::cerr << "\ttotal\nunit\n";
 
 		// Print data
-		for(size_t u = 0; u < unit_count; ++u) {
+		for(u = 0; u < unit_count; ++u) {
 			std::cerr << units[u];
 
 			for(size_t v = 0; v < village_count; ++v) {
@@ -639,7 +642,7 @@ static void dispatch_complex(
 
 		// Print footer
 		std::cerr << "total";
-		for(size_t v = 0; v < village_count; ++v) {
+		for(v = 0; v < village_count; ++v) {
 			std::cerr << '\t' << units_per_village[v];
 		}
 		std::cerr << '\n';

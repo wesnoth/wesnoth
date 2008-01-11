@@ -1484,10 +1484,10 @@ bool game_controller::play_multiplayer()
 	try {
 
 		/* do */ {
-			input_blocker eventlock; //prevent the "keylogger" effect
 			reset_defines_map();
 			defines_map_[state_.campaign_define] = preproc_define();
 			refresh_game_cfg();
+			events::discard(INPUT_MASK); // prevent the "keylogger" effect
 		}
 
 		if(res >= 2) {
@@ -1724,7 +1724,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 					msg << "\n" << *i;
 				}
 
-				msg << "\n" << _("ERROR DETAILS:") << "\n" << user_error_log;
+				msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
 
 				gui::show_error_message(disp(),msg.str());
 			}
@@ -1739,7 +1739,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 			if(!error_log.empty()) {
 				gui::show_error_message(disp(),
 						_("Warning: Errors occurred while loading game configuration files: '") +
-						error_log);
+						font::nullify_markup(error_log));
 
 			} else {
 				try {

@@ -980,15 +980,14 @@ void preferences_dialog::set_friends_menu()
 	std::vector<std::string> friends_items;
 	std::vector<std::string> friends_names;
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
-	for (std::vector<std::string>::const_iterator i = friends.begin();
-			i != friends.end(); ++i)
+	std::vector<std::string>::const_iterator i;
+	for (i = friends.begin(); i != friends.end(); ++i)
 	{
 		friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR
 				+ *i + COLUMN_SEPARATOR + "friend");
 		friends_names.push_back(*i);
 	}
-	for (std::vector<std::string>::const_iterator i = ignores.begin();
-			i != ignores.end(); ++i)
+	for (i = ignores.begin(); i != ignores.end(); ++i)
 	{
 		friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR
 				+ *i + COLUMN_SEPARATOR + "ignored");

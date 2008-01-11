@@ -13,13 +13,16 @@
    See the COPYING file for more details.
 */
 
-#include "floating_textbox.hpp"
+#include "global.hpp"
 
+#include "floating_textbox.hpp"
 #include "font.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "team.hpp"
+
+#include <ctime>
 
 namespace gui{
 	floating_textbox::floating_textbox() : 

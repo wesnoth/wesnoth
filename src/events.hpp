@@ -108,6 +108,13 @@ void raise_help_string_event(int mousex, int mousey);
 
 typedef std::vector<events::handler*> handler_vector;
 
+#define INPUT_MASK (SDL_EVENTMASK(SDL_KEYDOWN)|\
+			               SDL_EVENTMASK(SDL_KEYUP)|\
+			               SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)|\
+			               SDL_EVENTMASK(SDL_MOUSEBUTTONUP)|\
+			               SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|\
+			               SDL_EVENTMASK(SDL_JOYBUTTONUP))
+
 class input_blocker
 {
 public:
