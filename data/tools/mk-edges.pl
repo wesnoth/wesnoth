@@ -1,3 +1,14 @@
+#!/usr/bin/env perl
+#
+# Automatically generate border images for tiles. Works by copying the way in 
+# which border tiles are done for an existing terrain type.
+#
+# For instance, if you made a new terrain type, 'lava.png' and you wanted 
+# to have the same style of edges as snow does, you could run the command
+#
+# data/tools/mk-edges.pl images/terrain/lava images/terrain/snow
+#
+# and it will make the edges for you.
 
 print "usage: $0 <input> <stem>" and exit 0 if $#ARGV != 1;
 my ($input,$stem) = @ARGV;
