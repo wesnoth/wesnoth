@@ -181,6 +181,17 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 		patterns.first.push_back("*-bak");
 		patterns.first.push_back("*.pbl");
 		patterns.first.push_back("*.ign");
+		/* 
+		 * Prevent certain potential security compromises.
+		 * The idea is to stop bad guys from uploading things
+		 * that could become trojans if an unsuspoecting user 
+		 * downloads them.
+		 */
+		patterns.first.push_back("*.exe");
+		patterns.first.push_back("*.bat");
+		patterns.first.push_back("*.com");
+		patterns.first.push_back("*.scr");
+		patterns.first.push_back("*.sh");
 		return patterns;
 	}
 	std::istream *stream = istream_file(ign_file);
