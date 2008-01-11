@@ -434,7 +434,7 @@ game_state::game_state(const game_data& data, const config& cfg) :
 		campaign_define(cfg["campaign_define"]),
 		campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 		campaign(cfg["campaign"]),
-		abbrev(),
+		abbrev(cfg["abbrev"]),
 		scenario(cfg["scenario"]),
 		next_scenario(cfg["next_scenario"]),
 		completion(cfg["completion"]),
@@ -633,8 +633,8 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 {
 	log_scope("write_game");
 
-	out.write_key_val("abbrev", gamestate.abbrev);
 	out.write_key_val("label", gamestate.label);
+	out.write_key_val("abbrev", gamestate.abbrev);
 	out.write_key_val("version", game_config::version);
 	out.write_key_val("scenario", gamestate.scenario);
 	out.write_key_val("next_scenario", gamestate.next_scenario);
