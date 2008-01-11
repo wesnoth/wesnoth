@@ -377,40 +377,43 @@ static void dispatch(treachmap& reachmap, tmoves& moves)
 
 	// we now have a list with units with the villages they can reach.
 	// keep trying the following steps as long as one of them changes
-	// the state, the first time both are ran.
+	// the state.
 	// 1. Dispatch units who can reach 1 village (if more units can reach that
 	//    village only one can capture it, so use the first in the list.)
 	// 2. Villages which can only be reached by one unit get that unit dispatched
 	//    to them.
-	bool first_run = true;
 	size_t village_count = 0;
-	while(true) {
+	bool dispatched = true;
+	while(dispatched) {
+		dispatched = false;
 
-		if(!dispatch_unit_simple(reachmap, moves)) {
+		if(dispatch_unit_simple(reachmap, moves)) {
+			dispatched = true;
+		} else {
 			if(reachmap.empty()) {
 				DBG_AI << "dispatch_unit_simple() found a final solution.\n";
+				break;
 			} else {
 				DBG_AI << "dispatch_unit_simple() couldn't dispatch more units.\n";
 			}
-			if(!first_run) break; 
-		}
+		}			
 
-		if(!dispatch_village_simple(reachmap, moves, village_count)) {
+		if(dispatch_village_simple(reachmap, moves, village_count)) {
+			dispatched = true;
+		} else {
 			if(reachmap.empty()) {
 				DBG_AI << "dispatch_village_simple() found a final solution.\n";
+				break;
 			} else {
 				DBG_AI << "dispatch_village_simple() couldn't dispatch more units.\n";
 			}
-			break;
 		}
 		
-		if(reachmap.size() != 0) {
+		if(reachmap.size() != 0 && dispatched) {
 			DBG_AI << reachmap.size() << " unit(s) left restarting simple dispatching.\n";
 
 			dump_reachmap(reachmap);
 		}
-
-		first_run = false;
 	}
 
 	if(reachmap.size() == 0) {
