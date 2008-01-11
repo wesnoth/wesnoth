@@ -530,6 +530,17 @@ notepairs = (
 trait_note = dict(notepairs)
 note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
 
+def parse_attribute(str):
+    "Parse a WML key-value pair from a line."
+    if '=' not in str:
+        return None
+    m = re.match(r"(^\s*[a-z0-9_]+\s*=\s*)(.+)((?<=\S)\s*#?.*\s*)", str)
+    if not m:
+        return None
+    # Four fields: stripped key, part of line before value,
+    # value, trailing whitespace and comments
+    return (m.group(1).replace("=", "").strip(),) + m.groups()
+
 def sanity_check(filename, lines):
     "Perform sanity and considtency checks on input lines"
     in_unit = False
@@ -580,7 +591,7 @@ def sanity_check(filename, lines):
             has_special_notes = False
         if in_unit and not in_attack_filter:
             if "id=" in lines[i] and not unit_id:
-                (dummy, unit_id) = lines[i].strip().split("=")
+                (key, prefix, unit_id, comment) = parse_attribute(lines[i])
                 if unit_id[0] == "_":
                     unit_id = unit_id[1:].strip()
                 unit_id = " " + unit_id
@@ -668,6 +679,55 @@ def hack_syntax(filename, lines):
                 lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
                 modcount += 1        
             need_image = False
+    # Remove get_hit_sound fields
+    in_unit = False
+    unit_id = ""
+    unit_image = None
+    unit_sound = None
+    get_hit_sound = None
+    has_defense_anim = False
+    has_special_notes = False
+    for i in range(len(lines)):
+        if "[unit]" in lines[i]:
+            in_unit = i+1
+            continue
+        elif "[/unit]" in lines[i]:
+            if unit_id and get_hit_sound:
+                if has_defense_anim:
+                    print 'wmllint: "%s", line %d: unit%s has both deprecated get_hit_sound tag and a DEFENSE_ANIM"'%(filename, i+1, unit_id)
+                else:
+                    new_anim = "{DEFENSE_ANIM %s %s %s}" % \
+                               (unit_image, unit_image, unit_sound)
+                    (key, prefix, val, comment) = parse_attribute(lines[get_hit_sound])
+                    print 'wmllint: "%s", line %d: unit%s gets %s'%(filename, get_hit_sound, unit_id, new_anim)
+                    lines[get_hit_sound] = leader(lines[get_hit_sound]) \
+                                           + new_anim + comment
+                    modcount += 1
+            in_unit = None
+            unit_id = ""
+            unit_image = None
+            unit_sound = None
+            get_hit_sound = None
+            has_defense_anim = False
+            has_special_notes = False
+        if in_unit:
+            if "{DEFENSE_ANIM" in lines[i]:
+                has_defense_anim = True
+            else:
+                fields = parse_attribute(lines[i])
+                if fields is None:
+                    continue
+                (key, prefix, value, comment) = fields
+                if key == "id" and not unit_id:
+                    unit_id = value
+                    if unit_id[0] == "_":
+                        unit_id = unit_id[1:].strip()
+                    unit_id = " " + unit_id
+                elif key == "get_hit_sound":
+                    get_hit_sound = i
+                    unit_sound = value
+                elif key == "image" and not unit_image:
+                    unit_image = value
     # Boucman's transformation of animation syntax
     class anim_frame:
         def __init__(self, attackline, attackname, lineno, female, variation):
@@ -1544,17 +1604,6 @@ if __name__ == '__main__':
             if c in "0123456789":
                 return True
         return False
-
-    def parse_attribute(str):
-        "Parse a WML key-value pair from a line."
-        if '=' not in str:
-            return None
-        m = re.match(r"(^\s*[a-z0-9_]+\s*=\s*)(\S+)(\s*#?.*\s*)", str)
-        if not m:
-            return None
-        # Four fields: stripped key, part of line before value,
-        # value, trailing whitespace and comments
-        return (m.group(1).replace("=", "").strip(),) + m.groups()
 
     def texttransform(filename, lineno, line):
         "Resource-name transformation on text lines."
