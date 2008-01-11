@@ -390,15 +390,17 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 						 (finishing_bonus_per_turn * turns_left) : 0;
 
 				for(i=teams_.begin(); i!=teams_.end(); ++i) {
-					if (!i->is_persistent())
-						continue;
-
 					player_info *player=gamestate_.get_player(i->save_id());
 
 					if (player) {
+						// Store the gold for all players.
 						player->gold = ((i->gold() + finishing_bonus) 
 								* end_level.carryover_percentage) / 100;
 						player->gold_add = end_level.carryover_add;
+						
+						// Only show the report for ourselves.
+						if (!i->is_persistent())
+							continue;
 
 						if(gamestate_.players.size()>1) {
 							if(i!=teams_.begin()) {
