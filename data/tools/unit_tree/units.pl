@@ -30,9 +30,9 @@
 my $html_gen = 1;
 # This option will determine if the html files translations are generated, and it will create the folders
 #   based on the contents of the po folder of Wesnoth
-my $translate = 1;
+my $translate = 0;
 # If translating, this option will try to use the source code instead of the compiled files
-my $source = 1;
+my $source = 0;
 # If translating, and not from the source, remove the comment on the following line
 #use Locale::Maketext::Gettext;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
@@ -40,9 +40,9 @@ my $images = 1;
 # This option will determine if the html report on made animations is generated
 my $animations = 1;
 # This is the version number that will appear on the unit trees
-my $version = '1.3.13+svn';
+my $version = '1.3.13';
 # These option will try to process the user made Eras
-my $ime = 0; # Imperial Era
+my $ime = 1; # Imperial Era
 my $exe = 0; # Extended Era
 my $eom = 0; # Era of Myths
 # If the script is run on Windows, set this option to 1
@@ -115,7 +115,7 @@ close UNITS;
 
 # Extended Era
 if ($exe) {
-	$i=300; $version = 'x.31 (unstable)';
+	$i=300; $version = 'x.32 (unstable)';
 	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
 	$unit_id{AdvanceTo} = 'AdvanceTo';
 	$link_back = '../';
@@ -155,7 +155,7 @@ if ($exe) {
 
 # Imperial Era
 if ($ime) {
-	$i=600; $version = '0.16.5';
+	$i=600; $version = '0.17';
 	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
 	$unit_id{AdvanceTo} = 'AdvanceTo';
 	$link_back = '';
@@ -186,7 +186,7 @@ if ($ime) {
 
 # Era of Myths
 if ($eom) {
-	$i=900; $version = 'Beta 8';
+	$i=900; $version = 'Gamma 5';
 	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
 	$unit_id{AdvanceTo} = 'AdvanceTo';
 	$link_back = '';
@@ -390,6 +390,7 @@ sub ProcessUnit {
     $unit{abilities} =~ s/\s$//; # Fix the extra space in the abilities
     $unit{name} =~ s/^.+?"(.+)"$/$1/; # Fix the name
     if ($unit{id}) {
+		$unit{image} =~ s/^"/"units\// unless $unit{image}=~/^"units/;
 		print UNITS "$i\t$unit{id}\t$unit{race}\t$unit{hitpoints}\t$unit{movement_type}\t$unit{movement}\t$unit{experience}";
 		print UNITS "\t$unit{level}\t$unit{alignment}\t$unit{image}\t$unit{cost}\t$unit{usage}\t$unit{abilities}\t$unit{name}\n";
 		$unit{image} = $unit{image2} if $unit{image2};
@@ -436,7 +437,7 @@ sub GenerateTree {
 	if ($html_gen) {
 		my $era_file = shift;
 		print "Starting the generation of unit trees\n";
-		copy('units.css',"$html_dir/units.css");
+		copy('templates/units.css',"$html_dir/units.css");
 		# Load HTML templates
 		open (HTML, "templates/tree_header$era_file.html") or die "Couldn't open header: $!\n";
 		my @header = <HTML>;
@@ -607,7 +608,7 @@ sub CopyImages {
 		my @stats = split /\t/;
 		(my $image = $stats[9]);
 		$image =~ s/"//g;
-		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
+		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image") unless (! -e "$data_dir/images/$image");
 		$image =~ s/.png/+female.png/;
 		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image") unless (! -e "$data_dir/images/$image");
 	}
