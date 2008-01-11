@@ -175,7 +175,6 @@ team_num_(team), unit_count_(5,0)
 		str << _("Recruits") << COLUMN_SEPARATOR << n;
 		items.push_back(str.str());
 	}
-
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.recalls);
@@ -183,16 +182,13 @@ team_num_(team), unit_count_(5,0)
 		str << _("Recalls") << COLUMN_SEPARATOR << n;
 		items.push_back(str.str());
 	}
-
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.advanced_to);
 		unit_count_[2] = n;
-        str << font::BOLD_TEXT << _("Advancements") << COLUMN_SEPARATOR
-            << font::BOLD_TEXT << n;
+        str << _("Advancements") << COLUMN_SEPARATOR << n;
 		items.push_back(str.str());
 	}
-
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.deaths);
@@ -200,7 +196,6 @@ team_num_(team), unit_count_(5,0)
 		str << _("Losses") << COLUMN_SEPARATOR << n;
 		items.push_back(str.str());
 	}
-
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.killed);
@@ -208,31 +203,58 @@ team_num_(team), unit_count_(5,0)
 		str << _("Kills") << COLUMN_SEPARATOR << n;
 		items.push_back(str.str());
 	}
-
+	items.push_back("");
 	{
 		std::stringstream str;
-        str << font::BOLD_TEXT << _("Damage Inflicted") << COLUMN_SEPARATOR
-            << font::BOLD_TEXT << stats_.damage_inflicted;
+        str << font::BOLD_TEXT << _("Damage")
+		    << COLUMN_SEPARATOR << _("Over All") << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR << _("This Turn");
 		items.push_back(str.str());
 	}
-
 	{
+		const int dsa = 100 * stats_.damage_inflicted
+		              - stats_.expected_damage_inflicted;
+		const int dst = 100 * stats_.turn_damage_inflicted
+		              - stats_.turn_expected_damage_inflicted;
 		std::stringstream str;
-		str << _("Damage Taken") << COLUMN_SEPARATOR << stats_.damage_taken;
+        str << _("Inflicted") << COLUMN_SEPARATOR
+		    << stats_.damage_inflicted << " / "
+		    << (stats_.expected_damage_inflicted / 100.0)
+		    << COLUMN_SEPARATOR
+		    << ((dsa > 0) ? "+" : "")
+		    << ((stats_.expected_damage_inflicted == 0) ? 0
+		        : 100 * dsa / stats_.expected_damage_inflicted)
+		    << "%" << COLUMN_SEPARATOR
+		    << stats_.turn_damage_inflicted << " / "
+		    << (stats_.turn_expected_damage_inflicted / 100.0)
+		    << COLUMN_SEPARATOR
+		    << ((dst > 0) ? "+" : "")
+		    << ((stats_.turn_expected_damage_inflicted == 0) ? 0
+		        : 100 * dst / stats_.turn_expected_damage_inflicted)
+		    << "%";
 		items.push_back(str.str());
 	}
-
 	{
+		const int dsa = 100 * stats_.damage_taken
+		              - stats_.expected_damage_taken;
+		const int dst = 100 * stats_.turn_damage_taken
+		              - stats_.turn_expected_damage_taken;
 		std::stringstream str;
-        str << font::BOLD_TEXT << _("Damage Inflicted (EV)") << COLUMN_SEPARATOR
-            << font::BOLD_TEXT << (stats_.expected_damage_inflicted / 100.0);
-		items.push_back(str.str());
-	}
-
-	{
-		std::stringstream str;
-		str << _("Damage Taken (EV)") <<  COLUMN_SEPARATOR
-			<< (stats_.expected_damage_taken / 100.0);
+        str << _("Taken") << COLUMN_SEPARATOR
+		    << stats_.damage_taken << " / "
+		    << (stats_.expected_damage_taken / 100.0)
+		    << COLUMN_SEPARATOR
+		    << ((dsa > 0) ? "+" : "")
+		    << ((stats_.expected_damage_taken == 0) ? 0
+		        : 100 * dsa / stats_.expected_damage_taken)
+		    << "%" << COLUMN_SEPARATOR
+		    << stats_.turn_damage_taken << " / "
+		    << (stats_.turn_expected_damage_taken / 100.0)
+		    << COLUMN_SEPARATOR
+		    << ((dst > 0) ? "+" : "")
+		    << ((stats_.turn_expected_damage_taken == 0) ? 0
+		        : 100 * dst / stats_.turn_expected_damage_taken)
+		    << "%";
 		items.push_back(str.str());
 	}
 	set_menu(items);

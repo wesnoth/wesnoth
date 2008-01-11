@@ -51,6 +51,7 @@ namespace statistics
 		battle_result_map attacks, defends;
 
 		int damage_inflicted, damage_taken;
+		int turn_damage_inflicted, turn_damage_taken;
 
 		// Expected value for damage inflicted/taken * 100, based on
 		// probability to hit,
@@ -59,6 +60,7 @@ namespace statistics
 		// Also, slow isn't accounted for properly.
 		// Rusty's simulator could be used obtain valid values.
 		int expected_damage_inflicted, expected_damage_taken;
+		int turn_expected_damage_inflicted, turn_expected_damage_taken;
 	};
 
 	int sum_str_int_map(const stats::str_int_map& m);
@@ -110,6 +112,7 @@ namespace statistics
 	void fresh_stats();
 	void clear_current_scenario();
 
+	void reset_turn_stats(int side);
 	stats calculate_stats(int category, int side);
 } // end namespace statistics
 
