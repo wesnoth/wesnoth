@@ -58,6 +58,19 @@ static bool command_active()
 #endif
 }
 
+// Conversion routine for both unscatched and damage change percentage.
+static void format_prob(char str_buf[10], const float prob)
+{
+	const char *prob_str_format = NULL;
+
+	if(prob > 0.9995) prob_str_format = "100 %%";
+	else if(prob >= 0.1) prob_str_format = "%4.1f %%";
+	else prob_str_format = " %3.1f %%";
+
+	snprintf(str_buf, 10, prob_str_format, static_cast<float>(100.0 * (prob + 0.0005)));
+	str_buf[9] = '\0';  //prevents _snprintf error
+}
+
 namespace{
 	//minimum dragging distance to fire the drag&drop
 	const double drag_threshold = 14.0;
@@ -357,8 +370,7 @@ namespace{
 
 		// Unscathed probability.
 		left_strings.push_back(_("Chance of being unscathed"));
-		snprintf(str_buf, 10, "%.1f%%", static_cast<float>(u_unscathed * 100.0));
-		str_buf[9] = '\0';  //prevents _snprintf error
+		format_prob(str_buf, u_unscathed);
 		right_strings.push_back(str_buf);
 
 #if 0 // might not be en English!
@@ -613,14 +625,7 @@ namespace{
 			SDL_FillRect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
 
 			// Draw probability percentage, aligned right.
-			const char *prob_str_format = NULL;
-
-			if(prob > 0.9995) prob_str_format = "100 %%";
-			else if(prob >= 0.1) prob_str_format = "%4.1f %%";
-			else prob_str_format = " %3.1f %%";
-
-			snprintf(str_buf, 10, prob_str_format, static_cast<float>(100.0 * (prob + 0.0005)));
-			str_buf[9] = '\0';  //prevents _snprintf error
+			format_prob(str_buf, prob);
 			int prob_width = font::line_width(str_buf, fs);
 			font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
 							 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
