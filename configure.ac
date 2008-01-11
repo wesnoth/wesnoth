@@ -408,12 +408,6 @@ if test "x$python" = "xyes"; then
 	fi
 
 	if test "x$pythonfound" = "xyes"; then
-		AC_MSG_CHECKING(Python directory prefix)
-		PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
-		AC_MSG_RESULT([$PYTHON, $PYTHON_VERSION, $PYTHON_PREFIX])
-
-		PYTHON_CFLAGS="-DHAVE_PYTHON -I$PYTHON_PREFIX/include/python$PYTHON_VERSION"
-
 		OLD_CPPFLAGS="$CPPFLAGS"
 		OLD_CXXFLAGS="$CXXFLAGS"
 		CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS $PYTHON_CPPFLAGS"
@@ -421,17 +415,12 @@ if test "x$python" = "xyes"; then
 
 		AC_SUBST([PYTHON_CFLAGS])
 
-		PYTHON_LIBS=$PYTHON_LDFLAGS
 		LIBS="$LIBS $PYTHON_LDFLAGS"
-		if test "x$pythonfound" != "xyes"; then
-			AC_MSG_WARN(*** Python development libraries required, Python support disabled)
-		fi
+		PYTHON_LIBS=$PYTHON_LDFLAGS
 		AC_SUBST([PYTHON_LIBS])
 
 		AC_SUBST(pkgpythondir)
-		if test "x$python_install" = "xyes"; then
-			pkgpythondir=$PYTHON_PREFIX"/lib/python"$PYTHON_VERSION"/site-packages/wesnoth"
-		fi
+		pkgpythondir="$PYTHON_SITE_PKG/wesnoth"
 	fi
 fi
 AM_CONDITIONAL([PYTHON], [test "x$pythonfound" = xyes -a "x$python" = xyes ])
