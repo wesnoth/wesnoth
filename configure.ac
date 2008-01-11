@@ -231,7 +231,7 @@ AC_ARG_ENABLE([editor],
 	      [editor=no])
 
 AC_ARG_ENABLE([tools],
-              AS_HELP_STRING([--enable-tools], [enable compilation of tools for translators and artists]),
+              AS_HELP_STRING([--enable-tools], [enable building and installation of tools for artists and WML maintainers]),
 	      [tools=$enableval],
 	      [tools=no])
 
