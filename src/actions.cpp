@@ -1681,7 +1681,7 @@ void advance_unit(const game_data& info,
 	game_events::fire("post_advance",loc);
 }
 
-void check_victory(unit_map& units, std::vector<team>& teams)
+void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 {
 	std::vector<int> seen_leaders;
 	for(unit_map::const_iterator i = units.begin();
@@ -1696,6 +1696,9 @@ void check_victory(unit_map& units, std::vector<team>& teams)
 	for(std::vector<team>::iterator tm = teams.begin(); tm != teams.end(); ++tm) {
 		if(std::find(seen_leaders.begin(),seen_leaders.end(),tm-teams.begin() + 1) == seen_leaders.end()) {
 			tm->clear_villages();
+			// invalidate_all() is overkill and expensive but this code is
+			// run rarely so do it the expensive way.
+			disp.invalidate_all();
 		}
 	}
 

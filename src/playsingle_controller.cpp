@@ -483,7 +483,7 @@ void playsingle_controller::play_turn(bool save)
 		}
 
 		finish_side_turn();
-		check_victory(units_,teams_);
+		check_victory(units_, teams_, *gui_);
 	}
 
 	// Time has run out

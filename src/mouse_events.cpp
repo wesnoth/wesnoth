@@ -1425,7 +1425,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		current_route_.steps.clear();
 		gui_->set_route(NULL);
 
-		check_victory(units_,teams_);
+		check_victory(units_, teams_, *gui_);
 
 		gui_->draw();
 

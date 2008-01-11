@@ -729,7 +729,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				//if there are no more advancing units, then we check for victory,
 				//in case the battle that led to advancement caused the end of scenario
 				if(advancing_units.empty()) {
-					check_victory(units,teams);
+					check_victory(units, teams, disp);
 				}
 
 				continue;
@@ -1086,7 +1086,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			//check victory now if we don't have any advancements. If we do have advancements,
 			//we don't check until the advancements are processed.
 			if(advancing_units.empty()) {
-				check_victory(units,teams);
+				check_victory(units, teams, disp);
 			}
 			fix_shroud = !replayer.is_skipping();
 		} else if((child = cfg->child("fire_event")) != NULL) {

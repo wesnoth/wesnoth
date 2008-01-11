@@ -1129,7 +1129,7 @@ void ai_interface::attack_enemy(const location u,
 			}
 		}
 
-		check_victory(info_.units,info_.teams);
+		check_victory(info_.units,info_.teams, info_.disp);
 		raise_enemy_attacked();
 	}
 }
