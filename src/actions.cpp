@@ -752,9 +752,18 @@ void attack::fire_event(const std::string& n)
 			std::pair<std::string,t_string> to_insert("weapon", d_weap);
 			tempcfg->values.insert(to_insert);
 		}
-		game_events::fire(n, 
-			game_events::entity_location(a_),
-			game_events::entity_location(d_), dat);
+		try {
+			game_events::fire(n, 
+				game_events::entity_location(a_),
+				game_events::entity_location(d_), dat);
+		}
+		catch(end_level_exception &e)
+		{
+			if(delayed_exception == 0)
+			{
+				delayed_exception = new end_level_exception(e);
+			}
+		}
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
@@ -766,7 +775,16 @@ void attack::fire_event(const std::string& n)
 	dat.add_child("second");
 	(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
 	(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
-	game_events::fire(n,attacker_,defender_,dat);
+	try {
+		game_events::fire(n,attacker_,defender_,dat);
+	}
+	catch(end_level_exception &e)
+	{
+		if(delayed_exception == 0)
+		{
+			delayed_exception = new end_level_exception(e);
+		}
+	}
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist
 	a_ = units_.find(attacker_);
@@ -807,6 +825,7 @@ void attack::refresh_bc()
 
 attack::~attack()
 {
+	delete delayed_exception;
 	delete bc_;
 }
 
@@ -849,7 +868,8 @@ attack::attack(game_display& gui, const gamemap& map,
 	attackerxp_(0),
 	defenderxp_(0),
 	update_display_(update_display),
-	OOS_error_(false)
+	OOS_error_(false),
+	delayed_exception(0)
 {
 	// Stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
@@ -1050,7 +1070,16 @@ attack::attack(game_display& gui, const gamemap& map,
 				std::string undead_variation = d_->second.undead_variation();
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
-				game_events::fire("last breath", death_loc, attacker_loc);
+				try {
+					game_events::fire("last breath", death_loc, attacker_loc);
+				}
+				catch(end_level_exception &e)
+				{
+					if(delayed_exception == 0)
+					{	
+						delayed_exception = new end_level_exception(e);
+					}
+				}
 
 				d_ = units_.find(death_loc);
 				a_ = units_.find(attacker_loc);
@@ -1075,7 +1104,16 @@ attack::attack(game_display& gui, const gamemap& map,
 					unit_display::unit_die(d_->first, d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
 				}
 
-				game_events::fire("die",death_loc,attacker_loc);
+				try {
+					game_events::fire("die",death_loc,attacker_loc);
+				}
+				catch(end_level_exception &e)
+				{
+					if(delayed_exception == 0)
+					{
+						delayed_exception = new end_level_exception(e);
+					}
+				}
 
 				d_ = units_.find(death_loc);
 				a_ = units_.find(attacker_loc);
@@ -1147,7 +1185,17 @@ attack::attack(game_display& gui, const gamemap& map,
 					d_->second.set_state("stoned","yes");
 					n_defends_ = 0;
 					n_attacks_ = 0;
-					game_events::fire(stone_string,d_->first,a_->first);
+					try {
+						game_events::fire(stone_string,d_->first,a_->first);
+					}
+					catch(end_level_exception &e)
+					{
+						if(delayed_exception == 0)
+						{
+							delayed_exception = new end_level_exception(e);
+						}
+					}
+
 				}
 			}
 
@@ -1301,7 +1349,16 @@ attack::attack(game_display& gui, const gamemap& map,
 				game_events::entity_location defender_loc(d_);
 				const int attacker_side = a_->second.side();
 				fire_event("attack_end");
-				game_events::fire("die",death_loc,defender_loc);
+				try {
+					game_events::fire("die",death_loc,defender_loc);
+				}
+				catch(end_level_exception &e)
+				{
+					if(delayed_exception == 0)
+					{
+						delayed_exception = new end_level_exception(e);
+					}
+				}
 
 				refresh_bc();
 
@@ -1410,7 +1467,13 @@ attack::attack(game_display& gui, const gamemap& map,
 		replay::throw_error(errbuf_.str());
 	}
 
+	if (delayed_exception != 0)
+	{
+		throw end_level_exception(*delayed_exception);
+	}
+
 }
+
 
 int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
 {

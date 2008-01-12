@@ -742,7 +742,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 		}
 		else
 		{
-			DBG_REPLAY << "Repaly data in end\n";
+			DBG_REPLAY << "Repaly data at end\n";
 		}
 		
 
@@ -1114,6 +1114,8 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 				replay::throw_error("illegal defender weapon type in attack\n");
 			}
+
+			//! FIXME: TODO make this handle end_level_exception
 
 			attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !get_replay_source().is_skipping());
 

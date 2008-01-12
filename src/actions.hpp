@@ -41,6 +41,8 @@ class game_data;
 
 bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc);
 
+struct end_level_exception;
+
 //! Function which recruits a unit into the game.
 // A copy of u will be created and inserted as the new recruited unit.
 // If need_castle is true, then the new unit must be on the same castle
@@ -191,7 +193,6 @@ class attack {
 		battle_context* bc_;
 		const battle_context::unit_stats* a_stats_;
 		const battle_context::unit_stats* d_stats_;
-
 		int orig_attacks_,orig_defends_;
 		int n_attacks_,n_defends_;
 		int attacker_cth_,defender_cth_;
@@ -200,6 +201,8 @@ class attack {
 
 		bool update_display_;
 		bool OOS_error_;
+		end_level_exception* delayed_exception;
+
 };
 
 //! Given the location of a village, will return the 0-based index
