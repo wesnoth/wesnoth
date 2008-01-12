@@ -701,6 +701,8 @@ int dialog::process(dialog_process_info &info)
 	info.double_clicked = menu_->double_clicked();
 	get_menu();
 	const bool use_menu = (menu_ != empty_menu);
+	const bool use_text_input = (text_widget_!=NULL);
+	const bool has_input = (use_menu&&use_text_input);//input of any sort has to be made
 
 	if((!info.key_down && info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER] || info.double_clicked) &&
 	   (type_ == YES_NO || type_ == OK_CANCEL || type_ == OK_ONLY || type_ == CLOSE_ONLY)) {
@@ -708,9 +710,8 @@ int dialog::process(dialog_process_info &info)
 		return (use_menu ? menu_->selection() : 0);
 	}
 
-	//escape quits from the dialog -- unless it's an "ok" dialog with a menu,
-	//since such dialogs require a selection of some kind.
-	if(!info.key_down && info.key[SDLK_ESCAPE] && !(type_ == OK_ONLY && use_menu)) {
+	//escape quits from the dialog -- unless it's an "ok" dialog with input
+	if(!info.key_down && info.key[SDLK_ESCAPE] && !(type_ == OK_ONLY && has_input)) {
 		return (CLOSE_DIALOG);
 	}
 
@@ -760,7 +761,7 @@ int dialog::process(dialog_process_info &info)
 	if (info.new_right_button && !info.right_button) {
 		if( standard_buttons_.empty()
 		|| (!point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
-		&& type_ != YES_NO && !(type_ == OK_ONLY && use_menu))) {
+		&& type_ != YES_NO && !(type_ == OK_ONLY && has_input))) {
 			sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
 		}
@@ -769,7 +770,7 @@ int dialog::process(dialog_process_info &info)
 	//any keypress should close a dialog if it has one standard button (or less)
 	//and no menu options.
 	if (info.new_key_down && !info.key_down) {
-		if (standard_buttons_.size() < 2 && !use_menu)
+		if (standard_buttons_.size() < 2 && !has_input)
 			return CLOSE_DIALOG;
 	}
 

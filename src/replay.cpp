@@ -332,6 +332,16 @@ void replay::choose_option(int index)
 	add_value("choose",index);
 }
 
+void replay::text_input(std::string input)
+{
+	config* const cmd = add_command();
+
+	config val;
+	val["text"] = input;
+
+	cmd->add_child("input",val);
+}
+
 void replay::set_random_value(const std::string& choice)
 {
 	config* const cmd = add_command();

@@ -1663,16 +1663,16 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 			LOG_CONFIG << "no valid cache found. Writing cache to '" << fname << "'\n";
 
 			preproc_map defines_map(defines);
+			
+			std::string error_log, user_error_log;
 
 			//read the file and then write to the cache
-			scoped_istream stream = preprocess_file("data/", &defines_map);
-
+			scoped_istream stream = preprocess_file("data/", &defines_map, &error_log);
+            
 			//reset the parse counter before reading the game files
 			if (loadscreen::global_loadscreen) {
 				loadscreen::global_loadscreen->parser_counter = 0;
 			}
-
-			std::string error_log, user_error_log;
 
 			read(cfg, *stream, &error_log);
 
@@ -1693,7 +1693,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 				try {
 					preproc_map user_defines_map(defines_map);
-					scoped_istream stream = preprocess_file(toplevel,&user_defines_map);
+					scoped_istream stream = preprocess_file(toplevel,&user_defines_map,&user_error_log);
 
 					std::string campaign_error_log;
 
@@ -1711,6 +1711,11 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 					error_campaigns.push_back(*uc);
 
 					user_error_log += err.message + "\n";
+                } catch(preproc_config::error&) {
+					ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
+					error_campaigns.push_back(*uc);
+                    //no need to modify the error log here, already done by the preprocessor
+
 				} catch(io_exception&) {
 					ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
 					error_campaigns.push_back(*uc);
@@ -1789,6 +1794,11 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 			old_defines_map_ = defines_map_;
 		}
 	} catch(config::error& e) {
+		ERR_CONFIG << "Error loading game configuration files\n";
+		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
+			font::nullify_markup(e.message) + _("' (The game will now exit)"));
+		throw e;
+	} catch(preproc_config::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
 			font::nullify_markup(e.message) + _("' (The game will now exit)"));

@@ -40,13 +40,6 @@ bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
 }
 
-struct preproc_config {
-	struct error {
-		error(const std::string& msg) : message(msg) {}
-		std::string message;
-	};
-};
-
 class preprocessor;
 class preprocessor_file;
 class preprocessor_data;
@@ -77,6 +70,7 @@ class preprocessor_streambuf: public streambuf
 	preproc_map default_defines_;
 	std::string textdomain_;
 	std::string location_;
+	std::string *error_log;
 	int linenum_;
 	int depth_;
 	int buffer_size_;
@@ -87,10 +81,12 @@ class preprocessor_streambuf: public streambuf
 	friend struct preprocessor_deleter;
 	preprocessor_streambuf(preprocessor_streambuf const &);
 public:
-	preprocessor_streambuf(preproc_map *);
+	preprocessor_streambuf(preproc_map *, std::string *);
+	std::string lineno_string(std::string const &);
+	void error(const std::string &, const std::string &);
 };
 
-preprocessor_streambuf::preprocessor_streambuf(preproc_map *def) :
+preprocessor_streambuf::preprocessor_streambuf(preproc_map *def, std::string *err_log) :
 	streambuf(), 
 	out_buffer_(""), 
 	buffer_(), 
@@ -101,7 +97,8 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def) :
 	location_(""), 
 	linenum_(0), 
 	depth_(0),
-	buffer_size_(0), 
+	buffer_size_(0),
+	error_log(err_log),
 	quoted_(false)
 {
 }
@@ -118,6 +115,7 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t) 
 	linenum_(0),
 	depth_(t.depth_),
 	buffer_size_(0), 
+	error_log(t.error_log),
 	quoted_(t.quoted_)
 {
 }
@@ -163,6 +161,37 @@ int preprocessor_streambuf::underflow()
 		return EOF;
 	return static_cast<unsigned char>(*(begin + sz));
 }
+
+std::string preprocessor_streambuf::lineno_string(std::string const &lineno)
+{
+	std::vector< std::string > pos = utils::quoted_split(lineno, ' ');
+	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
+	std::string included_from = " included from ";
+	std::string res;
+	while (i != end) {
+		std::string const &line = *(i++);
+		std::string const &file = i != end ? *(i++) : "<unknown>";
+		if (!res.empty())
+			res += included_from;
+		res += file + ':' + line;
+	}
+	if (res.empty()) res = "???";
+	return res;
+}
+
+void preprocessor_streambuf::error(const std::string& error_type, const std::string &pos)
+{
+	utils::string_map i18n_symbols;
+	std::string position, error;
+	position = lineno_string(pos);
+	error = error_type + " at " + position;
+	ERR_CF << error << '\n';
+	if(error_log!=NULL)
+		*error_log += error + '\n';
+
+	throw preproc_config::error(error);
+}
+
 
 /**
  * preprocessor
@@ -457,18 +486,18 @@ bool preprocessor_data::get_chunk()
 		case 'I':
 		case 'j':
 		case 'J': s = "#ifdef or #ifndef"; break;
-		case '"': s = "quoted string"; break;
+		case '"': s = "Quoted string"; break;
 		case '[':
-		case '{': s = "macro substitution"; break;
-		case '(': s = "macro argument"; break;
+		case '{': s = "Macro substitution"; break;
+		case '(': s = "Macro argument"; break;
 		default: s = "???";
 		}
 		std::ostringstream error;
-		error << s << " not terminated, started at "
-		      << token.linenum << ' ' << target_.location_;
-		ERR_CF << error.str() << '\n';
+		error<<s<<" not terminated";		
+        std::ostringstream location;
+		location<<linenum_<<' '<<target_.location_;
 		pop_token();
-		throw preproc_config::error(error.str());
+		target_.error(error.str(), location.str());
 	}
 	if (c == '\n')
 		++linenum_;
@@ -499,11 +528,10 @@ bool preprocessor_data::get_chunk()
 			push_token('"');
 			put(c);
 		} else {
-			std::ostringstream error;
-			error << "nested quoted string started at "
-			      << linenum_ << ' ' << target_.location_;
-			ERR_CF << error.str() << '\n';
-			throw preproc_config::error(error.str());
+			std::string error="Nested quoted string";
+	        std::ostringstream location;
+			location<<linenum_<<' '<<target_.location_;
+			target_.error(error, location.str());
 		}
 	} else if (c == '{') {
 		if (token.type == '{')
@@ -521,11 +549,10 @@ bool preprocessor_data::get_chunk()
 			int linenum = linenum_;
 			std::vector< std::string > items = utils::split(read_line(), ' ');
 			if (items.empty()) {
-				std::ostringstream error;
-				error << "no macro name found after #define directive at "
-				      << linenum_ << ' ' << target_.location_;
-				ERR_CF << error.str() << '\n';
-				throw preproc_config::error(error.str());
+				std::string error="No macro name found after #define directive";		
+				std::ostringstream location;
+				location<<linenum_<<' '<<target_.location_;
+				target_.error(error, location.str());
 			}
 			std::string symbol = items.front();
 			items.erase(items.begin());
@@ -548,11 +575,10 @@ bool preprocessor_data::get_chunk()
 							found_enddef = 0;
 			}
 			if (found_enddef != 7) {
-				std::ostringstream error;
-				error << "unterminated preprocessor definition at "
-				      << linenum << ' ' << target_.location_;
-				ERR_CF << error.str() << '\n';
-				throw preproc_config::error(error.str());
+				std::string error="Unterminated preprocessor definition at";		
+		        std::ostringstream location;
+				location<<linenum_<<' '<<target_.location_;
+				target_.error(error, location.str());
 			}
 			if (!skipping_) {
 				buffer.erase(buffer.end() - 7, buffer.end());
@@ -587,11 +613,10 @@ bool preprocessor_data::get_chunk()
 				++skipping_;
 				push_token('I');
 			} else {
-				std::ostringstream error;
-				error << "unexpected #else at "
-				      << linenum_ << ' ' << target_.location_;
-				ERR_CF << error.str() << '\n';
-				throw preproc_config::error(error.str());
+				std::string error="Unexpected #else at";
+		        std::ostringstream location;
+				location<<linenum_<<' '<<target_.location_;
+				target_.error(error, location.str());
 			}
 		} else if (command == "endif") {
 			switch (token.type) {
@@ -600,11 +625,10 @@ bool preprocessor_data::get_chunk()
 			case 'i':
 			case 'j': break;
 			default:
-				std::ostringstream error;
-				error << "unexpected #endif at "
-				      << linenum_ << ' ' << target_.location_;
-				ERR_CF << error.str() << '\n';
-				throw preproc_config::error(error.str());
+				std::string error="Unexpected #endif at";
+		        std::ostringstream location;
+				location<<linenum_<<' '<<target_.location_;
+				target_.error(error, location.str());
 			}
 			pop_token();
 		} else if (command == "textdomain") {
@@ -615,11 +639,10 @@ bool preprocessor_data::get_chunk()
 			target_.textdomain_ = s;
 			comment = true;
 		} else if (command == "enddef") {
-			std::ostringstream error;
-			error << "unexpected #enddef at "
-			      << linenum_ << ' ' << target_.location_;
-			ERR_CF << error.str() << '\n';
-			throw preproc_config::error(error.str());
+			std::string error="Unexpected #enddef at";
+			std::ostringstream location;
+			location<<linenum_<<' '<<target_.location_;
+			target_.error(error, location.str());
 		} else if (command == "undef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
@@ -667,13 +690,13 @@ bool preprocessor_data::get_chunk()
 				preproc_define const &val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				if (nb_arg != val.arguments.size()) {
-					std::ostringstream error;
+                    std::ostringstream error;
 					error << "preprocessor symbol '" << symbol << "' expects "
 					      << val.arguments.size() << " arguments, but has "
-					      << nb_arg << " arguments at " << linenum_
-					      << ' ' << target_.location_;
-					ERR_CF << error.str() << '\n';
-					throw preproc_config::error(error.str());
+					      << nb_arg << " arguments";
+			        std::ostringstream location;
+					location<<linenum_<<' '<<target_.location_;
+					target_.error(error.str(), location.str());
 				}
 
 				std::stringstream *buffer = new std::stringstream;
@@ -835,12 +858,13 @@ struct preprocessor_deleter: std::basic_istream<char>
 {
 	preprocessor_streambuf *buf_;
 	preproc_map *defines_;
+	std::string *error_log;
 	preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines);
 	~preprocessor_deleter();
 };
 
 preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines)
-	: std::basic_istream<char>(buf), buf_(buf), defines_(defines)
+	: std::basic_istream<char>(buf), buf_(buf), defines_(defines), error_log(buf->error_log)
 {
 }
 
@@ -853,7 +877,7 @@ preprocessor_deleter::~preprocessor_deleter()
 
 
 std::istream *preprocess_file(std::string const &fname,
-                              preproc_map *defines)
+                              preproc_map *defines, std::string *error_log)
 {
 	log_scope("preprocessing file...");
 	preproc_map *owned_defines = NULL;
@@ -865,8 +889,10 @@ std::istream *preprocess_file(std::string const &fname,
 		owned_defines = new preproc_map;
 		defines = owned_defines;
 	}
-	preprocessor_streambuf *buf = new preprocessor_streambuf(defines);
+	preprocessor_streambuf *buf = new preprocessor_streambuf(defines, error_log);
 	new preprocessor_file(*buf, fname);
+	if(error_log!=NULL&&error_log->empty()==false)
+		throw preproc_config::error("Error preprocessing files.");
 	return new preprocessor_deleter(buf, owned_defines);
 }
 

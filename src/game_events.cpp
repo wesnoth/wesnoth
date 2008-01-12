@@ -1820,6 +1820,15 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				option_events.push_back((*mi).get_children("command"));
             }
 		}
+		
+		const vconfig::child_list text_input_elements = cfg.get_children("text_input");
+		bool has_text_input=false;
+		if(text_input_elements.size()>1)
+			lg::wml_error << "too many text_input tags, only one accepted\n";
+		else if(text_input_elements.size()==1)
+			has_text_input=true;
+		
+		const vconfig text_input_element=text_input_elements.front();
 
 		surface surface(NULL);
 		if(image.empty() == false) {
@@ -1827,12 +1836,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 
 		int option_chosen = -1;
+		std::string text_input_result;
 
 		DBG_DP << "showing dialog...\n";
 
 		// If we're not replaying, or if we are replaying
-		// and there is no choice to be made, show the dialog.
-		if(get_replay_source().at_end() || options.empty()) {
+		// and there is no input to be made, show the dialog.
+		if(get_replay_source().at_end() || (options.empty() && !has_text_input) ) {
   
 			if (side_for_show)
 			{
@@ -1843,13 +1853,24 @@ bool event_handler::handle_event_command(const queued_event& event_info,
     
     			try {
     				wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
-    					msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));
+    					msg, ((options.empty()&& !has_text_input)? gui::MESSAGE : gui::OK_ONLY));
     				if(!surface.null()) {
     					to_show.set_image(surface, caption);
     				}
     				if(!options.empty()) {
     					to_show.set_menu(options);
-    				}
+    				} 
+					if(has_text_input) {
+						std::string text_input_label=text_input_element["label"];
+						std::string text_input_content=text_input_element["text"];
+						std::string max_size_str=text_input_element["max_length"];
+						int input_max_size=lexical_cast_default<int>(max_size_str, 256);
+						if(input_max_size>1024||input_max_size<1){
+						    lg::wml_error << "invalid maximum size for input "<<input_max_size<<"\n";
+						    input_max_size=256;
+                        }
+						to_show.set_textbox(text_input_label, text_input_content, input_max_size);
+					}
     				gui::dialog::dimension_measurements dim = to_show.layout();
     				to_show.get_menu().set_width( dim.menu_width );
     				to_show.get_menu().set_max_width( dim.menu_width );
@@ -1857,32 +1878,45 @@ bool event_handler::handle_event_command(const queued_event& event_info,
     				static const int dialog_top_offset = 26;
     				to_show.layout(-1, map_area.y + dialog_top_offset);
     				option_chosen = to_show.show(lifetime);
+					if(has_text_input) {
+						text_input_result=to_show.textbox_text();
+					}
     				LOG_DP << "showed dialog...\n";
     
-    				if (option_chosen == gui::ESCAPE_DIALOG){
+    				if (option_chosen == gui::ESCAPE_DIALOG) {
     					rval = false;
     				}
     
-    				if(options.empty() == false) {
+    				if(!options.empty()) {
     					recorder.choose_option(option_chosen);
     				}
+                    if(has_text_input) {
+						recorder.text_input(text_input_result);
+					}
     			} catch(utils::invalid_utf8_exception&) {
     				// we already had a warning so do nothing.
     			}
             }
 
-		// Otherwise if a choice has to be made, get it from the replay data
+		// Otherwise if an input has to be made, get it from the replay data
 		} else {
 			const config* action = get_replay_source().get_next_action();
 			if (action != NULL && !action->get_children("start").empty()){
 				action = get_replay_source().get_next_action();
 			}
-			if(action == NULL || action->get_children("choose").empty()) {
-				replay::throw_error("choice expected but none found\n");
+			if(!options.empty()) {
+				if(action == NULL || action->get_children("choose").empty()) {
+					replay::throw_error("choice expected but none found\n");
+				}
+				const std::string& val = (*(action->get_children("choose").front()))["value"];
+				option_chosen = atol(val.c_str());
 			}
-
-			const std::string& val = (*(action->get_children("choose").front()))["value"];
-			option_chosen = atol(val.c_str());
+            if(has_text_input) {
+				if(action == NULL || action->get_children("input").empty()) {
+					replay::throw_error("input expected but none found\n");
+				}
+				text_input_result = (*(action->get_children("input").front()))["text"];
+			}
 		}
 
 		// Implement the consequences of the choice
@@ -1902,6 +1936,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					mutated = false;
 				}
 			}
+		}
+		if(has_text_input) {
+			std::string variable_name=text_input_element["variable"];
+			if(variable_name.empty())
+				variable_name="input";
+			state_of_game->set_variable(variable_name, text_input_result);
 		}
 	}
 

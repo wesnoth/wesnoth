@@ -39,12 +39,19 @@ struct preproc_define
 	bool operator!=(preproc_define const &v) const { return !operator==(v); }
 };
 
+struct preproc_config {
+	struct error {
+		error(const std::string& msg) : message(msg) {}
+		std::string message;
+	};
+};
+
 typedef std::map< std::string, preproc_define > preproc_map;
 
 //! Function to use the WML preprocessor on a file, 
 //! and returns the resulting preprocessed file data. 
 //! defines is a map of symbols defined.
 std::istream *preprocess_file(std::string const &fname,
-                              preproc_map *defines = NULL);
+                              preproc_map *defines = NULL, std::string *error_log=NULL);
 
 #endif
