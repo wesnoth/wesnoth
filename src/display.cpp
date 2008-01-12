@@ -1570,6 +1570,25 @@ void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::loca
 	}
 }
 
+
+void display::scroll_to_tiles(const std::vector<gamemap::location> locs,
+                              SCROLL_TYPE scroll_type, bool check_fogged)
+{
+	gamemap::location min_loc,max_loc;
+	for(std::vector<gamemap::location>::const_iterator itor = locs.begin(); itor != locs.end() ; itor++) {
+		if(check_fogged && fogged(*itor)) continue;
+		if(!min_loc.valid()) min_loc = *itor;
+		if(!max_loc.valid()) max_loc = *itor;
+		min_loc.x = minimum<int>(min_loc.x,itor->x);
+		min_loc.y = minimum<int>(min_loc.y,itor->y);
+		max_loc.x = maximum<int>(max_loc.x,itor->x);
+		max_loc.y = maximum<int>(max_loc.y,itor->y);
+	}
+	//if everything is fogged
+	if(!min_loc.valid()) return;
+	scroll_to_tiles(min_loc,max_loc,scroll_type,check_fogged);
+}
+
 void display::bounds_check_position()
 {
 	const int orig_zoom = zoom_;

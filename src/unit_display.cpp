@@ -116,21 +116,7 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 
 	const unit_map& units = disp->get_units();
 
-	// find the index of first visible tile
-	while(begin < path.size() &&  teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
-			u.invisible(path[begin],units,teams)) {
-		begin++;
-	}
-	// find the last visible tile
-	end = begin;
-	while(end < path.size() &&  !(teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
-			u.invisible(path[end],units,teams))) {
-		end++;
-	}
-	if (begin != path.size()) { //found a visible tile
-		if(end == path.size()) end--;
-		disp->scroll_to_tiles(path[begin],path[end],game_display::ONSCREEN);
-	}
+	disp->scroll_to_tiles(path);
 
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
