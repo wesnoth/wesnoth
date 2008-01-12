@@ -87,9 +87,9 @@ AC_ARG_ENABLE([static],
 	      [static=no])
 
 AC_ARG_ENABLE([python],
-              AS_HELP_STRING([--disable-python], [disable Python support]),
+              AS_HELP_STRING([--enable-python], [enable Python support]),
 	      [python=$enableval],
-	      [python=yes])
+	      [python=no])
 
 AC_ARG_ENABLE([python_install],
               AS_HELP_STRING([--disable-python-install], [disable installation of Python developer tools]),
