@@ -42,6 +42,7 @@
 #include <set>
 #include <sstream>
 
+#define DBG_REPLAY LOG_STREAM(debug, replay)
 #define LOG_REPLAY LOG_STREAM(info, replay)
 #define WRN_REPLAY LOG_STREAM(warn, replay)
 #define ERR_REPLAY LOG_STREAM(err, replay)
@@ -571,6 +572,12 @@ void replay::start_replay()
 	pos_ = 0;
 }
 
+void replay::revert_action()
+{
+	if (pos_ > 0)
+		--pos_;
+}
+
 config* replay::get_next_action()
 {
 	if(pos_ >= commands().size())
@@ -697,27 +704,47 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 
 	const replay_source_manager replaymanager(obj);
 
-	replay& replayer = (obj != NULL) ? *obj : recorder;
+//	replay& replayer = (obj != NULL) ? *obj : recorder;
 
-	if (!replayer.is_skipping()){
+	if (!get_replay_source().is_skipping()){
 		disp.recalculate_minimap();
 	}
 
-	const set_random_generator generator_setter(&replayer);
+	const set_random_generator generator_setter(&get_replay_source());
 
-	update_locker lock_update(disp.video(),replayer.is_skipping());
+	update_locker lock_update(disp.video(),get_replay_source().is_skipping());
+	return do_replay_handle(disp, map, gameinfo,
+							units, teams, team_num, state, state_of_game,
+						   std::string(""));
+}
 
+bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& gameinfo,
+					  unit_map& units, std::vector<team>& teams, int team_num,
+					  const gamestatus& state, game_state& state_of_game, 
+					  const std::string& do_untill)
+{
 	//a list of units that have promoted from the last attack
 	std::deque<gamemap::location> advancing_units;
 
 	team& current_team = teams[team_num-1];
 
 	for(;;) {
-		config* const cfg = replayer.get_next_action();
+		config* const cfg = get_replay_source().get_next_action();
 		config* child;
+		
 
 		//do we need to recalculate shroud after this action is processed?
+		
 		bool fix_shroud = false;
+		if (cfg)
+		{
+			DBG_REPLAY << "Replay data:\n" << cfg->debug() << "\n";
+		}
+		else
+		{
+			DBG_REPLAY << "Repaly data in end\n";
+		}
+		
 
 		//if we are expecting promotions here
 		if(advancing_units.empty() == false) {
@@ -753,6 +780,14 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			return false;
 		}
 
+		// We return if caller wants it for this tag
+		if (!do_untill.empty() 
+			&& cfg->child(do_untill) != NULL)
+		{
+			get_replay_source().revert_action();
+			return false;
+		}
+
 		//if there is an empty command tag, create by pre_replay() or a start tag
 		else if ( (cfg->all_children().size() == 0) || (cfg->child("start") != NULL) ){
 			//do nothing
@@ -767,7 +802,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				const std::string& message = (*child)["message"];
 				//if (!preferences::show_lobby_join(speaker_name, message)) return;
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
-				if (!replayer.is_skipping() || is_whisper) {
+				if (!get_replay_source().is_skipping() || is_whisper) {
 					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
 					disp.add_chat_message(time(NULL), speaker_name, side, message,
 							(team_name == "" ? game_display::MESSAGE_PUBLIC
@@ -868,7 +903,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 
 			current_team.spend_gold(u_type->second.cost());
 			LOG_REPLAY << "-> " << (current_team.gold()) << "\n";
-			fix_shroud = !replayer.is_skipping();
+			fix_shroud = !get_replay_source().is_skipping();
 			check_checksums(disp,units,*cfg);
 }
 
@@ -894,7 +929,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			} else {
 				replay::throw_error("illegal recall\n");
 			}
-			fix_shroud = !replayer.is_skipping();
+			fix_shroud = !get_replay_source().is_skipping();
 			check_checksums(disp,units,*cfg);
 		}
 
@@ -976,12 +1011,12 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 
 			rt->second.steps.push_back(dst);
 
-			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(rt->second.steps,u->second,units,teams)) {
+			if(!get_replay_source().is_skipping() && unit_display::unit_visible_on_path(rt->second.steps,u->second,units,teams)) {
 
 				disp.scroll_to_tiles(src,dst);
 			}
 
-			if(!replayer.is_skipping()) {
+			if(!get_replay_source().is_skipping()) {
 				unit_display::move_unit(rt->second.steps,u->second,teams);
 			}
 			else{
@@ -1011,7 +1046,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				}
 			}
 
-			if(!replayer.is_skipping()) {
+			if(!get_replay_source().is_skipping()) {
 				disp.invalidate(dst);
 				disp.draw();
 			}
@@ -1027,7 +1062,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				}
 			}
 
-			fix_shroud = !replayer.is_skipping();
+			fix_shroud = !get_replay_source().is_skipping();
 			disp.unhighlight_reach();
 		}
 
@@ -1080,7 +1115,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				replay::throw_error("illegal defender weapon type in attack\n");
 			}
 
-			attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !replayer.is_skipping());
+			attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !get_replay_source().is_skipping());
 
 			u = units.find(src);
 			tgt = units.find(dst);
@@ -1098,7 +1133,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			if(advancing_units.empty()) {
 				check_victory(units, teams, disp);
 			}
-			fix_shroud = !replayer.is_skipping();
+			fix_shroud = !get_replay_source().is_skipping();
 		} else if((child = cfg->child("fire_event")) != NULL) {
 			for(config::child_list::const_iterator v = child->get_children("set_variable").begin(); v != child->get_children("set_variable").end(); ++v) {
 				state_of_game.set_variable((**v)["name"],(**v)["value"]);

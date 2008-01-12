@@ -63,6 +63,7 @@ Version 1.3.13+svn:
      recruitment
    * avoid triggering an assertion when a duplicated side definition exists
      (bug #7252)
+   * Fixed OOS if [message] menus cause advancement of a unit
    * the previous "max-saves" slider is now used as a slider to determin the
      maximum number of auto-saves to keep, default value is 10, so the 11th
      oldest and all older auto-saves will be deleted

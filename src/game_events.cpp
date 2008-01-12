@@ -1159,7 +1159,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			else {
 				const config* const action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("random_number").empty()) {
-					replay::throw_error("choice expected but none found\n");
+					replay::throw_error("random_number expected but none found\n");
 				}
 
 				const std::string& val = (*(action->get_children("random_number").front()))["value"];
@@ -1900,11 +1900,16 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		// Otherwise if an input has to be made, get it from the replay data
 		} else {
-			const config* action = get_replay_source().get_next_action();
-			if (action != NULL && !action->get_children("start").empty()){
-				action = get_replay_source().get_next_action();
-			}
+					//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
+			const t_string& side_str = state_of_game->get_variable("side_number");
+			const int side = lexical_cast_default<int>(side_str.base_str(), -1);
+			
+
+			
 			if(!options.empty()) {
+				do_replay_handle(*screen,*game_map,*game_data_ptr,*units,*teams,
+						   side ,*status_ptr,*state_of_game,std::string("choose"));
+				const config* action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("choose").empty()) {
 					replay::throw_error("choice expected but none found\n");
 				}
@@ -1912,6 +1917,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				option_chosen = atol(val.c_str());
 			}
             if(has_text_input) {
+				do_replay_handle(*screen,*game_map,*game_data_ptr,*units,*teams,
+						   side ,*status_ptr,*state_of_game,std::string("input"));
+				const config* action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("input").empty()) {
 					replay::throw_error("input expected but none found\n");
 				}

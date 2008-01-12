@@ -87,6 +87,7 @@ public:
 	void undo();
 
 	void start_replay();
+	void revert_action();
 	config* get_next_action();
 	void pre_replay();
 
@@ -148,6 +149,11 @@ extern replay recorder;
 bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo,
 	unit_map& units, std::vector<team>& teams, int team_num,
 	const gamestatus& state, game_state& state_of_game, replay* obj=NULL);
+
+bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& gameinfo,
+					  unit_map& units, std::vector<team>& teams, int team_num,
+	   const gamestatus& state, game_state& state_of_game, 
+	const std::string& do_untill);
 
 //an object which can be made to undo a recorded move
 //unless the transaction is confirmed

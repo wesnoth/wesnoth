@@ -133,7 +133,9 @@ void advance_unit(const game_data& info,
 	if(u != units.end()) {
 		// Level 10 unit gives 80 XP and the highest mainline is level 5
 		if(u->second.experience() < 81) {
-			advance_unit(info, map, units, loc, gui, random_choice, add_replay_event);
+			// For all leveling up we have to add advancement to replay here because replay
+			// doesn't handle multi advancemnet
+			advance_unit(info, map, units, loc, gui, random_choice, true);
 		} else {
 			LOG_STREAM(err, config) << "Unit has an too high amount of " << u->second.experience()
 				<< " XP left, cascade leveling disabled\n";
