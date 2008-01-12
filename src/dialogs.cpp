@@ -309,7 +309,7 @@ private:
 		filtered_items_.clear();
 		index_map_.clear();
 		const std::string t = utils::wstring_to_string(text);
-		for(int n = 0; n != items_.size(); ++n) {
+		for(size_t n = 0; n != items_.size(); ++n) {
 			if(n == 0 || std::search(items_[n].begin(), items_[n].end(),
 			                         t.begin(), t.end(), chars_equal_insensitive) != items_[n].end()) {
 				filtered_items_.push_back(items_[n]);
