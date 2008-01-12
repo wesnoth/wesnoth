@@ -518,6 +518,10 @@ void wait::generate_menu()
 			} catch(config::error&) {
 				//ignore
 			}
+		} else {
+			//! @todo we fall back to the side colour, but that's ugly rather
+			// make the colour mandatory in 1.5.
+			disp_color = lexical_cast_default<int>(sd["side"], 0) - 1;
 		}
 		str << COLUMN_SEPARATOR << get_colour_string(disp_color);
 		details.push_back(str.str());

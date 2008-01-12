@@ -1449,26 +1449,29 @@ void connect::load_game()
 		}
 
 		level_["savegame"] = "yes";
-		level_["map_data"] = state_.snapshot["map_data"];
-		level_["id"] = state_.snapshot["id"];
-		level_["name"] = state_.snapshot["name"];
+		// If we have a start of scenario MP campaign scenario the snapshot
+		// is empty the starting position contains the wanted info.
+		const config& start_data = !state_.snapshot.empty() ? state_.snapshot : state_.starting_pos;
+		level_["map_data"] = start_data["map_data"];
+		level_["id"] = start_data["id"];
+		level_["name"] = start_data["name"];
 		// Probably not needed.
-		level_["turn"] = state_.snapshot["turn_at"];
-		level_["turn_at"] = state_.snapshot["turn_at"];
-		level_["turns"] = state_.snapshot["turns"];
-		level_["mp_use_map_settings"] = state_.snapshot["mp_use_map_settings"];
-		level_["mp_village_gold"] = state_.snapshot["mp_village_gold"];
-		level_["mp_fog"] = state_.snapshot["mp_fog"];
-		level_["mp_shroud"] = state_.snapshot["mp_shroud"];
-		level_["mp_countdown"] = state_.snapshot["mp_countdown"];
-		level_["mp_countdown_init_time"] = state_.snapshot["mp_countdown_init_time"];
-		level_["mp_countdown_turn_bonus"] = state_.snapshot["mp_countdown_turn_bonus"];
-		level_["mp_countdown_action_bonus"] = state_.snapshot["mp_countdown_action_bonus"];
-		level_["experience_modifier"] = state_.snapshot["experience_modifier"];
-		level_["observer"] = state_.snapshot["observer"];
-		level_.add_child("snapshot") = state_.snapshot;
-		level_["random_seed"] = state_.snapshot["random_seed"];
-		level_["random_calls"] = state_.snapshot["random_calls"];
+		level_["turn"] = start_data["turn_at"];
+		level_["turn_at"] = start_data["turn_at"];
+		level_["turns"] = start_data["turns"];
+		level_["mp_use_map_settings"] = start_data["mp_use_map_settings"];
+		level_["mp_village_gold"] = start_data["mp_village_gold"];
+		level_["mp_fog"] = start_data["mp_fog"];
+		level_["mp_shroud"] = start_data["mp_shroud"];
+		level_["mp_countdown"] = start_data["mp_countdown"];
+		level_["mp_countdown_init_time"] = start_data["mp_countdown_init_time"];
+		level_["mp_countdown_turn_bonus"] = start_data["mp_countdown_turn_bonus"];
+		level_["mp_countdown_action_bonus"] = start_data["mp_countdown_action_bonus"];
+		level_["experience_modifier"] = start_data["experience_modifier"];
+		level_["observer"] = start_data["observer"];
+		level_.add_child("snapshot") = start_data;
+		level_["random_seed"] = start_data["random_seed"];
+		level_["random_calls"] = start_data["random_calls"];
 
 		// Adds the replay data, and the replay start, to the level, 
 		// so clients can receive it.
