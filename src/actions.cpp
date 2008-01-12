@@ -2145,10 +2145,13 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 	}
 
 	if(disp != NULL) {
+		// Show the final move animation step
+		disp->draw();
 		// Clear display helpers before firing events
 		disp->unhighlight_reach();
 		disp->set_route(NULL);
-		disp->draw();
+		// Do not show it yet to avoid flickering before the attack dialog
+		disp->draw(false);
 	}
 	if(game_events::fire("moveto",steps.back())) {
 		event_mutated = true;
@@ -2166,6 +2169,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 	}
 
 	if(disp != NULL) {
+		bool redraw = false;
 
 		// Show messages on the screen here
 		if(discovered_unit) {
@@ -2173,11 +2177,13 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 				ambushed_string = _("Ambushed!");
 			// We've been ambushed, display an appropriate message
 			disp->announce(ambushed_string, font::BAD_COLOUR);
+			redraw = true;
 		}
 
 		if(teleport_failed) {
 			std::string teleport_string = _ ("Failed teleport! Exit not empty");
 			disp->announce(teleport_string, font::BAD_COLOUR);
+			redraw = true;
 		}
 
 		if(continue_move == false && seen_units.empty() == false) {
@@ -2238,9 +2244,13 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 			}
 
 			disp->announce(message, msg_colour);
+			redraw = true;
 		}
 
-		disp->draw();
+		if (redraw) {
+			// Not sure why this would be needed. Maybe during replays?
+			disp->draw();
+		}
 		disp->recalculate_minimap();
 	}
 
