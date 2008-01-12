@@ -1046,7 +1046,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 				std::vector<std::pair<int,int> >::const_iterator range, range_end = ranges.end();
 				for (range = ranges.begin(); range != range_end; ++range) {
 					for (int i=range->first; i<=range->second; ++i) {
-						if (i > 0 && i <= teams_->size()) {
+						if (i > 0 && static_cast<size_t>(i) <= teams_->size()) {
 							viewers.insert(i);
 						}
 					}
@@ -1054,7 +1054,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			} else {
 				//if viewing_side is not defined, default to all enemies
 				const team& my_team = (*teams_)[this->side()-1];
-				for (int i = 1; i <= teams_->size(); ++i) {
+				for (size_t i = 1; i <= teams_->size(); ++i) {
 					if (my_team.is_enemy(i)) {
 						viewers.insert(i);
 					}
