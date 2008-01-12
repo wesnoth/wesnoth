@@ -87,14 +87,14 @@ AC_ARG_ENABLE([static],
 	      [static=no])
 
 AC_ARG_ENABLE([python],
-              AS_HELP_STRING([--enable-python], [enable Python support]),
+              AS_HELP_STRING([--disable-python], [disable Python support]),
 	      [python=$enableval],
-	      [python=no])
+	      [python=yes])
 
 AC_ARG_ENABLE([python_install],
-              AS_HELP_STRING([--disable-python-install], [disable installation of Python developer tools]),
+              AS_HELP_STRING([--enable-python-install], [enable installation of Python developer tools]),
 	      [python_install=$enableval],
-	      [python_install=yes])
+	      [python_install=no])
 
 AC_ARG_ENABLE([lite],
               AS_HELP_STRING([--enable-lite], [enable lite version of wesnoth (without music or large images)]),
