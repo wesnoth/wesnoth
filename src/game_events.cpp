@@ -1721,11 +1721,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			std::vector<std::string> side_for =
 				utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 			std::vector<std::string>::iterator itSide;
-			int side;
+			size_t side;
 			// Check if any of side numbers are human controlled
 			for (itSide = side_for.begin(); itSide != side_for.end(); ++itSide)
 			{
-				side = lexical_cast_default<int>(*itSide);
+				side = lexical_cast_default<size_t>(*itSide);
 				// Make sanity check that side number is good
 				// then check if this side is human controlled.
 				if (side > 0
