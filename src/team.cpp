@@ -297,6 +297,7 @@ void team::team_info::write(config& cfg) const
 	cfg["countdown_time"]= countdown_time;
 	cfg["action_bonus_count"]= str_cast(action_bonus_count);
 	cfg["village_gold"] = str_cast(income_per_village);
+	cfg["disallow_observers"] = disallow_observers ? "yes" : "no";
 
 	std::stringstream enemies_str;
 	for(std::vector<int>::const_iterator en = enemies.begin(); en != enemies.end(); ++en) {
