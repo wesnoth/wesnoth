@@ -108,17 +108,15 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 static void clean_saves(const std::string &label)
 {
 	std::vector<save_info> games = get_saves_list();
-	std::cerr << "Cleaning saves with prefix '" << label << "'\n";
+	std::string prefix = label + "-" + _("Auto-Save");
+	std::cerr << "Cleaning saves with prefix '" << prefix << "'\n";
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
-		if (i->name.compare(0,i->name.length(),label) == 0)
-			continue;	// Never delete scenario-start saves
-		if (i->name.compare(0,label.length(),label) == 0) {
+		if (i->name.compare(0, prefix.length(), prefix) == 0) {
 			std::cerr << "Deleting savegame '" << i->name << "'\n";
 			delete_game(i->name);
 		}
 	}
 }
-
 
 LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
@@ -403,18 +401,24 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// case defeat is also game end.  Someday, 
 		// if MP campaigns ever work again, we might
 		// need to change this test.
-		if(res == VICTORY || io_type != IO_NONE) {
+
+		// OBSERVER_END probably can be removed here if the observer disconnect
+		// bug (#10077) is fixed so that when the host ends the game observers
+		// again get asked if they want to save a replay of the game
+		if (res == VICTORY || io_type != IO_NONE && (res == DEFEAT || res == OBSERVER_END)) {
 			if (preferences::delete_saves())
 				clean_saves(gamestate.label);
 
-			std::string label = gamestate.label + _(" replay");
-			if(preferences::save_replays()) {
+			if (preferences::save_replays()) {
+				std::string label = gamestate.label + _(" replay");
+				if (dialogs::get_save_name(disp, "", _("Name: "), &label,
+					gui::OK_CANCEL, _("Save Replay"), false, false) == 0) {
 				try {
-					config snapshot;
-
-					recorder.save_game(label, snapshot, gamestate.starting_pos);
-				} catch(game::save_game_failed&) {
-					gui::show_error_message(disp, _("The replay could not be saved"));
+						config snapshot;
+						recorder.save_game(label, snapshot, gamestate.starting_pos);
+					} catch(game::save_game_failed&) {
+						gui::show_error_message(disp, _("The replay could not be saved"));
+					}
 				}
 			}
 		}

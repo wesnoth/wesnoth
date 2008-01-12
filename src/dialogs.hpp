@@ -54,7 +54,8 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 // returns 0 iff user wants to save the game
 int get_save_name(display & disp,const std::string& message, const std::string& txt_label,
 				  std::string* fname, gui::DIALOG_TYPE dialog_type=gui::YES_NO,
-				  const std::string& title="", const bool has_exit_button=false);
+				  const std::string& title="", const bool has_exit_button=false,
+				  const bool ask_for_filename=true);
 
 //allow user to select the game they want to load. Returns the name
 //of the save they want to load. Stores whether the user wants to show

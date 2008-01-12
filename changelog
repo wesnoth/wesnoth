@@ -71,6 +71,13 @@ Version 1.3.13+svn:
    * Rewrote the AI village assigning algorithm, instead of using brute force
      it now tries to optimize before resorting to brute force (bug #7215).
    * parser exceptions are now displayed visually (patch #914)
+   * always ask for permission before overwriting an already existing replay
+     file (bug #10689)
+   * don't automatically save a replay for every game an observer visits
+     if the option 'Save Replay on SP/MP Victory ..' is enabled (bug #10690)
+   * changed option 'Delete Saves on SP/MP Victory ..' to remove only
+     Auto-Saves to avoid the removal of manually saved files from unrelated
+     games
 
 Version 1.3.13:
  * campaigns:

@@ -223,41 +223,47 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 
 int get_save_name(display & disp,const std::string& message, const std::string& txt_label,
 				  std::string* fname, gui::DIALOG_TYPE dialog_type, const std::string& title,
-				  const bool has_exit_button)
+				  const bool has_exit_button, const bool ask_for_filename)
 {
 	static int quit_prompt = 0;
 	const std::string& tmp_title = (title.empty()) ? _("Save Game") : title;
 	bool ignore_opt = false;
 	int overwrite=0;
 	int res=0;
+	bool ask = ask_for_filename;
 	do {
-		gui::dialog d(disp, tmp_title, message, dialog_type);
-		d.set_textbox(txt_label, *fname);
-		if(has_exit_button) {
-			d.add_button( new gui::dialog_button(disp.video(), _("Quit Game"),
-				gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_STANDARD);
-			if(quit_prompt < 0) {
-				res = 1;
-			} else if(quit_prompt > 5) {
-				d.add_button( new gui::dialog_button(disp.video(), _("Ignore All"),
-					gui::button::TYPE_CHECK), gui::dialog::BUTTON_CHECKBOX);
-				res = d.show();
-				ignore_opt = d.option_checked();
+		if (ask) {
+			gui::dialog d(disp, tmp_title, message, dialog_type);
+			d.set_textbox(txt_label, *fname);
+			if(has_exit_button) {
+				d.add_button(new gui::dialog_button(disp.video(), _("Quit Game"),
+					gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_STANDARD);
+				if(quit_prompt < 0) {
+					res = 1;
+				} else if(quit_prompt > 5) {
+					d.add_button(new gui::dialog_button(disp.video(), _("Ignore All"),
+						gui::button::TYPE_CHECK), gui::dialog::BUTTON_CHECKBOX);
+					res = d.show();
+					ignore_opt = d.option_checked();
+				} else {
+					res = d.show();
+					if(res == 1) {
+						++quit_prompt;
+					} else {
+						quit_prompt = 0;
+					}
+				}
 			} else {
 				res = d.show();
-				if(res == 1) {
-					++quit_prompt;
-				} else {
-					quit_prompt = 0;
-				}
 			}
+			*fname = d.textbox_text();
 		} else {
-			res = d.show();
+			ask = true;
 		}
-		*fname = d.textbox_text();
+
 		if (res == 0 && save_game_exists(*fname)) {
 			overwrite = gui::dialog(disp,_("Overwrite?"),
-				_("Save already exists. Do you want to overwrite it ?"),gui::YES_NO).show();
+				_("Save already exists. Do you want to overwrite it?"), gui::YES_NO).show();
 		} else {
 			overwrite = 0;
 		}

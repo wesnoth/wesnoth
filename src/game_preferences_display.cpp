@@ -161,7 +161,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
 	  save_replays_button_(disp.video(), _("Save Replay on SP/MP Victory or MP Defeat"), gui::button::TYPE_CHECK),
-	  delete_saves_button_(disp.video(), _("Delete Saves on SP/MP Victory or MP Defeat"), gui::button::TYPE_CHECK),
+	  delete_saves_button_(disp.video(), _("Delete Auto-Saves on SP/MP Victory or MP Defeat"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button1_(disp.video(), _("Do Not Show Lobby Joins"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button2_(disp.video(), _("Show Lobby Joins Of Friends Only"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button3_(disp.video(), _("Show All Lobby Joins"), gui::button::TYPE_CHECK),
