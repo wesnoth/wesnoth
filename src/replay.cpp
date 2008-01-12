@@ -24,6 +24,7 @@
 #include "game_events.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
+#include "menu_events.hpp"
 #include "pathfind.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
@@ -726,6 +727,8 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 	//a list of units that have promoted from the last attack
 	std::deque<gamemap::location> advancing_units;
 
+	end_level_exception* delayed_exception = 0;
+
 	team& current_team = teams[team_num-1];
 
 	for(;;) {
@@ -777,6 +780,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 		//if there is nothing more in the records
 		if(cfg == NULL) {
 			//replayer.set_skip(false);
+			THROW_END_LEVEL_DELETE(delayed_exception);
 			return false;
 		}
 
@@ -785,6 +789,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			&& cfg->child(do_untill) != NULL)
 		{
 			get_replay_source().revert_action();
+			THROW_END_LEVEL_DELETE(delayed_exception);
 			return false;
 		}
 
@@ -853,6 +858,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 				verify_units(*child);
 			}
 
+			THROW_END_LEVEL_DELETE(delayed_exception);
 			return true;
 		}
 
@@ -1115,9 +1121,8 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 				replay::throw_error("illegal defender weapon type in attack\n");
 			}
 
-			//! FIXME: TODO make this handle end_level_exception
 
-			attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !get_replay_source().is_skipping());
+			DELAY_END_LEVEL(delayed_exception, attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !get_replay_source().is_skipping()));
 
 			u = units.find(src);
 			tgt = units.find(dst);

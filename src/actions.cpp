@@ -752,18 +752,9 @@ void attack::fire_event(const std::string& n)
 			std::pair<std::string,t_string> to_insert("weapon", d_weap);
 			tempcfg->values.insert(to_insert);
 		}
-		try {
-			game_events::fire(n, 
+		DELAY_END_LEVEL(delayed_exception, game_events::fire(n, 
 				game_events::entity_location(a_),
-				game_events::entity_location(d_), dat);
-		}
-		catch(end_level_exception &e)
-		{
-			if(delayed_exception == 0)
-			{
-				delayed_exception = new end_level_exception(e);
-			}
-		}
+				game_events::entity_location(d_), dat));
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
@@ -775,16 +766,8 @@ void attack::fire_event(const std::string& n)
 	dat.add_child("second");
 	(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
 	(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
-	try {
-		game_events::fire(n,attacker_,defender_,dat);
-	}
-	catch(end_level_exception &e)
-	{
-		if(delayed_exception == 0)
-		{
-			delayed_exception = new end_level_exception(e);
-		}
-	}
+	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,attacker_,defender_,dat));
+	
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist
 	a_ = units_.find(attacker_);
@@ -1070,16 +1053,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				std::string undead_variation = d_->second.undead_variation();
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
-				try {
-					game_events::fire("last breath", death_loc, attacker_loc);
-				}
-				catch(end_level_exception &e)
-				{
-					if(delayed_exception == 0)
-					{	
-						delayed_exception = new end_level_exception(e);
-					}
-				}
+				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, attacker_loc));
 
 				d_ = units_.find(death_loc);
 				a_ = units_.find(attacker_loc);
@@ -1104,16 +1078,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					unit_display::unit_die(d_->first, d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
 				}
 
-				try {
-					game_events::fire("die",death_loc,attacker_loc);
-				}
-				catch(end_level_exception &e)
-				{
-					if(delayed_exception == 0)
-					{
-						delayed_exception = new end_level_exception(e);
-					}
-				}
+				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,attacker_loc));
 
 				d_ = units_.find(death_loc);
 				a_ = units_.find(attacker_loc);
@@ -1185,16 +1150,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					d_->second.set_state("stoned","yes");
 					n_defends_ = 0;
 					n_attacks_ = 0;
-					try {
-						game_events::fire(stone_string,d_->first,a_->first);
-					}
-					catch(end_level_exception &e)
-					{
-						if(delayed_exception == 0)
-						{
-							delayed_exception = new end_level_exception(e);
-						}
-					}
+					DELAY_END_LEVEL(delayed_exception, game_events::fire(stone_string,d_->first,a_->first));
 
 				}
 			}
@@ -1349,16 +1305,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				game_events::entity_location defender_loc(d_);
 				const int attacker_side = a_->second.side();
 				fire_event("attack_end");
-				try {
-					game_events::fire("die",death_loc,defender_loc);
-				}
-				catch(end_level_exception &e)
-				{
-					if(delayed_exception == 0)
-					{
-						delayed_exception = new end_level_exception(e);
-					}
-				}
+				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc));
 
 				refresh_bc();
 
@@ -1424,7 +1371,8 @@ attack::attack(game_display& gui, const gamemap& map,
 					a_->second.set_state("stoned","yes");
 					n_defends_ = 0;
 					n_attacks_ = 0;
-					game_events::fire(stone_string,a_->first,d_->first);
+				
+					DELAY_END_LEVEL(delayed_exception, game_events::fire(stone_string,a_->first,d_->first));
 				}
 			}
 
@@ -1466,11 +1414,8 @@ attack::attack(game_display& gui, const gamemap& map,
 	if(OOS_error_) {
 		replay::throw_error(errbuf_.str());
 	}
-
-	if (delayed_exception != 0)
-	{
-		throw end_level_exception(*delayed_exception);
-	}
+	
+	THROW_END_LEVEL(delayed_exception);
 
 }
 
