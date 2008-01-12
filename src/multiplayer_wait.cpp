@@ -403,6 +403,7 @@ void wait::process_network_data(const config& data, const network::connection so
 		return;
 	} else if(data.child("scenario_diff")) {
 		LOG_NW << "received diff for scenario... applying...\n";
+		//! @todo We should catch config::error and then leave the game.
 		level_.apply_diff(*data.child("scenario_diff"));
 		generate_menu();
 	} else if(data.child("side")) {

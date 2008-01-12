@@ -285,6 +285,9 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 		//Catch this error here so mp players quitting unexpectedly are not thrown back
 		//to the title screen
 		result = e.result;
+	// Thrown when receiving [leave_game].
+	} catch(network::error& e) {
+		result = QUIT;
 	}
 
 	// revert the end-turn button text to its normal label
