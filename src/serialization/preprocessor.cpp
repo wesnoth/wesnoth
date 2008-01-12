@@ -95,10 +95,10 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def, std::string *er
 	default_defines_(),
 	textdomain_(PACKAGE), 
 	location_(""), 
+	error_log(err_log),
 	linenum_(0), 
 	depth_(0),
 	buffer_size_(0),
-	error_log(err_log),
 	quoted_(false)
 {
 }
@@ -112,10 +112,10 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t) 
 	default_defines_(),
 	textdomain_(PACKAGE),
 	location_(""),
+	error_log(t.error_log),
 	linenum_(0),
 	depth_(t.depth_),
 	buffer_size_(0), 
-	error_log(t.error_log),
 	quoted_(t.quoted_)
 {
 }
