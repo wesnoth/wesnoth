@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-01-06 17:51+0100\n"
+"POT-Creation-Date: 2008-01-13 14:48+0100\n"
 "PO-Revision-Date: 2006-08-31 21:52+0900\n"
 "Last-Translator: Takanobu Hirai <airhead@users.sourceforge.jp>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -6578,13 +6578,14 @@ msgstr "これは Haldric 一世と Wesnoth の起源にまつわる物語であ
 # # →効果なし。サポートしてない？ 別系統のRE？
 # # msgid "You retrieve (\d+) pieces of gold."
 # # →mo変換できず。
-#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:19
-msgid "You retrieve {AMOUNT} pieces of gold."
+#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:21
+#, fuzzy
+msgid "You retrieve $amount_gold pieces of gold."
 msgstr "君は {AMOUNT} ゴールドを得た。"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:103
-#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:118
-#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:133
+#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:107
+#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:122
+#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:137
 msgid "A Former Friend"
 msgstr "かつての戦友"
 
