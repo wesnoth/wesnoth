@@ -624,6 +624,8 @@ void playsingle_controller::linger(upload_log& log)
 		// *not* the same as multiplayer human turn.
 		gui_->enable_menu("endturn", true);
 		while(!end_turn_) {
+			// Reset the team number to make sure we're the right team.
+			player_number_ = first_player_;
 			play_slice();
 
 			gui_->draw();
