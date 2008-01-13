@@ -107,8 +107,6 @@ bool unit_visible_on_path( const std::vector<gamemap::location>& path, const uni
 void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams)
 {
 	game_display* disp = game_display::get_singleton();
-	int begin =0;
-	int end = 0;
 	assert(!path.empty());
 	assert(disp);
 	// One hex path (strange), nothing to do
