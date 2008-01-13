@@ -30,9 +30,9 @@
 my $html_gen = 1;
 # This option will determine if the html files translations are generated, and it will create the folders
 #   based on the contents of the po folder of Wesnoth
-my $translate = 0;
+my $translate = 1;
 # If translating, this option will try to use the source code instead of the compiled files
-my $source = 0;
+my $source = 1;
 # If translating, and not from the source, remove the comment on the following line
 #use Locale::Maketext::Gettext;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
@@ -40,9 +40,9 @@ my $images = 1;
 # This option will determine if the html report on made animations is generated
 my $animations = 1;
 # This is the version number that will appear on the unit trees
-my $version = '1.3.13';
+my $version = '1.3.13+svn';
 # These option will try to process the user made Eras
-my $ime = 1; # Imperial Era
+my $ime = 0; # Imperial Era
 my $exe = 0; # Extended Era
 my $eom = 0; # Era of Myths
 # If the script is run on Windows, set this option to 1
@@ -121,7 +121,7 @@ if ($exe) {
 	$link_back = '../';
 	$wesnoth_dir = $base_dir . '/userdata/data/campaigns/Extended_Era';
 	$data_dir = $wesnoth_dir;
-	$units_dir = $data_dir . "/units/standard";
+	$units_dir = $data_dir . "/units";
 	$html_dir = "$html_dir/EXE";
 	$report_dir = "$html_dir/data";
 	unless (-e $html_dir) {mkdir $html_dir or die "$html_dir directory cannot be created: $!\n";};
@@ -247,7 +247,7 @@ sub ProduceDataFiles {
 	# For units stored in folders
     my @camps = glob("$units_dir/*");
     foreach (@camps) {
-		unless (/(fake|cfg)$/) {
+		unless (/(fake|cfg|rpg)$/) {
 		($camp = $_) =~ s/(.*)\///;
 		@units = glob($_ . '/*.cfg');
 		&ProcessUnit ($_) foreach @units;
@@ -614,10 +614,12 @@ sub CopyImages {
 	}
 	close UNITS;
 	# zombie units
-	my @zombies = qw/drake mounted saurian swimmer troll wose/;
-	foreach $zombie (@zombies) {
-		system ("$colorizer $data_dir/images/units/undead/zombie-$zombie.png $html_dir/units/undead/zombie-$zombie.png");
-		system ("$colorizer $data_dir/images/units/undead/soulless-$zombie.png $html_dir/units/undead/soulless-$zombie.png");
+	if ($data_dir =~ /core/) {
+		my @zombies = qw/drake mounted saurian swimmer troll wose/;
+		foreach $zombie (@zombies) {
+			system ("$colorizer $data_dir/images/units/undead/zombie-$zombie.png $html_dir/units/undead/zombie-$zombie.png");
+			system ("$colorizer $data_dir/images/units/undead/soulless-$zombie.png $html_dir/units/undead/soulless-$zombie.png");
+		}
 	}
 }
 
