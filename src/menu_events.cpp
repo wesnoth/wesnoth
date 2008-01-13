@@ -208,6 +208,7 @@ team_num_(team), unit_count_(5,0)
 		std::stringstream str;
         str << font::BOLD_TEXT << _("Damage")
 		    << COLUMN_SEPARATOR << _("Over All") << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR
 		    << COLUMN_SEPARATOR << _("This Turn");
 		items.push_back(str.str());
 	}
@@ -225,6 +226,7 @@ team_num_(team), unit_count_(5,0)
 		    << ((stats_.expected_damage_inflicted == 0) ? 0
 		        : 100 * dsa / stats_.expected_damage_inflicted)
 		    << "%" << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR
 		    << stats_.turn_damage_inflicted << " / "
 		    << (stats_.turn_expected_damage_inflicted / 100.0)
 		    << COLUMN_SEPARATOR
@@ -248,6 +250,7 @@ team_num_(team), unit_count_(5,0)
 		    << ((stats_.expected_damage_taken == 0) ? 0
 		        : 100 * dsa / stats_.expected_damage_taken)
 		    << "%" << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR
 		    << stats_.turn_damage_taken << " / "
 		    << (stats_.turn_expected_damage_taken / 100.0)
 		    << COLUMN_SEPARATOR
