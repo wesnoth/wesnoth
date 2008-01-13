@@ -89,7 +89,7 @@ fi
 AC_ARG_ENABLE([tests],
        	      AS_HELP_STRING([--enable-tests], [build unit tests]),
 	      [tests=$enableval],
-	      [tests=$test_build])
+	      [tests=no])
 
 AC_ARG_ENABLE([static],
               AS_HELP_STRING([--enable-static], [enable static building of wesnoth]),
