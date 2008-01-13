@@ -337,10 +337,10 @@ void gamemap::read(const std::string& data)
 	// The header shouldn't contain commas, so if the comma is found 
 	// before the header, we hit a \n\n inside or after a map. 
 	// This is no header, so don't parse it as it would be.
-	VALIDATE(
+/*	VALIDATE(
 		!(header_offset == std::string::npos || comma_offset < header_offset), 
 		_("A map without a header is not supported"));
-
+*/
 	std::string header_str(std::string(data, 0, header_offset + 1));
 	config header;
 	::read(header, header_str);

@@ -1101,7 +1101,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		std::string id = "weaponspecial_" + s->first;
 		std::stringstream text;
 		text << s->second;  //description
-		text << "\n\n" << _("Units having this special attack:") << "\n";
+		text << "\n\n" << _("<header>text='Units having this special attack:'</header>") << "\n";
 		std::set<std::string>& units = special_units[s->first];
 		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
 			text << (*u) << "\n";
@@ -1169,7 +1169,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		std::string id = "ability_" + a->first;
 		std::stringstream text;
 		text << a->second;  //description
-		text << "\n\n" << _("Units having this ability:") << "\n";
+		text << "\n\n" << _("<header>text='Units having this ability:'</header>") << "\n";
 		std::set<std::string>& units = ability_units[a->first];
 		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
 			text << (*u) << "\n";
@@ -1603,7 +1603,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 	std::stringstream text;
 	text << race_description;
-	text << "\n\n" << _("Units of this race:") << "\n";
+	text << "\n\n" << _("<header>text='Units of this race:'</header>") << "\n";
 	for (std::set<std::string>::iterator u = race_units.begin(); u != race_units.end();u++) {
 		text << (*u) << "\n";
 	}
