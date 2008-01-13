@@ -1603,7 +1603,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 	std::stringstream text;
 	text << race_description;
-	text << "\n\n" << _("<header>text='Units of this race:'</header>") << "\n";
+	text << "\n\n" << _("<header>text='Units of this race'</header>") << "\n";
 	for (std::set<std::string>::iterator u = race_units.begin(); u != race_units.end();u++) {
 		text << (*u) << "\n";
 	}
