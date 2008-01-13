@@ -2165,9 +2165,12 @@ private:
 			// :control <side> <nick>
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			if(j == data.end())
+			{
+
 				add_chat_message(time(NULL), _("error"), 0,
 						_("Usage: control <side> <nick>"));
 				return;
+			}
 			const std::string side(data.begin(),j);
 			const std::string player(j+1,data.end());
 			unsigned int side_num;
@@ -2188,10 +2191,20 @@ private:
 						symbols));
 				return;
 			}
+				utils::string_map symbols;
+				symbols["side"] = side;
+				symbols["player"] = player;
+				add_chat_message(time(NULL), _("error"), 0,vgettext("side: '$side' player: '$player'",
+							symbols));
 			//if this is our side we are always allowed to change the controller
 			if(teams_[side_num - 1].is_human()){
 				if (player == preferences::login())
 					return;
+				utils::string_map symbols;
+				symbols["side"] = side;
+				symbols["player"] = player;
+				add_chat_message(time(NULL), _("error"), 0,vgettext("2 side: '$side' player: '$player'",
+							symbols));
 				change_side_controller(side,player,true);
 				teams_[side_num - 1].make_network();
 				textbox_info_.close(*gui_);
@@ -2202,6 +2215,11 @@ private:
 					throw end_turn_exception(side_num);
 				}
 			} else {
+				utils::string_map symbols;
+				symbols["side"] = side;
+				symbols["player"] = player;
+				add_chat_message(time(NULL), _("error"), 0,vgettext("3 side: '$side' player: '$player'",
+							symbols));
 				//it is not our side, the server will decide if we can change the
 				//controller (that is if we are host of the game)
 				change_side_controller(side,player);
