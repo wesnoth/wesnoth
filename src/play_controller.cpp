@@ -543,7 +543,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 
 	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
 	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
-		return enemies_visible();
+		return !linger_ && enemies_visible();
 
 	case hotkey::HOTKEY_LOAD_GAME:
 		return network::nconnections() == 0; // Can only load games if not in a network game
@@ -552,9 +552,9 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
-		return !browse_ && !redo_stack_.empty() && !events::commands_disabled;
+		return !linger_ && !redo_stack_.empty() && !events::commands_disabled;
 	case hotkey::HOTKEY_UNDO:
-		return !browse_ && !undo_stack_.empty() && !events::commands_disabled;
+		return !linger_ && !undo_stack_.empty() && !events::commands_disabled;
 
 	case hotkey::HOTKEY_UNIT_DESCRIPTION:
 		return menu_handler_.current_unit(mouse_handler_) != units_.end();

@@ -709,13 +709,14 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_RECRUIT:
 		case hotkey::HOTKEY_REPEAT_RECRUIT:
 		case hotkey::HOTKEY_RECALL:
+			return !browse_ && !linger_ && !events::commands_disabled;
 		case hotkey::HOTKEY_ENDTURN:
 			return (!browse_ || linger_) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
-			return !browse_ && (current_team().uses_fog() || current_team().uses_shroud());
+			return !linger_ && (current_team().uses_fog() || current_team().uses_shroud());
 		case hotkey::HOTKEY_UPDATE_SHROUD:
-			return !browse_ && !events::commands_disabled && current_team().auto_shroud_updates() == false;
+			return !linger_ && !events::commands_disabled && current_team().auto_shroud_updates() == false;
 
 		// Commands we can only do if in debug mode
 		case hotkey::HOTKEY_CREATE_UNIT:
