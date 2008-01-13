@@ -1102,11 +1102,6 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 
 	unit_map::iterator clicked_u = find_unit(hex);
 
-	//if we can move to that tile
-	std::map<gamemap::location,paths::route>::const_iterator
-			route = enemy_paths_ ? current_paths_.routes.end() :
-	                               current_paths_.routes.find(hex);
-
 	const gamemap::location src = selected_hex_;
 	paths orig_paths = current_paths_;
 	const gamemap::location& attack_from = current_unit_attacks_from(hex);
