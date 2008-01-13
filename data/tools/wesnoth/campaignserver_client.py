@@ -3,7 +3,7 @@ import wesnoth.wmldata as wmldata
 
 class CampaignClient:
     # First port listed will be used as default.
-    portmap = (("15003", "1.3.x"), ("15004", "1.2.x"))
+    portmap = (("15003", "1.3.x"), ("15004", "1.2.x"), ("15005", "1.4.x"))
 
     def __init__(self, address = None):
         """

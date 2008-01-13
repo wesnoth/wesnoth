@@ -49,7 +49,7 @@ if __name__ == "__main__":
     """Download an addon from the server.
 
     server              The url of the addon server eg 
-                        campaigns.wesnoth.org:15003.
+                        campaigns.wesnoth.org:15005.
     addon               The name of the addon.
     path                Directory to unpack the campaign in.
     returns             Nothing.
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     """Get a list of addons on the server.
 
     server              The url of the addon server eg 
-                        campaigns.wesnoth.org:15003.
+                        campaigns.wesnoth.org:15005.
     translatable_only   If True only returns translatable addons.
     returns             A dictonary with the addon as key and the translatable
                         status as value.
@@ -98,7 +98,7 @@ if __name__ == "__main__":
     """Get the timestamp of a campaign on the server.
 
     server              The url of the addon server eg 
-                        campaigns.wesnoth.org:15003.
+                        campaigns.wesnoth.org:15005.
     addon               The name of the addon.
     returns             The timestamp of the campaign, -1 if not on the server.
     """
@@ -124,7 +124,7 @@ if __name__ == "__main__":
     """Upload a addon from the server to wescamp.
     
     server              The url of the addon server eg 
-                        campaigns.wesnoth.org:15003.
+                        campaigns.wesnoth.org:15005.
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
     svn_dir             The directory containing a checkout of wescamp.
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     """Update the translations from wescamp to the server.
     
     server              The url of the addon server eg 
-                        campaigns.wesnoth.org:15003.
+                        campaigns.wesnoth.org:15005.
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
     svn_dir             The directory containing a checkout of wescamp.

@@ -121,7 +121,7 @@ namespace {
 	{
 		scoped_istream stream = istream_file(file_);
 		read(cfg_, *stream);
-		return lexical_cast_default<int>(cfg_["port"], 15003);
+		return lexical_cast_default<int>(cfg_["port"], 15005);
 	}
 
 	campaign_server::campaign_server(const std::string& cfgfile,size_t min_thread,size_t max_thread)
