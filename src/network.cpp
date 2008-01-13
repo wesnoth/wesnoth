@@ -156,7 +156,7 @@ static void check_timeout()
 			<< "' Time since last ping: " << now - last_ping << "s\n";
 	// Reset last_ping if we didn't check for the last 10s.
 	if (last_ping_check + 10 <= now) last_ping = now;
-	if (last_ping + network::ping_timeout <= now) {
+	if (static_cast<time_t>(last_ping + network::ping_timeout) <= now) {
 		int timeout = now - last_ping;
 		ERR_NW << "No server ping since " << timeout
 				<< " seconds. Connection timed out.\n";
