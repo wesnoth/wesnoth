@@ -899,6 +899,12 @@ LIBS="$BOOST_IOSTREAMS_LIBS $LIBS"
 if test "x$tests" = "xyes"; then
 		
 	BOOST_TEST
+	# workaround for broken 1.33.1 debian packet
+	if test x"$BOOST_UNIT_TEST_FRAMEWORK_LIBS" = x; then
+		BOOST_UNIT_TEST_FRAMEWORK_LIBS="-lboost_unit_test_framework"
+#		BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS="-L/usr/lib -R/usr/lib"
+	fi
+
 	LDFLAGS="$BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS $LDFLAGS"
 	LIBS="$BOOST_UNIT_TEST_FRAMEWORK_LIBS $LIBS"
 
@@ -927,6 +933,8 @@ if test "x$tests" = "xyes"; then
 	[boost_test_dyn_link=no])
 
 	AC_MSG_CHECKING([for boost auto test not in core])
+
+	m4_pattern_allow([^BOOST_AUTO_TEST_CASE$])
 
 	AC_LINK_IFELSE([AC_LANG_SOURCE([
 	#define BOOST_AUTO_TEST_MAIN

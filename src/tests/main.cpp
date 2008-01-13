@@ -11,9 +11,11 @@
 
    See the COPYING file for more details.
 */
-#ifdef BOOST_AUTO_TEST_MAIN
+#ifdef WESNOTH_BOOST_AUTO_TEST_MAIN
+	#define BOOST_AUTO_TEST_MAIN
 	#include <boost/test/auto_unit_test.hpp>
 #else
+	#define BOOST_TEST_MAIN
 	#include <boost/test/unit_test.hpp>
 #endif
 
