@@ -92,7 +92,7 @@ config* get_prefs(){
 
 bool fullscreen()
 {
-	return utils::string_bool(get("fullscreen"), true);
+	return utils::string_bool(get("fullscreen"), false);
 }
 
 void _set_fullscreen(bool ison)
