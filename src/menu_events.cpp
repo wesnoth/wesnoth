@@ -315,11 +315,6 @@ namespace events{
 		}
 	}
 
-	static bool is_illegal_file_char(char c)
-	{
-		return c == '/' || c == '\\' || c == ':';
-	}
-
 	menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const game_data& gameinfo, const gamemap& map,
 		const config& game_config, const gamestatus& status, game_state& gamestate,
@@ -726,28 +721,13 @@ private:
 			label = message;
 		}
 
-		label.erase(std::remove_if(label.begin(),label.end(),is_illegal_file_char),label.end());
+		label.erase(std::remove_if(label.begin(), label.end(),
+		            dialogs::is_illegal_file_char), label.end());
 
-		const int res = dialog_type == gui::NULL_DIALOG ? 0 : dialogs::get_save_name(*gui_,message,_("Name:"),&label,dialog_type, "", has_exit_button);
+		const int res = dialog_type == gui::NULL_DIALOG ? 0
+			: dialogs::get_save_name(*gui_,message, _("Name: "), &label,dialog_type, "", has_exit_button);
 
 		if(res == 0) {
-
-			if(std::count_if(label.begin(),label.end(),is_illegal_file_char)) {
-				gui::message_dialog(*gui_, _("Error"), 
-					_("Save names may not contain colons, slashes, or backslashes. "
-					"Please choose a different name.")).show();
-				save_game(message,dialog_type);
-				return;
-			}
-
-			if(is_gzip_file(label)) {
-				gui::message_dialog(*gui_, _("Error"), 
-					_("Save names should not end on '.gz'. "
-					"Please choose a different name.")).show();
-				save_game(message,dialog_type);
-				return;
-			}
-
 			config snapshot;
 			if (!replay)
 				write_game_snapshot(snapshot);

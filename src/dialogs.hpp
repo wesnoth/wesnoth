@@ -50,8 +50,11 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 
 void show_objectives(game_display& disp, const config& level, const std::string& objectives);
 
+// check if a character is valid for a filename
+bool is_illegal_file_char(char c);
+
 // Ask user if I should really save the game and what name I should use
-// returns 0 iff user wants to save the game
+// returns 0 if user wants to save the game
 int get_save_name(display & disp,const std::string& message, const std::string& txt_label,
 				  std::string* fname, gui::DIALOG_TYPE dialog_type=gui::YES_NO,
 				  const std::string& title="", const bool has_exit_button=false,

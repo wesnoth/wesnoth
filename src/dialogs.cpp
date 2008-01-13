@@ -221,6 +221,11 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 	                ).show();
 }
 
+bool is_illegal_file_char(char c)
+{
+	return c == '/' || c == '\\' || c == ':';
+}
+
 int get_save_name(display & disp,const std::string& message, const std::string& txt_label,
 				  std::string* fname, gui::DIALOG_TYPE dialog_type, const std::string& title,
 				  const bool has_exit_button, const bool ask_for_filename)
@@ -261,13 +266,30 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 			ask = true;
 		}
 
+		if (std::count_if(fname->begin(),fname->end(),is_illegal_file_char)) {
+			gui::message_dialog(disp, _("Error"), 
+				_("Save names may not contain colons, slashes, or backslashes. "
+				"Please choose a different name.")).show();
+			overwrite = 1;
+			continue;
+		}
+
+		if (is_gzip_file(*fname)) {
+			gui::message_dialog(disp, _("Error"), 
+				_("Save names should not end on '.gz'. "
+				"Please choose a different name.")).show();
+			overwrite = 1;
+			continue;
+		}
+
 		if (res == 0 && save_game_exists(*fname)) {
 			overwrite = gui::dialog(disp,_("Overwrite?"),
 				_("Save already exists. Do you want to overwrite it?"), gui::YES_NO).show();
 		} else {
 			overwrite = 0;
 		}
-	} while ((res==0)&&(overwrite!=0));
+	} while ((res == 0) && (overwrite != 0));
+
 	if(ignore_opt) {
 		quit_prompt = -1;
 	}
