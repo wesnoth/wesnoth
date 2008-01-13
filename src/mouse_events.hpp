@@ -49,7 +49,6 @@ public:
 
 	int get_path_turns() const { return path_turns_; }
 	paths get_current_paths() { return current_paths_; }
-	paths::route get_current_route() const { return current_route_; }
 	const gamemap::location& get_last_hex() const { return last_hex_; }
 	gamemap::location get_selected_hex() const { return selected_hex_; }
 	const bool get_undo() const { return undo_; }
