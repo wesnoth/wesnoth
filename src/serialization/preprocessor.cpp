@@ -838,9 +838,12 @@ bool preprocessor_data::get_chunk()
 						delete buf;
 						strings_.back() += res.str();
 					}
+				} else {
+					ERR_CF << "Illegal path '" << nfname
+						<< "' found (../ not allowed).\n";
 				}
 			} else {
-				ERR_CF << "too much nested preprocessing inclusions at "
+				ERR_CF << "Too much nested preprocessing inclusions at "
 				       << linenum_ << ' ' << target_.location_
 				       << ". Aborting.\n";
 				pop_token();
