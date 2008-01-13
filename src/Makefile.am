@@ -44,11 +44,7 @@ pkgdatadir=$(datadir)/@DATADIR@
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(FREETYPE_LIBS) $(LIBINTL)
 
-#############################################################################
-#    Wesnoth                                                                #
-#############################################################################
-
-wesnoth_SOURCES = \
+wesnoth_source = \
 	about.cpp \
 	actions.cpp \
 	ai.cpp \
@@ -62,7 +58,6 @@ wesnoth_SOURCES = \
 	config_adapter.cpp \
 	dialogs.cpp \
 	floating_textbox.cpp \
-	game.cpp \
 	game_display.cpp \
 	game_events.cpp \
 	game_preferences.cpp \
@@ -112,6 +107,14 @@ wesnoth_SOURCES = \
 	widgets/combo.cpp \
 	widgets/scrollpane.cpp 
 
+#############################################################################
+#    Wesnoth                                                                #
+#############################################################################
+
+wesnoth_SOURCES = \
+	$(wesnoth_source) \
+	game.cpp 
+	
 wesnoth_LDADD = $(THELIBS) libwesnoth.a
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
@@ -199,11 +202,12 @@ cutter_DEPENDENCIES=libwesnoth-core.a
 #############################################################################
 
 test_SOURCES = \
+	$(wesnoth_source) \
 	tests/main.cpp \
 	tests/test_util.cpp
 
-test_LDADD = -L. -lwesnoth-core -lboost_unit_test_framework @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS) 
-test_DEPENDENCIES=libwesnoth-core.a
+test_LDADD = -lboost_unit_test_framework $(THELIBS) libwesnoth.a 
+test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
 #    Headers
@@ -470,6 +474,16 @@ if GCC
 endif
 if PREFSDIR
     CXXFLAGS += -DPREFERENCES_DIR=\"$(prefsdir)\"
+endif
+
+if BOOST_TEST_DYN_LINK
+    CXXFLAGS += -DBOOST_TEST_DYN_LINK
+endif
+
+if BOOST_AUTO_TEST
+    CXXFLAGS += -DBOOST_AUTO_TEST_MAIN
+else
+    CXXFLAGS += -DBOOST_TEST_MAIN
 endif
 
 CXXLD = $(LDPREFIX) $(CXX)

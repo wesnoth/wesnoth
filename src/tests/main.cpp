@@ -11,8 +11,11 @@
 
    See the COPYING file for more details.
 */
-#define BOOST_AUTO_TEST_MAIN
-#include <boost/test/auto_unit_test.hpp>
+#ifdef BOOST_AUTO_TEST_MAIN
+	#include <boost/test/auto_unit_test.hpp>
+#else
+	#include <boost/test/unit_test.hpp>
+#endif
 
 /*
  * This is a main compilation unit for the test program.

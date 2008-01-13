@@ -76,10 +76,20 @@ else
 	CXXFLAGS="-O2 -W -Wall -ansi $CXXFLAGS"
 fi
 
+
+# Make tests default in svn version
+svn_in_version=`expr match "$WESNOTH_VERSION" '.*svn'`
+test_build=yes
+if test $svn_in_version == 0 
+then
+	#disabling building tests for release version
+	test_build=no
+fi
+
 AC_ARG_ENABLE([tests],
-              AS_HELP_STRING([--enable-tests], [build unit tests]),
+       	      AS_HELP_STRING([--enable-tests], [build unit tests]),
 	      [tests=$enableval],
-	      [tests=no])
+	      [tests=$test_build])
 
 AC_ARG_ENABLE([static],
               AS_HELP_STRING([--enable-static], [enable static building of wesnoth]),
@@ -885,13 +895,61 @@ CPPFLAGS="$BOOST_CPPFLAGS $CPPFLAGS"
 LDFLAGS="$BOOST_IOSTREAMS_LDFLAGS $LDFLAGS"
 LIBS="$BOOST_IOSTREAMS_LIBS $LIBS"
 
-if test "x$tests" = "xyes"; then
 
+if test "x$tests" = "xyes"; then
+		
 	BOOST_TEST
 	LDFLAGS="$BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS $LDFLAGS"
 	LIBS="$BOOST_UNIT_TEST_FRAMEWORK_LIBS $LIBS"
 
+	AC_LANG([C++])
+	AC_MSG_CHECKING([for dynamic linked boost test])
+
+        OLD_CPPFLAGS=$CPPFLAGS
+	OLD_CFLAGS=$CFLAGS
+        OLD_LIBS=$LIBS
+
+
+	CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
+        CFLAGS="$CFLAGS $BOOST_CPPFLAGS"
+	LIBS="$LIBS $BOOST_UNIT_TEST_FRAMEWORK_LIBS"
+
+	ac_link="$LDPREFIX $ac_link"
+        AC_LINK_IFELSE([AC_LANG_SOURCE([
+	#define BOOST_TEST_DYN_LINK
+	#define BOOST_TEST_MAIN
+        #include <boost/test/unit_test.hpp>
+
+	])],
+	[AC_MSG_RESULT(yes)]
+	[boost_test_dyn_link=yes],
+	[AC_MSG_RESULT(no)]
+	[boost_test_dyn_link=no])
+
+	AC_MSG_CHECKING([for boost auto test not in core])
+
+	AC_LINK_IFELSE([AC_LANG_SOURCE([
+	#define BOOST_AUTO_TEST_MAIN
+        #include <boost/test/auto_unit_test.hpp>
+
+	])],
+	[AC_MSG_RESULT(yes)]
+	[boost_auto_test=yes],
+	[AC_MSG_RESULT(no)]
+	[boost_auto_test=no])
+
+
+        CPPFLAGS=$OLD_CPPFLAGS
+        CFLAGS=$OLD_CFLAGS
+        LIBS=$OLD_LIBS
+
 fi
+
+m4_pattern_allow([^BOOST_TEST_DYN_LINK$])
+m4_pattern_allow([^BOOST_AUTO_TEST$])
+	
+AM_CONDITIONAL([BOOST_TEST_DYN_LINK], [test x"$boost_test_dyn_link" = xyes])
+AM_CONDITIONAL([BOOST_AUTO_TEST], [test x"$boost_auto_test" = xyes])
 
 #######################################################################
 # Tune gettext stuff for our needs                                    #
