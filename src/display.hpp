@@ -304,7 +304,7 @@ public:
 	//! but this is not guaranteed.
 	void scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
-	void scroll_to_tiles(const std::vector<gamemap::location> locs,
+	void scroll_to_tiles(const std::vector<gamemap::location>& locs,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
 
 	//! Expose the event, so observers can be notified about map scrolling.

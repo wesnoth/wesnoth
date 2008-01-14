@@ -1558,6 +1558,18 @@ void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::loca
 		    outside_area(map_area(),maxx,maxy)) {
 			if(!check_fogged || ( !fogged(loc1) && !fogged(loc2))) {
 				// Scroll to middle point of rectangle
+				if (scroll_type == ONSCREEN) {
+					// The tile must be fully visible
+					SDL_Rect r = map_area();
+					r.w -= hex_width();
+					r.h -= zoom_;
+
+					if (!outside_area(r,get_location_x(loc1),get_location_y(loc1)) &&
+							!outside_area(r,get_location_x(loc2),get_location_x(loc2)) ) {
+						return;
+					}
+					scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),SCROLL,check_fogged);
+				}
 				scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,check_fogged);
 			} else if(!fogged(loc1)) {
 				scroll_to_tile(loc1,scroll_type,check_fogged);
@@ -1571,7 +1583,7 @@ void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::loca
 }
 
 
-void display::scroll_to_tiles(const std::vector<gamemap::location> locs,
+void display::scroll_to_tiles(const std::vector<gamemap::location>& locs,
                               SCROLL_TYPE scroll_type, bool check_fogged)
 {
 	gamemap::location min_loc,max_loc;
@@ -1586,7 +1598,7 @@ void display::scroll_to_tiles(const std::vector<gamemap::location> locs,
 	}
 	//if everything is fogged
 	if(!min_loc.valid()) return;
-	scroll_to_tiles(min_loc,max_loc,scroll_type,check_fogged);
+	scroll_to_tiles(min_loc,max_loc,scroll_type,false);
 }
 
 void display::bounds_check_position()
