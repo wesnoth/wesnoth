@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 13:01+0100\n"
-"PO-Revision-Date: 2008-01-03 22:55+0100\n"
+"PO-Revision-Date: 2008-01-14 21:50+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -389,7 +389,6 @@ msgstr "Sauver le film en cas de défaite multijoueur ou de victoire"
 
 # Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
 #: src/game_preferences_display.cpp:164
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Supprimer les sauvegardes en cas de défaite multijoueur ou de victoire"
 
@@ -618,9 +617,8 @@ msgid "Set the frequency of unit idle animations"
 msgstr "Configurer la fréquence des animations de désœuvrement des unités"
 
 #: src/game_preferences_display.cpp:335
-#, fuzzy
 msgid "Set maximum number of automatic saves to be retained"
-msgstr "Configurer le nombre maximal de sauvegardes à conserver"
+msgstr "Configurer le nombre maximal de sauvegardes automatiques à conserver"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -733,9 +731,8 @@ msgid "Speed: "
 msgstr "Vitesse : "
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
-#, fuzzy
 msgid "Maximum Auto-Saves: "
-msgstr "Nombre maximum de sauvegardes :"
+msgstr "Nombre maximum de sauvegardes automatiques :"
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
@@ -857,9 +854,8 @@ msgid "Save Game"
 msgstr "Sauvegarder le jeu"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "Sauvegarder les films"
+msgstr "Sauvegarder le film"
 
 #: src/hotkeys.cpp:71
 msgid "Save The Map"
