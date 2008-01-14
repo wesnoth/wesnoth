@@ -1010,7 +1010,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 			g->set_description(&desc);
 			desc["id"] = lexical_cast<std::string>(g->id());
 		} else {
-			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tsent scenario data in game:\t\"" << g->name() << "\" ("
 				<< g->id() << ") although it's already initialized.\n";
 			return;

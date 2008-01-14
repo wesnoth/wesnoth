@@ -815,7 +815,6 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		config observer_quit;
 		observer_quit.add_child("observer_quit").values["name"] = user->second.name();
 		send_data(observer_quit);
-		return false;
 	} else {
 		const config& msg = construct_server_message(user->second.name()
 				+ (disconnect ? " has disconnected." : " has left the game."));
