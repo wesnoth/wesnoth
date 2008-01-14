@@ -1019,7 +1019,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like
-		if (data["mp_shroud"] != "yes") {
+		if (!utils::string_bool(data["mp_shroud"], true)) {
 			desc["map_data"] = data["map_data"];
 		}
 		desc["mp_era"] = data.child("era") != NULL
@@ -1139,11 +1139,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		// g->start_game() will send data that assumes
 		// the [start_game] message has been sent
 		g->send_data(data, sock);
-
-		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-			<< "\tstarted game:\t\"" << g->name() << "\" (" << g->id() << ").\n";
-
-		g->start_game();
+		g->start_game(pl);
 		lobby_.send_data(games_and_users_list_diff());
 		return;
 	} else if (data.child("leave_game")) {

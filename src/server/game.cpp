@@ -14,9 +14,10 @@
 
 #include "../global.hpp"
 
-#include "../game_config.hpp"
+#include "../game_config.hpp" // game_config::observer_team_name
 #include "../log.hpp"
-#include "../map.hpp"
+#include "../map.hpp" // gamemap::MAX_PLAYERS
+#include "../serialization/string_utils.hpp" // utils::string_bool()
 
 #include "game.hpp"
 #include "player.hpp"
@@ -35,8 +36,7 @@ game::game(player_map& players, const network::connection host, const std::strin
 	: player_info_(&players), id_(id_num++), name_(name), owner_(host),
 	sides_(gamemap::MAX_PLAYERS), sides_taken_(gamemap::MAX_PLAYERS),
 	side_controllers_(gamemap::MAX_PLAYERS), started_(false),
-	description_(NULL),	end_turn_(0), allow_observers_(true),
-	all_observers_muted_(false)
+	description_(NULL), end_turn_(0), all_observers_muted_(false)
 {
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) return;
@@ -50,6 +50,10 @@ game::game(player_map& players, const network::connection host, const std::strin
 	// Mark the host as unavailable in the lobby.
 	pl->second.mark_available(id_, name_);
 
+}
+
+bool game::allow_observers() const {
+	return utils::string_bool(level_["observer"], true);
 }
 
 bool game::is_observer(const network::connection player) const {
@@ -80,8 +84,25 @@ std::string describe_turns(int turn, const std::string& num_turns)
 
 }//anon namespace
 
-void game::start_game()
-{
+void game::start_game(const player_map::const_iterator starter) {
+	LOG_GAME << network::ip_address(starter->first) << "\t" << starter->second.name()
+		<< "\tstarted game:\t\"" << name_ << "\" (" << id_ << ").\n"
+		<< "Settings: map: " << level_["name"]
+		<< "\tera: " << (level_.child("era") != NULL
+			? level_.child("era")->get_attribute("name") : "")
+		<< "\tXP: " << level_["experience_modifier"]
+		<< "\tGPV: " << level_["mp_village_gold"]
+		<< "\tfog: " << level_["mp_fog"]
+		<< "\tshroud: " << level_["mp_shroud"]
+		<< "\tobservers: " << level_["observer"]
+		<< "\ttimer: " << level_["mp_countdown"]
+		<< (utils::string_bool(level_["mp_countdown"], false) ?
+			"\treservoir time: " + level_["mp_countdown_reservoir_time"] +
+			"\tinit time: " + level_["mp_countdown_init_time"] +
+			"\taction bonus: " + level_["mp_countdown_action_bonus"] +
+			"\tturn bonus: " + level_["mp_countdown_turn_bonus"] : "")
+		<< "\n";
+
 	started_ = true;
 	nsides_ = 0;
 	for(config::child_itors sides = level_.child_range("side");
@@ -96,9 +117,6 @@ void game::start_game()
 	} else {
 		ERR_GAME << "ERROR: Game without description_ started. (" << id_ << ")\n";
 	}
-
-	allow_observers_ = level_["observer"] != "no";
-
 	// Send [observer] tags for all observers that are already in the game.
 	send_observerjoins();
 }
@@ -739,7 +757,7 @@ void game::add_player(const network::connection player, const bool observer) {
 	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
-	} else if (!allow_observers_) {
+	} else if (!allow_observers()) {
 		return; //false;
 	} else {
 		DBG_GAME << "adding observer...\n";

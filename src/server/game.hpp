@@ -51,7 +51,7 @@ public:
 	bool is_owner(const network::connection player) const { return (player == owner_); }
 	bool is_member(const network::connection player) const
 	{ return is_player(player) || is_observer(player); }
-	bool allow_observers() const { return allow_observers_; }
+	bool allow_observers() const;
 	bool is_observer(const network::connection player) const;
 	bool is_muted_observer(const network::connection player) const;
 	bool all_observers_muted() const { return all_observers_muted_; }
@@ -82,7 +82,7 @@ public:
 	//! added to the players_ or observers_ vector (default observers_).
 	void add_players(const game& other_game, const bool observer = true);
 
-	void start_game();
+	void start_game(const player_map::const_iterator starter);
 	void start_next_scenario();
 	//! A user (player only?) asks for the next scenario to advance to.
 	void load_next_scenario(const player_map::const_iterator user) const;
@@ -193,7 +193,6 @@ private:
 
 	int end_turn_;
 
-	bool allow_observers_;
 	bool all_observers_muted_;
 
 	std::vector<std::string> bans_;
