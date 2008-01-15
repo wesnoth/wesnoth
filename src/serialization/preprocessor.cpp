@@ -823,8 +823,8 @@ bool preprocessor_data::get_chunk()
 				}
 
 				// Ignore filenames that start with '../' or contain '/../'.
-				if (nfname.rfind("../", 0) == std::string::npos
-					&& nfname.find("/../") == std::string::npos)
+				if (newfilename.rfind("../", 0) == std::string::npos
+					&& newfilename.find("/../") == std::string::npos)
 				{
 					if (!slowpath_)
 						new preprocessor_file(target_, nfname);
@@ -839,7 +839,7 @@ bool preprocessor_data::get_chunk()
 						strings_.back() += res.str();
 					}
 				} else {
-					ERR_CF << "Illegal path '" << nfname
+					ERR_CF << "Illegal path '" << newfilename
 						<< "' found (../ not allowed).\n";
 				}
 			} else {
