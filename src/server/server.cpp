@@ -1070,16 +1070,16 @@ void server::process_data_game(const network::connection sock, const config& dat
 				<< ") while the scenario is not yet initialized.";
 			return;
 		}
+		const config& s = *data.child("store_next_scenario");
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 			<< "\tadvanced game:\t\"" << g->name() << "\" ("
-			<< g->id() << ") to the next scenario.\n";
+			<< g->id() << ") to the next scenario: '" << s["id"] << "'.\n";
 		if (g->description() == NULL) {
 			ERR_SERVER << network::ip_address(sock) << "\tERROR: \""
 				<< g->name() << "\" (" << g->id()
 				<< ") is initialized but has no description_.\n";
 			return;
 		}
-		const config& s = *data.child("store_next_scenario");
 		config& desc = *g->description();
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby

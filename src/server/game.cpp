@@ -87,9 +87,9 @@ std::string describe_turns(int turn, const std::string& num_turns)
 void game::start_game(const player_map::const_iterator starter) {
 	LOG_GAME << network::ip_address(starter->first) << "\t" << starter->second.name()
 		<< "\tstarted game:\t\"" << name_ << "\" (" << id_
-		<< ").\tSettings: map: " << level_["name"]
+		<< "). Settings: map: " << level_["id"]
 		<< "\tera: " << (level_.child("era") != NULL
-			? level_.child("era")->get_attribute("name") : "")
+			? level_.child("era")->get_attribute("id") : "")
 		<< "\tXP: " << level_["experience_modifier"]
 		<< "\tGPV: " << level_["mp_village_gold"]
 		<< "\tfog: " << level_["mp_fog"]
@@ -352,7 +352,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		send_data(construct_server_message(name	+ " becomes an observer."));
 		// Update the client side observer list for everyone except player.
 		config observer_join;
-		observer_join.add_child("observer").values["name"] = name;
+		observer_join.add_child("observer")["name"] = name;
 		send_data(observer_join, sock);
 		// If this player was the host of the game, choose another player.
 		if (sock == owner_) {
@@ -366,6 +366,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 				send_data(construct_server_message(newplayer_name
 					+ " has been chosen as the new host."));
 			}
+			notify_new_host();
 		}
 	}
 	side_controllers_[side_num - 1] = "network";
@@ -408,7 +409,6 @@ void game::transfer_side_control(const network::connection sock, const config& c
 				sides_[side_num - 1] = owner_;
 			}
 		}
-		notify_new_host();
 	}
 
 	// If we gave the new side to an observer add him to players_.
@@ -420,7 +420,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		// Send everyone a message saying that the observer who is taking the
 		// side has quit.
 		config observer_quit;
-		observer_quit.add_child("observer_quit").values["name"] = newplayer_name;
+		observer_quit.add_child("observer_quit")["name"] = newplayer_name;
 		send_data(observer_quit);
 	}
 }
@@ -455,7 +455,7 @@ bool game::describe_slots() {
 	snprintf(buf,sizeof(buf), "%d/%d", available_slots, num_sides);
 
 	if (buf != (*description_)["slots"]) {
-		description_->values["slots"] = buf;
+		(*description_)["slots"] = buf;
 		return true;
 	} else {
 		return false;
@@ -763,7 +763,7 @@ void game::add_player(const network::connection player, const bool observer) {
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
 		config observer_join;
-		observer_join.add_child("observer").values["name"] = user->second.name();
+		observer_join.add_child("observer")["name"] = user->second.name();
 		// Send observer join to everyone except the new observer.
 		send_data(observer_join, player);
 	}
@@ -979,7 +979,7 @@ void game::send_observerjoins(const network::connection sock) const {
 			continue;
 		}
 		config cfg;
-		cfg.add_child("observer").values["name"] = obs->second.name();
+		cfg.add_child("observer")["name"] = obs->second.name();
 		if (sock == 0) {
 			// Send to everyone except the observer in question.
 			send_data(cfg, *ob);
