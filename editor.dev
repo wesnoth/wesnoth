@@ -1,7 +1,7 @@
 [Project]
 FileName=editor.dev
 Name=editor
-UnitCount=265
+UnitCount=152
 Type=0
 Ver=1
 ObjFiles=
@@ -27,42 +27,12 @@ CustomMakefile=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=0000000001010000010100
-
-[Unit1]
-FileName=src\wml_separators.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit2]
-FileName=src\about.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=src\about.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
+CompilerSettings=0000000000000000010100
 
 [Unit4]
-FileName=src\actions.cpp
+FileName=src\editor\editor_palettes.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -70,9 +40,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=src\actions.hpp
+FileName=src\editor\map_manip.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -80,9 +50,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=src\ai2.hpp
+FileName=src\editor\map_manip.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -90,9 +60,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit7]
-FileName=src\ai.cpp
+FileName=src\editor\editor_dialogs.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -100,9 +70,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit8]
-FileName=src\ai.hpp
+FileName=src\editor\editor_dialogs.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -110,9 +80,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
-FileName=src\ai_attack.cpp
+FileName=src\editor\editor_display.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -120,9 +90,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=src\ai_dfool.cpp
+FileName=src\editor\editor_layout.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -130,9 +100,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=src\ai_dfool.hpp
+FileName=src\editor\editor_palettes.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -140,9 +110,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=src\ai_interface.hpp
+FileName=src\editor\editor_main.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -150,9 +120,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
-FileName=src\ai_move.cpp
+FileName=src\editor\editor_undo.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -160,9 +130,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
-FileName=src\ai_python.cpp
+FileName=src\editor\editor_undo.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -170,19 +140,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit15]
-FileName=src\ai_python.hpp
+FileName=src\tooltips.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit16]
-FileName=src\animated.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -190,29 +150,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit17]
-FileName=src\array.hpp
+FileName=src\animated_editor.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit18]
-FileName=src\astarnode.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit19]
-FileName=src\astarnode.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -220,9 +160,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit20]
-FileName=src\attack_prediction.cpp
+FileName=src\generic_event.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -230,9 +170,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit21]
-FileName=src\boilerplate-header.cpp
+FileName=src\map.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -240,9 +180,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit22]
-FileName=src\builder.cpp
+FileName=src\color_range.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -250,9 +190,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit23]
-FileName=src\builder.hpp
+FileName=src\color_range.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -260,19 +200,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit24]
-FileName=src\cavegen.cpp
+FileName=src\config.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit25]
-FileName=src\cavegen.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -280,9 +210,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit26]
-FileName=src\clipboard.cpp
+FileName=src\filesystem.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -290,9 +220,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit27]
-FileName=src\clipboard.hpp
+FileName=src\filesystem.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -300,9 +230,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit28]
-FileName=src\color_range.cpp
+FileName=src\game_config.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -310,9 +240,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit29]
-FileName=src\color_range.hpp
+FileName=src\game_config.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -320,19 +250,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit30]
-FileName=src\config.cpp
+FileName=src\gettext.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit31]
-FileName=src\config.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -340,9 +260,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit32]
-FileName=src\config_adapter.cpp
+FileName=src\log.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -350,9 +270,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit33]
-FileName=src\config_adapter.hpp
+FileName=src\log.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -360,29 +280,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit34]
-FileName=src\cursor.cpp
+FileName=src\map.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit35]
-FileName=src\cursor.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit36]
-FileName=src\dialogs.cpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -390,9 +290,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit37]
-FileName=src\dialogs.hpp
+FileName=src\thread.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -400,9 +300,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit38]
-FileName=src\display.cpp
+FileName=src\tstring.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -410,59 +310,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit39]
-FileName=src\display.hpp
+FileName=src\tstring.hpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit40]
-FileName=src\events.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit41]
-FileName=src\events.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit42]
-FileName=src\filechooser.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit43]
-FileName=src\filesystem.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit44]
-FileName=src\filesystem.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -470,9 +320,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit45]
-FileName=src\font.cpp
+FileName=src\serialization\binary_wml.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -480,9 +330,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit46]
-FileName=src\font.hpp
+FileName=src\serialization\parser.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -490,9 +340,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit47]
-FileName=src\game_config.cpp
+FileName=src\serialization\preprocessor.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -500,29 +350,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit48]
-FileName=src\game_config.hpp
+FileName=src\serialization\preprocessor.hpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit49]
-FileName=src\game_errors.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit51]
-FileName=src\game_events.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -530,9 +360,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit52]
-FileName=src\gamestatus.cpp
+FileName=src\serialization\tokenizer.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -540,9 +370,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit53]
-FileName=src\gamestatus.hpp
+FileName=src\astarsearch.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -550,9 +380,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit54]
-FileName=src\gettext.cpp
+FileName=src\astarnode.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -560,9 +390,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit55]
-FileName=src\gettext.hpp
+FileName=src\astarnode.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -570,9 +400,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit56]
-FileName=src\global.hpp
+FileName=src\language.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -580,9 +410,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit57]
-FileName=src\halo.cpp
+FileName=src\language.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -590,19 +420,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit58]
-FileName=src\halo.hpp
+FileName=src\builder.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit59]
-FileName=src\help.cpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -610,19 +430,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit60]
-FileName=src\help.hpp
+FileName=src\cavegen.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit61]
-FileName=src\hotkeys.cpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -630,19 +440,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit62]
-FileName=src\hotkeys.hpp
+FileName=src\clipboard.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit63]
-FileName=src\image.cpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -650,9 +450,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit64]
-FileName=src\image.hpp
+FileName=src\construct_dialog.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -660,9 +460,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit65]
-FileName=src\intro.cpp
+FileName=src\construct_dialog.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -670,9 +470,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit66]
-FileName=src\intro.hpp
+FileName=src\cursor.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -680,9 +480,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit67]
-FileName=src\key.cpp
+FileName=src\cursor.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -690,9 +490,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit68]
-FileName=src\key.hpp
+FileName=src\display.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -700,9 +500,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit69]
-FileName=src\language.cpp
+FileName=src\display.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -710,19 +510,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit70]
-FileName=src\language.hpp
+FileName=src\events.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit71]
-FileName=src\leader_list.cpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -730,9 +520,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit72]
-FileName=src\leader_list.hpp
+FileName=src\file_chooser.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -740,9 +530,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit73]
-FileName=src\log.cpp
+FileName=src\filechooser.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -750,9 +540,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit74]
-FileName=src\log.hpp
+FileName=src\font.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -760,9 +550,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit75]
-FileName=src\map.cpp
+FileName=src\font.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -770,9 +560,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit76]
-FileName=src\map.hpp
+FileName=src\hotkeys.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -780,9 +570,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit77]
-FileName=src\map_create.cpp
+FileName=src\hotkeys.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -790,9 +580,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit78]
-FileName=src\map_create.hpp
+FileName=src\image.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -800,9 +590,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit79]
-FileName=src\map_label.cpp
+FileName=src\image.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -810,9 +600,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit80]
-FileName=src\map_label.hpp
+FileName=src\key.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -820,9 +610,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit81]
-FileName=src\mapgen.cpp
+FileName=src\key.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -830,9 +620,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit82]
-FileName=src\mapgen.hpp
+FileName=src\show_dialog.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -840,19 +630,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit83]
-FileName=src\mapgen_dialog.cpp
+FileName=src\loadscreen.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit84]
-FileName=src\mapgen_dialog.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -860,19 +640,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit85]
-FileName=src\marked-up_text.cpp
+FileName=src\map_create.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit86]
-FileName=src\marked-up_text.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -880,9 +650,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit87]
-FileName=src\menu_events.cpp
+FileName=src\map_label.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -890,9 +660,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit88]
-FileName=src\menu_events.hpp
+FileName=src\map_label.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -900,19 +670,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit89]
-FileName=src\minimap.cpp
+FileName=src\mapgen.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit90]
-FileName=src\minimap.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -920,9 +680,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit91]
-FileName=src\mouse_events.cpp
+FileName=src\mapgen_dialog.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -930,9 +690,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit92]
-FileName=src\mouse_events.hpp
+FileName=src\mapgen_dialog.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -940,9 +700,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit93]
-FileName=src\multiplayer.cpp
+FileName=src\marked-up_text.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -950,9 +710,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit96]
-FileName=src\multiplayer_connect.hpp
+FileName=src\minimap.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -960,9 +720,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit97]
-FileName=src\multiplayer_create.cpp
+FileName=src\pathutils.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -970,9 +730,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit98]
-FileName=src\multiplayer_create.hpp
+FileName=src\pathutils.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -980,9 +740,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit99]
-FileName=src\multiplayer_lobby.cpp
+FileName=src\preferences.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -990,19 +750,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit100]
-FileName=src\multiplayer_lobby.hpp
+FileName=src\preferences.hpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit101]
-FileName=src\multiplayer_ui.cpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1010,9 +760,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit102]
-FileName=src\multiplayer_ui.hpp
+FileName=src\preferences_display.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1020,9 +770,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit103]
-FileName=src\multiplayer_wait.cpp
+FileName=src\race.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1030,9 +780,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit104]
-FileName=src\multiplayer_wait.hpp
+FileName=src\race.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1040,9 +790,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit105]
-FileName=src\network.cpp
+FileName=src\random.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1050,9 +800,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit106]
-FileName=src\network.hpp
+FileName=src\random.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1060,9 +810,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit107]
-FileName=src\network_worker.cpp
+FileName=src\reports.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1070,9 +820,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit108]
-FileName=src\network_worker.hpp
+FileName=src\reports.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1080,9 +830,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit109]
-FileName=src\pathfind.cpp
+FileName=src\sdl_utils.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1090,9 +840,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit110]
-FileName=src\pathfind.hpp
+FileName=src\sdl_utils.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1100,19 +850,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit111]
-FileName=src\pathutils.cpp
+FileName=src\show_dialog.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit112]
-FileName=src\pathutils.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1120,9 +860,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit113]
-FileName=src\playcampaign.cpp
+FileName=src\video.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1130,9 +870,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit114]
-FileName=src\playcampaign.hpp
+FileName=src\video.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1140,9 +880,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit115]
-FileName=src\playturn.cpp
+FileName=src\sound.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1150,9 +890,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit116]
-FileName=src\playturn.hpp
+FileName=src\sound.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1160,9 +900,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit117]
-FileName=src\preferences.cpp
+FileName=src\soundsource.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1170,29 +910,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit118]
-FileName=src\preferences.hpp
+FileName=src\soundsource.hpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit119]
-FileName=src\preferences_display.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit120]
-FileName=src\preferences_display.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1200,19 +920,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit121]
-FileName=src\publish_campaign.cpp
+FileName=src\terrain_translation.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit122]
-FileName=src\publish_campaign.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1220,9 +930,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit123]
-FileName=src\race.cpp
+FileName=src\theme.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1230,9 +940,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit124]
-FileName=src\race.hpp
+FileName=src\widgets\button.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1240,9 +950,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit125]
-FileName=src\random.cpp
+FileName=src\widgets\button.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1250,9 +960,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit126]
-FileName=src\random.hpp
+FileName=src\widgets\combo.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1260,9 +970,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit127]
-FileName=src\replay.cpp
+FileName=src\widgets\combo.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1270,9 +980,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit128]
-FileName=src\replay.hpp
+FileName=src\widgets\file_menu.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1280,9 +990,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit129]
-FileName=src\replay_controller.cpp
+FileName=src\widgets\file_menu.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1290,9 +1000,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit130]
-FileName=src\replay_controller.hpp
+FileName=src\widgets\label.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1300,9 +1010,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit131]
-FileName=src\reports.cpp
+FileName=src\widgets\label.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1310,9 +1020,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit132]
-FileName=src\reports.hpp
+FileName=src\widgets\menu.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1320,9 +1030,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit133]
-FileName=src\scoped_resource.hpp
+FileName=src\widgets\menu.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1330,19 +1040,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit134]
-FileName=src\sdl_utils.cpp
+FileName=src\widgets\menu_style.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit135]
-FileName=src\sdl_utils.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1350,9 +1050,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit136]
-FileName=src\show_dialog.cpp
+FileName=src\widgets\progressbar.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1360,9 +1060,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit137]
-FileName=src\show_dialog.hpp
+FileName=src\widgets\scrollarea.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1370,9 +1070,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit138]
-FileName=src\sound.cpp
+FileName=src\widgets\scrollarea.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1380,9 +1080,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit139]
-FileName=src\sound.hpp
+FileName=src\widgets\scrollbar.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1390,9 +1090,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit140]
-FileName=src\statistics.cpp
+FileName=src\widgets\scrollbar.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1400,9 +1100,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit141]
-FileName=src\statistics.hpp
+FileName=src\widgets\scrollpane.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1410,9 +1110,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit142]
-FileName=src\team.cpp
+FileName=src\widgets\scrollpane.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1420,9 +1120,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit143]
-FileName=src\team.hpp
+FileName=src\widgets\slider.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1430,9 +1130,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit144]
-FileName=src\terrain.cpp
+FileName=src\widgets\slider.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1440,9 +1140,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit145]
-FileName=src\terrain.hpp
+FileName=src\widgets\textbox.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1450,9 +1150,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit146]
-FileName=src\theme.cpp
+FileName=src\widgets\textbox.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1460,9 +1160,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit147]
-FileName=src\theme.hpp
+FileName=src\widgets\widget.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1470,9 +1170,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit148]
-FileName=src\thread.cpp
+FileName=src\widgets\widget.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1480,9 +1180,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit149]
-FileName=src\thread.hpp
+FileName=src\sdl_ttf\SDL_ttf.c
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1490,9 +1190,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit150]
-FileName=src\titlescreen.cpp
+FileName=src\sdl_ttf\SDL_ttf.h
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1500,9 +1200,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit151]
-FileName=src\titlescreen.hpp
+FileName=src\wml_exception.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1510,9 +1210,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit152]
-FileName=src\tooltips.cpp
+FileName=src\wml_exception.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -1569,26 +1269,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit158]
-FileName=src\unit_abilities.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit159]
-FileName=src\unit_abilities.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit160]
 FileName=src\unit_animation.cpp
 CompileCpp=1
@@ -1619,36 +1299,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit163]
-FileName=src\unit_display.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit164]
-FileName=src\unit_types.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit165]
-FileName=src\unit_types.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit166]
 FileName=src\upload_log.cpp
 CompileCpp=1
@@ -1669,16 +1319,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit168]
-FileName=src\util.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit169]
 FileName=src\util.hpp
 CompileCpp=1
@@ -1691,16 +1331,6 @@ BuildCmd=
 
 [Unit170]
 FileName=src\variable.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit171]
-FileName=src\variable.hpp
 CompileCpp=1
 Folder=Wesnoth
 Compile=1
@@ -1749,36 +1379,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit176]
-FileName=src\sdl_ttf\SDL_ttf.c
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit177]
-FileName=src\serialization\tokenizer.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit178]
-FileName=src\serialization\binary_or_text.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit179]
 FileName=src\serialization\binary_or_text.hpp
 CompileCpp=1
@@ -1791,16 +1391,6 @@ BuildCmd=
 
 [Unit180]
 FileName=src\serialization\binary_wml.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit181]
-FileName=src\serialization\binary_wml.hpp
 CompileCpp=1
 Folder=Wesnoth
 Compile=1
@@ -1859,16 +1449,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit187]
-FileName=src\serialization\string_utils.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit188]
 FileName=src\serialization\tokenizer.cpp
 CompileCpp=1
@@ -1901,16 +1481,6 @@ BuildCmd=
 
 [Unit191]
 FileName=src\widgets\button.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit192]
-FileName=src\widgets\combo.cpp
 CompileCpp=1
 Folder=Wesnoth
 Compile=1
@@ -1959,28 +1529,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit197]
-FileName=src\widgets\menu.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit198]
 FileName=src\widgets\progressbar.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit199]
-FileName=src\widgets\progressbar.hpp
 CompileCpp=1
 Folder=Wesnoth
 Compile=1
@@ -2061,16 +1611,6 @@ BuildCmd=
 
 [Unit207]
 FileName=src\widgets\slider.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit208]
-FileName=src\widgets\textbox.cpp
 CompileCpp=1
 Folder=Wesnoth
 Compile=1
@@ -2277,16 +1817,6 @@ ProductName=
 ProductVersion=
 AutoIncBuildNr=0
 
-[Unit50]
-FileName=src\game_events.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit227]
 FileName=src\loadscreen.hpp
 CompileCpp=1
@@ -2309,16 +1839,6 @@ BuildCmd=
 
 [Unit229]
 FileName=src\playmp_controller.hpp
-CompileCpp=1
-Folder=editor
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit230]
-FileName=src\floating_textbox.cpp
 CompileCpp=1
 Folder=editor
 Compile=1
@@ -2407,16 +1927,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit239]
-FileName=src\construct_dialog.cpp
-CompileCpp=1
-Folder=editor
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit240]
 FileName=src\unit_frame.cpp
 CompileCpp=1
@@ -2469,16 +1979,6 @@ BuildCmd=
 
 [Unit245]
 FileName=src\soundsource.cpp
-CompileCpp=1
-Folder=editor
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit246]
-FileName=src\game_display.cpp
 CompileCpp=1
 Folder=editor
 Compile=1
@@ -2568,9 +2068,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit94]
-FileName=src\multiplayer.hpp
+FileName=src\marked-up_text.hpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -2578,9 +2078,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit95]
-FileName=src\multiplayer_connect.cpp
+FileName=src\minimap.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=editor
 Compile=1
 Link=1
 Priority=1000
@@ -2753,6 +2253,316 @@ BuildCmd=
 
 [Unit267]
 FileName=src\wml_exception.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit1]
+FileName=src\editor\editor_layout.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=src\editor\editor.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=src\editor\editor.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit16]
+FileName=src\tooltips.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit18]
+FileName=src\gamestatus_editor.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit19]
+FileName=src\generic_event.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit25]
+FileName=src\config.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit31]
+FileName=src\gettext.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit35]
+FileName=src\util.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit36]
+FileName=src\thread.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit40]
+FileName=src\util.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit41]
+FileName=src\serialization\parser.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit42]
+FileName=src\serialization\binary_or_text.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit43]
+FileName=src\serialization\binary_or_text.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit44]
+FileName=src\serialization\binary_wml.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit49]
+FileName=src\serialization\string_utils.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit50]
+FileName=src\serialization\string_utils.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit51]
+FileName=src\serialization\tokenizer.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit59]
+FileName=src\builder.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit61]
+FileName=src\cavegen.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit63]
+FileName=src\clipboard.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit71]
+FileName=src\events.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit84]
+FileName=src\loadscreen.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit86]
+FileName=src\map_create.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit90]
+FileName=src\mapgen.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit101]
+FileName=src\preferences_display.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit112]
+FileName=src\theme.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit119]
+FileName=src\terrain.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit120]
+FileName=src\terrain.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit122]
+FileName=src\terrain_translation.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit135]
+FileName=src\widgets\progressbar.cpp
 CompileCpp=1
 Folder=editor
 Compile=1
