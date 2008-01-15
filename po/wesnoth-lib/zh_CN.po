@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 13:01+0100\n"
-"PO-Revision-Date: 2008-01-07 20:53+1000\n"
+"PO-Revision-Date: 2008-01-15 23:03+0800\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -326,7 +326,6 @@ msgid "Y offset:"
 msgstr "Y轴偏移(纵向):"
 
 #: src/editor/editor_dialogs.cpp:468
-#, fuzzy
 msgid "Smart expand"
 msgstr "智能扩展"
 
@@ -367,9 +366,8 @@ msgid "Creation of the directory failed."
 msgstr "建立目录失败。"
 
 #: src/game_preferences.cpp:217
-#, fuzzy
 msgid "No server has been defined."
-msgstr "没有自行定义的服务器"
+msgstr "没有已定义的服务器"
 
 #: src/game_preferences.cpp:281
 msgid "player"
@@ -388,9 +386,8 @@ msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "游戏胜利或者多人游戏失败时，保存录像"
 
 #: src/game_preferences_display.cpp:164
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "游戏胜利或者多人游戏失败时，删除存档"
+msgstr "游戏胜利或者多人游戏失败时，删除自动存档"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -617,7 +614,6 @@ msgid "Set the frequency of unit idle animations"
 msgstr "设置空闲单位动画显示频率"
 
 #: src/game_preferences_display.cpp:335
-#, fuzzy
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "设置最大存档数"
 
@@ -646,17 +642,14 @@ msgid "Show icons in front of the player names in the lobby."
 msgstr "在游戏大厅玩家列表的玩家的名字前显示图标"
 
 #: src/game_preferences_display.cpp:356
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "不显示玩家进入多人游戏大厅的信息"
 
 #: src/game_preferences_display.cpp:358
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "只显示好友进入多人游戏大厅的信息"
+msgstr "显示好友进入多人游戏大厅的信息"
 
 #: src/game_preferences_display.cpp:360
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "显示所有玩家进入多人游戏大厅的信息"
 
@@ -731,9 +724,8 @@ msgid "Speed: "
 msgstr "速度:"
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
-#, fuzzy
 msgid "Maximum Auto-Saves: "
-msgstr "最大存档数:"
+msgstr "最大自动存档数:"
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
@@ -852,7 +844,6 @@ msgid "Save Game"
 msgstr "保存游戏"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
 msgstr "保存录像"
 
@@ -1017,9 +1008,8 @@ msgid "Fill Selection"
 msgstr "填充选择区域"
 
 #: src/hotkeys.cpp:116
-#, fuzzy
 msgid "Rotate Selection"
-msgstr "替换选择区域"
+msgstr "旋转选择区域"
 
 #: src/hotkeys.cpp:117
 msgid "Cut"
@@ -1172,17 +1162,15 @@ msgstr "岛屿"
 
 #: src/marked-up_text.cpp:357
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "最大文字宽度小于1"
 
 #: src/minimap.cpp:87
-#, fuzzy
 msgid "Could not get image for terrain: $terrain."
-msgstr "无法获取这里的图片: $terrain."
+msgstr "无法获取该地形图片: $terrain。"
 
 #: src/minimap.cpp:93 src/minimap.cpp:105
-#, fuzzy
 msgid "Error creating or aquiring an image."
-msgstr "创建或获取图像文件错误"
+msgstr "创建或获取图像文件错误。"
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
@@ -1237,31 +1225,35 @@ msgstr "错误"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr ""
+msgstr "找到一个由超过4个字符描述的地形，受影响的地形是："
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-msgstr "无效的领地(terrain)格式, 也许是1.2版的格式,  terrain = "
+msgstr "无效的地形格式, 也许是1.2版的格式,  terrain = "
 
 #: src/wml_exception.cpp:60
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"发现一个错误，可能是由于无效的WML导致的\n"
+"错误信息如下："
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
-msgstr ""
+msgstr "报告BUG时请包含以下信息："
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"在区块'[$section|]'中，'$primary_key| = $primary_value' 必须设的值'$key|'没有"
+"设置。"
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
+msgstr "在区块'[$section|]'中，必须设的值'$key|'没有设置。"
 
 #~ msgid "Delete Autosaves"
 #~ msgstr "删除自动存档"

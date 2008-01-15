@@ -1,4 +1,4 @@
-MAN_LANG = cs da de fr it pl sk sv
+MAN_LANG = cs da de fr it lt pl sk sv zh_CN
 MAN_PAGES = wesnoth.6 wesnothd.6 wesnoth_editor.6
 INSTALL_MAN_PAGES =
 

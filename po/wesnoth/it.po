@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 14:47+0100\n"
-"PO-Revision-Date: 2008-01-01 14:11+0100\n"
+"PO-Revision-Date: 2008-01-12 02:37+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -87,9 +87,8 @@ msgid "Packagers"
 msgstr "Sviluppatori dei pacchetti"
 
 #: data/core/about.cfg:589
-#, fuzzy
 msgid "Miscellaneous contributors"
-msgstr "Varie"
+msgstr "Contributi vari"
 
 #: data/core/about.cfg:709
 msgid "Internationalization Managers"
@@ -1111,17 +1110,13 @@ msgstr ""
 "unità infatti (come i <ref>dst=unit_Mage text=maghi</ref>) possono averne "
 "quattro. Una volta che un'unità è giunta sino al suo massimo livello, essa "
 "potrà avere un \"Avanzamento Oltre il Massimo Livello\" (AOML) disponibile.\n"
-"L'AOML modifica l'unità quando raggiunge il livello di esperienza richiesto "
-"ma l'unità manterrà il livello in cui si trova. L'AOML, normalmente, da la "
-"possibilità alle unità di accrescere il proprio livello massimo di PF di 3 "
-"punti. Il primo AOML sarà raggiunto dopo 100 PE guadagnati (80 PE per le "
-"unità intelligenti). Però guadagnare AOML diventa progressivamente più "
-"difficile ad ogni AOML ricevuto, e quindi è spesso più utile cercare di fare "
-"avanzare le unità di livello più basso.\n"
-"\n"
-"Nota che solo poche unità, per esempio i necrofagi, possono guarirsi per "
-"effetto dell'AOML. La maggior parte delle unità guadagna semplicemente il "
-"bonus ai PF massimi quando giunge al livello di PE richiesto."
+"L'AOML modifica l'unità quando raggiunge il livello di esperienza richiesto, "
+"ma l'unità manterrà il livello in cui si trova. L'AOML, normalmente, fa "
+"crescere il livello massimo di PF dell'unità di 3 punti e la guarisce "
+"completamente. Il primo AOML sarà raggiunto dopo 100 PE guadagnati (80 PE "
+"per le unità intelligenti). Però guadagnare AOML diventa progressivamente "
+"più difficile ad ogni AOML ricevuto, e quindi è spesso più utile cercare di "
+"fare avanzare le unità di livello più basso."
 
 #: data/core/help.cfg:267
 msgid "Healing"
@@ -1316,7 +1311,7 @@ msgstr ""
 
 #: data/core/help.cfg:300
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "Contributi"
 
 #: data/core/help.cfg:306
 msgid "License"
@@ -2280,6 +2275,9 @@ msgid ""
 "Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
+"\n"
+"Metti un dominio di log ad un diverso livello di log.\n"
+"\n"
 
 #: data/core/help.cfg:684
 msgid ""
@@ -2292,12 +2290,14 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:687
-#, fuzzy
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
 "\n"
-msgstr "Richiama il menù per la selezione dei temi."
+msgstr ""
+"\n"
+"Richiama il menù per la selezione dei temi.\n"
+"\n"
 
 #: data/core/help.cfg:690
 msgid ""
@@ -2320,14 +2320,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:694
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"Salva la partita e abbandona lo scenario (senza preavviso).\n"
-"\n"
+"Salva la partita e abbandona lo scenario (senza preavviso)."
 
 #: data/core/help.cfg:699
 msgid "Multiplayer commands"
@@ -3640,6 +3638,8 @@ msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+" Questa unità può nascondersi nei villaggi (tranne i villaggi acquatici) e "
+"resta invisibile ai nemici, tranne a quelli che vi si trovino adiacenti."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -3649,12 +3649,10 @@ msgstr ""
 "aria dalla superficie."
 
 #: data/core/macros/special-notes.cfg:53
-#, fuzzy
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Nutrimento:\n"
 "Quest'unità riceve 1 punto ferita al suo massimo quando uccide un'unità "
 "vivente."
 
@@ -4590,13 +4588,16 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"La tattica dell'accerchiamento è molto potente, particolarmente contro "
+"oppositori veloci. Piazzando due unità sui lati opposti di un nemico, le "
+"loro zone di controllo restringeranno i suoi movimenti ad un esagono in ogni "
+"direzione."
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr "- Memorie di Gweddry, 627AW"
 
 #: data/hardwired/tips.cfg:19
-#, fuzzy
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
 "castle tile. That will let you chose which hex you put a new unit in. "
@@ -4661,7 +4662,6 @@ msgid "- The Wesnoth Community"
 msgstr "- La comunità di Wesnoth"
 
 #: data/hardwired/tips.cfg:43
-#, fuzzy
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
@@ -4739,7 +4739,6 @@ msgstr ""
 "esperta e potente nel combattimento."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -4747,14 +4746,14 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Tutte le unità hanno una \"zona di controllo\" in ciascuno degli esagoni "
-"adiacenti. Se un'unità si muove all'interno della zona di controllo di un "
-"nemico non potrà più muoversi per quel turno (Le unità di livello 0 sono "
-"troppo deboli per controllare una zona; gli incursori sono abbastanza "
-"esperti da potersi muovere liberamente in queste zone)."
+"Le unità di livello uno o superiore hanno una \"zona di controllo\" in "
+"ciascuno degli esagoni adiacenti. Se un'unità si muove all'interno della "
+"zona di controllo di un nemico non potrà più muoversi per quel turno. Ciò "
+"significa che le unità possono avere due esagoni vuoti fra di loro e creare "
+"ugualmente una barriera contro il nemico. Gli incursori, però, sono "
+"abbastanza esperti da potersi muovere liberamente in queste zone."
 
 #: data/hardwired/tips.cfg:75
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -4763,36 +4762,33 @@ msgid ""
 msgstr ""
 "La probabilità di colpire un'unità di solito dipende da come quell'unità si "
 "può difendere sul terreno su cui si trova, tuttavia gli attacchi magici "
-"hanno il 70% di probabilità di colpire sia in attacco che in difesa e i "
-"tiratori scelti hanno almeno il 60% di probabilità di colpire quando "
-"attaccano."
+"hanno il 70% di probabilità di colpire sia in attacco che in difesa e le "
+"unità con l'abilità \"tiro di precisione\" hanno almeno il 60% di "
+"probabilità di colpire quando attaccano."
 
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Manuale di analisi tattica volume II - Haldric II, 43AW"
 
 #: data/hardwired/tips.cfg:79
-#, fuzzy
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"Le unità che si trovano in un villaggio vengono curate di 8 punti ferita "
+"Le unità che si trovano in un villaggio vengono curate di otto punti ferita "
 "all'inizio del loro turno."
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Non muovere le unità ferite se non è necessario ­ lasciale riposare. Le "
-"unità si riposano se non si spostano e non attaccano durante il loro turno. "
-"Recupereranno 2 punti ferita all'inizio del turno successivo."
+"Non muovere le unità ferite se non è necessario – lasciale riposare. Se "
+"un'unità non si sposta e non attacca, recupera due punti ferita all'inizio "
+"del turno successivo."
 
 #: data/hardwired/tips.cfg:87
-#, fuzzy
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
@@ -4800,30 +4796,26 @@ msgid ""
 msgstr ""
 "Molte unità a piedi si difendono meglio nei villaggi e nei castelli "
 "piuttosto che in altri terreni, mentre la maggior parte delle unità a "
-"cavallo non ha nessun vantaggio nella difesa quando sono nei villaggi o nei "
-"castelli."
+"cavallo non riceve vantaggi difensivi da villaggi o castelli."
 
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
 msgstr "- Sir Kaylan, 498AW"
 
 #: data/hardwired/tips.cfg:91
-#, fuzzy
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
 "Le unità a cavallo sono generalmente resistenti agli attacchi da taglio o a "
-"impatto, ma sono vulnerabili alle armi a perforazione, inclusi archi e "
-"arpioni."
+"impatto, ma sono vulnerabili alle armi a perforazione, inclusi archi e lance."
 
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
 msgstr "- Sir Kaylan, 502AW"
 
 #: data/hardwired/tips.cfg:95
-#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain eight experience points for "
@@ -4831,21 +4823,19 @@ msgid ""
 "level opponent."
 msgstr ""
 "Infliggere il colpo mortale a un nemico è il migliore modo per guadagnare "
-"dei punti esperienza. Le unità che uccidono un nemico guadagnano 8 punti "
-"esperienza per ogni livello dell'unità uccisa."
+"punti esperienza. Le unità che uccidono un nemico guadagnano otto punti "
+"esperienza per ogni livello dell'unità uccisa, o quattro punti per un nemico "
+"di livello zero."
 
 #: data/hardwired/tips.cfg:99
-#, fuzzy
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
-"Le truppe degli elfi si muovono e combattono molto bene nelle foreste. Le "
-"truppe dei nani si muovo e combattono molto bene nelle colline e sulle "
-"montagne."
+"Le unità degli elfi si muovono e combattono bene nelle foreste. Le unità dei "
+"nani si muovo e combattono bene sulle colline, sulle montagne e nelle grotte."
 
 #: data/hardwired/tips.cfg:103
-#, fuzzy
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
@@ -4903,16 +4893,14 @@ msgstr ""
 "unità."
 
 #: data/hardwired/tips.cfg:123
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
 "Gli scheletri sono resistenti contro gli attacchi da perforazione, da taglio "
-"e freddi, ma vulnerabili alle armi da impatto, fuoco o arcane."
+"e da freddo, ma vulnerabili alle armi da impatto, da fuoco o arcane."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
@@ -4922,14 +4910,13 @@ msgstr ""
 "unità a guadagnare esperienza più rapidamente."
 
 #: data/hardwired/tips.cfg:131
-#, fuzzy
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
-"Generalmente evita di muoverti vicino a un villaggio libero. Un'unità nemica "
-"potrebbe entrare nel villaggio e attaccarti sfruttando il vantaggio "
+"Generalmente evita di metterti di fianco a un villaggio libero. Un'unità "
+"nemica potrebbe entrare nel villaggio e attaccarti sfruttando il vantaggio "
 "difensivo e le cure del villaggio."
 
 #: data/hardwired/tips.cfg:135
@@ -5005,7 +4992,6 @@ msgstr ""
 "possono uccidere con un solo colpo."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
@@ -5015,9 +5001,9 @@ msgid ""
 msgstr ""
 "Le unità avanzate, invece di aumentare di livello, ricevono un Avanzamento "
 "Oltre il Massimo Livello (AOML), gli AOML di solito incrementano i punti "
-"ferita massimi dell'unità di 3. Ciò è meno del normale avanzamento di "
-"livello. Quindi di solito è molto più utile cercare di far avanzare le tue "
-"unità di livello più basso."
+"ferita massimi dell'unità di 3 e la curano completamente. Ciò è meno del "
+"normale avanzamento di livello, quindi di solito è molto più utile cercare "
+"di far avanzare le tue unità di livello più basso."
 
 #: data/hardwired/tips.cfg:175
 #, fuzzy
@@ -5040,7 +5026,6 @@ msgstr ""
 "menù a comparsa. Poni il mouse sopra qualcosa per ottenerne una descrizione."
 
 #: data/hardwired/tips.cfg:183
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
@@ -5083,6 +5068,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Se un nemico trae più beneficio da un terreno raro rispetto a te, occupando "
+"tale terreno lo priverai del beneficio."
 
 #: data/hardwired/tips.cfg:199
 msgid ""
@@ -5090,6 +5077,10 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Poche unità hanno una buona difesa nell'acqua; una linea di attaccanti lungo "
+"la riva di un fiume può infliggere gravi perdite. Gli elfi possono usare i "
+"margini di una foresta in modo simile, e i nani possono fare lo stesso con "
+"le montagne."
 
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
@@ -5323,7 +5314,7 @@ msgstr ""
 
 #: src/config_adapter.cpp:156
 msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
+msgstr "Trovata una definizione di side duplicata per la fazione «$side|»."
 
 #: src/dialogs.cpp:112
 msgid "Advance Unit"
@@ -5378,9 +5369,8 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Esiste già un salvataggio con questo nome. Vuoi sovrascriverlo?"
 
 #: src/dialogs.cpp:305
-#, fuzzy
 msgid "Filter: "
-msgstr "Abilità: "
+msgstr "Filtro: "
 
 #: src/dialogs.cpp:372
 msgid "Do you really want to delete this game?"
@@ -6145,9 +6135,8 @@ msgid "Reading files and creating cache."
 msgstr "Lettura dei file e creazione della cache."
 
 #: src/map.cpp:342
-#, fuzzy
 msgid "A map without a header is not supported"
-msgstr "Le mappe casuali con un'ampiezza dispari non sono supportate."
+msgstr "Le mappe senza intestazione non sono supportate"
 
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
@@ -6618,8 +6607,12 @@ msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
 #: src/menu_events.cpp:2150
+#, fuzzy
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
+"\n"
+"Metti un dominio di log ad un diverso livello di log.\n"
+"\n"
 
 #: src/menu_events.cpp:2169
 msgid "Usage: control <side> <nick>"
@@ -7288,9 +7281,8 @@ msgid "End scenario"
 msgstr "Termina scenario"
 
 #: src/playmp_controller.cpp:321
-#, fuzzy
 msgid "Waiting for next scenario..."
-msgstr "Attendi che il gioco abbia inizio..."
+msgstr "Attesa per il prossimo scenario..."
 
 #: src/playmp_controller.cpp:446
 msgid ""
@@ -7701,12 +7693,6 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
-
-#~ msgid "Units having this ability:"
-#~ msgstr "Unità con questa abilità:"
-
-#~ msgid "Units of this race:"
-#~ msgstr "Unità di questa razza:"
 
 #~ msgid ""
 #~ "Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
@@ -8597,6 +8583,12 @@ msgstr "Abilita l'invio del sommario"
 #~ msgstr ""
 #~ "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,"
 #~ "Bal,Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
+
+#~ msgid "Units having this ability:"
+#~ msgstr "Unità con questa abilità:"
+
+#~ msgid "Units of this race:"
+#~ msgstr "Unità di questa razza:"
 
 #~ msgid "Damage Taken"
 #~ msgstr "Danni subiti"
