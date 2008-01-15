@@ -1007,10 +1007,11 @@ namespace
 		{
 
 			std::vector<std::string> addons;
+			std::vector<std::string> addon_dirs;
 
 			const std::string campaign_dir = get_user_data_dir() + "/data/campaigns/";
 
-			get_files_in_dir(campaign_dir, &addons, NULL, FILE_NAME_ONLY);
+			get_files_in_dir(campaign_dir, &addons, &addon_dirs, FILE_NAME_ONLY);
 
 			// Strip the ".cfg" extension and replace "_" with " " for display.
 			std::vector<std::string>::iterator i = addons.begin();
@@ -1021,11 +1022,29 @@ namespace
 					i = addons.erase(i);
 				} else {
 					i->erase(pos);
+					// remove it from the directory list too
+					for(std::vector<std::string>::iterator j = addon_dirs.begin(); j != addon_dirs.end() ; ++j) {
+						if (*i == *j) {
+							addon_dirs.erase(j);
+							break;
+						}
+					};
 					std::replace(i->begin(), i->end(), '_', ' ');
 					i++;
 				}
 			}
-
+			// process the addons of type Addon/_main.cfg
+			i = addon_dirs.begin();
+			while(i != addon_dirs.end())
+			{
+				if (file_exists(campaign_dir + *i + "/_main.cfg")) {
+					std::replace(i->begin(), i->end(), '_', ' ');
+					addons.push_back(*i);
+					i++;
+				} else {
+					i = addon_dirs.erase(i);
+				}
+			}
 
 			if (addons.empty())
 			{
@@ -1065,11 +1084,11 @@ namespace
 			//Put underscores back in the name and remove the addon
 			std::string filename = addons.at(index);
 			std::replace(filename.begin(), filename.end(), ' ', '_');
-			delete_success &= delete_directory(campaign_dir + filename + ".cfg");
+			delete_success &= delete_directory(campaign_dir + filename);
 			//Report results
 			if (delete_success)
 			{
-				delete_success &= delete_directory(campaign_dir + filename);
+				delete_success &= delete_directory(campaign_dir + filename + ".cfg");
 				//force a reload of configuration information
 				const bool old_cache = use_caching_;
 				use_caching_ = false;
