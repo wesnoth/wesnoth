@@ -905,9 +905,6 @@ if test "x$tests" = "xyes"; then
 #		BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS="-L/usr/lib -R/usr/lib"
 	fi
 
-	LDFLAGS="$BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS $LDFLAGS"
-	LIBS="$BOOST_UNIT_TEST_FRAMEWORK_LIBS $LIBS"
-
 	AC_LANG([C++])
 	AC_MSG_CHECKING([for dynamic linked boost test])
 

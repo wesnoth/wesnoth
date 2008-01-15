@@ -112,8 +112,8 @@ wesnoth_source = \
 #############################################################################
 
 wesnoth_SOURCES = \
-	$(wesnoth_source) \
-	game.cpp 
+	game.cpp \
+	$(wesnoth_source)
 	
 wesnoth_LDADD = $(THELIBS) libwesnoth.a
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
@@ -202,11 +202,11 @@ cutter_DEPENDENCIES=libwesnoth-core.a
 #############################################################################
 
 test_SOURCES = \
-	$(wesnoth_source) \
 	tests/main.cpp \
-	tests/test_util.cpp
+	tests/test_util.cpp \
+	$(wesnoth_source)
 
-test_LDADD = -lboost_unit_test_framework $(THELIBS) libwesnoth.a 
+test_LDADD = $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a 
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
