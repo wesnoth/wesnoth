@@ -44,7 +44,7 @@ do
 		mv gmon.out gmon.$DATE.out > /dev/null 2>&1
 		# wait a bit so the server is likely up and listening
 		sleep 1
-		if [ "$SERVER" != "trunk" ]; then
+		if [ "$SERVER" == "1.2" ]; then
 			cd $SOURCE/utils/
 			./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
 		fi
