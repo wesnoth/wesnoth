@@ -86,8 +86,8 @@ std::string describe_turns(int turn, const std::string& num_turns)
 
 void game::start_game(const player_map::const_iterator starter) {
 	LOG_GAME << network::ip_address(starter->first) << "\t" << starter->second.name()
-		<< "\tstarted game:\t\"" << name_ << "\" (" << id_ << ").\n"
-		<< "Settings: map: " << level_["name"]
+		<< "\tstarted game:\t\"" << name_ << "\" (" << id_
+		<< ").\tSettings: map: " << level_["name"]
 		<< "\tera: " << (level_.child("era") != NULL
 			? level_.child("era")->get_attribute("name") : "")
 		<< "\tXP: " << level_["experience_modifier"]
