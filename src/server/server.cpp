@@ -1147,7 +1147,11 @@ void server::process_data_game(const network::connection sock, const config& dat
 			|| (g->is_owner(sock) && !g->started())) {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< (g->started() ? "\tended game:\t\"" : "\taborted game:\t\"")
-				<< g->name() << "\" (" << g->id() << ").\n";
+				<< g->name() << "\" (" << g->id() << ")"
+				<< (g->started() ? " at turn: "
+					+ (g->description() ? (*g->description())["turn"] : "-/-")
+					+ " with reason: '" + g->termination_reason() + "'" : "")
+				<< ".\n";
 			// Remove the player in delete_game() with all other remaining
 			// ones so he gets the updated gamelist.
 			delete_game(g);
@@ -1227,6 +1231,12 @@ void server::process_data_game(const network::connection sock, const config& dat
 		const config& info = *data.child("info");
 		if (info["type"] == "termination") {
 			g->set_termination_reason(info["condition"]);
+			if (info["condition"] == "out of sync") {
+				// May be too noisy..
+				LOG_SERVER << network::ip_address(sock) << pl->second.name()
+					<< "\treports an out of sync error in game:\t\""
+					<< g->name() << "\" (" << g->id() << ").\n";
+			}
 		}
 		return;
 	} else if (data.child("turn")) {

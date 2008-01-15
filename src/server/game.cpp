@@ -730,7 +730,7 @@ bool game::end_turn() {
 	if (description_ == NULL) {
 		return false;
 	}
-	description_->values["turn"] = describe_turns(turn, level()["turns"]);
+	(*description_)["turn"] = describe_turns(turn, level_["turns"]);
 
 	return true;
 }
@@ -821,6 +821,9 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	LOG_GAME << network::ip_address(user->first) << "\t" << user->second.name()
 		<< (game_ended ? (started_ ? "\tended" : "\taborted") : "\thas left")
 		<< " game:\t\"" << name_ << "\" (" << id_ << ")"
+		<< (game_ended && started_ ? " at turn: "
+			+ (description_ ? (*description_)["turn"] : "-/-")
+			+ " with reason: '" + termination_reason() + "'" : "")
 		<< (observer ? " as an observer" : "")
 		<< (disconnect ? " and disconnected" : "")
 		<< ". (socket: " << user->first << ")\n";
@@ -831,7 +834,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	if (observer) {
 		//they're just an observer, so send them having quit to clients
 		config observer_quit;
-		observer_quit.add_child("observer_quit").values["name"] = user->second.name();
+		observer_quit.add_child("observer_quit")["name"] = user->second.name();
 		send_data(observer_quit);
 	} else {
 		const config& msg = construct_server_message(user->second.name()
