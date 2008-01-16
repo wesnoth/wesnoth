@@ -18,20 +18,20 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd "M??io d?l Wesnoth daugelio ?aid?j? ?aidimo tinklo demonas"
+.TH WESNOTHD 6 2007 wesnothd "Mþ¹io dìl Wesnoth daugelio ¾aidìjù ¾aidimo tinklo demonas"
 .
 .SH PAVADINIMAS
 .
-wesnothd \- M??io d?l \fBWesnoth\fP daugelio ?aid?j? ?aidimo tinklo demonas
+wesnothd \- Mþ¹io dìl \fBWesnoth\fP daugelio ¾aidìjù ¾aidimo tinklo demonas
 .
-.SH REZIUM?
+.SH REZIUMÌ
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIkelias\fP\|] [\|\fB\-p\fP \fIprievadas\fP\|]
-[\|\fB\-t\fP \fIskai?ius\fP\|] [\|\fB\-T\fP \fIskai?ius\fP\|]
+[\|\fB\-t\fP \fIskaièius\fP\|] [\|\fB\-T\fP \fIskaièius\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH APRA?YMAS
+.SH APRA©YMAS
 .
 Manages Battle for Wesnoth multiplayer games. See
 http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
@@ -46,10 +46,10 @@ tells wesnothd where to find the config file to use. See the section
 sending SIGHUP to the server process.
 .TP 
 \fB\-d, \-\-daemon\fP
-paleid?ia wesnothd kaip demon?.
+paleid¾ia wesnothd kaip demon±.
 .TP 
 \fB\-h, \-\-help\fP
-pasako Jums, k? daro komandin?s eilut?s parametrai.
+pasako Jums, k± daro komandinìs eilutìs parametrai.
 .TP 
 \fB\-\-log\-\fP\fIlygis\fP\fB=\fP\fIdomenas1\fP\fB,\fP\fIdomenas2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
@@ -61,38 +61,38 @@ By default the \fBerror\fP level is used and the \fBinfo\fP level for the
 binds the server to the specified port. If no port is specified, port
 \fB15000\fP will be used.
 .TP 
-\fB\-t\ \fP\fIskai?ius\fP\fB,\ \-\-threads\fP\fI\ skai?ius\fP
+\fB\-t\ \fP\fIskaièius\fP\fB,\ \-\-threads\fP\fI\ skaièius\fP
 sets the maximum number of waiting worker threads for network I/O to n
 (default: \fB5\fP,\ max:\ \fB30\fP).
 .TP 
-\fB\-T\ \fP\fIskai?ius\fP\fB,\ \-\-max\-threads\fP\fI\ skai?ius\fP
+\fB\-T\ \fP\fIskaièius\fP\fB,\ \-\-max\-threads\fP\fI\ skaièius\fP
 sets the maximum number of worker threads that will be created.  If set to
 \fB0\fP there will be no limit (default: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-parodo versijos numer? ir i?sijungia.
+parodo versijos numerç ir i¹sijungia.
 .TP 
 \fB\-v, \-\-verbose\fP
 turns debug logging on.
 .
-.SH "SERVERIO KONFIG?RACIJA"
+.SH "SERVERIO KONFIGÞRACIJA"
 .
-.SS "Bandra sintaks? yra:"
+.SS "Bandra sintaksì yra:"
 .
 .P
 [\fIelementas\fP]
 .IP
-raktas="\fIvert?\fP"
+raktas="\fIvertì\fP"
 .IP
-raktas=?\fIvert?\fP,\fIvert?\fP,...?
+raktas=?\fIvertì\fP,\fIvertì\fP,...?
 .P
 [/\fIelementas\fP]
 .
-.SS "Global?s raktai:"
+.SS "Globalþs raktai:"
 .
 .TP 
 \fBconnections_allowed\fP
-Leidi?am? prisijungim? skai?ius i? to paties IP. (default: \fB5\fP)
+Leidi¾amù prisijungimù skaièius i¹ to paties IP. (default: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
 Names/nicks that are not accepted by the server. `*' and `?' from wildcard
@@ -101,7 +101,7 @@ patterns are supported. See \fBglob\fP(7)  for more details.  Default values
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-Leid?iam? prane?im? skai?ius esan?i? \fBmessages_time_period\fP. (numatyta:
+Leid¾iamù prane¹imù skaièius esanèiù \fBmessages_time_period\fP. (numatyta:
 \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
@@ -109,10 +109,10 @@ The time period (in seconds) message flooding is detected in. (default:
 \fB10\fP seconds)
 .TP 
 \fBmotd\fP
-Dienos prane?imas.
+Dienos prane¹imas.
 .TP 
 \fBpasswd\fP
-Slapta?odis naudojamas gauti administratoriaus teises. Paparstai jis
+Slapta¾odis naudojamas gauti administratoriaus teises. Paparstai jis
 prasideda ?admin ?.
 .TP 
 \fBversions_accepted\fP
@@ -120,17 +120,17 @@ A comma separated list of version strings to be accepted by the server. `*'
 and `?' from wildcard patterns are supported.  (defaults to the
 corresponding wesnoth version)
 .br
-Pavyzdys: \fBversions_accepted="*"\fP priima bet koki? versij?.
+Pavyzdys: \fBversions_accepted="*"\fP priima bet koki± versij±.
 .
-.SS "Global?s elementai:"
+.SS "Globalþs elementai:"
 .
 .P
 \fB[redirect]\fP Elementas, nurodantis serveriui kur peradresuoti tam tikras
-klient? versijas.
+klientù versijas.
 .RS
 .TP 
 \fBhost\fP
-Serverio, ? kur? peradresuoti, adresas.
+Serverio, ç kurç peradresuoti, adresas.
 .TP 
 \fBport\fP
 Prievadas, prie kurio jungtis.
@@ -140,27 +140,27 @@ A comma separated list of versions to redirect. Behaves the same way as
 \fBversions_accepted\fP in regard to wildcard patterns.
 .RE
 .P
-\fB[proxy]\fP Elementas nurodantis serveriui elgtis kaip proksi ir persi?sti
-visus prisijungusius klientus ? nurodyt? server?.  Priima tuos pa?ius raktus
+\fB[proxy]\fP Elementas nurodantis serveriui elgtis kaip proksi ir persiùsti
+visus prisijungusius klientus ç nurodyt± serverç.  Priima tuos paèius raktus
 kaip ir \fB[redirect]\fP.
 .
 .SH AUTORIUS
 .
-Para?? David White <davidnwhite@verizon.net>.  Redagavo Nils Kneuper
+Para¹ì David White <davidnwhite@verizon.net>.  Redagavo Nils Kneuper
 <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> ir Soliton
-<soliton.de@gmail.com>.  ?? dokumentacijos puslap? i? prad?i? para??
+<soliton.de@gmail.com>.  ©ç dokumentacijos puslapç i¹ prad¾iù para¹ì
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Aplankykite oficial? puslap?: http://www.wesnoth.org/
+Aplankykite oficialù puslapç: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Tai yra laisva programa; ?i programa licencijuota Free Software Foundation
-(Laisvos programin?s ?rangos fondo) paskelbta GPL 2 versija.  N?ra JOKIO
+Tai yra laisva programa; ¹i programa licencijuota Free Software Foundation
+(Laisvos programinìs çrangos fondo) paskelbta GPL 2 versija.  Nìra JOKIO
 garantijos; netgi PERKAMUMO ar TINKAMUMO KONKRETIEMS TIKSLAMS.
 .
-.SH "TAIP PAT ?I?R?KITE"
+.SH "TAIP PAT ®IÞRÌKITE"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
