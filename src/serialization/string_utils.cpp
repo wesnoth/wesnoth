@@ -643,56 +643,41 @@ utf8_string lowercase(const utf8_string& s)
 	return s;
 }
 
+// match using '*' as any number of characters (including none), and '?' as any one character
 bool wildcard_string_match(const std::string& str, const std::string& match)
 {
-	// match using '*' as any number of characters (including none), and '?' as any one character
-	std::string::const_iterator c = str.begin();
-	std::string::const_iterator m = match.begin();
-	while(c != str.end() && m != match.end()) {
-		if(*m == '?') {
-			++c;
-			++m;
-		} else if(*m == '*') {
-			while(c != str.end()) {
-				if(*c == *(m+1)) {
-					std::string ns,nm;
-					ns.assign(c+1,str.end());
-					nm.assign(m,match.end());
-					if(ns.find(*(m+1)) != std::string::npos) {
-						if(wildcard_string_match(ns,nm)) {
-							return true;
-						}
-					} else {
-						break;
-					}
-				}
-				++c;
-			}
-			++m;
-		} else {
-			if(*c != *m) {
-				return false;
-			}
-			++c;
-			++m;
-		}
+	const bool wild_matching = (!match.empty() && match[0] == '*');
+	const std::string::size_type solid_begin = match.find_first_not_of('*');
+	const bool have_solids = (solid_begin != std::string::npos);
+	//check the simple case first
+	if(str.empty() || !have_solids) {
+		return wild_matching || str == match;
 	}
-	if(m == match.end()) {
-		if(c == str.end()) {
-			return true;
-		} else {
-			return false;
-		}
-	} else {
-		if(c == str.end()) {
-			if(*m == '*') {
-				return true;
+	const std::string::size_type solid_end = match.find_first_of('*', solid_begin);
+	const std::string::size_type solid_len = (solid_end == std::string::npos)
+		? match.length() - solid_begin : solid_end - solid_begin;
+	std::string::size_type current = 0;
+	bool matches;
+	do {
+		matches = true;
+		//now try to place the str into the solid space
+		const std::string::size_type test_len = str.length() - current;
+		for(std::string::size_type i=0; i < solid_len && matches; ++i) {
+			char solid_c = match[solid_begin + i];
+			if(i > test_len || !(solid_c == '?' || solid_c == str[current+i])) {
+				matches = false;
 			}
-			return false;
-		} else {
-			return false;
 		}
-	}
+		if(matches) {
+			//the solid space matched, now consume it and attempt to find more
+			const std::string consumed_match = (solid_begin+solid_len < match.length())
+				? match.substr(solid_end) : "";
+			const std::string consumed_str = (solid_len < test_len)
+				? str.substr(current+solid_len) : "";
+			matches = wildcard_string_match(consumed_str, consumed_match);
+		}
+	} while(wild_matching && !matches && ++current < str.length());
+	return matches;
 }
 
 
