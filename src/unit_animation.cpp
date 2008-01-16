@@ -19,6 +19,7 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "preferences.hpp"
 #include "halo.hpp"
 #include "pathutils.hpp"
 #include "unit.hpp"
@@ -316,22 +317,26 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	}
 	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"0~1:600"),"recruited",unit_animation::DEFAULT_ANIM));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
-	const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
-	for(anim_itor = standing_anims.begin(); anim_itor != standing_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="standing";
-		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"standing animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=standing flag\n";
+	if (preferences::idle_anim()) {
+		const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
+		for(anim_itor = standing_anims.begin(); anim_itor != standing_anims.end(); ++anim_itor) {
+			(**anim_itor)["apply_to"] ="standing";
+			animations.push_back(unit_animation(**anim_itor));
+			//lg::wml_error<<"standing animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
+			//lg::wml_error<<"please put it with an [animation] tag and apply_to=standing flag\n";
+		}
 	}
 	// Always have a standing animation
 	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),0),"standing",unit_animation::DEFAULT_ANIM));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
-	const config::child_list& idle_anims = expanded_cfg.get_children("idle_anim");
-	for(anim_itor = idle_anims.begin(); anim_itor != idle_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="idling";
-		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"idling animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=idling flag\n";
+	if (preferences::idle_anim()) {
+		const config::child_list& idle_anims = expanded_cfg.get_children("idle_anim");
+		for(anim_itor = idle_anims.begin(); anim_itor != idle_anims.end(); ++anim_itor) {
+			(**anim_itor)["apply_to"] ="idling";
+			animations.push_back(unit_animation(**anim_itor));
+			//lg::wml_error<<"idling animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
+			//lg::wml_error<<"please put it with an [animation] tag and apply_to=idling flag\n";
+		}
 	}
 	// Idle anims can be empty
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
