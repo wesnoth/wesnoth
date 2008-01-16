@@ -105,10 +105,16 @@ void game::start_game(const player_map::const_iterator starter) {
 
 	started_ = true;
 	nsides_ = 0;
+	// Set all side controllers to 'human' so that observers will understand
+	// that they can't take control of any sides if they happen to have the
+	// same name as one of the descriptions.
 	for(config::child_itors sides = level_.child_range("side");
 		sides.first != sides.second; ++sides.first)
 	{
-		if ((**sides.first)["controller"] != "null") nsides_++;
+		if ((**sides.first)["controller"] != "null") {
+			nsides_++;
+			(**sides.first)["controller"] = "human";
+		}
 	}
 	int turn =  lexical_cast_default<int>(level_["turn_at"], 1);
 	end_turn_ = (turn - 1) * nsides_;
