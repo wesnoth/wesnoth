@@ -295,17 +295,6 @@ bool string_bool(const std::string& str,bool def)
 	return def;
 }
 
-bool isvalid_username(const std::string& username)
-{
-	//check the username is valid (all alpha-numeric or space (but no space at ends))
-	const size_t alnum = std::count_if(username.begin(),username.end(),isalnum);
-	const size_t underscore = std::count(username.begin(),username.end(),'_');
-	if((alnum + underscore != username.size()) || underscore == username.size() || username.empty() ) {
-		return false;
-	}
-	return true;
-}
-
 std::string join(std::vector< std::string > const &v, char c)
 {
 	std::stringstream str;

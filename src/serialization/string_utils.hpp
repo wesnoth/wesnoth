@@ -61,10 +61,6 @@ std::string &strip(std::string &str);
 bool has_value(std::string const &values, std::string const &val);
 bool string_bool(const std::string& str,bool def=false);
 
-/*	checks the username is valid (all alpha-numeric or space (but no space at ends))
-	does not check length, disallow-list, or already in use */
-bool isvalid_username(const std::string &login);
-
 typedef std::map< std::string, t_string > string_map;
 // function which will interpolate variables, starting with '$' in the string 'str' with
 // the equivalent symbols in the given symbol table. If 'symbols' is NULL, then game event
