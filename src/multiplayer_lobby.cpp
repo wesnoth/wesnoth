@@ -714,6 +714,7 @@ void lobby::process_event()
 
 	const bool observe = (observe_game_.pressed() || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
 	const bool join = (join_game_.pressed() || games_menu_.selected()) && games_menu_.selection_is_joinable();
+	games_menu_.reset_selection();
 	preferences::set_skip_mp_replay(skip_replay_.checked());
 	playmp_controller::set_replay_last_turn(0);
 

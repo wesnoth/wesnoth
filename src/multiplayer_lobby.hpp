@@ -69,6 +69,7 @@ public:
 	{ return empty() ? false : (games_[selected_].vacant_slots > 0 && !games_[selected_].started); }
 	bool selection_is_observable() const { return empty() ? false : games_[selected_].observers; }
 	bool selected() const { return double_clicked_ && !empty(); }
+	void reset_selection() { double_clicked_ = false; }
 	int selection() const { return selected_; }
 	game_item selected_game() { return games_[selected_]; }
 protected:
