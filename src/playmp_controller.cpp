@@ -104,8 +104,12 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 			}
 			LOG_NG << "human finished turn...\n";
 		} else if(current_team().is_ai()) {
+			statistics::reset_turn_stats(player_number_);
 			play_ai_turn();
 		} else if(current_team().is_network()) {
+			if (is_observer()) {
+				statistics::reset_turn_stats(player_number_);
+			}
 			play_network_turn();
 		}
 	} while (player_type_changed_);
