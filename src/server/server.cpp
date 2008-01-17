@@ -790,8 +790,8 @@ void server::process_whisper(const network::connection sock, config whisper) con
 		std::vector<game>::const_iterator g;
 		for (g = games_.begin(); g != games_.end(); ++g) {
 			if (!g->is_member(i->first)) continue;
-			// Don't send to players in a running game the sender observes.
-			dont_send = (g->started() && g->is_player(i->first) && g->is_observer(sock));
+			// Don't send to players in a running game the sender is part of.
+			dont_send = (g->started() && g->is_player(i->first) && g->is_member(sock));
 			break;
 		}
 		if (dont_send) {
