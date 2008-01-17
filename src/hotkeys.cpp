@@ -252,6 +252,10 @@ void hotkey_item::set_description(const std::string& description)
 {
 	description_ = description;
 }
+void hotkey_item::clear_hotkey()
+{
+	type_ = UNBOUND;
+}
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
 {
@@ -454,12 +458,9 @@ hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 #endif
 			);
 }
-
-hotkey_item& get_visible_hotkey(int index)
+void _get_visible_hotkey_itor(int index, std::vector<hotkey_item>::iterator& itor)
 {
 	int counter = 0;
-
-	std::vector<hotkey_item>::iterator itor;
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
 		if (itor->hidden())
 			continue;
@@ -469,7 +470,13 @@ hotkey_item& get_visible_hotkey(int index)
 
 		counter++;
 	}
+}
 
+hotkey_item& get_visible_hotkey(int index)
+{
+
+	std::vector<hotkey_item>::iterator itor;
+	_get_visible_hotkey_itor(index, itor);
 	if (itor == hotkeys_.end())
 		return null_hotkey_;
 

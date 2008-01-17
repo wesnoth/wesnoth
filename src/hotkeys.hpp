@@ -94,6 +94,7 @@ public:
 	void load_from_config(const config& cfg);
 
 	void set_description(const std::string& description);
+	void clear_hotkey();
 	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
 
 	enum type {
