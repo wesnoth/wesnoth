@@ -415,8 +415,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				}
 			}
 
-			gui::message_dialog(*gui_,
-				title, report.str()).show();
+			gui::message_dialog(*gui_, title, report.str()).show();
 
 			return VICTORY;
 		} else if (end_level.result == SKIP_TO_LINGER) {
@@ -503,6 +502,8 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 		player_type_changed_ = false;
 		end_turn_ = false;
 
+		statistics::reset_turn_stats(player_number_);
+
 		if(current_team().is_human()) {
 			LOG_NG << "is human...\n";
 			try{
@@ -551,8 +552,6 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->draw();
 	gui_->update_display();
 
-	statistics::reset_turn_stats(player_number_);
-
 	if (save) {
 		menu_handler_.autosave(gamestate_.label, status_.turn(), gamestate_.starting_pos);
 	}
@@ -590,7 +589,6 @@ void playsingle_controller::play_human_turn(){
 	gui_->enable_menu("endturn", true);
 	while(!end_turn_) {
 		play_slice();
-
 		gui_->draw();
 	}
 }

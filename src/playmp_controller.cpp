@@ -73,6 +73,8 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 		player_type_changed_ = false;
 		end_turn_ = false;
 
+		statistics::reset_turn_stats(player_number_);
+
 		// we can't call playsingle_controller::play_side because
 		// we need to catch exception here
 		if(current_team().is_human()) {
@@ -104,12 +106,8 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 			}
 			LOG_NG << "human finished turn...\n";
 		} else if(current_team().is_ai()) {
-			statistics::reset_turn_stats(player_number_);
 			play_ai_turn();
 		} else if(current_team().is_network()) {
-			if (is_observer()) {
-				statistics::reset_turn_stats(player_number_);
-			}
 			play_network_turn();
 		}
 	} while (player_type_changed_);
