@@ -69,6 +69,11 @@ bool game::is_player(const network::connection player) const {
 	return std::find(players_.begin(),players_.end(),player) != players_.end();
 }
 
+bool game::is_current_player(const network::connection player) const {
+	size_t current_side = end_turn_ % nsides_;
+	return (sides_[current_side] == player);
+}
+
 namespace {
 std::string describe_turns(int turn, const std::string& num_turns)
 {
@@ -429,11 +434,10 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	if (itor != observers_.end()) {
 		players_.push_back(*itor);
 		observers_.erase(itor);
-		// Send everyone a message saying that the observer who is taking the
-		// side has quit.
+		// Send everyone but the new player the observer_quit message.
 		config observer_quit;
 		observer_quit.add_child("observer_quit")["name"] = newplayer_name;
-		send_data(observer_quit);
+		send_data(observer_quit, newplayer->first);
 	}
 }
 
@@ -687,39 +691,38 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 	return res;
 }
 
+//! Filter commands from all but the current player.
+//! Currently removes all commands but [speak] for observers.
 bool game::filter_commands(const network::connection player, config& cfg) const {
-	if(is_observer(player)) {
-		std::vector<int> marked;
-		int index = 0;
+	if (is_current_player(player)) return true;
 
-		const config::child_list& children = cfg.get_children("command");
-		for(config::child_list::const_iterator i = children.begin();
-			i != children.end(); ++i)
+	std::vector<int> marked;
+	int index = 0;
+	const config::child_list& children = cfg.get_children("command");
+	for(config::child_list::const_iterator i = children.begin();
+		i != children.end(); ++i)
+	{
+		if ((observers_can_label() && (*i)->child("label"))
+			|| (observers_can_chat() && (*i)->child("speak") != NULL)
+			&& (*i)->all_children().size() == 1)
 		{
-			if ((observers_can_label() && (*i)->child("label") != NULL)
-				|| (observers_can_chat() && (*i)->child("speak") != NULL)
-				&& (*i)->all_children().size() == 1)
-			{
-			} else {
-				DBG_GAME << "removing observer's illegal command\n";
-				marked.push_back(index - marked.size());
-			}
-
-			++index;
+		} else {
+			LOG_GAME << "Removing illegal command: '" << (*i)->debug() << "'.\n";
+			marked.push_back(index - marked.size());
 		}
 
-		for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
-			cfg.remove_child("command",*j);
-		}
-
-		return cfg.all_children().empty() == false;
+		++index;
 	}
 
-	return true;
+	for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
+		cfg.remove_child("command",*j);
+	}
+
+	return cfg.all_children().empty() == false;
 }
 
 bool game::process_commands(const config& cfg) {
-	DBG_GAME << "processing commands: '" << cfg.debug() << "'\n";
+	//DBG_GAME << "processing commands: '" << cfg.debug() << "'\n";
 	bool res = false;
 	const config::child_list& cmd = cfg.get_children("command");
 	for(config::child_list::const_iterator i = cmd.begin(); i != cmd.end(); ++i) {
@@ -924,7 +927,7 @@ void game::send_user_list(const network::connection exclude) const {
 	send_data(cfg, exclude);
 }
 
-//! A user (player only?) asks for the next scenario to advance to.
+//! A member asks for the next scenario to advance to.
 void game::load_next_scenario(const player_map::const_iterator user) const {
 	send_data(construct_server_message(user->second.name()
 			+ " advances to the next scenario."), user->first);

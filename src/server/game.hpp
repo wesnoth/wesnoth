@@ -56,6 +56,7 @@ public:
 	bool is_muted_observer(const network::connection player) const;
 	bool all_observers_muted() const { return all_observers_muted_; }
 	bool is_player(const network::connection player) const;
+	bool is_current_player(const network::connection player) const;
 	bool player_is_banned(const network::connection player) const;
 	bool level_init() const { return level_.child("side") != NULL; }
 	bool started() const { return started_; }

@@ -114,6 +114,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	for(config::child_list::const_iterator t = turns.begin(); t != turns.end(); ++t) {
 
 		if(turn_end == false) {
+			//! @todo FIXME: Check what commands we execute when it's our turn!
 			replay replay_obj(**t);
 			replay_obj.set_skip(skip_replay);
 			replay_obj.start_replay();
