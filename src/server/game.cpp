@@ -661,7 +661,7 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 		// to prevent spoofing of messages
 		(*speak)["description"] = user->second.name();
 
-		if ((*speak)["team_name"] == "") {
+		if ((*speak).get_attribute("team_name") == "") {
 			++npublic;
 		} else {
 			++nprivate;
@@ -692,25 +692,25 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 }
 
 //! Filter commands from all but the current player.
-//! Currently removes all commands but [speak] for observers.
-bool game::filter_commands(const network::connection player, config& cfg) const {
-	if (is_current_player(player)) return true;
-
+//! Currently removes all commands but [speak] for observers and all but
+//! [speak], [label] and [rename] for players.
+bool game::filter_commands(const network::connection member, config& cfg) const {
+	if (is_current_player(member)) return true;
 	std::vector<int> marked;
 	int index = 0;
 	const config::child_list& children = cfg.get_children("command");
 	for(config::child_list::const_iterator i = children.begin();
 		i != children.end(); ++i)
 	{
-		if ((observers_can_label() && (*i)->child("label"))
-			|| (observers_can_chat() && (*i)->child("speak") != NULL)
-			&& (*i)->all_children().size() == 1)
+		// Only single commands allowed.
+		if ((*i)->all_children().size() != 1
+		// Chatting is never an illegal command.
+		|| !((*i)->child("speak") || (is_player(member)
+			&& ((*i)->child("label") || (*i)->child("rename")))))
 		{
-		} else {
-			LOG_GAME << "Removing illegal command: '" << (*i)->debug() << "'.\n";
+			LOG_GAME << "Removing illegal command: " << (*i)->debug() << "\n";
 			marked.push_back(index - marked.size());
 		}
-
 		++index;
 	}
 
