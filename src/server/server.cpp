@@ -1080,8 +1080,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		if (s["mp_shroud"] != "yes") {
 			desc["map_data"] = s["map_data"];
 		}
-		desc["mp_era"] = s.child("era") != NULL
-			? s.child("era")->get_attribute("id") : "";
+		desc["mp_era"] = (s.child("era") ? (*s.child("era"))["id"] : "");
 		// map id
 		desc["mp_scenario"] = s["id"];
 		desc["observer"] = s["observer"];
@@ -1107,10 +1106,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 
 		// Record the full scenario in g->level()
 		g->level() = s;
-		g->start_next_scenario();
-		// When the host advances tell everyone that the next scenario data is
-		// available.
-		g->send_data(config("notify_next_scenario"), sock);
+		g->start_game(pl);
 		return;
 	// If a player advances to the next scenario of a mp campaign. (deprecated)
 	} else if(data.child("notify_next_scenario")) {

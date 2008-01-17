@@ -56,7 +56,9 @@ public:
 	bool is_muted_observer(const network::connection player) const;
 	bool all_observers_muted() const { return all_observers_muted_; }
 	bool is_player(const network::connection player) const;
-	bool is_current_player(const network::connection player) const;
+	bool is_current_player(const network::connection player) const
+	{ return (current_player() == player); }
+	network::connection current_player() const;
 	bool player_is_banned(const network::connection player) const;
 	bool level_init() const { return level_.child("side") != NULL; }
 	bool started() const { return started_; }
@@ -84,7 +86,6 @@ public:
 	void add_players(const game& other_game, const bool observer = true);
 
 	void start_game(const player_map::const_iterator starter);
-	void start_next_scenario();
 	//! A user (player only?) asks for the next scenario to advance to.
 	void load_next_scenario(const player_map::const_iterator user) const;
 

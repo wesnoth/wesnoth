@@ -53,7 +53,7 @@ game::game(player_map& players, const network::connection host, const std::strin
 }
 
 bool game::allow_observers() const {
-	return utils::string_bool(level_["observer"], true);
+	return utils::string_bool(level_.get_attribute("observer"), true);
 }
 
 bool game::is_observer(const network::connection player) const {
@@ -69,9 +69,10 @@ bool game::is_player(const network::connection player) const {
 	return std::find(players_.begin(),players_.end(),player) != players_.end();
 }
 
-bool game::is_current_player(const network::connection player) const {
+network::connection game::current_player() const {
+	if (nsides_ == 0) return 0;
 	size_t current_side = end_turn_ % nsides_;
-	return (sides_[current_side] == player);
+	return sides_[current_side];
 }
 
 namespace {
@@ -90,25 +91,30 @@ std::string describe_turns(int turn, const std::string& num_turns)
 }//anon namespace
 
 void game::start_game(const player_map::const_iterator starter) {
-	LOG_GAME << network::ip_address(starter->first) << "\t" << starter->second.name()
-		<< "\tstarted game:\t\"" << name_ << "\" (" << id_
-		<< "). Settings: map: " << level_["id"]
-		<< "\tera: " << (level_.child("era") != NULL
-			? level_.child("era")->get_attribute("id") : "")
-		<< "\tXP: " << level_["experience_modifier"]
-		<< "\tGPV: " << level_["mp_village_gold"]
-		<< "\tfog: " << level_["mp_fog"]
-		<< "\tshroud: " << level_["mp_shroud"]
-		<< "\tobservers: " << level_["observer"]
-		<< "\ttimer: " << level_["mp_countdown"]
-		<< (utils::string_bool(level_["mp_countdown"], false) ?
-			"\treservoir time: " + level_["mp_countdown_reservoir_time"] +
-			"\tinit time: " + level_["mp_countdown_init_time"] +
-			"\taction bonus: " + level_["mp_countdown_action_bonus"] +
-			"\tturn bonus: " + level_["mp_countdown_turn_bonus"] : "")
+	// If the game was already started we're actually advancing.
+	const bool advance = started_;
+	started_ = true;
+	// Prevent inserting empty keys when reading.
+	const config& s = level_;
+	const bool save = utils::string_bool(s["savegame"]);
+	LOG_GAME << network::ip_address(starter->first) << "\t"
+		<< starter->second.name() << "\t" << (advance ? "advanced" : "started")
+		<< (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
+		<< "). Settings: map: " << s["id"]
+		<< "\tera: "       << (s.child("era") ? (*s.child("era"))["id"] : "")
+		<< "\tXP: "        << s["experience_modifier"]
+		<< "\tGPV: "       << s["mp_village_gold"]
+		<< "\tfog: "       << s["mp_fog"]
+		<< "\tshroud: "    << s["mp_shroud"]
+		<< "\tobservers: " << s["observer"]
+		<< "\ttimer: "     << s["mp_countdown"]
+		<< (utils::string_bool(s["mp_countdown"]) ?
+			"\treservoir time: " + s["mp_countdown_reservoir_time"] +
+			"\tinit time: "      + s["mp_countdown_init_time"] +
+			"\taction bonus: "   + s["mp_countdown_action_bonus"] +
+			"\tturn bonus: "     + s["mp_countdown_turn_bonus"] : "")
 		<< "\n";
 
-	started_ = true;
 	nsides_ = 0;
 	// Set all side controllers to 'human' so that observers will understand
 	// that they can't take control of any sides if they happen to have the
@@ -121,40 +127,32 @@ void game::start_game(const player_map::const_iterator starter) {
 			(**sides.first)["controller"] = "human";
 		}
 	}
-	int turn =  lexical_cast_default<int>(level_["turn_at"], 1);
-	end_turn_ = (turn - 1) * nsides_;
+	int turn = 1;
+	int side = 0;
+	// Savegames have a snapshot that tells us which side starts.
+	if (s.child("snapshot")) {
+		turn = lexical_cast_default<int>((*s.child("snapshot"))["turn_at"], 1);
+		side = lexical_cast_default<int>((*s.child("snapshot"))["playing_team"], 0);
+		LOG_GAME << "Reload from turn: " << turn
+			<< ". Current side is: " << side + 1 << ".\n";
+	}
+	end_turn_ = (turn - 1) * nsides_ + side;
 	if (description_) {
-		(*description_)["turn"] = describe_turns(turn, level_["turns"]);
+		(*description_)["turn"] = describe_turns(turn, s["turns"]);
 	} else {
 		ERR_GAME << "ERROR: Game without description_ started. (" << id_ << ")\n";
+	}
+	if (advance) {
+		// Probably wouldn't hurt to do it on start as well..
+		history_.clear();
+		// Re-assign sides. Maybe not even needed?
+		update_side_data();
+		// When the host advances tell everyone that the next scenario data is
+		// available.
+		send_data(config("notify_next_scenario"), starter->first);
 	}
 	// Send [observer] tags for all observers that are already in the game.
 	send_observerjoins();
-}
-
-//! Resets a couple of things when advancing to the next scenario.
-void game::start_next_scenario() {
-	nsides_ = 0;
-	// Set all side controllers to 'human' so that observers will understand
-	// that they can't take control of any sides if they happen to have the
-	// same name as one of the descriptions.
-	for(config::child_itors sides = level_.child_range("side");
-		sides.first != sides.second; ++sides.first)
-	{
-		if ((**sides.first)["controller"] != "null") {
-			nsides_++;
-			(**sides.first)["controller"] = "human";
-		}
-	}
-	end_turn_ = 0;
-	if (description_) {
-		(*description_)["turn"] = describe_turns(1, level_["turns"]);
-	} else {
-		ERR_GAME << "ERROR: Game without description_ started. (" << id_ << ")\n";
-	}
-	history_.clear();
-	// Re-assign sides.
-	update_side_data();
 }
 
 //! Figures out which side to take and tells that side to the game owner.
@@ -343,14 +341,20 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	if(side_controllers_[side_num - 1] == "network" && sides_taken_[side_num - 1]
 	   && cfg["own_side"] != "yes")
 	{
-		network::send_data(construct_server_message(
-			"This side is already controlled by a player."), sock, true);
+		std::stringstream msg;
+		msg << "Side " << side_num << " is already controlled by '"
+			<< player_info_->find(sides_[side_num - 1])->second.name() << "'.";
+		network::send_data(construct_server_message(msg.str()), sock, true);
 		return;
 	}
 	// Check if the sender actually owns the side he gives away or is the host.
 	if (!(sides_[side_num - 1] == sock || (sock == owner_))) {
-		DBG_GAME << "Side belongs to: " << sides_[side_num - 1] << "\n";
-		network::send_data(construct_server_message("Not your side."), sock, true);
+		std::stringstream msg;
+		msg << "Side " << side_num << " is controlled by '"
+			<< player_info_->find(sides_[side_num - 1])->second.name()
+			<< "'. Not your side.";
+		DBG_GAME << msg << "\n";
+		network::send_data(construct_server_message(msg.str()), sock, true);
 		return;
 	}
 	if (newplayer->first == sock) {
@@ -708,7 +712,9 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 		|| !((*i)->child("speak") || (is_player(member)
 			&& ((*i)->child("label") || (*i)->child("rename")))))
 		{
-			LOG_GAME << "Removing illegal command: " << (*i)->debug() << "\n";
+			LOG_GAME << "Removing illegal command from: " << member
+				<< ". Current player is: " << current_player();
+			DBG_GAME << (*i)->debug();
 			marked.push_back(index - marked.size());
 		}
 		++index;
@@ -745,7 +751,7 @@ bool game::end_turn() {
 	if (description_ == NULL) {
 		return false;
 	}
-	(*description_)["turn"] = describe_turns(turn, level_["turns"]);
+	(*description_)["turn"] = describe_turns(turn, level_.get_attribute("turns"));
 
 	return true;
 }
@@ -882,7 +888,6 @@ bool game::remove_player(const network::connection player, const bool disconnect
 				drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
 				drop["controller"] = "ai";
 				network::send_data(drop, owner_, true);
-				sides_taken_[side] = false;
 			}
 		}
 		if (ai_transfer) {
@@ -894,12 +899,11 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	for (side_vector::iterator side = sides_.begin(); side != sides_.end(); ++side)	{
 		if (*side != player) continue;
 		//send the host a notification of removal of this side
-		if (players_.empty() == false) {
-			config drop;
-			drop["side_drop"] = lexical_cast<std::string, size_t>(side - sides_.begin() + 1);
-			drop["controller"] = side_controllers_[side - sides_.begin()];
-			network::send_data(drop, owner_, true);
-		}
+		config drop;
+		drop["side_drop"] = lexical_cast<std::string, size_t>(side - sides_.begin() + 1);
+		drop["controller"] = side_controllers_[side - sides_.begin()];
+		network::send_data(drop, owner_, true);
+
 		side_controllers_[side - sides_.begin()] = "null";
 		sides_taken_[side - sides_.begin()] = false;
 		sides_[side - sides_.begin()] = 0;
