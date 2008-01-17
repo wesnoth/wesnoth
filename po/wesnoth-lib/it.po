@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 13:01+0100\n"
-"PO-Revision-Date: 2008-01-07 11:41+0100\n"
+"PO-Revision-Date: 2008-01-16 11:39+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -390,11 +390,10 @@ msgstr ""
 "giocatore multiplo"
 
 #: src/game_preferences_display.cpp:164
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
-"Elimina i salvataggi in caso di vittoria in giocatore singolo/multiplo o "
-"sconfitta giocatore multiplo"
+"Elimina i salvataggi automatici in caso di vittoria in giocatore singolo/"
+"multiplo o sconfitta giocatore multiplo"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -623,9 +622,8 @@ msgid "Set the frequency of unit idle animations"
 msgstr "Imposta la frequenza delle animazioni delle unità inattive"
 
 #: src/game_preferences_display.cpp:335
-#, fuzzy
 msgid "Set maximum number of automatic saves to be retained"
-msgstr "Imposta i salvataggi massimi da conservare"
+msgstr "Imposta il massimo numero di salvataggi da conservare"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -747,7 +745,6 @@ msgid "Speed: "
 msgstr "Velocità: "
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
-#, fuzzy
 msgid "Maximum Auto-Saves: "
 msgstr "Salvataggi massimi: "
 
@@ -869,7 +866,6 @@ msgid "Save Game"
 msgstr "Salva la partita"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
 msgstr "Salva replay"
 
@@ -1266,12 +1262,12 @@ msgid ""
 "The error message is :"
 msgstr ""
 "Un errore dovuto a WML probabilmente non valido è capitato\n"
-"Il messaggio di errore è: "
+"Il messaggio di errore è:"
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
-"Quando segnali il bug per piacere includi il seguente messaggio di errore: "
+"Quando segnali il bug per piacere includi il seguente messaggio di errore:"
 
 #: src/wml_exception.cpp:90
 msgid ""
@@ -1279,11 +1275,14 @@ msgid ""
 "mandatory key '$key|' isn't set."
 msgstr ""
 "Nella sezione «[$section|]» dove «$primary_key| = $primary_value» la chiave "
-"obbligatoria «$key|» non è impostata."
+"obbligatoria «$key|» non è impostata.Nella sezione «[$section|]» dove "
+"«$primary_key| = $primary_value» la chiave obbligatoria «$key|» non è "
+"impostata."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+"Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 
 #~ msgid "Delete Autosaves"
