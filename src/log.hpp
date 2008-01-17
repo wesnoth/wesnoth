@@ -46,7 +46,7 @@ public:
 };
 
 void timestamps(bool);
-std::string get_timestamp(const time_t& t, const std::string& format="%b %d %H:%M:%S ");
+std::string get_timestamp(const time_t& t, const std::string& format="%Y%m%d %T ");
 
 extern logger err, warn, info, debug;
 extern log_domain general, ai, config, display, engine, network, mp_server,
