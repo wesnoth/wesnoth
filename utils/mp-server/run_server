@@ -1,10 +1,12 @@
 #!/bin/sh
-if [ $# -ne 1 ]; then
-	echo "Syntax: $0 <server version>"
+if [ $# -lt 1 ]; then
+	echo "Syntax: $0 <server version> [<additional parameters for wesnothd>]"
 	exit 1
 fi
 
 SERVER=$1
+shift
+PARAMETERS=$*
 SERVERBASE=$HOME/servers/$SERVER
 SOURCE=$HOME/source/trunk
 case $SERVER in
@@ -32,7 +34,7 @@ do
 		REV=$(ls -l $SERVERBASE/build | sed -e 's,.*wesnothd-\(svn-.*\)_.*/,\1,')
 		cd $SERVERBASE/build || exit 1
 		[ -x bin/wesnothd-$SERVER ] || exit 1
-		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads 30 > $SERVERBASE/logs/wesnothd.$DATE.$REV.log 2>&1 &
+		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads 30 $PARAMETERS > $SERVERBASE/logs/wesnothd.$DATE.$REV.log 2>&1 &
 		PID=$!
 		echo -n "started $SERVER server (revision: $REV, pid: $PID) at: "; date
 		cd $SERVERBASE
