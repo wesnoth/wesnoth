@@ -147,6 +147,7 @@ void game::start_game(const player_map::const_iterator starter) {
 		// Probably wouldn't hurt to do it on start as well..
 		history_.clear();
 		// Re-assign sides. Maybe not even needed?
+		// I think this should generally not be done on a started game.
 		//update_side_data();
 		// When the host advances tell everyone that the next scenario data is
 		// available.
@@ -339,7 +340,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		return;
 	}
 
-	if(side_controllers_[side_num - 1] == "network" && sides_taken_[side_num - 1]
+/*	if(side_controllers_[side_num - 1] == "network" && sides_taken_[side_num - 1]
 	   && cfg["own_side"] != "yes")
 	{
 		std::stringstream msg;
@@ -347,13 +348,12 @@ void game::transfer_side_control(const network::connection sock, const config& c
 			<< player_info_->find(sides_[side_num - 1])->second.name() << "'.";
 		network::send_data(construct_server_message(msg.str()), sock, true);
 		return;
-	}
+	}*/
 	// Check if the sender actually owns the side he gives away or is the host.
 	if (!(sides_[side_num - 1] == sock || (sock == owner_))) {
 		std::stringstream msg;
-		msg << "Side " << side_num << " is controlled by '"
-			<< player_info_->find(sides_[side_num - 1])->second.name()
-			<< "'. Not your side.";
+		msg << "Side " << side_num << " is already controlled by '"
+			<< player_info_->find(sides_[side_num - 1])->second.name() << "'.";
 		DBG_GAME << msg << "\n";
 		network::send_data(construct_server_message(msg.str()), sock, true);
 		return;
@@ -713,8 +713,13 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 		|| !((*i)->child("speak") || (is_player(member)
 			&& ((*i)->child("label") || (*i)->child("rename")))))
 		{
-			LOG_GAME << "Removing illegal command from: " << member
-				<< ". Current player is: " << current_player() << "\n";
+			std::stringstream msg;
+			msg << "Removing illegal command from: "
+				<< player_info_->find(member)->second.name()
+				<< ". Current player is: " << current_player() + 1
+				<< " of " << nsides_ << "\n";
+			LOG_GAME << msg;
+			send_data(construct_server_message(msg.str()));
 			DBG_GAME << (*i)->debug();
 			marked.push_back(index - marked.size());
 		}
