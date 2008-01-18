@@ -146,9 +146,8 @@ void game::start_game(const player_map::const_iterator starter) {
 	if (advance) {
 		// Probably wouldn't hurt to do it on start as well..
 		history_.clear();
-		// Re-assign sides. Maybe not even needed?
-		// I think this should generally not be done on a started game.
-		//update_side_data();
+		// Re-assign sides to allow correct filtering of commands.
+		update_side_data();
 		// When the host advances tell everyone that the next scenario data is
 		// available.
 		send_data(config("notify_next_scenario"), starter->first);
@@ -716,8 +715,8 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 			std::stringstream msg;
 			msg << "Removing illegal command from: "
 				<< player_info_->find(member)->second.name()
-				<< ". Current player is: " << current_player() + 1
-				<< " of " << nsides_ << "\n";
+				<< ". Current player is: "
+				<< player_info_->find(current_player())->second.name() << ".\n";
 			LOG_GAME << msg;
 			send_data(construct_server_message(msg.str()));
 			DBG_GAME << (*i)->debug();
