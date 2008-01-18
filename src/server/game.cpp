@@ -718,11 +718,11 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 		{
 			std::stringstream msg;
 			msg << "Removing illegal command from: "
-				<< (player_info_->find(member) == player_info_->end()
+				<< (player_info_->find(member) != player_info_->end()
 					? player_info_->find(member)->second.name()
 					: "")
 				<< ". Current player is: "
-				<< (player_info_->find(current_player()) == player_info_->end()
+				<< (player_info_->find(current_player()) != player_info_->end()
 					? player_info_->find(current_player())->second.name()
 					: "")
 				<< ".\n";
