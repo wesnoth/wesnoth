@@ -84,6 +84,7 @@ protected:
 			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE)=0;
 	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
 	void send_command(const std::string& cmd, const std::string& args="");
+	void change_logging(const std::string& data);
 };
 
 class menu_handler : private chat_handler {

@@ -46,6 +46,7 @@
 
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
+#define DBG_NG LOG_STREAM(info, engine)
 
 namespace {
 
@@ -1807,6 +1808,46 @@ private:
 	{
 	}
 
+	void chat_handler::change_logging(const std::string& data) {
+		// :log <level> <domain>  Change the log level of a log domain.
+		const std::string::const_iterator j =
+				std::find(data.begin(), data.end(), ' ');
+		if (j == data.end()) return;
+		const std::string level(data.begin(),j);
+		const std::string domain(j+1,data.end());
+		int severity;
+		if (level == "error") severity = 0;
+		else if (level == "warning") severity = 1;
+		else if (level == "info") severity = 2;
+		else if (level == "debug") severity = 3;
+		else {
+			utils::string_map symbols;
+			symbols["level"] = level;
+			const std::string& msg =
+					vgettext("Unknown debug level: '$level'.", symbols);
+			ERR_NG << msg << "\n";
+			add_chat_message(time(NULL), _("error"), 0, msg);
+			return;
+		}
+		if (!lg::set_log_domain_severity(domain, severity)) {
+			utils::string_map symbols;
+			symbols["domain"] = domain;
+			const std::string& msg =
+					vgettext("Unknown debug domain: '$domain'.", symbols);
+			ERR_NG << msg << "\n";
+			add_chat_message(time(NULL), _("error"), 0, msg);
+			return;
+		} else {
+			utils::string_map symbols;
+			symbols["level"] = level;
+			symbols["domain"] = domain;
+			const std::string& msg =
+					vgettext("Switched domain: '$domain' to level: '$level'.", symbols);
+			LOG_NG << msg << "\n";
+			add_chat_message(time(NULL), "log", 0, msg);
+		}
+	}
+
 	void chat_handler::send_command(const std::string& cmd, const std::string& args) {
 		config data;
 		if (cmd == "muteall") {
@@ -1832,7 +1873,7 @@ private:
 
 		if(is_command){
 			std::string::size_type sp1 = message.find_first_of(' ');
-			cmd = message.substr(0,sp1);
+			cmd = message.substr(1, sp1 - 1);
 			if(sp1 != std::string::npos) {
 				std::string::size_type arg1_start = message.find_first_not_of(' ',sp1);
 				if(arg1_start != std::string::npos) {
@@ -1854,17 +1895,19 @@ private:
 			send_chat_message(message, allies_only);
 			return;
 		}
+		DBG_NG << "cmd: '" << cmd << "' argc: '" << argc << "' arg1: '" << arg1
+			<< "' arg2: '" << arg2 << "'\n";
 		const std::string& help_chat_help = _("Commands: msg/whisper <nick>"
 				" <message>, list <subcommand> [<argument>], me/emote <message>."
 				" Type /help [<command>] for detailed instructions.");
-		if ((cmd == "/me" || cmd == "/emote") && argc > 0) {
+		if ((cmd == "me" || cmd == "emote") && argc > 0) {
 			//emote message
-			send_chat_message("/me" + message.substr(cmd.size()), allies_only);
-		} else if (cmd == "/query" || cmd == "/ban" || cmd == "/kick"
-				|| cmd == "/mute" || cmd == "/muteall" || cmd == "/ping")
+			send_chat_message("/me" + message.substr(cmd.size() + 1), allies_only);
+		} else if (cmd == "query" || cmd == "ban" || cmd == "kick"
+				|| cmd == "mute" || cmd == "muteall" || cmd == "ping")
 		{
-			send_command(cmd.substr(1), (argc > 1) ? arg1 + " " + arg2 : arg1);
-		} else if ((cmd == "/msg" || cmd == "/whisper") && argc > 1) {
+			send_command(cmd, (argc > 1) ? arg1 + " " + arg2 : arg1);
+		} else if ((cmd == "msg" || cmd == "whisper") && argc > 1) {
 			config cwhisper,data;
 			cwhisper["message"] = arg2;
 			cwhisper["sender"] = preferences::login();
@@ -1873,7 +1916,9 @@ private:
 			add_chat_message(time(NULL), "whisper to " + cwhisper["receiver"], 0,
 					cwhisper["message"], game_display::MESSAGE_PRIVATE);
 			network::send_data(data, 0, true);
-		} else if (cmd == "/help") {
+		} else if (cmd == "log") {
+			change_logging((argc > 1) ? arg1 + " " + arg2 : arg1);
+		} else if (cmd == "help") {
 			bool have_command = (argc > 0);
 			bool have_subcommand = (argc > 1);
 			const std::string& command = arg1;
@@ -1926,7 +1971,7 @@ private:
 			} else {
 				add_chat_message(time(NULL), "help", 0, _("Unknown command."));
 			}
-		} else if (cmd == "/list" && argc > 0) {
+		} else if (cmd == "list" && argc > 0) {
 			if (arg1 == "addignore") {
 				const std::string msg =
 						(preferences::add_ignore(arg2)
@@ -2116,41 +2161,7 @@ private:
 			}
 		} else if (cmd == "log") {
 			// :log <level> <domain>  Change the log level of a log domain.
-			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
-			if(j == data.end()) return;
-			const std::string level(data.begin(),j);
-			const std::string domain(j+1,data.end());
-			int severity;
-			if (level == "error") severity = 0;
-			else if (level == "warning") severity = 1;
-			else if (level == "info") severity = 2;
-			else if (level == "debug") severity = 3;
-			else {
-				utils::string_map symbols;
-				symbols["level"] = level;
-				const std::string msg = vgettext(
-						"Unknown debug level: '$level'.", symbols);
-				ERR_NG << msg << "\n";
-				add_chat_message(time(NULL), _("error"), 0, msg);
-				return;
-			}
-			if (!lg::set_log_domain_severity(domain, severity)) {
-				utils::string_map symbols;
-				symbols["domain"] = domain;
-				const std::string msg = vgettext(
-						"Unknown debug domain: '$domain'.", symbols);
-				ERR_NG << msg << "\n";
-				add_chat_message(time(NULL), _("error"), 0, msg);
-				return;
-			} else {
-				utils::string_map symbols;
-				symbols["level"] = level;
-				symbols["domain"] = domain;
-				const std::string msg = vgettext(
-						"Switched domain: '$domain' to level: '$level'.", symbols);
-				LOG_NG << msg << "\n";
-				add_chat_message(time(NULL), cmd, 0, msg);
-			}
+			change_logging(data);
 		} else if (cmd == "theme") {
 			preferences::show_theme_dialog(*gui_);
 		} else if (cmd == "muteall" || cmd == "ping"
