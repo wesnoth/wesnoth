@@ -58,7 +58,7 @@ class unit_animation
 		image::locator image() const { return unit_anim_.get_current_frame().image() ; }
 		image::locator image_diagonal() const { return unit_anim_.get_current_frame().image_diagonal() ; }
 		std::string sound() const { return unit_anim_.get_current_frame().sound() ; };
-		Uint32 blend_with() const{ return unit_anim_.get_current_frame().blend_with() ; };
+		Uint32 blend_with() const{ return unit_anim_.get_current_frame().blend_with(0) ; };
 		const std::string &halo(const std::string&default_val ="") const{ return unit_anim_.halo(default_val); };
 		int halo_x(const int default_val = 0) const{ return unit_anim_.halo_x(default_val); };
 		int halo_y(const int default_val = 0) const{ return unit_anim_.halo_y(default_val); };
@@ -95,6 +95,7 @@ class unit_animation
 			int halo_x(const int default_val = 0) const;
 			int halo_y(const int default_val = 0) const;
 			double blend_ratio(const double default_val = 0) const;
+			Uint32 blend_with(const Uint32 default_val = 0) const;
 			fixed_t highlight_ratio(const float default_val = 1.0) const;
 			double offset(double default_val =0.0) const;
 			std::pair<std::string,Uint32> text() const ;

@@ -80,7 +80,7 @@ class unit_frame {
 		int halo_x(int current_time,const int default_val=0) const { return halo_x_.get_current_element(current_time,default_val); }
 		int halo_y(int current_time,const int default_val=0) const { return halo_y_.get_current_element(current_time,default_val); }
 		int duration() const { return duration_; }
-		Uint32 blend_with() const { return blend_with_; }
+		Uint32 blend_with(const Uint32 default_val) const { return blend_with_?blend_with_:default_val; }
 		double blend_ratio(int current_time,const fixed_t default_val=0.0) const
 			{ return blend_ratio_.get_current_element(current_time,default_val); }
 

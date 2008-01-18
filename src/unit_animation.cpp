@@ -533,6 +533,11 @@ double unit_animation::crude_animation::blend_ratio(const double default_val) co
 		ftofxp(blend_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val))); 
 }
 
+Uint32 unit_animation::crude_animation::blend_with(const Uint32 default_val) const
+{
+	return get_current_frame().blend_with(blend_with_?blend_with_:default_val);
+}
+
 fixed_t unit_animation::crude_animation::highlight_ratio(const float default_val) const
 {
 	return get_current_frame().highlight_ratio(get_current_frame_time(),highlight_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val));
@@ -735,7 +740,7 @@ void unit_animation::crude_animation::redraw()
 		bool facing_west = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::SOUTH_WEST;
 		bool facing_north = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::NORTH || direction == gamemap::location::NORTH_EAST;
 		game_display::get_singleton()->render_unit_image(x- image->w/2, y - image->h/2, image, facing_west, false,
-				highlight_ratio(), blend_with_, blend_ratio(),0,!facing_north);
+				highlight_ratio(), blend_with(0), blend_ratio(),0,!facing_north);
 	}
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
