@@ -710,7 +710,8 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 		if ((*i)->all_children().size() != 1
 		// Chatting is never an illegal command.
 		|| !((*i)->child("speak") || (is_player(member)
-			&& ((*i)->child("label") || (*i)->child("rename")))))
+			&& ((*i)->child("label") || (*i)->child("clear_label")
+				|| (*i)->child("rename")/* || (*i)->child("choose")*/))))
 		{
 			std::stringstream msg;
 			msg << "Removing illegal command from: "
