@@ -124,9 +124,10 @@ void game::start_game(const player_map::const_iterator starter) {
 	{
 		if ((**sides.first)["controller"] != "null") {
 			nsides_++;
-			(**sides.first)["controller"] = "human";
+			if (!advance) (**sides.first)["controller"] = "human";
 		}
 	}
+	DBG_GAME << "Number of sides: " << nsides_ << "\n";
 	int turn = 1;
 	int side = 0;
 	// Savegames have a snapshot that tells us which side starts.
@@ -146,7 +147,7 @@ void game::start_game(const player_map::const_iterator starter) {
 		// Probably wouldn't hurt to do it on start as well..
 		history_.clear();
 		// Re-assign sides. Maybe not even needed?
-		update_side_data();
+		//update_side_data();
 		// When the host advances tell everyone that the next scenario data is
 		// available.
 		send_data(config("notify_next_scenario"), starter->first);
@@ -713,7 +714,7 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 			&& ((*i)->child("label") || (*i)->child("rename")))))
 		{
 			LOG_GAME << "Removing illegal command from: " << member
-				<< ". Current player is: " << current_player();
+				<< ". Current player is: " << current_player() << "\n";
 			DBG_GAME << (*i)->debug();
 			marked.push_back(index - marked.size());
 		}

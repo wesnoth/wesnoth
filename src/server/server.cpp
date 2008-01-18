@@ -1064,9 +1064,9 @@ void server::process_data_game(const network::connection sock, const config& dat
 			return;
 		}
 		const config& s = *data.child("store_next_scenario");
-		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-			<< "\tadvanced game:\t\"" << g->name() << "\" ("
-			<< g->id() << ") to the next scenario: '" << s["id"] << "'.\n";
+		// Record the full scenario in g->level()
+		g->level() = s;
+		g->start_game(pl);
 		if (g->description() == NULL) {
 			ERR_SERVER << network::ip_address(sock) << "\tERROR: \""
 				<< g->name() << "\" (" << g->id()
@@ -1103,10 +1103,6 @@ void server::process_data_game(const network::connection sock, const config& dat
 		//desc["client_version"] = s["version"];
 		// Send the update of the game description to the lobby.
 		lobby_.send_data(games_and_users_list_diff());
-
-		// Record the full scenario in g->level()
-		g->level() = s;
-		g->start_game(pl);
 		return;
 	// If a player advances to the next scenario of a mp campaign. (deprecated)
 	} else if(data.child("notify_next_scenario")) {
