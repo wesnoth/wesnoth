@@ -224,7 +224,7 @@ std::string chat::format_message(const msg& message)
 				+ message.message.substr(3) + ">\n";
 	} else {
 		return preferences::get_chat_timestamp(message.time) + "<" + message.user
-				+ ">" + message.message + "\n";
+				+ "> " + message.message + "\n";
 	}
 }
 

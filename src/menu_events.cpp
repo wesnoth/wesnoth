@@ -1808,8 +1808,9 @@ private:
 	{
 	}
 
+	//! Change the log level of a log domain.
+	//! @param data String of the form: '<level> <domain>'
 	void chat_handler::change_logging(const std::string& data) {
-		// :log <level> <domain>  Change the log level of a log domain.
 		const std::string::const_iterator j =
 				std::find(data.begin(), data.end(), ' ');
 		if (j == data.end()) return;
