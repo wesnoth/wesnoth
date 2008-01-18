@@ -28,9 +28,13 @@
 #include "wml_separators.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "playmp_controller.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
+#include "wml_exception.hpp"
+
+#define ERR_CF LOG_STREAM(err, config)
 
 namespace {
 std::vector<std::string> empty_string_vector;
@@ -427,7 +431,10 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				}
 				games_.back().map_info += " - " + games_.back().map_info_size;
 			} catch(gamemap::incorrect_format_exception &e) {
-				std::cerr << "illegal map: " << e.msg_ << "\n";
+				ERR_CF << "illegal map: " << e.msg_ << "\n";
+				verified = false;
+			} catch(twml_exception& e) {
+				ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
 				verified = false;
 			}
 		} else {

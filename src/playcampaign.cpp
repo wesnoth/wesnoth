@@ -33,6 +33,7 @@
 #include "gettext.hpp"
 #include "game_errors.hpp"
 #include "sound.hpp"
+#include "wml_exception.hpp"
 
 #include <cassert>
 #include <map>
@@ -102,6 +103,8 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
 	} catch(gamemap::incorrect_format_exception& e) {
 		gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
+	} catch(twml_exception& e) {
+		e.show(disp);
 	}
 }
 
@@ -390,6 +393,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		} catch(config::error& e) {
 			std::cerr << "caught config::error...\n";
 			gui::show_error_message(disp, _("Error while reading the WML: ") + e.message);
+			return QUIT;
+		} catch(twml_exception& e) {
+			e.show(disp);
 			return QUIT;
 		}
 

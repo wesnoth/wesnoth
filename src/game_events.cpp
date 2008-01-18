@@ -38,6 +38,7 @@
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 #include "wesconfig.h"
+#include "wml_exception.hpp"
 
 #include <cassert>
 #include <cstdlib>
@@ -1487,6 +1488,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			mask.read(cfg["mask"]);
 		} catch(gamemap::incorrect_format_exception&) {
 			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
+			return rval;
+		} catch(twml_exception& e) {
+			e.show(*screen);
 			return rval;
 		}
 

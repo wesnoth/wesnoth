@@ -32,10 +32,13 @@
 #include "log.hpp"
 #include "video.hpp"
 #include "serialization/string_utils.hpp"
+#include "wml_exception.hpp"
 #include "wml_separators.hpp"
 
 #include <cassert>
 #include <memory>
+
+#define ERR_CF LOG_STREAM(err, config)
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};
@@ -480,12 +483,14 @@ void create::process_event()
 		try {
 			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
 		} catch(gamemap::incorrect_format_exception& e) {
-			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";
+			ERR_CF << "map could not be loaded: " << e.msg_ << "\n";
 
 #ifndef USE_TINY_GUI
 			tooltips::clear_tooltips(minimap_rect_);
 			tooltips::add_tooltip(minimap_rect_,e.msg_);
 #endif
+		} catch(twml_exception& e) {
+			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
 		}
 
 		launch_game_.enable(map.get() != NULL);
@@ -641,7 +646,9 @@ void create::hide_children(bool hide)
 			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
 #endif
 		} catch(gamemap::incorrect_format_exception& e) {
-			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";
+			ERR_CF << "map could not be loaded: " << e.msg_ << "\n";
+		} catch(twml_exception& e) {
+			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
 		}
 
 	}

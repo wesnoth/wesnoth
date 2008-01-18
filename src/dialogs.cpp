@@ -33,15 +33,15 @@
 #include "unit.hpp"
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
+#include "wml_exception.hpp"
 
 #include <assert.h>
 #include <clocale>
 
-
 #define LOG_NG LOG_STREAM(info, engine)
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_G  LOG_STREAM(err, general)
-
+#define ERR_CF LOG_STREAM(err, config)
 
 namespace dialogs
 {
@@ -509,7 +509,10 @@ void save_preview_pane::draw_contents()
 				if(map_surf != NULL) {
 					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
 				}
-			} catch(gamemap::incorrect_format_exception&) {
+			} catch(gamemap::incorrect_format_exception& e) {
+				ERR_CF << "map could not be loaded: " << e.msg_ << '\n';
+			} catch(twml_exception& e) {
+				ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
 			}
 		}
 	}
