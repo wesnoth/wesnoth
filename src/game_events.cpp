@@ -1822,13 +1822,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 		
 		const vconfig::child_list text_input_elements = cfg.get_children("text_input");
-		bool has_text_input=false;
-		if(text_input_elements.size()>1)
+		const bool has_text_input = (text_input_elements.size() == 1);
+		if(text_input_elements.size()>1) {
 			lg::wml_error << "too many text_input tags, only one accepted\n";
-		else if(text_input_elements.size()==1)
-			has_text_input=true;
+		}
 		
-		const vconfig text_input_element=text_input_elements.front();
+		const vconfig text_input_element = has_text_input ? 
+			text_input_elements.front() : vconfig();
 
 		surface surface(NULL);
 		if(image.empty() == false) {
