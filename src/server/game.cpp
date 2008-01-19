@@ -713,7 +713,7 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 		if ((*i)->all_children().size() != 1
 		// Chatting is never an illegal command.
 		|| !((*i)->child("speak") || (is_player(member)
-			&& ((*i)->child("label") || (*i)->child("clear_label")
+			&& ((*i)->child("label") || (*i)->child("clear_labels")
 				|| (*i)->child("rename")/* || (*i)->child("choose")*/))))
 		{
 			std::stringstream msg;
@@ -726,7 +726,7 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 					? player_info_->find(current_player())->second.name()
 					: "")
 				<< ".\n";
-			LOG_GAME << msg;
+			LOG_GAME << msg.str();
 			send_data(construct_server_message(msg.str()));
 			DBG_GAME << (*i)->debug();
 			marked.push_back(index - marked.size());
