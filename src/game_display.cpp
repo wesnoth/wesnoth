@@ -414,7 +414,10 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image(shroud_image, image::SCALED_TO_HEX));
 			} else if(fogged(*it)) {
 				tile_stack_append(image::get_image(fog_image, image::SCALED_TO_HEX));
-			} else if(game_mode_ != RUNNING) {
+			} 
+			// Linger overlay unconditionally otherwise it might give glitches
+			// so it's drawn over the shroud and fog.
+			if(game_mode_ != RUNNING) {
 				blit.surf.push_back(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
 				drawing_buffer_add(LAYER_LINGER_OVERLAY, drawing_order, blit);
 				blit.surf.clear();
