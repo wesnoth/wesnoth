@@ -1333,6 +1333,9 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		const attack_type& attw = attack_type(*att.weapon);
 		const attack_type& defw = attack_type(def.weapon ? *def.weapon : no_weapon);
 
+		attw.set_specials_context(attacker->first, defender->first, attacker->second, true);
+		defw.set_specials_context(attacker->first, defender->first, attacker->second, false);
+
 		//if there is an attack special or defend special, we output a single space for the other unit, to make sure
 		//that the attacks line up nicely.
 		std::string special_pad = "";

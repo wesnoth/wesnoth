@@ -1848,7 +1848,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		// and there is no input to be made, show the dialog.
 		if(get_replay_source().at_end() || (options.empty() && !has_text_input) ) {
   
-			if (side_for_show)
+			if (side_for_show && !get_replay_source().is_skipping())
 			{
                 const t_string msg = cfg["message"];
     			const std::string duration_str = cfg["duration"];

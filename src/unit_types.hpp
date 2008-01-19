@@ -56,7 +56,7 @@ public:
                               const game_data* gamedata, const unit_map* unitmap,
 							  const gamemap* map, const gamestatus* game_status,
 							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
-	void set_specials_context(const gamemap::location& loc,const unit& un) const;
+	void set_specials_context(const gamemap::location& loc,const gamemap::location& dloc, const unit& un, bool attacker =true) const;
 
 	bool has_special_by_id(const std::string& special) const;
 	//this function returns a random animation out of the possible

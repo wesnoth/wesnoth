@@ -219,7 +219,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		std::vector<attack_type>& attacks = u->second.attacks();
 		for(std::vector<attack_type>::iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
-			at_it->set_specials_context(u->first,u->second);
+			at_it->set_specials_context(u->first,gamemap::location(),u->second);
 			const std::string& lang_type = gettext(at_it->type().c_str());
 			str.str("");
 			str << "<245,230,193>";

@@ -25,6 +25,8 @@
 
 #include <cassert>
 
+#define LOG_NG LOG_STREAM(info, engine)
+
 /*
  *
  * [abilities]
@@ -595,6 +597,7 @@ std::string attack_type::weapon_specials(bool force) const
 			char const *s = (force || special_active(**j, true, true))
 				? "name" : "name_inactive";
 			std::string const &name = (**j)[s];
+
 			if (!name.empty()) {
 				if (!res.empty()) res += ',';
 				res += name;
@@ -810,16 +813,16 @@ void attack_type::set_specials_context(const gamemap::location& aloc,const gamem
 	other_attack_ = other_attack;
 }
 
-void attack_type::set_specials_context(const gamemap::location& loc,const unit& un) const
+void attack_type::set_specials_context(const gamemap::location& loc, const gamemap::location& dloc, const unit& un, bool attacker) const
 {
 	aloc_ = loc;
-	dloc_ = gamemap::location();
+	dloc_ = dloc;
 	gamedata_ = un.gamedata_;
 	unitmap_ = un.units_;
 	map_ = un.map_;
 	game_status_ = un.gamestatus_;
 	teams_ = un.teams_;
-	attacker_ = true;
+	attacker_ = attacker;
 	other_attack_ = NULL;
 }
 

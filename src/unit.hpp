@@ -370,7 +370,7 @@ private:
 
 	config modifications_;
 
-	friend void attack_type::set_specials_context(const gamemap::location& loc,const unit& un) const;
+	friend void attack_type::set_specials_context(const gamemap::location& loc, const gamemap::location&, const unit& un, bool) const;
 	const game_data* gamedata_;
 	const unit_map* units_;
 	const gamemap* map_;
