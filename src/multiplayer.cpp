@@ -311,7 +311,8 @@ static void enter_wait_mode(game_display& disp, const config& game_config, game_
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, nolog, IO_CLIENT, preferences::skip_mp_replay());
+		play_game(disp, state, game_config, data, nolog, IO_CLIENT, 
+			preferences::skip_mp_replay() && observe);
 		recorder.clear();
 
 		break;

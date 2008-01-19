@@ -7,6 +7,8 @@ Version 1.3.14+svn:
    * fixed bug #10779: Rejoining game causes major problems
    * Fixed :control command to work
    * damage statistics for the current turn also works for observers now
+   * skip replay no longer skips the story for players only for observers
+     (bug #9538)
  * user interface:
    * Made ESC clear hotkey when changing hotkeys
    * linger mode overlay is also drawn over fog and shroud (bug #10811)
