@@ -135,7 +135,7 @@ if __name__ == "__main__":
                     campaign.debug(show_contents = True,
                         use_color = options.color)
             else:
-                column_sizes = [4, 6, 7, 7, 9, 4, 9]
+                column_sizes = [5, 7, 8, 8, 10, 5, 10]
                 columns = [["name", "author", "version", "uploads", "downloads", "size", "timestamp"]]
                 for campaign in campaigns.get_all("campaign"):  
                     column = [campaign.get_text_val("name", "?"),

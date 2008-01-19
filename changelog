@@ -19,6 +19,8 @@ Version 1.3.14+svn:
    * converted NO_MAP_DATA to new map format
    * fixed unchecked vector access
    * added a more graceful handling of maps without a header (bug #10787)
+   * make sure the python campaign client list shows a space between the 
+     headers if the size of the column is smaller than the header (eg uploads)
 
 Version 1.3.14:
  * campaigns:
