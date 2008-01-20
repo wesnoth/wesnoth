@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file replay.hpp
+//! Replay control code.
+
 #ifndef REPLAY_H_INCLUDED
 #define REPLAY_H_INCLUDED
 

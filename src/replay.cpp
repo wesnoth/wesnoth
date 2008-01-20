@@ -12,6 +12,11 @@
    See the COPYING file for more details.
 */
 
+//! @file replay.cpp
+//! Replay control code.
+//!
+//! See http://www.wesnoth.org/wiki/ReplayWML for more info.
+
 #include "global.hpp"
 
 #include "actions.hpp"
