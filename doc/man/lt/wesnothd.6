@@ -18,20 +18,20 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd "Mþ¹io dìl Wesnoth daugelio ¾aidìjù ¾aidimo tinklo demonas"
+.TH WESNOTHD 6 2007 wesnothd "Mûðio dël Wesnoth daugelio þaidëjø þaidimo tinklo demonas"
 .
 .SH PAVADINIMAS
 .
-wesnothd \- Mþ¹io dìl \fBWesnoth\fP daugelio ¾aidìjù ¾aidimo tinklo demonas
+wesnothd \- Mûðio dël \fBWesnoth\fP daugelio þaidëjø þaidimo tinklo demonas
 .
-.SH REZIUMÌ
+.SH REZIUMË
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIkelias\fP\|] [\|\fB\-p\fP \fIprievadas\fP\|]
 [\|\fB\-t\fP \fIskaièius\fP\|] [\|\fB\-T\fP \fIskaièius\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH APRA©YMAS
+.SH APRAÐYMAS
 .
 Manages Battle for Wesnoth multiplayer games. See
 http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
@@ -46,10 +46,10 @@ tells wesnothd where to find the config file to use. See the section
 sending SIGHUP to the server process.
 .TP 
 \fB\-d, \-\-daemon\fP
-paleid¾ia wesnothd kaip demon±.
+paleidþia wesnothd kaip demonà.
 .TP 
 \fB\-h, \-\-help\fP
-pasako Jums, k± daro komandinìs eilutìs parametrai.
+pasako Jums, kà daro komandinës eilutës parametrai.
 .TP 
 \fB\-\-log\-\fP\fIlygis\fP\fB=\fP\fIdomenas1\fP\fB,\fP\fIdomenas2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
@@ -70,29 +70,29 @@ sets the maximum number of worker threads that will be created.  If set to
 \fB0\fP there will be no limit (default: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-parodo versijos numerç ir i¹sijungia.
+parodo versijos numerá ir iðsijungia.
 .TP 
 \fB\-v, \-\-verbose\fP
 turns debug logging on.
 .
-.SH "SERVERIO KONFIGÞRACIJA"
+.SH "SERVERIO KONFIGÛRACIJA"
 .
-.SS "Bandra sintaksì yra:"
+.SS "Bandra sintaksë yra:"
 .
 .P
 [\fIelementas\fP]
 .IP
-raktas="\fIvertì\fP"
+raktas="\fIvertë\fP"
 .IP
-raktas=?\fIvertì\fP,\fIvertì\fP,...?
+raktas=¥\fIvertë\fP,\fIvertë\fP,...´
 .P
 [/\fIelementas\fP]
 .
-.SS "Globalþs raktai:"
+.SS "Globalûs raktai:"
 .
 .TP 
 \fBconnections_allowed\fP
-Leidi¾amù prisijungimù skaièius i¹ to paties IP. (default: \fB5\fP)
+Leidiþamø prisijungimø skaièius ið to paties IP. (default: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
 Names/nicks that are not accepted by the server. `*' and `?' from wildcard
@@ -101,7 +101,7 @@ patterns are supported. See \fBglob\fP(7)  for more details.  Default values
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-Leid¾iamù prane¹imù skaièius esanèiù \fBmessages_time_period\fP. (numatyta:
+Leidþiamø praneðimø skaièius esanèiø \fBmessages_time_period\fP. (numatyta:
 \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
@@ -109,28 +109,28 @@ The time period (in seconds) message flooding is detected in. (default:
 \fB10\fP seconds)
 .TP 
 \fBmotd\fP
-Dienos prane¹imas.
+Dienos praneðimas.
 .TP 
 \fBpasswd\fP
-Slapta¾odis naudojamas gauti administratoriaus teises. Paparstai jis
-prasideda ?admin ?.
+Slaptaþodis naudojamas gauti administratoriaus teises. Paparstai jis
+prasideda ¥admin ´.
 .TP 
 \fBversions_accepted\fP
 A comma separated list of version strings to be accepted by the server. `*'
 and `?' from wildcard patterns are supported.  (defaults to the
 corresponding wesnoth version)
 .br
-Pavyzdys: \fBversions_accepted="*"\fP priima bet koki± versij±.
+Pavyzdys: \fBversions_accepted="*"\fP priima bet kokià versijà.
 .
-.SS "Globalþs elementai:"
+.SS "Globalûs elementai:"
 .
 .P
 \fB[redirect]\fP Elementas, nurodantis serveriui kur peradresuoti tam tikras
-klientù versijas.
+klientø versijas.
 .RS
 .TP 
 \fBhost\fP
-Serverio, ç kurç peradresuoti, adresas.
+Serverio, á kurá peradresuoti, adresas.
 .TP 
 \fBport\fP
 Prievadas, prie kurio jungtis.
@@ -140,27 +140,27 @@ A comma separated list of versions to redirect. Behaves the same way as
 \fBversions_accepted\fP in regard to wildcard patterns.
 .RE
 .P
-\fB[proxy]\fP Elementas nurodantis serveriui elgtis kaip proksi ir persiùsti
-visus prisijungusius klientus ç nurodyt± serverç.  Priima tuos paèius raktus
+\fB[proxy]\fP Elementas nurodantis serveriui elgtis kaip proksi ir persiøsti
+visus prisijungusius klientus á nurodytà serverá.  Priima tuos paèius raktus
 kaip ir \fB[redirect]\fP.
 .
 .SH AUTORIUS
 .
-Para¹ì David White <davidnwhite@verizon.net>.  Redagavo Nils Kneuper
+Paraðë David White <davidnwhite@verizon.net>.  Redagavo Nils Kneuper
 <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> ir Soliton
-<soliton.de@gmail.com>.  ©ç dokumentacijos puslapç i¹ prad¾iù para¹ì
+<soliton.de@gmail.com>.  Ðá dokumentacijos puslapá ið pradþiø paraðë
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Aplankykite oficialù puslapç: http://www.wesnoth.org/
+Aplankykite oficialø puslapá: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Tai yra laisva programa; ¹i programa licencijuota Free Software Foundation
-(Laisvos programinìs çrangos fondo) paskelbta GPL 2 versija.  Nìra JOKIOS
+Tai yra laisva programa; ði programa licencijuota Free Software Foundation
+(Laisvos programinës árangos fondo) paskelbta GPL 2 versija.  Nëra JOKIOS
 garantijos; netgi PERKAMUMO ar TINKAMUMO KONKRETIEMS TIKSLAMS.
 .
-.SH "TAIP PAT ®IÞRÌKITE"
+.SH "TAIP PAT ÞIÛRËKITE"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
