@@ -1858,8 +1858,9 @@ bool clear_shroud_unit(const gamemap& map,
 		const game_data& gamedata,
 		const unit_map& units, const gamemap::location& loc,
 		std::vector<team>& teams, int team,
-		const std::set<gamemap::location>* known_units,
-		std::set<gamemap::location>* seen_units)
+		const std::set<gamemap::location>* known_units = NULL,
+		std::set<gamemap::location>* seen_units = NULL,
+		std::set<gamemap::location>* stoned_units = NULL)
 {
 	std::vector<gamemap::location> cleared_locations;
 
@@ -1890,10 +1891,9 @@ bool clear_shroud_unit(const gamemap& map,
 				{
 					seen_units->insert(*it);
 				}
-				if ( teams[team].uses_shroud() || teams[team].uses_fog())
+				else
 				{
-					static const std::string sighted_str("sighted");
-					game_events::fire(sighted_str,*it,loc);
+					stoned_units->insert(*it);
 				}
 			}
 		}
@@ -1987,6 +1987,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 	const int starting_moves = ui->second.movement_left();
 	int moves_left = starting_moves;
 	std::set<gamemap::location> seen_units;
+	std::set<gamemap::location> stoned_units;
 	bool discovered_unit = false;
 	bool teleport_failed = false;
 	bool should_clear_stack = false;
@@ -2032,16 +2033,17 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 				const temporary_unit_placer unit_placer(units,*step,ui->second);
 				if( team.auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
-					    ui->second.side()-1,&known_units,&seen_units);
+					    ui->second.side()-1,&known_units,&seen_units,&stoned_units);
 				} else {
 					clear_shroud_unit(map,status,gamedata,units,*step,teams,
-							ui->second.side()-1,&known_units,&seen_units);
+						ui->second.side()-1,&known_units,&seen_units,&stoned_units);
 				}
 				if(should_clear_stack) {
 					disp->invalidate_all();
 				}
 			}
 		}
+#if 0
 		// Check to see if the unit was deleted
 		// during a sighted event in clear_shroud_unit()
 		ui = units.find(route.front());
@@ -2055,6 +2057,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 			}
 			return (step - route.begin());
 		}
+#endif
 		// we also refreh its side, just in case if an event change it
 		team_num = ui->second.side()-1;
 		team = teams[team_num];
@@ -2101,7 +2104,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		steps.pop_back();
 	}
 
-	assert(steps.size() <= route.size());
+	assert(steps.size() < route.size());
 
 	// If we can't get all the way there and have to set a go-to.
 	if(steps.size() != route.size() && discovered_unit == false) {
@@ -2157,11 +2160,32 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		disp->draw();
 		// Clear display helpers before firing events
 	}
-	if(game_events::fire("moveto",steps.back())) {
-		event_mutated = true;
+	game_events::raise("moveto",steps.back());
+
+
+	if ( teams[ui->second.side()-1].uses_shroud() || teams[ui->second.side()-1].uses_fog())
+	{
+		std::set<gamemap::location>::iterator sight_it;
+		const std::string sighted_str("sighted");
+		// Fire sighted event here
+		for (sight_it = seen_units.begin();
+				sight_it != seen_units.end(); ++sight_it)
+		{
+		
+			game_events::raise(sighted_str,*sight_it,steps.back());
+		}
+
+		for (sight_it = stoned_units.begin();
+				sight_it != stoned_units.end(); ++sight_it)
+		{
+		
+			game_events::raise(sighted_str,*sight_it,steps.back());
+		}
 	}
+	event_mutated |= game_events::pump();
 
 	ui = units.find(steps.back());
+
 	if(undo_stack != NULL) {
 		if(event_mutated || should_clear_stack || ui == units.end()) {
 			apply_shroud_changes(*undo_stack,disp,status,map,gamedata,units,teams,team_num);
