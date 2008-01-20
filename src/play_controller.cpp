@@ -434,8 +434,7 @@ void play_controller::finish_side_turn(){
 		gui_->invalidate_all();
 	}
 
-	gui_->set_route(NULL);
-	mouse_handler_.set_selected_hex(gamemap::location::null_location);
+	mouse_handler_.deselect_hex();
 	game_events::pump();
 }
 

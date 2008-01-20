@@ -56,6 +56,7 @@ public:
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
 	void set_current_paths(paths new_paths);
 	void set_selected_hex(gamemap::location hex) { selected_hex_ = hex; }
+	void deselect_hex();
 	void set_gui(game_display* gui) { gui_ = gui; }
 	void set_undo(const bool undo) { undo_ = undo; }
 

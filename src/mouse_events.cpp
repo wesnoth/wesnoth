@@ -1233,6 +1233,10 @@ void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) 
 	}
 }
 
+void mouse_handler::deselect_hex() {
+	select_hex(gamemap::location(), true);
+}
+
 void mouse_handler::clear_undo_stack()
 {
 	if(teams_[team_num_ - 1].auto_shroud_updates() == false)
