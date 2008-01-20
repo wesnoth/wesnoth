@@ -583,6 +583,9 @@ void playsingle_controller::before_human_turn(bool save)
 		unit_map::const_iterator ui = units_.find(*g);
 		menu_handler_.move_unit_to_loc(ui,ui->second.get_goto(),false, player_number_, mouse_handler_);
 	}
+
+	// erase the footsteps after movement
+	gui_->set_route(NULL);
 }
 
 void playsingle_controller::play_human_turn(){
