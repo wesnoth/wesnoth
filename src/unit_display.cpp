@@ -140,9 +140,6 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
 	u.set_standing(path[path.size()-1]);
 
-	// Clean the footsteps path, its hexes will be invalidated if needed
-	disp->set_route(NULL);
-
 	u.set_hidden(was_hidden);
 	disp->invalidate_unit();
 }

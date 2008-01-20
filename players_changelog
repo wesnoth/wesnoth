@@ -11,6 +11,10 @@ Version 1.3.14+svn:
    * Made ESC clear hotkey when changing hotkeys.
    * Made quick replay skip messages
    * Linger mode overlay is also drawn over fog and shroud.
+   * Units are deselected before they move.
+   * The next move can be prepared before the current attack/move 
+     animation finishes (bug #7132).
+   * If a move is interrupted, footsteps are drawn again.
 
  * Miscellaneous and bug fixes
    * Added a more graceful handling of maps without a header.

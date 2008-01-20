@@ -15,6 +15,11 @@ Version 1.3.14+svn:
    * Made ESC clear hotkey when changing hotkeys
    * Made quick replay skip messages
    * linger mode overlay is also drawn over fog and shroud (bug #10811)
+   * Units are deselected before they move.
+   * The next move can be prepared before the current attack/move 
+     animation finishes (bug #7132).
+   * If a move is interrupted, footsteps are drawn again.
+   * Tuned some details of the mouse handling.
  * miscellaneous and bug fixes:
    * Fixed boost test compile with 1.34.1
    * Make wesnoth work properly again if the datadir contains ../

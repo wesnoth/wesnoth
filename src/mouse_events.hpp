@@ -74,7 +74,7 @@ private:
 	void left_click(const SDL_MouseButtonEvent& event, const bool browse);
 	void select_hex(const gamemap::location& hex, const bool browse);
 	void clear_undo_stack();
-	bool move_unit_along_current_route(bool check_shroud=true);
+	bool move_unit_along_current_route(bool check_shroud, bool attackmove=false);
 	// wrapper to catch bad_alloc so this should be called
 	bool attack_enemy(unit_map::iterator attacker, unit_map::iterator defender);
 	// the real function but can throw bad_alloc
@@ -121,6 +121,7 @@ private:
 	bool undo_;
 	bool show_menu_;
 	bool over_route_;
+	bool attackmove_;
 };
 
 extern int commands_disabled;

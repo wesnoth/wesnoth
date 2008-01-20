@@ -2156,10 +2156,6 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		// Show the final move animation step
 		disp->draw();
 		// Clear display helpers before firing events
-		disp->unhighlight_reach();
-		disp->set_route(NULL);
-		// Do not show it yet to avoid flickering before the attack dialog
-		disp->draw(false);
 	}
 	if(game_events::fire("moveto",steps.back())) {
 		event_mutated = true;
@@ -2352,8 +2348,6 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamestatus
 		disp->invalidate_game_status();
 		clear_shroud(*disp,status,map,gamedata,units,teams,team);
 		disp->recalculate_minimap();
-		disp->unhighlight_reach();
-		disp->set_route(NULL);
 		disp->invalidate_all();
 	} else {
 		recalculate_fog(map,status,gamedata,units,teams,team);

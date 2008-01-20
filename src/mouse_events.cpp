@@ -701,6 +701,7 @@ undo_stack_(undo_stack), redo_stack_(redo_stack), game_state_(game_state)
 	show_menu_ = false;
 	over_route_ = false;
 	team_num_ = 1;
+	attackmove_ = false;
 }
 
 void mouse_handler::set_team(const int team_number)
@@ -722,6 +723,8 @@ void mouse_handler::mouse_update(const bool browse)
 
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
+	if(attackmove_) return;
+
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
@@ -980,6 +983,7 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
 {
+	if(attackmove_) return;
 	show_menu_ = false;
 	mouse_update(browse);
 	int scrollx = 0;
@@ -1113,7 +1117,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 				return;
 			}
 		}
-		else if (move_unit_along_current_route(false)) {//move the unit without updating shroud
+		else if (move_unit_along_current_route(false, true)) {//move the unit without updating shroud
 			// a WML event could have invalidated both attacker and defender
 			// so make sure they're valid before attacking
 			u = find_unit(attack_from);
@@ -1131,6 +1135,10 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 							}
 						}
 				}
+
+				// reselect the unit to make the attacker's stats appear during the attack dialog
+				gui_->select_hex(attack_from);
+
 				if(!commands_disabled && attack_enemy(u,enemy) == false) {
 					undo_ = true;
 					selected_hex_ = src;
@@ -1179,6 +1187,8 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		     u != units_.end() && u->second.side() == team_num_ &&
 		     clicked_u == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
+
+		gui_->unhighlight_reach();
 		move_unit_along_current_route(check_shroud);
 	} else {
 		// we select a (maybe empty) hex
@@ -1230,26 +1240,32 @@ void mouse_handler::clear_undo_stack()
 	undo_stack_.clear();
 }
 
-bool mouse_handler::move_unit_along_current_route(bool check_shroud)
+bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attackmove)
 {
 	const std::vector<gamemap::location> steps = current_route_.steps;
 	if(steps.empty()) {
 		return false;
 	}
 
+	// do not show footsteps during movement
+	gui_->set_route(NULL);
+
+	// do not keep the hex highlighted that we started from
+	selected_hex_ = gamemap::location();
+	gui_->select_hex(gamemap::location());
+
+	// will be invalid after the move
+	current_paths_ = paths();
+	current_route_.steps.clear();
+
+	attackmove_ = attackmove;
 	const size_t moves = ::move_unit(gui_,gameinfo_,status_,map_,units_,teams_,
 	                   steps,&recorder,&undo_stack_,&next_unit_,false,check_shroud);
+	attackmove_ = false;
 
 	cursor::set(cursor::NORMAL);
 
 	gui_->invalidate_game_status();
-
-	selected_hex_ = gamemap::location();
-	gui_->select_hex(gamemap::location());
-
-	gui_->set_route(NULL);
-	gui_->unhighlight_reach();
-	current_paths_ = paths();
 
 	if(moves == 0)
 		return false;
@@ -1262,29 +1278,13 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 
 	//u may be equal to units_.end() in the case of e.g. a [teleport]
 	if(u != units_.end()) {
-		//Reselect the unit if the move was interrupted
 		if(dst != steps.back()) {
-			selected_hex_ = dst;
-			gui_->select_hex(dst);
-		}
-
-		current_route_.steps.clear();
-
-		//check if we are now adjacent to an enemy,
-		//we reselect the unit (old 1.2.x behavior)
-		gamemap::location adj[6];
-		get_adjacent_tiles(dst,adj);
-		for(int i = 0; i != 6; i++) {
-			unit_map::iterator adj_unit = find_unit(adj[i]);
-			if (adj_unit != units_.end() &&  current_team().is_enemy(adj_unit->second.side())) {
-				selected_hex_ = dst;
-				gui_->select_hex(dst);
-				const bool teleport = u->second.get_ability_bool("teleport",u->first);
-				current_paths_ = paths(map_,status_,gameinfo_,units_,dst,teams_,
-									false,teleport,viewing_team(),path_turns_);
-				show_attack_options(u);
-				gui_->highlight_reach(current_paths_);
-				break;
+			// the move was interrupted (or never started)
+			if (u->second.movement_left() > 0) {
+				// reselect the unit (for "press t to continue")
+				select_hex(dst, false);
+				// the new discovery is more important than the new movement range
+				gui_->unhighlight_reach();
 			}
 		}
 	}
@@ -1423,10 +1423,6 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 		dialogs::advance_unit(gameinfo_,map_,units_,attacker_loc,*gui_);
 		dialogs::advance_unit(gameinfo_,map_,units_,defender_loc,*gui_,!defender_human);
-
-		selected_hex_ = gamemap::location();
-		current_route_.steps.clear();
-		gui_->set_route(NULL);
 
 		check_victory(units_, teams_, *gui_);
 

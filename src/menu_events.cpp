@@ -1313,8 +1313,8 @@ private:
 		redo_stack_.push_back(action);
 		undo_stack_.pop_back();
 
-		mousehandler.set_selected_hex(gamemap::location());
-		mousehandler.set_current_paths(paths());
+		//mousehandler.set_selected_hex(gamemap::location());
+		//mousehandler.set_current_paths(paths());
 
 		recorder.undo();
 
@@ -1335,8 +1335,8 @@ private:
 		const events::command_disabler disable_commands;
 
 		//clear routes, selected hex, etc
-		mousehandler.set_selected_hex(gamemap::location());
-		mousehandler.set_current_paths(paths());
+		//mousehandler.set_selected_hex(gamemap::location());
+		//mousehandler.set_current_paths(paths());
 
 		undo_action& action = redo_stack_.back();
 		if(action.is_recall()) {
