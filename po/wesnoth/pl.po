@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 14:47+0100\n"
-"PO-Revision-Date: 2007-12-22 19:33+0100\n"
+"PO-Revision-Date: 2008-01-18 15:40+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,6 @@ msgid "Packagers"
 msgstr "Pakujący"
 
 #: data/core/about.cfg:589
-#, fuzzy
 msgid "Miscellaneous contributors"
 msgstr "Różności"
 
@@ -277,7 +276,7 @@ msgstr "Typy terenu"
 
 #: data/core/help.cfg:63 data/core/help.cfg:658
 msgid "Commands"
-msgstr "Komendy"
+msgstr "Polecenia"
 
 #: data/core/help.cfg:81
 msgid "Abilites"
@@ -302,6 +301,9 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Niektóre rodzaje uzbrojenia mają cechy specjalne, które zwiększają "
+"skuteczność ataków z ich wykorzystaniem.\n"
+"\n"
 
 #: data/core/help.cfg:99
 msgid "Unknown Unit"
@@ -433,7 +435,7 @@ msgstr ""
 
 #: data/core/help.cfg:140
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Zwycięstwo i porażka"
 
 #: data/core/help.cfg:141
 msgid ""
@@ -444,6 +446,13 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"Dokładnie czytaj cele misji, wyświetlane w oknie dialogowym na początku "
+"każdego scenariusza. Zwycięstwo wymaga najczęściej zabicia wszystkich "
+"przywódców wroga, a porażka następuje w wyniku śmierci Twojego przywódcy. "
+"Nierzadko trafiają się jednak scenariusze, w których zwycięstwo wymaga "
+"osiągnięcia innych celów, na przykład doprowadzenia przywódcy w określone "
+"miejsce, uratowania kogoś, rozwiązania zagadki lub przetrwania w oblężeniu "
+"określonej liczby tur."
 
 #: data/core/help.cfg:143
 msgid ""
@@ -454,6 +463,12 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Po zwycięstwie w scenariuszu, mapa zostanie wyszarzona, a etykieta przycisku "
+"\"Zakończ turę\" zmieni się na \"Kończ scenariusz\". W tym stanie gry możesz "
+"zmienić opcje zapisu gry lub (w przypadku gier wieloosobowych) rozmawiać z "
+"innymi graczami, a potem kliknąć przycisk, by przejść dalej."
 
 #: data/core/help.cfg:148
 msgid "Recruiting and Recalling"
@@ -1070,7 +1085,6 @@ msgstr ""
 "awansu."
 
 #: data/core/help.cfg:262
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1093,14 +1107,10 @@ msgstr ""
 "Poziomie (APOP). APOP zmienia jednostkę za każdym razem, gdy osiąga ona "
 "wymagany poziom doświadczenia, jednak jednostka pozostaje na tym samym "
 "poziomie. Typowym wpływem APOP na jednostkę jest podniesienie maksymalnej "
-"liczby PŻ o 3. Pierwszy APOP jest na ogół osiągany po zdobyciu 100PD (80PD w "
-"przypadku jednostek inteligentnych). Zdobywanie kolejnych awansów jest "
-"jednak coraz trudniejsze i często bardziej korzystne jest awansowanie "
-"jednostek na niższych poziomach.\n"
-"\n"
-"Należy pamiętać, że tylko niektóre jednostki (na przykład trupojad) leczą "
-"się przy osiągnięciu APOP. Większość jedynie otrzymuje premię do "
-"maksymalnych PŻ."
+"liczby PŻ o 3 i pełne uzdrowienie. Pierwszy APOP jest na ogół osiągany po "
+"zdobyciu 100PD (80PD w przypadku jednostek inteligentnych). Zdobywanie "
+"kolejnych awansów jest jednak coraz trudniejsze i często bardziej korzystne "
+"jest awansowanie jednostek na niższych poziomach."
 
 #: data/core/help.cfg:267
 msgid "Healing"
@@ -1294,7 +1304,7 @@ msgstr ""
 
 #: data/core/help.cfg:300
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "Twórcy"
 
 #: data/core/help.cfg:306
 msgid "License"
@@ -1329,7 +1339,6 @@ msgstr ""
 "<ref>dst=traits_strong text=silna</ref>."
 
 #: data/core/help.cfg:320
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1342,7 +1351,8 @@ msgstr ""
 "\n"
 "Inne cechy, które mogą zostać przypisane jednostkom to "
 "<ref>dst=traits_dextrous text=zręczna</ref>, <ref>dst=traits_loyal "
-"text=lojalna</ref>, <ref>dst=traits_undead text=nieumarła</ref>."
+"text=lojalna</ref>, <ref>dst=traits_undead text=nieumarła</ref>.\n"
+"\n"
 
 #: data/core/help.cfg:325
 msgid "Intelligent"
@@ -1615,6 +1625,10 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"Na mapach poszczególnych scenariuszy występuje wiele różnych rodzajów "
+"terenu, z których każdy wpływa zarówno na szybkość jednostki, jak i jej "
+"skuteczność w obronie.\n"
+"\n"
 
 #: data/core/help.cfg:412
 msgid "Grassland"
@@ -2183,7 +2197,7 @@ msgstr ""
 
 #: data/core/help.cfg:664
 msgid "General commands"
-msgstr "Komendy ogólne"
+msgstr "Polecenia ogólne"
 
 #: data/core/help.cfg:668
 msgid ""
@@ -2210,7 +2224,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:675
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2221,10 +2234,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Przełączanie gracza kontrolującego daną stronę między człowiekiem a "
-"komputerem. Komendę tę musi wydać gracz/klient kontrolujący daną stronę. "
-"Jeżeli strona nie zostanie podana, wartością domyślną jest stroną aktualnie "
-"aktywna.\n"
+"Ustawienie lub przełączenie gracza kontrolującego daną stronę (człowiek/"
+"komputer). Polecenie musi wydać gracz/klient kontrolujący daną stronę. Jeśli "
+"drugi parametr nie zostanie podany, polecenie przełącza między komputerem "
+"(wartość \"on\") a człowiekiem (wartość \"off\"). Jeśli wartość parametru "
+"nie zostanie podana, domyślną przyjmowana jest strona aktualnie aktywna.\n"
 "\n"
 
 #: data/core/help.cfg:678
@@ -2243,6 +2257,9 @@ msgid ""
 "Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
+"\n"
+"Przełączenie domeny dzienników na inny poziom rejestrowania.\n"
+"\n"
 
 #: data/core/help.cfg:684
 msgid ""
@@ -2255,12 +2272,14 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:687
-#, fuzzy
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
 "\n"
-msgstr "Pokaż menu wyboru motywu graficznego."
+msgstr ""
+"\n"
+"Pokaż menu wyboru motywu graficznego.\n"
+"\n"
 
 #: data/core/help.cfg:690
 msgid ""
@@ -2283,18 +2302,16 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:694
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"Zapisz grę i zakończ scenariusz (bez potwierdzenia).\n"
-"\n"
+"Zapisz grę i zakończ scenariusz (bez potwierdzenia)."
 
 #: data/core/help.cfg:699
 msgid "Multiplayer commands"
-msgstr "Komendy gry wieloosobowej"
+msgstr "Polecenia gry wieloosobowej"
 
 #: data/core/help.cfg:703
 msgid ""
@@ -2309,7 +2326,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:706
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2319,8 +2335,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Zmień kontrolera danej strony \"side\" (podając jej numer) na \"username"
-"\" (podaj ksywkę obserwującego gracza).\n"
+"Zmiana kontrolera strony \"side\" (podaj jej numer) na \"username\" (podaj "
+"ksywkę gracza lub obserwatora). Przynależność stron do graczy możesz "
+"sprawdzić w oknie dialogowym \"Ustawienia scenariusza\", wyświetlanym po "
+"kliknięciu przycisku \"Więcej\" w oknie tabeli statusu (domyślnie Alt+S).\n"
 "\n"
 
 #: data/core/help.cfg:709
@@ -2889,9 +2907,8 @@ msgstr ""
 "zabić jednostki."
 
 #: data/core/macros/amla.cfg:10
-#, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Maks. premia PŻ +"
+msgstr "Premia maks. PŻ +3, maks. PD +20%"
 
 #: data/core/macros/amla.cfg:30
 msgid ", MAX XP +25%"
@@ -3049,6 +3066,15 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 msgstr ""
+"Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
+"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
+"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
+"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
+"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -3056,6 +3082,9 @@ msgid ""
 "Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 msgstr ""
+"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 
 #: data/core/macros/names.cfg:8
 msgid ""
@@ -3103,6 +3132,49 @@ msgid ""
 "Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
+"Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
+"Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
+"Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,"
+"Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,"
+"Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,"
+"Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,"
+"Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,"
+"Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,"
+"Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,"
+"Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,"
+"Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,"
+"Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,"
+"Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,"
+"Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,"
+"Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,"
+"Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,"
+"Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,"
+"Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,"
+"Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,"
+"Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,"
+"Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,"
+"Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,"
+"Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,"
+"Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,"
+"Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,"
+"Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,"
+"Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,"
+"Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,"
+"Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,"
+"Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,"
+"Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,"
+"Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,"
+"Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,"
+"Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,"
+"Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,"
+"Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,"
+"Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,"
+"Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,"
+"Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,"
+"Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,"
+"Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,"
+"Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
+"Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 
 #: data/core/macros/names.cfg:12
 msgid ""
@@ -3164,6 +3236,63 @@ msgid ""
 "Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
+"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
+"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
+"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
+"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
+"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
+"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
+"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
+"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
+"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
+"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
+"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
+"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
+"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
+"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
+"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
+"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
+"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
+"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
+"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
+"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
+"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
+"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
+"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
+"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
+"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
+"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
+"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
+"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
+"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
+"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
+"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
+"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
+"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
+"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
+"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
+"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
+"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
+"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
+"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
+"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
+"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
+"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
+"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
+"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
+"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
+"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
+"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
+"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
+"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
+"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
+"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
+"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
+"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 
 #: data/core/macros/names.cfg:13
 msgid ""
@@ -3232,15 +3361,78 @@ msgid ""
 "Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
 "Vówien"
 msgstr ""
+"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
+"Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
+"Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,"
+"Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,"
+"Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,"
+"Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,"
+"Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,"
+"Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,"
+"Calewiel,Calil-Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,"
+"Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,"
+"Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,"
+"Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,"
+"Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,"
+"Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-Ganiel,"
+"Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,"
+"Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,"
+"Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,"
+"Elarawiel,Elebrindra,Eledë,Elelith,Elil-Gang,Elilmalia,Elilmawien,"
+"Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,"
+"Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,"
+"Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
+"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,"
+"Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,"
+"Eowedith,Eowidien,Eowil-Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,"
+"Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,"
+"Feclya,Féthiel,Fil-Galia,Fil-Gathiel,Fil-Gawien,Filmaclya,Fioniel,Fódë,"
+"Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,"
+"Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-Gania,Galilmadia,"
+"Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,"
+"Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-Gawien,Gilia,Gioniel,"
+"Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,"
+"Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,"
+"Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
+"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,"
+"Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,"
+"Iséng,Iseviel,Isil-Garith,Isilindë,Isithradë,Isithradien,Isithrarith,"
+"Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,"
+"Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
+"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,"
+"Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,"
+"Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,"
+"Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,"
+"Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,"
+"Medien,Mil-Gathiel,Mil-Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,"
+"Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,"
+"Naraniel,Náviel,Nawen,Newen,Nil-Gang,Nilmadia,Niodien,Niolia,Niothien,"
+"Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,"
+"Pebridien,Pil-Gadia,Pil-Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,"
+"Póviel,Pulia,Puthien,Reniel,Réviel,Ril-Gawien,Rindra,Riothien,Róng,Rorfiviel,"
+"Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,"
+"Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,"
+"Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,"
+"Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,"
+"Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,"
+"Thruthien,Thryng,Til-Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,"
+"Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-Gania,"
+"Tinil-Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,"
+"Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
+"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,"
+"Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,"
+"Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,"
+"Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-Gandra,Violindë,Viowiel,"
+"Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
+"Vówien"
 
 #: data/core/macros/names.cfg:18
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr ""
+msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr "Kiira,Keyya,Kayya,Korra,Kaasa"
+msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3292,6 +3484,53 @@ msgid ""
 "Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
 "Yryrcyn"
 msgstr ""
+"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
+"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
+"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
+"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
+"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
+"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
+"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
+"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
+"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
+"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
+"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
+"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
+"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
+"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
+"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
+"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
+"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
+"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
+"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
+"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
+"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
+"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
+"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
+"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
+"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
+"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
+"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
+"Yryrcyn"
 
 #: data/core/macros/names.cfg:24
 msgid ""
@@ -3341,6 +3580,51 @@ msgid ""
 "Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
+"Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
+"Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
+"Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,"
+"Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,"
+"Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,"
+"Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,"
+"Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,"
+"Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,"
+"Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,"
+"Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,"
+"Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,"
+"Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,"
+"Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,"
+"Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,"
+"Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,"
+"Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,"
+"Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
+"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
+"Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
+"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
+"Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
+"Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
+"Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,"
+"Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,"
+"Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,"
+"Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,"
+"Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,"
+"Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,"
+"Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,"
+"Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,"
+"Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,"
+"Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,"
+"Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,"
+"Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,"
+"Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,"
+"Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,"
+"Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,"
+"Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,"
+"Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,"
+"Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,"
+"Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,"
+"Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
+"Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 
 #: data/core/macros/names.cfg:28
 msgid ""
@@ -3355,6 +3639,16 @@ msgid ""
 "Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:32
 msgid ""
@@ -3366,6 +3660,13 @@ msgid ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:33
 msgid ""
@@ -3374,6 +3675,10 @@ msgid ""
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:37
 msgid ""
@@ -3384,6 +3689,12 @@ msgid ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:38
 msgid ""
@@ -3395,6 +3706,13 @@ msgid ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 msgstr ""
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 
 #: data/core/macros/names.cfg:42
 msgid ""
@@ -3405,6 +3723,12 @@ msgid ""
 "Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
 "Urkark"
 msgstr ""
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 
 #: data/core/macros/names.cfg:46
 msgid ""
@@ -3441,6 +3765,38 @@ msgid ""
 "Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -3449,6 +3805,10 @@ msgid ""
 "Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -3465,12 +3825,26 @@ msgid ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
+"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
+"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #: data/core/macros/schedules.cfg:100 data/core/macros/schedules.cfg:111
 msgid "Deep Underground"
@@ -3591,6 +3965,9 @@ msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+"Ta jednostka potrafi się ukrywać w wioskach (z wyjątkiem wiosek wodnych), "
+"gdzie jest niewidzialna dla wrogów, z wyjątkiem jednostek stojących tuż obok "
+"niej."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -3600,12 +3977,10 @@ msgstr ""
 "wymaga powietrza z powierzchni."
 
 #: data/core/macros/special-notes.cfg:53
-#, fuzzy
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Żerowanie:\n"
 "Maksymalna liczba PŻ tej jednostki zwiększa się o 1 za każdym razem, gdy "
 "zabije ona jednostkę żyjącą."
 
@@ -4542,7 +4917,6 @@ msgid "- King Konrad, 536YW"
 msgstr "- Król Konrad, 536 r. e.W."
 
 #: data/hardwired/tips.cfg:15
-#, fuzzy
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
@@ -4559,7 +4933,6 @@ msgid "- Memoirs of Gweddry, 627YW"
 msgstr "- Dzienniki Gweddry'ego, 627 r. e.W."
 
 #: data/hardwired/tips.cfg:19
-#, fuzzy
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
 "castle tile. That will let you chose which hex you put a new unit in. "
@@ -4571,7 +4944,6 @@ msgstr ""
 "zająć pobliską wioskę o turę wcześniej."
 
 #: data/hardwired/tips.cfg:23
-#, fuzzy
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
 "'Status Table' will let you know how your enemies are doing, and how you are "
@@ -4628,12 +5000,11 @@ msgid "- The Wesnoth Community"
 msgstr "- Społeczność Wesnoth"
 
 #: data/hardwired/tips.cfg:43
-#, fuzzy
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
 msgstr ""
-"Praworządne jednostki walczą lepiej za dnia, a chaotyczne w nocy. Na "
+"Jednostki praworządne walczą lepiej za dnia, a chaotyczne w nocy. Na "
 "jednostki neutralne pora dnia nie ma wpływu."
 
 #: data/hardwired/tips.cfg:44
@@ -4653,7 +5024,6 @@ msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
 msgstr "- Podręcznik analizy taktycznej, tom I - Haldric II, 42 r. e.W."
 
 #: data/hardwired/tips.cfg:51
-#, fuzzy
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
 "what you're facing. In this case, long-range scouting units are worth their "
@@ -4697,6 +5067,12 @@ msgid ""
 "not be removed unless the unit regenerates, or spends a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Zatruta jednostka traci co turę osiem punktów życia, aż od śmierci będzie ją "
+"dzielić tylko jeden punkt. Jednostka taka pozostanie o krok od śmierci, "
+"dopóki nie zostanie uzdrowiona. Sąsiadująca jednostka z umiejętnością "
+"leczenia zapobiegnie utracie punktów życia, ale usunięcie zatrucia nastąpi "
+"dopiero wtedy, gdy jednostka zregeneruje się bądź rozpocznie turę w wiosce "
+"lub obok jednostki z umiejętnością uzdrawiania."
 
 #: data/hardwired/tips.cfg:67
 msgid ""
@@ -4709,7 +5085,6 @@ msgstr ""
 "jednostki można stworzyć potężną i doświadczoną armię."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -4717,40 +5092,38 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Jednostki roztaczają strefę kontroli na bezpośrednio sąsiadujące pola. Jeśli "
-"jednostka wejdzie w strefę kontroli jednostki przeciwnika, traci ona "
-"możliwość dalszego ruchu w tej turze. Oznacza to, że dwie jednostki stanowią "
-"barierę dla przeciwnika nawet wtedy, gdy dzielą je dwa puste pola. "
-"(Jednostki o poziomie 0 są zbyt słabe, by kontrolować swoją strefę, zaś te "
-"ze zdolnością \"harcownik\" potrafią ignorować strefy kontroli przeciwnika)."
+"Jednostki co najmniej poziomu pierwszego roztaczają strefę kontroli na "
+"bezpośrednio sąsiadujące pola. Jeśli jednostka wejdzie w strefę kontroli "
+"jednostki przeciwnika, traci ona możliwość dalszego ruchu w tej turze. "
+"Oznacza to, że dwie jednostki stanowią barierę dla przeciwnika nawet wtedy, "
+"gdy dzielą je dwa puste pola. Jednostki ze zdolnością \"harcownik\" potrafią "
+"jednak ignorować strefy kontroli przeciwnika."
 
 #: data/hardwired/tips.cfg:75
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
 "always have a 70% chance to hit, and units with the 'marksman' ability will "
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
-"Szansa na trafienie jednostki zależy zazwyczaj od terenu, na jakim ona stoi. "
-"Ataki magiczne mają jednak zawsze 70% szans na powodzenie, a strzały "
-"strzelców 60% szans, ale tylko podczas ataku."
+"Szansa na trafienie jednostki zależy zazwyczaj od jej umiejętności obrony w "
+"terenie, na którym stoi. Ataki magiczne mają jednak zawsze 70% szans na "
+"powodzenie, a jednostki z umiejętnością \"strzelec wyborowy\" mają zawsze co "
+"najmniej 60% szansy trafienia w ataku podczas własnego ruchu."
 
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Podręcznik analizy taktycznej, tom II - Haldric II, 43 r. e.W."
 
 #: data/hardwired/tips.cfg:79
-#, fuzzy
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"Jednostki stacjonujące w wioskach odzyskują 8 punktów życia na początku "
-"swojej tury."
+"Jednostki stacjonujące w wioskach odzyskują na początku swojej tury 8 "
+"punktów życia lub są leczone z zatrucia."
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
@@ -4761,22 +5134,20 @@ msgstr ""
 "odzyska 2 punkty życia."
 
 #: data/hardwired/tips.cfg:87
-#, fuzzy
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
-"Większość jednostek pieszych lepiej broni się w wioskach i zamkach niż w "
-"innym terenie, natomiast większość jednostek konnych nie ma żadnej premii do "
-"obrony w wioskach i zamkach."
+"Większość jednostek pieszych lepiej broni się w wioskach i zamkach, niż w "
+"innym terenie, natomiast większość jednostek konnych nie ma w wioskach i "
+"zamkach żadnej premii do obrony."
 
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
 msgstr "- Sir Kaylan, 498 r. e.W."
 
 #: data/hardwired/tips.cfg:91
-#, fuzzy
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -4790,7 +5161,6 @@ msgid "- Sir Kaylan, 502YW"
 msgstr "- Sir Kaylan, 502 r. e.W."
 
 #: data/hardwired/tips.cfg:95
-#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain eight experience points for "
@@ -4799,26 +5169,25 @@ msgid ""
 msgstr ""
 "Zabicie jednostki nieprzyjaciela jest najlepszym sposobem zdobywania "
 "doświadczenia. Jednostka zadająca ostateczny cios zyska 8 punktów "
-"doświadczenia za każdy poziom zabitego wroga."
+"doświadczenia za każdy poziom zabitego wroga, lub 4 punkty za pokonanie "
+"jednostki poziomu zerowego."
 
 #: data/hardwired/tips.cfg:99
-#, fuzzy
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
 "Jednostki elfickie świetnie poruszają się i walczą w lesie, natomiast "
-"krasnoludzkie świetnie sprawują się na wzgórzach i w górach."
+"krasnoludzkie świetnie sprawują się na wzgórzach, w górach i w jaskiniach."
 
 #: data/hardwired/tips.cfg:103
-#, fuzzy
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
-"Cierpliwość często ma kluczowe znaczenie. Zamiast atakować w złych warunkach "
-"albo zbyt małą armią, lepiej poczekać na poprawę sytuacji i dopiero wtedy "
-"kontynuować natarcie."
+"Cierpliwość ma często kluczowe znaczenie. Zamiast atakować w złych warunkach "
+"lub zbyt małymi siłami, lepiej poczekać na poprawę sytuacji i dopiero wtedy "
+"uderzyć."
 
 #: data/hardwired/tips.cfg:107
 msgid ""
@@ -4868,7 +5237,6 @@ msgstr ""
 "ustąpić miejsca w swojej twierdzy, byś mógł w niej rekrutować."
 
 #: data/hardwired/tips.cfg:123
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
@@ -4877,7 +5245,6 @@ msgstr ""
 "obuchową, ataki astralne oraz ogień."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
@@ -4887,14 +5254,14 @@ msgstr ""
 "pomaga innym jednostkom szybciej awansować."
 
 #: data/hardwired/tips.cfg:131
-#, fuzzy
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
 "Staraj się nie umieszczać jednostek w sąsiedztwie pustej wioski. Wróg może "
-"zająć tę wioskę i zaatakować cię, jednocześnie korzystając z leczenia."
+"zająć tę wioskę i zaatakować cię, jednocześnie korzystając z wyższej obrony "
+"i leczenia."
 
 #: data/hardwired/tips.cfg:135
 msgid "Use lines of units to screen injured units to let them recover."
@@ -4972,7 +5339,6 @@ msgstr ""
 "uderzeniem."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
@@ -4982,18 +5348,17 @@ msgid ""
 msgstr ""
 "Jednostki znajdujące się już na swoim maksymalnym poziomie otrzymują zamiast "
 "zwykłego awansu Awans Po Ostatnim Poziomie (APOP), który zazwyczaj zwiększa "
-"maksymalną liczbę punktów życia jednostki o 3. Ponieważ jest to mniej "
-"korzystne od zwykłego awansu jednostki, zazwyczaj warto się raczej starać "
-"awansować jednostki niższych poziomów."
+"maksymalną liczbę punktów życia jednostki o 3 i powoduje pełne jej "
+"uzdrowienie. Ponieważ jest to mniej korzystne od zwykłego awansu jednostki, "
+"zazwyczaj warto się raczej starać awansować jednostki niższych poziomów."
 
 #: data/hardwired/tips.cfg:175
-#, fuzzy
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
 "are limited by its maximum movement. Remember this when deciding what unit "
 "is best to scout specific types of terrain."
 msgstr ""
-"Na mapach z włączoną mgłą wojny lub całunem promień widzenia jednostki jest "
+"Na mapach z włączoną mgłą wojny lub całunem, promień widzenia jednostki jest "
 "ograniczony przez zasięg jej ruchów. Pamiętaj o tym, wybierając jednostkę "
 "najlepiej nadającą się do zwiadu w danych terenie."
 
@@ -5007,7 +5372,6 @@ msgstr ""
 "wyjaśnienie lub opis."
 
 #: data/hardwired/tips.cfg:183
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
@@ -5015,9 +5379,9 @@ msgid ""
 "can adjust campaign difficulty."
 msgstr ""
 "Możesz przekazać Projektowi Wesnoth anonimowe zestawienie swoich postępów w "
-"grze przy użyciu przycisku Pomóż Wesnoth (ikona koperty w prawym dolnym rogu "
-"głównego ekranu gry). Informacje te są nam potrzebne do dopracowania poziomu "
-"trudności kampanii."
+"grze przy użyciu przycisku \"Pomóż Wesnoth\" (ikona koperty w prawym dolnym "
+"rogu głównego ekranu gry). Informacje te mają ogromne znaczenie dla "
+"odpowiedniego dopracowania poziomu trudności kampanii."
 
 #: data/hardwired/tips.cfg:187
 msgid ""
@@ -5048,6 +5412,9 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Jeśli rzadko występujący na danej mapie teren jest korzystniejszy dla wroga, "
+"niż dla Twoich jednostek, zajęcie tego terenu uniemożliwi przeciwnikowi jego "
+"skuteczne wykorzystanie."
 
 #: data/hardwired/tips.cfg:199
 msgid ""
@@ -5055,6 +5422,10 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Ponieważ tylko nieliczne jednostki dobrze się bronią w wodzie, linia "
+"atakujących jednostek ustawiona na brzegu rzeki może zadać poważne straty "
+"przeprawiającym się. Na tej samej zasadzie elfy mogą bardzo skutecznie "
+"atakować ze skraju lasu, a krasnoludy z terenu górzystego."
 
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
@@ -5291,7 +5662,7 @@ msgstr ""
 
 #: src/config_adapter.cpp:156
 msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
+msgstr "Znaleziono duplikat definicji strony '$side|'."
 
 #: src/dialogs.cpp:112
 msgid "Advance Unit"
@@ -5340,14 +5711,12 @@ msgid "Overwrite?"
 msgstr "Nadpisać?"
 
 #: src/dialogs.cpp:287
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Taki plik już istnieje. Czy ma zostać nadpisany?"
+msgstr "Zapisana gra już istnieje. Czy ma zostać nadpisana?"
 
 #: src/dialogs.cpp:305
-#, fuzzy
 msgid "Filter: "
-msgstr "Zdolności:"
+msgstr "Filtruj: "
 
 #: src/dialogs.cpp:372
 msgid "Do you really want to delete this game?"
@@ -5778,9 +6147,8 @@ msgid "' (The game will now exit)"
 msgstr "' (Gra zostanie zakończona)"
 
 #: src/game.cpp:1846
-#, fuzzy
 msgid "Loading data files"
-msgstr "Odczytywanie plików jednostek."
+msgstr "Ładowanie plików danych"
 
 #: src/game.cpp:1995
 msgid "Battle for Wesnoth"
@@ -5928,17 +6296,12 @@ msgid "Help"
 msgstr "Pomoc"
 
 #: src/help.cpp:1104
-#, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
-msgstr "Jednostki posiadające ten atak specjalny:"
+msgstr "<header>text='Jednostki posiadające ten atak specjalny'</header>"
 
 #: src/help.cpp:1172
-#, fuzzy
 msgid "<header>text='Units having this ability'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Szansa trafienia'</header>"
+msgstr "<header>text='Jednostki posiadające tę umiejętność'</header>"
 
 #: src/help.cpp:1237
 msgid "Advances from: "
@@ -6026,16 +6389,12 @@ msgid "Movement Cost"
 msgstr "Koszt ruchu"
 
 #: src/help.cpp:1606
-#, fuzzy
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Szansa trafienia'</header>"
+msgstr "<header>text='Jednostki tej rasy'</header>"
 
 #: src/help.cpp:2496 src/menu_events.cpp:693
 msgid " < Back"
-msgstr "< Wróć"
+msgstr " < Wróć"
 
 #: src/help.cpp:2497
 msgid "Forward >"
@@ -6113,9 +6472,8 @@ msgid "Reading files and creating cache."
 msgstr "Odczytywanie plików i tworzenie pamięci podręcznej."
 
 #: src/map.cpp:342
-#, fuzzy
 msgid "A map without a header is not supported"
-msgstr "Losowe mapy o nieparzystej szerokości nie są obsługiwane."
+msgstr "Mapy bez nagłówka nie są obsługiwane."
 
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
@@ -6152,27 +6510,24 @@ msgid "Details"
 msgstr "Szczegóły"
 
 #: src/menu_events.cpp:209
-#, fuzzy
 msgid "Damage"
-msgstr "obrażenia"
+msgstr "Obrażenia"
 
 #: src/menu_events.cpp:210
 msgid "Over All"
-msgstr ""
+msgstr "Łącznie"
 
 #: src/menu_events.cpp:212
-#, fuzzy
 msgid "This Turn"
-msgstr "Tura"
+msgstr "W tej turze"
 
 #: src/menu_events.cpp:221
-#, fuzzy
 msgid "Inflicted"
-msgstr "Zadane obrażenia"
+msgstr "Zadane"
 
 #: src/menu_events.cpp:245
 msgid "Taken"
-msgstr ""
+msgstr "Poniesione"
 
 #: src/menu_events.cpp:295 src/menu_events.cpp:299
 msgid "Do you really want to dismiss him?"
@@ -6313,9 +6668,8 @@ msgid "Scenario Settings"
 msgstr "Ustawienia scenariusza"
 
 #: src/menu_events.cpp:728 src/playcampaign.cpp:414
-#, fuzzy
 msgid "Name: "
-msgstr "Nazwa:"
+msgstr "Nazwa: "
 
 #: src/menu_events.cpp:737
 msgid "Saved"
@@ -6462,72 +6816,69 @@ msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
 msgstr ""
+"Polecenia: msg/whisper <ksywka> <wiadomość>, list <podpolecenie> "
+"[<argument>], me/emote <wiadomość>. Wpisz /help [<polecenie>], by uzyskać "
+"szczegółowe instrukcje."
 
 #: src/menu_events.cpp:1886
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control any "
 "side in a game. Usage: /msg <nick> <message>"
 msgstr ""
-"Wysyła prywatne wiadomości. Nie możesz wysyłać ich do graczy, którzy "
-"kontrolują stronę w grze. Użycie: /whisper [nick] [wiadomość]"
+"Wysyła prywatną wiadomość. Nie można ich wysyłać do graczy, którzy "
+"kontrolują stronę w grze. Składnia: /msg <ksywka> <wiadomość>"
 
 #: src/menu_events.cpp:1892
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list <subcommand> [<argument>] Subcommands: addfriend, "
 "addignore, remove, display, clear. Type /help list <subcommand> for more "
 "info."
 msgstr ""
-"Ignorowanie wiadomości od graczy znajdujących się na liście ignorowanych i "
-"podświetlanie wiadomości od graczy znajdujących się na liście przyjaciół. "
-"Użycie: /list [podkomenda] [argument](opcjonalnie) Podkomendy: addfriend "
-"addignore remove display clear. Aby uzyskać więcej informacji, wpisz: /help "
-"list [podkomenda]."
+"Ignorowanie wiadomości od graczy z listy ignorowanych i podświetlanie "
+"wiadomości od graczy z listy przyjaciół. Składnia: /list <podpolecenie> "
+"[<argument>] Podpolecenia: addfriend, addignore, remove, display, clear. Aby "
+"uzyskać więcej informacji, wpisz: /help list <podpolecenie>."
 
 #: src/menu_events.cpp:1900
-#, fuzzy
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
-msgstr "Dodanie gracza do listy przyjaciół. Użycie: /list addfriend [argument]"
+msgstr ""
+"Dodanie ksywki gracza do listy przyjaciół. Składnia: /list addfriend <ksywka>"
 
 #: src/menu_events.cpp:1904
-#, fuzzy
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
-msgstr "Dodanie gracza do listy ignorowanych. Użycie: /list ignore [argument]"
+msgstr ""
+"Dodanie ksywki gracza do listy ignorowanych. Składnia: /list ignore <ksywka>"
 
 #: src/menu_events.cpp:1908
-#, fuzzy
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
-"Usunięcie gracza z listy ignorowanych lub przyjaciół. Użycie: /list remove "
-"[argument]"
+"Usunięcie ksywki gracza z listy ignorowanych lub przyjaciół. Składnia: /list "
+"remove <ksywka>"
 
 #: src/menu_events.cpp:1912
-#, fuzzy
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
-msgstr "Wyczyszczenie listy ignorowanych i przyjaciół. Użycie: /list clear"
+msgstr ""
+"Wyczyszczenie całej listy ignorowanych i przyjaciół. Składnia: /list clear"
 
 #: src/menu_events.cpp:1916
-#, fuzzy
 msgid "Show your ignores and friends list. Usage: /list display"
-msgstr "Wyświetlenie listy ignorowanych i przyjaciół. Użycie: /list display"
+msgstr "Wyświetlenie listy ignorowanych i przyjaciół. Składnia: /list display"
 
 #: src/menu_events.cpp:1919
-#, fuzzy
 msgid "Unknown subcommand."
-msgstr "Nieznana podkomenda"
+msgstr "Nieznane podpolecenie."
 
 #: src/menu_events.cpp:1924
-#, fuzzy
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
-msgstr "Wykonaj akcję w czacie. Użycie: /emote [wiadomość]"
+msgstr ""
+"Wysłanie na czacie informacji o osobistym uczuciu lub czynności. Składnia: /"
+"me <wiadomość>"
 
 #: src/menu_events.cpp:1927
-#, fuzzy
 msgid "Unknown command."
-msgstr "Nieznana komenda"
+msgstr "Nieznane polecenie."
 
 #: src/menu_events.cpp:1933
 msgid "Added to ignore list: "
@@ -6551,7 +6902,7 @@ msgstr "Na liście ignorowanych lub przyjaciół nie ma żadnych graczy."
 
 #: src/menu_events.cpp:1963
 msgid "Unknown command: "
-msgstr "Nieznana komenda: "
+msgstr "Nieznane polecenie: "
 
 #: src/menu_events.cpp:2070
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -6560,51 +6911,48 @@ msgstr "Nie znaleziono etykiety ani jednostki zawierającej '$search'."
 #: src/menu_events.cpp:2096 src/menu_events.cpp:2102 src/menu_events.cpp:2134
 #: src/menu_events.cpp:2143 src/menu_events.cpp:2168 src/menu_events.cpp:2179
 #: src/menu_events.cpp:2186
-#, fuzzy
 msgid "error"
-msgstr "Błąd"
+msgstr "błąd"
 
 #: src/menu_events.cpp:2097
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
+msgstr "Nie można zautomatyzować nieprawidłowej strony: '$side'."
 
 #: src/menu_events.cpp:2103
 msgid "Can't droid networked side: '$side'."
-msgstr ""
+msgstr "Nie można zautomatyzować strony sieciowej: '$side'."
 
 #: src/menu_events.cpp:2132
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "Nieznany poziom debugowania: '$level'."
 
 #: src/menu_events.cpp:2141
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "Nieznana domena debugowania: '$domain'."
 
 #: src/menu_events.cpp:2150
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
+msgstr "Domena '$domain' została przełączona na poziom: '$level'."
 
 #: src/menu_events.cpp:2169
 msgid "Usage: control <side> <nick>"
-msgstr ""
+msgstr "Składnia: control <strona> <ksywka>"
 
 #: src/menu_events.cpp:2180
 msgid "Can't change control of invalid side: '$side'."
-msgstr ""
+msgstr "Nie można zmienić kontrolera nieprawidłowej strony: '$side'."
 
 #: src/menu_events.cpp:2187
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr ""
+msgstr "Nie można zmienić kontrolera strony poza zakresem: '$side'."
 
 #: src/menu_events.cpp:2232
-#, fuzzy
 msgid "Debug mode activated!"
-msgstr "Polecenia trybu debugowania"
+msgstr "Tryb debugowania włączony!"
 
 #: src/menu_events.cpp:2235
-#, fuzzy
 msgid "Debug mode deactivated!"
-msgstr "Polecenia trybu debugowania"
+msgstr "Tryb debugowania wyłączony!"
 
 #: src/menu_events.cpp:2316
 msgid "prompt^Command:"
@@ -6748,18 +7096,16 @@ msgid "(Empty slot)"
 msgstr "(Puste miejsce)"
 
 #: src/multiplayer_connect.cpp:835
-#, fuzzy
 msgid "Only random sides in the current era."
-msgstr "Brak nielosowych stron w wybranej erze"
+msgstr "Tylko strony losowe w wybranej erze."
 
 #: src/multiplayer_connect.cpp:859
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Nie można znaleźć jednostki-przywódcy dla strony $faction"
 
 #: src/multiplayer_connect.cpp:896
-#, fuzzy
 msgid "Game Lobby: "
-msgstr "Lobby"
+msgstr "Lobby gry: "
 
 #: src/multiplayer_connect.cpp:916
 msgid "Player/Type"
@@ -6877,7 +7223,7 @@ msgstr "Ustawienia..."
 
 #: src/multiplayer_create.cpp:87
 msgid "Set Password..."
-msgstr ""
+msgstr "Ustaw hasło..."
 
 #: src/multiplayer_create.cpp:103
 msgid "Load Game..."
@@ -6971,17 +7317,17 @@ msgstr "Musisz podać nazwę."
 
 #: src/multiplayer_create.cpp:326
 msgid "Set Password"
-msgstr ""
+msgstr "Ustaw hasło"
 
 #: src/multiplayer_create.cpp:327 src/multiplayer_lobby.cpp:740
-#, fuzzy
 msgid "Password: "
-msgstr "miecz"
+msgstr "Hasło: "
 
 #: src/multiplayer_create.cpp:327
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
+"Podaj hasło, które będą musieli wprowadzać gracze dołączający się do gry."
 
 #: src/multiplayer_create.cpp:335
 msgid "Turns: "
@@ -7061,7 +7407,7 @@ msgstr "Wolne miejsca:"
 
 #: src/multiplayer_lobby.cpp:491 src/multiplayer_lobby.cpp:738
 msgid "Password Required"
-msgstr ""
+msgstr "Wymagane hasło"
 
 #: src/multiplayer_lobby.cpp:498
 msgid "Fog"
@@ -7101,7 +7447,7 @@ msgstr "Szybko przewiń powtórkę do aktualnej tury"
 
 #: src/multiplayer_lobby.cpp:739
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Dołączenie do tej gry wymaga podania hasła."
 
 #: src/multiplayer_ui.cpp:171
 msgid "Invalid Color"
@@ -7144,9 +7490,8 @@ msgid "No multiplayer sides available in this game"
 msgstr "W tej grze nie ma dostępnych stron."
 
 #: src/multiplayer_wait.cpp:269
-#, fuzzy
 msgid "No era information found."
-msgstr "Nie znaleziono żadnych er."
+msgstr "Nie znaleziono informacji o erach."
 
 #: src/multiplayer_wait.cpp:274
 msgid "No multiplayer sides found"
@@ -7188,16 +7533,15 @@ msgstr "Napotkano teren o koszcie ruchu mniejszym niż 1."
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
-msgstr ""
+msgstr "Inicjalizacja drużyn"
 
 #: src/play_controller.cpp:106 src/play_controller.cpp:121
 msgid "Initializing display"
-msgstr ""
+msgstr "Inicjalizacja ekranu"
 
 #: src/play_controller.cpp:147
-#, fuzzy
 msgid "Starting game"
-msgstr "Porzuć grę"
+msgstr "Rozpoczynanie gry"
 
 #: src/play_controller.cpp:825
 msgid "Back to start"
@@ -7220,9 +7564,8 @@ msgid "Error while reading the WML: "
 msgstr "Błąd podczas wczytywania kodu WML: "
 
 #: src/playcampaign.cpp:415
-#, fuzzy
 msgid "Save Replay"
-msgstr "Powtórka"
+msgstr "Zapisz powtórkę"
 
 #: src/playcampaign.cpp:420
 msgid "The replay could not be saved"
@@ -7253,9 +7596,8 @@ msgid "End scenario"
 msgstr "Kończ scenariusz"
 
 #: src/playmp_controller.cpp:321
-#, fuzzy
 msgid "Waiting for next scenario..."
-msgstr "Oczekiwanie na początek gry..."
+msgstr "Oczekiwanie na następny scenariusz..."
 
 #: src/playmp_controller.cpp:446
 msgid ""

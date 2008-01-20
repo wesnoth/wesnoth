@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 13:01+0100\n"
-"PO-Revision-Date: 2007-12-20 13:43+0100\n"
+"PO-Revision-Date: 2008-01-19 14:09+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -385,13 +385,11 @@ msgstr "Pomiń ruchy komputera"
 
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr "Zapisz powtórkę po zwycięstwie (1-os./wieloos.) lub porażce (wieloos.)"
+msgstr "Zapis powtórki po zwycięstwie 1-os./wieloos. lub porażce wieloos."
 
 #: src/game_preferences_display.cpp:164
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr ""
-"Usuń zapisane gry po zwycięstwie (1-os./wieloos.) lub porażce (wieloos.)"
+msgstr "Usuń autozapisy po zwycięstwie 1-os./wieloos. lub porażce wieloos."
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -618,9 +616,8 @@ msgid "Set the frequency of unit idle animations"
 msgstr "Częstotliwość animacji bezczynności jednostek"
 
 #: src/game_preferences_display.cpp:335
-#, fuzzy
 msgid "Set maximum number of automatic saves to be retained"
-msgstr "Ustaw maksymalną liczbę zapisanych gier"
+msgstr "Ustaw maksymalną liczbę przechowywanych gier zapisanych automatycznie"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -740,9 +737,8 @@ msgid "Speed: "
 msgstr "Szybkość:"
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
-#, fuzzy
 msgid "Maximum Auto-Saves: "
-msgstr "Maksymalna liczba zapisanych gier: "
+msgstr "Maksymalna liczba automatycznie zapisanych gier: "
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
@@ -862,9 +858,8 @@ msgid "Save Game"
 msgstr "Zapisz grę"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "Zapisuj powtórki"
+msgstr "Zapisz powtórkę"
 
 #: src/hotkeys.cpp:71
 msgid "Save The Map"
@@ -1271,10 +1266,12 @@ msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"W sekcji '[$section|]' nie ustawiono obowiązkowego klucza  '$key|' dla "
+"'$primary_key| = $primary_value'."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
+msgstr "W sekcji '[$section|]' nie ustawiono obowiązkowego klucza '$key|'."
 
 #~ msgid "Delete Autosaves"
 #~ msgstr "Usuwaj automatycznie zapisane gry"
