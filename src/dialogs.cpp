@@ -1153,12 +1153,13 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 
 		events::raise_draw_event();
 		disp.flip();
-
+		events::pump();
+		
 		if(res != 0) {
 			return res;
 		}
 
-		events::pump();
+
 		if(cancel_button.pressed()) {
 			return res;
 		}
