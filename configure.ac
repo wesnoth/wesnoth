@@ -61,6 +61,20 @@ AM_GNU_GETTEXT([external])
 AC_PROG_RANLIB
 
 #######################################################################
+# Require GCC 4.x
+#######################################################################
+
+set -- `g++ --version`
+GCC_VERSION=$3
+parts=`echo $GCC_VERSION | tr '.' ' '`
+set $parts
+GCC_MAJOR_VERSION=$1
+if test $GCC_MAJOR_VERSION -lt 4
+then
+	AC_MSG_ERROR([*** G++ major version $GCC_MAJOR_VERSION is too old.])
+fi
+
+#######################################################################
 # Configuration options                                               #
 #######################################################################
 
@@ -135,7 +149,7 @@ if test "x$optipng" = "xyes"
 then
 	AC_PATH_PROGS([OPTIPNG_BIN], [optipng], [none])
 	if test \( "x$OPTIPNG_BIN" = "xnone" \) -a \( "x$optipng" = xyes \); then
-		AC_MSG_ERROR([*** You must instsll the optipng utility before building with --optipng.])
+		AC_MSG_ERROR([*** You must install the optipng utility before building with --optipng.])
 	else
 		echo "****************************************"
 		echo "*** optipng support enabled          ***"
