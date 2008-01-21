@@ -1573,7 +1573,11 @@ const surface unit::still_image(bool scaled) const
 void unit::set_standing(const gamemap::location& loc, bool with_bars)
 {
 	const game_display * disp =  game_display::get_singleton();
-	start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
+	if (disp->idle_anim()) {
+		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
+	} else {
+		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"default"),with_bars,true,"",0,STATE_STANDING);
+	}
 }
 
 

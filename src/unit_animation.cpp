@@ -509,7 +509,8 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	}
 	if(with_default) animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image"]),150,"1~0"),"pre_teleport",unit_animation::DEFAULT_ANIM));
 	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150,"0~1"),"post_teleport",unit_animation::DEFAULT_ANIM));
-	// Always have a defensive animation
+	// Add a default animation as the last fallback
+	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),0),"default",unit_animation::DEFAULT_ANIM));
 
 }
 
