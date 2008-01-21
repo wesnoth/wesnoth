@@ -2104,7 +2104,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		steps.pop_back();
 	}
 
-	assert(steps.size() < route.size());
+	assert(steps.size() <= route.size());
 
 	// If we can't get all the way there and have to set a go-to.
 	if(steps.size() != route.size() && discovered_unit == false) {
