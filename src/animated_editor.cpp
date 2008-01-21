@@ -1,4 +1,4 @@
-/* $Id: animated_editor.cpp 18467 2007-06-27 18:18:16Z boucman $ */
+/* $Id$ */
 /*
    Copyright (C) 2007 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

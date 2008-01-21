@@ -1,4 +1,4 @@
-/* $Id: settings.cpp 18943 2007-07-21 07:28:04Z mordante $ */
+/* $Id$ */
 /*
    Copyright (C) 2007 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

@@ -1,4 +1,4 @@
-/* $Id: preferences_display.cpp 18735 2007-07-08 02:33:43Z esr $ */
+/* $Id$ */
 /*
    Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
