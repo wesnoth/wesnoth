@@ -2160,7 +2160,6 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		disp->draw();
 		// Clear display helpers before firing events
 	}
-	game_events::raise("moveto",steps.back());
 
 
 	if ( teams[ui->second.side()-1].uses_shroud() || teams[ui->second.side()-1].uses_fog())
@@ -2182,6 +2181,9 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 			game_events::raise(sighted_str,*sight_it,steps.back());
 		}
 	}
+
+	game_events::raise("moveto",steps.back());
+
 	event_mutated |= game_events::pump();
 
 	ui = units.find(steps.back());
