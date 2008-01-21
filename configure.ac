@@ -69,9 +69,10 @@ GCC_VERSION=$3
 parts=`echo $GCC_VERSION | tr '.' ' '`
 set $parts
 GCC_MAJOR_VERSION=$1
-if test $GCC_MAJOR_VERSION -lt 4
+GCC_MINOR_VERSION=$2
+if test ${GCC_MAJOR_VERSION}${GCC_MINOR_VERSION} -lt 33 
 then
-	AC_MSG_ERROR([*** G++ major version $GCC_MAJOR_VERSION is too old.])
+	AC_MSG_ERROR([*** G++ major version $GCC_VERSION is too old.])
 fi
 
 #######################################################################
