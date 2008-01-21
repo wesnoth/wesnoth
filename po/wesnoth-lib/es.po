@@ -1,17 +1,18 @@
 # translation of es.po to Spanish
 # Spanish translations for Battle for Wesnoth package.
-# Copyright (C) 2004, 2005, 2006, 2007 Wesnoth development team
+# Copyright (C) 2004, 2005, 2006, 2007, 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Isaac Clerencia <isaac@warp.es>, 2006.
 # Roberto Romero <sildurin@gmail.com>, 2007.
+# Sergi March <sergi.march@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 13:01+0100\n"
-"PO-Revision-Date: 2007-10-01 17:44+0200\n"
-"Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
+"PO-Revision-Date: 2008-01-20 20:52+0100\n"
+"Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -177,7 +178,6 @@ msgid "Mushroom Grove"
 msgstr "Campo de setas"
 
 #: data/core/terrain.cfg:653
-#, fuzzy
 msgid "Mushroom Grove Lit"
 msgstr "Campo de setas"
 
@@ -226,7 +226,7 @@ msgstr "Pared de cueva"
 
 #: data/core/terrain.cfg:943
 msgid "Void"
-msgstr ""
+msgstr "Vacío"
 
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
 #: src/editor/editor_dialogs.cpp:423
@@ -371,7 +371,7 @@ msgstr "Ha fallado la creación del directorio."
 
 #: src/game_preferences.cpp:217
 msgid "No server has been defined."
-msgstr ""
+msgstr "No se ha definido ningún servidor."
 
 #: src/game_preferences.cpp:281
 msgid "player"
@@ -388,11 +388,14 @@ msgstr "Omitir los movimientos de la inteligencia artificial"
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
+"Guardar Repetición en Victorias de un jugador/multijugador o Derrotas "
+"multijugador."
 
 #: src/game_preferences_display.cpp:164
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "Borrar guardados automáticos al finalizar el escenario"
+msgstr ""
+"Borrar guardados automáticos en las Victorias de un jugador/multijugador o "
+"Derrotas multijugador"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -459,9 +462,8 @@ msgid "Show Haloing Effects"
 msgstr "Mostrar halos"
 
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Change Resolution"
-msgstr "Seleccione resolución"
+msgstr "Cambiar resolución"
 
 #: src/game_preferences_display.cpp:182
 msgid "Theme"
@@ -489,11 +491,11 @@ msgstr "Marcas temporales de conversación"
 
 #: src/game_preferences_display.cpp:190
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Opciones Avanzadas"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Opciones Estándar"
 
 #: src/game_preferences_display.cpp:192
 msgid "User Interface Sounds"
@@ -623,6 +625,7 @@ msgstr "Establecer la frecuencia de las animaciones de las unidades inactivas"
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
+"Establecer el número máximo guardados automáticos que se deben conservar"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -633,11 +636,14 @@ msgstr ""
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
 msgstr ""
+"Guardar repeticiones en victorias de un jugador o derrotas de un jugador/"
+"multijugador."
 
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Borrar guardados automáticos al finalizar el escenario"
+msgstr ""
+"Borrar automáticamente partidas guardadas en victorias de un jugador o en "
+"derrotas de un jugador/multijugador"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -747,20 +753,19 @@ msgstr "Velocidad: "
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Auto-Saves: "
-msgstr ""
+msgstr "Auto-Guardados máximos:"
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
-msgstr ""
+msgstr "Infinito"
 
 #: src/game_preferences_display.cpp:862
 msgid "Chat Lines: "
 msgstr "Líneas de conversación: "
 
 #: src/game_preferences_display.cpp:884 src/game_preferences_display.cpp:892
-#, fuzzy
 msgid "Invalid username"
-msgstr "Insertar un nombre de usuario"
+msgstr "Nombre de usuario inválido"
 
 #: src/game_preferences_display.cpp:964
 msgid "yes"
@@ -772,7 +777,7 @@ msgstr "no"
 
 #: src/game_preferences_display.cpp:997
 msgid "(empty list)"
-msgstr ""
+msgstr "(lista vacía)"
 
 #: src/game_preferences_display.cpp:1115
 msgid "Prefs section^General"
@@ -869,9 +874,8 @@ msgid "Save Game"
 msgstr "Guardar partida"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "Guardar repeticiones"
+msgstr "Guardar repetición"
 
 #: src/hotkeys.cpp:71
 msgid "Save The Map"
@@ -1187,15 +1191,15 @@ msgstr "Isla"
 
 #: src/marked-up_text.cpp:357
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "La anchura máxima del texto es menos de 1."
 
 #: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "No es posible obtener la imagen para el terreno: $terrain."
 
 #: src/minimap.cpp:93 src/minimap.cpp:105
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Error al crear o adquirir una imagen."
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
@@ -1252,6 +1256,8 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
+"Un terreno con una cadena de más de 4 caracteres se ha encontrado, el "
+"terreno afectado es:"
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
@@ -1264,20 +1270,27 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Ha ocurrido un error debido a un posible WML inválido\n"
+" El mensaje de error es :"
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
+"Cuando informe del error por favor incluya el siguiente mensaje de error :"
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"En la sección '[$section|]' donde '$primary_key| = $primary_value' la clave "
+"obligatoria '$key|' no se ha establecido."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+"En la sección '[$section|]' la clave obligatoria '$key|' no se ha "
+"establecido."
 
 #~ msgid "Delete Autosaves"
 #~ msgstr "Borrar guardados automáticos"

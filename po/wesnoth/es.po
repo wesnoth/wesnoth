@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 14:47+0100\n"
-"PO-Revision-Date: 2008-01-12 15:26+0100\n"
+"PO-Revision-Date: 2008-01-20 22:54+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -308,6 +308,9 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Algunas armas tienen características especiales que aumentan la eficacia de "
+"atacar con ellas.\n"
+" \n"
 
 #: data/core/help.cfg:99
 msgid "Unknown Unit"
@@ -1368,7 +1371,6 @@ msgstr ""
 "<ref>dst=traits_strong text=fuerte</ref>."
 
 #: data/core/help.cfg:320
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1381,7 +1383,8 @@ msgstr ""
 "\n"
 "Los otros rasgos que pueden asignarse a las unidades son "
 "<ref>dst=traits_dextrous text=diestro</ref>,<ref>dst=traits_loyal text=leal</"
-"ref> y <ref>dst=traits_undead text='no muerto'</ref>."
+"ref>, y <ref>dst=traits_undead text=No Muerto</ref>.\n"
+"\n"
 
 #: data/core/help.cfg:325
 msgid "Intelligent"
@@ -1655,6 +1658,10 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"Los mapas de juego disponen de una amplia variedad de terrenos que afectan "
+"al movimiento de las unidades y la capacidad defensiva en combate de una "
+"unidad.\n"
+"\n"
 
 #: data/core/help.cfg:412
 msgid "Grassland"
@@ -2264,7 +2271,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:675
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2277,7 +2283,10 @@ msgstr ""
 "\n"
 "Alterna el control de un bando entre un humano y la inteligencia artificial. "
 "Esta orden la debe dar el jugador o el cliente que controle el bando en "
-"cuestión. Por defecto será el bando actualmente activo.\n"
+"cuestión. Si no se especifica segundo parámetro, cambia entre humano y IA. "
+"Si es 'on', establece un controlador de inteligencia artificial. Si es 'off' "
+"establece un controlador humano.Por defecto será el bando actualmente activo "
+"si no se especifica ningún parámetro.\n"
 "\n"
 
 #: data/core/help.cfg:678
@@ -4563,9 +4572,8 @@ msgid "race^Merman"
 msgstr "Sirénidos"
 
 #: data/core/units.cfg:162
-#, fuzzy
 msgid "race^Mermaid"
-msgstr "Sirénidos"
+msgstr "Sirénidas"
 
 #: data/core/units.cfg:163
 msgid "race^Mermen"
@@ -4584,7 +4592,6 @@ msgid "race^Naga"
 msgstr "Nagas"
 
 #: data/core/units.cfg:180
-#, fuzzy
 msgid "race^Nagani"
 msgstr "Nagas"
 
@@ -5763,7 +5770,6 @@ msgid "Overwrite?"
 msgstr "¿Sobreescribir?"
 
 #: src/dialogs.cpp:287
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "La partida ya existe. ¿Desea sobreescribirla?"
 
@@ -6352,17 +6358,12 @@ msgid "Help"
 msgstr "Ayuda"
 
 #: src/help.cpp:1104
-#, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
-msgstr "Unidades que poseen este ataque especial:"
+msgstr "<header>text='Unidades que poseen este ataque especial'</header>"
 
 #: src/help.cpp:1172
-#, fuzzy
 msgid "<header>text='Units having this ability'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Probabilidad de acierto'</header>"
+msgstr "<header>text='Unidades con esta habilidad'</header>"
 
 #: src/help.cpp:1237
 msgid "Advances from: "
@@ -6450,12 +6451,8 @@ msgid "Movement Cost"
 msgstr "Coste de movimiento"
 
 #: src/help.cpp:1606
-#, fuzzy
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Probabilidad de acierto'</header>"
+msgstr "<header>text='Unidades de esta raza'</header>"
 
 #: src/help.cpp:2496 src/menu_events.cpp:693
 msgid " < Back"
@@ -6732,7 +6729,6 @@ msgid "Scenario Settings"
 msgstr "Preferencias del escenario"
 
 #: src/menu_events.cpp:728 src/playcampaign.cpp:414
-#, fuzzy
 msgid "Name: "
 msgstr "Nombre:"
 
@@ -7012,7 +7008,7 @@ msgstr "No se puede cambiar el control del bando inválido: '$side'."
 
 #: src/menu_events.cpp:2187
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr ""
+msgstr "No se puede cambiar el control al bando fuera de límites: '$side'."
 
 #: src/menu_events.cpp:2232
 msgid "Debug mode activated!"
@@ -7635,9 +7631,8 @@ msgid "Error while reading the WML: "
 msgstr "Error leyendo el WML: "
 
 #: src/playcampaign.cpp:415
-#, fuzzy
 msgid "Save Replay"
-msgstr "Repetición"
+msgstr "Guardar Repetición"
 
 #: src/playcampaign.cpp:420
 msgid "The replay could not be saved"
@@ -7924,14 +7919,12 @@ msgid "TitleScreen button^Quit"
 msgstr "Salir"
 
 #: src/titlescreen.cpp:353
-#, fuzzy
 msgid "TitleScreen button^Previous"
-msgstr "Créditos"
+msgstr "Anterior"
 
 #: src/titlescreen.cpp:354
-#, fuzzy
 msgid "TitleScreen button^Next"
-msgstr "Salir"
+msgstr "Siguiente"
 
 #: src/titlescreen.cpp:355
 msgid "TitleScreen button^Help"
