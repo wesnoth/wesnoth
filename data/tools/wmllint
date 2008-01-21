@@ -39,6 +39,9 @@
 # You can disable stack-based malformation checks with a comment
 # containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
 #
+# You can prevent file conversions with a comment containing
+# "wmllint: noconvert" on the same line as the filename.
+#
 # You can skip checks on unbalanced WML (e.g. in a macro definition) by
 # bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
 # Note that this will also disable stack-based validation on the span
@@ -1612,9 +1615,10 @@ if __name__ == '__main__':
         "Resource-name transformation on text lines."
         transformed = line
         # First, do resource-file moves
-        for step in fileconversions:
-            for (old, new) in step:
-                transformed = old.sub(new, transformed)
+        if "wmllint: noconvert" not in line:
+            for step in fileconversions:
+                for (old, new) in step:
+                    transformed = old.sub(new, transformed)
         # Handle terrain_liked=, terrain=, valid_terrain=, letter=
         spaceless = transformed.replace(" ", "").replace("\t", "")
         if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless or 'letter=' in spaceless) and "wmllint:ignore" not in spaceless:
