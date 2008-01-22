@@ -139,9 +139,8 @@ void game::start_game(const player_map::const_iterator starter) {
 	}
 	end_turn_ = (turn - 1) * nsides_ + side - 1;
 	end_turn();
+	history_.clear();
 	if (advance) {
-		// Probably wouldn't hurt to do it on start as well..
-		history_.clear();
 		// Re-assign sides to allow correct filtering of commands.
 		update_side_data();
 		// When the host advances tell everyone that the next scenario data is

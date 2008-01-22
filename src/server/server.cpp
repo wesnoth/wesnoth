@@ -1218,7 +1218,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 			g->set_termination_reason(info["condition"]);
 			if (info["condition"] == "out of sync") {
 				// May be too noisy..
-				LOG_SERVER << network::ip_address(sock) << pl->second.name()
+				LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 					<< "\treports an out of sync error in game:\t\""
 					<< g->name() << "\" (" << g->id() << ").\n";
 			}
