@@ -636,6 +636,7 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 	if (!started_) return false;
 	config* const turn = data.child("turn");
 	filter_commands(user->first, *turn);
+	if (turn->all_children().size() == 0) return false;
 
 	//! Return value that tells whether the description changed.
 	const bool res = process_commands(*turn);
@@ -699,8 +700,8 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 //! Filter commands from all but the current player.
 //! Currently removes all commands but [speak] for observers and all but
 //! [speak], [label] and [rename] for players.
-bool game::filter_commands(const network::connection member, config& cfg) const {
-	if (is_current_player(member)) return true;
+void game::filter_commands(const network::connection member, config& cfg) {
+	if (is_current_player(member)) return;
 	std::vector<int> marked;
 	int index = 0;
 	const config::child_list& children = cfg.get_children("command");
@@ -738,8 +739,6 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 	for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
 		cfg.remove_child("command",*j);
 	}
-
-	return cfg.all_children().empty() == false;
 }
 
 bool game::process_commands(const config& cfg) {

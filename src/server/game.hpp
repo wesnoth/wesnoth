@@ -96,8 +96,7 @@ public:
 
 	//! Function which filters commands sent by a player to remove commands
 	//! that they don't have permission to execute.
-	//! Returns true iff there are still some commands left.
-	bool filter_commands(const network::connection player, config& cfg) const;
+	void filter_commands(const network::connection player, config& cfg);
 	//! Process [turn].
 	bool process_turn(config data, const player_map::const_iterator user);
 	//! Set the description to the number of available slots.
