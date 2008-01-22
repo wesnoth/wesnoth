@@ -36,7 +36,7 @@ playsingle_controller::playsingle_controller(const config& level, const game_dat
 											 const int ticks, const int num_turns, const config& game_config, CVideo& video,
 											 bool skip_replay)
 	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay, false),
-	cursor_setter(cursor::NORMAL), replay_sender_(recorder)
+	cursor_setter(cursor::NORMAL), replay_sender_(recorder) , turn_over_(false)
 {
 	end_turn_ = false;
 	replaying_ = false;
@@ -646,8 +646,24 @@ void playsingle_controller::linger(upload_log& log)
 	LOG_NG << "ending end-of-scenario linger\n";
 }
 
+void playsingle_controller::end_turn_record()
+{
+	if (!turn_over_)
+	{
+		turn_over_ = true;
+		recorder.end_turn();
+	}
+}
+void playsingle_controller::end_turn_record_unlock()
+{
+	turn_over_ = false;
+}
+
 void playsingle_controller::after_human_turn(){
+	end_turn_record();
+	end_turn_record_unlock();
 	menu_handler_.clear_undo_stack(player_number_);
+	gui_->set_route(NULL);
 	gui_->unhighlight_reach();
 }
 

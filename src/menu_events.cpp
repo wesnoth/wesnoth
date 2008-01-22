@@ -1533,12 +1533,6 @@ private:
 			}
 		}
 
-		//force any pending fog updates
-		clear_undo_stack(team_num);
-		gui_->set_route(NULL);
-
-		recorder.end_turn();
-
 		return true;
 	}
 

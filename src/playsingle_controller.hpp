@@ -64,6 +64,8 @@ protected:
 	virtual void before_human_turn(bool save);
 	virtual void play_human_turn();
 	virtual void after_human_turn();
+	void end_turn_record();
+	void end_turn_record_unlock();
 	void play_ai_turn();
 	virtual void init_gui();
 	void check_time_over();
@@ -77,6 +79,7 @@ protected:
 	bool player_type_changed_;
 	bool replaying_;
 private:
+	bool turn_over_;
 	void report_victory(std::stringstream& report,
 		    end_level_exception& end_level,
 		    int player_gold,

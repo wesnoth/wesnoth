@@ -364,6 +364,7 @@ void playmp_controller::after_human_turn(){
 		current_team().set_countdown_time(1000 * secs);
 		recorder.add_countdown_update(current_team().countdown_time(),player_number_);
 	}
+	end_turn_record();
 
 	//send one more time to make sure network is up-to-date.
 	turn_data_->send_data();
