@@ -42,7 +42,8 @@ noinst_LIBRARIES = libwesnoth-core.a libwesnoth.a
 pkgdatadir=$(datadir)/@DATADIR@
 
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
-	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(FREETYPE_LIBS) $(LIBINTL)
+	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(FREETYPE_LIBS) $(LIBINTL) \
+	$(BOOST_IOSTREAMS_LIBS) 
 
 wesnoth_source = \
 	about.cpp \
@@ -154,7 +155,7 @@ wesnothd_SOURCES = \
 	network_worker.cpp \
 	loadscreen_empty.cpp 
 
-wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
+wesnothd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 wesnothd_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
@@ -168,7 +169,7 @@ campaignd_SOURCES = \
 	publish_campaign.cpp \
 	loadscreen_empty.cpp 
 
-campaignd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
+campaignd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 campaignd_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
@@ -198,7 +199,7 @@ cutter_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_L
 cutter_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
-#    Castle building helpers                                                #
+#    Unit tests                                                             #
 #############################################################################
 
 test_SOURCES = \
@@ -210,7 +211,7 @@ test_LDADD = $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
-#    Headers
+#    Headers                                                                #
 #############################################################################
 
 noinst_HEADERS = \
@@ -487,11 +488,14 @@ else
 endif
 
 CXXLD = $(LDPREFIX) $(CXX)
+CXXFLAGS += $(BOOST_CPPFLAGS)
 
 
 if STATIC
 LDFLAGS += -all-static
 endif
+
+LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS)
 
 #if STATIC
 #LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \

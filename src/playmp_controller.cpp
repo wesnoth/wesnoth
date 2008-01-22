@@ -39,6 +39,11 @@ playmp_controller::playmp_controller(const config& level,
 	beep_warning_time_ = 0;
 	turn_data_ = NULL;
 	is_host_ = is_host;
+	// We stop quick replay if play isn't yet past turn 1
+	if ( replay_last_turn_ <= 1)
+	{
+		skip_replay_ = false;
+	}
 }
 
 playmp_controller::~playmp_controller() {
