@@ -193,9 +193,9 @@ cutter_SOURCES = \
 	sdl_utils.cpp \
 	loadscreen_empty.cpp 
 
-exploder_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS)
+exploder_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS)
 exploder_DEPENDENCIES=libwesnoth-core.a
-cutter_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS)
+cutter_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS)
 cutter_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
