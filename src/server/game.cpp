@@ -122,9 +122,9 @@ void game::start_game(const player_map::const_iterator starter) {
 	for(config::child_itors sides = level_.child_range("side");
 		sides.first != sides.second; ++sides.first)
 	{
-		if ((**sides.first)["controller"] != "null") {
-			nsides_++;
-			if (!advance) (**sides.first)["controller"] = "human";
+		nsides_++;
+		if ((**sides.first)["controller"] != "null" && !advance) {
+			(**sides.first)["controller"] = "human";
 		}
 	}
 	DBG_GAME << "Number of sides: " << nsides_ << "\n";
@@ -137,12 +137,8 @@ void game::start_game(const player_map::const_iterator starter) {
 		LOG_GAME << "Reload from turn: " << turn
 			<< ". Current side is: " << side + 1 << ".\n";
 	}
-	end_turn_ = (turn - 1) * nsides_ + side;
-	if (description_) {
-		(*description_)["turn"] = describe_turns(turn, s["turns"]);
-	} else {
-		ERR_GAME << "ERROR: Game without description_ started. (" << id_ << ")\n";
-	}
+	end_turn_ = (turn - 1) * nsides_ + side - 1;
+	end_turn();
 	if (advance) {
 		// Probably wouldn't hurt to do it on start as well..
 		history_.clear();
@@ -279,6 +275,8 @@ void game::update_side_data() {
 				sides_[side_num - 1] = owner_;
 				sides_taken_[side_num - 1] = true;
 				side_found = true;
+			} else if ((**side)["controller"] == "null") {
+				side_controllers_[side_num - 1] = "null";
 			}
 		}
 		if (side_found) {
@@ -352,7 +350,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	if (!(sides_[side_num - 1] == sock || (sock == owner_))) {
 		std::stringstream msg;
 		msg << "Side " << side_num << " is already controlled by '"
-			<< (player_info_->find(sides_[side_num - 1]) == player_info_->end()
+			<< (player_info_->find(sides_[side_num - 1]) != player_info_->end()
 				? player_info_->find(sides_[side_num - 1])->second.name()
 				: "")
 			<< "'.";
@@ -714,7 +712,8 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 		// Chatting is never an illegal command.
 		|| !((*i)->child("speak") || (is_player(member)
 			&& ((*i)->child("label") || (*i)->child("clear_labels")
-				|| (*i)->child("rename")/* || (*i)->child("choose")*/))))
+				|| (*i)->child("rename") || (*i)->child("countdown_update")
+				/* || (*i)->child("choose")*/))))
 		{
 			std::stringstream msg;
 			msg << "Removing illegal command from: "
@@ -727,7 +726,9 @@ bool game::filter_commands(const network::connection member, config& cfg) const 
 					: "")
 				<< ".\n";
 			LOG_GAME << msg.str();
-			send_data(construct_server_message(msg.str()));
+			const config& server_msg = construct_server_message(msg.str());
+			send_data(server_msg);
+			record_data(server_msg);
 			DBG_GAME << (*i)->debug();
 			marked.push_back(index - marked.size());
 		}
@@ -757,10 +758,23 @@ bool game::process_commands(const config& cfg) {
 bool game::end_turn() {
 	// It's a new turn every time each side in the game ends their turn.
 	++end_turn_;
-
-	if (nsides_ == 0 || (end_turn_%nsides_) != 0) return false;
-
-	const int turn = end_turn_/nsides_ + 1;
+	if (nsides_ == 0) return false;
+	bool turn_ended = false;
+	int turn;
+	if ((end_turn_ % nsides_) == 0) {
+		turn_ended = true;
+		turn = end_turn_ / nsides_ + 1;
+	}
+	// Skip over empty sides.
+	for (int i = 0; i < nsides_ && side_controllers_[end_turn_ % nsides_] == "null";
+		 ++i, ++end_turn_)
+	{
+		if ((end_turn_ % nsides_) == 0) {
+			turn_ended = true;
+			turn = end_turn_ / nsides_ + 1;
+		}
+	}
+	if (!turn_ended) return false;
 
 	if (description_ == NULL) {
 		return false;
@@ -902,6 +916,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 				drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
 				drop["controller"] = "ai";
 				network::send_data(drop, owner_, true);
+				sides_[side] = owner_;
 			}
 		}
 		if (ai_transfer) {
@@ -918,9 +933,9 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		drop["controller"] = side_controllers_[side - sides_.begin()];
 		network::send_data(drop, owner_, true);
 
-		side_controllers_[side - sides_.begin()] = "null";
-		sides_taken_[side - sides_.begin()] = false;
-		sides_[side - sides_.begin()] = 0;
+		side_controllers_[side - sides_.begin()] = "human";
+		sides_taken_[side - sides_.begin()] = true;
+		sides_[side - sides_.begin()] = owner_;
 	}
 	DBG_GAME << debug_player_info();
 

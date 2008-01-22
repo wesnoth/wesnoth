@@ -174,15 +174,25 @@ private:
 	//! The name of the game.
 	std::string name_;
 	std::string password_;
+	//! The game host or later owner (if the host left).
 	network::connection owner_;
+	//! A vector of players (members owning a side).
 	user_vector players_;
+	//! A vector of observers (members not owning a side).
 	user_vector observers_;
 	user_vector muted_observers_;
+	//! A vector of side owners.
 	side_vector sides_;
+	//! A vector indicating what sides are actually taken. (Really needed?)
 	std::vector<bool> sides_taken_;
+	//! A vector of controller strings indicating the type.
+	//! "network" - a side controlled by some member of the game (not the owner)
+	//! "human"   - a side controlled by the owner
+	//! "ai"      - a side of the owner controlled by an AI
+	//! "null"    - an empty side
 	std::vector<std::string> side_controllers_;
 	
-	//! Number of non-empty sides.
+	//! Number of sides in the current scenario.
 	int nsides_;
 	bool started_;
 
