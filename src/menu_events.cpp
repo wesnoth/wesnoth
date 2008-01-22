@@ -2128,11 +2128,20 @@ private:
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			const std::string side_s(data.begin(),j);
 			const std::string action(j,data.end());
-			// default to the current side
-			const unsigned int side = lexical_cast_default<unsigned int>(side_s, team_num);
+			unsigned int side = -1;
+			// default to the current side if empty
+			if (side_s.empty()) {
+				side = team_num;
+			} else {
+				try {
+					side = lexical_cast<unsigned int>(side_s);
+				} catch(bad_lexical_cast&) {
+					side = -1;
+				}
+			}
 			if (side < 1 || side > teams_.size()) {
 				utils::string_map symbols;
-				symbols["side"] = lexical_cast<std::string>(side);
+				symbols["side"] = side_s;
 				add_chat_message(time(NULL), _("error"), 0, vgettext(
 						"Can't droid invalid side: '$side'.", symbols));
 				return;
