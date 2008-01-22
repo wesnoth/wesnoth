@@ -135,8 +135,8 @@ if __name__ == "__main__":
                     campaign.debug(show_contents = True,
                         use_color = options.color)
             else:
-                column_sizes = [5, 7, 8, 8, 10, 5, 10]
-                columns = [["name", "author", "version", "uploads", "downloads", "size", "timestamp"]]
+                column_sizes = [5, 7, 8, 8, 10, 5, 10, 13]
+                columns = [["name", "author", "version", "uploads", "downloads", "size", "timestamp", "translatable"]]
                 for campaign in campaigns.get_all("campaign"):  
                     column = [campaign.get_text_val("name", "?"),
                         campaign.get_text_val("author", "?"),
@@ -144,7 +144,8 @@ if __name__ == "__main__":
                         campaign.get_text_val("uploads", "?"),
                         campaign.get_text_val("downloads", "?"),
                         campaign.get_text_val("size", "?"),
-                        time.ctime(int(campaign.get_text_val("timestamp", "?")))]
+                        time.ctime(int(campaign.get_text_val("timestamp", "?"))),
+                        campaign.get_text_val("translate", "false")]
                     columns.append(column)
                     for i, s in enumerate(column_sizes):
                         if 1 + len(column[i]) > s:
