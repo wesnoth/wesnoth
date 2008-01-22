@@ -69,6 +69,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		teams_(t),
 		level_(level),
 		invalidateUnit_(true),
+		displayedUnitHex_(),
 		overlays_(),
 		currentTeam_(0), 
 		activeTeam_(0),
@@ -212,17 +213,35 @@ void game_display::select_hex(gamemap::location hex)
 		return;
 	}
 	display::select_hex(hex);
-	invalidate_unit();
+
+	if (units_.count(hex)) {
+		displayedUnitHex_ = hex;
+		invalidate_unit();
+	}
 }
 
 void game_display::highlight_hex(gamemap::location hex)
 {
-	const int has_unit = units_.count(mouseoverHex_) + units_.count(hex);
+	if (units_.count(hex)) {
+		displayedUnitHex_ = hex;
+		invalidate_unit();
+	} else if (units_.count(mouseoverHex_)) {
+		// mouse moved from unit hex to non-unit hex
+		if (units_.count(selectedHex_)) {
+			displayedUnitHex_ = selectedHex_;
+			invalidate_unit();
+		}
+	}
 
 	display::highlight_hex(hex);
 	invalidate_game_status();
+}
 
-	if(has_unit) {
+
+void game_display::invalidate_unit_after_move(const gamemap::location& src, const gamemap::location& dst)
+{
+	if (src == displayedUnitHex_) {
+		displayedUnitHex_ = dst;
 		invalidate_unit();
 	}
 }
@@ -487,7 +506,7 @@ void game_display::draw_report(reports::TYPE report_num)
 							  units_, teams_,
 							  teams_[viewing_team()],
 							  size_t(currentTeam_+1),size_t(activeTeam_+1),
-							  selectedHex_,mouseoverHex_,status_,observers_,level_);
+							  selectedHex_,mouseoverHex_,displayedUnitHex_,status_,observers_,level_);
 
 	brighten = false;
 	if(report_num == reports::TIME_OF_DAY) {
@@ -528,15 +547,9 @@ void game_display::draw_sidebar()
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
 		unit_map::const_iterator i =
-			find_visible_unit(units_,mouseoverHex_,
+			find_visible_unit(units_,displayedUnitHex_,
 					map_,
 					teams_,teams_[viewing_team()]);
-
-		if(i == units_.end()) {
-			i = find_visible_unit(units_,selectedHex_,
-					map_,
-					teams_,teams_[viewing_team()]);
-		}
 
 		if(i != units_.end()) {
 			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {

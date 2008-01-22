@@ -97,7 +97,7 @@ namespace reports {
 			       const gamemap& map, unit_map& units,
 			       const std::vector<team>& teams, const team& current_team,
 			       unsigned int current_side, int unsigned active_side,
-			       const gamemap::location& loc, const gamemap::location& mouseover,
+			       const gamemap::location& loc, const gamemap::location& mouseover, const gamemap::location& displayed_unit_hex,
 			       const gamestatus& status, const std::set<std::string>& observers,
 			       const config& level);
 }

@@ -40,26 +40,19 @@ report generate_report(TYPE type,
                        const gamemap& map, unit_map& units,
                        const std::vector<team>& teams, const team& current_team,
                        unsigned int current_side, unsigned int playing_side,
-                       const gamemap::location& loc, const gamemap::location& mouseover,
+                       const gamemap::location& loc, const gamemap::location& mouseover, const gamemap::location& displayed_unit_hex,
                        const gamestatus& status, const std::set<std::string>& observers,
                        const config& level)
 {
 	unit_map::iterator u = units.end();
-	bool mouseover_unit = true;
 
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
 
-		u = find_visible_unit(units,mouseover,
-							  map,
-							  teams,current_team);
-		if(u == units.end()) {
-			mouseover_unit = false;
-			u = find_visible_unit(units,loc,
-								  map,
-								  teams,current_team);
-			if(u == units.end() && type != POSITION) {
-				return report();
-			}
+		u = find_visible_unit(units,displayed_unit_hex,
+				      map,
+				      teams,current_team);
+		if(u == units.end() && type != POSITION) {
+			return report();
 		}
 	}
 
@@ -443,7 +436,11 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		str << mouseover;
 
-		if(u == units.end() || current_team.shrouded(mouseover))
+		if(u == units.end())
+			break;
+		if(displayed_unit_hex != mouseover && displayed_unit_hex != loc)
+			break;
+		if(current_team.shrouded(mouseover))
 			break;
 
 		const int move_cost = u->second.movement_cost(terrain);
@@ -451,7 +448,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		if(move_cost < 99) {
 			str << " (" << defense << "%," << move_cost << ")";
-		} else if (mouseover_unit) {
+		} else if (mouseover == displayed_unit_hex) {
 			str << " (" << defense << "%,-)";
 		} else {
 			str << " (-)";

@@ -111,6 +111,9 @@ public:
 	//! Function to invalidate that unit status displayed on the sidebar.
 	void invalidate_unit() { invalidateUnit_ = true; }
 
+	//! Same as invalidate_unit() if moving the displayed unit.
+	void invalidate_unit_after_move(const gamemap::location& src, const gamemap::location& dst);
+
 private:
 	//! Function to invalidate animated terrains which may have changed.
 	void invalidate_animations();
@@ -234,6 +237,7 @@ private:
 	void invalidate_route();
 
 	bool invalidateUnit_;
+	gamemap::location displayedUnitHex_;
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
