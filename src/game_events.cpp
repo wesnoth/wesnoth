@@ -420,7 +420,7 @@ public:
 	bool& rebuild_screen() {return rebuild_screen_;}
 
 private:
-	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated);
+	void handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated, bool& skip_messages);
 
 	std::string name_;
 	bool first_time_only_;
@@ -449,13 +449,12 @@ namespace {
 std::multimap<std::string,event_handler> events_map;
 
 //! Handles all the different types of actions that can be triggered by an event.
-bool event_handler::handle_event_command(const queued_event& event_info,
-		const std::string& cmd, const vconfig cfg, bool& mutated)
+void event_handler::handle_event_command(const queued_event& event_info,
+		const std::string& cmd, const vconfig cfg, bool& mutated, bool& skip_messages)
 {
 	log_scope2(engine, "handle_event_command");
 	LOG_NG << "handling command: '" << cmd << "'\n";
 
-	bool rval = true;
 	// Sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
 		if(!handle_event(event_info, cfg)) {
@@ -564,7 +563,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const size_t index = side_num-1;
 
 		if(index >= teams->size())
-			return rval;
+			return;
 
 		const std::string type = cfg["type"];
 
@@ -588,7 +587,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const size_t index = side_num-1;
 
 		if(index >= teams->size())
-			return rval;
+			return;
 
 		const std::string type = cfg["type"];
 		const std::vector<std::string>& types = utils::split(type);
@@ -609,7 +608,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const size_t index = side_num-1;
 
 		if(index >= teams->size())
-			return rval;
+			return;
 
 		std::vector<std::string> recruit = utils::split(cfg["recruit"]);
 		if(recruit.size() == 1 && recruit.back() == "")
@@ -714,7 +713,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string shroud = cfg["shroud"];
 		std::string village_gold = cfg["village_gold"];
 		// TODO? std::string colour = cfg["colour"];
-		
+
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
@@ -734,10 +733,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				std::set<std::string>& rlist_set = (*teams)[team_index].recruits();
 				rlist_set.clear();
-				
+
 				std::copy( recruit.begin(), recruit.end(), std::inserter(rlist_set,rlist_set.end()) );
 				player_info *player = state_of_game->get_player((*teams)[team_index].save_id());
-				
+
 				if (player) player->can_recruit = rlist_set;
 			}
 			// Modify income
@@ -785,7 +784,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				state_of_game->get_variable(var_name+".recruit") = side_data["recruit"];
 				state_of_game->get_variable(var_name+".fog") = side_data["fog"];
 				state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
-				
+
 				state_of_game->get_variable(var_name+".income") = lexical_cast_default<std::string>((*teams)[team_index].income(),"");
 				state_of_game->get_variable(var_name+".village_gold") = lexical_cast_default<std::string>((*teams)[team_index].village_gold(),"");
 				state_of_game->get_variable(var_name+".name") = (*teams)[team_index].name();
@@ -935,7 +934,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		if(side_num != 0 && (side_num - 1) >= teams->size()) {
 			ERR_NG << "Invalid side: " << cfg["side"] << " in objectives event\n";
-			return rval;
+			return;
 		}
 
 		t_string win_string = cfg["victory_string"];
@@ -1045,7 +1044,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			double divider = atof(divide.c_str());
 			if (divider == 0) {
 				ERR_NG << "division by zero on variable " << name << "\n";
-				return rval;
+				return;
 			} else {
 				value = int(double(value) / divider);
 				char buf[50];
@@ -1060,7 +1059,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			int divider = atoi(modulo.c_str());
 			if (divider == 0) {
 				ERR_NG << "division by zero on variable " << name << "\n";
-				return rval;
+				return;
 			} else {
 				value %= divider;
 				var = str_cast(value);
@@ -1488,10 +1487,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			mask.read(cfg["mask"]);
 		} catch(gamemap::incorrect_format_exception&) {
 			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
-			return rval;
+			return;
 		} catch(twml_exception& e) {
 			e.show(*screen);
-			return rval;
+			return;
 		}
 
 		game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y);
@@ -1589,7 +1588,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		// If this item has already been used
 		if(id != "" && used_items.count(id))
-			return rval;
+			return;
 
 		std::string image = cfg["image"];
 		std::string caption = cfg["name"];
@@ -1640,9 +1639,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			try {
 				const std::string duration_str = cfg["duration"];
-				const unsigned int lifetime = average_frame_time 
+				const unsigned int lifetime = average_frame_time
 					* lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-					
+
 				wml_event_dialog to_show(*screen,((surface.null())? caption : ""),text);
 				if(!surface.null()) {
 					to_show.set_image(surface, caption);
@@ -1699,7 +1698,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string message = cfg["message"];
 		lg::wml_error << message << '\n';
 	}
-	
+
 	else if(cmd == "debug_message") {
 		const std::string log_level = cfg["logger"];
 		const std::string log_message = cfg["message"];
@@ -1713,12 +1712,24 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	// Display a message dialog
 	else if(cmd == "message") {
+	    // Check if there is any input to be made, if not the message may be skipped
+		const vconfig::child_list menu_items = cfg.get_children("option");
+
+	    const vconfig::child_list text_input_elements = cfg.get_children("text_input");
+		const bool has_text_input = (text_input_elements.size() == 1);
+
+		bool has_input= (has_text_input || !menu_items.empty() );
+
+		if (skip_messages && !has_input ) {
+			return;
+		}
+
 		// Check if this message is for this side
 		std::string side_for_raw = cfg["side_for"];
 		bool side_for_show = true;
 		if (!side_for_raw.empty())
 		{
-                                  
+
 			assert(state_of_game != 0);
 			side_for_show = false;
 
@@ -1764,7 +1775,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			// No matching unit found, so the dialog can't come up.
 			// Continue onto the next message.
 			WRN_NG << "cannot show message\n";
-			return rval;
+			return;
 		}
 
 		if(speaker != units->end()) {
@@ -1814,7 +1825,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::vector<std::string> options;
 		std::vector<vconfig::child_list> option_events;
 
-		const vconfig::child_list menu_items = cfg.get_children("option");
 		for(vconfig::child_list::const_iterator mi = menu_items.begin();
 				mi != menu_items.end(); ++mi) {
 			std::string msg_str = (*mi)["message"];
@@ -1824,14 +1834,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				option_events.push_back((*mi).get_children("command"));
             }
 		}
-		
-		const vconfig::child_list text_input_elements = cfg.get_children("text_input");
-		const bool has_text_input = (text_input_elements.size() == 1);
+
 		if(text_input_elements.size()>1) {
 			lg::wml_error << "too many text_input tags, only one accepted\n";
 		}
-		
-		const vconfig text_input_element = has_text_input ? 
+
+		const vconfig text_input_element = has_text_input ?
 			text_input_elements.front() : vconfig();
 
 		surface surface(NULL);
@@ -1863,7 +1871,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
     				}
     				if(!options.empty()) {
     					to_show.set_menu(options);
-    				} 
+    				}
 					if(has_text_input) {
 						std::string text_input_label=text_input_element["label"];
 						std::string text_input_content=text_input_element["text"];
@@ -1886,11 +1894,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						text_input_result=to_show.textbox_text();
 					}
     				LOG_DP << "showed dialog...\n";
-    
+
     				if (option_chosen == gui::ESCAPE_DIALOG) {
-    					rval = false;
+    					skip_messages = true;
     				}
-    
+
     				if(!options.empty()) {
     					recorder.choose_option(option_chosen);
     				}
@@ -1907,9 +1915,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
 			const t_string& side_str = state_of_game->get_variable("side_number");
 			const int side = lexical_cast_default<int>(side_str.base_str(), -1);
-			
 
-			
+
+
 			if(!options.empty()) {
 				do_replay_handle(*screen,*game_map,*game_data_ptr,*units,*teams,
 						   side ,*status_ptr,*state_of_game,std::string("choose"));
@@ -1930,7 +1938,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				text_input_result = (*(action->get_children("input").front()))["text"];
 			}
 		}
-
+		
 		// Implement the consequences of the choice
 		if(options.empty() == false) {
 			if(size_t(option_chosen) >= menu_items.size()) {
@@ -1940,7 +1948,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				       << " was expected.\n";
 				replay::throw_error(errbuf.str());
 			}
-
+			
 			vconfig::child_list events = option_events[option_chosen];
 			for(vconfig::child_list::const_iterator itor = events.begin();
 			itor != events.end(); ++itor) {
@@ -1956,7 +1964,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			state_of_game->set_variable(variable_name, text_input_result);
 		}
 	}
-
+	
 	else if(cmd == "kill") {
 		// Use (x,y) iteration, because firing events ruins unit_map iteration
 		for(gamemap::location loc(0,0); loc.x < game_map->w(); ++loc.x) {
@@ -1982,7 +1990,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				}
 			}
 		}
-
+		
 		// If the filter doesn't contain positional information,
 		// then it may match units on all recall lists.
 		if(cfg["x"].empty() && cfg["y"].empty()) {
@@ -2004,12 +2012,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
                   }
 		}
 	}
-
+	
 	// Adding of new events
 	else if(cmd == "event") {
 		new_handlers.push_back(event_handler(cfg.get_config()));
 	}
-
+	
 	// Setting of menu items
 	else if(cmd == "set_menu_item") {
 		/*
@@ -2063,7 +2071,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		vconfig filter = cfg.child("filter");
 		if(filter.null())
 			filter = &empty_filter;
-
+		
 		std::string variable = cfg["variable"];
 		if(variable.empty()) {
 			variable="unit";
@@ -2071,19 +2079,19 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string mode = cfg["mode"];
 		config to_store;
 		variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
-
+		
 		const bool kill_units = utils::string_bool(cfg["kill"]);
-
+		
 		for(unit_map::iterator i = units->begin(); i != units->end();) {
 			if(game_events::unit_matches_filter(i,filter) == false) {
 				++i;
 				continue;
 			}
-
+			
 			config& data = to_store.add_child(varinfo.key);
 			i->first.write(data);
 			i->second.write(data);
-
+			
 			if(kill_units) {
 				units->erase(i++);
 				unit_mutations++;
@@ -2091,10 +2099,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				++i;
 			}
 		}
-
+		
 		if(filter["x"].empty() && filter["y"].empty()) {
 			std::map<std::string, player_info>& players = state_of_game->players;
-
+			
 			for(std::map<std::string, player_info>::iterator pi = players.begin();
 					pi!=players.end(); ++pi) {
 				std::vector<unit>& avail_units = pi->second.available_units;
@@ -2110,7 +2118,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					j->write(data);
 					data["x"] = "recall";
 					data["y"] = "recall";
-
+					
 					if(kill_units) {
 						j = avail_units.erase(j);
 					} else {
@@ -2124,29 +2132,29 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 		varinfo.vars->append(to_store);
 	}
-
+	
 	else if(cmd == "unstore_unit") {
 		assert(state_of_game != NULL);
 		const config& var = state_of_game->get_variable_cfg(cfg["variable"]);
-
+		
 		try {
 			assert(game_data_ptr != NULL);
 			assert(units != NULL);
 			assert(game_map != NULL);
 			assert(status_ptr != NULL);
 			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var, false);
-
+			
 			preferences::encountered_units().insert(u.id());
 			gamemap::location loc(var, game_events::get_state_of_game());
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {
 					loc = find_vacant_tile(*game_map,*units,loc);
 				}
-
+				
 				units->erase(loc);
 				units->add(new std::pair<gamemap::location,unit>(loc,u));
 				unit_mutations++;
-
+				
 				std::string text = cfg["text"];
 				if(!text.empty())
 				{
@@ -2161,43 +2169,43 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						screen->float_label(loc,text,red,green,blue);
 					}
 				}
-
+				
 				if(utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()) {
 					// Try to advance the unit
-
+					
 					//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
 					const t_string& side_str = state_of_game->get_variable("side_number");
 					const int side = lexical_cast_default<int>(side_str.base_str(), -1);
-
+					
 					// Select advancement if it is on the playing side and the player is a human
 					const bool sel = (side == static_cast<int>(u.side())
 					                 && (*teams)[side-1].is_human());
-
+					
 					// The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel, true);
-				}
-
+}
+				
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
-
+				
 				if(player) {
-
+					
 					// Test whether the recall list has duplicates if so warn.
-					// This might be removed at some point but the uniqueness of 
+					// This might be removed at some point but the uniqueness of
 					// the description is needed to avoid the recall duplication
-					// bugs. Duplicates here might cause the wrong unit being 
+					// bugs. Duplicates here might cause the wrong unit being
 					// replaced by the wrong unit.
 					if(player->available_units.size() > 1) {
 						std::vector<std::string> desciptions;
 						for(std::vector<unit>::const_iterator citor =
 								player->available_units.begin();
 								citor != player->available_units.end(); ++citor) {
-
-							const std::string desciption = 
+							
+							const std::string desciption =
 								citor->underlying_description();
-							if(std::find(desciptions.begin(), desciptions.end(), 
+							if(std::find(desciptions.begin(), desciptions.end(),
 									desciption) != desciptions.end()) {
-	
+								
 								lg::wml_error << "Recall list has duplicate unit "
 									"description '" << desciption
 									<< "' unstore_unit may not work as expected.\n";
@@ -2206,17 +2214,17 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 							}
 						}
 					}
-
+					
 					// Avoid duplicates in the list.
 					//! @todo it would be better to change available_units from
-					//! a vector to a map and use the underlying_description 
+					//! a vector to a map and use the underlying_description
 					//! as key.
 					const std::string key = u.underlying_description();
-					for(std::vector<unit>::iterator itor = 
+					for(std::vector<unit>::iterator itor =
 							player->available_units.begin();
 							itor != player->available_units.end(); ++itor) {
 
-						LOG_NG << "Replaced unit '" 
+						LOG_NG << "Replaced unit '"
 							<< key << "' on the recall list\n";
 						if(itor->underlying_description() == key) {
 							player->available_units.erase(itor);
@@ -2336,8 +2344,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "endlevel") {
 		// Remove 0-hp units from the unit map to avoid the following problem:
-		// In case a die event triggers an endlevel the dead unit is still as a 
-		// 'ghost' in linger mode. After save loading in linger mode the unit 
+		// In case a die event triggers an endlevel the dead unit is still as a
+		// 'ghost' in linger mode. After save loading in linger mode the unit
 		// is fully visible again.
 		unit_map::iterator u = units->begin();
 		while(u != units->end()) {
@@ -2357,10 +2365,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string result = cfg["result"].base_str(); //do not translate
 		if(result.empty() || result == "victory") {
 			const bool bonus = utils::string_bool(cfg["bonus"],true);
-			const int carry_over = lexical_cast_default<int> 
-				(cfg["carryover_percentage"], 
-				game_config::gold_carryover_percentage); 
-			const bool gold_add = utils::string_bool(cfg["carryover_add"], 
+			const int carry_over = lexical_cast_default<int>
+				(cfg["carryover_percentage"],
+				game_config::gold_carryover_percentage);
+			const bool gold_add = utils::string_bool(cfg["carryover_add"],
 				game_config::gold_carryover_add);
 
 			throw end_level_exception(VICTORY, carry_over, gold_add, bonus);
@@ -2423,7 +2431,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					}
 				}
 			}
-			
+
 			filter = cfg.child("secondary_attack");
 			if(!filter.null()) {
 				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
@@ -2469,8 +2477,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	DBG_NG << "done handling command...\n";
-
-	return rval;
 }
 
 static void commit_new_handlers() {
@@ -2525,20 +2531,8 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 
 		const std::pair<const std::string*,const config*> item = *i;
 
-		// If the user pressed escape, we skip any message
-		// that doesn't require them to make a choice.
-		if ((skip_messages) && (*item.first == "message")) {
-			if ((item.second)->get_children("option").size() == 0) {
-				continue;
-			}
-		}
-
-		if (!handle_event_command(event_info, *item.first, vconfig(item.second), mutated)) {
-			skip_messages = true;
-		}
-		else {
-			skip_messages = false;
-		}
+        //mutated and skip_messages will be modified
+		handle_event_command(event_info, *item.first, vconfig(item.second), mutated, skip_messages);
 	}
 
 	// We do this once the event has completed any music alterations

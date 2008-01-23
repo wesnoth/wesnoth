@@ -173,7 +173,10 @@ EXTRA_DIST = config/config.rpath config/mkinstalldirs config/py-compile
 
 if PYTHON_INSTALL
 pkgpython_PYTHON = data/tools/wesnoth/wmltools.py \
+    data/tools/wesnoth/libsvn.py \
+    data/tools/wesnoth/wescamp.py \
     data/tools/wesnoth/wmldata.py \
+    data/tools/wesnoth/wmliterator.py \
     data/tools/wesnoth/wmlparser.py \
     data/tools/wesnoth/campaignserver_client.py \
     data/tools/wesnoth/__init__.py
