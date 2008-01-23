@@ -621,6 +621,7 @@ config connect::side::get_config() const
 		// res["team"] = lexical_cast<std::string>(team_);
 		res["team_name"] = parent_->team_names_[team_];
 		res["user_team_name"] = parent_->user_team_names_[team_];
+		res["allow_player"] = allow_player_ ? "yes" : "no";
 		res["colour"] = lexical_cast<std::string>(colour_ + 1);
 		res["gold"] = lexical_cast<std::string>(gold_);
 		res["income"] = lexical_cast<std::string>(income_);
