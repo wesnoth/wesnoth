@@ -702,7 +702,7 @@ int dialog::process(dialog_process_info &info)
 	get_menu();
 	const bool use_menu = (menu_ != empty_menu);
 	const bool use_text_input = (text_widget_!=NULL);
-	const bool has_input = (use_menu&&use_text_input);//input of any sort has to be made
+	const bool has_input = (use_menu||use_text_input);//input of any sort has to be made
 
 	if((!info.key_down && info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER] || info.double_clicked) &&
 	   (type_ == YES_NO || type_ == OK_CANCEL || type_ == OK_ONLY || type_ == CLOSE_ONLY)) {
