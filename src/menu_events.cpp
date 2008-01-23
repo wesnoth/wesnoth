@@ -1902,7 +1902,7 @@ private:
 				|| cmd == "mute" || cmd == "muteall" || cmd == "ping")
 		{
 			send_command(cmd, (argc > 1) ? arg1 + " " + arg2 : arg1);
-		} else if ((cmd == "msg" || cmd == "whisper") && argc > 1) {
+		} else if ((cmd == "m" || cmd == "msg" || cmd == "whisper") && argc > 1) {
 			config cwhisper,data;
 			cwhisper["message"] = arg2;
 			cwhisper["sender"] = preferences::login();
