@@ -483,9 +483,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	const int short_interline = 20;
 	const int item_interline = 20;
 #else
+	// please also check 800x600 resolution if you change these spacings
 	const int top_border = 28;
 	const int bottom_border = 40;
-	const int short_interline = 24;
+	const int short_interline = 21;
 	const int item_interline = 40;
 #endif
 	const int bottom_row_y = rect.y + rect.h - bottom_border;
