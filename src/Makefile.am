@@ -151,11 +151,12 @@ wesnothd_SOURCES = \
 	server/player.cpp \
 	server/proxy.cpp \
 	server/server.cpp \
+	server/monitor.cpp \
 	network.cpp \
 	network_worker.cpp \
 	loadscreen_empty.cpp 
 
-wesnothd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
+wesnothd_LDADD = -L. -lwesnoth-core $(GTOP_LIBS) $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 wesnothd_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
@@ -449,10 +450,11 @@ FORCE:
 endif
 
 AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  -DWESNOTH_PATH=\"$(pkgdatadir)\" \
-	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"
+	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"\
+	$(GTOP_CFLAGS)
 
 AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
-	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
+	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) $(GTOP_CFGLAGS)
 
 if PYTHON
 AM_CXXFLAGS += @PYTHON_CFLAGS@
