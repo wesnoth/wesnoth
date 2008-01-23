@@ -154,6 +154,7 @@ public:
 	//! set_playing_team sets the team whose turn it currently is
 	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
+	const size_t get_playing_team();
 	const std::vector<team>& get_teams() {return teams_;};
 
 	unit_map& get_units() {return units_;};

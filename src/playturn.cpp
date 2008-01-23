@@ -161,7 +161,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			if ( (controller == "human") && (!teams_[index].is_human()) ) {
 				teams_[index].make_human();
-				gui_.set_team(index);
+				if (teams_[gui_.get_playing_team()].is_human())
+				{
+					gui_.set_team(index);
+				}
 			} else if ( (controller == "network") && (!teams_[index].is_network()) ){
 				teams_[index].make_network();
 			} else if ( (controller == "ai") && (!teams_[index].is_ai()) ) {

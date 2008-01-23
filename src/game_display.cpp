@@ -1140,6 +1140,11 @@ void game_display::set_team(size_t teamindex, bool observe)
 	labels().recalculate_labels();
 }
 
+const size_t game_display::get_playing_team()
+{
+	return activeTeam_;
+}
+
 void game_display::set_playing_team(size_t teamindex)
 {
 	assert(teamindex < teams_.size());
