@@ -57,3 +57,6 @@ macro-reference.xhtml:
 	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(MAINLINE) >>macro-reference.xhtml
 	@cat helptrailer.xhtml >>macro-reference.xhtml
 
+# Reindent the mainline content
+reindent:
+	wmlindent --exclude=../../data/languages $(DATA)

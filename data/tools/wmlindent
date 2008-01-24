@@ -35,7 +35,8 @@ on the input file won't be touched.
 The --dryrun option detects and reports files that would be changed
 without changing them. The --verbose or -v option enables reporting
 of files that are (or would be, under --dryrun) changed.  With -v -v,
-unchanged files are also reported.
+unchanged files are also reported.  The --exclude option takes a regexp
+and excludes files matching it.
 
 Note: This does not include a parser.  It will produce bad results on WML
 that is syntactically unbalanced.  Unbalanced double quotes that aren't part
@@ -177,53 +178,59 @@ def allwmlfiles(dir):
             if wmltools.vcdir in dirs:
                 dirs.remove(wmltools.vcdir)
             for name in files:
-                if os.path.join(root, name).endswith(".cfg"):
+                if name.endswith(".cfg"):
                     datafiles.append(os.path.join(root, name))
     return datafiles
 
-def convertor(linefilter, arglist):
+def convertor(linefilter, arglist, exclude):
     "Apply a filter to command-line arguments."
     if not arglist:
         linefilter("standard input", sys.stdin, sys.stdout)
     else:
         for arg in arglist:
             for filename in allwmlfiles(arg):
-                try:
-                    infp = open(filename, "r")
-                    outfp = open(filename + ".out", "w")
-                    linefilter(filename, infp, outfp)
-                    infp.close()
-                    outfp.close()
-                except bailout, e:
-                    sys.stderr.write('wmlindent: "%s", %d: %s\n' % (e.filename, e.lineno, e.msg))
-                    os.remove(filename + ".out")
-                except KeyboardInterrupt:
-                    os.remove(filename + ".out")
-                    sys.stderr.write("wmlindent: %s interrupted\n" % filename)
+                if exclude and re.search(exclude, filename):
+                    if verbose:
+                        sys.stderr.write("wmlindent: %s excluded\n" % filename)
+                    continue
                 else:
-                    if filecmp.cmp(filename, filename + ".out"):
-                        if verbose >= 2:
-                            sys.stderr.write("wmlindent: %s unchanged\n" % filename)
+                    try:
+                        infp = open(filename, "r")
+                        outfp = open(filename + ".out", "w")
+                        linefilter(filename, infp, outfp)
+                        infp.close()
+                        outfp.close()
+                    except bailout, e:
+                        sys.stderr.write('wmlindent: "%s", %d: %s\n' % (e.filename, e.lineno, e.msg))
                         os.remove(filename + ".out")
+                    except KeyboardInterrupt:
+                        os.remove(filename + ".out")
+                        sys.stderr.write("wmlindent: %s interrupted\n" % filename)
                     else:
-                        if verbose >= 1:
-                            sys.stderr.write("wmlindent: %s changed\n" % filename)
-                        if dryrun:
+                        if filecmp.cmp(filename, filename + ".out"):
+                            if verbose >= 2:
+                                sys.stderr.write("wmlindent: %s unchanged\n" % filename)
                             os.remove(filename + ".out")
                         else:
-                            os.remove(filename)	# For Windows portability
-                            # There's a tiny window open if you keyboard-
-                            # interrupt here. It's unavoidable, because
-                            # there's no known way to do an atomic rename
-                            # under Windows when the target exists -- see
-                            # Python manual 14.1.4::rename()
-                            os.rename(filename + ".out", filename)
+                            if verbose >= 1:
+                                sys.stderr.write("wmlindent: %s changed\n" % filename)
+                            if dryrun:
+                                os.remove(filename + ".out")
+                            else:
+                                os.remove(filename)	# For Windows portability
+                                # There's a tiny window open if you keyboard-
+                                # interrupt here. It's unavoidable, because
+                                # there's no known way to do an atomic rename
+                                # under Windows when the target exists -- see
+                                # Python manual 14.1.4::rename()
+                                os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h?dv",
-                                         ['help', 'dryrun', 'verbose'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "h?de:v",
+                                         ['help', 'dryrun', 'exclude=', 'verbose'])
     verbose = 0
     dryrun = False
+    exclude = []
     for (opt, val) in options:
         if opt in ('-?', '-h', '--help'):
             print __doc__
@@ -231,6 +238,9 @@ if __name__ == '__main__':
         elif opt in ('-d', '--dryrun'):
             dryrun = True
             verbose = max(1, verbose)
+        elif opt in ('-e', '--exclude'):
+            exclude.append(val)
         elif opt in ('-v', '--verbose'):
             verbose += 1
-    convertor(lambda n, f1, f2: reindent(n, f1, f2), arguments)
+    convertor(lambda n, f1, f2: reindent(n, f1, f2),
+              arguments, "|".join(exclude))
