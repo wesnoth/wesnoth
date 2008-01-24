@@ -75,7 +75,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 {
 	if (cfg.child("message")) {
 		const config& cmessage = *cfg.child("message");
-		gui_.add_chat_message(time(NULL), cmessage["sender"], 0,
+		const int side = lexical_cast_default<int>(cmessage["side"].c_str(),0);
+		gui_.add_chat_message(time(NULL), cmessage["sender"], side,
 				cmessage["message"], game_display::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
