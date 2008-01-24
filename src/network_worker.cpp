@@ -649,15 +649,14 @@ namespace
 static void remove_buffers(TCPsocket sock)
 {
 	{
-		buffer_set new_bufs;
-		new_bufs.reserve(bufs.size());
 		for(buffer_set::iterator i = bufs.begin(), i_end = bufs.end(); i != i_end; ++i) {
 			if ((*i)->sock == sock)
-				delete *i;
-			else
-				new_bufs.push_back(*i);
+			{
+				buffer *buf = *i;
+				bufs.erase(i);
+				delete buf;
+			}
 		}
-		bufs.swap(new_bufs);
 	}
 
 	{
