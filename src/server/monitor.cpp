@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! Here is implementation for server monitoring thread
-//! Initial target is to have ti usefull in posix systems
-//! and later add support for windows if possible
-//! If system doesn't support monitoring it is not compilied
+//! Here is the implementation for server monitoring thread
+//! Initial target is to have it useful in posix systems
+//! and later add support for windows if possible.
+//! If a system doesn't support monitoring it is not compiled.
 
 #include "monitor.hpp"
 
