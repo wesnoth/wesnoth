@@ -12,6 +12,13 @@
    See the COPYING file for more details.
 */
 
+//! Network worker handles data transfers in threads
+//! Remmber to use mutexs as little as possible
+//! All global vars should be used in mutex
+//! FIXME: TODO: All code in mutex shoudl run O(1) time
+//! for scaleablity. Implement read/write locks.
+//!  (postponed for 1.5)
+
 #include "global.hpp"
 
 #include "log.hpp"
@@ -85,9 +92,9 @@ struct _TCPsocket {
 	IPaddress localAddress;
 	int sflag;
 };
-unsigned int waiting_threads = 0;
-size_t min_threads = 0;
-size_t max_threads = 0;
+unsigned int waiting_threads = 0; // management_mutex
+size_t min_threads = 0; // management_mutex
+size_t max_threads = 0; // management_mutex
 
 struct buffer {
 	explicit buffer(TCPsocket sock) : 
@@ -107,9 +114,9 @@ struct buffer {
 
 };
 
-bool managed = false;
+bool managed = false; // management_mutex
 typedef std::vector< buffer * > buffer_set;
-buffer_set bufs;
+buffer_set bufs; // management_mutex
 
 struct schema_pair
 {
@@ -118,28 +125,31 @@ struct schema_pair
 
 typedef std::map<TCPsocket,schema_pair> schema_map;
 
-schema_map schemas;
+schema_map schemas; //schemas_mutex
 
 //a queue of sockets that we are waiting to receive on
 typedef std::vector<TCPsocket> receive_list;
-receive_list pending_receives;
+receive_list pending_receives; // management_mutex
 
-typedef std::deque<buffer> received_queue;
-received_queue received_data_queue;
+typedef std::deque<buffer *> received_queue;
+received_queue received_data_queue;  // receive_mutex
 
 enum SOCKET_STATE { SOCKET_READY, SOCKET_LOCKED, SOCKET_ERRORED, SOCKET_INTERRUPT };
 typedef std::map<TCPsocket,SOCKET_STATE> socket_state_map;
 typedef std::map<TCPsocket, std::pair<network::statistics,network::statistics> > socket_stats_map;
 
-socket_state_map sockets_locked;
-socket_stats_map transfer_stats;
+socket_state_map sockets_locked;  // management_mutex
+socket_stats_map transfer_stats; // stats_mutex
 
-int socket_errors = 0;
-threading::mutex* global_mutex = NULL;
+int socket_errors = 0; // management_mutex
+threading::mutex* management_mutex = NULL;
+threading::mutex* stats_mutex = NULL;
+threading::mutex* schemas_mutex = NULL;
+threading::mutex* received_mutex = NULL;
 threading::condition* cond = NULL;
 
-std::map<Uint32,threading::thread*> threads;
-std::vector<Uint32> to_clear;
+std::map<Uint32,threading::thread*> threads; // management_mutex
+std::vector<Uint32> to_clear; // management_mutex 
 
 int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 {
@@ -160,7 +170,8 @@ int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 		bool update_stats=false, int timeout_ms=60000)
 {
-	int nsleeps = 0;
+	int startTicks = SDL_GetTicks();
+	int time_used = 0;
 	while(nbytes > 0) {
 		const int bytes_read = receive_bytes(s, buf, nbytes);
 		if(bytes_read == 0) {
@@ -176,51 +187,52 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 #endif
 			{
 				//TODO: consider replacing this with a select call
-				if(++nsleeps == timeout_ms) {
+				time_used = SDL_GetTicks() - startTicks;
+				if(time_used >= timeout_ms) {
 					return false;
 				}
 #ifdef USE_POLL
 				struct pollfd fd = { ((_TCPsocket*)s)->channel, POLLIN, 0 };
 				int poll_res;
 				do {
-					poll_res = poll(&fd, 1, 15000);
+					time_used = SDL_GetTicks() - startTicks;
+					poll_res = poll(&fd, 1, minimum<int>(15000,timeout_ms - time_used));
 				} while(poll_res == -1 && errno == EINTR);
 
-				if(poll_res > 0)
-					continue;
 #elif defined(USE_SELECT)
 				fd_set readfds;
 				FD_ZERO(&readfds);
 				FD_SET(((_TCPsocket*)s)->channel, &readfds);
 				int retval;
+				int time_left;
 				struct timeval tv;
-				tv.tv_sec = 15;
-				tv.tv_usec = 0;
 
 				do {
+					time_used = SDL_GetTicks() - startTicks;
+					time_left = minimum<int>(15000, timeout_ms - time_used);
+					tv.tv_sec = time_left/1000;
+					tv.tv_usec = time_left % 1000;
 					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, NULL, NULL, &tv);
 				} while(retval == -1 && errno == EINTR);
 
-				if(retval > 0)
-					continue;
-				else return false;
 #elif
-				SDL_Delay(1);
+				SDL_Delay(5);
 #endif
 			} else {
 				return false;
 			}
 		} else {
+
+			buf += bytes_read;
+			if(update_stats) {
+				const threading::lock lock(*stats_mutex);
+				transfer_stats[s].second.transfer(static_cast<size_t>(bytes_read));
+			}
+			
 			if(bytes_read > static_cast<int>(nbytes)) {
 				return false;
 			}
-
 			nbytes -= bytes_read;
-			buf += bytes_read;
-			if(update_stats) {
-				const threading::lock lock(*global_mutex);
-				transfer_stats[s].second.transfer(static_cast<size_t>(bytes_read));
-			}
 		}
 	}
 
@@ -232,15 +244,19 @@ static SOCKET_STATE send_buffer(TCPsocket sock, config& config_in, const bool gz
 	int timeout = 15000;
 #endif
 	size_t upto = 0;
-	compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.outgoing;
 	std::ostringstream compressor;
 	if(gzipped) {
 //		std::cerr << "send gzipped\n.";
 		config_writer writer(compressor, true, "");
 		writer.write(config_in);
 	} else {
+		compression_schema *compress;
 //		std::cerr << "send binary wml\n.";
-		write_compressed(compressor, config_in, compress);
+		{
+			const threading::lock lock(*schemas_mutex);
+			compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.outgoing;
+		}
+		write_compressed(compressor, config_in, *compress);
 	}
 	std::string const &value = compressor.str();
 	std::vector<char> buf(4 + value.size() + 1);
@@ -249,7 +265,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, config& config_in, const bool gz
 	buf.back() = 0;
 	size_t size = buf.size();
 	{
-		const threading::lock lock(*global_mutex);
+		const threading::lock lock(*stats_mutex);
 		transfer_stats[sock].first.fresh_current(size);
 	}
 #ifdef __BEOS__
@@ -259,7 +275,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, config& config_in, const bool gz
 #endif
 		{
 			// check if the socket is still locked
-			const threading::lock lock(*global_mutex);
+			const threading::lock lock(*management_mutex);
 			if(sockets_locked[sock] != SOCKET_LOCKED)
 				return SOCKET_ERRORED;
 		}
@@ -267,7 +283,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, config& config_in, const bool gz
 
 		if(res == static_cast<int>(size - upto)) {
 			{
-				const threading::lock lock(*global_mutex);
+				const threading::lock lock(*stats_mutex);
 				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
 			}
 			return SOCKET_READY;
@@ -281,7 +297,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, config& config_in, const bool gz
 			// update how far we are
 			upto += static_cast<size_t>(res);
 			{
-				const threading::lock lock(*global_mutex);
+				const threading::lock lock(*stats_mutex);
 				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
 			}
 
@@ -346,7 +362,7 @@ static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	const char* const end = beg + len;
 
 	{
-		const threading::lock lock(*global_mutex);
+		const threading::lock lock(*stats_mutex);
 		transfer_stats[sock].second.fresh_current(len);
 	}
 
@@ -370,7 +386,7 @@ static int process_queue(void*)
 		buffer *sent_buf = NULL;
 
 		{
-			const threading::lock lock(*global_mutex);
+			const threading::lock lock(*management_mutex);
 			while(managed && !to_clear.empty()) {
 				Uint32 tmp = to_clear.back();
 				to_clear.pop_back();
@@ -426,7 +442,7 @@ static int process_queue(void*)
 					return 0;
 				}
 
-				cond->wait(*global_mutex); // temporarily release the mutex and wait for a buffer
+				cond->wait(*management_mutex); // temporarily release the mutex and wait for a buffer
 			}
 			waiting_threads--;
 			// if we are the last thread in the pool, create a new one
@@ -455,7 +471,7 @@ static int process_queue(void*)
 		}
 
 		{
-			const threading::lock lock(*global_mutex);
+			const threading::lock lock(*management_mutex);
 			socket_state_map::iterator lock_it = sockets_locked.find(sock);
 			assert(lock_it != sockets_locked.end());
 			lock_it->second = result;
@@ -464,29 +480,33 @@ static int process_queue(void*)
 			}
 
 			if(result != SOCKET_READY || buf.empty()) continue;
-
-			//if we received data, add it to the queue
-			received_data_queue.push_back(buffer(sock));
-			std::string buffer(buf.begin(), buf.end());
-			std::istringstream stream(buffer);
-			compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
-			// Binary wml starts with a char < 4, the first char of a gzip header is 31
-			// so test that here and use the proper reader.
+		}
+		//if we received data, add it to the queue
+		buffer *received_data = new buffer(sock);
+		std::string buffer(buf.begin(), buf.end());
+		std::istringstream stream(buffer);
+		// Binary wml starts with a char < 4, the first char of a gzip header is 31
+		// so test that here and use the proper reader.
+		try {
 			if(stream.peek() == 31) {
-				try {
-					read_gz(received_data_queue.back().config_buf, stream);
-				} catch(boost::iostreams::gzip_error& e) {
-					//throw back the error in the parent thread
-					received_data_queue.back().config_error = e.error();
-				}
+				read_gz(received_data->config_buf, stream);
 			} else {
-				try {
-					read_compressed(received_data_queue.back().config_buf, stream, compress);
-				} catch(config::error &e) {
-					//throw back the error in the parent thread
-					received_data_queue.back().config_error = e.message;
+				compression_schema *compress;
+				{
+					const threading::lock lock_schemas(*schemas_mutex);
+					compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
 				}
+				read_compressed(received_data->config_buf, stream, *compress);
 			}
+		} catch(config::error &e)
+		{
+			received_data->config_error = e.message;
+		}
+
+		{
+			// Now add data
+			const threading::lock lock_received(*received_mutex);
+			received_data_queue.push_back(received_data);
 		}
 	}
 	// unreachable
@@ -501,8 +521,13 @@ manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 {
 	if(active_) {
 		managed = true;
-		global_mutex = new threading::mutex();
+		management_mutex = new threading::mutex();
+		stats_mutex = new threading::mutex();
+		schemas_mutex = new threading::mutex();
+		received_mutex = new threading::mutex();
+
 		cond = new threading::condition();
+		const threading::lock lock(*management_mutex);
 		min_threads = p_min_threads;
 		max_threads = p_max_threads;
 
@@ -517,7 +542,7 @@ manager::~manager()
 {
 	if(active_) {
 		{
-			const threading::lock lock(*global_mutex);
+			const threading::lock lock(*management_mutex);
 			managed = false;
 			socket_errors = 0;
 		}
@@ -531,9 +556,15 @@ manager::~manager()
 
 		threads.clear();
 
-		delete global_mutex;
+		delete management_mutex;
+		delete  stats_mutex;
+		delete schemas_mutex;
+		delete received_mutex;
 		delete cond;
-		global_mutex = NULL;
+		management_mutex = NULL;
+		stats_mutex = 0;
+		schemas_mutex = 0;
+		received_mutex = 0;
 		cond = NULL;
 
 		sockets_locked.clear();
@@ -545,7 +576,7 @@ manager::~manager()
 
 std::pair<unsigned int,size_t> thread_state()
 {
-	const threading::lock lock(*global_mutex);
+	const threading::lock lock(*management_mutex);
 	return std::pair<unsigned int,size_t>(waiting_threads,threads.size());
 
 }
@@ -553,9 +584,9 @@ std::pair<unsigned int,size_t> thread_state()
 void receive_data(TCPsocket sock)
 {
 	{
-		const threading::lock lock(*global_mutex);
-
+		const threading::lock lock(*management_mutex);
 		pending_receives.push_back(sock);
+
 		sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY));
 	}
 
@@ -564,11 +595,11 @@ void receive_data(TCPsocket sock)
 
 TCPsocket get_received_data(TCPsocket sock, config& cfg)
 {
-	const threading::lock lock(*global_mutex);
+	const threading::lock lock_received(*received_mutex);
 	received_queue::iterator itor = received_data_queue.begin();
 	if(sock != NULL) {
 		for(; itor != received_data_queue.end(); ++itor) {
-			if(itor->sock == sock) {
+			if((*itor)->sock == sock) {
 				break;
 			}
 		}
@@ -576,15 +607,19 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 
 	if(itor == received_data_queue.end()) {
 		return NULL;
-	} else if (!itor->config_error.empty()){
+	} else if (!(*itor)->config_error.empty()){
 		// throw the error in parent thread
-		std::string error = itor->config_error;
+		std::string error = (*itor)->config_error;
+		buffer *buf = *itor;
 		received_data_queue.erase(itor);
+		delete buf;
 		throw config::error(error);
 	} else {
-		cfg = itor->config_buf;
-		const TCPsocket res = itor->sock;
+		cfg = (*itor)->config_buf;
+		const TCPsocket res = (*itor)->sock;
+		buffer *buf = *itor;
 		received_data_queue.erase(itor);
+		delete buf;
 		return res;
 	}
 }
@@ -593,12 +628,12 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 {
 	DBG_NW << "queuing data...\n";
 
+	buffer *queued_buf = new buffer(sock);
+	queued_buf->config_buf = buf;
+	queued_buf->gzipped = gzipped;
 	{
-		const threading::lock lock(*global_mutex);
+		const threading::lock lock(*management_mutex);
 
-		buffer *queued_buf = new buffer(sock);
-		queued_buf->config_buf = buf;
-		queued_buf->gzipped = gzipped;
 		bufs.push_back(queued_buf);
 
 		sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY));
@@ -610,23 +645,30 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 namespace
 {
 
+//! Caller has to make sure to own management_mutex
 static void remove_buffers(TCPsocket sock)
 {
-	buffer_set new_bufs;
-	new_bufs.reserve(bufs.size());
-	for(buffer_set::iterator i = bufs.begin(), i_end = bufs.end(); i != i_end; ++i) {
-		if ((*i)->sock == sock)
-			delete *i;
-		else
-			new_bufs.push_back(*i);
+	{
+		buffer_set new_bufs;
+		new_bufs.reserve(bufs.size());
+		for(buffer_set::iterator i = bufs.begin(), i_end = bufs.end(); i != i_end; ++i) {
+			if ((*i)->sock == sock)
+				delete *i;
+			else
+				new_bufs.push_back(*i);
+		}
+		bufs.swap(new_bufs);
 	}
-	bufs.swap(new_bufs);
 
-	for(received_queue::iterator j = received_data_queue.begin(); j != received_data_queue.end(); ) {
-		if(j->sock == sock) {
-			j = received_data_queue.erase(j);
-		} else {
-			++j;
+	{
+		const threading::lock lock_receive(*received_mutex);
+
+		for(received_queue::iterator j = received_data_queue.begin(); j != received_data_queue.end(); ) {
+			if((*j)->sock == sock) {
+				j = received_data_queue.erase(j);
+			} else {
+				++j;
+			}
 		}
 	}
 }
@@ -634,7 +676,7 @@ static void remove_buffers(TCPsocket sock)
 } // anonymous namespace
 
 bool is_locked(const TCPsocket sock) {
-	const threading::lock lock(*global_mutex);
+	const threading::lock lock(*management_mutex);
 	const socket_state_map::iterator lock_it = sockets_locked.find(sock);
 	if (lock_it == sockets_locked.end()) return false;
 	return (lock_it->second == SOCKET_LOCKED);
@@ -642,40 +684,47 @@ bool is_locked(const TCPsocket sock) {
 
 bool close_socket(TCPsocket sock, bool force)
 {
-	const threading::lock lock(*global_mutex);
+	{
+		const threading::lock lock(*management_mutex);
 
-	pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
+		pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
+		const socket_state_map::iterator lock_it = sockets_locked.find(sock);
+		if(lock_it == sockets_locked.end()) {
+			remove_buffers(sock);
+			return true;
+		}
+		{	
+			const threading::lock lock_schemas(*schemas_mutex);
+			schemas.erase(sock);
+		}
 
-	schemas.erase(sock);
-
-	const socket_state_map::iterator lock_it = sockets_locked.find(sock);
-	if(lock_it == sockets_locked.end()) {
-		remove_buffers(sock);
-		return true;
+		if (!(lock_it->second == SOCKET_LOCKED || lock_it->second == SOCKET_INTERRUPT) || force) {
+			sockets_locked.erase(lock_it);
+			remove_buffers(sock);
+			return true;
+		} else {
+			lock_it->second = SOCKET_INTERRUPT;
+			return false;
+		}
+	
 	}
 
-	if (!(lock_it->second == SOCKET_LOCKED || lock_it->second == SOCKET_INTERRUPT) || force) {
-		sockets_locked.erase(lock_it);
-		remove_buffers(sock);
-		return true;
-	} else {
-		lock_it->second = SOCKET_INTERRUPT;
-		return false;
-	}
+
 }
 
 TCPsocket detect_error()
 {
-	const threading::lock lock(*global_mutex);
+	const threading::lock lock(*management_mutex);
 	if(socket_errors > 0) {
 		for(socket_state_map::iterator i = sockets_locked.begin(); i != sockets_locked.end(); ++i) {
 			if(i->second == SOCKET_ERRORED) {
 				--socket_errors;
 				const TCPsocket sock = i->first;
 				sockets_locked.erase(i);
-				schemas.erase(sock);
-				remove_buffers(sock);
 				pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
+				remove_buffers(sock);
+				const threading::lock lock_schema(*schemas_mutex);
+				schemas.erase(sock);
 				return sock;
 			}
 		}
@@ -688,7 +737,7 @@ TCPsocket detect_error()
 
 std::pair<network::statistics,network::statistics> get_current_transfer_stats(TCPsocket sock)
 {
-	const threading::lock lock(*global_mutex);
+	const threading::lock lock(*stats_mutex);
 	return transfer_stats[sock];
 }
 
