@@ -916,7 +916,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			LOG_REPLAY << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = !get_replay_source().is_skipping();
 			check_checksums(disp,units,*cfg);
-}
+		}
 
 		else if((child = cfg->child("recall")) != NULL) {
 			player_info* player = state_of_game.get_player(current_team.save_id());

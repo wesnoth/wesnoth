@@ -186,7 +186,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 	LOG_NG << "firing recruit event\n";
 	game_events::fire("recruit",recruit_location);
 
-	const std::string checksum = get_checksum(new_unit, true);
+	const std::string checksum = get_checksum(new_unit);
 
 	const config* ran_results = get_random_results();
 	if(ran_results != NULL) {
@@ -202,7 +202,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 
 			config cfg_unit1;
 			new_unit.write(cfg_unit1);
-			::write(std::cerr, cfg_unit1);
+			DBG_NG << cfg_unit1.debug();
 			if (!game_config::ignore_replay_errors) {
 				throw replay::error("OOS while recruiting.");
 			}
@@ -212,19 +212,6 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		config cfg;
 		cfg["checksum"] = checksum;
 		set_random_results(cfg);
-	}
-
-	// If an OOS happens, this option allows to write
-	// the debug info about the recruited unit.
-	if(!lg::debug.dont_log(lg::engine)) {
-		config cfg_unit;
-		new_unit.write(cfg_unit);
-
-		DBG_NG << "recruit unit\nChecksum = "
-			<< checksum << "\n-----[start data]-----\n";
-
-		::write(lg::debug(lg::engine), cfg_unit);
-		DBG_NG << "\n----[end data]-----\n";
 	}
 
 	return std::string();

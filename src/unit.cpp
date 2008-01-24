@@ -2926,18 +2926,40 @@ void unit::set_hidden(bool state) {
 	// We need to get rid of haloes immediately to avoid display glitches
 	clear_haloes();
 }
-std::string get_checksum(const unit& u, const bool discard_description)
-{
+std::string get_checksum(const unit& u) {
 	config unit_config;
 	u.write(unit_config);
 	unit_config["controller"] = "";
 	// Since the ai messes up the 'moves' attribute, ignore that for the checksum
 	unit_config["moves"] = "";
-
-	if(discard_description) {
-		unit_config["description"] = "";
-		unit_config["user_description"] = "";
-	}
+	// Non-critical attributes to ignore.
+	unit_config["alpha"] = "";
+	unit_config["description"] = "";
+	unit_config["die_sound"] = "";
+	unit_config["ellipse"] = "";
+	unit_config["facing"] = "";
+	unit_config["flag_rgb"] = "";
+	unit_config["image"] = "";
+	unit_config["language_name"] = "";
+	unit_config["name"] = "";
+	unit_config["overlays"] = "";
+	unit_config["unit_description"] = "";
+	unit_config["user_description"] = "";
+	// Non-critical tags to ignore.
+	unit_config.clear_children("animation");
+	unit_config.clear_children("attack_anim");
+	unit_config.clear_children("defend");
+	unit_config.clear_children("death");
+	unit_config.clear_children("extra_anim");
+	unit_config.clear_children("idle_anim");
+	unit_config.clear_children("healed_anim");
+	unit_config.clear_children("healing_anim");
+	unit_config.clear_children("level_in");
+	unit_config.clear_children("level_out");
+	unit_config.clear_children("movement_anim");
+	unit_config.clear_children("poison_anim");
+	unit_config.clear_children("standing_anim");
+	unit_config.clear_children("victory_anim");
 
 	return unit_config.hash();
 }

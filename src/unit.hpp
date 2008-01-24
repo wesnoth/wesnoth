@@ -160,7 +160,7 @@ public:
 	//! Initialize this unit from a cfg object.
 	void read(const config& cfg, bool use_traits=true, game_state* state = 0);
 	void write(config& cfg) const;
-	void write(config_writer& out) const;
+//	void write(config_writer& out) const;
 
 	void assign_role(const std::string& role) { role_ = role; }
 	void assign_ai_special(const std::string& s) { ai_special_ = s;}
@@ -450,10 +450,9 @@ private:
 //! Not sure whether replays suffer the same problem.
 //!
 //! @param u                    the unit
-//! @param discard_description  discards the descriptions for the checksum
 //!
 //! @returns                    the checksum for a unit
 //!
-std::string get_checksum(const unit& u, const bool discard_description = false);
+std::string get_checksum(const unit& u);
 
 #endif
