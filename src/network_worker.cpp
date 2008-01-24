@@ -13,10 +13,10 @@
 */
 
 //! Network worker handles data transfers in threads
-//! Remmber to use mutexs as little as possible
+//! Remember to use mutexs as little as possible
 //! All global vars should be used in mutex
-//! FIXME: TODO: All code in mutex shoudl run O(1) time
-//! for scaleablity. Implement read/write locks.
+//! FIXME: @todo: All code which holds a mutex should run O(1) time
+//! for scalability. Implement read/write locks.
 //!  (postponed for 1.5)
 
 #include "global.hpp"
