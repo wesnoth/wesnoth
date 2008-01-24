@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-13 14:47+0100\n"
-"PO-Revision-Date: 2008-01-16 14:03+0100\n"
+"PO-Revision-Date: 2008-01-20 18:30+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -6826,6 +6826,9 @@ msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
 msgstr ""
+"Comandi: msg/whisper <giocatore> <messaggio>, list <sottocomando> "
+"[<argomento>], me/emote <messaggio>. Type /help [<comando>] per le "
+"istruzioni dettagliate."
 
 #: src/menu_events.cpp:1886
 msgid ""
@@ -6833,7 +6836,8 @@ msgid ""
 "side in a game. Usage: /msg <nick> <message>"
 msgstr ""
 "Invia un messaggio privato. Non si possono mandare messaggi ai giocatori che "
-"controllano una qualunque fazione in partita. Uso: /whisper <nick> <message>"
+"controllano una qualunque fazione in partita. Uso: /whisper <giocatore> "
+"<messaggio>"
 
 #: src/menu_events.cpp:1892
 msgid ""
@@ -6848,52 +6852,46 @@ msgstr ""
 "per ulteriori informazioni."
 
 #: src/menu_events.cpp:1900
-#, fuzzy
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr ""
-"Aggiungi il giocatore all'elenco degli amici. Uso: /list addfriend [argument]"
+"Aggiungi il giocatore all'elenco degli amici. Uso: /list addfriend "
+"<giocatore>"
 
 #: src/menu_events.cpp:1904
-#, fuzzy
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr ""
 "Aggiungi il giocatore all'elenco degli utenti da ignorare. Uso: /list ignore "
-"[argument]"
+"<giocatore>"
 
 #: src/menu_events.cpp:1908
-#, fuzzy
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
 "Rimuovi il giocatore dal tuo elenco di amici o utenti da ignorare. Uso: /"
-"list remove [argument]"
+"list remove <giocatore>"
 
 #: src/menu_events.cpp:1912
-#, fuzzy
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
 msgstr ""
-"Svuota l'elenco degli amici e degli utenti da ignorare: Uso: /list clear"
+"Svuota completamente l'elenco degli amici e degli utenti da ignorare: Uso: /"
+"list clear"
 
 #: src/menu_events.cpp:1916
-#, fuzzy
 msgid "Show your ignores and friends list. Usage: /list display"
 msgstr "Mostra il tuo elenco di amici e utenti da ignorare. Uso: /list display"
 
 #: src/menu_events.cpp:1919
-#, fuzzy
 msgid "Unknown subcommand."
-msgstr "Comando sconosciuto"
+msgstr "Sottocomando sconosciuto."
 
 #: src/menu_events.cpp:1924
-#, fuzzy
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
 msgstr ""
-"Invia un'emozione o una azione personale in chat. Uso: /emote [message]"
+"Invia un'emozione o una azione personale in chat. Uso: /emote <messaggio>"
 
 #: src/menu_events.cpp:1927
-#, fuzzy
 msgid "Unknown command."
-msgstr "Comando sconosciuto"
+msgstr "Comando sconosciuto."
 
 #: src/menu_events.cpp:1933
 msgid "Added to ignore list: "
@@ -6901,11 +6899,11 @@ msgstr "Aggiunto all'elenco degli utenti da ignorare:"
 
 #: src/menu_events.cpp:1933 src/menu_events.cpp:1939
 msgid "Invalid username: "
-msgstr "Nome utente non valido:"
+msgstr "Nome utente non valido: "
 
 #: src/menu_events.cpp:1939
 msgid "Added to friends list: "
-msgstr "Aggiunto all'elenco degli amici:"
+msgstr "Aggiunto all'elenco degli amici: "
 
 #: src/menu_events.cpp:1945
 msgid "Removed from list: "
@@ -6947,24 +6945,21 @@ msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
 #: src/menu_events.cpp:2150
-#, fuzzy
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
-"\n"
-"Metti un dominio di log ad un diverso livello di log.\n"
-"\n"
+msgstr "Impostato il dominio: «$domain» al livello «$livello»."
 
 #: src/menu_events.cpp:2169
 msgid "Usage: control <side> <nick>"
-msgstr "Uso: control <fazione> <nick>"
+msgstr "Uso: control <fazione> <giocatore>"
 
 #: src/menu_events.cpp:2180
 msgid "Can't change control of invalid side: '$side'."
-msgstr ""
+msgstr "Non posso cambiare il controllo della fazione non valida: «$side»."
 
 #: src/menu_events.cpp:2187
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
+"Non posso cambiare il controllo della fazione fuori dai limiti: «$side»."
 
 #: src/menu_events.cpp:2232
 msgid "Debug mode activated!"
@@ -7126,9 +7121,8 @@ msgid "Unable to find a leader type for faction $faction"
 msgstr "Impossibile trovare un tipo di condottiero per la fazione $faction"
 
 #: src/multiplayer_connect.cpp:896
-#, fuzzy
 msgid "Game Lobby: "
-msgstr "Game Lobby"
+msgstr "Lobby di gioco: "
 
 #: src/multiplayer_connect.cpp:916
 msgid "Player/Type"
@@ -7586,9 +7580,8 @@ msgid "Error while reading the WML: "
 msgstr "Errore di lettura del WML: "
 
 #: src/playcampaign.cpp:415
-#, fuzzy
 msgid "Save Replay"
-msgstr "Replay"
+msgstr "Salva replay"
 
 #: src/playcampaign.cpp:420
 msgid "The replay could not be saved"
