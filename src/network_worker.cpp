@@ -665,7 +665,9 @@ static void remove_buffers(TCPsocket sock)
 
 		for(received_queue::iterator j = received_data_queue.begin(); j != received_data_queue.end(); ) {
 			if((*j)->sock == sock) {
+				buffer *buf = *j;
 				j = received_data_queue.erase(j);
+				delete buf;
 			} else {
 				++j;
 			}

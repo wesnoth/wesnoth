@@ -545,7 +545,7 @@ bool disconnect(connection s, bool force)
 			assert(sockets.back() != 0);
 //			disconnect(sockets.back(), true);
 			while(disconnect(sockets.back()) == false) {
-				SDL_Delay(5);
+				SDL_Delay(1);
 			}
 		}
 		return true;
@@ -591,9 +591,9 @@ void queue_disconnect(network::connection sock)
 	disconnection_queue.push_back(sock);
 }
 
-connection receive_data(config& cfg, connection connection_num, int timeout)
+connection receive_data(config& cfg, connection connection_num, unsigned int timeout)
 {
-	int start_ticks = SDL_GetTicks();
+	unsigned int start_ticks = SDL_GetTicks();
 	while(true) {
 		const connection res = receive_data(cfg,connection_num);
 		if(res != 0) {
@@ -601,7 +601,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 		}
 
 		if(timeout > SDL_GetTicks() - start_ticks) {
-			SDL_Delay(4);
+			SDL_Delay(1);
 		}
 		else
 		{

@@ -119,7 +119,7 @@ void queue_disconnect(connection connection_num);
 //! or 0 if timeout occurred.
 //! Throws error if an error occurred.
 connection receive_data(config& cfg, connection connection_num=0);
-connection receive_data(config& cfg, connection connection_num, int timeout);
+connection receive_data(config& cfg, connection connection_num, unsigned int timeout);
 
 //! Function to send data down a given connection,
 //! or broadcast to all peers if connection_num is 0.
