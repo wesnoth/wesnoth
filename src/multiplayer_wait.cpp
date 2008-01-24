@@ -320,17 +320,13 @@ const game_state& wait::get_state()
 
 void wait::start_game()
 {
-	// add era events
-	const config* const era_cfg = level_.child("era");
-	if(era_cfg != NULL) {
-		game_events::add_events(era_cfg->get_children("event"),"all");
-	}
-
-	config const * const stats = level_.child("statistics");
+	const config* stats = level_.child("statistics");
 	if(stats != NULL) {
 		statistics::fresh_stats();
 		statistics::read_stats(*stats);
 	}
+
+
 
 	//! @todo Instead of using level_to_gamestate reinit the state_, 
 	//! this needs more testing -- Mordante
@@ -342,6 +338,12 @@ void wait::start_game()
 	if(level_.child("player") == 0) {
 		level_to_gamestate(level_, state_, level_["savegame"] == "yes");
 	} else {
+		// add era events only if not save
+		const config* const era_cfg = level_.child("era");
+		if (era_cfg != NULL) {
+			game_events::add_events(era_cfg->get_children("event"),"all");
+		}
+	
 		state_ = game_state(game_data_, level_);
 	}
 

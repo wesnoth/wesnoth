@@ -2519,6 +2519,10 @@ static void commit_wmi_commands() {
 
 bool event_handler::handle_event(const queued_event& event_info, const vconfig conf)
 {
+	if (first_time_only_)
+	{
+		disable();
+	}
 	bool mutated = true;
 	bool skip_messages = false;
 
@@ -2632,9 +2636,6 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 		screen->rebuild_all();
 	}
 
-	if(handler.first_time_only()) {
-		handler.disable();
-	}
 
 	return res;
 }

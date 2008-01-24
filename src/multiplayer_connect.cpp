@@ -21,6 +21,7 @@
 #include "dialogs.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -1035,6 +1036,15 @@ void connect::start_game()
 	update_and_send_diff(true);
 
 	// Build the gamestate object after updating the level
+	
+	// add era events only if not save
+	if (level_.child("snapshot") == 0)
+	{
+		const config* const era_cfg = level_.child("era");
+		if (era_cfg != NULL) {
+			game_events::add_events(era_cfg->get_children("event"),"all");
+		}
+	}
 	level_to_gamestate(level_, state_, params_.saved_game);
 
 	network::send_data(config("start_game"), 0, true);
