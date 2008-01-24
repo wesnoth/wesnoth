@@ -2128,17 +2128,10 @@ private:
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			const std::string side_s(data.begin(),j);
 			const std::string action(j,data.end());
-			unsigned int side = -1;
 			// default to the current side if empty
-			if (side_s.empty()) {
-				side = team_num;
-			} else {
-				try {
-					side = lexical_cast<unsigned int>(side_s);
-				} catch(bad_lexical_cast&) {
-					side = -1;
-				}
-			}
+			const unsigned int side = side_s.empty() ? 
+				team_num : lexical_cast_default<unsigned int>(side_s);
+
 			if (side < 1 || side > teams_.size()) {
 				utils::string_map symbols;
 				symbols["side"] = side_s;
