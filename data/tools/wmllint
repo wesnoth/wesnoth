@@ -582,13 +582,13 @@ def sanity_check(filename, lines):
                 if (notes or traits) and not has_special_notes:
                     missing_notes = ["{SPECIAL_NOTES}"] + missing_notes
                 if missing_notes:
-                    print '"%s", line %d: unit%s is missing notes +%s' \
+                    print '"%s", line %d: unit %s is missing notes +%s' \
                           % (filename, in_unit, unit_id, "+".join(missing_notes))
                 if missing_traits:
-                    print '"%s", line %d: unit%s is missing traits %s' \
+                    print '"%s", line %d: unit %s is missing traits %s' \
                           % (filename, in_unit, unit_id, "+".join(missing_traits))
                 if not (notes or traits) and has_special_notes:
-                    print '"%s", line %d: unit%s has superfluous {SPECIAL_NOTES}' \
+                    print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
                           % (filename, in_unit, unit_id)
             in_unit = None
             traits = []
@@ -600,7 +600,6 @@ def sanity_check(filename, lines):
                 (key, prefix, unit_id, comment) = parse_attribute(lines[i])
                 if unit_id[0] == "_":
                     unit_id = unit_id[1:].strip()
-                unit_id = " " + unit_id
             if "{SPECIAL_NOTES}" in lines[i]:
                 has_special_notes = True
             for (p, q) in notepairs:
