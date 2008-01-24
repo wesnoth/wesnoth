@@ -37,6 +37,7 @@ Version 1.3.14+svn:
    * fixed weapon_specials filter_opponent to work in attack selection (bug #8333)
    * added a more graceful handling of maps without a header (bug #10787)
    * fixed era events not to be added if we are loading save game (bug #10772)
+   * fixed crash in battle events if unit was killed or teleported (bug #10801)
    * make sure the python campaign client list shows a space between the 
      headers if the size of the column is smaller than the header (eg uploads)
 

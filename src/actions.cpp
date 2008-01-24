@@ -748,8 +748,8 @@ void attack::fire_event(const std::string& n)
 			tempcfg->values.insert(to_insert);
 		}
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n, 
-				game_events::entity_location(a_),
-				game_events::entity_location(d_), dat));
+				attacker_,
+				defender_, dat));
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
@@ -1010,6 +1010,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				try {
 					fire_event("attacker_hits");
 				} catch (attack_end_exception) {
+					refresh_bc();
 					break;
 				}
 				refresh_bc();
@@ -1017,6 +1018,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				try {
 					fire_event("attacker_misses");
 				} catch (attack_end_exception) {
+					refresh_bc();
 					break;
 				}
 				refresh_bc();
@@ -1146,6 +1148,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					n_defends_ = 0;
 					n_attacks_ = 0;
 					DELAY_END_LEVEL(delayed_exception, game_events::fire(stone_string,d_->first,a_->first));
+					refresh_bc();
 
 				}
 			}
@@ -1261,6 +1264,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				try {
 					fire_event("defender_hits");
 				} catch (attack_end_exception) {
+					refresh_bc();
 					break;
 				}
 				refresh_bc();
@@ -1268,6 +1272,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				try {
 					fire_event("defender_misses");
 				} catch (attack_end_exception) {
+					refresh_bc();
 					break;
 				}
 				refresh_bc();
@@ -1368,6 +1373,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					n_attacks_ = 0;
 				
 					DELAY_END_LEVEL(delayed_exception, game_events::fire(stone_string,a_->first,d_->first));
+					refresh_bc();
 				}
 			}
 
@@ -1384,6 +1390,7 @@ attack::attack(game_display& gui, const gamemap& map,
 		}
 		if(n_attacks_ <= 0 && n_defends_ <= 0) {
 			fire_event("attack_end");
+			refresh_bc();
 		}
 	}
 
