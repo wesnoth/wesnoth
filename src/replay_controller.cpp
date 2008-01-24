@@ -153,6 +153,7 @@ void replay_controller::reset_replay(){
 	if (b != NULL) { b->release(); }
 	b = gui_->find_button("button-stopreplay");
 	if (b != NULL) { b->release(); }
+	gui_->clear_chat_messages();
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;
