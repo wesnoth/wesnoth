@@ -1037,15 +1037,13 @@ void connect::start_game()
 
 	// Build the gamestate object after updating the level
 	
-	// add era events only if not save
-	if (level_.child("snapshot") == 0)
-	{
-		const config* const era_cfg = level_.child("era");
-		if (era_cfg != NULL) {
-			game_events::add_events(era_cfg->get_children("event"),"all");
-		}
-	}
 	level_to_gamestate(level_, state_, params_.saved_game);
+	
+	// add era events only if not save
+	const config* const era_cfg = level_.child("era");
+	if (era_cfg != NULL) {
+		game_events::add_events(era_cfg->get_children("event"),"era_events");
+	}
 
 	network::send_data(config("start_game"), 0, true);
 }

@@ -575,7 +575,6 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	}
 
 	game_events::add_events(cfg_.get_children("event"),id_);
-	cfg_.clear_children("event");
 
 	set_state("poisoned","");
 	set_state("slowed","");
@@ -1422,7 +1421,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 
 	game_events::add_events(cfg_.get_children("event"),id_);
-	cfg_.clear_children("event");
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
 		cfg_["upkeep"] = "full";
@@ -2243,6 +2241,7 @@ void unit::backup_state()
 	} else {
 		abilities_b_ = config();
 	}
+
 }
 
 config::child_list unit::get_modification_advances() const
