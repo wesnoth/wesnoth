@@ -24,6 +24,8 @@ Version 1.3.14+svn:
    * Tuned some details of the mouse handling.
  * WML engine:
    * Fixed order of sighted and moveto events (bug: #9560)
+   * now allow the use of $unit inside [show_if] and [location_filter]
+     in the [set_menu_item] tag
  * miscellaneous and bug fixes:
    * Fixed [message] not to close if it has input (bug #10846)
    * Fixed turn timer and end_turn commands order (bug #10849)

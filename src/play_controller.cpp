@@ -858,6 +858,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			gamestate_.set_variable("x1", buf);
 			snprintf(buf,sizeof(buf),"%d",hex.y+1);
 			gamestate_.set_variable("y1", buf);
+			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
 
 			std::map<std::string, wml_menu_item*>::iterator itor;
 			for (itor = gs_wmi.begin(); itor != gs_wmi.end()
