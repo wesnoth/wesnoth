@@ -9,6 +9,11 @@ version = "1.3.14+svn"
 min_savegame_version = "1.3.10"
 
 #
+# Local scons modules
+#
+import os, sys, commands
+
+#
 # Build-control options
 #
 
@@ -36,11 +41,11 @@ opts.Add(PathOption('localedir', 'sets the locale data directory to a non-defaul
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
 opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
-import os, sys, commands
-
+#
 # Check some preconditions
 #
 env = Environment(options = opts)
+
 Help("""\
 Available build targets include: game editor server campaign-server tools.
 The 'install' target installs whatever you currently have built.
@@ -66,20 +71,20 @@ else:
 
     debug = ARGUMENTS.get('debug', 'no')
     if debug == "yes":
-        env["CPPFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
+        env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
     else:
-        env["CPPFLAGS"] = Split("-O2 -W -Wall -ansi")
+        env["CXXFLAGS"] = Split("-O2 -W -Wall -ansi")
 
     if env['tinygui']:
-        env["CPPFLAGS"].append(" -DUSE_TINY_GUI")
+        env["CXXFLAGS"].append(" -DUSE_TINY_GUI")
 
     if env['lowmem']:
-        env["CPPFLAGS"].append("-DLOW_MEM")
+        env["CXXFLAGS"].append("-DLOW_MEM")
 
     if env['raw_sockets']:
-        env["CPPFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
+        env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
 
-    print "GCC version %s, flags %s" % (gcc_version, " ".join(env["CPPFLAGS"]))
+    print "GCC version %s, flags %s" % (gcc_version, " ".join(env["CXXFLAGS"]))
     (major, minor, rev) = map(int, gcc_version.split("."))
     if major*10+minor < 33:
         print "Your GCC version is too old"
@@ -173,8 +178,26 @@ wesconfig_builder = Builder(action = wesconfig_build)
 env.Append(BUILDERS = {'Wesconfig' : wesconfig_builder})
 env.Wesconfig("src/wesconfig.h", "SConstruct")
 
+env.Program("wesnoth_editor", [
+	"src/editor/editor.cpp",
+	"src/editor/editor_layout.cpp",
+	"src/editor/map_manip.cpp",
+	"src/editor/editor_display.cpp",
+	"src/editor/editor_palettes.cpp",
+	"src/editor/editor_main.cpp",
+	"src/editor/editor_dialogs.cpp",
+	"src/editor/editor_undo.cpp",
+	"src/animated_editor.cpp",
+	"src/gamestatus_editor.cpp",
+	"src/generic_event.cpp",
+	"src/tooltips.cp",
+])
+
 # Build tests to crib from:
 # http://silvertree.googlecode.com/svn/trunk/{SConstruct,scons/}
+#
+# Tips on MacOS scons usage
+# http://www.scons.org/wiki/MacOSX
 #
 # Scons missing features:
 # 1. [] overloading should be used more -- in particular, environment and
