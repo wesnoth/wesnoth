@@ -34,6 +34,7 @@
 
 #include <cassert>
 
+#define DBG_NW LOG_STREAM(debug, network)
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
 
@@ -340,6 +341,15 @@ void wait::start_game()
 	} else {
 	
 		state_ = game_state(game_data_, level_);
+
+		// When we observe and don't have the addon installed we still need 
+		// the old way, no clue why however. Code is a copy paste of 
+		// playcampaign.cpp:576 which shows an 'Unknown scenario: '$scenario|'
+		// error. This seems to work and have no side effects....
+		if(!state_.scenario.empty() && state_.scenario != "null") {
+			DBG_NW << "Falling back to loading the old way.\n";
+			level_to_gamestate(level_, state_, level_["savegame"] == "yes");
+		}
 	}
 	// add era events after loaded
 	const config* const era_cfg = level_.child("era");
