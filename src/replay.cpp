@@ -61,7 +61,7 @@ static void verify(const unit_map& units, const config& cfg) {
 	std::stringstream errbuf;
 	LOG_REPLAY << "verifying unit structure...\n";
 
-	const size_t nunits = atoi(cfg["num_units"].c_str());
+	const size_t nunits = lexical_cast_default<size_t>(cfg["num_units"]);
 	if(nunits != units.size()) {
 		errbuf << "SYNC VERIFICATION FAILED: number of units from data source differ: "
 			   << nunits << " according to data source. " << units.size() << " locally\n";
@@ -813,7 +813,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 				//if (!preferences::show_lobby_join(speaker_name, message)) return;
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
 				if (!get_replay_source().is_skipping() || is_whisper) {
-					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
+					const int side = lexical_cast_default<int>((*child)["side"],0);
 					disp.add_chat_message(time(NULL), speaker_name, side, message,
 							(team_name == "" ? game_display::MESSAGE_PUBLIC
 							: game_display::MESSAGE_PRIVATE),
@@ -869,7 +869,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 		else if((child = cfg->child("recruit")) != NULL) {
 			const std::string& recruit_num = (*child)["value"];
-			const int val = atoi(recruit_num.c_str());
+			const int val = lexical_cast_default<int>(recruit_num);
 
 			gamemap::location loc(*child, game_events::get_state_of_game());
 
@@ -927,7 +927,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			sort_units(player->available_units);
 
 			const std::string& recall_num = (*child)["value"];
-			const int val = atoi(recall_num.c_str());
+			const int val = lexical_cast_default<int>(recall_num);
 
 			gamemap::location loc(*child, game_events::get_state_of_game());
 
@@ -952,7 +952,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 			sort_units(player->available_units);
 			const std::string& unit_num = (*child)["value"];
-			const int val = atoi(unit_num.c_str());
+			const int val = lexical_cast_default<int>(unit_num);
 
 			if(val >= 0 && val < int(player->available_units.size())) {
 				player->available_units.erase(player->available_units.begin()+val);
@@ -1092,7 +1092,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			const gamemap::location dst(*destination, game_events::get_state_of_game());
 
 			const std::string& weapon = (*child)["weapon"];
-			const int weapon_num = atoi(weapon.c_str());
+			const int weapon_num = lexical_cast_default<int>(weapon);
 
 			const std::string& def_weapon = (*child)["defender_weapon"];
 			int def_weapon_num = -1;
@@ -1100,7 +1100,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 				// Let's not gratuitously destroy backwards compat.
 				ERR_REPLAY << "Old data, having to guess weapon\n";
 			} else {
-				def_weapon_num = atoi(def_weapon.c_str());
+				def_weapon_num = lexical_cast_default<int>(def_weapon);
 			}
 
 			unit_map::iterator u = units.find(src);
