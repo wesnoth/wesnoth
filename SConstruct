@@ -21,7 +21,6 @@ opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 3
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
-opts.Add(PathOption('datadir', 'read-only architecture-independent data', "/usr/share/"))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
@@ -29,7 +28,9 @@ opts.Add(BoolOption('server_monitor', 'Set to enable enable server monitor threa
 opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240, resize images before installing', False))
 opts.Add(BoolOption('display_revision', 'Set to enable svn revision display', False))
+opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 # These will get generated into config.h
+opts.Add(PathOption('datadir', 'read-only architecture-independent data', "/usr/share/"))
 opts.Add(PathOption('DATADIR', 'sets the Wesnoth data directory to a non-default location', "wesnoth", PathOption.PathAccept))
 opts.Add(PathOption('LOCALEDIR', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 
@@ -61,23 +62,29 @@ if status:
     print "GCC is not installed", status
     sys.exit(1)
 else:
+    gcc_version = gcc_version.split()[2]
+
     debug = ARGUMENTS.get('debug', 'no')
     if debug == "yes":
-        cxxflags = "-O0 -DDEBUG -ggdb3 -W -Wall -ansi"
+        env["CPPFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
     else:
-        cxxflags = "-O2 -W -Wall -ansi"
-    gcc_version = gcc_version.split()[2]
-    print "GCC version %s, flags %s" % (gcc_version, cxxflags)
+        env["CPPFLAGS"] = Split("-O2 -W -Wall -ansi")
+
+    if env['tinygui']:
+        env["CPPFLAGS"].append(" -DUSE_TINY_GUI")
+
+    if env['lowmem']:
+        env["CPPFLAGS"].append("-DLOW_MEM")
+
+    if env['raw_sockets']:
+        env["CPPFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
+
+    print "GCC version %s, flags %s" % (gcc_version, " ".join(env["CPPFLAGS"]))
     (major, minor, rev) = map(int, gcc_version.split("."))
     if major*10+minor < 33:
         print "Your GCC version is too old"
         sys.exit(1)
 
-if ARGUMENTS.get('tinygui', 'no') == 'yes':
-    cxxflags += " -DUSE_TINY_GUI"
-
-if ARGUMENTS.get('lowmem', 'no') == 'yes':
-    cxxflags += " -DLOW_MEM"
 
 test_build = "svn" in version
 
@@ -91,10 +98,14 @@ else:
 env = conf.Finish()
 
 #
-# Declare a default target
+# Declare a default target and deduce from it
 #
 
-env.Default("wesnoth")
+env.Default("game")
+
+if "game" not in map(str, BUILD_TARGETS):
+    print "*** Game build disabled, suppressing Python support."
+    env["python"] = False
 
 #
 # How to build the Wesnoth configuration file
@@ -143,6 +154,9 @@ def wesconfig_build(target, source, env):
 wesconfig_builder = Builder(action = wesconfig_build)
 env.Append(BUILDERS = {'Wesconfig' : wesconfig_builder})
 env.Wesconfig("src/wesconfig.h", "SConstruct")
+
+# More build tests to crib from:
+# http://silvertree.googlecode.com/svn/trunk/scons/
 
 # Local variables:
 # mode: python
