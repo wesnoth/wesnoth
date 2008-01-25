@@ -3,7 +3,7 @@
 #
 # This is a deliberately straight-line translation of the old configure.ac;
 # it builds an autotools-like config.h for the C++ code.  The optipng
-# option is omitted.
+# and internal-data options are omitted.
 #
 version = "1.3.14+svn"
 min_savegame_version = "1.3.10"
@@ -13,6 +13,8 @@ min_savegame_version = "1.3.10"
 #
 
 opts = Options()
+opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
+opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(BoolOption('tests', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('python','Clear to disable Python support', True))
@@ -25,14 +27,14 @@ opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 opts.Add(BoolOption('server_monitor', 'Set to enable enable server monitor thread; libgtop2 is required', False))
-opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
+#opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240, resize images before installing', False))
 opts.Add(BoolOption('display_revision', 'Set to enable svn revision display', False))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
-# These will get generated into config.h
-opts.Add(PathOption('datadir', 'read-only architecture-independent data', "/usr/share/"))
-opts.Add(PathOption('DATADIR', 'sets the Wesnoth data directory to a non-default location', "wesnoth", PathOption.PathAccept))
-opts.Add(PathOption('LOCALEDIR', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
+opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
+opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
+opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
+opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
 import os, sys, commands
 
@@ -48,13 +50,11 @@ will also be installed.
 """ + opts.GenerateHelpText(env))
 conf = Configure(env)
 
-# Every environment symbol that is all caps (in particular those set by options)
-# gets copied into configsyms so we can generate an autoconf-style config.h
-# file from it.
-configsyms = {}
-for key in env.Dictionary().keys():
-    if key.isupper() or key in ["datadir"]:
-        configsyms[key] = env.Dictionary()[key]
+envdict = env.Dictionary()
+
+# Simulate autools-like behavior of prefix and datadir
+if not "/" in envdict["datadir"]:
+    env["datadir"] = os.path.join(envdict["prefix"], envdict["datadir"])
 
 # Check the C++ compiler and version
 (status, gcc_version) = commands.getstatusoutput("g++ --version")
@@ -85,17 +85,9 @@ else:
         print "Your GCC version is too old"
         sys.exit(1)
 
+env = conf.Finish()
 
 test_build = "svn" in version
-
-if "/" in configsyms["LOCALEDIR"]:	# FIXME: Will this break on Windows?
-    configsyms["FULLLOCALEDIR"] = configsyms["LOCALEDIR"]
-    configsyms["HAS_RELATIVE_LOCALEDIR"] = 0
-else:
-    configsyms["FULLLOCALEDIR"] = os.path.join(configsyms["datadir"], configsyms["DATADIR"], configsyms["LOCALEDIR"])
-    configsyms["HAS_RELATIVE_LOCALEDIR"] = 1
-
-env = conf.Finish()
 
 #
 # Declare a default target and deduce from it
@@ -106,6 +98,32 @@ env.Default("game")
 if "game" not in map(str, BUILD_TARGETS):
     print "*** Game build disabled, suppressing Python support."
     env["python"] = False
+
+#
+# Generate the config file
+#
+
+configsyms = {}
+
+configsyms["DATADIR"] = envdict["datadir"]
+configsyms["LOCALEDIR"] = envdict["localedir"]
+configsyms["USE_DUMMYLOCALES"] = envdict["dummy_locales"]
+#configsyms["USE_INTERNAL_DATA"] = envdict["internal_data"]
+
+if "/" in configsyms["LOCALEDIR"]:	# FIXME: Will this break on Windows?
+    configsyms["FULLLOCALEDIR"] = configsyms["LOCALEDIR"]
+    configsyms["HAS_RELATIVE_LOCALEDIR"] = 0
+else:
+    configsyms["FULLLOCALEDIR"] = os.path.join(configsyms["DATADIR"], configsyms["LOCALEDIR"])
+    configsyms["HAS_RELATIVE_LOCALEDIR"] = 1
+
+if not envdict["icondir"]:
+    envdict["icondir"] = os.path.join(envdict["datadir"], "icons")
+configsyms["APP_ICON"] = envdict["icondir"]
+
+if not envdict["desktopdir"]:
+    envdict["desktopdir"] = os.path.join(envdict["datadir"], "applicationa")
+configsyms["APP_ENTRY"] = envdict["desktopdir"]
 
 #
 # How to build the Wesnoth configuration file
@@ -155,8 +173,14 @@ wesconfig_builder = Builder(action = wesconfig_build)
 env.Append(BUILDERS = {'Wesconfig' : wesconfig_builder})
 env.Wesconfig("src/wesconfig.h", "SConstruct")
 
-# More build tests to crib from:
-# http://silvertree.googlecode.com/svn/trunk/scons/
+# Build tests to crib from:
+# http://silvertree.googlecode.com/svn/trunk/{SConstruct,scons/}
+#
+# Scons missing features:
+# 1. [] overloading should be used more -- in particular, environment and
+#    options dictionaries should be directly accessible through it.
+# 2. Where's the command-existence test?
+# 3. New builder: Make target from string in SConstruct itself.
 
 # Local variables:
 # mode: python
