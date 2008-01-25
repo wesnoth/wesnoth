@@ -405,7 +405,10 @@ def maptransform1(filename, baseline, inmap, y):
                 raise maptransform_error(filename, baseline+y+1,
                                          "unrecognized map element %s at (%s, %s)" % (`field`, x, y))
 
-# 1.3.1 -> 1.3.2 terrain conversions
+# Mostly 1.3.1 -> 1.3.2 terrain conversions.
+# One 1.3.13 -> 1.3.14 conversion -- old windmill terrain to stock villages.
+# We don't version-check these because the source patterns are vanishingly
+# unlikely to turn up by accident.
 conversion2 = {
     re.compile(r"(?<!\^)Bww([|/\\])") : "Ww^Bw\\1",
     re.compile(r"(?<!\^)Bwo([|/\\])") : "Wo^Bw\\1",
@@ -437,10 +440,11 @@ conversion2 = {
     re.compile(r"(?<!\^)Vs\b") : "Ss^Vhs",
     re.compile(r"(?<!\^)Vsm\b") : "Ss^Vm",
     re.compile(r"(?<!\^)Xm\b") : "Mm^Xm",
+    re.compile(r"\bGg\^Vwm\b") : "Gg^Vh",		# This is the 1.3.13 -> 1.3.14 one
     }
 
 def maptransform2(filename, baseline, inmap, y):
-    "Convert a map line from 1.3.1 multiletter format to 1.3.2 format."
+    "Convert a map line between 1.3.x formats."
     for x in range(len(inmap[y])):
         # General conversions
         for (old, new) in conversion2.items():
