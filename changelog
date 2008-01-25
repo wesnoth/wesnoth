@@ -6,6 +6,7 @@ Version 1.3.14+svn:
  * graphics:
    * new elvish portraits by Kitty
  * multiplayer:
+   * revised maps: Cynsaun Battlefield
    * fixed bug #10777: Cannot cancel a multiplayer password prompt
    * fixed bug #10779: Rejoining game causes major problems
    * Fixed :control command to work
@@ -22,25 +23,25 @@ Version 1.3.14+svn:
      animation finishes (bug #7132).
    * If a move is interrupted, footsteps are drawn again.
    * Tuned some details of the mouse handling.
+   * Fixed [message] not to close if it has input (bug #10846)
+   * fixed chat color when message is added by turn_info (bug #6846)
+   * added a more graceful handling of maps without a header (bug #10787)
  * WML engine:
-   * Fixed order of sighted and moveto events (bug: #9560)
+   * Fixed order of sighted and moveto events (bug #9560)
    * now allow the use of $unit inside [show_if] and [location_filter]
      in the [set_menu_item] tag
+   * fixed weapon_specials filter_opponent to work in attack selection (bug #8333)
+   * fixed crash in battle events if unit was killed or teleported (bug #10801)
+   * fixed era events not to be added if we are loading save game (bug #10772)
+   * some filtering was added to the [animate_unit] action to actually make it
+     useful
  * miscellaneous and bug fixes:
-   * Fixed [message] not to close if it has input (bug #10846)
    * Fixed turn timer and end_turn commands order (bug #10849)
    * Fixed boost test compile with 1.34.1
    * Make wesnoth work properly again if the datadir contains ../
    * Fixed some type of addon not being uninstallable (bug #10788)
-   * some filtering was added to the [animate_unit] action to actually make it
-     usefull
    * converted NO_MAP_DATA to new map format
    * fixed unchecked vector access
-   * fixed weapon_specials filter_opponent to work in attack selection (bug #8333)
-   * added a more graceful handling of maps without a header (bug #10787)
-   * fixed era events not to be added if we are loading save game (bug #10772)
-   * fixed chat color when message is added by turn_info (bug #6846)
-   * fixed crash in battle events if unit was killed or teleported (bug #10801)
    * make sure the python campaign client list shows a space between the 
      headers if the size of the column is smaller than the header (eg uploads)
 
