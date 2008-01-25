@@ -212,8 +212,7 @@ def convertor(linefilter, arglist, exclude):
                                 sys.stderr.write("wmlindent: %s unchanged\n" % filename)
                             os.remove(filename + ".out")
                         else:
-                            if verbose >= 1:
-                                sys.stderr.write("wmlindent: %s changed\n" % filename)
+                            sys.stderr.write("wmlindent: %s changed\n" % filename)
                             if dryrun:
                                 os.remove(filename + ".out")
                             else:
