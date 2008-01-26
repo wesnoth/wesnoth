@@ -728,8 +728,6 @@ void attack::fire_event(const std::string& n)
 	LOG_NG << "firing " << n << " event\n";
 	if(n == "attack_end") {
 		config dat;
-		game_events::entity_location attacker(attacker_,a_id_);
-		game_events::entity_location defender(defender_,d_id_);
 		dat.add_child("first");
 		dat.add_child("second");
 		if(a_ != units_.end()) {
@@ -750,9 +748,11 @@ void attack::fire_event(const std::string& n)
 			std::pair<std::string,t_string> to_insert("weapon", d_weap);
 			tempcfg->values.insert(to_insert);
 		}
+
+		// We want to fire attack_end event in any case! Even if one of units was removed by WML
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n, 
-				attacker,
-				defender, dat));
+				attacker_,
+				defender_, dat));
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
