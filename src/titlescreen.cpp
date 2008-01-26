@@ -298,14 +298,18 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 
 	const font::floating_label_context label_manager;
 
-	// Display Wesnoth logo
-	surface const title_surface(scale_surface(
-		image::get_image(game_config::game_title),
-		screen.w(), screen.h()));
 	screen.video().modeChanged(); // resets modeChanged value
-	int logo_x = game_config::title_logo_x * screen.w() / 1024,
-	    logo_y = game_config::title_logo_y * screen.h() / 768;
+
+	bool fade_failed = false;
 	do {
+		int logo_x = game_config::title_logo_x * screen.w() / 1024,
+		    logo_y = game_config::title_logo_y * screen.h() / 768;
+
+		surface const title_surface(scale_surface(
+			image::get_image(game_config::game_title),
+			screen.w(), screen.h()));
+
+		
 		if (title_surface.null()) {
 			ERR_DP << "Could not find title image\n";
 		} else {
@@ -313,7 +317,9 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 			update_rect(screen_area());
 			LOG_DP << "displayed title image\n";
 		}
-	} while (!fade_logo(screen, logo_x, logo_y));
+
+		fade_failed = !fade_logo(screen, logo_x, logo_y);
+	} while (fade_failed);
 	LOG_DP << "faded logo\n";
 
 	// Display Wesnoth version and (if configured with --enable-display-revision) the svn-revision
