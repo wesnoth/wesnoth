@@ -49,6 +49,28 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 env = Environment(tools=['gcc'], options = opts)
 env.Default("game")
 
+#
+# Program declarations (incomplete, no libraries yet)
+#
+
+if 0:
+    env.Program("wesnothd", [
+            "src/server/game.cpp",
+            "src/server/input_stream.cpp",
+            "src/server/metrics.cpp",
+            "src/server/player.cpp",
+            "src/server/proxy.cpp",
+            "src/server/server.cpp",
+            "src/server/monitor.cpp",
+            "src/network.cpp",
+            "src/network_worker.cpp",
+            "src/loadscreen_empty.cp"
+            ])
+
+#
+# Configuration
+#
+
 Help("""\
 Available build targets include: game editor server campaign-server tools.
 The 'install' target installs whatever you currently have built.
@@ -94,9 +116,14 @@ if env["CC"] == "gcc":
 
 targets = map(str, BUILD_TARGETS)
 
-if not ("game" in targets or "editor" in targets) and conf.CheckLib('X11'):
-    print 'Needed X libs for game or editor and did not find them exiting!'
-    Exit(1)
+if 0:
+    if ("game" in targets or "editor" in targets):
+        if not conf.CheckLib('X11'):
+            print "Needed X lib for game or editor and didn't find it; exiting!"
+            Exit(1)
+        if not conf.CheckLib('SDL'):
+            print "Needed SDL lib for game or editor and didn't find it; exiting!"
+            Exit(1)
 
 if "game" not in map(str, BUILD_TARGETS):
     print "*** Game build disabled, suppressing Python support."
