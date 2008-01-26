@@ -317,11 +317,8 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	LOG_DP << "faded logo\n";
 
 	// Display Wesnoth version and (if configured with --enable-display-revision) the svn-revision
-	const std::string rev =  game_config::svnrev.empty() ? "" :
-		" (" + game_config::svnrev + ")";
-
 	const std::string& version_str = _("Version") +
-		std::string(" ") + game_config::version + rev;
+		std::string(" ") + game_config::version;
 
 	const SDL_Rect version_area = font::draw_text(NULL, screen_area(),
 								  font::SIZE_TINY, font::NORMAL_COLOUR,
