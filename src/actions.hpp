@@ -189,6 +189,7 @@ class attack {
 		const gamestatus& state_;
 		const game_data& info_;
 		unit_map::iterator a_,d_; // attacker and defender
+		std::string a_id_, d_id_;
 		std::stringstream errbuf_;
 		battle_context* bc_;
 		const battle_context::unit_stats* a_stats_;

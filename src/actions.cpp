@@ -728,10 +728,13 @@ void attack::fire_event(const std::string& n)
 	LOG_NG << "firing " << n << " event\n";
 	if(n == "attack_end") {
 		config dat;
+		game_events::entity_location attacker(attacker_,a_id_);
+		game_events::entity_location defender(defender_,d_id_);
 		dat.add_child("first");
 		dat.add_child("second");
 		if(a_ != units_.end()) {
 			(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
+
 		}
 		if(d_ != units_.end()) {
 			config *tempcfg = dat.child("second");
@@ -748,8 +751,8 @@ void attack::fire_event(const std::string& n)
 			tempcfg->values.insert(to_insert);
 		}
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n, 
-				game_events::entity_location(a_),
-				game_events::entity_location(d_), dat));
+				attacker,
+				defender, dat));
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
@@ -831,6 +834,8 @@ attack::attack(game_display& gui, const gamemap& map,
 	info_(info),
 	a_(units_.find(attacker)),
 	d_(units_.find(defender)),
+	a_id_(),
+	d_id_(),
 	errbuf_(),
 	bc_(0),
 	a_stats_(0),
@@ -855,6 +860,9 @@ attack::attack(game_display& gui, const gamemap& map,
 	if(a_ == units_.end() || d_ == units_.end()) {
 		return;
 	}
+
+	a_id_ = a_->second.underlying_description();
+	d_id_ = d_->second.underlying_description();
 
 	// no attack weapon => stop here and don't attack
 	if (attack_with < 0) {
