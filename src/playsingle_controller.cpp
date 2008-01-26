@@ -452,6 +452,10 @@ void playsingle_controller::play_turn(bool save)
 	events::raise_draw_event();
 
 	LOG_NG << "turn: " << status_.turn() << "\n";
+	
+	if(non_interactive())
+		std::cout << "Turn " << status_.turn() << ":" << std::endl;
+
 
 	for(player_number_ = first_player_; player_number_ <= teams_.size(); player_number_++) {
 		// If a side is empty skip over it.
@@ -484,6 +488,13 @@ void playsingle_controller::play_turn(bool save)
 		}
 
 		finish_side_turn();
+		
+		if(non_interactive()) {
+			std::cout << " Player " << player_number_ << ": " <<
+				current_team().villages().size() << " Villages" <<
+				std::endl;
+		}
+		
 		check_victory(units_, teams_, *gui_);
 	}
 
