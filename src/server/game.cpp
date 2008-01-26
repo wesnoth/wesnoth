@@ -370,7 +370,9 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		players_.erase(pl);
 		const std::string& name = player_info_->find(sock)->second.name();
 		// Tell others that the player becomes an observer.
-		send_data(construct_server_message(name	+ " becomes an observer."));
+		const config& msg = construct_server_message(name + " becomes an observer.");
+		record_data(msg);
+		send_data(msg);
 		// Update the client side observer list for everyone except player.
 		config observer_join;
 		observer_join.add_child("observer")["name"] = name;
@@ -380,12 +382,16 @@ void game::transfer_side_control(const network::connection sock, const config& c
 			host_leave = true;
 			if (!players_.empty()) {
 				owner_ = players_.front();
-				send_data(construct_server_message(name
-					+ " has been chosen as the new host."));
+				const config& msg = construct_server_message(name
+						+ " has been chosen as the new host.");
+				record_data(msg);
+				send_data(msg);
 			} else {
 				owner_ = newplayer->first;
-				send_data(construct_server_message(newplayer_name
-					+ " has been chosen as the new host."));
+				const config& msg = construct_server_message(newplayer_name
+						+ " has been chosen as the new host.");
+				record_data(msg);
+				send_data(msg);
 			}
 			notify_new_host();
 		}
