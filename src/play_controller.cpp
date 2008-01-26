@@ -276,11 +276,11 @@ void play_controller::show_help(){
 }
 
 void play_controller::undo(){
-	menu_handler_.undo(player_number_, mouse_handler_);
+	menu_handler_.undo(player_number_);
 }
 
 void play_controller::redo(){
-	menu_handler_.redo(player_number_, mouse_handler_);
+	menu_handler_.redo(player_number_);
 }
 
 void play_controller::show_enemy_moves(bool ignore_units){
@@ -700,7 +700,7 @@ void play_controller::handle_event(const SDL_Event& event)
 		mouse_handler_.mouse_press(event.button, browse_);
 		if (mouse_handler_.get_undo()){
 			mouse_handler_.set_undo(false);
-			menu_handler_.undo(player_number_, mouse_handler_);
+			menu_handler_.undo(player_number_);
 		}
 		if (mouse_handler_.get_show_menu()){
 			show_menu(gui_->get_theme().context_menu()->items(),event.button.x,event.button.y,true);

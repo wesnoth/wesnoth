@@ -115,8 +115,8 @@ public:
 	void recruit(const bool browse, const unsigned int team_num, const gamemap::location& last_hex);
 	void repeat_recruit(const unsigned int team_num, const gamemap::location& last_hex);
 	void recall(const unsigned int team_num, const gamemap::location& last_hex);
-	void undo(const unsigned int team_num, mouse_handler& mousehandler);
-	void redo(const unsigned int team_num, mouse_handler& mousehandler);
+	void undo(const unsigned int team_num);
+	void redo(const unsigned int team_num);
 	void show_enemy_moves(bool ignore_units, const unsigned int team_num);
 	void toggle_shroud_updates(const unsigned int team_num);
 	void update_shroud_now(const unsigned int team_num);

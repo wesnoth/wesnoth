@@ -1217,7 +1217,7 @@ private:
 			}
 		}
 	}
-	void menu_handler::undo(const unsigned int team_num, mouse_handler& mousehandler)
+	void menu_handler::undo(const unsigned int team_num)
 	{
 		if(undo_stack_.empty())
 			return;
@@ -1313,9 +1313,6 @@ private:
 		redo_stack_.push_back(action);
 		undo_stack_.pop_back();
 
-		//mousehandler.set_selected_hex(gamemap::location());
-		//mousehandler.set_current_paths(paths());
-
 		recorder.undo();
 
 		const bool shroud_cleared = clear_shroud(team_num);
@@ -1327,16 +1324,12 @@ private:
 		}
 	}
 
-	void menu_handler::redo(const unsigned int team_num, mouse_handler& mousehandler)
+	void menu_handler::redo(const unsigned int team_num)
 	{
 		if(redo_stack_.empty())
 			return;
 
 		const events::command_disabler disable_commands;
-
-		//clear routes, selected hex, etc
-		//mousehandler.set_selected_hex(gamemap::location());
-		//mousehandler.set_current_paths(paths());
 
 		undo_action& action = redo_stack_.back();
 		if(action.is_recall()) {
