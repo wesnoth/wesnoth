@@ -892,6 +892,7 @@ void unit_animator::wait_until(int animation_time) const
 }
 void unit_animator::wait_for_end() const
 {
+	if (game_config::no_delay) return;
 	bool finished = false;
 	game_display*disp = game_display::get_singleton();
 	while(!finished) {
