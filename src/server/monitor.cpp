@@ -21,10 +21,12 @@
 
 #include "../util.hpp"
 
+#ifdef SERVER_MONITOR
 #include <iostream>
 
 #include <glibtop.h>
 #include <glibtop/proctime.h>
+#endif
 
 namespace nserver {
 
