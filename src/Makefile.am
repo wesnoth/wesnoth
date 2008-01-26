@@ -1,7 +1,3 @@
-SVNREV = $(shell svnversion -n $(topdir) 2>/dev/null || unknown)
-CFLAGS += "-DSVNREV=\"$(SVNREV)\""
-CXXFLAGS += "-DSVNREV=\"$(SVNREV)\""
-
 AUTOMAKE_OPTIONS = subdir-objects
 
 bin_PROGRAMS =
@@ -434,14 +430,11 @@ libwesnoth_a_SOURCES = \
 	sdl_ttf/SDL_ttf.c \
 	wml_exception.cpp 
 
-# Until game_config.cpp is removed, this will be needed to ensure that the
-# SVNVER constant gets updated correctly.  If and when that definition is
-# moved elsewhere, this dependency must follow it.
-game_config.o: revision-stamp 
-
 # Should be touched each time the SVN revision number goes up 
-revision-stamp: FORCE
-	if [ x"$(SVNREV)" != x`cat revision-stamp 2>/dev/null` ]; then echo -n $(SVNREV) >revision-stamp; fi
+SVNREV = $(shell svnversion -n $(topdir) 2>/dev/null || unknown)
+revision-stamp revision_stamp.hpp: FORCE
+	if [ ! -f revision_stamp.hpp -o x"$(SVNREV)" != x`cat revision-stamp 2>/dev/null` ]; then echo -n $(SVNREV) >revision_stamp; echo "#define SVNREV \"$(SVNREV)\"" >revision_stamp.hpp; fi
+	
 
 FORCE:
 

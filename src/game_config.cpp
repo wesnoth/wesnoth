@@ -21,6 +21,7 @@
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "wesconfig.h"
+#include "revision_stamp.hpp"
 
 #include <cstdlib>
 #include <sstream>
