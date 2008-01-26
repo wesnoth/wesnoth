@@ -2,6 +2,8 @@
 
 """This is a rather simple minded example of a python AI."""
 
+import wesnoth, heapq, random
+
 def pos(location):
     """Just a helper function for printing positions in debug messages."""
     return "(%d, %d)" % (1 + location.x, 1 + location.y)
