@@ -686,9 +686,9 @@ namespace{
 } //end anonymous namespace
 
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
-				gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack, game_state& game_state):
+				gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack):
 gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(gameinfo),
-undo_stack_(undo_stack), redo_stack_(redo_stack), game_state_(game_state)
+undo_stack_(undo_stack), redo_stack_(redo_stack)
 {
 	minimap_scrolling_ = false;
 	dragging_ = false;

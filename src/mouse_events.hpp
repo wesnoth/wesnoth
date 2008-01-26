@@ -38,7 +38,7 @@ struct command_disabler
 class mouse_handler{
 public:
 	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
-		gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack, game_state& gamestate);
+		gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack);
 	void set_team(const int team_number);
 	void mouse_motion(const SDL_MouseMotionEvent& event, const bool browse);
 	// update the mouse with a fake mouse motion
@@ -94,7 +94,6 @@ private:
 	const game_data& gameinfo_;
 	undo_list& undo_stack_;
 	undo_list& redo_stack_;
-	game_state& game_state_;
 
 	bool minimap_scrolling_;
 	bool dragging_;
