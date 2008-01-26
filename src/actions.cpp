@@ -778,8 +778,8 @@ void attack::fire_event(const std::string& n)
 	// could still be in bounds but point to a different attack.
 	if(a_ == units_.end() || d_ == units_.end()) {
 		if (update_display_){
-			recalculate_fog(map_,state_,info_,units_,teams_,attacker_side-1);
-			recalculate_fog(map_,state_,info_,units_,teams_,defender_side-1);
+			recalculate_fog(map_,units_,teams_,attacker_side-1);
+			recalculate_fog(map_,units_,teams_,defender_side-1);
 			gui_.recalculate_minimap();
 			gui_.update_display();
 		}
@@ -1130,7 +1130,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					   LOG_NG<<"unit not reanimated"<<std::endl;
 				}
 				if (update_display_){
-					recalculate_fog(map_,state_,info_,units_,teams_,defender_side-1);
+					recalculate_fog(map_,units_,teams_,defender_side-1);
 					gui_.invalidate_all();
 					gui_.recalculate_minimap();
 					gui_.draw();
@@ -1353,7 +1353,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					LOG_NG<<"unit not reanimated"<<std::endl;
 				}
 				if (update_display_){
-					recalculate_fog(map_,state_,info_,units_,teams_,attacker_side-1);
+					recalculate_fog(map_,units_,teams_,attacker_side-1);
 					gui_.invalidate_all();
 					gui_.recalculate_minimap();
 					gui_.draw();
@@ -1856,8 +1856,6 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 //! seen_units will return new units that have been seen by this unit.
 //! If known_units is NULL, seen_units can be NULL and will not be changed.
 bool clear_shroud_unit(const gamemap& map,
-		const gamestatus& status,
-		const game_data& gamedata,
 		const unit_map& units, const gamemap::location& loc,
 		std::vector<team>& teams, int team,
 		const std::set<gamemap::location>* known_units = NULL,
@@ -1871,7 +1869,7 @@ bool clear_shroud_unit(const gamemap& map,
 		return false;
 	}
 
-	paths p(map,status,gamedata,units,loc,teams,true,false,teams[team],0,false,true);
+	paths p(map,units,loc,teams,true,false,teams[team],0,false,true);
 	for(paths::routes_map::const_iterator i = p.routes.begin();
 	    i != p.routes.end(); ++i) {
 		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
@@ -1906,8 +1904,8 @@ bool clear_shroud_unit(const gamemap& map,
 
 }
 
-void recalculate_fog(const gamemap& map, const gamestatus& status,
-		const game_data& gamedata, unit_map& units,
+void recalculate_fog(const gamemap& map, 
+		unit_map& units,
 		std::vector<team>& teams, int team) {
 
 	teams[team].refog();
@@ -1916,14 +1914,13 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 		if(static_cast<int>(i->second.side()) == team + 1) {
 			const unit_movement_resetter move_resetter(i->second);
 
-			clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
+			clear_shroud_unit(map,units,i->first,teams,team,NULL,NULL);
 		}
 	}
 	game_events::pump();
 }
 
-bool clear_shroud(game_display& disp, const gamestatus& status,
-		const gamemap& map, const game_data& gamedata,
+bool clear_shroud(game_display& disp, const gamemap& map,
                   unit_map& units, std::vector<team>& teams, int team)
 {
 	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
@@ -1936,13 +1933,13 @@ bool clear_shroud(game_display& disp, const gamestatus& status,
 		if(static_cast<int>(i->second.side()) == team + 1) {
 			const unit_movement_resetter move_resetter(i->second);
 
-			result |= clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
+			result |= clear_shroud_unit(map,units,i->first,teams,team,NULL,NULL);
 		}
 	}
 	game_events::pump();
 
 	if (teams[team].uses_fog()) {
-		recalculate_fog(map,status,gamedata,units,teams,team);
+		recalculate_fog(map,units,teams,team);
 	}
 
 	disp.labels().recalculate_shroud();
@@ -1950,8 +1947,8 @@ bool clear_shroud(game_display& disp, const gamestatus& status,
 	return result;
 }
 
-size_t move_unit(game_display* disp, const game_data& gamedata,
-                 const gamestatus& status, const gamemap& map,
+size_t move_unit(game_display* disp,
+                 const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  std::vector<gamemap::location> route,
                  replay* move_recorder, undo_list* undo_stack,
@@ -2034,10 +2031,10 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 				// so we can put our unit there, then we'll swap back at the end.
 				const temporary_unit_placer unit_placer(units,*step,ui->second);
 				if( team.auto_shroud_updates()) {
-					should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
+					should_clear_stack |= clear_shroud_unit(map,units,*step,teams,
 					    ui->second.side()-1,&known_units,&seen_units,&stoned_units);
 				} else {
-					clear_shroud_unit(map,status,gamedata,units,*step,teams,
+					clear_shroud_unit(map,units,*step,teams,
 						ui->second.side()-1,&known_units,&seen_units,&stoned_units);
 				}
 				if(should_clear_stack) {
@@ -2192,7 +2189,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 
 	if(undo_stack != NULL) {
 		if(event_mutated || should_clear_stack || ui == units.end()) {
-			apply_shroud_changes(*undo_stack,disp,status,map,gamedata,units,teams,team_num);
+			apply_shroud_changes(*undo_stack,disp,map,units,teams,team_num);
 			undo_stack->clear();
 		} else {
 			// MP_COUNTDOWN: added param
@@ -2329,8 +2326,8 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 	return false;
 }
 
-void apply_shroud_changes(undo_list& undos, game_display* disp, const gamestatus& status, const gamemap& map,
-	const game_data& gamedata, unit_map& units, std::vector<team>& teams, int team)
+void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& map,
+	unit_map& units, std::vector<team>& teams, int team)
 {
 	// No need to do this if the team isn't using fog or shroud.
 	if(!teams[team].uses_shroud() && !teams[team].uses_fog())
@@ -2357,7 +2354,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamestatus
 			// We have to swap out any unit that is already in the hex,
 			// so we can put our unit there, then we'll swap back at the end.
 			const temporary_unit_placer unit_placer(units,*step,un->affected_unit);
-			clear_shroud_unit(map,status,gamedata,units,*step,teams,team,NULL,NULL);
+			clear_shroud_unit(map,units,*step,teams,team,NULL,NULL);
 
 			//! @todo FIXME
 			// There is potential for a bug, here. If the "sighted"
@@ -2374,11 +2371,11 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamestatus
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate_game_status();
-		clear_shroud(*disp,status,map,gamedata,units,teams,team);
+		clear_shroud(*disp,map,units,teams,team);
 		disp->recalculate_minimap();
 		disp->invalidate_all();
 	} else {
-		recalculate_fog(map,status,gamedata,units,teams,team);
+		recalculate_fog(map,units,teams,team);
 	}
 }
 

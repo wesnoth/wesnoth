@@ -331,7 +331,7 @@ void play_controller::init_gui(){
 	gui_->adjust_colours(0,0,0);
 
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,(t-teams_.begin()));
+		::clear_shroud(*gui_,map_,units_,teams_,(t-teams_.begin()));
 	}
 }
 
@@ -412,7 +412,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!recorder.is_skipping()){
-		::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_index);
+		::clear_shroud(*gui_,map_,units_,teams_,team_index);
 		gui_->invalidate_all();
 	}
 
@@ -482,7 +482,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			recorder.add_event(wml_commands_[i]->name, menu_hex);
 			if(game_events::fire(wml_commands_[i]->name, menu_hex)) {
 				// The event has mutated the gamestate
-				apply_shroud_changes(undo_stack_, gui_, status_, map_, gameinfo_,
+				apply_shroud_changes(undo_stack_, gui_, map_,
 					units_, teams_, (player_number_ - 1));
 				undo_stack_.clear();
 			}
@@ -670,7 +670,7 @@ void play_controller::handle_event(const SDL_Event& event)
 
 				if(u != units_.end()) {
 					const bool teleport = u->second.get_ability_bool("teleport",u->first);
-					mouse_handler_.set_current_paths(paths(map_,status_,gameinfo_,units_,u->first,
+					mouse_handler_.set_current_paths(paths(map_,units_,u->first,
 					                       teams_,false,teleport, teams_[gui_->viewing_team()],
 					                       mouse_handler_.get_path_turns()));
 					gui_->highlight_reach(mouse_handler_.get_current_paths());

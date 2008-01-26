@@ -200,8 +200,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	}
 }
 
-paths::paths(gamemap const &map, gamestatus const &/*status*/,
-             game_data const &/*gamedata*/,
+paths::paths(gamemap const &map,
              unit_map const &units,
              gamemap::location const &loc,
              std::vector<team> const &teams,

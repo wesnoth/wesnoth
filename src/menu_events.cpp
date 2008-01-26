@@ -1451,14 +1451,14 @@ private:
 	bool menu_handler::clear_shroud(const unsigned int team_num)
 	{
 		bool cleared = teams_[team_num - 1].auto_shroud_updates() &&
-			::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_num-1);
+			::clear_shroud(*gui_,map_,units_,teams_,team_num-1);
 		return cleared;
 	}
 
 	void menu_handler::clear_undo_stack(const unsigned int team_num)
 	{
 		if(teams_[team_num - 1].auto_shroud_updates() == false)
-			apply_shroud_changes(undo_stack_,gui_,status_,map_,gameinfo_,units_,teams_,team_num-1);
+			apply_shroud_changes(undo_stack_,gui_,map_,units_,teams_,team_num-1);
 		undo_stack_.clear();
 	}
 
@@ -1474,7 +1474,7 @@ private:
 			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first) && !u->second.incapacitated() && !invisible) {
 				const unit_movement_resetter move_reset(u->second);
 				const bool teleports = u->second.get_ability_bool("teleport",u->first);
-				const paths& path = paths(map_,status_,gameinfo_,units_,
+				const paths& path = paths(map_,units_,
 										  u->first,teams_,false,teleports,teams_[gui_->viewing_team()], 0,false, ignore_units);
 
 				gui_->highlight_another_reach(path);
@@ -1728,7 +1728,7 @@ private:
 		assert(route.steps.front() == ui->first);
 
 		gui_->set_route(&route);
-		move_unit(gui_,gameinfo_,status_,map_,units_,teams_,route.steps,&recorder,&undo_stack_,NULL,continue_move);
+		move_unit(gui_,map_,units_,teams_,route.steps,&recorder,&undo_stack_,NULL,continue_move);
 		gui_->invalidate_game_status();
 	}
 
@@ -2308,7 +2308,7 @@ private:
 			gui_->invalidate_unit();
 		} else if(game_config::debug && cmd == "fog") {
 			teams_[team_num - 1].set_fog( !teams_[team_num - 1].uses_fog() );
-			recalculate_fog(map_,status_,gameinfo_,units_,teams_, team_num - 1);
+			recalculate_fog(map_,units_,teams_, team_num - 1);
 			gui_->redraw_everything();
 		} else if(game_config::debug && cmd == "shroud") {
 			teams_[team_num - 1].set_shroud( !teams_[team_num - 1].uses_shroud() );

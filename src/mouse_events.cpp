@@ -862,7 +862,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				unit_movement_resetter move_reset(un->second);
 
 				const bool teleport = un->second.get_ability_bool("teleport",un->first);
-				current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
+				current_paths_ = paths(map_,units_,new_hex,teams_,
 									false,teleport,viewing_team(),path_turns_);
 				gui_->highlight_reach(current_paths_);
 				enemy_paths_ = true;
@@ -1151,7 +1151,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 				{
 					if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
 						//check if some new part of map discovered or is active delay shroud updates, which need special care
-						if (clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
+						if (clear_shroud(*gui_, map_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
 							clear_undo_stack();
 							gui_->invalidate_all();
 							gui_->draw();
@@ -1173,7 +1173,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			}
 		}
 
-		if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
+		if(check_shroud && clear_shroud(*gui_, map_, units_, teams_, team_num_ - 1)) {
 			clear_undo_stack();
 			gui_->invalidate_all();
 			gui_->draw();
@@ -1209,7 +1209,7 @@ void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) 
 		// if it's not the unit's turn, we reset its moves
 		unit_movement_resetter move_reset(u->second, u->second.side() != team_num_);
 		const bool teleport = u->second.get_ability_bool("teleport",u->first);
-		current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
+		current_paths_ = paths(map_,units_,hex,teams_,
 						   false,teleport,viewing_team(),path_turns_);
 		show_attack_options(u);
 		gui_->highlight_reach(current_paths_);
@@ -1240,7 +1240,7 @@ void mouse_handler::deselect_hex() {
 void mouse_handler::clear_undo_stack()
 {
 	if(teams_[team_num_ - 1].auto_shroud_updates() == false)
-		apply_shroud_changes(undo_stack_,gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+		apply_shroud_changes(undo_stack_,gui_,map_,units_,teams_,team_num_-1);
 	undo_stack_.clear();
 }
 
@@ -1263,7 +1263,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	current_route_.steps.clear();
 
 	attackmove_ = attackmove;
-	const size_t moves = ::move_unit(gui_,gameinfo_,status_,map_,units_,teams_,
+	const size_t moves = ::move_unit(gui_,map_,units_,teams_,
 	                   steps,&recorder,&undo_stack_,&next_unit_,false,check_shroud);
 	attackmove_ = false;
 

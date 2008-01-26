@@ -1005,7 +1005,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 			const bool teleport = u->second.get_ability_bool("teleport",u->first);
 
-			paths paths_list(map,state,gameinfo,units,src,teams,false,teleport,current_team);
+			paths paths_list(map,units,src,teams,false,teleport,current_team);
 
 			std::map<gamemap::location,paths::route>::iterator rt = paths_list.routes.find(dst);
 			if(rt == paths_list.routes.end()) {
@@ -1176,7 +1176,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 		//Check if we should refresh the shroud, and redraw the minimap/map tiles.
 		//This is needed for shared vision to work properly.
-		if(fix_shroud && clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1) && !recorder.is_skipping()) {
+		if(fix_shroud && clear_shroud(disp,map,units,teams,team_num-1) && !recorder.is_skipping()) {
 			disp.recalculate_minimap();
 			disp.invalidate_game_status();
 			disp.invalidate_all();

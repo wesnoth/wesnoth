@@ -62,7 +62,7 @@ void playsingle_controller::init_gui(){
 	events::raise_draw_event();
 	gui_->draw();
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,(t-teams_.begin()));
+		::clear_shroud(*gui_,map_,units_,teams_,(t-teams_.begin()));
 	}
 }
 
@@ -689,7 +689,7 @@ void playsingle_controller::play_ai_turn(){
 	turn_data.sync_network();
 
 	gui_->recalculate_minimap();
-	::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,player_number_-1);
+	::clear_shroud(*gui_,map_,units_,teams_,player_number_-1);
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();

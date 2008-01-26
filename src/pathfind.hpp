@@ -94,8 +94,7 @@ struct paths
 	//                     If 1, paths for how far the unit can move by the end of next turn
 	//                     will be calculated, and so forth.
 	// viewing_team is usually current team, except for Show Enemy Moves etc.
-	paths(gamemap const &map, gamestatus const &status,
-	      game_data const &gamedata,
+	paths(gamemap const &map,
 	      unit_map const &units,
 	      gamemap::location const &loc, std::vector<team> const &teams,
 	      bool force_ignore_zocs,bool allow_teleport,
