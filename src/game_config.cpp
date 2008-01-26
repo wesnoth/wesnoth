@@ -40,7 +40,8 @@ namespace game_config
 	unsigned lobby_refresh = 2000;
 	const int gold_carryover_percentage = 80;
 	const bool gold_carryover_add = false;
-	const std::string version = VERSION " (" SVNREV ")";
+  	const std::string version = VERSION;
+	const std::string revision = VERSION " (" SVNREV ")";
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
 
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
