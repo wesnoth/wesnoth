@@ -748,8 +748,8 @@ void attack::fire_event(const std::string& n)
 			tempcfg->values.insert(to_insert);
 		}
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n, 
-				attacker_,
-				defender_, dat));
+				game_events::entity_location(a_),
+				game_events::entity_location(d_), dat));
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
