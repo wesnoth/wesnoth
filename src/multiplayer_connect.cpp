@@ -1479,6 +1479,7 @@ void connect::load_game()
 		level_["experience_modifier"] = start_data["experience_modifier"];
 		level_["observer"] = start_data["observer"];
 		level_.add_child("snapshot") = start_data;
+		level_["era_id"] = start_data["era_id"];
 		level_["random_seed"] = start_data["random_seed"];
 		level_["random_calls"] = start_data["random_calls"];
 
@@ -1521,7 +1522,16 @@ void connect::load_game()
 	// Add the map name to the title.
 	append_to_title(" - " + level_["name"]);
 
-	const std::string& era = params_.era;
+	
+	std::string era;
+	if (params_.saved_game)
+	{
+		era = level_["era_id"];
+	}
+	else
+	{
+		era = params_.era;
+	}
 
 	// Initialize the list of sides available for the current era.
 	const config* const era_cfg = game_config().find_child("era", "id", era);

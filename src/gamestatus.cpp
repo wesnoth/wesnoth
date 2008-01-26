@@ -458,6 +458,13 @@ game_state::game_state(const game_data& data, const config& cfg) :
 
 	const config* snapshot = cfg.child("snapshot");
 
+	// We have to load era id for MP games so they can load correct era.
+	
+	if (cfg.child("replay_start") && cfg.child("replay_start")->child("era"))
+	{
+		(*const_cast<config*>(snapshot))["era_id"] = cfg.child("replay_start")->child("era")->get_attribute("id");
+	}
+
 	if (snapshot != NULL && !snapshot->empty()) {
 
 		this->snapshot = *snapshot;
