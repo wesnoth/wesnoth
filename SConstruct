@@ -42,9 +42,12 @@ opts.Add(PathOption('icondir', 'sets the icons directory to a non-default locati
 opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
 #
-# Check some preconditions
+# Setup
 #
-env = Environment(options = opts)
+
+# FIXME: will need some elaboration under Windows
+env = Environment(tools=['gcc'], options = opts)
+env.Default("game")
 
 Help("""\
 Available build targets include: game editor server campaign-server tools.
@@ -61,48 +64,47 @@ envdict = env.Dictionary()
 if not "/" in envdict["datadir"]:
     env["datadir"] = os.path.join(envdict["prefix"], envdict["datadir"])
 
-# Check the C++ compiler and version
-(status, gcc_version) = commands.getstatusoutput("g++ --version")
-if status:
-    print "GCC is not installed", status
-    sys.exit(1)
+#
+# Check some preconditions
+#
+
+cc_version = env["CCVERSION"]
+
+debug = ARGUMENTS.get('debug', 'no')
+if debug == "yes":
+    env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
 else:
-    gcc_version = gcc_version.split()[2]
+    env["CXXFLAGS"] = Split("-O2 -W -Wall -ansi")
 
-    debug = ARGUMENTS.get('debug', 'no')
-    if debug == "yes":
-        env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
-    else:
-        env["CXXFLAGS"] = Split("-O2 -W -Wall -ansi")
+if env['tinygui']:
+    env["CXXFLAGS"].append(" -DUSE_TINY_GUI")
 
-    if env['tinygui']:
-        env["CXXFLAGS"].append(" -DUSE_TINY_GUI")
+if env['lowmem']:
+    env["CXXFLAGS"].append("-DLOW_MEM")
 
-    if env['lowmem']:
-        env["CXXFLAGS"].append("-DLOW_MEM")
+if env['raw_sockets']:
+    env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
 
-    if env['raw_sockets']:
-        env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
-
-    print "GCC version %s, flags %s" % (gcc_version, " ".join(env["CXXFLAGS"]))
-    (major, minor, rev) = map(int, gcc_version.split("."))
+print "%s version %s, flags %s" % (env["CC"], cc_version, " ".join(env["CXXFLAGS"]))
+if env["CC"] == "gcc":
+    (major, minor, rev) = map(int, cc_version.split("."))
     if major*10+minor < 33:
-        print "Your GCC version is too old"
-        sys.exit(1)
+        print "Your compiler version is too old"
+        Exit(1)
 
-env = conf.Finish()
+targets = map(str, BUILD_TARGETS)
 
-test_build = "svn" in version
-
-#
-# Declare a default target and deduce from it
-#
-
-env.Default("game")
+if not ("game" in targets or "editor" in targets) and conf.CheckLib('X11'):
+    print 'Needed X libs for game or editor and did not find them exiting!'
+    Exit(1)
 
 if "game" not in map(str, BUILD_TARGETS):
     print "*** Game build disabled, suppressing Python support."
     env["python"] = False
+
+env = conf.Finish()
+
+test_build = "svn" in version
 
 #
 # Generate the config file
@@ -177,21 +179,6 @@ def wesconfig_build(target, source, env):
 wesconfig_builder = Builder(action = wesconfig_build)
 env.Append(BUILDERS = {'Wesconfig' : wesconfig_builder})
 env.Wesconfig("src/wesconfig.h", "SConstruct")
-
-env.Program("wesnoth_editor", [
-	"src/editor/editor.cpp",
-	"src/editor/editor_layout.cpp",
-	"src/editor/map_manip.cpp",
-	"src/editor/editor_display.cpp",
-	"src/editor/editor_palettes.cpp",
-	"src/editor/editor_main.cpp",
-	"src/editor/editor_dialogs.cpp",
-	"src/editor/editor_undo.cpp",
-	"src/animated_editor.cpp",
-	"src/gamestatus_editor.cpp",
-	"src/generic_event.cpp",
-	"src/tooltips.cp",
-])
 
 # Build tests to crib from:
 # http://silvertree.googlecode.com/svn/trunk/{SConstruct,scons/}
