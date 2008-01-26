@@ -252,6 +252,7 @@ public:
 	std::vector<std::string> ability_tooltips(const gamemap::location& loc) const;
 	std::vector<std::string> unit_ability_tooltips() const;
 	bool has_ability_type(const std::string& ability) const;
+	bool abilities_affects_adjacent() const;
 
 	void reset_modifications();
 	void backup_state();

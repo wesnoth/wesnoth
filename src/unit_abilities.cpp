@@ -195,6 +195,14 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 	return res;
 }
 
+bool unit::abilities_affects_adjacent() const
+{
+	if (cfg_.child("abilities")
+		&& cfg_.child("abilities")->child("affects_adjacent"))
+		return true;
+	return false;
+}
+
 std::vector<std::string> unit::unit_ability_tooltips() const
 {
 	std::vector<std::string> res;

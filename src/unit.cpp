@@ -1918,6 +1918,15 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 		}
 	}
 
+	if (abilities_affects_adjacent())
+	{
+		gamemap::location arr[6];
+		get_adjacent_tiles(loc, arr);
+		for (unsigned int i = 0; i < 6; i++) {
+			over.insert(arr[i]);
+		}
+	}
+
 	return over;
 }
 
