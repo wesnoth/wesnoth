@@ -592,6 +592,11 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 //! @todo FIXME enable after 1.3.2 and find out why this happens -- Mordante
 //		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
 		hp = 0;
+	} else if(u.hitpoints() > u.max_hitpoints()) {
+		// If a unit has more hp as it's maximum the engine will fail
+		// with an assertion failure due to accessing the prob_matrix
+		// out of bounds.
+		hp = u.max_hitpoints();
 	} else {
 		hp = u.hitpoints();
 	}

@@ -46,6 +46,8 @@ Version 1.3.14+svn:
    * fixed unchecked vector access
    * make sure the python campaign client list shows a space between the 
      headers if the size of the column is smaller than the header (eg uploads)
+   * make sure a unit with more hitpoints than its maximum doesn't terminate
+     the game with an assertion error (bug #10876)
 
 Version 1.3.14:
  * campaigns:
