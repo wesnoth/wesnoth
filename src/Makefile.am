@@ -432,10 +432,8 @@ libwesnoth_a_SOURCES = \
 	wml_exception.cpp 
 
 # Should be touched each time the SVN revision number goes up 
-SVNREV = $(shell svnversion -n $(topdir) 2>/dev/null || unknown)
-revision_stamp revision_stamp.hpp: FORCE
-	if [ ! -f revision_stamp.hpp -o x"$(SVNREV)" != x`cat revision_stamp 2>/dev/null` ]; then echo -n $(SVNREV) >revision_stamp; echo "#define SVNREV \"$(SVNREV)\"" >revision_stamp.hpp; fi
-	
+revision_stamp.hpp: FORCE
+	echo "#define SVNREV \"$(shell svnversion -n $(topdir) 2>/dev/null || unknown)\"" >revision_stamp.hpp
 
 FORCE:
 
