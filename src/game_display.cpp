@@ -1221,7 +1221,8 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 			message_colour = speaker_colour;
 			message_str << " ";
 		} else {
-			str << "<" << speaker << ">";
+			if (!speaker.empty())
+				str << "<" << speaker << ">";
 			message_str << msg;
 		}
 	} else {
@@ -1230,7 +1231,8 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 			message_colour = speaker_colour;
 			message_str << " ";
 		} else {
-			str << "*" << speaker << "*";
+			if (!speaker.empty())
+				str << "*" << speaker << "*";
 			message_str << msg;
 		}
 	}
