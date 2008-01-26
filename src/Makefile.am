@@ -351,7 +351,8 @@ noinst_HEADERS = \
 	wml_separators.hpp \
 	sdl_ttf/SDL_ttf.h \
 	wesconfig.h \
-	wml_exception.hpp
+	wml_exception.hpp \
+	revision_stamp.hpp
 
 #############################################################################
 #    Headers
