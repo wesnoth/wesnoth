@@ -491,7 +491,9 @@ endif
 
 CXXLD = $(LDPREFIX) $(CXX)
 CXXFLAGS += $(BOOST_CPPFLAGS)
-
+if SERVER_MONITOR
+    CXXFLAGS += -DSERVER_MONITOR
+endif
 
 if STATIC
 LDFLAGS += -all-static

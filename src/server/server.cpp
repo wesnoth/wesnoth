@@ -31,6 +31,7 @@
 #include "metrics.hpp"
 #include "player.hpp"
 #include "proxy.hpp"
+#include "monitor.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -147,6 +148,7 @@ private:
 	void process_data_lobby(const network::connection sock, const config& data);
 	void process_data_game(const network::connection sock, const config& data);
 	void delete_game(std::vector<game>::iterator game_it);
+	nserver::server_monitor monitor;
 };
 
 server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads)
