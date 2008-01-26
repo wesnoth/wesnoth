@@ -8,6 +8,9 @@ def pos(location):
     """Just a helper function for printing positions in debug messages."""
     return "(%d, %d)" % (1 + location.x, 1 + location.y)
 
+def debug(string):
+    pass
+
 class AI:
     """A class representing our AI."""
 
@@ -154,8 +157,8 @@ class AI:
 
                     heapq.heappush(attacks, (-score, unit, tile, enemy))
                     #print own_hp, enemy_hp
-                    print "Score for %s at %s: %s<->%s: %f [%s]" % (u.name, pos(unit), pos(tile),
-                            pos(enemy), score, e.name)
+                    debug("Score for %s at %s: %s<->%s: %f [%s]" % (u.name,
+                        pos(unit), pos(tile), pos(enemy), score, e.name))
 
         # Now assign units to enemies, and move and attack.
         while attacks:
@@ -249,8 +252,8 @@ class AI:
             aggression /= n
             resistance /= n
 
-            print "%s: speed: %f, defense: %f, aggression: %f, resistance: %f" % (
-                recruit.name, speed, defense, aggression, resistance)
+            debug("%s: speed: %f, defense: %f, aggression: %f, resistance: %f" %
+                (recruit.name, speed, defense, aggression, resistance)
 
             recruits_list.append((recruit, speed, defense, aggression, resistance))
 
@@ -277,7 +280,7 @@ class AI:
                     r = random.uniform(0, total_v)
                     while 1:
                         v, recruit = heapq.heappop(heap)
-                        print r, v
+                        debug("%d %d" % % (r, v))
                         r += v
                         if r <= 0: break
 
