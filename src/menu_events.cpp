@@ -1490,8 +1490,10 @@ private:
 	bool menu_handler::end_turn(const unsigned int team_num)
 	{
 		bool unmoved_units = false, partmoved_units = false, some_units_have_moved = false;
+		int units_alive = 0;
 		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
 			if(un->second.side() == team_num) {
+				units_alive++;
 				if(unit_can_move(un->first,units_,map_,teams_)) {
 					if(!un->second.has_moved()) {
 						unmoved_units = true;
@@ -1506,7 +1508,7 @@ private:
 		}
 
 		//Ask for confirmation if the player hasn't made any moves (other than gotos).
-		if(preferences::confirm_no_moves() && ! some_units_have_moved) {
+		if(preferences::confirm_no_moves() && units_alive && !some_units_have_moved) {
 			const int res = gui::dialog(*gui_,"",_("You have not started your turn yet. Do you really want to end your turn?"), gui::YES_NO).show();
 			if(res != 0) {
 				return false;
