@@ -127,6 +127,7 @@ private:
 	bool over_route_;
 	bool attackmove_;
 	bool reachmap_invalid_;
+	bool show_partial_move_;
 
 	static mouse_handler * singleton_;
 };

@@ -704,6 +704,7 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 	team_num_ = 1;
 	attackmove_ = false;
 	reachmap_invalid_ = false;
+	show_partial_move_ = false;
 }
 mouse_handler::~mouse_handler()
 {
@@ -784,7 +785,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 	if (update) {
 		if (reachmap_invalid_) {
 			reachmap_invalid_ = false;
-			if (!current_paths_.routes.empty()) {
+			if (!current_paths_.routes.empty() && !show_partial_move_) {
 				unit_map::iterator u = find_unit(selected_hex_);
 				if(selected_hex_.valid() && u != units_.end() ) {
 					// reselect the unit without firing events (updates current_paths_)
@@ -1223,6 +1224,7 @@ void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) 
 	gui_->select_hex(hex);
 	gui_->clear_attack_indicator();
 	gui_->set_route(NULL);
+	show_partial_move_ = false;
 
 	unit_map::iterator u = find_unit(hex);
 	if(hex.valid() && u != units_.end() ) {
@@ -1310,6 +1312,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 				// reselect the unit (for "press t to continue")
 				select_hex(dst, false);
 				// the new discovery is more important than the new movement range
+				show_partial_move_ = true;
 				gui_->unhighlight_reach();
 			}
 		}
