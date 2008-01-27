@@ -18,7 +18,6 @@ class config;
 
 #include "color_range.hpp"
 #include "tstring.hpp"
-#include "revision_stamp.hpp"
 
 #include <string>
 #include <vector>
@@ -35,7 +34,7 @@ namespace game_config
 	extern int kill_experience;
 	extern unsigned lobby_refresh;
 	extern const std::string version;
-	extern std::string svnrev;
+	extern const std::string svnrev;
 
 	//! Default percentage gold carried over to the next scenario.
 	extern const int gold_carryover_percentage;
