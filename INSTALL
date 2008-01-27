@@ -60,6 +60,11 @@ with gcc 4.
 If you want to build wesnoth_editor too add the --enable-editor
 configure option.
 
+The --enable-display-revision option enables code that shows the SVN
+revision number on the main screen -- useful for detecting old builds
+you might happen to have in your path, but probably not what you want
+in a production release.
+
 If you see lots of messages like "Type 'svnversion --help' for usage.",
 you have a Subversion client installed but it is not implementing the 
 -n option of svnversion. Time to update it.

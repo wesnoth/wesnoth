@@ -47,7 +47,10 @@ namespace {
 
 int main(int argc, char** argv)
 {
-	std::cerr << "Battle for Wesnoth Map Editor v" << game_config::revision << '\n';
+	const std::string rev = game_config::svnrev.empty() ? "" :
+		" (" + game_config::svnrev + ")";
+
+	std::cerr << "Battle for Wesnoth Map Editor v" << VERSION << rev << '\n';
 	time_t t = time(NULL);
 	std::cerr << "Started on " << ctime(&t) << "\n";
 
@@ -83,7 +86,10 @@ int main(int argc, char** argv)
 			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth "
-				  << game_config::revision
+				  << game_config::version
+#if defined(SVNREV) && defined(DO_DISPLAY_REVISION)
+				  << " (" << game_config::svnrev << ")"
+#endif /* defined(SVNREV) and defined(DO_DISPLAY_REVISION) */
 			          << "\n";
 			return 0;
 		} else if(val == "--path") {
@@ -296,7 +302,9 @@ int main(int argc, char** argv)
 
 	// Set the caption of the window
 	wm_title_string = _("Battle for Wesnoth Map Editor");
-	wm_title_string += " - " + game_config::revision;
+	wm_title_string += " - " + game_config::version
+			+ (game_config::svnrev.empty() ? "" :
+			" (" + game_config::svnrev + ")");
 	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 
 	//Read the configuration af

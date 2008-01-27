@@ -1,3 +1,9 @@
+if USESVN
+SVNREV = $(shell svnversion -n $(topdir) 2>/dev/null)
+CFLAGS += "-DSVNREV=\"$(SVNREV)\""
+CXXFLAGS += "-DSVNREV=\"$(SVNREV)\""
+endif
+
 AUTOMAKE_OPTIONS = subdir-objects
 
 bin_PROGRAMS =
@@ -351,8 +357,7 @@ noinst_HEADERS = \
 	wml_separators.hpp \
 	sdl_ttf/SDL_ttf.h \
 	wesconfig.h \
-	wml_exception.hpp \
-	revision_stamp.hpp
+	wml_exception.hpp
 
 BUILT_SOURCES = revision_stamp.hpp
 
@@ -433,11 +438,18 @@ libwesnoth_a_SOURCES = \
 	sdl_ttf/SDL_ttf.c \
 	wml_exception.cpp 
 
+if USESVN
+# Until game_config.cpp is removed, this will be needed to ensure that the
+# SVNVER constant gets updated correctly.  If and when that definition is
+# moved elsewhere, this dependency must follow it.
+game_config.o: revision-stamp 
+
 # Should be touched each time the SVN revision number goes up 
-revision_stamp.hpp: FORCE
-	echo "#define SVNREV \"$(shell svnversion -n $(topdir) 2>/dev/null)\"" >revision_stamp.hpp
+revision-stamp: FORCE
+	if [ x"$(SVNREV)" != x`cat revision-stamp 2>/dev/null` ]; then echo -n $(SVNREV) >revision-stamp; fi
 
 FORCE:
+endif
 
 AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"\
