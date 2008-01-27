@@ -22,6 +22,7 @@
 #include "game.hpp"
 #include "player.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <cassert>
 #include <sstream>
