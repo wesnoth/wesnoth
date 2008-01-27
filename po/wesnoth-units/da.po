@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-01-13 13:01+0100\n"
+"POT-Creation-Date: 2008-01-27 13:24+0100\n"
 "PO-Revision-Date: 2008-01-13 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Blood Bat"
 msgstr "Blodflagermus"
 
-#: data/core/units/bats/Bat_Blood.cfg:19
+#: data/core/units/bats/Bat_Blood.cfg:20
 msgid ""
 "Blood Bats are so-named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
@@ -34,14 +34,14 @@ msgstr ""
 "og kan suge blodet ud af deres ofre, og dermed få genskabt liv der svarer "
 "til noget af det de hiver ud af deres ofre."
 
-#: data/core/units/bats/Bat_Blood.cfg:53
-#: data/core/units/bats/Bat_Vampire.cfg:64
-#: data/core/units/monsters/Wolf.cfg:49
-#: data/core/units/monsters/Cave_Spider.cfg:34
-#: data/core/units/monsters/Sea_Serpent.cfg:26
+#: data/core/units/bats/Bat_Vampire.cfg:243
+#: data/core/units/bats/Bat_Blood.cfg:244
+#: data/core/units/goblins/Direwolf_Rider.cfg:33
 #: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/monsters/Sea_Serpent.cfg:26
+#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/monsters/Cave_Spider.cfg:34
 msgid "fangs"
 msgstr "hugtænder"
 
@@ -49,7 +49,7 @@ msgstr "hugtænder"
 msgid "Vampire Bat"
 msgstr "Vampyrflagermus"
 
-#: data/core/units/bats/Bat_Vampire.cfg:18
+#: data/core/units/bats/Bat_Vampire.cfg:19
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -128,30 +128,29 @@ msgstr ""
 "Skabningerne der går under navnet dommedagshestedrager er giganter som både "
 "er immune over for ild og selv har en enorm ild."
 
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/gryphons/Gryphon_Rider.cfg:29
-#: data/core/units/gryphons/Gryphon_Master.cfg:29
-#: data/core/units/gryphons/Gryphon.cfg:28 data/core/units/drakes/Fire.cfg:70
-#: data/core/units/drakes/Burner.cfg:63
-#: data/core/units/drakes/Armageddon.cfg:83
-#: data/core/units/drakes/Inferno.cfg:71
 #: data/core/units/goblins/Direwolf_Rider.cfg:42
-#: data/core/units/undead/Corpse_Necrophage.cfg:28
+#: data/core/units/drakes/Burner.cfg:63 data/core/units/drakes/Inferno.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:83 data/core/units/drakes/Fire.cfg:70
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/gryphons/Gryphon_Master.cfg:29
+#: data/core/units/gryphons/Gryphon_Rider.cfg:29
+#: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:53
 #: data/core/units/undead/Spirit_Shadow.cfg:27
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
 msgid "claws"
 msgstr "kløer"
 
-#: data/core/units/monsters/Fire_Dragon.cfg:46
-#: data/core/units/drakes/Flare.cfg:91 data/core/units/drakes/Fire.cfg:79
-#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
 #: data/core/units/drakes/Glider.cfg:84
-#: data/core/units/drakes/Armageddon.cfg:92
-#: data/core/units/drakes/Flameheart.cfg:87
-#: data/core/units/drakes/Hurricane.cfg:101 data/core/units/drakes/Sky.cfg:100
 #: data/core/units/drakes/Blademaster.cfg:77
-#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Flameheart.cfg:87
+#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Sky.cfg:100 data/core/units/drakes/Warrior.cfg:81
+#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Flare.cfg:91
+#: data/core/units/drakes/Armageddon.cfg:92 data/core/units/drakes/Fire.cfg:79
+#: data/core/units/drakes/Hurricane.cfg:101
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "ildånde"
 
@@ -169,37 +168,36 @@ msgstr ""
 "efter, at de har afgivet en ed. Markeringen af dette er en sort og hvid "
 "krigmaling som vises i kamp."
 
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
-#: data/core/units/elves/Avenger.cfg:60 data/core/units/elves/Marksman.cfg:52
-#: data/core/units/elves/Scout.cfg:33 data/core/units/elves/Marshal.cfg:33
-#: data/core/units/elves/Ranger.cfg:57 data/core/units/elves/Outrider.cfg:32
-#: data/core/units/elves/Archer.cfg:24 data/core/units/elves/Captain.cfg:34
-#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Lord.cfg:23
-#: data/core/units/elves/High_Lord.cfg:60 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Fighter.cfg:23
-#: data/core/units/elves/Sharpshooter.cfg:46
-#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:82
-#: data/core/units/drakes/Enforcer.cfg:67
-#: data/core/units/drakes/Warrior.cfg:72
-#: data/core/units/drakes/Gladiator.cfg:66
-#: data/core/units/drakes/Flameheart.cfg:78
+#: data/core/units/orcs/Leader.cfg:34 data/core/units/orcs/Grunt.cfg:59
+#: data/core/units/nagas/Fighter.cfg:25 data/core/units/nagas/Warrior.cfg:28
+#: data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/drakes/Blademaster.cfg:68
-#: data/core/units/drakes/Clasher.cfg:77
-#: data/core/units/humans/Woodsman_Ranger.cfg:40
+#: data/core/units/drakes/Enforcer.cfg:67
+#: data/core/units/drakes/Flameheart.cfg:78
+#: data/core/units/drakes/Clasher.cfg:77 data/core/units/drakes/Warrior.cfg:72
+#: data/core/units/drakes/Flare.cfg:82 data/core/units/drakes/Gladiator.cfg:66
+#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Rider.cfg:34
+#: data/core/units/elves/Captain.cfg:35 data/core/units/elves/Lord.cfg:23
+#: data/core/units/elves/Sharpshooter.cfg:47
+#: data/core/units/elves/Champion.cfg:24 data/core/units/elves/Fighter.cfg:24
+#: data/core/units/elves/Archer.cfg:25 data/core/units/elves/Marshal.cfg:34
+#: data/core/units/elves/Ranger.cfg:58 data/core/units/elves/Avenger.cfg:61
+#: data/core/units/elves/Marksman.cfg:53 data/core/units/elves/Scout.cfg:33
+#: data/core/units/elves/Hero.cfg:23 data/core/units/elves/High_Lord.cfg:60
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
+#: data/core/units/humans/Loyalist_Sergeant.cfg:34
+#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:27
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:33
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_Swordsman.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:26
 #: data/core/units/humans/Loyalist_General.cfg:43
-#: data/core/units/humans/Loyalist_Sergeant.cfg:34
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:27
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Swordsman.cfg:27
+#: data/core/units/humans/Woodsman_Ranger.cfg:40
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:33
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
-#: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:39
 msgid "sword"
 msgstr "sværd"
@@ -255,34 +253,34 @@ msgstr ""
 "den udrustede soldat ofte ikke de normale svage sider hos hestedragerne, "
 "såsom den kraftige ulempe over for spyd og pile."
 
+#: data/core/units/saurians/Ambusher.cfg:27
+#: data/core/units/saurians/Ambusher.cfg:36
 #: data/core/units/saurians/Skirmisher.cfg:121
 #: data/core/units/saurians/Skirmisher.cfg:130
 #: data/core/units/saurians/Flanker.cfg:28
 #: data/core/units/saurians/Flanker.cfg:37
-#: data/core/units/saurians/Ambusher.cfg:27
-#: data/core/units/saurians/Ambusher.cfg:36
-#: data/core/units/dwarves/Stalwart.cfg:34
-#: data/core/units/dwarves/Guardsman.cfg:31
-#: data/core/units/dwarves/Sentinel.cfg:39
-#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
-#: data/core/units/merfolk/Netcaster.cfg:23
-#: data/core/units/merfolk/Entangler.cfg:24
-#: data/core/units/merfolk/Spearman.cfg:23
-#: data/core/units/merfolk/Spearman.cfg:31
-#: data/core/units/merfolk/Javelineer.cfg:24
-#: data/core/units/merfolk/Javelineer.cfg:32
-#: data/core/units/drakes/Enforcer.cfg:85
-#: data/core/units/drakes/Gladiator.cfg:75
-#: data/core/units/drakes/Clasher.cfg:86
-#: data/core/units/humans/Horseman.cfg:24
-#: data/core/units/humans/Loyalist_Javelineer.cfg:28
-#: data/core/units/humans/Loyalist_Spearman.cfg:62
+#: data/core/units/goblins/Impaler.cfg:24
+#: data/core/units/goblins/Impaler.cfg:36
 #: data/core/units/goblins/Rouser.cfg:41
 #: data/core/units/goblins/Spearman.cfg:25
 #: data/core/units/goblins/Spearman.cfg:35
-#: data/core/units/goblins/Impaler.cfg:24
-#: data/core/units/goblins/Impaler.cfg:36
+#: data/core/units/drakes/Enforcer.cfg:85
+#: data/core/units/drakes/Clasher.cfg:86
+#: data/core/units/drakes/Gladiator.cfg:75
+#: data/core/units/humans/Horseman.cfg:24
+#: data/core/units/humans/Loyalist_Spearman.cfg:62
+#: data/core/units/humans/Loyalist_Javelineer.cfg:28
+#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
+#: data/core/units/merfolk/Netcaster.cfg:23
+#: data/core/units/merfolk/Javelineer.cfg:24
+#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/merfolk/Entangler.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:23
+#: data/core/units/merfolk/Spearman.cfg:31
 #: data/core/units/undead/Skele_Chocobone.cfg:25
+#: data/core/units/dwarves/Sentinel.cfg:39
+#: data/core/units/dwarves/Guardsman.cfg:31
+#: data/core/units/dwarves/Stalwart.cfg:34
 msgid "spear"
 msgstr "spyd"
 
@@ -302,12 +300,12 @@ msgstr ""
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
 msgstr "morgenstjerne"
 
@@ -420,8 +418,8 @@ msgstr ""
 "sådan et dække."
 
 # konteks ikke afklaret (andre muligheder = smæld, brag, smadre, smække)
-#: data/core/units/drakes/Glider.cfg:75
-#: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
+#: data/core/units/drakes/Glider.cfg:75 data/core/units/drakes/Sky.cfg:91
+#: data/core/units/drakes/Hurricane.cfg:92
 msgid "slam"
 msgstr "hamre"
 
@@ -547,8 +545,8 @@ msgstr ""
 "et fuldstændig raseri før de går i kamp. Disse krigere glemmer alt om "
 "forsvar og tænker kun på at angribe, hvilket har gjort dem legendariske."
 
-#: data/core/units/dwarves/Berserker.cfg:31
 #: data/core/units/dwarves/Ulfserker.cfg:31
+#: data/core/units/dwarves/Berserker.cfg:31
 msgid "berserker frenzy"
 msgstr "bersærkerrus"
 
@@ -576,20 +574,20 @@ msgstr ""
 "både kendt og frygtet; våben som har knust selv den mægtigste kriger i et "
 "enkelte slag."
 
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:70
-#: data/core/units/orcs/Slayer.cfg:27
-#: data/core/units/dwarves/Dragonguard.cfg:25
-#: data/core/units/dwarves/Thunderer.cfg:41
-#: data/core/units/dwarves/Thunderguard.cfg:25
-#: data/core/units/humans/Outlaw_Assassin.cfg:28
-#: data/core/units/humans/Outlaw_Rogue.cfg:27
+#: data/core/units/orcs/Assassin.cfg:70 data/core/units/orcs/Slayer.cfg:27
+#: data/core/units/orcs/Archer.cfg:71
 #: data/core/units/humans/Woodsman_Trapper.cfg:70
-#: data/core/units/humans/Outlaw_Thief.cfg:176
-#: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Woodsman_Huntsman.cfg:36
 #: data/core/units/humans/Woodsman_Poacher.cfg:36
-#: data/core/units/undead/Skele_Banebow.cfg:30
+#: data/core/units/humans/Outlaw_Assassin.cfg:28
+#: data/core/units/humans/Outlaw_Thief.cfg:176
+#: data/core/units/humans/Woodsman_Huntsman.cfg:36
+#: data/core/units/humans/Woodsman.cfg:28
+#: data/core/units/humans/Outlaw_Rogue.cfg:27
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
+#: data/core/units/undead/Skele_Banebow.cfg:30
+#: data/core/units/dwarves/Dragonguard.cfg:25
+#: data/core/units/dwarves/Thunderguard.cfg:25
+#: data/core/units/dwarves/Thunderer.cfg:41
 msgid "dagger"
 msgstr "daggert"
 
@@ -613,17 +611,17 @@ msgstr ""
 "under jorden. Selvom de ikke er hurtige, så mere end kompenserer deres kraft "
 "og udholdenhed for dette."
 
-#: data/core/units/dwarves/Fighter.cfg:35
-#: data/core/units/undead/Skele_Deathblade.cfg:42
-#: data/core/units/undead/Skele_Revenant.cfg:29
 #: data/core/units/undead/Skeleton.cfg:106
+#: data/core/units/undead/Skele_Revenant.cfg:29
 #: data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/undead/Skele_Deathblade.cfg:42
+#: data/core/units/dwarves/Fighter.cfg:35
 msgid "axe"
 msgstr "økse"
 
+#: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 #: data/core/units/dwarves/Steelclad.cfg:38
 #: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
-#: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
 msgstr "hammer"
 
@@ -645,11 +643,11 @@ msgstr ""
 "indgå i de store slag med dem som ønsker at bryde linjen. Når linjen rykkes "
 "fremad fungerer de som sikring af det hårdt vundet land."
 
-#: data/core/units/dwarves/Stalwart.cfg:43
-#: data/core/units/dwarves/Guardsman.cfg:40
-#: data/core/units/dwarves/Sentinel.cfg:48
-#: data/core/units/humans/Loyalist_Javelineer.cfg:39
 #: data/core/units/humans/Loyalist_Spearman.cfg:74
+#: data/core/units/humans/Loyalist_Javelineer.cfg:39
+#: data/core/units/dwarves/Sentinel.cfg:48
+#: data/core/units/dwarves/Guardsman.cfg:40
+#: data/core/units/dwarves/Stalwart.cfg:43
 msgid "javelin"
 msgstr "kastespyd"
 
@@ -669,9 +667,9 @@ msgstr ""
 "kasteøkse i høj hastighed. Selvom langsomme på fødderne, er disse dværge et "
 "symbol på evnerne hos dværgene."
 
+#: data/core/units/undead/Skele_Death_Knight.cfg:46
 #: data/core/units/dwarves/Steelclad.cfg:29
 #: data/core/units/dwarves/Lord.cfg:30
-#: data/core/units/undead/Skele_Death_Knight.cfg:50
 msgid "battle axe"
 msgstr "kampøkse"
 
@@ -768,8 +766,8 @@ msgstr ""
 "var heldige, at de ikke længere kæmpede imod dværgene, og de sværgede aldrig "
 "at ville gøre det igen."
 
-#: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
+#: data/core/units/dwarves/Thunderer.cfg:50
 msgid "thunderstick"
 msgstr "tordenpind"
 
@@ -821,7 +819,7 @@ msgstr "Elverbueskytte"
 
 # engelsk fejl?
 # can best skal vel være beat  måske nej. best kan også betyde besejre.
-#: data/core/units/elves/Archer.cfg:20
+#: data/core/units/elves/Archer.cfg:21
 msgid ""
 "Elves have always had a reputation for archery, a skill that, for many "
 "reasons, comes naturally to them. Even the frail of body can be deadly with "
@@ -837,30 +835,30 @@ msgstr ""
 "naturlige behændighed at de kan besejre enhver af menneskens grønne "
 "rekrutter."
 
-#: data/core/units/orcs/Sovereign.cfg:42 data/core/units/orcs/Archer.cfg:80
-#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:43 data/core/units/orcs/Ruler.cfg:41
-#: data/core/units/elves/Avenger.cfg:69 data/core/units/elves/Scout.cfg:42
-#: data/core/units/elves/Marshal.cfg:42 data/core/units/elves/Ranger.cfg:66
-#: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Archer.cfg:33
-#: data/core/units/elves/Captain.cfg:43 data/core/units/elves/Rider.cfg:43
-#: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Champion.cfg:32
-#: data/core/units/elves/Fighter.cfg:32
-#: data/core/units/humans/Woodsman_Trapper.cfg:79
-#: data/core/units/humans/Woodsman_Ranger.cfg:49
-#: data/core/units/humans/Loyalist_Longbowman.cfg:35
-#: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:36
-#: data/core/units/humans/Woodsman_Huntsman.cfg:45
-#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/orcs/Warlord.cfg:34 data/core/units/orcs/Archer.cfg:80
+#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Leader.cfg:43
+#: data/core/units/orcs/Ruler.cfg:41 data/core/units/orcs/Sovereign.cfg:42
+#: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Rider.cfg:43
+#: data/core/units/elves/Captain.cfg:44 data/core/units/elves/Champion.cfg:33
+#: data/core/units/elves/Fighter.cfg:33 data/core/units/elves/Archer.cfg:34
+#: data/core/units/elves/Marshal.cfg:43 data/core/units/elves/Ranger.cfg:67
+#: data/core/units/elves/Avenger.cfg:70 data/core/units/elves/Scout.cfg:42
+#: data/core/units/elves/Hero.cfg:32
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
-#: data/core/units/undead/Skeleton_Archer.cfg:40
-#: data/core/units/undead/Skele_Banebow.cfg:39
+#: data/core/units/humans/Woodsman_Trapper.cfg:79
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:36
+#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/humans/Loyalist_Longbowman.cfg:35
+#: data/core/units/humans/Woodsman_Huntsman.cfg:45
+#: data/core/units/humans/Woodsman.cfg:37
+#: data/core/units/humans/Woodsman_Ranger.cfg:49
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
+#: data/core/units/undead/Skele_Banebow.cfg:39
+#: data/core/units/undead/Skeleton_Archer.cfg:40
 msgid "bow"
 msgstr "bue"
 
-#: data/core/units/elves/Archer.cfg:167
+#: data/core/units/elves/Archer.cfg:168
 msgid "female^Elvish Archer"
 msgstr "Elverbueskytte"
 
@@ -868,7 +866,7 @@ msgstr "Elverbueskytte"
 msgid "Elvish Avenger"
 msgstr "Elverhævner"
 
-#: data/core/units/elves/Avenger.cfg:22
+#: data/core/units/elves/Avenger.cfg:23
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -886,7 +884,7 @@ msgstr ""
 "bueskytter deres dække og angriber, afskærer forsyningslinjerne og omringer "
 "fjenden i et træk."
 
-#: data/core/units/elves/Avenger.cfg:176
+#: data/core/units/elves/Avenger.cfg:177
 msgid "female^Elvish Avenger"
 msgstr "Elverhævner"
 
@@ -894,7 +892,7 @@ msgstr "Elverhævner"
 msgid "Elvish Captain"
 msgstr "Elverkaptajn"
 
-#: data/core/units/elves/Captain.cfg:25
+#: data/core/units/elves/Captain.cfg:26
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. In this they differ greatly from "
@@ -914,7 +912,7 @@ msgstr ""
 msgid "Elvish Champion"
 msgstr "Elverridder"
 
-#: data/core/units/elves/Champion.cfg:19
+#: data/core/units/elves/Champion.cfg:20
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the rather docile reputation of their race. "
@@ -947,20 +945,20 @@ msgstr ""
 "Deres væsentligste evne er i lægegerningen, og det er via denne evne at "
 "elverdruiderne er respekteret blandt deres folk."
 
-#: data/core/units/elves/Enchantress.cfg:25 data/core/units/elves/Druid.cfg:27
-#: data/core/units/elves/Shaman.cfg:29 data/core/units/elves/Sorceress.cfg:27
 #: data/core/units/saurians/Soothsayer.cfg:66
 #: data/core/units/saurians/Augur.cfg:66
-#: data/core/units/saurians/Oracle.cfg:66
-#: data/core/units/merfolk/Priestess.cfg:62
-#: data/core/units/merfolk/Enchantress.cfg:24
-#: data/core/units/merfolk/Initiate.cfg:27
-#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:50
-#: data/core/units/humans/Mage_White.cfg:117
-#: data/core/units/humans/Mage_Great.cfg:29
+#: data/core/units/saurians/Oracle.cfg:66 data/core/units/elves/Druid.cfg:27
+#: data/core/units/elves/Enchantress.cfg:25
+#: data/core/units/elves/Sorceress.cfg:27 data/core/units/elves/Shaman.cfg:29
 #: data/core/units/humans/Mage_Silver.cfg:35
-#: data/core/units/humans/Mage_Arch.cfg:28
+#: data/core/units/humans/Mage_White.cfg:117
+#: data/core/units/humans/Mage.cfg:50 data/core/units/humans/Mage_Arch.cfg:28
+#: data/core/units/humans/Mage_Great.cfg:29
 #: data/core/units/humans/Mage_Red.cfg:50
+#: data/core/units/merfolk/Enchantress.cfg:24
+#: data/core/units/merfolk/Diviner.cfg:65
+#: data/core/units/merfolk/Priestess.cfg:62
+#: data/core/units/merfolk/Initiate.cfg:27
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
 msgid "staff"
 msgstr "stav"
@@ -992,13 +990,13 @@ msgstr ""
 "funktion eller formål i samfundet."
 
 #: data/core/units/elves/Enchantress.cfg:35
-#: data/core/units/elves/Shaman.cfg:38 data/core/units/elves/Sorceress.cfg:37
+#: data/core/units/elves/Sorceress.cfg:37 data/core/units/elves/Shaman.cfg:38
 msgid "entangle"
 msgstr "indfiltre"
 
-#: data/core/units/elves/Enchantress.cfg:46 data/core/units/elves/Lord.cfg:32
-#: data/core/units/elves/High_Lord.cfg:69
-#: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Sylph.cfg:52
+#: data/core/units/elves/Enchantress.cfg:46
+#: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Lord.cfg:32
+#: data/core/units/elves/Sylph.cfg:52 data/core/units/elves/High_Lord.cfg:69
 msgid "faerie fire"
 msgstr "fe-ild"
 
@@ -1007,7 +1005,7 @@ msgstr "fe-ild"
 msgid "Elvish Fighter"
 msgstr "Elverkæmper"
 
-#: data/core/units/elves/Fighter.cfg:19
+#: data/core/units/elves/Fighter.cfg:20
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
 "and agility serve them well, as does their skillful craftsmanship. An elf "
@@ -1024,7 +1022,7 @@ msgstr ""
 msgid "Elvish Hero"
 msgstr "Elverhelt"
 
-#: data/core/units/elves/Hero.cfg:18
+#: data/core/units/elves/Hero.cfg:19
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
 "fighter into a master of combat. Those who are honored as heroes are strong "
@@ -1086,7 +1084,7 @@ msgstr ""
 msgid "Elvish Marksman"
 msgstr "Elverfinskytte"
 
-#: data/core/units/elves/Marksman.cfg:21
+#: data/core/units/elves/Marksman.cfg:22
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -1104,12 +1102,12 @@ msgstr ""
 "Denne exceptionelle evne kommer dog med en omkostning, nemlig den manglende "
 "evne med et sværd."
 
-#: data/core/units/elves/Marksman.cfg:61
-#: data/core/units/elves/Sharpshooter.cfg:55
+#: data/core/units/elves/Sharpshooter.cfg:56
+#: data/core/units/elves/Marksman.cfg:62
 msgid "longbow"
 msgstr "langbue"
 
-#: data/core/units/elves/Marksman.cfg:171
+#: data/core/units/elves/Marksman.cfg:172
 msgid "female^Elvish Marksman"
 msgstr "Elverfinskytte"
 
@@ -1117,7 +1115,7 @@ msgstr "Elverfinskytte"
 msgid "Elvish Marshal"
 msgstr "Elvermarskal"
 
-#: data/core/units/elves/Marshal.cfg:26
+#: data/core/units/elves/Marshal.cfg:27
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for such things. "
@@ -1162,7 +1160,7 @@ msgstr ""
 msgid "Elvish Ranger"
 msgstr "Elveromstrejfer"
 
-#: data/core/units/elves/Ranger.cfg:19
+#: data/core/units/elves/Ranger.cfg:20
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -1176,7 +1174,7 @@ msgstr ""
 "dem. Dette, kombineret med en stor evne i bueskytteri og sværdkamp, er meget "
 "værdifuldt i kamp."
 
-#: data/core/units/elves/Ranger.cfg:173
+#: data/core/units/elves/Ranger.cfg:174
 msgid "female^Elvish Ranger"
 msgstr "Elveromstrejfer"
 
@@ -1247,7 +1245,7 @@ msgstr ""
 msgid "Elvish Sharpshooter"
 msgstr "Elverskarpskytte"
 
-#: data/core/units/elves/Sharpshooter.cfg:20
+#: data/core/units/elves/Sharpshooter.cfg:21
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
 "air with one of his own. It is a testament to the skill of the elves that "
@@ -1259,7 +1257,7 @@ msgstr ""
 "elverne har, at en sådan historie er blevet taget alvorligt. "
 "Elverskarpskytterne har ganske enkelt gjort sig til mestre i bueskydning."
 
-#: data/core/units/elves/Sharpshooter.cfg:153
+#: data/core/units/elves/Sharpshooter.cfg:154
 msgid "female^Elvish Sharpshooter"
 msgstr "Elverskarpskytte"
 
@@ -1411,9 +1409,9 @@ msgstr ""
 msgid "torch"
 msgstr "fakkel"
 
+#: data/core/units/goblins/Pillager.cfg:43
 #: data/core/units/merfolk/Netcaster.cfg:31
 #: data/core/units/merfolk/Entangler.cfg:32
-#: data/core/units/goblins/Pillager.cfg:43
 msgid "net"
 msgstr "net"
 
@@ -1548,10 +1546,10 @@ msgstr ""
 "storrider i front for et angreb udgør et frygteligt syn for infanterienheder "
 "og er ofte nok til at bryde igennem en forsvarslinje."
 
+#: data/core/units/humans/Horse_Lancer.cfg:24
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
 #: data/core/units/humans/Horse_Paladin.cfg:49
-#: data/core/units/humans/Horse_Lancer.cfg:24
 msgid "lance"
 msgstr "lanse"
 
@@ -1623,17 +1621,19 @@ msgstr ""
 "Riddere af ædleste byrd, eventyrer har svoret deres styrke ikke til kongen "
 "eller kronen, men til et ideal; et ideal af ridderlighed, og tjeneste for "
 "det gode. De tjener i verdens hære, men deres loyalitet ligger ofte hos "
-"deres egne; hemmelige, monarkiske ordener som krydser politiske og kulturelle "
-"barrierer. Regenter er undertiden urolige over dem, for eventyrens loyalitet "
-"er kun så stærk som sin leders hæderlighed. Det har ført de mere ambitiøse "
-"indenfor det mere grå område til enten at bagvaske eller opløse disse grupper, "
-"eller mere sjældent, at skabe bevidste afledninger for at holde disse ellers "
-"pålidelige og loyale tropper i tjeneste.\n"
+"deres egne; hemmelige, monarkiske ordener som krydser politiske og "
+"kulturelle barrierer. Regenter er undertiden urolige over dem, for "
+"eventyrens loyalitet er kun så stærk som sin leders hæderlighed. Det har "
+"ført de mere ambitiøse indenfor det mere grå område til enten at bagvaske "
+"eller opløse disse grupper, eller mere sjældent, at skabe bevidste "
+"afledninger for at holde disse ellers pålidelige og loyale tropper i "
+"tjeneste.\n"
 "\n"
-"Eventyrer er normalt ikke ligeså frygtede som storriddere som leder de fleste "
-"hære, men de er førsteklasses krigere alligevel. Desuden giver deres klogskab "
-"og hellighed dem andre evner. En eventyrer er meget magtfuld i magisk kamp eller "
-"unaturlige ting, og de fleste har evner indenfor medicin og helbredelse."
+"Eventyrer er normalt ikke ligeså frygtede som storriddere som leder de "
+"fleste hære, men de er førsteklasses krigere alligevel. Desuden giver deres "
+"klogskab og hellighed dem andre evner. En eventyrer er meget magtfuld i "
+"magisk kamp eller unaturlige ting, og de fleste har evner indenfor medicin "
+"og helbredelse."
 
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
@@ -1697,15 +1697,15 @@ msgstr ""
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
-#: data/core/units/humans/Loyalist_Duelist.cfg:78
-#: data/core/units/humans/Loyalist_General.cfg:52
 #: data/core/units/humans/Loyalist_Sergeant.cfg:43
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:37
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:42
-#: data/core/units/humans/Loyalist_Cavalier.cfg:47
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:42
+#: data/core/units/humans/Loyalist_Duelist.cfg:78
+#: data/core/units/humans/Loyalist_Cavalier.cfg:47
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:37
+#: data/core/units/humans/Loyalist_General.cfg:52
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:48
-#: data/core/units/undead/Skele_Death_Knight.cfg:59
+#: data/core/units/undead/Skele_Death_Knight.cfg:55
 msgid "crossbow"
 msgstr "armbrøst"
 
@@ -1779,12 +1779,12 @@ msgstr ""
 "Erfarne fægtere medbringer en lille armbrøst som nemt kan skjules under en "
 "kappe. Langsom at lade og ofte anset som upålidelig i brug, men alligevel "
 "meget anvendeligt, og dem som bruger den og overlever i lang tid så de "
-"bliver veteraner gør det ved at gøre indrømmelser i brugen af deres våben "
-"så de er sikker på overlevelse."
+"bliver veteraner gør det ved at gøre indrømmelser i brugen af deres våben så "
+"de er sikker på overlevelse."
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
-#: data/core/units/humans/Loyalist_Fencer.cfg:124
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:28
+#: data/core/units/humans/Loyalist_Fencer.cfg:124
 msgid "sabre"
 msgstr "ryttersabel"
 
@@ -1809,13 +1809,13 @@ msgstr ""
 "Fencere tilhører en skole af ideer som anser rustningen, de fleste soldater "
 "bærer i kamp, som værende deres egen værste fjende. En rustning kan kun "
 "afbøde en slag, så gør en undvigelse at forsvareren er fuldstændig usåret. "
-"At være i stand til at undgå et offensivt angreb er en luksus som kun "
-"gives til den velholdte krop og kun til dem som træner intensivt.\n"
+"At være i stand til at undgå et offensivt angreb er en luksus som kun gives "
+"til den velholdte krop og kun til dem som træner intensivt.\n"
 "\n"
 "Udrustet alene med en daggert og en sabre, er fencere lette til fods og "
 "brugbare i mange situationer hvor tunge enheder har en ulempe. De benytter "
-"sig af dansende cirkler omkring tunge infanterienheder, så de har hele "
-"deres rustnings vægt som byrde."
+"sig af dansende cirkler omkring tunge infanterienheder, så de har hele deres "
+"rustnings vægt som byrde."
 
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
@@ -1864,8 +1864,8 @@ msgid ""
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
 "En hellebard er et besværligt og meget tungt våben at anvende, men meget "
-"magtfuldt i hænderne på en ekspert. Den er også meget mere fleksibel end "
-"et spyd, som den nedstammer fra. Våbenet har, som enhver hellebardist kan "
+"magtfuldt i hænderne på en ekspert. Den er også meget mere fleksibel end et "
+"spyd, som den nedstammer fra. Våbenet har, som enhver hellebardist kan "
 "fortælle dig, fire primære steder den kan ramme med, to mere end et spyd "
 "eller en pike; det er spidsen, klingen, spidsen i bunden af skaftet, og de "
 "indre spidser på klingen, som kan anvendes i en bevægelse tilbage mod "
@@ -1892,14 +1892,14 @@ msgid ""
 "in the weight of the metal, and the great care that must be taken of it, but "
 "in certain situations, these troops are well worth the trade-offs."
 msgstr ""
-"Tung infanteri er et usædvanligt valg når det kommer til rustning af tropper. "
-"De er meget svære at sende i krig, og er typisk kun gode i forsvaret af en by "
-"eller en borg som de er udstationeret i. Klædt fra top til tå i fuld rustning, "
-"og bevæbnet med store stridskøller. Tung infanteri ekselerer i deres udvalgte "
-"formål, nemlig nærkamp. Et par stykker af dem i midten af en linje vil forbedre "
-"styrken af linjen betydeligt. Ulempen er indlysende, både i vægten af metal, og "
-"den manglende fleksibilitet, men i enkelte situationer, er disse tropper det "
-"hele værd."
+"Tung infanteri er et usædvanligt valg når det kommer til rustning af "
+"tropper. De er meget svære at sende i krig, og er typisk kun gode i "
+"forsvaret af en by eller en borg som de er udstationeret i. Klædt fra top "
+"til tå i fuld rustning, og bevæbnet med store stridskøller. Tung infanteri "
+"ekselerer i deres udvalgte formål, nemlig nærkamp. Et par stykker af dem i "
+"midten af en linje vil forbedre styrken af linjen betydeligt. Ulempen er "
+"indlysende, både i vægten af metal, og den manglende fleksibilitet, men i "
+"enkelte situationer, er disse tropper det hele værd."
 
 # Er en person men mon ikke jernhammer kan gå alligevel?
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
@@ -1920,9 +1920,9 @@ msgid ""
 "comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
 "Jernhammere har fået deres navn af årsager som er indlysende for deres "
-"fjender. Mændene i disse rustninger er på niveau med ogretrolde i styrke, "
-"og de er de øverste i borgenes vagtkorpse, i hvilket de normalt tjener. De "
-"er dog dyre at vedligeholde og kan ikke sendes til fjerne slag uden en hel "
+"fjender. Mændene i disse rustninger er på niveau med ogretrolde i styrke, og "
+"de er de øverste i borgenes vagtkorpse, i hvilket de normalt tjener. De er "
+"dog dyre at vedligeholde og kan ikke sendes til fjerne slag uden en hel "
 "konvoj af tjenere til at understøtte dem.\n"
 "\n"
 "Selvom imponerende i nærkamp, er der mange ulemper ved at være udrustet på "
@@ -1944,13 +1944,13 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee."
 msgstr ""
-"Spydkastere udruster sig næsten altid med nogle få javeliner, til at chikanere "
-"hvis ikke dræbe fjender på afstand. Nogle bruger dem dog med stor evne og "
-"opdater de har et naturligt talent. Kastespydmænd er en værdifuld del af en "
-"hær, som er i stand til at supplere deres nærkampevner med en mulighed for at "
-"kunne angribe fjerne fjender. De kan fra afstand sende kastespyd ind blandt "
-"fjendens rækker, ofte uden at denne kan gengælde, og stadig holde stand i "
-"nærkamp."
+"Spydkastere udruster sig næsten altid med nogle få javeliner, til at "
+"chikanere hvis ikke dræbe fjender på afstand. Nogle bruger dem dog med stor "
+"evne og opdater de har et naturligt talent. Kastespydmænd er en værdifuld "
+"del af en hær, som er i stand til at supplere deres nærkampevner med en "
+"mulighed for at kunne angribe fjerne fjender. De kan fra afstand sende "
+"kastespyd ind blandt fjendens rækker, ofte uden at denne kan gengælde, og "
+"stadig holde stand i nærkamp."
 
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
@@ -2120,8 +2120,8 @@ msgstr ""
 "og stærke armering er den tid, det tager at gå i kamp og trække sig ud fra "
 "kamp."
 
-#: data/core/units/humans/Mage_of_Light.cfg:98
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
+#: data/core/units/humans/Mage_of_Light.cfg:98
 msgid "morning star"
 msgstr "morgenstjerne"
 
@@ -2189,14 +2189,14 @@ msgid ""
 "certain arts which are of great utility in battle."
 msgstr ""
 "Mennesker har ofte undret sig over hvordan den verden de befinder sig i "
-"fungerer. Nogle tager den forundring længere, og gør det til det væsentligste "
-"i deres liv. Enhver magiker der har gjort sig fortjent til titlen som "
-"troldmand har brug mindst et årti med studier og har samlet en viden sammen "
-"som gør dem anderledes end andre mennesker. Disse mænd og kvinder, som har "
-"dedikeret dem selv til forfølgelsen af viden, står i stærk kontrast til den "
-"øvrige verden hvor få i det hele taget kan læse og skrive. Deres rækker er "
-"fyldt med børn af håbefulde adelige, eller dem som har søgt en flugt fra "
-"manuelt arbejde over til intellektuelt arbejde.\n"
+"fungerer. Nogle tager den forundring længere, og gør det til det "
+"væsentligste i deres liv. Enhver magiker der har gjort sig fortjent til "
+"titlen som troldmand har brug mindst et årti med studier og har samlet en "
+"viden sammen som gør dem anderledes end andre mennesker. Disse mænd og "
+"kvinder, som har dedikeret dem selv til forfølgelsen af viden, står i stærk "
+"kontrast til den øvrige verden hvor få i det hele taget kan læse og skrive. "
+"Deres rækker er fyldt med børn af håbefulde adelige, eller dem som har søgt "
+"en flugt fra manuelt arbejde over til intellektuelt arbejde.\n"
 "\n"
 "Det er en ironi at med al deres viden, og deres monopol på denne viden ville "
 "de samlet kunne regere samfundet, hvis de forsøgte. Deres sande mål er dog "
@@ -2210,8 +2210,8 @@ msgstr ""
 # etymologiske baggrund for ordet "missil", men det er nok de
 # færeste spillere der gør det...
 #
-#: data/core/units/humans/Mage.cfg:59
 #: data/core/units/humans/Mage_Silver.cfg:44
+#: data/core/units/humans/Mage.cfg:59
 msgid "missile"
 msgstr "missil"
 
@@ -2239,18 +2239,18 @@ msgid ""
 "lightly."
 msgstr ""
 "Titlen som ærketroldmand gives only efter et livslangt studie. Ærketroldmænd "
-"ansættes ofte i positioner vedrørende uddannelse eller som rådgivere hos "
-"dem der er kloge nok til at søge deres råd og høste deres viden. Mange "
-"støttes af rige velgivere, en profitabel forretning for begge. Velgiveren "
-"for undertiden råd og vejledning og troldmanden kan uforstyrret søge viden. "
-"Her finder de den største viden som kan indsamles af mennesker; videnskaberne, "
+"ansættes ofte i positioner vedrørende uddannelse eller som rådgivere hos dem "
+"der er kloge nok til at søge deres råd og høste deres viden. Mange støttes "
+"af rige velgivere, en profitabel forretning for begge. Velgiveren for "
+"undertiden råd og vejledning og troldmanden kan uforstyrret søge viden. Her "
+"finder de den største viden som kan indsamles af mennesker; videnskaberne, "
 "filosofierne, og kunsten som giver skønhed i verden.\n"
 "\n"
 "Selvom ærketroldmanden ikke er trænet i kamp, kan denne hvis behovet skulle "
 "opstå sætte hele sin magis magt løs, hvilket man ikke skal tage let på."
 
-#: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:37
+#: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Red.cfg:59
 msgid "fireball"
 msgstr "ildkugle"
@@ -2408,10 +2408,10 @@ msgstr ""
 "Selvom de ikke er trænet i kamp, er de en potent allieret mod magiske og "
 "unaturlige skabninger."
 
-#: data/core/units/merfolk/Priestess.cfg:71
-#: data/core/units/merfolk/Diviner.cfg:74
-#: data/core/units/humans/Mage_of_Light.cfg:107
 #: data/core/units/humans/Mage_White.cfg:126
+#: data/core/units/humans/Mage_of_Light.cfg:107
+#: data/core/units/merfolk/Diviner.cfg:74
+#: data/core/units/merfolk/Priestess.cfg:71
 msgid "lightbeam"
 msgstr "lysstråle"
 
@@ -2465,9 +2465,9 @@ msgstr ""
 "nemt tilgængelige ammunition. Fredløse er noget kede af at kæmpe om dagen og "
 "foretrækker nattens dække."
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
+#: data/core/units/humans/Outlaw.cfg:31
+#: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "slynge"
@@ -2560,9 +2560,9 @@ msgstr ""
 "dem ofte til gavn i kamp, og på trods af deres ynkelige våben er de ganske "
 "gode til at genere deres fjender, specielt i ly af natten."
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
-#: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
+#: data/core/units/humans/Outlaw_Ruffian.cfg:23
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
 msgid "club"
 msgstr "kølle"
@@ -2900,9 +2900,9 @@ msgstr ""
 "evner er forbudt mod deres egen race - denne magt er den største del af "
 "beskyttelsen mod havfruerne fra de monstre som truer fra dybet."
 
-#: data/core/units/merfolk/Siren.cfg:40
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:36
+#: data/core/units/merfolk/Siren.cfg:40
 msgid "water spray"
 msgstr "vandsprøjt"
 
@@ -2934,10 +2934,10 @@ msgstr ""
 "Som tilpassede skabninger af havet udgør havmændene en magtfuld og hurtig "
 "styrke, men deres evner på land er små."
 
-#: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 #: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:35
+#: data/core/units/merfolk/Warrior.cfg:23
+#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 msgid "trident"
 msgstr "trefork"
 
@@ -3221,8 +3221,8 @@ msgstr ""
 
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
-#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Whelp.cfg:26
+#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
 msgstr "knytnæve"
@@ -3498,7 +3498,7 @@ msgstr ""
 "som giver det dræbende slag, så er deres taktik en væsentlig hjælp for deres "
 "større og mere brutale artsfæller."
 
-#: data/core/units/orcs/Assassin.cfg:79 data/core/units/orcs/Slayer.cfg:37
+#: data/core/units/orcs/Assassin.cfg:79 data/core/units/orcs/Slayer.cfg:36
 msgid "throwing knives"
 msgstr "kasteknive"
 
@@ -3567,8 +3567,8 @@ msgstr ""
 "talent ligger i den sjældne evne til at kunne give ordre til andre orker "
 "under slaget, ordre som følges ikke af frygt, men af loyalitet."
 
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:33
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:32
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:23
+#: data/core/units/orcs/Ruler.cfg:32 data/core/units/orcs/Sovereign.cfg:33
 msgid "greatsword"
 msgstr "kæmpesværd"
 
@@ -3953,11 +3953,11 @@ msgstr ""
 "uvillige lig. Disse sjæle er ofte talrige, men svage; en snert af kamp kan "
 "vække dem, og derigennem gøre dem stærkere."
 
+#: data/core/units/undead/Corpse_Soulless.cfg:72
 #: data/core/units/undead/Corpse_Walking.cfg:71
+#: data/core/units/undead/Necro_Lich.cfg:34
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:24
-#: data/core/units/undead/Necro_Lich.cfg:34
-#: data/core/units/undead/Corpse_Soulless.cfg:72
 msgid "touch"
 msgstr "berøring"
 
@@ -3987,16 +3987,16 @@ msgstr ""
 "En skabning af denne slags er fra en tid, der for længst er forbi. Enhver "
 "som møder en ældgammel lich har langt værre ting at bekymre sig om end døden."
 
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:46
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 msgid "chill tempest"
 msgstr "kuldebølge"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:59
-#: data/core/units/undead/Necro_Lich.cfg:58
-#: data/core/units/undead/Necromancer.cfg:50
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:46
+#: data/core/units/undead/Necromancer.cfg:50
+#: data/core/units/undead/Necro_Lich.cfg:58
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:59
 msgid "shadow wave"
 msgstr "skyggebølge"
 
@@ -4028,8 +4028,8 @@ msgstr ""
 "efter viden om sort magi."
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
-#: data/core/units/undead/Necromancer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
+#: data/core/units/undead/Necromancer.cfg:38
 msgid "chill wave"
 msgstr "kuldebølge"
 
@@ -4248,7 +4248,7 @@ msgstr ""
 msgid "Death Knight"
 msgstr "Dødsridder"
 
-#: data/core/units/undead/Skele_Death_Knight.cfg:31
+#: data/core/units/undead/Skele_Death_Knight.cfg:39
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and stung by betrayal, have come back to this world as Death Knights. "
@@ -4369,9 +4369,9 @@ msgstr ""
 "Konsekvenserne af sit fængsel er en betingelsesløs tjener, som kan bruges "
 "til ethvert formål, dens herre måtte ønske."
 
-#: data/core/units/undead/Spirit_Wraith.cfg:31
-#: data/core/units/undead/Spirit_Ghost.cfg:36
 #: data/core/units/undead/Spirit_Spectre.cfg:56
+#: data/core/units/undead/Spirit_Ghost.cfg:36
+#: data/core/units/undead/Spirit_Wraith.cfg:31
 msgid "wail"
 msgstr "begræde"
 
@@ -4438,8 +4438,8 @@ msgstr ""
 "møde en sådan skabning, er at den ofte er budbringer om en langt mere "
 "dødelig styrke, som vil følge i dens spor."
 
-#: data/core/units/undead/Spirit_Wraith.cfg:20
 #: data/core/units/undead/Spirit_Spectre.cfg:45
+#: data/core/units/undead/Spirit_Wraith.cfg:20
 msgid "baneblade"
 msgstr "banesværd"
 
@@ -4487,8 +4487,8 @@ msgstr ""
 "Sådanne møder, med hvad der menes, at være de ældste træsjæle, er alt der "
 "kendes til disse skabninger."
 
-#: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
-#: data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Ancient.cfg:92
 msgid "crush"
 msgstr "knus"
 
