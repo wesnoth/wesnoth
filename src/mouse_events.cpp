@@ -690,6 +690,7 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, unit_m
 gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(gameinfo),
 undo_stack_(undo_stack), redo_stack_(redo_stack)
 {
+	singleton_ = this;
 	minimap_scrolling_ = false;
 	dragging_ = false;
 	dragging_started_ = false;
@@ -702,6 +703,11 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 	over_route_ = false;
 	team_num_ = 1;
 	attackmove_ = false;
+	reachmap_invalid_ = false;
+}
+mouse_handler::~mouse_handler()
+{
+	singleton_ = NULL;
 }
 
 void mouse_handler::set_team(const int team_number)
@@ -773,7 +779,23 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		last_hex_ = new_hex;
 	}
 
+	if (reachmap_invalid_) update = true;
+
 	if (update) {
+		if (reachmap_invalid_) {
+			reachmap_invalid_ = false;
+			if (!current_paths_.routes.empty()) {
+				unit_map::iterator u = find_unit(selected_hex_);
+				if(selected_hex_.valid() && u != units_.end() ) {
+					// reselect the unit without firing events (updates current_paths_)
+					select_hex(selected_hex_, true);
+				}
+				// we do never deselect here, mainly because of canceled attack-move
+			}
+		}
+
+
+
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
 			(*gui_).set_route(NULL);
@@ -1506,4 +1528,5 @@ void mouse_handler::set_current_paths(paths new_paths) {
 	gui_->set_route(NULL);
 }
 
+mouse_handler *mouse_handler::singleton_ = NULL;
 }

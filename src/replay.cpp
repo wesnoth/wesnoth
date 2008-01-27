@@ -1074,7 +1074,9 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			}
 
 			fix_shroud = !get_replay_source().is_skipping();
-			disp.unhighlight_reach();
+
+			// would have to go via mousehandler to make this work:
+			//disp.unhighlight_reach();
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {

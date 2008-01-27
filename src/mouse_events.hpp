@@ -39,6 +39,8 @@ class mouse_handler{
 public:
 	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
 		gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack);
+	~mouse_handler();
+	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_team(const int team_number);
 	void mouse_motion(const SDL_MouseMotionEvent& event, const bool browse);
 	// update the mouse with a fake mouse motion
@@ -57,6 +59,8 @@ public:
 	void set_current_paths(paths new_paths);
 	void set_selected_hex(gamemap::location hex) { selected_hex_ = hex; }
 	void deselect_hex();
+	void invalidate_reachmap() { reachmap_invalid_ = true; }
+
 	void set_gui(game_display* gui) { gui_ = gui; }
 	void set_undo(const bool undo) { undo_ = undo; }
 
@@ -122,6 +126,9 @@ private:
 	bool show_menu_;
 	bool over_route_;
 	bool attackmove_;
+	bool reachmap_invalid_;
+
+	static mouse_handler * singleton_;
 };
 
 extern int commands_disabled;

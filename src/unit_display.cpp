@@ -30,6 +30,7 @@
 #include "sound.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "mouse_events.hpp"
 
 #include <cassert>
 #include <climits>
@@ -142,6 +143,11 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 
 	u.set_hidden(was_hidden);
 	disp->invalidate_unit_after_move(path[0], path[path.size()-1]);
+
+	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
+	if (mousehandler) {
+		mousehandler->invalidate_reachmap();
+	}
 }
 
 void unit_die(const gamemap::location& loc, unit& loser,
@@ -158,6 +164,10 @@ void unit_die(const gamemap::location& loc, unit& loser,
 	animator.start_animations();
 	animator.wait_for_end();
 
+	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
+	if (mousehandler) {
+		mousehandler->invalidate_reachmap();
+	}
 }
 
 

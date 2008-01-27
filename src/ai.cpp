@@ -555,7 +555,8 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 		game_events::fire("sighted",to);
 	}
 
-	info_.disp.unhighlight_reach();
+	// would have to go via mousehandler to make this work:
+	//info_.disp.unhighlight_reach();
 	raise_unit_moved();
 
 	return to;
