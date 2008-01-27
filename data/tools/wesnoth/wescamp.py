@@ -84,7 +84,7 @@ if __name__ == "__main__":
         result = {}
         for c in campaigns.get_all("campaign"):
             translatable = c.get_text_val("translate")
-            if(translatable == "true"):
+            if(translatable == "yes" or translatable == "on" or translatable == "true" or translatable == "1"):
                 result[c.get_text_val("name")] = True
             else:
                 # when the campaign isn't marked for translation skip it
