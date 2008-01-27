@@ -435,7 +435,7 @@ libwesnoth_a_SOURCES = \
 
 # Should be touched each time the SVN revision number goes up 
 revision_stamp.hpp: FORCE
-	echo "#define SVNREV \"$(shell svnversion -n $(topdir) 2>/dev/null || unknown)\"" >revision_stamp.hpp
+	echo "#define SVNREV \"$(shell svnversion -n $(topdir) 2>/dev/null)\"" >revision_stamp.hpp
 
 FORCE:
 

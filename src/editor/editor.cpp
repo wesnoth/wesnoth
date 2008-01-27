@@ -485,7 +485,7 @@ void map_editor::change_language() {
 
 	// Update the frame title
 	wm_title_string = _("Battle for Wesnoth Map Editor");
-	wm_title_string += " - " + game_config::version;
+	wm_title_string += " - " + game_config::revision;
 	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 
 	font::load_font_config();

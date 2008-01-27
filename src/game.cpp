@@ -443,7 +443,7 @@ bool game_controller::init_language()
 
 	if(!no_gui_) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
-		wm_title_string += " - " + game_config::version;
+		wm_title_string += " - " + game_config::revision;
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 	}
 
@@ -1584,7 +1584,7 @@ bool game_controller::change_language()
 
 		if(!no_gui_) {
 			std::string wm_title_string = _("The Battle for Wesnoth");
-			wm_title_string += " - " + game_config::version;
+			wm_title_string += " - " + game_config::revision;
 			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 		}
 
@@ -2007,7 +2007,7 @@ static int play_game(int argc, char** argv)
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {
-			std::cout << _("Battle for Wesnoth") << " " << game_config::version
+			std::cout << _("Battle for Wesnoth") << " " << game_config::revision
 			          << "\n";
 			return 0;
 		} else if(val == "--path") {
@@ -2324,7 +2324,7 @@ int main(int argc, char** argv)
 #endif
 
 	try {
-		std::cerr << "Battle for Wesnoth v" << game_config::version << '\n';
+		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
