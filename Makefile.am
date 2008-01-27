@@ -86,7 +86,7 @@ if DUMMYLOCALES
 	true
 endif
 if TINYGUI
-	(cd $(top_srcdir) && find data/core/images data/campaigns images  \( $(findfilterflags) -o -name '*.png' -and -not -name 'bar-energy-tinygui.png' -print \) ) | while read p; do \
+	(cd $(top_srcdir) && find data/core/images data/campaigns images  \( $(findfilterflags) -a -name '*.png' -and -not -name 'bar-energy-tinygui.png' -print \) ) | while read p; do \
 	  $(w_preparefileinstall) \
 	  eval `identify $$d$$p | cut -f 3 -d ' ' | sed s/^/imagewidth=/ | sed s/x/\;imageheight=/` ;\
 	  case $${imagewidth}x$$imageheight in \
