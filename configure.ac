@@ -244,12 +244,6 @@ AC_ARG_WITH([server-gid],
 	      [servergid=""])
 AC_SUBST([servergid])
 
-AC_ARG_ENABLE([server-monitor],
-	          AS_HELP_STRING([--enable-server-monitor], [enable server monitor thread; libgtop2 is required]),
-	      [servermonitor=$enableval],
-	      [servermonitor=no])
-
-
 AC_ARG_ENABLE([campaign_server],
               AS_HELP_STRING([--enable-campaign-server], [enable compilation of campaign server]),
 	      [campaignserver=$enableval],
@@ -320,7 +314,6 @@ AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([PYTHON_INSTALL], [test x$python_install = xyes])
 AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
-AM_CONDITIONAL([SERVER_MONITOR], [test x$servermonitor = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([TESTS], [test x$tests = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
@@ -908,17 +901,6 @@ if test "x$lite" = "xno"; then
 fi
 
 #######################################################################
-# Check for libgtop2 if server monitor enabled                        #
-#######################################################################
-GTOP_LIBS=""
-GTOP_CFLAGS=""
-
-if test "x$servermonitor" = "xyes"; then
-       
-	PKG_CHECK_MODULES([GTOP], [libgtop-2.0 >= 2.10])
-fi
-
-#######################################################################
 # Check for boost iostreams                                           #
 #######################################################################
 
@@ -985,7 +967,6 @@ m4_pattern_allow([^BOOST_AUTO_TEST$])
 	
 AM_CONDITIONAL([BOOST_TEST_DYN_LINK], [test x"$boost_test_dyn_link" = xyes])
 AM_CONDITIONAL([BOOST_AUTO_TEST], [test x"$boost_auto_test" = xyes])
-
 
 #######################################################################
 # Tune gettext stuff for our needs                                    #
