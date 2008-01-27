@@ -1,23 +1,27 @@
-# translation of cs.po to Czech
+# translation of wesnoth-units.po to Czech
+# Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
+# Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
+#
+# Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006, 2007.
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007, 2008.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle of Wesnoth\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-27 13:24+0100\n"
-"PO-Revision-Date: 2007-12-21 09:37+0100\n"
+"PO-Revision-Date: 2008-01-22 19:13+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
@@ -370,8 +374,8 @@ msgid ""
 "be such leaders, both in war and in peace."
 msgstr ""
 "Drakonidé jsou stará rasa, dostatečně moudrá, aby naslouchala svým "
-"přirozeným vůdcům. Ti, kdo jsou nazývání svými nepřáteli 'planoucími "
-"pochodněmi', jsou ještěři, kteří se uchází o pozici vůdce, jak ve válce, tak "
+"přirozeným vůdcům. Ti, kdo jsou nazývání svými nepřáteli „planoucími "
+"pochodněmi“, jsou ještěři, kteří se uchází o pozici vůdce, jak ve válce, tak "
 "v míru."
 
 #: data/core/units/drakes/Gladiator.cfg:4
@@ -788,7 +792,7 @@ msgstr ""
 "svých zbraní sypají černý prach , o němž říkají, že je potravou pro pohyb "
 "bestie uvězněné uvnitř.\n"
 "\n"
-"Ačkoliv příprava na jediný výstřel z těchto 'hromových holí' může zabrat "
+"Ačkoliv příprava na jediný výstřel z těchto „hromových holí“ může zabrat "
 "několik minut, výsledek za tu námahu určitě stojí."
 
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -869,7 +873,7 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
-"Zvláštní jméno elfích 'mstitelů' vychází z taktiky, tak často používané "
+"Zvláštní jméno elfích „mstitelů“ vychází z taktiky, tak často používané "
 "těmito mistry střelci. Nepřátelům je umožněno dostat se skrz obranné linie "
 "-- a když jsou zranitelné jednotky za frontovou oblastí, tito lučištníci "
 "vyjdou z úkrytu, zaútočí a odříznou tak nepřítele od podpůrných jednotek.\n"
@@ -2318,10 +2322,9 @@ msgstr "Stříbrný mág"
 msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
-msgstr ""
+msgstr " Stříbrní mágové mají vysokou odolnost proti mnoha formám magie."
 
 #: data/core/units/humans/Mage_Silver.cfg:23
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2357,10 +2360,7 @@ msgstr ""
 "\n"
 "Stříbrní mágové jsou obvykle fyzicky zdatnější než jejich kolegové a použití "
 "jejich dovedností na bitevním poli je nepopiratelným přínosem - pokud je ale "
-"nejdříve někdo dokáže k akci přimět.\n"
-"\n"
-"Zvláštní rysy: Stříbrní mágové mají vysokou odolnost proti mnoha formám "
-"magie."
+"nejdříve někdo dokáže k akci přimět."
 
 #: data/core/units/humans/Mage_Silver.cfg:149
 msgid "female^Silver Mage"
@@ -3036,7 +3036,6 @@ msgid "Mermaid Siren"
 msgstr "Mořská siréna"
 
 #: data/core/units/merfolk/Siren.cfg:22
-#, fuzzy
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
 "connection to naia often causes them to be mistaken for naiads themselves. "
@@ -3056,10 +3055,7 @@ msgstr ""
 "pomyšlením.\n"
 "\n"
 "U suchozemců se takové schopnosti zřídka vyskytují a nesčetná použití vodní "
-"magie považují za zázrak.\n"
-"\n"
-"Zvláštní údaje: útoky sirén jsou magické podstaty a je vysoká "
-"pravděpodobnost zásahu protivníka. "
+"magie považují za zázrak."
 
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
@@ -3792,7 +3788,6 @@ msgid "Troll Rocklobber"
 msgstr "Trollí vrhač kamenů"
 
 #: data/core/units/trolls/Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -3804,10 +3799,7 @@ msgstr ""
 "dokonce zvolili jako svoji zbraň. Protože ty správné balvany není vždy "
 "snadné najít, tahají si je trollí vrhači sebou v pytli přehozeném přes "
 "ramena. Z kůže, ze které jsou tyto pytle vyrobeny, lze velice snadno udělat "
-"primitivní praky.\n"
-"\n"
-"Zvláštní rysy: I když těžkopádné, kameny hozené těmito obludami jsou mnohem "
-"více smrtící než jakékoli šípy, pokud se jim podaří zasáhnout."
+"primitivní praky."
 
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
@@ -4517,101 +4509,3 @@ msgstr ""
 "\n"
 "Stromoví muži nejsou bojovná stvoření, ale mají obrovskou sílu. Nejsou "
 "zvyklí cestovat a přemisťují tak pouze se pomalu."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Zvláštní rysy:"
-
-#~ msgid ""
-#~ "Knights of the highest virtue, Paladins have sworn themselves to semi-"
-#~ "monastic vows, pledging their might to the cause of righteousness. Though "
-#~ "not as imposing on the battlefield as a Grand Knight, a Paladin is a "
-#~ "powerful force in combat, and their piety grants them other gifts. A "
-#~ "Paladin is a bane to the unworldly, and has trained in ministering to the "
-#~ "wounds of his comrades.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Rytíři z nejctnostnějších, Paladinové, se řídí zákony řeholních řádů, "
-#~ "zavazujíc se do služeb spravedlnosti. I když nejsou tak impozantní jako "
-#~ "Velcí rytíři, Paladinové jsou mocnou silou v boji a jejich zbožnost jim "
-#~ "propůjčuje další nadání. Tito svatí rytíři jsou zhoubou zplozenců temnot "
-#~ "a trénují se v pomoci svým zraněným druhům.\n"
-#~ "\n"
-#~ "Zvláštní rysy:"
-
-#~ msgid ""
-#~ "Veteran criminals become notorious among the authorities for both their "
-#~ "battle prowess and ability to elude capture. Beautiful and dangerous, "
-#~ "their beauty is exceeded only by their dangerousness."
-#~ msgstr ""
-#~ "Mnohé recidivistky neblaze prosluly jak díky své zručnosti v boji, tak "
-#~ "schopnosti vyhnout se zatčení. Překrásné a kruté, jejich krásu zastiňuje "
-#~ "pouze jejich krutost."
-
-#~ msgid ""
-#~ "Huntsmen have spent their lives in the backwoods and swamps of their "
-#~ "wilderness homes. They track anything that moves in their territory, "
-#~ "including people. Bandit gangs hire them for their ability to bring down "
-#~ "any prey."
-#~ msgstr ""
-#~ "Lovčí strávili celý svůj život v pralesích a na blatech v domovské "
-#~ "divočině. Vystopovali vše, co se pohybovalo na jejich území, a to včetně "
-#~ "lidí. Bandité si je najímali pro jejich schopnost skolit jakoukoli kořist."
-
-#~ msgid "Outlaw Ranger"
-#~ msgstr "Potulný hraničář"
-
-#~ msgid ""
-#~ "Rangers are wild men and masters of forest and hills. They are excellent "
-#~ "trackers, scouts, and archers, moving freely through the countryside "
-#~ "under the cover of night. Most rulers are afraid of rangers and would "
-#~ "rather put them in the dungeon than put their abilities to use."
-#~ msgstr ""
-#~ "Hraničáři jsou lidé přírody a pány lesů a hor. Jsou excelentní stopaři, "
-#~ "průzkumníci a lučištníci, volně se pohybující po krajině pod pláštěm "
-#~ "noci. Většině tyranů nahánějí hrůzu. Nejraději by je zavřeli do děr dřív, "
-#~ "než se obrátí proti nim."
-
-#~ msgid ""
-#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
-#~ "their hoped-for food with beast-like ferocity. When they are sated with "
-#~ "the flesh of their victims, they simply shrug off all damage sustained as "
-#~ "if they had been freshly summoned, to begin their search for flesh "
-#~ "again.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Požírači mrtvol, kteří jsou neustále hnáni svým nečistým hladem po mrtvém "
-#~ "mase, útočí na potenciální krmi se zvířeckou divokostí. Když jsou "
-#~ "nasyceni masem svých obětí, veškerá jejich poškození z boje zmizí a jsou "
-#~ "jako jako zčerstva vyvolaní, aby mohli znova začít svůj hon za dalším "
-#~ "masem.\n"
-#~ "\n"
-#~ "Zvláštní rysy:"
-
-#~ msgid "pierce"
-#~ msgstr "bodnutí"
-
-#~ msgid "blade"
-#~ msgstr "čepel"
-
-#~ msgid "fire"
-#~ msgstr "oheň"
-
-#~ msgid "impact"
-#~ msgstr "úder"
-
-#~ msgid "arcane"
-#~ msgstr "nezemský"
-
-#~ msgid "cold"
-#~ msgstr "chlad"
-
-#~ msgid "dummy"
-#~ msgstr "fiktivní"

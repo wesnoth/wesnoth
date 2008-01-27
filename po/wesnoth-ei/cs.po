@@ -1,26 +1,30 @@
-# translation of cs.po to Czech
+# translation of wesnoth-ei.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
-# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006.
+# Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
+#
+# Yeti <yeti@physics.muni.cz> et al, 2004.
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006, 2007.
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007, 2008.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle of Wesnoth\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-27 13:25+0100\n"
-"PO-Revision-Date: 2007-11-29 22:40+0100\n"
+"PO-Revision-Date: 2008-01-14 20:04+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
-"Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
+"Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.2\n"
-"X-Poedit-Basepath: D:\\Dev\\Wesnoth-trunk\\\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:9
 msgid "The Eastern Invasion"
@@ -70,19 +74,19 @@ msgstr ""
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
 msgid "Campaign Design"
-msgstr ""
+msgstr "Návrh tažení"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:29
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Údržba tažení"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 msgid "Campaign Epilog and Continuity"
-msgstr ""
+msgstr "Epilog tažení a návaznost"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:41
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Kresby a grafika"
 
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:4
 msgid "The Outpost"
@@ -2140,7 +2144,6 @@ msgstr ""
 "mága, který bude zběhlý v boji s temnotou."
 
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:27
-#, fuzzy
 msgid ""
 "In all the land, there were two magi of light that clearly stood out from "
 "the rest. A mage from the east named Ravan, and myself. The King, wishing to "
@@ -2149,10 +2152,10 @@ msgid ""
 "announced that the seer was dead, and he had chosen me as his new advisor."
 msgstr ""
 "Země měla dva mágy světla, kteří vyčnívali nad ostatní. Mága z východu "
-"jménem Ravan, a mne. Král, který si přál vybrat dobrého rádce, nás oba dva "
-"vyslal k věštci. Pak si s věštcem promluvil o samotě. Nikdo neví, co tam "
-"bylo toho dne řečeno, ale když král vyšel ven, oznámil, že věštec je mrtev a "
-"že si za rádce zvolil mne."
+"jménem Ravan a mne. Král, který si přál vybrat dobrého rádce, nás oba dva "
+"vyslal ke Galdrenovi. Pak si s věštcem promluvil o samotě. Nikdo neví, co "
+"tam bylo toho dne řečeno, ale když král vyšel ven, oznámil, že věštec je "
+"mrtev a že si za rádce zvolil mne."
 
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:32
 msgid ""
@@ -2197,7 +2200,6 @@ msgid "Kaldor"
 msgstr "Kaldor"
 
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:90
-#, fuzzy
 msgid ""
 "Not been seen, that is, until the day when he attacked Gweddry and me in "
 "that outpost on the eastern border. This is the lich we are facing: Mal-"
@@ -2212,7 +2214,6 @@ msgid "So what should we do now?"
 msgstr "Tak co teď budeme dělat?"
 
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:98
-#, fuzzy
 msgid ""
 "We must fight, obviously. Surely the might of Wesnoth can triumph over a "
 "mere lich!"
@@ -2867,35 +2868,3 @@ msgstr ""
 "Všichni dorazili v pořádku spolu s královskou armádou. Po řadu týdnů se nic "
 "nedělo a Gweddryho muži přestali být ostražití. Pak, za úsvitu nového dne, "
 "byli Gweddryho muži probuzeni překvapeným křikem noční hlídky..."
-
-#~ msgid "The undead are tearing down our defences!"
-#~ msgstr "Nemrtví bourají naši obranu!"
-
-#~ msgid "Leave any of the three heroes on the north side of the river"
-#~ msgstr "Zanechání kteréhokoli hrdiny na severním břehu řeky"
-
-#~ msgid "There are still humans in this village! They can help us."
-#~ msgstr "V této vesnici jsou stále lidé! Mohou nám pomoci."
-
-#~ msgid "Villager"
-#~ msgstr "Vesničan"
-
-#~ msgid ""
-#~ "The undead have killed all the villagers here, but they left their "
-#~ "valuables."
-#~ msgstr ""
-#~ "Nemrtví zabili všechny zdejší vesničany, ale ani se nedotkli jejich "
-#~ "cenností."
-
-#~ msgid "Defeat Khrakrahs, the Skeletal Dragon"
-#~ msgstr "Poraz Krakraše, kostěného draka"
-
-#~ msgid ""
-#~ "I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
-#~ "swamp, we can't e'en see any 'nemies."
-#~ msgstr ""
-#~ "Řek bych, že se budem muset přebrodit... ech. A s toudle mlhou co se "
-#~ "zvedá z bažin neuvidíme žádné nepřátele."
-
-#~ msgid "Undead, undead are rising out of the ground!"
-#~ msgstr "Nemrtví, nemrtví vylézají ze země!"

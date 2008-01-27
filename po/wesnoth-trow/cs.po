@@ -1,24 +1,29 @@
-# translation of cs.po to Czech
+# translation of wesnoth-trow.po to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
-# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006.
+# Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
+#
+# Yeti <yeti@physics.muni.cz> et al, 2004.
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006, 2007.
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007, 2008.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle of Wesnoth\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-27 13:26+0100\n"
-"PO-Revision-Date: 2007-12-21 09:22+0100\n"
+"PO-Revision-Date: 2008-01-22 12:31+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
-"Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
+"Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:4
@@ -70,19 +75,19 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 msgid "Campaign Design"
-msgstr ""
+msgstr "Návrh tažení"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Údržba tažení"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:40
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Kresby a grafika"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:49
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Různé"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:4
 msgid "A Summer of Storms"
@@ -5798,7 +5803,6 @@ msgstr "Wesanská paní"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:22
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:24
-#, fuzzy
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
 "society by their lords, who betrayed their loyalty when a war against "
@@ -5817,7 +5821,6 @@ msgid "female^Wesfolk Outcast"
 msgstr "Wesanská vyhnankyně"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:23
-#, fuzzy
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
 "society by their lords, who betrayed their loyalty when a war against "
@@ -5836,7 +5839,6 @@ msgid "Wose Sapling"
 msgstr "Semenáček"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:25
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -5858,10 +5860,7 @@ msgstr ""
 "přírody. \n"
 "\n"
 "Stromoví muži nejsou bojovná stvoření, ale mají obrovskou sílu. Nejsou "
-"zvyklí cestovat a přemísťují se pomalu.\n"
-"\n"
-"Zvláštní rysy: Stromoví muži regenerují využíváním přírodních zdrojů okolo "
-"nich, nemají potřebu mačkat se v osadách kvůli stravě a pomoci."
+"zvyklí cestovat a přemísťují se pomalu."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
 msgid "crush"
@@ -5882,7 +5881,6 @@ msgstr ""
 "pro spřátelené jednotky (pro sebe však ne)."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:26
-#, fuzzy
 msgid ""
 "This unit is capable of distracting opponents, allowing friendly units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -6034,9 +6032,8 @@ msgid "For this is the story of Haldric the First and the Rise of Wesnoth..."
 msgstr "Protože toto je příběh Haldrika prvního a vzniku království Wesnoth..."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:21
-#, fuzzy
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr "Získal jsi {AMOUNT} zlatých."
+msgstr "Získal jsi $amount_gold zlatých."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:107
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:122
@@ -6170,41 +6167,3 @@ msgstr ""
 "sopkou a nyní se již pomalu potápí do moře. Starší korunní princ Jižního "
 "zálivu zařídil na ostrově vybudování opevnění, navzdory válečnické povaze "
 "jeho obyvatel. Nyní tam musí zůstávat malá posádka."
-
-#, fuzzy
-#~ msgid ""
-#~ "Born in the Wesfolk aristocracy, she and her people were excluded from "
-#~ "society by their lords, who betrayed their loyalty when a war against "
-#~ "Haldric's people was being lost. This outcast still conserves her "
-#~ "nobleness in her veins, and in the battlefield she has earned valuable "
-#~ "experience, which continues increasing with time, as does her natural "
-#~ "leadership."
-#~ msgstr ""
-#~ "Ačkoliv se tato žena narodila jako členka Wesanské aristokracie, spolu se "
-#~ "svým lidem byla vyloučena ze společnosti zrádnými lordy, kteří ji při "
-#~ "obratu v konfliktu s králem Haldrikem obětovali; i přesto si však nadále "
-#~ "uchovává určitou auru vznešenosti. Na bojišti nasbírala cenné zkušenosti, "
-#~ "které se časem s dalšími boji zvětšují, tak jako její přirozené vůdcovské "
-#~ "schopnosti."
-
-#~ msgid "Heroic: As above and defeat all enemy leaders"
-#~ msgstr ""
-#~ "Heroický: Jako výše zmíněné a k tomu poraz všechny nepřátelské vůdce"
-
-#~ msgid "The Dragon's Cave has yielded some treasure!"
-#~ msgstr "Dračí jeskyně vydala nějaké poklady!"
-
-#~ msgid "Eldaric's Guard"
-#~ msgstr "Eldarikova stráž"
-
-#~ msgid "Wesfolk"
-#~ msgstr "Wesan"
-
-#~ msgid "blade"
-#~ msgstr "čepel"
-
-#~ msgid "pierce"
-#~ msgstr "bodnutí"
-
-#~ msgid "impact"
-#~ msgstr "úder"
