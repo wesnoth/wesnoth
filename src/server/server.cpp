@@ -1288,6 +1288,9 @@ void server::delete_game(std::vector<game>::iterator game_it) {
 }
 
 int main(int argc, char** argv) {
+#ifdef SVNREV
+	game_config::svnrev = get_svn_revision();
+#endif
 	int port = 15000;
 	size_t min_threads = 5;
 	size_t max_threads = 0;

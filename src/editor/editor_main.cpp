@@ -47,6 +47,9 @@ namespace {
 
 int main(int argc, char** argv)
 {
+#ifdef SVNREV
+	game_config::svnrev = get_svn_revision();
+#endif
 	const std::string rev = game_config::svnrev.empty() ? "" :
 		" (" + game_config::svnrev + ")";
 
