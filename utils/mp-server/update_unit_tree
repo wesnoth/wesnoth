@@ -32,10 +32,10 @@ if [ -d $SITE/$VERSION ]; then
 	echo "$SITE/$VERSION already exists."
 	exit 1
 fi
-cd data/tools/unit_tree/ || exit 1
 echo 'svn update...'
 svn update
 svn status
+cd data/tools/unit_tree/ || exit 1
 if [ "$VERSION" != "trunk" ]; then
 	# insert a link for the new version
 	sed -i -e "s,\(<p><a href=\"trunk/index.html\">Trunk</a></p>\),<p><a href=\"$VERSION/index.html\">Development ($VERSION)</a></p>\n\1," $SITE/index.html
