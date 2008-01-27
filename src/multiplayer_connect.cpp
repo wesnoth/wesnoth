@@ -1517,6 +1517,10 @@ void connect::load_game()
 		level_["scenario"] = params_.name;
 		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 		level_["random_seed"] = lexical_cast<std::string>(state_.get_random_seed());
+		level_["mp_village_gold"] = lexical_cast<std::string>(params_.village_gold);
+		level_["mp_fog"] = params_.fog_game ? "yes" : "no";
+		level_["mp_shroud"] = params_.shroud_game ? "yes" : "no";
+		level_["mp_use_map_settings"] = params_.use_map_settings ? "yes" : "no";
 	}
 
 	// Add the map name to the title.
@@ -1545,11 +1549,6 @@ void connect::load_game()
 
 	gold_title_label_.hide(params_.saved_game);
 	income_title_label_.hide(params_.saved_game);
-
-	level_["mp_village_gold"] = lexical_cast<std::string>(params_.village_gold);
-	level_["mp_use_map_settings"] = params_.use_map_settings ? "yes" : "no";
-	level_["mp_fog"] = params_.fog_game ? "yes" : "no";
-	level_["mp_shroud"] = params_.shroud_game ? "yes" : "no";
 
 	// This will force connecting clients to be using the same version number as us.
 	level_["version"] = game_config::version;
