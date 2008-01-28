@@ -137,6 +137,7 @@ const struct {
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true },
 
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
+	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run AI formula"), false },
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear messages"), false },
 #ifdef USRCMD2
 	{ hotkey::HOTKEY_USER_CMD_2, "usercommand#2", N_("User-Command#2"), false },
@@ -662,6 +663,10 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			user_command();
 			break;
 //%%
+		case HOTKEY_AI_FORMULA:
+			std::cerr <<" run ai formula\n";
+			ai_formula();
+			break;
 		case HOTKEY_CLEAR_MSG:
 			clear_messages();
 			break;

@@ -56,9 +56,18 @@ wesnoth_source = \
 	ai_village.cpp \
 	animated_game.cpp \
 	attack_prediction.cpp \
+	callable_objects.cpp \
 	config_adapter.cpp \
 	dialogs.cpp \
 	floating_textbox.cpp \
+<<<<<<< .mine
+	formula.cpp \
+	formula_ai.cpp \
+	formula_function.cpp \
+	formula_tokenizer.cpp \
+	game.cpp \
+=======
+>>>>>>> .r23279
 	game_display.cpp \
 	game_events.cpp \
 	game_preferences.cpp \
@@ -105,8 +114,9 @@ wesnoth_source = \
 	unit_types.cpp \
 	upload_log.cpp \
 	variable.cpp \
+	variant.cpp \
 	widgets/combo.cpp \
-	widgets/scrollpane.cpp 
+	widgets/scrollpane.cpp
 
 #############################################################################
 #    Wesnoth                                                                #

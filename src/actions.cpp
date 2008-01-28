@@ -236,10 +236,10 @@ gamemap::location under_leadership(const unit_map& units,
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-							   int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def)
+							   int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def, const unit* attacker_ptr)
 	: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
 {
-	const unit& attacker = units.find(attacker_loc)->second;
+	const unit& attacker = attacker_ptr ? *attacker_ptr : units.find(attacker_loc)->second;
 	const unit& defender = units.find(defender_loc)->second;
 	const double harm_weight = 1.0 - aggression;
 

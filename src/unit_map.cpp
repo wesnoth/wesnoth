@@ -46,11 +46,11 @@ unit_map::~unit_map()
 }
 
 // Due to unit <-> unit_map dependencies, must be out of line.
-std::pair<gamemap::location,unit> unit_map::iterator::operator*() const
+std::pair<gamemap::location,unit>& unit_map::iterator::operator*() const
 {
 	return *i_->second;
 }
-std::pair<gamemap::location,unit> unit_map::const_iterator::operator*() const
+const std::pair<gamemap::location,unit>& unit_map::const_iterator::operator*() const
 {
 	return *i_->second;
 }

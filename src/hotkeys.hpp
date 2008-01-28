@@ -61,6 +61,7 @@ enum HOTKEY_COMMAND {
 
 	//misc.
 	HOTKEY_USER_CMD,
+	HOTKEY_AI_FORMULA,
 	HOTKEY_CLEAR_MSG,
 #ifdef USRCMD2
 	HOTKEY_USER_CMD_2,
@@ -210,6 +211,7 @@ public:
 	virtual void show_help() {}
 	virtual void show_chat_log() {}
 	virtual void user_command() {}
+	virtual void ai_formula() {}
 	virtual void clear_messages() {}
 #ifdef USRCMD2
 	virtual void user_command_2() {}

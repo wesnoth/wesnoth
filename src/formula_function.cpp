@@ -1,0 +1,486 @@
+#include <iostream>
+#include <math.h>
+
+#include "formula_callable.hpp"
+#include "formula_function.hpp"
+
+namespace game_logic {
+
+namespace {
+
+class if_function : public function_expression {
+public:
+	explicit if_function(const args_list& args)
+	     : function_expression(args, 3, 3)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const int i = args()[0]->evaluate(variables).as_bool() ? 1 : 2;
+		return args()[i]->evaluate(variables);
+	}
+};
+
+class rgb_function : public function_expression {
+public:
+	explicit rgb_function(const args_list& args)
+	     : function_expression(args, 3, 3)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		return variant(10000*
+		 std::min<int>(99,std::max<int>(0,args()[0]->evaluate(variables).as_int())) +
+		 std::min<int>(99,std::max<int>(0,args()[1]->evaluate(variables).as_int()))*100+
+		 std::min<int>(99,std::max<int>(0,args()[2]->evaluate(variables).as_int())));
+	}
+};
+
+namespace {
+int transition(int begin, int val1, int end, int val2, int value) {
+	if(value < begin || value > end) {
+		return 0;
+	}
+
+	if(value == begin) {
+		return val1;
+	} else if(value == end) {
+		return val2;
+	}
+
+	const int comp1 = val1*(end - value);
+	const int comp2 = val2*(value - begin);
+	return (comp1 + comp2)/(end - begin);
+}
+}
+
+class transition_function : public function_expression {
+public:
+	explicit transition_function(const args_list& args)
+			: function_expression(args, 5, 5)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const int value = args()[0]->evaluate(variables).as_int();
+		const int begin = args()[1]->evaluate(variables).as_int();
+		const int end = args()[3]->evaluate(variables).as_int();
+		if(value < begin || value > end) {
+			return variant(0);
+		}
+		const int val1 = args()[2]->evaluate(variables).as_int();
+		const int val2 = args()[4]->evaluate(variables).as_int();
+		return variant(transition(begin, val1, end, val2, value));
+	}
+};
+
+class color_transition_function : public function_expression {
+public:
+	explicit color_transition_function(const args_list& args)
+			: function_expression(args, 5)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const int value = args()[0]->evaluate(variables).as_int();
+		int begin = args()[1]->evaluate(variables).as_int();
+		int end = -1;
+		int n = 3;
+		while(n < args().size()) {
+			end = args()[n]->evaluate(variables).as_int();
+			if(value >= begin && value <= end) {
+				break;
+			}
+
+			begin = end;
+			n += 2;
+		}
+
+		if(value < begin || value > end) {
+			return variant(0);
+		}
+		const int val1 = args()[n-1]->evaluate(variables).as_int();
+		const int val2 = args()[n+1 < args().size() ? n+1 : n]->
+		                               evaluate(variables).as_int();
+		const int r1 = (val1/10000)%100;
+		const int g1 = (val1/100)%100;
+		const int b1 = (val1)%100;
+		const int r2 = (val2/10000)%100;
+		const int g2 = (val2/100)%100;
+		const int b2 = (val2)%100;
+
+		const int r = transition(begin,r1,end,r2,value);
+		const int g = transition(begin,g1,end,g2,value);
+		const int b = transition(begin,b1,end,b2,value);
+		return variant(
+		       std::min<int>(99,std::max<int>(0,r))*100*100 +
+		       std::min<int>(99,std::max<int>(0,g))*100+
+		       std::min<int>(99,std::max<int>(0,b)));
+	}
+};
+
+
+class abs_function : public function_expression {
+public:
+	explicit abs_function(const args_list& args)
+	     : function_expression(args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const int n = args()[0]->evaluate(variables).as_int();
+		return variant(n >= 0 ? n : -n);
+	}
+};
+
+class min_function : public function_expression {
+public:
+	explicit min_function(const args_list& args)
+	     : function_expression(args, 1, -1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		bool found = false;
+		int res = 0;
+		for(int n = 0; n != args().size(); ++n) {
+			const variant v = args()[n]->evaluate(variables);
+			if(v.is_list()) {
+				for(int m = 0; m != v.num_elements(); ++m) {
+					if(!found || v[m].as_int() < res) {
+						res = v[m].as_int();
+						found = true;
+					}
+				}
+			} else if(v.is_int()) {
+				if(!found || v.as_int() < res) {
+					res = v.as_int();
+					found = true;
+				}
+			}
+		}
+
+		return variant(res);
+	}
+};
+
+class max_function : public function_expression {
+public:
+	explicit max_function(const args_list& args)
+	     : function_expression(args, 1, -1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		bool found = false;
+		int res = 0;
+		for(int n = 0; n != args().size(); ++n) {
+			const variant v = args()[n]->evaluate(variables);
+			if(v.is_list()) {
+				for(int m = 0; m != v.num_elements(); ++m) {
+					if(!found || v[m].as_int() > res) {
+						res = v[m].as_int();
+						found = true;
+					}
+				}
+			} else if(v.is_int()) {
+				if(!found || v.as_int() > res) {
+					res = v.as_int();
+					found = true;
+				}
+			}
+		}
+
+		return variant(res);
+	}
+};
+
+class choose_element_function : public function_expression {
+public:
+	explicit choose_element_function(const args_list& args)
+	     : function_expression(args, 2, 2)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant items = args()[0]->evaluate(variables);
+		int max_index = -1;
+		variant max_value;
+		for(int n = 0; n != items.num_elements(); ++n) {
+			const variant val = args()[1]->evaluate(*items[n].as_callable());
+			if(max_index == -1 || val > max_value) {
+				max_index = n;
+				max_value = val;
+			}
+		}
+
+		if(max_index == -1) {
+			return variant(0);
+		} else {
+			return items[max_index];
+		}
+	}
+};
+
+class wave_function : public function_expression {
+public:
+	explicit wave_function(const args_list& args)
+	     : function_expression(args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const int value = args()[0]->evaluate(variables).as_int()%1000;
+		const double angle = 2.0*3.141592653589*(static_cast<double>(value)/1000.0);
+		return variant(static_cast<int>(sin(angle)*1000.0));
+	}
+};
+
+namespace {
+class variant_comparator : public formula_callable {
+	expression_ptr expr_;
+	const formula_callable* fallback_;
+	mutable variant a_, b_;
+	variant get_value(const std::string& key) const {
+		if(key == "a") {
+			return a_;
+		} else if(key == "b") {
+			return b_;
+		} else {
+			return fallback_->query_value(key);
+		}
+	}
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		fallback_->get_inputs(inputs);
+	}
+public:
+	variant_comparator(const expression_ptr& expr, const formula_callable& fallback) : expr_(expr), fallback_(&fallback)
+	{}
+
+	bool operator()(const variant& a, const variant& b) const {
+		a_ = a;
+		b_ = b;
+		return expr_->evaluate(*this).as_bool();
+	}
+};
+}
+
+class sort_function : public function_expression {
+public:
+	explicit sort_function(const args_list& args)
+	     : function_expression(args, 1, 2)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		variant list = args()[0]->evaluate(variables);
+		std::vector<variant> vars;
+		vars.reserve(list.num_elements());
+		for(int n = 0; n != list.num_elements(); ++n) {
+			vars.push_back(list[n]);
+		}
+
+		if(args().size() == 1) {
+			std::sort(vars.begin(), vars.end());
+		} else {
+			std::sort(vars.begin(), vars.end(), variant_comparator(args()[1], variables));
+		}
+
+		return variant(&vars);
+	}
+};
+
+class filter_function : public function_expression {
+public:
+	explicit filter_function(const args_list& args)
+	    : function_expression(args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		std::vector<variant> vars;
+		const variant items = args()[0]->evaluate(variables);
+		for(int n = 0; n != items.num_elements(); ++n) {
+			const variant val = args()[1]->evaluate(*items[n].as_callable());
+			if(val.as_bool()) {
+				vars.push_back(items[n]);
+			}
+		}
+
+		return variant(&vars);
+	}
+};
+
+class find_element_function : public function_expression {
+public:
+	explicit find_element_function(const args_list& args)
+	    : function_expression(args, 2, 2)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant items = args()[0]->evaluate(variables);
+		for(int n = 0; n != items.num_elements(); ++n) {
+			const variant val = args()[1]->evaluate(*items[n].as_callable());
+			if(val.as_bool()) {
+				return items[n];
+			}
+		}
+
+		return variant();
+	}
+};
+
+class map_function : public function_expression {
+public:
+	explicit map_function(const args_list& args)
+	    : function_expression(args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		std::vector<variant> vars;
+		const variant items = args()[0]->evaluate(variables);
+		for(int n = 0; n != items.num_elements(); ++n) {
+			const variant val = args()[1]->evaluate(*items[n].as_callable());
+			vars.push_back(val);
+		}
+
+		return variant(&vars);
+	}
+};
+
+class sum_function : public function_expression {
+public:
+	explicit sum_function(const args_list& args)
+	    : function_expression(args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		variant res(0);
+		const variant items = args()[0]->evaluate(variables);
+		for(int n = 0; n != items.num_elements(); ++n) {
+			res = res + items[n];
+		}
+
+		return res;
+	}
+};
+
+class head_function : public function_expression {
+public:
+	explicit head_function(const args_list& args)
+	    : function_expression(args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant items = args()[0]->evaluate(variables);
+		return items[0];
+	}
+};
+
+class size_function : public function_expression {
+public:
+	explicit size_function(const args_list& args)
+	    : function_expression(args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant items = args()[0]->evaluate(variables);
+		return variant(static_cast<int>(items.num_elements()));
+	}
+};
+
+class null_function : public function_expression {
+public:
+	explicit null_function(const args_list& args)
+	    : function_expression(args, 0, 0)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		return variant();
+	}
+};
+
+}
+
+variant formula_function_expression::execute(const formula_callable& variables) const
+{
+	map_formula_callable callable;
+	for(int n = 0; n != arg_names_.size(); ++n) {
+		callable.add(arg_names_[n], args()[n]->evaluate(variables));
+	}
+
+	return formula_->execute(callable);
+}
+
+function_expression_ptr formula_function::generate_function_expression(const std::vector<expression_ptr>& args) const
+{
+	return function_expression_ptr(new formula_function_expression(args, formula_, args_));
+}
+
+void function_symbol_table::add_formula_function(const std::string& name, const_formula_ptr formula, const std::vector<std::string>& args)
+{
+	custom_formulas_[name] = formula_function(formula, args);
+}
+
+expression_ptr function_symbol_table::create_function(const std::string& fn, const std::vector<expression_ptr>& args) const
+{
+	const std::map<std::string, formula_function>::const_iterator i = custom_formulas_.find(fn);
+	if(i != custom_formulas_.end()) {
+		return i->second.generate_function_expression(args);
+	}
+
+	return expression_ptr();
+}
+
+expression_ptr create_function(const std::string& fn,
+                               const std::vector<expression_ptr>& args,
+							   const function_symbol_table* symbols)
+{
+	if(symbols) {
+		expression_ptr res(symbols->create_function(fn, args));
+		if(res) {
+			return res;
+		}
+	}
+
+	std::cerr << "FN: '" << fn << "' " << fn.size() << "\n";
+	if(fn == "if") {
+		return expression_ptr(new if_function(args));
+	} else if(fn == "abs") {
+		return expression_ptr(new abs_function(args));
+	} else if(fn == "min") {
+		return expression_ptr(new min_function(args));
+	} else if(fn == "max") {
+		return expression_ptr(new max_function(args));
+	} else if(fn == "choose") {
+		return expression_ptr(new choose_element_function(args));
+	} else if(fn == "wave") {
+		return expression_ptr(new wave_function(args));
+	} else if(fn == "sort") {
+		return expression_ptr(new sort_function(args));
+	} else if(fn == "filter") {
+		return expression_ptr(new filter_function(args));
+	} else if(fn == "find") {
+		return expression_ptr(new find_element_function(args));
+	} else if(fn == "map") {
+		return expression_ptr(new map_function(args));
+	} else if(fn == "sum") {
+		return expression_ptr(new sum_function(args));
+	} else if(fn == "head") {
+		return expression_ptr(new head_function(args));
+	} else if(fn == "rgb") {
+		return expression_ptr(new rgb_function(args));
+	} else if(fn == "transition") {
+		return expression_ptr(new transition_function(args));
+	} else if(fn == "color_transition") {
+		return expression_ptr(new color_transition_function(args));
+	} else if(fn == "size") {
+		return expression_ptr(new size_function(args));
+	} else if(fn == "null") {
+		return expression_ptr(new null_function(args));
+	} else {
+		std::cerr << "no function '" << fn << "'\n";
+		throw formula_error();
+	}
+}
+
+}

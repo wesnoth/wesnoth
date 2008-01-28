@@ -52,7 +52,7 @@ public:
 		const std::pair<gamemap::location,unit>* operator->() const
 			{ return i_->second; }
 
-		std::pair<gamemap::location,unit> operator*() const;
+		const std::pair<gamemap::location,unit>& operator*() const;
 
 		const_iterator operator++()
 			{ return const_iterator(++i_); }
@@ -81,7 +81,7 @@ public:
 		std::pair<gamemap::location,unit> *operator->() const
 			{ return i_->second; }
 
-		std::pair<gamemap::location,unit> operator*() const;
+		std::pair<gamemap::location,unit>& operator*() const;
 
 		iterator operator++()
 			{ return iterator(++i_); }

@@ -1,0 +1,36 @@
+#ifndef REFERENCE_COUNTED_OBJECT_HPP_INCLUDED
+#define REFERENCE_COUNTED_OBJECT_HPP_INCLUDED
+
+#include "boost/intrusive_ptr.hpp"
+
+class reference_counted_object
+{
+public:
+	reference_counted_object() : count_(0) {}
+	reference_counted_object(const reference_counted_object& obj) : count_(0) {}
+	reference_counted_object& operator=(const reference_counted_object& obj) {
+		return *this;
+	}
+	virtual ~reference_counted_object() {}
+
+	void add_ref() const { ++count_; }
+	void dec_ref() const { if(--count_ == 0) { delete const_cast<reference_counted_object*>(this); } }
+
+protected:
+	void turn_reference_counting_off() { count_ = 1000000; }
+private:
+	mutable int count_;
+};
+
+inline void intrusive_ptr_add_ref(const reference_counted_object* obj) {
+	obj->add_ref();
+}
+
+inline void intrusive_ptr_release(const reference_counted_object* obj) {
+	obj->dec_ref();
+}
+
+typedef boost::intrusive_ptr<reference_counted_object> object_ptr;
+typedef boost::intrusive_ptr<const reference_counted_object> const_object_ptr;
+
+#endif

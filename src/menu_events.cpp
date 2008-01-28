@@ -21,6 +21,7 @@
 
 #include "construct_dialog.hpp"
 #include "dialogs.hpp"
+#include "formula_ai.hpp"
 #include "game_display.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
@@ -30,6 +31,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
+#include "playturn.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
@@ -2317,9 +2319,33 @@ private:
 		}
 	}
 
+	void menu_handler::do_ai_formula(const std::string& str,
+			const unsigned int team_num, mouse_handler& mousehandler)
+	{
+		replay dummy_replay;
+		replay_network_sender dummy_sender(dummy_replay);
+		undo_list dummy_undo;
+
+		turn_info turn_data(gameinfo_, gamestate_, status_, *gui_, const_cast<gamemap&>(map_), teams_, team_num, units_, dummy_sender, dummy_undo);
+		ai_interface::info info(*gui_, map_, gameinfo_, units_, teams_, team_num, status_, turn_data, gamestate_);
+		formula_ai eval(info);
+		eval.prepare_move();
+		try {
+			add_chat_message(time(NULL), _("ai"), 0, eval.evaluate(str));
+		} catch(...) {
+			add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
+		}
+	}
+
 	void menu_handler::user_command()
 	{
 		textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
+	}
+
+	void menu_handler::ai_formula()
+	{
+		std::cerr << "showing ai formula...\n";
+		textbox_info_.show(gui::TEXTBOX_AI,sgettext("prompt^Command:"), "", false, *gui_);
 	}
 
 	void menu_handler::clear_messages()

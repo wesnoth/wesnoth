@@ -131,6 +131,10 @@ void playsingle_controller::user_command(){
 	menu_handler_.user_command();
 }
 
+void playsingle_controller::ai_formula(){
+	menu_handler_.ai_formula();
+}
+
 void playsingle_controller::clear_messages(){
 	menu_handler_.clear_messages();
 }

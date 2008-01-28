@@ -527,6 +527,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
 	case hotkey::HOTKEY_USER_CMD:
+	case hotkey::HOTKEY_AI_FORMULA:
 	case hotkey::HOTKEY_CLEAR_MSG:
 #ifdef USRCMD2
 //%%
@@ -585,6 +586,9 @@ void play_controller::enter_textbox()
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.do_command(menu_handler_.get_textbox().box()->text(), player_number_, mouse_handler_);
+		break;
+	case gui::TEXTBOX_AI:
+		menu_handler_.do_ai_formula(menu_handler_.get_textbox().box()->text(), player_number_, mouse_handler_);
 		break;
 	default:
 		LOG_STREAM(err, display) << "unknown textbox mode\n";

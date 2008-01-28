@@ -21,11 +21,12 @@
 class game_display;
 class gamemap;
 
+#include "formula_callable.hpp"
 #include "generic_event.hpp"
 #include "pathfind.hpp"
 #include "gamestatus.hpp"
 
-class ai_interface {
+class ai_interface : public game_logic::formula_callable {
 public:
 
 	//! A convenient typedef for the often used 'location' object
@@ -160,6 +161,9 @@ protected:
 	void raise_unit_recruited() { unit_recruited_.notify_observers(); }
 	void raise_unit_moved() {  unit_moved_.notify_observers(); }
 	void raise_enemy_attacked() { enemy_attacked_.notify_observers(); }
+protected:
+	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	virtual variant get_value(const std::string& key) const;
 private:
 	info info_;
 	int last_interact_;

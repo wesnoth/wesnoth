@@ -134,6 +134,7 @@ public:
 	void end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num);
 	void search();
 	void user_command();
+	void ai_formula();
 	void clear_messages();
 #ifdef USRCMD2
 	void user_command_2();
@@ -147,6 +148,7 @@ public:
 	void do_speak();
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
+	void do_ai_formula(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
 	void autosave(const std::string &label, unsigned turn, const config &starting_pos) const;
 	bool has_team() const;
