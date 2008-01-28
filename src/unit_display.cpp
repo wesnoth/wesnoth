@@ -256,6 +256,7 @@ void unit_recruited(gamemap::location& loc)
 	disp->scroll_to_tile(loc,game_display::ONSCREEN);
 	disp->draw();
 	u->second.set_hidden(false);
+	u->second.set_facing(static_cast<gamemap::location::DIRECTION>(rand()%gamemap::location::NDIRECTIONS));
 	unit_animator animator;
 	animator.add_animation(&u->second,"recruited",loc);
 	animator.start_animations();
