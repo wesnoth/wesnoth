@@ -53,7 +53,7 @@ protected:
 
 	virtual void set_value(const std::string& key, const variant& value);
 	virtual int do_compare(const formula_callable* callable) const {
-		return (int)this - (int)callable;
+		return this < callable ? -1 : (this == callable ? 0 : 1);
 	}
 private:
 	virtual variant get_value(const std::string& key) const = 0;
