@@ -64,7 +64,6 @@ wesnoth_source = \
 	formula_ai.cpp \
 	formula_function.cpp \
 	formula_tokenizer.cpp \
-	game.cpp \
 	game_display.cpp \
 	game_events.cpp \
 	game_preferences.cpp \
@@ -120,6 +119,7 @@ wesnoth_source = \
 #############################################################################
 
 wesnoth_SOURCES = \
+	game.cpp \
 	$(wesnoth_source)
 	
 wesnoth_LDADD = $(THELIBS) libwesnoth.a
@@ -501,7 +501,7 @@ if STATIC
 LDFLAGS += -all-static
 endif
 
-LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS)
+LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS) -lboost_regex-mt
 
 #if STATIC
 #LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \
