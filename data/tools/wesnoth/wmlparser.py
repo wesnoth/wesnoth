@@ -113,7 +113,7 @@ class Parser:
 
     def push_text(self, filename, text, params = None, cd = None):
         """
-        Recrusively parse a sub-document, e.g. when a file is included or a
+        Recursively parse a sub-document, e.g. when a file is included or a
         macro is executed.
         """
         if self.verbose:
@@ -222,6 +222,7 @@ class Parser:
                 if self.check_for("#undef"): return
                 if self.check_for("#textdomain"): return
                 if self.check_for("#ifdef"): return
+                if self.check_for("#ifndef"): return
                 if self.check_for("#else"): return
                 if self.check_for("#end"): return
                 self.read_until("\n")
@@ -301,6 +302,7 @@ class Parser:
                 files.sort()
                 mc = dirpath + "/_main.cfg"
                 fc = dirpath + "/_final.cfg"
+
                 if mc in files:
                     # If there's a file called _main.cfg, only parse that.
                     files = [mc]
@@ -311,6 +313,7 @@ class Parser:
                     files.append(fc)
             else:
                 files = [dirpath]
+            files.reverse()
             for path in files:
                 self.push_text(path, self.read_encoded(path), cd = os.path.dirname(path))
             return None
@@ -534,10 +537,18 @@ class Parser:
                     subdata = wmldata.DataIfDef(name, [], "then")
                     self.parse_top(subdata, "#ifdef")
                     data.insert(subdata)
+                elif self.check_for("ifndef "):
+                    self.read_until(" ")
+                    name = self.read_until(" \n")
+                    if name[-1] == " ": self.read_while(" \n")
+                    name = name[:-1]
+                    subdata = wmldata.DataIfDef(name, [], "then")
+                    self.parse_top(subdata, "#ifndef")
+                    data.insert(subdata)
 
                 elif self.check_for("else"):
                     self.read_until("\n")
-                    if state != "#ifdef":
+                    if state != "#ifdef" and state != "#ifndef":
                         raise Error(self, "#else without #ifdef")
                     subdata = wmldata.DataIfDef("else", [], "else")
                     self.parse_top(subdata, "#else")
@@ -546,7 +557,8 @@ class Parser:
 
                 elif self.check_for("endif"):
                     self.read_until("\n")
-                    if state != "#ifdef" and state != "#else":
+                    if state != "#ifdef" and state != "#else" and state !=\
+                        "#ifndef":
                         self.read_until("\n")
                         raise Error(self, "#endif without #ifdef or #else")
                     return
