@@ -1030,6 +1030,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		desc["mp_countdown_turn_bonus"] = data["mp_countdown_turn_bonus"];
 		desc["mp_countdown_reservoir_time"] = data["mp_countdown_reservoir_time"];
 		desc["mp_countdown_action_bonus"] = data["mp_countdown_action_bonus"];
+		desc["savegame"] = data["savegame"];
 		desc["hash"] = data["hash"];
 		//desc["map_name"] = data["name"];
 		//desc["map_description"] = data["description"];

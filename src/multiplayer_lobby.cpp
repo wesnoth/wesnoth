@@ -450,7 +450,14 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 			if(level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
-				if(map_hashes_) {
+				if ((**game)["savegame"] == "yes") {
+					//! @todo: display of 'Reloaded game' in the MP lobby is
+					// deactivated for now because we have a string freeze and
+					// there is no good string to re-use
+					//games_.back().map_info += " - ";
+					//games_.back().map_info += _("Reloaded game");
+					verified = false;
+				} else if (map_hashes_) {
 					const std::string& hash = (**game)["hash"];
 					bool hash_found = false;
 					for(string_map::const_iterator i = map_hashes_->values.begin(); i != map_hashes_->values.end(); ++i) {
