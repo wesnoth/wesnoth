@@ -524,9 +524,10 @@ int unit_animation::crude_animation::halo_y(const int default_val) const
 }
 double unit_animation::crude_animation::blend_ratio(const double default_val) const
 {
+
 	return get_current_frame().blend_ratio(
 		get_current_frame_time(),
-		ftofxp(blend_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val))); 
+		blend_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val)); 
 }
 
 Uint32 unit_animation::crude_animation::blend_with(const Uint32 default_val) const
@@ -594,7 +595,7 @@ unit_animation::crude_animation::crude_animation(
 	halo_x_ = progressive_int(cfg[frame_string+"halo_x"],get_animation_duration());
 	halo_y_ = progressive_int(cfg[frame_string+"halo_y"],get_animation_duration());
 	std::vector<std::string> tmp_blend=utils::split(cfg[frame_string+"blend_color"]);
-	if(tmp_blend.size() ==3) blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));
+	if(tmp_blend.size() ==3) {blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));};
 	blend_ratio_ = progressive_double(cfg[frame_string+"blend_ratio"],get_animation_duration());
 	highlight_ratio_ = progressive_double(cfg[frame_string+"alpha"],get_animation_duration());
 	offset_ = progressive_double(cfg[frame_string+"offset"],get_animation_duration());

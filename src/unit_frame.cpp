@@ -188,7 +188,12 @@ unit_frame::unit_frame(const config& cfg)
 	sound_ = cfg["sound"];
 	text_ = cfg["text"];
 	std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
-	if(tmp_string_vect.size() ==3) text_color_ = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
+	if(tmp_string_vect.size() ==3) {
+		text_color_ = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
+	} else {
+		text_color_ = 0;
+	}
+
 	if(!cfg["duration"].empty()) {
 		duration_ = atoi(cfg["duration"].c_str());
 	} else {
@@ -198,7 +203,11 @@ unit_frame::unit_frame(const config& cfg)
 	halo_x_ = progressive_int(cfg["halo_x"],duration_);
 	halo_y_ = progressive_int(cfg["halo_y"],duration_);
 	 tmp_string_vect=utils::split(cfg["blend_color"]);
-	if(tmp_string_vect.size() ==3) blend_with_= display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
+	if(tmp_string_vect.size() ==3) {
+	blend_with_= display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
+	} else {
+		blend_with_ = 0;
+	}
 	blend_ratio_ = progressive_double(cfg["blend_ratio"],duration_);
 	highlight_ratio_ = progressive_double(cfg["alpha"],duration_);
 	offset_ = progressive_double(cfg["offset"],duration_);
