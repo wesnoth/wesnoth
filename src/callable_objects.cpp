@@ -71,7 +71,6 @@ void move_map_callable::get_inputs(std::vector<game_logic::formula_input>* input
 
 variant unit_callable::get_value(const std::string& key) const
 {
-	std::cerr << "get_value: '" << key << "': " << (int)&u_ << " -> '" << u_.id() << "'\n";
 	if(key == "x") {
 		return variant(loc_.x+1);
 	} else if(key == "y") {
