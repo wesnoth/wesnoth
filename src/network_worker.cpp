@@ -726,7 +726,7 @@ TCPsocket detect_error()
 			if(i->second == SOCKET_ERRORED) {
 				--socket_errors;
 				const TCPsocket sock = i->first;
-				sockets_locked.erase(++i);
+				sockets_locked.erase(i++);
 				pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
 				remove_buffers(sock);
 				const threading::lock lock_schema(*schemas_mutex);
