@@ -43,7 +43,7 @@ pkgdatadir=$(datadir)/@DATADIR@
 
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(FREETYPE_LIBS) $(LIBINTL) \
-	$(BOOST_IOSTREAMS_LIBS) 
+	$(BOOST_IOSTREAMS_LIBS) -lboost_regex-mt
 
 wesnoth_source = \
 	about.cpp \
