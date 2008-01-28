@@ -120,7 +120,6 @@ wesnoth_source = \
 #############################################################################
 
 wesnoth_SOURCES = \
-	game.cpp \
 	$(wesnoth_source)
 	
 wesnoth_LDADD = $(THELIBS) libwesnoth.a
