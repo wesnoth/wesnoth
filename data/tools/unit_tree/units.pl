@@ -626,7 +626,7 @@ sub CopyImages {
 sub GenerateAnimationInfo {
 	print "Generating animation information\n";
 	my %tags;
-	my @anim = qw/animation death defend healing_anim idle_anim leading_anim movement_anim recruit_anim/;
+	my @anim = qw/attack_anim death defend healing_anim idle_anim leading_anim movement_anim recruit_anim/;
 	my $re_anim = "(";
 	$re_anim .= "$_|" foreach @anim;
 	$re_anim =~ s/\|$/)/;
@@ -642,10 +642,10 @@ sub GenerateAnimationInfo {
 	open (INDEX, "> $html_dir/animations.html") or die "Couldn't create animations.html: $!\n";
 
 	# Load units information
-	my @unitdir = glob("$units_dir/*");
-	foreach (@unitdir) {
+	my @unitsdirs = glob("$units_dir/*");
+	foreach (@unitsdirs) {
 		unless (/(fake|cfg|rpg)$/) {
-			($unitdir = $_) =~ s/(.*)\///;
+			($unitsdirs = $_) =~ s/(.*)\///;
 			@units = glob($_ . '/*.cfg');
 			foreach $unit (@units) {
 				my ($id,$tag,$in,$images);
