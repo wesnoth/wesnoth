@@ -43,7 +43,7 @@ pkgdatadir=$(datadir)/@DATADIR@
 
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(FREETYPE_LIBS) $(LIBINTL) \
-	$(BOOST_IOSTREAMS_LIBS) -lboost_regex-mt
+	$(BOOST_IOSTREAMS_LIBS) $(BOOST_REGEX_LIBS)
 
 wesnoth_source = \
 	about.cpp \
@@ -501,7 +501,7 @@ if STATIC
 LDFLAGS += -all-static
 endif
 
-LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS) -lboost_regex-mt
+LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS)  $(BOOST_REGEX_LDFLAGS)
 
 #if STATIC
 #LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \
