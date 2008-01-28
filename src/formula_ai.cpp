@@ -309,7 +309,7 @@ void formula_ai::prepare_move()
 	enemy_srcdst_.clear();
 	enemy_dstsrc_.clear();
 	possible_moves_dummy.clear();
-	calculate_possible_moves(possible_moves_dummy, full_srcdst_, full_dstsrc_, true);
+	calculate_possible_moves(possible_moves_dummy, enemy_srcdst_, enemy_dstsrc_, true);
 
 	attacks_cache_ = variant();
 }
