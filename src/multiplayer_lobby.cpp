@@ -450,7 +450,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 			if(level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
-				if ((**game)["savegame"] == "yes") {
+				if (utils::string_bool((**game)["savegame"], false)) {
 					//! @todo: display of 'Reloaded game' in the MP lobby is
 					// deactivated for now because we have a string freeze and
 					// there is no good string to re-use
