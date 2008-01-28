@@ -60,14 +60,11 @@ wesnoth_source = \
 	config_adapter.cpp \
 	dialogs.cpp \
 	floating_textbox.cpp \
-<<<<<<< .mine
 	formula.cpp \
 	formula_ai.cpp \
 	formula_function.cpp \
 	formula_tokenizer.cpp \
 	game.cpp \
-=======
->>>>>>> .r23279
 	game_display.cpp \
 	game_events.cpp \
 	game_preferences.cpp \
