@@ -572,9 +572,9 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			(*teams)[index].recruits().insert(*i);
 			preferences::encountered_units().insert(*i);
 
-                        player_info *player=state_of_game->get_player((*teams)[index].save_id());
-                        if(player) {
-                                player->can_recruit.insert(*i);
+			player_info *player=state_of_game->get_player((*teams)[index].save_id());
+			if(player) {
+				player->can_recruit.insert(*i);
 			}
 		}
 	}
@@ -594,9 +594,9 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*teams)[index].recruits().erase(*i);
 
-                        player_info *player=state_of_game->get_player((*teams)[index].save_id());
-                        if(player) {
-                                player->can_recruit.erase(*i);
+			player_info *player=state_of_game->get_player((*teams)[index].save_id());
+			if(player) {
+				player->can_recruit.erase(*i);
 			}
 		}
 	}
@@ -618,9 +618,9 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		can_recruit.clear();
 		std::copy(recruit.begin(),recruit.end(),std::inserter(can_recruit,can_recruit.end()));
 
-                player_info *player=state_of_game->get_player((*teams)[index].save_id());
-                if(player) {
-                        player->can_recruit = can_recruit;
+		player_info *player=state_of_game->get_player((*teams)[index].save_id());
+		if(player) {
+			player->can_recruit = can_recruit;
 		}
 	}
 
@@ -1274,7 +1274,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		std::vector<std::string> types = utils::split(cfg["type"]);
 		if (types.size() == 0) types.push_back("");
 
-                std::vector<std::string> sides = utils::split(cfg["side"]);
+		std::vector<std::string> sides = utils::split(cfg["side"]);
 
 		// Iterate over all the types, and for each type,
 		// try to find a unit that matches
@@ -1296,7 +1296,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			if(itor != units->end())
 				break;
 
-                        bool found = false;
+			bool found = false;
 
 			if(sides.empty() == false) {
 				std::vector<std::string>::const_iterator si;
@@ -1345,8 +1345,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			// Stop searching if we found a unit:
-                        if(found)
-				break;
+			if (found) break;
 		}
 	}
 
@@ -1688,8 +1687,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if(msg != "") {
 			const SDL_Rect rect = screen->map_outside_area();
 			floating_label = font::add_floating_label(msg,size,colour,
-									 rect.w/2,rect.h/2,
-			                         0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
+					rect.w/2,rect.h/2,0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
 		}
 	}
 
@@ -1712,10 +1710,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 	// Display a message dialog
 	else if(cmd == "message") {
-	    // Check if there is any input to be made, if not the message may be skipped
+		// Check if there is any input to be made, if not the message may be skipped
 		const vconfig::child_list menu_items = cfg.get_children("option");
 
-	    const vconfig::child_list text_input_elements = cfg.get_children("text_input");
+		const vconfig::child_list text_input_elements = cfg.get_children("text_input");
 		const bool has_text_input = (text_input_elements.size() == 1);
 
 		bool has_input= (has_text_input || !menu_items.empty() );
@@ -1832,7 +1830,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				|| game_events::conditional_passed(units,(*mi).child("show_if"))) {
 				options.push_back(msg_str);
 				option_events.push_back((*mi).get_children("command"));
-            }
+			}
 		}
 
 		if(text_input_elements.size()>1) {
@@ -1855,60 +1853,60 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		// If we're not replaying, or if we are replaying
 		// and there is no input to be made, show the dialog.
 		if(get_replay_source().at_end() || (options.empty() && !has_text_input) ) {
-  
+
 			if (side_for_show && !get_replay_source().is_skipping())
 			{
-                const t_string msg = cfg["message"];
-    			const std::string duration_str = cfg["duration"];
-    			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-    			const SDL_Rect& map_area = screen->map_outside_area();
-    
-    			try {
-    				wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
-    					msg, ((options.empty()&& !has_text_input)? gui::MESSAGE : gui::OK_ONLY));
-    				if(!surface.null()) {
-    					to_show.set_image(surface, caption);
-    				}
-    				if(!options.empty()) {
-    					to_show.set_menu(options);
-    				}
+				const t_string msg = cfg["message"];
+				const std::string duration_str = cfg["duration"];
+				const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
+				const SDL_Rect& map_area = screen->map_outside_area();
+
+				try {
+					wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
+						msg, ((options.empty()&& !has_text_input)? gui::MESSAGE : gui::OK_ONLY));
+					if(!surface.null()) {
+						to_show.set_image(surface, caption);
+					}
+					if(!options.empty()) {
+						to_show.set_menu(options);
+					}
 					if(has_text_input) {
 						std::string text_input_label=text_input_element["label"];
 						std::string text_input_content=text_input_element["text"];
 						std::string max_size_str=text_input_element["max_length"];
 						int input_max_size=lexical_cast_default<int>(max_size_str, 256);
 						if(input_max_size>1024||input_max_size<1){
-						    lg::wml_error << "invalid maximum size for input "<<input_max_size<<"\n";
-						    input_max_size=256;
-                        }
+							lg::wml_error << "invalid maximum size for input "<<input_max_size<<"\n";
+							input_max_size=256;
+						}
 						to_show.set_textbox(text_input_label, text_input_content, input_max_size);
 					}
-    				gui::dialog::dimension_measurements dim = to_show.layout();
-    				to_show.get_menu().set_width( dim.menu_width );
-    				to_show.get_menu().set_max_width( dim.menu_width );
-    				to_show.get_menu().wrap_words();
-    				static const int dialog_top_offset = 26;
-    				to_show.layout(-1, map_area.y + dialog_top_offset);
-    				option_chosen = to_show.show(lifetime);
+					gui::dialog::dimension_measurements dim = to_show.layout();
+					to_show.get_menu().set_width( dim.menu_width );
+					to_show.get_menu().set_max_width( dim.menu_width );
+					to_show.get_menu().wrap_words();
+					static const int dialog_top_offset = 26;
+					to_show.layout(-1, map_area.y + dialog_top_offset);
+					option_chosen = to_show.show(lifetime);
 					if(has_text_input) {
 						text_input_result=to_show.textbox_text();
 					}
-    				LOG_DP << "showed dialog...\n";
+					LOG_DP << "showed dialog...\n";
 
-    				if (option_chosen == gui::ESCAPE_DIALOG) {
-    					skip_messages = true;
-    				}
+					if (option_chosen == gui::ESCAPE_DIALOG) {
+						skip_messages = true;
+					}
 
-    				if(!options.empty()) {
-    					recorder.choose_option(option_chosen);
-    				}
-                    if(has_text_input) {
+					if(!options.empty()) {
+						recorder.choose_option(option_chosen);
+					}
+					if(has_text_input) {
 						recorder.text_input(text_input_result);
 					}
-    			} catch(utils::invalid_utf8_exception&) {
-    				// we already had a warning so do nothing.
-    			}
-            }
+				} catch(utils::invalid_utf8_exception&) {
+					// we already had a warning so do nothing.
+				}
+			}
 
 		// Otherwise if an input has to be made, get it from the replay data
 		} else {
@@ -1928,7 +1926,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				const std::string& val = (*(action->get_children("choose").front()))["value"];
 				option_chosen = atol(val.c_str());
 			}
-            if(has_text_input) {
+			if(has_text_input) {
 				do_replay_handle(*screen,*game_map,*game_data_ptr,*units,*teams,
 						   side ,*status_ptr,*state_of_game,std::string("input"));
 				const config* action = get_replay_source().get_next_action();
@@ -1994,22 +1992,23 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		// If the filter doesn't contain positional information,
 		// then it may match units on all recall lists.
 		if(cfg["x"].empty() && cfg["y"].empty()) {
-                  std::map<std::string, player_info>& players=state_of_game->players;
+			std::map<std::string, player_info>& players=state_of_game->players;
 
-                  for(std::map<std::string, player_info>::iterator pi = players.begin();
-                      pi!=players.end(); ++pi) {
-                        std::vector<unit>& avail_units = pi->second.available_units;
-			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				assert(game_data_ptr != NULL);
-				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
-				scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
-				if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
-                            j = avail_units.erase(j);
-                          } else {
-                            ++j;
-                          }
+			for(std::map<std::string, player_info>::iterator pi = players.begin();
+					pi!=players.end(); ++pi)
+			{
+				std::vector<unit>& avail_units = pi->second.available_units;
+				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+					assert(game_data_ptr != NULL);
+					j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+					scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
+					if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
+						j = avail_units.erase(j);
+					} else {
+						++j;
+					}
+				}
 			}
-                  }
 		}
 	}
 	
@@ -2183,7 +2182,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					
 					// The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel, true);
-}
+				}
 				
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
