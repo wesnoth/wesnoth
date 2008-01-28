@@ -45,8 +45,10 @@ void ai::do_attack_analysis(
 	// This function is called fairly frequently, so interact with the user here.
 	raise_user_interact();
 
-	if(cur_analysis.movements.size() >= size_t(attack_depth()))
+	if(cur_analysis.movements.size() >= size_t(attack_depth())) {
+		std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << attack_depth() << "\n";
 		return;
+	}
 
 	static double best_results[6];
 	if(result.empty()) {
@@ -242,7 +244,8 @@ void ai::do_attack_analysis(
 
 			cur_analysis.analyze(map_, units_, teams_, state_, gameinfo_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
 
-			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
+			//Remove this short-circuiting logic for now.. --David
+			if(true) { //cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
 				used_locations[cur_position] = true;
