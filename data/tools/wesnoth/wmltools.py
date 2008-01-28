@@ -237,8 +237,8 @@ class CrossRef:
                                     defn.append(fn, n+1)
                             if candidates > 1:
                                 print "%s: more than one definition of %s is visible here." % (Reference(fn, n), name)
-                            if candidates == 0:
-                                 self.unresolved.append((name, Reference(fn,n+1)))
+                        if candidates == 0:
+                            self.unresolved.append((name, Reference(fn,n+1)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
