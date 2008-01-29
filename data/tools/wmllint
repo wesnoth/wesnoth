@@ -559,6 +559,7 @@ def sanity_check(filename, lines):
     unit_id = ""
     in_attack_filter = False
     has_special_notes = False
+    derived_unit = False
     for i in range(len(lines)):
         if "[attack_filter]" in lines[i]:
             in_attack_filter = True
@@ -572,7 +573,7 @@ def sanity_check(filename, lines):
         elif "[/unit]" in lines[i]:
             #print '"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit, traits, notes)
-            if unit_id:
+            if unit_id and not derived_unit:
                 missing_notes = []
                 for trait in traits:
                     tn = trait_note[trait]
@@ -606,6 +607,8 @@ def sanity_check(filename, lines):
                     unit_id = unit_id[1:].strip()
             if "{SPECIAL_NOTES}" in lines[i]:
                 has_special_notes = True
+            if "[base_unit]" in lines[i]:
+                derived_unit = True
             for (p, q) in notepairs:
                 if p in lines[i]:
                     traits.append(p)
@@ -737,157 +740,161 @@ def hack_syntax(filename, lines):
                     unit_sound = value
                 elif key == "image" and not unit_image:
                     unit_image = value
-    # Boucman's transformation of animation syntax
-    class anim_frame:
-        def __init__(self, attackline, attackname, lineno, female, variation):
-            self.attackstart = attackline
-            self.name = attackname
-            self.animstart = lineno
-            self.female = female
-            self.variation = variation
-            self.animend = None
-            self.attackend = None
-        def __repr__(self):
-            return `self.__dict__`
-    in_attack = in_animation = in_female = False
-    animations = []
-    attackname = None
-    attackline = None
-    for i in range(len(lines)):
-        if "no-syntax-rewrite" in lines[i]:
-            break
-        elif "[female]" in lines[i]:
-            in_female = True
-        elif "[/female]" in lines[i]:
-            in_female = False
-        elif "[variation]" in lines[i]:
-            variation_index += 1
-            in_variation = True
-        elif "[/variation]" in lines[i]:
-            in_variation = False
-        elif "[unit]" in lines[i]:
-            in_attack = in_animation = in_female = in_variation = False
-            female_attack_index = -1
-            variation_index = 0
-            male_attack_start = len(animations)
-        elif "[attack]" in lines[i]:
-            in_attack = True;
-            attackname = None
-            attackline = i
-            if in_female:
-                female_attack_index += 1
-        elif "[animation]" in lines[i] and in_attack:
-            #if verbose:
-            #    print '"%s", line %d: [animation] within [attack]' \
-            #          % (filename, i+1)
-            # This weird piece of code is because attacks for female
-            # variants don't have names.  Instead, they're supposed
-            # to pick up the name of the corresponding male attack,
-            # where correspondence is by order of declaration.  The
-            # male_attack_start variable copes with the possibility
-            # of multiple units per file.
-            if attackname == None and in_female:
-                attackname = animations[male_attack_start + female_attack_index].name
-            if not attackname:
-                print '"%s", line %d: cannot deduce attack name'%(filename, i+1)
-            if in_variation:
-                variation = variation_index
-            else:
-                variation = None
-            animations.append(anim_frame(attackline, attackname, i, in_female, variation))
-            in_animation = True
-        elif "[/animation]" in lines[i] and in_attack:
-            in_animation = False
-            if animations and animations[-1].animstart != None and animations[-1].animend == None:
-                animations[-1].animend = i
-            else:
-                print '"%s", line %d: [animation] ending here may be ill-formed'%(filename, i+1)
-        elif "[/attack]" in lines[i]:
-            inattack = False;
-            attackname = None
-            if animations and (animations[-1].attackstart == None or animations[-1].attackend != None):
-                print '"%s", line %d: [attack] ending here may be ill-formed'%(filename, i+1)
-            elif animations:
-                # This loop is needed because a single attack tag may
-                # enclose both hit and miss animations.
-                j = len(animations)-1
-                while True:
-                    animations[j].attackend = i
-                    j -= 1
-                    if j < 0 or animations[j].attackend != None:
-                        break
-        # Only pick up the *first* name field in an attack block;
-        # by convention, it will be right after the opening [attack] tag
-        elif in_attack and not in_animation and not attackname:
-            #print filename + ":" + `i+1` + ";" + `lines[i]` 
-            fields = lines[i].strip().split('#')
-            syntactic = fields[0]
-            comment = ""
-            if len(fields) > 1:
-                comment = fields[1]
-            if syntactic.strip().startswith("name"):
-                attackname = syntactic.split("=")[1].strip()
-    boucmanized = False
-    # All animation ranges have been gathered,  We have a list of objects
-    # containing the attack information.  Reverse it, because we're
-    # going to process them back to front to avoid invalidating the
-    # already-collected line numbers.  Then pull out the animation
-    # WML and stash it in the frame objects.
-    animations.reverse()
-    for aframe in animations:
-        if verbose:
-            print '"%s", line %d: lifting animation block at %d:%d for %s attack (%d:%d)' % (filename, aframe.animstart+1, aframe.animstart+1, aframe.animend+1, aframe.name, aframe.attackstart+1, aframe.attackend+1)
-        # Make a copy of the animation block, change its enclosing tags,
-        # outdent it, and add the needed filter clause.
-        animation = lines[aframe.animstart:aframe.animend+1]
-        animation[0] = animation[0].replace("[animation]", "[attack_anim]")
-        animation[-1] = animation[-1].replace("[/animation]","[/attack_anim]")
-        for i in range(len(animation)):
-            animation[i] = outdent(animation[i])
-        indent = leader(animation[1])
-        animation.insert(1, indent + "[/attack_filter]\n")
-        animation.insert(1, indent + baseindent + "name="+aframe.name+"\n")
-        animation.insert(1, indent + "[attack_filter]\n")
-        # Save it and delete it from its original location
-        aframe.wml = "".join(animation)
-        lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
-        modcount += 1
-        boucmanized = True
-    # Insert non-variation attacks where they belong
-    female_attacks = filter(lambda a: a.female and a.variation == None, animations)
-    female_attacks.reverse()
-    if female_attacks:
-        female_end = -1
+    # Boucman's transformation of animation syntax.
+    # Wrap this in try/except because some newer animation syntax chokes it.
+    try:
+        class anim_frame:
+            def __init__(self, attackline, attackname, lineno, female, variation):
+                self.attackstart = attackline
+                self.name = attackname
+                self.animstart = lineno
+                self.female = female
+                self.variation = variation
+                self.animend = None
+                self.attackend = None
+            def __repr__(self):
+                return `self.__dict__`
+        in_attack = in_animation = in_female = False
+        animations = []
+        attackname = None
+        attackline = None
         for i in range(len(lines)):
-            if lines[i].endswith("[/female]\n"):
-                female_end = i
+            if "no-syntax-rewrite" in lines[i]:
                 break
-        assert female_end != -1
-        female_wml = "".join(map(lambda x: x.wml, female_attacks))
-        lines = lines[:female_end] + [female_wml] + lines[female_end:]
-    male_attacks = filter(lambda a: not a.female and a.variation == None, animations)
-    male_attacks.reverse()
-    if male_attacks:
-        male_end = -1
-        for i in range(len(lines)):
-            # Male attacks go either before the [female] tag or just
-            # before the closing [/unit]
-            if lines[i].endswith("[/unit]\n") or lines[i].endswith("[female]\n"):
-                male_end = i
-                break
-        assert male_end != -1
-        male_wml = "".join(map(lambda x: x.wml, male_attacks))
-        lines = lines[:male_end] + [male_wml] + lines[male_end:]
-    # Now insert variation attacks where they belong.
-    for animation in animations:
-        if animation.variation != None:
-            vcount = 0
-            for j in range(len(lines)):
-                if "[/variation]" in lines[j]:
-                    vcount += 1
-                if vcount == animation.variation:
+            elif "[female]" in lines[i]:
+                in_female = True
+            elif "[/female]" in lines[i]:
+                in_female = False
+            elif "[variation]" in lines[i]:
+                variation_index += 1
+                in_variation = True
+            elif "[/variation]" in lines[i]:
+                in_variation = False
+            elif "[unit]" in lines[i]:
+                in_attack = in_animation = in_female = in_variation = False
+                female_attack_index = -1
+                variation_index = 0
+                male_attack_start = len(animations)
+            elif "[attack]" in lines[i]:
+                in_attack = True;
+                attackname = None
+                attackline = i
+                if in_female:
+                    female_attack_index += 1
+            elif "[animation]" in lines[i] and in_attack:
+                #if verbose:
+                #    print '"%s", line %d: [animation] within [attack]' \
+                #          % (filename, i+1)
+                # This weird piece of code is because attacks for female
+                # variants don't have names.  Instead, they're supposed
+                # to pick up the name of the corresponding male attack,
+                # where correspondence is by order of declaration.  The
+                # male_attack_start variable copes with the possibility
+                # of multiple units per file.
+                if attackname == None and in_female:
+                    attackname = animations[male_attack_start + female_attack_index].name
+                if not attackname:
+                    print '"%s", line %d: cannot deduce attack name'%(filename, i+1)
+                if in_variation:
+                    variation = variation_index
+                else:
+                    variation = None
+                animations.append(anim_frame(attackline, attackname, i, in_female, variation))
+                in_animation = True
+            elif "[/animation]" in lines[i] and in_attack:
+                in_animation = False
+                if animations and animations[-1].animstart != None and animations[-1].animend == None:
+                    animations[-1].animend = i
+                else:
+                    print '"%s", line %d: [animation] ending here may be ill-formed'%(filename, i+1)
+            elif "[/attack]" in lines[i]:
+                inattack = False;
+                attackname = None
+                if animations and (animations[-1].attackstart == None or animations[-1].attackend != None):
+                    print '"%s", line %d: [attack] ending here may be ill-formed'%(filename, i+1)
+                elif animations:
+                    # This loop is needed because a single attack tag may
+                    # enclose both hit and miss animations.
+                    j = len(animations)-1
+                    while True:
+                        animations[j].attackend = i
+                        j -= 1
+                        if j < 0 or animations[j].attackend != None:
+                            break
+            # Only pick up the *first* name field in an attack block;
+            # by convention, it will be right after the opening [attack] tag
+            elif in_attack and not in_animation and not attackname:
+                #print filename + ":" + `i+1` + ";" + `lines[i]` 
+                fields = lines[i].strip().split('#')
+                syntactic = fields[0]
+                comment = ""
+                if len(fields) > 1:
+                    comment = fields[1]
+                if syntactic.strip().startswith("name"):
+                    attackname = syntactic.split("=")[1].strip()
+        boucmanized = False
+        # All animation ranges have been gathered,  We have a list of objects
+        # containing the attack information.  Reverse it, because we're
+        # going to process them back to front to avoid invalidating the
+        # already-collected line numbers.  Then pull out the animation
+        # WML and stash it in the frame objects.
+        animations.reverse()
+        for aframe in animations:
+            if verbose:
+                print '"%s", line %d: lifting animation block at %d:%d for %s attack (%d:%d)' % (filename, aframe.animstart+1, aframe.animstart+1, aframe.animend+1, aframe.name, aframe.attackstart+1, aframe.attackend+1)
+            # Make a copy of the animation block, change its enclosing tags,
+            # outdent it, and add the needed filter clause.
+            animation = lines[aframe.animstart:aframe.animend+1]
+            animation[0] = animation[0].replace("[animation]", "[attack_anim]")
+            animation[-1] = animation[-1].replace("[/animation]","[/attack_anim]")
+            for i in range(len(animation)):
+                animation[i] = outdent(animation[i])
+            indent = leader(animation[1])
+            animation.insert(1, indent + "[/attack_filter]\n")
+            animation.insert(1, indent + baseindent + "name="+aframe.name+"\n")
+            animation.insert(1, indent + "[attack_filter]\n")
+            # Save it and delete it from its original location
+            aframe.wml = "".join(animation)
+            lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
+            modcount += 1
+            boucmanized = True
+        # Insert non-variation attacks where they belong
+        female_attacks = filter(lambda a: a.female and a.variation == None, animations)
+        female_attacks.reverse()
+        if female_attacks:
+            female_end = -1
+            for i in range(len(lines)):
+                if lines[i].endswith("[/female]\n"):
+                    female_end = i
                     break
-            lines = lines[:j] + [animation.wml] + lines[j:]
+            assert female_end != -1
+            female_wml = "".join(map(lambda x: x.wml, female_attacks))
+            lines = lines[:female_end] + [female_wml] + lines[female_end:]
+        male_attacks = filter(lambda a: not a.female and a.variation == None, animations)
+        male_attacks.reverse()
+        if male_attacks:
+            male_end = -1
+            for i in range(len(lines)):
+                # Male attacks go either before the [female] tag or just
+                # before the closing [/unit]
+                if lines[i].endswith("[/unit]\n") or lines[i].endswith("[female]\n"):
+                    male_end = i
+                    break
+            assert male_end != -1
+            male_wml = "".join(map(lambda x: x.wml, male_attacks))
+            lines = lines[:male_end] + [male_wml] + lines[male_end:]
+        # Now insert variation attacks where they belong.
+        for animation in animations:
+            if animation.variation != None:
+                vcount = 0
+                for j in range(len(lines)):
+                    if "[/variation]" in lines[j]:
+                        vcount += 1
+                    if vcount == animation.variation:
+                        break
+                lines = lines[:j] + [animation.wml] + lines[j:]
+    except TypeError:
+        pass
     # Garbage-collect any empty [attack] scopes left behind;
     # this is likely to happen with female-variant units.
     nullattack = True
