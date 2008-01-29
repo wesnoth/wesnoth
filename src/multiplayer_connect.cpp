@@ -376,7 +376,7 @@ void connect::side::process_event()
 				int old_side = parent_->find_player_side(new_id);
 				if (old_side != -1) {
 					if (id_.empty()) {
-						parent_->sides_[old_side].set_controller(controller_);
+						parent_->sides_[old_side].set_controller(parent_->default_controller_);
 					} else {
 						parent_->sides_[old_side].set_id(id_);
 					}
@@ -1023,6 +1023,8 @@ const game_state& connect::get_state()
 
 void connect::start_game()
 {
+	// Set random start ToD
+	gamestatus game_status(level_,atoi(level_["turns"].c_str()),&state_);
 	// Resolves the "random faction", "random gender" and "random message"
 	for (side_list::iterator itor = sides_.begin(); itor != sides_.end();
 			++itor) {
@@ -1033,7 +1035,7 @@ void connect::start_game()
 	config lock;
 	lock.add_child("stop_updates");
 	network::send_data(lock, 0, true);
-	update_and_send_diff(true);
+	update_and_send_diff();
 
 	// Build the gamestate object after updating the level
 	
@@ -1587,17 +1589,11 @@ void connect::update_level()
 	}
 }
 
-void connect::update_and_send_diff(bool update_time_of_day)
+void connect::update_and_send_diff()
 {
 	config old_level = level_;
 	update_level();
 
-	if (update_time_of_day)
-	{
-		// Set random start ToD
-		gamestatus game_status(level_,atoi(level_["turns"].c_str()),&state_);
-
-	}
 	config diff = level_.get_diff(old_level);
 	if (!diff.empty()) {
 		config scenario_diff;
