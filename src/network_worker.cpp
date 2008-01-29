@@ -566,11 +566,11 @@ manager::~manager()
 
 		threads.clear();
 
+		delete cond;
 		delete management_mutex;
 		delete  stats_mutex;
 		delete schemas_mutex;
 		delete received_mutex;
-		delete cond;
 		management_mutex = NULL;
 		stats_mutex = 0;
 		schemas_mutex = 0;
