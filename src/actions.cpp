@@ -736,7 +736,14 @@ void attack::fire_event(const std::string& n)
 		dat.add_child("first");
 		dat.add_child("second");
 		if(a_ != units_.end()) {
-			(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
+			if (a_stats_->weapon)
+			{
+				(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
+			}
+			else
+			{
+				(*(dat.child("first")))["weapon"]="none";
+			}
 
 		}
 		if(d_ != units_.end()) {
@@ -758,8 +765,7 @@ void attack::fire_event(const std::string& n)
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n, 
 				attacker_,
 				defender_, dat));
-		a_ = units_.find(attacker_);
-		d_ = units_.find(defender_);
+		refresh_bc();
 		return;
 	}
 	const int defender_side = d_->second.side();
@@ -793,6 +799,7 @@ void attack::fire_event(const std::string& n)
 		fire_event("attack_end");
 		throw attack_end_exception();
 	}
+	refresh_bc();
 }
 
 void attack::refresh_bc()
@@ -802,7 +809,8 @@ void attack::refresh_bc()
 	if(a_ == units_.end() || d_ == units_.end()) {
 		return;
 	}
-	*bc_ =	battle_context(map_, teams_, units_, state_, info_, attacker_, defender_, attack_with_, defend_with_);
+	delete bc_;
+	bc_ = new battle_context(map_, teams_, units_, state_, info_, attacker_, defender_, attack_with_, defend_with_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	attacker_cth_ = a_stats_->chance_to_hit;
@@ -895,7 +903,6 @@ attack::attack(game_display& gui, const gamemap& map,
 	} catch (attack_end_exception) {
 		return;
 	}
-	refresh_bc();
 
 	DBG_NG << "getting attack statistics\n";
 	statistics::attack_context attack_stats(a_->second, d_->second, a_stats_->chance_to_hit, d_stats_->chance_to_hit);
@@ -1025,18 +1032,14 @@ attack::attack(game_display& gui, const gamemap& map,
 				try {
 					fire_event("attacker_hits");
 				} catch (attack_end_exception) {
-					refresh_bc();
 					break;
 				}
-				refresh_bc();
 			} else {
 				try {
 					fire_event("attacker_misses");
 				} catch (attack_end_exception) {
-					refresh_bc();
 					break;
 				}
-				refresh_bc();
 			}
 
 			DBG_NG << "done attacking\n";
@@ -1066,9 +1069,9 @@ attack::attack(game_display& gui, const gamemap& map,
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, attacker_loc));
+				a_ == units_.find(attacker_);
+				d_ == units_.find(defender_);
 
-				d_ = units_.find(death_loc);
-				a_ = units_.find(attacker_loc);
 				if(d_ == units_.end() || !death_loc.matches_unit(d_->second)
 				|| d_->second.hitpoints() > 0) {
 					// WML has invalidated the dying unit, abort
@@ -1083,7 +1086,6 @@ attack::attack(game_display& gui, const gamemap& map,
 					// WML has invalidated the killing unit
 					attacker_invalid = true;
 				}
-				refresh_bc();
 				if(attacker_invalid) {
 					unit_display::unit_die(d_->first, d_->second, NULL, d_stats_->weapon, NULL);
 				} else {
@@ -1091,9 +1093,10 @@ attack::attack(game_display& gui, const gamemap& map,
 				}
 
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,attacker_loc));
+				
+				a_ == units_.find(attacker_);
+				d_ == units_.find(defender_);
 
-				d_ = units_.find(death_loc);
-				a_ = units_.find(attacker_loc);
 				if(d_ == units_.end() || !death_loc.matches_unit(d_->second)) {
 					// WML has invalidated the dying unit, abort
 					break;
@@ -1107,7 +1110,6 @@ attack::attack(game_display& gui, const gamemap& map,
 					// WML has invalidated the killing unit, abort
 					break;
 				}
-				refresh_bc();
 
 				if(a_stats_->plagues) {
 					// plague units make new units on the target hex
@@ -1279,18 +1281,14 @@ attack::attack(game_display& gui, const gamemap& map,
 				try {
 					fire_event("defender_hits");
 				} catch (attack_end_exception) {
-					refresh_bc();
 					break;
 				}
-				refresh_bc();
 			} else {
 				try {
 					fire_event("defender_misses");
 				} catch (attack_end_exception) {
-					refresh_bc();
 					break;
 				}
-				refresh_bc();
 			}
 			attack_stats.defend_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES, defender_damage_);
@@ -1322,7 +1320,9 @@ attack::attack(game_display& gui, const gamemap& map,
 				fire_event("attack_end");
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc));
 
-				refresh_bc();
+				
+				a_ == units_.find(attacker_);
+				d_ == units_.find(defender_);
 
 				if(a_ == units_.end() || !death_loc.matches_unit(a_->second)) {
 					// WML has invalidated the dying unit, abort
@@ -1405,7 +1405,6 @@ attack::attack(game_display& gui, const gamemap& map,
 		}
 		if(n_attacks_ <= 0 && n_defends_ <= 0) {
 			fire_event("attack_end");
-			refresh_bc();
 		}
 	}
 
