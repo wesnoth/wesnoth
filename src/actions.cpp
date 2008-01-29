@@ -739,6 +739,10 @@ void attack::fire_event(const std::string& n)
 			(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
 
 		}
+		else
+		{
+			a_id_ = "";
+		}
 		if(d_ != units_.end()) {
 			config *tempcfg = dat.child("second");
 			t_string d_weap = "none";
@@ -753,11 +757,15 @@ void attack::fire_event(const std::string& n)
 			std::pair<std::string,t_string> to_insert("weapon", d_weap);
 			tempcfg->values.insert(to_insert);
 		}
+		else
+		{
+			d_id_ = "";
+		}
 
 		// We want to fire attack_end event in any case! Even if one of units was removed by WML
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n, 
-				attacker_,
-				defender_, dat));
+				game_events::entity_location(attacker_,a_id_),
+				game_events::entity_location(defender_,d_id_), dat));
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
@@ -769,7 +777,9 @@ void attack::fire_event(const std::string& n)
 	dat.add_child("second");
 	(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
 	(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
-	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,attacker_,defender_,dat));
+	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
+								game_events::entity_location(attacker_,a_id_),
+								game_events::entity_location(defender_,d_id_),dat));
 	
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist
