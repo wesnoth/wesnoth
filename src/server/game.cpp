@@ -18,6 +18,7 @@
 #include "../util.hpp"
 #include "../wassert.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 
