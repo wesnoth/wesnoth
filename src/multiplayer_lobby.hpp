@@ -46,6 +46,7 @@ public:
 		std::string time_limit;
 		size_t vacant_slots;
 		unsigned int current_turn;
+		bool reloaded;
 		bool started;
 		bool fog;
 		bool shroud;

@@ -126,10 +126,10 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	// Set font color
 	SDL_Color font_color;
 	if (game.vacant_slots > 0) {
-		if (!game.started) {
-			font_color = font::GOOD_COLOUR;
-		} else {
+		if (game.reloaded || game.started) {
 			font_color = font::YELLOW_COLOUR;
+		} else {
+			font_color = font::GOOD_COLOUR;
 		}
 	} else {
 		if (game.observers) {
@@ -450,7 +450,8 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 			if(level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
-				if (utils::string_bool((**game)["savegame"], false)) {
+				games_.back().reloaded = (**game)["savegame"] == "yes";
+				if (games_.back().reloaded) {
 					//! @todo: display of 'Reloaded game' in the MP lobby is
 					// deactivated for now because we have a string freeze and
 					// there is no good string to re-use
