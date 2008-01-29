@@ -2378,13 +2378,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					int num_attacks= attacks_.size();
 					for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
 						if (a->matches_filter(**i.first,false)) {
-							if (num_attacks > 1) {
-								attacks_.erase(a--);
-								num_attacks--;
-							} else {
-								// Don't remove the last attack
-								LOG_STREAM(err, config) << "[effect] tried to remove the last attack : ignored.\n";
-							}
+							attacks_.erase(a--);
+							num_attacks--;
 						}
 					}
 				} else if(apply_to == "attack") {
