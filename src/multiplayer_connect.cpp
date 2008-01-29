@@ -1541,7 +1541,7 @@ void connect::load_game()
 
 	// Initialize the list of sides available for the current era.
 	const config* const era_cfg = game_config().find_child("era", "id", era);
-	if(era_cfg == NULL) {
+	if(era_cfg == NULL && !params_.saved_game) {
 		utils::string_map i18n_symbols;
 		i18n_symbols["era"] = era;
 		throw config::error(vgettext("Cannot find era $era", i18n_symbols));
