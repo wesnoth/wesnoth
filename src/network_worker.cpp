@@ -515,6 +515,7 @@ static int process_queue(void*)
 			// Now add data
 			const threading::lock lock_received(*received_mutex);
 			received_data_queue.push_back(received_data);
+			received_data.reset(); // give up ownership before freeing mutex
 		}
 		check_socket_result(sock,result);
 	}
@@ -642,6 +643,7 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 		bufs.push_back(queued_buf);
 
 		sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY));
+		queued_buf.reset(); // Free ownership before others thread can access shared_ptr
 	}
 
 	cond->notify_one();
