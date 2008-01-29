@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-27 13:24+0100\n"
-"PO-Revision-Date: 2008-01-12 13:29+0100\n"
+"PO-Revision-Date: 2008-01-29 16:05+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -503,6 +503,13 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Wenn Ihr in einem Szenario den Sieg errungen habt, ändert sich die "
+"Schaltfläche »Zug beenden« in »Szenario beenden«. Nun könnt Ihr beispielsweise "
+"Eure Speicheroptionen ändern oder (falls Ihr Euch in einer Mehrspielerpartie "
+"befindet) Euch mit anderen Spielern unterhalten, bevor Ihr mit dem Spiel "
+"fortfahrt."
 
 #: data/core/help.cfg:148
 msgid "Recruiting and Recalling"
@@ -1406,7 +1413,6 @@ msgstr ""
 "text=robust</ref> und <ref>dst=traits_strong text=kräftig</ref>."
 
 #: data/core/help.cfg:320
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1418,8 +1424,10 @@ msgstr ""
 "\n"
 "\n"
 "Andere spezielle Charakteristika, die einzelnen Einheiten zugewiesen sein "
-"können, sind <ref>dst=traits_loyal text=loyal</ref>, <ref>dst=traits_undead "
-"text=untot</ref> und <ref>dst=traits_dextrous text=treffsicher</ref>."
+"können, sind <ref>dst=traits_dextrous text=treffsicher</ref>, "
+"<ref>dst=traits_loyal text=loyal</ref> und <ref>dst=traits_undead "
+"text=untot</ref>.\n"
+"\n"
 
 #: data/core/help.cfg:325
 msgid "Intelligent"
@@ -2305,7 +2313,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:675
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2316,10 +2323,12 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Wechselt die Kontrolle einer Fraktion zwischen KI und einem normalen Spieler "
-"hin und her. Der Spieler, der die zu ändernde Seite kontrolliert, muss "
-"dieses Kommando ausführen. Wenn keine Seite angegeben wird, wird die "
-"momentan aktive verwendet.\n"
+"Setzt oder wechselt die Kontrolle einer Fraktion zwischen KI und einem "
+"normalen Spieler. Der Spieler, der die zu ändernde Seite kontrolliert, muss "
+"dieses Kommando ausführen. Wenn kein zweiter Parameter angegeben wurde, wird "
+"zwischen KI und Spieler gewechselt. Ist der Wert »on«, übernimmt die KI. Ist "
+"der Wert »off«, übernimmt der Spieler. Wenn keine Seite angegeben wird, wird "
+"die momentan aktive verwendet.\n"
 "\n"
 
 #: data/core/help.cfg:678
@@ -4042,6 +4051,10 @@ msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+" Diese Einheit findet in jedweden Dörfern (mit Ausnahme von Behausungen des "
+"Meervolkes) ein Versteck. Sie kann nur von Einheiten aufgespürt werden, die "
+"auf einem direkt benachbarten Feld stehen. Zudem wird sie sichtbar, sobald "
+"sie angreift."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -5502,6 +5515,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Sollte ein Gegner ein bestimmtes Gelände besser zu seinem Vorteil nutzen "
+"können, besetzt es vor ihm und bringt ihn um seinen Vorteil."
 
 #: data/hardwired/tips.cfg:199
 msgid ""
@@ -5509,6 +5524,10 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Nur wenige Einheiten können sich im Wasser ihrer Haut erwehren. Lasst Eure "
+"Truppen am Ufer eine Angriffslinie bilden und des Gegners Truppen fallen in "
+"Scharen. Elfen vermögen gleiches an Waldrändern und Zwerge an den "
+"Gebirgsrändern."
 
 #: data/scenario-test.cfg:698
 msgid "ruby of fire"
@@ -5793,7 +5812,6 @@ msgid "Overwrite?"
 msgstr "Überschreiben?"
 
 #: src/dialogs.cpp:287
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
@@ -6077,11 +6095,11 @@ msgstr "Auf diesem Server sind keine Erweiterungen verfügbar."
 
 #: src/game.cpp:1237
 msgid "Get Add-ons"
-msgstr "Erweiterungen holen"
+msgstr "Erweiterungen herunterladen"
 
 #: src/game.cpp:1238
 msgid "Choose the add-on to download."
-msgstr "Wählt eine Erweiterung zum Speichern aus."
+msgstr "Wählt die Erweiterung aus, die Ihr herunterladen wollt."
 
 #: src/game.cpp:1281
 msgid "Dependencies"
@@ -6379,17 +6397,12 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: src/help.cpp:1104
-#, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
-msgstr "Einheiten mit diesen Spezialangriff:"
+msgstr "<header>text='Einheiten mit diesen Spezialangriff'</header>"
 
 #: src/help.cpp:1172
-#, fuzzy
 msgid "<header>text='Units having this ability'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Trefferwahrscheinlichkeit'</header>"
+msgstr "<header>text='Einheit mit dieser Fertigkeit'</header>"
 
 #: src/help.cpp:1237
 msgid "Advances from: "
@@ -6477,12 +6490,8 @@ msgid "Movement Cost"
 msgstr "Bewegungskosten"
 
 #: src/help.cpp:1606
-#, fuzzy
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Trefferwahrscheinlichkeit'</header>"
+msgstr "<header>text='Einheiten dieser Rasse'</header>"
 
 #: src/help.cpp:2496 src/menu_events.cpp:694
 msgid " < Back"
@@ -6607,20 +6616,19 @@ msgstr "Schaden"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Gesamt"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
 msgstr "Diese Runde"
 
 #: src/menu_events.cpp:222
-#, fuzzy
 msgid "Inflicted"
-msgstr "Verursachter Schaden"
+msgstr "Ausgeteilt"
 
 #: src/menu_events.cpp:246
 msgid "Taken"
-msgstr ""
+msgstr "Eingesteckt"
 
 #: src/menu_events.cpp:296 src/menu_events.cpp:300
 msgid "Do you really want to dismiss him?"
@@ -6759,7 +6767,6 @@ msgid "Scenario Settings"
 msgstr "Szenarioneinstellungen"
 
 #: src/menu_events.cpp:729 src/playcampaign.cpp:420
-#, fuzzy
 msgid "Name: "
 msgstr "Name:"
 
@@ -7203,9 +7210,8 @@ msgid "(Empty slot)"
 msgstr "(leerer Platz)"
 
 #: src/multiplayer_connect.cpp:837
-#, fuzzy
 msgid "Only random sides in the current era."
-msgstr "Keine nicht zufälligen Anführer in der gewählten Ära"
+msgstr "Nur zufallsbasierte Fraktionen in der gewählten Ära."
 
 #: src/multiplayer_connect.cpp:861
 msgid "Unable to find a leader type for faction $faction"
@@ -7674,9 +7680,8 @@ msgid "Error while reading the WML: "
 msgstr "Fehler beim Einlesen des WMLs: "
 
 #: src/playcampaign.cpp:421
-#, fuzzy
 msgid "Save Replay"
-msgstr "Wiederholung anzeigen"
+msgstr "Aufzeichnung speichern"
 
 #: src/playcampaign.cpp:426
 msgid "The replay could not be saved"
