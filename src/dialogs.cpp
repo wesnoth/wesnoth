@@ -626,7 +626,11 @@ std::string format_time_summary(time_t t)
 
 std::string load_game_dialog(display& disp, const config& game_config, const game_data& data, bool* show_replay)
 {
-	std::vector<save_info> games = get_saves_list();
+	std::vector<save_info> games;
+	{
+		cursor::setter cur(cursor::WAIT);
+		std::vector<save_info> games = get_saves_list();
+	}
 
 	if(games.empty()) {
 		gui::message_dialog(disp,
