@@ -38,7 +38,6 @@
 #include <iostream>
 #include <map>
 #include <vector>
-#include <boost/shared_ptr.hpp>
 
 #include <boost/iostreams/filter/gzip.hpp>
 
@@ -115,10 +114,9 @@ struct buffer {
 
 };
 
-typedef boost::shared_ptr<buffer> bufferPtr;
 
 bool managed = false; // management_mutex
-typedef std::vector< bufferPtr > buffer_set;
+typedef std::vector< buffer* > buffer_set;
 buffer_set bufs; // management_mutex
 
 struct schema_pair
@@ -134,7 +132,7 @@ schema_map schemas; //schemas_mutex
 typedef std::vector<TCPsocket> receive_list;
 receive_list pending_receives; // management_mutex
 
-typedef std::deque<bufferPtr> received_queue;
+typedef std::deque<buffer*> received_queue;
 received_queue received_data_queue;  // receive_mutex
 
 enum SOCKET_STATE { SOCKET_READY, SOCKET_LOCKED, SOCKET_ERRORED, SOCKET_INTERRUPT };
@@ -397,7 +395,7 @@ static int process_queue(void*)
 		//to receive data from, sent_buf will be NULL. 'sock' will always refer to the socket
 		//that data is being sent to/received from
 		TCPsocket sock = NULL;
-		bufferPtr sent_buf;
+		buffer* sent_buf = 0;
 
 		{
 			const threading::lock lock(*management_mutex);
@@ -478,7 +476,7 @@ static int process_queue(void*)
 
 		if(sent_buf) {
 			result = send_buffer(sent_buf->sock, sent_buf->config_buf, sent_buf->gzipped);
-			sent_buf.reset();
+			delete sent_buf;
 		} else {
 			result = receive_buf(sock,buf);
 		}
@@ -490,7 +488,7 @@ static int process_queue(void*)
 		       	continue;
 		}
 		//if we received data, add it to the queue
-		bufferPtr received_data(new buffer(sock));
+		buffer* received_data = new buffer(sock);
 		std::string buffer(buf.begin(), buf.end());
 		std::istringstream stream(buffer);
 		// Binary wml starts with a char < 4, the first char of a gzip header is 31
@@ -515,7 +513,6 @@ static int process_queue(void*)
 			// Now add data
 			const threading::lock lock_received(*received_mutex);
 			received_data_queue.push_back(received_data);
-			received_data.reset(); // give up ownership before freeing mutex
 		}
 		check_socket_result(sock,result);
 	}
@@ -620,12 +617,16 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 	} else if (!(*itor)->config_error.empty()){
 		// throw the error in parent thread
 		std::string error = (*itor)->config_error;
+		buffer* buf = *itor;
 		received_data_queue.erase(itor);
+		delete buf;
 		throw config::error(error);
 	} else {
 		cfg = (*itor)->config_buf;
 		const TCPsocket res = (*itor)->sock;
+		buffer* buf = *itor;
 		received_data_queue.erase(itor);
+		delete buf;
 		return res;
 	}
 }
@@ -634,7 +635,7 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 {
 	DBG_NW << "queuing data...\n";
 
-	bufferPtr queued_buf(new buffer(sock));
+	buffer* queued_buf = new buffer(sock);
 	queued_buf->config_buf = buf;
 	queued_buf->gzipped = gzipped;
 	{
@@ -643,7 +644,6 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 		bufs.push_back(queued_buf);
 
 		sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY));
-		queued_buf.reset(); // Free ownership before others thread can access shared_ptr
 	}
 
 	cond->notify_one();
@@ -659,7 +659,9 @@ static void remove_buffers(TCPsocket sock)
 		for(buffer_set::iterator i = bufs.begin(), i_end = bufs.end(); i != i_end;) {
 			if ((*i)->sock == sock)
 			{
+				buffer* buf = *i;
 				i = bufs.erase(i);
+				delete buf;
 			}
 			else
 			{
@@ -673,7 +675,9 @@ static void remove_buffers(TCPsocket sock)
 
 		for(received_queue::iterator j = received_data_queue.begin(); j != received_data_queue.end(); ) {
 			if((*j)->sock == sock) {
+				buffer *buf = *j;
 				j = received_data_queue.erase(j);
+				delete buf;
 			} else {
 				++j;
 			}
