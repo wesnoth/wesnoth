@@ -99,13 +99,15 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 					// reset gui to prev human one
 					if (!teams_[team_index-1].is_human()) {
 						int t = find_human_team_before(team_index);
-						if (t > 0) {
-							gui_->set_team(t-1);
-							gui_->recalculate_minimap();
-							gui_->invalidate_all();
-							gui_->draw();
-							gui_->update_display();
-						}
+						
+						if (t <= 0)
+							t = gui_->get_playing_team() + 1;
+
+						gui_->set_team(t-1);
+						gui_->recalculate_minimap();
+						gui_->invalidate_all();
+						gui_->draw();
+						gui_->update_display();
 					}
 				}
 			}
@@ -174,7 +176,10 @@ void playmp_controller::play_human_turn(){
 
 			if(res != network::null_connection) {
 				try{
-					turn_data_->process_network_data(cfg,res,backlog,skip_replay_);
+					if (turn_data_->process_network_data(cfg,res,backlog,skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+					{
+						throw end_turn_exception(gui_->get_playing_team() + 1);
+					}
 				}
 				catch (replay::error& e){
 					process_oos(e.message);

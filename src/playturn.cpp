@@ -157,22 +157,28 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		if(index < teams_.size()) {
 			teams_[index].set_current_player(player);
 			const unit_map::iterator leader = find_leader(units_, side);
+			bool restart = gui_.get_playing_team() == index;
 			if(leader != units_.end())
 				leader->second.rename(player);
 
+
 			if ( (controller == "human") && (!teams_[index].is_human()) ) {
-				teams_[index].make_human();
 				if (!teams_[gui_.get_playing_team()].is_human())
 				{
 					gui_.set_team(index);
 				}
+				teams_[index].make_human();
 			} else if ( (controller == "network") && (!teams_[index].is_network()) ){
 				teams_[index].make_network();
 			} else if ( (controller == "ai") && (!teams_[index].is_ai()) ) {
 				teams_[index].make_ai();
 			}
-
-			return PROCESS_RESTART_TURN;
+			else
+			{
+				restart = false;
+			}
+			
+			return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 		}
 	}
 

@@ -2199,14 +2199,7 @@ private:
 				if (player == preferences::login())
 					return;
 				change_side_controller(side,player,true);
-				teams_[side_num - 1].make_network();
 				textbox_info_.close(*gui_);
-				if(team_num == side_num) {
-					//if it is our turn at the moment, we have to indicate to the
-					//play_controller, that we are no longer in control
-					gui_->set_team(0);
-					throw end_turn_exception(side_num);
-				}
 			} else {
 				//it is not our side, the server will decide if we can change the
 				//controller (that is if we are host of the game)

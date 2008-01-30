@@ -346,7 +346,8 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		&& !current_team.get_disallow_observers()) {
 		gui_->set_team(size_t(team_index));
 	}
-		gui_->set_playing_team(size_t(team_index));
+	
+	gui_->set_playing_team(size_t(team_index));
 
 	std::stringstream player_number_str;
 	player_number_str << player_number_;
