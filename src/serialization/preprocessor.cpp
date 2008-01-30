@@ -672,7 +672,13 @@ bool preprocessor_data::get_chunk()
 				return true;
 			}
 			if (token.type == '{') {
-				assert(strings_.back().empty());
+				if (!strings_.back().empty()) {
+					std::ostringstream error;
+	        			std::ostringstream location;
+					error << "Can't parse new macro parameter with a macro call scope open";
+					location<<linenum_<<' '<<target_.location_;
+					target_.error(error.str(), location.str());
+				}
 				strings_.pop_back();
 			}
 
