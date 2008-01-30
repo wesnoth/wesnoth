@@ -35,6 +35,7 @@
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
 #define LOG_CF LOG_STREAM(info, config)
+#define WRN_CF LOG_STREAM(warn, config)
 #define ERR_CF LOG_STREAM(err, config)
 
 namespace {
@@ -1481,7 +1482,6 @@ void connect::load_game()
 		level_["experience_modifier"] = start_data["experience_modifier"];
 		level_["observer"] = start_data["observer"];
 		level_.add_child("snapshot") = start_data;
-		level_["era_id"] = start_data["era_id"];
 		level_["random_seed"] = start_data["random_seed"];
 		level_["random_calls"] = start_data["random_calls"];
 
@@ -1530,9 +1530,10 @@ void connect::load_game()
 
 	
 	std::string era;
-	if (params_.saved_game)
+	if (params_.saved_game
+		&& level_.child("snapshot")->child("era"))
 	{
-		era = level_["era_id"];
+		era = level_.child("snapshot")->child("era")->get_attribute("id");
 	}
 	else
 	{
@@ -1541,13 +1542,22 @@ void connect::load_game()
 
 	// Initialize the list of sides available for the current era.
 	const config* const era_cfg = game_config().find_child("era", "id", era);
-	if(era_cfg == NULL && !params_.saved_game) {
-		utils::string_map i18n_symbols;
-		i18n_symbols["era"] = era;
-		throw config::error(vgettext("Cannot find era $era", i18n_symbols));
+	if(!era_cfg) {
+		if (!params_.saved_game)
+		{
+			utils::string_map i18n_symbols;
+			i18n_symbols["era"] = era;
+			throw config::error(vgettext("Cannot find era $era", i18n_symbols));
+		}
+		// FIXME: @todo We should tell user about missing era but still load game
+		WRN_CF << "Missing era in MP load game " << era << "\n";
+		
 	}
-	era_sides_ = era_cfg->get_children("multiplayer_side");
-	level_.add_child("era", *era_cfg);
+	if (era_cfg)
+	{
+		era_sides_ = era_cfg->get_children("multiplayer_side");
+		level_.add_child("era", *era_cfg);
+	}
 
 	gold_title_label_.hide(params_.saved_game);
 	income_title_label_.hide(params_.saved_game);

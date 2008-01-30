@@ -460,10 +460,6 @@ game_state::game_state(const game_data& data, const config& cfg) :
 
 	// We have to load era id for MP games so they can load correct era.
 	
-	if (cfg.child("replay_start") && cfg.child("replay_start")->child("era"))
-	{
-		(*const_cast<config*>(snapshot))["era_id"] = cfg.child("replay_start")->child("era")->get_attribute("id");
-	}
 
 	if (snapshot != NULL && !snapshot->empty()) {
 
@@ -790,12 +786,24 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	}
 }
 
+void copy_era(config &cfg)
+{
+	if (cfg.child("replay_start") 
+		&& cfg.child("replay_start")->child("era")
+		&& cfg.child("snapshot"))
+	{
+		config *snapshot = cfg.child("snapshot");
+		snapshot->add_child("era",*cfg.child("replay_start")->child("era"));
+	}
+}
+
 void load_game(const game_data& data, const std::string& name, game_state& gamestate, std::string* error_log)
 {
 	log_scope("load_game");
 
 	config cfg;
 	read_save_file(name,cfg,error_log);
+	copy_era(cfg);
 
 	gamestate = game_state(data,cfg);
 }
