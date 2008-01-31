@@ -629,7 +629,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	std::vector<save_info> games;
 	{
 		cursor::setter cur(cursor::WAIT);
-		std::vector<save_info> games = get_saves_list();
+		games = get_saves_list();
 	}
 
 	if(games.empty()) {
