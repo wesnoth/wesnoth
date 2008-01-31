@@ -8,6 +8,102 @@
 namespace {
 using namespace game_logic;
 
+class position_callable : public formula_callable {
+	unit_map units_;
+	int chance_;
+	variant get_value(const std::string& key) const {
+		if(key == "chance") {
+			return variant(chance_);
+		} else {
+			return variant();
+		}
+	}
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("chance", game_logic::FORMULA_READ_ONLY));
+	}
+public:
+	position_callable(unit_map* units, int chance) : chance_(chance)
+	{
+		units->swap(units_);
+	}
+
+	void swap_position(formula_ai& ai) {
+		ai.get_info().units.swap(units_);
+	}
+
+	struct swapper {
+		formula_ai& ai;
+		unit_map& a;
+		unit_map& b;
+		void swap() {
+			a.swap(b);
+			ai.prepare_move();
+		}
+		swapper(formula_ai& ai, position_callable& pos)
+		  : ai(ai), a(ai.get_info().units), b(pos.units_) { 
+		  swap();
+		}
+
+		~swapper() {
+			swap();
+		}
+	};
+};
+
+class outcomes_function : public function_expression {
+public:
+	outcomes_function(const args_list& args, const formula_ai& ai)
+	  : function_expression(args, 1, 1), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		variant attack = args()[0]->evaluate(variables);
+		ai::attack_analysis* analysis = attack.convert_to<ai::attack_analysis>();
+		unit_map units_with_moves(ai_.get_info().units);
+		for(int n = 0; n != analysis->movements.size(); ++n) {
+			std::pair<gamemap::location,unit>* pair = units_with_moves.extract(analysis->movements[n].first);
+			pair->first = analysis->movements[n].second;
+			units_with_moves.add(pair);
+		}
+		
+		std::vector<variant> vars;
+		if(analysis->chance_to_kill > 0.0) {
+			unit_map units(units_with_moves);
+			units.erase(analysis->target);
+			vars.push_back(variant(new position_callable(&units, analysis->chance_to_kill*100)));
+
+		}
+
+		if(analysis->chance_to_kill < 1.0) {
+			unit_map units(units_with_moves);
+			vars.push_back(variant(new position_callable(&units, 100 - analysis->chance_to_kill*100)));
+		}
+
+		return variant(&vars);
+	}
+
+	const formula_ai& ai_;
+};
+
+class evaluate_for_position_function : public function_expression {
+public:
+	evaluate_for_position_function(const args_list& args, formula_ai& ai)
+	  : function_expression(args, 2, 2), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		variant position = args()[0]->evaluate(variables);
+		position_callable* pos = position.convert_to<position_callable>();
+		position_callable::swapper swapper(ai_, *pos);
+		return args()[1]->evaluate(variables);
+	}
+
+	formula_ai& ai_;
+};
+
 class recruit_callable : public formula_callable {
 	gamemap::location loc_;
 	std::string type_;
@@ -102,13 +198,12 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location& move_from = args().front()->evaluate(variables).convert_to<location_callable>()->loc();
-		const gamemap::location& src = args()[args().size()-3]->evaluate(variables).convert_to<location_callable>()->loc();
-		const gamemap::location& dst = args()[args().size()-2]->evaluate(variables).convert_to<location_callable>()->loc();
-		const int weapon = args()[args().size()-1]->evaluate(variables).as_int();
-
+		const gamemap::location& move_from = args()[0]->evaluate(variables).convert_to<location_callable>()->loc();
+		const gamemap::location& src = args()[1]->evaluate(variables).convert_to<location_callable>()->loc();
+		const gamemap::location& dst = args()[2]->evaluate(variables).convert_to<location_callable>()->loc();
+		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables).as_int() : -1;
 		if(ai_.get_info().units.count(move_from) == 0 || ai_.get_info().units.count(dst) == 0) {
-			std::cerr << "AI ERROR: Formula produced illegal attack!\n";
+			std::cerr << "AI ERROR: Formula produced illegal attack: " << move_from.x << ", " << move_from.y << " -> " << dst.x << ", " << dst.y << "\n";
 			return variant();
 		}
 		return variant(new attack_callable(ai_, move_from, src, dst, weapon));
@@ -183,11 +278,15 @@ private:
 };
 
 class ai_function_symbol_table : public function_symbol_table {
-	const formula_ai& ai_;
+	formula_ai& ai_;
 
 	expression_ptr create_function(const std::string& fn,
 	                               const std::vector<expression_ptr>& args) const {
-		if(fn == "move") {
+		if(fn == "outcomes") {
+			return expression_ptr(new outcomes_function(args, ai_));
+		} else if(fn == "evaluate_for_position") {
+			return expression_ptr(new evaluate_for_position_function(args, ai_));
+		} else if(fn == "move") {
 			return expression_ptr(new move_function(args));
 		} else if(fn == "attack") {
 			return expression_ptr(new attack_function(args, ai_));
@@ -207,7 +306,7 @@ class ai_function_symbol_table : public function_symbol_table {
 	}
 
 public:
-	explicit ai_function_symbol_table(const formula_ai& ai) : ai_(ai)
+	explicit ai_function_symbol_table(formula_ai& ai) : ai_(ai)
 	{}
 };
 }
@@ -254,42 +353,6 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	game_logic::formula f(formula_str, &function_table);
 	const variant v = f.execute(*this);
 	return v.to_debug_string();
-}
-
-namespace {
-void debug_console(const game_logic::formula_callable& info, const formula_ai& ai) {
-		std::cerr << "starting debug console. Type formula to evaluate. Type 'continue' when you're ready to continue\n";
-		std::cerr << variant(&info).to_debug_string() << "\n";
-		ai_function_symbol_table function_table(ai);
-	const config& ai_param = ai.current_team().ai_parameters();
-	config::const_child_itors functions = ai_param.child_range("function");
-	for(config::const_child_iterator i = functions.first; i != functions.second; ++i) {
-		const t_string& name = (**i)["name"];
-		const t_string& inputs = (**i)["inputs"];
-		const t_string& formula_str = (**i)["formula"];
-
-		std::vector<std::string> args = utils::split(inputs);
-		function_table.add_formula_function(name, game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)), args);
-	}
-
-		for(;;) {
-			std::cerr << "\n>>> ";
-			char buf[1024];
-			std::cin.getline(buf, sizeof(buf));
-			std::string cmd(buf);
-			if(cmd == "continue") {
-				break;
-			}
-
-			try {
-				formula f(cmd, &function_table);
-				const variant v = f.execute(info);
-				std::cerr << v.to_debug_string() << "\n";
-			} catch(formula_error& e) {
-				std::cerr << "ERROR IN FORMULA\n";
-			}
-		}
-}
 }
 
 void formula_ai::prepare_move()
@@ -341,7 +404,7 @@ bool formula_ai::make_move()
 		if(move) {
 			std::cerr << "moving " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
 			if(possible_moves_.count(move->src()) > 0) {
-				move_unit(move->src(), move->dst(), possible_moves_); made_move = true;
+				move_unit(move->src(), move->dst(), possible_moves_);
 				made_move = true;
 			}
 		} else if(attack) {

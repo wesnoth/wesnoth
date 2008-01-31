@@ -126,6 +126,7 @@ protected:
 		const location& to, const location& via,
 		const std::map<location,paths>& possible_moves) const;
 
+public:
 	struct attack_analysis : public game_logic::formula_callable
 	{
 		void analyze(const gamemap& map, unit_map& units,
@@ -183,6 +184,8 @@ protected:
 		//! Is true if the units involved in this attack sequence are surrounded.
 		bool is_surrounded;
 	};
+
+protected:
 
 	virtual void do_attack_analysis(
 	                 const location& loc,

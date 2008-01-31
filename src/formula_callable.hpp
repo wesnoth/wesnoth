@@ -67,6 +67,27 @@ public:
 	virtual ~formula_callable_no_ref_count() {}
 };
 
+class formula_callable_with_backup : public formula_callable {
+	const formula_callable& main_;
+	const formula_callable& backup_;
+	variant get_value(const std::string& key) const {
+		variant var = main_.query_value(key);
+		if(var.is_null()) {
+			return backup_.query_value(key);
+		}
+
+		return var;
+	}
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		main_.get_inputs(inputs);
+		backup_.get_inputs(inputs);
+	}
+public:
+	formula_callable_with_backup(const formula_callable& main, const formula_callable& backup) : main_(main), backup_(backup)
+	{}
+};
+
 class map_formula_callable : public formula_callable {
 public:
 	explicit map_formula_callable(const formula_callable* fallback=NULL);

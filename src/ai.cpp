@@ -2269,7 +2269,7 @@ variant ai::attack_analysis::get_value(const std::string& key) const
 	} else if(key == "avg_losses") {
 		return variant(static_cast<int>(avg_losses*1000));
 	} else if(key == "chance_to_kill") {
-		return variant(static_cast<int>(chance_to_kill));
+		return variant(static_cast<int>(chance_to_kill*100));
 	} else if(key == "avg_damage_inflicted") {
 		return variant(static_cast<int>(avg_damage_inflicted));
 	} else if(key == "target_starting_damage") {

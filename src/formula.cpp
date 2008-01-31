@@ -45,7 +45,7 @@ map_formula_callable& map_formula_callable::add(const std::string& key,
 variant map_formula_callable::get_value(const std::string& key) const
 {
 	return map_get_value_default(values_, key,
-	        fallback_ ? fallback_->query_value(key) : variant(0));
+	        fallback_ ? fallback_->query_value(key) : variant());
 }
 
 void map_formula_callable::get_inputs(std::vector<formula_input>* inputs) const

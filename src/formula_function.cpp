@@ -205,7 +205,7 @@ private:
 		int max_index = -1;
 		variant max_value;
 		for(int n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(*items[n].as_callable());
+			const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
 			if(max_index == -1 || val > max_value) {
 				max_index = n;
 				max_value = val;
@@ -299,7 +299,7 @@ private:
 		std::vector<variant> vars;
 		const variant items = args()[0]->evaluate(variables);
 		for(int n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(*items[n].as_callable());
+			const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
 			if(val.as_bool()) {
 				vars.push_back(items[n]);
 			}
@@ -319,7 +319,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const variant items = args()[0]->evaluate(variables);
 		for(int n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(*items[n].as_callable());
+			const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
 			if(val.as_bool()) {
 				return items[n];
 			}
@@ -339,7 +339,7 @@ private:
 		std::vector<variant> vars;
 		const variant items = args()[0]->evaluate(variables);
 		for(int n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(*items[n].as_callable());
+			const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
 			vars.push_back(val);
 		}
 

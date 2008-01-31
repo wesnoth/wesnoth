@@ -147,6 +147,10 @@ public:
 	void erase(iterator pos);
 	size_t erase(const gamemap::location &loc);
 
+	void swap(unit_map& o) {
+		map_.swap(o.map_);
+	}
+
 private:
 
 	void delete_all();
