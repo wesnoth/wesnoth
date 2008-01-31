@@ -36,6 +36,22 @@
 #
 # You can also prevent description insertions with "wmllint: no-icon".
 #
+# You can force otherwise undeclared characters to be recogized with
+# a magic comment containing the string "wmllint: recognize".
+# The rest of the line is stripped and treated as the name of a character
+# who should be recognized in descriptions.  This will be useful,
+# for example, if your scenario follows a continue so there are
+# characters present who were not explicitly recalled.  It may
+# also be useful if you have wrapped unit-creation or recall markup in macros
+# and wmllint cannot recognize it.
+#
+# Similarly, it is possible to explicitly declare a unit's usage class
+# with a magic comment that looks like thisL
+#    wmllint: usage of <unit> is <class>
+# Note that <unit> must be a string wrapped in ASCII doublequotes.  This
+# declaration will be useful if you are declaring units with macros that
+# include a substitutable formal in the unit name; there are examples in UtBS.
+#
 # You can disable stack-based malformation checks with a comment
 # containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
 #
@@ -540,23 +556,38 @@ notepairs = (
 trait_note = dict(notepairs)
 note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
 
+def string_strip(value):
+    "String-strip the value"
+    if value.startswith('"'):
+        value = value[1:]
+        if value.endswith('"'):
+            value = value[:-1]
+    if value.startswith("'"):
+        value = value[1:]
+        if value.endswith("'"):
+            value = value[:-1]
+    return value
+
 def parse_attribute(str):
     "Parse a WML key-value pair from a line."
     if '=' not in str:
         return None
-    m = re.match(r"(^\s*[a-z0-9_]+\s*=\s*)(.+)((?<=\S)\s*#?.*\s*)", str)
-    if not m:
-        return None
-    (leader, value, comment) = m.groups()
-    # String-strip the value
-    if value.startswith('"'):
-        value = value[1:]
-    if value.endswith('"'):
-        value = value[:-1]
-    key = m.group(1).replace("=", "").strip()
+    where = str.find("=")
+    leader = str[:where]
+    after = str[where+1:]
+    after = after.lstrip()
+    if "#" in after:
+        where = after.find("#")
+        while after[where-1] in (" ", "\t"):
+            where -= 1
+        value = after[:where+1]
+        comment = after[where:]
+    else:
+        value = after.rstrip()
+        comment = ""
     # Return four fields: stripped key, part of line before value,
     # value, trailing whitespace and comment.
-    return (key, leader, value, comment)
+    return (leader.strip(), leader+"=", string_strip(value), comment)
 
 # This needs to match the list of usagge types in ai_python.cpp
 usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
@@ -664,6 +695,48 @@ def sanity_check(filename, lines):
                     if not utype in usage_types:
                         print '"%s", line %d: unknown usage class %s' \
                               % (filename, i+1, utype)
+        except TypeError:
+            pass
+    # Consistency-check the description attributes in [side], [unit], [recall],
+    # and [message] scopes.
+    present = []
+    in_scenario = False
+    in_person = False
+    ignoreable = False
+    for i in range(len(lines)):
+        if "[scenario]" in lines[i]:
+            in_scenario = True
+        elif "[/scenario]" in lines[i]:
+            in_scenario = False
+        elif "[objective]" in lines[i] or "[kill]" in lines[i] or "[object]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
+            ignoreable = True
+        elif "[/objective]" in lines[i] or "[/kill]" in lines[i] or "[/object]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
+            ignoreable = False
+        elif "[side]" in lines[i] or "[unit]" in lines[i] or "[recall]" in lines[i]:
+            in_person = True
+            continue
+        elif "[/side]" in lines[i] or "[/unit]" in lines[i] or "[/recall]" in lines[i]:
+            in_person = False
+        if not in_scenario:
+            continue
+        m = re.search("# *wmllint: recognize +(.*)", lines[i])
+        if m:
+            present.append(string_strip(m.group(1)).strip())
+        if '=' not in lines[i] or ignoreable:
+            continue
+        try:
+            (key, prefix, value, comment) = parse_attribute(lines[i])
+            if key == 'role':
+                present.append(value)
+            if "wmllint: ignore" in comment or key != "description":
+                continue
+            if in_person:
+                present.append(value)
+            elif value in ('narrator', 'unit', 'second_unit') or value[0] in ("$", "{"):
+                continue
+            elif value not in present:
+                print '"%s", line %d: unknown \'%s\' referred to by description' \
+                      % (filename, i+1, value)
         except TypeError:
             pass
     # Interpret magic comments for setting the sage pattern of units.
