@@ -16,7 +16,7 @@ MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 sanity-check: unresolved lint
 
 lint:
-	# Check for obsolete WML
+	# Check for obsolete WML, broken references, consistency.
 	./wmllint --dryrun $(MAINLINE) $(UMC)
 
 unresolved:
