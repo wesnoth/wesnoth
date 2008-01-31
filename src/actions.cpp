@@ -736,7 +736,7 @@ void attack::fire_event(const std::string& n)
 		dat.add_child("first");
 		dat.add_child("second");
 		if(a_ != units_.end()) {
-			(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
+			(*(dat.child("first")))["weapon"]=a_stats_->weapon?a_stats_->weapon->id():"none";
 
 		}
 		if(d_ != units_.end()) {
@@ -802,8 +802,7 @@ void attack::refresh_bc()
 	if(a_ == units_.end() || d_ == units_.end()) {
 		return;
 	}
-	delete bc_;
-	bc_ = new battle_context(map_, teams_, units_, state_, info_, attacker_, defender_, attack_with_, defend_with_);
+	*bc_ = battle_context(map_, teams_, units_, state_, info_, attacker_, defender_, attack_with_, defend_with_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	attacker_cth_ = a_stats_->chance_to_hit;
