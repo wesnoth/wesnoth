@@ -653,10 +653,10 @@ namespace
 {
 
 //! Caller has to make sure to own management_mutex
-static void remove_buffers(TCPsocket sock)
+void remove_buffers(TCPsocket sock)
 {
 	{
-		for(buffer_set::iterator i = bufs.begin(), i_end = bufs.end(); i != i_end;) {
+		for(buffer_set::iterator i = bufs.begin(); i != bufs.end();) {
 			if ((*i)->sock == sock)
 			{
 				buffer* buf = *i;
