@@ -13,9 +13,9 @@ MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 # otherwise the visibility checks aren't going to work right.
 # UMC = ../../../umc*/*
 
-sanity-check: unresolved check-obsolete
+sanity-check: unresolved lint
 
-check-obsolete:
+lint:
 	# Check for obsolete WML
 	./wmllint --dryrun $(MAINLINE) $(UMC)
 

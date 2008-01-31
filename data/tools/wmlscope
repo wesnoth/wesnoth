@@ -270,7 +270,7 @@ Usage: macroscope [options] dirpath
     else:
         dirpath = ['.']
     if not extracthelp:
-        print "# Macroscope reporting on %s" % time.ctime()
+        print "# Wmlscope reporting on %s" % time.ctime()
         print "# Invocation: %s" % " ".join(sys.argv)
         print "# Working directory: %s" % os.getcwd()
     xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel)
