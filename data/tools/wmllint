@@ -637,8 +637,8 @@ def sanity_check(filename, lines):
     # Sanity-check recruit and recruitment_pattern.
     # This code has a limitation; if there arre multiple instances of
     # recruit and recruitment_pattern (as can happen if these lists
-    # vary by EASY/NORMAL/HARD level) this code will only compare the
-    # last of each.
+    # vary by EASY/NORMAL/HARD level) this code will only record the
+    # last of each for later consistency checking.
     in_side = False
     recruit = []
     recruitment_pattern = []
@@ -666,6 +666,14 @@ def sanity_check(filename, lines):
                               % (filename, i+1, utype)
         except TypeError:
             pass
+    # Interpret magic comments for setting the sage pattern of units.
+    # This copes with some wacky UtBS units that are defined with
+    # variant-spawning macros.  The prototype comment looks like this:
+    #wmllint: usage of "Desert Fighter" is fighter 
+    for i in range(len(lines)):
+        m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
+        if m:
+            usage[m.group(1)] = m.group(2).strip()
 
 def consistency_check():
     "Consistency-check state information picked up by "
