@@ -104,7 +104,7 @@ unit_animation::unit_animation(int start_time,
 		directions_(),
 		frequency_(0),
 		base_score_(variation), 
-		event_(1, event),
+		event_(utils::split(event)),
 		value_(),
 		primary_attack_filter_(),
 		secondary_attack_filter_(),
@@ -192,7 +192,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 int unit_animation::matches(const game_display &disp,const gamemap::location& loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
 {
 	int result = base_score_;
-	if(!event.empty()) {
+	if(!event.empty()&&!event_.empty()) {
 		if (std::find(event_.begin(),event_.end(),event)== event_.end()) {
 			return MATCH_FAIL;
 		} else {
@@ -284,7 +284,28 @@ int unit_animation::matches(const game_display &disp,const gamemap::location& lo
 }
 
 
-void unit_animation::initialize_anims( std::vector<unit_animation> & animations, const config & cfg,bool with_default)
+void unit_animation::fill_initial_animations( std::vector<unit_animation> & animations,image::locator default_image)
+{
+	 animations.push_back(unit_animation(0,unit_frame(default_image,300),"",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,300,"","",display::rgb(255,255,255),"0.0~0.3:100,0.3~0.0:200"),"selected",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,150),"leading",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,600,"0~1:600"),"recruited",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,0),"standing",unit_animation::DEFAULT_ANIM));
+	// Idle anims can be empty
+	 animations.push_back(unit_animation(0,unit_frame(default_image,600,"1.0","",display::rgb(255,255,255),"1~0:600"),"levelin",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelout",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,500),"healing",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30","","","","","heal.wav"),"healed",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30","","","","","poison.ogg"),"poisoned",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,150,"","0~1:150"),"movement",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(-150,unit_frame(default_image,300),"defend",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(-150,unit_frame(default_image,300),"attack",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,600,"1~0:600"),"death",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,1),"victory",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(-150,unit_frame(default_image,150,"1~0"),"pre_teleport",unit_animation::DEFAULT_ANIM));
+	 animations.push_back(unit_animation(0,unit_frame(default_image,150,"0~1"),"post_teleport",unit_animation::DEFAULT_ANIM));
+}
+void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
 	config expanded_cfg;
 	config::child_list::const_iterator anim_itor;
@@ -294,7 +315,6 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	for(anim_itor = parsed_animations.begin(); anim_itor != parsed_animations.end(); ++anim_itor) {
 		animations.push_back(unit_animation(**anim_itor));
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),300,"","",display::rgb(255,255,255),"0.0~0.3:100,0.3~0.0:200"),"selected",unit_animation::DEFAULT_ANIM));
 
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"leading_anim");
@@ -302,69 +322,44 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	for(anim_itor = leading_anims.begin(); anim_itor != leading_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="leading";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"leading animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=leading flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150),"leading",unit_animation::DEFAULT_ANIM));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"recruit_anim");
 	const config::child_list& recruit_anims = expanded_cfg.get_children("recruit_anim");
 	for(anim_itor = recruit_anims.begin(); anim_itor != recruit_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="recruited";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"recruit animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=recruited flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"0~1:600"),"recruited",unit_animation::DEFAULT_ANIM));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
 	const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
 	for(anim_itor = standing_anims.begin(); anim_itor != standing_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="standing";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"standing animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=standing flag\n";
 	}
-	// Always have a standing animation
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),0),"standing",unit_animation::DEFAULT_ANIM));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
 	const config::child_list& idle_anims = expanded_cfg.get_children("idle_anim");
 	for(anim_itor = idle_anims.begin(); anim_itor != idle_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="idling";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"idling animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=idling flag\n";
 	}
-	// Idle anims can be empty
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
 	const config::child_list& levelin_anims = expanded_cfg.get_children("levelin_anim");
 	for(anim_itor = levelin_anims.begin(); anim_itor != levelin_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="levelin";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"levelin animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelin flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1.0","",display::rgb(255,255,255),"1~0:600"),"levelin",unit_animation::DEFAULT_ANIM));
-	// Always have a levelin animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
 	const config::child_list& levelout_anims = expanded_cfg.get_children("levelout_anim");
 	for(anim_itor = levelout_anims.begin(); anim_itor != levelout_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="levelout";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"levelout animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelout flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelout",unit_animation::DEFAULT_ANIM));
-	// Always have a levelout animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
 	const config::child_list& healing_anims = expanded_cfg.get_children("healing_anim");
 	for(anim_itor = healing_anims.begin(); anim_itor != healing_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="healing";
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"healing animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healing flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),500),"healing",unit_animation::DEFAULT_ANIM));
-	// Always have a healing animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healed_anim");
 	const config::child_list& healed_anims = expanded_cfg.get_children("healed_anim");
 	for(anim_itor = healed_anims.begin(); anim_itor != healed_anims.end(); ++anim_itor) {
@@ -374,11 +369,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		animations.back().sub_anims_["_healed_sound"] = crude_animation();
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","heal.wav"),true);
-		//lg::wml_error<<"healed animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healed flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30","","","","","heal.wav"),"healed",unit_animation::DEFAULT_ANIM));
-	// Always have a healed animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
 	const config::child_list& poison_anims = expanded_cfg.get_children("poison_anim");
 	for(anim_itor = poison_anims.begin(); anim_itor != poison_anims.end(); ++anim_itor) {
@@ -388,11 +379,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		animations.back().sub_anims_["_poison_sound"] = crude_animation();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","poison.ogg"),true);
-		//lg::wml_error<<"poison animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=poison flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30","","","","","poison.ogg"),"poisoned",unit_animation::DEFAULT_ANIM));
-	// Always have a poison animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
 	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
 	for(anim_itor = movement_anims.begin(); anim_itor != movement_anims.end(); ++anim_itor) {
@@ -402,11 +389,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		}
 		(**anim_itor)["apply_to"] ="movement";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"movement animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=movement flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150,"","0~1:150"),"movement",unit_animation::DEFAULT_ANIM));
-	// Always have a movement animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
 	const config::child_list& defends = expanded_cfg.get_children("defend");
 	for(anim_itor = defends.begin(); anim_itor != defends.end(); ++anim_itor) {
@@ -424,11 +407,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 			animations.push_back(unit_animation(**anim_itor)),
 			animations.back().add_frame(100,unit_frame(animations.back().get_last_frame().image(),100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
 		}
-		//lg::wml_error<<"defend animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=defend flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image"]),300),"defend",unit_animation::DEFAULT_ANIM));
-	// Always have a defensive animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");
 	const config::child_list& attack_anims = expanded_cfg.get_children("attack_anim");
 	for(config::child_list::const_iterator d = attack_anims.begin(); d != attack_anims.end(); ++d) {
@@ -445,10 +424,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		}
 
 		animations.push_back(unit_animation(**d));
-		//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=attack flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image"]),300),"attack",unit_animation::DEFAULT_ANIM));
 	// always have an attack animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
 	const config::child_list& deaths = expanded_cfg.get_children("death");
@@ -462,10 +438,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame());
 			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
 		}
-		//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1~0:600"),"death",unit_animation::DEFAULT_ANIM));
 	if(!cfg["die_sound"].empty()) {
 		animations.back().sub_anims_["_death_sound"] = crude_animation();
 		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame());
@@ -477,18 +450,13 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	for(anim_itor = victory_anims.begin(); anim_itor != victory_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="victory";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"victory animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=victory flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),1),"victory",unit_animation::DEFAULT_ANIM));
 	// Always have a victory animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
 	const config::child_list& extra_anims = expanded_cfg.get_children("extra_anim");
 	for(anim_itor = extra_anims.begin(); anim_itor != extra_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] =(**anim_itor)["flag"];
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"extra animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=extra flag\n";
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
 	const config::child_list& teleports = expanded_cfg.get_children("teleport_anim");
@@ -499,13 +467,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		(**anim_itor)["apply_to"] ="post_teleport";
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().unit_anim_.remove_frames_until(0);
-		//lg::wml_error<<"teleport animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=teleport flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image"]),150,"1~0"),"pre_teleport",unit_animation::DEFAULT_ANIM));
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150,"0~1"),"post_teleport",unit_animation::DEFAULT_ANIM));
-	// Add a default animation as the last fallback
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),0),"default",unit_animation::DEFAULT_ANIM));
 
 }
 

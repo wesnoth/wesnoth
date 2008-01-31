@@ -1356,11 +1356,12 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		if(ut) {
 			animations_ = ut->animations();
 		} else {
-			unit_animation::initialize_anims(animations_,cfg_,true);
+			unit_animation::fill_initial_animations(animations_,image::locator(cfg_["image"]));
+			unit_animation::add_anims(animations_,cfg_);
 		}
 	} else {
-		//load default anims
-		unit_animation::initialize_anims(animations_,cfg_,true);
+		unit_animation::fill_initial_animations(animations_,image::locator(cfg_["image"]));
+		unit_animation::add_anims(animations_,cfg_);
 	}
 	// Remove animations from private cfg, since they're not needed there now
 	cfg_.clear_children("animation");
@@ -1573,7 +1574,7 @@ void unit::set_standing(const gamemap::location& loc, bool with_bars)
 	if (disp->idle_anim()) {
 		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
 	} else {
-		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"default"),with_bars,true,"",0,STATE_STANDING);
+		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"_disabled_"),with_bars,true,"",0,STATE_STANDING);
 	}
 }
 
@@ -2584,7 +2585,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					game_config::add_color_info(**i.first);
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
-					unit_animation::initialize_anims(animations_,**i.first);
+					unit_animation::add_anims(animations_,**i.first);
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions

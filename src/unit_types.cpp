@@ -737,7 +737,7 @@ const t_string& unit_type::unit_description() const
 
 const std::vector<unit_animation>& unit_type::animations() const {
 	if (animations_.empty()) {
-		unit_animation::initialize_anims(animations_,cfg_,true);
+		unit_animation::fill_initial_animations(animations_,image::locator(cfg_["image"]));
 	}
 	return animations_;
 }
