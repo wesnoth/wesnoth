@@ -603,10 +603,10 @@ bool unit_animation::animation_would_finish() const
 
 void unit_animation::update_last_draw_time() 
 {
-	unit_anim_.update_last_draw_time();
+	unit_anim_.update_last_draw_time(game_display::get_singleton()->turbo_speed());
 	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		anim_itor->second.update_last_draw_time();
+		anim_itor->second.update_last_draw_time(game_display::get_singleton()->turbo_speed());
 	}
 }
 
@@ -663,7 +663,7 @@ void unit_animation::crude_animation::redraw()
 	double tmp_offset = offset();
 	int d2 = game_display::get_singleton()->hex_size() / 2;
 
-	update_last_draw_time();
+	update_last_draw_time(game_display::get_singleton()->turbo_speed());
 	const unit_frame& current_frame= get_current_frame();
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
 		// stuff sthat should be done only once per frame
@@ -845,6 +845,7 @@ void unit_animator::wait_until(int animation_time) const
 	int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
 	while (SDL_GetTicks() < (unsigned int)end_tick - 20*disp->turbo_speed()) {
 		disp->draw();
+                end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
 		events::pump();
 		disp->delay(maximum<int>(0,
 			minimum<int>(10, 
