@@ -547,12 +547,25 @@ def parse_attribute(str):
     m = re.match(r"(^\s*[a-z0-9_]+\s*=\s*)(.+)((?<=\S)\s*#?.*\s*)", str)
     if not m:
         return None
-    # Four fields: stripped key, part of line before value,
-    # value, trailing whitespace and comments
-    return (m.group(1).replace("=", "").strip(),) + m.groups()
+    (leader, value, comment) = m.groups()
+    # String-strip the value
+    if value.startswith('"'):
+        value = value[1:]
+    if value.endswith('"'):
+        value = value[:-1]
+    key = m.group(1).replace("=", "").strip()
+    # Return four fields: stripped key, part of line before value,
+    # value, trailing whitespace and comment.
+    return (key, leader, value, comment)
+
+# These are accumulated by sanity_check() and examined by sanity_postcheck() 
+usage = {}
+sides = []
 
 def sanity_check(filename, lines):
     "Perform sanity and considtency checks on input lines"
+    # Sanity-check abilities and traits against notes macros.
+    # Note: This check is disabled on units deived via [base_unit].
     in_unit = False
     traits = []
     notes = []
@@ -567,7 +580,7 @@ def sanity_check(filename, lines):
         elif "[/attack_filter]" in lines[i]:
             in_attack_filter = False
             continue
-        if "[unit]" in lines[i]:
+        elif "[unit]" in lines[i]:
             in_unit = i+1
             continue
         elif "[/unit]" in lines[i]:
@@ -605,6 +618,10 @@ def sanity_check(filename, lines):
                 (key, prefix, unit_id, comment) = parse_attribute(lines[i])
                 if unit_id[0] == "_":
                     unit_id = unit_id[1:].strip()
+            if "usage" in lines[i]:
+                (key, prefix, unit_usage, comment) = parse_attribute(lines[i])
+                assert(unit_id)
+                usage[unit_id] = unit_usage
             if "{SPECIAL_NOTES}" in lines[i]:
                 has_special_notes = True
             if "[base_unit]" in lines[i]:
@@ -614,6 +631,36 @@ def sanity_check(filename, lines):
                     traits.append(p)
                 if q in lines[i]:
                     notes.append(q)
+    # Sanity-check recruit and recruitment_pattern.
+    in_side = False
+    recruit = []
+    recruitment_pattern = []
+    for i in range(len(lines)):
+        if "[side]" in lines[i]:
+            in_side = True
+            continue
+        elif "[/side]" in lines[i]:
+            if recruit and recruitment_pattern:
+                sides.append((filename, recruit, recruitment_pattern))
+            in_side = False
+            recruit = []
+            recruitment_pattern = []
+        if not in_side or '=' not in lines[i]:
+            continue
+        try:
+            (key, prefix, value, comment) = parse_attribute(lines[i])
+            if key == "recruit" and value:
+                recruit = (i+1, map(lambda x: x.strip(), value.split(",")))
+            elif key == "recruitment_pattern" and value:
+                recruitment_pattern = (i+1, map(lambda x: x.strip(), value.split(",")))
+        except TypeError:
+            pass
+
+def consistency_check():
+    "Consistency-check state information picked up by "
+    print "Usage:", usage
+    for (filename, (rl, recruit), (pl, recruitment_pattern)) in sides:
+        print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
 
 # Syntax transformations
 
@@ -1773,5 +1820,7 @@ if __name__ == '__main__':
                 print mover
                 if not dryrun:
                     os.system(mover)
+    # Constency-check everything we got from the file scans
+    consistency_check()
 
 # wmllint ends here
