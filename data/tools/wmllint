@@ -558,6 +558,9 @@ def parse_attribute(str):
     # value, trailing whitespace and comment.
     return (key, leader, value, comment)
 
+# This needs to match the list of usagge types in ai_python.cpp
+usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
+
 # These are accumulated by sanity_check() and examined by sanity_postcheck() 
 usage = {}
 sides = []
@@ -632,6 +635,10 @@ def sanity_check(filename, lines):
                 if q in lines[i]:
                     notes.append(q)
     # Sanity-check recruit and recruitment_pattern.
+    # This code has a limitation; if there arre multiple instances of
+    # recruit and recruitment_pattern (as can happen if these lists
+    # vary by EASY/NORMAL/HARD level) this code will only compare the
+    # last of each.
     in_side = False
     recruit = []
     recruitment_pattern = []
@@ -653,6 +660,10 @@ def sanity_check(filename, lines):
                 recruit = (i+1, map(lambda x: x.strip(), value.split(",")))
             elif key == "recruitment_pattern" and value:
                 recruitment_pattern = (i+1, map(lambda x: x.strip(), value.split(",")))
+                for utype in recruitment_pattern[1]:
+                    if not utype in usage_types:
+                        print '"%s", line %d: unknown usage class %s' \
+                              % (filename, i+1, utype)
         except TypeError:
             pass
 
