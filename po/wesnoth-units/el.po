@@ -150,8 +150,8 @@ msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-27 13:24+0100\n"
-"PO-Revision-Date: 2006-12-15 16:18+0200\n"
-"Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
+"PO-Revision-Date: 2008-01-31 02:20+0200\n"
+"Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -170,6 +170,10 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"Οι νυχτερίδες Αίματος ονομάζονται έτσι για το κόκκινο σώμα τους, που μερικοί "
+"το βλέπουν σαν σημάδι του αγαπημένου τους φαγητού. Αυτά τα τέρατα είναι "
+"γρήγορα και ρουφάνε το αίμα των εχθρών τους, με αποτέλεσμα να παίρνουν λίγη "
+"ζωή από αυτή έχασαν οι εχθροί τους."
 
 #: data/core/units/bats/Bat_Vampire.cfg:243
 #: data/core/units/bats/Bat_Blood.cfg:244
@@ -184,7 +188,7 @@ msgstr "δαγκάνες"
 
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
-msgstr "Νυχτερίδα βαμπίρ"
+msgstr "Νυχτερίδα Βαμπίρ"
 
 #: data/core/units/bats/Bat_Vampire.cfg:19
 msgid ""
@@ -192,17 +196,21 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"Οι νυχτερίδες Βαμπίρ είναι πετούμενα κτήνη που τρέφονται με το αίμα άλλων "
+"τεράτων. Παρόλο που οι δαγκάνες τους δεν είναι πολύ δυνατές, είναι ικανές "
+"για να ρουφήξουν τη ζωή και το αίμα αντιπάλων τους."
 
 #: data/core/units/boats/Boat.cfg:4
-#, fuzzy
 msgid "Boat"
-msgstr "Νυχτερίδα Αίματος"
+msgstr "Βάρκα"
 
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"Συνήθως οι βάρκες κινούνται με κουπιά ή με πανιά. Είναι συνηθισμένες στα "
+"μικρά ταξίδια και στα ρηχά νερά όπου τα μεγάλα πλοία δεν μπορούν να πάνε."
 
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
@@ -211,10 +219,12 @@ msgstr "Γαλέρα"
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
+"Οι Γαλέρες είναι πλοία για τα βαθιά νερά φτιαγμένα για εμπόριο ή για "
+"μεταφορικά μέσα."
 
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
-msgstr "Πειρατικό Γαλιόνι"
+msgstr "Πειρατική Γαλέρα"
 
 #: data/core/units/boats/Pirate_Galleon.cfg:18
 msgid ""
@@ -222,6 +232,9 @@ msgid ""
 "onboard are more than happy to help relieve other ships of their weighty "
 "cargo."
 msgstr ""
+"Οι Πειρατικές Γαλέρες είναι για τα μεταφορικά πλοία ότι και οι λύκοι για τα "
+"πρόβατα. Οι επιβιβαζμένοι πειρατές είναι κάτι παραπάνω από χαρούμενοι να "
+"ανακουφίσουν άλλα πλοία από το βαρύ φορτίο τους."
 
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
@@ -237,13 +250,12 @@ msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
-" Οι γαλέρες μεταφοράς είναι καλά οπλισμένα πλοία πού μεταφέρουν στρατεύματα. "
-"Αν φτάσουν στήν παραλία, μπορούν νά αποθέσουν τά στρατεύματα γιά επίθεση"
+"Οι γαλέρες μεταφοράς είναι καλά οπλισμένα πλοία πού μεταφέρουν στρατεύματα. "
+"Αν φτάσουν στην παραλία, μπορούν να αποθέσουν τα στρατεύματα για επίθεση."
 
 #: data/core/units/drakes/Armageddon.cfg:4
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "Δρακοειδές της φωτιάς"
+msgstr "Δράκος Αρμαγεδώνας"
 
 #: data/core/units/drakes/Armageddon.cfg:26
 msgid ""
@@ -252,6 +264,10 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"Κάποια Δρακοειδή, που ξεχωρίζουν από τα υπόλοιπα Δρακοειδή, δεν είναι "
+"ανθεκτικά επειδή φοράνε πανοπλίες μα επειδή έχουν την καταπληκτική ικανότητα "
+"να είναι ανθεκτικοί στη φωτιά αλλά ταυτόχρονα να την κατέχουν. Αυτά είναι τα "
+"Δρακοειδή Αρμαγεδώνες."
 
 #: data/core/units/goblins/Direwolf_Rider.cfg:42
 #: data/core/units/drakes/Burner.cfg:63 data/core/units/drakes/Inferno.cfg:71
@@ -277,22 +293,21 @@ msgstr "νύχια"
 #: data/core/units/drakes/Hurricane.cfg:101
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
-msgstr "ανάσα Φωτιάς"
+msgstr "ανάσα φωτιάς"
 
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr "Δρακοειδές Μάστορας του Σπαθιού"
+msgstr "Δράκος Άρχοντας του Σπαθιού"
 
 #: data/core/units/drakes/Blademaster.cfg:19
-#, fuzzy
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
-"Τά δρακοειδή πού γίνονται μάστορες στήν χρήση του σπαθιού γίνονται δεκτά σέ "
-"ένα ειδικό τάγμα. Το έμβλημά του είναι ασπρόμαυρη πολεμική μπογιά πού φορούν "
-"στή μάχη."
+"Τα Δρακοειδή πού γίνονται μάστορες στην χρήση του σπαθιού γίνονται δεκτά σε "
+"ένα ειδικό τάγμα. Το έμβλημά του είναι μια ασπρόμαυρη πολεμική μπογιά πού "
+"φορούν στη μάχη."
 
 #: data/core/units/orcs/Leader.cfg:34 data/core/units/orcs/Grunt.cfg:59
 #: data/core/units/nagas/Fighter.cfg:25 data/core/units/nagas/Warrior.cfg:28
@@ -330,24 +345,23 @@ msgstr "σπαθί"
 
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
-msgstr "Δρακοειδές Καυστήρας"
+msgstr "Δράκος Καυστήρας"
 
 #: data/core/units/drakes/Burner.cfg:19
-#, fuzzy
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
-"Τά δρακοειδή-καυστήρες είναι οι λίγοι καί περήφανοι πού έχουν κληρονομήσει "
-"πιό αυθεντικά τις δυνάμεις των μακρυνών προγόνων τους, κυρίως την ικανότητα "
-"να εκπνέουν φωτιά. Αυτό, σέ συνδυασμό με τό μέγεθος τους καί τά χέρια μέ τα "
-"μεγάλα νύχια, τους καθιστά έναν επικίνδυνο εχθρό στή μάχη. "
+"Οι Δράκοι Καυστήρες είναι οι λίγοι και περήφανοι πού έχουν κληρονομήσει πιο "
+"τις δυνάμεις των μακρινών προγόνων τους, κυρίως την ικανότητα να εκπνέουν "
+"φωτιά. Αυτό, σε συνδυασμό με το μέγεθος τους και τα μεγάλα νύχια τους, τους "
+"καθιστά έναν επικίνδυνο εχθρό στη μάχη."
 
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr ""
+msgstr "Δρακος Συγκρουστής"
 
 #: data/core/units/drakes/Clasher.cfg:21
 msgid ""
@@ -366,6 +380,19 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
+"Ένας Δρακοειδής Συγκρουστής δεν μπορεί ούτε να πετάξει αλλά ούτε να βγάλει "
+"φωτιά, και πολλοί υποθέτουν πως γιἀυτό το λόγο έχουν ξεπέσει στη μάχη σώμα "
+"με σώμα - σε μία προσπάθεια να φανούν χρήσιμοι. Είναι πιθανό να έχουν μία "
+"μικρή έλλειψη σε αυτή την τέχνη, αλλά αυτοί που υποστηρίζουν αυτή την "
+"θεωρία  μάλλον δεν έχουν πολεμήσει ποτέ με ένα τέτοιο Δρακοηδές.\n"
+"\n"
+"Στην πραγματικότητα παίζουν μεγάλο ρόλο στην Δρακοειδή ιεραρχία, ακόμα και "
+"αν η στρατολόγηση τους είναι τυπική, δεν είναι με τίποτα λιγότερο "
+"αποτελεσματική. Στη μάχη τους με μικρότερες σε ισχύ φυλές, βρίσκουν πως το "
+"φυσικό τους μέγεθος και η δύναμή τους είναι από μόνα τους ισχυρά όπλα, και "
+"όταν συνδιάζονται με τον εξοπλισμό που έχει αυτή η κάστα, το αποτέλεσμα τον "
+"πολεμιστών που βγαίνει έχει κάποιες τυπικές αδυναμίες όπως τρωτότητα στα "
+"βέλη και τα δόρατα."
 
 #: data/core/units/saurians/Ambusher.cfg:27
 #: data/core/units/saurians/Ambusher.cfg:36
@@ -400,7 +427,7 @@ msgstr "δόρυ"
 
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "Δρακοειδές Ενισχυτής"
 
 #: data/core/units/drakes/Enforcer.cfg:21
 msgid ""
@@ -408,6 +435,9 @@ msgid ""
 "hours at the forge have equipped them with a bristling array of weaponry, "
 "and they are clad them head to toe in shining armor of proof."
 msgstr ""
+"Οι Δρακοειδής Ενισχυτές συνοψίζουν όλη τη δύναμη του είδος τους. Πολλές ώρες "
+"στο σιδηρουργείο τους εφοδίασαν με αρκετά όπλα, και είναι κολλημένοι ως τα "
+"νύχια με αδιαπέραστη πανοπλία."
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
@@ -422,7 +452,7 @@ msgstr "σφύρα"
 
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
-msgstr "Δρακοειδές πολεμιστής"
+msgstr "ΔράκοςΠολεμιστής"
 
 #: data/core/units/drakes/Fighter.cfg:19
 msgid ""
@@ -431,6 +461,11 @@ msgid ""
 "great strength, coupled with their hardened scales, is rightly frightening "
 "to swordsman of any other race."
 msgstr ""
+"Οι Δρακοειδής Πολεμιστές κρατάνε χαντζάρια, και έχουν κληρονομήσει την "
+"ικανότητα να βγάζουν φωτιά από τους τους προγόνους τους. Επίσης μπορούν και "
+"πετάνε, το οποίο ενοχλεί πολύ τους εχθρούς τους. Η μεγάλη δύναμή τους, μαζί "
+"με το πολύ σκληρό δέρμα τους, είναι πολύ φοβιστική σε έναν ξιφομάχο "
+"οποιαδήποτε άλλης φυλής."
 
 #: data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
@@ -438,7 +473,7 @@ msgstr "γιαταγάνι"
 
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
-msgstr "Δρακοειδές της φωτιάς"
+msgstr "Δρακος Φωτιάς"
 
 #: data/core/units/drakes/Fire.cfg:18
 msgid ""
@@ -446,10 +481,14 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"Τα σπουδαία Δρακοειδή της Φωτιάς είναι δεξιοτέχνες της εσωτερικής τους "
+"φωτιάς. Καλυμμένοι σε μια αστραφτερή πανοπλία, βγάζουν στήλες φωτιάς σε "
+"όποιον τους επιτεθεί, μία απόδειξη της δύναμης και της λαμπρότητας του "
+"είδους τους."
 
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Δρακος Φλογοβόλος"
 
 #: data/core/units/drakes/Flameheart.cfg:26
 msgid ""
@@ -458,10 +497,14 @@ msgid ""
 "That they can breathe fire as they do lends credence to this belief, though, "
 "for some reason, no one has tried cutting one open to find out."
 msgstr ""
+"Λέγεται ότι τα μεγαλύτερα Δρακοειδή - οι άμεσοι απόγονοι των ίδιων των "
+"Δράκων - έχουν μέσα τους φωτιά αντί για αίμα. Πολλοί εξηγούν έτσι το ότι "
+"μπορούν να βγάζουν φωτιές, όμως, για κάποιο ανεξήγητο λόγο, κανείς δεν έχει "
+"προσπαθήσει να κόψει έναν για να μάθει αν είναι αλήθεια."
 
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "Δράκος Φωτοβολίδας"
 
 #: data/core/units/drakes/Flare.cfg:25
 msgid ""
@@ -469,10 +512,14 @@ msgid ""
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
 "be such leaders, both in war and in peace."
 msgstr ""
+"Τα Δρακοειδή είναι μια πολύ παλιά φυλή, αρκετά σοφή ώστε να δίνουν μεγάλη "
+"προσοχή στους φυσικούς τους ηγέτες. Αυτοί που αποκαλούνται 'Φωτοβολίδες' από "
+"τους αντιπάλους τους είναι τα δρακοειδή εκείνα που φιλοδοξούν να γίνουν "
+"τέτοιοι σεβαστοί ηγέτες, στον πόλεμο μα και στην ειρήνη."
 
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "Δράκος Μονομάχος"
 
 #: data/core/units/drakes/Gladiator.cfg:19
 msgid ""
@@ -484,10 +531,17 @@ msgid ""
 "on their weapons confers offensive capability at the cost of a slight "
 "reduction in their defensive abilities."
 msgstr ""
+"Ο Μονομάχος έχει πάρει ένα τελείως διαφορετικό μονοπάτι από τους "
+"Πετσοκόφτες. Αντί να δίνουν έμφαση στην προπόνηση, επέλεξαν να εστιάσουν "
+"στην καλύτερη χρησιμοποίηση των όπλων. Αφού είναι οι μεταλλουργοί στη "
+"Δρακοειδή κοινωνία, παίρνουν και τα καλύτερα όπλα - τα πιο μυτερά δόρατα και "
+"σπαθιά, και κάποιες σφύρες που ολοκληρώνουν την εντυπωσιακοί τους παράταξη. "
+"Η έντονη εστίαση στα επίθεση, όμως, έχει ως αποτέλεσμα να υστερούν στην "
+"άμυνα."
 
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "Δράκος Ανεμοπόρος"
 
 #: data/core/units/drakes/Glider.cfg:20
 msgid ""
@@ -498,15 +552,23 @@ msgid ""
 "vantage point, these drakes can see past most defensive cover. Their skill "
 "at flying allows them the precision to target enemies under such cover."
 msgstr ""
+"Οι Δρακοειδής Ανεμοπόροι φοράνε όσο μικροί πανοπλία γίνετε, ώστε να είναι "
+"ελεύθεροι να πετάξουν όσο πιο πολύ γίνετε. Αυτά τα Δρακοειδή είναι ικανοί "
+"πολεμιστές, έχοντας την δυνατότητα να βγάλουν φωτιά όπως και πολλοί του "
+"είδους τους. Οι Ανεμοπόροι μπορούν επίσης να χρησιμοποιήσουν αποτελεσματικά "
+"την ταχύτητά τους για να βαρέσουν τους αντίπαλους τους. Από την εναέρια "
+"πλεονεκτική θέση τους, αυτά τα Δρακοειδή μπορούν να δουν μέχρι και τη πιο "
+"αμυντική κρυψώνα. Η δεξιότητα στο να πετάνε τους επιτρέπει να πετυχαίνουν με "
+"ακρίβεια τους εχθρούς τους ακόμα και σε τέτοιες κρυψώνες."
 
 #: data/core/units/drakes/Glider.cfg:75 data/core/units/drakes/Sky.cfg:91
 #: data/core/units/drakes/Hurricane.cfg:92
 msgid "slam"
-msgstr ""
+msgstr "βαρύ χτύπημα"
 
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
-msgstr ""
+msgstr "Δράκος Τυφώνας"
 
 #: data/core/units/drakes/Hurricane.cfg:29
 msgid ""
@@ -514,10 +576,14 @@ msgid ""
 "drakes which are gifted with flight. Soaring high in the air, they can see "
 "past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
+"Δεξιοτέχνες στο εναέριο χώρο, Οι Δρακοειδής Τυφώνες είναι εκλεκτοί ανάμεσα "
+"στα Δρακοειδή που μπορούν να πετάνε. Πετώντας ψηλά στον αέρα μπορούν να δουν "
+"και στην πιο  κρυφή κρυψώνα και να βγάλουν την φωτιά τους προς τους "
+"αντιπάλους τους χωρίς να δείξουν έλεος."
 
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr ""
+msgstr "Δράκος της Κολάσεως"
 
 #: data/core/units/drakes/Inferno.cfg:19
 msgid ""
@@ -527,10 +593,16 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
+"Τα καταστροφικά πετούμενα γνωστά και ως Δρακοειδή της Κολάσεως είναι αφέντες "
+"της φωτιάς που βγάζουν και ανταγωνίζονται, στην ικανότητα αυτή, μέχρι και "
+"τους ίδιους τους Δράκους. Αυτή η δεξιότητα τους ανταμείβει με το να τους "
+"κάνει σχεδόν απρόσβλητους από τη φωτιά. Η λαμπερή, βαμμένη στα χρώματα της "
+"φωτιάς, πανοπλία τους είναι σημάδι μιας δοξασμένης και δυνατής κάστας, αυτό "
+"ακριβώς που φιλοδοξούν να γίνουν και τα \"αδέλφια\" τους."
 
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr ""
+msgstr "Δράκος του Ουρανού"
 
 #: data/core/units/drakes/Sky.cfg:28
 msgid ""
@@ -540,10 +612,15 @@ msgid ""
 "positions which would otherwise afford a great defensive advantage to their "
 "foes."
 msgstr ""
+"Τα Δρακοειδή του Ουρανού είναι πραγματικοί βασιλείς του ουρανού. Η φόρα σε "
+"συνδυασμό με τη φοβερή βουτιά και την δυνατότητα να βγάζουν φωτιά είναι ένα "
+"τρομακτικό όπλο. Κάνοντας επίθεση από τον αέρα, μπορούν να βγάλουν φωτιά με "
+"τρομερή ακρίβεια προς τους αντιπάλους τους ακόμα και αν αυτοί κρύβονται σε "
+"θέσεις που κανονικά μπορούν να αμυνθούν πάρα πολύ."
 
 #: data/core/units/drakes/Slasher.cfg:4
 msgid "Drake Slasher"
-msgstr ""
+msgstr "Δράκος Πετσοκόφτης"
 
 #: data/core/units/drakes/Slasher.cfg:19
 msgid ""
@@ -553,6 +630,13 @@ msgid ""
 "boar. Their training has also enhanced their stamina and defensive skills, "
 "which is a major advantage over their close cousins the Gladiators."
 msgstr ""
+"Οι Δρακοειδές Πετσοκόφτες είναι Συγκρουστές  που έχουν επιλέξει να "
+"χρησιμοποιούν έναν λογχοπέλεκυ αντί για σπαθί και δόρυ. Το μεγάλο μέγεθός "
+"τους τους επιτρέπει να χρησιμοποιούν ένα όπλο ανάλογου αναστήματος, αρκετά "
+"μεγάλο για να σουβλίσει ένα άλογο όπως ένας άνθρωπος σουβλίζει ένα γουρούνι. "
+"Η προπόνηση τους έχει εμπλουτίσει την άμυνα και την αντοχή τους, που που "
+"είναι ένα μεγάλο πλεονέκτημα προς τους κοντινούς τους ξάδερφους τους "
+"Μονομάχους."
 
 #: data/core/units/drakes/Warden.cfg:75 data/core/units/drakes/Warden.cfg:84
 #: data/core/units/drakes/Slasher.cfg:69 data/core/units/drakes/Slasher.cfg:78
@@ -563,7 +647,7 @@ msgstr "λογχοπέλεκυς"
 
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
-msgstr ""
+msgstr "Δράκος Αξιωματικός"
 
 #: data/core/units/drakes/Warden.cfg:20
 msgid ""
@@ -572,10 +656,15 @@ msgid ""
 "on this earth would dare stand against them. The Wardens' weapon of choice "
 "is the halberd, which they use to great effect."
 msgstr ""
+"Οι Δρακοειδής Αξιωματικοί αναπαριστούν την ακμή της κάστας των Συγκρουστών, "
+"έχουν επιλεχτεί από τους πιο ικανούς Πετσοκόφτες. Έχουν σφυρηλατήσει τον "
+"μύθο τους έτσι ώστε κανένας πολεμιστής στη γη να μην τολμά να τους "
+"πολεμήσει. Το όπλο των Αξιωματικών είναι ο λογχοπέλεκυς, τον οποίο "
+"χρησιμοποιούν με μεγάλο αποτέλεσμα."
 
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "Δράκος Μαχητής"
 
 #: data/core/units/drakes/Warrior.cfg:18
 msgid ""
@@ -583,10 +672,14 @@ msgid ""
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike devastating blows, and to withstand punishment in equal measure."
 msgstr ""
+"Οι Δρακοειδές Μαχητές κρατούν σπαθιά και είναι ικανοί σε ἀυτά, κατέχουν τη "
+"δυνατότητα να βγάζουν φωτιά από τους προγόνους τος. Η μεγάλη δύναμη που έχει "
+"όλη τους η φυλή τους επιτρέπει να πετάνε καταστροφικές φωτιές, και αντέχουν "
+"μια  τιμωρία σε ανάλογο μέγεθος."
 
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "Μανιασμένος ΝάνοςΜαχητής"
 
 #: data/core/units/dwarves/Berserker.cfg:19
 msgid ""
@@ -594,15 +687,19 @@ msgid ""
 "rage before combat. These warriors forget all notion of defense, thinking "
 "only of the unrelenting assaults they are legendary for performing."
 msgstr ""
+"Οι Μανισμένοι Πολεμιστές είναι μια σπάνια κάστα Νάνων, που πάνε στη μάχη ένα "
+"μανιώδη θυμό. Αυτοί οι πολεμιστές έχουν ξεχάσει τα πάντα για την άμυνα και "
+"σκέφτονται μόνο τις σκληρές επιθέσεις, για τις οποίες έχουν μείνει στην "
+"ιστορία."
 
 #: data/core/units/dwarves/Ulfserker.cfg:31
 #: data/core/units/dwarves/Berserker.cfg:31
 msgid "berserker frenzy"
-msgstr ""
+msgstr "μανιώδης θυμός"
 
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "Νάνος Δρακόμαχητής"
 
 #: data/core/units/dwarves/Dragonguard.cfg:19
 msgid ""
@@ -615,6 +712,15 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
+"Δεν είναι ξεκάθαρο από που πήραν το όνομά τους οι Δρακοφύλακες, είναι ένα "
+"όνομα που δόθηκε από τους υπόλοιπους νάνους. Μερικοί θεωρούν ότι το όνομα "
+"βγαίνει από το όπλο που έχουν επιλέξει, τα οποία είναι κάτι παράξενα όπλα με "
+"κεφαλή σε σχήμα δράκου που βγάζουν φωτιά και θάνατο. Άλλοι υποθέτουν πως το "
+"όνομα τους δόθηκε επειδή τα όπλα τους είναι ικανά να σκοτώσουν μέχρι και "
+"έναν Δράκο, κάτι που κανείς δεν έχει δει ποτέ στον γνωστό κόσμο. Μα όποια κι "
+"αν είναι η αλήθεια γύρω από το όνομά τους, οι Δρακοφύλακες μπορούν, χάρης "
+"στα όπλα τους, που έχουν σκοτώσει μέχρι και τους πιο ισχυρούς πολεμιστές, να "
+"αμυνθούν αλλά και να ξανακερδίσουν τα Κάστρα των Νάνων."
 
 #: data/core/units/orcs/Assassin.cfg:70 data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/orcs/Archer.cfg:71
@@ -635,11 +741,11 @@ msgstr "στιλέτο"
 
 #: data/core/units/dwarves/Dragonguard.cfg:34
 msgid "dragonstaff"
-msgstr ""
+msgstr "δρακοραβδί"
 
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
-msgstr ""
+msgstr "Νάνος Πολεμιστής"
 
 #: data/core/units/dwarves/Fighter.cfg:20
 msgid ""
@@ -648,6 +754,10 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
+"Οι πολεμιστές Νάνοι κρατάνε σθεναρά τσεκούρια και σφύρες, τα οποία τους "
+"κάνουν φοβερούς εχθρούς στη μάχη σώμα με σώμα. Είναι εξαιρετικοί στα βουνά "
+"και στις σπηλιές. Αν και όχι γρήγοροι με τη δύναμή και η αντοχή τους "
+"αντισταθμίζονται."
 
 #: data/core/units/undead/Skeleton.cfg:106
 #: data/core/units/undead/Skele_Revenant.cfg:29
@@ -665,7 +775,7 @@ msgstr "σφυρί"
 
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Νάνος Σκοπός"
 
 #: data/core/units/dwarves/Guardsman.cfg:20
 msgid ""
@@ -675,19 +785,24 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"Η φυλή των Νάνων ήταν πάντα γνωστή για την στερεότητα αυτών που φτιάχνει, "
+"και πολύ πολεμιστές εξοπλίζονται για να πάρουν αυτό το πλεονέκτημα. Οι Νάνοι "
+"Σκοποί πηγαίνουν προς τη μάχη με τεράστιες ασπίδες και δόρατα. Συνήθως ο "
+"ρόλος τους είναι να κρατάνε την γραμμή τους και να άποκρούν όσους προσπαθούν "
+"να την σπάσουν. Όπως οι γραμμές προχωράνε, αυτοί σιγουρεύουν την, με "
+"δυσκολία κατακτημένη προώθηση."
 
 #: data/core/units/humans/Loyalist_Spearman.cfg:74
 #: data/core/units/humans/Loyalist_Javelineer.cfg:39
 #: data/core/units/dwarves/Sentinel.cfg:48
 #: data/core/units/dwarves/Guardsman.cfg:40
 #: data/core/units/dwarves/Stalwart.cfg:43
-#, fuzzy
 msgid "javelin"
-msgstr "Ακοντιστής"
+msgstr "Ακόντιο"
 
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
-msgstr "Αφέντης των Νάνων"
+msgstr "Νάνος Αφέντης"
 
 #: data/core/units/dwarves/Lord.cfg:20
 msgid ""
@@ -696,6 +811,10 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"Ντυμένος με λαμπερή πανοπλία, αυτοί οι Νάνοι μοιάζουν με βασιλιάδες από τις "
+"σπηλιές. Χειρίζονται τα τσεκούρια και τις σφύρες δεξιοτεχνία,  και μπορούν "
+"να χτυπήσουν κάτι με τα πετούμενα τσεκούρια. Αν και αργοί, αυτοί οι Νάνοι "
+"είναι ζωντανή απόδειξη της δύναμης της φυλής τους."
 
 #: data/core/units/undead/Skele_Death_Knight.cfg:46
 #: data/core/units/dwarves/Steelclad.cfg:29
@@ -707,9 +826,10 @@ msgstr "πολεμικό τσεκούρι"
 msgid "hatchet"
 msgstr "μικρό τσεκούρι"
 
+# http://www.livepedia.gr/index.php?title=%CE%A4%CE%B5%CF%8D%CF%84%CE%BF%CE%BD%CE%B5%CF%82
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "Νάνος Τεύτονας"
 
 #: data/core/units/dwarves/Runemaster.cfg:19
 msgid ""
@@ -718,18 +838,24 @@ msgid ""
 "power. Though rarely seen in combat, a master of these runes can put them to "
 "terrifying use."
 msgstr ""
+"Η μαγεία των Νάνων συνήθως εμφανίζεται με την αποκρυπτογράφηση αρχείων "
+"Τευτονικών συμβόλων στην επιφάνειά κάποιου αντικειμένου, που για κάποιο λόγο "
+"έχει εμπλουτιστεί με μαγεία. Αν και είναι λίγο δύσκολο να βρεθεί ένας Νάνος "
+"Τεύτονας, που έχει ονομαστεί έτσι μεταφορικά, στη μάχη μπορεί να γίνει πολύ "
+"τρομακτικός για τους αντιπάλους του."
 
+# http://www.livepedia.gr/index.php?title=%CE%A4%CE%B5%CF%8D%CF%84%CE%BF%CE%BD%CE%B5%CF%82
 #: data/core/units/dwarves/Runemaster.cfg:24
 msgid "runic hammer"
-msgstr ""
+msgstr "τευτονικό σφυρί"
 
 #: data/core/units/dwarves/Runemaster.cfg:34
 msgid "Lightning bolt"
-msgstr ""
+msgstr "αστραπή"
 
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "Νάνος Φύλακας"
 
 #: data/core/units/dwarves/Sentinel.cfg:20
 msgid ""
@@ -739,10 +865,14 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
+" οι Νάνοι Φύλακες είναι πρωταθλητές ανάμεσα στους συστρατιώτες στην οχύρωση "
+"των γραμμών τους. Το να επιτεθείς σε μία γραμμή, οχυρομένη από αυτούς, είναι "
+"πάντα σαν να αυτοκτονείς. Αυτοί οι Νάνοι είναι δεξιοτέχνες στη μάχη σώμα με "
+"σώμα, και μπορούν να κρατήσουν ένα κομμάτι γης ακόμα και για μια βελανιδιά."
 
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Νάνος Φρουρός"
 
 #: data/core/units/dwarves/Stalwart.cfg:19
 msgid ""
@@ -751,20 +881,27 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"Η εμπειρία και η προπόνηση μετατρέπει έναν Νάνο Σκοπό σε έναν αξιόλογος "
+"στρατιώτη. Αυτοί, οι Φρουροί, εξοπλίζονται με κάτι που να μπορούν να "
+"χειριστούν, αλλά και να μπορούν να οχυρώθούν ενάντια σε μία κανονική "
+"επίθεση. Είναι επικίνδυνο να χάσει ένα στήριγμά σαν αυτούς, γιατί δεν θα "
+"υπάρχει εύκολα και γρήγορα κάποιος για να τους αντικαταστήσει."
 
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "Σιδερόφρακτος Νάνος"
 
 #: data/core/units/dwarves/Steelclad.cfg:19
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
+"Οι πιο έμπειροι Σιδεροφρακτοι νάνοι πολεμιστές φοράνε βαριές αλυσιδωτές "
+"πανοπλίες και ατσάλινους θώρακες, για τα οποία είναι πολύ διάσημοι."
 
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "Νάνος Κεραυνοπολεμιστής"
 
 #: data/core/units/dwarves/Thunderer.cfg:19
 msgid ""
@@ -774,15 +911,21 @@ msgid ""
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
 "made moreso by the secrecy which dwarves hold about their workings."
 msgstr ""
+"Όταν οι Άνθρωποι του Γουέσνοθ πρωτοπολέμησαν τους Νάνους, έμειναν έκπληκτοι "
+"από την δύναμη των Νάνων Κεραυνομαχητών, που μπορούσαν να πετούν θάνατο από "
+"μακριά μέσα από τον μηχανισμό αυτών των παράξενων ράβδων που κρατούσαν στη "
+"μάχη. Ο εκκωφαντικός ήχος αυτών των 'κεραυνοραβδιών' είναι πολύ τρομακτικός, "
+"και γίνονται ακόμα πιο τρομακτικός από την μυστικότητα που έχουν οι Νάνοι "
+"για την συγκεκριμένη τους δουλεία."
 
 #: data/core/units/dwarves/Thunderguard.cfg:34
 #: data/core/units/dwarves/Thunderer.cfg:50
 msgid "thunderstick"
-msgstr ""
+msgstr "κεραυνοραβδί"
 
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "Νάνος Κεραυνομαχητής"
 
 #: data/core/units/dwarves/Thunderguard.cfg:20
 msgid ""
@@ -797,10 +940,20 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"Οι Κεραυνομαχητές είναι γνωστοί για τα περίεργα όπλα τους, αυτά τα παράξενα "
+"ραβδιά από ξύλο και σίδερο που κάνουν έναν εκκωφαντικό ήχο όταν οργίζονται. "
+"Η μηχανορραφία πίσω από αυτά τα όπλα είναι ένα μυστήριο, ένα μυστικό που "
+"χάνεται μαζί με τους Νάνους που το κατέχουν, και υποτίθεται ότι αυτό, το "
+"μυστικό, τους έχει πλάσει. Αυτό που έχει ακουστεί είναι πως Νάνοι βάζουν μία "
+"μαύρη σκόνη στο \"στόμα\" των όπλων τους. Μερικοί λένε πως είναι φαγητό για "
+"το τέρας που είναι φυλακισμένο μέσα στο όπλο.\n"
+"\n"
+"Αν και μία βολή από αυτά τα 'κεραυνοραβδιά' μπορεί να πάρει πολλή ώρα για να "
+"προετοιμαστεί, το αποτέλεσμα κάνει τους Νάνους να το χρησιμοποιούν."
 
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "Νάνος Μαχητής"
 
 #: data/core/units/dwarves/Ulfserker.cfg:19
 msgid ""
@@ -809,10 +962,14 @@ msgid ""
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
+"Οι Νάνοι είναι μια αρχαία φυλή από δυνατούς πολεμιστές. Οι Νάνοι Μαχητές "
+"είναι οι πιο άγριοι από αυτούς στη μάχη, σιγά σιγά  γίνονται μαχητές με "
+"μανιώδη θυμό και δεν νιώθουν ούτε φόβο ούτε πόνο, και δεν θα προσέξουν τα "
+"όποια τραύματα δεχτούν."
 
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr "ξωτικό-τοξότης "
+msgstr "Ξωτικοτοξότης"
 
 #: data/core/units/elves/Archer.cfg:21
 msgid ""
@@ -823,6 +980,12 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
+"Τα Ξωτικά ήταν πάντα γνωστά για την δεξιότητά τους στη τοξοβολία, μία "
+"δεξιότητα που, για πολλούς λόγους, τους έρχεται φυσικά. Ακόμα και ο πιο "
+"αδύναμος θα γινόταν θανάσιμος με ένα τόξο στο χέρι, και, σε περιπτώσεις "
+"πολέμου, πολλοί θα διαλέξουν το τόξο για όπλο τους. Αν και η σχετική απειρία "
+"τους στη μάχη τους βάζει σε μεγάλο κίνδυνο, η φυσική τους χάρη εγγυάται ότι "
+"μπορούν να νικήσουν εύκολα τους νεοσύλλεκτους."
 
 #: data/core/units/orcs/Warlord.cfg:34 data/core/units/orcs/Archer.cfg:80
 #: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Leader.cfg:43
@@ -849,11 +1012,11 @@ msgstr "τόξο"
 
 #: data/core/units/elves/Archer.cfg:168
 msgid "female^Elvish Archer"
-msgstr "Ξωτικότοξότρια"
+msgstr "Ξωτικοτοξότρια"
 
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
-msgstr "Ξωτικό-Εκδικητής"
+msgstr "Ξωτικοεκδικητής"
 
 #: data/core/units/elves/Avenger.cfg:23
 msgid ""
@@ -867,10 +1030,19 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
+"Το περίεργο όνομα του Ξωτικοεκδικιτή προέρχεται από μία τακτική που "
+"χρησιμοποιείται συχνά από αυτούς του ικανούς πολεμιστές. Ο εχθρός σπάει "
+"εύκολα μία παραπλανητική γραμμή, και όταν οι εχθροί εισχωρήσουν περισσότερο, "
+"τότε αυτοί οι τοξότες εμφανίζονται και επιτίθενται από πίσω, κόβοντάς τον "
+"δρόμο των προμηθειών κυκλώνοντας τον εχθρό, σε χρόνο μηδέν.\n"
+"\n"
+"Αυτό, πολλές φορές, έχει ερμηνευτεί ως ένας τύπος εκδίκησης για τους "
+"συμπατριώτες τους που χάθηκαν νωρίτερα. Αν και όχι τελείως αληθινό, έχει "
+"κάποια βάση."
 
 #: data/core/units/elves/Avenger.cfg:177
 msgid "female^Elvish Avenger"
-msgstr "Ξωτικόεκδικήτρια"
+msgstr "Ξωτικοεκδικήτρια"
 
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
@@ -885,10 +1057,16 @@ msgid ""
 "their leaders, and the tendency to choose leaders of merit is one of the "
 "quiet strengths of the elves."
 msgstr ""
+"Τα Ξωτικά, ανόμοια με τις υπόλοιπες φυλές, θα αναγνωρίσουν και θα "
+"ακολουθήσουν όποιον ευγενή, από τη φυλή τους, έχει εμπειρία στη μάχη. Σε "
+"αυτό διαφέρουν πολύ από τους Ανθρώπους, που εκεί συνήθως η ηγεσία είναι "
+"ζήτημα εξαναγκασμού και εκφοβισμού. Ο συνδυασμός της θέλησής τους να "
+"δέχονται την σοφία των ηγετών τους, με την κλίση προς το να διαλέγουν άξιους "
+"ηγέτες, είναι ένα ισχυρό όπλο των ξωτικών."
 
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr "Ξωτικοήρωας"
+msgstr "Ξωτικοϋπερμάχος"
 
 #: data/core/units/elves/Champion.cfg:20
 msgid ""
@@ -898,10 +1076,15 @@ msgid ""
 "swordsmanship to which few can compare. Even archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
+"Αυτά τα λίγα Ξωτικά που σκόπιμα μπήκαν στα όπλα, γίνονται κάτι που αντιλέγει "
+"την υπάκουη φήμη της φυλής τους. Αφιέρωση και δεξιοτεχνία ταιριάζεται με την "
+"αγνότητα στη μορφή, και το αποτέλεσμα είναι μια ικανότητα στο ξίφος που "
+"λίγοι μπορούν να πλησιάσουν. Ακόμα και η τοξοβολία, που θεωρείται, από "
+"αυτούς, ως δεύτερη επιδίωξη, εκτελείται ικανότατα."
 
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr "Ξωτικοδρουίδης"
+msgstr "Ξωτικοδρυίδης"
 
 #: data/core/units/elves/Druid.cfg:20
 msgid ""
@@ -912,6 +1095,10 @@ msgid ""
 "Their chief ability lies in healing, and it is for this skill that the "
 "elvish druids are revered by their people."
 msgstr ""
+"Η μαγεία των Ξωτικών του δάσους δεν ταιριάζει πολύ καλά στη μάχη, αλλά παρ' "
+"όλα αυτά είναι αρκετά αποτελεσματική. Στα δάση στα οποία ζούνε μπορούν να τα "
+"αναζωογονήσουν με μία εντολή, όμως θα ορμήξουν σε κάθε ένα που θα τα "
+"απειλήσει."
 
 #: data/core/units/saurians/Soothsayer.cfg:66
 #: data/core/units/saurians/Augur.cfg:66
@@ -933,7 +1120,7 @@ msgstr "ραβδί"
 
 #: data/core/units/elves/Druid.cfg:36 data/core/units/elves/Shyde.cfg:40
 msgid "ensnare"
-msgstr "παγιδεύω"
+msgstr "σαγήνευση"
 
 #: data/core/units/elves/Druid.cfg:48 data/core/units/elves/Shyde.cfg:52
 msgid "thorns"
@@ -941,7 +1128,7 @@ msgstr "αγκάθια"
 
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr ""
+msgstr "Ξωτικογητεύτρα"
 
 #: data/core/units/elves/Enchantress.cfg:18
 msgid ""
@@ -951,17 +1138,23 @@ msgid ""
 "can be said that they are revered by their people, very little can be said "
 "about their actual function or purpose within that society."
 msgstr ""
+"Η μαγεία των Ξωτικών δεν έχει καμία σχέση με αυτήν των Ανθρώπων, τόσο "
+"διαφορετική έτσι ώστε οι άνθρωποι να είναι σχεδόν ανίκανοι να την "
+"καταλάβουν, πόσο μάλλον να την χρησιμοποιήσουν. Ομοίως, εκείνοι που την "
+"κατέχουν είναι εξίσου αινιγματικοί, αν και μπορεί να ειπωθεί ότι είναι "
+"σεβαστοί από τους ανθρώπους τους, ακόμα πολύ λίγα μπορούν να ειπωθούν για "
+"την πραγματικό λειτουργία ή το σκοπό τους μέσα στην κοινωνία."
 
 #: data/core/units/elves/Enchantress.cfg:35
 #: data/core/units/elves/Sorceress.cfg:37 data/core/units/elves/Shaman.cfg:38
 msgid "entangle"
-msgstr ""
+msgstr "παγίδα"
 
 #: data/core/units/elves/Enchantress.cfg:46
 #: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Lord.cfg:32
 #: data/core/units/elves/Sylph.cfg:52 data/core/units/elves/High_Lord.cfg:69
 msgid "faerie fire"
-msgstr ""
+msgstr "νεραϊδίσια φωτιά"
 
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
@@ -974,6 +1167,11 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
+"Τα ξωτικά δεν είναι πολεμοχαρή από τη φύση τους, αλλά όταν χρειαστεί, η "
+"φυσική τους χάρη, η επιδεξιότητα και η ευστροφία τους, τους εξυπηρετεί καλά. "
+"Ένα Ξωτικό μπορεί να μάθει να χειρίζεται το τόξο και το σπαθί επιδέξια ώστε "
+"να μπορεί τα χρησιμοποιεί σωστά στη μάχη σε ένα, παράξενα, πολύ μικρό "
+"χρονικό διάστημα."
 
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
@@ -986,11 +1184,15 @@ msgid ""
 "with both sword and bow, and their skill once acquired does not fade for "
 "lack of practice."
 msgstr ""
+"Ένα σχετικά μικρό ποσό εμπειρίας μπορεί να μετατρέψει έναν ικανό "
+"Ξωτικοπολεμιστή σε έναν δεξιοτέχνη στη μάχη. Αυτοί που τιμούνται με τον "
+"τίτλο Ήρωες είναι δυνατοί στο σπαθί αλλά και στο τόξο, και μπορούν όταν "
+"αποκτήσουν αυτή η δεξιοτεχνία να μην την ξεχάσουν ακόμα και αν δεν "
+"προπονούνται."
 
 #: data/core/units/elves/High_Lord.cfg:4
-#, fuzzy
 msgid "Elvish High Lord"
-msgstr "Ξωτικοπολεμιστής"
+msgstr "Ξωτικοάρχοντας"
 
 #: data/core/units/elves/High_Lord.cfg:18
 msgid ""
@@ -999,11 +1201,14 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"Οι ηγέτες των Ξωτικών δεν αποδυναμώνονται ούτε αρρωσταίνουν με τον καιρό. "
+"Αλλά τότε είναι που αναπτύσσουν την πραγματική τους δύναμη. Ήσυχοι και "
+"ευσεβείς στην ειρήνη, ένας Ξωτικοάρχοντας στη πλήρη οργή του είναι κάτι το "
+"παράξενο, πραγματικά."
 
 #: data/core/units/elves/Lady.cfg:5
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "Ξωτικοδρουίδης"
+msgstr "Ξωτικοκυρία"
 
 #: data/core/units/elves/Lady.cfg:20
 msgid ""
@@ -1012,11 +1217,14 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Τα Ξωτικά διαλέγουν τους ηγέτες τους για την δύναμη και την σοφία τους, αυτή "
+"η πρόνοια τους έχει προστατέψει σε καιρούς αβεβαιότητας. Όταν οι ηγέτες "
+"βασιλεύουν καλά ανταμείβονται με μια τυφλή αφοσίωση από τους υπηκόους τους, "
+"ένα δώρο το οποίο κάθε ηγέτης θα ήθελε να είχε."
 
 #: data/core/units/elves/Lord.cfg:4
-#, fuzzy
 msgid "Elvish Lord"
-msgstr "Αφέντης των Νάνων"
+msgstr "Ξωτικοαφέντης"
 
 #: data/core/units/elves/Lord.cfg:17
 msgid ""
@@ -1024,10 +1232,13 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Η αριστοκρατία των Ξωτικών είναι κατεχόμενη με αξία για να ταιριάζει με θέση "
+"τους στη κοινωνία. Οι Αφέντες των Ξωτικών είναι οι πιο σοφοί και δυνατοί "
+"μεταξύ των Ξωτικών, και είναι φοβεροί στο πως χειρίζονται την μαγεία"
 
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr "τοξότης ακριβείας των ξωτικών"
+msgstr "Ξωτικοσημαδευτής"
 
 #: data/core/units/elves/Marksman.cfg:22
 msgid ""
@@ -1039,6 +1250,14 @@ msgid ""
 "Realizing this prodigious skill does come with one cost, that being a lack "
 "of practice with the sword."
 msgstr ""
+"Ένα από τα πράγματα που συμβάλλει στην ικανότητά τους με το τόξο είναι η "
+"κατά ασυνήθιστο τρόπο καθαρή όραση των Ξωτικών. Ένα Ξωτικό που ασκείται στην "
+"τοξοβολία μπορεί να χτυπήσει τους στόχους που ένα άτομο δεν θα μπορούσε να "
+"δει καν και, ακόμα και τη νύχτα, και μπορεί βάλει στο τόξο του ένα δεύτερο "
+"βέλος σχεδόν μόλις το πρώτο αφεθεί.\n"
+"\n"
+"Η πραγματοποίηση αυτής της καταληκτικής ικανότητας έρχεται με το ένα κόστος, "
+"την έλλειψη πρακτικής με το ξίφος."
 
 #: data/core/units/elves/Sharpshooter.cfg:56
 #: data/core/units/elves/Marksman.cfg:62
@@ -1047,11 +1266,11 @@ msgstr "μακρύ τόξο"
 
 #: data/core/units/elves/Marksman.cfg:172
 msgid "female^Elvish Marksman"
-msgstr "Τοξότρια Ακριβείας των Ξωτικών"
+msgstr "Ξωτικοσημαδεύτρια"
 
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
-msgstr "Στρατάρχης των Ξωτικών "
+msgstr "Ξωτικοστρατάρχης"
 
 #: data/core/units/elves/Marshal.cfg:27
 msgid ""
@@ -1062,13 +1281,18 @@ msgid ""
 "when an elf sets his mind to war, the strategy that results is the work of a "
 "master."
 msgstr ""
+"Η μακροζωία και η φυσική νοημοσύνη των Ξωτικών τους καθιστούν ικανούς στα "
+"στρατιωτικά θέματα, τόσο αρκετά ώστε να μπορούν να αντιμετωπίσουν τη "
+"αποστροφή τους για τον πόλεμο. Τα Ξωτικά θυμούνται τα πράγματα πιο καλά από "
+"τους Ανθρώπους, και έτσι μπορούν να θυμηθούν μια τέχνη που έμαθαν πριν πολλά "
+"χρόνια. Βεβαία, σε εκείνες τις σπάνιες περιπτώσεις ένα Ξωτικό θέτει το μυαλό "
+"του στον πόλεμο, η στρατηγική που οδηγεί είναι η εργασία ενός δεξιοτέχνη."
 
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr "Ξωτικό-Αγγελιοφόρος"
+msgstr "Ξωτικοαγγελιοφόρος"
 
 #: data/core/units/elves/Outrider.cfg:22
-#, fuzzy
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
 "Despite the peaceful nature of their people, their experience makes them "
@@ -1080,19 +1304,19 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
-"Τά ξωτικά-αγγελιοφόροι είναι οι βασιλικοί αγγελιοφόροι των βασιλείων των "
-"ξωτικών. Παρά την ειρηνική φύση τού λαού τους, η εμεπιρεία τους τούς κάνει "
-"φονικούς στή μάχη. Κανείς άνθρωπος δέν μπορεί να παραβγεί μέ την ικανότητά "
-"τους στήν έφιππη τοξοβολία καί οι περισσότεροι θά είχαν πρόβλημα να "
-"συγκριθούν ακόμα καί στεκόμενοι σέ στέρεο έδαφος.\n"
+"Οι Ξωτικοαγγελιοφόροι είναι οι βασιλικοί αγγελιοφόροι των βασιλείων των "
+"ξωτικών. Παρά την ειρηνική φύση τού λαού τους, η εμπειρία τους τούς κάνει "
+"φονικούς στη μάχη. Κανείς άνθρωπος δεν μπορεί να παραβγεί με την ικανότητά "
+"τους στην έφιππη τοξοβολία και οι περισσότεροι θα είχαν πρόβλημα να "
+"συγκριθούν ακόμα και στεκόμενοι σε στέρεο έδαφος.\n"
 "\n"
-" Η ταχύτητα αυτών των στρατιωτών επιτρέπει στά ξωτικά νά χτυπήσουν όταν καί "
-"όπου επιλέξουν όταν πολεμούν στό δικό τους έδαφος, ένα γεγονός πού έχει "
-"σώσει πολλούς από αυτούς από τό θάνατο."
+"Η ταχύτητα αυτών των στρατιωτών επιτρέπει στα ξωτικά να χτυπήσουν όταν και "
+"όπου επιλέξουν όταν πολεμούν στο δικό τους έδαφος, ένα γεγονός πού έχει "
+"σώσει πολλούς από αυτούς από το θάνατο."
 
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr "ξωτικό-ρέιντζερ"
+msgstr "Ξωτικόκαταδρομέας"
 
 #: data/core/units/elves/Ranger.cfg:20
 msgid ""
@@ -1102,14 +1326,19 @@ msgid ""
 "fitting master of them. This, combined with a considerable skill at archery "
 "and swordsmanship, is very useful in warfare."
 msgstr ""
+"Αν και ένα άτομο μπορεί να περάσει όλα του τα χρόνια στο δάσος, δεν θα "
+"νιώσει ποτέ το συναίσθημα ότι είναι μέρος του δάσους. Τα Ξωτικά όμως το "
+"νιώθουν αυτό. Οποιοδήποτε Ξωτικό που μελετά το δάσος γίνεται κύριός  του. "
+"Αυτό, συνδυαζόμενο με μια ιδιαίτερη ικανότητα στην τοξοβολία και τη "
+"ξιφομαχία, είναι πολύ χρήσιμο."
 
 #: data/core/units/elves/Ranger.cfg:174
 msgid "female^Elvish Ranger"
-msgstr "ξωτικόρέιντζερ"
+msgstr "Ξωτικόκαταδρομέας"
 
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr "Ξωτικό-Καβαλάρης"
+msgstr "Ξωτικοκαβαλάρης"
 
 #: data/core/units/elves/Rider.cfg:23
 msgid ""
@@ -1121,13 +1350,19 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
+"Οι κύριοι ιππείς των Ξωτικών είναι σε θέση να κινηθούν μέσω των δασών με μια "
+"ταχύτητα που θα ήταν αυτοκαταστροφική για κάθε τι ανθρώπινο. Το πως κινείται "
+"ο αναβάτης έχει δικαιολογηθεί, όμως το πως κινούνται τα άλογα στο δάσος δεν "
+"έχει δικαιολογηθεί ακόμα.\n"
+"\n"
+"Αυτός ο συνδυασμός απίστευτης κινητικότητας και ισχυρής δύναμης είναι ένα "
+"από τα μέγιστα προτερήματα που τα Ξωτικά κατέχουν στην εχθροπραξία."
 
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr "ανιχνευτής των ξωτικών"
+msgstr "Ξωτικοανιχνευτής"
 
 #: data/core/units/elves/Scout.cfg:22
-#, fuzzy
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
 "true skill lies in their horsemanship. Even other elves are impressed by "
@@ -1135,17 +1370,17 @@ msgid ""
 "thick of the forest with nary a scratch. They may be the only cavalry in "
 "existence that fares better in the woods than on open ground."
 msgstr ""
-"Οι καβαλλάρηδες των ξωτικών του δάσους έχουν κάποια δεξιοτεχνία μέ τόξο καί "
-"σπαθί, αλλά η πραγματική δεξιοτεχνία τους βρίσκεται στίς ικανότητές τους σάν "
-"ιππείς. Ακόμα καί τά υπόλοιπα ξωτικά παραξενεύονται κάπως από τήν άφταστη "
-"ταχύτητά τους στά δάση καί την ικανότητά τους νά γλιστρούν ακόμα καί  στό "
-"πυκνότερο σημείο τού δάσους χωρίς ούτε γρατζουνιά. Είναι ίσως μερικοί από "
-"τούς μόνους ιππείς πού υπάρχουν πού τά πάνε καλύτερα στό δάσος απότι στήν "
-"ανοιχτή πεδιάδα."
+"Οι καβαλλάρηδες των ξωτικών του δάσους έχουν κάποια δεξιοτεχνία με τόξο και "
+"σπαθί, αλλά η πραγματική δεξιοτεχνία τους βρίσκεται στις ικανότητές τους σαν "
+"ιππείς. Ακόμα και τα υπόλοιπα ξωτικά παραξενεύονται κάπως από την άφταστη "
+"ταχύτητά τους στα δάση και την ικανότητά τους να γλιστρούν ακόμα και  στο "
+"πυκνότερο σημείο τού δάσους χωρίς ούτε γρατζουνιά. Είναι ίσως οι μόνοι "
+"ιππείς πού υπάρχουν πού τα πάνε καλύτερα στο δάσος από τι στην ανοιχτή "
+"πεδιάδα."
 
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr "Ιέρεια των Ξωτικών "
+msgstr "Ξωτικοϊέρεια"
 
 #: data/core/units/elves/Shaman.cfg:22
 msgid ""
@@ -1158,10 +1393,18 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle."
 msgstr ""
+"Όντας εν μέρει νεράιδες, τα Ξωτικά έχει την έμφυτη ικανότητα της μαγείας. "
+"Αυτό φαίνεται στη συγγένειά τους με το φυσικό κόσμο, τον οποίο μπορούν να "
+"ζητήσουν από ως σύμμαχο στον αγώνα. Οι εχθροί που περιπλανώνται στα δάση "
+"τους μπορούν σύντομα να βρεθούν μπλεγμένοι από τις ρίζες και εμποδισμένοι "
+"από το ίδιο το έδαφος που στέκονται.\n"
+"\n"
+"Οι θεραπευτικές δυνατότητες των Ξωτικών είναι επίσης αξιοπρόσεκτες, μιας και "
+"μπορούν να χρησιμοποιηθούν πολύ καλά στη μάχη."
 
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr "Ξωτικό-Ελεύθερος σκοπευτής"
+msgstr "Ξωτικοσκοπευτής"
 
 #: data/core/units/elves/Sharpshooter.cfg:21
 msgid ""
@@ -1170,14 +1413,18 @@ msgid ""
 "such a story could be taken seriously. The sharpshooters of the elves have, "
 "quite simply, mastered the art of archery."
 msgstr ""
+"Υπάρχει ένας θρύλος για ένα Ξωτικό που σταμάτησε ένα βέλος με ένα άλλο που "
+"έριξε το ίδιο. Είναι σίγουρο πως αυτή η ιστορία μπορεί και να είναι αλήθεια "
+"μιας και μιλάμε για ένα Ξωτικό. Ένας Ξωτικοσκοπευτής έχει, πολύ απλά, γίνει "
+"δεξιοτέχνης στην τοξοβολία."
 
 #: data/core/units/elves/Sharpshooter.cfg:154
 msgid "female^Elvish Sharpshooter"
-msgstr "Ξωτικιά-Ελεύθερος Σκοπευτής"
+msgstr "Ξωτικιοσκοπεύτρια"
 
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr "Αρχιέρεια των Ξωτικών"
+msgstr "Ξωτικοαρχιέρεια"
 
 #: data/core/units/elves/Shyde.cfg:20
 msgid ""
@@ -1186,14 +1433,18 @@ msgid ""
 "these beautiful stewards of the elven forests epitomize the grace and "
 "mystery of their people."
 msgstr ""
+"Η αφοσίωση στην νεραϊδένια φύση τους έχει μετατρέψει μια παρθένα ξωτικό σε "
+"ένα πλάσμα δύο κόσμων. Οδηγούμενη από μία φύση που δεν έχει κατανοηθεί "
+"ολόκληρη ακόμα, αυτές οι πανέμορφες αντιπρόσωποι του Ξωτικιένου δάσους "
+"συνοψίζουν την χάρη και το μυστήριο της φυλής τους."
 
 #: data/core/units/elves/Shyde.cfg:27 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
-msgstr "νεραιδοάγγιγμα"
+msgstr "νεραιδένιο άγγιγμα"
 
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr "Μάγισσα των Ξωτικών"
+msgstr "Ξωτικομάγισσα"
 
 #: data/core/units/elves/Sorceress.cfg:20
 msgid ""
@@ -1205,10 +1456,18 @@ msgid ""
 "Those able to do so are roughly titled as 'sorceresses' by other races; and "
 "certainly are capable of acting the part."
 msgstr ""
+"Ο κόσμος των νεραϊδών είναι πολύ πιο ισχυρός από τον υλικό κόσμο. Απλά "
+"φέρνοντας μερικά πράγματα από τον νεραϊδόκοσμο στον κόσμο μας τα "
+"αποτελέσματα είναι βίαια. Αυτό γίνεται εύκολα κατανοητό από τα Ξωτικά, αν "
+"και χρησιμοποιείται σπάνια με την κακόβουλη πρόθεση, αφού το να "
+"χρησιμοποιείς Ξωτικίσια μαγικά δεν είναι κάτι το εύκολο.\n"
+"\n"
+"Εκείνες που είναι ικανές να κάνουν Ξωτικομαγικά τιτλοφορούνται ως "
+"Ξωτικομάγισσες από τις άλλες φυλές."
 
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr "Ξωτικιά Συλφίδα"
+msgstr "Ξωτικοσυλφίδα"
 
 #: data/core/units/elves/Sylph.cfg:20
 msgid ""
@@ -1217,6 +1476,10 @@ msgid ""
 "powers. Legends concerning these have given other races a healthy fear of "
 "the elves."
 msgstr ""
+"Σπανίως εμφανίζονται, οι σοφές Συλφίδες που είναι κυρίαρχοι και του "
+"νεραϊδένιου και του εγκόσμιου κόσμου. Κατέχουν καταπληκτικές και μερικές "
+"φορές τρομερές δυνάμεις. Οι θρύλοι λένε πως αυτές έκαναν τις υπόλοιπες φυλές "
+"να φοβούνται τα Ξωτικά."
 
 #: data/core/units/elves/Sylph.cfg:40
 msgid "gossamer"
@@ -1224,7 +1487,7 @@ msgstr "ιστός Αράχνης"
 
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr "Ιππέας Μεγάλου Λύκου "
+msgstr "Καβαλάρης Μεγάλου Λύκου"
 
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
 msgid ""
@@ -1239,6 +1502,17 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke."
 msgstr ""
+"Οι «Τρομεροί Λύκοι» διαφέρουν από την κοινή ποικιλία μόνο στο μέγεθος και το "
+"χρώμα. Είναι χαρακτηριστικά πιο ψηλοί από ένα άλογο. Μόνο ένας τρελός θα "
+"τους αντιμετώπιζε πρόθυμα, οι Καλικάντζαροι, έχουν κατορθώσει να τους "
+"εξημερώσουν και να μπορέσουν να τους οδηγούν, με πολύ μεγάλη δυσκολία "
+"βέβαια.\n"
+"\n"
+"Τα νύχια ενός λύκου δεν θεωρούνται γενικά ως επικίνδυνα όπλα, αλλά σε ένα "
+"κτήνος τόσο μεγάλο, είναι πολύ παχύτερα και πολύ μακρύτερα από τα καρφιά "
+"σιδήρου. Οι αναβάτες τους χύνουν ένα δηλητήριο, το ίδιο που χρησιμοποιείται "
+"από τους Ορκ Δολοφόνους, στο μπροστινό μέρος των νυχιών, που κάνουν ένα "
+"ισχυρό κτύπημα των νυχιών αυτών των Λύκων σε ένα από τα πιο θανάσιμο κτύπημα."
 
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
@@ -1251,13 +1525,16 @@ msgid ""
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminuitive frames."
 msgstr ""
+"Οι Καλικάντζαροι χρησιμοποιούνται από τα Ορκ σαν ακροβολιστές για να σπάνε "
+"την αντίπαλη γραμμή. Αυτοί που καταφέρνουν να επιζήσουν τις πρώτες λίγες "
+"μάχες εφοδιάζονται με ένα πιο μακρύ δόρυ  για να αντισταθμίζεται με το ύψος "
+"τους, και μια καλύτερη πανοπλία για να φυλάνε το μικρό τους σώμα."
 
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
-msgstr "Ιππότης Καλικάντζαρος "
+msgstr "Ιππότης Καλικάντζαρος"
 
 #: data/core/units/goblins/Knight.cfg:20
-#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1267,19 +1544,19 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"Οι ιππότες καλικάντζαροι έχουν ελάχιστα κοινά με τους ανθρώπους με τους "
-"οποίους μοιράζονται τόν ίδιο τίτλο καί ο τίτλος είναι κάτι πού "
-"χρησιμοποιείται μόνο στήν αργκώ των εχθρών τους. Η ομοιότητα είναι μόνο ότι "
-"αποτελούν τλην ελίτ των λυκαναβατών, πιθανότατα έχοντας προαχθεί στή θέση "
-"αυτή λόγω της επιτυχίας τους σέ κάποια επιδρομή, η κάποιο συμβάν παρόμοιας "
-"φύσης.\n"
+"Οι 'Ιππότες' Καλικάντζαροι έχουν ελάχιστα κοινά με τους ανθρώπους με τους "
+"οποίους μοιράζονται τον ίδιο τίτλο και ο τίτλος είναι κάτι πού "
+"χρησιμοποιείται μόνο στον χλευασμό από τους εχθρών τους. Η ομοιότητα είναι "
+"μόνο ότι αποτελούν τους των λυκαναβατών, πιθανότατα έχοντας προαχθεί στη "
+"θέση αυτή λόγω της επιτυχίας τους σε κάποια επιδρομή, η κάποιο συμβάν "
+"παρόμοιας φύσης.\n"
 "\n"
-"Οι λύκοι πού τους δίνονται ανατρέφονται γιά ταχύτητα καί δύναμη, κάτι πού "
-"τους κάνει πολύ επικίνδυνους στή μάχη. "
+"Οι λύκοι πού τους δίνονται είναι για την  ταχύτητα και την δύναμή τους, κάτι "
+"πού τους κάνει πολύ επικίνδυνους στη μάχη."
 
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
-msgstr "Καλικάντζαρος λεηλατητής"
+msgstr "Καλικάντζαρος Λεηλατητής"
 
 #: data/core/units/goblins/Pillager.cfg:19
 msgid ""
@@ -1288,6 +1565,10 @@ msgid ""
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally for defense or reprisal."
 msgstr ""
+"Μερικοί Καλικάντζαροι εκπαιδεύουν τους λύκους έτσι ώστε να μη φοβούνται την "
+"φωτιά. Στις επιδρομές, αυτοί οι Καλικάντζαροι παίζουν μεγάλο ρόλο, καίγοντας "
+"τα σπίτια και τη σοδειά των εχθρών τους, και κρατάνε δίχτυα για να πιάνουν "
+"αυτούς που προσπαθούν να φύγουν."
 
 #: data/core/units/goblins/Pillager.cfg:34
 msgid "torch"
@@ -1301,24 +1582,28 @@ msgstr "δίχτυ"
 
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
-msgstr ""
+msgstr "Έμπειρος Καλικάντζαρος"
 
 #: data/core/units/goblins/Rouser.cfg:26
-#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
 "still for the other goblins to recognize and respect his veteran status. "
 "Nonetheless, a rouser's frenzied goading effectively steels the younger at "
 "arms to fight harder and longer before they die."
-msgstr " "
+msgstr ""
+" Το να είσαι αναγνωρισμένος είναι κάτι παράξενο για τους καλικάντζαρους. "
+"Ένας καλικάντζαρος που έχει περάσει από αρκετές μάχες για να θεωρηθεί "
+"βετεράνος είναι αρκετά σπάνιος και είναι ακόμα πιο σπάνιο οι άλλοι "
+"καλικάντζαροι να τον αναγνωρίζουν και να τον σέβονται για αυτή την θέση του. "
+"Παρ' όλα αυτά, η θέληση του Έμπειρου Καλικάντζαρου στο να πετύχει του δίνει "
+"κίνητρα να πολεμήσει καλύτερα και για πιο πολύ ώρα πριν πεθάνουν."
 
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
 msgstr "Λογχοφόρος Καλικάντζαρος"
 
 #: data/core/units/goblins/Spearman.cfg:20
-#, fuzzy
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -1330,22 +1615,21 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
-"Σέ κάθε κοινωνία όρκ, αρκετοί γεννιούνται πολύ πιό μικρόσωμοι καί αδύναμοι "
-"από τούς υπόλοιπους. Αυτοί ονομάζονται Καλικάντζαροι καί έχουν την γενική "
-"περιφρόνηση των υπολοίπων από τούς όρκ. Στήν μάχη, τούς δίνουν τόν φτωχότερο "
-"εξοπλισμό καί χρησιμοποιούνται σάν ασπίδα γιά να δώσουν στούς πολέμαρχους "
-"των όρκ χρόνο να προετοιμάσουν την πραγματική επίθεση.\n"
+"Σε κάθε κοινωνία Ορκ, αρκετοί γεννιούνται πολύ πιο μικρόσωμοι και αδύναμοι "
+"από τούς υπόλοιπους. Αυτοί ονομάζονται Καλικάντζαροι και έχουν την γενική "
+"περιφρόνηση των υπολοίπων από τούς Ορκ. Στην μάχη, τούς δίνουν τον φτωχότερο "
+"εξοπλισμό και χρησιμοποιούνται σαν ασπίδα για να δώσουν στους πολέμαρχους "
+"των Ορκ χρόνο να προετοιμάσουν την πραγματική επίθεση.\n"
 "\n"
 "Ορισμένοι υποθέτουν ότι η ύπαρξη τέτοιων πλασμάτων δείχνει την αρχή του "
-"εκφυλισμού τών όρκ, αν καί κανείς δέν ξέρει αρκετά από την ιστορία τους γιά "
-"να βγάλει ασφαλή συμπεράσματα. "
+"εκφυλισμού των Ορκ, αν και κανείς δεν ξέρει αρκετά από την ιστορία τους για "
+"να βγάλει ασφαλή συμπεράσματα."
 
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
-msgstr "Λυκαναβάτης "
+msgstr "Λυκαναβάτης"
 
 #: data/core/units/goblins/Wolf_Rider.cfg:36
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -1359,14 +1643,17 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
-" Κανείς δέν ξέρει μέ σιγουριά πώς ξεκίνησε η εξημέρωση καί  χρήση των λύκων "
-"σάν άλογα. Οι καλικάντζαροι είναι μικρότεροι καί πολύ πιό αδύναμοι από τους "
-"όρκ. Οποιος μπορεί νά ανέβει σέ λύκο θά έχει έναν ασφαλέστερο καί πιό "
-"διασκεδαστικό ρόλο στή μάχη. Οι λύκοι μάλλον δέν θά μπορούσαν ποτέ να "
-"αντέξουν τό βάρος ενός ανθρώπου σέ σέλλα, , αλλά ένας καλικάντζαρος μέ "
-"πέρτσινο οπλισμό είναι ελαφρύτερο φορτίο. Αντίθετα μέ τά άλογα, αυτές οι "
-"μονάδες εύκολα περνάνε βουνά. Όμως ούτε καί αυτές μπορούν να κινηθούν "
-"γρήγορα στό νερό καί τά δάση. "
+" Κανείς δεν ξέρει με σιγουριά πώς ξεκίνησε η εξημέρωση και  η ίππευση των "
+"λύκων, αλλά τα πλεονεκτήματα για τους Καλικάντζαρους είναι ολοφάνερα. Οι "
+"καλικάντζαροι είναι μικρότεροι και πολύ πιο αδύναμοι από τους Ορκ, και "
+"συνήθως τους δίνονται οι πιο επικίνδυνες και οι πιο μισητές θέσεις στη μάχη. "
+"Όποιος μπορεί να ανέβει σε λύκο θα έχει έναν πολύ πιο ασφαλέστερο και, όπως "
+"λένε, πιο διασκεδαστικό ρόλο στη μάχη.\n"
+"\n"
+"Οι λύκοι μάλλον δεν θα μπορούσαν ποτέ να αντέξουν το βάρος ενός ανθρώπου σε "
+"σέλα, αλλά ένας καλικάντζαρος με πέτσινο οπλισμό είναι ένα απλό φορτίο. "
+"Αντίθετα με τα άλογα, αυτές οι μονάδες περνάνε πιο εύκολα απ' τα βουνά. Όμως "
+"ούτε και αυτές μπορούν να κινηθούν γρήγορα στο νερό και στα δάση."
 
 #: data/core/units/gryphons/Gryphon.cfg:4
 msgid "Gryphon"
@@ -1378,29 +1665,28 @@ msgid ""
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
-"Αυτά τά αρχοντικά καί ισχυρά πλάσματα είναι οι άρχοντες των αιθέρων. Οι "
-"γρυπαετοί είναι τόσο έξυπνοι, όσο καί καχύποπτοι απέναντι σέ άλλα έξυπνα "
-"πλάσματα καί συνεπώς δέν θά πρέπει να ενοχλούνται χωρίς σοβαρό λόγο. "
+"Αυτά τα αρχοντικά και ισχυρά πλάσματα είναι οι άρχοντες των αιθέρων. Οι "
+"Γρυπαετοί είναι τόσο έξυπνοι, όσο και καχύποπτοι απέναντι σε άλλα έξυπνα "
+"πλάσματα και συνεπώς δεν θα πρέπει να ενοχλούνται χωρίς σοβαρό λόγο."
 
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
-msgstr "Αφέντης Γρυπαετού "
+msgstr "Αφέντης Γρυπαετού"
 
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty flyers may strike from anywhere."
 msgstr ""
-"Οι αφέντες γρυπαετού έχουν μεγάλη εμπειρία στό πέταγμα μέ τους γρυπαετούς, "
-"πού έχουν γίνει μιά επέκταση του εαυτού τους. Αυτή η ειδική σχέση κάνει την "
-"καρδιά αυτών πού είναι δεμένοι μέ τη γή νά τρέμει, μιά καί αυτά τά ισχυρά "
-"ζευγάρια μπορούν να εμφανιστούν καί να χτυπήσουν από τό πουθενά."
+"Οι αφέντες Γρυπαετού έχουν μεγάλη εμπειρία στο πέταγμα με τους Γρυπαετούς, "
+"πού έχουν γίνει μια επέκταση του εαυτού τους. Αυτή η ειδική σχέση κάνει την "
+"καρδιά αυτών πού απλά περπατάνε να τρέμει, μιας και αυτά τα ισχυρά ζευγάρια "
+"μπορούν να εμφανιστούν και να χτυπήσουν από το πουθενά."
 
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
-msgstr "Καβαλλάρης Γρυπαετού"
+msgstr "Καβαλάρης Γρυπαετού"
 
 #: data/core/units/gryphons/Gryphon_Rider.cfg:19
 msgid ""
@@ -1408,9 +1694,9 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
-"Μόνο λίγοι είναι ικανοί να δεθούν μέ τούς πανίσχυρους γρυπαετούς. Αυτοί πού "
-"τά καταφέρνουν μπορούν νά γίνουν καβαλλάρηδες γρυπαετού καί να ανακαλύψουν "
-"τόν κόσμο των ουρανών στίς πλάτες αυτών των ιπτάμενων ζώων."
+"Μόνο λίγοι είναι ικανοί να δεθούν με τούς πανίσχυρους Γρυπαετούς. Αυτοί που "
+"τα καταφέρνουν μπορούν να γίνουν καβαλάρηδες Γρυπαετού και να ανακαλύψουν "
+"τον κόσμο των ουρανών στις πλάτες αυτών των ιπτάμενων ζώων."
 
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
@@ -1424,12 +1710,12 @@ msgid ""
 "head of a charge is a terrifying sight for infantry, and is often enough to "
 "break right through a defensive line."
 msgstr ""
-"Οι Μεγάλοι ιππότες έχουν φτάσει στό ζενίθ της ικανότητάς τους με σπαθί καί "
-"κοντάρι. Μέ πλήρη πανοπλία καί άλογα πού έχουν εκτραφεί περισσότερο γιά "
-"δύναμη παρά γιά ταχύτητα, αυτοί οι πολεμιστές είναι ο κορμός οποιασδήποτε "
-"σοβαρής δύναμης ιππικού. Ενας μεγάλος ιππότης επικεφαλής μιάς έφφιπης "
-"επίθεσης μέ κοντάρια είναι μιά τρομακτική θέα γιά το πεζικό καί συχνά αρκετό "
-"γιά νά σπάσει την γραμμή άμυνας."
+"Οι Μεγάλοι ιππότες έχουν φτάσει στο ζενίθ της ικανότητάς τους με σπαθί και "
+"κοντάρι. Με πλήρη πανοπλία και άλογα πού έχουν εκτραφεί περισσότερο για "
+"δύναμη παρά για ταχύτητα, αυτοί οι πολεμιστές είναι ο κορμός οποιασδήποτε "
+"σοβαρής δύναμης ιππικού. Ένας μεγάλος ιππότης επικεφαλής μίας έφιππης "
+"επίθεσης με κοντάρια είναι μία τρομακτική θέα για το πεζικό και συχνά έχει "
+"αρκετή δύναμη για να σπάσει την γραμμή άμυνας."
 
 #: data/core/units/humans/Horse_Lancer.cfg:24
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
@@ -1443,7 +1729,6 @@ msgid "Knight"
 msgstr "Ιππότης"
 
 #: data/core/units/humans/Horse_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
 "combat, they have seen the often-fatal results of a failed charge, and have "
@@ -1453,20 +1738,19 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
-"Ιππείς με ικανότητες καί πειθαρχία προάγονται σέ ιππότες. Βετεράνοι των "
-"μαχών, έχουν δεί τις πολλές φορές μοιραίες επιπτώσεις μιάς αποτυχημένης "
-"έφφιπης επίθεσης μέ κοντάρια καί ξέρουν να τη χρησιμοποιούν μέ σύνεση. Γιά "
-"τό λόγο αυτό οι ιππότες φέρουν σπαθιά στόν οπλισμό τους καί χρησιμοποιούν "
-"τακτικές πού αν καί χρειάζονται περισσότερη υπομονή, είναι πολύ ασφαλέστερες "
-"από την έφφιπη επίθεση μέ κοντάρια. Τά κοντάρια τουε είναι πάντως μόνιμα "
-"έτοιμα καί η μεγαλύτερη εμπειρία με αυτά τά όπλα μόνο καλό τους κάνει. "
+"Ιππείς με ικανότητες και πειθαρχία προάγονται σε ιππότες. Βετεράνοι των "
+"μαχών, έχουν δει τις πολλές φορές μοιραίες επιπτώσεις μίας αποτυχημένης "
+"έφιππης επίθεσης με κοντάρια και ξέρουν να τη χρησιμοποιούν μέ σύνεση. Για "
+"το λόγο αυτό οι ιππότες φέρουν σπαθιά στον οπλισμό τους και χρησιμοποιούν "
+"τακτικές πού αν και χρειάζονται περισσότερη υπομονή, είναι πολύ ασφαλέστερες "
+"από την έφιππη επίθεση με κοντάρια. Τα κοντάρια τους είναι πάντως μονίμως "
+"έτοιμα και η μεγαλύτερη εμπειρία με αυτά τα όπλα μόνο καλό τους κάνει."
 
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
-msgstr "Εφιππος Σαρισσοφόρος"
+msgstr "Έφιππος Σαρισσοφόρος"
 
 #: data/core/units/humans/Horse_Lancer.cfg:20
-#, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
 "in minimal armor, they free themselves to ride swiftly, faster than any of "
@@ -1475,18 +1759,19 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
-"Οι έφιπποι σαρισσοφόροι είναι από τους γενναιότερους καί πιό επίφοβους "
-"υππείς σέ ολόκληρο στό Γουέσνοθ. Φορώντας ελάχιστη πανοπλία, είναι ελεύθεροι "
-"να κινούνται γρήγορα, πιό γρήγορα από οποιονδήποτε από τούς ομοίους τους. Οι "
-"ριψοκίνδυνες τακτικές πού χρησιμοποιούν είναι ένα σπαθί διπλής κόψης πού "
-"συχνά κερδίζει είτε δόξα, είτε έναν γρήγορο θάνατο. Οι έφιπποι σαρισσοφόροι "
-"είναι εξαιρετικοί γιά το κυνήγι πεζικάριων πού έκαναν τό λάθος νά χωριστούν "
-"από τις γραμμές τους καί γιά να ανοίγουν ρήγματα στίς εχρικές γραμμές. Ομως, "
-"έχουν περιορισμένη χρησιμότητα γιά αμυντικούς σκοπούς. "
+"Οι έφιπποι σαρισσοφόροι είναι από τους γενναιότερους και τους πιο "
+"φοβιστικούς ιππείς σε ολόκληρο το Γουέσνοθ. Φορώντας ελάχιστη πανοπλία, "
+"είναι ελεύθεροι να κινούνται γρήγορα, πιο γρήγορα από οποιονδήποτε από τούς "
+"ομοίους τους. Οι ριψοκίνδυνες τακτικές πού χρησιμοποιούν είναι ένα σπαθί "
+"διπλής κόψης πού συχνά κερδίζει είτε δόξα, είτε έναν γρήγορο θάνατο. Οι "
+"έφιπποι σαρισσοφόροι είναι εξαιρετικοί στο το κυνήγι πεζικάριων πού έκαναν "
+"το λάθος να χωριστούν από τις γραμμές τους και στο να ανοίγουν ρήγματα στις "
+"εχθρικές γραμμές. Όμως, έχουν περιορισμένη χρησιμότητα για αμυντικούς "
+"σκοπούς."
 
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
-msgstr "Παλατιανός"
+msgstr "Παλαδίνος"
 
 #: data/core/units/humans/Horse_Paladin.cfg:22
 msgid ""
@@ -1507,13 +1792,28 @@ msgid ""
 "curious abilities; a paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
+"Οι ιππότες της υψηλότερης αρετής, οι Παλαδίνοι έχουν ορκιστεί τη δύναμή τους "
+"όχι στο βασιλιά και το στέμμα, αλλά στα ιδανικά τους: την ιπποσύνη και τη "
+"διαχείριση όλων που είναι καλά. Εξυπηρετούν στους στρατούς του κόσμου, αλλά "
+"συνήθως μπαίνουν στις ομάδες που τους προσελκύουν, δηλαδή μυστικές, με "
+"μοναστικές διαταγές που διασχίζουν τα πολιτικά και πολιτιστικά όρια. Οι "
+"κυβερνήτες είναι μερικές φορές προσεκτικοί τους, γιατί η πίστη των Παλαδίνων "
+"είναι ισχυρή μόνο όταν και ο βασιλιάς έχει αρετή. Αυτό έχει οδηγήσει το πιο "
+"σκοτεινό φιλόδοξο άτομο στο να προσπαθήσει να δυσφημήσει και να διασκορπίσει "
+"αυτές τις ομάδες.\n"
+"\n"
+"Οι Παλαδίνοι δεν είναι γενικά τόσο τρομακτικοί όσο οι Μεγάλοι Ιππότες που "
+"υπάρχουν στους περισσότερους στρατούς, αλλά είναι πρώτης τάξεως μαχητές. "
+"Επιπλέον, η φρόνηση και η ευσέβεια τους χορηγούν σε αυτούς τους πολεμιστές-"
+"μοναχούς ορισμένες περίεργες δυνατότητες, ένας Παλαδίνος είναι πολύ ισχυρός "
+"στην μάχη με μαγικά ή με αφύσικα πράγματα, και οι περισσότεροι έχουν κάποια "
+"ικανότητα στην ιατρική και τη θεραπεία."
 
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
-msgstr "ιππέας"
+msgstr "Ιππέας"
 
 #: data/core/units/humans/Horseman.cfg:20
-#, fuzzy
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -1524,13 +1824,13 @@ msgid ""
 "provide inviting targets."
 msgstr ""
 "Συχνά προερχόμενοι από σχετικά άγριες περιοχές του Γουέσνοθ, οι ιππείς "
-"εκπαιδεύονται από  παιδιά να ιππεύουν καί ακολουθούν έναν αυστηρό κώδικα "
-"τιμής. Η έφφιπη επίθεση μέ κοντάρι είναι μιά ισχυρή αλλά ριψοκίνδυνη "
-"τακτική, η αξία της οποίας έχει επιβεβαιωθεί πολλές φορές στό πεδίο της "
+"εκπαιδεύονται από  παιδιά να ιππεύουν και ακολουθούν έναν αυστηρό κώδικα "
+"τιμής. Η έφιππη επίθεση με κοντάρι είναι μία ισχυρή αλλά ριψοκίνδυνη "
+"τακτική, η αξία της οποίας έχει επιβεβαιωθεί πολλές φορές στο πεδίο της "
 "μάχης. Οι ιππείς είναι εξαιρετικοί εναντίον των περισσότερων πεζικάριων, "
-"κυρίως αυτών πού έχουν βγεί από τις γραμμές τους, αλλά πρέπει να προσέχουν "
-"τόσο τους λογχοφόρους, όσο καί τους τοξότες γιά τους οποίους ο μεγάλος όγκος "
-"καί η ορμή τους είναι εύκολοι στόχοι. "
+"κυρίως αυτών πού έχουν βγει από τις γραμμές τους, αλλά πρέπει να προσέχουν "
+"τόσο τους λογχοφόρους, όσο και τους τοξότες για τους οποίους ο μεγάλος όγκος "
+"τους κάνει ευκολότερη τη ζωή."
 
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
@@ -1544,6 +1844,11 @@ msgid ""
 "woodsmen, bowmen are competent with both a bow and a short sword, and are "
 "very common on the battlefield."
 msgstr ""
+"Η χρήση της τοξοβολίας στο να πετυχαίνεις κάτι εκτός από το παιχνίδι άρχισε "
+"από πολύ παλιά, και οι Τοξότες χρησιμοποιούνται στη μάχη από αμνημόνευτο "
+"χρόνο. Συνήθως ταπεινής προέλευσης, ερχόμενος από τα δάση ή τους αγρούς, οι "
+"Τοξότες είναι οπλισμένοι με ένα τόξο και με ένα μικρό μαχαίρι, και είναι "
+"αρκετά ικανοί στο πεδίο μάχη."
 
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
 #: data/core/units/humans/Loyalist_Bowman.cfg:25
@@ -1552,7 +1857,7 @@ msgstr "κοντό σπαθί"
 
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
-msgstr ""
+msgstr "Βαρύ Ιππικό"
 
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
 msgid ""
@@ -1561,6 +1866,11 @@ msgid ""
 "their mobility; such might, and the daring deeds it fosters, are the subject "
 "of many a tale and song."
 msgstr ""
+"Ένα θριαμβευτικό σημάδι στη μάχη, το Βαρύ Ιππικό αποτελείται από δεξιοτέχνες "
+"και του σπαθιού αλλά και της βαλλίστρας, ενώ ταυτόχρονα καβαλικεύουν το "
+"άλογό τους. Αυτό είναι αρκετά φοβιστικό όταν συνδυάζεται με την κινητικότητά "
+"τους, και έχουν κάνει πολλά έτσι ώστε τα κατορθώματά τους να έχουν εμπνεύσει "
+"πολλούς μύθους και τραγούδια."
 
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
@@ -1579,7 +1889,7 @@ msgstr "βαλλίστρα"
 
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
-msgstr ""
+msgstr "Καβαλάρης"
 
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
 msgid ""
@@ -1592,10 +1902,19 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scoutwork."
 msgstr ""
+"Οι Καβαλάρηδες διακρίνονται από τους Ιππείς από την τακτική και τον "
+"εξοπλισμό τους. Ένας Καβαλάρης φορά βαρύτερη πανοπλία, και κρατάει ξίφος και "
+"ασπίδα, και όχι μια λόγχη. Η τακτική τους δεν περιλαμβάνει τη επίθεση από "
+"μακριά με κοντάρι αλλά ελίσσονται προς τα μέσα με το ξίφος, χρησιμοποιώντας "
+"και το άλογο και τον αναβάτη ως αποτελεσματικό εργαλείο της μάχης σώμα με "
+"σώμα.\n"
+"\n"
+"Οι Καβαλάρηδες είναι πολύ χρήσιμοι για να παίρνουν και να κρατάνε σε ανοικτό "
+"έδαφος, για να καλύπτουν φιλικούς στρατιώτες, και για το ανίχνευση."
 
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
-msgstr "δραγώνος"
+msgstr "Δραγώνος"
 
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
 msgid ""
@@ -1605,15 +1924,15 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
-" Οι πιό ταλαντούχοι ιππείς στό στρατό του Γουέσνοθ εκπαιδεύονται στή χρήση "
-"του μικρού τόξου καί εξοπλίζονται μέ πιό ισχυρά άλογα.  Καλά εξοπλισμένοι, "
-"ικανότατοι στή χρήση του σπαθιού, αυτοί οι στρατιώτες μπορούν να προχωρήσουν "
-"καί νά κρατήσουν τό έδαφος πού καταλαμβάνουν. Η κινητικότητα τους καί αντοχή "
-"τους τους καθιστά πολύτιμους στό πεδίο της μάχης  "
+" Οι πιο ταλαντούχοι Καβαλάρηδες στο στρατό του Γουέσνοθ εκπαιδεύονται στη "
+"χρήση του μικρού τόξου και εξοπλίζονται με πιο ισχυρά άλογα.  Καλά "
+"εξοπλισμένοι, ικανότατοι στη χρήση του σπαθιού, αυτοί οι στρατιώτες μπορούν "
+"να προχωρήσουν και να κρατήσουν το έδαφος πού καταλαμβάνουν. Η κινητικότητα "
+"τους και αντοχή τους τους καθιστά πολύτιμους στο πεδίο της μάχης."
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
-msgstr ""
+msgstr "Μονομάχος"
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
 msgid ""
@@ -1629,16 +1948,29 @@ msgid ""
 "fact very useful, and those of their ranks who live long enough to be "
 "veterans typically do so by making such concessions to utility and survival."
 msgstr ""
+"Είναι μια ιδιαίτερη συνήθεια της αριστοκρατίας του Γουέσνοθ να εγγράφουν "
+"τους γιους τους στη μια από τις δύο σχολές μάχης, που τους εκπαιδεύουν είτε "
+"στην τέχνη της ιππασίας είτε της ξιφασκίας. Οι Μονομάχοι ονομάζονται έτσι "
+"για μια δυστυχώς κοινή πρακτική των νέων αριστοκρατών, αν προσβληθούν ή "
+"φανταστούν ότι προσβλήθηκαν, τότε έχουν το δικαίωμα να καλέσουν σε μονομαχία "
+"αυτόν που τους πρόσβαλε.\n"
+"\n"
+"Πεπειραμένοι Σπαθιστές, οι οποίοι συχνά μοιάζουν, ακόμα κι αν δεν είναι "
+"ευγενείς, φέρουν μαζί τους μια μικρή βαλλίστρα που κρύβεται εύκολα κάτω από "
+"ένα παλτό ή από μία κάπα. Αν και είναι λίγο αργή στο γέμισμα και θεωρείται "
+"άτιμο το να την χρησιμοποιείς, είναι στην πραγματικότητα πολύ χρήσιμη, και "
+"εκείνοι των τάξεών τους που ζουν αρκετό καιρό για να γίνουν Δεξιοτέχνες στο "
+"Σπαθί, γίνονται μόνο και μόνο από την χρήση αυτής της βαλλίστρας."
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:28
 #: data/core/units/humans/Loyalist_Fencer.cfg:124
 msgid "sabre"
-msgstr ""
+msgstr "σπαθί ξιφασκίας"
 
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
-msgstr "Ξιφομάχος "
+msgstr "Σπαθιστής"
 
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
 msgid ""
@@ -1653,6 +1985,17 @@ msgid ""
 "disadvantage. They take relish in dancing circles around troops like heavy "
 "infantry, mocking the weight of their full armor."
 msgstr ""
+"Οι Σπαθιστές ανήκουν σε μια σχολή στην οποία όλοι θεωρούν πως η πανοπλία που "
+"ένας στρατιώτης φοράει είναι ο μεγαλύτερος εχθρός του. Ενώ η πανοπλία μπορεί "
+"μόνο να μικρύνει τη δύναμη ενός χτυπήματος, ο ελιγμός αφήνει τον αμυνόμενο "
+"χωρίς καμία γρατζουνιά. Το αν μπορείς να αποφεύγεις οποιαδήποτε επίθεση "
+"είναι μια πολυτέλεια που την έχουν μόνο αυτοί που προπονούνται για πολύ "
+"καιρό.\n"
+"\n"
+"Έχοντας μόνο ένα μαχαίρι και ένα σπαθί ξιφασκίας, οι Σπαθιστές είναι "
+"γρήγοροι και χρήσιμοι σε καταστάσεις που αυτοί που φοράνε πανοπλία θα είχαν "
+"πρόβλημα. Όταν επιτίθενται σε μονάδες με μεγάλες πανοπλίες, όπως το Βαρύ "
+"Πεζικό, είναι σαν να χορεύουν γύρω τους,"
 
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
@@ -1663,10 +2006,13 @@ msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
 msgstr ""
+"Σαν ηγέτες στρατών, οι Στρατηγοί είναι υπεύθυνοι για την προστασία των "
+"μεγάλων και πιο σημαντικών περιοχών των βασίλειων στα οποία έχουν ορκιστεί "
+"ολοκληρωτική αφοσίωση."
 
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
-msgstr "Αρχιστράτηγος "
+msgstr "Αρχιστράτηγος"
 
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
 msgid ""
@@ -1675,6 +2021,9 @@ msgid ""
 "proving both their tactical wit and their considerable mettle at personal "
 "combat."
 msgstr ""
+"Το αξίωμα του Αρχιστράτηγου είναι ένα από τα πιο αξιοσέβαστα στον ανθρώπινο "
+"στρατό, και όποιοι κατέχουν αυτόν τον τίτλο έχουν επιβιώσει πολλά δεινά, "
+"αποδεικνύοντας την στρατηγική νοημοσύνη και ένα αξιοσημείωτο θάρρος στη μάχη."
 
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
@@ -1695,6 +2044,21 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
+"Ένας λογχοπέλεκυς είναι ένα δύσκολο και πολύ βαρύ όπλο, πολύ δύσκολο για να "
+"χρησιμοποιηθεί, αλλά στα χέρια ενός εμπειρογνώμονα γίνετε πάρα πολύ ισχυρό. "
+"Είναι επίσης πιο εύκαμπτο από τη λόγχη από την οποία προέρχεται. Δεδομένου "
+"ότι οποιοσδήποτε Αλαβαρδοφόρος μπορεί να σας πει, ότι το όπλο του κατέχει 4 "
+"σημεία με τα οποία μπορείς να επιτεθείς, 2 περισσότερο από μια λόγχη ή μία "
+"σάρισα, αυτά, τα σημεία, είναι η άκρη, η λεπίδα, η ακίδα στη βάση του άξονα, "
+"και το εσωτερικό σημείο στη λεπίδα, η οποία μπορεί να χρησιμοποιηθεί σε μια "
+"κίνηση υποχώρησης του Αλαβαρδοφόρου. Όλα αυτά καθιστούν τον λογχοπέλεκυ ένα "
+"πολύ καλό όπλο στη μάχη σώμα με σώμα, ειδικά ενάντια στο ιππικό.\n"
+"\n"
+"Αν και, ένας λογχοπέλεκυς είναι πολύ ακριβότερος από μία λόγχη ή μία σάρισα, "
+"και στα χέρια ενός αρχαρίου, πολύ λιγότερο αποτελεσματικός. Στους στρατούς "
+"του Γουέσνοθ, αυτά τα όπλα δίνονται μόνο στους ικανότερους και τους πιο "
+"δυνατούς Οπλίτες, οι οποίοι έχουν αποδείξει ότι έχουν την ικανότητα για να "
+"τους χρησιμοποιήσουν κατάλληλα στη μάχη."
 
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
@@ -1711,22 +2075,21 @@ msgid ""
 "in the weight of the metal, and the great care that must be taken of it, but "
 "in certain situations, these troops are well worth the trade-offs."
 msgstr ""
-"Η βαριά πανοπλία είναι μιά ασυνήθιστη επιλογή γιά τά στρατεύματα. Είναι πολύ "
-"δύσκολο νά στείλει κανείς το βαρύ πεζικό μακριά στόν πόλεμο καί τυπικά είναι "
-"χρήσιμοι μόνο στήν υπεράσπιση της πόλης η του κάστρου στό οποίο είναι "
-"εγκατεστημένοι. Θωρακισμένοι από τό κεφάλι ως τά πόδια μέ πλήρη πανοπλία καί "
-"οπλισμένοι με βαριές σφύρες, τό βαρύ πεζικό είναι εξαιρετικό στήν μόνη "
-"δουλειά τους, πού είναι η μάχη σώμα μέ σώμα. Μερικοί από αυτούς στό κέντρο "
-"της γραμμής θά ενισχύσουν σημαντικά τη δύναμή της. Τά μειονεκτήματα είναι "
-"προφανή, τό βάρος του μετάλλου, καί πρέπει να προσεχθεί σημαντικά, αλλά σε "
-"ορισμένες περιπτώσεις τό βαρύ πεζικό αξίζει παρά το μειονέκτημα αυτό. "
+"Το Βαρύ Πεζικό είναι μία ασυνήθιστη επιλογή για τα στρατεύματα. Είναι πολύ "
+"δύσκολο να στείλει κανείς το βαρύ πεζικό μακριά στον πόλεμο και τυπικά είναι "
+"χρήσιμοι μόνο στην υπεράσπιση της πόλης η του κάστρου στο οποίο είναι "
+"εγκατεστημένοι. Θωρακισμένοι ως τα νύχια με σκληρή πανοπλία και οπλισμένοι "
+"με βαριές σφύρες, το βαρύ πεζικό είναι εξαιρετικό στη δουλειά τους, πού "
+"είναι η μάχη σώμα με σώμα. Μερικοί από αυτούς στο κέντρο της γραμμής θα "
+"ενισχύσουν σημαντικά τη δύναμή της. Τα μειονεκτήματα είναι προφανή, το βάρος "
+"του μετάλλου, και πρέπει να προσεχθεί σημαντικά, αλλά σε ορισμένες "
+"περιπτώσεις το βαρύ πεζικό αξίζει παρά το μειονέκτημα αυτό."
 
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
 msgstr "Σιδερένιος Κονιορτοποιητής"
 
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
-#, fuzzy
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
 "their foes. The men within these suits of armor can match ogres in contests "
@@ -1739,17 +2102,17 @@ msgid ""
 "they cannot run on the battlefield. Too often have they seen a distant "
 "comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
-"Οι σιδερένιοι κονιορτοποιητές αποκτούν τό όνομά τους γιά προφανείς λόγους. "
-"Οι άντρες μέσα από αυτές τις πανοπλίες μπορούν να συγκριθολύν μέ τά όγκρε σέ "
-"δύναμη καί είναι δαχτυλοδειχτούμενοι σαν πρωταθλητές της φρουράς των κάστρων "
-"στά οποία υπηρετούν. Είναι όμως ακριβοί στην συντήρηση καί δέν μπορούν να "
-"σταλούν σε μακρινές μάχες χωρίς πλήρη συνοδεία από υπηρέτες γιά υποστήριξη.\n"
+"Οι σιδερένιοι Κονιορτοποιητές αποκτούν το όνομά τους για προφανείς λόγους. "
+"Οι άντρες μέσα από αυτές τις πανοπλίες μπορούν να συγκριθούν με τα Όγκρε σε "
+"δύναμη και είναι δακτυλοδεικτούμενη σαν πρωταθλητές της φρουράς των κάστρων "
+"στα οποία υπηρετούν. Είναι όμως ακριβοί στην συντήρηση και δεν μπορούν να "
+"σταλούν σε μακρινές μάχες χωρίς πλήρη συνοδεία από υπηρέτες για υποστήριξη.\n"
 "\n"
-"Αν καί τρομακτικοί σέ μάχη σώμα μέ σώμα, υπάρχουν αρκετά μειονεκτήματα στόν "
-"εξοπλισμό τους: Οι σιδερένιοι κονιορτοποιητές κουράζονται εύκολα καί ξέρουν "
-"πολύ καλά ότι δέν μπορούν να τρέξουν στό πεδίο της μάχης. Πολύ συχνά έχουν "
-"δεί έναν μακρινό σύντροφο να πεθαίνει, αλλά ήταν ανίκανοι να φτάσουν στό "
-"σημείο έγκαιρα γιά να βοηθήσουν."
+"Αν και τρομακτικοί σε μάχη σώμα με σώμα, υπάρχουν αρκετά μειονεκτήματα στον "
+"εξοπλισμό τους: Οι σιδερένιοι κονιορτοποιητές κουράζονται εύκολα και ξέρουν "
+"πολύ καλά ότι δεν μπορούν να τρέξουν στο πεδίο της μάχης. Πολύ συχνά έχουν "
+"δει έναν μακρινό σύντροφο να πεθαίνει, αλλά ήταν ανίκανοι να φτάσουν στο "
+"σημείο έγκαιρα για να βοηθήσουν."
 
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
@@ -1765,6 +2128,15 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee."
 msgstr ""
+"Οι Λογχοφόροι σχεδόν πάντα εξοπλίζονται με μερικά ακόντια, ώστε να μπορούν "
+"να πετύχουν τους εχθρούς τους από μακριά, αν και δεν έχουν καλό στόχο. "
+"Μερικοί, όμως, πολεμούν σχεδόν μόνο με ακόντια, αφού έχουν διαπιστώσει ότι "
+"έχουν ένα φυσικό ταλέντο στη χρήση τους. Οι Ακοντιστές είναι ένα πολύτιμο "
+"προτέρημα σε έναν στρατό, που είναι σε θέση να συμπληρώσει την ικανότητά "
+"τους στη μάχη σώμα με σώμα με μια δυνατότητα να αντιμετωπιστούν τους εχθρούς "
+"τους από μακριά με επιτυχία. Μπορούν να εκσφενδονίσουν τα ακόντια στις "
+"εχθρικές τάξεις από μια απόσταση, συχνά χωρίς να χάσουν τη δεξιοτεχνία τους "
+"στη μάχη σώμα με σώμα."
 
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
@@ -1775,10 +2147,12 @@ msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
 msgstr ""
+"Εκπαιδευμένος στα σπαθιά και την βαλλίστρα, οι Υπολοχαγοί ηγούνται μικρές "
+"ομάδες από ανθρώπους στρατιώτες, συντονίζοντας τις επιθέσεις τους."
 
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
-msgstr ""
+msgstr "Μεγάλος Τοξότης"
 
 #: data/core/units/humans/Loyalist_Longbowman.cfg:20
 msgid ""
@@ -1788,10 +2162,16 @@ msgid ""
 "carry their weapons as a badge of pride, and most bowmen look forward to the "
 "day they can begin using one."
 msgstr ""
+"Τα μακριά τόξα είναι τρομακτικά όπλα, αλλά πάρα πολύ δύσκολο να χειριστούν "
+"οι νεοσύλλεκτοι τοξότες. Χρειάζεται μεγάλη δύναμη να χρησιμοποιείς ένα, και "
+"η παραπάνω ακτίνα δράσης και δύναμη παραμένει άχρηστη εκτός αν κάποιος έχει "
+"καλό στόχο. Οι Τοξότες φέρνουν τα όπλα τους ως δείγμα υπερηφάνειας, και οι "
+"περισσότεροι Τοξότες περιμένουν πως και πως τη μέρα που θα γίνουν Μεγάλοι "
+"Τοξότες."
 
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
-msgstr ""
+msgstr "Αρχή-Τοξότης"
 
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
 msgid ""
@@ -1804,10 +2184,18 @@ msgid ""
 "their human counterparts have speculated, perhaps in envy, that this is only "
 "by dint of age."
 msgstr ""
+"Οι Αρχή-Τοξότες έχει φθάσει στο αποκορύφωμα της τέχνης τους, όσο δηλαδή θα "
+"μπορούσε να φτάσει ένας άνθρωπος. Οπλισμένοι και με ένα ξίφος, και με ένα "
+"μεγάλο τόξο, αυτοί οι πολεμιστές στέφουν τα τάγματα των Τοξωτών με την "
+"παρουσία τους, και μπορούν να ρίξουν πολλούς εχθρούς με τα καλά-στοχευμένα "
+"βέλη τους. Η ικανότητά τους με το ξίφος είναι αρκετή για να νικήσουν ένα "
+"πρωτάρη ξιφομάχο. Από τις πολλές φυλές στον κόσμο, μόνο οι νεράιδες "
+"ξεπερνούν την ανθρωπότητα στην τοξοβολία, και οι άνθρωποι έχουν σκεφτεί, "
+"ίσως στο φθόνο, ότι αυτό οφείλεται μόνο στην ηλικία."
 
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
-msgstr ""
+msgstr "Δεξιοτέχνης στο Σπαθί"
 
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
 msgid ""
@@ -1823,10 +2211,22 @@ msgid ""
 "positions in which their flamboyant nature is not only accepted, but is "
 "perhaps even useful."
 msgstr ""
+"Οι δεξιοτέχνες Σπαθιστές έχουν μια φθονημένη θέση στη ζωή. Αν και η ζωή τους "
+"ήταν πολύ επικίνδυνη, έχουν φθάσει στο χρόνο όπου συγκεντρώνουν τις "
+"ανταμοιβές του. Φημισμένοι για την ικανότητά τους και τον τρόπο με τον οποίο "
+"ελίσσονται, αυτοί οι δεξιοτέχνες έχουν γίνει πια αριστοκράτες, ακόμα και αν "
+"παλιά δεν ήταν, και ακολουθούνται από τα μάτια πολλών κυριών της "
+"αριστοκρατίας.\n"
+"\n"
+"Έχουν συνήθως την πολυτέλεια της επιλογής των διορισμών τους, και είναι "
+"ελεύθεροι να περιπλανιούνται εάν έτσι επιλέξουν. Συχνά, θα βρεθούν ως "
+"καπετάνιοι μιας φρουράς κάστρων, ή ως κύριος μιας στρατιωτικής ακαδημίας, "
+"θέσεις στις οποίες η επιδεικτική φύση τους όχι μόνο γίνεται αποδεκτή, αλλά "
+"είναι ίσως ακόμα και χρήσιμη."
 
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
-msgstr ""
+msgstr "Οπλίτης"
 
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
 msgid ""
@@ -1837,14 +2237,21 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most other infantry at bay."
 msgstr ""
+"Οι ελπιδοφόροι Λογχοφόροι στους στρατούς του Γουέσνοθ έχουν μάθει να κρατάνε "
+"μακριά δόρια, και φοράνε πανοπλία πολύ καλύτερη του τεθωρακισμένου δέρματος "
+"που φόρεσαν όντας νεοσύλλεκτοι. Ένα μακρύ δόρυ είναι ένα πολύ μακρύτερο όπλο "
+"από ένα απλό δόρυ, και διευκολύνει έτσι τη διαφορετική τακτική αγώνα. Ένας "
+"τοίχος των Οπλιτών είναι ο όλεθρος οποιασδήποτε ιππικού, και με την "
+"κατάλληλη πειθαρχία και την τακτική, οι Οπλίτες μπορούν να αμυνθούν σχεδόν "
+"σε όποιο μέρος και αν είναι."
 
 #: data/core/units/humans/Loyalist_Pikeman.cfg:53
 msgid "pike"
-msgstr "μακρύ δόρυ"
+msgstr "Σάρισα"
 
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
-msgstr " Βασιλικός Φρουρός"
+msgstr "Βασιλικός Φρουρός"
 
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
 msgid ""
@@ -1857,14 +2264,14 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
-"Οι βασιλικοί φρουροί επιλέγονται από τους καλύτερους ξιφομάχους στό "
-"Γουέσνοθ. Υπηρετώντας υπό την υψηλή αριστοκρατία, λειτουργούν σάν "
-"σωματοφύλακες, καί μερικώς σάν υπάλληλοι γραφείου γιά τούς εργοδότες τους. "
-"Μιά ειδική δύναμη των βασιλικών φρουρών είναι εγκατεστημένη στήν πρωτεύουσα, "
-"φυλάσσοντας τά εδάφη του παλατιού καί την βασιλική οικογένεια. Λόγω της "
-"σχέσης επιστοσύνης μέ τους ανώτερούς τους, συχνά επιλέγονται γιά κρίσιμες "
-"αποστολές, αντί μισθοφόρων. Η αξιοπιστία τους καί η τέχνη τους μέ τό σπαθί "
-"σέ μάχη σώμα μέ σώμα είναι τά καλυτερα προσόντα τους, γιά τά οποία είναι "
+"Οι βασιλικοί φρουροί επιλέγονται από τους καλύτερους ξιφομάχους στο "
+"Γουέσνοθ. Υπηρετώντας υπό την υψηλή αριστοκρατία, λειτουργούν σαν "
+"σωματοφύλακες, και μερικώς σαν υπάλληλοι γραφείου για τούς εργοδότες τους. "
+"Μία ειδική δύναμη των βασιλικών φρουρών είναι εγκατεστημένη στην πρωτεύουσα, "
+"φυλάσσοντας τα εδάφη του παλατιού και την βασιλική οικογένεια. Λόγω της "
+"σχέσης εμπιστοσύνης με τους ανώτερούς τους, συχνά επιλέγονται για κρίσιμες "
+"αποστολές, αντί μισθοφόρων. Η αξιοπιστία τους και η τέχνη τους με το σπαθί "
+"στη μάχη σώμα με σώμα είναι τα καλύτερα προσόντα τους, για τα οποία είναι "
 "ευρύτατα γνωστοί."
 
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -1872,15 +2279,14 @@ msgid "Sergeant"
 msgstr "Λοχίας"
 
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
-#, fuzzy
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
-"Ο λοχίας είναι αξιωματικός στίς τάξεις του βασιλικού στρατού. Αν καί έχει "
-"θεωρητική κατάρτιση, θά χρειαστεί κάποια εμπειρία στό πεδίο της μάχης μέχρι "
-"να αναγνωριστεί η ηγετική του ικανότητα."
+"Ο λοχίας είναι αξιωματικός με μικρή θέση στο στρατό. Αν και έχει ακαδημαϊκή "
+"κατάρτιση, θα χρειαστεί κάποια εμπειρία στο πεδίο της μάχης μέχρι να "
+"αναγνωριστεί η ηγετική του ικανότητα."
 
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
@@ -1897,6 +2303,15 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
+"Οι Μονάδες Κρούσης είναι οι δεξιοτέχνες του βαριού πεζικού, και ένα "
+"σημαντικό μέρος της χρήσης τους είναι μόνο ο εκφοβισμός. Τα μόνα άτομα που "
+"μπορούν να εισαχθούν τις τάξεις τους είναι πολύ δυνατοί, και όταν είναι "
+"ντυμένοι με βαριές μαύρες ατσάλινες πανοπλίες, γίνονται μια τρομακτική θέα. "
+"Η θέα των Μονάδων Κρούσης που σπάζουν έναν εχθρό κάνει συχνά το ίδιο πράγμα "
+"στο ηθικό οποιασδήποτε πλευράς, είναι τόσο άσχημη η θέα που σε κάνει να "
+"αναρωτιέσαι εάν ένα τέτοιο τεθωρακισμένο κρύβει ένα τέρας παρά άτομα. Το "
+"μειονέκτημα ενός τέτοιου βαριού τεθωρακισμένου είναι, φυσικά, ο χρόνος που "
+"παίρνει για να κινηθεί στη μάχη."
 
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
 #: data/core/units/humans/Mage_of_Light.cfg:98
@@ -1915,13 +2330,19 @@ msgid ""
 "armed with a shield and a few javelins, spearmen are the staple of most "
 "armies, often thrown into the front lines with only the most basic training."
 msgstr ""
+"Τα ξίφη είναι, για πολλούς, μια ακριβή πολυτέλεια, και μια που οι αγρότες "
+"ζούνε στα όρια της φτώχειας. Οι λόγχες είναι πολύ ευκολότερες να φτιαχτούν "
+"και θα κάνουν αρκετή ζημιά ακόμη και χωρίς μια αιχμή λόγχης, αν και οι "
+"περισσότεροι μπορούν να αντέξουν οικονομικά μια. Ντυμένοι με μια πανοπλία "
+"από δέρμα, και συχνά οπλισμένοι με μια ασπίδα και μερικά ακόντια, οι "
+"Λογχοφόροι είναι η βάση των περισσότερων στρατών, που ρίχνεται συχνά στις "
+"πρώτες γραμμές της μάχης έχοντας μόνο την πιο βασική κατάρτιση."
 
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
-msgstr ""
+msgstr "Ξιφομάχος"
 
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
-#, fuzzy
 msgid ""
 "An experienced soldier will often save enough to equip himseld with a suit "
 "of scale or chain armor, and a sturdy broadsword. Though trading their "
@@ -1930,13 +2351,13 @@ msgid ""
 "behind. A sword is not without its own drawbacks, but is more versatile than "
 "a spear, and much better in close quarters."
 msgstr ""
-" Ενας έμπειρος στρατιώτης συχνά θά έχει αποταμιεύσει αρκετά γιά να "
-"εξοπλιστεί μέ μιά πανοπλία από αλυσίδες καί ένα πλατύ σπαθί. Αν καί τό να "
-"αλλάξουν τη λόγχη τους γιά σπαθιά είναι συχνά μιά δύσκολη αλλαγή, οι "
-"περισσότεροι λογχοφόροι με χαρά θά αρπάξουν την ευκαιρία, γνωρίζοντας καλά "
-"τά μειονεκτήματα τού όπλου πού αφήνουν. Τό σπαθί έχει επίσης μειονεκτήματα, "
-"αλλά είναι πολύ πιό εύκολο σέ ελιγμούς από μιά λόγχη, καί πολύ καλύτερο στή "
-"μάχη σώμα μέ σώμα. "
+"Ένας έμπειρος στρατιώτης συχνά θα έχει αποταμιεύσει αρκετά για να εξοπλιστεί "
+"με μία πανοπλία από αλυσίδες και ένα πλατύ σπαθί. Αν και το να αλλάξουν τη "
+"λόγχη τους για ένα ξίφος είναι συχνά μια δύσκολη αλλαγή, οι περισσότεροι "
+"λογχοφόροι με χαρά θα αρπάξουν την ευκαιρία, γνωρίζοντας καλά τα "
+"μειονεκτήματα τού όπλου πού αφήνουν. Δεν είναι ότι το ξίφος δεν έχει "
+"μειονεκτήματα, αλλά είναι πολύ πιο εύκολο να κάνεις  ελιγμούς κρατώντας ένα "
+"ξίφος από το να κρατάς μια λόγχη, και πολύ καλύτερο στη μάχη σώμα με σώμα."
 
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
@@ -1963,11 +2384,30 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle."
 msgstr ""
+"Οι άνθρωποι έχουν συλλογιστεί συχνά τα έργα του κόσμου στον οποίο ζουν. "
+"Οποιοσδήποτε μάγος αντάξιος του τίτλου του έχει περάσει τουλάχιστον μια "
+"δεκαετία στη μελέτη, που συσσωρεύει ένα ποσό της γνώσης που τους θέτει ως "
+"κάτι διαφορετικό από τους άλλους ανθρώπους. Αυτοί οι άνδρες και αυτές οι "
+"γυναίκες, που έχουν δεσμευθεί πλήρως στην αναζήτηση της φρόνησης, στέκονται "
+"σε πλήρη αντίθεση προς έναν κόσμο όπου λίγοι μπορούν ακόμη και να διαβάσουν "
+"και να γράψουν. Τις τάξεις τους τις γεμίζουν  τα παιδιά της αριστοκρατίας, ή "
+"εκείνοι που επιδίωξαν μια διαφυγή από το διανοητικό κενό της χειρωνακτικής "
+"εργασίας.\n"
+"\n"
+"Είναι μια ειρωνεία ότι, με όλη τη γνώση τους, και το ταπεινό μονοπώλιο τους "
+"επ' αυτού, η συλλογική κοινότητα των μάγων θα μπορούσε πιθανώς να κυβερνήσει "
+"την κοινωνία. Εντούτοις, η αληθινή αγάπη τους δεν είναι ούτε τα χρήματα, "
+"ούτε η δύναμη, και εκείνοι που βλέπουνε τη μελέτη της μαγείας ως ένα μέσο "
+"για να πλουτίσουν και να κυριαρχήσουν στερούνται συχνά την ίδια την "
+"πεποίθηση που απαιτείται για την αληθινή κυριότητα.\n"
+"\n"
+"Αν και ευπαθείς και χωρίς εμπειρία στη μάχη, οι Μάγοι κατέχουν τη τέχνη της "
+"μαγείας που είναι πολύ χρήσιμη στη μάχη."
 
 #: data/core/units/humans/Mage_Silver.cfg:44
 #: data/core/units/humans/Mage.cfg:59
 msgid "missile"
-msgstr ""
+msgstr "βολίδα"
 
 #: data/core/units/humans/Mage.cfg:163
 msgid "female^Mage"
@@ -1975,7 +2415,7 @@ msgstr "Μάγισσα"
 
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
-msgstr ""
+msgstr "Αρχιμάγος"
 
 #: data/core/units/humans/Mage_Arch.cfg:20
 msgid ""
@@ -1992,20 +2432,33 @@ msgid ""
 "unleash the full power of their art, something which is not to be taken "
 "lightly."
 msgstr ""
+"Ο τίτλος του Αρχιμάγου παρέχεται μόνο μετά από μια διάρκεια ζωής γεμάτη "
+"μελέτη και φοβερών επιτευμάτων. Οι Αρχιμάγοι υιοθετούνται συχνά στις θέσεις "
+"της εκπαίδευσης, ή ως σύμβουλοι σε εκείνους αρκετά σοφούς για να επιδιώξουν "
+"τους καρπούς της σοφίας. Πολλοί τείνουν στους πλούσιους προστάτες, μια "
+"κερδοφόρα επιχείρηση και για τους δύο, κάτι το οποίο τους επιτρέπει να είναι "
+"έξω από τα πολλά μαγικά, αυτό δίνει την άδεια στον Αρχιμάγο για να "
+"ακολουθήσει την έρευνά τους ανενόχλητος. Από αυτό ρέει το μεγαλύτερο σώμα "
+"της ανθρώπινης γνώσης οι επιστήμες, οι φιλοσοφίες, και οι τέχνες που δίνουν "
+"την ομορφιά στον κόσμο.\n"
+"\n"
+"Αν και, μη εκπαιδευμένοι για οποιοδήποτε είδος του αγώνα, στην ανάγκη ένας "
+"Αρχιμάγος μπορεί να εξαπολύσει την πλήρη δύναμη της τέχνης του, κάτι που δεν "
+"πρόκειται να ληφθεί ελαφριά."
 
 #: data/core/units/humans/Mage_Arch.cfg:37
 #: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Red.cfg:59
 msgid "fireball"
-msgstr "μπάλλα φωτιάς"
+msgstr "μπάλα φωτιάς"
 
 #: data/core/units/humans/Mage_Arch.cfg:123
 msgid "female^Arch Mage"
-msgstr ""
+msgstr "Αρχιμάγισσα"
 
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
-msgstr "Μεγάλος Μάγος"
+msgstr "Μέγας Αρχιμάγος"
 
 #: data/core/units/humans/Mage_Great.cfg:21
 msgid ""
@@ -2021,17 +2474,27 @@ msgid ""
 "Though they are not warriors, by any means, the application of their art to "
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
+"Οποιοσδήποτε εξετάζεται για τον τίτλο του Μεγάλου Αρχιμάγου είναι σχεδόν "
+"ένας μύθος στο χρόνο του, και οι τελάληδες της πόλης έχουν μάθει για τη "
+"διακριτικότητα στην εφαρμογή του τίτλου. Η αξία για τον τίτλο εξετάζεται "
+"προσεκτικά από το συμβούλιο των μάγων, οι οποίοι έχουν μεγάλη ηλικία, και η "
+"παραχώρηση του τίτλου δίνεται μόνο αν υπάρχει πλειοψηφία. Άσχετα από αυτό, "
+"καθένας που ορίζεται σοβαρά για να γίνει Μέγας Αρχιμάγος είναι, "
+"αδιαφιλονίκητος, ένας κύριος της τέχνης του, και έχει ξεπεράσει σχεδόν "
+"οποιωνδήποτε άλλο Μάγο στην χρήση της μαγείας.\n"
+"\n"
+"Αν και δεν είναι πολεμιστές η εφαρμογή της τέχνης τους στη μάχη είναι κάτι "
+"που αναγκάζει συχνά άλλους στρατιώτες να σταθούν στην άκρη."
 
 #: data/core/units/humans/Mage_Great.cfg:124
 msgid "female^Great Mage"
-msgstr "Μεγάλη Μάγισσα "
+msgstr "Μεγάλη Αρχιμάγισσα"
 
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "Κόκκινος Μάγος"
 
 #: data/core/units/humans/Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice and given the ruddy cloak of a master. "
@@ -2046,20 +2509,21 @@ msgid ""
 "number of tricks up their sleeves, including the gouts of fire which may "
 "have cemented their colloquial name."
 msgstr ""
-"Μόλις τερματίσει επιτυχώς την εκπαίδευσή του, αφαιρείται από τόν μάγο η μπλέ "
-"ρόμπα του μαθητευόμενου καί του δίνεται η κόκκινη ρόμπα του μαίτρ. Η σημασία "
-"αυτής της αλλαγής συχνά δέν κατανοείται από τόν απλό λαό πού αναφέρεται "
-"στούς Μαίτρ της Μαγείας σάν Κόκκινους Μάγους. Παρομοίως, ο συμβολισμός της "
-"αλλαγής στά χρώματα συχνά συγχέεται με την ικανότητα του μάγου νά παράγει "
-"φωτιά από φαινομενικά αέρα, ένα τρύκ πού αν καί αναμφίβολα χρήσιμο, "
-"θεωρείται μόνο μιά απλή εφαρμογή της γνώσεης πού μέ κόπο έχει συλλέξει.\n"
+"Μόλις τερματίσει επιτυχώς την εκπαίδευσή του, αφαιρείται από τον μάγο η καφέ "
+"ρόμπα του μαθητευόμενου και του δίνεται η κόκκινη ρόμπα του δεξιοτέχνη. Η "
+"σημασία αυτής της αλλαγής συχνά δεν κατανοείται από τον απλό λαό πού λάθος "
+"λένε τους Δεξιοτέχνες της Μαγείας σαν Κόκκινους Μάγους. Παρομοίως, ο "
+"συμβολισμός της αλλαγής στα χρώματα συχνά συγχέεται με την ικανότητα του "
+"μάγου να παράγει φωτιά από φαινομενικά αέρα, ένα τρικ πού αν και αναμφίβολα "
+"χρήσιμο, θεωρείται μόνο μια απλή εφαρμογή της γνώσης πού με κόπο έχει "
+"συλλέξει.\n"
 " \n"
-" Αν καί φυσικά αδύναμος καί ανεκπαίδευτος σάν  πολεμιστής, ένας κόκκινος "
-"Μάγος έχει έναν αριθμό άσσων στό μανίκι του, συμπεριλαμβανομένων των κόλπων "
-"μέ τη φωτιά πού είναι καί υπεύθυνα γιά τό κοινό του όνομα.\n"
+"Αν και φυσικά αδύναμος και ανεκπαίδευτος σαν πολεμιστής, ένας κόκκινος Μάγος "
+"έχει έναν αριθμό άσσων στο μανίκι του, συμπεριλαμβανομένων των κόλπων με τη "
+"φωτιά πού είναι και υπεύθυνα για το κοινό του όνομα.\n"
 "\n"
-" Ειδικές Σημειώσεις: οι μπάλλες φωτιάς του κόκκινου μάγου είναι μαγικές, καί "
-"πάντα έχουν μιά υψηλή πιθανότητα να χτυπήσουν τόν αντίπαλο. "
+"Ειδικές Σημειώσεις: οι μπάλες φωτιάς του κόκκινου μάγου είναι μαγικές, και "
+"πάντα έχουν μία υψηλή πιθανότητα να χτυπήσουν τον αντίπαλο."
 
 #: data/core/units/humans/Mage_Red.cfg:145
 msgid "female^Red Mage"
@@ -2076,6 +2540,7 @@ msgid ""
 msgstr ""
 
 #: data/core/units/humans/Mage_Silver.cfg:23
+#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2095,6 +2560,25 @@ msgid ""
 "skills are of undeniable use on the battlefield, if one can manage to induce "
 "the mage to apply them."
 msgstr ""
+"Οι πολλοί δρόμοι που ένας Μάγος μπορεί να πάρει μπορούν να οδηγήσουν σε "
+"τελείως διαφορετικές άκρες. Συχνά αντιμετωπιζόμενοι ως σοφοί, ή "
+"περιπλανώμενοι οπαδοί του μυστικισμού, οι Ασημένιοι Μάγοι ενεργούν στο "
+"πλαίσιο μιας ημερήσιας διάταξης που είναι σκοτεινή ακόμη και στους "
+"συναδέλφους τους. Αν και χρήσιμοι για αυτούς που τους χρησιμοποιούν συχνά "
+"στη μάχη, παραμένουν κάπως σε απόσταση.\n"
+"\n"
+"Έχουν, στην πραγματικότητα, τη δικιά τους τάξη μεταξύ των μάγων, μια τάξη "
+"που παρακρατά ορισμένα μυστικά από τους λόρδους τους. Ένας από αυτούς είναι "
+"μια προφανής δυνατότητα να διασχίζουν μεγάλες αποστάσεις πολύ γρήγορα και "
+"λογικά όχι με τα πόδια. Τα μέλη της ασημένιας τάξης αρνούνται φλογερά να "
+"συζητήσουν το έργο αυτό με οποιονδήποτε από τους συντροφικούς μάγους τους.\n"
+"\n"
+"Οι Ασημένιοι Μάγοι είναι συχνά πιο έμπειροι από άλλους μάγους, και οι "
+"δεξιότητές τους είναι αναμφισβήτητης χρήσης στο πεδίο της μάχης, εάν κάποιος "
+"μπορεί να κατορθώσει να προτρέψει τον Μάγο για να τους εφαρμόσει.\n"
+"\n"
+" Πρόσθετες σημειώσεις: Οι ασημένιοι μάγοι είναι καλά-προσαρμοσμένοι στις "
+"μαγικές φύσεις τους και είναι ιδιαίτερα ανθεκτικοί στη μη φυσική ζημία."
 
 #: data/core/units/humans/Mage_Silver.cfg:149
 msgid "female^Silver Mage"
@@ -2102,7 +2586,7 @@ msgstr "Ασημένια Μάγισσα"
 
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
-msgstr "Λευκός Μάγος "
+msgstr "Λευκός Μάγος"
 
 #: data/core/units/humans/Mage_White.cfg:20
 msgid ""
@@ -2116,13 +2600,23 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
+"Μερικοί μάγοι, όπως μαθαίνουν για τον κόσμο γύρω από τους, και μαθαίνουν την "
+"αλήθεια των βασάνων και της αθλιότητας στα οποία ζούνε συχνά οι άνθρωποι, "
+"διαπιστώνουν ότι δεν μπορούν να παρουσιαστούν για να εγκλειστούν σε "
+"μοναστήρι σε μια ζωή της μελέτης. Αυτοί οι άνδρες και γυναίκες σταματούν τη "
+"ζωή ενός Μάγου, και ενώνουν τις μοναστικές διαταγές, αφιερώνοντας τις "
+"δεξιότητες που έχουν δοθεί στο κοινό καλό. Μετά από τη χειροτονία τους, "
+"ταξιδεύουν συχνά τον κόσμο, υπηρετώντας στην ασθένεια και τον τραυματισμό.\n"
+"\n"
+"Αν και μην εκπαιδευμένοι για τη μάχη, είναι ισχυροί σύμμαχοι ενάντια στα "
+"μαγικά ή τα αφύσικα πράγματα."
 
 #: data/core/units/humans/Mage_White.cfg:126
 #: data/core/units/humans/Mage_of_Light.cfg:107
 #: data/core/units/merfolk/Diviner.cfg:74
 #: data/core/units/merfolk/Priestess.cfg:71
 msgid "lightbeam"
-msgstr ""
+msgstr "δέσμη φωτός"
 
 #: data/core/units/humans/Mage_White.cfg:261
 msgid "female^White Mage"
@@ -2141,6 +2635,14 @@ msgid ""
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
+"Μετά από τα έτη εμπειρίας, ο πιο αφοσιωμένος των Άσπρων Μάγων αναπτύσσει τις "
+"απέραντες πνευματικές του δυνάμεις. Μετά από τόση αφοσίωση στη μαγεία του "
+"φωτός μπορούν να ζητήσουν, τώρα πια, την ενίσχυσή του για να διώξουν μακριά "
+"τις σκιές της νύχτας.\n"
+"\n"
+"Ακολουθώντας έναν ακριβή κώδικα ευσέβειας και τιμής, αυτοί οι άνδρες και "
+"αυτές οι γυναίκες εργάζονται ακούραστα για να φέρουν τη ζωή σε αυτόν τον "
+"άθλιο κόσμο στον οποίο ζουν."
 
 #: data/core/units/humans/Mage_of_Light.cfg:232
 msgid "female^Mage of Light"
@@ -2160,6 +2662,13 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
+"Μετά από μερικά έτη υπηρεσίας, οι προηγουμένως γοργοπόδαροι προάγονται στις "
+"τάξεις των Παρανόμων. Έχοντας αποδείξει ικανότητα στη μάχη, τους δίνονται οι "
+"πιο επικίνδυνες αποστολές, και φυσικά ένα μεγαλύτερο μερίδιο από τα λάφυρα. "
+"Αν και πολλοί αντίπαλοι θα χλεύαζαν την επιλογή εξοπλισμού τους, οι "
+"Παράνομοι  γνωρίζουν καλά τη θανάσιμη ικανότητά του. Οι Παράνομοι είναι "
+"κάπως αδύναμοι στην μάχη κατά τη διάρκεια της ημέρας, προτιμώντας την κάλυψη "
+"του σούρουπου."
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
 #: data/core/units/humans/Outlaw.cfg:31
@@ -2170,7 +2679,7 @@ msgstr "σφεντόνα"
 
 #: data/core/units/humans/Outlaw.cfg:105
 msgid "female^Outlaw"
-msgstr ""
+msgstr "Παράνομη"
 
 #: data/core/units/humans/Outlaw.cfg:108
 msgid ""
@@ -2182,6 +2691,13 @@ msgid ""
 "Outlaws are somewhat ill at ease fighting during the day, preferring the "
 "cover of nightfall."
 msgstr ""
+"Μετά από μερικά έτη υπηρεσίας, οι προηγουμένως γοργοπόδαρες προάγονται στις "
+"τάξεις των Παρανόμων. Έχοντας αποδείξει ικανότητα στη μάχη, τους δίνονται οι "
+"πιο επικίνδυνες αποστολές, και φυσικά ένα μεγαλύτερο μερίδιο από τα λάφυρα. "
+"Αν και πολλοί αντίπαλοι θα χλεύαζαν την επιλογή εξοπλισμού τους, οι "
+"Παράνομες  γνωρίζουν καλά τη θανάσιμη ικανότητά του. Οι Παράνομες είναι "
+"κάπως αδύναμες στην μάχη κατά τη διάρκεια της ημέρας, προτιμώντας την κάλυψη "
+"του σούρουπου."
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
@@ -2195,6 +2711,12 @@ msgid ""
 "victims, be it poisoned knives thrown from afar, or a dagger planted in the "
 "back. Deadly at night, assassins are less able fighting under the open sun."
 msgstr ""
+"Ο Βαρώνος των κλεφτών μερικές φορές παίρνει πολύ περισσότερο από τις "
+"περιουσίες του θύματος τους. Οι κύριοι της μάχης με μαχαίρι, αυτές οι "
+"απειλητικές φιγούρες θα υιοθετήσουν οποιαδήποτε μέσο για να αποστείλουν τα "
+"θύματά τους, είτε πρόκειται για δηλητηριασμένα μαχαίρια που ρίχνονται από "
+"μακρυά, ή ένα στιλέτο που φυτεύεται στην πλάτη. Όπως όλοι οι παράνομοι έτσι "
+"και οι Δολοφόνοι είναι πολύ καλύτεροι στη μάχη το βράδυ παρά τη μέρα"
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
@@ -2207,7 +2729,7 @@ msgstr "Δολοφόνος"
 
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
-msgstr ""
+msgstr "Κλέφτης"
 
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
 msgid ""
@@ -2217,10 +2739,16 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Οι ληστές είναι μια ετερόκλητη συλλογή ατόμων, το μεγαλύτερο μέρος του "
+"αμφίβολου υποβάθρου. Είναι ο ισχυρός βραχίονας οποιασδήποτε οργανωμένης "
+"ομάδας εγκληματιών, και αν και μπορούν να λείψουν στη λεπτότητα, ή στη "
+"νοημοσύνη, υπερέχουν στον στόχο τους, δηλαδή τα θύματά τους. Όπως "
+"οποιοδήποτε είδος που είναι εκτός νόμου, δεν  πολεμάει καλά στο ευρύ φως της "
+"ημέρας, και έτσι εργάζονται τη νύχτα."
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
-msgstr "γοργοπόδαρος"
+msgstr "Γοργοπόδαρος"
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
 msgid ""
@@ -2231,6 +2759,12 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
+"Αυτοί οι ασήμαντοι εγκληματίες συχνά εμπαικτικά καλούνται Γοργοπόδαροι από "
+"τους ανωτέρους τους, γιατί επιφορτίζονται με οποιαδήποτε εργασία που απαιτεί "
+"πολύ τρέξιμο, συχνά χρησιμοποιούνται ως αγγελιαφόροι, ή ανιχνευτές. Η αντοχή "
+"και η ευκινησία που κερδίζουν από αυτό τους εξυπηρετούν καλά στη μάχη, και "
+"παρά τον κατώτερο εξοπλισμό τους είναι αρκετά καλοί στο να βασανίζουν τους "
+"εχθρούς τους, ειδικά με τη κάλυψη του σκοταδιού."
 
 #: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
@@ -2252,10 +2786,16 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
+"Αυτές οι ασήμαντες εγκληματίες συχνά εμπαικτικά καλούνται Γοργοπόδαρες από "
+"τους ανωτέρους τους, γιατί επιφορτίζονται με οποιαδήποτε εργασία που απαιτεί "
+"πολύ τρέξιμο, και συχνά χρησιμοποιούνται ως αγγελιαφόροι, ή ανιχνευτές. Η "
+"αντοχή και η ευκινησία που κερδίζουν από αυτό τους εξυπηρετούν καλά στη "
+"μάχη, και παρά τον κατώτερο εξοπλισμό τους είναι αρκετά καλοί στο να "
+"βασανίζουν τους εχθρούς τους, ειδικά με τη κάλυψη του σκοταδιού."
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "Φυγάς"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
@@ -2264,11 +2804,14 @@ msgid ""
 "element, but are no match for the sheer numbers that law-abiding soldiery "
 "can throw at them."
 msgstr ""
+"Οι βετεράνοι κακοποιοί γίνονται γνωστοί για την απονιά τους και την "
+"ικανότητά τους να δραπετεύουν. Μπορεί να γίνουν επικίνδυνοι και φοβεροί στην "
+"κλεψιά, αλλά δεν είναι τίποτα για τους μεγάλους και αγνούς στρατούς των "
+"νομοταγών στρατιωτών."
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:112
-#, fuzzy
 msgid "female^Fugitive"
-msgstr "Μάγισσα"
+msgstr "Φυγάς"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:115
 msgid ""
@@ -2277,20 +2820,26 @@ msgid ""
 "element, but are no match for the sheer numbers that law-abiding soldiery "
 "can throw at them."
 msgstr ""
+"Οι βετεράνες κακοποιοί γίνονται γνωστές για την απονιά τους και την "
+"ικανότητά τους να δραπετεύουν. Μπορεί να γίνουν επικίνδυνες και φοβερές στην "
+"κλεψιά, αλλά δεν είναι τίποτα για τους μεγάλους και αγνούς στρατούς των "
+"νομοταγών στρατιωτών."
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "Μεγαλοληστής"
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
 msgstr ""
+"Οπλισμένοι με μια βαριά σφύρα, οι Μεγαλοληστές είναι οι τελευταίοι άνθρωποι "
+"που θα θες να συναντήσεις σε έναν έρημο δρόμο αργά την νύχτα."
 
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
-msgstr "Κατεργάρης"
+msgstr "Τυχοδιώκτης"
 
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
 msgid ""
@@ -2301,15 +2850,21 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark."
 msgstr ""
+"Οι ηγέτες οποιασδήποτε ομάδας κλεφτών κερδίζουν τις θέσεις τους από "
+"ικανότητα. Αυτοί οι απατεώνες έχουν ξοδέψει πολλές ώρες να ξετινάζονται μέσα "
+"από τα πλήθη και αποφεύγοντας μακρυά από εκείνους που τους επιθυμούν "
+"πεθαμένους, ένα σύνολο δεξιοτήτων που είναι πολύ πρακτικό στη μάχη. Κύριοι "
+"της μάχης με μαχαίρια, μπορούν επίσης να ρίξουν τα μαχαίρια με αξιόπιστη "
+"ακρίβεια, και οι πολλές ώρες τους τριγυρίζοντας τις νύχτες τους αφήνουν μια "
+"δεξιότητα να πολεμάνε την νύχτα."
 
 #: data/core/units/humans/Outlaw_Rogue.cfg:141
 msgid "female^Rogue"
-msgstr "Κατεργάρα"
+msgstr "Τυχοδιώκτρια"
 
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
-#, fuzzy
 msgid "Ruffian"
-msgstr "Ερείπεια"
+msgstr "Κατεργάρης"
 
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
 msgid ""
@@ -2318,10 +2873,15 @@ msgid ""
 "stick, are known as 'Ruffians'. With enough luck and experience, they "
 "sometimes manage to avoid the stockade that awaits most of their colleagues."
 msgstr ""
+"Μερικά άτομα χωρίς ιδιαίτερες δεξιότητες δεν μπορούν ή δεν θέλουν να ζήσουν "
+"τίμια. Εκείνοι που προσπαθούν να περάσουν τη ζωή με ένα βαρύ ραβδί, είναι "
+"γνωστοί ως Κατεργάρηδες. Με αρκετή τύχη και εμπειρία, κατορθώνουν μερικές "
+"φορές να αποφύγουν τη φυλακή που αναμένει τους περισσότερους συναδέλφους "
+"τους."
 
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
-msgstr " Κλέφτης"
+msgstr "Κλέφτης"
 
 #: data/core/units/humans/Outlaw_Thief.cfg:20
 msgid ""
@@ -2333,14 +2893,21 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a 'fair fight'."
 msgstr ""
+"Για όσο χρονικό διάστημα μπορεί να θυμηθεί καθένας, τα μέλη των διάφορων "
+"συντεχνιών των «ποντικο-παγίδων» που αναπηδούσαν επάνω σε οποιαδήποτε μεγάλη "
+"πόλη είχαν μια περίεργη τακτική στο να κλέβουν. Πολλά είναι τα τολμηρά "
+"επαγγέλματα αλλά σαν του Κλέφτη δεν υπάρχει άλλο κανένα. Οι κλέφτες έχουν "
+"πολλές δεξιότητες, και από την ανάγκη είναι γρήγοροι, και καλοί στη μάχη με "
+"τα μαχαίρια. Υιοθετούν με ευχαρίστηση την «λιγότερο-από-αξιότιμη» τακτική "
+"στον αγώνα, βλέποντας λίγη αξία σε μια «δίκαιη πάλη»."
 
 #: data/core/units/humans/Outlaw_Thief.cfg:357
 msgid "female^Thief"
-msgstr " Κλέφτρα"
+msgstr "Κλέφτρα"
 
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr ""
+msgstr "Φονιάς"
 
 #: data/core/units/humans/Outlaw_Thug.cfg:19
 msgid ""
@@ -2350,32 +2917,36 @@ msgid ""
 "Regardless of their background, they all share a penchant for beating their "
 "victims with large clubs."
 msgstr ""
+"Οι Φονιάδες προέρχονται από μια ευρεία ποικιλία ενώ μερικοί γεννιούνται στο "
+"ίδιο το άνδρο των Φονιάδων, πολλοί είναι προηγούμενοι στρατιώτες που "
+"κρίνονται ακατάλληλοι για να εξυπηρετήσουν στο στρατό ή αγρότες που "
+"ρίχνονται από τα εδάφη τους. Γίνονται Φονιάδες για λόγους συντήρησης. "
+"Ανεξάρτητα από το υπόβαθρό τους, όλοι μοιράζονται μια τάση για να σκοτώσουν "
+"τα θύματά τους με τις μεγάλες λέσχες."
 
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
-msgstr "Χωριάτης"
+msgstr "Χωρικός"
 
 #: data/core/units/humans/Peasant.cfg:20
-#, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
-"Οι χωρικοί είναι η ραχοκοκκαλιά της αγροτικής οικονομίας, καί στρατιώτες της "
-"απελπισίας. Αν καί δέν είναι τρομακτικοί από τη φύση τους, θά υπερασπιστούν "
-"μέ πείσμα τά σπιτικά τους. Από την άλλη μεριά, αν στέλνεις χωρικούς εναντίον "
-"των εχθρών σου, σίγουρα δέν έχει άλλες καλύτερες δυνάμεις."
+"Οι Χωρικοί είναι η ραχοκοκκαλιά της αγροτικής οικονομίας, και στρατιώτες της "
+"απελπισίας. Αν και δεν είναι φιλοπόλεμοι από τη φύση τους, θα υπερασπιστούν "
+"με πείσμα τα σπιτικά τους. Από την άλλη μεριά, αν στέλνεις Χωρικούς εναντίον "
+"των εχθρών σου, σίγουρα δεν έχει άλλες καλύτερες δυνάμεις."
 
 #: data/core/units/humans/Peasant.cfg:25 data/core/units/humans/Peasant.cfg:34
 msgid "pitchfork"
 msgstr "δικράνι"
 
 #: data/core/units/humans/Woodsman.cfg:4
-#, fuzzy
 msgid "Woodsman"
-msgstr "ιππέας"
+msgstr "Άνθρωπος των Δασών"
 
 #: data/core/units/humans/Woodsman.cfg:19
 msgid ""
@@ -2383,11 +2954,13 @@ msgid ""
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
+"Οι Άνθρωποι των Δασών είναι κυνηγοί, ξυλοκόποι και άλλα. Είναι γενικά "
+"άνθρωποι που μπορούν να ζήσουν στο κέντρο ενός αγριότοπου. Η εξυπνάδα και η "
+"γνώση του δάσους τους βοηθάνε εκεί που τα όπλα δεν μπορούν."
 
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
-#, fuzzy
 msgid "Huntsman"
-msgstr "ιππέας"
+msgstr "Κυνηγός"
 
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
 msgid ""
@@ -2406,10 +2979,26 @@ msgid ""
 "save lives, ease travel, provide food, and their skill with a bow is "
 "capitally useful in a fight."
 msgstr ""
+"Το κυνήγι είναι ένας δημοφιλή άθλημα στους ευγενείς, αλλά μπορεί επίσης να "
+"γίνετε ως δουλειά. Όπως οποιαδήποτε άλλη τέχνη, έτσι και αυτή έχει "
+"δεξιοτέχνες. Οι Κυνηγοί είναι αυτοί οι δεξιοτέχνες και ξέρουν όλα τα "
+"τεχνάσματα της τέχνης τους, και είναι ειδικευμένοι στη μετακίνησή τους μέσα "
+"από άγριες περιοχές, στην καταδίωξη, και στη χρήση του τόξου. Μπορούν να "
+"πετύχουν κινούμενους στόχους, και τους άτομα που κρύβονται στους θάμνους και "
+"άλλες κρυψώνες, αυτές τις δεξιότητες τις απόκτησαν από τα πολλά χρόνια που "
+"εξασκούν την τέχνη της τοξοβολίας.\n"
+"\n"
+"Οι δεξιοτέχνες κυνηγοί απασχολούνται από οποιαδήποτε ομάδα που ζει στα άγρια "
+"μέρη του Γουέσνοθ, είτε είναι παράνομοι είτε είναι κατά των παρανόμων. Ακόμη "
+"και η φύση η ίδια μπορεί να έχει τις θανάσιμες εκπλήξεις, και οποιοσδήποτε "
+"διοικητής που αποτυγχάνει να μισθώσει έναν έναν τέτοιο οδηγό μπορεί να χάσει "
+"τον περισσότερο στρατό του μόνο στο δρόμο προς τη μάχη. Οι καλοί Κυνηγοί "
+"μπορούν να σώσουν ζωές, να διευκολύνουν το ταξίδι, να παρέχουν τρόφιμα, και "
+"η ικανότητά τους με ένα τόξο είναι πολύ χρήσιμη σε μια μάχη."
 
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
-msgstr "λαθροκυνηγός"
+msgstr "Λαθροκυνηγός"
 
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
 msgid ""
@@ -2421,11 +3010,18 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"Αν και δεν είναι εκπαιδευμένοι για πολεμιστές, οι δεξιότητες που κατέχονται "
+"από έναν κυνηγό (ειδικά εκείνοι της τοξοβολίας) είναι χρήσιμες στη μάχη. "
+"Οποιαδήποτε ομάδα στρατιωτών ή ληστών που ταξιδεύουν μέσω των άγρια περιοχών "
+"θα χρειαστεί μερικούς Λαθροκυνηγούς, όχι μόνο για το κυνήγι αλλά και για "
+"βοήθεια στη μάχη.\n"
+"\n"
+"Λόγω της εμπειρίας τους, αυτοί οι κυνηγοί είναι κατά έναν ασυνήθιστο τρόπο "
+"ικανοί τη νύχτα, και στα δάση και τα έλη."
 
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
-#, fuzzy
 msgid "Ranger"
-msgstr "στιλέτο"
+msgstr "Καταδρομέας"
 
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
 msgid ""
@@ -2441,6 +3037,20 @@ msgid ""
 "even hear of it at all.  Rangers can be hired, but they are just as likely "
 "to be in the employ of bandits, as they are to be in the king's service."
 msgstr ""
+"Οι Καταδρομείς είναι περιπλανώμενα άτομα που ζουν στην άγρια φύση, τα οποία "
+"έχουν επιλέξει να αποφύγουν την συντροφιά των συνανθρώπων τους για μυριάδες "
+"λόγους. Έχουν ξοδέψει μεγάλο μέρος της ζωής τους στη φύση και ξέρουν σχεδόν "
+"τα πάντα για αυτή. Είναι άριστοι ανιχνευτές και εξερευνητές, και μπορούν να "
+"βρουν τρόφιμα και στέγη όπου άλλα άτομα θα έβρισκαν μόνο τα ραβδιά και τις "
+"πέτρες.\n"
+"\n"
+"Η παρουσία αυτών των ατόμων ενοχλεί τον πιο αυταρχικό των κυβερνητών, αφού "
+"είναι ένα στοιχείο που οι ιππότες και οι στρατοί του εδάφους δεν μπορούν να "
+"ελέγξουν. Είναι άτομα των αμφίβολων κινήτρων, και είναι οι πρώτοι στον "
+"χλευασμό οποιουδήποτε βασιλικού διατάγματος, ακόμη και αν δεν το έχουν "
+"ακούσει καθόλου. Οι Καταδρομείς συνήθως μισθώνονται για να πολεμήσουν, αλλά "
+"είναι εξίσου πιθανό να είναι υιοθετούν από τους παράνομους, δεδομένου ότι "
+"είναι κατά του βασιλιά."
 
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
@@ -2456,10 +3066,17 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"Οι άνθρωποι που γνωρίζουν το δάσος καλά είναι χρήσιμοι σύμμαχοι σε "
+"οποιοδήποτε στρατό. Μπορούν να ακολουθήσουν και τα άτομα και τα κτήνη, και "
+"να εντοπίσουν πράγματα που άλλοι θα αγνοούσαν, και είναι συχνά οι μόνοι που "
+"μπορούν να βρουν τρόφιμα για το τραπέζι, είτε πρόκειται για ζώο ή λαχανικό.\n"
+"\n"
+"Η ικανότητά τους στο κυνήγι είναι πολύ χρήσιμη στη μάχη, και κατά έναν "
+"ασυνήθιστο τρόπο μπορούν να κυνηγούν και τη νύχτα."
 
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Γοργόνα Μάντισσα"
 
 #: data/core/units/merfolk/Diviner.cfg:24
 msgid ""
@@ -2470,10 +3087,17 @@ msgid ""
 "man at the banks of the Alavynne, but who rode again the next day, in full "
 "number, and wrought the downfall of the crimson duke."
 msgstr ""
+"Τα έτη αφοσίωσης θα χρηματοδοτήσουν μια Ιέρεια με τη μεγάλη φρόνηση στα έργα "
+"του κόσμου, και θα τους χορηγήσουν την εύνοια του φωτός. Η δύναμη που "
+"δίνεται έτσι σε αυτές τις κυρίες του ύδατος είναι ένα επαναλαμβανόμενο "
+"μοτίβο στην ιστορία και το τραγούδι όπως αυτός των ιπποτών της ασημένιας "
+"σπείρας, που στριμώχνονται και σκοτώνονται από ένα άτομο στις τράπεζες του "
+"Άλαβυν, αλλά ποιοί επαναστάτησαν την επόμενη μέρα, σε μεγάλο αριθμό, και "
+"έγραψαν το τέλος του Κόκκινου Δούκα."
 
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "Γοργόνα Μάγισσα"
 
 #: data/core/units/merfolk/Enchantress.cfg:19
 msgid ""
@@ -2484,16 +3108,24 @@ msgid ""
 "is forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss."
 msgstr ""
+"Οι Γοργόνες, όπως τα Ξωτικά, έχουν μια ισχυρή και εγγενή δυνατότητα στα "
+"μαγικά, αν και δικοί τους φυλή είναι αρκετά διαφορετικοί από αυτή των "
+"Ξωτικών. Εκείνοι που κυριαρχούν αυτήν την δυνατότητα έχουν υψηλό σεβασμό, "
+"και η ικανότητά τους χρησιμοποιείται σε ένα πλήθος τεχνών, πολλών από το "
+"οποίο η ανθρωπότητα δεν θα ονειρευόταν ποτέ. Η προφανής χρήση στον πόλεμο "
+"είναι απαγορευμένη ενάντια στη φυλή τους - αυτή η δύναμη είναι το μεγαλύτερο "
+"μέρος αυτό που προστατεύει τους ανθρώπους τους από τα τέρατα που "
+"περιπλανώνται από την άβυσσο."
 
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:36
 #: data/core/units/merfolk/Siren.cfg:40
 msgid "water spray"
-msgstr "πίδακες νερού  "
+msgstr "πίδακες νερού"
 
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
-msgstr ""
+msgstr "Γοργόνος Παγιδευτής"
 
 #: data/core/units/merfolk/Entangler.cfg:19
 msgid ""
@@ -2502,16 +3134,23 @@ msgid ""
 "weapon helps to cement the utter superiority of a merman in his own element, "
 "and makes their race a threat even to enemies who merely approach the water."
 msgstr ""
+"Τα βαριά δίχτυα που χρησιμοποιούνται στον πόλεμο είναι ένα δύσκολο όπλο που "
+"χρησιμοποιούν καλά εκείνοι που κύριος εκτιμούνται και είναι σεβαστοί από "
+"τους συντρόφους τους. Αυτό το όπλο βοηθά να φτιαχτεί η παντελή ανωτερότητα "
+"ενός Γοργόνου στο στοιχείο του, και κάνει τη φυλή τους μια απειλή ακόμη και "
+"στους εχθρούς που δεν πλησιάζουν καν το νερό."
 
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
-msgstr "Θαλασσάνθωπος πολεμιστής"
+msgstr "Γοργόνος Πολεμιστής"
 
 #: data/core/units/merfolk/Fighter.cfg:19
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
 msgstr ""
+"Έμπειρα πλάσματα της θάλασσας, οι Γοργόνοι είναι δυνατοί και γρήγοροι σε "
+"υδάτινο περιβάλλον, αλλά χάνουν μεγάλο μέρος της ευκινησίας τους στο έδαφος."
 
 #: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:35
@@ -2522,7 +3161,7 @@ msgstr "τρίαινα"
 
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "Γοργόνος Οπλίτης"
 
 #: data/core/units/merfolk/Hoplite.cfg:20
 msgid ""
@@ -2531,10 +3170,15 @@ msgid ""
 "steadfast line in the maelstrom of battle. In times of desperation, they can "
 "even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
+"Με τις πανύψηλες ασπίδες τους οι Γοργόνοι Οπλίτες γίνονται οι καλύτεροι "
+"φύλακες των υδάτινων περιοχών. Οι πανίσχυρη πανοπλία τους τους επιτρέπει να "
+"κρατάνε μια αδιάσπαστη γραμμή στη μάχη. Σε καιρούς απελπισίας, αυτό μπορούν "
+"να το κάνουν ακόμα και στη ξηρά, αν και καθόλου καλά σε σχέση με τα πλάσματα "
+"με πόδια."
 
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
-msgstr ""
+msgstr "Γοργόνος Κυνηγός"
 
 #: data/core/units/merfolk/Hunter.cfg:19
 msgid ""
@@ -2543,10 +3187,14 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
+"Οι δεξιότητες ενός γοργόνου στο ψάρεμα με ακόντιο μεταφράζεται εύκολα σε "
+"πολεμοχαρά, ειδικά ενάντια σε εκείνους που δεν είναι το σπίτι τους το νερό. "
+"Σε περιόδους ανάγκης, πολλοί εκείνου του επαγγέλματος θα προσφερθούν "
+"εθελοντικά να μπουν στις τάξεις του στρατού τους."
 
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Νεοδίδακτη Γοργόνα"
 
 #: data/core/units/merfolk/Initiate.cfg:22
 msgid ""
@@ -2557,10 +3205,18 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies."
 msgstr ""
+"Οι νέες γοργόνες μπαίνουν σιγά σιγά στη μαγεία του νερού εγγενές στους "
+"ανθρώπους τους. Οι θαυμάσιες δυνατότητες που τους προσφέρει είναι "
+"ασυναγώνιστες από οποιαδήποτε άλλη φυλή, ένα σημάδι που δείχνει ότι και αυτά "
+"τα πλάσματα έχουν κάτι το νεραϊδίσιο.\n"
+"\n"
+"Παρά την αδυναμία τους, η μαγεία τους καθιστά αρκετά τρομερούς στη μάχη, "
+"δεδομένου ότι μπορούν να ζητήσουν από το ίδιο το νερό να επιτεθεί στους "
+"εχθρούς τους."
 
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Γοργόνος Ακοντιστής"
 
 #: data/core/units/merfolk/Javelineer.cfg:19
 msgid ""
@@ -2569,10 +3225,15 @@ msgid ""
 "impact of one is considerably greater. In the water, the mobility of the "
 "mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
+"Εκείνοι οι γοργόνοι που γίνονται δεξιοτέχνες στη τέχνη του ακοντίου μπορούν "
+"να γίνουν σχεδόν τόσο αποτελεσματικοί όσο ένας τοξότης - αν και το βάρος των "
+"όπλων τους εμποδίζει τη  ακτίνα δράσης του, ο αντίκτυπος είναι αρκετά "
+"μεγαλύτερος από ένα βέλος. Στο νερό όμως η κινητικότητα των γοργόνων το "
+"αποζημιώνει αυτό όταν αντιμετωπίζουν εχθρούς που δεν μπορούν να κολυμπήσουν."
 
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
-msgstr "Θαλασσάνθρωπος δικτυάς "
+msgstr "Γοργόνος Δικτυάς"
 
 #: data/core/units/merfolk/Netcaster.cfg:18
 msgid ""
@@ -2585,10 +3246,19 @@ msgid ""
 "to level the playing field against troops on land, who would otherwise be at "
 "a great advantage."
 msgstr ""
+"Η αλιεία, όπως ασκείται από τους Γοργόνους, είναι κατά ένα μεγάλο μέρος ένα "
+"θέμα αν θα πιάσεις πολλά ψάρια περιμένοντας με δίχτυα. Αυτά δεν είναι πολύ "
+"καταστρεπτικά αλλά μπορούν να χρησιμοποιηθούν πολύ καλά ενάντια στα "
+"στρατεύματα που προσπαθούν να διασχίσουν έναν ποταμό. Τα μικρότερα, "
+"σταθμισμένα δίχτυα μπορούν να πεταχτούν μέσω του αέρα, αν και αυτά δεν "
+"σχεδιάζονται για την εν καιρώ ειρήνης χρήση, είναι ιδιαίτερα αποτελεσματικά "
+"στην εχθροπραξία. Οι Γοργόνοι χρησιμοποιούν τέτοια όπλα και για να "
+"ακινητοποιήσουν τα στρατεύματα στο νερό, και το πιο σημαντικό, για να "
+"εξισορροπεί την μάχη στη ξηρά που αλλιώς θα ήταν πολύ άδικο."
 
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "Ιέρεια των Γοργόνων"
 
 #: data/core/units/merfolk/Priestess.cfg:22
 msgid ""
@@ -2598,10 +3268,15 @@ msgid ""
 "piety also grants them certain powers, allowing them to guard their people "
 "against magical or unnatural things."
 msgstr ""
+"Οι γοργόνοι αφήνουν γενικά τον μυστικισμό στις γοργόνες τείνουν λίγο πιο "
+"πολύ προς αυτόν. Είναι αυτές που αφιερώνονται στο να φέρουν την ειρήνη και "
+"τη ζωή στον κόσμο, και στις τέχνες που την καθιστούν πιθανή. Η ευσέβεια τους "
+"τους χορηγεί επίσης ορισμένες δυνάμεις, που τους επιτρέπουν να φρουρήσουν "
+"τους ανθρώπους τους από τα μαγικά ή διάφορα αφύσικα πράγματα."
 
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
-msgstr ""
+msgstr "Σειρήνα"
 
 #: data/core/units/merfolk/Siren.cfg:22
 msgid ""
@@ -2615,14 +3290,23 @@ msgid ""
 "The myriad applications of this rarely occur to land dwellers, who simply "
 "regard it with wonder."
 msgstr ""
+"Η νεραϊδίσια φύση των γοργόνων είναι ισχυρότερη στις Σειρήνες, οι οποίες "
+"συγγενεύουν με τις Ναϊανίδες αν και δεν είναι οι ίδιες, όπως συχνά "
+"ειπώνεται. Εν τούτοις το λάθος είναι κατανοητό, δεδομένου ότι αληθινές "
+"Ναϊάδες βλέπει κάποιος πιο σπάνια και από τις Γοργόνες. Η εκδήλωση της "
+"μαγείας τους όμως μοιάζει πάρα πολύ, αφού και τα δύο είδη μαγείας έχουν ως "
+"βάση το νερό.\n"
+"\n"
+"Οι μυριάδες εφαρμογές της μαγείας των Σειρήνων εμφανίζονται σπάνια στους "
+"κατοίκους του εδάφους, οι οποίοι την θεωρούν καταπληκτική."
 
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
-msgstr "Αγγιγμα της Ναιάδας "
+msgstr "άγγιγμα της ναϊάδας"
 
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
-msgstr "Θαλασσάνθωπος Λογχοφόρος"
+msgstr "Γοργόνος Λογχοφόρος"
 
 #: data/core/units/merfolk/Spearman.cfg:18
 msgid ""
@@ -2633,34 +3317,40 @@ msgid ""
 "damage. They are also useful in melee, even deep under the surface, which is "
 "something that certainly cannot be said of arrows."
 msgstr ""
+"Η τοξοβολία ευνοείται ελάχιστα από τους Γοργόνους, αφού η τέχνη του ακοντίου "
+"τους εξυπηρετεί μια παρόμοια λειτουργία τέλεια. Αν και τα ακόντια έχουν "
+"μικρή χρησιμότητα κάτω από το ύδωρ, είναι εξαιρετικά αποτελεσματικά στην "
+"επιφάνειά του, όπου το βάρος τους επιτρέπει να βυθίσουν πολλά πόδια κάτω από "
+"το νερό διατηρώντας αρκετή ορμή για να κάνει αρκετή ζημία. Είναι επίσης "
+"χρήσιμα στη μάχη σώμα με σώμα, ακόμα και βαθύ κάτω από την επιφάνεια, το "
+"οποίο δεν μπορεί βεβαίως να από τα βέλη."
 
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
-msgstr "Θαλασσάνθωπος Τρίτων"
+msgstr "Γοργόνος Τρίτωνας"
 
 #: data/core/units/merfolk/Triton.cfg:19
-#, fuzzy
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
 "preferred environment."
 msgstr ""
-"Οι Τρίτωνες είναι άρχοντες της θάλασσας. Ικανότατοι στή χρήση της τρίαινας, "
-"οι τρίτωνες εύκολα νικούν  οποιονδήποτε εχθρό είναι αρκετά ανόητος να μπεί "
-"στά δικά τους λημέρια. "
+"Οι Τρίτωνες είναι άρχοντες της θάλασσας. Ικανότατοι στη χρήση της τρίαινας, "
+"οι τρίτωνες νικούν  εύκολα οποιονδήποτε εχθρό αρκετά ανόητο να μπει στα δικά "
+"τους λημέρια."
 
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
-msgstr "Θαλασσάνθρωπος Πολεμιστής"
+msgstr "Γοργόνος Μαχητής"
 
 #: data/core/units/merfolk/Warrior.cfg:18
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
-"Οι θαλασσάνθρωποι πολεμιστές αποτελούν τόν κορμό των στρατών των "
-"θαλασσανθρώπων. Εχοντας δυνατές τρίαινες, αποτελούν τό φόβητρο γιά όσους "
-"τολμούν νά μπούν στά νερά τους. "
+"Οι Γοργόνοι Μαχητές αποτελούν τον κορμό των στρατών των Γοργόνων. Έχοντάς "
+"δυνατές τρίαινες, αποτελούν το φόβητρο για όσους τολμούν να μπουν στα νερά "
+"τους."
 
 #: data/core/units/monsters/Cave_Spider.cfg:4
 msgid "Giant Spider"
@@ -2672,6 +3362,10 @@ msgid ""
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
 "can also fling webs through the air, to trap their prey."
 msgstr ""
+"Λέγεται πως οι Γιγάντιες Αράχνες περιπλανώνται στην Κνάγκλα, ρημάζωντας "
+"πολλά θύματα. Έχουν ένα ακόλαστο δάγκωμα, που γίνετε ακόμα χειρότερο αφού "
+"είναι δηλητηριώδες, και μπορεί επίσης να εκσφενδονίσει ιστούς στον αέρα, "
+"παγιδεύοντας τη λεία τους."
 
 #: data/core/units/monsters/Cave_Spider.cfg:46
 msgid "web"
@@ -2679,7 +3373,7 @@ msgstr "ιστός"
 
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "Γιγάντια Σουπιά"
 
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
 msgid ""
@@ -2688,6 +3382,10 @@ msgid ""
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
+"Οι Γιγάντιες Σουπιές είναι γιγαντιαία πλάσματα της θάλασσας. Μπορούν να "
+"αρπάξουν τους αντιπάλους τους με τα δυνατά τους πλοκάμια, ή να φτύσουν ένα "
+"δηλητηριώδες μαύρο μελάνι από μακριά. Ο καλύτερος τρόπος για να γλυτώσεις "
+"από ένα τέτοιο πλάσμα είναι μόνο να μείνεις στη στεριά."
 
 #: data/core/units/monsters/Tentacle.cfg:62
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
@@ -2715,6 +3413,15 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"Ένας Δράκος είναι ένα θρυλικό πλάσμα, που κανονικά συναντιέται μόνο στις "
+"φανταστικές ιστορίες. Είναι πολύ σπάνιοι, και δεν λέγεται  μόνο για να "
+"βοηθηθεί η ιστορία ότι κατέστρεψαν πόλεις και κωμοπόλεις. Οι μύθοι είναι "
+"πολύ συγκεκριμένοι για τις καταστροφές των δράκων σημειώνοντας κυρίως τη "
+"μεγάλη τους δύναμή, ταχύτητα, και την υπερφυσική τους πονηριά, και και πάνω "
+"από όλα, η μεγάλη φωτιά που καίει μέσα τους.\n"
+"\n"
+"Το να πολεμάς έναν Δράκο θεωρείται ως το αποκορύφωμά του κινδύνου, δουλειά "
+"για ένα ηλίθιο ή για τον γενναιότερο ιππότη."
 
 #: data/core/units/monsters/Fire_Dragon.cfg:28
 msgid "bite"
@@ -2729,15 +3436,14 @@ msgid "Giant Mudcrawler"
 msgstr "Γιγάντιο Λασπόπλασμα"
 
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by striking them with their fists."
 msgstr ""
-"Τά γιγάντια λασποπλάσματα είναι ένα μεγαλύτερο είδος λασποπλάσματος καί "
-"είναι μαγικές κατασκευές από χώμα καί νερό. Επιτίθενται ρίχνοντας κομμάτια "
-"λάσπη στόν εχθρο, η χτυπώντας τον μέ τις γροθιές τους."
+"Τα γιγάντια λασποπλάσματα είναι ένα μεγαλύτερο είδος λασποπλάσματος και "
+"είναι μαγικές κατασκευές από χώμα και νερό. Επιτίθενται ρίχνοντας κομμάτια "
+"λάσπη στον εχθρό, η χτυπώντας τον με τις γροθιές τους."
 
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
@@ -2761,6 +3467,9 @@ msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation."
 msgstr ""
+"Ένας κανονικός σκορπιός είναι αρκετά επικίνδυνος - κάποιος μπορεί να "
+"φανταστεί πόσο επικίνδυνος είναι ένας σκορπιός στο μέγεθος ενός ανθρώπου "
+"ακόμα και αν δεν του το πούνε."
 
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
@@ -2779,24 +3488,23 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"Τά λασποπλάσματα είναι μαγικές κατασκευές από χώμα καί νερό. Επιτίθενται "
-"ρίχνοντας κομμάτια λάσπη στόν εχθρό. "
+"Τα λασποπλάσματα είναι μαγικές κατασκευές από χώμα και νερό. Επιτίθενται "
+"ρίχνοντας κομμάτια λάσπη στον εχθρό."
 
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
-msgstr "θαλάσσιο φίδι"
+msgstr "Θαλάσσιο Ερπετό"
 
 #: data/core/units/monsters/Sea_Serpent.cfg:21
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
-"Τά φίδια της θάλασσας είναι γιγάντια τέρατα, ικανά να καταβροχθίσουν "
-"ολόκληρες βάρκες μόνα τους. "
+"Τα Ερπετά της θάλασσας είναι γιγάντια τέρατα, ικανά να καταβροχθίσουν "
+"ολόκληρες βάρκες μόνα τους."
 
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
-#, fuzzy
 msgid "Skeletal Dragon"
-msgstr "Σκελετός"
+msgstr "Σκελετικός Δράκος"
 
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
@@ -2806,6 +3514,12 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Πολύ καιρό πριν ένα από τα δυνατότερα ζωντανά πλάσματα, ο φοβερός δράκος "
+"έχει γίνει μόνο κόκαλα. Πολύ μετά από το θάνατό του, αναστήθηκε μέσω των "
+"σκοτεινών δυνάμεων της νεκρομαντίας, τις οποίες εξυπηρετεί τώρα. Ο "
+"Σκελετικός Δράκος μπορεί να μοιάζει με έναν σωρό από κόκαλα, αλλά λίγοι "
+"ανθρώπους που σκέφτηκαν έτσι έζησαν αρκετό καιρό για να αλλάξουν τον τρόπο "
+"σκέψης τους."
 
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
@@ -2813,17 +3527,19 @@ msgstr "σαγόνι"
 
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "Πλοκάμι της αβύσσου"
 
 #: data/core/units/monsters/Tentacle.cfg:22
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves."
 msgstr ""
+"Τα πλοκάμια της Αβύσσου είναι κομμάτια ενός μεγάλου τέρατος που κρύβεται "
+"πίσω από τα κύματα."
 
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "Λύκος"
 
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
@@ -2835,6 +3551,9 @@ msgid ""
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
+"Λίγα είναι γνωστά για τα Γέτι, πλάσματα σαν πιθήκους λέγεται πως ζουν σε "
+"απομακρυσμένα μέρη και χιονισμένα βουνά. Λίγοι έχουν δει ένα, μα πολύ "
+"αμφιβάλλουν αν υπάρχουν."
 
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
@@ -2848,6 +3567,12 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Τα ερπετοειδή Νάγκα είναι μια από τις λίγες φυλές ικανές οποιασδήποτε "
+"σημαντικής κινητικότητας στο ύδωρ, το οποίο τους προστατεύει από τυχόν "
+"εχθρούς. Όμως, δεν είναι αληθινά πλάσματα της θάλασσας, και η ανικανότητά "
+"τους να αναπνεύσουν το ύδωρ τους αφήνει στο τρόμο της αβύσσου. Είναι μικροί, "
+"και κάπως ευπαθείς στη μορφή, αλλά συχνά πιο ευκίνητοι από τους αντιπάλους "
+"τους."
 
 #: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
@@ -2855,7 +3580,7 @@ msgstr "Πολεμιστής Ναγκίνι"
 
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
-msgstr "Νάγκα Μυρμιδών"
+msgstr "Μυρμιδώνας Νάγκα"
 
 #: data/core/units/nagas/Myrmidon.cfg:20
 msgid ""
@@ -2865,10 +3590,15 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them deadly mobility in water."
 msgstr ""
+"Οι πιο ασκημένοι, στο σπαθί, Νάγκα φτιάχνουν την κάστα των Μυρμιδώνων, "
+"δεξιοτέχνες της επίθεσης με δύο σπαθιά. Χτυπούν τόσο γρήγορα όσο τα φίδια, "
+"που τους μοιάζουν, επίσης μπορούν να αποφύγουν πολύ εύκολα και γρήγορα τις "
+"επιθέσεις τους. Όχι μόνο είναι ισχυροί εχθροί σε οποιαδήποτε ανοικτή έκταση, "
+"αλλά η δυνατότητά τους να κολυμπήσουν τους επιτρέπει κινητικότητα στο ύδωρ."
 
 #: data/core/units/nagas/Myrmidon.cfg:67
 msgid "Nagini Myrmidon"
-msgstr "Ναγκίνι Μυρμιδών"
+msgstr "Μυρμιδώνας Νάγκίνι"
 
 #: data/core/units/nagas/Myrmidon.cfg:70
 msgid ""
@@ -2878,10 +3608,15 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"Οι πιο ασκημένοι, στο σπαθί, Νάγκίνι φτιάχνουν την κάστα των Μυρμιδώνων, "
+"δεξιοτέχνες της επίθεσης με δύο σπαθιά. Χτυπούν τόσο γρήγορα όσο τα φίδια, "
+"που τους μοιάζουν, επίσης μπορούν να αποφύγουν πολύ εύκολα και γρήγορα τις "
+"επιθέσεις τους. Όχι μόνο είναι ισχυροί εχθροί σε οποιαδήποτε ανοικτή έκταση, "
+"αλλά η δυνατότητά τους να κολυμπήσουν τους επιτρέπει κινητικότητα στο ύδωρ."
 
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
-msgstr "Πολεμιστής Νάγκα "
+msgstr "Μαχητής Νάγκα"
 
 #: data/core/units/nagas/Warrior.cfg:19
 msgid ""
@@ -2892,10 +3627,17 @@ msgid ""
 "from blows. This makes them potent on land, but the friction of water "
 "greatly impedes the technique."
 msgstr ""
+"Οι νέοι πολεμιστές Νάγκα επιδιώκουν στην ημέρα που θα αξίζουν δεύτερο σπαθί. "
+"Η πολεμική πρακτική τους, η επίθεση με δύο σπαθιά δηλαδή, είναι πλήρως "
+"αντίθετη από αυτή των Oρκ και των άλλων φυλών, γιατί έχουν αρχίσει να "
+"μαθαίνουν την τέχνη της χρησιμοποίησης της ερπετοειδής μορφής τους που "
+"επηρεάζει καλύτερα, το στρίψιμο και τη στροφή στην αποφυγή των χτυπημάτων. "
+"Αυτό τους καθιστά ισχυρούς στο έδαφος, αλλά η τριβή του ύδατος εμποδίζει "
+"πολύ την τεχνική."
 
 #: data/core/units/nagas/Warrior.cfg:66
 msgid "Nagini Warrior"
-msgstr "Πολεμιστής Ναγκίνι"
+msgstr "Μαχητής Ναγκίνι"
 
 #: data/core/units/nagas/Warrior.cfg:69
 msgid ""
@@ -2906,6 +3648,13 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"Οι νέοι πολεμιστές Ναγκίνι επιδιώκουν στην ημέρα που θα αξίζουν δεύτερο "
+"σπαθί. Η πολεμική πρακτική τους, η επίθεση με δύο σπαθιά δηλαδή, είναι "
+"πλήρως αντίθετη από αυτή των Oρκ και των άλλων φυλών, γιατί έχουν αρχίσει να "
+"μαθαίνουν την τέχνη της χρησιμοποίησης της ερπετοειδής μορφής τους που "
+"επηρεάζει καλύτερα, το στρίψιμο και τη στροφή στην αποφυγή των χτυπημάτων. "
+"Αυτό τους καθιστά ισχυρούς στο έδαφος, αλλά η τριβή του ύδατος εμποδίζει "
+"πολύ την τεχνική."
 
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
@@ -2918,6 +3667,10 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Τα Όγκρε είναι γιγάντια πλάσματα που συνήθως ζούνε στους αγριότοπους, "
+"μοιάζουν αρκετά με τους ανθρώπους στη μορφή, αν και μεγάλα και "
+"παραμορφωμένα. Αν και μπορούν εύκολα να ξεπεραστούν στη ταχύτητα και την "
+"εξυπνάδα, η δύναμή τους δεν είναι για να υποτιμάται."
 
 #: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
 msgid "cleaver"
@@ -2925,7 +3678,7 @@ msgstr "μπαλτάς"
 
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
-msgstr "Νεαρός Όγκρε"
+msgstr "Νεαρό Όγκρε"
 
 #: data/core/units/ogres/Young_Ogre.cfg:21
 msgid ""
@@ -2933,10 +3686,13 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
+"Όταν είναι ακόμα μικρά, τα Όγκρε μερικές φορές αιχμαλωτίζονται και "
+"προπονούνται για να καταταγούν στον στρατό. Δεν μπορούν να χειριστούν ένα "
+"όπλο πολύ καλά, αλλά η δύναμή τους αντισταθμίζει αυτή την έλλειψη."
 
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
-msgstr "Τοξότης των Ορκ"
+msgstr "Τοξότης Ορκ"
 
 #: data/core/units/orcs/Archer.cfg:19
 msgid ""
@@ -2946,6 +3702,11 @@ msgid ""
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
+"Μεταξύ των Oρκ, τα τόξα θεωρούνται συχνά ως δειλό όπλο αλλά ακόμα και οι "
+"ίδιοι, ειδικά οι νέοι το χρησιμοποιούν πολλές φορές. Οι Τοξότες Oρκ είναι "
+"σπάνια καλά εξοπλισμένοι, και δεν έχουν καμία κατάρτιση. Ακόμη και τόσο "
+"κακώς χρησιμοποιημένα όπως είναι, τα όπλα τους μπορούν να είναι αρκετά "
+"θανάσιμα, αν και αυτοί που τα κρατάνε σπάνια πάνε στη μάχη μόνοι τους."
 
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
@@ -2959,6 +3720,12 @@ msgid ""
 "nimble. Though rarely the ones who deal the killing blow, their tactics are "
 "a considerable aid to their larger and more brutal kin."
 msgstr ""
+"Αν και μερικοί το θεωρούν δειλό για να το χρησιμοποιήσουν, το δηλητήριο "
+"είναι ένα όπλο που χρησιμοποιείται από τα Oρκ, ειδικά εκείνοι που είναι "
+"αδύνατοι. Οι δολοφόνοι Oρκ, που το χρησιμοποιούν στη ρίψη των μαχαιριών, "
+"είναι χαρακτηριστικά ευπαθείς από τα υπόλοιπα Oρκ, αν και εκπληκτικά "
+"ευκίνητοι. Αν και αυτοί σπάνια πάνε στη μάχη, η τακτική τους είναι μια "
+"ιδιαίτερη ενίσχυση στη μεγάλη και βάναυση φυλή τους."
 
 #: data/core/units/orcs/Assassin.cfg:79 data/core/units/orcs/Slayer.cfg:36
 msgid "throwing knives"
@@ -2966,7 +3733,7 @@ msgstr "ιπτάμενα στιλέτα"
 
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "Χειριστής βαλλίστρας Ορκ"
 
 #: data/core/units/orcs/Crossbowman.cfg:18
 msgid ""
@@ -2975,10 +3742,15 @@ msgid ""
 "enough to wield them are capable warriors, and what they lack in finesse, "
 "they make up for in numbers."
 msgstr ""
+"Οι Βαλλιστές Ορκ είναι φτηνές απομιμήσεις των, αντίστοιχων, Ανθρώπων και "
+"Νάνων, αλλά έτσι κι αλλιώς ένας βαλλιστής είναι πάντα χρήσιμος, από όποια "
+"φυλή κι αν είναι. Τα Oρκ που μπορούν και κρατάνε μια βαλλίστρα είναι ικανοί "
+"πολεμιστές, παρ' όλο που υστερούν στη φινέτσα, κάτι που διορθώνεται με τον "
+"αριθμό τους"
 
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "Πεζοναύτης Ορκ"
 
 #: data/core/units/orcs/Grunt.cfg:19
 msgid ""
@@ -2986,10 +3758,13 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Οι Πεζοναύτες Ορκ είναι ο πυρήνας των Ορδών των Ορκ. Αν και πιο αργοί από τα "
+"Ξωτικά και τους Ανθρώπους, οι Πεζοναύτες μπορούν να κάνουν περισσότερη "
+"ζημιά, και να κρατήσουν πιο πολύ ώρα στη μάχη."
 
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
-msgstr "Αρχηγός των Ορκ"
+msgstr "Αρχηγός Ορκ"
 
 #: data/core/units/orcs/Leader.cfg:25
 msgid ""
@@ -2999,10 +3774,15 @@ msgid ""
 "rapport with their kin, especially goblins, and can inspire them to fight "
 "with uncharacteristic boldness."
 msgstr ""
+"Ασυνήθιστα επιδέξια Oρκ κλίνουν προς το να γίνουν αρχηγοί των Ορδών. Κρατάνε "
+"ένα τόξο από ανάγκη, αλλά είναι σαφώς πιο επιδέξιοι στο σπαθί. Αυτά τα Oρκ "
+"είναι ισχυροί πολεμιστές, αλλά έχουν και μία αρμονική σχέση με το είδος "
+"τους, ειδικά με τους καλικάντζαρους, και μπορούν να τους κάνουν να "
+"πολεμήσουν με τρομερό θάρρος"
 
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "Κυρίαρχος Ορκ"
 
 #: data/core/units/orcs/Ruler.cfg:24
 msgid ""
@@ -3012,15 +3792,21 @@ msgid ""
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
+"Οποιοδήποτε Oρκ που μπορεί να κρατήσει μια μεγάλη φυλή από το να διασπαστεί "
+"και στη μάχη είναι συχνά κάτι που γίνεται με ευφυΐα, διαταγές και δύναμη "
+"ονομάζεται Κυρίαρχος Oρκ. Είναι ειδικευμένος και με το ξίφος και το τόξο, "
+"αλλά το πραγματικό ταλέντο του βρίσκεται στη σπάνια δυνατότητά του να "
+"συναθροίσουν άλλα Oρκ στη μάχη, για να δώσει τις διαταγές που ακολουθούνται "
+"όχι από το φόβο, αλλά την πίστη."
 
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:23
 #: data/core/units/orcs/Ruler.cfg:32 data/core/units/orcs/Sovereign.cfg:33
 msgid "greatsword"
-msgstr "μέγαξίφος"
+msgstr "μέγα ξίφος"
 
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "Σφαγέας Ορκ"
 
 #: data/core/units/orcs/Slayer.cfg:22
 msgid ""
@@ -3030,10 +3816,15 @@ msgid ""
 "poison, is a vicious tool, and its common use on the battlefield is often "
 "the real cause of orcish supremacy."
 msgstr ""
+"Οι μεγαλύτεροι και πιο ειδικευμένοι Ορκ Δολοφόνοι καλούνται «Σφαγέες» από "
+"τους εχθρούς τους. Οι Σφαγέες είναι γρήγοροι στα πόδια τους, και αρκετά "
+"ευκίνητοι στον αγώνα, αν και επιτυγχάνουν για να αποφύγουν τα χτυπήματά. Το "
+"όπλο επιλογής τους, το δηλητήριο, είναι ένα κακοήθες εργαλείο, και η χρήση "
+"του στο πεδίο της μάχης είναι συχνά η πραγματική αιτία της υπεροχής τους."
 
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
-msgstr ""
+msgstr "Μεγάλος Τοξότης Ορκ"
 
 #: data/core/units/orcs/Slurbow.cfg:21
 msgid ""
@@ -3047,10 +3838,18 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"Το βασικό σχέδιο μιας βαλλίστρας δίνει αφορμή στους Μεγάλους Τοξότες Oρκ για "
+"μια πιο περίπλοκη συσκευή, φτιαγμένη με το χέρι, και συχνά με ένα "
+"πολυστρωματικό τόξο, του φυλλόμορφου ξύλου ή του κόκαλου, που οδηγεί το "
+"βλήμα. Μια τέτοια συσκευή είναι πολύ ευκολότερη στην χρησιμοποίηση, και "
+"ισχυρότερος από τις απλούστερες βαλλίστρες, είναι επίσης εντελώς πέρα από "
+"την παράδοση των Oρκ.\n"
+"\n"
+"Αυτές οι βαλλίστρες δύνονται στα Oρκ που έχουν δείξει ικανότητα στη μάχη."
 
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "Άρχοντας Ορκ"
 
 #: data/core/units/orcs/Sovereign.cfg:25
 msgid ""
@@ -3061,6 +3860,11 @@ msgid ""
 "surest way to disperse such a host is to slay this rare orc who can hold it "
 "together."
 msgstr ""
+"Από καιρό σε καιρό, ένα Ορκ θα προκύψει που θα έχει ένα φυσικό χάρισμα πέρα "
+"από το είδος του. Εάν είναι επίσης ισχυροί, θα βρεθούν αναπόφευκτα σε μια "
+"μεγάλη ορδή των πολεμιστών, και επίσης αναπόφευκτα θα προκαλέσουν πολύ "
+"πρόβλημα για τις εκπολιτισμένες φυλές του κόσμου. Ο πιο σίγουρος τρόπος να "
+"χαθεί ένας τέτοιος σπάνιος εχθρός είναι να σκοτωθεί."
 
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
@@ -3072,13 +3876,13 @@ msgid ""
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
-"Μόνο όρκ με μεγάλη πονηριά καί αξεπέραστη δύναμη μπορούν νά γίνουν "
-"πολέμαρχοι. Μάστορες μέ τό ξίφος καί έχοντας ακόμα κάποια επιδεξιότητα με τό "
-"τόξο, αυτά τά κτήνη-πολεμιστές καθοδηγούν τά αδέρφια τους με σιδερένια πυγμή."
+"Μόνο Ορκ με μεγάλη πονηριά και αξεπέραστη δύναμη μπορούν να γίνουν "
+"πολέμαρχοι. Μάστορες με το ξίφος και έχοντας ακόμα κάποια επιδεξιότητα με το "
+"τόξο, αυτά τα κτήνη-πολεμιστές καθοδηγούν τα αδέρφια τους με σιδερένια πυγμή."
 
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr "Πολεμιστής όρκ"
+msgstr "Πολεμιστής Ορκ"
 
 #: data/core/units/orcs/Warrior.cfg:18
 msgid ""
@@ -3086,9 +3890,9 @@ msgid ""
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
-"Εχοντας μάθει καλά την τέχνη της ξιφομαχίας μέ δύο σπαθιά, οι πολεμιστές όρκ "
-"χαίρουν μεγάλης εκτίμησης ανέμεσα στούς όρκ καί προξενούν τόν φόβο στούς "
-"εχθρούς τους. Η μόνη τους αδυναμία είναι η ανικανότητά τους να ρίξουν μέ "
+"Έχοντάς μάθει καλά την τέχνη της ξιφομαχίας με δύο σπαθιά, οι πολεμιστές Ορκ "
+"χαίρουν μεγάλης εκτίμησης ανάμεσα στα Ορκ και προξενούν τον φόβο στους "
+"εχθρούς τους. Η μόνη τους αδυναμία είναι η ανικανότητά τους να ρίξουν με "
 "τόξο."
 
 #: data/core/units/saurians/Ambusher.cfg:4
@@ -3105,10 +3909,17 @@ msgid ""
 "smallest gap in an enemy line, and have the prowess to make the enemy regret "
 "tactical mistakes."
 msgstr ""
+"Τα Σαυροειδή έχουν ελαφριά πόδια. Όταν αυτό συνδυάζεται με την εμπειρία, τη "
+"δύναμη, και τον εξοπλισμό, ένας από τους πολεμιστές τους μπορούν να γίνει "
+"ιδιαίτερα απειλητικός στη μάχη, κατά ένα μεγάλο μέρος επειδή είναι πολύ "
+"δύσκολο να περιοριστούν από άλλους εχθρούς. Ακόμη και με πανοπλία, οι "
+"Σαυροειδή Πολεμιστές μπορούν να εκμεταλλευτούν το μικρότερο χάσμα σε μια "
+"εχθρική γραμμή, και να έχουν την ανδρεία για να κάνουν τον εχθρό να λυπηθεί "
+"για τα τακτικά λάθη."
 
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
-msgstr ""
+msgstr "Σαυράνθρωπος Οιωνοσκόπος"
 
 #: data/core/units/saurians/Augur.cfg:21
 msgid ""
@@ -3116,6 +3927,10 @@ msgid ""
 "it reeks of augury and black magic. It is little understood, but rightly "
 "regarded with fear by those against whom it is used."
 msgstr ""
+"Οι Σαυράνθρωποι έχουν γνώση πάνω σε αυτό που οι Άνθρωποι καλούν μαγεία, και "
+"αν την αναπτύξουν καταλήγουν σε Οιωνοσκόποι και χειριστές της μαύρης "
+"μαγείας. Πολύ δεν καταλαβαίνουν τη μαγεία, αλλά σίγουρα την φοβούνται, αν "
+"χρησιμοποιηθεί εναντίων τους."
 
 #: data/core/units/saurians/Soothsayer.cfg:75
 #: data/core/units/saurians/Augur.cfg:75
@@ -3135,10 +3950,16 @@ msgid ""
 "very dangerous in combat, as a careless enemy can soon find their support "
 "troops flanked by these creatures."
 msgstr ""
+"Οι Σαυράνθρωποι πολεμιστές είναι γενικά πιο αδύναμοι από τα αντίστοιχα "
+"Ξωτικά και τους αντίστοιχους Ανθρώπους. Αυτό βέβαια είναι  σχετικό, και "
+"φυσικά μπορούν ακόμα να γίνουν αξιοσημείωτα ισχυροί, χωρίς να χάνουν την "
+"φυσική τους ευκινησία. Αυτό είναι πολύ επικίνδυνο στη μάχη, δεδομένου ότι "
+"ένας απρόσεκτος εχθρός μπορεί σύντομα να βρεθεί περικυκλωμένος από αυτά τα "
+"πλάσματα."
 
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
-msgstr ""
+msgstr "Σαυράνθρωπος Μάντης"
 
 #: data/core/units/saurians/Oracle.cfg:21
 msgid ""
@@ -3149,10 +3970,15 @@ msgid ""
 "the strange magics their kind possess, and are beings to be wary of if ever "
 "seen."
 msgstr ""
+"Ορισμένα Σαυροειδή εμφανίζονται ντυμένα με βασιλικό έμβλημα και καλυμμένα ως "
+"τα νύχια με τρομακτικά, σημάδια, χρώμα και τατουάζ. Μερικοί τους "
+"υποπτεύονται για οραματιστές, ή Οιωνοσκόποι μεταξύ του είδους τους. Αλλά "
+"οποιαδήποτε κι αν είναι η «κοινωνική» λειτουργία τους, είναι πολλοί ισχυροί "
+"στα μαγικά που το είδος τους κατέχει."
 
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr " Ακροβολιστής Σαυράνθρωπος"
+msgstr "Σαυράνθρωπος Ακροβολιστής"
 
 #: data/core/units/saurians/Skirmisher.cfg:22
 msgid ""
@@ -3164,10 +3990,17 @@ msgid ""
 "Spears are their preferred weapon, as their powerful hind legs can drive a "
 "spear with enough force to do considerable damage, either in hand or thrown."
 msgstr ""
+"Τα Σαυροειδή είναι πολύ μικρά, και αν και είναι κάπως ευπαθείς λόγω αυτού, "
+"είναι πολύ, πολύ ευκίνητα. Στη μάχη, το μέγεθός τους επιτρέπει για να "
+"περάσουν οποιαδήποτε γραμμή θα κρατούσε κάποιων μεγάλο στο ανάστημα.\n"
+"\n"
+"Οι λόγχες είναι το προτιμώμενο όπλο τους, δεδομένου ότι τα ισχυρά πόδια τους "
+"μπορούν να οδηγήσουν μια λόγχη με αρκετή δύναμη για να κάνουν την ιδιαίτερη "
+"ζημία."
 
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr "Σαυράνθρωπος-Μάντης"
+msgstr "Σαυράνθρωπος Προφήτης"
 
 #: data/core/units/saurians/Soothsayer.cfg:21
 msgid ""
@@ -3176,10 +4009,14 @@ msgid ""
 "skilled at a sort of medicine, which is of great benefit whenever battle is "
 "brought against them."
 msgstr ""
+"Οι Σαυράνθρωποι είναι γνωστοί γιατί έχουν κάποιες παράξενες ιδιότητες, που "
+"παίζουν μεταξύ του μυστήριου και του μαγικού κόσμου. Αρκετοί Σαυράνθρωποι "
+"έχουν την ικανότητα να γιατρεύουν, η οποία τους δίνει μεγάλο πλεονέκτημα στη "
+"μάχη"
 
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr "Μέγας Τρόλ "
+msgstr "Μέγας Τρολ"
 
 #: data/core/units/trolls/Great.cfg:19
 msgid ""
@@ -3189,10 +4026,14 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
+"Όταν ένα Τρολ, ταλαντούχο με στην δύναμη και τη φρόνηση, γίνεται κάτι "
+"εξαιρετικό, ένα κτήνος που αναφέρεται για τις γενεές. Οι άθλοι τους δύναμης "
+"και της επιδεξιότητας είναι η πηγή των περισσότερων ιστοριών για τα Τρολ, "
+"ιστορίες που μπορούν άνετα να υπάρξουν και στην πραγματικότητα."
 
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
-msgstr "Ήρωας Τρόλ"
+msgstr "Ήρωας Τρολ"
 
 #: data/core/units/trolls/Hero.cfg:18
 msgid ""
@@ -3200,12 +4041,15 @@ msgid ""
 "that characterizes their race. In a society where might makes right, those "
 "of their ilk revere them as heroes."
 msgstr ""
+"Μερικά Τρολ γεννιούνται με απίστευτη δύναμη και ανθεκτικότητα. Στις "
+"κοινωνίες αυτά τα Τρολ χαρακτηρίζονται ως Ήρωες"
 
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
-msgstr "Πετροβολητής Τρόλ"
+msgstr "Πετροβολητής Τρπλ"
 
 #: data/core/units/trolls/Rocklobber.cfg:20
+#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -3213,6 +4057,14 @@ msgid ""
 "in sacks slung over their shoulders. The same leather out of which the sack "
 "is formed is easily adapted to a crude sling."
 msgstr ""
+"Η σκέψη της ρίψης ενός λίθου στη μάχη έχει απασχολήσει πολλά Τρολ, και "
+"μερικά τις έχουν πάρει ως όπλο της επιλογής. Επειδή τέτοιες πέτρες είναι όχι "
+"πάντα εύκολο να βρεθούν, οι Πετροβολλητές έχουν πάρει μαζί τους σάκους που "
+"τους κρεμάνε πάνω από τους ώμους τους. Το ίδιο δέρμα από το οποίο ο σάκος "
+"διαμορφώνεται προσαρμόζεται εύκολα σε μια ακατέργαστη σφεντόνα.\n"
+"\n"
+"Πρόσθετες σημειώσεις: αν και αδέξια, μια πέτρα που ρίχνεται από ένα Τρολ "
+"είναι πιο θανάσιμη από οποιοδήποτε βέλος, εάν κατορθώσει να χτυπήσει."
 
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
@@ -3227,10 +4079,14 @@ msgid ""
 "clubs typically favored in fighting act as extensions of their arms, used "
 "for the same purpose of mauling their prey into submission."
 msgstr ""
+"Τα Τρολ έχουν απασχολήσει από καιρό τις σκέψεις των Ανθρωπότητας και των "
+"Νάνων. Ακόμα και οι πιο σοφοί παραμένουν μπλεγμένοι στο θέμα της προέλευσης "
+"αυτών των πλασμάτων. Τα ενήλικα Τρολ φαντάζουν πύργοι σε ένα άτομο, και, "
+"ακόμα και άοπλοι, θα ήταν μια μεγάλη απειλή στη μάχη."
 
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
-msgstr "Πολεμιστής Τρόλ "
+msgstr "Πολεμιστής Τρολ"
 
 #: data/core/units/trolls/Warrior.cfg:20
 msgid ""
@@ -3243,10 +4099,20 @@ msgid ""
 "kind. Given how dangerous a troll is with its bare hands, the thought of a "
 "troll with proper armament is entirely unsettling."
 msgstr ""
+"Τα Τρολ ούτε χρειάζονται ούτε θέλουν να χρησιμοποιούν οποιοδήποτε κατάλληλο "
+"εξοπλισμό στη μάχη, αφού τα μεγάλα ραβδιά και οι μεγάλες πέτρες τα "
+"εξυπηρετούν πάρα πολύ καλά. Εντούτοις, Τα Τρολ έχουν εμφανιστεί πολλές φορές "
+"ντυμένα με  τεθωρακισμένες πανοπλίες και φέροντας σφυριά μετάλλων. "
+"Θεωρείται, όμως, ότι οι σύμμαχοί τους, τα Ορκ, είναι η πηγή και η μάστορες "
+"αυτών των πανοπλίων, αφού οι αποστολές σε διάφορες σπηλιές των Τρολ δεν "
+"έχουν παρουσιάσει κανένα στοιχείο της χρήσης εργαλείων, και βεβαίως καμία "
+"μεταλλουργία οποιουδήποτε είδους. Λαμβάνοντας υπόψη πόσο επικίνδυνο είναι "
+"ένα Τρολ μόνο με τα χέρια του, η σκέψη ενός Τρολ με τον κατάλληλο εξοπλισμό "
+"είναι εξ ολοκλήρου συνταρακτική."
 
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
-msgstr "Μικρός Τρόλ "
+msgstr "Μικρός Τρολ"
 
 #: data/core/units/trolls/Whelp.cfg:19
 msgid ""
@@ -3256,10 +4122,14 @@ msgid ""
 "all fours, but any difficulty this causes them is more than made up for by "
 "the raw strength of their race."
 msgstr ""
+"Το να περιγράψεις ένα Τρολ Μικρό είναι κάτι το οξύμωρο, αφού τα σώματά τους "
+"είναι πολύ πιο πολύ σκληρά από αυτό  ενός μεγάλου άντρα. Είναι αδέξια και "
+"δεν μπορούν ακόμα να περπατήσουν καλά, έτσι αναγκάζονται να περπατάνε στα "
+"τέσσερα, αν και αυτό οφείλεται στην τεράστια δύναμη της άξεστης φυλής τους."
 
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
-msgstr ""
+msgstr "Κανίβαλος"
 
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
 msgid ""
@@ -3272,6 +4142,15 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred in all civilized lands."
 msgstr ""
+"Μόνο ο πιο διεστραμμένος και ο σαδιστικός των Νεκρομαντών ξέρει τι πρέπει να "
+"γίνει για να μετατρέψει ένα πρόσωπο σε 'Κανίβαλο', και είναι ένα μυστικό που "
+"δεν το λένε. Το αποτέλεσμα, εντούτοις, είναι ένα κτήνος που δεν θυμάται "
+"τίποτα από τις ημέρες του ως άνθρωπο, ένα πλάσμα που περιφέρεται περίπου "
+"τόσο γυμνό όπως τη ημέρα που γεννήθηκε, και τρέφεται με τη σάρκα των "
+"νεκρών.\n"
+"\n"
+"Είναι λόγω τέτοιων πλασμάτων που η νεκρομαντία καταδικάστηκε με μια σχεδόν "
+"πρωταρχικής σπουδαιότητας έχθρα σε όλα τα εκπολιτισμένα εδάφη."
 
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
@@ -3287,10 +4166,17 @@ msgid ""
 "from living men - a process about which almost nothing is known, but which "
 "can be nothing but nightmarish."
 msgstr ""
+"Ο Νεκροφάγος είναι ένα τερατώδες, παχύσαρκο πράγμα, το οποίο κατέχει μόνο "
+"μια ακατέργαστη ομοιότητα με ένα άτομο. Εμφανίζονται να είναι αρκετά σάπιοι "
+"παρά τη δυνατότητά τους να κινηθούν είναι γεμάτοι με την ασθένεια και τα "
+"δηλητήρια του αίματος, και έχουν μια δυσωδία που ταιριάζει με την εμφάνισή "
+"τους. Πιθανό το πιο άσχημο πράγμα είναι ότι έγιναν κάπως από τα ζωντανά "
+"άτομα - μια διαδικασία για την οποία σχεδόν τίποτα δεν είναι γνωστό, αλλά "
+"που δεν μπορεί να είναι παρά εφιαλτική."
 
 #: data/core/units/undead/Corpse_Soulless.cfg:5
 msgid "Soulless"
-msgstr "Αψυχος"
+msgstr "Άψυχος"
 
 #: data/core/units/undead/Corpse_Soulless.cfg:21
 msgid ""
@@ -3299,6 +4185,11 @@ msgid ""
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
+"Η τεχνική της ζωογόνησης ενός πεθαμένου κορμιού είναι, δυστυχώς, πολύ καλά "
+"γνωστό στη μαύρη μαγεία, οι κάτοχοί της συχνά την χρησιμοποιούν για να "
+"αφυπνίσουν υπηρέτες και στρατιώτες από απρόθυμα πτώματα. Αυτοί, που "
+"προχωράνε τρικλίζοντας, είναι συχνά πολλοί αλλά εύθραυστοι, μόνο η αρχή μιας "
+"μάχης μπορεί να τους αποδυναμώσει ή να τους κάνει αξιοθαύμαστους."
 
 #: data/core/units/undead/Corpse_Soulless.cfg:72
 #: data/core/units/undead/Corpse_Walking.cfg:71
@@ -3306,11 +4197,11 @@ msgstr ""
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:24
 msgid "touch"
-msgstr "Αγγιγμα"
+msgstr "άγγιγμα"
 
 #: data/core/units/undead/Corpse_Walking.cfg:5
 msgid "Walking Corpse"
-msgstr "Κουφάρι πού περπατάει"
+msgstr "Ζόμπι"
 
 #: data/core/units/undead/Corpse_Walking.cfg:20
 msgid ""
@@ -3318,21 +4209,27 @@ msgid ""
 "Though not especially dangerous to a trained soldier, the sight of one's "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
+"Τα Ζόμπι είναι σώματα νεκρών, που αναστήθηκαν χάρης τη μαύρη μαγεία. Αν και "
+"όχι πολύ επικίνδυνοι προς έναν εκπαιδευμένο στρατιώτη, το να βλέπεις έναν "
+"παλιό συστρατιώτης είναι αρκετά φοβιστικό."
 
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
-msgstr "Αρχαίος Σκοτεινός Μάγος"
+msgstr "Αρχαίος Στοιχειωμένος Μάγος"
 
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
+"Ένα ον αυτής της κάστας είναι επανερχόμενο από τα πολύ παλιά χρόνια. Όποιος "
+"αντιμετωπίζει έναν Αρχαίο Στοιχειωμένο Μάγο έχει χειρότερα πράγματα να "
+"φοβάται από το θάνατο."
 
 #: data/core/units/undead/Necro_Lich.cfg:46
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 msgid "chill tempest"
-msgstr ""
+msgstr "αποθαρρυντική θύελλα"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:46
@@ -3340,11 +4237,11 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:58
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:59
 msgid "shadow wave"
-msgstr ""
+msgstr "σκοτεινό κύμα"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr ""
+msgstr "Έμπειρος στη Μαύρη Μαγεία"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:25
 msgid ""
@@ -3359,16 +4256,27 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
+"Για να προσελκύσει οποιουσδήποτε επαγγελματίες, το δόλωμα της μαύρης μαγείας "
+"πρέπει να είναι ένα μεγάλο βραβείο, γιατί καθένας που πιάνεται να ασκεί τη "
+"μαύρη μαγεία στον εκπολιτισμένο κόσμο καταδικάζεται σε μια ποινή θανάτου. "
+"Και όμως υπάρχουν ακόμα εκείνοι που πέφτουν στο σκοτάδι, γιατί το βραβείο "
+"δεν είναι τίποτα λιγότερο από την αθανασία. Κρυμμένη μακριά στις μυστικές "
+"λατρείες, ή εγκαινιασμένη στα σκοτεινά μέρη του κάτω κόσμου, η εξάσκηση που "
+"αυτοί οι φανατικοί υποστηρικτές πρέπει να υπομείνουν συχνά οδηγώ τους στην "
+"εξάντληση και την εξασθένηση.\n"
+"\n"
+"Σε τέτοιες συνθήκες, το μόνο όπλο τους είναι η τέχνη που έχουν δεσμευθεί να "
+"μάθουν."
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
 #: data/core/units/undead/Necromancer.cfg:38
 msgid "chill wave"
-msgstr ""
+msgstr "αποθαρρυντικό κύμα"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:199
 msgid "female^Dark Adept"
-msgstr ""
+msgstr "Έμπειρη στη Μαύρη Μαγεία"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:203
 msgid ""
@@ -3383,10 +4291,21 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
+"Για να προσελκύσει οποιουσδήποτε επαγγελματίες, το δόλωμα της μαύρης μαγείας "
+"πρέπει να είναι ένα μεγάλο βραβείο, γιατί καθένας που πιάνεται να ασκεί τη "
+"μαύρη μαγεία στον εκπολιτισμένο κόσμο καταδικάζεται σε μια ποινή θανάτου. "
+"Και όμως υπάρχουν ακόμα εκείνες που πέφτουν στο σκοτάδι, γιατί το βραβείο "
+"δεν είναι τίποτα λιγότερο από την αθανασία. Κρυμμένη μακριά στις μυστικές "
+"λατρείες, ή εγκαινιασμένη στα σκοτεινά μέρη του κάτω κόσμου, η εξάσκηση που "
+"αυτοί οι φανατικοί πρέπει να υπομείνουν συχνά τους οδηγούν στην εξάντληση "
+"και την εξασθένηση.\n"
+"\n"
+"Σε τέτοιες συνθήκες, το μόνο όπλο τους είναι η τέχνη που έχουν δεσμευθεί να "
+"μάθουν."
 
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Σκοτεινός Μάγος"
 
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:20
 msgid ""
@@ -3406,10 +4325,23 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"Ο φόβος που εμπνέεται από τη μαύρη μαγεία προέρχεται κυρίως από το ότι λίγα "
+"είναι γνωστά για αυτή από το κοινό άτομο. Οι Σκοτεινοί Μάγοι έχουν αρχίσει "
+"να ξεκλειδώνουν τα μυστικά της ζωής και του θανάτου, το τελευταίο των οποίων "
+"είναι πάρα πολύ εύκολο να επιβληθεί. Αυτό το έργο δίνει το πρώτο φως στη "
+"σύνδεση μεταξύ της ψυχής και της αδρανής ουσίας, και τα πρώτα επιτυχή "
+"πειράματα στο χειρισμό αυτού του δεσμού. Το φοβερό άγνωστο που κρύβεται πέρα "
+"από το θάνατο, είναι κρυφό μα αναπόφευκτα θα εμφανιστεί.\n"
+"\n"
+"Αν και το σχέδιό τους είναι να γίνουν αθάνατοι, τα πρώτα αποτελέσματα της "
+"εργασίας τους είναι δυσάρεστες εφαρμογές. Η ζωή που βάζουν στο νεκρό μπορεί "
+"να δημιουργήσει υπηρέτες για αυτούς, υπηρέτες που θα δουλεύουν, αλλά και θα "
+"σκοτώνουν, χωρίς να ρωτούν τους κυρίους τους. Αυτές οι δημιουργίες έχουν μια "
+"πίστη που οποιοσδήποτε τύραννος θα ονειρευόταν."
 
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
 msgid "Dark Sorceress"
-msgstr ""
+msgstr "Σκοτεινή Μάγισσα"
 
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:182
 msgid ""
@@ -3429,10 +4361,23 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"Ο φόβος που εμπνέεται από τη μαύρη μαγεία προέρχεται κυρίως από το ότι λίγα "
+"είναι γνωστά για αυτή από το κοινό άτομο. Οι Σκοτεινές Μάγισσες έχουν "
+"αρχίσει να ξεκλειδώνουν τα μυστικά της ζωής και του θανάτου, το τελευταίο "
+"των οποίων είναι πάρα πολύ εύκολο να επιβληθεί. Αυτό το έργο δίνει το πρώτο "
+"φως στη σύνδεση μεταξύ της ψυχής και της αδρανής ουσίας, και τα πρώτα "
+"επιτυχή πειράματα στο χειρισμό αυτού του δεσμού. Το φοβερό άγνωστο που "
+"κρύβεται πέρα από το θάνατο, είναι κρυφό μα αναπόφευκτα θα εμφανιστεί.\n"
+"\n"
+"Αν και το σχέδιό τους είναι να γίνουν αθάνατοι, τα πρώτα αποτελέσματα της "
+"εργασίας τους είναι δυσάρεστες εφαρμογές. Η ζωή που βάζουν στο νεκρό μπορεί "
+"να δημιουργήσει υπηρέτες για αυτούς, υπηρέτες που θα δουλεύουν, αλλά και θα "
+"σκοτώνουν, χωρίς να ρωτούν τις κυρίες τους. Αυτές οι δημιουργίες έχουν μια "
+"πίστη που οποιοσδήποτε τύραννος θα ονειρευόταν."
 
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
-msgstr "Σκοτεινός Μάγος"
+msgstr "Στοιχεωμένος Μάγος"
 
 #: data/core/units/undead/Necro_Lich.cfg:23
 msgid ""
@@ -3447,6 +4392,15 @@ msgid ""
 "question can be raised at all, testifies to the magnitude of what their "
 "order has achieved."
 msgstr ""
+"Ένας Στοιχιωμένος Μάγος είναι ο πρώτος στόχος της μαύρης μαγείας, η "
+"αναζήτηση για να επιτύχει την αθανασία. Αν και για να γίνει κάποιος "
+"Στοιχιωμένος Μάγος πρέπει να θυσιάσει την ζωή του και το σώμα του. Γιατί "
+"είναι το μυαλό που διατηρείται, και το πνεύμα που ακολουθεί, αν και το σώμα "
+"μπορεί να μαραθεί.\n"
+"\n"
+"Δεν είναι γνωστό, εκτός από ίσως από τους εσωτερικούς κύκλους της "
+"νεκρομαντίας, εάν η ζωή είναι αιώνια ή απλά εκτεταμένη. Αλλά το γεγονός ότι "
+"αυτή η ερώτηση μπορεί να τεθεί, πιστοποιείται ότι ούτε οι Νεκρομάντες ξέρουν."
 
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -3462,20 +4416,26 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
+"Ένα από τα αποκορυφώματα αυτού που λέγεται \"μαύρη μαγεία\" είναι η τέχνη "
+"της νεκρομαντίας, η φοβερή δυνατότητα να ξυπνήσουν οι νεκροί με μια ψεύτικη "
+"ζωή. Μόνο αυτό χρειαζόταν, η ανθρωπότητα, για να καταδικάσει τους "
+"Νεκρομάντηδες, αφού τα εφιαλτικά πράγματα που μπορεί να ανακαλέσει κανείς "
+"γεμίζουν εύκολα ένα απέραντο οπλοστάσιο.\n"
+"\n"
+"Αυτή η δυνατότητα, σε όλες τις πτυχές της, είναι το πρώτο βήμα προς την "
+"εξαπάτηση του θανάτου."
 
 #: data/core/units/undead/Necromancer.cfg:26
 msgid "plague staff"
-msgstr ""
+msgstr "ραβδί πανούκλας"
 
 #: data/core/units/undead/Necromancer.cfg:181
-#, fuzzy
 msgid "female^Necromancer"
-msgstr "Νεκρομάντης"
+msgstr "Νεκρομάντισα"
 
 #: data/core/units/undead/Skele_Banebow.cfg:4
-#, fuzzy
 msgid "Banebow"
-msgstr "τόξο"
+msgstr "Τοξότης Καταραστής"
 
 #: data/core/units/undead/Skele_Banebow.cfg:17
 msgid ""
@@ -3485,10 +4445,18 @@ msgid ""
 "nor caring what their purpose, or foes be. They are driven only by a malice "
 "borne of their empty and tortured existence."
 msgstr ""
+"Οι καλύτεροι απέθαντοι τοξότες είναι τελικά εκείνοι που ήταν τοξότες στην "
+"προηγούμενη ζωή τους. Περιπλανώνται στις μάχες, οδηγούμενοι από εξασθενημένη "
+"μνήμη τους, χωρίς να ξέρει το σκοπό του ή τους εχθρούς. Οδηγούνται μόνο από "
+"μια κακοβουλία που αντέχεται της κενής και βασανισμένης ύπαρξής τους.\n"
+"\n"
+"Τα βέλη αυτού του πλάσματος είναι ποτισμένα με δηλητήριο. Έτσι είναι σαν να "
+"καταριούνται τον στόχο τους, αφού αν δεν τον σκοτώσουν τον δηλητηριάζουν, "
+"στο να πεθάνει, από εκεί θεωρείται πω βγαίνει και το όνομα."
 
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
-msgstr ""
+msgstr "Κοκαλοβολίδας"
 
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
 msgid ""
@@ -3499,10 +4467,16 @@ msgid ""
 "victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
 "unfortunate enemies."
 msgstr ""
+"Από τις δημιουργίες των Σκοτεινών Μάγων, μερικές παίρνουν εντονότερα στην "
+"ψεύτικη ζωή που τους δίνεται. Στην ψεύτικη αυτή ζωή ο εξοπλισμός που τους "
+"δίνεται ταιριάζει με αυτόν που είχαν στην πραγματική τους ζωή, όμως οι "
+"τοξότες παίρνουν συχνά με ένα αληθινά βίαιο εξοπλισμό. Τις φαρέτρες και τα "
+"τόξα τους δεν φτιάχνονται από ξύλα αλλά από τα κόκαλα των πεθαμένων εχθρών "
+"τους. Έτσι εξηγείται το όνομα Κοκαλοβολίδας"
 
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
-msgstr ""
+msgstr "Νεκρός Καβαλάρης Τσόκομπου"
 
 #: data/core/units/undead/Skele_Chocobone.cfg:20
 msgid ""
@@ -3510,10 +4484,14 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
+"Ιππεύοντας τα κόκαλα ενός μεγάλου πουλιού που μοιάζει με στρουθοκάμηλο και "
+"κάποτε χρησιμοποιούνταν σαν άλογα από έναν χαμένο πολιτισμό, τα σκελετικά "
+"Τσόκομπου μπορούν να τρέξουν γρηγορότερα από τις πιο πολλές μονάδες του "
+"ιππικού."
 
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
-msgstr "Ιππότης Θανάτου"
+msgstr "Νεκρός Ιππότης"
 
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
 msgid ""
@@ -3522,6 +4500,10 @@ msgid ""
 "Wielding the same weapons as in life, they command the Undead in their quest "
 "for revenge."
 msgstr ""
+"Ιστορίες λένε για στρατηγούς που χάθηκαν από το μίσος και υπέφεραν από την "
+"προδοσία, και έρχονται πίσω σε αυτόν τον κόσμο σαν Νεκροί Ιππότες. Κρατώντας "
+"το αξίωμα που είχαν και στη ζωή, κυβερνούν τις στρατιές των Νεκροζωντανών "
+"στη αναζήτησή τους για εκδίκηση."
 
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
@@ -3535,10 +4517,15 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
+"Στη ζωή, οι Θανατολεπίδες ήταν δεξιοτέχνες στη μάχη, στρατιώτες που ήταν και "
+"λυγεροί και θανάσιμοι. Οι νέοι κύριοί τους, που το αναγνωρίζουν αυτό, τους "
+"εξοπλίζουν ταιριαστά με τις δεξιότητες που είχαν κάποτε. Αν και ευπαθή, αυτά "
+"τα τέρατα είναι πολύ γρηγορότερα από το υπόλοιπο του είδους τους, και με τα "
+"πόδια και με τις λεπίδες τους."
 
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
-msgstr ""
+msgstr "Γιγάντιος Νεκρός"
 
 #: data/core/units/undead/Skele_Draug.cfg:18
 msgid ""
@@ -3548,6 +4535,11 @@ msgid ""
 "for a peace bought only by strength of arms. And so they struggle; both "
 "unthinking, and unrelenting."
 msgstr ""
+"Υπάρχουν λίγα που απομένουν, σε αυτά τα χαλάσματα, των ατόμων ήταν μία φορά. "
+"Πολεμιστές στην καρδιά, χάνονται τώρα στο όνειρο του θανάτου περιπλανώμενος "
+"μέσα στις μνήμες των μαχών και παλεύοντας απελπισμένα για την απελευθέρωση, "
+"για μια ειρήνη που αγοράζεται μόνο από τη δύναμη των όπλων. Και έτσι "
+"αγωνίζονται και ασυλλόγιστοι, και άκαμπτοι."
 
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
@@ -3561,6 +4553,12 @@ msgid ""
 "their past. Such questions aside, a Revenant is a powerful tool in combat: a "
 "fearless warrior that feels no pain, and which will fight to the bitter end."
 msgstr ""
+"Έχει δοθεί μια ψεύτικη ζωή για να πολεμήσουν ακόμα μια φορά, στα πλάσματα "
+"γνωστά ως Επανερχόμενοι που ήταν μεγάλοι πολεμιστές στην εποχή τους, αν και "
+"η δεν υπάρχει ανάμνηση από αυτή την εποχή. Ακόμη και οι μάγοι που τους "
+"ξύπνησαν δεν ξέρουν τίποτα για αυτή την εποχή. Γενικά ένας Επανερχόμενος "
+"είναι ένα ισχυρό όπλο στη μάχη: ένας άφοβος πολεμιστής που δεν αισθάνεται "
+"κανέναν πόνο, και που θα παλέψει στο πικρό τέλος."
 
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
@@ -3573,10 +4571,14 @@ msgid ""
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
+"Οι Σκελετοί είναι πολεμιστές που έπεσαν στο πεδίο της μάχης και αναστήθηκαν "
+"χάρης της μαύρη μαγεία. Σχεδόν χωρίς σκέψη, και ακλόνητοι στο σκοπό τους, "
+"δεν φοβούνται ούτε τον πόνο, ούτε τον θάνατο, και η παρουσία τους από μόνη "
+"της, μπορεί να φοβίσει όποιον θέλει να επιτεθεί στον αφέντη τους."
 
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
-msgstr "Σκελετός-Τοξότης"
+msgstr "Σκελετός Τοξότης"
 
 #: data/core/units/undead/Skeleton_Archer.cfg:17
 msgid ""
@@ -3586,6 +4588,12 @@ msgid ""
 "to achieve the tasks laid before them, for death holds no fear for one who "
 "is already dead."
 msgstr ""
+"Ένας Σκελετός Τοξότης είναι λίγο διαφορετικός από τους 'σκελετούς' ου συχνά "
+"τον συνοδεύουν - είναι αντίθετα στη φύση, ένας πολεμιστής προερχόμενος από "
+"τους νεκρούς να πολεμά για άλλη μία φορά. Στα χέρια των αφεντάδων τους, "
+"αυτοί οι στρατιώτες θα κάνουν οτιδήποτε για να πραγματοποιήσουν την εντολή "
+"που τους δόθηκε, έτσι κι αλλιώς ο θάνατος δεν μπορεί να φοβίσει κάποιον που "
+"είναι ήδη νεκρός."
 
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
@@ -3601,16 +4609,23 @@ msgid ""
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
+"Είναι ένα από τα μεγαλύτερα ελέη ότι μία ψυχή είναι αμετάβλητη και δεν "
+"μπορεί να καταστραφεί. Ωστόσο, αυτά που μπορεί να κάνει ένας Νεκρομάντης "
+"εκμεταλλευόμενος αυτό είναι τρομακτικά.\n"
+"\n"
+"Σκλαβωμένος με ένα 'κάλυμμά' νεκρομαντείας, μία φυλακισμένη ψυχή μοιάζει με "
+"τον άνεμο στα πανιά ενός πλοίου. Αυτό το καταραμένο σκάφος γίνεται ένας "
+"αδιάκοπος υπηρέτης που κάνει ότι και να του πει ο αφέντης του."
 
 #: data/core/units/undead/Spirit_Spectre.cfg:56
 #: data/core/units/undead/Spirit_Ghost.cfg:36
 #: data/core/units/undead/Spirit_Wraith.cfg:31
 msgid "wail"
-msgstr "Στριγγλιά"
+msgstr "στριγγλιά"
 
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
-msgstr ""
+msgstr "Σκιά της Νύχτας"
 
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:17
 msgid ""
@@ -3619,6 +4634,9 @@ msgid ""
 "living, and those who live to speak of them had no leisure to study their "
 "foe."
 msgstr ""
+"Το γιατί αυτά τα πλάσματα φοράνε μάσκες είναι άγνωστο, αφού η όψη τους είναι "
+"αμυδρή. Σπάνια κάποιος βλέπει κάποια τέτοια σκιά και όσοι έχουν δει μία και "
+"έχουν ζήσει, δεν είχαν χρόνο να μελετήσουν τον εχθρό τους."
 
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
@@ -3632,6 +4650,11 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer."
 msgstr ""
+"Όταν το φως ήρθε στον κόσμο και έδωσε μορφή στο άγνωστο, ο φόβος αναγκάστηκε "
+"να πέσει στο σκοτάδι. Από τότε, οι σκιές αυτού του κόσμου τρομοκρατούν την "
+"ανθρωπότητα, αν και δεν ξέρουν γιατί.\n"
+"\n"
+"Αυτή η ερώτηση, όμως, απαντιέται εύκολα από ένα Νεκρομάντη."
 
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
@@ -3647,15 +4670,22 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake."
 msgstr ""
+"Τα τελώνεια, γνωστά και ως \"φασματικοί άνθρωποι\", είναι το δεξί χέρι του "
+"αφέντη τους. Είναι ένας ανόσιος φόβος στους ζωντανούς, γιατί είναι όσο "
+"θανάσιμα φαίνονται.\n"
+"\n"
+"Η κατασκεύασή τους δεν είναι κανένα άθλιο κατόρθωμα, ο πραγματικός κίνδυνος, "
+"όταν πολεμάς κάτι τέτοιο, είναι ότι αυτά απλά προαγγέλλουν κάτι το πολύ "
+"χειρότερο."
 
 #: data/core/units/undead/Spirit_Spectre.cfg:45
 #: data/core/units/undead/Spirit_Wraith.cfg:20
 msgid "baneblade"
-msgstr "φαρμακωμένο Σπαθί"
+msgstr "δηλητιριασμένο σπαθί"
 
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
-msgstr "Στοιχειό "
+msgstr "Στοιχειό"
 
 #: data/core/units/undead/Spirit_Wraith.cfg:16
 msgid ""
@@ -3665,10 +4695,15 @@ msgid ""
 "are invincible which is so frightening, a notion that is fortunately far "
 "from the truth."
 msgstr ""
+"Αυτές οι σκιές, που ήταν παλιά πολεμιστές, είναι από τα πιο φοβερά πράγματα "
+"που μπορεί να φτιάξει ένας Νεκομάντης, αφού ένα σπαθί μπορεί να περάσει από "
+"μέσα τους χωρίς να αφήσει απλά κανένα τραύμα. Λέγεται ότι αυτές οι σκιές "
+"είναι ανίκητες, το οποίο είναι πολύ φοβιστικό, κάτι το οποίο είναι πολύ "
+"μακριά από την αλήθεια."
 
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
-msgstr ""
+msgstr "Αρχαίος Δενδροποιμένας"
 
 #: data/core/units/wose/Ancient.cfg:20
 msgid ""
@@ -3681,6 +4716,13 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
 msgstr ""
+"Υπάρχει μια περίεργη ιστορία για έναν αγρότη που είχε μια μεγάλη βελανιδιά "
+"στον αγρό του, ένα δέντρο που έμεινε εκεί όταν ο πατέρας του αγρότη έσκαψε "
+"το χώμα για πρώτη φορά σε αυτή τη γη. Αλλά ο αγρότης εξεπλάγει όταν μια μέρα "
+"ξύπνησε και δεν το βρήκε εκεί.\n"
+"\n"
+"Αυτά τα περιστατικά, είναι γνωστό, πως πιθανά γίνονται από τους πιο Αρχαίους "
+"Δενδροποιμένες."
 
 #: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Elder.cfg:91
 #: data/core/units/wose/Ancient.cfg:92
@@ -3689,7 +4731,7 @@ msgstr "συντριβή"
 
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
-msgstr ""
+msgstr "Μεγάλος Δενδροποιμένας"
 
 #: data/core/units/wose/Elder.cfg:19
 msgid ""
@@ -3705,10 +4747,21 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
+"Λέγεται πως οι Δενδροποιμένες έχουν πολλές μορφές, μα όλες σαν δέντρο, και "
+"ότι μεγαλώνουν στο μέγεθος, όπως μεγαλώνουν στην ηλικία. Ιστορίες λένε για "
+"Δενδροποιμένες που έχουν πάρει τη ακριβή μορφή δέντρου, χτυπώντας όποιο "
+"πλάσμα περνάει από κάτω τους. Αυτή είναι μια καλή δικαιολογία γιατί είναι "
+"σπάνιο να δεις έναν Δενδροποιμένα. Μία άλλη δικαιολογία είναι πως όταν "
+"κοιμούνται, και κοιμούνται πολύ, μοιάζουν με ένα παράξενο, στο σχήμα δέντρο. "
+"Έτσι ακόμα και το πιο παρατηρητικό Ξωτικό μπορεί να μπερδευτεί.\n"
+"\n"
+"Οι Δενδροποιμένες δεν είναι πολεμιστές, αλλά η μεγάλη τους δύναμη μπορεί "
+"εύκολα να μετατραπεί σε βία, εάν κάποιος μπορέσει να θυμώσει ένα τέτοιο "
+"πλάσμα."
 
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
-msgstr ""
+msgstr "Δενδροποιμένας"
 
 #: data/core/units/wose/Wose.cfg:20
 msgid ""
@@ -3723,6 +4776,17 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
 msgstr ""
+"Είναι πολύ δύσκολο να δει κάποιος έναν Δενδροποιμένα ακόμα και για τα "
+"Ξωτικά, οι Δενδροποιμένες είναι μια φυλή από πλάσματα για τα οποία λίγα "
+"είναι γνωστά. Τα Ξωτικά, βέβαια, γνωρίζουν τα πιο πολλά, για τους "
+"Δενδροπιμένες, από όλους τους ανθρώπους, ξέρουν ότι αυτά τα πλάσματα δεν "
+"είναι προέρχονται από τα δέντρα, παρ' ότι μοιάζουν, επίσης ξέρουν ότι ένας "
+"Δενδροποιμένας είναι πιο κοντά στον νεραϊδόκοσμο από τα ίδια τα Ξωτικά, αν "
+"και με διαφορετικό τρόπο. Η ζωή και οι δουλειές των Δενδροποιμένων είναι "
+"άγνωστες, αν και πολλοί θεωρούν πως είναι φύλακες του φυσικού κόσμου.\n"
+"\n"
+"Οι Δενδροποιμένες είναι γενικά μη πολεμοχαρής τύποι, αν και γενικά έχουν "
+"αρκετή δύναμη. Μα δεν είναι ούτε συνηθισμένοι ούτε γρήγοροι στο να κινούνται."
 
 #, fuzzy
 #~ msgid "Outlaw Ranger"
