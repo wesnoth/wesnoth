@@ -658,9 +658,20 @@ def sanity_check(filename, lines):
 
 def consistency_check():
     "Consistency-check state information picked up by "
-    print "Usage:", usage
+    utypes = []
     for (filename, (rl, recruit), (pl, recruitment_pattern)) in sides:
-        print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
+        #print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
+        for rtype in recruit:
+            if rtype not in usage:
+                print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
+                continue
+            utype = usage[rtype]
+            if utype not in recruitment_pattern:
+                print '"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' % (filename, rl, rtype, utype, ", ".join(recruitment_pattern))
+            utypes.append(utype)
+        for utype in recruitment_pattern:
+            if utype not in utypes:
+                print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, rl, utype)
 
 # Syntax transformations
 
