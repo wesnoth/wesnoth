@@ -1839,7 +1839,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
 
-			const int xp_bar_height = static_cast<int>(max_experience()*game_config::hp_bar_scaling / maximum<int>(level_,1));
+			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / maximum<int>(level_,1));
 			
 			SDL_Color colour=xp_color();
 			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted, xp_bar_height, filled, colour, bar_alpha);
