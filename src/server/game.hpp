@@ -134,6 +134,10 @@ public:
 private:
 	//! Figures out which side to take and tells that side to the game owner.
 	bool take_side(const player_map::const_iterator user);
+	//! Send [change_controller] message to tell all clients the new controller's name.
+	void send_change_controller(const size_t side_num,
+			const player_map::const_iterator newplayer, const bool host,
+			const bool player_left=true);
 	//! Function which will process game commands and update the state of the
 	//! game accordingly. Will return true iff the game's description changes.
 	bool process_commands(const config& cfg);

@@ -36,7 +36,7 @@ int game::id_num = 1;
 game::game(player_map& players, const network::connection host, const std::string name)
 	: player_info_(&players), id_(id_num++), name_(name), owner_(host),
 	sides_(gamemap::MAX_PLAYERS), sides_taken_(gamemap::MAX_PLAYERS),
-	side_controllers_(gamemap::MAX_PLAYERS), started_(false),
+	side_controllers_(gamemap::MAX_PLAYERS), nsides_(0), started_(false),
 	description_(NULL), end_turn_(0), all_observers_muted_(false)
 {
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
@@ -401,55 +401,75 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	sides_taken_[side_num - 1] = true;
 	sides_[side_num - 1] = newplayer->first;
 
-	const config& msg = construct_server_message(newplayer_name
-			+ " takes control of side " + side + ".");
-	record_data(msg);
-	send_data(msg);
-
-	//send "change_controller" msg that make all client update
-	//the current player name
-	config response;
-	config& change = response.add_child("change_controller");
-
-	change["side"] = side;
-	change["player"] = newplayer_name;
-	// Tell everyone but the new player that this side is network controlled now.
-	change["controller"] = "network";
-	send_data(response, newplayer->first);
-	// Tell the new player that he controls this side now.
-	change["controller"] = "human";
-	network::send_data(response, newplayer->first, true);
-
-	// Update the level so observers who join get the new name.
-	config::child_itors it = level_.child_range("side");
-	it.first += side_num - 1;
-	assert(it.first != it.second);
-	(**it.first)["current_player"] = newplayer_name;
-
-	//if the host left and there are ai sides, transfer them to the new host
-	//and notify the new host's client about its new status
-	if (host_leave) {
-		for (unsigned int i = 0; i < side_controllers_.size(); i++) {
-			if (side_controllers_[i] == "ai") {
-				change["side"] = lexical_cast<std::string, unsigned int>(i + 1);
-				change["controller"] = "ai";
-				network::send_data(response, owner_, true);
-				sides_[side_num - 1] = owner_;
-			}
-		}
-	}
+	send_change_controller(side_num, newplayer, host_leave, false);
 
 	// If we gave the new side to an observer add him to players_.
 	const user_vector::iterator itor = std::find(observers_.begin(),
-		observers_.end(), newplayer->first);
+			observers_.end(), newplayer->first);
 	if (itor != observers_.end()) {
 		players_.push_back(*itor);
 		observers_.erase(itor);
 		// Send everyone but the new player the observer_quit message.
 		config observer_quit;
-		observer_quit.add_child("observer_quit")["name"] = newplayer_name;
+		observer_quit.add_child("observer_quit")["name"] = newplayer->second.name();
 		send_data(observer_quit, newplayer->first);
 	}
+}
+
+//! Send [change_controller] message to tell all clients the new controller's name.
+void game::send_change_controller(const size_t side_num,
+		const player_map::const_iterator newplayer, const bool host,
+		const bool player_left)
+{
+	if (newplayer == player_info_->end()) return;
+	const std::string& side = lexical_cast<std::string, size_t>(side_num);
+	config msg = construct_server_message(newplayer->second.name()
+			+ " takes control of side " + side + ".");
+	record_data(msg);
+	send_data(msg);
+
+	config response;
+	config& change = response.add_child("change_controller");
+
+	change["side"] = side;
+	change["player"] = newplayer->second.name();
+	// Tell everyone but the new player that this side is network controlled now.
+	change["controller"] = "network";
+	send_data(response, newplayer->first);
+	// Tell the new player that he controls this side now.
+	// Just don't send it when the player left the game. (The host gets the
+	// side_drop already.)
+	if (!player_left) {
+		change["controller"] = "human";
+		network::send_data(response, newplayer->first, true);
+	}
+
+	// Update the level so observers who join get the new name.
+	config::child_itors it = level_.child_range("side");
+	it.first += side_num - 1;
+	assert(it.first != it.second);
+	(**it.first)["current_player"] = newplayer->second.name();
+
+	if (!host) return;
+
+	bool ai_transfer = false;
+	// Check for ai sides first and drop them, too, if the host left.
+	for (size_t side = 0; side < side_controllers_.size(); ++side){
+		//send the host a notification of removal of this side
+		if (side_controllers_[side] != "ai") continue;
+
+		ai_transfer = true;
+		config drop;
+		drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
+		drop["controller"] = "ai";
+		network::send_data(drop, owner_, true);
+		sides_[side] = owner_;
+	}
+	if (!ai_transfer) return;
+
+	msg = construct_server_message("AI transferred to new host.");
+	record_data(msg);
+	send_data(msg);
 }
 
 void game::notify_new_host(){
@@ -772,7 +792,7 @@ bool game::end_turn() {
 	}
 	// Skip over empty sides.
 	for (int i = 0; i < nsides_ && side_controllers_[end_turn_ % nsides_] == "null";
-		 ++i, ++end_turn_)
+			++i, ++end_turn_)
 	{
 		if ((end_turn_ % nsides_) == 0) {
 			turn_ended = true;
@@ -822,18 +842,19 @@ void game::add_player(const network::connection player, const bool observer) {
 		send_data(observer_join, player);
 	}
 	DBG_GAME << debug_player_info();
-	send_user_list();
 	// Send the user the game data.
 	network::send_data(level_, player, true);
 	if(started_) {
 		//tell this player that the game has started
 		network::send_data(config("start_game"), player, true);
-		// Send the player the history of the game to-date.
-		network::send_data(history_, player, true);
 		// Send observer join of all the observers in the game to the new player
 		// only once the game started. The client forgets about it anyway
 		// otherwise.
 		send_observerjoins(player);
+		// Send the player the history of the game to-date.
+		network::send_data(history_, player, true);
+	} else {
+		send_user_list();
 	}
 }
 
@@ -908,39 +929,27 @@ bool game::remove_player(const network::connection player, const bool disconnect
 			owner_name = owner->second.name();
 		}
 		notify_new_host();
-		send_data(construct_server_message(owner_name
-			+ " has been chosen as new host."));
-		//check for ai sides first and drop them, too, if the host left
-		bool ai_transfer = false;
-		//can't do this with an iterator, because it doesn't know the side_num - 1
-		for (size_t side = 0; side < side_controllers_.size(); ++side){
-			//send the host a notification of removal of this side
-			if (side_controllers_[side] == "ai") {
-				ai_transfer = true;
-				config drop;
-				drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
-				drop["controller"] = "ai";
-				network::send_data(drop, owner_, true);
-				sides_[side] = owner_;
-			}
-		}
-		if (ai_transfer) {
-			send_data(construct_server_message("AI transferred to new host"));
-		}
+		const config& msg = construct_server_message(owner_name
+				+ " has been chosen as the new host.");
+		record_data(msg);
+		send_data(msg);
 	}
 
-	//look for all sides the player controlled and drop them
+	// Look for all sides the player controlled and drop them.
+	// (Give them to the host.)
 	for (side_vector::iterator side = sides_.begin(); side != sides_.end(); ++side)	{
 		if (*side != player) continue;
+		size_t side_num = side - sides_.begin();
+		side_controllers_[side_num] = "human";
+		sides_taken_[side_num] = true;
+		sides_[side_num] = owner_;
+		send_change_controller(side_num + 1, player_info_->find(owner_), host);
+
 		//send the host a notification of removal of this side
 		config drop;
-		drop["side_drop"] = lexical_cast<std::string, size_t>(side - sides_.begin() + 1);
-		drop["controller"] = side_controllers_[side - sides_.begin()];
+		drop["side_drop"] = lexical_cast<std::string, size_t>(side_num + 1);
+		drop["controller"] = side_controllers_[side_num];
 		network::send_data(drop, owner_, true);
-
-		side_controllers_[side - sides_.begin()] = "human";
-		sides_taken_[side - sides_.begin()] = true;
-		sides_[side - sides_.begin()] = owner_;
 	}
 	DBG_GAME << debug_player_info();
 
