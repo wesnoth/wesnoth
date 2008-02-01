@@ -208,9 +208,12 @@ void server::load_config() {
 	} else {
 		disallowed_names_ = utils::split(cfg_["disallow_names"]);
 	}
-	default_max_messages_ = lexical_cast_default<int>(cfg_["max_messages"],4);
-	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"],10);
-	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"],5);
+	default_max_messages_ =
+			lexical_cast_default<size_t>(cfg_["max_messages"],4);
+	default_time_period_ =
+			lexical_cast_default<size_t>(cfg_["messages_time_period"],10);
+	concurrent_connections_ =
+			lexical_cast_default<size_t>(cfg_["connections_allowed"],5);
 
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
@@ -244,6 +247,7 @@ void server::load_config() {
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const {
+	if (concurrent_connections_ == 0) return false;
 	size_t connections = 0;
 	for (player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if (network::ip_address(i->first) == ip) {
