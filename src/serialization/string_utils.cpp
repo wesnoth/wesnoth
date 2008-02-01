@@ -424,6 +424,59 @@ bool isvalid_username(const std::string& username) {
 	return true;
 }
 
+//! Try to complete the last word of 'text' with the 'wordlist'.
+//! @param[in]  'text'     Text where we try to complete the last word of.
+//! @param[out] 'text'     Text with completed last word.
+//! @param[in]  'wordlist' A vector of strings to complete against.
+//! @param[out] 'wordlist' A vector of strings that matched 'text'.
+//! @return 'true' iff text is just one word (no spaces)
+bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
+	std::vector<std::string> matches;
+	const size_t last_space = text.rfind(" ");
+	// If last character is a space return.
+	if (last_space == text.size() -1) {
+		wordlist = matches;
+		return false;
+	}
+
+	bool text_start;
+	std::string semiword;
+	if (last_space == std::string::npos) {
+		text_start = true;
+		semiword = text;
+	} else {
+		text_start = false;
+		semiword.assign(text, last_space + 1, text.size());
+	}
+
+	std::string best_match = semiword;
+	for (std::vector<std::string>::const_iterator word = wordlist.begin();
+			word != wordlist.end(); ++word)
+	{
+		if (word->size() < semiword.size()
+		|| !std::equal(semiword.begin(), semiword.end(), word->begin(),
+				chars_equal_insensitive))
+		{
+			continue;
+		}
+		if (matches.empty()) {
+			best_match = *word;
+		} else {
+			int j = 0;
+			while (toupper(best_match[j]) == toupper((*word)[j])) j++;
+			if (best_match.begin() + j < best_match.end()) {
+				best_match.erase(best_match.begin() + j, best_match.end());
+			}
+		}
+		matches.push_back(*word);
+	}
+	if(!matches.empty()) {
+		text.replace(last_space + 1, best_match.size(), best_match);
+	}
+	wordlist = matches;
+	return text_start;
+}
+
 bool is_word_boundary(char c) {
 	return (c == ' ' || c == ',' || c == ':' || c == '\'' || c == '"' || c == '-');
 }

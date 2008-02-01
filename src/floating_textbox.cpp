@@ -119,86 +119,44 @@ namespace gui{
 		}
 
 		switch(mode_) {
+		case gui::TEXTBOX_SEARCH:
+		case gui::TEXTBOX_COMMAND:
 		case gui::TEXTBOX_MESSAGE:
 		{
 			std::string text = box_->text();
-			std::string semiword;
-			bool beginning;
-
-			const size_t last_space = text.rfind(" ");
-
-			//if last character is a space return
-			if(last_space == text.size() -1) {
-				return;
-			}
-
-			if(last_space == std::string::npos) {
-				beginning = true;
-				semiword = text;
-			}else{
-				beginning = false;
-				semiword.assign(text,last_space+1,text.size());
-			}
-
-			std::set<std::string>		matches;
-			std::string best_match = semiword;
-
+			std::vector<std::string> matches;
+			// Add players
 			for(size_t n = 0; n != teams.size(); ++n) {
-				if(teams[n].is_empty()) {
-					continue;
-				}
-				const std::string& name = teams[n].current_player();
-				if( name.size() >= semiword.size() &&
-						std::equal(semiword.begin(),semiword.end(),name.begin(),chars_equal_insensitive)) {
-					if(matches.empty()) {
-						best_match = name;
-					} else {
-						// Testing if this name already isn't in set
-						//   Because some players can control more sides
-						if (matches.count(name) >= 1){
-							continue;
-						}
-						int j= 0;;
-						while(best_match[j] == name[j]) j++;
-						best_match.erase(best_match.begin()+j,best_match.end());
-					}
-					matches.insert(name);
-				}
+				if(teams[n].is_empty()) continue;
+				matches.push_back(teams[n].current_player());
 			}
-
-			// Searching in observers list
+			// Add observers
 			const std::set<std::string>& observers = gui.observers();
-			for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
-				if( i->size() >= semiword.size() &&
-						std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
-					if(matches.empty()) {
-						best_match = *i;
-					} else {
-						int j = 0;
-						while(toupper(best_match[j]) == toupper((*i)[j])) j++;
-						best_match.erase(best_match.begin()+j,best_match.end());
-					}
-					matches.insert(*i);
-				}
+			for(std::set<std::string>::const_iterator i = observers.begin();
+					i != observers.end(); ++i)
+			{
+					matches.push_back(*i);
 			}
+			// Remove duplicates.
+			std::sort<std::vector<std::string>::iterator>
+					(matches.begin(), matches.end());
+			matches.erase(std::unique(matches.begin(), matches.end()), matches.end());
+			// Exclude own nick from tab-completion.
+			if (mode_ == gui::TEXTBOX_MESSAGE) {
+				matches.erase(std::remove(matches.begin(), matches.end(),
+						preferences::login()), matches.end());
+			}
+			const bool line_start = utils::word_completion(text, matches);
 
-			if(!matches.empty()) {
-				std::string add = beginning ? ": " : " ";
-				text.replace(last_space+1, semiword.size(), best_match);
-				if(matches.size() == 1) {
-					text.append(add);
-				} else {
-					std::string completion_list;
-					std::set<std::string>::iterator it;
-					for(it =matches.begin();it!=matches.end();it++) {
-						completion_list += " ";
-						completion_list += *it;
-					}
-					gui.add_chat_message(time(NULL), "", 0, completion_list,
-							game_display::MESSAGE_PRIVATE, false);
-				}
-				box_->set_text(text);
+			if (matches.empty()) return;
+			if (matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE) {
+				text.append(line_start ? ": " : " ");
+			} else {
+				std::string completion_list = utils::join(matches, ' ');
+				gui.add_chat_message(time(NULL), "", 0, completion_list,
+						game_display::MESSAGE_PRIVATE, false);
 			}
+			box_->set_text(text);
 			break;
 		}
 		default:

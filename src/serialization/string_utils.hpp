@@ -69,6 +69,8 @@ std::string &strip(std::string &str);
 std::string& strip_char(std::string &str, const char c);
 bool string_bool(const std::string& str,bool def=false);
 
+//! Try to complete the last word of 'text' with the 'wordlist'.
+bool word_completion(std::string& text, std::vector<std::string>& wordlist);
 //! Check if a message contains a word.
 bool word_match(const std::string& message, const std::string& word);
 //! Match using '*' as any number of characters (including none), 

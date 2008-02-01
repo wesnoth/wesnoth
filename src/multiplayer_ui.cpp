@@ -423,69 +423,22 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 	// nick tab-completion
 	} else if(event.keysym.sym == SDLK_TAB ) {
 		std::string text = entry_textbox_.text();
-		std::string semiword;
-		bool beginning;
-
-		const size_t last_space = text.rfind(" ");
-
-		//if last character is a space return
-		if(last_space == text.size() -1) {
-			return;
-		}
-
-		if(last_space == std::string::npos) {
-			beginning = true;
-			semiword = text;
-		}else{
-			beginning = false;
-			semiword.assign(text,last_space+1,text.size());
-		}
-
-		std::vector<std::string> matches;
-		std::string best_match = semiword;
-		std::vector<std::string> users = user_list_;
+		std::vector<std::string> matches = user_list_;
 		// Exclude own nick from tab-completion.
-		users.erase(std::remove(users.begin(), users.end(),
-				preferences::login()), users.end());
-		std::sort<std::vector<std::string>::iterator>(users.begin(), users.end());
-		for(std::vector<std::string>::const_iterator i = users.begin();
-				i != users.end(); ++i)
-		{
-			if (i->size() < semiword.size()
-			|| !std::equal(semiword.begin(), semiword.end(), i->begin(),
-					chars_equal_insensitive))
-			{
-				continue;
-			}
-			if (matches.empty()) {
-				best_match = *i;
-			} else {
-				int j = 0;
-				while (toupper(best_match[j]) == toupper((*i)[j])) j++;
-				if (best_match.begin() + j < best_match.end()) {
-					best_match.erase(best_match.begin() + j, best_match.end());
-				}
-			}
-			matches.push_back(*i);
-		}
+		matches.erase(std::remove(matches.begin(), matches.end(),
+				preferences::login()), matches.end());
+		const bool line_start = utils::word_completion(text, matches);
 
-		if(!matches.empty()) {
-			text.replace(last_space + 1, best_match.size(), best_match);
-			if(matches.size() == 1) {
-				text.append(beginning ? ": " : " ");
-			} else {
-				std::string completion_list;
-				std::vector<std::string>::iterator it;
-				for(it =matches.begin();it!=matches.end();it++) {
-					completion_list += " ";
-					completion_list += *it;
-				}
-				chat_.add_message(time(NULL), "", completion_list);
-				chat_.update_textbox(chat_textbox_);
-			}
-			entry_textbox_.set_text(text);
-		}
+		if (matches.empty()) return;
 
+		if (matches.size() == 1) {
+			text.append(line_start ? ": " : " ");
+		} else {
+			std::string completion_list = utils::join(matches, ' ');
+			chat_.add_message(time(NULL), "", completion_list);
+			chat_.update_textbox(chat_textbox_);
+		}
+		entry_textbox_.set_text(text);
 	}
 #endif
 }
