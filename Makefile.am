@@ -22,6 +22,14 @@ finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css"
 finddoc=($(finddocdist) | sed -e 's:doc/manual:manual:g' )
 finddocdirs=(cd $(top_srcdir)/doc && find manual -type d \! \( -name .svn -prune \) -print; )
 
+# This is a workaround to include manpage and manual translation files in the
+# tarball. Manual and manpages are pre-built, so these files aren't actually
+# needed to build Wesnoth, but are included because .po files are the
+# preferred source of modification.
+findextrapo=(cd $(top_srcdir) && \
+    find po/wesnoth-manpages po/wesnoth-manual \
+         -name "*.pot" -o -name "*.po" -o -name "*.cfg")
+
 w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  case $$p in \
 	    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -132,7 +140,7 @@ endif
 
 dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
-	( $(finddata); $(finddocdist); $(findnoinst) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
+	( $(finddata); $(finddocdist); $(findnoinst); $(findextrapo) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
 dist_noinst_DATA = copyright changelog players_changelog wesnoth.dev editor.dev server.dev wesnoth.kdevelop campaign_server.dsp map_editor.dsp server.dsp wesnoth.dsp wesnoth.dsw
 
