@@ -1,0 +1,19 @@
+#!/bin/sh
+if ! [ $# -eq 1 ]; then
+	echo "Syntax: $0 <server version>"
+	exit 1
+fi
+
+SERVER=$1
+SERVERBASE=$HOME/servers/$SERVER
+
+if ! [ -d $SERVERBASE ]; then
+	echo "$SERVER server not found."
+	exit 1
+fi
+
+cd $SERVERBASE
+rm -f revertedbuild
+mv build revertedbuild
+mv oldbuild build
+
