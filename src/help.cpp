@@ -582,16 +582,25 @@ namespace {
 	const std::string default_show_topic = "introduction_topic";
 	const std::string unknown_unit_topic = ".unknown_unit";
 	const std::string unit_prefix = "unit_";
-}
+	const std::string race_prefix = "race_";
+
+	// id starting with '.' are hidden
+	static std::string hidden_symbol(bool hidden = true) {
+		return (hidden ? "." : "");
+	}
+
+	static bool is_visible_id(const std::string &id) {
+		return (id.empty() || id[0] != '.');
+	}
 
 	/// Return true if the id is valid for user defined topics and
 	/// sections. Some IDs are special, such as toplevel and may not be
 	/// be defined in the config.
-static bool is_valid_id(const std::string &id) {
+	static bool is_valid_id(const std::string &id) {
 		if (id == "toplevel") {
 			return false;
 		}
-		if (id.find(unit_prefix) == 0 || id.find("." + unit_prefix) == 0) {
+		if (id.find(unit_prefix) == 0 || id.find(hidden_symbol() + unit_prefix) == 0) {
 			return false;
 		}
 		if (id.find("ability_") == 0) {
@@ -605,8 +614,6 @@ static bool is_valid_id(const std::string &id) {
 		}
 		return true;
 	}
-
-namespace {
 
 	/// Class to be used as a function object when generating the about
 	/// text. Translate the about dialog formatting to format suitable
@@ -1519,6 +1526,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 	if (game_info == NULL) {return;}
 
 	std::set<std::string> races;
+	std::set<std::string> visible_races;
 
 	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
 	    i != game_info->unit_types.end(); i++) {
@@ -1526,6 +1534,8 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type == FULL_DESCRIPTION) {
 			races.insert(type.race());
+			if (!type.hide_help())
+				visible_races.insert(type.race());
 		}
 	}
 
@@ -1535,7 +1545,9 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		section race_section;
 		config section_cfg;
 
-		section_cfg["id"] =  "race_" + *it;
+		bool hidden = (visible_races.count(*it) == 0);
+		
+		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + *it;
 		
 		std::string title;
 		const race_map::const_iterator race_it = game_info->races.find(*it);
@@ -1574,7 +1586,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 			continue;
 
 		const std::string lang_name = type.language_name();
-		const std::string ref_id = (type.hide_help() ? "." : "") + unit_prefix +  type.id();
+		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  type.id();
 		topic unit_topic(lang_name, ref_id, "");
 		unit_topic.text = new unit_topic_generator(type);
 		topics.push_back(unit_topic);
@@ -1659,7 +1671,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 			config const *topic_cfg = help_cfg->find_child("topic", "id", *t);
 			if (topic_cfg != NULL) {
 				std::string id = (*topic_cfg)["id"];
-				if (!id.empty() && id[0] != '.')
+				if (is_visible_id(id))
 					topics_links.push_back(link((*topic_cfg)["title"], id));
 			}
 		}
@@ -1683,14 +1695,18 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 
 		section_list::const_iterator s;
 		for (s = sec.sections.begin(); s != sec.sections.end(); s++) {
-			std::string link =  "<ref>text='" + escape((*s)->title) + "' dst='.." + escape((*s)->id) + "'</ref>";
-			res << link <<"\n";
+			if (is_visible_id((*s)->id)) {
+				std::string link =  "<ref>text='" + escape((*s)->title) + "' dst='.." + escape((*s)->id) + "'</ref>";
+				res << link <<"\n";
+			}
 		}
 
 		std::vector<topic>::const_iterator t;
 		for (t = topics.begin(); t != topics.end(); t++) {
-			std::string link =  "<ref>text='" + escape(t->title) + "' dst='" + escape(t->id) + "'</ref>";
-			res << link <<"\n";
+			if (is_visible_id(t->id)) {
+				std::string link =  "<ref>text='" + escape(t->title) + "' dst='" + escape(t->id) + "'</ref>";
+				res << link <<"\n";
+			}
 		}
 
 		return res.str();
@@ -1790,15 +1806,17 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 	}
 	section_list::const_iterator sec_it;
 	for (sec_it = sec.sections.begin(); sec_it != sec.sections.end(); sec_it++) {
-		const std::string vis_string = get_string_to_show(*(*sec_it), level + 1);
-		visible_items_.push_back(visible_item(*sec_it, vis_string));
-		if (expanded(*(*sec_it))) {
-			update_visible_items(*(*sec_it), level + 1);
+		if (is_visible_id((*sec_it)->id)) {
+			const std::string vis_string = get_string_to_show(*(*sec_it), level + 1);
+			visible_items_.push_back(visible_item(*sec_it, vis_string));
+			if (expanded(*(*sec_it))) {
+				update_visible_items(*(*sec_it), level + 1);
+			}
 		}
 	}
 	topic_list::const_iterator topic_it;
 	for (topic_it = sec.topics.begin(); topic_it != sec.topics.end(); topic_it++) {
-		if (topic_it->id.empty() || (topic_it->id)[0] != '.') {
+		if (is_visible_id(topic_it->id)) {
 			const std::string vis_string = get_string_to_show(*topic_it, level + 1);
 			visible_items_.push_back(visible_item(&(*topic_it), vis_string));
 		}
@@ -2676,7 +2694,7 @@ void help_browser::show_topic(const std::string &topic_id)
 	const topic *t = find_topic(toplevel_, topic_id);
 	if (t != NULL) {
 		show_topic(*t);
-	} else if (topic_id.find(unit_prefix)==0 || topic_id.find("."+unit_prefix)==0) {
+	} else if (topic_id.find(unit_prefix)==0 || topic_id.find(hidden_symbol() + unit_prefix)==0) {
 		show_topic(unknown_unit_topic);
 	} else {
 		std::cerr << "Help browser tried to show topic with id '" << topic_id
@@ -2931,7 +2949,7 @@ void show_help(display &disp, std::string show_topic, int xloc, int yloc)
 //! If show_topic is the empty string, the default topic will be shown.
 void show_unit_help(display &disp, std::string show_topic, bool hidden, int xloc, int yloc)
 {
-	show_help(disp, toplevel, (hidden ? ".":"") + unit_prefix + show_topic, xloc, yloc);
+	show_help(disp, toplevel, hidden_symbol(hidden) + unit_prefix + show_topic, xloc, yloc);
 }
 
 //! Open a help dialog using a toplevel other than the default.
