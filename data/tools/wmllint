@@ -1687,7 +1687,6 @@ Usage: wmllint [options] [dir]
     Options may be any of these:
     -h, --help                 Emit this help message and quit.
     -d, --dryrun               List changes but don't perform them.
-    -o, --oldversion           Specify version to begin with.
     -v, --verbose              -v        lists changes.
                                -v -v     names each file before it's processed.
                                -v -v -v  shows verbose parse details.
@@ -1701,9 +1700,8 @@ Usage: wmllint [options] [dir]
 if __name__ == '__main__':
     global versions
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdfDho:rsv", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdfDhrsv", [
             "help",
-            "oldversion=",
             "dryrun",
             "future",
             "verbose",
@@ -1715,7 +1713,6 @@ if __name__ == '__main__':
     except getopt.GetoptError:
         help()
         sys.exit(1)
-    oldversion = 'older'
     dryrun = False
     future = False
     verbose = 0
@@ -1727,8 +1724,6 @@ if __name__ == '__main__':
         if switch in ('-h', '--help'):
             help()
             sys.exit(0)
-        elif switch in ('-o', '--oldversion'):
-            oldversion = val
         elif switch in ('-f', '--future'):
             future = True
         elif switch in ('-v', '--verbose'):
@@ -1753,11 +1748,6 @@ if __name__ == '__main__':
     versions.sort()
     # Relies on 'older' sorting before trunk
     versions = [versions[-2]] + versions[:-2] + [versions[-1]]	# Move 'older' to front
-    if oldversion in versions:
-        versions = versions[versions.index(oldversion):]
-    else:
-        print >>sys.stderr, "wmllint: unrecognized version."
-        sys.exit(1)
     if not dryrun and not clean and not revert and len(versions) > 1:
         explain = "Upgrades for:"
         for i in range(len(versions)-1):
