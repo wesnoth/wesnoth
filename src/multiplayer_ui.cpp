@@ -420,7 +420,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 
 		chat_handler::do_speak(entry_textbox_.text());
 		entry_textbox_.clear();
-
+	// nick tab-completion
 	} else if(event.keysym.sym == SDLK_TAB ) {
 		std::string text = entry_textbox_.text();
 		std::string semiword;
@@ -443,27 +443,36 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 
 		std::vector<std::string> matches;
 		std::string best_match = semiword;
-		std::vector<std::string>& users = user_list_;
+		std::vector<std::string> users = user_list_;
+		// Exclude own nick from tab-completion.
+		users.erase(std::remove(users.begin(), users.end(),
+				preferences::login()), users.end());
 		std::sort<std::vector<std::string>::iterator>(users.begin(), users.end());
-		for(std::vector<std::string>::const_iterator i = users.begin(); i != users.end(); ++i) {
-			if( i->size() >= semiword.size() &&
-					std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
-				if(matches.empty()) {
-					best_match = *i;
-				} else {
-					int j= 0;
-					while(toupper(best_match[j]) == toupper((*i)[j])) j++;
-					best_match.erase(best_match.begin()+j,best_match.end());
-				}
-				matches.push_back(*i);
+		for(std::vector<std::string>::const_iterator i = users.begin();
+				i != users.end(); ++i)
+		{
+			if (i->size() < semiword.size()
+			|| !std::equal(semiword.begin(), semiword.end(), i->begin(),
+					chars_equal_insensitive))
+			{
+				continue;
 			}
+			if (matches.empty()) {
+				best_match = *i;
+			} else {
+				int j = 0;
+				while (toupper(best_match[j]) == toupper((*i)[j])) j++;
+				if (best_match.begin() + j < best_match.end()) {
+					best_match.erase(best_match.begin() + j, best_match.end());
+				}
+			}
+			matches.push_back(*i);
 		}
 
 		if(!matches.empty()) {
-			std::string add = beginning ? ": " : " ";
-			text.replace(last_space+1, semiword.size(), best_match);
+			text.replace(last_space + 1, best_match.size(), best_match);
 			if(matches.size() == 1) {
-				text.append(add);
+				text.append(beginning ? ": " : " ");
 			} else {
 				std::string completion_list;
 				std::vector<std::string>::iterator it;
