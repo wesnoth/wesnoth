@@ -17,7 +17,7 @@ sanity-check: unresolved lint
 
 lint:
 	# Check for obsolete WML, broken references, consistency.
-	./wmllint --dryrun $(MAINLINE) $(UMC)
+	./wmllint --dryrun --nolift $(MAINLINE) $(UMC)
 
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
