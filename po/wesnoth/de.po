@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-27 13:24+0100\n"
-"PO-Revision-Date: 2008-01-29 16:05+0100\n"
+"PO-Revision-Date: 2008-02-01 15:42+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -348,6 +348,9 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Einige Waffen haben spezielle Fähigkeiten, die ihre Effektivität erhöhen, "
+"wenn man mit ihnen angreift.\n"
+"\n"
 
 #: data/core/help.cfg:99
 msgid "Unknown Unit"
@@ -1145,7 +1148,6 @@ msgstr ""
 "könnt Ihr aus mehreren Aufstiegsmöglichkeiten auswählen."
 
 #: data/core/help.cfg:262
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1163,20 +1165,16 @@ msgstr ""
 "\n"
 "\n"
 "Die meisten Einheiten verfügen über drei Stufen, doch bei nicht allen ist "
-"dies der Fall. Einige besondere Einheiten (wie die <ref>dst=unit_Mage "
-"text=Magier</ref>) können vier haben. Sobald eine Einheit ihr höchste Stufe "
+"dies der Fall. Einige Einheiten (wie die <ref>dst=unit_Mage text=Magier</"
+"ref>) können vier Stufen haben. Sobald eine Einheit ihre höchste Stufe "
 "erreicht hat, kann sie anstelle eines Stufenanstiegs mit einem anderen Bonus "
 "belohnt werden. Der englische Begriff dafür ist AMLA.\n"
 "Den AMLA-Bonus erhält die Einheit jedes mal, wenn sie die dafür benötigte "
 "Erfahrung gesammelt hat, jedoch bleibt sie auf der selben Stufe. Der normale "
 "AMLA-Effekt für Einheiten ist die Erhöhung der maximalen Lebenspunkte um 3 "
-"für alle 100 EP (80 EP für intelligente Einheiten), die gesammelt werden. "
-"Pro AMLA wird die Anzahl der benötigten EP größer, so dass Ihr besser Eure "
-"schwächeren Einheiten fördern solltet.\n"
-"\n"
-"Allerdings werden nur wenige Einheiten durch AMLA geheilt. Ein Beispiel "
-"hierfür ist der Leichenfresser, der aufgrund von AMLA geheilt wird. Die "
-"meisten Einheiten erhalten dagegen nur zusätzliche LP."
+"und eine Komplettheilung für alle 100 EP (80 EP für intelligente Einheiten), "
+"die gesammelt werden. Pro AMLA wird die Anzahl der benötigten EP größer, so "
+"dass Ihr besser Eure schwächeren Einheiten fördern solltet."
 
 #: data/core/help.cfg:267
 msgid "Healing"
@@ -1456,7 +1454,7 @@ msgstr ""
 "hochstufige Einheiten verfügbar sind. Später ist diese Charakteristik nicht "
 "mehr so nützlich, weil eine Einheit, die ihre höchste Stufe erreicht hat, "
 "keine Erfahrung mehr benötigt. Besitzt man erst einmal mehrere höchststufige "
-"Einheiten, solltet Ihr eher Einheiten mit anderen Charakteristika einberufen"
+"Einheiten, solltet Ihr eher Einheiten mit anderen Charakteristika einberufen."
 
 #: data/core/help.cfg:333
 msgid "Quick"
@@ -1701,6 +1699,10 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"Szenarios können aus vielen unterschiedlichen Geländearten bestehen, die "
+"sowohl die Beweglichkeit als auch die Verteidigungsfähigkeiten einer Einheit "
+"beeinflussen.\n"
+"\n"
 
 #: data/core/help.cfg:412
 msgid "Grassland"
@@ -4330,6 +4332,7 @@ msgid "race^Drakes"
 msgstr "Draken"
 
 #: data/core/units.cfg:67
+#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4394,6 +4397,17 @@ msgid ""
 "feature which has allowed them to populate even some of the mountains of the "
 "far north of the Great Continent."
 msgstr ""
+"Draken sind große, geflügelte und feuerspeiende Kreaturen, die von Drachen "
+"abstammen. Ein durchschnittlicher, ausgewachsener Drake ragt ungefähr 3 "
+"Meter in die Höhe und bringt gut und gerne das Gewicht eines Reiters mit "
+"seinem Ross auf die Waage. Ihre Haut ist geschuppt, wodurch man ihnen mit "
+"den meisten physischen Angriffen nicht bei kommen kann. Jedoch wurde "
+"berichtet, dass sie, genau wie ihre drachischen Verwandten, eine Abneigung "
+"gegen die magische Schule der Kälte sowie alle Arten von Stichwaffen haben. "
+"Viele Draken sind in der Lage, zu fliegen, wenn auch ihr hohes Körpergewicht "
+"sie in der Luft recht unbeholfen aussehen lässt. Wo immer möglich, versuchen "
+"sie die Gegebenheiten des Geländes zu nutzen, um leichter und schneller in "
+"die Luft zu kommen."
 
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
@@ -4474,6 +4488,7 @@ msgid "race^Elves"
 msgstr "Elfen"
 
 #: data/core/units.cfg:94
+#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Though few "
@@ -4504,6 +4519,19 @@ msgid ""
 "possible exception of trolls. Many of their settlements cannot be reliably "
 "dated, undoubtedly existing over a millennium."
 msgstr ""
+"Im Vergleich mit einem Menschen, sind Elfen etwas größer, gewandter, aber "
+"weniger robust. Sie haben leicht spitze Ohren, blasse Haut und häufig "
+"blondes Haar. Der wirkliche Unterschied jedoch, liegt in ihrer wesentlich "
+"längeren Lebensspanne. Die meisten Elfen, wenn unberührt von Krankheit, "
+"Unfall oder Krieg, leben etwa zwei Jahrhunderte. Einige Elfen, in denen der "
+"Fluss der Magie sehr stark ist, sollen sogar noch älter geworden sein. Die "
+"meisten Elfen jedoch werden jedoch mit zunehmendem Alter gebrechlich und "
+"welken innerhalb weniger Jahre dahin. Elfen haben eine natürliche Verbindung "
+"zu den magischen Strömen, doch sind nur wenige in der Lage, diese "
+"wissentlich zu nutzen und so äußert sie sich bei den meisten in ihrem langen "
+"Leben und ihrer hervorragenden Sinne.Durch ihr langes Leben haben Elfen eine "
+"andere Sicht auf die Dinge, als die kurzlebigen Rassen der Menschen oder "
+"Orks. "
 
 #: data/core/units.cfg:103
 msgid "race^Goblin"
@@ -4809,6 +4837,31 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
+"Spricht man von den Untoten meint man eigentlich keine einzelne Rasse, "
+"obwohl der Einfachheit halber von den Untoten gesprochen wird. Fast jedes "
+"Lebewesen kann, wenn es einmal gestorben ist, von einem kundigen "
+"Totenbeschwörer als untote Wesenheit wiederbelebt werden. Normalerweise "
+"verfügen Untote über keinen eignen Willen, sondern dienen Jenen, von denen "
+"sie gerufen wurden als willenlose Sklaven. Ein großes Geheimnis, welches die "
+"Zirkel der Nekromanten nur Ihresgleichen verraten, ist, wie die Kreatur "
+"leben kann, ohne das der Nekromant ihr ständig einen Teil seiner magischen "
+"Kräfte zuführen muss. Zudem sind Untote in der Lage, Befehle ihres Meisters "
+"selbstständig auszuführen. Nur selten, vielleicht einmal pro Monat, schaut "
+"der Nekromant nach seinen Geschöpfen.\n"
+"\n"
+"Die Kunst der Nekromantie ist fast ausschließlich den Menschen vorbehalten. "
+"Selbst in den Legenden der magieverbundenen Rassen, also den Elfen und des "
+"Meervolkes, werden selten jene erwähnt, die mit den dunklen Künsten "
+"experimentierten. Es wird vermutet, das die Schule der Nekromantie große "
+"Anpassungsfähigkeit sowie einen flexiblen Geist voraussetzt. Jene "
+"Fertigkeiten findet man häufig bei Menschen. Das größte Ziel für die meisten "
+"Nekromanten ist es, jene unheilige Allianz einzugehen, so das ihr Geist und "
+"ihr Wissen die Ewigkeit überdauern möge.\n"
+"\n"
+"<header>text='Geographie'</header>\n"
+"Es ist bekannt, dass viele Lichfürsten vom großen Kontinent nach Wesnoth "
+"kamen, jedoch waren sowohl Elfen als auch Zwerge bereits vorher einigen von "
+"ihnen begegnet."
 
 #: data/core/units.cfg:254
 msgid "race^Wose"
@@ -5076,9 +5129,9 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"Es ist klüger, das nächste Szenario einer Kampagne mit niedrigstufigeren "
-"Einheiten, die kurz vor ihrem Aufstieg stehen, zu beginnen, als direkt die "
-"höchststufigen Einheiten einzuberufen."
+"Es ist klüger, das nächste Szenario einer Kampagne mit Einheiten niedriger "
+"Stufe, die kurz vor ihrem Aufstieg stehen, zu beginnen, als direkt die "
+"Einheiten höchster Stufe einzuberufen."
 
 #: data/hardwired/tips.cfg:39
 msgid ""
@@ -5164,6 +5217,12 @@ msgid ""
 "not be removed unless the unit regenerates, or spends a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Vergiftete Einheiten verlieren in jeder Runde 8 Lebenspunkte bis sie "
+"schließlich nur noch 1 Lebenspunkt von ihrem Tod trennt. Bis das Gift "
+"kuriert ist, werden sie in diesem bedauernswerten Zustand verbleiben. Heiler "
+"können die Wirkung des Giftes aufhalten, aber nicht aufheben. Nur der "
+"Aufenthalt in einem Dorf oder die Behandlung durch eine Einheit, mit der "
+"Fertigkeit »Kurieren« schafft Abhilfe."
 
 #: data/hardwired/tips.cfg:67
 msgid ""
@@ -5212,7 +5271,7 @@ msgid ""
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
 "Einheiten, die in einem Dorf stationiert sind, heilen zu Beginn der nächsten "
-"Runde um 8 Lebenspunkte oder werden von der Wirkung eines Giftes kuriert. "
+"Runde 8 Lebenspunkte oder werden von der Wirkung eines Giftes kuriert. "
 
 #: data/hardwired/tips.cfg:83
 msgid ""
@@ -5346,7 +5405,7 @@ msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
-"Niedrigstufige Truppen genießen Vorteile im Kampf, wenn sie an der Seite "
+"Truppen niedriger Stufe genießen Vorteile im Kampf, wenn sie an der Seite "
 "einer Einheit mit »Führungsqualitäten« kämpfen."
 
 #: data/hardwired/tips.cfg:131
@@ -5409,8 +5468,9 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer BP und "
-"halbiert außerdem den angerichteten Schaden bei jeder gegnerischen Attacke."
+"Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer "
+"Bewegungspunkte und halbiert außerdem den angerichteten Schaden bei jeder "
+"gegnerischen Attacke."
 
 #: data/hardwired/tips.cfg:159
 msgid "Arcane attacks are very powerful against undead."
@@ -5491,7 +5551,7 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 "Um unerfahrene Einheiten schnell an Erfahrung gewinnen zu lassen, stellt "
-"ihnen einen Veteranen zur Seite, der die gegnerischen Einheit schwer "
+"ihnen einen Veteranen zur Seite, der die gegnerische Einheit schwer "
 "verwundet, so dass die unerfahrene Einheit den vernichtenden Schlag "
 "ausführen kann."
 
@@ -6300,7 +6360,7 @@ msgstr ""
 
 #: src/generate_report.cpp:89
 msgid "invisible: "
-msgstr "unsichtbar:"
+msgstr "unsichtbar: "
 
 #: src/generate_report.cpp:94
 msgid ""
@@ -6312,7 +6372,7 @@ msgstr ""
 
 #: src/generate_report.cpp:94
 msgid "slowed: "
-msgstr "verlangsamt:"
+msgstr "verlangsamt: "
 
 #: src/generate_report.cpp:99
 msgid ""
@@ -6332,7 +6392,7 @@ msgstr ""
 
 #: src/generate_report.cpp:99
 msgid "poisoned: "
-msgstr "vergiftet:"
+msgstr "vergiftet: "
 
 #: src/generate_report.cpp:106
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -6342,7 +6402,7 @@ msgstr ""
 
 #: src/generate_report.cpp:106
 msgid "stone: "
-msgstr "versteinert:"
+msgstr "versteinert: "
 
 #: src/generate_report.cpp:159
 msgid "Resistances: "
@@ -6398,7 +6458,7 @@ msgstr "Hilfe"
 
 #: src/help.cpp:1104
 msgid "<header>text='Units having this special attack'</header>"
-msgstr "<header>text='Einheiten mit diesen Spezialangriff'</header>"
+msgstr "<header>text='Einheiten mit diesem Spezialangriff'</header>"
 
 #: src/help.cpp:1172
 msgid "<header>text='Units having this ability'</header>"
@@ -6406,7 +6466,7 @@ msgstr "<header>text='Einheit mit dieser Fertigkeit'</header>"
 
 #: src/help.cpp:1237
 msgid "Advances from: "
-msgstr "Vorherige Stufe:"
+msgstr "Vorherige Stufe: "
 
 #: src/help.cpp:1266
 msgid "Advances to: "
@@ -6418,7 +6478,7 @@ msgstr "Verschiedenes"
 
 #: src/help.cpp:1299
 msgid "Race: "
-msgstr "Rasse"
+msgstr "Rasse: "
 
 #: src/help.cpp:1306
 msgid "Abilities: "
@@ -6426,7 +6486,7 @@ msgstr "Fertigkeiten: "
 
 #: src/help.cpp:1325
 msgid "Cost: "
-msgstr "Kosten:"
+msgstr "Kosten: "
 
 #: src/help.cpp:1326
 msgid "Alignment: "
