@@ -19,6 +19,7 @@
 #include "map.hpp"
 #include "unit_frame.hpp"
 
+#include <climits>
 #include <string>
 #include <vector>
 
