@@ -67,6 +67,9 @@ namespace game_config
 	std::string flag_rgb = "flag_green";
 	std::vector<Uint32> defense_color_scale;
 
+	double hp_bar_scaling = 0.666;
+	double xp_bar_scaling = 0.5;
+
 	std::string cross_image = "misc/cross.png";
 
 	std::vector<std::string> foot_speed_prefix;
@@ -164,6 +167,9 @@ namespace game_config
 		flag_image = v["flag_image"];
 		flag_icon_image = v["flag_icon_image"];
 		cross_image = v["cross_image"];
+
+		hp_bar_scaling = lexical_cast_default<double>(v["hp_bar_scaling"]);
+		xp_bar_scaling = lexical_cast_default<double>(v["xp_bar_scaling"]);
 
 		foot_speed_prefix = utils::split(v["footprint_prefix"]);
 		foot_teleport_enter = v["footprint_teleport_enter"];

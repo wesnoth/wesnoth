@@ -606,6 +606,15 @@ const std::string& unit::profile() const
 	return absolute_image();
 }
 
+const std::string unit::help_page() const
+{
+	const unit_type* t = type();
+	if (t != NULL)
+		return t->help_page();
+	else
+		return id();
+}
+
 //! Colors for the unit's hitpoints.
 SDL_Colour unit::hp_color() const
 {
@@ -1832,14 +1841,17 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 #else
 		const int bar_shift = static_cast<int>(-5*disp.get_zoom_factor());
 #endif
-		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted, (max_hitpoints()*2)/3, unit_energy,hp_color(), bar_alpha);
+		const int hp_bar_height = static_cast<int>(max_hitpoints()*game_config::hp_bar_scaling);
+
+		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
-			const int level = maximum<int>(level_,1);
 
+			const int xp_bar_height = static_cast<int>(max_experience()*game_config::hp_bar_scaling / maximum<int>(level_,1));
+			
 			SDL_Color colour=xp_color();
-			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted, max_experience()/(level*2), filled, colour, bar_alpha);
+			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted, xp_bar_height, filled, colour, bar_alpha);
 		}
 
 		if (can_recruit()) {

@@ -64,6 +64,8 @@ namespace game_config
 		checked_menu_image, unchecked_menu_image, wml_menu_image, level_image,
 		ellipsis_image;
 
+	extern double hp_bar_scaling, xp_bar_scaling;
+
 	extern std::string flag_rgb;
 	extern std::vector<Uint32> defense_color_scale;
 
