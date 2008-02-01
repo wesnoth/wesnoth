@@ -831,7 +831,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		case HOTKEY_QUIT_GAME: {
 			if(disp.in_game()) {
-				ERR_G << "is in game -- showing quit message\n";
+				DBG_G << "is in game -- showing quit message\n";
 				const int res = gui::dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
 				if(res == 0) {
 					throw end_level_exception(QUIT);
