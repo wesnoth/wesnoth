@@ -254,7 +254,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	gamestate_.completion = "running";
 	// End all unit moves
 	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
-			u->second.set_user_end_turn(true);
+		u->second.set_user_end_turn(true);
 	}
 	//current_team().set_countdown_time(0);
 	//halt and cancel the countdown timer
@@ -280,23 +280,26 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	gui_->update_display();
 
 	try {
-	// reimplement parts of play_side()
-	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
-					*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
-	turn_data_->replay_error().attach_handler(this);
-	turn_data_->host_transfer().attach_handler(this);
+		// reimplement parts of play_side()
+		turn_data_ = new turn_info(gameinfo_, gamestate_, status_,
+		                           *gui_,map_, teams_, player_number_,
+		                           units_, replay_sender_, undo_stack_);
+		turn_data_->replay_error().attach_handler(this);
+		turn_data_->host_transfer().attach_handler(this);
 
-	play_human_turn();
-	after_human_turn();
+		play_human_turn();
+		after_human_turn();
 
 	} catch(game::load_game_exception&) {
-			// Loading a new game is effectively a quit.
-			log.quit(status_.turn());
-			throw;
+		// Loading a new game is effectively a quit.
+		log.quit(status_.turn());
+		throw;
 	} catch(end_level_exception& e) {
-		//Catch this error here so mp players quitting unexpectedly are not thrown back
-		//to the title screen
+		// Catch this error here so mp players quitting unexpectedly are not
+		// thrown back to the title screen
 		result = e.result;
+	} catch(end_turn_exception& e) {
+		result = QUIT;
 	// Thrown when receiving [leave_game].
 	} catch(network::error& e) {
 		result = QUIT;
