@@ -652,7 +652,7 @@ def sanity_check(filename, lines):
                 (key, prefix, unit_id, comment) = parse_attribute(lines[i])
                 if unit_id[0] == "_":
                     unit_id = unit_id[1:].strip()
-            if "usage" in lines[i]:
+            if "usage=" in lines[i]:
                 (key, prefix, unit_usage, comment) = parse_attribute(lines[i])
                 assert(unit_id)
                 usage[unit_id] = unit_usage
