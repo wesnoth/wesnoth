@@ -65,7 +65,6 @@ public:
 	events::generic_event& host_transfer() { return host_transfer_; }
 private:
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
-	static void take_side(const std::string& side, const std::string& controller);
 
 	const game_data& gameinfo_;
 	game_state& state_of_game_;

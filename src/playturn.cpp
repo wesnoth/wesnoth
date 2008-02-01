@@ -189,6 +189,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const size_t side = atoi(side_str.c_str());
 		const size_t side_index = side-1;
 
+		bool restart = side == gui_.get_playing_team();
+
 		if(side_index >= teams_.size()) {
 			LOG_STREAM(err, network) << "unknown side " << side_index << " is dropping game\n";
 			throw network::error("");
@@ -203,9 +205,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			if(have_leader)
 				leader->second.rename("ai"+side_str);
 
-			take_side(side_str, "ai");
 
-			return PROCESS_RESTART_TURN;
+			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
 
 		int action = 0;
@@ -260,9 +261,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				if(have_leader)
 					leader->second.rename("ai"+side_str);
 
-				take_side(side_str, "ai");
 
-				return PROCESS_RESTART_TURN;
+				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			//we don't have to test have_leader as action > 0 mean have_leader == true
 			case 1:
@@ -270,9 +270,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				teams_[side_index].set_current_player("human"+side_str);
 				leader->second.rename("human"+side_str);
 
-				take_side(side_str, "human");
 
-				return PROCESS_RESTART_TURN;
+				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
 				//The user pressed "end game". Don't throw a network error here or he will get
 				//thrown back to the title screen.
@@ -281,20 +280,16 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				if (action > 2) {
 					const size_t index = static_cast<size_t>(action - 3);
 					if (index < observers.size()) {
-						teams_[side_index].make_network();
 						change_side_controller(side_str, observers[index], false /*not our own side*/);
 					} else if (index < options.size() - 1) {
 						size_t i = index - observers.size();
-						allies[i]->make_network();
 						change_side_controller(side_str, allies[i]->save_id(), false /*not our own side*/);
 					} else {
 						teams_[side_index].make_ai();
 						teams_[side_index].set_current_player("ai"+side_str);
 						leader->second.rename("ai"+side_str);
-
-						take_side(side_str, "ai");
 					}
-					return PROCESS_RESTART_TURN;
+					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 				}
 				break;
 		}
@@ -335,6 +330,7 @@ void turn_info::change_side_controller(const std::string& side, const std::strin
 	network::send_data(cfg, 0, true);
 }
 
+#if 0
 void turn_info::take_side(const std::string& side, const std::string& controller)
 {
 	config cfg;
@@ -343,3 +339,4 @@ void turn_info::take_side(const std::string& side, const std::string& controller
 	cfg.values["name"] = controller+side;
 	network::send_data(cfg, 0, true);
 }
+#endif
