@@ -41,7 +41,7 @@ public:
 	bool counting_down();
 	void think_about_countdown(int ticks);
 	void process(events::pump_info &info);
-	void linger(upload_log& log, LEVEL_RESULT result);
+	void linger(upload_log& log);
 	//! Wait for the host to upload the next scenario.
 	void wait_for_upload();
 

@@ -185,7 +185,7 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 			}
 		} else {
 			try {
-				playcontroller.linger(log, res);
+				playcontroller.linger(log);
 			} catch(end_level_exception& e) {
 				if (e.result == QUIT) {
 					return QUIT;

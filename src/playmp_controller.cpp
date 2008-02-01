@@ -240,7 +240,7 @@ void playmp_controller::play_human_turn(){
 	menu_handler_.clear_undo_stack(player_number_);
 }
 
-void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
+void playmp_controller::linger(upload_log& log)
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
 	browse_ = true;
@@ -294,15 +294,12 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 		// Loading a new game is effectively a quit.
 		log.quit(status_.turn());
 		throw;
-	} catch(end_level_exception& e) {
+	} catch(end_level_exception&) {
 		// Catch this error here so mp players quitting unexpectedly are not
 		// thrown back to the title screen
-		result = e.result;
-	} catch(end_turn_exception& e) {
-		result = QUIT;
+	} catch(end_turn_exception&) {
 	// Thrown when receiving [leave_game].
-	} catch(network::error& e) {
-		result = QUIT;
+	} catch(network::error&) {
 	}
 
 	// revert the end-turn button text to its normal label
