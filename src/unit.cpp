@@ -606,15 +606,6 @@ const std::string& unit::profile() const
 	return absolute_image();
 }
 
-const std::string unit::help_page() const
-{
-	const unit_type* t = type();
-	if (t != NULL)
-		return t->help_page();
-	else
-		return id();
-}
-
 //! Colors for the unit's hitpoints.
 SDL_Colour unit::hp_color() const
 {
