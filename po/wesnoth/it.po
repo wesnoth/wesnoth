@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-27 13:24+0100\n"
-"PO-Revision-Date: 2008-01-20 18:30+0100\n"
+"PO-Revision-Date: 2008-01-30 21:27+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -352,6 +352,8 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Alcune armi hanno funzioni speciali che ne aumentano l'efficacia.\n"
+"\n"
 
 #: data/core/help.cfg:99
 msgid "Unknown Unit"
@@ -497,6 +499,13 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"Fai molta attenzione ai riquadri degli Obiettivi che compaiono  all'inizio "
+"di ciasciuno scenario. Di solito si ottiene la vittoria uccidendo i "
+"condottieri nemici, e si viene sconfitti solo con l'uccisione del proprio "
+"condottiero. Alcuni scenari però hanno obiettivi diversi – far raggiungere "
+"una certa destinazione al tuo condottiero, ad esempio, o salvare qualcuno, o "
+"risolvere un rompicapo, o resistere ad un assedio per un certo numero di "
+"turni."
 
 #: data/core/help.cfg:143
 msgid ""
@@ -507,6 +516,13 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Quando uno scenario è stato vinto, la mappa diventerà grigia ed il pulsante "
+"«Fine turno» si tramuterà in «Fine scenario». Puoi ora eseguire azioni come "
+"cambiare le opzioni di salvataggio o (se sei in una partita multigiocatore) "
+"chiacchierare con gli altri giocatori prima di premere il pulsante per "
+"continuare."
 
 #: data/core/help.cfg:148
 msgid "Recruiting and Recalling"
@@ -1137,7 +1153,6 @@ msgstr ""
 "la possibilità di scegliere il tipo di avanzamento."
 
 #: data/core/help.cfg:262
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1157,7 +1172,7 @@ msgstr ""
 "La maggior parte delle unità hanno tre livelli, ma ci sono eccezioni. Alcune "
 "unità infatti (come i <ref>dst=unit_Mage text=maghi</ref>) possono averne "
 "quattro. Una volta che un'unità è giunta sino al suo massimo livello, essa "
-"potrà avere un \"Avanzamento Oltre il Massimo Livello\" (AOML) disponibile.\n"
+"potrà avere un \"Avanzamento Oltre il Massimo Livello\" (AOML) disponibile. "
 "L'AOML modifica l'unità quando raggiunge il livello di esperienza richiesto, "
 "ma l'unità manterrà il livello in cui si trova. L'AOML, normalmente, fa "
 "crescere il livello massimo di PF dell'unità di 3 punti e la guarisce "
@@ -1680,6 +1695,10 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"Le mappe di gioco offrono una varietà di terreni che influenzano sia la "
+"capacità di movimento che quella di difesa di un'unità durante il "
+"combattimento.\n"
+"\n"
 
 #: data/core/help.cfg:412
 msgid "Grassland"
@@ -2292,7 +2311,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:675
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2303,9 +2321,12 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Scambia la fazione tra giocatori e computer. Questo comando deve essere dato "
-"dal giocatore che controlla questa fazione. Se non indichi la fazione, si "
-"assume sia quella attualmentye attiva.\n"
+"Imposta o cambia il giocatore di questa fazione fra umano e IA. Questo "
+"comando deve essere dato dal giocatore o dal client che controlla questa "
+"fazione. Se non viene fornito il secondo parametro cambia tra controllo "
+"umano o da IA. Se è «on», imposta l'IA come controllante. Se è a «off» imposta "
+"l'umano come controllante. Se non indichi la fazione, si assume sia quella "
+"attualmente attiva.\n"
 
 #: data/core/help.cfg:678
 msgid ""
@@ -2392,7 +2413,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:706
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2402,8 +2422,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Cambia il controllo del lato (scrivere qui il numero del lato) all'utente "
-"(scrivere qui il nome del giocatore o dell'osservatore).\n"
+"Cambia il controllo della fazione  (scrivere qui il numero della fazione) "
+"all'utente (scrivere qui il nome del giocatore o dell'osservatore). Puoi "
+"controllare quale fazione appartiene ad un giocatore dalla finestra di "
+"dialogoi «Impostazioni dello scenario» (premi il pulsante «Ancora» nella "
+"«Tabella di stato» per arrivarci).\n"
 "\n"
 
 #: data/core/help.cfg:709
@@ -4913,6 +4936,11 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"Dal menu «Azioni» puoi selezionare «Mostra le mosse del nemico» per "
+"evidenziare tutti i possibili esagoni in cui l'avversario si può muovere "
+"(con l'assunto che le tue unità stiano dove si trovano). Usa questa "
+"possibilità per assicurarti che i nemici non possano raggiungere le tue "
+"unità ferite o deboli durante il turno successivo."
 
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
@@ -4977,6 +5005,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"C'è qualche utile schermata riassuntiva nel menu principale: ad esempio, la "
+"«Tabella di stato» permette di sapere come se la cavino i nemici, e quanto "
+"bene tu stia facendo in confronto."
 
 #: data/hardwired/tips.cfg:27
 msgid ""
@@ -5090,6 +5121,11 @@ msgid ""
 "not be removed unless the unit regenerates, or spends a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Le unità avvelenate perderanno otto punti per turno finché non raggiungono "
+"un punto dalla morte. Resteranno sulla soglia della morte finché il veleno "
+"non è eliminato. I guaritori possono evitare che un'unità avvelenata "
+"peggiori, ma il veleno non sarà eliminato finché l'unità non si rigenera o "
+"passa un turno in un villaggio o di fianco ad un'unità con l'abilità «Cura»."
 
 #: data/hardwired/tips.cfg:67
 msgid ""
@@ -6529,20 +6565,19 @@ msgstr "Danni"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Totali"
 
 #: src/menu_events.cpp:213
-#, fuzzy
 msgid "This Turn"
-msgstr "Turno"
+msgstr "Questo turno"
 
 #: src/menu_events.cpp:222
 msgid "Inflicted"
-msgstr "Danni inflitti"
+msgstr "Inflitti"
 
 #: src/menu_events.cpp:246
 msgid "Taken"
-msgstr ""
+msgstr "Subiti"
 
 #: src/menu_events.cpp:296 src/menu_events.cpp:300
 msgid "Do you really want to dismiss him?"
@@ -6829,7 +6864,7 @@ msgstr "Cerca"
 
 #: src/menu_events.cpp:1817
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "Livello di debug sconosciuto: «$level»."
 
 #: src/menu_events.cpp:1819 src/menu_events.cpp:1828 src/menu_events.cpp:2133
 #: src/menu_events.cpp:2139 src/menu_events.cpp:2173 src/menu_events.cpp:2185
@@ -6839,7 +6874,7 @@ msgstr "errore"
 
 #: src/menu_events.cpp:1826
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "Dominio di debug sconosciuto: «$domain»."
 
 #: src/menu_events.cpp:1835
 msgid "Switched domain: '$domain' to level: '$level'."
@@ -6910,8 +6945,7 @@ msgstr "Sottocomando sconosciuto."
 
 #: src/menu_events.cpp:1959
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
-msgstr ""
-"Invia un'emozione o una azione personale in chat. Uso: /emote <messaggio>"
+msgstr "Invia un'emozione o una azione personale in chat. Uso: /me <messaggio>"
 
 #: src/menu_events.cpp:1962
 msgid "Unknown command."
@@ -6944,15 +6978,15 @@ msgstr "Comando sconosciuto: "
 
 #: src/menu_events.cpp:2105
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr "Non ho trovato nessuna etichetta contente '$search'."
+msgstr "Non ho trovato nessuna etichetta contente «$search»."
 
 #: src/menu_events.cpp:2134
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
+msgstr "Non è possibile usare droid per una fazione non valida: '$side'."
 
 #: src/menu_events.cpp:2140
 msgid "Can't droid networked side: '$side'."
-msgstr ""
+msgstr "Non è possibile usare droid per una fazione in rete: '$side'."
 
 #: src/menu_events.cpp:2174
 msgid "Usage: control <side> <nick>"
