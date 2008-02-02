@@ -1214,6 +1214,44 @@ def hack_syntax(filename, lines):
                 specials.append(value)
                 lastspecial = i
                 lines[i] = ""
+    # Upconvert old radius usage
+    if upconvert and "1.3.7" in versions and "older" not in versions:
+        radius_pos = wmlfind("radius=", WmlIterator(lines, filename))
+        while radius_pos is not None:
+            scopeIter = radius_pos.iterScope()
+            startline = scopeIter.lineno + 1
+            wspace = radius_pos.text
+            wspace = wspace[:len(wspace)-len(wspace.lstrip())]
+            radius_danger = False
+            to_indent = []
+            no_indent = []
+	    insideElem = 0
+            for i in scopeIter:
+                elem = i.element
+                if elem in ("[and]", "[or]", "[not]"):
+                    radius_danger = True
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
+		    insideElem += 1
+		elif insideElem:
+		    if elem in ("[/and]", "[/or]", "[/not]"):
+		        insideElem -= 1
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
+                elif elem in ("variable=", "side=", "count=", "adjacent="):
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
+                else:
+                    to_add = [txt+'\n' for txt in i.text.splitlines()]
+                    to_add[0] = baseindent + to_add[0]
+                    to_indent.extend(to_add)
+            if radius_danger:
+                lines = lines[:startline] + [wspace + "[and]\n"] + to_indent +[
+                    wspace + "[/and]\n"] + no_indent + lines[scopeIter.lineno:]
+		radius_pos.lines = lines
+                modcount += 1
+                #backup to rescan
+                radius_pos.seek(startline-1)
+                #pass the inserted content
+                radius_pos.seek(startline+len(to_indent)+1)
+            radius_pos = wmlfind("radius=", radius_pos)
     # Boucmanize death animations
     if future:
         in_death = None
@@ -1653,6 +1691,7 @@ Usage: wmllint [options] [dir]
     -h, --help                 Emit this help message and quit.
     -d, --dryrun               List changes but don't perform them.
     -n, --nolift               Don't perform version-lifting
+    -o, --oldversion           Specify version to begin with.
     -v, --verbose              -v        lists changes.
                                -v -v     names each file before it's processed.
                                -v -v -v  shows verbose parse details.
@@ -1666,49 +1705,53 @@ Usage: wmllint [options] [dir]
 if __name__ == '__main__':
     global versions
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdfDhrsv", [
-            "help",
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhno:rsv", [
+            "clean",
+            "diffs",
             "dryrun",
             "future",
-            "verbose",
-            "clean",
-            "revert",
-            "diffs",
-            "stripcr",
+            "help",
             "nolift",
+            "oldversion=",
+            "revert",
+            "stripcr",
+            "verbose",
             ])
     except getopt.GetoptError:
         help()
         sys.exit(1)
-    dryrun = False
-    future = False
-    verbose = 0
     clean = False
     diffs = False
+    dryrun = False
+    future = False
+    oldversion = 'older'
     revert = False
     stripcr = False
     upconvert = True
+    verbose = 0
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
             sys.exit(0)
-        elif switch in ('-f', '--future'):
-            future = True
-        elif switch in ('-v', '--verbose'):
-            verbose += 1
+        elif switch in ('-c', '--clean'):
+            clean = True
         elif switch in ('-d', '--dryrun'):
             dryrun = True
             verbose = max(1, verbose)
-        elif switch in ('-c', '--clean'):
-            clean = True
-        elif switch in ('-d', '--diffs'):
+        elif switch in ('-D', '--diffs'):
             diffs = True
+        elif switch in ('-f', '--future'):
+            future = True
+        elif switch in ('-n', '--nolift'):
+            upconvert = False
+        elif switch in ('-o', '--oldversion'):
+            oldversion = val
         elif switch in ('-r', '--revert'):
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
-        elif switch in ('-n', '--nolift'):
-            upconvert = False
+        elif switch in ('-v', '--verbose'):
+            verbose += 1
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
         sys.exit(1)
@@ -1718,6 +1761,11 @@ if __name__ == '__main__':
     versions.sort()
     # Relies on 'older' sorting before trunk
     versions = [versions[-2]] + versions[:-2] + [versions[-1]]	# Move 'older' to front
+    if oldversion in versions:
+        versions = versions[versions.index(oldversion):]
+    else:
+        print >>sys.stderr, "wmllint: unrecognized version."
+        sys.exit(1)
     if not dryrun and not clean and not revert and len(versions) > 1:
         explain = "Upgrades for:"
         for i in range(len(versions)-1):
@@ -1822,17 +1870,20 @@ if __name__ == '__main__':
             print msg
         return transformed
 
-    if upconvert:
-        maptransforms = [maptransform1, maptransform2]
+    if upconvert and "1.3.1" in versions and "older" not in versions:
+        maptransforms = [maptransform2]
     else:
-        maptransforms = []
+        maptransforms = [maptransform1, maptransform2]
 
     if not arguments:
         arguments = ["."]
 
     for dir in arguments:
         ofp = None
-        lock_terrain_coding = None
+        if "older" in versions:
+            lock_terrain_coding = None
+        else:
+            lock_terrain_coding = "newstyle"
         for fn in allcfgfiles(dir):
             if verbose >= 2:
                 print fn + ":"
