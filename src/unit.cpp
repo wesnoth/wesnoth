@@ -1356,12 +1356,10 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		if(ut) {
 			animations_ = ut->animations();
 		} else {
-			unit_animation::fill_initial_animations(animations_,image::locator(cfg_["image"]));
-			unit_animation::add_anims(animations_,cfg_);
+			unit_animation::fill_initial_animations(animations_,cfg_);
 		}
 	} else {
-		unit_animation::fill_initial_animations(animations_,image::locator(cfg_["image"]));
-		unit_animation::add_anims(animations_,cfg_);
+		unit_animation::fill_initial_animations(animations_,cfg_);
 	}
 	// Remove animations from private cfg, since they're not needed there now
 	cfg_.clear_children("animation");

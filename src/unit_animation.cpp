@@ -284,8 +284,9 @@ int unit_animation::matches(const game_display &disp,const gamemap::location& lo
 }
 
 
-void unit_animation::fill_initial_animations( std::vector<unit_animation> & animations,image::locator default_image)
+void unit_animation::fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg)
 {
+	const image::locator default_image = image::locator(cfg["image"]);
 	 animations.push_back(unit_animation(0,unit_frame(default_image,300),"",unit_animation::DEFAULT_ANIM));
 	 animations.push_back(unit_animation(0,unit_frame(default_image,300,"","",display::rgb(255,255,255),"0.0~0.3:100,0.3~0.0:200"),"selected",unit_animation::DEFAULT_ANIM));
 	 animations.push_back(unit_animation(0,unit_frame(default_image,150),"leading",unit_animation::DEFAULT_ANIM));
@@ -304,6 +305,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	 animations.push_back(unit_animation(0,unit_frame(default_image,1),"victory",unit_animation::DEFAULT_ANIM));
 	 animations.push_back(unit_animation(-150,unit_frame(default_image,150,"1~0"),"pre_teleport",unit_animation::DEFAULT_ANIM));
 	 animations.push_back(unit_animation(0,unit_frame(default_image,150,"0~1"),"post_teleport",unit_animation::DEFAULT_ANIM));
+	 add_anims(animations,cfg);
 }
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
