@@ -499,12 +499,13 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().status = _("Turn ") + turn;
 		} else {
 			games_.back().started = false;
-			if(slots != "")
-				games_.back().status = std::string(ngettext(_("Vacant Slot:"), _("Vacant Slots:"),
-				                                            games_.back().vacant_slots)) + " " + slots;
-				if(games_.back().vacant_slots > 0 && games_.back().password_required) {
+			if (games_.back().vacant_slots > 0) {
+				games_.back().status = std::string(_n("Vacant Slot:", "Vacant Slots:",
+						games_.back().vacant_slots)) + " " + slots;
+				if (games_.back().password_required) {
 					games_.back().status += std::string(" (") + std::string(_("Password Required")) + ")";
 				}
+			}
 		}
 
 		games_.back().use_map_settings = ((**game)["mp_use_map_settings"] == "yes");
