@@ -143,14 +143,14 @@ Preferences::
 
 Credits::
  Click this button for a list of major Wesnoth contributors. You
- will often be able to reach them in real time at at
+ will often be able to reach them in real time at
  irc.freenode.org:6667 on #wesnoth.
 
 Quit::
  Click this button to close Wesnoth. 
 
 Help::
- Click this button to open the integrated Ingame Help System. It will provide 
+ Click this button to open the integrated in game Help System. It will provide 
  you with information about units and all other gameplay relevant things of the
  game. Most of those things are mentioned in this manual.
 
@@ -250,7 +250,7 @@ This creates a game just running on your computer. You can either use it as
 hotseat game where everyone plays at the same computers by taking turns in 
 the 'hotseat'. Hotseat games will take about the same time to play as games 
 played over the Internet. Or you can just play a scenario against AI 
-oponents rather than human players. This can be a good way to become familiar
+opponents rather than human players. This can be a good way to become familiar
 with the various maps that are used for multiplayer games before playing
 against real opponents. It can also be used as a simple way to explore
 the capabilities of units from the different factions by choosing which
@@ -276,7 +276,7 @@ Across the top of the screen from left to right are the following items:
 
   1. Menu button
   2. Actions button
-  3. Turn counter (current turn/maxmimum number of turns)
+  3. Turn counter (current turn/maximum number of turns)
   4. Your gold
   5. Villages (your villages/total number of villages)
   6. Your total units
@@ -284,7 +284,7 @@ Across the top of the screen from left to right are the following items:
   8. Your income
   9. Current time or time left (in timed multiplayer games)
  10. Current hex type
- 11. Current hex position (x-coordinate,y-coordinate)
+ 11. Current hex position (x-coordinate, y-coordinate)
 
 image:images/right_pane.jpg["Right Panel"]
 
@@ -326,8 +326,8 @@ Your Army
 
 All game types use the same soldiers, called units. Each unit is
 identified by Race, Level, and Class. Each unit has strengths and
-weaknesses, based on their Resistance, current Terrain, and Level. Full
-details are in the UnitTables and MoveTypeTables.
+weaknesses, based on their Resistances, current Terrain, and Level. Full
+details are in the in game help.
 
 Life and Death - Experience
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -375,7 +375,7 @@ At the start of each scenario, you have the option to save it. If you
 are defeated, you may load it and try again. Once you have succeeded,
 you will again be asked to save the next scenario and play that. If you
 have to stop playing during a scenario, you can save your turn and load
-it again later. Just remember, a good BFW player never needs to save
+it again later. Just remember, a good Battle for Wesnoth player never needs to save
 during a scenario. However, most beginners tend to do so rather often.
 
 
@@ -459,7 +459,7 @@ Recruiting and Recalling
 image:images/recruit.jpg["Recruit dialog"]
 
 The major use for gold is to build your army by recruiting new units
-or recalling units from previous scenarios in a campagin. Units may be
+or recalling units from previous scenarios in a campaign. Units may be
 recruited or recalled when the leader is on a keep whose castle has at
 least one vacant castle hex.
 
@@ -497,7 +497,7 @@ side starts losing gold, if it is equal, no income is gained or lost.
 Units
 ~~~~~
 
-Battle for Wesnoth has hundreds of unit types which are characterised
+Battle for Wesnoth has hundreds of unit types which are characterized
 by a rich set of statistics. In addition, individual units can have
 specific <<traits>> that make them subtly different from other units
 of the same type. Finally, campaign designers can add unique units to
@@ -602,11 +602,11 @@ Dextrous::
   inflict an additional point of damage with each arrow.
 Healthy::
   Renowned for their vitality, some dwarves are sturdier than others and can
-  rest even when travelling.
+  rest even when traveling.
   Healthy units have 2 more HP than usual and rest heal 2 additional HP after
   each turn they did not fight.
 Fearless::
-  Does not suffer from a negative attack bonus during its unfavourable
+  Does not suffer from a negative attack bonus during its unfavorable
   time of day (Trolls, Walking Corpses).
 
 There are also some traits that are not assigned randomly.
@@ -853,20 +853,19 @@ not control.
 
 image:images/orb-none.jpg["no orb"] Enemy units have no orb on the top of their energy bar.
 
-Planchets, Team Colors, and Hero Icons
+Ellipses, Team Colors, and Hero Icons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Below each unit there will normally be a colored planchet or base. The
+Below each unit there will normally be a colored ellipses or base. The
 color identifies its team; in a campaign game, the human-player color is
 red. The team color will also show up in parts of the unit's clothing,
 or possibly on a shield insignia.
 
-Usually the planchet will be a solid disk, looking like an ellipse
-because of the angle of view. Sometimes (usually on a level 0 unit),
-you will see a planchet that looks like helicopter blades; this indicates
+Usually the ellipse will be a solid disk. On level 0 units,
+you will see an ellipse that has broken lines. This indicates
 that the unit has no Zone of Control.
 
-Some campaigns use a star-shaped planchet to indicate leaders; others use
+Some campaigns use a star-shaped base to indicate leaders; others use
 a shield-shaped hero icon next to the unit's upper-right corner. Still
 others have no specific hero indicator at all. Which (if any) is used
 is a stylistic choice left to campaign designers.
@@ -921,7 +920,7 @@ Attack types
    ice bolt.
  - *Fire*: Weapons using fire to roast the foe like a chicken. Example:
    A drake's fire breath.
- - *Arcane*: An attack that dispells the magic animating zombies,
+ - *Arcane*: An attack that dispels the magic animating zombies,
    specters, and other undead creatures. Example: A white mage's magic attack.
 
 Resistance
@@ -1001,7 +1000,7 @@ Basic Strategy
 ~~~~~~~~~~~~~~
 
 The following basic combat principles and tips are intended to help
-starting off your career as a wesnothian battle veteran. The minor
+starting off your career as a Wesnothian battle veteran. The minor
 concrete examples are somewhat tied to the "Heir to the Throne" campaign.
 
 Don't waste units
