@@ -1568,7 +1568,12 @@ const surface unit::still_image(bool scaled) const
 
 void unit::set_standing(const gamemap::location& loc, bool with_bars)
 {
-	const game_display * disp =  game_display::get_singleton();
+	game_display * disp =  game_display::get_singleton();
+	gamemap::location arr[6];
+	get_adjacent_tiles(loc, arr);
+	for (unsigned int i = 0; i < 6; i++) {
+		disp->invalidate(arr[i]);
+	}
 	if (disp->idle_anim()) {
 		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
 	} else {

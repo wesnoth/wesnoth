@@ -84,6 +84,15 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 	if(  target_time - animator.get_animation_time() < 100 ) target_time +=150;
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 	animator.wait_until(target_time);
+	gamemap::location arr[6];
+	get_adjacent_tiles(a, arr);
+	for (unsigned int i = 0; i < 6; i++) {
+		disp->invalidate(arr[i]);
+	}
+	get_adjacent_tiles(b, arr);
+	for (unsigned int i = 0; i < 6; i++) {
+		disp->invalidate(arr[i]);
+	}
 }
 
 namespace unit_display
