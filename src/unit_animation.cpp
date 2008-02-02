@@ -287,25 +287,99 @@ int unit_animation::matches(const game_display &disp,const gamemap::location& lo
 void unit_animation::fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg)
 {
 	const image::locator default_image = image::locator(cfg["image"]);
-	 animations.push_back(unit_animation(0,unit_frame(default_image,300),"",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,300,"","",display::rgb(255,255,255),"0.0~0.3:100,0.3~0.0:200"),"selected",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,150),"leading",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,600,"0~1:600"),"recruited",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,0),"standing",unit_animation::DEFAULT_ANIM));
-	// Idle anims can be empty
-	 animations.push_back(unit_animation(0,unit_frame(default_image,600,"1.0","",display::rgb(255,255,255),"1~0:600"),"levelin",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelout",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,500),"healing",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30","","","","","heal.wav"),"healed",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30","","","","","poison.ogg"),"poisoned",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,150,"","0~1:150"),"movement",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(-150,unit_frame(default_image,300),"defend",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(-150,unit_frame(default_image,300),"attack",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,600,"1~0:600"),"death",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,1),"victory",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(-150,unit_frame(default_image,150,"1~0"),"pre_teleport",unit_animation::DEFAULT_ANIM));
-	 animations.push_back(unit_animation(0,unit_frame(default_image,150,"0~1"),"post_teleport",unit_animation::DEFAULT_ANIM));
-	 add_anims(animations,cfg);
+	std::vector<unit_animation>  animation_base;
+	std::vector<unit_animation>::const_iterator itor;
+	add_anims(animations,cfg);
+	for(itor = animations.begin(); itor != animations.end() ; itor++) {
+		if (std::find(itor->event_.begin(),itor->event_.end(),"_default_")!= itor->event_.end()) {
+			animation_base.push_back(*itor);
+			animation_base.back().base_score_ = unit_animation::DEFAULT_ANIM;
+			animation_base.back().event_.clear();
+		}
+	}
+	if(animation_base.empty()) {
+#warning "restore correct default anim"
+		animation_base.push_back(unit_animation(0,unit_frame(default_image,1),"",unit_animation::DEFAULT_ANIM));
+	}
+
+	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
+		unit_animation tmp_anim = *itor;
+		// provide all default anims
+		animations.push_back(*itor);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
+		tmp_anim.event_ = utils::split("selected");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","0~1:600");
+		tmp_anim.event_ = utils::split("recruited");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","1~0:600",display::rgb(255,255,255));
+		tmp_anim.event_ = utils::split("levelin");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","0~1:600",display::rgb(255,255,255));
+		tmp_anim.event_ = utils::split("levelout");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,");
+		tmp_anim.event_ = utils::split("movement");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,");
+		tmp_anim.event_ = utils::split("movement");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(-150);
+		tmp_anim.event_ = utils::split("defend");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(-150);
+		tmp_anim.event_ = utils::split("attack");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","1~0:600");
+		tmp_anim.event_ = utils::split("death");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","1~0:150");
+		tmp_anim.event_ = utils::split("pre_teleport");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","0~1:150");
+		tmp_anim.event_ = utils::split("post_teleport");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
+		tmp_anim.event_ = utils::split("healed");
+		animations.push_back(tmp_anim);
+		animations.back().sub_anims_["_healed_sound"] = crude_animation();
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame());
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","heal.wav"),true);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
+		tmp_anim.event_ = utils::split("poisoned");
+		animations.push_back(tmp_anim);
+		animations.back().sub_anims_["_poison_sound"] = crude_animation();
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame());
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","poison.ogg"),true);
+
+	}
+
 }
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
@@ -334,7 +408,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
 	const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
 	for(anim_itor = standing_anims.begin(); anim_itor != standing_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="standing";
+		(**anim_itor)["apply_to"] ="standing,_default_";
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
@@ -473,6 +547,18 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 }
 
+void unit_animation::crude_animation::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset) 
+{
+	set_begin_time(start_time);
+	if(!highlight.empty()) highlight_ratio_ = progressive_double(highlight,get_animation_duration());
+	if(!offset.empty()) offset_ = progressive_double(offset,get_animation_duration());
+	if(!blend_ratio.empty()) {
+		blend_ratio_ = progressive_double(blend_ratio,get_animation_duration());
+		blend_with_ = blend_color;
+	}
+	
+
+}
 const std::string &unit_animation::crude_animation::halo(const std::string&default_val ) const
 {
 	return get_current_frame().halo(get_current_frame_time(),halo_.get_current_element(get_animation_time() - get_begin_time(),default_val));

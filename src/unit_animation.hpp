@@ -93,6 +93,7 @@ class unit_animation
 			explicit crude_animation(const config& cfg,const std::string frame_string ="frame");
 			virtual ~crude_animation();
 			bool need_update() const;
+			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
 			const std::string &halo(const std::string&default_val ="") const;
 			int halo_x(const int default_val = 0) const;
 			int halo_y(const int default_val = 0) const;

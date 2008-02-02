@@ -57,6 +57,7 @@ public:
 
 	int get_begin_time() const;
 	int get_end_time() const;
+        void set_begin_time(int new_begin_time);
 
 	int time_to_tick(int animation_time) const;
 	int tick_to_time(int animation_tick) const;
