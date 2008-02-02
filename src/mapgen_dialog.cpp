@@ -312,7 +312,7 @@ void default_map_generator::user_config(display& disp)
 		update_rect(xpos,ypos,width,height);
 
 		disp.update_display();
-		disp.delay(10);
+		disp.delay(100);
 		events::pump();
 	}
 
