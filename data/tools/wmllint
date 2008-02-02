@@ -741,11 +741,18 @@ def sanity_check(filename, lines):
             has_tr_mark = value.lstrip().startswith("_")
             if key == 'role':
                 present.append(value)
-            if key == "speaker" and has_tr_mark:
+            elif key.startswith("#"):	# FIXME: parse_attribute is confused.
+                pass
+            elif key == 'letter':	# May be led with _s for void 
+                pass
+            elif key == 'name':		# FIXME: check this someday
+                pass
+            elif key == "speaker" and has_tr_mark:
                 print '"%s", line %d: %s should not have translation mark' \
                           % (filename, i+1, key)                
-            elif key in ("message", "user_description") and not value.startswith("$") and not has_tr_mark:
-                print '"%s", line %d: %s needs translation mark' \
+            elif key in ("message", "user_description", "story", "note", "text", "summary", "caption", "label", "unit_description") and not value.startswith("$"):
+                if not has_tr_mark:
+                    print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
             elif  key == "description":
                 if (in_trait or in_objective) and not has_tr_mark:
@@ -761,6 +768,9 @@ def sanity_check(filename, lines):
                 elif not in_objective and value not in present:
                     print '"%s", line %d: unknown \'%s\' referred to by description' \
                           % (filename, i+1, value)
+            elif has_tr_mark:
+                print '"%s", line %d: %s has translation mark: correct?' \
+                          % (filename, i+1, key)                
         except TypeError:
             pass
     # Interpret magic comments for setting the sage pattern of units.
