@@ -205,6 +205,7 @@ cutter_DEPENDENCIES=libwesnoth-core.a
 test_SOURCES = \
 	tests/main.cpp \
 	tests/test_util.cpp \
+	tests/test_network_worker.cpp \
 	$(wesnoth_source)
 
 test_LDADD = $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a 
