@@ -1795,6 +1795,8 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			screen->highlight_hex(speaker->first);
 			const int offset_from_center = maximum<int>(0, speaker->first.y - 1);
 			screen->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
+			screen->highlight_hex(speaker->first);
+			screen->draw(false);
 
 			if(image.empty()) {
 				image = speaker->second.profile();
