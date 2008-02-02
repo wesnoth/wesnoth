@@ -465,6 +465,12 @@ static PyObject* unit_movement_left(wesnoth_unit* unit, void* /*closure*/)
 	return Py_BuildValue(INTVALUE, unit->unit_->movement_left());
 }
 
+static PyObject* unit_max_movement(wesnoth_unit* unit, void* /*closure*/)
+{
+	u_check;
+	return Py_BuildValue(INTVALUE, unit->unit_->total_movement());
+}
+
 static PyObject* unit_can_attack(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
@@ -501,6 +507,12 @@ static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
 	return Py_BuildValue(INTVALUE, utils::string_bool(unit->unit_->get_state("poisoned")));
 }
 
+static PyObject* unit_slowed(wesnoth_unit* unit, void* /*closure*/)
+{
+	u_check;
+	return Py_BuildValue(INTVALUE, utils::string_bool(unit->unit_->get_state("slowed")));
+}
+
 static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
@@ -534,10 +546,14 @@ static PyGetSetDef unit_getseters[] = {
 		"The side of the unit, starting with 1.")
 	GSDEF("movement_left", unit_movement_left,
 		"How many movement points the unit has left.")
+	GSDEF("max_movement", unit_max_movement,
+		"Maximum movement points of the unit.")
 	GSDEF("can_attack",	unit_can_attack,
 		"If the unit can still attack.")
 	GSDEF("poisoned", unit_poisoned,
 		"If the unit is poisoned.")
+	GSDEF("slowed", unit_slowed,
+		"If the unit is slowed.")
 	GSDEF("stoned", unit_stoned,
 		"If the unit is stoned.")
 	{NULL, NULL, NULL, NULL, NULL }
