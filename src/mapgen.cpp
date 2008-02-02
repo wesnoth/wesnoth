@@ -365,13 +365,11 @@ struct road_path_calculator : cost_calculator
 				  windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))) {}
 	virtual double cost(const location& src, const location& loc, const double so_far, const bool isDst) const;
 
-	void terrain_changed(const location& loc) { loc_cache_.erase(loc); }
 	mutable int calls;
 private:
 	const terrain_map& map_;
 	const config& cfg_;
 	int windiness_;
-	mutable std::map<location, double> loc_cache_;
 	mutable std::map<t_translation::t_letter, double> cache_;
 };
 
@@ -385,19 +383,23 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 		return (getNoPathValue());
 	}
 
-	const std::map<location,double>::const_iterator val = loc_cache_.find(loc);
-	if(val != loc_cache_.end()) {
-		return val->second;
-	}
-
 	// We multiply the cost by a random amount,
 	// depending upon how 'windy' the road should be.
 	// If windiness is 1, that will mean that the cost is always genuine,
 	// and so the road always takes the shortest path.
 	// If windiness is greater than 1, we sometimes over-report costs
 	// for some segments, to make the road wind a little.
-	const double windiness = windiness_ > 0 ? (double(rand()%windiness_) + 1.0) : 1.0;
 
+	double windiness = 1.0;
+
+	if (windiness_ > 0) {
+		// simplified version of pseudo_random from builder.cpp
+		unsigned int a = (loc.x + 92872973) ^ 918273;
+		unsigned int b = (loc.y + 1672517) ^ 128123;
+		unsigned int random =  a*b + a + b;
+		windiness += static_cast<double>(random % windiness_);
+	}
+	
 	const t_translation::t_letter c = map_[loc.x][loc.y];
 	const std::map<t_translation::t_letter, double>::const_iterator itor = cache_.find(c);
 	if(itor != cache_.end()) {
@@ -413,7 +415,6 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 	}
 
 	cache_.insert(std::pair<t_translation::t_letter, double>(c,res));
-	loc_cache_.insert(std::pair<location, double>(loc,windiness*res));
 	return windiness*res;
 }
 
@@ -1026,8 +1027,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				continue;
 			}
 
-			calc.terrain_changed(*step);
-
 			// Find the configuration which tells us
 			// what to convert this tile to, to make it into a road.
 			const config* const child = cfg.find_child("road_cost", "terrain",
@@ -1283,7 +1282,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	LOG_NG << "placed villages\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
-
 
 	return output_map(terrain, starting_positions);
 }
