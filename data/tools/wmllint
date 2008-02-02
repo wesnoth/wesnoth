@@ -698,11 +698,12 @@ def sanity_check(filename, lines):
         except TypeError:
             pass
     # Consistency-check the description attributes in [side], [unit], [recall],
-    # and [message] scopes.
+    # and [message] scopes, also correctness-check translation marks.
     present = []
     in_scenario = False
     in_person = False
     in_objective = False
+    in_trait = False
     ignoreable = False
     for i in range(len(lines)):
         if "[scenario]" in lines[i]:
@@ -713,6 +714,10 @@ def sanity_check(filename, lines):
             in_objective = True
         elif "[/objective]" in lines[i]:
             in_objective = False
+        elif "[trait]" in lines[i]:
+            in_trait = True
+        elif "[/trait]" in lines[i]:
+            in_trait = False
         elif "[kill]" in lines[i] or "[object]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
             ignoreable = True
         elif "[/kill]" in lines[i] or "[/object]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
@@ -743,10 +748,10 @@ def sanity_check(filename, lines):
                 print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
             elif  key == "description":
-                if in_objective and not has_tr_mark:
+                if (in_trait or in_objective) and not has_tr_mark:
                     print '"%s", line %d: description in [objectives] needs translation mark' \
                           % (filename, i+1)
-                elif not in_objective and has_tr_mark:
+                elif not (in_trait or in_objective) and has_tr_mark:
                     print '"%s", line %d: description should not have translation mark' \
                           % (filename, i+1)
                 if in_person:
