@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2007-12-11 17:17+0100\n"
+"POT-Creation-Date: 2008-02-02 21:15+0100\n"
 "PO-Revision-Date: 2007-12-15 15:28+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -148,9 +148,8 @@ msgid ""
 "for more information about command mode)."
 msgstr ""
 "Affiche des informations supplémentaires de débogage et permet d'utiliser "
-"des options en ligne de commande dans le jeu (voir Wiki : "
-"http://www.wesnoth.org/wiki/CommandMode pour plus d'informations sur la "
-"ligne de commande)."
+"des options en ligne de commande dans le jeu (voir Wiki : http://www.wesnoth."
+"org/wiki/CommandMode pour plus d'informations sur la ligne de commande)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -220,8 +219,8 @@ msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
 msgstr ""
-"Compresse une sauvegarde au format gzip et la place dans "
-"I<fichier d'entrée.gz> et efface I<fichier_d'entrée>."
+"Compresse une sauvegarde au format gzip et la place dans I<fichier d'entrée."
+"gz> et efface I<fichier_d'entrée>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:85 ../../doc/man/wesnothd.6:55
@@ -445,10 +444,10 @@ msgid ""
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
 "number of players possible in the chosen scenario."
 msgstr ""
-"Les options spécifiques au mode multijoueur sont marquées d'un "
-"I<nombre>. I<nombre> doit être remplacé par un numéro de joueur. Il s'agit "
-"souvent de 1 ou de 2 mais cela dépend du nombre possible de joueurs pour le "
-"scénario choisi."
+"Les options spécifiques au mode multijoueur sont marquées d'un I<nombre>. "
+"I<nombre> doit être remplacé par un numéro de joueur. Il s'agit souvent de 1 "
+"ou de 2 mais cela dépend du nombre possible de joueurs pour le scénario "
+"choisi."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:156
@@ -542,8 +541,8 @@ msgid ""
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
 "Permet de sélectionner une faction. Cette faction est choisie par "
-"identifiant. Les factions sont décrites dans le fichier "
-"B<data/multiplayer.cfg>."
+"identifiant. Les factions sont décrites dans le fichier B<data/multiplayer."
+"cfg>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:194
@@ -787,7 +786,8 @@ msgstr "Serveur multijoueur de la Bataille pour Wesnoth"
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
 msgstr ""
-"wesnothd - Serveur pour jeu multijoueur en réseau de la Bataille pour B<Wesnoth>"
+"wesnothd - Serveur pour jeu multijoueur en réseau de la Bataille pour "
+"B<Wesnoth>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
@@ -795,8 +795,8 @@ msgid ""
 "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<chemin>\\|] [\\|B<-p> I<port>\\|] "
-"[\\|B<-t> I<nombre>\\|] [\\|B<-T> I<nombre>\\|]"
+"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<chemin>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<nombre>\\|] [\\|B<-T> I<nombre>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:39
@@ -968,7 +968,10 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
-msgid "The number of allowed connections from the same IP. (default: B<5>)"
+#, fuzzy
+msgid ""
+"The number of allowed connections from the same IP. B<0> means infinite. "
+"(default: B<5>)"
 msgstr ""
 "Nombre maximum de connexions ayant la même adresse IP. (par défaut : B<5>)"
 
@@ -987,9 +990,9 @@ msgid ""
 "computer,human,network,player>."
 msgstr ""
 "Noms/surnoms non acceptés par le serveur. Les caractères génériques « * » et "
-"« ? » sont acceptés. Voir B<glob>(7) pour plus d'informations. Les valeurs par "
-"défaut (utilisées si rien n'est précisé) sont : B<*admin*,*admln*,*server*,ai,"
-"ai?,computer,human,network,player>."
+"« ? » sont acceptés. Voir B<glob>(7) pour plus d'informations. Les valeurs "
+"par défaut (utilisées si rien n'est précisé) sont : B<*admin*,*admln*,"
+"*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:120

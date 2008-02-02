@@ -84,7 +84,8 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-同一IP允许的连接数。(默认值：\fB5\fP)
+The number of allowed connections from the same IP. \fB0\fP means
+infinite. (default: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
 服务器不允许使用的用户名/昵称。可以使用`*'和`?'通配符来定义。更多信息请查看 \fBglob\fP(7) 。默认值(如果用户没有指定则自动使用)是：
