@@ -702,15 +702,20 @@ def sanity_check(filename, lines):
     present = []
     in_scenario = False
     in_person = False
+    in_objective = False
     ignoreable = False
     for i in range(len(lines)):
         if "[scenario]" in lines[i]:
             in_scenario = True
         elif "[/scenario]" in lines[i]:
             in_scenario = False
-        elif "[objective]" in lines[i] or "[kill]" in lines[i] or "[object]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
+        elif "[objective]" in lines[i]:
+            in_objective = True
+        elif "[/objective]" in lines[i]:
+            in_objective = False
+        elif "[kill]" in lines[i] or "[object]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
             ignoreable = True
-        elif "[/objective]" in lines[i] or "[/kill]" in lines[i] or "[/object]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
+        elif "[/kill]" in lines[i] or "[/object]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
             ignoreable = False
         elif "[side]" in lines[i] or "[unit]" in lines[i] or "[recall]" in lines[i]:
             in_person = True
@@ -726,17 +731,31 @@ def sanity_check(filename, lines):
             continue
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
+            if "wmllint: ignore" in comment:
+                continue
+            has_tr_mark = value.lstrip().startswith("_")
             if key == 'role':
                 present.append(value)
-            if "wmllint: ignore" in comment or key != "description":
-                continue
-            if in_person:
-                present.append(value)
-            elif value in ('narrator', 'unit', 'second_unit') or value[0] in ("$", "{"):
-                continue
-            elif value not in present:
-                print '"%s", line %d: unknown \'%s\' referred to by description' \
-                      % (filename, i+1, value)
+            if key == "speaker" and has_tr_mark:
+                print '"%s", line %d: %s should not have translation mark' \
+                          % (filename, i+1, key)                
+            elif key in ("message", "user_description") and not value.startswith("$") and not has_tr_mark:
+                print '"%s", line %d: %s needs translation mark' \
+                          % (filename, i+1, key)
+            elif  key == "description":
+                if in_objective and not has_tr_mark:
+                    print '"%s", line %d: description in [objectives] needs translation mark' \
+                          % (filename, i+1)
+                elif not in_objective and has_tr_mark:
+                    print '"%s", line %d: description should not have translation mark' \
+                          % (filename, i+1)
+                if in_person:
+                    present.append(value)
+                elif value in ('narrator', 'unit', 'second_unit') or value[0] in ("$", "{"):
+                    continue
+                elif not in_objective and value not in present:
+                    print '"%s", line %d: unknown \'%s\' referred to by description' \
+                          % (filename, i+1, value)
         except TypeError:
             pass
     # Interpret magic comments for setting the sage pattern of units.
