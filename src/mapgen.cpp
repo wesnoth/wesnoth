@@ -987,7 +987,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		if(roads_between_castles && road < castles.size()*castles.size()) {
 			const size_t src_castle = road/castles.size();
 			const size_t dst_castle = road%castles.size();
-			if(src_castle == dst_castle) {
+			if(src_castle >= dst_castle) {
 				continue;
 			}
 
