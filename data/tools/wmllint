@@ -741,6 +741,9 @@ def sanity_check(filename, lines):
             has_tr_mark = value.lstrip().startswith("_")
             if key == 'role':
                 present.append(value)
+            if has_tr_mark and '{' in value:
+                print '"%s", line %d: macro reference in translatable string'\
+                      % (filename, i+1)
             # Check correctness of translation marks and desciptions
             if key.startswith("#"):	# FIXME: parse_attribute is confused.
                 pass
