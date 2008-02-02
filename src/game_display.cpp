@@ -238,6 +238,14 @@ void game_display::highlight_hex(gamemap::location hex)
 }
 
 
+void game_display::display_unit_hex(gamemap::location hex)
+{
+	if (units_.count(hex)) {
+		displayedUnitHex_ = hex;
+		invalidate_unit();
+	}
+}
+
 void game_display::invalidate_unit_after_move(const gamemap::location& src, const gamemap::location& dst)
 {
 	if (src == displayedUnitHex_) {

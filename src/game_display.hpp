@@ -75,6 +75,10 @@ public:
 	//! while highlighting is used when a location has been moused over.
 	virtual void highlight_hex(gamemap::location hex);
 
+	//! Change the unit to be displayed in the sidebar.
+	//! This is used when selecting or highlighting is not wanted.
+	void display_unit_hex(gamemap::location hex);
+
 	//! Sets the paths that are currently displayed as available
 	//! for the unit to move along.
 	//! All other paths will be greyed out.

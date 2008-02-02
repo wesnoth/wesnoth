@@ -416,7 +416,8 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	// Stop the user from issuing any commands while the unit is moving.
 	const events::command_disabler disable_commands;
 
-	info_.disp.select_hex(from);
+	// show the unit in the sidebar without highlighting it
+	info_.disp.display_unit_hex(from);
 	info_.disp.update_display();
 
 	log_scope2(ai, "move_unit");
