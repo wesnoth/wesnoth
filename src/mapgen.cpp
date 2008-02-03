@@ -362,7 +362,8 @@ struct road_path_calculator : cost_calculator
 		        : calls(0), map_(terrain), cfg_(cfg),
 
 				  // Find out how windy roads should be.
-				  windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))) {}
+				  windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))),
+				  seed_(rand()) {}
 	virtual double cost(const location& src, const location& loc, const double so_far, const bool isDst) const;
 
 	mutable int calls;
@@ -370,6 +371,7 @@ private:
 	const terrain_map& map_;
 	const config& cfg_;
 	int windiness_;
+	int seed_;
 	mutable std::map<t_translation::t_letter, double> cache_;
 };
 
@@ -396,7 +398,7 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 		// modified pseudo_random taken from builder.cpp
 		unsigned int a = (loc.x + 92872973) ^ 918273;
 		unsigned int b = (loc.y + 1672517) ^ 128123;
-		unsigned int c = a*b + a + b;
+		unsigned int c = a*b + a + b + seed_;
 		unsigned int random = c*c;
 		// this is just "big random number modulo windiness_"
 		// but avoid the "modulo by a low number (like 2)"
