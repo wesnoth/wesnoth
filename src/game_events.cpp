@@ -1796,7 +1796,6 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			const int offset_from_center = maximum<int>(0, speaker->first.y - 1);
 			screen->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
 			screen->highlight_hex(speaker->first);
-			screen->draw(false);
 
 			if(image.empty()) {
 				image = speaker->second.profile();
@@ -1820,7 +1819,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				}
 			}
 			LOG_DP << "done scrolling to speaker...\n";
+		} else {
+			screen->highlight_hex(gamemap::location::null_location);
 		}
+		screen->draw(false);
 
 		std::vector<std::string> options;
 		std::vector<vconfig::child_list> option_events;
