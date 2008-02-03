@@ -1574,7 +1574,7 @@ void unit::set_standing(const gamemap::location& loc, bool with_bars)
 	for (unsigned int i = 0; i < 6; i++) {
 		disp->invalidate(arr[i]);
 	}
-	if (disp->idle_anim()) {
+	if (preferences::show_standing_animations()) {
 		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
 	} else {
 		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"_disabled_"),with_bars,true,"",0,STATE_STANDING);

@@ -434,6 +434,11 @@ bool animate_map()
 	return utils::string_bool(preferences::get("animate_map"), true);
 }
 
+bool show_standing_animations()
+{
+	return utils::string_bool(preferences::get("unit_standing_animations"), true);
+}
+
 bool show_fps()
 {
 	return fps;
