@@ -392,12 +392,17 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 
 	double windiness = 1.0;
 
-	if (windiness_ > 0) {
-		// simplified version of pseudo_random from builder.cpp
+	if (windiness_ > 1) {
+		// modified pseudo_random taken from builder.cpp
 		unsigned int a = (loc.x + 92872973) ^ 918273;
 		unsigned int b = (loc.y + 1672517) ^ 128123;
-		unsigned int random =  a*b + a + b;
-		windiness += static_cast<double>(random % windiness_);
+		unsigned int c = a*b + a + b;
+		unsigned int random = c*c;
+		// this is just "big random number modulo windiness_"
+		// but avoid the "modulo by a low number (like 2)"
+		// because it can increase arithmetic patterns
+		int noise = random % (windiness_ * 137) / 137;
+		windiness += noise;
 	}
 	
 	const t_translation::t_letter c = map_[loc.x][loc.y];
