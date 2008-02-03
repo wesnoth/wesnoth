@@ -283,8 +283,11 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 		}
 
 		if (res == 0 && save_game_exists(*fname)) {
+			std::stringstream s;
+			s << _("Save already exists. Do you want to overwrite it?")
+			  << std::endl << _("Name: ") << *fname;
 			overwrite = gui::dialog(disp,_("Overwrite?"),
-				_("Save already exists. Do you want to overwrite it?"), gui::YES_NO).show();
+			    s.str(), gui::YES_NO).show();
 		} else {
 			overwrite = 0;
 		}
