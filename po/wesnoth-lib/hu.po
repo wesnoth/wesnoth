@@ -2,23 +2,24 @@
 # Hungarian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+#
 # Automatically generated, 2004.
 # Automatically generated <krics@linuxforum.hu>, 2004.
-# Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2007.
-#
-#
+# Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-27 13:24+0100\n"
-"PO-Revision-Date: 2007-11-04 00:27+0100\n"
+"PO-Revision-Date: 2008-02-03 08:07+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
-"Language-Team: Hungarian <hu@gnome.hu>\n"
+"Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: data/core/terrain.cfg:13
 msgid "None"
@@ -178,9 +179,8 @@ msgid "Mushroom Grove"
 msgstr "Gombamező"
 
 #: data/core/terrain.cfg:652
-#, fuzzy
 msgid "Mushroom Grove Lit"
-msgstr "Gombamező"
+msgstr "Megvilágított gombamező"
 
 #: data/core/terrain.cfg:662
 msgid "Rockbound Cave"
@@ -227,7 +227,7 @@ msgstr "Barlangfal"
 
 #: data/core/terrain.cfg:942
 msgid "Void"
-msgstr ""
+msgstr "Üresség"
 
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
 #: src/editor/editor_dialogs.cpp:423
@@ -371,7 +371,7 @@ msgstr "Nem sikerült létrehozni a könyvtárat"
 
 #: src/game_preferences.cpp:217
 msgid "No server has been defined."
-msgstr ""
+msgstr "Egy kiszolgáló sincs megadva."
 
 #: src/game_preferences.cpp:281
 msgid "player"
@@ -388,12 +388,14 @@ msgstr "MI lépések átugrása"
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
+"Visszajátszások mentése egyjátékos/többjátékos győzelem és többjátékos "
+"vereség esetén."
 
 #: src/game_preferences_display.cpp:164
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
-"Az automatikusan készült mentések mindig törlődjenek a pálya befejeztekor"
+"Az egyjátékos/többjátékos győzelem és a többjátékos vereség esetén készült "
+"automatikus mentések törlése."
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -460,9 +462,8 @@ msgid "Show Haloing Effects"
 msgstr "Haloing effektusok mutatása"
 
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Change Resolution"
-msgstr "Felbontás kiválasztása"
+msgstr "Felbontás megváltoztatása"
 
 #: src/game_preferences_display.cpp:182
 msgid "Theme"
@@ -490,11 +491,11 @@ msgstr "Csevegés sorainak időbélyegzése"
 
 #: src/game_preferences_display.cpp:190
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Szakértői beállítások"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Alapvető beállítások"
 
 #: src/game_preferences_display.cpp:192
 msgid "User Interface Sounds"
@@ -590,7 +591,7 @@ msgstr "A térképen való görgetés sebességének megváltoztatása"
 
 #: src/game_preferences_display.cpp:287 src/game_preferences_display.cpp:289
 msgid "Set the amount of chat lines shown"
-msgstr "Add meg a csevegés sorainak mennyiégét"
+msgstr "Add meg a csevegés sorainak mennyiségét"
 
 #: src/game_preferences_display.cpp:292
 msgid "Add a timestamp to chat messages"
@@ -624,7 +625,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum number of automatic saves to be retained"
-msgstr ""
+msgstr "Az automatikus mentések maximális számának korlátozása"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -633,12 +634,14 @@ msgstr "Ne animálja a számítógép lépéseit"
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
 msgstr ""
+"Visszajátszások mentése egyjátékos győzelem és egyjátékos/többjátékos "
+"vereség esetén."
 
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
 msgstr ""
-"Az automatikusan készült mentések mindig törlődjenek a pálya befejeztekor"
+"Az egyjátékos győzelem és egyjátékos/többjátékos vereség alkalmával "
+"készített (felhasználói) mentések automatikus törlése."
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -696,7 +699,7 @@ msgstr "A megadott felhasználó eltávolítása a listáról"
 
 #: src/game_preferences_display.cpp:369
 msgid "Insert a username"
-msgstr "Erre a helyre  írd be a felhasznó nevét"
+msgstr "Erre a helyre írd be a felhasználó nevét"
 
 #: src/game_preferences_display.cpp:372
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -750,20 +753,19 @@ msgstr "Sebesség: "
 
 #: src/game_preferences_display.cpp:691 src/game_preferences_display.cpp:693
 msgid "Maximum Auto-Saves: "
-msgstr ""
+msgstr "Automatikus mentések számának maximuma:"
 
 #: src/game_preferences_display.cpp:691
 msgid "infinite"
-msgstr ""
+msgstr "végtelen"
 
 #: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "
 msgstr "Csevegés sorai: "
 
 #: src/game_preferences_display.cpp:885 src/game_preferences_display.cpp:893
-#, fuzzy
 msgid "Invalid username"
-msgstr "Erre a helyre  írd be a felhasznó nevét"
+msgstr "Érvénytelen felhasználónév"
 
 #: src/game_preferences_display.cpp:965
 msgid "yes"
@@ -775,7 +777,7 @@ msgstr "nem"
 
 #: src/game_preferences_display.cpp:998
 msgid "(empty list)"
-msgstr ""
+msgstr "(üres lista)"
 
 #: src/game_preferences_display.cpp:1116
 msgid "Prefs section^General"
@@ -873,9 +875,8 @@ msgid "Save Game"
 msgstr "Állás mentése"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "Visszajátszások mentése"
+msgstr "Visszajátszás mentése"
 
 #: src/hotkeys.cpp:71
 msgid "Save The Map"
@@ -1007,7 +1008,7 @@ msgstr "Terep megadása"
 
 #: src/hotkeys.cpp:108
 msgid "Quit Editor"
-msgstr "Kilépés a szerksztőből"
+msgstr "Kilépés a szerkesztőből"
 
 #: src/hotkeys.cpp:109
 msgid "New Map"
@@ -1191,15 +1192,15 @@ msgstr "Sziget"
 
 #: src/marked-up_text.cpp:357
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "A legnagyobb szövegszélesség kisebb, mint 1."
 
 #: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Nincs kép a következő tereptípushoz: $terrain"
 
 #: src/minimap.cpp:93 src/minimap.cpp:105
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Hiba a kép létrehozása vagy lekérdezése közben."
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
@@ -1242,7 +1243,7 @@ msgstr "Ez a gyorsbillentyű már használatban van."
 
 #: src/preferences_display.cpp:421
 msgid "There are no alternative video modes available"
-msgstr "Nincsennek más megjelenítési módok"
+msgstr "Nincsenek más megjelenítési módok"
 
 #: src/preferences_display.cpp:450
 msgid "Choose Resolution"
@@ -1257,6 +1258,8 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
+"Akadt egy tereptípus, mely sztringje 4 karakternél hosszabb. A kérdéses "
+"tereptípus a(z): "
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
@@ -1269,29 +1272,21 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Hiba történt egy esetleg helytelen WML kód miatt\n"
+"A hibaüzenet a következő:"
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
-msgstr ""
+msgstr "A hiba jelentésekor kérem, mellékelje a következő hibaüzenetet:"
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"A '[$section|] részben, ahol '$primary_key| = $primary_value', a kötelező "
+"'$key|' kulcs nincs beállítva."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
-
-#~ msgid "Delete Autosaves"
-#~ msgstr "Automatikusan készült mentések törlése"
-
-#~ msgid "Advanced Mode"
-#~ msgstr "Szakértői mód"
-
-#~ msgid "Normal Mode"
-#~ msgstr "Normál mód"
-
-#~ msgid "Save replays at scenario end."
-#~ msgstr "Visszajátszások mentése a pálya befejeztekor"
+msgstr "A '[$section|]' részben a kötelező'$key|' kulcs nincs beállítva."
