@@ -332,15 +332,26 @@ private:
 class map_function : public function_expression {
 public:
 	explicit map_function(const args_list& args)
-	    : function_expression(args, 2, 2)
+	    : function_expression(args, 2, 3)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> vars;
 		const variant items = args()[0]->evaluate(variables);
-		for(int n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
-			vars.push_back(val);
+
+		if(args().size() == 2) {
+			for(int n = 0; n != items.num_elements(); ++n) {
+				const variant val = args().back()->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
+				vars.push_back(val);
+			}
+		} else {
+			map_formula_callable self_callable;
+			const std::string self = args()[1]->evaluate(variables).as_string();
+			for(int n = 0; n != items.num_elements(); ++n) {
+				self_callable.add(self, items[n]);
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_callable_with_backup(*items[n].as_callable(), variables)));
+				vars.push_back(val);
+			}
 		}
 
 		return variant(&vars);
@@ -350,12 +361,15 @@ private:
 class sum_function : public function_expression {
 public:
 	explicit sum_function(const args_list& args)
-	    : function_expression(args, 1, 1)
+	    : function_expression(args, 1, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
 		variant res(0);
 		const variant items = args()[0]->evaluate(variables);
+		if(args().size() >= 2) {
+			res = args()[1]->evaluate(variables);
+		}
 		for(int n = 0; n != items.num_elements(); ++n) {
 			res = res + items[n];
 		}
@@ -396,6 +410,17 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		return variant();
+	}
+};
+
+class refcount_function : public function_expression {
+public:
+	explicit refcount_function(const args_list& args)
+	    : function_expression(args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		return variant(args()[0]->evaluate(variables).refcount());
 	}
 };
 
@@ -477,6 +502,8 @@ expression_ptr create_function(const std::string& fn,
 		return expression_ptr(new size_function(args));
 	} else if(fn == "null") {
 		return expression_ptr(new null_function(args));
+	} else if(fn == "refcount") {
+		return expression_ptr(new refcount_function(args));
 	} else {
 		std::cerr << "no function '" << fn << "'\n";
 		throw formula_error();

@@ -130,12 +130,12 @@ protected:
 	//!								that all units can move their full movement allotment.
 	//! 'remove_destinations':		a pointer to a set of possible destinations to omit.
 	void calculate_possible_moves(std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-	                              const std::set<location>* remove_destinations=NULL);
+	                              const std::set<location>* remove_destinations=NULL) const;
 
   //! A more fundamental version of calculate_possible_moves
   //! which allows the use of a speculative unit map.
   void calculate_moves(const unit_map& units, std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-	   const std::set<location>* remove_destinations=NULL, bool see_all=false);
+	   const std::set<location>* remove_destinations=NULL, bool see_all=false) const;
 
 	//! Recruit a unit. It will recruit the unit with the given name,
 	//! at the given location, or at an available location to recruit units

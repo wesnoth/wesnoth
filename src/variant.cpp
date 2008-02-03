@@ -28,14 +28,14 @@ std::string variant_type_to_string(variant::TYPE type) {
 }
 
 struct variant_list {
-	variant_list() : refcount(0)
+	variant_list() : refcount(1)
 	{}
 	std::vector<variant> elements;
 	int refcount;
 };
 
 struct variant_string {
-	variant_string() : refcount(0)
+	variant_string() : refcount(1)
 	{}
 	std::string str;
 	int refcount;
@@ -382,6 +382,23 @@ void variant::serialize_to_string(std::string& str) const
 void variant::serialize_from_string(const std::string& str)
 {
 	*this = game_logic::formula(str).execute();
+}
+
+int variant::refcount() const
+{
+	switch(type_) {
+	case TYPE_LIST:
+		return list_->refcount;
+		break;
+	case TYPE_STRING:
+		return string_->refcount;
+		break;
+	case TYPE_CALLABLE:
+		return callable_->refcount();
+		break;
+	default:
+		return -1;
+	}
 }
 
 std::string variant::string_cast() const

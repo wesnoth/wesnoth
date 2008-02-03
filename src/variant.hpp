@@ -85,6 +85,8 @@ public:
 	void serialize_to_string(std::string& str) const;
 	void serialize_from_string(const std::string& str);
 
+	int refcount() const;
+
 	std::string string_cast() const;
 
 	std::string to_debug_string(std::vector<const game_logic::formula_callable*>* seen=NULL) const;

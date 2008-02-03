@@ -22,8 +22,11 @@ struct formula_input {
 //interface for objects that can have formulae run on them
 class formula_callable : public reference_counted_object {
 public:
+	explicit formula_callable(bool has_self=true) : has_self_(has_self)
+	{}
+
 	variant query_value(const std::string& key) const {
-		if(key == "self") {
+		if(has_self_ && key == "self") {
 			return variant(this);
 		}
 		return get_value(key);
@@ -57,6 +60,7 @@ protected:
 	}
 private:
 	virtual variant get_value(const std::string& key) const = 0;
+	bool has_self_;
 };
 
 class formula_callable_no_ref_count : public formula_callable {
@@ -84,7 +88,7 @@ class formula_callable_with_backup : public formula_callable {
 		backup_.get_inputs(inputs);
 	}
 public:
-	formula_callable_with_backup(const formula_callable& main, const formula_callable& backup) : main_(main), backup_(backup)
+	formula_callable_with_backup(const formula_callable& main, const formula_callable& backup) : formula_callable(false), main_(main), backup_(backup)
 	{}
 };
 
@@ -95,6 +99,7 @@ public:
 private:
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<formula_input>* inputs) const;
+	void set_value(const std::string& key, const variant& value);
 	std::map<std::string,variant> values_;
 	const formula_callable* fallback_;
 };

@@ -16,6 +16,8 @@ public:
 	void add_ref() const { ++count_; }
 	void dec_ref() const { if(--count_ == 0) { delete const_cast<reference_counted_object*>(this); } }
 
+	int refcount() const { return count_; }
+
 protected:
 	void turn_reference_counting_off() { count_ = 1000000; }
 private:

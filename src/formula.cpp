@@ -54,8 +54,13 @@ void map_formula_callable::get_inputs(std::vector<formula_input>* inputs) const
 		fallback_->get_inputs(inputs);
 	}
 	for(std::map<std::string,variant>::const_iterator i = values_.begin(); i != values_.end(); ++i) {
-		inputs->push_back(formula_input(i->first, FORMULA_READ_ONLY));
+		inputs->push_back(formula_input(i->first, FORMULA_READ_WRITE));
 	}
+}
+
+void map_formula_callable::set_value(const std::string& key, const variant& value)
+{
+	values_[key] = value;
 }
 
 namespace {
@@ -108,6 +113,35 @@ private:
 	expression_ptr operand_;
 };
 
+class list_callable : public formula_callable {
+	variant list_;
+public:
+	explicit list_callable(const variant& list) : list_(list)
+	{}
+
+	variant get_value(const std::string& key) const {
+		if(key == "size") {
+			return variant(list_.num_elements());
+		} else if(key == "empty") {
+			return variant(list_.num_elements() == 0);
+		} else if(key == "first") {
+			if(list_.num_elements() > 0) {
+				return list_[0];
+			} else {
+				return variant();
+			}
+		} else if(key == "last") {
+			if(list_.num_elements() > 0) {
+				return list_[list_.num_elements()-1];
+			} else {
+				return variant();
+			}
+		} else {
+			return variant();
+		}
+	}
+};
+
 class dot_expression : public formula_expression {
 public:
 	dot_expression(expression_ptr left, expression_ptr right)
@@ -118,8 +152,7 @@ private:
 		const variant left = left_->evaluate(variables);
 		if(!left.is_callable()) {
 			if(left.is_list()) {
-				const variant index = right_->evaluate(variables);
-				return left[index.as_int()];
+				return right_->evaluate(list_callable(left));
 			}
 
 			return left;
@@ -155,8 +188,8 @@ private:
 		const variant left = left_->evaluate(variables);
 		const variant right = right_->evaluate(variables);
 		switch(op_) {
-		case AND: return left.as_bool() && right.as_bool() ? variant(1) : variant(0);
-		case OR: return left.as_bool() || right.as_bool() ? variant(1) : variant(0);
+		case AND: return left.as_bool() == false ? left : right;
+		case OR: return left.as_bool() ? left : right;
 		case ADD: return left + right;
 		case SUB: return left - right;
 		case MUL: return left * right;

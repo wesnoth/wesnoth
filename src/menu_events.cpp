@@ -1510,7 +1510,7 @@ private:
 		}
 
 		//Ask for confirmation if the player hasn't made any moves (other than gotos).
-		if(preferences::confirm_no_moves() && units_alive && !some_units_have_moved) {
+		if(false && preferences::confirm_no_moves() && units_alive && !some_units_have_moved) {
 			const int res = gui::dialog(*gui_,"",_("You have not started your turn yet. Do you really want to end your turn?"), gui::YES_NO).show();
 			if(res != 0) {
 				return false;
@@ -2329,7 +2329,6 @@ private:
 		turn_info turn_data(gameinfo_, gamestate_, status_, *gui_, const_cast<gamemap&>(map_), teams_, team_num, units_, dummy_sender, dummy_undo);
 		ai_interface::info info(*gui_, map_, gameinfo_, units_, teams_, team_num, status_, turn_data, gamestate_);
 		formula_ai eval(info);
-		eval.prepare_move();
 		try {
 			add_chat_message(time(NULL), _("ai"), 0, eval.evaluate(str));
 		} catch(...) {

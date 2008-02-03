@@ -689,7 +689,7 @@ void ai::attack_enemy(const location& attacking_unit, const location& target,
 
 void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
-		const std::set<gamemap::location>* remove_destinations)
+		const std::set<gamemap::location>* remove_destinations) const
 {
   calculate_moves(info_.units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
@@ -698,7 +698,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 	     const std::set<gamemap::location>* remove_destinations,
 		bool see_all
-          )
+          ) const
 {
 
 	for(unit_map::const_iterator un_it = units.begin(); un_it != units.end(); ++un_it) {

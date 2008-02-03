@@ -51,13 +51,13 @@ variant move_map_callable::get_value(const std::string& key) const
 	if(key == "moves") {
 		std::vector<variant> vars;
 		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
-			map_formula_callable* item = new map_formula_callable;
-			item->add("src", variant(new location_callable(i->first)));
-			item->add("dst", variant(new location_callable(i->second)));
+			move_callable* item = new move_callable(i->first, i->second);
 			vars.push_back(variant(item));
 		}
 
 		return variant(&vars);
+	} else if(key == "has_moves") {
+		return variant(!srcdst_.empty());
 	} else {
 		return variant();
 	}

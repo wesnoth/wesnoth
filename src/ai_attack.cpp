@@ -245,7 +245,7 @@ void ai::do_attack_analysis(
 			cur_analysis.analyze(map_, units_, teams_, state_, gameinfo_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
 
 			//Remove this short-circuiting logic for now.. --David
-			if(true) { //cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
+			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
 				used_locations[cur_position] = true;
