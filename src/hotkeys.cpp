@@ -152,6 +152,8 @@ hotkey::hotkey_item null_hotkey_;
 
 namespace hotkey {
 
+const std::string CLEARED_TEXT = "__none__";
+
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 
 
@@ -190,7 +192,11 @@ void hotkey_item::load_from_config(const config& cfg)
 	if (!key.empty()) {
 		// They may really want a specific key on the keyboard: we assume
 		// that any single character keyname is a character.
-		if (key.size() > 1) {
+		if (key == CLEARED_TEXT)
+		{
+			type_ = hotkey_item::CLEARED;
+		}
+		else if (key.size() > 1) {
 			type_ = BY_KEYCODE;
 
 			keycode_ = sdl_keysym_from_name(key);
@@ -254,7 +260,7 @@ void hotkey_item::set_description(const std::string& description)
 }
 void hotkey_item::clear_hotkey()
 {
-	type_ = UNBOUND;
+	type_ = CLEARED;
 }
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
@@ -344,8 +350,14 @@ void save_hotkeys(config& cfg)
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
 		if (i->hidden() || i->get_type() == hotkey_item::UNBOUND)
 			continue;
-
 		config& item = cfg.add_child("hotkey");
+
+		if (i->get_type() == hotkey_item::CLEARED)
+		{
+			item["key"] == CLEARED_TEXT;
+			continue;
+		}
+
 		item["command"] = i->get_command();
 
 		if (i->get_type() == hotkey_item::BY_KEYCODE) {

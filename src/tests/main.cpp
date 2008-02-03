@@ -18,6 +18,20 @@
 	#define BOOST_TEST_MAIN
 	#include <boost/test/unit_test.hpp>
 #endif
+#include <iostream>
+
+struct wesnoth_global_fixture {
+	wesnoth_global_fixture() 
+	{
+		boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
+		BOOST_TEST_MESSAGE("Initializing test!");
+	}
+	~wesnoth_global_fixture() 
+	{
+	}
+};
+
+BOOST_GLOBAL_FIXTURE( wesnoth_global_fixture );
 
 /*
  * This is a main compilation unit for the test program.

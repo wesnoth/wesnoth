@@ -17,6 +17,7 @@
 
 BOOST_AUTO_TEST_CASE( test_lexical_cast )
 {
+	BOOST_TEST_MESSAGE( "Starting utils test!" );
 	/* First check if lexical_cast returns correct results for correct args */
 	int result = lexical_cast<int, const std::string&>(std::string("1"));
 	BOOST_CHECK( result == 1 );

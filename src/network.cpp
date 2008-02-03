@@ -687,7 +687,7 @@ connection receive_data(config& cfg, connection connection_num)
 		}
 	}
 	if(!cfg.empty()) {
-		DBG_NW << "RECEIVED from: " << result << ": " << cfg.debug();
+		DBG_NW << "RECEIVED from: " << result << ": "; // expensive debug call removed (cfg.debug())
 	}
 
 	assert(result != 0);
