@@ -329,7 +329,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,");
+		tmp_anim.unit_anim_.override(0,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,");
 		tmp_anim.event_ = utils::split("movement");
 		animations.push_back(tmp_anim);
 
@@ -467,7 +467,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
 	for(anim_itor = movement_anims.begin(); anim_itor != movement_anims.end(); ++anim_itor) {
 		if((**anim_itor)["offset"].empty() ) {
-			(**anim_itor)["offset"] ="0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150";
+			(**anim_itor)["offset"] ="0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,";
 
 		}
 		(**anim_itor)["apply_to"] ="movement";
