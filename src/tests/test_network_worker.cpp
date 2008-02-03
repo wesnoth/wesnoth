@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-//#define BOOST_TEST_MODULE networking
+
 #include <boost/test/auto_unit_test.hpp>
 #include <string>
 #include "network.hpp"
@@ -61,6 +61,22 @@ BOOST_AUTO_TEST_CASE( test_connect )
 
 }
 
+network::connection receive(config& cfg, int max_tries = 100)
+{
+	network::connection receive_con;
+	while ((receive_con = network::receive_data(cfg)) == network::null_connection)
+	{
+		// loop untill data is received
+		SDL_Delay(10);
+		if (--max_tries <= 0)
+		{
+			BOOST_WARN_MESSAGE(max_tries > 0,"receiving data took too long. Preventing for ever loop");
+			break;
+		}
+	}
+	return receive_con;
+}
+
 BOOST_AUTO_TEST_CASE( test_send_client )
 {
 	config cfg_send;
@@ -73,20 +89,12 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 	network::connection receive_from;
 	config received;
 
-	int max_tries = 100;
-
-	while ((receive_from = network::receive_data(received)) == network::null_connection)
-	{
-		// loop untill data is received
-		SDL_Delay(10);
-		if (--max_tries <= 0)
-		{
-			BOOST_WARN_MESSAGE(max_tries > 0,"receiving data took too long. Preventing for ever loop");
-			break;
-		}
-	}
+	receive_from = receive(received);
 
 	BOOST_CHECK_MESSAGE( receive_from == server_client1, "Received data is not from test client 1" );
+
+	BOOST_CHECK_MESSAGE(cfg_send == received, "send is not same as received\n" << cfg_send.debug() << "\n" << received.debug() );
+
 }
 
 BOOST_AUTO_TEST_CASE( test_send_server )
