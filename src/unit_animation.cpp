@@ -313,7 +313,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0~1:600,1");
+		tmp_anim.unit_anim_.override(0,"0~1:600");
 		tmp_anim.event_ = utils::split("recruited");
 		tmp_anim.unit_anim_.remove_frames_after(600);
 		animations.push_back(tmp_anim);
@@ -355,19 +355,19 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","1~0:600");
+		tmp_anim.unit_anim_.override(0,"1~0:600");
 		tmp_anim.unit_anim_.remove_frames_after(600);
 		tmp_anim.event_ = utils::split("death");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","1~0:150");
+		tmp_anim.unit_anim_.override(0,"1~0:150");
 		tmp_anim.unit_anim_.remove_frames_after(150);
 		tmp_anim.event_ = utils::split("pre_teleport");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0~1:150,1");
+		tmp_anim.unit_anim_.override(0,"0~1:150,1");
 		tmp_anim.unit_anim_.remove_frames_after(150);
 		tmp_anim.event_ = utils::split("post_teleport");
 		animations.push_back(tmp_anim);
