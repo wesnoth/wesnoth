@@ -178,7 +178,6 @@ static void parse_times(const config& cfg, std::vector<time_of_day>& normal_time
 
 //! Reads turns and time information from parameters.
 //! It sets random starting ToD and current_tod to config.
-//!
 gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
 		teams(0),
 		times_(),
