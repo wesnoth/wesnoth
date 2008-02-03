@@ -315,6 +315,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","0~1:600,1");
 		tmp_anim.event_ = utils::split("recruited");
+		tmp_anim.unit_anim_.remove_frames_after(600);
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
@@ -326,6 +327,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","0~1:600,1",display::rgb(255,255,255));
 		tmp_anim.event_ = utils::split("levelout");
+		tmp_anim.unit_anim_.remove_frames_after(600);
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
@@ -339,7 +341,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150,"","",0,"0~0.6,0.6~0");
+		tmp_anim.unit_anim_.override(-150,"","",0,"0~0.6:150,0.6~0:150");
 		tmp_anim.event_ = utils::split("attack");
 		tmp_anim.primary_attack_filter_.push_back(config());
 		tmp_anim.primary_attack_filter_.back()["range"] = "melee";
@@ -366,11 +368,13 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","0~1:150,1");
+		tmp_anim.unit_anim_.remove_frames_after(150);
 		tmp_anim.event_ = utils::split("post_teleport");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
+		tmp_anim.unit_anim_.remove_frames_after(300);
 		tmp_anim.event_ = utils::split("healed");
 		animations.push_back(tmp_anim);
 		animations.back().sub_anims_["_healed_sound"] = crude_animation();
@@ -379,6 +383,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
+		tmp_anim.unit_anim_.remove_frames_after(300);
 		tmp_anim.event_ = utils::split("poisoned");
 		animations.push_back(tmp_anim);
 		animations.back().sub_anims_["_poison_sound"] = crude_animation();
