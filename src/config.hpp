@@ -20,9 +20,9 @@
 
 #include "global.hpp"
 
-#include <iostream>
 #include <map>
 #include <memory> 
+#include <ostream>
 #include <string>
 #include <vector>
 #include "tstring.hpp"
@@ -179,5 +179,6 @@ private:
 
 bool operator==(const config& a, const config& b);
 bool operator!=(const config& a, const config& b);
+std::ostream& operator << (std::ostream& os, const config& cfg);
 
 #endif

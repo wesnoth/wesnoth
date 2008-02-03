@@ -86,11 +86,12 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 	animator.wait_until(target_time);
 	gamemap::location arr[6];
 	get_adjacent_tiles(a, arr);
-	for (unsigned int i = 0; i < 6; i++) {
+	unsigned int i;
+	for (i = 0; i < 6; i++) {
 		disp->invalidate(arr[i]);
 	}
 	get_adjacent_tiles(b, arr);
-	for (unsigned int i = 0; i < 6; i++) {
+	for (i = 0; i < 6; i++) {
 		disp->invalidate(arr[i]);
 	}
 }

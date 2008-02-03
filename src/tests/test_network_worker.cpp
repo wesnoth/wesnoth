@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 
 	BOOST_CHECK_MESSAGE( receive_from == server_client1, "Received data is not from test client 1" );
 
-	BOOST_CHECK_MESSAGE(cfg_send == received, "send is not same as received\n" << cfg_send.debug() << "\n" << received.debug() );
+	BOOST_CHECK_MESSAGE(cfg_send == received, "send is not same as received\n" << cfg_send << "\n" << received.debug() );
 
 }
 

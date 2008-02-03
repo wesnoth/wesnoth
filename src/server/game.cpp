@@ -234,7 +234,7 @@ void game::update_side_data() {
 	const config::child_itors level_sides = level_.child_range("side");
 /*	for (config::child_iterator side = level_sides.first;
 			side != level_sides.second; ++side)
-		DBG_GAME << (*side)->debug();*/
+		DBG_GAME << (**side);*/
 	// For each user:
 	// * Find the username.
 	// * Find the side this username corresponds to.
@@ -756,7 +756,7 @@ void game::filter_commands(const network::connection member, config& cfg) {
 			const config& server_msg = construct_server_message(msg.str());
 			send_data(server_msg);
 			record_data(server_msg);
-			DBG_GAME << (*i)->debug();
+			DBG_GAME << (**i);
 			marked.push_back(index - marked.size());
 		}
 		++index;
@@ -768,7 +768,7 @@ void game::filter_commands(const network::connection member, config& cfg) {
 }
 
 bool game::process_commands(const config& cfg) {
-	//DBG_GAME << "processing commands: '" << cfg.debug() << "'\n";
+	//DBG_GAME << "processing commands: '" << cfg << "'\n";
 	bool res = false;
 	const config::child_list& cmd = cfg.get_children("command");
 	for(config::child_list::const_iterator i = cmd.begin(); i != cmd.end(); ++i) {

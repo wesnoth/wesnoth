@@ -511,7 +511,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// Sends scenario data
 				config cfg;
 				cfg.add_child("store_next_scenario", *scenario);
-				(*scenario).debug();
 
 				// Adds player information, and other state
 				// information, to the configuration object

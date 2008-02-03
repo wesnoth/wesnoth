@@ -155,7 +155,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 		LOG_NG << "No variables were found for the game_state." << std::endl;
 	} else {
 		LOG_NG << "Variables found and loaded into game_state:" << std::endl;
-		LOG_NG << state.get_variables().debug();
+		LOG_NG << state.get_variables();
 	}
 }
 

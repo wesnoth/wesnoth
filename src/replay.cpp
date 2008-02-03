@@ -746,7 +746,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 		bool fix_shroud = false;
 		if (cfg)
 		{
-			DBG_REPLAY << "Replay data:\n" << cfg->debug() << "\n";
+			DBG_REPLAY << "Replay data:\n" << *cfg << "\n";
 		}
 		else
 		{

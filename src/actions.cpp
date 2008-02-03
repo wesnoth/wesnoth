@@ -202,7 +202,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 
 			config cfg_unit1;
 			new_unit.write(cfg_unit1);
-			DBG_NG << cfg_unit1.debug();
+			DBG_NG << cfg_unit1;
 			if (!game_config::ignore_replay_errors) {
 				throw replay::error("OOS while recruiting.");
 			}

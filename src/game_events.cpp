@@ -2514,7 +2514,7 @@ static void commit_wmi_commands() {
 			mref->command.add_child("allow_undo");
 		}
 		LOG_NG << "setting command for " << mref->name << "\n";
-		LOG_NG << wcc.second->debug();
+		LOG_NG << *wcc.second;
 		delete wcc.second;
 		wmi_command_changes.pop_back();
 	}

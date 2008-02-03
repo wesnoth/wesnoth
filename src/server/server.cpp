@@ -1244,7 +1244,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 	// FIXME: Relaying arbitrary data that possibly didn't get handled at all
 	// seems like a bad idea.
 	DBG_SERVER << "Relaying data RECEIVED from: " << sock
-		<< " to all other players: " << data.debug();
+		<< " to all other players: " << data;
 	g->send_data(data, sock);
 	if (g->started()) {
 		g->record_data(data);

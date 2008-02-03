@@ -688,22 +688,26 @@ void config::reset_translation() const
 std::string config::debug() const
 {
 	std::ostringstream outstream;
+	outstream << *this;
+	return outstream.str();
+}
+
+std::ostream& operator << (std::ostream& outstream, const config& cfg) {
 	static int i = 0;
 	i++;
-	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
+	for(string_map::const_iterator val = cfg.values.begin(); val != cfg.values.end(); ++val) {
 		for (int j = 0; j < i; j++){ outstream << char(9); }
 		outstream << val->first << " = " << val->second << "\n";
 	}
-
-	for(all_children_iterator list = ordered_begin(); list != ordered_end(); ++list) {
+	for(config::all_children_iterator list = cfg.ordered_begin(); list != cfg.ordered_end(); ++list) {
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
 		outstream << "[" << *(*list).first << "]\n";
-		outstream << (*list).second->debug();
+		outstream << (*list).second;
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
 		outstream << "[/" << *(*list).first << "]\n";
 	}
 	i--;
-	return outstream.str();
+    return outstream;
 }
 
 std::string config::hash() const

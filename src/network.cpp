@@ -687,7 +687,7 @@ connection receive_data(config& cfg, connection connection_num)
 		}
 	}
 	if(!cfg.empty()) {
-		DBG_NW << "RECEIVED from: " << result << ": " << cfg.debug(); 
+		DBG_NW << "RECEIVED from: " << result << ": " << cfg; 
 	}
 
 	assert(result != 0);
@@ -738,7 +738,7 @@ void send_data(const config& cfg, connection connection_num, const bool gzipped)
 		return;
 	}
 
-	LOG_NW << "SENDING to: " << connection_num << ": " << cfg.debug();
+	LOG_NW << "SENDING to: " << connection_num << ": " << cfg;
 	network_worker_pool::queue_data(info->second.sock, cfg, gzipped);
 }
 
