@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-02 21:15+0100\n"
+"POT-Creation-Date: 2008-02-03 17:22+0100\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -23,23 +23,27 @@ msgid "Compressed Saves"
 msgstr ""
 
 #: data/_main.cfg:43
-msgid "Show Combat"
-msgstr "Montru duelon"
+#, fuzzy
+msgid "Mouse Scrolling"
+msgstr "Sanigado"
 
 #: data/_main.cfg:50
 msgid "Animate Map"
 msgstr ""
 
 #: data/_main.cfg:57
-#, fuzzy
-msgid "Mouse Scrolling"
-msgstr "Sanigado"
+msgid "Unit Standing Animations"
+msgstr ""
 
-#: data/_main.cfg:72
+#: data/_main.cfg:64
+msgid "Show Combat"
+msgstr "Montru duelon"
+
+#: data/_main.cfg:79
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
-#: data/_main.cfg:76
+#: data/_main.cfg:83
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "Aliĝu al servilo de Vesnot"
@@ -332,9 +336,9 @@ msgstr "+Slovenia traduko"
 msgid "Bots"
 msgstr "+Robotoj"
 
-#: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
+#: data/core/fonts.cfg:7
 #, fuzzy
-msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
 #: data/core/help.cfg:10 data/core/help.cfg:69
@@ -1223,7 +1227,7 @@ msgid ""
 "available to it. The AMLA will modify the unit each time the unit reaches "
 "the experience goal, but the unit will remain the same level. The typical "
 "AMLA effect is for the unit to raise the maximum HP by 3 and full-heal it. "
-"The first AMLA will normally be reached with 100 XP gained (80 XP for "
+"The first AMLA will normally be reached with 150 XP gained (120 XP for "
 "intelligent units). However, gaining an AMLA becomes progressively harder "
 "for each AMLA the unit receives, and so it is usually more useful to try to "
 "advance your lower level units."
@@ -2344,7 +2348,7 @@ msgstr ""
 #: data/core/help.cfg:678
 msgid ""
 "\n"
-"Toggles the display of the current frames per second.\n"
+"Toggle the display of the current frames per second.\n"
 "\n"
 msgstr ""
 
@@ -3893,15 +3897,16 @@ msgid ""
 "magic.\n"
 "\n"
 "<header>text='Society'</header>\n"
-"Drakes are a warlike race, and their societies can be best described as "
-"extended war-bands. The core of a drake tribe is small group of veteran "
-"warriors headed by a mutually respected - or simply feared - leader who "
-"rules the society with an iron fist. Every drake is expected to earn their "
-"place in the strict hierarchy, to obey their superiors and command their "
-"lessers. Entry to the ruling elite is only possible through challenging and "
-"defeating a superior in single combat, which is the way the hierarchy within "
-"the itself is established. The use of deception of any kind towards any "
-"fellow drake is, without exception, seen as cowardly and unacceptable.\n"
+"Drakes are a relatively warlike race and their societies can be best "
+"described as cultured martial societies. The core of a drake tribe is small "
+"group of veteran warriors headed by a mutually respected - or simply feared "
+"- leader who rules the society with an iron fist. Every drake is expected to "
+"earn their place in the strict hierarchy, to obey their superiors and "
+"command their lessers. Entry to the ruling elite is only possible through "
+"challenging and defeating a superior in single combat, which is the way the "
+"hierarchy within the elite itself is established. The use of deception of "
+"any kind towards any fellow drake is, without exception, seen as cowardly "
+"and unacceptable.\n"
 "\n"
 "While their warlike nature and sense of territory drives them to defend "
 "their territories savagely, drakes rarely invade or trespass on areas "
@@ -4034,10 +4039,10 @@ msgid ""
 "skills. As a result, elves excel at archery, which is perhaps their most "
 "important method of warfare. Most elvish troops carry a bow and no other "
 "race can rival their archers in speed and accuracy. All elves also share an "
-"affinity for unspoiled nature. They often feel uncomfortable in open "
-"unvegetated spaces, which leads them to make their homes in the forests of "
-"the Great Continent, such as Aethenwood in the southwest and Wesmere in the "
-"northwest. Elves are the eldest race of the continent, with the possible "
+"unexplained affection for unspoiled nature. They often feel uncomfortable in "
+"open unvegetated spaces, which leads them to make their homes in the forests "
+"of the Great Continent, such as Aethenwood in the southwest and Wesmere in "
+"the northwest. Elves are the eldest race of the continent, with the possible "
 "exception of trolls. Many of their settlements cannot be reliably dated, "
 "undoubtedly having existed for over a millennium."
 msgstr ""
@@ -4084,7 +4089,7 @@ msgstr "Rabistino"
 msgid "race^Humans"
 msgstr "Homoj"
 
-#: data/core/units.cfg:135
+#: data/core/units.cfg:132
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -4122,110 +4127,100 @@ msgid ""
 "fighting is part of the way of life of the Clans; the parents teach the "
 "children to ride horses, fight and shoot a bow from an early age. In "
 "general, the Clan warriors are less organized than the civilized fighters, "
-"and the strengths and weaknesses of these groups complement each other.\n"
-"\n"
-"<header>text='The Northerners'</header>\n"
-"Humans also live in the wild country north of the Great River. The "
-"Northlands are less densely populated and poorer than the Kingdom of "
-"Wesnoth, and humans rend to live in scattered small settlements, allying and "
-"sometimes warring with other settled populations of dwarves and elves. The "
-"Northlands are also subject to the depredations of human bandits, orcs and "
-"monsters, and the human populations there have adapted to the wild and "
-"lawless conditions by becoming hardy fighters who consider their more "
-"civilized kin south of the river somewhat effete."
+"and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 
-#: data/core/units.cfg:142
+#: data/core/units.cfg:139
 #, fuzzy
 msgid "race^Saurian"
 msgstr "Saŭro"
 
-#: data/core/units.cfg:143
+#: data/core/units.cfg:140
 #, fuzzy
 msgid "race+female^Saurian"
 msgstr "Mara sorĉistino"
 
-#: data/core/units.cfg:144
+#: data/core/units.cfg:141
 #, fuzzy
 msgid "race^Saurians"
 msgstr "Saŭro"
 
-#: data/core/units.cfg:153
+#: data/core/units.cfg:150
 msgid "race^Mechanical"
 msgstr ""
 
-#: data/core/units.cfg:154
+#: data/core/units.cfg:151
 msgid "race+plural^Mechanical"
 msgstr ""
 
-#: data/core/units.cfg:164
+#: data/core/units.cfg:161
 #, fuzzy
 msgid "race^Merman"
 msgstr "Mara viro"
 
-#: data/core/units.cfg:165
+#: data/core/units.cfg:162
 #, fuzzy
 msgid "race^Mermaid"
 msgstr "Ne malvivaj"
 
-#: data/core/units.cfg:166
+#: data/core/units.cfg:163
 msgid "race^Mermen"
 msgstr ""
 
-#: data/core/units.cfg:174
+#: data/core/units.cfg:171
 #, fuzzy
 msgid "race^Monster"
 msgstr "Nanoj"
 
-#: data/core/units.cfg:175
+#: data/core/units.cfg:172
 msgid "race^Monsters"
 msgstr ""
 
-#: data/core/units.cfg:182
+#: data/core/units.cfg:179
 #, fuzzy
 msgid "race^Naga"
 msgstr "Naga-ino"
 
-#: data/core/units.cfg:183
+#: data/core/units.cfg:180
 #, fuzzy
 msgid "race^Nagani"
 msgstr "Naga-ino"
 
-#: data/core/units.cfg:184
+#: data/core/units.cfg:181
 #, fuzzy
 msgid "race^Nagas"
 msgstr "Naga-ino"
 
-#: data/core/units.cfg:192
+#: data/core/units.cfg:189
 #, fuzzy
 msgid "race^Ogre"
 msgstr "Nanoj"
 
-#: data/core/units.cfg:193
+#: data/core/units.cfg:190
 #, fuzzy
 msgid "race+female^Ogre"
 msgstr "Magino"
 
-#: data/core/units.cfg:194
+#: data/core/units.cfg:191
 msgid "race^Ogres"
 msgstr ""
 
-#: data/core/units.cfg:202
+#: data/core/units.cfg:199
 #, fuzzy
 msgid "race^Orc"
 msgstr "Trolo"
 
-#: data/core/units.cfg:203
+#: data/core/units.cfg:200
 #, fuzzy
 msgid "race+female^Orc"
 msgstr "Princino"
 
-#: data/core/units.cfg:204
+#: data/core/units.cfg:201
 #, fuzzy
 msgid "race^Orcs"
 msgstr "Trolo"
 
-#: data/core/units.cfg:214
+#: data/core/units.cfg:211
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans.  They are warlike, savage, and cruel by nature. "
@@ -4284,22 +4279,22 @@ msgid ""
 "assassination."
 msgstr ""
 
-#: data/core/units.cfg:221
+#: data/core/units.cfg:218
 #, fuzzy
 msgid "race^Troll"
 msgstr "Trolo"
 
-#: data/core/units.cfg:222
+#: data/core/units.cfg:219
 #, fuzzy
 msgid "race+female^Troll"
 msgstr "Trolo"
 
-#: data/core/units.cfg:223
+#: data/core/units.cfg:220
 #, fuzzy
 msgid "race^Trolls"
 msgstr "Trolo"
 
-#: data/core/units.cfg:229
+#: data/core/units.cfg:226
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -4337,21 +4332,21 @@ msgid ""
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
 
-#: data/core/units.cfg:241
+#: data/core/units.cfg:238
 msgid "race^Undead"
 msgstr "Ne malvivaj"
 
-#: data/core/units.cfg:242
+#: data/core/units.cfg:239
 #, fuzzy
 msgid "race+female^Undead"
 msgstr "Ne malvivaj"
 
-#: data/core/units.cfg:243
+#: data/core/units.cfg:240
 #, fuzzy
 msgid "race+plural^Undead"
 msgstr "Ne malvivaj"
 
-#: data/core/units.cfg:249
+#: data/core/units.cfg:246
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -4359,7 +4354,7 @@ msgid ""
 "unnatural but mindless constructs, obeying whoever created them without "
 "question nor thought. A greater mystery of necromancy is in how constructs "
 "are sustained without continuous effort from the necromancer. An undead "
-"creature does not requires the constant attention of the necromancer to "
+"creature does not require the constant attention of the necromancer to "
 "command and sustain, but can work autonomously according to the commands of "
 "it's master. Only rarely, perhaps once every few months, does the "
 "necromancer need to maintain his creation.\n"
@@ -4379,12 +4374,12 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 
-#: data/core/units.cfg:257
+#: data/core/units.cfg:254
 #, fuzzy
 msgid "race^Wose"
 msgstr "Nanoj"
 
-#: data/core/units.cfg:258
+#: data/core/units.cfg:255
 #, fuzzy
 msgid "race^Woses"
 msgstr "Nanoj"
@@ -4519,6 +4514,11 @@ msgstr "frosto"
 #, fuzzy
 msgid "arcane"
 msgstr "distance"
+
+#: data/hardwired/fonts.cfg:7
+#, fuzzy
+msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
 #: data/hardwired/tips.cfg:3
 msgid ""
@@ -5261,7 +5261,7 @@ msgstr "Mi vidas milit-unuojn! (amikoj: $friends, malamioj: $enemies)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(premu $hotkey por daŭrigi)"
 
-#: src/ai.cpp:1533
+#: src/ai.cpp:1534
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Nekonata scenejo: '"
@@ -5319,90 +5319,95 @@ msgstr ""
 "Nomoj de savitaj ludoj ne povas enhavi punktokomoj, oblikvaj frakcostrekoj. "
 "Bonvolu elektu alian nomon."
 
-#: src/dialogs.cpp:286
-msgid "Overwrite?"
-msgstr "Traskribi?"
-
 #: src/dialogs.cpp:287
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Savita ludo kun sama nomo jam ekzistas. Ĉu vi volas traskribi ĝin?"
 
-#: src/dialogs.cpp:305
+#: src/dialogs.cpp:288 src/menu_events.cpp:729 src/playcampaign.cpp:420
+#, fuzzy
+msgid "Name: "
+msgstr "Nomo:"
+
+#: src/dialogs.cpp:289
+msgid "Overwrite?"
+msgstr "Traskribi?"
+
+#: src/dialogs.cpp:308
 #, fuzzy
 msgid "Filter: "
 msgstr "Kapabloj:"
 
-#: src/dialogs.cpp:372
+#: src/dialogs.cpp:375
 msgid "Do you really want to delete this game?"
 msgstr "Reale vi volas forviŝi ĉi tiun savitan ludon?"
 
-#: src/dialogs.cpp:374
+#: src/dialogs.cpp:377
 msgid "Don't ask me again!"
 msgstr "Ne demandu denove!"
 
-#: src/dialogs.cpp:528
+#: src/dialogs.cpp:531
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %J"
 
-#: src/dialogs.cpp:545
+#: src/dialogs.cpp:548
 msgid "#(Invalid)"
 msgstr "#(Nevalida)"
 
-#: src/dialogs.cpp:552
+#: src/dialogs.cpp:555
 #, fuzzy
 msgid "Campaign: $campaign_name"
 msgstr "Militekspedicio"
 
-#: src/dialogs.cpp:554 src/game.cpp:1491
+#: src/dialogs.cpp:557 src/game.cpp:1491
 msgid "Multiplayer"
 msgstr "Komuna ludo"
 
-#: src/dialogs.cpp:556
+#: src/dialogs.cpp:559
 msgid "Tutorial"
 msgstr "Trejnado"
 
-#: src/dialogs.cpp:564 src/menu_events.cpp:715
+#: src/dialogs.cpp:567 src/menu_events.cpp:715
 msgid "replay"
 msgstr "registro"
 
-#: src/dialogs.cpp:566 src/menu_events.cpp:717
+#: src/dialogs.cpp:569 src/menu_events.cpp:717
 msgid "Turn"
 msgstr "turno"
 
-#: src/dialogs.cpp:568
+#: src/dialogs.cpp:571
 msgid "Scenario Start"
 msgstr "Komenca scenejo"
 
-#: src/dialogs.cpp:571
+#: src/dialogs.cpp:574
 msgid "Difficulty: "
 msgstr "Komplikeco:"
 
-#: src/dialogs.cpp:573
+#: src/dialogs.cpp:576
 msgid "Version: "
 msgstr "Versio:"
 
-#: src/dialogs.cpp:597 src/dialogs.cpp:613
+#: src/dialogs.cpp:600 src/dialogs.cpp:616
 msgid "%b %d %y"
 msgstr "%t.  %m. %j"
 
-#: src/dialogs.cpp:603
+#: src/dialogs.cpp:606
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:606
+#: src/dialogs.cpp:609
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:609
+#: src/dialogs.cpp:612
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:637
+#: src/dialogs.cpp:640
 msgid "No Saved Games"
 msgstr "Nenio estas registrita"
 
-#: src/dialogs.cpp:638
+#: src/dialogs.cpp:641
 #, fuzzy
 msgid ""
 "There are no saved games to load.\n"
@@ -5412,57 +5417,57 @@ msgstr ""
 "Ne eblas alŝuti ludon, ĉar nenia estas savita.\n"
 "(Ludo saviĝas aŭtomate post trairo de scenejo)"
 
-#: src/dialogs.cpp:653
+#: src/dialogs.cpp:656
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:653 src/game.cpp:1169 src/menu_events.cpp:361
+#: src/dialogs.cpp:656 src/game.cpp:1169 src/menu_events.cpp:361
 #: src/menu_events.cpp:1128 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Nomo"
 
-#: src/dialogs.cpp:673 src/multiplayer_create.cpp:105
+#: src/dialogs.cpp:676 src/multiplayer_create.cpp:105
 msgid "Load Game"
 msgstr "Legi ludon"
 
-#: src/dialogs.cpp:674
+#: src/dialogs.cpp:677
 msgid "Choose the game to load"
 msgstr "Elektu ludon, kiun vi povas legi"
 
-#: src/dialogs.cpp:682
+#: src/dialogs.cpp:685
 msgid "Show replay"
 msgstr "Montru registron"
 
-#: src/dialogs.cpp:685
+#: src/dialogs.cpp:688
 msgid "Delete Save"
 msgstr "Forviŝu registritan"
 
-#: src/dialogs.cpp:716
+#: src/dialogs.cpp:719
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/dialogs.cpp:808 src/help.cpp:1224
+#: src/dialogs.cpp:811 src/help.cpp:1224
 msgid "level"
 msgstr "Nivelo"
 
-#: src/dialogs.cpp:821 src/help.cpp:1330
+#: src/dialogs.cpp:824 src/help.cpp:1330
 msgid "HP: "
 msgstr "Sano:"
 
-#: src/dialogs.cpp:824
+#: src/dialogs.cpp:827
 msgid "XP: "
 msgstr "Spertoj:"
 
-#: src/dialogs.cpp:828 src/help.cpp:1331
+#: src/dialogs.cpp:831 src/help.cpp:1331
 msgid "Moves: "
 msgstr "Movoj:"
 
-#: src/dialogs.cpp:1130 src/dialogs.cpp:1232 src/multiplayer_connect.cpp:927
+#: src/dialogs.cpp:1133 src/dialogs.cpp:1235 src/multiplayer_connect.cpp:927
 #: src/multiplayer_create.cpp:86 src/multiplayer_wait.cpp:195
 msgid "Cancel"
 msgstr "Nuligo"
 
-#: src/dialogs.cpp:1154 src/game.cpp:960
+#: src/dialogs.cpp:1157 src/game.cpp:960
 msgid "KB"
 msgstr "KB"
 
@@ -5814,16 +5819,16 @@ msgstr "Vi venkos, se:"
 msgid "Defeat:"
 msgstr "Malvenko, se:"
 
-#: src/gamestatus.cpp:254 src/gamestatus.cpp:269 src/gamestatus.cpp:289
-#: src/gamestatus.cpp:374
+#: src/gamestatus.cpp:253 src/gamestatus.cpp:268 src/gamestatus.cpp:288
+#: src/gamestatus.cpp:373
 msgid "No time of day has been defined."
 msgstr ""
 
-#: src/gamestatus.cpp:704 src/gamestatus.cpp:706 src/playcampaign.cpp:419
+#: src/gamestatus.cpp:703 src/gamestatus.cpp:705 src/playcampaign.cpp:419
 msgid " replay"
 msgstr " registrado"
 
-#: src/gamestatus.cpp:841
+#: src/gamestatus.cpp:840
 msgid "Could not write to file"
 msgstr "Mi ne povas registri en dosieron."
 
@@ -6143,7 +6148,7 @@ msgstr ""
 msgid "A map without a header is not supported"
 msgstr ""
 
-#: src/mapgen.cpp:702
+#: src/mapgen.cpp:709
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
@@ -6352,11 +6357,6 @@ msgstr "Jes"
 #, fuzzy
 msgid "Scenario Settings"
 msgstr "Komenca scenejo"
-
-#: src/menu_events.cpp:729 src/playcampaign.cpp:420
-#, fuzzy
-msgid "Name: "
-msgstr "Nomo:"
 
 #: src/menu_events.cpp:738
 msgid "Saved"
@@ -6867,7 +6867,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Mi atendas aliĝon de ludantoj..."
 
-#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:641
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:639
 msgid "Create Game"
 msgstr "Kreu ludon"
 
@@ -6900,8 +6900,8 @@ msgstr "Hazarda mapo (vintro)"
 msgid "Fog Of War"
 msgstr "Nebulo"
 
-#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:517
-#: src/multiplayer_lobby.cpp:523
+#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:515
+#: src/multiplayer_lobby.cpp:521
 msgid "Shroud"
 msgstr "Malkovro de mapo"
 
@@ -7022,7 +7022,7 @@ msgstr "Vi devas doni nomon."
 msgid "Set Password"
 msgstr "mallonga glavo"
 
-#: src/multiplayer_create.cpp:330 src/multiplayer_lobby.cpp:756
+#: src/multiplayer_create.cpp:330 src/multiplayer_lobby.cpp:754
 #, fuzzy
 msgid "Password: "
 msgstr "glavo"
@@ -7092,78 +7092,80 @@ msgstr "Nekonata scenejo: '"
 msgid "Unknown era"
 msgstr "Nekonata scenejo: '"
 
-#: src/multiplayer_lobby.cpp:472
+#: src/multiplayer_lobby.cpp:456
+#, fuzzy
+msgid "Reloaded game"
+msgstr "Daŭrigu  en konservita ludo por unu ludanto"
+
+#: src/multiplayer_lobby.cpp:469
 msgid "Remote scenario"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:479
+#: src/multiplayer_lobby.cpp:476
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Nekonata scenejo: '"
 
-#: src/multiplayer_lobby.cpp:483
+#: src/multiplayer_lobby.cpp:480
 #, fuzzy
 msgid "Unknown scenario"
 msgstr "Nekonata scenejo: '"
 
-#: src/multiplayer_lobby.cpp:499
+#: src/multiplayer_lobby.cpp:496
 #, fuzzy
 msgid "Turn "
 msgstr "turno"
 
-#: src/multiplayer_lobby.cpp:503
+#: src/multiplayer_lobby.cpp:500
 #, fuzzy
 msgid "Vacant Slot:"
-msgstr "Vaka loko"
+msgid_plural "Vacant Slots:"
+msgstr[0] "Vaka loko"
+msgstr[1] "Vaka loko"
 
-#: src/multiplayer_lobby.cpp:503
-#, fuzzy
-msgid "Vacant Slots:"
-msgstr "Vakaj lokoj"
-
-#: src/multiplayer_lobby.cpp:506 src/multiplayer_lobby.cpp:754
+#: src/multiplayer_lobby.cpp:503 src/multiplayer_lobby.cpp:752
 msgid "Password Required"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:513
+#: src/multiplayer_lobby.cpp:511
 msgid "Fog"
 msgstr "Nebulo"
 
-#: src/multiplayer_lobby.cpp:527
+#: src/multiplayer_lobby.cpp:525
 msgid "none"
 msgstr "nenio"
 
-#: src/multiplayer_lobby.cpp:637 src/multiplayer_wait.cpp:194
+#: src/multiplayer_lobby.cpp:635 src/multiplayer_wait.cpp:194
 msgid "Game Lobby"
 msgstr "Atendejo"
 
-#: src/multiplayer_lobby.cpp:639
+#: src/multiplayer_lobby.cpp:637
 msgid "Observe Game"
 msgstr "Observu ludon"
 
-#: src/multiplayer_lobby.cpp:640
+#: src/multiplayer_lobby.cpp:638
 msgid "Join Game"
 msgstr "Aliĝu al ludo"
 
-#: src/multiplayer_lobby.cpp:642
+#: src/multiplayer_lobby.cpp:640
 #, fuzzy
 msgid "Quick Replays"
 msgstr " registrado"
 
-#: src/multiplayer_lobby.cpp:644
+#: src/multiplayer_lobby.cpp:642
 #, fuzzy
 msgid "Preferences"
 msgstr "Princino"
 
-#: src/multiplayer_lobby.cpp:646
+#: src/multiplayer_lobby.cpp:644
 msgid "Quit"
 msgstr "Fino"
 
-#: src/multiplayer_lobby.cpp:651
+#: src/multiplayer_lobby.cpp:649
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:755
+#: src/multiplayer_lobby.cpp:753
 msgid "Joining this game requires a password."
 msgstr ""
 
@@ -7730,6 +7732,10 @@ msgstr ""
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Vacant Slots:"
+#~ msgstr "Vakaj lokoj"
 
 #~ msgid "Damage Taken"
 #~ msgstr "Akirita vundo"
