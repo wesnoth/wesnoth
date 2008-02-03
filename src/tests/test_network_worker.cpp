@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_SUITE( network );
 
 BOOST_AUTO_TEST_CASE( test_connect )
 {
-	BOOST_TEST_MESSAGE(  "Starting network test!" );
+	BOOST_MESSAGE(  "Starting network test!" );
 	int connections = network::nconnections();
 
 	BOOST_WARN_MESSAGE(connections == 0, "There is open "<< connections <<" connections before test!");
@@ -78,10 +78,10 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 	while ((receive_from = network::receive_data(received)) == network::null_connection)
 	{
 		// loop untill data is received
-		SDL_Delay(1);
+		SDL_Delay(10);
 		if (--max_tries <= 0)
 		{
-			BOOST_TEST_MESSAGE("receiving data took too long. Preventing for ever loop");
+			BOOST_WARN_MESSAGE(max_tries > 0,"receiving data took too long. Preventing for ever loop");
 			break;
 		}
 	}
