@@ -110,6 +110,7 @@ public:
 
 		bool share_maps, share_view;
 		bool disallow_observers;
+		bool allow_player;
 
 		std::string music;
 
