@@ -943,7 +943,7 @@ void unit_animator::wait_until(int animation_time) const
 {
 	game_display*disp = game_display::get_singleton();
 	int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
-	while (SDL_GetTicks() < (unsigned int)end_tick - 20*disp->turbo_speed()) {
+	while (SDL_GetTicks() < (unsigned int)end_tick - 20/disp->turbo_speed()) {
 		disp->draw();
                 end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
 		events::pump();
