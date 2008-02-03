@@ -298,10 +298,10 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		}
 	}
 	if(animation_base.empty()) {
-#warning "restore correct default anim"
-		animation_base.push_back(unit_animation(0,unit_frame(default_image,1),"",unit_animation::DEFAULT_ANIM));
+		animation_base.push_back(unit_animation(0,unit_frame(default_image,600),"",unit_animation::DEFAULT_ANIM));
 	}
 
+	animations.push_back(unit_animation(0,unit_frame(default_image,1),"_disabled_",0));
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
 		unit_animation tmp_anim = *itor;
 		// provide all default anims
@@ -313,23 +313,19 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0~1:600");
+		tmp_anim.unit_anim_.override(0,"","0~1:600,1");
 		tmp_anim.event_ = utils::split("recruited");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","1~0:600",display::rgb(255,255,255));
 		tmp_anim.event_ = utils::split("levelin");
+		tmp_anim.unit_anim_.remove_frames_after(600);
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0~1:600",display::rgb(255,255,255));
+		tmp_anim.unit_anim_.override(0,"","0~1:600,1",display::rgb(255,255,255));
 		tmp_anim.event_ = utils::split("levelout");
-		animations.push_back(tmp_anim);
-
-		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,");
-		tmp_anim.event_ = utils::split("movement");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
@@ -343,22 +339,33 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(-150,"","",0,"0~0.6,0.6~0");
+		tmp_anim.event_ = utils::split("attack");
+		tmp_anim.primary_attack_filter_.push_back(config());
+		tmp_anim.primary_attack_filter_.back()["range"] = "melee";
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(-150);
 		tmp_anim.event_ = utils::split("attack");
+		tmp_anim.primary_attack_filter_.push_back(config());
+		tmp_anim.primary_attack_filter_.back()["range"] = "ranged";
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","1~0:600");
+		tmp_anim.unit_anim_.remove_frames_after(600);
 		tmp_anim.event_ = utils::split("death");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","1~0:150");
+		tmp_anim.unit_anim_.remove_frames_after(150);
 		tmp_anim.event_ = utils::split("pre_teleport");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0~1:150");
+		tmp_anim.unit_anim_.override(0,"","0~1:150,1");
 		tmp_anim.event_ = utils::split("post_teleport");
 		animations.push_back(tmp_anim);
 

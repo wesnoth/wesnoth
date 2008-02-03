@@ -231,7 +231,9 @@ public:
 	void set_interrupted_move(const gamemap::location& interrupted_move) { interrupted_move_ = interrupted_move; }
 
 	//! States for animation.
-	enum STATE { STATE_STANDING, STATE_FORGET, STATE_ANIM};
+	enum STATE { STATE_STANDING, //! anim must fit in a hex
+		STATE_FORGET, //! animation will be automaticaly replaced by a standing anim when finished
+		STATE_ANIM}; //! normal anims
 	void start_animation(const int start_time , const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool cycles=false,const std::string text = "", const Uint32 text_color =0,STATE state = STATE_ANIM);
 
 	//! The name of the file to game_display (used in menus).
