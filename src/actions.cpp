@@ -1843,7 +1843,7 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 
 		// We clear one past the edge of the board, so that the half-hexes
 		// at the edge can also be cleared of fog/shroud.
-		if (on_board_loc || map.on_board(adj[i])) {
+		if (on_board_loc || map.on_board(adj[i], true)) {
 			// Both functions should be executed so don't use || which 
 			// uses short-cut evaluation.
 			const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
@@ -1859,7 +1859,7 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 	return result;
 }
 
-//! Returns true iff some shroud is cleared.
+//! Returns true if some shroud is cleared.
 //! seen_units will return new units that have been seen by this unit.
 //! If known_units is NULL, seen_units can be NULL and will not be changed.
 bool clear_shroud_unit(const gamemap& map,
@@ -1890,7 +1890,7 @@ bool clear_shroud_unit(const gamemap& map,
 		if(sighted != units.end() &&
 		  (sighted->second.invisible(*it,units,teams) == false
 		  || teams[team].is_enemy(sighted->second.side()) == false)) {
-			//check if we know this unit, but we always know oursefl
+			//check if we know this unit, but we always know ourself
 			//just in case we managed to move on a fogged hex (teleport)
 			if(!(seen_units == NULL || known_units == NULL)
 					&& known_units->count(*it) == 0 && *it != loc) {
