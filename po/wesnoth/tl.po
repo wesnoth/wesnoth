@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-03 17:22+0100\n"
-"PO-Revision-Date: 2008-01-18 14:23+0800\n"
-"Last-Translator: Karen Eso <eve_eso@yahoo.ca>\n"
+"PO-Revision-Date: 2008-02-03 17:26+0800\n"
+"Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr "Mouse Scrolling"
 
 #: data/_main.cfg:50
 msgid "Animate Map"
-msgstr "Magandahin ang mapa"
+msgstr "Patakbuhin ang mapa"
 
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
@@ -47,12 +47,12 @@ msgstr "Ang opisyal na Server ng Wesnoth"
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:559
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
 msgid "Underground"
-msgstr ""
+msgstr "Ilalim ng Lupa"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:530
 msgid "berserk"
-msgstr ""
+msgstr "mabangis"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
 #: data/core/macros/abilities.cfg:532
@@ -61,11 +61,15 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"Mabangis:\n"
+"Gamitin man sa paraang opensiba o depensibo, ang atakeng ito ay nanatili sa "
+"engkwentro hanggang may mapatay na isang kombantante, o kung may 30 na "
+"pauliulit na atake ang naganap."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
 #: data/core/macros/abilities.cfg:616
 msgid "magical"
-msgstr ""
+msgstr "mahiwaga"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
 #: data/core/macros/abilities.cfg:618
@@ -74,11 +78,14 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
+"Mahiwaga:\n"
+"Ang atakeng ito ay laging may 70% na tsansa sa pagtama na walang "
+"pagsasaalang-alang ng abilidad sa depensa ng yunit na sinasalakay. "
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
 #: data/core/macros/abilities.cfg:665
 msgid "firststrike"
-msgstr ""
+msgstr "unang tama"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
 #: data/core/macros/abilities.cfg:667
@@ -86,6 +93,9 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Unang Tama:\n"
+" Itong yunit ay laging unang umaatake gamit ang atakeng ito, kahit sila ay "
+"dumidepensa."
 
 #: data/core/about.cfg:7
 msgid "Programming"
@@ -93,11 +103,11 @@ msgstr "Programming"
 
 #: data/core/about.cfg:128
 msgid "General Purpose Administration and Coordination"
-msgstr ""
+msgstr "Pangkalahatang Adhikain Administrasyon at Koordinasyon"
 
 #: data/core/about.cfg:146
 msgid "Artwork and Graphics"
-msgstr ""
+msgstr "Mga Obra at Grafiks"
 
 #: data/core/about.cfg:408
 msgid "Music"
@@ -113,7 +123,7 @@ msgstr "Disenyo ng kampanya"
 
 #: data/core/about.cfg:518
 msgid "Multiplayer Maps and Balancing"
-msgstr ""
+msgstr "Mapa na pang-Multiplayer at Balanse"
 
 #: data/core/about.cfg:560
 msgid "Packagers"
@@ -121,7 +131,7 @@ msgstr "Tagapagbugkos"
 
 #: data/core/about.cfg:609
 msgid "Miscellaneous contributors"
-msgstr ""
+msgstr "Mga Miselanyo na kontribyutor"
 
 #: data/core/about.cfg:735
 msgid "Internationalization Managers"
@@ -290,7 +300,7 @@ msgstr "Pambungad"
 
 #: data/core/help.cfg:16 data/core/help.cfg:115
 msgid "Gameplay"
-msgstr ""
+msgstr "Gameplay"
 
 #: data/core/help.cfg:22 data/core/help.cfg:312
 msgid "Traits"
@@ -310,14 +320,13 @@ msgstr "Espesyal na Sandata"
 
 #: data/core/help.cfg:56 data/core/help.cfg:403
 msgid "Terrains"
-msgstr ""
+msgstr "Mga pook"
 
 #: data/core/help.cfg:63 data/core/help.cfg:658
 msgid "Commands"
 msgstr "Mga utos"
 
 #: data/core/help.cfg:81
-#, fuzzy
 msgid "Abilites"
 msgstr "Mga abilidad"
 
@@ -328,6 +337,10 @@ msgid ""
 "will be listed under this topic as you encounter them.\n"
 "\n"
 msgstr ""
+"May mga yunits na may mga abilidad na maaring direktang makakaapekto ng "
+"ibang yunits, o may epekto sa interaksyon ng yunit sa iba pang mga yunits. "
+"Itong mga abilidad ay malilista sa loob ng tema kung ito'y iyong matagpuan.\n"
+"\n"
 
 #: data/core/help.cfg:93
 msgid ""
@@ -335,6 +348,9 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Ang ibang mga sandata ay may mga espesyal na katangian na lalong "
+"nagpapalakas sa epektibong pagsalakay sakanila.\n"
+"\n"
 
 #: data/core/help.cfg:99
 msgid "Unknown Unit"
@@ -347,6 +363,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Sa ngayon, ang yunit na ito ay hinde pa kilala. Kailangan mong tuklasin ito "
+"sa laro upang makita ang kanyang deskripsyon."
 
 #: data/core/help.cfg:107
 msgid "Overview"
@@ -365,7 +385,7 @@ msgstr ""
 
 #: data/core/help.cfg:121
 msgid "Fundamentals of Gameplay"
-msgstr ""
+msgstr "Pundamental ng Laro"
 
 #: data/core/help.cfg:122
 msgid ""
@@ -427,7 +447,7 @@ msgstr ""
 
 #: data/core/help.cfg:140
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Panalo at Talo"
 
 #: data/core/help.cfg:141
 msgid ""
@@ -451,7 +471,7 @@ msgstr ""
 
 #: data/core/help.cfg:148
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Nangangalap at Bumabalik"
 
 #: data/core/help.cfg:149
 msgid ""
@@ -496,6 +516,11 @@ msgid ""
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"Sa mga susunod na mga sinaryo, maari mong balikan ang mga nakaligtas sa mga "
+"na unang labanan. Ito ay naghahalaga ng 20 pirasong ginto. Ipapakita sayo "
+"ang listahan ng mga nakaligtas na mga yunit sa mga naunang sinaryo.  "
 
 #: data/core/help.cfg:157
 msgid ""
@@ -518,7 +543,7 @@ msgstr ""
 
 #: data/core/help.cfg:164
 msgid "green if it hasn't moved this turn,"
-msgstr ""
+msgstr "berde kung hinde pa nagagalaw itong turno,"
 
 #: data/core/help.cfg:165
 msgid "yellow if it has moved, but could still move further or attack, or"
@@ -526,7 +551,7 @@ msgstr ""
 
 #: data/core/help.cfg:166
 msgid "red if it has used all its movement this turn."
-msgstr ""
+msgstr "pula kung nagamit na ang lahat ng mga galaw sa turnong ito."
 
 #: data/core/help.cfg:167
 msgid "The orb is blue if the unit is an ally you do not control."
@@ -1057,7 +1082,7 @@ msgstr ""
 
 #: data/core/help.cfg:333
 msgid "Quick"
-msgstr "Magmadali"
+msgstr "Mabilis"
 
 #: data/core/help.cfg:334
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
@@ -1116,7 +1141,7 @@ msgstr ""
 
 #: data/core/help.cfg:357
 msgid "Fearless"
-msgstr "Walang takot"
+msgstr "Matapang"
 
 #: data/core/help.cfg:358
 msgid "Aversion to light and dark holds no sway over these brave individuals."
@@ -1328,7 +1353,7 @@ msgstr ""
 
 #: data/core/help.cfg:472
 msgid "Shallow Water"
-msgstr "Mababaw na tubig"
+msgstr "Mababaw na Tubig"
 
 #: data/core/help.cfg:477
 msgid ""
@@ -1345,7 +1370,7 @@ msgstr ""
 
 #: data/core/help.cfg:482
 msgid "Deep Water"
-msgstr "Tubig na malalim"
+msgstr "Malalim na Tubig"
 
 #: data/core/help.cfg:487
 msgid ""
@@ -1620,6 +1645,9 @@ msgid ""
 "Clear chat messages.\n"
 "\n"
 msgstr ""
+"\n"
+"Ibura mga mensahe sa chat.\n"
+"\n"
 
 #: data/core/help.cfg:672
 msgid ""
@@ -2247,6 +2275,15 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 msgstr ""
+"Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
+"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
+"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
+"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
+"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -2254,6 +2291,9 @@ msgid ""
 "Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 msgstr ""
+"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 
 #: data/core/macros/names.cfg:8
 msgid ""
@@ -2301,6 +2341,49 @@ msgid ""
 "Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
+"Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
+"Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
+"Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,"
+"Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,"
+"Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,"
+"Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,"
+"Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,"
+"Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,"
+"Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,"
+"Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,"
+"Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,"
+"Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,"
+"Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,"
+"Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,"
+"Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,"
+"Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,"
+"Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,"
+"Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,"
+"Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,"
+"Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,"
+"Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,"
+"Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,"
+"Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,"
+"Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,"
+"Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,"
+"Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,"
+"Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,"
+"Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,"
+"Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,"
+"Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,"
+"Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,"
+"Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,"
+"Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,"
+"Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,"
+"Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,"
+"Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,"
+"Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,"
+"Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,"
+"Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,"
+"Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,"
+"Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,"
+"Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
+"Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 
 #: data/core/macros/names.cfg:12
 msgid ""
@@ -2362,6 +2445,63 @@ msgid ""
 "Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
+"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
+"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
+"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
+"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
+"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
+"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
+"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
+"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
+"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
+"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
+"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
+"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
+"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
+"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
+"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
+"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
+"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
+"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
+"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
+"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
+"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
+"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
+"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
+"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
+"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
+"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
+"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
+"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
+"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
+"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
+"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
+"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
+"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
+"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
+"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
+"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
+"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
+"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
+"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
+"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
+"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
+"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
+"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
+"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
+"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
+"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
+"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
+"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
+"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
+"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
+"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
+"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
+"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 
 #: data/core/macros/names.cfg:13
 msgid ""
@@ -2430,14 +2570,78 @@ msgid ""
 "Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
 "Vówien"
 msgstr ""
+"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
+"Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
+"Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,"
+"Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,"
+"Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,"
+"Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,"
+"Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,"
+"Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,"
+"Calewiel,Calil-Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,"
+"Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,"
+"Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,"
+"Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,"
+"Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,"
+"Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-Ganiel,"
+"Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,"
+"Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,"
+"Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,"
+"Elarawiel,Elebrindra,Eledë,Elelith,Elil-Gang,Elilmalia,Elilmawien,"
+"Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,"
+"Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,"
+"Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
+"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,"
+"Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,"
+"Eowedith,Eowidien,Eowil-Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,"
+"Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,"
+"Feclya,Féthiel,Fil-Galia,Fil-Gathiel,Fil-Gawien,Filmaclya,Fioniel,Fódë,"
+"Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,"
+"Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-Gania,Galilmadia,"
+"Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,"
+"Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-Gawien,Gilia,Gioniel,"
+"Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,"
+"Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,"
+"Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
+"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,"
+"Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,"
+"Iséng,Iseviel,Isil-Garith,Isilindë,Isithradë,Isithradien,Isithrarith,"
+"Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,"
+"Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
+"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,"
+"Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,"
+"Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,"
+"Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,"
+"Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,"
+"Medien,Mil-Gathiel,Mil-Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,"
+"Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,"
+"Naraniel,Náviel,Nawen,Newen,Nil-Gang,Nilmadia,Niodien,Niolia,Niothien,"
+"Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,"
+"Pebridien,Pil-Gadia,Pil-Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,"
+"Póviel,Pulia,Puthien,Reniel,Réviel,Ril-Gawien,Rindra,Riothien,Róng,Rorfiviel,"
+"Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,"
+"Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,"
+"Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,"
+"Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,"
+"Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,"
+"Thruthien,Thryng,Til-Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,"
+"Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-Gania,"
+"Tinil-Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,"
+"Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
+"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,"
+"Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,"
+"Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,"
+"Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-Gandra,Violindë,Viowiel,"
+"Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
+"Vówien"
 
 #: data/core/macros/names.cfg:18
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr ""
+msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
 #: data/core/macros/names.cfg:19
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr ""
+msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -2489,6 +2693,53 @@ msgid ""
 "Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
 "Yryrcyn"
 msgstr ""
+"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
+"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
+"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
+"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
+"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
+"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
+"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
+"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
+"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
+"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
+"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
+"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
+"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
+"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
+"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
+"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
+"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
+"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
+"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
+"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
+"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
+"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
+"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
+"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
+"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
+"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
+"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
+"Yryrcyn"
 
 #: data/core/macros/names.cfg:24
 msgid ""
@@ -2538,6 +2789,51 @@ msgid ""
 "Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
+"Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
+"Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
+"Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,"
+"Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,"
+"Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,"
+"Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,"
+"Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,"
+"Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,"
+"Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,"
+"Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,"
+"Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,"
+"Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,"
+"Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,"
+"Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,"
+"Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,"
+"Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,"
+"Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
+"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
+"Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
+"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
+"Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
+"Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
+"Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,"
+"Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,"
+"Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,"
+"Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,"
+"Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,"
+"Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,"
+"Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,"
+"Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,"
+"Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,"
+"Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,"
+"Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,"
+"Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,"
+"Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,"
+"Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,"
+"Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,"
+"Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,"
+"Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,"
+"Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,"
+"Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,"
+"Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
+"Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 
 #: data/core/macros/names.cfg:28
 msgid ""
@@ -2552,6 +2848,16 @@ msgid ""
 "Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:32
 msgid ""
@@ -2563,6 +2869,13 @@ msgid ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:33
 msgid ""
@@ -2571,6 +2884,10 @@ msgid ""
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:37
 msgid ""
@@ -2581,6 +2898,12 @@ msgid ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:38
 msgid ""
@@ -2592,6 +2915,13 @@ msgid ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 msgstr ""
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 
 #: data/core/macros/names.cfg:42
 msgid ""
@@ -2602,6 +2932,12 @@ msgid ""
 "Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
 "Urkark"
 msgstr ""
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 
 #: data/core/macros/names.cfg:46
 msgid ""
@@ -2638,6 +2974,38 @@ msgid ""
 "Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -2646,6 +3014,10 @@ msgid ""
 "Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -2662,12 +3034,26 @@ msgid ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
+"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
+"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #: data/core/macros/schedules.cfg:100 data/core/macros/schedules.cfg:111
 msgid "Deep Underground"
@@ -2973,31 +3359,28 @@ msgid "Teal"
 msgstr "Kulay dagat"
 
 #: data/core/units.cfg:43
-#, fuzzy
 msgid "race^Bat"
 msgstr "race^Paniki"
 
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
-msgstr "race^Paniki"
+msgstr "race+female^Paniki"
 
 #: data/core/units.cfg:45
 msgid "race^Bats"
 msgstr "race^Paniki"
 
 #: data/core/units.cfg:52
-#, fuzzy
 msgid "race^Drake"
-msgstr "race^Dwende"
+msgstr "race^Kabibi"
 
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
-msgstr ""
+msgstr "race+female^Babaeng Kabibi"
 
 #: data/core/units.cfg:54
 msgid "race^Drakes"
-msgstr ""
+msgstr "race^Mga Kabibi"
 
 #: data/core/units.cfg:67
 msgid ""
@@ -3066,14 +3449,12 @@ msgid ""
 msgstr ""
 
 #: data/core/units.cfg:74
-#, fuzzy
 msgid "race^Dwarf"
 msgstr "race^Dwende"
 
 #: data/core/units.cfg:75
-#, fuzzy
 msgid "race+female^Dwarf"
-msgstr "race^Dwende"
+msgstr "race+female^Dwende"
 
 #: data/core/units.cfg:76
 msgid "race^Dwarves"
@@ -3174,39 +3555,35 @@ msgstr ""
 
 #: data/core/units.cfg:103
 msgid "race^Goblin"
-msgstr ""
+msgstr "race^Tiyanak"
 
 #: data/core/units.cfg:104
-#, fuzzy
 msgid "race+female^Goblin"
-msgstr "female^matapat"
+msgstr "race+female^Tiyanak"
 
 #: data/core/units.cfg:105
 msgid "race^Goblins"
-msgstr ""
+msgstr "race^Mga Tiyanak"
 
 #: data/core/units.cfg:113
 msgid "race^Gryphon"
-msgstr ""
+msgstr "race^Gryphon"
 
 #: data/core/units.cfg:114
-#, fuzzy
 msgid "race+female^Gryphon"
-msgstr "female^malakas"
+msgstr "race+female^Gryphon"
 
 #: data/core/units.cfg:115
 msgid "race^Gryphons"
-msgstr ""
+msgstr "race^Mga Gryphons"
 
 #: data/core/units.cfg:123
-#, fuzzy
 msgid "race^Human"
 msgstr "race^Tao"
 
 #: data/core/units.cfg:124
-#, fuzzy
 msgid "race+female^Human"
-msgstr "race^Tao"
+msgstr "race+female^Tao"
 
 #: data/core/units.cfg:125
 msgid "race^Humans"
@@ -3254,9 +3631,8 @@ msgid ""
 msgstr ""
 
 #: data/core/units.cfg:139
-#, fuzzy
 msgid "race^Saurian"
-msgstr "race^Tao"
+msgstr "race^Bayawak"
 
 #: data/core/units.cfg:140
 msgid "race+female^Saurian"
@@ -3275,67 +3651,60 @@ msgid "race+plural^Mechanical"
 msgstr ""
 
 #: data/core/units.cfg:161
-#, fuzzy
 msgid "race^Merman"
-msgstr "race^Tao"
+msgstr "race^Sireno"
 
 #: data/core/units.cfg:162
-#, fuzzy
 msgid "race^Mermaid"
-msgstr "race^Tao"
+msgstr "race^Sirena"
 
 #: data/core/units.cfg:163
 msgid "race^Mermen"
-msgstr ""
+msgstr "race^Sireno"
 
 #: data/core/units.cfg:171
-#, fuzzy
 msgid "race^Monster"
-msgstr "race^Tao"
+msgstr "race^Halimaw"
 
 #: data/core/units.cfg:172
 msgid "race^Monsters"
-msgstr ""
+msgstr "race^Halimaw"
 
 #: data/core/units.cfg:179
-#, fuzzy
 msgid "race^Naga"
-msgstr "race^Paniki"
+msgstr "race^Naga"
 
 #: data/core/units.cfg:180
-#, fuzzy
 msgid "race^Nagani"
-msgstr "race^Tao"
+msgstr "race^Nagani"
 
 #: data/core/units.cfg:181
 msgid "race^Nagas"
-msgstr ""
+msgstr "race^Mga Nagas"
 
 #: data/core/units.cfg:189
-#, fuzzy
 msgid "race^Ogre"
-msgstr "race^Dwende"
+msgstr "race^Owger"
 
 #: data/core/units.cfg:190
 msgid "race+female^Ogre"
-msgstr ""
+msgstr "race+female^Owger"
 
 #: data/core/units.cfg:191
 msgid "race^Ogres"
-msgstr ""
+msgstr "race^Mga owger"
 
 #: data/core/units.cfg:199
-#, fuzzy
 msgid "race^Orc"
-msgstr "race^Dwende"
+msgstr "race^Balyena"
 
 #: data/core/units.cfg:200
 msgid "race+female^Orc"
-msgstr ""
+msgstr "race+female^Orc"
 
 #: data/core/units.cfg:201
 msgid "race^Orcs"
-msgstr ""
+msgstr "race^Orcs"
 
 #: data/core/units.cfg:211
 msgid ""
@@ -3398,16 +3767,15 @@ msgstr ""
 
 #: data/core/units.cfg:218
 msgid "race^Troll"
-msgstr ""
+msgstr "race^Trowl"
 
 #: data/core/units.cfg:219
-#, fuzzy
 msgid "race+female^Troll"
-msgstr "female^matapat"
+msgstr "race+female^Trowl"
 
 #: data/core/units.cfg:220
 msgid "race^Trolls"
-msgstr ""
+msgstr "race^Mga Trowls"
 
 #: data/core/units.cfg:226
 msgid ""
@@ -3488,9 +3856,8 @@ msgid ""
 msgstr ""
 
 #: data/core/units.cfg:254
-#, fuzzy
 msgid "race^Wose"
-msgstr "race^Paniki"
+msgstr "race^Wose"
 
 #: data/core/units.cfg:255
 msgid "race^Woses"
@@ -4082,7 +4449,7 @@ msgstr "mga nayon"
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
-msgstr ""
+msgstr "mga yunits"
 
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
@@ -4254,9 +4621,8 @@ msgid "(press $hotkey to keep moving)"
 msgstr ""
 
 #: src/ai.cpp:1534
-#, fuzzy
 msgid "Unknown unit type : "
-msgstr "Di kilalang tipo ng yunit '$type|'"
+msgstr "Di kilalang tipo ng yunit :"
 
 #: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
@@ -4280,7 +4646,7 @@ msgstr ""
 
 #: src/dialogs.cpp:234
 msgid "Save Game"
-msgstr ""
+msgstr "I-Save ang Laro"
 
 #: src/dialogs.cpp:244
 msgid "Quit Game"
@@ -4310,7 +4676,6 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
 #: src/dialogs.cpp:288 src/menu_events.cpp:729 src/playcampaign.cpp:420
-#, fuzzy
 msgid "Name: "
 msgstr "Pangalan:"
 
@@ -4332,16 +4697,15 @@ msgstr "Huwag mo na akong tanungin ulit!"
 
 #: src/dialogs.cpp:531
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:548
 msgid "#(Invalid)"
 msgstr ""
 
 #: src/dialogs.cpp:555
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Disenyo ng kampanya"
+msgstr "Kampanya: $campaign_name"
 
 #: src/dialogs.cpp:557 src/game.cpp:1491
 msgid "Multiplayer"
@@ -4458,11 +4822,13 @@ msgstr ""
 
 #: src/game.cpp:445 src/game.cpp:1588
 msgid "The Battle for Wesnoth"
-msgstr ""
+msgstr "The Battle for Wesnoth"
 
 #: src/game.cpp:725
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
+"Babala: Ang file na gusto mong i-load ay sira. Subalit ito ay niloload pa "
+"rin.\n"
 
 #: src/game.cpp:768 src/multiplayer_connect.cpp:1448
 msgid "This save is from a version too old to be loaded."
@@ -4512,7 +4878,7 @@ msgstr ""
 
 #: src/game.cpp:996
 msgid "Server: "
-msgstr ""
+msgstr "Server:"
 
 #: src/game.cpp:997 src/game.cpp:1064
 msgid "Remove Add-ons"
@@ -4744,7 +5110,7 @@ msgstr ""
 
 #: src/game.cpp:2014
 msgid "Battle for Wesnoth"
-msgstr ""
+msgstr "Battle for Wesnoth"
 
 #: src/game.cpp:2206
 msgid "Loading game configuration."
@@ -5089,18 +5455,16 @@ msgid "Details"
 msgstr "Mga detalye"
 
 #: src/menu_events.cpp:210
-#, fuzzy
 msgid "Damage"
-msgstr "danyos"
+msgstr "Danyos"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
 msgstr ""
 
 #: src/menu_events.cpp:213
-#, fuzzy
 msgid "This Turn"
-msgstr "Turno"
+msgstr "Itong turno"
 
 #: src/menu_events.cpp:222
 msgid "Inflicted"
@@ -5366,9 +5730,8 @@ msgid "Place Label"
 msgstr ""
 
 #: src/menu_events.cpp:1669 src/menu_events.cpp:1672
-#, fuzzy
 msgid "Label: "
-msgstr "Pinuno:"
+msgstr "Leybel:"
 
 #: src/menu_events.cpp:1674
 msgid "Team only"
@@ -5446,9 +5809,8 @@ msgid "Send an emotion or personal action in chat. Usage: /me <message>"
 msgstr ""
 
 #: src/menu_events.cpp:1962
-#, fuzzy
 msgid "Unknown command."
-msgstr "Hinde kilalalang Unit"
+msgstr "Hinde kilalalang utos."
 
 #: src/menu_events.cpp:1968
 msgid "Added to ignore list: "
@@ -6019,9 +6381,8 @@ msgid "Leader: "
 msgstr "Pinuno:"
 
 #: src/multiplayer_wait.cpp:147
-#, fuzzy
 msgid "Gender: "
-msgstr "Pinuno:"
+msgstr "Kasarian:"
 
 #: src/multiplayer_wait.cpp:149
 msgid "Recruits: "
@@ -6041,7 +6402,7 @@ msgstr ""
 
 #: src/multiplayer_wait.cpp:270
 msgid "No era information found."
-msgstr ""
+msgstr "Walang impormasyon ng panahon ang nakita."
 
 #: src/multiplayer_wait.cpp:275
 msgid "No multiplayer sides found"
@@ -6086,9 +6447,8 @@ msgid "Initializing display"
 msgstr ""
 
 #: src/play_controller.cpp:147
-#, fuzzy
 msgid "Starting game"
-msgstr "Pigilan ang laro"
+msgstr "Sinisimulan ang laro"
 
 #: src/play_controller.cpp:829
 msgid "Back to start"
@@ -6111,9 +6471,8 @@ msgid "Error while reading the WML: "
 msgstr "Error habang binabasa ang WML:"
 
 #: src/playcampaign.cpp:421
-#, fuzzy
 msgid "Save Replay"
-msgstr "Ulitin ang laro"
+msgstr "I-save ang replay"
 
 #: src/playcampaign.cpp:426
 msgid "The replay could not be saved"
@@ -6122,6 +6481,7 @@ msgstr ""
 #: src/playcampaign.cpp:443
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
+"Ang sinaryong ito ay natapos na. Gusto mo bang ipagpatuloy ang kampanya?"
 
 #: src/playcampaign.cpp:464
 msgid "Downloading next scenario..."
@@ -6137,17 +6497,15 @@ msgstr "Pangalan:"
 
 #: src/playcampaign.cpp:583
 msgid "Unknown scenario: '$scenario|'"
-msgstr ""
+msgstr "Di kilalang sinaryo: '$scenario|'"
 
 #: src/playmp_controller.cpp:271
-#, fuzzy
 msgid "End scenario"
-msgstr "Tapusin ang pangyayari"
+msgstr "Tapusin ang sinaryoi"
 
 #: src/playmp_controller.cpp:333
-#, fuzzy
 msgid "Waiting for next scenario..."
-msgstr "Ang susunod na pangyayari ay dina-download pa ..."
+msgstr "Hinihintay ang susunod na sinaryo..."
 
 #: src/playmp_controller.cpp:459
 msgid ""
@@ -6185,12 +6543,11 @@ msgstr "Ginto:"
 
 #: src/playsingle_controller.cpp:168
 msgid "Carry over percentage: "
-msgstr ""
+msgstr "Naisalin na porsiyento:"
 
 #: src/playsingle_controller.cpp:170
-#, fuzzy
 msgid "Bonus Gold: "
-msgstr "Bonus: "
+msgstr "Bonus Ginto: "
 
 #: src/playsingle_controller.cpp:172
 msgid "Retained Gold: "
@@ -6205,11 +6562,11 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Magsisimula ka sa susunod na kaganapan na may $gold o ang naka-define na "
-"minimum panimulang ginto, kung alin man ang mas malaki."
+"Magsisimula ka sa susunod na sinaryo na may $gold na mas mataas sa naka-"
+"define na panimulang minimum na ginto."
 msgstr[1] ""
-"Magsisimula ka sa susunod na kaganapan na may $gold o ang naka-define na "
-"minimum panimulang ginto, kung alin man ang mas malaki."
+"Magsisimula ka sa susunod na sinaryo na may $gold na mas mataas sa naka-"
+"define na panimulang minimum na ginto."
 
 #: src/playsingle_controller.cpp:190
 #, fuzzy
@@ -6220,11 +6577,11 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
-"Magsisimula ka sa susunod na kaganapan na may $gold o ang naka-define na "
-"minimum panimulang ginto, kung alin man ang mas malaki."
+"Magsisimula ka sa susunod na sinaryo na may $gold o ang naka-define na "
+"panimulang minimum na ginto, san man ang mas malaki."
 msgstr[1] ""
-"Magsisimula ka sa susunod na kaganapan na may $gold o ang naka-define na "
-"minimum panimulang ginto, kung alin man ang mas malaki."
+"Magsisimula ka sa susunod na sinaryo na may $gold o ang naka-define na "
+"panimulang minimum na ginto, san man ang mas malaki."
 
 #: src/playsingle_controller.cpp:301
 msgid "Game Over"
@@ -6248,7 +6605,7 @@ msgstr "Ikaw ay kumitaw na panalo!"
 
 #: src/playsingle_controller.cpp:427 src/playsingle_controller.cpp:472
 msgid "The file you have tried to load is corrupt"
-msgstr ""
+msgstr "Ang file na nais mong i-load ay nasira"
 
 #: src/playsingle_controller.cpp:437
 msgid ""
@@ -6284,7 +6641,7 @@ msgstr "$player ay umalis sa laro. Anong gusto mong gawin?"
 
 #: src/replay_controller.cpp:88
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr ""
+msgstr "Ang file na nais mong i-load ay nasira. Ipagpatuloy ang paglalaro?"
 
 #: src/serialization/parser.cpp:131
 msgid "Unexpected characters at line start"
@@ -6308,7 +6665,7 @@ msgstr "Hinde Tapos [+element] tag"
 
 #: src/serialization/parser.cpp:202
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Imbalidong pangwakas na tag"
 
 #: src/serialization/parser.cpp:205
 msgid "Unterminated closing tag"
@@ -6359,7 +6716,7 @@ msgstr "Sariling village"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size ay kailangang nasa pagitan ng 0.0 at 0.5."
 
 #: src/titlescreen.cpp:348
 msgid "TitleScreen button^Tutorial"
@@ -6398,14 +6755,12 @@ msgid "TitleScreen button^Quit"
 msgstr "TitleScreen button^Umalis"
 
 #: src/titlescreen.cpp:359
-#, fuzzy
 msgid "TitleScreen button^Previous"
-msgstr "TitleScreen button^Mga Kredito"
+msgstr "TitleScreen button^Nauna"
 
 #: src/titlescreen.cpp:360
-#, fuzzy
 msgid "TitleScreen button^Next"
-msgstr "TitleScreen button^Umalis"
+msgstr "TitleScreen button^Sunod"
 
 #: src/titlescreen.cpp:361
 msgid "TitleScreen button^Help"
