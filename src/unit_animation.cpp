@@ -527,11 +527,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
 		}
 	}
-	if(!cfg["die_sound"].empty()) {
-		animations.back().sub_anims_["_death_sound"] = crude_animation();
-		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame());
-		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
-	}
 	// Always have a defensive animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");
 	const config::child_list& victory_anims = expanded_cfg.get_children("victory_anim");
