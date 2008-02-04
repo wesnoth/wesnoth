@@ -22,6 +22,9 @@ Version 1.3.15+svn:
    * During ai moves the source hex is no longer highlighted.
    * show unit standing animations and idle animations are now separate options
  * miscellaneous and bug fixes:
+   * Fixed networking not to timeout with slow connections but timeout faster
+     with lost connection (partialy fix bug #10967)
+   * Fixed client side ping timeout check if downloading or uploading
    * Moved destruction of conditional object before the mutex. This should 
      fix random crash in network disconnect.
    * Fixed reference to invalid pointer in attack::attack

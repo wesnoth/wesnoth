@@ -169,7 +169,7 @@ int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 }
 
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
-		bool update_stats=false, int timeout_ms=60000)
+		bool update_stats=false, int timeout_ms=10000)
 {
 	int startTicks = SDL_GetTicks();
 	int time_used = 0;
@@ -234,6 +234,8 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 				return false;
 			}
 			nbytes -= bytes_read;
+			// We got some data from server so reset start time so slow conenction won't timeout.
+			startTicks = SDL_GetTicks();
 		}
 	}
 
@@ -264,6 +266,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, config& config_in, const bool gz
 	SDLNet_Write32(value.size()+1,&buf[0]);
 	std::copy(value.begin(),value.end(),buf.begin()+4);
 	buf.back() = 0;
+
 	size_t size = buf.size();
 	{
 		const threading::lock lock(*stats_mutex);
