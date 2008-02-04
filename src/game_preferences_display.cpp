@@ -309,7 +309,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	std::vector< double > turbo_items;
 	turbo_items.push_back(0.25);
 	turbo_items.push_back(0.5);
+	turbo_items.push_back(0.75);
 	turbo_items.push_back(1);
+	turbo_items.push_back(1.5);
 	turbo_items.push_back(2);
 	turbo_items.push_back(4);
 	turbo_items.push_back(8);
