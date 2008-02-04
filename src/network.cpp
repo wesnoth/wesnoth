@@ -676,7 +676,7 @@ connection receive_data(config& cfg, connection connection_num)
 			{
 				s = get_socket(sockets.back());
 			}
-			if (!network_work_pool::is_locked(s))
+			if (!network_worker_pool::is_locked(s))
 			{
 				check_timeout();
 			}
