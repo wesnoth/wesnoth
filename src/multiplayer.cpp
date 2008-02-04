@@ -322,6 +322,8 @@ static void enter_wait_mode(game_display& disp, const config& game_config, game_
 	}
 }
 
+static void enter_create_mode(game_display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server);
+
 static void enter_connect_mode(game_display& disp, const config& game_config, game_data& data,
 		mp::chat& chat, config& gamelist, const mp::create::parameters& params,
 		mp::controller default_controller, bool is_server)
@@ -357,6 +359,9 @@ static void enter_connect_mode(game_display& disp, const config& game_config, ga
 		play_game(disp, state, game_config, data, nolog, IO_SERVER);
 		recorder.clear();
 
+		break;
+	case mp::ui::CREATE:
+		enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
 		break;
 	case mp::ui::QUIT:
 	default:

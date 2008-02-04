@@ -1115,8 +1115,10 @@ void ai_interface::attack_enemy(const location u,
 			LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
 			return;
 		}
-
-		recorder.add_attack(u,target,weapon,def_weapon);
+		if(weapon >= 0)
+		{
+			recorder.add_attack(u,target,weapon,def_weapon);
+		}
 		try {
 			attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon,
 					info_.units, info_.state, info_.gameinfo);

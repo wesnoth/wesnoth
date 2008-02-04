@@ -928,7 +928,8 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 {
 	load_game();
 
-	if(get_result() == QUIT)
+	if(get_result() == QUIT
+		|| get_result() == CREATE)
 		return;
 	lists_init();
 	if(sides_.empty()) {
@@ -1412,7 +1413,7 @@ void connect::load_game()
 		const std::string game = dialogs::load_game_dialog(disp(), 
 								 game_config(), game_data_, &show_replay);
 		if(game.empty()) {
-			set_result(QUIT);
+			set_result(CREATE);
 			return;
 		}
 
@@ -1425,7 +1426,7 @@ void connect::load_game()
 			gui::show_error_message(disp(),
 					_("The file you have tried to load is corrupt: '") +
 					error_log);
-			set_result(QUIT);
+			set_result(CREATE);
 			return;
 		}
 
@@ -1433,7 +1434,7 @@ void connect::load_game()
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
 			gui::message_dialog dlg(disp(), "", _("This is not a multiplayer save"));
 			dlg.show();
-			set_result(QUIT);
+			set_result(CREATE);
 			return;
 		}
 
@@ -1447,7 +1448,7 @@ void connect::load_game()
 				/* GCC-3.3 needs a temp var otherwise compilation fails */
 				gui::message_dialog dlg2(disp(), "", _("This save is from a version too old to be loaded."));
 				dlg2.show();
-				set_result(QUIT);
+				set_result(CREATE);
 				return;
 			}
 
@@ -1455,7 +1456,7 @@ void connect::load_game()
 					_("This save is from a different version of the game. Do you want to try to load it?"),
 					gui::YES_NO).show();
 			if(res == 1) {
-				set_result(QUIT);
+				set_result(CREATE);
 				return;
 			}
 		}
