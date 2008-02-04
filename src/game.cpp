@@ -1477,9 +1477,6 @@ bool game_controller::play_multiplayer()
 	host_or_join.push_back(pre + "serverother.png"
 		+ sep1 + _("Connect to Host/Server")
 		+ sep2 + _("Join a server or hosted game"));
-	host_or_join.push_back(pre + "hostgame.png"
-		+ sep1 + _("Host Networked Game")
-		+ sep2 + _("Host a game using the built-in server. Not well maintained, better use the dedicated server 'wesnothd'."));
 	host_or_join.push_back(pre + "hotseat.png"
 		+ sep1 + _("Local Game")
 		+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
@@ -1509,12 +1506,12 @@ bool game_controller::play_multiplayer()
 			events::discard(INPUT_MASK); // prevent the "keylogger" effect
 		}
 
-		if(res >= 2) {
+		if(res == 2) {
 			std::vector<std::string> chat;
 			config game_data;
 
-			const mp::controller cntr = (res == 2 ?	mp::CNTR_NETWORK : mp::CNTR_LOCAL );
-			const bool is_server = res == 2;
+			const mp::controller cntr = mp::CNTR_LOCAL;
+			const bool is_server = false;
 
 			mp::start_server(disp(), game_config_, units_data_, cntr, is_server);
 
