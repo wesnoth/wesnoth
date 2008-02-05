@@ -1679,6 +1679,81 @@ PyObject* python_ai::wrapper_get_version(PyObject* /*self*/, PyObject* args)
 	return Py_BuildValue(STRINGVALUE, game_config::version.c_str());
 }
 
+PyObject* python_ai::wrapper_raise_user_interact(PyObject* /*self*/, PyObject* args)
+{
+	if (!PyArg_ParseTuple(args, NOVALUE))
+		return NULL;
+
+	wrap(
+		running_instance->raise_user_interact();
+	)
+
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
+PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
+{
+	wesnoth_location* from;
+	// loc initialises to x=-1000, y=-1000. i.e. temporarily moves the unit off the map
+	gamemap::location loc;
+	wesnoth_location* to = reinterpret_cast<wesnoth_location*>(wrap_location(loc));
+	
+	if (!PyArg_ParseTuple(args, CC("O!|O!"), &wesnoth_location_type, &from,
+		&wesnoth_location_type, &to))
+		return NULL;
+	
+	// Trivial case, just return the current move_maps
+	if (*from->location_ == *to->location_) {
+	    // PyTuple_New creates a new reference (which we will return)
+		PyObject* ret = PyTuple_New(2);
+		
+		/* wrap_move_map creates a new reference, PyTuple_SetItem takes away
+		 * a reference - so this should cancel out and we don't need to
+		 * change reference counts ourselves.
+		 */
+		PyTuple_SetItem(ret, 0, wrap_move_map(running_instance->enemy_src_dst_));
+		PyTuple_SetItem(ret, 1, wrap_move_map(running_instance->enemy_dst_src_));
+
+		return ret;
+	}
+	
+	info& inf = running_instance->get_info();
+	
+	unit_map::iterator u_it = inf.units.find(*from->location_);
+	if (u_it == inf.units.end()) return_none;
+	
+	// Temporarily move our unit to the specified location, storing any
+	// unit that might happen to be there already.
+	std::pair<gamemap::location,unit> *temp = inf.units.extract(*to->location_);
+	std::pair<gamemap::location,unit> *backup = temp;
+	std::pair<gamemap::location,unit> *original = inf.units.extract(*from->location_);
+	std::pair<gamemap::location,unit> test(*to->location_, u_it->second);
+	inf.units.add(&test);
+	
+	ai_interface::move_map test_src_dst;
+	ai_interface::move_map test_dst_src;
+	std::map<gamemap::location, paths> possible_moves;
+	
+	running_instance->calculate_moves(inf.units, possible_moves, test_src_dst, test_dst_src, true);
+	
+	// Restore old positions again
+	temp = inf.units.extract(*to->location_);
+	inf.units.add(original);
+	if (backup)
+		inf.units.add(backup);
+	
+	PyObject* srcdst = wrap_move_map(test_src_dst);
+	PyObject* dstsrc = wrap_move_map(test_dst_src);
+	// possible_moves not used
+	
+	PyObject* ret = PyTuple_New(2);
+	PyTuple_SetItem(ret, 0, srcdst);
+	PyTuple_SetItem(ret, 1, dstsrc);
+	
+	return ret;
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
     MDEF("log_message", python_ai::wrapper_log_message,		
 		"Parameters: string\n"
@@ -1750,6 +1825,20 @@ static PyMethodDef wesnoth_python_methods[] = {
 		"previously been set with set_variable - or None if it can't be found.")
     MDEF("get_version", python_ai::wrapper_get_version,
 		"Returns a string containing current Wesnoth version")
+    MDEF("raise_user_interact", python_ai::wrapper_raise_user_interact,
+		"Function which should be called frequently to allow the user to interact with the interface.\n"
+		"This function will make sure that interaction doesn't occur too often, "
+		"so there is no problem with calling it very regularly.")
+    MDEF("test_move", python_ai::wrapper_test_move,
+		"Parameters: from location, to location (optional)\n"
+		"Returns: (enemy_destinations_by_unit, enemy_units_by_destination) or None\n"
+		"Returns two dictionaries, representing the possible enemy moves if "
+		"the unit were to move from 'from location' to 'test location'. "
+		"If 'to location' is not given, it returns the possible enemy moves ignoring this unit. "
+		"The results will be the same as if wesnoth.get_enemy_destinations_by_unit() "
+		"and wesnoth.get_enemy_units_by_destination() were called after actually "
+		"performing the move.\n"
+		"Returns None if there is no unit at 'from location'.")
 		{ NULL, NULL, 0, NULL}
 };
 

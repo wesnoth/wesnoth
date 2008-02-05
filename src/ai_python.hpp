@@ -70,6 +70,8 @@ public:
     W(set_variable);
     W(get_variable);
     W(get_version);
+    W(raise_user_interact);
+    W(test_move);
 
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
