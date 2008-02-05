@@ -597,7 +597,8 @@ usage = {}
 sides = []
 
 def sanity_check(filename, lines):
-    "Perform sanity and considtency checks on input lines"
+    "Perform sanity and consistency checks on input lines."
+    modified = False
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units deived via [base_unit].
     in_unit = False
@@ -744,7 +745,7 @@ def sanity_check(filename, lines):
             if has_tr_mark and '{' in value:
                 print '"%s", line %d: macro reference in translatable string'\
                       % (filename, i+1)
-            # Check correctness of translation marks and desciptions
+            # Check correctness of translation marks and descriptions
             if key.startswith("#"):	# FIXME: parse_attribute is confused.
                 pass
             elif key == 'letter':	# May be led with _s for void 
@@ -755,13 +756,19 @@ def sanity_check(filename, lines):
                 if not has_tr_mark:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
+                    value = "_ " + value
+                    modified = True
             elif  key == "description":
                 if (in_trait or in_objective) and not has_tr_mark:
                     print '"%s", line %d: description in [objectives] needs translation mark' \
                           % (filename, i+1)
+                    value = "_ " + value
+                    modified = True
                 elif not (in_trait or in_objective) and has_tr_mark:
                     print '"%s", line %d: description should not have translation mark' \
                           % (filename, i+1)
+                    value = value.replace("_", "", 1)
+                    modified = True
                 if in_person:
                     present.append(value)
                 elif value in ('narrator', 'unit', 'second_unit') or value[0] in ("$", "{"):
@@ -772,6 +779,8 @@ def sanity_check(filename, lines):
             elif has_tr_mark:
                 print '"%s", line %d: %s should not have a translation mark' \
                           % (filename, i+1, key)                
+                value = value.replace("_", "", 1)
+                modified = True
         except TypeError:
             pass
     # Interpret magic comments for setting the sage pattern of units.
@@ -782,9 +791,10 @@ def sanity_check(filename, lines):
         m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
         if m:
             usage[m.group(1)] = m.group(2).strip()
+    return modified
 
 def consistency_check():
-    "Consistency-check state information picked up by "
+    "Consistency-check state information picked up by sanity_check"
     utypes = []
     for (filename, (rl, recruit), (pl, recruitment_pattern)) in sides:
         #print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
@@ -1671,7 +1681,7 @@ def translator(filename, mapxforms, textxform):
         print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
     tagstack = []
     # Perform semantic sanity checks
-    sanity_check(filename, newdata)
+    modified |= sanity_check(filename, newdata)
     # OK, now perform WML rewrites
     (newdata, hacked) = hack_syntax(filename, newdata)
     # Run everything together
