@@ -820,9 +820,9 @@ def sanity_check(filename, lines):
         w = textdomains[0]
         print '"%s", line %d: single textdomain declaration not on line 1.' % \
               (filename, w)
-        lines = [lines[w].lstrip()] + lines[:w] + lines[w+1:]
+        lines = [lines[w-1].lstrip()] + lines[:w-1] + lines[w:]
         modified = True
-    return modified
+    return (lines, modified)
 
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
@@ -1428,7 +1428,7 @@ start_time=-150
             lines[i] = m.group(1) + image_block % (m.group(2), "ranged")
             modcount += 1
     # More syntax transformations would go here.
-    return modcount
+    return (lines, modcount)
 
 # Generic machinery starts here
 
@@ -1713,11 +1713,12 @@ def translator(filename, mapxforms, textxform):
     tagstack = []
     if iswml(filename):
         # Perform semantic sanity checks
-        modified |= sanity_check(filename, newdata)
+        (newdata, modified1) = sanity_check(filename, newdata)
         # OK, now perform WML rewrites
-        modified |= hack_syntax(filename, newdata)
+        (newdata, modified2) = hack_syntax(filename, newdata)
         # Run everything together
         filetext = "".join(newdata)
+        modified = modified1 or modified2
         transformed = filetext
         if upconvert:
             # WML syntax changed in 1.3.5.  The transformation cannot
