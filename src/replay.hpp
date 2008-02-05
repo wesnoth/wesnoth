@@ -73,9 +73,10 @@ public:
 	 * determines which advancement option has been choosen
 	 */
 	void add_advancement(const gamemap::location& loc);
-
+	
+	void add_chat_message_location();
 	void speak(const config& cfg);
-	std::string build_chat_log(const std::string& team) const;
+	std::string build_chat_log(const std::string& team);
 
 	//get data range will get a range of moves from the replay system.
 	//if data_type is 'ALL_DATA' then it will return all data in this range
@@ -121,6 +122,8 @@ private:
 
 	void add_value(const std::string& type, int value);
 
+	void add_chat_log_entry(const config*, std::stringstream&, const std::string&) const;
+
 	const config::child_list& commands() const;
 	/** Adds a new empty command to the command list.
 	 *
@@ -142,6 +145,8 @@ private:
 	game_state saveInfo_;
 
 	bool skip_;
+	
+	std::vector<int> message_locations;
 };
 
 replay& get_replay_source();

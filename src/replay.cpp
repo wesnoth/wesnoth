@@ -428,36 +428,60 @@ void replay::add_advancement(const gamemap::location& loc)
 	cmd->add_child("advance_unit",val);
 }
 
+void replay::add_chat_message_location()
+{
+	message_locations.push_back(pos_-1);
+}
+
 void replay::speak(const config& cfg)
 {
 	config* const cmd = add_command(false);
 	if(cmd != NULL) {
 		cmd->add_child("speak",cfg);
 		(*cmd)["undo"] = "no";
+		add_chat_message_location();
 	}
 }
 
-std::string replay::build_chat_log(const std::string& team) const
+void replay::add_chat_log_entry(const config* speak, std::stringstream& str, const std::string& team) const
+{
+	const config& cfg = *speak;
+	const std::string& team_name = cfg["team_name"];
+	if(team_name == "" || team_name == team) {
+		if(team_name == "") {
+			str << "<" << cfg["description"] << "> ";
+		} else {
+			str << "*" << cfg["description"] << "* ";
+		}
+		str << cfg["message"] << "\n";
+	}
+	
+}
+
+std::string replay::build_chat_log(const std::string& team)
 {
 	std::stringstream str;
 	const config::child_list& cmd = commands();
-	for(config::child_list::const_iterator i = cmd.begin(); i != cmd.end(); ++i) {
-		const config* speak = (**i).child("speak");
-		if(speak != NULL) {
-			const config& cfg = *speak;
-			const std::string& team_name = cfg["team_name"];
-			if(team_name == "" || team_name == team) {
-				if(team_name == "") {
-					str << "<" << cfg["description"] << "> ";
-				} else {
-					str << "*" << cfg["description"] << "* ";
-				}
+	std::vector<int>::iterator loc_it;
+	int last_location = 0;
+	for (loc_it = message_locations.begin(); loc_it != message_locations.end(); ++loc_it)
+	{
+		last_location = *loc_it;
+		const config* speak = cmd[last_location]->child("speak");
+		add_chat_log_entry(speak,str,team);
 
-				str << cfg["message"] << "\n";
-			}
-		}
 	}
 
+#if 0
+	for(config::child_list::const_iterator i = cmd.begin() + (last_location + 1); i != cmd.end(); ++i) {
+		++last_location;
+		const config* speak = (**i).child("speak");
+		if(speak != NULL) {
+			message_locations.push_back(last_location);
+			add_chat_log_entry(speak,str,team);
+		}
+	}
+#endif
 	return str.str();
 }
 
@@ -625,6 +649,7 @@ void replay::set_to_end()
 
 void replay::clear()
 {
+	message_locations.clear();
 	cfg_ = config();
 	pos_ = 0;
 	current_ = NULL;
@@ -641,6 +666,11 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 {
 	for(config::const_child_itors i = cfg.child_range("command"); i.first != i.second; ++i.first) {
 		config& cfg = cfg_.add_child("command",**i.first);
+		if (cfg.child("speak"))
+		{
+			pos_ = ncommands();
+			add_chat_message_location();
+		}
 		if(mark == MARK_AS_SENT) {
 			cfg["sent"] = "yes";
 		}
@@ -812,6 +842,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 				const std::string& message = (*child)["message"];
 				//if (!preferences::show_lobby_join(speaker_name, message)) return;
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
+				get_replay_source().add_chat_message_location();
 				if (!get_replay_source().is_skipping() || is_whisper) {
 					const int side = lexical_cast_default<int>((*child)["side"],0);
 					disp.add_chat_message(time(NULL), speaker_name, side, message,
