@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-03 17:22+0100\n"
-"PO-Revision-Date: 2008-01-28 21:27+0100\n"
+"PO-Revision-Date: 2008-02-05 15:18+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Animar mapa"
 
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Animaciones de Unidades Quietas"
 
 #: data/_main.cfg:64
 msgid "Show Combat"
@@ -302,9 +302,8 @@ msgid "Bots"
 msgstr "Bots"
 
 #: data/core/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
 #: data/core/help.cfg:10 data/core/help.cfg:69
 msgid "Introduction"
@@ -1163,7 +1162,6 @@ msgstr ""
 "casos, se le ofrecerá una opción entre los avances posibles."
 
 #: data/core/help.cfg:262
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1187,7 +1185,7 @@ msgstr ""
 "disponible. El ASMN modificará a la unidad cada vez que la unidad alcance el "
 "límite de experiencia, pero la unidad seguirá siendo del mismo nivel. El "
 "efecto típico del ASMN es que la unidad eleva sus PV máximos en 3 puntos. El "
-"primer ASMN se alcanza normalmente a los 100 PX (80 PX para las unidades "
+"primer ASMN se alcanza normalmente a los 150 PX (120 PX para las unidades "
 "inteligentes). Sin embargo, conseguir un ASMN se hace progresivamente más "
 "difícil cada vez que la unidad recibe un ASMN, por lo que normalmente es más "
 "útil intentar mejorar sus unidades de bajo nivel."
@@ -2343,7 +2341,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:678
-#, fuzzy
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -4065,13 +4062,12 @@ msgstr ""
 "de los dos haya muerto."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
 "enemy."
 msgstr ""
-"Si hay un enemigo del objetivo en el lado opuesto de dicho objetivo, esta "
+" Si hay un enemigo del objetivo en el lado opuesto de dicho objetivo, esta "
 "unidad puede apuñalar al objetivo por la espalda, infligiéndole así el doble "
 "de daño."
 
@@ -4308,7 +4304,6 @@ msgid "race^Drakes"
 msgstr "Dracos"
 
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4430,9 +4425,9 @@ msgstr ""
 "otras razas, los dracos crecen naturalmente de forma más agresiva y "
 "temeraria hacia los extremos de su vida natural, tal vez para ayudar a "
 "asegurar su lugar en las heroicas leyendas de su gente.\n"
-" \n"
+"\n"
 "<header>text='Geografía'</header>\n"
-" Los Dracos proceden de la isla de Morogor en el Gran Océano. Sin embargo, "
+"Los Dracos proceden de la isla de Morogor en el Gran Océano. Sin embargo, "
 "puesto que la isla se ha estado hundiendo lentamente  durante siglos, y las "
 "colonias de dracos lentamente se han extendido a la Gran Continente. Los "
 "Dracos suelen hacer sus hogares en las cavernas de las montañas cerca de los "
@@ -7528,9 +7523,8 @@ msgid "Unknown era"
 msgstr "Era desconocida"
 
 #: src/multiplayer_lobby.cpp:456
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Carga una partida guardada"
+msgstr "Partida recargada"
 
 #: src/multiplayer_lobby.cpp:469
 msgid "Remote scenario"
@@ -7549,11 +7543,10 @@ msgid "Turn "
 msgstr "Turno "
 
 #: src/multiplayer_lobby.cpp:500
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Plaza libre:"
-msgstr[1] "Plaza libre:"
+msgstr[1] "Plazas libres:"
 
 #: src/multiplayer_lobby.cpp:503 src/multiplayer_lobby.cpp:752
 msgid "Password Required"
