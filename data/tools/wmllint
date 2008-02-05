@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# wmllint -- up-convert WML and maps between versions.
+# wmllint -- check WML for conformance to the most recent dialect
 #
 # By Eric S. Raymond April 2007.
 #
@@ -8,7 +8,16 @@
 # markup to newer ones should live here.  This includes resource path changes
 # and renames, also map format conversions.
 #
-# While the script is at it, it checks for unbalanced tags and warns about them.
+# While the script is at it, it checks for various incorrect and dodgy WML
+# constructs, including:
+#   * unbalanced tags
+#   * strings that need a translation mark and should not have them
+#   * strings that have a translation mark and should not
+#   * translatable strings containing macro references 
+#   * filter references by description= not matched by an actual unit
+#   * abilities or traits without matching special notes, or vice-versa
+#   * consistency between recruit= and recruitment_pattern= instances
+#   * double space after punctuation inm translatable strings.
 #
 # Takes any number of directories as arguments.  Each directory is converted.
 # If no directories are specified, acts on the current directory.
@@ -746,7 +755,7 @@ def sanity_check(filename, lines):
                 if '{' in value:
                     print '"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1)
-                if future and re.search("[.!?]  ", lines[i]):
+                if future and re.search("[.,!?]  ", lines[i]):
                     print '"%s", line %d: extraneous space in translatable string'\
                           % (filename, i+1)
             # Check correctness of translation marks and descriptions
@@ -797,13 +806,9 @@ def sanity_check(filename, lines):
             usage[m.group(1)] = m.group(2).strip()
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
-    first_underscore = None
-    translatable = re.compile('=\s*_\s*"')
     for i in range(len(lines)):
         if "#textdomain" in lines[i]:
             textdomains.append(i+1)
-        elif first_underscore is None and translatable.search(lines[i]):
-            first_underscore = i + 1
     if not textdomains:
         print '"%s", line 1: no textdomain string' % filename
     elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
@@ -811,9 +816,12 @@ def sanity_check(filename, lines):
     elif len(textdomains) > 1:
         print '"%s", line %d: multiple textdomain strings on lines %s' % \
               (filename, textdomains[0], ", ".join(map(str, textdomains)))
-    elif first_underscore is not None and first_underscore < textdomains[0]:
-        print '"%s", line %d: underscore before textdomain declaration on %d.' % \
-              (filename, first_underscore, textdomains[0])
+    else:
+        w = textdomains[0]
+        print '"%s", line %d: single textdomain declaration not on line 1.' % \
+              (filename, w)
+        lines = [lines[w].lstrip()] + lines[:w] + lines[w+1:]
+        modified = True
     return modified
 
 def consistency_check():
