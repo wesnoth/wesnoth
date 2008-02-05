@@ -791,6 +791,18 @@ def sanity_check(filename, lines):
         m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
         if m:
             usage[m.group(1)] = m.group(2).strip()
+    # Check for textdomain strings; should be exactly one, on line 1
+    textdomains = []
+    for i in range(len(lines)):
+        if "#textdomain" in lines[i]:
+            textdomains.append(i+1)
+    if not textdomains:
+        print '"%s", line 1: no textdomain string' % filename
+    elif textdomains[0] == 1:
+        pass
+    elif len(textdomains) > 1:
+        print '"%s", line %d: multiple textdomain strings on lines %s' % \
+              (filename, textdomains[0], ", ".join(map(str, textdomains)))
     return modified
 
 def consistency_check():
@@ -1397,7 +1409,7 @@ start_time=-150
             lines[i] = m.group(1) + image_block % (m.group(2), "ranged")
             modcount += 1
     # More syntax transformations would go here.
-    return (lines, modcount)
+    return modcount
 
 # Generic machinery starts here
 
@@ -1680,21 +1692,25 @@ def translator(filename, mapxforms, textxform):
     if tagstack:
         print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
     tagstack = []
-    # Perform semantic sanity checks
-    modified |= sanity_check(filename, newdata)
-    # OK, now perform WML rewrites
-    (newdata, hacked) = hack_syntax(filename, newdata)
-    # Run everything together
-    filetext = "".join(newdata)
-    if upconvert:
-        # WML syntax changed in 1.3.5.  The transformation cannot
-        # conveniently be done line-by-line.
-        transformed = re.sub(r"(if]|while])\s*\[or]([\w\W]*?)\[/or]\s*",
-                             r"\1\2", filetext);
-    else:
+    if iswml(filename):
+        # Perform semantic sanity checks
+        modified |= sanity_check(filename, newdata)
+        # OK, now perform WML rewrites
+        modified |= hack_syntax(filename, newdata)
+        # Run everything together
+        filetext = "".join(newdata)
         transformed = filetext
+        if upconvert:
+            # WML syntax changed in 1.3.5.  The transformation cannot
+            # conveniently be done line-by-line.
+            transformed = re.sub(r"(if]|while])\s*\[or]([\w\W]*?)\[/or]\s*",
+                             r"\1\2", filetext);
+            modified |= (transformed != filetext)
+    else:
+        # Map or mask -- just run everything together
+        transformed = "".join(newdata)
     # Return None if the transformation functions made no changes.
-    if modified or hacked or transformed != filetext:
+    if modified:
         return transformed
     else:
         return None
