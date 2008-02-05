@@ -46,6 +46,8 @@ namespace preferences {
 		~base_manager();
 	};
 
+	void write_preferences();
+
 	// Low-level, should be seen only by preferences_display ?
 	void set(const std::string key, std::string value);
 	const std::string get(const std::string key);

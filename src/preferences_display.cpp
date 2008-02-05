@@ -274,15 +274,22 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::button clear_button (disp.video(), ("Clear Hotkey"));
 	clear_button.set_location(xpos + width - clear_button.width () - font::relative_size(30),ypos + font::relative_size(80));
 #endif
-	gui::button save_button (disp.video(), _("Save Hotkeys"));
-	save_button.set_location(xpos + width - save_button.width () - font::relative_size(30),ypos + font::relative_size(130));
+//	gui::button save_button (disp.video(), _("Save Hotkeys"));
+//	save_button.set_location(xpos + width - save_button.width () - font::relative_size(30),ypos + font::relative_size(130));
 
 	escape_handler esc_hand;
 
 	for(;;) {
 
 		if (close_button.pressed() || esc_hand.escape_pressed())
+		{
+			if (save_config == NULL) {
+				save_hotkeys();
+			} else {
+				hotkey::save_hotkeys(*save_config);
+			}
 			break;
+		}
 
 		if (change_button.pressed () || menu_.double_clicked()) {
 			// Lets change this hotkey......
@@ -349,13 +356,13 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				}
 			}
 		}
-		if (save_button.pressed()) {
-			if (save_config == NULL) {
-				save_hotkeys();
-			} else {
-				hotkey::save_hotkeys(*save_config);
-			}
-		}
+//		if (save_button.pressed()) {
+//			if (save_config == NULL) {
+//				save_hotkeys();
+//			} else {
+//				hotkey::save_hotkeys(*save_config);
+//			}
+//		}
 //! FIXME: remember to uncomment this also after string freeze
 #if 0
 		if (clear_button.pressed()) {

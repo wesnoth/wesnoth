@@ -352,13 +352,14 @@ void save_hotkeys(config& cfg)
 			continue;
 		config& item = cfg.add_child("hotkey");
 
+		item["command"] = i->get_command();
+
 		if (i->get_type() == hotkey_item::CLEARED)
 		{
-			item["key"] == CLEARED_TEXT;
+			item["key"] = CLEARED_TEXT;
 			continue;
 		}
 
-		item["command"] = i->get_command();
 
 		if (i->get_type() == hotkey_item::BY_KEYCODE) {
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));

@@ -61,12 +61,18 @@ base_manager::base_manager()
 base_manager::~base_manager()
 {
 	if (no_preferences_save) return;
+	write_preferences();
+}
+
+void write_preferences()
+{
 	try {
 		scoped_ostream prefs_file = ostream_file(get_prefs_file());
 		write(*prefs_file, prefs);
 	} catch(io_exception&) {
 		std::cerr << "error writing to preferences file '" << get_prefs_file() << "'\n";
 	}
+
 }
 
 void set(const std::string key, std::string value) {
