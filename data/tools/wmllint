@@ -793,16 +793,23 @@ def sanity_check(filename, lines):
             usage[m.group(1)] = m.group(2).strip()
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
+    first_underscore = None
+    translatable = re.compile('=\s*_\s*"')
     for i in range(len(lines)):
         if "#textdomain" in lines[i]:
             textdomains.append(i+1)
+        elif first_underscore is None and translatable.search(lines[i]):
+            first_underscore = i + 1
     if not textdomains:
         print '"%s", line 1: no textdomain string' % filename
-    elif textdomains[0] == 1:
+    elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
         pass
     elif len(textdomains) > 1:
         print '"%s", line %d: multiple textdomain strings on lines %s' % \
               (filename, textdomains[0], ", ".join(map(str, textdomains)))
+    elif first_underscore is not None and first_underscore < textdomains[0]:
+        print '"%s", line %d: underscore before textdomain declaration on %d.' % \
+              (filename, first_underscore, textdomains[0])
     return modified
 
 def consistency_check():
