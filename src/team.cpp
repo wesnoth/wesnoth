@@ -557,7 +557,7 @@ void team::set_ai_memory(const config& ai_mem){
 
 bool team::shrouded(const gamemap::location& loc) const
 {
-	if(!teams || !share_view())
+	if(!teams)
 		return shroud_.value(loc.x+1,loc.y+1);
 
 	return shroud_.shared_value(ally_shroud(*teams),loc.x+1,loc.y+1);
@@ -567,7 +567,7 @@ bool team::fogged(const gamemap::location& loc) const
 {
 	if(shrouded(loc)) return true;
 
-	if(!teams || !share_view())
+	if(!teams)
 		return fog_.value(loc.x+1,loc.y+1);
 
 	return fog_.shared_value(ally_fog(*teams),loc.x+1,loc.y+1);
@@ -577,7 +577,7 @@ const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<
 {
 	if(ally_shroud_.empty()) {
 		for(size_t i = 0; i < teams.size(); ++i) {
-			if(!is_enemy(i+1)) {
+			if(!is_enemy(i + 1) && teams[i].share_view()) {
 				ally_shroud_.push_back(&(teams[i].shroud_));
 			}
 		}
@@ -590,7 +590,7 @@ const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<tea
 {
 	if(ally_fog_.empty()) {
 		for(size_t i = 0; i < teams.size(); ++i) {
-			if(!is_enemy(i+1)) {
+			if(!is_enemy(i + 1) && teams[i].share_view()) {
 				ally_fog_.push_back(&(teams[i].fog_));
 			}
 		}
