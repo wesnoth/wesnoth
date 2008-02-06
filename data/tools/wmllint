@@ -17,7 +17,8 @@
 #   * filter references by description= not matched by an actual unit
 #   * abilities or traits without matching special notes, or vice-versa
 #   * consistency between recruit= and recruitment_pattern= instances
-#   * double space after punctuation inm translatable strings.
+#   * double space after punctuation in translatable strings.
+#   * unknown races or movement types in units
 #
 # Takes any number of directories as arguments.  Each directory is converted.
 # If no directories are specified, acts on the current directory.
@@ -604,6 +605,10 @@ usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
 # These are accumulated by sanity_check() and examined by sanity_postcheck() 
 usage = {}
 sides = []
+movetypes = []
+unit_movetypes = []
+races = []
+unit_races = []
 
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
@@ -611,6 +616,7 @@ def sanity_check(filename, lines):
     unit_id = ""
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units deived via [base_unit].
+    # Also, build dictionaries of unit movement types and races
     in_unit = False
     in_attack_filter = False
     for i in range(len(lines)):
@@ -667,6 +673,14 @@ def sanity_check(filename, lines):
                 elif key == "usage":
                     assert(unit_id)
                     usage[unit_id] = value
+                elif key == "movement_type":
+                    if '{' not in value:
+                        assert(unit_id)
+                        unit_movetypes.append((unit_id, filename, i+1, value))
+                elif key == "race":
+                    if '{' not in value:
+                        assert(unit_id)
+                        unit_races.append((unit_id, filename, i+1, value))
             except TypeError:
                 pass
             if "{SPECIAL_NOTES}" in lines[i]:
@@ -678,6 +692,38 @@ def sanity_check(filename, lines):
                     traits.append(p)
                 if q in lines[i]:
                     notes.append(q)
+    # Collect information on defined movement types
+    in_movetype = True
+    for i in range(len(lines)):
+        if "[movetype]" in lines[i]:
+            in_movetype = True
+            continue
+        elif "[/movetype]" in lines[i]:
+            in_movetype = False
+            continue
+        if in_movetype:
+            try:
+                (key, prefix, value, comment) = parse_attribute(lines[i])
+                if key == 'name':
+                    movetypes.append(value)
+            except TypeError:
+                pass
+    # Collect information on defined races
+    in_race = True
+    for i in range(len(lines)):
+        if "[race]" in lines[i]:
+            in_race = True
+            continue
+        elif "[/race]" in lines[i]:
+            in_race = False
+            continue
+        if in_race:
+            try:
+                (key, prefix, value, comment) = parse_attribute(lines[i])
+                if key == 'id':
+                    races.append(value)
+            except TypeError:
+                pass
     # Sanity-check recruit and recruitment_pattern.
     # This code has a limitation; if there arre multiple instances of
     # recruit and recruitment_pattern (as can happen if these lists
@@ -859,6 +905,16 @@ def consistency_check():
         for utype in recruitment_pattern:
             if utype not in utypes:
                 print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, rl, utype)
+    if unit_movetypes:
+        for (unit_id, filename, line, movetype) in unit_movetypes:
+            if movetype not in movetypes:
+                print '"%s", line %d: %s has unknown movement type' \
+                      % (filename, line, unit_id)
+    if unit_races:
+        for (unit_id, filename, line, race) in unit_races:
+            if race not in races:
+                print '"%s", line %d: %s has unknown race' \
+                      % (filename, line, unit_id)
 
 # Syntax transformations
 
