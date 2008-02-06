@@ -71,6 +71,8 @@ def argmatch(formals, actuals):
             ftype = "range"
         elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION", "TERRAIN"):
             ftype = "string"
+        elif f.endswith("IMAGE"):
+            ftype = "image"
         else:
             ftype = None
         # Deduce the type of the actual
@@ -80,10 +82,17 @@ def argmatch(formals, actuals):
             atype = "range"
         elif a.startswith("{") and a.endswith("}") or a.startswith("$"):
             atype = None	# Can't tell -- it's a macro expansion
+        elif a.endswith(".png") or a.endswith(".jpg"):
+            atype = "image"
         else:
             atype = "string"
-        # Here's the compatibility rule
+        # Here's the compatibility logic.  First, we catch the situations
+        # in which a more restricted actual type matches a more general
+        # formal one.  Then we have a fallback rule checking for type
+        # equality or wildcarding.
         if atype == "numeric" and ftype == "range":
+            pass
+        elif atype == "image" and ftype == "string":
             pass
         elif atype != ftype and ftype is not None and atype is not None:
             return False
