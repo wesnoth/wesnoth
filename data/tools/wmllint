@@ -684,11 +684,14 @@ def sanity_check(filename, lines):
     # vary by EASY/NORMAL/HARD level) this code will only record the
     # last of each for later consistency checking.
     in_side = False
+    in_subtag = False
     recruit = []
+    sidecount = 0
     recruitment_pattern = []
     for i in range(len(lines)):
         if "[side]" in lines[i]:
             in_side = True
+            sidecount += 1
             continue
         elif "[/side]" in lines[i]:
             if recruit and recruitment_pattern:
@@ -696,7 +699,13 @@ def sanity_check(filename, lines):
             in_side = False
             recruit = []
             recruitment_pattern = []
-        if not in_side or '=' not in lines[i]:
+            continue
+        elif in_side and ("[unit]" in lines[i] or "[ai]" in lines[i]):
+            in_subtag = True
+            continue
+        elif in_side and ("[/side]" in lines[i] or "[/ai]" in lines[i]):
+            in_subtag = False
+        if not in_side or in_subtag or '=' not in lines[i]:
             continue
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
@@ -708,6 +717,13 @@ def sanity_check(filename, lines):
                     if not utype in usage_types:
                         print '"%s", line %d: unknown usage class %s' \
                               % (filename, i+1, utype)
+            elif key == "side":
+                try:
+                    if sidecount != int(value):
+                        print '"%s", line %d: side number %s is out of sequence' \
+                              % (filename, i+1, value)
+                except ValueError:
+                    pass	# Ignore ill-formed integer literals
         except TypeError:
             pass
     # Consistency-check the description attributes in [side], [unit], [recall],
