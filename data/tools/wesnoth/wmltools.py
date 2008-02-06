@@ -62,19 +62,20 @@ def isresource(filename):
 
 class Reference:
     "Describes a location by file and line."
-    def __init__(self, filename, lineno=None, docstring=None):
+    def __init__(self, filename, lineno=None, docstring=None, arity=None):
         self.filename = filename
         self.lineno = lineno
-        self.references = {}
         self.docstring = docstring
+        self.arity = arity
+        self.references = {}
         self.undef = None
-    def append(self, fn, n):
+    def append(self, fn, n, a=None):
         if fn not in self.references:
             self.references[fn] = []
-        self.references[fn].append(n)
+        self.references[fn].append((n, a))
     def dump_references(self):
-        for (file, linenumbers) in self.references.items():
-            print "    %s: %s" % (file, `linenumbers`[1:-1])
+        for (file, refs) in self.references.items():
+            print "    %s: %s" % (file, `map(lambda x: x[0], refs)`[1:-1])
     def __cmp__(self, other):
         "Compare two documentation objects for place in the sort order."
         # Major sort by file, minor by line number.  This presumes that the
@@ -85,6 +86,14 @@ class Reference:
             return byfile
         else:
             return cmp(self.lineno, other.lineno)
+    def mismatches(self):
+        copy = Reference(self.filename, self.lineno, self.docstring, self.arity)
+        copy.undef = self.undef
+        for filename in self.references:
+            mis = filter(lambda (ln, a): a != -1 and a != self.arity, self.references[filename])
+            if mis:
+                copy.references[filename] = mis
+        return copy
     def __str__(self):
         if self.lineno:
             return '"%s", line %d' % (self.filename, self.lineno)
@@ -156,7 +165,7 @@ class CrossRef:
                     elif line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
-                        here = Reference(filename, n+1, line)
+                        here = Reference(filename, n+1, line, arity=len(tokens)-2)
                         here.hash = md5.new()
                         here.docstring = line.lstrip()[8:]	# Strip off #define_
                         state = "macro_header"
@@ -231,14 +240,45 @@ class CrossRef:
                         if name in formals:
                             continue
                         elif name in self.xref:
+                            # Count the number of actual arguments.
+                            # Set arity to -n if the call doesn't
+                            # close on this line
+                            brackdepth = parendepth = arity = 0
+                            instring = False
+                            for i in range(match.start(0), len(line)):
+                                if line[i] == "{":
+                                    brackdepth += 1
+                                elif line[i] == "}":
+                                    brackdepth -= 1
+                                    if brackdepth == 0:
+                                        if line[i-1].isspace():
+                                            arity -= 1
+                                        break
+                                elif line[i] == "(":
+                                    parendepth += 1
+                                elif line[i] == ")":
+                                    parendepth -= 1
+                                elif line[i] == '"':
+                                    instring = not instring
+                                elif line[i].isspace() and \
+                                     not line[i-1].isspace() and \
+                                     brackdepth == 1 and \
+                                     parendepth == 0 and \
+                                     not instring:
+                                    arity += 1
+                            if brackdepth > 0 or parendepth > 0:
+                                arity = -1
+                            #print '"%s", line %d: arity of %s is %d' \
+                            #      % (fn, n+1, name, arity)
+                            # Figure out which macros might resolve this
                             for defn in self.xref[name]:
                                 if self.visible_from(defn, fn, n+1):
                                     candidates += 1
-                                    defn.append(fn, n+1)
+                                    defn.append(fn, n+1, arity)
                             if candidates > 1:
                                 print "%s: more than one definition of %s is visible here." % (Reference(fn, n), name)
                         if candidates == 0:
-                            self.unresolved.append((name, Reference(fn,n+1)))
+                            self.unresolved.append((name,Reference(fn,n+1,arity=arity)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
