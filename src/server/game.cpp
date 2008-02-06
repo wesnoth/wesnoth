@@ -931,7 +931,11 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		<< (observer ? " as an observer" : "")
 		<< (disconnect ? " and disconnected" : "")
 		<< ". (socket: " << user->first << ")\n";
-	if (game_ended) return true;
+	if (game_ended) {
+		send_data(construct_server_message(user->second.name()
+				+ " ended the game."), player);
+		return true;
+	}
 	// Don't mark_available() since the player got already removed from the
 	// games_and_users_list_.
 	if (!disconnect) user->second.mark_available();
