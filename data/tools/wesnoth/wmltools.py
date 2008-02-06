@@ -60,6 +60,10 @@ def isresource(filename):
     (root, ext) = os.path.splitext(filename)
     return ext and ext[1:] in resource_extensions
 
+def argmatch(formals, refargs):
+    #return len(formals) == len(refargs)
+    return True
+
 class Reference:
     "Describes a location by file and line."
     def __init__(self, filename, lineno=None, docstring=None, arity=None):
@@ -90,7 +94,7 @@ class Reference:
         copy = Reference(self.filename, self.lineno, self.docstring, self.arity)
         copy.undef = self.undef
         for filename in self.references:
-            mis = filter(lambda (ln, a): a != -1 and a != self.arity, self.references[filename])
+            mis = filter(lambda (ln, a): a is not None and not argmatch(a, self.arity), self.references[filename])
             if mis:
                 copy.references[filename] = mis
         return copy
@@ -165,7 +169,7 @@ class CrossRef:
                     elif line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
-                        here = Reference(filename, n+1, line, arity=len(tokens)-2)
+                        here = Reference(filename, n+1, line, arity=tokens[2:])
                         here.hash = md5.new()
                         here.docstring = line.lstrip()[8:]	# Strip off #define_
                         state = "macro_header"
@@ -241,35 +245,52 @@ class CrossRef:
                             continue
                         elif name in self.xref:
                             # Count the number of actual arguments.
-                            # Set arity to -n if the call doesn't
+                            # Set arity to None if the call doesn't
                             # close on this line
-                            brackdepth = parendepth = arity = 0
+                            brackdepth = parendepth = 0
                             instring = False
+                            arity = []
+                            arg = ""
                             for i in range(match.start(0), len(line)):
-                                if line[i] == "{":
+                                if instring:
+                                    if line[i] == '"':
+                                        instring = False
+                                    else:
+                                        arg += line[i]
+                                elif line[i] == '"':
+                                    instring = not instring
+                                elif line[i] == "{":
+                                    if brackdepth > 0:
+                                        arg += line[i]
                                     brackdepth += 1
                                 elif line[i] == "}":
                                     brackdepth -= 1
                                     if brackdepth == 0:
-                                        if line[i-1].isspace():
-                                            arity -= 1
+                                        if not line[i-1].isspace():
+                                            arity.append(arg)
+                                            arg = ""
                                         break
+                                    else:
+                                        arg += line[i]
                                 elif line[i] == "(":
                                     parendepth += 1
                                 elif line[i] == ")":
                                     parendepth -= 1
-                                elif line[i] == '"':
-                                    instring = not instring
-                                elif line[i].isspace() and \
-                                     not line[i-1].isspace() and \
+                                elif not line[i-1].isspace() and \
+                                     line[i].isspace() and \
                                      brackdepth == 1 and \
-                                     parendepth == 0 and \
-                                     not instring:
-                                    arity += 1
+                                     parendepth == 0:
+                                    arity.append(arg)
+                                    arg = ""
+                                elif not line[i].isspace():
+                                    arg += line[i]
                             if brackdepth > 0 or parendepth > 0:
-                                arity = -1
-                            #print '"%s", line %d: arity of %s is %d' \
-                            #      % (fn, n+1, name, arity)
+                                arity = None
+                            else:
+                                arity.pop(0)
+                            #if arity:
+                            #    print '"%s", line %d: arity of %s is %s' \
+                            #          % (fn, n+1, name, arity)
                             # Figure out which macros might resolve this
                             for defn in self.xref[name]:
                                 if self.visible_from(defn, fn, n+1):
