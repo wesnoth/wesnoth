@@ -65,21 +65,27 @@ def argmatch(formals, actuals):
         return False
     for (f, a) in zip(formals, actuals):
         # Deduce the expected type of the formal
-        if f in ("X", "Y", "SIDE"):
+        if f in ("SIDE",):
             ftype = "numeric"
-        elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION"):
+        elif f in ("X", "Y"):
+            ftype = "range"
+        elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION", "TERRAIN"):
             ftype = "string"
         else:
             ftype = None
         # Deduce the type of the actual
-        if a.isdigit():
+        if a.isdigit() or a.startswith("-") and a[1:].isdigit():
             atype = "numeric"
+        elif re.search(r"[0-9]+\-[0-9]+", a):
+            atype = "range"
         elif a.startswith("{") and a.endswith("}") or a.startswith("$"):
             atype = None	# Can't tell -- it's a macro expansion
         else:
             atype = "string"
         # Here's the compatibility rule
-        if atype != ftype and ftype is not None and atype is not None:
+        if atype == "numeric" and ftype == "range":
+            pass
+        elif atype != ftype and ftype is not None and atype is not None:
             return False
     return True
 
