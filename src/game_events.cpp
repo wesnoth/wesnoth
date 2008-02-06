@@ -666,11 +666,9 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "scroll_to") {
-		std::string x = cfg["x"];
-		std::string y = cfg["y"];
-		std::string check_fogged = cfg["check_fogged"];
 		assert(state_of_game != NULL);
-		const gamemap::location loc(atoi(x.c_str()), atoi(y.c_str()));
+		const gamemap::location loc = cfg_to_loc(cfg);
+		std::string check_fogged = cfg["check_fogged"];
 		screen->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
 	}
 
