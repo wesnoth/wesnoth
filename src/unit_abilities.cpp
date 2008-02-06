@@ -370,7 +370,7 @@ bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg
 	int illuminates = -1;
 	if (const config* mfilter = cfg.child("filter"))
 	{
-		if (!mathces_filter(mfilter,loc, cache_illuminates(illuminates, ability)))
+		if (!matches_filter(mfilter,loc, cache_illuminates(illuminates, ability)))
 		{
 			return false;
 		}
