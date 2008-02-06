@@ -729,7 +729,7 @@ bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, 
 		return false;
 
 	for(std::vector<const shroud_map*>::const_iterator i = maps.begin(); i != maps.end(); ++i) {
-		if((*i)->enabled_ == false || (*i)->value(x,y) == false)
+		if((*i)->enabled_ == true && (*i)->value(x,y) == false)
 			return false;
 	}
 	return true;
