@@ -319,10 +319,6 @@ static bool cache_illuminates(int &cache, std::string const &ability)
 bool unit::ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
 	int illuminates = -1;
-	if (config const *filter = cfg.child("filter_self")) {
-		if (!matches_filter(filter, loc, cache_illuminates(illuminates, ability)))
-			return false;
-	}
 	assert(units_ && map_ && gamestatus_);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -371,10 +367,17 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
  */
 bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const
 {
+	int illuminates = -1;
+	if (const config* mfilter = cfg.child("filter"))
+	{
+		if (!mathces_filter(mfilter,loc, cache_illuminates(illuminates, ability)))
+		{
+			return false;
+		}
+	}
 	assert(dir >=0 && dir <= 5);
 	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
 	const config::child_list& affect_adj = cfg.get_children("affect_adjacent");
-	int illuminates = -1;
 	for (config::child_list::const_iterator i = affect_adj.begin(),
 	     i_end = affect_adj.end(); i != i_end; ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
@@ -396,10 +399,16 @@ bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg
  */
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
+	int illuminates = -1;
+	if (config const *filter = cfg.child("filter_self")) {
+		if (!matches_filter(filter, loc, cache_illuminates(illuminates, ability)))
+			return false;
+	}
+
 	config const *filter = cfg.child("filter");
 	bool affect_self = utils::string_bool(cfg["affect_self"], true);
 	if (filter == NULL || !affect_self) return affect_self;
-	return matches_filter(filter, loc, ability == "illuminates");
+	return matches_filter(filter, loc,cache_illuminates(illuminates, ability));
 }
 
 bool unit::has_ability_type(const std::string& ability) const
