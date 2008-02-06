@@ -28,6 +28,7 @@
 #include <sstream>
 
 #define ERR_GAME LOG_STREAM(err, mp_server)
+#define WRN_GAME LOG_STREAM(warn, mp_server)
 #define LOG_GAME LOG_STREAM(info, mp_server)
 #define DBG_GAME LOG_STREAM(debug, mp_server)
 
@@ -670,10 +671,10 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 	// Any private 'speak' commands must be repackaged separate
 	// to other commands, and re-sent, since they should only go
 	// to some clients.
-	const config::child_itors speaks = turn->child_range("command");
+	const config::child_itors commands = turn->child_range("command");
 	int npublic = 0, nprivate = 0, nother = 0;
 	std::string team_name;
-	for (config::child_iterator i = speaks.first; i != speaks.second; ++i) {
+	for (config::child_iterator i = commands.first; i != commands.second; ++i) {
 		config* const speak = (*i)->child("speak");
 		if (speak == NULL) {
 			++nother;
@@ -690,10 +691,25 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 		chat_message::truncate_message((*speak)["message"]);
 
 		// Force the description to be correct,
-		// to prevent spoofing of messages
+		// to prevent spoofing of messages.
 		(*speak)["description"] = user->second.name();
+		// Also check the side for players.
+		if (is_player(user->first)) {
+			const size_t side_num =
+					lexical_cast_default<size_t>(speak->get_attribute("side"), 0);
+			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS
+			|| sides_[side_num - 1] != user->first) {
+				if (user->first == current_player()) {
+					(*speak)["side"] = lexical_cast<std::string>(end_turn_ % nsides_ + 1);
+				} else {
+					const side_vector::const_iterator s =
+							std::find(sides_.begin(), sides_.end(), user->first);
+					(*speak)["side"] = lexical_cast<std::string>(s - sides_.begin() + 1);
+				}
+			}
+		}
 
-		if ((*speak).get_attribute("team_name") == "") {
+		if (speak->get_attribute("team_name") == "") {
 			++npublic;
 		} else {
 			++nprivate;
@@ -707,9 +723,22 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 		if (team_name == game_config::observer_team_name) {
 			send_data_observers(data, user->first);
 		} else {
-			send_data_team(data, team_name, user->first);
+			// Don't send if the player addresses a different team.
+			if (player_on_team(team_name, user->first)) {
+				send_data_team(data, team_name, user->first);
+			} else {
+				const std::string msg = "Removing illegal message from "
+						+ user->second.name() + " to team '" + team_name + "'.";
+				LOG_GAME << msg << std::endl;
+				const config& server_msg = construct_server_message(msg);
+				send_data(server_msg);
+				record_data(server_msg);
+			}
 		}
 		return res;
+	} else if (nprivate > 0) {
+		WRN_GAME << "Private messages mixed in with other data. Sending anyway: \n"
+			<< data;
 	}
 
 	// At the moment, if private messages are mixed in with other data,
