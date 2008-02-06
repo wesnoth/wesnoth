@@ -577,7 +577,7 @@ const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<
 {
 	if(ally_shroud_.empty()) {
 		for(size_t i = 0; i < teams.size(); ++i) {
-			if(!is_enemy(i + 1) && (&(teams[i]) == this || teams[i].share_maps())) {
+			if(!is_enemy(i + 1) && (&(teams[i]) == this || teams[i].share_view() || teams[i].share_maps())) {
 				ally_shroud_.push_back(&(teams[i].shroud_));
 			}
 		}
