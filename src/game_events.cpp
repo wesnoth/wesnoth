@@ -431,7 +431,7 @@ private:
 
 } // end anonymous namespace (3)
 
-static gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
+static gamemap::location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty = 0)
 {
 	int x = lexical_cast_default(cfg["x"], defaultx) - 1;
 	int y = lexical_cast_default(cfg["y"], defaulty) - 1;
