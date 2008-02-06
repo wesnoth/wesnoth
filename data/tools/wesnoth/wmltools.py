@@ -60,17 +60,36 @@ def isresource(filename):
     (root, ext) = os.path.splitext(filename)
     return ext and ext[1:] in resource_extensions
 
-def argmatch(formals, refargs):
-    #return len(formals) == len(refargs)
+def argmatch(formals, actuals):
+    if len(formals) != len(actuals):
+        return False
+    for (f, a) in zip(formals, actuals):
+        # Deduce the expected type of the formal
+        if f in ("X", "Y", "SIDE"):
+            ftype = "numeric"
+        elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION"):
+            ftype = "string"
+        else:
+            ftype = None
+        # Deduce the type of the actual
+        if a.isdigit():
+            atype = "numeric"
+        elif a.startswith("{") and a.endswith("}") or a.startswith("$"):
+            atype = None	# Can't tell -- it's a macro expansion
+        else:
+            atype = "string"
+        # Here's the compatibility rule
+        if atype != ftype and ftype is not None and atype is not None:
+            return False
     return True
 
 class Reference:
     "Describes a location by file and line."
-    def __init__(self, filename, lineno=None, docstring=None, arity=None):
+    def __init__(self, filename, lineno=None, docstring=None, args=None):
         self.filename = filename
         self.lineno = lineno
         self.docstring = docstring
-        self.arity = arity
+        self.args = args
         self.references = {}
         self.undef = None
     def append(self, fn, n, a=None):
@@ -91,10 +110,10 @@ class Reference:
         else:
             return cmp(self.lineno, other.lineno)
     def mismatches(self):
-        copy = Reference(self.filename, self.lineno, self.docstring, self.arity)
+        copy = Reference(self.filename, self.lineno, self.docstring, self.args)
         copy.undef = self.undef
         for filename in self.references:
-            mis = filter(lambda (ln, a): a is not None and not argmatch(a, self.arity), self.references[filename])
+            mis = filter(lambda (ln, a): a is not None and not argmatch(self.args, a), self.references[filename])
             if mis:
                 copy.references[filename] = mis
         return copy
@@ -169,7 +188,7 @@ class CrossRef:
                     elif line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
-                        here = Reference(filename, n+1, line, arity=tokens[2:])
+                        here = Reference(filename, n+1, line, args=tokens[2:])
                         here.hash = md5.new()
                         here.docstring = line.lstrip()[8:]	# Strip off #define_
                         state = "macro_header"
@@ -245,11 +264,11 @@ class CrossRef:
                             continue
                         elif name in self.xref:
                             # Count the number of actual arguments.
-                            # Set arity to None if the call doesn't
+                            # Set args to None if the call doesn't
                             # close on this line
                             brackdepth = parendepth = 0
                             instring = False
-                            arity = []
+                            args = []
                             arg = ""
                             for i in range(match.start(0), len(line)):
                                 if instring:
@@ -267,7 +286,7 @@ class CrossRef:
                                     brackdepth -= 1
                                     if brackdepth == 0:
                                         if not line[i-1].isspace():
-                                            arity.append(arg)
+                                            args.append(arg)
                                             arg = ""
                                         break
                                     else:
@@ -280,26 +299,26 @@ class CrossRef:
                                      line[i].isspace() and \
                                      brackdepth == 1 and \
                                      parendepth == 0:
-                                    arity.append(arg)
+                                    args.append(arg)
                                     arg = ""
                                 elif not line[i].isspace():
                                     arg += line[i]
                             if brackdepth > 0 or parendepth > 0:
-                                arity = None
+                                args = None
                             else:
-                                arity.pop(0)
-                            #if arity:
-                            #    print '"%s", line %d: arity of %s is %s' \
-                            #          % (fn, n+1, name, arity)
+                                args.pop(0)
+                            #if args:
+                            #    print '"%s", line %d: args of %s is %s' \
+                            #          % (fn, n+1, name, args)
                             # Figure out which macros might resolve this
                             for defn in self.xref[name]:
                                 if self.visible_from(defn, fn, n+1):
                                     candidates += 1
-                                    defn.append(fn, n+1, arity)
+                                    defn.append(fn, n+1, args)
                             if candidates > 1:
                                 print "%s: more than one definition of %s is visible here." % (Reference(fn, n), name)
                         if candidates == 0:
-                            self.unresolved.append((name,Reference(fn,n+1,arity=arity)))
+                            self.unresolved.append((name,Reference(fn,n+1,args=args)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)

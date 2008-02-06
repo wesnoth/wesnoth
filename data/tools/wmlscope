@@ -135,12 +135,14 @@ class CrossRefLister(CrossRef):
                 m = defn.mismatches()
                 if m.references:
                     mismatched.append((name, m))
-        # Then the arity mismatches
+        # Then the type mismatches
         if mismatched:
             print "# Mismatched references:"
             for (n, m) in mismatched:
-                print "%s: macro %s (%d args) has arity mismatches:" % (m, n, m.arity)
-                m.dump_references()
+                print "%s: macro %s(%s) has signature mismatches:" % (m, n, ", ".join(m.args))
+                for (file, refs) in m.references.items():
+                    for (ln, args) in refs:
+                        print '"%s", line %d: %s(%s)' % (file, ln, n, ", ".join(args))
     def deflist(self, pred=None):
         "List all resource definitions."
         sorted = self.xref.keys()
