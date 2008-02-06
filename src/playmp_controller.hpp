@@ -66,6 +66,8 @@ protected:
 	int beep_warning_time_;
 private:
 	void process_oos(const std::string& err_msg);
+	void set_end_scenario_button();
+	void reset_end_scenario_button();
 	static unsigned int replay_last_turn_;
 };
 

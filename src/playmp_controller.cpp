@@ -240,6 +240,27 @@ void playmp_controller::play_human_turn(){
 	menu_handler_.clear_undo_stack(player_number_);
 }
 
+void playmp_controller::set_end_scenario_button()
+{
+	// Modify the end-turn button
+	if (! is_host_) {
+		gui::button* btn_end = gui_->find_button("button-endturn");
+		btn_end->enable(false);
+	}
+	gui_->get_theme().refresh_title("button-endturn", _("End scenario"));
+	gui_->invalidate_theme();
+	gui_->redraw_everything();
+}
+
+void playmp_controller::reset_end_scenario_button()
+{
+	// revert the end-turn button text to its normal label
+	gui_->get_theme().refresh_title2("button-endturn", "title");
+	gui_->invalidate_theme();
+	gui_->redraw_everything();
+	gui_->set_game_mode(game_display::RUNNING);
+}
+
 void playmp_controller::linger(upload_log& log)
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
@@ -263,14 +284,7 @@ void playmp_controller::linger(upload_log& log)
 	}
 	beep_warning_time_=-1;
 
-	//Modify the end-turn button
-	if (! is_host_){
-		gui::button* btn_end = gui_->find_button("button-endturn");
-		btn_end->enable(false);
-	}
-	gui_->get_theme().refresh_title("button-endturn", _("End scenario"));
-	gui_->invalidate_theme();
-	gui_->redraw_everything();
+	set_end_scenario_button();
 
 	// switch to observer viewpoint
 	gui_->set_team(0,true);
@@ -279,34 +293,44 @@ void playmp_controller::linger(upload_log& log)
 	gui_->draw();
 	gui_->update_display();
 
-	try {
-		// reimplement parts of play_side()
-		turn_data_ = new turn_info(gameinfo_, gamestate_, status_,
-		                           *gui_,map_, teams_, player_number_,
-		                           units_, replay_sender_, undo_stack_);
-		turn_data_->replay_error().attach_handler(this);
-		turn_data_->host_transfer().attach_handler(this);
+	bool quit;
+	do {
+		quit = true;
+		try {
+			// reimplement parts of play_side()
+			turn_data_ = new turn_info(gameinfo_, gamestate_, status_,
+			                           *gui_,map_, teams_, player_number_,
+			                           units_, replay_sender_, undo_stack_);
+			turn_data_->replay_error().attach_handler(this);
+			turn_data_->host_transfer().attach_handler(this);
 
-		play_human_turn();
-		after_human_turn();
+			play_human_turn();
+			after_human_turn();
+			LOG_NG << "finished human turn" << std::endl;
+		} catch (game::load_game_exception&) {
+			LOG_NG << "caught load-game-exception" << std::endl;
+			// this should not happen, the option to load a game is disabled
+			log.quit(status_.turn());
+			throw;
+		} catch (end_level_exception&) {
+			// thrown if the host ends the scenario and let us advance
+			// to the next level
+			LOG_NG << "caught end-level-exception" << std::endl;
+			reset_end_scenario_button();
+			throw;
+		} catch (end_turn_exception&) {
+			// thrown if the host leaves the game (sends [leave_game]), we need
+			// to stay in this loop to stay in linger mode, otherwise the game
+			// gets aborted
+			LOG_NG << "caught end-turn-exception" << std::endl;
+			quit = false;
+		} catch (network::error&) {
+			LOG_NG << "caught network-error-exception" << std::endl;
+			quit = false;
+		}
+	} while (!quit);
 
-	} catch(game::load_game_exception&) {
-		// Loading a new game is effectively a quit.
-		log.quit(status_.turn());
-		throw;
-	} catch(end_level_exception&) {
-		// Catch this error here so mp players quitting unexpectedly are not
-		// thrown back to the title screen
-	} catch(end_turn_exception&) {
-	// Thrown when receiving [leave_game].
-	} catch(network::error&) {
-	}
-
-	// revert the end-turn button text to its normal label
-	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title"));
-	gui_->invalidate_theme();
-	gui_->redraw_everything();
-	gui_->set_game_mode(game_display::RUNNING);
+	reset_end_scenario_button();
 
 	LOG_NG << "ending end-of-scenario linger\n";
 }
