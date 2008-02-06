@@ -814,7 +814,7 @@ bool game::end_turn() {
 	++end_turn_;
 	if (nsides_ == 0) return false;
 	bool turn_ended = false;
-	int turn;
+	int turn = 0;
 	if ((end_turn_ % nsides_) == 0) {
 		turn_ended = true;
 		turn = end_turn_ / nsides_ + 1;
