@@ -608,15 +608,11 @@ sides = []
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
     modified = False
+    unit_id = ""
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units deived via [base_unit].
     in_unit = False
-    traits = []
-    notes = []
-    unit_id = ""
     in_attack_filter = False
-    has_special_notes = False
-    derived_unit = False
     for i in range(len(lines)):
         if "[attack_filter]" in lines[i]:
             in_attack_filter = True
@@ -625,6 +621,10 @@ def sanity_check(filename, lines):
             in_attack_filter = False
             continue
         elif "[unit]" in lines[i]:
+            traits = []
+            notes = []
+            has_special_notes = False
+            derived_unit = False
             in_unit = i+1
             continue
         elif "[/unit]" in lines[i]:
@@ -658,14 +658,17 @@ def sanity_check(filename, lines):
             unit_id = ""
             has_special_notes = False
         if in_unit and not in_attack_filter:
-            if "id=" in lines[i] and not unit_id:
-                (key, prefix, unit_id, comment) = parse_attribute(lines[i])
-                if unit_id[0] == "_":
-                    unit_id = unit_id[1:].strip()
-            if "usage=" in lines[i]:
-                (key, prefix, unit_usage, comment) = parse_attribute(lines[i])
-                assert(unit_id)
-                usage[unit_id] = unit_usage
+            try:
+                (key, prefix, value, comment) = parse_attribute(lines[i])
+                if key == "id" and not unit_id:
+                    if value[0] == "_":
+                        value = value[1:].strip()
+                    unit_id = value
+                elif key == "usage":
+                    assert(unit_id)
+                    usage[unit_id] = value
+            except TypeError:
+                pass
             if "{SPECIAL_NOTES}" in lines[i]:
                 has_special_notes = True
             if "[base_unit]" in lines[i]:
