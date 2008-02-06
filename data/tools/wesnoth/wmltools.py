@@ -60,37 +60,53 @@ def isresource(filename):
     (root, ext) = os.path.splitext(filename)
     return ext and ext[1:] in resource_extensions
 
+def formaltype(f):
+    # Deduce the expected type of the formal
+    if f in ("SIDE",):
+        ftype = "numeric"
+    elif f in ("X", "Y", "SPAN"):
+        ftype = "span"
+    elif f in ("RANGE",):
+        ftype = "range"
+    elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION", "TERRAIN"):
+        ftype = "string"
+    elif f.endswith("IMAGE"):
+        ftype = "image"
+    elif f in ("FILTER",):
+        ftype = "filter"
+    else:
+        ftype = None
+    return ftype
+
+def actualtype(a):
+    # Deduce the type of the actual
+    if a.isdigit() or a.startswith("-") and a[1:].isdigit():
+        atype = "numeric"
+    elif re.match(r"([0-9]+\-[0-9]+,?|[0-9]+,?)+\Z", a):
+        atype = "span"
+    elif a in ("melee", "ranged"):
+        atype = "range"
+    elif a.startswith("{") and a.endswith("}") or a.startswith("$"):
+        atype = None	# Can't tell -- it's a macro expansion
+    elif a.endswith(".png") or a.endswith(".jpg"):
+        atype = "image"
+    elif "=" in a:
+        atype = "filter"
+    else:
+        atype = "string"
+    return atype
+
 def argmatch(formals, actuals):
     if len(formals) != len(actuals):
         return False
     for (f, a) in zip(formals, actuals):
-        # Deduce the expected type of the formal
-        if f in ("SIDE",):
-            ftype = "numeric"
-        elif f in ("X", "Y"):
-            ftype = "range"
-        elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION", "TERRAIN"):
-            ftype = "string"
-        elif f.endswith("IMAGE"):
-            ftype = "image"
-        else:
-            ftype = None
-        # Deduce the type of the actual
-        if a.isdigit() or a.startswith("-") and a[1:].isdigit():
-            atype = "numeric"
-        elif re.search(r"[0-9]+\-[0-9]+", a):
-            atype = "range"
-        elif a.startswith("{") and a.endswith("}") or a.startswith("$"):
-            atype = None	# Can't tell -- it's a macro expansion
-        elif a.endswith(".png") or a.endswith(".jpg"):
-            atype = "image"
-        else:
-            atype = "string"
+        ftype = formaltype(f)
+        atype = actualtype(a)
         # Here's the compatibility logic.  First, we catch the situations
         # in which a more restricted actual type matches a more general
         # formal one.  Then we have a fallback rule checking for type
         # equality or wildcarding.
-        if atype == "numeric" and ftype == "range":
+        if atype == "numeric" and ftype == "span":
             pass
         elif atype == "image" and ftype == "string":
             pass

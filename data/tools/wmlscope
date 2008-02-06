@@ -139,10 +139,10 @@ class CrossRefLister(CrossRef):
         if mismatched:
             print "# Mismatched references:"
             for (n, m) in mismatched:
-                print "%s: macro %s(%s) has signature mismatches:" % (m, n, ", ".join(m.args))
+                print "%s: macro %s(%s) has signature (%s) mismatches:" % (m, n, ", ".join(m.args), ", ".join(map(lambda x: str(formaltype(x)), m.args)))
                 for (file, refs) in m.references.items():
                     for (ln, args) in refs:
-                        print '"%s", line %d: %s(%s)' % (file, ln, n, ", ".join(args))
+                        print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(map(lambda x: str(actualtype(x)), args)))
     def deflist(self, pred=None):
         "List all resource definitions."
         sorted = self.xref.keys()
