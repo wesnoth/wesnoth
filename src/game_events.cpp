@@ -328,16 +328,6 @@ bool conditional_passed(const unit_map* units,
 namespace {
 
 std::set<std::string> used_items;
-/*
-jhinrichs, 12.11.2006:
-This variable controls the maximum number of hexes in a map, that can be parsed by an event.
-It was set to 1024 before and for larger maps this could become a problem. So it is raised to
-65536 now, which can feature a map of size 256*256 (maps really shouldn't be bigger than that :-).
-This constant also controls the maximum number of loops for a WML while loop (hence its name).
-If this is felt to be too high now, we must split it into two constants,
-but i don't feel the need at the moment.
-*/
-const size_t MaxLoop = 65536;
 
 } // end anonymous namespace (2)
 
@@ -1243,7 +1233,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	// Conditional statements
 	else if(cmd == "if" || cmd == "while") {
 		log_scope(cmd);
-		const size_t max_iterations = (cmd == "if" ? 1 : MaxLoop);
+		const size_t max_iterations = (cmd == "if" ? 1 : game_config::max_loop);
 		const std::string pass = (cmd == "if" ? "then" : "do");
 		const std::string fail = (cmd == "if" ? "else" : "");
 		for(size_t i = 0; i != max_iterations; ++i) {
@@ -2308,7 +2298,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 		std::set<gamemap::location> res;
 		terrain_filter filter(cfg, *game_map, *status_ptr, *units);
-		filter.restrict(MaxLoop);
+		filter.restrict(game_config::max_loop);
 		filter.get_locations(res);
 
 		state_of_game->clear_variable_cfg(variable);

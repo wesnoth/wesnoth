@@ -184,7 +184,6 @@ void scoped_recall_unit::activate()
 }
 
 namespace {
-const size_t MaxLoop = 1024;
 bool recursive_activation = false;
 
 //! Turns on any auto-stored variables
@@ -232,10 +231,10 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 			const std::string::iterator index_end = std::find(index_start,element.end(),']');
 			const std::string index_str(index_start+1,index_end);
 			inner_index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-			if(inner_index > MaxLoop) {
-				ERR_NG << "variable_info: index greater than " << MaxLoop
+			if(inner_index > game_config::max_loop) {
+				ERR_NG << "variable_info: index greater than " << game_config::max_loop
 				       << ", truncated\n";
-				inner_index = MaxLoop;
+				inner_index = game_config::max_loop;
 			}
 			element = std::string(element.begin(),index_start);
 		}
@@ -291,10 +290,10 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 		const std::string::iterator index_end = std::find(index_start,key.end(),']');
 		const std::string index_str(index_start+1,index_end);
 		index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-		if(index > MaxLoop) {
-			ERR_NG << "variable_info: index greater than " << MaxLoop
+		if(index > game_config::max_loop) {
+			ERR_NG << "variable_info: index greater than " << game_config::max_loop
 				   << ", truncated\n";
-			index = MaxLoop;
+			index = game_config::max_loop;
 		}
 		key = std::string(key.begin(),index_start);
 		size_t size = vars->get_children(key).size();

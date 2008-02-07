@@ -96,6 +96,8 @@ namespace game_config
 
 	const std::string observer_team_name = "observer";
 
+	const size_t max_loop = 65536;
+
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
 		timer_bell = "timer.wav",

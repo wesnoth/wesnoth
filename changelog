@@ -38,6 +38,8 @@ Version 1.3.15+svn:
      your own view was shared (bug #10994)
  * WML engine:
    * fixed an off by one error in [scroll_to]
+   * unified the two different max_loop counters and used highest maximum
+     (65536).
  * miscellaneous and bug fixes:
    * Fixed networking not to timeout with slow connections but timeout faster
      with lost connection (partialy fix bug #10967)

@@ -81,6 +81,10 @@ namespace game_config
 	//! observer team name used for observer team chat
 	extern const std::string observer_team_name;
 
+	//! The maximum number of hexes on a map and items in an array and also
+	//! used as maximum in wml loops.
+	extern const size_t max_loop;
+
 	namespace sounds {
 		extern const std::string turn_bell, timer_bell, receive_message,
 				receive_message_highlight, receive_message_friend,
