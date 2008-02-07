@@ -1,3 +1,4 @@
+# $Id$
 # Turkish translations for Battle for Wesnoth package.
 # Copyright (C) 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -10,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-03 17:22+0100\n"
-"PO-Revision-Date: 2008-01-25 08:19+0200\n"
+"PO-Revision-Date: 2008-02-03 23:12+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +34,7 @@ msgstr "Haritayı Canlandır"
 
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Boştaki Birim Canlandırmaları"
 
 #: data/_main.cfg:64
 msgid "Show Combat"
@@ -290,9 +291,8 @@ msgid "Bots"
 msgstr "Botlar"
 
 #: data/core/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr ""
 
 #: data/core/help.cfg:10 data/core/help.cfg:69
 msgid "Introduction"
@@ -1114,7 +1114,6 @@ msgstr ""
 "iyileşirler. Bazı durumlarda, üst seviyeye erişmek seçeneklidir."
 
 #: data/core/help.cfg:262
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1136,10 +1135,10 @@ msgstr ""
 "olabilir. Birim en üst seviyesine ulaşınca, Son Seviye Sonrası Terfi (SSST "
 "[AMLA] ) özelliğine kavuşabilir. SSST, birimi tecrübe hedefine ulaşınca "
 "değiştirecektir ama birimin seviyesi aynı kalacaktır. Tipik SSST etkisi "
-"Yaşam Puanını (YP) 3 arttırmaktır. İlk SSST’ye normalde 100 Tecrübe Puanı "
-"(TP) kazanınca ulaşılır (zeki birimler için bu 80 TP’dir).  Ama SSST "
-"kazanmak giderek zorlaşır ve bu yüzden alt seviye birimleri bir üst seviye "
-"çıkarmak için uğraşmak daha faydalıdır."
+"Yaşam Puanını (YP) 3 arttırmak ve tam tedavi uygulamak şeklindedir. İlk "
+"SSST’ye normalde 150 Tecrübe Puanı (TP) kazanınca ulaşılır (zeki birimler "
+"için bu 120 TP’dir). Ama SSST kazanmak giderek zorlaşır ve bu yüzden alt "
+"seviye birimleri bir üst seviye çıkarmak için uğraşmak daha faydalıdır."
 
 #: data/core/help.cfg:267
 msgid "Healing"
@@ -2240,14 +2239,14 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:678
-#, fuzzy
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
 "\n"
 msgstr ""
 "\n"
-"Ekranın tazelenme hızının (fps olarak) gösterilmesini açıp kapar.\n"
+"Ekrana bir saniyede yeniden çizilen çerçeve sayısının gösterilmesini açıp "
+"kapar.\n"
 "\n"
 
 #: data/core/help.cfg:681
@@ -3003,11 +3002,11 @@ msgstr "Yıldırım Çatalı"
 #: data/core/macros/items.cfg:428
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Bu üç dişli zıpkın bir mermene düşmanlarını yıldırımla çarpma imkanı verir!"
+"Bu üç dişli zıpkın su adamına düşmanlarını yıldırımla çarpma imkanı verir!"
 
 #: data/core/macros/items.cfg:429
 msgid "Only the mermen can use this item!"
-msgstr "Sadece mermenler bu öğeyi kullanabilir!"
+msgstr "Sadece su adamları bu öğeyi kullanabilir!"
 
 #: data/core/macros/items.cfg:442
 msgid "storm trident"
@@ -3582,15 +3581,13 @@ msgstr ""
 "ölene kadar saldırı devam ettirilir."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
 "enemy."
 msgstr ""
-" Bu saldırı, hedef birimin arkasında düşmanı olan bir birim varsa ve "
-"saldıramaz durumda değilse (mesela taşa çevrilmiş), iki kat hasara sebep "
-"olur."
+" Bu saldırı, hedef birimin sadırı yönüne göre tam arkasında düşmanı varsa "
+"hedef birim iki kat hasara sebep olan destekli savunma yapabilir."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -5186,25 +5183,25 @@ msgstr "Işınlanamadı! Çıkış boş değil"
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Dost birim göründü"
-msgstr[1] "$friends dost birim göründü"
+msgstr[1] "Dost birim göründü"
 
 #: src/actions.cpp:2262
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Düşman birimi göründü!"
-msgstr[1] "$enemies düşman birimi göründü!"
+msgstr[1] "Düşman birimi göründü!"
 
 #: src/actions.cpp:2267
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 dost"
-msgstr[1] "$friends dost"
+msgstr[1] "1 dost"
 
 #: src/actions.cpp:2268
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 düşman"
-msgstr[1] "$enemies düşman"
+msgstr[1] "1 düşman"
 
 #: src/actions.cpp:2269
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -5812,14 +5809,14 @@ msgstr "Tecrübe Ayarı: "
 #: src/generate_report.cpp:247
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "hasar"
-msgstr[1] "hasar"
+msgstr[0] "hasarlı"
+msgstr[1] "hasarlı"
 
 #: src/generate_report.cpp:248
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] "saldırı"
-msgstr[1] "saldırı"
+msgstr[0] "vuruş"
+msgstr[1] "vuruş"
 
 #: src/generate_report.cpp:258
 msgid "weapon range: "
@@ -6930,9 +6927,8 @@ msgid "Unknown era"
 msgstr "Bilinmeyen çağ"
 
 #: src/multiplayer_lobby.cpp:456
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Kayıtlı bir oyunu yükler"
+msgstr "Oyunu yeniden yükler"
 
 #: src/multiplayer_lobby.cpp:469
 msgid "Remote scenario"
@@ -6951,7 +6947,6 @@ msgid "Turn "
 msgstr "El "
 
 #: src/multiplayer_lobby.cpp:500
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Sahipsiz Yer:"
@@ -7554,6 +7549,3 @@ msgstr "Wesnoth’u sizin için daha iyi hale getirmemize yardım edin!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Özet göndermeyi etkinleştir"
-
-#~ msgid "Vacant Slots:"
-#~ msgstr "Sahipsiz Yerler:"
