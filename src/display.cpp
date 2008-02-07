@@ -1429,6 +1429,7 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 	}
 
 	if(map_.on_board(loc) == false) {
+		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.\n";
 		return;
 	}
 
