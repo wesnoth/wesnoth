@@ -436,7 +436,7 @@ bool python_ai::is_unit_valid(const unit* unit)
 static PyObject* unit_get_name(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
-	return Py_BuildValue(STRINGVALUE, unit->unit_->name().c_str());
+	return Py_BuildValue(STRINGVALUE, unit->unit_->underlying_description().c_str());
 }
 
 static PyObject* unit_is_enemy(wesnoth_unit* unit, void* /*closure*/)
@@ -1450,6 +1450,20 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 	// and then the code below will horribly fail).
 	if (!tiles_adjacent(*from->location_, *to->location_))
 		return_none;
+	
+	// check if units actually exist
+	bool fromexists = false;
+	bool toexists  = false;
+	for(unit_map::const_iterator i = running_instance->get_info().units.begin(); i != running_instance->get_info().units.end(); ++i) {
+		if (i->first == *from->location_) {
+			fromexists = true;
+		}
+		else if (i->first == *to->location_) {
+			toexists = true;
+		}
+	}
+	
+	if (!fromexists or !toexists) return_none;
 
 	info& inf = running_instance->get_info();
 
