@@ -1396,7 +1396,7 @@ void connect::lists_init()
 	for(side_list::iterator s = sides_.begin(); s != sides_.end(); ++s) {
 		const int side_num = s - sides_.begin();
 		const int spos = 60 * (side_num-offset);
-		if(!utils::string_bool(s->get_config()["allow_player"], true)) {
+		if(!s->allow_player()) {                
 			offset++;
 			continue;
 		}
