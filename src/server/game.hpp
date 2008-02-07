@@ -124,7 +124,8 @@ public:
 
 	const std::string& termination_reason() const {
 		static const std::string aborted = "aborted";
-		return termination_.empty() ? aborted : termination_;
+		static const std::string not_started = "not started";
+		return started_ ? (termination_.empty() ? aborted : termination_) : not_started;
 	}
 
 	void set_termination_reason(const std::string& reason) {

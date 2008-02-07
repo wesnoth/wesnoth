@@ -1252,11 +1252,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 }
 
 void server::delete_game(std::vector<game>::iterator game_it) {
-	if (game_it->started()) {
-		metrics_.game_terminated(game_it->termination_reason());
-	} else {
-		metrics_.game_terminated("not started");
-	}
+	metrics_.game_terminated(game_it->termination_reason());
 	// Delete the game from the games_and_users_list_.
 	config* const gamelist = games_and_users_list_.child("gamelist");
 	assert(gamelist != NULL);
