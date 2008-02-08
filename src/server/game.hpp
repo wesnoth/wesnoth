@@ -53,12 +53,7 @@ public:
 	{ return is_player(player) || is_observer(player); }
 	bool allow_observers() const;
 	bool is_observer(const network::connection player) const;
-	bool is_muted_observer(const network::connection player) const;
-	bool all_observers_muted() const { return all_observers_muted_; }
 	bool is_player(const network::connection player) const;
-	bool is_current_player(const network::connection player) const
-	{ return (current_player() == player); }
-	network::connection current_player() const;
 	bool player_is_banned(const network::connection player) const;
 	bool level_init() const { return level_.child("side") != NULL; }
 	bool started() const { return started_; }
@@ -94,9 +89,6 @@ public:
 	//! Let's a player owning a side give it to another player or observer.
 	void transfer_side_control(const network::connection sock, const config& cfg);
 
-	//! Function which filters commands sent by a player to remove commands
-	//! that they don't have permission to execute.
-	void filter_commands(const network::connection player, config& cfg);
 	//! Process [turn].
 	bool process_turn(config data, const player_map::const_iterator user);
 	//! Set the description to the number of available slots.
@@ -135,15 +127,24 @@ public:
 	}
 
 private:
+	network::connection current_player() const;
+	bool is_current_player(const network::connection player) const
+	{ return (current_player() == player); }
+	bool is_muted_observer(const network::connection player) const;
+	bool all_observers_muted() const { return all_observers_muted_; }
+
 	//! Figures out which side to take and tells that side to the game owner.
 	bool take_side(const player_map::const_iterator user);
 	//! Send [change_controller] message to tell all clients the new controller's name.
 	void send_change_controller(const size_t side_num,
 			const player_map::const_iterator newplayer, const bool host,
 			const bool player_left=true);
+	//! Function which filters commands sent by a player to remove commands
+	//! that they don't have permission to execute.
+	void filter_commands(config& turn, const player_map::const_iterator user);
 	//! Function which will process game commands and update the state of the
 	//! game accordingly. Will return true iff the game's description changes.
-	bool process_commands(const config& cfg);
+	bool process_commands(const config& cfg, const player_map::const_iterator user);
 	void send_data_team(const config& data, const std::string& team,
 			const network::connection exclude=0) const;
 	void send_data_observers(const config& data, const network::connection exclude=0) const;
@@ -158,7 +159,7 @@ private:
 	bool observers_can_label() const { return false; }
 	bool observers_can_chat() const { return true; }
 	//! Function which returns true iff 'player' is on 'team'.
-	bool player_on_team(const std::string& team, const network::connection player) const;
+	bool is_on_team(const std::string& team, const network::connection player) const;
 
 	//! Function which should be called every time a player ends their turn
 	//! (i.e. [end_turn] received). This will update the 'turn' attribute for

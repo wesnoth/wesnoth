@@ -63,6 +63,11 @@ bool game::is_observer(const network::connection player) const {
 }
 
 bool game::is_muted_observer(const network::connection player) const {
+	if (is_observer(player)) {
+		if (all_observers_muted_) return true;
+	} else {
+		return false;
+	}
 	return std::find(muted_observers_.begin(), muted_observers_.end(), player)
 		!= muted_observers_.end();
 }
@@ -650,31 +655,106 @@ network::connection game::ban_user(const config& ban,
 bool game::process_turn(config data, const player_map::const_iterator user) {
 	if (!started_) return false;
 	config* const turn = data.child("turn");
-	filter_commands(user->first, *turn);
+	filter_commands(*turn, user);
 	if (turn->all_children().size() == 0) return false;
-
 	//! Return value that tells whether the description changed.
-	const bool res = process_commands(*turn);
+	const bool res = process_commands(data, user);
 
+	return res;
+}
+
+//! Filter commands from all but the current player.
+//! Currently removes all commands but [speak] for observers and all but
+//! [speak], [label] and [rename] for players.
+void game::filter_commands(config& turn, const player_map::const_iterator user) {
+	if (is_current_player(user->first)) return;
+	std::vector<int> marked;
+	int index = 0;
+	const config::child_list& children = turn.get_children("command");
+	for(config::child_list::const_iterator i = children.begin();
+		i != children.end(); ++i)
+	{
+		// Only single commands allowed.
+		if ((*i)->all_children().size() != 1
+		// Chatting is never an illegal command.
+		|| !((*i)->child("speak") || (is_player(user->first)
+			&& ((*i)->child("label") || (*i)->child("clear_labels")
+				|| (*i)->child("rename") || (*i)->child("countdown_update")
+				/* || (*i)->child("choose")*/))))
+		{
+			std::stringstream msg;
+			msg << "Removing illegal command from: " << user->second.name()
+				<< ". Current player is: "
+				<< (player_info_->find(current_player()) != player_info_->end()
+					? player_info_->find(current_player())->second.name()
+					: "")
+				<< ".\n";
+			LOG_GAME << msg.str();
+			send_and_record_server_message(msg.str());
+			LOG_GAME << (**i);
+			marked.push_back(index - marked.size());
+		}
+		++index;
+	}
+
+	for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
+		turn.remove_child("command",*j);
+	}
+}
+
+//! Handles [end_turn], repackages [commands] with private [speak]s in them
+//! and sends the data.
+bool game::process_commands(const config& data, const player_map::const_iterator user) {
+	//DBG_GAME << "processing commands: '" << cfg << "'\n";
+	const config* const turn = data.child("turn");
+	bool turn_ended = false;
 	// Any private 'speak' commands must be repackaged separate
 	// to other commands, and re-sent, since they should only go
 	// to some clients.
-	const config::child_itors commands = turn->child_range("command");
-	int npublic = 0, nprivate = 0, nother = 0;
-	std::string team_name;
-	for (config::child_iterator i = commands.first; i != commands.second; ++i) {
-		config* const speak = (*i)->child("speak");
+	bool repackage = false;
+	const config::child_list& commands = turn->get_children("command");
+	config::child_list::const_iterator command;
+	for (command = commands.begin(); command != commands.end(); ++command) {
+		if ((**command).child("speak")) {
+			if (!((**command).child("speak")->get_attribute("team_name") == "")
+			|| (is_muted_observer(user->first))) {
+				repackage = true;
+			}
+		} else if ((**command).child("end_turn")) {
+			turn_ended = end_turn();
+		}
+	}
+	if (!repackage) {
+		record_data(data);
+		send_data(data, user->first);
+		return turn_ended;
+	}
+	for (command = commands.begin(); command != commands.end(); ++command) {
+		config* const speak = (**command).child("speak");
 		if (speak == NULL) {
-			++nother;
+			config mdata;
+			config& turn = mdata.add_child("turn");
+			turn.add_child("command", **command);
+			record_data(mdata);
+			send_data(mdata, user->first);
 			continue;
 		}
-		if ((all_observers_muted() && is_observer(user->first))
-			|| is_muted_observer(user->first))
-		{
+		const std::string team_name = speak->get_attribute("team_name");
+		// Anyone can send to the observer team.
+		if (team_name == game_config::observer_team_name) {
+		// Don't send if the member is muted.
+		} else if (is_muted_observer(user->first)) {
 			network::send_data(construct_server_message(
 					"You have been muted, others can't see your message!"),
 					user->first, true);
-			return res;
+			continue;
+		// Don't send if the player addresses a different team.
+		} else if (!is_on_team(team_name, user->first)) {
+			const std::string msg = "Removing illegal message from "
+					+ user->second.name() + " to team '" + team_name + "'.";
+			LOG_GAME << msg << std::endl;
+			send_and_record_server_message(msg);
+			continue;
 		}
 		chat_message::truncate_message((*speak)["message"]);
 
@@ -696,101 +776,21 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 				}
 			}
 		}
-
-		if (speak->get_attribute("team_name") == "") {
-			++npublic;
+		config message;
+		config& turn = message.add_child("turn");
+		config& command = turn.add_child("command");
+		command.add_child("speak", *speak);
+		if (team_name == "") {
+			record_data(message);
+			send_data(message, user->first);
+		} else if (team_name == game_config::observer_team_name) {
+			record_data(message);
+			send_data_observers(message, user->first);
 		} else {
-			++nprivate;
-			team_name = (*speak)["team_name"];
+			send_data_team(message, team_name, user->first);
 		}
 	}
-
-	// If all there are are messages and they're all private, then
-	// just forward them on to the client that should receive them.
-	if (nprivate > 0 && npublic == 0 && nother == 0) {
-		if (team_name == game_config::observer_team_name) {
-			send_data_observers(data, user->first);
-		} else {
-			// Don't send if the player addresses a different team.
-			if (player_on_team(team_name, user->first)) {
-				send_data_team(data, team_name, user->first);
-			} else {
-				const std::string msg = "Removing illegal message from "
-						+ user->second.name() + " to team '" + team_name + "'.";
-				LOG_GAME << msg << std::endl;
-				send_and_record_server_message(msg);
-			}
-		}
-		return res;
-	} else if (nprivate > 0) {
-		WRN_GAME << "Private messages mixed in with other data. Sending anyway: \n"
-			<< data;
-	}
-
-	// At the moment, if private messages are mixed in with other data,
-	// then let them go through. It's exceedingly unlikely that
-	// this will happen anyway, and if it does, the client should
-	// respect not displaying the message.
-	// The client displays messages from the currently *viewed* team,
-	// so it does not always respect it.
-	send_data(data, user->first);
-	record_data(data);
-	return res;
-}
-
-//! Filter commands from all but the current player.
-//! Currently removes all commands but [speak] for observers and all but
-//! [speak], [label] and [rename] for players.
-void game::filter_commands(const network::connection member, config& cfg) {
-	if (is_current_player(member)) return;
-	std::vector<int> marked;
-	int index = 0;
-	const config::child_list& children = cfg.get_children("command");
-	for(config::child_list::const_iterator i = children.begin();
-		i != children.end(); ++i)
-	{
-		// Only single commands allowed.
-		if ((*i)->all_children().size() != 1
-		// Chatting is never an illegal command.
-		|| !((*i)->child("speak") || (is_player(member)
-			&& ((*i)->child("label") || (*i)->child("clear_labels")
-				|| (*i)->child("rename") || (*i)->child("countdown_update")
-				/* || (*i)->child("choose")*/))))
-		{
-			std::stringstream msg;
-			msg << "Removing illegal command from: "
-				<< (player_info_->find(member) != player_info_->end()
-					? player_info_->find(member)->second.name()
-					: "")
-				<< ". Current player is: "
-				<< (player_info_->find(current_player()) != player_info_->end()
-					? player_info_->find(current_player())->second.name()
-					: "")
-				<< ".\n";
-			LOG_GAME << msg.str();
-			send_and_record_server_message(msg.str());
-			LOG_GAME << (**i);
-			marked.push_back(index - marked.size());
-		}
-		++index;
-	}
-
-	for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
-		cfg.remove_child("command",*j);
-	}
-}
-
-bool game::process_commands(const config& cfg) {
-	//DBG_GAME << "processing commands: '" << cfg << "'\n";
-	bool res = false;
-	const config::child_list& cmd = cfg.get_children("command");
-	for(config::child_list::const_iterator i = cmd.begin(); i != cmd.end(); ++i) {
-		if((**i).child("end_turn") != NULL) {
-			res = end_turn();
-			//DBG_GAME << "res: " << (res ? "yes" : "no") << "\n";
-		}
-	}
-	return res;
+	return turn_ended;
 }
 
 bool game::end_turn() {
@@ -1010,7 +1010,7 @@ void game::send_data(const config& data, const network::connection exclude) cons
 	}
 }
 
-bool game::player_on_team(const std::string& team, const network::connection player) const {
+bool game::is_on_team(const std::string& team, const network::connection player) const {
 	for (side_vector::const_iterator side = sides_.begin(); side != sides_.end();
 		 side++)
 	{
@@ -1027,7 +1027,7 @@ void game::send_data_team(const config& data, const std::string& team,
 	const network::connection exclude) const
 {
 	for(user_vector::const_iterator i = players_.begin(); i != players_.end(); ++i) {
-		if(*i != exclude && player_on_team(team,*i)) {
+		if(*i != exclude && is_on_team(team,*i)) {
 			network::send_data(data, *i, true);
 		}
 	}
