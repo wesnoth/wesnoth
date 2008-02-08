@@ -377,9 +377,9 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		network::send_data(construct_server_message(msg.str()), sock, true);
 		return;
 	}
-	if (newplayer->first == sock) {
+	if (newplayer->first == sides_[side_num - 1]) {
 		network::send_data(construct_server_message(
-			"That's already your side, silly."), sock, true);
+			"That's already " + newplayer_name + "'s side, silly."), sock, true);
 		return;
 	}
 	sides_[side_num - 1] = 0;
@@ -952,7 +952,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		<< (game_ended ? (started_ ? "\tended" : "\taborted") : "\thas left")
 		<< " game:\t\"" << name_ << "\" (" << id_ << ")"
 		<< (game_ended && started_ ? " at turn: "
-			+ (description_ ? (*description_)["turn"] : "-/-")
+			+ lexical_cast<std::string>(end_turn_ / nsides_ + 1)
 			+ " with reason: '" + termination_reason() + "'" : "")
 		<< (observer ? " as an observer" : "")
 		<< (disconnect ? " and disconnected" : "")
