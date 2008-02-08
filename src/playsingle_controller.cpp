@@ -674,6 +674,12 @@ void playsingle_controller::after_human_turn(){
 	end_turn_record();
 	end_turn_record_unlock();
 	menu_handler_.clear_undo_stack(player_number_);
+
+	if(teams_[player_number_-1].uses_fog()) {
+		// needed because currently fog is only recalculated when a hex is /un/covered
+		recalculate_fog(map_,units_,teams_,player_number_-1);
+	}
+
 	gui_->set_route(NULL);
 	gui_->unhighlight_reach();
 }
