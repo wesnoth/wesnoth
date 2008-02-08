@@ -48,10 +48,10 @@ void tokenizer::skip_comment()
 	}
 	n = 0;
 	this->next_char_fast();
- 	while (current_ != EOF && current_ != '\n') {
+ 	while (current_ != '\n' && current_ != EOF) {
 		for (index = matching.begin(); index != matching.end();)
 		{
-			if(comment[*index][n] != static_cast<unsigned char>(current_))
+			if(UNLIKELY(comment[*index][n] != static_cast<unsigned char>(current_)))
 			{
 				index = matching.erase(index);
 			}
@@ -67,7 +67,7 @@ void tokenizer::skip_comment()
 							this->next_char_fast();
 						} while (current_ == ' ' || current_ == '\t');
 						textdomain_ = "";
-						while(current_ != EOF && current_ != '\n')
+						while(current_ != '\n' && current_ != EOF)
 						{
 							textdomain_ += current_;
 							this->next_char_fast();
@@ -79,9 +79,13 @@ void tokenizer::skip_comment()
 							this->next_char_fast();
 						} while (current_ == ' ' || current_ == '\t');
 						std::string lineno;
-						while(current_ != EOF && current_ != '\n')
+						while(current_ != '\n' && current_ != EOF)
 						{
-							if (current_ == ' ' || current_ == '\t')
+							if (UNLIKELY(current_ == '\n') || UNLIKELY(current_ == EOF))
+							{
+								return;
+							}
+							if (UNLIKELY(current_ == ' ') || UNLIKELY(current_ == '\t'))
 							{
 								break;
 							}
@@ -90,15 +94,11 @@ void tokenizer::skip_comment()
 						}
 
 
-						if (current_ == EOF || current_ == '\n')
-						{
-							return;
-						}
 						do {
 							this->next_char_fast();
 						} while (current_ == ' ' || current_ == '\t');
 						file_ = "";
-						while (current_ != EOF && current_ != '\n')
+						while (current_ != '\n' && current_ != EOF)
 						{
 							file_ += current_;
 							this->next_char_fast();
@@ -113,7 +113,7 @@ void tokenizer::skip_comment()
 			}
 		}
 		++n;
-		if (!matching.empty())
+		if (UNLIKELY(!matching.empty()))
 		{
 			break;
 		}

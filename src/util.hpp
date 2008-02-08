@@ -146,8 +146,8 @@ void push_back(T& str, C c)
 }
 
 #ifdef HAVE_BUILTIN_EXPECT
-#define LIKELY(a)    __builtin_expect((a),1)
-#define UNLIKELY(a)  __builtin_expect((a),1)
+#define LIKELY(a)    __builtin_expect((a),1) // Tells GCC to optimize code so that if is likely to happen
+#define UNLIKELY(a)  __builtin_expect((a),0) // Tells GCC to optimize code so that if is unlikely to happen
 #else
 #define LIKELY(a)    a
 #define UNLIKELY(a)  a
