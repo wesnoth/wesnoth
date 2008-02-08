@@ -32,6 +32,19 @@
 #define LOG_GAME LOG_STREAM(info, mp_server)
 #define DBG_GAME LOG_STREAM(debug, mp_server)
 
+namespace chat_message {
+
+static void truncate_message(t_string& str) {
+	const size_t max_message_length = 256;
+	// The string send can contain utf-8 so truncate as wide_string otherwise
+	// an corrupted utf-8 string can be returned.
+	std::string tmp = str.str();
+	utils::truncate_as_wstring(tmp, max_message_length);
+	str = tmp;
+}
+
+} // end chat_message namespace
+
 int game::id_num = 1;
 
 game::game(player_map& players, const network::connection host, const std::string name)
@@ -649,6 +662,35 @@ network::connection game::ban_user(const config& ban,
 	}
 	// Don't return the user if he wasn't in this game.
 	return 0;
+}
+
+void game::process_message(config data, const player_map::iterator user) {
+	// Hack to handle the pseudo game lobby_.
+	if (owner_ != 0) {
+	} else if (user->second.silenced()) {
+		return;
+	} else if (user->second.is_message_flooding()) {
+		network::send_data(construct_server_message(
+				"Warning: you are sending too many messages too fast. "
+				"Your message has not been relayed."), user->first, true);
+		return;
+	}
+
+	config* const message = data.child("message");
+	(*message)["sender"] = user->second.name();
+	chat_message::truncate_message((*message)["message"]);
+
+	std::string msg = (*message)["message"].base_str();
+	// Only log in the lobby_.
+	if (owner_ != 0) {
+	} else if (msg.substr(0,3) == "/me") {
+		LOG_GAME << network::ip_address(user->first) << "\t<"
+			<< user->second.name() << msg.substr(3) << ">\n";
+	} else {
+		LOG_GAME << network::ip_address(user->first) << "\t<"
+			<< user->second.name() << "> " << msg << "\n";
+	}
+	send_data(data, user->first);
 }
 
 //! Process [turn].

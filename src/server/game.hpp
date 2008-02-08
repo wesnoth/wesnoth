@@ -23,19 +23,6 @@
 
 class player;
 
-namespace chat_message {
-
-static void truncate_message(t_string& str) {
-	const size_t max_message_length = 256;
-	// The string send can contain utf-8 so truncate as wide_string otherwise
-	// an corrupted utf-8 string can be returned.
-	std::string tmp = str.str();
-	utils::truncate_as_wstring(tmp, max_message_length);
-	str = tmp;
-}
-
-} // end chat_message namespace
-
 typedef std::map<network::connection,player> player_map;
 typedef std::vector<network::connection> user_vector;
 typedef std::vector<network::connection> side_vector;
@@ -89,6 +76,7 @@ public:
 	//! Let's a player owning a side give it to another player or observer.
 	void transfer_side_control(const network::connection sock, const config& cfg);
 
+	void process_message(config data, const player_map::iterator user);
 	//! Process [turn].
 	bool process_turn(config data, const player_map::const_iterator user);
 	//! Set the description to the number of available slots.

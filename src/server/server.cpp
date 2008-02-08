@@ -923,33 +923,9 @@ void server::process_data_lobby(const network::connection sock, const config& da
 	}
 
 	// See if it's a message, in which case we add the name of the sender,
-	// and forward it to all players in the lobby
+	// and forward it to all players in the lobby.
 	if (data.child("message")) {
-		// Make a modifiable copy.
-		config mdata = data;
-		config* const message = mdata.child("message");
-		if (pl->second.silenced()) {
-			return;
-		} else if (pl->second.is_message_flooding()) {
-			network::send_data(lobby_.construct_server_message(
-				"Warning: you are sending too many messages too fast. "
-				"Your message has not been relayed."), pl->first, true);
-			return;
-		}
-
-		(*message)["sender"] = pl->second.name();
-		chat_message::truncate_message((*message)["message"]);
-
-		std::string msg = (*message)["message"].base_str();
-		if (msg.substr(0,3) == "/me") {
-			LOG_SERVER << network::ip_address(sock) << "\t<"
-				<< pl->second.name() << msg.substr(3) << ">\n";
-		} else {
-			LOG_SERVER << network::ip_address(sock) << "\t<"
-				<< pl->second.name() << "> " << msg << "\n";
-		}
-
-		lobby_.send_data(mdata, sock);
+		lobby_.process_message(data, pl);
 	}
 
 	// Player requests update of lobby content,
@@ -965,7 +941,7 @@ void server::process_data_lobby(const network::connection sock, const config& da
 void server::process_data_game(const network::connection sock, const config& data) {
 	DBG_SERVER << "in process_data_game...\n";
 	
-	const player_map::const_iterator pl = players_.find(sock);
+	const player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
 			<< sock << ")\n";
@@ -1118,12 +1094,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 	} else if (data.child("load_next_scenario")) {
 		g->load_next_scenario(pl);
 		return;
-	} else if (data.values.find("side") != data.values.end()) return;
-	else if (data.child("side_secured")) return;
-	else if (data.values.find("failed") != data.values.end()) return;
-	else if (data.values.find("side_drop") != data.values.end()) return;
-	else if (data.child("error")) return;
-	else if (data.child("start_game")) {
+	} else if (data.child("start_game")) {
 		if (!g->is_owner(sock)) return;
 		// Send notification of the game starting immediately.
 		// g->start_game() will send data that assumes
@@ -1230,6 +1201,19 @@ void server::process_data_game(const network::connection sock, const config& dat
 		if (g->process_turn(data, pl)) {
 			lobby_.send_data(games_and_users_list_diff());
 		}
+		return;
+	} else if (data.child("message")) {
+		g->process_message(data, pl);
+	// Data to store and broadcast.
+	} else if (data.child("stop_updates")) {
+//		if (g->started()) g->record_data(data);
+		g->send_data(data, sock);
+	// Data to ignore.
+	} else if (data.child("error")
+	|| data.child("side_secured")
+	|| data.values.find("failed") != data.values.end()
+	|| data.values.find("side_drop") != data.values.end()
+	|| data.values.find("side") != data.values.end()) {
 		return;
 	}
 
