@@ -687,7 +687,7 @@ def sanity_check(filename, lines):
                 if q in lines[i]:
                     notes.append(q)
     # Collect information on defined movement types
-    in_movetype = True
+    in_movetype = False
     for i in range(len(lines)):
         if "[movetype]" in lines[i]:
             in_movetype = True
@@ -703,7 +703,7 @@ def sanity_check(filename, lines):
             except TypeError:
                 pass
     # Collect information on defined races
-    in_race = True
+    in_race = False
     for i in range(len(lines)):
         if "[race]" in lines[i]:
             in_race = True
@@ -899,12 +899,12 @@ def consistency_check():
         for utype in recruitment_pattern:
             if utype not in utypes:
                 print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, rl, utype)
-    if unit_movetypes:
+    if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
             if movetype not in movetypes:
                 print '"%s", line %d: %s has unknown movement type' \
                       % (filename, line, unit_id)
-    if unit_races:
+    if races:
         for (unit_id, filename, line, race) in unit_races:
             if race not in races:
                 print '"%s", line %d: %s has unknown race' \
