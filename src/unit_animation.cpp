@@ -938,14 +938,15 @@ bool unit_animator::would_end() const
 void unit_animator::wait_until(int animation_time) const
 {
 	game_display*disp = game_display::get_singleton();
+	double speed = disp->turbo_speed();
 	int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
-	while (SDL_GetTicks() < (unsigned int)end_tick - 20/disp->turbo_speed()) {
+	while (SDL_GetTicks() < (unsigned int)end_tick - 20/speed) {
 		disp->draw();
                 end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
 		events::pump();
 		disp->delay(maximum<int>(0,
 			minimum<int>(10, 
-			static_cast<int>((animation_time - get_animation_time()) * disp->turbo_speed()))));
+			static_cast<int>((animation_time - get_animation_time()) * speed))));
 	}
 	disp->delay(maximum<int>(0,end_tick - SDL_GetTicks() +5));
 	new_animation_frame();

@@ -121,7 +121,6 @@ class unit_animation
 			gamemap::location dst_;
 			int halo_id_;
 			int last_frame_begin_time_;
-			bool accelerate_;
 
 	};
 		t_translation::t_list terrain_types_;
