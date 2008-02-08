@@ -34,98 +34,85 @@ tokenizer::tokenizer() :
 	token_()
 {
 }
-const size_t matching_comments = 2;
-const std::string comment[] = {"textdomain","line"};
 
 void tokenizer::skip_comment()
 {
-	std::list<int> matching;
-	std::list<int>::iterator index;
-	size_t n;
-	for (n = 0; n < matching_comments; ++n)
-	{
-		matching.push_back(n);
-	}
-	n = 0;
 	this->next_char_fast();
- 	while (current_ != '\n' && current_ != EOF) {
-		for (index = matching.begin(); index != matching.end();)
-		{
-			if(UNLIKELY(comment[*index][n] != static_cast<unsigned char>(current_)))
-			{
-				index = matching.erase(index);
+	if(current_ != '\n' && current_ != EOF) {
+		if(current_ == 't') {
+			// When the string 'textdomain[ |\t] is matched the rest of the line is
+			// the textdomain to switch to. If we at any point fail to match we break
+			// out of the loop and eat the rest of the line without testing.
+			size_t i = 0;
+			static const std::string match = "extdomain";
+			this->next_char_fast();
+			while(current_ != '\n' && current_ != EOF) {
+				if(i < 9) {
+					if(current_ != match[i]) {
+						break;
+					}
+					++i;
+				} else if(i == 9) { 
+					if(current_ != ' ' && current_ != '\t') {
+						break;
+					}
+					++i;
+					textdomain_ = "";
+				} else {
+					textdomain_ += current_;
+				}
+				this->next_char_fast();
 			}
-			else
-			{
-				if (n+1 == comment[*index].size())
-				{
-					// We have a match
-					switch(*index)
-					{
-					case 0:
-						do {
-							this->next_char_fast();
-						} while (current_ == ' ' || current_ == '\t');
-						textdomain_ = "";
-						while(current_ != '\n' && current_ != EOF)
-						{
-							textdomain_ += current_;
-							this->next_char_fast();
-						}
-						std::cerr << textdomain_ << " ";
-						return;
-					case 1:
-						do {
-							this->next_char_fast();
-						} while (current_ == ' ' || current_ == '\t');
-						std::string lineno;
-						while(current_ != '\n' && current_ != EOF)
-						{
-							if (UNLIKELY(current_ == '\n') || UNLIKELY(current_ == EOF))
-							{
-								return;
-							}
-							if (UNLIKELY(current_ == ' ') || UNLIKELY(current_ == '\t'))
-							{
-								break;
-							}
+			while(current_ != '\n' && current_ != EOF) {
+				this->next_char_fast();
+			}
+
+		} else if(current_ == 'l') {
+			// Basically the same as textdomain but we match 'line[ |\t]d*[ |\t]s*
+			// d* is the line number 
+			// s* is the file name
+			// It inherited the * instead of + from the previous implementation.
+			size_t i = 0;
+			static const std::string match = "ine";
+			this->next_char_fast();
+			bool found = false;
+			std::string lineno;
+			while(current_ != '\n' && current_ != EOF) {
+				if(i < 3) {
+					if(current_ != match[i]) {
+						break;
+					}
+					++i;
+				} else if(i == 3) { 
+					if(current_ != ' ' && current_ != '\t') {
+						break;
+					}
+					++i;
+				} else {
+					if(!found) {
+						if(current_ == ' ' || current_ == '\t') {
+							found = true;
+							lineno_ = lexical_cast<size_t>(lineno);
+							file_ = "";
+						} else {
 							lineno += current_;
-							this->next_char_fast();
 						}
-
-
-						do {
-							this->next_char_fast();
-						} while (current_ == ' ' || current_ == '\t');
-						file_ = "";
-						while (current_ != '\n' && current_ != EOF)
-						{
-							file_ += current_;
-							this->next_char_fast();
-						}
-						lineno_ = lexical_cast<size_t>(lineno);
-						std::cerr << lineno_ << " " << file_ << " ";
-
-						return;
+					} else {
+						file_ += current_;
 					}
 				}
-				++index;
+				this->next_char_fast();
+			}
+			while(current_ != '\n' && current_ != EOF) {
+				this->next_char_fast();
+			}
+		} else {
+			// Neither a textdomain or line comment skip it.
+			while(current_ != '\n' && current_ != EOF) {
+				this->next_char_fast();
 			}
 		}
-		++n;
-		if (UNLIKELY(!matching.empty()))
-		{
-			break;
-		}
-		this->next_char_fast();
- 	}
- 
-	while (current_ != '\n' && current_ != EOF)
-	{
-		this->next_char_fast();
 	}
-
-
 }
 
 const token& tokenizer::next_token()
