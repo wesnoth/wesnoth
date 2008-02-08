@@ -698,10 +698,11 @@ bool unit_animation::animation_would_finish() const
 
 void unit_animation::update_last_draw_time() 
 {
-	unit_anim_.update_last_draw_time(game_display::get_singleton()->turbo_speed());
+	double acceleration = unit_anim_.accelerate ? game_display::get_singleton()->turbo_speed() : 1.0;
+	unit_anim_.update_last_draw_time(acceleration);
 	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		anim_itor->second.update_last_draw_time(game_display::get_singleton()->turbo_speed());
+		anim_itor->second.update_last_draw_time(acceleration);
 	}
 }
 
@@ -758,7 +759,7 @@ void unit_animation::crude_animation::redraw()
 	double tmp_offset = offset();
 	int d2 = game_display::get_singleton()->hex_size() / 2;
 
-	update_last_draw_time(game_display::get_singleton()->turbo_speed());
+	update_last_draw_time(accelerate ? game_display::get_singleton()->turbo_speed() : 1.0);
 	const unit_frame& current_frame= get_current_frame();
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
 		// stuff sthat should be done only once per frame

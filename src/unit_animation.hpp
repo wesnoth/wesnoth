@@ -78,6 +78,7 @@ class unit_animation
 		public:
 			explicit crude_animation(int start_time=0) :
 				animated<unit_frame>(start_time),
+				accelerate(true),
 				offset_(),
 				halo_(),
 				halo_x_(),
@@ -104,6 +105,7 @@ class unit_animation
 			std::pair<std::string,Uint32> text() const ;
 			void redraw( );
 			void start_animation(int start_time,const gamemap::location& src,const  gamemap::location& dst, bool cycles=false, double acceleration=1);
+			bool accelerate;
 		private:
 
 			//animation params that can be locally overridden by frames
@@ -118,6 +120,7 @@ class unit_animation
 			gamemap::location dst_;
 			int halo_id_;
 			int last_frame_begin_time_;
+			bool accelerate_;
 
 	};
 		t_translation::t_list terrain_types_;
