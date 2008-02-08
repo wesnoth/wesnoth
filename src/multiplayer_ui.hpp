@@ -160,7 +160,7 @@ protected:
 	virtual void gamelist_updated(bool silent=true);
 
 	// Sets the user list
-	void set_user_list(const std::vector<std::string>&, bool silent, bool game=false);
+	void set_user_list(const std::vector<std::string>&, bool silent);
 	void set_user_menu_items(const std::vector<std::string>& list);
 
 	// Returns the current gamelist

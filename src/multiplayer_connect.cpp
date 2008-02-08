@@ -1632,7 +1632,7 @@ void connect::update_playerlist_state(bool silent)
 													   ++itor) {
 			playerlist.push_back(itor->name);
 		}
-		set_user_list(playerlist, silent, true);
+		set_user_list(playerlist, silent);
 		set_user_menu_items(playerlist);
 	}
 }
