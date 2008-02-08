@@ -702,7 +702,7 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg) {
 	for(config::all_children_iterator list = cfg.ordered_begin(); list != cfg.ordered_end(); ++list) {
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
 		outstream << "[" << *(*list).first << "]\n";
-		outstream << (*list).second;
+		outstream << *(*list).second;
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
 		outstream << "[/" << *(*list).first << "]\n";
 	}
