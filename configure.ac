@@ -375,7 +375,7 @@ AM_PROG_CC_C_O
 # Check for __builtin_expect
 AC_TRY_LINK([int foo (int a) { a = __builtin_expect (a, 10); return a == 10 ? 0 : 1; }],
       [],
-      [CPPFLAGS="$CPPFLAGS -DHAVE_BUILTIN_EXPECT"])
+      [CXXFLAGS="$CPPFLAGS -DHAVE_BUILTIN_EXPECT"])
 
 have_libx11='no'
 if test "$with_x" != 'no'; then
