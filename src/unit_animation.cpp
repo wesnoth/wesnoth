@@ -686,12 +686,12 @@ bool unit_animation::animation_finished() const
 	return true;
 }
 
-bool unit_animation::animation_would_finish() const
+bool unit_animation::animation_finished_potential() const
 {
-	if(!unit_anim_.animation_would_finish()) return false;
+	if(!unit_anim_.animation_finished_potential()) return false;
 	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		if(!anim_itor->second.animation_would_finish()) return false;
+		if(!anim_itor->second.animation_finished_potential()) return false;
 	}
 	return true;
 }
@@ -890,7 +890,7 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::strin
 	if(!animated_unit) return;
 	game_display*disp = game_display::get_singleton();
 	if(animated_unit->get_animation() &&
-			!animated_unit->get_animation()->animation_would_finish() && 
+			!animated_unit->get_animation()->animation_finished_potential() && 
 			animated_unit->get_animation()->matches(*disp,src,animated_unit,event,value,hit_type,attack,second_attack,swing_num) >unit_animation::MATCH_FAIL) {
 		anim_elem tmp;
 		tmp.my_unit = animated_unit;
@@ -931,7 +931,7 @@ bool unit_animator::would_end() const
 {
 	bool finished = true;
 	for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
-		finished &= anim->my_unit->get_animation()->animation_would_finish();
+		finished &= anim->my_unit->get_animation()->animation_finished_potential();
 	}
 	return finished;
 }
@@ -961,12 +961,16 @@ void unit_animator::wait_for_end() const
 		disp->delay(10);
 		finished = true;
 		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
-			finished &= anim->my_unit->get_animation()->animation_would_finish();
+			finished &= anim->my_unit->get_animation()->animation_finished_potential();
 		}
 	}
 }
 int unit_animator::get_animation_time() const{
 	return animated_units_[0].my_unit->get_animation()->get_animation_time() ; 
+}
+
+int unit_animator::get_animation_time_potential() const{
+	return animated_units_[0].my_unit->get_animation()->get_animation_time_potential() ; 
 }
 
 int unit_animator::get_end_time() const

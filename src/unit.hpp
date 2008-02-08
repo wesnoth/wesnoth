@@ -127,7 +127,7 @@ public:
 	void new_level();
 	//! Called on every draw
 	void refresh(const game_display& disp,const gamemap::location& loc) {
-		if (state_ == STATE_FORGET  && anim_ && anim_->animation_would_finish()) {
+		if (state_ == STATE_FORGET  && anim_ && anim_->animation_finished_potential()) {
 			set_standing( loc);
 			return;
 		}

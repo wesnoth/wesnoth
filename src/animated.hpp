@@ -69,8 +69,9 @@ public:
 
 	//! Returns true if the current animation was finished.
 	bool animation_finished() const;
-	bool animation_would_finish() const;
+	bool animation_finished_potential() const;
 	int get_animation_time() const;
+	int get_animation_time_potential() const;
 
 	const int get_animation_duration() const;
 	const T& get_current_frame() const;

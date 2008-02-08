@@ -78,10 +78,10 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 	unit_animator animator;
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a);
 	animator.start_animations();
-	int target_time = animator.get_animation_time();
+	int target_time = animator.get_animation_time_potential();
 	target_time += 150;
 	target_time -= target_time%150;
-	if(  target_time - animator.get_animation_time() < 100 ) target_time +=150;
+	if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=150;
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 	animator.wait_until(target_time);
 	gamemap::location arr[6];
@@ -132,7 +132,7 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 	unit temp_unit = u;
 	u.set_hidden(true);
 	temp_unit.set_hidden(false);
-
+        disp->draw();
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 
 		bool invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&

@@ -44,12 +44,13 @@ class unit_animation
 
 		bool need_update() const;
 		bool animation_finished() const;
-		bool animation_would_finish() const;
+		bool animation_finished_potential() const;
 		void update_last_draw_time();
 		int get_begin_time() const;
 		int get_end_time() const;
                 int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); };
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; };
+		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; };
 		void start_animation(int start_time,const gamemap::location &src = gamemap::location::null_location, const gamemap::location &dst = gamemap::location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0, double acceleration=1);
 		const int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
 		void redraw();
@@ -163,6 +164,7 @@ class unit_animator
 
 		bool would_end() const;
 		int get_animation_time() const;
+		int get_animation_time_potential() const;
 		int get_end_time() const;
 		void wait_for_end() const;
 		void wait_until( int animation_time) const;
