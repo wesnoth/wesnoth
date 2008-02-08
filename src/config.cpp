@@ -696,7 +696,7 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg) {
 	static int i = 0;
 	i++;
 	for(string_map::const_iterator val = cfg.values.begin(); val != cfg.values.end(); ++val) {
-		for (int j = 0; j < i; j++){ outstream << char(9); }
+		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val->first << " = " << val->second << "\n";
 	}
 	for(config::all_children_iterator list = cfg.ordered_begin(); list != cfg.ordered_end(); ++list) {
