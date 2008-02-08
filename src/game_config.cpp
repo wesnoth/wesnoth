@@ -106,7 +106,9 @@ namespace game_config
 		receive_message_friend = "chat-friend.ogg",
 		receive_message_server = "receive.wav",
 		user_arrive = "arrive.wav",
-		user_leave = "leave.wav";
+		user_leave = "leave.wav",
+		game_user_arrive = "join.wav",
+		game_user_leave = "leave.wav";
 
 		const std::string button_press = "button.wav",
 		checkbox_release = "checkbox.wav",

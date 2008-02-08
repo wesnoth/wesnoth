@@ -544,7 +544,7 @@ void wait::generate_menu()
 	// Uses the actual connected player list if we do not have any
 	// "gamelist" user data
 	if (gamelist().child("user") == NULL) {
-		set_user_list(playerlist, true);
+		set_user_list(playerlist, true, true);
 	}
 }
 

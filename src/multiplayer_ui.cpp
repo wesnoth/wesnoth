@@ -675,13 +675,15 @@ void ui::set_user_menu_items(const std::vector<std::string>& list)
 	users_menu_.set_items(list,true,true);
 }
 
-void ui::set_user_list(const std::vector<std::string>& list, bool silent)
+void ui::set_user_list(const std::vector<std::string>& list, bool silent, bool game)
 {
 	if(!silent) {
 		if(list.size() < user_list_.size()) {
-			sound::play_UI_sound(game_config::sounds::user_leave);
+			if (game) sound::play_UI_sound(game_config::sounds::game_user_leave);
+			else sound::play_UI_sound(game_config::sounds::user_leave);
 		} else if(list.size() > user_list_.size()) {
-			sound::play_UI_sound(game_config::sounds::user_arrive);
+			if (game) sound::play_UI_sound(game_config::sounds::game_user_arrive);
+			else sound::play_UI_sound(game_config::sounds::user_arrive);
 		}
 	}
 

@@ -974,11 +974,9 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 	if (side_choice != -1)
 		sides_[side_choice].set_id(preferences::login());
 
-	update_playerlist_state();
-
 	// Updates the "level_" variable, now that sides are loaded
 	update_level();
-	gamelist_updated(true);
+	update_playerlist_state(true);
 
 	// If we are connected, send data to the connected host
 	network::send_data(level_, 0, true);
@@ -1072,11 +1070,6 @@ void connect::hide_children(bool hide)
 
 	launch_.hide(hide);
 	cancel_.hide(hide);
-}
-
-void connect::gamelist_updated(bool silent)
-{
-	update_playerlist_state(silent);
 }
 
 void connect::process_network_data(const config& data, const network::connection sock)
@@ -1639,7 +1632,7 @@ void connect::update_playerlist_state(bool silent)
 													   ++itor) {
 			playerlist.push_back(itor->name);
 		}
-		set_user_list(playerlist, silent);
+		set_user_list(playerlist, silent, true);
 		set_user_menu_items(playerlist);
 	}
 }

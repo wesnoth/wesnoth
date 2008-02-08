@@ -175,7 +175,6 @@ protected:
 
 	virtual void hide_children(bool hide=true);
 
-	virtual void gamelist_updated(bool silent=true);
 private:
 	// Those 2 functions are actually the steps of the (complex)
 	// construction of this class.
