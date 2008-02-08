@@ -187,11 +187,10 @@ void unit_attack(
 		  int swing,std::string hit_text)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp) return;
+	if(!disp || preferences::show_combat() == false) return;
 	unit_map& units = disp->get_units();
 	disp->select_hex(gamemap::location::null_location);
-	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)
-	                  || preferences::show_combat() == false;
+	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b);
 
 	if(!hide) {
 		disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
@@ -241,10 +240,6 @@ void unit_attack(
 			animator.add_animation(&leader->second,"leading",leader_loc,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
 		}
 	}
-
-
-
-
 
 	animator.start_animations();
 	animator.wait_for_end();
