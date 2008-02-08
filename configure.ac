@@ -84,6 +84,11 @@ AC_ARG_ENABLE([debug],
 	      [debug=$enableval],
 	      [debug=no])
 
+AC_ARG_ENABLE([profile],
+	      AS_HELP_STRING([--enable-profile], [enable profiling in wesnoth]),
+	      [profile=$enableval],
+	      [profile=no])
+
 if test "x$debug" = "xyes"
 then
 	CXXFLAGS="$CXXFLAGS -O0 -DDEBUG -ggdb3 -W -Wall -ansi"
@@ -91,6 +96,10 @@ else
 	CXXFLAGS="-O2 -W -Wall -ansi $CXXFLAGS"
 fi
 
+if test "x$profile" = "xyes"
+then
+	CXXFLAGS="$CXXFLAGS -pg"
+fi
 
 # Make tests default in svn version
 svn_in_version=`expr match "$WESNOTH_VERSION" '.*svn'`
@@ -362,6 +371,11 @@ AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_INSTALL
 AM_PROG_CC_C_O
+
+# Check for __builtin_expect
+AC_TRY_LINK([int foo (int a) { a = __builtin_expect (a, 10); return a == 10 ? 0 : 1; }],
+      [],
+      [CPPFLAGS="$CPPFLAGS -DHAVE_BUILTIN_EXPECT"])
 
 have_libx11='no'
 if test "$with_x" != 'no'; then

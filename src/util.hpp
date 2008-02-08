@@ -145,6 +145,15 @@ void push_back(T& str, C c)
 	str[str.size()-1] = c;
 }
 
+#ifdef HAVE_BUILTIN_EXPECT
+#define LIKELY(a)    __builtin_expect((a),1)
+#define UNLIKELY(a)  __builtin_expect((a),1)
+#else
+#define LIKELY(a)    a
+#define UNLIKELY(a)  a
+#endif
+
+
 #if 1
 # include <SDL_types.h>
 typedef Sint32 fixed_t;

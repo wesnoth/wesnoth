@@ -17,11 +17,13 @@
 
 #include "global.hpp"
 
+#include "util.hpp"
 #include "serialization/tokenizer.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <iostream>
 #include <sstream>
+#include <list>
 
 tokenizer::tokenizer() :
 	current_(EOF),
@@ -32,33 +34,98 @@ tokenizer::tokenizer() :
 	token_()
 {
 }
+const size_t matching_comments = 2;
+const std::string comment[] = {"textdomain","line"};
 
 void tokenizer::skip_comment()
 {
-	// Dump comments up to \n
-	std::string comment;
-	next_char();
-	while (current_ != EOF && current_ != '\n') {
-		comment += current_;
-		next_char();
+	std::list<int> matching;
+	std::list<int>::iterator index;
+	size_t n;
+	for (n = 0; n < matching_comments; ++n)
+	{
+		matching.push_back(n);
 	}
+	n = 0;
+	this->next_char_fast();
+ 	while (current_ != EOF && current_ != '\n') {
+		for (index = matching.begin(); index != matching.end();)
+		{
+			if(comment[*index][n] != static_cast<unsigned char>(current_))
+			{
+				index = matching.erase(index);
+			}
+			else
+			{
+				if (n+1 == comment[*index].size())
+				{
+					// We have a match
+					switch(*index)
+					{
+					case 0:
+						do {
+							this->next_char_fast();
+						} while (current_ == ' ' || current_ == '\t');
+						textdomain_ = "";
+						while(current_ != EOF && current_ != '\n')
+						{
+							textdomain_ += current_;
+							this->next_char_fast();
+						}
+						std::cerr << textdomain_ << " ";
+						return;
+					case 1:
+						do {
+							this->next_char_fast();
+						} while (current_ == ' ' || current_ == '\t');
+						std::string lineno;
+						while(current_ != EOF && current_ != '\n')
+						{
+							if (current_ == ' ' || current_ == '\t')
+							{
+								break;
+							}
+							lineno += current_;
+							this->next_char_fast();
+						}
 
-	// Identifies and processes tokenizer directives
-	std::string::size_type pos = comment.find_first_of(" \t");
-	if (pos != std::string::npos) {
-		const std::string word = comment.substr(0, pos);
 
-		if (word == "textdomain" && pos < comment.size() - 1) {
-			textdomain_ = comment.substr(pos + 1);
-		} else if (word == "line" && pos < comment.size() - 1) {
-			std::string::size_type pos2 = comment.find_first_of(" \t", pos + 1);
+						if (current_ == EOF || current_ == '\n')
+						{
+							return;
+						}
+						do {
+							this->next_char_fast();
+						} while (current_ == ' ' || current_ == '\t');
+						file_ = "";
+						while (current_ != EOF && current_ != '\n')
+						{
+							file_ += current_;
+							this->next_char_fast();
+						}
+						lineno_ = lexical_cast<size_t>(lineno);
+						std::cerr << lineno_ << " " << file_ << " ";
 
-			if (pos2 != std::string::npos) {
-				lineno_ = lexical_cast<size_t>(comment.substr(pos + 1, pos2 - pos));
-				file_ = comment.substr(pos2 + 1);
+						return;
+					}
+				}
+				++index;
 			}
 		}
+		++n;
+		if (!matching.empty())
+		{
+			break;
+		}
+		this->next_char_fast();
+ 	}
+ 
+	while (current_ != '\n' && current_ != EOF)
+	{
+		this->next_char_fast();
 	}
+
+
 }
 
 const token& tokenizer::next_token()
@@ -70,7 +137,7 @@ const token& tokenizer::next_token()
 	for(;;) {
 		while (is_space(current_)) {
 			token_.leading_spaces += current_;
-			next_char();
+			this->next_char_fast();
 		}
 		if (current_ != 254)
 			break;
@@ -100,7 +167,7 @@ const token& tokenizer::next_token()
 			if(current_ == '"' && peek_char() != '"')
 				break;
 			if(current_ == '"' && peek_char() == '"')
-				next_char();
+				this->next_char_fast();
 			if (current_ == 254) {
 				skip_comment();
 				--lineno_;
@@ -119,7 +186,7 @@ const token& tokenizer::next_token()
 			token_.type = token::STRING;
 			token_.value += current_;
 			while(is_alnum(peek_char())) {
-				next_char();
+				this->next_char_fast();
 				token_.value += current_;
 			}
 		} else {
@@ -170,30 +237,32 @@ tokenizer_string::tokenizer_string(std::string& in) :
 	in_(in),
 	offset_(0)
 {
-	next_char();
+	this->next_char_fast();
 }
 
 
 tokenizer_stream::tokenizer_stream(std::istream& in) :
 	in_(in)
 {
-	if(in_.good()) {
-		current_ = in_.get();
-	}
+	this->next_char_fast();
 }
 
-void tokenizer_stream::next_char()
+void tokenizer_stream::next_char_fast()
 {
-	if (current_ == '\n')
-		lineno_++;
-
-	do {
-		if(in_.good()) {
-			current_ = in_.get();
-		} else {
-			current_ = EOF;
+	if(LIKELY(in_.good())) {
+		current_ = in_.get();
+		if (UNLIKELY(current_ == '\r'))
+		{
+			// we assume that there is only one '\r'
+			if(LIKELY(in_.good())) {
+				current_ = in_.get();
+			} else {
+				current_ = EOF;
+			}
 		}
-	} while(current_ == '\r');
+	} else {
+		current_ = EOF;
+	}
 }
 
 int tokenizer_stream::peek_char() const
@@ -202,19 +271,22 @@ int tokenizer_stream::peek_char() const
 }
 
 
-void tokenizer_string::next_char()
+void tokenizer_string::next_char_fast()
 {
 
-	if (current_ == '\n')
-		lineno_++;
-
-	do {
-		if(offset_ < in_.size()) {
-			current_ = in_[offset_++];
-		} else {
-			current_ = EOF;
+	if(LIKELY(offset_ < in_.size())) {
+		current_ = in_[offset_++];
+		if (UNLIKELY(current_ == '\r'))
+		{
+			if(LIKELY(offset_ < in_.size())) {
+				current_ = in_[offset_++];
+			} else {
+				current_ = EOF;
+			}
 		}
-	} while(current_ == '\r');
+	} else {
+		current_ = EOF;
+	}
 	
 }
 

@@ -18,6 +18,8 @@
 #ifndef TOKENIZER_H_INCLUDED
 #define TOKENIZER_H_INCLUDED
 
+#include "util.hpp"
+
 #include <istream>
 #include <string>
 
@@ -68,7 +70,14 @@ protected:
 	int current_;
 	size_t lineno_;
 
-	virtual void next_char() = 0;
+	void next_char()
+	{
+		if (UNLIKELY(current_ == '\n'))
+			lineno_++;
+		this->next_char_fast();
+	}
+
+	virtual void next_char_fast() = 0;
 	virtual int peek_char() const = 0;
 private:
 	bool is_space(const int c) const;
@@ -88,7 +97,7 @@ public:
 	tokenizer_stream(std::istream& in);
 
 protected:
-	void next_char();
+	void next_char_fast();
 	int peek_char() const;
 
 private:
@@ -102,7 +111,7 @@ public:
 	tokenizer_string(std::string& in);
 
 protected:
-	void next_char();
+	void next_char_fast();
 	int peek_char() const;
 
 private:
