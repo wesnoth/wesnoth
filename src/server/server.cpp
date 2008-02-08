@@ -1188,13 +1188,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 					"You cannot mute: not the game host."), sock, true);
 			return;
 		}
-		if (g->mute_all_observers()) {
-			g->send_data(g->construct_server_message(
-				"All observers have been muted."));
-		} else {
-			g->send_data(g->construct_server_message(
-				"Mute of all observers has been removed."));
-		}
+		g->mute_all_observers();
 		return;
 	// If an observer should be muted.
 	} else if (data.child("mute")) {
@@ -1239,16 +1233,8 @@ void server::process_data_game(const network::connection sock, const config& dat
 		return;
 	}
 
-	// Forward data to all players who are in the game,
-	// except for the original data sender
-	// FIXME: Relaying arbitrary data that possibly didn't get handled at all
-	// seems like a bad idea.
-	DBG_SERVER << "Relaying data RECEIVED from: " << sock
-		<< " to all other players: " << data;
-	g->send_data(data, sock);
-	if (g->started()) {
-		g->record_data(data);
-	}
+	WRN_SERVER << "Received unknown data from: " << pl->second.name() 
+		<< ". (socket:" << sock << ")\n" << data;
 }
 
 void server::delete_game(std::vector<game>::iterator game_it) {

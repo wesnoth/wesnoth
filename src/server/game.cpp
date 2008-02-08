@@ -372,9 +372,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		players_.erase(pl);
 		const std::string& name = player_info_->find(sock)->second.name();
 		// Tell others that the player becomes an observer.
-		const config& msg = construct_server_message(name + " becomes an observer.");
-		record_data(msg);
-		send_data(msg);
+		send_and_record_server_message(name + " becomes an observer.");
 		// Update the client side observer list for everyone except player.
 		config observer_join;
 		observer_join.add_child("observer")["name"] = name;
@@ -384,16 +382,12 @@ void game::transfer_side_control(const network::connection sock, const config& c
 			host_leave = true;
 			if (!players_.empty()) {
 				owner_ = players_.front();
-				const config& msg = construct_server_message(name
+				send_and_record_server_message(name
 						+ " has been chosen as the new host.");
-				record_data(msg);
-				send_data(msg);
 			} else {
 				owner_ = newplayer->first;
-				const config& msg = construct_server_message(newplayer_name
+				send_and_record_server_message(newplayer_name
 						+ " has been chosen as the new host.");
-				record_data(msg);
-				send_data(msg);
 			}
 			notify_new_host();
 		}
@@ -424,10 +418,8 @@ void game::send_change_controller(const size_t side_num,
 {
 	if (newplayer == player_info_->end()) return;
 	const std::string& side = lexical_cast<std::string, size_t>(side_num);
-	config msg = construct_server_message(newplayer->second.name()
+	send_and_record_server_message(newplayer->second.name()
 			+ " takes control of side " + side + ".");
-	record_data(msg);
-	send_data(msg);
 
 	config response;
 	config& change = response.add_child("change_controller");
@@ -468,9 +460,7 @@ void game::send_change_controller(const size_t side_num,
 	}
 	if (!ai_transfer) return;
 
-	msg = construct_server_message("AI transferred to new host.");
-	record_data(msg);
-	send_data(msg);
+	send_and_record_server_message("AI transferred to new host.");
 }
 
 void game::notify_new_host(){
@@ -515,6 +505,15 @@ bool game::player_is_banned(const network::connection sock) const {
 	std::vector<std::string>::const_iterator ban =
 		std::find(bans_.begin(), bans_.end(), network::ip_address(sock));
 	return ban != bans_.end();
+}
+
+void game::mute_all_observers() {
+	all_observers_muted_ = !all_observers_muted_;
+	if (all_observers_muted_) {
+		send_and_record_server_message("All observers have been muted.");
+	} else {
+		send_and_record_server_message("Muting of all observers has been removed.");
+	}
 }
 
 //! Mute an observer or give a message of all currently muted observers if no
@@ -568,10 +567,7 @@ void game::mute_observer(const config& mute, const player_map::const_iterator mu
 	LOG_GAME << network::ip_address(muter->first) << "\t"
 		<< muter->second.name() << "muted: " << user->second.name()
 		<< "\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
-	network::send_data(construct_server_message(
-			"You have been muted."), user->first, true);
-	send_data(construct_server_message(user->second.name()
-			+ " has been muted."), user->first);
+	send_and_record_server_message(user->second.name() + " has been muted.");
 }
 
 //! Kick a member by name.
@@ -599,11 +595,7 @@ network::connection game::kick_member(const config& kick,
 	LOG_GAME << network::ip_address(kicker->first) << "\t"
 		<< kicker->second.name() << "\tkicked: " << user->second.name()
 		<< "\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
-	network::send_data(construct_server_message("You have been kicked."),
-			user->first, true);
-	const config& msg = construct_server_message(name + " has been kicked.");
-	send_data(msg, user->first);
-	record_data(msg);
+	send_and_record_server_message(name + " has been kicked.");
 	// Tell the user to leave the game.
 	network::send_data(config("leave_game"), user->first, true);
 	remove_player(user->first);
@@ -643,12 +635,8 @@ network::connection game::ban_user(const config& ban,
 		<< banner->second.name() << "\tbanned: " << name << "\tfrom game:\t"
 		<< name_ << "\" (" << id_ << ")\n";
 	bans_.push_back(network::ip_address(user->first));
-	const config& msg = construct_server_message(name + " has been banned.");
-	send_data(msg, user->first);
-	record_data(msg);
+	send_and_record_server_message(name + " has been banned.");
 	if (is_member(user->first)) {
-		network::send_data(construct_server_message("You have been banned."),
-				user->first, true);
 		// Tell the user to leave the game.
 		network::send_data(config("leave_game"), user->first, true);
 		remove_player(user->first);
@@ -730,9 +718,7 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 				const std::string msg = "Removing illegal message from "
 						+ user->second.name() + " to team '" + team_name + "'.";
 				LOG_GAME << msg << std::endl;
-				const config& server_msg = construct_server_message(msg);
-				send_data(server_msg);
-				record_data(server_msg);
+				send_and_record_server_message(msg);
 			}
 		}
 		return res;
@@ -782,10 +768,8 @@ void game::filter_commands(const network::connection member, config& cfg) {
 					: "")
 				<< ".\n";
 			LOG_GAME << msg.str();
-			const config& server_msg = construct_server_message(msg.str());
-			send_data(server_msg);
-			record_data(server_msg);
-			DBG_GAME << (**i);
+			send_and_record_server_message(msg.str());
+			LOG_GAME << (**i);
 			marked.push_back(index - marked.size());
 		}
 		++index;
@@ -945,10 +929,8 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		observer_quit.add_child("observer_quit")["name"] = user->second.name();
 		send_data(observer_quit);
 	} else {
-		const config& msg = construct_server_message(user->second.name()
-				+ (disconnect ? " has disconnected." : " has left the game."));
-		send_data(msg, player);
-		record_data(msg);
+		send_and_record_server_message(user->second.name()
+				+ (disconnect ? " has disconnected." : " has left the game."), player);
 	}
 	// If the player was host choose a new one.
 	if (host) {
@@ -962,10 +944,8 @@ bool game::remove_player(const network::connection player, const bool disconnect
 			owner_name = owner->second.name();
 		}
 		notify_new_host();
-		const config& msg = construct_server_message(owner_name
+		send_and_record_server_message(owner_name
 				+ " has been chosen as the new host.");
-		record_data(msg);
-		send_data(msg);
 	}
 
 	// Look for all sides the player controlled and drop them.
@@ -1154,6 +1134,15 @@ player_map::const_iterator game::find_user(const std::string& name) const {
 			return pl;
 	}
 	return player_info_->end();
+}
+
+void game::send_and_record_server_message(const std::string& message,
+		const network::connection exclude)
+{
+	const config& server_message = construct_server_message(message);
+	record_data(server_message);
+	send_data(server_message, exclude);
+
 }
 
 config game::construct_server_message(const std::string& message) const

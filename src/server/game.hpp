@@ -66,7 +66,7 @@ public:
 	size_t nplayers() const { return players_.size(); }
 	size_t nobservers() const { return observers_.size(); }
 
-	bool mute_all_observers() { return all_observers_muted_ = !all_observers_muted_; }
+	void mute_all_observers();
 	//! Mute an observer by name.
 	void mute_observer(const config& mute, const player_map::const_iterator muter);
 	//! Kick a member by name.
@@ -105,6 +105,8 @@ public:
 
 	config construct_server_message(const std::string& message) const;
 	//! Send data to all players in this game except 'exclude'.
+	void send_and_record_server_message(const std::string& message,
+			const network::connection exclude=0);
 	void send_data(const config& data, const network::connection exclude=0) const;
 
 	void record_data(const config& data);
