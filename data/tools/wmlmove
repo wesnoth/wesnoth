@@ -23,7 +23,7 @@ the target campaign or core directories.  Subversion move commands
 will be used on version-controlled files.
 
 A resource is considered to belong to a unit (and moves with it) if the
-resource is included in the unit .cfg and leives near the unit .cfg.
+resource is included in the unit .cfg and lives near the unit .cfg.
 "Near" for a unit in the core data means anywhere in the core data,
 but not in a campaign directory.  "Near" for a unit under a
 data/campaign directory means anywhere in that same campaign
@@ -48,7 +48,8 @@ wmlscope to check that you have not left any references to the moved
 units dangling.
 
 Also be aware that this tool does nothing to update the unit
-translation files.
+translation files, nor does it fix the textdomain directive
+of the unit.
 
 Here is an example:
 
