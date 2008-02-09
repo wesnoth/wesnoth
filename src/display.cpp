@@ -1458,7 +1458,7 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 	int xmove = xpos - xpos_;
 	int ymove = ypos - ypos_;
 
-	if(scroll_type == WARP || turbo_) {
+	if(scroll_type == WARP || turbo_speed() > 2.0 || preferences::scroll_speed() > 99) {
 		scroll(xmove,ymove);
 		draw();
 		return;
