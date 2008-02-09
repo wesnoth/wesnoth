@@ -96,7 +96,7 @@ public:
 	const SDL_Rect& map_outside_area() const
 		{ return theme_.main_map_location(screen_area()); }
 
-	//! Check if pixel x,y is outside specified area.
+	//! Check if the bbox of the hex at x,y has pixels outside the area rectangle.
 	bool outside_area(const SDL_Rect& area, const int x,const int y) const;
 
 	//! Function which returns the width of a hex in pixels,

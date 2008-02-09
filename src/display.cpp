@@ -158,7 +158,7 @@ const SDL_Rect& display::map_area() const
 
 bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 {
-	const int x_thresh = hex_width();
+	const int x_thresh = hex_size();
 	const int y_thresh = hex_size();
 	return (x < area.x || x > area.x + area.w - x_thresh ||
 		y < area.y || y > area.y + area.h - y_thresh);
@@ -1437,15 +1437,8 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 	const int screenxpos = get_location_x(loc);
 	const int screenypos = get_location_y(loc);
 
-	if (scroll_type == ONSCREEN) {
-		// The tile must be fully visible
-		SDL_Rect r = map_area();
-		r.w -= hex_width();
-		r.h -= zoom_;
-
-		if (!outside_area(r,screenxpos,screenypos)) {
-			return;
-		}
+	if (scroll_type == ONSCREEN && !outside_area(map_area(),screenxpos,screenypos)) {
+		return;
 	}
 
 	const SDL_Rect area = map_area();
@@ -1560,18 +1553,11 @@ void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::loca
 			if(!check_fogged || ( !fogged(loc1) && !fogged(loc2))) {
 				// Scroll to middle point of rectangle
 				if (scroll_type == ONSCREEN) {
-					// The tile must be fully visible
-					SDL_Rect r = map_area();
-					r.w -= hex_width(); // sure? shouldn't this be zoom_?
-					r.h -= zoom_;
-
-					if (!outside_area(r,get_location_x(loc1),get_location_y(loc1)) &&
-							!outside_area(r,get_location_x(loc2),get_location_x(loc2)) ) {
-						return;
-					}
-					scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),SCROLL,check_fogged);
+					// note: on-screen check was already done unconditionally
+					// We also have to scroll if the middle point already is on-screen.
+					scroll_type = SCROLL;
 				}
-				scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,check_fogged);
+				scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,false);
 			} else if(!fogged(loc1)) {
 				scroll_to_tile(loc1,scroll_type,check_fogged);
 			} else if(!fogged(loc2)) {
