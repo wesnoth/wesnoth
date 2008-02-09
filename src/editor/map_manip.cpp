@@ -22,6 +22,7 @@
 #include "../config.hpp"
 #include "../construct_dialog.hpp"
 #include "../util.hpp"
+#include "../wml_exception.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
@@ -396,6 +397,10 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	}
 	catch (gamemap::incorrect_format_exception) {
 		res = false;
+	} catch(twml_exception& e) {
+		std::cerr << "WML exception:\nUser message: " 
+			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
+		return false;
 	}
 	return res;
 }

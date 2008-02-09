@@ -30,6 +30,7 @@
 #include "../util.hpp"
 #include "../video.hpp"
 #include "../wesconfig.h"
+#include "../wml_exception.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
@@ -357,6 +358,10 @@ int main(int argc, char** argv)
 		}
 		catch (gamemap::incorrect_format_exception) {
 			std::cerr << "The map is not in a correct format, sorry." << std::endl;
+			return 1;
+		} catch(twml_exception& e) {
+			std::cerr << "WML exception:\nUser message: " 
+				<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 			return 1;
 		} catch (CVideo::quit&) {
 			return 0;

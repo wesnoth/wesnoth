@@ -38,6 +38,7 @@
 #include "../util.hpp"
 #include "../video.hpp"
 #include "../wml_separators.hpp"
+#include "../wml_exception.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -744,6 +745,8 @@ void map_editor::edit_resize() {
 		} catch (gamemap::incorrect_format_exception& e) {
 			std::cerr << "ERROR: " << e.msg_ << '\n';
 			gui::message_dialog(gui_, "", e.msg_).show();
+		} catch(twml_exception& e) {
+			e.show(gui_);
 		}
 	}
 }
