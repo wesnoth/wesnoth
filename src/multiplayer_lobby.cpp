@@ -392,6 +392,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		bool verified = true;
 		games_.push_back(game_item());
 		games_.back().password_required = (**game)["password"] == "yes";
+		games_.back().reloaded = (**game)["savegame"] == "yes";
 		if((**game)["mp_era"] != "") {
 			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
 			utils::string_map symbols;
@@ -450,7 +451,6 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 			if(level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
-				games_.back().reloaded = (**game)["savegame"] == "yes";
 				if (games_.back().reloaded) {
 					games_.back().map_info += " - ";
 					games_.back().map_info += _("Reloaded game");
