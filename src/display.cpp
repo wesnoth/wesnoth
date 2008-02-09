@@ -1449,8 +1449,8 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 	}
 
 	const SDL_Rect area = map_area();
-	const int xmove_expected = (screenxpos + hex_width()/2) - (area.x + area.w/2 - zoom_/2);
-	const int ymove_expected = (screenypos + zoom_/2)       - (area.y + area.h/2 - zoom_/2);
+	const int xmove_expected = screenxpos - (area.x + area.w/2 - zoom_/2);
+	const int ymove_expected = screenypos - (area.y + area.h/2 - zoom_/2);
 
 	int xpos = xpos_ + xmove_expected;
 	int ypos = ypos_ + ymove_expected;
@@ -1562,7 +1562,7 @@ void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::loca
 				if (scroll_type == ONSCREEN) {
 					// The tile must be fully visible
 					SDL_Rect r = map_area();
-					r.w -= hex_width();
+					r.w -= hex_width(); // sure? shouldn't this be zoom_?
 					r.h -= zoom_;
 
 					if (!outside_area(r,get_location_x(loc1),get_location_y(loc1)) &&
