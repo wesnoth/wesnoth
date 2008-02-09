@@ -4,7 +4,7 @@ also belong here.
 
 == Scripts ==
 
-== mk-edges ==
+=== mk-edges ===
 
 Automatically generate border images for tiles. Works by copying the way in 
 which border tiles are done for an existing terrain type.
@@ -15,6 +15,24 @@ to have the same style of edges as snow does, you could run the command
 data/tools/mk-edges.pl images/terrain/lava images/terrain/snow
 
 and it will make the edges for you.
+
+=== wmllint ===
+
+This tool lifts WML from older dialects to current and performs sanity checks.
+See the header comment of wmllint for a description and invocation options.
+
+=== wmlscope ===
+
+A WML cross-reference checker.  Normally you'll use this to list
+unresolved symbols., if any.  See the header comment of wmlscope for a
+description and invocation options.
+
+=== wmlmove ===
+
+Use this tool to generate commands that will move a unit between
+namespaces; campaign to core, core to campaign, or campaign to
+campaign.  See the header comment of wmlmove for a description and
+invocation options.
 
 == Python API ==
 
