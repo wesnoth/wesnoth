@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-03 17:22+0100\n"
-"PO-Revision-Date: 2008-01-30 21:27+0100\n"
+"PO-Revision-Date: 2008-02-10 16:05+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Anima la mappa"
 
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Animazioni per le unità inattive"
 
 #: data/_main.cfg:64
 msgid "Show Combat"
@@ -299,9 +299,8 @@ msgid "Bots"
 msgstr "Automazioni"
 
 #: data/core/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
 #: data/core/help.cfg:10 data/core/help.cfg:69
 msgid "Introduction"
@@ -1158,7 +1157,6 @@ msgstr ""
 "la possibilità di scegliere il tipo di avanzamento."
 
 #: data/core/help.cfg:262
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1182,7 +1180,7 @@ msgstr ""
 "L'AOML modifica l'unità quando raggiunge il livello di esperienza richiesto, "
 "ma l'unità manterrà il livello in cui si trova. L'AOML, normalmente, fa "
 "crescere il livello massimo di PF dell'unità di 3 punti e la guarisce "
-"completamente. Il primo AOML sarà raggiunto dopo 100 PE guadagnati (80 PE "
+"completamente. Il primo AOML sarà raggiunto dopo 150 PE guadagnati (120 PE "
 "per le unità intelligenti). Però guadagnare AOML diventa progressivamente "
 "più difficile ad ogni AOML ricevuto, e quindi è spesso più utile cercare di "
 "fare avanzare le unità di livello più basso."
@@ -2335,7 +2333,6 @@ msgstr ""
 "attualmente attiva.\n"
 
 #: data/core/help.cfg:678
-#, fuzzy
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -4058,15 +4055,14 @@ msgstr ""
 "fino a che uno dei due combattenti muore."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
 "enemy."
 msgstr ""
-" Se c'è un'unità nemica di quella bersaglio sul lato opposto del bersaglio "
-"rispetto alla tua, questa unità può attaccarlo alle spalle, infliggendo il "
-"doppie dei danni, strisciando dietro il nemico."
+" Se c'è un'unità nemica di quella sotto attacco sul lato opposto rispetto "
+"alla tua, questa unità può attaccarla alle spalle, infliggendo il doppio dei "
+"danni, sgusciando dietro il nemico."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -5091,6 +5087,11 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
+"Se giochi con l'«oscurità» o la «nebbia di guerra» attive, non saprai che cosa "
+"stai per affrontare. In questo caso, le unità capaci di esplorazione ad "
+"ampio raggio valgono la spesa. Prova a scegliere unità che si possano "
+"muovere facilmente sul terreno circostante, perché le unità vedono alla "
+"distanza che possono raggiungere in un turno."
 
 #: data/hardwired/tips.cfg:55
 msgid ""
@@ -7444,9 +7445,8 @@ msgid "Unknown era"
 msgstr "Era sconosciuta"
 
 #: src/multiplayer_lobby.cpp:456
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Carica una partita salvata"
+msgstr "Partita ricaricata"
 
 #: src/multiplayer_lobby.cpp:469
 msgid "Remote scenario"
@@ -7465,11 +7465,10 @@ msgid "Turn "
 msgstr "Turno "
 
 #: src/multiplayer_lobby.cpp:500
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Slot vuoto:"
-msgstr[1] "Slot vuoto:"
+msgstr[1] "Slot vuoti:"
 
 #: src/multiplayer_lobby.cpp:503 src/multiplayer_lobby.cpp:752
 msgid "Password Required"
