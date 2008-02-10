@@ -23,10 +23,6 @@ unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
 	@./wmlscope --unresolved $(MAINLINE) $(UMC)
 
-unchecked:
-	@echo "# Report on unchecked macro calls and resource references"
-	@./wmlscope --unchecked $(MAINLINE) $(UMC)
-
 all:
 	@echo "# Report on usage of all macros and resources"
 	@./wmlscope --crossreference $(MAINLINE) $(UMC)
@@ -60,6 +56,10 @@ macro-reference.xhtml:
 	@cat helpheader.xhtml >macro-reference.xhtml
 	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(MAINLINE) >>macro-reference.xhtml
 	@cat helptrailer.xhtml >>macro-reference.xhtml
+
+# Report on unchecked macro calls
+unchecked:
+	@./wmlscope --unchecked $(MAINLINE) $(UMC)
 
 # Reindent the mainline content
 reindent:

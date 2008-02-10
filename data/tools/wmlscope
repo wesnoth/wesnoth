@@ -159,16 +159,20 @@ class CrossRefLister(CrossRef):
                 print name
     def unchecked(self, fp):
         "List all macro definitions with untyped formals."
-        unchecked_latch = False
         sorted = self.xref.keys()
         sorted.sort()
+        unchecked = []
+        totalcount = 0
         for name in sorted:
             for defn in self.xref[name]:
+                totalcount += 1
                 if None in map(formaltype, defn.args):
-                    if not unchecked_latch:
-                        print "# Macros with untyped formals:"
-                        unchecked_latch = True
-                    print "%s: %s(%s)" % (defn, name, ", ".join(defn.args))
+                    unchecked.append((name, defn))
+        if unchecked:
+            print "# %d of %d macro definitions have untyped formals:" \
+                  % (len(unchecked), totalcount)
+            for (name, defn) in unchecked:
+                print "%s: %s(%s)" % (defn, name, ", ".join(defn.args))
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.

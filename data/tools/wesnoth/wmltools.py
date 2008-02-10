@@ -62,7 +62,7 @@ def isresource(filename):
 
 def formaltype(f):
     # Deduce the expected type of the formal
-    if f in ("SIDE", "X", "Y", "AMOUNT", "RED", "GREEN", "BLUE", "NUMBER", "TURN", "RADIUS"):
+    if f in ("SIDE", "X", "Y", "TO_X", "TO_Y", "AMOUNT", "RED", "GREEN", "BLUE", "TURN", "RADIUS") or f.endswith("NUMBER"):
         ftype = "numeric"
     elif f in ("POSITION",):
         ftype = "position"
@@ -70,14 +70,22 @@ def formaltype(f):
         ftype = "span"
     elif f in ("RANGE",):
         ftype = "range"
-    elif f in ("NAME", "VAR"):
+    elif f in ("NAME", "VAR", "IMAGESTEM", "ID"):
         ftype = "name"
-    elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION", "TERRAIN", "TEXT"):
+    elif f in ("TYPE", "TERRAIN", "TEXT"):
         ftype = "string"
+    elif f in ("DESCRIPTION", "USER_DESCRIPTION",):
+        ftype = "optional_string"
     elif f.endswith("IMAGE") or f == "PROFILE":
         ftype = "image"
-    elif f in ("FILTER",):
+    elif f in ("MUSIC", "SOUND"):
+        ftype = "sound"
+    elif f in ("FILTER", "ACTION"):
         ftype = "filter"
+    elif f in ("WML_FRAGMENT",):
+        ftype = "wml"
+    elif f in ("VALUE",):
+        ftype = "any"
     else:
         ftype = None
     return ftype
@@ -96,10 +104,14 @@ def actualtype(a):
         atype = None	# Can't tell -- it's a macro expansion
     elif a.endswith(".png") or a.endswith(".jpg"):
         atype = "image"
+    elif a.endswith(".wav") or a.endswith(".ogg"):
+        atype = "sound"
     elif a.startswith('"') and a.endswith('"'):
         atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
+    elif a == "":
+        atype = "empty"
     elif not ' ' in a:
         atype = "name"
     else:
@@ -116,9 +128,15 @@ def argmatch(formals, actuals):
         # in which a more restricted actual type matches a more general
         # formal one.  Then we have a fallback rule checking for type
         # equality or wildcarding.
-        if atype in ("numeric", "position") and ftype == "span":
+        if ftype == "any":
+            pass
+        elif atype in ("filter", "empty") and ftype == "wml":
+            pass
+        elif atype in ("numeric", "position") and ftype == "span":
             pass
         elif atype in ("name", "stringliteral") and ftype == "string":
+            pass
+        elif atype in ("name", "string", "stringliteral", "empty") and ftype == "optional_string":
             pass
         elif atype != ftype and ftype is not None and atype is not None:
             return False
