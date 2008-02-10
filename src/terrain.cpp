@@ -73,6 +73,11 @@ terrain_type::terrain_type(const config& cfg) :
 		castle_(utils::string_bool(cfg["recruit_onto"])),
 		keep_(utils::string_bool(cfg["recruit_from"]))
 {
+//! @todo reenable these validations. The problem is that all MP 
+//! scenarios/campaigns share the same namespace and one rogue scenario
+//! can avoid the player to create a MP game. So every scenario/campaign
+//! should get it's own namespace to be save. 
+#if 0
 	VALIDATE(number_ != t_translation::NONE_TERRAIN, 
 		missing_mandatory_wml_key("terrain", "string"));
 	VALIDATE(!minimap_image_.empty(), 
@@ -81,6 +86,7 @@ terrain_type::terrain_type(const config& cfg) :
 	VALIDATE(!name_.empty(), 
 		missing_mandatory_wml_key("terrain", "name", "string", 
 		t_translation::write_letter(number_)));
+#endif
 
 	if(editor_image_.empty()) {
 		editor_image_ = minimap_image_;
