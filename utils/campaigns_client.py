@@ -103,7 +103,7 @@ if __name__ == "__main__":
             info = os.path.join(d, "info.cfg")
             try:
                 f = file(info, "w")
-                f.write("[info]\nversion=%s\nuploads=%s\n[/info]\n" %
+                f.write("[info]\nversion=\"%s\"\nuploads=\"%s\"\n[/info]\n" %
                     (version, uploads))
                 f.close()
             except OSError:
