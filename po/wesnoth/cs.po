@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-03 17:22+0100\n"
-"PO-Revision-Date: 2008-01-26 20:43+0100\n"
+"PO-Revision-Date: 2008-02-08 17:24+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Animovat mapu"
 
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Zobrazovat animace stojících jednotek"
 
 #: data/_main.cfg:64
 msgid "Show Combat"
@@ -299,9 +299,8 @@ msgid "Bots"
 msgstr "Boti"
 
 #: data/core/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
 #: data/core/help.cfg:10 data/core/help.cfg:69
 msgid "Introduction"
@@ -1127,7 +1126,6 @@ msgstr ""
 # \n
 # Pamatujte, že jen velmi malé množství jednotek, například Požírači mrtvol, se mohou pomocí AMLA léčit jako při povýšení. Většina jednotek pouze získá bonus k maximálnímu počtu životů.
 #: data/core/help.cfg:262
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1151,8 +1149,8 @@ msgstr ""
 "vlastnosti jednotky pokaždé, kdy jednotka dosáhne počtu zkušenostních bodů "
 "nutných pro získání další úrovně, ale jednotka zůstane na stejné úrovni. "
 "Obvykle AMLA ovlivní jednotku tak, že zvýší maximální počet životů o 3 a "
-"uzdraví ji. První AMLA je obvykle dosažena po 100 získaných zkušenostních "
-"bodech (80 pro chytré jednotky). Množství zkušenostních bodů pro dosažení "
+"uzdraví ji. První AMLA je obvykle dosažena po 150 získaných zkušenostních "
+"bodech (120 pro chytré jednotky). Množství zkušenostních bodů pro dosažení "
 "AMLA se však postupně zvyšuje, proto je často vhodnější pokusit se povýšit "
 "jednotky nižší úrovně."
 
@@ -2259,7 +2257,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:678
-#, fuzzy
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -2330,7 +2327,7 @@ msgstr ""
 
 #: data/core/help.cfg:699
 msgid "Multiplayer commands"
-msgstr "Příkazy pro Hru více hráčů"
+msgstr "Příkazy pro hru více hráčů"
 
 #: data/core/help.cfg:703
 msgid ""
@@ -3973,15 +3970,14 @@ msgstr ""
 "útoku, dokud ona či její nepřítel nepadne v boji."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
 "enemy."
 msgstr ""
 " Pokud právě nějaký spojenec zaměstnává nepřátelskou jednotku, tato jednotka "
-"se může připlížit a napadnout ji nečekaně zezadu, což způsobí dvojnásobná "
-"zranění napadené jednotky."
+"se může připlížit a napadnout ji nečekaně zezadu (z opačné strany), což "
+"způsobí dvojnásobná zranění napadené jednotky."
 
 # pův.: "procitnou "
 #: data/core/macros/special-notes.cfg:62
@@ -4214,7 +4210,6 @@ msgid "race^Drakes"
 msgstr "Drakonidé"
 
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4349,7 +4344,6 @@ msgid "race^Dwarves"
 msgstr "Trpaslíci"
 
 #: data/core/units.cfg:81
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -4460,7 +4454,6 @@ msgid "race^Elves"
 msgstr "Elfové"
 
 #: data/core/units.cfg:94
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -4555,7 +4548,6 @@ msgid "race^Humans"
 msgstr "Lidé"
 
 #: data/core/units.cfg:132
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -4713,7 +4705,6 @@ msgid "race^Orcs"
 msgstr "Skřeti"
 
 #: data/core/units.cfg:211
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans.  They are warlike, savage, and cruel by nature. "
@@ -4837,7 +4828,6 @@ msgid "race^Trolls"
 msgstr "Trollové"
 
 #: data/core/units.cfg:226
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -4922,7 +4912,6 @@ msgstr "Nemrtví"
 
 # Ten původní první odstaves je fakt slabý ... pořád se to opakuje dokola.
 #: data/core/units.cfg:246
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -7625,10 +7614,10 @@ msgstr "Neznámý věk: $era_id"
 msgid "Unknown era"
 msgstr "Neznámý věk"
 
+# jako že nezačala teď, ale dřív, byla přerušena a teď je načtená a pokračuje
 #: src/multiplayer_lobby.cpp:456
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Načtení uložené hry"
+msgstr "Načtená hra"
 
 #: src/multiplayer_lobby.cpp:469
 msgid "Remote scenario"
@@ -7646,13 +7635,13 @@ msgstr "Neznámý scénář"
 msgid "Turn "
 msgstr "Kolo"
 
+# nebylo by jednodušší jenom "prázdné pozice"?
 #: src/multiplayer_lobby.cpp:500
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Prázdná pozice:"
-msgstr[1] "Prázdná pozice:"
-msgstr[2] "Prázdná pozice:"
+msgstr[1] "Prázdné pozice:"
+msgstr[2] "Prázdných pozic:"
 
 #: src/multiplayer_lobby.cpp:503 src/multiplayer_lobby.cpp:752
 msgid "Password Required"
@@ -8260,6 +8249,3 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
-
-#~ msgid "Vacant Slots:"
-#~ msgstr "Prázdné pozice:"
