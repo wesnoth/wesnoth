@@ -1046,7 +1046,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				if(amount_drained > 0) {
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
-					if (update_display_){
+					if (update_display_ && preferences::show_combat()){
 						gui_.float_label(a_->first,buf,0,255,0);
 					}
 					a_->second.heal(amount_drained);
