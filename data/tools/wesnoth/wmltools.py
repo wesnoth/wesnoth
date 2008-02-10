@@ -62,15 +62,19 @@ def isresource(filename):
 
 def formaltype(f):
     # Deduce the expected type of the formal
-    if f in ("SIDE", "X", "Y"):
+    if f in ("SIDE", "X", "Y", "AMOUNT", "RED", "GREEN", "BLUE", "NUMBER", "TURN", "RADIUS"):
         ftype = "numeric"
-    elif f in ("XSPAN", "YSPAN", "SPAN"):
+    elif f in ("POSITION",):
+        ftype = "position"
+    elif f in ("XSPAN", "YSPAN"):
         ftype = "span"
     elif f in ("RANGE",):
         ftype = "range"
-    elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION", "TERRAIN"):
+    elif f in ("NAME", "VAR"):
+        ftype = "name"
+    elif f in ("TYPE", "DESCRIPTION", "USER_DESCRIPTION", "TERRAIN", "TEXT"):
         ftype = "string"
-    elif f.endswith("IMAGE"):
+    elif f.endswith("IMAGE") or f == "PROFILE":
         ftype = "image"
     elif f in ("FILTER",):
         ftype = "filter"
@@ -82,6 +86,8 @@ def actualtype(a):
     # Deduce the type of the actual
     if a.isdigit() or a.startswith("-") and a[1:].isdigit():
         atype = "numeric"
+    elif re.match(r"[0-9]+,[0-9]+\Z", a):
+        atype = "position"
     elif re.match(r"([0-9]+\-[0-9]+,?|[0-9]+,?)+\Z", a):
         atype = "span"
     elif a in ("melee", "ranged"):
@@ -90,8 +96,12 @@ def actualtype(a):
         atype = None	# Can't tell -- it's a macro expansion
     elif a.endswith(".png") or a.endswith(".jpg"):
         atype = "image"
+    elif a.startswith('"') and a.endswith('"'):
+        atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
+    elif not ' ' in a:
+        atype = "name"
     else:
         atype = "string"
     return atype
@@ -106,9 +116,9 @@ def argmatch(formals, actuals):
         # in which a more restricted actual type matches a more general
         # formal one.  Then we have a fallback rule checking for type
         # equality or wildcarding.
-        if atype == "numeric" and ftype == "span":
+        if atype in ("numeric", "position") and ftype == "span":
             pass
-        elif atype == "image" and ftype == "string":
+        elif atype in ("name", "stringliteral") and ftype == "string":
             pass
         elif atype != ftype and ftype is not None and atype is not None:
             return False
