@@ -1033,6 +1033,9 @@ void server::process_data_game(const network::connection sock, const config& dat
 		return;
 // Everything below should only be processed if the game is already intialized.
 	} else if (!g->level_init()) {
+		WRN_SERVER << "Received unknown data from: " << pl->second.name() 
+			<< " (socket:" << sock
+			<< ") while the scenario wasn't yet initialized.\n" << data;
 		return;
 	// If the host is sending the next scenario data.
 	} else if (data.child("store_next_scenario")) {
@@ -1204,10 +1207,12 @@ void server::process_data_game(const network::connection sock, const config& dat
 		return;
 	} else if (data.child("message")) {
 		g->process_message(data, pl);
+		return;
 	// Data to store and broadcast.
 	} else if (data.child("stop_updates")) {
 //		if (g->started()) g->record_data(data);
 		g->send_data(data, sock);
+		return;
 	// Data to ignore.
 	} else if (data.child("error")
 	|| data.child("side_secured")
