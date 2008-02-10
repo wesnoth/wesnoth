@@ -625,6 +625,7 @@ bool unit_animation::crude_animation::need_update() const
 unit_animation::crude_animation::crude_animation(
 	const config& cfg, const std::string frame_string ) :
 		animated<unit_frame>(),
+		accelerate(true),
 		offset_(),
 		halo_(),
 		halo_x_(),
