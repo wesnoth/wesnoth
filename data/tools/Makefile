@@ -35,6 +35,10 @@ utils-unused:
 # opaque macros that trying to reference-check them is hopeless.
 # So suppress reporting them unused even if they seem to have
 # no references.
+images-unused:
+	@echo "# Report on unused images"
+	@./wmlscope --crossreference --from images --refcount 0 --force-used "terrain/" $(MAINLINE) $(UMC)
+
 all-unused:
 	@echo "# Report on unused resource files"
 	@./wmlscope --crossreference --refcount 0 --force-used "terrain/" $(MAINLINE) $(UMC)

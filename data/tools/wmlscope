@@ -235,7 +235,7 @@ Usage: macroscope [options] dirpath
     -C, --collisions             Report duplicate resource files   
     -d, --deflist                Make definition list
     -e regexp, --exclude regexp  Ignore files matching the specified regular expression
-    -f dir, --from dir           Report only on macros defined under dir
+    -f regexp, --from regexp     Report only on things defined in files matching regexp
     -l, --listfiles              List files that will be processed
     -r ddd, --refcount=ddd       Report only on macros w/references in ddd files
     -u, --unresolved             Report unresolved macro references
@@ -338,7 +338,7 @@ Usage: macroscope [options] dirpath
             print n
     elif crossreference or definitions or listfiles or unresolved:
         def predicate(name, defloc):
-            if from_restrict and not defloc.filename.startswith(from_restrict):
+            if from_restrict and not re.search(from_restrict, defloc.filename):
                 return False
             if refcount_restrict!=None \
                    and len(defloc.references) != refcount_restrict \
