@@ -104,7 +104,17 @@ if TINYGUI
 	  *) if [ $$imageheight -gt $$imagewidth ]; then max=`expr $$imageheight / 2`; else max=`expr $$imagewidth / 2`; fi ;\
 	     dstsize=$${max}x$${max} ;; \
 	  esac ; \
-	  convert -size $$dstsize -resize $$dstsize "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	  file=`basename "$$p"`; \
+	  file "$$d$$p" | egrep "(RGBA|alpha)" >/dev/null 2>&1 && {\
+	 	  convert -separate -channel A -filter point -size $$dstsize -resize $$dstsize "$$d$$p" "tmp_A_$$file"; \
+		  convert -separate -channel R -size $$dstsize -resize $$dstsize "$$d$$p" "tmp_R_$$file"; \
+		  convert -separate -channel G -size $$dstsize -resize $$dstsize "$$d$$p" "tmp_G_$$file"; \
+		  convert -separate -channel B -size $$dstsize -resize $$dstsize "$$d$$p" "tmp_B_$$file"; \
+		  convert -channel RGBA -combine "tmp_R_$$file" "tmp_G_$$file" "tmp_B_$$file" "tmp_A_$$file" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+		  rm "tmp_R_$$file" "tmp_G_$$file" "tmp_B_$$file" "tmp_A_$$file"; \
+	  } || { \
+	  	convert -size $$dstsize -resize $$dstsize "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	  } \
 	done
 endif
 endif
