@@ -62,9 +62,9 @@ def isresource(filename):
 
 def formaltype(f):
     # Deduce the expected type of the formal
-    if f in ("SIDE",):
+    if f in ("SIDE", "X", "Y"):
         ftype = "numeric"
-    elif f in ("X", "Y", "SPAN"):
+    elif f in ("XSPAN", "YSPAN", "SPAN"):
         ftype = "span"
     elif f in ("RANGE",):
         ftype = "range"
