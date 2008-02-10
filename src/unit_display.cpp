@@ -125,7 +125,9 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 
 	const unit_map& units = disp->get_units();
 
-	disp->scroll_to_tiles(path);
+	// Scroll to the path, but only if it fully fits onto the screen.
+	// If it does not fit we might be able to do a better scroll later.
+	disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true);
 
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
@@ -140,6 +142,17 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 				temp_unit.invisible(path[i+1],units,teams);
 
 		if(!invisible) {
+			if (!disp->tile_on_screen(path[i]) || !disp->tile_on_screen(path[i+1])) {
+				// prevent the unit from dissappearing if we scroll here with i == 0
+				disp->place_temporary_unit(temp_unit,path[i]);
+				// scroll in as much of the remaining path as possible
+				std::vector<gamemap::location> remaining_path;
+				for(size_t j = i; j < path.size(); j++) {
+					remaining_path.push_back(path[j]);
+				}
+				disp->scroll_to_tiles(remaining_path);
+			}
+
 			if( !tiles_adjacent(path[i], path[i+1])) {
 				teleport_unit_between(path[i],path[i+1],temp_unit);
 			} else {
@@ -193,7 +206,8 @@ void unit_attack(
 	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b);
 
 	if(!hide) {
-		disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
+		// scroll such that there is at least half a hex spacing around fighters
+		disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.5);
 	}
 
 	log_scope("unit_attack");

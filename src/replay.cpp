@@ -1053,11 +1053,6 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 			rt->second.steps.push_back(dst);
 
-			if(!get_replay_source().is_skipping() && unit_display::unit_visible_on_path(rt->second.steps,u->second,units,teams)) {
-
-				disp.scroll_to_tiles(src,dst);
-			}
-
 			if(!get_replay_source().is_skipping()) {
 				unit_display::move_unit(rt->second.steps,u->second,teams);
 			}

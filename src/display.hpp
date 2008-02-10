@@ -301,14 +301,23 @@ public:
 
 	//! Scroll such that location loc1 is on-screen.
 	//! It will also try to make it such that loc2 is on-screen,
-	//! but this is not guaranteed.
-	void scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
+	//! but this is not guaranteed. For ONSCREEN scrolls add_spacing
+	//! sets the desired minimum distance from the border in hexes.
+	void scroll_to_tiles(gamemap::location loc1, gamemap::location loc2,
+	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
+			     double add_spacing=0.0);
+
+	//! Scroll to fit as many locations on-screen as possible, starting with the first.
 	void scroll_to_tiles(const std::vector<gamemap::location>& locs,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
+	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
+	                     bool only_if_possible=false,
+			     double add_spacing=0.0);
 
 	//! Expose the event, so observers can be notified about map scrolling.
 	events::generic_event &scroll_event() const { return _scroll_event; }
+
+	//! Check if a tile is fully on screen.
+	bool tile_on_screen(const gamemap::location& loc);
 
 	//! Draws invalidated items.
 	//! If update is true, will also copy the display to the frame buffer.
@@ -367,6 +376,8 @@ protected:
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
+
+	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type);
 
 	CVideo& screen_;
 	const gamemap& map_;

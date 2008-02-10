@@ -1422,28 +1422,22 @@ void display::set_default_zoom()
 	}
 }
 
-void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
+bool display::tile_on_screen(const gamemap::location& loc)
 {
-	if(screen_.update_locked() || (check_fogged && fogged(loc))) {
-		return;
-	}
+	int x = get_location_x(loc);
+	int y = get_location_y(loc);
+	return !outside_area(map_area(), x, y);
+}
 
-	if(map_.on_board(loc) == false) {
-		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.\n";
-		return;
-	}
-
-	// Current position of target (upper left tile corner) in screen coordinates
-	const int screenxpos = get_location_x(loc);
-	const int screenypos = get_location_y(loc);
-
-	if (scroll_type == ONSCREEN && !outside_area(map_area(),screenxpos,screenypos)) {
+void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type)
+{
+	if(screen_.update_locked()) {
 		return;
 	}
 
 	const SDL_Rect area = map_area();
-	const int xmove_expected = screenxpos - (area.x + area.w/2 - zoom_/2);
-	const int ymove_expected = screenypos - (area.y + area.h/2 - zoom_/2);
+	const int xmove_expected = screenxpos - (area.x + area.w/2);
+	const int ymove_expected = screenypos - (area.y + area.h/2);
 
 	int xpos = xpos_ + xmove_expected;
 	int ypos = ypos_ + ymove_expected;
@@ -1517,76 +1511,160 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 	}
 }
 
-void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
-                              SCROLL_TYPE scroll_type, bool check_fogged)
+void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
 {
-	const int xpos1 = get_location_x(loc1);
-	const int ypos1 = get_location_y(loc1);
-	const int xpos2 = get_location_x(loc2);;
-	const int ypos2 = get_location_y(loc2);;
-
-	const int minx = minimum<int>(xpos1,xpos2);
-	const int maxx = maximum<int>(xpos1,xpos2);
-	const int miny = minimum<int>(ypos1,ypos2);
-	const int maxy = maximum<int>(ypos1,ypos2);
-	const int diffx = maxx - minx;
-	const int diffy = maxy - miny;
-
-	// If rectangle formed by corners loc1 and loc2
-	// is larger than map area, then just scroll to loc1.
-	if(diffx > map_area().w || diffy > map_area().h) {
-		if(!check_fogged || !fogged(loc1)) {
-			scroll_to_tile(loc1,scroll_type,check_fogged);
-		} else if(!fogged(loc2)) {
-			scroll_to_tile(loc2,scroll_type,check_fogged);
-		} else {
-			// we check fog, and both location are fogged => don't do anything
-		}
-		
-	} else {
-		// Only scroll if rectangle is not completely inside map area.
-		// Assume most paths are within rectangle.
-		// Sometimes with rugged terrain this is not true -- but use
-		// common cases to determine behaviour instead of exceptions.
-		if (outside_area(map_area(),minx,miny) ||
-		    outside_area(map_area(),maxx,maxy)) {
-			if(!check_fogged || ( !fogged(loc1) && !fogged(loc2))) {
-				// Scroll to middle point of rectangle
-				if (scroll_type == ONSCREEN) {
-					// note: on-screen check was already done unconditionally
-					// We also have to scroll if the middle point already is on-screen.
-					scroll_type = SCROLL;
-				}
-				scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,false);
-			} else if(!fogged(loc1)) {
-				scroll_to_tile(loc1,scroll_type,check_fogged);
-			} else if(!fogged(loc2)) {
-				scroll_to_tile(loc2,scroll_type,check_fogged);
-			} else {
-				// we check fog, and both location are fogged => don't do anything
-			}
-		} // else don't scroll, rectangle is already on screen
+	if(map_.on_board(loc) == false) {
+		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.\n";
+		return;
 	}
+
+	std::vector<gamemap::location> locs;
+	locs.push_back(loc);
+	scroll_to_tiles(locs, scroll_type, check_fogged);
 }
 
+void display::scroll_to_tiles(gamemap::location loc1, gamemap::location loc2,
+                              SCROLL_TYPE scroll_type, bool check_fogged,
+			      double add_spacing)
+{
+	std::vector<gamemap::location> locs;
+	locs.push_back(loc1);
+	locs.push_back(loc2);
+	scroll_to_tiles(locs, scroll_type, check_fogged, false, add_spacing);
+}
 
 void display::scroll_to_tiles(const std::vector<gamemap::location>& locs,
-                              SCROLL_TYPE scroll_type, bool check_fogged)
+                              SCROLL_TYPE scroll_type, bool check_fogged,
+			      bool only_if_possible, double add_spacing)
 {
-	gamemap::location min_loc,max_loc;
+	// basically we calculate the min/max coordinates we want to have on-screen
+	int minx = 0;
+	int maxx = 0;
+	int miny = 0;
+	int maxy = 0;
+	bool valid = false;
+	bool first_tile_on_screen = false;
+
 	for(std::vector<gamemap::location>::const_iterator itor = locs.begin(); itor != locs.end() ; itor++) {
+		if(map_.on_board(*itor) == false) continue;
 		if(check_fogged && fogged(*itor)) continue;
-		if(!min_loc.valid()) min_loc = *itor;
-		if(!max_loc.valid()) max_loc = *itor;
-		min_loc.x = minimum<int>(min_loc.x,itor->x);
-		min_loc.y = minimum<int>(min_loc.y,itor->y);
-		max_loc.x = maximum<int>(max_loc.x,itor->x);
-		max_loc.y = maximum<int>(max_loc.y,itor->y);
+
+		int x = get_location_x(*itor);
+		int y = get_location_y(*itor);
+
+		if (!valid) {
+			minx = x;
+			maxx = x;
+			miny = y;
+			maxy = y;
+			valid = true;
+			first_tile_on_screen = !outside_area(map_area(), x, y);
+		} else {
+			int minx_new = minimum<int>(minx,x);
+			int miny_new = minimum<int>(miny,y);
+			int maxx_new = maximum<int>(maxx,x);
+			int maxy_new = maximum<int>(maxy,y);
+			SDL_Rect r = map_area();
+			r.x = minx_new;
+			r.y = miny_new;
+			if(outside_area(r, maxx_new, maxy_new)) {
+				// we cannot fit all locations to the screen
+				if (only_if_possible) return;
+				break;
+			}
+			minx = minx_new;
+			miny = miny_new;
+			maxx = maxx_new;
+			maxy = maxy_new;
+			
+		}
 	}
-	//if everything is fogged
-	if(!min_loc.valid()) return;
-	scroll_to_tiles(min_loc,max_loc,scroll_type,false);
+	//if everything is fogged or the locs list is empty
+	if(!valid) return;
+
+	if (scroll_type == ONSCREEN) {
+		SDL_Rect r = map_area();
+		int spacing = round_double(add_spacing*hex_size());
+		r.x += spacing;
+		r.y += spacing;
+		r.w -= 2*spacing;
+		r.h -= 2*spacing;
+		if (!outside_area(r, minx,miny) && !outside_area(r, maxx,maxy)) {
+			return;
+		}
+	}
+
+	// let's do "normal" rectangle math from now on
+	SDL_Rect locs_bbox;
+	locs_bbox.x = minx;
+	locs_bbox.y = miny;
+	locs_bbox.w = maxx - minx + hex_size();
+	locs_bbox.h = maxy - miny + hex_size();
+
+	// target the center
+	int target_x = locs_bbox.x + locs_bbox.w/2;
+	int target_y = locs_bbox.y + locs_bbox.h/2;
+
+	if (scroll_type == ONSCREEN) {
+		// when doing an ONSCREEN scroll we do not center the target unless needed
+		SDL_Rect r = map_area(); 
+		int map_center_x = r.x + r.w/2;
+		int map_center_y = r.y + r.h/2;
+
+		int h = r.h;
+		int w = r.w;
+
+		// we do not want to be only inside the screen rect, but center a bit more
+		double inside_frac = 0.5; // 0.0 = always center the target, 1.0 = scroll the minimum distance
+		w *= inside_frac;
+		h *= inside_frac;
+
+		// shrink the rectangle by the size of the locations rectangle we found
+		// such that the new task to fit a point into a rectangle instead of rectangle into rectangle
+		w -= locs_bbox.w;
+		h -= locs_bbox.h;
+
+		if (w < 1) w = 1;
+		if (h < 1) h = 1;
+
+		r.x = target_x - w/2;
+		r.y = target_y - h/2;
+		r.w = w;
+		r.h = h;
+
+		// now any point within r is a possible target to scroll to
+		// we take the one with the minimum distance to map_center
+		// which will always be at the border of r
+
+		if (map_center_x < r.x) {
+			target_x = r.x;
+			target_y = map_center_y;
+			if (target_y < r.y) target_y = r.y;
+			if (target_y > r.y+r.h-1) target_y = r.y+r.h-1;
+		} else if (map_center_x > r.x+r.w-1) {
+			target_x = r.x+r.w-1;
+			target_y = map_center_y;
+			if (target_y < r.y) target_y = r.y;
+			if (target_y >= r.y+r.h) target_y = r.y+r.h-1;
+		} else if (map_center_y < r.y) {
+			target_y = r.y;
+			target_x = map_center_x;
+			if (target_x < r.x) target_x = r.x;
+			if (target_x > r.x+r.w-1) target_x = r.x+r.w-1;
+		} else if (map_center_y > r.y+r.h-1) {
+			target_y = r.y+r.h-1;
+			target_x = map_center_x;
+			if (target_x < r.x) target_x = r.x;
+			if (target_x > r.x+r.w-1) target_x = r.x+r.w-1;
+		} else {
+			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all...\n";
+			// keep the target at the center
+		}
+	}
+
+	scroll_to_xy(target_x, target_y,scroll_type);
 }
+
 
 void display::bounds_check_position()
 {
