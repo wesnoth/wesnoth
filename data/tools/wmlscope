@@ -157,6 +157,18 @@ class CrossRefLister(CrossRef):
             defloc = self.fileref[name]
             if not pred or pred(name, defloc):
                 print name
+    def unchecked(self, fp):
+        "List all macro definitions with untyped formals."
+        unchecked_latch = False
+        sorted = self.xref.keys()
+        sorted.sort()
+        for name in sorted:
+            for defn in self.xref[name]:
+                if None in map(formaltype, defn.args):
+                    if not unchecked_latch:
+                        print "# Macros with untyped formals:"
+                        unchecked_latch = True
+                    print "%s: %s(%s)" % (defn, name, ", ".join(defn.args))
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
@@ -227,6 +239,7 @@ Usage: macroscope [options] dirpath
     -w, --warnlevel              Set to 1 to warn of duplicate macro definitions
     --forced-used regexp         Ignore refcount 0 on names matching regexp
     --extracthelp                Extract help from macro definition comments.
+    --unchecked                  Report all macros with untyped formals.
    Options may be followed by any number of directiories to check.  If no
    directories are given, all files under the current directory are checked.
 """)
@@ -244,6 +257,7 @@ Usage: macroscope [options] dirpath
         				  'help',
                                           'listfiles',
                                           'refcount=',
+                                          'unchecked',
                                           'unresolved',
                                           'warnlevel=',
                                           ])
@@ -254,6 +268,7 @@ Usage: macroscope [options] dirpath
     exclude = []
     warnlevel = 0
     collisions = False
+    unchecked = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -277,6 +292,8 @@ Usage: macroscope [options] dirpath
             listfiles = True
         elif switch in ('-r', '--refcount'):
             refcount_restrict = int(val)
+        elif switch == '--unchecked':
+            unchecked = True
         elif switch in ('-u', '--unresolved'):
             unresolved = True
         elif switch in ('-w', '--warnlevel'):
@@ -293,6 +310,8 @@ Usage: macroscope [options] dirpath
     xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel)
     if extracthelp:
         xref.extracthelp(dirpath[0], sys.stdout)
+    elif unchecked:
+        xref.unchecked(sys.stdout)
     elif listfiles:
         for filename in xref.filelist.generator():
             print filename

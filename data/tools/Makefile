@@ -23,6 +23,10 @@ unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
 	@./wmlscope --unresolved $(MAINLINE) $(UMC)
 
+unchecked:
+	@echo "# Report on unchecked macro calls and resource references"
+	@./wmlscope --unchecked $(MAINLINE) $(UMC)
+
 all:
 	@echo "# Report on usage of all macros and resources"
 	@./wmlscope --crossreference $(MAINLINE) $(UMC)
