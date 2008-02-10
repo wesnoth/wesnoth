@@ -66,13 +66,13 @@ def formaltype(f):
         ftype = "numeric"
     elif f in ("POSITION",):
         ftype = "position"
-    elif f in ("XSPAN", "YSPAN"):
+    elif f.endswith("_SPAN"):
         ftype = "span"
     elif f in ("RANGE",):
         ftype = "range"
-    elif f in ("NAME", "VAR", "IMAGESTEM", "ID"):
+    elif f in ("NAME", "VAR", "IMAGESTEM", "ID") or f.endswith("_NAME"):
         ftype = "name"
-    elif f in ("TYPE", "TERRAIN", "TEXT"):
+    elif f in ("STRING", "TYPE", "TERRAIN", "TEXT"):
         ftype = "string"
     elif f in ("DESCRIPTION", "USER_DESCRIPTION",):
         ftype = "optional_string"
@@ -82,7 +82,7 @@ def formaltype(f):
         ftype = "sound"
     elif f in ("FILTER", "ACTION"):
         ftype = "filter"
-    elif f in ("WML_FRAGMENT",):
+    elif f.endswith("_WML"):
         ftype = "wml"
     elif f in ("VALUE",):
         ftype = "any"
