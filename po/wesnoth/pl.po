@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-03 17:22+0100\n"
-"PO-Revision-Date: 2008-01-18 15:40+0100\n"
+"PO-Revision-Date: 2008-02-08 20:24+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Animacja mapy"
 
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Animacje bezczynności jednostek"
 
 #: data/_main.cfg:64
 msgid "Show Combat"
@@ -293,9 +293,8 @@ msgid "Bots"
 msgstr "Boty"
 
 #: data/core/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
 #: data/core/help.cfg:10 data/core/help.cfg:69
 msgid "Introduction"
@@ -1136,7 +1135,6 @@ msgstr ""
 "awansu."
 
 #: data/core/help.cfg:262
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1160,8 +1158,8 @@ msgstr ""
 "wymagany poziom doświadczenia, jednak jednostka pozostaje na tym samym "
 "poziomie. Typowym wpływem APOP na jednostkę jest podniesienie maksymalnej "
 "liczby PŻ o 3 i pełne uzdrowienie. Pierwszy APOP jest na ogół osiągany po "
-"zdobyciu 100PD (80PD w przypadku jednostek inteligentnych). Zdobywanie "
-"kolejnych awansów jest jednak coraz trudniejsze i często bardziej korzystne "
+"zdobyciu 150PD (120PD w przypadku jednostek inteligentnych). Zdobywanie "
+"kolejnych awansów jest jednak coraz trudniejsze i na ogół bardziej korzystne "
 "jest awansowanie jednostek na niższych poziomach."
 
 #: data/core/help.cfg:267
@@ -2294,7 +2292,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:678
-#, fuzzy
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -4006,7 +4003,6 @@ msgstr ""
 "przeciwnika do momentu, gdy zostanie zabita lub go pokona."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
@@ -4231,7 +4227,7 @@ msgstr "Nietoperz"
 
 #: data/core/units.cfg:44
 msgid "race+female^Bat"
-msgstr "Nietoperz"
+msgstr "Nietoperzyca"
 
 #: data/core/units.cfg:45
 msgid "race^Bats"
@@ -4243,7 +4239,7 @@ msgstr "Smok"
 
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
-msgstr "Smok"
+msgstr "Smoczyca"
 
 #: data/core/units.cfg:54
 msgid "race^Drakes"
@@ -4321,7 +4317,7 @@ msgstr "Krasnolud"
 
 #: data/core/units.cfg:75
 msgid "race+female^Dwarf"
-msgstr "Krasnolud"
+msgstr "Krasnoludka"
 
 #: data/core/units.cfg:76
 msgid "race^Dwarves"
@@ -4384,7 +4380,7 @@ msgstr "Elf"
 
 #: data/core/units.cfg:90
 msgid "race+female^Elf"
-msgstr "Elf"
+msgstr "Elfka"
 
 #: data/core/units.cfg:91
 msgid "race^Elves"
@@ -4426,7 +4422,7 @@ msgstr "Goblin"
 
 #: data/core/units.cfg:104
 msgid "race+female^Goblin"
-msgstr "Goblin"
+msgstr "Goblinka"
 
 #: data/core/units.cfg:105
 msgid "race^Goblins"
@@ -4438,7 +4434,7 @@ msgstr "Gryf"
 
 #: data/core/units.cfg:114
 msgid "race+female^Gryphon"
-msgstr "Gryf"
+msgstr "Gryfitka"
 
 #: data/core/units.cfg:115
 msgid "race^Gryphons"
@@ -4503,7 +4499,7 @@ msgstr "Jaszczur"
 
 #: data/core/units.cfg:140
 msgid "race+female^Saurian"
-msgstr "Jaszczur"
+msgstr "Jaszczurzyca"
 
 #: data/core/units.cfg:141
 msgid "race^Saurians"
@@ -4555,7 +4551,7 @@ msgstr "Ogr"
 
 #: data/core/units.cfg:190
 msgid "race+female^Ogre"
-msgstr "Ogr"
+msgstr "Ogrzyca"
 
 #: data/core/units.cfg:191
 msgid "race^Ogres"
@@ -4567,7 +4563,7 @@ msgstr "Ork"
 
 #: data/core/units.cfg:200
 msgid "race+female^Orc"
-msgstr "Ork"
+msgstr "Orczyca"
 
 #: data/core/units.cfg:201
 msgid "race^Orcs"
@@ -4638,7 +4634,7 @@ msgstr "Troll"
 
 #: data/core/units.cfg:219
 msgid "race+female^Troll"
-msgstr "Troll"
+msgstr "Trollica"
 
 #: data/core/units.cfg:220
 msgid "race^Trolls"
@@ -4684,7 +4680,7 @@ msgstr ""
 
 #: data/core/units.cfg:238
 msgid "race^Undead"
-msgstr "Nieumarli"
+msgstr "Nieumarły"
 
 #: data/core/units.cfg:239
 msgid "race+female^Undead"
@@ -7392,9 +7388,8 @@ msgid "Unknown era"
 msgstr "Nieznana era"
 
 #: src/multiplayer_lobby.cpp:456
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Wczytaj zapisaną grę"
+msgstr "Gra wczytana ponownie"
 
 #: src/multiplayer_lobby.cpp:469
 msgid "Remote scenario"
@@ -7413,12 +7408,11 @@ msgid "Turn "
 msgstr "Tura "
 
 #: src/multiplayer_lobby.cpp:500
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Wolne miejsce:"
-msgstr[1] "Wolne miejsce:"
-msgstr[2] "Wolne miejsce:"
+msgstr[1] "Wolne miejsca:"
+msgstr[2] "Wolnych miejsc:"
 
 #: src/multiplayer_lobby.cpp:503 src/multiplayer_lobby.cpp:752
 msgid "Password Required"
@@ -7915,11 +7909,11 @@ msgstr "Pobierz stworzone przez użytkowników kampanie, ery lub zestawy map"
 
 #: src/titlescreen.cpp:370
 msgid "Change the language"
-msgstr "Pozwala wybrać język gry"
+msgstr "Wybór języka gry"
 
 #: src/titlescreen.cpp:371
 msgid "Configure the game's settings"
-msgstr "Pozwala na zmianę ustawień"
+msgstr "Zmiana ustawień gry"
 
 #: src/titlescreen.cpp:372
 msgid "View the credits"
@@ -7927,7 +7921,7 @@ msgstr "Informacje o twórcach gry"
 
 #: src/titlescreen.cpp:373
 msgid "Quit the game"
-msgstr "Wychodzi z gry"
+msgstr "Wyjście z gry"
 
 #: src/titlescreen.cpp:374
 msgid "Show next tip of the day"
