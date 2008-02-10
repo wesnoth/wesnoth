@@ -1317,8 +1317,8 @@ void game_controller::download_campaigns(std::string host)
                     f["name"] = "info.cfg";
                     std::string s;
                     s += "[info]\n";
-                    s += "version=" + versions[index] + "\n";
-                    s += "uploads=" + uploads[index] + "\n";
+                    s += "version=\"" + versions[index] + "\"\n";
+                    s += "uploads=\"" + uploads[index] + "\"\n";
                     s += "[/info]\n";
                     f["contents"] = s;
                     maindir->add_child("file", f);
