@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-01-27 13:24+0100\n"
+"POT-Creation-Date: 2008-02-11 23:06+0100\n"
 "PO-Revision-Date: 2007-08-20 01:10+0600\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -88,99 +88,99 @@ msgstr "Настройки"
 msgid "villages"
 msgstr "деревня"
 
-#: src/editor/editor.cpp:235
+#: src/editor/editor.cpp:236
 msgid "Draw tiles"
 msgstr "Рисовать ячейки"
 
-#: src/editor/editor.cpp:237
+#: src/editor/editor.cpp:238
 msgid "Fill"
 msgstr "Заполнить"
 
-#: src/editor/editor.cpp:239
+#: src/editor/editor.cpp:240
 msgid "Set player's starting position"
 msgstr "Установить начальные позиции игроков"
 
-#: src/editor/editor.cpp:241
+#: src/editor/editor.cpp:242
 msgid "Zoom in"
 msgstr "Увеличить"
 
-#: src/editor/editor.cpp:243
+#: src/editor/editor.cpp:244
 msgid "Zoom out"
 msgstr "Уменьшить"
 
-#: src/editor/editor.cpp:245
+#: src/editor/editor.cpp:246
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/editor/editor.cpp:247
+#: src/editor/editor.cpp:248
 msgid "Redo"
 msgstr "Повторить"
 
-#: src/editor/editor.cpp:249
+#: src/editor/editor.cpp:250
 msgid "Zoom to default view"
 msgstr "Размер по умолчанию"
 
-#: src/editor/editor.cpp:251
+#: src/editor/editor.cpp:252
 msgid "Toggle grid"
 msgstr "Включить сетку"
 
-#: src/editor/editor.cpp:253
+#: src/editor/editor.cpp:254
 msgid "Resize the map"
 msgstr "Изменить размер карты"
 
-#: src/editor/editor.cpp:255
+#: src/editor/editor.cpp:256
 msgid "Flip map"
 msgstr "Перебросить карту"
 
-#: src/editor/editor.cpp:257
+#: src/editor/editor.cpp:258
 msgid "Update transitions"
 msgstr ""
 
-#: src/editor/editor.cpp:259
+#: src/editor/editor.cpp:260
 msgid "Delay transition updates"
 msgstr ""
 
-#: src/editor/editor.cpp:469
+#: src/editor/editor.cpp:470
 msgid "Language"
 msgstr "Язык"
 
-#: src/editor/editor.cpp:470
+#: src/editor/editor.cpp:471
 msgid "Choose your preferred language:"
 msgstr "Выберите предпочтительный язык:"
 
-#: src/editor/editor.cpp:487 src/editor/editor_main.cpp:304
+#: src/editor/editor.cpp:488 src/editor/editor_main.cpp:305
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Битва за Веснот: Редактор карт"
 
-#: src/editor/editor.cpp:515
+#: src/editor/editor.cpp:516
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
-#: src/editor/editor.cpp:526
+#: src/editor/editor.cpp:527
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Карта уже существует. Вы хотите перезаписать её?"
 
-#: src/editor/editor.cpp:549
+#: src/editor/editor.cpp:550
 msgid "None"
 msgstr "нет"
 
-#: src/editor/editor.cpp:554 src/editor/editor.cpp:1434
+#: src/editor/editor.cpp:555 src/editor/editor.cpp:1437
 msgid "Player"
 msgstr "Игрок"
 
-#: src/editor/editor.cpp:558
+#: src/editor/editor.cpp:559
 msgid "Which Player?"
 msgstr "Какой игрок?"
 
-#: src/editor/editor.cpp:559
+#: src/editor/editor.cpp:560
 msgid "Which player should start here?"
 msgstr "Какой игрок должен начинать здесь?"
 
-#: src/editor/editor.cpp:620
+#: src/editor/editor.cpp:621
 msgid "Choose a Map to Load"
 msgstr "Выберите карту для загрузки"
 
-#: src/editor/editor.cpp:624
+#: src/editor/editor.cpp:625
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -188,27 +188,27 @@ msgstr ""
 "Внимание: Недопустимые символы в названии карты. Вы должны сохранить под "
 "другим именем."
 
-#: src/editor/editor.cpp:637 src/editor/editor.cpp:718
+#: src/editor/editor.cpp:638 src/editor/editor.cpp:719
 msgid "The file does not contain a valid map."
 msgstr "Файл не содержит карту."
 
-#: src/editor/editor.cpp:1313
+#: src/editor/editor.cpp:1316
 msgid "Quit Editor"
 msgstr "Выход из редактора"
 
-#: src/editor/editor.cpp:1317
+#: src/editor/editor.cpp:1320
 msgid "Do you want to save the map before quitting?"
 msgstr "Вы хотите сохранить карту перед выходом?"
 
-#: src/editor/editor.cpp:1365
+#: src/editor/editor.cpp:1368
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/editor/editor.cpp:1373
+#: src/editor/editor.cpp:1376
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/editor/editor.cpp:1388
+#: src/editor/editor.cpp:1391
 msgid "Error: Illegal character in filename."
 msgstr "Ошибка: Недопустимые символы в названии файла."
 
@@ -220,13 +220,13 @@ msgstr "Цвет"
 msgid "BG"
 msgstr "Фон"
 
-#: src/editor/map_manip.cpp:205 src/editor/map_manip.cpp:219
-#: src/editor/map_manip.cpp:266 src/editor/map_manip.cpp:282
+#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
+#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
 msgid ""
 "Can't resize the map, the requested size is bigger than the maximum, size="
 msgstr ""
 
-#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
-#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
+#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
+#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
 msgid " maximum="
 msgstr "максимум="
