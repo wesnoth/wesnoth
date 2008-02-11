@@ -182,7 +182,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 		hold_position_(false), 
 		resting_(false),
 		state_(STATE_STANDING),
-		facing_(gamemap::location::NORTH_EAST),
+		facing_(gamemap::location::SOUTH_EAST),
 		flying_(false),
 		anim_(NULL),
 		next_idling_(0),
@@ -207,7 +207,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 
 unit::unit(const game_data& gamedata,const config& cfg,bool use_traits) : movement_(0),
            hold_position_(false), resting_(false), state_(STATE_STANDING),
-           facing_(gamemap::location::NORTH_EAST),
+           facing_(gamemap::location::SOUTH_EAST),
            flying_(false),anim_(NULL),next_idling_(0),frame_begin_time_(0),
            unit_halo_(halo::NO_HALO),unit_anim_halo_(halo::NO_HALO),draw_bars_(false),
            gamedata_(&gamedata), units_(NULL),map_(NULL), gamestatus_(NULL)
@@ -252,7 +252,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t,
            int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
            variation_(variation), gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false),
-           state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
+           state_(STATE_STANDING), facing_(gamemap::location::SOUTH_EAST),draw_bars_(false),
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
 {
 	goto_ = gamemap::location();
@@ -293,7 +293,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 }
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
            variation_(variation),gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
-           state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
+           state_(STATE_STANDING),facing_(gamemap::location::SOUTH_EAST),draw_bars_(false),
            gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
 {
 	goto_ = gamemap::location();
@@ -1232,7 +1232,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	unit_value_ = lexical_cast_default<int>(cfg["value"]);
 
 	facing_ = gamemap::location::parse_direction(cfg["facing"]);
-	if(facing_ == gamemap::location::NDIRECTIONS) facing_ = gamemap::location::NORTH_EAST;
+	if(facing_ == gamemap::location::NDIRECTIONS) facing_ = gamemap::location::SOUTH_EAST;
 
 	recruits_ = utils::split(cfg["recruits"]);
 	if(recruits_.size() == 1 && recruits_.front() == "") {
