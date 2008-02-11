@@ -182,9 +182,10 @@ static PyObject* wrapper_unittype_attacks( wesnoth_unittype* type, PyObject* arg
 	if ( !PyArg_ParseTuple( args, NOVALUE ) )
 		return NULL;
 
-	PyObject* list = PyList_New(type->unit_type_->attacks().size());
-	for ( size_t attack = 0; attack < type->unit_type_->attacks().size(); attack++)
-		PyList_SetItem(list,attack,wrap_attacktype(type->unit_type_->attacks()[attack]));
+	const std::vector<attack_type>& attacks = type->unit_type_->attacks();
+	PyObject* list = PyList_New(attacks.size());
+	for ( size_t attack = 0; attack < attacks.size(); attack++)
+		PyList_SetItem(list,attack,wrap_attacktype(attacks[attack]));
 	return list;
 }
 
