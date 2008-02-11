@@ -49,6 +49,7 @@ Version 1.3.15+svn:
    * fixed an off by one error in [scroll_to]
    * unified the two different max_loop counters and used highest maximum
      (65536).
+   * Fixed abilities filtering to test [filter] allways
  * terrains:
    * added stone bridge terrain over lava and chasms.
  * miscellaneous and bug fixes:
@@ -64,6 +65,7 @@ Version 1.3.15+svn:
    * Added some toys&whisles to unit tests
    * Added networking unit tests
    * Optimized MP chat log building
+   * Optimized tokenizer to speed up loading config files
    * Hide race sections having only units with "hide_help=true"
    * Fixed ai handling of unit without attacking weapons (bug #10886)
    * Optimize roads placing of random map

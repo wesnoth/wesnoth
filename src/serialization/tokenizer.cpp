@@ -23,21 +23,22 @@
 
 #include <iostream>
 #include <sstream>
-#include <list>
 
-tokenizer::tokenizer() :
+tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),
 	lineno_(1),
 	textdomain_(),
 	file_(),
 	tokenstart_lineno_(),
-	token_()
+	token_(),
+	in_(in)
 {
+	next_char_fast();
 }
 
 void tokenizer::skip_comment()
 {
-	this->next_char_fast();
+	next_char_fast();
 	if(current_ != '\n' && current_ != EOF) {
 		if(current_ == 't') {
 			// When the string 'textdomain[ |\t] is matched the rest of the line is
@@ -124,7 +125,7 @@ const token& tokenizer::next_token()
 	for(;;) {
 		while (is_space(current_)) {
 			token_.leading_spaces += current_;
-			this->next_char_fast();
+			next_char_fast();
 		}
 		if (current_ != 254)
 			break;
@@ -154,7 +155,7 @@ const token& tokenizer::next_token()
 			if(current_ == '"' && peek_char() != '"')
 				break;
 			if(current_ == '"' && peek_char() == '"')
-				this->next_char_fast();
+				next_char_fast();
 			if (current_ == 254) {
 				skip_comment();
 				--lineno_;
@@ -173,7 +174,7 @@ const token& tokenizer::next_token()
 			token_.type = token::STRING;
 			token_.value += current_;
 			while(is_alnum(peek_char())) {
-				this->next_char_fast();
+				next_char_fast();
 				token_.value += current_;
 			}
 		} else {
@@ -220,65 +221,4 @@ std::string& tokenizer::textdomain()
 }
 
 
-tokenizer_string::tokenizer_string(std::string& in) :
-	in_(in),
-	offset_(0)
-{
-	this->next_char_fast();
-}
-
-
-tokenizer_stream::tokenizer_stream(std::istream& in) :
-	in_(in)
-{
-	this->next_char_fast();
-}
-
-void tokenizer_stream::next_char_fast()
-{
-	if(LIKELY(in_.good())) {
-		current_ = in_.get();
-		if (UNLIKELY(current_ == '\r'))
-		{
-			// we assume that there is only one '\r'
-			if(LIKELY(in_.good())) {
-				current_ = in_.get();
-			} else {
-				current_ = EOF;
-			}
-		}
-	} else {
-		current_ = EOF;
-	}
-}
-
-int tokenizer_stream::peek_char() const
-{
-	return in_.peek();
-}
-
-
-void tokenizer_string::next_char_fast()
-{
-
-	if(LIKELY(offset_ < in_.size())) {
-		current_ = in_[offset_++];
-		if (UNLIKELY(current_ == '\r'))
-		{
-			if(LIKELY(offset_ < in_.size())) {
-				current_ = in_[offset_++];
-			} else {
-				current_ = EOF;
-			}
-		}
-	} else {
-		current_ = EOF;
-	}
-	
-}
-
-int tokenizer_string::peek_char() const
-{
-	return in_[offset_];
-}
 

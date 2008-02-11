@@ -134,13 +134,16 @@ int preprocessor_streambuf::underflow()
 		// The buffer has been completely read; fill it again.
 		// Keep part of the previous buffer, to ensure putback capabilities.
 		sz = out_buffer_.size();
+		buffer_.str(std::string());
 		if (sz > 3) {
-			out_buffer_ = out_buffer_.substr(sz - 3);
+			buffer_ << out_buffer_.substr(sz - 3);
 			sz = 3;
 		}
-		buffer_.str(std::string());
-		buffer_ << out_buffer_;
-        buffer_size_ = out_buffer_.size();
+		else
+		{
+			buffer_ << out_buffer_;
+		}
+	        buffer_size_ = sz;
 	} else {
 		// The internal get-data pointer is null
 	}
@@ -282,7 +285,8 @@ class preprocessor_data: preprocessor
 	void push_token(char);
 	void pop_token();
 	void put(char);
-	void put(std::string const &);
+	void put(std::string const & /*, int change_line 
+	= 0 */);
 public:
 	preprocessor_data(preprocessor_streambuf &, std::istream *,
 	                  std::string const &history,
@@ -315,9 +319,10 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t,
 bool preprocessor_file::get_chunk()
 {
 	while (pos_ != end_) {
-		std::string const &name = *(pos_++);
+		const std::string &name = *(pos_++);
 		unsigned sz = name.size();
-		if (sz < 5 || !std::equal(name.begin() + sz - 4, name.end(), ".cfg"))
+		// Use reverse iterator to optimize testing
+		if (sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc."))
 			continue;
 		new preprocessor_file(target_, name);
 		return true;
@@ -458,7 +463,7 @@ void preprocessor_data::put(char c)
     target_.buffer_size_ += 1;
 }
 
-void preprocessor_data::put(std::string const &s)
+void preprocessor_data::put(std::string const &s /*, int line_change*/)
 {
 	if (skipping_)
 		return;
@@ -467,9 +472,8 @@ void preprocessor_data::put(std::string const &s)
 		return;
 	}
 	target_.buffer_ << s;
+//	target_.linenum_ += line_change;
     target_.buffer_size_ += s.size();
-	target_.linenum_ += std::count(s.begin(), s.end(), '\n');
-	target_.linenum_ -= std::count(s.begin(), s.end(), '\376');
 }
 
 bool preprocessor_data::get_chunk()
@@ -510,6 +514,7 @@ bool preprocessor_data::get_chunk()
 			buffer += d;
 		}
 		buffer += '\n';
+		// line_change = 1-1 = 0
 		put(buffer);
 	} else if (c == '"') {
 		if (token.type == '"') {

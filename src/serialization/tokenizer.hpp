@@ -58,8 +58,8 @@ struct token
 class tokenizer
 {
 public:
-	tokenizer();
-	virtual ~tokenizer() {}
+	tokenizer(std::istream& in);
+	~tokenizer() {}
 
 	const token& next_token();
 	const token& current_token() const;
@@ -67,18 +67,40 @@ public:
 	std::string& textdomain();
 
 protected:
+	tokenizer();
 	int current_;
 	size_t lineno_;
 
-	void next_char()
+	inline void next_char()
 	{
 		if (UNLIKELY(current_ == '\n'))
 			lineno_++;
 		this->next_char_fast();
 	}
 
-	virtual void next_char_fast() = 0;
-	virtual int peek_char() const = 0;
+	inline void next_char_fast()
+	{
+		if(LIKELY(in_.good())) {
+			current_ = in_.get();
+			if (UNLIKELY(current_ == '\r'))
+			{
+				// we assume that there is only one '\r'
+				if(LIKELY(in_.good())) {
+					current_ = in_.get();
+				} else {
+					current_ = EOF;
+				}
+			}
+		} else {
+			current_ = EOF;
+		}
+	}
+
+	inline int peek_char() const
+	{
+		return in_.peek();
+	}
+
 private:
 	bool is_space(const int c) const;
 	bool is_alnum(const int c) const;
@@ -88,35 +110,8 @@ private:
 	std::string file_;
 	size_t tokenstart_lineno_;
 	token token_;
-};
-
-//! tokenizer which uses an istream as input
-class tokenizer_stream : public tokenizer
-{
-public:
-	tokenizer_stream(std::istream& in);
-
-protected:
-	void next_char_fast();
-	int peek_char() const;
-
-private:
 	std::istream& in_;
 };
 
-//! tokenizer which uses an string as input
-class tokenizer_string : public tokenizer
-{
-public:
-	tokenizer_string(std::string& in);
-
-protected:
-	void next_char_fast();
-	int peek_char() const;
-
-private:
-	std::string& in_;
-	size_t offset_;
-};
 #endif
 

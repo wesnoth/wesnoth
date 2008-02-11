@@ -54,7 +54,6 @@ class parser
 	parser& operator=(const parser&);
 public:
 	parser(config& cfg, std::istream& in);
-	parser(config& cfg, std::string& in);
 	~parser();
 	void operator() (std::string* error_log=NULL);
 
@@ -90,17 +89,11 @@ private:
 
 parser::parser(config &cfg, std::istream &in) :
 		cfg_(cfg), 
-		tok_(new tokenizer_stream(in)),
+		tok_(new tokenizer(in)),
 		elements()
 {
 }
 
-parser::parser(config &cfg, std::string &in) :
-		cfg_(cfg),
-		tok_(new tokenizer_string(in)),
-		elements()
-{
-}
 
 parser::~parser()
 {
@@ -356,7 +349,8 @@ void read(config &cfg, std::istream &in, std::string* error_log)
 
 void read(config &cfg, std::string &in, std::string* error_log)
 {
-	parser(cfg, in)(error_log);
+	std::stringstream ss(in);
+	parser(cfg, ss)(error_log);
 }
 
 void read_gz(config &cfg, std::istream &file, std::string* error_log)
