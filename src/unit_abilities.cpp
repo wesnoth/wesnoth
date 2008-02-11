@@ -128,9 +128,6 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 		}
 	}
 
-	if(units_== NULL) std::cout<<"ability:"<<ability<<"\n";
-
-
 	assert(units_ && teams_);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -146,7 +143,7 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 		     j_end = list.end(); j != j_end; ++j) {
 			if (unit_abilities::affects_side(**j, *teams_, side(), it->second.side()) &&
 			    it->second.ability_active(ability, **j, adjacent[i]) &&
-			    ability_affects_adjacent(ability, **j, i, loc))
+			    ability_affects_adjacent(ability,  **j, i, loc))
 				return true;
 		}
 	}
@@ -320,6 +317,11 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 {
 	int illuminates = -1;
 	assert(units_ && map_ && gamestatus_);
+	
+	if (const config* afilter = cfg.child("filter"))
+		if (!matches_filter(afilter,loc, cache_illuminates(illuminates, ability)))
+			return false;
+	
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	config::child_list::const_iterator i, i_end;
@@ -365,16 +367,10 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
  * cfg: an ability WML structure
  *
  */
-bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const
+bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const gamemap::location& loc) const
 {
 	int illuminates = -1;
-	if (const config* mfilter = cfg.child("filter"))
-	{
-		if (!matches_filter(mfilter,loc, cache_illuminates(illuminates, ability)))
-		{
-			return false;
-		}
-	}
+	
 	assert(dir >=0 && dir <= 5);
 	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
 	const config::child_list& affect_adj = cfg.get_children("affect_adjacent");
@@ -400,12 +396,7 @@ bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
 	int illuminates = -1;
-	if (config const *filter = cfg.child("filter_self")) {
-		if (!matches_filter(filter, loc, cache_illuminates(illuminates, ability)))
-			return false;
-	}
-
-	config const *filter = cfg.child("filter");
+	config const *filter = cfg.child("filter_self");
 	bool affect_self = utils::string_bool(cfg["affect_self"], true);
 	if (filter == NULL || !affect_self) return affect_self;
 	return matches_filter(filter, loc,cache_illuminates(illuminates, ability));
