@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-03 17:26+0100\n"
+"POT-Creation-Date: 2008-02-11 21:56+0100\n"
 "PO-Revision-Date: 2008-01-12 13:32+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -36,8 +36,8 @@ msgstr ""
 "Blutrausch, während sich das Fell dieser fliegenden Bestien vom Blut ihrer "
 "Gegner rot färbt. Sie sind der Schrecken der schutzlosen Dörfer."
 
-#: data/core/units/bats/Bat_Blood.cfg:172
-#: data/core/units/bats/Bat_Vampire.cfg:171
+#: data/core/units/bats/Bat_Blood.cfg:175
+#: data/core/units/bats/Bat_Vampire.cfg:174
 #: data/core/units/monsters/Wolf.cfg:49
 #: data/core/units/monsters/Cave_Spider.cfg:34
 #: data/core/units/monsters/Sea_Serpent.cfg:26
@@ -184,14 +184,14 @@ msgstr ""
 "weißer Kriegsbemalung, mit der sie in der Schlacht den Tod verbreiten."
 
 #: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
-#: data/core/units/elves/Avenger.cfg:61 data/core/units/elves/Marksman.cfg:53
+#: data/core/units/elves/Avenger.cfg:64 data/core/units/elves/Marksman.cfg:53
 #: data/core/units/elves/Scout.cfg:33 data/core/units/elves/Marshal.cfg:34
-#: data/core/units/elves/Ranger.cfg:58 data/core/units/elves/Outrider.cfg:32
+#: data/core/units/elves/Ranger.cfg:61 data/core/units/elves/Outrider.cfg:32
 #: data/core/units/elves/Archer.cfg:25 data/core/units/elves/Captain.cfg:35
 #: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Lord.cfg:23
 #: data/core/units/elves/High_Lord.cfg:60 data/core/units/elves/Hero.cfg:23
 #: data/core/units/elves/Champion.cfg:24 data/core/units/elves/Fighter.cfg:24
-#: data/core/units/elves/Sharpshooter.cfg:47
+#: data/core/units/elves/Sharpshooter.cfg:50
 #: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:82
 #: data/core/units/drakes/Enforcer.cfg:67
@@ -200,7 +200,7 @@ msgstr ""
 #: data/core/units/drakes/Flameheart.cfg:78
 #: data/core/units/drakes/Blademaster.cfg:68
 #: data/core/units/drakes/Clasher.cfg:77
-#: data/core/units/humans/Woodsman_Ranger.cfg:40
+#: data/core/units/humans/Woodsman_Ranger.cfg:45
 #: data/core/units/humans/Loyalist_Longbowman.cfg:26
 #: data/core/units/humans/Loyalist_General.cfg:43
 #: data/core/units/humans/Loyalist_Sergeant.cfg:34
@@ -878,14 +878,14 @@ msgstr ""
 #: data/core/units/orcs/Sovereign.cfg:42 data/core/units/orcs/Archer.cfg:80
 #: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
 #: data/core/units/orcs/Leader.cfg:43 data/core/units/orcs/Ruler.cfg:41
-#: data/core/units/elves/Avenger.cfg:70 data/core/units/elves/Scout.cfg:42
-#: data/core/units/elves/Marshal.cfg:43 data/core/units/elves/Ranger.cfg:67
+#: data/core/units/elves/Avenger.cfg:73 data/core/units/elves/Scout.cfg:42
+#: data/core/units/elves/Marshal.cfg:43 data/core/units/elves/Ranger.cfg:70
 #: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Archer.cfg:34
 #: data/core/units/elves/Captain.cfg:44 data/core/units/elves/Rider.cfg:43
 #: data/core/units/elves/Hero.cfg:32 data/core/units/elves/Champion.cfg:33
 #: data/core/units/elves/Fighter.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:79
-#: data/core/units/humans/Woodsman_Ranger.cfg:49
+#: data/core/units/humans/Woodsman_Ranger.cfg:54
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
 #: data/core/units/humans/Woodsman.cfg:37
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:36
@@ -898,7 +898,7 @@ msgstr ""
 msgid "bow"
 msgstr "Bogen"
 
-#: data/core/units/elves/Archer.cfg:168
+#: data/core/units/elves/Archer.cfg:171
 msgid "female^Elvish Archer"
 msgstr "Elfenbogenschützin"
 
@@ -930,7 +930,7 @@ msgstr ""
 "der Rache, für die von den Elfen verlorenen Kämpfe. Für die Elfen ist es "
 "einfach nur eine Taktik, die von keinerlei Gefühlen beeinflusst ist."
 
-#: data/core/units/elves/Avenger.cfg:177
+#: data/core/units/elves/Avenger.cfg:180
 msgid "female^Elvish Avenger"
 msgstr "Elfenrächerin"
 
@@ -1010,12 +1010,12 @@ msgstr ""
 #: data/core/units/merfolk/Priestess.cfg:62
 #: data/core/units/merfolk/Enchantress.cfg:24
 #: data/core/units/merfolk/Initiate.cfg:27
-#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:50
-#: data/core/units/humans/Mage_White.cfg:117
+#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:53
+#: data/core/units/humans/Mage_White.cfg:120
 #: data/core/units/humans/Mage_Great.cfg:29
-#: data/core/units/humans/Mage_Silver.cfg:35
+#: data/core/units/humans/Mage_Silver.cfg:36
 #: data/core/units/humans/Mage_Arch.cfg:28
-#: data/core/units/humans/Mage_Red.cfg:50
+#: data/core/units/humans/Mage_Red.cfg:53
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
 msgid "staff"
 msgstr "Stab"
@@ -1174,7 +1174,7 @@ msgstr ""
 "im Schwertkampf fortzubilden."
 
 #: data/core/units/elves/Marksman.cfg:62
-#: data/core/units/elves/Sharpshooter.cfg:56
+#: data/core/units/elves/Sharpshooter.cfg:59
 msgid "longbow"
 msgstr "Langbogen"
 
@@ -1249,7 +1249,7 @@ msgstr ""
 "bewerkstelligen, sind sie mit Schwert und Bogen bestens gewappnet, um jedem "
 "Feind entgegenzutreten."
 
-#: data/core/units/elves/Ranger.cfg:174
+#: data/core/units/elves/Ranger.cfg:177
 msgid "female^Elvish Ranger"
 msgstr "Elfenwaldhüterin"
 
@@ -1339,7 +1339,7 @@ msgstr ""
 "elfischen Scharfschützen die Kunst des Bogenschießens zur Perfektion "
 "gebracht haben."
 
-#: data/core/units/elves/Sharpshooter.cfg:154
+#: data/core/units/elves/Sharpshooter.cfg:157
 msgid "female^Elvish Sharpshooter"
 msgstr "Elfenscharfschützin"
 
@@ -2330,12 +2330,12 @@ msgstr ""
 "trotzdem in der Lage sich in der Not mittels ihrer magischen Fähigkeiten zu "
 "verteidigen."
 
-#: data/core/units/humans/Mage.cfg:59
-#: data/core/units/humans/Mage_Silver.cfg:44
+#: data/core/units/humans/Mage.cfg:62
+#: data/core/units/humans/Mage_Silver.cfg:45
 msgid "missile"
 msgstr "Magiegeschoss"
 
-#: data/core/units/humans/Mage.cfg:163
+#: data/core/units/humans/Mage.cfg:166
 msgid "female^Mage"
 msgstr "Magierin"
 
@@ -2375,7 +2375,7 @@ msgstr ""
 
 #: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:37
-#: data/core/units/humans/Mage_Red.cfg:59
+#: data/core/units/humans/Mage_Red.cfg:62
 msgid "fireball"
 msgstr "Feuerball"
 
@@ -2454,7 +2454,7 @@ msgstr ""
 "Für einen Kampf haben auch diese Magier nie trainiert, doch können sie sich "
 "mit einem gekonnt geschleuderten Feuerball in der Not zur Wehr setzen."
 
-#: data/core/units/humans/Mage_Red.cfg:145
+#: data/core/units/humans/Mage_Red.cfg:148
 msgid "female^Red Mage"
 msgstr "Rote Magierin"
 
@@ -2462,7 +2462,7 @@ msgstr "Rote Magierin"
 msgid "Silver Mage"
 msgstr "Silberner Magier"
 
-#: data/core/units/humans/Mage_Silver.cfg:23
+#: data/core/units/humans/Mage_Silver.cfg:24
 msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
@@ -2471,7 +2471,7 @@ msgstr ""
 "einen besonders hohen Widerstand gegenüber nicht physischen Angriffen "
 "aufweisen."
 
-#: data/core/units/humans/Mage_Silver.cfg:23
+#: data/core/units/humans/Mage_Silver.cfg:24
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2509,7 +2509,7 @@ msgstr ""
 "Straßenräuber verteidigen. Deshalb sind ihre Fähigkeiten von unschätzbarem "
 "Wert in der Schlacht, wenn man sie erstmal dazu bringt, sie einzusetzen."
 
-#: data/core/units/humans/Mage_Silver.cfg:149
+#: data/core/units/humans/Mage_Silver.cfg:150
 msgid "female^Silver Mage"
 msgstr "Silberne Magierin"
 
@@ -2543,11 +2543,11 @@ msgstr ""
 #: data/core/units/merfolk/Priestess.cfg:71
 #: data/core/units/merfolk/Diviner.cfg:74
 #: data/core/units/humans/Mage_of_Light.cfg:107
-#: data/core/units/humans/Mage_White.cfg:126
+#: data/core/units/humans/Mage_White.cfg:129
 msgid "lightbeam"
 msgstr "Heiliges Licht"
 
-#: data/core/units/humans/Mage_White.cfg:261
+#: data/core/units/humans/Mage_White.cfg:264
 msgid "female^White Mage"
 msgstr "Weiße Magierin"
 
@@ -2864,7 +2864,7 @@ msgstr ""
 "kommen, selbst vor unehrenhaften scheuen sie nicht zurück, solange es nur "
 "schnell genug geht."
 
-#: data/core/units/humans/Outlaw_Thief.cfg:357
+#: data/core/units/humans/Outlaw_Thief.cfg:365
 msgid "female^Thief"
 msgstr "Diebin"
 
