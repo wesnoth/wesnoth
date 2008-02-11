@@ -51,7 +51,7 @@ class unit_animation
                 int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); };
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; };
 		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; };
-		void start_animation(int start_time,const gamemap::location &src = gamemap::location::null_location, const gamemap::location &dst = gamemap::location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0, double acceleration=1);
+		void start_animation(int start_time,const gamemap::location &src = gamemap::location::null_location, const gamemap::location &dst = gamemap::location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0);
 		const int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
 		void redraw();
 
@@ -105,7 +105,7 @@ class unit_animation
 			double offset(double default_val =0.0) const;
 			std::pair<std::string,Uint32> text() const ;
 			void redraw( );
-			void start_animation(int start_time,const gamemap::location& src,const  gamemap::location& dst, bool cycles=false, double acceleration=1);
+			void start_animation(int start_time,const gamemap::location& src,const  gamemap::location& dst, bool cycles=false);
 			bool accelerate;
 		private:
 

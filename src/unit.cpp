@@ -1607,7 +1607,7 @@ void unit::start_animation(const int start_time, const gamemap::location &loc,co
 	if(anim_) delete anim_;
 	anim_ = new unit_animation(*animation);
 	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
-	anim_->start_animation(real_start_time,loc, loc.get_direction(facing_), cycles,text,text_color, disp->turbo_speed());
+	anim_->start_animation(real_start_time,loc, loc.get_direction(facing_), cycles,text,text_color);
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp->idle_anim()) {
 		next_idling_ = get_current_animation_tick()

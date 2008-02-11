@@ -727,9 +727,9 @@ int unit_animation::get_begin_time() const
 	return result;
 }
 
-void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, const std::string text, const Uint32 text_color, double acceleration)
+void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, const std::string text, const Uint32 text_color)
 {
-	unit_anim_.start_animation(start_time, src, dst, cycles,acceleration);
+	unit_anim_.start_animation(start_time, src, dst, cycles);
 	if(!text.empty()) {
 		crude_animation crude_build;
 		crude_build.add_frame(1,unit_frame());
@@ -738,7 +738,7 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 	}
 	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		anim_itor->second.start_animation(start_time,src,dst,cycles,acceleration);
+		anim_itor->second.start_animation(start_time,src,dst,cycles);
 	}
 }
 void unit_animation::redraw()
@@ -847,11 +847,11 @@ unit_animation::crude_animation::~crude_animation()
 
 void unit_animation::crude_animation::start_animation(int start_time,
 	const gamemap::location &src, const gamemap::location &dst, 
-	bool cycles, double acceleration)
+	bool cycles)
 {
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
-	animated<unit_frame>::start_animation(start_time,cycles,acceleration);
+	animated<unit_frame>::start_animation(start_time,cycles);
 	last_frame_begin_time_ = get_begin_time() -1;
 	if(src != gamemap::location::null_location || dst != gamemap::location::null_location) {
 		src_ = src;

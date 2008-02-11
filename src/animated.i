@@ -39,7 +39,6 @@ int get_current_animation_tick()
 	return current_ticks;
 }
 
-extern int animation_debug;
 template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
 
@@ -92,14 +91,13 @@ void animated<T,T_void_value>::add_frame(int duration, const T& value,bool force
 }
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::start_animation(int start_time, bool cycles, double acceleration)
+void animated<T,T_void_value>::start_animation(int start_time, bool cycles)
 {
 	started_ = true;
 	last_update_tick_ = current_ticks;
-	acceleration_ = acceleration;
+	acceleration_ = 1.0; //assume acceleration is 1, this will be fixed at first update_last_draw_time
 	start_tick_ =  last_update_tick_ +
         static_cast<int>(( starting_frame_time_ - start_time)/acceleration_);
-        //if(animation_debug) printf("clock %d starting sft %d st %d acc %f\n",SDL_GetTicks(),starting_frame_time_,start_tick_,acceleration_);
 
 	cycles_ = cycles;
 	if(acceleration_ <=0) acceleration_ = 1;
@@ -112,11 +110,11 @@ template<typename T,  typename T_void_value>
 void animated<T,T_void_value>::update_last_draw_time(double acceleration)
 {
         if (acceleration > 0 && acceleration_ != acceleration) {
-                int tmp = tick_to_time(start_tick_);
+                int tmp = tick_to_time(last_update_tick_);
                 acceleration_ = acceleration;
-                start_tick_ = time_to_tick(tmp);
+                start_tick_ =  last_update_tick_ +
+                        static_cast<int>(( starting_frame_time_ - tmp)/acceleration_);
         }
-        //if(animation_debug) printf("%s clock %d time %d sft %d st %d acc %f\n",__FUNCTION__,SDL_GetTicks(),last_update_tick_,starting_frame_time_,start_tick_,acceleration_);
 	last_update_tick_ = current_ticks;
 	if (need_first_update_) {
 		need_first_update_ = false;

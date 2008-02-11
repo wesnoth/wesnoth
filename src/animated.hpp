@@ -53,7 +53,7 @@ public:
 	//! Starts an animation cycle.
 	//! The first frame of the animation to start may be set
 	//! to any value by using a start_time different to 0.
-	void start_animation(int start_time, bool cycles=false, double acceleration=1);
+	void start_animation(int start_time, bool cycles=false);
 
 	int get_begin_time() const;
 	int get_end_time() const;
