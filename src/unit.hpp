@@ -113,12 +113,12 @@ public:
 	bool incapacitated() const { return utils::string_bool(get_state("stoned"),false); }
 	const std::vector<std::string>& recruits() const { return recruits_; }
 	int total_movement() const { return max_movement_; }
-	int movement_left() const { return incapacitated() ? 0 : movement_; }
+	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
 	void set_hold_position(bool value) { hold_position_ = value; }
 	bool hold_position() const { return hold_position_; }
 	void set_user_end_turn(bool value=true) { end_turn_ = value; }
 	bool user_end_turn() const { return end_turn_; }
-	int attacks_left() const { return incapacitated() ? 0 : attacks_left_; }
+	int attacks_left() const { return (attacks_left_ == 0 || incapacitated()) ? 0 : attacks_left_; }
 	void set_movement(int moves);
 	void set_attacks(int left) { attacks_left_ = maximum<int>(0,minimum<int>(left,max_attacks_)); }
 	void unit_hold_position() { hold_position_ = end_turn_ = true; }
@@ -131,7 +131,7 @@ public:
 			set_standing( loc);
 			return;
 		}
-		if (state_ != STATE_STANDING || incapacitated() || (get_current_animation_tick() < next_idling_)) return;
+		if (state_ != STATE_STANDING || (get_current_animation_tick() < next_idling_) || incapacitated()) return;
 		if (get_current_animation_tick() > next_idling_ + 1000) { // prevent all units animating at the same
 			set_standing(loc);
 		} else {
@@ -150,7 +150,7 @@ public:
 
 	bool has_moved() const { return movement_left() != total_movement(); }
 	bool has_goto() const { return get_goto().valid(); }
-	int emits_zoc() const { return (incapacitated()) ? false : emit_zoc_; }
+	int emits_zoc() const { return emit_zoc_ && !incapacitated();}
 	/* cfg: standard unit filter */
 	bool matches_filter(const vconfig& cfg,const gamemap::location& loc,bool use_flat_tod=false) const;
 	void add_overlay(const std::string& overlay) { overlays_.push_back(overlay); }
