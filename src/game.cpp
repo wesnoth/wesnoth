@@ -755,7 +755,7 @@ bool game_controller::load_game()
 			return false;
 		}
 
-		state_ = game_state(units_data_,cfg);
+		state_ = game_state(units_data_, cfg, show_replay);
 
 		if(state_.version != game_config::version) {
 			// do not load if too old, if either the savegame or the current game
@@ -2228,8 +2228,7 @@ static int play_game(int argc, char** argv)
 	
 	//YogiHH:
 	//init_config already processed the configs, so we don't need to do it for the
-	//first loop pass. If for any reason calling reset_game_cfg is of any use then
-	//take back the comments.
+	//first loop pass.
 	for(int first_time = true;;first_time = false){
 		if (!first_time){
 			//make sure the game config is always set to how it should be at the title screen

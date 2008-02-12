@@ -88,6 +88,8 @@ struct player_info
 	                                   //!< of the two. 
 	std::vector<unit> available_units; //!< Units the player may recall 
 	std::set<std::string> can_recruit; //!< Units the player has the ability to recruit 
+	
+	void debug();
 };
 
 class game_state : public variable_set
@@ -120,7 +122,7 @@ public:
 		{}
 
 	game_state(const game_state& state);
-	game_state(const game_data& data, const config& cfg);
+	game_state(const game_data& data, const config& cfg, bool show_replay = false);
 
 	~game_state();
 	game_state& operator=(const game_state& state);

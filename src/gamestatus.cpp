@@ -426,7 +426,7 @@ static player_info read_player(const game_data& data, const config* cfg)
 	return res;
 }
 
-game_state::game_state(const game_data& data, const config& cfg) :
+game_state::game_state(const game_data& data, const config& cfg, bool show_replay) :
 		label(cfg["label"]),
 		version(cfg["version"]),
 		campaign_type(cfg["campaign_type"]),
@@ -460,7 +460,7 @@ game_state::game_state(const game_data& data, const config& cfg) :
 	// We have to load era id for MP games so they can load correct era.
 	
 
-	if (snapshot != NULL && !snapshot->empty()) {
+	if ((snapshot != NULL) && (!snapshot->empty()) && (!show_replay)) {
 
 		this->snapshot = *snapshot;
 
@@ -470,7 +470,7 @@ game_state::game_state(const game_data& data, const config& cfg) :
 		load_recall_list(data, snapshot->get_children("player"));
 
 	} else {
-		// Start of scenario save and MP campaign network next scenario 
+		// Start of scenario save, replays and MP campaign network next scenario 
 		// have the recall list stored in root of the config.
 		load_recall_list(data, cfg.get_children("player"));
 	}
@@ -1253,6 +1253,17 @@ void game_state::set_menu_items(const config::child_list& menu_items) {
 			WRN_NG << "duplicate menu item (" << id << ") while loading gamestate\n";
 		}
 	}
+}
+
+void player_info::debug(){
+	LOG_NG << "Debugging player\n";
+	LOG_NG << "\tName: " << name << "\n";
+	LOG_NG << "\tGold: " << gold << "\n";
+	LOG_NG << "\tAvailable units:\n";
+	for (std::vector<unit>::const_iterator u = available_units.begin(); u != available_units.end(); u++){
+		LOG_NG << "\t\t" + u->description() + "\n";
+	}
+	LOG_NG << "\tEnd available units\n";
 }
 
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) : 
