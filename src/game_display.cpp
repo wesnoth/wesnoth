@@ -259,7 +259,7 @@ void game_display::invalidate_unit_after_move(const gamemap::location& src, cons
 	}
 }
 
-void game_display::scroll_to_leader(unit_map& units, int side)
+void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scroll_type)
 {
 	const unit_map::iterator leader = find_leader(units,side);
 
@@ -269,7 +269,7 @@ void game_display::scroll_to_leader(unit_map& units, int side)
 		/*
 		const hotkey::basic_handler key_events_handler(gui_);
 		*/
-		scroll_to_tile(leader->first, ONSCREEN);
+		scroll_to_tile(leader->first, scroll_type);
 	}
 }
 

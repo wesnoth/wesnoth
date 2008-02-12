@@ -128,7 +128,7 @@ void replay_controller::init_gui(){
 	if (show_team_)
 		gui_->set_team(show_team_ - 1, show_everything_);
 
-	gui_->scroll_to_leader(units_, player_number_);
+	gui_->scroll_to_leader(units_, player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		t->reset_objectives_changed();
@@ -194,7 +194,10 @@ void replay_controller::stop_replay(){
 void replay_controller::replay_next_turn(){
 	is_playing_ = true;
 	play_turn();
-	gui_->scroll_to_leader(units_, player_number_);
+
+ 	if (!skip_replay_){
+		gui_->scroll_to_leader(units_, player_number_);
+	}
 	is_playing_ = false;
 	gui::button* b = gui_->find_button("button-nextturn");
 	if (b != NULL) { b->release(); }
@@ -209,7 +212,9 @@ void replay_controller::replay_next_side(){
 		current_turn_++;
 	}
 
-	gui_->scroll_to_leader(units_, player_number_);
+	if (!skip_replay_) {
+		gui_->scroll_to_leader(units_, player_number_);
+	}
 
 	is_playing_ = false;
 	gui::button* b = gui_->find_button("button-nextside");

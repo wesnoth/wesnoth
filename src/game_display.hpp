@@ -58,7 +58,7 @@ public:
 
 	//! Scrolls to the leader of a certain side.
 	//! This will normally be the playing team.
-	void scroll_to_leader(unit_map& units, int side);
+	void scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scroll_type = ONSCREEN);
 
 	//! Draw for the game display has to know about units
 	void draw(bool update=true,bool force=false);
