@@ -451,11 +451,10 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 			if(level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
-				if (games_.back().reloaded) {
-					games_.back().map_info += " - ";
-					games_.back().map_info += _("Reloaded game");
-					verified = false;
-				} else if (map_hashes_) {
+				// reloaded games do not match the original scenario hash,
+				// so it makes no sense to test them, they always would appear
+				// as remote scenarios
+				if (map_hashes_ && !games_.back().reloaded) {
 					const std::string& hash = (**game)["hash"];
 					bool hash_found = false;
 					for(string_map::const_iterator i = map_hashes_->values.begin(); i != map_hashes_->values.end(); ++i) {
@@ -478,6 +477,11 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 		} else {
 			games_.back().map_info += _("Unknown scenario");
+			verified = false;
+		}
+		if (games_.back().reloaded) {
+			games_.back().map_info += " - ";
+			games_.back().map_info += _("Reloaded game");
 			verified = false;
 		}
 		games_.back().id = (**game)["id"];
