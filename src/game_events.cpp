@@ -1439,7 +1439,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "terrain") {
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
 
-		std::string terrain_type = cfg["letter"];
+		std::string terrain_type = cfg["terrain"];
+		// FIXME: Remove this in 1.5
+		if (terrain_type.empty())
+		  terrain_type = cfg["letter"];
 		assert(state_of_game != NULL);
 
 		t_translation::t_letter terrain = t_translation::read_letter(terrain_type);
