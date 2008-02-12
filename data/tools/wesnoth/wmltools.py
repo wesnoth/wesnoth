@@ -71,11 +71,11 @@ def formaltype(f):
         ftype = "span"
     elif f in ("RANGE",):
         ftype = "range"
-    elif f in ("LETTER",):
+    elif f in ("TERRAIN",):
         ftype = "terrain_code"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID") or f.endswith("_NAME"):
         ftype = "name"
-    elif f in ("STRING", "TYPE", "TERRAIN", "TEXT"):
+    elif f in ("STRING", "TYPE", "TEXT"):
         ftype = "string"
     elif f in ("DESCRIPTION", "USER_DESCRIPTION",):
         ftype = "optional_string"
@@ -107,7 +107,7 @@ def actualtype(a):
         atype = None	# Can't tell -- it's a macro expansion
     elif re.match(image_reference, a):
         atype = "image"
-    elif re.match(r"[A-Z][a-z]+\^[A-Z][a-z]+\Z", a):
+    elif re.match(r"[A-Z][a-z]+\^[A-Z][a-z\\|/]+\Z", a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
