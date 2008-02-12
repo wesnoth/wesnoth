@@ -1496,6 +1496,17 @@ start_time=-150
             image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
             lines[i] = m.group(1) + image_block % (m.group(2), "ranged")
             modcount += 1
+    # In [terrain], letter= to terrain=
+    in_terrain = False
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if "[terrain]" in lines[i]:
+            in_terrain = True
+        if "[/terrain]" in lines[i]:
+            in_terrain = False
+        if in_terrain:
+            lines[i] = lines[i].replace("letter", "terrain")
     # More syntax transformations would go here.
     return (lines, modcount)
 
