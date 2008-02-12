@@ -54,7 +54,8 @@ class preprocessor
 	int old_linenum_;
 protected:
 	preprocessor_streambuf &target_;
-	preprocessor(preprocessor_streambuf &);
+	std::vector<std::string> *called_macros_;
+	preprocessor(preprocessor_streambuf &, std::vector<std::string> *);
 public:
 	virtual bool get_chunk() = 0;
 	virtual ~preprocessor();
@@ -205,12 +206,13 @@ void preprocessor_streambuf::error(const std::string& error_type, const std::str
  * and when it is deleted, it will manage the stream 
  * to cause the previous scope to resume.
  */
-preprocessor::preprocessor(preprocessor_streambuf &t) :
+preprocessor::preprocessor(preprocessor_streambuf &t, std::vector<std::string> *callstack) :
 	old_preprocessor_(t.current_),
 	old_textdomain_(t.textdomain_),
 	old_location_(t.location_),
 	old_linenum_(t.linenum_),
-	target_(t)
+	target_(t),
+	called_macros_(callstack)
 {
 	++target_.depth_;
 	target_.current_ = this;
@@ -257,7 +259,7 @@ class preprocessor_file: preprocessor
 	std::vector< std::string > files_;
 	std::vector< std::string >::const_iterator pos_, end_;
 public:
-	preprocessor_file(preprocessor_streambuf &, std::string const &);
+	preprocessor_file(preprocessor_streambuf &, std::vector<std::string> *, std::string const &);
 	virtual bool get_chunk();
 };
 
@@ -274,8 +276,9 @@ class preprocessor_data: preprocessor
 	std::string directory_;
 	std::vector< std::string > strings_;
 	std::vector< token_desc > tokens_;
+	bool is_macro;
 	int slowpath_, //! @todo FIXME: add explanation of this variable
-		skipping_, //FIXME: add explanation of this variable
+		skipping_, //will get set to true when skipping text(e.g. #ifdef that evaluates to false)
 		linenum_;
 
 	std::string read_word();
@@ -288,16 +291,20 @@ class preprocessor_data: preprocessor
 	void put(std::string const & /*, int change_line 
 	= 0 */);
 public:
-	preprocessor_data(preprocessor_streambuf &, std::istream *,
+	preprocessor_data(preprocessor_streambuf &, 
+                      std::vector<std::string> *,
+                      std::istream *,
 	                  std::string const &history,
 	                  std::string const &name, int line,
-	                  std::string const &dir, std::string const &domain);
+	                  std::string const &dir, std::string const &domain,
+                      std::string* = NULL);
+    ~preprocessor_data();
 	virtual bool get_chunk();
 };
 
-preprocessor_file::preprocessor_file(preprocessor_streambuf &t,
+preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::vector<std::string> *callstack,
 		std::string const &name) :
-	preprocessor(t),
+	preprocessor(t,callstack),
 	files_(),
 	pos_(),
 	end_()
@@ -305,7 +312,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t,
 	if (is_directory(name))
 		get_files_in_dir(name, &files_, NULL, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DO_REORDER);
 	else
-		new preprocessor_data(t, istream_file(name), "", name, 1, directory_name(name), t.textdomain_);
+		new preprocessor_data(t, called_macros_, istream_file(name), "", name, 1, directory_name(name), t.textdomain_);
 	pos_ = files_.begin();
 	end_ = files_.end();
 }
@@ -324,16 +331,16 @@ bool preprocessor_file::get_chunk()
 		// Use reverse iterator to optimize testing
 		if (sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc."))
 			continue;
-		new preprocessor_file(target_, name);
+		new preprocessor_file(target_, called_macros_, name);
 		return true;
 	}
 	return false;
 }
 
-preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
-		std::string const &history, std::string const &name, int linenum, 
-		std::string const &directory, std::string const &domain) :
-	preprocessor(t), 
+preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::vector<std::string> *callstack, 
+        std::istream *i, std::string const &history, std::string const &name, int linenum, 
+		std::string const &directory, std::string const &domain, std::string *symbol) :
+	preprocessor(t,callstack), 
 	in_(i), 
 	directory_(directory),
 	strings_(),
@@ -342,6 +349,16 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
 	skipping_(0), 
 	linenum_(linenum)
 {
+    if(symbol!=NULL)
+    {
+        is_macro=true;
+        called_macros_->push_back(*symbol);
+    }
+    else
+    {
+        is_macro=false;
+    }
+    
 	std::ostringstream s;
 
 	s << history;
@@ -364,6 +381,14 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
 	t.buffer_size_ += t.location_.size() + domain.size() + fixed_char_count;
 
 	push_token('*');
+}
+
+preprocessor_data::~preprocessor_data()
+{
+    if(is_macro)
+    {
+        called_macros_->pop_back();
+    }
 }
 
 void preprocessor_data::push_token(char t)
@@ -698,6 +723,19 @@ bool preprocessor_data::get_chunk()
 			preproc_map::const_iterator macro = target_.defines_->find(symbol),
 			                            unknown_macro = target_.defines_->end();
 			if (macro != unknown_macro) {
+			    
+			    for(std::vector<std::string>::iterator iter=called_macros_->begin(); iter!=called_macros_->end(); ++iter)
+			    {
+			        if(*iter==symbol)
+			        {
+                        std::ostringstream error;
+                        error << "symbol '" << symbol << "' will cause a recursive macro call";
+                        std::ostringstream location;
+                        location<<linenum_<<' '<<target_.location_;
+                        target_.error(error.str(), location.str());
+			        }
+			    }
+			    
 				preproc_define const &val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				if (nb_arg != val.arguments.size()) {
@@ -783,16 +821,16 @@ bool preprocessor_data::get_chunk()
 				std::string const &dir = directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
 					DBG_CF << "substituting macro " << symbol << '\n';
-					new preprocessor_data(target_, buffer, val.location, "",
-					                      val.linenum, dir, val.textdomain);
+					new preprocessor_data(target_, called_macros_, buffer, val.location, "",
+					                      val.linenum, dir, val.textdomain, &symbol);
 				} else {
 					DBG_CF << "substituting (slow) macro " << symbol << '\n';
 					std::ostringstream res;
 					preprocessor_streambuf *buf =
 						new preprocessor_streambuf(target_);
 					{	std::istream in(buf);
-						new preprocessor_data(*buf, buffer, val.location, "",
-						                      val.linenum, dir, val.textdomain);
+						new preprocessor_data(*buf, called_macros_, buffer, val.location, "",
+						                      val.linenum, dir, val.textdomain, &symbol);
 						res << in.rdbuf(); }
 					delete buf;
 					strings_.back() += res.str();
@@ -838,13 +876,13 @@ bool preprocessor_data::get_chunk()
 					&& newfilename.find("/../") == std::string::npos)
 				{
 					if (!slowpath_)
-						new preprocessor_file(target_, nfname);
+						new preprocessor_file(target_, called_macros_, nfname);
 					else {
 						std::ostringstream res;
 						preprocessor_streambuf *buf =
 							new preprocessor_streambuf(target_);
 						{	std::istream in(buf);
-							new preprocessor_file(*buf, nfname);
+							new preprocessor_file(*buf, called_macros_, nfname);
 							res << in.rdbuf(); }
 						delete buf;
 						strings_.back() += res.str();
@@ -904,7 +942,8 @@ std::istream *preprocess_file(std::string const &fname,
 		defines = owned_defines;
 	}
 	preprocessor_streambuf *buf = new preprocessor_streambuf(defines, error_log);
-	new preprocessor_file(*buf, fname);
+	std::vector<std::string> *callstack=new std::vector<std::string>;
+	new preprocessor_file(*buf, callstack, fname);
 	if(error_log!=NULL&&error_log->empty()==false)
 		throw preproc_config::error("Error preprocessing files.");
 	return new preprocessor_deleter(buf, owned_defines);
