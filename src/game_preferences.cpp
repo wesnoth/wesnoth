@@ -45,7 +45,7 @@ bool message_private_on = true;
 bool haloes = true;
 
 std::set<std::string> encountered_units_set;
-std::set<t_translation::t_letter> encountered_terrains_set;
+std::set<t_translation::t_terrain> encountered_terrains_set;
 
 //! Add a nick to the specified relation setting.
 void add_relation(const std::string nick, const std::string relation) {
@@ -668,7 +668,7 @@ std::set<std::string> &encountered_units() {
 	return encountered_units_set;
 }
 
-std::set<t_translation::t_letter> &encountered_terrains() {
+std::set<t_translation::t_terrain> &encountered_terrains() {
 	return encountered_terrains_set;
 }
 
@@ -722,7 +722,7 @@ void encounter_recallable_units(game_state& gamestate){
 void encounter_map_terrain(gamemap& map){
 	for (int map_x = 0; map_x < map.w(); map_x++) {
 		for (int map_y = 0; map_y < map.h(); map_y++) {
-			const t_translation::t_letter t = map.get_terrain(gamemap::location(map_x, map_y));
+			const t_translation::t_terrain t = map.get_terrain(gamemap::location(map_x, map_y));
 			preferences::encountered_terrains().insert(t);
 		}
 	}

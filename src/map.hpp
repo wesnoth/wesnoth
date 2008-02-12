@@ -48,9 +48,9 @@ public:
 	// The underlying terrain is the name of the terrain for game-logic purposes. 
 	// I.e. if the terrain is simply an alias, the underlying terrain name 
 	// is the name of the terrain that it's aliased to.
-	const t_translation::t_list& underlying_mvt_terrain(t_translation::t_letter terrain) const;
-	const t_translation::t_list& underlying_def_terrain(t_translation::t_letter terrain) const;
-	const t_translation::t_list& underlying_union_terrain(t_translation::t_letter terrain) const;
+	const t_translation::t_list& underlying_mvt_terrain(t_translation::t_terrain terrain) const;
+	const t_translation::t_list& underlying_def_terrain(t_translation::t_terrain terrain) const;
+	const t_translation::t_list& underlying_union_terrain(t_translation::t_terrain terrain) const;
 
 	//! Throws exception if the map file is not in the correct format.
 	struct incorrect_format_exception {
@@ -120,13 +120,13 @@ public:
 	const t_translation::t_list& underlying_union_terrain(const location& loc) const
 		{ return underlying_union_terrain(get_terrain(loc)); }
 
-	bool is_village(t_translation::t_letter terrain) const
+	bool is_village(t_translation::t_terrain terrain) const
 		{ return get_terrain_info(terrain).is_village(); }
-	int gives_healing(t_translation::t_letter terrain) const
+	int gives_healing(t_translation::t_terrain terrain) const
 		{ return get_terrain_info(terrain).gives_healing(); }
-	bool is_castle(t_translation::t_letter terrain) const
+	bool is_castle(t_translation::t_terrain terrain) const
 		{ return get_terrain_info(terrain).is_castle(); }
-	bool is_keep(t_translation::t_letter terrain) const
+	bool is_keep(t_translation::t_terrain terrain) const
 		{ return get_terrain_info(terrain).is_keep(); }
 
 	bool is_village(const location& loc) const
@@ -169,14 +169,14 @@ public:
 	int total_width()  const { return total_width_; }
 	int total_height() const { return total_height_; }
 
-	const t_translation::t_letter operator[](const gamemap::location& loc) const
+	const t_translation::t_terrain operator[](const gamemap::location& loc) const
 		{ return tiles_[loc.x + border_size_][loc.y + border_size_]; }
 
 	//! Looks up terrain at a particular location. 
 	//! Hexes off the map may be looked up, 
 	//! and their 'emulated' terrain will also be returned.
 	//! This allows proper drawing of the edges of the map.
-	t_translation::t_letter get_terrain(const location& loc) const;
+	t_translation::t_terrain get_terrain(const location& loc) const;
 
 	//! Writes the terrain at loc to cfg.
 	void write_terrain(const gamemap::location &loc, config& cfg) const;
@@ -204,7 +204,7 @@ public:
 
 	//! Get the corresponding terrain_type information object
 	//! for a given type of terrain.
-	const terrain_type& get_terrain_info(const t_translation::t_letter terrain) const;
+	const terrain_type& get_terrain_info(const t_translation::t_terrain terrain) const;
 
 	//! Shortcut to get_terrain_info(get_terrain(loc)).
 	const terrain_type& get_terrain_info(const location &loc) const
@@ -215,11 +215,11 @@ public:
 		{ return terrainList_; }
 
 	//! Clobbers over the terrain at location 'loc', with the given terrain.
-	void set_terrain(const location& loc, const t_translation::t_letter terrain);
+	void set_terrain(const location& loc, const t_translation::t_terrain terrain);
 
 	//! Returns a list of the frequencies of different terrain types on the map, 
 	//! with terrain nearer the center getting weighted higher.
-	const std::map<t_translation::t_letter, size_t>& get_weighted_terrain_frequencies() const;
+	const std::map<t_translation::t_terrain, size_t>& get_weighted_terrain_frequencies() const;
 	//! Remove the cached border terrain at loc. 
 	//! Needed by the editor to make tiles at the border update correctly 
 	//! when drawing other tiles.
@@ -260,11 +260,11 @@ private:
 		{ return tiles_[index + border_size_]; }
 
 	t_translation::t_list terrainList_;
-	std::map<t_translation::t_letter, terrain_type> letterToTerrain_;
+	std::map<t_translation::t_terrain, terrain_type> letterToTerrain_;
 	std::vector<location> villages_;
 
-	mutable std::map<location, t_translation::t_letter> borderCache_;
-	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;
+	mutable std::map<location, t_translation::t_terrain> borderCache_;
+	mutable std::map<t_translation::t_terrain, size_t> terrainFrequencyCache_;
 
 	//! Sizes of the map area.
 	int w_;

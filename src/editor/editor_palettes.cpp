@@ -34,7 +34,7 @@
 
 namespace map_editor {
 
-bool is_invalid_terrain(t_translation::t_letter c) {
+bool is_invalid_terrain(t_translation::t_terrain c) {
 	return (c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 
@@ -215,17 +215,17 @@ void terrain_palette::set_group(const std::string& id)
 	scroll_top();
 }
 
-t_translation::t_letter terrain_palette::selected_fg_terrain() const
+t_translation::t_terrain terrain_palette::selected_fg_terrain() const
 {
 	return selected_fg_terrain_;
 }
 
-t_translation::t_letter terrain_palette::selected_bg_terrain() const
+t_translation::t_terrain terrain_palette::selected_bg_terrain() const
 {
 	return selected_bg_terrain_;
 }
 
-void terrain_palette::select_fg_terrain(t_translation::t_letter terrain)
+void terrain_palette::select_fg_terrain(t_translation::t_terrain terrain)
 {
 	if (selected_fg_terrain_ != terrain) {
 		set_dirty();
@@ -234,7 +234,7 @@ void terrain_palette::select_fg_terrain(t_translation::t_letter terrain)
 	}
 }
 
-void terrain_palette::select_bg_terrain(t_translation::t_letter terrain)
+void terrain_palette::select_bg_terrain(t_translation::t_terrain terrain)
 {
 	if (selected_bg_terrain_ != terrain) {
 		set_dirty();
@@ -252,7 +252,7 @@ void terrain_palette::update_selected_terrains(void)
 	update_report();
 }
 
-std::string terrain_palette::get_terrain_string(const t_translation::t_letter t)
+std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t)
 {
 	std::stringstream str;
 	const std::string& name = map_.get_terrain_info(t).name();
@@ -370,7 +370,7 @@ void terrain_palette::draw(bool force) {
 	const SDL_Rect &loc = location();
 	int y = terrain_start_;
 	for(unsigned int counter = starting; counter < ending; counter++){
-		const t_translation::t_letter terrain = terrains_[counter];
+		const t_translation::t_terrain terrain = terrains_[counter];
 		const std::string filename = "terrain/" + map_.get_terrain_info(terrain).editor_image() + ".png";
 		surface image(image::get_image(filename));
 		if(image == NULL) {

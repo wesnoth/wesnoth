@@ -181,7 +181,7 @@ namespace preferences {
 	bool compress_saves();
 
 	std::set<std::string> &encountered_units();
-	std::set<t_translation::t_letter> &encountered_terrains();
+	std::set<t_translation::t_terrain> &encountered_terrains();
 
 	std::string client_type();
 

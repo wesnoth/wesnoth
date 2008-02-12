@@ -66,10 +66,10 @@ private:
             loc.x < static_cast<long>(width_) &&
             loc.y < static_cast<long>(height_); }
 
-	void set_terrain(gamemap::location loc, t_translation::t_letter t);
+	void set_terrain(gamemap::location loc, t_translation::t_terrain t);
 	void place_castle(const std::string& side, gamemap::location loc);
 
-	t_translation::t_letter wall_, clear_, village_, castle_, keep_;
+	t_translation::t_terrain wall_, clear_, village_, castle_, keep_;
 	t_translation::t_map map_;
 	std::map<int, t_translation::coordinate> starting_positions_;
 

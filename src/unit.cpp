@@ -1650,7 +1650,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	const int xdst = disp.get_location_x(dst);
 	const int ydst = disp.get_location_y(dst);
 
-	const t_translation::t_letter terrain = map.get_terrain(loc);
+	const t_translation::t_terrain terrain = map.get_terrain(loc);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
 	const double submerge = is_flying() ? 0.0 : terrain_info.unit_submerge();
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
@@ -1947,11 +1947,11 @@ int unit::upkeep() const
 	return lexical_cast_default<int>(cfg_["upkeep"]);
 }
 
-int unit::movement_cost_internal(const t_translation::t_letter terrain, const int recurse_count) const
+int unit::movement_cost_internal(const t_translation::t_terrain terrain, const int recurse_count) const
 {
 	const int impassable = 10000000;
 
-	const std::map<t_translation::t_letter,int>::const_iterator i =
+	const std::map<t_translation::t_terrain,int>::const_iterator i =
 	movement_costs_.find(terrain);
 
 	if(i != movement_costs_.end()) {
@@ -1987,7 +1987,7 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 			}
 		}
 
-		movement_costs_.insert(std::pair<t_translation::t_letter, int>(terrain, ret_value));
+		movement_costs_.insert(std::pair<t_translation::t_terrain, int>(terrain, ret_value));
 		return ret_value;
 	}
 
@@ -2011,11 +2011,11 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 		res = impassable;
 	}
 
-	movement_costs_.insert(std::pair<t_translation::t_letter, int>(terrain,res));
+	movement_costs_.insert(std::pair<t_translation::t_terrain, int>(terrain,res));
 	return res;
 }
 
-int unit::movement_cost(const t_translation::t_letter terrain) const
+int unit::movement_cost(const t_translation::t_terrain terrain) const
 {
 	const int res = movement_cost_internal(terrain, 0);
 	if(utils::string_bool(get_state("slowed"))) {
@@ -2024,7 +2024,7 @@ int unit::movement_cost(const t_translation::t_letter terrain) const
 	return res;
 }
 
-int unit::defense_modifier(t_translation::t_letter terrain, int recurse_count) const
+int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) const
 {
 //	const std::map<terrain_type::TERRAIN,int>::const_iterator i = defense_mods_.find(terrain);
 //	if(i != defense_mods_.end()) {

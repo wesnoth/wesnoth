@@ -131,7 +131,7 @@ public:
 	virtual void edit_update();
 	virtual void edit_auto_update();
 
-	void perform_flood_fill(const t_translation::t_letter fill_with);
+	void perform_flood_fill(const t_translation::t_terrain fill_with);
 	void perform_paste();
 	void perform_set_starting_pos();
 
@@ -200,7 +200,7 @@ private:
 
 	/// Draw terrain at a location. The operation is saved in the undo
 	/// stack. Update the map to reflect the change.
-	void draw_terrain(const t_translation::t_letter terrain,
+	void draw_terrain(const t_translation::t_terrain terrain,
 					  const gamemap::location hex);
 
 
@@ -235,7 +235,7 @@ private:
 
 	/// Commit hexes filling.
 	void perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
-		const t_translation::t_letter terrain, map_undo_action &undo_action);
+		const t_translation::t_terrain terrain, map_undo_action &undo_action);
 	
 	/// Commit the movement of a selection.
 	void perform_selection_move();
@@ -286,7 +286,7 @@ private:
 
 	/// Draw the terrain on the hexes the mouse is over, taking account
 	/// for brush size.
-	void draw_on_mouseover_hexes(const t_translation::t_letter t);
+	void draw_on_mouseover_hexes(const t_translation::t_terrain t);
 
 	// Load the tooltips for each button
 	void load_tooltips(void);
@@ -295,10 +295,10 @@ private:
 	/// offset. When pasting stuff, the offset is used to calculate
 	/// where to put the pasted hex
 	struct buffer_item {
-		buffer_item(const gamemap::location &o, t_translation::t_letter t, int start_side) :
+		buffer_item(const gamemap::location &o, t_translation::t_terrain t, int start_side) :
 			offset(o), terrain(t), starting_side(start_side) {}
 		gamemap::location offset;
-		t_translation::t_letter terrain;
+		t_translation::t_terrain terrain;
 		int starting_side;
 	};
 
@@ -354,7 +354,7 @@ private:
 	static config hotkeys_;
 	static bool first_time_created_;
 	static LEFT_BUTTON_FUNC l_button_func_;
-	static t_translation::t_letter old_fg_terrain_, old_bg_terrain_;
+	static t_translation::t_terrain old_fg_terrain_, old_bg_terrain_;
 	static int old_brush_size_;
 	bool all_hexes_selected_;
 

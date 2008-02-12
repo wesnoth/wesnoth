@@ -87,7 +87,7 @@ protected:
 						const location& src = range.first->second;
 						const unit_map::const_iterator un = get_info().units.find(src);
 
-						const t_translation::t_letter terrain = get_info().map.get_terrain(dst);
+						const t_translation::t_terrain terrain = get_info().map.get_terrain(dst);
 
 						const int chance_to_hit = un->second.defense_modifier(terrain);
 
@@ -1416,10 +1416,10 @@ bool ai::move_to_targets(std::map<gamemap::location, paths>& possible_moves,
 int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
 	int weighting_sum = 0, defense = 0;
-	const std::map<t_translation::t_letter, size_t>& terrain =
+	const std::map<t_translation::t_terrain, size_t>& terrain =
 		map_.get_weighted_terrain_frequencies();
 
-	for (std::map<t_translation::t_letter, size_t>::const_iterator j = terrain.begin(),
+	for (std::map<t_translation::t_terrain, size_t>::const_iterator j = terrain.begin(),
 	     j_end = terrain.end(); j != j_end; ++j)
 	{
 		// Use only reachable tiles when computing the average defense.
@@ -1433,7 +1433,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		// This unit can't move on this map, so just get the average weighted
 		// of all available terrains. This still is a kind of silly
 		// since the opponent probably can't recruit this unit and it's a static unit.
-		for (std::map<t_translation::t_letter, size_t>::const_iterator jj = terrain.begin(),
+		for (std::map<t_translation::t_terrain, size_t>::const_iterator jj = terrain.begin(),
 				jj_end = terrain.end(); jj != jj_end; ++jj)
 		{
 			defense += a.movement_type().defense_modifier(map_, jj->first) * jj->second;
@@ -2014,7 +2014,7 @@ bool ai::leader_can_reach_keep()
 
 int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 {
-	const t_translation::t_letter terrain = map_.get_terrain(loc);
+	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
 

@@ -35,7 +35,7 @@ public:
 	const std::string& id() const { return id_; }
 
 	//the character representing this terrain
-	t_translation::t_letter number() const { return number_; }
+	t_translation::t_terrain number() const { return number_; }
 
 	//the underlying type of the terrain
 	const t_translation::t_list& mvt_type() const { return mvt_type_; }
@@ -77,7 +77,7 @@ private:
 	//terrain type. The 'type' is a list of the 'underlying types'
 	//of the terrain. This may simply be the same as the number.
 	//This is the internal number used, WML still used characters
-	t_translation::t_letter number_;
+	t_translation::t_terrain number_;
 	t_translation::t_list mvt_type_;
 	t_translation::t_list def_type_;
 	t_translation::t_list union_type_;
@@ -100,5 +100,5 @@ private:
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,
-                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain);
+                         std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain);
 #endif

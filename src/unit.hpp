@@ -200,8 +200,8 @@ public:
 	bool is_flying() const { return flying_; }
 	bool is_fearless() const { return is_fearless_; }
 	bool is_healthy() const { return is_healthy_; }
-	int movement_cost(const t_translation::t_letter terrain) const;
-	int defense_modifier(t_translation::t_letter terrain, int recurse_count=0) const;
+	int movement_cost(const t_translation::t_terrain terrain) const;
+	int defense_modifier(t_translation::t_terrain terrain, int recurse_count=0) const;
 	int resistance_against(const std::string& damage_name,bool attacker,const gamemap::location& loc) const;
 	int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const
 		{return resistance_against(damage_type.type(), attacker, loc);};
@@ -287,7 +287,7 @@ private:
 	bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const
 	{return resistance_filter_matches(cfg, attacker, damage_type.type()); };
 
-	int movement_cost_internal(t_translation::t_letter terrain, int recurse_count=0) const;
+	int movement_cost_internal(t_translation::t_terrain terrain, int recurse_count=0) const;
 	bool has_ability_by_id(const std::string& ability) const;
 	void remove_ability_by_id(const std::string& ability);
 
@@ -327,7 +327,7 @@ private:
 
 	int movement_;
 	int max_movement_, max_movement_b_;
-	mutable std::map<t_translation::t_letter, int> movement_costs_; // movement cost cache
+	mutable std::map<t_translation::t_terrain, int> movement_costs_; // movement cost cache
 	bool hold_position_;
 	bool end_turn_;
 	bool resting_;

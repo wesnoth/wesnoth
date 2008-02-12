@@ -154,13 +154,13 @@ terrain_type::terrain_type(const config& cfg) :
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,
-                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain)
+                         std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain)
 {
 	for(std::vector<config*>::const_iterator i = cfgs.begin();
 	    i != cfgs.end(); ++i) {
 		terrain_type terrain(**i);
 		terrain_list.push_back(terrain.number());
-		letter_to_terrain.insert(std::pair<t_translation::t_letter, terrain_type>(
+		letter_to_terrain.insert(std::pair<t_translation::t_terrain, terrain_type>(
 		                              terrain.number(),terrain));
 	}
 }

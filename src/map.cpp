@@ -48,9 +48,9 @@ const gamemap::location gamemap::location::null_location;
 const std::string gamemap::default_map_header = "usage=map\nborder_size=1\n\n";
 const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;
 
-const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_letter terrain) const
+const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_terrain terrain) const
 {
-	const std::map<t_translation::t_letter,terrain_type>::const_iterator i =
+	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
 		letterToTerrain_.find(terrain);
 
 	if(i == letterToTerrain_.end()) {
@@ -62,9 +62,9 @@ const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_le
 	}
 }
 
-const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_letter terrain) const
+const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_terrain terrain) const
 {
-	const std::map<t_translation::t_letter, terrain_type>::const_iterator i =
+	const std::map<t_translation::t_terrain, terrain_type>::const_iterator i =
 		letterToTerrain_.find(terrain);
 
 	if(i == letterToTerrain_.end()) {
@@ -76,9 +76,9 @@ const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_le
 	}
 }
 
-const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_letter terrain) const
+const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_terrain terrain) const
 {
-	const std::map<t_translation::t_letter,terrain_type>::const_iterator i =
+	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
 		letterToTerrain_.find(terrain);
 
 	if(i == letterToTerrain_.end()) {
@@ -464,8 +464,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 			if (y2 < 0 || y2 >= h()) {
 				continue;
 			}
-			const t_translation::t_letter t = m[x1][y1 + m.border_size_];
-			const t_translation::t_letter current = (*this)[x2][y2 + border_size_];
+			const t_translation::t_terrain t = m[x1][y1 + m.border_size_];
+			const t_translation::t_terrain current = (*this)[x2][y2 + border_size_];
 
 			if(t == t_translation::FOGGED || t == t_translation::VOID_TERRAIN) {
 				continue;
@@ -530,19 +530,19 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 	}
 }
 
-t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
+t_translation::t_terrain gamemap::get_terrain(const gamemap::location& loc) const
 {
 
 	if(on_board(loc, true)) {
 		return tiles_[loc.x + border_size_][loc.y + border_size_];
 	}
 
-	const std::map<location, t_translation::t_letter>::const_iterator itor = borderCache_.find(loc);
+	const std::map<location, t_translation::t_terrain>::const_iterator itor = borderCache_.find(loc);
 	if(itor != borderCache_.end())
 		return itor->second;
 
 	// If not on the board, decide based on what surrounding terrain is
-	t_translation::t_letter items[6];
+	t_translation::t_terrain items[6];
 	int nitems = 0;
 
 	location adj[6];
@@ -561,7 +561,7 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 			// but the border tiles will be determined in the future, so then
 			// this will no longer be used in the game 
 			// (The editor will use this feature to expand maps in a better way).
-			std::map<location, t_translation::t_letter>::const_iterator itor =
+			std::map<location, t_translation::t_terrain>::const_iterator itor =
 				borderCache_.find(adj[n]);
 
 			// Only add if it is in the cache and a valid terrain
@@ -577,7 +577,7 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 
 	// Count all the terrain types found, 
 	// and see which one is the most common, and use it.
-	t_translation::t_letter used_terrain;
+	t_translation::t_terrain used_terrain;
 	int terrain_count = 0;
 	for(int i = 0; i != nitems; ++i) {
 		if(items[i] != used_terrain && !is_village(items[i]) && !is_keep(items[i])) {
@@ -589,7 +589,7 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 		}
 	}
 
-	borderCache_.insert(std::pair<location, t_translation::t_letter>(loc,used_terrain));
+	borderCache_.insert(std::pair<location, t_translation::t_terrain>(loc,used_terrain));
 	return used_terrain;
 
 }
@@ -641,10 +641,10 @@ bool gamemap::on_board(const location& loc, const bool include_border) const
 	}
 }
 
-const terrain_type& gamemap::get_terrain_info(const t_translation::t_letter terrain) const
+const terrain_type& gamemap::get_terrain_info(const t_translation::t_terrain terrain) const
 {
 	static const terrain_type default_terrain;
-	const std::map<t_translation::t_letter,terrain_type>::const_iterator i =
+	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
 		letterToTerrain_.find(terrain);
 
 	if(i != letterToTerrain_.end())
@@ -713,7 +713,7 @@ bool gamemap::location::matches_range(const std::string& xloc, const std::string
 	return true;
 }
 
-void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_letter terrain)
+void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_terrain terrain)
 {
 	if(!on_board(loc, true)) {
 		// off the map: ignore request
@@ -779,7 +779,7 @@ std::vector<gamemap::location> parse_location_range(const std::string& x, const 
 	return res;
 }
 
-const std::map<t_translation::t_letter, size_t>& gamemap::get_weighted_terrain_frequencies() const
+const std::map<t_translation::t_terrain, size_t>& gamemap::get_weighted_terrain_frequencies() const
 {
 	if(terrainFrequencyCache_.empty() == false) {
 		return terrainFrequencyCache_;

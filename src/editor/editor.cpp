@@ -151,8 +151,8 @@ config map_editor::hotkeys_;
 // Do not init the l_button_func_ to DRAW, since it should be changed
 // in the constructor to update the report the first time.
 map_editor::LEFT_BUTTON_FUNC map_editor::l_button_func_ = PASTE;
-t_translation::t_letter map_editor::old_fg_terrain_;
-t_translation::t_letter map_editor::old_bg_terrain_;
+t_translation::t_terrain map_editor::old_fg_terrain_;
+t_translation::t_terrain map_editor::old_bg_terrain_;
 int map_editor::old_brush_size_;
 
 map_editor::map_editor(editor_display &gui, editormap &map, config &theme, config &game_config)
@@ -407,7 +407,7 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 		}
 	}
 	else if (key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
-		const t_translation::t_letter terrain = map_.get_terrain(selected_hex_);
+		const t_translation::t_terrain terrain = map_.get_terrain(selected_hex_);
 		if(palette_.selected_fg_terrain() != terrain) {
 			palette_.select_fg_terrain(terrain);
 		}
@@ -439,7 +439,7 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 
 void map_editor::right_click(const gamemap::location hex_clicked ) {
 	if (key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
-		const t_translation::t_letter terrain = map_.get_terrain(hex_clicked);
+		const t_translation::t_terrain terrain = map_.get_terrain(hex_clicked);
 		if(palette_.selected_fg_terrain() != terrain) {
 			palette_.select_bg_terrain(terrain);
 		}
@@ -579,7 +579,7 @@ void map_editor::edit_set_start_pos() {
 	left_button_func_changed(SET_STARTING_POSITION);
 }
 
-void map_editor::perform_flood_fill(const t_translation::t_letter fill_with) {
+void map_editor::perform_flood_fill(const t_translation::t_terrain fill_with) {
 	terrain_log log;
 	flood_fill(map_, selected_hex_, fill_with, &log);
 	std::vector<gamemap::location> to_invalidate;
@@ -812,7 +812,7 @@ void map_editor::copy_buffer(map_buffer& buffer, const std::set<gamemap::locatio
 {
 	std::set<gamemap::location>::const_iterator it;
 	for (it = locs.begin(); it != locs.end(); it++) {
-		t_translation::t_letter terrain = map_.get_terrain(*it);
+		t_translation::t_terrain terrain = map_.get_terrain(*it);
 		buffer.push_back(buffer_item(*it-origin, terrain, starting_side_at(map_, *it)));
 	}
 }
@@ -860,7 +860,7 @@ void map_editor::insert_selection_in_clipboard() {
 }
 
 void map_editor::perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
-	const t_translation::t_letter terrain, map_undo_action &undo_action) {
+	const t_translation::t_terrain terrain, map_undo_action &undo_action) {
 	std::set<gamemap::location>::const_iterator it;
 	for (it = fill_hexes.begin(); it != fill_hexes.end(); it++) {
 		if (map_.on_board(*it, true)) {
@@ -953,7 +953,7 @@ void map_editor::undo() {
 					  std::back_inserter(to_invalidate));
 		}
 		if (action.terrain_set()) {
-			for(std::map<gamemap::location, t_translation::t_letter>::const_iterator it =
+			for(std::map<gamemap::location, t_translation::t_terrain>::const_iterator it =
 					action.undo_terrains().begin();
 				it != action.undo_terrains().end(); ++it) {
 				map_.set_terrain(it->first, it->second);
@@ -987,7 +987,7 @@ void map_editor::redo() {
 					  std::back_inserter(to_invalidate));
 		}
 		if (action.terrain_set()) {
-			for(std::map<gamemap::location, t_translation::t_letter>::const_iterator it =
+			for(std::map<gamemap::location, t_translation::t_terrain>::const_iterator it =
 					action.redo_terrains().begin();
 				it != action.redo_terrains().end(); ++it) {
 				map_.set_terrain(it->first, it->second);
@@ -1185,10 +1185,10 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	}
 }
 
-void map_editor::draw_on_mouseover_hexes(const t_translation::t_letter terrain) {
+void map_editor::draw_on_mouseover_hexes(const t_translation::t_terrain terrain) {
 	const gamemap::location hex = selected_hex_;
 	if(map_.on_board(hex, true)) {
-		const t_translation::t_letter old_terrain = map_[hex];
+		const t_translation::t_terrain old_terrain = map_[hex];
 		// Optimize for common case
 		if(brush_.selected_brush_size() == 1) {
 			if(terrain != old_terrain) {
@@ -1216,10 +1216,10 @@ void map_editor::draw_on_mouseover_hexes(const t_translation::t_letter terrain) 
 	}
 }
 
-void map_editor::draw_terrain(const t_translation::t_letter terrain,
+void map_editor::draw_terrain(const t_translation::t_terrain terrain,
 		const gamemap::location hex)
 {
-	const t_translation::t_letter current_terrain = map_.get_terrain(hex);
+	const t_translation::t_terrain current_terrain = map_.get_terrain(hex);
 	map_undo_action undo_action;
 	undo_action.add_terrain(current_terrain, terrain, hex);
 	terrain_changed(hex);
@@ -1276,9 +1276,9 @@ void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location
 	std::set<gamemap::location>::const_iterator its;
 	for (its = to_invalidate.begin(); its != to_invalidate.end(); its++) {
 		if (!map_.on_board(*its, true)) {
-			t_translation::t_letter terrain_before = map_.get_terrain(*its);
+			t_translation::t_terrain terrain_before = map_.get_terrain(*its);
 			map_.remove_from_border_cache(*its);
-			t_translation::t_letter terrain_after = map_.get_terrain(*its);
+			t_translation::t_terrain terrain_after = map_.get_terrain(*its);
 			if (terrain_before != terrain_after) {
 				invalidate_adjacent(*its);
 			}

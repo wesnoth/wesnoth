@@ -272,11 +272,11 @@ const t_string& unit_movement_type::name() const
 }
 
 int unit_movement_type::movement_cost(const gamemap& map,
-		t_translation::t_letter terrain, int recurse_count) const
+		t_translation::t_terrain terrain, int recurse_count) const
 {
 	const int impassable = 10000000;
 
-	const std::map<t_translation::t_letter, int>::const_iterator i =
+	const std::map<t_translation::t_terrain, int>::const_iterator i =
 		moveCosts_.find(terrain);
 
 	if(i != moveCosts_.end()) {
@@ -310,7 +310,7 @@ int unit_movement_type::movement_cost(const gamemap& map,
 			}
 		}
 
-		moveCosts_.insert(std::pair<t_translation::t_letter, int>(terrain,ret_value));
+		moveCosts_.insert(std::pair<t_translation::t_terrain, int>(terrain,ret_value));
 
 		return ret_value;
 	}
@@ -344,15 +344,15 @@ int unit_movement_type::movement_cost(const gamemap& map,
 		res = impassable;
 	}
 
-	moveCosts_.insert(std::pair<t_translation::t_letter, int>(terrain,res));
+	moveCosts_.insert(std::pair<t_translation::t_terrain, int>(terrain,res));
 
 	return res;
 }
 
 int unit_movement_type::defense_modifier(const gamemap& map,
-		t_translation::t_letter terrain, int recurse_count) const
+		t_translation::t_terrain terrain, int recurse_count) const
 {
-	const std::map<t_translation::t_letter, int>::const_iterator i =
+	const std::map<t_translation::t_terrain, int>::const_iterator i =
 		defenseMods_.find(terrain);
 
 	if(i != defenseMods_.end()) {
@@ -388,7 +388,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 			}
 		}
 
-		defenseMods_.insert(std::pair<t_translation::t_letter, int>(terrain, ret_value));
+		defenseMods_.insert(std::pair<t_translation::t_terrain, int>(terrain, ret_value));
 
 		return ret_value;
 	}
@@ -421,7 +421,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 		res = 50;
 	}
 
-	defenseMods_.insert(std::pair<t_translation::t_letter, int>(terrain, res));
+	defenseMods_.insert(std::pair<t_translation::t_terrain, int>(terrain, res));
 
 	return res;
 }

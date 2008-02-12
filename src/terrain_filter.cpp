@@ -85,7 +85,7 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain"]);
 		}
 		if(!cache_.parsed_terrain->is_empty) {
-			const t_translation::t_letter letter = map_.get_terrain_info(loc).number();
+			const t_translation::t_terrain letter = map_.get_terrain_info(loc).number();
 			if(!t_translation::terrain_matches(letter, *cache_.parsed_terrain)) {
 				return false;
 			}

@@ -33,8 +33,8 @@ class map_undo_action {
 public:
 	map_undo_action();
 
-	const std::map<gamemap::location, t_translation::t_letter>& undo_terrains() const;
-	const std::map<gamemap::location, t_translation::t_letter>& redo_terrains() const;
+	const std::map<gamemap::location, t_translation::t_terrain>& undo_terrains() const;
+	const std::map<gamemap::location, t_translation::t_terrain>& redo_terrains() const;
 
 	const std::set<gamemap::location> undo_selection() const;
 	const std::set<gamemap::location> redo_selection() const;
@@ -45,8 +45,8 @@ public:
 	const std::map<gamemap::location, int>& undo_starting_locations() const;
 	const std::map<gamemap::location, int>& redo_starting_locations() const;
 
-	void add_terrain(const t_translation::t_letter& old_tr,
-					 const t_translation::t_letter& new_tr,
+	void add_terrain(const t_translation::t_terrain& old_tr,
+					 const t_translation::t_terrain& new_tr,
 					 const gamemap::location& lc);
 
 	/// Return true if a terrain change has been saved in this undo
@@ -76,8 +76,8 @@ public:
 	bool starting_location_set() const;
 
 private:
-	std::map<gamemap::location, t_translation::t_letter> old_terrain_;
-	std::map<gamemap::location, t_translation::t_letter> new_terrain_;
+	std::map<gamemap::location, t_translation::t_terrain> old_terrain_;
+	std::map<gamemap::location, t_translation::t_terrain> new_terrain_;
 	bool terrain_set_;
 	std::set<gamemap::location> old_selection_;
 	std::set<gamemap::location> new_selection_;

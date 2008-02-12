@@ -2022,7 +2022,7 @@ size_t move_unit(game_display* disp,
 	std::string ambushed_string;
 
 	for(step = route.begin()+1; step != route.end(); ++step) {
-		const t_translation::t_letter terrain = map[*step];
+		const t_translation::t_terrain terrain = map[*step];
 
 		const int cost = ui->second.movement_cost(terrain);
 		if(cost >moves_left || discovered_unit || (continue_move == false && seen_units.empty() == false)) {

@@ -52,7 +52,7 @@ bool confirm_modification_disposal(display& disp) {
 }
 
 
-std::string new_map_dialog(display& disp, const t_translation::t_letter fill_terrain,
+std::string new_map_dialog(display& disp, const t_translation::t_terrain fill_terrain,
 	const bool confirmation_needed, const config &game_config)
 {
 	const resize_lock prevent_resizing;

@@ -289,14 +289,14 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 struct passage_path_calculator : cost_calculator
 {
 	passage_path_calculator(const t_translation::t_map& mapdata,
-	t_translation::t_letter wall, double laziness, size_t windiness):
+	t_translation::t_terrain wall, double laziness, size_t windiness):
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
 
 	virtual double cost(const gamemap::location& src,const gamemap::location& loc, const double so_far, const bool is_dest) const;
 private:
 	const t_translation::t_map& map_;
-	t_translation::t_letter wall_;
+	t_translation::t_terrain wall_;
 	double laziness_;
 	size_t windiness_;
 };
@@ -346,7 +346,7 @@ void cave_map_generator::place_passage(const passage& p)
 	}
 }
 
-void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_letter t)
+void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_terrain t)
 {
 	if(on_board(loc)) {
 		if(t == clear_ &&
@@ -355,7 +355,7 @@ void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_let
 			t = village_;
 		}
 
-		t_translation::t_letter& c = map_[loc.x][loc.y];
+		t_translation::t_terrain& c = map_[loc.x][loc.y];
 		if(c == clear_ || c == wall_ || c == village_) {
 			c = t;
 		}

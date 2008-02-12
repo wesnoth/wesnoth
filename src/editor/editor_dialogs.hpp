@@ -35,7 +35,7 @@ bool confirm_modification_disposal(display &disp);
 /// map if a new one is created. Return the string representation of the
 /// new map, or the empty string if the operation failed or was
 /// cancelled.
-std::string new_map_dialog(display &disp, const t_translation::t_letter fill_terrain,
+std::string new_map_dialog(display &disp, const t_translation::t_terrain fill_terrain,
    const bool confirmation_needed, const config &gconfig);
 
 /// Show a dialog where the user may set the preferences used in the

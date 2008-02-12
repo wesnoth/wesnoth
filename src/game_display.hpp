@@ -151,7 +151,7 @@ public:
 	// Functions used in the editor:
 
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
-	t_translation::t_letter get_terrain_on(int palx, int paly, int x, int y);
+	t_translation::t_terrain get_terrain_on(int palx, int paly, int x, int y);
 
 	//! Sets the team controlled by the player using the computer.
 	//! Data from this team will be displayed in the game status.

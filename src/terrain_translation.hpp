@@ -36,37 +36,37 @@ namespace t_translation {
 	 * if no second layer is defined it is stored as 0xFFFFFFFF, if the second layer
 	 * is empty (needed for matching) the layer has the value 0.
 	 */
-	struct t_letter {
-		t_letter(const std::string& b);
-		t_letter(const std::string& b, const std::string& o);
-		t_letter(const std::string& b, const t_layer o);
-		t_letter(const t_layer& b, const t_layer& o) : base(b), overlay(o) {};
-		t_letter() : base(0), overlay(NO_LAYER) {}
+	struct t_terrain {
+		t_terrain(const std::string& b);
+		t_terrain(const std::string& b, const std::string& o);
+		t_terrain(const std::string& b, const t_layer o);
+		t_terrain(const t_layer& b, const t_layer& o) : base(b), overlay(o) {};
+		t_terrain() : base(0), overlay(NO_LAYER) {}
 
 		t_layer base;
 		t_layer overlay;
 	};
-	const t_letter NONE_TERRAIN = t_letter();
+	const t_terrain NONE_TERRAIN = t_terrain();
 
-	inline bool operator<(const t_letter& a, const t_letter& b)
+	inline bool operator<(const t_terrain& a, const t_terrain& b)
 		{ return a.base < b.base ||  (a.base == b.base && a.overlay < b.overlay); }
 
-	inline bool operator==(const t_letter& a, const t_letter& b)
+	inline bool operator==(const t_terrain& a, const t_terrain& b)
 		{ return a.base == b.base && a.overlay == b.overlay; }
 
-	inline bool operator!=(const t_letter& a, const t_letter& b)
+	inline bool operator!=(const t_terrain& a, const t_terrain& b)
 		{ return a.base != b.base || a.overlay != b.overlay; }
 
-	inline t_letter operator&(const t_letter& a, const t_letter& b)
-		{ return t_letter(a.base & b.base, a.overlay & b.overlay); }
+	inline t_terrain operator&(const t_terrain& a, const t_terrain& b)
+		{ return t_terrain(a.base & b.base, a.overlay & b.overlay); }
 
-	inline t_letter operator|(const t_letter& a, const t_letter& b)
-		{ return t_letter(a.base | b.base, a.overlay | b.overlay); }
+	inline t_terrain operator|(const t_terrain& a, const t_terrain& b)
+		{ return t_terrain(a.base | b.base, a.overlay | b.overlay); }
 
 	// operator<< is defined later
 
-	typedef std::vector<t_letter> t_list;
-	typedef std::vector<std::vector<t_letter> > t_map;
+	typedef std::vector<t_terrain> t_list;
+	typedef std::vector<std::vector<t_terrain> > t_map;
 
 	/**
 	 * This structure can be used for matching terrain strings.
@@ -76,7 +76,7 @@ namespace t_translation {
 	struct t_match{
 		t_match();
 		t_match(const std::string& str, const t_layer filler = NO_LAYER);
-		t_match(const t_letter& letter);
+		t_match(const t_terrain& letter);
 
 		t_list terrain;
 		t_list mask;
@@ -103,31 +103,31 @@ namespace t_translation {
 	// be loaded in dynamically because they're special.
 	// It's asserted that there will be corresponding entries for
 	// these types of terrain in the terrain configuration file.
-	extern const t_letter VOID_TERRAIN;
-	extern const t_letter FOGGED;
+	extern const t_terrain VOID_TERRAIN;
+	extern const t_terrain FOGGED;
 
 	// On the map the user can use this type to make odd shaped maps look good.
-	extern const t_letter OFF_MAP_USER;
+	extern const t_terrain OFF_MAP_USER;
 
-	extern const t_letter HUMAN_CASTLE;
-	extern const t_letter HUMAN_KEEP;
-	extern const t_letter SHALLOW_WATER;
-	extern const t_letter DEEP_WATER;
-	extern const t_letter GRASS_LAND;
-	extern const t_letter FOREST;
-	extern const t_letter MOUNTAIN;
-	extern const t_letter HILL;
+	extern const t_terrain HUMAN_CASTLE;
+	extern const t_terrain HUMAN_KEEP;
+	extern const t_terrain SHALLOW_WATER;
+	extern const t_terrain DEEP_WATER;
+	extern const t_terrain GRASS_LAND;
+	extern const t_terrain FOREST;
+	extern const t_terrain MOUNTAIN;
+	extern const t_terrain HILL;
 
-	extern const t_letter CAVE_WALL;
-	extern const t_letter CAVE;
-	extern const t_letter UNDERGROUND_VILLAGE;
-	extern const t_letter DWARVEN_CASTLE;
-	extern const t_letter DWARVEN_KEEP;
+	extern const t_terrain CAVE_WALL;
+	extern const t_terrain CAVE;
+	extern const t_terrain UNDERGROUND_VILLAGE;
+	extern const t_terrain DWARVEN_CASTLE;
+	extern const t_terrain DWARVEN_KEEP;
 
-	extern const t_letter PLUS;	// +
-	extern const t_letter MINUS;	// -
-	extern const t_letter NOT;		// !
-	extern const t_letter STAR;	// *
+	extern const t_terrain PLUS;	// +
+	extern const t_terrain MINUS;	// -
+	extern const t_terrain NOT;		// !
+	extern const t_terrain STAR;	// *
 
 	/**
 	 * Reads a single terrain from a string.
@@ -149,7 +149,7 @@ namespace t_translation {
 	 *
 	 * @return			A single terrain letter
 	 */
-	t_letter read_letter(const std::string& str, const t_layer filler = NO_LAYER);
+	t_terrain read_letter(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a single letter to a string.
@@ -159,8 +159,8 @@ namespace t_translation {
 	 *
 	 * @return			A string containing the letter
 	 */
-	std::string write_letter(const t_letter& letter);
-	inline std::ostream &operator<<(std::ostream &s, const t_letter &a)
+	std::string write_letter(const t_terrain& letter);
+	inline std::ostream &operator<<(std::ostream &s, const t_terrain &a)
 		{ s << write_letter(a); return s; }
 
 	/**
@@ -263,7 +263,7 @@ namespace t_translation {
 	 *
 	 * @returns		the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_letter& src, const t_list& dest);
+	bool terrain_matches(const t_terrain& src, const t_list& dest);
 
 	/**
 	 * Tests whether a specific terrain matches an expression,
@@ -274,7 +274,7 @@ namespace t_translation {
 	 *
 	 * @returns		the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_letter& src, const t_letter& dest);
+	bool terrain_matches(const t_terrain& src, const t_terrain& dest);
 
 	/**
 	 * Tests whether a certain terrain matches a list of expressions, for matching
@@ -287,7 +287,7 @@ namespace t_translation {
 	 *
 	 * @returns		the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_letter& src, const t_match& dest);
+	bool terrain_matches(const t_terrain& src, const t_match& dest);
 
 	/**
 	 * Tests whether a terrain contains a wildcard
@@ -297,7 +297,7 @@ namespace t_translation {
 	 *  @returns		true if wildcard found,
 	 *				else false
 	 */
-	bool has_wildcard(const t_letter& letter);
+	bool has_wildcard(const t_terrain& letter);
 
 	/**
 	 * Tests whether a terrain list contains at least

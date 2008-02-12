@@ -644,7 +644,7 @@ private:
 	 * @return			returns true if "letter" matches the list or the list is empty,
 	 *					else false.
 	 */
-	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list& terrains) const
+	bool terrain_matches(t_translation::t_terrain letter, const t_translation::t_list& terrains) const
 		{ return terrains.empty()? true : t_translation::terrain_matches(letter, terrains); }
 
 	/**
@@ -657,7 +657,7 @@ private:
 	 * @return			returns true if "letter" matches the list or the list is empty,
 	 *					else false.
 	 */
-	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_match &terrain) const
+	bool terrain_matches(t_translation::t_terrain letter, const t_translation::t_match &terrain) const
 		{ return terrain.is_empty ? true : t_translation::terrain_matches(letter, terrain); }
 
 	/**
@@ -706,7 +706,7 @@ private:
 	/**
 	 * Shorthand typedef for a map associating a list of locations to a terrain type.
 	 */
-	typedef std::map<t_translation::t_letter, std::vector<gamemap::location> > terrain_by_type_map;
+	typedef std::map<t_translation::t_terrain, std::vector<gamemap::location> > terrain_by_type_map;
 
 	/**
 	 * A map representing all locations whose terrain is of a given type.

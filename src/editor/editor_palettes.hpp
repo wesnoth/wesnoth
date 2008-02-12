@@ -69,13 +69,13 @@ public:
 	void set_group(const std::string& id);
 
 	//! Return the currently selected foreground terrain.
-	t_translation::t_letter selected_fg_terrain() const;
+	t_translation::t_terrain selected_fg_terrain() const;
 	//! Return the currently selected background terrain.
-	t_translation::t_letter selected_bg_terrain() const;
+	t_translation::t_terrain selected_bg_terrain() const;
 
 	//! Select a foreground terrain.
-	void select_fg_terrain(t_translation::t_letter);
-	void select_bg_terrain(t_translation::t_letter);
+	void select_fg_terrain(t_translation::t_terrain);
+	void select_bg_terrain(t_translation::t_terrain);
 
 	//! Update the selected terrains strings
 	void update_selected_terrains(void);
@@ -111,7 +111,7 @@ private:
 	int tile_selected(const int x, const int y) const;
 
 	//! Return a string represeting the terrain and the underlying ones.
-	std::string get_terrain_string(const t_translation::t_letter);
+	std::string get_terrain_string(const t_translation::t_terrain);
 
 	//! Update the report with the currently selected terrains.
 	void update_report();
@@ -139,7 +139,7 @@ private:
 	//! otherwise things will fail. Thus should be set in constructor.
 	gui::button *checked_group_btn_;
 
-	t_translation::t_letter selected_fg_terrain_, selected_bg_terrain_;
+	t_translation::t_terrain selected_fg_terrain_, selected_bg_terrain_;
 	const gamemap &map_;
 	gui::button top_button_, bot_button_;
 	size_t button_x_, top_button_y_, bot_button_y_;

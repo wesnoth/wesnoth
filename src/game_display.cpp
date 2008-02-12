@@ -810,7 +810,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 
 surface game_display::get_flag(const gamemap::location& loc)
 {
-	t_translation::t_letter terrain = map_.get_terrain(loc);
+	t_translation::t_terrain terrain = map_.get_terrain(loc);
 
 	if(!map_.is_village(terrain)) {
 		return surface(NULL);

@@ -59,7 +59,7 @@ public:
 	 */
 	std::string resize(const size_t width, const size_t height,
 		const int x_offset, const int y_offset,
-		const bool do_expand, t_translation::t_letter filler);
+		const bool do_expand, t_translation::t_terrain filler);
 
 	/**
 	 * Flips the map over an axis
@@ -100,7 +100,7 @@ private:
 	 *					the enigne will determine the terrain by itself
 	 */
 	void add_tiles_right(const unsigned count,
-		const t_translation::t_letter& filler);
+		const t_translation::t_terrain& filler);
 
 	/**
 	 * Adds column(s) at the left side
@@ -110,7 +110,7 @@ private:
 	 *					the enigne will determine the terrain by itself
 	 */
 	void add_tiles_left(const unsigned count,
-		const t_translation::t_letter& filler);
+		const t_translation::t_terrain& filler);
 
 	/**
 	 * Removes column(s) at the right side.
@@ -134,7 +134,7 @@ private:
 	 *					the enigne will determine the terrain by itself
 	 */
 	void add_tiles_top(const unsigned count,
-		const t_translation::t_letter& filler);
+		const t_translation::t_terrain& filler);
 
 	/**
 	 * Adds row(s) at the bottom side.
@@ -144,7 +144,7 @@ private:
 	 *					the enigne will determine the terrain by itself
 	 */
 	void add_tiles_bottom(const unsigned count,
-		const t_translation::t_letter& filler);
+		const t_translation::t_terrain& filler);
 
 	/**
 	 * Removes row(s) at the top side.
@@ -168,14 +168,14 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 										 const gamemap::location& a,
 										 const unsigned int radius);
 
-typedef std::vector<std::pair<gamemap::location, t_translation::t_letter> > terrain_log;
+typedef std::vector<std::pair<gamemap::location, t_translation::t_terrain> > terrain_log;
 
 /// Flood fill the map with the terrain fill_with
 /// starting from the location start_loc.
 /// If log is non-null it will contain the positions of the changed tiles
 /// and the terrains they had before the filling started.
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
-		const t_translation::t_letter fill_with, terrain_log *log = NULL);
+		const t_translation::t_terrain fill_with, terrain_log *log = NULL);
 
 /// Return the area that would be flood filled
 /// if a flood fill was requested.
@@ -190,7 +190,7 @@ get_component(const gamemap &map, const gamemap::location &start_loc);
 /// with the terrain fill_with.
 std::string resize_map(editormap &map, const unsigned new_w,
 	const unsigned new_h, const int off_x, const int off_y,
-	const bool do_expand, const t_translation::t_letter fill_with);
+	const bool do_expand, const t_translation::t_terrain fill_with);
 
 /// Return the string representation of the map
 /// after it has been flipped around the axis.
@@ -203,7 +203,7 @@ bool valid_mapdata(const std::string &data, const config &cfg);
 
 //! Returns a string representating a new empty map
 //! of width by height of the terrain filler
-std::string new_map(const size_t width, const size_t height, const t_translation::t_letter filler);
+std::string new_map(const size_t width, const size_t height, const t_translation::t_terrain filler);
 
 } // end namespace map_editor
 

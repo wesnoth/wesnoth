@@ -607,7 +607,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 	for(size_t y_off = 0; y_off < map.size(); ++y_off) {
 		for(size_t x_off = x; x_off < map[y_off].size(); ++x_off) {
 
-			const t_translation::t_letter terrain = map[y_off][x_off];
+			const t_translation::t_terrain terrain = map[y_off][x_off];
 
 			if(terrain.base == t_translation::TB_DOT) {
 				// Dots are simple placeholders,
@@ -905,7 +905,7 @@ void terrain_builder::build_terrains()
 	for(int x = -2; x <= map_.w(); ++x) {
 		for(int y = -2; y <= map_.h(); ++y) {
 			const gamemap::location loc(x,y);
-			const t_translation::t_letter t = map_.get_terrain(loc);
+			const t_translation::t_terrain t = map_.get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
 		}
@@ -940,7 +940,7 @@ void terrain_builder::build_terrains()
 			for (terrain_by_type_map::iterator type_it = terrain_by_type_.begin();
 					 type_it != terrain_by_type_.end(); type_it++) {
 
-				const t_translation::t_letter t = type_it->first;
+				const t_translation::t_terrain t = type_it->first;
 				if (terrain_matches(t, match)) {
 					const size_t match_size = type_it->second.size();
 					constraint_size += match_size;

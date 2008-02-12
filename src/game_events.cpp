@@ -1445,7 +1445,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		  terrain_type = cfg["letter"];
 		assert(state_of_game != NULL);
 
-		t_translation::t_letter terrain = t_translation::read_letter(terrain_type);
+		t_translation::t_terrain terrain = t_translation::read_letter(terrain_type);
 
 		if(terrain != t_translation::NONE_TERRAIN) {
 

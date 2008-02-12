@@ -106,7 +106,7 @@ void editor_display::draw(bool update,bool force)
 
 	// Fill in the terrain report
 	if(map_.on_board(mouseoverHex_, true)) {
-		const t_translation::t_letter terrain = map_.get_terrain(mouseoverHex_);
+		const t_translation::t_terrain terrain = map_.get_terrain(mouseoverHex_);
 		const t_translation::t_list& underlying = map_.underlying_union_terrain(terrain);
 
 		std::stringstream str;

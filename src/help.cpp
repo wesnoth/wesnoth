@@ -1457,12 +1457,12 @@ public:
 			push_header(first_row, _("Movement Cost"));
 
 			table.push_back(first_row);
-			std::set<t_translation::t_letter>::const_iterator terrain_it =
+			std::set<t_translation::t_terrain>::const_iterator terrain_it =
 				preferences::encountered_terrains().begin();
 
 			for (; terrain_it != preferences::encountered_terrains().end();
 				terrain_it++) {
-				const t_translation::t_letter terrain = *terrain_it;
+				const t_translation::t_terrain terrain = *terrain_it;
 				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 					continue;
 				const terrain_type& info = map->get_terrain_info(terrain);

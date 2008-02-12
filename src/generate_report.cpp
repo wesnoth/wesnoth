@@ -387,7 +387,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(!map.on_board(mouseover) || current_team.shrouded(mouseover))
 			break;
 
-		const t_translation::t_letter terrain = map.get_terrain(mouseover);
+		const t_translation::t_terrain terrain = map.get_terrain(mouseover);
 		if (terrain == t_translation::OFF_MAP_USER)
 			break;
 
@@ -429,7 +429,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			break;
 		}
 
-		const t_translation::t_letter terrain = map[mouseover];
+		const t_translation::t_terrain terrain = map[mouseover];
 
 		if (terrain == t_translation::OFF_MAP_USER)
 			break;

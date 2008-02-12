@@ -34,7 +34,7 @@
 
 std::string editormap::resize(const size_t width, const size_t height,
 	const int x_offset, const int y_offset,
-	const bool do_expand, t_translation::t_letter filler)
+	const bool do_expand, t_translation::t_terrain filler)
 {
 
 	const unsigned old_w = static_cast<unsigned>(w());
@@ -165,7 +165,7 @@ void editormap::swap_starting_position(const size_t x1, const size_t y1,
 }
 
 void editormap::add_tiles_right(
-	const unsigned count, const t_translation::t_letter& filler)
+	const unsigned count, const t_translation::t_terrain& filler)
 {
 	for(size_t x = 1; x <= count; ++x) {
 		t_translation::t_list one_row(tiles_[1].size());
@@ -182,7 +182,7 @@ void editormap::add_tiles_right(
 }
 
 void editormap::add_tiles_left(
-	const unsigned count, const t_translation::t_letter& filler)
+	const unsigned count, const t_translation::t_terrain& filler)
 {
 	for(size_t i = 1; i <= count; ++i) {
 		t_translation::t_list one_row(tiles_[1].size());
@@ -228,11 +228,11 @@ void editormap::remove_tiles_left(const unsigned count)
 }
 
 void editormap::add_tiles_top(
-	const unsigned count, const t_translation::t_letter& filler)
+	const unsigned count, const t_translation::t_terrain& filler)
 {
 	for(size_t i =  1; i <= count; ++i) {
 		for(size_t y = 0; y < tiles_.size(); ++y) {
-			t_translation::t_letter terrain =
+			t_translation::t_terrain terrain =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
 				tiles_[y][0];
@@ -245,11 +245,11 @@ void editormap::add_tiles_top(
 }
 
 void editormap::add_tiles_bottom(
-	const unsigned count, const t_translation::t_letter& filler)
+	const unsigned count, const t_translation::t_terrain& filler)
 {
 	for(size_t i =  1; i <= count; ++i) {
 		for(size_t x = 0; x < tiles_.size(); ++x) {
-			t_translation::t_letter terrain =
+			t_translation::t_terrain terrain =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
 				tiles_[x][i - 1];
@@ -325,9 +325,9 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 }
 
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
-				const t_translation::t_letter fill_with, terrain_log *log)
+				const t_translation::t_terrain fill_with, terrain_log *log)
 {
-	t_translation::t_letter terrain_to_fill = map.get_terrain(start_loc);
+	t_translation::t_terrain terrain_to_fill = map.get_terrain(start_loc);
 	if (fill_with == terrain_to_fill) {
 		return;
 	}
@@ -345,7 +345,7 @@ void flood_fill(gamemap &map, const gamemap::location &start_loc,
 std::set<gamemap::location> get_component(const gamemap &map,
 		const gamemap::location &start_loc)
 {
-	t_translation::t_letter terrain_to_fill = map.get_terrain(start_loc);
+	t_translation::t_terrain terrain_to_fill = map.get_terrain(start_loc);
 	std::set<gamemap::location> to_fill;
 	std::set<gamemap::location> filled;
 	std::set<gamemap::location>::iterator it;
@@ -375,7 +375,7 @@ std::set<gamemap::location> get_component(const gamemap &map,
 
 std::string resize_map(editormap &map, const unsigned new_w,
 	const unsigned new_h, const int off_x, const int off_y,
-	const bool do_expand, const t_translation::t_letter fill_with)
+	const bool do_expand, const t_translation::t_terrain fill_with)
 {
 	return map.resize(new_w, new_h, off_x, off_y, do_expand, fill_with);
 }
@@ -405,7 +405,7 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	return res;
 }
 
-std::string new_map(const size_t width, const size_t height, const t_translation::t_letter filler)
+std::string new_map(const size_t width, const size_t height, const t_translation::t_terrain filler)
 {
 	const t_translation::t_list column(height, filler);
 	const t_translation::t_map map(width, column);
