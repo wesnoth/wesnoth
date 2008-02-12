@@ -6,6 +6,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 import sys, os, re, sre_constants, md5, glob
 
 resource_extensions = ("png", "jpg", "ogg", "wav", "map")
+image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
 class Forest:
     "Return an iterable directory forest object."
@@ -102,7 +103,7 @@ def actualtype(a):
         atype = "range"
     elif a.startswith("{") and a.endswith("}") or a.startswith("$"):
         atype = None	# Can't tell -- it's a macro expansion
-    elif a.endswith(".png") or a.endswith(".jpg"):
+    elif re.match(image_reference, a):
         atype = "image"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
@@ -185,7 +186,7 @@ class Reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Za-z0-9_])(?!\.)\b")
-    file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(" + "|".join(resource_extensions) + ")")
+    file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
         pattern = pattern.replace("+", r"\+")
