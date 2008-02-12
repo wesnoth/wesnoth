@@ -71,6 +71,8 @@ def formaltype(f):
         ftype = "span"
     elif f in ("RANGE",):
         ftype = "range"
+    elif f in ("LETTER",):
+        ftype = "terrain_code"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID") or f.endswith("_NAME"):
         ftype = "name"
     elif f in ("STRING", "TYPE", "TERRAIN", "TEXT"):
@@ -105,12 +107,16 @@ def actualtype(a):
         atype = None	# Can't tell -- it's a macro expansion
     elif re.match(image_reference, a):
         atype = "image"
+    elif re.match(r"[A-Z][a-z]+\^[A-Z][a-z]+\Z", a):
+        atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
     elif a.startswith('"') and a.endswith('"'):
         atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
+    elif re.match(r"[A-Z][a-z][a-z]?\Z", a):
+        atype = "shortname"
     elif a == "":
         atype = "empty"
     elif not ' ' in a:
@@ -135,9 +141,11 @@ def argmatch(formals, actuals):
             pass
         elif atype in ("numeric", "position") and ftype == "span":
             pass
-        elif atype in ("name", "stringliteral") and ftype == "string":
+        elif atype in ("shortname", "name", "stringliteral") and ftype == "string":
             pass
-        elif atype in ("name", "string", "stringliteral", "empty") and ftype == "optional_string":
+        elif atype in ("shortname", "name", "string", "stringliteral", "empty") and ftype == "optional_string":
+            pass
+        elif atype in ("shortname",) and ftype == "terrain_code":
             pass
         elif atype != ftype and ftype is not None and atype is not None:
             return False
