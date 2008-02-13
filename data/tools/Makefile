@@ -34,10 +34,12 @@ utils-unused:
 # References to terrain graphics go through so many layers of nasty
 # opaque macros that trying to reference-check them is hopeless.
 # So suppress reporting them unused even if they seem to have
-# no references.
+# no references.  The rest covers stuff known to be used in UMC.
+FORCE_USED = --force-used "terrain/" --force-used "portraits/Neoriceisgood" \
+	--force-used "attacks/" --force-used "projectiles/" 
 images-unused:
 	@echo "# Report on unused images"
-	@./wmlscope --crossreference --from images --refcount 0 --force-used "terrain/" $(MAINLINE) $(UMC)
+	@./wmlscope --crossreference --from images --refcount 0 $(FORCE_USED) $(MAINLINE) $(UMC)
 
 all-unused:
 	@echo "# Report on unused resource files"

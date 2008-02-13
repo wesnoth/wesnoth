@@ -276,7 +276,7 @@ Usage: macroscope [options] dirpath
     crossreference = definitions = listfiles = unresolved = extracthelp = False
     from_restrict = None
     refcount_restrict = None
-    forceused = None
+    forceused = []
     exclude = []
     warnlevel = 0
     collisions = False
@@ -299,7 +299,7 @@ Usage: macroscope [options] dirpath
         elif switch == '--extracthelp':
             extracthelp = True
         elif switch == '--force-used':
-            forceused = val
+            forceused.append(val)
         elif switch in ('-l', '--listfiles'):
             listfiles = True
         elif switch in ('-r', '--refcount'):
@@ -311,6 +311,7 @@ Usage: macroscope [options] dirpath
         elif switch in ('-w', '--warnlevel'):
             warnlevel = int(val)
 
+    forceused = "|".join(forceused)
     if len(arguments):
         dirpath = arguments
     else:
