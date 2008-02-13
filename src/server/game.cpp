@@ -89,12 +89,6 @@ bool game::is_player(const network::connection player) const {
 	return std::find(players_.begin(),players_.end(),player) != players_.end();
 }
 
-network::connection game::current_player() const {
-	if (nsides_ == 0) return 0;
-	size_t current_side = end_turn_ % nsides_;
-	return sides_[current_side];
-}
-
 namespace {
 std::string describe_turns(int turn, const std::string& num_turns)
 {
@@ -838,20 +832,16 @@ bool game::process_commands(const config& data, const player_map::const_iterator
 bool game::end_turn() {
 	// It's a new turn every time each side in the game ends their turn.
 	++end_turn_;
-	if (nsides_ == 0) return false;
 	bool turn_ended = false;
-	int turn = 0;
-	if ((end_turn_ % nsides_) == 0) {
+	if ((current_side()) == 0) {
 		turn_ended = true;
-		turn = end_turn_ / nsides_ + 1;
 	}
 	// Skip over empty sides.
-	for (int i = 0; i < nsides_ && side_controllers_[end_turn_ % nsides_] == "null";
+	for (int i = 0; i < nsides_ && side_controllers_[current_side()] == "null";
 			++i, ++end_turn_)
 	{
-		if ((end_turn_ % nsides_) == 0) {
+		if (current_side() == 0) {
 			turn_ended = true;
-			turn = end_turn_ / nsides_ + 1;
 		}
 	}
 	if (!turn_ended) return false;
@@ -859,7 +849,7 @@ bool game::end_turn() {
 	if (description_ == NULL) {
 		return false;
 	}
-	(*description_)["turn"] = describe_turns(turn, level_.get_attribute("turns"));
+	(*description_)["turn"] = describe_turns(current_turn(), level_.get_attribute("turns"));
 
 	return true;
 }
@@ -952,7 +942,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		<< (game_ended ? (started_ ? "\tended" : "\taborted") : "\thas left")
 		<< " game:\t\"" << name_ << "\" (" << id_ << ")"
 		<< (game_ended && started_ ? " at turn: "
-			+ lexical_cast<std::string>(end_turn_ / nsides_ + 1)
+			+ lexical_cast_default<std::string,size_t>(current_turn())
 			+ " with reason: '" + termination_reason() + "'" : "")
 		<< (observer ? " as an observer" : "")
 		<< (disconnect ? " and disconnected" : "")

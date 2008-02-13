@@ -1113,7 +1113,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 				<< (g->started() ? "\tended game:\t\"" : "\taborted game:\t\"")
 				<< g->name() << "\" (" << g->id() << ")"
 				<< (g->started() ? " at turn: "
-					+ (g->description() ? (*g->description())["turn"] : "-/-")
+					+ lexical_cast_default<std::string,size_t>(g->current_turn())
 					+ " with reason: '" + g->termination_reason() + "'" : "")
 				<< ".\n";
 			// Remove the player in delete_game() with all other remaining

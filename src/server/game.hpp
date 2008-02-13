@@ -47,6 +47,7 @@ public:
 
 	size_t nplayers() const { return players_.size(); }
 	size_t nobservers() const { return observers_.size(); }
+	size_t current_turn() const { return (nsides_ ? end_turn_ / nsides_ + 1 : 0); }
 
 	void mute_all_observers();
 	//! Mute an observer by name.
@@ -115,7 +116,9 @@ public:
 	}
 
 private:
-	network::connection current_player() const;
+	size_t current_side() const { return (nsides_ ? end_turn_ % nsides_ : 0); }
+	network::connection current_player() const
+	{ return (nsides_ ? sides_[current_side()] : 0); }
 	bool is_current_player(const network::connection player) const
 	{ return (current_player() == player); }
 	bool is_muted_observer(const network::connection player) const;
