@@ -160,15 +160,24 @@ class CrossRefLister(CrossRef):
     def unchecked(self, fp):
         "List all macro definitions with untyped formals."
         unchecked = []
-        totalcount = 0
+        defcount = 0
+        callcount = 0
+        unresolvedcount = 0
         for name in self.xref.keys():
             for defn in self.xref[name]:
-                totalcount += 1
+                defcount += 1
+                callcount += len(defn.references)
                 if None in map(formaltype, defn.args):
                     unchecked.append((name, defn))
+                    unresolvedcount += len(defn.references)
         if unchecked:
-            print "# %d of %d macro definitions have untyped formals:" \
-                  % (len(unchecked), totalcount)
+            print "# %d of %d (%d%%) macro definitions and %d of %d calls (%d%%) have untyped formals:" \
+                  % (len(unchecked),
+                     defcount,
+                     int((100 * len(unchecked)) / defcount),
+                     unresolvedcount,
+                     callcount,
+                     int((100 * unresolvedcount) / callcount))
             unchecked.sort(lambda a, b: cmp(a[1], b[1]))
             for (name, defn) in unchecked:
                 print "%s: %s(%s)" % (defn, name, ", ".join(defn.args))
