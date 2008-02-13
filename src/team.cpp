@@ -133,14 +133,12 @@ team::team_info::team_info(const config& cfg) :
 
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
-	// this also handles the loading of older save files, though with wrong
-	// values for the start gold in the scenario settings screen
 	if (!cfg["start_gold"].empty())
 		start_gold = cfg["start_gold"];
-	else if (!gold.empty())
-		start_gold = gold;
+	else if (!this->gold.empty())
+		start_gold = this->gold;
 	else
-		start_gold = default_team_gold;
+		start_gold = str_cast(default_team_gold);
 
 	if(team_name.empty()) {
 		team_name = cfg["side"];
