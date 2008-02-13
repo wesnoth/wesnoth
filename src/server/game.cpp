@@ -376,21 +376,22 @@ void game::transfer_side_control(const network::connection sock, const config& c
 			"That's already " + newplayer_name + "'s side, silly."), sock, true);
 		return;
 	}
+	network::connection old_player = sides_[side_num - 1];
 	sides_[side_num - 1] = 0;
 	bool host_leave = false;
-	// If the player gave up their last side, make them an observer.
-	if (std::find(sides_.begin(), sides_.end(), sock) == sides_.end()) {
+	// If the old player lost his last side, make him an observer.
+	if (std::find(sides_.begin(), sides_.end(), old_player) == sides_.end()) {
 		observers_.push_back(*pl);
 		players_.erase(pl);
-		const std::string& name = player_info_->find(sock)->second.name();
+		const std::string& name = player_info_->find(old_player)->second.name();
 		// Tell others that the player becomes an observer.
 		send_and_record_server_message(name + " becomes an observer.");
 		// Update the client side observer list for everyone except player.
 		config observer_join;
 		observer_join.add_child("observer")["name"] = name;
-		send_data(observer_join, sock);
+		send_data(observer_join, old_player);
 		// If this player was the host of the game, choose another player.
-		if (sock == owner_) {
+		if (old_player == owner_) {
 			host_leave = true;
 			if (!players_.empty()) {
 				owner_ = players_.front();
