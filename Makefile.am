@@ -106,14 +106,9 @@ if TINYGUI
 	  esac ; \
 	  file=`basename "$$p"`; \
 	  file "$$d$$p" | egrep "(RGBA|alpha)" >/dev/null 2>&1 && {\
-	 	  convert -separate -channel A -filter point -size $$dstsize -resize $$dstsize "$$d$$p" "tmp_A_$$file"; \
-		  convert -separate -channel R -size $$dstsize -resize $$dstsize "$$d$$p" "tmp_R_$$file"; \
-		  convert -separate -channel G -size $$dstsize -resize $$dstsize "$$d$$p" "tmp_G_$$file"; \
-		  convert -separate -channel B -size $$dstsize -resize $$dstsize "$$d$$p" "tmp_B_$$file"; \
-		  convert -channel RGBA -combine "tmp_R_$$file" "tmp_G_$$file" "tmp_B_$$file" "tmp_A_$$file" "$(DESTDIR)$(pkgdatadir)/$$f"; \
-		  rm "tmp_R_$$file" "tmp_G_$$file" "tmp_B_$$file" "tmp_A_$$file"; \
+	  	convert "$$d$$p" -filter point -resize $$dstsize "$(DESTDIR)$(pkgdatadir)/$$f";\
 	  } || { \
-	  	convert -size $$dstsize -resize $$dstsize "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	  	convert "$$d$$p" -resize $$dstsize "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	  } \
 	done
 endif
