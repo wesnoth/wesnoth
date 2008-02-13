@@ -1796,7 +1796,6 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	if(draw_bars) {
 		const std::string* movement_file = NULL;
 		const std::string* energy_file = &game_config::energy_image;
-		const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7));
 
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
@@ -1831,6 +1830,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		const int bar_shift = static_cast<int>(-5*disp.get_zoom_factor());
 #endif
 		const int hp_bar_height = static_cast<int>(max_hitpoints()*game_config::hp_bar_scaling);
+
+		const fixed_t bar_alpha = loc == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7);
 
 		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
