@@ -353,7 +353,7 @@ void wait::start_game()
 	}
 	// add era events after loaded
 	const config* const era_cfg = level_.child("era");
-	if (era_cfg != NULL) {
+	if (era_cfg != NULL && level_["savegame"] == "no") {
 		game_events::add_events(era_cfg->get_children("event"),"era_events");
 	}
 

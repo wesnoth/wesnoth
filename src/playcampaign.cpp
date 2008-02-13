@@ -286,6 +286,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		const config::child_list& sides_list = scenario->get_children("side");
 		for(config::child_list::const_iterator side = sides_list.begin();
 				side != sides_list.end(); ++side) {
+			if ((**side)["current_player"] == preferences::login())
+			{
+				(**side)["controller"] = preferences::client_type();
+			}
 			std::string id = (**side)["save_id"];
 			if(id.empty())
 				continue;
@@ -305,8 +309,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			const config::child_list& sides_list = starting_pos.get_children("side");
 			for(config::child_list::const_iterator side = sides_list.begin();
 					side != sides_list.end(); ++side) {
-				if((**side)["controller"] == "network" &&
-						(**side)["current_player"] == preferences::login()) {
+				if((**side)["current_player"] == preferences::login()) {
 					(**side)["controller"] = preferences::client_type();
 					(**side)["persistent"] = "1";
 				} else if((**side)["controller"] != "null") {

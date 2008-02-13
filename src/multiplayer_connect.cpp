@@ -88,11 +88,17 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		size_t i = CNTR_NETWORK;
 		// If player isn't allowed, network controller doesn't make sense
 		if (!allow_player_)
-			++i;
-		for(; i != CNTR_LAST; ++i) {
-			if(cfg_["controller"] == controller_names[i]) {
-				controller_ = static_cast<mp::controller>(i);
-				break;
+		{
+			cfg_["controller"] = controller_names[CNTR_COMPUTER];
+			controller_ = static_cast<mp::controller>(CNTR_COMPUTER); // Set to ai
+		}
+		else
+		{
+			for(; i != CNTR_LAST; ++i) {
+				if(cfg_["controller"] == controller_names[i]) {
+					controller_ = static_cast<mp::controller>(i);
+					break;
+				}
 			}
 		}
 	}
@@ -133,9 +139,9 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	}
 	config *ai = cfg_.child("ai");
 	if (ai)
-        ai_algorithm_ = lexical_cast_default<std::string>((*ai)["ai_algorithm"], "default");
-    else
-        ai_algorithm_ = "default";
+		ai_algorithm_ = lexical_cast_default<std::string>((*ai)["ai_algorithm"], "default");
+	else
+		ai_algorithm_ = "default";
 	init_ai_algorithm_combo();
 
 	// "Faction name" hack
@@ -972,7 +978,9 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 	}
 
 	if (side_choice != -1)
+	{
 		sides_[side_choice].set_id(preferences::login());
+	}
 
 	// Updates the "level_" variable, now that sides are loaded
 	update_level();
@@ -1043,7 +1051,7 @@ void connect::start_game()
 	
 	// add era events only if not save
 	const config* const era_cfg = level_.child("era");
-	if (era_cfg != NULL) {
+	if (era_cfg != NULL && level_["savegame"] == "no") {
 		game_events::add_events(era_cfg->get_children("event"),"era_events");
 	}
 
