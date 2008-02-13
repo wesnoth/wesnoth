@@ -63,7 +63,7 @@ def isresource(filename):
 
 def formaltype(f):
     # Deduce the expected type of the formal
-    if f in ("SIDE", "X", "Y", "AMOUNT", "RED", "GREEN", "BLUE", "TURN", "RADIUS") or f.endswith("NUMBER") or f.endswith("_X") or f.endswith("_Y"):
+    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("_X") or f.endswith("_Y"):
         ftype = "numeric"
     elif f in ("POSITION",):
         ftype = "position"
