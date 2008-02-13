@@ -584,7 +584,8 @@ private:
 			}
 			str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
 			    << teams_[n].current_player() << COLUMN_SEPARATOR
-			    << data.teamname << COLUMN_SEPARATOR;
+			    << (data.teamname.empty() ? teams_[n].team_name() : data.teamname)
+			    << COLUMN_SEPARATOR;
 
 			if(!known && !game_config::debug) {
 				// We don't spare more info (only name)
