@@ -214,11 +214,7 @@ void game_display::select_hex(gamemap::location hex)
 	}
 	display::select_hex(hex);
 
-	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]); 
-	if (u != units_.end()) {
-		displayedUnitHex_ = hex;
-		invalidate_unit();
-	}
+	display_unit_hex(hex);
 }
 
 void game_display::highlight_hex(gamemap::location hex)
@@ -245,7 +241,8 @@ void game_display::highlight_hex(gamemap::location hex)
 
 void game_display::display_unit_hex(gamemap::location hex)
 {
-	if (units_.count(hex)) {
+	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]); 
+	if (u != units_.end()) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	}
