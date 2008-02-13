@@ -1831,7 +1831,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 #endif
 		const int hp_bar_height = static_cast<int>(max_hitpoints()*game_config::hp_bar_scaling);
 
-		const fixed_t bar_alpha = loc == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7);
+		const fixed_t bar_alpha = loc == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.8);
 
 		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
