@@ -375,6 +375,17 @@ bool game_controller::init_video()
 		}
 #endif
 
+#ifdef USE_SMALL_GUI
+        if(bpp == 0) {
+            std::cerr << "800x600x" << DefaultBPP << " not available - attempting 800x480x" << DefaultBPP << "...\n";
+
+            resolution.first = 800;
+            resolution.second = 480;
+
+            bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
+        }
+#endif
+
 		if(bpp == 0) {
 			//couldn't do 1024x768 or 800x600
 
@@ -1849,6 +1860,10 @@ void game_controller::reset_defines_map()
 
 #ifdef USE_TINY_GUI
 	defines_map_["TINY"] = preproc_define();
+#endif
+
+#ifdef USE_SMALL_GUI
+    defines_map_["SMALL_GUI"] = preproc_define();
 #endif
 
 #ifdef HAVE_PYTHON

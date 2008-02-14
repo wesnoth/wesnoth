@@ -142,10 +142,22 @@ AC_ARG_ENABLE([tinygui],
 
 if test "x$tinygui" = "xyes"
 then
-	CPPFLAGS="$CPPFLAGS -DUSE_TINY_GUI"
+    CPPFLAGS="$CPPFLAGS -DUSE_TINY_GUI"
 fi
 
 AM_CONDITIONAL([TINYGUI], [test "x$tinygui" = "xyes"])
+
+AC_ARG_ENABLE([smallgui],
+              AS_HELP_STRING([--enable-smallgui], [enable GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0)]),
+          [smallgui=$enableval],
+          [smallgui=no])
+
+if test "x$smallgui" = "xyes"
+then
+    CPPFLAGS="$CPPFLAGS -DUSE_SMALL_GUI"
+fi
+
+AM_CONDITIONAL([SMALLGUI], [test "x$smallgui" = "xyes"])
 
 AC_ARG_ENABLE([optipng],
 	AS_HELP_STRING([--enable-optipng],
