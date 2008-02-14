@@ -481,7 +481,7 @@ void game_display::draw(bool update,bool force)
 			}
 
 			if (temp_unit_ && temp_unit_loc_ == *it2) {
-				temp_unit_->redraw_unit(*this, temp_unit_loc_);
+				temp_unit_->redraw_unit(*this, temp_unit_loc_, true);
 				//simulate_delay += 1;
 			}
 		}

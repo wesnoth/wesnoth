@@ -172,7 +172,9 @@ public:
 
 	//! A SDL surface, ready for display for place where we need a still-image of the unit.
 	const surface still_image(bool scaled = false) const;
-	void redraw_unit(game_display& disp, const gamemap::location& loc);
+	//! draw a unit, fake is used for temporary unit not in unit_map
+	//! (so we can skip functions assuming that)
+	void redraw_unit(game_display& disp, const gamemap::location& loc, const bool fake = false);
 	//! Clear unit_halo_ and unit_anim_halo_
 	void clear_haloes();
 

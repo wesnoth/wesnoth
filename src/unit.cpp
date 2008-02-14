@@ -1625,7 +1625,7 @@ void unit::set_facing(gamemap::location::DIRECTION dir) {
 	// Else look at yourself (not available so continue to face the same direction)
 }
 
-void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
+void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const bool fake)
 {
 	const gamemap & map = disp.get_map();
 	if(!loc.valid() || hidden_ || disp.fogged(loc)
@@ -1743,8 +1743,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		blend_ratio = 0.25;
 	}
 
-	// We draw bars only if wanted and visible on the map view
-	bool draw_bars = draw_bars_;
+	// We draw bars only if wanted, visible on the map view and not a fake unit
+	bool draw_bars = draw_bars_ && !fake;
 	if (draw_bars) {
 		const int d = disp.hex_size();
 		SDL_Rect unit_rect = {xsrc, ysrc_adjusted, d, d};
@@ -1809,6 +1809,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
 					movement_file = &game_config::unmoved_ball_image;
+					// unit_can_move assumes that it's not a fake unit (= in unit_map)
 				} else if(unit_can_move(loc,disp.get_units(),map,disp.get_teams())) {
 					movement_file = &game_config::partmoved_ball_image;
 				}
