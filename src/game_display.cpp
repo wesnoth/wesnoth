@@ -930,10 +930,10 @@ void game_display::float_label(const gamemap::location& loc, const std::string& 
 }
 
 struct is_energy_colour {
-	bool operator()(Uint32 colour) const { return (colour&0xFF000000) < 0x50000000 &&
-	                                              (colour&0x00FF0000) > 0x00990000 &&
-												  (colour&0x0000FF00) > 0x00009900 &&
-												  (colour&0x000000FF) > 0x00000099; }
+	bool operator()(Uint32 colour) const { return (colour&0xFF000000) > 0x10000000 &&
+	                                              (colour&0x00FF0000) < 0x00100000 &&
+												  (colour&0x0000FF00) < 0x00001000 &&
+												  (colour&0x000000FF) < 0x00000010; }
 };
 
 const SDL_Rect& game_display::calculate_energy_bar(surface surf)
