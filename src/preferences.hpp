@@ -33,7 +33,7 @@ class display;
 #ifdef USE_TINY_GUI
 const int min_allowed_width = 320;
 const int min_allowed_height = 240;
-#elif define(USE_SMALL_GUI)
+#elif defined USE_SMALL_GUI
 const int min_allowed_width = 800;
 const int min_allowed_height = 480;
 #else
