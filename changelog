@@ -8,6 +8,9 @@ Version 1.3.16+svn:
  * user interface:
    * quick replays no longer scroll to leaders
    * scrolling to the leader the very first time happens instantly now
+ * WML engine:
+   * unstoring a leader for a side without a leader sets the leader for
+     that side (bug #11048)
  * miscellaneous and bug fixes:
    * replays of midgame saves get the right recall list now (bug #10868)
    * Fixed controller problems when reloading MP game (bug #11046 and bit more)

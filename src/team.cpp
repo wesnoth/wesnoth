@@ -113,6 +113,7 @@ team::team_info::team_info(const config& cfg) :
 		share_view(false),
 		disallow_observers(utils::string_bool(cfg["disallow_observers"])),
 		allow_player(utils::string_bool(cfg["allow_player"], true)),
+		no_leader(utils::string_bool(cfg["no_leader"])),
 		music(cfg["music"]),
 		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"])
 {
@@ -298,6 +299,7 @@ void team::team_info::write(config& cfg) const
 	cfg["village_gold"] = str_cast(income_per_village);
 	cfg["disallow_observers"] = disallow_observers ? "yes" : "no";
 	cfg["allow_player"] = allow_player ? "yes" : "no";
+	cfg["no_leader"] = no_leader ? "yes" : "no";
 
 	std::stringstream enemies_str;
 	for(std::vector<int>::const_iterator en = enemies.begin(); en != enemies.end(); ++en) {

@@ -2178,7 +2178,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					// The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel, true);
 				}
-				
+
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
 				
@@ -2231,6 +2231,13 @@ void event_handler::handle_event_command(const queued_event& event_info,
 						<< " and the map location is invalid.\n";
 				}
 			}
+
+			// If we unstore a leader make sure the team gets a leader if not the loading
+			// in MP might abort since a side without a leader has a recall list.
+			if(u.can_recruit()) {
+				(*teams)[u.side() - 1].no_leader() = false; 
+			}
+				
 		} catch(game::load_game_failed& e) {
 			ERR_NG << "could not de-serialize unit: '" << e.message << "'\n";
 		}
