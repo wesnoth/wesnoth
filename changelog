@@ -6,6 +6,17 @@ Version 1.3.16+svn:
    * removed $RACE entry when using tinygui
    * fixed replay theme in tinygui to display correctly
  * user interface:
+   * tinygui:
+     * fixed fontsize for the clock
+     * removed $RACE entry when using tinygui
+     * fixed replay theme in tinygui to display correctly
+     * get closer to the normal theme when tinygui is active and the
+       resolution bigger than 400x300
+   * reduce minimap in resolutions <1000x620 to allow displaying all attacks
+     from units with many attacks (eg the sylph)
+   * add support for 800x480 when using the configure option
+     --enable-small-gui, not everything displays correctly (preferences,
+     mp-creation/lobby, ...), but normal gameplay should work perfectly
    * quick replays no longer scroll to leaders
    * scrolling to the leader the very first time happens instantly now
  * WML engine:

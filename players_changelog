@@ -9,6 +9,14 @@ Version 1.3.16+svn:
   * Multiplayer
     * With "quick replay" checked the game no longer scrolls to each leader.
 
+  * User Interface
+    * Fixed many glitches with tinygui.
+    * Fixed displaying units with many attacks in resolutions smaller than
+      1000x620.
+    * Added the option to use a resolution of 800x480 when using
+      --enable-small-gui at configure time. This is especially usefull for
+      devices like the eeePC or other handheld devices.
+
 Version 1.3.16:
   * Language and translations
     * Updated translations: Chinese, Czech, Dutch, Filipino, Finnish, German,
