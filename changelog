@@ -26,6 +26,7 @@ Version 1.3.16+svn:
    * replays of midgame saves get the right recall list now (bug #10868)
    * Fixed controller problems when reloading MP game (bug #11046 and bit more)
    * Made scrollarea to stay in bottom if it is resized (bug #6974)
+   * Fixed reference to invalid iterator in unit_cycle (bug #7991)
    * Fixed random start ToD (bug #11056)
    * Fix an assert crash when a fake_unit_move starts outside of the screen
    

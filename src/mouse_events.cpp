@@ -1502,6 +1502,8 @@ void mouse_handler::cycle_units(const bool browse, const bool reverse)
 	}
 
 	unit_map::const_iterator it = find_unit(next_unit_);
+	if (it == units_.end())
+		it = units_.begin();
 	const unit_map::const_iterator itx = it;
 
 	do {
