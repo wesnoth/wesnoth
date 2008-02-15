@@ -189,7 +189,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const size_t side = atoi(side_str.c_str());
 		const size_t side_index = side-1;
 
-		bool restart = side == gui_.get_playing_team();
+		bool restart = side_index == gui_.get_playing_team();
 
 		if(side_index >= teams_.size()) {
 			LOG_STREAM(err, network) << "unknown side " << side_index << " is dropping game\n";
