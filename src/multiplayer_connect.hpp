@@ -188,7 +188,7 @@ private:
 	void update_level();
 
 	//! Updates the level, and send a diff to the clients.
-	void update_and_send_diff();
+	void update_and_send_diff(bool update_time_of_day = false);
 
 	//! Returns true if there still are sides available for this game.
 	bool sides_available();

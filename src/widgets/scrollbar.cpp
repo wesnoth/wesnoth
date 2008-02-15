@@ -131,7 +131,10 @@ void scrollbar::set_shown_size(unsigned h)
 		h = full_height_;
 	if (h == grip_height_)
 		return;
+	bool at_bottom = get_position() == get_max_position() && get_max_position() > 0;
 	grip_height_ = h;
+	if (at_bottom)
+		grip_position_ = get_max_position();
 	set_position(grip_position_);
 	set_dirty(true);
 }
@@ -140,7 +143,10 @@ void scrollbar::set_full_size(unsigned h)
 {
 	if (h == full_height_)
 		return;
+	bool at_bottom = get_position() == get_max_position() && get_max_position() > 0;
 	full_height_ = h;
+	if (at_bottom)
+		grip_position_ = get_max_position();
 	downarrow_.enable(grip_position_ < full_height_ - grip_height_);
 	set_shown_size(grip_height_);
 	set_position(grip_position_);
