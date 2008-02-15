@@ -753,9 +753,30 @@ bool game::process_commands(const config& data, const player_map::const_iterator
 	config::child_list::const_iterator command;
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if ((**command).child("speak")) {
-			if (!((**command).child("speak")->get_attribute("team_name") == "")
+			config& speak = *(**command).child("speak");
+			if (!(speak.get_attribute("team_name") == "")
 			|| (is_muted_observer(user->first))) {
 				repackage = true;
+			}
+			chat_message::truncate_message(speak["message"]);
+
+			// Force the description to be correct,
+			// to prevent spoofing of messages.
+			speak["description"] = user->second.name();
+			// Also check the side for players.
+			if (is_player(user->first)) {
+				const size_t side_num = lexical_cast_default<size_t>(
+						speak.get_attribute("side"), 0);
+				if (side_num < 1 || side_num > gamemap::MAX_PLAYERS
+				|| sides_[side_num - 1] != user->first) {
+					if (user->first == current_player()) {
+						speak["side"] = lexical_cast<std::string>(current_side() + 1);
+					} else {
+						const side_vector::const_iterator s =
+								std::find(sides_.begin(), sides_.end(), user->first);
+						speak["side"] = lexical_cast<std::string>(s - sides_.begin() + 1);
+					}
+				}
 			}
 		} else if ((**command).child("end_turn")) {
 			turn_ended = end_turn();
@@ -792,26 +813,6 @@ bool game::process_commands(const config& data, const player_map::const_iterator
 			LOG_GAME << msg << std::endl;
 			send_and_record_server_message(msg);
 			continue;
-		}
-		chat_message::truncate_message((*speak)["message"]);
-
-		// Force the description to be correct,
-		// to prevent spoofing of messages.
-		(*speak)["description"] = user->second.name();
-		// Also check the side for players.
-		if (is_player(user->first)) {
-			const size_t side_num =
-					lexical_cast_default<size_t>(speak->get_attribute("side"), 0);
-			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS
-			|| sides_[side_num - 1] != user->first) {
-				if (user->first == current_player()) {
-					(*speak)["side"] = lexical_cast<std::string>(end_turn_ % nsides_ + 1);
-				} else {
-					const side_vector::const_iterator s =
-							std::find(sides_.begin(), sides_.end(), user->first);
-					(*speak)["side"] = lexical_cast<std::string>(s - sides_.begin() + 1);
-				}
-			}
 		}
 		config message;
 		config& turn = message.add_child("turn");
