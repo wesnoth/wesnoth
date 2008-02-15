@@ -435,10 +435,6 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 
 	const bool show_move = preferences::show_ai_moves();
 
-	const bool teleport = u_it->second.get_ability_bool("teleport",u_it->first);
-	paths current_paths(info_.map,info_.units,from,
-			info_.teams,false,teleport,current_team());
-
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
 	if(p_it != possible_moves.end()) {
