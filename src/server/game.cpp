@@ -838,9 +838,8 @@ bool game::end_turn() {
 		turn_ended = true;
 	}
 	// Skip over empty sides.
-	for (int i = 0; i < nsides_ && side_controllers_[current_side()] == "null";
-			++i, ++end_turn_)
-	{
+	for (int i = 0; i < nsides_ && side_controllers_[current_side()] == "null"; ++i) {
+		++end_turn_;
 		if (current_side() == 0) {
 			turn_ended = true;
 		}
