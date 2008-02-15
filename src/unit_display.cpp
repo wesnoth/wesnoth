@@ -186,8 +186,10 @@ void unit_die(const gamemap::location& loc, unit& loser,
 		return;
 	}
 	unit_animator animator;
+	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
 	animator.add_animation(&loser,"death",loc,0,false,false,"",0,unit_animation::KILL,attack,secondary_attack,0);
-	animator.add_animation(winner,"victory",loc.get_direction(loser.facing()),0,false,false,"",0,
+	// but show the bars of the winner (avoid blinking and show its xp gain)
+	animator.add_animation(winner,"victory",loc.get_direction(loser.facing()),0,true,false,"",0,
 			unit_animation::KILL,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
