@@ -298,7 +298,7 @@ void unit_healing(unit& healed,gamemap::location& healed_loc, std::vector<unit_m
 	if(healing==0) return;
 	// This is all the pretty stuff.
 	disp->scroll_to_tile(healed_loc, game_display::ONSCREEN);
-	disp->select_hex(healed_loc);
+	disp->display_unit_hex(healed_loc);
 	unit_animator animator;
 
 	for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
