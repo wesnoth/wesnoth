@@ -199,7 +199,6 @@ if __name__ == "__main__":
             + "temp_dir = '%s' svn_dir = '%s' password is not shown", 
             server, addon, temp_dir, svn_dir)
 
-
         # update the wescamp checkout for the translation, 
         svn = libsvn.SVN(wescamp + "/" + addon)
 
@@ -217,33 +216,29 @@ if __name__ == "__main__":
             else:
                 return True
 
-        # extract the campaign from the server
-        extract(server, addon, temp_dir)
+        # Export the entire addon data dir.
+        svn_addon = libsvn.SVN(wescamp + "/" + addon + "/" + addon)
+        svn_addon.export(temp_dir + "/" + addon)
 
-        # Note we could copy the translations to SVN and see whether there's a difference
-        # if so upload the campaign not otherwise.
+        # If it is the old format with the addon.cfg copy that as well.
+        svn_cfg = wescamp + "/" + addon + "/" + addon + ".cfg"
+        temp_cfg = temp_dir + "/" + addon + ".cfg"
+        if(os.path.isfile(svn_cfg)):
+            logging.debug("Found old format config file")
+            shutil.copy(svn_cfg, temp_cfg)
 
-        # delete translations, but make sure the translations 
-        # directory exists afterwards.
-        if(os.path.isdir(temp_dir + "/" + addon + "/translations")):
-            shutil.rmtree(temp_dir + "/" + addon + "/translations")
-
-        os.mkdir(temp_dir + "/" + addon + "/translations")
-
-        # copy the translations
-        svn = libsvn.SVN(wescamp + "/" + addon + "/" + addon + "/translations")
-        svn.copy_from_svn(temp_dir + "/" + addon + "/translations", None)
-
-        # upload to the server
+        # We don't test for changes, just upload the stuff.
+        # NOTE wml.put_campaign tests whether the addon.cfg exists so
+        # send it unconditionally.
         wml = libwml.CampaignClient(server)
         if(stamp == None):
             wml.put_campaign("", addon, "", password, "", "", "",  
-                temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon)
+                temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon + "/")
             logging.info("New version of addon '%s' downloaded.", addon)
         else:
             if(stamp == get_timestamp(server, addon)):
-                wml.put_campaign("", addon, "", password, "", "", "",  
-                    temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon)
+            wml.put_campaign("", addon, "", password, "", "", "",  
+                temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon + "/")
                 logging.info("New version of addon '%s' downloaded.", addon)
                 return True
             else:
