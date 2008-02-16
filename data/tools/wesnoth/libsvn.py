@@ -125,6 +125,24 @@ class SVN:
         logging.debug("update output:" + out)
         return True
 
+    """Export the current SVN root.
+
+    target              Directory to export to, shouldn't exist yet.
+    returns             True no error, False erro.
+    """
+    def export(self, target):
+
+        logging.debug("export to '%s'", target)
+
+        command = ["svn", "export", self.checkout_path, target]
+ 
+        # execute
+        out, err = self.__execute(command)
+
+        return (err == "")
+
+ 
+
     """Add an item to the repo.
 
     The item can either be a file or directory, if the item is already added
