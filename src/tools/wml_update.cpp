@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
- * Copyright 2006 - 2007 Dominic Bolin
+ * Copyright 2006 - 2008 Dominic Bolin
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

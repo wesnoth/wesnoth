@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2007 by Yann Dirson <ydirson@altern.org>
+   Copyright (C) 2005 - 2008 by Yann Dirson <ydirson@altern.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

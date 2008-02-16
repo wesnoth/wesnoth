@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2008 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
