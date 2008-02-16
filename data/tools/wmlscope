@@ -149,6 +149,20 @@ class CrossRefLister(CrossRef):
                 for (file, refs) in m.references.items():
                     for (ln, args) in refs:
                         print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(map(lambda f, a: "%s=%s" % (f, actualtype(a)), m.args, args)))
+    def typelist(self, branch):
+        "Dump actual and formal aruments for macros in specified file"
+        already_seen = []
+        sorted = self.xref.keys()
+        sorted.sort()
+        for name in sorted:
+            for defn in self.xref[name]:
+                for (filename, refs) in defn.references.items():
+                    if filename.endswith(branch):
+                        if name not in already_seen:
+                            already_seen.append(name)
+                            print "%s: macro %s(%s):" % (defn, name, ", ".join(map(lambda x: "%s=%s" % (x, formaltype(x)), defn.args)))
+                        for (ln, args) in refs:
+                            print '"%s", line %d: %s(%s) with signature (%s)' % (filename, ln, name, ", ".join(args), ", ".join(map(lambda f, a: "%s=%s" % (f, actualtype(a)), defn.args, args)))
     def deflist(self, pred=None):
         "List all resource definitions."
         sorted = self.xref.keys()
@@ -253,6 +267,7 @@ Usage: macroscope [options] dirpath
     -f regexp, --from regexp     Report only on things defined in files matching regexp
     -l, --listfiles              List files that will be processed
     -r ddd, --refcount=ddd       Report only on macros w/references in ddd files
+    -t fname, --typecheck fname  List actual & formal argtypes for calls in fname
     -u, --unresolved             Report unresolved macro references
     -w, --warnlevel              Set to 1 to warn of duplicate macro definitions
     --forced-used regexp         Ignore refcount 0 on names matching regexp
@@ -263,7 +278,7 @@ Usage: macroscope [options] dirpath
 """)
 
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lr:uw:",
+    (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lr:t:uw:",
                                          [
                                           'crossreference',
                                           'collisions',
@@ -275,6 +290,7 @@ Usage: macroscope [options] dirpath
         				  'help',
                                           'listfiles',
                                           'refcount=',
+                                          'typelist=',
                                           'unchecked',
                                           'unresolved',
                                           'warnlevel=',
@@ -286,6 +302,7 @@ Usage: macroscope [options] dirpath
     exclude = []
     warnlevel = 0
     collisions = False
+    typelist = None
     unchecked = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
@@ -312,6 +329,8 @@ Usage: macroscope [options] dirpath
             refcount_restrict = int(val)
         elif switch == '--unchecked':
             unchecked = True
+        elif switch in ('-t', '--typelist'):
+            typelist = val
         elif switch in ('-u', '--unresolved'):
             unresolved = True
         elif switch in ('-w', '--warnlevel'):
@@ -352,6 +371,8 @@ Usage: macroscope [options] dirpath
                 print "%%"
                 lasthash = h
             print n
+    elif typelist:
+        xref.typelist(typelist)
     elif crossreference or definitions or listfiles or unresolved:
         def predicate(name, defloc):
             if from_restrict and not re.search(from_restrict, defloc.filename):
