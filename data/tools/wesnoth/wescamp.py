@@ -200,12 +200,7 @@ if __name__ == "__main__":
             server, addon, temp_dir, svn_dir)
 
 
-        extract(server, addon, temp_dir)
-
         # update the wescamp checkout for the translation, 
-        # if nothing changed we're done.
-        # Test the entire archive now and use that, might get optimized later
-
         svn = libsvn.SVN(wescamp + "/" + addon)
 
         # The result of the update can be ignored, no changes when updating
@@ -222,30 +217,34 @@ if __name__ == "__main__":
             else:
                 return True
 
-
         # extract the campaign from the server
-        extract(server, addon, target)
+        extract(server, addon, temp_dir)
+
+        # Note we could copy the translations to SVN and see whether there's a difference
+        # if so upload the campaign not otherwise.
 
         # delete translations, but make sure the translations 
         # directory exists afterwards.
-        if(os.path.isdir(target + "/" + addon + "/translations")):
-            shutil.rmtree(target + "/" + addon + "/translations")
+        if(os.path.isdir(temp_dir + "/" + addon + "/translations")):
+            shutil.rmtree(temp_dir + "/" + addon + "/translations")
 
-        os.mkdir(target + "/" + addon + "/translations")
+        os.mkdir(temp_dir + "/" + addon + "/translations")
 
         # copy the translations
         svn = libsvn.SVN(wescamp + "/" + addon + "/" + addon + "/translations")
-        svn.copy_from_svn(target + "/" + addon + "/translations", None)
+        svn.copy_from_svn(temp_dir + "/" + addon + "/translations", None)
 
         # upload to the server
         wml = libwml.CampaignClient(server)
         if(stamp == None):
             wml.put_campaign("", addon, "", password, "", "", "",  
-                target + "/" + addon + ".cfg", target + "/" + addon)
+                temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon)
+            logging.info("New version of addon '%s' downloaded.", addon)
         else:
             if(stamp == get_timestamp(server, addon)):
                 wml.put_campaign("", addon, "", password, "", "", "",  
-                    target + "/" + addon + ".cfg", target + "/" + addon)
+                    temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon)
+                logging.info("New version of addon '%s' downloaded.", addon)
                 return True
             else:
                 return False
