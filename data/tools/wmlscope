@@ -103,7 +103,7 @@ class CrossRefLister(CrossRef):
                 if nrefs == 0:
                     print "%s: %s macro %s is unused" % (defn, type, name)
                 else:
-                    print "%s: %s macro %s (%d args) is used in %d files:" % (defn, type, name, defn.arity, nrefs)
+                    print "%s: %s macro %s is used in %d files:" % (defn, type, name, nrefs)
                 defn.dump_references()
         sorted = self.fileref.keys()
         sorted.sort()
