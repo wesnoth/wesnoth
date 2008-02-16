@@ -307,6 +307,7 @@ namespace {
 						cmps = campaign_list.get_children("campaign");
 						for(config::child_list::iterator j = cmps.begin(); j != cmps.end(); ++j) {
 							(**j)["passphrase"] = "";
+							(**j)["upload_ip"] = "";
 						}
 
 						config response;
@@ -314,7 +315,7 @@ namespace {
 						//! @todo, maybe we should let the server send gzipped data.
 						network::send_data(response, sock, false);
 					} else if(const config* req = data.child("request_campaign")) {
-						LOG_CS << "sending campaign " << (*req)["name"] << " to " << network::ip_address(sock) << "\n";
+						LOG_CS << "sending campaign '" << (*req)["name"] << "' to " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 						if(campaign == NULL) {
 							//! @todo, maybe we should let the server send gzipped data.
@@ -337,22 +338,26 @@ namespace {
 						network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."), sock, false);
 						LOG_CS << " Done\n";
 					} else if(config* upload = data.child("upload")) {
-						LOG_CS << "uploading campaign " << network::ip_address(sock) << "\n";
+						LOG_CS << "uploading campaign '" << (*upload)["name"] << "' from " << network::ip_address(sock) << ".\n";
 						config* data = upload->child("data");
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 						if(data == NULL) {
 							//! @todo, maybe we should let the server send gzipped data.
+							LOG_CS << "Upload aborted no data.\n";
 							network::send_data(construct_error("No add-on data was supplied."), sock, false);
 						} else if(campaign_name_legal((*upload)["name"]) == false) {
 							//! @todo, maybe we should let the server send gzipped data.
+							LOG_CS << "Upload aborted invalid name.\n";
 							network::send_data(construct_error("The name of the add-on is invalid"), sock, false);
 						} else if(check_names_legal(*data) == false) {
 							//! @todo, maybe we should let the server send gzipped data.
+							LOG_CS << "Upload aborted invalid file name.\n";
 							network::send_data(construct_error("The add-on contains an illegal file or directory name."), sock, false);
 						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 							// the user password failed, now test for the master password, in master password
 							// mode the upload behaves different since it's only intended to update translations.
 							// In a later version the translations will be separated from the addon.
+							LOG_CS << "Upload is admin upload.\n";
 							if(campaigns()["master_password"] != ""
 									&& campaigns()["master_password"] == (*upload)["passphrase"]) {
 
@@ -383,9 +388,11 @@ namespace {
 
 							} else {
 								//! @todo, maybe we should let the server send gzipped data.
+								LOG_CS << "Upload aborted invalid passphrase.\n";
 								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."), sock, false);
 							}
 						} else {
+							LOG_CS << "Upload is owner upload.\n";
 							std::string message = "Add-on accepted.";
 							if(campaign == NULL) {
 								campaign = &campaigns().add_child("campaign");
@@ -401,6 +408,7 @@ namespace {
 							(*campaign)["icon"] = (*upload)["icon"];
 							(*campaign)["translate"] = (*upload)["translate"];
 							(*campaign)["dependencies"] = (*upload)["dependencies"];
+							(*campaign)["upload_ip"] = network::ip_address(sock);
 
 							if((*campaign)["downloads"].empty()) {
 								(*campaign)["downloads"] = "0";
@@ -439,7 +447,7 @@ namespace {
 							fire("hook_post_upload", (*upload)["name"]);
 						}
 					} else if(const config* erase = data.child("delete")) {
-						LOG_CS << "deleting campaign " << network::ip_address(sock) << "\n";
+						LOG_CS << "deleting campaign '" << (*erase)["name"] << "' requested from " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*erase)["name"]);
 						if(campaign == NULL) {
 							//! @todo, maybe we should let the server send gzipped data.
