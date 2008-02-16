@@ -51,6 +51,12 @@
 # WML-interpreter rules it has not.
 #
 # The reporting format is compatible with GNU Emacs compile mode.
+#
+# For debugging purposes, an in-line comment of the form
+#
+#     # wmlscope: warnlevel NNN
+#
+# sets the warning level.
 
 import sys, os, time, re, getopt, md5
 from wesnoth.wmltools import *

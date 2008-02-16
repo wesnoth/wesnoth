@@ -239,6 +239,8 @@ class CrossRef:
         self.xref = {}
         self.fileref = {}
         self.noxref = False
+        if warnlevel >=2:
+            print "*** Beginning definition-gathering pass..."
         for filename in self.filelist.generator():
             if warnlevel > 1:
                 print filename + ":"
@@ -252,6 +254,12 @@ class CrossRef:
                     if warnlevel > 1:
                         print `line`[1:-1]
                     if line.strip().startswith("#textdomain"):
+                        continue
+                    m = re.search("# *wmlscope: warnlevel ([0-9]*)", line)
+                    if m:
+                        warnlevel = int(m.group(1))
+                        print '"%s", line %d: warnlevel set to %d (definition-gathering pass)' \
+                             % (filename, n+1, warnlevel)
                         continue
                     elif line.strip().startswith("#define"):
                         tokens = line.split()
@@ -306,6 +314,8 @@ class CrossRef:
         self.unresolved = []
         self.missing = []
         formals = []
+        if warnlevel >=2:
+            print "*** Beginning reference-gathering pass..."
         for fn in self.filelist.generator():
             if iswml(fn):
                 rfp = open(fn)
@@ -318,6 +328,12 @@ class CrossRef:
                         formals = []
                     comment = ""
                     if '#' in line:
+                        m = re.search("# *wmlscope: warnlevel ([0-9]*)", line)
+                        if m:
+                            warnlevel = int(m.group(1))
+                            print '"%s", line %d: warnlevel set to %d (reference-gathering pass)' \
+                                 % (fn, n+1, warnlevel)
+                            continue
                         fields = line.split('#')
                         line = fields[0]
                         if len(fields) > 1:
