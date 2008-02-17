@@ -566,7 +566,7 @@ void game::mute_observer(const config& mute, const player_map::const_iterator mu
 		return;
 	}
 	//! Prevent muting ourselves.
-	if (user->first != muter->first) {
+	if (user->first == muter->first) {
 		network::send_data(construct_server_message(
 				"Don't mute yourself, silly."), muter->first, true);
 		return;
