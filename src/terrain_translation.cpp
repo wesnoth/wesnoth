@@ -72,7 +72,7 @@ namespace t_translation {
 	 * @param filler			if the terrain has only 1 layer then the filler will be used
 	 *							as the second layer.
 	 *
-	 * @return					the letter found in the string
+	 * @return					the terrain code found in the string
 	 */
 	static t_terrain string_to_number_(std::string str, int& start_position, const t_layer filler);
 	static t_terrain string_to_number_(const std::string& str, const t_layer filler = NO_LAYER);
@@ -92,7 +92,7 @@ namespace t_translation {
 	static std::string number_to_string_(t_terrain terrain, const int start_position = -1);
 
 	/**
-	 * Converts a terrain string to a letter for the builder.
+	 * Converts a terrain string to a number for the builder.
 	 * The translation rules differ from the normal conversion rules
 	 *
 	 * @param str	the terrain string

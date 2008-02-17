@@ -633,7 +633,7 @@ private:
 	void add_off_map_rule(const std::string& image);
 
 	/**
-	 * Checks whether a terrain letter matches a given list of terrain letters.
+	 * Checks whether a terrain code matches a given list of terrain codes.
 	 *
 	 * @param letter	The terrain to check
 	 * @param terrains	The terrain list agains which to check the terrain.
@@ -648,9 +648,9 @@ private:
 		{ return terrains.empty()? true : t_translation::terrain_matches(letter, terrains); }
 
 	/**
-	 * Checks whether a terrain letter matches a given list of terrain letters.
+	 * Checks whether a terrain code matches a given list of terrain letters.
 	 *
-	 * @param letter	The terrain to check
+	 * @param letter	The terrain code to check
 	 * @param terrain	The terrain match structure which to check the terrain.
 	 *	See previous definition for more details.
 	 *

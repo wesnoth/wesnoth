@@ -132,54 +132,55 @@ namespace t_translation {
 	/**
 	 * Reads a single terrain from a string.
 	 *
-	 * @param str		The string which should contain 1 letter the new format
-	 *					of a letter is 2 to 4 characters in the set
+	 * @param str		The string which should contain 1 terrain code;
+                                        the new format of a terrain code
+	 *				is 2 to 4 characters in the set
 	 *@verbatim
-	 *					[a-Z][A-Z]/|\_
+	 *				[a-Z][A-Z]/|\_
 	 *@endverbatim
-	 *					The underscore is intended for internal use.
-	 *					Other letters and characters are not validated but
-	 *					users of these letters can get nasty surprices.
-	 *					The * is used as wildcard in some cases.
-	 *					This letter can be two groups separated by a caret,
-	 *					the first group is the base terrain,
-	 *					the second the overlay terrain.
+	 *				The underscore is intended for internal use.
+	 *				Other letters and characters are not validated but
+	 *				users of these letters can get nasty surprices.
+	 *				The * is used as wildcard in some cases.
+	 *				The terrain code can be two groups separated by a caret,
+	 *				the first group is the base terrain,
+	 *				the second the overlay terrain.
 	 *
 	 * @param filler	if there's no layer this value will be used as the second layer
 	 *
-	 * @return			A single terrain letter
+	 * @return			A single terrain code
 	 */
 	t_terrain read_letter(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/**
-	 * Writes a single letter to a string.
+	 * Writes a single terrain code to a string.
 	 * The writers only support the new format.
 	 *
-	 * @param letter	The letter to convert to a string
+	 * @param letter	The terrain code to convert to a string
 	 *
-	 * @return			A string containing the letter
+	 * @return		A string containing the terrain code
 	 */
 	std::string write_letter(const t_terrain& letter);
 	inline std::ostream &operator<<(std::ostream &s, const t_terrain &a)
 		{ s << write_letter(a); return s; }
 
 	/**
-	 * Reads a list of terrain from a string, when reading the
+	 * Reads a list of terrains from a string, when reading the
 	 *
-	 * @param str		A string with one or more terrain letters (see read_letter)
+	 * @param str		A string with one or more terrain codes (see read_letter)
 	 * @param filler	If there's no layer, this value will be used as the second layer
 	 *
-	 * @returns			A vector which contains the letters found in the string
+	 * @returns		A vector which contains the terrain codes found in the string
 	 */
 	 t_list read_list(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a list of terrains to a string, only writes the new format.
 	 *
-	 * @param list		A vector with one or more terrain letters
+	 * @param list		A vector with one or more terrain codes
 	 *
-	 * @returns			A string with the terrain numbers, comma separated
-	 *					and a space behind the comma's. Not padded.
+	 * @returns		A string with the terrain codes, comma separated
+	 *			and a space behind the commas. Not padded.
 	 */
 	std::string write_list(const t_list& list);
 
@@ -204,7 +205,7 @@ namespace t_translation {
 	 *					  starting loction. The following format is used
 	 *					  [S ]T
 	 *					  S = starting location a positive non-zero number
-	 *					  T = terrain letter (see read_letter)
+	 *					  T = terrain code (see read_letter)
 	 * @param starting_positions This parameter will be filled with the starting
 	 *					locations found. Starting locations can only occur once
 	 *					if multiple definitions occur of the same position only
@@ -290,23 +291,21 @@ namespace t_translation {
 	bool terrain_matches(const t_terrain& src, const t_match& dest);
 
 	/**
-	 * Tests whether a terrain contains a wildcard
+	 * Tests whether a terrain code contains a wildcard
 	 *
-	 *  @param letter	the letter to test for a wildcard
+	 *  @param letter	the terrain code to test for a wildcard
 	 *
-	 *  @returns		true if wildcard found,
-	 *				else false
+	 *  @returns		true if wildcard found,	else false
 	 */
 	bool has_wildcard(const t_terrain& letter);
 
 	/**
-	 * Tests whether a terrain list contains at least
+	 * Tests whether a terrain-code list contains at least
 	 * one item with a wildcard
 	 *
 	 *  @param list		the list to test for a wildcard
 	 *
-	 *  @returns		true if a wildcard found,
-	 *				else false
+	 *  @returns		true if a wildcard found, else false
 	 */
 	bool has_wildcard(const t_list& list);
 
@@ -317,7 +316,7 @@ namespace t_translation {
 
 	/**
 	 * Reads a builder map.
-	 * A builder map differs much from a normal map,
+	 * A builder map differs a great deal from a normal map,
 	 * hence the different functions.
 	 *
 	 * @param str		The map data, a terrain letter is either a * or a . or a number as

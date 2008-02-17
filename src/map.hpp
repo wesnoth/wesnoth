@@ -38,7 +38,7 @@ class unit_map;
 
 //! Encapsulates the map of the game. 
 //! Although the game is hexagonal, the map is stored as a grid. 
-//! Each type of terrain is represented by a letter.
+//! Each type of terrain is represented by a multiletter terrain code.
 //! @todo Update for new map-format.
 class gamemap
 {
