@@ -237,8 +237,8 @@ if __name__ == "__main__":
             logging.info("New version of addon '%s' downloaded.", addon)
         else:
             if(stamp == get_timestamp(server, addon)):
-            wml.put_campaign("", addon, "", password, "", "", "",  
-                temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon + "/")
+                wml.put_campaign("", addon, "", password, "", "", "",  
+                    temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon + "/")
                 logging.info("New version of addon '%s' downloaded.", addon)
                 return True
             else:
