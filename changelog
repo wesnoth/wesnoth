@@ -1,4 +1,6 @@
 Version 1.3.17:
+ * campaigns:
+   * The South Guard: complete re-design of the internal workings of 6b The Long March
  * language and i18n:
    * updated translations: Catalan, Chinese, Danish, Esperanto, French, German,
      Italian, Slovak, Spanish, Valencian
@@ -9,6 +11,11 @@ Version 1.3.17:
    * more elvish portraits
  * multiplayer:
    * revised maps: Caves of the Basilisk, Sablestone Delta, Silverhead Crossing
+ * tutorial:
+   * fixed the recall refunding/re-doing in scenario 2 (bug #10993)
+   * scripting of the AI moves now check for units in target hex (prevents bug #6745)
+   * fixed some problems with the grunt (Dumbo) dialogue
+   * decorated map with new terrains
  * user interface:
    * tinygui:
      * fixed fontsize for the clock
