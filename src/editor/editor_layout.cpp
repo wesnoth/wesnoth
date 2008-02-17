@@ -41,12 +41,16 @@ size_specs::size_specs() {
 }
 
 void adjust_sizes(const display &disp, size_specs &sizes) {
-	sizes.brush_x = disp.map_outside_area().w + 23;
-	sizes.brush_y = 190;
-	sizes.palette_x = disp.map_outside_area().w + 13;
-	sizes.palette_y = sizes.brush_y + 160 + 10;
+	//hardcoded coordinates for brush selection, TODO: make it themeable
+	sizes.brush_x = disp.map_outside_area().w + 22;
+	sizes.brush_y = 165;
+	//hardcoded coordinates for terrain palette, TODO: make it themeable
+	sizes.palette_x = disp.map_outside_area().w + 16;
+	sizes.palette_y = sizes.brush_y + 132 + 10;
 	sizes.palette_w = sizes.terrain_space * default_palette_width;
-	sizes.palette_h = disp.h() - sizes.palette_y - 60;
+	//the '-5' make sure that the scroll down button can not be outside of
+	//the window, this is probably a bug in placement anyway...
+	sizes.palette_h = disp.h() - sizes.palette_y - 5;
 }
 
 } // end namespace map_editor
