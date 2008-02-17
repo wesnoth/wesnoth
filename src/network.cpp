@@ -526,6 +526,7 @@ connection accept_connection()
 		SDLNet_Write32(connect,buf);
 		const int nbytes = SDLNet_TCP_Send(sock,buf,4);
 		if(nbytes != 4) {
+			SDLNet_TCP_DelSocket(socket_set,sock);
 			SDLNet_TCP_Close(sock);
 			throw network::error(_("Could not send initial handshake"));
 		}
