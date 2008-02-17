@@ -931,11 +931,12 @@ void floating_label::undraw(surface screen)
 	if(lifetime_ > 0) {
 		--lifetime_;
 		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0)) {
+			// we don't compress these surfaces since they will always change
 			if (!surf_.null()) {
-				surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_));
+				surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_,false));
 			}
 			if (!foreground_.null()) {
-				foreground_.assign(adjust_surface_alpha_add(foreground_,alpha_change_));
+				foreground_.assign(adjust_surface_alpha_add(foreground_,alpha_change_,false));
 			}
 		}
 	}

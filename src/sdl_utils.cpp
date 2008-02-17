@@ -629,7 +629,7 @@ surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize)
 	}
 }
 
-surface adjust_surface_alpha_add(surface const &surf, int amount)
+surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -662,7 +662,7 @@ surface adjust_surface_alpha_add(surface const &surf, int amount)
 		}
 	}
 
-	return create_optimized_surface(nsurf);
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
 //! Applies a mask on a surface.
