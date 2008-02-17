@@ -2954,6 +2954,7 @@ std::string get_checksum(const unit& u) {
 	// Non-critical tags to ignore.
 	unit_config.clear_children("animation");
 	unit_config.clear_children("attack_anim");
+	unit_config.clear_children("comment");
 	unit_config.clear_children("defend");
 	unit_config.clear_children("death");
 	unit_config.clear_children("extra_anim");
