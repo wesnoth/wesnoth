@@ -1049,6 +1049,16 @@ void map_editor::set_mouseover_overlay()
 				palette_.selected_bg_terrain()).editor_image() +
 				".png"));
 
+	if (image_fg == NULL || image_bg == NULL) {
+		std::cerr << "Missing terrain icon\n";
+		gui_.set_mouseover_hex_overlay(NULL);
+		return; 
+	}
+
+	// Create a transparent surface of the right size.
+	surface image = create_compatible_surface(image_fg, image_fg->w, image_fg->h);
+	SDL_FillRect(image,NULL,SDL_MapRGBA(image->format,0,0,0, 0));
+
 	// For efficiency the size of the tile is cached.
 	// We assume all tiles are of the same size.
 	// The zoom factor can change, so it's not cached.
@@ -1062,11 +1072,6 @@ void map_editor::set_mouseover_overlay()
 	static const int offset = 2;
 	static const int new_size = half_size - 2;
 	const int zoom = static_cast<int>(size * gui_.get_zoom_factor());
-
-	// Create a transparent surface of the right size.
-	// Not sure what's the best way, but this works
-	// (but is probably not efficient).
-	surface image = adjust_surface_alpha(image_fg, 0);
 
 	// Blit left side
 	image_fg = scale_surface(image_fg, new_size, new_size);
