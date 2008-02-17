@@ -1612,13 +1612,15 @@ void map_editor::main_loop() {
 		// When the map has changed, wait until the left mouse button
 		// is not held down, and then update the minimap and
 		// the starting position labels.
-		if (map_dirty_ && auto_update_) {
+		if (map_dirty_) {
 			if (!l_button_down && !r_button_down) {
-				map_dirty_ = false;
-				gui_.rebuild_all();
-				gui_.invalidate_all();
-				recalculate_starting_pos_labels();
+				if (auto_update_) {
+					gui_.rebuild_all();
+					gui_.invalidate_all();
+				}
 				gui_.recalculate_minimap();
+				recalculate_starting_pos_labels();
+				map_dirty_ = false;
 			}
 		}
 		if (l_button_palette_dirty_) {
