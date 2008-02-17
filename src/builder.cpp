@@ -818,9 +818,8 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 		unsigned int a = (loc.x + 92872973) ^ 918273;
 		unsigned int b = (loc.y + 1672517) ^ 128123;
 		unsigned int c = (rule_index + 127390) ^ 13923787;
-		unsigned int random = a*b*c + a*b + b*c + a*c + a + b + c;
-
-		random %= 100;
+		unsigned int abc = a*b*c + a*b + b*c + a*c + a + b + c;
+		unsigned int random = (abc*abc) % 100;
 
 		if(random > static_cast<unsigned int>(rule.probability)) {
 			return false;
