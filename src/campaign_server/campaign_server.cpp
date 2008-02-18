@@ -136,6 +136,26 @@ namespace {
 		hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
 	}
 
+	const int num_suffix = 3;
+	const char* fname_suffix[] = {".cfg",".map",".txt",".py",".tree",".po",".gmo"};
+	
+	void clean_cr(config& cfg)
+	{
+		for (int i = 0; i < num_suffix; ++i)
+		{
+			std::vector<config *> files = find_scripts(cfg, fname_suffix[i]);
+			std::vector<config *>::iterator file;
+			for (file = files.begin(); file != files.end(); ++file)
+			{
+				std::string contents = (**file)["contents"];
+				size_t size = std::remove(contents.begin(),contents.end(),'\r')-contents.begin();
+				contents.resize(size);
+				(**file)["contents"] = contents;
+			}
+		}
+
+	}
+
 	void find_translations(const config& cfg, config& campaign)
 	{
 		const config::child_list& dirs = cfg.get_children("dir");
@@ -375,6 +395,7 @@ namespace {
 								(*data)["translate"] = (*campaign)["translate"];
 								(*campaign).clear_children("translation");
 								find_translations(*data, *campaign);
+								clean_cr(*data);
 
 								scoped_ostream campaign_file = ostream_file(filename);
 								write_compressed(*campaign_file, *data);
@@ -429,6 +450,7 @@ namespace {
 							(*data)["icon"] = (*campaign)["icon"];
 							(*campaign).clear_children("translation");
 							find_translations(*data, *campaign);
+							clean_cr(*data);
 
 							// Campaigns which have python="allowed" are not checked
 							if ((*campaign)["python"] != "allowed") {
