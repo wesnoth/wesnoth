@@ -3018,7 +3018,7 @@ std::string get_checksum(const unit& u) {
 		{
 			child[attack_keys[i]] = (**att)[attack_keys[i]];
 		}
-		const config::child_list& specials = unit_config.get_children("specials");
+		const config::child_list& specials = (*att)->get_children("specials");
 
 		for (config::child_list::const_iterator spec = specials.begin(); spec != specials.end(); ++spec)
 		{
@@ -3059,7 +3059,7 @@ std::string get_checksum(const unit& u) {
 			wcfg.add_child(child_keys[i], **c);
 		}
 	}
-	std::cerr << wcfg << std::endl;
+	LOG_UT << wcfg;
  
 	return wcfg.hash();	
 		
