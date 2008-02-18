@@ -128,8 +128,9 @@ private:
 	bool take_side(const player_map::const_iterator user);
 	//! Send [change_controller] message to tell all clients the new controller's name.
 	void send_change_controller(const size_t side_num,
-			const player_map::const_iterator newplayer, const bool host,
+			const player_map::const_iterator newplayer,
 			const bool player_left=true);
+	void transfer_ai_sides();
 	//! Function which filters commands sent by a player to remove commands
 	//! that they don't have permission to execute.
 	void filter_commands(config& turn, const player_map::const_iterator user);

@@ -409,7 +409,8 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	sides_taken_[side_num - 1] = true;
 	sides_[side_num - 1] = newplayer->first;
 
-	send_change_controller(side_num, newplayer, host_leave, false);
+	send_change_controller(side_num, newplayer, false);
+	if (host_leave) transfer_ai_sides();
 
 	// If we gave the new side to an observer add him to players_.
 	const user_vector::iterator itor = std::find(observers_.begin(),
@@ -426,8 +427,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 
 //! Send [change_controller] message to tell all clients the new controller's name.
 void game::send_change_controller(const size_t side_num,
-		const player_map::const_iterator newplayer, const bool host,
-		const bool player_left)
+		const player_map::const_iterator newplayer, const bool player_left)
 {
 	if (newplayer == player_info_->end()) return;
 	const std::string& side = lexical_cast<std::string, size_t>(side_num);
@@ -455,9 +455,9 @@ void game::send_change_controller(const size_t side_num,
 	it.first += side_num - 1;
 	assert(it.first != it.second);
 	(**it.first)["current_player"] = newplayer->second.name();
+}
 
-	if (!host) return;
-
+void game::transfer_ai_sides() {
 	bool ai_transfer = false;
 	// Check for ai sides first and drop them, too, if the host left.
 	for (size_t side = 0; side < side_controllers_.size(); ++side){
@@ -471,9 +471,9 @@ void game::send_change_controller(const size_t side_num,
 		network::send_data(drop, owner_, true);
 		sides_[side] = owner_;
 	}
-	if (!ai_transfer) return;
-
-	send_and_record_server_message("AI transferred to new host.");
+	if (ai_transfer) {
+		send_and_record_server_message("AI sides transferred to new host.");
+	}
 }
 
 void game::notify_new_host(){
@@ -989,7 +989,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		side_controllers_[side_num] = "human";
 		sides_taken_[side_num] = true;
 		sides_[side_num] = owner_;
-		send_change_controller(side_num + 1, player_info_->find(owner_), host);
+		send_change_controller(side_num + 1, player_info_->find(owner_));
 
 		//send the host a notification of removal of this side
 		config drop;
@@ -997,6 +997,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		drop["controller"] = side_controllers_[side_num];
 		network::send_data(drop, owner_, true);
 	}
+	if (host) transfer_ai_sides();
 	DBG_GAME << debug_player_info();
 
 	send_user_list(player);
