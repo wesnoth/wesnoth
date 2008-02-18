@@ -528,6 +528,7 @@ connection accept_connection()
 		if(nbytes != 4) {
 			SDLNet_TCP_DelSocket(socket_set,sock);
 			SDLNet_TCP_Close(sock);
+			remove_connection(connect);
 			throw network::error(_("Could not send initial handshake"));
 		}
 
