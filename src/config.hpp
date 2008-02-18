@@ -87,7 +87,7 @@ public:
 
 	void clear_children(const std::string& key);
 	void remove_child(const std::string& key, size_t index);
-	void recrusive_clear_value(const std::string& key);
+	void recursive_clear_value(const std::string& key);
 
 	void clear();
 	bool empty() const;

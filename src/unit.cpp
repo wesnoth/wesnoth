@@ -3023,7 +3023,7 @@ std::string get_checksum(const unit& u) {
 		for (config::child_list::const_iterator spec = specials.begin(); spec != specials.end(); ++spec)
 		{
 			config& child_spec = child.add_child("specials", **spec);
-			child_spec.recrusive_clear_value("description");
+			child_spec.recursive_clear_value("description");
 
 		}
 
@@ -3033,20 +3033,20 @@ std::string get_checksum(const unit& u) {
 	for (config::child_list::const_iterator abi = abilities.begin(); abi != abilities.end(); ++abi)
 	{
 		config& child = wcfg.add_child("abilities", **abi);
-		child.recrusive_clear_value("description");
-		child.recrusive_clear_value("description_inactive");
-		child.recrusive_clear_value("name");
-		child.recrusive_clear_value("name_inactive");
+		child.recursive_clear_value("description");
+		child.recursive_clear_value("description_inactive");
+		child.recursive_clear_value("name");
+		child.recursive_clear_value("name_inactive");
 	}
 
 	const config::child_list& traits = unit_config.get_children("trait");
 	for (config::child_list::const_iterator trait = traits.begin(); trait != traits.end(); ++trait)
 	{
 		config& child = wcfg.add_child("trait", **trait);
-		child.recrusive_clear_value("description");
-		child.recrusive_clear_value("male_name");
-		child.recrusive_clear_value("female_name");
-		child.recrusive_clear_value("name");
+		child.recursive_clear_value("description");
+		child.recursive_clear_value("male_name");
+		child.recursive_clear_value("female_name");
+		child.recursive_clear_value("name");
 	}
 
 	const std::string child_keys[] = {"advance_from", "defense", "movement_cost", "resistance",""};
