@@ -2932,9 +2932,137 @@ void unit::set_hidden(bool state) {
 	// We need to get rid of haloes immediately to avoid display glitches
 	clear_haloes();
 }
+/*
+advanceto
+alignment
+cost
+experience
+gender
+hitpoints
+id
+level
+max_attacks
+max_experience
+max_hitpoints
+max_moves
+movement
+movement_type
+race
+random_traits
+resting
+undead_variation
+upkeep
+value
+zoc
+[attack]
+        name
+        type
+        range
+        damage
+        number
+        [specials]
+		*
+	[/special]
+[/attack]
+anything in: [abilities], [advance_from], [defense], [movement_cost], [resistance], [trait]
+remove description, description_inactive, name, name_inactive from all tags under [abilities]
+remove description from all tags under [specials]
+remove description, male_name, female_name, name from [trait]
+ **/
 std::string get_checksum(const unit& u) {
 	config unit_config;
+	config wcfg;
 	u.write(unit_config);
+	const std::string main_keys[] =
+		{ "advanceto",
+		"alignment",
+		"cost",
+		"experience",
+		"gender",
+		"hitpoints",
+		"id",
+		"level",
+		"max_attacks",
+		"max_experience",
+		"max_hitpoints",
+		"max_moves",
+		"movement",
+		"movement_type",
+		"race",
+		"random_traits",
+		"resting",
+		"undead_variation",
+		"upkeep",	
+		"value",
+		"zoc",
+		""};
+
+	int i;
+
+	for (i = 0; !main_keys[i].empty(); ++i)
+	{
+		wcfg[main_keys[i]] = unit_config[main_keys[i]];
+	}
+	const std::string attack_keys[] =
+		{ "name",
+	        "type",
+        	"range",
+	        "damage",
+        	"number",
+		""};
+	const config::child_list& attacks = unit_config.get_children("attack");
+	for (config::child_list::const_iterator att = attacks.begin(); att != attacks.end(); ++att)
+	{
+		config& child = wcfg.add_child("attack");
+		for (i = 0; !attack_keys[i].empty(); ++i)
+		{
+			child[attack_keys[i]] = (**att)[attack_keys[i]];
+		}
+		const config::child_list& specials = unit_config.get_children("specials");
+
+		for (config::child_list::const_iterator spec = specials.begin(); spec != specials.end(); ++spec)
+		{
+			config& child_spec = child.add_child("specials", **spec);
+			child_spec.recrusive_clear_value("description");
+
+		}
+
+	}
+
+	const config::child_list& abilities = unit_config.get_children("abilities");
+	for (config::child_list::const_iterator abi = attacks.begin(); abi != abilities.end(); ++abi)
+	{
+		config& child = wcfg.add_child("abilities", **abi);
+		child.recrusive_clear_value("description");
+		child.recrusive_clear_value("description_inactive");
+		child.recrusive_clear_value("name");
+		child.recrusive_clear_value("name_inactive");
+	}
+
+	const config::child_list& traits = unit_config.get_children("trait");
+	for (config::child_list::const_iterator trait = traits.begin(); trait != traits.end(); ++trait)
+	{
+		config& child = wcfg.add_child("trait", **trait);
+		child.recrusive_clear_value("description");
+		child.recrusive_clear_value("male_name");
+		child.recrusive_clear_value("female_name");
+		child.recrusive_clear_value("name");
+	}
+
+	const std::string child_keys[] = {"advance_from", "defense", "movement_cost", "resistance",""};
+
+	for  (i = 0; !child_keys[i].empty(); ++i)
+	{
+		const config::child_list& children = unit_config.get_children(child_keys[i]);
+		for (config::child_list::const_iterator c = children.begin(); c != children.end(); ++c)
+		{
+			wcfg.add_child(child_keys[i], **c);
+		}
+	}
+	std::cerr << wcfg << std::endl;
+ 
+	return wcfg.hash();	
+		
 	unit_config["controller"] = "";
 	// Since the ai messes up the 'moves' attribute, ignore that for the checksum
 	unit_config["moves"] = "";

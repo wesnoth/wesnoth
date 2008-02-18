@@ -213,6 +213,16 @@ void config::clear_children(const std::string& key)
 	}
 }
 
+void config::recrusive_clear_value(const std::string& key)
+{
+	values.erase(key);
+
+	for (all_children_iterator it = ordered_begin(); it != ordered_end(); ++it)
+	{
+		const_cast<config*>(it->second)->recrusive_clear_value(key);
+	}
+}
+
 config::all_children_iterator config::erase(const config::all_children_iterator& i)
 {
 	config* found_config = NULL;
