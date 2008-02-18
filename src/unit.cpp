@@ -2981,6 +2981,8 @@ std::string get_checksum(const unit& u) {
 		"gender",
 		"hitpoints",
 		"id",
+		"ignore_race_traits",
+		"ignore_global_traits",
 		"level",
 		"max_attacks",
 		"max_experience",
