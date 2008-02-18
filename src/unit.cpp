@@ -2932,42 +2932,42 @@ void unit::set_hidden(bool state) {
 	// We need to get rid of haloes immediately to avoid display glitches
 	clear_haloes();
 }
-/*
-advanceto
-alignment
-cost
-experience
-gender
-hitpoints
-id
-level
-max_attacks
-max_experience
-max_hitpoints
-max_moves
-movement
-movement_type
-race
-random_traits
-resting
-undead_variation
-upkeep
-value
-zoc
-[attack]
-        name
-        type
-        range
-        damage
-        number
-        [specials]
-		*
-	[/special]
-[/attack]
-anything in: [abilities], [advance_from], [defense], [movement_cost], [resistance], [trait]
-remove description, description_inactive, name, name_inactive from all tags under [abilities]
-remove description from all tags under [specials]
-remove description, male_name, female_name, name from [trait]
+/**
+ * advanceto
+ * alignment
+ * cost
+ * experience
+ * gender
+ * hitpoints
+ * id
+ * level
+ * max_attacks
+ * max_experience
+ * max_hitpoints
+ * max_moves
+ * movement
+ * movement_type
+ * race
+ * random_traits
+ * resting
+ * undead_variation
+ * upkeep
+ * value
+ * zoc
+ * [attack]
+ *         name
+ *         type
+ *         range
+ *         damage
+ *         number
+ *         [specials]
+ * 		*
+ * 	[/special]
+ * [/attack]
+ * anything in: [abilities], [advance_from], [defense], [movement_cost], [resistance], [trait]
+ * remove description, description_inactive, name, name_inactive from all tags under [abilities]
+ * remove description from all tags under [specials]
+ * remove description, male_name, female_name, name from [trait]
  **/
 std::string get_checksum(const unit& u) {
 	config unit_config;
@@ -3030,7 +3030,7 @@ std::string get_checksum(const unit& u) {
 	}
 
 	const config::child_list& abilities = unit_config.get_children("abilities");
-	for (config::child_list::const_iterator abi = attacks.begin(); abi != abilities.end(); ++abi)
+	for (config::child_list::const_iterator abi = abilities.begin(); abi != abilities.end(); ++abi)
 	{
 		config& child = wcfg.add_child("abilities", **abi);
 		child.recrusive_clear_value("description");
