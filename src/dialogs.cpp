@@ -688,7 +688,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
 	#ifdef USE_SMALL_GUI
 		//placing the buttons in one line so that none is coverd by any of the others
-		lmenu.add_button(delete_button,gui::dialog::STANDARD_BUTTON);
+		lmenu.add_button(delete_button,gui::dialog::BUTTON_STANDARD);
 	#else
 		lmenu.add_button(delete_button);
 	#endif
