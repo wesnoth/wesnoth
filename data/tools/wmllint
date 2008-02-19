@@ -726,10 +726,17 @@ def sanity_check(filename, lines):
     in_side = False
     in_subtag = False
     recruit = []
+    in_generator = False
     sidecount = 0
     recruitment_pattern = []
     for i in range(len(lines)):
-        if "[side]" in lines[i]:
+        if "[generator]" in lines[i]:
+            in_generator = True
+            continue
+        elif "[/generator]" in lines[i]:
+            in_generator = False
+            continue
+        elif "[side]" in lines[i]:
             in_side = True
             sidecount += 1
             continue
@@ -759,7 +766,7 @@ def sanity_check(filename, lines):
                               % (filename, i+1, utype)
             elif key == "side":
                 try:
-                    if sidecount != int(value):
+                    if not in_generator and sidecount != int(value):
                         print '"%s", line %d: side number %s is out of sequence' \
                               % (filename, i+1, value)
                 except ValueError:
