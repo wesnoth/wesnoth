@@ -222,7 +222,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 #ifdef USE_TINY_GUI
 	set_measurements(180, 180);		  // FIXME: should compute this, but using what data ?
 #else
-	set_measurements(440, 440);
+	set_measurements(440, 405);
 #endif
 
 
@@ -488,7 +488,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 #else
 	// please also check 800x600 resolution if you change these spacings
 	const int top_border = 28;
-	const int bottom_border = 40;
+	const int bottom_border = 10;
 	const int short_interline = 21;
 	const int item_interline = 40;
 #endif
