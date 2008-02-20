@@ -635,30 +635,30 @@ private:
 	/**
 	 * Checks whether a terrain code matches a given list of terrain codes.
 	 *
-	 * @param letter	The terrain to check
+	 * @param tcode 	The terrain to check
 	 * @param terrains	The terrain list agains which to check the terrain.
 	 *	May contain the metacharacters
 	 *	- '*' STAR, meaning "all terrains"
 	 *	- '!' NOT,  meaning "all terrains except those present in the list."
 	 *
-	 * @return			returns true if "letter" matches the list or the list is empty,
+	 * @return			returns true if "tcode" matches the list or the list is empty,
 	 *					else false.
 	 */
-	bool terrain_matches(t_translation::t_terrain letter, const t_translation::t_list& terrains) const
-		{ return terrains.empty()? true : t_translation::terrain_matches(letter, terrains); }
+	bool terrain_matches(t_translation::t_terrain tcode, const t_translation::t_list& terrains) const
+		{ return terrains.empty()? true : t_translation::terrain_matches(tcode, terrains); }
 
 	/**
-	 * Checks whether a terrain code matches a given list of terrain letters.
+	 * Checks whether a terrain code matches a given list of terrain tcodes.
 	 *
-	 * @param letter	The terrain code to check
+	 * @param tcode 	The terrain code to check
 	 * @param terrain	The terrain match structure which to check the terrain.
 	 *	See previous definition for more details.
 	 *
-	 * @return			returns true if "letter" matches the list or the list is empty,
+	 * @return			returns true if "tcode" matches the list or the list is empty,
 	 *					else false.
 	 */
-	bool terrain_matches(t_translation::t_terrain letter, const t_translation::t_match &terrain) const
-		{ return terrain.is_empty ? true : t_translation::terrain_matches(letter, terrain); }
+	bool terrain_matches(t_translation::t_terrain tcode, const t_translation::t_match &terrain) const
+		{ return terrain.is_empty ? true : t_translation::terrain_matches(tcode, terrain); }
 
 	/**
 	 * Checks whether a rule matches a given location in the map.

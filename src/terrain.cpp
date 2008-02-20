@@ -56,7 +56,7 @@ terrain_type::terrain_type(const config& cfg) :
 		editor_image_(cfg["editor_image"]),
 		id_(cfg["id"]),
 		name_(cfg["name"]),
-		number_(t_translation::read_letter(cfg["string"])),
+		number_(t_translation::read_terrain_code(cfg["string"])),
 		mvt_type_(),
 		def_type_(),
 		union_type_(),
@@ -82,10 +82,10 @@ terrain_type::terrain_type(const config& cfg) :
 		missing_mandatory_wml_key("terrain", "string"));
 	VALIDATE(!minimap_image_.empty(), 
 		missing_mandatory_wml_key("terrain", "symbol_image", "string", 
-		t_translation::write_letter(number_)));
+		t_translation::write_terrain_code(number_)));
 	VALIDATE(!name_.empty(), 
 		missing_mandatory_wml_key("terrain", "name", "string", 
-		t_translation::write_letter(number_)));
+		t_translation::write_terrain_code(number_)));
 #endif
 
 	if(editor_image_.empty()) {

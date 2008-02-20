@@ -167,8 +167,8 @@ t_match::t_match(const std::string& str, const t_layer filler) :
 	}
 }
 
-t_match::t_match(const t_terrain& letter):
-	terrain(t_list(1, letter)),
+t_match::t_match(const t_terrain& tcode):
+	terrain(t_list(1, tcode)),
 	mask(),
 	masked_terrain(),
 	has_wildcard(t_translation::has_wildcard(terrain)),
@@ -183,14 +183,14 @@ t_match::t_match(const t_terrain& letter):
 	}
 }
 
-t_terrain read_letter(const std::string& str, const t_layer filler)
+t_terrain read_terrain_code(const std::string& str, const t_layer filler)
 {
 	return string_to_number_(str, filler);
 }
 
-std::string write_letter(const t_terrain& letter)
+std::string write_terrain_code(const t_terrain& tcode)
 {
-	return number_to_string_(letter);
+	return number_to_string_(tcode);
 }
 
 t_list read_list(const std::string& str, const t_layer filler)
@@ -533,12 +533,12 @@ bool terrain_matches(const t_terrain& src, const t_match& dest)
 	return !result;
 }
 
-bool has_wildcard(const t_terrain& letter)
+bool has_wildcard(const t_terrain& tcode)
 {
-	if(letter.overlay == NO_LAYER) {
-		return get_layer_mask_(letter.base) != NO_LAYER;
+	if(tcode.overlay == NO_LAYER) {
+		return get_layer_mask_(tcode.base) != NO_LAYER;
 	} else {
-		return get_layer_mask_(letter.base) != NO_LAYER || get_layer_mask_(letter.overlay) != NO_LAYER;
+		return get_layer_mask_(tcode.base) != NO_LAYER || get_layer_mask_(tcode.overlay) != NO_LAYER;
 	}
 }
 
@@ -776,30 +776,30 @@ static std::string number_to_string_(t_terrain terrain, const int start_position
 		result = str_cast(start_position) + " ";
 	}
 
-	// Insert the terrain letter
-	unsigned char letter[9];
-	letter[0] = ((terrain.base & 0xFF000000) >> 24);
-	letter[1] = ((terrain.base & 0x00FF0000) >> 16);
-	letter[2] = ((terrain.base & 0x0000FF00) >> 8);
-	letter[3] =  (terrain.base & 0x000000FF);
+	// Insert the terrain tcode
+	unsigned char tcode[9];
+	tcode[0] = ((terrain.base & 0xFF000000) >> 24);
+	tcode[1] = ((terrain.base & 0x00FF0000) >> 16);
+	tcode[2] = ((terrain.base & 0x0000FF00) >> 8);
+	tcode[3] =  (terrain.base & 0x000000FF);
 
 	if(terrain.overlay != NO_LAYER) {
-		letter[4] = '^'; //the layer separator
-		letter[5] = ((terrain.overlay & 0xFF000000) >> 24);
-		letter[6] = ((terrain.overlay & 0x00FF0000) >> 16);
-		letter[7] = ((terrain.overlay & 0x0000FF00) >> 8);
-		letter[8] =  (terrain.overlay & 0x000000FF);
+		tcode[4] = '^'; //the layer separator
+		tcode[5] = ((terrain.overlay & 0xFF000000) >> 24);
+		tcode[6] = ((terrain.overlay & 0x00FF0000) >> 16);
+		tcode[7] = ((terrain.overlay & 0x0000FF00) >> 8);
+		tcode[8] =  (terrain.overlay & 0x000000FF);
 	} else {
 		// If no second layer, the second layer won't be written,
 		// so no need to initialize that part of the array
-		letter[4] = 0;
+		tcode[4] = 0;
 	}
 
 	for(int i = 0; i < 9; ++i) {
-		if(letter[i] != 0 && letter[i] != 0xFF) {
-			result += letter[i];
+		if(tcode[i] != 0 && tcode[i] != 0xFF) {
+			result += tcode[i];
 		}
-		if(i == 4 && letter[i] == 0) {
+		if(i == 4 && tcode[i] == 0) {
 			// no layer, stop
 			break;
 		}
@@ -854,7 +854,7 @@ int main(int argc, char** argv)
 	if(argc > 1) {
 
 		if(std::string(argv[1]) == "match" && argc == 4) {
-			t_translation::t_terrain src = t_translation::read_letter(std::string(argv[2]));
+			t_translation::t_terrain src = t_translation::read_terrain_code(std::string(argv[2]));
 
 			t_translation::t_list dest = t_translation::read_list(std::string(argv[3]));
 

@@ -76,7 +76,7 @@ namespace t_translation {
 	struct t_match{
 		t_match();
 		t_match(const std::string& str, const t_layer filler = NO_LAYER);
-		t_match(const t_terrain& letter);
+		t_match(const t_terrain& tcode);
 
 		t_list terrain;
 		t_list mask;
@@ -150,24 +150,24 @@ namespace t_translation {
 	 *
 	 * @return			A single terrain code
 	 */
-	t_terrain read_letter(const std::string& str, const t_layer filler = NO_LAYER);
+	t_terrain read_terrain_code(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a single terrain code to a string.
 	 * The writers only support the new format.
 	 *
-	 * @param letter	The terrain code to convert to a string
+	 * @param tcode	The terrain code to convert to a string
 	 *
 	 * @return		A string containing the terrain code
 	 */
-	std::string write_letter(const t_terrain& letter);
+	std::string write_terrain_code(const t_terrain& tcode);
 	inline std::ostream &operator<<(std::ostream &s, const t_terrain &a)
-		{ s << write_letter(a); return s; }
+		{ s << write_terrain_code(a); return s; }
 
 	/**
 	 * Reads a list of terrains from a string, when reading the
 	 *
-	 * @param str		A string with one or more terrain codes (see read_letter)
+	 * @param str		A string with one or more terrain codes (see read_terrain_code)
 	 * @param filler	If there's no layer, this value will be used as the second layer
 	 *
 	 * @returns		A vector which contains the terrain codes found in the string
@@ -205,7 +205,7 @@ namespace t_translation {
 	 *					  starting loction. The following format is used
 	 *					  [S ]T
 	 *					  S = starting location a positive non-zero number
-	 *					  T = terrain code (see read_letter)
+	 *					  T = terrain code (see read_terrain_code)
 	 * @param starting_positions This parameter will be filled with the starting
 	 *					locations found. Starting locations can only occur once
 	 *					if multiple definitions occur of the same position only
@@ -254,7 +254,7 @@ namespace t_translation {
 	 *
 	 * Note: If an expression doesn't specify a second layer (i.e. it contains
 	 * no caret) the second layer will be filled in with a default value
-	 * (See read_letter and read_list).
+	 * (See read_terrain_code and read_list).
 	 *
 	 * In the terrain building code, the second layer will default to the wildcard,
 	 * so both A* and A*^* will match Abcd^Abcd
@@ -293,11 +293,11 @@ namespace t_translation {
 	/**
 	 * Tests whether a terrain code contains a wildcard
 	 *
-	 *  @param letter	the terrain code to test for a wildcard
+	 *  @param tcode	the terrain code to test for a wildcard
 	 *
 	 *  @returns		true if wildcard found,	else false
 	 */
-	bool has_wildcard(const t_terrain& letter);
+	bool has_wildcard(const t_terrain& tcode);
 
 	/**
 	 * Tests whether a terrain-code list contains at least

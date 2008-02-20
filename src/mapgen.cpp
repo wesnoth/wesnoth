@@ -414,7 +414,7 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 	}
 
 	static std::string terrain;
-	terrain = t_translation::write_letter(c);
+	terrain = t_translation::write_terrain_code(c);
 	const config* const child = cfg_.find_child("road_cost","terrain",terrain);
 	double res = getNoPathValue();
 	if(child != NULL) {
@@ -520,12 +520,12 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 	return surrounding_ranking + current_ranking;
 }
 
-typedef std::map<t_translation::t_terrain, t_translation::t_list> letter_list_cache;
+typedef std::map<t_translation::t_terrain, t_translation::t_list> tcode_list_cache;
 
 //!
 static gamemap::location place_village(const t_translation::t_map& map,
 	const size_t x, const size_t y, const size_t radius, const config& cfg,
-	letter_list_cache &adj_liked_cache)
+	tcode_list_cache &adj_liked_cache)
 {
 	const gamemap::location loc(x,y);
 	std::set<gamemap::location> locs;
@@ -542,10 +542,10 @@ static gamemap::location place_village(const t_translation::t_map& map,
 		}
 
 		const t_translation::t_terrain t = map[i->x][i->y];
-		const std::string str = t_translation::write_letter(t);
+		const std::string str = t_translation::write_terrain_code(t);
 		const config* const child = cfg.find_child("village","terrain",str);
 		if(child != NULL) {
-			letter_list_cache::iterator l = adj_liked_cache.find(t);
+			tcode_list_cache::iterator l = adj_liked_cache.find(t);
 			t_translation::t_list *adjacent_liked;
 			if (l != adj_liked_cache.end()) {
 				adjacent_liked = &(l->second);
@@ -639,7 +639,7 @@ terrain_height_mapper::terrain_height_mapper(const config& cfg) :
 {
 	const std::string& terrain = cfg["terrain"];
 	if(terrain != "") {
-		to = t_translation::read_letter(terrain);
+		to = t_translation::read_terrain_code(terrain);
 	}
 }
 
@@ -679,7 +679,7 @@ terrain_converter::terrain_converter(const config& cfg) : min_temp(-1),
 
 	const std::string& to_str = cfg["to"];
 	if(to_str != "") {
-		to = t_translation::read_letter(to_str);
+		to = t_translation::read_terrain_code(to_str);
 	}
 }
 
@@ -713,10 +713,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	// Find out what the 'flatland' on this map is, i.e. grassland.
 	std::string flatland = cfg["default_flatland"];
 	if(flatland == "") {
-		flatland = t_translation::write_letter(t_translation::GRASS_LAND);
+		flatland = t_translation::write_terrain_code(t_translation::GRASS_LAND);
 	}
 
-	const t_translation::t_terrain grassland = t_translation::read_letter(flatland);
+	const t_translation::t_terrain grassland = t_translation::read_terrain_code(flatland);
 
 	// We want to generate a map that is 9 times bigger
 	// than the actual size desired.
@@ -1037,7 +1037,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			// Find the configuration which tells us
 			// what to convert this tile to, to make it into a road.
 			const config* const child = cfg.find_child("road_cost", "terrain",
-					t_translation::write_letter(terrain[x][y]));
+					t_translation::write_terrain_code(terrain[x][y]));
 			if(child != NULL) {
 				// Convert to bridge means that we want to convert
 				// depending upon the direction the road is going.
@@ -1087,7 +1087,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					if(direction != -1) {
 						const std::vector<std::string> items = utils::split(convert_to_bridge);
 						if(size_t(direction) < items.size() && items[direction].empty() == false) {
-							terrain[x][y] = t_translation::read_letter(items[direction]);
+							terrain[x][y] = t_translation::read_terrain_code(items[direction]);
 						}
 
 						continue;
@@ -1100,7 +1100,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				const std::string& convert_to = (*child)["convert_to"];
 				if(convert_to.empty() == false) {
 					const t_translation::t_terrain letter =
-						t_translation::read_letter(convert_to);
+						t_translation::read_terrain_code(convert_to);
 					if(labels != NULL && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
 						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
 						name_count = 0;
@@ -1178,7 +1178,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 
 		std::set<std::string> used_names;
-		letter_list_cache adj_liked_cache;
+		tcode_list_cache adj_liked_cache;
 
 		for(size_t vx = 0; vx < width; vx += village_x) {
 			LOG_NG << "village at " << vx << "\n";
@@ -1197,14 +1197,14 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						res.y  < static_cast<long>(height * 2) / 3) {
 
 					const std::string str =
-						t_translation::write_letter(terrain[res.x][res.y]);
+						t_translation::write_terrain_code(terrain[res.x][res.y]);
 					const config* const child =
 						cfg.find_child("village","terrain",str);
 					if(child != NULL) {
 						const std::string& convert_to = (*child)["convert_to"];
 						if(convert_to != "") {
 							terrain[res.x][res.y] =
-								t_translation::read_letter(convert_to);
+								t_translation::read_terrain_code(convert_to);
 
 							villages.insert(res);
 

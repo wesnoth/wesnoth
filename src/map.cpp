@@ -51,9 +51,9 @@ const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;
 const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_terrain terrain) const
 {
 	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
-		letterToTerrain_.find(terrain);
+		tcodeToTerrain_.find(terrain);
 
-	if(i == letterToTerrain_.end()) {
+	if(i == tcodeToTerrain_.end()) {
 		static t_translation::t_list result(1);
 		result[0] = terrain;
 		return result;
@@ -65,9 +65,9 @@ const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_te
 const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_terrain terrain) const
 {
 	const std::map<t_translation::t_terrain, terrain_type>::const_iterator i =
-		letterToTerrain_.find(terrain);
+		tcodeToTerrain_.find(terrain);
 
-	if(i == letterToTerrain_.end()) {
+	if(i == tcodeToTerrain_.end()) {
 		static t_translation::t_list result(1);
 		result[0] = terrain;
 		return result;
@@ -79,9 +79,9 @@ const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_te
 const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_terrain terrain) const
 {
 	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
-		letterToTerrain_.find(terrain);
+		tcodeToTerrain_.find(terrain);
 
-	if(i == letterToTerrain_.end()) {
+	if(i == tcodeToTerrain_.end()) {
 		static t_translation::t_list result(1);
 		result[0] = terrain;
 		return result;
@@ -92,7 +92,7 @@ const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_
 
 void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 {
-	cfg["terrain"] = t_translation::write_letter(get_terrain(loc));
+	cfg["terrain"] = t_translation::write_terrain_code(get_terrain(loc));
 }
 
 gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
@@ -288,7 +288,7 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 gamemap::gamemap(const config& cfg, const std::string& data):
 		tiles_(1), 
 		terrainList_(),
-		letterToTerrain_(),
+		tcodeToTerrain_(),
 		villages_(),
 		borderCache_(),
 		terrainFrequencyCache_(),
@@ -301,7 +301,7 @@ gamemap::gamemap(const config& cfg, const std::string& data):
 {
 	DBG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
-	create_terrain_maps(terrains,terrainList_,letterToTerrain_);
+	create_terrain_maps(terrains,terrainList_,tcodeToTerrain_);
 
 	read(data);
 }
@@ -411,8 +411,8 @@ void gamemap::read(const std::string& data)
 		for(int y = 0; y < total_height_; ++y) {
 			
 			// Is the terrain valid? 
-			if(letterToTerrain_.count(tiles_[x][y]) == 0) {
-				ERR_CF << "Illegal character in map: (" << t_translation::write_letter(tiles_[x][y])
+			if(tcodeToTerrain_.count(tiles_[x][y]) == 0) {
+				ERR_CF << "Illegal character in map: (" << t_translation::write_terrain_code(tiles_[x][y])
 					<< ") '" << tiles_[x][y] << "'\n";
 				throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 			}
@@ -645,9 +645,9 @@ const terrain_type& gamemap::get_terrain_info(const t_translation::t_terrain ter
 {
 	static const terrain_type default_terrain;
 	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
-		letterToTerrain_.find(terrain);
+		tcodeToTerrain_.find(terrain);
 
-	if(i != letterToTerrain_.end())
+	if(i != tcodeToTerrain_.end())
 		return i->second;
 	else
 		return default_terrain;

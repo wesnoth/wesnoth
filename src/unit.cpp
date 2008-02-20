@@ -2040,7 +2040,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
 		if(recurse_count >= 90) {
-			LOG_STREAM(err, config) << "infinite defense_modifier recursion: " << t_translation::write_letter(terrain) << " depth " << recurse_count << "\n";
+			LOG_STREAM(err, config) << "infinite defense_modifier recursion: " << t_translation::write_terrain_code(terrain) << " depth " << recurse_count << "\n";
 		}
 		if(recurse_count >= 100) {
 			return 100;

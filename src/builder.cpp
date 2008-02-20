@@ -617,7 +617,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 			} else if (terrain.base == t_translation::TB_STAR) {
 				add_constraints(br.constraints, gamemap::location(x, y), t_translation::STAR, global_images);
 			} else {
-					ERR_NG << "Invalid terrain (" << t_translation::write_letter(terrain) << ") in builder map\n";
+					ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map\n";
 					assert(false); 
 					return;
 			}
@@ -792,7 +792,7 @@ void terrain_builder::add_off_map_rule(const std::string& image)
 	config *tile = (*item).child("tile");
 	(*tile)["x"] = "0";
 	(*tile)["y"] = "0";
-	(*tile)["type"] = t_translation::write_letter(t_translation::OFF_MAP_USER);
+	(*tile)["type"] = t_translation::write_terrain_code(t_translation::OFF_MAP_USER);
 
 	(*tile).add_child("image");
 	config *tile_image = (*tile).child("image");

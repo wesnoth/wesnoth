@@ -260,7 +260,7 @@ private:
 		{ return tiles_[index + border_size_]; }
 
 	t_translation::t_list terrainList_;
-	std::map<t_translation::t_terrain, terrain_type> letterToTerrain_;
+	std::map<t_translation::t_terrain, terrain_type> tcodeToTerrain_;
 	std::vector<location> villages_;
 
 	mutable std::map<location, t_translation::t_terrain> borderCache_;

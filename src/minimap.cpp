@@ -82,7 +82,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 
 					if(tile == 0) {
 						utils::string_map symbols;
-						symbols["terrain"] = t_translation::write_letter(terrain);
+						symbols["terrain"] = t_translation::write_terrain_code(terrain);
 						const std::string msg = 
 							vgettext("Could not get image for terrain: $terrain.", symbols);
 						VALIDATE(false, msg);
