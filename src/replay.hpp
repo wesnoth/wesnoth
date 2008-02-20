@@ -125,6 +125,7 @@ private:
 	void add_chat_log_entry(const config*, std::stringstream&, const std::string&) const;
 
 	const config::child_list& commands() const;
+	void remove_command(int);
 	/** Adds a new empty command to the command list.
 	 *
 	 * @param update_random_context  If set to false, do not update the

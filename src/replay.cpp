@@ -445,6 +445,10 @@ void replay::speak(const config& cfg)
 
 void replay::add_chat_log_entry(const config* speak, std::stringstream& str, const std::string& team) const
 {
+	if (!speak)
+	{
+		return;
+	}
 	const config& cfg = *speak;
 	const std::string& team_name = cfg["team_name"];
 	if(team_name == "" || team_name == team) {
@@ -458,9 +462,22 @@ void replay::add_chat_log_entry(const config* speak, std::stringstream& str, con
 	
 }
 
+void replay::remove_command(int index)
+{
+	cfg_.remove_child("command", index);
+	std::vector<int>::reverse_iterator loc_it;
+	for (loc_it = message_locations.rbegin(); loc_it != message_locations.rend() && index < *loc_it;++loc_it)
+	{
+		--(*loc_it);
+	}
+}
+
+// cached message log
+std::stringstream message_log;
+
+
 std::string replay::build_chat_log(const std::string& team)
 {
-	std::stringstream str;
 	const config::child_list& cmd = commands();
 	std::vector<int>::iterator loc_it;
 	int last_location = 0;
@@ -468,9 +485,10 @@ std::string replay::build_chat_log(const std::string& team)
 	{
 		last_location = *loc_it;
 		const config* speak = cmd[last_location]->child("speak");
-		add_chat_log_entry(speak,str,team);
+		add_chat_log_entry(speak,message_log,team);
 
 	}
+	message_locations.clear();
 
 #if 0
 	for(config::child_list::const_iterator i = cmd.begin() + (last_location + 1); i != cmd.end(); ++i) {
@@ -482,7 +500,7 @@ std::string replay::build_chat_log(const std::string& team)
 		}
 	}
 #endif
-	return str.str();
+	return message_log.str();
 }
 
 config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
@@ -565,14 +583,14 @@ void replay::undo()
 					gamemap::location aloc(*async_child, game_events::get_state_of_game());
 					if (src == aloc)
 					{
-						cfg_.remove_child("command", *async_cmd - cmd.first);
+						remove_command(*async_cmd - cmd.first);
 					}
 				}
 			}
 		}
 	}
 
-	cfg_.remove_child("command",cmd.second - cmd.first - 1);
+	remove_command(cmd.second - cmd.first - 1);
 	current_ = NULL;
 	set_random(NULL);
 }
@@ -650,6 +668,7 @@ void replay::set_to_end()
 void replay::clear()
 {
 	message_locations.clear();
+	message_log.str(std::string());
 	cfg_ = config();
 	pos_ = 0;
 	current_ = NULL;
