@@ -25,34 +25,7 @@ void handle_joystick(SDL_JoyButtonEvent *);
 void makeup_events();
 Uint8 get_joystick_state(int *x, int *y);
 void return_to_menu();
-
-/**
- * Singleton encapsulating Squidge's MMU hack for GP2X, which enables
- * caching of the upper 32MB of console's memory, to speed up
- * access. For gp2x only; uid == 0 required! Original code at: 
- * http://www.gp32x.com/board/index.php?showtopic=29451&st=0
- */
-class mmu_hack {
-public:
-	static mmu_hack & instance();
-
-private:
-	int memfd;
-
-	void *trymmap(void *start, size_t length, int prot, int flags, int fd, off_t offset);
-	unsigned char initphys();
-	void closephys();
-	int myuname(char *buffer);
-	void DecodeCoarse(unsigned int indx, unsigned int sa);
-	void dumppgtable(unsigned int ttb);
-	void benchmark(void *memptr);
-	void hackpgtable();
-
-	mmu_hack();
-	mmu_hack(const mmu_hack &);	// undefined
-	mmu_hack & operator=(const mmu_hack &);	// undefined
-	~mmu_hack();
-};
+void mmu_hack();
 
 } // namespace gp2x
 

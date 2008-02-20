@@ -342,6 +342,10 @@ bool game_controller::init_video()
 
 	cursor::set(cursor::NORMAL);
 
+#ifdef GP2X
+	gp2x::mmu_hack();
+#endif
+
 	return true;
 }
 
@@ -1186,10 +1190,6 @@ int play_game(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
-#ifdef GP2X
-	gp2x::mmu_hack::instance();
-#endif
-
 #ifdef OS2 /* required for SDL_GetTicks to work on OS/2 */
         if ( SDL_Init(SDL_INIT_TIMER) < 0 ) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n",SDL_GetError());
