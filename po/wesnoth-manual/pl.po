@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-02-03 17:23+0100\n"
-"PO-Revision-Date: 2008-02-11 12:29+0100\n"
+"PO-Revision-Date: 2008-02-14 15:59+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -920,6 +920,11 @@ msgid ""
 "multiplayer game)  chatting with other players before pressing that button "
 "to advance."
 msgstr ""
+"Po wygranym scenariuszu mapa staje się nieaktywna (jest wyświetlana na "
+"szaro), a przycisk <emphasis>Zakończ turę</emphasis> zmienia się na "
+"<emphasis>Kończ scenariusz</emphasis>. W tym stanie gry można zmienić opcje "
+"zapisu lub (w przypadku gier wieloosobowych) porozmawiać z innymi graczami, "
+"a następnie nacisnąć przycisk, by przejść dalej."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:541
@@ -3031,7 +3036,6 @@ msgstr "Odporność"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2092
-#, fuzzy
 msgid ""
 "Each unit is more or less vulnerable to the different attack types. 6 "
 "figures in the unit description show strength and weakness of the unit "
@@ -3039,15 +3043,15 @@ msgid ""
 "unit will suffer less damages from the attack type. A negative resistance "
 "figure indicates that the unit is especially vulnerable to this attack type."
 msgstr ""
-"Każda jednostka jest mniej lub bardziej podatna na różne typy ataków. 6 "
-"pozycji w opisie jednostki ukazuje mocne i słabe punkty jednostki w starciu "
-"z każdym z 6 typów ataków. Dodatnia wartość odporności oznacza, że jednostka "
-"odniesie mniej obrażeń w wyniku ataku tego typu. Z kolei negatywna wartość "
-"odporności oznacza, że jednostka jest szczególnie wrażliwa na dany typ ataku."
+"Każda jednostka jest mniej lub bardziej podatna na poszczególne typy ataków. "
+"Sześć pozycji w opisie jednostki przedstawia mocne i słabe punkty jednostki "
+"w obronie przed każdym z sześciu typów ataków. Dodatnia wartość odporności "
+"oznacza, że jednostka odniesie o tyle mniej obrażeń w wyniku ataku danego "
+"typu. Z kolei negatywna wartość odporności oznacza, że jednostka ma "
+"zwiększoną wrażliwość na dany typ ataku."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2099
-#, fuzzy
 msgid ""
 "Examples: Drake scales protect them from most of attack types except from "
 "piercing weapon and cold weapon. Human Cavalry units are generally well "
@@ -3055,20 +3059,20 @@ msgid ""
 "are very resistant to blade and piercing weapon but very vulnerable to "
 "impact attacks and arcane attacks."
 msgstr ""
-"Przykłady: łuski smoków chronią je przed większością ataków z wyjątkiem "
-"broni kłujących i zimna. Jednostki ludzkiej kawalerii są generalnie dobrze "
-"chronione, z wyjątkiem ataków kłujących, które są ich słabym punktem. "
-"Nieumarli są bardzo odporni na ataki kłujące i sieczne, ale bardzo wrażliwi "
-"na uderzenia bronią obuchową i ataki astralne."
+"Oto kilka przykładów: Łuski smoków skutecznie chronią je przed większością "
+"ataków, z wyjątkiem broni kłującej i zimna. Jednostki ludzkiej kawalerii są "
+"ogólnie dość dobrze chronione, z wyjątkiem ataków kłujących, które są ich "
+"słabym punktem. Nieumarli są w większości bardzo odporni na ataki kłujące i "
+"sieczne, ale też bardzo wrażliwi na uderzenia bronią obuchową i ataki "
+"astralne."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2105
-#, fuzzy
 msgid ""
 "Using the best attack type against enemy units will substantially increase "
 "your chances of killing them."
 msgstr ""
-"Używanie najlepszego typu ataku przeciwko wrogim jednostkom znacznie "
+"Używanie najskuteczniejszego typu ataku przeciwko wrogim jednostkom znacznie "
 "zwiększa szanse ich pokonania."
 
 #: ../../doc/manual/manual.en.xml:2111 ../../doc/manual/manual.en.xml:2541
@@ -3077,7 +3081,6 @@ msgstr "Leczenie"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2112
-#, fuzzy
 msgid ""
 "A unit may be healed a maximum of 8 hitpoints per turn. A unit that does not "
 "move or fight during a turn is <emphasis>resting</emphasis> and will recover "
@@ -3085,11 +3088,12 @@ msgid ""
 "added on top of hitpoints recovered through healing so it is possible for a "
 "unit to recover up to a total of 10 hit points per turn."
 msgstr ""
-"Każdej tury jednostce może być przywrócone maksymalnie 8 punktów życia. "
-"Jednostka, która się nie porusza i nie walczy <emphasis>odpoczywa</emphasis> "
-"i odzyska 2 punkty życia. Punkty życia odzyskane w wyniku "
-"<emphasis>odpoczynku</emphasis> są dodawane do liczby odzyskiwanych, więc "
-"możliwe jest, że jednostce zostanie przywrócone w sumie 10 punktów na turę."
+"Podczas każdej tury jednostka może odzyskać przez leczenie maksymalnie 8 "
+"punktów życia. Jednostka, która podczas danej tury nie poruszyła się ani nie "
+"walczyła <emphasis>odpoczywa</emphasis>, odzyskując 2 punkty życia. Punkty "
+"życia odzyskane w wyniku <emphasis>odpoczynku</emphasis> sumują się z "
+"punktami przywróconymi poprzez leczenie, więc jednostka może odzyskać "
+"maksymalnie 10 punktów życia na turę."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2118
@@ -3103,16 +3107,15 @@ msgstr "Odpoczynek w wiosce. Jednostka będzie co turę odzyskiwać 8 PŻ."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2128
-#, fuzzy
 msgid ""
 "Being adjacent to units with the <emphasis>heals</emphasis> ability. The "
 "number of hitpoints healed is specified in the unit's ability description. "
 "This is invariably <emphasis>heals +4</emphasis> or <emphasis>heals +8</"
 "emphasis>."
 msgstr ""
-"Stojąc obok jednostek z umiejętnością <emphasis>leczenia</emphasis>. Liczba "
-"odzyskanych punktów życia podana jest w opisie zdolności jednostki. Jest to "
-"niezmiennie <emphasis>leczy +4</emphasis> lub <emphasis>leczy +8</emphasis>."
+"Postój obok jednostki z umiejętnością <emphasis>leczy</emphasis>. Liczba "
+"przywracanych punktów życia jest podana jest w opisie zdolności jednostki "
+"leczącej: <emphasis>leczy +4</emphasis> lub <emphasis>leczy +8</emphasis>."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2135
@@ -3121,7 +3124,6 @@ msgstr "Regeneracja"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2136
-#, fuzzy
 msgid ""
 "Trolls and Woses have the ability to heal themselves naturally through "
 "regeneration. They will heal 8 points each turn if they are injured. Note "
@@ -3131,13 +3133,12 @@ msgid ""
 msgstr ""
 "Trolle i drzewce potrafią same odzyskiwać punkty życia dzięki naturalnej "
 "zdolności regeneracji. Jeśli zostały ranne, odzyskują 8 punktów życia na "
-"turę. Zauważ, że ponieważ każda jednostka może odzyskać maksymalnie 8 "
-"punktów życia na turę, trolle i drzewce nie odnoszą żadnej korzyści z "
-"przebywania w wiosce lub obok leczącej jednostki."
+"turę. Należy pamiętać, że ponieważ każda jednostka może odzyskać maksymalnie "
+"8 punktów życia na turę, trolle i drzewce nie odnoszą żadnej korzyści z "
+"przebywania w wiosce lub w sąsiedztwie jednostki leczącej."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2145
-#, fuzzy
 msgid ""
 "Some attacks can inflict poison damage on your unit. When this happens the "
 "poisoned unit will take 8 damage each turn until it is cured. Poison can be "
@@ -3148,15 +3149,15 @@ msgid ""
 "on that turn due to healing/poisoning. A unit can not be healed normally "
 "until it is cured of poisoning."
 msgstr ""
-"Niektóre ataki mogą powodować obrażenia w wyniku zatrucia. Gdy jednostka "
-"zostanie zatruta, traci w każdej turze 8 punktów życia dopóki nie zostanie "
-"uzdrowiona. Zatrucie może zostać uzdrowione poprzez odpoczynek w wiosce lub "
-"stanie obok jednostki, która <emphasis>uzdrawia</emphasis>. Jednostki z "
-"umiejętnością <emphasis>leczenia</emphasis> mogą tylko powstrzymać truciznę "
-"przed zadawaniem obrażeń, ale nie są w stanie jej usunąć. Gdy zatrucie jest "
-"usunięte, jednostka nie traci, i nie zyskuje punktów życia w turze, w której "
-"to nastąpiło. Jednostka nie może zostać normalnie uleczona dopóki nie "
-"zostanie usunięty wpływ trucizny."
+"Niektóre ataki mogą powodować zatrucie atakowanego. Jednostka zatruta traci "
+"co turę 8 punktów życia, dopóki nie zostanie uzdrowiona. Zatrucie można "
+"usunąć poprzez odpoczynek w wiosce lub postój obok jednostki z umiejętnością "
+"<emphasis>uzdrawia</emphasis>. Jednostki z umiejętnością <emphasis>leczy</"
+"emphasis> mogą jedynie powstrzymać utratę punktów życia w wyniku działania "
+"trucizny, ale nie potrafią usunąć zatrucia. Usunięcie zatrucia powstrzymuje "
+"utratę punktów życia, ale w tej samej turze jednostka nie może już odzyskać "
+"żadnych punktów życia. Zwykłe leczenie jednostki jest możliwe dopiero po "
+"usunięciu zatrucia."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2153
@@ -3170,15 +3171,15 @@ msgstr "Powrót do pełnego zdrowia może zająć jednostce kila tur."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2163
-#, fuzzy
 msgid ""
 "Healers (Elvish Shaman, Elvish Druid, Elvish Shyde, White Mage, Mage of "
 "Light, Paladin) heal all wounded units around them, so you can keep units "
 "close to the battle without losing them."
 msgstr ""
-"Lekarze (elfickie szamanki, druidki, wróżki, biali magowie, magowie światła "
-"i paladyni) leczą ranne jednostki, któe się koło nich znajdują, więc trzymaj "
-"te jednostki blisko pola bitwy uważając, by ich nie stracić."
+"Leczący (elfickie szamanki, elfickie druidki, elfickie wróżki, biali "
+"magowie, magowie światła i paladyni) leczą wszystkie sąsiadujące z nimi "
+"ranne jednostki, więc należy ich utrzymywać blisko pola bitwy, uważając "
+"jednak, by ich nie stracić."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2170
@@ -3187,37 +3188,36 @@ msgstr "Uzdrowiciele nie leczą jednostek wroga."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2175
-#, fuzzy
 msgid "Healers cannot heal themselves, but see next point."
-msgstr "Lekarze sami nie mogą się leczyć."
+msgstr "Leczący nie może leczyć samego siebie, ale patrz następny punkt."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2180
-#, fuzzy
 msgid "Use your healers in pairs, so they can heal each other if needed."
 msgstr ""
-"Możesz jednak używać lekarzy w parach, dzięki czemu będą leczyć się "
-"wzajemnie w razie potrzeby."
+"Dobrze jest używać leczących parami, dzięki czemu mogą w razie potrzeby "
+"leczyć siebie nawzajem."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2185
-#, fuzzy
 msgid ""
 "Multiple healers from different sides can heal the same unit and speed up "
 "healing."
-msgstr "Kilku lekarzy może leczyć tę samą jednostkę, przyspieszając proces."
+msgstr ""
+"Kilku leczących może jednocześnie leczyć tę samą jednostkę, przyspieszając "
+"proces leczenia."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2190
-#, fuzzy
 msgid "Trolls and Woses cannot regenerate other units."
-msgstr "Trole i drzewce nie mogą regenerować innych jednostek."
+msgstr "Trolle i drzewce nie mogą regenerować innych jednostek."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2195
-#, fuzzy
 msgid "Trolls and Woses cure themselves from poison as a village does."
-msgstr "Trole i drzewce uzdrawiają się z trucizny tak jak robią to wioski."
+msgstr ""
+"Trolle i drzewce samo uzdrawiają się z trucizny, co daje taki sam efekt, jak "
+"pobyt w wiosce."
 
 # type: Content of: <book><chapter><title>
 #: ../../doc/manual/manual.en.xml:2203
@@ -3231,15 +3231,14 @@ msgstr "Podstawy strategii"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2206
-#, fuzzy
 msgid ""
 "The following basic combat principles and tips are intended to help starting "
 "off your career as a Wesnothian battle veteran. The minor concrete examples "
 "are somewhat tied to the \"Heir to the Throne\" campaign."
 msgstr ""
-"Opisane tu podstawy walki i wskazówki pozwolą ci rozpocząć karierę weterana "
-"w Wesnoth. Niektóre konkretne przykłady powiązane są z kampanią \"Następca "
-"tronu\"."
+"Opisane tu podstawowe zasady walki i wskazówki pozwolą Ci rozpocząć karierę "
+"weterana pól bitewnych Wesnoth. Niektóre konkretne przykłady są powiązane z "
+"kampanią \"Następca tronu\"."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2211
@@ -3248,7 +3247,6 @@ msgstr "Nie marnuj jednostek"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2212
-#, fuzzy
 msgid ""
 "Do not send wounded units to a sure death. Once a unit loses more than half "
 "of its hit points (HP), you should seriously consider retreating it to "
@@ -3256,15 +3254,14 @@ msgid ""
 "care of a healer (like Elvish Shamans or White Mages). Healers are very "
 "useful!"
 msgstr ""
-"Nie wysyłaj rannych jednostek na pewną śmierć. Gdy jednostka straci więcej "
-"niż połowę punktów życia (PŻ), powinieneś poważnie rozważyć możliwość "
-"wycofania jej w bezpieczne miejsce i albo umieścić ją w wiosce, by się "
-"leczyła, lub oddać ją pod opiekę lekarza (na przykład elfickiej szamanki lub "
+"Nie posyłaj rannych jednostek na pewną śmierć. Gdy jednostka straci więcej "
+"niż połowę punktów życia (PŻ), trzeba poważnie rozważyć możliwość wycofania "
+"jej w bezpieczne miejsce i albo umieścić ją w wiosce, by tam się leczyła, "
+"lub oddać ją pod opiekę leczącego (na przykład elfickiej szamanki lub "
 "białego maga). Jednostki leczące są bardzo użyteczne!"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2218
-#, fuzzy
 msgid ""
 "This is for practical reasons: a heavily wounded unit cannot hold back or "
 "kill the enemy. During attack and counterattack, it most often will perish. "
@@ -3274,14 +3271,14 @@ msgid ""
 "a replacement, it is most often far away from the battle front. So don't "
 "waste your units."
 msgstr ""
-"Za takim rozwiązaniem przemawiają praktyczne powody: poważnie ranna "
-"jednostke nie jest w stanie powstrzymać lub zabić wroga. Zazwyczaj zginie "
-"zaatakowana lub podczas kontrataku. Co więcej, jeśli wyślesz ją na pewną "
-"śmierć stracisz punkty doświadczenia (PD), które zdobyła. Rekrutacja "
-"zastępczej jednostki może nie być możliwa jeśli przywódca nie będzie akurat "
-"przebywał w twierdzy lub w skarbcu będzie brakowało pieniędzy. Nawet jeśli "
-"masz możliwość rekrutowania nowej jednostki na miejsce straconej, zazwyczaj "
-"będzie to zbyt daleko od linii frontu. Nie marnuj więc jednostek."
+"Ma to uzasadnienie czysto praktyczne: ciężko ranna jednostka nie będzie w "
+"stanie powstrzymać ani zabić wroga, a podczas ataku i kontrataku zazwyczaj "
+"zginie. Co więcej, wraz z jednostką wysłaną na pewną śmierć przepadną punkty "
+"doświadczenia (PD), które dotąd zdobyła. Rekrutacja nowej jednostki na "
+"miejsce utraconej może być niemożliwa, jeśli przywódca nie przebywa akurat w "
+"twierdzy albo jeśli w skarbcu brakuje złota. Co więcej, nawet rekrutacja "
+"będzie możliwa, jednostka najczęściej zostanie powołana daleko od linii "
+"frontu. Nie marnuj więc jednostek."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2228
@@ -3290,70 +3287,64 @@ msgstr "Poza zasięgiem wroga"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2229
-#, fuzzy
 msgid ""
 "How do you guard wounded units? They are best guarded by being out of the "
 "adversary's reach. No enemy can attack them if enemies cannot even come near "
 "them. The next section about zone of control (ZOC) shows how to restrict the "
 "enemy's moves."
 msgstr ""
-"Czy potrafisz odpowiednio chronić ranne jednostki? Najlepszym "
-"zabezpieczeniem jest umieszenie ich poza zasięgiem napastników. Żaden wróg "
-"nie zaatakuje jednostki, jeśli nie będzie się mógł do niej zbliżyć. Następna "
-"sekcja wyjaśnia jak używać strefy kontroli do ograniczania ruchów "
-"przeciwnika."
+"Jak chronić ranne jednostki? Najlepszym zabezpieczeniem jest umieszczenie "
+"ich poza zasięgiem napastników. Żaden wróg nie zaatakuje jednostki, jeśli "
+"nie będzie się mógł do niej zbliżyć. Następna sekcja wyjaśnia, jak używać "
+"strefy kontroli do ograniczania ruchów przeciwnika."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2234
-#, fuzzy
 msgid ""
 "In the Action menu, you can select \"Show Enemy Moves\" to highlight all "
 "possible hexes your adversary can actually move to. This takes your zone of "
 "control into account. Thus you can check that your near death unit, which is "
 "behind, indeed cannot be attacked as the enemy cannot move close to it."
 msgstr ""
-"W menu Działania możesz wybrać pozycję \"Pokaż ruchy przeciwników\", by "
-"podświetlić wszystkie pola, do których mogą dotrzeć potencjalni napastnicy. "
-"Strefa kontroli brana jest przy tym pod uwagę. Możesz więc sprawdzić, czy "
-"przeciwnik rzeczywiście nie może dostać się bliskiej śmierci jednostki, "
-"którą wycofałeś."
+"Opcja \"Pokaż ruchy przeciwników\" w menu Działania pokazuje wszystkie pola, "
+"na które jednostki przeciwnika mogą się ruszyć. Zakres dostępnych pól "
+"uwzględnia wpływ stref kontroli Twoich jednostek. W ten sposób można "
+"sprawdzić, czy przeciwnik rzeczywiście nie może się przedostać do wycofanej "
+"na tyły ciężko rannej jednostki."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2240
-#, fuzzy
 msgid ""
 "When your armies meet, you may want to try to be the first to attack. So try "
 "to end your move out of striking range of the enemy army. He cannot attack "
 "but most likely will close into your striking range."
 msgstr ""
-"Gdy wasze armie się spotkają, możesz chcieć zaatakować jako pierwszy. "
-"Spróbuj więc zakończyć swój ruch poza zasięgiem ataku wrogiej armii. "
-"Przeciwnik nie będzie mógł zaatakować, ale najprawdopodobniej znajdzie się "
-"dostatecznie blisko."
+"Jeśli chcesz w walnej bitwie zaatakować jako pierwszy, postaraj się "
+"zakończyć swój ruch poza zasięgiem ataku wrogiej armii. Przeciwnik nie "
+"będzie mógł zaatakować, ale najprawdopodobniej zbliży się na odległość "
+"umożliwiającą atak Twoim jednostkom."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2246
-#, fuzzy
 msgid "Shield with your zone of control (ZOC)"
-msgstr "Ochraniaj swoją strefą kontroli"
+msgstr "Osłaniaj strefą kontroli"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2247
-#, fuzzy
 msgid ""
 "Every unit of level 1 or higher maintains a zone of control (ZOC) covering "
 "all 6 neighboring hexes. This means that once an enemy moves into one of the "
 "six neighboring tiles, it is forced to halt and its movement phase ends "
 "(only enemies with the rare skirmisher ability ignore this)."
 msgstr ""
-"Każda jednostka poziomu 1 lub wyższego roztacza strefę kontroli, obejmującą "
-"6 sąsiednich pól. Oznacza to, że jeśli wróg przemieści się na jedno z nich, "
-"zostanie zmuszony do zatrzymania się i straci możliwość dalszego ruchu "
-"(tylko wrogowie z rzadką umiejętnością harcowania ignorują strefę kontroli)."
+"Każda jednostka poziomu pierwszego lub wyższego roztacza strefę kontroli, "
+"obejmującą wszystkich sześć sąsiadujących pól. Oznacza to, że jeśli wróg "
+"przemieści się na jedno z tych pól, zostanie zmuszony do zatrzymania się i "
+"straci możliwość dalszego ruchu (strefę kontroli mogą ignorować tylko "
+"jednostki z rzadką umiejętnością <emphasis>harcownik</emphasis>)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2252
-#, fuzzy
 msgid ""
 "Because of ZOC, an enemy may not slip between two units which are aligned on "
 "a north-south or diagonal line and have exactly 1 or 2 hexes between them. "
@@ -3363,13 +3354,13 @@ msgid ""
 "reach it, even a single unit may shield a small region behind itself."
 msgstr ""
 "Z powodu strefy kontroli wróg nie może prześlizgnąć się między dwoma "
-"jednostkami, które ustawione są w linii północ-południe lub ukośnej, a "
-"między nimi znajduje się 1 lub 2 pola. Łącząc takie pary w długą ścianę lub "
-"używając ich w różnych kierunkach możesz niedopuścić, by przeciwnik dotarł "
-"do znajdujących się z tyłu rannych. Będzie musiał najpierw pokonać jednostki "
-"budujące strefę kontroli. Jeśli wróg może ledwo dotrzeć do twojej rannej "
-"jednostki, możesz go zablokować nawet jedną jednostką, która zasłania mały "
-"obszar znajdujący się bezpośrednio za nią."
+"jednostkami, które są ustawione w linii północ-południe lub ukośnie i "
+"rozdzielone jednym lub dwoma polami. Łącząc takie pary jednostek w długi mur "
+"lub ustawiając je w różnych kierunkach można uniemożliwić przeciwnikowi "
+"dotarcie do rannej jednostki znajdującej się na tyłach - musiałby najpierw "
+"pokonać jednostki narzucające strefę kontroli. Nawet pojedyncza jednostka "
+"może zasłonić pewien obszar za sobą, jeśli znajduje się na skraju zasięgu "
+"wroga."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2262
@@ -3378,35 +3369,34 @@ msgstr "Utrzymuj linię obrony"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2263
-#, fuzzy
 msgid ""
 "By lining up many units directly adjacent or with at most 1 hex space "
 "between them, you can build up a powerful defensive line. Note that, because "
 "Wesnoth uses hexes, a east-to-west \"line\" is not a straight line but a zig-"
 "zag curve. The north south line and the diagonals are the \"real\" lines."
 msgstr ""
-"Ustawiając jednostki obok siebie lub w odstępach 1 pola, możesz zbudować "
-"potężną linię obrony. Zwróć uwagę, że Wesnoth używa heksów, więc \"linia\" "
-"biegnąca w osi wschód-zachód nie jest prostą, lecz raczej zygzakiem. Z kolei "
-"linie północ-południe i ukośne są \"prawdziwe\"."
+"Ustawiając jednostki bezpośrednio obok siebie lub w odstępach jednego pola "
+"można stworzyć solidną linię obrony. Trzeba tu pamiętać, że ponieważ Wesnoth "
+"używa heksów (pól sześciokątnych), \"linia\" biegnąca w osi wschód-zachód "
+"nie jest prostą, lecz raczej zygzakiem, natomiast linie północ-południe i "
+"ukośne są faktycznie liniami prostymi."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2269
-#, fuzzy
 msgid ""
 "Coming from one side, the enemy may attack any single of your units in the "
 "line with only 2 of his units at a time. As a rule of thumb, a healthy unit "
 "without particular weakness can withstand an attack from two normal enemy "
 "units of the same level or lower without getting killed."
 msgstr ""
-"Przeciwnik nacierający z jednej strony może zaatakować każdą jedną jednostkę "
-"maksymalnie 2 swoimi w danej turze. Generalnie można przyjąć, że zdrowa "
-"jednostka bez szczególnych słabości może wytrzymać atak dwóch normalnych "
-"przeciwników tego samego lub niższego poziomu."
+"Przeciwnik nacierający z jednej strony może w każdej turze zaatakować każdą "
+"Twoją jednostkę w linii obrony maksymalnie dwiema swoimi jednostkami. "
+"Generalnie można przyjąć, że zdrowa jednostka bez szczególnych słabości może "
+"przetrzymać atak dwóch normalnych przeciwników tego samego lub niższego "
+"poziomu."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2274
-#, fuzzy
 msgid ""
 "Unfortunately, your line often has to bend to form a wedge or to fit the "
 "terrain. At these corner points, 3 enemy units may attack. This also happens "
@@ -3415,25 +3405,25 @@ msgid ""
 "points. These are the most likely to be killed, so use units with no or few "
 "experience points (XP) for this purpose."
 msgstr ""
-"Niestety twoje linie często muszą zmieniać kierunek, by uformować klin lub "
-"dopasować się do ukształtowania terenu. Jednostki znajdujące się w "
-"narożnikach narażone są na atak z 3 stron. To samo dotyczy końców linii "
-"obrony, jeśli jest ona zbyt krótka. Utrzymuj te punkty z pomocą jednostek z "
-"dużą liczbą punktów życia ustawionych na odpowiednim terenie lub z "
-"odpowiednimi odpornościami. Szansa, że zginą jest największa, więc używaj do "
-"tego celu jednostek bez lub z małą liczbą punktów życia (PD)."
+"Niestety linie obrony często muszą zmieniać kierunek, by uformować klin lub "
+"dopasować się do ukształtowania terenu. Jednostki znajdujące się w punktach "
+"narożnych są narażone na atak z trzech stron naraz. To samo dotyczy końców "
+"linii obrony, jeśli jest ona zbyt krótka. Te kluczowe punkty należy bronić "
+"jednostkami z dużą liczbą punktów życia, ustawionymi na korzystnym terenie "
+"lub posiadającymi korzystne odporności. Ponieważ są to jednostki najbardziej "
+"narażone na śmierć, należy na takie pozycje wybierać jednostki o jak "
+"najniższej liczbie punktów doświadczenia (PD)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2281
-#, fuzzy
 msgid ""
 "Lining your troops up also prevents the enemy from surrounding any one of "
 "them. For ZOC reasons, a unit with one enemy behind it and one in front is "
 "trapped."
 msgstr ""
-"Ustawianie żołnierzy w linie uniemożliwia przeciwnikowi otoczenie któregoś z "
-"nich. Z uwagi na sposób działania strefy kontroli, jednostka może zostać "
-"uwięziona jeżeli wróg ustawi się z obu jej stron."
+"Formowanie linii uniemożliwia też przeciwnikowi otoczenie jakiejkolwiek "
+"jednostki. Ze względu na wpływ stref kontroli, jednostka znajdująca się "
+"bezpośrednio między dwoma jednostkami wroga nie może uciec."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2287
@@ -3442,7 +3432,6 @@ msgstr "Zmieniaj jednostki liniowe"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2288
-#, fuzzy
 msgid ""
 "When a unit in the front line is heavily damaged you can move him safely "
 "behind your defensive line. To hold up the line, you will most likely have "
@@ -3450,19 +3439,18 @@ msgid ""
 "front line. If you have healers, damaged units in the second line will "
 "quickly recover."
 msgstr ""
-"Jeśli znajdująca się z przodu jednostka odniesie poważne obrażenia, będziesz "
-"mógł bezpiecznie odsunąć ją za linię obrony. Aby ją utrzymać będziesz musiał "
-"najprawdopodobniej zastąpić wycofaną jednostkę rezerwą, utrzymuj więc kilka "
-"jednostek w drugiej linii. Jeśli masz do dyspozycji lekarzy, ranne jednostki "
-"z drugiej linii szybciej wrócą do zdrowia."
+"Jeśli jednostka frontowa odniesie poważne obrażenia, można ją bezpiecznie "
+"odsunąć za linię obrony. Aby utrzymać linię trzeba będzie na ogół wycofaną "
+"jednostkę zastąpić jednostką rezerwową, więc warto utrzymywać kilka "
+"jednostek w drugiej linii. Jeśli w armii są leczący, ranne jednostki w "
+"drugiej linii szybko wrócą do zdrowia."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2294
-#, fuzzy
 msgid "Note that your units can pass through hexes containing your own troops."
 msgstr ""
-"Zwróć uwagę, że twoje jednostki mogą przechodzić przez pola zajmowane przez "
-"twoich żołnierzy."
+"Warto pamiętać, że jednostki mogą przechodzić przez pola zajmowane przez "
+"sprzymierzeńców."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2298
@@ -3471,27 +3459,26 @@ msgstr "Wykorzystuj teren"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2299
-#, fuzzy
 msgid ""
 "Try to position your troops so that they are attacking from a hex with high "
 "defense against an enemy in a hex with low terrain. That way, the enemy's "
 "counterstrikes will be less likely to do damage."
 msgstr ""
-"Spróbuj tak ustawić swoich żołnierzy, by atakowali z pola zapewniającego "
-"wysoką skuteczność obrony przeciwników na polach tego nie zapewniających. "
-"Dzięki temu ich kontratak będzie mniej niebezpieczny."
+"Staraj się tak ustawiać swoich żołnierzy, by atakowali z pola o wysokim "
+"współczynniku obrony, uderzając na wroga znajdującego się na terenie o "
+"gorszej obronie. Dzięki temu będzie mniejsza szansa, że kontratak "
+"przeciwnika sięgnie celu."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2303
-#, fuzzy
 msgid ""
 "For example, you might position your elves just inside of a forest edge so "
 "that attacking orcs must stand on grassland while your elves enjoy the high "
 "forest defenses."
 msgstr ""
-"Dla przykładu, możesz tak rozmieścić swoje elfy w narożniku lasu, że "
-"atakujące je orki będą zmuszone atakować z równin, podczas gdy elfy będą "
-"cieszyły się w lesie wysokim współczynnikiem obrony."
+"Można na przykład rozmieścić swoje elfy na krawędzi lasu, by nacierające "
+"orki musiały atakować z odsłoniętych równin, a elfy mogły w pełni korzystać "
+"z przysługującego im w lasach wysokiego współczynnika obrony."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2309
@@ -3500,20 +3487,18 @@ msgstr "Wybór i atakowanie celów"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2310
-#, fuzzy
 msgid ""
 "Advancing and attacking is of course the most interesting part of your way "
 "to victory. Kill or weaken enemies in your path and move your defensive line "
 "forward. This can become tricky as the enemy gets to attack back on his turn."
 msgstr ""
-"Nacieranie i atakowanie to oczywiście najciekawsza część drogi do "
-"zwycięstwa. Zabijaj lub osłabiaj przeciwników stojących na twojej drodze i "
-"przesuwaj swoją linię obrony naprzód. Może to sprawić trochę problemów, gdy "
-"przeciwnik kontratakuje w swojej turze."
+"Natarcie i atak to oczywiście najciekawsza część drogi do zwycięstwa. "
+"Zabijaj lub osłabiaj przeciwników stojących na Twojej drodze i przesuwaj "
+"swoją linię obrony naprzód. Oczywiście nie zawsze jest to łatwe, gdyż "
+"przeciwnik może podczas swojej tury kontratakować."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2315
-#, fuzzy
 msgid ""
 "Often, you will throw several units at a single enemy unit to finish him "
 "off, but these were forming your defensive line which is now partly broken. "
@@ -3522,16 +3507,15 @@ msgid ""
 "and next turn, he is going to strike back. Perhaps a Horseman can deliver "
 "the killing blow."
 msgstr ""
-"Często będziesz atakował jednego przeciwnika kilkoma jednostkami, by go "
-"wykończyć, ale jednocześnie częściowo osłabisz linię obrony, którą one "
-"formowały. Być może nie będzie miało to znaczenia, bo pozostaniesz poza "
-"zasięgiem innych jednostek przeciwnika. Być może będzie miało, bo uda ci się "
-"tylko osłabić bardzo silnego przeciwnika, który kontratakuje w następnej "
-"turze. Być może warto spróbować zadać ostatni cios z pomocą jeźdźca."
+"Często zdarza się, że trzeba posłać kilka jednostek na jednego przeciwnika, "
+"by go dobić, ale tym samym przerwać linię obrony, którą one tworzyły. Czasem "
+"nie będzie to miało znaczenia, jeśli armia jest poza zasięgiem innych "
+"jednostek przeciwnika. Z drugiej jednak strony może to być niebezpieczne, "
+"jeśli atak tylko osłabi bardzo silnego wroga, który w następnej turze "
+"kontratakuje. Warto wtedy zadać ostateczny cios za pomocą jeźdźca."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2322
-#, fuzzy
 msgid ""
 "Striking first is an advantage because it allows you the choice of which "
 "units will face off. Take advantage of enemy weakness: e.g. direct your "
@@ -3541,28 +3525,27 @@ msgid ""
 "exploit."
 msgstr ""
 "Atakowanie jako pierwszy daje przewagę, ponieważ pozwala korzystnie wybrać "
-"cele. Wykorzystaj słabości wroga: użyj ataku na odległość przeciwko "
-"przeciwnikom, którzy nie posiadają takiej broni. Skorzystaj ze słabości "
-"okazji w rodzaju słabości jeźdźców w zetknięciu z bronią kłującą. Nie "
-"zapominaj jednak, że w następnej turze przeciwnik będzie miał przewagę, "
-"uważaj więc na swoje słabe punkty, które wróg może wykorzystać."
+"cele. Wykorzystaj słabości wroga, na przykład używając ataku na odległość "
+"przeciwko jednostkom, które takim atakiem nie dysponują. Skorzystaj też ze "
+"słabości w rodzaju niskiej odporności jeźdźców na broń kłującą. Pamiętaj "
+"jednak, że w następnej turze przeciwnik może sam zaatakować, więc zwracaj "
+"też uwagę na własne słabości, które umożliwią mu skuteczny kontratak."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2329
-#, fuzzy
 msgid ""
 "For example, Horsemen can hold up the line against Orcish Grunts and Troll "
 "Whelps very well because they have some resistances against blade and "
 "impact. But your Horseman may quite quickly fall to Orcish Archers and "
 "Goblin Spearmen."
 msgstr ""
-"Dla przykładu, jeźdźcy dobrze bronią się przed siepaczami orków i trollami, "
-"ponieważ mają częściową odporność na ataki bronią sieczną i obuchową. Jednak "
-"jeździec łatwo padnie ofiarą łuczników orków oraz goblińskich włóczników."
+"Na przykład jeźdźcy nieźle utrzymają linię w starciu z siepaczami orków i "
+"trollami, ponieważ mają pewną odporność na ataki bronią sieczną i obuchową. "
+"Jeśli jednak orkowie zaatakują łucznikami i goblińskimi włócznikami, szeregi "
+"jeźdźców mogą się szybko załamać."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2334
-#, fuzzy
 msgid ""
 "It usually pays off if you can definitively kill (or almost kill) the faced "
 "unit. If you are unsure of finishing off the enemy in one turn, either "
@@ -3571,27 +3554,26 @@ msgid ""
 "often wise to attack at the range that allows the enemy to do least damage "
 "to you, rather than choosing the maximum expected damage to the enemy."
 msgstr ""
-"Zazwyczaj opłaca się doprowadzić do sytuacji, w której na pewno możesz "
-"(niemal) na pewno zabić jednostkę przeciwnika. Jeśli nie masz pewności, że "
-"uda ci się ją pokonać w ciągu jednej tury, albo upewnij się, że wytrzymasz "
-"kontratak, albo przygotuj się na stratę jednostki. Aby w następnej turze "
-"przetrzymać uderzenie przeciwnika warto atakować z takiej odległości, która "
-"zapewni, że przeciwnik zada ci jak najmniej obrażeń, a nie tak, by zadać mu "
-"jak najwięcej obrażeń."
+"Zazwyczaj warto dobić (lub przynajmniej prawie dobić) jednostkę przeciwnika. "
+"Jeśli nie ma pewności, czy uda się wroga pokonać w ciągu jednej tury, trzeba "
+"albo się upewnić, że atakująca jednostka wytrzyma kontratak przeciwnika, "
+"albo zaakceptować ryzyko jej utraty. Aby w następnej turze przetrzymać "
+"uderzenie przeciwnika, warto zaatakować z takiego dystansu, na którym "
+"przeciwnik zada jak najmniej obrażeń, a niekoniecznie takiego, który daje "
+"najsilniejszy atak."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2342
-#, fuzzy
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "The computer's default choice only looks for the most damage you can deal, "
 "so using it will often result in your units taking more damage than "
 "necessary."
 msgstr ""
-"W szczególności, używaj ataków na odległość przeciwko wrogom, którzy ich nie "
-"posiadają. Domyślny wybór proponowany przez komputer bierze pod uwagę tylko "
-"obrażenia, które możesz zadać, więc często spowoduje, że twoje jednostki "
-"odniosą więcej obrażeń niż to konieczne."
+"W szczególności warto korzystać z ataków na odległość przeciwko wrogom, "
+"którzy ich nie posiadają. Domyślny wybór broni proponowany przez komputer "
+"uwzględnia wyłącznie maksymalne zadawane obrażenia, co może narażać Twoje "
+"jednostki na większe obrażenia, niż jest to konieczne."
 
 #: ../../doc/manual/manual.en.xml:2349
 msgid "Time of Day"
@@ -3599,7 +3581,6 @@ msgstr "Pora dnia"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2350
-#, fuzzy
 msgid ""
 "Remember that Lawful units like humans fight better at daytime and Chaotic "
 "units like orcs or undead fight better at night. Ideally you want to first "
@@ -3608,41 +3589,38 @@ msgid ""
 "defensive position. When its weak time is about to arise, your advance will "
 "push forth."
 msgstr ""
-"Pamiętaj, że jednostki praworządne, takie jak ludzie, walczą lepiej za dnia, "
-"a chaotyczne, jak orki lub nieumarli, lepiej spisują się w nocy. Najlepiej "
-"jest, gdy poraz pierwszy ścierasz się z przeciwnikiem, gdy twoje jednostki "
-"są silne, a jego słabe. Gdy pora dnia powoduje, że wróg jest silny, często "
-"opłaca się wzmocnić linię obrony i utrzymywać pozycję sprzyjającą obronie. "
-"Gdy zbliża się czas jego osłabienia, uda ci się przeprowadzić skuteczne "
-"natarcie."
+"Pamiętaj, że jednostki praworządne (na przykład ludzie) walczą lepiej za "
+"dnia, a chaotyczne (na przykład orki lub nieumarli) lepiej spisują się w "
+"nocy. Idealna pora na pierwsze starcie z przeciwnikiem to taka, gdy Twoje "
+"jednostki są silniejsze, a jego jednostki słabsze. W porze sprzyjającej "
+"przeciwnikowi często najkorzystniej jest wzmocnić linię obrony i utrzymywać "
+"pozycję sprzyjającą obronie. Gdy zbliża się pora osłabiająca wroga, czas "
+"wyprowadzić natarcie."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2357
-#, fuzzy
 msgid ""
 "For example, elves might hold out a forest during a nightly orcish onslaught "
 "and advance on sunrise. You may even note that the computer AI actively "
 "retreats his orcs during day."
 msgstr ""
-"Na przykład elfy mogą bronić się w lesie podczas nocnego natarcia orków i "
-"zaatakować o wschodzie słońca. Możesz zauważyć, że komputerowy przeciwnik "
-"wycofuje swoje orki podczas dnia."
+"Na przykład elfy mogą się bronić się w lesie podczas nocnego natarcia orków, "
+"a zaatakować o wschodzie słońca. Czasem można wręcz zauważyć, że komputerowy "
+"przeciwnik chętniej wycofuje swoich orków podczas dnia."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2364
-#, fuzzy
 msgid ""
 "Over the course of a campaign, it is critical that you build up a seasoned "
 "force. Later scenarios will assume you have level 2 and 3 units available "
 "for recall."
 msgstr ""
-"Z biegiem kampanii bardzo ważne jest, byś zbudował opowiednio doświadczone "
-"siły. Późniejsze scenariusze zostały stworzone z myślą, że będziesz mógł "
-"przywołać jednostki 2 i 3 poziomu."
+"Niezwykle istotne jest budowanie doświadczonej armii w miarę przebiegu "
+"kampanii. Późniejsze scenariusze w kampaniach są stworzone przy założeniu, "
+"że będziesz mieć możliwość przywoływania jednostek 2 i 3 poziomu."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2368
-#, fuzzy
 msgid ""
 "Your units gain most experience points (XP) from killing an enemy unit (8XP "
 "per level of the unit killed). As such, it often makes sense to have your "
@@ -3650,29 +3628,28 @@ msgid ""
 "of the XP. Healers in particular are often weak in combat and often need to "
 "<emphasis>steal</emphasis> kills in this way to advance levels."
 msgstr ""
-"Twoje jednostki zdobywają najwięcej punktów doświadczenia (PD) zabijając "
-"wrogą jednostkę (8PD za każdy poziom pokonanej jednostki). W związku z tym, "
-"często rozsądnym jest osłabienie wroga przy pomocy twoich jednostek "
-"wysokiego poziomu, a następnie zadanie śmiertelnego ciosu z pomocą jednostki "
-"bardziej potrzebującej PD. Lekarze są szczególnie słabi w walce i często "
-"muszą <emphasis>podkradać</emphasis> przeciwników do zabicia, by móc "
-"awansować na wyższy poziom."
+"Jednostki zdobywają najwięcej punktów doświadczenia (PD) za zabicie wrogiej "
+"jednostki (8PD za każdy poziom pokonanej jednostki). Oznacza to, że "
+"korzystną strategią jest często osłabienie przeciwnika jednostkami wyższego "
+"poziomu, a zadanie śmiertelnego ciosu jednostką bardziej potrzebującą PD. "
+"Zwłaszcza jednostki leczące są nierzadko słabe w walce, więc awansowanie ich "
+"na kolejne poziomy wymaga takiego właśnie <emphasis>podkradania</emphasis> "
+"doświadczenia poprzez dobijanie osłabionych przeciwników."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2374
-#, fuzzy
 msgid ""
 "At the beginning (when you probably have no high level units), try to give "
 "most kills to a small handful of your units. This will fast-track them to "
 "becoming Level 2 units, and they can then shepherd others."
 msgstr ""
-"Na początku, gdy nie masz jeszcze jednostek wysokich poziomów, staraj się, "
-"by większość zabitych wrogów przypadała małej grupie jednostek. To znacznie "
-"przyspieszy ich awans na 2 poziom i będą mogły lepiej pomagać innym."
+"Na początku kampanii, gdy na ogół nie masz jeszcze jednostek wyższych "
+"poziomów, postaraj się, by większość zabitych wrogów przypadała małej grupie "
+"jednostek. To znacznie przyspieszy ich awans na drugi poziom, a wtedy będą "
+"mogły skuteczniej pomagać innym w awansowaniu."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2378
-#, fuzzy
 msgid ""
 "Don't neglect to earn your leader experience. You need to keep him safe, but "
 "if you coddle him too much he will be too low level to survive future "
@@ -3684,45 +3661,40 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2385
-#, fuzzy
 msgid "Getting the Most Fun Out of the Game"
 msgstr "Jak czerpać najwięcej radości z gry"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2386
-#, fuzzy
 msgid ""
 "Remember, the idea of a game is to have fun! Here are some recommendations "
 "from the development team on how to get the most fun out of the game:"
 msgstr ""
-"Pamiętaj, celem gry jest dobra zabawa! Oto kilka rad od twórców gry, które "
-"pomogą ci czerpać z niej jeszcze więcej przyjemności:"
+"Pamiętaj, celem każdej gry jest przede wszystkim dobra zabawa! Oto kilka rad "
+"od twórców gry, które pozwolą czerpać jak najwięcej przyjemności z rozgrywki:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2392
-#, fuzzy
 msgid ""
 "Consider playing the campaign on \"Medium\" difficulty level, especially if "
 "you have prior experience with strategy games. We feel you'll find it much "
 "more rewarding."
 msgstr ""
-"Rozważ możliwość rozegrania kampanii na \"Średnim\" poziomie trudności, "
-"szczególnie jeśli masz doświadczenie z grami strategicznymi. Myślimy, że "
-"rozgrywka będzie dla ciebie bardziej satysfakcjonująca."
+"Spróbuj grać w kampanie na \"średnim\" poziomie trudności, zwłaszcza jeśli "
+"masz już doświadczenie w grach strategicznych. Naszym zdaniem zapewni to "
+"większą satysfakcję z rozgrywki."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2399
-#, fuzzy
 msgid ""
 "Don't sweat it too much when you lose some units. The campaign was designed "
 "to accommodate the player losing some units along the way."
 msgstr ""
-"Nie przejmuj się za bardzo stratą kilku jednostek. Kampanie zostały "
-"zaprojektowane z myślą o tym, że gracz może stracić trochę żołnierzy."
+"Nie przejmuj się za bardzo traceniem jednostek. Kampanie zostały "
+"zaprojektowane z myślą o tym, że gracz będzie w ich toku ponosić straty."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2405
-#, fuzzy
 msgid ""
 "Don't abuse saved games. Long ago, Wesnoth only allowed saving the game at "
 "the end of a scenario. Mid-scenario saving was added as a convenience to use "
@@ -3733,14 +3705,14 @@ msgid ""
 msgstr ""
 "Nie nadużywaj możliwości zapisywania stanu gry. Dawno temu Wesnoth pozwalał "
 "na zapisywanie gry tylko na końcu scenariusza. Zapisywanie w trakcie zostało "
-"dodane dla wygody, na wypadek gdybyś chciał kontynuować grę w innym czasie i "
-"chronić cię na wypadek awarii programu. Odradzamy ciągłe wracanie do stanu "
-"gry zapisanego w trakcie scenariusza tylko dlatego, że twój biały mag "
-"notorycznie ginie. Naucz się go chronić i nie ryzykuj. To część strategii."
+"dodane dla wygody, by można było kontynuować grę później i by uchronić się "
+"przez ewentualną awarią programu lub systemu. Odradzamy ciągłe wracanie do "
+"stanu gry zapisanego w trakcie scenariusza tylko dlatego, że twój biały mag "
+"ciągle ginie. Zamiast wciąż ładować grę, naucz się go chronić i lepiej "
+"oceniać ryzyko. To właśnie część strategii."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2416
-#, fuzzy
 msgid ""
 "If you must load a saved game, we recommend going back to the start of the "
 "scenario, so that you choose a new strategy that works, rather than simply "
@@ -3748,22 +3720,21 @@ msgid ""
 msgstr ""
 "Jeśli musisz załadować zapisany stan gry, radzimy rozpocząć scenariusz od "
 "początku i raczej spróbować nowej, lepszej strategii, niż czekać na "
-"szczęście."
+"wylosowanie w komputerze szczęśliwych numerków."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2423
-#, fuzzy
 msgid ""
 "But remember, the aim is to have fun! You may have different tastes than the "
 "developers, so do what you enjoy most! If you enjoy loading the saved game "
 "every time you make a mistake, looking for the <emphasis>perfect</emphasis> "
 "game where you never lose a unit, by all means, go right ahead!"
 msgstr ""
-"Pamiętaj: ostatecznym celem jest dobra zabawa! Możesz mieć inny gust niż "
-"twórcy gry, więc rób to, co sprawia ci najwięcej radości! Jeśli lubisz "
-"ładować zapisany stan gry za każdym razem, gdy zrobisz błąd i starasz się "
-"rozegrać grę <emphasis>doskonałą</emphasis> bez straty ani jeden jednostki - "
-"rób to!"
+"Ale pamiętaj: chodzi o dobrą zabawę! Możesz mieć inne upodobania, niż twórcy "
+"gry, więc rób to, co sprawia Ci najwięcej radości! Jeśli lubisz ładować "
+"zapisany stan gry za każdym razem, gdy popełnisz błąd, by utrafić w grę "
+"<emphasis>doskonałą</emphasis>, w której nie stracisz ani jednej jednostki - "
+"nie krępuj się!"
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2431
@@ -3772,29 +3743,26 @@ msgstr "Na początku scenariusza"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2435
-#, fuzzy
 msgid ""
 "First, read the scenario objectives. Sometimes you do not have to kill enemy "
 "leaders; instead it is enough that you survive for a certain number of "
 "turns, or pick up a particular object"
 msgstr ""
-"Zacznij od przeczytania celów scenariusza. Czsami nie musisz zabijać "
-"przywódców wroga, a do zwycięstwa wystarczy jeśli przetrwasz określoną "
-"liczbę tur lub zdobędziesz pewien przedmiot."
+"Zacznij od przeczytania celów scenariusza. Czasami nie trzeba zabijać "
+"przywódców wroga, a do zwycięstwa wystarczy przetrwać określoną liczbę tur "
+"lub zdobyć pewien przedmiot."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2442
-#, fuzzy
 msgid ""
 "Look at the map: the terrain, the position of your leader and the other "
 "leader(s)."
 msgstr ""
-"Rozejrzyj się po mapie: zwróć uwagę na teren oraz położenie swojego i "
+"Rozejrzyj się po mapie, zwracając uwagę na teren oraz położenie swojego i "
 "pozostałych przywódców."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2448
-#, fuzzy
 msgid ""
 "Then, begin to recruit units. Cheap units are useful to soak up the first "
 "wave of an enemy's attack; advanced units can then be brought in as support. "
@@ -3802,9 +3770,9 @@ msgid ""
 "conquer villages."
 msgstr ""
 "Następnie zacznij rekrutować żołnierzy. Wykorzystaj tanie jednostki do "
-"przyjęcia pierwszej fali przeciwników i doślij te bardziej zaawansowane jako "
-"wsparcie. Możesz wykorzystać szybkie jednostki jako zwiadowców, którzy "
-"rozpoznają mapę i szybko zdobędą wioski."
+"przyjęcia pierwszej fali uderzenia, a potem wprowadź wojska bardziej "
+"doświadczone jako wsparcie. Możesz wykorzystać szybkie jednostki jako "
+"zwiadowców, którzy rozpoznają mapę i szybko zdobędą wioski."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2457
@@ -3813,79 +3781,74 @@ msgstr "Podczas scenariusza"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2461
-#, fuzzy
 msgid ""
 "Try to capture and keep control of as many villages as possible to keep the "
 "gold coming in."
 msgstr ""
-"Staraj się zdobyć i utrzymać kontrolę nad największą możliwą liczbą wiosek, "
-"dzięki czemu będziesz otrzymywał nieprzerwany strumień złota."
+"Staraj się zdobyć i utrzymać jak najwięcej wiosek, by złoto cały czas "
+"wpływało do skarbca."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2467
-#, fuzzy
 msgid ""
 "Keep units in packs so the enemy cannot attack from as many sides, and so "
 "you can outnumber each enemy unit. Put your units in a line so that the "
 "enemy cannot attack any one of your units from more than two sides."
 msgstr ""
-"Trzymanie jednostek w grupach utrudni przeciwnikowi atakowanie ze wszystkich "
-"stron, a tobie da przewagę liczebną. Uformuj linię, żeby przeciwnik nie mógł "
-"zaatakować żadnej z twoich jednostek z więcej niż dwóch stron."
+"Utrzymuj jednostki w grupach, by ograniczyć liczbę stron narażonych na atak "
+"przeciwnika, a przy tym zapewnić sobie przewagę liczebną nad pojedynczymi "
+"wrogami. Uformuj linię, żeby przeciwnik nie mógł zaatakować żadnej z Twoich "
+"jednostek z więcej niż dwóch stron."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2474
-#, fuzzy
 msgid ""
 "Different units have different strengths and weaknesses depending on terrain "
 "and who they are attacking; right click on units and select \"Unit "
 "Description\" to learn more."
 msgstr ""
-"Różne jednostki mają różne słabości i mocne punkty, w zależności od terenu, "
-"z którego atakują. Dowiesz się więcej jeśli klikniesz jednostkę prawym "
-"przyciskiem myszy i wybierzesz \"Opis jednostki\"."
+"Różne jednostki mają różne słabości i mocne strony, zależne od terenu i "
+"rodzaju atakowanej jednostki. Aby poznać więcej informacji, wystarczy "
+"kliknąć dowolną jednostkę prawym przyciskiem myszy i wybrać opcję \"Opis "
+"jednostki\"."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2481
-#, fuzzy
 msgid ""
 "You can use lower level units as cannon fodder, to slow down enemy. e.g. you "
 "can use them to block enemy reaching your important units"
 msgstr ""
-"Możesz używać jednostek niskiego poziomu jako mięsa armatniego, by spowolnić "
-"przeciwnika, na przykład możesz użyć ich, by zablokować wrogowi dostęp do "
-"twoich ważnych jednostek."
+"Jednostki niskiego poziomu mogą posłużyć jako mięso armatnie, by spowolnić "
+"natarcie wroga - można ich na przykład używać do zablokowania wrogowi "
+"dostępu do Twoich ważnych jednostek."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2487
-#, fuzzy
 msgid ""
 "You can cause damage to enemies with advanced units and then finish them "
 "with lower level units - to give them more experience (and finally make them "
 "advance to next level)."
 msgstr ""
-"Możesz uszkodzć wrogów z pomocą swoich zaawansowanych, a następnie dobić je "
-"jednostkami niższego poziomu - zdobędą dzięki temu więcej doświadczenia, a w "
-"końcu awansują."
+"Warto zadawać wrogom obrażenia za pomocą jednostek wyższego poziomu, a "
+"dobijać ich jednostkami niższego poziomu, które dzięki temu zdobędą więcej "
+"doświadczenia, a w końcu awansują."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2494
-#, fuzzy
 msgid ""
 "When you have a White Mage (advances from Mage) or Druid (advances from "
 "Shaman), put it in the middle of a circle of units to heal them as they move "
 "across the map (Shamans can do this too, but not as well)."
 msgstr ""
 "Jeśli posiadasz białego maga (na którego awansuje mag) lub druidkę (awansuje "
-"na nią szamanka), umieść ich w kręgu jednostek, by leczyć je jednocześnie "
-"przemieszczając się po mapie (szamanki też mogą to robić, ale nie tak "
-"skutecznie)."
+"na nią szamanka), umieść ich w kręgu jednostek, by jednocześnie leczyć cały "
+"oddział podczas marszu (również szamanki mogą to robić, ale z mniejszą "
+"skutecznością)."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2501
-#, fuzzy
 msgid "Losing units is expected, even advanced units."
-msgstr "Straty jednostek są normalne, nawet tych zaawansowanych."
+msgstr "Straty jednostek są nieuniknione, nawet jednostek zaawansowanych."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2506
@@ -3895,28 +3858,26 @@ msgstr "Pora dnia ma ogromne znaczenie:"
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2511
 msgid "lawful units do more damage at day and less damage at night"
-msgstr "praworządne jednostki zadają więcej obrażeń za dnia, a mniej w nocy"
+msgstr "Jednostki praworządne zadają więcej obrażeń za dnia, a mniej w nocy."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2516
 msgid "chaotic units do more damage at night and less damage at day"
-msgstr "jednostki chaotyczne zadają więcej obrażeń w nocy, a mniej za dnia"
+msgstr "Jednostki chaotyczne zadają więcej obrażeń w nocy, a mniej za dnia."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2521
-#, fuzzy
 msgid ""
 "remember to always check the time of day on the right side of the screen. "
 "Plan ahead - think about what it's going to be next turn as well as this "
 "turn."
 msgstr ""
-"pamiętaj, by zawsze sprawdzać porę dnia (z prawej strony ekranu). Planuj z "
-"wyprzedzeniem - zastanawiaj się jak będzie wyglądała sytuacja zarówno w "
-"obecnej, jak i w następnej turze."
+"Pamiętaj, by zawsze sprawdzać porę dnia (z prawej strony ekranu). Planuj z "
+"wyprzedzeniem - uwzględniaj w swojej strategii nie tylko porę dnia w turze "
+"bieżącej, ale i w następnej."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2530
-#, fuzzy
 msgid ""
 "Some units are resistant or vulnerable to different kind of attacks. Mounted "
 "units are weak vs pierce attacks. Fire and arcane attacks destroy undead. To "
@@ -3926,13 +3887,13 @@ msgid ""
 msgstr ""
 "Różne jednostki są odporne lub wrażliwe na różne rodzaje ataków. Jazda jest "
 "słaba w starciu z bronią kłującą. Nieumarłych niszczą ataki ogniem i "
-"astralne. Aby zobaczyć jak odporna jest jednostka na dany typ ataku, kliknij "
-"ją prawym przyciskiem myszy i wybierz \"Opis jednostki\", a następnie "
-"wybierz \"Odporności\"."
+"astralne. Aby zobaczyć, jak odporna jest jednostka na dany typ ataku, "
+"kliknij ją prawym przyciskiem myszy i wybierz \"Opis jednostki\" i znajdź "
+"sekcję \"Odporności\", w której podane są współczynniki odporności jednostki "
+"na różne rodzaje ataków."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2542
-#, fuzzy
 msgid ""
 "An important part of succeeding at Battle for Wesnoth is keeping your units "
 "healthy. When your units take damage you can heal them by moving them onto "
@@ -3943,8 +3904,8 @@ msgstr ""
 "Ważnym czynnikiem sukcesu w Bitwie o Wesnoth jest dbanie o zdrowie "
 "jednostek. Gdy jednostka odniesie obrażenia, możesz ją leczyć umieszczając w "
 "wiosce lub z pomocą specjalnych jednostek leczących (np. elfickiej szamanki "
-"lub białego maga). Pewne jednostki, z którymi się zetkniesz, takie jak "
-"trolle, posiadają naturalną zdolność leczenia się."
+"lub białego maga). Inne jednostki, z którymi się zetkniesz podczas gry (na "
+"przykład trolle), posiadają naturalną zdolność samoleczenia."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2550
@@ -3953,7 +3914,6 @@ msgstr "Wygrywanie scenariusza"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2554
-#, fuzzy
 msgid ""
 "Advanced units are needed to quickly kill enemy commanders, and to avoid "
 "losing lots of units."
@@ -3963,15 +3923,14 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2560
-#, fuzzy
 msgid ""
 "The quicker you win a scenario, the more gold you get; you will get more "
 "gold from winning early than from all of the map's villages for the rest of "
 "the turns."
 msgstr ""
-"Czym szybciej wygrywasz scenariusz, tym więcej otrzymujesz złota. Wygrywając "
-"wcześniej dostaniesz też więcej złota, niż mógłbyś uzyskać zdobywając "
-"wszystkie wioski na mapie i czekając."
+"Im szybciej wygrasz scenariusz, tym więcej otrzymasz złota. Wygrywając "
+"wcześniej dostaniesz więcej złota, niż zdołasz zebrać zajmując wszystkie "
+"wioski na mapie i czekając do końca limitu tur."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2567
@@ -3987,26 +3946,24 @@ msgstr "Więcej ogólnych wskazówek"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2577
-#, fuzzy
 msgid ""
 "After slaughtering scenarios (where you take lots of punishment) there are "
 "usually \"breathing room\" scenarios where you can rather easily gain some "
 "gold and experience (advanced units)"
 msgstr ""
-"Po ciężkich scenariuszach, w których ponosisz wysokie straty, zazwyczaj "
-"występują takie, które dają ci odetchnąć umożliwiając względnie łatwe "
-"podreperowanie stanu skarbca i zdobycie doświadczenia celem awansowania "
-"jednostek."
+"Po krwawych scenariuszach, w których Twoja armia ponosi poważne straty, "
+"zazwyczaj następują takie, które pozwalają nieco odetchnąć i względnie łatwo "
+"zdobyć zapas złota oraz doświadczenie niezbędne do awansowania jednostek."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2584
-#, fuzzy
 msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
 msgstr ""
-"Zaawansowane jednostki mają wyższy koszt utrzymania niż jednostki niższych "
-"poziomów (1 sztuka złota na poziom), wyjątkiem są jednostki lojalne."
+"Jednostki wyższych poziomów są droższe w utrzymaniu, niż jednostki o "
+"niższych poziomach (1 sztuka złota na poziom), z wyjątkiem jednostek "
+"lojalnych."
 
 # type: Content of: <book><glossary><title>
 #: ../../doc/manual/manual.en.xml:2593
