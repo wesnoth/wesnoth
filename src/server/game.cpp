@@ -350,57 +350,43 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		return;
 	}
 
-/*	if(side_controllers_[side_num - 1] == "network" && sides_taken_[side_num - 1]
-	   && cfg["own_side"] != "yes")
-	{
-		std::stringstream msg;
-		msg << "Side " << side_num << " is already controlled by '"
-			<< player_info_->find(sides_[side_num - 1])->second.name() << "'.";
-		network::send_data(construct_server_message(msg.str()), sock, true);
-		return;
-	}*/
+	network::connection old_player = sides_[side_num - 1];
+	const std::string old_player_name =
+			(player_info_->find(old_player) != player_info_->end()
+			? player_info_->find(old_player)->second.name() : "");
 	// Check if the sender actually owns the side he gives away or is the host.
-	if (!(sides_[side_num - 1] == sock || (sock == owner_))) {
+	if (sock != old_player && sock != owner_) {
 		std::stringstream msg;
-		msg << "Side " << side_num << " is already controlled by '"
-			<< (player_info_->find(sides_[side_num - 1]) != player_info_->end()
-				? player_info_->find(sides_[side_num - 1])->second.name()
-				: "")
-			<< "'.";
+		msg << "You can't give away side " << side_num << ". It's controlled by '"
+			<< old_player_name << "' not you.";
 		DBG_GAME << msg << "\n";
 		network::send_data(construct_server_message(msg.str()), sock, true);
 		return;
 	}
-	if (newplayer->first == sides_[side_num - 1]) {
+	if (newplayer->first == old_player) {
 		network::send_data(construct_server_message(
 			"That's already " + newplayer_name + "'s side, silly."), sock, true);
 		return;
 	}
-	network::connection old_player = sides_[side_num - 1];
 	sides_[side_num - 1] = 0;
 	bool host_leave = false;
 	// If the old player lost his last side, make him an observer.
 	if (std::find(sides_.begin(), sides_.end(), old_player) == sides_.end()) {
-		observers_.push_back(*pl);
-		players_.erase(pl);
-		const std::string& name = player_info_->find(old_player)->second.name();
+		observers_.push_back(old_player);
+		players_.erase(std::remove(players_.begin(), players_.end(), old_player), players_.end());
 		// Tell others that the player becomes an observer.
-		send_and_record_server_message(name + " becomes an observer.");
-		// Update the client side observer list for everyone except player.
+		send_and_record_server_message(old_player_name + " becomes an observer.");
+		// Update the client side observer list for everyone except old player.
 		config observer_join;
-		observer_join.add_child("observer")["name"] = name;
+		observer_join.add_child("observer")["name"] = old_player_name;
 		send_data(observer_join, old_player);
-		// If this player was the host of the game, choose another player.
+		// If the old player was the host of the game, choose another player.
 		if (old_player == owner_) {
 			host_leave = true;
-			if (!players_.empty()) {
-				owner_ = players_.front();
-				send_and_record_server_message(name
-						+ " has been chosen as the new host.");
-			} else {
+			if (players_.empty()) {
 				owner_ = newplayer->first;
-				send_and_record_server_message(newplayer_name
-						+ " has been chosen as the new host.");
+			} else {
+				owner_ = players_.front();
 			}
 			notify_new_host();
 		}
@@ -420,7 +406,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		observers_.erase(itor);
 		// Send everyone but the new player the observer_quit message.
 		config observer_quit;
-		observer_quit.add_child("observer_quit")["name"] = newplayer->second.name();
+		observer_quit.add_child("observer_quit")["name"] = newplayer_name;
 		send_data(observer_quit, newplayer->first);
 	}
 }
@@ -477,14 +463,17 @@ void game::transfer_ai_sides() {
 }
 
 void game::notify_new_host(){
-	const player_map::const_iterator it_host = player_info_->find(owner_);
-	if (it_host != player_info_->end()){
-		config cfg;
-		config& cfg_host_transfer = cfg.add_child("host_transfer");
-		cfg_host_transfer["name"] = it_host->second.name();
-		cfg_host_transfer["value"] = "1";
-		network::send_data(cfg, owner_, true);
-	}
+	const std::string owner_name =
+			(player_info_->find(owner_) != player_info_->end()
+			? player_info_->find(owner_)->second.name() : "");
+	config cfg;
+	config& cfg_host_transfer = cfg.add_child("host_transfer");
+	// Why do we send the new host his own name?
+	cfg_host_transfer["name"] = owner_name;
+	cfg_host_transfer["value"] = "1";
+	network::send_data(cfg, owner_, true);
+	send_and_record_server_message(owner_name
+			+ " has been chosen as the new host.");
 }
 
 bool game::describe_slots() {
@@ -968,17 +957,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	// If the player was host choose a new one.
 	if (host) {
 		owner_ = players_.front();
-		std::string owner_name = "";
-		const player_map::const_iterator owner = player_info_->find(owner_);
-		if (owner == player_info_->end()) {
-			ERR_GAME << "ERROR: Could not find new host in player_info_. (socket: "
-				<< owner_ << ")\n";
-		} else {
-			owner_name = owner->second.name();
-		}
 		notify_new_host();
-		send_and_record_server_message(owner_name
-				+ " has been chosen as the new host.");
 	}
 
 	// Look for all sides the player controlled and drop them.
