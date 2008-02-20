@@ -1597,6 +1597,8 @@ void unit::set_selecting(const game_display &disp,const gamemap::location& loc)
 void unit::start_animation(const int start_time, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles,const std::string text, const Uint32 text_color,STATE state)
 {
 	const game_display * disp =  game_display::get_singleton();
+    // everything except standing select and idle
+    const bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	if(!animation) {
 		set_standing(loc,with_bars);
 		return ;
@@ -1607,7 +1609,7 @@ void unit::start_animation(const int start_time, const gamemap::location &loc,co
 	if(anim_) delete anim_;
 	anim_ = new unit_animation(*animation);
 	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
-	anim_->start_animation(real_start_time,loc, loc.get_direction(facing_), cycles,text,text_color);
+	anim_->start_animation(real_start_time,loc, loc.get_direction(facing_), cycles,text,text_color,accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp->idle_anim()) {
 		next_idling_ = get_current_animation_tick()

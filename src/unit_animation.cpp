@@ -297,15 +297,18 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 			animation_base.back().event_.clear();
 		}
 	}
-	if(animation_base.empty()) {
+	// always provide a base
 		animation_base.push_back(unit_animation(0,unit_frame(default_image,600),"",unit_animation::DEFAULT_ANIM));
-	}
 
 	animations.push_back(unit_animation(0,unit_frame(default_image,1),"_disabled_",0));
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
 		unit_animation tmp_anim = *itor;
 		// provide all default anims
 		animations.push_back(*itor);
+
+		tmp_anim = *itor;
+		tmp_anim.event_ = utils::split("standing");
+		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
@@ -727,8 +730,9 @@ int unit_animation::get_begin_time() const
 	return result;
 }
 
-void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, const std::string text, const Uint32 text_color)
+void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, const std::string text, const Uint32 text_color,const bool accelerate)
 {
+		unit_anim_.accelerate = accelerate;
 	unit_anim_.start_animation(start_time, src, dst, cycles);
 	if(!text.empty()) {
 		crude_animation crude_build;
@@ -738,6 +742,7 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 	}
 	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		anim_itor->second.accelerate = accelerate;
 		anim_itor->second.start_animation(start_time,src,dst,cycles);
 	}
 }
