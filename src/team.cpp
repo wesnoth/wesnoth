@@ -506,6 +506,16 @@ bool team::calculate_is_enemy(size_t index) const
 	return std::find(info_.enemies.begin(),info_.enemies.end(),int(index+1)) != info_.enemies.end();
 }
 
+bool team::has_allies(const std::vector<team>& teams)
+{
+	int count_friends = 0;
+	for (size_t i = 0; i < teams.size(); ++i) {
+		if (!is_enemy(i + 1))
+			count_friends++;
+	}
+	return count_friends > 1;
+}
+
 void team::change_controller(const std::string& controller)
 {
 	team::team_info::CONTROLLER cid;

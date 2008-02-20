@@ -337,6 +337,20 @@ namespace events{
 		return textbox_info_;
 	}
 
+	std::string menu_handler::disambiguate(int team_num)
+	{
+		std::stringstream msg;
+		if (teams_[team_num].has_allies(teams_)) {
+			const unit_map::const_iterator leader = team_leader(team_num,units_);
+			if(leader != units_.end()) {
+				msg << " (";
+				msg << leader->second.name();
+				msg << ")";
+			}
+		}
+		return msg.str();
+	}
+
 	void menu_handler::objectives(const unsigned int team_num)
 	{
 		dialogs::show_objectives(*gui_, level_, teams_[team_num - 1].objectives());
@@ -1013,7 +1027,7 @@ private:
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
-			gui::dialog rmenu(*gui_,_("Recruit"),
+			gui::dialog rmenu(*gui_,_("Recruit") + disambiguate(team_num),
 					  _("Select unit:") + std::string("\n"),
 					  gui::OK_CANCEL,
 					  gui::dialog::default_style);
@@ -1164,7 +1178,7 @@ private:
 
 			{
 				dialogs::units_list_preview_pane unit_preview(*gui_,&map_,recall_list);
-				gui::dialog rmenu(*gui_,_("Recall"),
+				gui::dialog rmenu(*gui_,_("Recall") + disambiguate(team_num),
 						  _("Select unit:") + std::string("\n"),
 						  gui::OK_CANCEL,
 						  gui::dialog::default_style);
