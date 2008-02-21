@@ -720,13 +720,15 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_t
 		return;
 	}
 
-	const bool old_village = is_village(loc);
-	const bool new_village = is_village(terrain);
+	if(on_board(loc, false)) {
+		const bool old_village = is_village(loc);
+		const bool new_village = is_village(terrain);
 
-	if(old_village && !new_village) {
-		villages_.erase(std::remove(villages_.begin(),villages_.end(),loc),villages_.end());
-	} else if(!old_village && new_village) {
-		villages_.push_back(loc);
+		if(old_village && !new_village) {
+			villages_.erase(std::remove(villages_.begin(),villages_.end(),loc),villages_.end());
+		} else if(!old_village && new_village) {
+			villages_.push_back(loc);
+		}
 	}
 
 	tiles_[loc.x + border_size_][loc.y + border_size_] = terrain;
