@@ -1049,7 +1049,7 @@ void connect::start_game()
 	
 	// add era events only if not save
 	const config* const era_cfg = level_.child("era");
-	if (era_cfg != NULL && level_["savegame"] == "no") {
+	if (era_cfg != NULL && level_["savegame"] != "yes") {
 		game_events::add_events(era_cfg->get_children("event"),"era_events");
 	}
 
