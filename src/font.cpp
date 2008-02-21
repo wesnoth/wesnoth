@@ -345,7 +345,8 @@ const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
                 BUTTON_COLOUR = {0xBC,0xB0,0x88,0},
                 STONED_COLOUR = {0xA0,0xA0,0xA0,0},
                 TITLE_COLOUR  = {0xBC,0xB0,0x88,0},
-				LABEL_COLOUR  = {0x6B,0x8C,0xFF,0};
+				LABEL_COLOUR  = {0x6B,0x8C,0xFF,0},
+				BIGMAP_COLOUR = {0x00,0xAA,0x00,0};
 const SDL_Color DISABLED_COLOUR = inverse(STONED_COLOUR);
 
 namespace {

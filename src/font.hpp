@@ -35,7 +35,7 @@ struct manager {
 
 //various standard colours
 extern const SDL_Color NORMAL_COLOUR, GRAY_COLOUR, LOBBY_COLOUR, GOOD_COLOUR, BAD_COLOUR,
-                       BLACK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR,
+                       BLACK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR, BIGMAP_COLOUR,
                        STONED_COLOUR, TITLE_COLOUR, DISABLED_COLOUR, LABEL_COLOUR;
 
 // font sizes, to be made theme parameters
