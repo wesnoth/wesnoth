@@ -260,7 +260,6 @@ public:
 	std::string map_colour_to() const { return info_.colour; };
 	bool& no_leader()  { return info_.no_leader; }
 
-	bool has_allies(const std::vector<team>& teams);
 	static int nteams();
 
 	//function which, when given a 1-based side will return the colour used by that side.

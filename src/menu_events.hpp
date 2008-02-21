@@ -99,7 +99,7 @@ public:
 	gui::floating_textbox& get_textbox();
 	void set_gui(game_display* gui) { gui_ = gui; }
 
-	std::string disambiguate(int team_num);
+	std::string get_title_suffix(int team_num);
 	void objectives(const unsigned int team_num);
 	void show_statistics(const unsigned int team_num);
 	void unit_list();
