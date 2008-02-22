@@ -297,8 +297,8 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 			animation_base.back().event_.clear();
 		}
 	}
-	// always provide a base
-	animation_base.push_back(unit_animation(0,unit_frame(default_image,600),"",unit_animation::DEFAULT_ANIM));
+	if( animation_base.empty() )
+		animation_base.push_back(unit_animation(0,unit_frame(default_image,600),"",unit_animation::DEFAULT_ANIM));
 
 	animations.push_back(unit_animation(0,unit_frame(default_image,1),"_disabled_",0));
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
