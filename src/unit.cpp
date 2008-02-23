@@ -1645,7 +1645,11 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	}
 	refreshing_ = true;
 
+#ifndef LOW_MEM
 	bool facing_west = facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST;
+#else
+	bool facing_west = false;
+#endif
 	const gamemap::location dst = loc.get_direction(facing_);
 	const int xsrc = disp.get_location_x(loc);
 	const int ysrc = disp.get_location_y(loc);
@@ -1707,15 +1711,17 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 
 	image::locator image_loc;
+#ifndef LOW_MEM
 	image_loc = anim_->image();
 	if(image_loc.is_void()) {
 		image_loc = absolute_image();
 	}
-#ifndef LOW_MEM
 	std::string mod=image_mods();
 	if(mod.size()){
 		image_loc = image::locator(image_loc,mod);
 	}
+#else
+	image_loc = absolute_image();
 #endif
 
 	// The caching used to be disabled for the lowmem case but that actually
