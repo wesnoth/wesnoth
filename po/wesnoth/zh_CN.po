@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-19 11:39+0100\n"
-"PO-Revision-Date: 2008-02-03 17:38+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2008-02-22 12:51+1000\n"
+"Last-Translator: luojie <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr "地图的动画效果"
 
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "单位站立动画"
 
 #: data/_main.cfg:64
 msgid "Show Combat"
@@ -44,7 +44,7 @@ msgstr "显示战斗"
 
 #: data/_main.cfg:79
 msgid "Alternate Wesnoth Server"
-msgstr "可选的服务器"
+msgstr "其他服务器"
 
 #: data/_main.cfg:83
 msgid "Official Wesnoth Server"
@@ -72,8 +72,8 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "狂暴：\n"
-"无论是用于攻击还是防御，这轮将攻击一直持续进行，直到一个战斗单位被杀死，或持"
-"续攻击达到30次。"
+"无论是用于攻击还是防御，攻击将一直持续进行，直到一个战斗单位被杀死，或持续攻"
+"击达到30个来回。"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
 #: data/core/macros/abilities.cfg:616
@@ -1033,7 +1033,6 @@ msgstr ""
 "足够的经验值就可立即升级，生命全满。有些情况下，你还会遇到升级选项。"
 
 #: data/core/help.cfg:273
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1051,11 +1050,11 @@ msgstr ""
 "\n"
 "\n"
 "大多数兵种有三个级别，但也有例外。有些单位（例如<ref>dst=unit_Mage text=法师"
-"</ref>）能升到四级。单位升到最高级以后，有可能会得到满级奖励 （AMLA）。AMLA会"
+"</ref>）能升到四级。单位升到最高级以后，有可能会得到满级奖励（AMLA）。AMLA会"
 "在单位达到升级所需经验值后修改单位属性，但等级不变。典型的AMLA作用是增加3点最"
 "大生命值并补满血。通常情况下，单位会在获得100点经验值（聪慧单位是80点）后获得"
 "第一次AMLA。不过，以后每次获得AMLA的难度逐渐变大，所以让你的低等级单位升级一"
-"般会更有益。"
+"般会更有用处。"
 
 #: data/core/help.cfg:278
 msgid "Healing"
@@ -2059,7 +2058,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:689
-#, fuzzy
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3709,13 +3707,12 @@ msgstr ""
 "倒下为止。"
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
 "enemy."
 msgstr ""
-"如果同盟的某个单位分散了敌人的注意力，本单位就可以从敌人背后进行背刺攻击，造"
+"如果本单位和某个同盟单位前后包夹敌人，本单位就可以从敌人背后进行背刺攻击，造"
 "成双倍伤害。"
 
 #: data/core/macros/special-notes.cfg:62
@@ -4004,6 +4001,11 @@ msgid ""
 "feature which has allowed them to populate even some of the mountains of the "
 "far north of the Great Continent."
 msgstr ""
+"龙族是庞大，有翼，呼吸火焰的生物，龙的后裔。平允而言，成年龙族站起有三米高，"
+"和一个人加一匹马的总重量相当。而且皮肤由坚硬的鳞片覆盖，抵抗除了刺和冰冻之外"
+"的所有攻击。他们大多会飞，能快速地远距离移动。但是他们体重和硕大影响了飞行能"
+"力。所以他们常常在山间树丛起飞，获取加速度。对于敌人来说幸运的是，龙族还是太"
+"大了，战斗中移动缓慢。这样的大身材，让那些胆敢袭击他们的家伙容易击中目标。"
 
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
@@ -4018,6 +4020,7 @@ msgid "race^Dwarves"
 msgstr "矮人"
 
 #: data/core/units.cfg:81
+#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -4067,6 +4070,47 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
+"矮人是一个以自己身份为荣的种族，他们是矿工，锻造者和战士。作为大陆上第三古老"
+"的种族，仅此于精灵和巨魔，他们历史的初始部分一直是谜团。传说很久之前他们从地"
+"下世界穿过洞窟上来。而那之前的一切生活都没有任何记录，包括来到地表的理由。他"
+"们从地底扶苏不久，他们和这大陆上的原住民精灵发生纷争。原因也已逝，但两族发生"
+"了三次大战争，每次都有几个世纪的间隔。During these wars the dwarves could "
+"not dislodge the elves from the deep forests in the south, but managed to "
+"consolidate their position in hills and the mountains in the north of the "
+"continent, known now as the Northlands. Since then they have constructed "
+"fantastic fortifications and settlements deep within the mountains and crags "
+"of their territory.\n"
+"\n"
+"Possibly due to their isolation, the dwarves are generally distrustful or "
+"hostile towards most other races, particularly the elves. The single "
+"exception to this temperament is towards humans. This could be traced back "
+"to the era of Haldric I and the arrival of humans and orcs to the continent. "
+"At this point the dwarves started allowing some humans, mostly dissidents "
+"and outlaws from the Crown of Wesnoth, to settle in certain areas of the "
+"Northlands. Their motivation was unsurprising. The plight of these "
+"individuals reminded the dwarves of their early history of persecution, "
+"eliciting a sense of solidarity. The dwarves also had much to gain in "
+"forming a bond with these outcasts. They would settle in areas where dwarves "
+"disliked living themselves; plains, forests, and swamps, freeing them from "
+"defending these areas. Later, when threatened by the Orcs, the dwarves and "
+"their human allies formed The Alliance of Knalga to defend their common "
+"realm.\n"
+"\n"
+"Dwarves are of small stature by human measure, but they are by no means "
+"fragile. Their warriors, tough and powerful are both feared and respected "
+"throughout the continent for their prowess in battle. In addition, dwarves "
+"are known for their calculating intellects and superb craftsmanship. Dwarven "
+"smiths are renowned for their deadly weapons and heavy armor. These "
+"accouterments are unrivaled in quality, possibly only matched by those "
+"produced by drake armourers. Their intelligence and natural inquisitiveness "
+"has also made them the most technically advanced race on the continent. One "
+"of their most famous, and feared, discoveries was a mysterious powder that "
+"produces an immense explosion when exposed to fire or sparks. Certain dwarf "
+"warriors use this powder to hurl small objects at tremendous speeds. Given "
+"their technological inclinations, many dwarves tend to distrust magic users. "
+"However some practice a form of magic based on the engraving of runes. "
+"Called runesmiths, they use these carvings to enchant items in order to "
+"augment certain aspects of their natures."
 
 #: data/core/units.cfg:89
 msgid "race^Elf"
@@ -4411,6 +4455,8 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
+"不死族并非单一种族，尽管被当成那样。大多不死是被足够强大的巫师从死亡世界召"
+"回。它们无意识，是反抗自然的存在。只知道听从召唤者的命令。"
 
 #: data/core/units.cfg:254
 msgid "race^Wose"
@@ -6959,19 +7005,17 @@ msgid "Unknown scenario"
 msgstr "未知场景"
 
 #: src/multiplayer_lobby.cpp:484
-#, fuzzy
 msgid "Reloaded game"
-msgstr "载入游戏存档"
+msgstr "已载入的游戏"
 
 #: src/multiplayer_lobby.cpp:500
 msgid "Turn "
 msgstr "回合"
 
 #: src/multiplayer_lobby.cpp:504
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "空位："
+msgstr[0] "空槽："
 msgstr[1] "空位："
 
 #: src/multiplayer_lobby.cpp:507 src/multiplayer_lobby.cpp:756
