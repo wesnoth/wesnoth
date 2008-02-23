@@ -9,11 +9,25 @@ namespace game_logic {
 class formula_callable;
 }
 
+void push_call_stack(const char* str);
+void pop_call_stack();
+std::string get_call_stack();
+
+struct call_stack_manager {
+	explicit call_stack_manager(const char* str) {
+		push_call_stack(str);
+	}
+
+	~call_stack_manager() {
+		pop_call_stack();
+	}
+};
+
 struct variant_list;
 struct variant_string;
 
 struct type_error {
-	explicit type_error(const std::string& str) : message(str) {}
+	explicit type_error(const std::string& str);
 	std::string message;
 };
 

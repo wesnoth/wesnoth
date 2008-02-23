@@ -15,7 +15,7 @@ public:
 	using ai_interface::current_team;
 	using ai_interface::move_map;
 
-	const move_map& srcdst() const { return srcdst_; }
+	const move_map& srcdst() const { if(!move_maps_valid_) { prepare_move(); } return srcdst_; }
 
 	std::string evaluate(const std::string& formula_str);
 
@@ -38,9 +38,12 @@ private:
 	mutable std::map<location,paths> possible_moves_;
 
 	void prepare_move() const;
-	bool move_maps_valid_;
+	mutable bool move_maps_valid_;
 	mutable move_map srcdst_, dstsrc_, full_srcdst_, full_dstsrc_, enemy_srcdst_, enemy_dstsrc_;
 	mutable variant attacks_cache_;
+	mutable variant keeps_cache_;
+
+	variant get_keeps() const;
 
 	game_logic::map_formula_callable vars_;
 };

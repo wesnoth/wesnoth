@@ -100,12 +100,13 @@ public:
 	  : loc_(pair.first), u_(pair.second), team_(current_team), side_(side)
 	{}
 
+	const unit& get_unit() const { return u_; }
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 private:
 	const location& loc_;
 	const unit& u_;
-	team team_;
+	const team& team_;
 	int side_;
 };
 

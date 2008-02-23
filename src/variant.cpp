@@ -25,17 +25,48 @@ std::string variant_type_to_string(variant::TYPE type) {
 		assert(false);
 	}
 }
+
+std::vector<const char*> call_stack;
+}
+
+void push_call_stack(const char* str)
+{
+	call_stack.push_back(str);
+}
+
+void pop_call_stack()
+{
+	call_stack.pop_back();
+}
+
+std::string get_call_stack()
+{
+	std::string res;
+	for(std::vector<const char*>::const_iterator i = call_stack.begin();
+	    i != call_stack.end(); ++i) {
+		if(!*i) {
+			continue;
+		}
+		res += "  ";
+		res += *i;
+		res += "\n";
+	}
+	return res;
+}
+
+type_error::type_error(const std::string& str) : message(str) {
+	std::cerr << "ERROR: " << message << "\n" << get_call_stack();
 }
 
 struct variant_list {
-	variant_list() : refcount(1)
+	variant_list() : refcount(0)
 	{}
 	std::vector<variant> elements;
 	int refcount;
 };
 
 struct variant_string {
-	variant_string() : refcount(1)
+	variant_string() : refcount(0)
 	{}
 	std::string str;
 	int refcount;
@@ -283,6 +314,14 @@ bool variant::operator!=(const variant& v) const
 bool variant::operator<=(const variant& v) const
 {
 	if(type_ != v.type_) {
+		if(type_ == TYPE_NULL) {
+			return variant(0) <= v;
+		}
+
+		if(v.type_ == TYPE_NULL) {
+			return *this < variant(0);
+		}
+
 		return false;
 	}
 

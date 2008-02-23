@@ -4,6 +4,8 @@
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 
+#include "SDL.h"
+
 namespace game_logic {
 
 namespace {
@@ -11,7 +13,7 @@ namespace {
 class if_function : public function_expression {
 public:
 	explicit if_function(const args_list& args)
-	     : function_expression(args, 3, 3)
+	     : function_expression("if", args, 3, 3)
 	{}
 
 private:
@@ -24,7 +26,7 @@ private:
 class rgb_function : public function_expression {
 public:
 	explicit rgb_function(const args_list& args)
-	     : function_expression(args, 3, 3)
+	     : function_expression("rgb", args, 3, 3)
 	{}
 
 private:
@@ -57,7 +59,7 @@ int transition(int begin, int val1, int end, int val2, int value) {
 class transition_function : public function_expression {
 public:
 	explicit transition_function(const args_list& args)
-			: function_expression(args, 5, 5)
+			: function_expression("transition", args, 5, 5)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -76,7 +78,7 @@ private:
 class color_transition_function : public function_expression {
 public:
 	explicit color_transition_function(const args_list& args)
-			: function_expression(args, 5)
+			: function_expression("color_transition", args, 5)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -121,7 +123,7 @@ private:
 class abs_function : public function_expression {
 public:
 	explicit abs_function(const args_list& args)
-	     : function_expression(args, 1, 1)
+	     : function_expression("abs", args, 1, 1)
 	{}
 
 private:
@@ -134,7 +136,7 @@ private:
 class min_function : public function_expression {
 public:
 	explicit min_function(const args_list& args)
-	     : function_expression(args, 1, -1)
+	     : function_expression("min", args, 1, -1)
 	{}
 
 private:
@@ -165,7 +167,7 @@ private:
 class max_function : public function_expression {
 public:
 	explicit max_function(const args_list& args)
-	     : function_expression(args, 1, -1)
+	     : function_expression("max", args, 1, -1)
 	{}
 
 private:
@@ -196,7 +198,7 @@ private:
 class choose_element_function : public function_expression {
 public:
 	explicit choose_element_function(const args_list& args)
-	     : function_expression(args, 2, 2)
+	     : function_expression("choose_element", args, 2, 2)
 	{}
 
 private:
@@ -223,7 +225,7 @@ private:
 class wave_function : public function_expression {
 public:
 	explicit wave_function(const args_list& args)
-	     : function_expression(args, 1, 1)
+	     : function_expression("wave", args, 1, 1)
 	{}
 
 private:
@@ -267,7 +269,7 @@ public:
 class sort_function : public function_expression {
 public:
 	explicit sort_function(const args_list& args)
-	     : function_expression(args, 1, 2)
+	     : function_expression("sort", args, 1, 2)
 	{}
 
 private:
@@ -292,7 +294,7 @@ private:
 class filter_function : public function_expression {
 public:
 	explicit filter_function(const args_list& args)
-	    : function_expression(args, 2, 2)
+	    : function_expression("filter", args, 2, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -312,16 +314,29 @@ private:
 class find_element_function : public function_expression {
 public:
 	explicit find_element_function(const args_list& args)
-	    : function_expression(args, 2, 2)
+	    : function_expression("find_element", args, 2, 3)
 	{}
 
 private:
 	variant execute(const formula_callable& variables) const {
 		const variant items = args()[0]->evaluate(variables);
-		for(int n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
-			if(val.as_bool()) {
-				return items[n];
+
+		if(args().size() == 2) {
+			for(int n = 0; n != items.num_elements(); ++n) {
+				const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
+				if(val.as_bool()) {
+					return items[n];
+				}
+			}
+		} else {
+			map_formula_callable self_callable;
+			const std::string self = args()[1]->evaluate(variables).as_string();
+			for(int n = 0; n != items.num_elements(); ++n) {
+				self_callable.add(self, items[n]);
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_callable_with_backup(*items[n].as_callable(), variables)));
+				if(val.as_bool()) {
+					return items[n];
+				}
 			}
 		}
 
@@ -332,7 +347,7 @@ private:
 class map_function : public function_expression {
 public:
 	explicit map_function(const args_list& args)
-	    : function_expression(args, 2, 3)
+	    : function_expression("map", args, 2, 3)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -361,7 +376,7 @@ private:
 class sum_function : public function_expression {
 public:
 	explicit sum_function(const args_list& args)
-	    : function_expression(args, 1, 2)
+	    : function_expression("sum", args, 1, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -381,7 +396,7 @@ private:
 class head_function : public function_expression {
 public:
 	explicit head_function(const args_list& args)
-	    : function_expression(args, 1, 1)
+	    : function_expression("head", args, 1, 1)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -393,7 +408,7 @@ private:
 class size_function : public function_expression {
 public:
 	explicit size_function(const args_list& args)
-	    : function_expression(args, 1, 1)
+	    : function_expression("size", args, 1, 1)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -405,7 +420,7 @@ private:
 class null_function : public function_expression {
 public:
 	explicit null_function(const args_list& args)
-	    : function_expression(args, 0, 0)
+	    : function_expression("null", args, 0, 0)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -416,7 +431,7 @@ private:
 class refcount_function : public function_expression {
 public:
 	explicit refcount_function(const args_list& args)
-	    : function_expression(args, 1, 1)
+	    : function_expression("refcount", args, 1, 1)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -426,24 +441,59 @@ private:
 
 }
 
+formula_function_expression::formula_function_expression(const std::string& name, const args_list& args, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& arg_names)
+  : function_expression(name, args, arg_names.size(), arg_names.size()),
+    formula_(formula), precondition_(precondition), arg_names_(arg_names), star_arg_(-1)
+{
+	for(int n = 0; n != arg_names_.size(); ++n) {
+		if(arg_names_.empty() == false && arg_names_[n][arg_names_[n].size()-1] == '*') {
+			arg_names_[n].resize(arg_names_[n].size()-1);
+			star_arg_ = n;
+			break;
+		}
+	}
+}
+
 variant formula_function_expression::execute(const formula_callable& variables) const
 {
+	static std::string indent;
+	indent += "  ";
+	std::cerr << indent << "executing '" << formula_->str() << "'\n";
+	const int begin_time = SDL_GetTicks();
 	map_formula_callable callable;
 	for(int n = 0; n != arg_names_.size(); ++n) {
-		callable.add(arg_names_[n], args()[n]->evaluate(variables));
+		variant var = args()[n]->evaluate(variables);
+		callable.add(arg_names_[n], var);
+		if(n == star_arg_) {
+			callable.set_fallback(var.as_callable());
+		}
 	}
 
-	return formula_->execute(callable);
+	if(precondition_) {
+		if(!precondition_->execute(callable).as_bool()) {
+			std::cerr << "FAILED function precondition for function '" << formula_->str() << "' with arguments: ";
+			for(int n = 0; n != arg_names_.size(); ++n) {
+				std::cerr << "  arg " << (n+1) << ": " << args()[n]->evaluate(variables).to_debug_string() << "\n";
+			}
+		}
+	}
+
+	variant res = formula_->execute(callable);
+	const int taken = SDL_GetTicks() - begin_time;
+	std::cerr << indent << "returning: " << taken << "\n";
+	indent.resize(indent.size() - 2);
+
+	return res;
 }
 
 function_expression_ptr formula_function::generate_function_expression(const std::vector<expression_ptr>& args) const
 {
-	return function_expression_ptr(new formula_function_expression(args, formula_, args_));
+	return function_expression_ptr(new formula_function_expression(name_, args, formula_, precondition_, args_));
 }
 
-void function_symbol_table::add_formula_function(const std::string& name, const_formula_ptr formula, const std::vector<std::string>& args)
+void function_symbol_table::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	custom_formulas_[name] = formula_function(formula, args);
+	custom_formulas_[name] = formula_function(name, formula, precondition, args);
 }
 
 expression_ptr function_symbol_table::create_function(const std::string& fn, const std::vector<expression_ptr>& args) const

@@ -101,6 +101,8 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(team_.is_enemy(u_.side()));
 	} else if(key == "is_mine") {
 		return variant(side_ == u_.side());
+	} else if(key == "value") {
+		return variant(u_.cost());
 	} else {
 		return variant();
 	}
