@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-18 00:01+0100\n"
+"POT-Creation-Date: 2008-02-24 15:50+0100\n"
 "PO-Revision-Date: 2008-02-20 04:03+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -35,14 +35,14 @@ msgstr ""
 "saldırılarında kan emerler, böylece saldırıda kaybettikleri sağlıklarının "
 "bir kısmını geri kazanırlar."
 
-#: data/core/units/bats/Bat_Blood.cfg:175
 #: data/core/units/bats/Bat_Vampire.cfg:174
-#: data/core/units/monsters/Wolf.cfg:49
-#: data/core/units/monsters/Cave_Spider.cfg:34
-#: data/core/units/monsters/Sea_Serpent.cfg:26
+#: data/core/units/bats/Bat_Blood.cfg:175
+#: data/core/units/goblins/Direwolf_Rider.cfg:33
 #: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/monsters/Sea_Serpent.cfg:26
+#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/monsters/Cave_Spider.cfg:34
 msgid "fangs"
 msgstr "pençeleme"
 
@@ -132,30 +132,29 @@ msgstr ""
 "olabilirler. Kıyamet Ejderleri olarak bilinen bu yaratıklar yüksek kulelerde "
 "yaşarlar. Devasa bir ateş gücüne sahiptirler ve ateşe bağışıktırlar."
 
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/gryphons/Gryphon_Rider.cfg:29
-#: data/core/units/gryphons/Gryphon_Master.cfg:29
-#: data/core/units/gryphons/Gryphon.cfg:28 data/core/units/drakes/Fire.cfg:70
-#: data/core/units/drakes/Burner.cfg:63
-#: data/core/units/drakes/Armageddon.cfg:83
-#: data/core/units/drakes/Inferno.cfg:71
 #: data/core/units/goblins/Direwolf_Rider.cfg:42
-#: data/core/units/undead/Corpse_Necrophage.cfg:28
+#: data/core/units/drakes/Burner.cfg:63 data/core/units/drakes/Inferno.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:83 data/core/units/drakes/Fire.cfg:70
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/gryphons/Gryphon_Master.cfg:29
+#: data/core/units/gryphons/Gryphon_Rider.cfg:29
+#: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:53
 #: data/core/units/undead/Spirit_Shadow.cfg:27
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
 msgid "claws"
 msgstr "tırmalar"
 
-#: data/core/units/monsters/Fire_Dragon.cfg:46
-#: data/core/units/drakes/Flare.cfg:91 data/core/units/drakes/Fire.cfg:79
-#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
 #: data/core/units/drakes/Glider.cfg:84
-#: data/core/units/drakes/Armageddon.cfg:92
-#: data/core/units/drakes/Flameheart.cfg:87
-#: data/core/units/drakes/Hurricane.cfg:101 data/core/units/drakes/Sky.cfg:100
 #: data/core/units/drakes/Blademaster.cfg:77
-#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Flameheart.cfg:87
+#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Sky.cfg:100 data/core/units/drakes/Warrior.cfg:81
+#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Flare.cfg:91
+#: data/core/units/drakes/Armageddon.cfg:92 data/core/units/drakes/Fire.cfg:79
+#: data/core/units/drakes/Hurricane.cfg:101
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "ateşli nefes"
 
@@ -172,37 +171,36 @@ msgstr ""
 "Kılıç kullanımında ustalaşan ejderler birbirlerine bağlılık yemini "
 "etmişlerdir. Bunun işareti sürdükleri siyah beyaz savaş boyalarıdır."
 
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
-#: data/core/units/elves/Avenger.cfg:64 data/core/units/elves/Marksman.cfg:53
-#: data/core/units/elves/Scout.cfg:34 data/core/units/elves/Marshal.cfg:34
-#: data/core/units/elves/Ranger.cfg:61 data/core/units/elves/Outrider.cfg:33
-#: data/core/units/elves/Archer.cfg:25 data/core/units/elves/Captain.cfg:35
-#: data/core/units/elves/Rider.cfg:35 data/core/units/elves/Lord.cfg:24
-#: data/core/units/elves/High_Lord.cfg:61 data/core/units/elves/Hero.cfg:23
-#: data/core/units/elves/Champion.cfg:24 data/core/units/elves/Fighter.cfg:24
-#: data/core/units/elves/Sharpshooter.cfg:50
-#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:82
-#: data/core/units/drakes/Enforcer.cfg:67
-#: data/core/units/drakes/Warrior.cfg:72
-#: data/core/units/drakes/Gladiator.cfg:66
-#: data/core/units/drakes/Flameheart.cfg:78
+#: data/core/units/orcs/Leader.cfg:34 data/core/units/orcs/Grunt.cfg:59
+#: data/core/units/nagas/Fighter.cfg:25 data/core/units/nagas/Warrior.cfg:28
+#: data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/drakes/Blademaster.cfg:68
-#: data/core/units/drakes/Clasher.cfg:77
-#: data/core/units/humans/Woodsman_Ranger.cfg:45
+#: data/core/units/drakes/Enforcer.cfg:67
+#: data/core/units/drakes/Flameheart.cfg:78
+#: data/core/units/drakes/Clasher.cfg:77 data/core/units/drakes/Warrior.cfg:72
+#: data/core/units/drakes/Flare.cfg:82 data/core/units/drakes/Gladiator.cfg:66
+#: data/core/units/elves/Outrider.cfg:33 data/core/units/elves/Rider.cfg:35
+#: data/core/units/elves/Captain.cfg:35 data/core/units/elves/Lord.cfg:24
+#: data/core/units/elves/Sharpshooter.cfg:50
+#: data/core/units/elves/Champion.cfg:24 data/core/units/elves/Fighter.cfg:24
+#: data/core/units/elves/Archer.cfg:25 data/core/units/elves/Marshal.cfg:34
+#: data/core/units/elves/Ranger.cfg:61 data/core/units/elves/Avenger.cfg:64
+#: data/core/units/elves/Marksman.cfg:53 data/core/units/elves/Scout.cfg:34
+#: data/core/units/elves/Hero.cfg:23 data/core/units/elves/High_Lord.cfg:61
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
+#: data/core/units/humans/Loyalist_Sergeant.cfg:34
+#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:27
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:33
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_Swordsman.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:26
 #: data/core/units/humans/Loyalist_General.cfg:43
-#: data/core/units/humans/Loyalist_Sergeant.cfg:34
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:27
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Swordsman.cfg:27
+#: data/core/units/humans/Woodsman_Ranger.cfg:45
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:33
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
-#: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:39
 msgid "sword"
 msgstr "kılıç"
@@ -258,34 +256,34 @@ msgstr ""
 "ortaya çıkan savaşçılarda mızrak ve oka karşı zaaf gibi türlerinin bazı "
 "tipik zayıflıkları yoktur."
 
+#: data/core/units/saurians/Ambusher.cfg:27
+#: data/core/units/saurians/Ambusher.cfg:36
 #: data/core/units/saurians/Skirmisher.cfg:121
 #: data/core/units/saurians/Skirmisher.cfg:130
 #: data/core/units/saurians/Flanker.cfg:28
 #: data/core/units/saurians/Flanker.cfg:37
-#: data/core/units/saurians/Ambusher.cfg:27
-#: data/core/units/saurians/Ambusher.cfg:36
-#: data/core/units/dwarves/Stalwart.cfg:34
-#: data/core/units/dwarves/Guardsman.cfg:31
-#: data/core/units/dwarves/Sentinel.cfg:39
-#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
-#: data/core/units/merfolk/Netcaster.cfg:23
-#: data/core/units/merfolk/Entangler.cfg:24
-#: data/core/units/merfolk/Spearman.cfg:23
-#: data/core/units/merfolk/Spearman.cfg:31
-#: data/core/units/merfolk/Javelineer.cfg:24
-#: data/core/units/merfolk/Javelineer.cfg:32
-#: data/core/units/drakes/Enforcer.cfg:85
-#: data/core/units/drakes/Gladiator.cfg:75
-#: data/core/units/drakes/Clasher.cfg:86
-#: data/core/units/humans/Horseman.cfg:24
-#: data/core/units/humans/Loyalist_Javelineer.cfg:28
-#: data/core/units/humans/Loyalist_Spearman.cfg:62
+#: data/core/units/goblins/Impaler.cfg:28
+#: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/goblins/Rouser.cfg:37
 #: data/core/units/goblins/Spearman.cfg:28
 #: data/core/units/goblins/Spearman.cfg:38
-#: data/core/units/goblins/Impaler.cfg:28
-#: data/core/units/goblins/Impaler.cfg:40
+#: data/core/units/drakes/Enforcer.cfg:85
+#: data/core/units/drakes/Clasher.cfg:86
+#: data/core/units/drakes/Gladiator.cfg:75
+#: data/core/units/humans/Horseman.cfg:24
+#: data/core/units/humans/Loyalist_Spearman.cfg:62
+#: data/core/units/humans/Loyalist_Javelineer.cfg:28
+#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
+#: data/core/units/merfolk/Netcaster.cfg:23
+#: data/core/units/merfolk/Javelineer.cfg:24
+#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/merfolk/Entangler.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:23
+#: data/core/units/merfolk/Spearman.cfg:31
 #: data/core/units/undead/Skele_Chocobone.cfg:25
+#: data/core/units/dwarves/Sentinel.cfg:39
+#: data/core/units/dwarves/Guardsman.cfg:31
+#: data/core/units/dwarves/Stalwart.cfg:34
 msgid "spear"
 msgstr "mızrak"
 
@@ -305,12 +303,12 @@ msgstr ""
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
 msgstr "topuz"
 
@@ -418,8 +416,8 @@ msgstr ""
 "etkili biçimde kullanabilirler. En iyi planörcüler yüksek uçan Kasırga "
 "Ejderleri sınıfına kabul edilmeyi beklerler."
 
-#: data/core/units/drakes/Glider.cfg:75
-#: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
+#: data/core/units/drakes/Glider.cfg:75 data/core/units/drakes/Sky.cfg:91
+#: data/core/units/drakes/Hurricane.cfg:92
 msgid "slam"
 msgstr "çarpma"
 
@@ -543,8 +541,8 @@ msgstr ""
 "sınıfıdır. Bu savaşçılar saldırgana acımamak gerektiği düşüncesiyle tüm "
 "savunma mekanizmalarını bir yana bırakırlar."
 
-#: data/core/units/dwarves/Berserker.cfg:31
 #: data/core/units/dwarves/Ulfserker.cfg:31
+#: data/core/units/dwarves/Berserker.cfg:31
 msgid "berserker frenzy"
 msgstr "cinnet geçirme"
 
@@ -572,20 +570,20 @@ msgstr ""
 "korkulu muhafızlarının silahları; savaşçıların en lanetini bile bir atışta "
 "düşüren silahları ile ilgilidir."
 
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:70
-#: data/core/units/orcs/Slayer.cfg:27
-#: data/core/units/dwarves/Dragonguard.cfg:25
-#: data/core/units/dwarves/Thunderer.cfg:41
-#: data/core/units/dwarves/Thunderguard.cfg:25
-#: data/core/units/humans/Outlaw_Assassin.cfg:28
-#: data/core/units/humans/Outlaw_Rogue.cfg:27
+#: data/core/units/orcs/Assassin.cfg:70 data/core/units/orcs/Slayer.cfg:27
+#: data/core/units/orcs/Archer.cfg:71
 #: data/core/units/humans/Woodsman_Trapper.cfg:70
-#: data/core/units/humans/Outlaw_Thief.cfg:176
-#: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Woodsman_Huntsman.cfg:36
 #: data/core/units/humans/Woodsman_Poacher.cfg:36
-#: data/core/units/undead/Skele_Banebow.cfg:30
+#: data/core/units/humans/Outlaw_Assassin.cfg:28
+#: data/core/units/humans/Outlaw_Thief.cfg:176
+#: data/core/units/humans/Woodsman_Huntsman.cfg:36
+#: data/core/units/humans/Woodsman.cfg:28
+#: data/core/units/humans/Outlaw_Rogue.cfg:27
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
+#: data/core/units/undead/Skele_Banebow.cfg:30
+#: data/core/units/dwarves/Dragonguard.cfg:25
+#: data/core/units/dwarves/Thunderguard.cfg:25
+#: data/core/units/dwarves/Thunderer.cfg:41
 msgid "dagger"
 msgstr "hançer"
 
@@ -609,17 +607,17 @@ msgstr ""
 "iyidirler. Süratli değillerdir, ama güç ve dayanıklılıkları bunu fazlası ile "
 "telafi eder."
 
-#: data/core/units/dwarves/Fighter.cfg:35
-#: data/core/units/undead/Skele_Deathblade.cfg:42
-#: data/core/units/undead/Skele_Revenant.cfg:29
 #: data/core/units/undead/Skeleton.cfg:106
+#: data/core/units/undead/Skele_Revenant.cfg:29
 #: data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/undead/Skele_Deathblade.cfg:42
+#: data/core/units/dwarves/Fighter.cfg:35
 msgid "axe"
 msgstr "balta"
 
+#: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 #: data/core/units/dwarves/Steelclad.cfg:38
 #: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
-#: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
 msgstr "çekiç"
 
@@ -641,11 +639,11 @@ msgstr ""
 "tutmak ve hattı yarmaya çalışan düşmanı engelleyecek hareketler yapmaktır. "
 "Hattı ileri taşımada, hattı güvene alma görevi yaparlar."
 
-#: data/core/units/dwarves/Stalwart.cfg:43
-#: data/core/units/dwarves/Guardsman.cfg:40
-#: data/core/units/dwarves/Sentinel.cfg:48
-#: data/core/units/humans/Loyalist_Javelineer.cfg:39
 #: data/core/units/humans/Loyalist_Spearman.cfg:74
+#: data/core/units/humans/Loyalist_Javelineer.cfg:39
+#: data/core/units/dwarves/Sentinel.cfg:48
+#: data/core/units/dwarves/Guardsman.cfg:40
+#: data/core/units/dwarves/Stalwart.cfg:43
 msgid "javelin"
 msgstr "mızrak"
 
@@ -665,9 +663,9 @@ msgstr ""
 "ile bir hedefi birkaç adımdan vurabilirler. Yavaş hareket etseler de bu "
 "cüceler türlerinin yiğitliğinin birer kanıtıdırlar."
 
+#: data/core/units/undead/Skele_Death_Knight.cfg:46
 #: data/core/units/dwarves/Steelclad.cfg:29
 #: data/core/units/dwarves/Lord.cfg:30
-#: data/core/units/undead/Skele_Death_Knight.cfg:46
 msgid "battle axe"
 msgstr "savaş baltası"
 
@@ -761,8 +759,8 @@ msgstr ""
 "garip ... 'değnek' aletiyle uzaktan ölüm püskürtebilen Cüce Gürleyicilerin "
 "gücü karşısında hayrete düşmüşlerdi."
 
-#: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
+#: data/core/units/dwarves/Thunderer.cfg:50
 msgid "thunderstick"
 msgstr "gürültü silahı"
 
@@ -829,26 +827,26 @@ msgstr ""
 "zerafetleri insanlığın en yeni askerlerinin üstesinden gelmelerini garanti "
 "eder."
 
-#: data/core/units/orcs/Sovereign.cfg:42 data/core/units/orcs/Archer.cfg:80
-#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:43 data/core/units/orcs/Ruler.cfg:41
-#: data/core/units/elves/Avenger.cfg:73 data/core/units/elves/Scout.cfg:43
+#: data/core/units/orcs/Warlord.cfg:34 data/core/units/orcs/Archer.cfg:80
+#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Leader.cfg:43
+#: data/core/units/orcs/Ruler.cfg:41 data/core/units/orcs/Sovereign.cfg:42
+#: data/core/units/elves/Outrider.cfg:42 data/core/units/elves/Rider.cfg:44
+#: data/core/units/elves/Captain.cfg:44 data/core/units/elves/Champion.cfg:33
+#: data/core/units/elves/Fighter.cfg:33 data/core/units/elves/Archer.cfg:34
 #: data/core/units/elves/Marshal.cfg:43 data/core/units/elves/Ranger.cfg:70
-#: data/core/units/elves/Outrider.cfg:42 data/core/units/elves/Archer.cfg:34
-#: data/core/units/elves/Captain.cfg:44 data/core/units/elves/Rider.cfg:44
-#: data/core/units/elves/Hero.cfg:32 data/core/units/elves/Champion.cfg:33
-#: data/core/units/elves/Fighter.cfg:33
-#: data/core/units/humans/Woodsman_Trapper.cfg:79
-#: data/core/units/humans/Woodsman_Ranger.cfg:54
-#: data/core/units/humans/Loyalist_Longbowman.cfg:35
-#: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:36
-#: data/core/units/humans/Woodsman_Huntsman.cfg:45
-#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/elves/Avenger.cfg:73 data/core/units/elves/Scout.cfg:43
+#: data/core/units/elves/Hero.cfg:32
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
-#: data/core/units/undead/Skeleton_Archer.cfg:40
-#: data/core/units/undead/Skele_Banebow.cfg:39
+#: data/core/units/humans/Woodsman_Trapper.cfg:79
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:36
+#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/humans/Loyalist_Longbowman.cfg:35
+#: data/core/units/humans/Woodsman_Huntsman.cfg:45
+#: data/core/units/humans/Woodsman.cfg:37
+#: data/core/units/humans/Woodsman_Ranger.cfg:54
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
+#: data/core/units/undead/Skele_Banebow.cfg:39
+#: data/core/units/undead/Skeleton_Archer.cfg:40
 msgid "bow"
 msgstr "yay"
 
@@ -944,20 +942,20 @@ msgstr ""
 "Ana yetenekleri tedavidedir ve elf rahiplerin insanları tarafından hürmet "
 "görmesinin sebebi de budur."
 
-#: data/core/units/elves/Enchantress.cfg:25 data/core/units/elves/Druid.cfg:28
-#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:27
 #: data/core/units/saurians/Soothsayer.cfg:66
 #: data/core/units/saurians/Augur.cfg:66
-#: data/core/units/saurians/Oracle.cfg:66
-#: data/core/units/merfolk/Priestess.cfg:62
-#: data/core/units/merfolk/Enchantress.cfg:24
-#: data/core/units/merfolk/Initiate.cfg:27
-#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:53
-#: data/core/units/humans/Mage_White.cfg:120
-#: data/core/units/humans/Mage_Great.cfg:29
+#: data/core/units/saurians/Oracle.cfg:66 data/core/units/elves/Druid.cfg:28
+#: data/core/units/elves/Enchantress.cfg:25
+#: data/core/units/elves/Sorceress.cfg:27 data/core/units/elves/Shaman.cfg:30
 #: data/core/units/humans/Mage_Silver.cfg:36
-#: data/core/units/humans/Mage_Arch.cfg:28
+#: data/core/units/humans/Mage_White.cfg:120
+#: data/core/units/humans/Mage.cfg:53 data/core/units/humans/Mage_Arch.cfg:28
+#: data/core/units/humans/Mage_Great.cfg:29
 #: data/core/units/humans/Mage_Red.cfg:53
+#: data/core/units/merfolk/Enchantress.cfg:24
+#: data/core/units/merfolk/Diviner.cfg:65
+#: data/core/units/merfolk/Priestess.cfg:62
+#: data/core/units/merfolk/Initiate.cfg:27
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
 msgid "staff"
 msgstr "asa"
@@ -988,13 +986,13 @@ msgstr ""
 "görseler de toplum içindeki asıl işlevleri ve amaçları çok az bilinir."
 
 #: data/core/units/elves/Enchantress.cfg:35
-#: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:37
+#: data/core/units/elves/Sorceress.cfg:37 data/core/units/elves/Shaman.cfg:39
 msgid "entangle"
 msgstr "dolaştırma"
 
-#: data/core/units/elves/Enchantress.cfg:46 data/core/units/elves/Lord.cfg:33
-#: data/core/units/elves/High_Lord.cfg:70
-#: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Sylph.cfg:52
+#: data/core/units/elves/Enchantress.cfg:46
+#: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Lord.cfg:33
+#: data/core/units/elves/Sylph.cfg:52 data/core/units/elves/High_Lord.cfg:70
 msgid "faerie fire"
 msgstr "peri ateşi"
 
@@ -1096,8 +1094,8 @@ msgstr ""
 "Bu müthiş kabiliyetin yalnız bir bedeli vardır o da kılıçtaki pratik "
 "eksikliği."
 
-#: data/core/units/elves/Marksman.cfg:62
 #: data/core/units/elves/Sharpshooter.cfg:59
+#: data/core/units/elves/Marksman.cfg:62
 msgid "longbow"
 msgstr "uzunyay"
 
@@ -1406,9 +1404,9 @@ msgstr ""
 msgid "torch"
 msgstr "meşale"
 
+#: data/core/units/goblins/Pillager.cfg:43
 #: data/core/units/merfolk/Netcaster.cfg:31
 #: data/core/units/merfolk/Entangler.cfg:32
-#: data/core/units/goblins/Pillager.cfg:43
 msgid "net"
 msgstr "ağ"
 
@@ -1541,10 +1539,10 @@ msgstr ""
 "için korkunç bir manzaradır ve çoğu zaman savunma hattını tam ortadan yarmak "
 "için yeterlidir."
 
+#: data/core/units/humans/Horse_Lancer.cfg:24
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
 #: data/core/units/humans/Horse_Paladin.cfg:49
-#: data/core/units/humans/Horse_Lancer.cfg:24
 msgid "lance"
 msgstr "kargı"
 
@@ -1679,13 +1677,13 @@ msgstr ""
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
-#: data/core/units/humans/Loyalist_Duelist.cfg:78
-#: data/core/units/humans/Loyalist_General.cfg:52
 #: data/core/units/humans/Loyalist_Sergeant.cfg:43
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:37
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:42
-#: data/core/units/humans/Loyalist_Cavalier.cfg:47
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:42
+#: data/core/units/humans/Loyalist_Duelist.cfg:78
+#: data/core/units/humans/Loyalist_Cavalier.cfg:47
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:37
+#: data/core/units/humans/Loyalist_General.cfg:52
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:48
 #: data/core/units/undead/Skele_Death_Knight.cfg:55
 msgid "crossbow"
@@ -1765,8 +1763,8 @@ msgstr ""
 "yaptıkları böyle tavizlerle başarırlar."
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
-#: data/core/units/humans/Loyalist_Fencer.cfg:124
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:28
+#: data/core/units/humans/Loyalist_Fencer.cfg:124
 msgid "sabre"
 msgstr "eskrim kılıcı"
 
@@ -2101,8 +2099,8 @@ msgstr ""
 "düşünürler. Böyle büyük bir zırhın kötü tarafı elbetteki savaşa girmek ve "
 "çıkmak için gereken zamanın uzunluğudur."
 
-#: data/core/units/humans/Mage_of_Light.cfg:98
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
+#: data/core/units/humans/Mage_of_Light.cfg:98
 msgid "morning star"
 msgstr "sabah yıldızı"
 
@@ -2185,8 +2183,8 @@ msgstr ""
 "Fiziksel olarak kırılgan, ve dövüşe yatkınlığı olmayan büyücüler savaşta çok "
 "işe yarayabilecek çeşitli sanatara sahiptirler."
 
-#: data/core/units/humans/Mage.cfg:62
 #: data/core/units/humans/Mage_Silver.cfg:45
+#: data/core/units/humans/Mage.cfg:62
 msgid "missile"
 msgstr "ışın"
 
@@ -2225,13 +2223,13 @@ msgstr ""
 "Herhangi bir dövüş için eğitilmemiş olmakla birlikte, durum gerektirince baş "
 "büyücü türünün kaldırması pek de kolay olmayan tam gücünü açığa çıkarabilir."
 
-#: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:37
+#: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Red.cfg:62
 msgid "fireball"
 msgstr "ateş topu"
 
-#: data/core/units/humans/Mage_Arch.cfg:123
+#: data/core/units/humans/Mage_Arch.cfg:118
 msgid "female^Arch Mage"
 msgstr "Baş büyücü"
 
@@ -2265,7 +2263,7 @@ msgstr ""
 "uygulanışı çoğunlukla diğer askerleri önünde saygıyla diz çöktüren bir "
 "şeydir."
 
-#: data/core/units/humans/Mage_Great.cfg:124
+#: data/core/units/humans/Mage_Great.cfg:119
 msgid "female^Great Mage"
 msgstr "Büyük Büyücü"
 
@@ -2299,7 +2297,7 @@ msgstr ""
 "Kızıl Büyücü pelerinin altında bir şey gizler; bu onların konuşma dilinde "
 "isimleriyle özdeşleşmiş Ateş toplarıdır."
 
-#: data/core/units/humans/Mage_Red.cfg:148
+#: data/core/units/humans/Mage_Red.cfg:144
 msgid "female^Red Mage"
 msgstr "Kızıl Büyücü"
 
@@ -2383,10 +2381,10 @@ msgstr ""
 "Eğer ihtiyaç duyulursa, onlar Işığın gücünü kullanarak bu dünyadan olmayanı "
 "sürgün edebilirler."
 
-#: data/core/units/merfolk/Priestess.cfg:71
-#: data/core/units/merfolk/Diviner.cfg:74
-#: data/core/units/humans/Mage_of_Light.cfg:107
 #: data/core/units/humans/Mage_White.cfg:129
+#: data/core/units/humans/Mage_of_Light.cfg:107
+#: data/core/units/merfolk/Diviner.cfg:74
+#: data/core/units/merfolk/Priestess.cfg:71
 msgid "lightbeam"
 msgstr "ışık hüzmesi"
 
@@ -2439,9 +2437,9 @@ msgstr ""
 "ölümcül kapasitesinin farkındadır. Eşkiyalar her nedense gündüz savaşmakta "
 "kötüdürler ve gecenin gölgesinde savaşmayı tercih ederler."
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
+#: data/core/units/humans/Outlaw.cfg:31
+#: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "sapan"
@@ -2533,9 +2531,9 @@ msgstr ""
 "karşın özellikle karanlık örtüsü altında düşmanlarını taciz etme konusunda "
 "bir hayli iyidirler."
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
-#: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
+#: data/core/units/humans/Outlaw_Ruffian.cfg:23
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
 msgid "club"
 msgstr "sopa"
@@ -2838,9 +2836,9 @@ msgstr ""
 "ırklarına karşı açık kullanımı yasaktır - onları cehennemden gelen "
 "canavarlara karşı koruyan büyük oranda bu güçtür."
 
-#: data/core/units/merfolk/Siren.cfg:40
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:36
+#: data/core/units/merfolk/Siren.cfg:40
 msgid "water spray"
 msgstr "su spreyi"
 
@@ -2873,10 +2871,10 @@ msgstr ""
 "Denizin kabiliyetli yaratıkları, Su Adamları sulak bölgelerde güçlü ve "
 "hızlıdırlar, ama karada hareket etmekte çok zorlanırlar."
 
-#: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 #: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:35
+#: data/core/units/merfolk/Warrior.cfg:23
+#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 msgid "trident"
 msgstr "çatal"
 
@@ -3153,8 +3151,8 @@ msgstr ""
 
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
-#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Whelp.cfg:26
+#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
 msgstr "yumruk"
@@ -3483,8 +3481,8 @@ msgid ""
 "followed not out of fear, but loyalty."
 msgstr ""
 
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:33
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:32
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:23
+#: data/core/units/orcs/Ruler.cfg:32 data/core/units/orcs/Sovereign.cfg:33
 msgid "greatsword"
 msgstr "büyük kılıç"
 
@@ -3816,11 +3814,11 @@ msgid ""
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
 
+#: data/core/units/undead/Corpse_Soulless.cfg:73
 #: data/core/units/undead/Corpse_Walking.cfg:72
+#: data/core/units/undead/Necro_Lich.cfg:34
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:119
-#: data/core/units/undead/Necro_Lich.cfg:34
-#: data/core/units/undead/Corpse_Soulless.cfg:73
 msgid "touch"
 msgstr "dokunma"
 
@@ -3851,16 +3849,16 @@ msgstr ""
 "Bu yola bağlı bir varlık geçmiş çağların habercisidir. Bir Ezelî Umacı ile "
 "karşılaşan kişi muhtemelen ölümden çok daha kötü şeylere maruz kalacaktır."
 
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:46
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 msgid "chill tempest"
 msgstr "soğuk fırtına"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:59
-#: data/core/units/undead/Necro_Lich.cfg:58
-#: data/core/units/undead/Necromancer.cfg:50
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:46
+#: data/core/units/undead/Necromancer.cfg:50
+#: data/core/units/undead/Necro_Lich.cfg:58
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:59
 msgid "shadow wave"
 msgstr "gölge dalgası"
 
@@ -3892,8 +3890,8 @@ msgstr ""
 "şeytanlıklardır."
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
-#: data/core/units/undead/Necromancer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
+#: data/core/units/undead/Necromancer.cfg:38
 msgid "chill wave"
 msgstr "soğuk dalga"
 
@@ -4200,9 +4198,9 @@ msgstr ""
 "yelkenlerindeki rüzgara benzer. Bu hapsin sonucunda ortaya çıkan efendisinin "
 "uygun bulduğu her işi yaptırabileceği ölmek bilmeyen bir köledir."
 
-#: data/core/units/undead/Spirit_Wraith.cfg:31
-#: data/core/units/undead/Spirit_Ghost.cfg:131
 #: data/core/units/undead/Spirit_Spectre.cfg:56
+#: data/core/units/undead/Spirit_Ghost.cfg:131
+#: data/core/units/undead/Spirit_Wraith.cfg:31
 msgid "wail"
 msgstr "feryat"
 
@@ -4262,8 +4260,8 @@ msgstr ""
 "Bunların tabiatında, oluşum nedenlerinden dolayı, korku denen şey yoktur; "
 "bunlarla karşılaşmanın en kötü yanı onlarla uyanıkken karşılaşmaktır."
 
-#: data/core/units/undead/Spirit_Wraith.cfg:20
 #: data/core/units/undead/Spirit_Spectre.cfg:45
+#: data/core/units/undead/Spirit_Wraith.cfg:20
 msgid "baneblade"
 msgstr "zehirli kesme"
 
@@ -4309,8 +4307,8 @@ msgstr ""
 "Bu tür karşılaşmalar muhtemelen en antik meşeler hakkında elimize ulaşan "
 "yegane bilgilerdir."
 
-#: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
-#: data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Ancient.cfg:92
 msgid "crush"
 msgstr "ezme"
 

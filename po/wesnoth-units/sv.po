@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-18 00:01+0100\n"
+"POT-Creation-Date: 2008-02-24 15:50+0100\n"
 "PO-Revision-Date: 2007-12-11 22:48+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -34,14 +34,14 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/bats/Bat_Blood.cfg:175
 #: data/core/units/bats/Bat_Vampire.cfg:174
-#: data/core/units/monsters/Wolf.cfg:49
-#: data/core/units/monsters/Cave_Spider.cfg:34
-#: data/core/units/monsters/Sea_Serpent.cfg:26
+#: data/core/units/bats/Bat_Blood.cfg:175
+#: data/core/units/goblins/Direwolf_Rider.cfg:33
 #: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/monsters/Sea_Serpent.cfg:26
+#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/monsters/Cave_Spider.cfg:34
 msgid "fangs"
 msgstr "huggtänder"
 
@@ -129,30 +129,29 @@ msgstr ""
 "'Harmageddondrakar' tornar upp sig över de flesta, och är immuna mot den "
 "inre eld de besitter."
 
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/gryphons/Gryphon_Rider.cfg:29
-#: data/core/units/gryphons/Gryphon_Master.cfg:29
-#: data/core/units/gryphons/Gryphon.cfg:28 data/core/units/drakes/Fire.cfg:70
-#: data/core/units/drakes/Burner.cfg:63
-#: data/core/units/drakes/Armageddon.cfg:83
-#: data/core/units/drakes/Inferno.cfg:71
 #: data/core/units/goblins/Direwolf_Rider.cfg:42
-#: data/core/units/undead/Corpse_Necrophage.cfg:28
+#: data/core/units/drakes/Burner.cfg:63 data/core/units/drakes/Inferno.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:83 data/core/units/drakes/Fire.cfg:70
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/gryphons/Gryphon_Master.cfg:29
+#: data/core/units/gryphons/Gryphon_Rider.cfg:29
+#: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:53
 #: data/core/units/undead/Spirit_Shadow.cfg:27
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
 msgid "claws"
 msgstr "klor"
 
-#: data/core/units/monsters/Fire_Dragon.cfg:46
-#: data/core/units/drakes/Flare.cfg:91 data/core/units/drakes/Fire.cfg:79
-#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
 #: data/core/units/drakes/Glider.cfg:84
-#: data/core/units/drakes/Armageddon.cfg:92
-#: data/core/units/drakes/Flameheart.cfg:87
-#: data/core/units/drakes/Hurricane.cfg:101 data/core/units/drakes/Sky.cfg:100
 #: data/core/units/drakes/Blademaster.cfg:77
-#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Flameheart.cfg:87
+#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Sky.cfg:100 data/core/units/drakes/Warrior.cfg:81
+#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Flare.cfg:91
+#: data/core/units/drakes/Armageddon.cfg:92 data/core/units/drakes/Fire.cfg:79
+#: data/core/units/drakes/Hurricane.cfg:101
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "spruta eld"
 
@@ -169,37 +168,36 @@ msgstr ""
 "De bland drakfolket som bemästrar svärdet tas upp i en särskild orden. "
 "Ordens tecken är den svarta och vita krigsmålning som de bär i strid."
 
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
-#: data/core/units/elves/Avenger.cfg:64 data/core/units/elves/Marksman.cfg:53
-#: data/core/units/elves/Scout.cfg:34 data/core/units/elves/Marshal.cfg:34
-#: data/core/units/elves/Ranger.cfg:61 data/core/units/elves/Outrider.cfg:33
-#: data/core/units/elves/Archer.cfg:25 data/core/units/elves/Captain.cfg:35
-#: data/core/units/elves/Rider.cfg:35 data/core/units/elves/Lord.cfg:24
-#: data/core/units/elves/High_Lord.cfg:61 data/core/units/elves/Hero.cfg:23
-#: data/core/units/elves/Champion.cfg:24 data/core/units/elves/Fighter.cfg:24
-#: data/core/units/elves/Sharpshooter.cfg:50
-#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:82
-#: data/core/units/drakes/Enforcer.cfg:67
-#: data/core/units/drakes/Warrior.cfg:72
-#: data/core/units/drakes/Gladiator.cfg:66
-#: data/core/units/drakes/Flameheart.cfg:78
+#: data/core/units/orcs/Leader.cfg:34 data/core/units/orcs/Grunt.cfg:59
+#: data/core/units/nagas/Fighter.cfg:25 data/core/units/nagas/Warrior.cfg:28
+#: data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/drakes/Blademaster.cfg:68
-#: data/core/units/drakes/Clasher.cfg:77
-#: data/core/units/humans/Woodsman_Ranger.cfg:45
+#: data/core/units/drakes/Enforcer.cfg:67
+#: data/core/units/drakes/Flameheart.cfg:78
+#: data/core/units/drakes/Clasher.cfg:77 data/core/units/drakes/Warrior.cfg:72
+#: data/core/units/drakes/Flare.cfg:82 data/core/units/drakes/Gladiator.cfg:66
+#: data/core/units/elves/Outrider.cfg:33 data/core/units/elves/Rider.cfg:35
+#: data/core/units/elves/Captain.cfg:35 data/core/units/elves/Lord.cfg:24
+#: data/core/units/elves/Sharpshooter.cfg:50
+#: data/core/units/elves/Champion.cfg:24 data/core/units/elves/Fighter.cfg:24
+#: data/core/units/elves/Archer.cfg:25 data/core/units/elves/Marshal.cfg:34
+#: data/core/units/elves/Ranger.cfg:61 data/core/units/elves/Avenger.cfg:64
+#: data/core/units/elves/Marksman.cfg:53 data/core/units/elves/Scout.cfg:34
+#: data/core/units/elves/Hero.cfg:23 data/core/units/elves/High_Lord.cfg:61
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
+#: data/core/units/humans/Loyalist_Sergeant.cfg:34
+#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:27
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:33
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_Swordsman.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:26
 #: data/core/units/humans/Loyalist_General.cfg:43
-#: data/core/units/humans/Loyalist_Sergeant.cfg:34
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:27
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Swordsman.cfg:27
+#: data/core/units/humans/Woodsman_Ranger.cfg:45
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:33
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
-#: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:39
 msgid "sword"
 msgstr "svärd"
@@ -258,34 +256,34 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
+#: data/core/units/saurians/Ambusher.cfg:27
+#: data/core/units/saurians/Ambusher.cfg:36
 #: data/core/units/saurians/Skirmisher.cfg:121
 #: data/core/units/saurians/Skirmisher.cfg:130
 #: data/core/units/saurians/Flanker.cfg:28
 #: data/core/units/saurians/Flanker.cfg:37
-#: data/core/units/saurians/Ambusher.cfg:27
-#: data/core/units/saurians/Ambusher.cfg:36
-#: data/core/units/dwarves/Stalwart.cfg:34
-#: data/core/units/dwarves/Guardsman.cfg:31
-#: data/core/units/dwarves/Sentinel.cfg:39
-#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
-#: data/core/units/merfolk/Netcaster.cfg:23
-#: data/core/units/merfolk/Entangler.cfg:24
-#: data/core/units/merfolk/Spearman.cfg:23
-#: data/core/units/merfolk/Spearman.cfg:31
-#: data/core/units/merfolk/Javelineer.cfg:24
-#: data/core/units/merfolk/Javelineer.cfg:32
-#: data/core/units/drakes/Enforcer.cfg:85
-#: data/core/units/drakes/Gladiator.cfg:75
-#: data/core/units/drakes/Clasher.cfg:86
-#: data/core/units/humans/Horseman.cfg:24
-#: data/core/units/humans/Loyalist_Javelineer.cfg:28
-#: data/core/units/humans/Loyalist_Spearman.cfg:62
+#: data/core/units/goblins/Impaler.cfg:28
+#: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/goblins/Rouser.cfg:37
 #: data/core/units/goblins/Spearman.cfg:28
 #: data/core/units/goblins/Spearman.cfg:38
-#: data/core/units/goblins/Impaler.cfg:28
-#: data/core/units/goblins/Impaler.cfg:40
+#: data/core/units/drakes/Enforcer.cfg:85
+#: data/core/units/drakes/Clasher.cfg:86
+#: data/core/units/drakes/Gladiator.cfg:75
+#: data/core/units/humans/Horseman.cfg:24
+#: data/core/units/humans/Loyalist_Spearman.cfg:62
+#: data/core/units/humans/Loyalist_Javelineer.cfg:28
+#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
+#: data/core/units/merfolk/Netcaster.cfg:23
+#: data/core/units/merfolk/Javelineer.cfg:24
+#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/merfolk/Entangler.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:23
+#: data/core/units/merfolk/Spearman.cfg:31
 #: data/core/units/undead/Skele_Chocobone.cfg:25
+#: data/core/units/dwarves/Sentinel.cfg:39
+#: data/core/units/dwarves/Guardsman.cfg:31
+#: data/core/units/dwarves/Stalwart.cfg:34
 msgid "spear"
 msgstr "spjut"
 
@@ -305,12 +303,12 @@ msgstr ""
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
 msgstr "spikklubba"
 
@@ -429,8 +427,8 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/drakes/Glider.cfg:75
-#: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
+#: data/core/units/drakes/Glider.cfg:75 data/core/units/drakes/Sky.cfg:91
+#: data/core/units/drakes/Hurricane.cfg:92
 msgid "slam"
 msgstr "nedslag"
 
@@ -566,8 +564,8 @@ msgstr ""
 "då det enda de har i sinnet är de obevekliga anfall de blivit legendariska "
 "för."
 
-#: data/core/units/dwarves/Berserker.cfg:31
 #: data/core/units/dwarves/Ulfserker.cfg:31
+#: data/core/units/dwarves/Berserker.cfg:31
 msgid "berserker frenzy"
 msgstr "bärsärkagång"
 
@@ -594,20 +592,20 @@ msgstr ""
 "citadellvakter både vitt kända och fruktade; dessa vapen som i ett slag har "
 "kunnat krossa även de mäktigaste krigare."
 
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:70
-#: data/core/units/orcs/Slayer.cfg:27
-#: data/core/units/dwarves/Dragonguard.cfg:25
-#: data/core/units/dwarves/Thunderer.cfg:41
-#: data/core/units/dwarves/Thunderguard.cfg:25
-#: data/core/units/humans/Outlaw_Assassin.cfg:28
-#: data/core/units/humans/Outlaw_Rogue.cfg:27
+#: data/core/units/orcs/Assassin.cfg:70 data/core/units/orcs/Slayer.cfg:27
+#: data/core/units/orcs/Archer.cfg:71
 #: data/core/units/humans/Woodsman_Trapper.cfg:70
-#: data/core/units/humans/Outlaw_Thief.cfg:176
-#: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Woodsman_Huntsman.cfg:36
 #: data/core/units/humans/Woodsman_Poacher.cfg:36
-#: data/core/units/undead/Skele_Banebow.cfg:30
+#: data/core/units/humans/Outlaw_Assassin.cfg:28
+#: data/core/units/humans/Outlaw_Thief.cfg:176
+#: data/core/units/humans/Woodsman_Huntsman.cfg:36
+#: data/core/units/humans/Woodsman.cfg:28
+#: data/core/units/humans/Outlaw_Rogue.cfg:27
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
+#: data/core/units/undead/Skele_Banebow.cfg:30
+#: data/core/units/dwarves/Dragonguard.cfg:25
+#: data/core/units/dwarves/Thunderguard.cfg:25
+#: data/core/units/dwarves/Thunderer.cfg:41
 msgid "dagger"
 msgstr "dolk"
 
@@ -630,17 +628,17 @@ msgstr ""
 "stridsyxor gör dem till fruktade motståndare i närstrid. Om än något "
 "långsamma så är de både starka och uthålliga."
 
-#: data/core/units/dwarves/Fighter.cfg:35
-#: data/core/units/undead/Skele_Deathblade.cfg:42
-#: data/core/units/undead/Skele_Revenant.cfg:29
 #: data/core/units/undead/Skeleton.cfg:106
+#: data/core/units/undead/Skele_Revenant.cfg:29
 #: data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/undead/Skele_Deathblade.cfg:42
+#: data/core/units/dwarves/Fighter.cfg:35
 msgid "axe"
 msgstr "yxa"
 
+#: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 #: data/core/units/dwarves/Steelclad.cfg:38
 #: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
-#: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
 msgstr "hammare"
 
@@ -665,11 +663,11 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/dwarves/Stalwart.cfg:43
-#: data/core/units/dwarves/Guardsman.cfg:40
-#: data/core/units/dwarves/Sentinel.cfg:48
-#: data/core/units/humans/Loyalist_Javelineer.cfg:39
 #: data/core/units/humans/Loyalist_Spearman.cfg:74
+#: data/core/units/humans/Loyalist_Javelineer.cfg:39
+#: data/core/units/dwarves/Sentinel.cfg:48
+#: data/core/units/dwarves/Guardsman.cfg:40
+#: data/core/units/dwarves/Stalwart.cfg:43
 msgid "javelin"
 msgstr "kastspjut"
 
@@ -689,9 +687,9 @@ msgstr ""
 "fiende med sin kastyxa på flera stegs håll. Även om de inte är så kvicka så "
 "utgör de levande bevis för sitt släktes framsteg."
 
+#: data/core/units/undead/Skele_Death_Knight.cfg:46
 #: data/core/units/dwarves/Steelclad.cfg:29
 #: data/core/units/dwarves/Lord.cfg:30
-#: data/core/units/undead/Skele_Death_Knight.cfg:46
 msgid "battle axe"
 msgstr "stridsyxa"
 
@@ -789,8 +787,8 @@ msgstr ""
 "öronbedövande mullret från dessa 'tordönsstavar' är skrämmande att uppleva, "
 "inte minst för det hemlighetsmakeri som dessa omgärdas med."
 
-#: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
+#: data/core/units/dwarves/Thunderer.cfg:50
 msgid "thunderstick"
 msgstr "åskstav"
 
@@ -862,26 +860,26 @@ msgstr ""
 "detta så till den grad att de överträffar även de bästa bland människornas "
 "rekryter."
 
-#: data/core/units/orcs/Sovereign.cfg:42 data/core/units/orcs/Archer.cfg:80
-#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:43 data/core/units/orcs/Ruler.cfg:41
-#: data/core/units/elves/Avenger.cfg:73 data/core/units/elves/Scout.cfg:43
+#: data/core/units/orcs/Warlord.cfg:34 data/core/units/orcs/Archer.cfg:80
+#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Leader.cfg:43
+#: data/core/units/orcs/Ruler.cfg:41 data/core/units/orcs/Sovereign.cfg:42
+#: data/core/units/elves/Outrider.cfg:42 data/core/units/elves/Rider.cfg:44
+#: data/core/units/elves/Captain.cfg:44 data/core/units/elves/Champion.cfg:33
+#: data/core/units/elves/Fighter.cfg:33 data/core/units/elves/Archer.cfg:34
 #: data/core/units/elves/Marshal.cfg:43 data/core/units/elves/Ranger.cfg:70
-#: data/core/units/elves/Outrider.cfg:42 data/core/units/elves/Archer.cfg:34
-#: data/core/units/elves/Captain.cfg:44 data/core/units/elves/Rider.cfg:44
-#: data/core/units/elves/Hero.cfg:32 data/core/units/elves/Champion.cfg:33
-#: data/core/units/elves/Fighter.cfg:33
-#: data/core/units/humans/Woodsman_Trapper.cfg:79
-#: data/core/units/humans/Woodsman_Ranger.cfg:54
-#: data/core/units/humans/Loyalist_Longbowman.cfg:35
-#: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:36
-#: data/core/units/humans/Woodsman_Huntsman.cfg:45
-#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/elves/Avenger.cfg:73 data/core/units/elves/Scout.cfg:43
+#: data/core/units/elves/Hero.cfg:32
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
-#: data/core/units/undead/Skeleton_Archer.cfg:40
-#: data/core/units/undead/Skele_Banebow.cfg:39
+#: data/core/units/humans/Woodsman_Trapper.cfg:79
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:36
+#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/humans/Loyalist_Longbowman.cfg:35
+#: data/core/units/humans/Woodsman_Huntsman.cfg:45
+#: data/core/units/humans/Woodsman.cfg:37
+#: data/core/units/humans/Woodsman_Ranger.cfg:54
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
+#: data/core/units/undead/Skele_Banebow.cfg:39
+#: data/core/units/undead/Skeleton_Archer.cfg:40
 msgid "bow"
 msgstr "pilbåge"
 
@@ -985,20 +983,20 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/elves/Enchantress.cfg:25 data/core/units/elves/Druid.cfg:28
-#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:27
 #: data/core/units/saurians/Soothsayer.cfg:66
 #: data/core/units/saurians/Augur.cfg:66
-#: data/core/units/saurians/Oracle.cfg:66
-#: data/core/units/merfolk/Priestess.cfg:62
-#: data/core/units/merfolk/Enchantress.cfg:24
-#: data/core/units/merfolk/Initiate.cfg:27
-#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:53
-#: data/core/units/humans/Mage_White.cfg:120
-#: data/core/units/humans/Mage_Great.cfg:29
+#: data/core/units/saurians/Oracle.cfg:66 data/core/units/elves/Druid.cfg:28
+#: data/core/units/elves/Enchantress.cfg:25
+#: data/core/units/elves/Sorceress.cfg:27 data/core/units/elves/Shaman.cfg:30
 #: data/core/units/humans/Mage_Silver.cfg:36
-#: data/core/units/humans/Mage_Arch.cfg:28
+#: data/core/units/humans/Mage_White.cfg:120
+#: data/core/units/humans/Mage.cfg:53 data/core/units/humans/Mage_Arch.cfg:28
+#: data/core/units/humans/Mage_Great.cfg:29
 #: data/core/units/humans/Mage_Red.cfg:53
+#: data/core/units/merfolk/Enchantress.cfg:24
+#: data/core/units/merfolk/Diviner.cfg:65
+#: data/core/units/merfolk/Priestess.cfg:62
+#: data/core/units/merfolk/Initiate.cfg:27
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
 msgid "staff"
 msgstr "stav"
@@ -1033,13 +1031,13 @@ msgstr ""
 "Anmärkning: "
 
 #: data/core/units/elves/Enchantress.cfg:35
-#: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:37
+#: data/core/units/elves/Sorceress.cfg:37 data/core/units/elves/Shaman.cfg:39
 msgid "entangle"
 msgstr "snärja"
 
-#: data/core/units/elves/Enchantress.cfg:46 data/core/units/elves/Lord.cfg:33
-#: data/core/units/elves/High_Lord.cfg:70
-#: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Sylph.cfg:52
+#: data/core/units/elves/Enchantress.cfg:46
+#: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Lord.cfg:33
+#: data/core/units/elves/Sylph.cfg:52 data/core/units/elves/High_Lord.cfg:70
 msgid "faerie fire"
 msgstr "feeld"
 
@@ -1146,8 +1144,8 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/elves/Marksman.cfg:62
 #: data/core/units/elves/Sharpshooter.cfg:59
+#: data/core/units/elves/Marksman.cfg:62
 msgid "longbow"
 msgstr "långbåge"
 
@@ -1482,9 +1480,9 @@ msgstr ""
 msgid "torch"
 msgstr "fackla"
 
+#: data/core/units/goblins/Pillager.cfg:43
 #: data/core/units/merfolk/Netcaster.cfg:31
 #: data/core/units/merfolk/Entangler.cfg:32
-#: data/core/units/goblins/Pillager.cfg:43
 msgid "net"
 msgstr "nät"
 
@@ -1624,10 +1622,10 @@ msgstr ""
 "storriddare i täten för en anfallsvåg är en skräckinjagande syn för "
 "infanteri, och är ofta tillräcklig för att bryta igenom en försvarlinje."
 
+#: data/core/units/humans/Horse_Lancer.cfg:24
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
 #: data/core/units/humans/Horse_Paladin.cfg:49
-#: data/core/units/humans/Horse_Lancer.cfg:24
 msgid "lance"
 msgstr "lans"
 
@@ -1761,13 +1759,13 @@ msgstr ""
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
-#: data/core/units/humans/Loyalist_Duelist.cfg:78
-#: data/core/units/humans/Loyalist_General.cfg:52
 #: data/core/units/humans/Loyalist_Sergeant.cfg:43
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:37
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:42
-#: data/core/units/humans/Loyalist_Cavalier.cfg:47
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:42
+#: data/core/units/humans/Loyalist_Duelist.cfg:78
+#: data/core/units/humans/Loyalist_Cavalier.cfg:47
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:37
+#: data/core/units/humans/Loyalist_General.cfg:52
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:48
 #: data/core/units/undead/Skele_Death_Knight.cfg:55
 msgid "crossbow"
@@ -1849,8 +1847,8 @@ msgstr ""
 "Anmärkning:"
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
-#: data/core/units/humans/Loyalist_Fencer.cfg:124
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:28
+#: data/core/units/humans/Loyalist_Fencer.cfg:124
 msgid "sabre"
 msgstr "sabel"
 
@@ -2209,8 +2207,8 @@ msgstr ""
 "döljer monster istället för människor. Nackdelen med så tung rustning är "
 "förstås tiden det tar att komma till och från striden."
 
-#: data/core/units/humans/Mage_of_Light.cfg:98
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
+#: data/core/units/humans/Mage_of_Light.cfg:98
 msgid "morning star"
 msgstr "morgonstjärna"
 
@@ -2302,8 +2300,8 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/humans/Mage.cfg:62
 #: data/core/units/humans/Mage_Silver.cfg:45
+#: data/core/units/humans/Mage.cfg:62
 msgid "missile"
 msgstr "projektil"
 
@@ -2345,13 +2343,13 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:37
+#: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Red.cfg:62
 msgid "fireball"
 msgstr "eldklot"
 
-#: data/core/units/humans/Mage_Arch.cfg:123
+#: data/core/units/humans/Mage_Arch.cfg:118
 msgid "female^Arch Mage"
 msgstr "Ärkemagiker"
 
@@ -2387,7 +2385,7 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/humans/Mage_Great.cfg:124
+#: data/core/units/humans/Mage_Great.cfg:119
 msgid "female^Great Mage"
 msgstr "Stormagiker"
 
@@ -2426,7 +2424,7 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/humans/Mage_Red.cfg:148
+#: data/core/units/humans/Mage_Red.cfg:144
 msgid "female^Red Mage"
 msgstr "Röd magiker"
 
@@ -2515,10 +2513,10 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/merfolk/Priestess.cfg:71
-#: data/core/units/merfolk/Diviner.cfg:74
-#: data/core/units/humans/Mage_of_Light.cfg:107
 #: data/core/units/humans/Mage_White.cfg:129
+#: data/core/units/humans/Mage_of_Light.cfg:107
+#: data/core/units/merfolk/Diviner.cfg:74
+#: data/core/units/merfolk/Priestess.cfg:71
 msgid "lightbeam"
 msgstr "ljusbåge"
 
@@ -2574,9 +2572,9 @@ msgstr ""
 "rikliga mängd ammunition de har att tillgå. Fredlösa trivs inte så väl i "
 "dagsljus, utan föredrar att strida i nattens mörker."
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
+#: data/core/units/humans/Outlaw.cfg:31
+#: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "slunga"
@@ -2671,9 +2669,9 @@ msgstr ""
 "snabbheten kommer väl till pass i strid, och trots sina ömkliga vapen är de "
 "bra på att plåga sina fiender, speciellt i skydd av mörkret. "
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
-#: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
+#: data/core/units/humans/Outlaw_Ruffian.cfg:23
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
 msgid "club"
 msgstr "klubba"
@@ -3018,9 +3016,9 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/merfolk/Siren.cfg:40
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:36
+#: data/core/units/merfolk/Siren.cfg:40
 msgid "water spray"
 msgstr "vattenstråle"
 
@@ -3056,10 +3054,10 @@ msgstr ""
 "Sjöfolket är skickliga varelser i havet. De är snabba och kraftfulla i "
 "vatten men har problem att röra sig på land."
 
-#: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 #: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:35
+#: data/core/units/merfolk/Warrior.cfg:23
+#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 msgid "trident"
 msgstr "treudd"
 
@@ -3364,8 +3362,8 @@ msgstr ""
 
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
-#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Whelp.cfg:26
+#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
 msgstr "knytnäve"
@@ -3719,8 +3717,8 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:33
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:32
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:23
+#: data/core/units/orcs/Ruler.cfg:32 data/core/units/orcs/Sovereign.cfg:33
 msgid "greatsword"
 msgstr "bredsvärd"
 
@@ -4153,11 +4151,11 @@ msgstr ""
 "mångtaliga men bräckliga; dock kan gnistan väckas i dem av lukten av strid "
 "och död, vilket gör dem betydligt mer oroväckande."
 
+#: data/core/units/undead/Corpse_Soulless.cfg:73
 #: data/core/units/undead/Corpse_Walking.cfg:72
+#: data/core/units/undead/Necro_Lich.cfg:34
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:119
-#: data/core/units/undead/Necro_Lich.cfg:34
-#: data/core/units/undead/Corpse_Soulless.cfg:73
 msgid "touch"
 msgstr "beröring"
 
@@ -4194,16 +4192,16 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:46
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 msgid "chill tempest"
 msgstr "köldstorm"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:59
-#: data/core/units/undead/Necro_Lich.cfg:58
-#: data/core/units/undead/Necromancer.cfg:50
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:46
+#: data/core/units/undead/Necromancer.cfg:50
+#: data/core/units/undead/Necro_Lich.cfg:58
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:59
 msgid "shadow wave"
 msgstr "skuggstöt"
 
@@ -4237,8 +4235,8 @@ msgstr ""
 "Anmärkning:"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
-#: data/core/units/undead/Necromancer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
+#: data/core/units/undead/Necromancer.cfg:38
 msgid "chill wave"
 msgstr "köldvåg"
 
@@ -4618,9 +4616,9 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/undead/Spirit_Wraith.cfg:31
-#: data/core/units/undead/Spirit_Ghost.cfg:131
 #: data/core/units/undead/Spirit_Spectre.cfg:56
+#: data/core/units/undead/Spirit_Ghost.cfg:131
+#: data/core/units/undead/Spirit_Wraith.cfg:31
 msgid "wail"
 msgstr "tjut"
 
@@ -4688,8 +4686,8 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/undead/Spirit_Wraith.cfg:20
 #: data/core/units/undead/Spirit_Spectre.cfg:45
+#: data/core/units/undead/Spirit_Wraith.cfg:20
 msgid "baneblade"
 msgstr "domedagssvärd"
 
@@ -4742,8 +4740,8 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
-#: data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Ancient.cfg:92
 msgid "crush"
 msgstr "krossa"
 
