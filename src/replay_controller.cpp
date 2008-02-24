@@ -105,6 +105,8 @@ void replay_controller::init(){
 	}
 	init_gui();
 	statistics::fresh_stats();
+	victory_conditions::set_victory_when_enemies_defeated(
+						level_["victory_when_enemies_defeated"] != "no");
 
 	DBG_REPLAY << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
@@ -118,7 +120,7 @@ void replay_controller::init(){
 	update_gui();
 
 	units_start_ = units_;
-	teams_start_ = team_manager_.clone(teams_);
+	teams_start_ = teams_;
 }
 
 void replay_controller::init_gui(){
@@ -161,13 +163,20 @@ void replay_controller::reset_replay(){
 	units_ = units_start_;
 	status_ = status_start_;
 	gamestate_ = gamestate_start_;
-	teams_ = team_manager_.clone(teams_start_);
+	teams_ = teams_start_;
 	statistics::fresh_stats();
 	if (events_manager_ != NULL){
 		delete events_manager_;
 		events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_,
 								units_,teams_, gamestate_,status_,gameinfo_);
 	}
+
+	gui_->new_turn();
+	gui_->invalidate_game_status();
+	events::raise_draw_event();
+	(*gui_).invalidate_all();
+	(*gui_).draw();
+
 	try {
 		fire_prestart(true);
 		fire_start(!loading_game_);
@@ -288,7 +297,7 @@ void replay_controller::play_turn(){
 
 	bool last_team = false;
 	
-	while ( (!last_team) && (!recorder.at_end()) ){
+	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
 		last_team = static_cast<size_t>(player_number_) == teams_.size();	
 		play_side(player_number_ - 1, false);
 		play_slice();
