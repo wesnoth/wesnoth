@@ -40,7 +40,7 @@
 
 namespace {
 
-bool message_private_on = true;
+bool message_private_on = false;
 
 bool haloes = true;
 
