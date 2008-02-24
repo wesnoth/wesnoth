@@ -647,8 +647,12 @@ unit_animation::crude_animation::crude_animation(
 		last_frame_begin_time_(0)
 {
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
+	config::const_child_iterator itor;
+	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
-		starting_frame_time_ = atoi((**range.first)["begin"].c_str());
+		for(itor = range.first; itor != range.second; itor++) {
+			starting_frame_time_=minimum(starting_frame_time_,atoi((**itor)["begin"].c_str()));
+		}
 	} else {
 		starting_frame_time_ = atoi(cfg[frame_string+"start_time"].c_str());
 	}
