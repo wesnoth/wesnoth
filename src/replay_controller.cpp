@@ -286,27 +286,24 @@ void replay_controller::play_turn(){
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
 
-	while ((static_cast<size_t>(player_number_) <= teams_.size()) &&
-			(!recorder.at_end())){
-
+	bool last_team = false;
+	
+	while ( (!last_team) && (!recorder.at_end()) ){
+		last_team = static_cast<size_t>(player_number_) == teams_.size();	
 		play_side(player_number_ - 1, false);
 		play_slice();
-
-		player_number_++;
-		update_teams();
-		update_gui();
 	}
-	status_.next_turn();
-	finish_turn();
-
-	player_number_ = 1;
-	current_turn_++;
 }
 
 void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 	if (recorder.at_end()){
 		return;
 	}
+
+	DBG_REPLAY << "Status turn number: " << status_.turn() << "\n";
+	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
+	DBG_REPLAY << "Player number: " << player_number_ << "\n";
+
 	// If a side is empty skip over it.
 	if (current_team().is_empty()) return;
 
@@ -333,6 +330,18 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 				uit->second.new_turn();
 			}
 		}
+
+		player_number_++;
+		
+		if (static_cast<size_t>(player_number_) > teams_.size()){
+			status_.next_turn();
+			finish_turn();
+			player_number_ = 1;
+			current_turn_++;
+		}
+
+		update_teams();
+		update_gui();
 	}
 	catch (replay::error&) //if replay throws an error, we don't want to get thrown out completely
 	{

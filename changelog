@@ -12,6 +12,9 @@ Version 1.3.18+svn:
    * All animations are disabled when the LOW_MEM compile switch is activated
    * correct FIREBALL_MISSILE not being synchronized properly. All UMC users
      need to check units using that macro
+ * replays:
+   * fixed "play side turn" not working (bug #11118)
+   * at least partly fix "replays always corrupt" (bug #10976)
 
 Version 1.3.18:
  * campaigns:
