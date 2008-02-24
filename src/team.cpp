@@ -50,14 +50,6 @@ teams_manager::~teams_manager()
 	teams = NULL;
 }
 
-std::vector<team> teams_manager::clone(std::vector<team>& team_list){
-	std::vector<team> result;
-	for (std::vector<team>::iterator t = team_list.begin(); t != team_list.end(); t++){
-		result.push_back(*t);
-	}
-	return result;
-}
-
 bool teams_manager::is_observer()
 {
 	for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {

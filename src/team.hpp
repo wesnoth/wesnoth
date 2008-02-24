@@ -311,7 +311,6 @@ struct teams_manager {
 	teams_manager(std::vector<team>& teams);
 	~teams_manager();
 
-	std::vector<team> clone(std::vector<team>& team_list);
 	bool is_observer();
 };
 
