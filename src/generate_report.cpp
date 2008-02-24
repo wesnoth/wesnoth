@@ -64,7 +64,7 @@ report generate_report(TYPE type,
 	case UNIT_TYPE:
 	        return report(u->second.language_name(),"",u->second.unit_description());
 	case UNIT_RACE:
-	        return report(u->second.race()->name(u->second.gender()),"",u->second.race()->name(u->second.gender()));
+	        return report(u->second.race()->name(u->second.gender()));
 	case UNIT_LEVEL:
 		str << u->second.level();
 		break;
