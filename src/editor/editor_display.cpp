@@ -97,6 +97,12 @@ void editor_display::draw(bool update,bool force)
 				tile_stack_append(mouseover_hex_overlay_);
 
 			tile_stack_render(xpos, ypos);
+
+			// If the tile is at the border, we start to blend it
+			if(!map_.on_board(*it) &&
+					(map_.get_terrain(*it) != t_translation::OFF_MAP_USER)) { 
+				 draw_border(*it, xpos, ypos);
+			}
 		}
 
 		invalidated_.clear();
