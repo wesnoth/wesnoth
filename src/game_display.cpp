@@ -1176,15 +1176,17 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 		int side, const std::string& message, game_display::MESSAGE_TYPE type,
 		bool bell)
 {
+	const bool whisper = speaker.find("whisper: ") == 0;
 	std::string sender = speaker;
-	if (speaker.find("whisper: ") == 0) {
+	if (whisper) {
 		sender.assign(speaker, 9, speaker.size());
 	}
 	if (!preferences::show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
 
 	if (bell) {
-		if (type == MESSAGE_PRIVATE || utils::word_match(message, preferences::login())) {
+		if (type == MESSAGE_PRIVATE && (!is_observer() || whisper)
+			|| utils::word_match(message, preferences::login())) {
 			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
 		} else if (preferences::is_friend(sender)) {
 			sound::play_UI_sound(game_config::sounds::receive_message_friend);
