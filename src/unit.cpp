@@ -1092,7 +1092,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 					continue;
 				}
 				if (!(*i).has_attribute("is_enemy")
-				|| utils::string_bool((*i)["is_enemy"]) == (*gamestatus_->teams)[this->side()-1].is_enemy(unit_itor->second.side())) {
+				|| utils::string_bool((*i)["is_enemy"]) == (*teams_)[this->side()-1].is_enemy(unit_itor->second.side())) {
 					++match_count;
 				}
 			}
