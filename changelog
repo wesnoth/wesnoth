@@ -7,6 +7,8 @@ Version 1.3.18+svn:
    * Fixed era events loading
    * Idle, standing and selection animations are not accelerated anymore
    * All animations are disabled when the LOW_MEM compile switch is activated
+   * correct FIREBALL_MISSILE not being synchronized properly. All UMC users
+     need to check units using that macro
 
 Version 1.3.18:
  * campaigns:
