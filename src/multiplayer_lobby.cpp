@@ -734,6 +734,7 @@ void lobby::process_event()
 	games_menu_.reset_selection();
 	preferences::set_skip_mp_replay(skip_replay_.checked());
 	playmp_controller::set_replay_last_turn(0);
+	preferences::set_message_private(false);
 
 	int selected_game = games_menu_.selection();
 	if (selected_game != last_selected_game_) {

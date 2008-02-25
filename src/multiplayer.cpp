@@ -463,6 +463,7 @@ void start_server(game_display& disp, const config& game_config, game_data& data
 	mp::chat chat;
 	config gamelist;
 	playmp_controller::set_replay_last_turn(0);
+	preferences::set_message_private(false);
 	enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
 }
 
@@ -482,6 +483,7 @@ void start_client(game_display& disp, const config& game_config, game_data& data
 		break;
 	case SIMPLE_SERVER:
 		playmp_controller::set_replay_last_turn(0);
+		preferences::set_message_private(false);
 		enter_wait_mode(disp, game_config, data, chat, gamelist, false);
 		break;
 	case ABORT_SERVER:
