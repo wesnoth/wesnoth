@@ -766,13 +766,12 @@ bool game_controller::load_game()
 			return false;
 		}
 
-		state_ = game_state(units_data_, cfg, show_replay);
-
-		if(state_.version != game_config::version) {
+		const std::string version = cfg["version"];
+		if(version != game_config::version) {
 			// do not load if too old, if either the savegame or the current game
 			// has the version 'test' allow loading
-			if(state_.version < game_config::min_savegame_version &&
-					game_config::test_version.full != state_.version &&
+			if(version < game_config::min_savegame_version &&
+					game_config::test_version.full != version &&
 					game_config::test_version.full != game_config::version) {
 
 				/* GCC-3.3 needs a temp var otherwise compilation fails */
@@ -788,6 +787,8 @@ bool game_controller::load_game()
 				return false;
 			}
 		}
+
+		state_ = game_state(units_data_, cfg, show_replay);
 
 		// Get the status of the random in the snapshot.
 		// For a replay we need to restore the start only, the replaying gets at
