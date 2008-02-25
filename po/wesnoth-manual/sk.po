@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-02-03 17:23+0100\n"
-"PO-Revision-Date: 2008-02-12 22:28+0100\n"
+"PO-Revision-Date: 2008-02-25 19:41+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -601,14 +601,23 @@ msgid ""
 "traffic to the machine hosting the game. You should not need to make "
 "firewall changes to join games hosted on a public server or by someone else."
 msgstr ""
+"Môžeš byť hostiteľom hier pre viacerých hráčov pomocou svojho klienta, "
+"nepotrebuješ na to vyhradený server. Ak robíš hostiteľa hry pomocou svojho "
+"klienta, ostatní hráči sa musia vedieť pripojiť na tvoj port 15000 pomocou "
+"TCP. Ak si za firewallom, asi si budeš musieť zmeniť nastavenia firewallu, "
+"aby dovolili prichádzajúce pripojenia na port 15000, a aby sa táto "
+"komunikácia presmerovala na počítač, ktorý je hostiteľom hry. Na pripojenie "
+"k hrám, kde je hostiteľom nejaký verejným server alebo niekto iný, by si "
+"nemal potrebovať zmenu firewallu."
 
 # type: Content of: <book><chapter><section><section><section><title>#: ../../doc/manual/manual.en.xml:353
 #: ../../doc/manual/manual.en.xml:354
 msgid "Local Game"
-msgstr ""
+msgstr "Lokálna hra"
 
-# type: Content of: <book><chapter><section><section><section><simpara>
+# type: Content of: <book><chapter><section><section><section><simpara>#: ../../doc/manual/manual.en.xml:354
 #: ../../doc/manual/manual.en.xml:355
+#, fuzzy
 msgid ""
 "This creates a game just running on your computer. You can either use it as "
 "hotseat game where everyone plays at the same computers by taking turns in "
@@ -622,6 +631,15 @@ msgid ""
 "these games.  Of course, you can also mix both in one game. That is, play "
 "together in a game with a friend against an AI opponent."
 msgstr ""
+"Toto vytvorí hru, ktorá beží iba na tvojom počítači. Môžeš to využiť na hru "
+"na <emphasis>horúcom kresle</emphasis>, kde každý hrá na tom istom počítači "
+"a striedajú sa po ťahoch. Hra na horúcom kresle trvá približne rovnako dlho "
+"ako rovnaká hra po internete. Alebo si môžeš zahrať scenár proti počítačovým "
+"súperom. To môže byť dobrý spôsob, ako sa zoznámiť s rozličnými mapami na "
+"hry pre viacerých hráčov, skôr ako začneš hrať proti skutočným súperom. Môže "
+"to byť aj jednoduchý spôsob, ako preskúmať schopnosti jednotiek rozličných "
+"frakcií, tým že si vyberieš tvoju a súperovu frakciu. Alebo môžeš v jednej "
+"hre urobiť oboje; zahraj sa spolu s priateľom proti počitaču."
 
 # type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:369
 #: ../../doc/manual/manual.en.xml:370
@@ -2346,17 +2364,17 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>#: ../../doc/manual/manual.en.xml:1802
 #: ../../doc/manual/manual.en.xml:1803
 msgid "enemy level"
-msgstr ""
+msgstr "nepriateľova úroveň"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>#: ../../doc/manual/manual.en.xml:1805
 #: ../../doc/manual/manual.en.xml:1806
 msgid "kill bonus"
-msgstr ""
+msgstr "bonus za zabitie"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>#: ../../doc/manual/manual.en.xml:1808
 #: ../../doc/manual/manual.en.xml:1809
 msgid "fighting bonus"
-msgstr ""
+msgstr "bonus za boj"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>#: ../../doc/manual/manual.en.xml:1829
 #: ../../doc/manual/manual.en.xml:1830
@@ -2482,11 +2500,12 @@ msgid ""
 "On the top of the energy bar shown next to each unit of yours is an orb. "
 "This orb is:"
 msgstr ""
+"Na vrchu ukazovateľa energie vedľa každej jednotky je guľa. Táto guľa je:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>#: ../../doc/manual/manual.en.xml:1958
 #: ../../doc/manual/manual.en.xml:1959
 msgid "<phrase>green orb</phrase>"
-msgstr ""
+msgstr "<phrase>zelená guľa</phrase>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:1959
 #: ../../doc/manual/manual.en.xml:1960
@@ -2494,11 +2513,13 @@ msgid ""
 "</inlinemediaobject> green if you control the unit and it hasn't moved this "
 "turn,"
 msgstr ""
+"</inlinemediaobject> zelená, ak ovládaš túto jednotku, a ešte si ňou v tomto "
+"kole neťahal,"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>#: ../../doc/manual/manual.en.xml:1966
 #: ../../doc/manual/manual.en.xml:1967
 msgid "<phrase>yellow orb</phrase>"
-msgstr ""
+msgstr "<phrase>žltá guľa</phrase>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:1967
 #: ../../doc/manual/manual.en.xml:1968
@@ -2506,11 +2527,13 @@ msgid ""
 "</inlinemediaobject> yellow if you control the unit and it has moved this "
 "turn, but could still move further or attack,"
 msgstr ""
+"</inlinemediaobject> žltá, ak ovládaš túto jednotku, a už si ňou v tomto "
+"kole ťahal, ale ešte môžeš ďalej ťahať alebo útočiť,"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>#: ../../doc/manual/manual.en.xml:1974
 #: ../../doc/manual/manual.en.xml:1975
 msgid "<phrase>red orb</phrase>"
-msgstr ""
+msgstr "<phrase>červená guľa</phrase>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:1975
 #: ../../doc/manual/manual.en.xml:1976
@@ -2518,58 +2541,78 @@ msgid ""
 "</inlinemediaobject> red if you control the unit, but it has used all its "
 "movement this turn, or"
 msgstr ""
+"</inlinemediaobject> červená, ak ovládaš túto jednotku, ale už si jej toto "
+"kolo minul všetok pohyb, alebo"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>#: ../../doc/manual/manual.en.xml:1982
 #: ../../doc/manual/manual.en.xml:1983
 msgid "<phrase>blue orb</phrase>"
-msgstr ""
+msgstr "<phrase>modrá guľa</phrase>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:1983
 #: ../../doc/manual/manual.en.xml:1984
 msgid "</inlinemediaobject> blue if the unit is an ally you do not control."
 msgstr ""
+"</inlinemediaobject> modrá, ak je to spojenecká jednotka, ktorú neovládaš."
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>#: ../../doc/manual/manual.en.xml:1990
 #: ../../doc/manual/manual.en.xml:1991
 msgid "<phrase>no orb</phrase>"
-msgstr ""
+msgstr "<phrase>žiadna guľa</phrase>"
 
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:1991
 #: ../../doc/manual/manual.en.xml:1992
 msgid ""
 "</inlinemediaobject> Enemy units have no orb on the top of their energy bar."
 msgstr ""
+"</inlinemediaobject> Nepriateľským jednotkám sa guľa nad ich ukazovateľom "
+"energie nezobrazuje."
 
-# type: Content of: <book><chapter><section><section><title>
+# type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:1995
 #: ../../doc/manual/manual.en.xml:1996
+#, fuzzy
 msgid "Ellipses, Team Colors, and Hero Icons"
-msgstr ""
+msgstr "Placky, tímové farby, a znaky hrdinov"
 
-# type: Content of: <book><chapter><section><section><simpara>
+# type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:1996
 #: ../../doc/manual/manual.en.xml:1997
+#, fuzzy
 msgid ""
 "Below each unit there will normally be a colored ellipses or base. The color "
 "identifies its team; in a campaign game, the human-player color is red. The "
 "team color will also show up in parts of the unit's clothing, or possibly on "
 "a shield insignia."
 msgstr ""
+"Pod každou jednotkou je zvyčajne farebná placka, čiže podklad. Jej farba "
+"označuje tím; pri hraní príbehu je farba ľudského hráča červená. Farba tímu "
+"sa ukazuje aj na častiach oblečenia jednotky, prípadne na jej štíte."
 
-# type: Content of: <book><chapter><section><section><simpara>
+# type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:2001
 #: ../../doc/manual/manual.en.xml:2002
+#, fuzzy
 msgid ""
 "Usually the ellipse will be a solid disk. On level 0 units, you will see an "
 "ellipse that has broken lines. This indicates that the unit has no Zone of "
 "Control."
 msgstr ""
+"Placka je zvyčajne celý kruh, teda elipsa kvôli pohľadu zboku. Niekedy "
+"(zvyčajne pod jednotkou na úrovni 0) uvidíš placku, ktorá vyzerá ako vrtuľa "
+"vrtuľníka; to znamená, že táto jednotka nemá zónu kontroly."
 
-# type: Content of: <book><chapter><section><section><simpara>
+# type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:2006
 #: ../../doc/manual/manual.en.xml:2006
+#, fuzzy
 msgid ""
 "Some campaigns use a star-shaped base to indicate leaders; others use a "
 "shield-shaped hero icon next to the unit's upper-right corner. Still others "
 "have no specific hero indicator at all. Which (if any) is used is a "
 "stylistic choice left to campaign designers."
 msgstr ""
+"Niektoré príbehy používajú placky v tvare hviezdy na označenie veliteľov; "
+"iné používajú pre hrdinov znak v tvare štítu v pravom hornom rohu jednotky. "
+"Niektoré iné zase nemajú pre hrdinov žiadne špeciálne označenie. Ktoré "
+"označenie (a či vôbec nejaké) sa použije, je ponechané na vkus tvorcov "
+"príbehu."
 
 # type: Content of: <book><chapter><section><title>#: ../../doc/manual/manual.en.xml:2014
 #: ../../doc/manual/manual.en.xml:2014
@@ -2773,12 +2816,12 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:2153
 #: ../../doc/manual/manual.en.xml:2153
 msgid "Some other hints about healing:"
-msgstr ""
+msgstr "Niekoľko ďalších informácií o uzdravovaní:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2158
 #: ../../doc/manual/manual.en.xml:2158
 msgid "A unit may take several turns to be fully healed."
-msgstr ""
+msgstr "Môže trvať niekoľko kôl, než sa jednotka celkom uzdraví."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2163
 #: ../../doc/manual/manual.en.xml:2163
@@ -2787,43 +2830,52 @@ msgid ""
 "Light, Paladin) heal all wounded units around them, so you can keep units "
 "close to the battle without losing them."
 msgstr ""
+"Uzdravovatelia (elfka šamanka, elfka druidka, elfka víla, biely mág, mág "
+"svetla, palatín) uzdravujú všetky zranené jednotky okolo nich, takže môžete "
+"udržiavať jednotky blízko bojovej línie a neprídete o ne."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2175
 #: ../../doc/manual/manual.en.xml:2170
 msgid "Healers do not heal enemy units."
-msgstr ""
+msgstr "Súperove jednotky sa neuzdravujú (pôsobením našich uzdravovateľov)."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2180
 #: ../../doc/manual/manual.en.xml:2175
 msgid "Healers cannot heal themselves, but see next point."
-msgstr ""
+msgstr "Uzdravovateľ nemôže uzdraviť sám seba, ale..."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2185
 #: ../../doc/manual/manual.en.xml:2180
 msgid "Use your healers in pairs, so they can heal each other if needed."
 msgstr ""
+"...môžeš používať dvojicu uzdravovateľov, nech sa uzdravujú navzájom, ak "
+"treba."
 
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2190
 #: ../../doc/manual/manual.en.xml:2185
+#, fuzzy
 msgid ""
 "Multiple healers from different sides can heal the same unit and speed up "
 "healing."
 msgstr ""
+"Viacerí uzdravovatelia môžu uzdravovať jednu jednotku, a pôjde to rýchlejšie."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2195
 #: ../../doc/manual/manual.en.xml:2190
 msgid "Trolls and Woses cannot regenerate other units."
-msgstr ""
+msgstr "Trollovia a lesní muži nemôžu regenerovať iné jednotky."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2200
 #: ../../doc/manual/manual.en.xml:2195
 msgid "Trolls and Woses cure themselves from poison as a village does."
 msgstr ""
+"Trollovia a lesní muži sa dokážu sami vyliečiť z otravy, podobne ako to robí "
+"dedina."
 
 # type: Content of: <book><chapter><title>#: ../../doc/manual/manual.en.xml:2213
 #: ../../doc/manual/manual.en.xml:2203
 msgid "Strategy and Tips"
-msgstr ""
+msgstr "Stratégia a tipy"
 
 # type: Content of: <book><chapter><section><title>#: ../../doc/manual/manual.en.xml:2215
 #: ../../doc/manual/manual.en.xml:2205
@@ -2841,7 +2893,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:2221
 #: ../../doc/manual/manual.en.xml:2211
 msgid "Don't waste units"
-msgstr ""
+msgstr "Neplytvaj jednotkami"
 
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:2222
 #: ../../doc/manual/manual.en.xml:2212
@@ -2852,6 +2904,10 @@ msgid ""
 "care of a healer (like Elvish Shamans or White Mages). Healers are very "
 "useful!"
 msgstr ""
+"Neposielaj zranené jednotky na istú smrť. Akonáhle jednotka príde o viac ako "
+"polovicu svojich bodov zdravia (HP), mal by si sa vážne zamyslieť nad tým, "
+"ako ju stiahnuť do bezpečia a uzdraviť v dedine, alebo u uzdravovateľa (ako "
+"elfka šamanka alebo biely mág). Uzdravovatelia sú veľmi užitoční!"
 
 # type: Content of: <book><chapter><section><section><simpara>#: ../../doc/manual/manual.en.xml:2228
 #: ../../doc/manual/manual.en.xml:2218
@@ -2864,6 +2920,13 @@ msgid ""
 "a replacement, it is most often far away from the battle front. So don't "
 "waste your units."
 msgstr ""
+"Má to praktické dôvody: ťažko zranená jednotka zvyčajne nedokáže zadržať "
+"alebo zabiť nepriateľa. Počas útoku a protiútoku pravdepodobne padne. Tým, "
+"že si ju poslal na istú smrť, stratil si jej nazbierané body skúsenosti "
+"(XP). Možno sa nebude dať naverbovať náhradníka, pretože veliteľ už nie je "
+"vo svojej pevnosti, alebo dochádzajú zdroje. A aj keď naverbuješ náhradníka, "
+"zvyčajne je veľmi ďaleko od bojovej línie. Takže neplytvaj svojimi "
+"jednotkami."
 
 # type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:2238
 #: ../../doc/manual/manual.en.xml:2228
@@ -3137,11 +3200,14 @@ msgid ""
 "if you coddle him too much he will be too low level to survive future "
 "scenarios anyway."
 msgstr ""
+"Nezabudni, že aj tvoj veliteľ potrebuje skúsenosti. Treba ho držať v "
+"bezpečí, ale ak ho budeš príliš rozmaznávať, zostane na nízkej úrovni, čo ho "
+"v ďalších scenároch bude ohrozovať ešte viac."
 
 # type: Content of: <book><chapter><section><title>#: ../../doc/manual/manual.en.xml:2395
 #: ../../doc/manual/manual.en.xml:2385
 msgid "Getting the Most Fun Out of the Game"
-msgstr ""
+msgstr "Ako z hry vyťažiť najviac zábavy"
 
 # type: Content of: <book><chapter><section><simpara>#: ../../doc/manual/manual.en.xml:2396
 #: ../../doc/manual/manual.en.xml:2386
@@ -3149,6 +3215,8 @@ msgid ""
 "Remember, the idea of a game is to have fun! Here are some recommendations "
 "from the development team on how to get the most fun out of the game:"
 msgstr ""
+"Pamätaj, že cieľom hry je zabaviť sa! Tu je pár odporúčaní od autorského "
+"tímu, ako si v hre užiť najviac zábavy:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2402
 #: ../../doc/manual/manual.en.xml:2392
@@ -3157,6 +3225,8 @@ msgid ""
 "you have prior experience with strategy games. We feel you'll find it much "
 "more rewarding."
 msgstr ""
+"Pouvažuj nad hraním príbehu na \"strednej\" náročnosti, najmä ak už máš "
+"skúsenosti s inými strategickými hrami. Možno ťa to tak bude viac baviť."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2409
 #: ../../doc/manual/manual.en.xml:2399
@@ -3164,6 +3234,8 @@ msgid ""
 "Don't sweat it too much when you lose some units. The campaign was designed "
 "to accommodate the player losing some units along the way."
 msgstr ""
+"Príliš sa netráp, keď stratíš pár jednotiek. Príbehy sú stavané tak, aby sa "
+"určité hráčove straty dali priebežne nahradiť."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2415
 #: ../../doc/manual/manual.en.xml:2405
@@ -3175,6 +3247,12 @@ msgid ""
 "your White Mage keeps getting killed. Learn to protect your White Mage "
 "instead, and balance risks! That is part of the strategy."
 msgstr ""
+"Nezneužívaj ukladanie hier. Kedysi dávno Wesnoth umožňoval uložiť hru iba na "
+"konci scenára. Ukladanie uprostred scenára bolo pridané kvôli tomu, aby sa "
+"hra dala dohrať nasledujúci deň, a ako ochrana pred spadnutím programu. "
+"Neodporúčame dokola načítavať pozície uprostred scenára preto, lebo "
+"nepriateľ zabil tvojho bieleho mága. Nauč sa namiesto toho chrániť si svojho "
+"bieleho mága a vyvažovať riziko! To je súčasť stratégie."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2426
 #: ../../doc/manual/manual.en.xml:2416
@@ -3183,6 +3261,9 @@ msgid ""
 "scenario, so that you choose a new strategy that works, rather than simply "
 "finding random numbers that favor you."
 msgstr ""
+"Ak musíš nahrať uloženú hru, odporúčame ísť znova od začiatku scenára a "
+"vybrať si inú stratégiu, namiesto toho, aby si postupne naháňal náhodné "
+"čísla vo svoj prospech."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2433
 #: ../../doc/manual/manual.en.xml:2423
@@ -3192,6 +3273,10 @@ msgid ""
 "every time you make a mistake, looking for the <emphasis>perfect</emphasis> "
 "game where you never lose a unit, by all means, go right ahead!"
 msgstr ""
+"No pamätaj, že cieľom je baviť sa! Možno máš iný vkus ako autori hry, takže "
+"rob to, čo ťa najviac baví! Ak ťa baví načítavať uložené hry zakaždým ako "
+"urobíš chybu, ak chceš hru zahrať <emphasis>perfektne</emphasis> bez straty "
+"jedinej jednotky, nech sa páči!"
 
 # type: Content of: <book><chapter><section><section><title>#: ../../doc/manual/manual.en.xml:2441
 #: ../../doc/manual/manual.en.xml:2431
@@ -3327,6 +3412,9 @@ msgid ""
 "Plan ahead - think about what it's going to be next turn as well as this "
 "turn."
 msgstr ""
+"vždy si skontroluj dennú dobu na pravej strane obrazovky. Plánuj dopredu - "
+"rozmýšľaj nielen nad tým, čo sa stane v tomto kole, ale aj čo sa stane v "
+"nasledujúcom."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2540
 #: ../../doc/manual/manual.en.xml:2530
@@ -3418,3 +3506,12 @@ msgstr "<glossterm> ZOC </glossterm>"
 #: ../../doc/manual/manual.en.xml:2600
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr "<link linkend=\"zoc\">Zone Of Control; oblasť kontroly</link>."
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2170
+#~ msgid "Healers will first heal their own units and then all friendly ones."
+#~ msgstr "V prvom rade sa uzdravujú vlastné jednotky, a až potom spojenecké."
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>#: ../../doc/manual/manual.en.xml:2205
+#~ msgid "Trolls and Woses can be healed by healers and a village."
+#~ msgstr ""
+#~ "Trollov a lesných mužov nevedia uzdravovať uzdravovatelia ani dediny."
