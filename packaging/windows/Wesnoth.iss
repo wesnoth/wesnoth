@@ -3,17 +3,19 @@
 
 [Setup]
 AppName=Battle for Wesnoth
-AppVerName=Battle for Wesnoth 1.3.14
+AppVerName=Battle for Wesnoth 1.3.19
 AppPublisher=David White
 AppPublisherURL=http://www.wesnoth.org
 AppSupportURL=http://www.wesnoth.org
 AppUpdatesURL=http://www.wesnoth.org
-DefaultDirName={pf}\Wesnoth
-DefaultGroupName=Wesnoth
-LicenseFile=C:\Entwicklung\Wesnoth\Release 1.3.14\COPYING
-OutputBaseFilename=wesnoth-1.3.14-windows
+DefaultDirName={pf}\Wesnoth 1.3.19
+DefaultGroupName=Wesnoth 1.3.19
+LicenseFile=C:\Entwicklung\Wesnoth\Release 1.3.19\COPYING
+OutputBaseFilename=wesnoth-1.3.19-windows
 Compression=lzma
 SolidCompression=yes
+UsePreviousAppDir=no
+UsePreviousGroup=no
 WizardImageFile=WindowsInstallerGraphic.bmp
 WizardSmallImageFile=windows_installer_w_881.bmp
 
@@ -24,7 +26,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Entwicklung\Wesnoth\Release 1.3.14\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Entwicklung\Wesnoth\Release 1.3.19\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\wesnoth.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"

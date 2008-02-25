@@ -8,10 +8,10 @@ Dim fso, shell
 'on error resume next
 
 'Initialization
-SourceDirectory = "C:\Entwicklung\Wesnoth\wesnoth-1.3.14\"
+SourceDirectory = "C:\Entwicklung\Wesnoth\wesnoth-1.3.19\"
 DLLDirectory = "C:\Entwicklung\Wesnoth\DLL\mingw\"
 PythonDirectory = "C:\Entwicklung\Wesnoth\DLL\python\"
-DestinationDirectory = "C:\Entwicklung\Wesnoth\Release 1.3.14\"
+DestinationDirectory = "C:\Entwicklung\Wesnoth\Release 1.3.19\"
 GetTextDirectory = "D:\Programme\GnuWin32\bin\"
 Set fso = CreateObject("Scripting.FileSystemObject")
 Set shell = CreateObject("WScript.Shell")
@@ -32,8 +32,8 @@ Call fso.CopyFile(DLLDirectory + "gettextlib.dll", DestinationDirectory)
 Call fso.CopyFile(DLLDirectory + "gettextpo.dll", DestinationDirectory)
 Call fso.CopyFile(DLLDirectory + "gettextsrc.dll", DestinationDirectory)
 Call fso.CopyFile(DLLDirectory + "jpeg.dll", DestinationDirectory)
-Call fso.CopyFile(DLLDirectory + "libiconv2.dll", DestinationDirectory)
-Call fso.CopyFile(DLLDirectory + "intl.dll", DestinationDirectory)
+Call fso.CopyFile(DLLDirectory + "iconv.dll", DestinationDirectory)
+Call fso.CopyFile(DLLDirectory + "libintl3.dll", DestinationDirectory)
 Call fso.CopyFile(DLLDirectory + "libogg-0.dll", DestinationDirectory)
 Call fso.CopyFile(DLLDirectory + "libpng12-0.dll", DestinationDirectory)
 Call fso.CopyFile(DLLDirectory + "libvorbis-0.dll", DestinationDirectory)
