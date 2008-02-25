@@ -186,8 +186,9 @@ if __name__ == "__main__":
                         "as the version already is", local_version,\
                         "(The add-on got re-uploaded.)"
             else:
-                print "Not downloading", name,\
-                    "because it is already up-to-date."
+                if options.verbose:
+                    print "Not downloading", name,\
+                        "because it is already up-to-date."
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)
