@@ -1,23 +1,26 @@
-# translation of hu_wesnoth.po to hungarian
+# translation of hu-multiplayer.po to Hungarian
 # Hungarian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+#
 # Automatically generated, 2004.
 # Széll Tamás <tomi@digiflex.hu>, 2005.
-#
-#
+# honorshark <honorshark@gmail.com>, 2008.
+# Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu_wesnoth 1.1-svn\n"
+"Project-Id-Version: hu-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-24 15:50+0100\n"
-"PO-Revision-Date: 2006-07-04 17:06+0200\n"
-"Last-Translator:  <>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2008-02-25 19:58+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
+"Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;X-Generator: KBabel 1.3X-Generator:\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: data/multiplayer/_main.cfg:5
 msgid "User Map"
@@ -29,7 +32,7 @@ msgstr "Véletlenszerű"
 
 #: data/multiplayer/eras.cfg:12
 msgid "Default"
-msgstr "Alapértelmezés"
+msgstr "Alapértelmezett"
 
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
@@ -75,24 +78,23 @@ msgstr "Lázadók"
 #: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
-msgstr "Élőholt"
+msgstr "Élőholtak"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
-msgstr "2j - A Baziliszkusz tárnái"
+msgstr "2j - A Sárkánygyík barlangja"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
-#, fuzzy
 msgid ""
 "Players must maneuver their units through the divisive terrain of this long-"
 "feared region, once the home of a legendary Elder Basilisk. The caves and "
 "the stark wilderness surrounding them are filled with the petrified forms of "
 "some of Wesnoth's greatest heroes."
 msgstr ""
-"A játékosoknak ezen a félelmetességéről és felosztottságáról messzeföldön "
-"híres területen kell csapataikkal manőverezni, ahol réges régen a legendás "
-"Baziliszkusz élt. A győzelemhez vezető utat Wesnoth legdicsőb hőseinek "
-"faragott képmásai kövezik ki."
+"A játékosoknak ezen a félelmetességéről és részekre osztott területéről "
+"messzeföldön híres vidéken kell csapataikkal manőverezni, ahol réges-régen a "
+"legendás Elsőszülött Sárkánygyík élt. A győzelemhez vezető utat Wesnoth "
+"legdicsőbb hőseinek faragott képmásai kövezik ki."
 
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:46
@@ -120,7 +122,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:57
 msgid "teamname^North"
-msgstr ""
+msgstr "teamname^Észak"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:58
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:31
@@ -142,9 +144,10 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
 msgid "teamname^South"
-msgstr ""
+msgstr "teamname^Dél"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:93
+#, fuzzy
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -167,10 +170,33 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"A sötét ég szelei oly hidegen fújtak, \n"
+"A hold magasan járt, az éj öregnek tűnt, \n"
+"Bátor volt a perzsekény, ki merészelte cserbenhagyni\n"
+"Otthonát, hogy ellopja a Sárkánygyík aranyát.\n"
+"\n"
+"Azon a sötét éjjelen, az ég oly zavaros volt,\n"
+"Semmibe vette mit tanult,\n"
+"Bolond de bátor, a Sárkánygyík barlangjába,\n"
+"Repült, s tűz égette legbelül.\n"
+"\n"
+"Sajnos a tűz már nem lobog,\n"
+"Mert a Sárkánygyík egy hatalmas üvöltéssel\n"
+"Csonttá dermesztette, s átváltoztatta kővé,\n"
+"S most ott marad mindörökké.\n"
+"\n"
+"A sötét ég szelei oly hidegen fújtak, \n"
+"A hold magasan járt, az éj öregnek tűnt, \n"
+"Bátor volt a perzsekény, ki merészelte cserbenhagyni\n"
+"Otthonát, hogy ellopja a Sárkánygyík aranyát.\n"
+"\n"
+"(írta: Flametrooper)\n"
+"\n"
+"(fordította: Honorshark)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:97
 msgid "Xikkrisx"
-msgstr ""
+msgstr "Xikkrisx"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:99
 msgid ""
@@ -194,10 +220,32 @@ msgid ""
 "traveled far from the lake, Xikkrisx set the statue down inside of a small "
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
+"Syrsszki Xikkrisx egy erős gyík harcos volt, akit a Rysssrylossszkk "
+"(fordítás: 'A Vadászatok-Ellenségek-A-Forró-Folyóban') Törzs Bölcsei küldtek "
+"erre a területre. A Bölcsek épp háborút készültek indítani egy emberi őrhely "
+"ellen, s nagy szükségük volt Oxsrrsk, a gyík varázsló, hatalmas mágikus "
+"erejére, kit utoljára a Ruaskkolin-tó irányába láttak haladni.\n"
+"\n"
+" Xikkrisx megtalálta Oxsrrsk megkövesedett holttestét egy gondosan "
+"összekötött tekerccsel, mely egy keskeny résbe volt dobva a barlang "
+"padlóján. Kinyitotta a tekercset, s olvasott egy rövid részt a közepéről: "
+"'Miután Chak'ksot láncra verték és kitaszították a Felsőbb Világból, "
+"felbőszült szelleme kiutat keresett, s képes volt rontó erőt szabadítani a "
+"Felsőbb Világ bizonyos részeire a 'kövek útjain' keresztül, melyek az "
+"Alvilág mélységeiből egészen a felszínig terjednek. Ez a rontás "
+"megváltoztatta az óriás gyíkok tojásait, testük és lelkük Chak'kso "
+"gyűlöletének hordozójává lett.'\n"
+"\n"
+"Xikkrisx zavarodottan állt ott. Átgondolta a feladatot, amit rábíztak. Úgy "
+"gondolván, hogy talán a Bölcsek találhatnak egy módot Oxsrrsk "
+"felélesztésére... Xikkrisx Oxsrrsk megkövesedett testét cipelve kezdte meg "
+"hosszú és fárasztó útját a Rysssrylosszkk Klán birodalma felé. Xikkrisx a "
+"tótól nem túl messze elfáradt, ezért elhelyezte a szobrot egy kis "
+"barlangban, és lefeküdt pihenni. Vérfagyasztó üvöltésre ébredt fel..."
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:103
 msgid "Oxsrrsk"
-msgstr ""
+msgstr "Oxsrrsk"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:105
 msgid ""
@@ -221,8 +269,28 @@ msgid ""
 "convinced of his ability to locate and bind this powerful creature into his "
 "service, Oxsrrsk set out on his journey..."
 msgstr ""
+"Oxsrrsk egy nagyhatalmú gyík jövendőmondó volt, aki részt vett a rivális "
+"Xraxss Klán elleni egyik rajtaütésen, ahol rátalált (a mostanra már halott "
+"Hesx-Rzzak madárjós rejtekhelyén) egy lenyűgöző tekercsre. A tekercs 'A "
+"Gránittekintetű Ney'yks'-nek volt címezve, tartalma pedig egy 'Chak'kso "
+"Ney'yks' nevű élőlényről szólt. Ez a név az ősi gyík nyelven annyit tesz, "
+"mint 'Chak'kso Elsőszülöttje'. Régen úgy tartották, hogy Chak'kso az Alvilág "
+"egyik legerősebb félistene, akit a Tünde Mondák 'a föld rettegett démona'-"
+"ként emlegetnek. Ezen mondák szerint Chak'kso olyan szörnyű gyűlöletet "
+"táplált a hús-vér teremtmények iránt, hogy a világ összes élőlényét kővé "
+"akarta változtatni. Bár végérvényesen legyőzték és erőteljes varázslatokkal "
+"megbéklyózták, évszázadokkal az Alvilágba való száműzetése után egy újfajta "
+"élőlény tűnt fel a Mondákban... egy olyan élőlény, mely képes volt az eleven "
+"húst kővé változtatni. Volt egy időszak, mikor ezek a Sárkánygyíkok (ahogyan "
+"ismertté váltak) pusztulást hoztak az élők világára, ezreket változtatván "
+"kővé. Aztán egyesével, hatalmas árat fizetve legyőzték a Sárkánygyíkokat. "
+"Mindegyiket, egy kivételével: a Sárkánygyík, kit 'A Ney'yks'-nek vagyis 'Az "
+"Elsőszülött'-nek hívtak a modern nyelvezetben. Oxsrrsk a legtökéletesebben "
+"meg volt győződve arról, hogy képes megtalálni és saját igája alá hajtani "
+"ezt a hatalmas erejű teremtményt... ennek tudatában indult útnak..."
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:118
+#, fuzzy
 msgid ""
 "Slim of Stature, dexterous Hands\n"
 "- - Seven Stones and Eleven\n"
@@ -233,10 +301,21 @@ msgid ""
 "- - Seven Stones - and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Vékony Alkat, ügyes Kezek\n"
+"- - Hét Szikla és Tizenegy\n"
+"Ellenséginek Esélye csekély\n"
+"- - Hét Szikla és Tizenegy\n"
+"Mesterlövész, a Sárkányölő\n"
+"Szobrok között itt lett leölve\n"
+"-- Hét Szikla és Tizenegy\n"
+"\n"
+"(írta: Gauteamus)\n"
+"\n"
+"(fordította: Honorshark)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
 msgid "Blum Duk"
-msgstr ""
+msgstr "Blum Duk"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:127
 msgid ""
@@ -255,10 +334,25 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!?\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blum Duk arról nevezetes a kobold klánján belül, hogy megszelídítette a "
+"hegyek irtózatos Farkasainak egyikét, és még meglovagolni is volt bátorsága. "
+"Egyedül csak az ő vezetői képessége és ügyessége tartotta életben a vidék "
+"koboldjait az emberek és tündék vérengzései ellenére. A híresztelések "
+"szerint a farkasa ötven embert és száz tündét mészárolt le.\n"
+"Így, mikor hallott a borzasztó szörnyről, ami rettegésben tartotta a "
+"vidéket, természetes volt, hogy egyedül nyargaljon ki, hogy szembenézzen "
+"vele. Az összes kobold arra számított, hogy könnyedén leöli a szörnyeteget, "
+"s elhozza a tetemét, hogy lakomát üljenek fölötte.\n"
+"Ám iszonyatos rémület lett úrrá Blum Dukon. Azon nyomban reszketni kezdett a "
+"félelemtől, amint meglátta a Sárkánygyíkot. Megpróbálta úgy irányítani a "
+"farkasát, hogy elmeneküljön, de az meg sem mozdult. Amint a lény peckesen "
+"közeledett felé, utolsó szavait kiáltotta a világba:'Édes kiskutyám, hát "
+"neked meg kővé váltak a lábaid, vagy mifene?!?'\n"
+"(Írta: Elvish Pillager)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:131
 msgid "Rah Ihn Mar"
-msgstr ""
+msgstr "Rah Ihn Mar"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:133
 msgid ""
@@ -272,6 +366,16 @@ msgid ""
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
+"Rah Ihn Mar az Égő Hegyek Bajnoka volt, aki eljutott a Ruaskkolin-tó "
+"vidékére, miközben Terowydilithrolt, a Tünde hőst üldözte, akit a tündék "
+"csak 'A Sárkányölő'-ként emlegettek. Terowydilithrol állítólag megölte a Tűz "
+"Sárkányát, mely egy tünde falut tartott rettegésben, ezzel pedig egy olyan "
+"'ellentámadást' váltott ki, melyben mintegy 37, egy közelben lévő szurdokban "
+"tanyázó, a sárkánnyal állítólagosan szövetségben lévő perzsekényt "
+"mészároltak le. Rah Ihn Mar tudta, hogy ezek a perzsekények ártatlanok "
+"voltak, ezért eljött a Ruaskkolin-tó vidékére, hogy felkutassa és megölje "
+"Terowydlithrolt, akit pár nappal ezelőtt láttak megérkezni e területre. Rah "
+"Ihn Mar a bosszútól fűtve kezdte meg a vadászatot..."
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:140
 msgid ""
@@ -283,6 +387,12 @@ msgid ""
 "arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
+"Sok-sok emberöltőn keresztül élt a víz mélyén, különböző halakkal, békákkal "
+"és a felségterületére merészkedő sellőkkel táplálkozva. Az ő tava volt és "
+"senki másé... s bár nem volt nagy, de ő volt benne az úr. Aztán jött a "
+"Sárkánygyík, és belenézett a Kígyó szemeibe. S a Kígyó nem halt meg, de már "
+"nem is volt élő többé. Így érkezett meg a tó új ura.\n"
+"(Írta: Turin)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
 msgid ""
@@ -294,10 +404,19 @@ msgid ""
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Ez a remek lovas, ki egy embercsapat vezére is, Wesnoth Aranykorának egyik "
+"hős harcosa. Csapatával épp az orkok területeire igyekezett portyázni, mikor "
+"erre az elátkozott helyre érkezett. A förtelmes lények váratlanul rájuk "
+"támadtak, rengeteg katonát megöltek, de e kiváló vezér hősiesen küzdött és "
+"sok ellenfelet a halálba küldött. De nem volt mit tenni! Az undorító "
+"Sárkánygyík rögtön kővé változtatta, amint ő az utolsó orkot is "
+"lekaszabolta. Mostanra már csupán az emléke maradt meg ennek az egykor oly "
+"délceg, erős vitéznek.\n"
+"(írta: Fynmiir)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:151
 msgid "Bramwythl"
-msgstr ""
+msgstr "Bramwythl"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid ""
@@ -317,20 +436,39 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Bramwythl, a fapásztor, mindig is egy megfontolt, lomha fickó volt, még a "
+"többi fapásztorhoz viszonyítva is. Azonban még társainál is jobban szeretett "
+"csak úgy egyedül sütkérezni a napon, miközben karjait felemelte és a tiszta "
+"égbolt gyönyörűségét csodálta. Egyszer még azt is bevallotta egyik "
+"barátjának, hogy legáhítottabb vágya, hogy örökké a nap dicső sugaraiban "
+"fürdőzhessen.\n"
+"Azonban nem sokkal ezután a fapásztorok helyi közösségének fülébe jutott, "
+"hogy egy irtózatos szörnyeteg közeledik, aki elég erős ahhoz, hogy könnyedén "
+"elintézze azt a kevés fapásztort, akik ezen a vidéken éltek. Mindenki "
+"gyorsan elhúzta a csíkot (mármint egy fapásztorhoz képest gyorsan), csak "
+"Bramwythl maradt - a nagy sietségben ugyanis mindenki megfeledkezett arról, "
+"hogy figyelmeztesse a közelgő veszélyről.\n"
+"A Sárkánygyík érkezése teljesen váratlanul érte, így az kővé változtatta őt, "
+"mielőtt még fölismerhette volna a bestia szándékát. Megkövesedett alakja ma "
+"is ott áll a szabad ég alatt, ahol szüntelenül a nap lágy sugarai melegítik. "
+"Így vált valóra legnagyobb álma.\n"
+"(írta: Elvish Pillager)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:160
 msgid "Talael Ryndoc"
-msgstr ""
+msgstr "Talael Ryndoc"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
+"Talael Ryndoc tábornok azért jött el erre a helyre, hogy párbajozzon Aethec "
+"Corryn főtábornokkal, de a két ember sosem lelt egymásra."
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:166
 msgid "Aethec Corryn"
-msgstr ""
+msgstr "Aethec Corryn"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
 msgid ""
@@ -341,10 +479,17 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
+"Ezek voltak az utolsó szavak, melyek Aethec Corryn főtábornok szájából "
+"elhangzottak: 'Talael Ryndoc! Most már elegem van a keresgélésedből! "
+"Visszamegyek Haldric Csarnokába és értesítem a bíróságot, hogy annyira gyáva "
+"voltál, hogy el sem mertél jönni a párbajra! Kegyvesztettséged még "
+"gyötrelmesebb lesz számodra, mint ha megöltelek volna!'\n"
+"\n"
+"Talán nem kellett volna olyan hangosan ordítania..."
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:174
 msgid "Rilhon"
-msgstr ""
+msgstr "Rilhon"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:177
 msgid ""
@@ -360,8 +505,22 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"Ez a bátor harcos, aki Rilhonként ismert a nagák köreiben, hallott a mesés "
+"kincsről, mely az itteni vízzel telt barlangok mélyén veszett el. Ez a kincs "
+"állítólag egy olyan dárda volt, mely hegyét Chak'kso Ney'yks, az Elsőszülött "
+"Sárkánygyík fogából faragták, miután Eloralduil, a tünde hős, legyőzte őt. A "
+"legenda szerint ez a fegyver valahol ennek a tónak a legalján pihent "
+"(Ruaskkolin-tó, mely az itt élő, széles körben ismert tengeri kígyó után "
+"kapta a nevét).\n"
+"Miután Rilhon felvértezte magát, hogy megküzdjön a kígyóval, két "
+"meglehetősen nagy meglepetéssel találta magát szembe. Az első egy kővé "
+"dermedt kígyó volt, aki minden kétséget kizáróan maga Ruaskkolin volt. A "
+"második pedig a nagyon-is-élő Chak'kso Ney'yks volt, aki vitathatatlanul "
+"rendelkezett az összes fogával.\n"
+"(írta: Paterson)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:197
+#, fuzzy
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -379,31 +538,44 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Hullámokon s sziklás csatornákon keresztül\n"
+"kék s fehér\n"
+"megragadta s ellökte a dagályt\n"
+"s megtanította a halakat hogyan beszéljenek a bolygón\n"
+"ezüst zöld\n"
+"mágiával\n"
+"futván lelkéből tengeri moszatok bőrébe s csigák házaiba\n"
+"egy csavar a farkán és kezein\n"
+"elküldte dalait hogy hegyes lábain fusson a sivatagok körül\n"
+"s most\n"
+"s most a legfurcsább szünet\n"
+"évekig s évekig\n"
+"nem mozdította szemeit\n"
+"\n"
+"(írta: MJQ)\n"
+"\n"
+"(fordította: Honorshark)"
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 msgid "2p - Cynsaun Battlefield"
-msgstr "2j - Cynsaun csatamezeje"
+msgstr "2j - Cynsaun Csatamezeje"
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
-#, fuzzy
 msgid " Recommended settings of 150 gold and 2 gold per village."
 msgstr ""
-"Egy kisméretű pálya 2-2 elleni játékokra. Ajánlott falvanként két aranyat "
-"beállítani."
+"Kezdéshez 150 arany, falvanként pedig 2 arany bevétel beállítása javasolt."
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
-#, fuzzy
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr ""
-"Sok felfedeznivaló vár a játékosokra ezen a hatalmas csatatéren, amit azok "
-"számára terveztek, akik szeretik a hősies, nagy horderejű párharcokat. Az "
-"ajánlott beállítások: 150 arany kezdéskor és egy arany falvanként."
+"Sok felfedeznivaló vár a játékosokra ezen a hatalmas csatatéren, melyet azok "
+"számára terveztek, akik szeretik a hősies, nagy horderejű párbajokat."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p - Dark Forecast (Survival)"
-msgstr ""
+msgstr "2j - Sötét jóslat (túlélőpálya)"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
 msgid ""
@@ -412,6 +584,10 @@ msgid ""
 "enemy waves.  During the course of gameplay, the terrain will change based "
 "on random weather effects."
 msgstr ""
+"A Sötét jóslat egy 1 vagy 2 játékosnak szánt, csapatban játszott "
+"túlélőpálya, melyen a véletlenszerűen születő, számítógép-vezérelt egységek "
+"ellen kell küzdeni. A győzelem eléréséhez túl kell élni a támadás összes "
+"hullámát. A játék alatt a terep a véletlenszerű időjárás miatt változik."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:472
 msgid ""
@@ -419,56 +595,61 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"A kegyelemért könyörgő jajkiáltások végül elhallgatnak, amint véráztatta "
+"pengédet kihúzod az utolsó lázadóból. A helyi népség többé már nem fog "
+"ellenállni. Uralmad végre biztos alapokon áll."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:833
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"E lények legutolsó, legerősebb túlélői nemsoká farkasszemet fognak nézni "
+"velünk. Úgy érzem, ha időben végezni tudunk velük, miénk lesz a győzelem. "
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1010
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "Sűrű havazás"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1024
 msgid "Snowfall"
-msgstr ""
+msgstr "Havazás"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1044
 msgid "Heavy Rains"
-msgstr ""
+msgstr "Heves esőzés"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1058
 msgid "Drought"
-msgstr ""
+msgstr "Aszály"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1066
 msgid "Clear Weather"
-msgstr ""
+msgstr "Tiszta idő"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1418
 msgid "Single player mode - uses the reduced strength spawns."
-msgstr ""
+msgstr "Egyjátékos mód - csökkentett erejű ellenfelek előhívása."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1421
 msgid "Two player mode - uses the full strength spawns."
-msgstr ""
+msgstr "Kétjátékos mód - teljes erejű ellenfelek előhívása."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1441
 msgid "Survive and defeat the waves of opposition."
-msgstr ""
+msgstr "Éld túl és győzd le a hullámokban érkező ellenséges támadásokat."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1443
 msgid "Defeat all waves"
-msgstr ""
+msgstr "Visszavered az összes támadáshullámot"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1447
 msgid "Lose all your team's leaders"
-msgstr ""
+msgstr "Elveszted a csapatod összes vezetőjét"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
 msgid "Dark Forecast - a random survival scenario"
-msgstr ""
+msgstr "Sötét jóslat - egy véletlenszerű túlélőpálya"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1479
 msgid ""
@@ -496,10 +677,33 @@ msgid ""
 "@Rhuvaen\n"
 "- WML implementation"
 msgstr ""
+"Célod, hogy túléld a hullámokban érkező ellenséges támadásokat, és hogy "
+"legyőzd a végső fő ellenséget.\n"
+"-------\n"
+"A támadáshullámok egységösszetétele véletlenszerűen alakul, és minden egyes "
+"alkalommal, amikor a Sötét jóslatot játszod, más és más lesz. \n"
+"\n"
+"\n"
+"A támadók feltűnhetnek a térkép északi, déli és nyugati szélén is, azonban "
+"legtöbbször nyugatról érkeznek. A hullámok valamennyire rendszeres "
+"időközönként jelennek meg.\n"
+"\n"
+"\n"
+"Az időjárás szintén véletlenszerűen alakul majd, ez pedig változtatja a "
+"térkép arculatát. \n"
+"\n"
+"\n"
+"A Sötét jóslatot készítette:\n"
+"\n"
+"@jb\n"
+"- pályaötlet, térképtervezés, támadáshullámok\n"
+"\n"
+"@Rhuvaen\n"
+"- WML kód megvalósítása "
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1483
 msgid "So this is the accursed valley - a land ours for the taking."
-msgstr ""
+msgstr "Tehát ez az elátkozott völgy - a föld, mely a miénk lehet."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1487
 msgid ""
@@ -507,24 +711,33 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
+"Úgy hírlik, hogy e vidék lakói ember és szörnyeteg valamiféle furcsa "
+"keverékei, és hogy területigényünk fogadtatása nem lesz barátságos. Föl kell "
+"készülnünk bármilyen meglepetésre."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1491
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr ""
+"Fedezzük hát fel, hogy mi fekszik a homályban, és véssük mindenkinek az "
+"eszébe, hogy ne merjen szembeszállni a követelésünkkel."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1528
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
+"Jaj! Ez meg hogy lehet? Ostoba barbárok győznek le! Isteneim megátkoztak "
+"engem..."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1542
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
+"Ellenséged üdvrivalgása az utolsó dolog, amit halálba szenderülvén "
+"hallasz... örömük nyers gyűlölettel tölti meg utolsó pillanatod."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1564
 msgid ""
@@ -532,20 +745,22 @@ msgid ""
 "ghostly wisps drain away your will, you realize that your time in this land "
 "is over."
 msgstr ""
+"Az ellenség üdvrivalgásban tör ki, amint sötét köd emelkedik fel a földből, "
+"és körülvesz téged. Ahogy kísérteties árnyak szívják ki életerődet, rájössz, "
+"hogy időd ezennel lejárt e földön."
 
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
 msgstr "2j - Onis odúja"
 
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where players must find the balance between force and subterfuge."
 msgstr ""
-"Veszély leselkedik minden kanyarulat mögött ezen a földalatti csatatéren. "
-"Egy párbaj-pálya, ahol az erő számít igazán. Ajánlott falvanként két aranyat "
-"beállítani."
+"Veszély leselkedik minden kanyarulat mögött e földalatti csatatéren. Ezen a "
+"párbajpályán az a legfontosabb, hogy a játékosok megtalálják az egyensúlyt a "
+"nyers erő és a megtévesztés között."
 
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
@@ -568,25 +783,20 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#, fuzzy
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
-"Egy kisméretű pálya 2-2 elleni játékokra. Ajánlott falvanként két aranyat "
-"beállítani."
+msgstr " Falvanként 2 arany bevétel beállítása javasolt."
 
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
-#, fuzzy
 msgid "2p - Fallenstar Lake"
-msgstr "2j - Meteor-tó"
+msgstr "2j - Hullócsillag-tó"
 
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
-#, fuzzy
 msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
-"Réges régen egy óriási meteorit esett le az egekből, meghagyva nyomát a "
-"fenyvesben. Ajánlott falvanként két aranyat beállítani."
+"Réges-régen egy óriási meteor hullott alá az egekből, meghagyva nyomát ezen "
+"a fenyvessel borított területen."
 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
@@ -605,7 +815,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Clash.cfg:40
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:20
 msgid "teamname^West"
-msgstr ""
+msgstr "teamname^Nyugat"
 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
@@ -623,7 +833,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Clash.cfg:51
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:31
 msgid "teamname^East"
-msgstr ""
+msgstr "teamname^Kelet"
 
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
@@ -631,81 +841,72 @@ msgstr "2j - Falvacskák"
 
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
-"A háború átalakítja a békés táj egyszerű földjeit és falvait egy finoman "
-"felparcellázott csatatérré. Ajánlott falvanként két aranyat beállítani."
+"A háborúskodás egy finoman felszabdalt csatatérré alakítja át a békés táj "
+"egyszerű tanyáit és falvait."
 
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
-msgstr "2j - Hornshark-sziget"
+msgstr "2j - Pörölycápa-sziget"
 
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
-"A játékosoknak meg kell találniuk az utat a szétszórt területeken, ezen a "
-"térképészetileg sűrűnek mondható szigeten. Ajánlott falvanként két aranyat "
-"beállítani."
+"A játékosoknak ezen a kusza területen kell tájékozódniuk, mely kicsi ugyan, "
+"de térképészetileg meglehetősen sűrű."
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
 msgstr "2j - Gyászos kövek deltavidéke"
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
-"Két játékos csap össze ezen a szakadozott vízparton, ahol rejtett barlangok "
-"és felszaggatott folyószakaszok is találhatóak. Ajánlott falvanként két "
-"aranyat beállítani."
+"Két hadsereg csap össze ezen a szétszabdalt vízparti tájon, ahol rejtett "
+"barlangok és egyenetlen folyószakaszok is találhatóak."
 
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
-msgstr "2j - Ezüstfő keresztút"
+msgstr "2j - Ezüstfő útkereszteződés"
 
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
-"A játékosoknak mindenféle területen át kell vágniuk a győzelemért ezen a "
-"sokarcú párbaj-pályán. Ajánlott falvanként két aranyat beállítani."
+"A játékosoknak az összes létező tereptípuson át kell vágniuk a győzelem "
+"eléréséhez ezen a sokarcú párbajpályán."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:20
-#, fuzzy
 msgid "statue"
-msgstr "Állapot"
+msgstr "szobor"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:21
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Ez egy kőből készült szobor."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:35
 msgid "2p - Sullas Ruins"
-msgstr "2j - Sullas-i romok"
+msgstr "2j - Sullas romjai"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
-"A tengerek elárasztották, a tél elemei szétzúzták, így már csak romok, víz "
-"és jég maradt a régvolt, titokzatos birodalom árnyékában. Ajánlott "
-"falvanként két aranyat beállítani."
+"A tengerek elárasztották, a tél elemei pedig szétmorzsolták, így már csak "
+"romok, víz és jég maradt a régvolt, egykor hatalmas birodalom árnyékában."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:76
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Sulla szobra"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:78
 msgid ""
@@ -713,53 +914,55 @@ msgid ""
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""
+"Ez Nagy Sullának a kőből faragott képmása, akit úgy is szoktak emlegetni, "
+"mint Sulla, a Becsületes, vagy Sulla, a Zsarnok, a Süllyedő Torony "
+"Császárnéja, a Gyalogló Gleccser Úrnője, Sulla, a Hamuhozó, Sulla, a Büszke "
+"és Sulla, az Igazságos."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Lhun-dup szobra"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Ez Lhun-dupnak, Sulla szolgálójának kőből faragott képmása."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Ri-nzen szobra"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Ez Ri-nzennek, Sulla szolgálójának kőből faragott képmása."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Ten-zin szobra"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Ez Ten-zinnek, Sulla szolgálójának kőből faragott képmása."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:93
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Lo-bsang szobra"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:94
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Ez Lo-bsangnak, Sulla szolgálójának kőből faragott képmása."
 
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
-#, fuzzy
 msgid "2p - The Freelands"
-msgstr "4j - A Vadságok földje"
+msgstr "2j - Szabad földek"
 
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "Ez egy rendkívül gyors mérkőzéshez való párbajpálya."
 
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
-#, fuzzy
 msgid "2p - Weldyn Channel"
-msgstr "2j - Roham"
+msgstr "2j - Weldyn-csatorna"
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:4
 msgid "2p - Wesbowl"
@@ -772,11 +975,12 @@ msgid ""
 "Wesbowl is played with blunt weapons, and healers are on hand, so when units "
 "are killed, they return to that player's end zone with an injury."
 msgstr ""
-"A Wesbowlingban a játékosnak labdáját a másik játékos területeinek a végére "
-"kell vinnie. Persze a másik játékos megtámadhatja az egységeid. A Wesbowling "
-"kis hatásfokú fegyverekkel játszható, és gyógyítók is rendelkezésre állnak, "
-"valamint amikor az egységek meghalnak, akkor visszatérnek a játékos "
-"területének széléhez egy kisebb sebesüléssel."
+"A Wesbowling lényege, hogy a játékos a saját labdáját a másik játékos "
+"területeinek túloldalára vigye. Persze a másik játékos megtámadhatja az "
+"ellenfele egységeit. A Wesbowlingban a fegyverek ereje tompított, és "
+"gyógyítók is rendelkezésre állnak, valamint ha az egységek meghalnak, akkor "
+"is visszatérnek a játékosok területeinek széléhez csupán kisebb sebeket "
+"viselve."
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:11
 msgid ""
@@ -790,26 +994,26 @@ msgid ""
 msgstr ""
 "\n"
 "Győzöl, ha:\n"
-"@Sikerül az egyik labdádat az ellenfeled területének a végére mozgatnod "
-"kevesebb idő alatt, mint őneki a saját labdáját a te területed szélére.\n"
+"@Többször sikerül bármelyik labdádat az ellenfeled területének túloldalára "
+"vinned, mint őneki a saját labdáját a te területed átellenes oldalára.\n"
 "Veszítesz, ha:\n"
-"#Az ellenfeled hamarabb eléri labdájával a területed végét, mint te a "
-"tiéddel az ő területének határát."
+"#Az ellenfeled többször éri el labdáival a területed túloldalát, mint te a "
+"tieiddel az ő területének átellenes oldalát."
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:181
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:427
 msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "A vörös csapat gólt szerez! Az állás $redscore-$bluescore"
+msgstr "A Vörös csapat pontot szerzett! A jelenlegi állás $redscore-$bluescore"
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:224
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:470
 msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "A kék csapat gólt szerez! Az állás $redscore-$bluescore"
+msgstr "A Kék csapat pontot szerzett! A jelenlegi állás $redscore-$bluescore"
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:307
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:553
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Leadjam a labdát neki: $passto.type ($xloc,$yloc)?"
+msgstr "Átpasszoljam a labdát neki: $passto.type ($xloc,$yloc)?"
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:309
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:555
@@ -823,11 +1027,11 @@ msgstr "Nem"
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:600
 msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "A kék csapat győzött! Végeredmény: $redscore-$bluescore"
+msgstr "A Kék csapat győzött! Végeredmény: $redscore-$bluescore"
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:613
 msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "A vörös csapat győzött! Végeredmény: $redscore-$bluescore"
+msgstr "A Vörös csapat győzött! Végeredmény: $redscore-$bluescore"
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:626
 msgid "Draw! Final score: $redscore-$bluescore"
@@ -835,58 +1039,53 @@ msgstr "Döntetlen! Végeredmény: $redscore-$bluescore"
 
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
-msgstr ""
+msgstr "3j - Alirok-mocsár"
 
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
-#, fuzzy
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr ""
-"Három játékos kerül szembe egymással ezen a víz által felszabdalt "
-"csatatéren. Ajánlott falvanként két aranyat beállítani."
+"Három játékos kerül szembe egymással ezen a víz által felszabdalt csatatéren."
 
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "3j - A Horatiak szigete"
 
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
-"A középen elhelyezkedő sziget feletti elenőrzés jelenti a győzelemhez a "
-"kulcsot ezen a 21x21 hatszög méretű, három játékosra tervezett, mindenki "
-"mindenki ellen pályán. Ajánlott falvanként két aranyat beállítani."
+"A középen elhelyezkedő sziget feletti ellenőrzés jelenti a győzelem kulcsát "
+"ezen a 21x21 hatszög méretű, három játékosra tervezett (mindenki mindenki "
+"ellen, MME) pályán."
 
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
 msgstr "3j - Morituri"
 
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr ""
-"Csak az egyik fél kerülhet ki győztesen ebből a szorosan közrezárt "
-"háromjátékos pályáról. Ajánlott falvanként két aranyat beállítani."
+"Csak egy játékos kerülhet ki győztesen erről a szorosan közrezárt "
+"háromjátékos pályáról."
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
-msgstr "4j - Kékvízű vidék"
+msgstr "4j - Kékvizű vidék"
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
-#, fuzzy
 msgid ""
 "Historians write that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
-"Azt mondják, hogy a Kékvízű vidéket már vagy hússzor elpusztították, majd "
-"újraépítették. Most, amikor újra seregek találkoznak a hagyi patakok és "
-"hófödte csúcsok közt, a helybéliek nehezen veszik ezt tudomásul. Ajánlott "
-"falvanként 2 arany beállítása."
+"A történészek úgy tudják, hogy Kékvizű vidéket már vagy hússzor "
+"elpusztították, majd újjáépítették. Most, amikor újra hadseregek találkoznak "
+"e kis tartomány hegyi patakjai és hófödte csúcsai közt, a helybéliek mintha "
+"már alig vennének tudomást erről."
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:20
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:53
@@ -901,7 +1100,7 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:40
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:62
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "teamname^1. csapat"
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:31
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:42
@@ -916,49 +1115,45 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:51
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:73
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "teamname^2. csapat"
 
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
 msgstr "4j - Várfoglalós sziget"
 
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
-"Két játékos csap össze ezen a szakadozott vízparton, ahol rejtett barlangok "
-"és felszaggatott folyószakaszok is találhatóak. Ajánlott falvanként két "
-"aranyat beállítani."
+msgstr "Ugrálj várról várra, miközben csatázol egy központi szigeten."
 
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p - Clash"
-msgstr "4j - Összezördülés"
+msgstr "4j - Összecsapás"
 
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "Egy kis térkép 2-2 elleni játékhoz."
 
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
-#, fuzzy
 msgid "4p - Hamlets"
-msgstr "2j - Falvacskák"
+msgstr "4j - Falvacskák"
 
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
-msgstr "4j - Isar keresztútja"
+msgstr "4j - Isar keresztje"
 
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
-"Egy nagyon szűkös 2-2 elleni pálya. A közeli szállások miatt minden hiba az "
-"egységek toborzásában vagy lépésében végzetes lehet. Ajánlott falvanként 75 "
-"arany beállítása, és az 1, 4 a 2, 3 játékos ellen játszott (északkelet "
-"kontra délnyugat) játék. A pályán 20 falu található."
+"Egy nagyon szűkös 2-2 elleni pálya. A rendkívüli közelségben folyó harcok "
+"miatt az egységek ügyes forgatása (a sérülteket a hátország falvaiba, míg az "
+"ép egységeket a frontra küldve) és a mozgások megtervezése döntő fontosságú. "
+"A csapatbeállítások a következők: az 1-es és a 4-es játékos kontra a 2-es és "
+"a 3-as játékos (északkelet délnyugat ellen). A pályán 20 falu található.\n"
+"Kezdéshez 75 arany beállítása javasolt."
 
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:56
@@ -971,7 +1166,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:58
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:20
 msgid "teamname^South-West"
-msgstr ""
+msgstr "teamname^Dél-Nyugat"
 
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:44
@@ -982,30 +1177,27 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:34
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:44
 msgid "teamname^North-East"
-msgstr ""
+msgstr "teamname^Észak-Kelet"
 
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p - King of the Hill"
-msgstr "4j - A domb királya"
+msgstr "4j - A Domb Királya"
 
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
-"Döntő jelentőségű ellenőrzés alatt tartani a középen elhelyezkedő várat és "
-"környékét ezen a 36x36 hatszög méretű, négyátékos, mindenki mindenki ellen "
-"pályán. Csapatokkal is élvezetes játszani. Ajánlott falvanként két aranyat "
-"beállítani."
+"Létfontosságú a középen elhelyezkedő várat és környékét ellenőrzés alatt "
+"tartani ezen a 36x36 hatszög méretű, négy játékosnak (mindenki mindenki "
+"ellen, MME) szánt pályán. Remekül működik 2 fős csapatokkal is. A térképen "
+"36 falu található."
 
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
-#, fuzzy
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr ""
-"Egy kisméretű pálya 2-2 elleni játékokra. Ajánlott falvanként két aranyat "
-"beállítani."
+" Kezdéshez 150 arany, falvanként pedig 2 arany bevétel beállítása javasolt."
 
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:42
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:38
@@ -1016,14 +1208,14 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:48
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
 msgid "teamname^South-East"
-msgstr ""
+msgstr "teamname^Dél-Kelet"
 
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:26
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:59
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
 msgid "teamname^North-West"
-msgstr ""
+msgstr "teamname^Észak-Nyugat"
 
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 msgid "4p - Lagoon"
@@ -1032,114 +1224,101 @@ msgstr "4j - Lagúna"
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
-#, fuzzy
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
-"Egy kisméretű pálya 2-2 elleni játékokra. Ajánlott falvanként két aranyat "
-"beállítani."
+msgstr " Falvanként 1 arany bevétel beállítása javasolt."
 
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
-#, fuzzy
 msgid "Four factions contend for dominance over this watery settlement."
-msgstr ""
-"Négy fél verseng a vízi település feletti uralomért. Ajánlott falvanként egy "
-"aranyat beállítani."
+msgstr "Négy játékos verseng e vízi település feletti uralomért."
 
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p - Loris River"
 msgstr "4j - Loris-folyó"
 
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
-"Egy 25x25 méretű, 2-2 elleni pálya két pár várral, amelyek egy folyó két "
-"oldaláról néznek egymással farkasszemet.  Ajánlott falvanként 2 arany "
-"beállítása, és az 1, 3 a 2, 4 játékos ellen játszott játék. A pályán 28 falu "
-"található."
+"Egy 25x25 hatszög méretű, 2-2 elleni pálya, melyen a térkép sarkaiból 2-2 "
+"várkastély néz farkasszemet egymással a folyó fölött. A csapatbeállítások a "
+"következők: az 1-es és a 4-es játékos kontra a 2-es és a 3-as játékos. A "
+"térképen 28 falu található."
 
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
 msgstr "4j - Morituri"
 
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
-#, fuzzy
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
-"Ki fog győztesen távozni erről a veszélyekkel teli csatatérről? Ajánlott "
-"falvanként két aranyat beállítani."
+msgstr "Ki fog győztesen távozni erről a veszélyekkel teli csatatérről?"
 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
 msgstr "4j - A tőrök útja"
 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-#, fuzzy
 msgid " Recommended setting of 2 gold per village, 28 villages."
 msgstr ""
-"Egy kisméretű pálya 2-2 elleni játékokra. Ajánlott falvanként két aranyat "
-"beállítani."
+"Falvanként 2 arany bevétel beállítása javasolt. A térképen 28 falu található."
 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
-"35x27 méretű 2-2 elleni pálya, öt különböző lehetőséggel az összecsapásra.A "
-"kelet-nyugati irányba kiegyensúlyozott (1&3 kontra 2&4), de bármely "
-"csapattal jól működik, akár mindenki mindenki ellen is. Két arany "
-"falvanként, 28 falu."
+"Egy 35x27 hatszög méretű, 2-2 elleni pálya, melyen öt különböző útvonalon "
+"keresztül lehet egymás torkának esni. A térkép a kelet kontra nyugat (az 1-"
+"es és a 4-es játékos kontra a 2-es és a 3-as játékos) játék esetén a "
+"legkiegyensúlyozottabb, de bármilyen csapatbeállítással, vagy mindenki "
+"mindenki ellen (MME) is remekül működik."
 
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
 msgstr "4j - Ostromlott várak"
 
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
-"Egy 25x25 méretű, 2-2 elleni pálya két pár várral, amelyek egy folyó két "
-"oldaláról néznek egymással farkasszemet.  Ajánlott falvanként 2 arany "
-"beállítása, és az 1, 3 a 2, 4 játékos ellen játszott játék. A pályán 28 falu "
-"található."
+"Egy 40x30 hatszög méretű, négy játékosnak szánt pálya, melyen négy hatalmas "
+"várkastély néz farkasszemet egymással két folyó megközelítőleg T alakú "
+"találkozásánál. 2-2 ellen, és mindenki mindenki ellen (MME) játszva is "
+"élvezetes. A térképen körülbelül 45 falu található."
 
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:26
 msgid "4p - The Wilderlands"
 msgstr "4j - A Vadságok földje"
 
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
-#, fuzzy
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
-"Hatalmas, vad, műveletlen vadon. Területét kis erdők, barlangok, folyók, "
-"valamint régi erődítmények romjai pettyezik. Ajánlott falvanként egy aranyat "
-"beállítani."
+"Hatalmas, vad, műveletlen vadon, mely területét kis erdők, barlangok, "
+"folyók, valamint régi erődítmények romjai tarkítják."
 
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:80
-#, fuzzy
 msgid "Monsters"
-msgstr "lép"
+msgstr "Szörnyetegek"
 
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p - Xanthe Chaos"
-msgstr ""
+msgstr "4j - Xanthe káosz"
 
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
+"Egy 24x28 hatszög méretű, 2-2 elleni pálya, melyen kisegítő várak is "
+"fellelhetők. A térkép közepén nem ritka a rendkívül zavaros, nagy horderejű "
+"csatározás."
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p - Auction-X"
-msgstr ""
+msgstr "5j - X-árverés"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
 msgid ""
@@ -1148,26 +1327,34 @@ msgid ""
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
+"4 játékos veszi körül a középpontban lévő várat. Vagy az MI-vel lehet "
+"harcolni a túlélésért, vagy mindenki játszhat mindenki ellen (MME), vagy a "
+"központi játékos szállhat szembe egyedül az őt körbevevő 4 játékossal. Négy "
+"egy ellen, vagy MME játék esetén a középső játékosnak több aranyra lesz "
+"szüksége, mint társainak. Hogy a középső játékos mennyi aranyat is kapjon, "
+"azt legcélszerűbb egy árverés keretein belül eldönteni, ahol a "
+"LEGALACSONYABB licit lesz érvényes. Mivel a térkép igen kicsi, a többi "
+"játékosnak 75 aranyat érdemes beállítani kezdéshez."
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 msgid "teamname^Northeast"
-msgstr ""
+msgstr "teamname^Északkelet"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 msgid "teamname^Southeast"
-msgstr ""
+msgstr "teamname^Délkelet"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 msgid "teamname^Southwest"
-msgstr ""
+msgstr "teamname^Délnyugat"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
-msgstr ""
+msgstr "teamname^Északnyugat"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
 msgid "teamname^Center"
-msgstr ""
+msgstr "teamname^Közép"
 
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
@@ -1175,36 +1362,34 @@ msgstr "5j - A félelem erdeje"
 
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr "Ezen a sokszínű területen öt hadsereg küzd a hatalomért."
+msgstr ""
+"Öt hadsereg küzd meg egymással a hatalomért ezen az ezerarcú területen."
 
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:5
 msgid "6p - Amohsad Caldera"
 msgstr "6j - Amohsad Caldera"
 
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head."
 msgstr ""
-"Csak egy igazi stratéga kerülhet ki győztesen ebből a halálos és szűk "
-"csatatérről, ahol hat összezárt sereg küzd meg egymással. Ajánlott "
-"falvanként két aranyat beállítani."
+"Csak egy igazi stratéga kerülhet ki győztesen erről a halálos és szűk "
+"csatatérről, ahol hat összezárt sereg küzd meg egymással."
 
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
 msgstr "6j - Keresztes lovagok mezeje"
 
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
-#, fuzzy
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
 "through the mountains, trees and rivers."
 msgstr ""
-"A csatára gyülekező hadak lármája hallatszik ezen a sok háborút látott "
+"A csatára gyülekező hadak lármája hallatszik újra ezen a sok háborút látott "
 "csatamezőn, ahol bátor harcosok ezreinek szelleme lebeg láthatatlanul a "
-"hegyek, fák és folyók felett. Ajánlott falvanként egy aranyat beállítani."
+"hegyek, fák és folyók felett."
 
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
@@ -1212,67 +1397,65 @@ msgstr "6j - Hatszögsüti"
 
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr "2 kontra 2 vagy 3 kontra 3 csapatjátékokra."
+msgstr "Ez egy 2-2 ellen, vagy 3-3 ellen, csapatban játszható pálya."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:200
-#, fuzzy
 msgid "Turn 2: Loyalists"
-msgstr "Hűségesek"
+msgstr "2. kör: Hűségesek"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:201
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "5. kör: Knalgaiak"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
-#, fuzzy
 msgid "Turn 8: Rebels"
-msgstr "Lázadók"
+msgstr "8. kör: Lázadók"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:203
-#, fuzzy
 msgid "Turn 11: Northerners"
-msgstr "Északiak"
+msgstr "11. kör: Északiak"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:204
-#, fuzzy
 msgid "Turn 14: Drakes"
-msgstr "Hurrikánperzsekény"
+msgstr "14. kör: Perzsekények"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:205
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "17. kör: Élőholtak"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:206
 msgid "Tower of Doom"
-msgstr ""
+msgstr "A Végzet tornya"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6j -Csapatos túlélés"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
-msgstr ""
+msgstr "Ez egy olyan pálya, ahol a célkitűzés a lehető legtovább való túlélés."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "Maradj életben a 32. kör végéig."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
+"Tipp: Sokat segít, ha kifigyeled, hogy a térkép mely pontjairól mikor milyen "
+"ellenfelek érkeznek."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
 msgid "Survive all enemy attacks."
-msgstr ""
+msgstr "Túléled az összes támadást."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 msgid "Death of your team leaders."
-msgstr ""
+msgstr "Csapatod összes vezetője elesik."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid "Faery"
-msgstr ""
+msgstr "Tündér"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid ""
@@ -1280,17 +1463,22 @@ msgid ""
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"Gratulálok, hogy túlélted azt a pályát, aminek túlélése sok ember szerint "
+"lehetetlen. Őszintén szólva ötletem sincs, hogyan csináltad, ezért légy "
+"szíves küldd el a visszajátszást drótpostán erre a címre: roze@roze.mine.nu. "
+"Köszönöm!"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
-#, fuzzy
 msgid "Death"
-msgstr "Alapértelmezés"
+msgstr "Halál"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
+"Ezt a játszmát most elvesztetted, de ne félj. Mindig próbálkozhatsz újra. És "
+"újra. És újra. *Muahahaha*"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
 msgid "Attacker"
@@ -1307,94 +1495,96 @@ msgstr "Védekező"
 
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6j - A manzivai csapdák"
 
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:9
-#, fuzzy
 msgid ""
 "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
-"Egy nagyon szűkös 2-2 elleni pálya. A közeli szállások miatt minden hiba az "
-"egységek toborzásában vagy lépésében végzetes lehet. Ajánlott falvanként 75 "
-"arany beállítása, és az 1, 4 a 2, 3 játékos ellen játszott (északkelet "
-"kontra délnyugat) játék. A pályán 20 falu található."
+"Ez egy 40X20 hatszög méretű, 3-3 elleni pálya. A manzivai csapdák széles "
+"körben úgy ismertek, mint egy olyan bonyolult, zavarba ejtő vidék, ahol az "
+"ember könnyen otthagyhatja a fogát, ha nem a megfelelő helyen van, vagy "
+"túlzott mértékben terjeszkedik. A csapatbeállítások a következők: az 145-ös "
+"játékosok a 236-os játékosok ellen (kelet kontra nyugat). Kezdéshez 100 "
+"arany beállítása javasolt. A térképen 33 falu található."
 
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
-msgstr "6j - Waterloo-i naplemente"
+msgstr "6j - Waterlooi naplemente"
 
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
-#, fuzzy
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
 "avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
-"Egy 40x40-es méretű 3 kontra 3 pálya. A szövetségeknek rugalmasan kell "
-"működniük, kölünben egyiküket elsöpörheti a túlerővel érkező támadás. "
-"Ajánlott falvanként 150 arany beállítása, és az 1,4,5 a 2,3,6 játékos ellen "
-"játszott (észak kontra dél) játék, de az 1,4,6 és az 1,3,6 is jó csapatot "
-"alkothat. A pályán 44 falu található."
+"Ez egy 40x40 hatszög méretű, 3-3 elleni pálya. A szövetségeknek rugalmasan "
+"kell működniük, különben egyiküket elsöpörheti a túlerővel érkező támadás. "
+"Kezdéshez 150 arany beállítása javasolt. A csapatbeállítások a következők: "
+"az 1,4,5-ös játékosok a 2,3,6-os játékosok ellen (észak kontra dél), de az "
+"1,4,6-os, vagy az 1,3,6-os játékosok is jó csapatot alkothatnak. A pályán 44 "
+"falu található."
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
-#, fuzzy
 msgid "8p - Mokena Prairie"
-msgstr "8j - Morituri"
+msgstr "8j - Mokena préri"
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
+"Ez a 8 játékosnak szánt pálya a Morituri ötlete alapján készült. Lenyűgöző "
+"horderejű csaták alakulhatnak ki, melyek megkövetelik a két csapattól, hogy "
+"mind a támadást, mind a védekezést szorosan összehangolják."
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:18
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:40
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:62
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:95
 msgid "teamname^east"
-msgstr ""
+msgstr "teamname^kelet"
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:29
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:51
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:73
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:84
 msgid "teamname^west"
-msgstr ""
+msgstr "teamname^nyugat"
 
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
 msgstr "8j - Morituri"
 
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
 msgstr ""
-"A csapatjáték és a taktika kulcsfontosságú lehet ezen a rendhagyó "
-"csatatéren, ahol nyolc összezárt sereg küzd meg egymással. Ajánlott "
-"falvanként két aranyat beállítani."
+"A csapatjáték és a taktika kulcsfontosságú ezen a rendhagyó csatatéren, ahol "
+"nyolc összezárt sereg küzd egymással a legvégsőkig."
 
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
+#, fuzzy
 msgid "9p - Merkwuerdigliebe"
 msgstr "9j - Merkwuerdigliebe"
 
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
-#, fuzzy
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
 "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
 "vs. southeast vs. southwest). There are very few villages per player, so 3 "
 "gold per villages is recommended."
 msgstr ""
-"Egy nagyon szűkös 3-3-3 elleni pálya. Egy 60 másodperces időzítő segítheti "
-"ilyen sok játékos játékát. Ajánlott falvanként 3 arany beállítása, és az "
-"1,5,9 a 2,6,7 a 3,4,8 játékos ellen játszott (észak kontra délkelet kontra "
-"délnyugat) játék. A pályán elég kevés falvat találhatunk."
+"Ez egy nagyon szűkös, 3-3-3 elleni pálya. Játékosonként 60 másodperces "
+"időkorlát használata javasolt. A csapatbeállítások a következők: az 1,5,9-es "
+"játékosok kontra a 2,6,7-es játékosok kontra a 3,4,8-as játékosok (észak "
+"kontra délkelet kontra délnyugat). A pályán meglehetősen kevés falu "
+"található, ezért falvanként 3 arany bevétel beállítása javasolt."
 
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
@@ -1406,9 +1596,9 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
-"Egy véletlenszerű pálya. Megjegyzendő, hogy a véletlenszerűen generált "
-"pályák gyakran kiegyenlítetlenek, de ha időd engedi, akkor újragenerálhatod "
-"őket, míg a számodra megfelelőt kapsz."
+"Ez egy véletlenszerű pálya. Megjegyzendő, hogy a véletlenszerűen generált "
+"pályák gyakran kiegyensúlyozatlanok, de ha időd engedi, akkor "
+"újragenerálhatod őket, míg egy számodra megfelelő térképet nem kapsz."
 
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
@@ -1421,9 +1611,10 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Egy véletlenszerű pálya, elsődlegesen homokos területekkel. Megjegyzendő, "
-"hogy a véletlenszerűen generált pályák gyakran kiegyenlítetlenek, de ha időd "
-"engedi, akkor újragenerálhatod őket, míg a számodra megfelelőt kapsz."
+"Ez egy véletlenszerű pálya főként sivatagos területekkel. Megjegyzendő, hogy "
+"a véletlenszerűen generált pályák gyakran kiegyensúlyozatlanok, de ha időd "
+"engedi, akkor újragenerálhatod őket, míg egy számodra megfelelő térképet nem "
+"kapsz."
 
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
@@ -1436,9 +1627,10 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Egy véletlenszerű pálya, elsődlegesen mocsarakkal. Megjegyzendő, hogy a "
-"véletlenszerűen generált pályák gyakran kiegyenlítetlenek, de ha időd "
-"engedi, akkor újragenerálhatod őket, míg a számodra megfelelőt kapsz."
+"Ez egy véletlenszerű pálya főként mocsaras területekkel. Megjegyzendő, hogy "
+"a véletlenszerűen generált pályák gyakran kiegyensúlyozatlanok, de ha időd "
+"engedi, akkor újragenerálhatod őket, míg egy számodra megfelelő térképet nem "
+"kapsz."
 
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
@@ -1451,49 +1643,43 @@ msgid ""
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
-"Egy véletlenszerű pálya egy télből tavaszba tartó átmenettel, főleg havas "
-"területekkel. Megjegyzendő, hogy a véletlenszerűen generált pályák gyakran "
-"kiegyenlítetlenek, de ha időd engedi, akkor újragenerálhatod őket, míg a "
-"számodra megfelelőt kapsz."
+"Ez egy véletlenszerű pálya, mely a tavasz hajnalán készült, főleg havas "
+"területek találhatók rajta. Megjegyzendő, hogy a véletlenszerűen generált "
+"pályák gyakran kiegyensúlyozatlanok, de ha időd engedi, akkor "
+"újragenerálhatod őket, míg egy számodra megfelelő térképet nem kapsz."
 
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid "Wesnoth Benchmark: AI"
-msgstr "Wesnoth teljesítmény mérés: MI"
+msgstr "Wesnoth teljesítménymérő: MI"
 
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
-"Egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --nogui --no-delay --"
-"multiplayer --scenario=wesbench_ai --exit-at-end."
+"Ez egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --nogui --no-"
+"delay --multiplayer --scenario=wesbench_ai --exit-at-end."
 
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr "Wesnoth teljesítmény mérés: Görgetés"
+msgstr "Wesnoth teljesítménymérő: Görgetés"
 
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
-"Egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --no-delay --"
+"Ez egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --no-delay --"
 "multiplayer --scenario=wesbench_scroll --exit-at-end."
 
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "Wesnoth teljesítmény mérés: Felderítés"
+msgstr "Wesnoth teljesítménymérő: Felderítés"
 
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
-"Egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --no-delay --"
+"Ez egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --no-delay --"
 "multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "2p - Blitz"
-#~ msgstr "2j - Lerohanás"
-
-#~ msgid "3p - Triple Blitz"
-#~ msgstr "3j - Tripla lerohanás"
