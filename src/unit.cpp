@@ -51,6 +51,7 @@
 #define DBG_UT LOG_STREAM(debug, engine)
 #define LOG_UT LOG_STREAM(info, engine)
 #define ERR_UT LOG_STREAM(err, engine)
+#define ERR_CONFIG LOG_STREAM(err, config)
 
 namespace {
 	const std::string ModificationTypes[] = { "advance", "trait", "object" };
@@ -2084,7 +2085,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 
 	if(defense != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
+			ERR_CONFIG << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 			return 100;
 		}
@@ -2096,6 +2097,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 		}
 	}
 	if(res <= 0) {
+		ERR_CONFIG << "Defence '" << res << "' is '<= 0' reset to 50.\n";
 		res = 50;
 	}
 
