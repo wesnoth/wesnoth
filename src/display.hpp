@@ -445,7 +445,10 @@ protected:
 	//! If needed in WML use the name and map that to the enum value.
 	enum tdrawing_layer{ 
 		//LAYER_TERRAIN_BG,        //! Sample for terrain drawn behind a unit.
-		//LAYER_UNIT,              //! Sample for the layer to draw a unit on.
+		//LAYER_UNIT_BG            //! Used for the ellipse behind the unit.
+		//LAYER_UNIT_FIRST,        //! Reserve layeres to be selected for WML.
+		//LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
+		//LAYER_UNIT_FG,           //! Used for the ellipse in front of the unit.
 		//LAYER_TERRAIN_FG,        //! Sample for terrain to draw in front of a unit.
 		LAYER_LINGER_OVERLAY,      //! The overlay used for the linger mode.
 		
