@@ -36,9 +36,9 @@ my $source = 1;
 # If translating, and not from the source, remove the comment on the following line
 #use Locale::Maketext::Gettext;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
-my $images = 1;
+my $images = 0;
 # This option will determine if the html report on made animations is generated
-my $animations = 1;
+my $animations = 0;
 # This is the version number that will appear on the unit trees
 my $version = 'trunk';
 # These option will try to process the user made Eras
@@ -828,7 +828,7 @@ sub TranslateUnits {
 	}
 
 	foreach $country (@countries) {
-		my ($flag, $base, $unit_base, %dict);
+		my ($flag, $base, $unit_base, %dict, %unit_desc_tr);
 		$country =~ s(.*\/)(); # Take only the country
 		$country =~ s(.po$)(); # If it is the source, we need to stript also the extension
 		unless (-e "$html_dir/$country") {mkdir "$html_dir/$country" or die "$country directory cannot be created: $!\n";};
@@ -856,7 +856,7 @@ sub TranslateUnits {
 					$flag = 0;
 					$desc =~ s/"//g;
 					$desc =~ s/(\\n)+/<br>/g;
-					$unit_desc{$unit_file} = $desc if length($desc)>50;
+					$unit_desc_tr{$unit_file} = $desc if length($desc)>50;
 					$desc='';
 				}
 
@@ -913,7 +913,13 @@ sub TranslateUnits {
 						$line =~ s/>([^<]+)</>$dict{$1}</;
 					}
 					# Descriptions
-					$line = '<p style="font-size: smaller">' . $unit_desc{$unit_id_to_file{$id}} . "</p>\n" if $line =~ (/smaller">[^<]/);
+					if ($line =~ /smaller">[^<]/) {
+						if ($unit_desc_tr{$unit_id_to_file{$id}}) {
+							$line = '<p style="font-size: smaller">' . $unit_desc_tr{$unit_id_to_file{$id}} . "</p>\n";
+						} else {
+							$line = '<p style="font-size: smaller">' . $unit_desc{$unit_id_to_file{$id}} . "</p>\n";
+						}
+					}
 				
 					$line =~ s/<!-- -->//g; # Remove comments
 				}
