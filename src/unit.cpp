@@ -48,6 +48,7 @@
 #include <sstream>
 #include <iterator>
 
+#define DBG_UT LOG_STREAM(debug, engine)
 #define LOG_UT LOG_STREAM(info, engine)
 #define ERR_UT LOG_STREAM(err, engine)
 
@@ -3069,7 +3070,7 @@ std::string get_checksum(const unit& u) {
 			wcfg.add_child(child_keys[i], **c);
 		}
 	}
-	LOG_UT << wcfg;
+	DBG_UT << wcfg;
  
 	return wcfg.hash();	
 		
