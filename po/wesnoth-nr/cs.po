@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:38+0100\n"
-"PO-Revision-Date: 2008-02-23 15:24+0100\n"
+"PO-Revision-Date: 2008-02-26 22:57+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,6 @@ msgid "(Nightmare)"
 msgstr "(nehratelná)"
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:21
-#, fuzzy
 msgid ""
 "For the people of Dwarven Doors the choice was stark: either drudge as "
 "downtrodden slaves for the orcs until the end of their brief and miserable "
@@ -78,7 +77,7 @@ msgstr ""
 "Lid od Trpasličích dveří měl na výběr ze dvou trpkých možností: buď dřít "
 "jako utlačovaní otroci pro skřety až do konce jejich krátkých a neradostných "
 "životů, nebo riskovat vše pro svobodu a povstat proti jejich krutým vládcům. "
-"Nic nevěděli o tom že jejich boj se stane počátkem velkých činů, které buď "
+"Netušili však, že se jejich boj stane počátkem velkých činů, které buď "
 "obnoví Severní kraje v jejich bývalé slávě, anebo je navždy odsoudí ke "
 "krvavému chaosu.\n"
 "\n"
@@ -225,7 +224,6 @@ msgstr ""
 "jej spatřili."
 
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:37
-#, fuzzy
 msgid ""
 "He came charging out of the woods, his cape streaming in the breeze, his "
 "sword flashing quicker than thought, and all around him, the hated orcs "
@@ -337,7 +335,7 @@ msgstr "Garrugch"
 
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:126
 msgid "Defeat enemy leaders"
-msgstr "Poraž nepřátelské vůdce"
+msgstr "Poraz nepřátelské vůdce"
 
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:783
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:477
@@ -456,10 +454,12 @@ msgstr "Nikdy! To raději zemřu!"
 msgid "Then it's time to fight!"
 msgstr "Pak nastal čas bojovat!"
 
+# Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:209
 msgid "You clod of dung! How dare you step onto my land!"
 msgstr "Ty zmetku! Jak se opovažuješ vstupovat na mou zem?"
 
+# Garruch (skřet č.2)
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:213
 msgid ""
 "You puny weakling, this land now belongs to my master! Surrender now and he "
@@ -708,7 +708,6 @@ msgid "Find the Dwarves"
 msgstr "Nalezni trpaslíky"
 
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:244
-#, fuzzy
 msgid "Clear the Caves"
 msgstr "Vyčisti doly"
 
@@ -2298,9 +2297,8 @@ msgid "Sea Serpent"
 msgstr "Mořský had"
 
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1064
-#, fuzzy
 msgid "ROOOAAARRR!"
-msgstr "ROOOAAARRR!"
+msgstr "VRRRRR!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1069
 msgid "Ahhhhh!"
@@ -3079,9 +3077,8 @@ msgid " *rumble*"
 msgstr "TŘESK!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2870
-#, fuzzy
 msgid "Perhaps I spoke too soon..."
-msgstr "Jejda, tak asi ne."
+msgstr "Jejda... co se děje?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2878
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2980
@@ -3402,7 +3399,7 @@ msgstr ""
 
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:46
 msgid "It is well, Hamel. You our people prosper."
-msgstr ""
+msgstr "Vypadá to dobře, Hamele. Tvůj lid prospívá."
 
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:51
 msgid ""
@@ -3964,7 +3961,6 @@ msgid "What the... everybody get out! The roof of the cave is collapsing!"
 msgstr "Co... všichni pryč! Strop jeskyně se zřítí!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:4
-#, fuzzy
 msgid "Settling Disputes"
 msgstr "Usmiřování"
 
@@ -4357,7 +4353,6 @@ msgstr "Teď nemám čas, Otče. Jsem poněkud zaneprázdněn."
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:526
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:632
-#, fuzzy
 msgid "Hang on a sec, Ro'Sothian, you don't want to kill him."
 msgstr "Počkej, Ro'Sathiane, přece ho nezabiješ."
 
@@ -4519,13 +4514,12 @@ msgid "BROTHER! HELP ME!"
 msgstr "BRATŘE! POMOC!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:755
-#, fuzzy
 msgid ""
 " *booming voice coming from all directions* SO YOU MAGES HAVE THE AUDACITY "
 "TO ATTACK MY BROTHER! YOU SHALL DIE FOR YOUR FOLLY!"
 msgstr ""
 " *strašlivý hlas ze všech stran* TAKŽE VY SI TROUFÁTE ÚTOČIT NA MÉHO BRATRA? "
-"ZEMŘETE, MÁGOVÉ!"
+"ZEMŘETE, POMATENÍ MÁGOVÉ!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:760
 msgid ""
@@ -4620,14 +4614,14 @@ msgid "Well... first why don't you tell us what you want?"
 msgstr "No... co vlastně chceš ty?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:951
-#, fuzzy
 msgid ""
 "What do I want? I'll tell you what I want! I want the stinking carcasses of "
 "you, all your henchmen and those dwarvish vermin off of my land! And STAY "
 "off!"
 msgstr ""
 "Já? Co chci? Hned ti to povím! Chcu vaše smaradlavé mrtvoly, všech vašich "
-"poskoků a hlavně těch trpasličích krys pryč! A aby to tak zůstalo!"
+"poskoků a hlavně těch trpasličích krys, a aby byly pryč z mé země! A aby to "
+"tak zůstalo!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:956
 msgid "So basically, you want to be left alone in peace. Right?"
@@ -4675,7 +4669,6 @@ msgstr ""
 "bez vaší pomoci. Přidáte se k nám?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:986
-#, fuzzy
 msgid ""
 "Think of it, Ro'Arthian, it is a fair bargain. If you don't agree to "
 "Tallin's proposal, the endless war you two wage with the dwarves will never "
@@ -4685,7 +4678,7 @@ msgstr ""
 "Zamysli se nad tím, Ro'Arthiane. Je to výhodný návrh. Pokud nebudeš "
 "souhlasit s Tallinovým návrhem, vaše nekonečná válka s trpaslíky nikdy "
 "nedojde konce. Strašíte s bratrem v těchto horách již příliš dlouho. Je "
-"nejvyšší čas aby to přestalo."
+"nejvyšší čas aby to přestalo a měli jste pokoj."
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:991
 msgid "Hrmph. What do you think, brother?"
@@ -4741,7 +4734,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:796
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:1039
 msgid " *snicker*"
-msgstr " *chichi*"
+msgstr " *cheche*"
 
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:1044
 msgid ""
@@ -5513,7 +5506,6 @@ msgstr ""
 "jeho vůli! I když jsou tvá slova laskavá, nezbavují mne doopravdy viny."
 
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:74
-#, fuzzy
 msgid ""
 "Abhai: Whether or not you are at fault is often impossible for men like us "
 "to judge. Sometimes you think you are at fault while you actually are not, "
@@ -5522,8 +5514,9 @@ msgid ""
 "beyond the shadow of a doubt."
 msgstr ""
 "Abhai: Zda je to tvá vina či ne nedokáží rozsoudit pouzí smrtelníci. Jejich "
-"vnímání reality není prosto omylů. Ale je tu možnost, jak zjistit pravdu s "
-"konečnou jistotou."
+"vnímání reality není prosto omylů. Někdy hledají chyby tam, kde nejsou, a "
+"jindy zase přecházejí zlé činy jen tak. Ale je tu možnost, jak zjistit "
+"pravdu s konečnou jistotou."
 
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:79
 msgid "How is that?"
@@ -5722,9 +5715,8 @@ msgid "Giant Spider"
 msgstr "Obří pavouk"
 
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:560
-#, fuzzy
 msgid "HISSSSSS"
-msgstr "SSSSSSSS"
+msgstr "SSSSSSSS!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:580
 msgid ""
@@ -5884,15 +5876,14 @@ msgid ""
 msgstr "Určitě máš pravdu, cítím že Hůl už je velmi blízko."
 
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:885
-#, fuzzy
 msgid ""
 "We have broken into the drake nest. Although we must fight our way through, "
 "let us avoid the side passages where I am sure the hatchlings are raised. "
 "Destroying them would simply be needless killing."
 msgstr ""
 "Vpadli jsme do hnízdiště drakonidů. I když se budeme muset probojovat skrz, "
-"raději se vyhněme bočním průchodům kde zřejmě ukrývají ???. Došlo by k "
-"dalšímu zbytečnému zabíjení."
+"raději se vyhněme bočním průchodům kde zřejmě ukrývají nedávno vylíhlá "
+"mláďata. Došlo by k dalšímu zbytečnému zabíjení."
 
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:899
 msgid ""
@@ -5962,7 +5953,6 @@ msgid ""
 msgstr "Blázni! Nemůžete snad do zemí mrtvých, že se cpete sem?!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:1007
-#, fuzzy
 msgid ""
 "We do not wish to fight you, Great One, we simply seek the Rod of Justice - "
 "which we believe is in your possession."
@@ -6058,7 +6048,6 @@ msgid "You mean Malifor?"
 msgstr "Myslíš Malifora?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:189
-#, fuzzy
 msgid ""
 "None other. I was his prisoner for many years until these brave people "
 "rescued me. It being far too dangerous to travel back to the elvish forests "
@@ -6368,12 +6357,13 @@ msgstr ""
 "Troll? Kde se berou tady, tak blízko u Knalgy, trollové? Něco se děje, "
 "rychle!"
 
+# Scénář
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:4
+#, fuzzy
 msgid "Judgement"
-msgstr ""
+msgstr "Rozsouzení"
 
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:13
-#, fuzzy
 msgid ""
 "Driven by an overwhelming need to be released from his torment, Tallin "
 "approached the Rod of Justice where it lay amidst the Dragon's hoarded "
@@ -6389,7 +6379,8 @@ msgstr ""
 "odhodlat vzít ji do třesoucích se rukou. Abhai tedy postoupil vpřed - jeho "
 "přízračný tvar překročil, pokud se to tak dá nazvat, hromady lupu a mrtvoly "
 "nepřátel - a odvážně pozvedl Hůl ve svých rukou. Po krátké chvíli, kdy "
-"nejspíše vychutnával dotek známého předmětu, ji podal Tallinovi."
+"nejspíše vychutnával po věcích odloučení dotek tak dobře známého předmětu, "
+"ji podal Tallinovi."
 
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:17
 msgid ""
@@ -6721,7 +6712,6 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:187
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:292
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:386
-#, fuzzy
 msgid "How long ago did the trolls make off with the gold?"
 msgstr "Jak je to dlouho, co se trollové zdekovali se zlatem?"
 
@@ -6767,6 +6757,9 @@ msgid ""
 "the trolls who took your gold. Mayhap the elves will be able to get between "
 "the trolls and their allies."
 msgstr ""
+"Pošlu jim další zprávu, aby vyslali průzkumníky a našli trolly, kteří "
+"prchají s vaaším zlatem. Třeba se elfům podaří dostat se před ně a odříznout "
+"je od jejich spojenců."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:227
 msgid ""
@@ -6774,58 +6767,70 @@ msgid ""
 "message. When you get it, come at all speed. It is near time for the battle "
 "that will decide all."
 msgstr ""
+"To je asi nejlepší. Hamele, až se srazím se skřety, pošlu ti zprávu; až ji "
+"dostaneš, pospíchej za námi. Blíží se bitva, která musí rozhodnout vše."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:232
 msgid "The axes and hammers o' every dwarf thirst for the blood of the orcs!"
-msgstr ""
+msgstr "Sekery a kladiva všech trpaslíků žízní po skřetí krvi!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:237
 msgid "Alright, let's move out, people!"
-msgstr ""
+msgstr "Tak kupředu, lidičky!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:242
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:327
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:421
 msgid "Thus the party set off to the northern tunnels to pursue the trolls."
-msgstr ""
+msgstr "Lidé se tedy vydali do severních tunelů v honbě za trolly."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:246
 msgid ""
 "They met but light resistance all along the trail of the trolls, which they "
 "quickly overcame."
 msgstr ""
+"Na trollí stopě se setkali pouze se slabým odporem, který rychle překonali."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:250
 msgid ""
 "Soon, the trail began to lead east, and then south. A few hours later the "
 "party emerged from the tunnels into dawn's early light."
 msgstr ""
+"Stopa vedla nejdříve na východ, poté jižně. Za několik hodin opustili tunely "
+"s prvními jitřními slunečními paprsky."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:263
 msgid ""
 "This isn't looking good. Not only do we fail to get the princess but now we "
 "lost all of our gold! Seriously Hamel, I don't know if we're gonna make it."
 msgstr ""
+"To nevypadá dobře. Nejenže se nám nepovedlo osvobodit princeznu, ale ještě "
+"jsme přišli o všechno zlato! Po pravdě řečeno, Hamele, nevím, jestli to není "
+"poslední rána."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:268
 msgid ""
 "Don't give in to despair, Tallin. At least you prevented the orcs from "
 "getting the ransom money."
-msgstr ""
+msgstr "Nevzdávej se, Talline. Alespoň nedostali skřeti to výkupné."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:272
 msgid "Yeah, they ran off with all the rest of our gold instead."
-msgstr ""
+msgstr "Jasně, místo toho se vypařili s naším zlatem."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:277
 msgid ""
 "Snap out of it Tallin! We are not in control of fate. We will do all we can "
 "to the best of our ability and leave the results to the gods."
 msgstr ""
+"Talline, zatraceně, přestaň! Neovládáme osud, ale můžeme ještě pro záchranu "
+"věcí udělat mnoho. Pokračujme jak nejlépe dokážeme a výsledek přenechme na "
+"starost bohům."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:282
 msgid "You're right, Hamel, sorry. Were you able to pursue the trolls?"
 msgstr ""
+"Asi máš pravdu, Hamele. Omlouvám se. Podařilo se vám pronásledovat trolly?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:287
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:381
@@ -6834,11 +6839,14 @@ msgid ""
 "other groups of trolls trying to break through everywhere, we simply didna "
 "ha' the manpower."
 msgstr ""
+"Talline, snažili jsme se, ale když na jižní straně pokračovalo to skřetí "
+"peklo a jinde se pokoušeli o průnik další trollové, nedalo se to všechno "
+"stihnout."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:297
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:391
 msgid "It couldna ha' been more then a day now."
-msgstr ""
+msgstr "Nemůže to být déle než den."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:302
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:396
@@ -6846,24 +6854,27 @@ msgid ""
 "Then we shall pursue them. Even if we don't catch them then we might be able "
 "to hit Rakshas before he has had a chance to put all that gold to good use."
 msgstr ""
+"Vydáme se za nimi. I když je nedostihneme, mohli bychom se střetnout s "
+"Rakšasem dříve, než se mu povede to zlato dopravdy využít."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:312
 msgid "We will follow the trail of the trolls; that should lead us to Rakshas."
-msgstr ""
+msgstr "Půjdeme po stopě trollů. Měli by nás dovést k Rakšasovi."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:317
 msgid "It is well thought. May the Mountain Gods be with you."
-msgstr ""
+msgstr "Lepší plán asi neexistuje. Kež vás provází požehnání horských bohů!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:322
 msgid "May the Lords of Light guide your path. Alright people, let's move out!"
-msgstr ""
+msgstr "Kéž vaše kroky vedou bohové světla! Pojďme."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:331
 msgid ""
 "They met light resistance along the trail of the trolls, which they quickly "
 "overcame."
 msgstr ""
+"Na trollí stopě se setkali pouze se slabým odporem, který rychle překonali."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:335
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:429
@@ -6871,74 +6882,88 @@ msgid ""
 "Soon, the trail began to lead east, and then south. A few hours latter the "
 "party emerged from the tunnels into dawn's early light."
 msgstr ""
+"Stopa vedla nejdříve na východ, poté jižně. Za několik hodin se vynořili z "
+"tunelů s prvními jitřními slunečními paprsky."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:341
 msgid ""
 "See, you wretched human! At least now you will appreciate the generosity of "
 "the elves."
-msgstr ""
+msgstr "Vidíš, ty zatracený člověku! Teď snad oceníš elfskou štědrost."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:346
+#, fuzzy
 msgid ""
 "Shut up you little snot! If it wasn't for you we wouldn't have lost our gold "
 "in the first place!"
 msgstr ""
+"Sklapni už, ty namyšlená kozo! Kdyby nebylo tebe, především bychom nepřišli "
+"o to zlato!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:351
+#, fuzzy
 msgid "I wasn't talking to you lich! Learn to keep your mouth shut."
-msgstr ""
+msgstr "S tebou nemluvím, lichi! Nauč se zavřít zobák."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:356
 msgid "Who is this annoying chit?"
-msgstr ""
+msgstr "Kdo je tahle otravná fňukna?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:361
 msgid ""
 "This is the famous and benevolent princess Anita, in whose rescue we "
 "sacrificed many lives and MUCH gold."
 msgstr ""
+"To je přece slavná a laskavá princezna Anita, na jejíž záchranu padlo tolik "
+"životů a taky HODNĚ zlata."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:366
 msgid ""
 "That's it! I have had enough from you worthless rabble. I will soon send a "
 "rider with the promised gold, and in the meantime, I'm leaving!"
 msgstr ""
+"Mám dost toho vašeho povykování, chátro. Pošlu co nejdříve jezdce se "
+"slíbeným zlatem, a teď už vás nechci vidět! Odcházím!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:371
+#, fuzzy
 msgid "Begone and good riddance, brat!"
-msgstr ""
+msgstr "Výborně, spratku!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:376
 msgid ""
 "Back to the issue of the stolen gold, were you able to pursue the trolls?"
-msgstr ""
+msgstr "No ale zpátky k tomu ukradenému zlatu - pronásledovali jste trolly?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:401
 msgid ""
 "Hamel, rally the dwarves and prepare to make an all-out offensive against "
 "the orcs. It's time to give them some of their own."
 msgstr ""
+"Hamele, posbírej trpaslíky a připrav pořádný výpad proti skřetům. Je na čase "
+"dát jim co proto."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:406
 msgid ""
 "We will follow the trial of the trolls, which, lead us back to Rakshas..."
-msgstr ""
+msgstr "Půjdeme po stopě trollům kteří nás dovedou zpět k Rakšasovi..."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:411
 msgid ""
 "It is well thought. The axes and hammers of every dwarf thirst for the blood "
 "of the orcs!"
-msgstr ""
+msgstr "Výborně. Sekery a kladiva trpaslíků prahnou po skřetí krvi!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:416
 msgid "Alright, let's move out people!"
-msgstr ""
+msgstr "Dobrá, lidi, jdeme!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:425
 msgid ""
 "They met light resistance all along the trail of the trolls, which they "
 "quickly overcame."
 msgstr ""
+"Na trollí stopě se setkali pouze se slabým odporem, který rychle překonali."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:462
 msgid "Tor"
@@ -6965,23 +6990,23 @@ msgstr "Hidel"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:672
 msgid "Upon emerging from the tunnels, the party found themselves surrounded."
-msgstr ""
+msgstr "Po výstupu z jeskyní se náhle skupina ocitla v obklíčení."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:678
 msgid "Haha, suckers! We got you now!"
-msgstr ""
+msgstr "Chacha, máte to spočítaný!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:683
 msgid "Hahaha! They walked right into our trap."
-msgstr ""
+msgstr "Checheche, šli přímo do pasti."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:688
 msgid "And we have already sent the gold ahead to the Master!"
-msgstr ""
+msgstr "A už sme poslali zlato pánovi."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:693
 msgid "Now let's make mush out of these puny creatures!"
-msgstr ""
+msgstr "Teď se můžem pořádně pobavit s těmahle zakrslíkama!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:698
 msgid "Oh no, we are surrounded!"
@@ -6989,11 +7014,11 @@ msgstr "Ó, ne, obklíčili nás!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:703
 msgid "Heart shall be the harder as our strength lessens. Kill them all!"
-msgstr ""
+msgstr "Pobijte je! Nehleďte na ztráty, musíme je dostat!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:708
 msgid "Yeeeahhhh! I like it!"
-msgstr ""
+msgstr "Jóóóó! Tohle se mi líbí!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:714
 msgid "Defeat the enemy leaders or"
@@ -7002,7 +7027,7 @@ msgstr "Poraz nepřátelské vůdce nebo"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:718
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1221
 msgid "Resist as long as you can"
-msgstr ""
+msgstr "Přežij tak dlouho, jak to půjde"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:756
 msgid "Pew, they are defeated at last."
@@ -7010,15 +7035,16 @@ msgstr "Uf, konečně jsou poraženi."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:761
 msgid "Hidel, let me introduce to you my saviour: Tallin."
-msgstr ""
+msgstr "Hideli, představuji ti svého zachránce, Tallina."
 
+# Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:766
 msgid "It is an honor to meet you Tallin."
-msgstr ""
+msgstr "Je mi ctí, Taline."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:771
 msgid "The honor is mine, sir."
-msgstr ""
+msgstr "Potěšení je na mé straně."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:776
 msgid ""
@@ -7026,30 +7052,38 @@ msgid ""
 "over the centuries who have earned the respect and admiration of the "
 "Northern Elves extremely few, but let it be known that you are one of them."
 msgstr ""
+"Slyšel jsem samou chválu na tvo inteligenci a odvahu. Počet lidí, kteří si "
+"získali respekt a důvěru Sevrních elfů, je i po mnohých letech velmi malý, "
+"ale věz, že mezi ně nyní patříš i ty."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:781
 msgid ""
 "I am honored sir, and I hope that I will live up to the trust that the "
 "Northern Elves have bestowed upon me."
 msgstr ""
+"Děkuji za takové vyznamenání; doufám, že dokážu vyplnit důvěru a očekávání, "
+"kterými mě Severní elfové poctili."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:786
 msgid "I am sure you will Tallin. The trust of the elves is seldom misplaced."
 msgstr ""
+"Jsitě že ano, Talline. My elfové se v těchto věcech pleteme jen málokdy."
 
+# Ro'? - jeden z nich
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:791
 msgid "If you guys are quite finished exchanging pleasantries..."
-msgstr ""
+msgstr "Jestli už vás přestalo bavit to zdvořilostní hraní..."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:801
 msgid ""
 "...the road ahead is clear and I am eager to blast some more orcs. Shall we "
 "proceed?"
 msgstr ""
+"...cesta před námi je volná. A už se těším na další skřety. Půjdeme dál?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:806
 msgid "Right. Onward men!"
-msgstr ""
+msgstr "Pravda. Kupředu!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:711
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:853
@@ -7057,17 +7091,20 @@ msgstr ""
 msgid "Sisal"
 msgstr "Sisal"
 
+# Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:900
 msgid ""
 "Princess! We have finally found you! Thank god you are free! Your father had "
 "originally sent us to rescue you."
 msgstr ""
+"Princezno! Konečně jsme vás našli! Díky bohu, jste volná! Váš otec nás "
+"původně poslal vysvobodit vás."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:905
 msgid ""
 "Yes, or so I have heard. You honor me, but this brave man reached the mark "
 "before you."
-msgstr ""
+msgstr "Ano, vím. Jsem poctěna, ale tento statečný muž konal rychleji než vy."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:910
 msgid "You must be the famous Tallin."
@@ -7083,32 +7120,41 @@ msgid ""
 "over the centuries who have earned the respect and admiration of the "
 "Northern Elves extremely few, but you are one of them."
 msgstr ""
+"Slyšeli jsme samou chválu tvé inteligence a odvahy. Severní elfové za dlouhá "
+"staletí nedůvěřovali mnoha lidem, ale ty se k těm několika nyní můžeš "
+"počítat."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:925
 msgid ""
 "I am honored, sir, and I hope that I will live up to the trust that the "
 "Northern Elves have bestowed upon me."
 msgstr ""
+"Jsem poctěn, pane, a doufám, že nezklamu naděje Severních elfů, kterými mne "
+"poctili."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:930
 msgid ""
 "I am sure you will, Tallin. The trust of the elves is seldom misplaced. Also "
 "know that the Northern Enclaves will always be open to you."
 msgstr ""
+"Jistě že ne, Talline. Elfové se v těchto záležitostech málokdy mýlí. Věz "
+"také, že jsou ti vždy otevřeny naše severské kraje."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:935
 msgid "Thank you, sir."
-msgstr ""
+msgstr "Děkuji!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:940
 msgid "What is the status of our troops, Hidel?"
-msgstr ""
+msgstr "Jak si stojí naše vojsko, Hidele?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:945
 msgid ""
 "They are all here, princess! Hand picked by your father - the finest and "
 "bravest elvish troops in the entire Northlands."
 msgstr ""
+"Je tu celé, princezno! Vybráno osobně vaším otcem - nejlepší a nejodvážnější "
+"elfské síly na celém severu."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:950
 msgid ""
@@ -7116,46 +7162,56 @@ msgid ""
 "host. Not only are we in debt to him but by doing so we will be serving our "
 "cause as well as we serve his."
 msgstr ""
+"Výborně! Pomůžeme Tallinovi ve zničení skřetí hordy. Jsme teď jeho dlužníky, "
+"a navíc to poslouží společnému zájmu."
 
+# stále Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:955
 msgid "As you wish, princess."
 msgstr "Jak si přejete, princezno."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:960
 msgid "Very well, people. The road ahead is clear, onward to victory!"
-msgstr ""
+msgstr "Dobrá. Cesta je volná, kupředu - k vítězství!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1006
 msgid " *sniff sniff*"
-msgstr ""
+msgstr " *čmuch čmuch*"
 
+# Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1011
 msgid "What's up big guy?"
-msgstr ""
+msgstr "Co se děje, velikáne?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1016
 msgid " *flap flap flap*"
-msgstr ""
+msgstr " *plácání křídly*"
 
+# kdosi
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1053
 msgid "Hey! Where is he going?"
-msgstr ""
+msgstr "Hej! Kam letí?"
 
+# Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1058
 msgid "Krash man, you are gonna miss all the fun!"
-msgstr ""
+msgstr "Krashi, přijdeš o všechu srandu!"
 
+# Markus
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1063
 msgid "I think he has decided that it is time for him to part ways with us."
-msgstr ""
+msgstr "Asi se rozhodl, že je čas se s námi rozloučit."
 
+# Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1068
+#, fuzzy
 msgid "Such a fierce yet gentle creature. He will be sorely missed."
-msgstr ""
+msgstr "Tak zuřivý a zároveň jemný tvor. Bude nám scházet."
 
+# Theta
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1073
 msgid "Farewell, Krash, may the lords of light guide your path."
-msgstr ""
+msgstr "Sbohem, Krashi, a kéž bohové světla řídí tvé kroky."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1112
 msgid "Singe"
@@ -7173,12 +7229,12 @@ msgstr "Halk"
 msgid "Hey! Look who's back!"
 msgstr "Hej! Podívejte kdo se vrátil!"
 
+# Theta
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1154
 msgid "And look, he brought his friends too!"
-msgstr ""
+msgstr "A přivedl si i kamarády!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1159
-#, fuzzy
 msgid "GRRRRRRR!"
 msgstr "GRRRRRRR!"
 
@@ -7187,28 +7243,35 @@ msgstr "GRRRRRRR!"
 msgid "ROOOAAARRRR!!!"
 msgstr "ROOOAAARRRR!!!"
 
+# Krash... OMG ono to i někde mluví :O
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1169
 msgid "Hurry, friends, let's set up camp!"
-msgstr ""
+msgstr "Rychle, přátelé, rozbijme tábor!"
 
+# Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1174
 msgid "Yeah, man! I knew we could count on you!"
-msgstr ""
+msgstr "Joooo! Já věděl že se na tebe můžem spolehnout!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1179
 msgid ""
 "Hmmm, he must have smelled the scent of other drakes and gone to them to "
 "convince them to help us."
 msgstr ""
+"Hmm, musel zdáli ucítit ostatní drakonidy a jít je přesvědčit, aby nám "
+"pomohli."
 
+# Theta :p
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1184
 msgid "Awww, what a darling!"
-msgstr ""
+msgstr "Ach, to je miláček!"
 
+# někdo
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1189
 msgid "Tell that to the trolls."
-msgstr ""
+msgstr "A co na to trollové?"
 
+# Troll; nemusí vědět že to nejsou draci
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1194
 msgid "What! Drakes! Fire! Ahhhhhh!"
 msgstr "Co! Draci! Oheň! Áááá!"
@@ -7227,7 +7290,7 @@ msgstr "Princezno! Konečně jsme Vás našli!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1337
 msgid "Good work, Hidel! How do your forces march?"
-msgstr ""
+msgstr "Výtečně, Hideli! Jak jsou na tom tvé síly?"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1342
 msgid ""
@@ -7235,24 +7298,29 @@ msgid ""
 "bravest elvish troops in the entire Northlands. We will follow you to the "
 "end of the world if need be."
 msgstr ""
+"Jsou přímo tady, princezno! Vybrány osobně vaším otcem - nejlepší a "
+"nejodvážnější elfské jednotky na celém severu. Budou vás následovat třeba na "
+"konec světa, kdyby to bylo zapotřebí."
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1347
 msgid ""
 "Very good. Or first task is to give brave Tallin here full support in "
 "defeating these trolls."
 msgstr ""
+"Výtečně. Naším prvním úkolem je pomoct tady Tallinovi tyto porazit trolly."
 
+# Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1352
 msgid "With pleasure, Princess! Quickly men, set up a base!"
-msgstr ""
+msgstr "S radostí, princezno! Připravte tábořiště!"
 
+# Troll
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1369
 msgid ""
 "Oh no! Those blasted elves have just joined forces with the humans! This is "
 "hopeless! Flee! Flee!"
 msgstr ""
-"Ale ne! Ti prokletí elfi se spojili s člověky! Je to bez naděje! Pryč! "
-"Utíkat!"
+"Ale ne! Ti blbí elfi se spojili s člověky! Je to bez naděje! Pryč! Utíkat!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1374
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1449
@@ -7264,28 +7332,32 @@ msgstr "Hm, máme ty trolly nechat utéct nebo je vyřídit hned teď?"
 msgid "Hey! Stand your ground, you cowards!"
 msgstr "Hej! Neutíkejte z boje, vy zbabělci!"
 
+# Troll
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1382
 msgid "You are a fool, human! We shall crush and destroy you!"
-msgstr ""
+msgstr "Jsi blázen, člověku! Rozdrtíme tě a zničíme!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1389
 msgid "Help Tallin defeat the enemy leaders"
 msgstr "Pomoz Tallinovi porazit nepřátelské vůdce"
 
+# Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1415
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1490
 msgid "Haha! Look at them run!"
-msgstr ""
+msgstr "Haha! Koukejte, jak utíkají!"
 
+# Troll
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1444
 msgid ""
 "Oh no! The elves have just given the humans a hoard of gold! This is "
 "hopeless! Flee! Flee!"
 msgstr ""
+"Ne! Ti elfové dali teď člověkům hromadu zlata! Beznadějné! Utíkat! Utikejte!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1457
 msgid "You are a fool, human! Watch how we will crush and destroy you!"
-msgstr ""
+msgstr "Jsi blázen, člověku! Rozdrtím tě a zničím!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:472
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:497
@@ -7374,11 +7446,11 @@ msgstr "Kde je mé zlato?!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:282
 msgid "It's Rakshas!"
-msgstr "To je Rakshas!"
+msgstr "To je Rakšas!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:287
 msgid "Right here, Master."
-msgstr "Tady jsme pane."
+msgstr "Tady, pane."
 
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:292
 msgid ""
@@ -7443,8 +7515,8 @@ msgstr ""
 msgid "Hidel?"
 msgstr "Hideli?"
 
+# Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:376
-#, fuzzy
 msgid ""
 "Easily, princess. We shall move unseen through the trees, overtake him, and "
 "put an end to his flight."
@@ -7467,6 +7539,7 @@ msgstr " *trochu rudne*"
 msgid " *wink wink*"
 msgstr " *mrk mrk*"
 
+# Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:396
 msgid " *raises eyebrow* Very well, princess."
 msgstr " *pozvednutí obočí* Dobrá, princezno."
@@ -7492,9 +7565,8 @@ msgid "It's done."
 msgstr "A je to."
 
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:436
-#, fuzzy
 msgid "Very well. Forward! Victory or death!"
-msgstr "Kupředu! Vítězství nebo smrt!"
+msgstr "Dobrá. Kupředu! Vítězství nebo smrt!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:466
 msgid "Come on boys, let's give it to 'em!"
@@ -7533,6 +7605,7 @@ msgstr ""
 "Á, nejsou to přece ti nejvstřícnější, nejsdílnější skřeti které kdy svět "
 "viděl?"
 
+# Scénář
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:4
 msgid "Get the Gold"
 msgstr ""
@@ -7542,6 +7615,8 @@ msgid ""
 "After reducing Castle Angthurim, the party set off after Rakshas, hoping "
 "that Hidel's elves had been able to hold him."
 msgstr ""
+"Po zničení hradu Angthurimu se Tallinovo vojsko opět vydalo za Rakšasem v "
+"naději, že jej Hidelovi elfové dokázali zadržet."
 
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:14
 msgid ""
@@ -7549,6 +7624,9 @@ msgid ""
 "an ominous silence, broken only by the cawing of ravens, brooded over the "
 "road he had taken."
 msgstr ""
+"Skřeti mají těžkou chůzi; Rakšasovu stopa nebylo těžké sledovat i poslepu. "
+"Na cestě však panovalo strašidelné ticho, přerušované občasným krákáním "
+"havranů usazených na okolních stromech."
 
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:18
 msgid ""
@@ -7557,6 +7635,10 @@ msgid ""
 "profusion. Elvish arrows and orcish crossbow bolts bristled from the nearby "
 "trees. The ground was splotched red with blood."
 msgstr ""
+"Zanedlouho narazili na místo, kde se evidentně odehrála strašlivá bitva. "
+"Kolem se válela těla skřetů a elfů promíšená s rozbitými zbraněmi a dalším "
+"vybavením. Z těl, země i okolních kmenů hojně trčely elfské šípy a skřetí "
+"šipky; zemi zbarvila krev doruda."
 
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:22
 msgid ""
@@ -7564,6 +7646,9 @@ msgid ""
 "leave them a small guard. Then they pressed onward to rescue Hidel - and "
 "they found him."
 msgstr ""
+"Zastavili se na chvíli, aby ošetřili několik málo přeživších elfů a "
+"zanechali u nich hlídku. Pak pokračovali v naději, že najdou Hidela - a také "
+"jej našli."
 
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:26
 msgid ""
@@ -7573,6 +7658,11 @@ msgid ""
 "his fall had been an epic of valor and glory, worthy to be remembered in the "
 "songs of all the kindred races until the end of days."
 msgstr ""
+"Koelm něj leželi tři mrtví skřetí vojevůdci a množství pěšáků, válečníků a "
+"kušařů. Jeho zbraně a zbroj byly obité a polámané. Bylo zřejmé, že svůj "
+"život neprodal lacino a proběhnuvší boj by se řadil po bok bájných epických "
+"vyprávění všech ras o statečnosti a slávě - pokud by o něm kdo žijící mohl "
+"podat zprávu."
 
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:30
 msgid ""
@@ -7580,13 +7670,18 @@ msgid ""
 "cradled his head in her lap. As she stroked his face, his eyes fluttered "
 "open."
 msgstr ""
+"Anita se se slzami v tvářích vrhla k padlému hrdinovi a objala jej. Když "
+"pohladila jeho tvář, otevřel oči."
 
+# Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:34
 msgid ""
 "I am sorry, princess... We held him for... as long as we could... but his "
 "bodyguards... were... just too many and powerful... And then... the "
 "orcish... reinforcements arrived...."
 msgstr ""
+"Je mi to... líto... princezno... zadrželi... jsme ho... jak to šlo... ale "
+"jeho... strážci... moc silní... bylo jich moc... pak přišly... posily..."
 
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:39
 msgid ""
@@ -8058,7 +8153,7 @@ msgstr "To byla poslední slova Rakšase Velkého!"
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:788
 #, fuzzy
 msgid "Argh!"
-msgstr "Vuááááúúúúííééééáááá!!!!"
+msgstr "Argh!"
 
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1127
 msgid ""
@@ -8643,9 +8738,8 @@ msgstr ""
 
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:315
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:368
-#, fuzzy
 msgid "Ahhhhhhh!"
-msgstr "Ahhhhhhh!"
+msgstr "Auu!"
 
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:320
 msgid "You monsters think you are so tough don't you? Well check this out."
