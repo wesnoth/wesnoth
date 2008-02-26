@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-24 15:49+0100\n"
+"POT-Creation-Date: 2008-02-26 16:37+0100\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -275,19 +275,19 @@ msgstr "斯洛文尼亚语"
 msgid "Spanish Translation"
 msgstr "西班牙语"
 
-#: data/core/about.cfg:1640
+#: data/core/about.cfg:1643
 msgid "Swedish Translation"
 msgstr "瑞典语"
 
-#: data/core/about.cfg:1666
+#: data/core/about.cfg:1669
 msgid "Turkish Translation"
 msgstr "土耳其语"
 
-#: data/core/about.cfg:1688
+#: data/core/about.cfg:1691
 msgid "Valencian (southern Catalan) Translation"
 msgstr " (西班牙)南加泰罗尼亚语"
 
-#: data/core/about.cfg:1704
+#: data/core/about.cfg:1707
 msgid "Bots"
 msgstr "电脑"
 
@@ -5106,8 +5106,8 @@ msgid "End Scenario"
 msgstr "结束场景"
 
 #: data/themes/default.cfg:208 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:384 src/unit.cpp:2454
-#: src/unit.cpp:2627
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:384 src/unit.cpp:2457
+#: src/unit.cpp:2630
 msgid "HP"
 msgstr "生命值"
 
@@ -5340,7 +5340,7 @@ msgstr "退出游戏"
 msgid "Ignore All"
 msgstr "全部忽略"
 
-#: src/dialogs.cpp:270 src/dialogs.cpp:278 src/game.cpp:1124
+#: src/dialogs.cpp:270 src/dialogs.cpp:278 src/game.cpp:1125
 #: src/menu_events.cpp:763 src/multiplayer_create.cpp:533
 msgid "Error"
 msgstr "错误"
@@ -5391,7 +5391,7 @@ msgstr "#（无效的）"
 msgid "Campaign: $campaign_name"
 msgstr "战役: $campaign_name"
 
-#: src/dialogs.cpp:557 src/game.cpp:1499
+#: src/dialogs.cpp:557 src/game.cpp:1500
 msgid "Multiplayer"
 msgstr "多人对战"
 
@@ -5452,7 +5452,7 @@ msgstr ""
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:656 src/game.cpp:1180 src/menu_events.cpp:382
+#: src/dialogs.cpp:656 src/game.cpp:1181 src/menu_events.cpp:382
 #: src/menu_events.cpp:1150 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "名称"
@@ -5503,7 +5503,7 @@ msgstr "经验值："
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/dialogs.cpp:1170 src/game.cpp:971
+#: src/dialogs.cpp:1170 src/game.cpp:972
 msgid "KB"
 msgstr "KB"
 
@@ -5511,7 +5511,7 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "屏幕截图"
 
-#: src/game.cpp:456 src/game.cpp:1596
+#: src/game.cpp:456 src/game.cpp:1597
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -5519,287 +5519,287 @@ msgstr "韦诺之战"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：你试图载入的文件已损坏。继续尝试载入。\n"
 
-#: src/game.cpp:779 src/multiplayer_connect.cpp:1448
+#: src/game.cpp:778 src/multiplayer_connect.cpp:1448
 msgid "This save is from a version too old to be loaded."
 msgstr "这个存档是由一个太早期的游戏版本保存的，现在的版本无法载入。"
 
-#: src/game.cpp:785 src/multiplayer_connect.cpp:1455
+#: src/game.cpp:784 src/multiplayer_connect.cpp:1455
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "这个存档来自于不同版本的游戏。你仍然想载入吗？"
 
-#: src/game.cpp:803 src/game.cpp:806 src/multiplayer_connect.cpp:1426
+#: src/game.cpp:804 src/game.cpp:807 src/multiplayer_connect.cpp:1426
 msgid "The file you have tried to load is corrupt: '"
 msgstr "你试图载入的文件已损坏： '"
 
-#: src/game.cpp:809
+#: src/game.cpp:810
 msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时发生文件I/O错误。"
 
-#: src/game.cpp:901
+#: src/game.cpp:902
 msgid "Play a campaign"
 msgstr "战役"
 
-#: src/game.cpp:942
+#: src/game.cpp:943
 msgid "Difficulty"
 msgstr "难度"
 
-#: src/game.cpp:943
+#: src/game.cpp:944
 msgid "Select difficulty level:"
 msgstr "选择难度："
 
-#: src/game.cpp:968
+#: src/game.cpp:969
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:974
+#: src/game.cpp:975
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:1004
+#: src/game.cpp:1005
 msgid "Connect to Server"
 msgstr "连接到服务器"
 
-#: src/game.cpp:1005
+#: src/game.cpp:1006
 msgid "You will now connect to a server to download add-ons."
 msgstr "你将连接至服务器以下载插件。"
 
-#: src/game.cpp:1007
+#: src/game.cpp:1008
 msgid "Server: "
 msgstr "服务器： "
 
-#: src/game.cpp:1008 src/game.cpp:1075
+#: src/game.cpp:1009 src/game.cpp:1076
 msgid "Remove Add-ons"
 msgstr "删除插件"
 
-#: src/game.cpp:1062
+#: src/game.cpp:1063
 msgid "You have no Add-ons installed."
 msgstr "没有安装插件"
 
-#: src/game.cpp:1075
+#: src/game.cpp:1076
 msgid "Choose the add-on to remove."
 msgstr "选择要删除的插件。"
 
-#: src/game.cpp:1086
+#: src/game.cpp:1087
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "你确定你要删除插件 '$addon|'?"
 
-#: src/game.cpp:1090
+#: src/game.cpp:1091
 msgid "Confirm"
 msgstr "确认"
 
-#: src/game.cpp:1113
+#: src/game.cpp:1114
 msgid "Add-on '$addon|' deleted."
 msgstr "插件'$addon|'已删除"
 
-#: src/game.cpp:1118
+#: src/game.cpp:1119
 msgid "Add-on deleted"
 msgstr "插件已删除"
 
-#: src/game.cpp:1124
+#: src/game.cpp:1125
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "无法删除插件——没有找到某个文件。"
 
-#: src/game.cpp:1145 src/multiplayer.cpp:168 src/multiplayer.cpp:206
+#: src/game.cpp:1146 src/multiplayer.cpp:168 src/multiplayer.cpp:206
 msgid "Connecting to Server..."
 msgstr "正在连接到服务器..."
 
-#: src/game.cpp:1148
+#: src/game.cpp:1149
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
-#: src/game.cpp:1158
+#: src/game.cpp:1159
 msgid "Asking for list of add-ons"
 msgstr "请求插件列表"
 
-#: src/game.cpp:1171
+#: src/game.cpp:1172
 msgid "Error communicating with the server."
 msgstr "与服务器通讯错误。"
 
-#: src/game.cpp:1180 src/titlescreen.cpp:329
+#: src/game.cpp:1181 src/titlescreen.cpp:329
 msgid "Version"
 msgstr "版本"
 
-#: src/game.cpp:1181
+#: src/game.cpp:1182
 msgid "Author"
 msgstr "作者"
 
-#: src/game.cpp:1181
+#: src/game.cpp:1182
 msgid "Downloads"
 msgstr "下载数"
 
-#: src/game.cpp:1181
+#: src/game.cpp:1182
 msgid "Size"
 msgstr "大小"
 
-#: src/game.cpp:1233
+#: src/game.cpp:1234
 msgid "Publish add-on: "
 msgstr "发布插件： "
 
-#: src/game.cpp:1237
+#: src/game.cpp:1238
 msgid "Delete add-on: "
 msgstr "删除插件： "
 
-#: src/game.cpp:1241
+#: src/game.cpp:1242
 msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的插件。"
 
-#: src/game.cpp:1248
+#: src/game.cpp:1249
 msgid "Get Add-ons"
 msgstr "获取插件"
 
-#: src/game.cpp:1249
+#: src/game.cpp:1250
 msgid "Choose the add-on to download."
 msgstr "选择要下载的插件。"
 
-#: src/game.cpp:1292
+#: src/game.cpp:1293
 msgid "Dependencies"
 msgstr "依赖"
 
-#: src/game.cpp:1293
+#: src/game.cpp:1294
 msgid "This add-on requires the following additional dependencies:"
 msgstr "这个插件要求以下额外的依赖:"
 
-#: src/game.cpp:1295
+#: src/game.cpp:1296
 msgid "Do you still want to download it?"
 msgstr "你真的想下载这个游戏？"
 
-#: src/game.cpp:1305
+#: src/game.cpp:1306
 msgid "Downloading add-on..."
 msgstr "正在下载插件……"
 
-#: src/game.cpp:1363
+#: src/game.cpp:1364
 msgid "Add-on Installed"
 msgstr "插件已安装"
 
-#: src/game.cpp:1363
+#: src/game.cpp:1364
 msgid "The add-on has been installed."
 msgstr "这个插件已经安装。"
 
-#: src/game.cpp:1366
+#: src/game.cpp:1367
 msgid "Network communication error."
 msgstr "网络通讯错误。"
 
-#: src/game.cpp:1368
+#: src/game.cpp:1369
 msgid "Remote host disconnected."
 msgstr "远程主机关闭。"
 
-#: src/game.cpp:1370
+#: src/game.cpp:1371
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr "安装这个战役所需文件创建错误。"
 
-#: src/game.cpp:1385 src/game.cpp:1456 src/multiplayer.cpp:248
+#: src/game.cpp:1386 src/game.cpp:1457 src/multiplayer.cpp:248
 #: src/multiplayer_ui.cpp:73
 msgid "Connection timed out"
 msgstr "连接超时"
 
-#: src/game.cpp:1388
+#: src/game.cpp:1389
 msgid "The server responded with an error: \"$error|\""
 msgstr "服务器返回一个错误： \""
 
-#: src/game.cpp:1395
+#: src/game.cpp:1396
 msgid "Terms"
 msgstr "条件"
 
-#: src/game.cpp:1426
+#: src/game.cpp:1427
 msgid "Sending add-on"
 msgstr "发送插件"
 
-#: src/game.cpp:1430 src/game.cpp:1458
+#: src/game.cpp:1431 src/game.cpp:1459
 msgid "The server responded with an error: \""
 msgstr "服务器响应错误： \""
 
-#: src/game.cpp:1434 src/game.cpp:1462 src/multiplayer_wait.cpp:401
+#: src/game.cpp:1435 src/game.cpp:1463 src/multiplayer_wait.cpp:401
 msgid "Response"
 msgstr "回应"
 
-#: src/game.cpp:1486
+#: src/game.cpp:1487
 msgid "Join Official Server"
 msgstr "连接到官方服务器"
 
-#: src/game.cpp:1487
+#: src/game.cpp:1488
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "登录韦诺官方多人对战服务器"
 
-#: src/game.cpp:1489
+#: src/game.cpp:1490
 msgid "Connect to Host/Server"
 msgstr "连接到服务器"
 
-#: src/game.cpp:1490
+#: src/game.cpp:1491
 msgid "Join a server or hosted game"
 msgstr "加入服务器或已建游戏"
 
-#: src/game.cpp:1492
+#: src/game.cpp:1493
 msgid "Local Game"
 msgstr "本机游戏"
 
-#: src/game.cpp:1493
+#: src/game.cpp:1494
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "在一台电脑上进行多人对战"
 
-#: src/game.cpp:1501 src/multiplayer.cpp:233
+#: src/game.cpp:1502 src/multiplayer.cpp:233
 msgid "Login: "
 msgstr "登录名： "
 
-#: src/game.cpp:1538 src/playcampaign.cpp:101 src/playcampaign.cpp:388
+#: src/game.cpp:1539 src/playcampaign.cpp:101 src/playcampaign.cpp:388
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1540 src/playcampaign.cpp:103 src/playcampaign.cpp:391
+#: src/game.cpp:1541 src/playcampaign.cpp:103 src/playcampaign.cpp:391
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1560 src/playcampaign.cpp:105 src/playcampaign.cpp:394
+#: src/game.cpp:1561 src/playcampaign.cpp:105 src/playcampaign.cpp:394
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1586
+#: src/game.cpp:1587
 msgid "Language"
 msgstr "语言"
 
-#: src/game.cpp:1587
+#: src/game.cpp:1588
 msgid "Choose your preferred language:"
 msgstr "选择你的语言偏好："
 
-#: src/game.cpp:1754
+#: src/game.cpp:1755
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "以下附加战役有错误，无法加载："
 
-#: src/game.cpp:1759
+#: src/game.cpp:1760
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1773
+#: src/game.cpp:1774
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "警告：载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1825 src/game.cpp:1830
+#: src/game.cpp:1826 src/game.cpp:1831
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1826 src/game.cpp:1831
+#: src/game.cpp:1827 src/game.cpp:1832
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1877
+#: src/game.cpp:1878
 msgid "Loading data files"
 msgstr "读取数据文件"
 
-#: src/game.cpp:2026
+#: src/game.cpp:2027
 msgid "Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:2218
+#: src/game.cpp:2219
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:2224
+#: src/game.cpp:2225
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:2238
+#: src/game.cpp:2239
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
@@ -6925,7 +6925,7 @@ msgstr "你必须输入名字。"
 msgid "Set Password"
 msgstr "设定密码"
 
-#: src/multiplayer_create.cpp:330 src/multiplayer_lobby.cpp:758
+#: src/multiplayer_create.cpp:330 src/multiplayer_lobby.cpp:759
 msgid "Password: "
 msgstr "密码:"
 
@@ -7014,7 +7014,7 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "空槽："
 msgstr[1] "空位："
 
-#: src/multiplayer_lobby.cpp:507 src/multiplayer_lobby.cpp:756
+#: src/multiplayer_lobby.cpp:507 src/multiplayer_lobby.cpp:757
 msgid "Password Required"
 msgstr "需要密码"
 
@@ -7054,7 +7054,7 @@ msgstr "退出"
 msgid "Skip quickly to the active turn when observing"
 msgstr "观察游戏时快速跳至当前进行中的回合"
 
-#: src/multiplayer_lobby.cpp:757
+#: src/multiplayer_lobby.cpp:758
 msgid "Joining this game requires a password."
 msgstr "加入此游戏需要密码."
 
@@ -7510,35 +7510,35 @@ msgstr "上传统计资料"
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:401 src/unit.cpp:1257 src/unit.cpp:2373
+#: src/unit.cpp:403 src/unit.cpp:1259 src/unit.cpp:2376
 msgid "Unknown unit type '$type|'"
 msgstr "未知单位种类 '$type|'"
 
-#: src/unit.cpp:2411 src/unit.cpp:2615 src/unit.cpp:2671
+#: src/unit.cpp:2414 src/unit.cpp:2618 src/unit.cpp:2674
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2422
+#: src/unit.cpp:2425
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2487
+#: src/unit.cpp:2490
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2505 src/unit.cpp:2642
+#: src/unit.cpp:2508 src/unit.cpp:2645
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2634
+#: src/unit.cpp:2637
 msgid " move"
 msgstr "移动"
 
-#: src/unit.cpp:2650
+#: src/unit.cpp:2653
 msgid "$effect_description per level"
 msgstr "每级 $effect_description"
 
-#: src/unit.cpp:2680
+#: src/unit.cpp:2683
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

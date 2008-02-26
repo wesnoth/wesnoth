@@ -2,7 +2,7 @@
 # Copyright (C) YEAR Wesnoth Development Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING"
+"Content-Transfer-Encoding: ENCODING\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -22,7 +22,8 @@ msgid "WESNOTH"
 msgstr ""
 
 # type: TH
-#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnoth_editor.6:16 ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnoth_editor.6:16
+#: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2007"
 msgstr ""
@@ -40,7 +41,8 @@ msgid "Battle for Wesnoth"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18 ../../doc/man/wesnothd.6:18
+#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
+#: ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
 msgstr ""
@@ -51,7 +53,8 @@ msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21 ../../doc/man/wesnothd.6:24
+#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
+#: ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
 msgstr ""
@@ -62,7 +65,8 @@ msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:27 ../../doc/man/wesnothd.6:40
+#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:27
+#: ../../doc/man/wesnothd.6:40
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr ""
@@ -86,7 +90,8 @@ msgid ""
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:32 ../../doc/man/wesnothd.6:45
+#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:32
+#: ../../doc/man/wesnothd.6:45
 #, no-wrap
 msgid "OPTIONS"
 msgstr ""
@@ -175,8 +180,8 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:79
 msgid ""
-"decompresses a file which should be in gzip format and stores it without the "
-".gz suffix. The I<infile.gz> will be removed."
+"decompresses a file which should be in gzip format and stores it without "
+"the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
 
 # type: TP
@@ -200,7 +205,8 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:88
-msgid "displays a summary of command line options to standard output, and exits."
+msgid ""
+"displays a summary of command line options to standard output, and exits."
 msgstr ""
 
 # type: TP
@@ -417,7 +423,8 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:169
-msgid "selects the controller for this side. Available values: B<human> and B<ai>."
+msgid ""
+"selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
 
 # type: TP
@@ -429,9 +436,9 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:176
 msgid ""
-"use this option to play in the selected era instead of the B<Default> "
-"era. The era is chosen by an id. Eras are described in the "
-"B<data/multiplayer/eras.cfg> file."
+"use this option to play in the selected era instead of the B<Default> era. "
+"The era is chosen by an id. Eras are described in the B<data/multiplayer/"
+"eras.cfg> file."
 msgstr ""
 
 # type: TP
@@ -494,12 +501,13 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:201
 msgid ""
-"B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai "
-"--algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
+"B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:202 ../../doc/man/wesnoth_editor.6:74 ../../doc/man/wesnothd.6:163
+#: ../../doc/man/wesnoth.6:202 ../../doc/man/wesnoth_editor.6:74
+#: ../../doc/man/wesnothd.6:163
 #, no-wrap
 msgid "AUTHOR"
 msgstr ""
@@ -512,8 +520,8 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:207
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 
 # type: Plain text
@@ -524,23 +532,27 @@ msgid ""
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:211 ../../doc/man/wesnoth_editor.6:83 ../../doc/man/wesnothd.6:170
+#: ../../doc/man/wesnoth.6:211 ../../doc/man/wesnoth_editor.6:83
+#: ../../doc/man/wesnothd.6:170
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:212 ../../doc/man/wesnoth_editor.6:84 ../../doc/man/wesnothd.6:171
+#: ../../doc/man/wesnoth.6:212 ../../doc/man/wesnoth_editor.6:84
+#: ../../doc/man/wesnothd.6:171
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:215 ../../doc/man/wesnoth_editor.6:87 ../../doc/man/wesnothd.6:174
+#: ../../doc/man/wesnoth.6:215 ../../doc/man/wesnoth_editor.6:87
+#: ../../doc/man/wesnothd.6:174
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:218 ../../doc/man/wesnoth_editor.6:90 ../../doc/man/wesnothd.6:177
+#: ../../doc/man/wesnoth.6:218 ../../doc/man/wesnoth_editor.6:90
+#: ../../doc/man/wesnothd.6:177
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -548,7 +560,8 @@ msgid ""
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:219 ../../doc/man/wesnoth_editor.6:91 ../../doc/man/wesnothd.6:178
+#: ../../doc/man/wesnoth.6:219 ../../doc/man/wesnoth_editor.6:91
+#: ../../doc/man/wesnothd.6:178
 #, no-wrap
 msgid "SEE ALSO"
 msgstr ""
@@ -701,8 +714,8 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
 msgid ""
-"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] "
-"[\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
+"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
 
 # type: Plain text
@@ -713,9 +726,9 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
 msgid ""
-"Manages Battle for Wesnoth multiplayer games. See "
-"http://www.wesnoth.org/wiki/ServerAdministration on what commands the server "
-"accepts via the wesnoth client or the socket."
+"Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
+"wiki/ServerAdministration on what commands the server accepts via the "
+"wesnoth client or the socket."
 msgstr ""
 
 # type: TP
@@ -860,8 +873,8 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
 msgid ""
-"The number of allowed connections from the same IP. B<0> means "
-"infinite. (default: B<5>)"
+"The number of allowed connections from the same IP. B<0> means infinite. "
+"(default: B<5>)"
 msgstr ""
 
 # type: TP
@@ -875,8 +888,8 @@ msgstr ""
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: "
-"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
+"computer,human,network,player>."
 msgstr ""
 
 # type: TP
@@ -887,7 +900,8 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:123
-msgid "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
+msgid ""
+"The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr ""
 
 # type: TP
@@ -922,7 +936,8 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:132
-msgid "The password used to gain admin privileges. Usually it starts with `admin '."
+msgid ""
+"The password used to gain admin privileges. Usually it starts with `admin '."
 msgstr ""
 
 # type: TP
