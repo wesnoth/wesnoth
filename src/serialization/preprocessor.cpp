@@ -720,22 +720,24 @@ bool preprocessor_data::get_chunk()
 			}
 			// If this is a known pre-processing symbol, then we insert it, 
 			// otherwise we assume it's a file name to load.
-			preproc_map::const_iterator macro = target_.defines_->find(symbol),
-			                            unknown_macro = target_.defines_->end();
-			if (macro != unknown_macro) {
+			preproc_map::const_iterator macro = target_.defines_->find(symbol);
+			if(macro != target_.defines_->end()) {			
 			    
-			    for(std::vector<std::string>::iterator iter=called_macros_->begin(); iter!=called_macros_->end(); ++iter)
-			    {
-			        if(*iter==symbol)
-			        {
-                        std::ostringstream error;
-                        error << "symbol '" << symbol << "' will cause a recursive macro call";
-                        std::ostringstream location;
-                        location<<linenum_<<' '<<target_.location_;
-                        target_.error(error.str(), location.str());
-			        }
-			    }
-			    
+				// INCLUDE is special and is allowed to be used recusively.
+				if(symbol != "INCLUDE") {
+				    for(std::vector<std::string>::iterator 
+							iter=called_macros_->begin(); 
+							iter!=called_macros_->end(); ++iter) {
+						if(*iter==symbol) {
+							std::ostringstream error;
+							error << "symbol '" << symbol << "' will cause a recursive macro call";
+							std::ostringstream location;
+							location<<linenum_<<' '<<target_.location_;
+							target_.error(error.str(), location.str());
+						}
+					}
+				}
+					
 				preproc_define const &val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				if (nb_arg != val.arguments.size()) {
