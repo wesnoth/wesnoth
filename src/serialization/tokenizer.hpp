@@ -80,6 +80,19 @@ protected:
 
 	inline void next_char_fast()
 	{
+		do {
+			if (LIKELY(in_.good()))
+			{
+				current_ = in_.get();
+			}
+			else
+			{
+				current_ = EOF;
+				return;
+			}
+		}while (UNLIKELY(current_ == '\r'))
+#if 0
+		// @todo: disabled untill campaign server is fixed
 		if(LIKELY(in_.good())) {
 			current_ = in_.get();
 			if (UNLIKELY(current_ == '\r'))
@@ -94,6 +107,7 @@ protected:
 		} else {
 			current_ = EOF;
 		}
+#endif
 	}
 
 	inline int peek_char() const
