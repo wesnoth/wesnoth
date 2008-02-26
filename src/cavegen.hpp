@@ -61,10 +61,13 @@ private:
 
 	void place_passage(const passage& p);
 
-	bool on_board(const gamemap::location& loc) const
-		{ return loc.x >= 0 && loc.y >= 0 &&
-            loc.x < static_cast<long>(width_) &&
-            loc.y < static_cast<long>(height_); }
+	// Note we assume a border size of 1.
+	bool on_board(const gamemap::location& loc) const 
+	{
+		return loc.x > 0 && loc.y > 0 &&
+			loc.x < static_cast<long>(width_ - 1) &&
+			loc.y < static_cast<long>(height_ - 1); 
+	}
 
 	void set_terrain(gamemap::location loc, t_translation::t_terrain t);
 	void place_castle(const std::string& side, gamemap::location loc);
