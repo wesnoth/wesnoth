@@ -868,7 +868,7 @@ void game::add_player(const network::connection player, const bool observer) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
 		send_and_record_server_message(user->second.name()
-				+ " has joined the game."), player);
+				+ " has joined the game.", player);
 	} else if (!allow_observers()) {
 		return; //false;
 	} else {
