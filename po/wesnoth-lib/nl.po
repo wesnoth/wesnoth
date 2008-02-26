@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-11 21:56+0100\n"
-"PO-Revision-Date: 2008-01-28 22:12+0100\n"
+"PO-Revision-Date: 2008-02-26 20:17+0100\n"
 "Last-Translator: Joeri Melis <joeri_melis@hotmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -179,7 +179,6 @@ msgid "Mushroom Grove"
 msgstr "Paddenstoelenveld"
 
 #: data/core/terrain.cfg:716
-#, fuzzy
 msgid "Mushroom Grove Lit"
 msgstr "Verlicht paddenstoelenveld"
 
@@ -188,7 +187,6 @@ msgid "Rockbound Cave"
 msgstr "Rotsgrot"
 
 #: data/core/terrain.cfg:736
-#, fuzzy
 msgid "Rockbound Cave Lit"
 msgstr "Verlichte rotsgrot."
 
@@ -428,9 +426,8 @@ msgid "Add As Friend"
 msgstr "Voeg toe als vriend"
 
 #: src/game_preferences_display.cpp:174
-#, fuzzy
 msgid "Add As Ignore"
-msgstr "Voeg toe als negeer"
+msgstr "Voeg toe als negerend"
 
 #: src/game_preferences_display.cpp:175
 msgid "Remove"
@@ -1255,21 +1252,20 @@ msgstr ""
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
-"Wanneer je een fout meldt gelieve de volgende foutboodschap bij het bericht "
-"te voegen :"
+"Wanneer je een fout meldt gelieve de volgende boodschap bij het bericht te "
+"voegen :"
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"De noodzakelijke sleutel '$key|' in sectie '[$section|]' waar '$primary_key| "
-"= $primary_value' is niet gezet."
+"In sectie '[$section|]' waar '$primary_key| = $primary_value' is het "
+"verplichte veld '$key|' niet ingevuld."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
-"De noodzakelijke sleutel '$key|' in sectie '[$section|]' is niet gezet."
+msgstr "In sectie '[$section|]' is het verplichte veld '$key|' niet gezet."
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Sneltoets bewaren"
