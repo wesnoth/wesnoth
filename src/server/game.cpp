@@ -417,9 +417,10 @@ void game::send_change_controller(const size_t side_num,
 {
 	if (newplayer == player_info_->end()) return;
 	const std::string& side = lexical_cast<std::string, size_t>(side_num);
-	send_and_record_server_message(newplayer->second.name()
-			+ " takes control of side " + side + ".");
-
+	if (started_) {
+		send_and_record_server_message(newplayer->second.name()
+				+ " takes control of side " + side + ".");
+	}
 	config response;
 	config& change = response.add_child("change_controller");
 
@@ -866,6 +867,8 @@ void game::add_player(const network::connection player, const bool observer) {
 	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
+		send_and_record_server_message(user->second.name()
+				+ " has joined the game."), player);
 	} else if (!allow_observers()) {
 		return; //false;
 	} else {
