@@ -36,9 +36,9 @@ my $source = 1;
 # If translating, and not from the source, remove the comment on the following line
 #use Locale::Maketext::Gettext;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
-my $images = 0;
+my $images = 1;
 # This option will determine if the html report on made animations is generated
-my $animations = 0;
+my $animations = 1;
 # This is the version number that will appear on the unit trees
 my $version = 'trunk';
 # These option will try to process the user made Eras
