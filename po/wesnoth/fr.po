@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:37+0100\n"
-"PO-Revision-Date: 2008-02-24 23:54+0100\n"
+"PO-Revision-Date: 2008-02-26 18:07+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -296,9 +296,8 @@ msgid "Bots"
 msgstr "Bots"
 
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
@@ -1629,9 +1628,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités mécaniques ont généralement « Mécanique » comme seul trait. Commes "
-"ces unités n'ont pas vraiement de vie propre, le drain de vie, la peste et "
-"au poison n'ont aucun effet sur elles."
+"Les unités mécaniques ont généralement « Mécanique » comme seul trait. "
+"Commes ces unités n'ont pas vraiement de vie propre, le drain de vie, la "
+"peste et au poison n'ont aucun effet sur elles."
 
 #: data/core/help.cfg:398
 msgid "Dextrous"
@@ -2332,6 +2331,7 @@ msgid ""
 msgstr ""
 "\n"
 "Rafraîchit l'écran.\n"
+"\n"
 
 #: data/core/help.cfg:698
 msgid ""
@@ -5720,23 +5720,20 @@ msgstr ""
 "un autre nom."
 
 #: src/dialogs.cpp:287
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Ce fichier existe déjà. Voulez-vous l'écraser ?"
+msgstr "Cette sauvegarde existe déjà. Voulez-vous l'écraser ?"
 
 #: src/dialogs.cpp:288 src/menu_events.cpp:751 src/playcampaign.cpp:423
-#, fuzzy
 msgid "Name: "
-msgstr "Nom :"
+msgstr "Nom : "
 
 #: src/dialogs.cpp:289
 msgid "Overwrite?"
 msgstr "Écraser ?"
 
 #: src/dialogs.cpp:308
-#, fuzzy
 msgid "Filter: "
-msgstr "Capacités : "
+msgstr "Filtre : "
 
 #: src/dialogs.cpp:375
 msgid "Do you really want to delete this game?"
@@ -6324,17 +6321,12 @@ msgid "Help"
 msgstr "Aide"
 
 #: src/help.cpp:1111
-#, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
-msgstr "Unités ayant ce type d'attaque spéciale :"
+msgstr "<header>text='Unités ayant ce type d'attaque spéciale'</header>"
 
 #: src/help.cpp:1179
-#, fuzzy
 msgid "<header>text='Units having this ability'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Probabilité de toucher'</header>"
+msgstr "<header>text='Unités ayant cette capacité'</header>"
 
 #: src/help.cpp:1244
 msgid "Advances from: "
@@ -6422,12 +6414,8 @@ msgid "Movement Cost"
 msgstr "Coût des mouvements"
 
 #: src/help.cpp:1618
-#, fuzzy
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Probabilité de toucher'</header>"
+msgstr "<header>text='Unités de cette race'</header>"
 
 #: src/help.cpp:2514 src/menu_events.cpp:716
 msgid " < Back"
@@ -6547,27 +6535,24 @@ msgid "Details"
 msgstr "Détails"
 
 #: src/menu_events.cpp:210
-#, fuzzy
 msgid "Damage"
-msgstr "dégât"
+msgstr "Dégâts"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Total"
 
 #: src/menu_events.cpp:213
-#, fuzzy
 msgid "This Turn"
-msgstr "Tour"
+msgstr "Ce tour"
 
 #: src/menu_events.cpp:222
-#, fuzzy
 msgid "Inflicted"
-msgstr "Dégâts infligés"
+msgstr "Infligés"
 
 #: src/menu_events.cpp:246
 msgid "Taken"
-msgstr ""
+msgstr "Subis"
 
 #: src/menu_events.cpp:296 src/menu_events.cpp:300
 msgid "Do you really want to dismiss him?"
@@ -6848,100 +6833,91 @@ msgstr "Rechercher"
 
 #: src/menu_events.cpp:1839
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "Niveau de debug inconnu : « $level »."
 
 #: src/menu_events.cpp:1841 src/menu_events.cpp:1850 src/menu_events.cpp:2155
 #: src/menu_events.cpp:2161 src/menu_events.cpp:2195 src/menu_events.cpp:2207
 #: src/menu_events.cpp:2214
-#, fuzzy
 msgid "error"
-msgstr "Erreur"
+msgstr "erreur"
 
 #: src/menu_events.cpp:1848
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "Domaine de debug inconnu : « $domain »."
 
 #: src/menu_events.cpp:1857
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
+msgstr "Affectation du domaine « $domain » au niveau « $level »."
 
 #: src/menu_events.cpp:1912
 msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
 msgstr ""
+"Commandes: msg/whisper <nom> <message>, list <sous-commande> [<argument>], "
+"me/emote <message>. Tapez /help [<commande>] pour des instructions "
+"détaillées."
 
 #: src/menu_events.cpp:1943
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control any "
 "side in a game. Usage: /msg <nick> <message>"
 msgstr ""
 "Envoie un message privé. Vous ne pouvez pas envoyer de messages privé aux "
-"joueurs qui contrôlent un camp dans une partie. Usage : /whisper [nick] "
-"[message]"
+"joueurs qui contrôlent un camp dans une partie. Utilisation : /whisper <nom> "
+"<message>"
 
 #: src/menu_events.cpp:1949
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list <subcommand> [<argument>] Subcommands: addfriend, "
 "addignore, remove, display, clear. Type /help list <subcommand> for more "
 "info."
 msgstr ""
-"Ignore les messages des joueurs dans la liste des ignorés et met en valeur "
-"ceux des joueurs dans la liste des amis. Utilisation : /list [sous-commande] "
-"[argument](optionel). Sous-commandes : addfriend addignore remove display "
-"clear. Tapez /help list [sous-commande] pour plus d'informations."
+"Ignore les messages des joueurs de la liste des ignorés et met en valeur "
+"ceux des joueurs dans la liste des amis. Utilisation : /list <sous-commande> "
+"[<argument>]. Sous-commandes : addfriend, addignore, remove, display, clear. "
+"Tapez /help list <sous-commande> pour plus d'informations."
 
 #: src/menu_events.cpp:1957
-#, fuzzy
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr ""
-"Ajoute le joueur à la liste des amis. Utilisation : /list addfriend "
-"[argument]"
+"Ajoute le joueur à la liste des amis. Utilisation : /list addfriend <nom>"
 
 #: src/menu_events.cpp:1961
-#, fuzzy
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr ""
-"Ajoute le joueur à la liste des ignorés. Utilisation : /list ignore "
-"[argument]"
+"Ajoute le joueur à la liste des ignorés. Utilisation : /list ignore <nom>"
 
 #: src/menu_events.cpp:1965
-#, fuzzy
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
 "Retire le joueur de la liste des amis ou ignorés. Utilisation : /list remove "
-"[argument]"
+"<nom>"
 
 #: src/menu_events.cpp:1969
-#, fuzzy
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
-msgstr "Efface votre liste des amis et ignorés. Utilisation : /list clear"
+msgstr ""
+"Efface toute votre liste des amis et ignorés. Utilisation : /list clear"
 
 #: src/menu_events.cpp:1973
-#, fuzzy
 msgid "Show your ignores and friends list. Usage: /list display"
-msgstr "Montre votre liste des ignorés. Utilisation : /list display"
+msgstr "Affiche votre liste des amis et ignorés. Utilisation : /list display"
 
 #: src/menu_events.cpp:1976
-#, fuzzy
 msgid "Unknown subcommand."
-msgstr "Sous-commande inconnue"
+msgstr "Sous-commande inconnue."
 
 #: src/menu_events.cpp:1981
-#, fuzzy
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
 msgstr ""
-"Envoie une émotion ou une action personnelle dans la discussion. Usage : /"
-"emote [message]"
+"Envoie une émotion ou une action personnelle dans la discussion. "
+"Utilisation : /me <message>"
 
 #: src/menu_events.cpp:1984
-#, fuzzy
 msgid "Unknown command."
-msgstr "Commande inconnue"
+msgstr "Commande inconnue."
 
 #: src/menu_events.cpp:1990
 msgid "Added to ignore list: "
@@ -6973,33 +6949,31 @@ msgstr "Impossible de trouver une note ou une unité contenant : « $search »."
 
 #: src/menu_events.cpp:2156
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
+msgstr "Impossible de robotiser ce camp invalide : « $side »."
 
 #: src/menu_events.cpp:2162
 msgid "Can't droid networked side: '$side'."
-msgstr ""
+msgstr "Impossible de robotiser ce camp distant : « $side »."
 
 #: src/menu_events.cpp:2196
 msgid "Usage: control <side> <nick>"
-msgstr ""
+msgstr "Utilisation : control <camp> <nom>"
 
 #: src/menu_events.cpp:2208
 msgid "Can't change control of invalid side: '$side'."
-msgstr ""
+msgstr "Impossible de changer le contrôle de ce camp invalide : « $side »."
 
 #: src/menu_events.cpp:2215
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr ""
+msgstr "Impossible de changer le contrôle de ce camp hors-limites : « $side »."
 
 #: src/menu_events.cpp:2253
-#, fuzzy
 msgid "Debug mode activated!"
-msgstr "Commandes du mode débug"
+msgstr "Mode debug enclenché !"
 
 #: src/menu_events.cpp:2256
-#, fuzzy
 msgid "Debug mode deactivated!"
-msgstr "Commandes du mode débug"
+msgstr "Mode debug desactivé !"
 
 #: src/menu_events.cpp:2337
 msgid "prompt^Command:"
@@ -7153,9 +7127,8 @@ msgid "Unable to find a leader type for faction $faction"
 msgstr "Aucun chef pour la faction $faction n'est trouvable"
 
 #: src/multiplayer_connect.cpp:905
-#, fuzzy
 msgid "Game Lobby: "
-msgstr "Vestibule"
+msgstr "Vestibule : "
 
 #: src/multiplayer_connect.cpp:925
 msgid "Player/Type"
@@ -7440,20 +7413,18 @@ msgid "Unknown scenario"
 msgstr "Scénario inconnu"
 
 #: src/multiplayer_lobby.cpp:484
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Charger une partie sauvegardée"
+msgstr "Partie rechargée"
 
 #: src/multiplayer_lobby.cpp:500
 msgid "Turn "
 msgstr "Tour "
 
 #: src/multiplayer_lobby.cpp:504
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Place vacante :"
-msgstr[1] "Place vacante :"
+msgstr[1] "Places vacantes :"
 
 #: src/multiplayer_lobby.cpp:507 src/multiplayer_lobby.cpp:757
 msgid "Password Required"
