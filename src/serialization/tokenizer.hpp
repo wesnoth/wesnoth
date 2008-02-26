@@ -90,7 +90,7 @@ protected:
 				current_ = EOF;
 				return;
 			}
-		}while (UNLIKELY(current_ == '\r'))
+		}while (UNLIKELY(current_ == '\r'));
 #if 0
 		// @todo: disabled untill campaign server is fixed
 		if(LIKELY(in_.good())) {
