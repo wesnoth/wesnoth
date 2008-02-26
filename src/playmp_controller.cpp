@@ -297,6 +297,7 @@ void playmp_controller::linger(upload_log& log)
 		quit = true;
 		try {
 			// reimplement parts of play_side()
+			player_number_ = first_player_;
 			turn_data_ = new turn_info(gameinfo_, gamestate_, status_,
 			                           *gui_,map_, teams_, player_number_,
 			                           units_, replay_sender_, undo_stack_);

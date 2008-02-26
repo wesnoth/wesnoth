@@ -1936,6 +1936,7 @@ void recalculate_fog(const gamemap& map,
 		unit_map& units,
 		std::vector<team>& teams, int team) {
 
+	assert(team >= 0 && team < teams.size());
 	teams[team].refog();
 
 	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
