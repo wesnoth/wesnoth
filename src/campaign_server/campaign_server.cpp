@@ -136,9 +136,6 @@ namespace {
 		hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
 	}
 
-	const int num_suffix = 3;
-	const char* fname_suffix[] = {".cfg",".map",".txt",".py",".tree",".po",".gmo"};
-	
 	void find_translations(const config& cfg, config& campaign)
 	{
 		const config::child_list& dirs = cfg.get_children("dir");
