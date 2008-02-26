@@ -61,7 +61,7 @@ definitions:
 # Generate a reference page for the utility macros.
 macro-reference.xhtml:
 	@cat helpheader.xhtml >macro-reference.xhtml
-	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(MAINLINE) >>macro-reference.xhtml
+	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/ >>macro-reference.xhtml
 	@cat helptrailer.xhtml >>macro-reference.xhtml
 
 # Report on unchecked macro calls
