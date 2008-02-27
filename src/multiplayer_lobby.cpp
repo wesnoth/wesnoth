@@ -653,8 +653,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
 	game_config::debug = false;
 	gamelist_updated();
-	// Uncommented until we implement playlist support here.
-	//sound::play_music_repeatedly(game_config::title_music);
+	sound::play_music_repeatedly(game_config::lobby_music);
 }
 
 void lobby::hide_children(bool hide)
