@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2008-02-27 13:04+0100\n"
-"PO-Revision-Date: 2008-02-16 12:43+0100\n"
+"PO-Revision-Date: 2008-02-27 14:40+0100\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -286,7 +286,6 @@ msgstr "Multigiocatore"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:144
-#, fuzzy
 msgid ""
 "Click this button to play single scenarios against one or more opponents. "
 "You can play the games over the internet or at your computer, against "
@@ -296,9 +295,9 @@ msgid ""
 msgstr ""
 "Premi questo pulsante per giocare un singolo scenario contro uno o più "
 "avversari. Puoi giocare su internet o sul tuo computer, contro il computer o "
-"avversari umani. Quando scegli questo pulsante, comparirà una finestra che "
-"ti permetterà di scegliere come vuoi giocare lo scenario. Per saperne di "
-"più, vedi <xref linkend=\"scenarios\"/>."
+"avversari umani. Quando premi questo pulsante, compare una finestra che "
+"permette di scegliere come vuoi giocare lo scenario. Per saperne di più, "
+"vedi la sezione <link linkend=\"scenarios\">scenari</link>."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:154
@@ -518,7 +517,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:301
-#, fuzzy
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -532,10 +530,10 @@ msgid ""
 "within the scenario."
 msgstr ""
 "In generale le partite multigiocatore si giocano contro altri giocatori su "
-"internet (puoi anche giocarle su una LAN se ce l'hai). Queste partite sono "
-"coordinate attraverso il server multigiocatore di Wesnoth. Le partite "
+"internet (puoi anche giocarle su una LAN se ce l'hai). Tutte queste partite "
+"sono coordinate attraverso il server multigiocatore di Wesnoth. Le partite "
 "multigiocatore possono durare da 1 a 10 ore, secondo il numero di giocatori "
-"(e le dimensioni della mappa). Il tempo medio è di 3-7 ore. Le partite "
+"(e le dimensioni della mappa). Il tempo medio è di 3–7 ore. Le partite "
 "possono essere salvate e caricate quante volte vuoi. Dunque è possibile che "
 "alcune partite durino 1 o 2 settimane, anche se il tempo di gioco è di poche "
 "ore. Nel multigiocatore non si possono trasportare le unità da uno scenario "
@@ -580,19 +578,16 @@ msgstr "Connetti all'host/server"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:331
-#, fuzzy
 msgid ""
 "This option opens a dialog box allowing you to enter the address of the "
 "machine to join. In this dialog there also is the button \"View List\" that "
 "does show a list of official servers that can be used as backup if the main "
 "server is currently not available."
 msgstr ""
-"Questa scelta apre una finestra che ti permette di inserire l'indirizzo del "
-"cmputer a cui collegarsi. Può essere sia un altro computer che ospita una "
-"partita in rete senza usare un server oppure un altro server. In questa "
-"finestra, c'è anche il pulsante «Elenco» che mostra l'elenco di server "
-"ufficiali che possono essere usati di riserva se il server principale non "
-"fosse raggiungibile."
+"Questa scelta apre una finestra che permette di inserire l'indirizzo del "
+"computer a cui collegarsi. In questa finestra, c'è anche il pulsante «Elenco» "
+"che mostra l'elenco di server ufficiali che possono essere usati di riserva "
+"se il server principale non fosse raggiungibile."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:336
@@ -607,7 +602,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:339
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -621,14 +615,17 @@ msgid ""
 "make firewall changes to join games hosted on a public server or by someone "
 "else."
 msgstr ""
-"Puoi ospitare partite multigiocatori con il tuo computer senza dover usare "
-"un server dedicato. Se ospiti una partita con il tuo computer, gli altri "
-"giocatori dovranno collegarsi alla tua porta 15000 con il protocollo ICP. Se "
-"sei dietro un firewall, probabilmente dovrai cambiare le impostazioni del "
-"tuo firewall per accettare i collegamenti in arrivo sulla porta 15000 e "
-"incanalare questo traffico sul computer che ospita la partita. Invece non "
-"dovrebbe essere necessario modificare le impostazioni del firewall per "
-"unirsi a partite ospitate su un server pubblico o da qualcun altro."
+"Per poter ospitare partite multigiocatori senza dover usare un server "
+"dedicato, devi avviare il server, che si chiama solitamente "
+"<emphasis>wesnothd</emphasis>. Quindi devi connetterti alla tua stessa "
+"macchina dalla fainestra <emphasis>Connettiti all'host/server</emphasis> "
+"inserendo 127.0.0.1 come indirizzo da usare. Gli altri giocatori dovranno "
+"collegarsi alla tua porta 15000 con il protocollo TCP. Se sei dietro un "
+"firewall, probabilmente dovrai cambiarene le impostazioni del per accettare "
+"i collegamenti in arrivo sulla porta 15000 e incanalare questo traffico sul "
+"computer che ospita la partita. Invece non dovrebbe essere necessario "
+"modificare le impostazioni del firewall per unirsi a partite ospitate su un "
+"server pubblico o da qualcun altro."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -1638,7 +1635,6 @@ msgstr "Unità"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1065
-#, fuzzy
 msgid ""
 "Battle for Wesnoth has hundreds of unit types which are characterized by a "
 "rich set of statistics. In addition, individual units can have specific "
@@ -1648,10 +1644,10 @@ msgid ""
 msgstr ""
 "Battle for Wesnoth ha centinaia di tipi di unità che sono caratterizzati da "
 "un ampio ventaglio di statistiche. Inoltre, le singole unità possono avere "
-"specifiche <xref linkend=\"traits\"/> che le le rende leggermente differenti "
-"da altre unità dello stesso tipo. Infine, i progettisti delle campagne "
-"possono aggiungere unità uniche alle loro campagne per espandere "
-"ulteriormente le scelte disponibili ai giocatori."
+"specifiche <link linkend=\"traits\">caratteristiche</link> che le rende "
+"leggermente differenti da altre unità dello stesso tipo. Infine, i "
+"progettisti delle campagne possono aggiungere unità uniche alle loro "
+"campagne per espandere ulteriormente le scelte disponibili ai giocatori."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1071
@@ -2674,7 +2670,6 @@ msgstr "Spostamento"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1905
-#, fuzzy
 msgid ""
 "Clicking on a unit identifies all the places it can move on its current turn "
 "by dimming unreachable hexes (pressing the number keys 2-7 will identify the "
@@ -2701,9 +2696,9 @@ msgstr ""
 "potrà essere cancellata scegliendo un'altra unità (cliccando sulla nuova "
 "unità o usando il tasto <literal>n</literal> o <literal>N</literal> o "
 "cliccando con il tasto destro (Command-clic su Mac) un qualunque punto della "
-"mappa. La <xref linkend=\"orbs\"/> sopra la barra dell'energia di una unità "
-"è un modo veloce per sapere quali delle tue unità hanno già mosso o si "
-"possono ancora muovere nel turno corrente."
+"mappa. La <link linkend=\"orbs\">sfera</link> sopra la barra dell'energia di "
+"una unità è un modo veloce per sapere quali delle tue unità hanno già mosso "
+"o si possono ancora muovere nel turno corrente."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1919
@@ -3985,18 +3980,3 @@ msgstr "<glossterm> ZDC </glossterm>"
 #: ../../doc/manual/manual.en.xml:2598
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr "<link linkend=\"zoc\">Zona di controllo</link>."
-
-# type: Content of: <book><chapter><section><section><section><title>
-#~ msgid "Host Networked Game"
-#~ msgstr "Ospita partita in rete"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#~ msgid "Healers will first heal their own units and then all friendly ones."
-#~ msgstr ""
-#~ "I guaritori curano per prime le unità della propria fazione e poi quelle "
-#~ "delle fazioni amiche."
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#~ msgid "Trolls and Woses can be healed by healers and a village."
-#~ msgstr ""
-#~ "I troll e i wose possono essere curati dai guaritori e da un villaggio."
