@@ -14,10 +14,22 @@
 # It takes a list of directories as arguments; if none is given, it
 # behaves as though the current directory had been specified as a
 # single argument.  Each directory is treated as a separate domain for
-# macro and resource visibility purposes, except that macros and resources
-# under the first directory are made visible in all later ones.  (Typically
-# the first directory should point at a copy of mainline and all later
-# ones at UMC.)
+# macro and resource visibility purposes.
+#
+# There are two kinds of namespace, exporting and non-exporting.
+# Exporting namespaces make all their resources and macro names
+# globally visible.  You can make a namespace exporting by embedding
+# a comment like this in it:
+#
+#     # wmlscope: export=yes
+#
+# Wesnoth core data is an exporting namespace.  Campaigns are non-exporting;
+# they should contain the declaration
+#
+#     # wmlscope: export=no
+#
+# somewhere.  wmlscope will complain when it sees a nam,espace with no export
+# property, then treat it as non-exporting.
 #
 # This tool does catch one kind of implicit reference: if an attack name
 # is specified but no icon is given, the attack icon will default to
