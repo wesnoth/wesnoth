@@ -722,7 +722,11 @@ bool preprocessor_data::get_chunk()
 			// otherwise we assume it's a file name to load.
 			preproc_map::const_iterator macro = target_.defines_->find(symbol);
 			if(macro != target_.defines_->end()) {			
-			    
+
+//! @todo it seems some addons use other names instead of include so disable the 
+//! code for now. Once 1.4 has been released we can try to fix it again or
+//! make it mandatory to use INCLUDE for this purpose.
+#if 0			
 				// INCLUDE is special and is allowed to be used recusively.
 				if(symbol != "INCLUDE") {
 				    for(std::vector<std::string>::iterator 
@@ -737,7 +741,7 @@ bool preprocessor_data::get_chunk()
 						}
 					}
 				}
-					
+#endif					
 				preproc_define const &val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				if (nb_arg != val.arguments.size()) {
