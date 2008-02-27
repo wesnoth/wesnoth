@@ -48,9 +48,9 @@ class Forest:
         return allfiles
     def generator(self):
         "Return a generator that walks through all files."
-        for tree in self.forest:
+        for (dir, tree) in zip(self.dirpath, self.forest):
             for filename in tree:
-                yield filename
+                yield (dir, filename)
 
 def iswml(filename):
     "Is the specified filename WML?"
@@ -239,9 +239,10 @@ class CrossRef:
         self.xref = {}
         self.fileref = {}
         self.noxref = False
+        self.properties = {}
         if warnlevel >=2:
             print "*** Beginning definition-gathering pass..."
-        for filename in self.filelist.generator():
+        for (namespace, filename) in self.filelist.generator():
             if warnlevel > 1:
                 print filename + ":"
             if isresource(filename):
@@ -261,7 +262,14 @@ class CrossRef:
                         print '"%s", line %d: warnlevel set to %d (definition-gathering pass)' \
                              % (filename, n+1, warnlevel)
                         continue
-                    elif line.strip().startswith("#define"):
+                    m = re.search("# *wmlscope: set *([^=]*)=(.*)", line)
+                    if m:
+                        prop = m.group(1).strip()
+                        value = m.group(1).strip()
+                        if namespace not in self.properties:
+                            self.properties[namespace] = {}
+                        self.properties[namespace][prop] = value
+                    if line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
                         here = Reference(filename, n+1, line, args=tokens[2:])
@@ -316,7 +324,7 @@ class CrossRef:
         formals = []
         if warnlevel >=2:
             print "*** Beginning reference-gathering pass..."
-        for fn in self.filelist.generator():
+        for (namespace, fn) in self.filelist.generator():
             if iswml(fn):
                 rfp = open(fn)
                 attack_name = None
@@ -465,6 +473,10 @@ class CrossRef:
                         elif line.strip().startswith("["):
                             beneath += 1
                 rfp.close()
+        # Check whether each namespace has a defined export property
+        for namespace in dirpath:
+            if namespace not in self.properties or "export" not in self.properties[namespace]:
+                print "warning: %s has no export property" % namespace
     def subtract(self, filelist):
         "Transplant file references in files from filelist to a new CrossRef."
         smallref = CrossRef()
