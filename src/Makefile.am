@@ -139,7 +139,7 @@ wesnoth_editor_SOURCES = \
 	generic_event.cpp \
 	tooltips.cpp 
 
-wesnoth_editor_LDADD = $(THELIBS) libwesnoth.a
+wesnoth_editor_LDADD = $(INTERNALLIBS) libwesnoth.a $(THELIBS)
 wesnoth_editor_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
@@ -210,7 +210,7 @@ test_SOURCES = \
 	tests/test_network_worker.cpp \
 	$(wesnoth_source)
 
-test_LDADD = $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a 
+test_LDADD = $(INTERNALLIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a $(THELIBS)  
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
