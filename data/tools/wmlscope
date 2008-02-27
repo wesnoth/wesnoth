@@ -148,7 +148,10 @@ class CrossRefLister(CrossRef):
                 print "%s: macro %s(%s) has mismatches:" % (m, n, ", ".join(map(lambda x: "%s=%s" % (x, formaltype(x)), m.args)))
                 for (file, refs) in m.references.items():
                     for (ln, args) in refs:
-                        print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(map(lambda f, a: "%s=%s" % (f, actualtype(a)), m.args, args)))
+                        try:
+                            print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(map(lambda f, a: "%s=%s" % (f, actualtype(a)), m.args, args)))
+                        except AttributeError:
+                            print '"%s", line %d: internal error in reporter' % (file, ln)
     def typelist(self, branch):
         "Dump actual and formal aruments for macros in specified file"
         already_seen = []
