@@ -255,7 +255,7 @@ bool server::ip_exceeds_connection_limit(const std::string& ip) const {
 		}
 	}
 
-	return connections > concurrent_connections_;
+	return connections >= concurrent_connections_;
 }
 
 bool server::is_ip_banned(const std::string& ip) const {
