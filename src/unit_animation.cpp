@@ -301,6 +301,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animation_base.push_back(unit_animation(0,unit_frame(default_image,600),"",unit_animation::DEFAULT_ANIM));
 
 	animations.push_back(unit_animation(0,unit_frame(default_image,1),"_disabled_",0));
+	animations.push_back(unit_animation(0,unit_frame(default_image,1,"","",display::rgb(255,255,255),"0.0~0.3:100,0.3~0.0:200"),"_disabled_selected_",0));
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
 		unit_animation tmp_anim = *itor;
 		// provide all default anims
