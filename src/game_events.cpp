@@ -2029,7 +2029,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			[filter_location]
 			[/filter_location]
 			[command]
-				{UNIT (Troll) (Myname) ( _ "Myname") $side_number $x1 $y1}
+				{LOYAL_UNIT $side_number (Troll) $x1 $y1 (Myname) ( _ "Myname")}
 			[/command]
 		[/set_menu_item]
 		*/
