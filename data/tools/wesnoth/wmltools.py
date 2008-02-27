@@ -153,7 +153,8 @@ def argmatch(formals, actuals):
 
 class Reference:
     "Describes a location by file and line."
-    def __init__(self, filename, lineno=None, docstring=None, args=None):
+    def __init__(self, namespace, filename, lineno=None, docstring=None, args=None):
+        self.namespace = namespace
         self.filename = filename
         self.lineno = lineno
         self.docstring = docstring
@@ -178,7 +179,7 @@ class Reference:
         else:
             return cmp(self.lineno, other.lineno)
     def mismatches(self):
-        copy = Reference(self.filename, self.lineno, self.docstring, self.args)
+        copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args)
         copy.undef = self.undef
         for filename in self.references:
             mis = filter(lambda (ln, a): a is not None and not argmatch(self.args, a), self.references[filename])
@@ -216,8 +217,8 @@ class CrossRef:
         if defn.undef != None:
             # Local macros are only visible in the file where they were defined
             return defn.filename == fn and n >= defn.lineno and n <= defn.undef
-        elif defn.filename in self.filelist.forest[0]:
-            # Macros and resources in the first subtree are visible everywhere.
+        if self.properties[defn.namespace].get("export") == "yes":
+            # Macros and resources in subtrees with export=yes are global
             return True
         elif not self.filelist.neighbors(defn.filename, fn):
             # Otherwise, must be in the same subtree.
@@ -246,7 +247,7 @@ class CrossRef:
             if warnlevel > 1:
                 print filename + ":"
             if isresource(filename):
-                self.fileref[filename] = Reference(filename)
+                self.fileref[filename] = Reference(namespace, filename)
             elif iswml(filename):
                 # It's a WML file, scan for macro definitions
                 dfp = open(filename)
@@ -265,14 +266,14 @@ class CrossRef:
                     m = re.search("# *wmlscope: set *([^=]*)=(.*)", line)
                     if m:
                         prop = m.group(1).strip()
-                        value = m.group(1).strip()
+                        value = m.group(2).strip()
                         if namespace not in self.properties:
                             self.properties[namespace] = {}
                         self.properties[namespace][prop] = value
                     if line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
-                        here = Reference(filename, n+1, line, args=tokens[2:])
+                        here = Reference(namespace, filename, n+1, line, args=tokens[2:])
                         here.hash = md5.new()
                         here.docstring = line.lstrip()[8:]	# Strip off #define_
                         state = "macro_header"
@@ -309,7 +310,7 @@ class CrossRef:
                             self.xref[name][-1].undef = n+1
                         else:
                             print "%s: unbalanced #undef on %s" \
-                                  % (Reference(filename, n+1), name)
+                                  % (Reference(namespace, filename, n+1), name)
                 dfp.close()
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
@@ -324,7 +325,7 @@ class CrossRef:
         formals = []
         if warnlevel >=2:
             print "*** Beginning reference-gathering pass..."
-        for (namespace, fn) in self.filelist.generator():
+        for (ns, fn) in self.filelist.generator():
             if iswml(fn):
                 rfp = open(fn)
                 attack_name = None
@@ -411,9 +412,9 @@ class CrossRef:
                                     candidates += 1
                                     defn.append(fn, n+1, args)
                             if candidates > 1:
-                                print "%s: more than one definition of %s is visible here." % (Reference(fn, n), name)
+                                print "%s: more than one definition of %s is visible here." % (Reference(ns, fn, n), name)
                         if candidates == 0:
-                            self.unresolved.append((name,Reference(fn,n+1,args=args)))
+                            self.unresolved.append((name,Reference(ns,fn,n+1,args=args)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
@@ -441,9 +442,9 @@ class CrossRef:
                                     self.fileref[trial].append(fn, n+1)
                                     candidates.append(trial)
                             if len(candidates) > 1:
-                                print "%s: more than one definition of %s is visible here (%s)." % (Reference(fn, n), name, ", ".join(candidates))
+                                print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
                         if not key:
-                            self.missing.append((name, Reference(fn,n+1)))
+                            self.missing.append((name, Reference(ns,fn,n+1)))
                     # Notice implicit references through attacks
                     if state == "outside":
                         if "[attack]" in line:
@@ -465,9 +466,9 @@ class CrossRef:
                                         self.fileref[trial].append(fn, n+1)
                                         candidates.append(trial)
                                 if len(candidates) > 1:
-                                    print "%s: more than one definition of %s is visible here (%s)." % (Reference(fn, n), name, ", ".join(candidates))
+                                    print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates))
                             if not key:
-                                self.missing.append((default_icon, Reference(fn,n+1)))
+                                self.missing.append((default_icon, Reference(ns,fn,n+1)))
                         elif line.strip().startswith("[/"):
                             beneath -= 1
                         elif line.strip().startswith("["):
@@ -484,7 +485,7 @@ class CrossRef:
             for (referrer, referlines) in self.fileref[filename].references.items():
                 if referrer in filelist:
                     if filename not in smallref.fileref:
-                        smallref.fileref[filename] = Reference(filename)
+                        smallref.fileref[filename] = Reference(None, filename)
                     smallref.fileref[filename].references[referrer] = referlines
                     del self.fileref[filename].references[referrer]
         return smallref
