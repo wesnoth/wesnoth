@@ -150,7 +150,7 @@ namespace game_config
 		game_title = v["title"];
 		game_logo = v["logo"];
 		title_music = v["title_music"];
-		title_music = v["lobby_music"];
+		lobby_music = v["lobby_music"];
 
 		title_logo_x = lexical_cast_default<int>(v["logo_x"]);
 		title_logo_y = lexical_cast_default<int>(v["logo_y"]);
