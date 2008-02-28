@@ -125,6 +125,7 @@ variant::variant(std::vector<variant>* array)
 	assert(array);
 	list_ = new variant_list;
 	list_->elements.swap(*array);
+	increment_refcount();
 }
 
 variant::variant(const std::string& str)
@@ -132,6 +133,7 @@ variant::variant(const std::string& str)
 {
 	string_ = new variant_string;
 	string_->str = str;
+	increment_refcount();
 }
 
 variant::variant(const variant& v)
