@@ -214,6 +214,27 @@ private:
 	}
 };
 
+class fallback_callable : public formula_callable {
+	std::string key_;
+	variant get_value(const std::string& key) const { return variant(); }
+public:
+	explicit fallback_callable(const std::string& key) : key_(key) {
+	}
+
+	const std::string& key() const { return key_; }
+};
+
+class fallback_function : public function_expression {
+public:
+	explicit fallback_function(const args_list& args)
+	  : function_expression("fallback", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		return variant(new fallback_callable(args()[0]->evaluate(variables).as_string()));
+	}
+};
+
 class attack_callable : public formula_callable {
 	gamemap::location move_from_, src_, dst_;
 	battle_context bc_;
@@ -460,6 +481,8 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new unit_moves_function(args, ai_));
 		} else if(fn == "set_var") {
 			return expression_ptr(new set_var_function(args));
+		} else if(fn == "fallback") {
+			return expression_ptr(new fallback_function(args));
 		} else if(fn == "units_can_reach") {
 			return expression_ptr(new units_can_reach_function(args, ai_));
 		} else if(fn == "defense_on") {
@@ -595,6 +618,7 @@ bool formula_ai::make_move()
 		const attack_callable* attack = i->try_convert<attack_callable>();
 		const recruit_callable* recruit_command = i->try_convert<recruit_callable>();
 		const set_var_callable* set_var_command = i->try_convert<set_var_callable>();
+		const fallback_callable* fallback_command = i->try_convert<fallback_callable>();
 
 		prepare_move();
 		if(move) {
@@ -630,6 +654,12 @@ bool formula_ai::make_move()
 			do_recruitment();
 			made_move = true;
 		} else if(i->is_string() && i->as_string() == "end_turn") {
+			return false;
+		} else if(fallback_command) {
+			ai_interface* fallback = create_ai(fallback_command->key(), get_info());
+			if(fallback) {
+				fallback->play_turn();
+			}
 			return false;
 		} else {
 			std::cerr << "UNRECOGNIZED MOVE\n";
