@@ -719,7 +719,8 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		return false;
 	}
 	channel_ids[channel] = id;
-	Mix_SetDistance(channel, distance);
+	if(group != SOUND_UI)
+		Mix_SetDistance(channel,distance);
 
 	sound_cache_chunk temp_chunk(file); // search the sound cache on this key
 	it_bgn = sound_cache.begin(), it_end = sound_cache.end();
