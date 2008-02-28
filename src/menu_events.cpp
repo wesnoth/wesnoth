@@ -1957,6 +1957,7 @@ private:
 							_("Add a nick to your friends list."
 							" Usage: /list addfriend <nick>"));
 				} else if (subcommand == "addignore"){
+					// s/ignore/addignore/
 					add_chat_message(time(NULL), "help", 0 ,
 							_("Add a nick to your ignores list."
 							" Usage: /list ignore <nick>"));
