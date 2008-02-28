@@ -38,6 +38,7 @@ public:
 	explicit variant(const game_logic::formula_callable* callable);
 	explicit variant(std::vector<variant>* array);
 	explicit variant(const std::string& str);
+	~variant();
 
 	variant(const variant& v);
 	const variant& operator=(const variant& v);
