@@ -5,14 +5,14 @@
 # Automatically generated, 2005.
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
-# naoki iimura <amatubu@gmail.com>, 2005-2007.
+# naoki iimura <amatubu@gmail.com>, 2005-2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:37+0100\n"
-"PO-Revision-Date: 2007-09-09 13:03+0900\n"
+"PO-Revision-Date: 2008-02-19 01:09+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,10 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"吸血コウモリという名前は彼らの赤い色合いからつけられました。その赤い姿は彼ら"
+"が好む食事を象徴する印です。これらの生き物は素早く、攻撃する相手から血を吸う"
+"ことができます。それにより、彼らの犠牲者が失った生命力の一部を得ることができ"
+"るのです。"
 
 #: data/core/units/bats/Bat_Blood.cfg:175
 #: data/core/units/bats/Bat_Vampire.cfg:174
@@ -49,15 +53,14 @@ msgid "Vampire Bat"
 msgstr "ヴァンパイアバット"
 
 #: data/core/units/bats/Bat_Vampire.cfg:19
-#, fuzzy
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"ヴァンパイアバットは不死の飛行動物で、 その獲物を噛んで攻撃します。 その牙は"
-"それほど強力ではありませんが、 獲物の血とともに 体力を奪い、 それを自身のもの"
-"とします。"
+"ヴァンパイアバットは飛行動物で、他の生き物の血を食料にしています。 その牙はそ"
+"れほど強力ではありませんが、 獲物の血とともに 体力を奪い、 それを自身のものと"
+"します。"
 
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
@@ -68,6 +71,8 @@ msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"たいていはオールや小さな帆によって進む小舟は短距離を移動する場合や、大きな船"
+"では航行することのできない浅瀬を移動するのに使われます。"
 
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
@@ -82,15 +87,14 @@ msgid "Pirate Galleon"
 msgstr "海賊ガレオン船"
 
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "onboard are more than happy to help relieve other ships of their weighty "
 "cargo."
 msgstr ""
-"海賊ガレオン船は輸送船にとって、羊に対する狼のようなものです。貨物を満載した"
-"船は陸地から遠く離れて単独でいるべきではありません。重量超過によって沈むのを"
-"防ぐために……"
+"海賊ガレオン船は輸送船にとって、羊に対する狼のようなものです。乗っている海賊"
+"たちは、他の船からその重たい貨物を取り除くのを手伝うのがなによりの楽しみで"
+"す。"
 
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
@@ -120,6 +124,10 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"彼らが着ている鎧がなければ、ある種のドレークは本物のドラゴンと区別がつかない"
+"かも知れません。少なくとも普通の人間にとっては。「アルマゲドンドレーク」とし"
+"て知られている生き物は非常に大きいもので、とてつもない炎に対して免疫があり、"
+"また保有しています。"
 
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/gryphons/Gryphon_Rider.cfg:29
@@ -153,14 +161,13 @@ msgid "Drake Blademaster"
 msgstr "ドレークの熟練剣士"
 
 #: data/core/units/drakes/Blademaster.cfg:19
-#, fuzzy
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
-"剣の扱いの達人であるドレークは特別な階級に就任します。この印が彼等が 戦いにお"
-"いて示す黒と白の戦闘塗装です。"
+"剣の扱いの達人であるドレークは特別な階級に就任します。この儀式の印として、戦"
+"いにおいて黒と白の戦闘化粧をしています。"
 
 #: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
 #: data/core/units/elves/Avenger.cfg:64 data/core/units/elves/Marksman.cfg:53
@@ -202,7 +209,6 @@ msgid "Drake Burner"
 msgstr "ドレークの焼却者"
 
 #: data/core/units/drakes/Burner.cfg:19
-#, fuzzy
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
@@ -210,8 +216,8 @@ msgid ""
 "combat."
 msgstr ""
 "ドレークの焼却者は数少ない、誇りを持った者達で、彼の遠い祖先の力、特に 炎の息"
-"を吐く能力について、最もよく受け継いでいます。これは、彼等の巨大で 爪のついた"
-"手が合わさることで、戦闘では危険な敵となります。"
+"を吐く能力について、最もよく受け継いでいます。これは、彼等の巨大で 恐ろしい爪"
+"が合わさることで、戦闘では危険な敵となります。"
 
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
@@ -235,12 +241,12 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
-"ドレークの粉砕者は飛行も炎の息を吐くこともできないため、多くのものは彼等が 格"
-"闘戦用に格下げられたことは、この無能さのためだと考えられています。すなわち、 "
-"その他の点で不利となるような扱いを獲得しようという試みだと。これらの技能が い"
-"くぶん不足していると考えることもできますが、この理論を支持する者達は、 彼等が"
-"仲間のドレークと戦うのにどれだけよく適しているかを考慮するのを 忘れていま"
-"す。\n"
+"ドレークの粉砕者は飛行することも炎の息を吐くこともできないため、多くのものは"
+"彼等が 格闘戦用に格下げられたことは、この無能さのためだと考えられています。す"
+"なわち、 その他の点で不利となるような扱いを獲得しようという試みだと。これらの"
+"技能が いくぶん不足していると考えることもできますが、この理論を支持する者達"
+"は、 彼等が仲間のドレークと戦うのにどれだけよく適しているかを考慮するのを 忘"
+"れています。\n"
 "\n"
 "彼等は実はドレーク階級の司法官で、彼等の軍隊は今となっては大げさで儀式的です"
 "が、 全く効果的ではないとは言えません。彼等より劣る種族と遭遇すると、彼等は "
@@ -537,6 +543,9 @@ msgid ""
 "rage before combat. These warriors forget all notion of defense, thinking "
 "only of the unrelenting assaults they are legendary for performing."
 msgstr ""
+"狂戦士はドワーフ族の中では珍しい階級で、彼らは戦闘の前に激しい激怒の中に入り"
+"込みます。これらの戦士は防御の概念をまったく忘れており、容赦のない攻撃のこと"
+"だけを考えています。この攻撃は伝説的でもあります。"
 
 #: data/core/units/dwarves/Berserker.cfg:31
 #: data/core/units/dwarves/Ulfserker.cfg:31
@@ -627,6 +636,11 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"ドワーフという種族は昔からその頑丈な体型で有名で、彼らの戦士の多くはこの体型"
+"を生かすための装備をしています。ドワーフの警護兵は塔のような盾と槍を装備して"
+"戦いへと進軍します。ほとんどの場合、彼らの役割は前線を維持し、それを突破しよ"
+"うとする者に大きな損害を与えることです。前線が進むにつれ、彼らは苦労して得た"
+"前進を安全に保つために働きます。"
 
 #: data/core/units/dwarves/Stalwart.cfg:43
 #: data/core/units/dwarves/Guardsman.cfg:40
@@ -698,6 +712,11 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
+"彼らの部隊の中で優れた者である、ドワーフの精鋭防御兵は彼らの戦線に防壁を形作"
+"ります。直接的な攻撃を彼らが固めている前線へと向ることは、たいてい論外なこと"
+"です。そのような行動は、効果がないというよりもむしろ自滅的と言えます。これら"
+"ドワーフは格闘攻撃の達人であり、オークの一途な強固さとともに、地上の一区画を"
+"占めることができます。"
 
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
@@ -2275,6 +2294,8 @@ msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
+" 銀魔術師は彼等の魔法的な性質によく調和しており、非物理的ダメージに対して高い"
+"抵抗力があります。"
 
 #: data/core/units/humans/Mage_Silver.cfg:24
 #, fuzzy
@@ -2312,11 +2333,7 @@ msgstr ""
 "ん。\n"
 "\n"
 "銀魔術師はたいてい他の魔術師よりも肉体的に熟練していて、彼らの技能は戦場でと"
-"ても役に立ちます。もし誰かが魔術師に強制的にそれを用いさせることができれ"
-"ば。\n"
-"\n"
-"特記事項: 銀魔術師は彼等の魔法的な性質によく調和しており、非物理的ダメージに"
-"対して高い抵抗力があります。"
+"ても役に立ちます。もし誰かが魔術師に強制的にそれを用いさせることができれば。"
 
 #: data/core/units/humans/Mage_Silver.cfg:150
 msgid "female^Silver Mage"
@@ -2674,9 +2691,8 @@ msgid ""
 msgstr ""
 
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
-#, fuzzy
 msgid "Huntsman"
-msgstr "騎兵"
+msgstr "猟師"
 
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
 msgid ""
@@ -2718,9 +2734,8 @@ msgstr ""
 "彼らの経験によって、狩人は夜間、森や沼地において非常に有能です。"
 
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
-#, fuzzy
 msgid "Ranger"
-msgstr "ダガー"
+msgstr "レンジャー"
 
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
 msgid ""
