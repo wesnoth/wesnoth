@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:37+0100\n"
-"PO-Revision-Date: 2008-02-04 13:39+0300\n"
+"PO-Revision-Date: 2008-02-23 10:20+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -1027,12 +1027,15 @@ msgid "License"
 msgstr "Licencija"
 
 #: data/core/help.cfg:325
+#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
+"Dauguma dalinių turi du bruožus. Tačiau nemirėlių daliniams priskirtas "
+"vienintelis bruožas „Nemirėlis“"
 
 #: data/core/help.cfg:327
 msgid ""
@@ -1043,6 +1046,12 @@ msgid ""
 "text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
 "<ref>dst=traits_strong text=Strong</ref>."
 msgstr ""
+"\n"
+"\n"
+"Bruožai galimi visiems ne-nemirėliams daliniams yra "
+"<ref>dst=traits_intelligent text=Protingas</ref>, <ref>dst=traits_quick "
+"text=Greitas</ref>, <ref>dst=traits_resilient text=Atsparus</ref> ir "
+"<ref>dst=traits_strong text=Stiprus</ref>."
 
 #: data/core/help.cfg:331
 msgid ""
@@ -1053,6 +1062,12 @@ msgid ""
 "<ref>dst=traits_undead text=Undead</ref>.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Kiti bruožai, kurie gali būti priskirti daliniams yra "
+"<ref>dst=traits_dextrous text=Vikrus</ref>, <ref>dst=traits_loyal "
+"text=Ištikimas</ref>, and <ref>dst=traits_undead text=Nemirėlis</ref>.\n"
+"\n"
 
 #: data/core/help.cfg:336
 msgid "Intelligent"
@@ -6074,7 +6089,6 @@ msgid "No multiplayer sides available in this game"
 msgstr ""
 
 #: src/multiplayer_wait.cpp:270
-#, fuzzy
 msgid "No era information found."
 msgstr "Nerasta eros informacijos."
 
@@ -6569,6 +6583,3 @@ msgstr ""
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr ""
-
-#~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-#~ msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
