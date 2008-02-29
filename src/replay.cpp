@@ -1173,8 +1173,11 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 				replay::throw_error("illegal defender weapon type in attack\n");
 			}
 
+			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
 
 			DELAY_END_LEVEL(delayed_exception, attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !get_replay_source().is_skipping()));
+
+			DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";;
 
 			u = units.find(src);
 			tgt = units.find(dst);
@@ -1183,6 +1186,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 				advancing_units.push_back(u->first);
 			}
 
+			DBG_REPLAY << "advancing_units.size: " << advancing_units.size() << "\n";
 			if(tgt != units.end() && tgt->second.advances()) {
 				advancing_units.push_back(tgt->first);
 			}
@@ -1215,7 +1219,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 		} else {
 			if(! cfg->child("checksum")) {
-				replay::throw_error("unrecognized action\n");
+				replay::throw_error("unrecognized action:\n" + cfg->debug());
 			} else {
 				check_checksums(disp,units,*cfg);
 			}

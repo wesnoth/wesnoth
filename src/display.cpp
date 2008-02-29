@@ -432,9 +432,11 @@ void display::create_buttons()
 {
 	std::vector<gui::button> work;
 
+	DBG_DP << "creating buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
 		gui::button b(screen_,i->title(),string_to_button_type(i->type()),i->image());
+		DBG_DP << "drawing button " << i->get_id() << "\n"; 
 		b.set_id(i->get_id());
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
@@ -452,6 +454,7 @@ void display::create_buttons()
 	}
 
 	buttons_.swap(work);
+	DBG_DP << "buttons created\n";
 }
 
 gui::button::TYPE display::string_to_button_type(std::string type)
@@ -767,10 +770,16 @@ void display::update_display()
 static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
 {
 	//log_scope("draw panel");
+	DBG_DP << "drawing panel " << panel.get_id() << "\n";
+			
 	surface surf(image::get_image(panel.image()));
 
 	const SDL_Rect screen = screen_area();
 	SDL_Rect& loc = panel.location(screen);
+
+	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y 
+			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
+
 	if(!surf.null()) {
 		if(surf->w != loc.w || surf->h != loc.h) {
 			surf.assign(scale_surface(surf,loc.w,loc.h));
