@@ -1,16 +1,17 @@
-# Catalan translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Automatically generated, 2004.
-# Jordà Polo <jorda@ettin.org>, 2004, 2005, 2006.
+# Catalan translations for Battle for Wesnoth package.
+# Copyright (C) 2008 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth
+# package.
+#
+# Jordà Polo <jorda@ettin.org>, 2004, 2005, 2006, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-11 21:56+0100\n"
-"PO-Revision-Date: 2006-06-28 17:44+0200\n"
+"PO-Revision-Date: 2008-03-01 00:02+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +19,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/core/terrain.cfg:13
-#, fuzzy
 msgid "None"
-msgstr "No"
+msgstr "Cap"
 
 #: data/core/terrain.cfg:20
 msgid "Shroud"
@@ -143,7 +143,7 @@ msgstr "Abisme"
 
 #: data/core/terrain.cfg:594
 msgid "Lava chasm"
-msgstr ""
+msgstr "Abisme de lava"
 
 #: data/core/terrain.cfg:604
 msgid "Lava"
@@ -179,9 +179,8 @@ msgid "Mushroom Grove"
 msgstr "Boscatge de bolets"
 
 #: data/core/terrain.cfg:716
-#, fuzzy
 msgid "Mushroom Grove Lit"
-msgstr "Boscatge de bolets"
+msgstr "Boscatge de bolets il·luminat"
 
 #: data/core/terrain.cfg:726
 msgid "Rockbound Cave"
@@ -220,7 +219,7 @@ msgstr "Muntanyes impassables"
 
 #: data/core/terrain.cfg:987
 msgid "Impassable Desert Mountains"
-msgstr ""
+msgstr "Muntanyes desèrtiques impassables"
 
 #: data/core/terrain.cfg:997
 msgid "Cave Wall"
@@ -228,7 +227,7 @@ msgstr "Paret de cova"
 
 #: data/core/terrain.cfg:1006
 msgid "Void"
-msgstr ""
+msgstr "Buit"
 
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
 #: src/editor/editor_dialogs.cpp:423
@@ -284,8 +283,9 @@ msgstr "Paràmetres del generador aleatori"
 
 #: src/editor/editor_dialogs.cpp:178
 msgid "Map creation failed."
-msgstr "La creació del mapa ha fallat."
+msgstr "No s'ha pogut crear el mapa."
 
+# Hmm, cal el «Window» a l'original?
 #: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:103
 #: src/preferences_display.cpp:227
 msgid "Close Window"
@@ -324,15 +324,15 @@ msgstr "Redimensiona el mapa"
 
 #: src/editor/editor_dialogs.cpp:388
 msgid "X offset:"
-msgstr ""
+msgstr "X òfset:"
 
 #: src/editor/editor_dialogs.cpp:389
 msgid "Y offset:"
-msgstr ""
+msgstr "Y òfset:"
 
 #: src/editor/editor_dialogs.cpp:468
 msgid "Smart expand"
-msgstr ""
+msgstr "Expansió intel·ligent"
 
 #: src/editor/editor_dialogs.cpp:557
 msgid "X-Axis"
@@ -348,32 +348,33 @@ msgstr "Inverteix (pot canviar les dimensions del mapa):"
 
 #: src/filechooser.cpp:52
 msgid "File: "
-msgstr ""
+msgstr "Fitxer: "
 
 #: src/filechooser.cpp:53
 msgid "Delete File"
 msgstr "Suprimeix fitxer"
 
+# Esmenar l'original? Aquí diu «folder», però més endavant «directory».
+# De moment em quedo amb directori. -- Jordà
 #: src/filechooser.cpp:55 src/filechooser.cpp:169
 msgid "New Folder"
-msgstr ""
+msgstr "Nou directori"
 
 #: src/filechooser.cpp:157
 msgid "Deletion of the file failed."
-msgstr "No ha estat possible esborrar el fitxer."
+msgstr "No s'ha pogut esborrar el fitxer."
 
 #: src/filechooser.cpp:170
 msgid "Name: "
-msgstr ""
+msgstr "Nom: "
 
 #: src/filechooser.cpp:175
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "No ha estat possible esborrar el fitxer."
+msgstr "No s'ha pogut crear el directori."
 
 #: src/game_preferences.cpp:217
 msgid "No server has been defined."
-msgstr ""
+msgstr "No s'ha indicat cap servidor."
 
 #: src/game_preferences.cpp:281
 msgid "player"
@@ -387,59 +388,56 @@ msgstr "Velocitat accelerada"
 msgid "Skip AI Moves"
 msgstr "Omet el moviment de la IA"
 
+# Possibles abreviacions per «single/multi-player»?
 #: src/game_preferences_display.cpp:164
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Desa la repetició en perdre (multijugador) o guanyar"
 
 #: src/game_preferences_display.cpp:165
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
+"Esborra les partides desades automàticament en perdre (multijugador) o "
+"guanyar"
 
 #: src/game_preferences_display.cpp:166
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Mostra nous jugadors"
+msgstr "No mostris les entrades a la sala de joc"
 
 #: src/game_preferences_display.cpp:167
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Mostra nous jugadors"
+msgstr "Mostra només l'entrada d'amics"
 
 #: src/game_preferences_display.cpp:168
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Mostra nous jugadors"
+msgstr "Mostra totes les entrades"
 
 #: src/game_preferences_display.cpp:169
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Mostra nous jugadors"
+msgstr "Ordena la llista de jugadors"
 
 #: src/game_preferences_display.cpp:170
-#, fuzzy
 msgid "Iconize Lobby List"
-msgstr "Mostra nous jugadors"
+msgstr "Iconitza la llista de jugadors"
 
 #: src/game_preferences_display.cpp:171
 msgid "Friends List"
-msgstr ""
+msgstr "Llista d'amics"
 
 #: src/game_preferences_display.cpp:172
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Opcions multijugador"
 
 #: src/game_preferences_display.cpp:173
 msgid "Add As Friend"
-msgstr ""
+msgstr "Afegeix com amic"
 
 #: src/game_preferences_display.cpp:174
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Afegeix com ignorat"
 
 #: src/game_preferences_display.cpp:175
-#, fuzzy
 msgid "Remove"
-msgstr "Refés"
+msgstr "Suprimeix"
 
 #: src/game_preferences_display.cpp:176
 msgid "Show Floating Labels"
@@ -447,15 +445,15 @@ msgstr "Mostra les etiquetes"
 
 #: src/game_preferences_display.cpp:177
 msgid "Turn Dialog"
-msgstr "Activa els diàlegs"
+msgstr "Habilita els diàlegs"
 
 #: src/game_preferences_display.cpp:178
 msgid "Turn Bell"
-msgstr "Activa el timbre"
+msgstr "Habilita la campana"
 
 #: src/game_preferences_display.cpp:179
 msgid "Show Team Colors"
-msgstr "Mostra els colors de bàndol"
+msgstr "Mostra els colors del bàndol"
 
 #: src/game_preferences_display.cpp:180
 msgid "Show Color Cursors"
@@ -466,9 +464,8 @@ msgid "Show Haloing Effects"
 msgstr "Mostra els efectes"
 
 #: src/game_preferences_display.cpp:182
-#, fuzzy
 msgid "Change Resolution"
-msgstr "Tria la resolució"
+msgstr "Canvia la resolució"
 
 #: src/game_preferences_display.cpp:183
 msgid "Theme"
@@ -482,13 +479,15 @@ msgstr "Ajust de brillantor"
 msgid "Reverse Time Graphics"
 msgstr "Inverteix els gràfics del temps"
 
+# A l'original, aquest tipus d'opcions hauria d'estar associat a alguna acció.
 #: src/game_preferences_display.cpp:188
 msgid "Sound effects"
-msgstr "Activa els efectes de so"
+msgstr "Habilita els efectes de so"
 
+# Ídem.
 #: src/game_preferences_display.cpp:189
 msgid "Music"
-msgstr "Activa la musica"
+msgstr "Habilita la musica"
 
 #: src/game_preferences_display.cpp:190
 msgid "Chat Timestamping"
@@ -496,28 +495,27 @@ msgstr "Marca horària al xat"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Opcions avançades"
 
 #: src/game_preferences_display.cpp:192
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Opcions estàndard"
 
 #: src/game_preferences_display.cpp:193
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Habilita els sons de la interfície"
 
 #: src/game_preferences_display.cpp:196
-#, fuzzy
 msgid "Custom"
-msgstr "Talla"
+msgstr "Personalitzada"
 
 #: src/game_preferences_display.cpp:197
 msgid "Apply"
-msgstr ""
+msgstr "Aplica"
 
 #: src/game_preferences_display.cpp:198
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "Mostra les animacions de les unitats inactives"
 
 #: src/game_preferences_display.cpp:200
 msgid "Music Volume:"
@@ -528,14 +526,12 @@ msgid "SFX Volume:"
 msgstr "Volum dels efectes de so:"
 
 #: src/game_preferences_display.cpp:201
-#, fuzzy
 msgid "UI Sound Volume:"
-msgstr "Volum dels efectes de so:"
+msgstr "Volum de la interfície:"
 
 #: src/game_preferences_display.cpp:202
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Volum dels efectes de so:"
+msgstr "Volum de la campana:"
 
 #: src/game_preferences_display.cpp:203
 msgid "Gamma:"
@@ -543,11 +539,11 @@ msgstr "Brillantor:"
 
 #: src/game_preferences_display.cpp:205
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Freqüència de mostratge (Hz):"
 
 #: src/game_preferences_display.cpp:206
 msgid "Frequency:"
-msgstr ""
+msgstr "Freqüència:"
 
 #: src/game_preferences_display.cpp:230
 msgid "Sound effects on/off"
@@ -566,36 +562,32 @@ msgid "Change the music volume"
 msgstr "Canvia el volum de la música"
 
 #: src/game_preferences_display.cpp:247
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Canvia el volum de la música"
+msgstr "Canvia el volum de la campana"
 
 #: src/game_preferences_display.cpp:250
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Engega o apaga els sons del menú i els botons"
 
 #: src/game_preferences_display.cpp:254
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "Canvia el volum dels clics del ratolí, etc."
 
 #: src/game_preferences_display.cpp:256
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Canvia l'idioma"
+msgstr "Canvia la freqüència de mostratge"
 
 #: src/game_preferences_display.cpp:265
-#, fuzzy
 msgid "User defined sample rate"
-msgstr "Canvia l'idioma"
+msgstr "Freqüència de mostratge definida per l'usuari"
 
 #: src/game_preferences_display.cpp:274 src/game_preferences_display.cpp:278
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Canvia el volum de la música"
+msgstr "Canvia la mida del buffer"
 
 #: src/game_preferences_display.cpp:276 src/game_preferences_display.cpp:826
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Mida del buffer: "
 
 #: src/game_preferences_display.cpp:283
 msgid "Change the speed of scrolling around the map"
@@ -622,22 +614,22 @@ msgid "Make units move and fight faster"
 msgstr "Les unitats es mouen i lliuten més ràpid"
 
 #: src/game_preferences_display.cpp:324
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Les unitats es mouen i lliuten més ràpid"
+msgstr "Velocitat de desplaçament i lluita de les unitats"
 
 #: src/game_preferences_display.cpp:327
-#, fuzzy
 msgid "Show unit idle animations"
-msgstr "Omet animació"
+msgstr "Mostra les animacions de les unitats inactives"
 
 #: src/game_preferences_display.cpp:333
 msgid "Set the frequency of unit idle animations"
-msgstr ""
+msgstr "Defineix la freqüència de les animacions de les unitats inactives"
 
 #: src/game_preferences_display.cpp:338
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
+"Defineix el nombre màxim de partides desades automàticament que s'hauria de "
+"mantenir"
 
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
@@ -645,11 +637,11 @@ msgstr "Omet les animacions de la IA"
 
 #: src/game_preferences_display.cpp:345
 msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
+msgstr "Desa la repetició en guanyar (monojugador) o perdre"
 
 #: src/game_preferences_display.cpp:348
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
+msgstr "Esborra les partides desades en guanyar (monojugador) o perdre"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -657,51 +649,49 @@ msgstr "Mostra una graella sobre el mapa"
 
 #: src/game_preferences_display.cpp:353
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Ordena per grups la llista de jugadors de la sala de joc"
 
+# Hmm, aquí hi ha punt final però la resta d'strings equivalents no en tenen.
 #: src/game_preferences_display.cpp:356
-#, fuzzy
 msgid "Show icons in front of the player names in the lobby."
-msgstr "Mostra advertències si nous jugadors entren a la sala de joc"
+msgstr "Mostra les icones davant del nom dels jugadors de la sala de joc"
 
 #: src/game_preferences_display.cpp:359
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Mostra advertències si nous jugadors entren a la sala de joc"
+msgstr "No mostris cap advertència si entren jugadors a la sala de joc"
 
 #: src/game_preferences_display.cpp:361
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Mostra advertències si nous jugadors entren a la sala de joc"
+msgstr "Mostra advertències si algun amic entra a la sala de joc"
 
 #: src/game_preferences_display.cpp:363
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Mostra advertències si nous jugadors entren a la sala de joc"
+msgstr ""
+"Mostra advertències sobre tots els jugadors que entren a la sala de joc"
 
 #: src/game_preferences_display.cpp:365
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Mostra i edita la llista d'amics i ignorats"
 
 #: src/game_preferences_display.cpp:366
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Torna a les opcions del mode multijugador"
 
 #: src/game_preferences_display.cpp:367
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Afegeix l'usuari a la llista d'amics"
 
 #: src/game_preferences_display.cpp:368
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Afegeix l'usuari a la llista d'ignorats"
 
 #: src/game_preferences_display.cpp:369
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Suprimeix aquest usuari de la llista"
 
 #: src/game_preferences_display.cpp:372
 msgid "Insert a username"
-msgstr ""
+msgstr "Introduïu el nom d'un usuari"
 
 #: src/game_preferences_display.cpp:375
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -739,24 +729,23 @@ msgstr "Utilitza cursor de colors (pot ser més lent)"
 
 #: src/game_preferences_display.cpp:396
 msgid "Use graphical special effects (may be slower)"
-msgstr "Activa efectes gràfics especials (pot ser lent)"
+msgstr "Habilita els efectes gràfics especials (pot ser lent)"
 
 #: src/game_preferences_display.cpp:398
 msgid "View and configure keyboard shortcuts"
 msgstr "Configura les dreceres del teclat"
 
 #: src/game_preferences_display.cpp:689
-#, fuzzy
 msgid "Speed: "
-msgstr "Velocitat de desplaçament"
+msgstr "Velocitat: "
 
 #: src/game_preferences_display.cpp:694 src/game_preferences_display.cpp:696
 msgid "Maximum Auto-Saves: "
-msgstr ""
+msgstr "Màxim nombre de partides desades automàticament: "
 
 #: src/game_preferences_display.cpp:694
 msgid "infinite"
-msgstr ""
+msgstr "infinit"
 
 #: src/game_preferences_display.cpp:866
 msgid "Chat Lines: "
@@ -764,7 +753,7 @@ msgstr "Línies de xat: "
 
 #: src/game_preferences_display.cpp:888 src/game_preferences_display.cpp:896
 msgid "Invalid username"
-msgstr ""
+msgstr "El nom de l'usuari no és vàlid"
 
 #: src/game_preferences_display.cpp:968
 msgid "yes"
@@ -776,7 +765,7 @@ msgstr "No"
 
 #: src/game_preferences_display.cpp:1001
 msgid "(empty list)"
-msgstr ""
+msgstr "(llista buida)"
 
 #: src/game_preferences_display.cpp:1119
 msgid "Prefs section^General"
@@ -809,11 +798,9 @@ msgstr ""
 "partida."
 
 #: src/game_preferences_display.cpp:1168
-#, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
-"No hi ha temes disponibles. Intenteu canviar el tema des d'una partida "
-"començada."
+"No hi ha temes disponibles. Intenteu canviar-lo des d'una partida començada."
 
 #: src/hotkeys.cpp:54
 msgid "Next Unit"
@@ -876,12 +863,10 @@ msgid "Save Game"
 msgstr "Desa la partida"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "Desa les dreceres"
+msgstr "Desa la repetició"
 
 #: src/hotkeys.cpp:71
-#, fuzzy
 msgid "Save The Map"
 msgstr "Desa el mapa"
 
@@ -950,9 +935,8 @@ msgid "Quit Game"
 msgstr "Surt"
 
 #: src/hotkeys.cpp:89
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Posa una etiqueta"
+msgstr "Posa una etiqueta d'equip"
 
 #: src/hotkeys.cpp:90
 msgid "Set Label"
@@ -991,17 +975,16 @@ msgid "Next Side"
 msgstr "Bàndol següent"
 
 #: src/hotkeys.cpp:100
-#, fuzzy
 msgid "Full map"
-msgstr "Inverteix el mapa"
+msgstr "Mapa sencer"
 
 #: src/hotkeys.cpp:102
 msgid "Each team"
-msgstr ""
+msgstr "Cada equip"
 
 #: src/hotkeys.cpp:104
 msgid "Team 1"
-msgstr ""
+msgstr "Equip 1"
 
 #: src/hotkeys.cpp:105
 msgid "Skip animation"
@@ -1041,12 +1024,11 @@ msgstr "Inundar"
 
 #: src/hotkeys.cpp:115
 msgid "Fill Selection"
-msgstr "Emplena la selcció"
+msgstr "Emplena la selecció"
 
 #: src/hotkeys.cpp:116
-#, fuzzy
 msgid "Rotate Selection"
-msgstr "Emplena la selcció"
+msgstr "Gira la selecció"
 
 #: src/hotkeys.cpp:117
 msgid "Cut"
@@ -1081,13 +1063,12 @@ msgid "Refresh Image Cache"
 msgstr "Refresca la cau de les imatges"
 
 #: src/hotkeys.cpp:126
-#, fuzzy
 msgid "Delay transition updates"
-msgstr "Retarda el refresc"
+msgstr "Retarda l'actualització de transicions"
 
 #: src/hotkeys.cpp:127
 msgid "Update transitions"
-msgstr ""
+msgstr "Actualitza transicions"
 
 #: src/hotkeys.cpp:129
 msgid "Delay Shroud Updates"
@@ -1130,17 +1111,16 @@ msgid "Enter user command"
 msgstr "Introdueix una comanda"
 
 #: src/hotkeys.cpp:140
-#, fuzzy
 msgid "Clear messages"
-msgstr "Esborra les etiquetes"
+msgstr "Neteja els missatges"
 
 #: src/hotkeys.cpp:142
 msgid "User-Command#2"
-msgstr ""
+msgstr "Ordre d'usuari #2"
 
 #: src/hotkeys.cpp:143
 msgid "User-Command#3"
-msgstr ""
+msgstr "Ordre d'usuari #3"
 
 #: src/hotkeys.cpp:525 src/hotkeys.cpp:848
 msgid "Do you really want to quit?"
@@ -1171,9 +1151,8 @@ msgid "Villages:"
 msgstr "Llogarets:"
 
 #: src/mapgen_dialog.cpp:119
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Mida màxima dels colls:"
+msgstr "Mida del castell:"
 
 #: src/mapgen_dialog.cpp:120
 msgid "Landform:"
@@ -1201,15 +1180,15 @@ msgstr "Illa"
 
 #: src/marked-up_text.cpp:357
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "L'amplada màxima del text és inferior a 1."
 
 #: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "No s'ha pogut obtindre la imatge del terreny: $terrain."
 
 #: src/minimap.cpp:93 src/minimap.cpp:105
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "S'ha produït un error en crear o adquirir una imatge."
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
@@ -1262,37 +1241,44 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
+"S'ha trobat un terreny amb un identificador superior a 4 caràcters; el "
+"terreny afectat és: "
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+"S'ha trobat un terreny que no és vàlid, probablement amb el format de la "
+"versió 1.2. Terreny: "
 
 #: src/wml_exception.cpp:60
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"S'ha produït un error degut a que el WML no és vàlid.\n"
+"El missatge d'error és: "
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
-msgstr ""
+msgstr "Quan informeu de l'error, incloeu el següent missatge d'error: "
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"A la secció «[$section|]», on «$primary_key| = $primary_value», la clau "
+"obligatòria «$key|» no està definida."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
+msgstr "A la secció «[$section|]», la clau obligatòria «$key|» no està definida."
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Desa les dreceres"
 
-#, fuzzy
 #~ msgid "Advanced Mode"
-#~ msgstr "Avançat"
+#~ msgstr "Mode avançat"
 
 #~ msgid "Elven Castle"
 #~ msgstr "Castell elf"
