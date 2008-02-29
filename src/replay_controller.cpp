@@ -139,15 +139,22 @@ void replay_controller::init_gui(){
 
 void replay_controller::init_replay_display(){
 	DBG_REPLAY << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
+
+	rebuild_replay_theme();
+	gui_->get_theme().theme_reset().attach_handler(this);
+	DBG_REPLAY << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
+}
+
+void replay_controller::rebuild_replay_theme(){
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
 	if (theme_cfg) {
 		const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
 		if (NULL != replay_theme_cfg)
-		gui_->get_theme().modify(replay_theme_cfg);
+			gui_->get_theme().modify(replay_theme_cfg);
+		//Make sure we get notified if the theme is redrawn completely. That way we have
+		//a chance to restore the replay controls of the theme as well.
 		gui_->invalidate_theme();
 	}
-
-	DBG_REPLAY << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
 void replay_controller::reset_replay(){
@@ -393,6 +400,10 @@ void replay_controller::preferences(){
 
 void replay_controller::show_statistics(){
 	menu_handler_.show_statistics(gui_->playing_team()+1);
+}
+
+void replay_controller::handle_generic_event(const std::string& name){
+	rebuild_replay_theme();
 }
 
 bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const

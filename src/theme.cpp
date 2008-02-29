@@ -498,7 +498,9 @@ theme::menu::menu(const config& cfg) : object(cfg), context_(cfg["is_context_men
 						items_(utils::split(cfg["items"]))
 {}
 
-theme::theme(const config& cfg, const SDL_Rect& screen) {
+theme::theme(const config& cfg, const SDL_Rect& screen) :
+	theme_reset_("theme_reset")
+{
 	config tmp;
 	expand_partialresolution(tmp, cfg);
 	do_resolve_rects(tmp, cfg_);
@@ -556,6 +558,9 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		if (title_stash.find(m->get_id()) != title_stash.end())
 			m->set_title(title_stash[m->get_id()]); 
 	}
+	
+	theme_reset_.notify_observers();
+	
 	return result;
 }
 

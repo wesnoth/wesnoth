@@ -24,6 +24,7 @@
 
 #include "SDL.h"
 #include "config.hpp"
+#include "generic_event.hpp"
 
 typedef struct { size_t x1,y1,x2,y2; } _rect;
 
@@ -220,11 +221,17 @@ public:
 
 	const tborder& border() const { return border_; }
 
+	events::generic_event& theme_reset() { return theme_reset_; }
+
 private:
 	theme::object& find_element(std::string id);
 	void add_object(const config& cfg);
 	void remove_object(std::string id);
 	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
+
+	//notify observers that the theme has been rebuilt completely
+	//atm this is used for replay_controller to add replay controls to the standard theme
+	events::generic_event theme_reset_;
 
 	static std::map<std::string, config> known_themes;
 	std::string cur_theme;

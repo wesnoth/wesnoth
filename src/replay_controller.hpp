@@ -57,6 +57,8 @@ private:
 	void update_teams();
 	void update_gui();
 	void init_replay_display();
+	void rebuild_replay_theme();
+	void handle_generic_event(const std::string& name);
 
 	game_state gamestate_start_;
 	gamestatus status_start_;
