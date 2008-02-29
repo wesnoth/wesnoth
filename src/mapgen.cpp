@@ -29,6 +29,7 @@
 #include "wml_exception.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cctype>
 #include <cmath>
 #include <cstdlib>
@@ -40,6 +41,7 @@
 #include <vector>
 
 #define ERR_CF LOG_STREAM(err, config)
+#define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 
 config map_generator::create_scenario(const std::vector<std::string>& args)
@@ -959,8 +961,14 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				}
 			}
 		}
-
+		if(best_ranking == 0) {
+			ERR_NG << "No castle location found, aborting.\n";
+			return "";
+		}
+		assert(std::find(castles.begin(), castles.end(), best_loc) == castles.end());
 		castles.push_back(best_loc);
+		// Make sure the location can't get a second castle.
+		failed_locs.insert(best_loc);
 	}
 
 	LOG_NG << "placing roads...\n";

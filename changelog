@@ -10,6 +10,11 @@ Version 1.3.19+svn:
      or joining a new game
    * fixed an invalid vector access, which could happen since linger mode
      didn't reset the player_numer_ (bug #11094)
+   * random maps can no longer crash if two teams have the same starting
+     position (that happened if 2 teams didn't get a starting position.)
+     bug #11166.
+   * when the number of players for a random map can't be placed the engine
+     tries maximal ten times before giving up.
  * sound:
    * added new music track, "Knalgan Theme" by Ryan Reilly.
    * added new music track, "The King is Dead" by Mattias Westlund.
