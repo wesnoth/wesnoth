@@ -48,10 +48,12 @@ various GNU/Linux distributions.</p>
 
 <h3 id='game'>What's New in Wesnoth 1.4</h3>
 
-<p>The 1.4 version brings you no fewer than seven new mainline campaigns, a
-redesigned user interface, an amazing variety of high-quality new game
-music, and a refresh of the game artwork including improved portrait
-images for many unit types.</p>
+<p>For players, the 1.4 version brings you no fewer than seven new
+mainline campaigns, a redesigned user interface, an amazing variety of
+high-quality new game music, and a refresh of the game artwork
+including improved portrait images for many unit types. For designers,
+the map editor and WML have been enhanced to significantly increase
+your creative options in writing scenarios.</p>
 
 <p>Just as importantly, it is probably our most solid release yet.  We
 retired over 300 individual bugs during the 1.3 development period,
@@ -62,7 +64,7 @@ by sanity-checking Wesnoth's data files before they ship to you.</p>
   <div><img src='images/start-1.jpg' alt='Wesnoth Screenshot'/></div>
 </div>
 
-<p>Here are some of 1.4's new features:</p>
+<p>Here are 1.4's new features in more detail:</p>
 
 <dl>
 <dt><b>Six well-known user-contributed campaigns now ship with the game</b></dt>
@@ -141,7 +143,7 @@ Sulla's Ruins,
 Waterloo Sunset,
 Wesbowl.</p></dd>
 
-<dt><b>Changed units</b>
+<dt><b>Changed and rebalanced units</b>
 </dt> 
 <dd><p>The Footpad and Thug units can advance all the way to level
 3.  Many units have been tuned and rebalanced, including 
@@ -165,53 +167,73 @@ White Mage,
 Wraith, 
 and all the Saurians and Bats.</p></dd>
 
-<dt><b>The map editor is much more capable.</b>
+<dt><b>Many portraits have been revised or added</b>
 </dt> 
-<dd><p>Maps can now be opened directly from a scenario file and saved
-back to it.  Starting positions no longer need to be on keeps.  The
-terrain palette is divided into groups of like terrains, so you'll
-scroll it less often.  And there are many new terrains; farmland,
-Elvish castle, and windmill have been added to the basic set, and
-there are bridges for crossing swamp, deep water, or chasms. </p></dd>
+<dd><p>Many unit and hero portraits have been improved or added.  We
+have a particularly beautiful set of new portraits in a uniform style for
+the Elvish units.</p></dd>
 
 <dt><b>New uses of animation</b>
 </dt> 
 <dd><p>Many more units have full combat animation.  Some units and
 items now have standing animations; bats flap their wings and
-campfires flicker.  Units can now have special death animations --
-some Drakes burst into flame when killed.</p></dd>
+campfires flicker.  Units can now have special death animations &mdash;
+some Drakes burst into flame when killed. There are improved base
+frames for many units, including Mages and Ghosts, on more varied
+uses of halo animations.</p></dd>
 
-<dt><b>New weapons and weapon types</b>
-</dt> 
-<dd><p>Undead axe, undead crossbow, pickaxe, glaive, elven staff, 
-chainmace.</p></dd>
+<dt><b>Multiplayer lobby improvements</b></dt> 
+<dd><p>You can set a list of user nicks to be ignored (you won't see
+chat from them).  You can also set a list of friends for whom you'll
+get presence notifications when you are in game.</p></dd>
 
-<dt><b>New sound effects and music</b>
+<dt><b>Miscellaneous other improvements</b>
 </dt> 
-<dd><p>Effects for morning star, arcane magic, hatchet, slowdown. Five
-new symphonic music tracks.</dd>
+<dd><p>You can now select a female leader in multiplayer.  The in-game
+help has been revised, reorganized and expanded.  There are new
+weapons and weapon types: undead axe, undead crossbow, pickaxe,
+glaive, elven staff, chainmace.  "Holy" damage has become "arcane" and
+is a general anti-magic attack applying to more than just
+undead. There are five new all-original symphonic music tracks,
+and new sound effects for morningstar, arcane magic, hatchet, and
+slowdown. Savegames are automatically compressed to save you disk 
+space.</p></dd>
 
-<dt><b></b>
-</dt> 
+<dt><b></b></dt> 
 <dd><p></p></dd>
+
+<p>And for campaign developers...</p>
+
+<dl>
+<dt><b>The map editor is much more capable.</b></dt> 
+<dd><p>Maps can now be opened directly from a scenario file and saved
+back to it.  Starting positions no longer need to be on keeps.  The
+terrain palette is divided into groups of like terrains, so you'll
+scroll it less often.  And there are many new terrains; farmland,
+Elvish castle, and windmill have been added to the basic set, and
+there are bridges for crossing swamp, deep water, or chasms. Treatment
+of map edges has been changed to eliminate some terrain distortions at
+map edges and make small maps look better on a large display (and
+these changes apply to the game display too).</p></dd>
+
+<dt><b>WML is considerably more powerful</b>
+</dt> 
+<dd><p>Animation WML has been completely redesigned in a much more
+flexible and general way.  Complex variable substitution is now used
+in all action WML. There is safe random-number generation in
+multiplayer.  A <tt>[set_menu_item]</tt> tag allows scenario designers
+to create custom right-click context menu items which perform
+arbitrary WML actions.  The Standard Unit Filter and Standard Location
+Filter elements have new capabilities (including completed boolean
+expressions) that make them much more powerful and can replace most of
+what used to be done with special-purpose filters.</p></dd>
+
+<dt><b>Multiplayer campaigns</b>
+</dt> 
+<dd><p>The game engine will now support multiplayer campaigns, though
+we don't ship any yet. This is an opportunity for designers to explore
+a new frontier in Wesnoth play.</p></dd>
 </dl>
-
-
-
-
-<!-- TODO: Convert this list into something more readable -->
-<ul>
-  <li>UI redsign/tweaks/...</li>
-  <li>Comprossed savegames</li>
-  <li>New art/music</li>
-  <li>Multiplayer lobby improvements</li>
-  <li>Animations</li>
-  <li>Arcane</li>
-  <li>WML stuff</li>
-  <li>Usable Multiplayer campaigns</li>
-  <li>Linger mode</li>
-  <li>...</li>
-</ul>
 
 <div class='thumb tright'>
   <div><img src='images/start-2.jpg' alt='Wesnoth Screenshot'/></div>
@@ -228,7 +250,8 @@ href='http://www.gnu.org/copyleft/gpl.html'>GNU General Public License</a>
 href='http://www.wesnoth.org'>wesnoth.org</a> where you will also find
 instructions for <a href='http://wesnoth.org/wiki/CompilingWesnoth'>building
 from source</a> on a range of different operating systems. Ready-to-go
-packages are also available for most popular operating systems.</p>
+packages are also available for most popular operating systems,
+including Linux and Windows and Mac OS X.</p>
 
 <ul>
 <li>
