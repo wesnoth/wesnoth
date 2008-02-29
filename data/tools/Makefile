@@ -70,4 +70,8 @@ unchecked:
 
 # Reindent the mainline content
 reindent:
-	wmlindent --exclude=../../data/languages $(DATA)
+	@./wmlindent --exclude=../../data/languages $(DATA)
+
+# Extract a table of editor keybindings from the editor theme definition
+editor_bindings:
+	@./extractbindings <../themes/editor.cfg 

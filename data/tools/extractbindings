@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+#
+# Extract and format a list of bindings from a theme file.
+# Presently this generates a table suitable for wiki inclusion.
+
+import sys
+
+def report(tabcolumn, binding, description):
+    "Reporter suitable for a wiki inclusion"
+    print " %*s%s" % (tabcolumn, binding, description)
+
+def strip(st):
+    if st.startswith('"'):
+        st = st[1:-1]
+    return st
+
+tabcolumn=-32
+
+in_keydef = False
+entry = {}
+for line in sys.stdin:
+    line=line.strip()
+    if line.startswith("#!"):
+        (key, explanation) = line.split("=")
+        report(tabcolumn, key[3:], explanation)
+    elif line.startswith("#"):
+        continue
+    elif line == "[hotkey]":
+        in_keydef = True
+    elif in_keydef:
+        if line == "[/hotkey]":
+            binding = ''
+            # Presently we ignore the Mac command key
+            for mod in ("ctrl", "alt", "shift"):
+                if mod in entry and entry[mod] == 'yes':
+                    binding += mod + "-"
+            binding += strip(entry['key'])
+            report(tabcolumn, binding, strip(entry['description']))
+            in_keydef = False
+            entry = {}
+        else:
+            try:
+                (key, value) = line.split("=")
+            except ValueError:
+                print >>sys.stderr, "Malformed line: %s" % `line`
+                sys.exit(1)
+            entry[key] = value
+    
