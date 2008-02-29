@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-02-27 13:04+0100\n"
-"PO-Revision-Date: 2008-02-27 12:51+0100\n"
+"PO-Revision-Date: 2008-02-29 08:41+0100\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -161,6 +161,7 @@ msgstr ""
 msgid "The Creatures"
 msgstr "Die Spielfiguren"
 
+# TODO - s/undead and ghosts/undead, ghosts/
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:67
 msgid ""
@@ -173,9 +174,9 @@ msgid ""
 "mermen and nagas dominate."
 msgstr ""
 "In der Welt von Wesnoth hausen Menschen, Elfen, Zwerge, Orks, Draken, "
-"Saurianer, Meervolk, Naga und viele noch obskurere und verwunderlicherere "
-"Rassen. In verfluchten Landen wandern Untote und Geister und Spuke. Jeder "
-"davon hat sich an bestimmte Umgebungen gewöhnt. Menschen bewohnen primär die "
+"Saurianer, Meervolk, Naga und viele noch obskurere und wunderlicherere "
+"Rassen. In verfluchten Landen wandern Untote, Geister und Spuke. Jeder davon "
+"hat sich an bestimmte Umgebungen gewöhnt. Menschen bewohnen primär die "
 "gemäßigten Wiesen. In den Hügeln, Bergen und unterirdischen Höhlen sind "
 "hauptsächlich Orks und Zwerge zu Hause. Die Wälder werden zumeist von den "
 "Elfen regiert. In den Ozeanen und Flüssen dominiert das Meervolk und die "
@@ -1433,7 +1434,7 @@ msgstr "Alt-k"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:922
 msgid "Toggle shroud"
-msgstr "Nebel des Krieges ein-/ausschalten"
+msgstr "Schleier der Finsternis ein-/ausschalten"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:927
@@ -1443,7 +1444,7 @@ msgstr "S"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:930
 msgid "Update shroud now"
-msgstr "Nebel des Krieges jetzt aktualisieren"
+msgstr "Schleier der Finsternis jetzt aktualisieren"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:935
@@ -1453,7 +1454,7 @@ msgstr "D"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:938
 msgid "Delay shroud updates"
-msgstr "Nebel verspätet aktualisieren"
+msgstr "Schleier der Finsternis verspätet aktualisieren"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:943
@@ -1673,6 +1674,11 @@ msgid ""
 "In addition, units have other characteristics, such as alignment and special "
 "abilities, that are described in more detail below."
 msgstr ""
+"Die grundsätzlichen Statistiken einer Einheit enthalten ihre Lebenspunkte "
+"(LP), die Anzahl an Bewegungspunkten, die sie hat, und die Waffen, die sie "
+"verwenden kann, sowie den Schaden, den diese verursachen. Zusätzlich "
+"besitzen Einheiten andere Charakteristika wie ihren Tag-/Nachteinfluss und "
+"spezielle Fähigkeiten, die im folgenden genauer beschrieben werden."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:1077
@@ -1888,6 +1894,15 @@ msgid ""
 "(<literal>12 * 0.75</literal>) or 9 points. During First or Second Watch, "
 "the Lawful unit would do 9 points compared to the Chaotic unit's 15."
 msgstr ""
+"Folgendes Beispiel: Stellt euch einen Kampf zwischen einer redlichen und "
+"einer lichtscheuen Einheit vor, bei dem jeder einen Basisschaden von 12 "
+"besitzt. Während dem Morgengrauen und der Abenddämmerung richten beide 12 "
+"Punkte an Schaden an, falls sie treffen. Am Vormittag und Nachmittag wird "
+"die redliche Einheit (<literal>12 * 1.25</literal>) beziehungsweise 15 "
+"Punkte, während die lichtscheue Einheit (<literal>12 * 0.75</literal>) "
+"beziehungsweise 9 Punkte an Schaden verteilt. In der ersten oder zweiten "
+"Wache würde die redliche Einheit 9 Punkte Schaden verursachen, im Gegensatz "
+"zu den 15 der lichtscheuen Einheit."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1289
@@ -1895,6 +1910,8 @@ msgid ""
 "If an equivalent Neutral unit were fighting, it would always do 12 points of "
 "damage regardless of the hour."
 msgstr ""
+"Falls eine gleichwertige neutrale Einheit kämpfen würde, würde sie immer 12 "
+"Punkte an Schaden machen, unabhängig von der Tageszeit."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:1294
@@ -2937,6 +2954,12 @@ msgid ""
 "enemy does not have a weapon of the same type as the one you attack with, "
 "they will be unable to strike back and do any damage to you in that fight."
 msgstr ""
+"Falls ihr mit einer Nahkampfwaffe angreift, wird die feindliche Einheit, die "
+"ihr angreift, mit ihrer Nahkampfwaffe zurückschlagen können. Falls ihr mit "
+"einer Fernkampfwaffe angreift, wird der Gegner seine Fernkampfwaffe für den "
+"Rückschlag verwenden. Falls ein Gegner keine Waffe des selben Typs hat, mit "
+"der ihr angreift, werden sie nicht zurückschlagen und euch dadurch in diesem "
+"Kampf nicht schaden können."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2027
@@ -2947,6 +2970,12 @@ msgid ""
 "strike 4 blows with the sword in one exchange. This is written as 5-4, "
 "meaning 5 damage per hit, and 4 strikes."
 msgstr ""
+"Verschiedene Angriffstypen verursachen unterschiedlich viel Schaden, und "
+"eine bestimmte Anzahl an Schlägen kann mit jeder Waffe durchgeführt werden. "
+"Zum Beispiel macht ein Elfenkrieger bei jedem Treffer 5 Punkte an Schaden "
+"mit seinem Schwert und kann 4 Mal in einem Schlagabtausch zuschlagen. Dies "
+"wird als 5-4 niedergeschrieben, was 5 Punkte Schaden pro Treffer und 4 "
+"Schläge bedeutet."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2033
@@ -2959,6 +2988,14 @@ msgid ""
 "displayed as a percentage value in the status pane, as well as shown over "
 "the terrain hex."
 msgstr ""
+"Die Trefferwahrscheinlichkeit einer Einheit ist davon abhängig, auf welchem "
+"Gelände sie sich befindet. Zum Beispiel ist es schwerer, Einheiten in Burgen "
+"und Dörfern zu treffen, und Elfen sind in Wäldern schwieriger zu verletzen. "
+"Um die Verteidigungsrate (d.h. die Wahrscheinlichkeit, nicht getroffen zu "
+"werden) einer Einheit für ein Gelände zu sehen, klickt auf die Einheit und "
+"führt den Zeiger anschließend über das Gelände, das euch interessiert, "
+"wodurch euch der Prozentwert im Statusfenster so wie auch über dem "
+"Geländefeld angezeigt wird."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2041
@@ -2967,6 +3004,9 @@ msgid ""
 "attacker and defender will be killed, by clicking on the \"Damage "
 "Calculations\" button in the fight window."
 msgstr ""
+"Ihr könnt zusätzliche Informationen erhalten, inklusive der "
+"Wahrscheinlichkeit, ob der Angreifer oder Verteidiger getötet wird, indem "
+"ihr auf auf den Knopf »Schadensberechnung« im Kampffenster klickt."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2046
@@ -2980,6 +3020,9 @@ msgid ""
 "used to chop pieces of meat from a foe. Examples: dagger, scimitar, saber, "
 "drake claws."
 msgstr ""
+"<emphasis role=\"strong\">Klinge</emphasis>: Waffen mit einer scharfen "
+"Kante, die verwendet werden, um Fleischhäppchen aus dem Gegner zu schneiden. "
+"Beispiele: Dolche, Krummsäbel, Säbel, Draken-Klauen."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2056
@@ -2988,6 +3031,10 @@ msgid ""
 "and either a long handle or a missile, used to perforate foe's body and "
 "damage internal organs. Examples: Knight or infantry pike, arrow."
 msgstr ""
+"<emphasis role=\"strong\">Stich</emphasis>: Waffen mit einer scharfen Spitze "
+"und entweder einem langem Griff oder einem Projektil, um einen gegnerischen "
+"Körper zu durchbohren und interne Organe zu beschädigen. Beispiele: Ritters- "
+"oder Infanterie-Pike, Pfeil."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2063
@@ -2996,6 +3043,9 @@ msgid ""
 "point nor a cutting edge, but heavy enough to break an enemy's bones. "
 "Examples: mace, staff, Troll fist."
 msgstr ""
+"<emphasis role=\"strong\">Wucht</emphasis>: Waffen, die weder eine scharfe "
+"Spitze noch eine schneidende Kante besitzen, aber schwer genug sind, um die "
+"Knochen des Gegners zu zerbrechen. Beispiele: Keule, Stab, Troll-Faust."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2070
@@ -3003,13 +3053,18 @@ msgid ""
 "<emphasis role=\"strong\">Cold</emphasis>: Weapons based on cold or ice "
 "missiles. Example: A wizard's ice bolt."
 msgstr ""
+"<emphasis role=\"strong\">Kälte</emphasis>: Auf Kälte- oder Eis-Geschoßen "
+"basierende Waffen. Beispiel: Der Eisblitz eines Magiers."
 
+# TODO - vielleicht "Feuerodem" statt "Feueratem"?
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2076
 msgid ""
 "<emphasis role=\"strong\">Fire</emphasis>: Weapons using fire to roast the "
 "foe like a chicken. Example: A drake's fire breath."
 msgstr ""
+"<emphasis role=\"strong\">Feuer</emphasis>: Waffen, die Feuer verwenden, um "
+"den Gegner wie ein Huhn zu grillen. Beispiel: Der Feueratem eines Draken."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2082
@@ -3018,6 +3073,9 @@ msgid ""
 "magic animating zombies, specters, and other undead creatures. Example: A "
 "white mage's magic attack."
 msgstr ""
+"<emphasis role=\"strong\">Arkan</emphasis>: Ein Angriff, der die magisch "
+"animierten Zombies, Spuke und andere untote Kreaturen vertreibt. Beispiel: "
+"Der Angriff eines weißen Magiers."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2089
@@ -3033,6 +3091,12 @@ msgid ""
 "unit will suffer less damages from the attack type. A negative resistance "
 "figure indicates that the unit is especially vulnerable to this attack type."
 msgstr ""
+"Jede Einheit ist gegen verschiedene Angriffstypen mehr oder weniger "
+"verwundbar. Sechs Figuren in der Einheitenbeschreibung zeigen die Stärken "
+"und Schwächen der Einheit gegen die sechs Angriffstypen auf. Eine positive "
+"Resistenz weist darauf hin, dass die Einheit durch solch einen Angriff "
+"weniger Schaden nimmt. Eine negative Resistenz hingegen bedeutet, dass die "
+"Einheit gegen diese Angriffsart besonders anfällig ist."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2097
@@ -3043,6 +3107,12 @@ msgid ""
 "are very resistant to blade and piercing weapon but very vulnerable to "
 "impact attacks and arcane attacks."
 msgstr ""
+"Beispiele: Die Schuppen von Draken schützen sie vor den meisten "
+"Angriffstypen mit der Ausnahme von Stichwaffen und Kälte-Angriffen. "
+"Menschliche Kavallerie-Einheiten sind üblicherweise gut geschützt, außer "
+"gegen Stichangriffe, was ihr Schwachpunkt ist. Untote sind sehr resistent "
+"gegen Klingen- und Stichwaffen aber sehr verwundbar gegen Wucht- oder arkane "
+"Angriffe."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2103
@@ -3050,6 +3120,8 @@ msgid ""
 "Using the best attack type against enemy units will substantially increase "
 "your chances of killing them."
 msgstr ""
+"Die beste Angriffsart gegen feindliche Einheiten zu verwenden wird eure "
+"Möglichkeiten, sich ihnen zu entledigen, wesentlich verbessern."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2109 ../../doc/manual/manual.en.xml:2539
@@ -3065,16 +3137,25 @@ msgid ""
 "added on top of hitpoints recovered through healing so it is possible for a "
 "unit to recover up to a total of 10 hit points per turn."
 msgstr ""
+"Eine Einheilt kann um maximal 8 Lebenspunkte pro Zug geheilt werden. Eine "
+"Einheit, die sich während einer Runde nicht bewegt oder kämpft, "
+"<emphasis>rastet</emphasis> und wird sich um zwei Lebenspunkte erholen. "
+"Lebenspunkte, die durch <emphasis>rasten</emphasis> errungen wurden, zählen "
+"zu jenen einer Heilung dazu, es ist daher für eine Einheit möglich, pro "
+"Runde bis zu 10 Lebenspunkte wiederzuerlangen."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2116
 msgid "There are two basic ways for a unit to be healed:"
 msgstr ""
+"Es gibt zwei grundsätzliche Arten, wie eine Einheit geheilt werden kann:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2121
 msgid "Resting in a village. The unit will heal 8 hitpoints every turn."
 msgstr ""
+"In einem Dorf rasten. Der Einheit werden hier jede Runde 8 Lebenspunkte "
+"geheilt."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2126
@@ -3084,6 +3165,10 @@ msgid ""
 "This is invariably <emphasis>heals +4</emphasis> or <emphasis>heals +8</"
 "emphasis>."
 msgstr ""
+"Neben einer Einheit mit der <emphasis>Heilen</emphasis>-Charakteristik. Die "
+"Anzahl der Lebenspunkte, die geheilt wird, findet sich in der Charakteristik-"
+"Beschreibung der Einheit. Es sind unveränderliche <emphasis>Heilen +4</"
+"emphasis> oder <emphasis>heals +8</emphasis>."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2133
@@ -3099,6 +3184,11 @@ msgid ""
 "and Woses gain no additional benefit from being on a village or next to a "
 "healing unit."
 msgstr ""
+"Trolle und Waldschrate haben die Fähigkeit, sich selbst natürlich durch "
+"Regeneration zu heilen. Sie heilen jede Runde 8 Punkte, wenn sie verletzt "
+"sind. Beachtet, dass da alle Einheiten nur maximal 8 Punkte pro Zug heilen "
+"können, erhalten Trolle und Waldschrate keinen zusätzlichen Vorteil, wenn "
+"sie sich in einem Dorf oder neben einer Heilereinheit befinden."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2143
@@ -3112,16 +3202,27 @@ msgid ""
 "on that turn due to healing/poisoning. A unit can not be healed normally "
 "until it is cured of poisoning."
 msgstr ""
+"Einige Angriffe können euren Einheiten Giftschaden zufügen. Wenn dies "
+"passiert, nimmt die vergiftete Einheit jede Runde 8 Punkte Schaden, bis sie "
+"kuriert wurde. Gift kann durch Verweilen in einem Dorf geheilt werden oder "
+"indem man sich neben einer Einheit mit der <emphasis>Kurieren</emphasis>-"
+"Charakteristik befindet. Einheiten mit der <emphasis>Heilen</emphasis>-"
+"Charakteristik können nur verhindern, dass das Gift in dieser Runde Schaden "
+"verursacht, es aber nicht kurieren. Wenn das Gift behandelt wird, erhält "
+"oder verliert die Einheit in der selben Runde keine Lebenspunkte durch die "
+"Heilung/Vergiftung. Eine Einheit kann nicht normal geheilt werden, bis sie "
+"von der Vergiftung kuriert wurde."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2151
 msgid "Some other hints about healing:"
-msgstr ""
+msgstr "Einige Hinweise zur Heilung:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2156
 msgid "A unit may take several turns to be fully healed."
 msgstr ""
+"Eine Einheit kann mehrere Runden benötigen, um vollständig geheilt zu werden."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2161
@@ -3130,6 +3231,9 @@ msgid ""
 "Light, Paladin) heal all wounded units around them, so you can keep units "
 "close to the battle without losing them."
 msgstr ""
+"Heiler (Elvenschamanin, Elfendruidin, Waldfee, Weißer Magier, Magier des "
+"Lichts, Paladin) heilen alle verwundeten Einheiten um sich herum, daher "
+"könnt ihr Einheiten dicht am Kampf behalten, ohne sie zu verlieren."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2168
@@ -3140,11 +3244,14 @@ msgstr "Heiler heilen keine feindlichen Einheiten."
 #: ../../doc/manual/manual.en.xml:2173
 msgid "Healers cannot heal themselves, but see next point."
 msgstr ""
+"Heiler können sich nicht selbst heilen, lest jedoch den nächsten Punkt."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2178
 msgid "Use your healers in pairs, so they can heal each other if needed."
 msgstr ""
+"Verwendet eure Heiler Paarweise, damit sie sich falls notwendig gegenseitig "
+"heilen können."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2183
@@ -3152,26 +3259,29 @@ msgid ""
 "Multiple healers from different sides can heal the same unit and speed up "
 "healing."
 msgstr ""
+"Mehrere Heiler können von verschiedenen Seiten die selbe Einheit heilen und "
+"so die Heilung beschleunigen."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2188
 msgid "Trolls and Woses cannot regenerate other units."
-msgstr ""
+msgstr "Trolle und Waldschrate können keine andere anderen Einheiten heilen."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2193
 msgid "Trolls and Woses cure themselves from poison as a village does."
 msgstr ""
+"Trolle und Waldschrate kurieren sich selbst von Gift wie es Dörfer tun."
 
 # type: Content of: <book><chapter><title>
 #: ../../doc/manual/manual.en.xml:2201
 msgid "Strategy and Tips"
-msgstr ""
+msgstr "Strategien und Tipps"
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2203
 msgid "Basic Strategy"
-msgstr ""
+msgstr "Grundsätzliche Strategien"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2204
@@ -3180,6 +3290,9 @@ msgid ""
 "off your career as a Wesnothian battle veteran. The minor concrete examples "
 "are somewhat tied to the \"Heir to the Throne\" campaign."
 msgstr ""
+"Die folgenden grundsätzlichen Kampfprinzipien und Tipps sollen euch helfen, "
+"eine Karriere als wesnothischer Kampfveteran einschlagen zu können. Die "
+"wenigen konkreten Beispiele sind ein bischen mit der »Der Thronerbe« verwoben."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2209
@@ -3195,6 +3308,12 @@ msgid ""
 "care of a healer (like Elvish Shamans or White Mages). Healers are very "
 "useful!"
 msgstr ""
+"Schickt keine verwundeten Einheiten in den sicheren Tod. Wenn eine Einheit "
+"mehr als die Hälfte ihrer Lebenspunkte (LP) verliert, sollte man sich "
+"ernsthafte Gedanken machen, sie in Sicherheit zu bringen und entweder in "
+"einem Dorf zur Heilung unterzubringen, oder aber in die Hände eines Heilers "
+"(wie Elfenschamaninnen oder weiße Magier) zu übergeben. Heiler sind sehr "
+"nützlich!"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2216
@@ -3207,11 +3326,19 @@ msgid ""
 "a replacement, it is most often far away from the battle front. So don't "
 "waste your units."
 msgstr ""
+"Es handelt sich dabei um praktische Gründe: Eine stark verwundete Einheit "
+"kann keinem Feind standhalten oder ihn umbringen. Sie wird häufig während "
+"dem Angriff und Gegenangriff zugrunde gehen. Desweiteren sind die erhaltenen "
+"Erfahrungspunkte (EP) verloren, wenn sie in den sicheren Tod geht. Das "
+"Ausbilden eines Ersatzes könnte unmöglich sein, da sich der Anführer nicht "
+"in einem Bergfried befindet oder die Geldmittel knapp werden. Selbst wenn "
+"ihr einen Ersatz ausbilden könnt, ist dies oft weit weg vom Kampffeld. "
+"Verschwendet daher eure Einheiten nicht."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2226
 msgid "Out of the enemy's reach"
-msgstr ""
+msgstr "Außerhalb der Reichweite des Gegners"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2227
@@ -3221,6 +3348,11 @@ msgid ""
 "them. The next section about zone of control (ZOC) shows how to restrict the "
 "enemy's moves."
 msgstr ""
+"Wie beschützt man verwundete Einheiten? Am Besten geschützt sind sie, indem "
+"sie sich außerhalb der Reichweite des Kontrahenten befinden. Kein Feind kann "
+"sie angreifen, wenn er ihnen nicht nahe kommen kann. Der nächste Abschnitt "
+"über die Kontrollzone (KonZ) zeigt, wie man die Bewegungen des Gegners "
+"einschränkt."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2232
@@ -3231,6 +3363,7 @@ msgid ""
 "behind, indeed cannot be attacked as the enemy cannot move close to it."
 msgstr ""
 
+# TODO - "He" is uncalled here, please switch to something neutral
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2238
 msgid ""
@@ -3238,11 +3371,15 @@ msgid ""
 "to end your move out of striking range of the enemy army. He cannot attack "
 "but most likely will close into your striking range."
 msgstr ""
+"Wenn sich eure Armeen treffen, solltet ihr versuchen, zuerst anzugreifen. "
+"Versucht daher, eure Züge außerhalb der Reichweite der feindlichen Armee zu "
+"beenden. Es kann dann nicht angegriffen werden, aber höchstwahrscheinlich "
+"werden sich dann Einheiten in euren Kampfbereich bewegen."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2244
 msgid "Shield with your zone of control (ZOC)"
-msgstr ""
+msgstr "Schirmt euch mit eurer Kontrollzone (KonZ) ab"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2245
@@ -3252,7 +3389,13 @@ msgid ""
 "six neighboring tiles, it is forced to halt and its movement phase ends "
 "(only enemies with the rare skirmisher ability ignore this)."
 msgstr ""
+"Jede Einheit der Stufe 1 oder größer besitzt eine Kontrollzone (KonZ), die "
+"alle sechs umgebenden Felder abdeckt. Dies bedeutet, dass ein Gegner, sobald "
+"er sich in eines der sechs benachbarten Felder bewegt, gezwungen ist, stehen "
+"zu bleiben und seine Bewegungsphase zu beenden hat (nur Gegner mit der "
+"seltenen Plänkler-Fähigkeit können das ignorieren)."
 
+# TODO - "He" is uncalled here, please switch to something neutral
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2250
 msgid ""
@@ -3263,11 +3406,19 @@ msgid ""
 "He has to defeat the units imposing the ZOC first. If the enemy can barely "
 "reach it, even a single unit may shield a small region behind itself."
 msgstr ""
+"Wegen der KonZ können Gegner nicht zwischen zwei Einheiten durchrutschen, "
+"die in einer Nord-Süd oder diagonaler Linie ausgerichtet sind und genau ein "
+"oder zwei Felder zwischen sich haben. Durch Kombinieren dieser Paare in eine "
+"lange Wand oder Verwendung in verschiedene Richtungen könnt ihr den Gegner "
+"davon abhalten, eine verwundete Einheit dahinter zu erreichen. Es müssen "
+"erst die Einheiten, die die KonZ auferzwingen, beseitigt werden. Wenn der "
+"Gegner euch kaum erreichen kann, kann auch eine einzelne Einheit einen "
+"kleinen Bereich hinter sich abschirmen."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2260
 msgid "Maintain a defensive line"
-msgstr ""
+msgstr "Haltet eine Verteidigungslinie aufrecht"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2261
@@ -3277,6 +3428,11 @@ msgid ""
 "Wesnoth uses hexes, a east-to-west \"line\" is not a straight line but a zig-"
 "zag curve. The north south line and the diagonals are the \"real\" lines."
 msgstr ""
+"Indem ihr viele Einheiten direkt nebeneinander oder mit höchstens einem Feld "
+"Abstand aufstellt, könnt ihr eine machtvolle Verteidigungslinie aufbauen. "
+"Beachtet, dass wegen der Verwendung von Sechsecken in Wesnoth eine Ost-nach-"
+"West-»Linie« keine gerade Linie ergibt sondern eine Zick-Zack-Kurve. Die Nord-"
+"Süd-Linie und Diagonalen sind die »echten« Linien."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2267
@@ -3286,6 +3442,11 @@ msgid ""
 "without particular weakness can withstand an attack from two normal enemy "
 "units of the same level or lower without getting killed."
 msgstr ""
+"Aus einer Richtung kommend kann der Feind eine einzelne Einheit in der Linie "
+"nur mit zwei Einheiten gleichzeitig angreifen. Als Daumenregel sei gesagt, "
+"dass eine gesunde Einheit ohne besondere Schwächen einem Angriff von zwei "
+"normalen gegnerischen Einheiten der selben oder niedrigerer Stufe "
+"widerstehen kann, ohne umgebracht zu werden."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2272
@@ -3297,6 +3458,14 @@ msgid ""
 "points. These are the most likely to be killed, so use units with no or few "
 "experience points (XP) for this purpose."
 msgstr ""
+"Unglücklicherweise muss sich eure Linie oft biegen, um einen Keil zu bilden "
+"oder sich dem Gelände anzupassen. An diesen Eckpunkten können drei "
+"gegnerische Einheiten angreifen. Dies passiert auch am Ende einer Linie, "
+"wenn diese zu kurz ist. Verwendet Einheiten mit vielen Lebenspunkten auf "
+"geeignetem Gelände oder mit einer passenden Resistenz, um diese "
+"Schwachpunkte zu halten. Die Wahrscheinlichkeit, dass sie getötet werden, "
+"ist am höchsten, verwendet daher für diesen Zweck Einheiten ohne oder mit "
+"nur wenig Erfahrungspunkten (EP)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2279
@@ -3305,12 +3474,16 @@ msgid ""
 "them. For ZOC reasons, a unit with one enemy behind it and one in front is "
 "trapped."
 msgstr ""
+"Die Einheiten aufzureihen verhindert ebenfalls, dass der Gegner eine davon "
+"umzingeln kann. Aufgrund der KonZ ist eine Einheit mit einem Gegner vor und "
+"einem hinter sich gefangen."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2285
 msgid "Rotate your troops"
-msgstr ""
+msgstr "Tauscht eure Truppen aus"
 
+# TODO - "him" is uncalled here, please switch to something neutral
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2286
 msgid ""
@@ -3320,16 +3493,23 @@ msgid ""
 "front line. If you have healers, damaged units in the second line will "
 "quickly recover."
 msgstr ""
+"Wenn eine Einheit in der vordersten Reihe schwer verwundet ist, könnt ihr "
+"sie sicher hinter eure Verteidigungslinie ziehen. Um die Linie zu halten, "
+"werdet ihr sie höchstwahrscheinlich mit einer Reserve austauschen, haltet "
+"daher einige Einheiten hinter der vordersten Reihe. Wenn ihr Heiler besitzt, "
+"werden sich verletzte Einheiten in der zweiten Linie rascher erholen."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2292
 msgid "Note that your units can pass through hexes containing your own troops."
 msgstr ""
+"Beachtet, dass sich eure Einheiten durch Felder bewegen können, die von "
+"euren eigenen Truppen besetzt sind."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2296
 msgid "Use the terrain"
-msgstr ""
+msgstr "Nutzt das Gelände"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2297
@@ -3338,6 +3518,10 @@ msgid ""
 "defense against an enemy in a hex with low terrain. That way, the enemy's "
 "counterstrikes will be less likely to do damage."
 msgstr ""
+"Versucht eure Truppen so zu positionieren, dass sie von einem Feld mit einer "
+"hohen Verteidigung einen Gegner in einem schwachen Gelände angreifen. Auf "
+"diese Art ist es unwahrscheinlicher, dass der Gegenschlag des Gegners "
+"Schaden verursacht."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2301
@@ -3346,11 +3530,14 @@ msgid ""
 "that attacking orcs must stand on grassland while your elves enjoy the high "
 "forest defenses."
 msgstr ""
+"Zum Beispiel könntet ihr eure Elfen gerade am Waldrand aufstellen, sodass "
+"die angreifenden Orks im Grasland stehen müssen, während eure Elfen die hohe "
+"Verteidigung des Waldes genießen."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2307
 msgid "Attacking and choosing your targets"
-msgstr ""
+msgstr "Angreifen und die Auswahl eurer Ziele"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2308
@@ -3359,6 +3546,10 @@ msgid ""
 "to victory. Kill or weaken enemies in your path and move your defensive line "
 "forward. This can become tricky as the enemy gets to attack back on his turn."
 msgstr ""
+"Anrücken und Angreifen ist natürlich der interessanteste Teil auf eurem Weg "
+"zum Sieg. Tötet oder schwächt Gegner auf eurem Weg und zieht mit eurer "
+"Verteidigungslinie weiter. Dies kann schwierig werden, da der Gegner in "
+"seinem Zug zurückschlagen kann."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2313
@@ -3381,6 +3572,13 @@ msgid ""
 "get to attack back on their turn, so you might have weaknesses the enemy may "
 "exploit."
 msgstr ""
+"Zuerst zuzuschlagen zu können ist ein Vorteil, da es euch erlaubt zu wählen, "
+"welche Einheiten in den Kampf ziehen. Zieht Vorteil aus den gegnerischen "
+"Schwächen: um z.B. eure Fernkampfangriffe auf Feinde ohne Fernkampfwaffen "
+"konzentrieren zu können. Zieht euren Vorteil aus Schwächen wie der "
+"Verwundbarkeit von Reitern gegen Stich. Aber vergesst nicht, dass sie in "
+"ihrer Runde zurückangreifen können, ihr könntet daher Schwächen besitzen, "
+"die der Gegner auszunutzen vermag."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2327
@@ -3390,7 +3588,12 @@ msgid ""
 "impact. But your Horseman may quite quickly fall to Orcish Archers and "
 "Goblin Spearmen."
 msgstr ""
+"Reiter können zum Beispiel in einer Linie sehr gut gegen Orkgrunzer und "
+"Trollwelpen halten, da sie recht widerstandsfähig gegen Klinge und Wucht "
+"sind. Aber eure Reiter würden Orkschützen und Kobold-Speerträgern recht "
+"rasch zum Opfer fallen."
 
+# TODO - s/devinitely kill \(or almost kill\)/definitely (or almost) kill/
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2332
 msgid ""
@@ -3401,6 +3604,14 @@ msgid ""
 "often wise to attack at the range that allows the enemy to do least damage "
 "to you, rather than choosing the maximum expected damage to the enemy."
 msgstr ""
+"Es zahlt sich üblicherweise aus, wenn ihr eine entgegengestellte Einheit "
+"sicher (oder beinahe) töten könnt. Falls ihr euch unsicher seid, ob ihr den "
+"Gegner in einer Runde beseitigen könnt, vergewissert euch entweder, dass "
+"eure Einheiten den Gegenangriff überstehen können oder entscheidet euch "
+"bewusst, die Einheit zu verlieren. Um den gegnerischen Schlägen in der "
+"nächsten Runde widerstehen zu können ist es oftmals sinnvoll, den Gegner mit "
+"der Technik anzugreifen, in der euch der Gegner am wenigsten Schaden machen "
+"kann, statt den maximal zu erwartenden Schaden für den Gegner zu wählen."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2340
@@ -3410,6 +3621,10 @@ msgid ""
 "so using it will often result in your units taking more damage than "
 "necessary."
 msgstr ""
+"Im Speziellen verwendet eure Fernkampfwaffen, wenn der Gegner keinen "
+"Fernkampfangriff besitzt. Die Vorauswahl des Computers blickt nur auf den "
+"Maximalschaden, den ihr anrichten könnt, das könnte daher oft dazu führen, "
+"dass ihr selbst mehr Schaden einzustecken habt als notwendig."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2347
@@ -3426,6 +3641,13 @@ msgid ""
 "defensive position. When its weak time is about to arise, your advance will "
 "push forth."
 msgstr ""
+"Vergesst nicht, dass redliche Einheiten wie Menschen unter Tags und "
+"lichtscheue Einheiten wie Orks und Untote in der Nacht besser kämpfen. "
+"Idealerweise solltet ihr versuchen, dem Gegner zum ersten Mal "
+"gegenüberzustehen, wenn ihr stark seid und er schwach. Wenn der Gegner seine "
+"starke Zeit hat, zahlt es sich oft aus, eure Linien zu verstärken und eine "
+"günstige Verteidigungsposition einzunehmen. Wenn dann des Gegners schwache "
+"Zeit wieder aufkommt, werdet ihr voran drängen und ihn zurück drängen."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2355
@@ -3434,6 +3656,9 @@ msgid ""
 "and advance on sunrise. You may even note that the computer AI actively "
 "retreats his orcs during day."
 msgstr ""
+"Elfen können zum Beispiel einen Wald während den nächtlichen orkischen "
+"Angriffen halten und im Morgengrauen voranschreiten. Ihr werdet auch "
+"bemerken, dass die Computer-KI ihre Orks unter Tags aktiv zurück zieht."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2362
@@ -3693,6 +3918,7 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2528
+#, fuzzy
 msgid ""
 "Some units are resistant or vulnerable to different kind of attacks. Mounted "
 "units are weak vs pierce attacks. Fire and arcane attacks destroy undead. To "
