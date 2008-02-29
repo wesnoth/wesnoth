@@ -119,6 +119,13 @@ public:
 	explicit list_callable(const variant& list) : list_(list)
 	{}
 
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		inputs->push_back(formula_input("size", FORMULA_READ_WRITE));
+		inputs->push_back(formula_input("empty", FORMULA_READ_WRITE));
+		inputs->push_back(formula_input("first", FORMULA_READ_WRITE));
+		inputs->push_back(formula_input("last", FORMULA_READ_WRITE));
+	}
+
 	variant get_value(const std::string& key) const {
 		if(key == "size") {
 			return variant(list_.num_elements());

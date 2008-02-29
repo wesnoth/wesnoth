@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 
+#include "foreach.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 
@@ -9,6 +10,26 @@
 namespace game_logic {
 
 namespace {
+
+class dir_function : public function_expression {
+public:
+	explicit dir_function(const args_list& args)
+	     : function_expression("dir", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		variant var = args()[0]->evaluate(variables);
+		const formula_callable* callable = var.as_callable();
+		std::vector<formula_input> inputs = callable->inputs();
+		std::vector<variant> res;
+		foreach(const formula_input& input, inputs) {
+			res.push_back(variant(input.name));
+		}
+
+		return variant(&res);
+	}
+};
 
 class if_function : public function_expression {
 public:
@@ -518,7 +539,9 @@ expression_ptr create_function(const std::string& fn,
 	}
 
 	std::cerr << "FN: '" << fn << "' " << fn.size() << "\n";
-	if(fn == "if") {
+	if(fn == "dir") {
+		return expression_ptr(new dir_function(args));
+	} else if(fn == "if") {
 		return expression_ptr(new if_function(args));
 	} else if(fn == "abs") {
 		return expression_ptr(new abs_function(args));

@@ -2184,10 +2184,6 @@ int ai::attack_depth()
 	return attack_depth_;
 }
 
-void ai_interface::get_inputs(std::vector<game_logic::formula_input>* inputs) const
-{
-}
-
 namespace {
 template<typename Container>
 variant villages_from_set(const Container& villages,
@@ -2240,6 +2236,19 @@ variant ai_interface::get_value(const std::string& key) const
 		return variant(new gamemap_callable(info_.map));
 	}
 	return variant();
+}
+
+void ai_interface::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	using game_logic::FORMULA_READ_ONLY;
+	inputs->push_back(game_logic::formula_input("turn", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemy_units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("villages", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_villages", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
 }
 
 variant ai::attack_analysis::get_value(const std::string& key) const

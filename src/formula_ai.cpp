@@ -506,6 +506,8 @@ public:
 
 formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false)
 {
+	//make sure we don't run out of refcount
+	add_ref();
 	vars_.add_ref();
 }
 
@@ -735,6 +737,19 @@ variant formula_ai::get_value(const std::string& key) const
 	}
 
 	return ai_interface::get_value(key);
+}
+
+void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
+{
+	using game_logic::FORMULA_READ_ONLY;
+	inputs->push_back(game_logic::formula_input("attacks", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_moves", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemy_moves", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_leader", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("keeps", FORMULA_READ_ONLY));
+
+	ai_interface::get_inputs(inputs);
 }
 
 variant formula_ai::get_keeps() const

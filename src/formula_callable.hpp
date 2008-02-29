@@ -50,7 +50,7 @@ public:
 		return do_compare(other) < 0;
 	}
 
-	virtual void get_inputs(std::vector<formula_input>* inputs) const {}
+	virtual void get_inputs(std::vector<formula_input>* inputs) const {};
 protected:
 	virtual ~formula_callable() {}
 
