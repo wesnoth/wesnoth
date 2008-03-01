@@ -50,9 +50,7 @@ public:
 class unit
 {
 public:
-	//! @todo Unclear comment:
-	// clear the status caches for esch unit, this is should be called it
-	// the status of a unit changes
+	//! Clear the unit status cache for all units. Currently only the hidden status of units is cached this way.
 	static void clear_status_caches();
 
 	friend struct unit_movement_resetter;

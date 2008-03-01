@@ -1084,6 +1084,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			std::pair<gamemap::location,unit> *up = units.extract(u->first);
 			up->first = dst;
 			units.add(up);
+			unit::clear_status_caches();
 			if (up->first == up->second.get_goto())
 			{
 				//if unit has arrived to destination, goto variable is cleaned
