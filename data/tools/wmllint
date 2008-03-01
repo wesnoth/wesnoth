@@ -1940,7 +1940,7 @@ if __name__ == '__main__':
     else:
         print >>sys.stderr, "wmllint: unrecognized version."
         sys.exit(1)
-    if not dryrun and not clean and not revert and len(versions) > 1:
+    if not dryrun and not clean and not revert and not diffs and len(versions) > 1:
         explain = "Upgrades for:"
         for i in range(len(versions)-1):
             explain += " %s -> %s," % (versions[i],  versions[i+1])
