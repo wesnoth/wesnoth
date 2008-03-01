@@ -39,6 +39,9 @@ Version 1.3.19+svn:
    * fix a bug where the random map generator could place a keep on the border
      (bug #11150)
    * Fixed UI sounds toggle crash on Windows
+   * When a new unit is spawned when the attacker dies and the new unit has
+     a lower number of weapons then the weapon number used in the attack an 
+     wml_exception was thrown (bug #10926).
 
 Version 1.3.19:
  * map editor:

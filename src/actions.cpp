@@ -1322,7 +1322,11 @@ attack::attack(game_display& gui, const gamemap& map,
 				fire_event("attack_end");
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc));
 
-				refresh_bc();
+				// Don't try to call refresh_bc() here the attacker or defender might have
+				// been replaced by another unit, which might have a lower number of weapons.
+				// In that case refresh_bc() will terminate with an invalid selected weapon.
+				a_ = units_.find(attacker_);
+				d_ = units_.find(defender_);
 
 				if(a_ == units_.end() || !death_loc.matches_unit(a_->second)) {
 					// WML has invalidated the dying unit, abort
