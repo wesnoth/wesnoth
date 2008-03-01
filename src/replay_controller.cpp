@@ -82,6 +82,10 @@ replay_controller::replay_controller(const config& level, const game_data& gamei
 }
 
 replay_controller::~replay_controller(){
+	//YogiHH
+	//not absolutely sure if this is needed, but it makes me feel a lot better ;-)
+	//feel free to delete this if it is not necessary
+	gui_->get_theme().theme_reset().detach_handler(this);
 }
 
 bool replay_controller::continue_replay() {
@@ -303,9 +307,9 @@ void replay_controller::play_turn(){
 	events::raise_draw_event();
 
 	bool last_team = false;
-	
+
 	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
-		last_team = static_cast<size_t>(player_number_) == teams_.size();	
+		last_team = static_cast<size_t>(player_number_) == teams_.size();
 		play_side(player_number_ - 1, false);
 		play_slice();
 	}
@@ -348,7 +352,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		}
 
 		player_number_++;
-		
+
 		if (static_cast<size_t>(player_number_) > teams_.size()){
 			status_.next_turn();
 			finish_turn();
