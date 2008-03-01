@@ -658,7 +658,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 
 	for(i = games.begin(); i != games.end(); ++i) {
 		std::string name = i->name;
-		name.resize(minimum<size_t>(name.size(),40));
+		utils::truncate_as_wstring(name, minimum<size_t>(name.size(), 40));
 
 		std::ostringstream str;
 		str << name << COLUMN_SEPARATOR << format_time_summary(i->time_modified);
