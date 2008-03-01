@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:37+0100\n"
-"PO-Revision-Date: 2008-03-01 18:54+0100\n"
+"PO-Revision-Date: 2008-03-01 21:33+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -36,9 +36,8 @@ msgid "Animate Map"
 msgstr "Mapa animat"
 
 #: data/_main.cfg:57
-#, fuzzy
 msgid "Unit Standing Animations"
-msgstr "Animacions de les unitats inactives"
+msgstr "Animacions de les unitats aturades"
 
 #: data/_main.cfg:64
 msgid "Show Combat"
@@ -241,9 +240,8 @@ msgid "Latin Translation"
 msgstr "Traducció al llatí"
 
 #: data/core/about.cfg:1407
-#, fuzzy
 msgid "Lithuanian Translation"
-msgstr "Traducció a l'italià"
+msgstr "Traducció al lituà"
 
 #: data/core/about.cfg:1414
 msgid "Norwegian Translation"
@@ -356,6 +354,9 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Algunes armes tenen característiques especials que incrementen la seva "
+"efectivitat d'atac.\n"
+"\n"
 
 #: data/core/help.cfg:110
 msgid "Unknown Unit"
@@ -368,6 +369,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"De moment aquesta unitat és desconeguda. L'haureu de descobrir durant el joc "
+"per tal de poder-ne veure la descripció."
 
 #: data/core/help.cfg:118
 msgid "Overview"
@@ -985,7 +990,6 @@ msgstr ""
 "tipus de mal, patirà un 100% més de mal quan sigui colpejada."
 
 #: data/core/help.cfg:242
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -997,7 +1001,7 @@ msgstr ""
 "\n"
 "Per exemple, els esquelets són molt resistents al mal de tipus tallant o "
 "perforant, vulnerables als impactes i al foc, i extremament dèbils contra "
-"els atacs sagrats."
+"els atacs arcans."
 
 #: data/core/help.cfg:244
 msgid ""
@@ -1323,7 +1327,7 @@ msgstr ""
 
 #: data/core/help.cfg:305
 msgid "Wrap Up"
-msgstr "Per concloure"
+msgstr "Conclusions"
 
 #: data/core/help.cfg:306
 msgid ""
@@ -1341,7 +1345,7 @@ msgstr ""
 
 #: data/core/help.cfg:311
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "Col·laboradors"
 
 #: data/core/help.cfg:317
 msgid "License"
@@ -1631,13 +1635,12 @@ msgid "Healthy"
 msgstr "Sà"
 
 #: data/core/help.cfg:407
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 "Encara que tots els nans tenen una afamada vitalitat, alguns nans són més "
-"resistents que altres i es recuperen més ràpid quan descansen."
+"resistents i poden descansar fins i tot mentre viatgen."
 
 #: data/core/help.cfg:409
 msgid ""
@@ -2233,7 +2236,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:683
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2242,8 +2244,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Activa el mode de purificació (no funciona en multijugador). El mode de "
-"purificació es desactiva eixint del joc.\n"
+"Activa el mode de depuració (no funciona en multijugador).Vegeu "
+"<ref>dst=debug_commands text='ordres del mode depuració'</ref>.\n"
+"El mode de depuració es desactiva sortint del joc o amb l'opció «:nodebug».\n"
 "\n"
 
 #: data/core/help.cfg:686
@@ -2288,12 +2291,14 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:698
-#, fuzzy
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
 "\n"
-msgstr "Mostra el menú de selecció d'interfície."
+msgstr ""
+"\n"
+"Mostra el menú de selecció de la interfície.\n"
+"\n"
 
 #: data/core/help.cfg:701
 msgid ""
@@ -2316,14 +2321,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:705
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"Desa la partida i abandona l'escenari (sense confirmació).\n"
-"\n"
+"Desa la partida i abandona l'escenari (sense confirmació)."
 
 #: data/core/help.cfg:710
 msgid "Multiplayer commands"
@@ -2384,9 +2387,8 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:729
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "Ordres generals"
+msgstr "Ordres del mode depuració"
 
 #: data/core/help.cfg:733
 msgid ""
@@ -2606,7 +2608,6 @@ msgid "ambush"
 msgstr "embosca"
 
 #: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:384
-#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -2618,16 +2619,17 @@ msgstr ""
 "Emboscada:\n"
 "Aquesta unitat pot amagar-se al bosc i passar inadvertida pels seus "
 "enemics.\n"
+"\n"
 "Les unitats enemigues no podran veure ni atacar aquesta unitat quan estigui "
-"al bosc, excepte en els torns immediatament després de que hagi atacat o bé "
-"si hi ha unitats enemigues al costat."
+"al bosc, excepte si hi ha unitats enemigues al costat. Si alguna unitat "
+"enemiga descobreix l'emboscada, aquesta perdrà immediatament el moviment "
+"restant."
 
 #: data/core/macros/abilities.cfg:399 data/core/macros/abilities.cfg:404
 msgid "nightstalk"
 msgstr "sigil"
 
 #: data/core/macros/abilities.cfg:403 data/core/macros/abilities.cfg:408
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -2639,17 +2641,15 @@ msgstr ""
 "Sigil:\n"
 "Aquesta unitat és invisible durant la nit.\n"
 "\n"
-"Les unitats enemigues no poden veure ni atacar aquesta unitat durant la nit, "
-"excepte en el torn immediatament després que hagi atacat. Pot ser descobert "
-"si hi ha unitats enemigues molt properes."
+"Les unitats enemigues no poden veure ni atacar aquesta unitat durant la nit. "
+"Si el sigil és descobert per alguna unitat enemiga, aquesta perdrà "
+"immediatament el moviment restant."
 
 #: data/core/macros/abilities.cfg:423 data/core/macros/abilities.cfg:428
-#, fuzzy
 msgid "concealment"
-msgstr "Campament"
+msgstr "dissimula"
 
 #: data/core/macros/abilities.cfg:427 data/core/macros/abilities.cfg:432
-#, fuzzy
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -2659,20 +2659,12 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Submersió:\n"
-"Aquesta unitat pot amagar-se en aigües profundes i passar inadvertida als "
-"seus enemics.\n"
-"\n"
-"Les unitats enemigues no podran veure ni atacar aquesta unitat quan estigui "
-"en aigües profundes, excepte en els torns immediatament després que hagi "
-"atacat o bé si hi ha unitats enemigues adjacents."
 
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:452
 msgid "submerge"
-msgstr "submergir"
+msgstr "submersió"
 
 #: data/core/macros/abilities.cfg:451 data/core/macros/abilities.cfg:456
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -2686,12 +2678,13 @@ msgstr ""
 "seus enemics.\n"
 "\n"
 "Les unitats enemigues no podran veure ni atacar aquesta unitat quan estigui "
-"en aigües profundes, excepte en els torns immediatament després que hagi "
-"atacat o bé si hi ha unitats enemigues adjacents."
+"en aigües profundes, excepte si hi ha unitats enemigues adjacents. Si alguna "
+"unitat enemiga descobreix la submersió, perdrà immediatament el moviment "
+"restant."
 
 #: data/core/macros/abilities.cfg:474
 msgid "feeding"
-msgstr ""
+msgstr "alimenta"
 
 #: data/core/macros/abilities.cfg:476
 msgid ""
@@ -2755,7 +2748,6 @@ msgid "slows"
 msgstr "alenteix"
 
 #: data/core/macros/abilities.cfg:582
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2764,9 +2756,11 @@ msgid ""
 "is selected."
 msgstr ""
 "Alentir:\n"
-"Aquest atac alenteix l'objectiu. Això redueix a la meitat el mal que causen "
-"els seus atacs, i les unitat alentides es mouen a la meitat de la seva "
-"velocitat normal (arrodonint cap amunt)."
+"Aquest atac alenteix l'objectiu fins la fi del torn. Això redueix a la "
+"meitat el mal que causen els seus atacs, i redueix a la meitat la velocitat "
+"de desplaçament. Es pot identificar una unitat alentida per la icona d'un "
+"cargol que apareix a la barra d'informació lateral quan aquesta és "
+"seleccionada."
 
 #: data/core/macros/abilities.cfg:591
 msgid "stones"
@@ -2859,7 +2853,7 @@ msgstr ""
 #: data/core/macros/amla.cfg:10
 #, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Bonificació HP màxim +"
+msgstr "Bonificació HP màxim +3, XP maxim +20%"
 
 #: data/core/macros/amla.cfg:30
 msgid ", MAX XP +25%"
@@ -3820,13 +3814,12 @@ msgstr ""
 "lentament sobre l'aigua."
 
 #: data/core/macros/special-notes.cfg:11
-#, fuzzy
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" L'atac arcà d'aquesta unitat causa un greu dany a les criatures màgiques, i "
-"fins i tot també a certes unitats vivents."
+" L'atac arcà d'aquesta unitat causa un mal enorme contra criatures màgiques, "
+"i fins i tot també contra certes unitats vivents."
 
 #: data/core/macros/special-notes.cfg:14
 msgid ""
@@ -3845,14 +3838,12 @@ msgstr ""
 "del verí."
 
 #: data/core/macros/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Aquesta unitat és capaç de guarir d'una manera bàsica les unitats al seu "
-"voltant i, encara que no pot curar-les del verí, pot retardar els seus "
-"efectes."
+" Aquesta unitat és capaç de neutralitzar els efectes del verí en unitats que "
+"estiguin al seu voltant."
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
@@ -4050,9 +4041,8 @@ msgid "female^undead"
 msgstr "no mort"
 
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
-#, fuzzy
 msgid "Immune to drain, poison and plague"
-msgstr "Immune al verí"
+msgstr "Immune a drenatge, verí i plaga"
 
 #: data/core/macros/traits.cfg:38
 #, fuzzy
@@ -4165,34 +4155,29 @@ msgid "Teal"
 msgstr "Turquesa"
 
 #: data/core/units.cfg:43
-#, fuzzy
 msgid "race^Bat"
-msgstr "Nagues"
+msgstr "Ratpenat"
 
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
-msgstr "Nagues"
+msgstr "Ratapenada"
 
 #: data/core/units.cfg:45
-#, fuzzy
 msgid "race^Bats"
-msgstr "Nagues"
+msgstr "Ratpenats"
 
 #: data/core/units.cfg:52
-#, fuzzy
 msgid "race^Drake"
-msgstr "Nans"
+msgstr "Drac"
 
 #: data/core/units.cfg:53
 #, fuzzy
 msgid "race+female^Drake"
-msgstr "Nans"
+msgstr "Drac"
 
 #: data/core/units.cfg:54
-#, fuzzy
 msgid "race^Drakes"
-msgstr "Nans"
+msgstr "Dracs"
 
 #: data/core/units.cfg:67
 msgid ""
@@ -5223,9 +5208,8 @@ msgstr ""
 "a més redueix a la meitat el mal que fan en tots els seus atacs."
 
 #: data/hardwired/tips.cfg:159
-#, fuzzy
 msgid "Arcane attacks are very powerful against undead."
-msgstr "Els atacs sagrats són molt poderosos contra els no morts."
+msgstr "Els atacs arcans són molt poderosos contra els no morts."
 
 #: data/hardwired/tips.cfg:160
 msgid "- Great Sage Dacyn, 626YW"
@@ -5344,9 +5328,8 @@ msgstr "Fi del torn"
 
 #: data/themes/default.cfg:150 data/themes/default.cfg:716
 #: data/themes/default.cfg:971 data/themes/dfool.cfg:161
-#, fuzzy
 msgid "End Scenario"
-msgstr "Escenari remot"
+msgstr "Fi de l'escenari"
 
 #: data/themes/default.cfg:208 data/themes/dfool.cfg:232
 #: data/themes/experimental.cfg:181 src/menu_events.cpp:384 src/unit.cpp:2457
@@ -5451,9 +5434,8 @@ msgid "play side turn"
 msgstr "juga el torn del bàndol"
 
 #: data/themes/macros.cfg:163
-#, fuzzy
 msgid "Point of view"
-msgstr "Poció de decaïment"
+msgstr "Punt de vista"
 
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
@@ -5543,7 +5525,6 @@ msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitats a la vista! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2299
-#, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(premeu $hotkey per continuar)"
 
@@ -5596,29 +5577,26 @@ msgstr ""
 "Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
 
 #: src/dialogs.cpp:279
-#, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
-"Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
+"Els noms de les partides desades no poden acabar en «.gz». Si us plau, trieu "
+"un altre nom."
 
 #: src/dialogs.cpp:287
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Ja existeix una partida amb aquest nom. Voleu sobreescriure-la?"
 
 #: src/dialogs.cpp:288 src/menu_events.cpp:751 src/playcampaign.cpp:423
-#, fuzzy
 msgid "Name: "
-msgstr "Nom:"
+msgstr "Nom: "
 
 #: src/dialogs.cpp:289
 msgid "Overwrite?"
 msgstr "Voleu sobreescriure?"
 
 #: src/dialogs.cpp:308
-#, fuzzy
 msgid "Filter: "
-msgstr "Habilitats: "
+msgstr "Filtre: "
 
 #: src/dialogs.cpp:375
 msgid "Do you really want to delete this game?"
@@ -5637,9 +5615,8 @@ msgid "#(Invalid)"
 msgstr "#(Invàlid)"
 
 #: src/dialogs.cpp:555
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Disseny de campanyes"
+msgstr "Campanya: $campaign_name"
 
 #: src/dialogs.cpp:557 src/game.cpp:1500
 msgid "Multiplayer"
@@ -5690,14 +5667,14 @@ msgid "No Saved Games"
 msgstr "No hi ha partides desades"
 
 #: src/dialogs.cpp:641
-#, fuzzy
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
-"No hi ha partides desades per a carregar.\n"
-"Les partides es desen automàticament quan completeu un escenari."
+"No hi ha partides desades per carregar.\n"
+"\n"
+"(Les partides es desen automàticament quan completeu un escenari.)"
 
 #: src/dialogs.cpp:656
 msgid "Date"
@@ -5773,11 +5750,8 @@ msgstr ""
 "carregar de totes maneres.\n"
 
 #: src/game.cpp:778 src/multiplayer_connect.cpp:1448
-#, fuzzy
 msgid "This save is from a version too old to be loaded."
-msgstr ""
-"Aquesta partida és d'una versió diferent del joc. Voleu intentar carregar-la "
-"igualment?"
+msgstr "Aquesta partida es d'una versió massa antiga com per carregar-se."
 
 #: src/game.cpp:784 src/multiplayer_connect.cpp:1455
 msgid ""
@@ -5796,9 +5770,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Error d'E/S en el fitxer mentre es llegia la partida"
 
 #: src/game.cpp:902
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Campanya"
+msgstr "Comença una campanya"
 
 #: src/game.cpp:943
 msgid "Difficulty"
@@ -5858,7 +5831,7 @@ msgstr "Extensió eliminada"
 
 #: src/game.cpp:1125
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr ""
+msgstr "No s'ha pogut eliminar l'extensió; no s'ha trobat el fitxer."
 
 #: src/game.cpp:1146 src/multiplayer.cpp:168 src/multiplayer.cpp:206
 msgid "Connecting to Server..."
@@ -5977,9 +5950,8 @@ msgid "Response"
 msgstr "Resposta"
 
 #: src/game.cpp:1487
-#, fuzzy
 msgid "Join Official Server"
-msgstr "Unir-se al servidor oficial"
+msgstr "Entra al servidor oficial"
 
 #: src/game.cpp:1488
 msgid "Log on to the official Wesnoth multiplayer server"
@@ -5988,20 +5960,21 @@ msgstr "Entra al servidor oficial de Wesnoth per partides multijugador"
 #: src/game.cpp:1490
 #, fuzzy
 msgid "Connect to Host/Server"
-msgstr "Connectar al servidor"
+msgstr "Connecta a servidor"
 
 #: src/game.cpp:1491
+#, fuzzy
 msgid "Join a server or hosted game"
-msgstr "Uneix-te a un servidor o una partida"
+msgstr "Entra en un servidor o una partida"
 
 #: src/game.cpp:1493
 msgid "Local Game"
 msgstr "Partida local"
 
 #: src/game.cpp:1494
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Juga una partida multijugador comparint la mateixa màquina"
+msgstr ""
+"Juga una partida multijugador contra l'IA o compartint la mateixa màquina"
 
 #: src/game.cpp:1502 src/multiplayer.cpp:233
 msgid "Login: "
@@ -6201,20 +6174,12 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: src/help.cpp:1111
-#, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Possibilitat de colpejar'</header>"
+msgstr "<header>text='Unitats amb aquest atac especial'</header>"
 
 #: src/help.cpp:1179
-#, fuzzy
 msgid "<header>text='Units having this ability'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Possibilitat de colpejar'</header>"
+msgstr "<header>text='Unitats amb aquesta habilitat'</header>"
 
 #: src/help.cpp:1244
 msgid "Advances from: "
@@ -6303,12 +6268,8 @@ msgid "Movement Cost"
 msgstr "Cost del moviment"
 
 #: src/help.cpp:1618
-#, fuzzy
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Possibilitat de colpejar'</header>"
+msgstr "<header>text='Unitats d'aquesta raça'</header>"
 
 #: src/help.cpp:2514 src/menu_events.cpp:716
 msgid " < Back"
@@ -6357,13 +6318,15 @@ msgstr "Aleatòri"
 
 #: src/leader_list.cpp:150 src/leader_list.cpp:152
 #: src/multiplayer_connect.cpp:195 src/multiplayer_connect.cpp:247
+#, fuzzy
 msgid "Female ♀"
-msgstr ""
+msgstr "Femení ♀"
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:161
 #: src/multiplayer_connect.cpp:197 src/multiplayer_connect.cpp:249
+#, fuzzy
 msgid "Male ♂"
-msgstr ""
+msgstr "Masculí ♂"
 
 #: src/leader_list.cpp:172 src/leader_list.cpp:209
 msgid "Random"
@@ -6391,11 +6354,11 @@ msgstr "S'està llegint els fitxers i creant la memòria cau."
 
 #: src/map.cpp:342
 msgid "A map without a header is not supported"
-msgstr ""
+msgstr "Els mapes sense capçalera no estan suportats."
 
 #: src/mapgen.cpp:709
 msgid "Random maps with an odd width aren't supported."
-msgstr ""
+msgstr "Mapes aleatoris amb amplada imparella no estan suportats."
 
 #: src/menu_events.cpp:55 src/menu_events.cpp:892 src/menu_events.cpp:894
 #: src/play_controller.cpp:821 src/playcampaign.cpp:114
@@ -6432,7 +6395,7 @@ msgstr "Mal"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Total"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
@@ -6447,34 +6410,27 @@ msgid "Taken"
 msgstr "Rebut"
 
 #: src/menu_events.cpp:296 src/menu_events.cpp:300
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "Esteu segur de que voleu suprimir aquesta partida?"
+msgstr "Esteu segur que voleu acomiadar-lo?"
 
 #: src/menu_events.cpp:296
-#, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr ""
-"Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
+"Senyor, aquesta unitat és experimentada; fins i tot ha avançat de nivell!"
 
 #: src/menu_events.cpp:297 src/menu_events.cpp:301
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "Esteu segur de que voleu suprimir aquesta partida?"
+msgstr "Esteu segur que voleu acomiadar-la?"
 
 #: src/menu_events.cpp:300
-#, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
-"Senyor, aquesta unitat està a punt de pujar de nivell. Segur que voleu "
-"acomiadar a $noun?"
+msgstr "Senyor, aquesta unitat està a punt de pujar de nivell!"
 
 #: src/menu_events.cpp:373
 msgid "Statistics"
 msgstr "Estadístiques"
 
 #: src/menu_events.cpp:383
-#, fuzzy
 msgid "Level^Lv."
 msgstr "Nv."
 
@@ -6491,9 +6447,8 @@ msgid "Location^Loc."
 msgstr "Loc."
 
 #: src/menu_events.cpp:389
-#, fuzzy
 msgid "Status"
-msgstr "Estatus"
+msgstr "Estat"
 
 #: src/menu_events.cpp:497
 msgid "Unit List"
@@ -6501,7 +6456,7 @@ msgstr "Llista d'unitats"
 
 #: src/menu_events.cpp:500 src/menu_events.cpp:521
 msgid "Scroll To"
-msgstr ""
+msgstr "Desplaçar-s'hi"
 
 #: src/menu_events.cpp:550
 msgid "Leader"
@@ -6534,38 +6489,32 @@ msgid "Income"
 msgstr "Beneficis"
 
 #: src/menu_events.cpp:634
-#, fuzzy
 msgid "Current Status"
-msgstr "Mantenidor actual"
+msgstr "Estat actual"
 
 #: src/menu_events.cpp:635
-#, fuzzy
 msgid "More >"
-msgstr "Més"
+msgstr "Més >"
 
 #: src/menu_events.cpp:653
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "Inici de l'escenari"
+msgstr "Líder"
 
 #: src/menu_events.cpp:655
-#, fuzzy
 msgid "scenario settings^Side"
-msgstr "Inici de l'escenari"
+msgstr "Bàndol"
 
 #: src/menu_events.cpp:656
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "Inici de l'escenari"
+msgstr ""
 
 #: src/menu_events.cpp:657
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "Inici de l'escenari"
+msgstr ""
 
 #: src/menu_events.cpp:658
 msgid ""
@@ -6578,9 +6527,8 @@ msgid "scenario settings^Fog"
 msgstr "Boira"
 
 #: src/menu_events.cpp:660
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "Inici de l'escenari"
+msgstr "Ocult"
 
 #: src/menu_events.cpp:705 src/menu_events.cpp:706
 msgid "no"
@@ -6802,30 +6750,24 @@ msgstr ""
 "[argument]"
 
 #: src/menu_events.cpp:1969
-#, fuzzy
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
 msgstr "Neteja la llista d'amics i ignorats. Forma d'ús: /list clear"
 
 #: src/menu_events.cpp:1973
-#, fuzzy
 msgid "Show your ignores and friends list. Usage: /list display"
 msgstr "Mostra la llista d'amics i ignorats. Forma d'ús: /list display"
 
 #: src/menu_events.cpp:1976
-#, fuzzy
 msgid "Unknown subcommand."
-msgstr "Subordre desconeguda"
+msgstr "Subordre desconeguda."
 
 #: src/menu_events.cpp:1981
-#, fuzzy
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
-msgstr ""
-"Envia una emoció o acció personal al xat. Forma d'ús: /emote [missatge]"
+msgstr "Envia una emoció o acció personal al xat. Forma d'ús: /me <missatge>"
 
 #: src/menu_events.cpp:1984
-#, fuzzy
 msgid "Unknown command."
-msgstr "Ordre desconeguda"
+msgstr "Ordre desconeguda."
 
 #: src/menu_events.cpp:1990
 msgid "Added to ignore list: "
@@ -7027,18 +6969,16 @@ msgid "(Empty slot)"
 msgstr "(Plaça buida)"
 
 #: src/multiplayer_connect.cpp:844
-#, fuzzy
 msgid "Only random sides in the current era."
-msgstr "Només hi ha bàndols aleatoris en aquesta era"
+msgstr "Només hi ha bàndols aleatoris era actual."
 
 #: src/multiplayer_connect.cpp:868
 msgid "Unable to find a leader type for faction $faction"
 msgstr "No ha estat possible trobar un líder de la facció $faction"
 
 #: src/multiplayer_connect.cpp:905
-#, fuzzy
 msgid "Game Lobby: "
-msgstr "Sala de joc"
+msgstr "Sala de joc: "
 
 #: src/multiplayer_connect.cpp:925
 msgid "Player/Type"
@@ -7051,7 +6991,7 @@ msgstr "Facció"
 #: src/multiplayer_connect.cpp:927
 #, fuzzy
 msgid "Team/Gender"
-msgstr "Defensor"
+msgstr "Equip/Gènere"
 
 #: src/multiplayer_connect.cpp:928
 msgid "Color"
@@ -7255,6 +7195,8 @@ msgstr "Contrasenya: "
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
+"Estableix la contrasenya que hauran d'introduir aquells jugadors que vulguin "
+"unir-se com a jugadors a la teva partida."
 
 #: src/multiplayer_create.cpp:338
 msgid "Turns: "
@@ -7321,9 +7263,8 @@ msgid "Unknown scenario"
 msgstr "Escenari desconegut"
 
 #: src/multiplayer_lobby.cpp:484
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Carrega una partida desada"
+msgstr "Partida recarregada"
 
 #: src/multiplayer_lobby.cpp:500
 msgid "Turn "
@@ -7334,7 +7275,7 @@ msgstr "Torn "
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Plaça lliure:"
-msgstr[1] "Plaça lliure:"
+msgstr[1] "Places lliures:"
 
 #: src/multiplayer_lobby.cpp:507 src/multiplayer_lobby.cpp:757
 msgid "Password Required"
@@ -7456,15 +7397,15 @@ msgstr "No s'ha pogut establir la connexió inicial."
 
 #: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "S'ha trobat un terreny amb cost de desplaçament inferior a 1."
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
-msgstr ""
+msgstr "S'estan inicialitzant els equips"
 
 #: src/play_controller.cpp:106 src/play_controller.cpp:121
 msgid "Initializing display"
-msgstr ""
+msgstr "S'està inicialitzant la pantalla"
 
 #: src/play_controller.cpp:147
 msgid "Starting game"
@@ -7626,9 +7567,8 @@ msgstr ""
 "Voleu desar la partida?"
 
 #: src/playsingle_controller.cpp:575
-#, fuzzy
 msgid "It is now $name|'s turn"
-msgstr "És el teu torn."
+msgstr "És el torn de $name|."
 
 #: src/playturn.cpp:223
 msgid "Replace with AI"
@@ -7643,19 +7583,17 @@ msgid "Abort game"
 msgstr "Acaba la partida"
 
 #: src/playturn.cpp:230 src/playturn.cpp:242
-#, fuzzy
 msgid "Replace with $player"
-msgstr "Reemplaça amb jugador local"
+msgstr "Reemplaça amb $player"
 
 #: src/playturn.cpp:248
-#, fuzzy
 msgid "$player has left the game. What do you want to do?"
-msgstr "ha deixat la partida. Què voleu fer?"
+msgstr "$player ha deixat la partida. Què voleu fer?"
 
 #: src/replay_controller.cpp:88
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "El fitxer que heu intentat carregar està corromput."
+msgstr ""
+"El fitxer que heu intentat carregar està corromput. Voleu continuar jugant?"
 
 #: src/serialization/parser.cpp:124
 msgid "Unexpected characters at line start"
@@ -7729,7 +7667,7 @@ msgstr "Llogaret propi"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "«border_size» hauria d'estar entre 0.0 i 0.5."
 
 #: src/titlescreen.cpp:348
 msgid "TitleScreen button^Tutorial"
@@ -7748,7 +7686,6 @@ msgid "TitleScreen button^Load"
 msgstr "Carrega"
 
 #: src/titlescreen.cpp:352
-#, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "Extensions"
 
@@ -7761,33 +7698,28 @@ msgid "TitleScreen button^Preferences"
 msgstr "Preferències"
 
 #: src/titlescreen.cpp:355
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "Surt"
+msgstr "Crèdits"
 
 #: src/titlescreen.cpp:356
 msgid "TitleScreen button^Quit"
 msgstr "Surt"
 
 #: src/titlescreen.cpp:359
-#, fuzzy
 msgid "TitleScreen button^Previous"
-msgstr "Surt"
+msgstr "Anterior"
 
 #: src/titlescreen.cpp:360
-#, fuzzy
 msgid "TitleScreen button^Next"
-msgstr "Surt"
+msgstr "Següent"
 
 #: src/titlescreen.cpp:361
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "Carrega"
+msgstr "Ajuda"
 
 #: src/titlescreen.cpp:363
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Carrega"
+msgstr "Ajuda de Wesnoth"
 
 #: src/titlescreen.cpp:365
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -7804,7 +7736,6 @@ msgid ""
 msgstr "Juga acompanyat o contra la màquina"
 
 #: src/titlescreen.cpp:368
-#, fuzzy
 msgid "Load a saved game"
 msgstr "Carrega una partida desada"
 
@@ -7842,11 +7773,11 @@ msgstr "Envia les estadístiques"
 
 #: src/titlescreen.cpp:432
 msgid "Help Wesnoth by sending us information"
-msgstr "Ajudeu el Wesnoth i envieu-nos informació"
+msgstr "Ajudeu Wesnoth enviant informació de les partides"
 
 #: src/unit.cpp:403 src/unit.cpp:1259 src/unit.cpp:2376
 msgid "Unknown unit type '$type|'"
-msgstr ""
+msgstr "Tipus d'unitat «$type|» desconegut"
 
 #: src/unit.cpp:2414 src/unit.cpp:2618 src/unit.cpp:2674
 msgid " and "
@@ -7854,7 +7785,7 @@ msgstr " i "
 
 #: src/unit.cpp:2425
 msgid "$attack_list|: $effect_description"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2490
 msgid "moves"
@@ -7865,9 +7796,8 @@ msgid "XP to advance"
 msgstr "punt d'experiència per avançar"
 
 #: src/unit.cpp:2637
-#, fuzzy
 msgid " move"
-msgstr " moviments"
+msgstr " moviment"
 
 #: src/unit.cpp:2653
 msgid "$effect_description per level"
@@ -7888,7 +7818,7 @@ msgstr[1] "mal"
 #, fuzzy
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] "cops"
+msgstr[0] "cop"
 msgstr[1] "cops"
 
 #: src/unit_types.cpp:791
@@ -7904,21 +7834,21 @@ msgid "neutral"
 msgstr "neutral"
 
 #: src/upload_log.cpp:295
-#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
-"Wesnoth descansa en voluntaris com tu per a rebre comentaris i informació, "
-"especialment de principiants i nous jugadors. El joc manté resums de les "
-"teues partides: ens pots ajudar a millar el joc i la dificultat donant "
-"permís al joc per pujar aquestos resums (anònimament) a wesnoth.org.\n"
+"Wesnoth compta amb el suport de voluntaris com tu que envien comentaris i "
+"ajuden com poden, especialment principiants i nous jugadors. El joc manté "
+"resums de les partides que s'han jugat: podeu ajudar a millorar el joc i la "
+"seva dificultat permetent pujar aquests resums (de forma anònima) a wesnoth."
+"org.\n"
 
 #: src/upload_log.cpp:296
 msgid "Summaries are stored here:"
-msgstr "Els resums es desen aquí:"
+msgstr "Els resums es desen aquí:"
 
 #: src/upload_log.cpp:298
 msgid "You can view the results at:"
