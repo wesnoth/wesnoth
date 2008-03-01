@@ -1824,7 +1824,7 @@ def translator(filename, mapxforms, textxform, versions):
         transformed = "".join(newdata)
     # Return None if the transformation functions made no changes.
     if modified:
-        Return transformed
+        return transformed
     else:
         return None
 
