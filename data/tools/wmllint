@@ -463,6 +463,12 @@ conversion2 = {
     re.compile(r"\bGg\^Vwm\b") : "Gg^Vh",		# This is the 1.3.13 -> 1.3.14 one
     }
 
+# Global changes meant to be done on all lines
+linechanges = (
+        ("canrecruit=1", "canrecruit=yes"),
+        ("canrecruit=0", "canrecruit=no"),
+)
+
 def maptransform2(filename, baseline, inmap, y):
     "Convert a map line between 1.3.x formats."
     for x in range(len(inmap[y])):
@@ -1569,7 +1575,7 @@ def outermap(func, inmap):
         inmap[i][0] = func(inmap[i][0])
         inmap[i][len(inmap[0])-1] = func(inmap[i][len(inmap[0])-1])
 
-def translator(filename, mapxforms, textxform):
+def translator(filename, mapxforms, textxform, versions):
     "Apply mapxform to map lines and textxform to non-map lines."
     global tagstack
     modified = False
@@ -1752,7 +1758,7 @@ def translator(filename, mapxforms, textxform):
             newdata.append(line + terminator)
         else:
             # Handle text (non-map) lines
-            newline = textxform(filename, lineno, line)
+            newline = textxform(filename, lineno, line, versions)
             newdata.append(newline + terminator)
             if newline != line:
                 modified = True
@@ -1805,7 +1811,7 @@ def translator(filename, mapxforms, textxform):
         (newdata, modified2) = hack_syntax(filename, newdata)
         # Run everything together
         filetext = "".join(newdata)
-        modified = modified1 or modified2
+        modified |= modified1 or modified2
         transformed = filetext
         if upconvert:
             # WML syntax changed in 1.3.5.  The transformation cannot
@@ -1818,7 +1824,7 @@ def translator(filename, mapxforms, textxform):
         transformed = "".join(newdata)
     # Return None if the transformation functions made no changes.
     if modified:
-        return transformed
+        Return transformed
     else:
         return None
 
@@ -1947,7 +1953,7 @@ if __name__ == '__main__':
                 return True
         return False
 
-    def texttransform(filename, lineno, line):
+    def texttransform(filename, lineno, line, versions):
         "Resource-name transformation on text lines."
         if not upconvert:
             return line
@@ -1994,7 +2000,7 @@ if __name__ == '__main__':
                 print '"%s", line %d: leaving ambiguous terrain value %s alone.' \
                       % (filename, lineno, value)
             else:
-                if oldstyle:
+                if oldstyle and not lock_terrain_coding == "newstyle":
                     # 1.2.x to 1.3.2 conversions
                     newterrains = ""
                     inmacro = False
@@ -2031,6 +2037,9 @@ if __name__ == '__main__':
                 msg = '"%s", line %d: translatability mark before non-string' % \
                       (filename, lineno)
                 print >>sys.stderr, msg
+        # Perform unconditional line changes
+        for (old, new) in linechanges:
+            transformed = transformed.replace(old, new)
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
@@ -2080,7 +2089,7 @@ if __name__ == '__main__':
             else:
                 # Do file conversions
                 try:
-                    changed = translator(fn, maptransforms, texttransform)
+                    changed = translator(fn, maptransforms, texttransform, versions)
                     if changed:
                         print "wmllint: converting", fn
                         if not dryrun:

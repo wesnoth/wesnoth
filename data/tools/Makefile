@@ -75,3 +75,14 @@ reindent:
 # Extract a table of editor keybindings from the editor theme definition
 editor_bindings:
 	@./extractbindings <../themes/editor.cfg 
+
+# For performing test lifts of mainline
+lift:
+	./wmllint --oldversion 1.3.1 --verbose $(MAINLINE) $(UMC)
+diffs:
+	./wmllint --diffs $(MAINLINE) $(UMC)
+revert:
+	./wmllint --revert $(MAINLINE) $(UMC)
+clean:
+	./wmllint --clean $(MAINLINE) $(UMC)
+
