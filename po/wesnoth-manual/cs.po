@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "POT-Creation-Date: 2008-02-27 13:04+0100\n"
-"PO-Revision-Date: 2008-02-10 17:45+0100\n"
+"PO-Revision-Date: 2008-02-27 17:23+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -280,7 +280,6 @@ msgstr "Hra více hráčů"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:144
-#, fuzzy
 msgid ""
 "Click this button to play single scenarios against one or more opponents. "
 "You can play the games over the internet or at your computer, against "
@@ -291,7 +290,8 @@ msgstr ""
 "Kliknutím na toto tlačítko můžete hrát jednotlivé scénáře proti protivníkům. "
 "Hra může být vedena přes internet i pouze na jednom počítači a proti lidem i "
 "počítačovým hráčům. Po zmáčknutí se objeví dialog, kde můžete zvolit další "
-"podrobnosti. Více se dozvíte v oddílu <xref linkend=\"scenarios\"/>."
+"podrobnosti. Více se dozvíte v oddílu <link linkend=\"scenarios\">scénáře</"
+"link>."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:154
@@ -500,7 +500,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:301
-#, fuzzy
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -513,7 +512,7 @@ msgid ""
 "scenario to the next, so building up your army's strength is possible only "
 "within the scenario."
 msgstr ""
-"Obecně jsou tyto hry hrány proti ostatním lidem přes internet (ale je možné "
+"Obecně jsou tyto hry hrány proti ostatním lidem přes internet (ale je možno "
 "i přes LAN). Pro tento účel je koordinuje hlavní server. Hry více hráčů přes "
 "internet mohou zabrat i několik hodin, podle počtu zúčastněných a velikosti "
 "mapy. Obvykle to bývá něco mezi třemi a sedmi hodinami. Hry je možno ukládat "
@@ -558,17 +557,15 @@ msgstr "Připoj se k serveru/hostiteli"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:331
-#, fuzzy
 msgid ""
 "This option opens a dialog box allowing you to enter the address of the "
 "machine to join. In this dialog there also is the button \"View List\" that "
 "does show a list of official servers that can be used as backup if the main "
 "server is currently not available."
 msgstr ""
-"Tato volba otevře dialog, kam vložíte adresu počítače pro připojení. Může to "
-"být další klient, který v tento okamžik hostuje síťovou hru, nebo jiný "
-"server. V tomto dialogu je také tlačítko „Ukaž seznam“, které zobrazí seznam "
-"náhradních serverů použitelných v případě, že není hlavní server dostupný."
+"Tato volba otevře dialog, kam vložíte adresu počítače pro připojení. V tomto "
+"dialogu je také tlačítko „Ukaž seznam“, které zobrazí seznam náhradních "
+"serverů použitelných v případě, že není hlavní server dostupný."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:336
@@ -582,7 +579,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:339
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -596,12 +592,16 @@ msgid ""
 "make firewall changes to join games hosted on a public server or by someone "
 "else."
 msgstr ""
-"Hry více hráčů můžete hostovat i přímo s klientem - samotnou hrou - bez "
-"nutnosti použít oddělený server. Pokud tak učiníte, musíte povolit ostatním "
-"hráčům připojit se k vašemu počítači na portu 15000 přes TCP. Pokud "
+"Hry více hráčů můžete hostovat i bez použití hlavního serveru. Stačí na "
+"vlastním počítači spustit program <emphasis>wesnothd</emphasis> (lokální "
+"server), který hlavní server zastoupí. Poté je nutno se k lokálnímu serveru "
+"připojit z tohoto (stejného) počítače - v dialogu „Připoj se k serveru/"
+"hostiteli“ použijte adresu 127.0.0.1. Dále je ještě zapotřebí povolit "
+"ostatním hráčům připojit se k vašemu počítači na portu 15000 přes TCP. Pokud "
 "používáte firewall, musíte jej tedy příslušně nastavit - povolit provoz na "
-"portu 15000. Připojování k oficiálnímu serveru nebo jiným hostujícím "
-"počítačům by nemělo vyžadovat nastavování."
+"portu 15000 a případně jej přesměrovat na počítač se spuštěným serverem. "
+"Připojování k oficiálnímu serveru nebo jiným hostujícím počítačům by nemělo "
+"vyžadovat nastavování."
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:352
@@ -1584,7 +1584,6 @@ msgstr "Jednotky"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1065
-#, fuzzy
 msgid ""
 "Battle for Wesnoth has hundreds of unit types which are characterized by a "
 "rich set of statistics. In addition, individual units can have specific "
@@ -2587,7 +2586,6 @@ msgstr "Pohyb"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1905
-#, fuzzy
 msgid ""
 "Clicking on a unit identifies all the places it can move on its current turn "
 "by dimming unreachable hexes (pressing the number keys 2-7 will identify the "
@@ -3851,7 +3849,3 @@ msgstr "<glossterm> ZOC </glossterm>"
 #: ../../doc/manual/manual.en.xml:2598
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr "<link linkend=\"zoc\">Oblast kontroly</link>."
-
-# type: Content of: <book><chapter><section><section><section><title>
-#~ msgid "Host Networked Game"
-#~ msgstr "Hostuj síťovou hru"
