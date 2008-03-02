@@ -503,6 +503,7 @@ void play_no_music()
 
 void play_music()
 {
+	music_start_time = 1; //immediate (same as effect as SDL_GetTicks())
 	want_new_music=true;
 	no_fading=false;
 	fadingout_time=current_track.ms_after;
@@ -510,7 +511,7 @@ void play_music()
 
 void play_new_music()
 {
-	music_start_time = 0;
+	music_start_time = 0; //reset status: no start time
 	want_new_music=true;
 	if(!preferences::music_on() || !mix_ok || current_track.name.empty())
 		return;
@@ -533,21 +534,18 @@ void play_new_music()
 		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(current_track.name,music)).first;
 		last_track=current_track;
 	}
-	if(!Mix_PlayingMusic())
+	LOG_AUDIO << "Playing track '" << current_track.name << "'\n";
+	int fading_time=current_track.ms_before;
+	if(no_fading)
 	{
-		LOG_AUDIO << "Playing track '" << current_track.name << "'\n";
-		int fading_time=current_track.ms_before;
-		if(no_fading)
-		{
-			fading_time=0;
-		}
-		const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
-		if(res < 0)
-		{
-			ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_track.name <<" \n";
-		}
-		want_new_music=false;
+		fading_time=0;
 	}
+	const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
+	if(res < 0)
+	{
+		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_track.name <<" \n";
+	}
+	want_new_music=false;
 }
 
 void play_music_repeatedly(const std::string &name)
@@ -719,8 +717,7 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		return false;
 	}
 	channel_ids[channel] = id;
-	if(group != SOUND_UI)
-		Mix_SetDistance(channel,distance);
+	Mix_SetDistance(channel, distance);
 
 	sound_cache_chunk temp_chunk(file); // search the sound cache on this key
 	it_bgn = sound_cache.begin(), it_end = sound_cache.end();
