@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:37+0100\n"
-"PO-Revision-Date: 2008-02-26 18:07+0100\n"
+"PO-Revision-Date: 2008-03-02 12:31+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -1139,7 +1139,6 @@ msgstr ""
 "d'options d'avancement vous sera proposé."
 
 #: data/core/help.cfg:273
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1162,15 +1161,12 @@ msgstr ""
 "elle peut avoir une amélioration post-niveau maximum (APNM). L'APNM "
 "modifiera l'unité à chaque fois que l'unité atteindra le palier "
 "d'expérience, mais l'unité restera au même niveau. Généralement, l'effet de "
-"l'APNM pour l'unité est d'augmenter le nombre de PV maximum de 3 points. La "
-"première APNM sera normalement gagnée au bout de 100 points d'expérience (80 "
-"points pour les unités intelligentes). Toutefois, gagner une APNM sera de "
-"plus en plus difficile. C'est pourquoi il est beaucoup plus utile d'essayer "
-"de faire progresser vos unités de niveau inférieur.\n"
-"\n"
-"Notez que seul un petit nombre d'unités, comme le nécrophage, se soigneront "
-"par les effets d'une APNM. La plupart des unités ne gagneront que le bonus "
-"du nombre maximum de PV."
+"l'APNM pour l'unité est se soigner completement cette unité et d'augmenter "
+"le nombre de PV maximum de 3 points. La première APNM sera normalement "
+"gagnée au bout de 150 points d'expérience (120 points pour les unités "
+"intelligentes). Toutefois, gagner une APNM sera de plus en plus difficile. "
+"C'est pourquoi il est beaucoup plus utile d'essayer de faire progresser vos "
+"unités de niveau inférieur."
 
 #: data/core/help.cfg:278
 msgid "Healing"
@@ -1402,7 +1398,6 @@ msgstr ""
 "<ref>dst=traits_strong text=Fort</ref>."
 
 #: data/core/help.cfg:331
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1415,7 +1410,8 @@ msgstr ""
 "\n"
 "D'autres traits qui peuvent être attribués aux unités sont "
 "<ref>dst=traits_loyal text=Fidèle</ref>, <ref>dst=traits_undead text=Mort-"
-"vivant</ref> et <ref>dst=traits_dextrous text=Habile</ref>."
+"vivant</ref> et <ref>dst=traits_dextrous text=Habile</ref>.\n"
+"\n"
 
 #: data/core/help.cfg:336
 msgid "Intelligent"
@@ -2387,7 +2383,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:717
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2398,7 +2393,10 @@ msgid ""
 msgstr ""
 "\n"
 "Donne le contrôle d'un camp (écrire ici le numéro de camp) à un joueur "
-"(écrire ici son surnom d'utilisateur ou d'observateur).\n"
+"(écrire ici son surnom d'utilisateur ou d'observateur). vous pouvez regarder "
+"à qui appartient un camp dans la fenêtre « Paramètres du Scénario "
+"» ( appuyez sur le bouton « Suite » de la fenêtre d'état pour y accéder (alt"
+"+s par défaut).).\n"
 "\n"
 
 #: data/core/help.cfg:720
@@ -4025,7 +4023,6 @@ msgstr ""
 "se battre jusqu'à sa mort ou à celle de son adversaire."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
@@ -5011,7 +5008,6 @@ msgid "- The Wesnoth Community"
 msgstr "- La Communauté de Wesnoth"
 
 #: data/hardwired/tips.cfg:43
-#, fuzzy
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
@@ -5086,7 +5082,6 @@ msgstr ""
 "pouvez former une armée expérimentée et puissante."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -5094,16 +5089,15 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Les unités ont généralement une zone de contrôle sur chacun des hexagones "
-"qui leur sont adjacents. Si une unité se déplace dans la zone de contrôle "
-"ennemie, elle ne peut faire aucun autre mouvement pour ce tour. Cela veut "
-"dire que deux unités peuvent barrer la route à l'ennemi en ayant deux cases "
-"vides entre elles. Les unités de niveau 0 sont trop faibles pour contrôler "
-"une zone; les unités tirailleuses sont quant à elles suffisamment habiles "
-"pour ignorer ces zones."
+"Les unités ont généralement une « zone de contrôle » sur chacun des "
+"hexagones qui leur sont adjacents. Si une unité se déplace dans la zone de "
+"contrôle ennemie, elle ne peut faire aucun autre mouvement pour ce tour. "
+"Cela veut dire que deux unités peuvent barrer la route à l'ennemi en ayant "
+"deux cases vides entre elles. Les unités de niveau 0 sont trop faibles pour "
+"contrôler une zone; les unités tirailleuses sont quant à elles suffisamment "
+"habiles pour ignorer ces zones."
 
 #: data/hardwired/tips.cfg:75
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -5121,26 +5115,25 @@ msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Manuel d'Analyse Tactique - Tome II - Haldric II, 43 YW"
 
 #: data/hardwired/tips.cfg:79
-#, fuzzy
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
 "Les unités stationnées dans un village regagnent 8 points de vie au début de "
-"leur tour."
+"leur tour, ou bien seront soignées du poison."
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Les unités qui n'attaquent ni ne se déplacent durant leur tour se reposent "
-"et regagneront 2 points de vie au début de leur prochain tour."
+"Ne bougez pas les unitées blessées si vous n'avez pas besoin de le faire - "
+"laissez-les récuperer. Les unités qui n'attaquent ni ne se déplacent durant "
+"leur tour se reposent et regagneront 2 points de vie au début de leur "
+"prochain tour."
 
 #: data/hardwired/tips.cfg:87
-#, fuzzy
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
@@ -5155,7 +5148,6 @@ msgid "- Sir Kaylan, 498YW"
 msgstr "- Sire Kaylan, 498 YM"
 
 #: data/hardwired/tips.cfg:91
-#, fuzzy
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -5170,7 +5162,6 @@ msgid "- Sir Kaylan, 502YW"
 msgstr "- Sire Kaylan, 502 YM"
 
 #: data/hardwired/tips.cfg:95
-#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain eight experience points for "
@@ -5179,19 +5170,18 @@ msgid ""
 msgstr ""
 "Infliger le coup fatal à une unité ennemie est le meilleur moyen de gagner "
 "de l'expérience. Les unités qui tuent un ennemi gagnent 8 points "
-"d'expérience pour chaque niveau de l'unité tuée."
+"d'expérience pour chaque niveau de l'unité tuée, et 4 points d'experience "
+"pour les unités de niveau 0."
 
 #: data/hardwired/tips.cfg:99
-#, fuzzy
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
 "Les elfes se déplacent et combattent très bien dans les forêts. Les nains se "
-"déplacent et combattent très bien dans les collines et les montagnes."
+"déplacent et combattent très bien dans les collines, cavernes et montagnes."
 
 #: data/hardwired/tips.cfg:103
-#, fuzzy
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
@@ -5249,7 +5239,6 @@ msgstr ""
 "vous puissiez recruter de là."
 
 #: data/hardwired/tips.cfg:123
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
@@ -5259,7 +5248,6 @@ msgstr ""
 "sacrées."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
@@ -5269,7 +5257,6 @@ msgstr ""
 "ces unités pour aider les autres à évoluer plus vite."
 
 #: data/hardwired/tips.cfg:131
-#, fuzzy
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
 "the village and attack you, while enjoying the defense and healing of the "
@@ -5355,7 +5342,6 @@ msgstr ""
 "des ennemis qu'elles peuvent tuer en un coup."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
@@ -5364,13 +5350,12 @@ msgid ""
 "your lower-level units instead."
 msgstr ""
 "Au lieu de se transformer, les unités de haut peuvent obtenir des "
-"Améliorations Post-Niveau Maximum (APNMs), qui habituellement augmentent le "
+"Améliorations Post-Niveau Maximum (APNM), qui habituellement augmentent le "
 "nombre de points de vie maximal de 3. Mais il est de plus en plus difficile "
 "de gagner de nouvelles APNMs. Il est donc en général préférable d'essayer "
 "d'améliorer les unités de niveau inférieur."
 
 #: data/hardwired/tips.cfg:175
-#, fuzzy
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
 "are limited by its maximum movement. Remember this when deciding what unit "
@@ -5390,7 +5375,6 @@ msgstr ""
 "ou l'explication."
 
 #: data/hardwired/tips.cfg:183
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
