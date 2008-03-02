@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:37+0100\n"
-"PO-Revision-Date: 2008-03-02 11:52+0100\n"
+"PO-Revision-Date: 2008-03-02 13:09+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -957,7 +957,6 @@ msgid "Damage Types and Resistance"
 msgstr "Tipus de mal i resistència"
 
 #: data/core/help.cfg:238
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -967,7 +966,7 @@ msgid ""
 msgstr ""
 "A Wesnoth hi ha tres tipus de mal associats amb atacs físics: tallant, "
 "perforant i impactant. D'altra banda, també hi ha tres tipus de mal "
-"associats a la màgia: foc, fred i sagrat. Cada unitat té resistències a "
+"associats a la màgia: foc, fred i arcà. Cada unitat té resistències a "
 "aquests atacs que alteren el mal que poden rebre."
 
 #: data/core/help.cfg:240
@@ -1307,7 +1306,6 @@ msgstr ""
 "d'or per torn."
 
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1319,10 +1317,11 @@ msgid ""
 msgstr ""
 "\n"
 "Hi ha una excepció important que afecta el manteniment: les unitats amb el "
-"tret lleial no tenen mai cap cost de manteniment. Les unitats amb les que "
-"comenceu un escenari (com ara Konrad i Delfador) o les unitats que s'uneixin "
-"durant el seu transcurs (com els genets del segon nivell de Hereu al Tron), "
-"tindran normalment el tret lleial."
+"tret lleial i els líders no tenen mai cap cost de manteniment. Les unitats "
+"amb les que comenceu un escenari (com ara Delfador) o les unitats que "
+"s'uneixin durant el seu transcurs (com els genets del segon nivell d'Hereu "
+"al tron), tindran normalment el tret lleial. La unitat amb la que jugueu "
+"(com Konrad) gairebé sempre són líders."
 
 #: data/core/help.cfg:305
 msgid "Wrap Up"
@@ -1379,7 +1378,6 @@ msgstr ""
 "<ref>dst=traits_strong text='fort'</ref>."
 
 #: data/core/help.cfg:331
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1391,8 +1389,9 @@ msgstr ""
 "\n"
 "\n"
 "Altres trets que poden ser assignats són <ref>dst=traits_dextrous "
-"text='Destre'</ref>, <ref>dst=traits_undead text='Lleial'</ref>, i "
-"<ref>dst=traits_dextrous text=No mort</ref>."
+"text=destre</ref>, <ref>dst=traits_loyal text=lleial</ref>, i "
+"<ref>dst=traits_undead text=no mort</ref>.\n"
+"\n"
 
 #: data/core/help.cfg:336
 msgid "Intelligent"
@@ -1555,7 +1554,7 @@ msgstr ""
 
 #: data/core/help.cfg:382
 msgid "trait^Undead"
-msgstr "tret^No mort"
+msgstr "No mort"
 
 #: data/core/help.cfg:383
 msgid ""
@@ -2717,7 +2716,6 @@ msgid "plague"
 msgstr "plaga"
 
 #: data/core/macros/abilities.cfg:558
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2726,11 +2724,10 @@ msgid ""
 msgstr ""
 "Plaga:\n"
 "Quan una unitat mor per un atac de plaga, aquesta és reemplaçada per una "
-"d'idèntica i del mateix bàndol que l'atacant (no funciona amb unitats que "
-"estan a llogarets o que siguin no mortes)."
+"d'idèntica però del bàndol de l'atacant. No funciona amb unitats que "
+"estiguin en llogarets o que siguin no mortes."
 
 #: data/core/macros/abilities.cfg:570
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2738,9 +2735,9 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Plaga:\n"
-"Quan una unitat mor per un atac de plaga, aquesta és reemplaçada per una "
-"d'idèntica i del mateix bàndol que l'atacant (no funciona amb unitats que "
-"estan a llogarets o que siguin no mortes)."
+"Quan una unitat mor per un atac de plaga, aquesta és reemplaçada per un "
+"cadàver ambulant del bàndol de l'atacant. No funciona amb unitats que "
+"estiguin en llogarets o que siguin no mortes."
 
 #: data/core/macros/abilities.cfg:580
 msgid "slows"
@@ -2838,7 +2835,6 @@ msgid "poison"
 msgstr "verí"
 
 #: data/core/macros/abilities.cfg:678
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2847,7 +2843,8 @@ msgid ""
 msgstr ""
 "Verí:\n"
 "Aquest atac enverina criatures vives. Les unitats enverinades perden 8 punts "
-"de vida cada torn fins que son curades o bé arriben a només 1 punt de vida."
+"de vida cada torn fins que són curades o bé fins que arriben a només 1 punt "
+"de vida.El verí no pot mater per si mateix una unitat."
 
 #: data/core/macros/amla.cfg:10
 #, fuzzy
@@ -4044,14 +4041,12 @@ msgid "Immune to drain, poison and plague"
 msgstr "Immune a drenatge, verí i plaga"
 
 #: data/core/macros/traits.cfg:38
-#, fuzzy
 msgid "mechanical"
-msgstr "Mecànics"
+msgstr "mecànic"
 
 #: data/core/macros/traits.cfg:39
-#, fuzzy
 msgid "female^mechanical"
-msgstr "Mecànics"
+msgstr "mecànica"
 
 #: data/core/macros/traits.cfg:52
 msgid "strong"
@@ -4170,7 +4165,6 @@ msgid "race^Drake"
 msgstr "Drac"
 
 #: data/core/units.cfg:53
-#, fuzzy
 msgid "race+female^Drake"
 msgstr "Drac"
 
@@ -4431,7 +4425,6 @@ msgid "race^Saurian"
 msgstr "Sauri"
 
 #: data/core/units.cfg:140
-#, fuzzy
 msgid "race+female^Saurian"
 msgstr "Sauria"
 
@@ -4898,17 +4891,16 @@ msgid "- The Wesnoth Community"
 msgstr "- La comunitat de Wesnoth"
 
 #: data/hardwired/tips.cfg:43
-#, fuzzy
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
 msgstr ""
-"Les unitats legals lluiten millor de dia, les caòtiques lluiten millor de "
+"Les unitats legals lluiten millor de dia, les caòtiques lluiten millor de "
 "nit. Les neutrals no es veuen afectades pel dia i la nit."
 
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- Compendi reial de terminologia de guerra, Volum II, 212AW"
 
 #: data/hardwired/tips.cfg:47
 msgid ""
@@ -5001,16 +4993,15 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr ""
+msgstr "- Manual d'anàlisi tàctic, volum II - Haldric II, 43YW"
 
 #: data/hardwired/tips.cfg:79
-#, fuzzy
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"Les unitats que descansen als llogarets recuperen 8 punts de vida al "
-"començament del seu torn."
+"Les unitats que descansen als llogarets recuperen 8 punts de vida o es curen "
+"d'enverinament al començament del seu torn."
 
 #: data/hardwired/tips.cfg:83
 #, fuzzy
@@ -5038,14 +5029,13 @@ msgid "- Sir Kaylan, 498YW"
 msgstr "- Senyor Kaylan, 498AW"
 
 #: data/hardwired/tips.cfg:91
-#, fuzzy
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
 "Les unitats a cavall solen ser resistents a armes tallants i impactants, "
-"però vulnerables a atacs perforants com llances o fletxes."
+"però vulnerables a atacs d'armes perforants com ara llances o fletxes."
 
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
@@ -5064,16 +5054,14 @@ msgstr ""
 "per cada nivell de l'enemic."
 
 #: data/hardwired/tips.cfg:99
-#, fuzzy
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
 "Els elfs es mouen i lluiten molt bé als boscos. Els nans, en canvi, es "
-"defensen millor a les muntanyes."
+"defensen millor a les muntanyes i les coves."
 
 #: data/hardwired/tips.cfg:103
-#, fuzzy
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
@@ -5138,23 +5126,23 @@ msgstr ""
 "vulnerables als atacs impactants, de foc i sagrats."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
 "Les unitats amb lideratge fan que les tropes de nivell inferior que es "
-"troben al seu voltant lluitin millor."
+"troben al seu voltant lluitin millor. Utilitzeu els líders per facilitar que "
+"la resta d'unitats pugin de nivell més fàcilment."
 
 #: data/hardwired/tips.cfg:131
-#, fuzzy
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
 "En general, eviteu apropar-vos a llogarets desocupats. L'enemic podrà entrar-"
-"hi i atacar-vos, beneficiant-se així de la defensa i la curació."
+"hi i atacar-vos des d'allà, beneficiant-se així de la defensa i la cura que "
+"proporcionen els llogarets."
 
 #: data/hardwired/tips.cfg:135
 msgid "Use lines of units to screen injured units to let them recover."
@@ -6029,15 +6017,15 @@ msgstr "Batalla per Wesnoth"
 
 #: src/game.cpp:2219
 msgid "Loading game configuration."
-msgstr "S'està carregant la configuració del joc."
+msgstr "S'està carregant la configuració del joc."
 
 #: src/game.cpp:2225
 msgid "Re-initialize fonts for the current language."
-msgstr "S'està tornant a inicialitzar la font per a l'idioma actual."
+msgstr "S'està tornant a inicialitzar la font per a l'idioma actual."
 
 #: src/game.cpp:2239
 msgid "Loading title screen."
-msgstr "S'està carregant la pantalla principal."
+msgstr "S'està carregant la pantalla principal."
 
 #: src/game_config.cpp:267
 msgid "Invalid color range: "
@@ -6184,9 +6172,8 @@ msgid "Advances to: "
 msgstr "Avança a: "
 
 #: src/help.cpp:1304 src/help.cpp:1557 src/help.cpp:1612
-#, fuzzy
 msgid "race^Miscellaneous"
-msgstr "Altres"
+msgstr "Miscel·lània"
 
 #: src/help.cpp:1306
 msgid "Race: "
@@ -6342,7 +6329,7 @@ msgstr "S'està llegint els fitxers de les unitats."
 
 #: src/loadscreen.cpp:241
 msgid "Reading files and creating cache."
-msgstr "S'està llegint els fitxers i creant la memòria cau."
+msgstr "S'estan llegint els fitxers i creant la memòria cau."
 
 #: src/map.cpp:342
 msgid "A map without a header is not supported"
@@ -6708,14 +6695,13 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:1943
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control any "
 "side in a game. Usage: /msg <nick> <message>"
 msgstr ""
 "Envia un missatge privat. Durant la partida, no podeu enviar missatges a "
-"jugadors que controlin algun bàndol. Forma d'ús: /whisper [sobrenom] "
-"[missatge]"
+"jugadors que controlin qualsevol bàndol. Forma d'ús: /whisper <sobrenom> "
+"<missatge>"
 
 #: src/menu_events.cpp:1949
 msgid ""
@@ -6729,20 +6715,20 @@ msgstr ""
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr ""
 "Afegeix un jugador a la vostra llista d'amics. Forma d'ús: /list addfriend "
-"<nom>"
+"<sobrenom>"
 
 #: src/menu_events.cpp:1961
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr ""
 "Afegeix un jugador a la vostra llista d'ignorats. Forma d'ús: /list ignore "
-"<nom>"
+"<sobrenom>"
 
 #: src/menu_events.cpp:1965
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
 "Esborra un jugador a la vostra llista d'amics. Forma d'ús: /list remove "
-"<nom>"
+"<sobrenom>"
 
 #: src/menu_events.cpp:1969
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
@@ -6802,7 +6788,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2196
 msgid "Usage: control <side> <nick>"
-msgstr "Forma d'ús: control <bàndol> <nom>"
+msgstr "Forma d'ús: control <bàndol> <sobrenom>"
 
 #: src/menu_events.cpp:2208
 msgid "Can't change control of invalid side: '$side'."
@@ -6984,7 +6970,6 @@ msgid "Faction"
 msgstr "Facció"
 
 #: src/multiplayer_connect.cpp:927
-#, fuzzy
 msgid "Team/Gender"
 msgstr "Equip/Gènere"
 
