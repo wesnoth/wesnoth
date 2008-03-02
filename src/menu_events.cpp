@@ -340,7 +340,7 @@ namespace events{
 	std::string menu_handler::get_title_suffix(int team_num)
 	{
 		int controlled_recruiters = 0;
-		for(int i = 0; i < teams_.size(); ++i) {
+		for(size_t i = 0; i < teams_.size(); ++i) {
 			if(teams_[i].is_human() && !teams_[i].recruits().empty()
 			&& team_leader(i+1, units_) != units_.end()) {
 				++controlled_recruiters;
