@@ -65,8 +65,8 @@ private:
 	bool on_board(const gamemap::location& loc) const 
 	{
 		return loc.x > 0 && loc.y > 0 &&
-			loc.x < static_cast<long>(width_ - 1) &&
-			loc.y < static_cast<long>(height_ - 1); 
+			loc.x < static_cast<long>(width_ - 2) &&
+			loc.y < static_cast<long>(height_ - 2); 
 	}
 
 	void set_terrain(gamemap::location loc, t_translation::t_terrain t);
