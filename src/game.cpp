@@ -1487,8 +1487,8 @@ bool game_controller::play_multiplayer()
 		+ sep1 + _("Join Official Server")
 		+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
 	host_or_join.push_back(pre + "serverother.png"
-		+ sep1 + _("Connect to Host/Server")
-		+ sep2 + _("Join a server or hosted game"));
+		+ sep1 + _("Connect to Server")
+		+ sep2 + _("Join a different server"));
 	host_or_join.push_back(pre + "hotseat.png"
 		+ sep1 + _("Local Game")
 		+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
