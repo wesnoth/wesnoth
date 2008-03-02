@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2007-10-12 13:31+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -388,11 +388,11 @@ msgstr "Velocidade Acelerada"
 msgid "Skip AI Moves"
 msgstr "Saltar os Movementos da IA"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 #, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
@@ -633,17 +633,6 @@ msgstr ""
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Non animar o movemento das unidades da IA"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
-
-#: src/game_preferences_display.cpp:348
-#, fuzzy
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
-"Eliminar automáticamente ó rematar un escenario as partidas gardadas "
-"automáticamente"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1271,6 +1260,12 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr ""
+#~ "Eliminar automáticamente ó rematar un escenario as partidas gardadas "
+#~ "automáticamente"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Gardar os Atallos de Teclado"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-02-16 14:53+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -386,13 +386,13 @@ msgstr "Velocità accelerata"
 msgid "Skip AI Moves"
 msgstr "Salta mosse AI"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 "Salva i replay in caso di vittoria in giocatore singolo/multiplo o sconfitta "
 "giocatore multiplo"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "Elimina i salvataggi automatici in caso di vittoria in giocatore singolo/"
@@ -631,18 +631,6 @@ msgstr "Imposta il massimo numero di salvataggi da conservare"
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Non animare i movimenti delle unità dell'AI"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
-"Salva i replay alla vittoria in giocatore singolo o di sconfitta in "
-"giocatore singolo/multiplo."
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
-"Elimina automaticamente i salvataggi alla vittoria in giocatore singolo o "
-"sconfitta in giocatore singolo/multiplo"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1283,6 +1271,16 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr ""
+#~ "Salva i replay alla vittoria in giocatore singolo o di sconfitta in "
+#~ "giocatore singolo/multiplo."
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr ""
+#~ "Elimina automaticamente i salvataggi alla vittoria in giocatore singolo o "
+#~ "sconfitta in giocatore singolo/multiplo"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Salva i tasti-scorciatoia"

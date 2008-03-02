@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-01-25 09:50+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -385,11 +385,11 @@ msgstr "Arttırılmış Hız"
 msgid "Skip AI Moves"
 msgstr "Saldırı Arabirimi Hareketlerini Atla"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "TO/ÇO Zaferi veya ÇO Yenilgisinde Oyunu Kaydet"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "TO/ÇO Galibiyetinde veya ÇO Yenilgisinde kendiliğinden kaydedilenleri sil"
@@ -626,15 +626,6 @@ msgstr "Kendiliğinden yapılan kayıtların azami sayısını ayarla"
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Saldırı Arayüzü birimlerinin hareketleri canlandırılmaz"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr "TO zaferinde veya TO/ÇO yenilgisinde oyun kaydedilir."
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
-"TO zaferinde veya TO/ÇO yenilgisinde kaydadilen oyunlar kendiliğinden silinir"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1266,6 +1257,14 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr "TO zaferinde veya TO/ÇO yenilgisinde oyun kaydedilir."
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr ""
+#~ "TO zaferinde veya TO/ÇO yenilgisinde kaydadilen oyunlar kendiliğinden "
+#~ "silinir"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Kısayolları Kaydet"

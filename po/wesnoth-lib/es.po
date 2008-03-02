@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-01-20 20:52+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -388,13 +388,13 @@ msgstr "Velocidad acelerada"
 msgid "Skip AI Moves"
 msgstr "Omitir los movimientos de la inteligencia artificial"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 "Guardar Repetición en Victorias de un jugador/multijugador o Derrotas "
 "multijugador."
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "Borrar guardados automáticos en las Victorias de un jugador/multijugador o "
@@ -635,18 +635,6 @@ msgid "Do not animate AI units moving"
 msgstr ""
 "No animar el movimiento de las unidades controladas por la inteligencia "
 "artificial"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
-"Guardar repeticiones en victorias de un jugador o derrotas de un jugador/"
-"multijugador."
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
-"Borrar automáticamente partidas guardadas en victorias de un jugador o en "
-"derrotas de un jugador/multijugador"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1290,6 +1278,16 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "En la sección '[$section|]' la clave obligatoria '$key|' no se ha "
 "establecido."
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr ""
+#~ "Guardar repeticiones en victorias de un jugador o derrotas de un jugador/"
+#~ "multijugador."
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr ""
+#~ "Borrar automáticamente partidas guardadas en victorias de un jugador o en "
+#~ "derrotas de un jugador/multijugador"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Guardar accesos rápidos"

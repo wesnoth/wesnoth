@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-01-15 23:03+0800\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
@@ -384,11 +384,11 @@ msgstr "加速"
 msgid "Skip AI Moves"
 msgstr "略过电脑的移动"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "游戏胜利或者多人游戏失败时，保存录像"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "游戏胜利或者多人游戏失败时，删除自动存档"
 
@@ -623,14 +623,6 @@ msgstr "设置最大存档数"
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "不显示AI单位的移动动画"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr "游戏失败或单人游戏胜利时保存游戏录像"
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "游戏失败或单人游戏胜利时自动删除游戏存档"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1253,6 +1245,12 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在区块'[$section|]'中，必须设的值'$key|'没有设置。"
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr "游戏失败或单人游戏胜利时保存游戏录像"
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr "游戏失败或单人游戏胜利时自动删除游戏存档"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "保存快捷键"

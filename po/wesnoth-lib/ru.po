@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-03-01 12:26+0300\n"
 "Last-Translator: vz <vicza@zmail.ru>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -397,11 +397,11 @@ msgstr "Ускоренные движения"
 msgid "Skip AI Moves"
 msgstr "Пропускать ходы компьютера"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Сохранять повторы"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Автоматически удалять автосохранения"
 
@@ -636,18 +636,6 @@ msgstr "Установить максимальное количество ав�
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Не анимировать движения отрядов компьютера"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
-"Сохранять повторы при победе в одно-/многопользовательской игре,  или "
-"поражении во многопользовательской."
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
-"Автоматически удалять автосохранения при победе в одно-/"
-"многопользовательской игре, или поражении во многопользовательской."
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1276,6 +1264,16 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr ""
+#~ "Сохранять повторы при победе в одно-/многопользовательской игре,  или "
+#~ "поражении во многопользовательской."
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr ""
+#~ "Автоматически удалять автосохранения при победе в одно-/"
+#~ "многопользовательской игре, или поражении во многопользовательской."
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Сохранить"

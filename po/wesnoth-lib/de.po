@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-02-15 14:14+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -382,11 +382,11 @@ msgstr "Geschwindigkeit erhöhen"
 msgid "Skip AI Moves"
 msgstr "Computerzüge überspringen"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Spielverläufe nach ES/MS Sieg oder MS Niederlage speichern"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Spielstände nach ES/MS Sieg oder MS Niederlage löschen"
 
@@ -625,17 +625,6 @@ msgstr ""
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Die Züge der Einheiten des Computers werden nicht animiert"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
-"Speichert Wiederholungen nach einem ES/MS Sieg oder einer MS Niederlage"
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
-"Löscht automatisch alle Spielstände nach einem ES/MS Sieg oder einer MS "
-"Niederlage"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1275,6 +1264,15 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Im Abschnitt »[$section|]« ist der benötigte Schlüssel »$key|« nicht gesetzt."
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr ""
+#~ "Speichert Wiederholungen nach einem ES/MS Sieg oder einer MS Niederlage"
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr ""
+#~ "Löscht automatisch alle Spielstände nach einem ES/MS Sieg oder einer MS "
+#~ "Niederlage"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Tastenkürzel speichern"

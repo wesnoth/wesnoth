@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-02-26 20:17+0100\n"
 "Last-Translator: Joeri Melis <joeri_melis@hotmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -385,11 +385,11 @@ msgstr "Versnelde zetten"
 msgid "Skip AI Moves"
 msgstr "Computerzetten overslaan"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Sla een herhaling op bij SP/MP winst en bij MP verlies."
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Verwijder autosaves bij SP/MP winst of MP verlies."
 
@@ -625,14 +625,6 @@ msgstr "Zet het maximale aantal automatisch bewaarde spelbeurten"
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Zetten van computerspelers niet animeren"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr "Bewaar herhalingen bij SP winst en SP/MP verlies."
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Verwijder de autosaves bij SP winst of SP/MP verlies"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1266,6 +1258,12 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "In sectie '[$section|]' is het verplichte veld '$key|' niet gezet."
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr "Bewaar herhalingen bij SP winst en SP/MP verlies."
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr "Verwijder de autosaves bij SP winst of SP/MP verlies"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Sneltoets bewaren"

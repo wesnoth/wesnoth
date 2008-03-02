@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-01-14 21:50+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -386,12 +386,12 @@ msgid "Skip AI Moves"
 msgstr "Sauter les déplacements de l'IA"
 
 # Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Sauver le film en cas de défaite multijoueur ou de victoire"
 
 # Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Supprimer les sauvegardes en cas de défaite multijoueur ou de victoire"
 
@@ -626,18 +626,6 @@ msgstr "Configurer le nombre maximal de sauvegardes automatiques à conserver"
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Ne pas animer les déplacements des unités de l'ordinateur"
-
-# Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr "Sauver le film en cas de victoire monojoueur ou de défaite"
-
-# Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
-"Supprimer les sauvegardes automatiques en cas de victoire monojoueur ou de "
-"défaite"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1277,6 +1265,16 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Dans la section « [$section|] » la clé obligatoire « $key » n'est pas "
 "renseignée."
+
+# Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr "Sauver le film en cas de victoire monojoueur ou de défaite"
+
+# Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr ""
+#~ "Supprimer les sauvegardes automatiques en cas de victoire monojoueur ou "
+#~ "de défaite"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Sauver les raccourcis"

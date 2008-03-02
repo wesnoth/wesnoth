@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-03-01 21:36+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -389,13 +389,13 @@ msgid "Skip AI Moves"
 msgstr "Omet el moviment de la IA"
 
 # Possibles abreviacions per «single/multi-player»?
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Desa la repetició en perdre (multijugador) o guanyar"
 
 # Estaria bé posar un comentari per a traductors, ja que aquest string no pot
 # passar de ~70 caràcters.
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Esborra les partides desades automàticament"
 
@@ -634,14 +634,6 @@ msgstr ""
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Omet les animacions de la IA"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr "Desa la repetició en guanyar (monojugador) o perdre"
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Esborra les partides desades en guanyar (monojugador) o perdre"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1273,6 +1265,12 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "A la secció «[$section|]», la clau obligatòria «$key|» no està definida."
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr "Desa la repetició en guanyar (monojugador) o perdre"
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr "Esborra les partides desades en guanyar (monojugador) o perdre"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Desa les dreceres"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-02-10 15:51+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
@@ -383,11 +383,11 @@ msgstr "Kiihdytetty nopeus"
 msgid "Skip AI Moves"
 msgstr "Ohita tietokoneen liikkeet"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Tallenna uusinta YP/MP-voitoista tai MP-häviöistä."
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Poista automaattitallennukset YP/MP-voitoista tai MP-häviöistä."
 
@@ -622,14 +622,6 @@ msgstr "Aseta maksimimäärä säästettäville automaattitallennuksille"
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Älä animoi tietokoneen yksikköjen liikkeitä"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr "Tallenna uusinnat YP-voitosta tai YP/MP-häviöstä."
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Automaattisesti tuhoa tallennukset YP-voitossa tai YP/MP-tappiossa"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1255,6 +1247,12 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Osassa '[$section|]' pakollinen avain '$key|' ei ole asetettu"
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr "Tallenna uusinnat YP-voitosta tai YP/MP-häviöstä."
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr "Automaattisesti tuhoa tallennukset YP-voitossa tai YP/MP-tappiossa"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Tallenna muutokset"

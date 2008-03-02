@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2008-02-04 00:20+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -398,12 +398,12 @@ msgid "Skip AI Moves"
 msgstr "Přeskakuj tahy počítače"
 
 # !!!! délka
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Ukládej záznamy při prohře ve hře více hráčů a každém vítězství"
 
 # !!!! délka
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Maž uložené pozice při prohře ve hře více hráčů a každém vítězství"
 
@@ -643,15 +643,6 @@ msgstr "Nastav maximální počet automaticky uložených her k ponechání"
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Neanimuj jednotky ovládané počítačem"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr "Ukládej záznamy při vítězství v tažení a jakékoliv porážce."
-
-#: src/game_preferences_display.cpp:348
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr ""
-"Maž automaticky uložené pozice při vítězství v tažení a jakékoliv porážce."
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1277,6 +1268,13 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
+
+#~ msgid "Save replays on SP victory or SP/MP defeat."
+#~ msgstr "Ukládej záznamy při vítězství v tažení a jakékoliv porážce."
+
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr ""
+#~ "Maž automaticky uložené pozice při vítězství v tažení a jakékoliv porážce."
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Ulož klávesové zkratky"

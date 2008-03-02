@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-02-11 21:56+0100\n"
+"POT-Creation-Date: 2008-03-02 14:03+0100\n"
 "PO-Revision-Date: 2007-30-07 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -387,11 +387,11 @@ msgstr "Ubrzano"
 msgid "Skip AI Moves"
 msgstr "Preskoči poteze VI"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 #, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Automatski briši samočuvanja na kraju scenarija."
@@ -629,15 +629,6 @@ msgstr ""
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
 msgstr "Ne animirati VI jedinice prilikom kretanja"
-
-#: src/game_preferences_display.cpp:345
-msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
-
-#: src/game_preferences_display.cpp:348
-#, fuzzy
-msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Automatski briši samočuvanja na kraju scenarija."
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -1264,6 +1255,10 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
+#~ msgstr "Automatski briši samočuvanja na kraju scenarija."
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Sačuvaj prečice"
