@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:37+0100\n"
-"PO-Revision-Date: 2008-02-27 10:10+0100\n"
+"PO-Revision-Date: 2008-03-01 15:53+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -972,7 +972,6 @@ msgid "Damage Types and Resistance"
 msgstr "Aanvalstypes en Weerstand"
 
 #: data/core/help.cfg:238
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -982,7 +981,7 @@ msgid ""
 msgstr ""
 "In Wesnoth zijn er drie soorten schade, meestal door fysieke aanvallen: "
 "scherp, puntig en stomp schade. Daarnaast zijn er drie meestal magische "
-"aanvalstypen: vuur, kou, en ????. Verschillende eenheden kunnen in "
+"aanvalstypen: vuur, kou, en mysterieus. Verschillende eenheden kunnen in "
 "verschillende mate weerstand hebben tegen deze aanvalstypen waardoor de "
 "hoeveelheid daadwerkelijk toegebrachte schade verandert."
 
@@ -1130,7 +1129,6 @@ msgstr ""
 "mag je kiezen tot wat de eenheid promoveert."
 
 #: data/core/help.cfg:273
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1150,16 +1148,12 @@ msgstr ""
 "De meeste, maar niet alle, eenheden hebben drie rangen. Sommige eenheden "
 "(zoals <ref>dst=unit_Mage text=magiërs</ref>) hebben er vier. Wanneer een "
 "eenheid zijn hoogste rang heeft bereikt kan hij een AMLA (After Maximum "
-"Level Advancement) krijgen.\n"
-"De AMLA beïnvloed de eenheid elke keer dat hij bereikt wordt maar de rang "
-"van de eenheid blijft gelijk. Het standaardeffect is dat het maximale aantal "
-"hitpoints met 3 verhoogd wordt. De eerste AMLA wordt normaal gesproken "
-"bereikt bij een extra 100 XP (80 XP voor intelligente eenheden). Het krijgen "
-"wordt echter steeds moeilijker, zodat het vaak verstandiger is eenheden van "
-"lagere rang te doen promoveren.\n"
-"\n"
-"Slechts een beperkt aantal eenheden (zoals de necrofaag) geneest bij een "
-"AMLA."
+"Level Advancement) krijgen. De AMLA beïnvloed de eenheid elke keer dat hij "
+"bereikt wordt maar de rang van de eenheid blijft gelijk. Het standaardeffect "
+"is dat het maximale aantal hitpoints met 3 verhoogd wordt. De eerste AMLA "
+"wordt normaal gesproken bereikt bij een extra 150 XP (120 XP voor "
+"intelligente eenheden). Het krijgen wordt echter steeds moeilijker, zodat "
+"het vaak verstandiger is eenheden van lagere rang te doen promoveren."
 
 #: data/core/help.cfg:278
 msgid "Healing"
@@ -1467,9 +1461,8 @@ msgid "Resilient"
 msgstr "Robuust"
 
 #: data/core/help.cfg:353
-#, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr " eenheden hebben 4 HP en 1 HP per level meer dan normaal."
+msgstr "Robuuste eenheden hebben 4 HP en 1 HP per level meer dan normaal."
 
 #: data/core/help.cfg:355
 msgid ""
@@ -2239,7 +2232,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:683
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2248,12 +2240,12 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Debug-modus inschakelen (werkt niet bij multiplayer). Debug-modus word "
-"uitgeschakeld bij het verlaten van het spel of :nodebug.\n"
+"Debug-modus inschakelen (werkt niet bij multiplayer). Zie "
+"<ref>dst=debug_commands text='Debug modus commando's'</ref>.\n"
+"Debug-modus word uitgeschakeld bij het verlaten van het spel of :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2265,8 +2257,10 @@ msgid ""
 msgstr ""
 "\n"
 "Schakel tussen menselijke en AI-speler. De speler/client die de partij "
-"beheert moet het commando uitvoeren. Standaard is het de huidige actieve "
-"kant.\n"
+"beheert moet het commando uitvoeren. Als geen tweede parameter ingegeven is, "
+"schakel tussen mens en AI. Als het 'on' gezet is kies een AI besturing. Als "
+"'off' gekozen is kies een menselijke besturing. Standaard is het de huidige "
+"actieve kant.\n"
 "\n"
 
 #: data/core/help.cfg:689
@@ -2342,7 +2336,6 @@ msgid "Multiplayer commands"
 msgstr "Multiplayercommando's"
 
 #: data/core/help.cfg:714
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2350,11 +2343,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Verban een gebruiker uit multiplayer met het IP-adres van de gebruiker.\n"
+"Verban een gebruiker uit multiplayer met het IP-adres van de gebruiker en "
+"verwijder hem.\n"
 "\n"
 
 #: data/core/help.cfg:717
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2364,8 +2357,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Geef de partij aan een andere speler (hier het nummer van de partij) (hier "
-"de nick van de speler of waarnemer).\n"
+"Geef de partij aan een andere speler (hier het nummer van de partij) naar "
+"gebruikersnaam (hier de bijnaam van de speler of waarnemer). Je kunt "
+"bekijken aan welke zijde een speler hoort in de 'Scenario instellingen' "
+"dialoog (Druk op de 'meer' knop in de 'Statustabel' (alt+s) om daarheen te "
+"gaan.)\n"
 "\n"
 
 #: data/core/help.cfg:720
@@ -3975,14 +3971,14 @@ msgstr ""
 "slachtoffer erbij neervalt."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
 "enemy."
 msgstr ""
-" Deze eenheid kan een vijand in de rug aanvallen als een andere, bevriende, "
-"eenheid de vijand van de andere kant afleidt."
+" Deze eenheid kan een vijand in de rug aanvallen en dubbele schade "
+"aanrichten als een andere, bevriende, eenheid de vijand van de andere kant "
+"afleidt."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -4205,17 +4201,18 @@ msgstr "Vleermuizen"
 
 #: data/core/units.cfg:52
 msgid "race^Drake"
-msgstr "Draak"
+msgstr "Draakling"
 
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
-msgstr "Draak"
+msgstr "Draakling"
 
 #: data/core/units.cfg:54
 msgid "race^Drakes"
-msgstr "Draken"
+msgstr "Draaklingen"
 
 #: data/core/units.cfg:67
+#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4280,6 +4277,19 @@ msgid ""
 "feature which has allowed them to populate even some of the mountains of the "
 "far north of the Great Continent."
 msgstr ""
+"Draaklingen zijn grote, gevleugelde en vuurspuwende wezens, afstammelingen "
+"van echte draken. Gemiddeld is een volwassen Draakling ongeveer drie meter "
+"lang en weegt makkelijk meer dan een man en paard tezamen. Hun huid is "
+"gemaakt van harde schubben, weerbaar tegen de meeste fysieke aanvallen, "
+"behalve puntige en kou aanvallen. De meeste Draaklingen zijn in staat te "
+"vliegen en kunnen snel grote afstand afleggen. Hoewel hun gewicht en omvang "
+"beperkt hun vlucht wel, wat ze lomp maakt in de lucht. Waar mogelijk zullen "
+"ze gebruik maken van het terrein, zoals heuvels, bergen en bomen als "
+"startplek om meer hoogte en snelheid te maken. Gelukkig voor hun vijanden "
+"zijn ze desondanks onhandige wezens en verbazingwekkend traag in gevechten. "
+"Dit gecombineerd met hun grootte maakt ze makkelijke doelwitten voor hen die "
+"hun durft aan te vallen.\n"
+"\n"
 
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
@@ -4294,6 +4304,7 @@ msgid "race^Dwarves"
 msgstr "Dwergen"
 
 #: data/core/units.cfg:81
+#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -4343,6 +4354,22 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
+"De Dwergen zijn een ras befaamd voor hun mijnwerkers, smeden, handelaren en "
+"krijgers. Gezien als het derde oudste ras op het grote continent, na de "
+"Elfen en Trollen, hun vroegste historie is gehuld in mysteries. Legendes "
+"vertellen van lang vergeten tijden toen hun volk naar boven kwam uit hun "
+"ondergrondse wereld door grotten. Niets is bekend van hun leven voordat ze "
+"aankwamen of hun reden om bovengronde te gaan, maar ze hebben daarna een "
+"grote rol gehad op de geschiedenis van het continent. Vlak na hun komst uit "
+"de ondergrond kwamen de Dwergen in conflict met de originele bewoners van "
+"het land, de Elfen. De werkelijke reden is in de geschiedenis verloren "
+"gegaan, maar de twee rassen hebben sindsdien drie lange oorlogen gevoerd, "
+"met tussenpozen van enkele decennia vrede. Tijdens deze oorlogen konden de "
+"Dwergen de Elfen niet uit het bos in het zuiden krijgen, maar consolideerden "
+"ze hun positie in de heuvels en bergen in het noorden van het continent, "
+"beter bekend als de noordlanden. Sindsdien hebben ze fantastisch forten en "
+"nederzettingen gebouwd diep in de bergen en hellingen van hun territorium.\n"
+"\n"
 
 #: data/core/units.cfg:89
 msgid "race^Elf"
@@ -4357,6 +4384,7 @@ msgid "race^Elves"
 msgstr "Elfen"
 
 #: data/core/units.cfg:94
+#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -4385,6 +4413,11 @@ msgid ""
 "exception of trolls. Many of their settlements cannot be reliably dated, "
 "undoubtedly having existed for over a millennium."
 msgstr ""
+"Vergeleken met Mensen zijn Elfen iets langer, beweeglijker, maar minder "
+"robuust. Ze hebben licht gepunte oren, bleke huid en meestal blond haar. "
+"Weinig verschillen tussen Mensen en Elfen zijn duidelijker als de lange "
+"levensverwachting van Elfen - afgezien van ziekte, ongelukken of oorlog "
+"kunnen ze twee eeuwen oud worden."
 
 #: data/core/units.cfg:103
 msgid "race^Goblin"
@@ -4540,6 +4573,7 @@ msgid "race^Orcs"
 msgstr "Boemannen"
 
 #: data/core/units.cfg:211
+#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans.  They are warlike, savage, and cruel by nature. "
@@ -4597,6 +4631,8 @@ msgid ""
 "individuals tend to specialize in other skills, like archery or "
 "assassination."
 msgstr ""
+"In uiterlijk zijn Orks half Mens en half beest. Ze zijn langer, robuuster en "
+"sterker als Mensen. "
 
 #: data/core/units.cfg:218
 msgid "race^Troll"
@@ -4661,6 +4697,7 @@ msgid "race+plural^Undead"
 msgstr "Ondode"
 
 #: data/core/units.cfg:246
+#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -4687,6 +4724,9 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
+"Ondoden zijn niet echt een enkel ras, ondanks dat ze meestal wel zo bekeken "
+"worden. Bijna ieder dood wezen kan door een voldoende bedreven "
+"dodenbezweerder gereanimeerd worden en opstaan als Ondode. Ondoden zijn "
 
 #: data/core/units.cfg:254
 msgid "race^Wose"
@@ -4874,6 +4914,10 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Eenheden met het 'intelligent' kenmerk hebben minder ervaringspunten nodig "
+"om een niveau omhoog te gaan. Probeer vroeg in een veldtocht de afmaak "
+"aanvallen aan deze eenheden te geven, zodat je eerder enkele hoog niveau "
+"troepen hebt."
 
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
@@ -4899,6 +4943,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
+"Je kunt de 'Rekruteer' en 'Oproep' commando's bereiken door met de "
+"rechtermuisknop op een kasteelvak te klikken. Zo kun je kiezen op welk vak "
+"een nieuwe eenheid geplaatst wordt. Het slim plaatsen van eenheden kan "
+"ervoor zorgen dat je een dorp een beurt eerder bereikt."
 
 #: data/hardwired/tips.cfg:23
 msgid ""
@@ -4906,6 +4954,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Er zijn enkele handige overzichtschermen in het hoofdmenu, bijvoorbeeld de "
+"'Statustabel' laat zien wat je tegenstanders aan het doen zijn en hou jij "
+"het doet in vergelijking met hun."
 
 #: data/hardwired/tips.cfg:27
 msgid ""
@@ -4913,6 +4964,10 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Eenheden met het 'snel' kenmerk kunnen een vak per beurt meer bewegen. Dit "
+"kan erg belangrijk zijn wanneer je door een lastig terrein beweegt, zoals "
+"water of grotten. Het kan het verschil tussen een of twee vakken verplaatsen "
+"zijn."
 
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
@@ -4923,6 +4978,9 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Nadat je een aantal scenario's gespeeld hebt, lees de 'Gameplay' sectie in "
+"het help scherm aandachtig door. Details worden belangrijker wanneer de "
+"scenario's moeilijker worden!"
 
 #: data/hardwired/tips.cfg:35
 msgid ""
@@ -4930,6 +4988,9 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Het is meestal beter om een volgend scenario in een veldtocht te beginnen "
+"met lager niveau eenheden die bijna een niveau omhoog gaan dan met eenheden "
+"op een hoger niveau."
 
 #: data/hardwired/tips.cfg:39
 msgid ""
@@ -4953,7 +5014,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- Koninklijke samenvatting van strijdterminologie - Deel II, 212YW"
 
 #: data/hardwired/tips.cfg:47
 msgid ""
@@ -4981,14 +5042,13 @@ msgstr ""
 "beurt."
 
 #: data/hardwired/tips.cfg:55
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
-"Er zijn zes aanvalstypen: puntig, scherp, stomp, vuur, kou en mysterieuze. "
+"Er zijn zes aanvalstypen: puntig, scherp, stomp, vuur, kou en mysterieus. "
 "Verschillende eenheden zijn in verschillende mate kwetsbaar voor "
 "verschillende aanvalstypen. Om de kwetsbaarheden van een eenheid te zien "
 "rechtsklik erop, kies je 'Profiel eenheid' en kijk je onder 'Weerstand'."
@@ -5020,18 +5080,16 @@ msgstr ""
 "'Geneest' vermogen"
 
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
 "Je kunt eenheden van een vorig scenario inzetten door 'Oproepen' te "
-"selecteren in het spelmenu. Door eenheden steeds weer op te roepen kun je "
-"een sterk leger van ervaren troepen opbouwen."
+"selecteren in het 'Acties' menu. Door eenheden steeds weer op te roepen kun "
+"je een sterk leger van ervaren troepen opbouwen."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -5039,13 +5097,13 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Elke eenheid heeft een beheersingszone die bestaat uit de zes velden direct "
-"naast hem. Wanneer een eenheid de beheersingszone van een vijand betreedt, "
-"kan hij die beurt niet verder bewegen. Warzaaiers kunnen wel door de zones "
-"heen en eenheden van rang 0 hebben geen beheersingszone."
+"Elke eenheid van rang een of hoger heeft een beheersingszone die bestaat uit "
+"de zes velden direct naast hem. Wanneer een eenheid de beheersingszone van "
+"een vijand betreedt, kan hij die beurt niet verder bewegen. Dit betekend dat "
+"eenheden een barrière kunnen opwerpen met enkele lege vakken tussen ze. "
+"Echter warzaaiers kunnen wel door de zones heen."
 
 #: data/hardwired/tips.cfg:75
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -5054,8 +5112,8 @@ msgid ""
 msgstr ""
 "De kans om een eenheid te raken hangt normaal gezien af van het terrein "
 "waarop de vijandelijke eenheid zich bevindt, maar magische aanvallen hebben "
-"altijd 70% kans om te raken, zowel bij het verdedigen als bij het aanvallen; "
-"precisieschutters hebben altijd 60% kans om te raken als ze aanvallen."
+"altijd 70% kans om te raken en eenheden met het 'scherpschutter' kenmerk zal "
+"altijd tenminste 60% kans hebben om iemand te raken in zijn beurt."
 
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
@@ -5183,13 +5241,12 @@ msgstr ""
 "de donjon van een bondgenoot."
 
 #: data/hardwired/tips.cfg:123
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Skeletten hebben een hoge weerstand tegen puntige en scherpe aanvallen, maar "
-"zijn kwetsbaar voor stompe, vuur-, en mysterieuze aanvallen."
+"Skeletten hebben een hoge weerstand tegen puntige, scherpe en kou aanvallen, "
+"maar zijn kwetsbaar voor stompe, vuur-, en mysterieuze aanvallen."
 
 #: data/hardwired/tips.cfg:127
 msgid ""
@@ -5251,7 +5308,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "- De boekrol van Chantal, 516YW"
 
 #: data/hardwired/tips.cfg:155
 msgid ""
@@ -5335,6 +5392,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"Om laag niveau eenheden snel te promoveren, groepeer ze samen met een "
+"veteraan en gebruik de veteraan om een gezamenlijk doel genoeg te verzwakken "
+"zodat de pupil het werk kan afmaken."
 
 #: data/hardwired/tips.cfg:188
 msgid "- Queen Li'sar, 528YW"
@@ -5355,6 +5415,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Als een vijand meer voordeel heeft van een terreintype dan jij, het "
+"veroveren van dat terrein zal hem van die voordelen weghouden."
 
 #: data/hardwired/tips.cfg:199
 msgid ""
@@ -6155,7 +6217,10 @@ msgid ""
 msgstr ""
 "Deze eenheid is vergiftigd. Hij elke beurt 8HP verliezen, totdat hij "
 "genezing vindt in een dorp of bij een bevriende eenheid met het vermogen "
-"'geneest'."
+"'geneest'.\n"
+"\n"
+"Eenheden kunnen niet gedood worden door gif alleen. Het gif zal 1 HP over "
+"laten."
 
 #: src/generate_report.cpp:99
 msgid "poisoned: "
@@ -6440,7 +6505,7 @@ msgstr "Schade"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Geheel"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
@@ -6448,11 +6513,11 @@ msgstr "Deze beurt"
 
 #: src/menu_events.cpp:222
 msgid "Inflicted"
-msgstr ""
+msgstr "Veroorzaakt"
 
 #: src/menu_events.cpp:246
 msgid "Taken"
-msgstr ""
+msgstr "Geïncasseerd"
 
 #: src/menu_events.cpp:296 src/menu_events.cpp:300
 msgid "Do you really want to dismiss him?"
@@ -6500,7 +6565,7 @@ msgstr "Troepenlijst"
 
 #: src/menu_events.cpp:500 src/menu_events.cpp:521
 msgid "Scroll To"
-msgstr "Scroll naar"
+msgstr "Ga naar"
 
 #: src/menu_events.cpp:550
 msgid "Leader"
@@ -6744,13 +6809,16 @@ msgstr "Onbekend debug domein: '$domain'."
 
 #: src/menu_events.cpp:1857
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
+msgstr "Schakel domein: '$domain' naar niveau: '$level'."
 
 #: src/menu_events.cpp:1912
 msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
 msgstr ""
+"Commando's: msg/whisper <bijnaam> <bericht>, list <subcommando> "
+"[<argument>], me/emote <bericht>. Type /help [<commando>] voor gedetaileerde "
+"instructies."
 
 #: src/menu_events.cpp:1943
 msgid ""
@@ -7420,8 +7488,8 @@ msgstr "Client heeft de verbinding verbroken."
 #: src/network.cpp:165
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Geen server ping sinds $timeout seconde. Connectie verbroken."
+msgstr[1] "Geen server ping sinds $timeout seconden. Connectie verbroken."
 
 #: src/network.cpp:519
 msgid "Could not add socket to socket set"
@@ -7433,15 +7501,15 @@ msgstr "Kon initiele handdruk niet verzenden"
 
 #: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Terrein met bewegingskosten van minder dan 1 waargenomen."
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
-msgstr ""
+msgstr "Teams initialiseren"
 
 #: src/play_controller.cpp:106 src/play_controller.cpp:121
 msgid "Initializing display"
-msgstr ""
+msgstr "Scherm initialiseren"
 
 #: src/play_controller.cpp:147
 msgid "Starting game"
