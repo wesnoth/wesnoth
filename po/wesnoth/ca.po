@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-26 16:37+0100\n"
-"PO-Revision-Date: 2008-03-01 21:33+0100\n"
+"PO-Revision-Date: 2008-03-02 11:52+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -288,7 +288,6 @@ msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #: data/core/about.cfg:1691
-#, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià"
 
@@ -5958,14 +5957,12 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Entra al servidor oficial de Wesnoth per partides multijugador"
 
 #: src/game.cpp:1490
-#, fuzzy
 msgid "Connect to Host/Server"
-msgstr "Connecta a servidor"
+msgstr "Connecta a un servidor"
 
 #: src/game.cpp:1491
-#, fuzzy
 msgid "Join a server or hosted game"
-msgstr "Entra en un servidor o una partida"
+msgstr "Connecta a un servidor o partida"
 
 #: src/game.cpp:1493
 msgid "Local Game"
@@ -6023,9 +6020,8 @@ msgid "' (The game will now exit)"
 msgstr "' (ara es tancarà el joc)."
 
 #: src/game.cpp:1878
-#, fuzzy
 msgid "Loading data files"
-msgstr "S'està llegint les dades"
+msgstr "S'estan llegint els fitxers de dades"
 
 #: src/game.cpp:2027
 msgid "Battle for Wesnoth"
@@ -6044,9 +6040,8 @@ msgid "Loading title screen."
 msgstr "S'està carregant la pantalla principal."
 
 #: src/game_config.cpp:267
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "Color no vàlid"
+msgstr "El rang de colors no és vàlid: "
 
 #: src/game_events.cpp:930
 msgid "Victory:"
@@ -6058,9 +6053,8 @@ msgstr "Derrota:"
 
 #: src/gamestatus.cpp:253 src/gamestatus.cpp:268 src/gamestatus.cpp:288
 #: src/gamestatus.cpp:373
-#, fuzzy
 msgid "No time of day has been defined."
-msgstr "Determina aleatòriament el moment del dia"
+msgstr "No s'ha definit l'hora del dia."
 
 #: src/gamestatus.cpp:703 src/gamestatus.cpp:705 src/playcampaign.cpp:422
 msgid " replay"
@@ -6318,13 +6312,11 @@ msgstr "Aleatòri"
 
 #: src/leader_list.cpp:150 src/leader_list.cpp:152
 #: src/multiplayer_connect.cpp:195 src/multiplayer_connect.cpp:247
-#, fuzzy
 msgid "Female ♀"
 msgstr "Femení ♀"
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:161
 #: src/multiplayer_connect.cpp:197 src/multiplayer_connect.cpp:249
-#, fuzzy
 msgid "Male ♂"
 msgstr "Masculí ♂"
 
@@ -6509,18 +6501,24 @@ msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr ""
+"Or\n"
+"inicial"
 
 #: src/menu_events.cpp:657
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
+"Guany\n"
+"base"
 
 #: src/menu_events.cpp:658
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
+"Or per\n"
+"llogaret"
 
 #: src/menu_events.cpp:659
 msgid "scenario settings^Fog"
@@ -6728,26 +6726,23 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:1957
-#, fuzzy
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr ""
 "Afegeix un jugador a la vostra llista d'amics. Forma d'ús: /list addfriend "
-"[argument]"
+"<nom>"
 
 #: src/menu_events.cpp:1961
-#, fuzzy
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr ""
 "Afegeix un jugador a la vostra llista d'ignorats. Forma d'ús: /list ignore "
-"[argument]"
+"<nom>"
 
 #: src/menu_events.cpp:1965
-#, fuzzy
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
 "Esborra un jugador a la vostra llista d'amics. Forma d'ús: /list remove "
-"[argument]"
+"<nom>"
 
 #: src/menu_events.cpp:1969
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
@@ -7271,7 +7266,6 @@ msgid "Turn "
 msgstr "Torn "
 
 #: src/multiplayer_lobby.cpp:504
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Plaça lliure:"
@@ -7319,7 +7313,7 @@ msgstr "Passa ràpidament al torn actiu quan s'és observador"
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "La contrasenya és necessària per unir-se a aquesta partida."
 
 #: src/multiplayer_ui.cpp:171
 msgid "Invalid Color"
@@ -7514,15 +7508,14 @@ msgid "Retained Gold: "
 msgstr "Or conservat: "
 
 #: src/playsingle_controller.cpp:182
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
-msgstr[0] "El 80% de l'or es manté pel proper escenari."
-msgstr[1] "El 80% de l'or es manté pel proper escenari."
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/playsingle_controller.cpp:190
 msgid ""
@@ -7808,14 +7801,12 @@ msgid "$trait_name|: $trait_description "
 msgstr ""
 
 #: src/unit_types.cpp:161 src/unit_types.cpp:203
-#, fuzzy
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "mal"
 msgstr[1] "mal"
 
 #: src/unit_types.cpp:170 src/unit_types.cpp:210
-#, fuzzy
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "cop"
