@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-03-02 18:27+0100\n"
+"POT-Creation-Date: 2008-03-02 23:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 
 # type: Attribute 'alt' of: <html><body><div><div><div><div><div><img>
-#: ../template.html:67 ../template.html:234
+#: ../template.html:67 ../template.html:236
 msgid "Wesnoth Screenshot"
 msgstr ""
 
@@ -189,17 +189,22 @@ msgstr ""
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:111
 msgid ""
-"New maps and multiplayer campaigns: <cite> Auction-X, Dark Forecast Hamlets, "
-"Mokena Prairie, The Manzivan Traps, Xanthe Chaos, </cite>.  Revised maps: "
-"<cite>Alirok Marsh</cite> (formerly <cite>Triple Blitz</cite>),<cite> "
-"Amohsad Caldera, Blue Water Province, Castle Hopping Isle, Caves of the "
-"Basilisk</cite> (formerly <cite>Blitz</cite>), <cite> Crossing, Crusaders "
-"Fields, Cynsaun Battlefield, Den of Onis, Fallenstar Lake</cite> (formerly "
-"<cite>Meteor Lake</cite>), <cite> Forest of Fear, Freelands</cite> (formerly "
-"<cite>Charge</cite>),<cite> Hexcake, Hornshark Island, Island of the "
-"Horatii, King of the Hill, Lagoon, Loris River, Merkwuerdigliebe, Morituri, "
-"Paths of Daggers, Sablestone Delta, Siege Castles, Silverhead, Sulla's "
-"Ruins, Waterloo Sunset, Wesbowl</cite>."
+"New maps and multiplayer campaigns: <cite> Auction-X, Dark Forecast, "
+"Hamlets, Mokena Prairie, The Manzivan Traps, Xanthe Chaos</cite>."
+msgstr ""
+
+# type: Content of: <html><body><div><div><div><dl><dd><p>
+#: ../template.html:118
+msgid ""
+"Revised maps: <cite>Alirok Marsh</cite> (formerly <cite>Triple "
+"Blitz</cite>),<cite> Amohsad Caldera, Blue Water Province, Castle Hopping "
+"Isle, Caves of the Basilisk, Crusaders Fields, Cynsaun Battlefield, Den of "
+"Onis, Fallenstar Lake</cite> (formerly <cite>Meteor Lake</cite>), <cite> "
+"Forest of Fear, Freelands</cite> (formerly <cite>Charge</cite>),<cite> "
+"Hexcake, Hornshark Island, Island of the Horatii, King of the Hill, Lagoon, "
+"Loris River, Merkwuerdigliebe, Morituri, Paths of Daggers, Sablestone Delta, "
+"Siege Castles, Silverhead Crossing, Sulla's Ruins, Waterloo Sunset, Weldyn "
+"Channel</cite> (formerly <cite>Blitz</cite>), <cite> Wesbowl</cite>."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
@@ -239,15 +244,17 @@ msgstr ""
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:176
 msgid ""
-"Many more units have full combat animation.  Some units and items now have "
-"standing animations; bats flap their wings and campfires flicker.  Units can "
+"Many more units have full combat animation.  Many unit also have idle "
+"animations which fire periodically when they are not doing anything "
+"specific.  Some units and items also have standing animations that a "
+"constantly active; bats flap their wings and campfires flicker.  Units can "
 "now have special death animations — some Drakes burst into flame when "
 "killed. There are improved base frames for many units, including Mages and "
-"Ghosts, on more varied uses of halo animations."
+"Ghosts, and more varied uses of halo animations."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:183
+#: ../template.html:185
 msgid "Multiplayer lobby improvements"
 msgstr ""
 
@@ -257,7 +264,7 @@ msgstr ""
 #
 #. server. 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:184
+#: ../template.html:186
 msgid ""
 "You can set a list of user nicks to be ignored (you won't see chat from "
 "them).  You can also set a list of friends; their nicks will be highlighted "
@@ -265,12 +272,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:190
+#: ../template.html:192
 msgid "Miscellaneous other improvements"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:191
+#: ../template.html:193
 msgid ""
 "You can now select a female leader in multiplayer.  The in-game help has "
 "been revised, reorganized and expanded.  There are new weapons and weapon "
@@ -283,17 +290,17 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h3>
-#: ../template.html:202
+#: ../template.html:204
 msgid "For Campaign Developers"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:205
-msgid "The map editor is much more capable."
+#: ../template.html:207
+msgid "The map editor is much more capable"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:206
+#: ../template.html:208
 msgid ""
 "Maps can now be opened directly from a scenario file and saved back to it.  "
 "Starting positions no longer need to be on keeps.  The terrain palette is "
@@ -306,12 +313,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:216
+#: ../template.html:218
 msgid "WML is considerably more powerful"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:217
+#: ../template.html:219
 msgid ""
 "Animation WML has been completely redesigned in a much more flexible and "
 "general way.  Complex variable substitution is now used in all action "
@@ -325,12 +332,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:227
+#: ../template.html:229
 msgid "Multiplayer campaigns"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:228
+#: ../template.html:230
 msgid ""
 "The game engine will now support multiplayer campaigns, though we don't ship "
 "any yet. This is an opportunity for designers to explore a new frontier in "
@@ -338,12 +345,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h2>
-#: ../template.html:240
+#: ../template.html:242
 msgid "Download"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:242
+#: ../template.html:244
 msgid ""
 "Battle for Wesnoth is made available under the <a "
 "href='http://www.gnu.org/copyleft/gpl.html'>GNU General Public License</a> "
@@ -356,7 +363,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:253
+#: ../template.html:255
 msgid ""
 "<strong> <a "
 "href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4.tar.gz?download'>Source "
@@ -364,7 +371,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:258
+#: ../template.html:260
 msgid ""
 "<strong> <a "
 "href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4-windows.exe?download'>Wesnoth "
@@ -372,7 +379,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:263
+#: ../template.html:265
 msgid ""
 "<strong> <a "
 "href='http://downloads.sourceforge.net/wesnoth/Wesnoth_MacOSX_1.4.dmg?download'>Wesnoth "
@@ -380,14 +387,14 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:269
+#: ../template.html:271
 msgid ""
 "You can get up to date information about downloads at the <a "
 "href='http://www.wesnoth.org/wiki/Download'>downloads page</a>."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:272
+#: ../template.html:274
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a "
@@ -395,12 +402,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h2>
-#: ../template.html:277
+#: ../template.html:279
 msgid "More Info"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:281
+#: ../template.html:283
 msgid ""
 "<a "
 "href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/changelog'>Full "
@@ -408,7 +415,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:284
+#: ../template.html:286
 msgid ""
 "<a "
 "href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/doc/manual/manual.en.html'>User's "
@@ -416,21 +423,21 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:285
+#: ../template.html:287
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:286
+#: ../template.html:288
 msgid "<a href='http://www.wesnoth.org/start/1.0'>Wesnoth 1.0 Release Notes</a>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:287
+#: ../template.html:289
 msgid "<a href='http://www.wesnoth.org/start/1.2'>Wesnoth 1.2 Release Notes</a>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><div><p>
-#: ../template.html:294
+#: ../template.html:296
 msgid "This page is also available in the following languages:"
 msgstr ""
