@@ -406,7 +406,7 @@ void replay_controller::show_statistics(){
 	menu_handler_.show_statistics(gui_->playing_team()+1);
 }
 
-void replay_controller::handle_generic_event(const std::string& name){
+void replay_controller::handle_generic_event(const std::string& /*name*/){
 	rebuild_replay_theme();
 }
 
