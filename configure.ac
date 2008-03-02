@@ -6,7 +6,7 @@
 
 AC_PREREQ([2.60])
 
-define([WESNOTH_VERSION],[1.4])
+define([WESNOTH_VERSION],[1.5.0-svn])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [isaac@warp.es], [wesnoth])
 
