@@ -326,7 +326,7 @@ bool variant::operator<=(const variant& v) const
 		}
 
 		if(v.type_ == TYPE_NULL) {
-			return *this < variant(0);
+			return *this <= variant(0);
 		}
 
 		return false;
