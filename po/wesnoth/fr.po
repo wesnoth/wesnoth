@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-02 14:03+0100\n"
+"POT-Creation-Date: 2008-03-02 23:10+0100\n"
 "PO-Revision-Date: 2008-03-02 12:31+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -2285,11 +2285,12 @@ msgstr ""
 "nodebug.\n"
 
 #: data/core/help.cfg:686
+#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
 "who controls that side needs to issue this command. If no second parameter "
-"is supplied, toggle bewteen human an AI. If it is 'on', set an AI "
+"is supplied, toggle bewteen human and AI. If it is 'on', set an AI "
 "controller. If it is 'off' set a human controller. Defaults to the currently "
 "active side if no parameter is supplied.\n"
 "\n"
@@ -2661,10 +2662,11 @@ msgid "teleport"
 msgstr "téléportation"
 
 #: data/core/macros/abilities.cfg:366
+#, fuzzy
 msgid ""
 "Teleport:\n"
-"This unit may teleport between any two friendly villages using one of its "
-"moves."
+"This unit may teleport between any two empty villages owned by its side "
+"using one of its moves."
 msgstr ""
 "Téléportation :\n"
 "Cette unité peut se téléporter instantanément entre deux villages alliés "
@@ -3969,13 +3971,14 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " L'illumination éclaire les zones adjacentes."
 
 #: data/core/macros/special-notes.cfg:38
+#, fuzzy
 msgid ""
-" This unit can teleport between any two villages instantly, though the "
-"player must control both, and the destination village must be unoccupied."
+" This unit can use one move to teleport between any two empty villages "
+"controlled by its side."
 msgstr ""
-" Cette unité peut se téléporter instantanément entre deux villages si ils "
-"sont tous les deux contrôlés par le joueur et si le village de destination "
-"n'est pas occupé."
+"Téléportation :\n"
+"Cette unité peut se téléporter instantanément entre deux villages alliés "
+"pour un point de mouvement."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4290,15 +4293,15 @@ msgid ""
 "\n"
 "<header>text='Society'</header>\n"
 "Drakes are a relatively warlike race and their societies can be best "
-"described as cultured martial societies. The core of a drake tribe is small "
-"group of veteran warriors headed by a mutually respected - or simply feared "
-"- leader who rules the society with an iron fist. Every drake is expected to "
-"earn their place in the strict hierarchy, to obey their superiors and "
-"command their lessers. Entry to the ruling elite is only possible through "
-"challenging and defeating a superior in single combat, which is the way the "
-"hierarchy within the elite itself is established. The use of deception of "
-"any kind towards any fellow drake is, without exception, seen as cowardly "
-"and unacceptable.\n"
+"described as cultured martial societies. The core of a drake tribe is a "
+"small group of veteran warriors headed by a mutually respected - or simply "
+"feared - leader who rules the society with an iron fist. Every drake is "
+"expected to earn their place in the strict hierarchy, to obey their "
+"superiors and command their lessers. Entry to the ruling elite is only "
+"possible through challenging and defeating a superior in single combat, "
+"which is the way the hierarchy within the elite itself is established. The "
+"use of deception of any kind towards any fellow drake is, without exception, "
+"seen as cowardly and unacceptable.\n"
 "\n"
 "While their warlike nature and sense of territory drives them to defend "
 "their territories savagely, drakes rarely invade or trespass on areas "
@@ -5915,7 +5918,7 @@ msgstr "o"
 msgid "MB"
 msgstr "Mo"
 
-#: src/game.cpp:1005
+#: src/game.cpp:1005 src/game.cpp:1490
 msgid "Connect to Server"
 msgstr "Connexion au serveur"
 
@@ -6088,14 +6091,10 @@ msgstr "Se connecter au serveur officiel"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Se connecter sur le serveur multijoueur officiel de Wesnoth"
 
-#  Benoît : pas vraiment littéral, mais sinon ça me paraissait trop long...
-#: src/game.cpp:1490
-msgid "Connect to Host/Server"
-msgstr "Connexion à une machine distante"
-
 #: src/game.cpp:1491
-msgid "Join a server or hosted game"
-msgstr "Se connecter à un serveur ou une partie hébergée"
+#, fuzzy
+msgid "Join a different server"
+msgstr "Se connecter au serveur officiel"
 
 #: src/game.cpp:1493
 msgid "Local Game"
@@ -8008,6 +8007,21 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Autoriser l'envoi de résumés"
+
+#~ msgid ""
+#~ " This unit can teleport between any two villages instantly, though the "
+#~ "player must control both, and the destination village must be unoccupied."
+#~ msgstr ""
+#~ " Cette unité peut se téléporter instantanément entre deux villages si ils "
+#~ "sont tous les deux contrôlés par le joueur et si le village de "
+#~ "destination n'est pas occupé."
+
+#  Benoît : pas vraiment littéral, mais sinon ça me paraissait trop long...
+#~ msgid "Connect to Host/Server"
+#~ msgstr "Connexion à une machine distante"
+
+#~ msgid "Join a server or hosted game"
+#~ msgstr "Se connecter à un serveur ou une partie hébergée"
 
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"

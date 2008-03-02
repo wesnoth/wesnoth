@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-02 14:03+0100\n"
+"POT-Creation-Date: 2008-03-02 23:10+0100\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -2040,11 +2040,12 @@ msgstr ""
 
 # can someone explain this to me in other words? i have not seen this in real multiplayer yet
 #: data/core/help.cfg:686
+#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
 "who controls that side needs to issue this command. If no second parameter "
-"is supplied, toggle bewteen human an AI. If it is 'on', set an AI "
+"is supplied, toggle bewteen human and AI. If it is 'on', set an AI "
 "controller. If it is 'off' set a human controller. Defaults to the currently "
 "active side if no parameter is supplied.\n"
 "\n"
@@ -2409,10 +2410,11 @@ msgid "teleport"
 msgstr "传送"
 
 #: data/core/macros/abilities.cfg:366
+#, fuzzy
 msgid ""
 "Teleport:\n"
-"This unit may teleport between any two friendly villages using one of its "
-"moves."
+"This unit may teleport between any two empty villages owned by its side "
+"using one of its moves."
 msgstr ""
 "传送：\n"
 "本单位能花费一个移动点数在任意两个友好村庄间移动。"
@@ -3660,12 +3662,13 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr "'照明'能力增加相邻区域的亮度。"
 
 #: data/core/macros/special-notes.cfg:38
+#, fuzzy
 msgid ""
-" This unit can teleport between any two villages instantly, though the "
-"player must control both, and the destination village must be unoccupied."
+" This unit can use one move to teleport between any two empty villages "
+"controlled by its side."
 msgstr ""
-"本单位可以瞬间从一座村庄移动到另一座村庄，条件是这两座村庄都归玩家所有，且目"
-"的村庄中没有单位驻守。"
+"传送：\n"
+"本单位能花费一个移动点数在任意两个友好村庄间移动。"
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -3936,6 +3939,7 @@ msgid "race^Drakes"
 msgstr "龙族"
 
 #: data/core/units.cfg:67
+#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -3962,15 +3966,15 @@ msgid ""
 "\n"
 "<header>text='Society'</header>\n"
 "Drakes are a relatively warlike race and their societies can be best "
-"described as cultured martial societies. The core of a drake tribe is small "
-"group of veteran warriors headed by a mutually respected - or simply feared "
-"- leader who rules the society with an iron fist. Every drake is expected to "
-"earn their place in the strict hierarchy, to obey their superiors and "
-"command their lessers. Entry to the ruling elite is only possible through "
-"challenging and defeating a superior in single combat, which is the way the "
-"hierarchy within the elite itself is established. The use of deception of "
-"any kind towards any fellow drake is, without exception, seen as cowardly "
-"and unacceptable.\n"
+"described as cultured martial societies. The core of a drake tribe is a "
+"small group of veteran warriors headed by a mutually respected - or simply "
+"feared - leader who rules the society with an iron fist. Every drake is "
+"expected to earn their place in the strict hierarchy, to obey their "
+"superiors and command their lessers. Entry to the ruling elite is only "
+"possible through challenging and defeating a superior in single combat, "
+"which is the way the hierarchy within the elite itself is established. The "
+"use of deception of any kind towards any fellow drake is, without exception, "
+"seen as cowardly and unacceptable.\n"
 "\n"
 "While their warlike nature and sense of territory drives them to defend "
 "their territories savagely, drakes rarely invade or trespass on areas "
@@ -5557,7 +5561,7 @@ msgstr "B"
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:1005
+#: src/game.cpp:1005 src/game.cpp:1490
 msgid "Connect to Server"
 msgstr "连接到服务器"
 
@@ -5723,13 +5727,10 @@ msgstr "连接到官方服务器"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "登录韦诺官方多人对战服务器"
 
-#: src/game.cpp:1490
-msgid "Connect to Host/Server"
-msgstr "连接到服务器"
-
 #: src/game.cpp:1491
-msgid "Join a server or hosted game"
-msgstr "加入服务器或已建游戏"
+#, fuzzy
+msgid "Join a different server"
+msgstr "连接到官方服务器"
 
 #: src/game.cpp:1493
 msgid "Local Game"
@@ -7592,6 +7593,19 @@ msgstr "帮助我们改进韦诺，提升你的游戏体验！"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid ""
+#~ " This unit can teleport between any two villages instantly, though the "
+#~ "player must control both, and the destination village must be unoccupied."
+#~ msgstr ""
+#~ "本单位可以瞬间从一座村庄移动到另一座村庄，条件是这两座村庄都归玩家所有，且"
+#~ "目的村庄中没有单位驻守。"
+
+#~ msgid "Connect to Host/Server"
+#~ msgstr "连接到服务器"
+
+#~ msgid "Join a server or hosted game"
+#~ msgstr "加入服务器或已建游戏"
 
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "gkai00mp.ttf,DejaVuSans.ttf,sazanami-gothic.ttf"

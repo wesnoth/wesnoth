@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-02 14:03+0100\n"
+"POT-Creation-Date: 2008-03-02 23:10+0100\n"
 "PO-Revision-Date: 2007-12-12 00:21+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -2241,7 +2241,7 @@ msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
 "who controls that side needs to issue this command. If no second parameter "
-"is supplied, toggle bewteen human an AI. If it is 'on', set an AI "
+"is supplied, toggle bewteen human and AI. If it is 'on', set an AI "
 "controller. If it is 'off' set a human controller. Defaults to the currently "
 "active side if no parameter is supplied.\n"
 "\n"
@@ -2613,10 +2613,11 @@ msgid "teleport"
 msgstr "teleportera"
 
 #: data/core/macros/abilities.cfg:366
+#, fuzzy
 msgid ""
 "Teleport:\n"
-"This unit may teleport between any two friendly villages using one of its "
-"moves."
+"This unit may teleport between any two empty villages owned by its side "
+"using one of its moves."
 msgstr ""
 "Teleportera:\n"
 "Den här truppen kan teleportera sig mellan två kontrollerade byar. Den "
@@ -3539,12 +3540,14 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " Denna trupp omgärdas av en ljuscirkel som lyser upp närområdet."
 
 #: data/core/macros/special-notes.cfg:38
+#, fuzzy
 msgid ""
-" This unit can teleport between any two villages instantly, though the "
-"player must control both, and the destination village must be unoccupied."
+" This unit can use one move to teleport between any two empty villages "
+"controlled by its side."
 msgstr ""
-" Denna trupp kan ögonblickligen teleportera sig mellan två byar; spelaren "
-"måste dock kontrollera båda byarna, och destinationen måste vara tom."
+"Teleportera:\n"
+"Den här truppen kan teleportera sig mellan två kontrollerade byar. Den "
+"använder då ett av sina förflyttningspoäng."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -3854,15 +3857,15 @@ msgid ""
 "\n"
 "<header>text='Society'</header>\n"
 "Drakes are a relatively warlike race and their societies can be best "
-"described as cultured martial societies. The core of a drake tribe is small "
-"group of veteran warriors headed by a mutually respected - or simply feared "
-"- leader who rules the society with an iron fist. Every drake is expected to "
-"earn their place in the strict hierarchy, to obey their superiors and "
-"command their lessers. Entry to the ruling elite is only possible through "
-"challenging and defeating a superior in single combat, which is the way the "
-"hierarchy within the elite itself is established. The use of deception of "
-"any kind towards any fellow drake is, without exception, seen as cowardly "
-"and unacceptable.\n"
+"described as cultured martial societies. The core of a drake tribe is a "
+"small group of veteran warriors headed by a mutually respected - or simply "
+"feared - leader who rules the society with an iron fist. Every drake is "
+"expected to earn their place in the strict hierarchy, to obey their "
+"superiors and command their lessers. Entry to the ruling elite is only "
+"possible through challenging and defeating a superior in single combat, "
+"which is the way the hierarchy within the elite itself is established. The "
+"use of deception of any kind towards any fellow drake is, without exception, "
+"seen as cowardly and unacceptable.\n"
 "\n"
 "While their warlike nature and sense of territory drives them to defend "
 "their territories savagely, drakes rarely invade or trespass on areas "
@@ -5463,7 +5466,7 @@ msgstr "B"
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:1005
+#: src/game.cpp:1005 src/game.cpp:1490
 msgid "Connect to Server"
 msgstr "Anslut till server"
 
@@ -5632,13 +5635,10 @@ msgstr "Anslut till den officiella servern"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logga in på Kampen om Wesnoths officiella spelserver"
 
-#: src/game.cpp:1490
-msgid "Connect to Host/Server"
-msgstr "Anslut till värd/server"
-
 #: src/game.cpp:1491
-msgid "Join a server or hosted game"
-msgstr "Anslut till en server eller ett spel som någon annan är värd för"
+#, fuzzy
+msgid "Join a different server"
+msgstr "Anslut till den officiella servern"
 
 #: src/game.cpp:1493
 msgid "Local Game"
@@ -7573,6 +7573,19 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
+
+#~ msgid ""
+#~ " This unit can teleport between any two villages instantly, though the "
+#~ "player must control both, and the destination village must be unoccupied."
+#~ msgstr ""
+#~ " Denna trupp kan ögonblickligen teleportera sig mellan två byar; spelaren "
+#~ "måste dock kontrollera båda byarna, och destinationen måste vara tom."
+
+#~ msgid "Connect to Host/Server"
+#~ msgstr "Anslut till värd/server"
+
+#~ msgid "Join a server or hosted game"
+#~ msgstr "Anslut till en server eller ett spel som någon annan är värd för"
 
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-02 14:03+0100\n"
+"POT-Creation-Date: 2008-03-02 23:10+0100\n"
 "PO-Revision-Date: 2008-03-02 19:00+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -2184,11 +2184,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:686
+#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
 "who controls that side needs to issue this command. If no second parameter "
-"is supplied, toggle bewteen human an AI. If it is 'on', set an AI "
+"is supplied, toggle bewteen human and AI. If it is 'on', set an AI "
 "controller. If it is 'off' set a human controller. Defaults to the currently "
 "active side if no parameter is supplied.\n"
 "\n"
@@ -2562,10 +2563,11 @@ msgid "teleport"
 msgstr "瞬間移動"
 
 #: data/core/macros/abilities.cfg:366
+#, fuzzy
 msgid ""
 "Teleport:\n"
-"This unit may teleport between any two friendly villages using one of its "
-"moves."
+"This unit may teleport between any two empty villages owned by its side "
+"using one of its moves."
 msgstr ""
 "瞬間移動:\n"
 "このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
@@ -3844,13 +3846,14 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " 照明は隣接する領域を明るくします。"
 
 #: data/core/macros/special-notes.cfg:38
+#, fuzzy
 msgid ""
-" This unit can teleport between any two villages instantly, though the "
-"player must control both, and the destination village must be unoccupied."
+" This unit can use one move to teleport between any two empty villages "
+"controlled by its side."
 msgstr ""
-" このユニットは瞬時に 2 つの村の間を瞬間移動することができます。しかしなが"
-"ら、 どちらの村もプレイヤーの支配下にあり、行き先の村があいている必要がありま"
-"す。"
+"瞬間移動:\n"
+"このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
+"できます。"
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4135,6 +4138,7 @@ msgid "race^Drakes"
 msgstr "ドレーク族"
 
 #: data/core/units.cfg:67
+#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4161,15 +4165,15 @@ msgid ""
 "\n"
 "<header>text='Society'</header>\n"
 "Drakes are a relatively warlike race and their societies can be best "
-"described as cultured martial societies. The core of a drake tribe is small "
-"group of veteran warriors headed by a mutually respected - or simply feared "
-"- leader who rules the society with an iron fist. Every drake is expected to "
-"earn their place in the strict hierarchy, to obey their superiors and "
-"command their lessers. Entry to the ruling elite is only possible through "
-"challenging and defeating a superior in single combat, which is the way the "
-"hierarchy within the elite itself is established. The use of deception of "
-"any kind towards any fellow drake is, without exception, seen as cowardly "
-"and unacceptable.\n"
+"described as cultured martial societies. The core of a drake tribe is a "
+"small group of veteran warriors headed by a mutually respected - or simply "
+"feared - leader who rules the society with an iron fist. Every drake is "
+"expected to earn their place in the strict hierarchy, to obey their "
+"superiors and command their lessers. Entry to the ruling elite is only "
+"possible through challenging and defeating a superior in single combat, "
+"which is the way the hierarchy within the elite itself is established. The "
+"use of deception of any kind towards any fellow drake is, without exception, "
+"seen as cowardly and unacceptable.\n"
 "\n"
 "While their warlike nature and sense of territory drives them to defend "
 "their territories savagely, drakes rarely invade or trespass on areas "
@@ -5892,7 +5896,7 @@ msgstr "バイト"
 msgid "MB"
 msgstr "Mバイト"
 
-#: src/game.cpp:1005
+#: src/game.cpp:1005 src/game.cpp:1490
 msgid "Connect to Server"
 msgstr "サーバーへの接続"
 
@@ -6059,13 +6063,10 @@ msgstr "公式サーバーに参加"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Wesnothの公式マルチプレイサーバーにログオンします。"
 
-#: src/game.cpp:1490
-msgid "Connect to Host/Server"
-msgstr "ホスト/サーバーへの接続"
-
 #: src/game.cpp:1491
-msgid "Join a server or hosted game"
-msgstr "サーバーか主催されたゲームに参加します。"
+#, fuzzy
+msgid "Join a different server"
+msgstr "公式サーバーに参加"
 
 #: src/game.cpp:1493
 msgid "Local Game"
@@ -7948,6 +7949,20 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
+
+#~ msgid ""
+#~ " This unit can teleport between any two villages instantly, though the "
+#~ "player must control both, and the destination village must be unoccupied."
+#~ msgstr ""
+#~ " このユニットは瞬時に 2 つの村の間を瞬間移動することができます。しかしなが"
+#~ "ら、 どちらの村もプレイヤーの支配下にあり、行き先の村があいている必要があ"
+#~ "ります。"
+
+#~ msgid "Connect to Host/Server"
+#~ msgstr "ホスト/サーバーへの接続"
+
+#~ msgid "Join a server or hosted game"
+#~ msgstr "サーバーか主催されたゲームに参加します。"
 
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "sazanami-gothic.ttf,DejaVuSans.ttf,gkai00mp.ttf"
