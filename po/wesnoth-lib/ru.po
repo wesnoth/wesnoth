@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-11 21:56+0100\n"
-"PO-Revision-Date: 2007-08-11 15:39+0300\n"
-"Last-Translator: Anthony Kolesov <anthony.kolesov@gmail.com>\n"
+"PO-Revision-Date: 2008-03-01 12:26+0300\n"
+"Last-Translator: vz <vicza@zmail.ru>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -155,7 +155,7 @@ msgstr "Пропасть"
 
 #: data/core/terrain.cfg:594
 msgid "Lava chasm"
-msgstr ""
+msgstr "Пропасть с лавой"
 
 #: data/core/terrain.cfg:604
 msgid "Lava"
@@ -191,9 +191,8 @@ msgid "Mushroom Grove"
 msgstr "Грибная роща"
 
 #: data/core/terrain.cfg:716
-#, fuzzy
 msgid "Mushroom Grove Lit"
-msgstr "Грибная роща"
+msgstr "Освещённая грибная роща"
 
 #: data/core/terrain.cfg:726
 msgid "Rockbound Cave"
@@ -240,7 +239,7 @@ msgstr "Стена пещеры"
 
 #: data/core/terrain.cfg:1006
 msgid "Void"
-msgstr ""
+msgstr "пусто"
 
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
 #: src/editor/editor_dialogs.cpp:423
@@ -336,15 +335,15 @@ msgstr "Изменить размер карты"
 
 #: src/editor/editor_dialogs.cpp:388
 msgid "X offset:"
-msgstr ""
+msgstr "Смещение X:"
 
 #: src/editor/editor_dialogs.cpp:389
 msgid "Y offset:"
-msgstr ""
+msgstr "Смещение Y:"
 
 #: src/editor/editor_dialogs.cpp:468
 msgid "Smart expand"
-msgstr ""
+msgstr "умное расширение"
 
 #: src/editor/editor_dialogs.cpp:557
 msgid "X-Axis"
@@ -384,7 +383,7 @@ msgstr "Ошибка создания каталога."
 
 #: src/game_preferences.cpp:217
 msgid "No server has been defined."
-msgstr ""
+msgstr "Сервер не определён"
 
 #: src/game_preferences.cpp:281
 msgid "player"
@@ -400,12 +399,11 @@ msgstr "Пропускать ходы компьютера"
 
 #: src/game_preferences_display.cpp:164
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Сохранять повторы"
 
 #: src/game_preferences_display.cpp:165
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "Автоматически удалять автосохранения в конце сценария"
+msgstr "Автоматически удалять автосохранения"
 
 #: src/game_preferences_display.cpp:166
 msgid "Do Not Show Lobby Joins"
@@ -453,28 +451,27 @@ msgstr "Показывать плавающие метки"
 
 #: src/game_preferences_display.cpp:177
 msgid "Turn Dialog"
-msgstr "Показывать диалог"
+msgstr "Окно начала хода"
 
 #: src/game_preferences_display.cpp:178
 msgid "Turn Bell"
-msgstr "Включить сигнал"
+msgstr "Сигнал начала хода"
 
 #: src/game_preferences_display.cpp:179
 msgid "Show Team Colors"
-msgstr "Показывать командные цвета"
+msgstr "Показывать цвета команд"
 
 #: src/game_preferences_display.cpp:180
 msgid "Show Color Cursors"
-msgstr "Показывать улучшенные курсоры"
+msgstr "Показывать цветные курсоры"
 
 #: src/game_preferences_display.cpp:181
 msgid "Show Haloing Effects"
 msgstr "Показывать эффекты"
 
 #: src/game_preferences_display.cpp:182
-#, fuzzy
 msgid "Change Resolution"
-msgstr "Выберите разрешение"
+msgstr "Изменить разрешение"
 
 #: src/game_preferences_display.cpp:183
 msgid "Theme"
@@ -502,11 +499,11 @@ msgstr "Отметка времени в чате"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Продвинутые настройки"
 
 #: src/game_preferences_display.cpp:192
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Стандартные настройки"
 
 #: src/game_preferences_display.cpp:193
 msgid "User Interface Sounds"
@@ -522,7 +519,7 @@ msgstr "Применить"
 
 #: src/game_preferences_display.cpp:198
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "Показывать анимацию отрядов при бездействии"
 
 #: src/game_preferences_display.cpp:200
 msgid "Music Volume:"
@@ -550,7 +547,7 @@ msgstr "Размер сэмпла (Гц):"
 
 #: src/game_preferences_display.cpp:206
 msgid "Frequency:"
-msgstr ""
+msgstr "Частота:"
 
 #: src/game_preferences_display.cpp:230
 msgid "Sound effects on/off"
@@ -614,41 +611,43 @@ msgstr "Изменить яркость"
 
 #: src/game_preferences_display.cpp:304
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Выберите режим игры, на весь экран или в окне"
+msgstr "Выберите режим игры, на весь экран, или в окне"
 
 #: src/game_preferences_display.cpp:307
 msgid "Make units move and fight faster"
-msgstr "Делает движения и битву соединений быстрее"
+msgstr "Ускорить движение и битву отрядов"
 
 #: src/game_preferences_display.cpp:324
 msgid "Units move and fight speed"
-msgstr "Скорость движения и битвы соединений"
+msgstr "Скорость движения и битвы отрядов"
 
 #: src/game_preferences_display.cpp:327
-#, fuzzy
 msgid "Show unit idle animations"
-msgstr "Пропустить анимацию"
+msgstr "Показывать анимацию отрядов при бездействии"
 
 #: src/game_preferences_display.cpp:333
 msgid "Set the frequency of unit idle animations"
-msgstr ""
+msgstr "Задать частоту анимации при бездействии"
 
 #: src/game_preferences_display.cpp:338
 msgid "Set maximum number of automatic saves to be retained"
-msgstr ""
+msgstr "Установить максимальное количество автосохранений"
 
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
-msgstr "Не анимировать движения соединений компьютера"
+msgstr "Не анимировать движения отрядов компьютера"
 
 #: src/game_preferences_display.cpp:345
 msgid "Save replays on SP victory or SP/MP defeat."
 msgstr ""
+"Сохранять повторы при победе в одно-/многопользовательской игре,  или "
+"поражении во многопользовательской."
 
 #: src/game_preferences_display.cpp:348
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Автоматически удалять автосохранения в конце сценария"
+msgstr ""
+"Автоматически удалять автосохранения при победе в одно-/"
+"многопользовательской игре, или поражении во многопользовательской."
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -700,7 +699,7 @@ msgstr "Вставить имя"
 
 #: src/game_preferences_display.cpp:375
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Показывать над соединением количество нанесенного урона "
+msgstr "При попадании показывать над отрядом нанесённый урон"
 
 #: src/game_preferences_display.cpp:377
 msgid "Change the resolution the game runs at"
@@ -712,19 +711,19 @@ msgstr "Изменить тему игры, запущенной с"
 
 #: src/game_preferences_display.cpp:381
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Показывать диалог в начале Вашего хода"
+msgstr "Показывать диалог в начале вашего хода"
 
 #: src/game_preferences_display.cpp:384
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Проигрывать звук колокола в начале Вашего хода"
+msgstr "Проигрывать звук колокола в начале вашего хода"
 
 #: src/game_preferences_display.cpp:387
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Показывать цветные круги вокруг каждого соединения для того чтобы различать, "
-"кто свой, а кто чужой"
+"Показывать цветные круги вокруг каждого отряда, чтобы различать, кто на чьей "
+"стороне"
 
 #: src/game_preferences_display.cpp:390
 msgid "Choose whether the sun moves left-to-right or right-to-left"
@@ -732,7 +731,7 @@ msgstr "Выберите передвижение солнца, слева-на�
 
 #: src/game_preferences_display.cpp:393
 msgid "Use colored mouse cursors (may be slower)"
-msgstr "Использовать улучшенные курсоры мышки (может замедлить игру)"
+msgstr "Использовать цветные курсоры мышки (может замедлить игру)"
 
 #: src/game_preferences_display.cpp:396
 msgid "Use graphical special effects (may be slower)"
@@ -748,20 +747,19 @@ msgstr "Скорость: "
 
 #: src/game_preferences_display.cpp:694 src/game_preferences_display.cpp:696
 msgid "Maximum Auto-Saves: "
-msgstr ""
+msgstr "Макс. число автосохранений:"
 
 #: src/game_preferences_display.cpp:694
 msgid "infinite"
-msgstr ""
+msgstr "неограничено"
 
 #: src/game_preferences_display.cpp:866
 msgid "Chat Lines: "
 msgstr "Линии чата: "
 
 #: src/game_preferences_display.cpp:888 src/game_preferences_display.cpp:896
-#, fuzzy
 msgid "Invalid username"
-msgstr "Вставить имя"
+msgstr "Неверное имя пользователя"
 
 #: src/game_preferences_display.cpp:968
 msgid "yes"
@@ -773,7 +771,7 @@ msgstr "нет"
 
 #: src/game_preferences_display.cpp:1001
 msgid "(empty list)"
-msgstr ""
+msgstr "(список пуст)"
 
 #: src/game_preferences_display.cpp:1119
 msgid "Prefs section^General"
@@ -805,17 +803,16 @@ msgstr ""
 "Новая тема будет задействована при следующей новой или загруженной игре."
 
 #: src/game_preferences_display.cpp:1168
-#, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
 #: src/hotkeys.cpp:54
 msgid "Next Unit"
-msgstr "Следующее соединение"
+msgstr "Следующий отряд"
 
 #: src/hotkeys.cpp:55
 msgid "Previous Unit"
-msgstr "Предыдущее соединение"
+msgstr "Предыдущий отряд"
 
 #: src/hotkeys.cpp:56
 msgid "Hold Position"
@@ -823,7 +820,7 @@ msgstr "Сохранять позицию"
 
 #: src/hotkeys.cpp:57
 msgid "End Unit Turn"
-msgstr "Завершить ход соединения"
+msgstr "Завершить ход отряда"
 
 #: src/hotkeys.cpp:58
 msgid "Leader"
@@ -859,20 +856,19 @@ msgstr "Ускоренный"
 
 #: src/hotkeys.cpp:67
 msgid "Unit Description"
-msgstr "Описание соединения"
+msgstr "Описание отряда"
 
 #: src/hotkeys.cpp:68
 msgid "Rename Unit"
-msgstr "Переименовать соединение"
+msgstr "Переименовать отряд"
 
 #: src/hotkeys.cpp:69
 msgid "Save Game"
 msgstr "Сохранить игру"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "Сохранять повторы"
+msgstr "Сохранить повтор"
 
 #: src/hotkeys.cpp:71
 msgid "Save The Map"
@@ -920,11 +916,11 @@ msgstr "Говорить"
 
 #: src/hotkeys.cpp:82
 msgid "Create Unit (Debug!)"
-msgstr "Создать соединение (Отладка!)"
+msgstr "Создать отряд (Отладка!)"
 
 #: src/hotkeys.cpp:83
 msgid "Change Unit Side (Debug!)"
-msgstr "Сменить сторону соединения (Отладка!)"
+msgstr "Сменить сторону отряда (Отладка!)"
 
 #: src/hotkeys.cpp:85
 msgid "Scenario Objectives"
@@ -932,7 +928,7 @@ msgstr "Задачи сценария"
 
 #: src/hotkeys.cpp:86
 msgid "Unit List"
-msgstr "Список соединений"
+msgstr "Список отрядов"
 
 #: src/hotkeys.cpp:87
 msgid "Statistics"
@@ -1035,9 +1031,8 @@ msgid "Fill Selection"
 msgstr "Заполнить выделение"
 
 #: src/hotkeys.cpp:116
-#, fuzzy
 msgid "Rotate Selection"
-msgstr "Заполнить выделение"
+msgstr "Повернуть выделение"
 
 #: src/hotkeys.cpp:117
 msgid "Cut"
@@ -1093,7 +1088,7 @@ msgstr "Продолжить движение"
 
 #: src/hotkeys.cpp:132
 msgid "Find Label or Unit"
-msgstr "Найти метку или соединение"
+msgstr "Найти метку или отряд"
 
 #: src/hotkeys.cpp:133
 msgid "Speak to Ally"
@@ -1189,15 +1184,15 @@ msgstr "Остров"
 
 #: src/marked-up_text.cpp:357
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "Максимальная ширина текста меньше 1"
 
 #: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Не могу найти изображения для территории $terrain."
 
 #: src/minimap.cpp:93 src/minimap.cpp:105
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Ошибка при создании или получении изображения."
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
@@ -1249,7 +1244,7 @@ msgstr "Ошибка"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr ""
+msgstr "Найдена территория со строкой из более чем 4 символов, это: "
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
@@ -1262,20 +1257,25 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Произошла ошибка, возможно связанная с неверным WML кодом\n"
+"Сообщение об ошибке :"
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
+"Если будете отсылать багрепорт, включите, пожалуйста, следующее сообщение:"
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"В разделе '[$section|]', где '$primary_key| = $primary_value', не задан "
+"обязательный параметр '$key|' ."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
+msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Сохранить"
