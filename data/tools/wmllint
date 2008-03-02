@@ -1822,6 +1822,23 @@ def translator(filename, mapxforms, textxform, versions):
     else:
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
+    # Simple check for unbalanced macro calls
+    unclosed = None
+    linecount = 1
+    depth = 0
+    for i in range(len(transformed)):
+        if transformed[i] == '\n':
+            linecount += 1
+        elif transformed[i] == '{':
+            if depth == 0:
+                unclosed = linecount
+            depth += 1
+        elif transformed[i] == '}':
+            depth -= 1
+            if depth == 0:
+                unclosed = None
+    if unclosed:
+        print >>sys.stderr, '"%s", line %d: unbalanced {.' % (filename, unclosed)
     # Return None if the transformation functions made no changes.
     if modified:
         return transformed
