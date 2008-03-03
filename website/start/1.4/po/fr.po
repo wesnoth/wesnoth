@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.4\n"
-"POT-Creation-Date: 2008-03-03 00:27+0100\n"
+"POT-Creation-Date: 2008-03-03 01:36+0100\n"
 "PO-Revision-Date: 2008-03-02 21:08+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -120,7 +120,7 @@ msgstr ""
 "des fichiers de données de wesnoth avant qu'ils vous soient envoyés."
 
 # type: Attribute 'alt' of: <html><body><div><div><div><div><div><img>
-#: ../template.html:67 ../template.html:227
+#: ../template.html:67 ../template.html:234
 msgid "Wesnoth Screenshot"
 msgstr "Capture d'écran de Wesnoth"
 
@@ -136,16 +136,17 @@ msgstr "Pour les joueurs"
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:75
-msgid "Seven new campaigns now ship with the game"
+#, fuzzy
+msgid "Six well-known user-contributed campaigns now ship with the game"
 msgstr "Sept nouvelles campagnes, maintenant incluses dans le jeu"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:76
+#, fuzzy
 msgid ""
-"We have more than doubled the number of campaigns we ship. In addition to "
-"one brand new campaign, <em>The Hammer of Thursagan</em> by Eric S. Raymond, "
-"we now also ship polished, upgraded and improved versions of the following "
-"well-known user-written campaigns: <em>Descent into Darkness, Liberty, "
+"We have more than doubled the number of campaigns we ship.  Polished, "
+"upgraded and improved versions of the following well-known user-written "
+"campaigns now ship with the game: <em>Descent into Darkness, Liberty, "
 "Northern Rebirth, Sceptre of Fire, An Orcish Incursion, and Son of the Black-"
 "Eye.</em>"
 msgstr ""
@@ -154,16 +155,39 @@ msgstr ""
 "écrit par Eric S. Raymond, des versions remises à jour, améliorées et "
 "peaufinées des célèbres campagnes écrites par des utilisateurs suivantes "
 "sont maintenant incluses dans le jeu : <em>Descente dans les Ténèbres, "
-"Liberté, La Renaissance du Nord, Le Sceptre de Feu, Une intrusion orc, "
-"et Le Fils de l'Oeil-Noir.</em>"
+"Liberté, La Renaissance du Nord, Le Sceptre de Feu, Une intrusion orc, et Le "
+"Fils de l'Oeil-Noir.</em>"
 
 # type: Content of: <html><body><div><div><div><dl><dt>
+#: ../template.html:82
+msgid "One brand new, all original campaign by an open-source luminary"
+msgstr "Une toute nouvelle campagne originale faite par un grand nom du libre"
+
+# type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:83
-msgid "Parts of the user interface of the game have been redesigned"
+msgid ""
+"Eric S. Raymond, the open-source übergeek who wrote <a href='http://catb.org/"
+"~esr/writings/cathedral-bazaar/'>The Cathedral and the Bazaar</a>, has a not-"
+"so-well-kept secret; he loves strategy games. ESR joined our development "
+"team nine months ago, and in between contributing code and bugfixes he found "
+"time to write an all-new campaign for 1.4: <em>The Hammer of Thursagan</em>."
+msgstr ""
+"Eric S. Raymond, l'übergeek du logiciel libre qui a écrit <a href='http://"
+"catb.org/~esr/writings/cathedral-bazaar/'>The Cathedral and the Bazaar</a>, "
+"a un secret pas très bien gardé; il adore les jeux de stratégie. ESR a "
+"rejoint notre équipe de developpement il y a environ neuf mois, et entre ses "
+"contributions au code source et ses corrections de bugs, il a trouvé le "
+"temps d'écrire une campagne toute nouvelle pour la version 1.4 : <em>Le "
+"marteau de Thursagan</em>."
+
+# type: Content of: <html><body><div><div><div><dl><dt>
+#: ../template.html:90
+#, fuzzy
+msgid "The user interface of the game has been redesigned"
 msgstr "Une interface utilisateur du jeu en partie réactualisée "
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:84
+#: ../template.html:91
 msgid ""
 "The 1.4 Wesnoth user interface has a cleaner look and feel, with lightweight "
 "semi-transparent transient windows replacing many of the old-fashioned "
@@ -186,14 +210,14 @@ msgstr ""
 "la souris. Les roulettes des souris sont supportées."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:94
+#: ../template.html:101
 msgid "You can now review scenarios, chat, and set options after victory"
 msgstr ""
 "Vous pouvez revoir le scénario, discuter et changer des options apès une "
 "victoire"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:95
+#: ../template.html:102
 msgid ""
 "You'll no longer get two modal dialogues full of checkbox options "
 "immediately after victory in a scenario and then be instantly returned to "
@@ -211,12 +235,12 @@ msgstr ""
 "options, ainsi que tout action en général sauf les actions de combat."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:103
+#: ../template.html:110
 msgid "The multiplayer collection has been revised and extended"
 msgstr "Un catalogue multijoueur étendu et mis à jour"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:104
+#: ../template.html:111
 msgid ""
 "New maps and multiplayer campaigns: <cite> Auction-X, Dark Forecast, "
 "Hamlets, Mokena Prairie, The Manzivan Traps, Xanthe Chaos</cite>."
@@ -226,7 +250,7 @@ msgstr ""
 "Xanthe</cite>."
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:111
+#: ../template.html:118
 msgid ""
 "Revised maps: <cite>Alirok Marsh</cite> (formerly <cite>Triple Blitz</cite>),"
 "<cite> Amohsad Caldera, Blue Water Province, Castle Hopping Isle, Caves of "
@@ -251,12 +275,12 @@ msgstr ""
 "(anciennement <cite>Blitz</cite>), Wesbowl</cite>."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:140
+#: ../template.html:147
 msgid "Changed and rebalanced units"
 msgstr "Modification ét rééquilibrage des unités"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:141
+#: ../template.html:148
 msgid ""
 "The Footpad, Poacher and Thug units can advance all the way to level 3.  "
 "Many units have been tuned and rebalanced, including Ancient Lich, Elvish "
@@ -275,7 +299,7 @@ msgstr ""
 "ainsi que tout les sauriens et les chauves-souris."
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:163
+#: ../template.html:170
 msgid ""
 "Also, the \"holy\" damage type has been changed to \"arcane\" and is now a "
 "general anti-magic attack useful against more than just undead: elves, "
@@ -287,12 +311,12 @@ msgstr ""
 "sensibles."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:167
+#: ../template.html:174
 msgid "Many portraits have been revised or added"
 msgstr "Beaucoup de portraits ajoutés ou mis à jour"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:168
+#: ../template.html:175
 msgid ""
 "Many unit and hero portraits have been improved or added.  We now have a "
 "particularly beautiful set of new portraits in a uniform style for the "
@@ -303,12 +327,12 @@ msgstr ""
 "unités elfes dans un style uniforme particulièrement beau."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:172
+#: ../template.html:179
 msgid "New uses of animation"
 msgstr "Nouveaux genres d'animations"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:173
+#: ../template.html:180
 msgid ""
 "Many more units have full combat animation.  Many unit also have idle "
 "animations which fire periodically when they are not doing anything "
@@ -322,11 +346,11 @@ msgstr ""
 "lorsqu'elles n'ont rien de particulier à faire. Quelques objets et unités on "
 "des animations statiques qui sont actives tout le temps; les chauves-souris "
 "battent des ailes et les feux crépitent. De nombreuses unités, comme les "
-"mages et les fantômes ont de meilleures images de base, et beaucoup "
-"d'effets spéciaux, comme les attaques magiques, ont eux aussi été améliorés."
+"mages et les fantômes ont de meilleures images de base, et beaucoup d'effets "
+"spéciaux, comme les attaques magiques, ont eux aussi été améliorés."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:181
+#: ../template.html:188
 msgid "Multiplayer lobby improvements"
 msgstr "Améliorations du vestibule multijoueur"
 
@@ -336,7 +360,7 @@ msgstr "Améliorations du vestibule multijoueur"
 #.  You'll get
 #. a notification when you are in game and a friend joins the
 #. server. 
-#: ../template.html:182
+#: ../template.html:189
 msgid ""
 "You can set a list of user nicks to be ignored (you won't see chat from "
 "them).  You can also set a list of friends; their nicks will be highlighted "
@@ -347,12 +371,12 @@ msgstr ""
 "seront mis en évidence en haut de la liste des utilisateurs."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:188
+#: ../template.html:195
 msgid "Miscellaneous other improvements"
 msgstr "Diverses autres améliorations"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:189
+#: ../template.html:196
 msgid ""
 "You can now select a female leader in multiplayer.  The in-game help has "
 "been revised, reorganized and expanded.  There are five new all-original "
@@ -366,17 +390,17 @@ msgstr ""
 "automatiquement compressées pour gagner de l'espace disque."
 
 # type: Content of: <html><body><div><div><div><h3>
-#: ../template.html:195
+#: ../template.html:202
 msgid "For Campaign Developers"
 msgstr "Pour les créateurs de campagne"
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:198
+#: ../template.html:205
 msgid "The map editor is much more capable"
 msgstr "Un éditeur de cartes plus perfectionné"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:199
+#: ../template.html:206
 msgid ""
 "Maps can now be opened directly from a scenario file and saved back to it.  "
 "Starting positions no longer need to be on keeps.  The terrain palette is "
@@ -400,12 +424,12 @@ msgstr ""
 "aussi sur l'affichage)."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:209
+#: ../template.html:216
 msgid "WML is considerably more powerful"
 msgstr "Du WML bien plus puissant"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:210
+#: ../template.html:217
 msgid ""
 "Animation WML has been completely redesigned in a much more flexible and "
 "general way.  Complex variable substitution is now used in all action WML. "
@@ -419,21 +443,21 @@ msgstr ""
 "Les animations WML ont été repensées d'une manière bien plus flexible et "
 "générique. Les substitutions complexes de variables sont maintenant "
 "disponible dans tout code WML d'action. Il y a un générateur aléatoire qui "
-"fonctionne correctement en mode multijoueur. Un tag <code>"
-"[set_menu_item]</code> permet aux concepteurs de scénarios de créer un menu "
-"contextuel personalisé, disponible à partir du click droit de la souris, "
-"auquel on peut associer n'importe quelles actions WML. Les filtes d'unités "
-"et de lieux standards ont de nouvelles facultés (comme les expressions "
-"booléenes complètes) rendent plus puissants et qui peut remplacer la "
-"plupart des choses qui étaient faites auparavant par des filtres spéciaux."
+"fonctionne correctement en mode multijoueur. Un tag <code>[set_menu_item]</"
+"code> permet aux concepteurs de scénarios de créer un menu contextuel "
+"personalisé, disponible à partir du click droit de la souris, auquel on peut "
+"associer n'importe quelles actions WML. Les filtes d'unités et de lieux "
+"standards ont de nouvelles facultés (comme les expressions booléenes "
+"complètes) rendent plus puissants et qui peut remplacer la plupart des "
+"choses qui étaient faites auparavant par des filtres spéciaux."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:220
+#: ../template.html:227
 msgid "Multiplayer campaigns"
 msgstr "Campagnes multijoueur"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:221
+#: ../template.html:228
 msgid ""
 "The game engine will now support multiplayer campaigns, though we don't ship "
 "any yet. This is an opportunity for designers to explore a new frontier in "
@@ -444,12 +468,12 @@ msgstr ""
 "concepteurs d'explorer de nouvelles frontières dans le jeu de Wesnoth."
 
 # type: Content of: <html><body><div><div><div><h2>
-#: ../template.html:233
+#: ../template.html:240
 msgid "Download"
 msgstr "Téléchargement"
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:235
+#: ../template.html:242
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "copyleft/gpl.html'>GNU General Public License</a> (GPL). Source code is "
@@ -459,17 +483,17 @@ msgid ""
 "systems. Ready-to-go packages are also available for most popular operating "
 "systems, including Linux and Windows and Mac OS X."
 msgstr ""
-"La Bataille pour Wesnoth est disponible sou la licence <a "
-"href='http://www.gnu.org/copyleft/gpl.html'>GNU General Public License</a> "
-"(GPL). Le code source est disponible sur <a "
-"href='http://www.wesnoth.org'>wesnoth.org</a> où vous trouverez aussi les "
-"instructions pour <a href='http://wesnoth.org/wiki/CompilingWesnoth'>"
-"compiler à partir des sources</a> pour différent systèmes d'exploitations. "
-"Des packs prêts à l'emploi sont aussi disponibles pour les plupart des "
-"systèmes d'exploitation, comme Linux, Windows et Mac OS X."
+"La Bataille pour Wesnoth est disponible sou la licence <a href='http://www."
+"gnu.org/copyleft/gpl.html'>GNU General Public License</a> (GPL). Le code "
+"source est disponible sur <a href='http://www.wesnoth.org'>wesnoth.org</a> "
+"où vous trouverez aussi les instructions pour <a href='http://wesnoth.org/"
+"wiki/CompilingWesnoth'>compiler à partir des sources</a> pour différent "
+"systèmes d'exploitations. Des packs prêts à l'emploi sont aussi disponibles "
+"pour les plupart des systèmes d'exploitation, comme Linux, Windows et Mac OS "
+"X."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:246
+#: ../template.html:253
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4.tar."
 "gz?download'>Source code</a> </strong>"
@@ -478,7 +502,7 @@ msgstr ""
 "gz?download'>Code source</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:251
+#: ../template.html:258
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4-"
 "windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
@@ -487,7 +511,7 @@ msgstr ""
 "windows.exe?download'>Wesnoth pour MS Windows</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:256
+#: ../template.html:263
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
 "Wesnoth_MacOSX_1.4.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
@@ -496,7 +520,7 @@ msgstr ""
 "Wesnoth_MacOSX_1.4.dmg?download'>Wesnoth pour Mac OS X</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:262
+#: ../template.html:269
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "www.wesnoth.org/wiki/Download'>downloads page</a>."
@@ -506,7 +530,7 @@ msgstr ""
 "a>."
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:265
+#: ../template.html:272
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://www.wesnoth.org/wiki/"
@@ -517,12 +541,12 @@ msgstr ""
 "wiki/Download_Xdeltas'>xdelta</a>."
 
 # type: Content of: <html><body><div><div><div><h2>
-#: ../template.html:270
+#: ../template.html:277
 msgid "More Info"
 msgstr "Informations complémentaire"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:274
+#: ../template.html:281
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/"
 "changelog'>Full Changelog</a> (English, very long)"
@@ -531,7 +555,7 @@ msgstr ""
 "changelog'>Historique complet des modifications</a> (en anglais, très long)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:277
+#: ../template.html:284
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/doc/manual/"
 "manual.en.html'>User's Manual</a>"
@@ -540,13 +564,13 @@ msgstr ""
 "manual.fr.html'>Manuel utilisateur</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:278
+#: ../template.html:285
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgstr ""
 "<a href='http://www.wesnoth.org'>Site officiel de Wesnoth</a> (en anglais)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:279
+#: ../template.html:286
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.0'>Wesnoth 1.0 Release Notes</a>"
 msgstr ""
@@ -554,7 +578,7 @@ msgstr ""
 "Wesnoth 1.0</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:280
+#: ../template.html:287
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.2'>Wesnoth 1.2 Release Notes</a>"
 msgstr ""
@@ -562,28 +586,6 @@ msgstr ""
 "Wesnoth 1.2</a>"
 
 # type: Content of: <html><body><div><div><div><div><p>
-#: ../template.html:287
+#: ../template.html:294
 msgid "This page is also available in the following languages:"
 msgstr "Cette page est également disponible dans les langues suivantes :"
-
-# type: Content of: <html><body><div><div><div><dl><dt>
-#~ msgid "One brand new, all original campaign by an open-source luminary"
-#~ msgstr ""
-#~ "Une toute nouvelle campagne originale faite par un grand nom du libre"
-
-# type: Content of: <html><body><div><div><div><dl><dd><p>
-#~ msgid ""
-#~ "Eric S. Raymond, the open-source übergeek who wrote <a href='http://catb."
-#~ "org/~esr/writings/cathedral-bazaar/'>The Cathedral and the Bazaar</a>, "
-#~ "has a not-so-well-kept secret; he loves strategy games. ESR joined our "
-#~ "development team nine months ago, and in between contributing code and "
-#~ "bugfixes he found time to write an all-new campaign for 1.4: <em>The "
-#~ "Hammer of Thursagan</em>."
-#~ msgstr ""
-#~ "Eric S. Raymond, l'übergeek du logiciel libre qui a écrit <a href='http://"
-#~ "catb.org/~esr/writings/cathedral-bazaar/'>The Cathedral and the Bazaar</"
-#~ "a>, a un secret pas très bien gardé; il adore les jeux de stratégie. ESR "
-#~ "a rejoint notre équipe de developpement il y a environ neuf mois, et "
-#~ "entre ses contributions au code source et ses corrections de bugs, il a "
-#~ "trouvé le temps d'écrire une campagne toute nouvelle pour la version "
-#~ "1.4 : <em>Le marteau de Thursagan</em>."

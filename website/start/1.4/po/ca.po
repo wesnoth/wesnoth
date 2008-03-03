@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-03-02 23:58+0100\n"
+"POT-Creation-Date: 2008-03-03 01:36+0100\n"
 "PO-Revision-Date: 2008-02-26 21:32+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 
 # type: Attribute 'alt' of: <html><body><div><div><div><div><div><img>
-#: ../template.html:67 ../template.html:236
+#: ../template.html:67 ../template.html:234
 msgid "Wesnoth Screenshot"
 msgstr "Captura de Wesnoth"
 
@@ -223,13 +223,21 @@ msgid ""
 "the Saurians and Bats."
 msgstr ""
 
-# type: Content of: <html><body><div><div><div><dl><dt>
+# type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:170
+msgid ""
+"Also, the \"holy\" damage type has been changed to \"arcane\" and is now a "
+"general anti-magic attack useful against more than just undead: elves, "
+"drakes and trolls are among the units now vulnerable against it."
+msgstr ""
+
+# type: Content of: <html><body><div><div><div><dl><dt>
+#: ../template.html:174
 msgid "Many portraits have been revised or added"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:171
+#: ../template.html:175
 msgid ""
 "Many unit and hero portraits have been improved or added.  We now have a "
 "particularly beautiful set of new portraits in a uniform style for the "
@@ -237,24 +245,23 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:175
+#: ../template.html:179
 msgid "New uses of animation"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:176
+#: ../template.html:180
 msgid ""
 "Many more units have full combat animation.  Many unit also have idle "
 "animations which fire periodically when they are not doing anything "
 "specific.  Some units and items also have standing animations that a "
-"constantly active; bats flap their wings and campfires flicker.  Units can "
-"now have special death animations — some Drakes burst into flame when "
-"killed. There are improved base frames for many units, including Mages and "
-"Ghosts, and more varied uses of halo animations."
+"constantly active; bats flap their wings and campfires flicker.  There are "
+"improved base frames for many units, including Mages and Ghosts, and many "
+"special effects such as magic attacks have been improved as well."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:185
+#: ../template.html:188
 msgid "Multiplayer lobby improvements"
 msgstr ""
 
@@ -264,7 +271,7 @@ msgstr ""
 #.  You'll get
 #. a notification when you are in game and a friend joins the
 #. server. 
-#: ../template.html:186
+#: ../template.html:189
 msgid ""
 "You can set a list of user nicks to be ignored (you won't see chat from "
 "them).  You can also set a list of friends; their nicks will be highlighted "
@@ -272,35 +279,31 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:192
+#: ../template.html:195
 msgid "Miscellaneous other improvements"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:193
+#: ../template.html:196
 msgid ""
 "You can now select a female leader in multiplayer.  The in-game help has "
-"been revised, reorganized and expanded.  There are new weapons and weapon "
-"types: undead axe, undead crossbow, pickaxe, glaive, elven staff, "
-"chainmace.  \"Holy\" damage has become \"arcane\" and is a general anti-"
-"magic attack applying to more than just undead. There are five new all-"
-"original symphonic music tracks, and new sound effects for morningstar, "
-"arcane magic, hatchet, and slowdown. Savegames are automatically compressed "
-"to save you disk space."
+"been revised, reorganized and expanded.  There are five new all-original "
+"symphonic music tracks, and many new or improved sound effects.  Savegames "
+"are automatically compressed to save you disk space."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h3>
-#: ../template.html:204
+#: ../template.html:202
 msgid "For Campaign Developers"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:207
+#: ../template.html:205
 msgid "The map editor is much more capable"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:208
+#: ../template.html:206
 msgid ""
 "Maps can now be opened directly from a scenario file and saved back to it.  "
 "Starting positions no longer need to be on keeps.  The terrain palette is "
@@ -313,12 +316,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:218
+#: ../template.html:216
 msgid "WML is considerably more powerful"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:219
+#: ../template.html:217
 msgid ""
 "Animation WML has been completely redesigned in a much more flexible and "
 "general way.  Complex variable substitution is now used in all action WML. "
@@ -331,12 +334,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: ../template.html:229
+#: ../template.html:227
 msgid "Multiplayer campaigns"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
-#: ../template.html:230
+#: ../template.html:228
 msgid ""
 "The game engine will now support multiplayer campaigns, though we don't ship "
 "any yet. This is an opportunity for designers to explore a new frontier in "
@@ -344,12 +347,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h3>
-#: ../template.html:242
+#: ../template.html:240
 msgid "Download"
 msgstr "Descarrega"
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:244
+#: ../template.html:242
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "copyleft/gpl.html'>GNU General Public License</a> (GPL). Source code is "
@@ -361,35 +364,35 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:255
+#: ../template.html:253
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4.tar."
 "gz?download'>Source code</a> </strong>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:260
+#: ../template.html:258
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4-"
 "windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:265
+#: ../template.html:263
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
 "Wesnoth_MacOSX_1.4.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:271
+#: ../template.html:269
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "www.wesnoth.org/wiki/Download'>downloads page</a>."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: ../template.html:274
+#: ../template.html:272
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://www.wesnoth.org/wiki/"
@@ -397,42 +400,42 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h3>
-#: ../template.html:279
+#: ../template.html:277
 msgid "More Info"
 msgstr "Més informació"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:283
+#: ../template.html:281
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/"
 "changelog'>Full Changelog</a> (English, very long)"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:286
+#: ../template.html:284
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/doc/manual/"
 "manual.en.html'>User's Manual</a>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:287
+#: ../template.html:285
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:288
+#: ../template.html:286
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.0'>Wesnoth 1.0 Release Notes</a>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: ../template.html:289
+#: ../template.html:287
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.2'>Wesnoth 1.2 Release Notes</a>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><div><p>
-#: ../template.html:296
+#: ../template.html:294
 msgid "This page is also available in the following languages:"
 msgstr "Aquesta pàgina també està disponible en els següents idiomes:"

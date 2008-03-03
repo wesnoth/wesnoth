@@ -5,7 +5,7 @@ PO4A_OPTIONS = --rm-backups --copyright-holder "Wesnoth Development Team"
 default: translations
 
 index.en.html: template.html
-	cp template.html index.html.en
+	cp template.html index.en.html
 
 translations: index.en.html
 	@( cd po && po4a $(PO4A_OPTIONS) wesnoth-start-1.4.cfg || exit $? )
