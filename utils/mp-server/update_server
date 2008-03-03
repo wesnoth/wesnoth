@@ -9,8 +9,6 @@ SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
 BUILD=$HOME/servers/builds
 SOURCE=$HOME/source
-TRUNK=$SOURCE/trunk/
-STABLE=$SOURCE/1.2/
 SOCKET=$SERVERBASE/build/var/run/socket
 
 if ! [ -d $SERVERBASE ]; then
@@ -23,11 +21,14 @@ if ! [ -d $SOURCE ]; then
 	exit 1
 fi
 
-if [ "$SERVER" = "1.2" ]; then
-	cd $STABLE || exit 1
-else
-	cd $TRUNK  || exit 1
-fi
+case $SERVER in
+	1.2 )	cd $SOURCE/1.2   || exit 1
+	;;
+	1.4 )	cd $SOURCE/1.4   || exit 1
+	;;
+	*   )	cd $SOURCE/trunk || exit 1
+	;;
+esac
 
 REVISION=""
 if [ "$2" != "" ]; then
