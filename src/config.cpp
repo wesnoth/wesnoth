@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <sstream>
+#include <string.h>
 #include "config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
