@@ -496,12 +496,17 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
-	// If unit has specific profile, remember it and have it after advaces
+	// If unit has specific profile, remember it and keep it after advancing
 	bool specific_profile = false;
 	std::string profile;
 	if (type() != NULL)
 	{
-		specific_profile = (cfg_["profile"] != type()->cfg_["profile"]);
+		// Update 2008-02-23 by Shadowmaster: make the test for specific profile take
+		// into account advancing unit's gender and variation to avoid issues like in Elvish Archer+female, which
+		// was considering its profile as "specific" when advancing, as it isn't the same as the
+		// male profile
+		specific_profile = (cfg_["profile"] != type()->get_gender_unit_type(gender_).get_variation(variation_).cfg_["profile"]);
+		
 		if (specific_profile)
 		{
 			profile = cfg_["profile"];
