@@ -1,47 +1,47 @@
-# SOME DESCRIPTIVE TITLE
-# Copyright (C) YEAR Wesnoth Development Team
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Wesnoth Project
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Bitwa o Wesnoth\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-03-03 09:51+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2006-12-23 18:54+0100\n"
+"Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
+"Language-Team: Karol Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: ENCODING\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Country: POLAND\n"
 
-# type: Attribute 'xml:lang' of: <html>
 #: ../template.html:2
 msgid "en"
-msgstr ""
+msgstr "pl"
 
 # type: Attribute 'title' of: <html><head><link>
 #: ../template.html:6
 msgid "Default"
 msgstr ""
 
-# type: Content of: <html><head><title>
 #: ../template.html:9
+#, fuzzy
 msgid "Battle for Wesnoth 1.4"
-msgstr ""
+msgstr "Bitwa o Wesnoth 1.2"
 
 # type: Attribute 'alt' of: <html><body><div><div><div><a><img>
 #: ../template.html:18
 msgid "Wesnoth logo"
 msgstr ""
 
-# type: Content of: <html><body><div><div><div><h1>
 #: ../template.html:29
+#, fuzzy
 msgid "Battle for Wesnoth 1.4 Release Notes"
-msgstr ""
+msgstr "Informacje o wydaniu Bitwy o Wesnoth 1.2"
 
-# type: Content of: <html><body><div><div><div><p>
 #: ../template.html:31
+#, fuzzy
 msgid ""
 "<em>March 8, 2008</em>. The Battle for Wesnoth team is proud to release "
 "version 1.4 of <em>The Battle for Wesnoth</em>, a <a href='http://www.gnu."
@@ -50,11 +50,16 @@ msgid ""
 "href='#download'>available for download</a> now for Windows, Mac OS X, and "
 "various GNU/Linux distributions."
 msgstr ""
+"Zespół Bitwy o Wesnoth z dumą ogłasza wydanie wersji 1.2 <em>Bitwy o "
+"Wesnoth</em>, <a href=\"%s\">darmowej (wolnej)</a>, turowej gry "
+"strategicznej w klimacie fantasy z elementami RPG. Grę <a href=\"%s\">można "
+"pobrać</a> w wersjach na platformy Windows, Mac OS X oraz różne dystrybucje "
+"GNU/Linuksa."
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:40
+#, fuzzy
 msgid "<a href='#game'>What's New in Wesnoth 1.4</a>"
-msgstr ""
+msgstr "Nowości w Wesnoth 1.2"
 
 # type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: ../template.html:42
@@ -76,10 +81,10 @@ msgstr ""
 msgid "<a href='#more'>More Info</a>"
 msgstr ""
 
-# type: Content of: <html><body><div><div><div><h2>
 #: ../template.html:52
+#, fuzzy
 msgid "What's New in Wesnoth 1.4"
-msgstr ""
+msgstr "Nowości w Wesnoth 1.2"
 
 # type: Content of: <html><body><div><div><div><p>
 #: ../template.html:54
@@ -101,10 +106,10 @@ msgid ""
 "Wesnoth's data files before they ship to you."
 msgstr ""
 
-# type: Attribute 'alt' of: <html><body><div><div><div><div><div><img>
 #: ../template.html:67 ../template.html:226
+#, fuzzy
 msgid "Wesnoth Screenshot"
-msgstr ""
+msgstr "Informacje o wydaniu Wesnoth 1.0"
 
 # type: Content of: <html><body><div><div><div><p>
 #: ../template.html:70
@@ -330,13 +335,12 @@ msgid ""
 "Wesnoth play."
 msgstr ""
 
-# type: Content of: <html><body><div><div><div><h2>
 #: ../template.html:232
 msgid "Download"
-msgstr ""
+msgstr "Pobierz"
 
-# type: Content of: <html><body><div><div><div><p>
 #: ../template.html:234
+#, fuzzy
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "copyleft/gpl.html'>GNU General Public License</a> (GPL). Source code is "
@@ -346,6 +350,11 @@ msgid ""
 "systems. Ready-to-go packages are also available for most popular operating "
 "systems, including Linux and Windows and Mac OS X."
 msgstr ""
+"Bitwa o Wesnoth jest dostępna na zasadach <a href=\"%s\">Licencji Publicznej "
+"GNU</a> (GPL). Kod źródłowy można pobrać ze strony <a href=\"%s\">wesnoth."
+"org</a>, na której znajdziesz też informacje <a href=\"%s\">jak zbudować grę "
+"ze źródeł</a> na wielu różnych systemach operacyjnych. Dla większości "
+"popularnych systemów dostępne są gotowe pakiety instalacyjne."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:245
@@ -368,25 +377,28 @@ msgid ""
 "Wesnoth_MacOSX_1.4.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
 msgstr ""
 
-# type: Content of: <html><body><div><div><div><p>
 #: ../template.html:261
+#, fuzzy
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "www.wesnoth.org/wiki/Download'>downloads page</a>."
 msgstr ""
+"Najnowsze informacje o plikach do pobrania znajdziesz na <a href=\"http://"
+"www.wesnoth.org/wiki/Download\">stronie z plikami do pobrania</a>."
 
-# type: Content of: <html><body><div><div><div><p>
 #: ../template.html:264
+#, fuzzy
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://www.wesnoth.org/wiki/"
 "Download_Xdeltas'>xdelta</a> files only."
 msgstr ""
+"Jeśli posiadasz już poprzednią wersję gry, możesz skorzystać z możliwości "
+"pobrania jedynie plików <a href=\"%s\">xdelta</a>."
 
-# type: Content of: <html><body><div><div><div><h2>
 #: ../template.html:269
 msgid "More Info"
-msgstr ""
+msgstr "Więcej informacji"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:273
@@ -419,7 +431,23 @@ msgid ""
 "<a href='http://www.wesnoth.org/start/1.2'>Wesnoth 1.2 Release Notes</a>"
 msgstr ""
 
-# type: Content of: <html><body><div><div><div><div><p>
 #: ../template.html:286
 msgid "This page is also available in the following languages:"
-msgstr ""
+msgstr "Strona ta jest dostępna w następujących językach:"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
