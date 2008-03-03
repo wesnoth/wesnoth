@@ -339,8 +339,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				}
 			}
 
-			// This is the magic moment when game history links
-			// are created
+			// This is the magic moment when game history IDs and
+			// ancestry links are created.  Note: Doing it this
+			// way has a harmless bug -- an extra ID will be 
+			// generated here for start-of-campaign saves.  This
+			// is really an artifact of the messiness of the 
+			// save logic and should be fixed when that is.  There
+			// is only one other call to generate_game_uuid(), and
+			// that is at campaign initialization time; it is
+			// needed to make sure 'history' is a top-level
+			// attribute.
 			if (!gamestate.history.empty())
 				gamestate.history += ",";
 			gamestate.history += generate_game_uuid();
