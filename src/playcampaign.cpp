@@ -339,6 +339,12 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				}
 			}
 
+			// This is the magic moment when game history links
+			// are created
+			if (!gamestate.history.empty())
+				gamestate.history += ",";
+			gamestate.history += generate_game_uuid();
+
 			// If the entire scenario should be randomly generated
 			if((*scenario)["scenario_generation"] != "") {
 				LOG_G << "randomly generating scenario...\n";

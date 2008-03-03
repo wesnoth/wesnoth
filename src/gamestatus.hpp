@@ -102,6 +102,7 @@ public:
 		campaign_define(),
 		campaign_xtra_defines(),
 		campaign(),
+		history(),
 		abbrev(),
 		scenario(),
 		next_scenario(),
@@ -135,7 +136,8 @@ public:
 	std::vector<std::string> campaign_xtra_defines;  //!< more customization of data
 
 	std::string campaign;                            //!< the campaign being played
-	std::string abbrev;	                             //!< the campaign abbreviation
+	std::string history;	                         //!< ancestral IDs
+	std::string abbrev;	                         //!< the campaign abbreviation
 	std::string scenario;                            //!< the scenario being played
 	std::string next_scenario;                       //!< the scenario coming next (for campaigns)
 	std::string completion;                          //!< running. victory, or defeat
@@ -283,6 +285,8 @@ private:
 	int currentTime_;
 	const game_state* state_of_game_;
 };
+
+std::string generate_game_uuid();
 
 //! Holds all the data needed to start a scenario.
 //! I.e. this is the object serialized to disk when saving/loading a game.

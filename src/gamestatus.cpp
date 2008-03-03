@@ -39,6 +39,8 @@
 #include <iostream>
 #include <iterator>
 #include <sstream>
+#include <sys/time.h>
+#include <time.h>
 
 #define DBG_NG lg::debug(lg::engine)
 #define LOG_NG lg::info(lg::engine)
@@ -174,6 +176,17 @@ static void parse_times(const config& cfg, std::vector<time_of_day>& normal_time
 		config dummy_cfg;
 		normal_times.push_back(time_of_day(dummy_cfg));
 	}
+}
+
+std::string generate_game_uuid()
+{
+	struct timeval ts;
+	std::stringstream uuid;
+	gettimeofday(&ts, NULL);
+
+	uuid << preferences::login() << "@" << ts.tv_sec << "." << ts.tv_usec;
+
+	return uuid.str();
 }
 
 //! Reads turns and time information from parameters.
@@ -433,6 +446,7 @@ game_state::game_state(const game_data& data, const config& cfg, bool show_repla
 		campaign_define(cfg["campaign_define"]),
 		campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 		campaign(cfg["campaign"]),
+		history(cfg["history"]),
 		abbrev(cfg["abbrev"]),
 		scenario(cfg["scenario"]),
 		next_scenario(cfg["next_scenario"]),
@@ -574,6 +588,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 {
 	log_scope("write_game");
 	cfg["label"] = gamestate.label;
+	cfg["history"] = gamestate.history;
 	cfg["abbrev"] = gamestate.abbrev;
 	cfg["version"] = game_config::version;
 
@@ -636,6 +651,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	log_scope("write_game");
 
 	out.write_key_val("label", gamestate.label);
+	out.write_key_val("history", gamestate.history);
 	out.write_key_val("abbrev", gamestate.abbrev);
 	out.write_key_val("version", game_config::version);
 	out.write_key_val("scenario", gamestate.scenario);
@@ -1198,6 +1214,7 @@ game_state& game_state::operator=(const game_state& state)
 		return *this;
 	}
 
+	history = state.history;
 	abbrev = state.abbrev;
 	label = state.label;
 	version = state.version;
