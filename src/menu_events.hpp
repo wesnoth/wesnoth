@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2008 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2007 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -99,7 +99,6 @@ public:
 	gui::floating_textbox& get_textbox();
 	void set_gui(game_display* gui) { gui_ = gui; }
 
-	std::string get_title_suffix(int team_num);
 	void objectives(const unsigned int team_num);
 	void show_statistics(const unsigned int team_num);
 	void unit_list();
@@ -135,6 +134,7 @@ public:
 	void end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num);
 	void search();
 	void user_command();
+	void ai_formula();
 	void clear_messages();
 #ifdef USRCMD2
 	void user_command_2();
@@ -148,6 +148,7 @@ public:
 	void do_speak();
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
+	void do_ai_formula(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
 	void autosave(const std::string &label, unsigned turn, const config &starting_pos) const;
 	bool has_team() const;

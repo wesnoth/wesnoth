@@ -41,11 +41,9 @@ noinst_LIBRARIES = libwesnoth-core.a libwesnoth.a
 
 pkgdatadir=$(datadir)/@DATADIR@
 
-INTERNALLIBS = -lwesnoth-core
-
-THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
+THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(FREETYPE_LIBS) $(LIBINTL) \
-	$(BOOST_IOSTREAMS_LIBS) 
+	$(BOOST_IOSTREAMS_LIBS) $(BOOST_REGEX_LIBS)
 
 wesnoth_source = \
 	about.cpp \
@@ -58,9 +56,14 @@ wesnoth_source = \
 	ai_village.cpp \
 	animated_game.cpp \
 	attack_prediction.cpp \
+	callable_objects.cpp \
 	config_adapter.cpp \
 	dialogs.cpp \
 	floating_textbox.cpp \
+	formula.cpp \
+	formula_ai.cpp \
+	formula_function.cpp \
+	formula_tokenizer.cpp \
 	game_display.cpp \
 	game_events.cpp \
 	game_preferences.cpp \
@@ -107,8 +110,9 @@ wesnoth_source = \
 	unit_types.cpp \
 	upload_log.cpp \
 	variable.cpp \
+	variant.cpp \
 	widgets/combo.cpp \
-	widgets/scrollpane.cpp 
+	widgets/scrollpane.cpp
 
 #############################################################################
 #    Wesnoth                                                                #
@@ -118,7 +122,7 @@ wesnoth_SOURCES = \
 	game.cpp \
 	$(wesnoth_source)
 	
-wesnoth_LDADD = $(INTERNALLIBS) libwesnoth.a $(THELIBS)
+wesnoth_LDADD = $(THELIBS) libwesnoth.a
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
@@ -139,7 +143,7 @@ wesnoth_editor_SOURCES = \
 	generic_event.cpp \
 	tooltips.cpp 
 
-wesnoth_editor_LDADD = $(INTERNALLIBS) libwesnoth.a $(THELIBS)
+wesnoth_editor_LDADD = $(THELIBS) libwesnoth.a
 wesnoth_editor_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
@@ -207,10 +211,9 @@ cutter_DEPENDENCIES=libwesnoth-core.a
 test_SOURCES = \
 	tests/main.cpp \
 	tests/test_util.cpp \
-	tests/test_network_worker.cpp \
 	$(wesnoth_source)
 
-test_LDADD = $(INTERNALLIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a $(THELIBS)  
+test_LDADD = $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a 
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
@@ -480,10 +483,6 @@ if PREFSDIR
     CXXFLAGS += -DPREFERENCES_DIR=\"$(prefsdir)\"
 endif
 
-##if HAVE_BUILTIN_EXPECT
-##	CXXFLAGS += -DHAVE_BUILTIN_EXPECT
-##endif
-
 if BOOST_TEST_DYN_LINK
     CXXFLAGS += -DBOOST_TEST_DYN_LINK
 endif
@@ -502,7 +501,7 @@ if STATIC
 LDFLAGS += -all-static
 endif
 
-LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS)
+LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS)  $(BOOST_REGEX_LDFLAGS)
 
 #if STATIC
 #LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \

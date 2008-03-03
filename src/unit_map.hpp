@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2008 by Rusty Russell <rusty@rustcorp.com.au>
+   Copyright (C) 2006 - 2007 by Rusty Russell <rusty@rustcorp.com.au>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -52,7 +52,7 @@ public:
 		const std::pair<gamemap::location,unit>* operator->() const
 			{ return i_->second; }
 
-		std::pair<gamemap::location,unit> operator*() const;
+		const std::pair<gamemap::location,unit>& operator*() const;
 
 		const_iterator operator++()
 			{ return const_iterator(++i_); }
@@ -81,7 +81,7 @@ public:
 		std::pair<gamemap::location,unit> *operator->() const
 			{ return i_->second; }
 
-		std::pair<gamemap::location,unit> operator*() const;
+		std::pair<gamemap::location,unit>& operator*() const;
 
 		iterator operator++()
 			{ return iterator(++i_); }
@@ -146,6 +146,10 @@ public:
 
 	void erase(iterator pos);
 	size_t erase(const gamemap::location &loc);
+
+	void swap(unit_map& o) {
+		map_.swap(o.map_);
+	}
 
 private:
 

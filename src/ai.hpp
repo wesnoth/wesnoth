@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 
 #include "actions.hpp"
 #include "ai_interface.hpp"
+#include "formula_callable.hpp"
 
 class ai : public ai_interface {
 public:
@@ -125,7 +126,8 @@ protected:
 		const location& to, const location& via,
 		const std::map<location,paths>& possible_moves) const;
 
-	struct attack_analysis
+public:
+	struct attack_analysis : public game_logic::formula_callable
 	{
 		void analyze(const gamemap& map, unit_map& units,
 					 const std::vector<team>& teams,
@@ -135,6 +137,8 @@ protected:
 					 const move_map& enemy_dstsrc, double aggression);
 
 		double rating(double aggression, class ai& ai_obj) const;
+		variant get_value(const std::string& key) const;
+		void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
 		gamemap::location target;
 		std::vector<std::pair<gamemap::location,gamemap::location> > movements;
@@ -180,6 +184,8 @@ protected:
 		//! Is true if the units involved in this attack sequence are surrounded.
 		bool is_surrounded;
 	};
+
+protected:
 
 	virtual void do_attack_analysis(
 	                 const location& loc,

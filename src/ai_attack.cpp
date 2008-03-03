@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -45,8 +45,10 @@ void ai::do_attack_analysis(
 	// This function is called fairly frequently, so interact with the user here.
 	raise_user_interact();
 
-	if(cur_analysis.movements.size() >= size_t(attack_depth()))
+	if(cur_analysis.movements.size() >= size_t(attack_depth())) {
+		std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << attack_depth() << "\n";
 		return;
+	}
 
 	static double best_results[6];
 	if(result.empty()) {
@@ -242,6 +244,7 @@ void ai::do_attack_analysis(
 
 			cur_analysis.analyze(map_, units_, teams_, state_, gameinfo_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
 
+			//Remove this short-circuiting logic for now.. --David
 			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
 				result.push_back(cur_analysis);

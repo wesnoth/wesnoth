@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -202,7 +202,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 
 			config cfg_unit1;
 			new_unit.write(cfg_unit1);
-			DBG_NG << cfg_unit1;
+			DBG_NG << cfg_unit1.debug();
 			if (!game_config::ignore_replay_errors) {
 				throw replay::error("OOS while recruiting.");
 			}
@@ -236,10 +236,10 @@ gamemap::location under_leadership(const unit_map& units,
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-							   int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def)
+							   int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def, const unit* attacker_ptr)
 	: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
 {
-	const unit& attacker = units.find(attacker_loc)->second;
+	const unit& attacker = attacker_ptr ? *attacker_ptr : units.find(attacker_loc)->second;
 	const unit& defender = units.find(defender_loc)->second;
 	const double harm_weight = 1.0 - aggression;
 
@@ -736,7 +736,7 @@ void attack::fire_event(const std::string& n)
 		dat.add_child("first");
 		dat.add_child("second");
 		if(a_ != units_.end()) {
-			(*(dat.child("first")))["weapon"]=a_stats_->weapon?a_stats_->weapon->id():"none";
+			(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
 
 		}
 		if(d_ != units_.end()) {
@@ -769,9 +769,7 @@ void attack::fire_event(const std::string& n)
 	dat.add_child("second");
 	(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
 	(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
-	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
-								game_events::entity_location(attacker_,a_id_),
-								game_events::entity_location(defender_,d_id_),dat));
+	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,attacker_,defender_,dat));
 	
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist
@@ -802,7 +800,7 @@ void attack::refresh_bc()
 	if(a_ == units_.end() || d_ == units_.end()) {
 		return;
 	}
-	*bc_ = battle_context(map_, teams_, units_, state_, info_, attacker_, defender_, attack_with_, defend_with_);
+	*bc_ =	battle_context(map_, teams_, units_, state_, info_, attacker_, defender_, attack_with_, defend_with_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	attacker_cth_ = a_stats_->chance_to_hit;
@@ -1046,7 +1044,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				if(amount_drained > 0) {
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
-					if (update_display_ && preferences::show_combat()){
+					if (update_display_){
 						gui_.float_label(a_->first,buf,0,255,0);
 					}
 					a_->second.heal(amount_drained);
@@ -1322,11 +1320,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				fire_event("attack_end");
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc));
 
-				// Don't try to call refresh_bc() here the attacker or defender might have
-				// been replaced by another unit, which might have a lower number of weapons.
-				// In that case refresh_bc() will terminate with an invalid selected weapon.
-				a_ = units_.find(attacker_);
-				d_ = units_.find(defender_);
+				refresh_bc();
 
 				if(a_ == units_.end() || !death_loc.matches_unit(a_->second)) {
 					// WML has invalidated the dying unit, abort
@@ -1847,44 +1841,23 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 
 		// We clear one past the edge of the board, so that the half-hexes
 		// at the edge can also be cleared of fog/shroud.
-		if (on_board_loc || map.on_board(adj[i], true)) {
+		if (on_board_loc || map.on_board(adj[i])) {
 			// Both functions should be executed so don't use || which 
 			// uses short-cut evaluation.
 			const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
 
-			if(res) {
-				result = true;
-
-				// If we're near the corner it might be the corner also needs to be cleared
-				// this always happens at the lower left corner and depending on the with
-				// at the upper or lower right corner.
-				if(adj[i].x == 0 && adj[i].y == map.h() - 1) { // Lower left corner
-					const gamemap::location corner(-1 , map.h());
-					tm.clear_shroud(corner);
-					tm.clear_fog(corner);
-
-				} else if(map.w() % 2 && adj[i].x == map.w() - 1 && adj[i].y == map.h() - 1) { // Lower right corner
-					const gamemap::location corner(map.w() , map.h());
-					tm.clear_shroud(corner);
-					tm.clear_fog(corner);
-
-				} else if(!(map.w() % 2) && adj[i].x == map.w() - 1 && adj[i].y == 0) { // Upper right corner
-					const gamemap::location corner(map.w() , -1);
-					tm.clear_shroud(corner);
-					tm.clear_fog(corner);
-				}
-
-				if(cleared) {
-					cleared->push_back(adj[i]);
-				}
+			if(res && cleared != NULL) {
+				cleared->push_back(adj[i]);
 			}
+
+			result |= res;
 		}
 	}
 
 	return result;
 }
 
-//! Returns true if some shroud is cleared.
+//! Returns true iff some shroud is cleared.
 //! seen_units will return new units that have been seen by this unit.
 //! If known_units is NULL, seen_units can be NULL and will not be changed.
 bool clear_shroud_unit(const gamemap& map,
@@ -1915,7 +1888,7 @@ bool clear_shroud_unit(const gamemap& map,
 		if(sighted != units.end() &&
 		  (sighted->second.invisible(*it,units,teams) == false
 		  || teams[team].is_enemy(sighted->second.side()) == false)) {
-			//check if we know this unit, but we always know ourself
+			//check if we know this unit, but we always know oursefl
 			//just in case we managed to move on a fogged hex (teleport)
 			if(!(seen_units == NULL || known_units == NULL)
 					&& known_units->count(*it) == 0 && *it != loc) {
@@ -1940,7 +1913,6 @@ void recalculate_fog(const gamemap& map,
 		unit_map& units,
 		std::vector<team>& teams, int team) {
 
-	assert(team >= 0 && static_cast<size_t>(team) < teams.size());
 	teams[team].refog();
 
 	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
@@ -2168,7 +2140,6 @@ size_t move_unit(game_display* disp,
 	p->first = steps.back();
 	units.add(p);
 	ui = units.find(p->first);
-	unit::clear_status_caches();
 
 	if(move_recorder != NULL) {
 		move_recorder->add_movement(steps.front(),steps.back());

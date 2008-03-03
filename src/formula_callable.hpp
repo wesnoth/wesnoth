@@ -1,0 +1,113 @@
+#ifndef FORMULA_CALLABLE_HPP_INCLUDED
+#define FORMULA_CALLABLE_HPP_INCLUDED
+
+#include <map>
+#include <string>
+
+#include "reference_counted_object.hpp"
+#include "variant.hpp"
+
+namespace game_logic
+{
+
+enum FORMULA_ACCESS_TYPE { FORMULA_READ_ONLY, FORMULA_WRITE_ONLY, FORMULA_READ_WRITE };
+struct formula_input {
+	std::string name;
+	FORMULA_ACCESS_TYPE access;
+	explicit formula_input(const std::string& name, FORMULA_ACCESS_TYPE access=FORMULA_READ_WRITE)
+			: name(name), access(access)
+	{}
+};
+
+//interface for objects that can have formulae run on them
+class formula_callable : public reference_counted_object {
+public:
+	explicit formula_callable(bool has_self=true) : has_self_(has_self)
+	{}
+
+	variant query_value(const std::string& key) const {
+		if(has_self_ && key == "self") {
+			return variant(this);
+		}
+		return get_value(key);
+	}
+
+	void mutate_value(const std::string& key, const variant& value) {
+		set_value(key, value);
+	}
+
+	std::vector<formula_input> inputs() const {
+		std::vector<formula_input> res;
+		get_inputs(&res);
+		return res;
+	}
+
+	bool equals(const formula_callable* other) const {
+		return do_compare(other) == 0;
+	}
+
+	bool less(const formula_callable* other) const {
+		return do_compare(other) < 0;
+	}
+
+	virtual void get_inputs(std::vector<formula_input>* inputs) const {};
+protected:
+	virtual ~formula_callable() {}
+
+	virtual void set_value(const std::string& key, const variant& value);
+	virtual int do_compare(const formula_callable* callable) const {
+		return this < callable ? -1 : (this == callable ? 0 : 1);
+	}
+private:
+	virtual variant get_value(const std::string& key) const = 0;
+	bool has_self_;
+};
+
+class formula_callable_no_ref_count : public formula_callable {
+public:
+	formula_callable_no_ref_count() {
+		turn_reference_counting_off();
+	}
+	virtual ~formula_callable_no_ref_count() {}
+};
+
+class formula_callable_with_backup : public formula_callable {
+	const formula_callable& main_;
+	const formula_callable& backup_;
+	variant get_value(const std::string& key) const {
+		variant var = main_.query_value(key);
+		if(var.is_null()) {
+			return backup_.query_value(key);
+		}
+
+		return var;
+	}
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		main_.get_inputs(inputs);
+		backup_.get_inputs(inputs);
+	}
+public:
+	formula_callable_with_backup(const formula_callable& main, const formula_callable& backup) : formula_callable(false), main_(main), backup_(backup)
+	{}
+};
+
+class map_formula_callable : public formula_callable {
+public:
+	explicit map_formula_callable(const formula_callable* fallback=NULL);
+	map_formula_callable& add(const std::string& key, const variant& value);
+	void set_fallback(const formula_callable* fallback) { fallback_ = fallback; }
+private:
+	variant get_value(const std::string& key) const;
+	void get_inputs(std::vector<formula_input>* inputs) const;
+	void set_value(const std::string& key, const variant& value);
+	std::map<std::string,variant> values_;
+	const formula_callable* fallback_;
+};
+
+typedef boost::intrusive_ptr<map_formula_callable> map_formula_callable_ptr;
+typedef boost::intrusive_ptr<const map_formula_callable> const_map_formula_callable_ptr;
+
+}
+
+#endif

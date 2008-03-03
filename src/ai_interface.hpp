@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,11 +21,12 @@
 class game_display;
 class gamemap;
 
+#include "formula_callable.hpp"
 #include "generic_event.hpp"
 #include "pathfind.hpp"
 #include "gamestatus.hpp"
 
-class ai_interface {
+class ai_interface : public game_logic::formula_callable {
 public:
 
 	//! A convenient typedef for the often used 'location' object
@@ -129,12 +130,12 @@ protected:
 	//!								that all units can move their full movement allotment.
 	//! 'remove_destinations':		a pointer to a set of possible destinations to omit.
 	void calculate_possible_moves(std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-	                              const std::set<location>* remove_destinations=NULL);
+	                              const std::set<location>* remove_destinations=NULL) const;
 
   //! A more fundamental version of calculate_possible_moves
   //! which allows the use of a speculative unit map.
   void calculate_moves(const unit_map& units, std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-	   const std::set<location>* remove_destinations=NULL, bool see_all=false);
+	   const std::set<location>* remove_destinations=NULL, bool see_all=false) const;
 
 	//! Recruit a unit. It will recruit the unit with the given name,
 	//! at the given location, or at an available location to recruit units
@@ -160,6 +161,9 @@ protected:
 	void raise_unit_recruited() { unit_recruited_.notify_observers(); }
 	void raise_unit_moved() {  unit_moved_.notify_observers(); }
 	void raise_enemy_attacked() { enemy_attacked_.notify_observers(); }
+protected:
+	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	virtual variant get_value(const std::string& key) const;
 private:
 	info info_;
 	int last_interact_;

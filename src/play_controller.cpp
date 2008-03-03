@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2008 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2007 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -276,14 +276,10 @@ void play_controller::show_help(){
 }
 
 void play_controller::undo(){
-	// deselect unit (only here, not to be done when undoing attack-move)
-	mouse_handler_.deselect_hex();
 	menu_handler_.undo(player_number_);
 }
 
 void play_controller::redo(){
-	// deselect unit (only here, not to be done when undoing attack-move)
-	mouse_handler_.deselect_hex();
 	menu_handler_.redo(player_number_);
 }
 
@@ -350,8 +346,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		&& !current_team.get_disallow_observers()) {
 		gui_->set_team(size_t(team_index));
 	}
-	
-	gui_->set_playing_team(size_t(team_index));
+		gui_->set_playing_team(size_t(team_index));
 
 	std::stringstream player_number_str;
 	player_number_str << player_number_;
@@ -421,7 +416,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		gui_->invalidate_all();
 	}
 
-	if (!recorder.is_skipping() && !skip_replay_){
+	if (!recorder.is_skipping()){
 		gui_->scroll_to_leader(units_, player_number_);
 	}
 }
@@ -532,6 +527,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
 	case hotkey::HOTKEY_USER_CMD:
+	case hotkey::HOTKEY_AI_FORMULA:
 	case hotkey::HOTKEY_CLEAR_MSG:
 #ifdef USRCMD2
 //%%
@@ -590,6 +586,9 @@ void play_controller::enter_textbox()
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.do_command(menu_handler_.get_textbox().box()->text(), player_number_, mouse_handler_);
+		break;
+	case gui::TEXTBOX_AI:
+		menu_handler_.do_ai_formula(menu_handler_.get_textbox().box()->text(), player_number_, mouse_handler_);
 		break;
 	default:
 		LOG_STREAM(err, display) << "unknown textbox mode\n";

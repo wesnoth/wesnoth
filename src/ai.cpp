@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,10 @@
 #include "ai_python.hpp"
 #endif
 #include "actions.hpp"
+#include "callable_objects.hpp"
 #include "dialogs.hpp"
+#include "foreach.hpp"
+#include "formula_ai.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
@@ -34,6 +37,7 @@
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
+#include "unit.hpp"
 #include "playturn.hpp"
 #include "wml_exception.hpp"
 
@@ -202,6 +206,8 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 		return new sample_ai(info);
 	else if(name == "idle_ai")
 		return new idle_ai(info);
+	else if(name == "formula_ai")
+		return new formula_ai(info);
 	else if(name == "dfool_ai")
 		return new dfool::dfool_ai(info);
 	//else if(name == "advanced_ai")
@@ -416,8 +422,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	// Stop the user from issuing any commands while the unit is moving.
 	const events::command_disabler disable_commands;
 
-	// show the unit in the sidebar without highlighting it
-	info_.disp.display_unit_hex(from);
+	info_.disp.select_hex(from);
 	info_.disp.update_display();
 
 	log_scope2(ai, "move_unit");
@@ -434,6 +439,10 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	}
 
 	const bool show_move = preferences::show_ai_moves();
+
+	const bool teleport = u_it->second.get_ability_bool("teleport",u_it->first);
+	paths current_paths(info_.map,info_.units,from,
+			info_.teams,false,teleport,current_team());
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
@@ -517,6 +526,8 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 
 			if(show_move && unit_display::unit_visible_on_path(steps,
 						u_it->second, info_.units,info_.teams)) {
+
+				info_.disp.scroll_to_tiles(from,to);
 
 				unit_map::iterator up = info_.units.find(u_it->first);
 				unit_display::move_unit(steps,up->second,info_.teams);
@@ -678,7 +689,7 @@ void ai::attack_enemy(const location& attacking_unit, const location& target,
 
 void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
-		const std::set<gamemap::location>* remove_destinations)
+		const std::set<gamemap::location>* remove_destinations) const
 {
   calculate_moves(info_.units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
@@ -687,7 +698,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 	     const std::set<gamemap::location>* remove_destinations,
 		bool see_all
-          )
+          ) const
 {
 
 	for(unit_map::const_iterator un_it = units.begin(); un_it != units.end(); ++un_it) {
@@ -1109,10 +1120,8 @@ void ai_interface::attack_enemy(const location u,
 			LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
 			return;
 		}
-		if(weapon >= 0)
-		{
-			recorder.add_attack(u,target,weapon,def_weapon);
-		}
+
+		recorder.add_attack(u,target,weapon,def_weapon);
 		try {
 			attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon,
 					info_.units, info_.state, info_.gameinfo);
@@ -2173,4 +2182,148 @@ int ai::attack_depth()
 	const config& parms = current_team().ai_parameters();
 	attack_depth_ = maximum<int>(1,lexical_cast_default<int>(parms["attack_depth"],5));
 	return attack_depth_;
+}
+
+namespace {
+template<typename Container>
+variant villages_from_set(const Container& villages,
+				          const std::set<gamemap::location>* exclude=NULL) {
+	std::vector<variant> vars;
+	foreach(const gamemap::location& loc, villages) {
+		if(exclude && exclude->count(loc)) {
+			continue;
+		}
+		vars.push_back(variant(new location_callable(loc)));
+	}
+
+	return variant(&vars);
+}
+}
+
+variant ai_interface::get_value(const std::string& key) const
+{
+	if(key == "turn") {
+		return variant(get_info().state.turn());
+	} else if(key == "units") {
+		std::vector<variant> vars;
+		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
+			vars.push_back(variant(new unit_callable(*i, info_.teams[info_.team_num-1], info_.team_num)));
+		}
+		return variant(&vars);
+	} else if(key == "my_units") {
+		std::vector<variant> vars;
+		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
+			if(i->second.side() == info_.team_num) {
+				vars.push_back(variant(new unit_callable(*i, info_.teams[info_.team_num-1], info_.team_num)));
+			}
+		}
+		return variant(&vars);
+	} else if(key == "enemy_units") {
+		std::vector<variant> vars;
+		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
+			if(info_.teams[info_.team_num-1].is_enemy(i->second.side())) {
+				vars.push_back(variant(new unit_callable(*i, info_.teams[info_.team_num-1], info_.team_num)));
+			}
+		}
+		return variant(&vars);
+	} else if(key == "villages") {
+		return villages_from_set(info_.map.villages());
+	} else if(key == "my_villages") {
+		return villages_from_set(current_team().villages());
+	} else if(key == "enemy_and_unowned_villages") {
+		return villages_from_set(info_.map.villages(), &current_team().villages());
+	} else if(key == "map") {
+		return variant(new gamemap_callable(info_.map));
+	}
+	return variant();
+}
+
+void ai_interface::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	using game_logic::FORMULA_READ_ONLY;
+	inputs->push_back(game_logic::formula_input("turn", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemy_units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("villages", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_villages", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
+}
+
+variant ai::attack_analysis::get_value(const std::string& key) const
+{
+	using namespace game_logic;
+	if(key == "target") {
+		return variant(new location_callable(target));
+	} else if(key == "movements") {
+		std::vector<variant> res;
+		for(int n = 0; n != movements.size(); ++n) {
+			map_formula_callable* item = new map_formula_callable(NULL);
+			item->add("src", variant(new location_callable(movements[n].first)));
+			item->add("dst", variant(new location_callable(movements[n].second)));
+			res.push_back(variant(item));
+		}
+
+		return variant(&res);
+	} else if(key == "units") {
+		std::vector<variant> res;
+		for(int n = 0; n != movements.size(); ++n) {
+			res.push_back(variant(new location_callable(movements[n].first)));
+		}
+
+		return variant(&res);
+	} else if(key == "target_value") {
+		return variant(static_cast<int>(target_value*1000));
+	} else if(key == "avg_losses") {
+		return variant(static_cast<int>(avg_losses*1000));
+	} else if(key == "chance_to_kill") {
+		return variant(static_cast<int>(chance_to_kill*100));
+	} else if(key == "avg_damage_inflicted") {
+		return variant(static_cast<int>(avg_damage_inflicted));
+	} else if(key == "target_starting_damage") {
+		return variant(target_starting_damage);
+	} else if(key == "avg_damage_taken") {
+		return variant(static_cast<int>(avg_damage_taken));
+	} else if(key == "resources_used") {
+		return variant(static_cast<int>(resources_used));
+	} else if(key == "terrain_quality") {
+		return variant(static_cast<int>(terrain_quality));
+	} else if(key == "alternative_terrain_quality") {
+		return variant(static_cast<int>(alternative_terrain_quality));
+	} else if(key == "vulnerability") {
+		return variant(static_cast<int>(vulnerability));
+	} else if(key == "support") {
+		return variant(static_cast<int>(support));
+	} else if(key == "leader_threat") {
+		return variant(leader_threat);
+	} else if(key == "uses_leader") {
+		return variant(uses_leader);
+	} else if(key == "is_surrounded") {
+		return variant(is_surrounded);
+	} else {
+		return variant();
+	}
+}
+
+void ai::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	using namespace game_logic;
+	inputs->push_back(formula_input("target", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("movements", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("units", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("target_value", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("avg_losses", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("chance_to_kill", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("avg_damage_inflicted", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("target_starting_damage", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("avg_damage_taken", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("resources_used", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("terrain_quality", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("alternative_terrain_quality", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("vulnerability", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("support", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("leader_threat", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("uses_leader", FORMULA_READ_ONLY));
+	inputs->push_back(formula_input("is_surrounded", FORMULA_READ_ONLY));
 }

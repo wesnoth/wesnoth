@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2008 by Rusty Russell <rusty@rustcorp.com.au>
+   Copyright (C) 2006 - 2007 by Rusty Russell <rusty@rustcorp.com.au>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -46,11 +46,11 @@ unit_map::~unit_map()
 }
 
 // Due to unit <-> unit_map dependencies, must be out of line.
-std::pair<gamemap::location,unit> unit_map::iterator::operator*() const
+std::pair<gamemap::location,unit>& unit_map::iterator::operator*() const
 {
 	return *i_->second;
 }
-std::pair<gamemap::location,unit> unit_map::const_iterator::operator*() const
+const std::pair<gamemap::location,unit>& unit_map::const_iterator::operator*() const
 {
 	return *i_->second;
 }

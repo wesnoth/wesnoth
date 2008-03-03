@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2008 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2007 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -129,6 +129,10 @@ void playsingle_controller::end_unit_turn(){
 
 void playsingle_controller::user_command(){
 	menu_handler_.user_command();
+}
+
+void playsingle_controller::ai_formula(){
+	menu_handler_.ai_formula();
 }
 
 void playsingle_controller::clear_messages(){
@@ -674,12 +678,6 @@ void playsingle_controller::after_human_turn(){
 	end_turn_record();
 	end_turn_record_unlock();
 	menu_handler_.clear_undo_stack(player_number_);
-
-	if(teams_[player_number_-1].uses_fog()) {
-		// needed because currently fog is only recalculated when a hex is /un/covered
-		recalculate_fog(map_,units_,teams_,player_number_-1);
-	}
-
 	gui_->set_route(NULL);
 	gui_->unhighlight_reach();
 }

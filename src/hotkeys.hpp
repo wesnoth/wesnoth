@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -61,6 +61,7 @@ enum HOTKEY_COMMAND {
 
 	//misc.
 	HOTKEY_USER_CMD,
+	HOTKEY_AI_FORMULA,
 	HOTKEY_CLEAR_MSG,
 #ifdef USRCMD2
 	HOTKEY_USER_CMD_2,
@@ -100,8 +101,7 @@ public:
 	enum type {
 		UNBOUND,
 		BY_KEYCODE,
-		BY_CHARACTER,
-		CLEARED
+		BY_CHARACTER
 	};
 
 	enum type get_type() const { return type_; }
@@ -211,6 +211,7 @@ public:
 	virtual void show_help() {}
 	virtual void show_chat_log() {}
 	virtual void user_command() {}
+	virtual void ai_formula() {}
 	virtual void clear_messages() {}
 #ifdef USRCMD2
 	virtual void user_command_2() {}

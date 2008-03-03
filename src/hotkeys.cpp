@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -137,6 +137,7 @@ const struct {
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true },
 
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
+	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run AI formula"), false },
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear messages"), false },
 #ifdef USRCMD2
 	{ hotkey::HOTKEY_USER_CMD_2, "usercommand#2", N_("User-Command#2"), false },
@@ -151,8 +152,6 @@ hotkey::hotkey_item null_hotkey_;
 }
 
 namespace hotkey {
-
-const std::string CLEARED_TEXT = "__none__";
 
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 
@@ -192,11 +191,7 @@ void hotkey_item::load_from_config(const config& cfg)
 	if (!key.empty()) {
 		// They may really want a specific key on the keyboard: we assume
 		// that any single character keyname is a character.
-		if (key == CLEARED_TEXT)
-		{
-			type_ = hotkey_item::CLEARED;
-		}
-		else if (key.size() > 1) {
+		if (key.size() > 1) {
 			type_ = BY_KEYCODE;
 
 			keycode_ = sdl_keysym_from_name(key);
@@ -260,7 +255,7 @@ void hotkey_item::set_description(const std::string& description)
 }
 void hotkey_item::clear_hotkey()
 {
-	type_ = CLEARED;
+	type_ = UNBOUND;
 }
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
@@ -350,16 +345,9 @@ void save_hotkeys(config& cfg)
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
 		if (i->hidden() || i->get_type() == hotkey_item::UNBOUND)
 			continue;
+
 		config& item = cfg.add_child("hotkey");
-
 		item["command"] = i->get_command();
-
-		if (i->get_type() == hotkey_item::CLEARED)
-		{
-			item["key"] = CLEARED_TEXT;
-			continue;
-		}
-
 
 		if (i->get_type() == hotkey_item::BY_KEYCODE) {
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
@@ -675,6 +663,10 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			user_command();
 			break;
 //%%
+		case HOTKEY_AI_FORMULA:
+			std::cerr <<" run ai formula\n";
+			ai_formula();
+			break;
 		case HOTKEY_CLEAR_MSG:
 			clear_messages();
 			break;
@@ -844,7 +836,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		case HOTKEY_QUIT_GAME: {
 			if(disp.in_game()) {
-				DBG_G << "is in game -- showing quit message\n";
+				ERR_G << "is in game -- showing quit message\n";
 				const int res = gui::dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
 				if(res == 0) {
 					throw end_level_exception(QUIT);

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2008 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2007 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -51,6 +51,7 @@ public:
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();
 	virtual void user_command();
+	virtual void ai_formula();
 	virtual void clear_messages();
 #ifdef USRCMD2
 	virtual void user_command_2();
