@@ -223,11 +223,7 @@ void server::load_config() {
 			accepted_versions_.insert(*i);
 		}
 	} else {
-		//accepted_versions_.insert(game_config::version);
-		accepted_versions_.insert("1.4*");
-		accepted_versions_.insert("1.3.18*");
-		accepted_versions_.insert("1.3.19*");
-		accepted_versions_.insert("1.3.20*");
+		accepted_versions_.insert(game_config::version);
 		accepted_versions_.insert("test");
 	}
 
