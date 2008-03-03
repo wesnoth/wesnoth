@@ -932,7 +932,7 @@ fi
 
 BOOST_REQUIRE([1.33])
 BOOST_IOSTREAMS
-
+BOOST_REGEX
 
 if test "x$tests" = "xyes"; then
 		
