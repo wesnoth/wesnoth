@@ -1,4 +1,4 @@
-LANGUAGES = en:English sk:Slovenčina
+LANGUAGES = en:English tr:Türkçe
 
 PO4A_OPTIONS = --rm-backups --copyright-holder "Wesnoth Development Team"
 
