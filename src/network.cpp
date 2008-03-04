@@ -37,6 +37,7 @@
 #include <ctime>
 
 #include <signal.h>
+#include <string.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
 #undef INADDR_ANY
 #undef INADDR_BROADCAST

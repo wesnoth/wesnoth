@@ -24,6 +24,7 @@
 #include "video.hpp"
 
 #include <algorithm>
+#include <string.h>
 #include <cassert>
 #include <cmath>
 #include <iostream>
