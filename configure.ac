@@ -627,12 +627,12 @@ int main (int argc, char **argv)
     {
         SDL_version compile_version, *link_version;
         TTF_VERSION(&compile_version);
-        if (($sdl_ttf_major_version > compile_version.major) ||
-           (($sdl_ttf_major_version == compile_version.major) 
-               && ($sdl_ttf_minor_version > compile_version.minor)) ||
-           (($sdl_ttf_major_version == compile_version.major) 
-               && ($sdl_ttf_minor_version == compile_version.minor) 
-               && ($sdl_ttf_micro_version == compile_version.patch)))
+        if ((compile_version.major > $sdl_ttf_major_version) ||
+           ((compile_version.major == $sdl_ttf_major_version) 
+               && (compile_version.minor > $sdl_ttf_minor_version)) ||
+           ((compile_version.major == $sdl_ttf_major_version) 
+               && (compile_version.minor == $sdl_ttf_minor_version) 
+               && (compile_version.patch >= $sdl_ttf_micro_version)))
         {
             return 0;
         } else {
