@@ -678,37 +678,45 @@ void game::process_message(config data, const player_map::iterator user) {
 	send_data(data, user->first);
 }
 
-//! Process [turn].
-bool game::process_turn(config data, const player_map::const_iterator user) {
-	if (!started_) return false;
-	config* const turn = data.child("turn");
-	filter_commands(*turn, user);
-	if (turn->all_children().size() == 0) return false;
-	//! Return value that tells whether the description changed.
-	const bool res = process_commands(data, user);
-
-	return res;
+bool game::is_legal_command(const config& command, bool is_player) {
+	// Only single commands allowed.
+	if (command.all_children().size() != 1) return false;
+	// Chatting is never an illegal command.
+	if (command.child("speak")) return true;
+	if (is_player
+	&& (command.child("label")
+		|| command.child("clear_labels")
+		|| command.child("rename")
+		|| command.child("countdown_update")
+		/* || command.child("choose")*/))
+	{
+		return true;
+	}
+	return false;
 }
 
-//! Filter commands from all but the current player.
+//! Handles [end_turn], repackages [commands] with private [speak]s in them
+//! and sends the data.
+//! Also filters commands from all but the current player.
 //! Currently removes all commands but [speak] for observers and all but
 //! [speak], [label] and [rename] for players.
-void game::filter_commands(config& turn, const player_map::const_iterator user) {
-	if (is_current_player(user->first)) return;
-	std::vector<int> marked;
+//! Returns true if the turn ended.
+bool game::process_turn(config data, const player_map::const_iterator user) {
+	//DBG_GAME << "processing commands: '" << cfg << "'\n";
+	if (!started_) return false;
+	config* const turn = data.child("turn");
+	bool turn_ended = false;
+	// Any private 'speak' commands must be repackaged separate
+	// to other commands, and re-sent, since they should only go
+	// to some clients.
+	bool repackage = false;
 	int index = 0;
-	const config::child_list& children = turn.get_children("command");
-	for(config::child_list::const_iterator i = children.begin();
-		i != children.end(); ++i)
-	{
-		// Only single commands allowed.
-		if ((*i)->all_children().size() != 1
-		// Chatting is never an illegal command.
-		|| !((*i)->child("speak") || (is_player(user->first)
-			&& ((*i)->child("label") || (*i)->child("clear_labels")
-				|| (*i)->child("rename") || (*i)->child("countdown_update")
-				/* || (*i)->child("choose")*/))))
-		{
+	std::vector<int> marked;
+	const config::child_list& commands = turn->get_children("command");
+	config::child_list::const_iterator command;
+	for (command = commands.begin(); command != commands.end(); ++command) {
+		if (!is_current_player(user->first)
+		&& !is_legal_command(**command, is_player(user->first))) {
 			std::stringstream msg;
 			msg << "Removing illegal command from: " << user->second.name()
 				<< ". Current player is: "
@@ -718,31 +726,9 @@ void game::filter_commands(config& turn, const player_map::const_iterator user) 
 				<< ".\n";
 			LOG_GAME << msg.str();
 			send_and_record_server_message(msg.str());
-			LOG_GAME << (**i);
+			LOG_GAME << (**command);
 			marked.push_back(index - marked.size());
-		}
-		++index;
-	}
-
-	for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
-		turn.remove_child("command",*j);
-	}
-}
-
-//! Handles [end_turn], repackages [commands] with private [speak]s in them
-//! and sends the data.
-bool game::process_commands(const config& data, const player_map::const_iterator user) {
-	//DBG_GAME << "processing commands: '" << cfg << "'\n";
-	const config* const turn = data.child("turn");
-	bool turn_ended = false;
-	// Any private 'speak' commands must be repackaged separate
-	// to other commands, and re-sent, since they should only go
-	// to some clients.
-	bool repackage = false;
-	const config::child_list& commands = turn->get_children("command");
-	config::child_list::const_iterator command;
-	for (command = commands.begin(); command != commands.end(); ++command) {
-		if ((**command).child("speak")) {
+		} else if ((**command).child("speak")) {
 			config& speak = *(**command).child("speak");
 			if (!(speak.get_attribute("team_name") == "")
 			|| (is_muted_observer(user->first))) {
@@ -768,10 +754,15 @@ bool game::process_commands(const config& data, const player_map::const_iterator
 					}
 				}
 			}
-		} else if ((**command).child("end_turn")) {
+		} else if (is_current_player(user->first) && (**command).child("end_turn")) {
 			turn_ended = end_turn();
 		}
+		++index;
 	}
+	for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
+		turn->remove_child("command",*j);
+	}
+	if (turn->all_children().size() == 0) return false;
 	if (!repackage) {
 		record_data(data);
 		send_data(data, user->first);

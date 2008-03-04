@@ -78,7 +78,8 @@ public:
 	void transfer_side_control(const network::connection sock, const config& cfg);
 
 	void process_message(config data, const player_map::iterator user);
-	//! Process [turn].
+	//! Filters and processes (some) commands.
+	//! Returns true iff the turn ended.
 	bool process_turn(config data, const player_map::const_iterator user);
 	//! Set the description to the number of available slots.
 	//! Returns true iff the number of slots has changed.
@@ -131,12 +132,6 @@ private:
 			const player_map::const_iterator newplayer,
 			const bool player_left=true);
 	void transfer_ai_sides();
-	//! Function which filters commands sent by a player to remove commands
-	//! that they don't have permission to execute.
-	void filter_commands(config& turn, const player_map::const_iterator user);
-	//! Function which will process game commands and update the state of the
-	//! game accordingly. Will return true iff the game's description changes.
-	bool process_commands(const config& cfg, const player_map::const_iterator user);
 	void send_data_team(const config& data, const std::string& team,
 			const network::connection exclude=0) const;
 	void send_data_observers(const config& data, const network::connection exclude=0) const;
@@ -150,6 +145,7 @@ private:
 
 	bool observers_can_label() const { return false; }
 	bool observers_can_chat() const { return true; }
+	bool is_legal_command(const config& command, bool is_player);
 	//! Function which returns true iff 'player' is on 'team'.
 	bool is_on_team(const std::string& team, const network::connection player) const;
 
