@@ -39,7 +39,7 @@
 #include "widgets/progressbar.hpp"
 #include "widgets/textbox.hpp"
 
-#include "sdl_ttf/SDL_ttf.h"
+#include "SDL_ttf.h"
 
 #include <iostream>
 #include <numeric>

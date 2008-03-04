@@ -43,7 +43,7 @@
 #include "wesconfig.h"
 #include <algorithm>
 
-#include "sdl_ttf/SDL_ttf.h"
+#include "SDL_ttf.h"
 
 //! Log info-messages to stdout during the game, mainly for debugging
 #define LOG_DP LOG_STREAM(info, display)

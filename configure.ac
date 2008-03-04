@@ -551,7 +551,8 @@ AC_ARG_ENABLE([sdltest],
               [enable_sdltest=yes])
 
 min_sdl_version=1.2.7
-AC_MSG_CHECKING(for SDL - version >= $min_sdl_version)
+min_sdl_ttf_version=2.0.8
+AC_MSG_CHECKING(for SDL - version >= $min_sdl_version and SDL_ttf - version >= $min_sdl_ttf_version)
 
 SDL_CFLAGS=`$SDL_CONFIG --cflags`
 SDL_LIBS=`$SDL_CONFIG --libs`
@@ -561,6 +562,14 @@ sdl_minor_version=`$SDL_CONFIG --version | \
     sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
 sdl_micro_version=`$SDL_CONFIG --version | \
     sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+
+sdl_ttf_major_version=`echo $min_sdl_ttf_version | \
+    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+sdl_ttf_minor_version=`echo $min_sdl_ttf_version| \
+    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+sdl_ttf_micro_version=`echo $min_sdl_ttf_version | \
+    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+
 
 if test "x$enable_sdltest" = "xyes" ; then
     ac_save_CFLAGS="$CFLAGS"
@@ -577,6 +586,7 @@ if test "x$enable_sdltest" = "xyes" ; then
 #include <stdlib.h>
 #include <string.h>
 #include "SDL.h"
+#include "SDL_ttf.h"
 
 char*
 my_strdup (char *str)
@@ -615,7 +625,21 @@ int main (int argc, char **argv)
       (($sdl_major_version == major) && ($sdl_minor_version > minor)) ||
       (($sdl_major_version == major) && ($sdl_minor_version == minor) && ($sdl_micro_version >= micro)))
     {
-      return 0;
+        SDL_version compile_version, *link_version;
+        TTF_VERSION(&compile_version);
+        if (($sdl_ttf_major_version > compile_version.major) ||
+           (($sdl_ttf_major_version == compile_version.major) 
+               && ($sdl_ttf_minor_version > compile_version.minor)) ||
+           (($sdl_ttf_major_version == compile_version.major) 
+               && ($sdl_ttf_minor_version == compile_version.minor) 
+               && ($sdl_ttf_micro_version == compile_version.patch)))
+        {
+            return 0;
+        } else {
+            printf("\n*** TTF_VERSION returned %d.%d.%d, but the minimum version\n",compile_version.major, compile_version.minor, compile_version.patch);
+            printf("*** required version is %d.%d.%d. Please update your library.\n",$sdl_ttf_major_version,$sdl_ttf_minor_version,$sdl_ttf_micro_version);
+            return 1;
+        }
     }
   else
     {
@@ -732,12 +756,22 @@ fi],
 	     [AC_MSG_ERROR([*** SDL_net lib not found! Get SDL_net from
 http://www.libsdl.org/projects/SDL_net/index.html])])
 
+AC_CHECK_LIB([SDL_ttf],
+	     [TTF_Init],
+	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_ttf.la
+then SDL_TTF_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL_ttf.la
+else SDL_TTF_LIBS=-lSDL_ttf
+fi],
+	     [AC_MSG_ERROR([*** SDL_ttf lib not found! Get SDL_ttf from
+http://www.libsdl.org/projects/SDL_ttf/index.html])])
+
 LIBS=$OLD_LIBS
 
 AC_SUBST([SDL_LIBS])
 AC_SUBST([SDL_IMAGE_LIBS])
 AC_SUBST([SDL_MIXER_LIBS])
 AC_SUBST([SDL_NET_LIBS])
+AC_SUBST([SDL_TTF_LIBS])
 
 # Checking for the freetype library. This was copied from the
 # config script of SDL_ttf, modified for CPPFLAGS

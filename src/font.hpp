@@ -15,7 +15,7 @@
 #define FONT_HPP_INCLUDED
 
 #include "SDL.h"
-#include "sdl_ttf/SDL_ttf.h"
+#include "SDL_ttf.h"
 
 class CVideo;
 #include "sdl_utils.hpp"

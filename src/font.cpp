@@ -45,15 +45,6 @@
 #define WRN_FT LOG_STREAM(warn, display)
 #define ERR_FT LOG_STREAM(err, display)
 
-//Deliberately breaking compilation with the original SDL_ttf library. Remove
-//the lines below to be able to do this anyway, however this is buggy and may
-//cause random memory corruption errors depending on the OS / Version of
-//Freetype / Language you are using!
-//
-#ifndef SDL_TTF_WESNOTH
-#error Please use the SDL_ttf files in the sdl_ttf directory, and not the original SDL_ttf library.
-#endif
-
 #ifdef	HAVE_FRIBIDI
 #include <fribidi/fribidi.h>
 

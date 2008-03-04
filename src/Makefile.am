@@ -360,7 +360,6 @@ noinst_HEADERS = \
 	variable.hpp \
 	video.hpp \
 	wml_separators.hpp \
-	sdl_ttf/SDL_ttf.h \
 	wesconfig.h \
 	wml_exception.hpp
 
@@ -438,7 +437,6 @@ libwesnoth_a_SOURCES = \
 	widgets/slider.cpp \
 	widgets/textbox.cpp \
 	widgets/widget.cpp \
-	sdl_ttf/SDL_ttf.c \
 	wml_exception.cpp 
 
 if USESVN
@@ -454,10 +452,10 @@ revision-stamp: FORCE
 FORCE:
 endif
 
-AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+AM_CXXFLAGS = -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"
 
-AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+AM_CFLAGS = -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
 
 if PYTHON
