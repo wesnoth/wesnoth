@@ -926,7 +926,6 @@ bool game_controller::new_campaign()
 	const config& campaign = *campaigns[cmenu.result()];
 
 	state_.campaign = campaign["id"];
-	state_.history = generate_game_uuid();
 	state_.abbrev = campaign["abbrev"];
 	state_.scenario = campaign["first_scenario"];
 

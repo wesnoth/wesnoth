@@ -178,6 +178,7 @@ static void parse_times(const config& cfg, std::vector<time_of_day>& normal_time
 	}
 }
 
+#ifdef __UNUSED__
 std::string generate_game_uuid()
 {
 	struct timeval ts;
@@ -188,6 +189,7 @@ std::string generate_game_uuid()
 
 	return uuid.str();
 }
+#endif 
 
 //! Reads turns and time information from parameters.
 //! It sets random starting ToD and current_tod to config.
