@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Bitwa o Wesnoth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-03-03 09:51+0100\n"
-"PO-Revision-Date: 2006-12-23 18:54+0100\n"
-"Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
+"PO-Revision-Date: 2008-03-04 10:37+0100\n"
+"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: Karol Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,25 +23,22 @@ msgstr "pl"
 # type: Attribute 'title' of: <html><head><link>
 #: ../template.html:6
 msgid "Default"
-msgstr ""
+msgstr "Domyślne"
 
 #: ../template.html:9
-#, fuzzy
 msgid "Battle for Wesnoth 1.4"
-msgstr "Bitwa o Wesnoth 1.2"
+msgstr "Bitwa o Wesnoth 1.4"
 
 # type: Attribute 'alt' of: <html><body><div><div><div><a><img>
 #: ../template.html:18
 msgid "Wesnoth logo"
-msgstr ""
+msgstr "Logo Wesnoth"
 
 #: ../template.html:29
-#, fuzzy
 msgid "Battle for Wesnoth 1.4 Release Notes"
-msgstr "Informacje o wydaniu Bitwy o Wesnoth 1.2"
+msgstr "Informacje o wydaniu Bitwy o Wesnoth 1.4"
 
 #: ../template.html:31
-#, fuzzy
 msgid ""
 "<em>March 8, 2008</em>. The Battle for Wesnoth team is proud to release "
 "version 1.4 of <em>The Battle for Wesnoth</em>, a <a href='http://www.gnu."
@@ -50,41 +47,40 @@ msgid ""
 "href='#download'>available for download</a> now for Windows, Mac OS X, and "
 "various GNU/Linux distributions."
 msgstr ""
-"Zespół Bitwy o Wesnoth z dumą ogłasza wydanie wersji 1.2 <em>Bitwy o "
-"Wesnoth</em>, <a href=\"%s\">darmowej (wolnej)</a>, turowej gry "
-"strategicznej w klimacie fantasy z elementami RPG. Grę <a href=\"%s\">można "
-"pobrać</a> w wersjach na platformy Windows, Mac OS X oraz różne dystrybucje "
-"GNU/Linuksa."
+"<em>8 marca 2008 r.</em> Zespół Bitwy o Wesnoth z dumą ogłasza wydanie "
+"wersji 1.4 <em>Bitwy o Wesnoth</em>, <a href='http://www.gnu.org/philosophy/"
+"philosophy.html'>darmowej (wolnej)</a> turowej gry strategicznej w klimacie "
+"fantasy z elementami gry fabularnej. Grę <a href='#download'>można pobrać</"
+"a> w wersjach na platformy Windows, Mac OS X oraz różne dystrybucje GNU/"
+"Linuksa."
 
 #: ../template.html:40
-#, fuzzy
 msgid "<a href='#game'>What's New in Wesnoth 1.4</a>"
-msgstr "Nowości w Wesnoth 1.2"
+msgstr "<a href='#game'>Nowości w Wesnoth 1.4</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: ../template.html:42
 msgid "<a href='#players'>For Players</a>"
-msgstr ""
+msgstr "<a href='#players'>Dla graczy</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: ../template.html:43
 msgid "<a href='#campdev'>For Campaign Developers</a>"
-msgstr ""
+msgstr "<a href='#campdev'>Dla autorów kampanii</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:46
 msgid "<a href='#download'>Download</a>"
-msgstr ""
+msgstr "<a href='#download'>Pobierz</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:47
 msgid "<a href='#more'>More Info</a>"
-msgstr ""
+msgstr "<a href='#more'>Więcej informacji</a>"
 
 #: ../template.html:52
-#, fuzzy
 msgid "What's New in Wesnoth 1.4"
-msgstr "Nowości w Wesnoth 1.2"
+msgstr "Nowości w Wesnoth 1.4"
 
 # type: Content of: <html><body><div><div><div><p>
 #: ../template.html:54
@@ -96,6 +92,12 @@ msgid ""
 "have been enhanced to significantly increase your creative options in "
 "writing scenarios."
 msgstr ""
+"Z punktu widzenia graczy, wersja 1.4 to aż siedem nowych oficjalnych "
+"kampanii, przeprojektowany interfejs, zdumiewająca różnorodność nowej, "
+"wysokiej jakości muzyki oraz odświeżona oprawa graficzna gry, w tym znacznie "
+"ulepszone portrety wielu typów jednostek. Autorów scenariuszy zainteresuje "
+"informacja, że edytor map i język WML zostały znacznie wzbogacone, znacznie "
+"zwiększając możliwości twórców podczas pisania scenariuszy."
 
 # type: Content of: <html><body><div><div><div><p>
 #: ../template.html:61
@@ -105,26 +107,30 @@ msgid ""
 "several new tools that prevent entire classes of bugs by sanity-checking "
 "Wesnoth's data files before they ship to you."
 msgstr ""
+"Co równie istotne, jest to prawdopodobnie najbardziej stabilne z "
+"dotychczasowych wydań gry. Na przestrzeni cyklu rozwojowego wersji 1.3 "
+"poprawiliśmy ponad 300 błędów i wprowadziliśmy kilka nowych narzędzi, które "
+"zapobiegają występowaniu wielu typów błędów poprzez automatyczne sprawdzanie "
+"plików gry, zanim trafią one do Was."
 
 #: ../template.html:67 ../template.html:226
-#, fuzzy
 msgid "Wesnoth Screenshot"
-msgstr "Informacje o wydaniu Wesnoth 1.0"
+msgstr "Zrzut ekranu"
 
 # type: Content of: <html><body><div><div><div><p>
 #: ../template.html:70
 msgid "Here are 1.4's new features in more detail:"
-msgstr ""
+msgstr "Oto bardziej szczegółowe informacje o nowościach w wersji 1.4:"
 
 # type: Content of: <html><body><div><div><div><h3>
 #: ../template.html:72
 msgid "For Players"
-msgstr ""
+msgstr "Dla graczy"
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:75
 msgid "Seven new campaigns now ship with the game"
-msgstr ""
+msgstr "Z grą dostarczanych jest teraz siedem nowych kampanii"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:76
@@ -135,11 +141,18 @@ msgid ""
 "written campaigns: <em>Descent into Darkness, Liberty, Northern Rebirth, "
 "Sceptre of Fire, An Orcish Incursion, and Son of the Black-Eye.</em>"
 msgstr ""
+"Liczba kampanii dostarczanych z grą uległa niemal podwojeniu. Poza "
+"całkowicie nową kampanią <em>Młot Thursagana</em> dostarczamy też ulepszone, "
+"poszerzone i pieczołowicie dopracowane wersje dobrze znanych kampanii "
+"stworzonych przez użytkowników: <em>Zejście w Mrok, Wolność, Odrodzenie "
+"Północy, Berło Ognia, Najazd Orków i Syn Czarnego Oka</em>. Niemal wszystkie "
+"kampanie są dostępne w polskiej wersji językowej, podobnie jak cała gra, "
+"pomoc i podręcznik użytkownika."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:82
 msgid "Parts of the user interface of the game have been redesigned"
-msgstr ""
+msgstr "Części interfejsu użytkownika zostały przeprojektowane"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:83
@@ -153,11 +166,23 @@ msgid ""
 "changes now have unobtrusive cue sounds. You can use drag'n'drop to move "
 "units.  Mousewheels are supported."
 msgstr ""
+"Interfejs użytkownika w wersji 1.4 Wesnoth wygląda znacznie bardziej "
+"estetycznie dzięki zastąpieniu w wielu miejscach nieprzezroczystych, "
+"modalnych okien dialogowych z przyciskami lekkimi, półprzezroczystymi oknami "
+"tymczasowymi. Nowe, subtelne efekty graficzne, które towarzyszą zaznaczaniu "
+"jednostek oraz celów, pozwalają lepiej poczuć przebieg rozgrywki. Na pasku "
+"stanu jest teraz wyświetlana liczba wiosek posiadanych oraz wszystkich "
+"wiosek znajdujących się na mapie. Czynnościom wykonywanym w interfejsie oraz "
+"zmianom cyklu dnia/nocy towarzyszą teraz dyskretne wskazówki dźwiękowe. "
+"Jednostki można przesuwać metodą \"przeciągnij i upuść\", poprawnie "
+"obsługiwane są też kółka w myszach."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:93
 msgid "You can now review scenarios, chat, and set options after victory"
 msgstr ""
+"Po osiągnięciu zwycięstwa można przyjrzeć się mapie, rozmawiać oraz zmieniać "
+"opcje"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:94
@@ -169,11 +194,18 @@ msgid ""
 "you to chat with friends and foes, use normal commands, change your options, "
 "and in general do anything except more battle actions."
 msgstr ""
+"Nigdy więcej nie zobaczycie dwóch blokujących interfejs, pełnych przycisków "
+"okienek pojawiających się natychmiast po wygraniu scenariusza, po których "
+"gracz zostaje przeniesiony do lobby (albo do następnego scenariusza). "
+"Zamiast nich wyświetlane jest teraz tylko jedno okno z podsumowaniem, po "
+"którego zamknięciu gracz pozostaje w grze w trybie umożliwiającym "
+"rozmawianie z innymi, używanie większości komend, zmianę opcji - ogólnie "
+"wszystko poza samą rozgrywką."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:102
 msgid "The multiplayer collection has been revised and extended"
-msgstr ""
+msgstr "Zestaw map do gry wieloosobowej został dopracowany i rozszerzony"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:103
@@ -181,6 +213,8 @@ msgid ""
 "New maps and multiplayer scenarios: <cite> Auction-X, Dark Forecast, "
 "Hamlets, Mokena Prairie, The Manzivan Traps, Xanthe Chaos</cite>."
 msgstr ""
+"Nowe mapy i scenariusze wieloosobowe: <cite> Aukcja X, Mroczna "
+"Przepowiednia, Wioski, Preria Mokena, Pułapki Manzivanu, Chaos Xanthe</cite>."
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:110
@@ -195,11 +229,20 @@ msgid ""
 "Castles, Silverhead Crossing, Sulla's Ruins, Waterloo Sunset, Weldyn "
 "Channel</cite> (formerly <cite>Blitz</cite>),<cite> Wesbowl</cite>."
 msgstr ""
+"Poprawione mapy: <cite>Mokradła Alirok</cite> (wcześniej <cite>Potrójna "
+"błyskawica</cite>),<cite> Kaldera Amoshad, Prowincja Błękitnej Wody, Zamki "
+"na Wyspie, Jaskinie Bazyliszka, Pole Krzyżowców, Kryjówka Onisa, Jezioro "
+"Spadającej Gwiazdy</cite> (wcześniej <cite>Meteorytowe Jezioro</cite>),"
+"<cite> Las Strachu, Wolne Ziemie (wcześniej <cite>Szarża</cite>),<cite> "
+"Heksciastko, Wyspa Rekinów, Król Wzgórza, Laguna, Rzeka Loris, Dziwnamiłość, "
+"Ścieżka Sztyletów, Delta Sablestone, Oblężone Zamki, Przeprawa Silverhead, "
+"Ruiny Sullas, Zachód Słońca nad Waterloo, Przesmyk Weldyn</cite> (wcześniej "
+"<cite>Błyskawica</cite>),<cite>Wesbowl</cite>."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:139
 msgid "Changed and rebalanced units"
-msgstr ""
+msgstr "Zmienione i zrównoważone jednostki"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:140
@@ -211,6 +254,12 @@ msgid ""
 "Orcish Assassin, Ranger, Royal Guard, Sky Drake, White Mage, Wraith, and all "
 "the Saurians and Bats."
 msgstr ""
+"Rozbójnicy, Kłusownicy i Bandyci mogą teraz awansować do poziomu 3 włącznie. "
+"Wiele jednostek doświadczyło ulepszeń i zmian równoważących, w tym "
+"Starożytny Licz, Czarodziejka Elfów, Uciekinier, Duch, Smok Huraganowy, "
+"Licz, Mag Światła, Syrena Wróżbitka, Kapłanka Syren, Mermen Wojownik, Nag "
+"Myrmidon, Nekromanta, Ork Zabójca, Łowca, Królewski Gwardzista, Smok "
+"Przestworzy, Biały Mag, Upiór oraz wszystkie Jaszczury i Nietoperze."
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:162
@@ -219,11 +268,14 @@ msgid ""
 "general anti-magic attack useful against more than just undead: elves, "
 "drakes and trolls are among the units now vulnerable against it."
 msgstr ""
+"Ponadto typ ataku \"święty\" został zastąpiony przez \"astralny\" i jest "
+"teraz ogólnym atakiem antymagicznym, którego skuteczność nie ogranicza się "
+"do nieumarłych - podatne na niego są między innymi elfy, smoki i trolle."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:166
 msgid "Many portraits have been revised or added"
-msgstr ""
+msgstr "Zostało dodanych wiele nowych portretów, a stare poprawiono"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:167
@@ -232,11 +284,13 @@ msgid ""
 "particularly beautiful set of new portraits in a uniform style for the "
 "Elvish units."
 msgstr ""
+"Dodanych zostało wiele portretów zwykłych jednostek i bohaterów. Zwłaszcza "
+"jednostki elfów otrzymały cały komplet pięknych portrety w jednolitym stylu."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:171
 msgid "New uses of animation"
-msgstr ""
+msgstr "Nowe zastosowania animacji"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:172
@@ -248,11 +302,18 @@ msgid ""
 "improved base frames for many units, including Mages and Ghosts, and many "
 "special effects such as magic attacks have been improved as well."
 msgstr ""
+"Znacznie więcej jednostek ma teraz pełen zestaw animacji walki. Wiele "
+"jednostek ma też animacje bezczynności, które można zobaczyć co jakiś czas, "
+"gdy jednostka nie robi niczego konkretnego. Niektóre jednostki i przedmioty "
+"mają też animacje ciągłe - na przykład nietoperze nieustannie machają "
+"skrzydłami, a płomienie ognisk migoczą nieustannie. Poprawione zostały "
+"grafiki bazowe wielu jednostek, w tym magów i duchów. Ulepszenia nie ominęły "
+"też efektów specjalnych, towarzyszących między innymi atakom magicznym."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:180
 msgid "Multiplayer lobby improvements"
-msgstr ""
+msgstr "Ulepszenia lobby wieloosobowego"
 
 #
 #
@@ -266,11 +327,15 @@ msgid ""
 "them). You can also set a list of friends; their nicks will be highlighted "
 "and shown at the top of your user list."
 msgstr ""
+"Można ignorować użytkowników na podstawie ich ksywki (nie będzie widać "
+"przesyłanych przez nich wiadomości). Z drugiej strony można stworzyć listę "
+"przyjaciół, których ksywki będą podświetlane i wyświetlane na szczycie listy "
+"użytkowników."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:187
 msgid "Miscellaneous other improvements"
-msgstr ""
+msgstr "Różne inne usprawnienia"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:188
@@ -280,16 +345,21 @@ msgid ""
 "music tracks, and many new or improved sound effects.  Savegames are "
 "automatically compressed to save you disk space."
 msgstr ""
+"W grze wieloosobowej można teraz wybrać płeć przywódcy. Dostępny w grze "
+"system pomocy został przebudowany, przeorganizowany i poszerzony. Dodano "
+"pięć zupełnie nowych symfonicznych ścieżek muzycznych oraz wiele nowych lub "
+"ulepszonych efektów dźwiękowych. Zapisane stany gry są automatycznie "
+"kompresowane, by zaoszczędzić miejsce na dysku."
 
 # type: Content of: <html><body><div><div><div><h3>
 #: ../template.html:194
 msgid "For Campaign Developers"
-msgstr ""
+msgstr "Dla autorów kampanii"
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:197
 msgid "The map editor is much more capable"
-msgstr ""
+msgstr "Edytor map został znacznie ulepszony"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:198
@@ -303,11 +373,20 @@ msgid ""
 "terrain distortions at map edges and make small maps look better on a large "
 "display (and these changes apply to the game display too)."
 msgstr ""
+"Mapy można teraz otwierać bezpośrednio z pliku scenariusza i zapisywać z "
+"powrotem do niego. Pozycje początkowe nie muszą już być polami twierdzy. "
+"Paleta terenów została podzielona na grupy podobnych terenów, co pozwala ją "
+"rzadziej przewijać. Pojawiło się wiele nowych terenów - zestaw podstawowy "
+"został wzbogacony o pola uprawne, elficki zamek i młyn, a poza tym dostępne "
+"są specjalne mosty do przekraczania bagien, głębokiej wody i przepaści. "
+"Zarówno w edytorze, jak i na głównym ekranie gry zmieniono sposób "
+"wyświetlania brzegów mapy w celu wyeliminowania zniekształceń na krawędziach "
+"i poprawienia wyglądu małych map na dużych ekranach."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:208
 msgid "WML is considerably more powerful"
-msgstr ""
+msgstr "Język WML otrzymał znacznie większe możliwości"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:209
@@ -321,11 +400,22 @@ msgid ""
 "(including completed boolean expressions) that make them much more powerful "
 "and can replace most of what used to be done with special-purpose filters."
 msgstr ""
+"Instrukcje WML do obsługi animacji zostały całkowicie przeprojektowane w "
+"celu zwiększenia ich elastyczności i ogólności. Wszystkie instrukcje WML "
+"dotyczące akcji wykorzystują teraz podstawianie zmiennych złożonych. W "
+"trybie wieloosobowym dostępny jest bezpieczny generator liczb losowych. Nowy "
+"znacznik <code>[set_menu_item]</code> pozwala projektantom scenariuszy "
+"tworzyć własne elementy menu kontekstowego (otwieranego po kliknięciu prawym "
+"przyciskiem myszy), które mogą wykonywać dowolne instrukcje WML. Elementy "
+"standardowych filtrów jednostek i lokalizacji rozbudowano o nowe możliwości "
+"(w tym kompletną obsługę wyrażeń boolowskich), które znacznie zwiększają "
+"zakres ich stosowania i pozwalają zastępować większość dotychczasowych "
+"konstrukcji w wykorzystaniem filtrów specjalnych."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: ../template.html:219
 msgid "Multiplayer campaigns"
-msgstr ""
+msgstr "Kampanie wieloosobowe"
 
 # type: Content of: <html><body><div><div><div><dl><dd><p>
 #: ../template.html:220
@@ -334,13 +424,15 @@ msgid ""
 "any yet. This is an opportunity for designers to explore a new frontier in "
 "Wesnoth play."
 msgstr ""
+"Silnik gry obsługuje teraz kampanie wieloosobowe. Wprawdzie żadna taka "
+"kampania nie jest jeszcze dostarczana z grą, jednak daje to twórcom "
+"scenariuszy szansę zgłębienia nowych możliwości rozgrywki w Wesnoth."
 
 #: ../template.html:232
 msgid "Download"
 msgstr "Pobierz"
 
 #: ../template.html:234
-#, fuzzy
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "copyleft/gpl.html'>GNU General Public License</a> (GPL). Source code is "
@@ -350,11 +442,13 @@ msgid ""
 "systems. Ready-to-go packages are also available for most popular operating "
 "systems, including Linux and Windows and Mac OS X."
 msgstr ""
-"Bitwa o Wesnoth jest dostępna na zasadach <a href=\"%s\">Licencji Publicznej "
-"GNU</a> (GPL). Kod źródłowy można pobrać ze strony <a href=\"%s\">wesnoth."
-"org</a>, na której znajdziesz też informacje <a href=\"%s\">jak zbudować grę "
-"ze źródeł</a> na wielu różnych systemach operacyjnych. Dla większości "
-"popularnych systemów dostępne są gotowe pakiety instalacyjne."
+"Bitwa o Wesnoth jest dostępna na zasadach <a href='http://www.gnu.org.pl/"
+"text/licencja-gnu.html'>Licencji Publicznej GNU</a> (GPL). Kod źródłowy "
+"można pobrać ze strony <a href='http://www.wesnoth.org'>wesnoth.org</a>, na "
+"której znajdziesz też informacje <a href='http://wesnoth.org/wiki/"
+"CompilingWesnoth'>jak zbudować grę ze źródeł</a> na wielu różnych systemach "
+"operacyjnych. Dla większości popularnych systemów dostępne są gotowe pakiety "
+"instalacyjne, włączając w to Linuksa, Windows i Mac OS X."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:245
@@ -362,6 +456,8 @@ msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4.tar."
 "gz?download'>Source code</a> </strong>"
 msgstr ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4.tar."
+"gz?download'>Kod źródłowy</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:250
@@ -369,6 +465,8 @@ msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4-"
 "windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
 msgstr ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4-"
+"windows.exe?download'>Wesnoth dla MS Windows</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:255
@@ -376,25 +474,26 @@ msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
 "Wesnoth_MacOSX_1.4.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
 msgstr ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
+"Wesnoth_MacOSX_1.4.dmg?download'>Wesnoth dla Mac OS X</a> </strong>"
 
 #: ../template.html:261
-#, fuzzy
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "www.wesnoth.org/wiki/Download'>downloads page</a>."
 msgstr ""
-"Najnowsze informacje o plikach do pobrania znajdziesz na <a href=\"http://"
-"www.wesnoth.org/wiki/Download\">stronie z plikami do pobrania</a>."
+"Najnowsze informacje o plikach do pobrania znajdziesz na <a href='http://www."
+"wesnoth.org/wiki/Download'>stronie z plikami do pobrania</a>."
 
 #: ../template.html:264
-#, fuzzy
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://www.wesnoth.org/wiki/"
 "Download_Xdeltas'>xdelta</a> files only."
 msgstr ""
 "Jeśli posiadasz już poprzednią wersję gry, możesz skorzystać z możliwości "
-"pobrania jedynie plików <a href=\"%s\">xdelta</a>."
+"pobrania jedynie plików <a href='http://www.wesnoth.org/wiki/"
+"Download_Xdeltas'>xdelta</a>."
 
 #: ../template.html:269
 msgid "More Info"
@@ -406,6 +505,8 @@ msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/"
 "changelog'>Full Changelog</a> (English, very long)"
 msgstr ""
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/"
+"changelog'>Pełna lista zmian</a> (angielski, bardzo długa)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:276
@@ -413,41 +514,31 @@ msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/doc/manual/"
 "manual.en.html'>User's Manual</a>"
 msgstr ""
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/doc/manual/"
+"manual.pl.html'>Podręcznik użytkownika</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:277
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgstr ""
+"<a href='http://www.wesnoth.org'>Oficjalna Strona Wesnoth</a> (angielski)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:278
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.0'>Wesnoth 1.0 Release Notes</a>"
 msgstr ""
+"<a href='http://www.wesnoth.org/start/1.0'>Informacje o wydaniu Wesnoth 1.0</"
+"a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: ../template.html:279
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.2'>Wesnoth 1.2 Release Notes</a>"
 msgstr ""
+"<a href='http://www.wesnoth.org/start/1.0'>Informacje o wydaniu Wesnoth 1.2</"
+"a>"
 
 #: ../template.html:286
 msgid "This page is also available in the following languages:"
 msgstr "Strona ta jest dostępna w następujących językach:"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
