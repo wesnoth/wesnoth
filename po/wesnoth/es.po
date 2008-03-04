@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-02 23:10+0100\n"
-"PO-Revision-Date: 2008-02-11 22:56+0100\n"
+"PO-Revision-Date: 2008-03-04 15:00+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2322,7 +2322,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2705,15 +2704,14 @@ msgid "teleport"
 msgstr "teletransporte"
 
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "Teletransporte:\n"
-"Esta unidad puede teletransportarse entre dos aldeas amigas instantáneamente "
-"en uno de sus movimientos."
+"Esta unidad puede teletransportarse entre dos aldeas vacías de un bando "
+"instantáneamente en uno de sus movimientos."
 
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
@@ -4008,14 +4006,12 @@ msgstr ""
 " La iluminación incrementa el nivel de luminosidad de las áreas adyacentes."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teletransporte:\n"
-"Esta unidad puede teletransportarse entre dos aldeas amigas instantáneamente "
-"en uno de sus movimientos."
+" Esta unidad puede teletransportarse entre dos aldeas vacías del propio "
+"bando en uno de sus movimientos."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4307,7 +4303,6 @@ msgid "race^Drakes"
 msgstr "Dracos"
 
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4398,17 +4393,17 @@ msgstr ""
 "funciones de esta magia.\n"
 "\n"
 "<header>text='Sociedad'</header>\n"
-"Si bien parece que los Dracos son una raza relativamente bélica, y que sus "
-"sociedades pueden describirse mejor como una sociedad culta marcial. Un "
-"pequeño grupo de veteranos guerreros encabezado por un mutuo respeto - o "
-"simplemente temor - del líder gobierna la sociedad con un puño de hierro. De "
-"cada draco se espera que gane su lugar en el estricto orden jerárquico, a "
-"obedecer a sus superiores y su comandar sus inferiores. La entrada a las más "
-"altas clases dominantes prácticamente sólo se produce a través de retar y "
-"derrotar a un superior en combate singular, que es la forma en que la "
-"jerarquía dentro de la propia clase dominante está establecida. El uso de "
-"cualquier tipo de engaño hacia los compañeros dracos es, sin excepción, "
-"visto de forma cobarde e inaceptable.\n"
+"Los Dracos son una raza relativamente bélica y sus sociedades pueden "
+"describirse mejor como una sociedad culta marcial. Un pequeño grupo de "
+"veteranos guerreros encabezado por un mutuo respeto - o simplemente temor - "
+"del líder gobierna la sociedad con un puño de hierro. De cada draco se "
+"espera que gane su lugar en el estricto orden jerárquico, a obedecer a sus "
+"superiores y su comandar sus inferiores. La entrada a las más altas clases "
+"dominantes prácticamente sólo se produce a través de retar y derrotar a un "
+"superior en combate singular, que es la forma en que la jerarquía dentro de "
+"la propia clase dominante está establecida. El uso de cualquier tipo de "
+"engaño hacia los compañeros dracos es, sin excepción, visto de forma cobarde "
+"e inaceptable.\n"
 "\n"
 "Si bien su carácter bélico y el sentido de territorio los conducen a la "
 "defensa de sus propios territorios salvajemente, los dracos rara vez invaden "
@@ -6272,9 +6267,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Entrar al servidor multijugador oficial de Wesnoth"
 
 #: src/game.cpp:1491
-#, fuzzy
 msgid "Join a different server"
-msgstr "Unirse al servidor oficial"
+msgstr "Unirse a un servidor distinto"
 
 #: src/game.cpp:1493
 msgid "Local Game"
@@ -6697,7 +6691,7 @@ msgstr "Daño"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Sobre Todo"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
