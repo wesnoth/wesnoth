@@ -1,13 +1,14 @@
+#include "global.hpp"
+
 #include <cmath>
 #include <set>
 #include <stdlib.h>
 #include <vector>
-
 #include <iostream>
 
 #include "boost/lexical_cast.hpp"
 
-#include "foreach.hpp"
+//#include "foreach.hpp"
 #include "formatter.hpp"
 #include "formula.hpp"
 #include "formula_callable.hpp"
@@ -16,13 +17,19 @@
 namespace {
 std::string variant_type_to_string(variant::TYPE type) {
 	switch(type) {
-	case variant::TYPE_NULL: return "null";
-	case variant::TYPE_INT: return "int";
-	case variant::TYPE_CALLABLE: return "object";
-	case variant::TYPE_LIST: return "list";
-	case variant::TYPE_STRING: return "string";
+	case variant::TYPE_NULL: 
+		return "null";
+	case variant::TYPE_INT: 
+		return "int";
+	case variant::TYPE_CALLABLE: 
+		return "object";
+	case variant::TYPE_LIST: 
+		return "list";
+	case variant::TYPE_STRING: 
+		return "string";
 	default:
 		assert(false);
+		return "invalid";
 	}
 }
 
@@ -199,6 +206,7 @@ bool variant::as_bool() const
 		return !string_->str.empty();
 	default:
 		assert(false);
+		return false;
 	}
 }
 
@@ -215,11 +223,13 @@ variant variant::operator+(const variant& v) const
 		if(v.type_ == TYPE_LIST) {
 			std::vector<variant> res;
 			res.reserve(list_->elements.size() + v.list_->elements.size());
-			foreach(const variant& var, list_->elements) {
+			for(int i = 0; i<list_->elements.size(); ++i) {
+				const variant& var = list_->elements[i];
 				res.push_back(var);
 			}
 
-			foreach(const variant& var, v.list_->elements) {
+			for(int j = 0; j<v.list_->elements.size(); ++j) {
+				const variant& var = v.list_->elements[j];
 				res.push_back(var);
 			}
 
@@ -311,6 +321,7 @@ bool variant::operator==(const variant& v) const
 	}
 
 	assert(false);
+	return false;
 }
 
 bool variant::operator!=(const variant& v) const
@@ -367,6 +378,7 @@ bool variant::operator<=(const variant& v) const
 	}
 
 	assert(false);
+	return false;
 }
 
 bool variant::operator>=(const variant& v) const
@@ -405,7 +417,8 @@ void variant::serialize_to_string(std::string& str) const
 	case TYPE_LIST: {
 		str += "[";
 		bool first_time = true;
-		foreach(const variant& var, list_->elements) {
+		for(int i=0; i<list_->elements.size(); ++i) {
+			const variant& var = list_->elements[i];
 			if(!first_time) {
 				str += ",";
 			}
@@ -458,7 +471,8 @@ std::string variant::string_cast() const
 		return "(object)";
 	case TYPE_LIST: {
 		std::string res = "";
-		foreach(const variant& var, list_->elements) {
+		for(int i=0; i<list_->elements.size(); ++i) {
+			const variant& var = list_->elements[i];
 			if(!res.empty()) {
 				res += ", ";
 			}
@@ -473,6 +487,7 @@ std::string variant::string_cast() const
 		return string_->str;
 	default:
 		assert(false);
+		return "invalid";
 	}
 }
 
@@ -508,7 +523,8 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 			seen->push_back(callable_);
 			std::vector<game_logic::formula_input> v = callable_->inputs();
 			bool first = true;
-			foreach(const game_logic::formula_input& input, v) {
+			for(int i=0; i<v.size(); ++i) {
+				const game_logic::formula_input& input = v[i];
 				if(!first) {
 					s << ", ";
 				}
