@@ -67,7 +67,7 @@ private:
 		const expression_ptr& exp_p = arguments[0];
 		variant my_variant = exp_p->evaluate(variables);
 		const location_callable* loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables));
-		const location_callable* loc2 = convert_variant<location_callable<(args()[1]->evaluate(variables));
+		const location_callable* loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables));
 		return variant(distance_between(loc1->loc(), loc2->loc()));
 	}
 };
