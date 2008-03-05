@@ -10,13 +10,15 @@
 
    See the COPYING file for more details.
 */
+#include "global.hpp"
+
 #include <algorithm>
 #include <boost/lexical_cast.hpp>
 #include <cmath>
 #include <iostream>
 #include <vector>
 
-#include "foreach.hpp"
+//#include "foreach.hpp"
 #include "formula.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
@@ -103,9 +105,11 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const variant res = operand_->evaluate(variables);
 		switch(op_) {
-		case NOT: return res.as_bool() ? variant(0) : variant(1);
-		case SUB: return -res;
-		default: assert(false);
+		case NOT: 
+			return res.as_bool() ? variant(0) : variant(1);
+		case SUB: 
+		default: 
+			return -res;
 		}
 	}
 	enum OP { NOT, SUB };
@@ -195,22 +199,37 @@ private:
 		const variant left = left_->evaluate(variables);
 		const variant right = right_->evaluate(variables);
 		switch(op_) {
-		case AND: return left.as_bool() == false ? left : right;
-		case OR: return left.as_bool() ? left : right;
-		case ADD: return left + right;
-		case SUB: return left - right;
-		case MUL: return left * right;
-		case DIV: return left / right;
-		case POW: return left ^ right;
-		case EQ:  return left == right ? variant(1) : variant(0);
-		case NEQ: return left != right ? variant(1) : variant(0);
-		case LTE: return left <= right ? variant(1) : variant(0);
-		case GTE: return left >= right ? variant(1) : variant(0);
-		case LT:  return left < right ? variant(1) : variant(0);
-		case GT:  return left > right ? variant(1) : variant(0);
-		case MOD: return left % right;
-		case DICE:return variant(dice_roll(left.as_int(), right.as_int()));
-		default: assert(false);
+		case AND: 
+			return left.as_bool() == false ? left : right;
+		case OR: 
+			return left.as_bool() ? left : right;
+		case ADD: 
+			return left + right;
+		case SUB: 
+			return left - right;
+		case MUL: 
+			return left * right;
+		case DIV: 
+			return left / right;
+		case POW: 
+			return left ^ right;
+		case EQ:  
+			return left == right ? variant(1) : variant(0);
+		case NEQ: 
+			return left != right ? variant(1) : variant(0);
+		case LTE: 
+			return left <= right ? variant(1) : variant(0);
+		case GTE: 
+			return left >= right ? variant(1) : variant(0);
+		case LT:  
+			return left < right ? variant(1) : variant(0);
+		case GT:  
+			return left > right ? variant(1) : variant(0);
+		case MOD: 
+			return left % right;
+		case DICE:
+		default:
+			return variant(dice_roll(left.as_int(), right.as_int()));
 		}
 	}
 
@@ -328,7 +347,8 @@ private:
 			return str_;
 		} else {
 			std::string res = str_.as_string();
-			foreach(const substitution& sub, subs_) {
+			for(int i=0; i < subs_.size(); ++i) {
+				const substitution& sub = subs_[i];
 				const std::string str = sub.calculation->execute(variables).string_cast();
 				res.insert(sub.pos, str);
 			}
@@ -422,7 +442,7 @@ void parse_where_clauses(const token* i1, const token * i2,
 				}
 				(*res)[var_name] = parse_expression(beg,i1, symbols);
 				beg = i1+1;
-				var_name.clear();
+				var_name = "";
 			} else if(i1->type == TOKEN_OPERATOR) {
 				std::string op_name(i1->begin, i1->end);
 				if(op_name == "=") {
@@ -590,7 +610,7 @@ formula::formula(const std::string& str, const function_symbol_table* symbols) :
 			if(tokens.back().type == TOKEN_WHITESPACE) {
 				tokens.pop_back();
 			}
-		} catch(token_error& e) {
+		} catch(token_error& /*e*/) {
 			throw formula_error();
 		}
 	}
