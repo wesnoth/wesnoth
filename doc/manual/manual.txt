@@ -837,19 +837,24 @@ Orbs
 On the top of the energy bar shown next to each unit of yours is an
 orb. This orb is:
 
-image:images/orb-green.jpg["green orb"] green if you control the unit
-and it hasn't moved this turn,
-
-image:images/orb-yellow.jpg["yellow orb"] yellow if you control the unit
-and it has moved this turn, but could still move further or attack,
-
-image:images/orb-red.jpg["red orb"] red if you control the unit,
-but it has used all its movement this turn, or
-
-image:images/orb-blue.jpg["blue orb"] blue if the unit is an ally you do
-not control. 
-
-image:images/orb-none.jpg["no orb"] Enemy units have no orb on the top of their energy bar.
+.Orbs
+`------`------------------------------------------`-----------------------------
+Orb    Image                                      Description
+--------------------------------------------------------------------------------
+Green  image:images/orb-green.jpg["Green orb"]    If you control the unit and \ 
+                                                  it hasn't moved this turn
+Yellow image:images/orb-yellow.jpg["Yellow orb"]  If you control the unit and \
+                                                  it has moved this turn, but \
+                                                  could still move further or \
+                                                  attack
+Red    image:images/orb-red.jpg["Red orb"]        If you control the unit, but \
+                                                  it has used all its movement \
+                                                  this turn
+Blue   image:images/orb-blue.jpg["Blue orb"]      If the unit is an ally you \
+                                                  do not control
+-      image:images/orb-none.jpg["No orb"]        Enemy units have no orb on \
+                                                  the top of their energy bar
+--------------------------------------------------------------------------------
 
 Ellipses, Team Colors, and Hero Icons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
