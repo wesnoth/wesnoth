@@ -1,7 +1,10 @@
+
+#include "global.hpp"
+
 #include <iostream>
 #include <math.h>
 
-#include "foreach.hpp"
+//#include "foreach.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 
@@ -23,7 +26,8 @@ private:
 		const formula_callable* callable = var.as_callable();
 		std::vector<formula_input> inputs = callable->inputs();
 		std::vector<variant> res;
-		foreach(const formula_input& input, inputs) {
+		for(int i=0; i<inputs.size(); ++i) {
+			const formula_input& input = inputs[i];
 			res.push_back(variant(input.name));
 		}
 
