@@ -424,6 +424,8 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 		clear_highlighted_hexes_in_gui();
 	}
 	else if (l_button_func_ == DRAW) {
+		reset_mouseover_overlay();
+		draw_on_mouseover_hexes(palette_.selected_fg_terrain());
 		l_button_held_func_ = DRAW_TERRAIN;
 	}
 	else if (l_button_func_ == FLOOD_FILL) {
@@ -501,7 +503,6 @@ void map_editor::change_language() {
 	// Update the selected terrain strings
 	palette_.update_selected_terrains();
 }
-
 
 void map_editor::edit_save_as() {
 	const std::string default_dir =
@@ -582,14 +583,13 @@ void map_editor::edit_set_start_pos() {
 void map_editor::perform_flood_fill(const t_translation::t_terrain fill_with) {
 	terrain_log log;
 	flood_fill(map_, selected_hex_, fill_with, &log);
-	std::vector<gamemap::location> to_invalidate;
 	map_undo_action action;
 	for (terrain_log::iterator it = log.begin(); it != log.end(); it++) {
-		to_invalidate.push_back((*it).first);
 		action.add_terrain((*it).second, palette_.selected_fg_terrain(),
 			   (*it).first);
+		terrain_changed((*it).first);
 	}
-	terrain_changed(to_invalidate);
+
 	save_undo_action(action);
 }
 
@@ -701,7 +701,6 @@ void map_editor::edit_rotate_selection()
 	}
 
 	map_undo_action undo_action;
-	terrain_changed(selected_hexes_);
 	paste_buffer(buf, center, undo_action);
 	save_undo_action(undo_action);
 }
@@ -828,6 +827,8 @@ void map_editor::paste_buffer(const map_buffer &buffer, const gamemap::location 
 		if (map_.on_board(target, true)) {
 			undo_action.add_terrain(map_.get_terrain(target), it->terrain, target);
 			map_.set_terrain(target, it->terrain);
+			terrain_changed(target);
+
 			const int start_side = it->starting_side;
 			if (start_side != -1) {
 				undo_action.add_starting_location(start_side, start_side,
@@ -838,7 +839,6 @@ void map_editor::paste_buffer(const map_buffer &buffer, const gamemap::location 
 		}
 	}
 
-	terrain_changed(filled);
 	undo_action.set_selection(selected_hexes_, filled);
 	selected_hexes_ = filled;
 	highlight_selected_hexes(true);
@@ -866,9 +866,9 @@ void map_editor::perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
 		if (map_.on_board(*it, true)) {
 			undo_action.add_terrain(map_.get_terrain(*it), terrain, *it);
 			map_.set_terrain(*it, terrain);
+			terrain_changed(*it);
 		}
 	}
-	terrain_changed(fill_hexes);
 }
 
 void map_editor::perform_selection_move() {
@@ -937,27 +937,28 @@ void map_editor::toggle_grid() {
 }
 
 void map_editor::save_undo_action(const map_undo_action &action) {
-	add_undo_action(action);
-	num_operations_since_save_++;
+	// we skip empty action
+	// NOTE: if changing this, improve drawing functions to discard those
+	if (action.something_set()) {
+		add_undo_action(action);
+		num_operations_since_save_++;
+	}
 }
 
 void map_editor::undo() {
 	if(exist_undo_actions()) {
 		--num_operations_since_save_;
-		std::vector<gamemap::location> to_invalidate;
 		map_undo_action action = pop_undo_action();
 		if (action.selection_set()) {
 			selected_hexes_ = action.undo_selection();
 			highlight_selected_hexes(true);
-			std::copy(selected_hexes_.begin(), selected_hexes_.end(),
-					  std::back_inserter(to_invalidate));
 		}
 		if (action.terrain_set()) {
 			for(std::map<gamemap::location, t_translation::t_terrain>::const_iterator it =
 					action.undo_terrains().begin();
 				it != action.undo_terrains().end(); ++it) {
 				map_.set_terrain(it->first, it->second);
-				to_invalidate.push_back(it->first);
+				terrain_changed(it->first);
 			}
 		}
 		if (action.starting_location_set()) {
@@ -965,10 +966,10 @@ void map_editor::undo() {
 					 action.undo_starting_locations().begin();
 				 it != action.undo_starting_locations().end(); it++) {
 				map_.set_starting_position((*it).second, (*it).first);
-				to_invalidate.push_back((*it).first);
 			}
+			recalculate_starting_pos_labels();
 		}
-		terrain_changed(to_invalidate);
+		
 		if (action.map_data_set()) {
 			throw new_map_exception(action.old_map_data(), filename_, from_scenario_);
 		}
@@ -979,19 +980,16 @@ void map_editor::redo() {
 	if(exist_redo_actions()) {
 		++num_operations_since_save_;
 		map_undo_action action = pop_redo_action();
-		std::vector<gamemap::location> to_invalidate;
 		if (action.selection_set()) {
 			selected_hexes_ = action.redo_selection();
 			highlight_selected_hexes(true);
-			std::copy(selected_hexes_.begin(), selected_hexes_.end(),
-					  std::back_inserter(to_invalidate));
 		}
 		if (action.terrain_set()) {
 			for(std::map<gamemap::location, t_translation::t_terrain>::const_iterator it =
 					action.redo_terrains().begin();
 				it != action.redo_terrains().end(); ++it) {
 				map_.set_terrain(it->first, it->second);
-				to_invalidate.push_back(it->first);
+				terrain_changed(it->first);
 			}
 		}
 		if (action.starting_location_set()) {
@@ -999,11 +997,10 @@ void map_editor::redo() {
 					 action.redo_starting_locations().begin();
 				 it != action.redo_starting_locations().end(); it++) {
 				map_.set_starting_position((*it).second, (*it).first);
-				to_invalidate.push_back((*it).first);
 			}
+			recalculate_starting_pos_labels();
 		}
-		terrain_changed(to_invalidate);
-		 if (action.map_data_set()) {
+		if (action.map_data_set()) {
 			throw new_map_exception(action.new_map_data(), filename_, from_scenario_);
 		}
 	}
@@ -1171,11 +1168,11 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	}
 	// If the left mouse button is down and we beforhand have registered
 	// a mouse down event, draw terrain at the current location.
-	else if (l_button_held_func_ == DRAW_TERRAIN) {
+	else if (l_button_held_func_ == DRAW_TERRAIN && mouse_moved_) {
 		reset_mouseover_overlay();
 		draw_on_mouseover_hexes(palette_.selected_fg_terrain());
 	}
-	else if (l_button_held_func_ == MOVE_SELECTION) {
+	else if (l_button_held_func_ == MOVE_SELECTION && mouse_moved_) {
 		reset_mouseover_overlay();
 		//(*it-selection_move_start_) + hex
 		// No other selections should be active when doing this.
@@ -1191,113 +1188,61 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 }
 
 void map_editor::draw_on_mouseover_hexes(const t_translation::t_terrain terrain) {
-	const gamemap::location hex = selected_hex_;
-	if(map_.on_board(hex, true)) {
-		const t_translation::t_terrain old_terrain = map_[hex];
-		// Optimize for common case
-		if(brush_.selected_brush_size() == 1) {
-			if(terrain != old_terrain) {
-				draw_terrain(terrain, hex);
-			}
-		} else {
-			std::vector<gamemap::location> locs =
-				get_tiles(map_, hex, brush_.selected_brush_size());
-			map_undo_action action;
-			std::vector<gamemap::location> to_invalidate;
-			for(std::vector<gamemap::location>::const_iterator it = locs.begin();
-				it != locs.end(); ++it) {
-				if(terrain != map_.get_terrain(*it)) {
-					to_invalidate.push_back(*it);
-					action.add_terrain(map_.get_terrain(*it), terrain, *it);
-					map_.set_terrain(*it, terrain);
-					gui_.rebuild_terrain(*it);
-				}
-			}
-			if (!to_invalidate.empty()) {
-				terrain_changed(to_invalidate);
-				save_undo_action(action);
-			}
-		}
+	if(map_.on_board(selected_hex_, true)) {
+		std::vector<gamemap::location> hexes =
+			get_tiles(map_, selected_hex_, brush_.selected_brush_size());
+		draw_terrain(terrain, hexes);
 	}
 }
 
 void map_editor::draw_terrain(const t_translation::t_terrain terrain,
-		const gamemap::location hex)
+		const std::vector<gamemap::location> &hexes)
 {
-	const t_translation::t_terrain current_terrain = map_.get_terrain(hex);
 	map_undo_action undo_action;
-	undo_action.add_terrain(current_terrain, terrain, hex);
-	terrain_changed(hex);
-	map_.set_terrain(hex, terrain);
-	gui_.rebuild_terrain(hex);
+	
+	for(std::vector<gamemap::location>::const_iterator it = hexes.begin();
+			it != hexes.end(); ++it) {
+		const t_translation::t_terrain old_terrain = map_.get_terrain(*it);
+		if(terrain != old_terrain) {
+			undo_action.add_terrain(old_terrain, terrain, *it);
+			map_.set_terrain(*it, terrain);
+			// always rebuild localy to show the drawing progress
+			gui_.rebuild_terrain(*it);
+			gui_.invalidate(*it);
+			map_dirty_ = true;
+		}
+	}
+
 	save_undo_action(undo_action);
 }
 
 void map_editor::terrain_changed(const gamemap::location &hex)
 {
-	std::vector<gamemap::location> v(1, hex);
-	terrain_changed(v);
-}
-
-void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes)
-{
 	if (!auto_update_) {
-		std::vector<gamemap::location>::const_iterator it;
-		for (it = hexes.begin(); it != hexes.end(); it++) {
-			gui_.rebuild_terrain(*it);
-			gui_.invalidate(*it);
-		}
-	} else {
-		// will be rebuilded by the main loop
-		invalidate_all_and_adjacent(hexes);
+		gui_.rebuild_terrain(hex);
+		gui_.invalidate(hex);
 	}
 	map_dirty_ = true;
+}
+
+// These 2 functions are useless now, maybe later?
+/*
+void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes)
+{
+	std::vector<gamemap::location>::const_iterator it;
+	for (it = hexes.begin(); it != hexes.end(); it++) {
+		terrain_changed(*it);
+	}
 }
 
 void map_editor::terrain_changed(const std::set<gamemap::location> &hexes) {
-	std::vector<gamemap::location> v;
-	std::copy(hexes.begin(), hexes.end(), std::back_inserter(v));
-	terrain_changed(v);
-}
-
-
-void map_editor::invalidate_adjacent(const gamemap::location hex) {
-	std::set<gamemap::location> s;
-	s.insert(hex);
-	invalidate_all_and_adjacent(s);
-}
-
-void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes) {
-	std::set<gamemap::location> to_invalidate;
-	std::vector<gamemap::location>::const_iterator it;
+	std::set<gamemap::location>::const_iterator it;
 	for (it = hexes.begin(); it != hexes.end(); it++) {
-		gamemap::location locs[7];
-		locs[0] = *it;
-		get_adjacent_tiles(*it, locs+1);
-		for(int i = 0; i != 7; ++i) {
-			to_invalidate.insert(locs[i]);
-		}
-	}
-	std::set<gamemap::location>::const_iterator its;
-	for (its = to_invalidate.begin(); its != to_invalidate.end(); its++) {
-		if (!map_.on_board(*its, true)) {
-			t_translation::t_terrain terrain_before = map_.get_terrain(*its);
-			map_.remove_from_border_cache(*its);
-			t_translation::t_terrain terrain_after = map_.get_terrain(*its);
-			if (terrain_before != terrain_after) {
-				invalidate_adjacent(*its);
-			}
-		}
-		gui_.invalidate(*its);
-	}
-	map_dirty_ = true;
+		terrain_changed(*it);
+	}	
 }
+*/
 
-void map_editor::invalidate_all_and_adjacent(const std::set<gamemap::location> &hexes) {
-	std::vector<gamemap::location> v;
-	std::copy(hexes.begin(), hexes.end(), std::back_inserter(v));
-	invalidate_all_and_adjacent(v);
-}
 
 void map_editor::right_button_down(const int /*mousex*/, const int /*mousey*/) {
 	// Draw with the background terrain on rightclick,

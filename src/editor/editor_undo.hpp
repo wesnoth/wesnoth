@@ -75,6 +75,9 @@ public:
 	/// action.
 	bool starting_location_set() const;
 
+	/// Return true if something have been saved in this undo
+	bool something_set() const;
+
 private:
 	std::map<gamemap::location, t_translation::t_terrain> old_terrain_;
 	std::map<gamemap::location, t_translation::t_terrain> new_terrain_;

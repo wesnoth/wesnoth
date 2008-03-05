@@ -111,6 +111,10 @@ bool map_undo_action::starting_location_set() const {
 	return starting_locations_set_;
 }
 
+bool map_undo_action::something_set() const {
+	return terrain_set_ || selection_set_ || map_data_set_ || starting_locations_set_;
+}
+
 void add_undo_action(const map_undo_action &action) {
 	undo_stack.push_back(action);
 	if (undo_stack.size() > undo_limit) {

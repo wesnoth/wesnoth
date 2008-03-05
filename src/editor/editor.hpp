@@ -201,25 +201,7 @@ private:
 	/// Draw terrain at a location. The operation is saved in the undo
 	/// stack. Update the map to reflect the change.
 	void draw_terrain(const t_translation::t_terrain terrain,
-					  const gamemap::location hex);
-
-
-	/////////////////////////////////////////////////////////////////////
-	// NOTE: after any terrain has changed, one of the invalidate      //
-	// methods must be called with that location among the arguments.  //
-	/////////////////////////////////////////////////////////////////////
-
-
-	/// Invalidate the given hex and all the adjacent ones. Assume the
-	/// hex has changed, so rebuild the dynamic terrain at the hex and
-	/// the adjacent hexes.
-	void invalidate_adjacent(const gamemap::location hex);
-
-	/// Invalidate the hexes in the give vector and the ones that are
-	/// adjacent. Rebuild the terrain on the same hexes. Make sure that
-	/// the operations only happen once per hex for efficiency purposes.
-	void invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes);
-	void invalidate_all_and_adjacent(const std::set<gamemap::location> &hexes);
+					  const std::vector<gamemap::location> &hexes);
 
 	/// Re-set the labels for the starting positions of the
 	/// players. Should be called when the terrain has changed, which
@@ -259,8 +241,8 @@ private:
 	/// Terrain has changed at the specified hex through user drawing
 	/// (not undo/redo or other special things).
 	void terrain_changed(const gamemap::location &hex);
-	void terrain_changed(const std::vector<gamemap::location> &hexes);
-	void terrain_changed(const std::set<gamemap::location> &hexes);
+//	void terrain_changed(const std::vector<gamemap::location> &hexes);
+//	void terrain_changed(const std::set<gamemap::location> &hexes);
 
 	/// Save an action so that it may be undone. Add an operation to the
 	/// number done since save.
