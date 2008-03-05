@@ -55,6 +55,7 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
 #include "sha1.hpp"
 
 #ifdef HAVE_PYTHON
