@@ -3,8 +3,12 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.0-svn:
- * language and i18n:
+ * Language and translations:
    * updated translations: Dutch, French, Galician, Japanese.
+
+ * Map editor:
+   * Fixed not working "Update transition" and make "Delay transition update"
+     directly trigger an update when toggled off.
 
  * Miscellaneous and bug fixes
    * Roads no longer display as "Road (Grassland)".
