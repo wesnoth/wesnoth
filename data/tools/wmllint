@@ -522,6 +522,8 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # to deserialize an empty unit.
     if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
+    if closer in ('movement_costs', 'defense') and 'grassland' in attributes and 'road' not in attributes:
+        print '"%s", line %d: [%s] without road attribute' % (filename, lineno, closer)
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
