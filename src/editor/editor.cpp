@@ -1617,10 +1617,10 @@ void map_editor::main_loop() {
 				if (auto_update_) {
 					gui_.rebuild_all();
 					gui_.invalidate_all();
+					map_dirty_ = false;
 				}
 				gui_.recalculate_minimap();
 				recalculate_starting_pos_labels();
-				map_dirty_ = false;
 			}
 		}
 		if (l_button_palette_dirty_) {
