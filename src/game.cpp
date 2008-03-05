@@ -768,7 +768,7 @@ bool game_controller::load_game()
 		}
 
 		const std::string version = cfg["version"];
-		if(version != game_config::version) {
+		if (utils::wildcard_string_match(version, "1.4*")) {
 			// do not load if too old, if either the savegame or the current game
 			// has the version 'test' allow loading
 			if(version < game_config::min_savegame_version &&
