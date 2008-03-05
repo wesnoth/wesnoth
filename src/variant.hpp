@@ -73,7 +73,6 @@ public:
 
 	template<typename T>
 	T* convert_to() const {
-		must_be(TYPE_CALLABLE);
 		T* res = dynamic_cast<T*>(mutable_callable());
 		if(!res) {
 			throw type_error("could not convert type");
@@ -120,5 +119,24 @@ private:
 	void increment_refcount();
 	void release();
 };
+
+template<typename T>
+T* convert_variant(const variant& v) {
+	T* res = dynamic_cast<T*>(v.mutable_callable());
+	if(!res) {
+		throw type_error("could not convert type");
+	}
+
+	return res;
+}
+
+template<typename T>
+T* try_convert_variant(const variant& v) {
+	if(!v.is_callable()) {
+		return NULL;
+	}
+
+	return dynamic_cast<T*>(v.mutable_callable());
+}
 
 #endif

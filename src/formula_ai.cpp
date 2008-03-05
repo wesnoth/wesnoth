@@ -33,7 +33,8 @@ public:
 		ai.get_info().units.swap(units_);
 	}
 
-	struct swapper {
+	class swapper {
+	public:
 		formula_ai& ai;
 		unit_map& a;
 		unit_map& b;
@@ -51,6 +52,7 @@ public:
 			swap();
 		}
 	};
+	friend class swapper;
 };
 
 class distance_between_function : public function_expression {
@@ -61,8 +63,11 @@ public:
 
 private:
 	variant execute(const formula_callable& variables) const {
-		const location_callable* loc1 = args()[0]->evaluate(variables).convert_to<location_callable>();
-		const location_callable* loc2 = args()[1]->evaluate(variables).convert_to<location_callable>();
+		const args_list& arguments = args();
+		const expression_ptr& exp_p = arguments[0];
+		variant my_variant = exp_p->evaluate(variables);
+		const location_callable* loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables));
+		const location_callable* loc2 = convert_variant<location_callable<(args()[1]->evaluate(variables));
 		return variant(distance_between(loc1->loc(), loc2->loc()));
 	}
 };
@@ -75,7 +80,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location& loc = args()[0]->evaluate(variables).convert_to<location_callable>()->loc();
+		const gamemap::location& loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		int best = 1000000;
 		const std::vector<gamemap::location>& villages = ai_.get_info().map.villages();
 		const std::set<gamemap::location>& my_villages = ai_.current_team().villages();
@@ -103,7 +108,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		variant attack = args()[0]->evaluate(variables);
-		ai::attack_analysis* analysis = attack.convert_to<ai::attack_analysis>();
+		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
 		for(int n = 0; n != analysis->movements.size(); ++n) {
 			std::pair<gamemap::location,unit>* pair = units_with_moves.extract(analysis->movements[n].first);
@@ -139,7 +144,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		variant position = args()[0]->evaluate(variables);
-		position_callable* pos = position.convert_to<position_callable>();
+		position_callable* pos = convert_variant<position_callable>(position);
 		position_callable::swapper swapper(ai_, *pos);
 		return args()[1]->evaluate(variables);
 	}
@@ -170,7 +175,7 @@ private:
 		const std::string type = args()[0]->evaluate(variables).as_string();
 		gamemap::location loc;
 		if(args().size() >= 2) {
-			loc = args()[1]->evaluate(variables).convert_to<location_callable>()->loc();
+			loc = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		}
 
 		return variant(new recruit_callable(loc, type));
@@ -184,8 +189,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location& src = args()[0]->evaluate(variables).convert_to<location_callable>()->loc();
-		const gamemap::location& dst = args()[1]->evaluate(variables).convert_to<location_callable>()->loc();
+		const gamemap::location& src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const gamemap::location& dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		return variant(new move_callable(src, dst));
 	}
 };
@@ -282,9 +287,9 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location& move_from = args()[0]->evaluate(variables).convert_to<location_callable>()->loc();
-		const gamemap::location& src = args()[1]->evaluate(variables).convert_to<location_callable>()->loc();
-		const gamemap::location& dst = args()[2]->evaluate(variables).convert_to<location_callable>()->loc();
+		const gamemap::location& move_from = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const gamemap::location& src = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		const gamemap::location& dst = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
 		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables).as_int() : -1;
 		if(ai_.get_info().units.count(move_from) == 0 || ai_.get_info().units.count(dst) == 0) {
 			std::cerr << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
@@ -314,11 +319,11 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap& m = args()[0]->evaluate(variables).convert_to<gamemap_callable>()->get_gamemap();
+		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables))->get_gamemap();
 
 		gamemap::location loc;
 		if(args().size() == 2) {
-			loc = args()[1]->evaluate(variables).convert_to<location_callable>()->loc();
+			loc = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		} else {
 			loc = gamemap::location(args()[1]->evaluate(variables).as_int(),
 			                        args()[2]->evaluate(variables).as_int());
@@ -334,7 +339,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const location_callable* loc = args()[0]->evaluate(variables).convert_to<location_callable>();
+		const location_callable* loc = convert_variant<location_callable>(args()[0]->evaluate(variables));
 		const unit_map::const_iterator i = ai_.get_info().units.find(loc->loc());
 		if(i != ai_.get_info().units.end()) {
 			return variant(new unit_callable(*i, ai_.current_team(), ai_.get_info().team_num));
@@ -359,7 +364,7 @@ private:
 			return variant(&vars);
 		}
 
-		const gamemap::location& loc = res.convert_to<location_callable>()->loc();
+		const gamemap::location& loc = convert_variant<location_callable>(res)->loc();
 		const formula_ai::move_map& srcdst = ai_.srcdst();
 		typedef formula_ai::move_map::const_iterator Itor;
 		std::pair<Itor,Itor> range = srcdst.equal_range(loc);
@@ -383,9 +388,9 @@ private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> vars;
 		variant dstsrc_var = args()[0]->evaluate(variables);
-		const ai::move_map& dstsrc = dstsrc_var.convert_to<move_map_callable>()->dstsrc();
+		const ai::move_map& dstsrc = convert_variant<move_map_callable>(dstsrc_var)->dstsrc();
 		std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
-		    dstsrc.equal_range(args()[1]->evaluate(variables).convert_to<location_callable>()->loc());
+		    dstsrc.equal_range(convert_variant<location_callable>(args()[1]->evaluate(variables))->loc());
 		while(range.first != range.second) {
 			unit_map::const_iterator un = ai_.get_info().units.find(range.first->second);
 			assert(un != ai_.get_info().units.end());
@@ -413,8 +418,8 @@ private:
 			return variant();
 		}
 
-		const unit& un = u.convert_to<unit_callable>()->get_unit();
-		const gamemap::location& loc = loc_var.convert_to<location_callable>()->loc();
+		const unit& un = convert_variant<unit_callable>(u)->get_unit();
+		const gamemap::location& loc = convert_variant<location_callable>(loc_var)->loc();
 		if(!ai_.get_info().map.on_board(loc)) {
 			return variant();
 		}
@@ -438,8 +443,8 @@ private:
 			return variant();
 		}
 
-		const unit& attacker = u1.convert_to<unit_callable>()->get_unit();
-		const unit& defender = u2.convert_to<unit_callable>()->get_unit();
+		const unit& attacker = convert_variant<unit_callable>(u1)->get_unit();
+		const unit& defender = convert_variant<unit_callable>(u2)->get_unit();
 		const std::vector<attack_type>& attacks = attacker.attacks();
 
 		int best = 0;
@@ -616,11 +621,11 @@ bool formula_ai::make_move()
 			continue;
 		}
 		
-		const move_callable* move = i->try_convert<move_callable>();
-		const attack_callable* attack = i->try_convert<attack_callable>();
-		const recruit_callable* recruit_command = i->try_convert<recruit_callable>();
-		const set_var_callable* set_var_command = i->try_convert<set_var_callable>();
-		const fallback_callable* fallback_command = i->try_convert<fallback_callable>();
+		const move_callable* move = try_convert_variant<move_callable>(*i);
+		const attack_callable* attack = try_convert_variant<attack_callable>(*i);
+		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(*i);
+		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(*i);
+		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(*i);
 
 		prepare_move();
 		if(move) {
