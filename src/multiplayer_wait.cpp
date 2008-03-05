@@ -455,7 +455,7 @@ void wait::generate_menu()
 		// saves.
 		config::const_child_itors side_units = sd.child_range("unit");
 		for(;side_units.first != side_units.second; ++side_units.first) {
-			if((**side_units.first)["canrecruit"] == "1") {
+			if(utils::string_bool((**side_units.first)["canrecruit"], false)) {
 				leader_type = (**side_units.first)["type"];
 				break;
 			}

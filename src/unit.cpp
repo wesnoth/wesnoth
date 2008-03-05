@@ -1497,7 +1497,7 @@ void unit::write(config& cfg) const
 	cfg["description"] = underlying_description_;
 
 	if(can_recruit())
-		cfg["canrecruit"] = "1";
+		cfg["canrecruit"] = "yes";
 
 	cfg["facing"] = gamemap::location::write_direction(facing_);
 

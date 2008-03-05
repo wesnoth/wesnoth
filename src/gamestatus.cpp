@@ -982,7 +982,7 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 
 			const config::child_list& units = (**s).get_children("unit");
 			for(config::child_list::const_iterator u = units.begin(); u != units.end(); ++u) {
-				if((**u)["canrecruit"] == "1") {
+				if(utils::string_bool( (**u)["canrecruit"], false) == true) {
 					leader = (**u)["id"];
 					break;
 				}
@@ -1040,7 +1040,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	const config::child_list& players = cfg_save.get_children("player");
 
 	for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
-		if ((**i)["canrecruit"] == "1"){
+		if (utils::string_bool( (**i)["canrecruit"], false) == true){
 			leader = (**i)["save_id"];
 		}
 	}
@@ -1063,7 +1063,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 				const config::child_list& units = (**s).get_children("unit");
 				for(config::child_list::const_iterator u = units.begin(); u != units.end(); ++u) {
-					if((**u)["canrecruit"] == "1") {
+					if(utils::string_bool( (**u)["canrecruit"], false) == true) {
 						leader = (**u)["id"];
 						break;
 					}

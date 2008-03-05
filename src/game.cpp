@@ -55,6 +55,7 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
 #include "sha1.hpp"
 
 #ifdef HAVE_PYTHON
@@ -661,7 +662,7 @@ bool game_controller::play_multiplayer_mode()
 		snprintf(buf,sizeof(buf),"%d",side_num);
 		(*itors.first)->values["side"] = buf;
 
-		(*itors.first)->values["canrecruit"] = "1";
+		(*itors.first)->values["canrecruit"] = "yes";
 
 		(*itors.first)->append(*side);
 

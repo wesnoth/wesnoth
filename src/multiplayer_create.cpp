@@ -504,7 +504,7 @@ void create::process_event()
 			side["enemy"] = "1";
 			side["side"] = lexical_cast<std::string>(pos+1);
 			side["team_name"] = lexical_cast<std::string>(pos+1);
-			side["canrecruit"] = "1";
+			side["canrecruit"] = "yes";
 			side["controller"] = "human";
 		}
 
