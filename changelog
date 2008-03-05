@@ -18,7 +18,10 @@ Version 1.5.0-svn:
    * default gender selection now works correctly for units with
      only a female variant.  Fixes bug #11197.
    * Fixed all C++ code that did string comparisons against WML attribute
-    "canrecruit" to use the standard WML utility function utils::string_bool() instead
+     "canrecruit" to use the standard WML utility function utils::string_bool() instead
+   * Fixed a border case of unit portrait advancement on which generic portraits would be
+     treated as character-specific (affected female Elvish Archer line; it also theoretically
+     affected units with [variation]s using different portraits)
 
 Version 1.4:
  * language and i18n:
