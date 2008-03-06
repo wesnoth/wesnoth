@@ -161,6 +161,8 @@ private:
 	resize_monitor resize_monitor_;
 	binary_paths_manager paths_manager_;
 
+	std::string test_scenario_;
+
 	bool test_mode_, multiplayer_mode_, no_gui_;
 	bool use_caching_;
 	bool force_valid_cache_;
@@ -181,7 +183,7 @@ private:
 
 game_controller::game_controller(int argc, char** argv)
    : argc_(argc), arg_(1), argv_(argv), thread_manager(),
-     test_mode_(false), multiplayer_mode_(false),
+     test_scenario_("test"), test_mode_(false), multiplayer_mode_(false),
      no_gui_(false), use_caching_(true), force_valid_cache_(false),
      force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false)
 {
@@ -248,6 +250,10 @@ game_controller::game_controller(int argc, char** argv)
 			break; //parse the rest of the arguments when we set up the game
 		} else if(val == "--test" || val == "-t") {
 			test_mode_ = true;
+			if(arg_ + 1 != argc_ && argv_[arg_ + 1][0] != '-') {
+				++arg_;
+				test_scenario_ = argv_[arg_];
+			}
 		} else if(val == "--debug" || val == "-d") {
 			game_config::debug = true;
 			game_config::mp_debug = true;
@@ -479,7 +485,7 @@ bool game_controller::play_test()
 	first_time = false;
 
 	state_.campaign_type = "test";
-	state_.scenario = "test";
+	state_.scenario = test_scenario_;
 
 	try {
 		refresh_game_cfg();
