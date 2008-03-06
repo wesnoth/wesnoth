@@ -527,7 +527,7 @@ void unit_type::build(const config& cfg, const movement_type_map& mv_types,
 	const config::child_list& variations = cfg.get_children("variation");
 	for(config::child_list::const_iterator var = variations.begin(); var != variations.end(); ++var) {
 		const config& var_cfg = **var;
-		if(var_cfg["inherit"] == "yes") {
+		if(utils::string_bool(var_cfg["inherit"])) {
 			config nvar_cfg(cfg);
 			nvar_cfg.merge_with(var_cfg);
 			nvar_cfg.clear_children("variation");
@@ -545,7 +545,7 @@ void unit_type::build(const config& cfg, const movement_type_map& mv_types,
 	const config* const male_cfg = cfg.child("male");
 	if(male_cfg != NULL) {
 		config m_cfg;
-		if((*male_cfg)["inherit"]=="no") {
+		if(!utils::string_bool((*male_cfg)["inherit"], true)) {
 			m_cfg = *male_cfg;
 		} else {
 			m_cfg = cfg;
@@ -559,7 +559,7 @@ void unit_type::build(const config& cfg, const movement_type_map& mv_types,
 	const config* const female_cfg = cfg.child("female");
 	if(female_cfg != NULL) {
 		config f_cfg;
-		if((*female_cfg)["inherit"]=="no") {
+		if(!utils::string_bool((*female_cfg)["inherit"], true)) {
 			f_cfg = *female_cfg;
 		} else {
 			f_cfg = cfg;

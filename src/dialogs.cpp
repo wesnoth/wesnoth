@@ -544,7 +544,7 @@ void save_preview_pane::draw_contents()
 	str << font::BOLD_TEXT << utils::escape(name) << "\n" << time_buf;
 
 	const std::string& campaign_type = summary["campaign_type"];
-	if(summary["corrupt"] == "yes") {
+	if(utils::string_bool(summary["corrupt"], false)) {
 		str << "\n" << _("#(Invalid)");
 	} else if (!campaign_type.empty()) {
 		str << "\n";
@@ -563,7 +563,7 @@ void save_preview_pane::draw_contents()
 
 		str << "\n";
 
-		if(summary["snapshot"] == "no" && summary["replay"] == "yes") {
+		if(utils::string_bool(summary["replay"], false) && !utils::string_bool(summary["snapshot"], true)) {
 			str << _("replay");
 		} else if (!summary["turn"].empty()) {
 			str << _("Turn") << " " << summary["turn"];
@@ -713,7 +713,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	  *show_replay = lmenu.option_checked();
 
 		const config& summary = *summaries[res];
-		if(summary["replay"] == "yes" && summary["snapshot"] == "no") {
+		if(utils::string_bool(summary["replay"], false) && !utils::string_bool(summary["snapshot"], true)) {
 			*show_replay = true;
 		}
 	}

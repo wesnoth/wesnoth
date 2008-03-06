@@ -627,7 +627,7 @@ bool game_controller::play_multiplayer_mode()
 			return false;
 		}
 
-		if ((*side)["random_faction"] == "yes") {
+		if (utils::string_bool((*side)["random_faction"])) {
 			const config::child_list& factions = era_cfg->get_children("multiplayer_side");
 			std::vector<std::string> faction_choices, faction_excepts;
 			faction_choices = utils::split((*side)["choices"]);
@@ -639,7 +639,7 @@ bool game_controller::play_multiplayer_mode()
 				faction_excepts.clear();
 			}
 			for(unsigned int i = 0, j = 0; i < factions.size(); ++i) {
-				if ((*factions[i])["random_faction"] != "yes") {
+				if (utils::string_bool((*factions[i])["random_faction"]) != true) {
 					const std::string& faction_id = (*factions[i])["id"];
 					if (
 						!faction_choices.empty() &&
@@ -657,7 +657,7 @@ bool game_controller::play_multiplayer_mode()
 					}
 				}
 			}
-			if ((*side)["random_faction"] == "yes") {
+			if (utils::string_bool((*side)["random_faction"], false) == true) {
 				std::string side_name = (type == side_types.end() ? "default" : type->second);
 				std::cerr << "Could not find any non-random faction for side " << side_num << "\n";
 				return false;

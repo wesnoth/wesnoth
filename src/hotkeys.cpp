@@ -183,10 +183,10 @@ void hotkey_item::load_from_config(const config& cfg)
 {
 	const std::string& key = cfg["key"];
 
-	alt_ = (cfg["alt"] == "yes");
-	cmd_ = (cfg["cmd"] == "yes");
-	ctrl_ = (cfg["ctrl"] == "yes");
-	shift_ = (cfg["shift"] == "yes");
+	alt_ = utils::string_bool(cfg["alt"]);
+	cmd_ = utils::string_bool(cfg["cmd"]);
+	ctrl_ = utils::string_bool(cfg["ctrl"]);
+	shift_ = utils::string_bool(cfg["shift"]);
 
 	if (!key.empty()) {
 		// They may really want a specific key on the keyboard: we assume

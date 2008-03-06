@@ -491,7 +491,8 @@ theme::panel::panel(const config& cfg) : object(cfg), image_(cfg["image"])
 theme::menu::menu() : context_(false)
 {}
 
-theme::menu::menu(const config& cfg) : object(cfg), context_(cfg["is_context_menu"] == "true"),
+theme::menu::menu(const config& cfg) : object(cfg),
+                                       context_(utils::string_bool(cfg["is_context_menu"])),
                                        title_(cfg["title"].str() + cfg["title_literal"].str()),
 									   tooltip_(cfg["tooltip"]),
 						image_(cfg["image"]), type_(cfg["type"]),

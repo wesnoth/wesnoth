@@ -262,6 +262,11 @@ bool internal_conditional_passed(const unit_map* units,
 		&& (utils::string_bool(value) != utils::string_bool(boolean_equals))) {
 			return false;
 		}
+		const std::string boolean_not_equals = values["boolean_not_equals"];
+		if(values.get_attribute("boolean_not_equals") != ""
+		&& (utils::string_bool(value) == utils::string_bool(boolean_not_equals))) {
+			return false;
+		}
 		const std::string contains = values["contains"];
 		if(values.get_attribute("contains") != "" && value.find(contains) == std::string::npos) {
 			return false;
@@ -700,7 +705,9 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		std::string fog = cfg["fog"];
 		std::string shroud = cfg["shroud"];
 		std::string village_gold = cfg["village_gold"];
-		// TODO? std::string colour = cfg["colour"];
+		const config::child_list& ai = cfg.get_config().get_children("ai");
+		// TODO: also allow client to modify a side's colour if it
+		// is possible to change it on the fly without causing visual glitches
 
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
@@ -713,7 +720,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				(*teams)[team_index].change_team(team_name,
 												 user_team_name);
 			}
-			// Modify recruit list
+			// Modify recruit list (override)
 			if (!recruit_str.empty()) {
 				std::vector<std::string> recruit = utils::split(recruit_str);
 				if (recruit.size() == 1 && recruit.back() == "")
@@ -750,6 +757,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			// Set income per village
 			if (!village_gold.empty()) {
 				(*teams)[team_index].set_village_gold(lexical_cast_default<int>(village_gold));
+			}
+			// Override AI parameters
+			if (!ai.empty()) {
+				(*teams)[team_index].set_ai_parameters(ai);
 			}
 		}
 	}
@@ -1052,6 +1063,12 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				value %= divider;
 				var = str_cast(value);
 			}
+		}
+		
+		const t_string string_length_target = cfg["string_length"];
+		if(string_length_target.empty() == false) {
+			const int value = string_length_target.str().length();
+			var = str_cast(value);
 		}
 
 		// Note: maybe we add more options later, eg. strftime formatting.

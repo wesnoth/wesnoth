@@ -553,7 +553,7 @@ void write_stats(config_writer &out)
 void read_stats(const config& cfg)
 {
 	fresh_stats();
-	mid_scenario = (cfg["mid_scenario"] == "true");
+	mid_scenario = (utils::string_bool(cfg["mid_scenario"]));
 
 	const config::child_list& scenarios = cfg.get_children("scenario");
 	for(config::child_list::const_iterator i = scenarios.begin(); i != scenarios.end(); ++i) {

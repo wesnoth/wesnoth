@@ -511,7 +511,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 
 				if(!terrain.empty()) {
 					set_terrain(location(x2,y2),terrain[0]);
-				} else if(cfg["use_old"] != "yes") {
+				} else if(utils::string_bool(cfg["use_old"]) != true) {
 					set_terrain(location(x2,y2),t);
 				}
 			} else {

@@ -69,7 +69,7 @@ void leader_list_manager::update_leader_list(int side_index)
 
 	leaders_.clear();
 
-	if(side["random_faction"] == "yes") {
+	if(utils::string_bool(side["random_faction"])) {
 		if(leader_combo_ != NULL) {
 			std::vector<std::string> dummy;
 			dummy.push_back("-");

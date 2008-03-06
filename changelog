@@ -5,21 +5,28 @@ Version 1.5.0-svn:
  * map editor:
    * Fixed not working "Update transition" and make "Delay transition update"
      directly trigger an update when toggled off.
+ * WML engine:
+   * Fixed most C++ probes for boolean WML attributes to use utils::string_bool()
+     rather than true/false or yes/no string comparisons; as a result, they should accept
+     true non-zero values, "on", "yes" or "true" strings; and "0", "off", "no" or "false" are
+     considered false values.
+   * A variable string's length can now be obtained with [set_variable]string_length=
+   * Implemented [variable] boolean_not_equals= for simmetry with [variable] boolean_equals=
+   * [modify_side] can set AI parameters now, using the [ai] syntax implemented
+     for [side] declarations (patch #984)
  * miscellaneous and bug fixes:
    * added VICTORY_AND_DEFEAT_MUSIC macro - not wiring it in in trunk
      content, in the hope that we get engine support for this soon, but it's
      here to use in the meantime
    * 'road' is no longer aliased to grassland. It now has its own key in
      movetypes.  Note!  This will create compatibility issues with UMC
-     that relies on a grassland= in a movetype or [defense] tag to also
+     that relies on a grassland= in a [movement_costs] or [defense] tag to also
      set stats for roads.
    * remove an ancient wml update program which has been obsoleted by wmllint
    * added the boost regex dependency
    * added the sdl-ttf dependency
    * default gender selection now works correctly for units with
      only a female variant.  Fixes bug #11197.
-   * Fixed all C++ code that did string comparisons against WML attribute
-     "canrecruit" to use the standard WML utility function utils::string_bool() instead
    * Fixed a border case of unit portrait advancement on which generic portraits would be
      treated as character-specific (affected female Elvish Archer line; it also theoretically
      affected units with [variation]s using different portraits)

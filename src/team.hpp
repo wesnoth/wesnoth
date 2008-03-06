@@ -226,6 +226,7 @@ public:
 	const config& ai_parameters() const { return aiparams_; }
 	const config& ai_memory() const { return info_.ai_memory_; }
 	void set_ai_memory(const config& ai_mem);
+	void set_ai_parameters(const config::child_list& ai_parameters);
 
 	double leader_value() const { return info_.leader_value; }
 	void set_leader_value(double value) { info_.leader_value = value; }

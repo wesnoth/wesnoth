@@ -80,9 +80,9 @@ void play_controller::init(CVideo& video, bool is_replay){
 	recorder.set_skip(false);
 
 	const config::child_list& unit_cfg = level_.get_children("side");
-	bool snapshot = level_["snapshot"] == "yes";
+	const bool snapshot = utils::string_bool(level_["snapshot"]);
 
-	if(level_["modify_placing"] == "true") {
+	if(utils::string_bool(level_["modify_placing"])) {
 		LOG_NG << "modifying placing...\n";
 		place_sides_in_preferred_locations(map_,unit_cfg);
 	}

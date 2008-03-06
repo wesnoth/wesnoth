@@ -850,7 +850,7 @@ void server::process_data_lobby(const network::connection sock, const config& da
 	// See if the player is joining a game
 	if (data.child("join")) {
 		const std::string& id = (*data.child("join"))["id"];
-		const bool observer = ((*data.child("join"))["observe"] == "yes");
+		const bool observer = utils::string_bool((*data.child("join"))["observe"]);
 		const std::string& password = (*data.child("join"))["password"];
 		int game_id;
 		try {
@@ -1061,7 +1061,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like.
-		if (s["mp_shroud"] != "yes") {
+		if (true != utils::string_bool(s["mp_shroud"])) {
 			desc["map_data"] = s["map_data"];
 		}
 		desc["mp_era"] = (s.child("era") ? (*s.child("era"))["id"] : "");

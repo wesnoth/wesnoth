@@ -366,8 +366,8 @@ team::team(const config& cfg, int gold) :
 		ally_shroud_(),
 		ally_fog_()
 {
-	fog_.set_enabled(cfg["fog"] == "yes");
-	shroud_.set_enabled(cfg["shroud"] == "yes");
+	fog_.set_enabled( utils::string_bool(cfg["fog"]) );
+	shroud_.set_enabled( utils::string_bool(cfg["shroud"]) );
 	shroud_.read(cfg["shroud_data"]);
 
 	LOG_NG << "team::team(...): team_name: " << info_.team_name
@@ -545,6 +545,15 @@ void team::set_ai_memory(const config& ai_mem){
   // but this method comparmentalizes the functionality and protects against
   // accidentally overwriting the memory
   info_.ai_memory_=ai_mem;
+}
+
+void team::set_ai_parameters(const config::child_list& ai_parameters)
+{
+	info_.ai_params.clear();		// override
+	config::child_list::const_iterator i;
+	for (i = ai_parameters.begin(); i != ai_parameters.end(); ++i) {
+		info_.ai_params.push_back(**i);
+	}
 }
 
 bool team::shrouded(const gamemap::location& loc) const
@@ -842,4 +851,3 @@ int village_owner(const gamemap::location& loc)
 	return -1;
 }
 }
-

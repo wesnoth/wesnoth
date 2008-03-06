@@ -263,7 +263,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		std::vector<team>::iterator t;
 		for(t = teams_.begin(); t != teams_.end(); ++t) {
 			std::string countd_enabled = level_["mp_countdown"].c_str();
-			if ( countd_enabled == "yes" && !loading_game_ ){
+			if (utils::string_bool(countd_enabled) && !loading_game_ ){
 				t->set_countdown_time(1000 * lexical_cast_default<int>(level_["mp_countdown_init_time"],0));
 			}
 		}

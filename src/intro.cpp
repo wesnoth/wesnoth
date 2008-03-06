@@ -111,7 +111,7 @@ bool show_intro_part(display &disp, const config& part,
 
 
 	const std::string& background_name = part["background"];
-	const bool show_title = (part["show_title"] == "yes");
+	const bool show_title = utils::string_bool(part["show_title"]);
 
 	surface background(NULL);
 	if(background_name.empty() == false) {
@@ -204,7 +204,7 @@ bool show_intro_part(display &disp, const config& part,
 			const int x = static_cast<int>(atoi(xloc.c_str())*scale);
 			const int y = static_cast<int>(atoi(yloc.c_str())*scale);
 
-			if ((**i)["scaled"] == "yes"){
+			if (utils::string_bool((**i)["scaled"])){
 				img = scale_surface(img, static_cast<int>(img->w*scale), static_cast<int>(img->h*scale));
 			}
 
@@ -214,7 +214,7 @@ bool show_intro_part(display &disp, const config& part,
 			image_rect.w = img->w;
 			image_rect.h = img->h;
 
-			if ((**i)["centered"] == "yes"){
+			if (utils::string_bool((**i)["centered"])){
 				image_rect.x -= image_rect.w/2;
 				image_rect.y -= image_rect.h/2;
 			}

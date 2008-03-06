@@ -976,7 +976,7 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 				continue;
 			}
 
-			if((**s)["shroud"] == "yes") {
+			if(utils::string_bool((**s)["shroud"])) {
 				shrouded = true;
 			}
 
@@ -1057,7 +1057,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 					continue;
 				}
 
-				if((**s)["shroud"] == "yes") {
+				if(utils::string_bool((**s)["shroud"])) {
 					shrouded = true;
 				}
 
