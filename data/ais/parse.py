@@ -1,6 +1,6 @@
 import re, os, safe
 
-whitelisted = ["wesnoth", "heapq", "random", "math", "string", "re"]
+whitelisted = ["wesnoth", "heapq", "random", "math", "string", "re", "threading"]
 rex = re.compile(r"^import\s+(.*)", re.M)
 modules = {}
 
