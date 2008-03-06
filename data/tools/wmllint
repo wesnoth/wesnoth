@@ -271,8 +271,8 @@ filemoves = {
     "1.3.4" : (
     	# This release changed from numeric to string palette IDs
         ("RC(magenta>1)", "RC(magenta>red)"),
-        ("RC(magenta>2)", "RC(magenta>green)"),
-        ("RC(magenta>3)", "RC(magenta>blue)"),
+        ("RC(magenta>2)", "RC(magenta>blue)"),
+        ("RC(magenta>3)", "RC(magenta>green)"),
         ("RC(magenta>4)", "RC(magenta>purple)"),
         ("RC(magenta>5)", "RC(magenta>black)"),
         ("RC(magenta>6)", "RC(magenta>brown)"),
@@ -280,8 +280,8 @@ filemoves = {
         ("RC(magenta>8)", "RC(magenta>white)"),
         ("RC(magenta>9)", "RC(magenta>teal)"),
         ("colour=1", "colour=red"),
-        ("colour=2", "colour=green"),
-        ("colour=3", "colour=blue"),
+        ("colour=2", "colour=blue"),
+        ("colour=3", "colour=green"),
         ("colour=4", "colour=purple"),
         ("colour=5", "colour=black"),
         ("colour=6", "colour=brown"),
@@ -1825,18 +1825,24 @@ def translator(filename, mapxforms, textxform, versions):
     # Simple check for unbalanced macro calls
     unclosed = None
     linecount = 1
-    depth = 0
+    startline = None
+    depth = quotecount = 0
     for i in range(len(transformed)):
         if transformed[i] == '\n':
             linecount += 1
         elif transformed[i] == '{':
             if depth == 0:
-                unclosed = linecount
+                unclosed = startline = linecount
+                quotecount = 0
             depth += 1
+        elif transformed[i] == '"':
+            quotecount += 1
         elif transformed[i] == '}':
             depth -= 1
             if depth == 0:
                 unclosed = None
+                if quotecount % 2:
+                    print >>sys.stderr, '"%s", line %d: unbalanced quote.' % (filename, startline)
     if unclosed:
         print >>sys.stderr, '"%s", line %d: unbalanced {.' % (filename, unclosed)
     # Return None if the transformation functions made no changes.
