@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-06 12:44+0100\n"
-"PO-Revision-Date: 2008-02-08 17:24+0100\n"
+"PO-Revision-Date: 2008-03-06 14:08+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -167,9 +167,8 @@ msgid "Chinese Translation"
 msgstr "Čínský překlad"
 
 #: data/core/about.cfg:873
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Čínský překlad"
+msgstr "Překlad do Taiwanské čínštiny"
 
 #: data/core/about.cfg:880
 msgid "Czech Translation"
@@ -185,7 +184,7 @@ msgstr "Holandský překlad"
 
 #: data/core/about.cfg:1012
 msgid "English (GB) Translation"
-msgstr "Anglický (VB) překlad"
+msgstr "Anglický překlad (VB)"
 
 #: data/core/about.cfg:1022
 msgid "Esperanto Translation"
@@ -2244,7 +2243,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2256,10 +2254,10 @@ msgid ""
 msgstr ""
 "\n"
 "Nastavuje nebo přepíná hráče mezi režimem člověk/počítač. Tento příkaz může "
-"použít pouze hráč/klient, který ovládá tuto stranu. Pokud neudáte v prvním "
-"parametru stranu, je vybrána aktivní strana. Pokud neudáte ve druhém "
+"použít pouze hráč/klient, který ovládá tuto stranu. Pokud neudáte ve druhém "
 "parametru stav (on/off), je stav přepnut na opačnou hodnotu. „On“ znamená, "
-"že danou stranu řídí umělá inteligence, „off“ člověk.\n"
+"že danou stranu řídí umělá inteligence, „off“ člověk. Pokud neudáte žádné "
+"parametry, je vybrána aktivní strana.\n"
 "\n"
 
 #: data/core/help.cfg:689
@@ -2631,15 +2629,14 @@ msgid "teleport"
 msgstr "teleportace"
 
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "Teleportace:\n"
-"Tato jednotka se dokáže v okamžiku přemístit z jedné spřátelené vesnice do "
-"druhé."
+"Tato jednotka se dokáže v jednom svém kroku přemístit z jedné spřátelené "
+"vesnice do druhé, za předpokladu že jsou obě prázdné."
 
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
@@ -3925,13 +3922,11 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " Osvětlení zvyšuje stupeň osvětlení na přilehlých polích."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teleportace:\n"
-"Tato jednotka se dokáže v okamžiku přemístit z jedné spřátelené vesnice do "
+" Tato jednotka se dokáže v okamžiku přemístit z jedné spřátelené vesnice do "
 "druhé."
 
 #: data/core/macros/special-notes.cfg:41
@@ -4219,7 +4214,6 @@ msgid "race^Drakes"
 msgstr "Drakonidé"
 
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6320,9 +6314,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Připoj se na oficiální herní server Wesnothu"
 
 #: src/game.cpp:1492
-#, fuzzy
 msgid "Join a different server"
-msgstr "Připoj se na oficiální server"
+msgstr "Připoj se na jiný server"
 
 #: src/game.cpp:1494
 msgid "Local Game"
