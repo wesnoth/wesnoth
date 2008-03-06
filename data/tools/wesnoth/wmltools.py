@@ -235,8 +235,8 @@ class CrossRef:
             return True
     def __init__(self, dirpath=[], exclude="", warnlevel=0):
         "Build cross-reference object from the specified filelist."
-        self.dirpath = dirpath
         self.filelist = Forest(dirpath, exclude)
+        self.dirpath = filter(lambda x: not re.search(exclude, x), dirpath)
         self.xref = {}
         self.fileref = {}
         self.noxref = False
@@ -331,8 +331,8 @@ class CrossRef:
                 attack_name = None
                 beneath = 0
                 for (n, line) in enumerate(rfp):
-                    if line.startswith("#define"):
-                        formals = line.split()[2:]
+                    if line.strip().startswith("#define"):
+                        formals = line.strip().split()[2:]
                     elif line.startswith("#enddef"):
                         formals = []
                     comment = ""
@@ -475,10 +475,11 @@ class CrossRef:
                             beneath += 1
                 rfp.close()
         # Check whether each namespace has a defined export property
-        for namespace in dirpath:
+        for namespace in self.dirpath:
             if namespace not in self.properties or "export" not in self.properties[namespace]:
                 print "warning: %s has no export property" % namespace
     def subtract(self, filelist):
+
         "Transplant file references in files from filelist to a new CrossRef."
         smallref = CrossRef()
         for filename in self.fileref:
