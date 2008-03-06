@@ -1174,7 +1174,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
 	/* */
 
-	if(utils::string_bool(cfg_["random_gender"], false)) {
+	if(cfg["gender"].empty()) {
 		const game_data::unit_type_map::const_iterator ut = gamedata_->unit_types.find(cfg["type"]);
 		//! @todo FIXME shadowmaster: in my opinion, the following condition check
 		//! should be done earlier in this function as it is repated later for other
@@ -1184,7 +1184,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		//! the config obj. Not sure if that would be wanted; can the engine handle units
 		//! that don't have an equivalent unit_type obj associated?
 		if (ut != gamedata_->unit_types.end())
-			gender_ = generate_gender(ut->second, true, state);
+			gender_ = generate_gender(ut->second, utils::string_bool(cfg_["random_gender"], false), state);
 		else
 			ERR_UT << "no valid unit_type found for unit WML id \"" << cfg["type"] << "\"!\n";
 	} else {
