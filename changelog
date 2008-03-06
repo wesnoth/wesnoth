@@ -1,17 +1,19 @@
 Version 1.5.0-svn:
  * language and i18n:
-   * updated translations: Dutch, French, Galician, Hungarian, Japanese,
+   * updated translations: Czech, Dutch, French, Galician, Hungarian, Japanese,
      Russian, Spanish
  * map editor:
    * Fixed not working "Update transition" and make "Delay transition update"
      directly trigger an update when toggled off.
  * WML engine:
-   * Fixed most C++ probes for boolean WML attributes to use utils::string_bool()
-     rather than true/false or yes/no string comparisons; as a result, they should accept
-     true non-zero values, "on", "yes" or "true" strings; and "0", "off", "no" or "false" are
-     considered false values.
-   * A variable string's length can now be obtained with [set_variable]string_length=
-   * Implemented [variable] boolean_not_equals= for simmetry with [variable] boolean_equals=
+   * Fixed most C++ probes for boolean WML attributes to use 
+     utils::string_bool() rather than true/false or yes/no string comparisons;
+     as a result, they should accept true non-zero values, "on", "yes" or "true"
+     strings; and "0", "off", "no" or "false" are considered false values.
+   * A variable string's length can now be obtained with [set_variable] 
+     string_length=
+   * Implemented [variable] boolean_not_equals= for simmetry with [variable]
+     boolean_equals=
    * [modify_side] can set AI parameters now, using the [ai] syntax implemented
      for [side] declarations (patch #984)
  * miscellaneous and bug fixes:
@@ -27,9 +29,10 @@ Version 1.5.0-svn:
    * added the sdl-ttf dependency
    * default gender selection now works correctly for units with
      only a female variant.  Fixes bug #11197.
-   * Fixed a border case of unit portrait advancement on which generic portraits would be
-     treated as character-specific (affected female Elvish Archer line; it also theoretically
-     affected units with [variation]s using different portraits)
+   * Fixed a border case of unit portrait advancement on which generic portraits
+     would be treated as character-specific (affected female Elvish Archer line;
+     it also theoretically affected units with [variation]s using different
+     portraits)
 
 Version 1.4:
  * language and i18n:
