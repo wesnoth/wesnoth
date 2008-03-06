@@ -1,0 +1,1731 @@
+#textdomain wesnoth-utbs
+# Scenario 3: A Stirring in the Night
+
+# Notes:
+# If player kills one leader's champion, but then kills the other leader
+# then killing the leader takes precedent over killing the champion, and
+# the leader who died is the one who takes his revenge.
+
+[scenario]
+
+    id="3_Stirring_in_the_Night"
+    name= _ "A Stirring in the Night"
+    label= _ "A Stirring in the Night"
+
+    map_data="{campaigns/Under_the_Burning_Suns/maps/03_A_Stirring_in_the_Night.map}"
+
+    [music]
+        name=frantic.ogg
+    [/music]
+
+    next_scenario=4_Descending_into_Darkness
+
+    #don't display snapshot of map in saved games
+    snapshot="no"
+
+    #there is no turn limit for this scenario
+    turns="-1"
+
+    victory_when_enemies_defeated=no
+
+    #it is always night-time, during the long dark, just before dawn
+
+    {LONGDARK4}
+
+    [story]
+        [part]
+            story= _ "Chapter 3: As we continued north through the desert, the looming hills and mountains promised blessed relief from the seemingly never-ending sand. Soon we got to the end of the foothills, and we decided to rest there for the night. As tired as I was of marching across the sand, I felt strangely afraid. I had lived my entire life in the sands; they were my home, and the rocky hills and white glistening mountaintops seemed foreign and foreboding."
+        [/part]
+
+        [part]
+            story= _ "I worried if I was doing the right thing, leading my people to strange lands. Despite Eloh's promises, I was not as confident as Zhul was that it would all end well. Looking back I thought it strange that I was the one that Eloh showed herself to. I was never particularly devout, always worried more about day to day matters than the extra-worldly ones. But who was I to question a god?"
+        [/part]
+
+        [part]
+            story= _ "That night, as I slept, I dreamt again, for the first time since that first fateful night. Eloh came to me again, and this time she appeared in a vision as a beautiful glowing figure, as bright as the suns. She said 'Have courage, for though soon you shall go through a time of darkness, all your trials shall be richly rewarded in the end. You must go under the northern mountains, not over them. You will find the ruins of an ancient watch tower made of black obsidian in the desert by the edge of the hills. By that tower you will find the entrance to the tunnels you seek. Follow the smooth ancient tunnel down under the mountains and when you again see the sky and my suns, I shall contact you. But beware those who lurk in the darkness, they hide from my light, and must not be trusted. I have no power in the dark, so you are my hand of justice. Punish the non-believers. Go now, and fear not the dark.' And again, just like before, I was woken up by a shout in the night. "
+        [/part]
+    [/story]
+
+    # These macros store the various important dialogue sections, which are
+    # often called by several events (the macros have to appear before they
+    # are called).
+    #
+    # Tell wmllint what descriptions are good in the macros
+    # wmllint: recognize Nym
+    # wmllint: recognize Kaleh
+    # wmllint: recognize Azkotep
+    # wmllint: recognize Ystara
+    # wmllint: recognize Elyssa
+    # wmllint: recognize Garak
+    # wmllint: recognize Zhul
+    # wmllint: recognize Ganthos
+
+    #opening dialogue at start of scenario
+#define INTRO_DIALOGUE
+
+    [message]
+        description=Nym
+        message= _ "Kaleh, wake up! Scouts report movement out in the sands."
+    [/message]
+
+    [message]
+        description=Kaleh
+        message= _ "Is it orc raiders?"
+    [/message]
+
+    [message]
+        description=Nym
+        message= _ "I don't think so..."
+    [/message]
+
+    [message]
+        description=Azkotep
+        message= _ "We meet again Ystara."
+    [/message]
+
+    [message]
+        description=Ystara
+        message= _ "You think you can take me, Azkotep?"
+    [/message]
+
+    [message]
+        description=Azkotep
+        message= _ "My champion, Zur shall slice you to shreds like the puny adept you once were."
+    [/message]
+
+    [message]
+        description=Ystara
+        message= _ "You always were an arrogant little bastard. Grek will swallow your soul first, or what's left of it."
+    [/message]
+
+    [message]
+        description=Azkotep
+        message= _ "You spurned me once; I will make you pay. But enough of the past--to battle, my minions! Behold the wrath of the dead!"
+    [/message]
+
+    [message]
+        description=Nym
+        message= _ "Great, ringside seats for an all-out battle between two undead lords. You really know how to pick a campsite, Kaleh."
+    [/message]
+
+    [message]
+        description=Kaleh
+        message= _ "Where did they come from? I swear those castles weren't there at sunset."
+    [/message]
+
+    [message]
+        description=Zhul
+        message= _ "Many strange things can happen during the long dark. But despite their wraith-like forms, I have no doubt that their cold steel can still bite flesh."
+    [/message]
+
+    [message]
+        description=Elyssa
+        message= _ "Like I haven't killed enough undead recently. Why can't these guys just stay dead?"
+    [/message]
+
+    [message]
+        description=Garak
+        message= _ "Our encampment is out of the direct line of attack, so we should be somewhat safe, at least."
+    [/message]
+
+    [message]
+        description=Zhul
+        message= _ "But our people's encampments are in danger, they'll be slaughtered by the undead hordes!"
+    [/message]
+
+#ifdef EASY
+    [message]
+        description=Kaleh
+        message= _ "There's no way we can marshal our people to escape the battle in time. We must protect our people's $village_counter encampments from the undead."
+    [/message]
+#else
+    [message]
+        description=Kaleh
+        message= _ "There's no way we can marshal our people to escape the battle in time. We must protect our people's $village_counter encampments from the undead."
+    [/message]
+#endif
+
+    [message]
+        description=Zhul
+        message= _ "If the undead forces reach our encampments first, they will surely be destroyed. I fear that if we lose more than half our encampments we will not have the strength to go on. Garak, wake your men. We must hold off the undead until dawn."
+    [/message]
+
+    [message]
+        description=Kaleh
+        message= _ "To arms my people, to arms!"
+    [/message]
+
+#enddef
+
+    #dialogue when one undead leader possesses Garak
+    # wmllint: recognize Possessed Garak
+
+    #define GARAK_DIALOGUE_PART_ONE
+
+    [message]
+        description=Zhul
+        message= _ "Eloh protect us, what has he done?"
+    [/message]
+
+    [message]
+        description=Possessed Garak
+        message= _ "I live again! I can feel!"
+    [/message]
+
+    [message]
+        description=Kaleh
+        message= _ "Garak?"
+    [/message]
+
+    [message]
+        description=Possessed Garak
+        message= _ "Hahahaha! Your puny friend is no more. With his body I shall crush you all. Arise again my minions and feast in the slaughter!"
+    [/message]
+
+#enddef
+
+#define GARAK_DIALOGUE_PART_TWO
+
+    [message]
+        description=Nym
+        message= _ "But look, dawn is nigh, our salvation is almost at hand. Even the Long Dark cannot last forever, and with the light of the sun the undeads' dark power wanes and their magics unravel."
+    [/message]
+
+    [message]
+        description=Possessed Garak
+        message= _ "No! I shall have my vengeance upon you all. Darkness shall reign until I have triumphed!"
+    [/message]
+
+    [if]
+        [variable]
+            name=revenge
+            equals=2
+        [/variable]
+
+        [then]
+            [message]
+                description=Ystara
+                message= _ "In this I shall support you, the sun shall not rise until one of us is victorious."
+            [/message]
+        [/then]
+
+        [else]
+            [message]
+                description=Azkotep
+                message= _ "In this I shall support you, the sun shall not rise until one of us is victorious."
+            [/message]
+        [/else]
+    [/if]
+
+    [message]
+        description=Nym
+        message= _ "Maybe I spoke too soon. Curse Uria, they have even blotted out the stars, all is darkness. Kaleh, our course is clear, we must destroy one of these abominations. Whether it be the thing that has taken our friend, or the spectral evil that remains, one of them must die for this battle to end. We have no choice."
+    [/message]
+
+    [message]
+        description=Zhul
+        message= _ "But to kill Garak? How can we?"
+    [/message]
+
+    [message]
+        description=Kaleh
+        message= _ "That thing is not Garak. This night has lasted long enough, and too many of our people have died. How many more would you sacrifice for Garak's sake? Just protecting our encampments isn't enough, darkness and chaos will overwhelm us if we can't end this battle soon. We must destroy one of those two evils, whatever the cost. I do not intend to let that...thing keep control of the body of our friend."
+    [/message]
+
+    [if]
+        [variable]
+            name=revenge
+            equals=2
+        [/variable]
+
+        [then]
+            [message]
+                description=Ystara
+                message= _ "The stench of death is in the air."
+            [/message]
+        [/then]
+
+        [else]
+            [message]
+                description=Azkotep
+                message= _ "The stench of death is in the air."
+            [/message]
+        [/else]
+    [/if]
+
+    [message]
+        description=Possessed Garak
+        message= _ "Yes, let us end this once and for all."
+    [/message]
+
+    [objectives]
+        summary= _ "New Objectives:"
+        show=yes
+        [objective]
+            description= _ "Kill Possessed Garak (or)"
+            condition=win
+        [/objective]
+
+        [objective]
+            description= _ "Defeat remaining Undead Lord"
+            condition=win
+        [/objective]
+
+        [objective]
+            description= _ "You Control Less Than 6 Villages"
+            condition=lose
+        [/objective]
+
+        [objective]
+            description= _ "Death of Kaleh, Nym or Zhul"
+            condition=lose
+        [/objective]
+    [/objectives]
+
+#enddef
+
+    #This dialogue is used on the unlikely event that the player
+    #manages to kill both undead leaders before turn 12
+
+#define BOTH_LEADERS_KILLED_DIALOGUE
+
+    [message]
+        speaker=Ystara
+        message= _ "You have triumphed for the moment, but think not that the dark lords can be so easily vanquished. We shall return, and shall rule long after your bones have crumbled to dust. This is our land, and none shall leave it unscathed."
+    [/message]
+
+    [message]
+        speaker=Azkotep
+        message= _ "You fought so hard to protect your precious people, young elf. No great deed should go unpunished."
+    [/message]
+
+    [message]
+        speaker=Ystara
+        message= _ "A token to remember us by..."
+    [/message]
+
+    [message]
+        speaker=Garak
+        message= _ "Aaaauuugggghhhh!"
+    [/message]
+
+    [message]
+        speaker=Zhul
+        message= _ "He just collapsed!"
+    [/message]
+
+    [store_unit]
+        [filter]
+            description=Garak
+        [/filter]
+        variable=ElvishGarak
+    [/store_unit]
+
+    [kill]
+        description=Garak
+        animate=yes
+        fire_event=no
+    [/kill]
+
+    # since both leaders have been killed, give player maximum gold bonus
+    # that is, the cost of recruiting units does not go up at all.
+
+    [set_variable]
+        name=scen3
+        value=4
+    [/set_variable]
+
+    [endlevel]
+        result=victory
+    [/endlevel]
+
+#enddef
+
+    #This dialogue is used when the player is victorious
+
+#define VICTORY_DIALOGUE
+
+    [unstore_unit]
+        variable=ElvishGarak
+        find_vacant=yes
+    [/unstore_unit]
+
+    #if the player won by killing both undead lords and thus Garak
+    #died suddenly, as opposed to being possessed, then the opening dialog
+    #changes a bit.
+
+    [if]
+        [variable]
+            name=undead_leaders_killed
+            numerical_equals=2
+        [/variable]
+
+        [then]
+            [message]
+                description=Kaleh
+                message= _ "The undead lords are defeated at last."
+            [/message]
+        [/then]
+
+        [else]
+            [message]
+                description=Kaleh
+                message= _ "Finally. It is over."
+            [/message]
+        [/else]
+    [/if]
+
+    [if]
+        [have_unit]
+            description=Ganthos
+        [/have_unit]
+
+        [then]
+            [message]
+                description=Ganthos
+                message= _ "There's too many of them and the night is almost gone. Pull back you wretches, pull back!"
+            [/message]
+        [/then]
+    [/if]
+
+    [message]
+        description=Nym
+        message= _ "I can see the first rays of Naia shining over the horizon. She never looked so beautiful. The undead forces have crumbled into dust and the remaining orcs are retreating with the dawn. But what of Garak?"
+    [/message]
+
+    [message]
+        description=Zhul
+        message= _ "He's...He's still breathing!"
+    [/message]
+
+    [message]
+        description=Garak
+        message= _ "Protect the boy for me Zhul, (cough) I go to a better place."
+    [/message]
+
+    [kill]
+        description=Garak
+        animate=yes
+        fire_event=no
+    [/kill]
+
+    [message]
+        description=Kaleh
+        message= _ "From the sands he came, to the sands he will return. We remember and honor his sacrifice, and I vow that his death will not be in vain. "
+    [/message]
+
+    [message]
+        description=Zhul
+        message= _ "Goodbye old friend, may Eloh shine her light eternal upon you."
+    [/message]
+
+    [message]
+        description=Elyssa
+        message= _ "He was as brave and valiant a fighter as I have ever seen in my travels."
+    [/message]
+
+    [message]
+        description=Nym
+        message= _ "He was a bastard at times.... But...but why did he have to die? It...it just doesn't make sense. "
+    [/message]
+
+    [if]
+        [variable]
+            name=scen3
+            numerical_equals=4
+        [/variable]
+
+        [then]
+            [set_variable]
+                name=scen3
+                value=1
+            [/set_variable]
+
+            [message]
+                description=Zhul
+                message= _ "That was a very brave thing you did, Kaleh, defeating both of those Undead Lords. It took great courage and strength. Because of your daring attack, we did not have to wait for the dawn to save us. You were our savior. And many fewer of our people died than would have if we had had to wait out the long night."
+            [/message]
+
+            [message]
+                description=Nym
+                message= _ "Though we saved almost all our people this time, we won't always be so lucky. While elves who have fought with you in the past will gladly return, if the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
+            [/message]
+        [/then]
+
+        [else]
+            # if 9,10,11,12 villages survive increase recruitment costs by 0
+            # set scen3 to 1
+            # if 7,8 villages survive increase recruitment costs by 1
+            # set scen3 to 2
+            # if 6 villages survive increase recruitment costs by 2
+            # set scen3 to 3
+
+            [if]
+                [variable]
+                    name=village_counter
+                    numerical_equals=12
+                [/variable]
+
+                [then]
+                    [message]
+                        description=Zhul
+                        message= _ "Miraculously, all of our encampments survived the night."
+                    [/message]
+
+                    [message]
+                        description=Nym
+                        message= _ "Though we saved almost all our people this time, we won't always be so lucky. While elves who have fought with you in the past will gladly return, if the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
+                    [/message]
+
+                    [set_variable]
+                        name=scen3
+                        value=1
+                    [/set_variable]
+                [/then]
+
+                [else]
+                    [message]
+                        description=Zhul
+                        message= _ "Well, only $village_counter encampments remain, but we shall survive."
+                    [/message]
+
+                    [message]
+                        description=Kaleh
+                        message= _ "Yes, but at what cost?"
+                    [/message]
+
+                    [if]
+                        [variable]
+                            name=village_counter
+                            greater_than=8
+                        [/variable]
+
+                        [then]
+                            [message]
+                                description=Nym
+                                message= _ "Though we saved almost all our people this time, we won't always be so lucky. While elves who have fought with you in the past will gladly return, as the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
+                            [/message]
+
+                            [set_variable]
+                                name=scen3
+                                value=1
+                            [/set_variable]
+                        [/then]
+
+                        [else]
+                            [if]
+                                [variable]
+                                    name=village_counter
+                                    greater_than=6
+                                [/variable]
+
+                                [then]
+                                    [message]
+                                        description=Nym
+                                        message= _ "We have suffered losses, but we we are not broken yet. We have saved most of our people tonight. But while elves who have fought with you in the past will gladly return, as the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
+                                    [/message]
+
+                                    [set_variable]
+                                        name=scen3
+                                        value=2
+                                    [/set_variable]
+                                [/then]
+
+                                [else]
+                                    [message]
+                                        description=Nym
+                                        message= _ "We have suffered grievous losses, but we we are not broken yet. Long will this slaughter be remembered by our people. Where was Eloh during the darkness? And I'm afraid that while elves who have fought with you in the past will gladly return, as the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
+                                    [/message]
+
+                                    [set_variable]
+                                        name=scen3
+                                        value=3
+                                    [/set_variable]
+                                [/else]
+                            [/if]
+                        [/else]
+                    [/if]
+                [/else]
+            [/if]
+        [/else]
+    [/if]
+
+    [message]
+        description=Kaleh
+        message= _ "All this death and destruction. What were those shades arguing over? Was this all just some sort of demented game?"
+    [/message]
+
+    [message]
+        description=Zhul
+        message= _ "The lords of the dead are powerful and twisted indeed. Only Eloh knows the truth of what happened tonight."
+    [/message]
+
+    [message]
+        description=Nym
+        message= _ "I don't want to be here tomorrow night to find out. The hills to the north are close. Let's be far away before another nightfall."
+    [/message]
+
+#enddef
+
+    # Side 1 elves
+    [side]
+        side=1
+        description=Kaleh
+        type=Desert Fighter
+        canrecruit=yes
+        controller=human
+        recruit=Desert Fighter, Desert Archer, Desert Hunter, Desert Shaman, Desert Scout
+        {INCOME 4 2 0}
+        shround=no
+        fog=no
+    [/side]
+
+    # Side 2 undead, starts with pet revenant, Zur
+    [side]
+        side=2
+        description=Azkotep
+        user_description= _ "Azkotep"
+        type=Spectre
+        canrecruit=yes
+        controller=ai
+        {GOLD 100 125 150}
+        {INCOME 12 15 18}
+
+        #units available should change based on difficulty
+
+#ifdef EASY
+        recruit=Skeleton,Skeleton Archer,Skeleton Rider
+#endif
+#ifdef NORMAL
+        recruit=Skeleton,Bone Shooter,Skeleton Rider,Revenant
+#endif
+#ifdef HARD
+        recruit=Skeleton Rider,Deathblade,Bone Shooter,Revenant
+#endif
+
+        [ai]
+            aggression=0.9
+            caution=0.0
+            # tell the scouts to target villages
+            scout_village_targetting=5
+
+            # keep leader from charging out in battle
+            passive_leader=yes
+
+            # AI will attack a weak unit with a max of 3,4,5 units
+            # depending on the difficulty
+            {ATTACK_DEPTH 3 4 5}
+
+            recruitment_pattern=scout,scout,fighter,archer,fighter
+            recruitment_ignore_bad_movement=yes
+
+            [target]
+                side=1
+                value=1
+            [/target]
+
+            [target]
+                side=3
+                value=3
+            [/target]
+
+            [target]
+                side=4
+                value=1
+            [/target]
+
+            [target]
+                description=Grak
+                value=20
+            [/target]
+        [/ai]
+    [/side]
+
+    # Side 3 undead, starts with pet wraith, Grak
+    [side]
+        side=3
+        description=Ystara
+        user_description= _ "Ystara"
+        type=Spectre
+        canrecruit=yes
+        controller=ai
+        {GOLD 100 125 150}
+        {INCOME 12 15 18}
+
+        #units available should change based on difficulty
+#ifdef EASY
+        recruit=Ghost,Soulless,Ghoul,Blood Bat
+#endif
+#ifdef NORMAL
+        recruit=Blood Bat,Ghost,Wraith,Soulless,Necrophage
+#endif
+#ifdef HARD
+        recruit=Blood Bat,Wraith,Soulless,Necrophage,Ghoul
+#endif
+
+        [ai]
+            aggression=0.9
+            caution=0.0
+            # tell the scouts to target villages
+            scout_village_targetting=5
+
+            # keep leader from charging out in battle
+            passive_leader=yes
+
+            # Ystara's units have less mobility, and tend to lose
+            # so I'm experimenting by making her more deadly
+
+            # AI will attack a weak unit with a max of 4,5,6 units
+            # depending on the difficulty
+            {ATTACK_DEPTH 4 5 6}
+
+            # scout tends to summon wraiths
+            recruitment_pattern=scout,scout,fighter,fighter
+            recruitment_ignore_bad_movement=yes
+
+            [target]
+                side=1
+                value=1
+            [/target]
+
+            [target]
+                side=2
+                value=3
+            [/target]
+
+            [target]
+                side=4
+                value=1
+            [/target]
+
+            [target]
+                description=Zur
+                value=20
+            [/target]
+        [/ai]
+    [/side]
+
+    # Side 4, Orcish Raiders
+    # raider shouldn't usually capture elves's keep, but if they do, they can
+    # summon more units.
+    [side]
+        side=4
+        no_leader=yes
+        controller=ai
+
+        #units available should change based on difficulty
+#ifdef EASY
+        recruit=Orcish Grunt, Orcish Archer, Goblin Spearman, Orcish Assassin
+#endif
+#ifdef NORMAL
+        recruit=Orcish Warrior, Orcish Crossbowman, Goblin Impaler, Orcish Slayer
+#endif
+#ifdef HARD
+        recruit=Orcish Warrior, Orcish Crossbowman, Goblin Impaler, Orcish Slayer
+#endif
+
+        shround=no
+        fog=no
+
+        [ai]
+            aggression=1.0
+            caution=0.0
+            #tell the orcs to ignore villages
+            scout_village_targetting=1
+
+            #this covers the entire map, forcing the orcs to get off
+            #their behinds and charge into the desert to attack the
+            #undead and elves. Otherwise they will just stand still
+            #until an enemy approaches.
+
+            [protect_location]
+                x=20
+                y=20
+                radius=100
+                value=1000
+            [/protect_location]
+
+            #AI will attack a weak unit with a max of 3,4,5 units
+            #depending on the difficulty
+            {ATTACK_DEPTH 3 4 5}
+
+            [target]
+                side=1
+                value=5
+            [/target]
+
+            [target]
+                side=2
+                value=1
+            [/target]
+
+            [target]
+                side=3
+                value=1
+            [/target]
+        [/ai]
+    [/side]
+
+    # capture villages for side 1
+    # and store them for victory conditions / undead
+    # capture
+#define SET_ELVEN_CAMP X Y
+    [capture_village]
+        side=1
+        x={X}
+        y={Y}
+    [/capture_village]
+    {VARIABLE elven_camp[$elven_camps].x {X}}
+    {VARIABLE elven_camp[$elven_camps].y {Y}}
+    {VARIABLE_OP elven_camps add 1}
+#enddef
+
+    # Prestart functions:
+    # set starting scenario objectives
+    # recall main heroes
+    # create campfire halos
+    # initialize starting variables
+    # capture villages for side 1 at start
+
+    [event]
+        name=prestart
+
+        # set starting scenario objectives
+
+        [objectives]
+            summary= _ "Starting Objectives:"
+            [objective]
+                description= _ "Survive Until Dawn (or)"
+                condition=win
+            [/objective]
+
+            [objective]
+                description= _ "Defeat all Undead Leaders"
+                condition=win
+            [/objective]
+
+            [objective]
+                description= _ "You Control Less Than 6 Villages"
+                condition=lose
+            [/objective]
+
+            [objective]
+                description= _ "Death of Kaleh, Nym, Garak or Zhul"
+                condition=lose
+            [/objective]
+        [/objectives]
+
+        #recall heroes
+
+        [recall]
+            description=Nym
+        [/recall]
+        [recall]
+            description=Elyssa
+        [/recall]
+        [recall]
+            description=Zhul
+        [/recall]
+        [recall]
+            description=Garak
+        [/recall]
+
+        [item]
+            x=14
+            y=10
+            halo=halo/fire-aura.png
+        [/item]
+
+        [item]
+            x=16
+            y=15
+            halo=halo/fire-aura.png
+        [/item]
+
+        [item]
+            x=13
+            y=20
+            halo=halo/fire-aura.png
+        [/item]
+
+        [set_variable]
+            name=scen3
+            value=0
+        [/set_variable]
+
+        [set_variable]
+            name=revenge
+            value=0
+        [/set_variable]
+
+        [set_variable]
+            name=possessed_garak
+            value=0
+        [/set_variable]
+
+        [set_variable]
+            name=undead_leaders_killed
+            value=0
+        [/set_variable]
+
+#ifdef EASY
+        {RANDOM 7..9}
+#endif
+#ifdef NORMAL
+        {RANDOM 6..8}
+#endif
+#ifdef HARD
+        {RANDOM 6..8}
+#endif
+
+        [set_variable]
+            name=ambush_turn
+            value=$random
+        [/set_variable]
+
+        #used to make sure that deaths.cfg event fires correctly
+        [set_variable]
+            name=immortal_hero
+            value=0
+        [/set_variable]
+
+        # give player 12 villages to protect
+        {VARIABLE elven_camps 0}
+        {SET_ELVEN_CAMP 11 12}
+        {SET_ELVEN_CAMP 16 10}
+        {SET_ELVEN_CAMP 15 13}
+        {SET_ELVEN_CAMP 19 12}
+        {SET_ELVEN_CAMP 13 16}
+        {SET_ELVEN_CAMP 21 14}
+        {SET_ELVEN_CAMP 18 16}
+        {SET_ELVEN_CAMP 10 19}
+        {SET_ELVEN_CAMP 14 18}
+        {SET_ELVEN_CAMP 19 18}
+        {SET_ELVEN_CAMP 17 20}
+        {SET_ELVEN_CAMP 13 22}
+
+        [set_variable]
+            name=village_counter
+            value=$elven_camps
+        [/set_variable]
+    [/event]
+
+    #Time Areas correspond with halo around campfires
+    #North campfire
+    [time_area]
+        x=14,12,13,14,15,16,12,13,14,15,16,12,13,14,15,16,13,14,15
+        y=8,9,9,9,9,9,10,10,10,10,10,11,11,11,11,11,12,12,12
+        {DUSK}
+    [/time_area]
+
+    #Central campfire
+    [time_area]
+        x=16,14,15,16,17,18,14,15,16,17,18,14,15,16,17,18,15,16,17
+        y=13,14,14,14,14,14,15,15,15,15,15,16,16,16,16,16,17,17,17
+        {DUSK}
+    [/time_area]
+
+    #South Campfire
+    [time_area]
+        x=12,13,14,11,12,13,14,15,11,12,13,14,15,11,12,13,14,15,13
+        y=18,18,18,19,19,19,19,19,20,20,20,20,20,21,21,21,21,21,22
+        {DUSK}
+    [/time_area]
+
+    # Only add sidekicks at start on Medium and Hard difficulty
+    [event]
+        name=start
+
+        {UNIT_ (Revenant) (Zur) ( _ "Zur") 2 20 22}
+
+        {UNIT_ (Wraith) (Grak) ( _ "Grak") 3 22 7}
+
+        #on Medium and Hard, add sidekicks to Zur and Grak
+
+#ifdef EASY
+
+#else
+
+        {UNIT_ (Skeleton Rider) () ("") 2 20 23}
+
+        {UNIT_ (Skeleton Rider) () ("") 2 21 23}
+
+        {UNIT_ (Necrophage) () ("") 3 22 6}
+
+        {UNIT_ (Necrophage) () ("") 3 23 7}
+
+#endif
+
+        #print dialogue messages
+        {INTRO_DIALOGUE}
+    [/event]
+
+    # if deathblade Zur dies first then set variable revenge = 2
+    [event]
+        name=die
+
+        [filter]
+            description=Zur
+        [/filter]
+
+        [if]
+            [variable]
+                name=revenge
+                equals=0
+            [/variable]
+
+            [then]
+                [set_variable]
+                    name=revenge
+                    value=2
+                [/set_variable]
+
+                [message]
+                    description=Azkotep
+                    message= _ "Curse you! I will not forget this. You will rue this night."
+                [/message]
+            [/then]
+        [/if]
+    [/event]
+
+    # if wraith Grak dies then set variable revenge = 3
+    [event]
+        name=die
+
+        [filter]
+            description=Grak
+        [/filter]
+
+        [if]
+            [variable]
+                name=revenge
+                equals=0
+            [/variable]
+
+            [then]
+                [message]
+                    description=Ystara
+                    message= _ "Noooooo! I shall have my revenge!"
+                [/message]
+
+                [set_variable]
+                    name=revenge
+                    value=3
+                [/set_variable]
+            [/then]
+        [/if]
+    [/event]
+
+    # At turn 8 the orcs show up
+    # EASY: 1 orcish leader, 2 wolf riders, 2 orc archers, 2 orcish grunts
+
+    # MED: 1 orcish ruler, 2 wolf riders, 2 orc archers,
+    #	2 orcish assassins, 2 orcish warriors
+    # HARD: 1 orcish ruler, 2 goblin pillagers, 2 orc crossbowman,
+    #	2 orcish slayers, 2 orcish warriors
+
+    [event]
+        name=new turn
+        first_time_only="no"
+
+        [if]
+            [variable]
+                name=turn_number
+                numerical_equals=$ambush_turn
+            [/variable]
+
+            [then]
+#ifdef EASY
+                [unit]
+                    type=Orcish Leader
+                    description=Ganthos
+                    user_description= _ "Ganthos"
+                    upkeep=free
+                    canrecruit=yes
+                    side=4
+                    x=3
+                    y=4
+                [/unit]
+#else
+                [unit]
+                    type=Orcish Ruler
+                    description=Ganthos
+                    user_description= _ "Ganthos"
+                    upkeep=free
+                    canrecruit=yes
+                    side=4
+                    x=3
+                    y=4
+                [/unit]
+#endif
+
+#ifdef HARD
+                {FREE_UNIT (Goblin Pillager) (Goblin Raider) ( _ "Goblin Raider") 4 2 4}
+                {FREE_UNIT (Goblin Pillager) (Goblin Raider) ( _ "Goblin Raider") 4 3 3}
+#else
+                {FREE_UNIT (Wolf Rider) (Goblin Raider) ( _ "Goblin Raider") 4 2 4}
+                {FREE_UNIT (Wolf Rider) (Goblin Raider) ( _ "Goblin Raider") 4 3 3}
+#endif
+
+#ifdef HARD
+                {FREE_UNIT (Orcish Crossbowman) (Orc Raider) ( _ "Orc Raider") 4 1 5}
+                {FREE_UNIT (Orcish Crossbowman) (Orc Raider) ( _ "Orc Raider") 4 3 2}
+#else
+                {FREE_UNIT (Orcish Archer) (Orc Raider) ( _ "Orc Raider") 4 1 5}
+                {FREE_UNIT (Orcish Archer) (Orc Raider) ( _ "Orc Raider") 4 3 2}
+#endif
+
+#ifdef NORMAL
+                {FREE_UNIT (Orcish Assassin) (Orc Raider) ( _ "Orc Raider") 4 2 5}
+                {FREE_UNIT (Orcish Assassin) (Orc Raider) ( _ "Orc Raider") 4 4 2}
+#endif
+
+#ifdef HARD
+                {FREE_UNIT (Orcish Slayer) (Orc Raider) ( _ "Orc Raider") 4 2 5}
+                {FREE_UNIT (Orcish Slayer) (Orc Raider) ( _ "Orc Raider") 4 4 2}
+#endif
+
+#ifdef EASY
+                {FREE_UNIT (Orcish Grunt) (Orc Raider) ( _ "Orc Raider") 4 3 6}
+                {FREE_UNIT (Orcish Grunt) (Orc Raider) ( _ "Orc Raider") 4 5 3}
+#else
+                {FREE_UNIT (Orcish Warrior) (Orc Raider) ( _ "Orc Raider") 4 3 6}
+                {FREE_UNIT (Orcish Warrior) (Orc Raider) ( _ "Orc Raider") 4 5 3}
+#endif
+
+                #give orcs an income, if they ever capture a keep to use it
+#ifdef EASY
+                [modify_side]
+                    side=4
+                    income=10
+                    gold=75
+                [/modify_side]
+#endif
+
+#ifdef NORMAL
+                [modify_side]
+                    side=4
+                    income=15
+                    gold=100
+                [/modify_side]
+#endif
+
+#ifdef HARD
+                [modify_side]
+                    side=4
+                    income=20
+                    gold=125
+                [/modify_side]
+#endif
+
+                [message]
+                    description=Ganthos
+                    message= _ "What's this on our borders? Stinkin' elves and more undead? We'll teach them a lesson they won't soon forget. Attack!"
+                [/message]
+
+                [message]
+                    description=Kaleh
+                    message= _ "If those raiders capture any of our encampments, I fear our people's fate will be just as bad as if it was captured by the undead."
+                [/message]
+            [/then]
+        [/if]
+    [/event]
+
+#define CREATE_MINIONS SIDE X Y
+
+    [set_variable]
+        name="temp_xa"
+        value={X}
+    [/set_variable]
+    [set_variable]
+        name="temp_xa"
+        add=1
+    [/set_variable]
+
+    {UNIT_ (Soulless) () ("") {SIDE} $temp_xa {Y}}
+
+    [set_variable]
+        name=temp_xb
+        value={X}
+    [/set_variable]
+    [set_variable]
+        name=temp_xb
+        add=-1
+    [/set_variable]
+
+    {UNIT_ (Soulless) () ("") {SIDE} $temp_xb {Y}}
+
+    [set_variable]
+        name=temp_y
+        value={Y}
+    [/set_variable]
+    [set_variable]
+        name=temp_y
+        add=1
+    [/set_variable]
+
+    {UNIT_ (Soulless) () ("") {SIDE} {X} $temp_y}
+
+    [set_variable]
+        name=temp_y
+        value={Y}
+    [/set_variable]
+    [set_variable]
+        name=temp_y
+        add=-1
+    [/set_variable]
+
+    {UNIT_ (Soulless) () ("") {SIDE} {X} $temp_y}
+
+#enddef
+
+#define POSSESS_GARAK SIDE
+    # one undead side possesses Garak
+    #
+    #store Garak's x,y location
+    [store_locations]
+        [filter]
+            description=Garak
+        [/filter]
+        variable=locs
+    [/store_locations]
+
+    [store_unit]
+        [filter]
+            description=Garak
+        [/filter]
+        variable=ElvishGarak
+        kill=no
+    [/store_unit]
+
+    # play some adequate sound
+
+    [kill]
+        description=Garak
+        animate=yes
+        fire_event=no
+    [/kill]
+
+    [kill]
+        side={SIDE}
+        canrecruit=yes
+        animate=yes
+        fire_event=no
+    [/kill]
+
+    {UNIT_ (Corrupted Elf) (Possessed Garak) ( _ "Possessed Garak") {SIDE} $locs[0].x $locs[0].y}
+
+    [store_locations]
+        x=$locs[0].x
+        y=$locs[0].y
+        terrain=Dd^Vdt
+        find_in=elven_camp
+        variable=camps
+    [/store_locations]
+
+    [if]
+        [variable]
+            name=camps.length
+            equals=1
+        [/variable]
+
+        [then]
+            #turn village into sand, Dd is the terrain code for sand
+            [terrain]
+                x=$camps[0].x
+                y=$camps[0].y
+                terrain=Dd
+            [/terrain]
+
+            {UNIT_ (Walking Corpse) () ("") {SIDE} $camps[0].x $camps[0].y}
+
+            {VARIABLE_OP village_counter add -1}
+        [/then]
+    [/if]
+
+    {GARAK_DIALOGUE_PART_ONE}
+
+    {CREATE_MINIONS {SIDE} $locs[0].x $locs[0].y}
+
+    {GARAK_DIALOGUE_PART_TWO}
+
+    {CLEAR_VARIABLE camps}
+
+    {CLEAR_VARIABLE locs}
+
+    {VARIABLE possessed_garak {SIDE}}
+
+#enddef
+
+    # On Turn 12 one of the two undead leaders destroys Garak and himself
+    # and creates a possessed Garak
+    # The revenge variable stores the number of the side the player has enraged
+
+    # if revenge = 0 (played enraged neither side) then Ystara disappears and
+    #	possesses Garak
+    # if revenge = 2 (played killed Azkotep or his champion) then Azkotep (side=2)
+    # disappears and possesses Garak
+    # if revenge = 3 (played killed Ystara or her champion) then Ystara (side=3)
+    # disappears and possesses Garak
+
+    [event]
+        name=turn 12
+
+        [if]
+            [variable]
+                name=revenge
+                equals=0
+            [/variable]
+
+            [then]
+                [message]
+                    description=Nym
+                    message= _ "I can just barely see the sun poking over the dunes. It is almost dawn!"
+                [/message]
+
+                [message]
+                    description=Ystara
+                    message= _ "No! This contest is not over yet, Azkotep. I shall show you a taste of my true power."
+                [/message]
+
+                #Ystara (zombie) dies, Garak dies, both without triggering
+                #death events, and Possessed Garak is created
+
+                {POSSESS_GARAK 3}
+            [/then]
+        [/if]
+
+        [if]
+            [variable]
+                name=revenge
+                equals=2
+            [/variable]
+
+            [then]
+                [message]
+                    description=Nym
+                    message= _ "I can just barely see the sun poking over the dunes. It is almost dawn!"
+                [/message]
+
+                [message]
+                    description=Azkotep
+                    message= _ "No, I shall have my revenge. I shall show you that darkness is strongest just before dawn. I call upon the lord of death and decay, grant me my vengeance!"
+                [/message]
+
+                [set_variable]
+                    name=possessed_garak
+                    value=2
+                [/set_variable]
+
+                #Azkotep (skele) dies, Garak dies, both without triggering
+                #death events, and Possessed Garak is created
+
+                {POSSESS_GARAK 2}
+            [/then]
+        [/if]
+
+        [if]
+            [variable]
+                name=revenge
+                equals=3
+            [/variable]
+
+            [then]
+                #Ystara (zombie) dies, Garak dies, both without triggering
+                #death events, and Possessed Garak is created
+
+                [message]
+                    description=Nym
+                    message= _ "I can just barely see the sun poking over the dunes. It is almost dawn!"
+                [/message]
+
+                [message]
+                    description=Ystara
+                    message= _ "No, I shall have my revenge. I shall show you that darkness is strongest just before dawn. I call upon the powers of disease and despair, grant me my vengeance!"
+                [/message]
+
+                {POSSESS_GARAK 3}
+            [/then]
+        [/if]
+    [/event]
+
+    # Event #2 If Possessed Garak dies
+
+    [event]
+        name=die
+
+        [filter]
+            description=Possessed Garak
+        [/filter]
+
+        [kill]
+            description=Possessed Garak
+            animate=no
+            fire_event=no
+        [/kill]
+
+        [if]
+            [variable]
+                name=revenge
+                equals=0
+            [/variable]
+
+            [then]
+                [message]
+                    description=Azkotep
+                    message= _ "Hah, now you have learned the flesh is always weaker than the powers of the undead."
+                [/message]
+
+                [endlevel]
+                    result=victory
+                [/endlevel]
+            [/then]
+        [/if]
+
+        [if]
+            [variable]
+                name=revenge
+                equals=2
+            [/variable]
+
+            [then]
+                [message]
+                    description=Ystara
+                    message= _ "My undead zombies shall always defeat the living."
+                [/message]
+
+                [endlevel]
+                    result=victory
+                [/endlevel]
+            [/then]
+        [/if]
+
+        [if]
+            [variable]
+                name=revenge
+                equals=3
+            [/variable]
+
+            [then]
+                [message]
+                    description=Azkotep
+                    message= _ "Hah, now you have learned the flesh is always weaker than the powers of the undead."
+                [/message]
+
+                [endlevel]
+                    result=victory
+                [/endlevel]
+            [/then]
+        [/if]
+    [/event]
+
+    #Event #3 If Zombie (Ystara) dies
+
+    [event]
+        name=die
+
+        [filter]
+            description=Ystara
+        [/filter]
+
+        [set_variable]
+            name=undead_leaders_killed
+            add=1
+        [/set_variable]
+
+        # test to see if both undead leaders killed, (does undead_leaders_killed
+        #  = 2?) if so call special Possess Garak event with new dialogue
+
+        [if]
+            [variable]
+                name=possessed_garak
+                equals=0
+            [/variable]
+
+            [then]
+                [if]
+                    [variable]
+                        name=undead_leaders_killed
+                        equals=2
+                    [/variable]
+
+                    [then]
+                        {UNIT_ Spectre Azkotep (_ "Azkotep") 2 21 24}
+                        {BOTH_LEADERS_KILLED_DIALOGUE}
+                    [/then]
+
+                    [else]
+                        [message]
+                            description=Ystara
+                            message= _ "You think you have defeated me, don't you? Foolish boy, I shall assume a new form more powerful and horrible than you could ever imagine!"
+                        [/message]
+
+                        [message]
+                            description=Azkotep
+                            message= _ "How dare you interfere in our contest! I did not need your help. I shall teach you not to cross a lord of darkness."
+                        [/message]
+
+                        [set_variable]
+                            name=revenge
+                            value=3
+                        [/set_variable]
+
+                        {POSSESS_GARAK 3}
+                    [/else]
+                [/if]
+            [/then]
+
+            [else]
+                [message]
+                    description=Possessed Garak
+                    message= _ "See, I told you I was more powerful. This game is over, now I can leave this shell of a body."
+                [/message]
+
+                #kill possessed Garak
+                [kill]
+                    description=Possessed Garak
+                    animate=yes
+                    fire_event=no
+                [/kill]
+
+                [endlevel]
+                    result=victory
+                [/endlevel]
+            [/else]
+        [/if]
+    [/event]
+
+    # Event #4 If Skele (Azkotep) dies
+
+    [event]
+        name=die
+
+        [filter]
+            description=Azkotep
+        [/filter]
+
+        [set_variable]
+            name=undead_leaders_killed
+            add=1
+        [/set_variable]
+
+        #[message]
+        #speaker=narrator
+        #message= _ "Killed Azkotep ULK: $undead_leaders_killed"
+        #    image=wesnoth-icon.png
+        #[/message]
+
+        # test to see if both undead leaders killed, (does undead_leaders_killed
+        # = 2?) if so call special Possess Garak event with new dialogue
+
+        [if]
+            [variable]
+                name=possessed_garak
+                equals=0
+            [/variable]
+
+            [then]
+                [if]
+                    [variable]
+                        name=undead_leaders_killed
+                        equals=2
+                    [/variable]
+
+                    [then]
+                        {UNIT_ Spectre Ystara ( _ "Ystara") 3 21 7}
+
+                        {BOTH_LEADERS_KILLED_DIALOGUE}
+                    [/then]
+
+                    [else]
+                        [message]
+                            description=Azkotep
+                            message= _ "You think you have defeated me, don't you? Foolish boy, I shall assume a new form more powerful and horrible than you could ever imagine!"
+                        [/message]
+
+                        [message]
+                            description=Ystara
+                            message= _ "How dare you interfere in our contest! I did not need your help. I shall teach you not to cross a lord of darkness."
+                        [/message]
+
+                        [set_variable]
+                            name=revenge
+                            value=2
+                        [/set_variable]
+
+                        {POSSESS_GARAK 2}
+                    [/else]
+                [/if]
+            [/then]
+
+            [else]
+                [message]
+                    description=Possessed Garak
+                    message= _ "See, I told you I was more powerful. This game is over, now I can leave this shell of a body."
+                [/message]
+
+                #kill possessed Garak
+                [kill]
+                    description=Possessed Garak
+                    animate=yes
+                    fire_event=no
+                [/kill]
+
+                [endlevel]
+                    result=victory
+                [/endlevel]
+            [/else]
+        [/if]
+    [/event]
+
+    [event]
+        name=victory
+
+        {VICTORY_DIALOGUE}
+
+        #clear variables
+        #prestart variables
+        {CLEAR_VARIABLE village_counter}
+        {CLEAR_VARIABLE revenge}
+        {CLEAR_VARIABLE undead_leaders_killed}
+        {CLEAR_VARIABLE possessed_garak}
+        {CLEAR_VARIABLE ambush_turn}
+
+        #temp variables
+        {CLEAR_VARIABLE temp}
+        {CLEAR_VARIABLE temp_x}
+        {CLEAR_VARIABLE temp_xa}
+        {CLEAR_VARIABLE temp_xb}
+        {CLEAR_VARIABLE temp_y}
+        {CLEAR_VARIABLE locs}
+
+        #used to store Elvish Garak info
+        {CLEAR_VARIABLE ElvishGarak}
+    [/event]
+
+    # This event destroys a village every time it is occupied by an undead
+    # it also gives the enemy some gold for pillaging the village, and
+    # decrements the village number counter for the player.
+    # NOTE: the game still thinks that side controls the village, even though
+    # the village has been replaced by desert
+
+    # this event also checked to see is player has 6 villages left, but only
+    # if garak hasn't been possessed yet (afterwards we don't care about the
+    # 6 village requirement). Also I used a moveto event instead of a capture
+    # event because a unit that lost it's leader no longer captures villages
+
+    [event]
+        name=moveto
+        first_time_only=no
+
+        [filter]
+            x=0-40
+            y=0-30
+            side=2,3
+            [filter_location]
+                find_in=elven_camp
+                terrain=Dd^Vdt
+            [/filter_location]
+        [/filter]
+
+        #turn village into sand, Dd is the terrain code for sand
+        [terrain]
+            x=$x1
+            y=$y1
+            terrain=Dd
+        [/terrain]
+
+        #NOTE: a walking dead is created from inhabitants of the
+        #elvish encampment
+
+        {UNIT_ (Walking Corpse) () ("") $side_number $x1 $y1}
+
+        [if]
+            [variable]
+                name=village_counter
+                equals=12
+            [/variable]
+
+            [then]
+                [message]
+                    description=Nym
+                    message= _ "They're raising the corpses of our slain people! What a horrible fate!"
+                [/message]
+
+                [message]
+                    description=Elyssa
+                    message= _ "Then we shall have to give them a proper cremation."
+                [/message]
+            [/then]
+        [/if]
+
+        #amount of gold enemy plunders from each encampment based of diff
+#ifdef EASY
+        [gold]
+            amount=10
+            side=$side_number
+        [/gold]
+#endif
+
+#ifdef NORMAL
+        [gold]
+            amount=20
+            side=$side_number
+        [/gold]
+#endif
+
+#ifdef HARD
+        [gold]
+            amount=30
+            side=$side_number
+        [/gold]
+#endif
+
+        [set_variable]
+            name=village_counter
+            add=-1
+        [/set_variable]
+
+        {CLEAR_VARIABLE locs}
+
+        [if]
+            [variable]
+                name=village_counter
+                less_than=6
+            [/variable]
+
+            [then]
+                [message]
+                    description=Kaleh
+                    message= _ "Too many of our people have been killed. We will surely be overwhelmed by the undead now. All is lost!"
+                [/message]
+
+                [endlevel]
+                    result=defeat
+                [/endlevel]
+            [/then]
+        [/if]
+    [/event]
+
+    #time over event
+    [event]
+        name=time over
+
+        [message]
+            description=Kaleh
+            message= _ "This darkness will never end, and the undead will soon overwhelm us. I'm sorry Garak, we couldn't save you."
+        [/message]
+
+        [endlevel]
+            result=defeat
+        [/endlevel]
+    [/event]
+
+    {@campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg}
+    {@campaigns/Under_the_Burning_Suns/utils/deaths.cfg}
+    {KALEH_DEATH}
+    {FRIEND_DEATH}
+    {ELYSSA_DEATH}
+
+    {@campaigns/Under_the_Burning_Suns/utils/global-events.cfg}
+[/scenario]
