@@ -218,7 +218,7 @@ class CrossRef:
         if defn.undef != None:
             # Local macros are only visible in the file where they were defined
             return defn.filename == fn and n >= defn.lineno and n <= defn.undef
-        if defn.namespace in self.properties and self.properties[defn.namespace].get("export") == "yes":
+        if self.exports(defn.namespace):
             # Macros and resources in subtrees with export=yes are global
             return True
         elif not self.filelist.neighbors(defn.filename, fn):
@@ -497,6 +497,8 @@ class CrossRef:
         for namespace in self.dirpath:
             if namespace not in self.properties or "export" not in self.properties[namespace]:
                 print "warning: %s has no export property" % namespace
+    def exports(self, namespace):
+        return namespace in self.properties and self.properties[namespace].get("export") == "yes"
     def subtract(self, filelist):
 
         "Transplant file references in files from filelist to a new CrossRef."

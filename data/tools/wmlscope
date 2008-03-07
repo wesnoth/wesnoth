@@ -164,12 +164,19 @@ class CrossRefLister(CrossRef):
                             print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(map(lambda f, a: "%s=%s" % (f, actualtype(a)), m.args, args)))
                         except AttributeError:
                             print '"%s", line %d: internal error in reporter' % (file, ln)
-        # Then the unit IDs
+    def duplicates(self, exportonly):
+        "Dump duplicate unit IDs."
+        duplicate_latch = False
         for (key, value) in self.unit_ids.items():
             if len(value) > 1:
+                if exportonly and not filter(lambda x: self.exports(x.namespace), value):
+                    continue
+                if not duplicate_latch:
+                    print "# Duplicate IDs"
+                    duplicate_latch = True
                 print "%s: occurs %d times as unit ID" % (key, len(value))
                 for ref in value:
-                    print "%s: %s" % (ref, key)
+                    print "%s: exported=%s" % (ref, self.exports(ref.namespace))
     def typelist(self, branch):
         "Dump actual and formal aruments for macros in specified file"
         already_seen = []
@@ -376,7 +383,7 @@ Usage: macroscope [options] dirpath
             print filename
     if collisions:
         collisions = []
-        for filename in xref.filelist.generator():
+        for (namespace, filename) in xref.filelist.generator():
             ifp = open(filename)
             collisions.append(md5.new(ifp.read()).digest())
             ifp.close()
@@ -392,6 +399,7 @@ Usage: macroscope [options] dirpath
                 print "%%"
                 lasthash = h
             print n
+        xref.duplicates(exportonly=False)
     elif typelist:
         xref.typelist(typelist)
     elif crossreference or definitions or listfiles or unresolved:
@@ -412,5 +420,6 @@ Usage: macroscope [options] dirpath
             xref.deflist(predicate)
         if unresolved:
             xref.unresdump()
+            xref.duplicates(exportonly=True)
     
 # wmlscope ends here
