@@ -8,6 +8,12 @@ Version 1.4+svn:
  * miscellaneous and bug fixes:
    * added VICTORY_AND_DEFEAT_MUSIC macro and wired it in all mainline
      scenarios that warrant such effects
+   * Fixed a border case of unit portrait advancement on which generic portraits
+     would be treated as character-specific (affected female Elvish Archer line;
+     it also theoretically affected units with [variation]s using different
+     portraits)
+   * Default gender selection now works correctly for units with
+     only a female variant. Fixes bug #11197.
 
 Version 1.4:
  * language and i18n:
