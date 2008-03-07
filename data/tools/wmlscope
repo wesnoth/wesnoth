@@ -379,7 +379,7 @@ Usage: macroscope [options] dirpath
     elif unchecked:
         xref.unchecked(sys.stdout)
     elif listfiles:
-        for filename in xref.filelist.generator():
+        for (namespace, filename) in xref.filelist.generator():
             print filename
     if collisions:
         collisions = []
