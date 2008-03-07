@@ -22,10 +22,6 @@ Version 1.5.0-svn:
    * added VICTORY_AND_DEFEAT_MUSIC macro - not wiring it in in trunk
      content, in the hope that we get engine support for this soon, but it's
      here to use in the meantime
-   * 'road' is no longer aliased to grassland. It now has its own key in
-     movetypes.  Note!  This will create compatibility issues with UMC
-     that relies on a grassland= in a [movement_costs] or [defense] tag to also
-     set stats for roads.
    * remove an ancient wml update program which has been obsoleted by wmllint
    * added the boost regex dependency
    * added the sdl-ttf dependency
