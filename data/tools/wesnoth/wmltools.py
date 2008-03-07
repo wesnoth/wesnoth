@@ -196,6 +196,7 @@ class Reference:
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
     file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
+    tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)") 
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
         pattern = pattern.replace("+", r"\+")
@@ -241,6 +242,7 @@ class CrossRef:
         self.fileref = {}
         self.noxref = False
         self.properties = {}
+        self.unit_ids = {}
         if warnlevel >=2:
             print "*** Beginning definition-gathering pass..."
         for (namespace, filename) in self.filelist.generator():
@@ -252,6 +254,7 @@ class CrossRef:
                 # It's a WML file, scan for macro definitions
                 dfp = open(filename)
                 state = "outside"
+                latch_unit = in_base_unit = False
                 for (n, line) in enumerate(dfp):
                     if warnlevel > 1:
                         print `line`[1:-1]
@@ -311,6 +314,22 @@ class CrossRef:
                         else:
                             print "%s: unbalanced #undef on %s" \
                                   % (Reference(namespace, filename, n+1), name)
+                    elif '[unit]' in line:
+                        latch_unit = True
+                    elif '[/unit]' in line:
+                        latch_unit = False
+                    elif '[base_unit]' in line:
+                        in_base_unit = True
+                    elif '[/base_unit]' in line:
+                        in_base__unit = True
+                    elif latch_unit and not in_base_unit and "id" in line:
+                        m = CrossRef.tag_parse.search(line)
+                        if m and m.group(1) == "id":
+                            uid = m.group(2)
+                            if uid not in self.unit_ids:
+                                self.unit_ids[uid] = []
+                            self.unit_ids[uid].append(Reference(namespace, filename, n+1))
+                            latch_unit= False
                 dfp.close()
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
