@@ -1,4 +1,4 @@
-LANGUAGES = da:Dansk en:English fr:Français hu:Magyar it:Italiano ja:日本語 lt:Lietuvių nl:Nederlands pl:Polski ru:Russkij sk:Slovenčina tl:Filipino tr:Türkçe
+LANGUAGES = cs:Čeština da:Dansk en:English fr:Français hu:Magyar it:Italiano ja:日本語 lt:Lietuvių nl:Nederlands pl:Polski ru:Russkij sk:Slovenčina tl:Filipino tr:Türkçe
 
 PO4A_OPTIONS = --rm-backups --copyright-holder "Wesnoth Development Team"
 
