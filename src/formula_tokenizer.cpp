@@ -21,29 +21,33 @@ namespace formula_tokenizer
 {
 
 namespace {
+
+using boost::regex;
+
 struct token_type {
-	boost::regex re;
+	regex re;
 	TOKEN_TYPE type;
 };
+
+//create the array with list of possible tokens
+token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|\\-|\\^|%|/|<=|>=|<|>|!=|=|\\.)"), TOKEN_OPERATOR },
+				{ regex("^'[^']*'"),    TOKEN_STRING_LITERAL },
+				{ regex("^[a-zA-Z_]+"), TOKEN_IDENTIFIER },
+				{ regex("^\\d+"),       TOKEN_INTEGER },
+				{ regex("^\\("),        TOKEN_LPARENS },
+				{ regex("^\\)"),        TOKEN_RPARENS },
+				{ regex("^\\["),        TOKEN_LSQUARE },
+				{ regex("^\\]"),        TOKEN_RSQUARE },
+				{ regex("^,"),          TOKEN_COMMA },
+				{ regex("^\\s+"),       TOKEN_WHITESPACE } 
+};
+
 }
 
 token get_token(iterator& i1, iterator i2) {
-	using boost::regex;
-
-	token_type types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|\\-|\\^|%|/|<=|>=|<|>|!=|=|\\.)"), TOKEN_OPERATOR },
-	                       { regex("^'[^']*'"),    TOKEN_STRING_LITERAL },
-	                       { regex("^[a-zA-Z_]+"), TOKEN_IDENTIFIER },
-	                       { regex("^\\d+"),       TOKEN_INTEGER },
-	                       { regex("^\\("),        TOKEN_LPARENS },
-	                       { regex("^\\)"),        TOKEN_RPARENS },
-						   { regex("^\\["),        TOKEN_LSQUARE },
-						   { regex("^\\]"),        TOKEN_RSQUARE },
-	                       { regex("^,"),          TOKEN_COMMA },
-	                       { regex("^\\s+"),       TOKEN_WHITESPACE } };
-
-	foreach(const token_type& t, types) {
+	foreach(const token_type& t, token_types) {
 		boost::smatch match;
-		if(regex_search(i1, i2, match, t.re)) {
+		if(boost::regex_search(i1, i2, match, t.re)) {
 			token res;
 			res.type = t.type;
 			res.begin = i1;
