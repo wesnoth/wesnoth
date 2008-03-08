@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
+#include <string.h>
 
 #include "boost/lexical_cast.hpp"
 
