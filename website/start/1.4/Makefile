@@ -1,4 +1,4 @@
-LANGUAGES = cs:Čeština da:Dansk de:Deutsch en:English es:Español fr:Français hu:Magyar \
+LANGUAGES = ca:Català cs:Čeština da:Dansk de:Deutsch en:English es:Español fr:Français hu:Magyar \
             it:Italiano ja:日本語 lt:Lietuvių nl:Nederlands pl:Polski \
             ru:Russkij sk:Slovenčina tl:Filipino tr:Türkçe
 
