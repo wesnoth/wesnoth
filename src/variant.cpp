@@ -348,7 +348,7 @@ bool variant::operator<=(const variant& v) const
 		}
 
 		if(v.type_ == TYPE_NULL) {
-			return *this < variant(0);
+			return *this <= variant(0);
 		}
 
 		return false;
@@ -368,10 +368,6 @@ bool variant::operator<=(const variant& v) const
 	}
 
 	case TYPE_LIST: {
-		if(num_elements() != v.num_elements()) {
-			return false;
-		}
-
 		for(int n = 0; n != num_elements() && n != v.num_elements(); ++n) {
 			if((*this)[n] < v[n]) {
 				return true;
