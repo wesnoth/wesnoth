@@ -250,7 +250,10 @@ game_controller::game_controller(int argc, char** argv)
 			break; //parse the rest of the arguments when we set up the game
 		} else if(val == "--test" || val == "-t") {
 			test_mode_ = true;
-			if(arg_ + 1 != argc_ && argv_[arg_ + 1][0] != '-') {
+			// If we have -t foo it's ambiguous whether it foo is the parameter
+			// for Wesnoth or the start directory so we assume it's the starting
+			// directory.
+			if(arg_ + 2 < argc_ && argv_[arg_ + 1][0] != '-') {
 				++arg_;
 				test_scenario_ = argv_[arg_];
 			}
