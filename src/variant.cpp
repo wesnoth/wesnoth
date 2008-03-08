@@ -92,6 +92,11 @@ void variant::increment_refcount()
 	case TYPE_CALLABLE:
 		intrusive_ptr_add_ref(callable_);
 		break;
+
+	// These are not used here, add them to silence a compiler warning.
+	case TYPE_NULL:
+	case TYPE_INT :
+		break;
 	}
 }
 
@@ -110,6 +115,11 @@ void variant::release()
 		break;
 	case TYPE_CALLABLE:
 		intrusive_ptr_release(callable_);
+		break;
+
+	// These are not used here, add them to silence a compiler warning.
+	case TYPE_NULL:
+	case TYPE_INT :
 		break;
 	}
 }

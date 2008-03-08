@@ -120,13 +120,13 @@ private:
 		if(analysis->chance_to_kill > 0.0) {
 			unit_map units(units_with_moves);
 			units.erase(analysis->target);
-			vars.push_back(variant(new position_callable(&units, analysis->chance_to_kill*100)));
+			vars.push_back(variant(new position_callable(&units, static_cast<int>(analysis->chance_to_kill*100))));
 
 		}
 
 		if(analysis->chance_to_kill < 1.0) {
 			unit_map units(units_with_moves);
-			vars.push_back(variant(new position_callable(&units, 100 - analysis->chance_to_kill*100)));
+			vars.push_back(variant(new position_callable(&units, static_cast<int>(100 - analysis->chance_to_kill*100))));
 		}
 
 		return variant(&vars);
