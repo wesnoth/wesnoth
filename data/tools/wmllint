@@ -568,40 +568,7 @@ notepairs = (
 trait_note = dict(notepairs)
 note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
 
-def string_strip(value):
-    "String-strip the value"
-    if value.startswith('"'):
-        value = value[1:]
-        if value.endswith('"'):
-            value = value[:-1]
-    if value.startswith("'"):
-        value = value[1:]
-        if value.endswith("'"):
-            value = value[:-1]
-    return value
-
-def parse_attribute(str):
-    "Parse a WML key-value pair from a line."
-    if '=' not in str:
-        return None
-    where = str.find("=")
-    leader = str[:where]
-    after = str[where+1:]
-    after = after.lstrip()
-    if "#" in after:
-        where = after.find("#")
-        while after[where-1] in (" ", "\t"):
-            where -= 1
-        value = after[:where+1]
-        comment = after[where:]
-    else:
-        value = after.rstrip()
-        comment = ""
-    # Return four fields: stripped key, part of line before value,
-    # value, trailing whitespace and comment.
-    return (leader.strip(), leader+"=", string_strip(value), comment)
-
-# This needs to match the list of usagge types in ai_python.cpp
+# This needs to match the list of usage types in ai_python.cpp
 usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
 
 # These are accumulated by sanity_check() and examined by sanity_postcheck() 

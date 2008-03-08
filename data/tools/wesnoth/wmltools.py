@@ -8,6 +8,39 @@ import sys, os, re, sre_constants, md5, glob
 resource_extensions = ("png", "jpg", "ogg", "wav", "map", "mask")
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
+def string_strip(value):
+    "String-strip the value"
+    if value.startswith('"'):
+        value = value[1:]
+        if value.endswith('"'):
+            value = value[:-1]
+    if value.startswith("'"):
+        value = value[1:]
+        if value.endswith("'"):
+            value = value[:-1]
+    return value
+
+def parse_attribute(str):
+    "Parse a WML key-value pair from a line."
+    if '=' not in str:
+        return None
+    where = str.find("=")
+    leader = str[:where]
+    after = str[where+1:]
+    after = after.lstrip()
+    if "#" in after:
+        where = after.find("#")
+        while after[where-1] in (" ", "\t"):
+            where -= 1
+        value = after[:where+1]
+        comment = after[where:]
+    else:
+        value = after.rstrip()
+        comment = ""
+    # Return four fields: stripped key, part of line before value,
+    # value, trailing whitespace and comment.
+    return (leader.strip(), leader+"=", string_strip(value), comment)
+
 class Forest:
     "Return an iterable directory forest object."
     def __init__(self, dirpath, exclude=None):
