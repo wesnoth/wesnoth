@@ -10,7 +10,7 @@ default: translations
 index.html.en: template.html
 	cp template.html index.html.en
 
-translations: index.en.html
+translations: index.html.en
 	@( cd po && po4a $(PO4A_OPTIONS) wesnoth-start-1.4.cfg || exit $? )
 	@LANGS=$$(for lang in $(LANGUAGES); do \
 		code=`echo $$lang | cut -d: -f 1`; \
