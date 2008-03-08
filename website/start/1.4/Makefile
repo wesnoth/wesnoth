@@ -1,12 +1,13 @@
-LANGUAGES = ca:Català cs:Čeština da:Dansk de:Deutsch en:English es:Español fr:Français hu:Magyar \
-            it:Italiano ja:日本語 lt:Lietuvių nl:Nederlands pl:Polski \
-            ru:Russkij sk:Slovenčina tl:Filipino tr:Türkçe
+LANGUAGES = ca:Català cs:Čeština da:Dansk de:Deutsch en:English \
+            es:Español fr:Français hu:Magyar it:Italiano ja:日本語 \
+            lt:Lietuvių nl:Nederlands pl:Polski ru:Russkij \
+            sk:Slovenčina tl:Filipino tr:Türkçe
 
 PO4A_OPTIONS = --rm-backups --copyright-holder "Wesnoth Development Team"
 
 default: translations
 
-index.en.html: template.html
+index.html.en: template.html
 	cp template.html index.html.en
 
 translations: index.en.html
