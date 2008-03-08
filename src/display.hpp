@@ -232,7 +232,8 @@ public:
 	//! blendto: blend to this colour using blend_ratio
 	//! submerged: the amount of the unit out of 1.0 that is submerged
 	//!            (presumably under water) and thus shouldn't be drawn
-	void render_unit_image(int x, int y, surface image,
+	void render_unit_image(int x, int y, const bool fake_unit,
+			const int drawing_order, surface image,
 			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
 			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
@@ -426,17 +427,30 @@ protected:
 	void tile_stack_render(int x, int y);
 	void tile_stack_clear() {tile_stack_.clear();};
 
+public:	
 	//! Helper structure for rendering the terrains.
 	struct tblit{
 		tblit(const int x, const int y) :
 			x(x),
 			y(y),
-			surf()
+			surf(),
+			clip()
 			{}
 
-		int x;                      //!< x screen coordinate to render at
-		int y;                      //!< y screen coordinate to render at
-		std::vector<surface> surf;  //!< surface(s) to render
+		tblit(const int x, const int y, const surface& surf, 
+				const SDL_Rect& clip = SDL_Rect()) :
+			x(x),
+			y(y),
+			surf(1, surf),
+			clip(clip)
+			{}
+
+
+		int x;                      //!< x screen coordinate to render at.
+		int y;                      //!< y screen coordinate to render at.
+		std::vector<surface> surf;  //!< surface(s) to render.
+		SDL_Rect clip;              //!< The clipping area of the source if
+		                            //!  ommitted the entire source is used.
 	};
 
 	//! The layers to render something on. This value should never be stored
@@ -444,25 +458,45 @@ protected:
 	//! the layers should be save.
 	//! If needed in WML use the name and map that to the enum value.
 	enum tdrawing_layer{ 
-		//LAYER_TERRAIN_BG,        //! Sample for terrain drawn behind a unit.
-		//LAYER_UNIT_BG            //! Used for the ellipse behind the unit.
-		//LAYER_UNIT_FIRST,        //! Reserve layeres to be selected for WML.
-		//LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		//LAYER_UNIT_FG,           //! Used for the ellipse in front of the unit.
-		//LAYER_TERRAIN_FG,        //! Sample for terrain to draw in front of a unit.
-		LAYER_LINGER_OVERLAY,      //! The overlay used for the linger mode.
+		LAYER_TERRAIN_BG,          //!< Sample for terrain drawn behind a unit.
+		LAYER_UNIT_BG,             //!< Used for the ellipse behind the unit.
+		LAYER_UNIT_FIRST,          //!< Reserve layeres to be selected for WML.
+		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
+		LAYER_UNIT_FG,             //!< Used for the ellipse in front of the unit.
+		LAYER_UNIT_FAKE,
+		LAYER_TERRAIN_FG,          //!< Sample for terrain to draw in front of a unit.
+		LAYER_LINGER_OVERLAY,      //!< The overlay used for the linger mode.
 		
-		LAYER_LAST_LAYER           //! Don't draw to this layer it's a dummy
+		LAYER_LAST_LAYER           //!< Don't draw to this layer it's a dummy
 		                           //! to size the vector.
 		};
+protected:
+	// Initially tdrawing_buffer was a vector but profiling showed that a map
+	// was more efficient. Tested with the LAYER_UNIT_LAST for various values
+	// and different types the results were. (Tested with oprofile.)
+  
+ 	// container    unit layers    counts
+	// vector       100            3748
+	// vector       10000          147338
+	// map          10000          3362
 
-	//! * Surfaces are rendered per level in a vector.
+	// Since a map with 10000 items was more efficient I didn't test the map
+	// with 100 items. I want to retest once more is converted, since with 
+	// a different usage it numbers might differ so the old code is disabled
+	// with TDRAWING_BUFFER_USES_VECTOR 
+	//     20080308 -- Mordante
+
+	//! * Surfaces are rendered per level in a map.
 	//! * Per level the items are rendered per location these locations are
 	//!   stored in the drawing order required for units.
 	//! * every location has a vector with surfaces, each with its own screen
 	//!   coordinate to render at.
 	//! * every vector element has a vector with surfaces to render.
+#if TDRAWING_BUFFER_USES_VECTOR
 	typedef std::vector<std::map<int /*drawing_order*/, std::vector<tblit> > > tdrawing_buffer;
+#else	
+	typedef std::map<tdrawing_layer, std::map<int /*drawing_order*/, std::vector<tblit> > > tdrawing_buffer;
+#endif	
 	tdrawing_buffer drawing_buffer_;
 
 public:

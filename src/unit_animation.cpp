@@ -813,7 +813,7 @@ void unit_animation::crude_animation::redraw()
 	if (image != NULL) {
 		bool facing_west = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::SOUTH_WEST;
 		bool facing_north = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::NORTH || direction == gamemap::location::NORTH_EAST;
-		game_display::get_singleton()->render_unit_image(x- image->w/2, y - image->h/2, image, facing_west, false,
+		game_display::get_singleton()->render_unit_image(x- image->w/2, y - image->h/2, false, gamemap::get_drawing_order(src_), image, facing_west, false,
 				highlight_ratio(), blend_with(0), blend_ratio(),0,!facing_north);
 	}
 	halo::remove(halo_id_);

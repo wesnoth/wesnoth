@@ -105,7 +105,11 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	mouseoverHex_(),
 	highlighted_locations_(),
 	keys_(),
+#if TDRAWING_BUFFER_USES_VECTOR	
 	drawing_buffer_(LAYER_LAST_LAYER),
+#else	
+	drawing_buffer_(),
+#endif	
 	tile_stack_(),
 	fps_handle_(0),
 	idle_anim_(preferences::idle_anim()),
@@ -651,8 +655,13 @@ void display::drawing_buffer_commit()
 			layer_itor != layer_itor_end; ++layer_itor) {
 
 		for(std::map<int, std::vector<tblit> >::const_iterator 
+#if TDRAWING_BUFFER_USES_VECTOR		
 				drawing_iterator = layer_itor->begin(),
 				drawing_iterator_end = layer_itor->end();
+#else				
+				drawing_iterator = layer_itor->second.begin(),
+				drawing_iterator_end = layer_itor->second.end();
+#endif				
 				drawing_iterator != drawing_iterator_end; ++drawing_iterator) {
 
 			for(std::vector<tblit>::const_iterator 
@@ -669,7 +678,15 @@ void display::drawing_buffer_commit()
 					// and so a new instance should be initialized
 					// to pass to each call to SDL_BlitSurface.
 					SDL_Rect dstrect = { blit_itor->x, blit_itor->y, 0, 0 };
-					SDL_BlitSurface(*surface_itor, NULL, dst, &dstrect);
+
+					if(blit_itor->clip.x || blit_itor->clip.y 
+							||blit_itor->clip.w ||blit_itor->clip.h) {
+
+						SDL_Rect srcrect = blit_itor->clip;
+						SDL_BlitSurface(*surface_itor, &srcrect, dst, &dstrect);
+					} else {
+						SDL_BlitSurface(*surface_itor, NULL, dst, &dstrect);
+					}
 				}
 			}
 		}
@@ -680,8 +697,8 @@ void display::drawing_buffer_commit()
 
 void display::drawing_buffer_clear()
 {
+#if TDRAWING_BUFFER_USES_VECTOR
 	// Note clear the items, the vector should remain the same size.
-	surface const dst(screen_.getSurface());
 	for(tdrawing_buffer::iterator layer_itor = 
 			drawing_buffer_.begin(), 
 			layer_itor_end = drawing_buffer_.end();
@@ -689,6 +706,9 @@ void display::drawing_buffer_clear()
 
 		layer_itor->clear();
 	}
+#else 	
+	drawing_buffer_.clear();
+#endif	
 }
 
 void display::sunset(const size_t delay)
@@ -928,7 +948,8 @@ void display::clear_hex_overlay(const gamemap::location& loc)
 	}
 }
 
-void display::render_unit_image(int x, int y, surface image,
+void display::render_unit_image(int x, int y, const bool fake_unit,
+		const int drawing_order, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged,bool vreverse)
 {
@@ -974,7 +995,8 @@ void display::render_unit_image(int x, int y, surface image,
 
 	
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
-	video().blit_surface(x,y,surf,&srcrect,&clip_rect);
+
+	drawing_buffer_add(fake_unit ? LAYER_UNIT_FAKE: LAYER_UNIT_FIRST, drawing_order, tblit(x, y, surf, srcrect));
 
 	if(submerge_height != surf->h) {
 		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2),false));
@@ -983,7 +1005,7 @@ void display::render_unit_image(int x, int y, surface image,
 		srcrect.h = surf->h-submerge_height;
 		y += submerge_height;
 
-		video().blit_surface(x,y,surf,&srcrect,&clip_rect);
+		drawing_buffer_add(fake_unit ? LAYER_UNIT_FAKE: LAYER_UNIT_FIRST, drawing_order, tblit(x, y, surf, srcrect));
 	}
 
 }

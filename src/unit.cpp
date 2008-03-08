@@ -1662,6 +1662,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	const int ysrc = disp.get_location_y(loc);
 	const int xdst = disp.get_location_x(dst);
 	const int ydst = disp.get_location_y(dst);
+	const int drawing_order = gamemap::get_drawing_order(loc);
 
 	const t_translation::t_terrain terrain = map.get_terrain(loc);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
@@ -1794,18 +1795,20 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 
 	if (ellipse_back != NULL) {
-		disp.video().blit_surface(xsrc, ysrc_adjusted-ellipse_floating, ellipse_back);
+		disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order, 
+			display::tblit(xsrc, ysrc_adjusted-ellipse_floating, ellipse_back));
 	}
 
 	if (image != NULL) {
 		int tmp_x = x - image->w/2;
 		int tmp_y = y - image->h/2;
-		disp.render_unit_image(tmp_x, tmp_y, image, facing_west, stoned,
+		disp.render_unit_image(tmp_x, tmp_y, fake, drawing_order, image, facing_west, stoned,
 				highlight_ratio, blend_with, blend_ratio, submerge);
 	}
 
 	if (ellipse_front != NULL) {
-		disp.video().blit_surface(xsrc, ysrc_adjusted-ellipse_floating, ellipse_front);
+		disp.drawing_buffer_add(display::LAYER_UNIT_FG, drawing_order, 
+			display::tblit(xsrc, ysrc_adjusted-ellipse_floating, ellipse_front));
 	}
 
 	if(draw_bars) {
@@ -1833,7 +1836,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
-			disp.video().blit_surface(xsrc, ysrc_adjusted, orb);
+			disp.drawing_buffer_add(display::LAYER_UNIT_FG, 
+				drawing_order, display::tblit(xsrc, ysrc_adjusted, orb));
 		}
 
 		double unit_energy = 0.0;
@@ -1849,7 +1853,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 		const fixed_t bar_alpha = (loc == disp.mouseover_hex() || loc == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
 
-		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted, hp_bar_height, unit_energy,hp_color(), bar_alpha);
+		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted, 
+			drawing_order, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
@@ -1857,7 +1862,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / maximum<int>(level_,1));
 			
 			SDL_Color colour=xp_color();
-			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted, xp_bar_height, filled, colour, bar_alpha);
+			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted, 
+				drawing_order, xp_bar_height, filled, colour, bar_alpha);
 		}
 
 		if (can_recruit()) {
@@ -1866,14 +1872,16 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
-				disp.video().blit_surface(xsrc,ysrc_adjusted,crown);
+				disp.drawing_buffer_add(display::LAYER_UNIT_FG, 
+					drawing_order, display::tblit(xsrc, ysrc_adjusted, crown));
 			}
 		}
 
 		for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
-				disp.video().blit_surface(xsrc, ysrc_adjusted, ov_img);
+				disp.drawing_buffer_add(display::LAYER_UNIT_FG, 
+					drawing_order, display::tblit(xsrc, ysrc_adjusted, ov_img));
 			}
 		}
 	}

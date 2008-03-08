@@ -189,7 +189,8 @@ public:
 	void begin_game();
 
 	virtual bool in_game() const { return in_game_; }
-	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
+	void draw_bar(const std::string& image, int xpos, int ypos, 
+		const int drawing_order, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
 	//! Sets the linger mode for the display.
 	//! There have been some discussions on what to do with fog and shroud

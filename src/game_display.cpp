@@ -606,8 +606,10 @@ void game_display::draw_minimap_units()
 	}
 }
 
-void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
+void game_display::draw_bar(const std::string& image, int xpos, int ypos, 
+	const int drawing_order, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
+
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
 	height = static_cast<size_t>(height*get_zoom_factor());
 #ifdef USE_TINY_GUI
@@ -658,17 +660,19 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 	SDL_Rect bot = {0,bar_loc.y+skip_rows,surf->w,0};
 	bot.h = surf->w - bot.y;
 
-	video().blit_surface(xpos,ypos,surf,&top);
-	video().blit_surface(xpos,ypos+top.h,surf,&bot);
+	drawing_buffer_add(LAYER_UNIT_FG, drawing_order, tblit(xpos, ypos, surf, top));
+	drawing_buffer_add(LAYER_UNIT_FG, drawing_order, tblit(xpos, ypos + top.h, surf, bot));
 
 	const size_t unfilled = static_cast<const size_t>(height*(1.0 - filled));
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
-		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};
 		const Uint32 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		const Uint8 r_alpha = minimum<unsigned>(unsigned(fxpmult(alpha,255)),255);
-		fill_rect_alpha(filled_area,colour,r_alpha,video().getSurface());
-	}
+		surface foo(SDL_CreateRGBSurface(SDL_SWSURFACE, bar_loc.w, height - unfilled, 32,  /*col.r << 16, col.g << 8, col.b, 0x44000000*/0xFF0000, 0xFF00, 0xFF, 0 ) );
+		SDL_Rect filled_area = {0, 0, bar_loc.w, height-unfilled};
+		fill_rect_alpha(filled_area, colour, r_alpha, foo);
+		drawing_buffer_add(LAYER_UNIT_FG, drawing_order, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, foo));
+	} 
 }
 
 void game_display::set_game_mode(const tgame_mode game_mode)
