@@ -32,7 +32,7 @@
 #include <cstdlib>
 #include <iostream>
 
-
+#define ERR_CONFIG LOG_STREAM(err, config)
 
 attack_type::attack_type(const config& cfg)
 {
@@ -417,7 +417,8 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 		res = parent_->defense_modifier(map,terrain);
 	}
 
-	if(res <= 0) {
+	if(res < 0) {
+		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 50.\n";
 		res = 50;
 	}
 

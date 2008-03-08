@@ -18,6 +18,7 @@ Version 1.5.0-svn:
      boolean_equals=
    * [modify_side] can set AI parameters now, using the [ai] syntax implemented
      for [side] declarations (patch #984)
+   * allow 100% defense instead of cutting off at 99% (debian bug #467253)
  * miscellaneous and bug fixes:
    * more comprehensive terrain type naming to avoid confusing displays such
      as 'Road (Grassland)' or 'Impassable mountain (Cavewall)'
