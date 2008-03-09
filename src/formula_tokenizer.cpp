@@ -1,6 +1,6 @@
-
+/* $Id$ */
 /*
-   Copyright (C) 2007 by David White <dave.net>
+   Copyright (C) 2007 - 2008 by David White <dave.net>
    Part of the Silver Tree Project
 
    This program is free software; you can redistribute it and/or modify
@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+
 #include <iostream>
 
 #include <boost/regex.hpp>
