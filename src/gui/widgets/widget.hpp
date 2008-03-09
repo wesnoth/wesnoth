@@ -64,7 +64,7 @@ public:
 	tevent_executor(const bool send_double_click = true) :
 		send_double_click_(send_double_click)
 		{}
-//	virtual ~tevent_executor() {}
+	virtual ~tevent_executor() {}
 
 	//! Happens when a mouse goes down on the widget.
 	virtual void mouse_down(const tevent_info&, bool&) {}
@@ -450,7 +450,7 @@ private:
 
 	static unsigned default_width_;
 	static unsigned default_height_;
-	static config tbutton::default_enabled_draw_;
+	static config default_enabled_draw_;
 };
 
 
