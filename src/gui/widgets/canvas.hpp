@@ -22,6 +22,7 @@
 #define __GUI_WIDGETS_CANVAS_HPP_INCLUDED__
 
 #include "sdl_utils.hpp"
+#include "tstring.hpp"
 
 #include <vector>
 
@@ -114,6 +115,22 @@ public:
 		SDL_Rect src_clip_;
 		SDL_Rect dst_clip_;
 		surface image_;
+	};
+
+	//! Definition of a text shape.
+	class ttext : public tshape
+	{
+	public:
+		ttext(const vconfig& cfg);
+		
+		//! Implement shape::draw().
+		void draw(surface& canvas);
+	private:
+		unsigned x_, y_;
+		unsigned w_, h_;
+		unsigned font_size_;
+		Uint32 colour_;
+		t_string text_;
 	};
 
 	tcanvas();

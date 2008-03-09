@@ -18,12 +18,14 @@
 #include "gui/widgets/canvas.hpp"
 
 #include "config.hpp"
+#include "font.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"
 
 #include <algorithm>
+#include <cassert>
 
 #define DBG_GUI LOG_STREAM(debug, widget)
 #define LOG_GUI LOG_STREAM(info, widget)
@@ -134,8 +136,11 @@ void tcanvas::parse_cfg(const config& cfg)
 			shapes_.push_back(new trectangle(data));
 		} else if(type == "image") {
 			shapes_.push_back(new timage(data));
+		} else if(type == "text") {
+			shapes_.push_back(new ttext(data));
 		} else {
-			std::cerr << "Type of shape is unknown : " << type << '\n';
+			ERR_GUI << "Type of shape is unknown : " << type << '\n';
+			assert(false); // FIXME remove in production code.
 		}
 	}
 }
@@ -420,11 +425,66 @@ tcanvas::timage::timage(const vconfig& cfg) :
 	}
 
 }
+
 void tcanvas::timage::draw(surface& canvas)
 {
 	SDL_Rect src_clip = src_clip_;
 	SDL_Rect dst_clip = dst_clip_;
 	SDL_BlitSurface(image_, &src_clip, canvas, &dst_clip);
+}
+
+tcanvas::ttext::ttext(const vconfig& cfg) :
+	x_(lexical_cast_default<unsigned>(cfg["x"])),
+	y_(lexical_cast_default<unsigned>(cfg["y"])),
+	w_(lexical_cast_default<unsigned>(cfg["w"])),
+	h_(lexical_cast_default<unsigned>(cfg["h"])),
+	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
+	colour_(decode_colour(cfg["colour"])),
+	text_(cfg["text"])
+{	
+/*WIKI
+ * [text]
+ *     x, y = (unsigned = 0), (unsigned = 0)    
+ *                                    The top left corner of the bounding
+ *                                    rectangle.
+ *     w = (unsigned = 0)             The width of the bounding rectangle.
+ *     h = (unsigned = 0)             The height of the bounding rectangle.
+ *     font_size = (unsigned = 0)     The size of the font.
+ *     colour = (widget.colour = "")  The colour of the text.
+ *     text = (t_string = "")         The text to print, for now always printed
+ *                                    centered in the area.
+ *     debug = (string = "")          Debug message to show upon creation
+ *                                    this message is not stored.
+ * [/rectangle]
+ */
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_GUI << debug << '\n';
+	}
+
+}
+
+void tcanvas::ttext::draw(surface& canvas)
+{
+	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
+	surface surf(font::get_rendered_text(text_, font_size_, col, TTF_STYLE_NORMAL));
+
+	if(surf->w > w_) {
+		WRN_GUI << "Text to wide, will be clipped.\n";
+	}
+	
+	if(surf->h > h_) {
+		WRN_GUI << "Text to high, will be clipped.\n";
+	}
+	
+	unsigned x_off = (surf->w >= w_) ? 0 : ((w_ - surf->w) / 2);
+	unsigned y_off = (surf->h >= h_) ? 0 : ((h_ - surf->h) / 2);
+	unsigned w_max = w_ - x_ - x_off;
+	unsigned h_max = h_ - y_ - y_off;
+
+	SDL_Rect dst = { x_ + x_off, y_ + y_off, w_max, h_max };
+	SDL_BlitSurface(surf, 0, canvas, &dst);
 }
 
 } // namespace gui2
