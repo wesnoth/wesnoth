@@ -22,11 +22,12 @@ eval "require \"$module\";";
 
 ## extract strings with their refs into %messages
 
-our ($str,$translatable,$line,%messages);
+our ($str,$translatable,$line,%messages,%nodeinfo);
 chdir $toplevel;
 foreach my $file (@ARGV) {
   open (FILE, "<$file") or die "cannot read from $file";
   my $readingattack = 0;
+  my @nodeinfostack = (["top", [], []]); # dummy top node
   my @domainstack = ($initialdomain);
   my ($is_define, $macro_has_textdomain) = (0, 0);
  LINE: while (<FILE>) {
@@ -54,8 +55,11 @@ foreach my $file (@ARGV) {
     if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)/) {
       # single-line quoted string
 
-      push @{$messages{raw2postring($2)}}, "$file:$."
-	if ($1 ne ''); # ie. translatable
+      if ($1 ne '') { # ie. translatable
+        my $msg = raw2postring($2);
+        push @{$messages{$msg}}, "$file:$.";
+        push @{$nodeinfostack[-1][1]}, $msg;
+      }
 
       # process remaining of the line
       $_ = $3 . "\n";
@@ -76,8 +80,11 @@ foreach my $file (@ARGV) {
 
       $str .= $1;
 
-      push @{$messages{"\"\"\n" . raw2postring($str)}}, "$file:$."
-	if $translatable;
+      if ($translatable) {
+        my $msg = "\"\"\n" . raw2postring($str);
+        push @{$messages{$msg}}, "$file:$." ;
+        push @{$nodeinfostack[-1][1]}, $msg;
+      }
       $str = undef;
 
       # process remaining of the line
@@ -92,6 +99,10 @@ foreach my $file (@ARGV) {
     } elsif (m/(\S+)\s*=\s*(.*?)\s*$/) {
       # single-line non-quoted string
       die "nested string in $file" if defined $str;
+      my ($field, $value) = ($1, $2);
+      if ($field =~ m/\b(speaker|role|description|condition|type|race)\b/) {
+        push @{$nodeinfostack[-1][2]}, "$field=$value";
+      }
 
 ### probably not needed ###
 #      # magic handling of weapon descriptions
@@ -109,7 +120,38 @@ foreach my $file (@ARGV) {
       $readingattack = 0;
     }
 
+    # check for node opening/closing to handle message metadata
+    next LINE if defined $str; # skip lookup if inside multi-line
+    next LINE if m/^ *\{.*\} *$/; # skip lookup if a statement line
+    next LINE if m/=/; # skip lookup if a field line
+    #next LINE; # kill-switch: uncomment and node info extraction is no more
+    while (m,\[ *([a-z/+].*?) *\],g) {
+      my $nodename = $1;
+      #my $ind = "  " x (@nodeinfostack + ($nodename =~ m,/, ? 0 : 1));
+      if ($nodename =~ s,/ *,,) { # closing node
+        @nodeinfostack or die "empty node stack on closed node at $file:$.";
+        my ($openname, $messages, $metadata) = @{pop @nodeinfostack};
+        $nodename eq $openname or die "expected closed node \'$openname\' ".
+                                      "got \'$nodename\' at $file:$.";
+        # some nodes should inherit parent metadata
+        if ($nodename =~ m/option/) {
+            $metadata = $nodeinfostack[-1][2];
+        }
+        #print STDERR "$ind<<< $.: $nodename\n";
+        #print STDERR "==> $file:$.: $nodename: @{$metadata}\n" if @{$messages};
+        for my $msg (@{$messages}) {
+            push @{$nodeinfo{$msg}}, [$nodename, $metadata];
+        }
+      } else { # opening node
+        #print STDERR "$ind>>> $.: $nodename\n";
+        $nodename =~ s/\+//;
+        push @nodeinfostack, [$nodename, [], []];
+      }
+    }
+    # do not add anything here, beware of the next's before the loop
   }
+  pop @nodeinfostack; # dummy top node
+  die "non-empty node stack at end of $file" if @nodeinfostack;
 
   close FILE;
 }
@@ -157,12 +199,22 @@ EOH
 foreach my $occurence (@revmessages) {
   my $key = $occurence->[2];
   if (defined $messages{$key}) {
-    print "#:";
-    foreach my $line (@{$messages{$key}}) {
-      print " $line";
+    if (defined $nodeinfo{$key}) {
+      my %added;
+      for my $info (@{$nodeinfo{$key}}) {
+        my ($name, $data) = @{$info};
+        my $desc = join(", ", @{$data});
+        my $nodestr = $desc ? "$name: $desc" : $name;
+        # Add only unique node info strings.
+        if (not defined $added{$nodestr}) {
+            $added{$nodestr} = 1;
+            printf "#. %s\n", $nodestr;
+        }
+      }
     }
-    print "\nmsgid $key",
-      "msgstr \"\"\n\n";
+    printf "#: %s\n", join(" ", @{$messages{$key}});
+    print "msgid $key";
+    print "msgstr \"\"\n\n";
 
     # be sure we don't output the same message twice
     delete $messages{$key};

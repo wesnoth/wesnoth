@@ -20,6 +20,8 @@ Version 1.5.0-svn:
      for [side] declarations (patch #984)
    * allow 100% defense instead of cutting off at 99% (debian bug #467253)
  * miscellaneous and bug fixes:
+   * wmlxgettext now print some context information about the strings
+     extracted (patch #993)
    * more comprehensive terrain type naming to avoid confusing displays such
      as 'Road (Grassland)' or 'Impassable mountain (Cavewall)'
      This also applies to the WML keys used in the stats :
