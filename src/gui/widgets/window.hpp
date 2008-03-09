@@ -61,6 +61,9 @@ public:
 	// The flip function is the disp_.flip() if ommitted the video_flip() is used
 	void show(const bool restore = true, void* flip_function = 0);
 
+	// layout the window
+	void layout(const SDL_Rect position);
+
 	enum tstatus{ NEW, SHOWING, REQUEST_CLOSE, CLOSED };
 
 protected:

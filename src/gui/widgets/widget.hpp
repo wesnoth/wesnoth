@@ -48,6 +48,10 @@ struct tpoint
 	int y;
 };
 
+std::ostream &operator<<(std::ostream &stream, const tpoint& point);
+
+SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
+
 struct terror 
 {
 	terror(const std::string& msg) : message(msg) {}
@@ -153,13 +157,31 @@ public:
 	virtual void set_height(const int height) { h_ = height; set_dirty(); }
 	int get_height() const { return h_; }
 
+	bool dirty() const { return dirty_; }
 
+	//! Sets the best size for the object.
+	virtual void set_best_size(const tpoint& origin)
+		{ set_size(create_rect(origin, get_best_size())); }
+		
+
+	//! Sets the minumum size for the object.
+//	virtual void set_minimum_size();
+
+	//! Sets a predefined size for the object.
+	virtual void set_size(const SDL_Rect rect)
+	{
+		x_ = rect.x;
+		y_ = rect.y;
+		w_ = rect.w;
+		h_ = rect.h;
+		dirty_ = true;
+	}
 
 protected:	
 	virtual void set_dirty(const bool dirty = true) { dirty_ = dirty; }
 
 	SDL_Rect get_rect() const 
-		{ return create_rect( x_, y_, w_, h_ ); }
+		{ return ::create_rect( x_, y_, w_, h_ ); }
 
 private:
 	const std::string id_;
@@ -233,7 +255,6 @@ public:
 
 	virtual ~tsizer();
 
-
 	void add_child(twidget* widget, const unsigned row, 
 		const unsigned col, const unsigned flags, const unsigned border_size);
 	
@@ -253,20 +274,69 @@ public:
 	void remove_child(const unsigned row, const unsigned col);
 	void removed_child(const std::string& id, const bool find_all = false);
 
-	void layout();
-	
-private:
-	struct tchild {
-		tchild() : 
-			flags(0),
-			border_size(0),
-			widget(0) 
-			{}
+	//! Inherited
+	tpoint get_best_size();
 
-		std::string id;
-		unsigned flags;
-		unsigned border_size;
-		twidget* widget;
+	//! Inherited
+	void set_best_size(const tpoint& origin);
+
+private:
+	class tchild 
+	{
+	public:
+		tchild() : 
+			id_(),
+			flags_(0),
+			border_size_(0),
+			widget_(0),
+			best_size_(0, 0),
+			dirty_(true),
+			clip_()
+
+			// Fixme make a class wo we can store some properties in the cache 
+			// regarding size etc.
+			{}
+	
+		const std::string& id() const { return id_; }
+		void set_id(const std::string& id) { id_ = id; }
+
+		unsigned get_flags() const { return flags_; }
+		void set_flags(const unsigned flags) { flags_ = flags; dirty_ = true; }
+
+		unsigned get_border_size() const { return border_size_; }
+		void set_border_size(const unsigned border_size) 
+			{  border_size_ = border_size; dirty_ = true; }
+
+		twidget* widget() { return widget_; }
+		void set_widget(twidget* widget) { widget_ = widget; dirty_ = true; }
+
+		//! Gets the best size for the cell, not const since we modify the internal
+		//! state, might use mutable later (if really needed).
+		tpoint get_best_size();
+
+	private:
+		//! The id of the widget if it has a widget.
+		std::string id_;
+
+		//! The flags for the border and cell setup.
+		unsigned flags_;
+
+		//! The size of the border, the actual configuration of the border
+		//! is determined by the flags.
+		unsigned border_size_;
+
+		//! Pointer to the widget. FIXME who owns the widget....
+		twidget* widget_;
+
+		//! The best size for this cell, determined by the best size
+		//! of the widget and the border_size_ and flags_.
+		tpoint best_size_;
+
+		//! Tracks the dirty state of the cell regarding best_size_.
+		bool dirty_;
+
+		//! The clipping area for the widget. 
+		SDL_Rect clip_;
 	};
 public:
 	class iterator 
@@ -280,8 +350,8 @@ public:
 
 		iterator operator++() { return iterator(++itor_); }
 		iterator operator--() { return iterator(--itor_); }
-		twidget* operator->() { return itor_->widget; }
-		twidget* operator*() { return itor_->widget; }
+		twidget* operator->() { return itor_->widget(); }
+		twidget* operator*() { return itor_->widget(); }
 
 		bool operator!=(const iterator& i) const
 			{ return i.itor_ != this->itor_; }
@@ -439,6 +509,15 @@ public:
 
 	// note we should check whether the label fits in the button
 	tpoint get_best_size() const { return tpoint(default_width_, default_height_); }
+
+	void set_best_size(const tpoint& origin) 
+	{
+		set_x(origin.x);
+		set_y(origin.y);
+		set_width(default_width_);
+		set_height(default_height_);
+	}
+
 protected:
 	
 private:
@@ -452,7 +531,6 @@ private:
 	static unsigned default_height_;
 	static config default_enabled_draw_;
 };
-
 
 /**
  * A widget has a mouse over which can either popup directly or after a fixed delay (this is a flag)

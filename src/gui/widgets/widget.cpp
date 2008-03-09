@@ -21,6 +21,7 @@
 #include "serialization/preprocessor.hpp"
 
 #include <cassert>
+#include <numeric>
 
 #define DBG_GUI LOG_STREAM(debug, widget)
 #define LOG_GUI LOG_STREAM(info, widget)
@@ -45,6 +46,17 @@ bool init() {
 	initialized_ = true;
 
 	return initialized_;
+}
+
+SDL_Rect create_rect(const tpoint& origin, const tpoint& size) 
+{ 
+	return ::create_rect(origin.x, origin.y, size.x, size.y); 
+}
+
+std::ostream &operator<<(std::ostream &stream, const tpoint& point)
+{
+	stream << point.x << ',' << point.y;
+	return stream;
 }
 
 #if 0
@@ -102,8 +114,8 @@ tsizer::~tsizer()
 	for(std::vector<tchild>::iterator itor = children_.begin();
 			itor != children_.end(); ++itor) {
 
-		if(itor->widget) {
-			delete itor->widget;
+		if(itor->widget()) {
+			delete itor->widget();
 		}
 	}
 }
@@ -116,23 +128,23 @@ void tsizer::add_child(twidget* widget, const unsigned row,
 	tchild& cell = child(row, col);
 
 	// clear old child if any
-	if(cell.widget) {
+	if(cell.widget()) {
 		// free a child when overwriting it
-		LOG_GUI << "Child '" << cell.id << "' at cell '" 
+		LOG_GUI << "Child '" << cell.id() << "' at cell '" 
 			<< row << "," << col << "' will be overwritten and is disposed\n";
-		delete cell.widget;
+		delete cell.widget();
 	}
 
 	// copy data
-	cell.flags = flags;
-	cell.border_size = border_size;
-	cell.widget = widget;
-	if(cell.widget) {
+	cell.set_flags(flags);
+	cell.set_border_size(border_size);
+	cell.set_widget(widget);
+	if(cell.widget()) {
 		// make sure the new child is valid before deferring
-		cell.id = cell.widget->id();
+		cell.set_id(cell.widget()->id());
 //		cell.widget->parent() = this; FIXME enable
 	} else {
-		cell.id = "";
+		cell.set_id("");
 	}
 }
 
@@ -170,8 +182,8 @@ void tsizer::remove_child(const unsigned row, const unsigned col)
 
 	tchild& cell = child(row, col);
 
-	cell.id = "";
-	cell.widget = 0;
+	cell.set_id("");
+	cell.set_widget(0);
 }
 
 void tsizer::removed_child(const std::string& id, const bool find_all)
@@ -180,9 +192,9 @@ void tsizer::removed_child(const std::string& id, const bool find_all)
 	for(std::vector<tchild>::iterator itor = children_.begin();
 			itor != children_.end(); ++itor) {
 
-		if(itor->id == id) {
-			itor->id = "";
-			itor->widget = 0;
+		if(itor->id() == id) {
+			itor->set_id("");
+			itor->set_widget(0);
 
 			if(!find_all) {
 				break;
@@ -191,43 +203,103 @@ void tsizer::removed_child(const std::string& id, const bool find_all)
 	}
 }
 
-void tsizer::layout()
+tpoint tsizer::get_best_size()
 {
-
 	DBG_GUI << __FUNCTION__ << '\n';
 
-	std::vector<unsigned> best_col_width;
-	std::vector<unsigned> best_row_height;
+	std::vector<unsigned> best_col_width(cols_, 0);
+	std::vector<unsigned> best_row_height(rows_, 0);
 	
 	// First get the best sizes for all items.
 	for(unsigned row = 0; row < rows_; ++row) {
 		for(unsigned col = 0; col < cols_; ++col) {
 
+			const tpoint size = child(row, col).get_best_size();
+
+			if(size.x > best_col_width[col]) {
+				best_col_width[col] = size.x;
+			}
+
+			if(size.y > best_row_height[row]) {
+				best_row_height[row] = size.y;
+			}
+
 		}
 	}
 
-	// Does the best fit if so set the best, else
-	// we need to determine the minimum and optimize.
+	for(unsigned row = 0; row < rows_; ++row) {
+		DBG_GUI << "Row " << row << ": " << best_row_height[row] << '\n';
+	}
 
-	// FIXME improve
-	tpoint start(10, 10);
-	for(std::vector<tchild>::iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
+	for(unsigned col = 0; col < cols_; ++col) {
+		DBG_GUI << "Col " << col << ": " << best_col_width[col] << '\n';
+	}
 
-		if(itor->widget) {
-			tpoint size = itor->widget->get_best_size();
+	return tpoint(
+		std::accumulate(best_col_width.begin(), best_col_width.end(), 0),
+		std::accumulate(best_row_height.begin(), best_row_height.end(), 0));
 
-		 	itor->widget->set_x(start.x);
-		 	itor->widget->set_y(start.y);
+}
 
-		 	itor->widget->set_width(size.x);
-		 	itor->widget->set_height(size.y);
+void tsizer::set_best_size(const tpoint& origin)
+{
+	DBG_GUI << __FUNCTION__ << '\n';
 
-			start.y += 30;
+	std::vector<unsigned> best_col_width(cols_, 0);
+	std::vector<unsigned> best_row_height(rows_, 0);
+	
+	// First get the best sizes for all items. (FIXME copy and paste of get best size)
+	for(unsigned row = 0; row < rows_; ++row) {
+		for(unsigned col = 0; col < cols_; ++col) {
+
+			const tpoint size = child(row, col).get_best_size();
+
+			if(size.x > best_col_width[col]) {
+				best_col_width[col] = size.x;
+			}
+
+			if(size.y > best_row_height[row]) {
+				best_row_height[row] = size.y;
+			}
+
 		}
+	}
+
+	// Set the sizes
+	tpoint orig = origin;
+	for(unsigned row = 0; row < rows_; ++row) {
+		for(unsigned col = 0; col < cols_; ++col) {
+
+			DBG_GUI << "Row : " << row << " col : " << col << " put at origin " << orig << '\n';
+
+			if(child(row, col).widget()) {
+				child(row, col).widget()->set_best_size(orig);
+			}
+
+			orig.x += best_col_width[col];
+		}
+		orig.y += best_row_height[row];
+		orig.x = origin.x;
 	}
 }
 
+tpoint tsizer::tchild::get_best_size()
+{
+	if(!dirty_ && (!widget_ || !widget_->dirty())) {
+		return best_size_;
+	}
+
+	best_size_ = widget_ ? widget_->get_best_size() : tpoint(0, 0);
+
+	//FIXME take care of the border configuration.
+	best_size_.x += 2 * border_size_;
+	best_size_.y += 2 * border_size_;
+
+	dirty_ = false;
+
+	return best_size_;
+
+}
 
 tcontrol::tcontrol(/*const int x, const int y, const int w, const int h*/) :
 	twidget("") ,

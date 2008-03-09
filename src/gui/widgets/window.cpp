@@ -22,6 +22,8 @@
 #include "serialization/parser.hpp"
 #include "variable.hpp"
 
+#include <cassert>
+
 #define DBG_GUI LOG_STREAM(debug, widget)
 #define LOG_GUI LOG_STREAM(info, widget)
 #define WRN_GUI LOG_STREAM(warn, widget)
@@ -77,18 +79,14 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 //	for(std::multimap<std::string, twidget *>::iterator itor = 
 //			children_().begin(); itor != children_().end(); ++itor) {
 	
-	layout();
-
+	layout(Xrect);
 	for(tsizer::iterator itor = begin(); itor != end(); ++itor) {
 
 		log_scope2(widget, "Draw child");
 
-		twidget* widget = *itor;
-		if(widget) {
-			// need to set the clip_rect here or let the widget do it itself?
-			widget->draw(screen);
-		}
+		itor->draw(screen);
 	}
+
 	rect = get_rect();
 	SDL_BlitSurface(screen, 0, video_.getSurface(), &rect);
 	update_rect(get_rect());
@@ -124,6 +122,25 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 		update_rect(get_rect());
 		flip();
 	}
+}
+
+void twindow::layout(const SDL_Rect position)
+{
+	tpoint best_size = get_best_size();
+
+	if(best_size.x < position.w && best_size.y < position.h) {
+		set_best_size(tpoint(0, 0));
+		return;
+	}
+
+	DBG_GUI << "Failed for best size, try minimum.\n";
+
+	// Implement the code.
+	assert(false);
+
+	// Failed at best size try minumum.
+	
+	// Failed at minimum log error and try to do the best possible thing.
 }
 
 void twindow::flip()
