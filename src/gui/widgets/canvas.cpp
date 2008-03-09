@@ -18,6 +18,7 @@
 #include "gui/widgets/canvas.hpp"
 
 #include "config.hpp"
+#include "image.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"
@@ -131,6 +132,8 @@ void tcanvas::parse_cfg(const config& cfg)
 			shapes_.push_back(new tline(data));
 		} else if(type == "rectangle") {
 			shapes_.push_back(new trectangle(data));
+		} else if(type == "image") {
+			shapes_.push_back(new timage(data));
 		} else {
 			std::cerr << "Type of shape is unknown : " << type << '\n';
 		}
@@ -317,7 +320,7 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
 	fill_colour(0)
 {
 /*WIKI
- * [rect]
+ * [rectangle]
  *     x, y = (int = 0), (int = 0)    The top left corner of the rectangle.
  *     w = (int = 0)                  The width of the rectangle.
  *     h = (int = 0)                  The height of the rectangle.
@@ -332,7 +335,7 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
  *                                    does nothing).
  *     debug = (string = "")          Debug message to show upon creation
  *                                    this message is not stored.
- * [/line]
+ * [/rectangle]
  */
 
 	rect.x = lexical_cast_default<int>(cfg["x"]);
@@ -393,6 +396,35 @@ void tcanvas::trectangle::draw(surface& canvas)
 	// fill
 	fill_rect_alpha(rect, colour, alpha, canvas);
 
+}
+
+
+tcanvas::timage::timage(const vconfig& cfg) :
+	src_clip_(),
+	dst_clip_(),
+	image_()
+{
+/*WIKI
+ * [image]
+ *     name = (string)                The name of the image.
+ *     debug = (string = "")          Debug message to show upon creation
+ * [/image]
+ */
+
+	image_.assign(image::get_image(image::locator(cfg["name"])));
+	src_clip_ = create_rect(0, 0, image_->w, image_->h);
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_GUI << debug << '\n';
+	}
+
+}
+void tcanvas::timage::draw(surface& canvas)
+{
+	SDL_Rect src_clip = src_clip_;
+	SDL_Rect dst_clip = dst_clip_;
+	SDL_BlitSurface(image_, &src_clip, canvas, &dst_clip);
 }
 
 } // namespace gui2

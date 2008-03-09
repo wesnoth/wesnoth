@@ -102,6 +102,19 @@ public:
 		Uint32 fill_colour;
 	};
 
+	//! Definition of an image shape.
+	class timage : public tshape
+	{
+	public:
+		timage(const vconfig& cfg);
+		
+		//! Implement shape::draw().
+		void draw(surface& canvas);
+	private:
+		SDL_Rect src_clip_;
+		SDL_Rect dst_clip_;
+		surface image_;
+	};
 
 	tcanvas();
 	tcanvas(const config& cfg);
@@ -136,5 +149,6 @@ private:
 };
 
 } // namespace gui2
+
 
 #endif
