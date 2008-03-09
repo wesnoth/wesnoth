@@ -6,6 +6,8 @@ Version 1.4+svn:
    * fixed not working "Update transition" and make "Delay transition update"
      directly trigger an update when toggled off.
  * miscellaneous and bug fixes:
+   * wmlxgettext now print some context information about the strings
+     extracted (patch #993)
    * added VICTORY_AND_DEFEAT_MUSIC macro and wired it in all mainline
      scenarios that warrant such effects
    * Fixed a border case of unit portrait advancement on which generic portraits
