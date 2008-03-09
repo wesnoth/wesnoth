@@ -89,6 +89,15 @@ SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 	return res;
 }
 
+//! Creates an empty SDL_Rect.
+//!
+//! Since SDL_Rect can't be created as temp variable in one step create this wrapper.
+SDL_Rect create_rect(const int x, const int y, const int w, const int h)
+{
+	SDL_Rect rect = { x, y, w, h };
+	return rect;
+}
+
 bool operator<(const surface& a, const surface& b)
 {
 	return a.get() < b.get();
