@@ -298,10 +298,11 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		}
 	}
 	if( animation_base.empty() )
-		animation_base.push_back(unit_animation(0,unit_frame(default_image,600),"",unit_animation::DEFAULT_ANIM));
+		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(600),"",unit_animation::DEFAULT_ANIM));
 
-	animations.push_back(unit_animation(0,unit_frame(default_image,1),"_disabled_",0));
-	animations.push_back(unit_animation(0,unit_frame(default_image,1,"","",display::rgb(255,255,255),"0.0~0.3:100,0.3~0.0:200"),"_disabled_selected_",0));
+	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),"_disabled_",0));
+	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).
+					blend("0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255)),"_disabled_selected_",0));
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
 		unit_animation tmp_anim = *itor;
 		// provide all default anims
@@ -369,8 +370,9 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		tmp_anim.event_ = utils::split("death");
 		animations.push_back(tmp_anim);
 		animations.back().sub_anims_["_death_sound"] = crude_animation();
-		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame());
-		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
+		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
+		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
+
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"1~0:150");
@@ -390,8 +392,8 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		tmp_anim.event_ = utils::split("healed");
 		animations.push_back(tmp_anim);
 		animations.back().sub_anims_["_healed_sound"] = crude_animation();
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame());
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","heal.wav"),true);
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 
 		tmp_anim = *itor;
 		tmp_anim.unit_anim_.override(0,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
@@ -399,8 +401,8 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		tmp_anim.event_ = utils::split("poisoned");
 		animations.push_back(tmp_anim);
 		animations.back().sub_anims_["_poison_sound"] = crude_animation();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame());
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","poison.ogg"),true);
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 
 	}
 
@@ -467,8 +469,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		(**anim_itor)["value"]=(**anim_itor)["healing"];
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().sub_anims_["_healed_sound"] = crude_animation();
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame());
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","heal.wav"),true);
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
 	const config::child_list& poison_anims = expanded_cfg.get_children("poison_anim");
@@ -477,8 +479,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().sub_anims_["_poison_sound"] = crude_animation();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame());
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","poison.ogg"),true);
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
 	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
@@ -498,14 +500,20 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			(**anim_itor)["value"]=(**anim_itor)["damage"];
 			animations.push_back(unit_animation(**anim_itor));
 			if(atoi((**anim_itor)["value"].c_str()) != 0) {
-				animations.back().add_frame(100,unit_frame(animations.back().get_last_frame().image(),100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
+				animations.back().add_frame(100,frame_builder()
+							.image(animations.back().get_last_frame().image())
+							.duration(100)
+							.blend("0.5:50,0.0:50",game_display::rgb(255,0,0)));
 			}
 		} else {
 			(**anim_itor)["value"]="0";
-			animations.push_back(unit_animation(**anim_itor)),
+			animations.push_back(unit_animation(**anim_itor));
 			(**anim_itor)["value"]="";
-			animations.push_back(unit_animation(**anim_itor)),
-			animations.back().add_frame(100,unit_frame(animations.back().get_last_frame().image(),100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
+			animations.push_back(unit_animation(**anim_itor));
+				animations.back().add_frame(100,frame_builder()
+							.image(animations.back().get_last_frame().image())
+							.duration(100)
+							.blend("0.5:50,0.0:50",game_display::rgb(255,0,0)));
 		}
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");
@@ -532,11 +540,11 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		(**anim_itor)["apply_to"] ="death";
 		animations.push_back(unit_animation(**anim_itor));
 		image::locator image_loc = animations.back().get_last_frame().image();
-		animations.back().add_frame(600,unit_frame(image_loc,600,"1~0:600"));
+		animations.back().add_frame(600,frame_builder().image(image_loc).duration(600).highlight("1~0:600"));
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = crude_animation();
-			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame());
-			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
+			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
+			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 		}
 	}
 	// Always have a defensive animation
@@ -749,8 +757,8 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 	unit_anim_.start_animation(start_time, src, dst, cycles);
 	if(!text.empty()) {
 		crude_animation crude_build;
-		crude_build.add_frame(1,unit_frame());
-		crude_build.add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","",text,text_color),true);
+		crude_build.add_frame(1,frame_builder());
+		crude_build.add_frame(1,frame_builder().text(text,text_color),true);
 		sub_anims_["_add_text"] = crude_build;
 	}
 	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();

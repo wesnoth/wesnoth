@@ -149,72 +149,88 @@ template class progressive_<double>;
 #undef UNIT_FRAME_H_PART2
 #include "unit_frame.hpp"
 
-unit_frame::unit_frame() :
-	image_(), image_diagonal_(),halo_(), sound_(),
-	text_(""),text_color_(0),
-	halo_x_(), halo_y_(), duration_(0),
-	blend_with_(0),blend_ratio_(),
-	highlight_ratio_(""), offset_()
-{
-}
 
-unit_frame::unit_frame(const image::locator& image, int duration,
-		const std::string& highlight, const std::string& offset,
-		Uint32 blend_color, const std::string& blend_rate,
-		const std::string& in_halo, const std::string& halox, const std::string& haloy,
-		const image::locator & diag,const std::string & sound,
-		const std::string & text, const Uint32 text_color) :
-	image_(image),image_diagonal_(diag),
-	halo_(in_halo,duration),
-	sound_(sound),
-	text_(text), text_color_(text_color),
-	halo_x_(halox,duration),
-	halo_y_(haloy,duration),
-	duration_(duration),
-	blend_with_(blend_color), blend_ratio_(blend_rate,duration),
-	highlight_ratio_(highlight,duration),offset_(offset,duration)
-{
-	// let's decide of duration ourselves
-	duration_ = maximum<int>(duration_, highlight_ratio_.duration());
-	duration_ = maximum<int>(duration_, blend_ratio_.duration());
-	duration_ = maximum<int>(duration_, halo_.duration());
-	duration_ = maximum<int>(duration_, offset_.duration());
-}
 
 unit_frame::unit_frame(const config& cfg)
 {
-	image_ = image::locator(cfg["image"]);
-	image_diagonal_ = image::locator(cfg["image_diagonal"]);
-	sound_ = cfg["sound"];
-	text_ = cfg["text"];
+	internal_param_.image(image::locator(cfg["image"]));
+	internal_param_.image_diagonal(image::locator(cfg["image_diagonal"]));
+	internal_param_.sound(cfg["sound"]);
 	std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
 	if(tmp_string_vect.size() ==3) {
-		text_color_ = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
+	internal_param_.text(cfg["text"],
+		 display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
 	} else {
-		text_color_ = 0;
+		internal_param_.text(cfg["text"],0);
 	}
 
 	if(!cfg["duration"].empty()) {
-		duration_ = atoi(cfg["duration"].c_str());
+		internal_param_.duration(atoi(cfg["duration"].c_str()));
 	} else {
-		duration_ = atoi(cfg["end"].c_str()) - atoi(cfg["begin"].c_str());
+		internal_param_.duration(atoi(cfg["end"].c_str()) - atoi(cfg["begin"].c_str()));
 	}
-	halo_ = progressive_string(cfg["halo"],duration_);
-	halo_x_ = progressive_int(cfg["halo_x"],duration_);
-	halo_y_ = progressive_int(cfg["halo_y"],duration_);
+	internal_param_.halo(cfg["halo"],cfg["halo_x"],cfg["halo_y"]);
 	 tmp_string_vect=utils::split(cfg["blend_color"]);
 	if(tmp_string_vect.size() ==3) {
-	blend_with_= display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
+		internal_param_.blend(cfg["blend_ratio"],display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
 	} else {
-		blend_with_ = 0;
+		internal_param_.blend(cfg["blend_ratio"],0);
 	}
-	blend_ratio_ = progressive_double(cfg["blend_ratio"],duration_);
-	highlight_ratio_ = progressive_double(cfg["alpha"],duration_);
-	offset_ = progressive_double(cfg["offset"],duration_);
+	internal_param_.highlight(cfg["alpha"]);
+	internal_param_.offset(cfg["offset"]);
 
 }
 
-bool unit_frame::does_not_change() const
+frame_builder & frame_builder::image(const image::locator image )
+{
+	image_ = image;
+	return *this;
+}
+frame_builder & frame_builder::image_diagonal(const image::locator image_diagonal)
+{
+	image_diagonal_ = image_diagonal;
+	return *this;
+}
+frame_builder & frame_builder::sound(const std::string& sound)
+{
+	sound_=sound;
+	return *this;
+}
+frame_builder & frame_builder::text(const std::string& text,const  Uint32 text_color)
+{
+	text_=text;
+	text_color_=text_color;
+	return *this;
+}
+frame_builder & frame_builder::halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y)
+{
+	halo_ = progressive_string(halo,duration_);
+	halo_x_ = progressive_int(halo_x,duration_);
+	halo_y_ = progressive_int(halo_y,duration_);
+	return *this;
+}
+frame_builder & frame_builder::duration(const int duration)
+{
+	duration_= duration;
+	return *this;
+}
+frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
+{
+	blend_with_=blend_color;
+	blend_ratio_=progressive_double(blend_ratio,duration_);
+	return *this;
+}
+frame_builder & frame_builder::highlight(const std::string& highlight)
+{
+	highlight_ratio_=progressive_double(highlight,duration_);
+	return *this;
+}
+frame_builder & frame_builder::offset(const std::string& offset)
+{
+	offset_=progressive_double(offset);
+	return *this;
+}
+bool frame_builder::does_not_change() const
 {
 	return halo_.does_not_change() &&
 		halo_x_.does_not_change() &&
@@ -223,7 +239,7 @@ bool unit_frame::does_not_change() const
 		highlight_ratio_.does_not_change() &&
 		offset_.does_not_change();
 }
-bool unit_frame::need_update() const
+bool frame_builder::need_update() const
 {
 	if(!halo_.does_not_change() ||
 			!halo_x_.does_not_change() ||
