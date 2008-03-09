@@ -168,6 +168,9 @@ public:
 	//! Resets the translated values of all strings contained in this object
 	void reset_translation() const;
 
+	//this is a cheap O(1) operation
+	void swap(config& cfg);
+
 	//! All the attributes of this node.
 	string_map values;
 

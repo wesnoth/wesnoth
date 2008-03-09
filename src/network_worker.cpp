@@ -625,7 +625,7 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 		delete buf;
 		throw config::error(error);
 	} else {
-		cfg = (*itor)->config_buf;
+		cfg.swap((*itor)->config_buf);
 		const TCPsocket res = (*itor)->sock;
 		buffer* buf = *itor;
 		received_data_queue.erase(itor);
