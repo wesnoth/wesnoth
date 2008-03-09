@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-06 12:44+0100\n"
-"PO-Revision-Date: 2008-03-02 00:18+0100\n"
+"PO-Revision-Date: 2008-03-09 17:21+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -162,9 +162,8 @@ msgid "Chinese Translation"
 msgstr "Chinesische Übersetzung"
 
 #: data/core/about.cfg:873
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Chinesische Übersetzung"
+msgstr "(Taiwanesisch-)Chinesische Übersetzung"
 
 #: data/core/about.cfg:880
 msgid "Czech Translation"
@@ -2334,7 +2333,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2722,7 +2720,6 @@ msgid "teleport"
 msgstr "Teleportation"
 
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
@@ -2730,7 +2727,8 @@ msgid ""
 msgstr ""
 "Teleportieren:\n"
 "Durch die Magie der Bewegung ist es dieser Einheit möglich, im Bruchteil "
-"eines Augenblicks von einem in ein anderes eigenes Dorf zu springen. "
+"eines Augenblicks von einem in ein anderes eigenes und unbesetztes Dorf zu "
+"springen. "
 
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
@@ -4044,14 +4042,13 @@ msgstr ""
 "Lichtverhältnisse in der Nähe dieser Einheit verbessert."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teleportieren:\n"
 "Durch die Magie der Bewegung ist es dieser Einheit möglich, im Bruchteil "
-"eines Augenblicks von einem in ein anderes eigenes Dorf zu springen. "
+"eines Augenblicks von einem in ein anderes eigenes und unbesetztes Dorf zu "
+"springen. "
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4355,7 +4352,6 @@ msgid "race^Drakes"
 msgstr "Draken"
 
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5961,7 +5957,7 @@ msgstr "Start"
 
 #: data/themes/macros.cfg:75
 msgid "continous replay"
-msgstr "ständig wiederholen"
+msgstr "Wiederholung durchgängig abspielen"
 
 #: data/themes/macros.cfg:92
 msgid "Stop"
@@ -5969,7 +5965,7 @@ msgstr "Stopp"
 
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
-msgstr "Pause am Ende der Runde"
+msgstr "Pause am Ende der aktuellen Runde"
 
 #: data/themes/macros.cfg:110
 msgid "Reset"
@@ -5985,15 +5981,15 @@ msgstr "Nächste Runde"
 
 #: data/themes/macros.cfg:129
 msgid "play turn"
-msgstr "Runde spielen"
+msgstr "Komplette Runde anzeigen"
 
 #: data/themes/macros.cfg:146
 msgid "Next Side"
-msgstr "Weiter"
+msgstr "Nächste Seite"
 
 #: data/themes/macros.cfg:147
 msgid "play side turn"
-msgstr "Zuschauermodus"
+msgstr "Zug des aktuellen Spielers anzeigen"
 
 #: data/themes/macros.cfg:163
 msgid "Point of view"
@@ -6525,9 +6521,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Beim offiziellen Wesnoth-Server anmelden"
 
 #: src/game.cpp:1492
-#, fuzzy
 msgid "Join a different server"
-msgstr "Offiziellem Server beitreten"
+msgstr "Einem anderem Server beitreten"
 
 #: src/game.cpp:1494
 msgid "Local Game"
@@ -7557,7 +7552,7 @@ msgstr "Kann den Anführertyp für die Fraktion $faction nicht finden"
 
 #: src/multiplayer_connect.cpp:905
 msgid "Game Lobby: "
-msgstr "Empfangshalle: "
+msgstr "Mehrspielerbereich: "
 
 #: src/multiplayer_connect.cpp:925
 msgid "Player/Type"
@@ -7871,7 +7866,7 @@ msgstr "Keine"
 
 #: src/multiplayer_lobby.cpp:639 src/multiplayer_wait.cpp:194
 msgid "Game Lobby"
-msgstr "Empfangshalle"
+msgstr "Mehrspielerbereich"
 
 #: src/multiplayer_lobby.cpp:641
 msgid "Observe Game"
