@@ -1,4 +1,4 @@
-/* $Id: test_util.cpp 23124 2008-01-21 21:56:39Z noyga $ */
+/* $Id$ */
 /*
    Copyright (C) 2008 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
