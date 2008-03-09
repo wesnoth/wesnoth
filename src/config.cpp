@@ -782,6 +782,13 @@ std::string config::hash() const
 	return std::string(hash_str);
 }
 
+void config::swap(config& cfg)
+{
+	values.swap(cfg.values);
+	children.swap(cfg.children);
+	ordered_children.swap(cfg.ordered_children);
+}
+
 bool operator==(const config& a, const config& b)
 {
 	if (a.values != b.values)
