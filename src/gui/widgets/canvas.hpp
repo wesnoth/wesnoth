@@ -73,14 +73,14 @@ public:
 		void draw(surface& canvas);
 
 	private:
-		int x1, y1;
-		int x2, y2;
-		Uint32 colour;
+		int x1_, y1_;
+		int x2_, y2_;
+		Uint32 colour_;
 		//! The thickness of the line:
 		//! if the value is odd the x and y are the middle of the line.
 		//! if the value is even the x and y are the middle of a line
 		//! with width - 1. (0 is special case, does nothing.)
-		unsigned thickness;
+		unsigned thickness_;
 	};
 
 	//! Definition of a rectangle shape.
@@ -93,14 +93,14 @@ public:
 		void draw(surface& canvas);
 
 	private:
-		SDL_Rect rect;
+		SDL_Rect rect_;
 
 		//! Border thickness if 0 the fill colour is used for the entire 
 		//! widget.
-		unsigned border_thickness;
-		Uint32 border_colour;
+		unsigned border_thickness_;
+		Uint32 border_colour_;
 
-		Uint32 fill_colour;
+		Uint32 fill_colour_;
 	};
 
 	//! Definition of an image shape.

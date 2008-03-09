@@ -232,23 +232,23 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 
 tcanvas::tline::tline(const int x1, const int y1, const int x2,
 		const int y2, const Uint32 colour, const unsigned thickness) :
-	x1(x1),
-	y1(y1),
-	x2(x2),
-	y2(y2),
-	colour(colour),
-	thickness(thickness) 
+	x1_(x1),
+	y1_(y1),
+	x2_(x2),
+	y2_(y2),
+	colour_(colour),
+	thickness_(thickness) 
 {
 
 }
 
 tcanvas::tline::tline(const vconfig& cfg) :
-	x1(0),
-	y1(0),
-	x2(0),
-	y2(0),
-	colour(0),
-	thickness(0)
+	x1_(lexical_cast_default<int>(cfg["x1"])),
+	y1_(lexical_cast_default<int>(cfg["y1"])),
+	x2_(lexical_cast_default<int>(cfg["x2"])),
+	y2_(lexical_cast_default<int>(cfg["y2"])),
+	colour_(decode_colour(cfg["colour"])),
+	thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
 {
 /*WIKI
  * [line]
@@ -274,13 +274,6 @@ tcanvas::tline::tline(const vconfig& cfg) :
 //
 // description                             description of the parameter
 //
-	x1 = lexical_cast_default<int>(cfg["x1"]);
-	y1 = lexical_cast_default<int>(cfg["y1"]);
-	x2 = lexical_cast_default<int>(cfg["x2"]);
-	y2 = lexical_cast_default<int>(cfg["y2"]);
-	colour = decode_colour(cfg["colour"]);
-	thickness = lexical_cast_default<unsigned>(cfg["thickness"]);
-
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI << debug << '\n';
@@ -291,16 +284,16 @@ tcanvas::tline::tline(const vconfig& cfg) :
 void tcanvas::tline::draw(surface& canvas)
 {
 	DBG_GUI << "Draw line from :" 
-		<< x1 << ',' << y1 << " to : " << x2 << ',' << y2 << '\n';
+		<< x1_ << ',' << y1_ << " to : " << x2_ << ',' << y2_ << '\n';
 
 	// we wrap around the coordinates, this might be moved to be more
 	// generic place, but leave it here for now. Note the numbers are
 	// negative so adding them is subtracting them.
 	
-	if(x1 < 0) x1 = canvas->w + x1;
-	if(x2 < 0) x2 = canvas->w + x2;
-	if(y1 < 0) y1 = canvas->h + y1;
-	if(y2 < 0) y2 = canvas->h + y2;
+	if(x1_ < 0) x1_ += canvas->w;
+	if(x2_ < 0) x2_ += canvas->w;
+	if(y1_ < 0) y1_ += canvas->h;
+	if(y2_ < 0) y2_ += canvas->h;
 
 	// FIXME validate the line is on the surface !!!
 
@@ -309,20 +302,20 @@ void tcanvas::tline::draw(surface& canvas)
 	
 	// lock the surface
 	surface_lock locker(canvas);
-	if(x1 > x2) {
+	if(x1_ > x2_) {
 		// invert points
-		draw_line(canvas, colour, x2, y2, x1, y1);
+		draw_line(canvas, colour_, x2_, y2_, x1_, y1_);
 	} else {
-		draw_line(canvas, colour, x1, y1, x2, y2);
+		draw_line(canvas, colour_, x1_, y1_, x2_, y2_);
 	}
 	
 }
 
 tcanvas::trectangle::trectangle(const vconfig& cfg) :
-	rect(),
-	border_thickness(0),
-	border_colour(0),
-	fill_colour(0)
+	rect_(),
+	border_thickness_(lexical_cast_default<unsigned>(cfg["border_thickness"])),
+	border_colour_(decode_colour(cfg["border_colour"])),
+	fill_colour_(decode_colour(cfg["fill_colour"]))
 {
 /*WIKI
  * [rectangle]
@@ -343,15 +336,10 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
  * [/rectangle]
  */
 
-	rect.x = lexical_cast_default<int>(cfg["x"]);
-	rect.y = lexical_cast_default<int>(cfg["y"]);
-	rect.w = lexical_cast_default<int>(cfg["w"]);
-	rect.h = lexical_cast_default<int>(cfg["h"]);
-
-	border_thickness = lexical_cast_default<unsigned>(cfg["border_thickness"]);
-	border_colour = decode_colour(cfg["border_colour"]);
-
-	fill_colour = decode_colour(cfg["fill_colour"]);
+	rect_.x = lexical_cast_default<int>(cfg["x"]);
+	rect_.y = lexical_cast_default<int>(cfg["y"]);
+	rect_.w = lexical_cast_default<int>(cfg["w"]);
+	rect_.h = lexical_cast_default<int>(cfg["h"]);
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -368,41 +356,40 @@ void tcanvas::trectangle::draw(surface& canvas)
 	surface_lock locker(canvas);
 
 	// draw the border
-	for(unsigned i = 0; i < border_thickness; ++i) {
+	for(unsigned i = 0; i < border_thickness_; ++i) {
 
-		const unsigned left = rect.x + i;
-		const unsigned right = rect.x + rect.w - 2 * i;
-		const unsigned top = rect.y + i;
-		const unsigned bottom = rect.y + rect.h - 2 * i;
+		const unsigned left = rect_.x + i;
+		const unsigned right = rect_.x + rect_.w - 2 * i;
+		const unsigned top = rect_.y + i;
+		const unsigned bottom = rect_.y + rect_.h - 2 * i;
 
 		// top horizontal (left -> right)
-		draw_line(canvas, border_colour, left, top, right, top);
+		draw_line(canvas, border_colour_, left, top, right, top);
 
 		// right vertical (top -> bottom)
-		draw_line(canvas, border_colour, right, top, right, bottom);
+		draw_line(canvas, border_colour_, right, top, right, bottom);
 
 		// bottom horizontal (left -> right)
-		draw_line(canvas, border_colour, left, bottom, right, bottom);
+		draw_line(canvas, border_colour_, left, bottom, right, bottom);
 
 		// left vertical (top -> bottom)
-		draw_line(canvas, border_colour, left, top, left, bottom);
+		draw_line(canvas, border_colour_, left, top, left, bottom);
 
 	}
 
-	const unsigned left = rect.x + border_thickness + 1;
-	const unsigned top = rect.y + border_thickness + 1;
-	const unsigned width = rect.w - (2 * border_thickness) - 2;
-	const unsigned height = rect.h - (2 * border_thickness) - 2;
+	const unsigned left = rect_.x + border_thickness_ + 1;
+	const unsigned top = rect_.y + border_thickness_ + 1;
+	const unsigned width = rect_.w - (2 * border_thickness_) - 2;
+	const unsigned height = rect_.h - (2 * border_thickness_) - 2;
 	SDL_Rect rect = create_rect(left, top, width, height);
 
-	const Uint32 colour = fill_colour & 0xFFFFFF00;
-	const Uint8 alpha = fill_colour & 0xFF;
+	const Uint32 colour = fill_colour_ & 0xFFFFFF00;
+	const Uint8 alpha = fill_colour_ & 0xFF;
 
 	// fill
-	fill_rect_alpha(rect, colour, alpha, canvas);
+	fill_rect_alpha(rect_, colour, alpha, canvas);
 
 }
-
 
 tcanvas::timage::timage(const vconfig& cfg) :
 	src_clip_(),
