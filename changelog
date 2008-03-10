@@ -44,6 +44,8 @@ Version 1.5.0-svn:
      portraits)
    * allow configure to be started from directories other as the top dir
      (patch #1002)
+   * added -Werror -Wno-unused -Wno-sign-compare to the default compiler
+     flags, can be disabled with --disable-strict-compilation.
 
 Version 1.4:
  * language and i18n:

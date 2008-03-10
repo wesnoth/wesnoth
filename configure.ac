@@ -89,6 +89,11 @@ AC_ARG_ENABLE([profile],
 	      [profile=$enableval],
 	      [profile=no])
 
+AC_ARG_ENABLE([strict],
+	      AS_HELP_STRING([--disable-strict-compilation], [disable the strict compilation rules (warnings are an error in the strict mode)]),
+	      [strict=$enableval],
+	      [strict=yes])
+
 if test "x$debug" = "xyes"
 then
 	CXXFLAGS="$CXXFLAGS -O0 -DDEBUG -ggdb3 -W -Wall -ansi"
@@ -99,6 +104,11 @@ fi
 if test "x$profile" = "xyes"
 then
 	CXXFLAGS="$CXXFLAGS -pg"
+fi
+
+if test "x$strict" = "xyes"
+then
+	CXXFLAGS="$CXXFLAGS -Werror -Wno-unused -Wno-sign-compare"
 fi
 
 # Make tests default in svn version
