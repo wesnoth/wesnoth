@@ -864,7 +864,7 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([
 int main(int argc, char **argv)
 {
 	SDL_RWops *src;
-	char *testimage = "images/buttons/button-pressed.png";
+	char *testimage = "${srcdir}/images/buttons/button-pressed.png";
 
 	src = SDL_RWFromFile(testimage, "rb");
 	if (src == NULL) {
