@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:45+0100\n"
+"POT-Creation-Date: 2008-03-10 11:39+0100\n"
 "PO-Revision-Date: 2007-10-01 20:03+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -18,68 +18,89 @@ msgstr ""
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-Country: SLOVAKIA\n"
 
+#. generic_multiplayer
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
 msgstr "Užívateľská mapa"
 
+#. multiplayer_side
 #: data/multiplayer/eras.cfg:5
 msgid "Random"
 msgstr "Náhodná"
 
+#. era
 #: data/multiplayer/eras.cfg:12
 msgid "Default"
 msgstr "Štandardná"
 
+#. era
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
 msgstr "Vek hrdinov"
 
+#. era
 #: data/multiplayer/eras.cfg:38
 msgid "Great War"
 msgstr "Veľká vojna"
 
+#. multiplayer_side: type=Dark Sorcerer
 #: data/multiplayer/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
 msgstr "Aliancia temnoty"
 
+#. multiplayer_side: type=White Mage
 #: data/multiplayer/factions/alliance_of_light.cfg:4
 msgid "Alliance of Light"
 msgstr "Aliancia svetla"
 
+#. multiplayer_side: type=Drake Flare
+#. multiplayer_side: type=Drake Flameheart
 #: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
 msgstr "Jašteri"
 
+#. multiplayer_side: type=Dwarvish Steelclad
+#. multiplayer_side: type=Dwarvish Lord
 #: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Aliancia Knalgy"
 
+#. multiplayer_side: type=Lieutenant
+#. multiplayer_side: type=General
 #: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "Lojalisti"
 
+#. multiplayer_side: type=Orcish Warlord
+#. multiplayer_side: type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Severania"
 
+#. multiplayer_side: type=Elvish Marshal
+#. multiplayer_side: type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Rebeli"
 
+#. multiplayer_side: type=Dark Sorcerer
+#. multiplayer_side: type=Lich
 #: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "Nemŕtvi"
 
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
 msgstr "(2) - Baziliškove jaskyne"
 
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 #, fuzzy
 msgid ""
@@ -93,6 +114,7 @@ msgstr ""
 "víťazstvu je vyznačená skamenelými sochami niekdajších najväčších hrdinov "
 "Wesnothu."
 
+#. side
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:47
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:22
@@ -121,6 +143,7 @@ msgstr ""
 msgid "teamname^North"
 msgstr "Sever"
 
+#. side
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:59
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:34
@@ -143,6 +166,7 @@ msgstr "Sever"
 msgid "teamname^South"
 msgstr "Juh"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
 msgid ""
 "The winds of the dark sky blew so cold,\n"
@@ -187,10 +211,12 @@ msgstr ""
 "by zlato Baziliška vzal.\n"
 "(zapísal Flametrooper)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:98
 msgid "Xikkrisx"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:100
 msgid ""
 "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
@@ -214,11 +240,13 @@ msgid ""
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:104
 #, fuzzy
 msgid "Oxsrrsk"
 msgstr "Diváci"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:106
 msgid ""
 "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival "
@@ -242,6 +270,7 @@ msgid ""
 "service, Oxsrrsk set out on his journey..."
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:119
 msgid ""
 "Slim of Stature, dexterous Hands\n"
@@ -262,10 +291,12 @@ msgstr ""
 "- - Sedem skál a jeden elf\n"
 "(zapísal Gauteamus)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:123
 msgid "Blum Duk"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:128
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
@@ -296,10 +327,12 @@ msgstr ""
 "nohy z kameňa?!\n"
 "(zapísal Elvish Pillager)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:132
 msgid "Rah Ihn Mar"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:134
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
@@ -313,6 +346,7 @@ msgid ""
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:141
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
@@ -330,6 +364,7 @@ msgstr ""
 "pán jazera.\n"
 "(zapísal Turin)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:148
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
@@ -348,10 +383,12 @@ msgstr ""
 "pochmúrna pripomienka jeho niekdajšej odvahy a sily.\n"
 "(zapísal Fynmiir)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:152
 msgid "Bramwythl"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:157
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
@@ -386,20 +423,24 @@ msgstr ""
 "splnilo.\n"
 "(zapísal Elvish Pillager)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:161
 msgid "Talael Ryndoc"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
 msgid "Aethec Corryn"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: ''Talael Ryndoc! I am "
@@ -410,11 +451,13 @@ msgid ""
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:175
 #, fuzzy
 msgid "Rilhon"
 msgstr "Ruina"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:178
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
@@ -440,6 +483,7 @@ msgstr ""
 "všetkým očakávaniam so všetkými svojimi zubami.\n"
 "(zapísal Paterson)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:198
 #, fuzzy
 msgid ""
@@ -475,15 +519,18 @@ msgstr ""
 "\n"
 "(zapísal MJQ)"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 msgid "2p - Cynsaun Battlefield"
 msgstr "(2) - Bojisko Cynsaun"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 #, fuzzy
 msgid " Recommended settings of 150 gold and 2 gold per village."
 msgstr " Odporúča sa nastaviť 150 zlata na začiatok a 1 zlatku za dedinu."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
@@ -492,10 +539,12 @@ msgstr ""
 "Na tomto rozhľahlom bojisku, dizajnovanom pre fanúšikov masívnych epických "
 "súbojov, je toho veľa na objavovanie."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p - Dark Forecast (Survival)"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player teambased "
@@ -504,6 +553,7 @@ msgid ""
 "on random weather effects."
 msgstr ""
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:474
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
@@ -511,60 +561,73 @@ msgid ""
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:835
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1012
 msgid "Heavy Snowfall"
 msgstr ""
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1026
 #, fuzzy
 msgid "Snowfall"
 msgstr "Sneh"
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1046
 msgid "Heavy Rains"
 msgstr ""
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1060
 #, fuzzy
 msgid "Drought"
 msgstr "Kostlivý hrdina"
 
+#. else
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1068
 #, fuzzy
 msgid "Clear Weather"
 msgstr "Hlboká voda"
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1420
 msgid "Single player mode - uses the reduced strength spawns."
 msgstr ""
 
+#. else
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1423
 msgid "Two player mode - uses the full strength spawns."
 msgstr ""
 
+#. objectives
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1443
 msgid "Survive and defeat the waves of opposition."
 msgstr ""
 
+#. objective: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1445
 #, fuzzy
 msgid "Defeat all waves"
 msgstr "Poraz Merla"
 
+#. objective: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
 msgid "Lose all your team's leaders"
 msgstr ""
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1460
 msgid "Dark Forecast - a random survival scenario"
 msgstr ""
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1481
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
@@ -592,10 +655,12 @@ msgid ""
 "- WML implementation"
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1485
 msgid "So this is the accursed valley - a land ours for the taking."
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1489
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
@@ -603,24 +668,28 @@ msgid ""
 "surprises of this land."
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1493
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr ""
 
+#. message: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1530
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
 
+#. message: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1544
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1566
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
@@ -628,10 +697,12 @@ msgid ""
 "is over."
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
 msgstr "(2) - Onisov brloh"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 #, fuzzy
 msgid ""
@@ -641,6 +712,8 @@ msgstr ""
 "Nebezpečenstvo číha na každom rohu tohoto podzemného bojového poľa, na "
 "ktorom sa odohráva súboj sily a prefíkanosti."
 
+#. multiplayer
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
@@ -665,11 +738,13 @@ msgstr ""
 msgid " Recommended setting of 2 gold per village."
 msgstr " Odporúča sa nastaviť 2 zlatky za dedinu."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 #, fuzzy
 msgid "2p - Fallenstar Lake"
 msgstr "(2) - Meteoritické jazero"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 #, fuzzy
 msgid ""
@@ -679,6 +754,7 @@ msgstr ""
 "Kedysi dávno spadol z nebies meteor, ktorý zanechal stopu v tejto oblasti "
 "porastenej smrekovcom."
 
+#. side
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
 #: data/multiplayer/scenarios/4p_Clash.cfg:19
 #: data/multiplayer/scenarios/4p_Clash.cfg:41
@@ -698,6 +774,7 @@ msgstr ""
 msgid "teamname^West"
 msgstr "Západ"
 
+#. side
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:32
 #: data/multiplayer/scenarios/4p_Clash.cfg:30
 #: data/multiplayer/scenarios/4p_Clash.cfg:52
@@ -716,10 +793,12 @@ msgstr "Západ"
 msgid "teamname^East"
 msgstr "Východ"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
 msgstr "(2) - Osady"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 msgid ""
@@ -729,10 +808,12 @@ msgstr ""
 "Vojna premenila prosté farmy a dediny mierového regiónu na rozparcelované "
 "bojové pole."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
 msgstr "(2) - Ostrov Hornshark"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
@@ -741,10 +822,12 @@ msgstr ""
 "Hráči musia prechádzať rozbitým terénom tohoto malého ale zato spletitého "
 "ostrova."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
 msgstr "(2) - Delta Sablestone"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
@@ -753,10 +836,12 @@ msgstr ""
 "Dve armáy sa zrazili na rozdelenom pobreží plnom skrytých jaskýň a "
 "rozvetvených riek."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
 msgstr "(2) - Križovatka Silverhead"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
@@ -765,18 +850,22 @@ msgstr ""
 "Hráči musia prejsť všemožnými terénmi, aby zvíťazili na tejto duelovej mape "
 "plnej ciest."
 
+#. trait
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:20
 msgid "statue"
 msgstr "socha"
 
+#. trait
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:21
 msgid "This is a sculpture made of stone."
 msgstr "Toto je kamenná socha."
 
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:35
 msgid "2p - Sullas Ruins"
 msgstr "(2) - Ruiny Sullas"
 
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
@@ -785,10 +874,12 @@ msgstr ""
 "Z niekdajšej mocnej ríše po zaplavení morom a útokoch zimných živlov zostali "
 "iba ruiny, voda a ľad."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Sulla"
 msgstr "Socha Sully"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:79
 #, fuzzy
 msgid ""
@@ -801,57 +892,70 @@ msgstr ""
 "pohyblivého ľadovca, Strážkyňa horiacej vlny, Kráľovná zničujúceho plameňa, "
 "Sulla Spaľovačka, Sulla Pyšná a Sulla Pravdovravná."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
 msgid "Statue of Lhun-dup"
 msgstr "Socha Lhun-dupa"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:83
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
 msgstr "V kameni vytesaná podoba Lhun-dupa, Sullinho služobníka."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "Statue of Ri-nzen"
 msgstr "Socha Ri-nzena"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:87
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
 msgstr "V kameni vytesaná podoba Ri-nzena, Sullinho služobníka."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
 msgid "Statue of Ten-zin"
 msgstr "Socha Ten-zina"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:91
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
 msgstr "V kameni vytesaná podoba Ten-zina, Sullinho služobníka."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:94
 msgid "Statue of Lo-bsang"
 msgstr "Socha Lo-bsanga"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "V kameni vytesaná podoba Lo-bsanga, Sullinho služobníka."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
 #, fuzzy
 msgid "2p - The Freelands"
 msgstr "(4) - Divočina"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
 msgid "A duel map for super fast play."
 msgstr "Mapa na super rýchly duel."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 #, fuzzy
 msgid "2p - Weldyn Channel"
 msgstr "(2) - Výpad"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:4
 msgid "2p - Wesbowl"
 msgstr "(2) - Wesbowl"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:6
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
@@ -863,6 +967,7 @@ msgstr ""
 "si môžu navzájom napádať jednotky. Wesbowl sa hrá tupými zbraňami pod "
 "dozorom liečiteľov, takže porazené jednotky sa vracajú zranené na štart."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:11
 msgid ""
 "\n"
@@ -879,55 +984,67 @@ msgstr ""
 "Prehráš, ak:\n"
 "#Súper dostane loptu do tvojej cieľovej oblasti častejšie ako ty do jeho"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:182
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:428
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "Červený má bod! Skóre je $redscore-$bluescore"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:225
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:471
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "Modrý má bod! Skóre je $redscore-$bluescore"
 
+#. message: speaker=unit
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:308
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:554
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "Mám loptu odovzdať hráčovi $passto.type ($xloc,$yloc)?"
 
+#. option: speaker=unit
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:310
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:556
 msgid "Yes!"
 msgstr "Áno!"
 
+#. option: speaker=unit
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:332
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:578
 msgid "No"
 msgstr "Nie"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:601
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "Modré družstvo vyhralo! Konečné skóre: $redscore-$bluescore"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:614
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "Červené družstvo vyhralo! Konečné skóre: $redscore-$bluescore"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:627
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Remíza! Konečné skóre: $redscore-$bluescore"
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr "Traja hráči sa čelne zrazia na tomto vodnom bojisku."
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "(3) - Horatiov ostrov"
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
@@ -936,10 +1053,12 @@ msgstr ""
 "Ovládnuť stredný ostrov je často kľúčom k víťazstvu na tejto mape 21x21 polí "
 "pre 3 hráčov každý proti každému."
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
 msgstr "(3) - Morituri"
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
@@ -947,10 +1066,12 @@ msgid ""
 msgstr ""
 "Iba jedna strana môže zvíťaziť v tejto stiesnenej mapke pre troch hráčov."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
 msgstr "(4) - Provincia Bluewater"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 #, fuzzy
 msgid ""
@@ -963,6 +1084,7 @@ msgstr ""
 "dvadsaťkrát. Ako sa teraz na kamenistých svahoch a zasnežených horách tejto "
 "provincie začínajú zbierať armády, dedinčania im sotva venujú pozornosť."
 
+#. side
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:54
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:19
@@ -978,6 +1100,7 @@ msgstr ""
 msgid "teamname^Team 1"
 msgstr "Tím 1"
 
+#. side
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:43
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:30
@@ -993,30 +1116,37 @@ msgstr "Tím 1"
 msgid "teamname^Team 2"
 msgstr "Tím 2"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
 msgstr "(4) - Ostrov blízkych hradov"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
 msgstr "Skáč z hradu na hrad a bojuj pritom o centrálny ostrov."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p - Clash"
 msgstr "(4) - Zrážka"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
 msgstr "Malá mapa pre 2 proti 2."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p - Hamlets"
 msgstr "(2) - Osady"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
 msgstr "(4) - Isarov kríž"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
@@ -1028,6 +1158,7 @@ msgstr ""
 "jednotky a plánovať ťahy. Tímy sú nastavené 1+4 proti 2+3 (severovýchod "
 "proti juhozápadu). Odporúča sa 75 zlata na začiatok, na mape je 20 dedín."
 
+#. side
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:30
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:41
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:74
@@ -1041,6 +1172,7 @@ msgstr ""
 msgid "teamname^South-West"
 msgstr "Juhozápad"
 
+#. side
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:19
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:52
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:63
@@ -1052,10 +1184,12 @@ msgstr "Juhozápad"
 msgid "teamname^North-East"
 msgstr "Severovýchod"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p - King of the Hill"
 msgstr "(4) - Kráľ kopca"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
@@ -1065,11 +1199,13 @@ msgstr ""
 "okolo strednej pevnosti. Každý proti každému alebo 2 proti 2. Na mape je 36 "
 "dedín."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr " Odporúča sa nastaviť 2 zlatky za dedinu a 150 zlata na začiatok."
 
+#. side
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:38
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:49
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:33
@@ -1081,6 +1217,7 @@ msgstr " Odporúča sa nastaviť 2 zlatky za dedinu a 150 zlata na začiatok."
 msgid "teamname^South-East"
 msgstr "Juhovýchod"
 
+#. side
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:27
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:60
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:57
@@ -1088,24 +1225,29 @@ msgstr "Juhovýchod"
 msgid "teamname^North-West"
 msgstr "Severozápad"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 msgid "4p - Lagoon"
 msgstr "(4) - Zátoka"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid " Recommended setting of 1 gold per village."
 msgstr " Odporúča sa nastaviť 1 zlatku za dedinu."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid "Four factions contend for dominance over this watery settlement."
 msgstr "Štyri frakcie súperia o nadvládu nad touto vodnatou usadlosťou."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p - Loris River"
 msgstr "(4) - Rieka Loris"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
@@ -1114,22 +1256,27 @@ msgstr ""
 "Mapa pre 2v2 veľkosti 25x25 má v strede rieku, a pevnosti sú v protiľahlých "
 "rohoch. Tímy 1+4 proti 2+3. 28 dedín."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
 msgstr "(4) - Morituri"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 msgid "Who will emerge from the confines of this perilous battlefield?"
 msgstr "Kto vyjde živý z trosiek tohoto nebezpečného bojiska?"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
 msgstr "(4) - Cesta dýk"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
 msgstr " Odporúča sa nastaviť 2 zlatky za dedinu, na mape je 28 dedín."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
@@ -1139,10 +1286,12 @@ msgstr ""
 "sa tímy východ proti západu (1+4 proti 2+3), ale možno hrať aj iné tímy, "
 "alebo každý proti každému."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
 msgstr "(4) - Obliehanie hradov"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
@@ -1152,10 +1301,12 @@ msgstr ""
 "dvoch riek. Možno hrať 2 proti 2 alebo každý proti každému. Približne 45 "
 "dedín."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:26
 msgid "4p - The Wilderlands"
 msgstr "(4) - Divočina"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
@@ -1164,25 +1315,30 @@ msgstr ""
 "Rozľahlá nespútaná divočina, ktorej terén pretkávajú lesy, jaskyne, rieky a "
 "zrúcaniny prastarých pevností."
 
+#. side
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:81
 #, fuzzy
 msgid "Monsters"
 msgstr "Potvory"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p - Xanthe Chaos"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p - Auction-X"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
 msgid ""
 "4 players surround a central keep, play vs the AI survival style, or as a "
@@ -1191,43 +1347,52 @@ msgid ""
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:22
 #, fuzzy
 msgid "teamname^Northeast"
 msgstr "Severovýchod"
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:34
 #, fuzzy
 msgid "teamname^Southeast"
 msgstr "Juhozápad"
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:46
 #, fuzzy
 msgid "teamname^Southwest"
 msgstr "Juhozápad"
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:58
 #, fuzzy
 msgid "teamname^Northwest"
 msgstr "Severozápad"
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:70
 #, fuzzy
 msgid "teamname^Center"
 msgstr "Západ"
 
+#. multiplayer
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
 msgstr "(5) - Les strachu"
 
+#. multiplayer
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "Na tomto zmiešanom teréne bojuje päť frakcií o nadvládu."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:5
 msgid "6p - Amohsad Caldera"
 msgstr "(6) - Amohsad Caldera"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
@@ -1236,10 +1401,12 @@ msgstr ""
 "Iba pravý taktik dokáže prežiť v tomto smrtiacom a stiesnenom údolí, kde sa "
 "6 armád čelne zrazilo."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
 msgstr "(6) - Križiacke pole"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
@@ -1250,10 +1417,12 @@ msgstr ""
 "duchovia stoviek udatných bojovníkov neviditeľne poletujú nad horami, lesmi "
 "a riekami."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
 msgstr "(6) - Šesťuholníkový koláč"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "(2 + 2) alebo (3 + 3) tímová hra."
@@ -1290,35 +1459,43 @@ msgstr ""
 msgid "Tower of Doom"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 msgid "Survive for 32 turns."
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:350
 msgid "Survive all enemy attacks."
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:351
 #, fuzzy
 msgid "Death of your team leaders."
 msgstr "Zomrie Delfador"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:373
 msgid "Faery"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:373
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
@@ -1326,21 +1503,25 @@ msgid ""
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
 #, fuzzy
 msgid "Death"
 msgstr "Prehra"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:382
 msgid "Attacker"
 msgstr "Útočník"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:386
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:387
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:388
@@ -1350,10 +1531,12 @@ msgstr "Útočník"
 msgid "Defender"
 msgstr "Obranca"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
 msgstr "(6) - Manzivanské pasce"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:9
 msgid ""
 "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
@@ -1366,10 +1549,12 @@ msgstr ""
 "tímov: 1+4+5 proti 2+3+6 (východ proti západu). Odporúča sa 100 zlata na "
 "začiatok, má 33 dedín."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
 msgstr "(6) - Súmrak nad Waterloo"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
@@ -1381,17 +1566,20 @@ msgstr ""
 "nepremohla. Tímy 1+4+5 proti 2+3+6 (sever proti juhu), ale zaujímavé je aj 1"
 "+4+6 alebo 1+3+6. Odporúča sa 150 zlata, má 44 dedín."
 
+#. multiplayer
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 #, fuzzy
 msgid "8p - Mokena Prairie"
 msgstr "(8) - Morituri"
 
+#. multiplayer
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
 
+#. side
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
@@ -1400,6 +1588,7 @@ msgstr ""
 msgid "teamname^east"
 msgstr "Západ"
 
+#. side
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
@@ -1408,10 +1597,12 @@ msgstr "Západ"
 msgid "teamname^west"
 msgstr "Západ"
 
+#. multiplayer
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
 msgstr "(8) - Morituri"
 
+#. multiplayer
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
@@ -1420,10 +1611,12 @@ msgstr ""
 "Tímová práca a taktika sú kľúčom k víťazstvu na tomto nezvyčajnom bojisku, "
 "kde proti sebe bojuje osem armád."
 
+#. multiplayer
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p - Merkwuerdigliebe"
 msgstr "(9) - Merkwuerdigliebe"
 
+#. multiplayer
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
@@ -1436,11 +1629,14 @@ msgstr ""
 "juhovýchodu proti juhozápadu). Na každého hráča pripadá len pár dedín, takže "
 "sa odporúčajú 3 zlatky za dedinu."
 
+#. scenario
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
 msgstr "Náhodná mapa"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
@@ -1449,11 +1645,14 @@ msgstr ""
 "Náhodne vytvorená mapa. Poznámka: náhodné mapy sú často nevyvážené, ale ak "
 "máte čas, môžete ich generovať znova, až kým nedostanete dobrú mapu."
 
+#. scenario
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
 msgstr "Náhodná mapa (púšť)"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
 msgid ""
 "A random map with sand as the primary terrain. Note: random maps are often "
@@ -1463,11 +1662,14 @@ msgstr ""
 "Náhodná mapa zameraná na piesok. Poznámka: náhodné mapy sú často nevyvážené, "
 "ale ak máte čas, môžete ich generovať znova, až kým nedostanete dobrú mapu."
 
+#. scenario
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
 msgstr "Náhodná mapa (močiar)"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
 msgid ""
 "A random map with swamp as the primary terrain. Note: random maps are often "
@@ -1478,11 +1680,14 @@ msgstr ""
 "nevyvážené, ale ak máte čas, môžete ich generovať znova, až kým nedostanete "
 "dobrú mapu."
 
+#. scenario
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
 msgstr "Náhodná mapa (zima)"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
 msgid ""
 "A random map set in the break between spring and winter, mainly with snowy "
@@ -1493,10 +1698,12 @@ msgstr ""
 "mapy sú často nevyvážené, ale ak máte čas, môžete ich generovať znova, až "
 "kým nedostanete dobrú mapu."
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid "Wesnoth Benchmark: AI"
 msgstr "Test výkonu Wesnothu: umelá inteligencia"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
@@ -1505,10 +1712,12 @@ msgstr ""
 "Testovanie výkonu, použi --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
 msgstr "Test výkonu Wesnothu: rolovanie obrazovky"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
@@ -1517,10 +1726,12 @@ msgstr ""
 "Testovanie výkonu, použi --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid "Wesnoth Benchmark: Walking through Shroud"
 msgstr "Test výkonu Wesnothu: odkrývanie mapy"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:47+0100\n"
+"POT-Creation-Date: 2008-03-10 11:41+0100\n"
 "PO-Revision-Date: 2008-02-14 20:54+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -12,30 +12,37 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Esperanto\n"
 
+#. campaign
 #: data/campaigns/Two_Brothers/_main.cfg:12
 msgid "A Tale Of Two Brothers"
 msgstr "Rakonto pri du fratoj"
 
+#. campaign
 #: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "AToTB"
 msgstr "RpDF"
 
+#. campaign
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "Horseman"
 msgstr "Rajdisto"
 
+#. campaign
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "(Beginner)"
 msgstr "(Komencanta)"
 
+#. campaign
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "(Challenging)"
 msgstr "(Spita)"
 
+#. campaign
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Knight"
 msgstr "Kavaliro"
 
+#. campaign
 #: data/campaigns/Two_Brothers/_main.cfg:21
 msgid ""
 "An evil mage is threatening the local village and its inhabitants. When "
@@ -52,34 +59,42 @@ msgstr ""
 "(Novula nivelo, 4 scenaroj; la 'Malfacila' povas allogi pli spertajn "
 "ludantojn.)"
 
+#. about
 #: data/campaigns/Two_Brothers/_main.cfg:24
 msgid "Campaign Design"
 msgstr "Desegnado de la kampanjo"
 
+#. about
 #: data/campaigns/Two_Brothers/_main.cfg:33
 msgid "Campaign Maintenance"
 msgstr "Prilaboro de la kampanjo"
 
+#. about
 #: data/campaigns/Two_Brothers/_main.cfg:39
 msgid "Artwork and Graphics Design"
 msgstr "Artaĵoj kaj grafika desegno"
 
+#. about
 #: data/campaigns/Two_Brothers/_main.cfg:48
 msgid "Miscellaneous"
 msgstr "Diversaĵoj"
 
+#. about
 #: data/campaigns/Two_Brothers/_main.cfg:55
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Kaj speciala danko al tiuj, kiujn ni forgesis mencii."
 
+#. scenario
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:4
 msgid "Rooting Out A Mage"
 msgstr "Ekstermo de Mago"
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:52
 msgid "Slay Mordak, the evil mage"
 msgstr "Slej Mordak, malica mago"
 
+#. objective: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:56
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:195
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:637
@@ -92,6 +107,7 @@ msgstr "Slej Mordak, malica mago"
 msgid "Death of Arne"
 msgstr "Morto de Arneo"
 
+#. objective: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:60
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:199
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:641
@@ -104,6 +120,7 @@ msgstr "Morto de Arneo"
 msgid "Turns run out"
 msgstr "Movoj finiĝis"
 
+#. side: type=Knight, description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:75
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:60
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:106
@@ -111,51 +128,63 @@ msgstr "Movoj finiĝis"
 msgid "Arne"
 msgstr "Arne"
 
+#. unit: description=Bjarn, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:85
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:696
 msgid "Bjarn"
 msgstr "Bjarn"
 
+#. unit: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:97
 msgid "Alwyn"
 msgstr "Alvin"
 
+#. unit: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:108
 msgid "Brent"
 msgstr "Brent"
 
+#. unit: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:119
 msgid "Cadell"
 msgstr "Kadel"
 
+#. unit: type=Bowman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:130
 msgid "Dannen"
 msgstr "Dannen"
 
+#. unit: type=Bowman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:141
 msgid "Efran"
 msgstr "Efran"
 
+#. unit: type=Footpad
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:152
 msgid "Fargus"
 msgstr "Fargus"
 
+#. unit: description=Erik, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:166
 msgid "Erik"
 msgstr "Erik"
 
+#. unit: description=Heine, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:178
 msgid "Heine"
 msgstr "Heine"
 
+#. unit: description=Magnus, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:190
 msgid "Magnus"
 msgstr "Magnus"
 
+#. side: type=Dark Sorcerer, description=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:214
 msgid "Mordak"
 msgstr "Mordak"
 
+#. message: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:246
 msgid ""
 "In a remote part of Wesnoth, people lived their lives working hard and "
@@ -168,6 +197,7 @@ msgstr ""
 "tagon, tamen, ilia mondo estis disbatita, apenaŭ malica mago venis, "
 "estigante teroron kaj malesperon en la koro de la homoj."
 
+#. message: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:251
 msgid ""
 "Bjarn, the local mage of the village, was the man who saw best how to deal "
@@ -179,10 +209,12 @@ msgstr ""
 "fari kun la minaco. Li invitis helpi lian fraton Arneon, gvidanton de "
 "rajdista dungosoldataro, kaj ekipis kelkajn vilaĝanoj per aĵoj de arsenalo."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:255
 msgid "'ello there, Bjarn. So, what's the big fuss?"
 msgstr "Sal', Bjarno. Do, kial ĉi tie estas granda tumulto?"
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:259
 msgid ""
 "Mordak, an evil mage, threatens our lives and livelihoods. He is terrorizing "
@@ -192,11 +224,13 @@ msgstr ""
 "Mordak, malica mago, minacas niajn vivojn kaj vivrimedojn. Li terorigis nian "
 "kamparon. Mi jam alvokis vilaĝanojn al armiloj kaj nun vi povas gvidi ilin."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:263
 msgid "Very well. We will go there and slay this source of evil. Charge, men!"
 msgstr ""
 "Tre bone. Ni venos tien kaj ekstermos la fonton de malbono. Rezistu, viro!"
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:267
 msgid ""
 "I will attempt to sneak through the forest. If I can slay the evil one while "
@@ -205,12 +239,14 @@ msgstr ""
 "Mi provos kaŝveni tra la arbaro. Se mi povos mortigi la malbonulon dum li "
 "estas sen liaj gardistoj la batalo estos finita post la unua bato!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:278
 msgid ""
 "Bjarn should have been in position by now. I wonder if anything's happened "
 "to him?"
 msgstr "Bjarno nun devas esti sur sia pozicio. Mi miros se io okazos al li."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:286
 msgid ""
 "This is worrying. What's happened to Bjarn? I suppose we must slay the dark "
@@ -219,22 +255,27 @@ msgstr ""
 "Tio maltrankviligas min. Kio okazis al Bjarno? Mi supozas, ke ni mem devas "
 "mortigi la malluman sorĉiston."
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:301
 msgid "Argh!"
 msgstr "Argĥh!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:305
 msgid "Good work, men. Now, where is Bjarn?"
 msgstr "Bona laboro, militistoj. Nun, kie estas Bjarno?"
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:309
 msgid "Worried about him, are you? E-he-he..hergh...gaargh..."
 msgstr "Ĉu vi maltrankviliĝas pro li? E-he-he..herĥ...gaarĥh. . ."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:313
 msgid "Nothing more to be had from him."
 msgstr "Ni atingos nenion plu de li."
 
+#. message: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:317
 msgid ""
 "Sir, he's been kidnapped! I just saw some men running off with him. They "
@@ -243,10 +284,12 @@ msgstr ""
 "Majstro, oni kaptis lin! Mi ĵus vidis iujn ulojn forkurantajn kun li. Ili "
 "aspektis kiel amikoj de tiu ĉi ulo."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:321
 msgid "Damn! I suppose we have to go after him, then."
 msgstr "Damne! Do mi proponas, ke ni iru post li."
 
+#. message: description=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:334
 msgid ""
 "Ha, so you thought to send a mage around and stab me in the back? Well, I "
@@ -255,39 +298,47 @@ msgstr ""
 "Ha, do vi pensis sendi magiulon malantaŭen kaj vundi min je mia dorso? Bone, "
 "mi havas novaĵojn por vi. Ni forrabis lin!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:338
 msgid "What? Bjarn kidnapped? And the evil mage still ravages the land? Noooo!"
 msgstr ""
 "Kio? Bjarno estas rabita? Kaj la nigra magiulo ankoraŭ detruas la landon? "
 "Neeee!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:353
 msgid "I hear these creatures are near immune to our weapons, let us see!"
 msgstr ""
 "Mi aŭdis, ke tiuj kreaĵoj havas preskaŭ imunecon kontraŭ niaj armiloj, ni "
 "vidu!"
 
+#. message: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:365
 msgid "That wasn't so hard!"
 msgstr "Tio ne estis tre malfacila!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:376
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:508
 msgid "All is lost now that I am dead..."
 msgstr "Ĉio malaperas nun, mi mortas..."
 
+#. scenario
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:4
 msgid "The Chase"
 msgstr "La Persekuto"
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:75
 msgid "Fight your way through the woods before the kidnappers escape"
 msgstr "Trabatu al vi vojon en la arbaron pli frue ol la forrabistoj eskapos"
 
+#. side: type=Elvish Rider, description=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:127
 msgid "Nil-Galion"
 msgstr "Nil-Galion"
 
+#. message: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:223
 msgid ""
 "The kidnappers fled north through the forest, and Arne made to follow them, "
@@ -296,22 +347,27 @@ msgstr ""
 "La forrabistoj eskapis norden tra la arbaro, kaj Arneo postrajdis ilin, "
 "kvankam liaj rajdistoj batalos malavantaĝe."
 
+#. message: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:228
 msgid "Sounds of a scuffle were heard from the forest."
 msgstr "Batalsonoj aŭdeblas en la arbaro."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:232
 msgid "Come on men. A bracing walk in the woods never hurt anyone, did it?"
 msgstr "Iru viroj. Vivantoj de arbaroj neniam vundis iun, ĉu ne?"
 
+#. message: description=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:236
 msgid "You there! Halt and explain yourself."
 msgstr "Vi tie! Haltu kaj identigu vin!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:240
 msgid "We're chasing after some men who kidnapped my brother!"
 msgstr "Ni postkuras homojn kiuj forrabis mian fraton!"
 
+#. message: description=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:244
 msgid ""
 "Those men had some great arguments persuading me to not allow you to enter "
@@ -320,31 +376,38 @@ msgstr ""
 "Tiuj homoj konvinkis min per bonegaj rezonoj ne permesi al vi eniri ĉi tiun "
 "arbaron. Se vi pluiros, vi mortos."
 
+#. message: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:248
 msgid "A glorious combat at last, against mounted enemies!"
 msgstr "Finfine glora batalo kontraŭ rajdantaj malamikoj!"
 
+#. unit: type=Dark Adept, description=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:263
 msgid "Muff Toras"
 msgstr "Muff Toras"
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:311
 msgid "I see them! There they are!"
 msgstr "Mi vidas ilin! Jen ili estas!"
 
+#. message: description=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:315
 msgid "Curses! I hope the reinforcements get here so I can escape soon."
 msgstr ""
 "Diable! Mi esperas ke la helptrupoj baldaŭ alvenos, tiel ke mi povos eskapi."
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:320
 msgid "Kill the Dark Adept before his reinforcements arrive"
 msgstr "Mortigu la malluman adepton pli frue ol liaj helptrupoj alvenos"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:338
 msgid "Come on, men, let's catch those kidnappers!"
 msgstr "Iru, viroj, ekkaptu tiujn forrabistojn!"
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:349
 msgid ""
 "Hah! You got me alright, but what does that help? No harm telling you now, I "
@@ -355,6 +418,7 @@ msgstr ""
 "senzorge. Via kara magiisto estas enfermigita en niaj subteraĵoj. Mi estis "
 "sendita kiel logaĵo."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:353
 msgid ""
 "Nooo! Tricked again. Tell us where he is and we shall spare your miserable "
@@ -363,38 +427,47 @@ msgstr ""
 "Neee! Ili trompis nin denove! Diru al ni kie li estas kaj ni indulgos vian "
 "fian vivon."
 
+#. event
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:356
 msgid "Sithrak"
 msgstr "Sitrak"
 
+#. event
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:357
 msgid "Eleben"
 msgstr "Eleben"
 
+#. event
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:358
 msgid "Jarlom"
 msgstr "Jarlom"
 
+#. event
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:359
 msgid "Hamik"
 msgstr "Hamik"
 
+#. event
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:362
 msgid "Akranbral"
 msgstr "Akranbral"
 
+#. event
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:363
 msgid "Drakanal"
 msgstr "Drakanal"
 
+#. event
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:364
 msgid "Xaskanat"
 msgstr "Ksaskanat"
 
+#. event
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:365
 msgid "Katklagad"
 msgstr "Katklagad"
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:370
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
@@ -405,14 +478,17 @@ msgstr ""
 "gardistoj estas $first_password_$first_password_number kaj $second_password_"
 "$second_password_number|."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:374
 msgid "Thank you. Leave him, men, we ride East."
 msgstr "Dankon. Delasu lin, viroj, ni rajdu orienten."
 
+#. unit: description=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:386
 msgid "Brena"
 msgstr "Brena"
 
+#. message: description=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:398
 msgid ""
 "Greetings, I am Brena. I saw you fighting the foul undead. I like nothing "
@@ -425,26 +501,32 @@ msgstr ""
 "ilian rason. Kvankam mi alvenis tro malfrue por batali kun vi, mi ŝatus "
 "helpi en viaj venontaj bataloj."
 
+#. message: type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:402
 msgid "He would only slow us down!"
 msgstr "Li nur malrapidigos nin!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:406
 msgid "I am the one to decide."
 msgstr "Mi estas la estro, mi decidas."
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:409
 msgid "Oh, all right then. Come along with us."
 msgstr "Ho, konsentite do. Venu kun ni."
 
+#. message: description=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:413
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr "Dankon. Mi kaj miaj kunbatalantoj vin helpos dum via nobla misio."
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:422
 msgid "I am sorry. We have not the time to spare."
 msgstr "Pardonu min, ni ne havas tempon, ni devas hasti."
 
+#. message: description=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:426
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
@@ -453,18 +535,22 @@ msgstr ""
 "Prenu tion ĉi do, ĉar mi vidas ke vi klopodas por nobla misio. Miaj "
 "kunbatalantoj helpos vin kiam ajn vi vokos ilin."
 
+#. message: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:443
 msgid "You receive 70 pieces of gold!"
 msgstr "Vi ricevas 70 orajn monerojn!"
 
+#. message: description=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:463
 msgid "My reinforcements are here!"
 msgstr "Jen miaj helptrupoj!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:467
 msgid "He escaped us..."
 msgstr "Li fuĝis..."
 
+#. message: description=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:478
 msgid ""
 "You foolish human, you killed me but you won't be able to reach the undead. "
@@ -475,6 +561,7 @@ msgstr ""
 "Mi plenumis la kontrakton kaj mi baldaŭ estos revivigita por esti la Sinjoro "
 "de iliaj armeoj."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:482
 msgid ""
 "Hurry, we have to track them down. Maybe we can still get them. They have to "
@@ -483,22 +570,30 @@ msgstr ""
 "Hastu, ni devas postsekvi ilin, eble ni povas ankoraŭ ilin atingi. "
 "Problable, ili iris norden!"
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:487
 msgid "Hurry to the north and stop the kidnappers"
 msgstr "Hastu norden kaj haltigu la forrabistojn"
 
+#. terrain
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
 msgid "Irongate"
 msgstr "Fera Pordego"
 
+#. scenario
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:17
 msgid "Guarded Castle"
 msgstr "Gardata Kastelo"
 
+#. side: type=Dark Sorcerer, description=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:80
 msgid "Rotharik"
 msgstr "Rotarik"
 
+#. unit: description=Guard_leader, type=Assassin
+#. unit: role=Guard, type=Bandit
+#. unit: description=Guard2_leader, type=Rogue
+#. unit: role=Guard2, type=Bandit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:101
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:109
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:118
@@ -514,10 +609,13 @@ msgstr "Rotarik"
 msgid "Guard"
 msgstr "Gardisto"
 
+#. unit: description=Knago-Brek, type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:143
 msgid "Knago-Brek"
 msgstr "Knago-Brek"
 
+#. unit: type=Orcish Grunt
+#. unit: type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:152
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:160
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:169
@@ -525,10 +623,12 @@ msgstr "Knago-Brek"
 msgid "Castle Guard"
 msgstr "Kastela Gardisto"
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:191
 msgid "Rescue Bjarn"
 msgstr "Liberigu Bjarnon"
 
+#. message: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:294
 msgid ""
 "Arne arrived at the castle and was immediately challenged by some guards."
@@ -536,38 +636,47 @@ msgstr ""
 "Arneo alvenis al la kastelo kaj li estis subite alfrontita de kelkaj "
 "gardistoj."
 
+#. message: description=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:298
 msgid "Halt! Friend or foe? Give the password."
 msgstr "Haltu! Ĉu vi estas amiko aŭ malamiko? Diru la pasvorton."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:303
 msgid "The password is"
 msgstr "La pasvorto estas"
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:305
 msgid "$first_password_1|!"
 msgstr "$first_password_1|!"
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:311
 msgid "$first_password_2|!"
 msgstr "$first_password_2|!"
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:317
 msgid "$first_password_3|!"
 msgstr "$first_password_3|!"
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:323
 msgid "$first_password_4|!"
 msgstr "$first_password_4|!"
 
+#. message: description=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:339
 msgid "Pass, friend."
 msgstr "Eniru, amiko."
 
+#. message: description=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:357
 msgid "Wrong! Die!"
 msgstr "Malĝuste! Mortu!"
 
+#. message: description=Knago-Brek
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:371
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
@@ -576,6 +685,7 @@ msgstr ""
 "Ha ha! Ni ne mortigis longtempe, finfine niaj bataliloj malsekiĝos per homan "
 "sangon! "
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:375
 msgid ""
 "I knew that we had to fight to free my brother! Come on men, lets kill some "
@@ -584,57 +694,68 @@ msgstr ""
 "Mi sciis ke ni devos batali por liberigi mian fraton! Iru viroj, ni mortigu "
 "kelkajn orkojn."
 
+#. message: description=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:424
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:540
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr "Ĉu vi venis anstataŭi nin? Ĉu ni finfine rajtas foriri nun?"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:428
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:544
 msgid "Um, yes. Fine. You can go."
 msgstr "Hm, jes. Bone. Vi rajtas iri."
 
+#. message: description=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:432
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:548
 msgid "Um, you're supposed to give the password."
 msgstr "Hm, vi devus diri la pasvorton."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:436
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:552
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "Ho, certe. Mi preskaŭ forgesis."
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:438
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:554
 msgid "$second_password_1|!"
 msgstr "$second_password_1|!"
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:444
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:560
 msgid "$second_password_2|!"
 msgstr "$second_password_2|!"
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:450
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:566
 msgid "$second_password_3|!"
 msgstr "$second_password_3|!"
 
+#. option: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:456
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:572
 msgid "$second_password_4|!"
 msgstr "$second_password_4|!"
 
+#. message: description=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:471
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:587
 msgid "Thanks! Irritating little formality, isn't it?"
 msgstr "Dankon! Inciteta formalaĵo, ĉu ne?"
 
+#. message: description=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:484
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:600
 msgid "That's the wrong password! These aren't our relief! Get them!"
 msgstr ""
 "Tiu ĉi pasvorto estas erara! Tiuj ĉi homoj estas trompantoj! Kaptu ilin!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:490
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:606
 msgid ""
@@ -644,14 +765,17 @@ msgstr ""
 "Mi pensas ke necesas pli bone subteni la antaŭajn batalantojn por esti certa "
 "ke ni liberigos mian fraton."
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:619
 msgid "Nooo! This is the end..."
 msgstr "Neee! Tio estas la fino..."
 
+#. message: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:623
 msgid "There's a key in his robes."
 msgstr "En lia robo estas ŝlosilo."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:627
 msgid ""
 "It must be the key to the cell they're holding Bjarn in! I will take the "
@@ -660,33 +784,40 @@ msgstr ""
 "Ĝi devas esti la ŝlosilo de la ĉelo de Bjarno! Mi prenos la ŝlosilon. Mi ne "
 "povas atendi, mi volas vidi mian fraton. Venu, ni liberigu lin."
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:633
 msgid "Move Arne to the cell with his brother to free him"
 msgstr "Movu Arneon al la ĉelo por liberigi sian fraton"
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:663
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
 msgstr "Ekrigardu kion mi trovis ĉi tie! Cento da oraj moneroj."
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:676
 msgid "Look what I have found in here! I can count fifty pieces of gold."
 msgstr "Ekrigardu kion mi trovis ĉi tie! Kvindeko da oraj moneroj."
 
+#. message: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:723
 msgid "I found Bjarn. He is in this cell."
 msgstr "Mi trovis Bjarnon. Li estas en ĉi tiu ĉelo."
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:733
 msgid "Good to see you, Arne. Please help me get out of this dungeon."
 msgstr ""
 "Estas bele vidi vin, Arneo. Bonvolu helpi min foriri el ĉi tiu subteraĵo."
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:739
 msgid "You must be one of Arne's men. Please help me get out of this dungeon."
 msgstr ""
 "Vi devas esti batalanto de Arneo. Bonvolu helpi min foriri el ĉi tiu "
 "subteraĵo."
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:745
 msgid ""
 "The damn Dark Sorcerer Rotharik has imprisoned me behind this magical "
@@ -697,16 +828,19 @@ msgstr ""
 "Por liberigi min vi devas neniigi la barilon per la ŝlosilo kiun havas "
 "Rotarik."
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:756
 msgid "Kill the dark sorcerer to get the cellkey"
 msgstr "Mortigu la malluman sorĉiston por preni la ĉela ŝlosilo"
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:797
 msgid "Thank you for saving me. I had almost given up hope you would free me."
 msgstr ""
 "Dankon, ke vi savis min. Mi preskaŭ ekis malesperi, ke vi liberigos min."
 
 # undead!
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:801
 msgid ""
 "Oh it was nothing, a few elves, one or two dark sorcerers, a bunch of orcs "
@@ -715,44 +849,54 @@ msgstr ""
 "Ho, estis facile, kelkaj elfoj, unu aŭ du mallumaj sorĉistoj, aro da orkoj, "
 "kaj iom da nemortintoj. Verdire, nur ĉiutaga laboro por ni dungosoldatoj."
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:805
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "Dankon, ke vi venis helpi min. Ni revenu al vilaĝo."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:830
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:259
 msgid "Everything is lost now that I am dead..."
 msgstr "Ĉio malaperas nun, mi mortas..."
 
+#. message: description=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:841
 msgid "You are too late! Your brother is already dead! Muhahahaha..."
 msgstr "Vi tro malfruis! Via frato jam mortis! Ha ha ha "
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:845
 msgid "Argh!!!"
 msgstr "Argh!!!"
 
+#. scenario
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:4
 msgid "Return to the Village"
 msgstr "Reveno al la Vilaĝo"
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:57
 msgid "Find out what is happening in the village"
 msgstr "Eltrovu kio okazis en la vilaĝo"
 
+#. objective: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:65
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:212
 msgid "Death of Bjarn"
 msgstr "Morto de Bjarno"
 
+#. side: type=Orcish Warlord, description=Tairach
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:104
 msgid "Tairach"
 msgstr "Tairaĉ"
 
+#. side: type=Longbowman, description=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:131
 msgid "Councillor Hoban"
 msgstr "Konsilanto Hoban"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:160
 msgid ""
 "There. Your village is just across those hills, and already I see men coming "
@@ -761,16 +905,19 @@ msgstr ""
 "Jen. Via vilaĝo estas ĝuste trans tiuj montetoj, kaj mi jam vidas homojn "
 "kiuj venas ĉi tie por saluti nin!"
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:164
 msgid ""
 "No. They are fleeing from something. We have to find out what is happening "
 "over here!"
 msgstr "Ne. Ili forkuras de io. Ni devas eltrovi tion kio okazas ĉi tie!"
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:168
 msgid "I think your village is protected well, though."
 msgstr "Ĉiukaze, ŝajnas al mi ke via vilaĝo estas bone protektita."
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:172
 msgid ""
 "We should go there and talk to Councillor Hoban. Maybe he knows what is "
@@ -779,14 +926,17 @@ msgstr ""
 "Ni devus iri tie kaj paroli al Konsilanto Hoban. Eble li scias tion, kio "
 "okazas ĉi tie."
 
+#. message: description=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:183
 msgid "I am glad to see you back again."
 msgstr "Mi ĝojas vidi vin denove."
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:187
 msgid "So am I. But what is happening to our village?"
 msgstr "Ankaŭ mi. Sed kio okazis en nia vilaĝo?"
 
+#. message: description=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:191
 msgid ""
 "In the time you have been away a looting band of orcs took over this region. "
@@ -795,12 +945,14 @@ msgstr ""
 "Dum vi forestis orka banditaro alvenis kaj militakiris ĉi tiun regionon. "
 "Estis neniu ĉi tie por haltigi ilin."
 
+#. message: description=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:195
 msgid ""
 "The orcish Warlord wants to enslave us. We will not be able to hold out for "
 "long."
 msgstr "La orkduko volas malliberigi nin. Ni ne kapablus rezisti longtempe."
 
+#. message: description=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:199
 msgid ""
 "Be careful, he is responsible for the deaths of many of us. Very few remain "
@@ -810,15 +962,18 @@ msgstr ""
 "restis tiuj kiuj povas teni armilon, sed mi sendos ilin por helpi vin en la "
 "batalo."
 
+#. objective: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:204
 msgid "Slay the orcish Warlord to free the village"
 msgstr "Mortigu la orkdukon por liberigi la vilaĝon "
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:226
 msgid "Finally the orc is killed. Now you can go back to your village."
 msgstr "Finfine la orko mortis. Nun vi povas reveni al via vilaĝo."
 
 # undead!
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:230
 msgid ""
 "So much has been destroyed. We will have a hard time fixing the damage the "
@@ -828,6 +983,7 @@ msgstr ""
 "la damaĝon kiun faris la orkoj kaj la nemortintoj. Mi esperas ke ĉi tio ne "
 "okazos denove."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:234
 msgid ""
 "I have to leave you now. My men and I are needed by others, too. But should "
@@ -838,14 +994,17 @@ msgstr ""
 "iam alfrontos alian danĝeran malamikon, sendu al mi kurieron. Mi alvenos "
 "kiel eble rapide, fraĉjo."
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:245
 msgid "It is over, I am vanquished."
 msgstr "Estas fino, mi estas venkita."
 
+#. message: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:270
 msgid "I don't think we can rescue anyone from these villages. It is too late."
 msgstr "Mi ne pensas ke ni povos savi iun el ĉi tiuj vilaĝoj. Tro malfrue."
 
+#. message: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:274
 msgid "I was too weak to protect these people. Oh why did this happen to me?!?"
 msgstr "Mi ne kapablis protekti ĉi tiujn homojn. Ho, kial tio okazis kun mi?!?"

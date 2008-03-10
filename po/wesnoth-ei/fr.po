@@ -3,13 +3,13 @@
 # Copyright (C) 2004 THE Battle for Wesnoth'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:45+0100\n"
+"POT-Creation-Date: 2008-03-10 11:40+0100\n"
 "PO-Revision-Date: 2008-02-24 23:42+0100\n"
 "Last-Translator: Guy de Latour <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -18,38 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:10
 msgid "The Eastern Invasion"
 msgstr "L'Invasion orientale"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
 msgid "EI"
 msgstr "EI"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:15
 msgid "(Easy)"
 msgstr "(facile)"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:15
 msgid "Spearman"
 msgstr "Porte-lance"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "(Normal)"
 msgstr "(normal)"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "Swordsman"
 msgstr "Épéiste"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "(Challenging)"
 msgstr "(difficile)"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "Royal Guard"
 msgstr "Garde royal"
 
+#. campaign
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
@@ -65,26 +74,35 @@ msgstr ""
 "\n"
 "(Niveau moyen, 18 scénarios)."
 
+#. about
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
 msgid "Campaign Design"
 msgstr "Conception de la campagne"
 
+#. about
 #: data/campaigns/Eastern_Invasion/_main.cfg:30
 msgid "Campaign Maintenance"
 msgstr "Maintenance de la campagne"
 
+#. about
 #: data/campaigns/Eastern_Invasion/_main.cfg:36
 msgid "Campaign Epilog and Continuity"
 msgstr "Épilogue de la campagne"
 
+#. about
 #: data/campaigns/Eastern_Invasion/_main.cfg:42
 msgid "Artwork and Graphics Design"
 msgstr "Conception graphique"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:4
 msgid "The Outpost"
 msgstr "L'Avant-poste"
 
+#. side: type=Lieutenant, description=Gweddry
+#. side: type=General, description=Gweddry
+#. side: type=Sergeant, description=Gweddry
+#. side: race=Humans, type=Lieutenant, description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:19
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:20
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:19
@@ -110,32 +128,40 @@ msgstr "L'Avant-poste"
 msgid "Gweddry"
 msgstr "Gweddry"
 
+#. unit: type=White Mage, description=Dacyn
+#. message
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:31
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:227
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:413
 msgid "Dacyn"
 msgstr "Dacyn"
 
+#. side: type=Dark Sorcerer, description=Mal-Sakkat
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:60
 msgid "Mal-Sakkat"
 msgstr "Mal-Sakkat"
 
+#. side: type=Dark Sorcerer, description=Mal-Talar
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:82
 msgid "Mal-Talar"
 msgstr "Mal-Talar"
 
+#. side: type=Lich, description=Mal-Uldhar
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:102
 msgid "Mal-Uldhar"
 msgstr "Mal-Uldhar"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:128
 msgid "Resist until Dacyn's return tomorrow night"
 msgstr "Résister jusqu'au retour de Dacyn demain soir"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:130
 msgid "Resist until Dacyn's return in two days"
 msgstr "Résister jusqu'au retour de Dacyn dans deux jours"
 
+#. objective: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:79
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:88
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:123
@@ -160,10 +186,12 @@ msgstr "Résister jusqu'au retour de Dacyn dans deux jours"
 msgid "Death of Gweddry"
 msgstr "Mort de Gweddry"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:156
 msgid "What? What is going on?"
 msgstr "Quoi ? Que se passe-t-il ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:160
 msgid ""
 "Look. To the east. Undead approach! But wait... I sense something... They "
@@ -172,6 +200,9 @@ msgstr ""
 "Regardez. À l'est. Des morts-vivants approchent ! Mais attendez... Je "
 "ressens quelque chose... Ils ne peuvent pas me voir..."
 
+#. side: type=Lich, description=Mal-Ravanal
+#. side: type=Ancient Lich, description=Mal-Ravanal
+#. unit: type=Ancient Lich, description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:68
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:73
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:27
@@ -179,6 +210,7 @@ msgstr ""
 msgid "Mal-Ravanal"
 msgstr "Mal-Ravanal"
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:183
 msgid ""
 "Hm. I do not sense anything out of the ordinary here. My scouts must have "
@@ -187,10 +219,12 @@ msgstr ""
 "Hum. Je ne perçois rien qui sorte de l'ordinaire ici. Mes éclaireurs ont dû "
 "se tromper. Très bien, détruisez-les."
 
+#. message: description=Mal-Sakkat
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:187
 msgid "Very well, Dark Archon. They will die. And then?"
 msgstr "Très bien Dark Archon, ils vont mourir et ensuite ?"
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:192
 msgid ""
 "On with the search. I trust you can defeat these men yourself? I have no "
@@ -199,10 +233,12 @@ msgstr ""
 "Continuons nos recherches. Je crois que vous pouvez vaincre ces hommes vous-"
 "même. Je n'ai pas de temps à perdre ici."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:205
 msgid "What?! Men, to arms! And where did Dacyn go?!"
 msgstr "Quoi ?! Aux armes compagnons ! Mais où est donc passé Dacyn ?!"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:209
 msgid ""
 "There are too many undead, I cannot defeat them... but my orders are to hold "
@@ -212,6 +248,7 @@ msgstr ""
 "sont de tenir cet avant-poste à tout prix. Il semble que nous allons mourir "
 "aujourd'hui."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:213
 msgid ""
 "But... somehow, I do not think Dacyn has abandoned us. He must have had a "
@@ -220,16 +257,19 @@ msgstr ""
 "Mais... cependant, je ne pense pas que Dacyn nous ait abandonnés. Il doit "
 "avoir eu une bonne raison pour partir."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:236
 msgid "Gweddry? Good! You are still alive. Quickly, we must leave this place!"
 msgstr ""
 "Gweddry ? Excellent ! Vous êtes toujours en vie. Vite, nous devons quitter "
 "cet endroit !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:240
 msgid "Where did you go?! And where did you come from?"
 msgstr "Où alliez-vous ?! Et d'où veniez-vous ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:244
 msgid ""
 "There is no time to explain. If you wish to survive, you will escape through "
@@ -238,10 +278,12 @@ msgstr ""
 "Le temps n'est pas aux explications. Si vous voulez survivre, échappez-vous "
 "par cette porte dérobée."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:248
 msgid "But what about the outpost?"
 msgstr "Mais qu'en est-il de l'avant-poste ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:252
 msgid ""
 "It is pointless to try to defend it. Now, come on, we do not have much time "
@@ -250,10 +292,12 @@ msgstr ""
 "C'est inutile d'essayer de le défendre. Maintenant, venez, nous n'avons pas "
 "de temps à perdre !"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:257
 msgid "Move Gweddry to the trapdoor"
 msgstr "Déplacer Gweddry jusqu'à la trappe secrète"
 
+#. objective: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:92
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:127
@@ -275,14 +319,17 @@ msgstr "Déplacer Gweddry jusqu'à la trappe secrète"
 msgid "Death of Dacyn"
 msgstr "Mort de Dacyn"
 
+#. objective: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:269
 msgid "Turns run out"
 msgstr "Fin des tours atteinte"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:288
 msgid "Follow me, men! Through the trapdoor!"
 msgstr "Suivez-moi, compagnons ! Par la trappe !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:302
 msgid ""
 "Hurry! Before long enemy reinforcements will arrive, and we will all die! Go "
@@ -291,30 +338,37 @@ msgstr ""
 "Dépêchez-vous ! Des renforts ennemis arriveront d'ici peu et nous périrons "
 "tous ! Tous par la trappe !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:4
 msgid "The Escape Tunnel"
 msgstr "L'Échappée souterraine"
 
+#. side: type=Troll, description=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:34
 msgid "Kabak"
 msgstr "Kabak"
 
+#. side: type=Dwarvish Steelclad, description=Knutan
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:45
 msgid "Knutan"
 msgstr "Knutan"
 
+#. side: type=Dark Sorcerer, description=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:68
 msgid "Mal-Bakral"
 msgstr "Mal-Bakral"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:84
 msgid "Reach the end of the tunnel"
 msgstr "Atteindre la fin de la galerie"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:106
 msgid "Where are we? I can't see where we are going."
 msgstr "Où sommes-nous ? Je ne vois pas où nous allons."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:110
 msgid ""
 "I do not know. There are trolls in here, which may try to fight us. Now "
@@ -324,11 +378,13 @@ msgstr ""
 "nous combattre. Pressons, nous devons nous hâter avec ces liches à nos "
 "trousses."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:114
 msgid "Wait, before we go anywhere - who were those undead?"
 msgstr ""
 "Attendez, avant d'aller où que ce soit, qui étaient ces morts-vivants ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:118
 msgid ""
 "It doesn't matter. They are much too powerful for us; our only hope is to "
@@ -338,14 +394,17 @@ msgstr ""
 "partir loin, très loin. Peut-être devrions-nous aller au nord et rejoindre "
 "Owaec."
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:144
 msgid "TROL TREZZUR HOLE: KEEP OWT"
 msgstr "TROU POUR TREZZOR TROL : DEGAGEZ"
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:158
 msgid "Who goes there?"
 msgstr "Qui va là ?"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:162
 msgid ""
 "We are soldiers of the king of Wesnoth. Will you help us escape these trolls?"
@@ -353,6 +412,7 @@ msgstr ""
 "Nous sommes des soldats de la couronne de Wesnoth. Nous aiderez-vous à "
 "échapper à ces trolls ?"
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:166
 msgid ""
 "Aye, we'll help ye, for we have nae love for the trolls. Anyone attacked by "
@@ -361,6 +421,7 @@ msgstr ""
 "Oui, nous allons vous aider, car nous n'aimons guère les trolls. J'pense que "
 "tous ceux qu'ils attaquent méritent de l'aide."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:176
 msgid ""
 "Thank you. Now, I invite you to join us. Undead have followed us into these "
@@ -370,6 +431,7 @@ msgstr ""
 "morts-vivants nous ont suivis dans ces cavernes et ils vous tueront si vous "
 "restez derrière."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:182
 msgid ""
 "Thank you. Now, I invite you to join us. Undead are in these lands, and they "
@@ -378,6 +440,7 @@ msgstr ""
 "Merci à vous. Maintenant je vous conseille de vous joindre à nous : des "
 "morts-vivants sont en ces terres et ils vont trouver ces cavernes."
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:188
 msgid ""
 "My clan ha' lived in these caves for centuries. We'll no' be scattered now "
@@ -386,10 +449,12 @@ msgstr ""
 "Mon clan a vécu dans ces cavernes pendant des siècles. Nous n'allons pas "
 "partir maintenant à cause de quelques morts-vivants !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:192
 msgid "Very well. The best of luck in your battle."
 msgstr "Très bien. Que la chance vous accompagne dans votre bataille."
 
+#. object
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:212
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:425
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:411
@@ -397,6 +462,7 @@ msgstr "Très bien. Que la chance vous accompagne dans votre bataille."
 msgid "Holy Amulet"
 msgstr "Amulette sacrée"
 
+#. object
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:215
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:428
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:414
@@ -405,6 +471,7 @@ msgid ""
 "Wearing this amulet will cause every blow you deal to inflict arcane damage!"
 msgstr "Le port de cette amulette rendra sacré chacun de vos coups !"
 
+#. object
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:216
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:429
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:415
@@ -413,6 +480,7 @@ msgid "I am not suited to using this item! Let another take it."
 msgstr ""
 "Je ne suis pas à même d'utiliser cet objet ! Laissons-le pour un autre."
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:255
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
@@ -421,10 +489,12 @@ msgstr ""
 "Ce coffre renferme un grand trésor ! Je peux y compter deux cents pièces "
 "d'or !"
 
+#. message: description=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:331
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "Nous t'avons trouvé, sac à viande ! Prépare-toi à mourir !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:335
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
@@ -435,37 +505,45 @@ msgstr ""
 "malheureusement se diriger vers l'est. Cela nous éloigne de Weldyn mais nous "
 "n'avons pas le choix."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:348
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "Nous avons atteint la fin de la galerie. Je vois la lumière du jour !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:4
 msgid "An Unexpected Appearance"
 msgstr "Une apparition inattendue"
 
+#. side: type=Dark Sorcerer, description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:29
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:29
 msgid "Mal-Skraat"
 msgstr "Mal-Skraat"
 
+#. side: type=Dark Adept, description=Mal-Tar
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:48
 msgid "Mal-Tar"
 msgstr "Mal-Tar"
 
+#. side: type=Dark Sorcerer, description=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:62
 msgid "Mal-Kallat"
 msgstr "Mal-Kallat"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:87
 msgid "Defeat either enemy dark sorcerer"
 msgstr "Vaincre l'un des sorciers des ténèbres ennemis"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:108
 msgid "We have escaped from those dark tunnels! But where are we now?"
 msgstr ""
 "Nous nous sommes échappés de ces galeries obscures ! Mais où sommes-nous "
 "maintenant ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:112
 msgid ""
 "We are in the middle of the eastern mountains, in a mountain pass leading "
@@ -478,10 +556,12 @@ msgstr ""
 "pouvons pas traverser ces montagnes... Il faut nous rendre à l'est ou à "
 "l'ouest et espérer pouvoir les contourner."
 
+#. message: description=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:116
 msgid "Hahaha! We have you surrounded!"
 msgstr "Ha ha ha ! Nous vous avons encerclés !"
 
+#. message: description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:120
 msgid ""
 "Why don't we see if the new recruit can handle them. After all, there are "
@@ -490,14 +570,17 @@ msgstr ""
 "Pourquoi ne pas voir si la nouvelle recrue peut s'occuper d'eux. Après tout, "
 "ils ne sont que deux !"
 
+#. message: description=Mal-Tar
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:124
 msgid "No!!! They'll kill me!"
 msgstr "Non !!! Ils vont me tuer !"
 
+#. message: description=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:128
 msgid "That would be your problem, then."
 msgstr "Ça, c'est ton problème."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:132
 msgid ""
 "These undead are toying with us! This adept is weak - we may be able to take "
@@ -506,6 +589,7 @@ msgstr ""
 "Ces morts-vivants jouent avec nous ! Cet adepte-là est faible : nous "
 "devrions pouvoir prendre possession de son château."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:136
 msgid ""
 "A good idea. Then, we must kill either of the dark sorcerers. I would prefer "
@@ -515,39 +599,48 @@ msgstr ""
 "ténèbres. Je préférerais attaquer celui à l'ouest pour être plus près de "
 "Wesnoth."
 
+#. message: description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:147
 msgid "No! You have defeated me, and can re-enter Wesnoth!"
 msgstr "Non ! Vous m'avez vaincu et pouvez revenir à Wesnoth !"
 
+#. message: description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:163
 msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr "Vous avez vaincu mon frère, mais je vous suivrai et vous tuerai !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:4
 msgid "An Elven Alliance"
 msgstr "Une alliance elfe"
 
+#. side: type=Elvish Ranger, description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:29
 msgid "Volas"
 msgstr "Volas"
 
+#. side: type=Orcish Warrior, description=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:43
 msgid "Gruga-Har"
 msgstr "Gruga-Har"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:59
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:49
 msgid "Defeat enemy leader"
 msgstr "Vaincre le chef ennemi"
 
+#. objective: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:71
 msgid "Death of Volas"
 msgstr "Mort de Volas"
 
+#. message: description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:89
 msgid "Greetings, travelers! Welcome to my realm."
 msgstr "Salutations, voyageurs ! Bienvenue dans mon royaume."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:93
 msgid ""
 "Would it be possible for us to rest in your lands for a while? We have been "
@@ -558,10 +651,12 @@ msgstr ""
 "Nous avons été poursuivis par des morts-vivants, mais ils n'ont pas osé "
 "pénétrer dans la forêt... Du moins pas encore."
 
+#. message: description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:97
 msgid "Certainly."
 msgstr "Certainement."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:101
 msgid ""
 "Good. Now, you should be warned. This undead warlord is very powerful. If "
@@ -574,6 +669,7 @@ msgstr ""
 "peu survivront. Je vous conseille de vous joindre à nous et de foncer au "
 "nord. Nous devrions pouvoir quitter cette zone qu'il souhaite tant conquérir."
 
+#. message: description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:105
 msgid ""
 "I thank you for your offer. But I will not leave my homeland. These undead "
@@ -583,6 +679,7 @@ msgstr ""
 "Ces morts-vivants ne peuvent pas être aussi puissants que vous le dites. Je "
 "les combattrai."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:109
 msgid ""
 "This is not a wise choice, but it is yours to make. If you will not join us, "
@@ -593,6 +690,7 @@ msgstr ""
 "pas, pourriez-vous au moins nous aider à atteindre l'avant-poste "
 "septentrional ? Nous souhaitons y avertir nos camarades."
 
+#. message: description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:113
 msgid ""
 "I will aid you. Although, I too, think that yours is the foolish choice. You "
@@ -601,6 +699,7 @@ msgstr ""
 "Je vous aiderai. Bien que je pense que ce soit votre choix qui soit idiot. "
 "Vous devriez rester et combattre."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:117
 msgid ""
 "After we rest for a short while, we will leave. We have little time to spare."
@@ -608,14 +707,17 @@ msgstr ""
 "Après nous être reposés un moment, nous partirons. Nous n'avons pas de temps "
 "à perdre."
 
+#. message: description=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:131
 msgid "Intruders!"
 msgstr "Des intrus !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:135
 msgid "What? Orcs! Where did they come from?"
 msgstr "Hein ? Des orcs ! D'où viennent-ils ?"
 
+#. message: description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:139
 msgid ""
 "I know not. But they are right in the Northern Path. You will have to fight "
@@ -624,15 +726,18 @@ msgstr ""
 "Aucune idée. Ils sont en plein sur la route vers le passage septentrional. "
 "Vous allez devoir les combattre pour pouvoir continuer."
 
+#. message: description=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:143
 msgid "Bring forth the assassins, we may be able to poison them!"
 msgstr "Faites venir les assassins, nous devrions pouvoir les empoisonner !"
 
+#. unit: type=Orcish Slayer, description=Nafga
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:154
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:187
 msgid "Nafga"
 msgstr "Nafga"
 
+#. message: description=Nafga
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:161
 msgid ""
 "Your Warlordship, I am the only assassin left! Do you want me to go poison "
@@ -641,10 +746,12 @@ msgstr ""
 "Votre Seigneurie, je suis le seul assassin restant ! Voulez-vous que j'aille "
 "empoisonner leur chef ?"
 
+#. message: description=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:165
 msgid "Perfect! Go, into the forest!"
 msgstr "Parfait ! Allez-y, dans la forêt !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:178
 msgid ""
 "They have sent an assassin into the forest. We will have to be careful, and "
@@ -653,16 +760,19 @@ msgstr ""
 "Ils ont envoyé un assassin dans la forêt. Nous devons être prudents et nous "
 "assurer qu'il ne nous attaque pas par surprise."
 
+#. message: description=Nafga
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:194
 msgid "Hahaha! Nafga will kill the elves!"
 msgstr "Ha ha ha ! Nafga va tuer les elfes !"
 
+#. message: description=Nafga
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:205
 msgid "No! This is the first time I have failed a mission, and it is my last!"
 msgstr ""
 "Non ! C'est la première fois que j'échoue à une mission et ce sera la "
 "dernière !"
 
+#. message: description=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:209
 msgid ""
 "My assassin is dead! The elves must pay, not for his death, but for stopping "
@@ -671,16 +781,19 @@ msgstr ""
 "Mon assassin a péri ! Les elfes doivent payer, non pas pour sa mort, mais "
 "pour l'avoir arrêté dans sa mission !"
 
+#. message: description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:220
 msgid "You have failed me, man of Wesnoth..."
 msgstr "Vous m'avez trahi, homme de Wesnoth..."
 
+#. message: description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:231
 msgid "We have defeated the orcs! Now you can rest, and then leave."
 msgstr ""
 "Nous avons vaincu les orcs ! Maintenant vous pouvez vous reposer et partir "
 "ensuite."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:235
 msgid ""
 "We have not the time. This battle has wasted too much of it already. We must "
@@ -689,24 +802,29 @@ msgstr ""
 "Nous n'avons pas le temps. Cette bataille nous en a déjà fait perdre pas "
 "mal. Nous devons partir tout de suite."
 
+#. message: description=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:239
 msgid "Very well. I will send guides to lead you to your allies."
 msgstr ""
 "Très bien. Je vais faire envoyer des guides pour vous mener à vos alliés."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:4
 msgid "The Undead Border Patrol"
 msgstr "La Patrouille frontalière de morts-vivants"
 
+#. side: type=Lich, description=Mal-Telnarad
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:40
 msgid "Mal-Telnarad"
 msgstr "Mal-Telnarad"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:62
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:66
 msgid "Defeat either enemy leader"
 msgstr "Vaincre l'un des chefs ennemis"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:83
 msgid ""
 "We have gotten out of that mountain range now, and the path northwards is "
@@ -715,6 +833,7 @@ msgstr ""
 "Nous voilà sortis de cette chaîne de montagne et le chemin nord est dégagé. "
 "Allons-y maintenant et tentons de rejoindre Owaec à l'avant-poste."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:87
 msgid ""
 "Wait. I am not sure that is the best option. If we go east now, we may be "
@@ -728,6 +847,7 @@ msgstr ""
 "à nouveau. Après que nous nous soyons échappés, je la suspecte d'être "
 "retournée à l'est pour nous chercher."
 
+#. message: description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:91
 msgid ""
 "They run from me! Still, it will not help them, the border patrol will "
@@ -736,14 +856,17 @@ msgstr ""
 "Ils me fuient ! Cela ne les aidera pas : la patrouille frontalière les "
 "anéantira. Peut-être même aurai-je une promotion !"
 
+#. message: description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:102
 msgid "Now I will never get promoted!"
 msgstr "Je ne serai jamais promu désormais !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:106
 msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
 msgstr "Venez, retournons à Wesnoth pour soutenir l'avant-poste septentrional."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:122
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do we want to go "
@@ -754,26 +877,31 @@ msgstr ""
 "tour ! Est-ce qu'on s'aventure un peu plus à l'intérieur de ces terres, ou "
 "essayons-nous de faire demi-tour et de battre ce sorcier des ténèbres ?"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:278
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:246
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:126
 msgid "Hmm..."
 msgstr "Hum..."
 
+#. option: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:128
 msgid "I wish to destroy the evil before it can spread. East we go!"
 msgstr ""
 "Je souhaite anéantir ce mal avant qu'il ne puisse se répandre. Allons à "
 "l'est !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:132
 msgid "I cannot say if this is a good decision, but I will follow you."
 msgstr "Selon moi, ce n'est pas la bonne décision mais je vous suivrai."
 
+#. message: description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:136
 msgid "Noo!!! I can't be promoted if they run away!"
 msgstr "Noon !!! Je ne pourrai pas être promu s'ils s'échappent !"
 
+#. option: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:146
 msgid ""
 "You are right. It is foolish to go onward - we must defeat Mal-Skraat and "
@@ -782,10 +910,12 @@ msgstr ""
 "Vous avez raison. C'est pure folie de poursuivre : nous devons vaincre Mal-"
 "Skraat et faire demi-tour vers l'avant-poste septentrional."
 
+#. message: description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:150
 msgid "Good! If I defeat them, I can become a lich!"
 msgstr "Bien ! Si je les vaincs, je pourrai devenir une liche !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:166
 msgid ""
 "We failed to defeat either enemy! Now more liches will come, and we will be "
@@ -794,6 +924,7 @@ msgstr ""
 "Nous avons échoué, nous n'avons vaincu aucun de nos ennemis ! Pire encore ! "
 "D'autres liches vont venir et nous serons submergés !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:175
 msgid ""
 "We cannot spend any more time attempting to defeat Mal-Skraat. Like it or "
@@ -803,6 +934,7 @@ msgstr ""
 "Que cela vous plaise ou non, nous devons poursuivre plus loin dans ces "
 "contrées abandonnées aux morts-vivants."
 
+#. message: description=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:179
 msgid ""
 "Noo!!! He will reach Mal-Ravanal's capital, and I shall be punished for "
@@ -811,30 +943,37 @@ msgstr ""
 "Noon !! Il va atteindre la capitale de Mal-Ravanal et je vais être puni pour "
 "l'avoir laissé s'échapper !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:4
 msgid "Mal-Ravanal's Capital"
 msgstr "La Capitale de Mal-Ravanal"
 
+#. side: type=Dark Sorcerer, description=Mal-Marak
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:37
 msgid "Mal-Marak"
 msgstr "Mal-Marak"
 
+#. side: type=Dark Sorcerer, description=Mal-Galkar
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:48
 msgid "Mal-Galkar"
 msgstr "Mal-Galkar"
 
+#. side: type=Death Knight, description=Ravanal-Guard
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:59
 msgid "Rava-Krodaz"
 msgstr "Rava-Krodaz"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:90
 msgid "Escape from the capital by killing one of the two dark sorcerers"
 msgstr "S'échapper de la capitale en tuant un des deux sorciers des ténèbres"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:111
 msgid "We have come all the way to Mal-Ravanal's capital!"
 msgstr "Tout ce chemin parcouru pour arriver à la capitale de Mal-Ravanal !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:116
 msgid ""
 "Yes, but look! The undead forces are closing in behind us. As I said before, "
@@ -845,6 +984,7 @@ msgstr ""
 "derrière nous. Comme je l'ai déjà dit, nous ne pouvons tuer Mal-Ravanal ! "
 "C'était pure folie de venir aussi loin, nous devons faire demi-tour !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:121
 msgid ""
 "Perhaps. To retreat, we must kill one of these dark sorcerers that follow "
@@ -854,15 +994,18 @@ msgstr ""
 "suivent pour nous replier. Mais peut-être y a-t-il une chance de tuer Mal-"
 "Ravanal. Je serais tenté d'essayer !"
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:127
 msgid "These humans have dared to come this far into my land. Crush them!"
 msgstr ""
 "Ces humains ont osé s'enfoncer si profondément dans mes terres. Écrasez-les !"
 
+#. unit: type=Paladin, description=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:145
 msgid "Terraent"
 msgstr "Terraent"
 
+#. message: description=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:151
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
@@ -871,10 +1014,12 @@ msgstr ""
 "Merci à vous d'avoir détruit ce guerrier squelette ! Chaque fois que vous "
 "éliminez un des revenants, l'un d'entre nous est libéré !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:155
 msgid "Why? Are you the undead's prisoners?"
 msgstr "Pourquoi ? Êtes-vous prisonniers des morts-vivants ?"
 
+#. message: description=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:159
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
@@ -887,6 +1032,7 @@ msgstr ""
 "libéré, mais à chaque fois que vous perdez un guerrier, ils tuent l'un "
 "d'entre nous."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:163
 msgid ""
 "This sounds dangerous. We will try to free as many of you as possible before "
@@ -895,6 +1041,7 @@ msgstr ""
 "Cela semble dangereux. Nous essaierons de libérer le plus de monde possible "
 "avant de nous échapper d'ici."
 
+#. message: description=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:167
 msgid ""
 "There are five of us still locked up in the jail. All of us will join you if "
@@ -903,10 +1050,12 @@ msgstr ""
 "Cinq d'entre nous sont toujours sous les verrous dans leurs geôles. Nous "
 "nous joindrons tous à vous si vous parvenez à nous libérer."
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:225
 msgid "You dare to attack ME?!? Go back to your master!"
 msgstr "Vous osez m'attaquer, MOI ?!? Retournez voir votre maître !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:229
 msgid ""
 "This is not good; we are unable to attack Mal-Ravanal at all, for his magic "
@@ -916,26 +1065,32 @@ msgstr ""
 "magie est trop puissante ! Nous devons nous replier, cette attaque à la hâte "
 "était une idée stupide !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:4
 msgid "Northern Outpost"
 msgstr "L'Avant-poste septentrional"
 
+#. side: type=Mounted Fighter, description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:31
 msgid "Owaec"
 msgstr "Owaec"
 
+#. side: type=Revenant, description=Lanar-Skal
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:53
 msgid "Lanar-Skal"
 msgstr "Lanar-Skal"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:97
 msgid "Find the outlaw leader in the villages and kill him"
 msgstr "Trouver le chef hors-la-loi parmi les villages et le tuer"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:101
 msgid "Defeat the undead leader"
 msgstr "Vaincre le chef mort-vivant"
 
+#. objective: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:87
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:131
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:88
@@ -952,10 +1107,12 @@ msgstr "Vaincre le chef mort-vivant"
 msgid "Death of Owaec"
 msgstr "Mort d'Owaec"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:126
 msgid "Hail, Gweddry!"
 msgstr "Salutations, Gweddry !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:130
 msgid ""
 "Greetings, Owaec! We have been forced from our positions by undead invaders. "
@@ -964,6 +1121,7 @@ msgstr ""
 "Salutations, Owaec ! Nous avons été repoussés par les morts-vivants et ils "
 "sont actuellement à nos trousses."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:134
 msgid ""
 "Indeed, they do. And do not think you will be able to defeat them. They are "
@@ -974,6 +1132,7 @@ msgstr ""
 "puissants. Nous faisons route vers les territoires du nord ainsi nous "
 "pourrons les distancer. Te joindras-tu à nous ?"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:138
 msgid ""
 "I am not sure. There are bandits in this country, and I have been told that "
@@ -987,6 +1146,7 @@ msgstr ""
 "villages lorsque nous nous en approchons et sortent dès que nous nous en "
 "éloignons."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:142
 msgid ""
 "Hoping to protect these villages is foolish; all who stay here will die. "
@@ -999,6 +1159,7 @@ msgstr ""
 "pourront nous suivre vers les Terres du Nord. Là, ils pourront survivre car "
 "Wesnoth n'est plus un havre de paix."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:146
 msgid ""
 "Well, you appear to know what you're talking about... but, I have no way to "
@@ -1007,6 +1168,7 @@ msgstr ""
 "Bien, vous avez l'air de savoir de quoi vous parlez... mais je n'ai aucun "
 "moyen de déloger ces bandits."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:150
 msgid ""
 "I think I may be able to help you. I am a mage; I believe I will be able to "
@@ -1017,6 +1179,7 @@ msgstr ""
 "pouvoir jeter un sortilège qui les révélera à vous dès que vous investirez "
 "les villages. Toutefois, je ne pourrai pas vous aider à les combattre."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:154
 msgid ""
 "That sounds good; it is time to drive out some bandits. Dacyn, go cast your "
@@ -1025,6 +1188,7 @@ msgstr ""
 "Voilà qui me plaît, il est temps de débusquer quelques bandits. Dacyn, "
 "veuillez donc lancer votre sort !"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:158
 msgid ""
 "I believe there is a leader behind these outlaws; kill him, and we will have "
@@ -1033,12 +1197,14 @@ msgstr ""
 "Je crois qu'il y a un meneur derrière ces hors-la-loi : tuez-le et nous en "
 "aurons fini avec ces bandits."
 
+#. message: description=Lanar-Skal
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:162
 msgid "Go, go far from here! But me and my kind will chase you, and kill you!"
 msgstr ""
 "Partez ! Partez loin d'ici ! Mais moi et les miens vous pourchasserons et "
 "vous tuerons !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:166
 msgid ""
 "It seems the undead have caught up with us! We will have to kill them, too, "
@@ -1049,14 +1215,17 @@ msgstr ""
 "tuer si nous voulons protéger les villages. Bien, je vous verrai quand vous "
 "aurez vaincu les hors-la-loi et les morts-vivants !"
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:236
 msgid "They're here!"
 msgstr "Ils sont là !"
 
+#. unit: type=Assassin, description=Shodrano
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:259
 msgid "Shodrano"
 msgstr "Shodrano"
 
+#. message: description=Shodrano
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:267
 msgid ""
 "So, you have found my hiding place. Very well, I guess I will have to kill "
@@ -1065,27 +1234,32 @@ msgstr ""
 "Ainsi vous avez trouvé ma cachette. Très bien, il ne me reste plus qu'à vous "
 "tuer !"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:271
 msgid ""
 "That's the bandit leader! Kill him, and we will have fulfilled our duty!"
 msgstr ""
 "C'est le chef des bandits ! Tuez-le et nous aurons accompli notre devoir !"
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:279
 msgid "No outlaws in this village."
 msgstr "Pas de hors-la-loi dans ce village."
 
+#. message: description=Shodrano
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:298
 msgid "You have defeated me! I can terrorize the villagers no more..."
 msgstr ""
 "Non ! Vous m'avez vaincu ! Je ne pourrai plus terroriser ces villageois... "
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:307
 msgid "We still need to defeat these undead for the villagers to be safe."
 msgstr ""
 "Il nous reste encore à vaincre ces morts-vivants pour que les villageois "
 "soient en sécurité. "
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:315
 msgid ""
 "I have fulfilled my duty to the villages. Now I suppose I can join you in "
@@ -1094,6 +1268,7 @@ msgstr ""
 "J'ai accompli mon devoir envers ces villages. Maintenant, je suppose que je "
 "peux me joindre à votre quête."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:323
 msgid ""
 "Good job! Now, we should move onward, north. Tell the villagers to pack "
@@ -1102,6 +1277,7 @@ msgstr ""
 "Bon travail ! Nous devrions nous mettre en route pour le nord à présent. "
 "Dites aux villageois de prendre leurs affaires et de nous suivre. "
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:368
 msgid ""
 "There are still these outlaws to take care of - we must continue fighting "
@@ -1110,6 +1286,7 @@ msgstr ""
 "Il reste encore à s'occuper de ces hors-la-loi : nous devons continuer le "
 "combat ici !"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:374
 msgid ""
 "Well, both the outlaws and undead are defeated. We have some time to spare "
@@ -1118,6 +1295,7 @@ msgstr ""
 "Bien, nous avons vaincu les hors-la-loi et les morts-vivants. Nous avons un "
 "peu de temps devant nous avant que d'autres morts-vivants n'arrivent."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:382
 msgid ""
 "Good work! Now, we should move onward, north. Tell the villagers to pack "
@@ -1126,22 +1304,27 @@ msgstr ""
 "Bon travail ! Nous devrions nous mettre en route pour le nord à présent. "
 "Dites aux villageois de prendre leurs affaires et de nous suivre. "
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:4
 msgid "Two Paths"
 msgstr "Deux chemins"
 
+#. side: type=Orcish Warlord, description=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:30
 msgid "Wak-Rano"
 msgstr "Wak-Rano"
 
+#. side: type=Dark Sorcerer, description=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:44
 msgid "Mal-Arnai"
 msgstr "Mal-Arnai"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:94
 msgid "Look! The road splits here. Which way shall we go?"
 msgstr "Regardez ! La route se sépare ici. Quel chemin devons-nous prendre ?"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:98
 msgid ""
 "I know this area. I was here on an earlier patrol. Just north of here there "
@@ -1155,6 +1338,7 @@ msgstr ""
 "à l'intérieur du royaume de Wesnoth, du moins pour un moment. Si nous "
 "l'empruntons, nous ne devrons pas combattre les orcs tout de suite."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:102
 msgid ""
 "We should probably go north to the orcish lands immediately. I suspect that "
@@ -1165,6 +1349,7 @@ msgstr ""
 "orcs. Je pense que les morts-vivants nous ont déjà dépassés et qu'ils "
 "bloquent tous les chemins à l'ouest."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:106
 msgid ""
 "The orcs are more powerful than you suspect. I doubt the undead have had "
@@ -1175,6 +1360,7 @@ msgstr ""
 "vivants aient eu le temps de nous dépasser en assez grand nombre pour "
 "représenter un danger plus grand que les orcs."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:110
 msgid ""
 "Either way we will have to fight. Look, the orcs and undead are in a "
@@ -1183,6 +1369,7 @@ msgstr ""
 "Quel que soit le chemin nous devrons combattre. Regardez, les orcs et les "
 "morts-vivants sont en guerre et nous barrent la route !"
 
+#. message: description=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:114
 msgid ""
 "Well, orc, we can either continue this fight, or we can crush these "
@@ -1191,6 +1378,7 @@ msgstr ""
 "Bien, orc, nous pouvons soit continuer ce combat, soit écraser ces intrus et "
 "batailler plus tard. À toi de décider."
 
+#. message: description=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:118
 msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
@@ -1201,6 +1389,7 @@ msgstr ""
 "continuons notre combat plus tard (avec un peu de chance tu périras et alors "
 "je gagnerai notre combat par forfait)."
 
+#. message: description=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:122
 msgid ""
 "Very well, we are allies, for now. (This foolish orc will surely perish.)"
@@ -1208,6 +1397,7 @@ msgstr ""
 "Très bien, soyons alliés, pour l'instant (ces crétins d'orcs vont périr, "
 "j'en suis sûr)."
 
+#. message: description=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:133
 msgid ""
 "No! These undead won our battle, and you will be able to enter my northern "
@@ -1216,31 +1406,39 @@ msgstr ""
 "Non ! Ces morts-vivants ont gagné notre bataille et vous allez pouvoir "
 "pénétrer dans ma patrie septentrionale !"
 
+#. message: description=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:149
 msgid "I was supposed to kill you all! I have failed."
 msgstr "J'étais supposé tous vous tuer ! J'ai échoué."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:4
 msgid "The Crossing"
 msgstr "La Traversée"
 
+#. side: type=Revenant, description=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:28
 msgid "Garnad"
 msgstr "Garnad"
 
+#. side: type=Orcish Warlord, description=Draka-Kura
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:39
 msgid "Draka-Kura"
 msgstr "Draka-Kura"
 
+#. side: type=Ogre, description=Grug
+#. unit: type=Ogre, description=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:50
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:230
 msgid "Grug"
 msgstr "Grug"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:75
 msgid "Get Gweddry and Owaec across the river"
 msgstr "Faire traverser le fleuve à Gweddry et Owaec"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:103
 msgid ""
 "We have come to the Great River. What should we do? Should we attempt to "
@@ -1249,6 +1447,7 @@ msgstr ""
 "Nous sommes arrivés près du grand fleuve. Que devons-nous faire ? Tenter de "
 "le traverser ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:107
 msgid ""
 "We must cross this river. The undead are chasing us, and their hordes are "
@@ -1260,6 +1459,7 @@ msgstr ""
 "plus, leurs renforts vont arriver sous peu. Nous devons être passés de "
 "l'autre côté du fleuve avant qu'il ne soit trop tard."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:111
 msgid ""
 "Across this river lies the Northlands. If we can get there, we may be able "
@@ -1270,10 +1470,12 @@ msgstr ""
 "arrivons à nous rendre là-bas, nous pourrons trouver quelques ogres pour "
 "nous aider. Hélas, les orcs nous attaqueront à coup sûr avant cela."
 
+#. message: description=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:115
 msgid "Grug say we no help you! We finish must battle orc with!"
 msgstr "Grug dire nous pas aider toi ! Nous devoir finir bataille avec orcs !"
 
+#. message: description=Draka-Kura
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:119
 msgid ""
 "Was that comprehensible to anyone? Silence, foolish ogre. I will deal with "
@@ -1283,10 +1485,12 @@ msgstr ""
 "m'occuperai de toi plus tard. Pour le moment, il y a ces hommes qui tentent "
 "de traverser ce fleuve."
 
+#. message: description=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:123
 msgid "Orc foolish! Die you now!"
 msgstr "Abruti orc ! Mourir toi maintenant !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:127
 msgid ""
 "If we show ourselves as enemies of the orcs, they may aid us. But I think we "
@@ -1296,10 +1500,12 @@ msgstr ""
 "aider. Mais je pense que nous devrions traverser le fleuve avant d'essayer "
 "de les convaincre."
 
+#. unit: type=Lich, description=Mal-Hakralan
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:159
 msgid "Mal-Hakralan"
 msgstr "Mal-Hakralan"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:168
 msgid ""
 "The undead reinforcements have arrived! We must cross the river immediately!"
@@ -1307,6 +1513,7 @@ msgstr ""
 "Les renforts morts-vivants sont arrivés ! Nous devons traverser le fleuve "
 "immédiatement !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:205
 msgid ""
 "Good! We have crossed. Now let's see if we can get the ogres to join us. "
@@ -1317,36 +1524,44 @@ msgstr ""
 "sorte que les ogres se joignent à nous. Nous les avons déjà convaincus de "
 "travailler pour la Couronne par le passé, peut-être pouvons-nous recommencer."
 
+#. message: description=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:214
 msgid "Grug say join you will he."
 msgstr "Grug dire joindre vous peut-être lui."
 
+#. unit: type=Ogre
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:244
 msgid "Gork"
 msgstr "Gork"
 
+#. unit: type=Ogre
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:252
 msgid "Drog"
 msgstr "Drog"
 
+#. message: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:264
 msgid "You may now recruit ogres!"
 msgstr "Vous pouvez désormais recruter des ogres !"
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:282
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr ""
 "Dépêchez-vous. Nous devons traverser avant que ces morts-vivants ne nous "
 "massacrent !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:4
 msgid "Undead Crossing"
 msgstr "La Croisée des morts-vivants"
 
+#. side: type=Necromancer, description=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:30
 msgid "Mal-un-Karad"
 msgstr "Mal-un-Karad"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:77
 msgid ""
 "These fens look impassable. I don't think we will be able to continue on "
@@ -1356,6 +1571,7 @@ msgstr ""
 "puissions continuer sur cette route ; il est temps pour nous de faire route "
 "vers le nord, loin de ces morts-vivants."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:81
 msgid ""
 "We must cross this river, then. We must make haste, already we have wasted "
@@ -1365,6 +1581,7 @@ msgstr ""
 "avons déjà perdu assez de temps ! Les morts-vivants se sont positionnés en "
 "plein milieu du gué."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:85
 msgid ""
 "Across this river lies the Northland. Ogres live there, as do orcs. We "
@@ -1375,6 +1592,7 @@ msgstr ""
 "ainsi que des orcs. Nous devons avancer avec prudence. Les morts-vivants "
 "sont dangereux, mais les orcs pourraient l'être bien plus encore."
 
+#. message: description=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:89
 msgid ""
 "I will leave your bodies to rot in the river, then I will raise you up to "
@@ -1383,11 +1601,13 @@ msgstr ""
 "Je laisserai vos cadavres pourrir dans le fleuve, puis je vous ranimerai "
 "pour servir dans les hordes putrides de mon maître !"
 
+#. message: description=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:106
 msgid "I summon from the depths of the river beasts to destroy you!"
 msgstr ""
 "J'en appelle aux créatures des profondeurs du fleuve pour vous détruire !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:137
 msgid ""
 "It seems as if in addition to summoning undead this foul sorcerer has "
@@ -1396,21 +1616,25 @@ msgstr ""
 "Il semble qu'en plus d'invoquer des morts-vivants cette liche ait appris à "
 "rappeler des monstres depuis les profondeurs !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:4
 msgid "Training the Ogres"
 msgstr "L'Entraînement des ogres"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:146
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:51
 msgid "Survive until end of turns"
 msgstr "Survivre jusqu'à la fin des tours"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:55
 msgid "To add ogres to your army, keep two on the grass until end of turns"
 msgstr ""
 "Pour pouvoir recruter des ogres dans votre armée, gardez-en au moins deux "
 "dans la plaine jusqu'au dernier tour de jeu"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:93
 msgid ""
 "Look, we have found a pack of ogres. We should try to capture some to train."
@@ -1418,6 +1642,7 @@ msgstr ""
 "Regardez, nous avons trouvé une bande d'ogres. Nous devrions en capturer "
 "quelques-uns pour les entraîner."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:97
 msgid ""
 "All right, we have to keep at least two of these ogres on the grass where "
@@ -1427,6 +1652,7 @@ msgstr ""
 "Bien, deux ogres au moins doivent rester sur le pré jusqu'à l'arrivée de nos "
 "troupes, qui les captureront. Ils devront alors nous conduire à leur tribu."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:101
 msgid ""
 "We should try to surround them. Gweddry, you stay where you are. Dacyn, you "
@@ -1435,12 +1661,14 @@ msgstr ""
 "Nous devrions essayer de les encercler. Gweddry, reste où tu es ! Dacyn, "
 "allez au nord-est ! J'irai au nord-ouest."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:129
 msgid "We have let one escape. Let's hope they don't all!"
 msgstr ""
 "Nous en avons laissé un s'enfuir. Espérons qu'ils n'en fassent pas tous "
 "autant."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:154
 msgid ""
 "Our troops have caught up! Now, we will be able to recruit ogres, since "
@@ -1449,6 +1677,7 @@ msgstr ""
 "Nos troupes nous ont rejoints ! Désormais, nous pourrons recruter des ogres "
 "car ceux-ci seront capables de convaincre leur tribu de se joindre à nous."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:163
 msgid ""
 "We didn't capture enough of the ogres here. We will have to go on without "
@@ -1457,26 +1686,32 @@ msgstr ""
 "Nous n'avons pas capturé assez d'ogres ici. Nous allons devoir nous en "
 "passer."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:4
 msgid "Xenophobia"
 msgstr "Xénophobie"
 
+#. side: type=Dwarvish Lord, description=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:31
 msgid "Pelathsil"
 msgstr "Pelathsil"
 
+#. side: type=Orcish Warlord, description=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:48
 msgid "Prok-Bak"
 msgstr "Prok-Bak"
 
+#. side: type=Elvish Marshal, description=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:68
 msgid "Elandin"
 msgstr "Elandin"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:90
 msgid "Defeat all enemy leaders"
 msgstr "Vaincre tous les chefs ennemis"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:121
 msgid ""
 "Hail, dwarves! Will you help us get by these foul orcs? We need to get "
@@ -1485,14 +1720,17 @@ msgstr ""
 "Salutations, nains ! Nous aiderez-vous à nous débarrasser de ces orcs "
 "malsains ? Nous devons continuer plus loin sur cette route."
 
+#. message: description=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:125
 msgid "You human! Call us foul, will you?!?!"
 msgstr "Toi l'humain ! Tu nous traites de malsains, c'est ça ?"
 
+#. message: description=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:129
 msgid "Why should we help you? You're not a dwarf!"
 msgstr "Pourquoi devrions-nous t'aider ? Tu n'es pas un nain !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:133
 msgid ""
 "Your people helped us in the past, in the tunnels in the south. Will you not "
@@ -1501,31 +1739,37 @@ msgstr ""
 "Votre peuple nous a aidés par le passé, dans les galeries dans le sud. "
 "Pourquoi pas maintenant ?"
 
+#. message: description=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:137
 msgid "Impossible! I canna believe any of my kin would ha' helped a human!"
 msgstr ""
 "Impossible ! Je ne peux pas croire qu'un de mes semblables ait aidé un "
 "humain !"
 
+#. message: description=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:141
 msgid "Indeed. Why should any of us help those not of our people?"
 msgstr ""
 "En effet. Pourquoi est-ce que l'un d'entre nous devrait aider un étranger ?"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:145
 msgid "Will you but let us pass, so that we may fight the orcs on our own?"
 msgstr ""
 "Alors nous laisserez-vous au moins passer afin que nous puissions combattre "
 "les orcs de notre côté ?"
 
+#. message: description=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:149
 msgid "I am afraid that is... impossible."
 msgstr "Je crains que ce soit... impossible."
 
+#. message: description=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:153
 msgid "Orcs, kill'em all! Humans, elves or dwarves, it don't matter!"
 msgstr "Orcs, tuez-les tous ! Humains, elfes ou nains, peu importe !"
 
+#. message: description=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:157
 msgid ""
 "These orcs will die. But so will you, human. You have trespassed on elvish "
@@ -1534,12 +1778,14 @@ msgstr ""
 "Ces orcs vont périr. Et vous aussi, humain. Vous avez pénétré sur les terres "
 "elfes."
 
+#. message: description=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:161
 msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
 msgstr ""
 "Ah, c'est maintenant un territoire elfe ? Mourez, chiens d'elfes ! Et vous "
 "aussi, humain !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:165
 msgid ""
 "These people won't listen to reason, they are all blinded by their beliefs "
@@ -1550,6 +1796,7 @@ msgstr ""
 "supériorité. Nous allons probablement devoir les affronter, sauf si nous "
 "pouvons les contourner."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:169
 msgid ""
 "True. As much as I dislike killing anything but orcs and undead, it seems we "
@@ -1560,58 +1807,71 @@ msgstr ""
 "vivants, il semble que nous allons devoir tuer ces elfes et ces nains avant "
 "qu'ils ne nous tuent. "
 
+#. message: description=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:180
 msgid "Argh! I'm dead! Well, dwarves are still the best!"
 msgstr "Argh ! Je meurs ! Mais les nains restent les meilleurs !"
 
+#. message: description=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:198
 msgid "I die? Orcs rule all!"
 msgstr "Je meurs ? Vive les orcs !"
 
+#. message: description=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:219
 msgid "It seems these humans are more powerful than I thought. Ugh."
 msgstr "Ces humains sont plus puissants que je ne le pensais. Argh."
 
+#. message: description=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:240
 msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
 msgstr ""
 "Maudits nains ! Peut être aurions-nous du nous allier avec les humains..."
 
+#. message: description=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:253
 msgid "Foul orcs! Perhaps we should have allied with the humans..."
 msgstr ""
 "Saleté d'orcs ! Peut être aurions-nous du nous allier avec les humains..."
 
+#. message: description=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:266
 msgid "It seems yon humans are mightier than I kenned..."
 msgstr "Ces humains sont plus puissants que je ne le pensais..."
 
+#. message: description=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:279
 msgid "Foul orcs! Perhaps we should ha' allied wi' the humans..."
 msgstr ""
 "Saleté d'orcs ! P'têt qu'il aurait fallu nous allier avec les humains..."
 
+#. message: description=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:292
 msgid "Cursed elves! Perhaps we should have allied wi' the humans..."
 msgstr ""
 "Maudits elfes ! P'têt qu'il aurait fallu nous allier avec les humains..."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:4
 msgid "Lake Vrug"
 msgstr "Le Lac Vrug"
 
+#. side: type=Troll Warrior, description=Darg
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:37
 msgid "Darg"
 msgstr "Darg"
 
+#. side: type=Gryphon, description=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:52
 msgid "Kraagak"
 msgstr "Kraagak"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:76
 msgid "Defeat the trolls and gryphons"
 msgstr "Vaincre les orcs et les griffons"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:107
 msgid ""
 "The trail stops soon. We have almost reached our destination, if we can call "
@@ -1624,6 +1884,7 @@ msgstr ""
 "île pas loin de la berge. Si nous brûlons le pont qui la relie à la berge "
 "personne ne pourra nous rejoindre."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:111
 msgid ""
 "But what if there are already people living on it? We will have to fight "
@@ -1632,6 +1893,7 @@ msgstr ""
 "Mais que ferons-nous s'il y a déjà des habitants sur l'île ? Il nous faudra "
 "les combattre ! De plus, les morts-vivants savent construire des bateaux."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:115
 msgid ""
 "There are other people. A tribe of trolls, and some gryphons. But it is "
@@ -1642,6 +1904,7 @@ msgstr ""
 "moins dangereux que de combattre les morts-vivants et une fois ceux-ci "
 "éliminés, l'île sera à nous."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:119
 msgid ""
 "Very well, we will go on, take this island. It appears we have no choice. "
@@ -1650,6 +1913,7 @@ msgstr ""
 "Parfait, nous allons continuer et prendre cette île. Nous n'avons pas "
 "vraiment d'autre choix. En avant !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:131
 msgid ""
 "There is an abandoned castle here. It looks repairable - we should settle "
@@ -1658,6 +1922,7 @@ msgstr ""
 "Il y a un château abandonné ici. Il semble réparable : nous devrions nous "
 "installer ici."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:135
 msgid ""
 "Very well. Let us rally there, and then move to destroy these trolls and "
@@ -1666,32 +1931,39 @@ msgstr ""
 "Très bien. Rassemblons-nous ici et ensuite nous massacrerons ces trolls et "
 "ces griffons."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:147
 msgid "We will base our attack from here. Now go, destroy the enemy!"
 msgstr ""
 "Nous allons lancer notre attaque d'ici. Maintenant allons-y, détruisons "
 "l'ennemi !"
 
+#. message: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:155
 msgid "You find 100 gold in the fortress!"
 msgstr "Vous avez trouvé 100 pièces d'or dans la forteresse !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:173
 msgid "We have done it! The island is ours. Our journey is complete."
 msgstr "Nous l'avons fait ! L'île est à nous. Notre voyage est terminé."
 
+#. unit: type=Troll Warrior, description=Groog
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:184
 msgid "Groog"
 msgstr "Groog"
 
+#. message: description=Groog
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:215
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "Pas si vite. Vous allez venir avec nous."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:4
 msgid "Captured"
 msgstr "Capturés"
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:22
 msgid ""
 "After reaching what they believed was safety, Gweddry and his men had been "
@@ -1700,6 +1972,7 @@ msgstr ""
 "Après avoir atteint un endroit qu'ils croyaient sûr, Gweddry et ses hommes "
 "furent capturés par les orcs septentrionaux."
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:26
 msgid ""
 "Informed they were being taken to the orcish king, Dra-Nak, they attempted "
@@ -1708,35 +1981,43 @@ msgstr ""
 "Sachant qu'ils étaient emmenés au roi des orcs, Dra-Nak, ils tentèrent de "
 "s'évader avant d'arriver à destination..."
 
+#. label
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:37
 msgid "Prison"
 msgstr "Prison"
 
+#. label
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:41
 msgid "Torture Chamber"
 msgstr "Chambre de torture"
 
+#. label
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:45
 msgid "Throne Room"
 msgstr "Salle du trône"
 
+#. label
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:49
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:53
 msgid "The City"
 msgstr "La ville"
 
+#. label
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:57
 msgid "Exit"
 msgstr "Quitter"
 
+#. side: type=Orcish Warlord, description=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:78
 msgid "King Dra-Nak"
 msgstr "King Dra-Nak"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:185
 msgid "Escape through the south-west tunnel"
 msgstr "S'échapper par la galerie sud-ouest"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:264
 msgid ""
 "I think Dacyn and Owaec have escaped already. Now I have to, also... these "
@@ -1746,10 +2027,12 @@ msgstr ""
 "parvenir à mon tour... Ces gardes n'ont pas l'air très attentifs, je "
 "pourrais peut-être réussir à les éviter..."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:274
 msgid "Aha! There is a small crack in the cave wall here."
 msgstr "Eh ! Il y a ici une fissure dans la paroi de cette grotte."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:292
 msgid ""
 "So, Gweddry, you escaped too? Good. I think they have the rest of our troops "
@@ -1760,10 +2043,12 @@ msgstr ""
 "gardent le reste de nos troupes ainsi que les paysans qui nous suivent. Nous "
 "devrions être capables de les libérer."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:296
 msgid "Where are they? These caves are impossible to navigate!"
 msgstr "Où sont-ils ? Impossible de s'orienter dans ces cavernes !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:300
 msgid ""
 "Somewhere south of us. We are in a hidden passage in the north. Oh, and some "
@@ -1772,22 +2057,27 @@ msgstr ""
 "Ils sont quelque part au sud. Nous sommes dans un passage caché au nord. "
 "Oh ! Quelques autres se sont aussi échappés en compagnie d'Owaec."
 
+#. message: description=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:307
 msgid "Well, where are the prisoners?"
 msgstr "Bien, où sont les prisonniers ?"
 
+#. message
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:311
 msgid "Right here, boss."
 msgstr "Ici, chef."
 
+#. message: description=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:315
 msgid "Well, where's their leader? I don't see him."
 msgstr "Bien, où est le chef ? Je ne le vois pas."
 
+#. message
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:319
 msgid "Uh... (whispers).. I dunno. He escaped, I think."
 msgstr "Euh... (chuchotements). Je sais pas. Il s'est évadé, je pense."
 
+#. message: description=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:323
 msgid ""
 "You fool! Well, find him. Bring him to me! Wait, no, just kill him on sight."
@@ -1795,26 +2085,32 @@ msgstr ""
 "Imbécile ! Trouve-le donc ! Amène-le moi ! Non, attends, tue-le plutôt dès "
 "que tu le verras."
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:344
 msgid "Look, the escaped prisoners have returned!"
 msgstr "Regardez, les prisonniers évadés sont revenus !"
 
+#. message: description=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:348
 msgid "Kill them."
 msgstr "Tuez-les."
 
+#. message
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:374
 msgid "The guards are distracted! Now is the time to escape!"
 msgstr "Les gardes ont la tête ailleurs ! Il est temps de s'échapper !"
 
+#. message
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:378
 msgid "Huh? Who's there, who said that?"
 msgstr "Que... ? Qui est là ? Qui a dit ça ?"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:454
 msgid "I see the exit to the tunnel! Onward!"
 msgstr "Je vois la sortie de la galerie ! En avant !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:458
 msgid ""
 "Wait! We cannot go out that way. There are too many orcs. We must exit "
@@ -1823,18 +2119,22 @@ msgstr ""
 "Attendez ! Nous ne pouvons pas sortir par ici. Il y a trop d'orcs. Nous "
 "devons sortir par la porte sud-ouest."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:462
 msgid "Very well. We must go the other way."
 msgstr "Très bien. Nous devons prendre l'autre route."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:477
 msgid "Good! We have escaped these accursed caves!"
 msgstr "Bien ! Nous nous sommes échappés de ces maudites cavernes !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:4
 msgid "Evacuation"
 msgstr "Évacuation"
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:18
 msgid ""
 "Gweddry had escaped from the orcish prisons. He found himself in the "
@@ -1845,22 +2145,27 @@ msgstr ""
 "du Nord, plus au sud qu'avant. Les orcs le poursuivaient. Lui et ses hommes "
 "partirent vers le sud, jusqu'à atteindre la grande rivière."
 
+#. side: type=Orcish Warlord, description=Varrak-Klar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:35
 msgid "Varrak-Klar"
 msgstr "Varrak-Klar"
 
+#. side: type=Troll Warrior, description=Unhk
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:57
 msgid "Unhk"
 msgstr "Unhk"
 
+#. side: type=Orcish Warlord, description=Ran-Lar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:78
 msgid "Ran-Lar"
 msgstr "Ran-Lar"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:162
 msgid "Destroy the bridge OR defeat all enemies"
 msgstr "Détruire le pont OU vaincre tous les ennemis"
 
+#. objectives
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:177
 msgid ""
 "Note: every unit not on the south side of the river when the bridge is "
@@ -1869,10 +2174,12 @@ msgstr ""
 "Remarque : toute unité qui n'aura pas atteint la rive sud lors de la "
 "destruction du pont sera perdue."
 
+#. unit: description=Engineer, type=Red Mage
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:186
 msgid "Engineer"
 msgstr "Ingénieur"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:197
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
@@ -1881,6 +2188,7 @@ msgstr ""
 "Tout est perdu ! Nous devons quitter les Terres du Nord aussi vite que "
 "possible ! Courez pour votre... Mais qu'est-ce que... ?!? Qui êtes-vous ?"
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:201
 msgid ""
 "I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
@@ -1889,10 +2197,12 @@ msgstr ""
 "Chuis ingénieur. J'devinn' qu'vous aurez besoin d'mes services. J'parie "
 "qu'vous voulez qu'je fasse sauter l'pont, là-bas."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:205
 msgid "Why would we want to do that?!?"
 msgstr "Pourquoi voudrions-nous faire une chose pareille ?!?"
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:209
 msgid ""
 "Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
@@ -1901,10 +2211,12 @@ msgstr ""
 "Ben, j'vois qu'ces orcs vous pourchassent et si j'fais sauter l'pont, y "
 "pourront pu traverser. Ça vous aid'ra à vous échapper."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:213
 msgid "I see... I think it is a good idea to hire him. How much?"
 msgstr "Je vois... Je pense que c'est une bonne idée de l'enrôler. Combien ?"
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:217
 msgid ""
 "I aint charging gold - I wants protecshun! Everywhere I go, I see orcs, "
@@ -1913,6 +2225,7 @@ msgstr ""
 "M'en fous d'l'or : j'veux vot' protection ! Partout où j'vais, j'vois des "
 "orcs, des mort-vivants. L'coin est carrément flippant !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:221
 msgid ""
 "Very well, we'll protect you from the undead. But we can't help you until we "
@@ -1922,6 +2235,7 @@ msgstr ""
 "vous aider que lorsque nous aurons traversé cette rivière. Allons-y à "
 "présent !"
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:225
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r dere. That's where "
@@ -1932,22 +2246,27 @@ msgstr ""
 "qu'y'a mon équipement. Mais tous ceux qui s'ront pas d'ce côté quand qu'ça "
 "explos'ra s'ront tués par les orcs, pour sûr."
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:242
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "Alors, ch'fais sauter l'pont maint'nant, cap'taine ?"
 
+#. option: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:248
 msgid "Yes, blow it up."
 msgstr "Oui, faites-le sauter."
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:252
 msgid "Alright! Blast'n time!"
 msgstr "Ça roule ! Planquez-vous !"
 
+#. message: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:265
 msgid "BOOM!!!"
 msgstr "BOUM !!"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:285
 msgid ""
 "Good, we have escaped from these orcs. But where will we go? There are "
@@ -1956,6 +2275,7 @@ msgstr ""
 "Excellent, nous avons échappé aux orcs. Mais où allons-nous aller ? Il y a "
 "des morts-vivants en Wesnoth."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:289
 msgid ""
 "It is not safe here, but we cannot go back north. The orcs are a more "
@@ -1964,18 +2284,22 @@ msgstr ""
 "Nous ne sommes pas en sécurité ici mais nous ne pouvons pas retourner vers "
 "le nord. Les orcs restent le plus grand danger pour l'instant."
 
+#. option: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:298
 msgid "No, wait until later."
 msgstr "Non, attendez un peu."
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:302
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "Nan ? Ca roule, j'attends plus tard, hein ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:315
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr "Le pont n'a pas sauté à temps ! Les orcs vont tous nous tuer !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:323
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
@@ -1986,10 +2310,12 @@ msgstr ""
 "nous devons toujours quitter cette contrée du nord. D'autres orcs vont "
 "venir : où allons-nous aller ? Il y a des morts-vivants en Wesnoth."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:331
 msgid "So what do you propose?"
 msgstr "Alors que proposez-vous ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:335
 msgid ""
 "We cannot go north, for that is where orcs are... we cannot go east, for "
@@ -2003,6 +2329,7 @@ msgstr ""
 "survivre un certain temps, mais nous sommes toujours dans Wesnoth et les "
 "morts-vivants finiront de toutes les façons par nous retrouver."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:339
 msgid ""
 "We could go south, and return to Wesnoth... but I do not know what that "
@@ -2011,10 +2338,12 @@ msgstr ""
 "Nous pourrions partir vers le sud et retourner à Wesnoth... Mais je ne vois "
 "pas à quoi ça servirait."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:343
 msgid "It would accomplish nothing! The undead will kill us all!"
 msgstr "Ça ne servirait à rien ! Les morts-vivants nous tueraient tous !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:347
 msgid ""
 "Have you not heard what Dacyn said? Either the orcs or undead will kill us "
@@ -2028,6 +2357,7 @@ msgstr ""
 "et nous avons rendu les orcs fous de rage. Nous ne pouvons pas retenter "
 "cela. Il n'y a plus d'espoir..."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:351
 msgid ""
 "There is still some hope left. If we return to Wesnoth, we may be able to "
@@ -2039,6 +2369,7 @@ msgstr ""
 "nous ont attaqués. Et, j'ai... des conseils à donner au roi. Il se peut que "
 "je connaisse le point faible des morts-vivants."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:355
 msgid ""
 "Very well. If returning to Wesnoth has any chance of success, it is our best "
@@ -2047,6 +2378,7 @@ msgstr ""
 "Très bien. Si retourner à Wesnoth offre une chance de réussir, c'est notre "
 "meilleure option. Nous allons vers le sud."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:359
 msgid ""
 "I do not like this. But it appears we will die no matter our course of "
@@ -2055,6 +2387,7 @@ msgstr ""
 "Je n'aime pas ça. Mais il semble que nous allons mourir quoi que nous "
 "fassions."
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:363
 msgid ""
 "I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I "
@@ -2063,19 +2396,24 @@ msgstr ""
 "À partir de maintenant, j'vous suis ! J'espère qu'vous irez jusqu'Weld'n et "
 "tout ça, qu'ch'puisse arréter d'courir..."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:4
 msgid "The Drowned Plains"
 msgstr "Les Plaines enneigées"
 
+#. unit
+#. message
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:114
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:387
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:126
 msgid "Defeat Khrakrahs"
 msgstr "Vaincre Khrakrahs"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:369
 msgid ""
 "Now, we have reached the fair homeland of my people. They may be able to "
@@ -2084,6 +2422,7 @@ msgstr ""
 "Nous avons finalement atteint les belles terres de mon peuple. Ils devraient "
 "pouvoir nous aider : "
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:373
 msgid ""
 "What?! Swamps?! Those undead have destroyed the grasslands of my House, and "
@@ -2092,6 +2431,7 @@ msgstr ""
 "Comment ?! Des marais ! Ces morts-vivants ont détruit les prairies de ma "
 "Maison, ils paieront pour cela !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:377
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
@@ -2103,18 +2443,22 @@ msgstr ""
 "mêmes. Je peux les sentir rôder dans les marais, attendant le bon moment "
 "pour nous tendre des embuscades."
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:381
 msgid "I s'ppose we'll hav' to wade across it anyway... ugh."
 msgstr "J'suppose qu'on va d'voir passer à gué d'toutes façons...beuh."
 
+#. message
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:389
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "Trouuuuuvezzzzz... Grifffffezzzzz... Tuuuuuezzzzz..."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:393
 msgid "What is that sound?!?"
 msgstr "Quel est ce bruit ?!?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:397
 msgid ""
 "I do not know, but my guess is the dragon Khrakrahs. He was a powerful beast "
@@ -2127,6 +2471,7 @@ msgstr ""
 "Septentrionales. Mais son cri ne ressemble pas à celui d'un être vivant. Je "
 "ne sais pas ce qu'il s'est passé, mais nous devons le détruire."
 
+#. message
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:415
 msgid ""
 "Aha! I see what they have done. They have raised him as an undead dragon. "
@@ -2137,22 +2482,28 @@ msgstr ""
 "vivant. Mais il ne semble pas être sensible à ma flamme sacrée... c'est "
 "vraiment une magie bien étrange."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:4
 msgid "Approaching Weldyn"
 msgstr "L'Approche de Weldyn"
 
+#. side: type=Necromancer, description=Mal-un-Darak
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:42
 msgid "Mal-un-Darak"
 msgstr "Mal-un-Darak"
 
+#. side: type=Necromancer, description=Mal-un-Zanrad
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:57
 msgid "Mal-un-Zanrad"
 msgstr "Mal-un-Zanrad"
 
+#. side: type=Necromancer, description=Mal-un-Xadrux
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:71
 msgid "Mal-un-Xadrux"
 msgstr "Mal-un-Xadrux"
 
+#. side: type=General, description=Konrad II
+#. unit: description=Konrad, type=General
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:41
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:60
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:185
@@ -2160,15 +2511,18 @@ msgstr "Mal-un-Xadrux"
 msgid "Konrad II"
 msgstr "Konrad II"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:106
 msgid "Get Gweddry to Weldyn"
 msgstr "Amener Gweddry à Weldyn"
 
+#. objective: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:162
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:122
 msgid "Death of Konrad II"
 msgstr "Mort de Konrad II"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:180
 msgid ""
 "We have finally reached Weldyn, but it seems the undead have surrounded it. "
@@ -2177,6 +2531,7 @@ msgstr ""
 "Nous avons finalement atteint Weldyn mais il semble que les morts-vivants "
 "l'aient encerclée. Nous devons forcer le siège pour atteindre le roi !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:184
 msgid ""
 "It would be best not to try to defeat these undead, there are too many of "
@@ -2185,6 +2540,7 @@ msgstr ""
 "Mieux vaut ne pas essayer de vaincre ces morts-vivants, ils sont trop "
 "nombreux. Allez directement à la ville."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:197
 msgid ""
 "We have reached Weldyn. Now we must have a council to decide what to do next."
@@ -2192,18 +2548,22 @@ msgstr ""
 "Nous avons atteint Weldyn. Nous devons maintenant tenir un conseil afin de "
 "décider de la suite des opérations."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:201
 msgid "Come, into the castle."
 msgstr "Venez au château."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:216
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr "Weldyn a été capturée et Wesnoth n'est plus..."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:4
 msgid "The Council"
 msgstr "Le Conseil"
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:17
 msgid ""
 "Before we begin our council, I must tell you all the history of this lich we "
@@ -2214,6 +2574,7 @@ msgstr ""
 "de cette liche que nous combattons. C'était autrefois, comme moi, un mage de "
 "lumière et sa chute commença pendant le règne d'Haldric VII..."
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:22
 msgid ""
 "The greatest seer in the land, Galdren, foresaw that some day, some day "
@@ -2228,6 +2589,7 @@ msgstr ""
 "était de prendre comme conseiller un mage versé dans le combat des esprits "
 "des ténèbres."
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:27
 msgid ""
 "In all the land, there were two magi of light that clearly stood out from "
@@ -2243,6 +2605,7 @@ msgstr ""
 "annonça que le devin était mort et qu'il m'avait choisi comme nouveau "
 "conseiller."
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:32
 msgid ""
 "Ravan took this quietly enough, we all thought, but now I think that this "
@@ -2258,6 +2621,7 @@ msgstr ""
 "venu, comme tous les mages de mort finissent par le faire, il s'ôta la vie "
 "et se transforma en liche, l'une des plus puissantes ayant jamais existé."
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:37
 msgid ""
 "One day, he disguised himself and came to the castle, where I was living. He "
@@ -2270,6 +2634,7 @@ msgstr ""
 "éminent de la cour. A mon arrivée il se dévoila et se présenta en tant que "
 "Mal-Ravanal puis me provoqua en duel."
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:42
 msgid ""
 "The guards, surprised by this sudden revelation, advanced to attack him. "
@@ -2280,11 +2645,13 @@ msgstr ""
 "l'attaquer. Cependant, comme il était devenu doué dans l'art magique de la "
 "téléportation, il disparut simplement. Il n'a plus jamais été revu depuis."
 
+#. side: type=Great Mage, description=Kaldor
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:52
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:71
 msgid "Kaldor"
 msgstr "Kaldor"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:90
 msgid ""
 "Not been seen, that is, until the day when he attacked Gweddry and me in "
@@ -2295,10 +2662,12 @@ msgstr ""
 "cet avant-poste sur la frontière orientale. C'est la liche que nous "
 "affrontons : Mal-Ravanal."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:94
 msgid "So what should we do now?"
 msgstr "Que devrions-nous faire maintenant ?"
 
+#. message: description=Kaldor
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:98
 msgid ""
 "We must fight, obviously. Surely the might of Wesnoth can triumph over a "
@@ -2307,6 +2676,7 @@ msgstr ""
 "Nous devons combattre, évidemment. La puissance de Wesnoth pourra sans aucun "
 "doute triompher d'une simple liche !"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:102
 msgid ""
 "I can tell by your words that you have not seen the hordes for yourself. It "
@@ -2320,6 +2690,7 @@ msgstr ""
 "marche, de fantômes hurleurs, de chauves-souris infernales, menés par les "
 "infâmes nécromanciens qui les ont rappelés."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:106
 msgid ""
 "At first we tried to escape them, for we knew they were too powerful; it is "
@@ -2329,6 +2700,7 @@ msgstr ""
 "trop puissants ; c'est par pure et simple chance que nous sommes de retour à "
 "Wesnoth."
 
+#. message: description=Kaldor
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:110
 msgid ""
 "That simply makes you cowards. True warriors would have stayed and fought, "
@@ -2337,6 +2709,7 @@ msgstr ""
 "Cela démontre que vous êtes un lâche. Un véritable guerrier serait resté et "
 "aurait combattu, jusqu'à la mort !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:114
 msgid ""
 "It doesn't matter anyway. The point is, we already know we cannot defeat the "
@@ -2348,10 +2721,12 @@ msgstr ""
 "la victoire soit de détruire le chef de ces nécromanciens, la liche Mal-"
 "Ravanal."
 
+#. message: description=Kaldor
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:118
 msgid "But as yet we have no idea how to do it!"
 msgstr "Mais pour l'instant nous n'avons pas d'idée sur la manière d'agir !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:122
 msgid ""
 "Well, we do know that he is very arrogant, and can be easily tricked. That "
@@ -2360,6 +2735,7 @@ msgstr ""
 "Eh bien, nous tenons pour sûr qu'il est très arrogant et qu'il peut être "
 "leurré aisément. C'est ainsi qu'il tomba la première fois."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:126
 msgid ""
 "So maybe we can trick him into exposing himself to us? Dacyn, does he know "
@@ -2368,6 +2744,7 @@ msgstr ""
 "Ainsi nous pourrions le pousser à se montrer à nous ? Dacyn, est-ce qu'il "
 "sait que nous savons qui il est ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:130
 msgid ""
 "No, I don't think so. I am the only person alive who would recognize the "
@@ -2378,42 +2755,52 @@ msgstr ""
 "nom de Mal-Ravanal et s'il avait su que j'étais là-bas lorsqu'il a attaqué, "
 "il nous aurait poursuivis avec plus de ferveur."
 
+#. message: description=guard
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:142
 msgid "Sire, the undead armies are attacking!"
 msgstr "Sire, les armées de morts-vivants passent à l'attaque !"
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:146
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "Bien, c'est donc la fin de notre conseil. Au combat !"
 
+#. scenario: (description=Messenger of Doom) 39 4}
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:4
 msgid "Weldyn under Attack"
 msgstr "Weldyn assiégée"
 
+#. side: type=General, description=Halrad
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:48
 msgid "Halrad"
 msgstr "Halrad"
 
+#. side: type=General, description=Halric
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:63
 msgid "Halric"
 msgstr "Halric"
 
+#. side: type=General, description=Halrod
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:78
 msgid "Halrod"
 msgstr "Halrod"
 
+#. side: type=Lich, description=Mal-Grekulak
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:94
 msgid "Mal-Grekulak"
 msgstr "Mal-Grekulak"
 
+#. side: type=Lich, description=Mal-Xakralan
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:109
 msgid "Mal-Xakralan"
 msgstr "Mal-Xakralan"
 
+#. side: type=Lich, description=Mal-Uknalu
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:124
 msgid "Mal-Uknalu"
 msgstr "Mal-Uknalu"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:194
 msgid ""
 "We will fight soon, my lord. Look, night approaches; they will soon attack. "
@@ -2422,17 +2809,20 @@ msgstr ""
 "Nous allons bientôt combattre, mon seigneur. Regardez, la nuit approche ; "
 "ils vont passer à l'attaque. J'espère que nous arriverons à les contenir."
 
+#. message: description=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:198
 msgid "Very well. But this... Mal-Ravanal, that you spoke of, is he here?"
 msgstr ""
 "Très bien. Mais ce... Mal-Ravanal, dont vous parliez, est-il en ces lieux ?"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:202
 msgid "I do not sense his magic, but he might be concealing his presence."
 msgstr ""
 "Je ne ressens pas sa magie mais il pourrait bien être là, dissimulé quelque "
 "part."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:206
 msgid ""
 "In any case, the undead are attacking now. Let us hope we can last out the "
@@ -2441,24 +2831,29 @@ msgstr ""
 "En tous les cas, les morts-vivants sont en train d'attaquer. Espérons que "
 "nous pourrons passer la nuit !"
 
+#. message: description=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:217
 msgid "I have died, and with me gone the city shall fall."
 msgstr "J'ai péri et moi parti, cette ville tombera aussi."
 
+#. unit: type=Spectre, description=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:231
 msgid "Messenger of Doom"
 msgstr "Messager macabre"
 
+#. message: description=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:238
 msgid "I come bearing a message from my leader."
 msgstr "Je suis porteur d'un message de mon chef."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:242
 msgid "Very well, you may read it. It might tell us something useful."
 msgstr ""
 "Très bien, lisez-le donc. Peut-être contient-il quelque information "
 "intéressante."
 
+#. message: description=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:246
 msgid ""
 "He says: 'Well done; you have defeated some of my less powerful captains, "
@@ -2471,23 +2866,25 @@ msgid ""
 "behind the lines in safety while others braver than you fought and died in "
 "your name.'"
 msgstr ""
-"Il dit : « Bien joué. Tu as vaincu quelques-uns de mes plus petits "
-"Capitaines et une petite fraction de ma horde. Si j'utilisais toute la "
-"puissance de ma terrifiante armée, je t'écraserais comme un insecte. Mais je "
-"ne recherche que des victoires révélant la véritable étendue de mes propres "
-"pouvoirs. Contrairement au Grand Général Gweddry, je ne cherche pas à me "
-"cacher derrière les armures de mes soldats ! Tu es, Ô commandant Gweddry, un "
+"Il dit : « Bien joué. Tu as vaincu quelques-uns de mes plus petits Capitaines "
+"et une petite fraction de ma horde. Si j'utilisais toute la puissance de ma "
+"terrifiante armée, je t'écraserais comme un insecte. Mais je ne recherche "
+"que des victoires révélant la véritable étendue de mes propres pouvoirs. "
+"Contrairement au Grand Général Gweddry, je ne cherche pas à me cacher "
+"derrière les armures de mes soldats ! Tu es, Ô commandant Gweddry, un "
 "lâche ! Les bardes pourraient chanter comment tu as vaincu mes capitaines, "
 "alors qu'en réalité, tu n'as rien fait d'autre que de te cacher loin "
 "derrière tes lignes, en sécurité, tandis que d'autres bien plus braves que "
 "toi combattaient et mourraient en ton nom. »"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:250
 msgid ""
 "What is the point of this message? Does it consist of anything more than "
 "insults?"
 msgstr "Quel est le but de ce message ? Il ne vise qu'à m'insulter ?"
 
+#. message: description=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:254
 msgid ""
 "The point is that you did not defeat my Lord's minions, it was others doing "
@@ -2500,6 +2897,7 @@ msgstr ""
 "tiendrait pas deux secondes dans un vrai combat. Et mon seigneur va le "
 "prouver : il vous défie, Gweddry, en duel."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:258
 msgid ""
 "What are his terms? I won't accept anything obviously weighted towards his "
@@ -2508,6 +2906,7 @@ msgstr ""
 "Quelles sont ses conditions ? Je n'accepterai rien qui soit manifestement "
 "biaisé en sa faveur !"
 
+#. message: description=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:262
 msgid ""
 "That only proves you are a coward. Nevertheless, these are his terms: You "
@@ -2519,6 +2918,7 @@ msgstr ""
 "meilleurs. Puis vous combattrez à mort ; jusqu'à votre anéantissement ou le "
 "sien."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:266
 msgid ""
 "Gweddry, I don't think you should accept. He is bound to bring more than six "
@@ -2527,6 +2927,7 @@ msgstr ""
 "Gweddry, je ne pense pas que vous devriez accepter. Il amènera bien plus que "
 "six morts-vivants à ce « duel », il amènera toute une armée !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:270
 msgid ""
 "Well, I think you should accept. There is a small chance that it will be a "
@@ -2537,6 +2938,7 @@ msgstr ""
 "le combat soit équitable et sinon nous n'aurons d'autre choix que "
 "d'affronter l'armée des morts au complet."
 
+#. message: description=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:274
 msgid ""
 "I will simplify your choice. Accept, coward, or face the onslaught of my "
@@ -2545,6 +2947,7 @@ msgstr ""
 "Je vais faire simple. Acceptez, espèce de lâche, ou vous subirez l'assaut "
 "des hordes de mon seigneur demain à l'aube !"
 
+#. option: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:280
 msgid ""
 "I will accept this challenge. By your own master's terms, that proves I am "
@@ -2553,25 +2956,30 @@ msgstr ""
 "Je relève ce défi. Selon les termes de votre propre maître, cela prouve que "
 "je ne suis pas un lâche."
 
+#. option: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:296
 msgid "I will not accept a fight in which he will obviously cheat! I refuse!"
 msgstr ""
 "Je n'accepterai pas un combat dans lequel il va assurément tricher ! Je "
 "refuse !"
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:319
 msgid "Look, the sun has risen, and the undead are retreating."
 msgstr "Regardez, le soleil s'est levé et les morts-vivants se replient."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:4
 msgid "The Duel"
 msgstr "Le Duel"
 
+#. objective: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:119
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:42
 msgid "Defeat Mal-Ravanal"
 msgstr "Vaincre Mal-Ravanal"
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:57
 msgid ""
 "I have waited a long time for this day to come. Prepare to die, Gweddry of "
@@ -2580,6 +2988,7 @@ msgstr ""
 "J'ai attendu ce jour depuis longtemps. Préparez-vous à mourir Gweddry de "
 "Wesnoth !"
 
+#. message: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:67
 msgid ""
 "The rules of the duel are these:\n"
@@ -2594,6 +3003,7 @@ msgstr ""
 "battre avec les troupes que vous avez à ce moment-là.\n"
 "Le premier chef qui tombe perd le duel."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:117
 msgid ""
 "Wait - What just happened? He called more warriors out of the ground! That's "
@@ -2602,6 +3012,7 @@ msgstr ""
 "Attendez ! Que se passe-t-il ? Il a ramené plus de combattants à la vie ! "
 "C'est contraire aux règles !"
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:122
 msgid ""
 "Stop talking and fight! The rules do not stop me from bringing up warriors "
@@ -2610,46 +3021,57 @@ msgstr ""
 "Arrêtez de parler et battez-vous ! Les règles ne m'interdisent pas "
 "d'utiliser des combattants qui étaient déjà présents."
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:134
 msgid "I... lose?..."
 msgstr "J'ai... perdu ?"
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:147
 msgid "And more!"
 msgstr "Et plus encore !"
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:4
 msgid "Weldyn Besieged"
 msgstr "Weldyn assiégée"
 
+#. side: type=Lich, description=Mal-Akranbral
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:32
 msgid "Mal-Akranbral"
 msgstr "Mal-Akranbral"
 
+#. side: type=Lich, description=Mal-Drakanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:44
 msgid "Mal-Drakanal"
 msgstr "Mal-Drakanal"
 
+#. side: type=Lich, description=Mal-Larakan
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:56
 msgid "Mal-Larakan"
 msgstr "Mal-Larakan"
 
+#. side: type=Lich, description=Mal-Xaskanat
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:81
 msgid "Mal-Xaskanat"
 msgstr "Mal-Xaskanat"
 
+#. side: type=Lich, description=Mal-Katklagad
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:93
 msgid "Mal-Katklagad"
 msgstr "Mal-Katklagad"
 
+#. side: type=Lich, description=Mal-Hadanak
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:105
 msgid "Mal-Hadanak"
 msgstr "Mal-Hadanak"
 
+#. objective: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:135
 msgid "Letting any enemy unit on to your keep"
 msgstr "Laissez un ennemi pénétrer dans votre fort"
 
+#. message: description=Mal-Drakanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:154
 msgid ""
 "You people are fools! You rejected my master's offer to duel... very well, "
@@ -2665,29 +3087,35 @@ msgstr ""
 "sommes sept et un SEUL d'entre nous est le véritable chef ! Ha ha ha ha ! "
 "Pour vous donner l'avantage, nous allons tous vous réciter nos noms."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:158
 msgid "Remember, we have to kill Mal-Ravanal. He's here somewhere..."
 msgstr ""
 "Rappelez-vous, nous devons tuer Mal-Ravanal. Il est quelque part ici..."
 
+#. message: description=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:170
 msgid "How did you know...?"
 msgstr "Comment avez-vous su ?"
 
+#. message: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:190
 msgid "Kill the king!"
 msgstr "Tuez le roi !"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:194
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr ""
 "Ils ont tué Konrad... maintenant, même si nous sauvons Weldyn, Wesnoth aura "
 "vécu."
 
+#. scenario
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:4
 msgid "Epilog"
 msgstr "Épilogue"
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:15
 msgid ""
 "When Mal-Ravanal fell, the living creatures under his banner broke and fled; "
@@ -2711,6 +3139,7 @@ msgstr ""
 "terrorisés ruaient pendant qu'un énorme manteau ténébreux obscurcissait le "
 "soleil..."
 
+#. part
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:19
 msgid ""
 "...and then it thinned, and paled, and a breeze from the west dissolved it "
@@ -2720,6 +3149,7 @@ msgstr ""
 "l'éparpilla en lambeaux, et la lumière du jour brilla de nouveau pleinement "
 "sur Weldyn."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:82
 msgid ""
 "It is a great victory we have won here, destroying he who was the main "
@@ -2728,6 +3158,7 @@ msgstr ""
 "Nous avons remporté une grande victoire ici, anéantissant le responsable "
 "principal des troubles à Wesnoth."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:87
 msgid ""
 "So many months of fighting...I feel as though I am awakening from a long "
@@ -2736,6 +3167,7 @@ msgstr ""
 "Tant de mois passés à combattre... J'ai l'impression de me réveiller d'un "
 "long cauchemar."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:92
 msgid ""
 "Nor is our work yet complete. Mal-Ravanal's main host has been broken, but "
@@ -2744,6 +3176,7 @@ msgstr ""
 "Notre tâche ne s'arrête pas ici. La majeure partie de l'ost de Mal-Ravanal a "
 "été détruite, mais des cavaliers à sa solde ravagent tout le pays."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:97
 msgid ""
 "We will be years...perhaps decades...recovering from the ill he has wrought."
@@ -2751,6 +3184,7 @@ msgstr ""
 "Il nous faudra des années... voire des décennies... pour nous rétablir des "
 "maux qu'il a répandus."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:102
 msgid ""
 "Even now we should be sending our cavalry to harry and slay as many of the "
@@ -2759,6 +3193,7 @@ msgstr ""
 "En cet instant même, nous devrions envoyer notre cavalerie pour harceler et "
 "abattre le plus d'orcs possible."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:107
 msgid ""
 "It shall be so. But it is also to be thought that you three have served Us, "
@@ -2767,6 +3202,7 @@ msgstr ""
 "Qu'il en soit ainsi. Mais rappelons que vous trois nous avez servis à "
 "merveille, notre royaume et nous-même. Nous aimerions vous récompenser."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:112
 msgid ""
 "Dacyn. You will remain by Our side, here; as you counseled these two in war, "
@@ -2776,16 +3212,19 @@ msgstr ""
 "durant la guerre, vous nous assisterez pendant la période de paix pour "
 "œuvrer à la reconstruction du royaume."
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:119
 msgid "Sire, we but did our duty."
 msgstr "Sire, nous n'avons fait que notre devoir."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:124
 msgid "Quite. Now do not interrupt while I am doing mine...kneel, Owaec."
 msgstr ""
 "Il est vrai. Maintenant, ne m'interrompez pas pendant que j'accomplis le "
 "mien... Agenouillez-vous, Owaec."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:131
 msgid ""
 "Arise, Owaec, Knight Commander of the King's Horse. And take as Our first "
@@ -2798,10 +3237,12 @@ msgstr ""
 "les fuyards ennemis jusqu'à ce que les terres de Weldyn deviennent synonyme "
 "de terreur pour les orcs, qui trembleront pendant des générations."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:173
 msgid "Kneel, Gweddry."
 msgstr "Agenouillez-vous, Gweddry."
 
+#. message: description=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:180
 msgid ""
 "And arise, Gweddry, Earl of Eastmarch. The land for which you shed your "
@@ -2811,6 +3252,7 @@ msgstr ""
 "lesquelles vous avez versé votre sang passeront sous votre contrôle et vous "
 "les ferez redevenir verdoyantes."
 
+#. message: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:185
 msgid ""
 "With these words and acts began the Silver Age of Wesnoth, that time known "
@@ -2819,10 +3261,12 @@ msgstr ""
 "L'Âge d'Argent de Wesnoth commença par ces mots et ces actes ; les "
 "historiens appelèrent cette période « La Reconstruction »..."
 
+#. unit: race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
 msgstr "Seigneur des chevaux"
 
+#. unit: race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:17
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
@@ -2834,21 +3278,25 @@ msgstr ""
 "ennemis. Leur épée peut tuer la plupart des adversaires ordinaires et leur "
 "étoile du matin écrase ceux qui restent."
 
+#. attack: type=blade
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:21
 msgid "sword"
 msgstr "épée"
 
+#. attack: type=impact
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:30
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:38
 msgid "morning star"
 msgstr "étoile du matin"
 
+#. unit: race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:4
 msgid "Mounted Fighter"
 msgstr "Combattant monté"
 
+#. unit: race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
@@ -2861,10 +3309,12 @@ msgstr ""
 "commander leurs camarades ; ce sont eux qui deviennent les capitaines des "
 "armées des clans."
 
+#. unit: race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
 msgstr "Guerrier monté"
 
+#. unit: race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
@@ -2877,30 +3327,37 @@ msgstr ""
 "bataille avec célérité et peuvent fournir une assistance salutaire sur "
 "plusieurs fronts."
 
+#. attack: type=blade
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
 msgid "greatsword"
 msgstr "grande épée"
 
+#. message: description=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9
 msgid "No! I... die..."
 msgstr "Non ! Je... meurs..."
 
+#. message: description=Dacyn
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:23
 msgid "We are doomed..."
 msgstr "Nous sommes condamnés..."
 
+#. message: description=Owaec
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:37
 msgid "I... must... argh."
 msgstr "Je... dois... argh."
 
+#. message: description=Grug
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:51
 msgid "Grarrgg...."
 msgstr "Rhâââ..."
 
+#. message: description=Engineer
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:62
 msgid "Wha'? Yah fail'd to give me protecshun..."
 msgstr "Quoi ? T'as pas réussi a m'protéger, mec..."
 
+#. part
 #: data/campaigns/Eastern_Invasion/utils/intro.cfg:6
 msgid ""
 "It was the thirtieth year of Konrad II's reign, and there were strange "
@@ -2909,6 +3366,7 @@ msgstr ""
 "C'était la treizième année du règne de Konrad II et d'étranges évènements se "
 "produisaient sur la frontière orientale de Wesnoth."
 
+#. part
 #: data/campaigns/Eastern_Invasion/utils/intro.cfg:9
 msgid ""
 "Cattle and beasts of burden were found dead in the fields, and men went "
@@ -2923,6 +3381,7 @@ msgstr ""
 "mais des éclaireurs ne trouvèrent qu'une petite étendue montagneuse et des "
 "kilomètres de marais."
 
+#. part
 #: data/campaigns/Eastern_Invasion/utils/intro.cfg:12
 msgid ""
 "The disappearances did not stop, and every day the terror grew greater. "
@@ -2935,6 +3394,7 @@ msgstr ""
 "demandant de l'aide au roi. Le messager chevaucha péniblement pendant des "
 "jours et des nuits et atteignit enfin la ville de Weldyn."
 
+#. part
 #: data/campaigns/Eastern_Invasion/utils/intro.cfg:16
 msgid ""
 "When the King received news of the problem, his advisor Dacyn had much to "
@@ -2947,6 +3407,7 @@ msgstr ""
 "précoces mais similaires, de la frontière sud : des attaques de morts-"
 "vivants. Dacyn présenta un plan pour combattre ces intrusions."
 
+#. part
 #: data/campaigns/Eastern_Invasion/utils/intro.cfg:20
 msgid ""
 "In the days of the king Garard I, three outposts had been built along the "
@@ -2960,6 +3421,7 @@ msgstr ""
 "sont devenues des marécages et les orcs ont quitté les montagnes pour les "
 "Terres du Nord."
 
+#. part
 #: data/campaigns/Eastern_Invasion/utils/intro.cfg:24
 msgid ""
 "One of them, the South Guard, had been the site of the previous attacks, and "
@@ -2971,6 +3433,7 @@ msgstr ""
 "les deux autres avant-postes. Il y envoya deux de ses jeunes officiers les "
 "plus prometteurs."
 
+#. part
 #: data/campaigns/Eastern_Invasion/utils/intro.cfg:27
 msgid ""
 "To the northern outpost he sent Owaec, a clan noble. To the middle outpost, "
@@ -2980,6 +3443,7 @@ msgstr ""
 "Au nord il envoya Owaec, un noble des clans. À l'avant-poste du centre, il "
 "envoya Gweddry, accompagné du mage Dacyn. C'est d'eux dont il s'agit ici."
 
+#. part
 #: data/campaigns/Eastern_Invasion/utils/intro.cfg:30
 msgid ""
 "All went well once the King's forces arrived. There were no attacks for "

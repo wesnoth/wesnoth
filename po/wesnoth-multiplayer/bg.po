@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:45+0100\n"
+"POT-Creation-Date: 2008-03-10 11:39+0100\n"
 "PO-Revision-Date: 2007-08-19 01:15+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -25,71 +25,92 @@ msgstr ""
 "X-Poedit-Bookmarks: 811,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Generator: KBabel 1.11.4\n"
 
+#. generic_multiplayer
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
 msgstr "Потребителска карта"
 
+#. multiplayer_side
 #: data/multiplayer/eras.cfg:5
 msgid "Random"
 msgstr "Случайна"
 
+#. era
 #: data/multiplayer/eras.cfg:12
 msgid "Default"
 msgstr "По подразбиране"
 
+#. era
 #: data/multiplayer/eras.cfg:25
 #, fuzzy
 msgid "Age of Heroes"
 msgstr "Епоха на герои"
 
+#. era
 #: data/multiplayer/eras.cfg:38
 msgid "Great War"
 msgstr "Великата война"
 
+#. multiplayer_side: type=Dark Sorcerer
 #: data/multiplayer/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
 msgstr "Мрачен съюз"
 
+#. multiplayer_side: type=White Mage
 #: data/multiplayer/factions/alliance_of_light.cfg:4
 msgid "Alliance of Light"
 msgstr "Съюз на светлината"
 
+#. multiplayer_side: type=Drake Flare
+#. multiplayer_side: type=Drake Flameheart
 #: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #, fuzzy
 msgid "Drakes"
 msgstr "Змейове"
 
+#. multiplayer_side: type=Dwarvish Steelclad
+#. multiplayer_side: type=Dwarvish Lord
 #: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #, fuzzy
 msgid "Knalgan Alliance"
 msgstr "Съюз на Налга"
 
+#. multiplayer_side: type=Lieutenant
+#. multiplayer_side: type=General
 #: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "Лоялни"
 
+#. multiplayer_side: type=Orcish Warlord
+#. multiplayer_side: type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Северняци"
 
+#. multiplayer_side: type=Elvish Marshal
+#. multiplayer_side: type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Бунтовници"
 
+#. multiplayer_side: type=Dark Sorcerer
+#. multiplayer_side: type=Lich
 #: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "Немъртви"
 
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
 msgstr "2 играча - Пещерите на Базилиска"
 
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 #, fuzzy
 msgid ""
@@ -103,6 +124,7 @@ msgstr ""
 "Пътят към победата е осеян с вкаменените тела на някои от най-великите герои "
 "на Уеснот."
 
+#. side
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:47
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:22
@@ -131,6 +153,7 @@ msgstr ""
 msgid "teamname^North"
 msgstr "Северен отбор"
 
+#. side
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:59
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:34
@@ -153,6 +176,7 @@ msgstr "Северен отбор"
 msgid "teamname^South"
 msgstr "Южен отбор"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
 msgid ""
 "The winds of the dark sky blew so cold,\n"
@@ -197,10 +221,12 @@ msgstr ""
 "Драконът от змийско злато съблазнен.\n"
 "(надпис от Флеймтрупър)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:98
 msgid "Xikkrisx"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:100
 msgid ""
 "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
@@ -224,10 +250,12 @@ msgid ""
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:104
 msgid "Oxsrrsk"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:106
 msgid ""
 "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival "
@@ -251,6 +279,7 @@ msgid ""
 "service, Oxsrrsk set out on his journey..."
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:119
 msgid ""
 "Slim of Stature, dexterous Hands\n"
@@ -271,10 +300,12 @@ msgstr ""
 "- - Седем камъка и Елфът\n"
 "(надпис от Гаутеамус)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:123
 msgid "Blum Duk"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:128
 #, fuzzy
 msgid ""
@@ -308,10 +339,12 @@ msgstr ""
 "изкрещя последните си думи: За бога, куче, да не ти окаменяха краката?!?\n"
 "(надпис от Елфски опустошител)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:132
 msgid "Rah Ihn Mar"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:134
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
@@ -325,6 +358,7 @@ msgid ""
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:141
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
@@ -343,6 +377,7 @@ msgstr ""
 "господар на езерото.\n"
 "(надпис от Турин)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:148
 #, fuzzy
 msgid ""
@@ -362,10 +397,12 @@ msgstr ""
 "са единственото, което напомня за някогашната му сила и подвизи.\n"
 "(надпис от Финмир)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:152
 msgid "Bramwythl"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:157
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
@@ -399,20 +436,24 @@ msgstr ""
 "то слънчевите лъчи, под открито небе. Най-голямото му желание се изпълни.\n"
 "(надпис от Елфски Опустошител)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:161
 msgid "Talael Ryndoc"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
 msgid "Aethec Corryn"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: ''Talael Ryndoc! I am "
@@ -423,10 +464,12 @@ msgid ""
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:175
 msgid "Rilhon"
 msgstr ""
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:178
 #, fuzzy
 msgid ""
@@ -453,6 +496,7 @@ msgstr ""
 "когото изненадващо не липсвал ни един зъб.\n"
 "(надпис от Патерсън)"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:198
 #, fuzzy
 msgid ""
@@ -488,16 +532,19 @@ msgstr ""
 "\n"
 "(надпис от МДж.К)"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 msgid "2p - Cynsaun Battlefield"
 msgstr "2 играча - Бойно поле на Синсаун"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 #, fuzzy
 msgid " Recommended settings of 150 gold and 2 gold per village."
 msgstr ""
 "Препоръчителни настройки от 150 точки злато и 1 точка злато за всяко селище."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 #, fuzzy
 msgid ""
@@ -508,11 +555,13 @@ msgstr ""
 "мащабни епически битки между две армии и предлага разнообразни изпитания и "
 "приключения, които чакат да бъдат открити."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 #, fuzzy
 msgid "2p - Dark Forecast (Survival)"
 msgstr "6 играча - Отборно оцеляване"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player teambased "
@@ -521,6 +570,7 @@ msgid ""
 "on random weather effects."
 msgstr ""
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:474
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
@@ -528,57 +578,70 @@ msgid ""
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:835
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1012
 msgid "Heavy Snowfall"
 msgstr ""
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1026
 msgid "Snowfall"
 msgstr ""
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1046
 msgid "Heavy Rains"
 msgstr ""
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1060
 msgid "Drought"
 msgstr ""
 
+#. else
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1068
 msgid "Clear Weather"
 msgstr ""
 
+#. then
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1420
 msgid "Single player mode - uses the reduced strength spawns."
 msgstr ""
 
+#. else
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1423
 msgid "Two player mode - uses the full strength spawns."
 msgstr ""
 
+#. objectives
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1443
 msgid "Survive and defeat the waves of opposition."
 msgstr ""
 
+#. objective: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1445
 msgid "Defeat all waves"
 msgstr ""
 
+#. objective: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
 #, fuzzy
 msgid "Lose all your team's leaders"
 msgstr "Смърт на водачите на вашия отбор."
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1460
 msgid "Dark Forecast - a random survival scenario"
 msgstr ""
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1481
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
@@ -606,10 +669,12 @@ msgid ""
 "- WML implementation"
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1485
 msgid "So this is the accursed valley - a land ours for the taking."
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1489
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
@@ -617,24 +682,28 @@ msgid ""
 "surprises of this land."
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1493
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr ""
 
+#. message: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1530
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
 
+#. message: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1544
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
 
+#. message
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1566
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
@@ -642,10 +711,12 @@ msgid ""
 "is over."
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
 msgstr "2 играчи - Бърлогата на Онис"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 #, fuzzy
 msgid ""
@@ -655,6 +726,8 @@ msgstr ""
 "Всяко кътче от това подземно бойно поле крие опасност - карта за двама "
 "противника, където се сблъскват сила и лукавство."
 
+#. multiplayer
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
@@ -679,11 +752,13 @@ msgstr ""
 msgid " Recommended setting of 2 gold per village."
 msgstr "Препоръчителна настройка от 2 точки злато на селище."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 #, fuzzy
 msgid "2p - Fallenstar Lake"
 msgstr "2 играча - Езерото на метеорита"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 #, fuzzy
 msgid ""
@@ -693,6 +768,7 @@ msgstr ""
 "Преди много време голям метеорит паднал от небесата и оставил своя отпечатък "
 "в този иглолистен район."
 
+#. side
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
 #: data/multiplayer/scenarios/4p_Clash.cfg:19
 #: data/multiplayer/scenarios/4p_Clash.cfg:41
@@ -712,6 +788,7 @@ msgstr ""
 msgid "teamname^West"
 msgstr "Западен отбор"
 
+#. side
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:32
 #: data/multiplayer/scenarios/4p_Clash.cfg:30
 #: data/multiplayer/scenarios/4p_Clash.cfg:52
@@ -730,10 +807,12 @@ msgstr "Западен отбор"
 msgid "teamname^East"
 msgstr "Източен отбор"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
 msgstr "2 играча - Землянките"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 msgid ""
@@ -742,10 +821,12 @@ msgid ""
 msgstr ""
 "Войната превръща мирните ферми и селища в сложно разграфено бойно поле."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
 msgstr "2 играча - Островът на Рогатата Акула"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
@@ -754,10 +835,12 @@ msgstr ""
 "Играчите трябва да си пробият път през насечения терен на този малък, но "
 "доста разнообразен в топографско отношение остров."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
 msgstr "2 играча - Чернокаменната Делта"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
@@ -766,10 +849,12 @@ msgstr ""
 "Две армии се сблъскват на този хаотичен морски бряг, осеян със скрити пещери "
 "и прорязан от речни корита."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
 msgstr "2 играча - Проходът Силвърхед "
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
@@ -778,18 +863,22 @@ msgstr ""
 "Играчите трябва да преодолеят всевъзможни терени, за да постигнат победа на "
 "тази многофронтова двойна карта."
 
+#. trait
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:20
 msgid "statue"
 msgstr "статуя"
 
+#. trait
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:21
 msgid "This is a sculpture made of stone."
 msgstr "Това е каменна скулптура."
 
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:35
 msgid "2p - Sullas Ruins"
 msgstr "2 играча - Руините на Сулас"
 
+#. multiplayer: type={TYPE}
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
@@ -798,10 +887,12 @@ msgstr ""
 "Залята от морето и брулена от зимните снежни вихрушки, тази някога могъща "
 "империя се е превърнала в своя далечна сянка, изпълнена с вода, лед и руини."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Sulla"
 msgstr "Статуя на Сула"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:79
 #, fuzzy
 msgid ""
@@ -815,58 +906,71 @@ msgstr ""
 "Пламтящата Вълна, Кралица на Всепоглъщащия Пламък, Сула Изпепеляващата, Сула "
 "Гордата и Сула Праведната."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
 msgid "Statue of Lhun-dup"
 msgstr "Статуя на Лун-дап"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:83
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
 msgstr "Издялано от камък изображение на Лун-дап, Слуга на Сула."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "Statue of Ri-nzen"
 msgstr "Статуя на Ри-нцен"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:87
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
 msgstr "Издялано от камък изображение на Ри-нцен, Слуга на Сула."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
 msgid "Statue of Ten-zin"
 msgstr "Статуя на Тен-цин"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:91
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
 msgstr "Издялано от камък изображение на Тен-цин, Слуга на Сула."
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:94
 msgid "Statue of Lo-bsang"
 msgstr "Статуя на Ло-бсанг"
 
+#. unit
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Издялано от камък изображение на Ло-бсанг, Слуга на Сула."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
 #, fuzzy
 msgid "2p - The Freelands"
 msgstr "4 играча - Пустош"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
 #, fuzzy
 msgid "A duel map for super fast play."
 msgstr "Двойна карта за бърза игра."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 #, fuzzy
 msgid "2p - Weldyn Channel"
 msgstr "2 играча - Щурм"
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:4
 msgid "2p - Wesbowl"
 msgstr "2 играча - Уесбол "
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:6
 #, fuzzy
 msgid ""
@@ -882,6 +986,7 @@ msgstr ""
 "убита в рамките на тази игра, тя се връща в крайното поле на съответния "
 "играч с травма."
 
+#. multiplayer
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:11
 #, fuzzy
 msgid ""
@@ -900,55 +1005,67 @@ msgstr ""
 "Загуба:\n"
 "#Противникът вкарва повече топки в крайното ви поле, отколкото вие в неговото"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:182
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:428
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "Червеният отбелязва точка! Текущият резултат е $redscore-$bluescore"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:225
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:471
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "Синият отбелязва точка! Текущият резултат е $redscore-$bluescore"
 
+#. message: speaker=unit
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:308
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:554
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "Да подам ли топката на $passto.type ($xloc,$yloc)?"
 
+#. option: speaker=unit
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:310
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:556
 msgid "Yes!"
 msgstr "Да!"
 
+#. option: speaker=unit
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:332
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:578
 msgid "No"
 msgstr "Не"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:601
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "Синият отбор печели! Крайният резултат е $redscore-$bluescore"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:614
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "Червеният отбор печели! Крайният резултат е $redscore-$bluescore"
 
+#. message: speaker=narrator
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:627
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Равенство! Крайният резултат е $redscore-$bluescore"
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr "Три играча се сблъскват директно на това обградено с вода бойно поле."
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "3 играча - Остров на Хоратий"
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #, fuzzy
 msgid ""
@@ -958,10 +1075,12 @@ msgstr ""
 "Контролът над централния остров често е ключът към победата в тази карта "
 "от21х21 полета, за 3 играча."
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
 msgstr "3 играча - Смъртници"
 
+#. multiplayer
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 #, fuzzy
 msgid ""
@@ -971,10 +1090,12 @@ msgstr ""
 "Само една фракция ще напусне победно тази карта за трима играчи с "
 "непроницаеми граници."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
 msgstr "4 играча – Провинция Синя Вода"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 #, fuzzy
 msgid ""
@@ -988,6 +1109,7 @@ msgstr ""
 "заснежени планини на тази малка провинция, една към друга отново приближават "
 "вражески армии, местни жители почти не им обръщат внимание."
 
+#. side
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:54
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:19
@@ -1003,6 +1125,7 @@ msgstr ""
 msgid "teamname^Team 1"
 msgstr "Отбор 1"
 
+#. side
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:43
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:30
@@ -1018,30 +1141,37 @@ msgstr "Отбор 1"
 msgid "teamname^Team 2"
 msgstr "Отбор 2"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
 msgstr "4 играча – Остров на замъците "
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
 msgstr "Прескачате от замък в замък докато воювате за централния остров."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p - Clash"
 msgstr "4 играча - Сблъсък"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
 msgstr "Малка карта за 2 срещу 2."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p - Hamlets"
 msgstr "2 играчи - Землянките"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
 msgstr "4 играча - Кръстопът на Айзър"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
@@ -1054,6 +1184,7 @@ msgstr ""
 "много важни. Предвидени са отбори за играчи 1&4 срещу 2&3 (северозападен и "
 "югоизточен). Предвиден е начален капитал 75 точки злато и 20 селища."
 
+#. side
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:30
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:41
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:74
@@ -1067,6 +1198,7 @@ msgstr ""
 msgid "teamname^South-West"
 msgstr "Югозападен отбор"
 
+#. side
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:19
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:52
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:63
@@ -1078,10 +1210,12 @@ msgstr "Югозападен отбор"
 msgid "teamname^North-East"
 msgstr "Североизточен отбор"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p - King of the Hill"
 msgstr "4 играча - Крал на Хълма"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
@@ -1091,12 +1225,14 @@ msgstr ""
 "изгодно да контролирате областта около централната крепост. Може да се играе "
 "и 2 срещу 2. Има 36 селища."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr ""
 "Препоръчителна настройка 2 точки злато на селище и 150 начални точки злато."
 
+#. side
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:38
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:49
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:33
@@ -1108,6 +1244,7 @@ msgstr ""
 msgid "teamname^South-East"
 msgstr "Югоизточен отбор"
 
+#. side
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:27
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:60
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:57
@@ -1115,24 +1252,29 @@ msgstr "Югоизточен отбор"
 msgid "teamname^North-West"
 msgstr "Северозападен отбор"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 msgid "4p - Lagoon"
 msgstr "4-ма играчи - Лагуната"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid " Recommended setting of 1 gold per village."
 msgstr "Препоръчителна настройка 1 точка злато на селище."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid "Four factions contend for dominance over this watery settlement."
 msgstr "Четири фракции си съперничат за господство над това водно укрепление."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p - Loris River"
 msgstr "4 играча - Река Лорис"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
@@ -1142,22 +1284,27 @@ msgstr ""
 "срещуположните краища на картата има крепости. Предназначена за играчи 1&4 "
 "срещу 2&3. Има 28 селища."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
 msgstr "4 играча - Смъртници"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 msgid "Who will emerge from the confines of this perilous battlefield?"
 msgstr "Кой ще оцелее в пределите на това изпълнено с изпитания бойно поле?"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
 msgstr "4 играча - Пътеки на Кинжалите"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
 msgstr "Препоръчителна настройка 2 точки злато на селище, 28 селища."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
@@ -1167,10 +1314,12 @@ msgstr ""
 "изток срещу запад (1&4 срещу 2&3), но е подходяща и за всеки друг отбор или "
 "в режим отворено за всички."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
 msgstr "4 играча - Обсадните замъци"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
@@ -1180,10 +1329,12 @@ msgstr ""
 "близост до мястото, където се сливат две реки. Картата е подходяща и за 2 "
 "срещу 2 или в режим свободно за всички. Има приблизително 45 селища."
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:26
 msgid "4p - The Wilderlands"
 msgstr "4 играча - Пустош"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
@@ -1192,15 +1343,18 @@ msgstr ""
 "Огромна област на дива неприветлива пустош. Теренът й е осеян с гори, "
 "пещери, реки и руини на древни крепости."
 
+#. side
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:81
 msgid "Monsters"
 msgstr "Чудовища"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 #, fuzzy
 msgid "4p - Xanthe Chaos"
 msgstr "4 играча - Хаосът на Ксанти"
 
+#. multiplayer
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 #, fuzzy
 msgid ""
@@ -1210,11 +1364,13 @@ msgstr ""
 "Карта 24Х28 полета за 2 срещу 2 с допълнителни крепости и голяма хаотична "
 "битка в централната област, която се явява ничия земя."
 
+#. multiplayer
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 #, fuzzy
 msgid "5p - Auction-X"
 msgstr "5 играча - Наддаване"
 
+#. multiplayer
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
 #, fuzzy
 msgid ""
@@ -1230,42 +1386,51 @@ msgstr ""
 "където печели НАЙ-НИСКОТО направено предложение. Тази карта е съвсем малка, "
 "затова за останалите играчи препоръчителните точки злато са 75."
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:22
 #, fuzzy
 msgid "teamname^Northeast"
 msgstr "Североизточен отбор"
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:34
 msgid "teamname^Southeast"
 msgstr "Югоизточен отбор"
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:46
 #, fuzzy
 msgid "teamname^Southwest"
 msgstr "Югозападен отбор"
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:58
 #, fuzzy
 msgid "teamname^Northwest"
 msgstr "Северозападен отбор"
 
+#. side
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:70
 #, fuzzy
 msgid "teamname^Center"
 msgstr "Централен отбор "
 
+#. multiplayer
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
 msgstr "5 играча - Страховитата гора"
 
+#. multiplayer
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "Сред този смесен географски терен пет армии се борят за надмощие."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:5
 msgid "6p - Amohsad Caldera"
 msgstr "6 играча - Кратер Амохсад"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
@@ -1274,10 +1439,12 @@ msgstr ""
 "Само истински тактик би оцелял в това смъртоносно затворено бойно поле, "
 "където се сблъскват шест армии, хванати на тясно."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
 msgstr "6 играча - Полето на Кръстоносците"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
@@ -1288,10 +1455,12 @@ msgstr ""
 "което призраците на хиляди смели войни се носят невидими покрай планини, "
 "гори и реки."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
 msgstr "6 играча - Шестоъгълник "
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Отборна игра 2 срещу 2 или 3 срещу 3."
@@ -1326,19 +1495,23 @@ msgstr "Ход 17: Немъртви"
 msgid "Tower of Doom"
 msgstr "Съдбовна Кула"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
 msgstr "6 играча - Отборно оцеляване"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr "Сценарий, в който целта е да оцелеете, колкото може по-дълго."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 #, fuzzy
 msgid "Survive for 32 turns."
 msgstr "Трябва да оцелеете 32 хода."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 #, fuzzy
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
@@ -1346,18 +1519,22 @@ msgstr ""
 "Съвет: Ще ви е особено полезно да научите началната позиция на враговете си "
 "и техния вид."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:350
 msgid "Survive all enemy attacks."
 msgstr "Трябва да оцелеете след всички атаки на противника."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:351
 msgid "Death of your team leaders."
 msgstr "Смърт на водачите на вашия отбор."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:373
 msgid "Faery"
 msgstr ""
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:373
 #, fuzzy
 msgid ""
@@ -1369,11 +1546,13 @@ msgstr ""
 "невъзможно. Честно казано нямам идея как сте го постигнали, затова моля "
 "изпратете ми решението на roze@roze.mine.nu. Благодаря!"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
 #, fuzzy
 msgid "Death"
 msgstr "По подразбиране"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
 #, fuzzy
 msgid ""
@@ -1383,10 +1562,12 @@ msgstr ""
 "Загубихте играта, но няма страшно. Можете да опитате отново. И отново. И "
 "отново. *Муахахаха*"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:382
 msgid "Attacker"
 msgstr "Атакуващ"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:386
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:387
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:388
@@ -1397,10 +1578,12 @@ msgstr "Атакуващ"
 msgid "Defender"
 msgstr "Защитник"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
 msgstr "6 играча - Клопките на Мансиван"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:9
 #, fuzzy
 msgid ""
@@ -1414,10 +1597,12 @@ msgstr ""
 "или строят ви да бъде твърде разтеглен. Предвидени са отбори 145 срещу 236 "
 "(изток срещу запад). Началният капитал е 100 точки злато и има 33 селища."
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
 msgstr "6 играча - Залезът на Ватерло"
 
+#. multiplayer
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
@@ -1430,11 +1615,13 @@ msgstr ""
 "отбори 145 срещу 236 (север срещу юг) но и отбори с 146 или 136 играча също "
 "са интересни. Началният капитал е 150 точки злато, има 44 селища."
 
+#. multiplayer
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 #, fuzzy
 msgid "8p - Mokena Prairie"
 msgstr "8 играча - Прерията Мокийна"
 
+#. multiplayer
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 #, fuzzy
 msgid ""
@@ -1445,6 +1632,7 @@ msgstr ""
 "която изисква два отбора внимателно да координират, както атаките, така и "
 "защитата си."
 
+#. side
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
@@ -1453,6 +1641,7 @@ msgstr ""
 msgid "teamname^east"
 msgstr "Източен отбор"
 
+#. side
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
@@ -1461,10 +1650,12 @@ msgstr "Източен отбор"
 msgid "teamname^west"
 msgstr "Западен отбор"
 
+#. multiplayer
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
 msgstr "8 играча - Смъртници"
 
+#. multiplayer
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 #, fuzzy
 msgid ""
@@ -1474,11 +1665,13 @@ msgstr ""
 "На това необичайно бойно поле, където осем армии се сражават до край, ключът "
 "към победата се крие в задружните усилия и тактиката."
 
+#. multiplayer
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 #, fuzzy
 msgid "9p - Merkwuerdigliebe"
 msgstr "9 играча - Доктор Стрейнджлав"
 
+#. multiplayer
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
@@ -1491,11 +1684,14 @@ msgstr ""
 "(север срещу югоизток срещу югозапад). На играч се падат твърде малко "
 "селища, затова се препоръчват 3 точки злато на селище."
 
+#. scenario
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
 msgstr "Случайна карта"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
@@ -1505,11 +1701,14 @@ msgstr ""
 "небалансирани, но ако имате време можете да ги създавате отново и отново, "
 "докато намерите някоя добра."
 
+#. scenario
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
 msgstr "Случайна карта (пустиня)"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
 msgid ""
 "A random map with sand as the primary terrain. Note: random maps are often "
@@ -1520,11 +1719,14 @@ msgstr ""
 "са често небалансирани, но ако имате време можете да ги създавате отново и "
 "отново, докато намерите някоя добра."
 
+#. scenario
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
 msgstr "Случайна карта (Тресавище)"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
 msgid ""
 "A random map with swamp as the primary terrain. Note: random maps are often "
@@ -1535,11 +1737,14 @@ msgstr ""
 "са често небалансирани, но ако имате време можете да ги създавате отново и "
 "отново, докато намерите някоя добра."
 
+#. scenario
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
 msgstr "Случайна карта (Зима)"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
 msgid ""
 "A random map set in the break between spring and winter, mainly with snowy "
@@ -1551,11 +1756,13 @@ msgstr ""
 "но ако имате време можете да ги създавате отново и отново, докато намерите "
 "някоя добра."
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 #, fuzzy
 msgid "Wesnoth Benchmark: AI"
 msgstr "Уеснот показател : Изкуствен Интелект"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
 #, fuzzy
 msgid ""
@@ -1565,10 +1772,12 @@ msgstr ""
 "Показател за уеснот, използвайте --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
 msgstr "Уеснот показател: Местене на изгледа"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
 #, fuzzy
 msgid ""
@@ -1578,11 +1787,13 @@ msgstr ""
 "Показател за уеснот, използвайте --no-delay --multiplayer --"
 "scenario=wesbench_scroll --exit-at-end."
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 #, fuzzy
 msgid "Wesnoth Benchmark: Walking through Shroud"
 msgstr "Уеснот показател: Преминаване през скрит терен"
 
+#. multiplayer
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"

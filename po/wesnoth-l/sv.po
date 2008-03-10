@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:45+0100\n"
+"POT-Creation-Date: 2008-03-10 11:40+0100\n"
 "PO-Revision-Date: 2007-12-11 22:43+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -14,35 +14,44 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
+#. campaign
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr "Frihet"
 
+#. campaign
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Outlaw"
 msgstr "Fredlös"
 
+#. campaign
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Easy)"
 msgstr "(Lätt)"
 
+#. campaign
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
 msgstr "(Svårt)"
 
+#. unit
+#. campaign
 #: data/campaigns/Liberty/units/Villagers.cfg:15
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Peasant"
 msgstr "Bonde"
 
+#. campaign
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Normal)"
 msgstr "(Normalsvårt)"
 
+#. campaign
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
 msgstr "Flykting"
 
+#. campaign
 #: data/campaigns/Liberty/_main.cfg:24
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
@@ -59,34 +68,42 @@ msgstr ""
 "\n"
 "(Medelsvår nivå, 9 scenarier)"
 
+#. about
 #: data/campaigns/Liberty/_main.cfg:27
 msgid "Campaign Design"
 msgstr "Kampanjdesign"
 
+#. about
 #: data/campaigns/Liberty/_main.cfg:33
 msgid "Prose-doctoring and preparation for mainline"
 msgstr "Prosa och beredning"
 
+#. about
 #: data/campaigns/Liberty/_main.cfg:39
 msgid "Campaign Maintenance"
 msgstr "Kampanjunderhåll"
 
+#. about
 #: data/campaigns/Liberty/_main.cfg:50
 msgid "Artwork and Graphics Design"
 msgstr "Grafik"
 
+#. about
 #: data/campaigns/Liberty/_main.cfg:67
 msgid "Translators"
 msgstr "Översättare"
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:5
 msgid "The Raid"
 msgstr "Räden"
 
+#. label
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:16
 msgid "Dallben"
 msgstr ""
 
+#. part
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:21
 msgid ""
 "In the Era of Turmoil, during the reign of King Garard II, the border towns "
@@ -99,6 +116,7 @@ msgstr ""
 "med kungens styre. Upptagen med de stora krigen som han var, kunde kungen "
 "inte avvara nog med trupper för att skydda gränsområdena."
 
+#. part
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:26
 msgid ""
 "The hardy people of these marches learned self-reliance and survival skills "
@@ -110,6 +128,7 @@ msgstr ""
 "plundringar. De etablerade sina egna handelsrutter och ingick avtal om att "
 "skydda varandra."
 
+#. part
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:30
 msgid ""
 "Although not permitted to train with proper military weapons, these woodsmen "
@@ -120,6 +139,7 @@ msgstr ""
 "var de mycket bekanta med sitt hemlands skogar och träsk, och blev mycket "
 "skickliga med sina enkla slungor och klubbor."
 
+#. part
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:34
 msgid ""
 "After the betrayal of the King by Queen Asheviere, the new regent of Wesnoth "
@@ -131,6 +151,7 @@ msgstr ""
 "över Wesnoth för att sätta skräck i provinsernas lokala styren och säkra "
 "sitt regentskap."
 
+#. part
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:38
 msgid ""
 "The people of Annuvin were unwilling to relinquish their hard-earned self-"
@@ -139,23 +160,28 @@ msgstr ""
 "Annuvins befolkning gav inte gärna upp det självstyre de kämpat så hårt för, "
 "i synnerhet inte till denna pretendent..."
 
+#. side: type=Bandit_Peasant, description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:34
 msgid "Baldras"
 msgstr "Baldras"
 
+#. side: type=Goblin Pillager, description=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:75
 msgid "Fal Khag"
 msgstr "Fal Khag"
 
+#. objective: condition=win
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:102
 msgid "Defeat all of the Goblin marauders"
 msgstr "Besegra alla vättemarodörer"
 
+#. objective: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:106
 msgid "Goblins reach the village of Dallben"
 msgstr "Vättarna når byn Dallben"
 
+#. objective: condition=lose
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:282
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:125
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:153
@@ -167,6 +193,7 @@ msgstr "Vättarna når byn Dallben"
 msgid "Death of Baldras"
 msgstr "Baldras dör"
 
+#. objective: condition=lose
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:129
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:157
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
@@ -177,6 +204,7 @@ msgstr "Baldras dör"
 msgid "Death of Harper"
 msgstr "Harper dör"
 
+#. objective: condition=lose
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:286
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:133
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:161
@@ -188,26 +216,31 @@ msgstr "Harper dör"
 msgid "Turns run out"
 msgstr "Dragen tar slut"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:151
 msgid "Gatrakh"
 msgstr "Gatrakh"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:152
 msgid "Thurg"
 msgstr "Thurg"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:155
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:160
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:165
 msgid "Krung"
 msgstr "Krung"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:156
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:161
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:166
 msgid "Gorokh"
 msgstr "Gorokh"
 
+#. message: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:190
 msgid ""
 "I long to burn human cities, but until our great chieftains provide us with "
@@ -218,6 +251,7 @@ msgstr ""
 "stora hövdingar förser oss med tillräckligt med trupper så skall vi mata "
 "våra vargar med dessa bybor och låta våra klingor dricka deras blod."
 
+#. message: description=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:194
 msgid ""
 "Ride, you worms, I want to finish our raid before the hunting party returns "
@@ -226,42 +260,52 @@ msgstr ""
 "Rid, era maskar! Räden skall vara över innan jägarna hinner tillbaka till "
 "människobyn."
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:203
 msgid "Jalak"
 msgstr "Jalak"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:204
 msgid "Delurin"
 msgstr "Delurin"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:205
 msgid "Red"
 msgstr "Red"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:206
 msgid "Ordo"
 msgstr "Ordo"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:207
 msgid "Novus"
 msgstr "Novus"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:208
 msgid "Teneor"
 msgstr "Teneor"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:209
 msgid "Kembe"
 msgstr "Kembe"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:210
 msgid "Treagh"
 msgstr "Treagh"
 
+#. unit: type=Footpad_Peasant, description=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:217
 msgid "Harper"
 msgstr "Harper"
 
+#. message: description=Red
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:231
 msgid ""
 "Look, goblin riders approach! You were right, they were going to raid "
@@ -270,6 +314,7 @@ msgstr ""
 "Titta, vätteryttare närmar sig! Du hade rätt! De tänkte anfalla Dallben när "
 "vi var borta."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:235
 msgid ""
 "We must stop them before they reach the village. Damn the crown, they have "
@@ -278,6 +323,7 @@ msgstr ""
 "Vi måste stoppa dem innan de når byn. Förbannad vare kronan! De har för "
 "länge sedan glömt bort oss härute."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:239
 msgid ""
 "Goblins do not do well without their leaders. If we can kill this one, it "
@@ -286,6 +332,7 @@ msgstr ""
 "Vättar är inte så modiga utan sin ledare. Om vi kan döda den här, så kanske "
 "de andra kommer på bättre tankar."
 
+#. message: description=Kembe
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:243
 msgid ""
 "That goblin leader is heading full-speed straight for Dallben. We'll need to "
@@ -294,6 +341,7 @@ msgstr ""
 "Vättarnas ledare är på väg mot Dallben i full fart. Vi måste hinna ikapp "
 "honom om vi skall ha en chans att stoppa dem."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:247
 msgid ""
 "Do it. Try to hold them back until us old-timers can get there and finish "
@@ -304,6 +352,7 @@ msgstr ""
 "ta kål på dem. Jag har en känsla av att om ni lyckas distrahera ledaren så "
 "kommer resten att tappa modet."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:251
 msgid ""
 "And Harper... don't get yourself killed. I'm responsible for you now that "
@@ -314,10 +363,12 @@ msgstr ""
 "din far är borta, och jag kommer inte att vanhedra hans minne genom att "
 "bryta mitt löfte att hålla dig i säkerhet."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:255
 msgid "...I know... All right now, let's stop these goblins!"
 msgstr "Jag vet... Kom igen nu! Nu sätter vi stopp för vättarna!"
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:275
 msgid ""
 "We are barely able to survive these orc raids. We lost two men last week, "
@@ -326,6 +377,7 @@ msgstr ""
 "Vi klarar knappt de här orchräderna. Vi förlorade två män förra veckan, ännu "
 "fler idag... Och ändå gör Weldyn ingenting!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:279
 msgid ""
 "The King stopped sending patrols out here once the war started. Once that "
@@ -336,16 +388,19 @@ msgstr ""
 "oss. Vi är medborgare i Wesnoth, och så länge hennes banér hålls högt så "
 "skall vi göra motstånd mot horden."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:283
 msgid "The banner will fly over a ghost town if help does not come soon."
 msgstr "Banéret kommer att vaja över en spökstad om inte hjälpen kommer snart."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:308
 msgid ""
 "They're getting closer to our village! What about the town guards, can they "
 "help us?"
 msgstr "De kommer närmare vår by! Kan stadsvakten hjälpa oss?"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:312
 msgid ""
 "They'll come out when they see those riders, or us, approaching, but there "
@@ -355,37 +410,45 @@ msgstr ""
 "De kommer när de ser ryttarna eller oss, men de är inte många... Jag skulle "
 "inte räkna med att de kan försvara byn särskilt länge."
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:325
 msgid "Remald"
 msgstr "Remald"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:326
 msgid "Wolmas"
 msgstr "Wolmas"
 
+#. event
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:331
 msgid "Jasken"
 msgstr "Jasken"
 
+#. message: description=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:338
 msgid ""
 "What's happening here? Why are you running like mad, $unit.user_description|?"
 msgstr ""
 "Vad händer här? Varför far du fram som en tokig, $unit.user_description|?"
 
+#. message: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
 msgid "Goblin riders on the hunt. We must not let any of them to the village!"
 msgstr ""
 "Vätteryttare är på jakt. Vi får inte låta någon av dem nå fram till byn!"
 
+#. message: description=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:349
 msgid "Look! Goblin riders are on the hunt - and heading right for Dallben!"
 msgstr "Titta! Vargryttare å färde - och de är på väg rakt mot Dallben!"
 
+#. message: description=Remald
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:353
 msgid "Halt!"
 msgstr "Halt!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:371
 msgid ""
 "The goblins reached the village! There will surely be nothing left when they "
@@ -394,26 +457,32 @@ msgstr ""
 "Vättarna har nått byn! Det kommer inte att finnas något kvar när de är "
 "färdiga med den!"
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:5
 msgid "Civil Disobedience"
 msgstr "Civil olydnad"
 
+#. side: type=Cavalier, description=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:49
 msgid "Tarwen"
 msgstr "Tarwen"
 
+#. objective: condition=win
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:78
 msgid "Kill the Wesnoth army captain, Tarwen"
 msgstr "Döda Tarwen, wesnotharméns kapten"
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:125
 msgid "Look, riders approach."
 msgstr "Titta, det kommer ryttare."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:129
 msgid "Stand fast, nephew."
 msgstr "Håll din position, brorson."
 
+#. message: description=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:142
 msgid ""
 "By order of the Queen, the magistrate of this town is ordered to travel with "
@@ -422,10 +491,12 @@ msgstr ""
 "På drottningens order skall er lokala fredsdomare följa med oss till "
 "Elensefar för prövning."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:146
 msgid "Garard is the King of Wesnoth. We are ruled by no queen."
 msgstr "Garard är Wesnoths kung. Vi styrs inte av någon drottning."
 
+#. message: description=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:150
 msgid ""
 "Insolent peasants, you will kneel before your betters! Asheviere is the "
@@ -437,14 +508,17 @@ msgstr ""
 "drottning. Kungen föll för tre veckor sedan vid Abez. Nog talat. Er "
 "fredsdomare följer med oss, död eller levande."
 
+#. message: description=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:184
 msgid "Guard the gate."
 msgstr "Vakta porten."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:195
 msgid "Harper, get out of here. This is no battle for you."
 msgstr "Harper, försvinn härifrån. Det här är ingen strid för dig."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:200
 msgid ""
 "I am the magistrate of Dallben, and it is YOU who will be leaving Dallben, "
@@ -453,14 +527,17 @@ msgstr ""
 "Jag är Dallbens fredsdomare. Det är NI som kommer att lämna Dallben, döda "
 "eller levande."
 
+#. message: description=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:215
 msgid "Get back, you cur!"
 msgstr "Tillbaka, din byracka!"
 
+#. message: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:229
 msgid "Get out of my village!"
 msgstr "Ut ur min by!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:238
 msgid ""
 "Our lives were hard enough when we were beneath the attention of the Crown. "
@@ -469,10 +546,12 @@ msgstr ""
 "Vi hade det inte lätt när vi ignorerades av kronan, men jag är rädd att det "
 "kommer det att bli etter värre nu."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:243
 msgid "We must tell the people of Delwyn about this."
 msgstr "Vi måste underrätta Delwyn om detta."
 
+#. message: role=Advisor
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:256
 msgid ""
 "That is true. We have always flown to their aid, and they to ours. This is "
@@ -481,6 +560,7 @@ msgstr ""
 "Sant. Vi har alltid hjälpt dem och de oss. Det här är något vi borde möta "
 "tillsammans."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:261
 msgid ""
 "Very well. We will go to Delwyn and share counsel with them. I never thought "
@@ -492,6 +572,7 @@ msgstr ""
 "Wesnoth skulle falla i mörker. Nu hotar inte bara orcherna vårt land. Det är "
 "något ondskefullt i görningen med drottningens övertagande av makten."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:266
 msgid ""
 "Today we may no longer be citizens of Wesnoth. I wish it could be otherwise, "
@@ -500,35 +581,43 @@ msgstr ""
 "Idag kan vi inte längre vara medborgare i Wesnoth. Jag önskar att det vore "
 "annorlunda, men nu är vi fredlösa."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:315
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "Åh nej! Vi var för långsamma! De har återvänt med förstärkningar..."
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:5
 msgid "A Strategy of Hope"
 msgstr "En hoppets strategi"
 
+#. side: type=Highwayman_Peasant, description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:42
 msgid "Relnan"
 msgstr "Relnan"
 
+#. side: type=Orcish Warrior
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:67
 msgid "Urk Delek"
 msgstr "Urk Delek"
 
+#. side: type=Saurian Oracle, description=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
 msgid "Thhsthss"
 msgstr "Thhsthss"
 
+#. objective: condition=win
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:123
 msgid "Defeat both enemy leaders"
 msgstr "Besegra båda fiendeledarna"
 
+#. objective: condition=lose
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:135
 msgid "Death of Relnan"
 msgstr "Relnan dör"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:163
 msgid ""
 "Relnan, thank you for welcoming our messenger and agreeing to meet with us. "
@@ -539,6 +628,7 @@ msgstr ""
 "oss. Under dina många år som Delwyns fredsdomare har jag aldrig sett att "
 "ditt omdöme fallera."
 
+#. message: description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:167
 msgid ""
 "It has been a long time, old friend. Your news worries us. Yet, there is no "
@@ -548,6 +638,7 @@ msgstr ""
 "har aldrig funnits några problem som vi inte har kunnat lösa här på vår "
 "hemliga mötesplats."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:171
 msgid ""
 "You do not understand. We attacked a Wesnoth army patrol. Not only that, the "
@@ -558,6 +649,7 @@ msgstr ""
 "de hade en ny ledare, en jag aldrig sett i Annuvin förut. Aldrig har någon "
 "så hjärtlös och grym blivit utskickad hit som patrullkapten."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:175
 msgid ""
 "Had they taken my uncle, they would have surely shown up in Delwyn today "
@@ -566,6 +658,7 @@ msgstr ""
 "Om de hade tagit min farbror, så skulle de säkert dykt upp i Delwyn idag med "
 "samma ultimatum. Som det är nu så lyckades flera ryttare fly."
 
+#. message: description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:179
 msgid ""
 "Well, it won't be long until they report back to the local garrison with the "
@@ -574,10 +667,12 @@ msgstr ""
 "Nåväl, det dröjer inte länge innan de rapporterar tillbaka till den lokala "
 "garnisonen om ert möte."
 
+#. message: description=Advisor
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:183
 msgid "Then they'll be back in force."
 msgstr "Då kommer de tillbaka med en stor styrka."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:187
 msgid ""
 "An offense to decency, this is! Since when has Wesnoth been ruled by fear "
@@ -588,6 +683,7 @@ msgstr ""
 "borde rådgöra med furst Maddock av Elensefar. Vi har känt honom som en "
 "redbar och ädel man i åratal."
 
+#. message: description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:191
 msgid ""
 "I agree. But, Baldras, what will you tell him? We know something has been "
@@ -600,6 +696,7 @@ msgstr ""
 "och inkompetens. Men när det är bönder som far illa av det, kanske det inte "
 "är så uppenbart för adeln att något är fel."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:195
 msgid ""
 "We need evidence. Hard evidence...but wait, are those orcish war drums I "
@@ -608,6 +705,7 @@ msgstr ""
 "Vi måste ha bevis. Ordentliga bevis... Men vänta, är det där orchernas "
 "krigstrummor jag hör?"
 
+#. message: description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:199
 msgid ""
 "I think they are, old friend. And that rank smell on the wind tells another "
@@ -616,20 +714,24 @@ msgstr ""
 "Jag tror det, gamle väl. Och den där lukten i vinden säger att ödlefolket är "
 "i antågande. Till vapen!"
 
+#. message
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:204
 msgid ""
 "By the sound of the wolves, the scent trail of Fal Khag's killers ends here."
 msgstr "På vargarna låter det som att spåren av Fal Khags krigare slutar här."
 
+#. message
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:209
 msgid "Fal Khag is nothing to usss, orc. You promissed uss gold. Bright gold."
 msgstr ""
 "Fal Khag betyder inget för osss, orch. Ni lovade osss guld. Skinande guld."
 
+#. message
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:213
 msgid "You will get gold. And our wolves will get meat."
 msgstr "Ni skall få guld. Och era vargar skall få kött."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:225
 msgid ""
 "Something is very wrong here. Those orcs were carrying weapons with Army "
@@ -637,10 +739,12 @@ msgid ""
 msgstr ""
 "Något är verkligen fel här. De där orcherna bär vapen med arméns tecken."
 
+#. message: description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:229
 msgid "Aye. And the gold in their pouches looked new from the mint."
 msgstr "Sannerligen. Och guldet i deras pungar såg nytt ut. "
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:233
 msgid ""
 "Can the darkest rumors be true, then? Does the Kingdom...does Queen "
@@ -649,6 +753,7 @@ msgstr ""
 "Kan våra värsta farhågor vara sanna, då? Skickar Wesnoth... Skickar "
 "drottning Asheviere orcher mot sitt eget folk?"
 
+#. message: description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:237
 msgid ""
 "I think your mission to Lord Maddock just became more urgent than we knew, "
@@ -659,6 +764,7 @@ msgstr ""
 "trängande, Baldras. Jag måste stanna för att se till försvaret av Delwyn och "
 "Dallben, men du måste skynda till Elensefar med all hast."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:253
 msgid ""
 "We have tarried here for far too long... there is no way we can reach "
@@ -669,38 +775,47 @@ msgstr ""
 "Elensefar och återvända med hjälp innan wesnotharmén förstör våra hem. Till "
 "reträtt!"
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:5
 msgid "Unlawful Orders"
 msgstr "Olagliga order"
 
+#. label
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:16
 msgid "Elensefar"
 msgstr ""
 
+#. label
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:21
 msgid "Port of Elensefar"
 msgstr ""
 
+#. side: type=General, description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:52
 msgid "Lord Maddock"
 msgstr "Furst Maddock"
 
+#. side: type=General, description=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:72
 msgid "Kestrel"
 msgstr "Kestrel"
 
+#. objective: condition=win
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:99
 msgid "Defeat the enemy general"
 msgstr "Besegra fiendegeneralen"
 
+#. objective: condition=lose
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:111
 msgid "Death of Maddock"
 msgstr "Maddock dör"
 
+#. unit: type=Lieutenant, description=Rothel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:134
 msgid "Rothel"
 msgstr "Rothel"
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:184
 msgid ""
 "Baldras, your trip here was not wise. The Queen's patrols have been visiting "
@@ -711,6 +826,7 @@ msgstr ""
 "lokala byarna och fört hit de byäldste. De som har svär trohet till "
 "drottningen får återvända hem, de andra..."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:188
 msgid ""
 "...are dispatched on the spot. I know the price of dissent. But what of you?"
@@ -718,6 +834,7 @@ msgstr ""
 "...blir avrättade på platsen! Jag vet vad det betyder att vägra. Men hur är "
 "det med er?"
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:192
 msgid ""
 "Well, they do not come within the walls of my city. They are actually camped "
@@ -730,10 +847,12 @@ msgstr ""
 "snart är tid för mig att svära trohetseden, men jag har ingen press på mig. "
 "De är rädda att jag kommer att vägra."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:196
 msgid "Will you?"
 msgstr "Kommer du göra det?"
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:200
 msgid ""
 "Yes. The Queen ascended to the throne through the vilest of treachery. "
@@ -746,6 +865,7 @@ msgstr ""
 "finns det en tillräcklig styrka här för att få drottningens män att tänka "
 "sig för mer än en gång innan de stormar Elensefar."
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:204
 msgid ""
 "We have an uneasy peace until they are done with the smaller villages and "
@@ -758,6 +878,7 @@ msgstr ""
 "uråldrigt, men jag är inte så naiv att jag litar på det fullt ut, inte i "
 "dessa onda tider."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:208
 msgid ""
 "What can we do then? We have brought with us many from Annuvin province who "
@@ -768,6 +889,7 @@ msgstr ""
 "villiga att slåss, men våra familjer är fortfarande kvar hemma. De kommer "
 "inte att kunna hålla ut länge om Drottningens patruller återvänder."
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:212
 msgid ""
 "I am unwilling to start a civil war. I believe the Queen will remain "
@@ -780,6 +902,7 @@ msgstr ""
 "hotet från nordborna. Vi är ett problem som hon kommer att ta itu med när "
 "hon får tid."
 
+#. message: description=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:216
 msgid ""
 "A foolish miscalculation, Lord Maddock. These men with which you consort are "
@@ -792,10 +915,12 @@ msgstr ""
 "Vi skall döda dem och sedan kommer vi få se dig svära trohetseden till "
 "drottning Asheviere."
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:220
 msgid "Men, to arms! The defense of Elensefar has begun!"
 msgstr "Mannar, till vapen! Vi måste beskydda Elensefar!"
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:239
 msgid ""
 "As the sun set, a horrific change began to take place to the human "
@@ -804,6 +929,7 @@ msgstr ""
 "När solen sjönk under horisonten så skedde en gastkramande förvandling av de "
 "mänskliga fiender som stod mot Baldras och hans allierade..."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:432
 msgid ""
 "I cannot believe what my eyes are seeing! The flesh runs from their bones... "
@@ -814,6 +940,7 @@ msgstr ""
 "inte mänskliga krigare vi slåss mot. Det är onda andar som har maskerat sig "
 "som människor!"
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:443
 msgid ""
 "Their human aspect is returning! This is an evil manner of sorcery we face, "
@@ -822,10 +949,12 @@ msgstr ""
 "Deras mänsklighet återkommer! Det är en ondskefull sorts magi vi möter, men "
 "en som vi ännu kan besegra. ANFALL!"
 
+#. message: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:457
 msgid "Who are you? What are you?"
 msgstr "Vem är du? Vad är du?"
 
+#. message: description=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:461
 msgid ""
 "We are accursed. We were once under the command of Prince Eldred, the King's "
@@ -838,10 +967,12 @@ msgstr ""
 "existens. Vi vet inte vem eller vad som lade förbannelsen över oss, men vår "
 "död var blott början på den bot vi är dömda att betala."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:472
 msgid "Lord Maddock, now that we are victorious, will you help us?"
 msgstr "Furst Maddock, nu när vi har vunnit, kommer du att hjälpa oss?"
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:476
 msgid ""
 "I will not. Unless you want me to round up the city's thieves to fight for "
@@ -852,10 +983,12 @@ msgstr ""
 "för dig så har jag inte trupper att avvara. Men jag är inte den enda ledaren "
 "i den här delen av Wesnoth."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:480
 msgid "I don't understand. There are no other noble lords in this area."
 msgstr "Jag förstår inte. Det finns inte några andra adelsmän i trakterna."
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:484
 msgid ""
 "Southeast of here there is a town, and there you may find assistance of the "
@@ -864,6 +997,7 @@ msgstr ""
 "Sydöst härifrån finns det en stad där kan du hitta stöd som jag inte har "
 "möjlighet att ge dig."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:488
 msgid ""
 "Wish us well. If we are to resist the Wesnoth army a second time, we're "
@@ -872,6 +1006,7 @@ msgstr ""
 "Önska oss lycka till. Om vi skall lyckas hålla Wesnoths armé tillbaka en "
 "andra gång så behöver vi mer än klubbor och slungor mot deras stål."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:503
 msgid ""
 "Look, more riders come from the southeast. We cannot survive another "
@@ -880,26 +1015,32 @@ msgstr ""
 "Se, det kommer fler ryttare från sydöst. Vi har ingen möjlighet att motstå "
 "ytterligare en attack. Det är ute med oss!"
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:5
 msgid "Hide and Seek"
 msgstr "Kurragömma"
 
+#. time
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:29
 msgid "Midnight"
 msgstr "Midnatt"
 
+#. side: type=Master Bowman, description=Quentin
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:54
 msgid "Quentin"
 msgstr "Quentin"
 
+#. side: type=Rogue, description=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:88
 msgid "Hans"
 msgstr "Hans"
 
+#. objective: condition=win
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:121
 msgid "Take Baldras to meet the leader of the insurgency"
 msgstr "För Baldras till upprorsledaren"
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:443
 msgid ""
 "Relentlessly pursued by riders patrolling the road to Elensefar, Baldras and "
@@ -910,6 +1051,7 @@ msgstr ""
 "Elensefar, så färdades Baldras och hans mannar längs med den stora flodens "
 "sumpiga flodbanker till staden Carcyn."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:448
 msgid ""
 "They hid until nightfall, then crept out to find the help Lord Maddock "
@@ -918,6 +1060,7 @@ msgstr ""
 "De gömde sig tills natten föll, och kröp sedan fram för att hitta den hjälp "
 "som furst Maddock hade antytt fanns här."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:496
 msgid ""
 "I'm not sure where we're supposed to go now. If we go into town we can start "
@@ -926,14 +1069,17 @@ msgstr ""
 "Jag är inte säker på vart vi skall nu. Om vi tar oss in i staden så kan vi "
 "börja fråga efter information."
 
+#. unit: type=Thief, description=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:512
 msgid "Link"
 msgstr "Link"
 
+#. message: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:517
 msgid "Who are you?"
 msgstr "Vem är du?"
 
+#. message: speaker=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:521
 msgid ""
 "I have come to find you. You must make it through the city without being "
@@ -944,10 +1090,12 @@ msgstr ""
 "vanligtvis ute letar efter min sort, men för tre dagar sen så anlände det "
 "ett kompani tungt infanteri och tog över patrulltjänstgöringen."
 
+#. message: speaker=Harper
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:525
 msgid "They're looking for us."
 msgstr "De letar efter oss."
 
+#. message: speaker=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:529
 msgid ""
 "Well, good thing I found you first. Now hurry, you must make it past the "
@@ -960,6 +1108,7 @@ msgstr ""
 "titta efter vägskylten. Min bror Hans väntar på er där för att leda er till "
 "vår ledare. Undvik soldaterna om ni kan."
 
+#. message: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:567
 msgid ""
 "Looks like these guards hold stationary posts, so if we're careful enough we "
@@ -968,6 +1117,7 @@ msgstr ""
 "Det verkar som att vakterna håller vissa poster, så om vi är försiktiga så "
 "borde vi kunna ta oss förbi dem osedda."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:571
 msgid ""
 "Harper, you younger and faster folks need to be our eyes now. Scout ahead "
@@ -978,14 +1128,17 @@ msgstr ""
 "kan hitta en väg för att komma förbi vakterna, men se till att de inte ser "
 "er, för annars är vi alla i knipa..."
 
+#. message: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:656
 msgid "They've seen us, RUN!"
 msgstr "De har sett oss! Spring!"
 
+#. message: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:673
 msgid "Fall back, quickly! Maybe we can yet lose them!"
 msgstr "Tillbaka, snabbt! Kanske kan vi skaka av oss dem!"
 
+#. message: speaker=unit
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:689
 msgid ""
 "Gentlemen, please come this way and follow the path into the forest. Our "
@@ -994,6 +1147,7 @@ msgstr ""
 "Mina herrar, följ efter mig längs med stigen in i skogen. Vår ledare väntar "
 "otåligt på att få träffa er."
 
+#. message: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:693
 msgid ""
 "As soon as we escape the Wesnoth death squad, we will be happy to oblige."
@@ -1001,6 +1155,7 @@ msgstr ""
 "Så snart vi har skakat av oss dödspatrullen från Wesnoth så följer vi gärna "
 "med."
 
+#. message: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:697
 msgid ""
 "I haven't run this much in years. If you were to ask me to infiltrate a "
@@ -1011,11 +1166,13 @@ msgstr ""
 "ville infiltrera en tungt vaktad stad med hjälp av enbart nattens mörker och "
 "min listighet så skulle jag ha trott att du var galen."
 
+#. message: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:701
 msgid "As it turns out, I'm the crazy one. Let's finish this folly."
 msgstr ""
 "Som det verkar nu så är jag den sinnessvaga. Låt oss avsluta galenskaperna."
 
+#. message: description=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:726
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
@@ -1024,15 +1181,18 @@ msgstr ""
 "Du kan följa med om du vill, men ledaren är bara intresserad av att tala med "
 "Baldras."
 
+#. message: speaker=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:746
 msgid "Fly, and we may yet evade them in the Gray Woods."
 msgstr ""
 "Flyg som vinden! Vi har fortfarande chans att skaka av oss dem i Grå skogen!"
 
+#. message: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:751
 msgid "Lead the way..."
 msgstr "Visa vägen..."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:774
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:434
 msgid ""
@@ -1044,35 +1204,43 @@ msgstr ""
 "återvänt till Dallben vid det här laget. Vårt uppdrag är inte slutfört, men "
 "vi måste återvända för en sista självmordsstrid."
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:5
 msgid "The Gray Woods"
 msgstr "Grå skogen"
 
+#. side: type=Shadow Lord, description=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:184
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:65
 msgid "Helicrom"
 msgstr "Helicrom"
 
+#. side: type=Necromancer, description=Mal-Jarrof
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:99
 msgid "Mal-Jarrof"
 msgstr "Mal-Jarrof"
 
+#. side: type=Necromancer, description=Mal-Jerod
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:113
 msgid "Mal-Jerod"
 msgstr "Mal-Jerod"
 
+#. side: type=Lich, description=Sel-Mana
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:127
 msgid "Sel-Mana"
 msgstr "Sel-Mana"
 
+#. objective: condition=win
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:149
 msgid "Defeat the lich and its minions"
 msgstr "Besegra häxmästaren och hans hejdukar"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:229
 msgid "The leader, I presume."
 msgstr "Ledaren, förmodar jag."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:233
 msgid ""
 "I am Helicrom, and you should not be so glib. I control dangerous men. My "
@@ -1085,10 +1253,12 @@ msgstr ""
 "sover, eller anfalla en karavan. Måhända att det inte är speciellt ädelt, "
 "men vår verksamhet kräver mycket guld."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:237
 msgid "Your pursuits?"
 msgstr "Er verksamhet?"
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:241
 msgid ""
 "The former King's magic ministry kept a tight control on the training and "
@@ -1101,12 +1271,14 @@ msgstr ""
 "vågade...avvika från läroplanen. Vi är fredlösa för att vi söker bemästra "
 "skuggmagi. Vår tystnad och beskydd är inte billigt."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:245
 msgid "I have heard of you. Necromancers. Barely-human scum, I say."
 msgstr ""
 "Jag har hört talas om er. Nekromanter. Knappt mänskligt drägg, skulle jag "
 "vilja påstå."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:249
 msgid ""
 "Wrong. Necromancers become slaves to their lich masters and eventually lose "
@@ -1121,10 +1293,12 @@ msgstr ""
 "hemligheten om balans mellan ljusets och mörkrets vägar. Vi dansar mellan "
 "båda vägarna, och tillhör varken den ena eller den andra världen."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:253
 msgid "I...see, I think. Why do you want to help us?"
 msgstr "Jag... förstår, tror jag. Varför vill ni hjälpa oss?"
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:257
 msgid ""
 "We don't. You have sought us out. But, I do know of your situation and am "
@@ -1135,6 +1309,7 @@ msgstr ""
 "villig att hjälpa till. Varje försvagning av Wesnoths tron, vare sig en "
 "drottning eller kung sitter på den, är till vår fördel."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:261
 msgid ""
 "Carcyn is always foggy as of late because these woods have recently become "
@@ -1145,6 +1320,7 @@ msgstr ""
 "har blivit hem åt en häxmästare och hans lakejer. Det kan vara så att det är "
 "våra experiment som har väckt honom från hans sömn... Men vi vet inte säkert."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:265
 msgid ""
 "So now you need to defend your rear as well as your front... I see your "
@@ -1155,15 +1331,18 @@ msgstr ""
 "Mina mannar kommer att rensa ut det här området om ni kan hjälpa oss att "
 "försvara vårt hemland."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:290
 msgid "Finally that creature is dead, yet its foolish minions resist."
 msgstr ""
 "Äntligen är den där varelsen död, men hans dåraktiga hejdukar står emot."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:297
 msgid "The lich is destroyed and its minions dead."
 msgstr "Häxmästaren och hans hejdukar är döda."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:314
 msgid ""
 "The defeat of the evil lich infesting the Gray Woods was a bittersweet "
@@ -1173,6 +1352,7 @@ msgstr ""
 "Att nedgöra häxmästarna som intagit de Grå skogarna var en bitterljuv seger. "
 "I och med Helicroms död har skuggmagins gille blivit oroligt."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:319
 msgid ""
 "The remaining members were very grateful and offered Baldras a sizeable sum "
@@ -1183,6 +1363,7 @@ msgstr ""
 "mängd guld för hans hjälp. Det var inte den hjälp han hade hoppats på, men "
 "han visste att han måste nöja sig med detta inför den stundande konflikten."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:338
 msgid ""
 "With the undead driven out, we may live here in relative peace and pursue "
@@ -1191,6 +1372,7 @@ msgstr ""
 "Nu när de vandöda är utdrivna så kan vi leva i relativ fred och fördjupa oss "
 "i våra studier. För detta är jag tacksam, Baldras."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:342
 msgid ""
 "Studies? Peace? You mean to continue feeding on the lawful citizens of "
@@ -1199,6 +1381,7 @@ msgstr ""
 "Studier? Fred? Du menar att ni skall fortsätta leva av de laglydiga "
 "medborgarna i Wesnoth. Det kommer inte att vara fred för dem."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:346
 msgid ""
 "No one here is in a position to be dispensing moral judgments. Regardless, "
@@ -1209,6 +1392,7 @@ msgstr ""
 "helst så går det inte att överskatta den hjälp som ni har gett oss här idag. "
 "Jag kommer att hjälpa er efter bästa förmåga."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:350
 msgid ""
 "I was planning on giving you gold. Any good army is well financed, and with "
@@ -1217,6 +1401,7 @@ msgstr ""
 "Jag hade planerat att ge er guld. Varje bra armé är välfinansierad och nu "
 "när häxmästaren är borta så kan vi avvara det."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:354
 msgid ""
 "But, I think it would help you more if I lent you some of my men to join you "
@@ -1227,6 +1412,7 @@ msgstr ""
 "mina män följa med på era äventyr. Drottningen har börjat skicka ut magiker "
 "hit och mina män längtar efter att få ge igen."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:358
 msgid ""
 "On the other hand, if I keep the full force of my organization here, we "
@@ -1236,18 +1422,22 @@ msgstr ""
 "här, så kan vi omgruppera och ansluta oss till er på slagfältet när den "
 "tiden kommer."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:362
 msgid "I leave it to you to decide."
 msgstr "Jag överlåter valet till dig."
 
+#. option: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:364
 msgid "I will take the gold. How does 500 sound?"
 msgstr "Jag väljer guldet. Hur låter det med 500?"
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:368
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "Överenskommet. Lycka till och farväl, mäster Baldras."
 
+#. option: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:389
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
@@ -1256,17 +1446,20 @@ msgstr ""
 "Skicka dina män med oss. De kommer att vara värdefull hjälp när vi "
 "förbereder oss mot attacken från Wesnoth-garnisonen."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:393
 msgid "Done. My finest mages and thieves are at your disposal. Use them well."
 msgstr ""
 "Avgjort. Mina bästa magiker och tjuvar står till ditt förfogande. Använd dem "
 "väl."
 
+#. option: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:407
 msgid "I wish you to join us in battle against the Queen's forces."
 msgstr ""
 "Jag vill att ni ansluter er till oss i slaget mot drottningens trupper."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:411
 msgid ""
 "Alright. I need time to clean up this forest and recall my men from the "
@@ -1277,14 +1470,17 @@ msgstr ""
 "från landsbygden. Vi kommer att vara redo att marschera om sju dagar. Allt "
 "hänger på dig nu! Tills vi ses igen..."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:453
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Mina mannar...har misslyckats med att skydda mig! Jag är förlorad..."
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:5
 msgid "The Hunters"
 msgstr "Jägarna"
 
+#. part
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:16
 msgid ""
 "Baldras and his men quickly left the Gray Woods, not entirely convinced of "
@@ -1293,6 +1489,7 @@ msgstr ""
 "Baldras och hans män gav sig snabbt av från Grå skogen, inte helt övertygade "
 "om sin säkerhet även om häxmästaren var borta."
 
+#. part
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:20
 msgid ""
 "As they marched, many men and women from the small hamlets peppering the "
@@ -1305,6 +1502,7 @@ msgstr ""
 "hade gett wesnotherna en obehaglig känsla och några av dem var villiga att "
 "göra motstånd."
 
+#. part
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:23
 msgid ""
 "Knowing they too would be labeled criminals, he reluctantly accepted their "
@@ -1314,6 +1512,7 @@ msgstr ""
 "motvilligt att de slog följe. Baldras har nu möjligheten att rekrytera "
 "fredlösa."
 
+#. part
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:26
 msgid ""
 "Camped at the edge of the forest, they quietly observed substantial troop "
@@ -1326,26 +1525,32 @@ msgstr ""
 "marscherade mot nordväst. Osäkra på vad detta innebär, så försökte de komma "
 "på vad de skulle göra härnäst..."
 
+#. side: type=Royal Guard, description=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:58
 msgid "Archarel"
 msgstr "Archarel"
 
+#. side: type=Iron Mauler, description=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:74
 msgid "Linneus"
 msgstr "Linneus"
 
+#. objective: condition=win
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:92
 msgid "Kill all enemy forces"
 msgstr "Döda alla fiendetrupper"
 
+#. event
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:128
 msgid "Jingo"
 msgstr "Jingo"
 
+#. event
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:129
 msgid "Majel"
 msgstr "Majel"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:147
 msgid ""
 "The words of Lord Maddock have weighed heavy on me these past few days. It "
@@ -1358,6 +1563,7 @@ msgstr ""
 "Wesnoths hela armé. Idioti! Om den ädle fursten av Elensefar är ovillig att "
 "sätta sig upp mot drottningen, hur skulle då vi ha en chans?"
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:151
 msgid ""
 "What's worse is that she appears to have taken notice. We have counted five "
@@ -1367,6 +1573,7 @@ msgstr ""
 "Än värre, hon verkar ha lagt märke oss. Vi har sett fem plutoner tungt "
 "infanteri marschera mot garnisonen de senaste två timmarna."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:155
 msgid ""
 "The garrison. The towers of Halstead are more than a garrison, nephew, they "
@@ -1377,22 +1584,27 @@ msgstr ""
 "fästning. De brukade försvara det här området mot Wesnoths fiender. Jag "
 "kunde aldrig tro att Wesnoths fiender skulle husera där."
 
+#. event: description=Pitcher 20 14}, description=Pitcher 28 18}, description=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:158
 msgid "Pitcher"
 msgstr "Pitcher"
 
+#. message: description=Pitcher
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:165
 msgid "(Baldras!)"
 msgstr "(Baldras!)"
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:169
 msgid "Uncle, he wears the crest of the Elense. We should answer."
 msgstr "Farbror, han har Elenses hjälmprydnad . Vi borde svara honom."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:173
 msgid "Rider, quiet down before we are discovered! Quickly, approach."
 msgstr "Ryttare, tyst innan vi upptäcks! Snabbt, kom närmare."
 
+#. message: description=Pitcher
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:180
 msgid ""
 "Master Baldras, I bring news from the north. During the past week, several "
@@ -1403,10 +1615,12 @@ msgstr ""
 "har flertalet patruller gett sig över den stora floden in i Annuvin. En man "
 "vid namn Relnan stod emot dem med en liten trupp. Han besegrade dem."
 
+#. message: description=Majel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:184
 msgid "This is surely good news!"
 msgstr "Det här är verkligen bra nyheter!"
 
+#. message: description=Pitcher
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:188
 msgid ""
 "I am afraid it is not. The Queen is sending a branch of her main field army "
@@ -1417,6 +1631,7 @@ msgstr ""
 "direkt från Weldyn. Så snart de anländer så kommer de att bränna varje by "
 "till marken. Ingen kommer att överleva."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:192
 msgid ""
 "The troop movements all make sense now. We must stop this army from reaching "
@@ -1430,10 +1645,12 @@ msgstr ""
 "trakasserar och sinkar dem. När de kommer fram till Halstead så måste de "
 "vara uttröttade och döende."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:196
 msgid "You just said we can't beat their entire army!"
 msgstr "Du sade ju nyss att vi inte kan besegra hela deras armé!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:200
 msgid ""
 "Do you propose surrender? It's this or nothing. All we can do is see it "
@@ -1442,6 +1659,7 @@ msgstr ""
 "Föreslår du att vi skall kapitulera? Det är det här eller ingenting. Enda "
 "valet vi har nu är att löpa linan ut."
 
+#. message: description=Pitcher
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:204
 msgid ""
 "May you prevail in peace and war. I must depart before I am seen so far from "
@@ -1450,10 +1668,12 @@ msgstr ""
 "Må du ha framgång i krig och fred. Jag måste ge mig av innan jag blir sedd "
 "så långt från min furstes gränser."
 
+#. message: description=Jingo
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:215
 msgid "Another platoon approaches..."
 msgstr "Ytterligare en pluton närmar sig..."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:247
 msgid ""
 "When we are done, no one will fear the open roads and night sky more than "
@@ -1463,10 +1683,12 @@ msgstr ""
 "När vi är klara så kommer ingen att frukta öppna vägar och natthimlen mer än "
 "pretendentens armé. Slå till snabbt, tyst... Och lämna ingen vid liv."
 
+#. message: description=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:261
 msgid "It's an ambush! Hold your ground!"
 msgstr "Ett bakhåll! Håll stånd!"
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:272
 msgid ""
 "The next morning, the local night patrol returned to the nearby outpost. "
@@ -1477,6 +1699,7 @@ msgstr ""
 "utposten. Till sin förvåning fann de sina kamrater i strid med det rövarband "
 "som de hade hört så mycket om."
 
+#. message: description=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:280
 msgid ""
 "Troops, to arms! These peasant scum think they are above the law. We will "
@@ -1485,10 +1708,12 @@ msgstr ""
 "Trupper, till vapen! Det här bondeavskummet tror att de står över lagen. Vi "
 "skall minsann visa dem hur det ligger till!"
 
+#. message: speaker=unit
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:298
 msgid "Ow! Fire hot! No step in fire!"
 msgstr "Aj! Eld varmt! Inte gå i elden!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:318
 msgid ""
 "What a bloody mess. We must attack Halstead next. If we wait, they will "
@@ -1501,6 +1726,7 @@ msgstr ""
 "Vila ordentligt inatt, för morgondagens strid kommer att avgöra ödet för "
 "våra hem, våra familjer och vår frihet."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:329
 msgid ""
 "Send word to Helicrom that we are ready. It is time for him to repay his "
@@ -1509,6 +1735,7 @@ msgstr ""
 "Skicka bud till Helicrom att vi är redo. Tiden är inne för honom att betala "
 "sin skuld."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:349
 msgid ""
 "We have spent too much time here. Surely the entire Wesnoth army marches on "
@@ -1517,10 +1744,12 @@ msgstr ""
 "Vi har dröjt för länge. Hela Wesnoths armé är säkert på väg hit. Vi är "
 "förlorade!"
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:5
 msgid "Glory"
 msgstr "Ära"
 
+#. part
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:16
 msgid ""
 "In the Year of Wesnoth 161, 338 years before Asheviere's betrayal, the newly "
@@ -1532,6 +1761,7 @@ msgstr ""
 "förrådde sin kung, försökte den nytillträdda kungen att en gång för alla "
 "säkerställa vildmarken mellan staden Weldyn och kustregionerna i Elensefar."
 
+#. part
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:20
 msgid ""
 "The grand army of Wesnoth, personally led by the High Council of Archmagi, "
@@ -1546,6 +1776,7 @@ msgstr ""
 "bosättningar spreds sig snabbt. Wesnoth hade utmärkt sig både i handling och "
 "i namn."
 
+#. part
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:24
 msgid ""
 "A monument to this achievement was erected in the very heart of the "
@@ -1558,6 +1789,7 @@ msgstr ""
 "människornas magi hade nått genom att konstruera monumentet direkt från "
 "berggrunden."
 
+#. part
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:28
 msgid ""
 "Hundreds of feet tall, the mountain towered high above the plains, its sheer "
@@ -1569,6 +1801,7 @@ msgstr ""
 "och skräckinjagande. Arbetare från hela landsbygden slet med att konstruera "
 "det mest formidabla fästning som någonsin skådats. Det blev Halsteads fäste."
 
+#. part
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:32
 msgid ""
 "This sentinel of the western plains stood watch as Wesnoth prospered for "
@@ -1582,22 +1815,27 @@ msgstr ""
 "blivit raserade. Dess fienders blod fläckar dess bröstvärn och deras ben "
 "ligger vid de frusna stenvågor som utgör Halsteads grund."
 
+#. side: type=General, description=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:67
 msgid "Dommel"
 msgstr "Dommel"
 
+#. side: type=Orcish Warlord, description=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:122
 msgid "Vashna"
 msgstr "Vashna"
 
+#. objective: condition=win
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:278
 msgid "Destroy the stronghold of Halstead"
 msgstr "Förstör Halsteads fäste"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:395
 msgid "There it is. The stronghold of Halstead."
 msgstr "Där är det. Halsteads fäste."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:408
 msgid ""
 "Look at how tall it is! Those towers rise sheer out of the ground, as if "
@@ -1606,6 +1844,7 @@ msgstr ""
 "Så högt det är! De där tornen reser sig rakt från marken som frammanade ur "
 "själva jorden."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:412
 msgid ""
 "That may not be too far from the truth. During the time of the Great Kings "
@@ -1616,6 +1855,7 @@ msgstr ""
 "tidålder så tämjdes det här landet med kraftfull magi. Trollkarlar från "
 "svunna tider smidde Halsteads murar ur självaste berggrunden."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:416
 msgid ""
 "I don't see how we can bring it down. They are already invincible in there!"
@@ -1623,6 +1863,7 @@ msgstr ""
 "Jag förstår inte hur vi skall kunna förstöra det. De är oövervinnliga "
 "därinne!"
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:427
 msgid ""
 "No, my young friend. Halstead indeed has a weakness. Among my many assets is "
@@ -1631,6 +1872,7 @@ msgstr ""
 "Nej, min unge vän. Halstead har en svaghet. Bland mina många tillgångar "
 "finns kännedom om en mängd hemligheter som få i Wesnoth känner till."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:431
 msgid ""
 "You see, the mountain on which the fort was built is solid, but the castle "
@@ -1641,6 +1883,7 @@ msgstr ""
 "blivit raserat och ombyggt många gånger under årens lopp. Det är inte så "
 "oförstörbart som man kan tro."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:435
 msgid ""
 "Beneath the structure is a system of catacombs that connects all four towers "
@@ -1651,6 +1894,7 @@ msgstr ""
 "tornen med kärntornet i mitten. Under årens lopp och efter många krig så "
 "blev det nödvändigt att förstärka grunden under centralbyggnaden."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:439
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:465
 msgid ""
@@ -1660,6 +1904,8 @@ msgstr ""
 "Så... Om vi kan slå sönder grundstöttorna så kan vi rasera Halsteads "
 "fästning. Skulle det verkligen fungera?"
 
+#. message: description=Helicrom
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:443
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:469
 msgid ""
@@ -1673,14 +1919,17 @@ msgstr ""
 "och rasera stöttorna. Jag tror dock att vi måste förstöra alla fyra stöttor "
 "innan fortet faller."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:449
 msgid "No, young one. Halstead indeed has a weakness."
 msgstr "Nej, unge man. Halstead har en svaghet."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:453
 msgid "How do you know?"
 msgstr "Hur vet du det?"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:457
 msgid ""
 "When I was a boy, my father - your grandfather - brought your dad and me to "
@@ -1691,6 +1940,7 @@ msgstr ""
 "bo i Aldril efter att orcher hade massakrerat många i vår by. Vi växte upp i "
 "dessa trakter och lärde oss många saker."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:461
 msgid ""
 "Beneath the structure is a system of catacombs that connects all four towers "
@@ -1702,6 +1952,7 @@ msgstr ""
 "kärntornet i mitten. Katakomberna har växt med åren och i kombination med "
 "århundraden med krig har det blivit nödvändigt att stötta upp mitten."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:475
 msgid ""
 "I hope you're right. In a few hours, night will fall, and we will find out."
@@ -1709,6 +1960,7 @@ msgstr ""
 "Jag hoppas att du har rätt. Om några timmar faller skymningen och vi får "
 "reda på det."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:479
 msgid ""
 "We must be cautious. Look there, a substantial orc force is also advancing "
@@ -1717,35 +1969,43 @@ msgstr ""
 "Vi måste vara försiktiga. Titta där, en större orchstyrka avancerar också "
 "mot Halstead. De tror säkert att Wesnoths armé är utspridd för närvarande."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:483
 msgid "Heh. They're in for a surprise. This may work to our advantage."
 msgstr ""
 "Heh. De kommer att få sig en överraskning. Detta kan vara till vår fördel."
 
+#. message: role=farseer
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:498
 msgid "Look in the distance... riders approach!"
 msgstr "Titta där borta... Det kommer ryttare!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:507
 msgid "Who is it?"
 msgstr "Vem är det?"
 
+#. message: role=farseer
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:511
 msgid "Help, I hope. Circumstances cannot afford to get much more dire."
 msgstr "Hjälp, hoppas jag. Vi klarar inte sämre förutsättningar."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:517
 msgid "Riders approach from the northwest! Stand fast, men."
 msgstr "Det kommer ryttare från nordväst! Håll positionerna, mannar."
 
+#. unit: type=Paladin, description=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:526
 msgid "Sir Gwydion"
 msgstr "Sir Gwydion"
 
+#. message: type=Lancer
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:542
 msgid "Sound the advance!"
 msgstr "Signalera attack!"
 
+#. message: description=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:546
 msgid ""
 "Knights of Elensefar, behold: the battle has already begun! Make camp here. "
@@ -1754,6 +2014,7 @@ msgstr ""
 "Elensefars riddare, se striden har redan börjat! Slå läger här.  Sedan "
 "STORMAR vi!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:559
 msgid ""
 "Amazing. Lord Maddock sent his house guards... his finest troops! Elensefar "
@@ -1763,6 +2024,7 @@ msgstr ""
 "Elensefar måste vara helt försvarslöst nu. Mer hänger på den här striden än "
 "vad jag först trodde."
 
+#. message: role=farseer
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:563
 msgid ""
 "Baldras, Gwydion is Lord Maddock's son. This battle isn't just about Annuvin "
@@ -1771,45 +2033,55 @@ msgstr ""
 "Baldras, Gwydion är furst Maddocks son. Den här striden handlar inte längre "
 "bara om Annuvin."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:576
 msgid ""
 "That afternoon, another advance element of the main Wesnoth army arrived..."
 msgstr "Den kvällen anlände ännu en förtrupp av Wesnoths huvudarmé..."
 
+#. message: description=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:627
 msgid ""
 "I think... I think they're trying to storm Halstead itself... the fools!"
 msgstr ""
 "Jag tror... Jag tror att de försöker storma själva Halstead... Vilka dårar!"
 
+#. message: description=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:644
 msgid "They have breached the fortess gate! Repulse them!"
 msgstr "De har tagit sig igenom portarna! Slå tillbaka dem!"
 
+#. message: speaker=unit
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:660
 msgid "I'm inside the tower! I'm going down to the catacombs - cover me."
 msgstr "Jag är inne i tornet! Jag tar mig ner i katakomberna nu. Täck mig."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:670
 msgid "After about an hour..."
 msgstr "Efter ungefär en timme..."
 
+#. message: speaker=unit
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:680
 msgid "It's done."
 msgstr "Det är gjort."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:707
 msgid "The stronghold of Halstead began to shake..."
 msgstr "Halsteads fäste började skaka..."
 
+#. message: speaker=unit
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:712
 msgid "We cannot stay here. The fortress has started to collapse!"
 msgstr "Vi kan inte stanna kvar här. Fortet har börjat falla samman!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:743
 msgid "I think it's working! Everybody get clear NOW!"
 msgstr "Jag tror att det fungerar! Akta, alla ut härifrån NU!"
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:767
 msgid ""
 "With a thunderous earthquake and a vast billowing of dust, thousands of tons "
@@ -1822,10 +2094,12 @@ msgstr ""
 "medan resten kom att vila flera hundra fot under jordens yta, i djupet av "
 "den ihåliga kullen."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:772
 msgid "No one inside the fortress would make it out alive."
 msgstr "Ingen i fortet hade en chans att ta sig ut levande."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:834
 msgid ""
 "After more than a week of fierce fighting, the main body of Asheviere's host "
@@ -1836,10 +2110,12 @@ msgstr ""
 "huvudarmé från Weldyn. Striden var snart avgjord. Varenda man från provinsen "
 "Annuvin blev avrättade."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:863
 msgid "Men, help me out of here! I am trapped under this rubble."
 msgstr "Mannar, hjälp mig ur härifrån! Jag sitter fast här under rasmassorna."
 
+#. message: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:867
 msgid ""
 "No one was able to get to Baldras in time. He and many of his companions "
@@ -1848,28 +2124,34 @@ msgstr ""
 "Ingen hann fram till Baldras i tid. Han och många av hans följeslagare dog "
 "under fästningen den dagen."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:872
 msgid "I hope this sacrifice is not in vain... but we will never know."
 msgstr ""
 "Jag hoppas att detta offer inte var förgäves... Men det kommer vi aldrig att "
 "få veta."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:878
 msgid "Our dream of freedom... gone... Uungh."
 msgstr "Våra frihetsdrömmar... Borta... Uungh."
 
+#. message: description=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:896
 msgid "Uncle!"
 msgstr "Farbror!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:900
 msgid "NO!"
 msgstr "NEJ!"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:904
 msgid "I promised your father I would watch after you... and I failed."
 msgstr "Jag lovade din far att se efter dig... Och jag har misslyckats."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:908
 msgid ""
 "But we are so close to the end. We must finish this. I am sorry you will not "
@@ -1878,6 +2160,7 @@ msgstr ""
 "Men vi är så nära slutet. Vi måste fullgöra vad vi har startat. Jag beklagar "
 "att du inte har möjlighet att njuta av vår frihet. Farväl, Harper."
 
+#. message: description=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:922
 msgid ""
 "Carry on, my friends. Fighting by your side is the most honorable thing I "
@@ -1886,10 +2169,12 @@ msgstr ""
 "Fortsätt ni, mina vänner. Att slåss på samma sida som ni har varit mitt mest "
 "hedersamma jag någonsin gjort..."
 
+#. message: description=second_unit
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:936
 msgid "Your reign of terror is over, General."
 msgstr "General, ditt terrorvälde är över nu."
 
+#. message: description=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:940
 msgid ""
 "You will never successfully oppose Asheviere. Her power is too great... This "
@@ -1900,6 +2185,7 @@ msgstr ""
 "mycket makt... Dagens lilla seger är bara ett undantag från den obeskrivliga "
 "smärta som hennes vrede kommer att utsätta dig för när den hinner ifatt dig."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:951
 msgid ""
 "This was no small victory. You underestimate the power of love for freedom."
@@ -1907,12 +2193,14 @@ msgstr ""
 "Det här var inte någon liten seger. Du förstår inte kraften i vår "
 "frihetstörst."
 
+#. message: description=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:955
 msgid ""
 "You... underestimate the... cruelty and ambition of your Queen... unngh.."
 msgstr ""
 "Du... underskattar hur... grym och ambitiös din drottning är... Unngh..."
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:962
 msgid ""
 "Small victory? Bah! Now we will raze this fortress and bury it in the earth "
@@ -1921,10 +2209,12 @@ msgstr ""
 "Liten seger? Bah! Nu skall vi riva ner den här fästningen till det stoft det "
 "en gång kom ifrån."
 
+#. scenario
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:5
 msgid "Liberty - Epilogue"
 msgstr "Frihet - Epilog"
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:12
 msgid ""
 "The rest of the battle was a blur. The shock of what had happened stunned "
@@ -1933,6 +2223,7 @@ msgstr ""
 "Resten av striden skedde som i en dimma. Chocken över vad som hade hänt "
 "förlamade alla."
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:15
 msgid ""
 "Baldras and his men fled the plains of western Wesnoth under the cover of "
@@ -1943,6 +2234,7 @@ msgstr ""
 "Halsteads förstörelse hade gett dem en kraftig chock som gradvis släppte "
 "under deras marsch norrut och förbi Elensefar."
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:18
 msgid ""
 "The Elense riders routed the orcish army, small as it was, and sent them "
@@ -1955,6 +2247,7 @@ msgstr ""
 "hördes inte av igen. När Baldras hörde talas om detta tyckte han det lät "
 "högst besynnerligt."
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:21
 msgid ""
 "As the main body of Asheviere's army neared the ruins of Halstead, strange "
@@ -1969,6 +2262,7 @@ msgstr ""
 "trupperna. Soldater dog på sina poster, dödade av osedda lönnmördare. "
 "Skräcken för vandöda spreds bland mannarna."
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:24
 msgid ""
 "When the army of Wesnoth found the ruins of the mighty fortress Halstead, it "
@@ -1983,6 +2277,7 @@ msgstr ""
 "befälhavare att hela landsbygden var förbannad. Han retirerade snabbt till "
 "den traditionella gränsen och satte upp ett starkt försvar mot väster."
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:27
 msgid ""
 "Baldras had just crossed the Great River when rumors of night-stalkers "
@@ -1995,6 +2290,7 @@ msgstr ""
 "män framgångsrikt använde taktik som Baldras själv hade bemästrat under sin "
 "tid som motståndsman."
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:30
 msgid ""
 "The peasants-turned-outlaws finally reached Dallben. It was burnt to the "
@@ -2006,6 +2302,7 @@ msgstr ""
 "den fann de förstörd, men de lyckades hitta en ledtråd till vad som hade "
 "hänt..."
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:34
 msgid ""
 "...a grimy note nailed to a charred post that read, 'Baldras, You would have "
@@ -2014,6 +2311,7 @@ msgstr ""
 "...en solkig lapp var fastnaglad vid en bränd vägskylt. 'Baldras, du skulle "
 "ha varit stolt. Vi kämpade tappert, men till slut var de oss övermäktiga.'"
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:38
 msgid ""
 "'We fled like criminals in the night, but we made sure that no one would "
@@ -2022,6 +2320,7 @@ msgstr ""
 "'Vi flydde som kriminella i natten, men vi såg till att vi inte skulle kunna "
 "bli ofredade mer.'"
 
+#. part
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:42
 msgid ""
 "'If you wish to find us, head southwest. When you reach the land's end, just "
@@ -2030,10 +2329,12 @@ msgstr ""
 "'Om du önskar hitta oss, så färdas åt sydväst. När du kommer tills landets "
 "slut så fortsätt bara. Vi ses snart, gamle vän. - Relnan'"
 
+#. unit: race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
 msgid "Bone Knight"
 msgstr "Skelettryttare"
 
+#. unit: race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:33
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
@@ -2044,19 +2345,23 @@ msgstr ""
 "skeletthästar med hjälp av vanhelig magi. Deras syfte är att sprida skräck "
 "och förstörelse."
 
+#. attack: type=blade
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:37
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:37
 msgid "axe"
 msgstr "yxa"
 
+#. attack: type=impact
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:79
 msgid "trample"
 msgstr "trampa"
 
+#. unit: race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:5
 msgid "Death Squire"
 msgstr "Dödsväpnare"
 
+#. unit: race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:27
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
@@ -2071,14 +2376,17 @@ msgstr ""
 "själva bli dödsriddare. Under tiden så lär de sig en hel del av "
 "dödsriddarnas färdigheter, bland annat att kommendera undersåtar."
 
+#. attack: type=blade
 #: data/campaigns/Liberty/units/Death_Squire.cfg:32
 msgid "sword"
 msgstr "svärd"
 
+#. unit: race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "Rövarmagiker"
 
+#. unit: race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
 msgid ""
 "Some mages are thrown out of the mage's guild for attempting to practice "
@@ -2093,19 +2401,23 @@ msgstr ""
 "mer formell utbildning, men deras magi är ändock dödlig, samtidigt som deras "
 "leverne gett dem viss skicklighet med kortsvärd."
 
+#. attack: type=blade
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:26
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
 msgid "short sword"
 msgstr "kortsvärd"
 
+#. attack: type=cold
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
 msgid "magic missile"
 msgstr "magisk projektil"
 
+#. unit: race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
 msgstr "Skuggfurste"
 
+#. unit: race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
@@ -2120,22 +2432,27 @@ msgstr ""
 "har inte längre behov av fysiska vapen, och är fruktade av både sina fiender "
 "och sina underlydande."
 
+#. attack: type=blade
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:74
 msgid "astral blade"
 msgstr "andeklinga"
 
+#. attack: type=cold
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:85
 msgid "shadow bolt"
 msgstr "skuggblixt"
 
+#. attack: type=impact
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:97
 msgid "shadow blast"
 msgstr "skuggstöt"
 
+#. unit: race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
 msgid "Shadow Mage"
 msgstr "Skuggmagiker"
 
+#. unit: race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
@@ -2153,14 +2470,17 @@ msgstr ""
 "närstridsattacker. Trots deras offensiva styrka har deras förvridna själar "
 "börjat påverka deras hälsa negativt."
 
+#. attack: type=cold
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:38
 msgid "ice blast"
 msgstr "isstöt"
 
+#. unit: race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "Skelettryttare"
 
+#. unit: race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
@@ -2171,6 +2491,7 @@ msgstr ""
 "skeletthästar med hjälp av vanhelig magi. Deras syfte är att sprida skräck "
 "och förstörelse."
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:18
 msgid ""
 "Peasants live in the small hamlets and villages scattered across the Wesnoth "
@@ -2178,10 +2499,12 @@ msgid ""
 msgstr ""
 "Bönder bor i de små byar som finns utspridda över hela Wesnoths landsbygd."
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:30
 msgid "Village Elder"
 msgstr "Byäldste"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:33
 msgid ""
 "Each of the villages scattered across the Wesnoth countryside is normally "
@@ -2191,10 +2514,12 @@ msgstr ""
 "Byarna som ligger utspridda över Wesnoths landsbygd leds ofta av de "
 "byäldste, vilka är byns visaste och mest erfarna invånare."
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:45
 msgid "Senior Village Elder"
 msgstr "Äldre byäldste"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:49
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -2206,10 +2531,12 @@ msgstr ""
 "äldsta i byn ansvaret för byns uppehälle och överlevnad. Ofta utses äldre "
 "byäldste som fredsdomare."
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:64
 msgid "Peasant Youth"
 msgstr "Ung bonde"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:69
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
@@ -2218,14 +2545,17 @@ msgstr ""
 "Dessa unga bönder är som vilken ung människa som helst i Wesnoth. De är "
 "dumdristiga, kaxiga och utforskar gärna nya saker."
 
+#. female
 #: data/campaigns/Liberty/units/Villagers.cfg:79
 msgid "female^Peasant Youth"
 msgstr "Ung bonde"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:88
 msgid "Watchman"
 msgstr "Patrullvakt"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:93
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
@@ -2234,14 +2564,17 @@ msgstr ""
 "Patrullvakterna är män och kvinnor som vaktar byarna mot marodörer, både "
 "mänskliga och andra, som stryker runt i Wesnoth på nätterna."
 
+#. female
 #: data/campaigns/Liberty/units/Villagers.cfg:99
 msgid "female^Watchwoman"
 msgstr "Patrullvakt"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:108
 msgid "Borderer"
 msgstr "Gränsvakt"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:112
 msgid ""
 "Each village has a group of highly capable fighters dedicated to fending off "
@@ -2252,14 +2585,17 @@ msgstr ""
 "av dessa går med i Wesnoths armé, medan andra utgör kärnan i patrullvakten i "
 "byn."
 
+#. female
 #: data/campaigns/Liberty/units/Villagers.cfg:118
 msgid "female^Borderer"
 msgstr "Gränsvakt"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:132
 msgid "Peasant Hunter"
 msgstr "Jagande bonde"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:135
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
@@ -2270,10 +2606,12 @@ msgstr ""
 "jägare för införskaffande av mat. Deras erfarenhet och kunskap om den lokala "
 "terrängen kan vara värdefulla tillgångar i strid."
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:147
 msgid "Peasant Trapper"
 msgstr "Pälsjagande bonde"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:152
 msgid ""
 "Trappers are skilled hunters who supply food and furs for several villages. "
@@ -2284,10 +2622,12 @@ msgstr ""
 "Deras jakterfarenhet gör dem som mest effektiva kvällar och nätter i skog "
 "och träsk."
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:164
 msgid "Peasant Huntsman"
 msgstr "Jagande bonde"
 
+#. unit
 #: data/campaigns/Liberty/units/Villagers.cfg:168
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
@@ -2298,10 +2638,12 @@ msgstr ""
 "vildmarkshem. De är ytterst skickliga på att jaga och kan spåra vad som än "
 "rör sig i deras marker."
 
+#. object
 #: data/campaigns/Liberty/utils/utils.cfg:58
 msgid "Holy Ankh"
 msgstr "Helig Ankh"
 
+#. object
 #: data/campaigns/Liberty/utils/utils.cfg:61
 msgid ""
 "You find a hefty pendant on a strange and ominous looking altar. It glows "
@@ -2310,6 +2652,7 @@ msgstr ""
 "Du finner en medaljong på ett märkligt olycksbådande altare. Den ger ifrån "
 "sig en kraftig glöd när du plockar upp den!"
 
+#. object
 #: data/campaigns/Liberty/utils/utils.cfg:62
 msgid ""
 "There is a strange altar here and a pendant on it. I don't want to touch it."
@@ -2317,22 +2660,27 @@ msgstr ""
 "Det står ett märkligt altare här, med en medaljong. Jag vill inte röra vid "
 "den."
 
+#. effect: type=arcane
 #: data/campaigns/Liberty/utils/utils.cfg:75
 msgid "holy ankh"
 msgstr "helig ankh"
 
+#. message: description=Baldras
 #: data/campaigns/Liberty/utils/utils.cfg:143
 msgid "Tell my wife... that I loved her!"
 msgstr "Säg till min fru...att jag älskade henne!"
 
+#. message: description=Harper
 #: data/campaigns/Liberty/utils/utils.cfg:157
 msgid "Unngh... Now our people may never be free..."
 msgstr "Unngh... Nu kan vårt folk aldrig bli fritt..."
 
+#. message: description=Relnan
 #: data/campaigns/Liberty/utils/utils.cfg:171
 msgid "I am finished... will we ever be free?"
 msgstr "Jag är besegrad... Kommer vi någonsin bli fria?"
 
+#. message: description=Lord Maddock
 #: data/campaigns/Liberty/utils/utils.cfg:185
 msgid "How can this be? We have lost."
 msgstr "Hur kunde det här hända? Vi har förlorat."

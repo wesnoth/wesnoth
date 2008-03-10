@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-02 23:11+0100\n"
+"POT-Creation-Date: 2008-03-10 11:39+0100\n"
 "PO-Revision-Date: 2008-03-01 21:21+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -26,10 +26,12 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 
+#. unit: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
 msgstr "Кровавая мышь"
 
+#. unit: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
 msgid ""
 "Blood Bats are so-named because of their ruddy hue, which some mark as a "
@@ -42,6 +44,8 @@ msgstr ""
 "быстры и могут пить кровь из своих противников, приобретая таким образом "
 "часть здоровья, потерянного жертвой."
 
+#. attack: type=blade
+#. attack: type=pierce
 #: data/core/units/bats/Bat_Blood.cfg:175
 #: data/core/units/bats/Bat_Vampire.cfg:174
 #: data/core/units/monsters/Wolf.cfg:49
@@ -53,10 +57,12 @@ msgstr ""
 msgid "fangs"
 msgstr "клыки"
 
+#. unit: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
 msgstr "Вампир мышь"
 
+#. unit: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
@@ -67,10 +73,12 @@ msgstr ""
 "своих жертв. Хотя их клыки не очень сильны, здоровье жертв уходит вместе с "
 "их вытекающей кровью, а часть передается мышам."
 
+#. unit: race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
 msgstr "Лодка"
 
+#. unit: race=mechanical
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
@@ -80,18 +88,22 @@ msgstr ""
 "используются для путешествий на короткие дистанции и на мелководье, где "
 "большие корабли не могут передвигаться."
 
+#. unit: race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
 msgstr "Галеон"
 
+#. unit: race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr "Галеоны — это корабли для торговли и перевозок в открытых морях."
 
+#. unit: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
 msgstr "Пиратский галеон"
 
+#. unit: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
@@ -102,15 +114,18 @@ msgstr ""
 "полные товаров, не должен плыть одни далеко, лучше слегка помочь им "
 "уберечься от затопления тяжелым грузом..."
 
+#. attack: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 msgid "ballista"
 msgstr "баллиста"
 
+#. unit: race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
 msgstr "Транспортный галеон"
 
+#. unit: race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
@@ -120,10 +135,12 @@ msgstr ""
 "перевозки отрядов. Если они достигнут берега, они могут выгрузить на берег "
 "отряды для атаки."
 
+#. unit: race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
 msgstr "Драк Судного дня"
 
+#. unit: race=drake
 #: data/core/units/drakes/Armageddon.cfg:26
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
@@ -136,6 +153,7 @@ msgstr ""
 "как \"Драконы Судного Дня\" (Armageddon Drake) они не только владеющиют "
 "сокрушительным огнём, но ещё и отлично от него защищённы."
 
+#. attack: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/gryphons/Gryphon_Rider.cfg:29
 #: data/core/units/gryphons/Gryphon_Master.cfg:29
@@ -151,6 +169,7 @@ msgstr ""
 msgid "claws"
 msgstr "когти"
 
+#. attack: type=fire
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 #: data/core/units/drakes/Flare.cfg:91 data/core/units/drakes/Fire.cfg:79
 #: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
@@ -163,10 +182,12 @@ msgstr "когти"
 msgid "fire breath"
 msgstr "огненное дыхание"
 
+#. unit: race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
 msgstr "Драк мастер клинка"
 
+#. unit: race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
@@ -176,6 +197,8 @@ msgstr ""
 "Драки, мастерски использующие мечи (Drake Blademaster), присягают "
 "специальному ордену. В битве их отличают черные и белые боевые цвета."
 
+#. attack: type=blade
+#. attack: type=arcane
 #: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
 #: data/core/units/elves/Avenger.cfg:64 data/core/units/elves/Marksman.cfg:53
 #: data/core/units/elves/Scout.cfg:34 data/core/units/elves/Marshal.cfg:34
@@ -211,10 +234,12 @@ msgstr ""
 msgid "sword"
 msgstr "меч"
 
+#. unit: race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
 msgstr "Драк поджигатель"
 
+#. unit: race=drake
 #: data/core/units/drakes/Burner.cfg:19
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
@@ -227,10 +252,12 @@ msgstr ""
 "способность, в паре с размерами и когтями на лапах, делают его опасным "
 "противником в бою."
 
+#. unit: race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "Конфликтный драк"
 
+#. unit: race=drake
 #: data/core/units/drakes/Clasher.cfg:21
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
@@ -263,6 +290,7 @@ msgstr ""
 "типичным слабостям своего народа, например сильной уязвимости к копьям и "
 "стрелам."
 
+#. attack: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:121
 #: data/core/units/saurians/Skirmisher.cfg:130
 #: data/core/units/saurians/Flanker.cfg:28
@@ -294,10 +322,12 @@ msgstr ""
 msgid "spear"
 msgstr "копье"
 
+#. unit: race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "Драк укреплённый"
 
+#. unit: race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
@@ -308,6 +338,7 @@ msgstr ""
 "Долгие часы, проведенные в кузнице, обеспечили ему надежную броню и "
 "вооружение, и одели его вплоть до пальцев ног блестящей броней."
 
+#. attack: type=impact
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
@@ -319,10 +350,12 @@ msgstr ""
 msgid "mace"
 msgstr "булава"
 
+#. unit: race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
 msgstr "Драк боец"
 
+#. unit: race=drake
 #: data/core/units/drakes/Fighter.cfg:19
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
@@ -335,14 +368,17 @@ msgstr ""
 "значительной проблемой для любого противника. Их огромная сила, помноженная "
 "на внушительные размеры, способна напугать любого мечника другой расы."
 
+#. attack: type=blade
 #: data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
 msgstr "ятаган"
 
+#. unit: race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
 msgstr "Огненный драк"
 
+#. unit: race=drake
 #: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
@@ -353,10 +389,12 @@ msgstr ""
 "огня. Одетые в блестящую броню, они извергают столб пламени в любого, кто "
 "противостоит им. Им дарованы сила и величие своего народа."
 
+#. unit: race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "Драк пламенное сердце"
 
+#. unit: race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
@@ -368,10 +406,12 @@ msgstr ""
 "венах течет огонь вместо крови. Он может дышать огнем, хотя, по понятным "
 "причинам, никто не проверял, так ли это на самом деле."
 
+#. unit: race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "Сияющий драк"
 
+#. unit: race=drake
 #: data/core/units/drakes/Flare.cfg:25
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
@@ -383,10 +423,12 @@ msgstr ""
 "\" (Drake Flare), стремятся стать лидерами везде, и в мирное, и в военное "
 "время."
 
+#. unit: race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
 msgstr "Драк гладиатор"
 
+#. unit: race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
@@ -405,10 +447,12 @@ msgstr ""
 "дополняет его и без того внушительный набор. Сосредоточившись на своем "
 "вооружении, он меньше времени уделял своим защитным способностям."
 
+#. unit: race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "Парящий драк"
 
+#. unit: race=drake
 #: data/core/units/drakes/Glider.cfg:20
 msgid ""
 "Drake Gliders wear as little encumberment as possible, freeing themselves to "
@@ -426,15 +470,18 @@ msgstr ""
 "самые защищённые укрытия. Способность летать позволяет им точно поражать "
 "противника в таких укрытиях."
 
+#. attack: type=impact
 #: data/core/units/drakes/Glider.cfg:75
 #: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
 msgid "slam"
 msgstr "хлопанье"
 
+#. unit: race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
 msgstr "Ураганный драк"
 
+#. unit: race=drake
 #: data/core/units/drakes/Hurricane.cfg:29
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
@@ -445,10 +492,12 @@ msgstr ""
 "элитой среди способных летать драков. Паря высоко в небе, они способны "
 "разглядеть любое укрытие и безнаказанно поджечь своих врагов."
 
+#. unit: race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "Адский драк"
 
+#. unit: race=drake
 #: data/core/units/drakes/Inferno.cfg:19
 msgid ""
 "The flying conflagrations known as Drake Infernos are the masters of the "
@@ -462,10 +511,12 @@ msgstr ""
 "естественная особенность предоставляет им иммунитет к огню. Они одты в "
 "яркую, огненную броню и входит в касту гордых и сильных совершенных существ."
 
+#. unit: race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "Небесный драк"
 
+#. unit: race=drake
 #: data/core/units/drakes/Sky.cfg:28
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
@@ -479,10 +530,12 @@ msgstr ""
 "извергнуть огонь с величайшей точностью по местности, которая в другом "
 "случае считалась бы наилучшим укрытием от противника."
 
+#. unit: race=drake
 #: data/core/units/drakes/Slasher.cfg:4
 msgid "Drake Slasher"
 msgstr "Драк измельчитель"
 
+#. unit: race=drake
 #: data/core/units/drakes/Slasher.cfg:19
 msgid ""
 "Slashers are Clashers who have chosen to master the use of a halberd instead "
@@ -498,6 +551,8 @@ msgstr ""
 "выносливость и защита, что является важным преимуществом над их двоюродными "
 "братьями — гладиаторами."
 
+#. attack: type=blade
+#. attack: type=pierce
 #: data/core/units/drakes/Warden.cfg:75 data/core/units/drakes/Warden.cfg:84
 #: data/core/units/drakes/Slasher.cfg:69 data/core/units/drakes/Slasher.cfg:78
 #: data/core/units/humans/Loyalist_Halberdier.cfg:29
@@ -505,10 +560,12 @@ msgstr ""
 msgid "halberd"
 msgstr "алебарда"
 
+#. unit: race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "Драк страж"
 
+#. unit: race=drake
 #: data/core/units/drakes/Warden.cfg:20
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
@@ -521,10 +578,12 @@ msgstr ""
 "оружия смотрители выбрали алебарду, которая позволяет достигать больших "
 "результатов."
 
+#. unit: race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "Драк воин"
 
+#. unit: race=drake
 #: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
@@ -535,10 +594,12 @@ msgstr ""
 "и имеют огнедышащие навыки от своих предков. Обладая огромной силой, они "
 "могут наносить сокрушительные удары и стойко противостоять ответным ударам."
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
 msgstr "Гном Берсерк"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:19
 msgid ""
 "Berserkers are a rare caste of Dwarves, who work themselves into a towering "
@@ -550,15 +611,18 @@ msgstr ""
 "какой бы то ни было защите, совершая лишь беспрестанные атаки, в исполнении "
 "которых они достигли вершин мастерства."
 
+#. attack: type=blade
 #: data/core/units/dwarves/Berserker.cfg:31
 #: data/core/units/dwarves/Ulfserker.cfg:31
 msgid "berserker frenzy"
 msgstr "атака берсерка"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
 msgstr "Гном драконий страж"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:19
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
@@ -578,6 +642,7 @@ msgstr ""
 "с этим оружием они охраняют великие цитадели гномов; это оружие повергло "
 "многих великих воинов с одного выстрела."
 
+#. attack: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:70
 #: data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/dwarves/Dragonguard.cfg:25
@@ -595,14 +660,17 @@ msgstr ""
 msgid "dagger"
 msgstr "кинжал"
 
+#. attack: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:34
 msgid "dragonstaff"
 msgstr "посох дракона"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
 msgstr "Гном боец"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
@@ -615,24 +683,28 @@ msgstr ""
 "гористой местности и под землей. Они не очень ловки, но их сила и "
 "выносливость с лихвой это компенсирует."
 
+#. attack: type=blade
 #: data/core/units/dwarves/Fighter.cfg:35
-#: data/core/units/undead/Skele_Deathblade.cfg:42
+#: data/core/units/undead/Skele_Deathblade.cfg:105
 #: data/core/units/undead/Skele_Revenant.cfg:29
 #: data/core/units/undead/Skeleton.cfg:106
 #: data/core/units/undead/Skele_Draug.cfg:30
 msgid "axe"
 msgstr "топор"
 
+#. attack: type=impact
 #: data/core/units/dwarves/Steelclad.cfg:38
 #: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
 #: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
 msgstr "молот"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
 msgstr "Гном охранник"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
 msgid ""
 "The dwarven race has always been famed for its sturdiness of build, and many "
@@ -648,6 +720,7 @@ msgstr ""
 "высокую цену тех, кто попытается сломать линию. Пока линия продвигается "
 "вперёд, гномы охранники защищают столь нелегко добытое преимущество."
 
+#. attack: type=pierce
 #: data/core/units/dwarves/Stalwart.cfg:43
 #: data/core/units/dwarves/Guardsman.cfg:40
 #: data/core/units/dwarves/Sentinel.cfg:48
@@ -656,10 +729,12 @@ msgstr ""
 msgid "javelin"
 msgstr "дротик"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
 msgstr "Гном лорд"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
 msgid ""
 "Clad in shining armor, these dwarves look like kings from under the "
@@ -672,20 +747,24 @@ msgstr ""
 "свою жертву, бросая ручной топор. Хотя они и медлительны при ходьбе, эти "
 "гномы — доблестные продолжатели традиций своих предков."
 
+#. attack: type=blade
 #: data/core/units/dwarves/Steelclad.cfg:29
 #: data/core/units/dwarves/Lord.cfg:30
 #: data/core/units/undead/Skele_Death_Knight.cfg:46
 msgid "battle axe"
 msgstr "боевой топор"
 
+#. attack: type=blade
 #: data/core/units/dwarves/Lord.cfg:47
 msgid "hatchet"
 msgstr "томагавк"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
 msgstr "Гном мастер рун"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:19
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
@@ -699,18 +778,22 @@ msgstr ""
 "редко встречают в битве, но повелители этих рун могут найти им вполне "
 "достойное применение в бою."
 
+#. attack: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:24
 msgid "runic hammer"
 msgstr "рунический молот"
 
+#. attack: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:34
 msgid "Lightning bolt"
 msgstr "Удар молнии"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
 msgstr "Гном часовой"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
 msgid ""
 "Champions among their fellow troops, the dwarven sentinels form the bulwark "
@@ -725,11 +808,13 @@ msgstr ""
 "способа покинуть сей мир. Эти гномы — мастера рукопашной и могут держать "
 "участок земли с маниакальным упорство."
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
 msgstr "Гном крепыш"
 
 # **
+#. unit: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
 msgid ""
 "The wiles of experience and training turn guardsmen into worthy soldiers. "
@@ -741,10 +826,12 @@ msgstr ""
 "в очень ценных солдат. Эти стойкие войска снаряжены как раз по своим навыкам "
 "и могут отбить практически любую атаку, за исключением самой яростной."
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
 msgstr "Гном латник"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:19
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
@@ -753,10 +840,12 @@ msgstr ""
 "Более опытные гномы латники (Dwarvish Steelclad) одеты в тяжелую кольчугу и "
 "пластинчатые латы, что делает их по праву знаменитыми."
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
 msgstr "Гном громовержец"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
@@ -772,15 +861,18 @@ msgstr ""
 "его создавать, поняли, что лучше не воевать с гномами, и поклялись никогда "
 "этого не делать."
 
+#. attack: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
 msgid "thunderstick"
 msgstr "громовая трость"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "Гном страж грома"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:20
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
@@ -805,10 +897,12 @@ msgstr ""
 "Хотя подготовка одного выстрела из этих \"громовых тростей\" занимает "
 "несколько минут, результаты, совершенные гномами, превосходят все ожидания."
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
 msgstr "Гном ульфсерк"
 
+#. unit: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:19
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
@@ -821,10 +915,12 @@ msgstr ""
 "их противник или они сами не умрут, и не важно, сколько ранений они при этом "
 "получат."
 
+#. unit: race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
 msgstr "Эльф лучник"
 
+#. unit: race=elf
 #: data/core/units/elves/Archer.cfg:21
 msgid ""
 "Elves have always had a reputation for archery, a skill that, for many "
@@ -841,6 +937,8 @@ msgstr ""
 "неопытность в боях отчасти влияет на их уязвимость, их природная грация "
 "позволяет им быть намного лучше в бою только что призванных рекрутов людей."
 
+#. attack: type=pierce
+#. attack: type=fire
 #: data/core/units/orcs/Sovereign.cfg:42 data/core/units/orcs/Archer.cfg:80
 #: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
 #: data/core/units/orcs/Leader.cfg:43 data/core/units/orcs/Ruler.cfg:41
@@ -864,14 +962,17 @@ msgstr ""
 msgid "bow"
 msgstr "лук"
 
+#. female
 #: data/core/units/elves/Archer.cfg:171
 msgid "female^Elvish Archer"
 msgstr "Эльфийка лучница"
 
+#. unit: race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
 msgstr "Эльф мститель"
 
+#. unit: race=elf
 #: data/core/units/elves/Avenger.cfg:23
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
@@ -893,14 +994,17 @@ msgstr ""
 "Также их название можно объяснить тем, что они мстят за своих собратьев, "
 "которых они потеряли в боях. Хотя это не так, это недалеко от истины."
 
+#. female
 #: data/core/units/elves/Avenger.cfg:180
 msgid "female^Elvish Avenger"
 msgstr "Эльфийка мстительница"
 
+#. unit: race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
 msgstr "Эльф капитан"
 
+#. unit: race=elf
 #: data/core/units/elves/Captain.cfg:26
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
@@ -917,10 +1021,12 @@ msgstr ""
 "тенденции выбирать себе лидеров из достойнейших является отличительной "
 "чертой эльфов."
 
+#. unit: race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
 msgstr "Эльф чемпион"
 
+#. unit: race=elf
 #: data/core/units/elves/Champion.cfg:20
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
@@ -935,10 +1041,12 @@ msgstr ""
 "искусством фехтования, в котором лишь немногие могут сравниться с ними. Даже "
 "владение луком, изучаемое ими во вторую очередь, заставляет людей поражаться."
 
+#. unit: race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
 msgstr "Эльфийка друид"
 
+#. unit: race=elf
 #: data/core/units/elves/Druid.cfg:21
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
@@ -955,8 +1063,9 @@ msgstr ""
 "Их главная возможность основывается на целительстве, и за этот навык "
 "эльфийские друиды почитаются своим народом."
 
-#: data/core/units/elves/Enchantress.cfg:25 data/core/units/elves/Druid.cfg:28
-#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:27
+#. attack: type=impact
+#: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:28
+#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:28
 #: data/core/units/saurians/Soothsayer.cfg:66
 #: data/core/units/saurians/Augur.cfg:66
 #: data/core/units/saurians/Oracle.cfg:66
@@ -973,19 +1082,23 @@ msgstr ""
 msgid "staff"
 msgstr "посох"
 
+#. attack: type=impact
 #: data/core/units/elves/Druid.cfg:37 data/core/units/elves/Shyde.cfg:41
 msgid "ensnare"
 msgstr "заманивать"
 
+#. attack: type=pierce
 #: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:53
 msgid "thorns"
 msgstr "колючки"
 
+#. unit: race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
 msgstr "Эльфийка колдунья"
 
-#: data/core/units/elves/Enchantress.cfg:18
+#. unit: race=elf
+#: data/core/units/elves/Enchantress.cfg:19
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "humans are almost universally incapable of understanding it, let alone using "
@@ -999,21 +1112,25 @@ msgstr ""
 "сказать, что они уважаемы среди своего народа, но очень мало эльфов может "
 "сказать об их настоящем предназначении и положении в обществе."
 
-#: data/core/units/elves/Enchantress.cfg:35
-#: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:37
+#. attack: type=impact
+#: data/core/units/elves/Enchantress.cfg:36
+#: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:38
 msgid "entangle"
 msgstr "путы"
 
-#: data/core/units/elves/Enchantress.cfg:46 data/core/units/elves/Lord.cfg:33
+#. attack: type=arcane
+#: data/core/units/elves/Enchantress.cfg:47 data/core/units/elves/Lord.cfg:33
 #: data/core/units/elves/High_Lord.cfg:70
-#: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Sylph.cfg:52
+#: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:52
 msgid "faerie fire"
 msgstr "фееричный огонь"
 
+#. unit: race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
 msgstr "Эльф боец"
 
+#. unit: race=elf
 #: data/core/units/elves/Fighter.cfg:20
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
@@ -1026,10 +1143,12 @@ msgstr ""
 "Эльф легко обучается основам владения мечом и луком в невообразимо короткие "
 "сроки и становится эффективным бойцом на поле боя."
 
+#. unit: race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
 msgstr "Эльф герой"
 
+#. unit: race=elf
 #: data/core/units/elves/Hero.cfg:19
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
@@ -1042,10 +1161,12 @@ msgstr ""
 "(Elvish Hero) и сильны в обращении как с мечом, так и с луком. Это "
 "мастерство, которое никогда не увядает даже в отсутствии практики."
 
+#. unit: race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
 msgstr "Высший Лорд эльфов"
 
+#. unit: race=elf
 #: data/core/units/elves/High_Lord.cfg:19
 msgid ""
 "The leaders of the elves do not fall sallow and frail with age. Rather, it "
@@ -1057,10 +1178,12 @@ msgstr ""
 "наоборот, тогда они вырастают в свою полную силу. Спокойный и задумчивый в "
 "мирное время, в гневе Высший Лорд (Elvish High Lord) наводит на врагов ужас."
 
+#. unit: race=elf
 #: data/core/units/elves/Lady.cfg:5
 msgid "female^Elvish Lady"
 msgstr "Эльфийская Леди"
 
+#. unit: race=elf
 #: data/core/units/elves/Lady.cfg:21
 msgid ""
 "Elves choose their leaders for their power and wisdom; foresight is what has "
@@ -1073,10 +1196,12 @@ msgstr ""
 "непоколебимой преданностью народа, что является наибольшим даром, о ктором "
 "мог бы мечтать любой правитель. "
 
+#. unit: race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
 msgstr "Лорд эльфов"
 
+#. unit: race=elf
 #: data/core/units/elves/Lord.cfg:18
 msgid ""
 "The nobility of the elves are possessed of merit to match their standing in "
@@ -1087,10 +1212,12 @@ msgstr ""
 "Эльфийские Лорды (Elvish Lady) являются знатью и одними из самых сильных "
 "представителей своего народа, они страшны при использовании своей магии."
 
+#. unit: race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "Эльф стрелок"
 
+#. unit: race=elf
 #: data/core/units/elves/Marksman.cfg:22
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
@@ -1110,19 +1237,23 @@ msgstr ""
 "Это удивительное умение негативным образом сказалось лишь на отсутствии "
 "навыков владения с мечом."
 
+#. attack: type=pierce
 #: data/core/units/elves/Marksman.cfg:62
 #: data/core/units/elves/Sharpshooter.cfg:59
 msgid "longbow"
 msgstr "большой лук"
 
+#. female
 #: data/core/units/elves/Marksman.cfg:172
 msgid "female^Elvish Marksman"
 msgstr "Эльфийка стрелок"
 
+#. unit: race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
 msgstr "Эльф маршал"
 
+#. unit: race=elf
 #: data/core/units/elves/Marshal.cfg:27
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
@@ -1139,10 +1270,12 @@ msgstr ""
 "Однако, в редких случаях, когда эльф посвящает себя в войне, то несомненно, "
 "что он становится мастером стратегии."
 
+#. unit: race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
 msgstr "Эльф предвестник"
 
+#. unit: race=elf
 #: data/core/units/elves/Outrider.cfg:23
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
@@ -1165,10 +1298,12 @@ msgstr ""
 "захотят, особенно если они находятся на своей территории, такая тактика "
 "многих спасла от смерти."
 
+#. unit: race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
 msgstr "Эльф егерь"
 
+#. unit: race=elf
 #: data/core/units/elves/Ranger.cfg:20
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
@@ -1184,14 +1319,17 @@ msgstr ""
 "стрельбы из лука и искусством фехтования, в итоге получается мощнейший "
 "инструмент ведения боя."
 
+#. female
 #: data/core/units/elves/Ranger.cfg:177
 msgid "female^Elvish Ranger"
 msgstr "Эльфийка егерь"
 
+#. unit: race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
 msgstr "Эльф всадник"
 
+#. unit: race=elf
 #: data/core/units/elves/Rider.cfg:24
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
@@ -1210,10 +1348,12 @@ msgstr ""
 "Такая комбинация невероятной мобильности и огромной силы в бою является "
 "одним из величайших достижений эльфов, доступных им в битве."
 
+#. unit: race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
 msgstr "Эльф разведчик"
 
+#. unit: race=elf
 #: data/core/units/elves/Scout.cfg:23
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
@@ -1228,10 +1368,12 @@ msgstr ""
 "поцарапавшись. Возможно, это единственная из существующих кавалерий, которая "
 "передвигается в лесу быстрее, чем на открытом пространстве."
 
+#. unit: race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
 msgstr "Эльфийка шаман"
 
+#. unit: race=elf
 #: data/core/units/elves/Shaman.cfg:23
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
@@ -1251,10 +1393,12 @@ msgstr ""
 "Еще одна замечательная способность, используемая эльфами в битве, это "
 "способность лечения."
 
+#. unit: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
 msgstr "Эльф снайпер"
 
+#. unit: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
@@ -1267,14 +1411,17 @@ msgstr ""
 "стоит относиться серьёзно. Эльфийские снайперы (Elvish Sharpshooter) владеют "
 "стрельбой из лука в совершенстве."
 
+#. female
 #: data/core/units/elves/Sharpshooter.cfg:157
 msgid "female^Elvish Sharpshooter"
 msgstr "Эльфийка снайперша"
 
+#. unit: race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
 msgstr "Эльфийка фея"
 
+#. unit: race=elf
 #: data/core/units/elves/Shyde.cfg:21
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
@@ -1287,15 +1434,18 @@ msgstr ""
 "эмоциями, это прекрасное создание эльфийских лесов воплощает в себе грацию и "
 "тайну своего народа."
 
+#. attack: type=impact
 #: data/core/units/elves/Shyde.cfg:28 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
 msgstr "прикосновение феи"
 
+#. unit: race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
 msgstr "Эльфийка волшебница"
 
-#: data/core/units/elves/Sorceress.cfg:20
+#. unit: race=elf
+#: data/core/units/elves/Sorceress.cfg:21
 msgid ""
 "The world of faerie is far more potent than the corporeal world. Simply "
 "bringing some of this world into our own can have violent results. This is "
@@ -1314,10 +1464,12 @@ msgstr ""
 "Подобное может сделать та, которую другие расы называют \"волшебницей"
 "\" (Elvish Sorceress)."
 
+#. unit: race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
 msgstr "Эльфийка сильф"
 
+#. unit: race=elf
 #: data/core/units/elves/Sylph.cfg:20
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
@@ -1329,14 +1481,17 @@ msgstr ""
 "фееричной, и обычной природе. Они владеют с чудесами и иногда страшной "
 "силой, и мифы других рас о них полны страха перед эльфами."
 
+#. attack: type=impact
 #: data/core/units/elves/Sylph.cfg:40
 msgid "gossamer"
 msgstr "паутина"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
 msgstr "Наездник страшного волка"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
@@ -1360,10 +1515,12 @@ msgstr ""
 "сходный с тем, что используют оркские убийцы, поэтому удар лапой наносит "
 "наиболее губительные раны."
 
+#. unit: race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
 msgstr "Гоблин закалыватель"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
@@ -1376,10 +1533,12 @@ msgstr ""
 "продолжения битвы. Длинные копья помогают им компенсировать их низкий рост, "
 "а лучшие доспехи помогают им защищать их хрупкие тела."
 
+#. unit: race=goblin
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
 msgstr "Гоблин рыцарь"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Knight.cfg:20
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
@@ -1398,10 +1557,12 @@ msgstr ""
 "Волки, которыми они управляют, быстры и сильны с рождения, что делает их "
 "очень опасными в бою."
 
+#. unit: race=goblin
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
 msgstr "Гоблин мародёр"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Pillager.cfg:19
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
@@ -1414,20 +1575,24 @@ msgstr ""
 "поджигать дома и урожай своих врагов, также они используют сети, чтобы "
 "вносить беспорядок в ряды обороняющихся."
 
+#. attack: type=fire
 #: data/core/units/goblins/Pillager.cfg:34
 msgid "torch"
 msgstr "факел"
 
+#. attack: type=impact
 #: data/core/units/merfolk/Netcaster.cfg:31
 #: data/core/units/merfolk/Entangler.cfg:32
 #: data/core/units/goblins/Pillager.cfg:43
 msgid "net"
 msgstr "сеть"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
 msgstr "Гоблин буян"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Rouser.cfg:26
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
@@ -1442,10 +1607,12 @@ msgstr ""
 "заставляют своих более молодых собратьев по оружию биться и не отступать до "
 "последнего."
 
+#. unit: race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
 msgstr "Гоблин копьеносец"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Spearman.cfg:20
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
@@ -1467,10 +1634,12 @@ msgstr ""
 "вырождения рода орков, однако никто не знает их историю достаточно хорошо, "
 "чтобы выдвинуть окончательный ответ."
 
+#. unit: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
 msgstr "Наездник волка"
 
+#. unit: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:36
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
@@ -1495,10 +1664,12 @@ msgstr ""
 "кавалерии, эти всадники намного легче передвигаются в горах, хотя брод и "
 "леса все же замедляют их."
 
+#. unit: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
 msgid "Gryphon"
 msgstr "Грифон"
 
+#. unit: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:18
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
@@ -1508,10 +1679,12 @@ msgstr ""
 "Эти магические и мощные создания господствуют в небе. Грифоны одинаково "
 "опасны и умны, поэтому не стоит их беспокоить без веской причины."
 
+#. unit: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
 msgstr "Хозяин грифона"
 
+#. unit: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
@@ -1523,10 +1696,12 @@ msgstr ""
 "трепетать сердца рожденных ползать, ведь эта могущественная парочка может "
 "атаковать отовсюду."
 
+#. unit: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
 msgstr "Наездник грифона"
 
+#. unit: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:19
 msgid ""
 "Only a few are able to bond with the mighty Gryphons. Those who do may "
@@ -1537,10 +1712,12 @@ msgstr ""
 "может стать наездником грифона, сможет исследовать небесный мир на спине "
 "этих летающих созданий."
 
+#. unit: race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
 msgstr "Великий рыцарь"
 
+#. unit: race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
@@ -1555,6 +1732,7 @@ msgstr ""
 "серьезных кавалерийских сил. Великий рыцарь вселяет ужас пехоте и уже этого "
 "обычно бывает достаточно чтобы прорвать линию обороны."
 
+#. attack: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
 #: data/core/units/humans/Horse_Paladin.cfg:49
@@ -1562,10 +1740,12 @@ msgstr ""
 msgid "lance"
 msgstr "пика"
 
+#. unit: race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
 msgid "Knight"
 msgstr "Рыцарь"
 
+#. unit: race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
@@ -1583,10 +1763,12 @@ msgstr ""
 "готовности, тем не менее, растущий опыт использования этим вооружением идет "
 "только на пользу."
 
+#. unit: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
 msgstr "Улан"
 
+#. unit: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
@@ -1604,10 +1786,12 @@ msgstr ""
 "строя, и для пробивания оборонительных рубежей. Тем не менее, в защите их "
 "лучше не использовать."
 
+#. unit: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
 msgstr "Паладин"
 
+#. unit: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
@@ -1641,10 +1825,12 @@ msgstr ""
 "против магических и внеприродных вещей, и также имеет определённые умения в "
 "медицине и лечении."
 
+#. unit: race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
 msgstr "Всадник"
 
+#. unit: race=human
 #: data/core/units/humans/Horseman.cfg:20
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
@@ -1663,10 +1849,12 @@ msgstr ""
 "строя, но они должны избегать копьеносцев и лучников, для которых большие "
 "размеры и инерция всадников являются привлекательной целью."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "Лучник"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -1681,15 +1869,18 @@ msgstr ""
 "происхождения одинаково хорошо обращаются с луком и коротким мечом и очень "
 "полезны на поле битвы."
 
+#. attack: type=blade
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
 #: data/core/units/humans/Loyalist_Bowman.cfg:25
 msgid "short sword"
 msgstr "короткий меч"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
 msgstr "Гусар"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
@@ -1702,6 +1893,8 @@ msgstr ""
 "производит ужасающее впечатление, и подобная храбрость воспевается в "
 "легендах и песнях."
 
+#. attack: type=pierce
+#. attack: type=fire
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
@@ -1717,10 +1910,12 @@ msgstr ""
 msgid "crossbow"
 msgstr "арбалет"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
 msgstr "Кавалерист"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
@@ -1742,10 +1937,12 @@ msgstr ""
 "пространствах, поддержки дружественных солдат, также можно использовать в "
 "качестве разведки."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
 msgstr "Драгун"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
@@ -1759,10 +1956,12 @@ msgstr ""
 "мечом, эти солдаты могут уходить далеко вперед и удерживать взятые позиции. "
 "Их подвижность и устойчивость делает их очень ценными на поле боя."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
 msgstr "Дуэлянт"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
@@ -1789,16 +1988,19 @@ msgstr ""
 "достаточно долго, чтобы стать ветераном, как правило сделали это именно "
 "благодаря подобным уступкам прагматизму и желанию выжить."
 
+#. attack: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
 #: data/core/units/humans/Loyalist_Fencer.cfg:124
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:28
 msgid "sabre"
 msgstr "сабля"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
 msgstr "Фехтовальщик"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
@@ -1825,10 +2027,12 @@ msgstr ""
 "тяжелой пехоты, как бы издеваясь над той ценой, которую пришлось тем "
 "заплатить за свои тяжелые доспехи."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
 msgstr "Генерал"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_General.cfg:29
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
@@ -1838,10 +2042,12 @@ msgstr ""
 "значимых территорий королевств. Их опыт и выправка достаточны для того, "
 "чтобы строго выполнять приказы."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
 msgstr "Великий маршал"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
@@ -1853,10 +2059,12 @@ msgstr ""
 "которые доказали, что обладают боевой выучкой и выдержкой в индивидуальном "
 "бою. Они по праву являются одними из самых уважаемых в армии людей."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
 msgstr "Алебардщик"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
@@ -1885,10 +2093,12 @@ msgstr ""
 "ветеранам пикейщикам, доказавшим, они достаточно искусны, чтобы правильно "
 "распорядиться этим оружием на поле боя."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
 msgstr "Тяжелый пехотинец"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
 msgid ""
 "Heavy infantry are an unusual choice for outfitting troops. They are very "
@@ -1909,10 +2119,12 @@ msgstr ""
 "тяжесть их металлических доспехов и большие трудности в их передвижении, но "
 "во многих ситуациях эти солдаты полностью себя оправдывают."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
 msgstr "Железный мучитель"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
@@ -1937,10 +2149,12 @@ msgstr ""
 "они не могут бегать на поле битвы. Слишком часто они видели гибель своих "
 "отдаленных товарищей, бессильно пытаясь прийти на помощь."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
 msgstr "Дротикометатель"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
@@ -1958,10 +2172,12 @@ msgstr ""
 "расстоянии. Они могут метать дротики в противников с дальней дистанции, чаще "
 "всего безнаказанно, и удерживать свои позиции в рукопашной."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
 msgstr "Лейтенант"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:24
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
@@ -1970,10 +2186,12 @@ msgstr ""
 "Натренированные биться с мечом и арбалетом, лейтенанты возглавляют небольшие "
 "группы солдат, координируя их атаки."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
 msgstr "Лучник с длинным луком"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:20
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
@@ -1989,10 +2207,12 @@ msgstr ""
 "оружие, и большинство лучников жаждут приблизить тот день, когда начнут "
 "использовать его."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
 msgstr "Мастер лучник"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
@@ -2012,10 +2232,12 @@ msgstr ""
 "превосходят людей в стрельбе из лука, а их людские коллеги, завидуя им, "
 "предполагают, что это только из-за долголетия эльфов."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
 msgstr "Мастер оружия"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
@@ -2041,10 +2263,12 @@ msgstr ""
 "гарнизона замка или мастерами военной академии, должности, на которых их "
 "природное безрассудство не только приемлемо, но даже может принести пользу."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
 msgstr "Пикейщик"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
@@ -2061,14 +2285,17 @@ msgstr ""
 "нейтрализует любой наскок кавалерии, а со своей дисциплиной и тактикой они "
 "также могут удержать на расстоянии большинство пехоты."
 
+#. attack: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:53
 msgid "pike"
 msgstr "пика"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
 msgstr "Королевский гвардеец"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
@@ -2088,10 +2315,12 @@ msgstr ""
 "миссиях критической важности. Их надежность и мастерство в рукопашной "
 "схватке является их лучшим качеством, благодаря чему они хорошо известны."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
 msgstr "Сержант"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
@@ -2102,10 +2331,12 @@ msgstr ""
 "академии, ему нужен боевой опыт перед тем, как его лидерство станет значимым "
 "и признаваемым."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
 msgstr "Ударный пехотинец"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
@@ -2126,15 +2357,18 @@ msgstr ""
 "подобные доспехи. Недостатком подобной тяжелой брони, конечно является "
 "время, необходимое для вступления и выхода из битвы."
 
+#. attack: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:98
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
 msgid "morning star"
 msgstr "моргенштерн"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
 msgstr "Копьеносец"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:19
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
@@ -2150,10 +2384,12 @@ msgstr ""
 "являются основой всех армий, и их часто, преподав лишь основы боя, выдвигают "
 "на передовые позиции."
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
 msgstr "Меченосец"
 
+#. unit: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
 #, fuzzy
 msgid ""
@@ -2170,10 +2406,12 @@ msgstr ""
 "своего прежнего оружия. Меч тоже не лишен недостатков, но он удобнее, чем "
 "копье, и лучше подходит для ближнего боя."
 
+#. unit: race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
 msgstr "Маг"
 
+#. unit: race=human
 #: data/core/units/humans/Mage.cfg:23
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
@@ -2213,19 +2451,23 @@ msgstr ""
 "Физически слабые и незнакомые с приемами боя, маги в битве используют свое "
 "колдовское искусство в качестве великолепного инструмента."
 
+#. attack: type=fire
 #: data/core/units/humans/Mage.cfg:62
 #: data/core/units/humans/Mage_Silver.cfg:45
 msgid "missile"
 msgstr "снаряд"
 
+#. female
 #: data/core/units/humans/Mage.cfg:166
 msgid "female^Mage"
 msgstr "Волшебница"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
 msgstr "Старший маг"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Arch.cfg:20
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
@@ -2254,20 +2496,24 @@ msgstr ""
 "необходимости Старшие маги могут высвободить всю мощь своего искусства, так "
 "что никому мало не покажется."
 
+#. attack: type=fire
 #: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:37
 #: data/core/units/humans/Mage_Red.cfg:62
 msgid "fireball"
 msgstr "огненный шар"
 
+#. female
 #: data/core/units/humans/Mage_Arch.cfg:118
 msgid "female^Arch Mage"
 msgstr "Старшая волшебница"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
 msgstr "Великий маг"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Great.cfg:21
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
@@ -2293,14 +2539,17 @@ msgstr ""
 "Хотя они не являются воинами, но применение их искусства в битве заставляет "
 "других воинов столбенеть от ужаса."
 
+#. female
 #: data/core/units/humans/Mage_Great.cfg:119
 msgid "female^Great Mage"
 msgstr "Великая волшебница"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "Красный маг"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Red.cfg:20
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
@@ -2328,14 +2577,17 @@ msgstr ""
 "есть много трюков в запасе, включая и огонь, из-за которого они и получили "
 "свое прозвище."
 
+#. female
 #: data/core/units/humans/Mage_Red.cfg:144
 msgid "female^Red Mage"
 msgstr "Красная волшебница"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
 msgstr "Серебряный маг"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
@@ -2344,6 +2596,7 @@ msgstr ""
 "Серебряные Маги хорошо приспособились к своей магической природе и потому "
 "имеют высокую сопротивляемость к нефизическим атакам."
 
+#. unit: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
@@ -2382,14 +2635,17 @@ msgstr ""
 "и ценность их искусства на поле боя неоспорима, если только кому-то удастся "
 "уговорить мага применить их."
 
+#. female
 #: data/core/units/humans/Mage_Silver.cfg:150
 msgid "female^Silver Mage"
 msgstr "Серебряная волшебница"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
 msgstr "Белый маг"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_White.cfg:20
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
@@ -2412,6 +2668,7 @@ msgstr ""
 "Хотя они не обучались бою, они очень эффективные бойцы против магических и "
 "неприродных созданий."
 
+#. attack: type=arcane
 #: data/core/units/merfolk/Priestess.cfg:71
 #: data/core/units/merfolk/Diviner.cfg:74
 #: data/core/units/humans/Mage_of_Light.cfg:107
@@ -2419,14 +2676,17 @@ msgstr ""
 msgid "lightbeam"
 msgstr "луч света"
 
+#. female
 #: data/core/units/humans/Mage_White.cfg:264
 msgid "female^White Mage"
 msgstr "Белая волшебница"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
 msgstr "Светлый маг"
 
+#. unit: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:22
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
@@ -2444,14 +2704,17 @@ msgstr ""
 "неустанно работают ради установления жизни и порядка на землях, в которых "
 "живут."
 
+#. female
 #: data/core/units/humans/Mage_of_Light.cfg:232
 msgid "female^Mage of Light"
 msgstr "Светлая волшебница"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
 msgstr "Изгой"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw.cfg:18
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
@@ -2469,6 +2732,7 @@ msgstr ""
 "а также доступность боеприпасов. Изгои несколько хуже бьются днем, "
 "предпочитая скрываться под покровом ночи."
 
+#. attack: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
@@ -2476,11 +2740,13 @@ msgstr ""
 msgid "sling"
 msgstr "праща"
 
+#. female
 #: data/core/units/humans/Outlaw.cfg:105
 msgid "female^Outlaw"
 msgstr "Изгнанная"
 
 # ***
+#. female
 #: data/core/units/humans/Outlaw.cfg:108
 msgid ""
 "female^After some years of service, former 'footpads' rise up in the ranks "
@@ -2498,10 +2764,12 @@ msgstr ""
 "боеприпасов. Изгои несколько хуже бьются днем, предпочитая скрываться под "
 "покровом ночи."
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "Убийца"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
@@ -2518,19 +2786,23 @@ msgstr ""
 "спину. Смертельно опасные ночью, убийцы (Assassin) испытывают некоторые "
 "трудности, сражаясь при свете дня."
 
+#. attack: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
 msgid "knife"
 msgstr "нож"
 
+#. female
 #: data/core/units/humans/Outlaw_Assassin.cfg:167
 msgid "female^Assassin"
 msgstr "Убийца"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
 msgstr "Бандит"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
 msgid ""
 "Bandits are a motley collection of men, most of dubious background. They are "
@@ -2545,10 +2817,12 @@ msgstr ""
 "избивая жертв до полной покорности. Как и все преступники, они не любят "
 "драться днем, предпочитая работать ночью."
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
 msgstr "Скороход"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
@@ -2565,6 +2839,7 @@ msgstr ""
 "передвигаться позволяют им быть полезными в бою, они очень хороши для "
 "разорения противников, особенно под покровом темноты."
 
+#. attack: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
@@ -2572,10 +2847,12 @@ msgstr ""
 msgid "club"
 msgstr "дубинка"
 
+#. female
 #: data/core/units/humans/Outlaw_Footpad.cfg:165
 msgid "female^Footpad"
 msgstr "Скороход"
 
+#. female
 #: data/core/units/humans/Outlaw_Footpad.cfg:168
 msgid ""
 "female^These petty criminals are often derisively called 'footpads' by their "
@@ -2592,10 +2869,12 @@ msgstr ""
 "позволяют им быть полезными в бою, они очень хороши для разорения "
 "противников, особенно под покровом темноты."
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr "Беглец"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
@@ -2608,10 +2887,12 @@ msgstr ""
 "быть лучшими среди своих, но они не могут тягаться с профессиональными "
 "войсками официальных властей."
 
+#. female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:112
 msgid "female^Fugitive"
 msgstr "Беглянка"
 
+#. female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:115
 msgid ""
 "female^Veteran criminals become notorious for both their ruthlessness and "
@@ -2624,10 +2905,12 @@ msgstr ""
 "быть лучшими среди своих, но они не могут тягаться с профессиональными "
 "войсками официальных властей."
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
 msgstr "Разбойник"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
@@ -2636,10 +2919,12 @@ msgstr ""
 "Вооружённые тяжёлой булавой, эти опытные разбойники (Highwayman) — последние "
 "люди, которых вы хотели бы встретить на пустынной дороге поздно ночью."
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
 msgstr "Жулик"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
@@ -2656,14 +2941,17 @@ msgstr ""
 "точностью, а их долгие часы незаметного подкрадывания в ночи позволили им "
 "вольготно чувствовать себя в схватке в темноте."
 
+#. female
 #: data/core/units/humans/Outlaw_Rogue.cfg:141
 msgid "female^Rogue"
 msgstr "Бестия"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
 msgstr "Хулиган"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
@@ -2676,10 +2964,12 @@ msgstr ""
 "большинству из них суждено окончить жизнь за решёткой. Но при должном "
 "мастерстве и везении они могут стать опасными и неуловими преступниками."
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "Вор"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
@@ -2698,14 +2988,17 @@ msgstr ""
 "хорошего владения ножами. Они придерживаются не очень честной тактики в "
 "битвах, видя мало смысла в \"честном бою\"."
 
+#. female
 #: data/core/units/humans/Outlaw_Thief.cfg:365
 msgid "female^Thief"
 msgstr "Воровка"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
 msgstr "Громила"
 
+#. unit: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:19
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
@@ -2720,10 +3013,12 @@ msgstr ""
 "разбоем. Несмотря на их прошлое, все они используют практику оглушения своих "
 "жертв огромными дубинами."
 
+#. unit: race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "Крестьянин"
 
+#. unit: race=human
 #: data/core/units/humans/Peasant.cfg:20
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
@@ -2736,14 +3031,17 @@ msgstr ""
 "свои дома. Тем не менее, если вы атакуете своих врагов крестьянами, то вы "
 "явно уже потеряли все более сильные войска."
 
+#. attack: type=pierce
 #: data/core/units/humans/Peasant.cfg:25 data/core/units/humans/Peasant.cfg:34
 msgid "pitchfork"
 msgstr "вилы"
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
 msgstr "Житель леса"
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman.cfg:19
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoalburners, and others who eke out a "
@@ -2754,10 +3052,12 @@ msgstr ""
 "кто предпочитают жить там, где мир людей соприкасается с дикой природой. Ум "
 "и умение работать с деревом часто помогают им там, где оружие бесстльно."
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 msgid "Huntsman"
 msgstr "Охотник"
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
@@ -2790,10 +3090,12 @@ msgstr ""
 "Хорошие жители леса могут спасти жизни, снабдить пищей, а их умение "
 "обращаться с луком чрезвычайно полезно в бою."
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
 msgstr "Браконьер"
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
@@ -2812,10 +3114,12 @@ msgstr ""
 "Благодаря своему опыту, эти охотники лучше всего дерутся ночью, а также в "
 "лесах и на болотах."
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 msgid "Ranger"
 msgstr "Рейнджер"
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
@@ -2842,10 +3146,12 @@ msgstr ""
 "нанимать, но они могут поступить на службу как бандитам, так и служителям "
 "короны."
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
 msgstr "Зверолов"
 
+#. unit: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
@@ -2865,10 +3171,12 @@ msgstr ""
 "Их мастерство в охоте очень полезно в бою, позволяя им хорошо драться ночью, "
 "а также в лесах и на болотах."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
 msgstr "Русалка прорицательница"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Diviner.cfg:24
 msgid ""
 "Years of devotion will endow a priestess with great wisdom on the workings "
@@ -2884,10 +3192,12 @@ msgstr ""
 "убитых людьми на берегах Алавинна, но которые поднялись на следующий день в "
 "полном количестве, дабы сокрушить кровавого лорда."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
 msgstr "Русалка колдунья"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:19
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
@@ -2904,16 +3214,19 @@ msgstr ""
 "против своего народа запрещено — ведь она является огромной частью того, что "
 "защищает их народ от монстров, появляющихся из глубин."
 
+#. attack: type=impact
 #: data/core/units/merfolk/Siren.cfg:40
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:36
 msgid "water spray"
 msgstr "брызги воды"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
 msgstr "Запутывающий водяной"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
@@ -2927,10 +3240,12 @@ msgstr ""
 "превосходство водяных в их родной стихии и делает их расу особенно грозной "
 "для врагов вступивших в воду."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
 msgstr "Водяной боец"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Fighter.cfg:19
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
@@ -2939,6 +3254,8 @@ msgstr ""
 "(Merman Fighter) Морские создания, водяные сильны и быстры в любой водной "
 "среде, но неуклюжи на земле."
 
+#. attack: type=pierce
+#. attack: type=blade
 #: data/core/units/merfolk/Warrior.cfg:23
 #: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 #: data/core/units/merfolk/Fighter.cfg:24
@@ -2946,10 +3263,12 @@ msgstr ""
 msgid "trident"
 msgstr "трезубец"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
 msgstr "Водяной защитник"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
@@ -2963,10 +3282,12 @@ msgstr ""
 "противника. Во время отчаяния, они могут действовать и на земле, хотя не так "
 "хорошо, как существа с ногами."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
 msgstr "Водяной охотник"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Hunter.cfg:19
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
@@ -2979,10 +3300,12 @@ msgstr ""
 "водного дома. При необходимости, много водяных, занятых ловлей рыбы, станут "
 "добровольцами, пополняющими ряды их армии."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
 msgstr "Русалка посвящённая"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Initiate.cfg:22
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
@@ -2999,10 +3322,12 @@ msgstr ""
 "Несмотря на их слабость, они весьма грозны в битве, так как они могут "
 "поднимать потоки воды вокруг себя и обрушивать ее в своих противников."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
 msgstr "Водяной дротикометатель"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
 msgid ""
 "Those mermen who master the art of javelinry can become nearly as effective "
@@ -3016,10 +3341,12 @@ msgstr ""
 "значительно. В воде подвижность водяного делает его сильнее для врагов, не "
 "умеющих плавать."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
 msgstr "Водяной сетемёт"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
@@ -3040,10 +3367,12 @@ msgstr ""
 "противника на воде, и что более важно, для задержания солдат на суше, "
 "которые в других случаях могли бы быть действенными."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
 msgstr "Русалка жрица"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Priestess.cfg:22
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
@@ -3058,10 +3387,12 @@ msgstr ""
 "болезней. Благодаря стараниям и упорству, они также наделены духовной силой, "
 "способной оберегать своих сородичей от магических и неестественных созданий."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
 msgstr "Сирена"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Siren.cfg:22
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
@@ -3083,14 +3414,17 @@ msgstr ""
 "Сирены очень редко встречаются сухопутным созданиям, которые всегда с "
 "удивлением смотрят на них."
 
+#. attack: type=impact
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
 msgstr "прикосновение наяд"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
 msgstr "Водяной копьеносец"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
@@ -3107,10 +3441,12 @@ msgstr ""
 "полезны в рукопашной, как в глубинах, так и на поверхности, чего в  нельзя "
 "сказать о стрелах."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
 msgstr "Водяной тритон"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Triton.cfg:19
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
@@ -3120,10 +3456,12 @@ msgstr ""
 "Тритоны (Merman Triton) — мастера боя на море. Используя свои трезубцы, "
 "Тритоны легко побеждают любого глупца, осмелившегося войти в их родную среду."
 
+#. unit: race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
 msgstr "Водяной воин"
 
+#. unit: race=merman
 #: data/core/units/merfolk/Warrior.cfg:18
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
@@ -3132,10 +3470,12 @@ msgstr ""
 "Водяные воины (Merman Warrior) формируют ядро армии водяных. Вооруженные "
 "мощными трезубцами, они прогонят любого, кто осмелиться войти в их воды."
 
+#. unit: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:4
 msgid "Giant Spider"
 msgstr "Гигантский паук"
 
+#. unit: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:17
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
@@ -3146,14 +3486,17 @@ msgstr ""
 "могут кусать в ближнем бою, отравляя своим ядом противников, а также "
 "атаковать паутиной с дальней дистанции, замедляя своих врагов."
 
+#. attack: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:46
 msgid "web"
 msgstr "паутина"
 
+#. unit: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
 msgstr "Каракатица"
 
+#. unit: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
@@ -3165,19 +3508,23 @@ msgstr ""
 "сильными щупальцами или выпустить отравленные чернила с дистанции. Наилучший "
 "путь выжить при встрече с этими монстрами — быть на суше."
 
+#. attack: type=impact
 #: data/core/units/monsters/Tentacle.cfg:62
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
 msgid "tentacle"
 msgstr "щупальце"
 
+#. attack: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:46
 msgid "ink"
 msgstr "тушь"
 
+#. unit: race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
 msgstr "Огненный дракон"
 
+#. unit: race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:24
 msgid ""
 "A dragon is a legendary creature, normally seen only in fantastic tales. "
@@ -3201,18 +3548,22 @@ msgstr ""
 "Битва с драконом сама по себе считается величайшей опасностью, которая "
 "подходит лишь дуракам и храбрейшим из рыцарей."
 
+#. attack: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:28
 msgid "bite"
 msgstr "укус"
 
+#. attack: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:37
 msgid "tail"
 msgstr "хвост"
 
+#. unit: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
 msgstr "Гигантское грязевое чудище"
 
+#. unit: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
@@ -3223,6 +3574,7 @@ msgstr ""
 "земли и воды. Они атакуют, брызгая струей грязи в своих врагов или ударяя "
 "своими кулаками."
 
+#. attack: type=impact
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:27
@@ -3231,15 +3583,18 @@ msgstr ""
 msgid "fist"
 msgstr "кулак"
 
+#. attack: type=impact
 #: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 msgid "mud glob"
 msgstr "кусок грязи"
 
+#. unit: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
 msgstr "Гигантский скорпион"
 
+#. unit: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
@@ -3248,18 +3603,22 @@ msgstr ""
 "Даже обычный скорпион опасен, чего уж говорить о скорпионах размером с "
 "человека."
 
+#. attack: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
 msgstr "жало"
 
+#. attack: type=impact
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
 msgstr "клешни"
 
+#. unit: race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
 msgstr "Грязевое чудище"
 
+#. unit: race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:19
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
@@ -3268,19 +3627,23 @@ msgstr ""
 "Грязевые чудища — магические конструкции из земли и воды. Их атака поражает "
 "врагов струей грязи или своими кулаками."
 
+#. unit: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
 msgstr "Морская змея"
 
+#. unit: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:21
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr "Морские змеи — гигантские чудовища, способные обвивать собой суда."
 
+#. unit: race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
 msgid "Skeletal Dragon"
 msgstr "Скелетный Дракон"
 
+#. unit: race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
@@ -3295,14 +3658,17 @@ msgstr ""
 "более чем грудой костей, но лишь немногие посчитавшие так люди прожили "
 "достаточно, чтобы изменить своё мнение."
 
+#. attack: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
 msgstr "челюсти"
 
+#. unit: race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
 msgstr "Щупальце из глубины"
 
+#. unit: race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
@@ -3311,14 +3677,17 @@ msgstr ""
 "Щупальце из глубины — это придаток большого монстра, который скрывается под "
 "волнами."
 
+#. unit: race=monster
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
 msgstr "Волк"
 
+#. unit: race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
 msgstr "Йети"
 
+#. unit: race=monster
 #: data/core/units/monsters/Yeti.cfg:18
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
@@ -3329,10 +3698,12 @@ msgstr ""
 "живущие высоко на заснеженных горах. В живых осталось считанные единицы, и "
 "их существование для многих уже под сомнением."
 
+#. unit: race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
 msgstr "Наг боец"
 
+#. unit: race=naga
 #: data/core/units/nagas/Fighter.cfg:20
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
@@ -3347,14 +3718,17 @@ msgstr ""
 "способны дышать в воде, боясь спуститься в пучину, они малы и несколько "
 "слабы телом, но чаще всего, намного проворнее своих оппонентов."
 
+#. female
 #: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
 msgstr "Нага боец"
 
+#. unit: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
 msgstr "Наг наёмник"
 
+#. unit: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:20
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
@@ -3370,10 +3744,12 @@ msgstr ""
 "земле, а их возможность плавать позволяет им быть смертельно подвижными в "
 "воде."
 
+#. female
 #: data/core/units/nagas/Myrmidon.cfg:67
 msgid "Nagini Myrmidon"
 msgstr "Нага наёмница"
 
+#. female
 #: data/core/units/nagas/Myrmidon.cfg:70
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
@@ -3389,10 +3765,12 @@ msgstr ""
 "земле, а их возможность плавать позволяет им быть смертельно подвижными в "
 "воде."
 
+#. unit: race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
 msgstr "Наг воин"
 
+#. unit: race=naga
 #: data/core/units/nagas/Warrior.cfg:19
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
@@ -3409,10 +3787,12 @@ msgstr ""
 "Это делает их боеспособными на суше, но трение воды лучше влияет на "
 "возможность сделать это."
 
+#. female
 #: data/core/units/nagas/Warrior.cfg:66
 msgid "Nagini Warrior"
 msgstr "Нага воительница"
 
+#. female
 #: data/core/units/nagas/Warrior.cfg:69
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
@@ -3429,10 +3809,12 @@ msgstr ""
 "Это делает их боеспособными на суше, но трение воды лучше влияет на "
 "возможность сделать это."
 
+#. unit: race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
 msgstr "Огр"
 
+#. unit: race=ogre
 #: data/core/units/ogres/Ogre.cfg:21
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
@@ -3444,14 +3826,17 @@ msgstr ""
 "похожие на людей, но большие и уродливые. Хотя их очень просто можно "
 "обмануть или от них убежать, но их силу не стоит недооценивать."
 
+#. attack: type=blade
 #: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
 msgid "cleaver"
 msgstr "нож мясника"
 
+#. unit: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
 msgstr "Молодой огр"
 
+#. unit: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:21
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
@@ -3462,10 +3847,12 @@ msgstr ""
 "Они не могут мастерски управляться с оружием, но не обольщайтесь, им дана "
 "огромная сила."
 
+#. unit: race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
 msgstr "Орк лучник"
 
+#. unit: race=orc
 #: data/core/units/orcs/Archer.cfg:19
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
@@ -3481,10 +3868,12 @@ msgstr ""
 "подготовки. Несмотря на это, их оружие все же может быть достаточно опасным, "
 "и не надо забывать, что они редко ходят одни."
 
+#. unit: race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
 msgstr "Орк убийца"
 
+#. unit: race=orc
 #: data/core/units/orcs/Assassin.cfg:22
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
@@ -3499,14 +3888,17 @@ msgstr ""
 "необычайно проворны. Хотя они редко убивают кого-либо, они — неоценимая "
 "помощь основным подразделениям орков."
 
+#. attack: type=blade
 #: data/core/units/orcs/Assassin.cfg:79 data/core/units/orcs/Slayer.cfg:36
 msgid "throwing knives"
 msgstr "метательный нож"
 
+#. unit: race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
 msgstr "Орк арбалетчик"
 
+#. unit: race=orc
 #: data/core/units/orcs/Crossbowman.cfg:18
 msgid ""
 "Orcish crossbows are crude imitations of human or dwarvish design; a "
@@ -3520,10 +3912,12 @@ msgstr ""
 "недостаток изящества они с компенсируют количеством."
 
 # ***
+#. unit: race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
 msgstr "Орк новобранец"
 
+#. unit: race=orc
 #: data/core/units/orcs/Grunt.cfg:19
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
@@ -3534,10 +3928,12 @@ msgstr ""
 "сравнению с бойцами людей или эльфов, они могут наносить более мощные удары "
 "и причинить больше повреждений перед смертью."
 
+#. unit: race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
 msgstr "Орк лидер"
 
+#. unit: race=orc
 #: data/core/units/orcs/Leader.cfg:25
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
@@ -3552,10 +3948,12 @@ msgstr ""
 "взаимоотношений с другими представителями рода, особенно гоблинами, "
 "вдохновляя тех вести бой с необычайной смелостью."
 
+#. unit: race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
 msgstr "Орк правитель"
 
+#. unit: race=orc
 #: data/core/units/orcs/Ruler.cfg:24
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
@@ -3571,15 +3969,18 @@ msgstr ""
 "битву и отдавать приказы, которые будут исполняться не из-за страха, но из-"
 "за преданности."
 
+#. attack: type=blade
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:33
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:32
 msgid "greatsword"
 msgstr "большой меч"
 
+#. unit: race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
 msgstr "Орк разрушитель"
 
+#. unit: race=orc
 #: data/core/units/orcs/Slayer.cfg:22
 msgid ""
 "The larger or more skilled orcish assassins are called 'Slayers' by their "
@@ -3594,10 +3995,12 @@ msgstr ""
 "инструмент, и его применение на поле боя часто является настоящей причиной "
 "превосходства орков."
 
+#. unit: race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
 msgstr "Орк с тяжелым арбалетом"
 
+#. unit: race=orc
 #: data/core/units/orcs/Slurbow.cfg:21
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
@@ -3619,10 +4022,12 @@ msgstr ""
 "Орки награждают подобным оружием только самых сильных и хитрых своих "
 "лучников."
 
+#. unit: race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
 msgstr "Орк повелитель"
 
+#. unit: race=orc
 #: data/core/units/orcs/Sovereign.cfg:25
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
@@ -3639,10 +4044,12 @@ msgstr ""
 "проблему оркского нашествия — убить этого редкого представителя орков, "
 "способного держать их вместе."
 
+#. unit: race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
 msgstr "Орк военачальник"
 
+#. unit: race=orc
 #: data/core/units/orcs/Warlord.cfg:19
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
@@ -3653,10 +4060,12 @@ msgstr ""
 "неуемной силой. Хорошо владеющие мечом и луком, эти воины возглавляют боевые "
 "группы орков."
 
+#. unit: race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
 msgstr "Орк воин"
 
+#. unit: race=orc
 #: data/core/units/orcs/Warrior.cfg:18
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
@@ -3667,10 +4076,12 @@ msgstr ""
 "орков и очень грозны для врагов. У них только одна слабость — неспособность "
 "противостоять стрелам."
 
+#. unit: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "Saurian Ambusher"
 msgstr "Скрытный ящер"
 
+#. unit: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
@@ -3688,10 +4099,12 @@ msgstr ""
 "доспехах, воины ящеров могут использовать небольшой зазор в линиях "
 "противника и заставить его пожалеть о тактической ошибке."
 
+#. unit: race=lizard
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
 msgstr "Ящер прорицатель"
 
+#. unit: race=lizard
 #: data/core/units/saurians/Augur.cfg:21
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
@@ -3703,16 +4116,19 @@ msgstr ""
 "колдовства. Так как она мало кому понятна, она охватывает страхом тех, "
 "против кого используется."
 
+#. attack: type=cold
 #: data/core/units/saurians/Soothsayer.cfg:75
 #: data/core/units/saurians/Augur.cfg:75
 #: data/core/units/saurians/Oracle.cfg:75
 msgid "curse"
 msgstr "проклятие"
 
+#. unit: race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "Saurian Flanker"
 msgstr "Фланговый ящер"
 
+#. unit: race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven, or human "
@@ -3727,10 +4143,12 @@ msgstr ""
 "противник скоро обнаружит, что его соединения поддержки окружены этими "
 "созданиями."
 
+#. unit: race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
 msgstr "Ящер оракул"
 
+#. unit: race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
@@ -3747,10 +4165,12 @@ msgstr ""
 "несомненно являются могущественными в своей странной магии, и их следует "
 "опасаться."
 
+#. unit: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
 msgstr "Ящер застрельщик"
 
+#. unit: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
@@ -3770,10 +4190,12 @@ msgstr ""
 "конечности позволяют наносить копьем ощутимые повреждения руками или будучи "
 "брошенным."
 
+#. unit: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
 msgstr "Ящер предсказатель"
 
+#. unit: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
@@ -3785,10 +4207,12 @@ msgstr ""
 "Известно, что некоторые из них владеют навыками медицины, которые весьма "
 "полезны при возникающей против них битве."
 
+#. unit: race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
 msgstr "Великий тролль"
 
+#. unit: race=troll
 #: data/core/units/trolls/Great.cfg:19
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
@@ -3802,10 +4226,12 @@ msgstr ""
 "сила и хитрость являются источников всех легенд о троллях, и эти легенды "
 "ничуть не преуменьшают их великолепие."
 
+#. unit: race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
 msgstr "Тролль герой"
 
+#. unit: race=troll
 #: data/core/units/trolls/Hero.cfg:18
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
@@ -3816,10 +4242,12 @@ msgstr ""
 "характеризующими их расу. В обществе, где правыми всегда являются "
 "сильнейшие, они становятся героями своего народа."
 
+#. unit: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
 msgstr "Тролль камнеметатель"
 
+#. unit: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
@@ -3834,10 +4262,12 @@ msgstr ""
 "которой изготовлены эти мешки, легко может быть переделана в примитивную "
 "пращу."
 
+#. unit: race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
 msgstr "Тролль"
 
+#. unit: race=troll
 #: data/core/units/trolls/Troll.cfg:18
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
@@ -3855,10 +4285,12 @@ msgstr ""
 "в качестве оружия, напоминают продолжения их рук: столь велико мастерство "
 "владения ими."
 
+#. unit: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
 msgstr "Тролль воин"
 
+#. unit: race=troll
 #: data/core/units/trolls/Warrior.cfg:20
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
@@ -3879,10 +4311,12 @@ msgstr ""
 "Зная, как опасен обычный тролль в битве, следует быть осторожным, подбираясь "
 "к троллю, который обед в полную броню."
 
+#. unit: race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
 msgstr "Тролль детеныш"
 
+#. unit: race=troll
 #: data/core/units/trolls/Whelp.cfg:19
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
@@ -3896,10 +4330,12 @@ msgstr ""
 "нормально ходить, неумело передвигаясь на всех четырех конечностях, но все "
 "подобные проблемы вызваны грубой силой представителей этой расы."
 
+#. unit: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
 msgstr "Упырь"
 
+#. unit: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
@@ -3920,10 +4356,12 @@ msgstr ""
 "Именно из-за подобных вещей некроманты находятся вне закона и преследуются с "
 "особой жестокостью во всех цивилизованных землях."
 
+#. unit: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
 msgstr "Трупоед"
 
+#. unit: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
@@ -3941,10 +4379,12 @@ msgstr ""
 "каким-то образом могли быть сделаны из живых людей. Об этом процессе почти "
 "ничего не известно, но он не может не быть кошмарным."
 
+#. unit: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
 msgid "Soulless"
 msgstr "Бездушный"
 
+#. unit: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:22
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
@@ -3958,6 +4398,8 @@ msgstr ""
 "слабы. Прикосновение битвы может пробудить их, однако их создание намного "
 "более сложно."
 
+#. attack: type=impact
+#. attack: type=arcane
 #: data/core/units/undead/Corpse_Walking.cfg:72
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:119
@@ -3966,10 +4408,12 @@ msgstr ""
 msgid "touch"
 msgstr "прикосновение"
 
+#. unit: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
 msgid "Walking Corpse"
 msgstr "Ходячий труп"
 
+#. unit: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:21
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
@@ -3980,10 +4424,12 @@ msgstr ""
 "магией. Хотя и слабые в бою, эти зомби могут распространять чуму среди "
 "убитых ими, увеличивая армию мертвецов."
 
+#. unit: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
 msgstr "Древний лич"
 
+#. unit: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
@@ -3993,11 +4439,13 @@ msgstr ""
 "лича (Ancient Lich), следует опасаться гораздо более худших вещей, нежели "
 "смерть."
 
+#. attack: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:46
 msgid "chill tempest"
 msgstr "волна холода"
 
+#. attack: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:59
 #: data/core/units/undead/Necro_Lich.cfg:58
@@ -4006,10 +4454,12 @@ msgstr "волна холода"
 msgid "shadow wave"
 msgstr "волна тени"
 
+#. unit: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Темный адепт"
 
+#. unit: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:25
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
@@ -4032,16 +4482,19 @@ msgstr ""
 "\n"
 "Они вооружены только одним оружием — искусством, которому научились сами."
 
+#. attack: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
 #: data/core/units/undead/Necromancer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
 msgid "chill wave"
 msgstr "волна холода"
 
+#. female
 #: data/core/units/undead/Necro_Dark_Adept.cfg:199
 msgid "female^Dark Adept"
 msgstr "Темная посвященная"
 
+#. female
 #: data/core/units/undead/Necro_Dark_Adept.cfg:203
 msgid ""
 "female^To attract any practitioners, the lure of black magic must be a great "
@@ -4064,10 +4517,12 @@ msgstr ""
 "\n"
 "Они вооружены только одним оружием — искусством, которому научились сами."
 
+#. unit: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "Темный колдун"
 
+#. unit: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:20
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -4102,10 +4557,12 @@ msgstr ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 
+#. female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
 msgid "Dark Sorceress"
 msgstr "Темная колдунья"
 
+#. female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:182
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -4140,10 +4597,12 @@ msgstr ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 
+#. unit: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
 msgstr "Лич"
 
+#. unit: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:23
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
@@ -4166,10 +4625,12 @@ msgstr ""
 "просто продливается. Но уже само то, что этот вопрос имеет место, говорит о "
 "том успехе, который достигли тёмные колдуны."
 
+#. unit: race=human
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
 msgstr "Некромант"
 
+#. unit: race=human
 #: data/core/units/undead/Necromancer.cfg:21
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
@@ -4189,18 +4650,22 @@ msgstr ""
 "Эта возможность — первый шаг, который они совершают, чтобы обмануть смерть, "
 "что является их конечной целью."
 
+#. attack: type=impact
 #: data/core/units/undead/Necromancer.cfg:26
 msgid "plague staff"
 msgstr "чумный посох"
 
+#. female
 #: data/core/units/undead/Necromancer.cfg:181
 msgid "female^Necromancer"
 msgstr "Некромантка"
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:4
 msgid "Banebow"
 msgstr "Проклятый лучник"
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:17
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
@@ -4215,10 +4680,12 @@ msgstr ""
 "ведет только злоба, порожденная муками их пустого и бессмысленного "
 "существования."
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
 msgstr "Метатель костей"
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
@@ -4235,10 +4702,12 @@ msgstr ""
 "неудачливыми противниками просто \"Метателями костей\" (Bone Shooter), эти "
 "отвратительные существа сеют страх среди всех живых."
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
 msgstr "Мертвый всадник"
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:20
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
@@ -4249,10 +4718,12 @@ msgstr ""
 "раньше вместо лошади, мертвые всадники (Chocobone) могут передвигаться "
 "быстрее, чем большинство конных отрядов."
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
 msgstr "Рыцарь смерти"
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
@@ -4265,10 +4736,12 @@ msgstr ""
 "качестве рыцарей смерти. Вооруженные оружием, что имели при жизни, они "
 "командуют мертвецами для осуществления своей мести."
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
 msgstr "Клинок смерти"
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
@@ -4284,10 +4757,12 @@ msgstr ""
 "монстры хрупки, для ходячих трупов они очень быстры, как в движении, так и в "
 "обращении со своими клинками."
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
 msgstr "Дрог"
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
 msgid ""
 "There is little left, in these towering ruins, of the men they once were. "
@@ -4302,10 +4777,12 @@ msgstr ""
 "освобождение, за мир, который приобретается только силой оружия. Потому они "
 "дерутся, бездумно и беспощадно."
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
 msgstr "Возрожденный"
 
+#. unit: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:17
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
@@ -4320,10 +4797,12 @@ msgstr ""
 "полезный инструмент в битве: не чувствующий боли бесстрашный воин, "
 "сражающийся до победного конца."
 
+#. unit: race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
 msgstr "Скелет"
 
+#. unit: race=undead
 #: data/core/units/undead/Skeleton.cfg:18
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
@@ -4336,10 +4815,12 @@ msgstr ""
 "они не боятся ни боли, ни смерти, а их присутствие устрашит любого, кто "
 "захочет сразиться их хозяином."
 
+#. unit: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
 msgstr "Скелет лучник"
 
+#. unit: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
@@ -4353,10 +4834,12 @@ msgstr ""
 "биться еще раз. Управляемые своим хозяином, эти солдаты выполнят любую "
 "задачу, стоящую перед ними, ведь смерть не страшна тем, кто уже умер."
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
 msgstr "Призрак"
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:20
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
@@ -4375,16 +4858,19 @@ msgstr ""
 "наполняет паруса корабля. Благодаря этой уловке дух, пойманный в нерушимую "
 "тюрьму, будет выполнять любое задание своего хозяина."
 
+#. attack: type=cold
 #: data/core/units/undead/Spirit_Wraith.cfg:31
 #: data/core/units/undead/Spirit_Ghost.cfg:131
 #: data/core/units/undead/Spirit_Spectre.cfg:56
 msgid "wail"
 msgstr "вопль"
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
 msgstr "Ночной ужас"
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:17
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
@@ -4396,10 +4882,12 @@ msgstr ""
 "скрываемые ими. Этих ужасных созданий редко видели живые, а тем, кто выжил, "
 "было не до того, чтобы изучать своих врагов."
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
 msgstr "Тень"
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:18
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
@@ -4414,10 +4902,12 @@ msgstr ""
 "\n"
 "На этот вопрос очень легко ответит некромант."
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
 msgstr "Фантом"
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
@@ -4436,15 +4926,18 @@ msgstr ""
 "ними представляет то, что они, скорее всего, являются предвестниками более "
 "опасных сил, следующих вслед за ними."
 
+#. attack: type=arcane
 #: data/core/units/undead/Spirit_Wraith.cfg:20
 #: data/core/units/undead/Spirit_Spectre.cfg:45
 msgid "baneblade"
 msgstr "проклятый меч"
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
 msgstr "Привидение"
 
+#. unit: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:16
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
@@ -4458,10 +4951,12 @@ msgstr ""
 "сквозь них, будто бы они сотканы из воздуха. Вселяет страх мысль, что эти "
 "твари непобедимы, что, к счастью, далеко от правды."
 
+#. unit: race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
 msgstr "Древний леший"
 
+#. unit: race=wose
 #: data/core/units/wose/Ancient.cfg:20
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
@@ -4483,15 +4978,18 @@ msgstr ""
 "Такие происшествия — это все, что известно о том, как предположительно "
 "выглядят самые древние лешие."
 
+#. attack: type=impact
 #: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
 #: data/core/units/wose/Elder.cfg:91
 msgid "crush"
 msgstr "дробление"
 
+#. unit: race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
 msgstr "Старший леший"
 
+#. unit: race=wose
 #: data/core/units/wose/Elder.cfg:19
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
@@ -4516,10 +5014,12 @@ msgstr ""
 "Лешие не являются воинами, тем не менее, любой, кто разозлит их, очень "
 "сильно пожалеет, ведь они обладают огромной силой."
 
+#. unit: race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
 msgstr "Леший"
 
+#. unit: race=wose
 #: data/core/units/wose/Wose.cfg:20
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "
