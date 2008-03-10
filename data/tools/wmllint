@@ -73,8 +73,10 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 #
-# You can suppress warnings about newlines in messages with "wmllint:
-# display on", and re-enable them with "wmllint: display off".
+# You can suppress warnings about newlines in messages (and attempts to
+# replair them) with "wmllint: display on", and re-enable them with
+# "wmllint: display off".  The repair attempts (only) may also be
+# suppressed with the --stringfreeze option.
 
 import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
@@ -696,7 +698,7 @@ def sanity_check(filename, lines):
             except TypeError:
                 pass
     # Sanity-check recruit and recruitment_pattern.
-    # This code has a limitation; if there arre multiple instances of
+    # This code has a limitation; if there are multiple instances of
     # recruit and recruitment_pattern (as can happen if these lists
     # vary by EASY/NORMAL/HARD level) this code will only record the
     # last of each for later consistency checking.
@@ -828,7 +830,8 @@ def sanity_check(filename, lines):
                 if nv != value:
                     print '"%s", line %d: double space after sentence end' \
                           % (filename, i+1)
-                    lines[i] = sentence_end.sub(" ", lines[i])
+                    if not stringfreeze:
+                        lines[i] = sentence_end.sub(" ", lines[i])
             elif  key == "description":
                 if (in_trait or in_objective) and not has_tr_mark:
                     print '"%s", line %d: description in [objectives] needs translation mark' \
@@ -1912,6 +1915,7 @@ if __name__ == '__main__':
     future = False
     oldversion = 'older'
     revert = False
+    stringfreeze = False
     stripcr = False
     upconvert = True
     verbose = 0
@@ -1936,6 +1940,8 @@ if __name__ == '__main__':
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
+        elif switch in ('-S', '--stringfreeze'):
+            stringfreeze = True
         elif switch in ('-v', '--verbose'):
             verbose += 1
     if clean and revert:
