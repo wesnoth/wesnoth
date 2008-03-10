@@ -72,6 +72,9 @@
 # bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
+#
+# You can suppress warnings about newlines in messages with "wmllint:
+# display on", and re-enable them with "wmllint: display off".
 
 import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
@@ -1799,16 +1802,30 @@ def translator(filename, mapxforms, textxform, versions):
     linecount = 1
     startline = None
     depth = quotecount = 0
+    display_state = False
+    singleline = False
     for i in range(len(transformed)):
         if transformed[i] == '\n':
+            if singleline:
+                singleline = False
+                if not display_state and quotecount % 2:
+                    print >>sys.stderr, '"%s", line %d: newline within string' % (filename, linecount)
             linecount += 1
         elif transformed[i] == '{':
             if depth == 0:
                 unclosed = startline = linecount
                 quotecount = 0
             depth += 1
+        elif transformed[i-7:i] == "message" and not transformed[i] == ']':
+            singleline = True
+        elif re.match(" *wmllint: *display +on", transformed[i:]):
+            display_state = True
+        elif re.match(" *wmllint: *display +off", transformed[i:]):
+            display_state = False
         elif transformed[i] == '"':
             quotecount += 1
+            if quotecount % 2 == 0:
+                singleline = False
         elif transformed[i] == '}':
             depth -= 1
             if depth == 0:
