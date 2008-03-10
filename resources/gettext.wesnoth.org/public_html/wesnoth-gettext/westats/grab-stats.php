@@ -79,25 +79,28 @@ foreach($packs as $package){
 	fclose($file); 
 }
 
-foreach($extrapacks as $package){
-	$stats = array();
-	$domain = getdomain($package);
-	$languages = file_get_contents($extrabasedir . "/" . $package . "/po/LINGUAS");
-	$languages = substr($languages, 0, strlen($languages)-1);
-	$langs = explode(" ", $languages);
-	echo "<h2>Getting stats for package $package</h2>";
-	$stats["_pot"]=getstats($extrabasedir . "/" . $package . "/po/" . $domain . ".pot");
-	if(!file_exists("stats/" . $domain)){
-		system("mkdir stats/" . $domain);
-	}
-	foreach($langs as $lang){
-		echo "Getting stats for lang $lang<br/>";
-		$pofile = $extrabasedir . "/" . $package . "/po/" . $lang . ".po";
-		$stats[$lang]=getstats($pofile);
-	}
-	$serialized = serialize($stats);
-	$file = fopen("stats/" . $domain . "/stats", "wb");
-	fwrite($file, $serialized);
-	fclose($file); 
-}
+// TODO:
+// Adjust wescamp stats to work nicely with the new server interface
+// deactivated for the moment
+//foreach($extrapacks as $package){
+//	$stats = array();
+//	$domain = getdomain($package);
+//	$languages = file_get_contents($extrabasedir . "/" . $package . "/po/LINGUAS");
+//	$languages = substr($languages, 0, strlen($languages)-1);
+//	$langs = explode(" ", $languages);
+//	echo "<h2>Getting stats for package $package</h2>";
+//	$stats["_pot"]=getstats($extrabasedir . "/" . $package . "/po/" . $domain . ".pot");
+//	if(!file_exists("stats/" . $domain)){
+//		system("mkdir stats/" . $domain);
+//	}
+//	foreach($langs as $lang){
+//		echo "Getting stats for lang $lang<br/>";
+//		$pofile = $extrabasedir . "/" . $package . "/po/" . $lang . ".po";
+//		$stats[$lang]=getstats($pofile);
+//	}
+//	$serialized = serialize($stats);
+//	$file = fopen("stats/" . $domain . "/stats", "wb");
+//	fwrite($file, $serialized);
+//	fclose($file); 
+//}
 ?>
