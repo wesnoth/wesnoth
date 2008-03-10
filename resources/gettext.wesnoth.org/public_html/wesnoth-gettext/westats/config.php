@@ -12,9 +12,9 @@ $msgfmt="/usr/bin/msgfmt";
 
 $branch="1.4";
 
-$trunkbasedir="/export/sunsite/users/ivanovic/source/trunk/";
-$branchbasedir="/export/sunsite/users/ivanovic/source/" . $branch . "/";
-$extrabasedir="/export/sunsite/users/ivanovic/source/wescamp-i18n/";
+$trunkbasedir="/public/vhost/w/wesnoth/source/trunk/";
+$branchbasedir="/public/vhost/w/wesnoth/source/" . $branch . "/";
+$extrabasedir="/public/vhost/w/wesnoth/source/wescamp-i18n/";
 
 //$packages = file_get_contents($basedir . "/po/DOMAINS");
 //$packages = substr($packages, 0, strlen($packages)-1);
