@@ -1,24 +1,23 @@
-#!/bin/sh
-svncheckoutpath=/public/vhost/w/wesnoth/source
+#!/bin/bash
+SVNCHECKOUTPATH=/public/vhost/w/wesnoth/source
 
 #update the 1.4 checkout
-cd $svncheckoutpath/1.4/po
-#find . -name "*.po" -exec rm {} \;
+cd $SVNCHECKOUTPATH/1.4/po
 svn cleanup
 svn up
 
 #update the trunk checkout
-cd $svnecheckoutpath/trunk/po
-#find . -name "*.po" -exec rm {} \;
+cd $SVNCHECKOUTPATH/trunk/po
 svn cleanup
 svn up
 
 #update the wescamp checkout
-cd $svnecheckoutpath/wescamp-i18n/
-#find . -name "*.po" -exec rm {} \;
-svn cleanup
-svn up
+#cd $SVNCHECKOUTPATH/wescamp-i18n/
+#svn cleanup
+#svn up
 
 #update the stats
 cd ~/html/gettext/
-php grab-stats.php
+echo update started at `date` >> ~/g.w.o-updates.log
+php grab-stats.php >> ~/g.w.o-updates.log
+echo update completed at `date` >> ~/g.w.o-updates.log
