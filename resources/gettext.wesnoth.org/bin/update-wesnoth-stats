@@ -1,6 +1,8 @@
 #!/bin/bash
 SVNCHECKOUTPATH=/public/vhost/w/wesnoth/source
 
+echo update started at `date` >> ~/g.w.o-updates.log
+
 #update the 1.4 checkout
 cd $SVNCHECKOUTPATH/1.4/po
 svn cleanup
@@ -18,6 +20,5 @@ svn up
 
 #update the stats
 cd ~/html/gettext/
-echo update started at `date` >> ~/g.w.o-updates.log
-php grab-stats.php >> ~/g.w.o-updates.log
+php grab-stats.php 
 echo update completed at `date` >> ~/g.w.o-updates.log
