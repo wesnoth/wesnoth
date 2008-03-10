@@ -10,17 +10,17 @@
 // the msgfmt program path
 $msgfmt="/usr/bin/msgfmt";
 
-$branch="1.2";
+$branch="1.4";
 
-$trunkbasedir="/home/isaac/wesnoth/wesnoth/";
-$branchbasedir="/home/isaac/wesnoth/wesnoth-" . $branch . "/";
-$extrabasedir="/home/isaac/wesnoth/wescamp-i18n/";
+$trunkbasedir="/export/sunsite/users/ivanovic/source/trunk/";
+$branchbasedir="/export/sunsite/users/ivanovic/source/" . $branch . "/";
+$extrabasedir="/export/sunsite/users/ivanovic/source/wescamp-i18n/";
 
 //$packages = file_get_contents($basedir . "/po/DOMAINS");
 //$packages = substr($packages, 0, strlen($packages)-1);
-$corepackages = "wesnoth wesnoth-lib wesnoth-httt wesnoth-tutorial";
+$corepackages = "wesnoth wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-httt wesnoth-tutorial";
 //$packages = trim(system("grep ^SUBDIRS " . $basedir . "/po/Makefile.am | cut -d= -f2"));
-$packages = "wesnoth wesnoth-editor wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-tutorial wesnoth-manpages wesnoth-manual wesnoth-httt wesnoth-did wesnoth-ei wesnoth-l wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-trow wesnoth-tb wesnoth-tsg wesnoth-utbs wesnoth-aoi wesnoth-thot";
+$packages = "wesnoth wesnoth-lib wesnoth-editor wesnoth-units wesnoth-multiplayer wesnoth-tutorial wesnoth-manpages wesnoth-manual wesnoth-aoi wesnoth-did wesnoth-ei wesnoth-httt wesnoth-l wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-thot wesnoth-trow wesnoth-tsg wesnoth-utbs";
 //get unofficial packages
 $dir = opendir($extrabasedir);
 

@@ -40,4 +40,5 @@ $langs['tl'] = 'Filipino';
 $langs['tr'] = 'Turkish';
 //$langs['vi'] = 'Vietnamese';
 $langs['zh_CN'] = 'Chinese';
+$langs['zh_TW'] = 'Chinese (Taiwan)';
 ?>

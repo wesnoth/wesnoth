@@ -1,16 +1,18 @@
 #!/bin/sh
-cd $HOME/wesnoth/wesnoth-1.2/po
+
+
+cd $HOME/source/1.4/po
 find . -name "*.po" -exec rm {} \;
 svn cleanup
 svn up
 
-cd $HOME/wesnoth/wesnoth/po
+cd $HOME/source/trunk/po
 find . -name "*.po" -exec rm {} \;
 svn cleanup
 svn up
 
-cd $HOME/wesnoth/wescamp-i18n/
+cd $HOME/source/wescamp-i18n/
 find . -name "*.po" -exec rm {} \;
 svn cleanup
 svn up
-wget -q -O /dev/null http://pulsar.unizar.es/~isaac/wesnoth-gettext/westats/grab-stats.php
+php html/gettext/grab-stats.php
