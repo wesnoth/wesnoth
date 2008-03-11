@@ -48,7 +48,7 @@ mkdir $BUILD/$DIR
 
 echo 'autogen.sh and configure...'
 ./autogen.sh > $BUILD/$DIR/autogen.log
-./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-debug --enable-lite > $BUILD/$DIR/configure.log CXXFLAGS='-pg' LDFLAGS='-pg'
+./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-debug --enable-lite > $BUILD/$DIR/configure.log CXXFLAGS='-pg -DNUM_SHARDS=7' LDFLAGS='-pg'
 make clean > /dev/null
 
 echo 'make...'
