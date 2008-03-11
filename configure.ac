@@ -89,7 +89,7 @@ AC_ARG_ENABLE([profile],
 	      [profile=$enableval],
 	      [profile=no])
 
-AC_ARG_ENABLE([strict],
+AC_ARG_ENABLE([strict-compilation],
 	      AS_HELP_STRING([--disable-strict-compilation], [disable the strict compilation rules (warnings are an error in the strict mode)]),
 	      [strict=$enableval],
 	      [strict=yes])
