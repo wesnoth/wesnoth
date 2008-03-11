@@ -9,8 +9,11 @@ shift
 PARAMETERS=$*
 SERVERBASE=$HOME/servers/$SERVER
 SOURCE=$HOME/source/trunk
+THREADS=4
+
 case $SERVER in
 	1.2 )	SOURCE=$HOME/source/1.2
+		THREADS=30
 		;;
 	* )
 esac
@@ -34,7 +37,7 @@ do
 		REV=$(ls -l $SERVERBASE/build | sed -e 's,.*wesnothd-\(svn-.*\)_.*/,\1,')
 		cd $SERVERBASE/build || exit 1
 		[ -x bin/wesnothd-$SERVER ] || exit 1
-		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads 30 $PARAMETERS > $SERVERBASE/logs/wesnothd.$DATE.$REV.log 2>&1 &
+		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > $SERVERBASE/logs/wesnothd.$DATE.$REV.log 2>&1 &
 		PID=$!
 		echo -n "started $SERVER server (revision: $REV, pid: $PID) at: "; date
 		cd $SERVERBASE
