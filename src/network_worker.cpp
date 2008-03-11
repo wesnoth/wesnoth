@@ -646,10 +646,12 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 
 		bufs.push_back(queued_buf);
 
-		sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY));
+		socket_state_map::const_iterator i = sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY)).first;
+		if(i->second == SOCKET_READY || i->second == SOCKET_ERRORED) {
+			cond->notify_one();
+		}
 	}
 
-	cond->notify_one();
 }
 
 namespace
