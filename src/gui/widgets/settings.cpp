@@ -19,6 +19,7 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/widget.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"

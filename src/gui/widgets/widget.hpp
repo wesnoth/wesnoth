@@ -524,55 +524,6 @@ class tgrid : public twidget, public tcontainer
 */
 
 
-// Class for a simple push button
-class tbutton : public tcontrol
-{
-	friend void load_settings();
-public:
-	tbutton(const std::string& id) : 
-		tcontrol()
-		{
-			canvas_up_.set_cfg(tbutton::default_enabled_draw_);
-		}
-
-	virtual void set_width(const int width);
-
-	virtual void set_height(const int height);
-
-	void mouse_down(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse down\n"; }
-	void mouse_up(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse up\n"; }
-	void mouse_click(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse click\n"; }
-	void mouse_double_click(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse double click\n"; }
-	void mouse_enter(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse enter\n"; }
-	void mouse_leave(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse leave\n"; }
-
-	void draw(surface& canvas);
-
-	// note we should check whether the label fits in the button
-	tpoint get_best_size() const { return tpoint(default_width_, default_height_); }
-
-	void set_best_size(const tpoint& origin) 
-	{
-		set_x(origin.x);
-		set_y(origin.y);
-		set_width(default_width_);
-		set_height(default_height_);
-	}
-
-protected:
-	
-private:
-
-	tcanvas 
-		canvas_up_,
-		canvas_up_mouse_over_,
-		canvas_down_;
-
-	static unsigned default_width_;
-	static unsigned default_height_;
-	static config default_enabled_draw_;
-};
-
 /**
  * A widget has a mouse over which can either popup directly or after a fixed delay (this is a flag)
  * A widget has a help after pressing F1 it shows a larger tooltip with more info
@@ -694,6 +645,7 @@ positive numbers are from 0,0 negative from width, height
 [/image]
 
 #endif
-}
+
+} // namespace gui2
 
 #endif

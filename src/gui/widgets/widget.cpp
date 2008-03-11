@@ -28,7 +28,7 @@
 #define WRN_GUI LOG_STREAM(warn, widget)
 #define ERR_GUI LOG_STREAM(err, widget)
 
-namespace gui2{
+namespace gui2 {
 
 namespace {
 	static bool initialized_ = false;
@@ -348,75 +348,4 @@ tcontrol::tcontrol(/*const int x, const int y, const int w, const int h*/) :
 {
 }
 
-void tbutton::set_width(const int width)
-{ 
-	// resize canvasses
-	canvas_up_.set_width(width);
-	canvas_up_mouse_over_.set_width(width);
-	canvas_down_.set_width(width);
-
-	// inherited
-	tcontrol::set_width(width);
-}
-
-void tbutton::set_height(const int height) 
-{ 
-	// resize canvasses
-	canvas_up_.set_height(height);
-	canvas_up_mouse_over_.set_height(height);
-	canvas_down_.set_height(height);
-
-	// inherited
-	tcontrol::set_height(height);
-}
-
-void tbutton::draw(surface& canvas)
-{
-	// create a dummy config with some objects to draw
-
-	DBG_GUI << "Drawing button\n";
-#if 0	
-	std::string dummy = 
-		"[line]\n"
-		"    x1, y1 = 0, 0\n"
-		"    x2, y2 = -1, 0\n"
-		"    colour = 255, 255, 255, 255\n"
-		"    thickness = 1\n"
-		"[/line]\n"
-
-		"[line]\n"
-		"    x1, y1 = -1, 0\n"
-		"    x2, y2 = -1, -1\n"
-		"    colour = 255, 255, 255, 255\n"
-		"    thickness = 1\n"
-		"[/line]\n"
-
-		"[line]\n"
-		"    x1, y1 = -1, -1\n"
-		"    x2, y2 = 0, -1\n"
-		"    colour = 0, 0, 0, 255\n"
-		"    thickness = 1\n"
-		"[/line]\n"
-
-		"[line]\n"
-		"    x1, y1 = 0, -1\n"
-		"    x2, y2 = 0, 0\n"
-		"    colour = 0, 0, 0, 255\n"
-		"    thickness = 1\n"
-		"[/line]\n";
-
-	config cfg; 
-	read(cfg, dummy);
-#endif
-//	const config* cfg = button_enabled();
-
-//	canvas_up_.draw(*cfg);
-
-	canvas_up_.draw();
-
-	// now blit the cached image on the screen
-	SDL_Rect rect = get_rect();
-	SDL_BlitSurface(canvas_up_.surf(), 0, canvas, &rect);
-}
-
-}
+} // namespace gui2
