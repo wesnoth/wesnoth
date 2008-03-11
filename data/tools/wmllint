@@ -784,9 +784,9 @@ def sanity_check(filename, lines):
             in_trait = True
         elif "[/trait]" in lines[i]:
             in_trait = False
-        elif "[kill]" in lines[i] or "[object]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
+        elif "[kill]" in lines[i] or "[effect]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
             ignoreable = True
-        elif "[/kill]" in lines[i] or "[/object]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
+        elif "[/kill]" in lines[i] or "[/effect]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
             ignoreable = False
         elif "[side]" in lines[i] or "[unit]" in lines[i] or "[recall]" in lines[i]:
             in_person = True
@@ -821,7 +821,7 @@ def sanity_check(filename, lines):
                 pass
             elif key == 'name':		# FIXME: check this someday
                 pass
-            elif key in ("message", "user_description", "story", "note", "text", "summary", "caption", "label", "unit_description") and not value.startswith("$"):
+            elif key in ("message", "user_description", "story", "note", "text", "summary", "caption", "label", "unit_description", "cannot_use_message", "set_description") and not value.startswith("$"):
                 if not has_tr_mark:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
