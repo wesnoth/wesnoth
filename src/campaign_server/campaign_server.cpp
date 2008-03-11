@@ -251,8 +251,6 @@ namespace {
 				network::connection sock = network::accept_connection();
 				if(sock) {
 					LOG_CS << "received connection from " << network::ip_address(sock) << "\n";
-					std::pair<unsigned int,size_t> thread_state = network::get_thread_state();
-					LOG_CS << thread_state.first << " threads waiting out of " << thread_state.second<<"\n";
 				}
 
 				config data;
