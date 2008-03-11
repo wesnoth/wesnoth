@@ -787,12 +787,6 @@ std::string ip_address(connection connection_num)
 	return str.str();
 }
 
-
-std::pair<unsigned int,size_t> get_thread_state()
-{
-	return network_worker_pool::thread_state();
-}
-
 statistics get_send_stats(connection handle)
 {
 	return network_worker_pool::get_current_transfer_stats(handle == 0 ? get_socket(sockets.back()) : get_socket(handle)).first;
