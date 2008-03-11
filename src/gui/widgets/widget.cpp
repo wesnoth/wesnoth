@@ -188,7 +188,6 @@ void tsizer::remove_child(const unsigned row, const unsigned col)
 
 void tsizer::removed_child(const std::string& id, const bool find_all)
 {
-
 	for(std::vector<tchild>::iterator itor = children_.begin();
 			itor != children_.end(); ++itor) {
 
@@ -281,6 +280,39 @@ void tsizer::set_best_size(const tpoint& origin)
 		orig.y += best_row_height[row];
 		orig.x = origin.x;
 	}
+}
+
+twidget* tsizer::get_widget(const tpoint& coordinate)
+{
+	
+	DBG_GUI << "Find widget at " << coordinate << '\n';
+
+	//! FIXME we need to store the sizes, since this is quite
+	//! pathatic.
+	for(unsigned row = 0; row < rows_; ++row) {
+		for(unsigned col = 0; col < cols_; ++col) {
+
+			DBG_GUI <<  "Row : " << row << " col : " << col;
+
+			twidget* widget = child(row, col).widget();
+			if(!widget) {
+				DBG_GUI << " no widget found.\n";
+				continue;
+			}
+			
+			widget = widget->get_widget(coordinate);
+			if(widget) { 
+				DBG_GUI << " hit!\n";
+				return widget;
+			}
+
+			DBG_GUI << " no hit.\n";
+
+		}
+	}
+	
+	DBG_GUI << "No widget found.\n";
+	return 0;
 }
 
 tpoint tsizer::tchild::get_best_size()

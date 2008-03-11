@@ -177,6 +177,13 @@ public:
 		dirty_ = true;
 	}
 
+	//! Gets the widget at the wanted coordinates.
+	twidget* get_widget(const tpoint& coordinate) 
+	{ 
+		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
+			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
+	}
+
 protected:	
 	virtual void set_dirty(const bool dirty = true) { dirty_ = dirty; }
 
@@ -280,6 +287,10 @@ public:
 	//! Inherited
 	void set_best_size(const tpoint& origin);
 
+	//! Gets the widget at the wanted coordinates.
+	//! Override base class.
+	twidget* get_widget(const tpoint& coordinate);
+
 private:
 	class tchild 
 	{
@@ -335,9 +346,12 @@ private:
 		//! Tracks the dirty state of the cell regarding best_size_.
 		bool dirty_;
 
-		//! The clipping area for the widget. 
+		//! The clipping area for the widget. This is also the size of 
+		//! the container.
 		SDL_Rect clip_;
-	};
+
+	}; // class tchild
+
 public:
 	class iterator 
 	{
