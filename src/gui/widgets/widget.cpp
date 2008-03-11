@@ -1,4 +1,4 @@
-/* $id: boilerplate-header.cpp 20001 2007-08-31 19:09:40z soliton $ */
+/* $Id$ */
 /*
    copyright (c) 2007 - 2008 by mark de wever <koraq@xs4all.nl>
    part of the battle for wesnoth project http://www.wesnoth.org/
