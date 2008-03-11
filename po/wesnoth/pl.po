@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-06 12:44+0100\n"
-"PO-Revision-Date: 2008-02-28 19:46+0100\n"
+"PO-Revision-Date: 2008-03-11 13:52+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -161,9 +161,8 @@ msgid "Chinese Translation"
 msgstr "Tłumaczenie chińskie"
 
 #: data/core/about.cfg:873
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Tłumaczenie chińskie"
+msgstr "Tłumaczenie chińskie (Tajwan)"
 
 #: data/core/about.cfg:880
 msgid "Czech Translation"
@@ -2279,7 +2278,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2291,10 +2289,11 @@ msgid ""
 msgstr ""
 "\n"
 "Ustawienie lub przełączenie gracza kontrolującego daną stronę (człowiek/"
-"komputer). Polecenie musi wydać gracz/klient kontrolujący daną stronę. Jeśli "
-"drugi parametr nie zostanie podany, polecenie przełącza między komputerem "
-"(wartość \"on\") a człowiekiem (wartość \"off\"). Jeśli wartość parametru "
-"nie zostanie podana, domyślną przyjmowana jest strona aktualnie aktywna.\n"
+"komputer). Polecenie musi wydać gracz/klient kontrolujący daną stronę. Drugi "
+"parametr może mieć wartość \"on\" (komputer) lub \"off\" (człowiek). Jeśli "
+"drugi parametr nie zostanie podany, polecenie przełącza między komputerem a "
+"człowiekiem. Jeśli wartość parametru nie zostanie podana, domyślną "
+"przyjmowana jest strona aktualnie aktywna.\n"
 "\n"
 
 #: data/core/help.cfg:689
@@ -2660,14 +2659,14 @@ msgid "teleport"
 msgstr "teleportacja"
 
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "Teleportacja:\n"
-"Jednostka może w jednym ruchu teleportować się między przyjaznymi wioskami."
+"Jednostka może teleportować się kosztem jednego punktu ruchu między dwoma "
+"pustymi wioskami kontrolowanymi przez stronę, do której należy."
 
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
@@ -3954,13 +3953,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " Iluminacja zwiększa poziom oświetlenia na przyległych polach."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teleportacja:\n"
-"Jednostka może w jednym ruchu teleportować się między przyjaznymi wioskami."
+" Jednostka może kosztem jednego punktu ruchu teleportować się między dwoma "
+"pustymi wioskami kontrolowanymi przez stronę, do której należy."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4253,7 +4251,6 @@ msgid "race^Drakes"
 msgstr "Smoki"
 
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6391,9 +6388,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth"
 
 #: src/game.cpp:1492
-#, fuzzy
 msgid "Join a different server"
-msgstr "Połącz z oficjalnym serwerem"
+msgstr "Połącz z innym serwerem"
 
 #: src/game.cpp:1494
 msgid "Local Game"
