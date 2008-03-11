@@ -37,7 +37,7 @@ namespace soundsource {
 
 unsigned int manager::positional_source::last_id = 0;
 
-manager::manager(const display &disp) : _disp(disp)
+manager::manager(const display &disp) : _disp(disp) 
 {
 	_disp.scroll_event().attach_handler(this);
 	update_positions();
@@ -58,16 +58,16 @@ void manager::handle_generic_event(const std::string &event_name)
 		update_positions();
 }
 
-void manager::add(const std::string &id, const std::string &files, int min_delay, int chance, bool play_fogged)
+void manager::add(const std::string &id, const std::string &files, int min_delay, int chance, int loop, bool play_fogged)
 {
 	positional_source_iterator it;
 
 	if((it = _sources.find(id)) == _sources.end()) {
-		_sources[id] = new positional_source(files, min_delay, chance, play_fogged);
+		_sources[id] = new positional_source(files, min_delay, chance, loop, play_fogged);
 	}
 	else {
 		delete (*it).second;
-		(*it).second = new positional_source(files, min_delay, chance, play_fogged);
+		(*it).second = new positional_source(files, min_delay, chance, loop, play_fogged);
 	}
 }
 
@@ -110,8 +110,8 @@ void manager::add_location(const std::string &id, const gamemap::location &loc)
 }
 
 
-manager::positional_source::positional_source(const std::string &files, int min_delay, int chance, bool play_fogged)
-						: _last_played(0), _min_delay(min_delay), _chance(chance),
+manager::positional_source::positional_source(const std::string &files, int min_delay, int chance, int loop, bool play_fogged)
+						: _last_played(0), _min_delay(min_delay), _chance(chance), _loop(loop),
 							_id(last_id++), _play_fogged(play_fogged), _visible(false),
 							_files(files)
 {
@@ -130,7 +130,7 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 		// If no locations have been specified, treat the source as if
 		// it was present everywhere on the map
 		if(_locations.size() == 0) {
-			sound::play_sound_positioned(_files, last_id, 0);	// max volume
+			sound::play_sound_positioned(_files, last_id, _loop, 0);	// max volume
 			return;
 		}
 
@@ -152,8 +152,9 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 	/*		}*/
 		}
 
-		if(!sound::is_sound_playing(last_id))
-			sound::play_sound_positioned(_files, last_id, distance_volume);
+		if(!sound::is_sound_playing(last_id)) {
+			sound::play_sound_positioned(_files, last_id, _loop, distance_volume);
+		}
 	}
 }
 

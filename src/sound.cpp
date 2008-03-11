@@ -691,9 +691,9 @@ void stop_sound(int id)
 	reposition_sound(id, DISTANCE_SILENT);
 }
 
-void play_sound_positioned(const std::string &files, int id, unsigned int distance)
+void play_sound_positioned(const std::string &files, int id, int repeats, unsigned int distance)
 {
-	play_sound_internal(files, SOUND_SOURCES, preferences::sound_on(), 0, distance, id);
+	play_sound_internal(files, SOUND_SOURCES, preferences::sound_on(), repeats, distance, id);
 }
 
 bool play_sound_internal(const std::string& files, channel_group group, bool sound_on, unsigned int repeats, 
@@ -717,8 +717,12 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		return false;
 	}
 	channel_ids[channel] = id;
+
+	/*
+	 * This check prevents SDL_Mixer from blowing up on Windows when UI sound is played
+	 * in response to toggling the checkbox which disables sound.
+	 */
 	if(group != SOUND_UI) {
-		//FIXME: why is this (group != SOUND_UI) check necessary?
 		Mix_SetDistance(channel, distance);
 	}
 
@@ -750,14 +754,20 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		}
 		temp_chunk.group = group;
 		std::string const &filename = get_binary_file_location("sounds", file);
+
 		if (!filename.empty()) {
 			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));
+		} else {
+			ERR_AUDIO << "Could not load sound with empty filename\n";
+			return false;
 		}
+
 		if (temp_chunk.get_data() == NULL) {
 			ERR_AUDIO << "Could not load sound file '" << filename << "': "
 				<< Mix_GetError() << "\n";
 			return false;
 		}
+
 		sound_cache.push_front(temp_chunk);
 		it = sound_cache.begin();
 	}

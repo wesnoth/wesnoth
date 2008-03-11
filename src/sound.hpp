@@ -67,7 +67,7 @@ void play_sound(const std::string& files, channel_group group = SOUND_FX, unsign
 
 // Play sound, or random one of comma-separated sounds. Use specified
 // distance and associate it with specified id (of a sound source).
-void play_sound_positioned(const std::string &files, int id, unsigned int distance);
+void play_sound_positioned(const std::string &files, int id, int repeats, unsigned int distance);
 
 // Play sound, or random one of comma-separated sounds in bell channel
 void play_bell(const std::string& files);

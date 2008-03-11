@@ -36,6 +36,7 @@ class manager : public events::observer {
 		unsigned int _last_played;
 		unsigned int _min_delay;
 		unsigned int _chance;
+		unsigned int _loop;
 		unsigned int _id;
 		bool _play_fogged;
 		bool _visible;
@@ -53,7 +54,7 @@ class manager : public events::observer {
 		// chance is a chance ;-) (in %) that the sound source will emit
 		// sound every second after the delay has passed or once the source
 		// becomes visible
-		positional_source(const std::string &files, int min_delay, int chance, bool play_fogged = false);
+		positional_source(const std::string &files, int min_delay, int chance, int loop, bool play_fogged = false);
 
 		void update(unsigned int time, const display &disp);
 		void update_positions(unsigned int time, const display &disp);
@@ -80,7 +81,7 @@ public:
 	void handle_generic_event(const std::string &event_name);
 
 	// add or replace a soundsource
-	void add(const std::string &id, const std::string &files, int min_delay, int chance, bool play_fogged = false);
+	void add(const std::string &id, const std::string &files, int min_delay, int chance, int loop, bool play_fogged = false);
 	void remove(const std::string &id);
 	void update();
 

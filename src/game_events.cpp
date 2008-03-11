@@ -1428,18 +1428,20 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		std::string play_fogged = cfg["check_fogged"];
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
+		std::string loop = cfg["loop"];
 
 		assert(state_of_game != NULL);
 
 		if(!sounds.empty() && !delay.empty() && !chance.empty()) {
 			const std::vector<std::string>& vx = utils::split(x);
 			const std::vector<std::string>& vy = utils::split(y);
+			const int loops = lexical_cast_default<int>(loop, 0);
 
 			if(play_fogged.empty())
-				soundsources->add(id, sounds, lexical_cast<int>(delay), lexical_cast<int>(chance));
+				soundsources->add(id, sounds, lexical_cast<int>(delay), lexical_cast<int>(chance), loops);
 			else
 				soundsources->add(id, sounds, lexical_cast<int>(delay),
-						lexical_cast<int>(chance), utils::string_bool(play_fogged));
+						lexical_cast<int>(chance), loops, utils::string_bool(play_fogged));
 
 			for(unsigned int i = 0; i < minimum(vx.size(), vy.size()); ++i) {
 				gamemap::location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
