@@ -597,10 +597,11 @@ void receive_data(TCPsocket sock)
 		const threading::lock lock(*management_mutex);
 		pending_receives.push_back(sock);
 
-		sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY));
+		socket_state_map::const_iterator i = sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY)).first;
+		if(i->second == SOCKET_READY || i->second == SOCKET_ERRORED) {
+			cond->notify_one();
+		}
 	}
-
-	cond->notify_one();
 }
 
 TCPsocket get_received_data(TCPsocket sock, config& cfg)
