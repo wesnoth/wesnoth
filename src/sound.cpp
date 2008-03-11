@@ -41,8 +41,8 @@ std::vector<Mix_Chunk*> channel_chunks;
 // is playing on a channel for fading/panning)
 std::vector<int> channel_ids;
 
-static bool play_sound_internal(const std::string& files, channel_group group, bool sound_on, unsigned int repeats=0,
-						 unsigned int distance=0, int id=-1, int loop_ticks=0, int fadein_ticks=0);
+static bool play_sound_internal(const std::string& files, channel_group group, unsigned int repeats=0,
+				 unsigned int distance=0, int id=-1, int loop_ticks=0, int fadein_ticks=0);
 }
 
 namespace {
@@ -693,13 +693,15 @@ void stop_sound(int id)
 
 void play_sound_positioned(const std::string &files, int id, int repeats, unsigned int distance)
 {
-	play_sound_internal(files, SOUND_SOURCES, preferences::sound_on(), repeats, distance, id);
+	if(preferences::sound_on()) {
+		play_sound_internal(files, SOUND_SOURCES, repeats, distance, id);
+	}
 }
 
-bool play_sound_internal(const std::string& files, channel_group group, bool sound_on, unsigned int repeats, 
+bool play_sound_internal(const std::string& files, channel_group group, unsigned int repeats, 
 			unsigned int distance, int id, int loop_ticks, int fadein_ticks)
 {
-	if(files.empty() || distance >= DISTANCE_SILENT || !sound_on || !mix_ok) {
+	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
 		return false;
 	}
 
@@ -803,25 +805,33 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 
 void play_sound(const std::string& files, channel_group group, unsigned int repeats)
 {
-	play_sound_internal(files, group, preferences::sound_on(), repeats);
+	if(preferences::sound_on()) {
+		play_sound_internal(files, group, repeats);
+	}
 }
 
 // Play bell with separate volume setting
 void play_bell(const std::string& files)
 {
-	play_sound_internal(files, SOUND_BELL, preferences::turn_bell());
+	if(preferences::sound_on() && preferences::turn_bell()) {
+		play_sound_internal(files, SOUND_BELL);
+	}
 }
 
 // Play timer with separate volume setting
 void play_timer(const std::string& files, int loop_ticks, int fadein_ticks)
 {
-	play_sound_internal(files, SOUND_TIMER, true, 0, 0, -1, loop_ticks, fadein_ticks);
+	if(preferences::sound_on()) {
+		play_sound_internal(files, SOUND_TIMER, 0, 0, -1, loop_ticks, fadein_ticks);
+	}
 }
 
 // Play UI sounds on separate volume than soundfx
 void play_UI_sound(const std::string& files)
 {
-	play_sound_internal(files, SOUND_UI, preferences::UI_sound_on());
+	if(preferences::UI_sound_on()) {
+		play_sound_internal(files, SOUND_UI);
+	}
 }
 
 
