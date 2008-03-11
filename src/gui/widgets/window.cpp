@@ -165,10 +165,10 @@ void twindow::handle_event(const SDL_Event& event)
 			handle_event_mouse_down(event);
 			break;
 		case SDL_MOUSEBUTTONUP:
-//			std::cerr << "Mouse up on control " << typeid(this).name() << '\n';
+			handle_event_mouse_up(event);
 			break;
 		case SDL_MOUSEMOTION:
-//			std::cerr << "Mouse move on control " << typeid(this).name() << '\n';
+			handle_event_mouse_move(event);
 			break;
 	}
 
@@ -180,10 +180,15 @@ void twindow::handle_event_mouse_down(const SDL_Event& event)
 	event_info_.event_mouse_button = event.button.button;
 	event_info_.mouse_x = event.button.x;
 	event_info_.mouse_y = event.button.y;
+	event_info_.mouse_focus = get_widget(tpoint(event_info_.mouse_x - get_x(), event_info_.mouse_y - get_y()));
 
+	bool handled = false;
 	switch(event_info_.event_mouse_button) {
 		case SDL_BUTTON_LEFT   : 
 			event_info_.mouse_left_button_down = true;  
+			if(event_info_.mouse_focus) {
+				event_info_.mouse_focus->mouse_down(event_info_, handled);
+			}
 			break;
 		case SDL_BUTTON_MIDDLE : 
 			event_info_.mouse_middle_button_down = true; 
@@ -195,21 +200,74 @@ void twindow::handle_event_mouse_down(const SDL_Event& event)
 		// Note: other mouse buttons are ignored, the event
 		// is send but the status won't be remembered.
 	}
+}
 
-	// Send the event to the widget at this location.
-	// Note containers first send the event to their child
-	// and when not handled it's handled by the container.
+//! Handler for a mouse down.
+void twindow::handle_event_mouse_up(const SDL_Event& event)
+{
+	event_info_.event_mouse_button = event.button.button;
+	event_info_.mouse_x = event.button.x;
+	event_info_.mouse_y = event.button.y;
+	twidget* mouse_focus = get_widget(tpoint(event_info_.mouse_x - get_x(), event_info_.mouse_y - get_y()));
+
 	bool handled = false;
-	for(tsizer::iterator itor = begin(); itor != end(); ++itor) {
-//	for(std::multimap<std::string, twidget *>::iterator itor = 
-//			children().begin(); itor != children().end(); ++itor) {
-	
-		
-		twidget* widget = *itor;
-		if(widget) {
-			widget->mouse_down(event_info_, handled);
+	switch(event_info_.event_mouse_button) {
+		case SDL_BUTTON_LEFT   :
+			if(event_info_.mouse_focus) {
+
+				event_info_.mouse_focus->mouse_up(event_info_, handled);
+
+				if(event_info_.mouse_focus == mouse_focus) {
+
+					if(event_info_.mouse_focus->want_double_click()) {
+
+						// double click not implemented atm.
+						assert(false);
+
+
+					} else {
+						event_info_.mouse_focus->mouse_click(event_info_, handled);
+
+					}
+				}
+			}
+			
+			event_info_.mouse_left_button_down = false;
+			break;
+		case SDL_BUTTON_MIDDLE : 
+			event_info_.mouse_middle_button_down = false; 
+			break;
+		case SDL_BUTTON_RIGHT  : 
+			event_info_.mouse_right_button_down = false;  
+			break;
+
+		// Note: other mouse buttons are ignored, the event
+		// is send but the status won't be remembered.
+	}
+
+	event_info_.mouse_focus = 0; // Note to see what to do after moving
+}
+
+//! Handler for a mouse movement.
+void twindow::handle_event_mouse_move(const SDL_Event& event)
+{
+	event_info_.mouse_x = event.button.x;
+	event_info_.mouse_y = event.button.y;
+	twidget* mouse_focus = get_widget(tpoint(event_info_.mouse_x - get_x(), event_info_.mouse_y - get_y()));
+
+	if(mouse_focus != event_info_.mouse_focus) {
+		if(event_info_.mouse_focus) {
+			bool handled = false;
+			event_info_.mouse_focus->mouse_leave(event_info_, handled);
+		}
+
+		if(mouse_focus) {
+			bool handled = false;
+			mouse_focus->mouse_enter(event_info_, handled);
 		}
 	}
+
+	event_info_.mouse_focus = mouse_focus;
 }
 
 } // namespace gui2

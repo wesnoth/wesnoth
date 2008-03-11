@@ -48,7 +48,9 @@ tevent_info::tevent_info() :
 	mouse_last_middle_button_down(false),
 	mouse_last_right_button_down(false),
 
-	event_mouse_button(-1)
+	event_mouse_button(-1),
+
+	mouse_focus(0)
 {
 }
 

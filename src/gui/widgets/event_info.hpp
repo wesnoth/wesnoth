@@ -20,6 +20,8 @@
 
 namespace gui2{
 
+class twidget;
+
 struct tevent_info 
 {
 	tevent_info();
@@ -42,6 +44,9 @@ struct tevent_info
 	bool mouse_last_right_button_down; //! Was the right mouse button down in the last event?
 
 	int event_mouse_button;            //! If a mouse event it shows which button changed.
+
+	twidget* mouse_focus;
+
 };
 
 } // namespace gui2

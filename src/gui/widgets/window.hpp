@@ -91,6 +91,12 @@ private:
 	//! Handler for a mouse down.
 	void handle_event_mouse_down(const SDL_Event& event);
 	
+	//! Handler for a mouse up.
+	void handle_event_mouse_up(const SDL_Event& event);
+	
+	//! Handler for a mouse movement.
+	void handle_event_mouse_move(const SDL_Event& event);
+	
 };
 
 } // namespace gui2

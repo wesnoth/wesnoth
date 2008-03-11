@@ -65,12 +65,25 @@ struct terror
 class tevent_executor
 {
 public:
-	tevent_executor(const bool send_double_click = true) :
-		send_double_click_(send_double_click)
+	tevent_executor(const bool want_double_click = false/* true */) :
+		want_double_click_(want_double_click)
 		{}
 	virtual ~tevent_executor() {}
 
-	//! Happens when a mouse goes down on the widget.
+// Description of various event generating scenarios
+//
+// mouse moves on a widget and the focus isn't stolen:
+// - mouse enter
+//
+// mouse on widget clicked without moving
+// - mouse down
+// - mouse up
+// wait for possible double click if widget wants double click
+// - mouse click
+
+
+	//! Happens when a mouse goes down on the widget. When the mouse goes
+	//! down this widget steals the mouse focus until the button is released.
 	virtual void mouse_down(const tevent_info&, bool&) {}
 
 	//! Happens when a mouse down focussed this widget and is released
@@ -79,10 +92,19 @@ public:
 
 	//! Happens when a mouse down and up happen on the same widget.
 	virtual void mouse_click(const tevent_info&, bool&) {}
-	
+
 	//! Happens when a mouse down and up happen twice on the same widget.
-	virtual void mouse_double_click(const tevent_info& event, bool& handled) 
-		{ if(!send_double_click_) mouse_click(event, handled); }
+	virtual void mouse_double_click(const tevent_info&, bool&) {}
+
+	//! Happens when the mouse moves over the widget and the focus 
+	//! isn't stolen by another widget.
+	virtual void mouse_enter(const tevent_info&, bool&) {}
+
+	//! Happens when the mouse leaves a widget, execpt when the focus
+	//! is captured. If this widget captures the focus the event is
+	//! send after the mouse button is released.
+	virtual void mouse_leave(const tevent_info&, bool&) {}
+
 
 #if 0
 	virtual void mouse_enter();
@@ -107,12 +129,12 @@ public:
 	// children.
 	virtual void layout() {}
 
-
+	bool want_double_click() const { return want_double_click_; }
 
 private:
 	//! If a widget doesn't want a double click we need to send a second
 	//! click instead of double click.
-	bool send_double_click_;
+	bool want_double_click_;
 };
 
 //! Base class for all widgets.
@@ -120,7 +142,7 @@ private:
 class twidget : public virtual tevent_executor
 {
 public:
-	twidget(const std::string& id = "") : 
+	twidget(const std::string& id = "") :
 		id_(id), 
 		parent_(0),
 		x_(-1),
@@ -517,7 +539,12 @@ public:
 
 	virtual void set_height(const int height);
 
-	void mouse_down(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "Hit me again\n"; }
+	void mouse_down(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse down\n"; }
+	void mouse_up(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse up\n"; }
+	void mouse_click(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse click\n"; }
+	void mouse_double_click(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse double click\n"; }
+	void mouse_enter(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse enter\n"; }
+	void mouse_leave(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse leave\n"; }
 
 	void draw(surface& canvas);
 
