@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-10 11:39+0100\n"
-"PO-Revision-Date: 2007-12-11 22:46+0100\n"
-"Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
-"DOT com>\n"
+"PO-Revision-Date: 2008-03-11 17:16+0100\n"
+"Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #. terrain
@@ -420,7 +419,7 @@ msgstr "Kunde ej skapa mapp."
 
 #: src/game_preferences.cpp:217
 msgid "No server has been defined."
-msgstr ""
+msgstr "Ingen server har definierats."
 
 #: src/game_preferences.cpp:281
 msgid "player"
@@ -439,9 +438,8 @@ msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Spara repris vid seger eller gruppspelsnederlag"
 
 #: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "Radera sparade spel vid seger eller gruppspelsnederlag"
+msgstr "Radera automatiskt sparade spel vid seger eller gruppspelsnederlag"
 
 #: src/game_preferences_display.cpp:166
 msgid "Do Not Show Lobby Joins"
@@ -668,9 +666,8 @@ msgid "Set the frequency of unit idle animations"
 msgstr "Ange frekvensen för truppernas stillastående animeringar"
 
 #: src/game_preferences_display.cpp:338
-#, fuzzy
 msgid "Set maximum number of automatic saves to be retained"
-msgstr "Ange maximalt antal sparade spel som skall behållas"
+msgstr "Ange maximalt antal automatiskt sparade spel som skall behållas"
 
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
@@ -776,9 +773,8 @@ msgid "Speed: "
 msgstr "Fart: "
 
 #: src/game_preferences_display.cpp:694 src/game_preferences_display.cpp:696
-#, fuzzy
 msgid "Maximum Auto-Saves: "
-msgstr "Maximalt antal sparade spel: "
+msgstr "Maximalt antal automatiskt sparade spel: "
 
 #: src/game_preferences_display.cpp:694
 msgid "infinite"
@@ -897,9 +893,8 @@ msgid "Save Game"
 msgstr "Spara spelet"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "Spara"
+msgstr "Spara repris"
 
 #: src/hotkeys.cpp:71
 msgid "Save The Map"
@@ -1288,20 +1283,25 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Ett fel inträffade, på grund av eventuell ogiltig WML\n"
+"Felmeddlandet är :"
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
-msgstr ""
+msgstr "Vid bugrapportering, var snäll och inkludera följande felmeddelande:"
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"I avdelningen [$section|] där $primary_key| = $primary_value| är den "
+"obligatoriska nyckeln $key| inte satt."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+"I avdelningen [$section|] är den obligatoriska nyckeln $key| inte satt."
 
 #~ msgid "Save replays on SP victory or SP/MP defeat."
 #~ msgstr "Spara repris vid singelspelsseger eller nederlag"
