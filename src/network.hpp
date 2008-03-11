@@ -137,10 +137,6 @@ void send_data_all_except(const config& cfg, connection connection_num, const bo
 //! Function to get the remote ip address of a socket.
 std::string ip_address(connection connection_num);
 
-
-//! Function to know the total number of threads and the number of idle threads.
-std::pair<unsigned int,size_t> get_thread_state();
-
 struct connection_stats
 {
 	connection_stats(int sent, int received, int connected_at);

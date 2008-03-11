@@ -44,7 +44,6 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg);
 void queue_data(TCPsocket sock, const config& buf, const bool gzipped);
 bool is_locked(const TCPsocket sock);
 bool close_socket(TCPsocket sock, bool force=false);
-std::pair<unsigned int,size_t> thread_state();
 TCPsocket detect_error();
 
 std::pair<network::statistics,network::statistics> get_current_transfer_stats(TCPsocket sock);
