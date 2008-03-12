@@ -899,13 +899,34 @@ void game_data::set_config(const config& cfg)
 		{
 			// LOAD UNIT TYPES
 			std::string id = (**i.first)["id"];
-			// we insert an empty unit_type and build it after the copy (for perfomance)
+			// we insert an empty unit_type and build it after the copy (for performance)
 			std::pair<unit_type_map::iterator,bool> insertion =
 				unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
 			if (insertion.second) {
 				insertion.first->second.build(**i.first,movement_types,races,unit_traits);
 			}
 			// TODO: else { warning for multiple units with same id}
+		}
+	}
+
+	// FIXME OBSOLETE compatibility hack to be removed in 1.5.3
+	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
+	{
+		if((**i.first).child("base_unit"))
+		{
+			++base_unit_count;
+		}
+		else
+		{
+			// LOAD UNIT TYPES
+			std::string id = (**i.first)["id"];
+			// we insert an empty unit_type and build it after the copy (for performance)
+			std::pair<unit_type_map::iterator,bool> insertion =
+				unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
+			if (insertion.second) {
+				insertion.first->second.build(**i.first,movement_types,races,unit_traits);
+			}
+			std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]";
 		}
 	}
 
@@ -982,6 +1003,30 @@ void game_data::set_config(const config& cfg)
 		}
 	}
 
+	// FIXME OBSOLETE compatibility hack to be removed in 1.5.3
+	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
+	{
+		config::const_child_itors af;
+		for(af = (*i.first)->child_range("advancefrom"); af.first != af.second; ++af.first)
+		{
+			const std::string &to = (**i.first)["id"];
+			const std::string &from = (**af.first)["unit"];
+			const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
+
+			unit_type_map::iterator from_unit = unit_types.find(from);
+			unit_type_map::iterator to_unit = unit_types.find(to);
+			if(from_unit==unit_types.end())
+			{
+				lg::warn(lg::config) << "unknown unit " << from << " in advancefrom\n";
+				continue;
+			}
+			assert(to_unit!=unit_types.end());
+
+			from_unit->second.add_advancement(to_unit->second,xp);
+			increment_set_config_progress();
+		}
+	}
+
 	// For all unit types, store what units they advance from
 	unit_type_map::iterator from_unit;
 	for(from_unit = unit_types.begin(); from_unit != unit_types.end(); ++from_unit)
@@ -1036,11 +1081,16 @@ bool unit_type::not_living() const
 			config::const_child_itors i;
 			for(i = (**j).child_range("effect"); i.first != i.second; ++i.first) {
 
-				// See if the effect only applies to certain unit types
-				// But don't worry about gender checks, since we don't
-				// know what the gender of the hypothetical recruit is.
+				// See if the effect only applies to
+				// certain unit types But don't worry
+				// about gender checks, since we don't
+				// know what the gender of the
+				// hypothetical recruit is.
 				vals = &((**i.first).values);
 				temp = vals->find("unit_type");
+				//FIXME OBSOLETE Remove in 1.5.3
+				if(temp == vals->end())
+					temp = vals->find("unit");
 				if(temp != vals->end()) {
 					const std::vector<std::string>& types = utils::split((*temp).second);
 					if(std::find(types.begin(),types.end(),id()) == types.end()) {
