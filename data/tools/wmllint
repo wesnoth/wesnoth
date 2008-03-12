@@ -1510,7 +1510,33 @@ start_time=-150
         if "[/terrain]" in lines[i]:
             in_terrain = False
         if in_terrain:
-            lines[i] = lines[i].replace("letter", "terrain")
+            nl = lines[i].replace("letter", "terrain")
+            if nl != lines[i]:
+                modcount += 1
+                lines[i] = nl
+    # id= -> type= in [unit]
+    if upconvert and "1.3.14" in versions:
+        in_unit = False
+        id_seen = False
+        in_modifications = False
+        for i in range(len(lines)):
+            if "no-syntax-rewrite" in lines[i]:
+                break
+            if "[unit]" in lines[i]:
+                in_unit = True
+            if "[/unit]" in lines[i]:
+                in_unit = False
+            if "[modifications]" in lines[i]:
+                in_modifications = True
+            if "[/modifications]" in lines[i]:
+                in_modifications = False
+            if in_unit and not in_modifications and not id_seen and re.search("id *=", lines[i]):
+                nl = re.sub("id *=", "type=", lines[i])
+                if nl != lines[i]:
+                    modcount += 1
+                    lines[i] = nl
+                    print '"%s", line %d: [unit] id= -> type=' % (filename, i+1)
+                id_seen = True            
     # More syntax transformations would go here.
     return (lines, modcount)
 
