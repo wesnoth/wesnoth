@@ -276,8 +276,9 @@ bool server::is_ip_banned(const std::string& ip) const {
 
 config server::games_and_users_list_diff() {
 	config res;
-	res.add_child("gamelist_diff",games_and_users_list_.get_diff(old_games_and_users_list_));
-	old_games_and_users_list_ = games_and_users_list_;
+	config& diff = res.add_child("gamelist_diff");
+	games_and_users_list_.get_diff(old_games_and_users_list_, diff);
+	old_games_and_users_list_.apply_diff(diff);
 	return res;
 }
 
