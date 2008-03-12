@@ -115,6 +115,7 @@ struct buffer {
 	TCPsocket sock;
 	mutable config config_buf;
 	std::string config_error;
+	std::ostringstream stream;
 	//! Do we wish to send the data gzipped, if not use binary wml.
 	//! This needs to stay until the last user of binary_wml has
 	//! been removed.
@@ -250,25 +251,27 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 	return true;
 }
 
-static SOCKET_STATE send_buffer(TCPsocket sock, config& config_in, const bool gzipped) {
-#ifdef __BEOS__
-	int timeout = 15000;
-#endif
-	size_t upto = 0;
-	std::ostringstream compressor;
+static void output_to_buffer(TCPsocket sock, const config& cfg, std::ostringstream& compressor, bool gzipped)
+{
 	if(gzipped) {
-//		std::cerr << "send gzipped\n.";
 		config_writer writer(compressor, true, "");
-		writer.write(config_in);
+		writer.write(cfg);
 	} else {
 		compression_schema *compress;
-//		std::cerr << "send binary wml\n.";
 		{
 			const threading::lock lock(*schemas_mutex);
 			compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.outgoing;
 		}
-		write_compressed(compressor, config_in, *compress);
+		write_compressed(compressor, cfg, *compress);
 	}
+}
+
+static SOCKET_STATE send_buffer(TCPsocket sock, std::ostringstream& compressor, const bool gzipped) {
+#ifdef __BEOS__
+	int timeout = 15000;
+#endif
+	size_t upto = 0;
+
 	std::string const &value = compressor.str();
 	std::vector<char> buf(4 + value.size() + 1);
 	SDLNet_Write32(value.size()+1,&buf[0]);
@@ -488,7 +491,7 @@ static int process_queue(void* shard_num)
 		std::vector<char> buf;
 
 		if(sent_buf) {
-			result = send_buffer(sent_buf->sock, sent_buf->config_buf, sent_buf->gzipped);
+			result = send_buffer(sent_buf->sock, sent_buf->stream, sent_buf->gzipped);
 			delete sent_buf;
 		} else {
 			result = receive_buf(sock,buf);
@@ -660,7 +663,7 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 	DBG_NW << "queuing data...\n";
 
 	buffer* queued_buf = new buffer(sock);
-	queued_buf->config_buf = buf;
+	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
 	queued_buf->gzipped = gzipped;
 	{
 		const int shard = get_shard(sock);
