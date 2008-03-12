@@ -18,11 +18,13 @@ BRANCH=Development
 case $VERSION in
 	1.2 )	cd $SOURCE/1.2 || exit 1
 		BRANCH=Stable
+		rm -rf $SITE/$VERSION
 	;;
 	1.3.* ) cd $SOURCE/trunk || exit 1
 	;;
 	1.4 )	cd $SOURCE/1.4 || exit 1
 		BRANCH=Stable
+		rm -rf $SITE/$VERSION
 	;;
 	trunk ) cd $SOURCE/trunk || exit 1
 		rm -rf $SITE/$VERSION
@@ -41,7 +43,7 @@ fi
 cd data/tools/unit_tree/ || exit 1
 if [ "$VERSION" != "trunk" ]; then
 	# insert a link for the new version
-	sed -i -e "s,\(<p><a href=\"trunk/index.html\">Trunk</a></p>\),<p><a href=\"$VERSION/index.html\">$VERSION ($BRANCH)</a></p>\n\1," $SITE/index.html
+	sed -i -e "s,\(<p><a href=\"trunk/index.html\">Trunk</a></p>\),\1\n<p><a href=\"$VERSION/index.html\">$VERSION ($BRANCH)</a></p>," $SITE/index.html
 	# make sure we update with the right version
 	sed -i -e "s/\(my \$version = '\).*\(';\)/\1$VERSION\2/" units.pl
 fi
