@@ -899,11 +899,6 @@ void game_data::set_config(const config& cfg)
 		{
 			// LOAD UNIT TYPES
 			std::string id = (**i.first)["id"];
-			if(id.empty()) {
-				// FIXME: OBSOLETE This code is only for compatibility with old unit defs and savefiles.
-				// Still needed ?
-				id = (**i.first)["name"];
-			}
 			// we insert an empty unit_type and build it after the copy (for perfomance)
 			std::pair<unit_type_map::iterator,bool> insertion =
 				unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
