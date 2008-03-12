@@ -606,14 +606,14 @@ def sanity_check(filename, lines):
         elif "[/attack_filter]" in lines[i]:
             in_attack_filter = False
             continue
-        elif "[unit]" in lines[i]:
+        elif "[unit_type]" in lines[i]:
             traits = []
             notes = []
             has_special_notes = False
             derived_unit = False
             in_unit = i+1
             continue
-        elif "[/unit]" in lines[i]:
+        elif "[/unit_type]" in lines[i]:
             #print '"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit, traits, notes)
             if unit_id and not derived_unit:
@@ -998,10 +998,10 @@ def hack_syntax(filename, lines):
     has_defense_anim = False
     has_special_notes = False
     for i in range(len(lines)):
-        if "[unit]" in lines[i]:
+        if "[unit_type]" in lines[i]:
             in_unit = i+1
             continue
-        elif "[/unit]" in lines[i]:
+        elif "[/unit_type]" in lines[i]:
             if unit_id and get_hit_sound:
                 if has_defense_anim:
                     print 'wmllint: "%s", line %d: unit%s has both deprecated get_hit_sound tag and a DEFENSE_ANIM"'%(filename, i+1, unit_id)
@@ -1068,7 +1068,8 @@ def hack_syntax(filename, lines):
                 in_variation = True
             elif "[/variation]" in lines[i]:
                 in_variation = False
-            elif "[unit]" in lines[i]:
+            # The presence of [unit] here is a backwards-compatbility hack
+            elif "[unit_type]" in lines[i] or "[unit]" in lines[i]:
                 in_attack = in_animation = in_female = in_variation = False
                 female_attack_index = -1
                 variation_index = 0
@@ -1175,7 +1176,7 @@ def hack_syntax(filename, lines):
             for i in range(len(lines)):
                 # Male attacks go either before the [female] tag or just
                 # before the closing [/unit]
-                if lines[i].endswith("[/unit]\n") or lines[i].endswith("[female]\n"):
+                if lines[i].endswith("[/unit_type]\n") or lines[i].endswith("[female]\n"):
                     male_end = i
                     break
             assert male_end != -1
@@ -1307,7 +1308,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if "[unit]" in lines[i]:
+        if "[unit_type]" in lines[i]:
             abilities = []
         if "[attack]" in lines[i]:
             specials = []
@@ -1329,7 +1330,7 @@ def hack_syntax(filename, lines):
                 insertion += ws + baseindent + "[/specials]\n"
                 lines[lastspecial] = insertion
                 modcount += 1
-        elif "[/unit]" in lines[i]:
+        elif "[/unit_type]" in lines[i]:
             if abilities:
                 if verbose:
                     print "Lifting obsolete abilities:", " ".join(abilities)
@@ -1805,7 +1806,7 @@ def translator(filename, mapxforms, textxform, versions):
         filetext = "".join(newdata)
         modified |= modified1 or modified2
         transformed = filetext
-        if upconvert:
+        if upconvert and "1.3.4" in versions:
             # WML syntax changed in 1.3.5.  The transformation cannot
             # conveniently be done line-by-line.
             transformed = re.sub(r"(if]|while])\s*\[or]([\w\W]*?)\[/or]\s*",
@@ -2072,10 +2073,20 @@ if __name__ == '__main__':
         # Perform unconditional line changes
         for (old, new) in linechanges:
             transformed = transformed.replace(old, new)
-        # Perform tag renaming
-        #if not within(("scenario","multiplayer","test","tutorial")):
-        #    transformed = transformed.replace("[unit]", "[unit_type]")
-        #    transformed = transformed.replace("[/unit]", "[/unit_type]")
+        # Perform tag renaming.  Note: this has to happen before
+        # the sanity check, which assumes [unit] has already been
+        # mapped to [unit_type].  Also, beware that this test will fail to
+        # convert any unit definitions not in conventionally-named
+        # directories -- this is necessary in order to avoid stepping
+        # on SingleUnitWML in macro files. 
+        if upconvert and "1.3.14" in versions:
+            if "units" in filename:
+                transformed = transformed.replace("[unit]", "[unit_type]")
+                transformed = transformed.replace("[+unit]", "[+unit_type]")
+                transformed = transformed.replace("[/unit]", "[/unit_type]")
+            elif verbose > 1 and "unit]" in line and not within(("scenario","multiplayer","test","tutorial")):
+                print "%s, line %d: [unit] may need conversion to [unit_type]" % \
+                      (filename, lineno)
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \

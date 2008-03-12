@@ -1459,7 +1459,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
 
 		std::string terrain_type = cfg["terrain"];
-		// FIXME: Remove this in 1.5
+		// FIXME: OBSOLETE Remove this in 1.5
 		if (terrain_type.empty())
 		  terrain_type = cfg["letter"];
 		assert(state_of_game != NULL);

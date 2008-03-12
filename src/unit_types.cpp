@@ -905,7 +905,7 @@ void game_data::set_config(const config& cfg)
 	}
 
 	unsigned base_unit_count = 0;
-	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
+	for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
 	{
 		if((**i.first).child("base_unit"))
 		{
@@ -916,7 +916,7 @@ void game_data::set_config(const config& cfg)
 			// LOAD UNIT TYPES
 			std::string id = (**i.first)["id"];
 			if(id.empty()) {
-				// This code is only for compatibility with old unit defs and savefiles.
+				// FIXME: OBSOLETE This code is only for compatibility with old unit defs and savefiles.
 				// Still needed ?
 				id = (**i.first)["name"];
 			}
@@ -934,7 +934,7 @@ void game_data::set_config(const config& cfg)
 	{
 		unsigned new_count = base_unit_count;
 		std::string skipped;
-		for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
+		for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
 		{
 			const config *bu_cfg = (**i.first).child("base_unit");
 			if(bu_cfg)
@@ -983,13 +983,13 @@ void game_data::set_config(const config& cfg)
 	}
 
 	// Fix up advance_from references
-	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
+	for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
 	{
 		config::const_child_itors af;
 		for(af = (*i.first)->child_range("advancefrom"); af.first != af.second; ++af.first)
 		{
 			const std::string &to = (**i.first)["id"];
-			const std::string &from = (**af.first)["unit"];
+			const std::string &from = (**af.first)["unit_type"];
 			const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
 
 			unit_type_map::iterator from_unit = unit_types.find(from);
