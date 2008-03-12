@@ -960,7 +960,7 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 	    p!=gamestate.players.end(); ++p) {
 		for(std::vector<unit>::const_iterator u = p->second.available_units.begin(); u != p->second.available_units.end(); ++u) {
 			if(u->can_recruit()) {
-				leader = u->id();
+				leader = u->type_id();
 			}
 		}
 	}

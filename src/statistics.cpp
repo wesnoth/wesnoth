@@ -370,7 +370,7 @@ scenario_context::~scenario_context()
 }
 
 attack_context::attack_context(const unit& a, const unit& d, int a_cth, int d_cth)
-   : attacker_type(a.id()), defender_type(d.id()),
+   : attacker_type(a.type_id()), defender_type(d.type_id()),
      attacker_side(a.side()), defender_side(d.side()),
      chance_to_hit_defender(a_cth), chance_to_hit_attacker(d_cth)
 {
@@ -454,7 +454,7 @@ void recruit_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recruits[u.id()]++;
+	s.recruits[u.type_id()]++;
 	s.recruit_cost += u.cost();
 }
 
@@ -464,7 +464,7 @@ void recall_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recalls[u.id()]++;
+	s.recalls[u.type_id()]++;
 	s.recall_cost += u.cost();
 }
 
@@ -474,7 +474,7 @@ void un_recall_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recalls[u.id()]--;
+	s.recalls[u.type_id()]--;
 	s.recall_cost -= u.cost();
 }
 
@@ -484,7 +484,7 @@ void un_recruit_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recruits[u.id()]--;
+	s.recruits[u.type_id()]--;
 	s.recruit_cost -= u.cost();
 }
 
@@ -495,7 +495,7 @@ void advance_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.advanced_to[u.id()]++;
+	s.advanced_to[u.type_id()]++;
 }
 
 void reset_turn_stats(int side)

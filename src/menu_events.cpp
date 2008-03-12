@@ -1364,7 +1364,7 @@ private:
 			// Redo recruit action
 			team& current_team = teams_[team_num-1];
 			gamemap::location loc = action.recall_loc;
-			const std::string name = action.affected_unit.id();
+			const std::string name = action.affected_unit.type_id();
 
 			//search for the unit to be recruited in recruits
 			int recruit_num = 0;

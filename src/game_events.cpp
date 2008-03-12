@@ -1514,7 +1514,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		assert(status_ptr != NULL);
 		assert(state_of_game != NULL);
 		unit new_unit(game_data_ptr,units,game_map,status_ptr,teams,cfg.get_parsed_config(),true, state_of_game);
-		preferences::encountered_units().insert(new_unit.id());
+		preferences::encountered_units().insert(new_unit.type_id());
 		gamemap::location loc = cfg_to_loc(cfg);
 
 		if(game_map->on_board(loc)) {
@@ -2160,7 +2160,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			assert(status_ptr != NULL);
 			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var, false);
 			
-			preferences::encountered_units().insert(u.id());
+			preferences::encountered_units().insert(u.type_id());
 			gamemap::location loc(var, game_events::get_state_of_game());
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {

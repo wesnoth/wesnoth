@@ -195,7 +195,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		assert(!wml_recall);
 		const std::string rc = (*ran_results)["checksum"];
 		if(rc != checksum) {
-			ERR_NG << "SYNC: In recruit " << new_unit.id() <<
+			ERR_NG << "SYNC: In recruit " << new_unit.type_id() <<
 				": has checksum " << checksum <<
 				" while datasource has checksum " <<
 				rc << "\n";
@@ -629,7 +629,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 
 		if (!plague_specials.empty()) {
 			if((*plague_specials.cfgs.front().first)["type"] == "")
-				plague_type = u.id();
+				plague_type = u.type_id();
 			else
 				plague_type = (*plague_specials.cfgs.front().first)["type"];
 		}
@@ -724,7 +724,7 @@ bool battle_context::better_attack(class battle_context &that, double harm_weigh
 static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 {
 	std::stringstream s;
-	s << u.second.id() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
+	s << u.second.type_id() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
 	return s.str();
 }
 
@@ -1126,7 +1126,7 @@ attack::attack(game_display& gui, const gamemap& map,
 							newunit.heal_all();
 						}
 						units_.add(new std::pair<gamemap::location,unit>(death_loc,newunit));
-						preferences::encountered_units().insert(newunit.id());
+						preferences::encountered_units().insert(newunit.type_id());
 						if (update_display_){
 							gui_.invalidate(death_loc);
 						}
@@ -1696,8 +1696,8 @@ void advance_unit(const game_data& info,
 	game_events::fire("advance",loc);
 	statistics::advance_unit(new_unit);
 
-	preferences::encountered_units().insert(new_unit.id());
-	LOG_STREAM(info, config) << "Added '" << new_unit.id() << "' to encountered units\n";
+	preferences::encountered_units().insert(new_unit.type_id());
+	LOG_STREAM(info, config) << "Added '" << new_unit.type_id() << "' to encountered units\n";
 
 	units.replace(new std::pair<gamemap::location,unit>(loc,new_unit));
 	LOG_NG << "firing post_advance event\n";

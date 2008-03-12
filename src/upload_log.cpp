@@ -242,10 +242,10 @@ void upload_log::start(game_state &state, const team &team,
 			if ((*i)->level() > level)
 				higher_units = true;
 			else if ((*i)->level() == level) {
-				if (tally.find((*i)->id()) == tally.end())
-					tally[(*i)->id()] = 1;
+				if (tally.find((*i)->type_id()) == tally.end())
+					tally[(*i)->type_id()] = 1;
 				else
-					tally[(*i)->id()]++;
+					tally[(*i)->type_id()]++;
 			}
 		}
 		if (!tally.empty()) {

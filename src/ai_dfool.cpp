@@ -138,7 +138,7 @@ namespace dfool {
 	    for(config::child_list::const_iterator sf = com_filter.begin(); sf != com_filter.end(); ++sf) {
 	      config ff=**sf;
 	      LOG_STREAM(info, ai)<<"ff:"<<(**com)["type"]<<" "<<ff["type"]<<" "<<ff["x"]<<","<<ff["y"]<<std::endl;
-	      LOG_STREAM(info, ai)<<"ff?"<<u->second.id()<<" "<<u->first.x<<","<<u->first.y<<std::endl;
+	      LOG_STREAM(info, ai)<<"ff?"<<u->second.type_id()<<" "<<u->first.x<<","<<u->first.y<<std::endl;
 	      if(! u->second.matches_filter(&ff,u->first)) {
 		found=false;
 		break;

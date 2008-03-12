@@ -706,7 +706,7 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 bool ai::desperate_attack(const gamemap::location &loc)
 {
 	const unit &u = units_.find(loc)->second;
-	LOG_AI << "desperate attack by '" << u.id() << "' " << loc << "\n";
+	LOG_AI << "desperate attack by '" << u.type_id() << "' " << loc << "\n";
 
 	gamemap::location adj[6];
 	get_adjacent_tiles(loc, adj);

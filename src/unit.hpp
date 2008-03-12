@@ -74,7 +74,7 @@ public:
 	const std::vector<std::string> advances_to() const { return advances_to_; }
 
 	//! The current type id
-	const std::string& id() const { return id_; }
+	const std::string& type_id() const { return id_; }
 	const unit_type* type() const;
 	//! The actual name of the unit
 	const std::string& name() const { if (description_.empty()) return language_name(); else return description_; }

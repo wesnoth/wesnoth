@@ -78,7 +78,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "loc") {
 		return variant(new location_callable(loc_));
 	} else if(key == "id") {
-		return variant(u_.id());
+		return variant(u_.type_id());
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "hitpoints") {

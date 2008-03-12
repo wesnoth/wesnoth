@@ -58,7 +58,7 @@ void advance_unit(const game_data& info,
 	if(u == units.end() || u->second.advances() == false)
 		return;
 
-	LOG_DP << "advance_unit: " << u->second.id() << "\n";
+	LOG_DP << "advance_unit: " << u->second.type_id() << "\n";
 
 	const std::vector<std::string>& options = u->second.advances_to();
 
@@ -80,7 +80,7 @@ void advance_unit(const game_data& info,
 	const config::child_list& mod_options = u->second.get_modification_advances();
 
 	for(config::child_list::const_iterator mod = mod_options.begin(); mod != mod_options.end(); ++mod) {
-		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.id()));
+		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type_id()));
 		sample_units.back().add_modification("advance",**mod);
 		const unit& type = sample_units.back();
 		if((**mod)["image"].str().size()){
@@ -1033,7 +1033,7 @@ void show_unit_description(game_display &disp, const unit& u)
 		show_unit_description(disp, *t);
 	else
 		// can't find type, try open the id page to have feedback and unit error page
-		help::show_unit_help(disp, u.id());
+	  help::show_unit_help(disp, u.type_id());
 }
 
 void show_unit_description(game_display &disp, const unit_type& t)

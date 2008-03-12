@@ -265,11 +265,11 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
 				if(teams[team_index].is_enemy(u_it->second.side()) &&
 				   !current_team.fogged(u_it->first) &&
-				   seen_units.count(u_it->second.id()) == 0 &&
+				   seen_units.count(u_it->second.type_id()) == 0 &&
 				   ( !current_team.is_enemy(u_it->second.side()) ||
 				     !u_it->second.invisible(u_it->first,units,teams)))
 				{
-					seen_units.insert(u_it->second.id());
+					seen_units.insert(u_it->second.type_id());
 					const int resistance = u_it->second.resistance_against(*at_it,false,u_it->first) - 100;
 					resistances[resistance].push_back(u_it->second.language_name());
 				}

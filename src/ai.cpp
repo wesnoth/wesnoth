@@ -1322,7 +1322,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves,
 				}
 
 				if(best_pos.valid()) {
-					LOG_AI << "retreating '" << i->second.id() << "' " << i->first
+					LOG_AI << "retreating '" << i->second.type_id() << "' " << i->first
 					       << " -> " << best_pos << '\n';
 					move_unit(i->first,best_pos,possible_moves);
 					return true;
@@ -1535,8 +1535,8 @@ void ai::analyze_potential_recruit_combat()
 			}
 
 			unit const &un = j->second;
-			const game_data::unit_type_map::const_iterator enemy_info = gameinfo_.unit_types.find(un.id());
-			VALIDATE((enemy_info != gameinfo_.unit_types.end()), _("Unknown unit type : ") + un.id());
+			const game_data::unit_type_map::const_iterator enemy_info = gameinfo_.unit_types.find(un.type_id());
+			VALIDATE((enemy_info != gameinfo_.unit_types.end()), _("Unknown unit type : ") + un.type_id());
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;

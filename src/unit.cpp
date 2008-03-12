@@ -396,15 +396,15 @@ void unit::add_trait(std::string /*trait*/)
 void unit::generate_traits(bool musthaveonly, game_state* state)
 {
 	assert(gamedata_ != NULL);
-	LOG_UT << "Generating a trait for unit type " << id() << " with musthaveonly " << musthaveonly << "\n";
-	const game_data::unit_type_map::const_iterator type = gamedata_->unit_types.find(id());
+	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
+	const game_data::unit_type_map::const_iterator type = gamedata_->unit_types.find(type_id());
 	// Calculate the unit's traits
 	if (type == gamedata_->unit_types.end()) {
 		std::string error_message = _("Unknown unit type '$type|'");
 		utils::string_map symbols;
-		symbols["type"] = id();
+		symbols["type"] = type_id();
 		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-		LOG_STREAM(err, engine) << "unit of type " << id() << " not found!\n";
+		LOG_STREAM(err, engine) << "unit of type " << type_id() << " not found!\n";
 		throw game::game_error(error_message);
 	}
 	std::vector<config*> candidate_traits = type->second.possible_traits();
@@ -548,7 +548,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		cfg_["gender"] = gender_string(generate_gender(*t,true));
 	}
 
-	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
+	if(type_id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
 		do_heal = true; // Can't heal until after mods applied.
 		id_ = t->id();
 		cfg_["id"] = id_;
@@ -590,12 +590,12 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 const unit_type* unit::type() const
 {
 	assert(gamedata_ != NULL);
-	std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(id());
+	std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(type_id());
 	if(i != gamedata_->unit_types.end()) {
 		return &i->second;
 	}
-	if (!id().empty())
-		LOG_STREAM(err, engine) << "type not found for nonempty unit " << id() << ", returning NULL!\n";
+	if (!type_id().empty())
+		LOG_STREAM(err, engine) << "type not found for nonempty unit " << type_id() << ", returning NULL!\n";
 
 	return NULL;
 }
@@ -918,7 +918,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		}
 	}
 
-	const std::string& this_type = id();
+	const std::string& this_type = type_id();
 
 	// The type could be a comma separated list of types
 	if(type.empty() == false && type != this_type) {
@@ -1443,9 +1443,8 @@ void unit::write(config& cfg) const
 	cfg.add_child("abilities",abilities_b_);
 	cfg["x"] = x;
 	cfg["y"] = y;
-	cfg["id"] = id();
-	cfg["type"] = id();
-	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(id());
+	cfg["id"] = type_id();
+	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(type_id());
 	const unit_type* ut = NULL;
 	if(uti != gamedata_->unit_types.end()) {
 		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
@@ -2354,7 +2353,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		const std::string& type_filter = (**i.first)["unit_type"];
 		if(type_filter.empty() == false) {
 			const std::vector<std::string>& types = utils::split(type_filter);
-			if(std::find(types.begin(),types.end(),id()) == types.end()) {
+			if(std::find(types.begin(),types.end(),type_id()) == types.end()) {
 				continue;
 			}
 		}
@@ -2384,13 +2383,13 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				if(apply_to == "variation" && no_add == false) {
 					variation_ = (**i.first)["name"];
 					assert(gamedata_ != NULL);
-					const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
+					const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(type_id());
 										if(var == gamedata_->unit_types.end()) {
 						std::string error_message = _("Unknown unit type '$type|'");
 						utils::string_map symbols;
-						symbols["type"] = id();
+						symbols["type"] = type_id();
 						error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-						LOG_STREAM(err, engine) << "unit of type " << id() << " not found!\n";
+						LOG_STREAM(err, engine) << "unit of type " << type_id() << " not found!\n";
 						throw game::game_error(error_message);
 										}
 					advance_to(&var->second.get_variation(variation_));
