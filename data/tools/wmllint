@@ -597,7 +597,7 @@ def sanity_check(filename, lines):
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units deived via [base_unit].
     # Also, build dictionaries of unit movement types and races
-    in_unit = False
+    in_unit_type = False
     in_attack_filter = False
     for i in range(len(lines)):
         if "[attack_filter]" in lines[i]:
@@ -611,11 +611,11 @@ def sanity_check(filename, lines):
             notes = []
             has_special_notes = False
             derived_unit = False
-            in_unit = i+1
+            in_unit_type = i+1
             continue
         elif "[/unit_type]" in lines[i]:
             #print '"%s", %d: unit has traits %s and notes %s' \
-            #      % (filename, in_unit, traits, notes)
+            #      % (filename, in_unit_type, traits, notes)
             if unit_id and not derived_unit:
                 missing_notes = []
                 for trait in traits:
@@ -631,19 +631,19 @@ def sanity_check(filename, lines):
                     missing_notes = ["{SPECIAL_NOTES}"] + missing_notes
                 if missing_notes:
                     print '"%s", line %d: unit %s is missing notes +%s' \
-                          % (filename, in_unit, unit_id, "+".join(missing_notes))
+                          % (filename, in_unit_type, unit_id, "+".join(missing_notes))
                 if missing_traits:
                     print '"%s", line %d: unit %s is missing traits %s' \
-                          % (filename, in_unit, unit_id, "+".join(missing_traits))
+                          % (filename, in_unit_type, unit_id, "+".join(missing_traits))
                 if not (notes or traits) and has_special_notes:
                     print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
-                          % (filename, in_unit, unit_id)
-            in_unit = None
+                          % (filename, in_unit_type, unit_id)
+            in_unit_type = None
             traits = []
             notes = []
             unit_id = ""
             has_special_notes = False
-        if in_unit and not in_attack_filter:
+        if in_unit_type and not in_attack_filter:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
                 if key == "id" and not unit_id:
@@ -990,7 +990,7 @@ def hack_syntax(filename, lines):
                 modcount += 1        
             need_image = in_message = False
     # Remove get_hit_sound fields
-    in_unit = False
+    in_unit_type = 0 
     unit_id = ""
     unit_image = None
     unit_sound = None
@@ -999,7 +999,7 @@ def hack_syntax(filename, lines):
     has_special_notes = False
     for i in range(len(lines)):
         if "[unit_type]" in lines[i]:
-            in_unit = i+1
+            in_unit_type = i+1
             continue
         elif "[/unit_type]" in lines[i]:
             if unit_id and get_hit_sound:
@@ -1013,14 +1013,14 @@ def hack_syntax(filename, lines):
                     lines[get_hit_sound] = leader(lines[get_hit_sound]) \
                                            + new_anim + comment
                     modcount += 1
-            in_unit = None
+            in_unit_type = None
             unit_id = ""
             unit_image = None
             unit_sound = None
             get_hit_sound = None
             has_defense_anim = False
             has_special_notes = False
-        if in_unit:
+        if in_unit_type:
             if "{DEFENSE_ANIM" in lines[i]:
                 has_defense_anim = True
             else:
