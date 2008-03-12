@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-02 14:04+0100\n"
-"PO-Revision-Date: 2008-02-08 13:17+0100\n"
+"PO-Revision-Date: 2008-03-11 11:43+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -908,11 +908,13 @@ msgstr ""
 msgid "RECALL $recall_name1"
 msgstr "Přivolej jednotku $recall_name1"
 
-# ne všechny elfí jména se dají takhle skloňovat, ale drtivá většina ano
+# nevleze se na obrazovku
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:532
+#, fuzzy
 msgid "Right click on the tile south of you and recall $recall_name1"
 msgstr ""
-"Klikni pravým tlačítkem na políčko jižně od tebe a přivolej $recall_name1|a"
+"Klikni pravým tlačítkem na políčko východně od tebe\n"
+"a přivolej $recall_name2|a"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:541
 msgid ""
@@ -939,9 +941,11 @@ msgid "Elvish Fighter"
 msgstr "Elfí bojovník"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:548
+#, fuzzy
 msgid "Right click on the tile south of you and recruit an Elvish Fighter"
 msgstr ""
-"Klikni pravým tlačítkem na políčko jižně od tebe a naverbuj elfího bojovníka"
+"Klikni pravým tlačítkem na políčko východně od tebe a naverbuj elfího "
+"bojovníka"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:588
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
@@ -1046,9 +1050,10 @@ msgstr ""
 
 # nevleze se na obrazovku
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:799
+#, fuzzy
 msgid "Right click on the tile south-east of you and recall $recall_name2"
 msgstr ""
-"Klikni pravým tlačítkem na políčko jihovýchodně od tebe\n"
+"Klikni pravým tlačítkem na políčko severovýchodně od tebe\n"
 "a přivolej $recall_name2|a"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:800
@@ -1057,9 +1062,10 @@ msgstr "Přivolej jednotku $recall_name2"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:804
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:847
+#, fuzzy
 msgid "Right click on the tile south-east of you and recruit an Elvish Fighter"
 msgstr ""
-"Klikni pravým tlačítkem na políčko jihovýchodně od tebe a naverbuj elfího "
+"Klikni pravým tlačítkem na políčko severovýchodně od tebe a naverbuj elfího "
 "bojovníka"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:827
