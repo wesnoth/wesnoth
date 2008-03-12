@@ -23,7 +23,7 @@
 
 #include "global.hpp"
 
-#include "font.hpp"
+//#include "font.hpp"
 #include "video.hpp"
 
 #include <iostream>
