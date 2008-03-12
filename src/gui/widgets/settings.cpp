@@ -41,7 +41,8 @@ namespace {
 unsigned tbutton::default_width_ = 10;
 unsigned tbutton::default_height_ = 10;
 config tbutton::default_enabled_draw_ = config();
-
+config tbutton::default_mouse_over_draw_ = config();
+config tbutton::default_pressed_draw_ = config();
 
 void load_settings() 
 {
@@ -79,12 +80,50 @@ void load_settings()
 
 				if(draw) {
 					tbutton::default_enabled_draw_ = config(*draw);
+
+					DBG_GUI << "[gui][button][state_enabled][draw]" << tbutton::default_enabled_draw_;
+
 				} else {
 					ERR_GUI << "[draw] not found in [gui][button][state_enabled].\n";
 				}
 			} else {
 				ERR_GUI << "[state_enabled] not found in [gui][button].\n";
 			}
+
+			config* state_mouse_over = button->child("state_mouse_over");
+			if(state_mouse_over) {
+
+				config* draw = state_mouse_over->child("draw");
+
+				if(draw) {
+					tbutton::default_mouse_over_draw_ = config(*draw);
+
+					DBG_GUI << "[gui][button][state_mouse_over][draw]" << tbutton::default_mouse_over_draw_;
+
+				} else {
+					ERR_GUI << "[draw] not found in [gui][button][state_mouse_over].\n";
+				}
+			} else {
+				ERR_GUI << "[state_mouse_over] not found in [gui][button].\n";
+			}
+
+			config* state_down = button->child("state_down");
+			if(state_down) {
+
+				config* draw = state_down->child("draw");
+
+				if(draw) {
+					tbutton::default_pressed_draw_ = config(*draw);
+
+					DBG_GUI << "[gui][button][state_down][draw]" << tbutton::default_pressed_draw_;
+
+				} else {
+					ERR_GUI << "[draw] not found in [gui][button][state_down].\n";
+				}
+			} else {
+				ERR_GUI << "[state_down] not found in [gui][button].\n";
+			}
+
 		} else {
 			ERR_GUI << "[button] not found in [gui].\n";
 		}

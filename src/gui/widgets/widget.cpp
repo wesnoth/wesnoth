@@ -142,7 +142,7 @@ void tsizer::add_child(twidget* widget, const unsigned row,
 	if(cell.widget()) {
 		// make sure the new child is valid before deferring
 		cell.set_id(cell.widget()->id());
-//		cell.widget->parent() = this; FIXME enable
+		cell.widget()->set_parent(this);
 	} else {
 		cell.set_id("");
 	}

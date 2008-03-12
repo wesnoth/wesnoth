@@ -43,15 +43,76 @@ void tbutton::set_height(const int height)
 	tcontrol::set_height(height);
 }
 
+void tbutton::mouse_down(const tevent_info& /*event*/, bool& /*handled*/) 
+{ 
+	DBG_GUI << "mouse down\n"; 
+
+	set_state(DOWN);
+}
+
+void tbutton::mouse_up(const tevent_info& /*event*/, bool& /*handled*/) 
+{ 
+	DBG_GUI << "mouse up\n";
+
+	set_state(MOUSE_OVER);
+}
+
+void tbutton::mouse_click(const tevent_info& /*event*/, bool& /*handled*/) 
+{ 
+	DBG_GUI << "mouse click\n"; 
+}
+
+void tbutton::mouse_double_click(const tevent_info& /*event*/, bool& /*handled*/) 
+{ 
+	DBG_GUI << "mouse double click\n"; 
+}
+
+void tbutton::mouse_enter(const tevent_info& /*event*/, bool& /*handled*/) 
+{ 
+	DBG_GUI << "mouse enter\n"; 
+
+	set_state(MOUSE_OVER);
+}
+
+void tbutton::mouse_leave(const tevent_info& /*event*/, bool& /*handled*/) 
+{ 
+	DBG_GUI << "mouse leave\n"; 
+
+	set_state(NORMAL);
+}
+
 void tbutton::draw(surface& canvas)
 {
 	DBG_GUI << "Drawing button\n";
 
-	canvas_up_.draw();
-
-	// now blit the cached image on the screen
 	SDL_Rect rect = get_rect();
-	SDL_BlitSurface(canvas_up_.surf(), 0, canvas, &rect);
+	switch(state_) {
+
+		case NORMAL : 
+			canvas_up_.draw(true);
+			SDL_BlitSurface(canvas_up_.surf(), 0, canvas, &rect);
+			break;
+
+		case DOWN : 
+			canvas_down_.draw(true);
+			SDL_BlitSurface(canvas_down_.surf(), 0, canvas, &rect);
+			break;
+
+		case MOUSE_OVER :
+			canvas_up_mouse_over_.draw(true);
+			SDL_BlitSurface(canvas_up_mouse_over_.surf(), 0, canvas, &rect);
+			break;
+	}
+
+	set_dirty(false);
+}
+
+void tbutton::set_state(tstate state)
+{
+	if(state != state_) {
+		state_ = state;
+		set_dirty(true);
+	}
 }
 
 } // namespace gui2

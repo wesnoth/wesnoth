@@ -415,6 +415,9 @@ tcanvas::timage::timage(const vconfig& cfg) :
 
 void tcanvas::timage::draw(surface& canvas)
 {
+
+	DBG_GUI << "Drawing image.\n";
+
 	SDL_Rect src_clip = src_clip_;
 	SDL_Rect dst_clip = dst_clip_;
 	SDL_BlitSurface(image_, &src_clip, canvas, &dst_clip);

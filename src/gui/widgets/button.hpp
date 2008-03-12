@@ -28,21 +28,24 @@ class tbutton : public tcontrol
 	friend void load_settings();
 public:
 	tbutton(const std::string& id) : 
-		tcontrol()
+		tcontrol(),
+		state_(NORMAL)
 		{
 			canvas_up_.set_cfg(tbutton::default_enabled_draw_);
+			canvas_up_mouse_over_.set_cfg(tbutton::default_mouse_over_draw_);
+			canvas_down_.set_cfg(tbutton::default_pressed_draw_);
 		}
 
 	virtual void set_width(const int width);
 
 	virtual void set_height(const int height);
 
-	void mouse_down(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse down\n"; }
-	void mouse_up(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse up\n"; }
-	void mouse_click(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse click\n"; }
-	void mouse_double_click(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse double click\n"; }
-	void mouse_enter(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse enter\n"; }
-	void mouse_leave(const tevent_info& /*event*/, bool& /*handled*/) { std::cerr << "mouse leave\n"; }
+	void mouse_down(const tevent_info& /*event*/, bool& /*handled*/);
+	void mouse_up(const tevent_info& /*event*/, bool& /*handled*/);
+	void mouse_click(const tevent_info& /*event*/, bool& /*handled*/);
+	void mouse_double_click(const tevent_info& /*event*/, bool& /*handled*/);
+	void mouse_enter(const tevent_info& /*event*/, bool& /*handled*/);
+	void mouse_leave(const tevent_info& /*event*/, bool& /*handled*/);
 
 	void draw(surface& canvas);
 
@@ -69,6 +72,13 @@ private:
 	static unsigned default_width_;
 	static unsigned default_height_;
 	static config default_enabled_draw_;
+	static config default_mouse_over_draw_;
+	static config default_pressed_draw_;
+
+	enum tstate { NORMAL, DOWN, MOUSE_OVER };
+
+	void set_state(tstate state);
+	tstate state_;
 };
 
 

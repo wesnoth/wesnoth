@@ -154,9 +154,12 @@ public:
 	virtual ~twidget() {}
 
 	twidget* parent() { return parent_; }
+	void set_parent(twidget* parent) { parent_ = parent; }
+
 	const std::string id() const { return id_; }
 
 	// draw event does nothing by default, maybe make pure virtual later
+	// fixme add force as parameter
 	virtual void draw(surface& /*canvas*/) {}
 
 	// invisible widgets never hit, only items with a size NOT here
@@ -207,7 +210,11 @@ public:
 	}
 
 protected:	
-	virtual void set_dirty(const bool dirty = true) { dirty_ = dirty; }
+	virtual void set_dirty(const bool dirty = true) 
+	{ 
+		dirty_ = dirty; 
+		if(parent_ && dirty) parent_->set_dirty(true);
+	}
 
 	SDL_Rect get_rect() const 
 		{ return ::create_rect( x_, y_, w_, h_ ); }

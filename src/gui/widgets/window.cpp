@@ -110,6 +110,27 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 		if(status_ == REQUEST_CLOSE) {
 			break;
 		}
+
+		if(dirty()) {
+#if 0			
+			// Darkening for debugging redraw.
+			SDL_Rect Xrect = {0, 0, screen->w, screen->h};
+			fill_rect_alpha(Xrect, 0, 1, screen);
+#endif
+
+			for(tsizer::iterator itor = begin(); itor != end(); ++itor) {
+
+				if(itor->dirty()) {
+					log_scope2(widget, "Draw child");
+
+					itor->draw(screen);
+				}
+			}
+			rect = get_rect();
+			SDL_BlitSurface(screen, 0, video_.getSurface(), &rect);
+			update_rect(get_rect());
+		}
+
 		// delay until it's our frame see display.ccp code for how to do that
 		SDL_Delay(10);
 		flip();
