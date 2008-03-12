@@ -94,7 +94,7 @@ unit::unit(const unit& o):
            name_(o.name_),
            description_(o.description_),
            custom_unit_description_(o.custom_unit_description_),
-           underlying_description_(o.underlying_description_),
+           underlying_id_(o.underlying_id_),
            language_name_(o.language_name_),
            undead_variation_(o.undead_variation_),
            variation_(o.variation_),
@@ -272,14 +272,14 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	}
 	generate_traits(!use_traits);
 	apply_modifications();
-	if(underlying_description_.empty()){
+	if(underlying_id_.empty()){
 		char buf[80];
 		if(!custom_unit_description_.empty()){
 			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
 		} else {
 			snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
 		}
-		underlying_description_ = buf;
+		underlying_id_ = buf;
 	}
 
 	unrenamable_ = false;
@@ -313,14 +313,14 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	}
 	generate_traits(!use_traits);
 	apply_modifications();
-	if(underlying_description_.empty()){
+	if(underlying_id_.empty()){
 		char buf[80];
 		if(!custom_unit_description_.empty()){
 			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
 		}else{
 			snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
 		}
-		underlying_description_ = buf;
+		underlying_id_ = buf;
 	}
 
 	unrenamable_ = false;
@@ -883,12 +883,12 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	const std::string& defense = t_defense;
 	const std::string& mvt_cost = t_movement_cost;
 
-	if(description.empty() == false && description != this->underlying_description()) {
+	if(description.empty() == false && description != this->underlying_id()) {
 		return false;
 	}
 
 	// Allow 'speaker' as an alternative to description, since people use it so often
-	if(speaker.empty() == false && speaker != this->underlying_description()) {
+	if(speaker.empty() == false && speaker != this->underlying_id()) {
 		return false;
 	}
 
@@ -1191,12 +1191,12 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	custom_unit_description_ = cfg["user_description"];
 	std::string custom_unit_desc = cfg["unit_description"];
 
-	underlying_description_ = cfg["description"];
-	if(underlying_description_.empty()){
+	underlying_id_ = cfg["description"];
+	if(underlying_id_.empty()){
 		char buf[80];
 		snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), state ?
 			state->get_random() : get_random());
-		underlying_description_ = buf;
+		underlying_id_ = buf;
 	}
 	if(description_.empty()) {
 		description_ = cfg["type"].c_str();
@@ -1484,7 +1484,7 @@ void unit::write(config& cfg) const
 	cfg["overlays"] = utils::join(overlays_);
 
 	cfg["user_description"] = custom_unit_description_;
-	cfg["description"] = underlying_description_;
+	cfg["description"] = underlying_id_;
 
 	if(can_recruit())
 		cfg["canrecruit"] = "yes";

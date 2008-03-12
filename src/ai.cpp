@@ -462,7 +462,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 
 			while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
 				    LOG_AI << "AI attempting illegal move. Attempting to move onto existing unit\n";
-				    LOG_AI << "\t" << info_.units.find(to)->second.underlying_description() <<" already on " << to << "\n";
+				    LOG_AI << "\t" << info_.units.find(to)->second.underlying_id() <<" already on " << to << "\n";
 				    LOG_AI <<"\tremoving "<<*(steps.end()-1)<<"\n";
 				    to = *(steps.end()-1);
 				    steps.pop_back();

@@ -43,7 +43,7 @@ namespace dfool {
 
     //    for(unit_map::iterator ua = get_info().units.begin(); ua != get_info().units.end(); ++ua) {
     //        std::string t = ua->second.get_ai_special();
-    //        LOG_STREAM(info, ai)<<"ua:"<<ua->second.underlying_description()<<"\t"<<t<<std::endl;
+    //        LOG_STREAM(info, ai)<<"ua:"<<ua->second.underlying_id()<<"\t"<<t<<std::endl;
     //        LOG_STREAM(info, ai)<<"\t\t\t"<<ua->first.x<<","<<ua->first.y<<std::endl;
     //    }
 
@@ -57,7 +57,7 @@ namespace dfool {
     //      unit_map::iterator u = unit(*ui,get_info().units);
     //      if(u!=get_info().units.end()){
     //	LOG_STREAM(info, ai)<<"\t"<<u->second.name()<<std::endl;
-    //	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<std::endl;
+    //	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_id()<<std::endl;
     //	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
     //	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
     //      }
@@ -68,7 +68,7 @@ namespace dfool {
       unit_map::iterator u = unit(*ui,get_info().units);
       if(u!=get_info().units.end()){
 	//	LOG_STREAM(info, ai)<<"\t"<<u->second.name()<<std::endl;
-	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<std::endl;
+	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_id()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
 
@@ -105,16 +105,16 @@ namespace dfool {
 	      if(ui!=get_info().units.end()){
 		std::string ais=ui->second.get_ai_special();
 
-		//		LOG_STREAM(info, ai)<<"\t match: "<<ui->second.underlying_description()<<"\t"<<ais<<":::"<<std::endl;
+		//		LOG_STREAM(info, ai)<<"\t match: "<<ui->second.underlying_id()<<"\t"<<ais<<":::"<<std::endl;
 
 		bool used=(ais.size() > 0);
 		if(used){
-		  //		  LOG_STREAM(info, ai)<<"\t\talready assigned: "<<ui->second.underlying_description()<<"\t"<<ais<<std::endl;
+		  //		  LOG_STREAM(info, ai)<<"\t\talready assigned: "<<ui->second.underlying_id()<<"\t"<<ais<<std::endl;
 		}else{
 		  ui->second.assign_ai_special(order_id);
 		  order_units.push_back(*i);
 
-		  //		  LOG_STREAM(info, ai)<<"\t\tmatching: "<<ui->second.underlying_description()<<" to order: "<<order_id<<"\t"<<ui->second.get_ai_special()<<std::endl;
+		  //		  LOG_STREAM(info, ai)<<"\t\tmatching: "<<ui->second.underlying_id()<<" to order: "<<order_id<<"\t"<<ui->second.get_ai_special()<<std::endl;
 		}
 	      }
             }
@@ -163,10 +163,10 @@ namespace dfool {
 	    if(type=="set_order"){
 	      std::string set_id=(**com)["id"];
 	      std::string a=(u->second.get_ai_special());
-	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<"\t"<<a<<"->"<<set_id<<std::endl;
+	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_id()<<"\t"<<a<<"->"<<set_id<<std::endl;
 	      (u->second.assign_ai_special(set_id));
 	      a=(u->second.get_ai_special());
-	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<"\t"<<a<<" =?= "<<set_id<<std::endl;
+	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_id()<<"\t"<<a<<" =?= "<<set_id<<std::endl;
 	    }
 	    if(type=="break"){
 	      com_break=true;
@@ -189,8 +189,8 @@ namespace dfool {
     for(unit_list::const_iterator i = ul.begin(); i != ul.end(); ++i) {
       //      LOG_STREAM(info, ai)<<"filter2:"<<std::endl;
       unit_map::iterator j = unit(*i,um);
-      //      LOG_STREAM(info, ai)<<"j:"<<j->second.underlying_description()<<":"<<j->first.x<<","<<j->first.y<<std::endl;
-      if(j->second.underlying_description().size()>0){
+      //      LOG_STREAM(info, ai)<<"j:"<<j->second.underlying_id()<<":"<<j->first.x<<","<<j->first.y<<std::endl;
+      if(j->second.underlying_id().size()>0){
 	//	LOG_STREAM(info, ai)<<"filter3:"<<std::endl;
 	if(j->second.matches_filter(&filter,j->first)) {
 	  //	  LOG_STREAM(info, ai)<<"filter4:"<<std::endl;
@@ -212,7 +212,7 @@ namespace dfool {
       bool hidden_by_fog = current_team().fogged(i->first);
       bool hidden = i->second.invisible(i->first, um, get_info().teams);
       if((no_fog || !hidden_by_fog) && !hidden) {
-	  visible_units.push_back(i->second.underlying_description());
+	  visible_units.push_back(i->second.underlying_id());
       }
     }
 
@@ -224,8 +224,8 @@ namespace dfool {
     unit_list all;
     const unit_map& um=get_info().units;
     for(unit_map::const_iterator i = um.begin(); i != um.end(); ++i) {
-      //      LOG_STREAM(info, ai)<<"all:"<<i->second.underlying_description()<<std::endl;
-      all.push_back(i->second.underlying_description());
+      //      LOG_STREAM(info, ai)<<"all:"<<i->second.underlying_id()<<std::endl;
+      all.push_back(i->second.underlying_id());
     }
     return(all);
   }
@@ -243,7 +243,7 @@ namespace dfool {
 
 	std::cout<<"known units:\n";
 	for(unit_map::const_iterator uu = known_units.begin();uu!=known_units.end();uu++){
-	  std::cout<<"\t"<<uu->second.underlying_description()<<" "<<uu->first<<"\n";
+	  std::cout<<"\t"<<uu->second.underlying_id()<<" "<<uu->first<<"\n";
 	}
 
 	calculate_moves(known_units,possible_moves,srcdst,dstsrc,false,false,NULL,true);
@@ -273,7 +273,7 @@ namespace dfool {
 	  }
 	}
 
-	LOG_STREAM(info, ai)<<"\tmoving : "<< m->second.underlying_description() <<" "<<" from ("<<closest_move.first.x<<","<<closest_move.first.y<<")"<<" to ("<<target.x<<","<<target.y<<")"<<std::endl;
+	LOG_STREAM(info, ai)<<"\tmoving : "<< m->second.underlying_id() <<" "<<" from ("<<closest_move.first.x<<","<<closest_move.first.y<<")"<<" to ("<<target.x<<","<<target.y<<")"<<std::endl;
 	LOG_STREAM(info, ai)<<"\tdistance: "<<closest_distance<<"\n";
 
 	if(closest_distance != -1) {
@@ -288,8 +288,8 @@ namespace dfool {
   unit_map::iterator dfool_ai::unit(std::string unit_id, unit_map& um){
     //    LOG_STREAM(info, ai)<<"unit start:"<<unit_id<<std::endl;
     for(unit_map::iterator u = um.begin(); u != um.end(); u++){
-      if(unit_id == u->second.underlying_description()){
-	//	LOG_STREAM(info, ai)<<"unit:"<<unit_id<<" , "<< u->second.underlying_description()<<std::endl;
+      if(unit_id == u->second.underlying_id()){
+	//	LOG_STREAM(info, ai)<<"unit:"<<unit_id<<" , "<< u->second.underlying_id()<<std::endl;
 	return u;
       }
     }
@@ -317,7 +317,7 @@ namespace dfool {
   }
 
   void unit_memory::add_unit_sighting(unit u, gamemap::location l, size_t t){
-    std::string unit_id= u.underlying_description();
+    std::string unit_id= u.underlying_id();
     // Check if this unit has already been seen
     size_t i,j;
     for(i=0; i < ids_.size();i++){

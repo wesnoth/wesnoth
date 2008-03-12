@@ -437,7 +437,7 @@ bool python_ai::is_unit_valid(const unit* unit)
 static PyObject* unit_get_name(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
-	return Py_BuildValue(STRINGVALUE, unit->unit_->underlying_description().c_str());
+	return Py_BuildValue(STRINGVALUE, unit->unit_->underlying_id().c_str());
 }
 
 static PyObject* unit_is_enemy(wesnoth_unit* unit, void* /*closure*/)

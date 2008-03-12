@@ -81,7 +81,7 @@ public:
 	void rename(const std::string& name) { if (!unrenamable_) custom_unit_description_ = name; }
 	//! The unit type name
 	const std::string& description() const { return (custom_unit_description_); }
-	const std::string& underlying_description() const { return underlying_description_; }
+	const std::string& underlying_id() const { return underlying_id_; }
 	const t_string& language_name() const { return language_name_; }
 	const std::string& undead_variation() const { return undead_variation_; }
 	//! The unit's profile
@@ -303,7 +303,7 @@ private:
 	std::string name_;
 	std::string description_;
 	std::string custom_unit_description_;
-	std::string underlying_description_;
+	std::string underlying_id_;
 	t_string language_name_;
 	std::string undead_variation_;
 	std::string variation_;

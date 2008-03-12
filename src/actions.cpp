@@ -866,8 +866,8 @@ attack::attack(game_display& gui, const gamemap& map,
 		return;
 	}
 
-	a_id_ = a_->second.underlying_description();
-	d_id_ = d_->second.underlying_description();
+	a_id_ = a_->second.underlying_id();
+	d_id_ = d_->second.underlying_id();
 
 	// no attack weapon => stop here and don't attack
 	if (attack_with < 0) {

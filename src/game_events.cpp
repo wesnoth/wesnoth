@@ -2218,7 +2218,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 								citor != player->available_units.end(); ++citor) {
 							
 							const std::string desciption =
-								citor->underlying_description();
+								citor->underlying_id();
 							if(std::find(desciptions.begin(), desciptions.end(),
 									desciption) != desciptions.end()) {
 								
@@ -2233,16 +2233,16 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					
 					// Avoid duplicates in the list.
 					//! @todo it would be better to change available_units from
-					//! a vector to a map and use the underlying_description
+					//! a vector to a map and use the underlying_id
 					//! as key.
-					const std::string key = u.underlying_description();
+					const std::string key = u.underlying_id();
 					for(std::vector<unit>::iterator itor =
 							player->available_units.begin();
 							itor != player->available_units.end(); ++itor) {
 
 						LOG_NG << "Replaced unit '"
 							<< key << "' on the recall list\n";
-						if(itor->underlying_description() == key) {
+						if(itor->underlying_id() == key) {
 							player->available_units.erase(itor);
 							break;
 						}
@@ -2930,12 +2930,12 @@ entity_location::entity_location(gamemap::location loc, const std::string& id)
 {}
 
 entity_location::entity_location(unit_map::iterator itor)
-	: location(itor->first), id_(itor->second.underlying_description())
+	: location(itor->first), id_(itor->second.underlying_id())
 {}
 
 bool entity_location::matches_unit(const unit& u) const
 {
-	return id_ == u.underlying_description();
+	return id_ == u.underlying_id();
 }
 
 bool entity_location::requires_unit() const
