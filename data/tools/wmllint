@@ -532,7 +532,14 @@ def validate_on_pop(tagstack, closer, filename, lineno):
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
-    return tag in map(lambda x: x[0], tagstack)
+    if type(tag) == type(()):	# Can take a list.
+        for t in tag:
+            if within(t):
+                return True
+        else:
+            return False
+    else:
+        return tag in map(lambda x: x[0], tagstack)
 
 # Sanity checking
 
@@ -967,7 +974,7 @@ def hack_syntax(filename, lines):
         precomment = lines[i].split("#")[0]
         if '[message]' in precomment:
             in_message = True
-        elif in_message and "description=" in precomment:
+        elif in_message and re.search("[^_]description=", precomment):
             lines[i] = lines[i].replace("description=", "speaker=")
             modcount += 1
         if "speaker=narrator" in precomment:
@@ -1740,7 +1747,7 @@ def translator(filename, mapxforms, textxform, versions):
             print >>sys.stderr, 'wmllint: "%s", line %d: one-line map.' % (filename, lineno)
             newdata.append(line + terminator)
         else:
-            # Handle text (non-map) lines
+            # Handle text (non-map) lines.  It can use within().
             newline = textxform(filename, lineno, line, versions)
             newdata.append(newline + terminator)
             if newline != line:
@@ -2063,6 +2070,10 @@ if __name__ == '__main__':
         # Perform unconditional line changes
         for (old, new) in linechanges:
             transformed = transformed.replace(old, new)
+        # Perform tag renaming
+        #if not within(("scenario","multiplayer","test","tutorial")):
+        #    transformed = transformed.replace("[unit]", "[unit_type]")
+        #    transformed = transformed.replace("[/unit]", "[/unit_type]")
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
