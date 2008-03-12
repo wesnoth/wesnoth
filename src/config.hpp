@@ -145,6 +145,7 @@ public:
 	//! I.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2))
 	//! will make cfg1 identical to cfg2.
 	config get_diff(const config& c) const;
+	void get_diff(const config& c, config& res) const;
 
 	void apply_diff(const config& diff); //throw error
 

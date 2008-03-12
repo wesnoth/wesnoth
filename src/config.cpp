@@ -429,7 +429,12 @@ config::all_children_iterator config::ordered_end() const
 config config::get_diff(const config& c) const
 {
 	config res;
+	get_diff(c, res);
+	return res;
+}
 
+void config::get_diff(const config& c, config& res) const
+{
 	config* inserts = NULL;
 
 	string_map::const_iterator i;
@@ -530,9 +535,6 @@ config config::get_diff(const config& c) const
 			}
 		}
 	}
-
-
-	return res;
 }
 
 void config::apply_diff(const config& diff)
