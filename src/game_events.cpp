@@ -2265,6 +2265,16 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
+	else if (cmd == "store_map_dimensions") {
+		std::string variable = cfg["variable"];
+		if (variable.empty()) {
+			variable="map_size";
+		}
+		assert(state_of_game != NULL);
+		state_of_game->get_variable(variable + ".width") = str_cast<int>(game_map->w());
+		state_of_game->get_variable(variable + ".height") = str_cast<int>(game_map->h());
+	}
+
 	else if(cmd == "store_starting_location") {
 		std::string side = cfg["side"];
 		std::string variable = cfg["variable"];
