@@ -82,6 +82,10 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 	layout(Xrect);
 	for(tsizer::iterator itor = begin(); itor != end(); ++itor) {
 
+		if(! *itor) {
+			continue;
+		}
+
 		log_scope2(widget, "Draw child");
 
 		itor->draw(screen);
@@ -120,11 +124,13 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 
 			for(tsizer::iterator itor = begin(); itor != end(); ++itor) {
 
-				if(itor->dirty()) {
-					log_scope2(widget, "Draw child");
-
-					itor->draw(screen);
+				if(! *itor || !itor->dirty()) {
+					continue;
 				}
+
+				log_scope2(widget, "Draw child");
+
+				itor->draw(screen);
 			}
 			rect = get_rect();
 			SDL_BlitSurface(screen, 0, video_.getSurface(), &rect);
