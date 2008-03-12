@@ -16,6 +16,7 @@ $langs['eo'] = 'Esperanto';
 $langs['et'] = 'Estonian';
 $langs['gl_ES'] = 'Galego';
 $langs['he'] = 'Hebrew';
+$langs['hr'] = 'Croatian';
 $langs['hu'] = 'Hungarian';
 $langs['id'] = 'Bahasa Indonesian';
 $langs['it'] = 'Italian';
