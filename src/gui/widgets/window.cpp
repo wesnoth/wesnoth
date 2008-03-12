@@ -18,6 +18,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "config.hpp"
+#include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"
@@ -38,7 +39,8 @@ twindow::twindow(CVideo& video,
 	video_(video),
 	status_(NEW),
 	event_info_(),
-	event_context_()
+	event_context_(),
+	need_layout_(true)
 {
 	set_x(x);
 	set_y(y);
@@ -70,35 +72,11 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 		restorer = screen;
 	}
 
-	// draw
+	// draw Window hack
 	SDL_Rect Xrect = {0, 0, screen->w, screen->h};
 	fill_rect_alpha(Xrect, 0, 128, screen);
 
-	// draw our children
-	//fixme make draw const and use a const iterator
-//	for(std::multimap<std::string, twidget *>::iterator itor = 
-//			children_().begin(); itor != children_().end(); ++itor) {
-	
-	layout(Xrect);
-	for(tsizer::iterator itor = begin(); itor != end(); ++itor) {
-
-		if(! *itor) {
-			continue;
-		}
-
-		log_scope2(widget, "Draw child");
-
-		itor->draw(screen);
-	}
-
-	rect = get_rect();
-	SDL_BlitSurface(screen, 0, video_.getSurface(), &rect);
-	update_rect(get_rect());
-	flip();
-
-	DBG_GUI << "Drawing finished\n";
-	
-	// start our loop
+	// Start our loop drawing will happen here as well.
 	for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
 		events::pump();
 
@@ -115,7 +93,11 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 			break;
 		}
 
-		if(dirty()) {
+		if(dirty() || need_layout_) {
+			if(need_layout_) {
+				DBG_GUI << "Layout.\n";
+				layout(Xrect);
+			}
 #if 0			
 			// Darkening for debugging redraw.
 			SDL_Rect Xrect = {0, 0, screen->w, screen->h};
@@ -153,6 +135,8 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 
 void twindow::layout(const SDL_Rect position)
 {
+	need_layout_ = false;
+
 	tpoint best_size = get_best_size();
 
 	if(best_size.x < position.w && best_size.y < position.h) {
@@ -196,6 +180,9 @@ void twindow::handle_event(const SDL_Event& event)
 			break;
 		case SDL_MOUSEMOTION:
 			handle_event_mouse_move(event);
+			break;
+		case SDL_VIDEORESIZE:
+			handle_event_resize(event);
 			break;
 	}
 
@@ -295,6 +282,13 @@ void twindow::handle_event_mouse_move(const SDL_Event& event)
 	}
 
 	event_info_.mouse_focus = mouse_focus;
+}
+
+void twindow::handle_event_resize(const SDL_Event& event)
+{
+	screen_width = event.resize.w;
+	screen_height = event.resize.h;
+	need_layout_ = true;
 }
 
 } // namespace gui2

@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "video.hpp"
 
 
 #define DBG_GUI LOG_STREAM(debug, widget)
@@ -43,10 +44,18 @@ unsigned tbutton::default_height_ = 10;
 config tbutton::default_enabled_draw_ = config();
 config tbutton::default_mouse_over_draw_ = config();
 config tbutton::default_pressed_draw_ = config();
+unsigned screen_width = 0;
+unsigned screen_height = 0;
 
 void load_settings() 
 {
 	LOG_GUI << "Init gui\n";
+
+
+	const SDL_Rect rect = screen_area();
+	screen_width = rect.w;
+	screen_height = rect.h;
+
 	config file;
 	const std::string& filename = "data/hardwired/gui.cfg";
 	try {

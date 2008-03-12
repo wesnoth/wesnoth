@@ -96,6 +96,12 @@ private:
 	
 	//! Handler for a mouse movement.
 	void handle_event_mouse_move(const SDL_Event& event);
+
+	//! Handler for a resize of the main window.
+	void handle_event_resize(const SDL_Event& event);
+
+	//! When set the form needs a full layout redraw cycle.
+	bool need_layout_;
 	
 };
 

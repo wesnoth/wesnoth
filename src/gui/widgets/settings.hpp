@@ -22,7 +22,13 @@ class config;
 
 namespace gui2 {
 
-void load_settings();
+	//! Loads the setting for the theme.
+	void load_settings();
+
+	//! The screen resolution should be available for all widgets since their
+	//! drawing method will depend on it.
+	extern unsigned screen_width;
+	extern unsigned screen_height;
 
 } // namespace gui2
 
