@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   copyright (c) 2007 - 2008 by mark de wever <koraq@xs4all.nl>
+   copyright (c) 2008 by mark de wever <koraq@xs4all.nl>
    part of the battle for wesnoth project http://www.wesnoth.org/
 
    this program is free software; you can redistribute it and/or modify
