@@ -927,9 +927,6 @@ void game_data::set_config(const config& cfg)
 					merge_cfg.merge_with(**i.first);
 					merge_cfg.clear_children("base_unit");
 					std::string id = merge_cfg["id"];
-					if(id.empty()) {
-						id = merge_cfg["name"];
-					}
 					std::pair<unit_type_map::iterator,bool> insertion =
 					unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
 					if (insertion.second) {
