@@ -1700,8 +1700,8 @@ def translator(filename, mapxforms, textxform, versions):
             if maptype == "mask":
                 add_border = False
             if add_border:
-                if verbose:
-                    print "adding border..."
+                print '%s, "line %d": adding map border...' % \
+                      (filename, baseline)
                 newdata.append("border_size=1" + terminator)
                 have_header = True
                 # Start by duplicating the current outermost ring
@@ -1718,6 +1718,8 @@ def translator(filename, mapxforms, textxform, versions):
                 outermap(lambda n: n.replace(r"Gg^Fet", r"Gs^Fp"), outmap)
                 modified = True
             if add_usage:
+                print '%s, "line %d": adding %s usage header...' % \
+                      (filename, baseline, maptype)
                 newdata.append("usage=" + maptype + terminator)
                 have_header = True
                 modified = True
