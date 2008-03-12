@@ -74,10 +74,10 @@ class unit_animation
 		static config prepare_animation(const config &cfg,const std::string animation_tag);
 		explicit unit_animation(const config& cfg,const std::string frame_string ="");
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& event="",const int variation=DEFAULT_ANIM);
-		class crude_animation:public animated<unit_frame>
+		class particule:public animated<unit_frame>
 	{
 		public:
-			explicit crude_animation(int start_time=0) :
+			explicit particule(int start_time=0) :
 				animated<unit_frame>(start_time),
 				accelerate(true),
 				offset_(),
@@ -92,8 +92,8 @@ class unit_animation
 				halo_id_(0),
 				last_frame_begin_time_(0)
 				{};
-			explicit crude_animation(const config& cfg,const std::string frame_string ="frame");
-			virtual ~crude_animation();
+			explicit particule(const config& cfg,const std::string frame_string ="frame");
+			virtual ~particule();
 			bool need_update() const;
 			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
 			const std::string &halo(const std::string&default_val ="") const;
@@ -135,8 +135,8 @@ class unit_animation
 		std::vector<config> secondary_attack_filter_;
 		std::vector<hit_type> hits_;
 		std::vector<int> swing_num_;
-		std::map<std::string,crude_animation> sub_anims_;
-		crude_animation unit_anim_;
+		std::map<std::string,particule> sub_anims_;
+		particule unit_anim_;
 };
 
 class unit_animator 

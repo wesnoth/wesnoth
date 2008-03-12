@@ -75,8 +75,10 @@ class frame_builder {
 		blend_with_(0),
 		blend_ratio_(""),
 		highlight_ratio_(""),
-		offset_("") {};
-		//! allow easy chained modifications
+		offset_(""),
+		initialization_finished(false)	{};
+		frame_builder(const config& cfg);
+		//! allow easy chained modifications will raised assert if used after initialization
 		frame_builder & image(const image::locator image );
 		frame_builder & image_diagonal(const image::locator image_diagonal);
 		frame_builder & sound(const std::string& sound);
@@ -123,36 +125,16 @@ class frame_builder {
 		progressive_double blend_ratio_;
 		progressive_double highlight_ratio_;
 		progressive_double offset_;
+	protected:
+		bool initialization_finished;
+
 };
 //! Describe a unit's animation sequence.
-class unit_frame{
+class unit_frame: public frame_builder{
 	public:
 		// Constructors
-		unit_frame(const frame_builder builder=frame_builder()):internal_param_(builder){};
-		explicit unit_frame(const config& cfg);
+		unit_frame(const frame_builder builder=frame_builder()):frame_builder(builder){initialization_finished=true;};
 
-		bool does_not_change() const { return internal_param_.does_not_change();}
-		bool need_update() const { return internal_param_.need_update();}
-		// Passing internal params
-		const image::locator image() const { return internal_param_.image() ;}
-		const image::locator image_diagonal() const { return internal_param_.image_diagonal() ; }
-		const std::string &halo(int current_time,const std::string& default_val="") const
-			{ return internal_param_.halo(current_time,default_val); }
-		const std::string sound() const { return internal_param_.sound() ; };
-		const std::pair<std::string,Uint32> text() const { return internal_param_.text(); };
-		const int halo_x(int current_time,const int default_val=0) const { return internal_param_.halo_x(current_time,default_val); }
-		const int halo_y(int current_time,const int default_val=0) const { return internal_param_.halo_y(current_time,default_val); }
-		const int duration() const { return internal_param_.duration(); }
-		const Uint32 blend_with(const Uint32 default_val) const { return internal_param_.blend_with(default_val); }
-		const double blend_ratio(int current_time,const double default_val=0.0) const
-			{ return internal_param_.blend_ratio(current_time,default_val); }
-		const fixed_t highlight_ratio(int current_time,double default_val =0.0) const
-			{  return internal_param_.highlight_ratio(current_time,default_val); }
-		const double offset(int current_time,double default_val =0.0) const
-			{ return internal_param_.offset(current_time,default_val)  ; }
-
-	private:
-		frame_builder internal_param_;
 };
 
 #endif

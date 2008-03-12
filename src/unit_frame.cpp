@@ -16,6 +16,7 @@
 //!
 
 #include "global.hpp"
+#include <cassert>
 // NOTE: global.hpp must be first!
 
 #include "display.hpp"
@@ -151,59 +152,66 @@ template class progressive_<double>;
 
 
 
-unit_frame::unit_frame(const config& cfg)
+frame_builder::frame_builder(const config& cfg)
 {
-	internal_param_.image(image::locator(cfg["image"]));
-	internal_param_.image_diagonal(image::locator(cfg["image_diagonal"]));
-	internal_param_.sound(cfg["sound"]);
+	initialization_finished=false;
+	image(image::locator(cfg["image"]));
+	image_diagonal(image::locator(cfg["image_diagonal"]));
+	sound(cfg["sound"]);
 	std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
 	if(tmp_string_vect.size() ==3) {
-	internal_param_.text(cfg["text"],
+		text(cfg["text"],
 		 display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
 	} else {
-		internal_param_.text(cfg["text"],0);
+		text(cfg["text"],0);
 	}
 
 	if(!cfg["duration"].empty()) {
-		internal_param_.duration(atoi(cfg["duration"].c_str()));
+		duration(atoi(cfg["duration"].c_str()));
 	} else {
-		internal_param_.duration(atoi(cfg["end"].c_str()) - atoi(cfg["begin"].c_str()));
+		duration(atoi(cfg["end"].c_str()) - atoi(cfg["begin"].c_str()));
 	}
-	internal_param_.halo(cfg["halo"],cfg["halo_x"],cfg["halo_y"]);
+	halo(cfg["halo"],cfg["halo_x"],cfg["halo_y"]);
 	 tmp_string_vect=utils::split(cfg["blend_color"]);
 	if(tmp_string_vect.size() ==3) {
-		internal_param_.blend(cfg["blend_ratio"],display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
+		blend(cfg["blend_ratio"],display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
 	} else {
-		internal_param_.blend(cfg["blend_ratio"],0);
+		blend(cfg["blend_ratio"],0);
 	}
-	internal_param_.highlight(cfg["alpha"]);
-	internal_param_.offset(cfg["offset"]);
+	highlight(cfg["alpha"]);
+	offset(cfg["offset"]);
+	initialization_finished=true;
 
 }
 
 frame_builder & frame_builder::image(const image::locator image )
 {
+	assert(!initialization_finished);
 	image_ = image;
 	return *this;
 }
 frame_builder & frame_builder::image_diagonal(const image::locator image_diagonal)
 {
+	assert(!initialization_finished);
 	image_diagonal_ = image_diagonal;
 	return *this;
 }
 frame_builder & frame_builder::sound(const std::string& sound)
 {
+	assert(!initialization_finished);
 	sound_=sound;
 	return *this;
 }
 frame_builder & frame_builder::text(const std::string& text,const  Uint32 text_color)
 {
+	assert(!initialization_finished);
 	text_=text;
 	text_color_=text_color;
 	return *this;
 }
 frame_builder & frame_builder::halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y)
 {
+	assert(!initialization_finished);
 	halo_ = progressive_string(halo,duration_);
 	halo_x_ = progressive_int(halo_x,duration_);
 	halo_y_ = progressive_int(halo_y,duration_);
@@ -211,22 +219,26 @@ frame_builder & frame_builder::halo(const std::string &halo, const std::string &
 }
 frame_builder & frame_builder::duration(const int duration)
 {
+	assert(!initialization_finished);
 	duration_= duration;
 	return *this;
 }
 frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
 {
+	assert(!initialization_finished);
 	blend_with_=blend_color;
 	blend_ratio_=progressive_double(blend_ratio,duration_);
 	return *this;
 }
 frame_builder & frame_builder::highlight(const std::string& highlight)
 {
+	assert(!initialization_finished);
 	highlight_ratio_=progressive_double(highlight,duration_);
 	return *this;
 }
 frame_builder & frame_builder::offset(const std::string& offset)
 {
+	assert(!initialization_finished);
 	offset_=progressive_double(offset);
 	return *this;
 }

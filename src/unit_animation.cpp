@@ -137,7 +137,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	for( /*null*/; frame_itor != cfg.all_children().end() ; frame_itor++) {
 		if(frame_itor->first == frame_string) continue;
 		if(frame_itor->first.find("_frame",frame_itor->first.size() -6 ) == std::string::npos) continue;
-		sub_anims_[frame_itor->first] = crude_animation(cfg,frame_itor->first.substr(0,frame_itor->first.size() -5));
+		sub_anims_[frame_itor->first] = particule(cfg,frame_itor->first.substr(0,frame_itor->first.size() -5));
 	}
 	event_ =utils::split(cfg["apply_to"]);
 
@@ -369,7 +369,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		tmp_anim.unit_anim_.remove_frames_after(600);
 		tmp_anim.event_ = utils::split("death");
 		animations.push_back(tmp_anim);
-		animations.back().sub_anims_["_death_sound"] = crude_animation();
+		animations.back().sub_anims_["_death_sound"] = particule();
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 
@@ -391,7 +391,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		tmp_anim.unit_anim_.remove_frames_after(300);
 		tmp_anim.event_ = utils::split("healed");
 		animations.push_back(tmp_anim);
-		animations.back().sub_anims_["_healed_sound"] = crude_animation();
+		animations.back().sub_anims_["_healed_sound"] = particule();
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 
@@ -400,7 +400,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		tmp_anim.unit_anim_.remove_frames_after(300);
 		tmp_anim.event_ = utils::split("poisoned");
 		animations.push_back(tmp_anim);
-		animations.back().sub_anims_["_poison_sound"] = crude_animation();
+		animations.back().sub_anims_["_poison_sound"] = particule();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 
@@ -468,7 +468,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		(**anim_itor)["apply_to"] ="healed";
 		(**anim_itor)["value"]=(**anim_itor)["healing"];
 		animations.push_back(unit_animation(**anim_itor));
-		animations.back().sub_anims_["_healed_sound"] = crude_animation();
+		animations.back().sub_anims_["_healed_sound"] = particule();
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 	}
@@ -478,7 +478,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		(**anim_itor)["apply_to"] ="poisoned";
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
-		animations.back().sub_anims_["_poison_sound"] = crude_animation();
+		animations.back().sub_anims_["_poison_sound"] = particule();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 	}
@@ -542,7 +542,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		image::locator image_loc = animations.back().get_last_frame().image();
 		animations.back().add_frame(600,frame_builder().image(image_loc).duration(600).highlight("1~0:600"));
 		if(!cfg["die_sound"].empty()) {
-			animations.back().sub_anims_["_death_sound"] = crude_animation();
+			animations.back().sub_anims_["_death_sound"] = particule();
 			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 		}
@@ -574,7 +574,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 }
 
-void unit_animation::crude_animation::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset) 
+void unit_animation::particule::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset) 
 {
 	set_begin_time(start_time);
 	if(!highlight.empty()) highlight_ratio_ = progressive_double(highlight,get_animation_duration());
@@ -586,20 +586,20 @@ void unit_animation::crude_animation::override( int start_time,const std::string
 	
 
 }
-const std::string &unit_animation::crude_animation::halo(const std::string&default_val ) const
+const std::string &unit_animation::particule::halo(const std::string&default_val ) const
 {
 	return get_current_frame().halo(get_current_frame_time(),halo_.get_current_element(get_animation_time() - get_begin_time(),default_val));
 }
 
-int unit_animation::crude_animation::halo_x(const int default_val) const 
+int unit_animation::particule::halo_x(const int default_val) const 
 {
 	return get_current_frame().halo_x(get_current_frame_time(),halo_x_.get_current_element(get_animation_time() - get_begin_time(),default_val));
 }
-int unit_animation::crude_animation::halo_y(const int default_val) const 
+int unit_animation::particule::halo_y(const int default_val) const 
 {
 	return get_current_frame().halo_y(get_current_frame_time(),halo_y_.get_current_element(get_animation_time() - get_begin_time(),default_val)); 
 }
-double unit_animation::crude_animation::blend_ratio(const double default_val) const
+double unit_animation::particule::blend_ratio(const double default_val) const
 {
 
 	return get_current_frame().blend_ratio(
@@ -607,27 +607,27 @@ double unit_animation::crude_animation::blend_ratio(const double default_val) co
 		blend_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val)); 
 }
 
-Uint32 unit_animation::crude_animation::blend_with(const Uint32 default_val) const
+Uint32 unit_animation::particule::blend_with(const Uint32 default_val) const
 {
 	return get_current_frame().blend_with(blend_with_?blend_with_:default_val);
 }
 
-fixed_t unit_animation::crude_animation::highlight_ratio(const float default_val) const
+fixed_t unit_animation::particule::highlight_ratio(const float default_val) const
 {
 	return get_current_frame().highlight_ratio(get_current_frame_time(),highlight_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val));
 }
 
-double unit_animation::crude_animation::offset(double default_val) const
+double unit_animation::particule::offset(double default_val) const
 {
 	return get_current_frame().offset(get_current_frame_time(),offset_.get_current_element(get_animation_time() - get_begin_time(),default_val))  ; 
 }
 
-std::pair<std::string,Uint32> unit_animation::crude_animation::text() const 
+std::pair<std::string,Uint32> unit_animation::particule::text() const 
 {
 	return get_current_frame().text();
 }
 
-bool unit_animation::crude_animation::need_update() const
+bool unit_animation::particule::need_update() const
 {
 	if(animated<unit_frame>::need_update()) return true;
 	if(get_current_frame().need_update()) return true;
@@ -642,7 +642,7 @@ bool unit_animation::crude_animation::need_update() const
 	return false;
 }
 
-unit_animation::crude_animation::crude_animation(
+unit_animation::particule::particule(
 	const config& cfg, const std::string frame_string ) :
 		animated<unit_frame>(),
 		accelerate(true),
@@ -694,7 +694,7 @@ unit_animation::crude_animation::crude_animation(
 bool unit_animation::need_update() const
 {
 	if(unit_anim_.need_update()) return true;
-	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
+	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		if(anim_itor->second.need_update()) return true;
 	}
@@ -704,7 +704,7 @@ bool unit_animation::need_update() const
 bool unit_animation::animation_finished() const
 {
 	if(!unit_anim_.animation_finished()) return false;
-	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
+	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		if(!anim_itor->second.animation_finished()) return false;
 	}
@@ -714,7 +714,7 @@ bool unit_animation::animation_finished() const
 bool unit_animation::animation_finished_potential() const
 {
 	if(!unit_anim_.animation_finished_potential()) return false;
-	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
+	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		if(!anim_itor->second.animation_finished_potential()) return false;
 	}
@@ -725,7 +725,7 @@ void unit_animation::update_last_draw_time()
 {
 	double acceleration = unit_anim_.accelerate ? game_display::get_singleton()->turbo_speed() : 1.0;
 	unit_anim_.update_last_draw_time(acceleration);
-	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
+	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.update_last_draw_time(acceleration);
 	}
@@ -734,7 +734,7 @@ void unit_animation::update_last_draw_time()
 int unit_animation::get_end_time() const
 {
 	int result = unit_anim_.get_end_time();
-	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.end();
+	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.end();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		result= minimum<int>(result,anim_itor->second.get_end_time());
 	}
@@ -744,7 +744,7 @@ int unit_animation::get_end_time() const
 int unit_animation::get_begin_time() const
 {
 	int result = unit_anim_.get_begin_time();
-	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
+	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		result= minimum<int>(result,anim_itor->second.get_begin_time());
 	}
@@ -756,12 +756,12 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 		unit_anim_.accelerate = accelerate;
 	unit_anim_.start_animation(start_time, src, dst, cycles);
 	if(!text.empty()) {
-		crude_animation crude_build;
+		particule crude_build;
 		crude_build.add_frame(1,frame_builder());
 		crude_build.add_frame(1,frame_builder().text(text,text_color),true);
 		sub_anims_["_add_text"] = crude_build;
 	}
-	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
+	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.accelerate = accelerate;
 		anim_itor->second.start_animation(start_time,src,dst,cycles);
@@ -770,12 +770,12 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 void unit_animation::redraw()
 {
 
-	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
+	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.redraw();
 	}
 }
-void unit_animation::crude_animation::redraw()
+void unit_animation::particule::redraw()
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src_);
 	const int ysrc = game_display::get_singleton()->get_location_y(src_);
@@ -865,13 +865,13 @@ void unit_animation::crude_animation::redraw()
 	}
 }
 
-unit_animation::crude_animation::~crude_animation()
+unit_animation::particule::~particule()
 {
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
 }
 
-void unit_animation::crude_animation::start_animation(int start_time,
+void unit_animation::particule::start_animation(int start_time,
 	const gamemap::location &src, const gamemap::location &dst, 
 	bool cycles)
 {
