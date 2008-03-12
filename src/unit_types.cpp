@@ -694,27 +694,11 @@ const std::string& unit_type::id() const
 {
 	if(id_.empty()) {
 		id_ = cfg_["id"];
-
-		if(id_.empty()) {
-			// This code is only for compatibility with old unit defs and savefiles.
-			id_ = cfg_["name"];
-		}
-
 		//id_.erase(std::remove(id_.begin(),id_.end(),' '),id_.end());
 	}
 
 	return id_;
 }
-
-
-#if 0
-const std::string& unit_type::name() const
-{
-	return cfg_["id"];
-}
-#endif
-
-
 
 const std::string& unit_type::image_profile() const
 {

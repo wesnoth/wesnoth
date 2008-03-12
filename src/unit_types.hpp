@@ -179,11 +179,6 @@ public:
 	const t_string& language_name() const { return cfg_["name"]; }
 
 	const std::string& id() const;
-	//Disabling this one for consistency with other similar structures,
-	//where name() is always the user-visible, translated, name.
-	//language_name should eventually be renamed name()
-	// const std::string& name() const;
-
 	const std::string& image() const { return cfg_["image"]; }
 	const std::string& image_profile() const;
 	const t_string& unit_description() const;

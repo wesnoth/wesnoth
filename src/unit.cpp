@@ -548,11 +548,9 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		cfg_["gender"] = gender_string(generate_gender(*t,true));
 	}
 
-	if(type_id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
+	if(type_id()!=t->id()) {
 		do_heal = true; // Can't heal until after mods applied.
 		type_ = t->id();
-		cfg_["id"] = type_;
-		cfg_["gender_id"] = cfg_["gender"];
 	}
 
 	if(utils::string_bool(cfg_["random_traits"], true)) {
@@ -1147,7 +1145,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 //- @param use_traits	??
 void unit::read(const config& cfg, bool use_traits, game_state* state)
 {
-	if(cfg["id"].empty() && cfg["type"].empty()) {
+	if(cfg["type"].empty()) {
 		throw game::load_game_failed("Attempt to de-serialize an empty unit");
 	}
 	cfg_ = cfg;
@@ -1157,7 +1155,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 
 	validate_side(side_);
-	bool id_set = cfg["id"] != "";
 
 	// Prevent un-initialized variables
 	hit_points_=1;
@@ -1251,7 +1248,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	bool type_set = false;
 	type_ = "";
 	assert(gamedata_ != NULL);
-	if(!(cfg["type"].empty() || cfg["type"] == cfg["id"]) || cfg["gender"] != cfg["gender_id"]) {
+	if(!cfg["type"].empty()) {
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
 			advance_to(&i->second.get_gender_unit_type(gender_), use_traits, state);
@@ -1273,11 +1270,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 			movement_ = 0;
 		}
 	}
-	if(cfg_["id"]=="") {
-		type_ = cfg_["type"];
-	} else {
-		type_ = cfg_["id"];
-	}
+	type_ = cfg_["type"];
 	if(!type_set || cfg["race"] != "") {
 		const race_map::const_iterator race_it = gamedata_->races.find(cfg["race"]);
 		if(race_it != gamedata_->races.end()) {
@@ -1301,7 +1294,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		cfg_["unit_description"] = custom_unit_desc;
 	}
 
-	if(cfg["profile"] != "" && !id_set) {
+	if(cfg["profile"] != "") {
 		cfg_["profile"] = cfg["profile"];
 	}
 
@@ -1443,7 +1436,6 @@ void unit::write(config& cfg) const
 	cfg.add_child("abilities",abilities_b_);
 	cfg["x"] = x;
 	cfg["y"] = y;
-	cfg["id"] = type_id();
 	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(type_id());
 	const unit_type* ut = NULL;
 	if(uti != gamedata_->unit_types.end()) {
@@ -1472,7 +1464,6 @@ void unit::write(config& cfg) const
 	cfg["side"] = sd.str();
 
 	cfg["gender"] = gender_string(gender_);
-	cfg["gender_id"] = gender_string(gender_);
 
 	cfg["variation"] = variation_;
 
@@ -2962,7 +2953,6 @@ void unit::set_hidden(bool state) {
  * experience
  * gender
  * hitpoints
- * id
  * level
  * max_attacks
  * max_experience
@@ -3003,7 +2993,6 @@ std::string get_checksum(const unit& u) {
 		"experience",
 		"gender",
 		"hitpoints",
-		"id",
 		"ignore_race_traits",
 		"ignore_global_traits",
 		"level",
