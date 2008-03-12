@@ -74,7 +74,7 @@ public:
 	const std::vector<std::string> advances_to() const { return advances_to_; }
 
 	//! The current type id
-	const std::string& type_id() const { return id_; }
+	const std::string& type_id() const { return type_; }
 	const unit_type* type() const;
 	//! The actual name of the unit
 	const std::string& name() const { if (description_.empty()) return language_name(); else return description_; }
@@ -298,7 +298,7 @@ private:
 		config abilities_b_;
 
 	std::vector<std::string> advances_to_;
-	std::string id_;
+	std::string type_;
 	const unit_race* race_;
 	std::string name_;
 	std::string description_;

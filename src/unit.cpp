@@ -89,7 +89,7 @@ unit::unit(const unit& o):
            abilities_b_(o.abilities_b_),
 
            advances_to_(o.advances_to_),
-           id_(o.id_),
+           type_(o.type_),
            race_(o.race_),
            name_(o.name_),
            description_(o.description_),
@@ -371,7 +371,7 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 	teams_ = teams;
 
 	// In case the unit carries EventWML, apply it now
-	game_events::add_events(cfg_.get_children("event"),id_);
+	game_events::add_events(cfg_.get_children("event"),type_);
 }
 
 
@@ -550,8 +550,8 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	if(type_id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
 		do_heal = true; // Can't heal until after mods applied.
-		id_ = t->id();
-		cfg_["id"] = id_;
+		type_ = t->id();
+		cfg_["id"] = type_;
 		cfg_["gender_id"] = cfg_["gender"];
 	}
 
@@ -577,7 +577,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		heal_all();
 	}
 
-	game_events::add_events(cfg_.get_children("event"),id_);
+	game_events::add_events(cfg_.get_children("event"),type_);
 
 	set_state("poisoned","");
 	set_state("slowed","");
@@ -1249,7 +1249,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 
 	bool type_set = false;
-	id_ = "";
+	type_ = "";
 	assert(gamedata_ != NULL);
 	if(!(cfg["type"].empty() || cfg["type"] == cfg["id"]) || cfg["gender"] != cfg["gender_id"]) {
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
@@ -1274,9 +1274,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		}
 	}
 	if(cfg_["id"]=="") {
-		id_ = cfg_["type"];
+		type_ = cfg_["type"];
 	} else {
-		id_ = cfg_["id"];
+		type_ = cfg_["id"];
 	}
 	if(!type_set || cfg["race"] != "") {
 		const race_map::const_iterator race_it = gamedata_->races.find(cfg["race"]);
@@ -1421,7 +1421,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		cfg_["generate_description"] = "";
 	}
 
-	game_events::add_events(cfg_.get_children("event"),id_);
+	game_events::add_events(cfg_.get_children("event"),type_);
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
 		cfg_["upkeep"] = "full";
