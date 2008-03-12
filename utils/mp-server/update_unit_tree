@@ -6,7 +6,7 @@ if [ $# -ne 1 ]; then
 fi
 
 VERSION=$1
-SITE=$HOME/public_html
+SITE=$HOME/html/units
 SOURCE=$HOME/source
 
 if ! [ -d $SOURCE ]; then
