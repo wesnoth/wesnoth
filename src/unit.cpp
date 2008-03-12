@@ -2100,8 +2100,8 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 		}
 	}
 	if(res < 0) {
-		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 50.\n";
-		res = 50;
+		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 0 (100% defence).\n";
+		res = 0;
 	}
 
 //	defense_mods_.insert(std::pair<terrain_type::TERRAIN,int>(terrain,res));

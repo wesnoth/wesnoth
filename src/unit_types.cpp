@@ -418,8 +418,8 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 	}
 
 	if(res < 0) {
-		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 50.\n";
-		res = 50;
+		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 0 (100% defence).\n";
+		res = 0;
 	}
 
 	defenseMods_.insert(std::pair<t_translation::t_terrain, int>(terrain, res));
