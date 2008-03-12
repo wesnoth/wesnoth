@@ -77,7 +77,7 @@ public:
 	const std::string& type_id() const { return type_; }
 	const unit_type* type() const;
 	//! The actual name of the unit
-	const std::string& name() const { if (description_.empty()) return language_name(); else return description_; }
+	const std::string& name() const { if (id_.empty()) return language_name(); else return id_; }
 	void rename(const std::string& name) { if (!unrenamable_) custom_unit_description_ = name; }
 	//! The unit type name
 	const std::string& description() const { return (custom_unit_description_); }
@@ -300,8 +300,7 @@ private:
 	std::vector<std::string> advances_to_;
 	std::string type_;
 	const unit_race* race_;
-	std::string name_;
-	std::string description_;
+	std::string id_;
 	std::string custom_unit_description_;
 	std::string underlying_id_;
 	t_string language_name_;

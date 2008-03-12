@@ -91,8 +91,7 @@ unit::unit(const unit& o):
            advances_to_(o.advances_to_),
            type_(o.type_),
            race_(o.race_),
-           name_(o.name_),
-           description_(o.description_),
+           id_(o.id_),
            custom_unit_description_(o.custom_unit_description_),
            underlying_id_(o.underlying_id_),
            language_name_(o.language_name_),
@@ -1119,13 +1118,13 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		variable_info vi(cfg["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) return false;
 		if(vi.explicit_index) {
-			if(description_ != (vi.vars->get_children(vi.key)[vi.index])->get_attribute("description")) {
+			if(id_ != (vi.vars->get_children(vi.key)[vi.index])->get_attribute("description")) {
 				return false;
 			}
 		} else {
 			config::child_itors ch_itors = vi.vars->child_range(vi.key);
 			for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
-				if(description_ == (*ch_itors.first)->get_attribute("description")) {
+				if(id_ == (*ch_itors.first)->get_attribute("description")) {
 					break;
 				}
 			}
@@ -1187,7 +1186,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	variation_ = cfg["variation"];
 
 	assert(gamedata_ != NULL);
-	description_ = cfg["description"];
+	id_ = cfg["description"];
 	custom_unit_description_ = cfg["user_description"];
 	std::string custom_unit_desc = cfg["unit_description"];
 
@@ -1198,8 +1197,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 			state->get_random() : get_random());
 		underlying_id_ = buf;
 	}
-	if(description_.empty()) {
-		description_ = cfg["type"].c_str();
+	if(id_.empty()) {
+		id_ = cfg["type"].c_str();
 	}
 
 	role_ = cfg["role"];
@@ -1221,7 +1220,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		advances_to_.clear();
 	}
 
-	name_ = cfg["name"];
 	language_name_ = cfg["language_name"];
 	undead_variation_ = cfg["undead_variation"];
 
@@ -1502,7 +1500,6 @@ void unit::write(config& cfg) const
 	cfg["advances_to"] = utils::join(advances_to_);
 
 	cfg["race"] = race_->id();
-	cfg["name"] = name_;
 	cfg["language_name"] = language_name_;
 	cfg["undead_variation"] = undead_variation_;
 	cfg["variation"] = variation_;
