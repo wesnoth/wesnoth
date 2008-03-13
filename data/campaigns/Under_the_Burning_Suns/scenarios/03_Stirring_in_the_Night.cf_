@@ -699,7 +699,7 @@
             [/target]
 
             [target]
-                description=Zur
+                id=Zur
                 value=20
             [/target]
         [/ai]
@@ -818,16 +818,16 @@
         #recall heroes
 
         [recall]
-            description=Nym
+            id=Nym
         [/recall]
         [recall]
-            description=Elyssa
+            id=Elyssa
         [/recall]
         [recall]
-            description=Zhul
+            id=Zhul
         [/recall]
         [recall]
-            description=Garak
+            id=Garak
         [/recall]
 
         [item]
@@ -965,7 +965,7 @@
         name=die
 
         [filter]
-            description=Zur
+            id=Zur
         [/filter]
 
         [if]
@@ -981,7 +981,7 @@
                 [/set_variable]
 
                 [message]
-                    description=Azkotep
+                    id=Azkotep
                     message= _ "Curse you! I will not forget this. You will rue this night."
                 [/message]
             [/then]
@@ -993,7 +993,7 @@
         name=die
 
         [filter]
-            description=Grak
+            id=Grak
         [/filter]
 
         [if]
@@ -1004,7 +1004,7 @@
 
             [then]
                 [message]
-                    description=Ystara
+                    id=Ystara
                     message= _ "Noooooo! I shall have my revenge!"
                 [/message]
 
@@ -1038,7 +1038,7 @@
 #ifdef EASY
                 [unit]
                     type=Orcish Leader
-                    description=Ganthos
+                    id=Ganthos
                     user_description= _ "Ganthos"
                     upkeep=free
                     canrecruit=yes
@@ -1049,7 +1049,7 @@
 #else
                 [unit]
                     type=Orcish Ruler
-                    description=Ganthos
+                    id=Ganthos
                     user_description= _ "Ganthos"
                     upkeep=free
                     canrecruit=yes
@@ -1119,12 +1119,12 @@
 #endif
 
                 [message]
-                    description=Ganthos
+                    id=Ganthos
                     message= _ "What's this on our borders? Stinkin' elves and more undead? We'll teach them a lesson they won't soon forget. Attack!"
                 [/message]
 
                 [message]
-                    description=Kaleh
+                    id=Kaleh
                     message= _ "If those raiders capture any of our encampments, I fear our people's fate will be just as bad as if it was captured by the undead."
                 [/message]
             [/then]
@@ -1185,14 +1185,14 @@
     #store Garak's x,y location
     [store_locations]
         [filter]
-            description=Garak
+            id=Garak
         [/filter]
         variable=locs
     [/store_locations]
 
     [store_unit]
         [filter]
-            description=Garak
+            id=Garak
         [/filter]
         variable=ElvishGarak
         kill=no
@@ -1201,7 +1201,7 @@
     # play some adequate sound
 
     [kill]
-        description=Garak
+        id=Garak
         animate=yes
         fire_event=no
     [/kill]
@@ -1279,12 +1279,12 @@
 
             [then]
                 [message]
-                    description=Nym
+                    id=Nym
                     message= _ "I can just barely see the sun poking over the dunes. It is almost dawn!"
                 [/message]
 
                 [message]
-                    description=Ystara
+                    id=Ystara
                     message= _ "No! This contest is not over yet, Azkotep. I shall show you a taste of my true power."
                 [/message]
 
@@ -1303,12 +1303,12 @@
 
             [then]
                 [message]
-                    description=Nym
+                    id=Nym
                     message= _ "I can just barely see the sun poking over the dunes. It is almost dawn!"
                 [/message]
 
                 [message]
-                    description=Azkotep
+                    id=Azkotep
                     message= _ "No, I shall have my revenge. I shall show you that darkness is strongest just before dawn. I call upon the lord of death and decay, grant me my vengeance!"
                 [/message]
 
@@ -1335,12 +1335,12 @@
                 #death events, and Possessed Garak is created
 
                 [message]
-                    description=Nym
+                    id=Nym
                     message= _ "I can just barely see the sun poking over the dunes. It is almost dawn!"
                 [/message]
 
                 [message]
-                    description=Ystara
+                    id=Ystara
                     message= _ "No, I shall have my revenge. I shall show you that darkness is strongest just before dawn. I call upon the powers of disease and despair, grant me my vengeance!"
                 [/message]
 
@@ -1355,11 +1355,11 @@
         name=die
 
         [filter]
-            description=Possessed Garak
+            id=Possessed Garak
         [/filter]
 
         [kill]
-            description=Possessed Garak
+            id=Possessed Garak
             animate=no
             fire_event=no
         [/kill]
@@ -1372,7 +1372,7 @@
 
             [then]
                 [message]
-                    description=Azkotep
+                    id=Azkotep
                     message= _ "Hah, now you have learned the flesh is always weaker than the powers of the undead."
                 [/message]
 
@@ -1390,7 +1390,7 @@
 
             [then]
                 [message]
-                    description=Ystara
+                    id=Ystara
                     message= _ "My undead zombies shall always defeat the living."
                 [/message]
 
@@ -1408,7 +1408,7 @@
 
             [then]
                 [message]
-                    description=Azkotep
+                    id=Azkotep
                     message= _ "Hah, now you have learned the flesh is always weaker than the powers of the undead."
                 [/message]
 
@@ -1425,7 +1425,7 @@
         name=die
 
         [filter]
-            description=Ystara
+            id=Ystara
         [/filter]
 
         [set_variable]
@@ -1456,12 +1456,12 @@
 
                     [else]
                         [message]
-                            description=Ystara
+                            id=Ystara
                             message= _ "You think you have defeated me, don't you? Foolish boy, I shall assume a new form more powerful and horrible than you could ever imagine!"
                         [/message]
 
                         [message]
-                            description=Azkotep
+                            id=Azkotep
                             message= _ "How dare you interfere in our contest! I did not need your help. I shall teach you not to cross a lord of darkness."
                         [/message]
 
@@ -1477,13 +1477,13 @@
 
             [else]
                 [message]
-                    description=Possessed Garak
+                    id=Possessed Garak
                     message= _ "See, I told you I was more powerful. This game is over, now I can leave this shell of a body."
                 [/message]
 
                 #kill possessed Garak
                 [kill]
-                    description=Possessed Garak
+                    id=Possessed Garak
                     animate=yes
                     fire_event=no
                 [/kill]
@@ -1501,7 +1501,7 @@
         name=die
 
         [filter]
-            description=Azkotep
+            id=Azkotep
         [/filter]
 
         [set_variable]
@@ -1539,12 +1539,12 @@
 
                     [else]
                         [message]
-                            description=Azkotep
+                            id=Azkotep
                             message= _ "You think you have defeated me, don't you? Foolish boy, I shall assume a new form more powerful and horrible than you could ever imagine!"
                         [/message]
 
                         [message]
-                            description=Ystara
+                            id=Ystara
                             message= _ "How dare you interfere in our contest! I did not need your help. I shall teach you not to cross a lord of darkness."
                         [/message]
 
@@ -1560,13 +1560,13 @@
 
             [else]
                 [message]
-                    description=Possessed Garak
+                    id=Possessed Garak
                     message= _ "See, I told you I was more powerful. This game is over, now I can leave this shell of a body."
                 [/message]
 
                 #kill possessed Garak
                 [kill]
-                    description=Possessed Garak
+                    id=Possessed Garak
                     animate=yes
                     fire_event=no
                 [/kill]
@@ -1648,12 +1648,12 @@
 
             [then]
                 [message]
-                    description=Nym
+                    id=Nym
                     message= _ "They're raising the corpses of our slain people! What a horrible fate!"
                 [/message]
 
                 [message]
-                    description=Elyssa
+                    id=Elyssa
                     message= _ "Then we shall have to give them a proper cremation."
                 [/message]
             [/then]
@@ -1696,7 +1696,7 @@
 
             [then]
                 [message]
-                    description=Kaleh
+                    id=Kaleh
                     message= _ "Too many of our people have been killed. We will surely be overwhelmed by the undead now. All is lost!"
                 [/message]
 
@@ -1712,7 +1712,7 @@
         name=time over
 
         [message]
-            description=Kaleh
+            id=Kaleh
             message= _ "This darkness will never end, and the undead will soon overwhelm us. I'm sorry Garak, we couldn't save you."
         [/message]
 

@@ -564,12 +564,11 @@ def standard_unit_filter():
                    "unit_filter", "secondary_unit_filter",
                    "special_filter", "special_filter_second",
                    "neighbor_unit_filter",
-                   "recall", "teleport", "kill", "unstone", "store",
+                   "recall", "teleport", "kill", "unstone", "store_unit",
                    "have_unit", "scroll_to_unit", "role",
                    "hide_unit", "unhide_unit",
                    "protect_unit", "target", "avoid")) \
                    or under("message")
-
 
 # Sanity checking
 
