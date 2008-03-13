@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-02 23:10+0100\n"
-"PO-Revision-Date: 2007-12-12 00:21+0100\n"
-"Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
-"DOT com>\n"
+"PO-Revision-Date: 2008-03-13 10:11+0100\n"
+"Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
+"X-Poedit-Basepath: /home/tigge/Source/wesnoth1.4/trans\n"
 
 #: data/_main.cfg:36
 msgid "Compressed Saves"
@@ -29,7 +29,7 @@ msgstr "Animera kartan"
 
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Ständiga  truppanimationer"
 
 #: data/_main.cfg:64
 msgid "Show Combat"
@@ -119,16 +119,15 @@ msgstr "Kampanjdesign"
 
 #: data/core/about.cfg:514
 msgid "Multiplayer Maps and Balancing"
-msgstr "Gruppspelskartor och -balansering"
+msgstr "Gruppspelskartor och gruppspelsbalansering"
 
 #: data/core/about.cfg:556
 msgid "Packagers"
 msgstr "Paketerare"
 
 #: data/core/about.cfg:605
-#, fuzzy
 msgid "Miscellaneous contributors"
-msgstr "Diverse"
+msgstr "Diverse medarbetare"
 
 #: data/core/about.cfg:731
 msgid "Internationalization Managers"
@@ -287,9 +286,8 @@ msgid "Bots"
 msgstr "Bots"
 
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
@@ -324,12 +322,10 @@ msgid "Commands"
 msgstr "Kommandon"
 
 #: data/core/help.cfg:92
-#, fuzzy
 msgid "Abilites"
 msgstr "Förmågor"
 
 #: data/core/help.cfg:95
-#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -339,7 +335,8 @@ msgstr ""
 "Vissa trupper har förmågor som antingen direkt påverkar andra trupper, eller "
 "som påverkar hur truppen i fråga interagerar med andra trupper. Dessa "
 "förmågor kommer att beskrivas under denna rubrik efter hand som du stöter på "
-"dem."
+"dem.\n"
+"\n"
 
 #: data/core/help.cfg:104
 msgid ""
@@ -347,6 +344,9 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Vissa vapen har speciella egenskaper som ökar dess effektivitet när man "
+"attackerar med dem.\n"
+"\n"
 
 #: data/core/help.cfg:110
 msgid "Unknown Unit"
@@ -421,10 +421,10 @@ msgstr ""
 "\n"
 "Till att börja med är det bäst att klicka på <italic>text=Träningsspel</"
 "italic> på huvudmenyn. Här lär du lär dig grunderna i spelet. När du tränat "
-"klart, rekommenderas att du spelar kampanjen Tronarvingen först - klicka "
+"klart, rekommenderas att du spelar kampanjen Tronarvingen först - klicka på "
 "<italic>text=Kampanj</italic> och därefter <italic>text=Tronarvingen</"
 "italic>. Då Kampen om Wesnoth kan vara riktigt utmanande, bör du kanske "
-"börja med en <italic>text=Lätt</italic> kampanj."
+"börja med en <italic>text=lätt</italic> kampanj."
 
 #: data/core/help.cfg:138
 msgid ""
@@ -452,12 +452,13 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"Spelet är en serie av slag, eller scenarier. I varje scenario ställs dina "
-"trupper mot en eller flera motståndares trupper. Du kan spela mot datorn "
-"eller mot dina vänner, där ni turas om med att sitta vid datorn och göra era "
-"drag (heta stolen-spel). Om din dator är uppkopplad i ett nätverk så kan du "
-"också spela mot andra som är uppkopplade mot samma nätverk. Om din dator har "
-"tillgång till Internet så kan du spela mot andra över Internet."
+"Spelet utspelar sig över en serie av slag, eller scenarier. I varje scenario "
+"ställs dina trupper mot en eller flera motståndares trupper. Du kan spela "
+"mot datorn eller mot dina vänner, där ni turas om med att sitta vid datorn "
+"och göra era drag (heta stolen-spel). Om din dator är uppkopplad i ett "
+"nätverk så kan du också spela mot andra som är uppkopplade mot samma "
+"nätverk. Om din dator har tillgång till internet så kan du spela mot andra "
+"över internet."
 
 #: data/core/help.cfg:146
 msgid ""
@@ -470,14 +471,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kampanjer består av flera scenarier som följer efter varandra i en "
-"sammanhängande historia. I en kampanj måste du ofta spela mer försiktigt och "
-"noggrant och hålla dina bästa trupper vid liv så att de kan användas i "
+"Kampanjer består av flera scenarier som följer efter varandra och berättar "
+"en sammanhängande historia. I en kampanj måste du ofta spela mer försiktigt "
+"och noggrant och hålla dina bästa trupper vid liv så att de kan användas i "
 "senare scenarier i kampanjen."
 
 #: data/core/help.cfg:151
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Vinst och förlust"
 
 #: data/core/help.cfg:152
 msgid ""
@@ -488,6 +489,12 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"Titta noga i måldialogrutan som visas i början av varje scenario. Vanligtvis "
+"så vinner man genom att döda alla fiendeledare och blir bara besegrad när "
+"din ledare dör. Andra scenarion kan dock ha andra mål som måste uppfyllas "
+"för att vinna till exempel att förflytta din ledare till en speciell punkt, "
+"rädda någon, lösa ett problem eller hålla ut en belägring ett visst antal "
+"drag."
 
 #: data/core/help.cfg:154
 msgid ""
@@ -498,6 +505,13 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"När du vinner ett scenario så kommer kartan att bli gråaktig och Avsluta "
+"drag-knappen kommer ändras till en Avsluta scenario-knapp. Du kan då göra "
+"saker som till exemepel att ändra dina sparinställningar eller (om du är i "
+"ett gruppspel) chatta med andra spelare innan du trycker på knappen för att "
+"gå vidare."
 
 #: data/core/help.cfg:159
 msgid "Recruiting and Recalling"
@@ -1118,7 +1132,6 @@ msgstr ""
 "nästa roll."
 
 #: data/core/help.cfg:273
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1142,13 +1155,10 @@ msgstr ""
 "står för After Max Level Advancement. Denna process kommer att förändra "
 "truppen varje gång en viss erfarenhetspoäng är nådd, men truppens "
 "erfarenhetsnivå ökar dock inte. Den vanligaste AMLA-effekten är att truppens "
-"maximala hälsopoäng ökar med 3 HP. AMLA uppnås första gången efter 100 EP "
-"(80 EP för intelligenta trupper). Därefter blir det allt svårare att uppnå "
-"AMLA, vilket betyder att det ofta är bättre att försöka få trupper på lägre "
-"nivåer att befordras.\n"
-"\n"
-"Endast ett litet fåtal truppslag, såsom nekrofagen, återfår full styrka när "
-"detta inträffar. De flesta trupper får bara en höjd maximal HP."
+"maximala hälsopoäng ökar med 3 HP och att den återfår full styrka. AMLA "
+"uppnås första gången efter 150 EP (120 EP för intelligenta trupper). "
+"Därefter blir det allt svårare att uppnå AMLA, vilket betyder att det ofta "
+"är bättre att försöka få trupper på lägre nivåer att befordras."
 
 #: data/core/help.cfg:278
 msgid "Healing"
@@ -1344,7 +1354,7 @@ msgstr ""
 
 #: data/core/help.cfg:311
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "ingame_help_item^Medarbetare"
 
 #: data/core/help.cfg:317
 msgid "License"
@@ -1379,7 +1389,6 @@ msgstr ""
 "<ref>dst=traits_strong text=Stark</ref>."
 
 #: data/core/help.cfg:331
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1392,7 +1401,8 @@ msgstr ""
 "\n"
 "Andra karaktärsdrag som trupper kan tilldelas är <ref>dst=traits_loyal "
 "text=Lojal</ref>, <ref>dst=traits_dextrous text=Träffsäker</ref> och "
-"<ref>dst=traits_undead text=Vandöd</ref>."
+"<ref>dst=traits_undead text=Vandöd</ref>.\n"
+"\n"
 
 #: data/core/help.cfg:336
 msgid "Intelligent"
@@ -1660,6 +1670,10 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"Spelkartor innehåller en mängd olika terränger som påverkar både hur långt "
+"en trupp kan förflytta sig och hur stor en trupps effektivitet vid försvar "
+"är.\n"
+"\n"
 
 #: data/core/help.cfg:423
 msgid "Grassland"
@@ -2236,7 +2250,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2247,20 +2260,21 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Växla till/från att sidan spelas av AI:n. Endast spelaren/klienten som "
-"kontrollerar aktuell sida kan välja detta. Om ingen sida anges, antas "
-"nuvarande sida.\n"
+"Välj eller växla till/från att sidan spelas av AI:n. Endast spelaren/"
+"klienten som kontrollerar den sidan kan välja detta. Om ingen andra "
+"parameter anges så växlar den mellan människa och AI. Om den är satt till "
+"'on' så tar AI:n över. Om den är satt till 'off' tar en människa över. Om "
+"ingen sida anges, antas nuvarande sida.\n"
 "\n"
 
 #: data/core/help.cfg:689
-#, fuzzy
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
 "\n"
 msgstr ""
 "\n"
-"Sätt på/stäng av visning av antal ramar per sekund.\n"
+"Sätt på/stäng av visning av antal bildrutor per sekund.\n"
 "\n"
 
 #: data/core/help.cfg:692
@@ -2269,6 +2283,9 @@ msgid ""
 "Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
+"\n"
+"Byt en loggdomän till en annan loggnivå.\n"
+"\n"
 
 #: data/core/help.cfg:695
 msgid ""
@@ -2281,12 +2298,14 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:698
-#, fuzzy
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
 "\n"
-msgstr "Visa temavalsmenyn."
+msgstr ""
+"\n"
+"Visa temavalsmenyn.\n"
+"\n"
 
 #: data/core/help.cfg:701
 msgid ""
@@ -2309,14 +2328,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:705
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"Spara spelet och avsluta scenariot (utan bekräftelse).\n"
-"\n"
+"Spara spelet och avsluta scenariot (utan bekräftelse)."
 
 #: data/core/help.cfg:710
 msgid "Multiplayer commands"
@@ -2335,7 +2352,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:717
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2346,7 +2362,9 @@ msgid ""
 msgstr ""
 "\n"
 "Ändra spelare för en sida (ange sidans nummer) till ett visst användarnamn "
-"(ange användarnamnet).\n"
+"(ange användarnamnet). Du kan kontrollera vilken sida som hör till vilken "
+"spelare i Scenarioinstälnings-dialogen (Tryck på mer-knappen i "
+"Statustabellen (alt+s som standard) för att komma dit.).\n"
 "\n"
 
 #: data/core/help.cfg:720
@@ -2613,14 +2631,13 @@ msgid "teleport"
 msgstr "teleportera"
 
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "Teleportera:\n"
-"Den här truppen kan teleportera sig mellan två kontrollerade byar. Den "
+"Den här truppen kan teleportera sig mellan två tomma kontrollerade byar. Den "
 "använder då ett av sina förflyttningspoäng."
 
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
@@ -2710,7 +2727,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:474
 msgid "feeding"
-msgstr ""
+msgstr "förtäring"
 
 #: data/core/macros/abilities.cfg:476
 msgid ""
@@ -2718,6 +2735,8 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Förtäring:\n"
+"Den här truppen får 1 hälsa när den dödar en levande trupp."
 
 #: data/core/macros/abilities.cfg:500
 msgid "+1 max HP"
@@ -2875,9 +2894,8 @@ msgstr ""
 "döda en trupp."
 
 #: data/core/macros/amla.cfg:10
-#, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Max HP-bonus +"
+msgstr "Max HP-bonus +3, Max XP +20%"
 
 #: data/core/macros/amla.cfg:30
 msgid ", MAX XP +25%"
@@ -3034,6 +3052,15 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 msgstr ""
+"Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
+"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
+"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
+"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
+"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -3041,6 +3068,9 @@ msgid ""
 "Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 msgstr ""
+"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 
 #: data/core/macros/names.cfg:8
 msgid ""
@@ -3088,6 +3118,49 @@ msgid ""
 "Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
+"Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
+"Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
+"Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,"
+"Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,"
+"Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,"
+"Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,"
+"Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,"
+"Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,"
+"Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,"
+"Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,"
+"Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,"
+"Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,"
+"Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,"
+"Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,"
+"Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,"
+"Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,"
+"Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,"
+"Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,"
+"Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,"
+"Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,"
+"Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,"
+"Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,"
+"Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,"
+"Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,"
+"Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,"
+"Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,"
+"Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,"
+"Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,"
+"Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,"
+"Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,"
+"Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,"
+"Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,"
+"Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,"
+"Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,"
+"Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,"
+"Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,"
+"Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,"
+"Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,"
+"Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,"
+"Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,"
+"Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,"
+"Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
+"Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 
 #: data/core/macros/names.cfg:12
 msgid ""
@@ -3149,6 +3222,63 @@ msgid ""
 "Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
+"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
+"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
+"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
+"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
+"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
+"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
+"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
+"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
+"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
+"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
+"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
+"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
+"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
+"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
+"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
+"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
+"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
+"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
+"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
+"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
+"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
+"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
+"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
+"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
+"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
+"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
+"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
+"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
+"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
+"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
+"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
+"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
+"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
+"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
+"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
+"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
+"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
+"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
+"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
+"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
+"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
+"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
+"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
+"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
+"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
+"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
+"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
+"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
+"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
+"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
+"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
+"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
+"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 
 #: data/core/macros/names.cfg:13
 msgid ""
@@ -3217,15 +3347,78 @@ msgid ""
 "Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
 "Vówien"
 msgstr ""
+"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
+"Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
+"Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,"
+"Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,"
+"Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,"
+"Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,"
+"Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,"
+"Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,"
+"Calewiel,Calil-Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,"
+"Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,"
+"Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,"
+"Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,"
+"Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,"
+"Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-Ganiel,"
+"Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,"
+"Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,"
+"Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,"
+"Elarawiel,Elebrindra,Eledë,Elelith,Elil-Gang,Elilmalia,Elilmawien,"
+"Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,"
+"Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,"
+"Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
+"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,"
+"Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,"
+"Eowedith,Eowidien,Eowil-Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,"
+"Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,"
+"Feclya,Féthiel,Fil-Galia,Fil-Gathiel,Fil-Gawien,Filmaclya,Fioniel,Fódë,"
+"Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,"
+"Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-Gania,Galilmadia,"
+"Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,"
+"Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-Gawien,Gilia,Gioniel,"
+"Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,"
+"Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,"
+"Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
+"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,"
+"Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,"
+"Iséng,Iseviel,Isil-Garith,Isilindë,Isithradë,Isithradien,Isithrarith,"
+"Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,"
+"Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
+"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,"
+"Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,"
+"Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,"
+"Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,"
+"Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,"
+"Medien,Mil-Gathiel,Mil-Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,"
+"Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,"
+"Naraniel,Náviel,Nawen,Newen,Nil-Gang,Nilmadia,Niodien,Niolia,Niothien,"
+"Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,"
+"Pebridien,Pil-Gadia,Pil-Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,"
+"Póviel,Pulia,Puthien,Reniel,Réviel,Ril-Gawien,Rindra,Riothien,Róng,Rorfiviel,"
+"Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,"
+"Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,"
+"Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,"
+"Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,"
+"Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,"
+"Thruthien,Thryng,Til-Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,"
+"Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-Gania,"
+"Tinil-Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,"
+"Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
+"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,"
+"Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,"
+"Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,"
+"Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-Gandra,Violindë,Viowiel,"
+"Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
+"Vówien"
 
 #: data/core/macros/names.cfg:18
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr ""
+msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr "Kiira,Keyya,Kayya,Korra,Kaasa"
+msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3277,6 +3470,53 @@ msgid ""
 "Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
 "Yryrcyn"
 msgstr ""
+"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
+"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
+"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
+"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
+"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
+"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
+"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
+"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
+"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
+"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
+"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
+"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
+"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
+"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
+"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
+"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
+"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
+"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
+"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
+"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
+"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
+"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
+"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
+"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
+"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
+"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
+"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
+"Yryrcyn"
 
 #: data/core/macros/names.cfg:24
 msgid ""
@@ -3326,6 +3566,51 @@ msgid ""
 "Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
+"Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
+"Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
+"Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,"
+"Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,"
+"Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,"
+"Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,"
+"Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,"
+"Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,"
+"Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,"
+"Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,"
+"Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,"
+"Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,"
+"Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,"
+"Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,"
+"Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,"
+"Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,"
+"Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
+"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
+"Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
+"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
+"Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
+"Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
+"Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,"
+"Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,"
+"Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,"
+"Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,"
+"Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,"
+"Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,"
+"Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,"
+"Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,"
+"Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,"
+"Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,"
+"Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,"
+"Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,"
+"Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,"
+"Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,"
+"Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,"
+"Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,"
+"Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,"
+"Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,"
+"Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,"
+"Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
+"Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 
 #: data/core/macros/names.cfg:28
 msgid ""
@@ -3340,6 +3625,16 @@ msgid ""
 "Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:32
 msgid ""
@@ -3351,6 +3646,13 @@ msgid ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:33
 msgid ""
@@ -3359,6 +3661,10 @@ msgid ""
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:37
 msgid ""
@@ -3369,6 +3675,12 @@ msgid ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:38
 msgid ""
@@ -3380,6 +3692,13 @@ msgid ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 msgstr ""
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 
 #: data/core/macros/names.cfg:42
 msgid ""
@@ -3390,6 +3709,12 @@ msgid ""
 "Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
 "Urkark"
 msgstr ""
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 
 #: data/core/macros/names.cfg:46
 msgid ""
@@ -3426,6 +3751,38 @@ msgid ""
 "Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -3434,6 +3791,10 @@ msgid ""
 "Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -3450,24 +3811,40 @@ msgid ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
+"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
+"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #: data/core/macros/schedules.cfg:102 data/core/macros/schedules.cfg:113
 msgid "Deep Underground"
 msgstr "Djupa underjorden"
 
 #: data/core/macros/special-notes.cfg:5
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Specialitet"
+msgstr ""
+"\n"
+"\n"
+"Speciella noteringar:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -3540,14 +3917,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " Denna trupp omgärdas av en ljuscirkel som lyser upp närområdet."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teleportera:\n"
-"Den här truppen kan teleportera sig mellan två kontrollerade byar. Den "
-"använder då ett av sina förflyttningspoäng."
+" Den här truppen kan teleportera sig mellan två tomma byar kontrollerade av "
+"dess sida."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -3568,6 +3943,8 @@ msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+"Den här truppen kan gömma sig i byar (med undantag för vattenbyar) och "
+"stanna gömd från alla fiender förutom de som står alldeles brevid."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -3580,7 +3957,7 @@ msgstr ""
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr ""
+msgstr "Den här truppen får 1 hälsopoäng när den dödar en levande trupp."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
@@ -3591,14 +3968,14 @@ msgstr ""
 "den eller dess fiende ligger död på marken."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
 "enemy."
 msgstr ""
-" Denna trupp kan smyga runt sin fiende och hugga denna i ryggen om en annan "
-"fiende till måltruppen befinner sig på motsatt sida."
+"Denna trupp kan smyga runt sin fiende och hugga denna i ryggen, och orsaka "
+"dubbel skada, om en annan fiende till måltruppen befinner sig på motsatt "
+"sida."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -3809,7 +4186,6 @@ msgid "race^Bat"
 msgstr "Fladdermus"
 
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
 msgstr "Fladdermus"
 
@@ -3822,7 +4198,6 @@ msgid "race^Drake"
 msgstr "Drakfolket"
 
 #: data/core/units.cfg:53
-#, fuzzy
 msgid "race+female^Drake"
 msgstr "Drakfolket"
 
@@ -3895,13 +4270,71 @@ msgid ""
 "feature which has allowed them to populate even some of the mountains of the "
 "far north of the Great Continent."
 msgstr ""
+"Drakfolket är stora, vingade och eldsprutande varelser som påminner om "
+"riktiga drakar. I genomsnitt är en av drakfolket hela tre meter lång och "
+"väger lätt mer en än man och hans häst tillsammans. Deras skinn är uppbyggda "
+"av hårda fjäll som motstår de flesta fysiska attacker förutom stick- och "
+"köldskador. De flesta kan flyga och kan förflytta sig över långa distanser "
+"snabbt. Däremot begränsar deras vikt och kroppsstorlek delvis deras förmåga "
+"att flyga, vilket gör dem klumpiga i luften. Om möjligt använder de terräng "
+"som kullar, berg och träd som startpunkter för att komma upp i bättre höjd "
+"och hastighet. Tursamt nog, för dess fiender, är de fortfarande rätt "
+"klumpiga varelser och är oväntat långsamma i strid. Detta kombinerat med sin "
+"stora storlek gör dem till lätta mål för de som vågar anfalla dem. \n"
+"\n"
+"Drakfolket är naturligt magiska varelser, med en inre eld som ger dem liv. "
+"Detta fenomen kan lätt beskådas när en av dem dör i strid. Dess inre eld "
+"släpps då fri och bränner dess kvarlevor till aska. Deras inre eld är också "
+"deras största sårbarhet, den gör dem extremt känsliga för köldattacker. "
+"Trots deras magiska natur kan inte drakfolket kanalisera magi på ett "
+"kontrollerat sätt. Emedan magin genomsyrar drakfolkets kroppar och låter dem "
+"spruta eld och ge dem liv kan de inte själv bestämma magins funktion.\n"
+"\n"
+"<header>text='Samhälle'</header>\n"
+"Drakfolket är ett relativt krigiskt folk, och deras samhälle kan bäst "
+"beskrivas som ett kultiverat militärsamhälle. Kärnan i drakfolket stam är en "
+"liten grupp med veterankrigare som leds med ömsesidig respekt, eller enbart "
+"rädsla, för en ledare som styr samhället med järnhand. Alla av drakfolket "
+"förväntas att förtjäna sin plats i hierarkien, att lyda sina överordnade och "
+"befalla över sina underordnande. Tillgång till den styrande eliten är bara "
+"möjligt genom att utmana och besegra en överordnat i en envig, vilket är "
+"precis hur hierarkin i elitkärnan också bestäms. Att förråda en av sin egen "
+"ras ses, oavsett undantag, som fegt och oacceptabelt.\n"
+"\n"
+"Emedan deras krigslika natur och känsla för revir driver dem att våldsamt "
+"försvara sina territorier, invaderar eller träder drakfolket nästan aldrig "
+"in på områden redan ockuperade av de större raserna. Istället bosätter de "
+"sig i obefolkade områden och etablerar sitt eget territorium där. De lever "
+"vanligtvis på större vilt som de jagar i lågländerna kring deras hem, men "
+"nykläckta och drakfolk av lägre kast kan veterligen också leva på särskilda "
+"svamp- och mosssorter de odlar djupt nere i sin grottor. Den enda teknologi "
+"drakfolket värderar är rustning- och vapensmidet, och de varken känner till "
+"eller behöver känna till någon annan kultur och teknologi förutom denna. De "
+"få vapen och rustningar de gör är av enastående kvalitet, motsvarande de som "
+"produceras av dvärgarna i deras bästa gjuterier.\n"
+"\n"
+"Drakfolket kläcks från ägg och lever vanligtvis mellan 20 och 30 år. Att dö "
+"i strid är den anses vara det bästa sättet för drakfolket att lämna denna "
+"värld. Olikt äldre medlemmar av andrar raser blir drakfolket mer aggressiva "
+"och mindre försiktiga mot slutet av deras naturliga liv, kanske för att "
+"säkerställa deras plats som hjältar i deras legender.\n"
+"\n"
+"<header>text='Geografi'</header>\n"
+"Drakfolket kommer ursprungligen från ön Morogor i den stora oceanen. "
+"Emellertid, allt eftersom ön sakta sjunkit ner i havet de senaste "
+"århundradena, har drakfolket sakta spritt sig till Stora kontinenten. "
+"Drakfolket tenderar att göra sig hemmastadda i berg och grottor i anknytning "
+"till vulkaner för att skydda sina ägg, sin nykläckta samt också deras "
+"smedjor. Även om drakfolket naturligt föredrar värme gör deras inre eld dem "
+"mer än kapabel att överleva även i ett relativt kallt klimat. En egenskap "
+"som har tillåtit dem att befolka även några av Stora kontinentens "
+"nordligaste berg."
 
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
 msgstr "Dvärg"
 
 #: data/core/units.cfg:75
-#, fuzzy
 msgid "race+female^Dwarf"
 msgstr "Dvärg"
 
@@ -3959,13 +4392,59 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
+"Dvärgarna som ras är berömda för dess gruvor, smeder, köpmän och krigare. De "
+"anses vara den tredje äldsta rasen på Stora kontinenten efter alverna och "
+"trollen. Deras tidiga historia är höljd i dunkel. Legender berättar om en "
+"för länge sedan svunnen tid då deras folk började komma upp från underjorden "
+"genom grottor. Ingenting är känt om deras tidigare liv som de levde innan de "
+"anlände här, eller deras anledning att komma upp till ytan, men de har sedan "
+"dess blivit en väsentlig del av kontinentens historia. Snart efter deras "
+"uppkomst från underjorden kom de i konflikt med landets urinvånare, alverna. "
+"Den ursprungliga anledningen till deras dispyt har länge sedan glömts bort, "
+"men de två raserna har slagits i tre långa krig, avbrutna bara av några få "
+"årtionden av fred. Under dessa krig kunde dvärgarna inte driva bort alverna "
+"från de djupa skogarna i söder men de lyckades befästa sin position i "
+"kullarna och bergen i norr, också kända som nordlanden. Sedan dess har de "
+"konstruerat fantastiska försvarsverk och bosättningar djup nere deras "
+"territoriers klippor och berg.\n"
+"\n"
+"Möjligtvis på grund av deras isolation är dvärgarna generellt sett "
+"misstänksamma eller aggressiva mot andra raser, och då speciellt alverna. "
+"Det enda folket som fått ett undantag från detta temperament är människorna. "
+"Detta kan spåras tillbaka till Haldic I:s tid, och ankomsten av människor "
+"och orcher till den här kontinenten. Dvärgarna började då tillåta några "
+"människor, mest oliktänkande och fredlösa från Wesnoths krona, att bosätta "
+"sig i särskilda områden i nordländerna. Anledningen till detta är inte "
+"förvånande. Besvären dessa människor hade påminde dvärgarna om deras tidiga "
+"historia av förföljelse, och framkallade en känsla av samhörighet. Dvärgarna "
+"hade också mycket att vinna på att forma ett band med dessa utstötta. Det "
+"bosatte sig i områden där dvärgarna själva inte tyckte om att leva; slätter, "
+"skogar och träsk, vilket frigjorde dvärgarna från behovet att försvara dessa "
+"områden. Senare, hotade av orcherna, formade dvärgarna och deras mänskliga "
+"allierade Knalgas allians för att skydda deras gemensamma hem.\n"
+"\n"
+"Dvärgarna har, enligt mänskliga mått, liten kroppsbyggnad, men är ingalunda "
+"varken klena och sköra. Deras krigare, både hårda och starka, är både "
+"fruktade och respekterade över hela kontinenten för deras mod och "
+"skicklighet i strid. Utöver detta är dvärgarna kända för deras beräknande "
+"intellekt och enastående hantverk. Därgsmederna är ryktbara för deras "
+"dödliga vapen och starka rustningar. Deras arbeten har en enastående "
+"kvalitet, möjligtvis bara likställda de producerade av drakfolket "
+"vapensmeder. Deras intelligens och naturliga vetgirighet har dessutom gjort "
+"dem till den mesta tekniskt avancerade rasen på hela kontinenten. En av "
+"deras mest berömda, och fruktade, upptäckt var ett mystiskt pulver som "
+"producerar en skarp explosion när det utsätts för eld eller gnistor. Vissa "
+"dvärgkrigare använder det här pulvret för att kasta iväg små objekt med "
+"oerhörd fart. Givet deras tekniska benägenhet tenderar de att misstro magi-"
+"användare. Däremot utövar de en form av magi baserad på inristning av runor. "
+"Runsmeder, som de kallas, använder dessa inristningar för att förtrolla "
+"saker för att förbättra vissa aspekter av dess natur."
 
 #: data/core/units.cfg:89
 msgid "race^Elf"
 msgstr "Alv"
 
 #: data/core/units.cfg:90
-#, fuzzy
 msgid "race+female^Elf"
 msgstr "Alv"
 
@@ -4002,13 +4481,39 @@ msgid ""
 "exception of trolls. Many of their settlements cannot be reliably dated, "
 "undoubtedly having existed for over a millennium."
 msgstr ""
+"Jämfört med människor är alver något längre och snabbare, men inte lika "
+"kraftiga. De har lätt spetsiga öron, blek hud och vanligtvis blont hår. Få "
+"skillnader mellan människor och alver är mer utpräglade än den senares långa "
+"liv. Utan sjukdom, olyckor eller krig kan de bli runt 200 år gamla. Även om "
+"vissa alver med stark magisk förmåga har kunnat leva i ytterligare ett helt "
+"århundrade blir de fysiskt svaga när de närmar sig sitt tjugonde årtionde "
+"och går sen oftast bort inom ett tiotal år. Alver genomsyras, till viss del, "
+"naturligt av magi. De flesta kan inte kanalisera den direkt, men dess "
+"närvaro ger dem känsliga sinnen och ett långt liv. Många alver har talanger "
+"som utnyttjar magi, som till exempel träffsäkerhet eller förmåga att smyga "
+"och gömma sig, vilket tillåter dem att klara av saker som vanliga varelser "
+"skulle tycka vara enastående. De alver som lär sig att använda den här "
+"kraften på ett mer generellt sätt kan bli enormt duktiga på att använda den. "
+"Många väljer att använda sin gåva för att hela andra.\n"
+"\n"
+"Alver spenderar mycket av deras tid med att finslipa sina talanger och "
+"förmågor. De som inte är duktiga i de magiska konsterna ägnar sin tid åt att "
+"slipa på sina fysiska färdigheter. Som ett resultat av detta är alverna "
+"överlägsna på bågskytte, vilket kanske också är deras viktigaste "
+"krigföringssätt. De flesta alvtrupper bär med sig en båge, och ingen annan "
+"ras kan konkurrera med deras bågskyttar gällande snabbhet och träffsäkerhet. "
+"Alla alver har också en oförklarad ömhet för orörd natur. De känner sig ofta "
+"obekväma i öppen mark utan vegetation, vilket leder till att det bosätter "
+"sig i Stora kontinentens skogar, som till exempel Aethenwood i sydväst och "
+"Wemere i nordväst. Alverna är den äldsta rasen på kontinenten, med bara "
+"trollen som möjligt undantag. Många av deras bosättningar kan inte dateras "
+"med säkerhet, men en del har utan tvivel existerat i över ett årtusende."
 
 #: data/core/units.cfg:103
 msgid "race^Goblin"
 msgstr "Vätte"
 
 #: data/core/units.cfg:104
-#, fuzzy
 msgid "race+female^Goblin"
 msgstr "Vätte"
 
@@ -4021,7 +4526,6 @@ msgid "race^Gryphon"
 msgstr "Grip"
 
 #: data/core/units.cfg:114
-#, fuzzy
 msgid "race+female^Gryphon"
 msgstr "Grip"
 
@@ -4034,7 +4538,6 @@ msgid "race^Human"
 msgstr "Människa"
 
 #: data/core/units.cfg:124
-#, fuzzy
 msgid "race+female^Human"
 msgstr "Människa"
 
@@ -4082,13 +4585,50 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
+"Människorna är en extremt mångkunnig ras. Även om de ursprungligen kom från "
+"den gamla kontinenten har människorna spritt sig över hela världen och "
+"delats upp i många olika kulturer och folkslag. Även om de inte är "
+"genomsyrade med magi som andra varelser, kan människor lära sig bruka den "
+"och även lära sig fler typer av magi än de flesta. De har inga extra "
+"speciella egenskaper eller talanger förutom deras mångsidighet och "
+"drivkraft. Om än ofta oense, med de flesta raser, kan de forma tillfälliga "
+"allianser med de mindre aggressiva raserna som till exempel alverna och "
+"dvärgarna. De mindre nogräknade bland dem bävar inte heller för att hyra "
+"orchlegosoldater. De har inga naturliga fiender även om de, liksom "
+"majoriteten av alla raser, instinktivt ogillar vandöda. Människor är kortare "
+"än alver men dock längre än dvärgar. Deras hudfärg kan variera allt ifrån "
+"nästan vit till mörkt brun.\n"
+"\n"
+"<header>text='Kronans undersåtar'</header>\n"
+"Många olika grupperingar av människor existerar, men majoriteten av de på "
+"Stora kontinenten lever under Wesnoths kronas styre. De första människorna "
+"som dök upp på Stora kontinenten kom från ett land långt åt väster, på andra "
+"sidan oceanen, som hette Gröna ön. Snart hade de etablerat sin huvudstad vid "
+"inlandsstaden Weldyn. Under de följande århundradena har de byggt upp många "
+"städer över hela kontinenten. Soldaterna från Wesnoths krona skyddar landet "
+"och formar den mest organiserade militära makten i den kända världen. Dess "
+"krigare kommer från huvudprovinserna, där alla mannar kallas till träning i "
+"tidig ålder.\n"
+"\n"
+"<header>text='Klanmedlemmarna'</header>\n"
+"De östra provinserna i Wesnoth, kända som Klanerans hemland, har en geografi "
+"bestående av mer öppna slätter och böljande kullar än de västra, mer "
+"civiliserade, provinserna. De är hem åt Hästklanerna som är allierade med "
+"Wesnoths krona, men regerar oberoende av dem och upprätthåller sin egen "
+"identitet. Vissa säger att de är lydstater som skickar mat och soldater till "
+"kronan i utbyte mot skydd. Andra säger att de står på god fot med den västra "
+"halvan av Wesnoth. Oavsett fall, har de östra provinserna inte en stående "
+"armé som västra Wesnoth har. Stridsträning är en del av livet i klanerna. "
+"Föräldrarna lär sina barn, redan i tidig ålder, att rida på hästar, slåss "
+"och skjuta med båge. I allmänhet är klankrigarna mindre organiserade än de "
+"civiliserade soldaterna, och de bådas styrkor och svagheter kompletterar "
+"varandra väl."
 
 #: data/core/units.cfg:139
 msgid "race^Saurian"
 msgstr "Ödlefolket"
 
 #: data/core/units.cfg:140
-#, fuzzy
 msgid "race+female^Saurian"
 msgstr "Ödlefolket"
 
@@ -4109,7 +4649,6 @@ msgid "race^Merman"
 msgstr "Sjöfolket"
 
 #: data/core/units.cfg:162
-#, fuzzy
 msgid "race^Mermaid"
 msgstr "Sjöfolket"
 
@@ -4130,7 +4669,6 @@ msgid "race^Naga"
 msgstr "Nagafolket"
 
 #: data/core/units.cfg:180
-#, fuzzy
 msgid "race^Nagani"
 msgstr "Nagafolket"
 
@@ -4143,7 +4681,6 @@ msgid "race^Ogre"
 msgstr "Rese"
 
 #: data/core/units.cfg:190
-#, fuzzy
 msgid "race+female^Ogre"
 msgstr "Rese"
 
@@ -4156,7 +4693,6 @@ msgid "race^Orc"
 msgstr "Orch"
 
 #: data/core/units.cfg:200
-#, fuzzy
 msgid "race+female^Orc"
 msgstr "Orch"
 
@@ -4222,13 +4758,64 @@ msgid ""
 "individuals tend to specialize in other skills, like archery or "
 "assassination."
 msgstr ""
+"Till utseendet är orcher halvt människa och halvt odjur. De är längre, "
+"robustare och starkare än människor. De är fientliga, vilda och elaka av "
+"naturen. Deras blod är mörkare och tjockare än en normal människas och de "
+"bryr sig inte om varken hygien eller utseende. Även om orcher är våldsamma, "
+"även mot sina egna, arbetar de i flock. En orch reser aldrig ensam, eller "
+"lever ensam i grupper med färre än ett halvt dussin medlemmar.\n"
+"\n"
+"<header>text='Samhälle'</header>\n"
+"Nästan varje orch är medlem i en stam eller klan. Relationerna mellan "
+"grannstammar är ofta våldsamma, förutom när en gemensam fiende hotar deras "
+"existens eller möjlighet till rikt byte, och för dem samman. Ibland reser "
+"sig en stark hövding för att leda flera stammar, vanligtvis genom hot mot "
+"sina följeslagare. En orchstam som lever i fred tenderar att enbart fokusera "
+"på att stärka sig själv i förberedelse på nästa väpnade konflikt. Man vet "
+"att orcher har ett primitivt skriftsystem, som vanligtvis skrivs med blod, "
+"även om det mest används för att skicka förolämpningar mellan stamledare.\n"
+"\n"
+"Orchsamhällen är baserade på få andra saker än styrka, och en ledare "
+"överlever bara så länge ingen annan lyckas ta titeln ifrån honom. Ett "
+"konstant maktkamp pågår hela tiden mellan potentiella stamhövdingar. En "
+"orchledare får sällan njuta av sin absoluta makt mer än ett par år innan han "
+"dödas för sin position skull, även om historien har visat att det finns "
+"nämnvärda undantag. Ocher har ingen speciell hederskodex och emedan styrka "
+"vanligtvis är att föredra som metod för att visa sin styrka på används även "
+"lönnmörderi, förgiftning, och andra ränksmiderier som tänkbara sätt att nå "
+"sina egna mål.\n"
+"\n"
+"Orcher lever mest i landsbyggdsområden, ofta vid foten av berg eller i "
+"bergiga regioner, och ibland också i grottor. De odlar ingen mat och har "
+"ingen boskap men är däremot, som ett resultat av deras fysiska statur och "
+"brutalitet, kompetenta jägare . På grund av deras stora antal kan de på "
+"väldigt kort tid jaga slut ett helt område på allt som är större än gnagare. "
+"På grund av detta och deras ostabila ledarskap tenderar orchstammar att ha "
+"en halv-nomadiskt livstil och inte bosätta sig i en region för länge. Större "
+"stammar kan etablera sig stadigt i ett område i åratal, och även decennier, "
+"och bygga stora läger som nästan liknar städer. Men även dessa är lätt att "
+"montera ner och överge om stammen behöver flytta på sig.\n"
+"\n"
+"De äldsta kända orcherna har varit mellan 50 och 60 år gamla, men väldigt få "
+"individer lever längre än en eller två decennier innan de antingen dör i "
+"krig eller dödas av sina egna. De äldsta orcherna är oftast shamaner, vilka "
+"kanske är de som ses som de mest ärliga av sitt släkte. Ursprunget för denna "
+"sedvänja är okänd eftersom sahamanerna inte direkt hjälper till med mycket i "
+"orchsamhällena, utan enbart agerar som rådgivare (vilket inte är något som "
+"orcher vanligvis tolererar). Shamaner är på många sätt annorlunda jämfört "
+"med vanliga orcher. De är ofta fysiskt veka och fragila i jämförelse och "
+"saknar dessutom stridskunskaper. Trots deras beroende på råstyrka växer inte "
+"alla orcher upp till att bli starka. Många orcher föds mindre och vekare än "
+"resten och sätts nästan direkt som nyfödda på plats av dess starkare syskon. "
+"De starkare tar rutinmässigt den mesta maten och växer sig ännu starkare "
+"medan de vekare syskonen förbli svaga. Många av dessa individer tenderar att "
+"specialisera sig på andra färdigheter så som bågskytte eller lönnmörderi."
 
 #: data/core/units.cfg:218
 msgid "race^Troll"
 msgstr "Troll"
 
 #: data/core/units.cfg:219
-#, fuzzy
 msgid "race+female^Troll"
 msgstr "Troll"
 
@@ -4273,13 +4860,45 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
+"Troll är uråldriga varelser. De är en av det äldsta kända raserna att "
+"befolka den stora kontinenten. De är stora, långsamma, simpla och lever "
+"extremt långa liv inuti djupa grottor eller på toppen av höga berg. Det mest "
+"unika kännetecknet troll har är dess förmåga att hålla sig vid liv och "
+"regenerera sig själv inifrån. Som ett resultat av detta lever de väldigt "
+"annorlunda liv jämfört med andra varelser. Troll har väldigt få behov. De "
+"behöver väldigt lite mat och vatten och de har knappt drivkraft till att "
+"göra någonting, förutom att skydda sig från sina fiender. Det i sin tur "
+"betyder att de sällan behöver oroa sig över något och kan spendera det mesta "
+"av sin tid med att sova eller begrunda livet. Troll har en nyfiken "
+"samhörighet med naturen. De relaterar inte till levande ting, som alverna "
+"gör, utan har istället ett band till jorden och stenen. De är också delvis "
+"nyfikna på sin omgivning och många unga troll trivs med att resa och se "
+"världen. När de blir äldre tröttnar de och blir mer och mer passiva och de "
+"tappar gradvis intresset för sin omgivning och spenderar mer och mer tid "
+"sovandes i ett familjärt hörn i deras hemgrotta. Där stannar de tills de "
+"dör, medan deras kroppar sakta förvandlas till livlösa stenstoder.\n"
+"\n"
+"Troll ses av många som inte mer än ytterligare en ras vilda monster. Det här "
+"är vanliga missförstånd, delvis förstärkt eftersom orcher övertalar troll "
+"att gå med i deras arméer. Eftersom de är simpla och inte förstår andra "
+"folkslag, eller kanske inte ens kan se skillnad på olika raser, är det "
+"vanligvis lätt för ett band av orcher att övertyga en grupp troll att "
+"ansluta sig till dem, genom att låta dem få hämnas på de som förr jagat dem. "
+"De här nya rekryterna leds sen att anfalla vilka nu orcherna själva är i "
+"konflikt med, oavsett om de var vän eller fiende till trollen, vilket gör "
+"att de missledda trollen får ännu fler fiender. Trollens vanligaste fiende "
+"är dvärgarna, och fientligheten mellan dessa båda raser går långt tillbaka.\n"
+"\n"
+"<header>text='Geografi'</header>\n"
+"Trollen har bott längre i Stora kontinentens berg än dvärgarna som migrerade "
+"dit. Troll är en vanlig syn i bergskedjor norr och öster om Wesnoth, och "
+"varhelst orchstammar färdas."
 
 #: data/core/units.cfg:238
 msgid "race^Undead"
 msgstr "Vandöd"
 
 #: data/core/units.cfg:239
-#, fuzzy
 msgid "race+female^Undead"
 msgstr "Vandöda"
 
@@ -4314,6 +4933,28 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
+"Vandöda är egentligen ingen enskild ras, även om den ofta behandlas som en "
+"sådan. Alla döda varelser kan, av en tillräckligt skicklig nekromant, "
+"återuppväckas som vandöda. Vandöda är för det mesta onaturliga och själlösa "
+"konstruktioner som lyder den varelse som skapat den, utan att tänka eller "
+"ifrågasätta. Ett av nekoromantikens större mysterier är hur dessa "
+"konstruktioner kan hållas vid liv utan fortsatt arbete från nekromanten. En "
+"vandöd varelse behöver inte konstant uppmärksamhet från nekromanten för att "
+"fungera utan kan arbeta självstyrt enligt dess skapares order. Bara sällan, "
+"knappt en gång varje månad, behöver nekromanten sköta om sin skapelse.\n"
+"\n"
+"Nekromantik är nästan enbart begränsat till människor. Till och med alvernas "
+"och sjöfolkets legender berättar få historier om personer som hängivit sig "
+"åt de mörka konsterna. Det är antas att nekromantisk magi kräver stor "
+"anpassnings-förmåga och ett flexibelt sinne, ytterligheter som är mest "
+"vanligt förekommande hos människor. De ultimata målet för de flesta "
+"nekromanter är att vända samma konst, som bevarar och ger liv, mot dem "
+"själva för att, oavsett kostnad, till sist övervinna döden genom att bevara "
+"dess kropp och dess själ.\n"
+"\n"
+"<header>text='Geografi'</header>\n"
+"Medan många vandöda furstar anlände till Stora kontinenten efter Haldic I:s "
+"död var de inte helt okända av alver och dvägar innan dess."
 
 #: data/core/units.cfg:254
 msgid "race^Wose"
@@ -4458,6 +5099,9 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Glöm inte att låta din ledare få erfarenhet! Du måste se till att han är "
+"säker, men om du allt för försiktigt så kanske han har för låg "
+"erfarnhetsnivå för överleva framtida strider."
 
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
@@ -4470,6 +5114,10 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"kan du välja Visa fiendedrag under menyn Handlingar för att visa alla "
+"möjliga rutor som din motståndare faktiskt kan flyttas till (förutsatt att "
+"dina trupper stannar där de är). Använd detta för att vara säkert på att "
+"fienden inte kan nå dina svaga eller skadade trupper under hans nästa drag."
 
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
@@ -4493,6 +5141,10 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Trupper med intelligent-egenskapen behöver färre erfarenhetspoäng för att nå "
+"nästa erfarenhetsnivå. Försöka att låta dessa trupper slå det dödande slaget "
+"tidigt i en kampanj så att du får trupper med högre erfarenhetsnivåer "
+"snabbare."
 
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
@@ -4504,6 +5156,10 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"Taktiken att omringa en trupp är väldigt kraftfull, speciellt mot snabba "
+"fiendetrupper. Genom att placera två trupper på två mitt emot varandra så "
+"kommer deras kontrollzoner att begränsa dess förflyttning till enbart en "
+"ruta åt något håll."
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
@@ -4515,6 +5171,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
+"Du kan komma åt rekryterings- och återkallningskommandona genom att "
+"högerklicka på en slottsruta. Det låter dig välja vilken ruta du placerar "
+"din trupp på. Genom att placera trupper smart kan du nå en by ett drag "
+"tidigare."
 
 #: data/hardwired/tips.cfg:23
 msgid ""
@@ -4522,6 +5182,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Det finns några bra sammanfattnings-dialoger i huvudmenyn. Till exempel "
+"Statustabbellen som låter dig veta hur det går för dina fiender och hur det "
+"går för dig i jämförelse."
 
 #: data/hardwired/tips.cfg:27
 msgid ""
@@ -4529,6 +5192,9 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Trupper med snabb-egenskapen kan flytta en extra ruta per drag. Det kan vara "
+"väldigt viktigt vid förflyttning i svår terräng som vatten och grottor. Där "
+"kan det skilja medan att kunna flytta en eller två rutor."
 
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
@@ -4539,6 +5205,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Läs Spelteknik-avsnittet i hjälpmenyn noga efter att du har spelat ett par "
+"scenarion. Detaljer blir mer viktiga allt eftersom scenarier blir svårare!"
 
 #: data/hardwired/tips.cfg:35
 msgid ""
@@ -4546,6 +5214,9 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Det är vanligtvis bättre att starta nästa scenario i en kampanj med lägre "
+"erfarenhetsnivåer på trupper, men som är på väg att öka i erfarenhetsnivåer, "
+"än samma trupper på en högre erfarenhetsnivåer."
 
 #: data/hardwired/tips.cfg:39
 msgid ""
@@ -4560,7 +5231,6 @@ msgid "- The Wesnoth Community"
 msgstr "- Wesnoths spelare"
 
 #: data/hardwired/tips.cfg:43
-#, fuzzy
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
@@ -4590,6 +5260,11 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
+"Om du spelar med skrud eller stridsdimma påslagen så vet du inte vad som "
+"väntar dig. I det fallet så är trupper som kan speja över långa distanser "
+"värda sin kostnad. Försöka att välja spejare som lätt kan förflytta sig över "
+"den omgivande terrängen eftersom trupper bara ser lika långt som de kan "
+"förflytta sig i ett drag."
 
 #: data/hardwired/tips.cfg:55
 msgid ""
@@ -4623,6 +5298,11 @@ msgid ""
 "not be removed unless the unit regenerates, or spends a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Förgiftade trupper förlorar åtta HP varje drag tills de är endast en HP från "
+"döden. De kommer att fortsätta vara inför döden tills deras gift har "
+"avlägsnats. Helare kan förhindra en förgiftad trupp från att försämras men "
+"giftet kommer inte att försvinna förens truppen regenererar, spenderar ett "
+"drag i en by eller ett drag nära en trupp med egenskapen att kunna bota."
 
 #: data/hardwired/tips.cfg:67
 msgid ""
@@ -4635,7 +5315,6 @@ msgstr ""
 "bygga upp en kraftfull och erfaren armé."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -4644,13 +5323,12 @@ msgid ""
 "are skilled enough to ignore these zones."
 msgstr ""
 "Alla trupper har en kontrollzon i de omkringliggande rutorna. Om en trupp "
-"förflyttas in i en fiendes kontrollzon, så kan den inte förflyttas något mer "
-"det draget. Detta innebär att trupper kan ha två tomma rutor mellan sig och "
-"ändå skapa en barriär för fienden. (Nivå noll-trupper är för svaga för att "
-"ha kontrollzoner, och stigfinnare har förmågan att kunna undvika dem.)"
+"flyttas in i en fiendes kontrollzon, så kan den inte flyttas något mer det "
+"draget. Detta innebär att trupper kan ha två tomma rutor mellan sig och ändå "
+"skapa en barriär för fienden. (Nivå noll-trupper är för svaga för att ha "
+"kontrollzoner, och stigfinnare har förmågan att kunna undvika dem.)"
 
 #: data/hardwired/tips.cfg:75
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -4658,55 +5336,53 @@ msgid ""
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
 "Chansen att träffa en annan trupp beror vanligtvis på hur väl denna kan "
-"försvara sig på terrängen den befinner sig i. Dock har magiska attacker "
-"alltid 70% chans att träffa, och prickskyttar har alltid åtminstone 60% "
-"chans att träffa när de anfaller."
+"försvara sig i terrängen den befinner sig i. Magiska attacker har dock "
+"alltid 70% chans att träffa och prickskyttar har alltid åtminstone 60% chans "
+"att träffa när de anfaller."
 
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Handbok för Taktisk Analys, Volym II - Haldric II, 43 eW"
 
 #: data/hardwired/tips.cfg:79
-#, fuzzy
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
-msgstr "Trupper som befinner sig i byar återfår 8 HP i början på sitt drag."
+msgstr ""
+"Trupper som befinner sig i byar återfår 8 HP i början på sitt drag eller "
+"återhämtar sig från förgiftning."
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Förflytta inte en skadad trupp om du inte måste - låt den vila. Trupper som "
-"inte flyttas eller attackerar under ett drag återfår 2 HP i början av nästa "
-"drag."
+"Förflytta inte en skadad trupp om du inte måste utan låt den vila. Trupper "
+"som inte flyttas eller attackerar under ett drag återfår 2 HP i början av "
+"nästa drag."
 
 #: data/hardwired/tips.cfg:87
-#, fuzzy
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
-"De flesta fottrupper försvarar sig bättre i byar och borgar än ute i "
-"naturen. De flesta beridna trupper har dock inte någon försvarsfördel av "
-"byar eller borgar."
+"De flesta fottrupper försvarar sig bättre i byar och borgar än ute i naturen "
+"medan de flesta beridna trupper inte får någon försvarsfördel från byar "
+"eller borgar."
 
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
 msgstr "- Sir Kaylan, 498 eW"
 
 #: data/hardwired/tips.cfg:91
-#, fuzzy
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"Beridna trupper är i allmänhet motståndskraftiga mot hugg- och krossvapen, "
+"Beridna trupper är i allmänhet motståndskraftiga mot hugg- och krossvapen "
 "men är sårbara mot stickvapen, såsom bågar och spjut."
 
 #: data/hardwired/tips.cfg:92
@@ -4714,7 +5390,6 @@ msgid "- Sir Kaylan, 502YW"
 msgstr "- Sir Kaylan, 502 eW"
 
 #: data/hardwired/tips.cfg:95
-#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain eight experience points for "
@@ -4722,20 +5397,18 @@ msgid ""
 "level opponent."
 msgstr ""
 "Det bästa sättet för en trupp att skaffa sig erfarenhet är att utdela "
-"dödsstöten för en fiendetrupp. Trupper som dödar en fiendetrupp får 8 EP för "
-"varje nivå som den dödade truppen har."
+"dödsstöten till en fiendetrupp. Trupper som dödar en fiendetrupp får 8 EP "
+"för varje nivå som den dödade truppen har."
 
 #: data/hardwired/tips.cfg:99
-#, fuzzy
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
-"Alver rör sig och slåss mycket bra i skogen. Dvärgar rör sig och slåss "
-"mycket bra i kullar och berg."
+"Alver slåss och rör sig mycket bra i skog. Dvärgar rör sig och slåss mycket "
+"bra i kullar, berg och grottor."
 
 #: data/hardwired/tips.cfg:103
-#, fuzzy
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
@@ -4792,7 +5465,6 @@ msgstr ""
 "allierad ledare låta dig använda sin."
 
 #: data/hardwired/tips.cfg:123
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
@@ -4801,7 +5473,6 @@ msgstr ""
 "för krossvapen, eldvapen samt ockulta vapen."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
@@ -4811,7 +5482,6 @@ msgstr ""
 "dina andra trupper att avancera snabbare."
 
 #: data/hardwired/tips.cfg:131
-#, fuzzy
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
 "the village and attack you, while enjoying the defense and healing of the "
@@ -4819,7 +5489,7 @@ msgid ""
 msgstr ""
 "I allmänhet bör du undvika att placera någon trupp bredvid en tom by. En "
 "fiendetrupp kan ställa sig i byn och attackera dig. Fiendetruppen får då "
-"tillgång till byns försvarsfördelar och läkande egenskaper."
+"tillgång till byns försvars- och läkeegenskaper."
 
 #: data/hardwired/tips.cfg:135
 msgid "Use lines of units to screen injured units to let them recover."
@@ -4896,7 +5566,6 @@ msgstr ""
 "Stormande trupper används bäst mot fiender som de kan döda med ett enda slag."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
@@ -4904,21 +5573,20 @@ msgid ""
 "from advancing a level, so it is generally more useful to try to advance "
 "your lower-level units instead."
 msgstr ""
-"Instället för att befordras kan trupper erhålla en 'After Maximum Level "
-"Advancement' (AMLA), vilket vanligtvis ökar en trupps maximala hälsopoäng "
-"med tre enheter. Detta är mindre än den ökning som sker vid befordran. Det "
-"är därför ofta mer fördelaktigt att försöka få trupper på lägre nivåer att "
-"befordras."
+"Istället för att befordras kan högrankade trupper erhålla en 'After Maximum "
+"Level Advancement' (AMLA), vilket vanligtvis ökar en trupps maximala "
+"hälsopoäng med tre enheter. Detta är mindre än den ökning som sker vid "
+"befordran. Det är därför ofta mer fördelaktigt att försöka få trupper på "
+"lägre nivåer att befordras."
 
 #: data/hardwired/tips.cfg:175
-#, fuzzy
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
 "are limited by its maximum movement. Remember this when deciding what unit "
 "is best to scout specific types of terrain."
 msgstr ""
 "Om slöja eller stridsdimma används, begränsas en trupps synfält av dess "
-"maximala förflyttning. Minns detta när du skickar en trupp på "
+"maximala förflyttning. Kom ihåg det här när du skickar en trupp på "
 "spaningsuppdrag."
 
 #: data/hardwired/tips.cfg:179
@@ -4931,7 +5599,6 @@ msgstr ""
 "begreppet."
 
 #: data/hardwired/tips.cfg:183
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
@@ -4972,6 +5639,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Om en fiende får mer fördelar från en ovanlig terrängtyp än du gör så kan du "
+"genom att ockupera den terrängen beröva på dess fördelar."
 
 #: data/hardwired/tips.cfg:199
 msgid ""
@@ -4979,6 +5648,9 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Få trupper har bra försvar i vatten så en rad av attackeranade trupper längs "
+"en flodkant kan ge fienden stora förluster. Alver och dvärgar kan använda "
+"kan använda skogs- respektive bergkanten på ett liknande sätt."
 
 #: data/scenario-test.cfg:697
 msgid "ruby of fire"
@@ -5144,11 +5816,11 @@ msgstr "Det finns inga lediga borgrutor för nya trupper."
 
 #: src/actions.cpp:250 src/actions.cpp:273 src/actions.cpp:278
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
+msgstr "Ett ogiltigt vapen är valt, möjligtvis av Phyton-AI:n."
 
 #: src/actions.cpp:257
 msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr ""
+msgstr "Ett ogiltigt vapen är skickat, möjligtvis av Phyton-AI:n."
 
 #: src/actions.cpp:977 src/actions.cpp:1234
 msgid "poisoned"
@@ -5209,10 +5881,12 @@ msgstr "Okänt truppslag: "
 #: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
+"Förflyttningskostnaden är 0, antagligen en terräng med förflyttningskostnad "
+"0."
 
 #: src/config_adapter.cpp:156
 msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
+msgstr "Dubblett av siddefinition för sidan '$side|' hittades."
 
 #: src/dialogs.cpp:112
 msgid "Advance Unit"
@@ -5258,12 +5932,10 @@ msgstr ""
 "ett annat namn."
 
 #: src/dialogs.cpp:287
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Det sparade spelet finns redan, vill du skriva över det?"
 
 #: src/dialogs.cpp:288 src/menu_events.cpp:751 src/playcampaign.cpp:423
-#, fuzzy
 msgid "Name: "
 msgstr "Namn:"
 
@@ -5272,9 +5944,8 @@ msgid "Overwrite?"
 msgstr "Skriva över?"
 
 #: src/dialogs.cpp:308
-#, fuzzy
 msgid "Filter: "
-msgstr "Förmågor: "
+msgstr "Filter:"
 
 #: src/dialogs.cpp:375
 msgid "Do you really want to delete this game?"
@@ -5636,9 +6307,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logga in på Kampen om Wesnoths officiella spelserver"
 
 #: src/game.cpp:1491
-#, fuzzy
 msgid "Join a different server"
-msgstr "Anslut till den officiella servern"
+msgstr "Anslut till en annan server"
 
 #: src/game.cpp:1493
 msgid "Local Game"
@@ -5693,9 +6363,8 @@ msgid "' (The game will now exit)"
 msgstr "' (Spelet kommer nu att avslutas)"
 
 #: src/game.cpp:1878
-#, fuzzy
 msgid "Loading data files"
-msgstr "Läser truppfiler."
+msgstr "Läser datafiler"
 
 #: src/game.cpp:2027
 msgid "Battle for Wesnoth"
@@ -5727,9 +6396,8 @@ msgstr "Nederlag:"
 
 #: src/gamestatus.cpp:253 src/gamestatus.cpp:268 src/gamestatus.cpp:288
 #: src/gamestatus.cpp:373
-#, fuzzy
 msgid "No time of day has been defined."
-msgstr "Slumpmässig tid på dygnet vid start"
+msgstr "Ingen Slumpmässig tid på dygnet vid start"
 
 #: src/gamestatus.cpp:703 src/gamestatus.cpp:705 src/playcampaign.cpp:422
 msgid " replay"
@@ -5843,17 +6511,12 @@ msgid "Help"
 msgstr "Hjälp"
 
 #: src/help.cpp:1111
-#, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
-msgstr "Trupper med denna specialattack:"
+msgstr "<header>text='Trupper med den här specialattacken'</header>"
 
 #: src/help.cpp:1179
-#, fuzzy
 msgid "<header>text='Units having this ability'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Chans för träff'</header>"
+msgstr "<header>text='Trupper som har den här egenskapen'</header>"
 
 #: src/help.cpp:1244
 msgid "Advances from: "
@@ -5941,12 +6604,8 @@ msgid "Movement Cost"
 msgstr "Förflyttningskostnad"
 
 #: src/help.cpp:1618
-#, fuzzy
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Chans för träff'</header>"
+msgstr "<header>text='Trupper av den här rasen'</header>"
 
 #: src/help.cpp:2514 src/menu_events.cpp:716
 msgid " < Back"
@@ -6028,9 +6687,8 @@ msgid "Reading files and creating cache."
 msgstr "Läser filer och skapar cache."
 
 #: src/map.cpp:342
-#, fuzzy
 msgid "A map without a header is not supported"
-msgstr "Slumpkartor med udda bredd stöds inte."
+msgstr "En karta utan en header stöds inte."
 
 #: src/mapgen.cpp:711
 msgid "Random maps with an odd width aren't supported."
@@ -6066,27 +6724,24 @@ msgid "Details"
 msgstr "Detaljer"
 
 #: src/menu_events.cpp:210
-#, fuzzy
 msgid "Damage"
-msgstr "skada"
+msgstr "Skada"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Över lag"
 
 #: src/menu_events.cpp:213
-#, fuzzy
 msgid "This Turn"
-msgstr "Drag"
+msgstr "Detta drag"
 
 #: src/menu_events.cpp:222
-#, fuzzy
 msgid "Inflicted"
 msgstr "Vållad skada"
 
 #: src/menu_events.cpp:246
 msgid "Taken"
-msgstr ""
+msgstr "Tog"
 
 #: src/menu_events.cpp:296 src/menu_events.cpp:300
 msgid "Do you really want to dismiss him?"
@@ -6369,40 +7024,40 @@ msgstr "Sök"
 
 #: src/menu_events.cpp:1841
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "Okänd debugnivå: '$level'."
 
 #: src/menu_events.cpp:1843 src/menu_events.cpp:1852 src/menu_events.cpp:2158
 #: src/menu_events.cpp:2164 src/menu_events.cpp:2198 src/menu_events.cpp:2210
 #: src/menu_events.cpp:2217
-#, fuzzy
 msgid "error"
-msgstr "Fel"
+msgstr "fel"
 
 #: src/menu_events.cpp:1850
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "Okänd debugdomän: '$domain'."
 
 #: src/menu_events.cpp:1859
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
+msgstr "Ändrade domän: '$domain' till nivå: '$level'."
 
 #: src/menu_events.cpp:1914
 msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
 msgstr ""
+"Kommandon: msg/whisper <smeknamn> <meddelande>, list <underkommando> "
+"[<argument>], me/emote <meddelande>. Skriv /help [<kommando>] för "
+"detaljerade instruktioner."
 
 #: src/menu_events.cpp:1945
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control any "
 "side in a game. Usage: /msg <nick> <message>"
 msgstr ""
-"Skicka ett privat meddelande. Du kan inte skicka meddelanden till spelare "
-"som kontrollerar en sida i spelet. Syntax: /whisper [spelare] [meddelande]"
+"Skickar ett privat meddelande. Du kan inte skicka meddelanden till spelare "
+"som kontrollerar en sida i spelet. Syntax: /whisper <smeknamn> <meddelande>"
 
 #: src/menu_events.cpp:1951
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list <subcommand> [<argument>] Subcommands: addfriend, "
@@ -6410,55 +7065,47 @@ msgid ""
 "info."
 msgstr ""
 "Ignorera meddelanden från spelare på listan över ignorerade och lys upp "
-"spelare på listan över vänner. Syntax: /list [underkommando] [argument "
-"(valfritt)]. Underkommandon: addfriend addignore remove display clear. "
-"Skriv /help list [underkommando] för mer information."
+"spelare på listan över vänner. Syntax: /list <underkommando> [<argument>]. "
+"Underkommandon: addfriend, addignore, remove, display, clear. Skriv /help "
+"list <underkommando> för mer information."
 
 #: src/menu_events.cpp:1959
-#, fuzzy
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr ""
 "Lägg till spelare till din lista över vänner. Syntax: /list addfriend "
-"[argument]"
+"<argument>"
 
 #: src/menu_events.cpp:1964
-#, fuzzy
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr ""
-"Lägg till spelare till din ignoreralista. Syntax: /list ignore [argument]"
+"Lägg till spelare till din ignoreralista. Syntax: /list ignore <argument>"
 
 #: src/menu_events.cpp:1968
-#, fuzzy
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
 "Ta bort spelare från listan över vänner eller ignorerade. Syntax: /list "
-"remove [argument]"
+"remove <smeknamn>"
 
 #: src/menu_events.cpp:1972
-#, fuzzy
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
 msgstr "Rensa dina listor över vänner och ignorerade. Syntax: /list clear"
 
 #: src/menu_events.cpp:1976
-#, fuzzy
 msgid "Show your ignores and friends list. Usage: /list display"
 msgstr "Visa dina listor över vänner och ignorerade. Syntax: /list display"
 
 #: src/menu_events.cpp:1979
-#, fuzzy
 msgid "Unknown subcommand."
-msgstr "Okänt underkommando"
+msgstr "Okänt underkommando."
 
 #: src/menu_events.cpp:1984
-#, fuzzy
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
-msgstr "Skicka en smiley. Syntax: /emote [message]"
+msgstr "Skicka en smiley eller en personlig handling. Syntax: /me <meddelande>"
 
 #: src/menu_events.cpp:1987
-#, fuzzy
 msgid "Unknown command."
-msgstr "Okänt kommando"
+msgstr "Okänt kommando."
 
 #: src/menu_events.cpp:1993
 msgid "Added to ignore list: "
@@ -6491,33 +7138,31 @@ msgstr ""
 
 #: src/menu_events.cpp:2159
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
+msgstr "AI:n kan inte ta över en ogiltig sida: '$side'."
 
 #: src/menu_events.cpp:2165
 msgid "Can't droid networked side: '$side'."
-msgstr ""
+msgstr "AI:n kan inte ta över en nätverkssida: '$side'."
 
 #: src/menu_events.cpp:2199
 msgid "Usage: control <side> <nick>"
-msgstr ""
+msgstr "Syntax: constrol <sida> <smeknamn>"
 
 #: src/menu_events.cpp:2211
 msgid "Can't change control of invalid side: '$side'."
-msgstr ""
+msgstr "Kan inte byta kontroll på ogiltig sida: '$side'."
 
 #: src/menu_events.cpp:2218
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr ""
+msgstr "Kan inte byta kontroll på icke-existerande sida: '$side'."
 
 #: src/menu_events.cpp:2256
-#, fuzzy
 msgid "Debug mode activated!"
-msgstr "Debugkommandon"
+msgstr "Debugläge aktiverat!"
 
 #: src/menu_events.cpp:2259
-#, fuzzy
 msgid "Debug mode deactivated!"
-msgstr "Debugkommandon"
+msgstr "Debugläge avaktiverat!"
 
 #: src/menu_events.cpp:2340
 msgid "prompt^Command:"
@@ -6663,18 +7308,16 @@ msgid "(Empty slot)"
 msgstr "(Tom plats)"
 
 #: src/multiplayer_connect.cpp:844
-#, fuzzy
 msgid "Only random sides in the current era."
-msgstr "Inga fördefinierade sidor i denna era"
+msgstr "Bara slumpmässiga i denna era."
 
 #: src/multiplayer_connect.cpp:868
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Kan ej finna lämplig ledare för fraktionen $faction"
 
 #: src/multiplayer_connect.cpp:905
-#, fuzzy
 msgid "Game Lobby: "
-msgstr "Spellobby"
+msgstr "Spellobby:"
 
 #: src/multiplayer_connect.cpp:925
 msgid "Player/Type"
@@ -6787,7 +7430,7 @@ msgstr "Inställningar..."
 
 #: src/multiplayer_create.cpp:90
 msgid "Set Password..."
-msgstr ""
+msgstr "Välj lösenord..."
 
 #: src/multiplayer_create.cpp:106
 msgid "Load Game..."
@@ -6880,16 +7523,18 @@ msgstr "Du måste ange ett namn."
 
 #: src/multiplayer_create.cpp:329
 msgid "Set Password"
-msgstr ""
+msgstr "Välj lösenord"
 
 #: src/multiplayer_create.cpp:330 src/multiplayer_lobby.cpp:759
 msgid "Password: "
-msgstr ""
+msgstr "Lösenord:"
 
 #: src/multiplayer_create.cpp:330
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
+"Välj lösenord som folk som ansluter till ditt spel som spelare måste skriva "
+"in."
 
 #: src/multiplayer_create.cpp:338
 msgid "Turns: "
@@ -6956,24 +7601,22 @@ msgid "Unknown scenario"
 msgstr "Okänt scenario"
 
 #: src/multiplayer_lobby.cpp:484
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Öppna ett sparat spel"
+msgstr "Öppna spel igen"
 
 #: src/multiplayer_lobby.cpp:500
 msgid "Turn "
 msgstr "Drag "
 
 #: src/multiplayer_lobby.cpp:504
-#, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Ledig plats:"
-msgstr[1] "Ledig plats:"
+msgstr[1] "Lediga platser:"
 
 #: src/multiplayer_lobby.cpp:507 src/multiplayer_lobby.cpp:757
 msgid "Password Required"
-msgstr ""
+msgstr "Lösenord krävs"
 
 #: src/multiplayer_lobby.cpp:515
 msgid "Fog"
@@ -7013,7 +7656,7 @@ msgstr "Hoppa till aktivt drag som observatör"
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Du behöver ett lösenord för att gå med i det här spelet."
 
 #: src/multiplayer_ui.cpp:171
 msgid "Invalid Color"
@@ -7056,9 +7699,8 @@ msgid "No multiplayer sides available in this game"
 msgstr "Det finns inga sidor för gruppspel tillgängliga i detta spel."
 
 #: src/multiplayer_wait.cpp:270
-#, fuzzy
 msgid "No era information found."
-msgstr "Inga eror funna."
+msgstr "Ingen era-information hittades."
 
 #: src/multiplayer_wait.cpp:275
 msgid "No multiplayer sides found"
@@ -7094,20 +7736,19 @@ msgstr "Kunde inte utföra handskakning"
 
 #: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Stötte på terräng med en förflyttningskostnad mindre än 1."
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
-msgstr ""
+msgstr "Förbreder lag"
 
 #: src/play_controller.cpp:106 src/play_controller.cpp:121
 msgid "Initializing display"
-msgstr ""
+msgstr "Förbereder visning"
 
 #: src/play_controller.cpp:147
-#, fuzzy
 msgid "Starting game"
-msgstr "Avbryt spelet"
+msgstr "Startar spelet"
 
 #: src/play_controller.cpp:829
 msgid "Back to start"
@@ -7130,9 +7771,8 @@ msgid "Error while reading the WML: "
 msgstr "Fel vid läsning av WML: "
 
 #: src/playcampaign.cpp:424
-#, fuzzy
 msgid "Save Replay"
-msgstr "Repris"
+msgstr "Spara repris"
 
 #: src/playcampaign.cpp:429
 msgid "The replay could not be saved"
@@ -7163,9 +7803,8 @@ msgid "End scenario"
 msgstr "Avsluta scenariot"
 
 #: src/playmp_controller.cpp:357
-#, fuzzy
 msgid "Waiting for next scenario..."
-msgstr "Väntar på att spelet skall starta..."
+msgstr "Väntar på nästa scenario..."
 
 #: src/playmp_controller.cpp:483
 msgid ""
@@ -7378,7 +8017,7 @@ msgstr "Kontrollerad by"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size ska vara mellan 0.0 och 0.5."
 
 #: src/titlescreen.cpp:348
 msgid "TitleScreen button^Tutorial"
