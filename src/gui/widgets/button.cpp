@@ -24,9 +24,10 @@ namespace gui2 {
 void tbutton::set_width(const int width)
 { 
 	// resize canvasses
-	canvas_up_.set_width(width);
-	canvas_up_mouse_over_.set_width(width);
-	canvas_down_.set_width(width);
+	canvas_enabled_.set_width(width);
+	canvas_disabled_.set_width(width);
+	canvas_pressed_.set_width(width);
+	canvas_focussed_.set_width(width);
 
 	// inherited
 	tcontrol::set_width(width);
@@ -35,9 +36,10 @@ void tbutton::set_width(const int width)
 void tbutton::set_height(const int height) 
 { 
 	// resize canvasses
-	canvas_up_.set_height(height);
-	canvas_up_mouse_over_.set_height(height);
-	canvas_down_.set_height(height);
+	canvas_enabled_.set_height(height);
+	canvas_disabled_.set_height(height);
+	canvas_pressed_.set_height(height);
+	canvas_focussed_.set_height(height);
 
 	// inherited
 	tcontrol::set_height(height);
@@ -47,14 +49,14 @@ void tbutton::mouse_down(const tevent_info& /*event*/, bool& /*handled*/)
 { 
 	DBG_GUI << "mouse down\n"; 
 
-	set_state(DOWN);
+	set_state(PRESSED);
 }
 
 void tbutton::mouse_up(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
 	DBG_GUI << "mouse up\n";
 
-	set_state(MOUSE_OVER);
+	set_state(FOCUSSED);
 }
 
 void tbutton::mouse_click(const tevent_info& /*event*/, bool& /*handled*/) 
@@ -71,14 +73,14 @@ void tbutton::mouse_enter(const tevent_info& /*event*/, bool& /*handled*/)
 { 
 	DBG_GUI << "mouse enter\n"; 
 
-	set_state(MOUSE_OVER);
+	set_state(FOCUSSED);
 }
 
 void tbutton::mouse_leave(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
 	DBG_GUI << "mouse leave\n"; 
 
-	set_state(NORMAL);
+	set_state(ENABLED);
 }
 
 void tbutton::draw(surface& canvas)
@@ -88,23 +90,51 @@ void tbutton::draw(surface& canvas)
 	SDL_Rect rect = get_rect();
 	switch(state_) {
 
-		case NORMAL : 
-			canvas_up_.draw(true);
-			SDL_BlitSurface(canvas_up_.surf(), 0, canvas, &rect);
+		case ENABLED : 
+			DBG_GUI << "Enabled.\n";
+			canvas_enabled_.draw(true);
+			SDL_BlitSurface(canvas_enabled_.surf(), 0, canvas, &rect);
 			break;
 
-		case DOWN : 
-			canvas_down_.draw(true);
-			SDL_BlitSurface(canvas_down_.surf(), 0, canvas, &rect);
+		case DISABLED : 
+			DBG_GUI << "Disabled.\n";
+			canvas_disabled_.draw(true);
+			SDL_BlitSurface(canvas_disabled_.surf(), 0, canvas, &rect);
 			break;
 
-		case MOUSE_OVER :
-			canvas_up_mouse_over_.draw(true);
-			SDL_BlitSurface(canvas_up_mouse_over_.surf(), 0, canvas, &rect);
+		case PRESSED :
+			DBG_GUI << "Pressed.\n";
+			canvas_pressed_.draw(true);
+			SDL_BlitSurface(canvas_pressed_.surf(), 0, canvas, &rect);
+			break;
+
+		case FOCUSSED :
+			DBG_GUI << "Focussed.\n";
+			canvas_focussed_.draw(true);
+			SDL_BlitSurface(canvas_focussed_.surf(), 0, canvas, &rect);
 			break;
 	}
 
 	set_dirty(false);
+}
+
+tpoint tbutton::get_best_size() const
+{
+	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
+		return tpoint(get_button(definition())->default_width, get_button(definition())->default_height); 
+	} else {
+		return tpoint(definition_->default_width, definition_->default_height); 
+	}
+}
+
+void tbutton::set_best_size(const tpoint& origin)
+{
+	resolve_definition();
+
+	set_x(origin.x);
+	set_y(origin.y);
+	set_width(definition_->default_width);
+	set_height(definition_->default_height);
 }
 
 void tbutton::set_state(tstate state)
@@ -112,6 +142,18 @@ void tbutton::set_state(tstate state)
 	if(state != state_) {
 		state_ = state;
 		set_dirty(true);
+	}
+}
+
+void tbutton::resolve_definition()
+{
+	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
+		definition_ = get_button(definition());
+
+		canvas_enabled_ = definition_->enabled.canvas;
+		canvas_disabled_ = definition_->disabled.canvas;
+		canvas_pressed_ = definition_->pressed.canvas;
+		canvas_focussed_ = definition_->focussed.canvas;
 	}
 }
 

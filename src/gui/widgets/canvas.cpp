@@ -147,12 +147,18 @@ void tcanvas::parse_cfg(const config& cfg)
 
 void tcanvas::clear_shapes()
 {
+// FIXME we copy pointers so we will get double frees, need to think about
+// whether or not to use intrusive pointers to handle this. 
+// NOTE with the code disabled we don't get a double free but do leak the memory!!!
+#if 0
+
 	for(std::vector<tshape*>::iterator itor = 
 			shapes_.begin(); itor != shapes_.end(); ++itor) {
 		
 		delete (*itor);
 	}
 	shapes_.clear();
+#endif	
 }
 
 void tcanvas::tshape::put_pixel(unsigned start, Uint32 colour, unsigned w, unsigned x, unsigned y)

@@ -27,13 +27,15 @@ class tbutton : public tcontrol
 {
 	friend void load_settings();
 public:
-	tbutton(const std::string& id) : 
+	tbutton() : 
 		tcontrol(),
-		state_(NORMAL)
+		canvas_enabled_(),
+		canvas_disabled_(),
+		canvas_pressed_(),
+		canvas_focussed_(),
+		state_(ENABLED),
+		definition_()
 		{
-			canvas_up_.set_cfg(tbutton::default_enabled_draw_);
-			canvas_up_mouse_over_.set_cfg(tbutton::default_mouse_over_draw_);
-			canvas_down_.set_cfg(tbutton::default_pressed_draw_);
 		}
 
 	virtual void set_width(const int width);
@@ -50,35 +52,28 @@ public:
 	void draw(surface& canvas);
 
 	// note we should check whether the label fits in the button
-	tpoint get_best_size() const { return tpoint(default_width_, default_height_); }
+	tpoint get_best_size() const;
 
-	void set_best_size(const tpoint& origin) 
-	{
-		set_x(origin.x);
-		set_y(origin.y);
-		set_width(default_width_);
-		set_height(default_height_);
-	}
+	void set_best_size(const tpoint& origin);
 
 protected:
 	
 private:
 
 	tcanvas 
-		canvas_up_,
-		canvas_up_mouse_over_,
-		canvas_down_;
+		canvas_enabled_,
+		canvas_disabled_,
+		canvas_pressed_,
+		canvas_focussed_;
 
-	static unsigned default_width_;
-	static unsigned default_height_;
-	static config default_enabled_draw_;
-	static config default_mouse_over_draw_;
-	static config default_pressed_draw_;
-
-	enum tstate { NORMAL, DOWN, MOUSE_OVER };
+	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED };
 
 	void set_state(tstate state);
 	tstate state_;
+
+	std::vector<tbutton_definition::tresolution>::const_iterator definition_;
+
+	void resolve_definition();
 };
 
 

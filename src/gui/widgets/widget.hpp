@@ -142,8 +142,9 @@ private:
 class twidget : public virtual tevent_executor
 {
 public:
-	twidget(const std::string& id = "") :
-		id_(id), 
+	twidget() : 
+		id_(""), 
+		definition_("default"),
 		parent_(0),
 		x_(-1),
 		y_(-1),
@@ -156,7 +157,15 @@ public:
 	twidget* parent() { return parent_; }
 	void set_parent(twidget* parent) { parent_ = parent; }
 
-	const std::string id() const { return id_; }
+	const std::string& id() const { return id_; }
+	void set_id(const std::string& id) { id_ = id; }
+
+	const std::string& definition() const { return definition_; }
+
+	//! This should not be changed after the widget is shown, strange things
+	//! might occur.
+	void set_definition(const std::string& definition) 
+		{ definition_ = definition; }
 
 	// draw event does nothing by default, maybe make pure virtual later
 	// fixme add force as parameter
@@ -220,7 +229,17 @@ protected:
 		{ return ::create_rect( x_, y_, w_, h_ ); }
 
 private:
-	const std::string id_;
+	//! The id is the unique name of the widget in a certain context. This is
+	//! needed for certain widgets so the engine knows which widget is which. 
+	//! Eg it knows which button is pressed and thuswhich engine action is 
+	//! connected to the button.
+	std::string id_;
+
+	//! The definition is the id of that widget class. Eg for a button it
+	//! [button_definition]id. A button can have multiple definitions which all
+	//! look different but for the engine still is a button.
+	std::string definition_;
+
 	twidget* parent_;
 	int x_, y_, w_, h_;
 	bool dirty_;

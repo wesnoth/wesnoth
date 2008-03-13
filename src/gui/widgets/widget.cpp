@@ -334,7 +334,6 @@ tpoint tsizer::tchild::get_best_size()
 }
 
 tcontrol::tcontrol(/*const int x, const int y, const int w, const int h*/) :
-	twidget("") ,
 /*	x_(x),
 	y_(y),
 	w_(w),
