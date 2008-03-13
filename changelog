@@ -28,10 +28,9 @@ Version 1.5.0-svn:
    * The UnitWML [unit] tag is changed to [unit_type].  [unit] will still
      be accepted for backwards compatibility until.  wmllint can safely
      do this up-conversion.
-   * In SingleUnitWML, the description= attribute is now id=. description= 
-     will still be accepted for backwards compatibility.
-     wmllint can safely do this up-conversion. wmllint can safely
-     do this up-conversion.
+   * In SingleUnitWML and SideWML, the description= attribute is now id=. 
+     description= will still be accepted for backwards compatibility.
+     wmllint can safely do this up-conversion.
  * miscellaneous and bug fixes:
    * wmlxgettext now print some context information about the strings
      extracted (patch #993)
