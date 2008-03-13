@@ -528,8 +528,12 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # to deserialize an empty unit.
     if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
-    #if closer in ('movement_costs', 'defense') and 'grassland' in attributes and 'road' not in attributes:
-    #    print '"%s", line %d: [%s] without road attribute' % (filename, lineno, closer)
+    # Detect a potential problem with descriotion rewrites in UMC
+    if "description" in attributes and "user_description" in attributes:
+        id_v = string_strip(attributes["description"])
+        ud_v = attr_strip(attributes["user_description"])
+        if id_v != ud_v:
+            print '"%s", line %d: id=%s and user_description=%s differ' % (filename, lineno, id_v, ud_v)
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
@@ -1838,9 +1842,11 @@ def translator(filename, mapxforms, textxform, versions):
                                 validate_on_pop(tagstack, tag, filename, lineno)
                             tagstack.pop()
                 if tagstack:
-                    for instance in re.finditer(r'([a-z][a-z_]*[a-z])\s*=(\w+|"[^"]*")', trimmed):
+                    for instance in re.finditer(r'([a-z][a-z_]*[a-z])\s*=(.*)', trimmed):
                         attribute = instance.group(1)
                         value = instance.group(2)
+                        if '#' in value:
+                            value = value.split("#")[0].strip()
                         tagstack[-1][1][attribute] = value
                     if validate:
                         validate_stack(tagstack, filename, lineno)

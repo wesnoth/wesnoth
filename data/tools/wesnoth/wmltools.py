@@ -20,6 +20,14 @@ def string_strip(value):
             value = value[:-1]
     return value
 
+def attr_strip(value):
+    "Strip away an (optional) translation mark and string quotes."
+    value = value.strip()
+    if value.startswith('_'):
+        value = value[1:]
+    value = value.strip()
+    return string_strip(value)
+
 def parse_attribute(str):
     "Parse a WML key-value pair from a line."
     if '=' not in str:
