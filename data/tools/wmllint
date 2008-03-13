@@ -528,12 +528,6 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # to deserialize an empty unit.
     if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
-    # Detect a potential problem with descriotion rewrites in UMC
-    if "description" in attributes and "user_description" in attributes:
-        id_v = string_strip(attributes["description"])
-        ud_v = attr_strip(attributes["user_description"])
-        if id_v != ud_v:
-            print '"%s", line %d: id=%s and user_description=%s differ' % (filename, lineno, id_v, ud_v)
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
@@ -2166,70 +2160,73 @@ if __name__ == '__main__':
             print msg
         return transformed
 
-    if upconvert and "1.3.1" in versions and "older" not in versions:
-        maptransforms = [maptransform2]
-    else:
-        maptransforms = [maptransform1, maptransform2]
-
-    if not arguments:
-        arguments = ["."]
-
-    for dir in arguments:
-        ofp = None
-        if "older" in versions:
-            lock_terrain_coding = None
+    try:
+        if upconvert and "1.3.1" in versions and "older" not in versions:
+            maptransforms = [maptransform2]
         else:
-            lock_terrain_coding = "newstyle"
-        for fn in allcfgfiles(dir):
-            if verbose >= 2:
-                print fn + ":"
-            backup = fn + "-bak"
-            if clean or revert:
-                # Do housekeeping
-                if os.path.exists(backup):
-                    if clean:
-                        print "wmllint: removing %s" % backup
-                        if not dryrun:
-                            os.remove(backup)
-                    elif revert:
-                        print "wmllint: reverting %s" % backup
-                        if not dryrun:
-                            os.rename(backup, fn)
-            elif diffs:
-                # Display diffs
-                if os.path.exists(backup):
-                    fromdate = time.ctime(os.stat(backup).st_mtime)
-                    todate = time.ctime(os.stat(fn).st_mtime)
-                    fromlines = open(backup, 'U').readlines()
-                    tolines = open(fn, 'U').readlines()
-                    diff = difflib.unified_diff(fromlines, tolines,
-                                         backup, fn, fromdate, todate, n=3)
-                    sys.stdout.writelines(diff)
+            maptransforms = [maptransform1, maptransform2]
+
+        if not arguments:
+            arguments = ["."]
+
+        for dir in arguments:
+            ofp = None
+            if "older" in versions:
+                lock_terrain_coding = None
             else:
-                # Do file conversions
-                try:
-                    changed = translator(fn, maptransforms, texttransform, versions)
-                    if changed:
-                        print "wmllint: converting", fn
-                        if not dryrun:
-                            os.rename(fn, backup)
-                            ofp = open(fn, "w")
-                            ofp.write(changed)
-                            ofp.close()
-                except maptransform_error, e:
-                    sys.stderr.write("wmllint: " + `e` + "\n")
-                except:
-                    sys.stderr.write("wmllint: internal error on %s\n" % fn)
-                    (exc_type, exc_value, exc_traceback) = sys.exc_info()
-                    raise exc_type, exc_value, exc_traceback
-            # Time for map file renames
-            # FIXME: We should make some effort to rename mask files.
-            if not revert and not diffs and not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
-                mover = vcmove(fn, fn + ".map")
-                print mover
-                if not dryrun:
-                    os.system(mover)
-    # Constency-check everything we got from the file scans
-    consistency_check()
+                lock_terrain_coding = "newstyle"
+            for fn in allcfgfiles(dir):
+                if verbose >= 2:
+                    print fn + ":"
+                backup = fn + "-bak"
+                if clean or revert:
+                    # Do housekeeping
+                    if os.path.exists(backup):
+                        if clean:
+                            print "wmllint: removing %s" % backup
+                            if not dryrun:
+                                os.remove(backup)
+                        elif revert:
+                            print "wmllint: reverting %s" % backup
+                            if not dryrun:
+                                os.rename(backup, fn)
+                elif diffs:
+                    # Display diffs
+                    if os.path.exists(backup):
+                        fromdate = time.ctime(os.stat(backup).st_mtime)
+                        todate = time.ctime(os.stat(fn).st_mtime)
+                        fromlines = open(backup, 'U').readlines()
+                        tolines = open(fn, 'U').readlines()
+                        diff = difflib.unified_diff(fromlines, tolines,
+                                             backup, fn, fromdate, todate, n=3)
+                        sys.stdout.writelines(diff)
+                else:
+                    # Do file conversions
+                    try:
+                        changed = translator(fn, maptransforms, texttransform, versions)
+                        if changed:
+                            print "wmllint: converting", fn
+                            if not dryrun:
+                                os.rename(fn, backup)
+                                ofp = open(fn, "w")
+                                ofp.write(changed)
+                                ofp.close()
+                    except maptransform_error, e:
+                        sys.stderr.write("wmllint: " + `e` + "\n")
+                    except:
+                        sys.stderr.write("wmllint: internal error on %s\n" % fn)
+                        (exc_type, exc_value, exc_traceback) = sys.exc_info()
+                        raise exc_type, exc_value, exc_traceback
+                # Time for map file renames
+                # FIXME: We should make some effort to rename mask files.
+                if not revert and not diffs and not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
+                    mover = vcmove(fn, fn + ".map")
+                    print mover
+                    if not dryrun:
+                        os.system(mover)
+        # Constency-check everything we got from the file scans
+        consistency_check()
+    except KeyboardInterrupt:
+        print >>sys.stderr, "Aborted"
 
 # wmllint ends here
