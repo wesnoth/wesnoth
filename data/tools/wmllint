@@ -2141,11 +2141,15 @@ if __name__ == '__main__':
             elif verbose > 1 and "unit]" in line and not within(("scenario","multiplayer","test","tutorial")):
                 print "%s, line %d: [unit] may need conversion to [unit_type]" % \
                       (filename, lineno)
-            # SingleUnitWML or Standard Unit Filter or SideWML
+            # Handle SingleUnitWML or Standard Unit Filter or SideWML
+            # Also, hen macro calls have description= in them, the arg is
+            # a SUF being passed in.
             if (under("unit") and not "units" in filename) or \
                    standard_unit_filter() or \
-                   under("side"):
+                   under("side") or \
+                   re.search("{[A-Z]+.*description=.*}", line):
                 transformed = re.sub(r"\bdescription\s*=", "id=", line)
+            # 
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
