@@ -82,9 +82,9 @@ import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
 from wesnoth.wmliterator import *
 
-filemoves = {
+filemoves = (
     # Older includes all previous to 1.3.1.
-    "older" : (
+    ("older", (
         # File naming error made repeatedly in NR and elsewhere.
         ("human-loyalists/human-", "human-loyalists/"),
         # These are picked to cover as many as possible of the broken
@@ -211,8 +211,8 @@ filemoves = {
         ("wolf-cry.wav",            "wolf-die.wav"),
         ("wose-attack.wav",         "wose-attack.ogg"),
         (r"wose\.attack.ogg",       "wose-attack.ogg"),
-    ),
-    "1.3.1" : (
+    )),
+    ("1.3.1", (
         # Peasant images moved to a new directory
         ("human-loyalists/peasant.png", "human-peasants/peasant.png"),
         ("human-loyalists/peasant-attack.png", "human-peasants/peasant-attack.png"),
@@ -264,16 +264,16 @@ filemoves = {
         # And the holy->arcane change
         ("type=holy", "type=arcane"),
         ("holy=", "arcane="),
-    ),
-    "1.3.2" : (
+    )),
+    ("1.3.2", (
         ("misc/item-holywater.png", "items/holywater.png"),
         ("orc-small-hit.wav",       "orc-small-hit-1.ogg"),
-    ),
-    "1.3.3" : (
+    )),
+    ("1.3.3", (
     	("sounds/dragonstick-hit.ogg", "sounds/dragonstick-hit-1.ogg"),
     	("sounds/dragonstick-miss.ogg", "sounds/dragonstick-miss.wav"),
-    ),
-    "1.3.4" : (
+    )),
+    ("1.3.4", (
     	# This release changed from numeric to string palette IDs
         ("RC(magenta>1)", "RC(magenta>red)"),
         ("RC(magenta>2)", "RC(magenta>blue)"),
@@ -293,27 +293,28 @@ filemoves = {
         ("colour=7", "colour=orange"),
         ("colour=8", "colour=white"),
         ("colour=9", "colour=teal"),
-    ),
-    # 1.35 was an aborted release
-    "1.3.6" : (
+    )),
+    # 1.3.5 was an aborted release
+    ("1.3.6", (
 	("Soul Shooter", "Banebow"),
 	("Halbardier" , "Halberdier"),
-    ),
-    "1.3.9" : (
+    )),
+    ("1.3.9", (
 	("Outlaw Ranger", "Ranger"),
-    ),
-    "1.3.14" : (
+    )),
+    ("1.3.14", (
 	("{AMLA_TOUGH 3}", "{AMLA_DEFAULT}"),
-    ),
+    )),
     # An empty sentinel value at end is required.
-    "trunk" : (),
-}
+    ("trunk", ()),
+)
 
 # Turn all the filemove string substition pairs into nearly equivalent
 # regexp-substitution pairs, forbidding the match from being preceded
 # by a dash.  This prevents, e.g., "miss.ogg" false-matching on "big-miss.ogg".
-for (key, value) in filemoves.items():
-    filemoves[key] = map(lambda (old, new): (re.compile("(?<!-)"+old), new), value)
+filemoves_dict = {}
+for (key, value) in filemoves:
+    filemoves_dict[key] = map(lambda (old, new): (re.compile("(?<!-)"+old), new), value)
 
 # 1.2.x to 1.3.2 terrain conversion
 conversion1 = {
@@ -540,6 +541,35 @@ def within(tag):
             return False
     else:
         return tag in map(lambda x: x[0], tagstack)
+
+def under(tag):
+    "Did the specified tag lead the latest context?"
+    if type(tag) == type(()):	# Can take a list.
+        for t in tag:
+            if within(t):
+                return True
+        else:
+            return False
+    elif tagstack:
+        return tag == tagstack[-1][0]
+    else:
+        return False
+
+def standard_unit_filter():
+    "Are we within the syntactic context of a standard unit filter?"
+    # It's under("message") rather than within("message") because
+    # [message] can contain [option] markup with menu item description=
+    # attributes that should not be altered.
+    return within(("filter", "filter_second", "filter_adjacent",
+                   "unit_filter", "secondary_unit_filter",
+                   "special_filter", "special_filter_second",
+                   "neighbor_unit_filter",
+                   "recall", "teleport", "kill", "unstone", "store",
+                   "have_unit", "scroll_to_unit", "role",
+                   "hide_unit", "unhide_unit",
+                   "protect_unit", "target", "avoid")) \
+                   or under("message")
+
 
 # Sanity checking
 
@@ -1514,8 +1544,9 @@ start_time=-150
             if nl != lines[i]:
                 modcount += 1
                 lines[i] = nl
-    # id= -> type= in [unit]
-    if upconvert and "1.3.14" in versions:
+    # id= -> type= in [unit].  Only do this for versions *before* id=
+    # was reclaimed to do what description used to. 
+    if upconvert and "1.3.14" not in versions:
         in_unit = False
         id_seen = False
         in_modifications = False
@@ -1990,10 +2021,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # Compute the series of version upgrades to perform, and describe it.
-    versions = filemoves.keys()
-    versions.sort()
-    # Relies on 'older' sorting before trunk
-    versions = [versions[-2]] + versions[:-2] + [versions[-1]]	# Move 'older' to front
+    versions = map(lambda x: x[0], filemoves)
     if oldversion in versions:
         versions = versions[versions.index(oldversion):]
     else:
@@ -2004,7 +2032,7 @@ if __name__ == '__main__':
         for i in range(len(versions)-1):
             explain += " %s -> %s," % (versions[i],  versions[i+1])
         sys.stdout.write(explain[:-1] + ".\n")
-    fileconversions = map(lambda x: filemoves[x], versions[:-1])
+    fileconversions = map(lambda x: filemoves_dict[x], versions[:-1])
 
     def hasdigit(str):
         for c in str:
@@ -2106,6 +2134,7 @@ if __name__ == '__main__':
         # directories -- this is necessary in order to avoid stepping
         # on SingleUnitWML in macro files. 
         if upconvert and "1.3.14" in versions:
+            # UnitWML
             if "units" in filename:
                 transformed = transformed.replace("[unit]", "[unit_type]")
                 transformed = transformed.replace("[+unit]", "[+unit_type]")
@@ -2113,6 +2142,10 @@ if __name__ == '__main__':
             elif verbose > 1 and "unit]" in line and not within(("scenario","multiplayer","test","tutorial")):
                 print "%s, line %d: [unit] may need conversion to [unit_type]" % \
                       (filename, lineno)
+            # SingleUnitWML or Standard Unit Filter
+            if (under("unit") and not "units" in filename) or \
+                   standard_unit_filter():
+                transformed = re.sub(r"\bdescription\s*=", "id=", line)
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \

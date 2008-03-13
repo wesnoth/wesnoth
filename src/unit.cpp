@@ -852,7 +852,7 @@ bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool
 
 bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
 {
-	const t_string& t_description = cfg["description"];
+	const t_string& t_id = cfg["id"];
 	const t_string& t_speaker = cfg["speaker"];
 	const t_string& t_type = cfg["type"];
 	const t_string& t_ability = cfg["ability"];
@@ -867,7 +867,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	const t_string& t_defense = cfg["defense"];
 	const t_string& t_movement_cost = cfg["movement_cost"];
 
-	const std::string& description = t_description;
+	const std::string& id = t_id;
 	const std::string& speaker = t_speaker;
 	const std::string& type = t_type;
 	const std::string& ability = t_ability;
@@ -882,11 +882,18 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	const std::string& defense = t_defense;
 	const std::string& mvt_cost = t_movement_cost;
 
-	if(description.empty() == false && description != this->underlying_id()) {
+	// FIXME OBSOLETE Will be removed in 1.5.3
+	const t_string& t_description = cfg["description"];
+	const std::string& description = t_description;
+	if(description.empty() == false && id != this->underlying_id()) {
 		return false;
 	}
 
-	// Allow 'speaker' as an alternative to description, since people use it so often
+	if(id.empty() == false && id != this->underlying_id()) {
+		return false;
+	}
+
+	// Allow 'speaker' as an alternative to id, since people use it so often
 	if(speaker.empty() == false && speaker != this->underlying_id()) {
 		return false;
 	}
@@ -1118,13 +1125,13 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		variable_info vi(cfg["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) return false;
 		if(vi.explicit_index) {
-			if(id_ != (vi.vars->get_children(vi.key)[vi.index])->get_attribute("description")) {
+			if(id_ != (vi.vars->get_children(vi.key)[vi.index])->get_attribute("id")) {
 				return false;
 			}
 		} else {
 			config::child_itors ch_itors = vi.vars->child_range(vi.key);
 			for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
-				if(id_ == (*ch_itors.first)->get_attribute("description")) {
+				if(id_ == (*ch_itors.first)->get_attribute("id")) {
 					break;
 				}
 			}
@@ -1186,11 +1193,14 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	variation_ = cfg["variation"];
 
 	assert(gamedata_ != NULL);
-	id_ = cfg["description"];
+	id_ = cfg["id"];
+	// FIXME OBSOLETE This will go away in 1.5.3 or possibly sooner
+	if (id_.empty())
+		id_ = cfg["description"];
 	custom_unit_description_ = cfg["user_description"];
 	std::string custom_unit_desc = cfg["unit_description"];
 
-	underlying_id_ = cfg["description"];
+	underlying_id_ = id_;
 	if(underlying_id_.empty()){
 		char buf[80];
 		snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), state ?
@@ -1482,7 +1492,7 @@ void unit::write(config& cfg) const
 	cfg["overlays"] = utils::join(overlays_);
 
 	cfg["user_description"] = custom_unit_description_;
-	cfg["description"] = underlying_id_;
+	cfg["id"] = underlying_id_;
 
 	if(can_recruit())
 		cfg["canrecruit"] = "yes";
