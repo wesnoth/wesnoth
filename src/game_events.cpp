@@ -1435,18 +1435,28 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if(!sounds.empty() && !delay.empty() && !chance.empty()) {
 			const std::vector<std::string>& vx = utils::split(x);
 			const std::vector<std::string>& vy = utils::split(y);
-			const int loops = lexical_cast_default<int>(loop, 0);
 
-			if(play_fogged.empty())
-				soundsources->add(id, sounds, lexical_cast<int>(delay), lexical_cast<int>(chance), loops);
-			else
-				soundsources->add(id, sounds, lexical_cast<int>(delay),
-						lexical_cast<int>(chance), loops, utils::string_bool(play_fogged));
+			if(vx.size() != vy.size()) {
+				lg::wml_error << "invalid number of sound source location coordinates";
+				return;
+			}
+
+			soundsource::sourcespec spec(id, sounds, lexical_cast_default<int>(delay, 1000), lexical_cast_default<int>(chance, 100));
+			
+			spec.loop(lexical_cast_default<int>(loop, 0));
+
+			if(play_fogged.empty()) {
+				spec.check_fog(true); 
+			} else {
+				spec.check_fog(utils::string_bool(play_fogged));
+			}
 
 			for(unsigned int i = 0; i < minimum(vx.size(), vy.size()); ++i) {
 				gamemap::location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
-				soundsources->add_location(id, loc);
+				spec.location(loc);
 			}
+
+			soundsources->add(spec);
 		}
 	}
 

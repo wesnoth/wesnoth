@@ -35,7 +35,7 @@ static int calculate_volume(int x, int y, const display &disp)
 
 namespace soundsource {
 
-unsigned int manager::positional_source::last_id = 0;
+unsigned int positional_source::last_id = 0;
 
 manager::manager(const display &disp) : _disp(disp) 
 {
@@ -58,16 +58,16 @@ void manager::handle_generic_event(const std::string &event_name)
 		update_positions();
 }
 
-void manager::add(const std::string &id, const std::string &files, int min_delay, int chance, int loop, bool play_fogged)
+void manager::add(const sourcespec &spec)
 {
 	positional_source_iterator it;
 
-	if((it = _sources.find(id)) == _sources.end()) {
-		_sources[id] = new positional_source(files, min_delay, chance, loop, play_fogged);
+	if((it = _sources.find(spec.id)) == _sources.end()) {
+		_sources[spec.id] = new positional_source(spec);
 	}
 	else {
 		delete (*it).second;
-		(*it).second = new positional_source(files, min_delay, chance, loop, play_fogged);
+		(*it).second = new positional_source(spec);
 	}
 }
 
@@ -110,14 +110,14 @@ void manager::add_location(const std::string &id, const gamemap::location &loc)
 }
 
 
-manager::positional_source::positional_source(const std::string &files, int min_delay, int chance, int loop, bool play_fogged)
-						: _last_played(0), _min_delay(min_delay), _chance(chance), _loop(loop),
-							_id(last_id++), _play_fogged(play_fogged), _visible(false),
-							_files(files)
+positional_source::positional_source(const sourcespec &spec) 
+				: _last_played(0), _min_delay(spec.min_delay), 	_chance(spec.chance), _loops(spec.loops),
+					_id(last_id++), _check_fogged(spec.check_fogged), _visible(false), _files(spec.files),
+					_locations(spec.locations)
 {
 }
 
-void manager::positional_source::update(unsigned int time, const display &disp)
+void positional_source::update(unsigned int time, const display &disp)
 {
 	if(time - _last_played < _min_delay || !_visible)
 		return;
@@ -130,14 +130,14 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 		// If no locations have been specified, treat the source as if
 		// it was present everywhere on the map
 		if(_locations.size() == 0) {
-			sound::play_sound_positioned(_files, last_id, _loop, 0);	// max volume
+			sound::play_sound_positioned(_files, last_id, _loops, 0);	// max volume
 			return;
 		}
 
 //		SDL_Rect area = disp.map_outside_area();
 
 		int distance_volume = 256;
-		for(std::list<gamemap::location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
+		for(std::vector<gamemap::location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
 			int locx = disp.get_location_x(*i);
 			int locy = disp.get_location_y(*i);
 /*
@@ -153,24 +153,24 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 		}
 
 		if(!sound::is_sound_playing(last_id)) {
-			sound::play_sound_positioned(_files, last_id, _loop, distance_volume);
+			sound::play_sound_positioned(_files, last_id, _loops, distance_volume);
 		}
 	}
 }
 
-void manager::positional_source::update_positions(unsigned int time, const display &disp)
+void positional_source::update_positions(unsigned int time, const display &disp)
 {
 	const bool was_visible = _visible;
 	SDL_Rect area = disp.map_outside_area();
 
 	_visible = false;
 
-	for(std::list<gamemap::location>::iterator i =  _locations.begin(); i != _locations.end(); ++i) {
+	for(std::vector<gamemap::location>::iterator i =  _locations.begin(); i != _locations.end(); ++i) {
 		int locx = disp.get_location_x(*i);
 		int locy = disp.get_location_y(*i);
 
 		if(disp.outside_area(area, locx, locy) || disp.shrouded(*i)
-			|| (!_play_fogged && disp.fogged(*i)))
+			|| (_check_fogged && disp.fogged(*i)))
 				continue;
 		else {
 			_visible = true;
@@ -190,7 +190,7 @@ void manager::positional_source::update_positions(unsigned int time, const displ
 		sound::stop_sound(last_id);
 }
 
-void manager::positional_source::add_location(const gamemap::location &loc)
+void positional_source::add_location(const gamemap::location &loc)
 {
 	_locations.push_back(loc);
 }
