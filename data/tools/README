@@ -4,18 +4,6 @@ also belong here.
 
 == Scripts ==
 
-=== mk-edges ===
-
-Automatically generate border images for tiles. Works by copying the way in 
-which border tiles are done for an existing terrain type.
-
-For instance, if you made a new terrain type, 'lava.png' and you wanted 
-to have the same style of edges as snow does, you could run the command
-
-data/tools/mk-edges.pl images/terrain/lava images/terrain/snow
-
-and it will make the edges for you.
-
 === wmllint ===
 
 This tool lifts WML from older dialects to current and performs sanity checks.
