@@ -23,6 +23,7 @@
 
 #include "sdl_utils.hpp"
 #include "tstring.hpp"
+#include "reference_counted_object.hpp"
 
 #include <vector>
 
@@ -36,16 +37,17 @@ namespace gui2 {
 //! a cache which allows the same scripts with the same input to store their
 //! output surface. But that will be looked into later.
 
+
+//! The copy constructor does a shallow copy of the shapes to draw.
+//! a clone() will be implemented if really needed.
+
 // maybe inherit from surface...
 class tcanvas 
 {
-	// FIXME write a copy constructor to copy the members
-	// for now every object needs to parse the config and we 
-	// need to remember not to copy things.
 public:
 
 	//! Base class for all other shapes.
-	class tshape 
+	class tshape : public reference_counted_object
 	{
 	public:
 		virtual void draw(surface& canvas) = 0;
@@ -60,6 +62,9 @@ public:
 			const int x1, int y1, const int x2, int y2);
 
 	};
+
+	typedef boost::intrusive_ptr<tshape> tshape_ptr;
+	typedef boost::intrusive_ptr<const tshape> const_tshape_ptr;
 
 	//! Definition of a line shape.
 	class tline : public tshape
@@ -135,7 +140,6 @@ public:
 
 	tcanvas();
 	tcanvas(const config& cfg);
-	~tcanvas();
 
 	void draw(const config& cfg);
 	void draw(const bool force = false);
@@ -154,9 +158,8 @@ private:
 	void set_dirty(const bool dirty = true) { dirty_ = dirty; }
 
 	void parse_cfg(const config& cfg);
-	void clear_shapes();
 
-	std::vector<tshape*> shapes_;
+	std::vector<tshape_ptr> shapes_;
 
 	bool dirty_;
 	unsigned w_;

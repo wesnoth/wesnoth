@@ -73,11 +73,6 @@ tcanvas::tcanvas(const config& cfg) :
 	parse_cfg(cfg);
 }
 
-tcanvas::~tcanvas()
-{
-	clear_shapes();
-}
-
 void tcanvas::draw(const config& cfg)
 {
 	parse_cfg(cfg);
@@ -106,7 +101,7 @@ void tcanvas::draw(const bool force)
 	canvas_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE, w_, h_, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
 
 	// draw items 
-	for(std::vector<tshape*>::iterator itor = 
+	for(std::vector<tshape_ptr>::iterator itor = 
 			shapes_.begin(); itor != shapes_.end(); ++itor) {
 		log_scope2(widget, "Draw shape");
 		
@@ -120,7 +115,7 @@ void tcanvas::draw(const bool force)
 void tcanvas::parse_cfg(const config& cfg)
 {
 	log_scope2(widget, "Parsing config");
-	clear_shapes();
+	shapes_.clear();
 
 	for(config::all_children_iterator itor = 
 			cfg.ordered_begin(); itor != cfg.ordered_end(); ++itor) {
@@ -143,22 +138,6 @@ void tcanvas::parse_cfg(const config& cfg)
 			assert(false); // FIXME remove in production code.
 		}
 	}
-}
-
-void tcanvas::clear_shapes()
-{
-// FIXME we copy pointers so we will get double frees, need to think about
-// whether or not to use intrusive pointers to handle this. 
-// NOTE with the code disabled we don't get a double free but do leak the memory!!!
-#if 0
-
-	for(std::vector<tshape*>::iterator itor = 
-			shapes_.begin(); itor != shapes_.end(); ++itor) {
-		
-		delete (*itor);
-	}
-	shapes_.clear();
-#endif	
 }
 
 void tcanvas::tshape::put_pixel(unsigned start, Uint32 colour, unsigned w, unsigned x, unsigned y)
