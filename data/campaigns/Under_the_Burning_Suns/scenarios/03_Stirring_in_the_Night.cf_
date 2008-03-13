@@ -64,94 +64,94 @@
 #define INTRO_DIALOGUE
 
     [message]
-        description=Nym
+        id=Nym
         message= _ "Kaleh, wake up! Scouts report movement out in the sands."
     [/message]
 
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "Is it orc raiders?"
     [/message]
 
     [message]
-        description=Nym
+        id=Nym
         message= _ "I don't think so..."
     [/message]
 
     [message]
-        description=Azkotep
+        id=Azkotep
         message= _ "We meet again Ystara."
     [/message]
 
     [message]
-        description=Ystara
+        id=Ystara
         message= _ "You think you can take me, Azkotep?"
     [/message]
 
     [message]
-        description=Azkotep
+        id=Azkotep
         message= _ "My champion, Zur shall slice you to shreds like the puny adept you once were."
     [/message]
 
     [message]
-        description=Ystara
+        id=Ystara
         message= _ "You always were an arrogant little bastard. Grek will swallow your soul first, or what's left of it."
     [/message]
 
     [message]
-        description=Azkotep
+        id=Azkotep
         message= _ "You spurned me once; I will make you pay. But enough of the past--to battle, my minions! Behold the wrath of the dead!"
     [/message]
 
     [message]
-        description=Nym
+        id=Nym
         message= _ "Great, ringside seats for an all-out battle between two undead lords. You really know how to pick a campsite, Kaleh."
     [/message]
 
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "Where did they come from? I swear those castles weren't there at sunset."
     [/message]
 
     [message]
-        description=Zhul
+        id=Zhul
         message= _ "Many strange things can happen during the long dark. But despite their wraith-like forms, I have no doubt that their cold steel can still bite flesh."
     [/message]
 
     [message]
-        description=Elyssa
+        id=Elyssa
         message= _ "Like I haven't killed enough undead recently. Why can't these guys just stay dead?"
     [/message]
 
     [message]
-        description=Garak
+        id=Garak
         message= _ "Our encampment is out of the direct line of attack, so we should be somewhat safe, at least."
     [/message]
 
     [message]
-        description=Zhul
+        id=Zhul
         message= _ "But our people's encampments are in danger, they'll be slaughtered by the undead hordes!"
     [/message]
 
 #ifdef EASY
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "There's no way we can marshal our people to escape the battle in time. We must protect our people's $village_counter encampments from the undead."
     [/message]
 #else
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "There's no way we can marshal our people to escape the battle in time. We must protect our people's $village_counter encampments from the undead."
     [/message]
 #endif
 
     [message]
-        description=Zhul
+        id=Zhul
         message= _ "If the undead forces reach our encampments first, they will surely be destroyed. I fear that if we lose more than half our encampments we will not have the strength to go on. Garak, wake your men. We must hold off the undead until dawn."
     [/message]
 
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "To arms my people, to arms!"
     [/message]
 
@@ -163,22 +163,22 @@
     #define GARAK_DIALOGUE_PART_ONE
 
     [message]
-        description=Zhul
+        id=Zhul
         message= _ "Eloh protect us, what has he done?"
     [/message]
 
     [message]
-        description=Possessed Garak
+        id=Possessed Garak
         message= _ "I live again! I can feel!"
     [/message]
 
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "Garak?"
     [/message]
 
     [message]
-        description=Possessed Garak
+        id=Possessed Garak
         message= _ "Hahahaha! Your puny friend is no more. With his body I shall crush you all. Arise again my minions and feast in the slaughter!"
     [/message]
 
@@ -187,12 +187,12 @@
 #define GARAK_DIALOGUE_PART_TWO
 
     [message]
-        description=Nym
+        id=Nym
         message= _ "But look, dawn is nigh, our salvation is almost at hand. Even the Long Dark cannot last forever, and with the light of the sun the undeads' dark power wanes and their magics unravel."
     [/message]
 
     [message]
-        description=Possessed Garak
+        id=Possessed Garak
         message= _ "No! I shall have my vengeance upon you all. Darkness shall reign until I have triumphed!"
     [/message]
 
@@ -204,31 +204,31 @@
 
         [then]
             [message]
-                description=Ystara
+                id=Ystara
                 message= _ "In this I shall support you, the sun shall not rise until one of us is victorious."
             [/message]
         [/then]
 
         [else]
             [message]
-                description=Azkotep
+                id=Azkotep
                 message= _ "In this I shall support you, the sun shall not rise until one of us is victorious."
             [/message]
         [/else]
     [/if]
 
     [message]
-        description=Nym
+        id=Nym
         message= _ "Maybe I spoke too soon. Curse Uria, they have even blotted out the stars, all is darkness. Kaleh, our course is clear, we must destroy one of these abominations. Whether it be the thing that has taken our friend, or the spectral evil that remains, one of them must die for this battle to end. We have no choice."
     [/message]
 
     [message]
-        description=Zhul
+        id=Zhul
         message= _ "But to kill Garak? How can we?"
     [/message]
 
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "That thing is not Garak. This night has lasted long enough, and too many of our people have died. How many more would you sacrifice for Garak's sake? Just protecting our encampments isn't enough, darkness and chaos will overwhelm us if we can't end this battle soon. We must destroy one of those two evils, whatever the cost. I do not intend to let that...thing keep control of the body of our friend."
     [/message]
 
@@ -240,21 +240,21 @@
 
         [then]
             [message]
-                description=Ystara
+                id=Ystara
                 message= _ "The stench of death is in the air."
             [/message]
         [/then]
 
         [else]
             [message]
-                description=Azkotep
+                id=Azkotep
                 message= _ "The stench of death is in the air."
             [/message]
         [/else]
     [/if]
 
     [message]
-        description=Possessed Garak
+        id=Possessed Garak
         message= _ "Yes, let us end this once and for all."
     [/message]
 
@@ -262,22 +262,22 @@
         summary= _ "New Objectives:"
         show=yes
         [objective]
-            description= _ "Kill Possessed Garak (or)"
+            id= _ "Kill Possessed Garak (or)"
             condition=win
         [/objective]
 
         [objective]
-            description= _ "Defeat remaining Undead Lord"
+            id= _ "Defeat remaining Undead Lord"
             condition=win
         [/objective]
 
         [objective]
-            description= _ "You Control Less Than 6 Villages"
+            id= _ "You Control Less Than 6 Villages"
             condition=lose
         [/objective]
 
         [objective]
-            description= _ "Death of Kaleh, Nym or Zhul"
+            id= _ "Death of Kaleh, Nym or Zhul"
             condition=lose
         [/objective]
     [/objectives]
@@ -316,13 +316,13 @@
 
     [store_unit]
         [filter]
-            description=Garak
+            id=Garak
         [/filter]
         variable=ElvishGarak
     [/store_unit]
 
     [kill]
-        description=Garak
+        id=Garak
         animate=yes
         fire_event=no
     [/kill]
@@ -362,14 +362,14 @@
 
         [then]
             [message]
-                description=Kaleh
+                id=Kaleh
                 message= _ "The undead lords are defeated at last."
             [/message]
         [/then]
 
         [else]
             [message]
-                description=Kaleh
+                id=Kaleh
                 message= _ "Finally. It is over."
             [/message]
         [/else]
@@ -377,55 +377,55 @@
 
     [if]
         [have_unit]
-            description=Ganthos
+            id=Ganthos
         [/have_unit]
 
         [then]
             [message]
-                description=Ganthos
+                id=Ganthos
                 message= _ "There's too many of them and the night is almost gone. Pull back you wretches, pull back!"
             [/message]
         [/then]
     [/if]
 
     [message]
-        description=Nym
+        id=Nym
         message= _ "I can see the first rays of Naia shining over the horizon. She never looked so beautiful. The undead forces have crumbled into dust and the remaining orcs are retreating with the dawn. But what of Garak?"
     [/message]
 
     [message]
-        description=Zhul
+        id=Zhul
         message= _ "He's...He's still breathing!"
     [/message]
 
     [message]
-        description=Garak
+        id=Garak
         message= _ "Protect the boy for me Zhul, (cough) I go to a better place."
     [/message]
 
     [kill]
-        description=Garak
+        id=Garak
         animate=yes
         fire_event=no
     [/kill]
 
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "From the sands he came, to the sands he will return. We remember and honor his sacrifice, and I vow that his death will not be in vain. "
     [/message]
 
     [message]
-        description=Zhul
+        id=Zhul
         message= _ "Goodbye old friend, may Eloh shine her light eternal upon you."
     [/message]
 
     [message]
-        description=Elyssa
+        id=Elyssa
         message= _ "He was as brave and valiant a fighter as I have ever seen in my travels."
     [/message]
 
     [message]
-        description=Nym
+        id=Nym
         message= _ "He was a bastard at times.... But...but why did he have to die? It...it just doesn't make sense. "
     [/message]
 
@@ -442,12 +442,12 @@
             [/set_variable]
 
             [message]
-                description=Zhul
+                id=Zhul
                 message= _ "That was a very brave thing you did, Kaleh, defeating both of those Undead Lords. It took great courage and strength. Because of your daring attack, we did not have to wait for the dawn to save us. You were our savior. And many fewer of our people died than would have if we had had to wait out the long night."
             [/message]
 
             [message]
-                description=Nym
+                id=Nym
                 message= _ "Though we saved almost all our people this time, we won't always be so lucky. While elves who have fought with you in the past will gladly return, if the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
             [/message]
         [/then]
@@ -468,12 +468,12 @@
 
                 [then]
                     [message]
-                        description=Zhul
+                        id=Zhul
                         message= _ "Miraculously, all of our encampments survived the night."
                     [/message]
 
                     [message]
-                        description=Nym
+                        id=Nym
                         message= _ "Though we saved almost all our people this time, we won't always be so lucky. While elves who have fought with you in the past will gladly return, if the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
                     [/message]
 
@@ -485,12 +485,12 @@
 
                 [else]
                     [message]
-                        description=Zhul
+                        id=Zhul
                         message= _ "Well, only $village_counter encampments remain, but we shall survive."
                     [/message]
 
                     [message]
-                        description=Kaleh
+                        id=Kaleh
                         message= _ "Yes, but at what cost?"
                     [/message]
 
@@ -502,7 +502,7 @@
 
                         [then]
                             [message]
-                                description=Nym
+                                id=Nym
                                 message= _ "Though we saved almost all our people this time, we won't always be so lucky. While elves who have fought with you in the past will gladly return, as the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
                             [/message]
 
@@ -521,7 +521,7 @@
 
                                 [then]
                                     [message]
-                                        description=Nym
+                                        id=Nym
                                         message= _ "We have suffered losses, but we we are not broken yet. We have saved most of our people tonight. But while elves who have fought with you in the past will gladly return, as the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
                                     [/message]
 
@@ -533,7 +533,7 @@
 
                                 [else]
                                     [message]
-                                        description=Nym
+                                        id=Nym
                                         message= _ "We have suffered grievous losses, but we we are not broken yet. Long will this slaughter be remembered by our people. Where was Eloh during the darkness? And I'm afraid that while elves who have fought with you in the past will gladly return, as the numbers of our people dwindle, it's going to become more and more costly to recruit new warriors. It would be wise to stockpile gold against this eventuality."
                                     [/message]
 
@@ -551,17 +551,17 @@
     [/if]
 
     [message]
-        description=Kaleh
+        id=Kaleh
         message= _ "All this death and destruction. What were those shades arguing over? Was this all just some sort of demented game?"
     [/message]
 
     [message]
-        description=Zhul
+        id=Zhul
         message= _ "The lords of the dead are powerful and twisted indeed. Only Eloh knows the truth of what happened tonight."
     [/message]
 
     [message]
-        description=Nym
+        id=Nym
         message= _ "I don't want to be here tomorrow night to find out. The hills to the north are close. Let's be far away before another nightfall."
     [/message]
 
@@ -570,7 +570,7 @@
     # Side 1 elves
     [side]
         side=1
-        description=Kaleh
+        id=Kaleh
         type=Desert Fighter
         canrecruit=yes
         controller=human
@@ -583,8 +583,8 @@
     # Side 2 undead, starts with pet revenant, Zur
     [side]
         side=2
-        description=Azkotep
-        user_description= _ "Azkotep"
+        id=Azkotep
+        user_id= _ "Azkotep"
         type=Spectre
         canrecruit=yes
         controller=ai
@@ -635,7 +635,7 @@
             [/target]
 
             [target]
-                description=Grak
+                id=Grak
                 value=20
             [/target]
         [/ai]
@@ -644,7 +644,7 @@
     # Side 3 undead, starts with pet wraith, Grak
     [side]
         side=3
-        description=Ystara
+        id=Ystara
         user_description= _ "Ystara"
         type=Spectre
         canrecruit=yes
