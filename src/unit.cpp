@@ -1471,6 +1471,8 @@ void unit::write(config& cfg) const
 	sd << side_;
 	cfg["side"] = sd.str();
 
+	cfg["type"] = type_id();
+
 	cfg["gender"] = gender_string(gender_);
 
 	cfg["variation"] = variation_;
