@@ -14,7 +14,7 @@
 #   * strings that need a translation mark and should not have them
 #   * strings that have a translation mark and should not
 #   * translatable strings containing macro references 
-#   * filter references by description= not matched by an actual unit
+#   * filter references by id= not matched by an actual unit
 #   * abilities or traits without matching special notes, or vice-versa
 #   * consistency between recruit= and recruitment_pattern= instances
 #   * double space after punctuation in translatable strings.
@@ -560,7 +560,8 @@ def standard_unit_filter():
     # It's under("message") rather than within("message") because
     # [message] can contain [option] markup with menu item description=
     # attributes that should not be altered.
-    return within(("filter", "filter_second", "filter_adjacent",
+    return within(("filter", "filter_second",
+                   "filter_adjacent", "filter_opponent",
                    "unit_filter", "secondary_unit_filter",
                    "special_filter", "special_filter_second",
                    "neighbor_unit_filter",
@@ -2142,7 +2143,7 @@ if __name__ == '__main__':
                 print "%s, line %d: [unit] may need conversion to [unit_type]" % \
                       (filename, lineno)
             # Handle SingleUnitWML or Standard Unit Filter or SideWML
-            # Also, hen macro calls have description= in them, the arg is
+            # Also, when macro calls have description= in them, the arg is
             # a SUF being passed in.
             if (under("unit") and not "units" in filename) or \
                    standard_unit_filter() or \
