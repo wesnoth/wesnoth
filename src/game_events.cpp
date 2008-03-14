@@ -1491,6 +1491,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				}
 
 				game_map->set_terrain(*loc,terrain);
+				const t_translation::t_list underlaying_list = game_map->underlying_union_terrain(*loc);
+				for (t_translation::t_list::const_iterator ut = underlaying_list.begin(); ut != underlaying_list.end(); ut++) {
+					preferences::encountered_terrains().insert(*ut);
+				};
 			}
 			rebuild_screen_ = true;
 		}
