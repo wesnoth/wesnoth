@@ -62,7 +62,7 @@ void load_settings()
 	screen_height = rect.h;
 
 	config cfg;
-	const std::string& filename = "data/hardwired/gui.cfg";
+	const std::string& filename = "data/gui/default.cfg";
 	try {
 		scoped_istream stream = preprocess_file(filename);
 		read(cfg, *stream);
