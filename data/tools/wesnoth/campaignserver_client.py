@@ -4,6 +4,8 @@ import wesnoth.wmldata as wmldata
 class CampaignClient:
     # First port listed will be used as default.
     portmap = (("15003", "1.3.x"), ("15004", "1.2.x"), ("15005", "1.4.x"))
+    # Files with these suffixes will not be downloaded
+    excluded = ("~", "-bak", ".pbl", ".exe", ".com", ".bat", ".scr", ".sh")
 
     def __init__(self, address = None):
         """
@@ -314,9 +316,7 @@ class CampaignClient:
             for fn in glob.glob(path + "/*"):
                 if os.path.isdir(fn):
                     sub = put_dir(os.path.basename(fn), fn)
-                elif fn.endswith("~") or fn.endswith("-bak") or \
-                     ".pbl" in fn or ".exe" in fn or ".com" in fn or \
-                     ".bat" in fn or ".scr" in fn or ".sh" in fn:
+                elif filter(lambda x: fn.endswith(x), CampaignClient.excluded):
                     continue
                 else:
                     sub = put_file(os.path.basename(fn), file(fn))
