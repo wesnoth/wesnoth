@@ -60,6 +60,8 @@ Version 1.5.0-svn:
      (patch #1002)
    * added -Werror -Wno-unused -Wno-sign-compare to the default compiler
      flags, can be disabled with --disable-strict-compilation.
+   * the hardcoded resolution list now also includes tiny gui and small gui
+     resolutions if compiled with those switches
 
 Version 1.4:
  * language and i18n:
