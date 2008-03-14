@@ -406,9 +406,13 @@ bool show_video_mode_dialog(display& disp)
 	// means that all dimensions are supported/possible.
 	if(modes == reinterpret_cast<SDL_Rect**>(-1)) {
 		std::cerr << "Can support any video mode\n";
-		// SDL says that all modes are possible, 
-		// so it's OK to use a hardcoded list here.
+		// SDL says that all modes are possible, so it's OK to use a 
+		// hardcoded list here. Include tiny and small gui since they
+		// will be filter out later if not needed.
 		static const SDL_Rect scr_modes[] = {
+			{ 0, 0,  320, 240 },	
+			{ 0, 0,  640, 480 },	
+			{ 0, 0,  800, 480 },	// small-gui (EeePC resolution)
 			{ 0, 0,  800, 600 },
 			{ 0, 0, 1024, 768 },
 			{ 0, 0, 1280, 960 },
@@ -419,6 +423,9 @@ bool show_video_mode_dialog(display& disp)
 			&scr_modes[1],
 			&scr_modes[2],
 			&scr_modes[3],
+			&scr_modes[4],
+			&scr_modes[5],
+			&scr_modes[6],
 			NULL
 		};
 
