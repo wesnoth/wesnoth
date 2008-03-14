@@ -254,7 +254,7 @@ std::vector<tbutton_definition::tresolution>::const_iterator get_button(const st
 				screen_height <= itor->window_height) {
 
 			return itor;
-		} else if (itor == end) {
+		} else if (itor == end - 1) {
 			return itor;
 		}
 	}
