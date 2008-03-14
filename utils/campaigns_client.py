@@ -44,7 +44,7 @@ if __name__ == "__main__":
         "UPLOAD should be either the name of a campaign subdirectory," +
         "(in which case the client looks for _server.pbl beneath it) " +
         "or a path to the .pbl file (in which case the name of the " +
-        "campaign subdirectory is the basename of the path with .pbl removed)")
+        "campaign subdirectory is the name of the path with .pbl removed)")
     optionparser.add_option("-s", "--status",
         help = "Display the status of addons installed in the given " +
         "directory.")
@@ -201,11 +201,13 @@ if __name__ == "__main__":
             print message.get_text_val("message")
     elif options.upload:
         cs = CampaignClient(address)
-        if os.path.isdir(os.path.join(options.campaigns_dir, options.upload)):	# New style with _server.pbl
+        if os.path.isdir(os.path.join(options.campaigns_dir, options.upload)):
+            # New style with _server.pbl
             pblfile = os.path.join(options.campaigns_dir, options.upload, "_server.pbl")
             name = os.path.basename(options.upload)
             wmldir = os.path.join(options.campaigns_dir, name) 
-        else:				# Old style with external .pbl file
+        else:
+            # Old style with external .pbl file
             pblfile = options.upload
             name = os.path.basename(options.upload)
             name = os.path.splitext(name)[0]

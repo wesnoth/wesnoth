@@ -316,7 +316,7 @@ class CampaignClient:
                     sub = put_dir(os.path.basename(fn), fn)
                 elif fn.endswith("~") or fn.endswith("-bak") or \
                      ".pbl" in fn or ".exe" in fn or ".com" in fn or \
-                     ".bat" in fn or ".scr" in fn or ".sh":
+                     ".bat" in fn or ".scr" in fn or ".sh" in fn:
                     continue
                 else:
                     sub = put_file(os.path.basename(fn), file(fn))
