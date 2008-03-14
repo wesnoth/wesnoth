@@ -853,6 +853,7 @@ bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool
 bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
 {
 	const t_string& t_id = cfg["id"];
+	const t_string& t_description = cfg["description"];
 	const t_string& t_speaker = cfg["speaker"];
 	const t_string& t_type = cfg["type"];
 	const t_string& t_ability = cfg["ability"];
@@ -868,6 +869,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	const t_string& t_movement_cost = cfg["movement_cost"];
 
 	const std::string& id = t_id;
+	const std::string& description = t_description;
 	const std::string& speaker = t_speaker;
 	const std::string& type = t_type;
 	const std::string& ability = t_ability;
@@ -882,10 +884,13 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	const std::string& defense = t_defense;
 	const std::string& mvt_cost = t_movement_cost;
 
-	// FIXME OBSOLETE Will be removed in 1.5.3
-	const t_string& t_description = cfg["description"];
-	const std::string& description = t_description;
-	if(description.empty() == false && id != this->underlying_id()) {
+	// FIXME OBSOLETE To be altered in 1.5.3
+	// description= can match either the id or the custom unit description.
+	// This is deliberate as a backward-compatibility-hack to
+	// accommodate pre-1.5.1 versions, but it may produce odd results.
+	// if (as in THoT) several units are deliberately given the same 
+	// user description.  After 1.5.3 the middle clause should go.
+	if(description.empty() == false && description != this->underlying_id() && description != custom_unit_description_) {
 		return false;
 	}
 
@@ -1194,10 +1199,14 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	assert(gamedata_ != NULL);
 	id_ = cfg["id"];
-	// FIXME OBSOLETE This will go away in 1.5.3 or possibly sooner
+	custom_unit_description_ = cfg["description"];
+	// FIXME OBSOLETE This will go away in 1.5.3
 	if (id_.empty())
 		id_ = cfg["description"];
-	custom_unit_description_ = cfg["user_description"];
+	// FIXME OBSOLETE This will go away in 1.5.3
+	if (!cfg["user_description"].empty()) {
+		custom_unit_description_ = cfg["user_description"];
+	}
 	std::string custom_unit_desc = cfg["unit_description"];
 
 	underlying_id_ = id_;

@@ -1632,10 +1632,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		std::string command_type = "then";
 
 		if(u != units->end() && (filter.null() || game_events::unit_matches_filter(u, filter))) {
-			text = cfg["user_description"];	// 1.5
-			// FIXME: remove this after 1.6
-			if (text.empty())
-				text = cfg["description"];
+			text = cfg["description"];
 
 			u->second.add_modification("object", cfg.get_parsed_config());
 

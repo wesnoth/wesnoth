@@ -865,7 +865,7 @@ def sanity_check(filename, lines):
                 pass
             elif key == 'name':		# FIXME: check this someday
                 pass
-            elif key in ("message", "description", "user_description", "story", "note", "text", "summary", "caption", "label", "unit_description", "cannot_use_message", "set_description") and not value.startswith("$"):
+            elif key in ("message", "description", "story", "note", "text", "summary", "caption", "label", "unit_description", "cannot_use_message", "set_description") and not value.startswith("$"):
                 if not has_tr_mark:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
@@ -2152,6 +2152,7 @@ if __name__ == '__main__':
                    under("side") or \
                    re.search("{[A-Z]+.*description=.*}", line):
                 transformed = re.sub(r"\bdescription\s*=", "id=", line)
+                transformed = re.sub(r"user_description\s*=", "description=", line)
             # 
         # Report the changes
         if verbose > 0 and transformed != line:
