@@ -22,6 +22,7 @@
 #include "util.hpp"
 #include "image.hpp"
 #include "serialization/string_utils.hpp"
+#include "game_display.hpp"
 
 class config;
 
@@ -134,6 +135,7 @@ class unit_frame: public frame_builder{
 	public:
 		// Constructors
 		unit_frame(const frame_builder builder=frame_builder()):frame_builder(builder){initialization_finished=true;};
+		void redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id)const;
 
 };
 

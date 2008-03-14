@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 #include "config.hpp"
+#include "events.hpp"
 
 namespace sound {
 
