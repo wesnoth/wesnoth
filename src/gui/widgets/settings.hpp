@@ -83,6 +83,53 @@ struct tbutton_definition
 	std::vector<tresolution> resolutions;
 };
 
+struct twindow_definition
+{
+
+	std::string id;
+	t_string description;
+
+	const std::string& read(const config& cfg);
+
+	struct tresolution 
+	{
+	private:
+		tresolution();
+
+	public:
+		tresolution(const config& cfg);
+
+		unsigned window_width;
+		unsigned window_height;
+
+		unsigned top_border;
+		unsigned bottom_border;
+
+		unsigned left_border;
+		unsigned right_border;
+
+		unsigned min_width;
+		unsigned min_height;
+
+		struct tlayer
+		{
+		private:
+			tlayer();
+
+		public:
+			tlayer(const config* cfg);
+
+			tcanvas canvas;
+		};
+
+		tlayer background;
+		tlayer foreground;
+
+	};
+
+	std::vector<tresolution> resolutions;
+};
+
 struct tgui_definition
 {
 	std::string id;
@@ -91,9 +138,11 @@ struct tgui_definition
 	const std::string& read(const config& cfg);
 
 	std::map<std::string, tbutton_definition> buttons;
+	std::map<std::string, twindow_definition> windows;
 };
 
 	std::vector<tbutton_definition::tresolution>::const_iterator get_button(const std::string& definition);
+	std::vector<twindow_definition::tresolution>::const_iterator get_window(const std::string& definition);
 
 	//! Loads the setting for the theme.
 	void load_settings();

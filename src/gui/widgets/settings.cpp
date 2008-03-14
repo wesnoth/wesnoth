@@ -108,6 +108,17 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	std::cerr << "Parsing gui " << id << '\n';
 
+	const config::child_list& window_cfgs = cfg.get_children("window_definition");
+	for(std::vector<config*>::const_iterator itor = window_cfgs.begin();
+			itor != window_cfgs.end(); ++itor) {
+
+		std::pair<std::string, twindow_definition> child;
+		child.first = child.second.read(**itor);
+		windows.insert(child);
+	}
+
+	VALIDATE(windows.find("default") != windows.end(), _ ("No default window defined."));
+
 	const config::child_list& button_cfgs = cfg.get_children("button_definition");
 	for(std::vector<config*>::const_iterator itor = button_cfgs.begin();
 			itor != button_cfgs.end(); ++itor) {
@@ -118,6 +129,8 @@ const std::string& tgui_definition::read(const config& cfg)
 	}
 
 	VALIDATE(buttons.find("default") != buttons.end(), _ ("No default button defined."));
+
+
 
 	return id;
 }
@@ -233,7 +246,85 @@ tbutton_definition::tresolution::tstate::tstate(const config* cfg) :
 	canvas.set_cfg(*draw);
 }
 
-//tbutton_definition::tresolution* 
+const std::string& twindow_definition::read(const config& cfg)
+{
+/*WIKI
+ * [window_definition]
+ * The definition of a normal push window.
+ *
+ *     id = (string = "")            Unique id for this gui (theme).
+ *     description = (t_string = "") Unique translatable name for this gui.
+ *
+ *     [resolution]                  The definitions of the window in various
+ *                                   resolutions.
+ * [/window_definition]
+ */
+	id = cfg["id"];
+	description = cfg["description"];
+
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
+
+	std::cerr << "Parsing window " << id << '\n';
+
+	const config::child_list& cfgs = cfg.get_children("resolution");
+	VALIDATE(!cfgs.empty(), _("No resolution defined."));
+	for(std::vector<config*>::const_iterator itor = cfgs.begin();
+			itor != cfgs.end(); ++itor) {
+
+		resolutions.push_back(tresolution(**itor));
+	}
+
+	return id;
+}
+
+twindow_definition::tresolution::tresolution(const config& cfg) :
+	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
+	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
+	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
+	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
+	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
+	right_border(lexical_cast_default<unsigned>(cfg["right_border"])),
+	min_width(lexical_cast_default<unsigned>(cfg["min_width"])),
+	min_height(lexical_cast_default<unsigned>(cfg["min_height"])),
+	background(cfg.child("background")),
+	foreground(cfg.child("foreground"))
+{
+/*WIKI
+ * [resolution]
+ *     window_width = (unsigned = 0) Width of the application window.
+ *     window_height = (unsigned = 0) 
+ *                                   Height of the application window.
+ *     min_width = (unsigned = 0)    The minimum width of the windows.
+ *     min_height = (unsigned = 0)   The minimum height of the windows.
+ *
+ *     top_border = (unsigned = 0)   The size which isn't used for the client area.
+ *     bottom_border = (unsigned = 0)The size which isn't used for the client area.
+ *     left_border = (unsigned = 0)  The size which isn't used for the client area.
+ *     right_border = (unsigned = 0) The size which isn't used for the client area.
+ *
+ *     [background]                  The things drawn on the window before
+ *                                   the widgets are drawn.
+ *     [foreground]                  The things drawn on the window on top
+ *                                   of the widgets.
+ *
+ * [/resolution]
+ */
+
+	std::cerr << "Parsing resolution " 
+		<< window_width << ", " << window_height << '\n';
+}
+
+twindow_definition::tresolution::tlayer::tlayer(const config* cfg) :
+	canvas()
+{
+	const config* draw = cfg ? cfg->child("draw") : 0;
+
+	VALIDATE(draw, _("No layer or draw section defined."));
+
+	canvas.set_cfg(*draw);
+}
+
 std::vector<tbutton_definition::tresolution>::const_iterator get_button(const std::string& definition)
 {
 	std::map<std::string, tbutton_definition>::const_iterator 
@@ -247,6 +338,34 @@ std::vector<tbutton_definition::tresolution>::const_iterator get_button(const st
 	for(std::vector<tbutton_definition::tresolution>::const_iterator 
 			itor = button->second.resolutions.begin(),
 			end = button->second.resolutions.end();
+			itor != end;
+			++itor) {
+
+		if(screen_width <= itor->window_width &&
+				screen_height <= itor->window_height) {
+
+			return itor;
+		} else if (itor == end - 1) {
+			return itor;
+		}
+	}
+
+	assert(false);
+}
+
+std::vector<twindow_definition::tresolution>::const_iterator get_window(const std::string& definition)
+{
+	std::map<std::string, twindow_definition>::const_iterator 
+		window = current_gui->second.windows.find(definition);
+
+	if(window == current_gui->second.windows.end()) {
+		window = current_gui->second.windows.find("default");
+		assert(window != current_gui->second.windows.end());
+	}
+
+	for(std::vector<twindow_definition::tresolution>::const_iterator 
+			itor = window->second.resolutions.begin(),
+			end = window->second.resolutions.end();
 			itor != end;
 			++itor) {
 
