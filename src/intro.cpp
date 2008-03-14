@@ -176,6 +176,9 @@ bool show_intro_part(display &disp, const config& part,
 	// Draw title if needed
 	if(show_title) {
 		const SDL_Rect area = {0,0,video.getx(),video.gety()};
+		const SDL_Rect txt_shadow_rect = font::line_size(scenario, font::SIZE_XLARGE);
+		draw_solid_tinted_rectangle(dstrect.x + 15,dstrect.y + 15,txt_shadow_rect.w + 10,txt_shadow_rect.h + 10,0,0,0,0.5,video.getSurface());
+
 		font::draw_text(NULL,area,font::SIZE_XLARGE,font::BIGMAP_COLOUR,scenario,0,0);
 		update_rect(font::draw_text(&video,area,font::SIZE_XLARGE,font::BIGMAP_COLOUR,scenario,
 					    dstrect.x + 20,dstrect.y + 20));
