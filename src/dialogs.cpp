@@ -807,9 +807,9 @@ void unit_preview_pane::draw_contents()
 
 	SDL_Rect description_rect = {image_rect.x,image_rect.y+image_rect.h+details_button_.location().h,0,0};
 
-	if(det.description.empty() == false) {
+	if(det.name.empty() == false) {
 		std::stringstream desc;
-		desc << font::NORMAL_TEXT << det.description;
+		desc << font::NORMAL_TEXT << det.name;
 		const std::string description = desc.str();
 		description_rect = font::text_area(description, font::SIZE_NORMAL);
 		description_rect = font::draw_text(&video(), area, 
@@ -909,8 +909,8 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 
 	det.image = u.still_image();
 
-	det.description = u.name();
-	det.name = u.language_name();
+	det.name = u.name();
+	det.lang_name = u.language_name();
 	det.level = u.level();
 	det.alignment = unit_type::alignment_description(u.alignment());
 	det.traits = u.traits_description();
@@ -965,8 +965,8 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_colour_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);
 
-	det.description = "";
-	det.name = t->language_name();
+	det.name = "";
+	det.lang_name = t->language_name();
 	det.level = t->level();
 	det.alignment = unit_type::alignment_description(t->alignment());
 
