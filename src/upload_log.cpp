@@ -225,7 +225,7 @@ void upload_log::start(game_state &state, const team &team,
 	for (i = all_units.begin(); i != all_units.end(); ++i) {
 		if ((*i)->can_recruit()) {
 			config &sp = game_->add_child("special-unit");
-			sp["name"] = (*i)->name();
+			sp["name"] = (*i)->id();
 			sp["level"] = lexical_cast<std::string>((*i)->level());
 			sp["experience"] = lexical_cast<std::string>((*i)->experience());
 		}

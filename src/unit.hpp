@@ -61,7 +61,7 @@ public:
 	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
 		const gamestatus* game_status, const std::vector<team>* teams, 
 		const config& cfg, bool use_traits=false, game_state* state = 0);
-	// Initilizes a unit from a unit type
+	// Initializes a unit from a unit type
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
 	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
 	virtual ~unit();
@@ -73,17 +73,20 @@ public:
 	void advance_to(const unit_type* t, bool use_traits=false, game_state* state = 0);
 	const std::vector<std::string> advances_to() const { return advances_to_; }
 
-	//! The current type id
+	//! The type id of the unit
 	const std::string& type_id() const { return type_; }
 	const unit_type* type() const;
-	//! The actual name of the unit
-	const std::string& name() const { if (id_.empty()) return language_name(); else return id_; }
-	void rename(const std::string& name) { if (!unrenamable_) custom_unit_description_ = name; }
-	//! The unit type name
-	const std::string& description() const { return (custom_unit_description_); }
+
+	//! The unique internal ID of the unit
+	const std::string& id() const { if (id_.empty()) return language_name(); else return id_; }
 	const std::string& underlying_id() const { return underlying_id_; }
-	const t_string& language_name() const { return language_name_; }
-	const std::string& undead_variation() const { return undead_variation_; }
+
+	//! The unit type name
+	const std::string& name() const {return (name_);}
+	void rename(const std::string& name) {if (!unrenamable_) name_= name;}
+	const t_string& language_name() const {return language_name_;}
+	const std::string& undead_variation() const {return undead_variation_;}
+
 	//! The unit's profile
 	const std::string& profile() const;
 	//! Information about the unit -- a detailed description of it
@@ -301,7 +304,7 @@ private:
 	std::string type_;
 	const unit_race* race_;
 	std::string id_;
-	std::string custom_unit_description_;
+	std::string name_;
 	std::string underlying_id_;
 	t_string language_name_;
 	std::string undead_variation_;

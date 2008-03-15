@@ -1280,7 +1280,7 @@ void player_info::debug(){
 	LOG_NG << "\tGold: " << gold << "\n";
 	LOG_NG << "\tAvailable units:\n";
 	for (std::vector<unit>::const_iterator u = available_units.begin(); u != available_units.end(); u++){
-		LOG_NG << "\t\t" + u->description() + "\n";
+		LOG_NG << "\t\t" + u->name() + "\n";
 	}
 	LOG_NG << "\tEnd available units\n";
 }

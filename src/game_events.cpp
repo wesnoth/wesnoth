@@ -1801,7 +1801,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		}
 
 		if(speaker != units->end()) {
-			LOG_NG << "set speaker to '" << speaker->second.description() << "'\n";
+			LOG_NG << "set speaker to '" << speaker->second.name() << "'\n";
 		} else {
 			LOG_NG << "no speaker\n";
 		}
@@ -1837,7 +1837,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			if(caption.empty()) {
-				caption = speaker->second.description();
+				caption = speaker->second.name();
 				if(caption.empty()) {
 					caption = speaker->second.language_name();
 				}

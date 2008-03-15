@@ -118,7 +118,7 @@ def formaltype(f):
         ftype = "name"
     elif f in ("STRING", "TYPE", "TEXT"):
         ftype = "string"
-    elif f in ("DESCRIPTION", "USER_DESCRIPTION",):
+    elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
         ftype = "optional_string"
     elif f.endswith("IMAGE") or f == "PROFILE":
         ftype = "image"

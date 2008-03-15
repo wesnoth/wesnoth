@@ -909,7 +909,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 
 	det.image = u.still_image();
 
-	det.description = u.description();
+	det.description = u.name();
 	det.name = u.language_name();
 	det.level = u.level();
 	det.alignment = unit_type::alignment_description(u.alignment());

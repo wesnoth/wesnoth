@@ -404,7 +404,7 @@ namespace events{
 //				row << "<255,255,200>";
                 row << "<205,173,0>";   // gold3
 			}
-			row << i->second.description()   << COLUMN_SEPARATOR;
+			row << i->second.name()   << COLUMN_SEPARATOR;
 
 			// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
 			const int level = i->second.level();
@@ -1138,7 +1138,7 @@ private:
 
 			for(std::vector<unit>::const_iterator u = recall_list.begin(); u != recall_list.end(); ++u) {
 				std::stringstream option;
-				const std::string& description = u->description().empty() ? "-" : u->description();
+				const std::string& name = u->name().empty() ? "-" : u->name();
 
 				option << IMAGE_PREFIX << u->absolute_image();
 #ifndef LOW_MEM
@@ -1146,7 +1146,7 @@ private:
 #endif
 				option << COLUMN_SEPARATOR
 					<< u->language_name() << COLUMN_SEPARATOR
-					<< description << COLUMN_SEPARATOR
+					<< name << COLUMN_SEPARATOR
 					<< u->level() << COLUMN_SEPARATOR
 					<< u->experience() << "/";
 
@@ -1558,7 +1558,7 @@ private:
 		if(un->second.unrenamable())
 			return;
 
-		std::string name = un->second.description();
+		std::string name = un->second.name();
 		const int res = gui::show_dialog(*gui_,NULL,_("Rename Unit"),"", gui::OK_CANCEL,NULL,NULL,"",&name);
 		if(res == 0) {
 			recorder.add_rename(name, un->first);
@@ -2079,7 +2079,7 @@ private:
 			if (!gui_->fogged(loc)) {
 				unit_map::const_iterator ui = units_.find(loc);
 				if(ui != units_.end()) {
-					const std::string name = ui->second.description();
+					const std::string name = ui->second.name();
 					if(std::search(name.begin(), name.end(),
 							last_search_.begin(), last_search_.end(),
 							chars_equal_insensitive) != name.end()) {

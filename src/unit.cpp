@@ -92,7 +92,7 @@ unit::unit(const unit& o):
            type_(o.type_),
            race_(o.race_),
            id_(o.id_),
-           custom_unit_description_(o.custom_unit_description_),
+           name_(o.name_),
            underlying_id_(o.underlying_id_),
            language_name_(o.language_name_),
            undead_variation_(o.undead_variation_),
@@ -267,14 +267,14 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	if(use_traits) {
 		// Units that don't have traits generated are just generic units,
 		// so they shouldn't get a description either.
-		custom_unit_description_ = generate_description();
+		name_ = generate_description();
 	}
 	generate_traits(!use_traits);
 	apply_modifications();
 	if(underlying_id_.empty()){
 		char buf[80];
-		if(!custom_unit_description_.empty()){
-			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
+		if(!name_.empty()){
+			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), name_.c_str());
 		} else {
 			snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
 		}
@@ -308,14 +308,14 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	if(use_traits) {
 		// Units that don't have traits generated are just generic units,
 		// so they shouldn't get a description either.
-		custom_unit_description_ = generate_description();
+		name_ = generate_description();
 	}
 	generate_traits(!use_traits);
 	apply_modifications();
 	if(underlying_id_.empty()){
 		char buf[80];
-		if(!custom_unit_description_.empty()){
-			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
+		if(!name_.empty()){
+			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), name_.c_str());
 		}else{
 			snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
 		}
@@ -890,7 +890,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	// accommodate pre-1.5.1 versions, but it may produce odd results.
 	// if (as in THoT) several units are deliberately given the same 
 	// user description.  After 1.5.3 the middle clause should go.
-	if(description.empty() == false && description != this->underlying_id() && description != custom_unit_description_) {
+	if(description.empty() == false && description != this->underlying_id() && description != name_) {
 		return false;
 	}
 
@@ -1199,13 +1199,13 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	assert(gamedata_ != NULL);
 	id_ = cfg["id"];
-	custom_unit_description_ = cfg["description"];
+	name_ = cfg["name"];
 	// FIXME OBSOLETE This will go away in 1.5.3
 	if (id_.empty())
 		id_ = cfg["description"];
 	// FIXME OBSOLETE This will go away in 1.5.3
 	if (!cfg["user_description"].empty()) {
-		custom_unit_description_ = cfg["user_description"];
+		name_ = cfg["user_description"];
 	}
 	std::string custom_unit_desc = cfg["unit_description"];
 
@@ -1427,7 +1427,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		alignment_ = unit_type::NEUTRAL;
 	}
 	if(utils::string_bool(cfg["generate_description"])) {
-		custom_unit_description_ = generate_description(state);
+		name_ = generate_description(state);
 		cfg_["generate_description"] = "";
 	}
 
@@ -1502,7 +1502,7 @@ void unit::write(config& cfg) const
 
 	cfg["overlays"] = utils::join(overlays_);
 
-	cfg["user_description"] = custom_unit_description_;
+	cfg["name"] = name_;
 	cfg["id"] = underlying_id_;
 
 	if(can_recruit())

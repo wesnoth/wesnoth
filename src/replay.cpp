@@ -892,7 +892,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			if(u != units.end()) {
 				if(u->second.unrenamable()) {
 					std::stringstream errbuf;
-					errbuf << "renaming unrenamable unit " << u->second.name() << "\n";
+					errbuf << "renaming unrenamable unit " << u->second.id() << "\n";
 					replay::throw_error(errbuf.str());
 				}
 				u->second.rename(name);

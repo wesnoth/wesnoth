@@ -59,8 +59,8 @@ report generate_report(TYPE type,
 	std::stringstream str;
 
 	switch(type) {
-	case UNIT_DESCRIPTION:
-		return report(u->second.description(),"",u->second.description());
+	case UNIT_NAME:
+		return report(u->second.name(),"",u->second.name());
 	case UNIT_TYPE:
 	        return report(u->second.language_name(),"",u->second.unit_description());
 	case UNIT_RACE:
