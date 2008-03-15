@@ -1244,8 +1244,154 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 			var = random_value;
 		}
+		
+
+		const vconfig::child_list join_elements = cfg.get_children("join");
+        if(!join_elements.empty())
+		{
+            const vconfig join_element=join_elements.front();
+        
+			std::string array_name=join_element["variable"];
+			std::string separator=join_element["separator"];
+			std::string key_name=join_element["key"];
+			
+			if(key_name.empty())
+			{
+				key_name="value";
+			}
+			
+			bool remove_empty=utils::string_bool(join_element["remove_empty"]);
+			
+			variable_info::array_range array=state_of_game->get_variable_cfgs(array_name);
+			
+			std::string joined_string;
+			std::string current_string;
+			
+			for(std::vector<config*>::iterator i=array.first; i!=array.second; ++i)
+			{
+				current_string=(**i)[key_name];
+				if(remove_empty && current_string.empty())
+				{
+					continue;
+				}
+				
+				joined_string+=current_string;
+				if(i+1!=array.second)
+				{
+					joined_string+=separator;
+				}
+			}
+			
+			var=joined_string;
+		}
 
 	}
+	
+	else if(cmd == "set_variables")
+    {
+		assert(state_of_game != NULL);
+
+		const std::string name = cfg["name"];
+		
+		std::string mode = cfg["mode"]; //should be one of replace, extend, merge
+		if(mode!="append"&&mode!="merge")
+		{
+			mode="replace";
+		}
+		
+        const t_string to_variable = cfg["to_variable"];
+		const vconfig::child_list values = cfg.get_children("value");
+		const config::child_list literals = cfg.get_config().get_children("literal");
+		const vconfig::child_list split_elements = cfg.get_children("split");
+		
+		std::vector<config> data;
+		
+		if(!to_variable.empty())
+		{
+			variable_info::array_range range = state_of_game->get_variable_cfgs(to_variable);
+			for(range; range.first != range.second; ++range.first)
+			{
+				data.push_back(**range.first);
+			}
+		} else if(!values.empty()) {
+			for(vconfig::child_list::const_iterator i=values.begin(); i!=values.end(); ++i)
+			{
+				data.push_back((*i).get_parsed_config());
+			}
+		} else if(!literals.empty()) {
+			for(config::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
+			{
+				data.push_back(**i);
+			}
+		} else if(!split_elements.empty()) {
+            const vconfig split_element=split_elements.front();
+        
+			std::string split_string=split_element["list"];
+			std::string separator_string=split_element["separator"];
+			std::string key_name=split_element["key"];
+			if(key_name.empty())
+			{
+				key_name="value";
+			}
+
+			bool remove_empty=utils::string_bool(split_element["remove_empty"]);
+			
+			char* separator = separator_string.empty() ? NULL : &separator_string[0];
+			
+			std::vector<std::string> split_vector;
+			
+			//if no separator is specified, explode the string
+			if(separator == NULL)
+			{
+				for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
+				{
+					split_vector.push_back(&*i);
+				}
+			} 
+			else {
+				split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
+			}
+			
+            state_of_game->clear_variable_cfg(name);
+			for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
+			{
+				config item = config();
+				item[key_name]=*i;
+				data.push_back(item);
+			}
+		}
+		
+		if(!data.empty())
+		{
+			if(mode == "replace")
+			{
+				state_of_game->clear_variable_cfg(name);
+			}
+			if(mode == "merge")
+			{
+				variable_info::array_range target = state_of_game->get_variable_cfgs(name);
+				std::vector<config>::iterator i=data.begin();
+				config::child_list::iterator j=target.first;
+				while(i!=data.end())
+				{
+					if(j!=target.second)
+					{
+						(*j)->merge_with(*i);
+						++j;
+					} else {
+						state_of_game->add_variable_cfg(name, *i);
+					}
+					++i;
+				}
+			} else {
+				for(std::vector<config>::iterator i=data.begin(); i!=data.end(); ++i)
+				{
+					state_of_game->add_variable_cfg(name, *i);
+				}
+			}
+			return;
+		}
+    }
 
 	// Conditional statements
 	else if(cmd == "if" || cmd == "while") {

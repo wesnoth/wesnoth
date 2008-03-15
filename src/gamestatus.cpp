@@ -1105,6 +1105,11 @@ config& game_state::get_variable_cfg(const std::string& key)
 	return variable_info(key, true, variable_info::TYPE_CONTAINER).as_container();
 }
 
+variable_info::array_range game_state::get_variable_cfgs(const std::string& key)
+{
+	return variable_info(key, true, variable_info::TYPE_ARRAY).as_array();
+}
+
 void game_state::set_variable(const std::string& key, const t_string& value)
 {
 	get_variable(key) = value;

@@ -14,6 +14,7 @@
 
 //! @file gamestatus.hpp
 //!
+//!
 
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED
@@ -164,6 +165,7 @@ public:
 	t_string& get_variable(const std::string& varname);
 	virtual const t_string& get_variable_const(const std::string& varname) const;
 	config& get_variable_cfg(const std::string& varname);
+	variable_info::array_range get_variable_cfgs(const std::string& varname);
 
 	void set_variable(const std::string& varname, const t_string& value);
 	config& add_variable_cfg(const std::string& varname, const config& value=config());
