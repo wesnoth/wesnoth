@@ -1004,9 +1004,6 @@ def hack_syntax(filename, lines):
         precomment = lines[i].split("#")[0]
         if '[message]' in precomment:
             in_message = True
-        elif in_message and re.search("[^_]description=", precomment):
-            lines[i] = lines[i].replace("description=", "speaker=")
-            modcount += 1
         if "speaker=narrator" in precomment:
             need_image = True
         elif precomment.strip().startswith("image"):
@@ -2152,8 +2149,7 @@ if __name__ == '__main__':
                    under("side") or \
                    re.search("{[A-Z]+.*description=.*}", line):
                 transformed = re.sub(r"\bdescription\s*=", "id=", line)
-                transformed = re.sub(r"user_description\s*=", "description=", line)
-            # 
+                transformed = re.sub(r"user_description\s*=", "description=", line)        
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
