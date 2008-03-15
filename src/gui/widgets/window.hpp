@@ -21,6 +21,7 @@
 
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/canvas.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/event_info.hpp"
 
 #include "sdl_utils.hpp"
@@ -66,9 +67,12 @@ public:
 
 	enum tstatus{ NEW, SHOWING, REQUEST_CLOSE, CLOSED };
 
+	void set_width(const int width);
+
+	void set_height(const int height);
+
 protected:
 private:
-
 
 
 	void flip();
@@ -102,7 +106,18 @@ private:
 
 	//! When set the form needs a full layout redraw cycle.
 	bool need_layout_;
+
+	surface restorer_;
 	
+	tcanvas
+		canvas_background_,
+		canvas_foreground_;
+
+	std::vector<twindow_definition::tresolution>::const_iterator definition_;
+
+	void resolve_definition();
+
+	SDL_Rect get_client_rect();
 };
 
 } // namespace gui2

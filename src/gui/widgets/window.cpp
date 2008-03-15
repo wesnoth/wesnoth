@@ -40,7 +40,10 @@ twindow::twindow(CVideo& video,
 	status_(NEW),
 	event_info_(),
 	event_context_(),
-	need_layout_(true)
+	need_layout_(true),
+	restorer_(),
+	canvas_background_(),
+	canvas_foreground_()
 {
 	set_x(x);
 	set_y(y);
@@ -64,24 +67,13 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 	// We cut a piec of the screen and use that, that way all coordinates
 	// are relative to the window.
 	SDL_Rect rect = get_rect();
-	surface screen = get_surface_portion(video_.getSurface(), rect);
-
-	// Preserve area
-	surface restorer;
-	if(restore) {
-		restorer = screen;
-	}
-
-	// draw Window hack
-	SDL_Rect Xrect = {0, 0, screen->w, screen->h};
-	fill_rect_alpha(Xrect, 0, 128, screen);
+	restorer_ = get_surface_portion(video_.getSurface(), rect);
+	surface screen;
 
 	// Start our loop drawing will happen here as well.
 	for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
 		events::pump();
 
-	
-	
 	
 		// fixme hack to disable 
 		if(event_info_.mouse_right_button_down) {
@@ -94,14 +86,22 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 		}
 
 		if(dirty() || need_layout_) {
+			const bool draw_foreground = need_layout_;
 			if(need_layout_) {
 				DBG_GUI << "Layout.\n";
-				layout(Xrect);
+				resolve_definition();
+				layout(get_client_rect());
+
+				screen = create_optimized_surface(restorer_);
+
+				canvas_background_.draw();
+				SDL_Rect blit = {0, 0, screen->w, screen->h};
+				SDL_BlitSurface(canvas_background_.surf(), 0, screen, &blit);
 			}
 #if 0			
 			// Darkening for debugging redraw.
-			SDL_Rect Xrect = {0, 0, screen->w, screen->h};
-			fill_rect_alpha(Xrect, 0, 1, screen);
+			SDL_Rect temp_rect = {0, 0, screen->w, screen->h};
+			fill_rect_alpha(temp_rect, 0, 1, screen);
 #endif
 
 			for(tsizer::iterator itor = begin(); itor != end(); ++itor) {
@@ -114,9 +114,16 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 
 				itor->draw(screen);
 			}
+			if(draw_foreground) {
+				canvas_foreground_.draw();
+				SDL_Rect blit = {0, 0, screen->w, screen->h};
+				SDL_BlitSurface(canvas_foreground_.surf(), 0, screen, &blit);
+			}
+
 			rect = get_rect();
 			SDL_BlitSurface(screen, 0, video_.getSurface(), &rect);
 			update_rect(get_rect());
+			set_dirty(false);
 		}
 
 		// delay until it's our frame see display.ccp code for how to do that
@@ -127,7 +134,7 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 	// restore area
 	if(restore) {
 		rect = get_rect();
-		SDL_BlitSurface(restorer, 0, screen, &rect);
+		SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
 		update_rect(get_rect());
 		flip();
 	}
@@ -140,7 +147,7 @@ void twindow::layout(const SDL_Rect position)
 	tpoint best_size = get_best_size();
 
 	if(best_size.x < position.w && best_size.y < position.h) {
-		set_best_size(tpoint(0, 0));
+		set_best_size(tpoint(position.x, position.y));
 		return;
 	}
 
@@ -152,6 +159,31 @@ void twindow::layout(const SDL_Rect position)
 	// Failed at best size try minumum.
 	
 	// Failed at minimum log error and try to do the best possible thing.
+}
+
+void twindow::set_width(const int width)
+{
+
+	DBG_GUI << "Setting width to " << width << '\n';
+
+	canvas_background_.set_width(width);
+	canvas_foreground_.set_width(width);
+	need_layout_ = true;
+
+	// inherited
+	tcontrol::set_width(width);
+}
+
+void twindow::set_height(const int height)
+{
+	DBG_GUI << "Setting height to " << height << '\n';
+
+	canvas_background_.set_height(height);
+	canvas_foreground_.set_height(height);
+	need_layout_ = true;
+
+	// inherited
+	tcontrol::set_height(height);
 }
 
 void twindow::flip()
@@ -289,6 +321,37 @@ void twindow::handle_event_resize(const SDL_Event& event)
 	screen_width = event.resize.w;
 	screen_height = event.resize.h;
 	need_layout_ = true;
+}
+
+void twindow::resolve_definition()
+{
+	if(definition_ == std::vector<twindow_definition::tresolution>::const_iterator()) {
+		definition_ = get_window(definition());
+
+		canvas_background_ = definition_->background.canvas;
+		canvas_background_.set_width(get_width());
+		canvas_background_.set_height(get_height());
+
+		canvas_foreground_ = definition_->foreground.canvas;
+		canvas_foreground_.set_width(get_width());
+		canvas_foreground_.set_height(get_height());
+	}
+
+}
+SDL_Rect twindow::get_client_rect()
+{
+	assert(definition_ != std::vector<twindow_definition::tresolution>::const_iterator());
+
+	SDL_Rect result = get_rect();
+	result.x = definition_->left_border;
+	result.y = definition_->top_border;
+	result.w -= definition_->left_border + definition_->right_border;
+	result.h -= definition_->top_border + definition_->bottom_border;
+
+	// FIXME validate for an available client area.
+	
+	return result;
+
 }
 
 } // namespace gui2
