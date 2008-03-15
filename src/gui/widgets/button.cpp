@@ -21,7 +21,7 @@
 
 namespace gui2 {
 
-void tbutton::set_width(const int width)
+void tbutton::set_width(const unsigned width)
 { 
 	// resize canvasses
 	canvas_enabled_.set_width(width);
@@ -33,7 +33,7 @@ void tbutton::set_width(const int width)
 	tcontrol::set_width(width);
 }
 
-void tbutton::set_height(const int height) 
+void tbutton::set_height(const unsigned height) 
 { 
 	// resize canvasses
 	canvas_enabled_.set_height(height);

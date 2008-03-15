@@ -161,7 +161,7 @@ void twindow::layout(const SDL_Rect position)
 	// Failed at minimum log error and try to do the best possible thing.
 }
 
-void twindow::set_width(const int width)
+void twindow::set_width(const unsigned width)
 {
 
 	DBG_GUI << "Setting width to " << width << '\n';
@@ -174,7 +174,7 @@ void twindow::set_width(const int width)
 	tcontrol::set_width(width);
 }
 
-void twindow::set_height(const int height)
+void twindow::set_height(const unsigned height)
 {
 	DBG_GUI << "Setting height to " << height << '\n';
 

@@ -67,9 +67,9 @@ public:
 
 	enum tstatus{ NEW, SHOWING, REQUEST_CLOSE, CLOSED };
 
-	void set_width(const int width);
+	void set_width(const unsigned width);
 
-	void set_height(const int height);
+	void set_height(const unsigned height);
 
 protected:
 private:

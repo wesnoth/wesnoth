@@ -185,11 +185,11 @@ public:
 
 	// resizing an object dirties it
 	// note most items should not be resized manually but with a sizer
-	virtual void set_width(const int width) { w_ = width; set_dirty(); }
-	int get_width() const { return w_; }
+	virtual void set_width(const unsigned width) { w_ = width; set_dirty(); }
+	unsigned get_width() const { return w_; }
 
-	virtual void set_height(const int height) { h_ = height; set_dirty(); }
-	int get_height() const { return h_; }
+	virtual void set_height(const unsigned height) { h_ = height; set_dirty(); }
+	unsigned get_height() const { return h_; }
 
 	bool dirty() const { return dirty_; }
 
@@ -202,7 +202,7 @@ public:
 //	virtual void set_minimum_size();
 
 	//! Sets a predefined size for the object.
-	virtual void set_size(const SDL_Rect rect)
+	virtual void set_size(const SDL_Rect& rect)
 	{
 		x_ = rect.x;
 		y_ = rect.y;
@@ -241,7 +241,8 @@ private:
 	std::string definition_;
 
 	twidget* parent_;
-	int x_, y_, w_, h_;
+	int x_, y_;
+	unsigned w_, h_;
 	bool dirty_;
 };
 

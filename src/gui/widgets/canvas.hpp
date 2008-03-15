@@ -144,11 +144,11 @@ public:
 	void draw(const config& cfg);
 	void draw(const bool force = false);
 
-	void set_width(const int width) { w_ = width; set_dirty(); }
-	int get_width() const { return w_; }
+	void set_width(const unsigned width) { w_ = width; set_dirty(); }
+	unsigned get_width() const { return w_; }
 
-	void set_height(const int height) { h_ = height; set_dirty(); }
-	int get_height() const { return h_; }
+	void set_height(const unsigned height) { h_ = height; set_dirty(); }
+	unsigned get_height() const { return h_; }
 
 	surface& surf() { return canvas_; }
 

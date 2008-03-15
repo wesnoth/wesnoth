@@ -38,9 +38,9 @@ public:
 		{
 		}
 
-	virtual void set_width(const int width);
+	void set_width(const unsigned width);
 
-	virtual void set_height(const int height);
+	void set_height(const unsigned height);
 
 	void mouse_down(const tevent_info& /*event*/, bool& /*handled*/);
 	void mouse_up(const tevent_info& /*event*/, bool& /*handled*/);
