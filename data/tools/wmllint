@@ -1688,7 +1688,7 @@ def translator(filename, mapxforms, textxform, versions):
                     maptype = "map"
                 elif "mask" in line:
                     maptype = "mask"
-            baseline = 0
+            baseline = lineno
             cont = True
             if verbose >= 3:
                 print "*** Entering map mode."
