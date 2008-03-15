@@ -103,7 +103,7 @@ class sourcespec {
 	int chance;
 
 	int loops;
-	int check_fogged;
+	bool check_fogged;
 
 	std::vector<gamemap::location> locations;
 
