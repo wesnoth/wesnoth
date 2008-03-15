@@ -798,7 +798,6 @@ def sanity_check(filename, lines):
     # Consistency-check the id= attributes in [side], [unit], [recall],
     # and [message] scopes, also correctness-check translation marks and look
     # for double spaces at end of sentence.
-    unmodified = copy.copy(lines)
     present = []
     in_scenario = False
     in_person = False
@@ -908,7 +907,7 @@ def sanity_check(filename, lines):
         print '"%s", line %d: single textdomain declaration not on line 1.' % \
               (filename, w)
         lines = [lines[w-1].lstrip()] + lines[:w-1] + lines[w:]
-    return (lines, lines != unmodified)
+    return lines
 
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
@@ -960,7 +959,6 @@ def hack_syntax(filename, lines):
     # array of strings in lines.  Modify lines in place as needed, and
     # set modcount to nonzero when you actually change any.
     global versions
-    modcount = 0
     # Ensure that every attack has a translatable description.
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
@@ -993,7 +991,6 @@ def hack_syntax(filename, lines):
                                 print '"%s", line %d: inserting %s' % (filename, i+1, `new_line`)
                             lines.insert(j+1, new_line)
                             j += 1
-                            modcount += 1
                     j += 1
     # Ensure that every speaker=narrator block without an image uses
     # wesnoth-icon.png as an image.
@@ -1014,7 +1011,6 @@ def hack_syntax(filename, lines):
                 if verbose:
                     print 'wmllint: "%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
                 lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
-                modcount += 1        
             need_image = in_message = False
     # Remove get_hit_sound fields
     in_unit_type = 0 
@@ -1039,7 +1035,6 @@ def hack_syntax(filename, lines):
                     print 'wmllint: "%s", line %d: unit%s gets %s'%(filename, get_hit_sound, unit_id, new_anim)
                     lines[get_hit_sound] = leader(lines[get_hit_sound]) \
                                            + new_anim + comment
-                    modcount += 1
             in_unit_type = None
             unit_id = ""
             unit_image = None
@@ -1182,7 +1177,6 @@ def hack_syntax(filename, lines):
             # Save it and delete it from its original location
             aframe.wml = "".join(animation)
             lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
-            modcount += 1
             boucmanized = True
         # Insert non-variation attacks where they belong
         female_attacks = filter(lambda a: a.female and a.variation == None, animations)
@@ -1270,7 +1264,6 @@ def hack_syntax(filename, lines):
             lines[i] = before \
                        + lines[i].replace("animation", "attack_anim") \
                        + after
-            modcount += 1
         elif converting and "[/animation]" in lines[i]:
             lines[i] = lines[i].replace("animation", "attack_anim")
     # Lift [frame] declarations directly within attacks
@@ -1305,7 +1298,6 @@ def hack_syntax(filename, lines):
             if soundpath:
                 lines[i] += ws + baseindent + "sound=" + soundpath + "\n"
             converting += 1
-            modcount += 1
         elif in_attack:
             fields = lines[i].strip().split('#')
             syntactic = fields[0]
@@ -1320,7 +1312,6 @@ def hack_syntax(filename, lines):
             if "[sound]" in lines[i]:
                 print '"%s", line %d: [sound] within [attack] discarded (path will be saved)' % (filename, i+1)
                 in_sound = True
-                modcount += 1
             if "[/sound]" in lines[i]:
                 lines[i] = ""
                 in_sound = False
@@ -1356,7 +1347,6 @@ def hack_syntax(filename, lines):
                         print "Don't know how to convert '%s'" % special
                 insertion += ws + baseindent + "[/specials]\n"
                 lines[lastspecial] = insertion
-                modcount += 1
         elif "[/unit_type]" in lines[i]:
             if abilities:
                 if verbose:
@@ -1377,7 +1367,6 @@ def hack_syntax(filename, lines):
                         print "Don't know how to convert '%s'" % ability
                 insertion += ws + baseindent + "[/abilities]\n"
                 lines[lastability] = insertion
-                modcount += 1
         elif lines[i].count("=") == 1:
             (tag, value) = lines[i].strip().split("=")
             if tag == "level":
@@ -1422,7 +1411,6 @@ def hack_syntax(filename, lines):
                 lines = lines[:startline] + [wspace + "[and]\n"] + to_indent +[
                     wspace + "[/and]\n"] + no_indent + lines[scopeIter.lineno:]
 		radius_pos.lines = lines
-                modcount += 1
                 #backup to rescan
                 radius_pos.seek(startline-1)
                 #pass the inserted content
@@ -1475,7 +1463,6 @@ def hack_syntax(filename, lines):
                 lines[i] = insertion + lines[i]
                 in_death = frame_start = frame_end = None
                 frame_commented = in_death_commented = False
-                modcount += 1
             elif in_death and "[frame]" in lines[i]:
                 frame_start = i
                 frame_commented = lines[i].strip().startswith("#")
@@ -1521,12 +1508,10 @@ start_time=-150
         if m:
             image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
             lines[i] = m.group(1) + image_block % (m.group(2), "melee")
-            modcount += 1
         m = re.search(r"(\s+)image_long=(.*)", lines[i])
         if m:
             image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
             lines[i] = m.group(1) + image_block % (m.group(2), "ranged")
-            modcount += 1
     # In [terrain], letter= to terrain=
     in_terrain = False
     for i in range(len(lines)):
@@ -1539,7 +1524,6 @@ start_time=-150
         if in_terrain:
             nl = lines[i].replace("letter", "terrain")
             if nl != lines[i]:
-                modcount += 1
                 lines[i] = nl
     # id= -> type= in [unit].  Only do this for versions *before* id=
     # was reclaimed to do what description used to. 
@@ -1561,12 +1545,11 @@ start_time=-150
             if in_unit and not in_modifications and not id_seen and re.search("id *=", lines[i]):
                 nl = re.sub("id *=", "type=", lines[i])
                 if nl != lines[i]:
-                    modcount += 1
                     lines[i] = nl
                     print '"%s", line %d: [unit] id= -> type=' % (filename, i+1)
                 id_seen = True            
     # More syntax transformations would go here.
-    return (lines, modcount)
+    return lines
 
 # Generic machinery starts here
 
@@ -1623,11 +1606,12 @@ def outermap(func, inmap):
 def translator(filename, mapxforms, textxform, versions):
     "Apply mapxform to map lines and textxform to non-map lines."
     global tagstack
-    modified = False
+    unmodified = file(filename).readlines()
+    # Pull file into an array of lines, CR-stripping as needed
     mfile = []
     map_only = not filename.endswith(".cfg")
     terminator = "\n"
-    for line in open(filename):
+    for line in unmodified:
         if line.endswith("\n"):
             line = line[:-1]
         if line.endswith("\r"):
@@ -1637,6 +1621,7 @@ def translator(filename, mapxforms, textxform, versions):
         mfile.append(line)
         if "map_data" in line:
             map_only = False
+    # Process line-by-line
     lineno = baseline = 0
     cont = False
     validate = True
@@ -1681,21 +1666,24 @@ def translator(filename, mapxforms, textxform, versions):
                 else:
                     maptype = "map"
             else:
+                leadws = leader(line)
                 if "map_data" in line:
                     maptype = "map"
                 elif "mask" in line:
                     maptype = "mask"
             baseline = lineno
             cont = True
-            if verbose >= 3:
-                print "*** Entering map mode."
             if not map_only:
                 fields = line.split('"')
                 if fields[1].strip():
                     mfile.insert(0, fields[1])
                 if len(fields) == 3:
                     mfile.insert(1, '"')
+            if verbose >= 3:
+                print "*** Entering %s mode on:" % maptype
+                print mfile
             # Gather the map header (if any) and data lines
+            savedheaders = []
             while cont and mfile:
                 line = mfile.pop(0)
                 if verbose >= 3:
@@ -1719,7 +1707,7 @@ def translator(filename, mapxforms, textxform, versions):
                                 print "warning: usage=map in file with .mask extension"
                     if len(line) == 0:
                         have_delimiter = True
-                    newdata.append(line + terminator)
+                    savedheaders.append(line + terminator)
                     continue
                 if '"' in line:
                     cont = False
@@ -1745,9 +1733,9 @@ def translator(filename, mapxforms, textxform, versions):
             # Deduce the map type
             if not map_only:
                 if maptype == "map":
-                    newdata.append("map_data=\"" + terminator)
+                    newdata.append(leadws + "map_data=\"" + terminator)
                 elif maptype == "mask":
-                    newdata.append("mask=\"" + terminator)
+                    newdata.append(leadws + "mask=\"" + terminator)
             original = copy.deepcopy(outmap)
             for transform in mapxforms:
                 for y in range(len(outmap)):
@@ -1771,20 +1759,16 @@ def translator(filename, mapxforms, textxform, versions):
                 outermap(lambda n: re.sub(r"[1-9] ", r"", n), outmap)
                 # Turn big trees on the edges to ordinary forest hexes
                 outermap(lambda n: n.replace(r"Gg^Fet", r"Gs^Fp"), outmap)
-                modified = True
             if add_usage:
                 print '%s, "line %d": adding %s usage header...' % \
                       (filename, baseline, maptype)
                 newdata.append("usage=" + maptype + terminator)
                 have_header = True
-                modified = True
+            newdata += savedheaders
             if have_header and not have_delimiter:
                 newdata.append(terminator)
-                modified = True
             for y in range(len(outmap)):
                 newdata.append(",".join(outmap[y]) + terminator)
-                if not modified and original[y] != outmap[y]:
-                    modified = True
             # All lines of the map are processed, add the appropriate trailer
             if not map_only:
                 newdata.append("\"" + terminator)
@@ -1797,7 +1781,6 @@ def translator(filename, mapxforms, textxform, versions):
                     newline = newline.replace(mapfile, mapfile + ".map") 
             newdata.append(newline + terminator)
             if newline != line:
-                modified = True
                 if verbose > 0:
                     print >>sys.stderr, 'wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
         elif "map_data=" in line and line.count('"') > 1:
@@ -1807,8 +1790,6 @@ def translator(filename, mapxforms, textxform, versions):
             # Handle text (non-map) lines.  It can use within().
             newline = textxform(filename, lineno, line, versions)
             newdata.append(newline + terminator)
-            if newline != line:
-                modified = True
             # Now do warnings based on the state of the tag stack.
             if not unbalanced:
                 fields = newline.split("#")
@@ -1855,19 +1836,17 @@ def translator(filename, mapxforms, textxform, versions):
     tagstack = []
     if iswml(filename):
         # Perform semantic sanity checks
-        (newdata, modified1) = sanity_check(filename, newdata)
+        newdata = sanity_check(filename, newdata)
         # OK, now perform WML rewrites
-        (newdata, modified2) = hack_syntax(filename, newdata)
+        newdata = hack_syntax(filename, newdata)
         # Run everything together
         filetext = "".join(newdata)
-        modified |= modified1 or modified2
         transformed = filetext
         if upconvert and "1.3.4" in versions:
             # WML syntax changed in 1.3.5.  The transformation cannot
             # conveniently be done line-by-line.
             transformed = re.sub(r"(if]|while])\s*\[or]([\w\W]*?)\[/or]\s*",
                              r"\1\2", filetext);
-            modified |= (transformed != filetext)
     else:
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
@@ -1909,7 +1888,7 @@ def translator(filename, mapxforms, textxform, versions):
     if unclosed:
         print >>sys.stderr, '"%s", line %d: unbalanced {.' % (filename, unclosed)
     # Return None if the transformation functions made no changes.
-    if modified:
+    if "".join(unmodified) != transformed:
         return transformed
     else:
         return None
@@ -2148,8 +2127,12 @@ if __name__ == '__main__':
                    standard_unit_filter() or \
                    under("side") or \
                    re.search("{[A-Z]+.*description=.*}", line):
-                transformed = re.sub(r"\bdescription\s*=", "id=", line)
-                transformed = re.sub(r"user_description\s*=", "description=", line)        
+                if "id" not in tagstack[-1][1]:
+                    transformed = re.sub(r"\bdescription\s*=", "id=", line)
+                if "name" not in tagstack[-1][1]:
+                    transformed = re.sub(r"user_description\s*=", "name=", line)
+                # One-time conversion
+                #transformed = re.sub(r"\bdescription\s*=", "name=", line)
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
