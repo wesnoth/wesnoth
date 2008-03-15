@@ -1733,9 +1733,9 @@ def translator(filename, mapxforms, textxform, versions):
             # Deduce the map type
             if not map_only:
                 if maptype == "map":
-                    newdata.append(leadws + "map_data=\"" + terminator)
+                    newdata.append(leadws + "map_data=\"")
                 elif maptype == "mask":
-                    newdata.append(leadws + "mask=\"" + terminator)
+                    newdata.append(leadws + "mask=\"")
             original = copy.deepcopy(outmap)
             for transform in mapxforms:
                 for y in range(len(outmap)):
