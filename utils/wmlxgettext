@@ -23,6 +23,7 @@ eval "require \"$module\";";
 ## extract strings with their refs into %messages
 
 our ($str,$translatable,$line,%messages,%nodeinfo);
+our $valid_wml = 1;
 chdir $toplevel;
 foreach my $file (@ARGV) {
   open (FILE, "<$file") or die "cannot read from $file";
@@ -50,12 +51,11 @@ foreach my $file (@ARGV) {
     # skip other # lines as comments
     next LINE if m/^\s*\#/ and !defined $str;
 
-    next LINE unless $domainstack[0] eq $domain;
-
     if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)/) {
       # single-line quoted string
 
-      if ($1 ne '') { # ie. translatable
+       # if translatable and in the requested domain
+      if ($1 ne '' and $domainstack[0] eq $domain) {
         my $msg = raw2postring($2);
         push @{$messages{$msg}}, "$file:$.";
         push @{$nodeinfostack[-1][1]}, $msg;
@@ -80,7 +80,7 @@ foreach my $file (@ARGV) {
 
       $str .= $1;
 
-      if ($translatable) {
+      if ($translatable and $domainstack[0] eq $domain) {
         my $msg = "\"\"\n" . raw2postring($str);
         push @{$messages{$msg}}, "$file:$." ;
         push @{$nodeinfostack[-1][1]}, $msg;
@@ -121,18 +121,24 @@ foreach my $file (@ARGV) {
     }
 
     # check for node opening/closing to handle message metadata
+    next LINE if not $valid_wml;
     next LINE if defined $str; # skip lookup if inside multi-line
     next LINE if m/^ *\{.*\} *$/; # skip lookup if a statement line
     next LINE if m/=/; # skip lookup if a field line
-    #next LINE; # kill-switch: uncomment and node info extraction is no more
     while (m,\[ *([a-z/+].*?) *\],g) {
       my $nodename = $1;
       #my $ind = "  " x (@nodeinfostack + ($nodename =~ m,/, ? 0 : 1));
       if ($nodename =~ s,/ *,,) { # closing node
-        @nodeinfostack or die "empty node stack on closed node at $file:$.";
+        if (@nodeinfostack == 0) {
+            warn "empty node stack on closed node at $file:$.";
+            $valid_wml = 0;
+        }
         my ($openname, $messages, $metadata) = @{pop @nodeinfostack};
-        $nodename eq $openname or die "expected closed node \'$openname\' ".
-                                      "got \'$nodename\' at $file:$.";
+        if ($nodename ne $openname) {
+            warn "expected closed node \'$openname\' ".
+                 "got \'$nodename\' at $file:$.";
+            $valid_wml = 0;
+        }
         # some nodes should inherit parent metadata
         if ($nodename =~ m/option/) {
             $metadata = $nodeinfostack[-1][2];
@@ -151,11 +157,17 @@ foreach my $file (@ARGV) {
     # do not add anything here, beware of the next's before the loop
   }
   pop @nodeinfostack; # dummy top node
-  die "non-empty node stack at end of $file" if @nodeinfostack;
+  if (@nodeinfostack) {
+    warn "non-empty node stack at end of $file";
+    $valid_wml = 0;
+  }
 
   close FILE;
 }
 
+if (not $valid_wml) {
+    warn "WML seems invalid, forfeiting extraction of node info"
+}
 
 ## index strings by their location in the source so we can sort them
 
@@ -199,7 +211,7 @@ EOH
 foreach my $occurence (@revmessages) {
   my $key = $occurence->[2];
   if (defined $messages{$key}) {
-    if (defined $nodeinfo{$key}) {
+    if ($valid_wml and defined $nodeinfo{$key}) {
       my %added;
       for my $info (@{$nodeinfo{$key}}) {
         my ($name, $data) = @{$info};
