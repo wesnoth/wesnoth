@@ -110,7 +110,6 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 #else	
 	drawing_buffer_(),
 #endif	
-	tile_stack_(),
 	fps_handle_(0),
 	idle_anim_(preferences::idle_anim()),
 	idle_anim_rate_(1.0)
@@ -610,38 +609,6 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 	return res;
 }
 
-void display::tile_stack_append(const surface surf)
-{
-	if (surf)
-		tile_stack_.push_back(surf);
-}
-
-void display::tile_stack_append(const std::vector<surface>& surfaces)
-{
-	std::vector<surface>::const_iterator itor;
-	for(itor = surfaces.begin(); itor != surfaces.end(); ++itor) {
-		tile_stack_append(*itor);
-	}
-}
-
-//! Render a stack of tile surfaces at the specified location.
-void display::tile_stack_render(int x, int y)
-{
-	surface const dst(screen_.getSurface());
-
-	std::vector<surface>::const_iterator itor;
-	for(itor=tile_stack_.begin(); itor!=tile_stack_.end(); ++itor) {
-		// Note that dstrect can be changed by SDL_BlitSurface
-		// and so a new instance should be initialized
-		// to pass to each call to SDL_BlitSurface.
-		SDL_Rect dstrect = { x, y, 0, 0 };
-		SDL_BlitSurface(*itor, NULL, dst, &dstrect);
-	}
-	tile_stack_.clear();
-
-	update_rect(x, y, zoom_, zoom_);
-}
-
 void display::drawing_buffer_commit()
 {
 	SDL_Rect clip_rect = map_area();
@@ -688,6 +655,7 @@ void display::drawing_buffer_commit()
 						SDL_BlitSurface(*surface_itor, NULL, dst, &dstrect);
 					}
 				}
+				update_rect(blit_itor->x, blit_itor->y, zoom_, zoom_);
 			}
 		}
 	}
@@ -910,10 +878,13 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	}
 }
 
-void display::draw_text_in_hex(const gamemap::location& loc, const std::string& text,
+void display::draw_text_in_hex(const gamemap::location& loc, 
+		const tdrawing_layer layer, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
+
+	const int drawing_order = gamemap::get_drawing_order(loc);
 
 	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor()
 #ifdef USE_TINY_GUI
@@ -928,14 +899,14 @@ void display::draw_text_in_hex(const gamemap::location& loc, const std::string& 
 	const int y = get_location_y(loc) - text_surf->h/2
 	              + static_cast<int>(y_in_hex* hex_size());
 
-	SDL_Rect clip_rect = map_area();
 	for (int dy=-1; dy <= 1; dy++) {
 		for (int dx=-1; dx <= 1; dx++) {
-			if (dx!=0 || dy!=0)
-				video().blit_surface(x+dx, y+dy, back_surf, NULL, &clip_rect);
+			if (dx!=0 || dy!=0) {
+				drawing_buffer_add(layer, drawing_order, tblit(x + dx, y + dy, back_surf));
+			}
 		}
 	}
-	video().blit_surface(x, y, text_surf, NULL, &clip_rect);
+	drawing_buffer_add(layer, drawing_order, tblit(x, y, text_surf));
 }
 
 void display::clear_hex_overlay(const gamemap::location& loc)

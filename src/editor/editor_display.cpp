@@ -73,30 +73,34 @@ void editor_display::draw(bool update,bool force)
 
 			int xpos = int(get_location_x(*it));
 			int ypos = int(get_location_y(*it));
+			int drawing_order = gamemap::get_drawing_order(*it);
 
 			if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
 			   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
 				continue;
 			}
 
-			tile_stack_clear();
-
 			const std::string nodarken = "morning";
-			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_BACKGROUND));
-			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_FOREGROUND));
+			drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
+				get_terrain_images(*it,nodarken,image_type,ADJACENT_BACKGROUND)));
+			drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
+				get_terrain_images(*it,nodarken,image_type,ADJACENT_FOREGROUND)));
 
 			// Draw the grid, if it has been enabled
 			if(grid_ && map_.on_board(*it)) {
-				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image(game_config::grid_image, image::SCALED_TO_HEX)));
 			}
 
 			// Paint selection and mouseover overlays
-			if(*it == selectedHex_ && map_.on_board(selectedHex_, true) && selected_hex_overlay_ != NULL)
-				tile_stack_append(selected_hex_overlay_);
-			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_, true) && mouseover_hex_overlay_ != NULL)
-				tile_stack_append(mouseover_hex_overlay_);
+			if(*it == selectedHex_ && map_.on_board(selectedHex_, true) && selected_hex_overlay_ != NULL) {
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
+			}
+			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_, true) && mouseover_hex_overlay_ != NULL) {
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
+			}
 
-			tile_stack_render(xpos, ypos);
+			drawing_buffer_commit();
 
 			// If the tile is at the border, we start to blend it
 			if(!map_.on_board(*it) &&

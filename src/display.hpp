@@ -209,12 +209,6 @@ public:
 	//! Toogle to continuously redraw the screen.
 	void toggle_benchmark();
 
-	//! Draw text on a hex. (0.5, 0.5) is the center.
-	//! The font size is adjusted to the zoom factor
-	//! and divided by 2 for tiny-gui.
-	void draw_text_in_hex(const gamemap::location& loc, const std::string& text,
-		size_t font_size, SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
-
 	void flip();
 
 	//! Copy the backbuffer to the framebuffer.
@@ -421,12 +415,6 @@ protected:
 	std::set<gamemap::location> highlighted_locations_;
 	CKey keys_;
 
-	//! Composes and draws the terrains on a tile
-	void tile_stack_append(const surface surf);
-	void tile_stack_append(const std::vector<surface>& surfaces);
-	void tile_stack_render(int x, int y);
-	void tile_stack_clear() {tile_stack_.clear();};
-
 public:	
 	//! Helper structure for rendering the terrains.
 	struct tblit{
@@ -445,6 +433,14 @@ public:
 			clip(clip)
 			{}
 
+		tblit(const int x, const int y, const std::vector<surface>& surf, 
+				const SDL_Rect& clip = SDL_Rect()) :
+			x(x),
+			y(y),
+			surf(surf),
+			clip(clip)
+			{}
+
 
 		int x;                      //!< x screen coordinate to render at.
 		int y;                      //!< y screen coordinate to render at.
@@ -458,19 +454,35 @@ public:
 	//! the layers should be save.
 	//! If needed in WML use the name and map that to the enum value.
 	enum tdrawing_layer{ 
-		LAYER_TERRAIN_BG,          //!< Sample for terrain drawn behind a unit.
+		LAYER_TERRAIN_BG,          //!< Layer for the terrain drawn behind the 
+		                           //!< unit.
 		LAYER_UNIT_BG,             //!< Used for the ellipse behind the unit.
 		LAYER_UNIT_FIRST,          //!< Reserve layeres to be selected for WML.
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		LAYER_UNIT_FG,             //!< Used for the ellipse in front of the unit.
-		LAYER_UNIT_FAKE,
-		LAYER_TERRAIN_FG,          //!< Sample for terrain to draw in front of a unit.
+		LAYER_UNIT_FG,             //!< Used for the ellipse in front of the 
+		                           //!< unit.
+		LAYER_UNIT_FAKE,           //!< The fake unit is drawn on this layer.
+		LAYER_TERRAIN_FG,          //!< Layer for the terrain drawn in front of
+		                           //!< the unit.
+		LAYER_UNIT_BAR,            //!< Unit bars and overlays are drawn on
+		                           //!< this layer (for testing here).
+		LAYER_TERRAIN_TMP,         //!< Layer which holds stuff that needs to be
+		                           //!< sorted out further.
 		LAYER_LINGER_OVERLAY,      //!< The overlay used for the linger mode.
 		
 		LAYER_LAST_LAYER           //!< Don't draw to this layer it's a dummy
 		                           //! to size the vector.
 		};
+
+	//! Draw text on a hex. (0.5, 0.5) is the center.
+	//! The font size is adjusted to the zoom factor
+	//! and divided by 2 for tiny-gui.
+	void draw_text_in_hex(const gamemap::location& loc, 
+		const tdrawing_layer layer, const std::string& text, size_t font_size,
+		SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
+
 protected:
+
 	// Initially tdrawing_buffer was a vector but profiling showed that a map
 	// was more efficient. Tested with the LAYER_UNIT_LAST for various values
 	// and different types the results were. (Tested with oprofile.)
@@ -538,8 +550,6 @@ protected:
 	void draw_wrap(bool update,bool force,bool changed);
 
 private:
-	//! Tile stack for terrain rendering.
-	std::vector<surface> tile_stack_;
 	//! Handle for the label which displays frames per second.
 	int fps_handle_;
 

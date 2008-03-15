@@ -1844,7 +1844,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
-			disp.drawing_buffer_add(display::LAYER_UNIT_FG, 
+			disp.drawing_buffer_add(display::LAYER_UNIT_BAR, 
 				drawing_order, display::tblit(xsrc, ysrc_adjusted, orb));
 		}
 
@@ -1880,7 +1880,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
-				disp.drawing_buffer_add(display::LAYER_UNIT_FG, 
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR, 
 					drawing_order, display::tblit(xsrc, ysrc_adjusted, crown));
 			}
 		}
@@ -1888,7 +1888,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
-				disp.drawing_buffer_add(display::LAYER_UNIT_FG, 
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR, 
 					drawing_order, display::tblit(xsrc, ysrc_adjusted, ov_img));
 			}
 		}

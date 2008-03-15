@@ -64,6 +64,10 @@ Version 1.5.0-svn:
      resolutions if compiled with those switches
    * learn the underlaying terrain so you'll not have a blank like in the unit
      stats if you encounter a terain aliased to a unencountered terrain
+   * convert the render engine to a z-ordered based engine, this allows to 
+     have multiple layers and the calculation and rendering are separated
+     which means things can be drawn in front of units.
+   * removed the now unused tilestack based drawing.
 
 Version 1.4:
  * language and i18n:

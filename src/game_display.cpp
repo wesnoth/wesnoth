@@ -363,41 +363,44 @@ void game_display::draw(bool update,bool force)
 			}
 			*/
 
-			tile_stack_clear();
-
 			if(!is_shrouded) {
 				// unshrouded terrain (the normal case)
-				tile_stack_append(get_terrain_images(*it,tod.id, image_type, ADJACENT_BACKGROUND));
+				drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, 
+					get_terrain_images(*it,tod.id, image_type, ADJACENT_BACKGROUND)));
 
 				// village-control flags.
-				tile_stack_append(get_flag(*it));
+				drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, get_flag(*it)));
 
 				typedef overlay_map::const_iterator Itor;
 
 				for(std::pair<Itor,Itor> overlays = overlays_.equal_range(*it);
 					overlays.first != overlays.second; ++overlays.first) {
 
-					tile_stack_append(image::get_image(overlays.first->second.image,image_type));
+					drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
+						image::get_image(overlays.first->second.image,image_type)));
 				}
 			}
 
 			if(!is_shrouded) {
-				tile_stack_append(get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND));
+				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, 
+					get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
 			}
 
 			// Draw the time-of-day mask on top of the terrain in the hex.
 			// tod may differ from tod if hex is illuminated.
 			std::string tod_hex_mask = timeofday_at(status_,units_,*it,map_).image_mask;
 			if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
-				tile_stack_append(tod_hex_mask1);
-				tile_stack_append(tod_hex_mask2);
+				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask1));
+				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask2));
 			} else if(tod_hex_mask != "") {
-				tile_stack_append(image::get_image(tod_hex_mask,image::UNMASKED));
+				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
+					image::get_image(tod_hex_mask,image::UNMASKED)));
 			}
 
 			// Draw the grid, if that's been enabled
 			if(grid_ && !is_shrouded && on_map && !off_map_tile) {
-				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image(game_config::grid_image, image::SCALED_TO_HEX)));
 			}
 
 			// Draw reach_map information.
@@ -405,44 +408,52 @@ void game_display::draw(bool update,bool force)
 			// that we want to attack.
 			if (!is_shrouded && !reach_map_.empty()
 					&& reach_map_.find(*it) == reach_map_.end() && *it != attack_indicator_dst_) {
-				tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image(game_config::unreachable_image,image::UNMASKED)));
 			}
 
 			// Draw cross images for debug highlights
 			if(game_config::debug && debugHighlights_.count(*it)) {
-				tile_stack_append(image::get_image(game_config::cross_image, image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image(game_config::cross_image, image::SCALED_TO_HEX)));
 			}
 
 			// Add the top layer overlay surfaces
 			if(!hex_overlay_.empty()) {
 				std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(*it);
 				if(itor != hex_overlay_.end())
-					tile_stack_append(itor->second);
+					drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos, itor->second));
 			}
 
 			// Footsteps indicating a movement path
-			tile_stack_append(footsteps_images(*it));
+			drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos, footsteps_images(*it)));
 
 			// Paint selection and mouseover overlays
-			if(*it == selectedHex_ && on_map && selected_hex_overlay_ != NULL)
-				tile_stack_append(selected_hex_overlay_);
-			if(*it == mouseoverHex_ && on_map && mouseover_hex_overlay_ != NULL)
-				tile_stack_append(mouseover_hex_overlay_);
+			if(*it == selectedHex_ && on_map && selected_hex_overlay_ != NULL) {
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
+			}				
+			if(*it == mouseoverHex_ && on_map && mouseover_hex_overlay_ != NULL) {
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
+			}
 
 			// Draw the attack direction indicator
 			if(on_map && *it == attack_indicator_src_) {
-				tile_stack_append(image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED)));
 			} else if (on_map && *it == attack_indicator_dst_) {
-				tile_stack_append(image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED)));
 			}
 
 			// Apply shroud, fog and linger overlay
 			if(is_shrouded) {
 				// We apply void also on off-map tiles
 				// to shroud the half-hexes too
-				tile_stack_append(image::get_image(shroud_image, image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image(shroud_image, image::SCALED_TO_HEX)));
 			} else if(fogged(*it)) {
-				tile_stack_append(image::get_image(fog_image, image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image(fog_image, image::SCALED_TO_HEX)));
 			} 
 			// Linger overlay unconditionally otherwise it might give glitches
 			// so it's drawn over the shroud and fog.
@@ -453,10 +464,9 @@ void game_display::draw(bool update,bool force)
 			}
 
 			if(!is_shrouded) {
-				tile_stack_append(get_terrain_images(*it, tod.id, image::SCALED_TO_HEX, ADJACENT_FOGSHROUD));
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					get_terrain_images(*it, tod.id, image::SCALED_TO_HEX, ADJACENT_FOGSHROUD)));
 			}
-
-			tile_stack_render(xpos, ypos);
 
 			// Show def% and turn to reach infos
 			if(!is_shrouded && on_map) {
@@ -660,8 +670,8 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	SDL_Rect bot = {0,bar_loc.y+skip_rows,surf->w,0};
 	bot.h = surf->w - bot.y;
 
-	drawing_buffer_add(LAYER_UNIT_FG, drawing_order, tblit(xpos, ypos, surf, top));
-	drawing_buffer_add(LAYER_UNIT_FG, drawing_order, tblit(xpos, ypos + top.h, surf, bot));
+	drawing_buffer_add(LAYER_UNIT_BAR, drawing_order, tblit(xpos, ypos, surf, top));
+	drawing_buffer_add(LAYER_UNIT_BAR, drawing_order, tblit(xpos, ypos + top.h, surf, bot));
 
 	const size_t unfilled = static_cast<const size_t>(height*(1.0 - filled));
 
@@ -671,7 +681,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 		surface filled_surf(SDL_CreateRGBSurface(SDL_SWSURFACE, bar_loc.w, height - unfilled, 32,  /*col.r << 16, col.g << 8, col.b, 0x44000000*/0xFF0000, 0xFF00, 0xFF, 0 ) );
 		SDL_Rect filled_area = {0, 0, bar_loc.w, height-unfilled};
 		fill_rect_alpha(filled_area, colour, r_alpha, filled_surf);
-		drawing_buffer_add(LAYER_UNIT_FG, drawing_order, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf));
+		drawing_buffer_add(LAYER_UNIT_BAR, drawing_order, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf));
 	} 
 }
 
@@ -685,6 +695,8 @@ void game_display::set_game_mode(const tgame_mode game_mode)
 
 void game_display::draw_movement_info(const gamemap::location& loc)
 {
+	const int drawing_order = gamemap::get_drawing_order(loc);
+
 	// Search if there is a waypoint here
 	std::map<gamemap::location, paths::route::waypoint>::iterator w = route_.waypoints.find(loc);
 
@@ -701,31 +713,31 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 			// With 11 colors, the last one will be used only for def=100
 			int val = (game_config::defense_color_scale.size()-1) * def/100;
 			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
-			draw_text_in_hex(loc, def_text.str(), 18, color);
+			draw_text_in_hex(loc, LAYER_TERRAIN_TMP, def_text.str(), 18, color);
 
 			int xpos = get_location_x(loc);
 			int ypos = get_location_y(loc);
 
             if (w->second.invisible) {
-				surface hidden_surf = image::get_image("misc/hidden.png", image::UNMASKED);
-				video().blit_surface(xpos, ypos, hidden_surf);
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image("misc/hidden.png", image::UNMASKED)));
 			}
 
 			if (w->second.zoc) {
-				surface zoc_surf = image::get_image("misc/zoc.png", image::UNMASKED);
-				video().blit_surface(xpos, ypos, zoc_surf);
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image("misc/zoc.png", image::UNMASKED)));
 			}
 
 			if (w->second.capture) {
-				surface capture_surf = image::get_image("misc/capture.png", image::UNMASKED);
-				video().blit_surface(xpos, ypos, capture_surf);
+				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+					image::get_image("misc/capture.png", image::UNMASKED)));
 			}
 
 			//we display turn info only if different from a simple last "1"
 			if (w->second.turns > 1 || loc != route_.steps.back()) {
 				std::stringstream turns_text;
 				turns_text << w->second.turns;
-				draw_text_in_hex(loc, turns_text.str(), 17, font::NORMAL_COLOUR, 0.5,0.8);
+				draw_text_in_hex(loc, LAYER_TERRAIN_TMP, turns_text.str(), 17, font::NORMAL_COLOUR, 0.5,0.8);
 			}
 			// The hex is full now, so skip the "show enemy moves"
 			return;
@@ -736,7 +748,7 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach != reach_map_.end() && reach->second > 1) {
 			const std::string num = lexical_cast<std::string>(reach->second);
-			draw_text_in_hex(loc, num, 16, font::YELLOW_COLOUR);
+			draw_text_in_hex(loc, LAYER_TERRAIN_TMP, num, 16, font::YELLOW_COLOUR);
 		}
 	}
 }
