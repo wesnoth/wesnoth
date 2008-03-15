@@ -268,8 +268,8 @@ tcanvas::tline::tline(const vconfig& cfg) :
 
 void tcanvas::tline::draw(surface& canvas)
 {
-	DBG_GUI << "Draw line from :" 
-		<< x1_ << ',' << y1_ << " to : " << x2_ << ',' << y2_ << '\n';
+	DBG_GUI << "Draw line from: " 
+		<< x1_ << ',' << y1_ << " to: " << x2_ << ',' << y2_ << '\n';
 
 	// we wrap around the coordinates, this might be moved to be more
 	// generic place, but leave it here for now. Note the numbers are
@@ -326,6 +326,10 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
 	rect_.w = lexical_cast_default<int>(cfg["w"]);
 	rect_.h = lexical_cast_default<int>(cfg["h"]);
 
+	if(border_colour_ == 0) {
+		border_thickness_ = 0;
+	}
+
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI << debug << '\n';
@@ -336,17 +340,20 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
 void tcanvas::trectangle::draw(surface& canvas)
 {
 
-	//FIXME wrap the points and validate the input
+	DBG_GUI << "Draw rectangle from: " << rect_.x << ',' << rect_.y 
+		<< " width: " << rect_.w << " height: " << rect_.h << '\n';
 
 	surface_lock locker(canvas);
+
+	//FIXME wrap the points and validate the input
 
 	// draw the border
 	for(unsigned i = 0; i < border_thickness_; ++i) {
 
 		const unsigned left = rect_.x + i;
-		const unsigned right = rect_.x + rect_.w - 2 * i;
+		const unsigned right = left + rect_.w - (i * 2) - 1;
 		const unsigned top = rect_.y + i;
-		const unsigned bottom = rect_.y + rect_.h - 2 * i;
+		const unsigned bottom = top + rect_.h - (i * 2) - 1;
 
 		// top horizontal (left -> right)
 		draw_line(canvas, border_colour_, left, top, right, top);
@@ -362,6 +369,21 @@ void tcanvas::trectangle::draw(surface& canvas)
 
 	}
 
+	// The fill_rect_alpha code below fails, can't remember the exact cause
+	// so use the slow line drawing method to fill the rect.
+	if(fill_colour_) {
+		
+		const unsigned left = rect_.x + border_thickness_;
+		const unsigned right = left + rect_.w - (2 * border_thickness_) - 1;
+		const unsigned top = rect_.y + border_thickness_;
+		const unsigned bottom = top + rect_.h - (2 * border_thickness_);
+
+		for(unsigned i = top; i < bottom; ++i) {
+			
+			draw_line(canvas, fill_colour_, left, i, right, i);
+		}
+	}
+/*
 	const unsigned left = rect_.x + border_thickness_ + 1;
 	const unsigned top = rect_.y + border_thickness_ + 1;
 	const unsigned width = rect_.w - (2 * border_thickness_) - 2;
@@ -372,8 +394,9 @@ void tcanvas::trectangle::draw(surface& canvas)
 	const Uint8 alpha = fill_colour_ & 0xFF;
 
 	// fill
-	fill_rect_alpha(rect_, colour, alpha, canvas);
-
+	fill_rect_alpha(rect, colour, alpha, canvas);
+	canvas = blend_surface(canvas, 255, 0xAAAA00);	
+*/	
 }
 
 tcanvas::timage::timage(const vconfig& cfg) :
