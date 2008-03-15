@@ -109,7 +109,7 @@ class sourcespec {
 
 public:
 	sourcespec(const std::string &id_, const std::string &files_, int min_delay_, int chance_)
-		: id(id), files(files_), min_delay(min_delay_), chance(chance_)
+		: id(id_), files(files_), min_delay(min_delay_), chance(chance_)
 	{ 
 		loops = 0;
 		check_fogged = false;
