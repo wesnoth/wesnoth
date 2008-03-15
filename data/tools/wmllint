@@ -2131,8 +2131,14 @@ if __name__ == '__main__':
                     transformed = re.sub(r"\bdescription\s*=", "id=", line)
                 if "name" not in tagstack[-1][1]:
                     transformed = re.sub(r"user_description\s*=", "name=", line)
-                # One-time conversion
-                #transformed = re.sub(r"\bdescription\s*=", "name=", line)
+            # Alas, WML variable references cannod be converted so
+            # automatically.
+            if ".description" in line: 
+                print '"%s", line %d: .description may need hand fixup' % \
+                                       (filename, lineno)
+            if ".user_description" in line: 
+                print '"%s", line %d: .user_description may need hand fixup' % \
+                                       (filename, lineno)
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
