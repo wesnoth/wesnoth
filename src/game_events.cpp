@@ -1419,6 +1419,35 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
+	else if(cmd == "switch") {
+		assert(state_of_game != NULL);
+
+		const std::string var_name = cfg["variable"];
+		const std::string& var = state_of_game->get_variable_const(var_name);
+		
+		bool not_found = true;
+		const vconfig::child_list& cases = cfg.get_children("case");
+		// execute all cases where the value matches
+		for(vconfig::child_list::const_iterator c = cases.begin(); c != cases.end(); ++c) {
+			const std::string value = (*c)["value"];
+			if (var == value) {
+				not_found = false;
+				if(!handle_event(event_info, *c)) {
+					mutated = false;
+				}
+			}
+		}
+		if (not_found) {
+			// otherwise execute 'else' statements
+			const vconfig::child_list elses = cfg.get_children("else");
+			for(vconfig::child_list::const_iterator e = elses.begin(); e != elses.end(); ++e) {
+				if(!handle_event(event_info, *e)) {
+					mutated = false;
+				}
+			}
+		}
+	}
+
 	else if(cmd == "role") {
 
 		// Get a list of the types this unit can be
