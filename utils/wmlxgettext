@@ -23,13 +23,13 @@ eval "require \"$module\";";
 ## extract strings with their refs into %messages
 
 our ($str,$translatable,$line,%messages,%nodeinfo);
-our $valid_wml = 1;
 chdir $toplevel;
 foreach my $file (@ARGV) {
   open (FILE, "<$file") or die "cannot read from $file";
   my $readingattack = 0;
   my @nodeinfostack = (["top", [], []]); # dummy top node
   my @domainstack = ($initialdomain);
+  my $valid_wml = 1;
   my ($is_define, $macro_has_textdomain) = (0, 0);
  LINE: while (<FILE>) {
     # record a #define scope
@@ -58,7 +58,7 @@ foreach my $file (@ARGV) {
       if ($1 ne '' and $domainstack[0] eq $domain) {
         my $msg = raw2postring($2);
         push @{$messages{$msg}}, "$file:$.";
-        push @{$nodeinfostack[-1][1]}, $msg;
+        push @{$nodeinfostack[-1][1]}, $msg if $valid_wml;
       }
 
       # process remaining of the line
@@ -83,7 +83,7 @@ foreach my $file (@ARGV) {
       if ($translatable and $domainstack[0] eq $domain) {
         my $msg = "\"\"\n" . raw2postring($str);
         push @{$messages{$msg}}, "$file:$." ;
-        push @{$nodeinfostack[-1][1]}, $msg;
+        push @{$nodeinfostack[-1][1]}, $msg if $valid_wml;
       }
       $str = undef;
 
@@ -101,7 +101,7 @@ foreach my $file (@ARGV) {
       die "nested string in $file" if defined $str;
       my ($field, $value) = ($1, $2);
       if ($field =~ m/\b(speaker|role|description|condition|type|race)\b/) {
-        push @{$nodeinfostack[-1][2]}, "$field=$value";
+        push @{$nodeinfostack[-1][2]}, "$field=$value" if $valid_wml;
       }
 
 ### probably not needed ###
@@ -130,23 +130,25 @@ foreach my $file (@ARGV) {
       #my $ind = "  " x (@nodeinfostack + ($nodename =~ m,/, ? 0 : 1));
       if ($nodename =~ s,/ *,,) { # closing node
         if (@nodeinfostack == 0) {
-            warn "empty node stack on closed node at $file:$.";
-            $valid_wml = 0;
+          warn "empty node stack on closed node at $file:$.";
+          $valid_wml = 0;
+          last;
         }
         my ($openname, $messages, $metadata) = @{pop @nodeinfostack};
         if ($nodename ne $openname) {
-            warn "expected closed node \'$openname\' ".
-                 "got \'$nodename\' at $file:$.";
-            $valid_wml = 0;
+          warn "expected closed node \'$openname\' ".
+               "got \'$nodename\' at $file:$.";
+          $valid_wml = 0;
+          last;
         }
         # some nodes should inherit parent metadata
         if ($nodename =~ m/option/) {
-            $metadata = $nodeinfostack[-1][2];
+          $metadata = $nodeinfostack[-1][2];
         }
         #print STDERR "$ind<<< $.: $nodename\n";
         #print STDERR "==> $file:$.: $nodename: @{$metadata}\n" if @{$messages};
         for my $msg (@{$messages}) {
-            push @{$nodeinfo{$msg}}, [$nodename, $metadata];
+          push @{$nodeinfo{$msg}}, [$nodename, $metadata];
         }
       } else { # opening node
         #print STDERR "$ind>>> $.: $nodename\n";
@@ -156,17 +158,18 @@ foreach my $file (@ARGV) {
     }
     # do not add anything here, beware of the next's before the loop
   }
-  pop @nodeinfostack; # dummy top node
+  pop @nodeinfostack if @nodeinfostack; # dummy top node
   if (@nodeinfostack) {
     warn "non-empty node stack at end of $file";
     $valid_wml = 0;
   }
 
   close FILE;
-}
 
-if (not $valid_wml) {
-    warn "WML seems invalid, forfeiting extraction of node info"
+  if (not $valid_wml) {
+    warn "WML seems invalid for $file, node info extraction forfeited ".
+         "past the error point";
+  }
 }
 
 ## index strings by their location in the source so we can sort them
@@ -211,7 +214,7 @@ EOH
 foreach my $occurence (@revmessages) {
   my $key = $occurence->[2];
   if (defined $messages{$key}) {
-    if ($valid_wml and defined $nodeinfo{$key}) {
+    if (defined $nodeinfo{$key}) {
       my %added;
       for my $info (@{$nodeinfo{$key}}) {
         my ($name, $data) = @{$info};
