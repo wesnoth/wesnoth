@@ -184,7 +184,6 @@ public:
 	void set_idling(const game_display& disp,const gamemap::location& loc);
 	void set_selecting(const game_display& disp,const gamemap::location& loc);
 	const unit_animation* get_animation() const {  return anim_;};
-	void set_offset(double offset){offset_ = offset;}
 	void set_facing(gamemap::location::DIRECTION dir);
 	gamemap::location::DIRECTION facing() const { return facing_; }
 
@@ -365,7 +364,6 @@ private:
 	int frame_begin_time_;
 
 
-	double offset_;
 	int unit_halo_;
 	int unit_anim_halo_;
 	bool getsHit_;

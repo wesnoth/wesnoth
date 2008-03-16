@@ -29,6 +29,7 @@
 progressive_string::progressive_string(const std::string & data,int duration)
 {
 		const std::vector<std::string> first_pass = utils::split(data);
+		input_ = data;
 		const int time_chunk = maximum<int>(duration / (first_pass.size()?first_pass.size():1),1);
 
 		std::vector<std::string>::const_iterator tmp;
@@ -70,6 +71,7 @@ const std::string& progressive_string::get_current_element(int current_time,cons
 template <class T>
 progressive_<T>::progressive_(const std::string &data, int duration)
 {
+	input_ = data;
 	const std::vector<std::string> first_split = utils::split(data);
 	const int time_chunk = maximum<int>(duration / (first_split.size()?first_split.size():1),1);
 
@@ -154,66 +156,77 @@ template class progressive_<double>;
 
 
 
-frame_builder::frame_builder(const config& cfg)
+frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 {
-	initialization_finished=false;
-	image(image::locator(cfg["image"]));
-	image_diagonal(image::locator(cfg["image_diagonal"]));
-	sound(cfg["sound"]);
-	std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
+	image(image::locator(cfg[frame_string+"image"]));
+	image_diagonal(image::locator(cfg[frame_string+"image_diagonal"]));
+	sound(cfg[frame_string+"sound"]);
+	std::vector<std::string> tmp_string_vect=utils::split(cfg[frame_string+"text_color"]);
 	if(tmp_string_vect.size() ==3) {
-		text(cfg["text"],
+		text(cfg[frame_string+"text"],
 		 display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
 	} else {
-		text(cfg["text"],0);
+		text(cfg[frame_string+"text"],0);
 	}
 
-	if(!cfg["duration"].empty()) {
-		duration(atoi(cfg["duration"].c_str()));
+	if(!cfg[frame_string+"duration"].empty()) {
+		duration(atoi(cfg[frame_string+"duration"].c_str()));
 	} else {
-		duration(atoi(cfg["end"].c_str()) - atoi(cfg["begin"].c_str()));
+		duration(atoi(cfg[frame_string+"end"].c_str()) - atoi(cfg[frame_string+"begin"].c_str()));
 	}
-	halo(cfg["halo"],cfg["halo_x"],cfg["halo_y"]);
-	 tmp_string_vect=utils::split(cfg["blend_color"]);
+	halo(cfg[frame_string+"halo"],cfg[frame_string+"halo_x"],cfg[frame_string+"halo_y"]);
+	 tmp_string_vect=utils::split(cfg[frame_string+"blend_color"]);
 	if(tmp_string_vect.size() ==3) {
-		blend(cfg["blend_ratio"],display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
+		blend(cfg[frame_string+"blend_ratio"],display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
 	} else {
-		blend(cfg["blend_ratio"],0);
+		blend(cfg[frame_string+"blend_ratio"],0);
 	}
-	highlight(cfg["alpha"]);
-	offset(cfg["offset"]);
-	initialization_finished=true;
+	highlight(cfg[frame_string+"alpha"]);
+	offset(cfg[frame_string+"offset"]);
 
 }
 
+const frame_parameters frame_builder::parameters(int current_time, const frame_parameters & default_val) const
+{
+	frame_parameters result;
+	result.duration = duration_ == 0?default_val.duration:duration_;
+	result.image = image_.is_void()?default_val.image:image_;
+	result.image_diagonal = image_diagonal_.is_void()?default_val.image_diagonal:image_diagonal_;
+	result.halo = halo_.get_current_element(current_time,default_val.halo);
+	result.sound = sound_.empty()?default_val.sound:sound_;
+	result.text = text_.empty()?default_val.text:text_;
+	result.text_color = text_color_ == 0?default_val.text_color:text_color_;
+	result.halo_x = halo_x_.get_current_element(current_time,default_val.halo_x);
+	result.halo_y = halo_y_.get_current_element(current_time,default_val.halo_y);
+	result.blend_with = blend_with_ == 0?default_val.blend_with:blend_with_;
+	result.blend_ratio = blend_ratio_.get_current_element(current_time,default_val.blend_ratio);
+	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,default_val.highlight_ratio);
+	result.offset = offset_.get_current_element(current_time,default_val.offset);
+	return result;
+}
 frame_builder & frame_builder::image(const image::locator image )
 {
-	assert(!initialization_finished);
 	image_ = image;
 	return *this;
 }
 frame_builder & frame_builder::image_diagonal(const image::locator image_diagonal)
 {
-	assert(!initialization_finished);
 	image_diagonal_ = image_diagonal;
 	return *this;
 }
 frame_builder & frame_builder::sound(const std::string& sound)
 {
-	assert(!initialization_finished);
 	sound_=sound;
 	return *this;
 }
 frame_builder & frame_builder::text(const std::string& text,const  Uint32 text_color)
 {
-	assert(!initialization_finished);
 	text_=text;
 	text_color_=text_color;
 	return *this;
 }
 frame_builder & frame_builder::halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y)
 {
-	assert(!initialization_finished);
 	halo_ = progressive_string(halo,duration_);
 	halo_x_ = progressive_int(halo_x,duration_);
 	halo_y_ = progressive_int(halo_y,duration_);
@@ -221,27 +234,29 @@ frame_builder & frame_builder::halo(const std::string &halo, const std::string &
 }
 frame_builder & frame_builder::duration(const int duration)
 {
-	assert(!initialization_finished);
 	duration_= duration;
+	halo_ = progressive_string(halo_.get_original(),duration_);
+	halo_x_ = progressive_int(halo_x_.get_original(),duration_);
+	halo_y_ = progressive_int(halo_y_.get_original(),duration_);
+	blend_ratio_=progressive_double(blend_ratio_.get_original(),duration_);
+	highlight_ratio_=progressive_double(highlight_ratio_.get_original(),duration_);
+	offset_=progressive_double(offset_.get_original(),duration_);
 	return *this;
 }
 frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
 {
-	assert(!initialization_finished);
 	blend_with_=blend_color;
 	blend_ratio_=progressive_double(blend_ratio,duration_);
 	return *this;
 }
 frame_builder & frame_builder::highlight(const std::string& highlight)
 {
-	assert(!initialization_finished);
 	highlight_ratio_=progressive_double(highlight,duration_);
 	return *this;
 }
 frame_builder & frame_builder::offset(const std::string& offset)
 {
-	assert(!initialization_finished);
-	offset_=progressive_double(offset);
+	offset_=progressive_double(offset,duration_);
 	return *this;
 }
 bool frame_builder::does_not_change() const
@@ -266,7 +281,7 @@ bool frame_builder::need_update() const
 	return false;
 }
 
-void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id)const
+void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & default_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -274,27 +289,28 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 	const int ydst = game_display::get_singleton()->get_location_y(dst);
 	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
 
-	double tmp_offset = offset(frame_time);
+	const frame_parameters current_data = builder_.parameters(frame_time,default_val);
+	double tmp_offset = current_data.offset;
 	int d2 = game_display::get_singleton()->hex_size() / 2;
 
 	if(first_time ) {
 		// stuff sthat should be done only once per frame
-		if(!sound().empty()  ) {
-			sound::play_sound(sound());
+		if(!current_data.sound.empty()  ) {
+			sound::play_sound(current_data.sound);
 		}
-		if(!text().first.empty()  ) {
-			game_display::get_singleton()->float_label(src,text().first,
-			(text().second & 0x00FF0000) >> 16,
-			(text().second & 0x0000FF00) >> 8,
-			(text().second & 0x000000FF) >> 0);
+		if(!current_data.text.empty()  ) {
+			game_display::get_singleton()->float_label(src,current_data.text,
+			(current_data.text_color & 0x00FF0000) >> 16,
+			(current_data.text_color & 0x0000FF00) >> 8,
+			(current_data.text_color & 0x000000FF) >> 0);
 		}
 	}
 	image::locator image_loc;
 	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
-		image_loc = image_diagonal();
+		image_loc = current_data.image_diagonal;
 	} 
 	if(image_loc.is_void()) { // invalid diag image, or not diagonal
-		image_loc = image();
+		image_loc = current_data.image;
 	}
 
 	surface image;
@@ -310,11 +326,11 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 		bool facing_west = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::SOUTH_WEST;
 		bool facing_north = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::NORTH || direction == gamemap::location::NORTH_EAST;
 		game_display::get_singleton()->render_unit_image(x- image->w/2, y - image->h/2, false, gamemap::get_drawing_order(src), image, facing_west, false,
-				highlight_ratio(frame_time), blend_with(0), blend_ratio(frame_time),0,!facing_north);
+				ftofxp(current_data.highlight_ratio), current_data.blend_with, current_data.blend_ratio,0,!facing_north);
 	}
 	halo::remove(*halo_id);
 	*halo_id = halo::NO_HALO;
-	if(!halo(frame_time).empty()) {
+	if(!current_data.halo.empty()) {
 		halo::ORIENTATION orientation;
 		switch(direction)
 		{
@@ -338,15 +354,15 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 				break;
 		}
 		if(direction != gamemap::location::SOUTH_WEST && direction != gamemap::location::NORTH_WEST) {
-			*halo_id = halo::add(x+halo_x(frame_time),
-					y+halo_y(frame_time),
-					halo(frame_time),
+			*halo_id = halo::add(x+current_data.halo_x,
+					y+current_data.halo_y,
+					current_data.halo,
 					gamemap::location(-1, -1),
 					orientation);
 		} else {
-			*halo_id = halo::add(x-halo_x(frame_time),
-					y+halo_y(frame_time),
-					halo(frame_time),
+			*halo_id = halo::add(x-current_data.halo_x,
+					y+current_data.halo_y,
+					current_data.halo,
 					gamemap::location(-1, -1),
 					orientation);
 		}

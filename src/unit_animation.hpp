@@ -58,18 +58,7 @@ class unit_animation
 	friend class unit;
 	protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
-		image::locator image() const { return unit_anim_.get_current_frame().image() ; }
-		image::locator image_diagonal() const { return unit_anim_.get_current_frame().image_diagonal() ; }
-		std::string sound() const { return unit_anim_.get_current_frame().sound() ; };
-		Uint32 blend_with(const Uint32 default_val=0) const{ return unit_anim_.blend_with(default_val) ; };
-		const std::string &halo(const std::string&default_val ="") const{ return unit_anim_.halo(default_val); };
-		int halo_x(const int default_val = 0) const{ return unit_anim_.halo_x(default_val); };
-		int halo_y(const int default_val = 0) const{ return unit_anim_.halo_y(default_val); };
-		double blend_ratio(const double default_val = 0.0) const{ return unit_anim_.blend_ratio(default_val); };
-		fixed_t highlight_ratio(const float default_val = 1.0) const{ return unit_anim_.highlight_ratio(default_val); };
-		public:
-		double offset(double default_val =0.0) const{ return unit_anim_.offset(default_val); };
-		std::pair<std::string,Uint32> text() const { return unit_anim_.text() ; };
+	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters()) const { return unit_anim_.parameters(default_val); };
 	private:
 		static config prepare_animation(const config &cfg,const std::string animation_tag);
 		explicit unit_animation(const config& cfg,const std::string frame_string ="");
@@ -80,13 +69,7 @@ class unit_animation
 			explicit particule(int start_time=0) :
 				animated<unit_frame>(start_time),
 				accelerate(true),
-				offset_(),
-				halo_(),
-				halo_x_(),
-				halo_y_(),
-				blend_with_(0),
-				blend_ratio_(),
-				highlight_ratio_(),
+				parameters_(),
 				src_(),
 				dst_(),
 				halo_id_(0),
@@ -96,27 +79,14 @@ class unit_animation
 			virtual ~particule();
 			bool need_update() const;
 			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
-			const std::string &halo(const std::string&default_val ="") const;
-			int halo_x(const int default_val = 0) const;
-			int halo_y(const int default_val = 0) const;
-			double blend_ratio(const double default_val = 0.0) const;
-			Uint32 blend_with(const Uint32 default_val = 0) const;
-			fixed_t highlight_ratio(const float default_val = 1.0) const;
-			double offset(double default_val =0.0) const;
-			std::pair<std::string,Uint32> text() const ;
 			void redraw( );
 			void start_animation(int start_time,const gamemap::location& src,const  gamemap::location& dst, bool cycles=false);
+			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time(),default_val)); };
 			bool accelerate;
 		private:
 
 			//animation params that can be locally overridden by frames
-			progressive_double offset_;
-			progressive_string halo_;
-			progressive_int halo_x_;
-			progressive_int halo_y_;
-			Uint32 blend_with_;
-			progressive_double blend_ratio_;
-			progressive_double highlight_ratio_;
+			frame_builder parameters_;
 			gamemap::location src_;
 			gamemap::location dst_;
 			int halo_id_;

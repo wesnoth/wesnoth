@@ -501,7 +501,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.push_back(unit_animation(**anim_itor));
 			if(atoi((**anim_itor)["value"].c_str()) != 0) {
 				animations.back().add_frame(100,frame_builder()
-							.image(animations.back().get_last_frame().image())
+							.image(animations.back().get_last_frame().parameters(0).image)
 							.duration(100)
 							.blend("0.5:50,0.0:50",game_display::rgb(255,0,0)));
 			}
@@ -511,7 +511,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			(**anim_itor)["value"]="";
 			animations.push_back(unit_animation(**anim_itor));
 				animations.back().add_frame(100,frame_builder()
-							.image(animations.back().get_last_frame().image())
+							.image(animations.back().get_last_frame().parameters(0).image)
 							.duration(100)
 							.blend("0.5:50,0.0:50",game_display::rgb(255,0,0)));
 		}
@@ -539,7 +539,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	for(anim_itor = deaths.begin(); anim_itor != deaths.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="death";
 		animations.push_back(unit_animation(**anim_itor));
-		image::locator image_loc = animations.back().get_last_frame().image();
+		image::locator image_loc = animations.back().get_last_frame().parameters(0).image;
 		animations.back().add_frame(600,frame_builder().image(image_loc).duration(600).highlight("1~0:600"));
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = particule();
@@ -577,68 +577,18 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 void unit_animation::particule::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset) 
 {
 	set_begin_time(start_time);
-	if(!highlight.empty()) highlight_ratio_ = progressive_double(highlight,get_animation_duration());
-	if(!offset.empty()) offset_ = progressive_double(offset,get_animation_duration());
-	if(!blend_ratio.empty()) {
-		blend_ratio_ = progressive_double(blend_ratio,get_animation_duration());
-		blend_with_ = blend_color;
-	}
+	if(!highlight.empty()) parameters_.highlight(highlight);
+	if(!offset.empty()) parameters_.offset(offset);
+	if(!blend_ratio.empty()) parameters_.blend(blend_ratio,blend_color);
 	
 
-}
-const std::string &unit_animation::particule::halo(const std::string&default_val ) const
-{
-	return get_current_frame().halo(get_current_frame_time(),halo_.get_current_element(get_animation_time() - get_begin_time(),default_val));
-}
-
-int unit_animation::particule::halo_x(const int default_val) const 
-{
-	return get_current_frame().halo_x(get_current_frame_time(),halo_x_.get_current_element(get_animation_time() - get_begin_time(),default_val));
-}
-int unit_animation::particule::halo_y(const int default_val) const 
-{
-	return get_current_frame().halo_y(get_current_frame_time(),halo_y_.get_current_element(get_animation_time() - get_begin_time(),default_val)); 
-}
-double unit_animation::particule::blend_ratio(const double default_val) const
-{
-
-	return get_current_frame().blend_ratio(
-		get_current_frame_time(),
-		blend_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val)); 
-}
-
-Uint32 unit_animation::particule::blend_with(const Uint32 default_val) const
-{
-	return get_current_frame().blend_with(blend_with_?blend_with_:default_val);
-}
-
-fixed_t unit_animation::particule::highlight_ratio(const float default_val) const
-{
-	return get_current_frame().highlight_ratio(get_current_frame_time(),highlight_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val));
-}
-
-double unit_animation::particule::offset(double default_val) const
-{
-	return get_current_frame().offset(get_current_frame_time(),offset_.get_current_element(get_animation_time() - get_begin_time(),default_val))  ; 
-}
-
-std::pair<std::string,Uint32> unit_animation::particule::text() const 
-{
-	return get_current_frame().text();
 }
 
 bool unit_animation::particule::need_update() const
 {
 	if(animated<unit_frame>::need_update()) return true;
 	if(get_current_frame().need_update()) return true;
-	if(!halo_.does_not_change() ||
-			!halo_x_.does_not_change() ||
-			!halo_y_.does_not_change() ||
-			!blend_ratio_.does_not_change() ||
-			!highlight_ratio_.does_not_change() ||
-			!offset_.does_not_change() ) {
-			return true;
-	}
+	if(parameters_.need_update()) return true;
 	return false;
 }
 
@@ -646,13 +596,7 @@ unit_animation::particule::particule(
 	const config& cfg, const std::string frame_string ) :
 		animated<unit_frame>(),
 		accelerate(true),
-		offset_(),
-		halo_(),
-		halo_x_(),
-		halo_y_(),
-		blend_with_(0),
-		blend_ratio_(),
-		highlight_ratio_(),
+		parameters_(cfg,frame_string),
 		src_(),
 		dst_(),
 		halo_id_(0),
@@ -673,20 +617,8 @@ unit_animation::particule::particule(
 		unit_frame tmp_frame(**range.first);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
 	}
-	halo_ = progressive_string(cfg[frame_string+"halo"],get_animation_duration());
-	halo_x_ = progressive_int(cfg[frame_string+"halo_x"],get_animation_duration());
-	halo_y_ = progressive_int(cfg[frame_string+"halo_y"],get_animation_duration());
-	std::vector<std::string> tmp_blend=utils::split(cfg[frame_string+"blend_color"]);
-	if(tmp_blend.size() ==3) {blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));};
-	blend_ratio_ = progressive_double(cfg[frame_string+"blend_ratio"],get_animation_duration());
-	highlight_ratio_ = progressive_double(cfg[frame_string+"alpha"],get_animation_duration());
-	offset_ = progressive_double(cfg[frame_string+"offset"],get_animation_duration());
-	if(!halo_.does_not_change() ||
-			!halo_x_.does_not_change() ||
-			!halo_y_.does_not_change() ||
-			!blend_ratio_.does_not_change() ||
-			!highlight_ratio_.does_not_change() ||
-			!offset_.does_not_change() ) {
+	parameters_.duration(get_animation_duration());
+	if(!parameters_.does_not_change()  ) {
 			force_change();
 	}
 }
@@ -778,11 +710,12 @@ void unit_animation::redraw()
 void unit_animation::particule::redraw()
 {
 	const unit_frame& current_frame= get_current_frame();
+	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,src_,dst_,&halo_id_);
+		current_frame.redraw(get_current_frame_time(),true,src_,dst_,&halo_id_,default_val);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,src_,dst_,&halo_id_);
+		current_frame.redraw(get_current_frame_time(),false,src_,dst_,&halo_id_,default_val);
 	}
 }
 

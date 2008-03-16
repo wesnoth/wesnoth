@@ -155,7 +155,6 @@ unit::unit(const unit& o):
            anim_(NULL),
 
            frame_begin_time_(o.frame_begin_time_),
-           offset_(o.offset_),
            unit_halo_(o.unit_halo_),
            unit_anim_halo_(o.unit_anim_halo_),
            getsHit_(o.getsHit_),
@@ -202,7 +201,6 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	end_turn_ = false;
 	refreshing_  = false;
 	hidden_ = false;
-	offset_ = 0;
 	game_config::add_color_info(cfg);
 }
 
@@ -218,7 +216,6 @@ unit::unit(const game_data& gamedata,const config& cfg,bool use_traits) : moveme
 	end_turn_ = false;
 	refreshing_  = false;
 	hidden_ = false;
-	offset_ = 0;
 }
 
 void unit::clear_status_caches()
@@ -287,7 +284,6 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	getsHit_=0;
 	end_turn_ = false;
 	hold_position_ = false;
-	offset_ = 0;
 	next_idling_ = 0;
 	frame_begin_time_ = 0;
 	unit_halo_ = halo::NO_HALO;
@@ -331,7 +327,6 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	getsHit_=0;
 	end_turn_ = false;
 	hold_position_ = false;
-	offset_ = 0;
 }
 
 unit::~unit()
@@ -1623,7 +1618,6 @@ void unit::start_animation(const int start_time, const gamemap::location &loc,co
 	}
 	state_ =state;
 	draw_bars_ =  with_bars;
-	offset_=0;
 	if(anim_) delete anim_;
 	anim_ = new unit_animation(*animation);
 	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
@@ -1688,21 +1682,22 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		set_standing(loc);
 	}
 	anim_->update_last_draw_time();
+	const frame_parameters params = anim_->get_current_params();
 
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
 		frame_begin_time_ = anim_->get_current_frame_begin_time();
-		if(!anim_->sound().empty()) {
-			sound::play_sound(anim_->sound());
+		if(!params.sound.empty()) {
+			sound::play_sound(params.sound);
 		}
-		if(!anim_->text().first.empty()  ) {
-			game_display::get_singleton()->float_label(loc,anim_->text().first,
-			(anim_->text().second & 0x00FF0000) >> 16,
-			(anim_->text().second & 0x0000FF00) >> 8,
-			(anim_->text().second & 0x000000FF) >> 0);
+		if(!params.text.empty()  ) {
+			game_display::get_singleton()->float_label(loc,params.text,
+			(params.text_color & 0x00FF0000) >> 16,
+			(params.text_color & 0x0000FF00) >> 8,
+			(params.text_color & 0x000000FF) >> 0);
 		}
 	}
 
-	double tmp_offset = anim_->offset(offset_);
+	const double tmp_offset = params.offset;
 	int d2 = disp.hex_size() / 2;
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2 - height_adjust;
@@ -1719,19 +1714,19 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		halo::remove(unit_anim_halo_);
 		unit_anim_halo_ = halo::NO_HALO;
 	}
-	if(!anim_->halo().empty()) {
-		int dx = static_cast<int>(anim_->halo_x() * disp.get_zoom_factor());
-		int dy = static_cast<int>(anim_->halo_y() * disp.get_zoom_factor());
+	if(!params.halo.empty()) {
+		int dx = static_cast<int>(params.halo_x * disp.get_zoom_factor());
+		int dy = static_cast<int>(params.halo_y * disp.get_zoom_factor());
 		if (facing_west) dx = -dx;
 		unit_anim_halo_ = halo::add(x + dx, y + dy,
-			anim_->halo(), gamemap::location(-1, -1),
+			params.halo, gamemap::location(-1, -1),
 			facing_west ? halo::HREVERSE : halo::NORMAL);
 	}
 
 
 	image::locator image_loc;
 #ifndef LOW_MEM
-	image_loc = anim_->image();
+	image_loc = params.image;
 	if(image_loc.is_void()) {
 		image_loc = absolute_image();
 	}
@@ -1753,7 +1748,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 	bool stoned = utils::string_bool(get_state("stoned"));
 
-	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),anim_->highlight_ratio());
+	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),ftofxp(params.highlight_ratio));
 	if(invisible(loc,disp.get_units(),disp.get_teams()) &&
 			highlight_ratio > ftofxp(0.5)) {
 		highlight_ratio = ftofxp(0.5);
@@ -1762,8 +1757,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		highlight_ratio = ftofxp(1.5);
 	}
 
-	Uint32 blend_with = anim_->blend_with();
-	double blend_ratio = anim_->blend_ratio();
+	Uint32 blend_with = params.blend_with;
+	double blend_ratio = params.blend_ratio;
 	//if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
 	if (utils::string_bool(get_state("poisoned")) && blend_ratio == 0){
 		blend_with = disp.rgb(0,255,0);
@@ -1941,8 +1936,8 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 	}
 
 	// Very early calls, anim not initialized yet
-	double tmp_offset=offset_;
-	if(anim_)tmp_offset= anim_->offset(offset_);
+	double tmp_offset=0;
+	if(anim_)tmp_offset= anim_->get_current_params().offset;
 
 	// Invalidate adjacent neighbours if we don't stay in our hex
 	if(tmp_offset != 0) {

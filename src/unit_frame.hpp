@@ -36,19 +36,23 @@ class progressive_string {
 		int duration() const;
 		const std::string & get_current_element(int time,const std::string& default_val="") const;
 		bool does_not_change() const { return data_.size() <= 1; }
+		std::string get_original(){return input_;}
 	private:
 		std::vector<std::pair<std::string,int> > data_;
+		std::string input_;
 };
 
 template <class T>
 class progressive_
 {
 	std::vector<std::pair<std::pair<T, T>, int> > data_;
+	std::string input_;
 public:
 	progressive_(const std::string& data = "", int duration = 0);
 	int duration() const;
 	const T get_current_element(int time, const T default_val = 0) const;
 	bool does_not_change() const;
+		std::string get_original(){return input_;}
 };
 
 typedef progressive_<int> progressive_int;
@@ -58,7 +62,39 @@ typedef progressive_<double> progressive_double;
 // This hack prevents MSVC++ 6 to issue several warnings
 #ifndef UNIT_FRAME_H_PART2
 #define UNIT_FRAME_H_PART2
+//! All parameters from a frame at a given instant
+class frame_parameters{
+	public:
+	frame_parameters():
+	image(""),
+	image_diagonal(""),
+	halo(""),
+	sound(""),
+	text(""),
+	text_color(0),
+	halo_x(0),
+	halo_y(0),
+	duration(0),
+	blend_with(0),
+	blend_ratio(0.0),
+	highlight_ratio(1.0),
+	offset(0)
+	{};
 
+	image::locator image;
+	image::locator image_diagonal;
+	std::string halo;
+	std::string sound;
+	std::string text;
+	Uint32 text_color;
+	int halo_x;
+	int halo_y;
+	int duration;
+	Uint32 blend_with;
+	double blend_ratio;
+	double highlight_ratio;
+	double offset;
+} ;
 //! keep most parameters in a separate class to simplify handling of large number of parameters
 class frame_builder {
 	public:
@@ -76,9 +112,9 @@ class frame_builder {
 		blend_with_(0),
 		blend_ratio_(""),
 		highlight_ratio_(""),
-		offset_(""),
-		initialization_finished(false)	{};
-		frame_builder(const config& cfg);
+		offset_("")
+	{};
+		frame_builder(const config& cfg,const std::string &frame_string = "");
 		//! allow easy chained modifications will raised assert if used after initialization
 		frame_builder & image(const image::locator image );
 		frame_builder & image_diagonal(const image::locator image_diagonal);
@@ -90,26 +126,9 @@ class frame_builder {
 		frame_builder & highlight(const std::string& highlight);
 		frame_builder & offset(const std::string& offset);
 		//! getters for the different parameters
-		const image::locator image() const { return image_ ;}
-		const image::locator image_diagonal() const { return image_diagonal_ ; }
-		const std::string &halo(int current_time,const std::string& default_val="") const
-			{ return halo_.get_current_element(current_time,default_val); }
+		const frame_parameters parameters(int current_time, const frame_parameters & default_val = frame_parameters()) const;
 
-		const std::string sound() const { return sound_ ; };
-		const std::pair<std::string,Uint32> text() const { return std::pair<std::string,Uint32>(text_,text_color_) ; };
-		const int halo_x(int current_time,const int default_val=0) const { return halo_x_.get_current_element(current_time,default_val); }
-		const int halo_y(int current_time,const int default_val=0) const { return halo_y_.get_current_element(current_time,default_val); }
-		const int duration() const { return duration_; }
-		const Uint32 blend_with(const Uint32 default_val) const { return blend_with_?blend_with_:default_val; }
-		const double blend_ratio(int current_time,const double default_val=0.0) const
-			{ return blend_ratio_.get_current_element(current_time,default_val); }
-
-		const fixed_t highlight_ratio(int current_time,double default_val =0.0) const
-			{  return ftofxp(highlight_ratio_.get_current_element(current_time,default_val)); }
-
-		double offset(int current_time,double default_val =0.0) const
-			{ return offset_.get_current_element(current_time,default_val)  ; }
-
+		int duration() const{ return duration_;};
 		bool does_not_change() const;
 		bool need_update() const;
 	private:
@@ -126,16 +145,21 @@ class frame_builder {
 		progressive_double blend_ratio_;
 		progressive_double highlight_ratio_;
 		progressive_double offset_;
-	protected:
-		bool initialization_finished;
 
 };
 //! Describe a unit's animation sequence.
-class unit_frame: public frame_builder{
+class unit_frame {
 	public:
 		// Constructors
-		unit_frame(const frame_builder builder=frame_builder()):frame_builder(builder){initialization_finished=true;};
-		void redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id)const;
+		unit_frame(const frame_builder builder=frame_builder()):builder_(builder){};
+		void redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & default_val)const;
+		const frame_parameters parameters(int current_time, const frame_parameters & default_val = frame_parameters()) const{return builder_.parameters(current_time,default_val); } ;
+
+		int duration() const { return builder_.duration();};
+		bool does_not_change() const{ return builder_.does_not_change();};
+		bool need_update() const{ return builder_.need_update();};
+	private:
+		frame_builder builder_;
 
 };
 
