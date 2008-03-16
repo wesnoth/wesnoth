@@ -926,7 +926,7 @@ void game_data::set_config(const config& cfg)
 			if (insertion.second) {
 				insertion.first->second.build(**i.first,movement_types,races,unit_traits);
 			}
-			std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]";
+			std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]" << std::endl;
 		}
 	}
 
