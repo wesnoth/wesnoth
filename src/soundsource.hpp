@@ -42,6 +42,7 @@ class positional_source {
 	unsigned int _loops;
 	const unsigned int _id;
 	unsigned int _range;
+	unsigned int _faderange;
 	bool _check_fogged;
 	std::string _files;
 	std::vector<gamemap::location> _locations;
@@ -106,13 +107,15 @@ class sourcespec {
 
 	int loops;
 	int range;
+	int faderange;
 	bool check_fogged;
 
 	std::vector<gamemap::location> locations;
 
 public:
 	sourcespec(const std::string &id_, const std::string &files_, int min_delay_, int chance_)
-		: id(id_), files(files_), min_delay(min_delay_), chance(chance_), loops(0), check_fogged(false)
+		: id(id_), files(files_), min_delay(min_delay_), chance(chance_), loops(0), 
+			range(1), faderange(range), check_fogged(false)
 	{ 
 	}
 
@@ -133,6 +136,11 @@ public:
 
 	sourcespec& full_range(int range_) {
 		range = maximum<int>(1, range_);
+		return *this;
+	}
+
+	sourcespec& fade_range(int range_) {
+		faderange = range_;
 		return *this;
 	}
 

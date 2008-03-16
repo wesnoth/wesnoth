@@ -103,10 +103,11 @@ void manager::add_location(const std::string &id, const gamemap::location &loc)
 
 positional_source::positional_source(const sourcespec &spec) 
 				: _last_played(0), _min_delay(spec.min_delay), _chance(spec.chance), _loops(spec.loops),
-					_id(last_id++), _range(spec.range), _check_fogged(spec.check_fogged), _files(spec.files),
-					_locations(spec.locations)
+					_id(last_id++), _range(spec.range), _faderange(spec.faderange), 
+					_check_fogged(spec.check_fogged), _files(spec.files), _locations(spec.locations)
 {
 	assert(_range > 0);
+	assert(_faderange > 0);
 }
 
 void positional_source::update(unsigned int time, const display &disp)
@@ -164,6 +165,7 @@ void positional_source::update_positions(unsigned int time, const display &disp)
 int positional_source::calculate_volume(const gamemap::location &loc, const display &disp)
 {
 	assert(_range > 0);
+	assert(_faderange > 0);
 
 	SDL_Rect area = disp.map_area();
 	gamemap::location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
@@ -173,8 +175,7 @@ int positional_source::calculate_volume(const gamemap::location &loc, const disp
 		return 0;
 	}
 
-	int calced = static_cast<int>(( ( (distance - _range) / (double) _range) * DISTANCE_SILENT));
-	return calced;
+	return static_cast<int>(( ( (distance - _range) / (double) _faderange) * DISTANCE_SILENT));
 }
 
 void positional_source::add_location(const gamemap::location &loc)
