@@ -25,8 +25,9 @@
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
 namespace reports {
-
-	enum TYPE { UNIT_NAME, UNIT_TYPE, UNIT_RACE, UNIT_LEVEL,
+	// the first one is for backward compatibility (should be removed in v1.5.3)    
+	enum TYPE { UNIT_NAME_OLD, 
+		    UNIT_NAME, UNIT_TYPE, UNIT_RACE, UNIT_LEVEL,
 		    UNIT_SIDE, UNIT_AMLA, UNIT_TRAITS, UNIT_STATUS,
 		    UNIT_ALIGNMENT, UNIT_ABILITIES, UNIT_HP, UNIT_XP,
 		    UNIT_ADVANCEMENT_OPTIONS, UNIT_MOVES, UNIT_WEAPONS,

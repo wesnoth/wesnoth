@@ -37,7 +37,10 @@ Version 1.5.0-svn:
    * In SingleUnitWML and SideWML, the geneate_description= attribute is
      now generate_name=. generate_description= will still be accepted for 
      backwards compatibility. wmllint can safely do this up-conversion.
-    * it's now possible to specify with loop= how many times a sample
+   * In ThemeWML, the unit_description= attribute is now unit_name=.
+     unit_description= will still be accepted for backwards compatibility.
+     wmllint can safely do this up-conversion. 
+   * it's now possible to specify with loop= how many times a sample
      associated with a sound source should be played
    * new [switch] conditional command
    * new [unit_side] theme element : this is the side of the current unit (flag)
