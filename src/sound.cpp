@@ -671,7 +671,6 @@ void reposition_sound(int id, unsigned int distance)
 		if(ch_id == id) {
 			if(distance >= DISTANCE_SILENT) {
 				Mix_FadeOutChannel(ch, 100);
-				ch_id = -1;
 			}
 			else {
 				Mix_SetDistance(ch, distance);
@@ -717,15 +716,6 @@ bool play_sound_internal(const std::string& files, channel_group group, unsigned
 	if(channel == -1) {
 		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
 		return false;
-	}
-	channel_ids[channel] = id;
-
-	/*
-	 * This check prevents SDL_Mixer from blowing up on Windows when UI sound is played
-	 * in response to toggling the checkbox which disables sound.
-	 */
-	if(group != SOUND_UI) {
-		Mix_SetDistance(channel, distance);
 	}
 
 	sound_cache_chunk temp_chunk(file); // search the sound cache on this key
@@ -774,6 +764,14 @@ bool play_sound_internal(const std::string& files, channel_group group, unsigned
 		it = sound_cache.begin();
 	}
 
+	/*
+	 * This check prevents SDL_Mixer from blowing up on Windows when UI sound is played
+	 * in response to toggling the checkbox which disables sound.
+	 */
+	if(group != SOUND_UI) {
+		Mix_SetDistance(channel, distance);
+	}
+
 	int res;
 	if(loop_ticks > 0) {
 		if(fadein_ticks > 0) {
@@ -792,11 +790,14 @@ bool play_sound_internal(const std::string& files, channel_group group, unsigned
 			res = Mix_PlayChannel(channel, it->get_data(), repeats);
 		}
 	}
+
 	if(res < 0) {
 		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		//still keep it in the sound cache, in case we want to try again later
 		return false;
 	}
+
+	channel_ids[channel] = id;
 
 	//reserve the channel's chunk from being freed, since it is playing
 	channel_chunks[res] = it->get_data();
