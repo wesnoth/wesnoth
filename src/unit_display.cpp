@@ -204,7 +204,7 @@ void unit_die(const gamemap::location& loc, unit& loser,
 void unit_attack(
                  const gamemap::location& a, const gamemap::location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
-		  int swing,std::string hit_text)
+		  int swing,std::string hit_text,bool drain,std::string att_text)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || preferences::show_combat() == false) return;
@@ -243,6 +243,13 @@ void unit_attack(
 			text = text + "\n" + hit_text;
 		}
 
+		std::string text_2 ;
+		if(drain && damage) text_2 = lexical_cast<std::string>(minimum<int>(damage,defender.hitpoints())/2);
+		if(!att_text.empty()) {
+			text_2.insert(text_2.begin(),att_text.size()/2,' ');
+			text_2 = text_2 + "\n" + att_text;
+		}
+
 		unit_animation::hit_type hit_type;
 		if(damage >= defender.hitpoints()) {
 			hit_type = unit_animation::KILL;
@@ -251,8 +258,8 @@ void unit_attack(
 		}else {
 			hit_type = unit_animation::MISS;
 		}
-		animator.add_animation(&attacker,"attack",att->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
-		animator.add_animation(&defender,"defend",def->first,damage,true,false,text,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
+		animator.add_animation(&attacker,"attack",att->first,damage,true,false,text_2,display::rgb(0,255,0),hit_type,&attack,secondary_attack,swing);
+		animator.add_animation(&defender,"defend",def->first,damage,true,false,text  ,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
 
 		if(leader_loc.valid()){
 			leader = units.find(leader_loc);

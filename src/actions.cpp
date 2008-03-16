@@ -989,7 +989,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				unit_display::unit_attack(attacker_,defender_,
 						damage_defender_takes,
 						*a_stats_->weapon,d_stats_->weapon,
-						abs_n_attack_,float_text);
+						abs_n_attack_,float_text,a_stats_->drains,"");
 			}
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
@@ -1042,11 +1042,6 @@ attack::attack(game_display& gui, const gamemap& map,
 				int amount_drained = a_stats_->drains ? attacker_damage_ / 2 : 0;
 
 				if(amount_drained > 0) {
-					char buf[50];
-					snprintf(buf,sizeof(buf),"%d",amount_drained);
-					if (update_display_){
-						gui_.float_label(a_->first,buf,0,255,0);
-					}
 					a_->second.heal(amount_drained);
 				}
 			}
@@ -1245,7 +1240,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				unit_display::unit_attack(defender_,attacker_,
 						damage_attacker_takes,
 						*d_stats_->weapon,a_stats_->weapon,
-						abs_n_defend_,float_text);
+						abs_n_defend_,float_text,d_stats_->drains,"");
 			}
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
@@ -1296,11 +1291,6 @@ attack::attack(game_display& gui, const gamemap& map,
 				int amount_drained = d_stats_->drains ? defender_damage_ / 2 : 0;
 
 				if(amount_drained > 0) {
-					char buf[50];
-					snprintf(buf,sizeof(buf),"%d",amount_drained);
-					if (update_display_){
-						gui_.float_label(d_->first,buf,0,255,0);
-					}
 					d_->second.heal(amount_drained);
 				}
 			}

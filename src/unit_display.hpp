@@ -46,7 +46,7 @@ void unit_die( const gamemap::location& loc, unit& u, const attack_type* attack=
 void unit_attack(
                  const gamemap::location& a, const gamemap::location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
-		 int swing,std::string hit_text);
+		 int swing,std::string hit_text,bool drain,std::string att_text);
 void unit_recruited(gamemap::location& loc);
 
 
