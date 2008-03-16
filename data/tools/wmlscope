@@ -178,7 +178,7 @@ class CrossRefLister(CrossRef):
                 for ref in value:
                     print "%s: exported=%s" % (ref, self.exports(ref.namespace))
     def typelist(self, branch):
-        "Dump actual and formal aruments for macros in specified file"
+        "Dump actual and formal arguments for macros in specified file"
         already_seen = []
         sorted = self.xref.keys()
         sorted.sort()
@@ -198,13 +198,17 @@ class CrossRefLister(CrossRef):
         for name in sorted:
             for defn in self.xref[name]:
                 if not pred or pred(name, defn):
-                    print name
+                    print "macro", name, " ".join(map(lambda x: "%s=%s" % (x, formaltype(x)), defn.args))
         sorted = self.fileref.keys()
         sorted.sort()
         for name in sorted:
             defloc = self.fileref[name]
             if not pred or pred(name, defloc):
-                print name
+                print "resource", name
+        sorted = self.unit_ids.keys()
+        sorted.sort()
+        for uid in sorted:
+            print "unit", uid
     def unchecked(self, fp):
         "List all macro definitions with untyped formals."
         unchecked = []
