@@ -32,10 +32,25 @@
 
 #include <cassert>
 
-#define DBG_GUI LOG_STREAM(debug, widget)
-#define LOG_GUI LOG_STREAM(info, widget)
-#define WRN_GUI LOG_STREAM(warn, widget)
-#define ERR_GUI LOG_STREAM(err, widget)
+#define DBG_G LOG_STREAM(debug, gui)
+#define LOG_G LOG_STREAM(info, gui)
+#define WRN_G LOG_STREAM(warn, gui)
+#define ERR_G LOG_STREAM(err, gui)
+
+#define DBG_G_D LOG_STREAM(debug, gui_draw)
+#define LOG_G_D LOG_STREAM(info, gui_draw)
+#define WRN_G_D LOG_STREAM(warn, gui_draw)
+#define ERR_G_D LOG_STREAM(err, gui_draw)
+
+#define DBG_G_E LOG_STREAM(debug, gui_event)
+#define LOG_G_E LOG_STREAM(info, gui_event)
+#define WRN_G_E LOG_STREAM(warn, gui_event)
+#define ERR_G_E LOG_STREAM(err, gui_event)
+
+#define DBG_G_P LOG_STREAM(debug, gui_parse)
+#define LOG_G_P LOG_STREAM(info, gui_parse)
+#define WRN_G_P LOG_STREAM(warn, gui_parse)
+#define ERR_G_P LOG_STREAM(err, gui_parse)
 
 namespace gui2 {
 
@@ -73,7 +88,7 @@ const std::string& get_id(const twindow_type window_type)
 
 void load_settings() 
 {
-	LOG_GUI << "Init gui\n";
+	LOG_G << "Setting: init gui.\n";
 
 	fill_window_types();
 
@@ -87,7 +102,7 @@ void load_settings()
 		scoped_istream stream = preprocess_file(filename);
 		read(cfg, *stream);
 	} catch(config::error&) {
-		ERR_GUI << "Could not read file '" << filename << "'\n";
+		ERR_G_P << "Setting: could not read file '" << filename << "'.\n";
 	}
 
 	const config::child_list& gui_cfgs = cfg.get_children("gui");

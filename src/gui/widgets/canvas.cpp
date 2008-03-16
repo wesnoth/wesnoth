@@ -27,10 +27,25 @@
 #include <algorithm>
 #include <cassert>
 
-#define DBG_GUI LOG_STREAM(debug, widget)
-#define LOG_GUI LOG_STREAM(info, widget)
-#define WRN_GUI LOG_STREAM(warn, widget)
-#define ERR_GUI LOG_STREAM(err, widget)
+#define DBG_G LOG_STREAM(debug, gui)
+#define LOG_G LOG_STREAM(info, gui)
+#define WRN_G LOG_STREAM(warn, gui)
+#define ERR_G LOG_STREAM(err, gui)
+
+#define DBG_G_D LOG_STREAM(debug, gui_draw)
+#define LOG_G_D LOG_STREAM(info, gui_draw)
+#define WRN_G_D LOG_STREAM(warn, gui_draw)
+#define ERR_G_D LOG_STREAM(err, gui_draw)
+
+#define DBG_G_E LOG_STREAM(debug, gui_event)
+#define LOG_G_E LOG_STREAM(info, gui_event)
+#define WRN_G_E LOG_STREAM(warn, gui_event)
+#define ERR_G_E LOG_STREAM(err, gui_event)
+
+#define DBG_G_P LOG_STREAM(debug, gui_parse)
+#define LOG_G_P LOG_STREAM(info, gui_parse)
+#define WRN_G_P LOG_STREAM(warn, gui_parse)
+#define ERR_G_P LOG_STREAM(err, gui_parse)
 
 static Uint32 decode_colour(const std::string& colour);
 
@@ -81,9 +96,9 @@ void tcanvas::draw(const config& cfg)
 
 void tcanvas::draw(const bool force)
 {
-	log_scope2(widget, "Drawing canvas");
+	log_scope2(gui_draw, "Canvas: drawing.");
 	if(!dirty_ && !force) {
-		DBG_GUI << "Nothing to do stop.\n";
+		DBG_G_D << "Canvas: nothing to draw.\n";
 		return;
 	}
 
@@ -97,24 +112,23 @@ void tcanvas::draw(const bool force)
 	}
 #endif
 	// instead we overwrite the entire thing for now
-	DBG_GUI << "Create canvas.\n";
+	DBG_G_D << "Canvas: create new empty canvas.\n";
 	canvas_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE, w_, h_, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
 
 	// draw items 
 	for(std::vector<tshape_ptr>::iterator itor = 
 			shapes_.begin(); itor != shapes_.end(); ++itor) {
-		log_scope2(widget, "Draw shape");
+		log_scope2(gui_draw, "Canvas: draw shape.");
 		
 		(*itor)->draw(canvas_);
 	}
 
-	DBG_GUI << "Ready.\n";
 	dirty_ = false;
 }
 
 void tcanvas::parse_cfg(const config& cfg)
 {
-	log_scope2(widget, "Parsing config");
+	log_scope2(gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
 
 	for(config::all_children_iterator itor = 
@@ -123,7 +137,7 @@ void tcanvas::parse_cfg(const config& cfg)
 		const std::string& type = *((*itor).first);;
 		const vconfig data(&(*((*itor).second)));
 
-		DBG_GUI << "Found type " << type << '\n';
+		DBG_G_P << "Canvas: found shape of the type " << type << ".\n";
 
 		if(type == "line") {
 			shapes_.push_back(new tline(data));
@@ -134,7 +148,7 @@ void tcanvas::parse_cfg(const config& cfg)
 		} else if(type == "text") {
 			shapes_.push_back(new ttext(data));
 		} else {
-			ERR_GUI << "Type of shape is unknown : " << type << '\n';
+			ERR_G_P << "Canvas: found a shape of an invalid type " << type << ".\n";
 			assert(false); // FIXME remove in production code.
 		}
 	}
@@ -143,7 +157,6 @@ void tcanvas::parse_cfg(const config& cfg)
 void tcanvas::tshape::put_pixel(unsigned start, Uint32 colour, unsigned w, unsigned x, unsigned y)
 {
 	// fixme the 4 is true due to Uint32..
-//	DBG_GUI << "Put pixel at x " << x << " y " << y << " w " << w << '\n';
 	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
 }
 
@@ -162,10 +175,10 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	unsigned start = reinterpret_cast<unsigned>(canvas->pixels);
 	unsigned w = canvas->w;
 
-	DBG_GUI << "Draw line from :" 
+	DBG_G_D << "Shape: draw line from :" 
 		<< x1 << ',' << y1 << " to : " << x2 << ',' << y2
 		<< " canvas width " << w << " canvas height "
-		<< canvas->h << '\n';
+		<< canvas->h << ".\n";
 
 	// use a special case for vertical lines
 	if(x1 == x2) {
@@ -224,7 +237,6 @@ tcanvas::tline::tline(const int x1, const int y1, const int x2,
 	colour_(colour),
 	thickness_(thickness) 
 {
-
 }
 
 tcanvas::tline::tline(const vconfig& cfg) :
@@ -261,14 +273,14 @@ tcanvas::tline::tline(const vconfig& cfg) :
 //
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI << debug << '\n';
+		DBG_G_P << "Line: found debug message '" << debug << "'.\n";
 	}
 
 }
 
 void tcanvas::tline::draw(surface& canvas)
 {
-	DBG_GUI << "Draw line from: " 
+	DBG_G_D << "Line: draw from :" 
 		<< x1_ << ',' << y1_ << " to: " << x2_ << ',' << y2_ << '\n';
 
 	// we wrap around the coordinates, this might be moved to be more
@@ -332,15 +344,14 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI << debug << '\n';
+		DBG_G_P << "Rectangle: found debug message '" << debug << "'.\n";
 	}
-
 }
 
 void tcanvas::trectangle::draw(surface& canvas)
 {
 
-	DBG_GUI << "Draw rectangle from: " << rect_.x << ',' << rect_.y 
+	DBG_G_D << "Rectangle: draw from :" << rect_.x << ',' << rect_.y 
 		<< " width: " << rect_.w << " height: " << rect_.h << '\n';
 
 	surface_lock locker(canvas);
@@ -416,15 +427,13 @@ tcanvas::timage::timage(const vconfig& cfg) :
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI << debug << '\n';
+		DBG_G_P << "Image: found debug message '" << debug << "'.\n";
 	}
-
 }
 
 void tcanvas::timage::draw(surface& canvas)
 {
-
-	DBG_GUI << "Drawing image.\n";
+	DBG_G_D << "Image: draw.\n";
 
 	SDL_Rect src_clip = src_clip_;
 	SDL_Rect dst_clip = dst_clip_;
@@ -458,22 +467,24 @@ tcanvas::ttext::ttext(const vconfig& cfg) :
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI << debug << '\n';
+		DBG_G_P << "Text: found debug message '" << debug << "'.\n";
 	}
-
 }
 
 void tcanvas::ttext::draw(surface& canvas)
 {
+	DBG_G_D << "Text: draw at " << x_ << ',' << y_ << " text '"
+		<< text_ << "'.\n";
+
 	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
 	surface surf(font::get_rendered_text(text_, font_size_, col, TTF_STYLE_NORMAL));
 
 	if(surf->w > w_) {
-		WRN_GUI << "Text to wide, will be clipped.\n";
+		WRN_G_D << "Text: text is too wide for the canvas and will be clipped.\n";
 	}
 	
 	if(surf->h > h_) {
-		WRN_GUI << "Text to high, will be clipped.\n";
+		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
 	}
 	
 	unsigned x_off = (surf->w >= w_) ? 0 : ((w_ - surf->w) / 2);

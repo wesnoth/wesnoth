@@ -24,11 +24,25 @@
 
 #include <cassert>
 
-#define DBG_GUI LOG_STREAM(debug, widget)
-#define LOG_GUI LOG_STREAM(info, widget)
-#define WRN_GUI LOG_STREAM(warn, widget)
-#define ERR_GUI LOG_STREAM(err, widget)
+#define DBG_G LOG_STREAM(debug, gui)
+#define LOG_G LOG_STREAM(info, gui)
+#define WRN_G LOG_STREAM(warn, gui)
+#define ERR_G LOG_STREAM(err, gui)
 
+#define DBG_G_D LOG_STREAM(debug, gui_draw)
+#define LOG_G_D LOG_STREAM(info, gui_draw)
+#define WRN_G_D LOG_STREAM(warn, gui_draw)
+#define ERR_G_D LOG_STREAM(err, gui_draw)
+
+#define DBG_G_E LOG_STREAM(debug, gui_event)
+#define LOG_G_E LOG_STREAM(info, gui_event)
+#define WRN_G_E LOG_STREAM(warn, gui_event)
+#define ERR_G_E LOG_STREAM(err, gui_event)
+
+#define DBG_G_P LOG_STREAM(debug, gui_parse)
+#define LOG_G_P LOG_STREAM(info, gui_parse)
+#define WRN_G_P LOG_STREAM(warn, gui_parse)
+#define ERR_G_P LOG_STREAM(err, gui_parse)
 
 namespace gui2 {
 
@@ -57,7 +71,7 @@ twindow build(CVideo& video, const std::string& type)
 			button->set_definition(def);
 			window.add_child(button, x, y);
 
-			DBG_GUI << "Placed button '" << id << "' with defintion '" 
+			DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
 				<< def << "' at " << x << ", " << y << '\n';
 
 		}
@@ -94,7 +108,7 @@ const std::string& twindow_builder::read(const config& cfg)
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("window", "id"));
 	VALIDATE(!description_.empty(), missing_mandatory_wml_key("window", "description"));
 
-	DBG_GUI << "Reading window " << id_ << '\n';
+	DBG_G_P << "Window builder: reading data for window " << id_ << ".\n";
 
 	const config::child_list& cfgs = cfg.get_children("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
@@ -132,8 +146,8 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * [/resolution]
  */
 
-	DBG_GUI << "Parsing resolution " 
-		<< window_width << ", " << window_height << '\n';
+	DBG_G_P << "Window builder: parsing resolution " 
+		<< window_width << ',' << window_height << '\n';
 
 	if(definition.empty()) {
 		definition = "default";
@@ -174,7 +188,8 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 
 	}
 
-	DBG_GUI << "Grid has " << rows << " rows and " << cols << " columns.\n";
+	DBG_G_P << "Window builder: grid has " 
+		<< rows << " rows and " << cols << " columns.\n";
 }
 
 twindow_builder::tresolution::tgrid::twidget::twidget(const config& cfg) :
@@ -186,7 +201,8 @@ twindow_builder::tresolution::tgrid::twidget::twidget(const config& cfg) :
 		definition = "default";
 	}
 
-	DBG_GUI << "Found button with id '" << id << "' and definition '" << definition << "'.\n";
+	DBG_G_P << "Window builder: found button with id '" 
+		<< id << "' and definition '" << definition << "'.\n";
 	
 }
 

@@ -25,10 +25,26 @@
 
 #include <cassert>
 
-#define DBG_GUI LOG_STREAM(debug, widget)
-#define LOG_GUI LOG_STREAM(info, widget)
-#define WRN_GUI LOG_STREAM(warn, widget)
-#define ERR_GUI LOG_STREAM(err, widget)
+#define DBG_G LOG_STREAM(debug, gui)
+#define LOG_G LOG_STREAM(info, gui)
+#define WRN_G LOG_STREAM(warn, gui)
+#define ERR_G LOG_STREAM(err, gui)
+
+#define DBG_G_D LOG_STREAM(debug, gui_draw)
+#define LOG_G_D LOG_STREAM(info, gui_draw)
+#define WRN_G_D LOG_STREAM(warn, gui_draw)
+#define ERR_G_D LOG_STREAM(err, gui_draw)
+
+#define DBG_G_E LOG_STREAM(debug, gui_event)
+#define LOG_G_E LOG_STREAM(info, gui_event)
+#define WRN_G_E LOG_STREAM(warn, gui_event)
+#define ERR_G_E LOG_STREAM(err, gui_event)
+
+#define DBG_G_P LOG_STREAM(debug, gui_parse)
+#define LOG_G_P LOG_STREAM(info, gui_parse)
+#define WRN_G_P LOG_STREAM(warn, gui_parse)
+#define ERR_G_P LOG_STREAM(err, gui_parse)
+
 
 namespace gui2{
 
@@ -56,7 +72,7 @@ twindow::twindow(CVideo& video,
 
 void twindow::show(const bool restore, void* /*flip_function*/)
 {
-	log_scope2(widget, "Starting drawing window");	
+	log_scope2(gui_draw, "Window: show.");	
 
 	// Sanity
 	if(status_ != NEW) {
@@ -88,7 +104,7 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 		if(dirty() || need_layout_) {
 			const bool draw_foreground = need_layout_;
 			if(need_layout_) {
-				DBG_GUI << "Layout.\n";
+				DBG_G << "Window: layout client area.\n";
 				resolve_definition();
 				layout(get_client_rect());
 
@@ -110,7 +126,7 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 					continue;
 				}
 
-				log_scope2(widget, "Draw child");
+				log_scope2(gui_draw, "Window: draw child.");
 
 				itor->draw(screen);
 			}
@@ -151,7 +167,7 @@ void twindow::layout(const SDL_Rect position)
 		return;
 	}
 
-	DBG_GUI << "Failed for best size, try minimum.\n";
+	DBG_G << "Window: layout can't be set to best size, try minimum.\n";
 
 	// Implement the code.
 	assert(false);
@@ -163,9 +179,6 @@ void twindow::layout(const SDL_Rect position)
 
 void twindow::set_width(const unsigned width)
 {
-
-	DBG_GUI << "Setting width to " << width << '\n';
-
 	canvas_background_.set_width(width);
 	canvas_foreground_.set_width(width);
 	need_layout_ = true;
@@ -176,8 +189,6 @@ void twindow::set_width(const unsigned width)
 
 void twindow::set_height(const unsigned height)
 {
-	DBG_GUI << "Setting height to " << height << '\n';
-
 	canvas_background_.set_height(height);
 	canvas_foreground_.set_height(height);
 	need_layout_ = true;
@@ -191,7 +202,6 @@ void twindow::flip()
 	// fixme we need to add the option to either call
 	// video_.flip() or display.flip()
 	video_.flip();
-
 }
 
 //! Implement events::handler::handle_event().
@@ -217,7 +227,6 @@ void twindow::handle_event(const SDL_Event& event)
 			handle_event_resize(event);
 			break;
 	}
-
 }
 
 //! Handler for a mouse down.

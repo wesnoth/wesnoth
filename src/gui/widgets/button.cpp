@@ -14,10 +14,25 @@
 
 #include "gui/widgets/button.hpp"
 
-#define DBG_GUI LOG_STREAM(debug, widget)
-#define LOG_GUI LOG_STREAM(info, widget)
-#define WRN_GUI LOG_STREAM(warn, widget)
-#define ERR_GUI LOG_STREAM(err, widget)
+#define DBG_G LOG_STREAM(debug, gui)
+#define LOG_G LOG_STREAM(info, gui)
+#define WRN_G LOG_STREAM(warn, gui)
+#define ERR_G LOG_STREAM(err, gui)
+
+#define DBG_G_D LOG_STREAM(debug, gui_draw)
+#define LOG_G_D LOG_STREAM(info, gui_draw)
+#define WRN_G_D LOG_STREAM(warn, gui_draw)
+#define ERR_G_D LOG_STREAM(err, gui_draw)
+
+#define DBG_G_E LOG_STREAM(debug, gui_event)
+#define LOG_G_E LOG_STREAM(info, gui_event)
+#define WRN_G_E LOG_STREAM(warn, gui_event)
+#define ERR_G_E LOG_STREAM(err, gui_event)
+
+#define DBG_G_P LOG_STREAM(debug, gui_parse)
+#define LOG_G_P LOG_STREAM(info, gui_parse)
+#define WRN_G_P LOG_STREAM(warn, gui_parse)
+#define ERR_G_P LOG_STREAM(err, gui_parse)
 
 namespace gui2 {
 
@@ -47,69 +62,67 @@ void tbutton::set_height(const unsigned height)
 
 void tbutton::mouse_down(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
-	DBG_GUI << "mouse down\n"; 
+	DBG_G_E << "Button: left mouse button down.\n"; 
 
 	set_state(PRESSED);
 }
 
 void tbutton::mouse_up(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
-	DBG_GUI << "mouse up\n";
+	DBG_G_E << "Button: left mouse button up.\n";
 
 	set_state(FOCUSSED);
 }
 
 void tbutton::mouse_click(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
-	DBG_GUI << "mouse click\n"; 
+	DBG_G_E << "Button: left mouse button click.\n"; 
 }
 
 void tbutton::mouse_double_click(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
-	DBG_GUI << "mouse double click\n"; 
+	DBG_G_E << "Button: left mouse button double click.\n"; 
 }
 
 void tbutton::mouse_enter(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
-	DBG_GUI << "mouse enter\n"; 
+	DBG_G_E << "Button: mouse enter.\n"; 
 
 	set_state(FOCUSSED);
 }
 
 void tbutton::mouse_leave(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
-	DBG_GUI << "mouse leave\n"; 
+	DBG_G_E << "Button: mouse leave.\n"; 
 
 	set_state(ENABLED);
 }
 
 void tbutton::draw(surface& canvas)
 {
-	DBG_GUI << "Drawing button\n";
-
 	SDL_Rect rect = get_rect();
 	switch(state_) {
 
 		case ENABLED : 
-			DBG_GUI << "Enabled.\n";
+			DBG_G_D << "Button: drawing enabled state.\n";
 			canvas_enabled_.draw(true);
 			SDL_BlitSurface(canvas_enabled_.surf(), 0, canvas, &rect);
 			break;
 
 		case DISABLED : 
-			DBG_GUI << "Disabled.\n";
+			DBG_G_D << "Button: drawing disabled state.\n";
 			canvas_disabled_.draw(true);
 			SDL_BlitSurface(canvas_disabled_.surf(), 0, canvas, &rect);
 			break;
 
 		case PRESSED :
-			DBG_GUI << "Pressed.\n";
+			DBG_G_D << "Button: drawing pressed state.\n";
 			canvas_pressed_.draw(true);
 			SDL_BlitSurface(canvas_pressed_.surf(), 0, canvas, &rect);
 			break;
 
 		case FOCUSSED :
-			DBG_GUI << "Focussed.\n";
+			DBG_G_D << "Button: drawing focussed state.\n";
 			canvas_focussed_.draw(true);
 			SDL_BlitSurface(canvas_focussed_.surf(), 0, canvas, &rect);
 			break;

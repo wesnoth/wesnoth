@@ -23,10 +23,25 @@
 #include <cassert>
 #include <numeric>
 
-#define DBG_GUI LOG_STREAM(debug, widget)
-#define LOG_GUI LOG_STREAM(info, widget)
-#define WRN_GUI LOG_STREAM(warn, widget)
-#define ERR_GUI LOG_STREAM(err, widget)
+#define DBG_G LOG_STREAM(debug, gui)
+#define LOG_G LOG_STREAM(info, gui)
+#define WRN_G LOG_STREAM(warn, gui)
+#define ERR_G LOG_STREAM(err, gui)
+
+#define DBG_G_D LOG_STREAM(debug, gui_draw)
+#define LOG_G_D LOG_STREAM(info, gui_draw)
+#define WRN_G_D LOG_STREAM(warn, gui_draw)
+#define ERR_G_D LOG_STREAM(err, gui_draw)
+
+#define DBG_G_E LOG_STREAM(debug, gui_event)
+#define LOG_G_E LOG_STREAM(info, gui_event)
+#define WRN_G_E LOG_STREAM(warn, gui_event)
+#define ERR_G_E LOG_STREAM(err, gui_event)
+
+#define DBG_G_P LOG_STREAM(debug, gui_parse)
+#define LOG_G_P LOG_STREAM(info, gui_parse)
+#define WRN_G_P LOG_STREAM(warn, gui_parse)
+#define ERR_G_P LOG_STREAM(err, gui_parse)
 
 namespace gui2 {
 
@@ -130,8 +145,8 @@ void tsizer::add_child(twidget* widget, const unsigned row,
 	// clear old child if any
 	if(cell.widget()) {
 		// free a child when overwriting it
-		LOG_GUI << "Child '" << cell.id() << "' at cell '" 
-			<< row << "," << col << "' will be overwritten and is disposed\n";
+		WRN_G << "Grid: child '" << cell.id() 
+			<< "' at cell '" << row << ',' << col << "' will be replaced.\n";
 		delete cell.widget();
 	}
 
@@ -155,7 +170,7 @@ void tsizer::set_rows(const unsigned rows)
 	}
 
 	if(!children_.empty()) {
-		WRN_GUI << "Resizing a non-empty container may give unexpected problems\n";
+		WRN_G << "Grid: resizing a non-empty grid may give unexpected problems.\n";
 	}
 
 	rows_ = rows;
@@ -169,7 +184,7 @@ void tsizer::set_cols(const unsigned cols)
 	}
 
 	if(!children_.empty()) {
-		WRN_GUI << "Resizing a non-empty container may give unexpected problems\n";
+		WRN_G << "Grid: resizing a non-empty grid may give unexpected problems.\n";
 	}
 
 	cols_ = cols;
@@ -204,8 +219,6 @@ void tsizer::removed_child(const std::string& id, const bool find_all)
 
 tpoint tsizer::get_best_size()
 {
-	DBG_GUI << __FUNCTION__ << '\n';
-
 	std::vector<unsigned> best_col_width(cols_, 0);
 	std::vector<unsigned> best_row_height(rows_, 0);
 	
@@ -227,11 +240,13 @@ tpoint tsizer::get_best_size()
 	}
 
 	for(unsigned row = 0; row < rows_; ++row) {
-		DBG_GUI << "Row " << row << ": " << best_row_height[row] << '\n';
+		DBG_G << "Grid: the best height for row " << row 
+			<< " will be " << best_row_height[row] << ".\n";
 	}
 
 	for(unsigned col = 0; col < cols_; ++col) {
-		DBG_GUI << "Col " << col << ": " << best_col_width[col] << '\n';
+		DBG_G << "Grid: the best width for col " << col 
+			<< " will be " << best_col_width[col]  << ".\n";
 	}
 
 	return tpoint(
@@ -242,8 +257,6 @@ tpoint tsizer::get_best_size()
 
 void tsizer::set_best_size(const tpoint& origin)
 {
-	DBG_GUI << __FUNCTION__ << '\n';
-
 	std::vector<unsigned> best_col_width(cols_, 0);
 	std::vector<unsigned> best_row_height(rows_, 0);
 	
@@ -269,7 +282,8 @@ void tsizer::set_best_size(const tpoint& origin)
 	for(unsigned row = 0; row < rows_; ++row) {
 		for(unsigned col = 0; col < cols_; ++col) {
 
-			DBG_GUI << "Row : " << row << " col : " << col << " put at origin " << orig << '\n';
+			DBG_G << "Grid: set widget at " << row 
+				<< ',' << col << " at origin " << orig << ".\n";
 
 			if(child(row, col).widget()) {
 				child(row, col).widget()->set_best_size(orig);
@@ -285,33 +299,23 @@ void tsizer::set_best_size(const tpoint& origin)
 twidget* tsizer::get_widget(const tpoint& coordinate)
 {
 	
-	DBG_GUI << "Find widget at " << coordinate << '\n';
-
 	//! FIXME we need to store the sizes, since this is quite
 	//! pathatic.
 	for(unsigned row = 0; row < rows_; ++row) {
 		for(unsigned col = 0; col < cols_; ++col) {
 
-			DBG_GUI <<  "Row : " << row << " col : " << col;
-
 			twidget* widget = child(row, col).widget();
 			if(!widget) {
-				DBG_GUI << " no widget found.\n";
 				continue;
 			}
 			
 			widget = widget->get_widget(coordinate);
 			if(widget) { 
-				DBG_GUI << " hit!\n";
 				return widget;
 			}
-
-			DBG_GUI << " no hit.\n";
-
 		}
 	}
 	
-	DBG_GUI << "No widget found.\n";
 	return 0;
 }
 
