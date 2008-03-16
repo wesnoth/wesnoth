@@ -58,6 +58,7 @@ class positional_source {
 	// sound every second after the delay has passed or once the source
 	// becomes visible
 	positional_source(const sourcespec &spec);
+	~positional_source();
 
 	void update(unsigned int time, const display &disp);
 	void update_positions(unsigned int time, const display &disp);

@@ -110,6 +110,11 @@ positional_source::positional_source(const sourcespec &spec)
 	assert(_faderange > 0);
 }
 
+positional_source::~positional_source()
+{
+	sound::reposition_sound(_id, DISTANCE_SILENT);
+}
+
 void positional_source::update(unsigned int time, const display &disp)
 {
 	if(time - _last_played < _min_delay || sound::is_sound_playing(_id))
