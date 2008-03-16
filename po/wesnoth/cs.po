@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:44+0100\n"
+"POT-Creation-Date: 2008-03-16 11:58+0100\n"
 "PO-Revision-Date: 2008-03-12 22:16+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -26,48 +26,60 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:36
 msgid "Compressed Saves"
 msgstr "Ukládat hry v komprimovaném formátu"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:43
 msgid "Mouse Scrolling"
 msgstr "Posouvání pomocí myši"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:50
 msgid "Animate Map"
 msgstr "Animovat mapu"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
 msgstr "Zobrazovat animace stojících jednotek"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:64
 msgid "Show Combat"
 msgstr "Ukazovat boj"
 
+#. server
 #: data/_main.cfg:79
 msgid "Official Wesnoth Server"
 msgstr "Oficiální server Wesnothu"
 
+#. server
 #: data/_main.cfg:83 data/_main.cfg:87
 msgid "Alternate Wesnoth Server"
 msgstr "Alternativní server Wesnothu"
 
+#. time
+#. illuminated_time
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:519
 #: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:93
 msgid "Underground"
 msgstr "Podzemí"
 
+#. about
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:45 data/core/about.cfg:146
 msgid "Artwork and Graphics"
 msgstr "Kresby a grafika"
 
+#. berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:530
 msgid "berserk"
 msgstr "na život a na smrt"
 
+#. berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
 #: data/core/macros/abilities.cfg:532
 msgid ""
@@ -79,11 +91,13 @@ msgstr ""
 "Boj trvá tak dlouho, dokud jeden z protivníků nezemře, nebo do počtu 30 "
 "útoků."
 
+#. chance_to_hit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
 #: data/core/macros/abilities.cfg:616
 msgid "magical"
 msgstr "magické"
 
+#. chance_to_hit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
 #: data/core/macros/abilities.cfg:618
 msgid ""
@@ -95,11 +109,13 @@ msgstr ""
 "Tento útok je magický a má vždy 70% šanci zásahu bez ohledu na obranné "
 "možnosti cílové jednotky."
 
+#. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
 #: data/core/macros/abilities.cfg:665
 msgid "firststrike"
 msgstr "první úder"
 
+#. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
 #: data/core/macros/abilities.cfg:667
 msgid ""
@@ -109,239 +125,305 @@ msgstr ""
 "První úder:\n"
 "Tato jednotka v souboji vždy udeří první, i když se brání."
 
+#. about
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr "Programování"
 
 # pův.: Administrace všeho možného
+#. about
 #: data/core/about.cfg:128
 msgid "General Purpose Administration and Coordination"
 msgstr "Obecná administrace a koordinace"
 
-#: data/core/about.cfg:408
+#. about
+#: data/core/about.cfg:412
 msgid "Music"
 msgstr "Hudba"
 
-#: data/core/about.cfg:435
+#. about
+#: data/core/about.cfg:439
 msgid "Sound Effects"
 msgstr "Zvukové efekty"
 
-#: data/core/about.cfg:451
+#. about
+#: data/core/about.cfg:455
 msgid "Campaign Design"
 msgstr "Návrh tažení"
 
-#: data/core/about.cfg:514
+#. about
+#: data/core/about.cfg:518
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapy pro Hru více hráčů"
 
-#: data/core/about.cfg:556
+#. about
+#: data/core/about.cfg:564
 msgid "Packagers"
 msgstr "Tvorba balíčků"
 
-#: data/core/about.cfg:605
+#. about
+#: data/core/about.cfg:613
 msgid "Miscellaneous contributors"
 msgstr "Různé"
 
-#: data/core/about.cfg:731
+#. about
+#: data/core/about.cfg:743
 msgid "Internationalization Managers"
 msgstr "Správa internacionalizace"
 
-#: data/core/about.cfg:756
+#. about
+#: data/core/about.cfg:768
 msgid "Afrikaans Translation"
 msgstr "Afrikánský překlad"
 
-#: data/core/about.cfg:772
+#. about
+#: data/core/about.cfg:784
 msgid "Basque Translation"
 msgstr "Baskický překlad"
 
-#: data/core/about.cfg:785
+#. about
+#: data/core/about.cfg:797
 msgid "Bulgarian Translation"
 msgstr "Bulharský překlad"
 
-#: data/core/about.cfg:804
+#. about
+#: data/core/about.cfg:816
 msgid "Catalan Translation"
 msgstr "Katalánský překlad"
 
-#: data/core/about.cfg:839
+#. about
+#: data/core/about.cfg:851
 msgid "Chinese Translation"
 msgstr "Čínský překlad"
 
-#: data/core/about.cfg:873
+#. about
+#: data/core/about.cfg:885
 msgid "Chinese (Taiwan) Translation"
 msgstr "Překlad do Taiwanské čínštiny"
 
-#: data/core/about.cfg:880
+#. about
+#: data/core/about.cfg:892
 msgid "Czech Translation"
 msgstr "Český překlad"
 
-#: data/core/about.cfg:934
+#. about
+#: data/core/about.cfg:946
 msgid "Danish Translation"
 msgstr "Dánský překlad"
 
-#: data/core/about.cfg:965
+#. about
+#: data/core/about.cfg:977
 msgid "Dutch Translation"
 msgstr "Holandský překlad"
 
-#: data/core/about.cfg:1012
+#. about
+#: data/core/about.cfg:1024
 msgid "English (GB) Translation"
 msgstr "Anglický překlad (VB)"
 
-#: data/core/about.cfg:1022
+#. about
+#: data/core/about.cfg:1034
 msgid "Esperanto Translation"
 msgstr "Překlad do Esperanta"
 
-#: data/core/about.cfg:1041
+#. about
+#: data/core/about.cfg:1053
 msgid "Estonian Translation"
 msgstr "Estonský překlad"
 
-#: data/core/about.cfg:1048
+#. about
+#: data/core/about.cfg:1060
 msgid "Filipino Translation"
 msgstr "Filipínský překlad"
 
-#: data/core/about.cfg:1058
+#. about
+#: data/core/about.cfg:1070
 msgid "Finnish Translation"
 msgstr "Finský překlad"
 
-#: data/core/about.cfg:1092
+#. about
+#: data/core/about.cfg:1104
 msgid "French Translation"
 msgstr "Francouzský překlad"
 
-#: data/core/about.cfg:1197
+#. about
+#: data/core/about.cfg:1209
 msgid "Galician Translation"
 msgstr "Galicijský překlad"
 
-#: data/core/about.cfg:1209
+#. about
+#: data/core/about.cfg:1221
 msgid "German Translation"
 msgstr "Německý překlad"
 
-#: data/core/about.cfg:1257
+#. about
+#: data/core/about.cfg:1269
 msgid "Greek Translation"
 msgstr "Řecký překlad"
 
-#: data/core/about.cfg:1288
+#. about
+#: data/core/about.cfg:1300
 msgid "Hebrew Translation"
 msgstr "Hebrejský překlad"
 
-#: data/core/about.cfg:1298
+#. about
+#: data/core/about.cfg:1310
 msgid "Hungarian Translation"
 msgstr "Maďarský překlad"
 
-#: data/core/about.cfg:1368
+#. about
+#: data/core/about.cfg:1380
 msgid "Indonesian Translation"
 msgstr "Estonský překlad"
 
-#: data/core/about.cfg:1375
+#. about
+#: data/core/about.cfg:1387
 msgid "Italian Translation"
 msgstr "Italský překlad"
 
-#: data/core/about.cfg:1410
+#. about
+#: data/core/about.cfg:1422
 msgid "Japanese Translation"
 msgstr "Japonský překlad"
 
-#: data/core/about.cfg:1433
+#. about
+#: data/core/about.cfg:1445
 msgid "Korean Translation"
 msgstr "Korejský překlad"
 
-#: data/core/about.cfg:1440
+#. about
+#: data/core/about.cfg:1452
 msgid "Latin Translation"
 msgstr "Latinský překlad"
 
-#: data/core/about.cfg:1447
+#. about
+#: data/core/about.cfg:1459
 msgid "Lithuanian Translation"
 msgstr "Litevský překlad"
 
-#: data/core/about.cfg:1454
+#. about
+#: data/core/about.cfg:1466
 msgid "Norwegian Translation"
 msgstr "Norský překlad"
 
-#: data/core/about.cfg:1476
+#. about
+#: data/core/about.cfg:1488
 msgid "Polish Translation"
 msgstr "Polský překlad"
 
-#: data/core/about.cfg:1525
+#. about
+#: data/core/about.cfg:1537
 msgid "Portuguese Translation"
 msgstr "Portugalský překlad"
 
-#: data/core/about.cfg:1532
+#. about
+#: data/core/about.cfg:1544
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalský (brazilský) překlad"
 
-#: data/core/about.cfg:1567
+#. about
+#: data/core/about.cfg:1579
 msgid "Russian Translation"
 msgstr "Ruský překlad"
 
-#: data/core/about.cfg:1603
+#. about
+#: data/core/about.cfg:1615
 msgid "Serbian Translation"
 msgstr "Srbský překlad"
 
-#: data/core/about.cfg:1618
+#. about
+#: data/core/about.cfg:1630
 msgid "Slovak Translation"
 msgstr "Slovenský překlad"
 
-#: data/core/about.cfg:1635
+#. about
+#: data/core/about.cfg:1647
 msgid "Slovenian Translation"
 msgstr "Slovinský překlad"
 
-#: data/core/about.cfg:1645
+#. about
+#: data/core/about.cfg:1657
 msgid "Spanish Translation"
 msgstr "Španělský překlad"
 
-#: data/core/about.cfg:1693
+#. about
+#: data/core/about.cfg:1705
 msgid "Swedish Translation"
 msgstr "Švédský překlad"
 
-#: data/core/about.cfg:1719
+#. about
+#: data/core/about.cfg:1731
 msgid "Turkish Translation"
 msgstr "Turecký překlad"
 
-#: data/core/about.cfg:1741
+#. about
+#: data/core/about.cfg:1753
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský překlad (jižní Katalánie)"
 
-#: data/core/about.cfg:1757
+#. about
+#: data/core/about.cfg:1769
 msgid "Bots"
 msgstr "Boti"
 
+#. fonts
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
+#. section
+#. topic
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
 msgstr "Úvod"
 
+#. section
+#. topic
 #: data/core/help.cfg:27 data/core/help.cfg:126
 msgid "Gameplay"
 msgstr "Pravidla hry"
 
+#. section
+#. topic
 #: data/core/help.cfg:33 data/core/help.cfg:323
 msgid "Traits"
 msgstr "Vlastnosti"
 
+#. section
+#. topic
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
 msgstr "Jednotky"
 
+#. section
 #: data/core/help.cfg:51
 msgid "Abilities"
 msgstr "Schopnosti"
 
+#. section
+#. topic
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
 msgstr "Speciální druhy útoků"
 
+#. section
+#. topic
 #: data/core/help.cfg:67 data/core/help.cfg:414
 msgid "Terrains"
 msgstr "Typy terénu"
 
+#. section
+#. topic
 #: data/core/help.cfg:74 data/core/help.cfg:669
 msgid "Commands"
 msgstr "Příkazy"
 
+#. topic
 #: data/core/help.cfg:92
 msgid "Abilites"
 msgstr "Schopnosti"
 
+#. topic
 #: data/core/help.cfg:95
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
@@ -354,6 +436,7 @@ msgstr ""
 "budou uvedeny.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:104
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
@@ -363,10 +446,12 @@ msgstr ""
 "Některé zbraně mají speciální vlastnosti, které zvyšují jejich efektivitu.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:110
 msgid "Unknown Unit"
 msgstr "Neznámá jednotka"
 
+#. topic
 #: data/core/help.cfg:113
 msgid ""
 "\n"
@@ -379,10 +464,12 @@ msgstr ""
 "Tato jednotka je prozatím neznámá. Musíš na ni narazit ve hře, aby se "
 "zobrazil její popis."
 
+#. topic
 #: data/core/help.cfg:118
 msgid "Overview"
 msgstr "Přehled"
 
+#. topic
 #: data/core/help.cfg:121
 msgid ""
 "\n"
@@ -402,10 +489,12 @@ msgstr ""
 "jednoduchých pravidel povstává bohatství strategií, jež znamenají, že je "
 "lehké se hru naučit, avšak obtížné si ji podrobit."
 
+#. topic
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
 msgstr "Základní pravidla hry"
 
+#. topic
 #: data/core/help.cfg:133
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
@@ -420,6 +509,7 @@ msgstr ""
 "Pro bližší informace o zvláštních situacích a aspektech této hry, následujte "
 "prosím přiložený odkaz."
 
+#. topic
 #: data/core/help.cfg:135
 msgid ""
 "\n"
@@ -440,6 +530,7 @@ msgstr ""
 "trůnu'</italic>. Protože může být hra trochu náročnější, je lepší začít hrát "
 "s obtížností <italic>text=Snadná</italic>."
 
+#. topic
 #: data/core/help.cfg:138
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -452,10 +543,12 @@ msgstr ""
 "k danému předmětu. To je zejména užitečné v případě, kdy se poprvé setkáte s "
 "novou <ref>dst=abilities text=schopností</ref>."
 
+#. topic
 #: data/core/help.cfg:143
 msgid "About the Game"
 msgstr "O hře"
 
+#. topic
 #: data/core/help.cfg:144
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
@@ -473,6 +566,7 @@ msgstr ""
 "této síti. Pokud má počítač připojení k Internetu, pak můžete hrát proti "
 "dalším lidem na Internetu."
 
+#. topic
 #: data/core/help.cfg:146
 msgid ""
 "\n"
@@ -488,10 +582,12 @@ msgstr ""
 "příběhu. V tažení často potřebujete hrát pozorně a chránit své nejlepší "
 "jednotky, neboť mohou být opět použity v pozdějších scénářích tažení."
 
+#. topic
 #: data/core/help.cfg:151
 msgid "Victory and Defeat"
 msgstr "Vítězství a prohry"
 
+#. topic
 #: data/core/help.cfg:152
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
@@ -507,6 +603,7 @@ msgstr ""
 "určité místo, někoho zachránit, vyřešit hádanku, nebo pouze přežít útok "
 "početní převahy určitý počet kol."
 
+#. topic
 #: data/core/help.cfg:154
 msgid ""
 "\n"
@@ -522,11 +619,13 @@ msgstr ""
 "„Ukončit scénář“. Můžete stále měnit nastavení nebo komunikovat se "
 "spoluhráči (ve hře více hráčů) před potvrzením konce hry tímto tlačítkem."
 
+#. topic
 #: data/core/help.cfg:159
 msgid "Recruiting and Recalling"
 msgstr "Verbování a přivolávání"
 
 # pův.: "hlásce"
+#. topic
 #: data/core/help.cfg:160
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -549,6 +648,7 @@ msgstr ""
 "na jednotku uvidíte její statistiku, pak klikněte na tlačítko Ok čímž jí "
 "naverbujete."
 
+#. topic
 #: data/core/help.cfg:162
 msgid ""
 "\n"
@@ -565,6 +665,7 @@ msgstr ""
 "volném čtverci vašeho hradu. Nemůžete utratit více peněz než máte v době "
 "verbování k dispozici."
 
+#. topic
 #: data/core/help.cfg:164
 msgid ""
 "\n"
@@ -577,6 +678,7 @@ msgstr ""
 "Naverbované jednotky přicházejí se dvěma náhodnými <ref>dst=traits "
 "text=Vlastnostmi</ref> jež upravují jejích statistiku."
 
+#. topic
 #: data/core/help.cfg:166
 msgid ""
 "\n"
@@ -591,6 +693,7 @@ msgstr ""
 "bitev. Vyvolání stojí standardně 20 zlatých a poskytne vám seznam všech "
 "přeživších jednotek z dřívějších scénářů."
 
+#. topic
 #: data/core/help.cfg:168
 msgid ""
 "\n"
@@ -605,10 +708,12 @@ msgstr ""
 "peníze pro obživu. Pro více informací se podívejte na "
 "<ref>dst=income_and_upkeep text='Příjmy a Výdaje'</ref>."
 
+#. topic
 #: data/core/help.cfg:173
 msgid "Orbs"
 msgstr "Koule"
 
+#. topic
 #: data/core/help.cfg:174
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
@@ -617,31 +722,38 @@ msgstr ""
 "Nahoře na ukazateli energie každé vámi ovládané jednotky je umístěna taková "
 "koule. Tato koule je:"
 
+#. topic
 #: data/core/help.cfg:175
 msgid "green if it hasn't moved this turn,"
 msgstr "zelená pokud se jednotka tento tah nepřesunula"
 
+#. topic
 #: data/core/help.cfg:176
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "žlutá pokud byla přesunuta, ale stále může útočit, nebo"
 
+#. topic
 #: data/core/help.cfg:177
 msgid "red if it has used all its movement this turn."
 msgstr "červená pokud tento tah již všech možností využila."
 
+#. topic
 #: data/core/help.cfg:178
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr ""
 "Koule je modrá, pokud jednotka patří mezi spojence, které nekontrolujete."
 
+#. topic
 #: data/core/help.cfg:179
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Nepřátelské jednotky tyto koule na ukazateli energie nemají."
 
+#. topic
 #: data/core/help.cfg:184
 msgid "Hitpoints and Experience"
 msgstr "Život a zkušenosti"
 
+#. topic
 #: data/core/help.cfg:185
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
@@ -654,6 +766,7 @@ msgstr ""
 "zkušenostních bodů (XP). Čerstvě naverbovaná jednotka začíná bez "
 "zkušenostních bodů, ty pak získává při boji s nepřáteli."
 
+#. topic
 #: data/core/help.cfg:189
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
@@ -664,6 +777,7 @@ msgstr ""
 "Používá se dvou čísel (současná hodnota a maximální hodnota, kterou jednotka "
 "může mít)."
 
+#. topic
 #: data/core/help.cfg:190
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -676,10 +790,12 @@ msgstr ""
 "zkušenostní bod má ukazatel energie zbarvený do modra, který se v případě "
 "<ref>dst=experience_and_advancement text=povýšení</ref> změní na bílý."
 
+#. topic
 #: data/core/help.cfg:195
 msgid "Movement"
 msgstr "Pohyby"
 
+#. topic
 #: data/core/help.cfg:196
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
@@ -710,6 +826,7 @@ msgstr ""
 "Obsazení nepřátelské vesnice znamená také konec pohybu v tomto kole, ale "
 "jednotka smí v kole ještě bojovat."
 
+#. topic
 #: data/core/help.cfg:198
 msgid ""
 "\n"
@@ -736,6 +853,7 @@ msgstr ""
 "zvolíte popis jednotky a podíváte se na <italic>text='Terénní činitele'</"
 "italic>."
 
+#. topic
 #: data/core/help.cfg:200
 msgid ""
 "\n"
@@ -756,6 +874,7 @@ msgstr ""
 "Wesnothu, protože pouze jednotky s vlastností <ref>dst=ability_skirmisher "
 "text='průbojnost'</ref> mohou tyto oblasti ignorovat."
 
+#. topic
 #: data/core/help.cfg:202
 msgid ""
 "\n"
@@ -770,10 +889,12 @@ msgstr ""
 "stiskněte Ctrl-v nebo Cmd-v. Ctrl-b nebo Cmd-b ukáže kam by se nepřítel mohl "
 "přesunout pokud by vaše jednotky jeho postup neblokovali."
 
+#. topic
 #: data/core/help.cfg:207
 msgid "Shroud and Fog of War"
 msgstr "Zahalení tmou a Mlha"
 
+#. topic
 #: data/core/help.cfg:210
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -814,10 +935,12 @@ msgstr ""
 "ručnímu odhalení volbou „Obnov mlhu“ z menu „Akce“ (nebo koncem kola). Tak "
 "budete moci vracet pohyb i při použití mlhy nebo zahalení tmou."
 
+#. topic
 #: data/core/help.cfg:215
 msgid "Combat"
 msgstr "Boj"
 
+#. topic
 #: data/core/help.cfg:216
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
@@ -839,6 +962,7 @@ msgstr ""
 "blízko, který obvykle vyžaduje zbraně jako jsou meče, sekery nebo tesáky; a "
 "boj na dálku, zde se uplatní zbraně jako jsou luky, oštěpy a ohnivé koule."
 
+#. topic
 #: data/core/help.cfg:218
 msgid ""
 "\n"
@@ -849,6 +973,7 @@ msgstr ""
 "\n"
 "<header>text='Pořadí a počet útoků'</header>"
 
+#. topic
 #: data/core/help.cfg:220
 msgid ""
 "\n"
@@ -871,6 +996,7 @@ msgstr ""
 "způsobí 5 bodů poškození, zatímco skřetí pěšák s 9-2 útokem zaútočí pouze 2x "
 "(a každý úspěšný zásah způsobí 9 bodů poškození)."
 
+#. topic
 #: data/core/help.cfg:222
 msgid ""
 "\n"
@@ -881,6 +1007,7 @@ msgstr ""
 "\n"
 "<header>text='Šance na zásah'</header>"
 
+#. topic
 #: data/core/help.cfg:224
 msgid ""
 "\n"
@@ -903,6 +1030,7 @@ msgstr ""
 "pouze 30% šanci jejich zásahu. Naopak šance zásahu útočníka elfem záleží na "
 "terénu na kterém se nachází útočník."
 
+#. topic
 #: data/core/help.cfg:226
 msgid ""
 "\n"
@@ -921,6 +1049,7 @@ msgstr ""
 "terénu a když jsou použity při útoku. Střelci mají vždy alespoň 60% šanci na "
 "úspěch a také nezáleží na terénu."
 
+#. topic
 #: data/core/help.cfg:228
 msgid ""
 "\n"
@@ -931,6 +1060,7 @@ msgstr ""
 "\n"
 "<header>text=Poškození</header>"
 
+#. topic
 #: data/core/help.cfg:230
 msgid ""
 "\n"
@@ -952,6 +1082,7 @@ msgstr ""
 "se chcete podívat jak je základní poškození ovlivněno okolnostmi, pak se "
 "podívejte v nabídce výběr útoku na <italic>text='Výpočty poškození'</italic>."
 
+#. topic
 #: data/core/help.cfg:232
 msgid ""
 "\n"
@@ -968,10 +1099,12 @@ msgstr ""
 "<ref>dst=weaponspecial_charge text=Výpadu</ref>, která zvyšuje poškození jak "
 "útočníka tak obránce, pokud útočí jednotka s touto schopností."
 
+#. topic
 #: data/core/help.cfg:237
 msgid "Damage Types and Resistance"
 msgstr "Typy zranění a odolnost"
 
+#. topic
 #: data/core/help.cfg:238
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -986,6 +1119,7 @@ msgstr ""
 "mají různé stupně odolností, které ovlivňují jejich schopnost čelit různým "
 "typům útoků."
 
+#. topic
 #: data/core/help.cfg:240
 msgid ""
 "\n"
@@ -1004,6 +1138,7 @@ msgstr ""
 "má jednotka -100% odolnost vůči některému poškození, pak v případě zásahu "
 "utrpí o 100% větší zranění."
 
+#. topic
 #: data/core/help.cfg:242
 msgid ""
 "\n"
@@ -1018,6 +1153,7 @@ msgstr ""
 "ale bezbranní vůči úderu a poškození ohněm a extrémně bezbranní vůči "
 "nezemským silám."
 
+#. topic
 #: data/core/help.cfg:244
 msgid ""
 "\n"
@@ -1032,10 +1168,12 @@ msgstr ""
 "poškození. To se týká dokonce i případu, kdy má obránce 100% odolnost vůči "
 "poškození tohoto typu."
 
+#. topic
 #: data/core/help.cfg:249
 msgid "Time of Day"
 msgstr "Denní doba"
 
+#. topic
 #: data/core/help.cfg:253
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -1048,6 +1186,7 @@ msgstr ""
 " Chaotické jednotky získávají +25% bonus v noci a během dne -25% ztrácí\n"
 " Neutrální jednotky nejsou denní dobou ovlivněny."
 
+#. topic
 #: data/core/help.cfg:256
 msgid ""
 "\n"
@@ -1062,30 +1201,43 @@ msgstr ""
 "Používá se běžný cyklus den/noc, dopoledne a odpoledne je den, první a druhá "
 "hlídka je noc:\n"
 
+#. time
+#. topic
 #: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "Svítání"
 
+#. time
+#. topic
 #: data/core/help.cfg:257 data/core/macros/schedules.cfg:21
 msgid "Morning"
 msgstr "Dopoledne"
 
+#. time
+#. topic
 #: data/core/help.cfg:258 data/core/macros/schedules.cfg:32
 msgid "Afternoon"
 msgstr "Odpoledne"
 
+#. time
+#. topic
 #: data/core/help.cfg:259 data/core/macros/schedules.cfg:43
 msgid "Dusk"
 msgstr "Soumrak"
 
+#. time
+#. topic
 #: data/core/help.cfg:260 data/core/macros/schedules.cfg:57
 msgid "First Watch"
 msgstr "První hlídka"
 
+#. time
+#. topic
 #: data/core/help.cfg:261 data/core/macros/schedules.cfg:71
 msgid "Second Watch"
 msgstr "Druhá hlídka"
 
+#. topic
 #: data/core/help.cfg:263
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
@@ -1094,10 +1246,12 @@ msgstr ""
 "Pamatujte prosím, že pokud se scénář nachází pod zemí, pak je zde neustále "
 "noc!"
 
+#. topic
 #: data/core/help.cfg:268
 msgid "Experience and Advancement"
 msgstr "Zkušenosti a povyšování"
 
+#. topic
 #: data/core/help.cfg:269
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
@@ -1110,6 +1264,7 @@ msgstr ""
 "samozřejmě získává více zkušeností - 4 pokud byla úroveň 0, 8 pro úroveň 1, "
 "16 pro úroveň 2, 24 pro úroveň 3 a tak dále."
 
+#. topic
 #: data/core/help.cfg:271
 msgid ""
 "\n"
@@ -1129,6 +1284,7 @@ msgstr ""
 # \n
 # \n
 # Pamatujte, že jen velmi malé množství jednotek, například Požírači mrtvol, se mohou pomocí AMLA léčit jako při povýšení. Většina jednotek pouze získá bonus k maximálnímu počtu životů.
+#. topic
 #: data/core/help.cfg:273
 msgid ""
 "\n"
@@ -1158,10 +1314,12 @@ msgstr ""
 "AMLA se však postupně zvyšuje, proto je často vhodnější pokusit se povýšit "
 "jednotky nižší úrovně."
 
+#. topic
 #: data/core/help.cfg:278
 msgid "Healing"
 msgstr "Uzdravování"
 
+#. topic
 #: data/core/help.cfg:279
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -1177,6 +1335,7 @@ msgstr ""
 "jednotek, k většině z nich dochází na začátku vašeho tahu, před tím, než "
 "převezmete ovládání."
 
+#. topic
 #: data/core/help.cfg:281
 msgid ""
 "\n"
@@ -1189,6 +1348,7 @@ msgstr ""
 "Odpočinek: Jednotka, která se nepřesune, nezaútočí ani není napadena, se v "
 "příštím kole vyléčí o 2HP."
 
+#. topic
 #: data/core/help.cfg:282
 msgid ""
 "\n"
@@ -1197,6 +1357,7 @@ msgstr ""
 "\n"
 "Vesnice: Jednotka která začne svůj tah ve vesnici bude uzdravena o 8HP."
 
+#. topic
 #: data/core/help.cfg:283
 msgid ""
 "\n"
@@ -1207,6 +1368,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=Regenerace</ref>: Některé jednotky (např. "
 "trollové) se vyléčí automaticky o 8HP každý tah."
 
+#. topic
 #: data/core/help.cfg:284
 msgid ""
 "\n"
@@ -1220,6 +1382,7 @@ msgstr ""
 "pouze ty jednotky, které se nacházejí v těsné blízkosti a jsou na stejné "
 "straně jako léčitel a to pouze o 4 nebo 8HP na jednotku."
 
+#. topic
 #: data/core/help.cfg:285
 msgid ""
 "\n"
@@ -1233,6 +1396,7 @@ msgstr ""
 "(uzdravování má u spřátelené jednotky přednost před léčením či ošetřováním, "
 "má-li uzdravovatel i tuto schopnost)."
 
+#. topic
 #: data/core/help.cfg:287
 msgid ""
 "\n"
@@ -1247,10 +1411,12 @@ msgstr ""
 "regeneraci, léčení a uzdravování nelze kombinovat navzájem: nejlepší volba "
 "bude zvolena. Konečně, jednotky se plně uzdraví mezi jednotlivými scénáři."
 
+#. topic
 #: data/core/help.cfg:292
 msgid "Income and Upkeep"
 msgstr "Příjmy a výdaje"
 
+#. topic
 #: data/core/help.cfg:293
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1262,6 +1428,7 @@ msgstr ""
 "stav zlata, zejména při tažení, kde můžete přenášet extra peníze z jedné "
 "scény do další. Takže je nutno sledovat ještě dvě hlediska; příjmy a výdaje."
 
+#. topic
 #: data/core/help.cfg:295
 msgid ""
 "\n"
@@ -1278,6 +1445,7 @@ msgstr ""
 "Takže pokud máte deset vesnic, získáte každé kolo 12 zlatých. Vaše Výdaje "
 "jsou odčítány od tohoto příjmu, jak je detailně popsáno níže."
 
+#. topic
 #: data/core/help.cfg:297
 msgid ""
 "\n"
@@ -1298,6 +1466,7 @@ msgstr ""
 "musíte platit jeden zlatý za tah. Například, pokud máte 12 jednotek úrovně "
 "jedna a 10 vesnic, pak budete muset každý tah zaplatit 2 zlaté."
 
+#. topic
 #: data/core/help.cfg:299
 msgid ""
 "\n"
@@ -1312,6 +1481,7 @@ msgstr ""
 "deset vesnic a jednotky s dohromady dvanácti úrovněmi, bude výsledný příjem "
 "10 zlatých na jedno kolo."
 
+#. topic
 #: data/core/help.cfg:300
 msgid ""
 "\n"
@@ -1329,10 +1499,12 @@ msgstr ""
 "připojí během hry (např. jezdec ve druhé scéně tažení Dědic trůnu). "
 "Jednotka, za kterou hrajete (např. Konrád), je téměř vždy vůdcem."
 
+#. topic
 #: data/core/help.cfg:305
 msgid "Wrap Up"
 msgstr "Závěr"
 
+#. topic
 #: data/core/help.cfg:306
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1346,14 +1518,17 @@ msgstr ""
 "a <ref>dst=abilities text=Schopnostmi</ref>, ale nyní víte vše, co "
 "potřebujete k hraní tažení „Dědic trůnu“. Dobře se bavte a mnoho štěstí!"
 
+#. topic
 #: data/core/help.cfg:311
 msgid "ingame_help_item^Contributors"
 msgstr "Přispěvatelé"
 
+#. topic
 #: data/core/help.cfg:317
 msgid "License"
 msgstr "Licence"
 
+#. topic
 #: data/core/help.cfg:325
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
@@ -1366,6 +1541,7 @@ msgstr ""
 "vlastnosti žádné. Vlastnosti jsou úpravami, které jemně mění atributy "
 "jednotek. Jsou obvykle náhodně přiřazeny jednotce při jejím naverbování."
 
+#. topic
 #: data/core/help.cfg:327
 msgid ""
 "\n"
@@ -1382,6 +1558,7 @@ msgstr ""
 "text=Rychlost</ref>, <ref>dst=traits_resilient text=Houževnatost</ref>, a "
 "<ref>dst=traits_strong text=Síla</ref>."
 
+#. topic
 #: data/core/help.cfg:331
 msgid ""
 "\n"
@@ -1398,15 +1575,18 @@ msgstr ""
 "text=Věrnost</ref> a <ref>dst=traits_undead text=Nemrtví</ref>.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:336
 msgid "Intelligent"
 msgstr "Inteligentní"
 
+#. topic
 #: data/core/help.cfg:337
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Inteligentní jednotky potřebují ke svému povýšení o 20% méně zkušeností."
 
+#. topic
 #: data/core/help.cfg:339
 msgid ""
 "\n"
@@ -1426,15 +1606,18 @@ msgstr ""
 "jednotek na hranici jejich možností, možná budete chtít přivolat jednotky s "
 "vhodnějšími vlastnostmi."
 
+#. topic
 #: data/core/help.cfg:344
 msgid "Quick"
 msgstr "Rychlý"
 
+#. topic
 #: data/core/help.cfg:345
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Rychlé jednotky mají navíc 1 pohybový bod, ale o 5% nižší HP než je obvyklé."
 
+#. topic
 #: data/core/help.cfg:347
 msgid ""
 "\n"
@@ -1454,17 +1637,20 @@ msgstr ""
 "rozmísťování Vašich sil. Rychlé jednotky nejsou tak silné jako jednotky bez "
 "této vlastnosti a jsou také slabší při udržování bojových pozic."
 
+#. topic
 #: data/core/help.cfg:352
 msgid "Resilient"
 msgstr "Houževnatý"
 
 # příliš dlouhý text?
+#. topic
 #: data/core/help.cfg:353
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Houževnaté jednotky mají o 4 body větší HP než obvykle a při povýšení vždy "
 "ještě 1 bod navíc."
 
+#. topic
 #: data/core/help.cfg:355
 msgid ""
 "\n"
@@ -1483,10 +1669,12 @@ msgstr ""
 "úspěšnosti zásahů, dobré obrany, nebo vysoké odolnosti. Houževnaté jednotky "
 "jsou zejména užitečné při obraně strategických pozic proti protivníkům."
 
+#. topic
 #: data/core/help.cfg:360
 msgid "Strong"
 msgstr "Silný"
 
+#. topic
 #: data/core/help.cfg:361
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
@@ -1495,6 +1683,7 @@ msgstr ""
 "Silné jednotky při úspěšném zásahu způsobí o 1 bod poškození více než "
 "normálně, a mají o 1 život navíc."
 
+#. topic
 #: data/core/help.cfg:363
 msgid ""
 "\n"
@@ -1511,18 +1700,22 @@ msgstr ""
 "např. elfí bojovníci. Silné jednotky mohou být velmi užitečné v okamžiku, "
 "kdy jen trocha poškození navíc změní zásah poškozující na smrtící."
 
+#. topic
 #: data/core/help.cfg:368
 msgid "Fearless"
 msgstr "Nebojácný"
 
+#. topic
 #: data/core/help.cfg:369
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Tito odvážní jedinci dokáží překonat svůj strach z temnoty či světla."
 
+#. topic
 #: data/core/help.cfg:374
 msgid "Loyal"
 msgstr "Věrný"
 
+#. topic
 #: data/core/help.cfg:375
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
@@ -1533,6 +1726,7 @@ msgstr ""
 "kola svůj žold, který je úměrný její úrovni. Věrné jednotky tyto peníze "
 "nepožadují."
 
+#. topic
 #: data/core/help.cfg:377
 msgid ""
 "\n"
@@ -1553,10 +1747,12 @@ msgstr ""
 "jednotkám, takže není příliš moudré tyto jednotky nepoužívat, nebo je "
 "zbytečně poslat na smrt."
 
+#. topic
 #: data/core/help.cfg:382
 msgid "trait^Undead"
 msgstr "Nemrtví"
 
+#. topic
 #: data/core/help.cfg:383
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
@@ -1565,6 +1761,7 @@ msgstr ""
 "Nemrtvé jednotky jsou imunní vůči jedům; také na ně nemá vliv vysátí a "
 "nákaza."
 
+#. topic
 #: data/core/help.cfg:385
 msgid ""
 "\n"
@@ -1581,16 +1778,19 @@ msgstr ""
 "nemá žádný účinek. To může být neocenitelné při boji s nepřítelem, který při "
 "svých útocích používá jedů."
 
+#. topic
 #: data/core/help.cfg:390
 msgid "trait^Mechanical"
 msgstr "Stroje"
 
+#. topic
 #: data/core/help.cfg:391
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "Stroje jsou imunní vůči jedům; také na ně nemá vliv vysátí a nákaza."
 
+#. topic
 #: data/core/help.cfg:393
 msgid ""
 "\n"
@@ -1604,10 +1804,12 @@ msgstr ""
 "Stroje mají obvykle jedinou vlastnost, „stroj“. Protože stroje nejsou živé, "
 "nemá na ně vliv vysátí, jed nebo nákaza."
 
+#. topic
 #: data/core/help.cfg:398
 msgid "Dextrous"
 msgstr "Obratný"
 
+#. topic
 #: data/core/help.cfg:399
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
@@ -1615,6 +1817,7 @@ msgstr ""
 "Obratné jednotky způsobí o 1 bod větší poškození při každém úspěšném útoku "
 "na dálku."
 
+#. topic
 #: data/core/help.cfg:401
 msgid ""
 "\n"
@@ -1631,10 +1834,12 @@ msgstr ""
 "obdařeni přirozeným talentem, kterým překračují schopnosti svých bratrů. "
 "Tito elfové způsobí každým šípem další bod poškození."
 
+#. topic
 #: data/core/help.cfg:406
 msgid "Healthy"
 msgstr "Zdravý"
 
+#. topic
 #: data/core/help.cfg:407
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
@@ -1643,6 +1848,7 @@ msgstr ""
 "Někteří z trpaslíků, známých svou vitalitou, jsou ještě houževnatější než "
 "ostatní a léčí se i při pohybu."
 
+#. topic
 #: data/core/help.cfg:409
 msgid ""
 "\n"
@@ -1655,6 +1861,7 @@ msgstr ""
 "Zdravé jednotky mají o 2 HP více než obvykle a uzdravují se o 2 HP po každém "
 "kole, v němž nebojovaly."
 
+#. topic
 #: data/core/help.cfg:417
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
@@ -1665,10 +1872,12 @@ msgstr ""
 "jednotek i jejich obranu.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:423
 msgid "Grassland"
 msgstr "Louka"
 
+#. topic
 #: data/core/help.cfg:428
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
@@ -1686,10 +1895,12 @@ msgstr ""
 "otevřenému prostranství.\n"
 "Většina jednotek má na louce defenzivní bonus od 30 do 40%."
 
+#. topic
 #: data/core/help.cfg:433
 msgid "Road"
 msgstr "Cesta"
 
+#. topic
 #: data/core/help.cfg:436
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1700,10 +1911,12 @@ msgstr ""
 "použili. Co se týká herních vlastností, jsou stejné jako u "
 "<ref>dst=terrain_grassland text=Louky</ref>."
 
+#. topic
 #: data/core/help.cfg:441
 msgid "Forest"
 msgstr "Les"
 
+#. topic
 #: data/core/help.cfg:448
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1737,10 +1950,12 @@ msgstr ""
 "na koních. Trpaslíci obvykle získají v lese pouze 30% obrany.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:453
 msgid "Hills"
 msgstr "Kopce"
 
+#. topic
 #: data/core/help.cfg:458
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
@@ -1763,10 +1978,12 @@ msgstr ""
 "Většina jednotek v kopcích získá okolo 50% obranného bonusu, zatímco jízda "
 "je omezena 40%. Trpaslíci se v kopcích těší 60% obrannému bonusu."
 
+#. topic
 #: data/core/help.cfg:463
 msgid "Mountains"
 msgstr "Hory"
 
+#. topic
 #: data/core/help.cfg:468
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
@@ -1789,10 +2006,12 @@ msgstr ""
 "Většina jednotek v horách získává okolo 60% obranného bonusu, zatímco "
 "trpaslíci se těší 70%."
 
+#. topic
 #: data/core/help.cfg:473
 msgid "Swamp"
 msgstr "Mokřina"
 
+#. topic
 #: data/core/help.cfg:478
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
@@ -1813,10 +2032,12 @@ msgstr ""
 "Většina jednotek v mokřinách získává 30% obranný bonus. Vodní lidé, Nagy a "
 "Ještěráci se obvykle těší 60% bonusu."
 
+#. topic
 #: data/core/help.cfg:483
 msgid "Shallow Water"
 msgstr "Mělká voda"
 
+#. topic
 #: data/core/help.cfg:488
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
@@ -1839,10 +2060,12 @@ msgstr ""
 "Většina jednotek získá v mělké vodě 20 až 30% obranný bonus, zatímco Nagy a "
 "Vodní lidé se těší bonusu 60%."
 
+#. topic
 #: data/core/help.cfg:493
 msgid "Deep Water"
 msgstr "Hluboká voda"
 
+#. topic
 #: data/core/help.cfg:498
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
@@ -1858,10 +2081,12 @@ msgstr ""
 "Vodní lidé a Nagy získávají v hluboké vodě 50% obranný bonus a maximální "
 "schopnost pohybu."
 
+#. topic
 #: data/core/help.cfg:503
 msgid "Snow"
 msgstr "Sníh"
 
+#. topic
 #: data/core/help.cfg:508
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
@@ -1876,10 +2101,12 @@ msgstr ""
 "\n"
 "Většina jednotek ve sněhu získá 20 až 40% obranný bonus."
 
+#. topic
 #: data/core/help.cfg:513
 msgid "Ice"
 msgstr "Led"
 
+#. topic
 #: data/core/help.cfg:516
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
@@ -1891,10 +2118,12 @@ msgstr ""
 "jednotky schopné plavání, vyjma těch co mohou dýchat pod vodou, nemohou "
 "plavat pod ledem."
 
+#. topic
 #: data/core/help.cfg:521
 msgid "Castle"
 msgstr "Hrad"
 
+#. topic
 #: data/core/help.cfg:528
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -1917,10 +2146,12 @@ msgstr ""
 "Většina jednotek získává 60% obranný bonus.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:533
 msgid "Sand"
 msgstr "Písek"
 
+#. topic
 #: data/core/help.cfg:538
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
@@ -1936,10 +2167,12 @@ msgstr ""
 "\n"
 "Většina jednotek získává v písku 20 až 40% obranný bonus."
 
+#. topic
 #: data/core/help.cfg:543
 msgid "Desert"
 msgstr "Poušť"
 
+#. topic
 #: data/core/help.cfg:546
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -1950,10 +2183,12 @@ msgstr ""
 "ale ovlivňují obdobně. Podívejte se na <ref>dst=terrain_sand text=Písek</"
 "ref>."
 
+#. topic
 #: data/core/help.cfg:551
 msgid "Cave"
 msgstr "Jeskyně"
 
+#. topic
 #: data/core/help.cfg:556
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -1975,10 +2210,12 @@ msgstr ""
 "\n"
 "Většina jednotek zde získá 20 až 40% obranný bonus, zatímco trpaslíci 50%."
 
+#. topic
 #: data/core/help.cfg:561
 msgid "Rockbound Cave"
 msgstr "Skalnatá jeskyně"
 
+#. topic
 #: data/core/help.cfg:566
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2002,10 +2239,12 @@ msgstr ""
 "Většina jednotek má ve skalnatých jeskyních obranný bonus okolo 50%, jízda "
 "pouze 40% a trpaslíci 60%."
 
+#. topic
 #: data/core/help.cfg:571
 msgid "Illuminated Cave"
 msgstr "Osvětlená jeskyně"
 
+#. topic
 #: data/core/help.cfg:574
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2018,10 +2257,12 @@ msgstr ""
 "odnímá ji chaotickým. Ve všech ostatních ohledech je tento typ terénu "
 "funkčně shodný s normální jeskyní."
 
+#. topic
 #: data/core/help.cfg:579
 msgid "Mushroom Grove"
 msgstr "Houbový háj"
 
+#. topic
 #: data/core/help.cfg:584
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -2042,10 +2283,12 @@ msgstr ""
 "\n"
 "Většina jednotek získává obranný bonus 50% nebo 60%, jízda pouze 20%."
 
+#. topic
 #: data/core/help.cfg:589
 msgid "Savanna"
 msgstr "Step"
 
+#. topic
 #: data/core/help.cfg:592
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
@@ -2056,11 +2299,14 @@ msgstr ""
 "krajinách. Jejich herní význam je stejný jako v případě "
 "<ref>dst=terrain_grassland text=Louky</ref>."
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. topic
 #: data/core/help.cfg:597 src/terrain.cpp:135
 msgid "Village"
 msgstr "Vesnice"
 
 # pův.: "Většina jednotek ve vesnicích získá 50 až 60% obranný bonus, jízda pouze 40%."
+#. topic
 #: data/core/help.cfg:604
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -2083,10 +2329,12 @@ msgstr ""
 "Většina jednotek zde získá 50 až 60% obranný bonus, jízda pouze 40%.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:609
 msgid "Submerged Village"
 msgstr "Ponořená vesnice"
 
+#. topic
 #: data/core/help.cfg:614
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
@@ -2108,10 +2356,12 @@ msgstr ""
 "Mořský lid a nágy se v ponořených vesnicích těší obrannému bonusu 60%, "
 "zatímco pozemní jednotky obvykle nezískávají příliš velký bonus."
 
+#. topic
 #: data/core/help.cfg:619
 msgid "Chasm"
 msgstr "Rokle"
 
+#. topic
 #: data/core/help.cfg:622
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
@@ -2123,10 +2373,12 @@ msgstr ""
 "příkré svahy, jejichž překonání může trvat dny. Co se týká herních "
 "vlastností, mohou být překonány pouze jednotkami schopnými létat."
 
+#. topic
 #: data/core/help.cfg:627
 msgid "Lava"
 msgstr "Láva"
 
+#. topic
 #: data/core/help.cfg:630
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
@@ -2140,10 +2392,12 @@ msgstr ""
 "Žhavá láva také produkuje svit, osvětlující oblasti přímo nad nimi. Tím "
 "poskytuje výhodu při útoku všem zákonným jednotkám a odnímá ji chaotickým. "
 
+#. topic
 #: data/core/help.cfg:635
 msgid "River Ford"
 msgstr "Brod řeky"
 
+#. topic
 #: data/core/help.cfg:638
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
@@ -2159,10 +2413,12 @@ msgstr ""
 "vlastností, je brod něco mezi loukou a mělkou vodou. To může pomoci při "
 "volbě jednotek při pohybu a obraně tohoto území."
 
+#. topic
 #: data/core/help.cfg:643
 msgid "Bridge"
 msgstr "Most"
 
+#. topic
 #: data/core/help.cfg:648
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2188,10 +2444,12 @@ msgstr ""
 "Pamatujte, že jednotky schopné plavat a ty pozemní nejsou schopné zabrat "
 "most v témže okamžiku."
 
+#. topic
 #: data/core/help.cfg:653
 msgid "Cave Wall"
 msgstr "Jeskynní hradba"
 
+#. topic
 #: data/core/help.cfg:656
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
@@ -2200,10 +2458,12 @@ msgstr ""
 "Jeskynní hradba je vyrobena z pevného kamene, který je znám pro svojí "
 "schopností odolat i tomu nejodhodlanějšímu cestovateli."
 
+#. topic
 #: data/core/help.cfg:661
 msgid "Impassable Mountain"
 msgstr "Neschůdné hory"
 
+#. topic
 #: data/core/help.cfg:664
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
@@ -2214,10 +2474,12 @@ msgstr ""
 "Přechod takového pohoří je téměř nemožný, dokonce ani létající tvorové "
 "nedokáží proniknout mezi rozeklanými vršky v tak zřídkavé výši."
 
+#. topic
 #: data/core/help.cfg:675
 msgid "General commands"
 msgstr "Obecné příkazy"
 
+#. topic
 #: data/core/help.cfg:679
 msgid ""
 "\n"
@@ -2228,6 +2490,7 @@ msgstr ""
 "Smaže zprávy rozhovoru.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:683
 msgid ""
 "\n"
@@ -2242,6 +2505,7 @@ msgstr ""
 "Ladící režim je vypnut ukončením hry nebo příkazem :nodebug.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:686
 msgid ""
 "\n"
@@ -2260,6 +2524,7 @@ msgstr ""
 "parametry, je vybrána aktivní strana.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:689
 msgid ""
 "\n"
@@ -2270,6 +2535,7 @@ msgstr ""
 "Přepíná zobrazování překreslovací rychlosti (FPS).\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:692
 msgid ""
 "\n"
@@ -2280,6 +2546,7 @@ msgstr ""
 "Přepíná logovací kategorii na jinou úroveň logování.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:695
 msgid ""
 "\n"
@@ -2290,6 +2557,7 @@ msgstr ""
 "Překreslí obrazovku.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:698
 msgid ""
 "\n"
@@ -2300,6 +2568,7 @@ msgstr ""
 "Otevře menu pro výběr tématu.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:701
 msgid ""
 "\n"
@@ -2310,6 +2579,7 @@ msgstr ""
 "Ukončí hru (bez dotazu).\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:704
 msgid ""
 "\n"
@@ -2321,6 +2591,7 @@ msgstr ""
 "\n"
 
 # dvakrát ještě \n\n?
+#. topic
 #: data/core/help.cfg:705
 msgid ""
 "\n"
@@ -2329,10 +2600,12 @@ msgstr ""
 "\n"
 "Uloží hru a ukončí scénář (bez dotazu)."
 
+#. topic
 #: data/core/help.cfg:710
 msgid "Multiplayer commands"
 msgstr "Příkazy pro hru více hráčů"
 
+#. topic
 #: data/core/help.cfg:714
 msgid ""
 "\n"
@@ -2345,6 +2618,7 @@ msgstr ""
 "jeho IP adresy.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:717
 msgid ""
 "\n"
@@ -2362,6 +2636,7 @@ msgstr ""
 "„Přehledové tabulce“ (při výchozím nastavení alt+s).\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:720
 msgid ""
 "\n"
@@ -2376,6 +2651,7 @@ msgstr ""
 "spojením.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:723
 msgid ""
 "\n"
@@ -2388,6 +2664,7 @@ msgstr ""
 "jméno, je zobrazen jejich seznam.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:724
 msgid ""
 "\n"
@@ -2396,10 +2673,12 @@ msgstr ""
 "\n"
 "Zapíná/vypíná umlčení všech pozorovatelů."
 
+#. topic
 #: data/core/help.cfg:729
 msgid "Debug mode commands"
 msgstr "Příkazy ladícího módu"
 
+#. topic
 #: data/core/help.cfg:733
 msgid ""
 "\n"
@@ -2410,6 +2689,7 @@ msgstr ""
 "Vytvoří jednotku daného typu na vybraném políčku.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:736
 msgid ""
 "\n"
@@ -2420,6 +2700,7 @@ msgstr ""
 "Přepíná zobrazování mlhy/tmy pro aktivní stranu.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:739
 msgid ""
 "\n"
@@ -2430,6 +2711,7 @@ msgstr ""
 "Přidá aktivní straně určené množství zlata.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:742
 msgid ""
 "\n"
@@ -2440,6 +2722,7 @@ msgstr ""
 "Manuálně nastavuje hodnotu proměnné stavu hry.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:745
 msgid ""
 "\n"
@@ -2450,6 +2733,7 @@ msgstr ""
 "Zobrazí proměnnou stavu hry.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:748
 msgid ""
 "\n"
@@ -2461,6 +2745,7 @@ msgstr ""
 "\n"
 
 # do uvozovek nebo ne?
+#. topic
 #: data/core/help.cfg:749
 msgid ""
 "\n"
@@ -2471,10 +2756,12 @@ msgstr ""
 "Upravuje určenou vlastnost vybrané jednotky. Příklad použití: :unit "
 "hitpoints=100"
 
+#. heals
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "ošetření"
 
+#. heals
 #: data/core/macros/abilities.cfg:15
 msgid ""
 "Heals +4:\n"
@@ -2495,10 +2782,12 @@ msgstr ""
 "Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
 "vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
+#. heals
 #: data/core/macros/abilities.cfg:29
 msgid "heals +8"
 msgstr "léčení"
 
+#. heals
 #: data/core/macros/abilities.cfg:34
 msgid ""
 "Heals +8:\n"
@@ -2521,10 +2810,12 @@ msgstr ""
 "Léčitel nedokáže uzdravit otrávenou jednotku; taková jednotka musí vyhledat "
 "pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
+#. heals
 #: data/core/macros/abilities.cfg:49
 msgid "cures"
 msgstr "uzdravování"
 
+#. heals
 #: data/core/macros/abilities.cfg:51
 msgid ""
 "Cures:\n"
@@ -2535,10 +2826,12 @@ msgstr ""
 "Uzdravovatel dokáže uzdravit otrávenou jednotku, ale tato jednotka už v "
 "daném tahu nebude dále léčena."
 
+#. regenerate
 #: data/core/macros/abilities.cfg:73
 msgid "regenerates"
 msgstr "regenerace"
 
+#. regenerate
 #: data/core/macros/abilities.cfg:75
 msgid ""
 "Regenerates:\n"
@@ -2549,10 +2842,12 @@ msgstr ""
 "Jednotka se uzdraví o 8 životů za tah. V případě otravy, místo uzdravení "
 "odstraní jed."
 
+#. resistance
 #: data/core/macros/abilities.cfg:92
 msgid "steadfast"
 msgstr "vytrvalost"
 
+#. resistance
 #: data/core/macros/abilities.cfg:94
 msgid ""
 "Steadfast:\n"
@@ -2563,12 +2858,14 @@ msgstr ""
 "Odolnost této jednotky je při obraně zdvojena, až na maximum 50%. Výše "
 "zranění při zásahu ale není ovlivněna."
 
+#. leadership
 #: data/core/macros/abilities.cfg:107 data/core/macros/abilities.cfg:129
 #: data/core/macros/abilities.cfg:163 data/core/macros/abilities.cfg:209
 #: data/core/macros/abilities.cfg:267
 msgid "leadership"
 msgstr "velení"
 
+#. leadership
 #: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
 #: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
 #: data/core/macros/abilities.cfg:271
@@ -2590,10 +2887,12 @@ msgstr ""
 "stejné straně jako ta velící, pak její útok způsobí o 25% více poškození "
 "krát rozdíl jejich úrovní."
 
+#. skirmisher
 #: data/core/macros/abilities.cfg:335
 msgid "skirmisher"
 msgstr "průbojnost"
 
+#. skirmisher
 #: data/core/macros/abilities.cfg:337
 msgid ""
 "Skirmisher:\n"
@@ -2604,10 +2903,12 @@ msgstr ""
 "Tato jednotka je zvyklá pohybovat se mezi nepřáteli a ignoruje všechny "
 "oblasti kontroly."
 
+#. illuminates
 #: data/core/macros/abilities.cfg:350
 msgid "illuminates"
 msgstr "osvětlení"
 
+#. illuminates
 #: data/core/macros/abilities.cfg:354
 msgid ""
 "Illuminates:\n"
@@ -2624,10 +2925,12 @@ msgstr ""
 "Jednotky na sousedních polích budou bojovat v noci jako za soumraku a za "
 "soumraku jako ve dne."
 
+#. teleport
 #: data/core/macros/abilities.cfg:364
 msgid "teleport"
 msgstr "teleportace"
 
+#. teleport
 #: data/core/macros/abilities.cfg:366
 msgid ""
 "Teleport:\n"
@@ -2638,10 +2941,12 @@ msgstr ""
 "Tato jednotka se dokáže v jednom svém kroku přemístit z jedné spřátelené "
 "vesnice do druhé, za předpokladu že jsou obě prázdné."
 
+#. hides
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
 msgstr "přepadení"
 
+#. hides
 #: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:384
 msgid ""
 "Ambush:\n"
@@ -2658,10 +2963,12 @@ msgstr ""
 "sousedních polích. Nepřátelská jednotka, která ji nalezne jako první, ztrácí "
 "všechny své zbývající body pohybu."
 
+#. hides
 #: data/core/macros/abilities.cfg:399 data/core/macros/abilities.cfg:404
 msgid "nightstalk"
 msgstr "noční lovec"
 
+#. hides
 #: data/core/macros/abilities.cfg:403 data/core/macros/abilities.cfg:408
 msgid ""
 "Nightstalk:\n"
@@ -2678,10 +2985,12 @@ msgstr ""
 "sousedních polích. Nepřátelská jednotka, která ji nalezne jako první, ztrácí "
 "všechny své zbývající body pohybu."
 
+#. hides
 #: data/core/macros/abilities.cfg:423 data/core/macros/abilities.cfg:428
 msgid "concealment"
 msgstr "skrývání"
 
+#. hides
 #: data/core/macros/abilities.cfg:427 data/core/macros/abilities.cfg:432
 msgid ""
 "Concealment:\n"
@@ -2700,10 +3009,12 @@ msgstr ""
 "pouze jsou-li na sousedních polích. Nepřátelská jednotka, která ji nalezne "
 "jako první, ztrácí všechny své zbývající body pohybu."
 
+#. hides
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:452
 msgid "submerge"
 msgstr "ponoření"
 
+#. hides
 #: data/core/macros/abilities.cfg:451 data/core/macros/abilities.cfg:456
 msgid ""
 "Submerge:\n"
@@ -2721,10 +3032,12 @@ msgstr ""
 "jsou-li na sousedních polích. Nepřátelská jednotka, která ji nalezne jako "
 "první, ztrácí všechny své zbývající body pohybu."
 
+#. dummy
 #: data/core/macros/abilities.cfg:474
 msgid "feeding"
 msgstr "krmení"
 
+#. dummy
 #: data/core/macros/abilities.cfg:476
 msgid ""
 "Feeding:\n"
@@ -2888,18 +3201,22 @@ msgstr ""
 "nemůže jednotku zabít."
 
 # Tohle myslím není vidět, takže je stejně jedno jak je to přeložené (?)
+#. advancement
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Max HP bonus +3, Max XP +20%"
 
+#. advancement
 #: data/core/macros/amla.cfg:30
 msgid ", MAX XP +25%"
 msgstr ", MAX XP +25%"
 
+#. advancement
 #: data/core/macros/amla.cfg:30
 msgid "Max HP bonus +"
 msgstr "Maximální bonus HP +"
 
+#. message: speaker=narrator
 #: data/core/macros/items.cfg:41
 msgid ""
 "You have come across a wishing well.\n"
@@ -2908,10 +3225,12 @@ msgstr ""
 "Přišel jsi ke studně přání.\n"
 "Co by sis přál?"
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:45
 msgid "A swift victory"
 msgstr "Rychlé vítězství"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:53
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
@@ -2920,52 +3239,64 @@ msgstr ""
 "S touto zlatou mincí si přeji, aby tato bitva skončila rychlým a bezpečným "
 "vítězstvím."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:60
 msgid "Lots of gold"
 msgstr "Hodně zlata"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:68
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr ""
 "Přeji si, aby se mi tato jediná zlatá mince mince vrátila desetinásobně."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:75
 msgid "Peace throughout Wesnoth."
 msgstr "Mír pro celý Wesnoth"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:83
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr ""
 "Jediná opravdu cenná věc, kterou bych si mohl přát, je mír v těchto krajích."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:90
 msgid "Don't make a wish."
 msgstr "Nic si nepřeji."
 
+#. object
 #: data/core/macros/items.cfg:121
 msgid "Potion of Healing"
 msgstr "Lektvar uzdravení"
 
+#. object
 #: data/core/macros/items.cfg:124
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Kdo se napil, toho zaplavuje pocit zdraví."
 
+#. object
 #: data/core/macros/items.cfg:125
 msgid "You are not worthy of healing."
 msgstr "Nejsi hoden vyléčení."
 
+#. object
 #: data/core/macros/items.cfg:159
 msgid "Poison"
 msgstr "Jed"
 
+#. object
 #: data/core/macros/items.cfg:162
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Jed právě vniká do žil této jednotky."
 
+#. object
 #: data/core/macros/items.cfg:197
 msgid "Holy Water"
 msgstr "Posvěcená voda"
 
+#. object
 #: data/core/macros/items.cfg:200
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
@@ -2974,68 +3305,84 @@ msgstr ""
 "Tato voda změní druh útoku všech zbraní na blízko na „nezemský“ do konce "
 "současného scénáře."
 
+#. object
 #: data/core/macros/items.cfg:201
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Nedokáži použít tento předmět! Ať ho vezme někdo jiný."
 
+#. object
 #: data/core/macros/items.cfg:236
 msgid "Potion of Strength"
 msgstr "Lektvar síly"
 
+#. object
 #: data/core/macros/items.cfg:239
 msgid "Strength is given to the drinker."
 msgstr "Kdo se napil, získal velkou sílu."
 
+#. object
 #: data/core/macros/items.cfg:280
 msgid "Potion of Decay"
 msgstr "Lektvar rozkladu"
 
+#. object
 #: data/core/macros/items.cfg:283
 msgid "This poor unit drank something really bad."
 msgstr "Chudák jednotka vypila něco opravdu zlého."
 
+#. object
 #: data/core/macros/items.cfg:318
 msgid "Ring of Regeneration"
 msgstr "Prsten uzdravení"
 
+#. object
 #: data/core/macros/items.cfg:321
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Tento prsten v každém kole trochu uzdraví svého nositele."
 
+#. object
 #: data/core/macros/items.cfg:358
 msgid "Ring of Slowness"
 msgstr "Lenivý prsten"
 
+#. object
 #: data/core/macros/items.cfg:361
 msgid "The bearer of this ring is slowed."
 msgstr "Nositel tohoto prstenu je zpomalen."
 
+#. object
 #: data/core/macros/items.cfg:396
 msgid "Staff of Swiftness"
 msgstr "Hůl hbitosti"
 
+#. object
 #: data/core/macros/items.cfg:399
 msgid "This staff will grant the bearer swift movement."
 msgstr "Tato hůl zaručí svému nositeli hbitost pohybu."
 
+#. object
 #: data/core/macros/items.cfg:400
 msgid "Only magical beings can wield such an object."
 msgstr "Jen magická bytost dokáže používat tento předmět."
 
+#. object
 #: data/core/macros/items.cfg:434
 msgid "Storm Trident"
 msgstr "Trojzubec bouře"
 
+#. object
 #: data/core/macros/items.cfg:437
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Tento trojzubec umožňuje vodním lidem střílet na své nepřátele elektrické "
 "blesky!"
 
+#. object
 #: data/core/macros/items.cfg:438
 msgid "Only the mermen can use this item!"
 msgstr "Jen vodní lidé mohou používat tento předmět!"
 
+#. effect: type=fire
 #: data/core/macros/items.cfg:451
 msgid "storm trident"
 msgstr "trojzubec bouře"
@@ -3832,6 +4179,8 @@ msgstr ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
+#. time
+#. illuminated_time
 #: data/core/macros/schedules.cfg:102 data/core/macros/schedules.cfg:113
 msgid "Deep Underground"
 msgstr "Hluboké podzemí"
@@ -4057,162 +4406,202 @@ msgstr ""
 " Obětem otráveným jedem této jednotky neustále přibývají zranění, dokud není "
 "oběť uzdravena ve vesnici nebo uzdravovatelem."
 
+#. trait
 #: data/core/macros/traits.cfg:9
 msgid "loyal"
 msgstr "věrný"
 
+#. trait
 #: data/core/macros/traits.cfg:10
 msgid "female^loyal"
 msgstr "věrná"
 
+#. trait
 #: data/core/macros/traits.cfg:11
 msgid "Zero upkeep"
 msgstr "Nulové výdaje"
 
+#. trait
 #: data/core/macros/traits.cfg:23
 msgid "undead"
 msgstr "nemrtvý"
 
+#. trait
 #: data/core/macros/traits.cfg:24
 msgid "female^undead"
 msgstr "nemrtvá"
 
+#. trait
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
 msgid "Immune to drain, poison and plague"
 msgstr "Odolný vůči vysátí, jedu a nákaze"
 
+#. trait
 #: data/core/macros/traits.cfg:38
 msgid "mechanical"
 msgstr "stroj"
 
+#. trait
 #: data/core/macros/traits.cfg:39
 msgid "female^mechanical"
 msgstr "stroj"
 
+#. trait
 #: data/core/macros/traits.cfg:52
 msgid "strong"
 msgstr "silný"
 
+#. trait
 #: data/core/macros/traits.cfg:53
 msgid "female^strong"
 msgstr "silná"
 
+#. trait
 #: data/core/macros/traits.cfg:70
 msgid "dextrous"
 msgstr "obratný"
 
+#. trait
 #: data/core/macros/traits.cfg:71
 msgid "female^dextrous"
 msgstr "obratná"
 
+#. trait
 #: data/core/macros/traits.cfg:84
 msgid "quick"
 msgstr "rychlý"
 
+#. trait
 #: data/core/macros/traits.cfg:85
 msgid "female^quick"
 msgstr "rychlá"
 
+#. trait
 #: data/core/macros/traits.cfg:101
 msgid "intelligent"
 msgstr "chytrý"
 
+#. trait
 #: data/core/macros/traits.cfg:102
 msgid "female^intelligent"
 msgstr "chytrá"
 
+#. trait
 #: data/core/macros/traits.cfg:114
 msgid "resilient"
 msgstr "houževnatý"
 
+#. trait
 #: data/core/macros/traits.cfg:115
 msgid "female^resilient"
 msgstr "houževnatá"
 
+#. trait
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr "zdravý"
 
+#. trait
 #: data/core/macros/traits.cfg:133
 msgid "female^healthy"
 msgstr "zdravá"
 
+#. trait
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
 msgstr "Odpočívá i při pohybu"
 
+#. trait
 #: data/core/macros/traits.cfg:146 data/core/macros/traits.cfg:159
 msgid "fearless"
 msgstr "nebojácný"
 
+#. trait
 #: data/core/macros/traits.cfg:147 data/core/macros/traits.cfg:160
 msgid "female^fearless"
 msgstr "nebojácná"
 
+#. trait
 #: data/core/macros/traits.cfg:148 data/core/macros/traits.cfg:161
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Bojuje v nepříznivé denní době bez postihu"
 
+#. color_range
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
 msgstr "Červená"
 
+#. color_range
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
 msgstr "Modrá"
 
+#. color_range
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
 msgstr "Zelená"
 
+#. color_range
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
 msgstr "Fialová"
 
+#. color_range
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
 msgstr "Oranžová"
 
+#. color_range
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 msgid "Black"
 msgstr "Černá"
 
+#. color_range
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
 msgstr "Bílá"
 
+#. color_range
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
 msgstr "Hnědá"
 
+#. color_range
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
 msgstr "Azurová"
 
+#. race
 #: data/core/units.cfg:43
 msgid "race^Bat"
 msgstr "Netopýr"
 
+#. race
 #: data/core/units.cfg:44
 msgid "race+female^Bat"
 msgstr "Netopýřice"
 
+#. race
 #: data/core/units.cfg:45
 msgid "race^Bats"
 msgstr "Netopýři"
 
+#. race
 #: data/core/units.cfg:52
 msgid "race^Drake"
 msgstr "Drakonid"
 
+#. race
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
 msgstr "Drakonidka"
 
+#. race
 #: data/core/units.cfg:54
 msgid "race^Drakes"
 msgstr "Drakonidé"
 
+#. race
 #: data/core/units.cfg:67
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
@@ -4335,18 +4724,22 @@ msgstr ""
 "umožňuje žít i v relativně chladném klimatu, díky čemuž obývají i kraje "
 "dálného severu Velkého kontinentu."
 
+#. race
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
 msgstr "Trpaslík"
 
+#. race
 #: data/core/units.cfg:75
 msgid "race+female^Dwarf"
 msgstr "Trpaslice"
 
+#. race
 #: data/core/units.cfg:76
 msgid "race^Dwarves"
 msgstr "Trpaslíci"
 
+#. race
 #: data/core/units.cfg:81
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
@@ -4445,18 +4838,22 @@ msgstr ""
 "slušnou reputaci, ačkoliv někteří trpaslíci jej stále posuzují jako počínání "
 "hodné pohrdání."
 
+#. race
 #: data/core/units.cfg:89
 msgid "race^Elf"
 msgstr "Elf"
 
+#. race
 #: data/core/units.cfg:90
 msgid "race+female^Elf"
 msgstr "Elfka"
 
+#. race
 #: data/core/units.cfg:91
 msgid "race^Elves"
 msgstr "Elfové"
 
+#. race
 #: data/core/units.cfg:94
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
@@ -4515,42 +4912,52 @@ msgstr ""
 "je tak starých, že ani nelze stanovit jejich stáří jinak než jen odhadem, a "
 "to na několik tisíciletí."
 
+#. race
 #: data/core/units.cfg:103
 msgid "race^Goblin"
 msgstr "Goblin"
 
+#. race
 #: data/core/units.cfg:104
 msgid "race+female^Goblin"
 msgstr "Goblinka"
 
+#. race
 #: data/core/units.cfg:105
 msgid "race^Goblins"
 msgstr "Goblini"
 
+#. race
 #: data/core/units.cfg:113
 msgid "race^Gryphon"
 msgstr "Gryfon"
 
+#. race
 #: data/core/units.cfg:114
 msgid "race+female^Gryphon"
 msgstr "Gryfonice"
 
+#. race
 #: data/core/units.cfg:115
 msgid "race^Gryphons"
 msgstr "Gryfoni"
 
+#. race
 #: data/core/units.cfg:123
 msgid "race^Human"
 msgstr "Člověk"
 
+#. race
 #: data/core/units.cfg:124
 msgid "race+female^Human"
 msgstr "Žena"
 
+#. race
 #: data/core/units.cfg:125
 msgid "race^Humans"
 msgstr "Lidé"
 
+#. race
 #: data/core/units.cfg:132
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
@@ -4627,87 +5034,107 @@ msgstr ""
 "organizovaní, než pravidelná armáda, ale jejich jiné přednosti to vyvažují."
 
 # Nágy? Hadí lid?
+#. race
 #: data/core/units.cfg:139
 msgid "race^Saurian"
 msgstr "Ještěrák"
 
 # Nágy? Hadí lid?
+#. race
 #: data/core/units.cfg:140
 msgid "race+female^Saurian"
 msgstr "Ještěráčice"
 
 # Nágy? Hadí lid?
+#. race
 #: data/core/units.cfg:141
 msgid "race^Saurians"
 msgstr "Ještěráci"
 
+#. race
 #: data/core/units.cfg:150
 msgid "race^Mechanical"
 msgstr "Stroj"
 
+#. race
 #: data/core/units.cfg:151
 msgid "race+plural^Mechanical"
 msgstr "Stroje"
 
+#. race
 #: data/core/units.cfg:161
 msgid "race^Merman"
 msgstr "Mořský člověk"
 
+#. race
 #: data/core/units.cfg:162
 msgid "race^Mermaid"
 msgstr "Mořská panna"
 
+#. race
 #: data/core/units.cfg:163
 msgid "race^Mermen"
 msgstr "Mořský lid"
 
+#. race
 #: data/core/units.cfg:171
 msgid "race^Monster"
 msgstr "Monstrum"
 
+#. race
 #: data/core/units.cfg:172
 msgid "race^Monsters"
 msgstr "Monstra"
 
 # Nágy? Hadí lid?
+#. race
 #: data/core/units.cfg:179
 msgid "race^Naga"
 msgstr "Naga"
 
 # Nágy? Hadí lid?
+#. race
 #: data/core/units.cfg:180
 msgid "race^Nagani"
 msgstr "Nagini"
 
 # Nágy? Hadí lid?
+#. race
 #: data/core/units.cfg:181
 msgid "race^Nagas"
 msgstr "Nagy"
 
+#. race
 #: data/core/units.cfg:189
 msgid "race^Ogre"
 msgstr "Obr"
 
+#. race
 #: data/core/units.cfg:190
 msgid "race+female^Ogre"
 msgstr "Obryně"
 
+#. race
 #: data/core/units.cfg:191
 msgid "race^Ogres"
 msgstr "Obři"
 
+#. race
 #: data/core/units.cfg:199
 msgid "race^Orc"
 msgstr "Skřet"
 
+#. race
 #: data/core/units.cfg:200
 msgid "race+female^Orc"
 msgstr "Skřetice"
 
+#. race
 #: data/core/units.cfg:201
 msgid "race^Orcs"
 msgstr "Skřeti"
 
+#. race
 #: data/core/units.cfg:211
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
@@ -4819,18 +5246,22 @@ msgstr ""
 "formy boje nevyžadující primárně sílu - například střelbu nebo vraždění "
 "jedem."
 
+#. race
 #: data/core/units.cfg:218
 msgid "race^Troll"
 msgstr "Troll"
 
+#. race
 #: data/core/units.cfg:219
 msgid "race+female^Troll"
 msgstr "Trollice"
 
+#. race
 #: data/core/units.cfg:220
 msgid "race^Trolls"
 msgstr "Trollové"
 
+#. race
 #: data/core/units.cfg:226
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
@@ -4902,19 +5333,23 @@ msgstr ""
 "tam přistěhovali později. Trolly lze potkat převážně v horách na sever a jih "
 "od Wesnothu, ale i jinde, kam skřeti občas cestují."
 
+#. race
 #: data/core/units.cfg:238
 msgid "race^Undead"
 msgstr "Nemrtvý"
 
+#. race
 #: data/core/units.cfg:239
 msgid "race+female^Undead"
 msgstr "Nemrtvá"
 
+#. race
 #: data/core/units.cfg:240
 msgid "race+plural^Undead"
 msgstr "Nemrtví"
 
 # Ten původní první odstaves je fakt slabý ... pořád se to opakuje dokola.
+#. race
 #: data/core/units.cfg:246
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -4964,26 +5399,32 @@ msgstr ""
 "příchodem Haldrika I., ale i předtím o nich trpaslíci a elfové něco věděli, "
 "takže se museli nějací vyskytnout již dříve."
 
+#. race
 #: data/core/units.cfg:254
 msgid "race^Wose"
 msgstr "Stromový muž"
 
+#. race
 #: data/core/units.cfg:255
 msgid "race^Woses"
 msgstr "Stromový lid"
 
+#. language
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Jednoduchá"
 
+#. language
 #: data/hardwired/english.cfg:4
 msgid "Medium"
 msgstr "Střední"
 
+#. language
 #: data/hardwired/english.cfg:5
 msgid "Hard"
 msgstr "Těžká"
 
+#. language
 #: data/hardwired/english.cfg:10
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
@@ -4996,6 +5437,7 @@ msgstr ""
 "Den: +25% poškození\n"
 "Noc: -25% poškození"
 
+#. language
 #: data/hardwired/english.cfg:11
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
@@ -5003,6 +5445,7 @@ msgid ""
 msgstr ""
 "Neutrální jednotky nejsou ovlivněny střídáním dne a noci. Bojují vždy stejně."
 
+#. language
 #: data/hardwired/english.cfg:15
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
@@ -5015,100 +5458,122 @@ msgstr ""
 "Den: -25% poškození\n"
 "Noc: +25% poškození"
 
+#. language
 #: data/hardwired/english.cfg:18
 msgid "$name's Bridge,$name's Crossing"
 msgstr "Most $name,Brod $name"
 
+#. language
 #: data/hardwired/english.cfg:19
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "Silnice $name,Průsmyk $name,Cesta $name"
 
+#. language
 #: data/hardwired/english.cfg:20
 msgid "$name River,River $name"
 msgstr "Řeka $name,řeka $name"
 
+#. language
 #: data/hardwired/english.cfg:21
 msgid "$name Forest,$name's Forest"
 msgstr "Les $name,Les $name"
 
+#. language
 #: data/hardwired/english.cfg:22
 msgid "$name Lake"
 msgstr "Jezero $name"
 
 # pův.: "$name|pochován,město|$name,tón|$name"
+#. language
 #: data/hardwired/english.cfg:23
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|bury,$name|ham,$name|ton"
 
 # pův.: "přístav|$name,přístav|$name"
+#. language
 #: data/hardwired/english.cfg:24
 msgid "$name|harbor,$name|port"
 msgstr "$name|harbor,$name|port"
 
 # pův.: "město|$name,brod|$name,křižovatka|$name,$river|brod,soutok|$river"
+#. language
 #: data/hardwired/english.cfg:25
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
 # pův.: "most|$river,most|$river,most|$river,město|$name,most|$name"
+#. language
 #: data/hardwired/english.cfg:26
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 
 # pův.: "město|$name,tón|$name,pole|$name"
+#. language
 #: data/hardwired/english.cfg:27
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|ham,$name|ton,$name|field"
 
 # pův.: "město|$name,tón|$name,háj|$name,Les $name"
+#. language
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|ham,$name|ton,$name|wood,$name Forest"
 
 # pův.: "město|$name,pochován|$name,tón|$name,vrch|$name,hřeben|$name"
+#. language
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
 # pův.: "město|$name,pochován|$name,tón|$name,vrchol|$name,vrchol|$name,sráz|$name,sráz|$name"
+#. language
 #: data/hardwired/english.cfg:30
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 
+#. language
 #: data/hardwired/english.cfg:33
 msgid "melee"
 msgstr "zblízka"
 
+#. language
 #: data/hardwired/english.cfg:34
 msgid "ranged"
 msgstr "na dálku"
 
+#. language
 #: data/hardwired/english.cfg:37
 msgid "blade"
 msgstr "čepel"
 
+#. language
 #: data/hardwired/english.cfg:38
 msgid "pierce"
 msgstr "bodnutí"
 
+#. language
 #: data/hardwired/english.cfg:39
 msgid "impact"
 msgstr "úder"
 
+#. language
 #: data/hardwired/english.cfg:40
 msgid "fire"
 msgstr "oheň"
 
+#. language
 #: data/hardwired/english.cfg:41
 msgid "cold"
 msgstr "chlad"
 
+#. language
 #: data/hardwired/english.cfg:42
 msgid "arcane"
 msgstr "nezemský"
 
+#. tip
 #: data/hardwired/tips.cfg:3
 msgid ""
 "Don't neglect to earn your leader experience! You need to keep him safe, but "
@@ -5120,10 +5585,12 @@ msgstr ""
 "základní úrovni. To se může vymstít později ve hře, kdy možná bude muset v "
 "některých scénářích čelit nepřátelům bez početné armády a sám bojovat."
 
+#. tip
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
 msgstr "- Velký Mág Delfador, 516 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:7
 msgid ""
 "In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
@@ -5137,6 +5604,7 @@ msgstr ""
 "kontrolovat, zda jsou určité jednotky (např. slabé nebo zraněné) mimo dosah "
 "nepřítele."
 
+#. tip
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
 #: data/hardwired/tips.cfg:36 data/hardwired/tips.cfg:52
@@ -5153,6 +5621,7 @@ msgstr ""
 msgid "- The Wesnoth Tactical Guide"
 msgstr "- Průvodce taktikou Wesnothu"
 
+#. tip
 #: data/hardwired/tips.cfg:11
 msgid ""
 "Units with the 'intelligent' trait need fewer experience points to level up. "
@@ -5163,10 +5632,12 @@ msgstr ""
 "Na začátku tažení se pokus přenechat jim dobíjení nepřátel, abys získal(a) "
 "co nejdříve jednotky vyšších úrovní."
 
+#. tip
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
 msgstr "- Král Konrád, 536 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:15
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
@@ -5178,10 +5649,12 @@ msgstr ""
 "nepřátelské jednotky ji sevřete jejich oblastmi kontroly a omezíte tak pohyb "
 "na jedno políčko kterýmkoliv směrem."
 
+#. tip
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr "- Gweddryho záznamy, 627 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:19
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
@@ -5192,6 +5665,7 @@ msgstr ""
 "pravým tlačítkem na políčko hradu. To vám umožní přesně určit, kam umístit "
 "novou jednotku, což někdy může pomoci - například získat vesnici o tah dříve."
 
+#. tip
 #: data/hardwired/tips.cfg:23
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
@@ -5202,6 +5676,7 @@ msgstr ""
 "„Přehledová tabulka“ přehledně ukazuje, jak si vedete ve srovnání s "
 "nepřítelem ohledně financí a velikosti armády."
 
+#. tip
 #: data/hardwired/tips.cfg:27
 msgid ""
 "Units with the 'quick' trait move one extra hex per turn. This can be very "
@@ -5212,10 +5687,12 @@ msgstr ""
 "pohybu členitým terénem jako jeskyně nebo voda to může představovat "
 "podstatnou výhodu."
 
+#. tip
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
 msgstr "- Vysoký lord Kalenz, 470 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:31
 msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
@@ -5224,6 +5701,7 @@ msgstr ""
 "Až dohrajete vašich prvních pár scénářů, přečtěte si sekci „Pravidla hry“ v "
 "nápovědě. Jak se scénáře stávají těžšími, záleží na detailech čím dál více!"
 
+#. tip
 #: data/hardwired/tips.cfg:35
 msgid ""
 "It is usually better to start the next scenario in a campaign with lower-"
@@ -5233,6 +5711,7 @@ msgstr ""
 "Je vhodnější začínat scénáře tažení s jednotkami, které budou brzy povýšeny, "
 "než s těmi již na vyšší úrovni."
 
+#. tip
 #: data/hardwired/tips.cfg:39
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
@@ -5241,10 +5720,12 @@ msgstr ""
 "Na www.wesnoth.org lze najít strategické příručky, historii Wesnothu, získat "
 "technickou pomoc a mnoho dalšího."
 
+#. tip
 #: data/hardwired/tips.cfg:40
 msgid "- The Wesnoth Community"
 msgstr "- Komunita Wesnothu"
 
+#. tip
 #: data/hardwired/tips.cfg:43
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
@@ -5253,20 +5734,24 @@ msgstr ""
 "Zákonné jednotky bojují lépe ve dne, chaotické jednotky bojují lépe v noci. "
 "Neutrální jednotky denní doba nijak neovlivňuje."
 
+#. tip
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 msgstr "- Královské kompendium válečné terminologie, svazek II, 212 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:47
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr "I jinak skvělý plán selže, pokud zaútočíš v nevhodnou denní dobu."
 
+#. tip
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
 msgstr "- Příručka taktické analýzy, kniha I - Haldrik II., 42 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:51
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
@@ -5280,6 +5765,7 @@ msgstr ""
 "příštím tahu, takže je vhodné uvážit i rychlost pohybu na různých terénech "
 "pro co největší rozhled."
 
+#. tip
 #: data/hardwired/tips.cfg:55
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
@@ -5292,6 +5778,7 @@ msgstr ""
 "Klikni na jednotku pravým tlačítkem myši a vyber „Popis jednotky“ pro "
 "zobrazení informací, jak je jednotka odolná vůči jednotlivým typům útoku."
 
+#. tip
 #: data/hardwired/tips.cfg:59
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
@@ -5303,6 +5790,7 @@ msgstr ""
 "zasáhne. Hodnocení obrany právě vybrané jednotky v právě vybraném terénu se "
 "zobrazuje v pravém horním rohu obrazovky."
 
+#. tip
 #: data/hardwired/tips.cfg:63
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
@@ -5316,6 +5804,7 @@ msgstr ""
 "účinky jedu, ale jed odstraní pouze schopnost „regenerace“, pobyt na začátku "
 "kola ve vesnici nebo vedle jednotky se schopností „uzdravování“."
 
+#. tip
 #: data/hardwired/tips.cfg:67
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
@@ -5326,6 +5815,7 @@ msgstr ""
 "„Akce“. Přivoláváním stále stejných jednotek znovu a znovu můžeš vybudovat "
 "silnou a zkušenou armádu."
 
+#. tip
 #: data/hardwired/tips.cfg:71
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
@@ -5341,6 +5831,7 @@ msgstr ""
 "oblasti kontroly příliš slabé; průbojné jednotky jsou natolik obratné, že "
 "tyto oblasti ignorují.)"
 
+#. tip
 #: data/hardwired/tips.cfg:75
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
@@ -5352,10 +5843,12 @@ msgstr ""
 "terénu, v němž stojí; avšak magické útoky mají vždy 70% šanci zasáhnout. "
 "Odstřelovači mají také vždy alespoň 60% šanci zasáhnout, pokud útočí."
 
+#. tip
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Příručka taktické analýzy, kniha II - Haldrik II., 43 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:79
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
@@ -5364,6 +5857,7 @@ msgstr ""
 "Jednotky umístěné ve vesnicích se uzdravují o 8 životů na začátku svého kola "
 "nebo jsou vyléčeny z otravy."
 
+#. tip
 #: data/hardwired/tips.cfg:83
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
@@ -5374,6 +5868,7 @@ msgstr ""
 "Jednotky, které se nepohnou ani neútočí během svého kola, odpočívají a "
 "uzdraví se na začátku příštího kola o dva životy."
 
+#. tip
 #: data/hardwired/tips.cfg:87
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
@@ -5384,10 +5879,12 @@ msgstr ""
 "ostatních terénů, zatímco většina jízdních jednotek nezískává ve vesnicích a "
 "hradech žádnou obrannou výhodu."
 
+#. tip
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
 msgstr "- Sir Kaylan, 498 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:91
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
@@ -5397,10 +5894,12 @@ msgstr ""
 "Jednotky jedoucí na koních jsou obecně odolné proti útoku čepelí či úderem, "
 "ale jsou zranitelné bodnými zbraněmi, včetně luků a kopí."
 
+#. tip
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
 msgstr "- Sir Kaylan, 502 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:95
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
@@ -5413,6 +5912,7 @@ msgstr ""
 "každou úroveň jednotky, kterou zabila, nebo 4 v případě že byla úroveň oběti "
 "pouze nula."
 
+#. tip
 #: data/hardwired/tips.cfg:99
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
@@ -5421,6 +5921,7 @@ msgstr ""
 "Elfské jednotky se pohybují a bojují velmi dobře v lese. Trpasličí jednotky "
 "se pohybují a bojují velmi dobře v kopcích a horách."
 
+#. tip
 #: data/hardwired/tips.cfg:103
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
@@ -5429,6 +5930,7 @@ msgstr ""
 "Často je klíčová trpělivost. Než útočit ve špatných podmínkách nebo s malým "
 "vojskem, raději počkej na lepší podmínky a zaútoč až pak."
 
+#. tip
 #: data/hardwired/tips.cfg:107
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
@@ -5437,19 +5939,23 @@ msgstr ""
 "Pokud na tebe útočí z několika stran, může být dobrý nápad poslat "
 "postradatelné jednotky do některých stran, aby zdržely nepřátelské jednotky."
 
+#. tip
 #: data/hardwired/tips.cfg:108
 msgid "- King Konrad, 552YW"
 msgstr "- Král Konrád, 552 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:111
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr "Neboj se ustoupit a přeskupit; je to často klíčem k vítězství."
 
+#. tip
 #: data/hardwired/tips.cfg:112
 msgid "- Meneldur, 123YW"
 msgstr "- Meneldur, 123 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:115
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
@@ -5462,6 +5968,7 @@ msgstr ""
 "vždy získáš více zlaťáků než obsazováním vesnic a čekáním do vypršení limitu "
 "kol."
 
+#. tip
 #: data/hardwired/tips.cfg:119
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
@@ -5474,6 +5981,7 @@ msgstr ""
 "z ní. Také tví spojenci mohou být ochotni uvolnit ti místo ve své tvrzi, "
 "abys odtamtud mohl verbovat."
 
+#. tip
 #: data/hardwired/tips.cfg:123
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
@@ -5482,6 +5990,7 @@ msgstr ""
 "Kostlivci jsou odolní vůči útokům čepelí, chladem a bodání, ale zranitelní "
 "údery, ohněm a nezemskými útoky."
 
+#. tip
 #: data/hardwired/tips.cfg:127
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
@@ -5490,6 +5999,7 @@ msgstr ""
 "Jednotky se schopností „velení“ zlepšují bojové schopnosti jednotek nižší "
 "úrovně na sousedních polích. Za použití velitelů získáte rychleji "
 
+#. tip
 #: data/hardwired/tips.cfg:131
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
@@ -5500,18 +6010,22 @@ msgstr ""
 "přesunout nepřátelská jednotka a zaútočit na tebe, využívajíc přitom výhod "
 "vesnice - obranu a léčení."
 
+#. tip
 #: data/hardwired/tips.cfg:135
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr "Chraň zraněné jednotky řadou jednotek, abys jim umožnil zotavit se."
 
+#. tip
 #: data/hardwired/tips.cfg:136
 msgid "- Princess Li'sar, 515YW"
 msgstr "- princezna Lisar, 515 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:139
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Přečti si seznam klávesových zkratek v menu Nastavení."
 
+#. tip
 #: data/hardwired/tips.cfg:143
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
@@ -5520,6 +6034,7 @@ msgstr ""
 "Pohneš-li s jednotkou, ale nezaútočíš ani nezjistíš žádné dodatečné "
 "informace, můžeš její pohyb vrátit zpět stisknutím 'u'."
 
+#. tip
 #: data/hardwired/tips.cfg:147
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
@@ -5528,6 +6043,7 @@ msgstr ""
 "Můžeš se podívat, jak daleko mohou nepřátelské jednotky dojít, když na ně "
 "přesuneš kursor myši."
 
+#. tip
 #: data/hardwired/tips.cfg:151
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
@@ -5536,10 +6052,12 @@ msgstr ""
 "Ber s sebou do útoků i léčitele -- vyhrají tvé bitvy, aniž musí sami "
 "zaútočit."
 
+#. tip
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
 msgstr "- Svitky Chantal, 516 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:155
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
@@ -5549,14 +6067,17 @@ msgstr ""
 "zmenšuje poškození způsobená jakýmkoliv jejich útokem na polovinu, a to do "
 "konce kola."
 
+#. tip
 #: data/hardwired/tips.cfg:159
 msgid "Arcane attacks are very powerful against undead."
 msgstr "Nezemské útoky jsou velmi účinné proti nemrtvým."
 
+#. tip
 #: data/hardwired/tips.cfg:160
 msgid "- Great Sage Dacyn, 626YW"
 msgstr "- Velký mudřec Dacyn, 626 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:163
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
@@ -5565,6 +6086,7 @@ msgstr ""
 "Když jsou jednotky povýšeny, současně se zcela uzdraví. To může při moudrém "
 "využití zvrátit bitvu."
 
+#. tip
 #: data/hardwired/tips.cfg:167
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
@@ -5573,6 +6095,7 @@ msgstr ""
 "Jednotky útočící výpadem je nejlépe používat proti protivníkům, které dokáží "
 "zabít jedinou ranou."
 
+#. tip
 #: data/hardwired/tips.cfg:171
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
@@ -5587,6 +6110,7 @@ msgstr ""
 "a navíc každá dosažená AMLA ztíží podmínky pro dosažení další; proto je "
 "většinou vhodnější pokusit se povýšit jednotky nižší úrovně."
 
+#. tip
 #: data/hardwired/tips.cfg:175
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
@@ -5597,6 +6121,7 @@ msgstr ""
 "možností jejího pohybu. Pamatujte na to při výběru nejlepšího zvěda pro ten "
 "který terén. "
 
+#. tip
 #: data/hardwired/tips.cfg:179
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
@@ -5605,6 +6130,7 @@ msgstr ""
 "Ve Wesnothu má téměř každý obrázek, ba i termín, bublinkovou nápovědu. "
 "Přesuň nad něj myš a dostaneš vyčerpávající popis."
 
+#. tip
 #: data/hardwired/tips.cfg:183
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
@@ -5617,6 +6143,7 @@ msgstr ""
 "obrazovky). Tyto informace jsou důležité pro upravení obtížnosti tažení."
 
 # část za středníkem - ?
+#. tip
 #: data/hardwired/tips.cfg:187
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
@@ -5627,10 +6154,12 @@ msgstr ""
 "jednotkou, která nejprve dostatečně poškodí společný cíl; „učedník“ pak dílo "
 "dokoná a získá zkušenosti."
 
+#. tip
 #: data/hardwired/tips.cfg:188
 msgid "- Queen Li'sar, 528YW"
 msgstr "- Královna Lisar, 528 YW"
 
+#. tip
 #: data/hardwired/tips.cfg:191
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
@@ -5641,6 +6170,7 @@ msgstr ""
 "přesouvat jednotky při zachování možnosti vracení, zapněte volbu „Pozdrž "
 "překreslování mlhy“."
 
+#. tip
 #: data/hardwired/tips.cfg:195
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
@@ -5650,6 +6180,7 @@ msgstr ""
 "obsazení tohoto terénu jej alespoň připraví o tuto výhodu, i když ty žádnou "
 "nezískáš."
 
+#. tip
 #: data/hardwired/tips.cfg:199
 msgid ""
 "Few units have good defences in water; a line of attackers along the edge of "
@@ -5661,139 +6192,174 @@ msgstr ""
 "další rozhraní oblastí s nízkou a vysokou obranou - např. elfy v lese, "
 "trpaslíky na horách atd."
 
+#. effect: type=fire
 #: data/scenario-test.cfg:697
 msgid "ruby of fire"
 msgstr "Ohnivý rubín"
 
+#. menu
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
 msgstr "Menu"
 
+#. menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
 msgstr "Akce"
 
+#. menu
+#. change
 #: data/themes/default.cfg:153 data/themes/default.cfg:719
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "Ukonči kolo"
 
 # !!!!
+#. menu
+#. change
 #: data/themes/default.cfg:154 data/themes/default.cfg:720
 #: data/themes/default.cfg:975 data/themes/dfool.cfg:161
 msgid "End Scenario"
 msgstr "Ukončit scénář"
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. label
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
 #: data/themes/experimental.cfg:181 src/menu_events.cpp:384 src/unit.cpp:2466
 #: src/unit.cpp:2639
 msgid "HP"
 msgstr "Životů"
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. label
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
 #: src/menu_events.cpp:1152
 msgid "XP"
 msgstr "Zkušenost"
 
+#. label
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "zlatých"
 
+#. label
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "vesnic"
 
+#. label
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "jednotek"
 
+#. label
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "výdaje"
 
+#. label
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "příjmy"
 
+#. unit_level
 #: data/themes/default.cfg:416 data/themes/dfool.cfg:459
 #: data/themes/experimental.cfg:368
 msgid "statuspanel^level"
 msgstr "úroveň"
 
+#. unit_moves
 #: data/themes/default.cfg:447 data/themes/experimental.cfg:399
 msgid "statuspanel^movement"
 msgstr "pohyby"
 
 # pův.: "Hrát", což je blbost, protože je to místo "actions" pro malé rozlišení
+#. change
 #: data/themes/default.cfg:946
 msgid "Act."
 msgstr "Akce"
 
 # v budoucnosti pozor na termíny ... možnost změn
+#. remove
+#. menu
 #: data/themes/default.cfg:966 data/themes/default.cfg:974
 msgid "short end-turn^E."
 msgstr "Konec"
 
+#. label
 #: data/themes/dfool.cfg:252
 msgid "MP"
 msgstr "Kroků"
 
+#. label
 #: data/themes/macros.cfg:59
 msgid "Replay"
 msgstr "záznam"
 
+#. menu: type=image
 #: data/themes/macros.cfg:74
 msgid "Play"
 msgstr "Hrát"
 
+#. menu: type=image
 #: data/themes/macros.cfg:75
 msgid "continous replay"
 msgstr "přehrávání záznamu"
 
+#. menu: type=image
 #: data/themes/macros.cfg:92
 msgid "Stop"
 msgstr "Zastavit"
 
+#. menu: type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
 msgstr "pozastav na konci kola"
 
+#. menu: type=image
 #: data/themes/macros.cfg:110
 msgid "Reset"
 msgstr "Resetovat"
 
+#. menu: type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
 msgstr "znovu od začátku"
 
+#. menu: type=image
 #: data/themes/macros.cfg:128
 msgid "Next Turn"
 msgstr "Další kolo"
 
+#. menu: type=image
 #: data/themes/macros.cfg:129
 msgid "play turn"
 msgstr "přehraj další kolo"
 
+#. menu: type=image
 #: data/themes/macros.cfg:146
 msgid "Next Side"
 msgstr "Další strana"
 
+#. menu: type=image
 #: data/themes/macros.cfg:147
 msgid "play side turn"
 msgstr "přehraj kolo další strany"
 
+#. menu
 #: data/themes/macros.cfg:163
 msgid "Point of view"
 msgstr "Druh pohledu"
 
+#. menu: type=checkbox
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
 msgstr "Přeskočit animaci"
@@ -6649,7 +7215,7 @@ msgstr "Další"
 msgid "Skip"
 msgstr "Přeskočit"
 
-#: src/intro.cpp:376
+#: src/intro.cpp:379
 msgid "The End"
 msgstr "Konec"
 

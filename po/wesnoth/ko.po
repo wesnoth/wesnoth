@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:44+0100\n"
+"POT-Creation-Date: 2008-03-16 11:58+0100\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -17,50 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:36
 msgid "Compressed Saves"
 msgstr ""
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:43
 msgid "Mouse Scrolling"
 msgstr ""
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:50
 msgid "Animate Map"
 msgstr ""
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
 msgstr ""
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:64
 msgid "Show Combat"
 msgstr "전투 보여주기"
 
+#. server
 #: data/_main.cfg:79
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "공식 서버 접속"
 
+#. server
 #: data/_main.cfg:83 data/_main.cfg:87
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
+#. time
+#. illuminated_time
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:519
 #: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:93
 msgid "Underground"
 msgstr ""
 
+#. about
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:45 data/core/about.cfg:146
 #, fuzzy
 msgid "Artwork and Graphics"
 msgstr "- 삽화 및 그래픽 디자이너"
 
+#. berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:530
 msgid "berserk"
 msgstr "버서크"
 
+#. berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
 #: data/core/macros/abilities.cfg:532
 msgid ""
@@ -69,11 +81,13 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 
+#. chance_to_hit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
 #: data/core/macros/abilities.cfg:616
 msgid "magical"
 msgstr "마법"
 
+#. chance_to_hit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
 #: data/core/macros/abilities.cfg:618
 msgid ""
@@ -82,11 +96,13 @@ msgid ""
 "ability of the unit being attacked."
 msgstr ""
 
+#. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
 #: data/core/macros/abilities.cfg:665
 msgid "firststrike"
 msgstr "선제공격"
 
+#. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
 #: data/core/macros/abilities.cfg:667
 msgid ""
@@ -94,243 +110,309 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 
+#. about
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr ""
 
+#. about
 #: data/core/about.cfg:128
 #, fuzzy
 msgid "General Purpose Administration and Coordination"
 msgstr "+일반적인 관리자들"
 
-#: data/core/about.cfg:408
+#. about
+#: data/core/about.cfg:412
 msgid "Music"
 msgstr ""
 
-#: data/core/about.cfg:435
+#. about
+#: data/core/about.cfg:439
 msgid "Sound Effects"
 msgstr ""
 
-#: data/core/about.cfg:451
+#. about
+#: data/core/about.cfg:455
 #, fuzzy
 msgid "Campaign Design"
 msgstr "캠페인"
 
-#: data/core/about.cfg:514
+#. about
+#: data/core/about.cfg:518
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "멀티플레이"
 
-#: data/core/about.cfg:556
+#. about
+#: data/core/about.cfg:564
 msgid "Packagers"
 msgstr ""
 
-#: data/core/about.cfg:605
+#. about
+#: data/core/about.cfg:613
 msgid "Miscellaneous contributors"
 msgstr ""
 
-#: data/core/about.cfg:731
+#. about
+#: data/core/about.cfg:743
 msgid "Internationalization Managers"
 msgstr ""
 
-#: data/core/about.cfg:756
+#. about
+#: data/core/about.cfg:768
 msgid "Afrikaans Translation"
 msgstr ""
 
-#: data/core/about.cfg:772
+#. about
+#: data/core/about.cfg:784
 msgid "Basque Translation"
 msgstr ""
 
-#: data/core/about.cfg:785
+#. about
+#: data/core/about.cfg:797
 msgid "Bulgarian Translation"
 msgstr ""
 
-#: data/core/about.cfg:804
+#. about
+#: data/core/about.cfg:816
 msgid "Catalan Translation"
 msgstr ""
 
-#: data/core/about.cfg:839
+#. about
+#: data/core/about.cfg:851
 msgid "Chinese Translation"
 msgstr ""
 
-#: data/core/about.cfg:873
+#. about
+#: data/core/about.cfg:885
 msgid "Chinese (Taiwan) Translation"
 msgstr ""
 
-#: data/core/about.cfg:880
+#. about
+#: data/core/about.cfg:892
 msgid "Czech Translation"
 msgstr ""
 
-#: data/core/about.cfg:934
+#. about
+#: data/core/about.cfg:946
 msgid "Danish Translation"
 msgstr ""
 
-#: data/core/about.cfg:965
+#. about
+#: data/core/about.cfg:977
 msgid "Dutch Translation"
 msgstr ""
 
-#: data/core/about.cfg:1012
+#. about
+#: data/core/about.cfg:1024
 msgid "English (GB) Translation"
 msgstr ""
 
-#: data/core/about.cfg:1022
+#. about
+#: data/core/about.cfg:1034
 msgid "Esperanto Translation"
 msgstr ""
 
-#: data/core/about.cfg:1041
+#. about
+#: data/core/about.cfg:1053
 msgid "Estonian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1048
+#. about
+#: data/core/about.cfg:1060
 msgid "Filipino Translation"
 msgstr ""
 
-#: data/core/about.cfg:1058
+#. about
+#: data/core/about.cfg:1070
 msgid "Finnish Translation"
 msgstr ""
 
-#: data/core/about.cfg:1092
+#. about
+#: data/core/about.cfg:1104
 msgid "French Translation"
 msgstr ""
 
-#: data/core/about.cfg:1197
+#. about
+#: data/core/about.cfg:1209
 msgid "Galician Translation"
 msgstr ""
 
-#: data/core/about.cfg:1209
+#. about
+#: data/core/about.cfg:1221
 msgid "German Translation"
 msgstr ""
 
-#: data/core/about.cfg:1257
+#. about
+#: data/core/about.cfg:1269
 msgid "Greek Translation"
 msgstr ""
 
-#: data/core/about.cfg:1288
+#. about
+#: data/core/about.cfg:1300
 msgid "Hebrew Translation"
 msgstr ""
 
-#: data/core/about.cfg:1298
+#. about
+#: data/core/about.cfg:1310
 msgid "Hungarian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1368
+#. about
+#: data/core/about.cfg:1380
 msgid "Indonesian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1375
+#. about
+#: data/core/about.cfg:1387
 msgid "Italian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1410
+#. about
+#: data/core/about.cfg:1422
 msgid "Japanese Translation"
 msgstr ""
 
-#: data/core/about.cfg:1433
+#. about
+#: data/core/about.cfg:1445
 msgid "Korean Translation"
 msgstr ""
 
-#: data/core/about.cfg:1440
+#. about
+#: data/core/about.cfg:1452
 msgid "Latin Translation"
 msgstr ""
 
-#: data/core/about.cfg:1447
+#. about
+#: data/core/about.cfg:1459
 msgid "Lithuanian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1454
+#. about
+#: data/core/about.cfg:1466
 msgid "Norwegian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1476
+#. about
+#: data/core/about.cfg:1488
 msgid "Polish Translation"
 msgstr ""
 
-#: data/core/about.cfg:1525
+#. about
+#: data/core/about.cfg:1537
 msgid "Portuguese Translation"
 msgstr ""
 
-#: data/core/about.cfg:1532
+#. about
+#: data/core/about.cfg:1544
 msgid "Portuguese (Brazil) Translation"
 msgstr ""
 
-#: data/core/about.cfg:1567
+#. about
+#: data/core/about.cfg:1579
 msgid "Russian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1603
+#. about
+#: data/core/about.cfg:1615
 msgid "Serbian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1618
+#. about
+#: data/core/about.cfg:1630
 msgid "Slovak Translation"
 msgstr ""
 
-#: data/core/about.cfg:1635
+#. about
+#: data/core/about.cfg:1647
 msgid "Slovenian Translation"
 msgstr ""
 
-#: data/core/about.cfg:1645
+#. about
+#: data/core/about.cfg:1657
 msgid "Spanish Translation"
 msgstr ""
 
-#: data/core/about.cfg:1693
+#. about
+#: data/core/about.cfg:1705
 msgid "Swedish Translation"
 msgstr ""
 
-#: data/core/about.cfg:1719
+#. about
+#: data/core/about.cfg:1731
 msgid "Turkish Translation"
 msgstr ""
 
-#: data/core/about.cfg:1741
+#. about
+#: data/core/about.cfg:1753
 msgid "Valencian (southern Catalan) Translation"
 msgstr ""
 
-#: data/core/about.cfg:1757
+#. about
+#: data/core/about.cfg:1769
 msgid "Bots"
 msgstr ""
 
+#. fonts
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 #, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr "gkai00mp.ttf,sazanami-gothic.ttf,DejaVuSans.ttf"
 
+#. section
+#. topic
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
 msgstr ""
 
+#. section
+#. topic
 #: data/core/help.cfg:27 data/core/help.cfg:126
 msgid "Gameplay"
 msgstr "게임 플레이"
 
+#. section
+#. topic
 #: data/core/help.cfg:33 data/core/help.cfg:323
 msgid "Traits"
 msgstr ""
 
+#. section
+#. topic
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
 msgstr ""
 
+#. section
 #: data/core/help.cfg:51
 msgid "Abilities"
 msgstr ""
 
+#. section
+#. topic
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
 msgstr ""
 
+#. section
+#. topic
 #: data/core/help.cfg:67 data/core/help.cfg:414
 msgid "Terrains"
 msgstr ""
 
+#. section
+#. topic
 #: data/core/help.cfg:74 data/core/help.cfg:669
 msgid "Commands"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:92
 #, fuzzy
 msgid "Abilites"
 msgstr "밝음"
 
+#. topic
 #: data/core/help.cfg:95
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
@@ -339,6 +421,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:104
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
@@ -346,10 +429,12 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:110
 msgid "Unknown Unit"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:113
 msgid ""
 "\n"
@@ -358,10 +443,12 @@ msgid ""
 "allowed to see its description."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:118
 msgid "Overview"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:121
 msgid ""
 "\n"
@@ -373,10 +460,12 @@ msgid ""
 "strategy, making the game easy to learn but a challenge to master."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:133
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
@@ -386,6 +475,7 @@ msgid ""
 "exceptions, please follow the links included."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:135
 msgid ""
 "\n"
@@ -398,6 +488,7 @@ msgid ""
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:138
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -406,10 +497,12 @@ msgid ""
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:143
 msgid "About the Game"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:144
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
@@ -421,6 +514,7 @@ msgid ""
 "other people across the Internet."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:146
 msgid ""
 "\n"
@@ -431,10 +525,12 @@ msgid ""
 "scenarios in the campaign."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:151
 msgid "Victory and Defeat"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:152
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
@@ -445,6 +541,7 @@ msgid ""
 "a certain number of turns have elapsed."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:154
 msgid ""
 "\n"
@@ -455,10 +552,12 @@ msgid ""
 "before pressing that button to advance."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:159
 msgid "Recruiting and Recalling"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:160
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -472,6 +571,7 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:162
 msgid ""
 "\n"
@@ -482,6 +582,7 @@ msgid ""
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:164
 msgid ""
 "\n"
@@ -490,6 +591,7 @@ msgid ""
 "modify their statistics."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:166
 msgid ""
 "\n"
@@ -499,6 +601,7 @@ msgid ""
 "surviving units from previous scenarios."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:168
 msgid ""
 "\n"
@@ -508,40 +611,49 @@ msgid ""
 "more information."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:173
 msgid "Orbs"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:174
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:175
 msgid "green if it hasn't moved this turn,"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:176
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:177
 msgid "red if it has used all its movement this turn."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:178
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:179
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:184
 msgid "Hitpoints and Experience"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:185
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
@@ -550,6 +662,7 @@ msgid ""
 "points, and gains experience by fighting enemies."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:189
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
@@ -557,6 +670,7 @@ msgid ""
 "have)."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:190
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -565,10 +679,12 @@ msgid ""
 "<ref>dst=experience_and_advancement text=advance</ref>."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:195
 msgid "Movement"
 msgstr "이동력"
 
+#. topic
 #: data/core/help.cfg:196
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
@@ -585,6 +701,7 @@ msgid ""
 "movement, but will still allow it to attack."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:198
 msgid ""
 "\n"
@@ -600,6 +717,7 @@ msgid ""
 "Modifiers'</italic>."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:200
 msgid ""
 "\n"
@@ -612,6 +730,7 @@ msgid ""
 "zones of control."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:202
 msgid ""
 "\n"
@@ -621,10 +740,12 @@ msgid ""
 "not on the map to block their progress."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:207
 msgid "Shroud and Fog of War"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:210
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -647,10 +768,12 @@ msgid ""
 "thereby perserve your ability to undo movement."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:215
 msgid "Combat"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:216
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
@@ -664,6 +787,7 @@ msgid ""
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:218
 msgid ""
 "\n"
@@ -671,6 +795,7 @@ msgid ""
 "<header>text='Order and number of strikes'</header>"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:220
 msgid ""
 "\n"
@@ -684,6 +809,7 @@ msgid ""
 "at 9 damage for each hit)."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:222
 msgid ""
 "\n"
@@ -691,6 +817,7 @@ msgid ""
 "<header>text='Chance to hit'</header>"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:224
 msgid ""
 "\n"
@@ -704,6 +831,7 @@ msgid ""
 "what terrain the attacker is in."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:226
 msgid ""
 "\n"
@@ -715,6 +843,7 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:228
 msgid ""
 "\n"
@@ -722,6 +851,7 @@ msgid ""
 "<header>text=Damage</header>"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:230
 msgid ""
 "\n"
@@ -735,6 +865,7 @@ msgid ""
 "italic> in the attack selection menu."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:232
 msgid ""
 "\n"
@@ -745,10 +876,12 @@ msgid ""
 "dealt by both attacker and defender when the unit with Charge attacks."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:237
 msgid "Damage Types and Resistance"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:238
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -758,6 +891,7 @@ msgid ""
 "damage which they take from certain damage types."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:240
 msgid ""
 "\n"
@@ -769,6 +903,7 @@ msgid ""
 "damage when hit by that type."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:242
 msgid ""
 "\n"
@@ -778,6 +913,7 @@ msgid ""
 "damage."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:244
 msgid ""
 "\n"
@@ -787,10 +923,12 @@ msgid ""
 "type."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:249
 msgid "Time of Day"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:253
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -799,6 +937,7 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:256
 msgid ""
 "\n"
@@ -808,40 +947,55 @@ msgid ""
 "First and Second Watch count as night:\n"
 msgstr ""
 
+#. time
+#. topic
 #: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "새벽"
 
+#. time
+#. topic
 #: data/core/help.cfg:257 data/core/macros/schedules.cfg:21
 msgid "Morning"
 msgstr "아침"
 
+#. time
+#. topic
 #: data/core/help.cfg:258 data/core/macros/schedules.cfg:32
 msgid "Afternoon"
 msgstr "오후"
 
+#. time
+#. topic
 #: data/core/help.cfg:259 data/core/macros/schedules.cfg:43
 msgid "Dusk"
 msgstr "황혼"
 
+#. time
+#. topic
 #: data/core/help.cfg:260 data/core/macros/schedules.cfg:57
 msgid "First Watch"
 msgstr "첫 째 저녁"
 
+#. time
+#. topic
 #: data/core/help.cfg:261 data/core/macros/schedules.cfg:71
 msgid "Second Watch"
 msgstr "둘 째 저녁"
 
+#. topic
 #: data/core/help.cfg:263
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:268
 msgid "Experience and Advancement"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:269
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
@@ -850,6 +1004,7 @@ msgid ""
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:271
 msgid ""
 "\n"
@@ -860,6 +1015,7 @@ msgid ""
 "some cases, you will be given a choice of advancement options."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:273
 msgid ""
 "\n"
@@ -876,10 +1032,12 @@ msgid ""
 "advance your lower level units."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:278
 msgid "Healing"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:279
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -889,6 +1047,7 @@ msgid ""
 "take place at the beginning of your turn, before you take action."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:281
 msgid ""
 "\n"
@@ -897,12 +1056,14 @@ msgid ""
 "in its next turn."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:282
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:283
 msgid ""
 "\n"
@@ -910,6 +1071,7 @@ msgid ""
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:284
 msgid ""
 "\n"
@@ -918,6 +1080,7 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:285
 msgid ""
 "\n"
@@ -926,6 +1089,7 @@ msgid ""
 "it has that ability as well)."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:287
 msgid ""
 "\n"
@@ -935,10 +1099,12 @@ msgid ""
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:292
 msgid "Income and Upkeep"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:293
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -947,6 +1113,7 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:295
 msgid ""
 "\n"
@@ -957,6 +1124,7 @@ msgid ""
 "costs are subtracted from this income, as detailed below."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:297
 msgid ""
 "\n"
@@ -969,6 +1137,7 @@ msgid ""
 "you would have to pay two gold each turn in upkeep."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:299
 msgid ""
 "\n"
@@ -978,6 +1147,7 @@ msgid ""
 "turn."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:300
 msgid ""
 "\n"
@@ -989,10 +1159,12 @@ msgid ""
 "leader."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:305
 msgid "Wrap Up"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:306
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1002,14 +1174,17 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:311
 msgid "ingame_help_item^Contributors"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:317
 msgid "License"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:325
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
@@ -1018,6 +1193,7 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:327
 msgid ""
 "\n"
@@ -1028,6 +1204,7 @@ msgid ""
 "<ref>dst=traits_strong text=Strong</ref>."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:331
 msgid ""
 "\n"
@@ -1038,15 +1215,18 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:336
 msgid "Intelligent"
 msgstr "지능"
 
+#. topic
 #: data/core/help.cfg:337
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "지능 유닛은 레벨 업 하기에 필요한 경험치가 보통보다 20% 적게 필요합니다."
 
+#. topic
 #: data/core/help.cfg:339
 msgid ""
 "\n"
@@ -1058,16 +1238,19 @@ msgid ""
 "units you may wish to recall units with more desirable traits."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:344
 msgid "Quick"
 msgstr "신속"
 
+#. topic
 #: data/core/help.cfg:345
 #, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "신속 유닛은 1 의 추가 이동력을 얻지만, 보통보다 10% 적은 HP를 가집니다."
 
+#. topic
 #: data/core/help.cfg:347
 msgid ""
 "\n"
@@ -1080,15 +1263,18 @@ msgid ""
 "positions."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:352
 msgid "Resilient"
 msgstr "탄력"
 
+#. topic
 #: data/core/help.cfg:353
 #, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "탄력 유닛은 보통보다 7 더많은 체력을 가집니다."
 
+#. topic
 #: data/core/help.cfg:355
 msgid ""
 "\n"
@@ -1100,10 +1286,12 @@ msgid ""
 "holding strategic positions against opponents."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:360
 msgid "Strong"
 msgstr "GLA"
 
+#. topic
 #: data/core/help.cfg:361
 #, fuzzy
 msgid ""
@@ -1113,6 +1301,7 @@ msgstr ""
 "힘 유닛은 성공적인 밀리 공격 시 1의 추가 데미지를 가지게 되며 2의 추가 체력"
 "을 가집니다."
 
+#. topic
 #: data/core/help.cfg:363
 msgid ""
 "\n"
@@ -1123,18 +1312,22 @@ msgid ""
 "turn a damaging stroke into a killing blow."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:368
 msgid "Fearless"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:369
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:374
 msgid "Loyal"
 msgstr "충성"
 
+#. topic
 #: data/core/help.cfg:375
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
@@ -1144,6 +1337,7 @@ msgstr ""
 "충성 유닛은 유지비가 들지 않습니다.대부분의 유니들은 매 턴 끝마다 그들의 레벨"
 "과 동일한 유지 비용을 내는데, 충성 유닛은 이 유지 비용을 내지 않습니다. "
 
+#. topic
 #: data/core/help.cfg:377
 msgid ""
 "\n"
@@ -1156,10 +1350,12 @@ msgid ""
 "such units or to send them to a foolish death."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:382
 msgid "trait^Undead"
 msgstr "언데드"
 
+#. topic
 #: data/core/help.cfg:383
 #, fuzzy
 msgid ""
@@ -1167,6 +1363,7 @@ msgid ""
 "them."
 msgstr "언데드 유닛은 독에 면역을 가집니다."
 
+#. topic
 #: data/core/help.cfg:385
 msgid ""
 "\n"
@@ -1177,10 +1374,12 @@ msgid ""
 "conjunction with their attacks."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:390
 msgid "trait^Mechanical"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:391
 #, fuzzy
 msgid ""
@@ -1188,6 +1387,7 @@ msgid ""
 "them."
 msgstr "언데드 유닛은 독에 면역을 가집니다."
 
+#. topic
 #: data/core/help.cfg:393
 msgid ""
 "\n"
@@ -1197,16 +1397,19 @@ msgid ""
 "effect upon them."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:398
 msgid "Dextrous"
 msgstr "민첩"
 
+#. topic
 #: data/core/help.cfg:399
 #, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr "민첩 유닛은 활로 성공적인 공격 시 1의 추가 데미지를 줍니다."
 
+#. topic
 #: data/core/help.cfg:401
 msgid ""
 "\n"
@@ -1217,16 +1420,19 @@ msgid ""
 "inflict an additional point of damage with each arrow."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:406
 msgid "Healthy"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:407
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:409
 msgid ""
 "\n"
@@ -1235,6 +1441,7 @@ msgid ""
 "each turn they did not fight."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:417
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
@@ -1242,10 +1449,12 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:423
 msgid "Grassland"
 msgstr "초원"
 
+#. topic
 #: data/core/help.cfg:428
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
@@ -1257,10 +1466,12 @@ msgid ""
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:433
 msgid "Road"
 msgstr "길"
 
+#. topic
 #: data/core/help.cfg:436
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1268,10 +1479,12 @@ msgid ""
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:441
 msgid "Forest"
 msgstr "숲"
 
+#. topic
 #: data/core/help.cfg:448
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1290,10 +1503,12 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:453
 msgid "Hills"
 msgstr "언덕"
 
+#. topic
 #: data/core/help.cfg:458
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
@@ -1307,10 +1522,12 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:463
 msgid "Mountains"
 msgstr "산"
 
+#. topic
 #: data/core/help.cfg:468
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
@@ -1324,10 +1541,12 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:473
 msgid "Swamp"
 msgstr "늪"
 
+#. topic
 #: data/core/help.cfg:478
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
@@ -1340,10 +1559,12 @@ msgid ""
 "all generally enjoy 60%."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:483
 msgid "Shallow Water"
 msgstr "얕은 물"
 
+#. topic
 #: data/core/help.cfg:488
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
@@ -1357,10 +1578,12 @@ msgid ""
 "Naga and Mermen enjoy 60%."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:493
 msgid "Deep Water"
 msgstr "깊은 물"
 
+#. topic
 #: data/core/help.cfg:498
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
@@ -1370,10 +1593,12 @@ msgid ""
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:503
 msgid "Snow"
 msgstr "눈"
 
+#. topic
 #: data/core/help.cfg:508
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
@@ -1383,10 +1608,12 @@ msgid ""
 "Most units have 20 to 40% defense in snow."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:513
 msgid "Ice"
 msgstr "얼음"
 
+#. topic
 #: data/core/help.cfg:516
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
@@ -1394,10 +1621,12 @@ msgid ""
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:521
 msgid "Castle"
 msgstr "성"
 
+#. topic
 #: data/core/help.cfg:528
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -1411,10 +1640,12 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:533
 msgid "Sand"
 msgstr "모래"
 
+#. topic
 #: data/core/help.cfg:538
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
@@ -1424,10 +1655,12 @@ msgid ""
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:543
 msgid "Desert"
 msgstr "사막"
 
+#. topic
 #: data/core/help.cfg:546
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -1435,10 +1668,12 @@ msgid ""
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:551
 msgid "Cave"
 msgstr "동굴"
 
+#. topic
 #: data/core/help.cfg:556
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -1452,10 +1687,12 @@ msgid ""
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:561
 msgid "Rockbound Cave"
 msgstr "암성 동굴"
 
+#. topic
 #: data/core/help.cfg:566
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -1470,11 +1707,13 @@ msgid ""
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:571
 #, fuzzy
 msgid "Illuminated Cave"
 msgstr "밝음"
 
+#. topic
 #: data/core/help.cfg:574
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -1483,10 +1722,12 @@ msgid ""
 "other regards this terrain is functionally identical to normal cave terrains."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:579
 msgid "Mushroom Grove"
 msgstr "버섯 동굴"
 
+#. topic
 #: data/core/help.cfg:584
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -1500,10 +1741,12 @@ msgid ""
 "receive only 20%."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:589
 msgid "Savanna"
 msgstr "대초원"
 
+#. topic
 #: data/core/help.cfg:592
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
@@ -1511,10 +1754,13 @@ msgid ""
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. topic
 #: data/core/help.cfg:597 src/terrain.cpp:135
 msgid "Village"
 msgstr "마을"
 
+#. topic
 #: data/core/help.cfg:604
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -1529,10 +1775,12 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:609
 msgid "Submerged Village"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:614
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
@@ -1546,10 +1794,12 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:619
 msgid "Chasm"
 msgstr "협곡"
 
+#. topic
 #: data/core/help.cfg:622
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
@@ -1558,10 +1808,12 @@ msgid ""
 "terrain."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:627
 msgid "Lava"
 msgstr "용암"
 
+#. topic
 #: data/core/help.cfg:630
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
@@ -1571,10 +1823,12 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:635
 msgid "River Ford"
 msgstr "시내"
 
+#. topic
 #: data/core/help.cfg:638
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
@@ -1585,10 +1839,12 @@ msgid ""
 "the unit on it."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:643
 msgid "Bridge"
 msgstr "다리"
 
+#. topic
 #: data/core/help.cfg:648
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -1604,21 +1860,25 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:653
 msgid "Cave Wall"
 msgstr "동굴 벽"
 
+#. topic
 #: data/core/help.cfg:656
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:661
 #, fuzzy
 msgid "Impassable Mountain"
 msgstr "산"
 
+#. topic
 #: data/core/help.cfg:664
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
@@ -1626,10 +1886,12 @@ msgid ""
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:675
 msgid "General commands"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:679
 msgid ""
 "\n"
@@ -1637,6 +1899,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:683
 msgid ""
 "\n"
@@ -1646,6 +1909,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:686
 msgid ""
 "\n"
@@ -1657,6 +1921,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:689
 msgid ""
 "\n"
@@ -1664,6 +1929,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:692
 msgid ""
 "\n"
@@ -1671,6 +1937,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:695
 msgid ""
 "\n"
@@ -1678,6 +1945,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:698
 msgid ""
 "\n"
@@ -1685,6 +1953,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:701
 msgid ""
 "\n"
@@ -1692,6 +1961,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:704
 msgid ""
 "\n"
@@ -1699,17 +1969,20 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:705
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:710
 #, fuzzy
 msgid "Multiplayer commands"
 msgstr "멀티플레이"
 
+#. topic
 #: data/core/help.cfg:714
 msgid ""
 "\n"
@@ -1718,6 +1991,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:717
 msgid ""
 "\n"
@@ -1728,6 +2002,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:720
 msgid ""
 "\n"
@@ -1737,6 +2012,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:723
 msgid ""
 "\n"
@@ -1745,16 +2021,19 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:724
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:729
 msgid "Debug mode commands"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:733
 msgid ""
 "\n"
@@ -1762,6 +2041,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:736
 msgid ""
 "\n"
@@ -1769,6 +2049,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:739
 msgid ""
 "\n"
@@ -1776,6 +2057,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:742
 msgid ""
 "\n"
@@ -1783,6 +2065,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:745
 msgid ""
 "\n"
@@ -1790,6 +2073,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:748
 msgid ""
 "\n"
@@ -1797,6 +2081,7 @@ msgid ""
 "\n"
 msgstr ""
 
+#. topic
 #: data/core/help.cfg:749
 msgid ""
 "\n"
@@ -1804,11 +2089,13 @@ msgid ""
 "hitpoints=100"
 msgstr ""
 
+#. heals
 #: data/core/macros/abilities.cfg:10
 #, fuzzy
 msgid "heals +4"
 msgstr "치료"
 
+#. heals
 #: data/core/macros/abilities.cfg:15
 msgid ""
 "Heals +4:\n"
@@ -1821,11 +2108,13 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 
+#. heals
 #: data/core/macros/abilities.cfg:29
 #, fuzzy
 msgid "heals +8"
 msgstr "치료"
 
+#. heals
 #: data/core/macros/abilities.cfg:34
 msgid ""
 "Heals +8:\n"
@@ -1838,10 +2127,12 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 
+#. heals
 #: data/core/macros/abilities.cfg:49
 msgid "cures"
 msgstr "치유"
 
+#. heals
 #: data/core/macros/abilities.cfg:51
 msgid ""
 "Cures:\n"
@@ -1849,10 +2140,12 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
+#. regenerate
 #: data/core/macros/abilities.cfg:73
 msgid "regenerates"
 msgstr "재생"
 
+#. regenerate
 #: data/core/macros/abilities.cfg:75
 msgid ""
 "Regenerates:\n"
@@ -1860,10 +2153,12 @@ msgid ""
 "the poison instead of healing."
 msgstr ""
 
+#. resistance
 #: data/core/macros/abilities.cfg:92
 msgid "steadfast"
 msgstr "부동"
 
+#. resistance
 #: data/core/macros/abilities.cfg:94
 msgid ""
 "Steadfast:\n"
@@ -1871,12 +2166,14 @@ msgid ""
 "Vulnerabilities are not affected."
 msgstr ""
 
+#. leadership
 #: data/core/macros/abilities.cfg:107 data/core/macros/abilities.cfg:129
 #: data/core/macros/abilities.cfg:163 data/core/macros/abilities.cfg:209
 #: data/core/macros/abilities.cfg:267
 msgid "leadership"
 msgstr "리더쉽"
 
+#. leadership
 #: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
 #: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
 #: data/core/macros/abilities.cfg:271
@@ -1891,10 +2188,12 @@ msgid ""
 "difference in their levels."
 msgstr ""
 
+#. skirmisher
 #: data/core/macros/abilities.cfg:335
 msgid "skirmisher"
 msgstr "척후"
 
+#. skirmisher
 #: data/core/macros/abilities.cfg:337
 msgid ""
 "Skirmisher:\n"
@@ -1902,10 +2201,12 @@ msgid ""
 "Zones of Control."
 msgstr ""
 
+#. illuminates
 #: data/core/macros/abilities.cfg:350
 msgid "illuminates"
 msgstr "밝음"
 
+#. illuminates
 #: data/core/macros/abilities.cfg:354
 msgid ""
 "Illuminates:\n"
@@ -1916,10 +2217,12 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 
+#. teleport
 #: data/core/macros/abilities.cfg:364
 msgid "teleport"
 msgstr "순간이동"
 
+#. teleport
 #: data/core/macros/abilities.cfg:366
 msgid ""
 "Teleport:\n"
@@ -1927,10 +2230,12 @@ msgid ""
 "using one of its moves."
 msgstr ""
 
+#. hides
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
 msgstr "매복"
 
+#. hides
 #: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:384
 msgid ""
 "Ambush:\n"
@@ -1941,10 +2246,12 @@ msgid ""
 "loses all its remaining movement."
 msgstr ""
 
+#. hides
 #: data/core/macros/abilities.cfg:399 data/core/macros/abilities.cfg:404
 msgid "nightstalk"
 msgstr "야간활보"
 
+#. hides
 #: data/core/macros/abilities.cfg:403 data/core/macros/abilities.cfg:408
 msgid ""
 "Nightstalk:\n"
@@ -1955,11 +2262,13 @@ msgid ""
 "remaining movement."
 msgstr ""
 
+#. hides
 #: data/core/macros/abilities.cfg:423 data/core/macros/abilities.cfg:428
 #, fuzzy
 msgid "concealment"
 msgstr "이동력"
 
+#. hides
 #: data/core/macros/abilities.cfg:427 data/core/macros/abilities.cfg:432
 msgid ""
 "Concealment:\n"
@@ -1971,10 +2280,12 @@ msgid ""
 "immediately loses all its remaining movement."
 msgstr ""
 
+#. hides
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:452
 msgid "submerge"
 msgstr "은폐"
 
+#. hides
 #: data/core/macros/abilities.cfg:451 data/core/macros/abilities.cfg:456
 msgid ""
 "Submerge:\n"
@@ -1985,10 +2296,12 @@ msgid ""
 "immediately loses all its remaining movement."
 msgstr ""
 
+#. dummy
 #: data/core/macros/abilities.cfg:474
 msgid "feeding"
 msgstr ""
 
+#. dummy
 #: data/core/macros/abilities.cfg:476
 msgid ""
 "Feeding:\n"
@@ -2116,18 +2429,22 @@ msgid ""
 "a unit."
 msgstr ""
 
+#. advancement
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr ""
 
+#. advancement
 #: data/core/macros/amla.cfg:30
 msgid ", MAX XP +25%"
 msgstr ""
 
+#. advancement
 #: data/core/macros/amla.cfg:30
 msgid "Max HP bonus +"
 msgstr ""
 
+#. message: speaker=narrator
 #: data/core/macros/items.cfg:41
 msgid ""
 "You have come across a wishing well.\n"
@@ -2136,126 +2453,156 @@ msgstr ""
 "당신은 소원의 우물을 지나갔습니다.\n"
 " 어떤 소원을 빌으시겠습니까?"
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:45
 msgid "A swift victory"
 msgstr "신속한 승리"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:53
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr "이 금빛의 동전들과 함께, 나는 이 전쟁이 안전하고 빠르게 끝내길 원한다."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:60
 msgid "Lots of gold"
 msgstr "많은 양의 금"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:68
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr ""
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:75
 msgid "Peace throughout Wesnoth."
 msgstr "Wesnoth 전체의 평화"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:83
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "제일 나쁜 소원은 이 땅 전체의 평화일 뿐이다."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:90
 msgid "Don't make a wish."
 msgstr "소원을 빌지 않는다."
 
+#. object
 #: data/core/macros/items.cfg:121
 msgid "Potion of Healing"
 msgstr "회복의 물약"
 
+#. object
 #: data/core/macros/items.cfg:124
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:125
 msgid "You are not worthy of healing."
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:159
 msgid "Poison"
 msgstr "독"
 
+#. object
 #: data/core/macros/items.cfg:162
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:197
 msgid "Holy Water"
 msgstr "성수"
 
+#. object
 #: data/core/macros/items.cfg:200
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:201
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:236
 msgid "Potion of Strength"
 msgstr "힘의 물약"
 
+#. object
 #: data/core/macros/items.cfg:239
 msgid "Strength is given to the drinker."
 msgstr "마시는 자에게 힘을 부여합니다."
 
+#. object
 #: data/core/macros/items.cfg:280
 msgid "Potion of Decay"
 msgstr "쇠약의 물약"
 
+#. object
 #: data/core/macros/items.cfg:283
 msgid "This poor unit drank something really bad."
 msgstr "이 불행한 유닛은 매우 안좋은 무엇인가를 마셨습니다."
 
+#. object
 #: data/core/macros/items.cfg:318
 msgid "Ring of Regeneration"
 msgstr "재생의 반지"
 
+#. object
 #: data/core/macros/items.cfg:321
 msgid "This ring will heal the bearer a little each turn."
 msgstr "이 반지는 각 턴 당 체력을 조금씩 채워줍니다."
 
+#. object
 #: data/core/macros/items.cfg:358
 msgid "Ring of Slowness"
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:361
 msgid "The bearer of this ring is slowed."
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:396
 msgid "Staff of Swiftness"
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:399
 msgid "This staff will grant the bearer swift movement."
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:400
 msgid "Only magical beings can wield such an object."
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:434
 msgid "Storm Trident"
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:437
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 
+#. object
 #: data/core/macros/items.cfg:438
 msgid "Only the mermen can use this item!"
 msgstr ""
 
+#. effect: type=fire
 #: data/core/macros/items.cfg:451
 msgid "storm trident"
 msgstr ""
@@ -2694,6 +3041,8 @@ msgid ""
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
 
+#. time
+#. illuminated_time
 #: data/core/macros/schedules.cfg:102 data/core/macros/schedules.cfg:113
 msgid "Deep Underground"
 msgstr ""
@@ -2866,182 +3215,222 @@ msgid ""
 "can be cured in town or by a unit which cures."
 msgstr ""
 
+#. trait
 #: data/core/macros/traits.cfg:9
 msgid "loyal"
 msgstr "충성"
 
+#. trait
 #: data/core/macros/traits.cfg:10
 #, fuzzy
 msgid "female^loyal"
 msgstr "엘프 실프"
 
+#. trait
 #: data/core/macros/traits.cfg:11
 msgid "Zero upkeep"
 msgstr ""
 
+#. trait
 #: data/core/macros/traits.cfg:23
 msgid "undead"
 msgstr "언데드"
 
+#. trait
 #: data/core/macros/traits.cfg:24
 #, fuzzy
 msgid "female^undead"
 msgstr "레드 메이지"
 
+#. trait
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
 #, fuzzy
 msgid "Immune to drain, poison and plague"
 msgstr "독내성"
 
+#. trait
 #: data/core/macros/traits.cfg:38
 #, fuzzy
 msgid "mechanical"
 msgstr "마법"
 
+#. trait
 #: data/core/macros/traits.cfg:39
 #, fuzzy
 msgid "female^mechanical"
 msgstr "파이터"
 
+#. trait
 #: data/core/macros/traits.cfg:52
 msgid "strong"
 msgstr "힘"
 
+#. trait
 #: data/core/macros/traits.cfg:53
 #, fuzzy
 msgid "female^strong"
 msgstr "파이터"
 
+#. trait
 #: data/core/macros/traits.cfg:70
 msgid "dextrous"
 msgstr "민첩"
 
+#. trait
 #: data/core/macros/traits.cfg:71
 #, fuzzy
 msgid "female^dextrous"
 msgstr "민첩"
 
+#. trait
 #: data/core/macros/traits.cfg:84
 msgid "quick"
 msgstr "신속"
 
+#. trait
 #: data/core/macros/traits.cfg:85
 #, fuzzy
 msgid "female^quick"
 msgstr "파이터"
 
+#. trait
 #: data/core/macros/traits.cfg:101
 msgid "intelligent"
 msgstr "지능"
 
+#. trait
 #: data/core/macros/traits.cfg:102
 #, fuzzy
 msgid "female^intelligent"
 msgstr "지능"
 
+#. trait
 #: data/core/macros/traits.cfg:114
 msgid "resilient"
 msgstr "탄력"
 
+#. trait
 #: data/core/macros/traits.cfg:115
 #, fuzzy
 msgid "female^resilient"
 msgstr "탄력"
 
+#. trait
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr ""
 
+#. trait
 #: data/core/macros/traits.cfg:133
 #, fuzzy
 msgid "female^healthy"
 msgstr "파이터"
 
+#. trait
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
 msgstr ""
 
+#. trait
 #: data/core/macros/traits.cfg:146 data/core/macros/traits.cfg:159
 msgid "fearless"
 msgstr ""
 
+#. trait
 #: data/core/macros/traits.cfg:147 data/core/macros/traits.cfg:160
 #, fuzzy
 msgid "female^fearless"
 msgstr "레드 메이지"
 
+#. trait
 #: data/core/macros/traits.cfg:148 data/core/macros/traits.cfg:161
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
+#. color_range
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
 msgstr "빨간색"
 
+#. color_range
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
 msgstr "파란색"
 
+#. color_range
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
 msgstr "초록색"
 
+#. color_range
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
 msgstr "자주색"
 
+#. color_range
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
 msgstr "적황색"
 
+#. color_range
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 #, fuzzy
 msgid "Black"
 msgstr " < 뒤로"
 
+#. color_range
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
 msgstr "흰색"
 
+#. color_range
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
 msgstr "갈색"
 
+#. color_range
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 #, fuzzy
 msgid "Teal"
 msgstr "팀"
 
+#. race
 #: data/core/units.cfg:43
 #, fuzzy
 msgid "race^Bat"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:44
 #, fuzzy
 msgid "race+female^Bat"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:45
 #, fuzzy
 msgid "race^Bats"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:52
 #, fuzzy
 msgid "race^Drake"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:53
 #, fuzzy
 msgid "race+female^Drake"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:54
 #, fuzzy
 msgid "race^Drakes"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:67
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
@@ -3108,20 +3497,24 @@ msgid ""
 "far north of the Great Continent."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:74
 #, fuzzy
 msgid "race^Dwarf"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:75
 #, fuzzy
 msgid "race+female^Dwarf"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:76
 msgid "race^Dwarves"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:81
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
@@ -3173,21 +3566,25 @@ msgid ""
 "augment certain aspects of their natures."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:89
 #, fuzzy
 msgid "race^Elf"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:90
 #, fuzzy
 msgid "race+female^Elf"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:91
 #, fuzzy
 msgid "race^Elves"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:94
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
@@ -3218,49 +3615,59 @@ msgid ""
 "undoubtedly having existed for over a millennium."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:103
 #, fuzzy
 msgid "race^Goblin"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:104
 #, fuzzy
 msgid "race+female^Goblin"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:105
 msgid "race^Goblins"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:113
 #, fuzzy
 msgid "race^Gryphon"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:114
 #, fuzzy
 msgid "race+female^Gryphon"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:115
 #, fuzzy
 msgid "race^Gryphons"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:123
 #, fuzzy
 msgid "race^Human"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:124
 #, fuzzy
 msgid "race+female^Human"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:125
 msgid "race^Humans"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:132
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
@@ -3302,95 +3709,115 @@ msgid ""
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:139
 #, fuzzy
 msgid "race^Saurian"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:140
 #, fuzzy
 msgid "race+female^Saurian"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:141
 msgid "race^Saurians"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:150
 msgid "race^Mechanical"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:151
 #, fuzzy
 msgid "race+plural^Mechanical"
 msgstr "파이터"
 
+#. race
 #: data/core/units.cfg:161
 #, fuzzy
 msgid "race^Merman"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:162
 #, fuzzy
 msgid "race^Mermaid"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:163
 msgid "race^Mermen"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:171
 #, fuzzy
 msgid "race^Monster"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:172
 msgid "race^Monsters"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:179
 #, fuzzy
 msgid "race^Naga"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:180
 #, fuzzy
 msgid "race^Nagani"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:181
 msgid "race^Nagas"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:189
 #, fuzzy
 msgid "race^Ogre"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:190
 #, fuzzy
 msgid "race+female^Ogre"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:191
 msgid "race^Ogres"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:199
 #, fuzzy
 msgid "race^Orc"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:200
 #, fuzzy
 msgid "race+female^Orc"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:201
 #, fuzzy
 msgid "race^Orcs"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:211
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
@@ -3450,21 +3877,25 @@ msgid ""
 "assassination."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:218
 #, fuzzy
 msgid "race^Troll"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:219
 #, fuzzy
 msgid "race+female^Troll"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:220
 #, fuzzy
 msgid "race^Trolls"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:226
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
@@ -3503,20 +3934,24 @@ msgid ""
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:238
 msgid "race^Undead"
 msgstr ""
 
+#. race
 #: data/core/units.cfg:239
 #, fuzzy
 msgid "race+female^Undead"
 msgstr "언데드"
 
+#. race
 #: data/core/units.cfg:240
 #, fuzzy
 msgid "race+plural^Undead"
 msgstr "언데드"
 
+#. race
 #: data/core/units.cfg:246
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -3545,28 +3980,34 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:254
 #, fuzzy
 msgid "race^Wose"
 msgstr "트롤"
 
+#. race
 #: data/core/units.cfg:255
 #, fuzzy
 msgid "race^Woses"
 msgstr "트롤"
 
+#. language
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "쉬움"
 
+#. language
 #: data/hardwired/english.cfg:4
 msgid "Medium"
 msgstr "보통"
 
+#. language
 #: data/hardwired/english.cfg:5
 msgid "Hard"
 msgstr "어려움"
 
+#. language
 #: data/hardwired/english.cfg:10
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
@@ -3579,6 +4020,7 @@ msgstr ""
 "낮: +25% 데미지\n"
 "밤: -25% 데미지"
 
+#. language
 #: data/hardwired/english.cfg:11
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
@@ -3586,6 +4028,7 @@ msgid ""
 msgstr ""
 "중립 유닛은 낮과 밤에 아무런 이득이 없으며, 전투시 동일한 상태를 가집니다."
 
+#. language
 #: data/hardwired/english.cfg:15
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
@@ -3598,92 +4041,114 @@ msgstr ""
 "낮: -25% 데미지\n"
 "밤: +25% 데미지"
 
+#. language
 #: data/hardwired/english.cfg:18
 msgid "$name's Bridge,$name's Crossing"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:19
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:20
 msgid "$name River,River $name"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:21
 msgid "$name Forest,$name's Forest"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:22
 msgid "$name Lake"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:23
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:24
 msgid "$name|harbor,$name|port"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:25
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:26
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:27
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:30
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
+#. language
 #: data/hardwired/english.cfg:33
 msgid "melee"
 msgstr "밀리"
 
+#. language
 #: data/hardwired/english.cfg:34
 msgid "ranged"
 msgstr "레인지"
 
+#. language
 #: data/hardwired/english.cfg:37
 msgid "blade"
 msgstr "블레이드"
 
+#. language
 #: data/hardwired/english.cfg:38
 msgid "pierce"
 msgstr "관통"
 
+#. language
 #: data/hardwired/english.cfg:39
 msgid "impact"
 msgstr "충격"
 
+#. language
 #: data/hardwired/english.cfg:40
 msgid "fire"
 msgstr "불"
 
+#. language
 #: data/hardwired/english.cfg:41
 msgid "cold"
 msgstr "얼음"
 
+#. language
 #: data/hardwired/english.cfg:42
 #, fuzzy
 msgid "arcane"
 msgstr "레인지"
 
+#. tip
 #: data/hardwired/tips.cfg:3
 msgid ""
 "Don't neglect to earn your leader experience! You need to keep him safe, but "
@@ -3691,10 +4156,12 @@ msgid ""
 "battles."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:7
 msgid ""
 "In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
@@ -3703,6 +4170,7 @@ msgid ""
 "injured units on his next turn."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
 #: data/hardwired/tips.cfg:36 data/hardwired/tips.cfg:52
@@ -3719,6 +4187,7 @@ msgstr ""
 msgid "- The Wesnoth Tactical Guide"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:11
 msgid ""
 "Units with the 'intelligent' trait need fewer experience points to level up. "
@@ -3726,10 +4195,12 @@ msgid ""
 "some high-level troops sooner."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:15
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
@@ -3737,10 +4208,12 @@ msgid ""
 "will restrict it to one hex of movement in any direction."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:19
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
@@ -3748,6 +4221,7 @@ msgid ""
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:23
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
@@ -3755,6 +4229,7 @@ msgid ""
 "doing in comparison."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:27
 msgid ""
 "Units with the 'quick' trait move one extra hex per turn. This can be very "
@@ -3762,16 +4237,19 @@ msgid ""
 "can make the difference between being able to move one hex or two."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:31
 msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:35
 msgid ""
 "It is usually better to start the next scenario in a campaign with lower-"
@@ -3779,16 +4257,19 @@ msgid ""
 "higher level."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:39
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:40
 msgid "- The Wesnoth Community"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:43
 #, fuzzy
 msgid ""
@@ -3798,20 +4279,24 @@ msgstr ""
 "질서 유닛은 아침에 더 잘 싸우며 혼돈 유닛은 밤에 더 잘 싸웁니다. 중립 유닛은 "
 "아무런 아무런 영향도 받지 않습니다."
 
+#. tip
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:47
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:51
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
@@ -3820,6 +4305,7 @@ msgid ""
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:55
 #, fuzzy
 msgid ""
@@ -3833,6 +4319,7 @@ msgstr ""
 "른쪽 클릭 한 후에, '유닛 설명' 을 누르시고, '저항력' 을 눌러서 어떤 유닛이 어"
 "떤 무기에 대항하여 저항력이 있는지 알아보십시오."
 
+#. tip
 #: data/hardwired/tips.cfg:59
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
@@ -3841,6 +4328,7 @@ msgid ""
 "right corner of the screen."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:63
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
@@ -3850,6 +4338,7 @@ msgid ""
 "next to a unit with the 'Cures' ability."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:67
 #, fuzzy
 msgid ""
@@ -3861,6 +4350,7 @@ msgstr ""
 "수 있습니다. 같은 유닛을 계속 불러오고 불러오면, 당신은 강력하고 경험있는 병"
 "력을 만들 수 있습니다."
 
+#. tip
 #: data/hardwired/tips.cfg:71
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
@@ -3870,6 +4360,7 @@ msgid ""
 "are skilled enough to ignore these zones."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:75
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
@@ -3878,16 +4369,19 @@ msgid ""
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:79
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:83
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
@@ -3895,6 +4389,7 @@ msgid ""
 "its next turn."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:87
 #, fuzzy
 msgid ""
@@ -3905,10 +4400,12 @@ msgstr ""
 "대부분의 보행 유닛들은 마을과 성안에서 다른 지역보다 방어를 잘합니다, 반면에 "
 "대부분의 기마 유닛들은 마을이나 성안에서 아무런 이점도 없습니다."
 
+#. tip
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:91
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
@@ -3916,10 +4413,12 @@ msgid ""
 "and spears."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:95
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
@@ -3928,6 +4427,7 @@ msgid ""
 "level opponent."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:99
 #, fuzzy
 msgid ""
@@ -3937,32 +4437,38 @@ msgstr ""
 "엘프 유닛들은 숲에서 매우 잘 이동하고 잘 싸웁니다. 드워프 유닛들은 언덕과 산"
 "에서 매우 잘 이동하며 잘 싸웁니다."
 
+#. tip
 #: data/hardwired/tips.cfg:103
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:107
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:108
 msgid "- King Konrad, 552YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:111
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
 "후퇴와 병력 재 편성을 두려워하지마십시오; 이것은 종종 승리의 열쇠가 됩니다."
 
+#. tip
 #: data/hardwired/tips.cfg:112
 msgid "- Meneldur, 123YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:115
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
@@ -3971,6 +4477,7 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:119
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
@@ -3979,6 +4486,7 @@ msgid ""
 "for you on their keep so you can recruit there."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:123
 #, fuzzy
 msgid ""
@@ -3988,12 +4496,14 @@ msgstr ""
 "스켈레톤은 관통과 검 공격에 저항이 있지만, 불, 신성 그리고 충돌 공격에 약합니"
 "다."
 
+#. tip
 #: data/hardwired/tips.cfg:127
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:131
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
@@ -4001,18 +4511,22 @@ msgid ""
 "village."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:135
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:136
 msgid "- Princess Li'sar, 515YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:139
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "게임 옵션 메뉴에 있는 단축키 목록을 읽으십시오."
 
+#. tip
 #: data/hardwired/tips.cfg:143
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
@@ -4021,6 +4535,7 @@ msgstr ""
 "만일 당신이 유닛을 움직인다 하더라도 아무도 공격하지말고 아무런 행동도 하지마"
 "십시오. 당신은 'u' 키를 눌러서 행동을 취소할 수 있습니다."
 
+#. tip
 #: data/hardwired/tips.cfg:147
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
@@ -4029,31 +4544,37 @@ msgstr ""
 "당신은 마우스 커서를 적 유닛들에게 이동시키는 것으로 적 유닛들이 얼마나 멀리 "
 "있는지 볼 수 있습니다."
 
+#. tip
 #: data/hardwired/tips.cfg:151
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:155
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:159
 #, fuzzy
 msgid "Arcane attacks are very powerful against undead."
 msgstr "신성 공격은 언데드에 대항하여 매우 강력합니다."
 
+#. tip
 #: data/hardwired/tips.cfg:160
 msgid "- Great Sage Dacyn, 626YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:163
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
@@ -4062,12 +4583,14 @@ msgstr ""
 "유닛들이 레벨업을 할 경우 모든 체력이 차게됩니다. 이것을 총명하게 사용하면 전"
 "투를 역전할 수 있습니다."
 
+#. tip
 #: data/hardwired/tips.cfg:167
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:171
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
@@ -4077,6 +4600,7 @@ msgid ""
 "your lower-level units instead."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:175
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
@@ -4084,12 +4608,14 @@ msgid ""
 "is best to scout specific types of terrain."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:179
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:183
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
@@ -4098,6 +4624,7 @@ msgid ""
 "can adjust campaign difficulty."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:187
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
@@ -4105,10 +4632,12 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:188
 msgid "- Queen Li'sar, 528YW"
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:191
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
@@ -4116,12 +4645,14 @@ msgid ""
 "ability to undo."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:195
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
 
+#. tip
 #: data/hardwired/tips.cfg:199
 msgid ""
 "Few units have good defences in water; a line of attackers along the edge of "
@@ -4129,142 +4660,177 @@ msgid ""
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
 
+#. effect: type=fire
 #: data/scenario-test.cfg:697
 msgid "ruby of fire"
 msgstr ""
 
+#. menu
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
 msgstr "메뉴"
 
+#. menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
 msgstr "행동"
 
+#. menu
+#. change
 #: data/themes/default.cfg:153 data/themes/default.cfg:719
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "턴 끝내기"
 
+#. menu
+#. change
 #: data/themes/default.cfg:154 data/themes/default.cfg:720
 #: data/themes/default.cfg:975 data/themes/dfool.cfg:161
 #, fuzzy
 msgid "End Scenario"
 msgstr "시나리오 시작"
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. label
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
 #: data/themes/experimental.cfg:181 src/menu_events.cpp:384 src/unit.cpp:2466
 #: src/unit.cpp:2639
 msgid "HP"
 msgstr "체력"
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. label
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
 #: src/menu_events.cpp:1152
 msgid "XP"
 msgstr "경험치"
 
+#. label
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "금"
 
+#. label
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "마을 수"
 
+#. label
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "유닛 수"
 
+#. label
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "유지비"
 
+#. label
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "수입비"
 
+#. unit_level
 #: data/themes/default.cfg:416 data/themes/dfool.cfg:459
 #: data/themes/experimental.cfg:368
 msgid "statuspanel^level"
 msgstr "레벨"
 
+#. unit_moves
 #: data/themes/default.cfg:447 data/themes/experimental.cfg:399
 msgid "statuspanel^movement"
 msgstr "이동력"
 
+#. change
 #: data/themes/default.cfg:946
 msgid "Act."
 msgstr ""
 
+#. remove
+#. menu
 #: data/themes/default.cfg:966 data/themes/default.cfg:974
 msgid "short end-turn^E."
 msgstr ""
 
+#. label
 #: data/themes/dfool.cfg:252
 msgid "MP"
 msgstr ""
 
+#. label
 #: data/themes/macros.cfg:59
 msgid "Replay"
 msgstr "리플레이"
 
+#. menu: type=image
 #: data/themes/macros.cfg:74
 #, fuzzy
 msgid "Play"
 msgstr "플레이어 수:"
 
+#. menu: type=image
 #: data/themes/macros.cfg:75
 #, fuzzy
 msgid "continous replay"
 msgstr " 리플레이"
 
+#. menu: type=image
 #: data/themes/macros.cfg:92
 #, fuzzy
 msgid "Stop"
 msgstr "GLA"
 
+#. menu: type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
 msgstr ""
 
+#. menu: type=image
 #: data/themes/macros.cfg:110
 #, fuzzy
 msgid "Reset"
 msgstr "사막"
 
+#. menu: type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
 msgstr ""
 
+#. menu: type=image
 #: data/themes/macros.cfg:128
 msgid "Next Turn"
 msgstr "다음 턴"
 
+#. menu: type=image
 #: data/themes/macros.cfg:129
 msgid "play turn"
 msgstr ""
 
+#. menu: type=image
 #: data/themes/macros.cfg:146
 msgid "Next Side"
 msgstr ""
 
+#. menu: type=image
 #: data/themes/macros.cfg:147
 msgid "play side turn"
 msgstr ""
 
+#. menu
 #: data/themes/macros.cfg:163
 #, fuzzy
 msgid "Point of view"
 msgstr "쇠약의 물약"
 
+#. menu: type=checkbox
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
 msgstr ""
@@ -5112,7 +5678,7 @@ msgstr ""
 msgid "Skip"
 msgstr ""
 
-#: src/intro.cpp:376
+#: src/intro.cpp:379
 msgid "The End"
 msgstr ""
 

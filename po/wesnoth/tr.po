@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:44+0100\n"
+"POT-Creation-Date: 2008-03-16 11:58+0100\n"
 "PO-Revision-Date: 2008-02-03 23:12+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -20,48 +20,60 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:36
 msgid "Compressed Saves"
 msgstr "Sıkıştırılmış Kayıtlar"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:43
 msgid "Mouse Scrolling"
 msgstr "Fare Kaydırması"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:50
 msgid "Animate Map"
 msgstr "Haritayı Canlandır"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
 msgstr "Boştaki Birim Canlandırmaları"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:64
 msgid "Show Combat"
 msgstr "Çarpışmayı Göster"
 
+#. server
 #: data/_main.cfg:79
 msgid "Official Wesnoth Server"
 msgstr "Resmi Wesnoth Sunucusu"
 
+#. server
 #: data/_main.cfg:83 data/_main.cfg:87
 msgid "Alternate Wesnoth Server"
 msgstr "Diğer Wesnoth Sunucusu"
 
+#. time
+#. illuminated_time
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:519
 #: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:93
 msgid "Underground"
 msgstr "Yeraltı"
 
+#. about
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:45 data/core/about.cfg:146
 msgid "Artwork and Graphics"
 msgstr "Sanatsal ve Çizgesel Tasarım"
 
+#. berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:530
 msgid "berserk"
 msgstr "cinnet"
 
+#. berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
 #: data/core/macros/abilities.cfg:532
 msgid ""
@@ -73,11 +85,13 @@ msgstr ""
 "Saldırı ve savunmada, bu saldırı türü, çarpışanlardan biri yıkılana kadar "
 "veya 30 ellik saldırıya denk olana dek devam eder."
 
+#. chance_to_hit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
 #: data/core/macros/abilities.cfg:616
 msgid "magical"
 msgstr "sihirli"
 
+#. chance_to_hit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
 #: data/core/macros/abilities.cfg:618
 msgid ""
@@ -88,11 +102,13 @@ msgstr ""
 "Sihirli:\n"
 "Bu saldırı her zaman (saldırı ve savunma) %70 isabet şansına sahiptir."
 
+#. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
 #: data/core/macros/abilities.cfg:665
 msgid "firststrike"
 msgstr "ilk vuruş"
 
+#. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
 #: data/core/macros/abilities.cfg:667
 msgid ""
@@ -102,239 +118,305 @@ msgstr ""
 "İlk vuruş:\n"
 "Bu birim bu saldırısıyla, savunmadayken bile, her zaman ilk vuruşu yapar."
 
+#. about
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr "Yazılım Geliştirme"
 
+#. about
 #: data/core/about.cfg:128
 msgid "General Purpose Administration and Coordination"
 msgstr "Genel Amaçlı Yönetim ve Eşgüdüm"
 
-#: data/core/about.cfg:408
+#. about
+#: data/core/about.cfg:412
 msgid "Music"
 msgstr "Müzik"
 
-#: data/core/about.cfg:435
+#. about
+#: data/core/about.cfg:439
 msgid "Sound Effects"
 msgstr "Olay Sesleri"
 
-#: data/core/about.cfg:451
+#. about
+#: data/core/about.cfg:455
 msgid "Campaign Design"
 msgstr "Seferberlik Tasarımı"
 
-#: data/core/about.cfg:514
+#. about
+#: data/core/about.cfg:518
 msgid "Multiplayer Maps and Balancing"
 msgstr "Çokoyuncu Haritaları ve Dengeleme"
 
-#: data/core/about.cfg:556
+#. about
+#: data/core/about.cfg:564
 msgid "Packagers"
 msgstr "Paketleyiciler"
 
-#: data/core/about.cfg:605
+#. about
+#: data/core/about.cfg:613
 msgid "Miscellaneous contributors"
 msgstr "Diğer katkıcılar"
 
-#: data/core/about.cfg:731
+#. about
+#: data/core/about.cfg:743
 msgid "Internationalization Managers"
 msgstr "Uluslararası yapma sorumluları"
 
-#: data/core/about.cfg:756
+#. about
+#: data/core/about.cfg:768
 msgid "Afrikaans Translation"
 msgstr "Afrikaca Tercüme"
 
-#: data/core/about.cfg:772
+#. about
+#: data/core/about.cfg:784
 msgid "Basque Translation"
 msgstr "Baskça Tercüme"
 
-#: data/core/about.cfg:785
+#. about
+#: data/core/about.cfg:797
 msgid "Bulgarian Translation"
 msgstr "Bulgarca Tercüme"
 
-#: data/core/about.cfg:804
+#. about
+#: data/core/about.cfg:816
 msgid "Catalan Translation"
 msgstr "Katalanca Tercüme"
 
-#: data/core/about.cfg:839
+#. about
+#: data/core/about.cfg:851
 msgid "Chinese Translation"
 msgstr "Çince Tercüme"
 
-#: data/core/about.cfg:873
+#. about
+#: data/core/about.cfg:885
 #, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "Çince Tercüme"
 
-#: data/core/about.cfg:880
+#. about
+#: data/core/about.cfg:892
 msgid "Czech Translation"
 msgstr "Çekçe Tercüme"
 
-#: data/core/about.cfg:934
+#. about
+#: data/core/about.cfg:946
 msgid "Danish Translation"
 msgstr "Danimarkaca Tercüme"
 
-#: data/core/about.cfg:965
+#. about
+#: data/core/about.cfg:977
 msgid "Dutch Translation"
 msgstr "Felemenkçe Tercüme"
 
-#: data/core/about.cfg:1012
+#. about
+#: data/core/about.cfg:1024
 msgid "English (GB) Translation"
 msgstr "İngilizce (GB) Tercüme"
 
-#: data/core/about.cfg:1022
+#. about
+#: data/core/about.cfg:1034
 msgid "Esperanto Translation"
 msgstr "Esperanto Tercüme"
 
-#: data/core/about.cfg:1041
+#. about
+#: data/core/about.cfg:1053
 msgid "Estonian Translation"
 msgstr "Estonyaca Tercüme"
 
-#: data/core/about.cfg:1048
+#. about
+#: data/core/about.cfg:1060
 msgid "Filipino Translation"
 msgstr "Filipince Tercüme"
 
-#: data/core/about.cfg:1058
+#. about
+#: data/core/about.cfg:1070
 msgid "Finnish Translation"
 msgstr "Fince Tercüme"
 
-#: data/core/about.cfg:1092
+#. about
+#: data/core/about.cfg:1104
 msgid "French Translation"
 msgstr "Fransızca Tercüme"
 
-#: data/core/about.cfg:1197
+#. about
+#: data/core/about.cfg:1209
 msgid "Galician Translation"
 msgstr "Galiçyaca Tercüme"
 
-#: data/core/about.cfg:1209
+#. about
+#: data/core/about.cfg:1221
 msgid "German Translation"
 msgstr "Almanca Tercüme"
 
-#: data/core/about.cfg:1257
+#. about
+#: data/core/about.cfg:1269
 msgid "Greek Translation"
 msgstr "Yunanca Tercüme"
 
-#: data/core/about.cfg:1288
+#. about
+#: data/core/about.cfg:1300
 msgid "Hebrew Translation"
 msgstr "İbranice Tercüme"
 
-#: data/core/about.cfg:1298
+#. about
+#: data/core/about.cfg:1310
 msgid "Hungarian Translation"
 msgstr "Macarca Tercüme"
 
-#: data/core/about.cfg:1368
+#. about
+#: data/core/about.cfg:1380
 msgid "Indonesian Translation"
 msgstr "Endonezyaca Tercüme"
 
-#: data/core/about.cfg:1375
+#. about
+#: data/core/about.cfg:1387
 msgid "Italian Translation"
 msgstr "İtalyanca Tercüme"
 
-#: data/core/about.cfg:1410
+#. about
+#: data/core/about.cfg:1422
 msgid "Japanese Translation"
 msgstr "Japonca Tercüme"
 
-#: data/core/about.cfg:1433
+#. about
+#: data/core/about.cfg:1445
 msgid "Korean Translation"
 msgstr "Korece Tercüme"
 
-#: data/core/about.cfg:1440
+#. about
+#: data/core/about.cfg:1452
 msgid "Latin Translation"
 msgstr "Latince Tercüme"
 
-#: data/core/about.cfg:1447
+#. about
+#: data/core/about.cfg:1459
 msgid "Lithuanian Translation"
 msgstr "Litvanyaca Tercüme"
 
-#: data/core/about.cfg:1454
+#. about
+#: data/core/about.cfg:1466
 msgid "Norwegian Translation"
 msgstr "Norveççe Tercüme"
 
-#: data/core/about.cfg:1476
+#. about
+#: data/core/about.cfg:1488
 msgid "Polish Translation"
 msgstr "Lehçe Tercüme"
 
-#: data/core/about.cfg:1525
+#. about
+#: data/core/about.cfg:1537
 msgid "Portuguese Translation"
 msgstr "Portekizce Tercüme"
 
-#: data/core/about.cfg:1532
+#. about
+#: data/core/about.cfg:1544
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portekizce (Brezilya) Tercüme"
 
-#: data/core/about.cfg:1567
+#. about
+#: data/core/about.cfg:1579
 msgid "Russian Translation"
 msgstr "Rusça Tercüme"
 
-#: data/core/about.cfg:1603
+#. about
+#: data/core/about.cfg:1615
 msgid "Serbian Translation"
 msgstr "Sırpça Tercüme"
 
-#: data/core/about.cfg:1618
+#. about
+#: data/core/about.cfg:1630
 msgid "Slovak Translation"
 msgstr "Slovakça Tercüme"
 
-#: data/core/about.cfg:1635
+#. about
+#: data/core/about.cfg:1647
 msgid "Slovenian Translation"
 msgstr "Slovence Tercüme"
 
-#: data/core/about.cfg:1645
+#. about
+#: data/core/about.cfg:1657
 msgid "Spanish Translation"
 msgstr "İspanyolca Tercüme"
 
-#: data/core/about.cfg:1693
+#. about
+#: data/core/about.cfg:1705
 msgid "Swedish Translation"
 msgstr "İsveççe Tercüme"
 
-#: data/core/about.cfg:1719
+#. about
+#: data/core/about.cfg:1731
 msgid "Turkish Translation"
 msgstr "Türkçe Tercüme"
 
-#: data/core/about.cfg:1741
+#. about
+#: data/core/about.cfg:1753
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valensiyaca Tercüme"
 
-#: data/core/about.cfg:1757
+#. about
+#: data/core/about.cfg:1769
 msgid "Bots"
 msgstr "Botlar"
 
+#. fonts
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr ""
 
+#. section
+#. topic
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
 msgstr "Sunuş"
 
+#. section
+#. topic
 #: data/core/help.cfg:27 data/core/help.cfg:126
 msgid "Gameplay"
 msgstr "Oynanış"
 
+#. section
+#. topic
 #: data/core/help.cfg:33 data/core/help.cfg:323
 msgid "Traits"
 msgstr "Karakterler"
 
+#. section
+#. topic
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
 msgstr "Birimler"
 
+#. section
 #: data/core/help.cfg:51
 msgid "Abilities"
 msgstr "Yetenekler"
 
+#. section
+#. topic
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
 msgstr "Silah Özellikleri"
 
+#. section
+#. topic
 #: data/core/help.cfg:67 data/core/help.cfg:414
 msgid "Terrains"
 msgstr "Araziler"
 
+#. section
+#. topic
 #: data/core/help.cfg:74 data/core/help.cfg:669
 msgid "Commands"
 msgstr "Komutlar"
 
+#. topic
 #: data/core/help.cfg:92
 msgid "Abilites"
 msgstr "Yetenekler"
 
+#. topic
 #: data/core/help.cfg:95
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
@@ -347,6 +429,7 @@ msgstr ""
 "yetenekler listelenecektir.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:104
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
@@ -356,10 +439,12 @@ msgstr ""
 "Bazı silahların saldırı etkinliğini arttırıcı özellikleri vardır.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:110
 msgid "Unknown Unit"
 msgstr "Bilinmeyen Birim"
 
+#. topic
 #: data/core/help.cfg:113
 msgid ""
 "\n"
@@ -372,10 +457,12 @@ msgstr ""
 "Bu birim şu an bilinmiyor. Birimi oyundaki açıklamasına bakarak "
 "keşfetmelisiniz."
 
+#. topic
 #: data/core/help.cfg:118
 msgid "Overview"
 msgstr "Genel bakış"
 
+#. topic
 #: data/core/help.cfg:121
 msgid ""
 "\n"
@@ -395,10 +482,12 @@ msgstr ""
 "basitleştirmez - bu basit kurallardan, oyunu, öğrenmesi kolay ama "
 "uzmanlaşması zor hale getiren zengin stratejiler ortaya çıkar."
 
+#. topic
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
 msgstr "Oynanış Temelleri"
 
+#. topic
 #: data/core/help.cfg:133
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
@@ -413,6 +502,7 @@ msgstr ""
 "eklenir. Özel durumlar ve istisnalarla ilgili daha fazla bilgi için, lütfen "
 "içerilen bağlantıları takip edin."
 
+#. topic
 #: data/core/help.cfg:135
 msgid ""
 "\n"
@@ -434,6 +524,7 @@ msgstr ""
 "savaşları hayli zorlu olabileceğinden, <italic>text=Kolay</italic> zorluk "
 "seviyesi ile başlamak daha iyi olacaktır."
 
+#. topic
 #: data/core/help.cfg:138
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -446,10 +537,12 @@ msgstr ""
 "bilhassa yeni <ref>dst=abilities text=yeteneklerle</ref> ilk defa "
 "karşılaşınca işe yarar."
 
+#. topic
 #: data/core/help.cfg:143
 msgid "About the Game"
 msgstr "Oyun Hakkında"
 
+#. topic
 #: data/core/help.cfg:144
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
@@ -467,6 +560,7 @@ msgstr ""
 "bağlı diğer insanlara karşı da oynayabilirsiniz. Eğer internet bağlantınız "
 "var ise internet üzerinden diğer insanlarla oynayabilirsiniz."
 
+#. topic
 #: data/core/help.cfg:146
 msgid ""
 "\n"
@@ -483,10 +577,12 @@ msgstr ""
 "kullanabilmek için en iyi askerlerinizi kollamanız dolayısıyla çok daha "
 "dikkatli oynamanız gerekir."
 
+#. topic
 #: data/core/help.cfg:151
 msgid "Victory and Defeat"
 msgstr "Zafer ve Yenilgi"
 
+#. topic
 #: data/core/help.cfg:152
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
@@ -503,6 +599,7 @@ msgstr ""
 "birini kurtarmanız, bir bilmeceyi çözmeniz veya bir kuşatmaya belli sayıda "
 "el dayanmanız istenebilir."
 
+#. topic
 #: data/core/help.cfg:154
 msgid ""
 "\n"
@@ -519,10 +616,12 @@ msgstr ""
 "seçeneklerini değiştirmek gibi işlemler yapabilir veya (bir çok oyunculu "
 "oyundaysanız) diğer oyuncularla yazışabilirsiniz."
 
+#. topic
 #: data/core/help.cfg:159
 msgid "Recruiting and Recalling"
 msgstr "Askere Alma ve Geri Çağırma"
 
+#. topic
 #: data/core/help.cfg:160
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -547,6 +646,7 @@ msgstr ""
 "istatistiklerini görmek için fareyle üzerine tıklayabilir ve sizce uygun bir "
 "birimse Tamam düğmesine tıklayıp o birimi askere alabilirsiniz."
 
+#. topic
 #: data/core/help.cfg:162
 msgid ""
 "\n"
@@ -563,6 +663,7 @@ msgstr ""
 "Sadece kalenizdeki boş altıgen sayısı kadar birimi askere alabilirsiniz ve "
 "askere alırken o an sahip olduğunuzdan fazla altın harcayamazsınız."
 
+#. topic
 #: data/core/help.cfg:164
 msgid ""
 "\n"
@@ -575,6 +676,7 @@ msgstr ""
 "Askere alınan birimler istatistiklerini değiştiren iki rastgele "
 "<ref>dst=traits text=karakterle</ref> gelirler."
 
+#. topic
 #: data/core/help.cfg:166
 msgid ""
 "\n"
@@ -589,6 +691,7 @@ msgstr ""
 "çağırabilirsiniz. Çağırma standart olarak 20 altın tutar ve işlem sırasında "
 "önceki senaryolarda hayatta kalan birimlerin bir listesi gösterilir."
 
+#. topic
 #: data/core/help.cfg:168
 msgid ""
 "\n"
@@ -603,10 +706,12 @@ msgstr ""
 "yaşamak·için de paraya ihtiyaç duyarlar.·Daha fazla bilgi için "
 "<ref>dst=income_and_upkeep text='Gelir ve Gider'</ref>’i okuyunuz."
 
+#. topic
 #: data/core/help.cfg:173
 msgid "Orbs"
 msgstr "Küreler"
 
+#. topic
 #: data/core/help.cfg:174
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
@@ -615,30 +720,37 @@ msgstr ""
 "Her biriminin yanındaki enerji sütununun tepesinde bir küre vardır. "
 "Kontrolünüzdeki birimler için bu küre:"
 
+#. topic
 #: data/core/help.cfg:175
 msgid "green if it hasn't moved this turn,"
 msgstr " o el hiç hareket etmemişse yeşildir,"
 
+#. topic
 #: data/core/help.cfg:176
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr " hareket etmiş ama devam edebilecek veya saldırabilecekse sarıdır,"
 
+#. topic
 #: data/core/help.cfg:177
 msgid "red if it has used all its movement this turn."
 msgstr " o el tüm hareket hakkını doldurmuşsa kırmızıdır."
 
+#. topic
 #: data/core/help.cfg:178
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr " Müttefik olup senin idarende olmayan bir birimde küre mavidir."
 
+#. topic
 #: data/core/help.cfg:179
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr " Düşman birimlerinin enerji sütunlarının üstünde küre yoktur."
 
+#. topic
 #: data/core/help.cfg:184
 msgid "Hitpoints and Experience"
 msgstr "Yaşam Puanı ve Deneyim"
 
+#. topic
 #: data/core/help.cfg:185
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
@@ -651,6 +763,7 @@ msgstr ""
 "vardır. Yeni askere alınmış bir birim tecrübesiz başlar ve düşmanlarla "
 "savaşarak tecrübe kazanır."
 
+#. topic
 #: data/core/help.cfg:189
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
@@ -660,6 +773,7 @@ msgstr ""
 "Yaşam ve tecrübe puanları durum çubuğunda iki rakamla (şimdiki değer ve "
 "birimin edinebileceği en fazla değer) gösterilmiştir."
 
+#. topic
 #: data/core/help.cfg:190
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -672,10 +786,12 @@ msgstr ""
 "her birimin <ref>dst=experience_and_advancement text=terfi</ref> etmek üzere "
 "iken beyaza dönüşen mavi bir tecrübe çubuğu vardır."
 
+#. topic
 #: data/core/help.cfg:195
 msgid "Movement"
 msgstr "Hareket"
 
+#. topic
 #: data/core/help.cfg:196
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
@@ -704,6 +820,7 @@ msgstr ""
 "sıfırlanır. Birimi sahibi olmadığınız bir kasabaya konuşlandırmanız kalan "
 "hareket puanını sıfırlarsa da birim hala saldırı yapabilir."
 
+#. topic
 #: data/core/help.cfg:198
 msgid ""
 "\n"
@@ -730,6 +847,7 @@ msgstr ""
 "üzerinde sağ tıklayıp, birim tanımını seçin ve oradan da <italic>text='arazi "
 "ayarı'</italic>’na bakın."
 
+#. topic
 #: data/core/help.cfg:200
 msgid ""
 "\n"
@@ -750,6 +868,7 @@ msgstr ""
 "parçasıdır, sadece <ref>dst=ability_skirmisher text=avcılar</ref> etki "
 "alanından etkilenmezler."
 
+#. topic
 #: data/core/help.cfg:202
 msgid ""
 "\n"
@@ -764,10 +883,12 @@ msgstr ""
 "veya Cmd-v’ye basınız. Ctrl-b veya Cmd-b ise birimlerinizin haritada olmayıp "
 "onları engellemese düşmanın nereye kadar hareket edebileceğini gösterir."
 
+#. topic
 #: data/core/help.cfg:207
 msgid "Shroud and Fog of War"
 msgstr "Örtü ve Savaş Dumanı"
 
+#. topic
 #: data/core/help.cfg:210
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -807,10 +928,12 @@ msgstr ""
 "güncelle’ şıkkını seçene kadar hareketin geri alınabilir kalmasını "
 "sağlayabilirsiniz."
 
+#. topic
 #: data/core/help.cfg:215
 msgid "Combat"
 msgstr "Çarpışma"
 
+#. topic
 #: data/core/help.cfg:216
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
@@ -832,6 +955,7 @@ msgstr ""
 "vardır: genellikle kılıç, balta ve pençe gibi silahları kapsayan yakın döğüş "
 "ve genellikle ok, mızrak ve ateş topu gibi silahları kapsayan menzilli."
 
+#. topic
 #: data/core/help.cfg:218
 msgid ""
 "\n"
@@ -842,6 +966,7 @@ msgstr ""
 "\n"
 "<header>text='Vuruşların sırası ve sayısı'</header>"
 
+#. topic
 #: data/core/help.cfg:220
 msgid ""
 "\n"
@@ -863,6 +988,7 @@ msgstr ""
 "bir ork izbandudu sadece 2 yumruk sallayabilir (ama her ikisi de 9 hasar "
 "gücünde)."
 
+#. topic
 #: data/core/help.cfg:222
 msgid ""
 "\n"
@@ -873,6 +999,7 @@ msgstr ""
 "\n"
 "<header>text='İsabet şansı'</header>"
 
+#. topic
 #: data/core/help.cfg:224
 msgid ""
 "\n"
@@ -895,6 +1022,7 @@ msgstr ""
 "sahip olması demektir. Diğer yandan, bu elf’in saldırana isabet kaydetme "
 "oranı da saldıranın bulunduğu araziyle alakalıdır."
 
+#. topic
 #: data/core/help.cfg:226
 msgid ""
 "\n"
@@ -914,6 +1042,7 @@ msgstr ""
 "kullanıldığı takdirde araziye aldırmadan her zaman %60 isabet şansına "
 "sahiptirler."
 
+#. topic
 #: data/core/help.cfg:228
 msgid ""
 "\n"
@@ -924,6 +1053,7 @@ msgstr ""
 "\n"
 "<header>text=Hasar</header>"
 
+#. topic
 #: data/core/help.cfg:230
 msgid ""
 "\n"
@@ -945,6 +1075,7 @@ msgstr ""
 "Temel hasarın duruma göre nasıl değiştiğini görmek için, saldırı seçme "
 "menüsünden <italic>text='Hasar Hesaplamaları'</italic>nı seçiniz."
 
+#. topic
 #: data/core/help.cfg:232
 msgid ""
 "\n"
@@ -961,10 +1092,12 @@ msgstr ""
 "saldıran hem de savunan tarafların verdiği hasarı ikiye katlayan "
 "<ref>dst=weaponspecial_charge text=yükleme</ref>dir."
 
+#. topic
 #: data/core/help.cfg:237
 msgid "Damage Types and Resistance"
 msgstr "Hasar Türleri ve Direnç"
 
+#. topic
 #: data/core/help.cfg:238
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -979,6 +1112,7 @@ msgstr ""
 "aldıkları hasarın miktarı, birimin o hasar türüne direncine bağlı olarak "
 "farklı olabilir."
 
+#. topic
 #: data/core/help.cfg:240
 msgid ""
 "\n"
@@ -997,6 +1131,7 @@ msgstr ""
 "bir hasar türüne -%100 direnci varsa, o zaman bu hasar türüyle vurulduğu "
 "zaman %100 daha fazla hasar alır."
 
+#. topic
 #: data/core/help.cfg:242
 msgid ""
 "\n"
@@ -1011,6 +1146,7 @@ msgstr ""
 "karşın darbe ve ateşe karşı zayıf, gizemli saldırılara karşı ise epeyce "
 "zayıftırlar."
 
+#. topic
 #: data/core/help.cfg:244
 msgid ""
 "\n"
@@ -1024,10 +1160,12 @@ msgstr ""
 "Eğer bir vuruş isabet ederse her zaman en az 1 hasar puanı eksiltir. Bu "
 "karşı tarafın o hasar türüne %100 direnci olsa da geçerlidir."
 
+#. topic
 #: data/core/help.cfg:249
 msgid "Time of Day"
 msgstr "Günün saati"
 
+#. topic
 #: data/core/help.cfg:253
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -1040,6 +1178,7 @@ msgstr ""
 " · Kaotik birimler gündüz -%25, gece +%25 hasar alırlar.\n"
 " · Tarafsız birimler günün saatinden etkilenmezler."
 
+#. topic
 #: data/core/help.cfg:256
 msgid ""
 "\n"
@@ -1054,30 +1193,43 @@ msgstr ""
 "gündüz dönüşümü için, sabah ve öğle gündüz; gece ve sabaha karşı ise gece "
 "sayılır.\n"
 
+#. time
+#. topic
 #: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "Şafak"
 
+#. time
+#. topic
 #: data/core/help.cfg:257 data/core/macros/schedules.cfg:21
 msgid "Morning"
 msgstr "Sabah"
 
+#. time
+#. topic
 #: data/core/help.cfg:258 data/core/macros/schedules.cfg:32
 msgid "Afternoon"
 msgstr "Öğle"
 
+#. time
+#. topic
 #: data/core/help.cfg:259 data/core/macros/schedules.cfg:43
 msgid "Dusk"
 msgstr "Akşam"
 
+#. time
+#. topic
 #: data/core/help.cfg:260 data/core/macros/schedules.cfg:57
 msgid "First Watch"
 msgstr "Gece"
 
+#. time
+#. topic
 #: data/core/help.cfg:261 data/core/macros/schedules.cfg:71
 msgid "Second Watch"
 msgstr "Sabaha karşı"
 
+#. topic
 #: data/core/help.cfg:263
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
@@ -1086,10 +1238,12 @@ msgstr ""
 "Bazı senaryoların daima vaktin gece olarak kabul edildiği yeraltında geçtiği "
 "aklınızda bulunsun!"
 
+#. topic
 #: data/core/help.cfg:268
 msgid "Experience and Advancement"
 msgstr "Tecrübe ve Terfi"
 
+#. topic
 #: data/core/help.cfg:269
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
@@ -1102,6 +1256,7 @@ msgstr ""
 "fazla tecrübe kazanır - seviye 0 için 4, seviye 1 için 8, seviye 2 için 16, "
 "seviye 3 için 24 ve böyle devam eder."
 
+#. topic
 #: data/core/help.cfg:271
 msgid ""
 "\n"
@@ -1118,6 +1273,7 @@ msgstr ""
 "hemen bir üst seviyeye terfi ederler, bu işlem sırasında tamamen "
 "iyileşirler. Bazı durumlarda, üst seviyeye erişmek seçeneklidir."
 
+#. topic
 #: data/core/help.cfg:273
 msgid ""
 "\n"
@@ -1145,10 +1301,12 @@ msgstr ""
 "için bu 120 TP’dir). Ama SSST kazanmak giderek zorlaşır ve bu yüzden alt "
 "seviye birimleri bir üst seviye çıkarmak için uğraşmak daha faydalıdır."
 
+#. topic
 #: data/core/help.cfg:278
 msgid "Healing"
 msgstr "Tedavi"
 
+#. topic
 #: data/core/help.cfg:279
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -1163,6 +1321,7 @@ msgstr ""
 "gerçekleşir. Wesnoth birimlerini iyileştirmek için daha bir çok yol sunar, "
 "hepsi de elin başında bir eylem yapmanıza gerek kalmadan gerçekleşir."
 
+#. topic
 #: data/core/help.cfg:281
 msgid ""
 "\n"
@@ -1175,6 +1334,7 @@ msgstr ""
 "<bold>text=Dinlenme:</bold> Hareket etmeyen, saldırmayan ve aynı zamanda "
 "saldırılmayan bir birim bir sonraki elde 2YP iyileşir."
 
+#. topic
 #: data/core/help.cfg:282
 msgid ""
 "\n"
@@ -1183,6 +1343,7 @@ msgstr ""
 "\n"
 "<bold>text=Köyler:</bold> Bir köyde tura başlayan birim 8 YP tedavi olur."
 
+#. topic
 #: data/core/help.cfg:283
 msgid ""
 "\n"
@@ -1193,6 +1354,7 @@ msgstr ""
 "<bold>text=İyileşme</bold>: Bazı birimler (troller gibi) her el "
 "kendiliğinden 8 YP tedavi olurlar."
 
+#. topic
 #: data/core/help.cfg:284
 msgid ""
 "\n"
@@ -1206,6 +1368,7 @@ msgstr ""
 "birimleri, genellikle el başına 4 veya 8 YP kadar tedavi eder veya zehirin "
 "hasar vermesini önlerler."
 
+#. topic
 #: data/core/help.cfg:285
 msgid ""
 "\n"
@@ -1219,6 +1382,7 @@ msgstr ""
 "zehrin etkisini giderirler (eğer birim aynı zamanda iyileştirme özelliğine "
 "de sahipse zehirli birim için İlaç tercih edilir)."
 
+#. topic
 #: data/core/help.cfg:287
 msgid ""
 "\n"
@@ -1233,10 +1397,12 @@ msgstr ""
 "tedavi ve ilaç verme bir arada uygulanamaz, en iyi seçenek uygulanır. Ayrıca "
 "birimler senaryolar arasında tamamen iyileşir."
 
+#. topic
 #: data/core/help.cfg:292
 msgid "Income and Upkeep"
 msgstr "Gelir ve Gider"
 
+#. topic
 #: data/core/help.cfg:293
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1249,6 +1415,7 @@ msgstr ""
 "artan para bir sonraki senaryoya aktarılır. Bu işin iki yönü vardır; Gelir "
 "ve Gider."
 
+#. topic
 #: data/core/help.cfg:295
 msgid ""
 "\n"
@@ -1265,6 +1432,7 @@ msgstr ""
 "kasabanız varsa normalde 12 altın kazanırsınız. Aşağıda açıklandığı üzere "
 "gideriniz bu gelirden çıkartılır."
 
+#. topic
 #: data/core/help.cfg:297
 msgid ""
 "\n"
@@ -1285,6 +1453,7 @@ msgstr ""
 "eğer oniki adet birinci seviyeden biriminiz ve on adet kasabanız var ise, "
 "bakım masrafı olarak her el iki altın hesabınızdan düşürülür."
 
+#. topic
 #: data/core/help.cfg:299
 msgid ""
 "\n"
@@ -1298,6 +1467,7 @@ msgstr ""
 "Giderler gelirinizden çıkarılır, böylece 12 seviye biriminiz ve 10 kasabanız "
 "var ise sonuçta geliriniz her el için 10 altın olacaktır."
 
+#. topic
 #: data/core/help.cfg:300
 msgid ""
 "\n"
@@ -1317,10 +1487,12 @@ msgstr ""
 "sadık mizaçlıdır. Oyunda sizi temsil eden birim (Konrad gibi) hemen hemen "
 "daima bir lider olacaktır."
 
+#. topic
 #: data/core/help.cfg:305
 msgid "Wrap Up"
 msgstr "Konuyu toparlama"
 
+#. topic
 #: data/core/help.cfg:306
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1335,14 +1507,17 @@ msgstr ""
 "ama şimdi Tahtın Varisi senaryosunu oynayabilecek her şeyi biliyorsunuz. İyi "
 "eğlenceler ve iyi şanslar!"
 
+#. topic
 #: data/core/help.cfg:311
 msgid "ingame_help_item^Contributors"
 msgstr "Teşekkür"
 
+#. topic
 #: data/core/help.cfg:317
 msgid "License"
 msgstr "Lisans"
 
+#. topic
 #: data/core/help.cfg:325
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
@@ -1355,6 +1530,7 @@ msgstr ""
 "birimin özelliklerini biraz değiştirirler. Bunlar genellikle rastgele olarak "
 "bir birim askere alınırken verilirler."
 
+#. topic
 #: data/core/help.cfg:327
 msgid ""
 "\n"
@@ -1371,6 +1547,7 @@ msgstr ""
 "<ref>dst=traits_strong text=Güçlü</ref> mizaçları Yarı ölü olmayan tüm "
 "birimlerce kullanılabilir."
 
+#. topic
 #: data/core/help.cfg:331
 msgid ""
 "\n"
@@ -1387,15 +1564,18 @@ msgstr ""
 "<ref>dst=traits_dextrous text=Maharetli</ref>dir.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:336
 msgid "Intelligent"
 msgstr "Zeki"
 
+#. topic
 #: data/core/help.cfg:337
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Zeki birimlerin seviye atlaması normalden %20 daha az tecrübe gerektirir."
 
+#. topic
 #: data/core/help.cfg:339
 msgid ""
 "\n"
@@ -1415,16 +1595,19 @@ msgstr ""
 "seviye’ birimine sahipseniz, işinize en çok yarayacak mizaca sahip olanları "
 "çağırmayı düşünebilirsiniz."
 
+#. topic
 #: data/core/help.cfg:344
 msgid "Quick"
 msgstr "Hızlı"
 
+#. topic
 #: data/core/help.cfg:345
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Hızlı birimlerin normalden 1 fazla hareket puanına karşın %10 daha az yaşam "
 "puanı olur."
 
+#. topic
 #: data/core/help.cfg:347
 msgid ""
 "\n"
@@ -1445,16 +1628,19 @@ msgstr ""
 "birimler kadar sağlam değillerdir ve bu yüzden karşı koyma durumlarında iyi "
 "değillerdir."
 
+#. topic
 #: data/core/help.cfg:352
 msgid "Resilient"
 msgstr "Dayanıklı"
 
+#. topic
 #: data/core/help.cfg:353
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Dayanıklı birimlerin normalden +4 yaşam puanına ek olarak her seviye için +1 "
 "yaşam puanı vardır."
 
+#. topic
 #: data/core/help.cfg:355
 msgid ""
 "\n"
@@ -1472,10 +1658,12 @@ msgstr ""
 "savunma ve yüksek dirençliliğe sahip bir birim için çok faydalıdır. "
 "Dayanıklı birimler stratejik noktaları tutmak için idealdirler."
 
+#. topic
 #: data/core/help.cfg:360
 msgid "Strong"
 msgstr "Güçlü"
 
+#. topic
 #: data/core/help.cfg:361
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
@@ -1484,6 +1672,7 @@ msgstr ""
 "Güçlü birimler yakın döğüşte vuruş başına 1 fazla hasar verirler ve "
 "kendilerinin 1 fazla YP’leri vardır."
 
+#. topic
 #: data/core/help.cfg:363
 msgid ""
 "\n"
@@ -1500,18 +1689,22 @@ msgstr ""
 "birimler bir birimi öldürmek için verilebilecek olandan biraz fazla hasar "
 "gerektiği zaman çok faydalıdırlar."
 
+#. topic
 #: data/core/help.cfg:368
 msgid "Fearless"
 msgstr "Korkusuz"
 
+#. topic
 #: data/core/help.cfg:369
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Aydınlığın ve karanlığın bu cesur birimler üzerinde bir etkisi olmaz."
 
+#. topic
 #: data/core/help.cfg:374
 msgid "Loyal"
 msgstr "Sadık"
 
+#. topic
 #: data/core/help.cfg:375
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
@@ -1521,6 +1714,7 @@ msgstr ""
 "Sadık birimlerin gideri yoktur. Çoğu birim el sonunda seviyelerine eşit bir "
 "gidere yol açar. Sadık birimler bu gidere yol açmazlar."
 
+#. topic
 #: data/core/help.cfg:377
 msgid ""
 "\n"
@@ -1541,10 +1735,12 @@ msgstr ""
 "biçilmez yapar. Bu mizaç asla askere alınan birimlere verilmez, bu yüzden "
 "onları aptalca bir ölüme göndermek veya azletmek akıllıca bir iş değildir."
 
+#. topic
 #: data/core/help.cfg:382
 msgid "trait^Undead"
 msgstr "Yarı Ölü"
 
+#. topic
 #: data/core/help.cfg:383
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
@@ -1553,6 +1749,7 @@ msgstr ""
 "Yarı ölü birimler zehire bağışık olmaktan başka veba ve sömürüye konu "
 "olmazlar."
 
+#. topic
 #: data/core/help.cfg:385
 msgid ""
 "\n"
@@ -1569,10 +1766,12 @@ msgstr ""
 "zehir onlara karşı bir etki yapmaz. Bu onları zehirli saldırı yapan "
 "düşmanlarla savaşırken paha biçilmez yapar."
 
+#. topic
 #: data/core/help.cfg:390
 msgid "trait^Mechanical"
 msgstr "Mekanik"
 
+#. topic
 #: data/core/help.cfg:391
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
@@ -1581,6 +1780,7 @@ msgstr ""
 "Mekanik birimler zehire bağışık olmaktan başka veba ve sömürüye konu "
 "olmazlar."
 
+#. topic
 #: data/core/help.cfg:393
 msgid ""
 "\n"
@@ -1594,10 +1794,12 @@ msgstr ""
 "Mekanik birimlerin tek yeteneği ‘Mekanik’ olmaktır. Mekanik birimler yaşayan "
 "birimler olmadıklarından sömürü, zehir ve vebaya konu olmazlar."
 
+#. topic
 #: data/core/help.cfg:398
 msgid "Dextrous"
 msgstr "Becerikli"
 
+#. topic
 #: data/core/help.cfg:399
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
@@ -1605,6 +1807,7 @@ msgstr ""
 "Becerikli birimler menzilli döğüşte her isabet eden atışta 1 fazla hasar "
 "verirler."
 
+#. topic
 #: data/core/help.cfg:401
 msgid ""
 "\n"
@@ -1621,10 +1824,12 @@ msgstr ""
 "aşan doğal bir yeteneğe sahiptir. Bu elfler her bir ok ile ek bir hasara "
 "sebebiyet verirler."
 
+#. topic
 #: data/core/help.cfg:406
 msgid "Healthy"
 msgstr "Sağlıklı"
 
+#. topic
 #: data/core/help.cfg:407
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
@@ -1633,6 +1838,7 @@ msgstr ""
 "Dayanıklılıkları ile tanınan cücelerin bazıları diğerlerinden daha sağlam "
 "bünyeli olup yolculuk ederken bile dinlenebilirler."
 
+#. topic
 #: data/core/help.cfg:409
 msgid ""
 "\n"
@@ -1645,6 +1851,7 @@ msgstr ""
 "Sağlıklı birimler normalden 2 fazla YP’ye sahip olup döğüşmedikleri takdirde "
 "ek olarak 2 YP dinlenirler."
 
+#. topic
 #: data/core/help.cfg:417
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
@@ -1655,10 +1862,12 @@ msgstr ""
 "dirençlerini etkileyen farklı arazi türlerinden oluşur.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:423
 msgid "Grassland"
 msgstr "Çayırlık"
 
+#. topic
 #: data/core/help.cfg:428
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
@@ -1676,10 +1885,12 @@ msgstr ""
 "\n"
 "Çayırda bir çok birim %30 ila %40 savunmaya sahiptir."
 
+#. topic
 #: data/core/help.cfg:433
 msgid "Road"
 msgstr "Yol"
 
+#. topic
 #: data/core/help.cfg:436
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1689,10 +1900,12 @@ msgstr ""
 "Yollar üzerinden geçen yolcular tarafından oluşturulmuş patikalardır. Oyun "
 "içinde, yollar <ref>dst=terrain_grassland text=çayır</ref>a denktir."
 
+#. topic
 #: data/core/help.cfg:441
 msgid "Forest"
 msgstr "Orman"
 
+#. topic
 #: data/core/help.cfg:448
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1725,10 +1938,12 @@ msgstr ""
 "sahiptirler.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:453
 msgid "Hills"
 msgstr "Tepeler"
 
+#. topic
 #: data/core/help.cfg:458
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
@@ -1750,10 +1965,12 @@ msgstr ""
 "Bir çok birim tepelerde %50 savunmaya sahiptir ama süvari %40 ile "
 "sınırlanmıştır. Cüceler tepelerdeki %60 savunmanın tadını çıkarırlar."
 
+#. topic
 #: data/core/help.cfg:463
 msgid "Mountains"
 msgstr "Dağlar"
 
+#. topic
 #: data/core/help.cfg:468
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
@@ -1776,10 +1993,12 @@ msgstr ""
 "Bir çok birim dağlarda %60 savunmaya sahiptir, bununla beraber cüceler %70’e "
 "sahip olurlar."
 
+#. topic
 #: data/core/help.cfg:473
 msgid "Swamp"
 msgstr "Bataklık"
 
+#. topic
 #: data/core/help.cfg:478
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
@@ -1800,10 +2019,12 @@ msgstr ""
 "Bir çok birim bataklıkta %30 savunma yapabilirler. Su adamı, naga ve "
 "sürüngenlerin hepsi genellikle %60’a sahip olurlar."
 
+#. topic
 #: data/core/help.cfg:483
 msgid "Shallow Water"
 msgstr "Sığ Su"
 
+#. topic
 #: data/core/help.cfg:488
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
@@ -1826,10 +2047,12 @@ msgstr ""
 "Bir çok birim sığ sularda %20 ila %30 arası savunma yapabilirler, ama naga "
 "ve su adamları %60’a sahip olurlar."
 
+#. topic
 #: data/core/help.cfg:493
 msgid "Deep Water"
 msgstr "Derin Su"
 
+#. topic
 #: data/core/help.cfg:498
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
@@ -1843,10 +2066,12 @@ msgstr ""
 "\n"
 "Naga ve su adamlarının derin suda %50 savunması ve tam hızı olur."
 
+#. topic
 #: data/core/help.cfg:503
 msgid "Snow"
 msgstr "Kar"
 
+#. topic
 #: data/core/help.cfg:508
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
@@ -1861,10 +2086,12 @@ msgstr ""
 "\n"
 "Bir çok birim karda %20 ila %40 savunmaya sahiptir."
 
+#. topic
 #: data/core/help.cfg:513
 msgid "Ice"
 msgstr "Buz"
 
+#. topic
 #: data/core/help.cfg:516
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
@@ -1875,10 +2102,12 @@ msgstr ""
 "text=tundra</ref>’ya denktir. Yüzebilen birimler her ne kadar su altında "
 "nefes alabilseler de, buz altında yüzemezler."
 
+#. topic
 #: data/core/help.cfg:521
 msgid "Castle"
 msgstr "Kale"
 
+#. topic
 #: data/core/help.cfg:528
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -1901,10 +2130,12 @@ msgstr ""
 "Bir çok birim kalede %60 savunmaya sahiptir.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:533
 msgid "Sand"
 msgstr "Kum"
 
+#. topic
 #: data/core/help.cfg:538
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
@@ -1919,10 +2150,12 @@ msgstr ""
 "\n"
 "Bir çok birim kumda %20 ila %40 savunma yapabilir."
 
+#. topic
 #: data/core/help.cfg:543
 msgid "Desert"
 msgstr "Çöl"
 
+#. topic
 #: data/core/help.cfg:546
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -1932,10 +2165,12 @@ msgstr ""
 "Çöl aslında ince kumlardan ve kumsaldan farklı olmasına rağmen oyunda aynı "
 "değerdedir. <ref>dst=terrain_sand text=Kum</ref>’a bakınız."
 
+#. topic
 #: data/core/help.cfg:551
 msgid "Cave"
 msgstr "Mağara"
 
+#. topic
 #: data/core/help.cfg:556
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -1957,10 +2192,12 @@ msgstr ""
 "\n"
 "Bir çok birimin mağarada %20 ila 40% savunması varken cücelerin %50 vardır."
 
+#. topic
 #: data/core/help.cfg:561
 msgid "Rockbound Cave"
 msgstr "Taşlık Mağara"
 
+#. topic
 #: data/core/help.cfg:566
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -1984,10 +2221,12 @@ msgstr ""
 "Taşlık mağaralarda çoğu birimin %50 savunması olur, atlılar ise %40’ta "
 "kalırlar. Cüceler kayalık mağarada %60 savunmanın tadını çıkarırlar."
 
+#. topic
 #: data/core/help.cfg:571
 msgid "Illuminated Cave"
 msgstr "Aydınlık Mağara"
 
+#. topic
 #: data/core/help.cfg:574
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2000,10 +2239,12 @@ msgstr ""
 "saldırı ödülü siler. Tüm diğerleri için bu bölgeler normal mağara "
 "zeminlerinden farklı değildir."
 
+#. topic
 #: data/core/help.cfg:579
 msgid "Mushroom Grove"
 msgstr "Mantar Korusu"
 
+#. topic
 #: data/core/help.cfg:584
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -2026,10 +2267,12 @@ msgstr ""
 "Çoğu birim mantar ormanında %50 ila %60 savunma alır, süvariler ise sadece %"
 "20."
 
+#. topic
 #: data/core/help.cfg:589
 msgid "Savanna"
 msgstr "Bozkır"
 
+#. topic
 #: data/core/help.cfg:592
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
@@ -2039,10 +2282,13 @@ msgstr ""
 "Bozkırlar dünyanın sıcak bölgelerinde bulunan uzun çalılık bölgeleridir. Bu "
 "oyunda <ref>dst=terrain_grassland text=çayır</ref>’a denktirler."
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. topic
 #: data/core/help.cfg:597 src/terrain.cpp:135
 msgid "Village"
 msgstr "Köy"
 
+#. topic
 #: data/core/help.cfg:604
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -2066,10 +2312,12 @@ msgstr ""
 "kalır.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:609
 msgid "Submerged Village"
 msgstr "Sualtı Köyü"
 
+#. topic
 #: data/core/help.cfg:614
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
@@ -2091,10 +2339,12 @@ msgstr ""
 "Su insanları ve Nagalar sualtı köylerinde %60 savunmaya sahipken toprakta "
 "yaşayan birimlerin savunmaları daha azdır."
 
+#. topic
 #: data/core/help.cfg:619
 msgid "Chasm"
 msgstr "Kanyon"
 
+#. topic
 #: data/core/help.cfg:622
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
@@ -2106,10 +2356,12 @@ msgstr ""
 "etmesi günler alan dimdik duvarları ile dikkati çekerler. Oyunda sadece "
 "üzerlerinden uçabilen birimler bu araziden geçebilir."
 
+#. topic
 #: data/core/help.cfg:627
 msgid "Lava"
 msgstr "Lav"
 
+#. topic
 #: data/core/help.cfg:630
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
@@ -2124,10 +2376,12 @@ msgstr ""
 "aydınlatır. Bu aydınlatma adaletli birimlere bir saldırı ödülü oluşturken "
 "kaotik birimlerden de saldırı ödülünü kaldırır."
 
+#. topic
 #: data/core/help.cfg:635
 msgid "River Ford"
 msgstr "Sığ Geçit"
 
+#. topic
 #: data/core/help.cfg:638
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
@@ -2143,10 +2397,12 @@ msgstr ""
 "çayır ya da sığ su yerine geçer, üzerindeki birim için hangisi daha iyi "
 "hareket ve saldırı ödülüne sahipse o zemine denk kabul edilir."
 
+#. topic
 #: data/core/help.cfg:643
 msgid "Bridge"
 msgstr "Köprü"
 
+#. topic
 #: data/core/help.cfg:648
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2171,10 +2427,12 @@ msgstr ""
 "ve savunma bonuslarını sunuyor ise o olarak kabul edilir. Yüzen bir birim "
 "ile bir kara biriminin aynı anda bir köprü altıgeninde duramayacağını unutma."
 
+#. topic
 #: data/core/help.cfg:653
 msgid "Cave Wall"
 msgstr "Mağara Duvarı"
 
+#. topic
 #: data/core/help.cfg:656
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
@@ -2183,10 +2441,12 @@ msgstr ""
 "Mağara duvarları katı taştan yapılmıştır, en kararlı yolcuya bile mani "
 "olabilmesiyle ünlüdür."
 
+#. topic
 #: data/core/help.cfg:661
 msgid "Impassable Mountain"
 msgstr "Aşılmaz Dağ"
 
+#. topic
 #: data/core/help.cfg:664
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
@@ -2197,10 +2457,12 @@ msgstr ""
 "aşmak pratik olarak mümkün değildir. Uçan birimler bile böylesi yüksek sivri "
 "tepelerde dolaşamazlar."
 
+#. topic
 #: data/core/help.cfg:675
 msgid "General commands"
 msgstr "Genel Komutlar"
 
+#. topic
 #: data/core/help.cfg:679
 msgid ""
 "\n"
@@ -2211,6 +2473,7 @@ msgstr ""
 "Sohbet iletilerini temizler.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:683
 msgid ""
 "\n"
@@ -2225,6 +2488,7 @@ msgstr ""
 " Oyundan çıkınca hata ayıklama kipi kapanır.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:686
 #, fuzzy
 msgid ""
@@ -2244,6 +2508,7 @@ msgstr ""
 "belirtilmezse o an etkin olan taraf öntanımlıdır.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:689
 msgid ""
 "\n"
@@ -2255,6 +2520,7 @@ msgstr ""
 "kapar.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:692
 msgid ""
 "\n"
@@ -2265,6 +2531,7 @@ msgstr ""
 "Bir günlük kayıt alanının günlük kayıt seviyesini değiştirir.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:695
 msgid ""
 "\n"
@@ -2275,6 +2542,7 @@ msgstr ""
 "Ekran yenilenir.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:698
 msgid ""
 "\n"
@@ -2285,6 +2553,7 @@ msgstr ""
 "Tema seçme menüsünü getirir.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:701
 msgid ""
 "\n"
@@ -2295,6 +2564,7 @@ msgstr ""
 "Senaryodan çıkılır (sormaksızın).\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:704
 msgid ""
 "\n"
@@ -2305,6 +2575,7 @@ msgstr ""
 "Oyun kaydedilir (sormaksızın).\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:705
 msgid ""
 "\n"
@@ -2313,10 +2584,12 @@ msgstr ""
 "\n"
 "Oyunu kayıt et ve senaryodan çık (sormaksızın)."
 
+#. topic
 #: data/core/help.cfg:710
 msgid "Multiplayer commands"
 msgstr "Çokoyuncu komutları"
 
+#. topic
 #: data/core/help.cfg:714
 msgid ""
 "\n"
@@ -2329,6 +2602,7 @@ msgstr ""
 "koyar.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:717
 msgid ""
 "\n"
@@ -2345,6 +2619,7 @@ msgstr ""
 "veya alt+s ile).\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:720
 msgid ""
 "\n"
@@ -2359,6 +2634,7 @@ msgstr ""
 "kaldırmak için nazik bir yoldur.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:723
 msgid ""
 "\n"
@@ -2371,6 +2647,7 @@ msgstr ""
 "sessizleştirilmiş kullanıcılar listelenir.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:724
 msgid ""
 "\n"
@@ -2379,10 +2656,12 @@ msgstr ""
 "\n"
 "Tüm izleyicileri sessizleştirmeyi açar/kapar."
 
+#. topic
 #: data/core/help.cfg:729
 msgid "Debug mode commands"
 msgstr "Hata Ayıklama Kipi Komutları"
 
+#. topic
 #: data/core/help.cfg:733
 msgid ""
 "\n"
@@ -2393,6 +2672,7 @@ msgstr ""
 "Seçili altıgende belirtilen türde bir birim oluşturur.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:736
 msgid ""
 "\n"
@@ -2403,6 +2683,7 @@ msgstr ""
 "Geçerli taraf için örtü/savaş dumanını açıp kapar.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:739
 msgid ""
 "\n"
@@ -2413,6 +2694,7 @@ msgstr ""
 "Geçerli tarafın altınına belirtilen miktarı ekler.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:742
 msgid ""
 "\n"
@@ -2423,6 +2705,7 @@ msgstr ""
 "Bir oyun durum değişkenine elle değer atar.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:745
 msgid ""
 "\n"
@@ -2433,6 +2716,7 @@ msgstr ""
 "Bir oyun durum değişkeninin değerini gösterir.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:748
 msgid ""
 "\n"
@@ -2443,6 +2727,7 @@ msgstr ""
 "Belirtilen olayın tetiklenmesine sebep olur.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:749
 msgid ""
 "\n"
@@ -2453,10 +2738,12 @@ msgstr ""
 "Seçili birimin belirtilen özelliğini değiştirir. Örnek: <bold>text=':unit "
 "hitpoins=100'</bold>"
 
+#. heals
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "tedavi +4"
 
+#. heals
 #: data/core/macros/abilities.cfg:15
 msgid ""
 "Heals +4:\n"
@@ -2477,10 +2764,12 @@ msgstr ""
 "Zehirlenmiş bir birim tedaviciden panzehir alamaz, bu iş için bir köy ya da "
 "ilaç verebilen bir birim aramalıdır."
 
+#. heals
 #: data/core/macros/abilities.cfg:29
 msgid "heals +8"
 msgstr "tedavi +8"
 
+#. heals
 #: data/core/macros/abilities.cfg:34
 msgid ""
 "Heals +8:\n"
@@ -2501,10 +2790,12 @@ msgstr ""
 "Zehirlenmiş bir birim tedaviciden ilaç alamaz, bu iş için bir köy ya da ilaç "
 "verebilen bir birim aramalıdır."
 
+#. heals
 #: data/core/macros/abilities.cfg:49
 msgid "cures"
 msgstr "ilaç verir"
 
+#. heals
 #: data/core/macros/abilities.cfg:51
 msgid ""
 "Cures:\n"
@@ -2515,10 +2806,12 @@ msgstr ""
 "Bir ilaç veren birim, zehirlenmiş bir birimin zehrini tedavi eder ama zehri "
 "giderilmiş bir birim o el için fazladan tedavi puanı alamaz."
 
+#. regenerate
 #: data/core/macros/abilities.cfg:73
 msgid "regenerates"
 msgstr "iyileşir"
 
+#. regenerate
 #: data/core/macros/abilities.cfg:75
 msgid ""
 "Regenerates:\n"
@@ -2529,10 +2822,12 @@ msgstr ""
 "Bu birim her sırada 8 YP’ye kadar iyileşir. Eğer zehirlenmiş ise, o el "
 "iyileşme yerine sadece zehri giderilir."
 
+#. resistance
 #: data/core/macros/abilities.cfg:92
 msgid "steadfast"
 msgstr "sarsılmaz"
 
+#. resistance
 #: data/core/macros/abilities.cfg:94
 msgid ""
 "Steadfast:\n"
@@ -2543,12 +2838,14 @@ msgstr ""
 "Bu birim savunma yaptığı zaman dirençleri %50’yi geçmemek üzere iki katına "
 "çıkar. Zaaflar bundan etkilenmez."
 
+#. leadership
 #: data/core/macros/abilities.cfg:107 data/core/macros/abilities.cfg:129
 #: data/core/macros/abilities.cfg:163 data/core/macros/abilities.cfg:209
 #: data/core/macros/abilities.cfg:267
 msgid "leadership"
 msgstr "liderlik"
 
+#. leadership
 #: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
 #: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
 #: data/core/macros/abilities.cfg:271
@@ -2569,10 +2866,12 @@ msgstr ""
 "birim yakınında olduğu zaman, savaşta o birimin, lider ile arasındaki seviye "
 "farkı çarpı %25 kadar daha fazla hasar yapar."
 
+#. skirmisher
 #: data/core/macros/abilities.cfg:335
 msgid "skirmisher"
 msgstr "avcı"
 
+#. skirmisher
 #: data/core/macros/abilities.cfg:337
 msgid ""
 "Skirmisher:\n"
@@ -2583,10 +2882,12 @@ msgstr ""
 "Bu birim düşmanlarının bütün etki alanlarını yok sayarak hızlı bir biçimde "
 "düşmalarının yanından geçme yeteneğine sahiptir."
 
+#. illuminates
 #: data/core/macros/abilities.cfg:350
 msgid "illuminates"
 msgstr "aydınlatır"
 
+#. illuminates
 #: data/core/macros/abilities.cfg:354
 msgid ""
 "Illuminates:\n"
@@ -2603,10 +2904,12 @@ msgstr ""
 "Bu birimin yanındaki herhangi bir birim, gece alacakaranlık gibi, "
 "alacakaranlıkta ise gündüz gibi savaşır."
 
+#. teleport
 #: data/core/macros/abilities.cfg:364
 msgid "teleport"
 msgstr "ışınlanma"
 
+#. teleport
 #: data/core/macros/abilities.cfg:366
 #, fuzzy
 msgid ""
@@ -2618,10 +2921,12 @@ msgstr ""
 "Bu birim iki dost köy arasında ışınlanarak (sadece 1 HP kullanarak) hareket "
 "edebilir."
 
+#. hides
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
 msgstr "pusu"
 
+#. hides
 #: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:384
 msgid ""
 "Ambush:\n"
@@ -2638,10 +2943,12 @@ msgstr ""
 "ormanda göremez ve saldıramaz. Düşman birimin bu birimi farkettiği anda "
 "hareketi durur ve kalan hareket puanları sıfırlanır."
 
+#. hides
 #: data/core/macros/abilities.cfg:399 data/core/macros/abilities.cfg:404
 msgid "nightstalk"
 msgstr "karabasan"
 
+#. hides
 #: data/core/macros/abilities.cfg:403 data/core/macros/abilities.cfg:408
 msgid ""
 "Nightstalk:\n"
@@ -2658,10 +2965,12 @@ msgstr ""
 "geceleyin göremez ve saldıramaz. Düşman birimin bu birimi farkettiği anda "
 "hareketi durur ve kalan hareket puanları sıfırlanır."
 
+#. hides
 #: data/core/macros/abilities.cfg:423 data/core/macros/abilities.cfg:428
 msgid "concealment"
 msgstr "gizlenir"
 
+#. hides
 #: data/core/macros/abilities.cfg:427 data/core/macros/abilities.cfg:432
 msgid ""
 "Concealment:\n"
@@ -2680,10 +2989,12 @@ msgstr ""
 "köyde göremez ve saldıramaz. Düşman birimin bu birimi farkettiği anda "
 "hareketi durur ve kalan hareket puanları sıfırlanır."
 
+#. hides
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:452
 msgid "submerge"
 msgstr "dalış"
 
+#. hides
 #: data/core/macros/abilities.cfg:451 data/core/macros/abilities.cfg:456
 msgid ""
 "Submerge:\n"
@@ -2700,10 +3011,12 @@ msgstr ""
 "derin suda göremez ve saldıramaz. Düşman birimin bu birimi farkettiği anda "
 "hareketi durur ve kalan hareket puanları sıfırlanır."
 
+#. dummy
 #: data/core/macros/abilities.cfg:474
 msgid "feeding"
 msgstr "beslenme"
 
+#. dummy
 #: data/core/macros/abilities.cfg:476
 msgid ""
 "Feeding:\n"
@@ -2870,18 +3183,22 @@ msgstr ""
 "öldürülür hale gelir. Zehirlenmiş birim seçildiğinde durum çubuğundaki "
 "bilgilerinde yeşil bir kurukafa simgesi görünür."
 
+#. advancement
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Azami YP ödülü +3, Azami TP +%20"
 
+#. advancement
 #: data/core/macros/amla.cfg:30
 msgid ", MAX XP +25%"
 msgstr ", EN FAZLA TP +%25"
 
+#. advancement
 #: data/core/macros/amla.cfg:30
 msgid "Max HP bonus +"
 msgstr "En fazla YP ödülü +"
 
+#. message: speaker=narrator
 #: data/core/macros/items.cfg:41
 msgid ""
 "You have come across a wishing well.\n"
@@ -2890,10 +3207,12 @@ msgstr ""
 "Bir dilek nesnesiyle karşılaştınız.\n"
 "Ne dilemek istersiniz?"
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:45
 msgid "A swift victory"
 msgstr "Çabuk bir zafer"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:53
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
@@ -2902,50 +3221,62 @@ msgstr ""
 "Bu altın para ile, bu savaşın güvenli ve çabuk bir zaferle sonuçlanmasını "
 "diliyorum."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:60
 msgid "Lots of gold"
 msgstr "Bir kese altın"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:68
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Bu tek altın paranın bana on katıyla geri gelmesini diliyorum."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:75
 msgid "Peace throughout Wesnoth."
 msgstr "Wesnoth için barış."
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:83
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Dilemeye değer tek şey yurtta ve cihanda barıştır."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:90
 msgid "Don't make a wish."
 msgstr "Dilek dilemeyeceğim."
 
+#. object
 #: data/core/macros/items.cfg:121
 msgid "Potion of Healing"
 msgstr "Tedavi İksiri"
 
+#. object
 #: data/core/macros/items.cfg:124
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "İçenin kendini iyi hissetmesini sağlar."
 
+#. object
 #: data/core/macros/items.cfg:125
 msgid "You are not worthy of healing."
 msgstr "Sen iyileştirmeye değmezsin."
 
+#. object
 #: data/core/macros/items.cfg:159
 msgid "Poison"
 msgstr "Zehir"
 
+#. object
 #: data/core/macros/items.cfg:162
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Şu anda bu birimin damarlarına zehir sızıyor."
 
+#. object
 #: data/core/macros/items.cfg:197
 msgid "Holy Water"
 msgstr "Okunmuş Su"
 
+#. object
 #: data/core/macros/items.cfg:200
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
@@ -2954,67 +3285,83 @@ msgstr ""
 "Bu su, senaryo sonuna kadar birimin yakın döğüş silahlarının ‘gizemli’ hasar "
 "türüne sahip olmasını sağlar."
 
+#. object
 #: data/core/macros/items.cfg:201
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Ben bu öğeyi kullanmaya uygun değilim! Başkası alsın."
 
+#. object
 #: data/core/macros/items.cfg:236
 msgid "Potion of Strength"
 msgstr "Güç İksiri"
 
+#. object
 #: data/core/macros/items.cfg:239
 msgid "Strength is given to the drinker."
 msgstr "İçene güç verir."
 
+#. object
 #: data/core/macros/items.cfg:280
 msgid "Potion of Decay"
 msgstr "Çürüme İksiri"
 
+#. object
 #: data/core/macros/items.cfg:283
 msgid "This poor unit drank something really bad."
 msgstr "Bu zavallı birim cidden kötü bir şey içti."
 
+#. object
 #: data/core/macros/items.cfg:318
 msgid "Ring of Regeneration"
 msgstr "İyileşme Yüzüğü"
 
+#. object
 #: data/core/macros/items.cfg:321
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Bu yüzük taşıyanı her sırada biraz tedavi edecektir."
 
+#. object
 #: data/core/macros/items.cfg:358
 msgid "Ring of Slowness"
 msgstr "Yavaşlık Yüzüğü"
 
+#. object
 #: data/core/macros/items.cfg:361
 msgid "The bearer of this ring is slowed."
 msgstr "Bu yüzüğü taşıyan kişi yavaşlar."
 
+#. object
 #: data/core/macros/items.cfg:396
 msgid "Staff of Swiftness"
 msgstr "Çeviklik Asası"
 
+#. object
 #: data/core/macros/items.cfg:399
 msgid "This staff will grant the bearer swift movement."
 msgstr "Bu asa taşıyana çevikleşmiş hareket yeteneği sağlar."
 
+#. object
 #: data/core/macros/items.cfg:400
 msgid "Only magical beings can wield such an object."
 msgstr "Sadece büyücüler böyle bir nesneyi kullanabilir."
 
+#. object
 #: data/core/macros/items.cfg:434
 msgid "Storm Trident"
 msgstr "Yıldırım Çatalı"
 
+#. object
 #: data/core/macros/items.cfg:437
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Bu üç dişli zıpkın su adamına düşmanlarını yıldırımla çarpma imkanı verir!"
 
+#. object
 #: data/core/macros/items.cfg:438
 msgid "Only the mermen can use this item!"
 msgstr "Sadece su adamları bu öğeyi kullanabilir!"
 
+#. effect: type=fire
 #: data/core/macros/items.cfg:451
 msgid "storm trident"
 msgstr "yıldırım çatalı"
@@ -3453,6 +3800,8 @@ msgid ""
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
 
+#. time
+#. illuminated_time
 #: data/core/macros/schedules.cfg:102 data/core/macros/schedules.cfg:113
 msgid "Deep Underground"
 msgstr "Derin Yeraltı"
@@ -3672,164 +4021,204 @@ msgstr ""
 " Bu birimin zehrinin kurbanları bir köyde veya bir ilaç veren tarafından "
 "iyileştirilene kadar sürekli olarak zehirden hasar görecektir."
 
+#. trait
 #: data/core/macros/traits.cfg:9
 msgid "loyal"
 msgstr "sadık"
 
+#. trait
 #: data/core/macros/traits.cfg:10
 msgid "female^loyal"
 msgstr "sadık"
 
+#. trait
 #: data/core/macros/traits.cfg:11
 msgid "Zero upkeep"
 msgstr "Masrafsız"
 
+#. trait
 #: data/core/macros/traits.cfg:23
 msgid "undead"
 msgstr "yarı ölü"
 
+#. trait
 #: data/core/macros/traits.cfg:24
 msgid "female^undead"
 msgstr "yarı ölü"
 
+#. trait
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
 msgid "Immune to drain, poison and plague"
 msgstr "Zehire, vebaya ve sömürüye bağışık"
 
+#. trait
 #: data/core/macros/traits.cfg:38
 msgid "mechanical"
 msgstr "mekanik"
 
+#. trait
 #: data/core/macros/traits.cfg:39
 msgid "female^mechanical"
 msgstr "mekanik"
 
+#. trait
 #: data/core/macros/traits.cfg:52
 msgid "strong"
 msgstr "güçlü"
 
+#. trait
 #: data/core/macros/traits.cfg:53
 msgid "female^strong"
 msgstr "güçlü"
 
+#. trait
 #: data/core/macros/traits.cfg:70
 msgid "dextrous"
 msgstr "becerikli"
 
+#. trait
 #: data/core/macros/traits.cfg:71
 msgid "female^dextrous"
 msgstr "hamarat"
 
+#. trait
 #: data/core/macros/traits.cfg:84
 msgid "quick"
 msgstr "hızlı"
 
+#. trait
 #: data/core/macros/traits.cfg:85
 msgid "female^quick"
 msgstr "atik"
 
+#. trait
 #: data/core/macros/traits.cfg:101
 msgid "intelligent"
 msgstr "zeki"
 
+#. trait
 #: data/core/macros/traits.cfg:102
 msgid "female^intelligent"
 msgstr "akıllı"
 
+#. trait
 #: data/core/macros/traits.cfg:114
 msgid "resilient"
 msgstr "dayanıklı"
 
+#. trait
 #: data/core/macros/traits.cfg:115
 msgid "female^resilient"
 msgstr "dayanıklı"
 
+#. trait
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr "sağlıklı"
 
+#. trait
 #: data/core/macros/traits.cfg:133
 msgid "female^healthy"
 msgstr "sağlıklı"
 
+#. trait
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
 msgstr "Hareket ederken dinlenebilir"
 
+#. trait
 #: data/core/macros/traits.cfg:146 data/core/macros/traits.cfg:159
 msgid "fearless"
 msgstr "korkusuz"
 
+#. trait
 #: data/core/macros/traits.cfg:147 data/core/macros/traits.cfg:160
 msgid "female^fearless"
 msgstr "korkusuz"
 
+#. trait
 #: data/core/macros/traits.cfg:148 data/core/macros/traits.cfg:161
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 "Gündüz ve gecenin en berbat saatlerinden etkilenmeksizin normal olarak "
 "döğüşür"
 
+#. color_range
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
 msgstr "Kırmızı"
 
+#. color_range
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
 msgstr "Mavi"
 
+#. color_range
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
 msgstr "Yeşil"
 
+#. color_range
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
 msgstr "Mor"
 
+#. color_range
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
 msgstr "Turuncu"
 
+#. color_range
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 msgid "Black"
 msgstr "Siyah"
 
+#. color_range
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
 msgstr "Beyaz"
 
+#. color_range
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
 msgstr "Kahverengi"
 
+#. color_range
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
 msgstr "Koyu Turkuaz"
 
+#. race
 #: data/core/units.cfg:43
 msgid "race^Bat"
 msgstr "Yarasa"
 
+#. race
 #: data/core/units.cfg:44
 msgid "race+female^Bat"
 msgstr "Yarasa-dişi"
 
+#. race
 #: data/core/units.cfg:45
 msgid "race^Bats"
 msgstr "Yarasalar"
 
+#. race
 #: data/core/units.cfg:52
 msgid "race^Drake"
 msgstr "Ejderha"
 
+#. race
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
 msgstr "Ejderha-Dişi"
 
+#. race
 #: data/core/units.cfg:54
 msgid "race^Drakes"
 msgstr "Ejderhalar"
 
+#. race
 #: data/core/units.cfg:67
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
@@ -3896,18 +4285,22 @@ msgid ""
 "far north of the Great Continent."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
 msgstr "Cüce"
 
+#. race
 #: data/core/units.cfg:75
 msgid "race+female^Dwarf"
 msgstr "Cüce-Dişi"
 
+#. race
 #: data/core/units.cfg:76
 msgid "race^Dwarves"
 msgstr "Cüceler"
 
+#. race
 #: data/core/units.cfg:81
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
@@ -3959,18 +4352,22 @@ msgid ""
 "augment certain aspects of their natures."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:89
 msgid "race^Elf"
 msgstr "Elf"
 
+#. race
 #: data/core/units.cfg:90
 msgid "race+female^Elf"
 msgstr "Elf-Dişi"
 
+#. race
 #: data/core/units.cfg:91
 msgid "race^Elves"
 msgstr "Elfler"
 
+#. race
 #: data/core/units.cfg:94
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
@@ -4001,42 +4398,52 @@ msgid ""
 "undoubtedly having existed for over a millennium."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:103
 msgid "race^Goblin"
 msgstr "Goblin"
 
+#. race
 #: data/core/units.cfg:104
 msgid "race+female^Goblin"
 msgstr "Goblin-Dişi"
 
+#. race
 #: data/core/units.cfg:105
 msgid "race^Goblins"
 msgstr "Goblinler"
 
+#. race
 #: data/core/units.cfg:113
 msgid "race^Gryphon"
 msgstr "Grifin"
 
+#. race
 #: data/core/units.cfg:114
 msgid "race+female^Gryphon"
 msgstr "Grifin-Dişi"
 
+#. race
 #: data/core/units.cfg:115
 msgid "race^Gryphons"
 msgstr "Grifinler"
 
+#. race
 #: data/core/units.cfg:123
 msgid "race^Human"
 msgstr "İnsan"
 
+#. race
 #: data/core/units.cfg:124
 msgid "race+female^Human"
 msgstr "İnsan-Dişi"
 
+#. race
 #: data/core/units.cfg:125
 msgid "race^Humans"
 msgstr "İnsanlar"
 
+#. race
 #: data/core/units.cfg:132
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
@@ -4078,82 +4485,102 @@ msgid ""
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:139
 msgid "race^Saurian"
 msgstr "Sürüngen"
 
+#. race
 #: data/core/units.cfg:140
 msgid "race+female^Saurian"
 msgstr "Sürüngen-Dişi"
 
+#. race
 #: data/core/units.cfg:141
 msgid "race^Saurians"
 msgstr "Sürüngenler"
 
+#. race
 #: data/core/units.cfg:150
 msgid "race^Mechanical"
 msgstr "Mekanik"
 
+#. race
 #: data/core/units.cfg:151
 msgid "race+plural^Mechanical"
 msgstr "Mekanik"
 
+#. race
 #: data/core/units.cfg:161
 msgid "race^Merman"
 msgstr "Su Adamı"
 
+#. race
 #: data/core/units.cfg:162
 msgid "race^Mermaid"
 msgstr "Deniz Kızı"
 
+#. race
 #: data/core/units.cfg:163
 msgid "race^Mermen"
 msgstr "Su İnsanları"
 
+#. race
 #: data/core/units.cfg:171
 msgid "race^Monster"
 msgstr "Yaratık"
 
+#. race
 #: data/core/units.cfg:172
 msgid "race^Monsters"
 msgstr "Yaratıklar"
 
+#. race
 #: data/core/units.cfg:179
 msgid "race^Naga"
 msgstr "Naga"
 
+#. race
 #: data/core/units.cfg:180
 msgid "race^Nagani"
 msgstr "Naga-Dişi"
 
+#. race
 #: data/core/units.cfg:181
 msgid "race^Nagas"
 msgstr "Nagalar"
 
+#. race
 #: data/core/units.cfg:189
 msgid "race^Ogre"
 msgstr "Tepegöz"
 
+#. race
 #: data/core/units.cfg:190
 msgid "race+female^Ogre"
 msgstr "Tepegöz-Dişi"
 
+#. race
 #: data/core/units.cfg:191
 msgid "race^Ogres"
 msgstr "Tepegözler"
 
+#. race
 #: data/core/units.cfg:199
 msgid "race^Orc"
 msgstr "Ork"
 
+#. race
 #: data/core/units.cfg:200
 msgid "race+female^Orc"
 msgstr "Ork-Dişi"
 
+#. race
 #: data/core/units.cfg:201
 msgid "race^Orcs"
 msgstr "Orklar"
 
+#. race
 #: data/core/units.cfg:211
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
@@ -4213,18 +4640,22 @@ msgid ""
 "assassination."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:218
 msgid "race^Troll"
 msgstr "Trol"
 
+#. race
 #: data/core/units.cfg:219
 msgid "race+female^Troll"
 msgstr "Trol-Dişi"
 
+#. race
 #: data/core/units.cfg:220
 msgid "race^Trolls"
 msgstr "Troller"
 
+#. race
 #: data/core/units.cfg:226
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
@@ -4263,18 +4694,22 @@ msgid ""
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:238
 msgid "race^Undead"
 msgstr "Yarı ölü"
 
+#. race
 #: data/core/units.cfg:239
 msgid "race+female^Undead"
 msgstr "Yarı ölü"
 
+#. race
 #: data/core/units.cfg:240
 msgid "race+plural^Undead"
 msgstr "Yarı ölüler"
 
+#. race
 #: data/core/units.cfg:246
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -4303,26 +4738,32 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:254
 msgid "race^Wose"
 msgstr "Ağaç"
 
+#. race
 #: data/core/units.cfg:255
 msgid "race^Woses"
 msgstr "Ağaçlar"
 
+#. language
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Kolay"
 
+#. language
 #: data/hardwired/english.cfg:4
 msgid "Medium"
 msgstr "Orta"
 
+#. language
 #: data/hardwired/english.cfg:5
 msgid "Hard"
 msgstr "Zor"
 
+#. language
 #: data/hardwired/english.cfg:10
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
@@ -4335,6 +4776,7 @@ msgstr ""
 "Gündüz: +%25 Hasar\n"
 "Gece: -%25 Hasar"
 
+#. language
 #: data/hardwired/english.cfg:11
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
@@ -4343,6 +4785,7 @@ msgstr ""
 "Tarafsız birimler gece veya gündüzden etkilenmezler, her iki durumda da eşit "
 "şekilde savaşırlar."
 
+#. language
 #: data/hardwired/english.cfg:15
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
@@ -4355,92 +4798,114 @@ msgstr ""
 "Gündüz: -%25 Hasar\n"
 "Gece: +%25 Hasar"
 
+#. language
 #: data/hardwired/english.cfg:18
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name Köprüsü, $name Kavşağı"
 
+#. language
 #: data/hardwired/english.cfg:19
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name Yolu, $name Geçidi, $name Patikası"
 
+#. language
 #: data/hardwired/english.cfg:20
 msgid "$name River,River $name"
 msgstr "$name Nehri,$name Irmağı"
 
+#. language
 #: data/hardwired/english.cfg:21
 msgid "$name Forest,$name's Forest"
 msgstr "$name Ormanı,$name Ormanı"
 
+#. language
 #: data/hardwired/english.cfg:22
 msgid "$name Lake"
 msgstr "$name Gölü"
 
+#. language
 #: data/hardwired/english.cfg:23
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|köy,$name|iye,$name|kent"
 
+#. language
 #: data/hardwired/english.cfg:24
 msgid "$name|harbor,$name|port"
 msgstr "$name Limanı,$name İskelesi"
 
+#. language
 #: data/hardwired/english.cfg:25
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|başı,$name Geçidi,$name Kavşağı,$river Geçidi,$river Ayrımı"
 
+#. language
 #: data/hardwired/english.cfg:26
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river Köprüsü,$river Köprüsü,$river Köprüsü,$name|iye,$name Köprü"
 
+#. language
 #: data/hardwired/english.cfg:27
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|başı,$name|iye,$name|yer"
 
+#. language
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|başı,$name|iye,$name|koru,$name Ormanı"
 
+#. language
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|başı,$name|eli,$name|iye,$name|tepe,$name|doruk"
 
+#. language
 #: data/hardwired/english.cfg:30
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|başı,$name|eli,$name|iye,$name|dağ,$name|dağı,$name|lidağ,$name|lidağ"
 
+#. language
 #: data/hardwired/english.cfg:33
 msgid "melee"
 msgstr "yakın"
 
+#. language
 #: data/hardwired/english.cfg:34
 msgid "ranged"
 msgstr "menzilli"
 
+#. language
 #: data/hardwired/english.cfg:37
 msgid "blade"
 msgstr "kesme"
 
+#. language
 #: data/hardwired/english.cfg:38
 msgid "pierce"
 msgstr "delme"
 
+#. language
 #: data/hardwired/english.cfg:39
 msgid "impact"
 msgstr "darbe"
 
+#. language
 #: data/hardwired/english.cfg:40
 msgid "fire"
 msgstr "ateş"
 
+#. language
 #: data/hardwired/english.cfg:41
 msgid "cold"
 msgstr "soğuk"
 
+#. language
 #: data/hardwired/english.cfg:42
 msgid "arcane"
 msgstr "gizemli"
 
+#. tip
 #: data/hardwired/tips.cfg:3
 msgid ""
 "Don't neglect to earn your leader experience! You need to keep him safe, but "
@@ -4451,10 +4916,12 @@ msgstr ""
 "elbette gerekli fakat çok fazla üzerine titrerseniz seferberliğin ileri "
 "senaryolarında düşük seviyeli bir birim olarak hayatta kalması güçleşebilir."
 
+#. tip
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
 msgstr "- Ulu Büyücü Delfador, WZ516"
 
+#. tip
 #: data/hardwired/tips.cfg:7
 msgid ""
 "In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
@@ -4467,6 +4934,7 @@ msgstr ""
 "(Sizin birimlerinizin yerlerinde kalacağı varsayımıyla). Bunu düşmanın "
 "yaralı ve zayıf birimlerinize erişememesini sağlamak için kullanabilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
 #: data/hardwired/tips.cfg:36 data/hardwired/tips.cfg:52
@@ -4483,6 +4951,7 @@ msgstr ""
 msgid "- The Wesnoth Tactical Guide"
 msgstr "- Wesnoth Taktik Kılavuzu"
 
+#. tip
 #: data/hardwired/tips.cfg:11
 msgid ""
 "Units with the 'intelligent' trait need fewer experience points to level up. "
@@ -4493,10 +4962,12 @@ msgstr ""
 "duyarlar. Bir seferberliğin başlarında bu birimlere öldürücü hamleler "
 "yaptırarak çabucak yüksek seviyeli askerlere sahip olabilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
 msgstr "- Kral Konrad, WZ536"
 
+#. tip
 #: data/hardwired/tips.cfg:15
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
@@ -4507,10 +4978,12 @@ msgstr ""
 "düşmanın zıt taraflarına yerleştirerek rakibinizin hareket alanını her yöne "
 "bir altıgenle sınırlayabilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr "- Gwedri’nin Anıları, WZ627"
 
+#. tip
 #: data/hardwired/tips.cfg:19
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
@@ -4522,6 +4995,7 @@ msgstr ""
 "değil de sizin istediğiniz burcuna almanızı mümkün kılar. Birimleri böyle "
 "bilgece yerleştirmek bazen köyleri bir el erken ele geçirmenizi sağlayabilir."
 
+#. tip
 #: data/hardwired/tips.cfg:23
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
@@ -4532,6 +5006,7 @@ msgstr ""
 "tablosu’ düşmanınızın yaptıklarına karşın sizin neler yaptığınızı bilmenizi "
 "sağlar."
 
+#. tip
 #: data/hardwired/tips.cfg:27
 msgid ""
 "Units with the 'quick' trait move one extra hex per turn. This can be very "
@@ -4542,10 +5017,12 @@ msgstr ""
 "edebilirler. Su, mağara gibi zor arazi türlerinde bu fark çok değerli olur. "
 "Fark bir yerine iki altıgen gidebilmek kadar önemli olabilir."
 
+#. tip
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
 msgstr "- Elf Beyi Kalenz, WZ470"
 
+#. tip
 #: data/hardwired/tips.cfg:31
 msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
@@ -4554,6 +5031,7 @@ msgstr ""
 "Bir kaç senaryo oynadıktan sonra, yardım ekranındaki ‘Oynanış’ bölümünü "
 "dikkatle okuyun. Senaryolar zorlaştıkça oradaki ayrıntılar önem kazanabilir!"
 
+#. tip
 #: data/hardwired/tips.cfg:35
 msgid ""
 "It is usually better to start the next scenario in a campaign with lower-"
@@ -4564,6 +5042,7 @@ msgstr ""
 "yüksek seviyelilerini değil, o seviyeye terfi etmesi yaklaşmış bir alt "
 "seviye birimleri öncelikle çağırmak daha iyidir."
 
+#. tip
 #: data/hardwired/tips.cfg:39
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
@@ -4572,10 +5051,12 @@ msgstr ""
 "www.wesnoth.org’da strateji kılavuzları, teknik destek, Wesnoth tarihi ve "
 "daha bir sürü şey bulacaksınız."
 
+#. tip
 #: data/hardwired/tips.cfg:40
 msgid "- The Wesnoth Community"
 msgstr "- Wesnoth Topluluğu"
 
+#. tip
 #: data/hardwired/tips.cfg:43
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
@@ -4584,21 +5065,25 @@ msgstr ""
 "Adaletli birimler gündüz iyi savaşırlar ve kaotik birimler de gece iyi "
 "savaşırlar. Tarafsız birimler ise gündüz ve geceden etkilenmezler."
 
+#. tip
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 msgstr "- Kraliyet Savaş Terminolojisi Sözlüğü - II. Cilt, WZ212"
 
+#. tip
 #: data/hardwired/tips.cfg:47
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
 "Günün yanlış bir saatinde yapılan bir saldırı başarısızlıkla sonuçlanabilir."
 
+#. tip
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
 msgstr "- Taktik Analizleri Elkitabı I. Cilt - II. Haldrik, WZ42"
 
+#. tip
 #: data/hardwired/tips.cfg:51
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
@@ -4612,6 +5097,7 @@ msgstr ""
 "çalışmalısınız. Çünkü bu birimler bir elde gidebildikleri mesafe kadar alanı "
 "görünür hale getirirler."
 
+#. tip
 #: data/hardwired/tips.cfg:55
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
@@ -4624,6 +5110,7 @@ msgstr ""
 "birime sağ tıklayıp, ‘Birim tanımı’nı seçtikten sonra altta o birimin farklı "
 "saldırılara karşı dirençlerini görebilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:59
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
@@ -4635,6 +5122,7 @@ msgstr ""
 "belirler. Seçilmiş birimin seçilmiş bölgedeki savunma oranı ekranın sağ üst "
 "köşesinde gösterilir."
 
+#. tip
 #: data/hardwired/tips.cfg:63
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
@@ -4650,6 +5138,7 @@ msgstr ""
 "veya köylerde bir el kalarak giderilebilir; bundan başka birim iyileşme "
 "yeteneğine sahipse kendi zehrini giderebilir."
 
+#. tip
 #: data/hardwired/tips.cfg:67
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
@@ -4660,6 +5149,7 @@ msgstr ""
 "kullanabilirsiniz. Aynı birimleri tekrar tekrar çağırarak çok kuvvetli ve "
 "tecübeli bir ordu oluşturabilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:71
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
@@ -4674,6 +5164,7 @@ msgstr ""
 "kadar zayıftırlar ve ayrıca seviyeye bakmaksızın avcı birimler etki "
 "alanlarını yok sayarlar."
 
+#. tip
 #: data/hardwired/tips.cfg:75
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
@@ -4686,10 +5177,12 @@ msgstr ""
 "şansına sahiptir. Nişancı saldırıları ise sadece saldırırken %60 isabet "
 "şansına sahiptir."
 
+#. tip
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Taktik Analizleri Elkitabı II. Cilt - II. Haldrik, WZ43"
 
+#. tip
 #: data/hardwired/tips.cfg:79
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
@@ -4698,6 +5191,7 @@ msgstr ""
 "Köylerde bulunan birimler kendi ellerinin başında 8 yaşam puanına kadar "
 "iyileşirler."
 
+#. tip
 #: data/hardwired/tips.cfg:83
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
@@ -4707,6 +5201,7 @@ msgstr ""
 "Kendi ellerinde hareket etmeyen birimler dinlenir ve bir sonraki elin "
 "başında 2 yaşam puanı kazanırlar."
 
+#. tip
 #: data/hardwired/tips.cfg:87
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
@@ -4716,10 +5211,12 @@ msgstr ""
 "Bir çok yaya birim diğer zeminlere göre kale ve köylerde daha iyi savunma "
 "yaparken atlı birimler köylerde ve kalelerde bundan yararlanamazlar."
 
+#. tip
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
 msgstr "- Komutan Kaylan, WZ498"
 
+#. tip
 #: data/hardwired/tips.cfg:91
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
@@ -4729,10 +5226,12 @@ msgstr ""
 "Atlı birimler genellikle bıçak ve darbe türü saldırılara karşı dayanıklıdır, "
 "ama delici silahlara, mesela oklar ve mızraklara karşı savunmasızdırlar."
 
+#. tip
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
 msgstr "- Komutan Kaylan, WZ502"
 
+#. tip
 #: data/hardwired/tips.cfg:95
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
@@ -4744,6 +5243,7 @@ msgstr ""
 "birimini öldüren birimler düşman biriminin her seviyesi için 8 tecrübe puanı "
 "kazanırlar."
 
+#. tip
 #: data/hardwired/tips.cfg:99
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
@@ -4752,6 +5252,7 @@ msgstr ""
 "Elf birimleri ormanda iyi yürür ve savaşırlar. Cüce birimleri tepelerde ve "
 "dağlarda iyi yürür ve savaşırlar."
 
+#. tip
 #: data/hardwired/tips.cfg:103
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
@@ -4760,6 +5261,7 @@ msgstr ""
 "Sabır genellikle başarıya giden yoldur. Kötü durumlarda veya az birimle "
 "saldırmak yerine saldırmak için daha iyi bir zamanı bekleyin."
 
+#. tip
 #: data/hardwired/tips.cfg:107
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
@@ -4768,10 +5270,12 @@ msgstr ""
 "Eğer bir çok taraftan saldırıya uğramışsanız, harcanabilir birimlerini bazı "
 "yönlere göndererek düşman birimleri geciktirmeniz iyi bir fikir olabilir."
 
+#. tip
 #: data/hardwired/tips.cfg:108
 msgid "- King Konrad, 552YW"
 msgstr "- Kral Konrad, WZ552"
 
+#. tip
 #: data/hardwired/tips.cfg:111
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
@@ -4779,10 +5283,12 @@ msgstr ""
 "Geri çekilip tekrar toparlanmaktan çekinmeyin; bu genellikle başarıya giden "
 "yoldur."
 
+#. tip
 #: data/hardwired/tips.cfg:112
 msgid "- Meneldur, 123YW"
 msgstr "- Meneldur, WZ123"
 
+#. tip
 #: data/hardwired/tips.cfg:115
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
@@ -4795,6 +5301,7 @@ msgstr ""
 "kasabaları zaptetmek ve ellerin bitmesini beklemekten, daha fazla altın "
 "kazanırsınız."
 
+#. tip
 #: data/hardwired/tips.cfg:119
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
@@ -4807,6 +5314,7 @@ msgstr ""
 "alabilir veya bazı müttefiklerin kendi iç kalelerinde asker alabilmeni "
 "mümkün kılabilirler."
 
+#. tip
 #: data/hardwired/tips.cfg:123
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
@@ -4815,6 +5323,7 @@ msgstr ""
 "İskeletler delme ve kesme saldırılarına karşı dayanıklı; darbe, ateş ve "
 "gizemli saldırılara karşı zayıftırlar."
 
+#. tip
 #: data/hardwired/tips.cfg:127
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
@@ -4825,6 +5334,7 @@ msgstr ""
 "birimleri diğer birimlerinizin daha çabuk terfi etmesi için "
 "kullanabilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:131
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
@@ -4835,19 +5345,23 @@ msgstr ""
 "birimi köye gelebilir ve köydeki yüksek savunma ve iyileşmeden faydalanarak "
 "birimlerinizden birine saldırabilir."
 
+#. tip
 #: data/hardwired/tips.cfg:135
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "Yaralanmış birimlerin düzelmesi için diğer birimleri perde olarak kullanın."
 
+#. tip
 #: data/hardwired/tips.cfg:136
 msgid "- Princess Li'sar, 515YW"
 msgstr "- Prenses Lisar, WZ515"
 
+#. tip
 #: data/hardwired/tips.cfg:139
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Tercihler menüsündeki kısayol tuşlarını okuyun."
 
+#. tip
 #: data/hardwired/tips.cfg:143
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
@@ -4856,6 +5370,7 @@ msgstr ""
 "Eğer bir birimi haraket ettirir ama kimseye saldırmaz veya yeni bir yer "
 "keşfetmezseniz, hareketi ‘U’ tuşuna basarak geri alabilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:147
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
@@ -4864,6 +5379,7 @@ msgstr ""
 "Düşman birimlerinin ne kadar yürüyebildiğini fare imlecini onların üzerinde "
 "tutarak görebilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:151
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
@@ -4872,10 +5388,12 @@ msgstr ""
 "Saldırılara destek için iyileştiricileri kullanın -  hiç kimseye saldırma "
 "ihtiyacı duymaksızın savaşları kazanmanıza yardım ederler."
 
+#. tip
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
 msgstr "- Çantal Parşomeni, WZ516"
 
+#. tip
 #: data/hardwired/tips.cfg:155
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
@@ -4885,14 +5403,17 @@ msgstr ""
 "yarıya düşürür, bununla beraber vurulan düşman el bitene kadar normalden bir "
 "eksik vuruş yapar."
 
+#. tip
 #: data/hardwired/tips.cfg:159
 msgid "Arcane attacks are very powerful against undead."
 msgstr "Gizemli saldırılar yarı ölülere karşı daha güçlüdür."
 
+#. tip
 #: data/hardwired/tips.cfg:160
 msgid "- Great Sage Dacyn, 626YW"
 msgstr "- Ulu Bilge Dasin, WZ626"
 
+#. tip
 #: data/hardwired/tips.cfg:163
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
@@ -4901,6 +5422,7 @@ msgstr ""
 "Birimler bir üst seviyeye ulaşınca iyileştirilirler. Akıllıca kullanılırsa, "
 "bu savaşın yönünü değiştirebilir."
 
+#. tip
 #: data/hardwired/tips.cfg:167
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
@@ -4909,6 +5431,7 @@ msgstr ""
 "Yükleme yapan birimlerin en iyi kullanımı bir vuruşta öldürebilecekleri "
 "düşmanlara karşıdır."
 
+#. tip
 #: data/hardwired/tips.cfg:171
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
@@ -4922,6 +5445,7 @@ msgstr ""
 "zorlaşır. Bu açıdan, genelde daha düşük seviyeden birimleri terfi ettirmeye "
 "çalışmak daha faydalıdır."
 
+#. tip
 #: data/hardwired/tips.cfg:175
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
@@ -4932,6 +5456,7 @@ msgstr ""
 "hareket miktarı ile sınırlıdır. Farklı arazileri araştırmak için hangi "
 "birimin daha iyi olacağına bunu düşünerek karar verin."
 
+#. tip
 #: data/hardwired/tips.cfg:179
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
@@ -4941,6 +5466,7 @@ msgstr ""
 "vardır. Bir açıklama veya tanım almak için fare imlecini bunların üzerine "
 "götürün."
 
+#. tip
 #: data/hardwired/tips.cfg:183
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
@@ -4952,6 +5478,7 @@ msgstr ""
 "gönderebilirsiniz (Düğme, oyunun ana ekranının sağ alt köşesinde bulunan "
 "zarf simgesidir). Bu bilgi seferberlik zorluğunu ayarlamakta işe yarar."
 
+#. tip
 #: data/hardwired/tips.cfg:187
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
@@ -4962,10 +5489,12 @@ msgstr ""
 "askerlerin yanına katın ve tecrübeli askerlerin düşman birime ağır bir hasar "
 "vermesini sağladıktan sonra onu terfi ettireceğiniz birime öldürtün."
 
+#. tip
 #: data/hardwired/tips.cfg:188
 msgid "- Queen Li'sar, 528YW"
 msgstr "- Kraliçe Lisar, WZ528"
 
+#. tip
 #: data/hardwired/tips.cfg:191
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
@@ -4976,6 +5505,7 @@ msgstr ""
 "alamazsınız. Menüden ‘Örtü Güncellemelerini Geciktir’ seçeneğini "
 "etkinleştirerek böyle bir hareketi geri almayı mümkün kılabilirsiniz."
 
+#. tip
 #: data/hardwired/tips.cfg:195
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
@@ -4984,6 +5514,7 @@ msgstr ""
 "Eğer bir düşman nadir bir arazi türünden sizden daha iyi şartlarda "
 "yararlanıyorsa o araziyi onun yararlanmaması için işgal etmek daha iyidir."
 
+#. tip
 #: data/hardwired/tips.cfg:199
 msgid ""
 "Few units have good defences in water; a line of attackers along the edge of "
@@ -4994,136 +5525,171 @@ msgstr ""
 "kıyısındaki bir saldırı hattı ağır hasarlar alabilir. Elfler ormanı, cüceler "
 "ise dağları aynı anlamda kullanabilir."
 
+#. effect: type=fire
 #: data/scenario-test.cfg:697
 msgid "ruby of fire"
 msgstr "ateş yakutu"
 
+#. menu
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
 msgstr "Menü"
 
+#. menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
 msgstr "Eylemler"
 
+#. menu
+#. change
 #: data/themes/default.cfg:153 data/themes/default.cfg:719
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "Eli Bitir"
 
+#. menu
+#. change
 #: data/themes/default.cfg:154 data/themes/default.cfg:720
 #: data/themes/default.cfg:975 data/themes/dfool.cfg:161
 msgid "End Scenario"
 msgstr "Senaryoyu Bitir"
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. label
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
 #: data/themes/experimental.cfg:181 src/menu_events.cpp:384 src/unit.cpp:2466
 #: src/unit.cpp:2639
 msgid "HP"
 msgstr "YP"
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. label
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
 #: src/menu_events.cpp:1152
 msgid "XP"
 msgstr "TP"
 
+#. label
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "altın"
 
+#. label
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "köyler"
 
+#. label
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "birimler"
 
+#. label
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "gider"
 
+#. label
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "gelir"
 
+#. unit_level
 #: data/themes/default.cfg:416 data/themes/dfool.cfg:459
 #: data/themes/experimental.cfg:368
 msgid "statuspanel^level"
 msgstr "seviye"
 
+#. unit_moves
 #: data/themes/default.cfg:447 data/themes/experimental.cfg:399
 msgid "statuspanel^movement"
 msgstr "hareket"
 
+#. change
 #: data/themes/default.cfg:946
 msgid "Act."
 msgstr "Eyl."
 
+#. remove
+#. menu
 #: data/themes/default.cfg:966 data/themes/default.cfg:974
 msgid "short end-turn^E."
 msgstr "B."
 
+#. label
 #: data/themes/dfool.cfg:252
 msgid "MP"
 msgstr "HP"
 
+#. label
 #: data/themes/macros.cfg:59
 msgid "Replay"
 msgstr "Tekrar"
 
+#. menu: type=image
 #: data/themes/macros.cfg:74
 msgid "Play"
 msgstr "Oyun"
 
+#. menu: type=image
 #: data/themes/macros.cfg:75
 msgid "continous replay"
 msgstr "sürekli tekrarlar"
 
+#. menu: type=image
 #: data/themes/macros.cfg:92
 msgid "Stop"
 msgstr "Dur"
 
+#. menu: type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
 msgstr "el bitiminde bekler"
 
+#. menu: type=image
 #: data/themes/macros.cfg:110
 msgid "Reset"
 msgstr "Sıfırla"
 
+#. menu: type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
 msgstr "başa döner"
 
+#. menu: type=image
 #: data/themes/macros.cfg:128
 msgid "Next Turn"
 msgstr "Sonraki El"
 
+#. menu: type=image
 #: data/themes/macros.cfg:129
 msgid "play turn"
 msgstr "eli oynar"
 
+#. menu: type=image
 #: data/themes/macros.cfg:146
 msgid "Next Side"
 msgstr "Sonraki Taraf"
 
+#. menu: type=image
 #: data/themes/macros.cfg:147
 msgid "play side turn"
 msgstr "tarafın elini oynar"
 
+#. menu
 #: data/themes/macros.cfg:163
 msgid "Point of view"
 msgstr "Görünüm noktası"
 
+#. menu: type=checkbox
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
 msgstr "Canlandırmayı atla"
@@ -5976,7 +6542,7 @@ msgstr "Sonraki"
 msgid "Skip"
 msgstr "Atla"
 
-#: src/intro.cpp:376
+#: src/intro.cpp:379
 msgid "The End"
 msgstr "Son"
 

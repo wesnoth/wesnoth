@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 12:44+0100\n"
+"POT-Creation-Date: 2008-03-16 11:58+0100\n"
 "PO-Revision-Date: 2008-03-01 15:53+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -18,48 +18,60 @@ msgstr ""
 "X-Poedit-Country: NETHERLANDS\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:36
 msgid "Compressed Saves"
 msgstr "Gecomprimeerde opgeslagen bestanden"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:43
 msgid "Mouse Scrolling"
 msgstr "Schuiven met de muis"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:50
 msgid "Animate Map"
 msgstr "Teken kaart"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
 msgstr "Eenheid stilstandanimaties"
 
+#. advanced_preference: type=boolean
 #: data/_main.cfg:64
 msgid "Show Combat"
 msgstr "Gevechten tonen"
 
+#. server
 #: data/_main.cfg:79
 msgid "Official Wesnoth Server"
 msgstr "Officiële Wesnoth server"
 
+#. server
 #: data/_main.cfg:83 data/_main.cfg:87
 msgid "Alternate Wesnoth Server"
 msgstr "Alternatieve Wesnoth Server"
 
+#. time
+#. illuminated_time
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:519
 #: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:93
 msgid "Underground"
 msgstr "Ondergronds"
 
+#. about
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:45 data/core/about.cfg:146
 msgid "Artwork and Graphics"
 msgstr "Artwork en Graphics"
 
+#. berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:530
 msgid "berserk"
 msgstr "razernij"
 
+#. berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
 #: data/core/macros/abilities.cfg:532
 msgid ""
@@ -72,11 +84,13 @@ msgstr ""
 "gevecht door totdat een van de strijders gevallen is (met een maximum van 30 "
 "gevechtsrondes)."
 
+#. chance_to_hit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
 #: data/core/macros/abilities.cfg:616
 msgid "magical"
 msgstr "magisch"
 
+#. chance_to_hit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
 #: data/core/macros/abilities.cfg:618
 msgid ""
@@ -88,11 +102,13 @@ msgstr ""
 "Deze aanval heeft altijd 70% kans om te raken ongeacht de verdediging van de "
 "aan te vallen eenheid."
 
+#. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
 #: data/core/macros/abilities.cfg:665
 msgid "firststrike"
 msgstr "initiatief"
 
+#. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
 #: data/core/macros/abilities.cfg:667
 msgid ""
@@ -102,239 +118,305 @@ msgstr ""
 "Initiatief:\n"
 "Deze eenheid deelt altijd de eerste klap uit, ook wanneer hij verdedigt."
 
+#. about
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr "Programeren"
 
+#. about
 #: data/core/about.cfg:128
 msgid "General Purpose Administration and Coordination"
 msgstr "Algemene administratie en coördinatie"
 
-#: data/core/about.cfg:408
+#. about
+#: data/core/about.cfg:412
 msgid "Music"
 msgstr "Muziek"
 
-#: data/core/about.cfg:435
+#. about
+#: data/core/about.cfg:439
 msgid "Sound Effects"
 msgstr "Geluidseffecten"
 
-#: data/core/about.cfg:451
+#. about
+#: data/core/about.cfg:455
 msgid "Campaign Design"
 msgstr "Veldtochtontwerp"
 
-#: data/core/about.cfg:514
+#. about
+#: data/core/about.cfg:518
 msgid "Multiplayer Maps and Balancing"
 msgstr "Multiplayerkaarten en balanseren"
 
-#: data/core/about.cfg:556
+#. about
+#: data/core/about.cfg:564
 msgid "Packagers"
 msgstr "Bundelaars"
 
-#: data/core/about.cfg:605
+#. about
+#: data/core/about.cfg:613
 msgid "Miscellaneous contributors"
 msgstr "Allerlei bijdragers"
 
-#: data/core/about.cfg:731
+#. about
+#: data/core/about.cfg:743
 msgid "Internationalization Managers"
 msgstr "Internationaliseringsmanagers"
 
-#: data/core/about.cfg:756
+#. about
+#: data/core/about.cfg:768
 msgid "Afrikaans Translation"
 msgstr "Afrikaanse Vertaling"
 
-#: data/core/about.cfg:772
+#. about
+#: data/core/about.cfg:784
 msgid "Basque Translation"
 msgstr "Baskische Vertaling"
 
-#: data/core/about.cfg:785
+#. about
+#: data/core/about.cfg:797
 msgid "Bulgarian Translation"
 msgstr "Bulgaarse Vertaling"
 
-#: data/core/about.cfg:804
+#. about
+#: data/core/about.cfg:816
 msgid "Catalan Translation"
 msgstr "Catalaanse Vertaling"
 
-#: data/core/about.cfg:839
+#. about
+#: data/core/about.cfg:851
 msgid "Chinese Translation"
 msgstr "Chinese Vertaling"
 
-#: data/core/about.cfg:873
+#. about
+#: data/core/about.cfg:885
 #, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "Chinese Vertaling"
 
-#: data/core/about.cfg:880
+#. about
+#: data/core/about.cfg:892
 msgid "Czech Translation"
 msgstr "Tsjechische Vertaling"
 
-#: data/core/about.cfg:934
+#. about
+#: data/core/about.cfg:946
 msgid "Danish Translation"
 msgstr "Deense Vertaling"
 
-#: data/core/about.cfg:965
+#. about
+#: data/core/about.cfg:977
 msgid "Dutch Translation"
 msgstr "Nederlandse Vertaling"
 
-#: data/core/about.cfg:1012
+#. about
+#: data/core/about.cfg:1024
 msgid "English (GB) Translation"
 msgstr "Engelse (GB) Vertaling"
 
-#: data/core/about.cfg:1022
+#. about
+#: data/core/about.cfg:1034
 msgid "Esperanto Translation"
 msgstr "Esperantovertaling"
 
-#: data/core/about.cfg:1041
+#. about
+#: data/core/about.cfg:1053
 msgid "Estonian Translation"
 msgstr "Estse Vertaling"
 
-#: data/core/about.cfg:1048
+#. about
+#: data/core/about.cfg:1060
 msgid "Filipino Translation"
 msgstr "Filipijnse Vertaling"
 
-#: data/core/about.cfg:1058
+#. about
+#: data/core/about.cfg:1070
 msgid "Finnish Translation"
 msgstr "Finse Vertaling"
 
-#: data/core/about.cfg:1092
+#. about
+#: data/core/about.cfg:1104
 msgid "French Translation"
 msgstr "Franse Vertaling"
 
-#: data/core/about.cfg:1197
+#. about
+#: data/core/about.cfg:1209
 msgid "Galician Translation"
 msgstr "Galicische Vertaling"
 
-#: data/core/about.cfg:1209
+#. about
+#: data/core/about.cfg:1221
 msgid "German Translation"
 msgstr "Duitse Vertaling"
 
-#: data/core/about.cfg:1257
+#. about
+#: data/core/about.cfg:1269
 msgid "Greek Translation"
 msgstr "Griekse Vertaling"
 
-#: data/core/about.cfg:1288
+#. about
+#: data/core/about.cfg:1300
 msgid "Hebrew Translation"
 msgstr "Hebreeuwse Vertaling"
 
-#: data/core/about.cfg:1298
+#. about
+#: data/core/about.cfg:1310
 msgid "Hungarian Translation"
 msgstr "Hongaarse Vertaling"
 
-#: data/core/about.cfg:1368
+#. about
+#: data/core/about.cfg:1380
 msgid "Indonesian Translation"
 msgstr "Estse Vertaling"
 
-#: data/core/about.cfg:1375
+#. about
+#: data/core/about.cfg:1387
 msgid "Italian Translation"
 msgstr "Italiaanse Vertaling"
 
-#: data/core/about.cfg:1410
+#. about
+#: data/core/about.cfg:1422
 msgid "Japanese Translation"
 msgstr "Japanse Vertaling"
 
-#: data/core/about.cfg:1433
+#. about
+#: data/core/about.cfg:1445
 msgid "Korean Translation"
 msgstr "Koreaanse Vertaling"
 
-#: data/core/about.cfg:1440
+#. about
+#: data/core/about.cfg:1452
 msgid "Latin Translation"
 msgstr "Latijnse Vertaling"
 
-#: data/core/about.cfg:1447
+#. about
+#: data/core/about.cfg:1459
 msgid "Lithuanian Translation"
 msgstr "Litouwse Vertaling"
 
-#: data/core/about.cfg:1454
+#. about
+#: data/core/about.cfg:1466
 msgid "Norwegian Translation"
 msgstr "Noorse Vertaling"
 
-#: data/core/about.cfg:1476
+#. about
+#: data/core/about.cfg:1488
 msgid "Polish Translation"
 msgstr "Poolse Vertaling"
 
-#: data/core/about.cfg:1525
+#. about
+#: data/core/about.cfg:1537
 msgid "Portuguese Translation"
 msgstr "Portugese Vertaling"
 
-#: data/core/about.cfg:1532
+#. about
+#: data/core/about.cfg:1544
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugese (Brazilië) Vertaling"
 
-#: data/core/about.cfg:1567
+#. about
+#: data/core/about.cfg:1579
 msgid "Russian Translation"
 msgstr "Russische Vertaling"
 
-#: data/core/about.cfg:1603
+#. about
+#: data/core/about.cfg:1615
 msgid "Serbian Translation"
 msgstr "Servische Vertaling"
 
-#: data/core/about.cfg:1618
+#. about
+#: data/core/about.cfg:1630
 msgid "Slovak Translation"
 msgstr "Slovaakse Vertaling"
 
-#: data/core/about.cfg:1635
+#. about
+#: data/core/about.cfg:1647
 msgid "Slovenian Translation"
 msgstr "Sloveense Vertaling"
 
-#: data/core/about.cfg:1645
+#. about
+#: data/core/about.cfg:1657
 msgid "Spanish Translation"
 msgstr "Spaanse Vertaling"
 
-#: data/core/about.cfg:1693
+#. about
+#: data/core/about.cfg:1705
 msgid "Swedish Translation"
 msgstr "Zweedse Vertaling"
 
-#: data/core/about.cfg:1719
+#. about
+#: data/core/about.cfg:1731
 msgid "Turkish Translation"
 msgstr "Turkse Vertaling"
 
-#: data/core/about.cfg:1741
+#. about
+#: data/core/about.cfg:1753
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valenciaanse (zuid Catalaans) Vertaling"
 
-#: data/core/about.cfg:1757
+#. about
+#: data/core/about.cfg:1769
 msgid "Bots"
 msgstr "Bots"
 
+#. fonts
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
+#. section
+#. topic
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
 msgstr "Inleiding"
 
+#. section
+#. topic
 #: data/core/help.cfg:27 data/core/help.cfg:126
 msgid "Gameplay"
 msgstr "Gameplay"
 
+#. section
+#. topic
 #: data/core/help.cfg:33 data/core/help.cfg:323
 msgid "Traits"
 msgstr "Kenmerken"
 
+#. section
+#. topic
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
 msgstr "Eenheden"
 
+#. section
 #: data/core/help.cfg:51
 msgid "Abilities"
 msgstr "Vermogens"
 
+#. section
+#. topic
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
 msgstr "Wapenbijzonderheden"
 
+#. section
+#. topic
 #: data/core/help.cfg:67 data/core/help.cfg:414
 msgid "Terrains"
 msgstr "Terrein"
 
+#. section
+#. topic
 #: data/core/help.cfg:74 data/core/help.cfg:669
 msgid "Commands"
 msgstr "Commando's"
 
+#. topic
 #: data/core/help.cfg:92
 msgid "Abilites"
 msgstr "Vermogens"
 
+#. topic
 #: data/core/help.cfg:95
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
@@ -347,6 +429,7 @@ msgstr ""
 "vermogen wordt hier beschreven zodra je hem bent tegengekomen in het spel.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:104
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
@@ -357,10 +440,12 @@ msgstr ""
 "aanval verbeteren.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:110
 msgid "Unknown Unit"
 msgstr "Onbekende eenheid"
 
+#. topic
 #: data/core/help.cfg:113
 msgid ""
 "\n"
@@ -373,10 +458,12 @@ msgstr ""
 "Deze eenheid is onbekend op het moment. Je zult het tijdens het spel moeten "
 "ontdekken voordat je zijn beschrijving kan zien."
 
+#. topic
 #: data/core/help.cfg:118
 msgid "Overview"
 msgstr "Overzicht"
 
+#. topic
 #: data/core/help.cfg:121
 msgid ""
 "\n"
@@ -397,10 +484,12 @@ msgstr ""
 "eenvoudige regels ontstaan vele tactieken, die het spel eenvoudig maken om "
 "te leren maar moeilijk om te domineren."
 
+#. topic
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
 msgstr "Gameplay basics"
 
+#. topic
 #: data/core/help.cfg:133
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
@@ -414,6 +503,7 @@ msgstr ""
 "dit slechts een overzicht is; voor bijzonderheden en specifieke situaties "
 "kun je de aangegeven links volgen."
 
+#. topic
 #: data/core/help.cfg:135
 msgid ""
 "\n"
@@ -435,6 +525,7 @@ msgstr ""
 "Omdat Strijd om Wesnoth nu en dan behoorlijk moeilijk kan worden, is het "
 "verstandig in het begin op het makkelijkste niveau te spelen."
 
+#. topic
 #: data/core/help.cfg:138
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -447,10 +538,12 @@ msgstr ""
 "beschrijving. Dit is bijvoorbeeld erg handig wanneer je een bepaald "
 "<ref>dst=abilities text=vermogen</ref> voor het eerst tegenkomt."
 
+#. topic
 #: data/core/help.cfg:143
 msgid "About the Game"
 msgstr "Over het spel"
 
+#. topic
 #: data/core/help.cfg:144
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
@@ -468,6 +561,7 @@ msgstr ""
 "kun je ook tegen andere mensen op dat netwerk spelen. Als je computer een "
 "internetverbinding heeft kun je over internet tegen anderen spelen."
 
+#. topic
 #: data/core/help.cfg:146
 msgid ""
 "\n"
@@ -484,10 +578,12 @@ msgstr ""
 "beste troepen in leven te houden zodat ze in een volgend scenario opnieuw "
 "ingezet kunnen worden."
 
+#. topic
 #: data/core/help.cfg:151
 msgid "Victory and Defeat"
 msgstr "Overwinnen en verslagen worden"
 
+#. topic
 #: data/core/help.cfg:152
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
@@ -504,6 +600,7 @@ msgstr ""
 "krijgen, iemand redden, een puzzel oplossen of een bepaald aantal beurten "
 "stand houden."
 
+#. topic
 #: data/core/help.cfg:154
 msgid ""
 "\n"
@@ -520,10 +617,12 @@ msgstr ""
 "opslagopties veranderen of (als je in multiplayer speelt) chatten met andere "
 "spelers voordat je de knop indrukt om verder te gaan."
 
+#. topic
 #: data/core/help.cfg:159
 msgid "Recruiting and Recalling"
 msgstr "Rekruteren en Oproepen"
 
+#. topic
 #: data/core/help.cfg:160
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -545,6 +644,7 @@ msgstr ""
 "goudstukken dat elk van hen kost. Selecteer een eenheid om zijn gegevens te "
 "bekijken en klik vervolgens op 'Ok' om hem te rekruteren."
 
+#. topic
 #: data/core/help.cfg:162
 msgid ""
 "\n"
@@ -561,6 +661,7 @@ msgstr ""
 "kasteel op een leeg vakje in de buurt van de donjon gezet. Je kunt eenheden "
 "rekruteren zolang er vrije kasteelvakjes zijn en zolang je genoeg goud hebt."
 
+#. topic
 #: data/core/help.cfg:164
 msgid ""
 "\n"
@@ -573,6 +674,7 @@ msgstr ""
 "Gerekruteerde eenheden hebben twee willekeurig gekozen <ref>dst=traits "
 "text=kenmerken</ref> die hun eigenschappen beïnvloeden."
 
+#. topic
 #: data/core/help.cfg:166
 msgid ""
 "\n"
@@ -589,6 +691,7 @@ msgstr ""
 "<italic>text='oproepen'</italic> uit het Acties-menu geeft je een lijst met "
 "eenheden uit de vorige scenario's."
 
+#. topic
 #: data/core/help.cfg:168
 msgid ""
 "\n"
@@ -604,10 +707,12 @@ msgstr ""
 "<ref>dst=income_and_upkeep text='Inkomen en Onderhoudskosten'</ref> voor "
 "meer informatie."
 
+#. topic
 #: data/core/help.cfg:173
 msgid "Orbs"
 msgstr "Bolletjes"
 
+#. topic
 #: data/core/help.cfg:174
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
@@ -616,30 +721,37 @@ msgstr ""
 "Bovenop de energiebalk van elk van je eenheden is een bolletje geplaatst. "
 "Voor eenheden die jij bestuurt is dat bolletje:"
 
+#. topic
 #: data/core/help.cfg:175
 msgid "green if it hasn't moved this turn,"
 msgstr "groen als de eenheid deze beurt nog niet bewogen heeft,"
 
+#. topic
 #: data/core/help.cfg:176
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "geel als de eenheid nog verder kan bewegen of aanvallen,"
 
+#. topic
 #: data/core/help.cfg:177
 msgid "red if it has used all its movement this turn."
 msgstr "rood als de eenheid niet meer kan bewegen."
 
+#. topic
 #: data/core/help.cfg:178
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Het bolletje is blauw voor een bevriende eenheid die je niet bestuurt."
 
+#. topic
 #: data/core/help.cfg:179
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Vijandelijke eenheden hebben geen bolletje."
 
+#. topic
 #: data/core/help.cfg:184
 msgid "Hitpoints and Experience"
 msgstr "Hitpoints en Ervaring"
 
+#. topic
 #: data/core/help.cfg:185
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
@@ -653,6 +765,7 @@ msgstr ""
 "eenheid begint zonder ervaringspunten, maar kan die verkrijgen door tegen "
 "vijanden te vechten."
 
+#. topic
 #: data/core/help.cfg:189
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
@@ -661,6 +774,7 @@ msgid ""
 msgstr ""
 "De hitpoints en ervaringspunten worden beide weergegeven in de zijbalk."
 
+#. topic
 #: data/core/help.cfg:190
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -673,10 +787,12 @@ msgstr ""
 "een blauwe ervaringsbalk, die wit wordt als de eenheid bijna "
 "<ref>dst=experience_and_advancement text=promoveert</ref>."
 
+#. topic
 #: data/core/help.cfg:195
 msgid "Movement"
 msgstr "Zetten"
 
+#. topic
 #: data/core/help.cfg:196
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
@@ -706,6 +822,7 @@ msgstr ""
 "niet meer bewegen. Dat geldt ook voor een eenheid die net een dorpje heeft "
 "ingenomen (maar die kan nog wel aanvallen)."
 
+#. topic
 #: data/core/help.cfg:198
 msgid ""
 "\n"
@@ -733,6 +850,7 @@ msgstr ""
 "om te zien hoeveel zetten de eenheid nodig heeft voor elk van de "
 "terreinsoorten."
 
+#. topic
 #: data/core/help.cfg:200
 msgid ""
 "\n"
@@ -754,6 +872,7 @@ msgstr ""
 "<ref>dst=ability_skirmisher text='Warzaaiers'</ref> negeren de "
 "beheersingszones."
 
+#. topic
 #: data/core/help.cfg:202
 msgid ""
 "\n"
@@ -768,10 +887,12 @@ msgstr ""
 "v of Cmd-v drukken. Ctrl-b of Cmd-b toont waar de vijand heen kan bewegen "
 "als jouw eenheden niet in de weg zouden staan."
 
+#. topic
 #: data/core/help.cfg:207
 msgid "Shroud and Fog of War"
 msgstr "Sluier en mist"
 
+#. topic
 #: data/core/help.cfg:210
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -813,10 +934,12 @@ msgstr ""
 "sluier' (of aan het einde van je beurt) en daardoor het ongedaan maken van "
 "zetten mogelijk maken."
 
+#. topic
 #: data/core/help.cfg:215
 msgid "Combat"
 msgstr "Vechten"
 
+#. topic
 #: data/core/help.cfg:216
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
@@ -839,6 +962,7 @@ msgstr ""
 "zwaarden, bijlen en klauwen, en wapens die van afstand gebruikt worden, "
 "zoals bogen, speren en vuurballen."
 
+#. topic
 #: data/core/help.cfg:218
 msgid ""
 "\n"
@@ -849,6 +973,7 @@ msgstr ""
 "\n"
 "<header>text='Volgorde en aantal aanvallen'</header>"
 
+#. topic
 #: data/core/help.cfg:220
 msgid ""
 "\n"
@@ -872,6 +997,7 @@ msgstr ""
 "een Orkgrunt met 9-2 maar twee aanvallen krijgt die elk 9 punten schade "
 "toebrengen."
 
+#. topic
 #: data/core/help.cfg:222
 msgid ""
 "\n"
@@ -882,6 +1008,7 @@ msgstr ""
 "\n"
 "<header>text='Raakkans'</header>"
 
+#. topic
 #: data/core/help.cfg:224
 msgid ""
 "\n"
@@ -905,6 +1032,7 @@ msgstr ""
 "hangt de kans dat de elfenkrijger zijn aanvaller raakt, af van het "
 "terreinsoort waarin de aanvaller zich bevindt."
 
+#. topic
 #: data/core/help.cfg:226
 msgid ""
 "\n"
@@ -922,6 +1050,7 @@ msgstr ""
 "<ref>dst=weaponspecial_marksman text=Precisieschutters</ref>, die een "
 "raakkans van ten minste 60% hebben."
 
+#. topic
 #: data/core/help.cfg:228
 msgid ""
 "\n"
@@ -932,6 +1061,7 @@ msgstr ""
 "\n"
 "<header>text=Schade</header>"
 
+#. topic
 #: data/core/help.cfg:230
 msgid ""
 "\n"
@@ -955,6 +1085,7 @@ msgstr ""
 "kun je <italic>text='Schadeberekeningen'</italic> selecteren in het "
 "aanvalselectievenster."
 
+#. topic
 #: data/core/help.cfg:232
 msgid ""
 "\n"
@@ -972,10 +1103,12 @@ msgstr ""
 "zowel voor de aanvaller als de verdediger, wanneer de eenheid met dit "
 "vermogen aanvalt."
 
+#. topic
 #: data/core/help.cfg:237
 msgid "Damage Types and Resistance"
 msgstr "Aanvalstypes en Weerstand"
 
+#. topic
 #: data/core/help.cfg:238
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -990,6 +1123,7 @@ msgstr ""
 "verschillende mate weerstand hebben tegen deze aanvalstypen waardoor de "
 "hoeveelheid daadwerkelijk toegebrachte schade verandert."
 
+#. topic
 #: data/core/help.cfg:240
 msgid ""
 "\n"
@@ -1008,6 +1142,7 @@ msgstr ""
 "Een weerstand van -100% betekent dat de toegebrachte schade van dat type "
 "verdubbeld wordt."
 
+#. topic
 #: data/core/help.cfg:242
 msgid ""
 "\n"
@@ -1022,6 +1157,7 @@ msgstr ""
 "puntige aanvallen, maar zijn kwetsbaar voor stompe en vuurschade, en zeer "
 "kwetsbaar voor mysterieuze aanvallen."
 
+#. topic
 #: data/core/help.cfg:244
 msgid ""
 "\n"
@@ -1035,10 +1171,12 @@ msgstr ""
 "Als een aanval succesvol is brengt hij altijd ten minste 1 punt schade toe, "
 "zelfs als de verdediger 100% weerstand heeft tegen het aanvalstype."
 
+#. topic
 #: data/core/help.cfg:249
 msgid "Time of Day"
 msgstr "Tijd van de Dag"
 
+#. topic
 #: data/core/help.cfg:253
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -1053,6 +1191,7 @@ msgstr ""
 "minder.\n"
 "Neutrale eenheden worden niet beïnvloed door dag en nacht."
 
+#. topic
 #: data/core/help.cfg:256
 msgid ""
 "\n"
@@ -1067,30 +1206,43 @@ msgstr ""
 "gebruikelijk dag/nacht-cyclus gelden Voormiddag en Namiddag als dag en "
 "Eerste en Tweede wacht als nacht:\n"
 
+#. time
+#. topic
 #: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "Ochtend"
 
+#. time
+#. topic
 #: data/core/help.cfg:257 data/core/macros/schedules.cfg:21
 msgid "Morning"
 msgstr "Voormiddag"
 
+#. time
+#. topic
 #: data/core/help.cfg:258 data/core/macros/schedules.cfg:32
 msgid "Afternoon"
 msgstr "Namiddag"
 
+#. time
+#. topic
 #: data/core/help.cfg:259 data/core/macros/schedules.cfg:43
 msgid "Dusk"
 msgstr "Avond"
 
+#. time
+#. topic
 #: data/core/help.cfg:260 data/core/macros/schedules.cfg:57
 msgid "First Watch"
 msgstr "Eerste Wacht"
 
+#. time
+#. topic
 #: data/core/help.cfg:261 data/core/macros/schedules.cfg:71
 msgid "Second Watch"
 msgstr "Tweede Wacht"
 
+#. topic
 #: data/core/help.cfg:263
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
@@ -1099,10 +1251,12 @@ msgstr ""
 "Pas op, sommige scenario's vinden ondergronds plaats waar het altijd nacht "
 "is!"
 
+#. topic
 #: data/core/help.cfg:268
 msgid "Experience and Advancement"
 msgstr "Ervaring en Promotie"
 
+#. topic
 #: data/core/help.cfg:269
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
@@ -1116,6 +1270,7 @@ msgstr ""
 "tegenstander met rang 0, 8 voor een met rang 1, 16 voor een met rang 2, 24 "
 "voor een met rang 3, etc."
 
+#. topic
 #: data/core/help.cfg:271
 msgid ""
 "\n"
@@ -1133,6 +1288,7 @@ msgstr ""
 "waarbij hij volledig geneest van eventuele verwondingen. In sommige gevallen "
 "mag je kiezen tot wat de eenheid promoveert."
 
+#. topic
 #: data/core/help.cfg:273
 msgid ""
 "\n"
@@ -1160,10 +1316,12 @@ msgstr ""
 "intelligente eenheden). Het krijgen wordt echter steeds moeilijker, zodat "
 "het vaak verstandiger is eenheden van lagere rang te doen promoveren."
 
+#. topic
 #: data/core/help.cfg:278
 msgid "Healing"
 msgstr "Genezing"
 
+#. topic
 #: data/core/help.cfg:279
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -1179,6 +1337,7 @@ msgstr ""
 "nog andere manieren om verwondingen te genezen die allemaal aan het begin "
 "van je beurt, dus voordat je iets doet, hun werking hebben."
 
+#. topic
 #: data/core/help.cfg:281
 msgid ""
 "\n"
@@ -1191,6 +1350,7 @@ msgstr ""
 "Rust: Een eenheid die niet beweegt, niet aanvalt en niet aangevallen wordt "
 "zal 2HP genezen in de volgende beurt."
 
+#. topic
 #: data/core/help.cfg:282
 msgid ""
 "\n"
@@ -1199,6 +1359,7 @@ msgstr ""
 "\n"
 "Dorpen: Een eenheid die een beurt begint in een dorp geneest 8HP."
 
+#. topic
 #: data/core/help.cfg:283
 msgid ""
 "\n"
@@ -1210,6 +1371,7 @@ msgstr ""
 "Regenereert-eigenschap (trollen bijvoorbeeld) geneest aan het begin van elke "
 "beurt 8HP."
 
+#. topic
 #: data/core/help.cfg:284
 msgid ""
 "\n"
@@ -1223,6 +1385,7 @@ msgstr ""
 "vakje staat verplegen. De verpleegde eenheid verkrijgt zo 4 of 8HP per beurt "
 "of wordt behoed voor de effecten van een vergiftiging."
 
+#. topic
 #: data/core/help.cfg:285
 msgid ""
 "\n"
@@ -1236,6 +1399,7 @@ msgstr ""
 "ref>, genezen alle bevriende aangrenzende eenheden van een eventuele "
 "vergiftiging."
 
+#. topic
 #: data/core/help.cfg:287
 msgid ""
 "\n"
@@ -1251,10 +1415,12 @@ msgstr ""
 "voordeligste mogelijkheid wordt gebruikt. Tussen twee scenario's in krijgen "
 "de eenheden al hun hitpoints terug."
 
+#. topic
 #: data/core/help.cfg:292
 msgid "Income and Upkeep"
 msgstr "Inkomen en Onderhoud"
 
+#. topic
 #: data/core/help.cfg:293
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1267,6 +1433,7 @@ msgstr ""
 "kunt nemen naar een volgend scenario. Er zijn twee kanten aan het verhaal: "
 "Inkomen en Onderhoud."
 
+#. topic
 #: data/core/help.cfg:295
 msgid ""
 "\n"
@@ -1283,6 +1450,7 @@ msgstr ""
 "je 10 dorpen hebt, ontvang je 12 goudstukken per beurt. Onderhoudskosten "
 "worden daar van afgetrokken, zoals hieronder beschreven."
 
+#. topic
 #: data/core/help.cfg:297
 msgid ""
 "\n"
@@ -1302,6 +1470,7 @@ msgstr ""
 "Bijvoorbeeld: Je hebt twaalf eenheden met rang 1 en tien dorpjes. Je moet "
 "dan twee goudstukken per beurt betalen aan onderhoud."
 
+#. topic
 #: data/core/help.cfg:299
 msgid ""
 "\n"
@@ -1316,6 +1485,7 @@ msgstr ""
 "met de zes eenheden en tien dorpen een netto inkomen zou hebben van 3 "
 "goudstukken per beurt."
 
+#. topic
 #: data/core/help.cfg:300
 msgid ""
 "\n"
@@ -1334,10 +1504,12 @@ msgstr ""
 "in het tweede scenario van De Kroonprins) zijn meestal loyaal. De eenheid "
 "die je speelt (zoals Konrad) zal bijna altijd een leider zijn."
 
+#. topic
 #: data/core/help.cfg:305
 msgid "Wrap Up"
 msgstr "Slot"
 
+#. topic
 #: data/core/help.cfg:306
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1352,14 +1524,17 @@ msgstr ""
 "in principe weet je nu genoeg om De Kroonprins te spelen. Succes en veel "
 "plezier!"
 
+#. topic
 #: data/core/help.cfg:311
 msgid "ingame_help_item^Contributors"
 msgstr "Bijdragers"
 
+#. topic
 #: data/core/help.cfg:317
 msgid "License"
 msgstr "Licentie"
 
+#. topic
 #: data/core/help.cfg:325
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
@@ -1373,6 +1548,7 @@ msgstr ""
 "lichtelijk. In principe worden ze willekeurig toegewezen aan een "
 "gerekruteerde eenheid."
 
+#. topic
 #: data/core/help.cfg:327
 msgid ""
 "\n"
@@ -1389,6 +1565,7 @@ msgstr ""
 "text=Snel</ref>, <ref>dst=traits_resilient text=Robuust</ref>, and "
 "<ref>dst=traits_strong text=Sterk</ref>."
 
+#. topic
 #: data/core/help.cfg:331
 msgid ""
 "\n"
@@ -1405,15 +1582,18 @@ msgstr ""
 "ref>, and·<ref>dst=traits_dextrous text=Behendig</ref>.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:336
 msgid "Intelligent"
 msgstr "Intelligent"
 
+#. topic
 #: data/core/help.cfg:337
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Intelligente eenheden hebben 20% minder ervaring nodig om te promoveren."
 
+#. topic
 #: data/core/help.cfg:339
 msgid ""
 "\n"
@@ -1432,16 +1612,19 @@ msgstr ""
 "hebt dan doe je er waarschijnlijk verstandig aan eenheden op te roepen met "
 "bruikbaardere kenmerken."
 
+#. topic
 #: data/core/help.cfg:344
 msgid "Quick"
 msgstr "Snel"
 
+#. topic
 #: data/core/help.cfg:345
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Snelle eenheden kunnen elke beurt een extra zet doen, maar hebben 5% minder "
 "hitpoints."
 
+#. topic
 #: data/core/help.cfg:347
 msgid ""
 "\n"
@@ -1461,14 +1644,17 @@ msgstr ""
 "je troepen verspreidt. Daar komt bij dat snelle eenheden minder taai zijn, "
 "en daarom minder goed in staat betwiste posities te behouden."
 
+#. topic
 #: data/core/help.cfg:352
 msgid "Resilient"
 msgstr "Robuust"
 
+#. topic
 #: data/core/help.cfg:353
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "Robuuste eenheden hebben 4 HP en 1 HP per level meer dan normaal."
 
+#. topic
 #: data/core/help.cfg:355
 msgid ""
 "\n"
@@ -1486,10 +1672,12 @@ msgstr ""
 "eenheden die weinig hitpoints, een goede verdediging en hoge weerstanden "
 "hebben. Robuuste eenheden zijn goed in staat om posities te behouden."
 
+#. topic
 #: data/core/help.cfg:360
 msgid "Strong"
 msgstr "Sterk"
 
+#. topic
 #: data/core/help.cfg:361
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
@@ -1498,6 +1686,7 @@ msgstr ""
 "Sterke eenheden verwonden de tegenstander met een extra hitpoint voor elke "
 "rake klap van dichtbij en hebben 1 HP meer."
 
+#. topic
 #: data/core/help.cfg:363
 msgid ""
 "\n"
@@ -1514,19 +1703,23 @@ msgstr ""
 "zoals de elfenkrijger. Sterke eenheden kunnen erg nuttig zijn wanneer een "
 "extra puntje verwonding precies genoeg is om de tegenstander te doden."
 
+#. topic
 #: data/core/help.cfg:368
 msgid "Fearless"
 msgstr "Onbevreesd"
 
+#. topic
 #: data/core/help.cfg:369
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 "Aversie tegen licht en donker heeft geen invloed op deze brave individuen."
 
+#. topic
 #: data/core/help.cfg:374
 msgid "Loyal"
 msgstr "Loyaal"
 
+#. topic
 #: data/core/help.cfg:375
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
@@ -1537,6 +1730,7 @@ msgstr ""
 "eenheden betaal je aan het eind van elke beurt een hoeveelheid goudstukken "
 "gelijk aan hun rang, maar niet voor loyale eenheden."
 
+#. topic
 #: data/core/help.cfg:377
 msgid ""
 "\n"
@@ -1558,10 +1752,12 @@ msgstr ""
 "dus het kan onverstandig zijn loyale eenheden weg te sturen of per ongeluk "
 "te laten omkomen."
 
+#. topic
 #: data/core/help.cfg:382
 msgid "trait^Undead"
 msgstr "Ondood"
 
+#. topic
 #: data/core/help.cfg:383
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
@@ -1570,6 +1766,7 @@ msgstr ""
 "Ondode eenheden zijn immuun voor vergif, ook drooglegging en pest heeft geen "
 "invloed op ze."
 
+#. topic
 #: data/core/help.cfg:385
 msgid ""
 "\n"
@@ -1586,10 +1783,12 @@ msgstr ""
 "weer te vechten, heeft vergif tegen hen geen effect. Dat kan hen waardevol "
 "maken in het gevecht tegen vijanden die vergif gebruiken bij hun aanvallen."
 
+#. topic
 #: data/core/help.cfg:390
 msgid "trait^Mechanical"
 msgstr "Mechanisch"
 
+#. topic
 #: data/core/help.cfg:391
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
@@ -1598,6 +1797,7 @@ msgstr ""
 "Mechanisch eenheden zijn immuun voor vergif, ook drooglegging en pest heeft "
 "geen invloed op ze."
 
+#. topic
 #: data/core/help.cfg:393
 msgid ""
 "\n"
@@ -1612,16 +1812,19 @@ msgstr ""
 "mechanische eenheden niet leven hebben gif, verdroging en pest geen effect "
 "op ze."
 
+#. topic
 #: data/core/help.cfg:398
 msgid "Dextrous"
 msgstr "Behendig"
 
+#. topic
 #: data/core/help.cfg:399
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Behendige eenheden brengen 1 punt meer schade toe met elke aanval van veraf."
 
+#. topic
 #: data/core/help.cfg:401
 msgid ""
 "\n"
@@ -1638,10 +1841,12 @@ msgstr ""
 "echter zijn begiftigd met een talent dat dat van hun broeders overtreft. "
 "Deze Elfen brengen met elke pijl een extra punt schade toe."
 
+#. topic
 #: data/core/help.cfg:406
 msgid "Healthy"
 msgstr "Gezond"
 
+#. topic
 #: data/core/help.cfg:407
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
@@ -1650,6 +1855,7 @@ msgstr ""
 "Berucht voor hun vitaliteit, sommige dwergen zijn sterker dan andere en "
 "kunnen zelfs rusten terwijl ze reizen."
 
+#. topic
 #: data/core/help.cfg:409
 msgid ""
 "\n"
@@ -1662,6 +1868,7 @@ msgstr ""
 "Gezonde eenheden hebben 2 HP meer dan gebruikelijk en iedere beurt rust "
 "geeft ze ook 2 HP meer."
 
+#. topic
 #: data/core/help.cfg:417
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
@@ -1672,10 +1879,12 @@ msgstr ""
 "eenheidsbewegingen en verdedig mogelijkheden beïnvloeden.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:423
 msgid "Grassland"
 msgstr "Grasland"
 
+#. topic
 #: data/core/help.cfg:428
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
@@ -1695,10 +1904,12 @@ msgstr ""
 "De meeste eenheden hebben een verdedigingspercentage van 30% tot 40% op "
 "grasland."
 
+#. topic
 #: data/core/help.cfg:433
 msgid "Road"
 msgstr "Weg"
 
+#. topic
 #: data/core/help.cfg:436
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1709,10 +1920,12 @@ msgstr ""
 "reizigers. Wat betreft de spelregels zijn wegen gelijk aan "
 "<ref>dst=terrain_grassland text=Grasland</ref>."
 
+#. topic
 #: data/core/help.cfg:441
 msgid "Forest"
 msgstr "Bos"
 
+#. topic
 #: data/core/help.cfg:448
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1746,10 +1959,12 @@ msgstr ""
 "verdediging, terwijl dwergen niet meer dan 30% krijgen.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:453
 msgid "Hills"
 msgstr "Heuvels"
 
+#. topic
 #: data/core/help.cfg:458
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
@@ -1772,10 +1987,12 @@ msgstr ""
 "De meeste eenheden hebben 50% verdediging in de heuvels, maar cavalerie "
 "heeft 40% en Dwergen 60%."
 
+#. topic
 #: data/core/help.cfg:463
 msgid "Mountains"
 msgstr "Bergen"
 
+#. topic
 #: data/core/help.cfg:468
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
@@ -1798,10 +2015,12 @@ msgstr ""
 "De meeste eenheden hebben een verdediging van 60% in de bergen, dwergen "
 "zelfs 70%."
 
+#. topic
 #: data/core/help.cfg:473
 msgid "Swamp"
 msgstr "Moeras"
 
+#. topic
 #: data/core/help.cfg:478
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
@@ -1822,10 +2041,12 @@ msgstr ""
 "De meeste eenheden moeten het doen met 30% verdediging in het moeras. "
 "Meermannen, Naga's en Saurianen krijgen meestal 60%."
 
+#. topic
 #: data/core/help.cfg:483
 msgid "Shallow Water"
 msgstr "Ondiep water"
 
+#. topic
 #: data/core/help.cfg:488
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
@@ -1848,10 +2069,12 @@ msgstr ""
 "De meeste eenheden moeten het doen met 20% tot 30% verdediging in ondiep "
 "water. Meermannen en Naga's krijgen daarentegen 60%."
 
+#. topic
 #: data/core/help.cfg:493
 msgid "Deep Water"
 msgstr "Diep water"
 
+#. topic
 #: data/core/help.cfg:498
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
@@ -1868,10 +2091,12 @@ msgstr ""
 "Meermannen en Naga's krijgen beide een verdediging van 50% in diep water en "
 "worden er niet door vertraagd."
 
+#. topic
 #: data/core/help.cfg:503
 msgid "Snow"
 msgstr "Sneeuw"
 
+#. topic
 #: data/core/help.cfg:508
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
@@ -1885,10 +2110,12 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in de Toendra."
 
+#. topic
 #: data/core/help.cfg:513
 msgid "Ice"
 msgstr "IJs"
 
+#. topic
 #: data/core/help.cfg:516
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
@@ -1900,10 +2127,12 @@ msgstr ""
 "zelfs degenen die onderwater kunnen ademen, niet onder het ijs kunnen "
 "zwemmen."
 
+#. topic
 #: data/core/help.cfg:521
 msgid "Castle"
 msgstr "Kasteel"
 
+#. topic
 #: data/core/help.cfg:528
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -1925,10 +2154,12 @@ msgstr ""
 "De meeste eenheden hebben ongeveer 60% verdediging in een kasteel.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:533
 msgid "Sand"
 msgstr "Zand"
 
+#. topic
 #: data/core/help.cfg:538
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
@@ -1943,10 +2174,12 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in het zand."
 
+#. topic
 #: data/core/help.cfg:543
 msgid "Desert"
 msgstr "Woestijn"
 
+#. topic
 #: data/core/help.cfg:546
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -1957,10 +2190,12 @@ msgstr ""
 "stranden, maar qua spelregels gelden ze toch als <ref>dst=terrain_sand "
 "text=Zand</ref>."
 
+#. topic
 #: data/core/help.cfg:551
 msgid "Cave"
 msgstr "Grot"
 
+#. topic
 #: data/core/help.cfg:556
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -1982,10 +2217,12 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in grotten, dwergen 50%."
 
+#. topic
 #: data/core/help.cfg:561
 msgid "Rockbound Cave"
 msgstr "Rotsgrot"
 
+#. topic
 #: data/core/help.cfg:566
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2008,10 +2245,12 @@ msgstr ""
 "De meeste eenheden hebben 50% verdediging in deze grotten, cavalerie niet "
 "meer dan 40%, dwergen geniet 60% verdediging. "
 
+#. topic
 #: data/core/help.cfg:571
 msgid "Illuminated Cave"
 msgstr "Verlichte grot"
 
+#. topic
 #: data/core/help.cfg:574
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2024,10 +2263,12 @@ msgstr ""
 "hun aanval en verliezen wetteloze eenheden hun bonus. Verder is dit terrein "
 "gelijk aan een reguliere grot."
 
+#. topic
 #: data/core/help.cfg:579
 msgid "Mushroom Grove"
 msgstr "Paddenstoelenveld"
 
+#. topic
 #: data/core/help.cfg:584
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -2050,10 +2291,12 @@ msgstr ""
 "De meeste eenheden hebben 50% tot 60% verdediging in een paddenstoelenveld, "
 "cavalerie slechts 20%."
 
+#. topic
 #: data/core/help.cfg:589
 msgid "Savanna"
 msgstr "Savanne"
 
+#. topic
 #: data/core/help.cfg:592
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
@@ -2064,10 +2307,13 @@ msgstr ""
 "de wereld. Qua spelregels is het gelijk aan <ref>dst=terrain_grassland "
 "text=Grasland</ref>."
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. topic
 #: data/core/help.cfg:597 src/terrain.cpp:135
 msgid "Village"
 msgstr "Dorp"
 
+#. topic
 #: data/core/help.cfg:604
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -2092,10 +2338,12 @@ msgstr ""
 "slechts 40%.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:609
 msgid "Submerged Village"
 msgstr "Gezonken dorp"
 
+#. topic
 #: data/core/help.cfg:614
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
@@ -2117,10 +2365,12 @@ msgstr ""
 "Meermensen en Nagas hebben 60% verdediging in gezonken dorpen, terwijl "
 "landbewoners meestal een lage verdediging hebben."
 
+#. topic
 #: data/core/help.cfg:619
 msgid "Chasm"
 msgstr "Afgrond"
 
+#. topic
 #: data/core/help.cfg:622
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
@@ -2132,10 +2382,12 @@ msgstr ""
 "afgrond heeft loodrechte wanden waarlangs men niet naar beneden kan klimmen. "
 "Alleen vliegende eenheden kunnen over een afgrond heen."
 
+#. topic
 #: data/core/help.cfg:627
 msgid "Lava"
 msgstr "Lava"
 
+#. topic
 #: data/core/help.cfg:630
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
@@ -2150,10 +2402,12 @@ msgstr ""
 "boven verlicht. Gezagsgetrouwe eenheden krijgen daarom hun aanvalsbonus, "
 "wetteloze eenheden verliezen de bonus."
 
+#. topic
 #: data/core/help.cfg:635
 msgid "River Ford"
 msgstr "Rivierwade"
 
+#. topic
 #: data/core/help.cfg:638
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
@@ -2168,10 +2422,12 @@ msgstr ""
 "bewegingsvrijheid. Qua spelregels wordt een oversteekplaats gezien als land "
 "of als water, wat maar het beste uitkomt."
 
+#. topic
 #: data/core/help.cfg:643
 msgid "Bridge"
 msgstr "Brug"
 
+#. topic
 #: data/core/help.cfg:648
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2196,10 +2452,12 @@ msgstr ""
 "gezien, wat het beste uitkomt. Een waterwezen en landwezen kunnen niet "
 "tegelijk de brugtegel bezetten."
 
+#. topic
 #: data/core/help.cfg:653
 msgid "Cave Wall"
 msgstr "Grotwand"
 
+#. topic
 #: data/core/help.cfg:656
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
@@ -2208,10 +2466,12 @@ msgstr ""
 "Grotwanden bestaan uit solide gesteente en staat erom bekend zelfs de meest "
 "gedreven reiziger op te houden."
 
+#. topic
 #: data/core/help.cfg:661
 msgid "Impassable Mountain"
 msgstr "Onbegaanbaar gebergte"
 
+#. topic
 #: data/core/help.cfg:664
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
@@ -2222,10 +2482,12 @@ msgstr ""
 "met wolken. Dit gebergte oversteken is praktisch onmogelijk. Zelfs vliegende "
 "wezens kunnen niet de enorme hoogte overbruggen."
 
+#. topic
 #: data/core/help.cfg:675
 msgid "General commands"
 msgstr "Algemene commando's"
 
+#. topic
 #: data/core/help.cfg:679
 msgid ""
 "\n"
@@ -2236,6 +2498,7 @@ msgstr ""
 "Chatberichten opschonen.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:683
 msgid ""
 "\n"
@@ -2250,6 +2513,7 @@ msgstr ""
 "Debug-modus word uitgeschakeld bij het verlaten van het spel of :nodebug.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:686
 #, fuzzy
 msgid ""
@@ -2269,6 +2533,7 @@ msgstr ""
 "actieve kant.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:689
 msgid ""
 "\n"
@@ -2279,6 +2544,7 @@ msgstr ""
 "Schakel het display naar het huidige frames per seconde.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:692
 msgid ""
 "\n"
@@ -2289,6 +2555,7 @@ msgstr ""
 "Schakel een logdomein naar een ander logniveau.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:695
 msgid ""
 "\n"
@@ -2299,6 +2566,7 @@ msgstr ""
 "Scherm hertekenen.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:698
 msgid ""
 "\n"
@@ -2309,6 +2577,7 @@ msgstr ""
 "Het themaselectiemenu opvragen.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:701
 msgid ""
 "\n"
@@ -2319,6 +2588,7 @@ msgstr ""
 "Scenario beëindigen (zonder bevestiging).\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:704
 msgid ""
 "\n"
@@ -2329,6 +2599,7 @@ msgstr ""
 "Spel opslaan (zonder bevestiging).\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:705
 msgid ""
 "\n"
@@ -2337,10 +2608,12 @@ msgstr ""
 "\n"
 "Spel opslaan en scenario afsluiten (zonder bevestiging)."
 
+#. topic
 #: data/core/help.cfg:710
 msgid "Multiplayer commands"
 msgstr "Multiplayercommando's"
 
+#. topic
 #: data/core/help.cfg:714
 msgid ""
 "\n"
@@ -2353,6 +2626,7 @@ msgstr ""
 "verwijder hem.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:717
 msgid ""
 "\n"
@@ -2370,6 +2644,7 @@ msgstr ""
 "gaan.)\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:720
 msgid ""
 "\n"
@@ -2383,6 +2658,7 @@ msgstr ""
 "Vaak gebruikt om iemand die connectieproblemen heeft te helpen.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:723
 msgid ""
 "\n"
@@ -2395,6 +2671,7 @@ msgstr ""
 "waarnemers getoond die het zwijgen is opgelegd.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:724
 msgid ""
 "\n"
@@ -2403,10 +2680,12 @@ msgstr ""
 "\n"
 "Toeschouwers de mond snoeren aan/uit."
 
+#. topic
 #: data/core/help.cfg:729
 msgid "Debug mode commands"
 msgstr "Debug modus commando's"
 
+#. topic
 #: data/core/help.cfg:733
 msgid ""
 "\n"
@@ -2417,6 +2696,7 @@ msgstr ""
 "Maak een eenheid van een gespecificeerd type op het geselecteerde vak.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:736
 msgid ""
 "\n"
@@ -2427,6 +2707,7 @@ msgstr ""
 "Schakel mist/sluier voor de huidige zijde.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:739
 msgid ""
 "\n"
@@ -2437,6 +2718,7 @@ msgstr ""
 "Voegt het gespecificeerde aantal aan de huidige zijdes goudvoorraad toe.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:742
 msgid ""
 "\n"
@@ -2447,6 +2729,7 @@ msgstr ""
 "Stel handmatig een spelstat variabele waarde in.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:745
 msgid ""
 "\n"
@@ -2457,6 +2740,7 @@ msgstr ""
 "Toon een spelstat variabele.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:748
 msgid ""
 "\n"
@@ -2467,6 +2751,7 @@ msgstr ""
 "Voer handmatig het gespecificeerde event uit.\n"
 "\n"
 
+#. topic
 #: data/core/help.cfg:749
 msgid ""
 "\n"
@@ -2477,10 +2762,12 @@ msgstr ""
 "Veranderd het gespecificeerde eigenschap van de geselecteerde eenheid. "
 "Bijvoorbeeld: :unit hitpoints=100"
 
+#. heals
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "verpleegt +4"
 
+#. heals
 #: data/core/macros/abilities.cfg:15
 msgid ""
 "Heals +4:\n"
@@ -2500,10 +2787,12 @@ msgstr ""
 "behoed worden voor de effecten van een vergiftiging. Om echter van een "
 "vergiftiging af te komen moet de eenheid een dorp of een genezer opzoeken."
 
+#. heals
 #: data/core/macros/abilities.cfg:29
 msgid "heals +8"
 msgstr "verpleegt +8"
 
+#. heals
 #: data/core/macros/abilities.cfg:34
 msgid ""
 "Heals +8:\n"
@@ -2523,10 +2812,12 @@ msgstr ""
 "behoed worden voor de effecten van een vergiftiging. Om echter van een "
 "vergiftiging af te komen moet de eenheid een dorp of een genezer opzoeken."
 
+#. heals
 #: data/core/macros/abilities.cfg:49
 msgid "cures"
 msgstr "geneest"
 
+#. heals
 #: data/core/macros/abilities.cfg:51
 msgid ""
 "Cures:\n"
@@ -2537,10 +2828,12 @@ msgstr ""
 "Een genezer kan een vergiftiging verhelpen. In dat geval zal de verpleegde "
 "eenheid die beurt geen extra hitpoints genezen."
 
+#. regenerate
 #: data/core/macros/abilities.cfg:73
 msgid "regenerates"
 msgstr "regenereert"
 
+#. regenerate
 #: data/core/macros/abilities.cfg:75
 msgid ""
 "Regenerates:\n"
@@ -2551,10 +2844,12 @@ msgstr ""
 "De eenheid heelt 8HP per beurt. Indien het wordt vergiftigd zal het in de "
 "volgende beurt het gif uitscheiden."
 
+#. resistance
 #: data/core/macros/abilities.cfg:92
 msgid "steadfast"
 msgstr "standvastig"
 
+#. resistance
 #: data/core/macros/abilities.cfg:94
 msgid ""
 "Steadfast:\n"
@@ -2565,12 +2860,14 @@ msgstr ""
 "De weerstanden van deze eenheid worden verdubbeld tot een maximum van 50% "
 "als hij verdedigt. Kwetsbaarheden veranderen niet."
 
+#. leadership
 #: data/core/macros/abilities.cfg:107 data/core/macros/abilities.cfg:129
 #: data/core/macros/abilities.cfg:163 data/core/macros/abilities.cfg:209
 #: data/core/macros/abilities.cfg:267
 msgid "leadership"
 msgstr "leiderschap"
 
+#. leadership
 #: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
 #: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
 #: data/core/macros/abilities.cfg:271
@@ -2591,10 +2888,12 @@ msgstr ""
 "Aangrenzende geallieerde eenheden van lagere rang brengen per verschil in "
 "rang met de leider, 25% zwaardere verwondingen toe aan hun tegenstanders."
 
+#. skirmisher
 #: data/core/macros/abilities.cfg:335
 msgid "skirmisher"
 msgstr "warzaaier"
 
+#. skirmisher
 #: data/core/macros/abilities.cfg:337
 msgid ""
 "Skirmisher:\n"
@@ -2605,10 +2904,12 @@ msgstr ""
 "Deze eenheid is bedreven in het ontwijken van vijanden en wordt niet "
 "gehinderd door beheersingszones."
 
+#. illuminates
 #: data/core/macros/abilities.cfg:350
 msgid "illuminates"
 msgstr "straalt"
 
+#. illuminates
 #: data/core/macros/abilities.cfg:354
 msgid ""
 "Illuminates:\n"
@@ -2625,10 +2926,12 @@ msgstr ""
 "Eenheden die aan deze eenheid grenzen vechten 's nachts alsof het avond is "
 "en bij avond alsof het dag is."
 
+#. teleport
 #: data/core/macros/abilities.cfg:364
 msgid "teleport"
 msgstr "teleportatie"
 
+#. teleport
 #: data/core/macros/abilities.cfg:366
 #, fuzzy
 msgid ""
@@ -2640,10 +2943,12 @@ msgstr ""
 "Deze eenheid kan teleporteren tussen twee bevriende dorpen en gebruikt "
 "daarvoor slechts een van zijn zetten."
 
+#. hides
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
 msgstr "hinderlaag"
 
+#. hides
 #: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:384
 msgid ""
 "Ambush:\n"
@@ -2661,10 +2966,12 @@ msgstr ""
 "ze er eenheden naast hebben staan. Een vijandelijke eenheid die deze eenheid "
 "als eerste ontdekt blijft geschrokken staan."
 
+#. hides
 #: data/core/macros/abilities.cfg:399 data/core/macros/abilities.cfg:404
 msgid "nightstalk"
 msgstr "nachtsluiper"
 
+#. hides
 #: data/core/macros/abilities.cfg:403 data/core/macros/abilities.cfg:408
 msgid ""
 "Nightstalk:\n"
@@ -2682,10 +2989,12 @@ msgstr ""
 "Een vijandelijke eenheid die deze eenheid als eerste ontdekt blijft "
 "geschrokken staan."
 
+#. hides
 #: data/core/macros/abilities.cfg:423 data/core/macros/abilities.cfg:428
 msgid "concealment"
 msgstr "verstoppen"
 
+#. hides
 #: data/core/macros/abilities.cfg:427 data/core/macros/abilities.cfg:432
 msgid ""
 "Concealment:\n"
@@ -2706,10 +3015,12 @@ msgstr ""
 "wanneer de eenheid zich naast vijandelijke troepen bevindt. Een vijandelijke "
 "eenheid die deze eenheid als eerste ontdekt blijft geschrokken staan."
 
+#. hides
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:452
 msgid "submerge"
 msgstr "onderduiken"
 
+#. hides
 #: data/core/macros/abilities.cfg:451 data/core/macros/abilities.cfg:456
 msgid ""
 "Submerge:\n"
@@ -2726,10 +3037,12 @@ msgstr ""
 "eenheid zich naast vijandelijke troepen bevindt. Een vijandelijke eenheid "
 "die deze eenheid als eerste ontdekt blijft geschrokken staan."
 
+#. dummy
 #: data/core/macros/abilities.cfg:474
 msgid "feeding"
 msgstr "voeden"
 
+#. dummy
 #: data/core/macros/abilities.cfg:476
 msgid ""
 "Feeding:\n"
@@ -2894,18 +3207,22 @@ msgstr ""
 "8HP totdat ze worden genezen of totdat ze nog slechts 1HP hebben. Gif zelf "
 "kan geen eenheid doden."
 
+#. advancement
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Max HP bonus +3, Max XP +20%"
 
+#. advancement
 #: data/core/macros/amla.cfg:30
 msgid ", MAX XP +25%"
 msgstr ", MAX XP +25%"
 
+#. advancement
 #: data/core/macros/amla.cfg:30
 msgid "Max HP bonus +"
 msgstr "Max HP bonus +"
 
+#. message: speaker=narrator
 #: data/core/macros/items.cfg:41
 msgid ""
 "You have come across a wishing well.\n"
@@ -2914,10 +3231,12 @@ msgstr ""
 "Je bent langs een wensput gekomen.\n"
 "Waarvoor wil je wensen?"
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:45
 msgid "A swift victory"
 msgstr "Een vlotte overwinning"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:53
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
@@ -2926,51 +3245,63 @@ msgstr ""
 "Met deze gouden munt, hoop ik dat dit gevecht in een vlotte en veilige "
 "overwinning zal eindigen."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:60
 msgid "Lots of gold"
 msgstr "Veel goud"
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:68
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Ik wens dat deze ene munt vertienvoudigd zal naar me zal terugkeren."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:75
 msgid "Peace throughout Wesnoth."
 msgstr "Vrede in Wesnoth."
 
+#. message: speaker=unit
 #: data/core/macros/items.cfg:83
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr ""
 "Het enige wat een wens rechtvaardigt is vrede over het Rijk van Wesnoth."
 
+#. option: speaker=narrator
 #: data/core/macros/items.cfg:90
 msgid "Don't make a wish."
 msgstr "Maak geen wens."
 
+#. object
 #: data/core/macros/items.cfg:121
 msgid "Potion of Healing"
 msgstr "Genezingsdrank"
 
+#. object
 #: data/core/macros/items.cfg:124
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Een gevoel van gezondheid overspoelt de drinker."
 
+#. object
 #: data/core/macros/items.cfg:125
 msgid "You are not worthy of healing."
 msgstr "Je bent de genezing niet waard."
 
+#. object
 #: data/core/macros/items.cfg:159
 msgid "Poison"
 msgstr "Vergif"
 
+#. object
 #: data/core/macros/items.cfg:162
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Vergif baant zich een weg door de aderen van deze eenheid..."
 
+#. object
 #: data/core/macros/items.cfg:197
 msgid "Holy Water"
 msgstr "Wijwater"
 
+#. object
 #: data/core/macros/items.cfg:200
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
@@ -2979,69 +3310,85 @@ msgstr ""
 "Dit water zal een dichtbij wapen mysterieuze krachten hebben tot het einde "
 "van het huidige scenario."
 
+#. object
 #: data/core/macros/items.cfg:201
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr ""
 "Ik ben niet geschikt om dit item te hanteren! Laat iemand anders het "
 "oppikken."
 
+#. object
 #: data/core/macros/items.cfg:236
 msgid "Potion of Strength"
 msgstr "Drank van Sterkte"
 
+#. object
 #: data/core/macros/items.cfg:239
 msgid "Strength is given to the drinker."
 msgstr "Extra kracht wordt aan de drinker gegeven."
 
+#. object
 #: data/core/macros/items.cfg:280
 msgid "Potion of Decay"
 msgstr "Drank van Verval"
 
+#. object
 #: data/core/macros/items.cfg:283
 msgid "This poor unit drank something really bad."
 msgstr "Deze arme eenheid heeft iets zeer slechts gedronken."
 
+#. object
 #: data/core/macros/items.cfg:318
 msgid "Ring of Regeneration"
 msgstr "Ring van Genezing"
 
+#. object
 #: data/core/macros/items.cfg:321
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Deze ring geneest de drager een klein beetje elke beurt."
 
+#. object
 #: data/core/macros/items.cfg:358
 msgid "Ring of Slowness"
 msgstr "Ring van de Traagheid"
 
+#. object
 #: data/core/macros/items.cfg:361
 msgid "The bearer of this ring is slowed."
 msgstr "De drager van deze ring is vertraagd."
 
+#. object
 #: data/core/macros/items.cfg:396
 msgid "Staff of Swiftness"
 msgstr "Staf van Gemak"
 
+#. object
 #: data/core/macros/items.cfg:399
 msgid "This staff will grant the bearer swift movement."
 msgstr "Deze staf verleent de drager een gemakkelijk bewegen."
 
+#. object
 #: data/core/macros/items.cfg:400
 msgid "Only magical beings can wield such an object."
 msgstr "Alleen magische schepsels kunnen zo'n object hanteren."
 
+#. object
 #: data/core/macros/items.cfg:434
 msgid "Storm Trident"
 msgstr "Stormdrietand"
 
+#. object
 #: data/core/macros/items.cfg:437
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Een meerman kan met deze drietand bliksemschichten vuren naar de vijand."
 
+#. object
 #: data/core/macros/items.cfg:438
 msgid "Only the mermen can use this item!"
 msgstr "Alleen de meermannen kunnen dit item gebruiken."
 
+#. effect: type=fire
 #: data/core/macros/items.cfg:451
 msgid "storm trident"
 msgstr "stormdrietand"
@@ -3838,6 +4185,8 @@ msgstr ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
+#. time
+#. illuminated_time
 #: data/core/macros/schedules.cfg:102 data/core/macros/schedules.cfg:113
 msgid "Deep Underground"
 msgstr "Diep ondergronds"
@@ -4064,162 +4413,202 @@ msgstr ""
 " Een vergiftigd slachtoffer verzwakt elke beurt tot hij genezen kan worden "
 "in een dorp, of door een genezer."
 
+#. trait
 #: data/core/macros/traits.cfg:9
 msgid "loyal"
 msgstr "loyaal"
 
+#. trait
 #: data/core/macros/traits.cfg:10
 msgid "female^loyal"
 msgstr "loyaal"
 
+#. trait
 #: data/core/macros/traits.cfg:11
 msgid "Zero upkeep"
 msgstr "Geen onderhoudskosten"
 
+#. trait
 #: data/core/macros/traits.cfg:23
 msgid "undead"
 msgstr "ondood"
 
+#. trait
 #: data/core/macros/traits.cfg:24
 msgid "female^undead"
 msgstr "ondood"
 
+#. trait
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
 msgid "Immune to drain, poison and plague"
 msgstr "Immuun voor drooglegging, vergif en pest"
 
+#. trait
 #: data/core/macros/traits.cfg:38
 msgid "mechanical"
 msgstr "mechanisch"
 
+#. trait
 #: data/core/macros/traits.cfg:39
 msgid "female^mechanical"
 msgstr "mechanisch"
 
+#. trait
 #: data/core/macros/traits.cfg:52
 msgid "strong"
 msgstr "sterk"
 
+#. trait
 #: data/core/macros/traits.cfg:53
 msgid "female^strong"
 msgstr "sterk"
 
+#. trait
 #: data/core/macros/traits.cfg:70
 msgid "dextrous"
 msgstr "behendig"
 
+#. trait
 #: data/core/macros/traits.cfg:71
 msgid "female^dextrous"
 msgstr "behendig"
 
+#. trait
 #: data/core/macros/traits.cfg:84
 msgid "quick"
 msgstr "snel"
 
+#. trait
 #: data/core/macros/traits.cfg:85
 msgid "female^quick"
 msgstr "snel"
 
+#. trait
 #: data/core/macros/traits.cfg:101
 msgid "intelligent"
 msgstr "intelligent"
 
+#. trait
 #: data/core/macros/traits.cfg:102
 msgid "female^intelligent"
 msgstr "intelligent"
 
+#. trait
 #: data/core/macros/traits.cfg:114
 msgid "resilient"
 msgstr "robuust"
 
+#. trait
 #: data/core/macros/traits.cfg:115
 msgid "female^resilient"
 msgstr "robuust"
 
+#. trait
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr "gezond"
 
+#. trait
 #: data/core/macros/traits.cfg:133
 msgid "female^healthy"
 msgstr "gezond"
 
+#. trait
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
 msgstr "Kan rusten onder het bewegen"
 
+#. trait
 #: data/core/macros/traits.cfg:146 data/core/macros/traits.cfg:159
 msgid "fearless"
 msgstr "onbevreesd"
 
+#. trait
 #: data/core/macros/traits.cfg:147 data/core/macros/traits.cfg:160
 msgid "female^fearless"
 msgstr "onbevreesd"
 
+#. trait
 #: data/core/macros/traits.cfg:148 data/core/macros/traits.cfg:161
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Vecht normaal gesproken tijdens ongunstige tijden van de dag/nacht"
 
+#. color_range
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
 msgstr "Rood"
 
+#. color_range
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
 msgstr "Blauw"
 
+#. color_range
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
 msgstr "Groen"
 
+#. color_range
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
 msgstr "Paars"
 
+#. color_range
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
 msgstr "Oranje"
 
+#. color_range
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 msgid "Black"
 msgstr "Zwart"
 
+#. color_range
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
 msgstr "Wit"
 
+#. color_range
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
 msgstr "Bruin"
 
+#. color_range
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
 msgstr "Lichtblauw"
 
+#. race
 #: data/core/units.cfg:43
 msgid "race^Bat"
 msgstr "Vleermuis"
 
+#. race
 #: data/core/units.cfg:44
 msgid "race+female^Bat"
 msgstr "Vleermuis"
 
+#. race
 #: data/core/units.cfg:45
 msgid "race^Bats"
 msgstr "Vleermuizen"
 
+#. race
 #: data/core/units.cfg:52
 msgid "race^Drake"
 msgstr "Draakling"
 
+#. race
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
 msgstr "Draakling"
 
+#. race
 #: data/core/units.cfg:54
 msgid "race^Drakes"
 msgstr "Draaklingen"
 
+#. race
 #: data/core/units.cfg:67
 #, fuzzy
 msgid ""
@@ -4300,18 +4689,22 @@ msgstr ""
 "hun durft aan te vallen.\n"
 "\n"
 
+#. race
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
 msgstr "Dwerg"
 
+#. race
 #: data/core/units.cfg:75
 msgid "race+female^Dwarf"
 msgstr "Dwerg"
 
+#. race
 #: data/core/units.cfg:76
 msgid "race^Dwarves"
 msgstr "Dwergen"
 
+#. race
 #: data/core/units.cfg:81
 #, fuzzy
 msgid ""
@@ -4380,18 +4773,22 @@ msgstr ""
 "nederzettingen gebouwd diep in de bergen en hellingen van hun territorium.\n"
 "\n"
 
+#. race
 #: data/core/units.cfg:89
 msgid "race^Elf"
 msgstr "Elf"
 
+#. race
 #: data/core/units.cfg:90
 msgid "race+female^Elf"
 msgstr "Elf"
 
+#. race
 #: data/core/units.cfg:91
 msgid "race^Elves"
 msgstr "Elfen"
 
+#. race
 #: data/core/units.cfg:94
 #, fuzzy
 msgid ""
@@ -4428,42 +4825,52 @@ msgstr ""
 "levensverwachting van Elfen - afgezien van ziekte, ongelukken of oorlog "
 "kunnen ze twee eeuwen oud worden."
 
+#. race
 #: data/core/units.cfg:103
 msgid "race^Goblin"
 msgstr "Kobold"
 
+#. race
 #: data/core/units.cfg:104
 msgid "race+female^Goblin"
 msgstr "Kobold"
 
+#. race
 #: data/core/units.cfg:105
 msgid "race^Goblins"
 msgstr "Kobolds"
 
+#. race
 #: data/core/units.cfg:113
 msgid "race^Gryphon"
 msgstr "Grifioen"
 
+#. race
 #: data/core/units.cfg:114
 msgid "race+female^Gryphon"
 msgstr "Grifioen"
 
+#. race
 #: data/core/units.cfg:115
 msgid "race^Gryphons"
 msgstr "Grifioenen"
 
+#. race
 #: data/core/units.cfg:123
 msgid "race^Human"
 msgstr "Mens"
 
+#. race
 #: data/core/units.cfg:124
 msgid "race+female^Human"
 msgstr "Mens"
 
+#. race
 #: data/core/units.cfg:125
 msgid "race^Humans"
 msgstr "Mensen"
 
+#. race
 #: data/core/units.cfg:132
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
@@ -4505,82 +4912,102 @@ msgid ""
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:139
 msgid "race^Saurian"
 msgstr "Sauriaan"
 
+#. race
 #: data/core/units.cfg:140
 msgid "race+female^Saurian"
 msgstr "Sauriaan"
 
+#. race
 #: data/core/units.cfg:141
 msgid "race^Saurians"
 msgstr "Saurianen"
 
+#. race
 #: data/core/units.cfg:150
 msgid "race^Mechanical"
 msgstr "Mechanisch"
 
+#. race
 #: data/core/units.cfg:151
 msgid "race+plural^Mechanical"
 msgstr "Mechanisch"
 
+#. race
 #: data/core/units.cfg:161
 msgid "race^Merman"
 msgstr "Meerman"
 
+#. race
 #: data/core/units.cfg:162
 msgid "race^Mermaid"
 msgstr "Meervrouw"
 
+#. race
 #: data/core/units.cfg:163
 msgid "race^Mermen"
 msgstr "Meermannen"
 
+#. race
 #: data/core/units.cfg:171
 msgid "race^Monster"
 msgstr "Monster"
 
+#. race
 #: data/core/units.cfg:172
 msgid "race^Monsters"
 msgstr "Monsters"
 
+#. race
 #: data/core/units.cfg:179
 msgid "race^Naga"
 msgstr "Naga"
 
+#. race
 #: data/core/units.cfg:180
 msgid "race^Nagani"
 msgstr "Naga"
 
+#. race
 #: data/core/units.cfg:181
 msgid "race^Nagas"
 msgstr "Nagas"
 
+#. race
 #: data/core/units.cfg:189
 msgid "race^Ogre"
 msgstr "Boeman"
 
+#. race
 #: data/core/units.cfg:190
 msgid "race+female^Ogre"
 msgstr "Boeman"
 
+#. race
 #: data/core/units.cfg:191
 msgid "race^Ogres"
 msgstr "Boemannen"
 
+#. race
 #: data/core/units.cfg:199
 msgid "race^Orc"
 msgstr "Ork"
 
+#. race
 #: data/core/units.cfg:200
 msgid "race+female^Orc"
 msgstr "Ork"
 
+#. race
 #: data/core/units.cfg:201
 msgid "race^Orcs"
 msgstr "Boemannen"
 
+#. race
 #: data/core/units.cfg:211
 #, fuzzy
 msgid ""
@@ -4643,18 +5070,22 @@ msgstr ""
 "In uiterlijk zijn Orks half Mens en half beest. Ze zijn langer, robuuster en "
 "sterker als Mensen. "
 
+#. race
 #: data/core/units.cfg:218
 msgid "race^Troll"
 msgstr "Trol"
 
+#. race
 #: data/core/units.cfg:219
 msgid "race+female^Troll"
 msgstr "Trol"
 
+#. race
 #: data/core/units.cfg:220
 msgid "race^Trolls"
 msgstr "Trollen"
 
+#. race
 #: data/core/units.cfg:226
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
@@ -4693,18 +5124,22 @@ msgid ""
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
 
+#. race
 #: data/core/units.cfg:238
 msgid "race^Undead"
 msgstr "Ondoden"
 
+#. race
 #: data/core/units.cfg:239
 msgid "race+female^Undead"
 msgstr "Ondode"
 
+#. race
 #: data/core/units.cfg:240
 msgid "race+plural^Undead"
 msgstr "Ondode"
 
+#. race
 #: data/core/units.cfg:246
 #, fuzzy
 msgid ""
@@ -4737,26 +5172,32 @@ msgstr ""
 "worden. Bijna ieder dood wezen kan door een voldoende bedreven "
 "dodenbezweerder gereanimeerd worden en opstaan als Ondode. Ondoden zijn "
 
+#. race
 #: data/core/units.cfg:254
 msgid "race^Wose"
 msgstr "Ent"
 
+#. race
 #: data/core/units.cfg:255
 msgid "race^Woses"
 msgstr "Enten"
 
+#. language
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Gemakkelijk"
 
+#. language
 #: data/hardwired/english.cfg:4
 msgid "Medium"
 msgstr "Normaal"
 
+#. language
 #: data/hardwired/english.cfg:5
 msgid "Hard"
 msgstr "Moeilijk"
 
+#. language
 #: data/hardwired/english.cfg:10
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
@@ -4769,6 +5210,7 @@ msgstr ""
 "Dag: +25% verwondingen\n"
 "Nacht: -25% verwondingen"
 
+#. language
 #: data/hardwired/english.cfg:11
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
@@ -4777,6 +5219,7 @@ msgstr ""
 "Neutrale eenheden worden niet beïnvloed door dag en nacht en vechten 's "
 "nachts even goed als overdag."
 
+#. language
 #: data/hardwired/english.cfg:15
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
@@ -4789,92 +5232,114 @@ msgstr ""
 "Dag: -25% verwondingen\n"
 "Nacht: +25% verwondingen"
 
+#. language
 #: data/hardwired/english.cfg:18
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name's Brug,$name's Oversteek"
 
+#. language
 #: data/hardwired/english.cfg:19
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name's Hogestraat,$name's Pas,Pad van $name"
 
+#. language
 #: data/hardwired/english.cfg:20
 msgid "$name River,River $name"
 msgstr "$name Rivier,Rivier $name"
 
+#. language
 #: data/hardwired/english.cfg:21
 msgid "$name Forest,$name's Forest"
 msgstr "$name Bos,$name's Bos"
 
+#. language
 #: data/hardwired/english.cfg:22
 msgid "$name Lake"
 msgstr "$name Meer"
 
+#. language
 #: data/hardwired/english.cfg:23
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|gem,$name|dam,$name|ton"
 
+#. language
 #: data/hardwired/english.cfg:24
 msgid "$name|harbor,$name|port"
 msgstr "$name|haven,$name|haven"
 
+#. language
 #: data/hardwired/english.cfg:25
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|dam,$name|fort,$name|dam,$river|fort,$river|wade"
 
+#. language
 #: data/hardwired/english.cfg:26
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|brug,$river|brug,$river|brug,$name|dam,$name|brug"
 
+#. language
 #: data/hardwired/english.cfg:27
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|velde,$name|ton,$name|Veld"
 
+#. language
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|gem,$name|ton,$name|lo,$name Bos"
 
+#. language
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|gem,$name|steen,$name|ton,$name|heuvel,$name|rug"
 
+#. language
 #: data/hardwired/english.cfg:30
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|gem,$name|steen,$name|ton,$name|mont,$name|mont,$name|klip,$name|klip"
 
+#. language
 #: data/hardwired/english.cfg:33
 msgid "melee"
 msgstr "dichtbij"
 
+#. language
 #: data/hardwired/english.cfg:34
 msgid "ranged"
 msgstr "afstand"
 
+#. language
 #: data/hardwired/english.cfg:37
 msgid "blade"
 msgstr "scherp"
 
+#. language
 #: data/hardwired/english.cfg:38
 msgid "pierce"
 msgstr "puntig"
 
+#. language
 #: data/hardwired/english.cfg:39
 msgid "impact"
 msgstr "stomp"
 
+#. language
 #: data/hardwired/english.cfg:40
 msgid "fire"
 msgstr "vuur"
 
+#. language
 #: data/hardwired/english.cfg:41
 msgid "cold"
 msgstr "kou"
 
+#. language
 #: data/hardwired/english.cfg:42
 msgid "arcane"
 msgstr "mysterieus"
 
+#. tip
 #: data/hardwired/tips.cfg:3
 msgid ""
 "Don't neglect to earn your leader experience! You need to keep him safe, but "
@@ -4885,10 +5350,12 @@ msgstr ""
 "houden, maar als je hem te veel vertroeteld zal hij op een te laag niveau "
 "blijven om in latere gevechten stand te houden."
 
+#. tip
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
 msgstr "- Groot Magiër Delfador, 516YW"
 
+#. tip
 #: data/hardwired/tips.cfg:7
 msgid ""
 "In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
@@ -4901,6 +5368,7 @@ msgstr ""
 "dat jouw eenheden op hun plaats blijven). Zorg dat je vijand zwakke en "
 "gewonde eenheden niet kan bereiken in zijn volgende beurt."
 
+#. tip
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
 #: data/hardwired/tips.cfg:36 data/hardwired/tips.cfg:52
@@ -4917,6 +5385,7 @@ msgstr ""
 msgid "- The Wesnoth Tactical Guide"
 msgstr "- De Wesnoth tactiek gids"
 
+#. tip
 #: data/hardwired/tips.cfg:11
 msgid ""
 "Units with the 'intelligent' trait need fewer experience points to level up. "
@@ -4928,10 +5397,12 @@ msgstr ""
 "aanvallen aan deze eenheden te geven, zodat je eerder enkele hoog niveau "
 "troepen hebt."
 
+#. tip
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
 msgstr "- Koning Konrad, 536YW"
 
+#. tip
 #: data/hardwired/tips.cfg:15
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
@@ -4942,10 +5413,12 @@ msgstr ""
 "twee eenheden aan beide zijden van een vijand te zetten zal deze "
 "tegenstander maar een vak per beurt kunnen verplaatsen."
 
+#. tip
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr "- Memoirs van Gweddry, 627YW"
 
+#. tip
 #: data/hardwired/tips.cfg:19
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
@@ -4957,6 +5430,7 @@ msgstr ""
 "een nieuwe eenheid geplaatst wordt. Het slim plaatsen van eenheden kan "
 "ervoor zorgen dat je een dorp een beurt eerder bereikt."
 
+#. tip
 #: data/hardwired/tips.cfg:23
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
@@ -4967,6 +5441,7 @@ msgstr ""
 "'Statustabel' laat zien wat je tegenstanders aan het doen zijn en hou jij "
 "het doet in vergelijking met hun."
 
+#. tip
 #: data/hardwired/tips.cfg:27
 msgid ""
 "Units with the 'quick' trait move one extra hex per turn. This can be very "
@@ -4978,10 +5453,12 @@ msgstr ""
 "water of grotten. Het kan het verschil tussen een of twee vakken verplaatsen "
 "zijn."
 
+#. tip
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
 msgstr "- Hoge heer Kalenz, 470YW"
 
+#. tip
 #: data/hardwired/tips.cfg:31
 msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
@@ -4991,6 +5468,7 @@ msgstr ""
 "het help scherm aandachtig door. Details worden belangrijker wanneer de "
 "scenario's moeilijker worden!"
 
+#. tip
 #: data/hardwired/tips.cfg:35
 msgid ""
 "It is usually better to start the next scenario in a campaign with lower-"
@@ -5001,6 +5479,7 @@ msgstr ""
 "met lager niveau eenheden die bijna een niveau omhoog gaan dan met eenheden "
 "op een hoger niveau."
 
+#. tip
 #: data/hardwired/tips.cfg:39
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
@@ -5009,10 +5488,12 @@ msgstr ""
 "Op www.wesnoth.org vind je strategische gidsen, technische ondersteuning, de "
 "historie van Wesnoth enveel meer."
 
+#. tip
 #: data/hardwired/tips.cfg:40
 msgid "- The Wesnoth Community"
 msgstr "- De Wesnoth gemeenschap"
 
+#. tip
 #: data/hardwired/tips.cfg:43
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
@@ -5021,10 +5502,12 @@ msgstr ""
 "Gezagsgetrouwe eenheden zijn overdag sterker en wetteloze eenheden zijn 's "
 "nachts sterker. Neutrale eenheden worden niet door dag en nacht beïnvloed."
 
+#. tip
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 msgstr "- Koninklijke samenvatting van strijdterminologie - Deel II, 212YW"
 
+#. tip
 #: data/hardwired/tips.cfg:47
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
@@ -5032,11 +5515,13 @@ msgstr ""
 "Een anders goed plan kan falen als je op het verkeerde moment van de dag "
 "aanvalt."
 
+#. tip
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
 msgstr "- Tactische analyse handboek deel I - Haldric II, 42YW"
 
+#. tip
 #: data/hardwired/tips.cfg:51
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
@@ -5050,6 +5535,7 @@ msgstr ""
 "reizen, omdat eenheden zover kunnen zien als dat ze kunnen reizen in een "
 "beurt."
 
+#. tip
 #: data/hardwired/tips.cfg:55
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
@@ -5062,6 +5548,7 @@ msgstr ""
 "verschillende aanvalstypen. Om de kwetsbaarheden van een eenheid te zien "
 "rechtsklik erop, kies je 'Profiel eenheid' en kijk je onder 'Weerstand'."
 
+#. tip
 #: data/hardwired/tips.cfg:59
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
@@ -5073,6 +5560,7 @@ msgstr ""
 "worden door een vijand. Het verdedigingspercentage dat de geselecteerde "
 "eenheid op het geselecteerde terrein heeft, wordt rechtsbovenaan weergegeven."
 
+#. tip
 #: data/hardwired/tips.cfg:63
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
@@ -5088,6 +5576,7 @@ msgstr ""
 "regenereert of een beurt in een dorp verblijft of naast een eenheid met het "
 "'Geneest' vermogen"
 
+#. tip
 #: data/hardwired/tips.cfg:67
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
@@ -5098,6 +5587,7 @@ msgstr ""
 "selecteren in het 'Acties' menu. Door eenheden steeds weer op te roepen kun "
 "je een sterk leger van ervaren troepen opbouwen."
 
+#. tip
 #: data/hardwired/tips.cfg:71
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
@@ -5112,6 +5602,7 @@ msgstr ""
 "eenheden een barrière kunnen opwerpen met enkele lege vakken tussen ze. "
 "Echter warzaaiers kunnen wel door de zones heen."
 
+#. tip
 #: data/hardwired/tips.cfg:75
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
@@ -5124,10 +5615,12 @@ msgstr ""
 "altijd 70% kans om te raken en eenheden met het 'scherpschutter' kenmerk zal "
 "altijd tenminste 60% kans hebben om iemand te raken in zijn beurt."
 
+#. tip
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Tactische analyse handboek deel II - Haldric II, 42YW"
 
+#. tip
 #: data/hardwired/tips.cfg:79
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
@@ -5136,6 +5629,7 @@ msgstr ""
 "Troepen die in een dorp gestationeerd zijn genezen acht HP aan het begin van "
 "hun beurt of herstellen van een vergiftiging."
 
+#. tip
 #: data/hardwired/tips.cfg:83
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
@@ -5146,6 +5640,7 @@ msgstr ""
 "bewegen of aanvallen tijdens hun beurt genezen door de rust twee HP aan het "
 "begin van hun volgende beurt."
 
+#. tip
 #: data/hardwired/tips.cfg:87
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
@@ -5156,10 +5651,12 @@ msgstr ""
 "verdedigen in een dorp of in een kasteel, terwijl de meeste gezadelde "
 "eenheden geen voordeel behalen uit dorpen en kastelen."
 
+#. tip
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
 msgstr "- Heer Kaylan, 498YW"
 
+#. tip
 #: data/hardwired/tips.cfg:91
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
@@ -5170,10 +5667,12 @@ msgstr ""
 "schade aanrichten, maar ze zijn kwetsbaar voor puntige wapens zoals pijlen "
 "en speren."
 
+#. tip
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
 msgstr "- Heer Kaylan, 502YW"
 
+#. tip
 #: data/hardwired/tips.cfg:95
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
@@ -5185,6 +5684,7 @@ msgstr ""
 "Eenheden die een vijand doden ontvangen acht XP per rang van de gedode "
 "vijand of vier XP voor een nul-rang tegenstander."
 
+#. tip
 #: data/hardwired/tips.cfg:99
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
@@ -5193,6 +5693,7 @@ msgstr ""
 "Elfen vechten zeer sterk in bossen. Dwergen vechten en bewegen het best in "
 "heuvels, bergen en grotten."
 
+#. tip
 #: data/hardwired/tips.cfg:103
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
@@ -5201,6 +5702,7 @@ msgstr ""
 "Geduld is een schone zaak. Het is verstandiger om te wachten op goede "
 "condities dan in slechte omstandigheden of met weinig eenheden aan te vallen."
 
+#. tip
 #: data/hardwired/tips.cfg:107
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
@@ -5210,10 +5712,12 @@ msgstr ""
 "idee zijn om een paar niet onmisbare eenheden naar de vijand toe te sturen "
 "om deze te vertragen."
 
+#. tip
 #: data/hardwired/tips.cfg:108
 msgid "- King Konrad, 552YW"
 msgstr "- Koning Konrad, 552YW"
 
+#. tip
 #: data/hardwired/tips.cfg:111
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
@@ -5221,10 +5725,12 @@ msgstr ""
 "Wees niet bang om terug te trekken en te hergroeperen; het is dikwijls de "
 "sleutel tot de overwinning."
 
+#. tip
 #: data/hardwired/tips.cfg:112
 msgid "- Meneldur, 123YW"
 msgstr "- Meneldur, 123YW"
 
+#. tip
 #: data/hardwired/tips.cfg:115
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
@@ -5237,6 +5743,7 @@ msgstr ""
 "overhoudt. Je verdient op deze manier gegarandeerd meer goud dan wanneer je "
 "alle dorpjes inneemt en wacht tot de laatste beurt."
 
+#. tip
 #: data/hardwired/tips.cfg:119
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
@@ -5249,6 +5756,7 @@ msgstr ""
 "een vijand veroveren en vandaaruit rekruteren. Of je kunt rekruteren vanaf "
 "de donjon van een bondgenoot."
 
+#. tip
 #: data/hardwired/tips.cfg:123
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
@@ -5257,6 +5765,7 @@ msgstr ""
 "Skeletten hebben een hoge weerstand tegen puntige, scherpe en kou aanvallen, "
 "maar zijn kwetsbaar voor stompe, vuur-, en mysterieuze aanvallen."
 
+#. tip
 #: data/hardwired/tips.cfg:127
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
@@ -5266,6 +5775,7 @@ msgstr ""
 "beter vechten. Gebruik leiders om andere eenheden sneller in rang te laten "
 "stijgen."
 
+#. tip
 #: data/hardwired/tips.cfg:131
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
@@ -5276,20 +5786,24 @@ msgstr ""
 "vijand kan het dorp innemen en van daaruit aanvallen, terwijl hij in het "
 "dorp geneest."
 
+#. tip
 #: data/hardwired/tips.cfg:135
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "Gebruik een linie van troepen om je gewonde eenheden te beschermen terwijl "
 "ze recupereren."
 
+#. tip
 #: data/hardwired/tips.cfg:136
 msgid "- Princess Li'sar, 515YW"
 msgstr "- Prinses Li'sar, 515YW"
 
+#. tip
 #: data/hardwired/tips.cfg:139
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Bekijk de sneltoetslijst in het instellingenmenu."
 
+#. tip
 #: data/hardwired/tips.cfg:143
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
@@ -5299,6 +5813,7 @@ msgstr ""
 "geen extra informatie, dan kun je je zet ongedaan maken door op 'u' te "
 "drukken."
 
+#. tip
 #: data/hardwired/tips.cfg:147
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
@@ -5307,6 +5822,7 @@ msgstr ""
 "Je kunt zien hoever vijandelijke eenheden kunnen bewegen door de muiscursor "
 "op hen te plaatsen."
 
+#. tip
 #: data/hardwired/tips.cfg:151
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
@@ -5315,10 +5831,12 @@ msgstr ""
 "Gebruik verplegers of genezers om je aanvallen te ondersteunen - ze bezorgen "
 "je overwinningen zonder te vechten!"
 
+#. tip
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
 msgstr "- De boekrol van Chantal, 516YW"
 
+#. tip
 #: data/hardwired/tips.cfg:155
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
@@ -5327,14 +5845,17 @@ msgstr ""
 "De vertraag-aanval hindert vijanden in hun voortgang, en halveert bovendien "
 "de schade die ze toebrengen."
 
+#. tip
 #: data/hardwired/tips.cfg:159
 msgid "Arcane attacks are very powerful against undead."
 msgstr "Mysterieuze aanvallen zijn zeer krachtig tegen ondoden."
 
+#. tip
 #: data/hardwired/tips.cfg:160
 msgid "- Great Sage Dacyn, 626YW"
 msgstr "- Grote sage Dacyn, 626YW"
 
+#. tip
 #: data/hardwired/tips.cfg:163
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
@@ -5343,6 +5864,7 @@ msgstr ""
 "Eenheden genezen volledig wanneer ze promoveren. Daar kun je handig gebruik "
 "van maken tijdens een veldslag."
 
+#. tip
 #: data/hardwired/tips.cfg:167
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
@@ -5351,6 +5873,7 @@ msgstr ""
 "Eenheden die in een stormloop kunnen aanvallen, worden vaak ingezet tegen "
 "vijanden die met één flinke klap uitgeschakeld zijn."
 
+#. tip
 #: data/hardwired/tips.cfg:171
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
@@ -5365,6 +5888,7 @@ msgstr ""
 "volgende AMLA wordt steeds moeilijker, waardoor het vaak verstandiger is "
 "eenheden van lagere rang te laten promoveren."
 
+#. tip
 #: data/hardwired/tips.cfg:175
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
@@ -5375,6 +5899,7 @@ msgstr ""
 "tot op de afstand waar hij in één beurt maximaal heen kan bewegen. Houd daar "
 "rekening mee bij het uitzoeken van een verkenningseenheid."
 
+#. tip
 #: data/hardwired/tips.cfg:179
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
@@ -5383,6 +5908,7 @@ msgstr ""
 "Bijna alle pictogrammen en woorden op het scherm hebben een tool-tip. Plaats "
 "de muiscursor erop om een korte beschrijving te krijgen."
 
+#. tip
 #: data/hardwired/tips.cfg:183
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
@@ -5395,6 +5921,7 @@ msgstr ""
 "rechter onderhoek van het hoofdmenu). De informatie wordt gebruikt om een "
 "inschatting van de moeilijkheidsgraad van veldtochten te maken."
 
+#. tip
 #: data/hardwired/tips.cfg:187
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
@@ -5405,10 +5932,12 @@ msgstr ""
 "veteraan en gebruik de veteraan om een gezamenlijk doel genoeg te verzwakken "
 "zodat de pupil het werk kan afmaken."
 
+#. tip
 #: data/hardwired/tips.cfg:188
 msgid "- Queen Li'sar, 528YW"
 msgstr "- Koningin Li'sar, 528YW"
 
+#. tip
 #: data/hardwired/tips.cfg:191
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
@@ -5419,6 +5948,7 @@ msgstr ""
 "'Verlaat sluier update' optie maakt het mogelijk zetten van eenheden "
 "ongedaan te maken."
 
+#. tip
 #: data/hardwired/tips.cfg:195
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
@@ -5427,6 +5957,7 @@ msgstr ""
 "Als een vijand meer voordeel heeft van een terreintype dan jij, het "
 "veroveren van dat terrein zal hem van die voordelen weghouden."
 
+#. tip
 #: data/hardwired/tips.cfg:199
 msgid ""
 "Few units have good defences in water; a line of attackers along the edge of "
@@ -5438,136 +5969,171 @@ msgstr ""
 "Elfen kunnen hetzelfde doen aan de rand van een bos en dwergen aan de voet "
 "van bergen."
 
+#. effect: type=fire
 #: data/scenario-test.cfg:697
 msgid "ruby of fire"
 msgstr "vuurrobijn"
 
+#. menu
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
 msgstr "Menu"
 
+#. menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
 msgstr "Acties"
 
+#. menu
+#. change
 #: data/themes/default.cfg:153 data/themes/default.cfg:719
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "Einde Beurt"
 
+#. menu
+#. change
 #: data/themes/default.cfg:154 data/themes/default.cfg:720
 #: data/themes/default.cfg:975 data/themes/dfool.cfg:161
 msgid "End Scenario"
 msgstr "Einde scenario"
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. label
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
 #: data/themes/experimental.cfg:181 src/menu_events.cpp:384 src/unit.cpp:2466
 #: src/unit.cpp:2639
 msgid "HP"
 msgstr "HP"
 
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. label
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
 #: src/menu_events.cpp:1152
 msgid "XP"
 msgstr "XP"
 
+#. label
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "goud"
 
+#. label
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "dorpen"
 
+#. label
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "troepen"
 
+#. label
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "kosten"
 
+#. label
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "inkomen"
 
+#. unit_level
 #: data/themes/default.cfg:416 data/themes/dfool.cfg:459
 #: data/themes/experimental.cfg:368
 msgid "statuspanel^level"
 msgstr "rang"
 
+#. unit_moves
 #: data/themes/default.cfg:447 data/themes/experimental.cfg:399
 msgid "statuspanel^movement"
 msgstr "zetten"
 
+#. change
 #: data/themes/default.cfg:946
 msgid "Act."
 msgstr "Act."
 
+#. remove
+#. menu
 #: data/themes/default.cfg:966 data/themes/default.cfg:974
 msgid "short end-turn^E."
 msgstr "E."
 
+#. label
 #: data/themes/dfool.cfg:252
 msgid "MP"
 msgstr "MP"
 
+#. label
 #: data/themes/macros.cfg:59
 msgid "Replay"
 msgstr "Herhaling"
 
+#. menu: type=image
 #: data/themes/macros.cfg:74
 msgid "Play"
 msgstr "Speel"
 
+#. menu: type=image
 #: data/themes/macros.cfg:75
 msgid "continous replay"
 msgstr "doorlopende herhaling"
 
+#. menu: type=image
 #: data/themes/macros.cfg:92
 msgid "Stop"
 msgstr "Stop"
 
+#. menu: type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
 msgstr "pauseer na elke beurt"
 
+#. menu: type=image
 #: data/themes/macros.cfg:110
 msgid "Reset"
 msgstr "Reset"
 
+#. menu: type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
 msgstr "reset tot begin"
 
+#. menu: type=image
 #: data/themes/macros.cfg:128
 msgid "Next Turn"
 msgstr "Volgende beurt"
 
+#. menu: type=image
 #: data/themes/macros.cfg:129
 msgid "play turn"
 msgstr "beurt spelen"
 
+#. menu: type=image
 #: data/themes/macros.cfg:146
 msgid "Next Side"
 msgstr "Volgende speler"
 
+#. menu: type=image
 #: data/themes/macros.cfg:147
 msgid "play side turn"
 msgstr "beurt van partij spelen"
 
+#. menu
 #: data/themes/macros.cfg:163
 msgid "Point of view"
 msgstr "Gezichtspunt"
 
+#. menu: type=checkbox
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
 msgstr "Niet animeren"
@@ -6421,7 +6987,7 @@ msgstr "Volgende"
 msgid "Skip"
 msgstr "Overslaan"
 
-#: src/intro.cpp:376
+#: src/intro.cpp:379
 msgid "The End"
 msgstr "Einde"
 
