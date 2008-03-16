@@ -19,10 +19,10 @@
 #ifndef __GUI_WIDGETS_WINDOW_HPP_INCLUDED__
 #define __GUI_WIDGETS_WINDOW_HPP_INCLUDED__
 
-#include "gui/widgets/widget.hpp"
 #include "gui/widgets/canvas.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/event_info.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/settings.hpp"
 
 #include "sdl_utils.hpp"
 #include "video.hpp"

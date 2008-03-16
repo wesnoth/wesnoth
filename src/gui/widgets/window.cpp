@@ -120,7 +120,7 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 			fill_rect_alpha(temp_rect, 0, 1, screen);
 #endif
 
-			for(tsizer::iterator itor = begin(); itor != end(); ++itor) {
+			for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
 
 				if(! *itor || !itor->dirty()) {
 					continue;
