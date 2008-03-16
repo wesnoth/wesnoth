@@ -21,9 +21,11 @@
 #ifndef __GUI_WIDGETS_CANVAS_HPP_INCLUDED__
 #define __GUI_WIDGETS_CANVAS_HPP_INCLUDED__
 
+#include "formula_callable.hpp"
+#include "reference_counted_object.hpp"
 #include "sdl_utils.hpp"
 #include "tstring.hpp"
-#include "reference_counted_object.hpp"
+#include "variant.hpp"
 
 #include <vector>
 
@@ -50,7 +52,8 @@ public:
 	class tshape : public reference_counted_object
 	{
 	public:
-		virtual void draw(surface& canvas) = 0;
+		virtual void draw(surface& canvas, 
+			const game_logic::map_formula_callable& variables) = 0;
 
 		virtual ~tshape() {}
 	protected:
@@ -75,7 +78,8 @@ public:
 		tline(const vconfig& cfg);
 
 		//! Implement shape::draw().
-		void draw(surface& canvas);
+		void draw(surface& canvas,
+			const game_logic::map_formula_callable& variables);
 
 	private:
 		int x1_, y1_;
@@ -95,10 +99,18 @@ public:
 		trectangle(const vconfig& cfg);
 
 		//! Implement shape::draw().
-		void draw(surface& canvas);
+		void draw(surface& canvas,
+			const game_logic::map_formula_callable& variables);
 
 	private:
-		SDL_Rect rect_;
+		unsigned x_, y_;
+		unsigned w_, h_;
+	
+		std::string
+			x_formula_,
+			y_formula_,
+			w_formula_,
+			h_formula_;
 
 		//! Border thickness if 0 the fill colour is used for the entire 
 		//! widget.
@@ -115,7 +127,9 @@ public:
 		timage(const vconfig& cfg);
 		
 		//! Implement shape::draw().
-		void draw(surface& canvas);
+		void draw(surface& canvas,
+			const game_logic::map_formula_callable& variables);
+
 	private:
 		SDL_Rect src_clip_;
 		SDL_Rect dst_clip_;
@@ -129,7 +143,9 @@ public:
 		ttext(const vconfig& cfg);
 		
 		//! Implement shape::draw().
-		void draw(surface& canvas);
+		void draw(surface& canvas,
+			const game_logic::map_formula_callable& variables);
+
 	private:
 		unsigned x_, y_;
 		unsigned w_, h_;
@@ -166,6 +182,8 @@ private:
 	unsigned h_;
 
 	surface canvas_;
+
+	game_logic::map_formula_callable variables_;
 };
 
 } // namespace gui2

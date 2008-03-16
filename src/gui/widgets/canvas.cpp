@@ -19,6 +19,7 @@
 
 #include "config.hpp"
 #include "font.hpp"
+#include "formula.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
@@ -67,6 +68,22 @@ static Uint32 decode_colour(const std::string& colour)
 	return result;
 }
 
+//! A value can be either a number of a formula, if between brackets it is a formula
+//! else it will be read as an unsigned. 
+//! If empty neither is modified otherwise only the type it is is modified.
+static void read_possible_formula(const std::string str, unsigned& value, std::string& formula)
+{
+	if(str.empty()) {
+		return;
+	}
+
+	if(str[0] == '(') {
+		formula = str;
+	} else {
+		value = lexical_cast_default<unsigned>(str);
+	}
+}
+
 namespace gui2{
 
 
@@ -76,14 +93,18 @@ tcanvas::tcanvas() :
 	dirty_(true),
 	w_(0),
 	h_(0),
-	canvas_()
+	canvas_(),
+	variables_()
 {
 }
 
 tcanvas::tcanvas(const config& cfg) :
+	shapes_(),
 	dirty_(true),
 	w_(0),
-	h_(0)
+	h_(0),
+	canvas_(),
+	variables_()
 {
 	parse_cfg(cfg);
 }
@@ -100,6 +121,11 @@ void tcanvas::draw(const bool force)
 	if(!dirty_ && !force) {
 		DBG_G_D << "Canvas: nothing to draw.\n";
 		return;
+	}
+
+	if(dirty_) {
+		variables_.add("width",variant(w_));
+		variables_.add("height",variant(h_));
 	}
 
 	// set surface sizes (do nothing now)
@@ -120,7 +146,7 @@ void tcanvas::draw(const bool force)
 			shapes_.begin(); itor != shapes_.end(); ++itor) {
 		log_scope2(gui_draw, "Canvas: draw shape.");
 		
-		(*itor)->draw(canvas_);
+		(*itor)->draw(canvas_, variables_);
 	}
 
 	dirty_ = false;
@@ -227,7 +253,6 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	}
 }
 
-
 tcanvas::tline::tline(const int x1, const int y1, const int x2,
 		const int y2, const Uint32 colour, const unsigned thickness) :
 	x1_(x1),
@@ -278,7 +303,8 @@ tcanvas::tline::tline(const vconfig& cfg) :
 
 }
 
-void tcanvas::tline::draw(surface& canvas)
+void tcanvas::tline::draw(surface& canvas,
+	const game_logic::map_formula_callable& variables)
 {
 	DBG_G_D << "Line: draw from :" 
 		<< x1_ << ',' << y1_ << " to: " << x2_ << ',' << y2_ << '\n';
@@ -309,7 +335,14 @@ void tcanvas::tline::draw(surface& canvas)
 }
 
 tcanvas::trectangle::trectangle(const vconfig& cfg) :
-	rect_(),
+	x_(0),
+	y_(0),
+	w_(0),
+	h_(0),
+	x_formula_(),
+	y_formula_(),
+	w_formula_(),
+	h_formula_(),
 	border_thickness_(lexical_cast_default<unsigned>(cfg["border_thickness"])),
 	border_colour_(decode_colour(cfg["border_colour"])),
 	fill_colour_(decode_colour(cfg["fill_colour"]))
@@ -333,10 +366,10 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
  * [/rectangle]
  */
 
-	rect_.x = lexical_cast_default<int>(cfg["x"]);
-	rect_.y = lexical_cast_default<int>(cfg["y"]);
-	rect_.w = lexical_cast_default<int>(cfg["w"]);
-	rect_.h = lexical_cast_default<int>(cfg["h"]);
+	read_possible_formula(cfg["x"], x_, x_formula_);
+	read_possible_formula(cfg["y"], y_, y_formula_);
+	read_possible_formula(cfg["w"], w_, w_formula_);
+	read_possible_formula(cfg["h"], h_, h_formula_);
 
 	if(border_colour_ == 0) {
 		border_thickness_ = 0;
@@ -348,23 +381,48 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
 	}
 }
 
-void tcanvas::trectangle::draw(surface& canvas)
+void tcanvas::trectangle::draw(surface& canvas,
+	const game_logic::map_formula_callable& variables)
 {
 
-	DBG_G_D << "Rectangle: draw from :" << rect_.x << ',' << rect_.y 
-		<< " width: " << rect_.w << " height: " << rect_.h << '\n';
+	//@todo formulas are now recalculated every draw cycle which is a 
+	// bit silly unless there has been a resize. So to optimize we should
+	// use an extra flag or do the calculation in a separate routine.
+	if(!y_formula_.empty()) {
+		DBG_G_D << "Rectangle execute y formula '" << y_formula_ << "'.\n";
+		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
+	}
+
+	if(!x_formula_.empty()) {
+		DBG_G_D << "Rectangle execute x formula '" << x_formula_ << "'.\n";
+		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
+	}
+
+	if(!w_formula_.empty()) {
+		DBG_G_D << "Rectangle execute width formula '" << w_formula_ << "'.\n";
+		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
+	}
+
+	if(!h_formula_.empty()) {
+		DBG_G_D << "Rectangle execute height formula '" << h_formula_ << "'.\n";
+		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
+	}
+
+
+	DBG_G_D << "Rectangle: draw from :" << x_ << ',' << y_
+		<< " width: " << w_ << " height: " << h_ << '\n';
 
 	surface_lock locker(canvas);
 
-	//FIXME wrap the points and validate the input
+	//FIXME validate the input.
 
 	// draw the border
 	for(unsigned i = 0; i < border_thickness_; ++i) {
 
-		const unsigned left = rect_.x + i;
-		const unsigned right = left + rect_.w - (i * 2) - 1;
-		const unsigned top = rect_.y + i;
-		const unsigned bottom = top + rect_.h - (i * 2) - 1;
+		const unsigned left = x_ + i;
+		const unsigned right = left + w_ - (i * 2) - 1;
+		const unsigned top = y_ + i;
+		const unsigned bottom = top + h_ - (i * 2) - 1;
 
 		// top horizontal (left -> right)
 		draw_line(canvas, border_colour_, left, top, right, top);
@@ -384,10 +442,10 @@ void tcanvas::trectangle::draw(surface& canvas)
 	// so use the slow line drawing method to fill the rect.
 	if(fill_colour_) {
 		
-		const unsigned left = rect_.x + border_thickness_;
-		const unsigned right = left + rect_.w - (2 * border_thickness_) - 1;
-		const unsigned top = rect_.y + border_thickness_;
-		const unsigned bottom = top + rect_.h - (2 * border_thickness_);
+		const unsigned left = x_ + border_thickness_;
+		const unsigned right = left + w_ - (2 * border_thickness_) - 1;
+		const unsigned top = y_ + border_thickness_;
+		const unsigned bottom = top + h_ - (2 * border_thickness_);
 
 		for(unsigned i = top; i < bottom; ++i) {
 			
@@ -395,10 +453,10 @@ void tcanvas::trectangle::draw(surface& canvas)
 		}
 	}
 /*
-	const unsigned left = rect_.x + border_thickness_ + 1;
-	const unsigned top = rect_.y + border_thickness_ + 1;
-	const unsigned width = rect_.w - (2 * border_thickness_) - 2;
-	const unsigned height = rect_.h - (2 * border_thickness_) - 2;
+	const unsigned left = x_ + border_thickness_ + 1;
+	const unsigned top = y_ + border_thickness_ + 1;
+	const unsigned width = w_ - (2 * border_thickness_) - 2;
+	const unsigned height = h_ - (2 * border_thickness_) - 2;
 	SDL_Rect rect = create_rect(left, top, width, height);
 
 	const Uint32 colour = fill_colour_ & 0xFFFFFF00;
@@ -431,7 +489,8 @@ tcanvas::timage::timage(const vconfig& cfg) :
 	}
 }
 
-void tcanvas::timage::draw(surface& canvas)
+void tcanvas::timage::draw(surface& canvas,
+	const game_logic::map_formula_callable& variables)
 {
 	DBG_G_D << "Image: draw.\n";
 
@@ -471,7 +530,8 @@ tcanvas::ttext::ttext(const vconfig& cfg) :
 	}
 }
 
-void tcanvas::ttext::draw(surface& canvas)
+void tcanvas::ttext::draw(surface& canvas,
+	const game_logic::map_formula_callable& variables)
 {
 	DBG_G_D << "Text: draw at " << x_ << ',' << y_ << " text '"
 		<< text_ << "'.\n";
