@@ -2143,6 +2143,9 @@ if __name__ == '__main__':
             if ".user_description" in line: 
                 print '"%s", line %d: .user_description may need hand fixup' % \
                                        (filename, lineno)
+            # Inside themes
+            if within("theme"):
+                line = line.replace("[unit_description]", "[unit_name]")
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
