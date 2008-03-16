@@ -65,6 +65,19 @@ report generate_report(TYPE type,
 	        return report(u->second.language_name(),"",u->second.unit_description());
 	case UNIT_RACE:
 	        return report(u->second.race()->name(u->second.gender()));
+	case UNIT_SIDE: {
+		std::string flag_icon = teams[u->second.side()-1].flag_icon();
+		std::string old_rgb = game_config::flag_rgb;
+		std::string new_rgb = team::get_side_colour_index(u->second.side());
+		std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
+
+		if(flag_icon.empty()) {
+			flag_icon = game_config::flag_icon_image;
+		}
+
+		image::locator flag_icon_img(flag_icon, mods);
+		return report("",flag_icon_img,teams[u->second.side()-1].current_player());
+	}
 	case UNIT_LEVEL:
 		str << u->second.level();
 		break;
