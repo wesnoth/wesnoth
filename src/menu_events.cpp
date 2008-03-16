@@ -294,7 +294,10 @@ namespace events{
 			//If the unit is of level > 1, or is close to advancing,
 			//we warn the player about it
 			std::stringstream message;
-			if(u.level() > 1) {
+			if (u.upkeep() == 0) {
+				message << _("My lord, this unit is loyal and requires no upkeep! ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+						: _("Do you really want to dismiss her?"));
+			} else if(u.level() > 1) {
 				message << _("My lord, this unit is an experienced one, having advanced levels! ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
 						: _("Do you really want to dismiss her?"));
 
