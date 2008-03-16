@@ -473,6 +473,7 @@ conversion2 = {
 linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
         ("canrecruit=0", "canrecruit=no"),
+        ("generate_description", "generate_name"),
 )
 
 def maptransform2(filename, baseline, inmap, y):

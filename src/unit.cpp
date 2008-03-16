@@ -265,9 +265,10 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	advance_to(&t->get_gender_unit_type(gender_));
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
-		// Units that don't have traits generated are just generic units,
-		// so they shouldn't get a description either.
-		name_ = generate_description();
+		// Units that don't have traits generated are just
+		// generic units, so they shouldn't get a description
+		// either.
+		name_ = generate_name();
 	}
 	generate_traits(!use_traits);
 	apply_modifications();
@@ -306,9 +307,10 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	advance_to(&t->get_gender_unit_type(gender_));
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
-		// Units that don't have traits generated are just generic units,
-		// so they shouldn't get a description either.
-		name_ = generate_description();
+		// Units that don't have traits generated are just
+		// generic units, so they shouldn't get a description
+		// either.
+		name_ = generate_name();
 	}
 	generate_traits(!use_traits);
 	apply_modifications();
@@ -1426,9 +1428,10 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	} else if(cfg["type"]=="") {
 		alignment_ = unit_type::NEUTRAL;
 	}
-	if(utils::string_bool(cfg["generate_description"])) {
-		name_ = generate_description(state);
-		cfg_["generate_description"] = "";
+	// FIXME OBSOLETE Remove in 1.5.3
+	if(utils::string_bool(cfg["generate_name"]) || utils::string_bool(cfg["generate_description"])) {
+		name_ = generate_name(state);
+		cfg_["generate_name"] = "";
 	}
 
 	game_events::add_events(cfg_.get_children("event"),type_);
