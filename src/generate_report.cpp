@@ -60,10 +60,8 @@ report generate_report(TYPE type,
 
 	switch(type) {
 	// this one is for backward compatibility (should be removed in v1.5.3)
-	case UNIT_NAME_OLD: {
-		std::cerr << "warning: ThemeWML [unit_description] tag will be removed in 1.5.3, run wmllint on WML defining ";
-		return report(u->second.name(),"",u->second.name());
-	}
+	case UNIT_NAME_OLD:
+		std::cerr << "warning: ThemeWML [unit_description] tag will be removed in 1.5.3, run wmllint on WML defining " << std::endl;
 	case UNIT_NAME:
 		return report(u->second.name(),"",u->second.name());
 	case UNIT_TYPE:
