@@ -73,8 +73,6 @@ public:
 	class tline : public tshape
 	{
 	public:
-		tline(const int x1, const int y1, const int x2,
-			const int y2, const Uint32 colour, const unsigned thickness);
 		tline(const vconfig& cfg);
 
 		//! Implement shape::draw().
@@ -82,8 +80,15 @@ public:
 			const game_logic::map_formula_callable& variables);
 
 	private:
-		int x1_, y1_;
-		int x2_, y2_;
+		unsigned x1_, y1_;
+		unsigned x2_, y2_;
+
+		std::string
+			x1_formula_,
+			y1_formula_,
+			x2_formula_,
+			y2_formula_;
+
 		Uint32 colour_;
 		//! The thickness of the line:
 		//! if the value is odd the x and y are the middle of the line.

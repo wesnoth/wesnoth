@@ -253,49 +253,97 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	}
 }
 
-tcanvas::tline::tline(const int x1, const int y1, const int x2,
-		const int y2, const Uint32 colour, const unsigned thickness) :
-	x1_(x1),
-	y1_(y1),
-	x2_(x2),
-	y2_(y2),
-	colour_(colour),
-	thickness_(thickness) 
-{
-}
-
 tcanvas::tline::tline(const vconfig& cfg) :
-	x1_(lexical_cast_default<int>(cfg["x1"])),
-	y1_(lexical_cast_default<int>(cfg["y1"])),
-	x2_(lexical_cast_default<int>(cfg["x2"])),
-	y2_(lexical_cast_default<int>(cfg["y2"])),
+	x1_(0),
+	y1_(0),
+	x2_(0),
+	y2_(0),
+	x1_formula_(),
+	y1_formula_(),
+	x2_formula_(),
+	y2_formula_(),
 	colour_(decode_colour(cfg["colour"])),
 	thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
 {
 /*WIKI
  * [line]
- *     x1, y1 = (int = 0), (int = 0) The startpoint of the line.
- *     x2, y2 = (int = 0), (int = 0) The endpoint of the line.
- *     colour = (widget.colour = "") The colour of the line.
- *     thickness = (uint = 0)        The thickness of the line.
- *     debug = (string = "")         Debug message to show upon creation
- *                                   this message is not stored.
+ * Definition of a line.
+ * Keys: 
+ *     x1 (f_unsigned = 0)             The x coordinate of the startpoint.
+ *     y1 (f_unsigned = 0)             The y coordinate of the startpoint.
+ *     x2 (f_unsigned = 0)             The x coordinate of the endpoint.
+ *     y2 (f_unsigned = 0)             The y coordinate of the endpoint.
+ *     colour (widget = "")            The colour of the line.
+ *     thickness = (unsigned = 0)      The thickness of the line if 0 nothing
+ *                                     is drawn.
+ *     debug = (string = "")           Debug message to show upon creation
+ *                                     this message is not stored.
+ *
+ * Variables:
+ *     width unsigned                  The width of the canvas.
+ *     height unsigned                 The height of the canvas.
+ *
+ * Note when drawing the valid coordinates are:
+ * 0 -> width - 1
+ * 0 -> height -1
+ *
+ * Drawing outside this area will result in unpredicatable results including
+ * crashing. (That should be fixed, when encountered.)
+ *
  * [/line]
  */
 
-// This code can be used by a parser to generate the wiki page
-// structure
-// [tag name]
-// param = type_info description
-//
-// param = key (, key)
-// 
-// type_info = ( type = default_value) the info about a optional parameter
-// type_info = type                        info about a mandatory parameter
-// type_info = [ type_infp ]               info about a conditional parameter description should explain the reason
-//
-// description                             description of the parameter
-//
+/*WIKI
+ * This code can be used by a parser to generate the wiki page
+ * structure
+ * [tag name]
+ * param type_info description
+ *
+ * param                               Name of the parameter.
+ * 
+ * type_info = ( type = default_value) The info about a optional parameter.
+ * type_info = ( type )                The info about a mandatory parameter
+ * type_info = [ type_info ]           The info about a conditional parameter 
+ *                                     description should explain the reason.
+ *
+ * description                         Description of the parameter.
+ *
+ *
+ *
+ * types
+ * unsigned                            Unsigned number (positive whole numbers
+ *                                     and zero).
+ * f_unsigned                          Unsinged number or formula returning an
+ *                                     unsigned number.
+ * int                                 Signed number (whole numbers).
+ * f_int                               Signed number or formula returning an
+ *                                     signed number.
+ * string                              A text.
+ * tstring                             A translatable string.
+ *
+ * colour                              A string which constains the colour, this
+ *                                     a group of 4 numbers between 0 and 255
+ *                                     separated by a comma. The numbers are red
+ *                                     component, green component, blue 
+ *                                     component and alpha. A colour of 0 is not
+ *                                     available. An alpha of 0 is fully 
+ *                                     transparent. Ommitted values are set to 0.
+ *
+ *
+ * Formulas are a funtion between brackets, that way the engine can see whether
+ * there is standing a plain number or a formula eg:
+ * 0     A value of zero
+ * (0)   A formula returning zero
+ *
+ * When formulas are available the text should state the available variables
+ * which are available in that function.
+ */
+
+	read_possible_formula(cfg["x1"], x1_, x1_formula_);
+	read_possible_formula(cfg["y1"], y1_, y1_formula_);
+	read_possible_formula(cfg["x2"], x2_, x2_formula_);
+	read_possible_formula(cfg["y2"], y2_, y2_formula_);
+
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_G_P << "Line: found debug message '" << debug << "'.\n";
@@ -306,19 +354,36 @@ tcanvas::tline::tline(const vconfig& cfg) :
 void tcanvas::tline::draw(surface& canvas,
 	const game_logic::map_formula_callable& variables)
 {
+	//@todo formulas are now recalculated every draw cycle which is a 
+	// bit silly unless there has been a resize. So to optimize we should
+	// use an extra flag or do the calculation in a separate routine.
+	if(!x1_formula_.empty()) {
+		DBG_G_D << "Rectangle execute x1 formula '" << x1_formula_ << "'.\n";
+		x1_ = game_logic::formula(x1_formula_).execute(variables).as_int();
+	}
+
+	if(!y1_formula_.empty()) {
+		DBG_G_D << "Rectangle execute y1 formula '" << y1_formula_ << "'.\n";
+		y1_ = game_logic::formula(y1_formula_).execute(variables).as_int();
+	}
+
+	if(!x2_formula_.empty()) {
+		DBG_G_D << "Rectangle execute x2 formula '" << x2_formula_ << "'.\n";
+		x2_ = game_logic::formula(x2_formula_).execute(variables).as_int();
+	}
+
+	if(!y2_formula_.empty()) {
+		DBG_G_D << "Rectangle execute y2 formula '" << y2_formula_ << "'.\n";
+		y2_ = game_logic::formula(y2_formula_).execute(variables).as_int();
+	}
+
+
 	DBG_G_D << "Line: draw from :" 
 		<< x1_ << ',' << y1_ << " to: " << x2_ << ',' << y2_ << '\n';
 
-	// we wrap around the coordinates, this might be moved to be more
-	// generic place, but leave it here for now. Note the numbers are
-	// negative so adding them is subtracting them.
-	
-	if(x1_ < 0) x1_ += canvas->w;
-	if(x2_ < 0) x2_ += canvas->w;
-	if(y1_ < 0) y1_ += canvas->h;
-	if(y2_ < 0) y2_ += canvas->h;
-
 	// FIXME validate the line is on the surface !!!
+	
+	// FIXME respect the thickness.
 
 	// now draw the line we use Bresenham's algorithm, which doesn't
 	// support antialiasing. The advantage is that it's easy for testing.
@@ -349,23 +414,24 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
 {
 /*WIKI
  * [rectangle]
- *     x, y = (int = 0), (int = 0)    The top left corner of the rectangle.
- *     w = (int = 0)                  The width of the rectangle.
- *     h = (int = 0)                  The height of the rectangle.
- *     border_thickness = (uint = 0)  The thickness of the border if the 
- *                                    thickness is zero it's not drawn.
- *     border_colour = (widget.colour = "") 
- *                                    The colour of the border if empty it's
- *                                    not drawn.
- *     fill_colour = (widget.colour = "")
- *                                    The colour of the interior if ommitted
- *                                    it's not draw (transparent is draw but
- *                                    does nothing).
- *     debug = (string = "")          Debug message to show upon creation
- *                                    this message is not stored.
- * [/rectangle]
+ * Definition of a line.
+ * Keys: 
+ *     x (f_unsigned = 0)              The x coordinate of the top left corner.
+ *     y (f_unsigned = 0)              The y coordinate of the top left corner.
+ *     w (f_unsigned = 0)              The width of the rectangle.
+ *     h (f_unsigned = 0)              The height of the rectangle.
+ *     border_thickness (unsigned = 0) The thickness of the border if the 
+ *                                     thickness is zero it's not drawn.
+ *     border_colour (colour = "")     The colour of the border if empty it's
+ *                                     not drawn.
+ *     fill_colour (colour = "")       The colour of the interior if ommitted
+ *                                     it's not drawn.
+ *     debug = (string = "")           Debug message to show upon creation
+ *                                     this message is not stored.
+ *
+ * Variables:
+ * See [line].
  */
-
 	read_possible_formula(cfg["x"], x_, x_formula_);
 	read_possible_formula(cfg["y"], y_, y_formula_);
 	read_possible_formula(cfg["w"], w_, w_formula_);
@@ -388,14 +454,14 @@ void tcanvas::trectangle::draw(surface& canvas,
 	//@todo formulas are now recalculated every draw cycle which is a 
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
-	if(!y_formula_.empty()) {
-		DBG_G_D << "Rectangle execute y formula '" << y_formula_ << "'.\n";
-		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
-	}
-
 	if(!x_formula_.empty()) {
 		DBG_G_D << "Rectangle execute x formula '" << x_formula_ << "'.\n";
 		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
+	}
+
+	if(!y_formula_.empty()) {
+		DBG_G_D << "Rectangle execute y formula '" << y_formula_ << "'.\n";
+		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
 	}
 
 	if(!w_formula_.empty()) {
@@ -473,6 +539,9 @@ tcanvas::timage::timage(const vconfig& cfg) :
 	dst_clip_(),
 	image_()
 {
+
+//FIXME enhance the options and write the wiki block in the new style.
+
 /*WIKI
  * [image]
  *     name = (string)                The name of the image.
@@ -507,7 +576,12 @@ tcanvas::ttext::ttext(const vconfig& cfg) :
 	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
 	colour_(decode_colour(cfg["colour"])),
 	text_(cfg["text"])
-{	
+{
+
+//FIXME enhance the options and write the wiki block in the new style.
+
+//FIXME make sure text is rendered properly.
+
 /*WIKI
  * [text]
  *     x, y = (unsigned = 0), (unsigned = 0)    
