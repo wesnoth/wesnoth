@@ -1604,6 +1604,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		std::string loop = cfg["loop"];
+		std::string full_range = cfg["full_range"];
 
 		assert(state_of_game != NULL);
 
@@ -1619,6 +1620,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			soundsource::sourcespec spec(id, sounds, lexical_cast_default<int>(delay, 1000), lexical_cast_default<int>(chance, 100));
 			
 			spec.loop(lexical_cast_default<int>(loop, 0));
+			spec.full_range(lexical_cast_default<int>(full_range, 1));
 
 			if(play_fogged.empty()) {
 				spec.check_fog(true); 

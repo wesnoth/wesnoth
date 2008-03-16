@@ -40,9 +40,9 @@ class positional_source {
 	unsigned int _min_delay;
 	unsigned int _chance;
 	unsigned int _loops;
-	unsigned int _id;
+	const unsigned int _id;
+	unsigned int _range;
 	bool _check_fogged;
-	bool _visible;
 	std::string _files;
 	std::vector<gamemap::location> _locations;
 
@@ -64,6 +64,8 @@ class positional_source {
 	void add_location(const gamemap::location &loc);
 	void remove_location(const gamemap::location &loc);
 	void replace_location(const gamemap::location &oldloc, const gamemap::location &newloc);
+	
+	int calculate_volume(const gamemap::location &loc, const display &disp);
 };
 
 class manager : public events::observer {
@@ -103,17 +105,15 @@ class sourcespec {
 	int chance;
 
 	int loops;
+	int range;
 	bool check_fogged;
 
 	std::vector<gamemap::location> locations;
 
 public:
 	sourcespec(const std::string &id_, const std::string &files_, int min_delay_, int chance_)
-		: id(id_), files(files_), min_delay(min_delay_), chance(chance_)
+		: id(id_), files(files_), min_delay(min_delay_), chance(chance_), loops(0), check_fogged(false)
 	{ 
-		loops = 0;
-		check_fogged = false;
-
 	}
 
 	sourcespec& loop(int loops_) {
@@ -128,6 +128,11 @@ public:
 
 	sourcespec& location(const gamemap::location &loc) {
 		locations.push_back(loc);
+		return *this;
+	}
+
+	sourcespec& full_range(int range_) {
+		range = maximum<int>(1, range_);
 		return *this;
 	}
 
