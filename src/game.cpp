@@ -1753,7 +1753,9 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 			if(error_campaigns.empty() == false) {
 				std::stringstream msg;
-				msg << _("The following add-on(s) had errors and could not be loaded:");
+				msg << _n("The following add-on had errors and could not be loaded:",
+						"The following add-ons had errors and could not be loaded:",
+						error_campaigns.size());
 				for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
 					msg << "\n" << *i;
 				}
