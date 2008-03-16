@@ -22,6 +22,7 @@
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/widget.hpp"
+#include "gui/widgets/window_builder.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -43,19 +44,38 @@ unsigned screen_height = 0;
 
 namespace {
 
+	//! Map with all known windows, (the builder class builds a window).
+	std::map<std::string, twindow_builder> windows;
+
 	//! Map with all known guis.
 	std::map<std::string, tgui_definition> guis;
 
 	//! Points to the current gui.
 	std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
 
+	//! Vector with all known windows, these are validated on existance on startup.
+	//! The enum twindow_type is the index of the array.
+	std::vector<std::string> window_type_list(DUMMY);
 
 } // namespace 
+
+static void fill_window_types() 
+{
+	window_type_list[ADDON_CONNECT] = "addon_connect";
+}
+
+const std::string& get_id(const twindow_type window_type)
+{
+	assert(window_type >= 0 && window_type < DUMMY);
+
+	return window_type_list[window_type];
+}
 
 void load_settings() 
 {
 	LOG_GUI << "Init gui\n";
 
+	fill_window_types();
 
 	const SDL_Rect rect = screen_area();
 	screen_width = rect.w;
@@ -70,9 +90,9 @@ void load_settings()
 		ERR_GUI << "Could not read file '" << filename << "'\n";
 	}
 
-	const config::child_list& cfgs = cfg.get_children("gui");
-	for(std::vector<config*>::const_iterator itor = cfgs.begin();
-			itor != cfgs.end(); ++itor) {
+	const config::child_list& gui_cfgs = cfg.get_children("gui");
+	for(std::vector<config*>::const_iterator itor = gui_cfgs.begin();
+			itor != gui_cfgs.end(); ++itor) {
 
 		std::pair<std::string, tgui_definition> child;
 		child.first = child.second.read(**itor);
@@ -108,6 +128,7 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	std::cerr << "Parsing gui " << id << '\n';
 
+	/***** Window definitions *****/
 	const config::child_list& window_cfgs = cfg.get_children("window_definition");
 	for(std::vector<config*>::const_iterator itor = window_cfgs.begin();
 			itor != window_cfgs.end(); ++itor) {
@@ -119,6 +140,7 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	VALIDATE(windows.find("default") != windows.end(), _ ("No default window defined."));
 
+	/***** Button definitions *****/
 	const config::child_list& button_cfgs = cfg.get_children("button_definition");
 	for(std::vector<config*>::const_iterator itor = button_cfgs.begin();
 			itor != button_cfgs.end(); ++itor) {
@@ -130,7 +152,25 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	VALIDATE(buttons.find("default") != buttons.end(), _ ("No default button defined."));
 
+	/***** Window types *****/
+	const config::child_list& window_instance_cfgs = cfg.get_children("window");
+	for(std::vector<config*>::const_iterator itor = window_instance_cfgs.begin();
+			itor != window_instance_cfgs.end(); ++itor) {
 
+		std::pair<std::string, twindow_builder> child;
+		child.first = child.second.read(**itor);
+		window_types.insert(child);
+	}
+
+	if(id == "default") {
+		// The default gui needs to define all window types since we're the 
+		// fallback in case another gui doesn't define the window type.
+		for(std::vector<std::string>::const_iterator itor = window_type_list.begin();
+				itor != window_type_list.end(); ++itor) {
+
+			VALIDATE(window_types.find(*itor) != window_types.end(), _("Window not defined.")); 
+		}
+	}
 
 	return id;
 }
@@ -380,5 +420,35 @@ std::vector<twindow_definition::tresolution>::const_iterator get_window(const st
 
 	assert(false);
 }
+
+std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type)
+{
+	std::map<std::string, twindow_builder>::const_iterator 
+		window = current_gui->second.window_types.find(type);
+
+	if(true) { // FIXME Test for default gui.
+		assert(window != current_gui->second.window_types.end());
+	} else {
+		// FIXME Get the defintion in the default gui and do an assertion test.
+	}
+
+	for(std::vector<twindow_builder::tresolution>::const_iterator 
+			itor = window->second.resolutions.begin(),
+			end = window->second.resolutions.end();
+			itor != end;
+			++itor) {
+
+		if(screen_width <= itor->window_width &&
+				screen_height <= itor->window_height) {
+
+			return itor;
+		} else if (itor == end - 1) {
+			return itor;
+		}
+	}
+
+	assert(false);
+}
+
 
 } // namespace gui2

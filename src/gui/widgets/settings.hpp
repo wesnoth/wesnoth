@@ -19,6 +19,7 @@
 #define __GUI_WIDGETS_SETTING_HPP_INCLUDED__
 
 #include "gui/widgets/canvas.hpp"
+#include "gui/widgets/window_builder.hpp"
 #include "tstring.hpp"
 
 #include <map>
@@ -29,6 +30,14 @@
 class config;
 
 namespace gui2 {
+
+enum twindow_type {
+	ADDON_CONNECT,           //<! The addon connection dialog.
+
+	DUMMY                    //<! Dummy always the last one.
+};
+
+const std::string& get_id(const twindow_type window_type);
 
 struct tbutton_definition
 {
@@ -139,10 +148,14 @@ struct tgui_definition
 
 	std::map<std::string, tbutton_definition> buttons;
 	std::map<std::string, twindow_definition> windows;
+
+	std::map<std::string, twindow_builder> window_types;
 };
 
 	std::vector<tbutton_definition::tresolution>::const_iterator get_button(const std::string& definition);
 	std::vector<twindow_definition::tresolution>::const_iterator get_window(const std::string& definition);
+
+	std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type);
 
 	//! Loads the setting for the theme.
 	void load_settings();
