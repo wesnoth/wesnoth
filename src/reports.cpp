@@ -20,8 +20,7 @@
 #include <map>
 
 namespace {
-	// the first one is for backward compatibility (should be removed in v1.5.3)
-	const std::string report_names[] = { "unit_description", 
+	const std::string report_names[] = {
 		"unit_name", "unit_type",
 		"unit_race", "unit_level", "unit_side", "unit_amla",
 		"unit_traits", "unit_status", "unit_alignment", "unit_abilities",
