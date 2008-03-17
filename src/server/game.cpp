@@ -889,7 +889,7 @@ void game::add_player(const network::connection player, const bool observer) {
 	}
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
-	std::cerr << "SENDING LEVEL {{{" << level_.output() << "}}}\n";
+	//std::cerr << "SENDING LEVEL {{{" << level_.output() << "}}}\n";
 	simple_wml::string_span level_data = level_.output_compressed();
 	network::send_raw_data(level_data.begin(), level_data.size(), player);
 	if(started_) {
