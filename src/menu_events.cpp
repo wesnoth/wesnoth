@@ -847,7 +847,7 @@ private:
         // 29.11.07, YogiHH: I can't see why this is needed at all and it
         // breaks some savegame functionality. Probably the original reasons
         // for putting this in are no longer valid.
-        
+
 		// Clobber gold values to make sure the snapshot uses the values
 		// in [side] instead.
 		const config::child_list& players=start.get_children("player");
@@ -1090,7 +1090,7 @@ private:
 					clear_undo_stack(team_num);
 				} else {
 					undo_stack_.push_back(undo_action(new_unit,loc,RECRUIT_POS));
-				} 
+				}
 
 				gui_->recalculate_minimap();
 				gui_->invalidate_game_status();
@@ -2002,7 +2002,35 @@ private:
 			} else {
 				add_chat_message(time(NULL), "list", 0, _("Unknown command: ") + arg1);
 			}
-		} else {
+        //! @todo Update /help command for /update and /register
+		} else if(cmd == "register" && argc > 0) {
+		    config data;
+		    config& reg = data.add_child("register");
+			reg["password"] = arg1;
+			reg["mail"] = argc > 1 ? arg2 : "";
+			add_chat_message(time(NULL), "register", 0,
+					"with password *** and " + (reg["mail"].empty() ? "no email address" : "email address " + arg2),
+					game_display::MESSAGE_PRIVATE);
+			network::send_data(data, 0, true);
+		} else if(cmd == "update" && argc > 1) {
+		    config data;
+		    config& up = data.add_child("update_details");
+
+		    if(arg1 == "mail" || arg1 == "email") {
+		        up["mail"] = arg2;
+                network::send_data(data, 0, true);
+                add_chat_message(time(NULL), "update", 0, _("updating email address to ") + arg2 + " ...");
+
+		    } else if(arg1 == "password") {
+		        up["password"] = arg2;
+                network::send_data(data, 0, true);
+                add_chat_message(time(NULL), "update", 0, _("updating password to *** ..."));
+
+		    } else {
+				add_chat_message(time(NULL), "update", 0, _("Unknown command: ") + arg1);
+		    }
+
+        } else {
 			//! @todo Rather show specific error messages for missing arguments.
 			// Command not accepted, show help.
 			add_chat_message(time(NULL), "help", 0, help_chat_help);
@@ -2129,7 +2157,7 @@ private:
 			const std::string side_s(data.begin(),j);
 			const std::string action(j,data.end());
 			// default to the current side if empty
-			const unsigned int side = side_s.empty() ? 
+			const unsigned int side = side_s.empty() ?
 				team_num : lexical_cast_default<unsigned int>(side_s);
 
 			if (side < 1 || side > teams_.size()) {
@@ -2268,7 +2296,7 @@ private:
 			// to an enum, then used to index an
 			// array of strings.
 			// But someday the code ought to be
-			// changed to allow general string 
+			// changed to allow general string
 			// alignments for UMC.
 			if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic")) {
 				ERR_NG << "Invalid alignment: '" << value

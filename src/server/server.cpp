@@ -32,6 +32,7 @@
 #include "player.hpp"
 #include "proxy.hpp"
 #include "simple_wml.hpp"
+#include "user_handler.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -170,11 +171,12 @@ void make_change_diff(const simple_wml::node& src,
 class server
 {
 public:
-	server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads);
+	server(int port, input_stream& input, const std::string& config_file, const std::string& users_file, size_t min_threads,size_t max_threads);
 	void run();
 private:
 	void send_error(network::connection sock, const char* msg) const;
 	void send_error_dup(network::connection sock, const std::string& msg) const;
+	void send_password_request(network::connection sock, const char* msg) const;
 	const network::manager net_manager_;
 	const network::server_manager server_;
 
@@ -192,7 +194,7 @@ private:
 	config cfg_;
 	//! Read the server config from file 'config_file_'.
 	config read_config() const;
-	
+
 	// settings from the server config
 	std::set<std::string> accepted_versions_;
 	std::map<std::string,config> redirected_versions_;
@@ -206,7 +208,7 @@ private:
 	size_t concurrent_connections_;
 	//! Parse the server config into local variables.
 	void load_config();
-	
+
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
 	bool is_ip_banned(const std::string& ip) const;
 	std::vector<std::string> bans_;
@@ -242,24 +244,35 @@ private:
 
 	void send_gamelist_diff(network::connection sock=0);
 	void update_game_in_lobby(const game* g, network::connection exclude=0);
+
+	user_handler* user_handler_;
 };
 
-server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads)
-	: net_manager_(min_threads,max_threads), 
-	server_(port), 
+server::server(int port, input_stream& input, const std::string& config_file, const std::string& users_file, size_t min_threads,size_t max_threads)
+	: net_manager_(min_threads,max_threads),
+	server_(port),
 	not_logged_in_(players_),
-	lobby_(players_), 
-	input_(input), 
+	lobby_(players_),
+	input_(input),
 	config_file_(config_file),
-	cfg_(read_config()), 
+	cfg_(read_config()),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
-	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED), 
+	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED),
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
 	games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC),
-	last_ping_(time(NULL)), 
+	last_ping_(time(NULL)),
 	last_stats_(last_ping_)
 {
 	load_config();
+
+	//If we have no config file to save login data
+    //disallow registering by setting user_handler to NULL
+	if(!(users_file.empty())) {
+	    user_handler_ = new user_handler(users_file);
+	} else {
+	    user_handler_ = NULL;
+	}
+
 	signal(SIGHUP, reload_config);
 }
 
@@ -275,6 +288,15 @@ void server::send_error_dup(network::connection sock, const std::string& msg) co
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
+	simple_wml::string_span output = doc.output_compressed();
+	network::send_raw_data(output.begin(), output.size(), sock);
+}
+
+void server::send_password_request(network::connection sock, const char* msg) const
+{
+	simple_wml::document doc;
+	doc.root().add_child("error").set_attr("message", msg);
+	doc.root().child("error")->add_child("password_request");
 	simple_wml::string_span output = doc.output_compressed();
 	network::send_raw_data(output.begin(), output.size(), sock);
 }
@@ -530,7 +552,7 @@ void server::run() {
 				lobby_.remove_player(e.socket);
 				LOG_SERVER << ip << "\t" << pl_it->second.name()
 					<< "\thas logged off. (socket: " << e.socket << ")\n";
-				                 
+
 			} else {
 				for (std::vector<game*>::iterator g = games_.begin();
 					g != games_.end(); ++g)
@@ -692,6 +714,25 @@ void server::process_login(const network::connection sock,
 		}
 	}
 
+    //Check for password
+	if(user_handler_) {
+        std::string password = (*login)["password"].to_string();
+	    //This name is registered and no password provided
+	    if(user_handler_->user_exists(username) && password.empty()) {
+	        send_password_request(sock, "This username is registered on this server.");
+	        return;
+	    }
+	    //This name is registered and an incorrect password provided
+	    else if(user_handler_->user_exists(username) && !(user_handler_->login(username, password))) {
+	        send_password_request(sock, "The password you provided was incorrect");
+	        //! @todo Stop brute-force attacks by rejecting  further login attempts by
+	        //! this IP for a few seconds or something similar
+	        return;
+	    }
+	}
+
+	//! @todo Somehow mark unregistered players
+
 	send_doc(join_lobby_response_, sock);
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
@@ -708,6 +749,15 @@ void server::process_login(const network::connection sock,
 	if (motd_ != "") {
 		lobby_.send_server_message(motd_.c_str(), sock);
 	}
+
+	//If the username is not registered suggest to do so
+	if(user_handler_) {
+        if (!(user_handler_->user_exists(username))) {
+           lobby_.send_server_message("Your username is not registered. To prevent others from using \
+it type \"/register <password> <email>\".", sock);
+        }
+	}
+
 
 	// Send other players in the lobby the update that the player has joined
 	simple_wml::document diff;
@@ -736,7 +786,7 @@ void server::process_query(const network::connection sock,
 			" motd, status.";
 	if (admins_.count(sock) != 0) {
 		LOG_SERVER << "Admin Command:" << "\ttype: " << command
-			<< "\tIP: "<< network::ip_address(sock) 
+			<< "\tIP: "<< network::ip_address(sock)
 			<< "\tnick: "<< pl->second.name() << std::endl;
 		response << process_command(command.to_string());
 	// Commands a player may issue.
@@ -862,7 +912,7 @@ std::string server::process_command(const std::string& query) {
 		if (parameters == "") {
 			return "You must enter an ipmask to unban.";
 		}
-		const std::vector<std::string>::iterator itor = 
+		const std::vector<std::string>::iterator itor =
 			std::remove(bans_.begin(), bans_.end(), parameters);
 		if (itor == bans_.end()) {
 			out << "There is no ban on '" << parameters << "'.";
@@ -983,6 +1033,54 @@ void server::process_data_lobby(const network::connection sock,
 		return;
 	}
 
+	if(data.root().child("register")) {
+	    if(!user_handler_) {
+            lobby_.send_server_message("This server does not allow to register on it.", sock);
+            return;
+	    }
+	    //! @todo Check if provided values are sane
+	    if(user_handler_->add_user(pl->second.name(), (*data.child("register"))["mail"].to_string(),
+                (*data.child("register"))["password"].to_string())) {
+            std::stringstream msg;
+            msg << "Your username was registered." <<
+					//Warn that providing an email address might be a good idea
+					((*data.child("register"))["mail"].empty() ?
+					" It is recommended that you provide an email address for password recovery." : "");
+            lobby_.send_server_message(msg.str().c_str(), sock);
+        } else {
+            //! @todo Describe the error in detail
+            lobby_.send_server_message("There was an error registering your username", sock);
+        }
+        return;
+	}
+
+    //A user requested to update his password or mail
+	if(data.root().child("update_details")) {
+	    if(!user_handler_) {
+            lobby_.send_server_message("This server does not allow to register on it.", sock);
+            return;
+	    }
+
+	    if(!(user_handler_->user_exists(pl->second.name()))) {
+            lobby_.send_server_message("You are not registered. Please use the \"/register\" command first.",
+                    sock);
+            return;
+	    }
+
+	    const simple_wml::node& update = *(data.child("update_details"));
+
+	    //! @todo Check if provided values are sane
+	    if(!(update["mail"].to_string().empty())) {
+	        user_handler_->set_mail(pl->second.name(), update["mail"].to_string());
+	    }
+	    if(!(update["password"].to_string().empty())) {
+	        user_handler_->set_password(pl->second.name(), update["password"].to_string());
+	    }
+
+        lobby_.send_server_message("Your user details have been updated.", sock);
+        return;
+	}
+
 	if (data.root().child("create_game")) {
 		const std::string game_name = (*data.root().child("create_game"))["name"].to_string();
 		const std::string game_password = (*data.root().child("create_game"))["password"].to_string();
@@ -1089,7 +1187,7 @@ void server::process_data_lobby(const network::connection sock,
 void server::process_data_game(const network::connection sock,
                                simple_wml::document& data) {
 	DBG_SERVER << "in process_data_game...\n";
-	
+
 	const player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
@@ -1194,7 +1292,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 // Everything below should only be processed if the game is already intialized.
 	} else if (!g->level_init()) {
-		WRN_SERVER << "Received unknown data from: " << pl->second.name() 
+		WRN_SERVER << "Received unknown data from: " << pl->second.name()
 			<< " (socket:" << sock
 			<< ") while the scenario wasn't yet initialized.\n" << data.output();
 		return;
@@ -1350,7 +1448,7 @@ void server::process_data_game(const network::connection sock,
 	// The owner is kicking/banning someone from the game.
 	} else if (data.child("kick") || data.child("ban")) {
 		bool ban = (data.child("ban") != NULL);
-		const network::connection user = 
+		const network::connection user =
 				(ban ? g->ban_user(*data.child("ban"), pl)
 				: g->kick_member(*data.child("kick"), pl));
 		if (user) {
@@ -1401,7 +1499,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 	}
 
-	WRN_SERVER << "Received unknown data from: " << pl->second.name() 
+	WRN_SERVER << "Received unknown data from: " << pl->second.name()
 		<< ". (socket:" << sock << ")\n" << data.output();
 }
 
@@ -1474,7 +1572,7 @@ int main(int argc, char** argv) {
 	size_t min_threads = 5;
 	size_t max_threads = 0;
 
-	std::string config_file;
+	std::string config_file, users_file;
 
 #ifndef FIFODIR
 # define FIFODIR "/var/run/wesnothd"
@@ -1493,6 +1591,8 @@ int main(int argc, char** argv) {
 
 		if ((val == "--config" || val == "-c") && arg+1 != argc) {
 			config_file = argv[++arg];
+		} else if ((val == "--users" || val == "-u") && arg+1 != argc) {
+			users_file = argv[++arg];
 		} else if (val == "--verbose" || val == "-v") {
 			lg::set_log_domain_severity("all",3);
 		} else if (val.substr(0, 6) == "--log-") {
@@ -1533,6 +1633,7 @@ int main(int argc, char** argv) {
 				<< "                             'all' can be used to match any debug domain.\n"
 				<< "                             Available levels: error, warning, info, debug.\n"
 				<< "  -p, --port <port>          Binds the server to the specified port.\n"
+				<< "  -u  --users <path>         Tells wesnothd where to find the file with the data of the registered users\n"
 				<< "  -t, --threads <n>          Uses n worker threads for network I/O (default: 5).\n"
 				<< "  -v  --verbose              Turns on more verbose logging.\n"
 				<< "  -V, --version              Returns the server version.\n";
@@ -1577,7 +1678,7 @@ int main(int argc, char** argv) {
 	network::set_raw_data_only();
 
 	try {
-		server(port, input, config_file, min_threads, max_threads).run();
+		server(port, input, config_file, users_file, min_threads, max_threads).run();
 	} catch(network::error& e) {
 		ERR_SERVER << "Caught network error while server was running. Aborting.: "
 			<< e.message << "\n";

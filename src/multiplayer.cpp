@@ -226,21 +226,41 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				}
 
 				std::string login = preferences::login();
+				std::string password = "";
 
 				if(!first_time) {
-					const int res = gui::show_dialog(disp, NULL, "",
-							_("You must log in to this server"), gui::OK_CANCEL,
-							NULL, NULL, _("Login: "), &login, mp::max_login_size);
-					if(res != 0 || login.empty()) {
-						return ABORT_SERVER;
-					}
-					preferences::set_login(login);
+
+				    //This implementation is just a temporary hack
+
+				    //! @todo Instead of just asking for the password we should provide
+				    //! the user with a dialog where he can choose a different name,
+				    //! provide a password or request a password reminder
+
+				    //! @todo A fancy textbox that displays characters as dots or asterisk would
+				    //! be nice, just in chase your enemy is standing behind you
+				    if((*error).child("password_request")) {
+                        const int res = gui::show_dialog(disp, NULL, "",
+                                _("Please enter a password"), gui::OK_CANCEL,
+                                NULL, NULL, _("Password: "), &password, mp::max_login_size);
+                        if(res != 0 || password.empty()) {
+                            return ABORT_SERVER;
+                        }
+				    } else {
+                        const int res = gui::show_dialog(disp, NULL, "",
+                                _("You must log in to this server"), gui::OK_CANCEL,
+                                NULL, NULL, _("Login: "), &login, mp::max_login_size);
+                        if(res != 0 || login.empty()) {
+                            return ABORT_SERVER;
+                        }
+                        preferences::set_login(login);
+				    }
 				}
 
 				first_time = false;
 
 				config response;
 				response.add_child("login")["username"] = login;
+				(*(response.child("login")))["password"] = password;
 				network::send_data(response, 0, true);
 
 				network::connection data_res = network::receive_data(data, 0, 3000);
@@ -311,7 +331,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, game_
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, nolog, IO_CLIENT, 
+		play_game(disp, state, game_config, data, nolog, IO_CLIENT,
 			preferences::skip_mp_replay() && observe);
 		recorder.clear();
 

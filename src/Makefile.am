@@ -156,6 +156,7 @@ wesnothd_SOURCES = \
 	server/proxy.cpp \
 	server/server.cpp \
 	server/simple_wml.cpp \
+	server/user_handler.cpp \
 	network.cpp \
 	network_worker.cpp \
 	loadscreen_empty.cpp 
@@ -246,6 +247,7 @@ noinst_HEADERS = \
 	server/input_stream.hpp \
 	server/proxy.hpp \
 	server/metrics.hpp \
+	server/user_handler.hpp \
 	editor/editor_undo.hpp \
 	editor/map_manip.hpp \
 	editor/editor_layout.hpp \
