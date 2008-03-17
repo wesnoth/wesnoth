@@ -1,4 +1,10 @@
 Version 1.5.0-svn:
+ * campaigns:
+   * Under the Burning Suns:
+     * Minor cosmetic fixes
+ * graphics:
+   * Fixed broken TC on transport-galleon and drake walking corpse graphics
+   * New portraits: Elvish Sorceress
  * language and i18n:
    * new translation: Croatian
    * updated translations: Chiense, Czech, Danish, Dutch, French, Galician,
@@ -45,6 +51,8 @@ Version 1.5.0-svn:
    * new [switch] conditional command
    * new [unit_side] theme element : this is the side of the current unit (flag)
  * miscellaneous and bug fixes:
+   * Load-game dialog displays a scenario campaign's translated name rather than its
+     internal id now
    * wmlxgettext now print some context information about the strings
      extracted (patch #993)
    * Fixed network_worker to span at least one thread (bug #11238)
@@ -61,6 +69,7 @@ Version 1.5.0-svn:
    * remove an ancient wml update program which has been obsoleted by wmllint
    * added the boost regex dependency
    * added the sdl-ttf dependency
+   * added the zlib dependency
    * default gender selection now works correctly for units with
      only a female variant.  Fixes bug #11197.
    * Fixed a border case of unit portrait advancement on which generic portraits
