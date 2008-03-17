@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-16 11:58+0100\n"
+"POT-Creation-Date: 2008-03-17 10:29+0100\n"
 "PO-Revision-Date: 2007-10-01 20:03+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -3906,9 +3906,10 @@ msgstr ""
 "súpera, ale iba keď sama útočí."
 
 #: data/core/macros/special-notes.cfg:74
+#, fuzzy
 msgid ""
-" The ranged attacks of this unit are magical, and always have a high chance "
-"of hitting an opponent."
+" The unit has magical attacks, which always have a high chance of hitting an "
+"opponent."
 msgstr ""
 " Útoky tejto jednotky na diaľku sú magické, a majú vždy veľkú šancu "
 "zasiahnuť súpera."
@@ -6223,43 +6224,46 @@ msgstr "Vyber si obľúbený jazyk:"
 
 #: src/game.cpp:1756
 #, fuzzy
-msgid "The following add-on(s) had errors and could not be loaded:"
-msgstr "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
+msgid "The following add-on had errors and could not be loaded:"
+msgid_plural "The following add-ons had errors and could not be loaded:"
+msgstr[0] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
+msgstr[1] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
+msgstr[2] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
 
-#: src/game.cpp:1761
+#: src/game.cpp:1763
 msgid "ERROR DETAILS:"
 msgstr "DETAILY CHYBY:"
 
-#: src/game.cpp:1775
+#: src/game.cpp:1777
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Pozor: Chyby pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1827 src/game.cpp:1832
+#: src/game.cpp:1829 src/game.cpp:1834
 msgid "Error loading game configuration files: '"
 msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1828 src/game.cpp:1833
+#: src/game.cpp:1830 src/game.cpp:1835
 msgid "' (The game will now exit)"
 msgstr "' (Hra teraz skončí)"
 
-#: src/game.cpp:1879
+#: src/game.cpp:1881
 #, fuzzy
 msgid "Loading data files"
 msgstr "Načítavajú sa súbory jednotiek."
 
-#: src/game.cpp:2028
+#: src/game.cpp:2030
 msgid "Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
 
-#: src/game.cpp:2220
+#: src/game.cpp:2222
 msgid "Loading game configuration."
 msgstr "Načítavam nastavenia hry."
 
-#: src/game.cpp:2226
+#: src/game.cpp:2228
 msgid "Re-initialize fonts for the current language."
 msgstr "Znovunačítaj písmo pre aktuálny jazyk"
 
-#: src/game.cpp:2240
+#: src/game.cpp:2242
 msgid "Loading title screen."
 msgstr "Načítava sa úvodná obrazovka."
 
