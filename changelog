@@ -1,4 +1,11 @@
 Version 1.4+svn:
+ * campaigns:
+   * Fixed/enforced internal gender id of various female heroes/foes (bug #11197)
+   * Under the Burning Suns:
+     * Minor cosmetic fixes
+ * graphics:
+   * Fixed broken TC on transport-galleon and drake walking corpse graphics
+   * New portraits: Elvish Sorceress
  * language and i18n:
    * new translation: Croatian
    * updated translations: Chiense, Czech, Danish, Dutch, French, Galician,
@@ -8,6 +15,8 @@ Version 1.4+svn:
    * fixed not working "Update transition" and make "Delay transition update"
      directly trigger an update when toggled off.
  * miscellaneous and bug fixes:
+   * Load-game dialog displays a scenario campaign's translated name rather than its
+     internal id now
    * wmlxgettext now print some context information about the strings
      extracted (patch #993)
    * added VICTORY_AND_DEFEAT_MUSIC macro and wired it in all mainline
