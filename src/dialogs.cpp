@@ -550,9 +550,10 @@ void save_preview_pane::draw_contents()
 		str << "\n";
 
 		if(campaign_type == "scenario") {
+			const config* campaign = game_config_->find_child("campaign","id",summary["campaign"]);
 			utils::string_map symbols;
-			symbols["campaign_name"] = summary["campaign"];
-			str << vgettext("Campaign: $campaign_name", symbols);
+			symbols["campaign_name"] = (*campaign)["name"];
+			str << vgettext("Campaign: $campaign_name", symbols);	// FIXME: isn't this superfluous?
 		} else if(campaign_type == "multiplayer") {
 			str << _("Multiplayer");
 		} else if(campaign_type == "tutorial") {
