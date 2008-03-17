@@ -159,9 +159,9 @@ private:
 	string_span output_cache_;
 };
 
-enum INIT_BUFFER_CONTROL { INIT_TAKE_OWNERSHIP, INIT_STATIC };
+enum INIT_BUFFER_CONTROL { INIT_TAKE_OWNERSHIP };
 
-enum INIT_STATE { INIT_COMPRESSED };
+enum INIT_STATE { INIT_COMPRESSED, INIT_STATIC };
 
 class document
 {

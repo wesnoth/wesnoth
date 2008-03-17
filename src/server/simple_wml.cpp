@@ -8,8 +8,6 @@
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
-#include "SDL.h"
-#include "../config.hpp"
 #include "../serialization/binary_wml.hpp"
 #include "simple_wml.hpp"
 
@@ -645,8 +643,12 @@ document::document(const char* buf, INIT_STATE state) : output_(NULL),
                                                         root_(NULL)
 {
 	output_ = buf;
-	output_compressed();
-	output_ = NULL;
+	if(state == INIT_COMPRESSED) {
+		output_compressed();
+		output_ = NULL;
+	} else {
+		root_ = new node(*this, NULL, &buf);
+	}
 
 	attach_list();
 }
@@ -656,11 +658,8 @@ document::document(string_span compressed_buf)
     output_(NULL),
 	root_(NULL)
 {
-	int ticks = SDL_GetTicks();
 	string_span uncompressed_buf;
 	buffers_.push_back(uncompress_buffer(compressed_buf, &uncompressed_buf));
-	std::cerr << "UNCOMPRESSED: " << (SDL_GetTicks() - ticks) << "\n";
-	ticks = SDL_GetTicks();
 	output_ = uncompressed_buf.begin();
 	const char* cbuf = output_;
 	try {
@@ -670,7 +669,6 @@ document::document(string_span compressed_buf)
 		buffers_.clear();
 		throw;
 	}
-	std::cerr << "PARSED: " << (SDL_GetTicks() - ticks) << "\n";
 
 	attach_list();
 }

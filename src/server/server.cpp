@@ -451,16 +451,13 @@ void server::run() {
 				//TODO: this is a HUGE HACK. There was a bug in Wesnoth 1.4
 				//that caused it to still use binary WML for the leave game
 				//message. (ugh). We will see if this looks like binary WML
-				//and if it does, see if it is indeed a leave game message.
+				//and if it does, assume it's a leave_game message
 				if(buf.front() < 5) {
-					static std::string leave_game("leave_game");
-					if(std::search(buf.begin(), buf.end(), leave_game.begin(), leave_game.end()) != buf.end()) {
-						static simple_wml::document leave_game_doc(
-						    "[leave_game]\n[/leave_game]\n",
-							simple_wml::INIT_COMPRESSED);
-						process_data(sock, leave_game_doc);
-						continue;
-					}
+					static simple_wml::document leave_game_doc(
+					    "[leave_game]\n[/leave_game]\n",
+						simple_wml::INIT_COMPRESSED);
+					process_data(sock, leave_game_doc);
+					continue;
 				}
 
 				char* buf_ptr = new char [buf.size()];
