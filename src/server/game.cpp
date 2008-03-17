@@ -449,7 +449,7 @@ void game::send_change_controller(const size_t side_num,
 	// Update the level so observers who join get the new name.
 	const simple_wml::node::child_list& side_list = level_.root().children("side");
 	const int index = side_num - 1;
-	assert(side_num < side_list.size());
+	assert(index < side_list.size());
 	side_list[index]->set_attr_dup("current_player", newplayer->second.name().c_str());
 }
 

@@ -332,16 +332,28 @@ private:
 class filter_function : public function_expression {
 public:
 	explicit filter_function(const args_list& args)
-	    : function_expression("filter", args, 2, 2)
+	    : function_expression("filter", args, 2, 3)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> vars;
 		const variant items = args()[0]->evaluate(variables);
-		for(int n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
-			if(val.as_bool()) {
-				vars.push_back(items[n]);
+		if(args().size() == 2) {
+			for(int n = 0; n != items.num_elements(); ++n) {
+				const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
+				if(val.as_bool()) {
+					vars.push_back(items[n]);
+				}
+			}
+		} else {
+			map_formula_callable self_callable;
+			const std::string self = args()[1]->evaluate(variables).as_string();
+			for(int n = 0; n != items.num_elements(); ++n) {
+				self_callable.add(self, items[n]);
+				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_callable_with_backup(*items[n].as_callable(), variables)));
+				if(val.as_bool()) {
+					vars.push_back(items[n]);
+				}
 			}
 		}
 
