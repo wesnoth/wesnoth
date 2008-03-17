@@ -2319,6 +2319,11 @@ private:
 		} else if(game_config::debug && (cmd == "throw" || cmd == "fire")) {
 			game_events::fire(data);
 			gui_->redraw_everything();
+		} else if(cmd == "version") {
+			add_chat_message(time(NULL), "", 0, 
+					 game_config::version
+					 + (game_config::svnrev.empty() ? "" :
+					    " (" + game_config::svnrev + ")"));
 		}
 	}
 

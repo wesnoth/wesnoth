@@ -313,12 +313,6 @@ AC_ARG_ENABLE([internal-data],
 		[internaldata=$enableval],
 		[internaldata=no])
 
-AC_ARG_ENABLE([display-revision],
-              AS_HELP_STRING([--enable-display-revision], [enable svn revision display]),
-	      [svnrev=$enableval],
-	      [svnrev=no])
-
-
 if test "x$game" = "xno"
 then
 	python=no
@@ -348,7 +342,6 @@ AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([TESTS], [test x$tests = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
-AM_CONDITIONAL([USESVN], [test x$svnrev = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])

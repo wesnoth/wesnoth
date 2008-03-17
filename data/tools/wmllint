@@ -2135,7 +2135,7 @@ if __name__ == '__main__':
             # Now, inside objects...
             if under("object") and "description" not in tagstack[-1][1]:
                 transformed = re.sub(r"user_description\s*=", "description=", line)
-            # Alas, WML variable references cannod be converted so
+            # Alas, WML variable references cannot be converted so
             # automatically.
             if ".description" in line: 
                 print '"%s", line %d: .description may need hand fixup' % \
