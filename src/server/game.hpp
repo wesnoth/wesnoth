@@ -15,8 +15,9 @@
 #ifndef GAME_HPP_INCLUDED
 #define GAME_HPP_INCLUDED
 
-#include "../config.hpp"
 #include "../network.hpp"
+
+#include "simple_wml.hpp"
 
 #include <map>
 #include <vector>
@@ -31,6 +32,7 @@ class game
 {
 public:
 	game(player_map& players, const network::connection host=0, const std::string name="");
+	~game();
 
 	int id() const { return id_; }
 	const std::string& name() const { return name_; }
@@ -51,11 +53,11 @@ public:
 
 	void mute_all_observers();
 	//! Mute an observer by name.
-	void mute_observer(const config& mute, const player_map::const_iterator muter);
+	void mute_observer(const simple_wml::node& mute, const player_map::const_iterator muter);
 	//! Kick a member by name.
-	network::connection kick_member(const config& kick, const player_map::const_iterator kicker);
+	network::connection kick_member(const simple_wml::node& kick, const player_map::const_iterator kicker);
 	//! Ban and kick a user by name. He doesn't need to be in this game.
-	network::connection ban_user(const config& ban, const player_map::const_iterator banner);
+	network::connection ban_user(const simple_wml::node& ban, const player_map::const_iterator banner);
 
 	void add_player(const network::connection player, const bool observer = false);
 	bool remove_player(const network::connection player, const bool disconnect=false);
@@ -75,31 +77,32 @@ public:
 	//! Resets the side configuration according to the scenario data.
 	void update_side_data();
 	//! Let's a player owning a side give it to another player or observer.
-	void transfer_side_control(const network::connection sock, const config& cfg);
+	void transfer_side_control(const network::connection sock, const simple_wml::node& cfg);
 
-	void process_message(config data, const player_map::iterator user);
+	void process_message(simple_wml::document& data, const player_map::iterator user);
 	//! Filters and processes (some) commands.
 	//! Returns true iff the turn ended.
-	bool process_turn(config data, const player_map::const_iterator user);
+	bool process_turn(simple_wml::document& data, const player_map::const_iterator user);
 	//! Set the description to the number of available slots.
 	//! Returns true iff the number of slots has changed.
 	bool describe_slots();
 
-	config construct_server_message(const std::string& message) const;
+	void send_server_message(const char* message, network::connection sock=0, simple_wml::document* doc=NULL) const;
 	//! Send data to all players in this game except 'exclude'.
-	void send_and_record_server_message(const std::string& message,
+	void send_and_record_server_message(const char* message,
 			const network::connection exclude=0);
-	void send_data(const config& data, const network::connection exclude=0) const;
+	void send_data(simple_wml::document& data, const network::connection exclude=0) const;
+	void send_to_one(simple_wml::document& data, const network::connection sock) const;
 
-	void record_data(const config& data);
+	void record_data(simple_wml::document* data);
 
 	//! The full scenario data.
-	config& level() { return level_; }
+	simple_wml::document& level() { return level_; }
 
 	//! Functions to set/get the address of the game's summary description as
 	//! sent to players in the lobby.
-	void set_description(config* desc);
-	config* description() const { return description_; }
+	void set_description(simple_wml::node* desc);
+	simple_wml::node* description() const { return description_; }
 
 	void set_password(const std::string& passwd) { password_ = passwd; }
 	bool password_matches(const std::string& passwd) const {
@@ -117,6 +120,10 @@ public:
 	}
 
 private:
+	//forbidden operations
+	game(const game&);
+	void operator=(const game&);
+
 	size_t current_side() const { return (nsides_ ? end_turn_ % nsides_ : 0); }
 	network::connection current_player() const
 	{ return (nsides_ ? sides_[current_side()] : 0); }
@@ -132,22 +139,23 @@ private:
 			const player_map::const_iterator newplayer,
 			const bool player_left=true);
 	void transfer_ai_sides();
-	void send_data_team(const config& data, const std::string& team,
+	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
 			const network::connection exclude=0) const;
-	void send_data_observers(const config& data, const network::connection exclude=0) const;
+	void send_data_observers(simple_wml::document& data, const network::connection exclude=0) const;
 	//! Send [observer] tags of all the observers in the game to the user or
 	//! everyone if none given.
 	void send_observerjoins(const network::connection sock=0) const;
+	void send_history(const network::connection sock) const;
 	//! In case of a host transfer, notify the new host about its status.
 	void notify_new_host();
 	//! Convenience function for finding a user by name.
-	player_map::const_iterator find_user(const std::string& name) const;
+	player_map::const_iterator find_user(const simple_wml::string_span& name) const;
 
 	bool observers_can_label() const { return false; }
 	bool observers_can_chat() const { return true; }
-	bool is_legal_command(const config& command, bool is_player);
+	bool is_legal_command(const simple_wml::node& command, bool is_player);
 	//! Function which returns true iff 'player' is on 'team'.
-	bool is_on_team(const std::string& team, const network::connection player) const;
+	bool is_on_team(const simple_wml::string_span& team, const network::connection player) const;
 
 	//! Function which should be called every time a player ends their turn
 	//! (i.e. [end_turn] received). This will update the 'turn' attribute for
@@ -192,11 +200,11 @@ private:
 	bool started_;
 
 	//! The current scenario data.
-	config level_;
+	simple_wml::document level_;
 	//! Replay data.
-	config history_;
+	std::vector<simple_wml::document*> history_;
 	//! Pointer to the game's description in the games_and_users_list_.
-	config* description_;
+	simple_wml::node* description_;
 
 	int end_turn_;
 
@@ -209,7 +217,7 @@ private:
 
 struct game_id_matches {
 	game_id_matches(int id) : id_(id) {}
-	bool operator()(const game& g) const { return g.id() == id_; }
+	bool operator()(const game* g) const { return g->id() == id_; }
 
 private:
 	int id_;

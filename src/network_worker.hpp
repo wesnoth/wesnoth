@@ -36,11 +36,15 @@ private:
 	bool active_;
 };
 
+void set_raw_data_only();
+
 //! Function to asynchronously received data to the given socket.
 void receive_data(TCPsocket sock);
 
 TCPsocket get_received_data(TCPsocket sock, config& cfg);
+TCPsocket get_received_data(std::vector<char>& buf);
 
+void queue_raw_data(TCPsocket sock, const char* buf, int len);
 void queue_data(TCPsocket sock, const config& buf, const bool gzipped);
 bool is_locked(const TCPsocket sock);
 bool close_socket(TCPsocket sock, bool force=false);

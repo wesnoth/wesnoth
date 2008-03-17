@@ -121,10 +121,14 @@ struct buffer {
 	//! been removed.
 	bool gzipped;
 
+	//this field is used if we're sending a raw buffer instead of
+	//through a config object. It will contain the entire contents of
+	//the buffer being sent.
+	std::vector<char> raw_buffer;
 };
 
 
-bool managed = false;
+bool managed = false, raw_data_only = false;
 typedef std::vector< buffer* > buffer_set;
 buffer_set bufs[NUM_SHARDS];
 
@@ -266,19 +270,22 @@ static void output_to_buffer(TCPsocket sock, const config& cfg, std::ostringstre
 	}
 }
 
-static SOCKET_STATE send_buffer(TCPsocket sock, std::ostringstream& compressor, const bool gzipped) {
+static void make_network_buffer(const char* input, int len, std::vector<char>& buf)
+{
+	buf.resize(4 + len + 1);
+	SDLNet_Write32(len + 1, &buf[0]);
+	memcpy(&buf[4], input, len);
+	buf.back() = 0;
+}
+
+static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
+{
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif
 	size_t upto = 0;
-
-	std::string const &value = compressor.str();
-	std::vector<char> buf(4 + value.size() + 1);
-	SDLNet_Write32(value.size()+1,&buf[0]);
-	std::copy(value.begin(),value.end(),buf.begin()+4);
-	buf.back() = 0;
-
 	size_t size = buf.size();
+
 	{
 		const threading::lock lock(*stats_mutex);
 		transfer_stats[sock].first.fresh_current(size);
@@ -491,7 +498,12 @@ static int process_queue(void* shard_num)
 		std::vector<char> buf;
 
 		if(sent_buf) {
-			result = send_buffer(sent_buf->sock, sent_buf->stream, sent_buf->gzipped);
+			if(sent_buf->raw_buffer.empty()) {
+				const std::string &value = sent_buf->stream.str();
+				make_network_buffer(value.c_str(), value.size(), sent_buf->raw_buffer);
+			}
+
+			result = send_buffer(sent_buf->sock, sent_buf->raw_buffer);
 			delete sent_buf;
 		} else {
 			result = receive_buf(sock,buf);
@@ -505,24 +517,30 @@ static int process_queue(void* shard_num)
 		}
 		//if we received data, add it to the queue
 		buffer* received_data = new buffer(sock);
-		std::string buffer(buf.begin(), buf.end());
-		std::istringstream stream(buffer);
-		// Binary wml starts with a char < 4, the first char of a gzip header is 31
-		// so test that here and use the proper reader.
-		try {
-			if(stream.peek() == 31) {
-				read_gz(received_data->config_buf, stream);
-			} else {
-				compression_schema *compress;
-				{
-					const threading::lock lock_schemas(*schemas_mutex);
-					compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
+
+		if(raw_data_only) {
+			received_data->raw_buffer.swap(buf);
+		} else {
+			std::string buffer(buf.begin(), buf.end());
+			std::istringstream stream(buffer);
+			// Binary wml starts with a char < 4, the first char of a gzip header is 31
+			// so test that here and use the proper reader.
+			try {
+				if(stream.peek() == 31) {
+					read_gz(received_data->config_buf, stream);
+				} else {
+					assert(false);
+					compression_schema *compress;
+					{
+						const threading::lock lock_schemas(*schemas_mutex);
+						compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
+					}
+					read_compressed(received_data->config_buf, stream, *compress);
 				}
-				read_compressed(received_data->config_buf, stream, *compress);
+			} catch(config::error &e)
+			{
+				received_data->config_error = e.message;
 			}
-		} catch(config::error &e)
-		{
-			received_data->config_error = e.message;
 		}
 
 		{
@@ -613,6 +631,11 @@ manager::~manager()
 	}
 }
 
+void set_raw_data_only()
+{
+	raw_data_only = true;
+}
+
 void receive_data(TCPsocket sock)
 {
 	{
@@ -629,6 +652,7 @@ void receive_data(TCPsocket sock)
 
 TCPsocket get_received_data(TCPsocket sock, config& cfg)
 {
+	assert(!raw_data_only);
 	const threading::lock lock_received(*received_mutex);
 	received_queue::iterator itor = received_data_queue.begin();
 	if(sock != NULL) {
@@ -656,6 +680,36 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 		delete buf;
 		return res;
 	}
+}
+
+TCPsocket get_received_data(std::vector<char>& out)
+{
+	assert(raw_data_only);
+	const threading::lock lock_received(*received_mutex);
+	if(received_data_queue.empty()) {
+		return NULL;
+	}
+
+	buffer* buf = received_data_queue.front();
+	received_data_queue.pop_front();
+	out.swap(buf->raw_buffer);
+	const TCPsocket res = buf->sock;
+	return res;
+}
+
+void queue_raw_data(TCPsocket sock, const char* buf, int len)
+{
+	buffer* queued_buf = new buffer(sock);
+	assert(*buf == 31);
+	make_network_buffer(buf, len, queued_buf->raw_buffer);
+	const int shard = get_shard(sock);
+	const threading::lock lock(*shard_mutexes[shard]);
+	bufs[shard].push_back(queued_buf);
+	socket_state_map::const_iterator i = sockets_locked[shard].insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY)).first;
+	if(i->second == SOCKET_READY || i->second == SOCKET_ERRORED) {
+		cond[shard]->notify_one();
+	}
+
 }
 
 void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
