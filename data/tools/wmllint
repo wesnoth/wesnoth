@@ -2023,16 +2023,16 @@ if __name__ == '__main__':
         "Resource-name transformation on text lines."
         if not upconvert:
             return line
-        transformed = line
+        original = line
         # First, do resource-file moves
-        if "wmllint: noconvert" not in line:
+        if "wmllint: noconvert" not in original:
             for step in fileconversions:
                 for (old, new) in step:
-                    transformed = old.sub(new, transformed)
+                    line = old.sub(new, line)
         # Handle terrain_liked=, terrain=, valid_terrain=, letter=
-        spaceless = transformed.replace(" ", "").replace("\t", "")
+        spaceless = line.replace(" ", "").replace("\t", "")
         if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless or 'letter=' in spaceless) and "wmllint:ignore" not in spaceless:
-            (key, pre, value, post) = parse_attribute(transformed)
+            (key, pre, value, post) = parse_attribute(line)
             # We have to cope with the following cases...
             # Old style:
             #    terrain_liked=ghM
@@ -2090,22 +2090,22 @@ if __name__ == '__main__':
                             newterrains += c
                     if newterrains.endswith(","):
                         newterrains = newterrains[:-1]
-                    transformed = pre + newterrains + post
+                    line = pre + newterrains + post
                 if newstyle:
                     if len(value) == 2:
                         # 1.3.1 to 1.3.2 conversion
                         for (old, new) in conversion2.items():
-                            transformed = old.sub(new, transformed)
+                            line = old.sub(new, line)
         # Check for things marked translated that aren't strings
-        if "_" in transformed and not "wmllint: ignore" in transformed:
-            m = re.search(r'[=(]\s*_\s+("?)', transformed)
+        if "_" in line and not "wmllint: ignore" in line:
+            m = re.search(r'[=(]\s*_\s+("?)', line)
             if m and not m.group(1):
                 msg = '"%s", line %d: translatability mark before non-string' % \
                       (filename, lineno)
                 print >>sys.stderr, msg
         # Perform unconditional line changes
         for (old, new) in linechanges:
-            transformed = transformed.replace(old, new)
+            line = line.replace(old, new)
         # Perform tag renaming.  Note: this has to happen before
         # the sanity check, which assumes [unit] has already been
         # mapped to [unit_type].  Also, beware that this test will fail to
@@ -2115,9 +2115,9 @@ if __name__ == '__main__':
         if upconvert and "1.3.14" in versions:
             # UnitWML
             if "units" in filename:
-                transformed = transformed.replace("[unit]", "[unit_type]")
-                transformed = transformed.replace("[+unit]", "[+unit_type]")
-                transformed = transformed.replace("[/unit]", "[/unit_type]")
+                line = line.replace("[unit]", "[unit_type]")
+                line = line.replace("[+unit]", "[+unit_type]")
+                line = line.replace("[/unit]", "[/unit_type]")
             elif verbose > 1 and "unit]" in line and not within(("scenario","multiplayer","test","tutorial")):
                 print "%s, line %d: [unit] may need conversion to [unit_type]" % \
                       (filename, lineno)
@@ -2129,12 +2129,12 @@ if __name__ == '__main__':
                    under("side") or \
                    re.search("{[A-Z]+.*description=.*}", line):
                 if "id" not in tagstack[-1][1]:
-                    transformed = re.sub(r"\bdescription\s*=", "id=", line)
+                    line = re.sub(r"\bdescription\s*=", "id=", line)
                 if "name" not in tagstack[-1][1]:
-                    transformed = re.sub(r"user_description\s*=", "name=", line)
+                    line = re.sub(r"user_description\s*=", "name=", line)
             # Now, inside objects...
             if under("object") and "description" not in tagstack[-1][1]:
-                transformed = re.sub(r"user_description\s*=", "description=", line)
+                line = re.sub(r"user_description\s*=", "description=", line)
             # Alas, WML variable references cannot be converted so
             # automatically.
             if ".description" in line: 
@@ -2147,11 +2147,11 @@ if __name__ == '__main__':
             if within("theme"):
                 line = line.replace("[unit_description]", "[unit_name]")
         # Report the changes
-        if verbose > 0 and transformed != line:
+        if verbose > 0 and line != original:
             msg = "%s, line %d: %s -> %s" % \
-                  (filename, lineno, line.strip(), transformed.strip())
+                  (filename, lineno, line.strip(), line.strip())
             print msg
-        return transformed
+        return line
 
     try:
         if upconvert and "1.3.1" in versions and "older" not in versions:
