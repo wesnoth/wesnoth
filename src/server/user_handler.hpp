@@ -31,28 +31,36 @@ class user_handler {
 
         //! Adds a user.
         //! Returns false if adding fails (e.g. because a user with the same name already exists).
-        bool add_user(const std::string& name, const std::string& mail, const std::string& password);
+        void add_user(const std::string& name, const std::string& mail, const std::string& password);
         //! Removes a user-
         //! Returns false if the user did not exist;
-        bool remove_user(const std::string& name);
+        void remove_user(const std::string& name);
 
-        bool password_reminder(const std::string& name);
+        void password_reminder(const std::string& name);
 
-        bool set_mail(const std::string& user, const std::string& mail) {
-            return set_user_attribute(user, "mail", mail);
+        void set_mail(const std::string& user, const std::string& mail) {
+            set_user_attribute(user, "mail", mail);
         }
-        bool set_password(const std::string& user, const std::string& password) {
-            return set_user_attribute(user, "password", password);
+
+        void set_password(const std::string& user, const std::string& password) {
+            set_user_attribute(user, "password", password);
         }
 
         bool login(const std::string& name, const std::string& password);
         bool user_exists(const std::string& name);
 
+
+        struct error {
+            error(const std::string& msg) : message(msg) {}
+            std::string message;
+        };
+
     private:
         //! Sends an e-mail to a specified address. Requires access to an SMTP server.
+        //! Returns false if the mail could not be sent.
         bool send_mail(const char* to_address, const char* subject, const char* message);
 
-        bool set_user_attribute(const std::string& name,
+        void set_user_attribute(const std::string& name,
                 const std::string& attribute, const std::string& value);
 
         std::string users_file_;

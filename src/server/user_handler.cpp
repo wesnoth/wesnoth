@@ -100,8 +100,6 @@ bool user_handler::send_mail(const char* to_address, const char* subject, const 
 
     std::cout << m.response() << "\n";
 
-    //Do _all_ smtp servers put the result code in front of
-    //their response messages?
     if(m.response().substr(0,3) != "250") {
         return false;
     }
@@ -113,7 +111,7 @@ void user_handler::clean_up() {
     //! @todo Write this function :)
 }
 
-bool user_handler::add_user(const std::string& name,
+void user_handler::add_user(const std::string& name,
         const std::string& mail, const std::string& password) {
 
     //! @todo Check if provided values are sane
@@ -122,7 +120,7 @@ bool user_handler::add_user(const std::string& name,
 
     //Check if this user already exists
     if(user_exists(name)) {
-        return false;
+        throw error("Could not add new user. A user with the name \"" + name + "\" already exists.");
     }
 
     //! @todo I guess we should only allow every email address to be registered only once
@@ -137,7 +135,7 @@ bool user_handler::add_user(const std::string& name,
 
     //Don't send a confirmation mail if we don't have an email
     if(mail.empty()) {
-        return true;
+        return;
     }
 
     std::stringstream msg;
@@ -146,41 +144,40 @@ bool user_handler::add_user(const std::string& name,
             "Your password: " << user["password"];
 
     send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Registration", msg.str().c_str());
-    return true;
 }
 
-bool user_handler::password_reminder(const std::string& name) {
+void user_handler::password_reminder(const std::string& name) {
     if(!user_exists(name)) {
-        return false;
+        throw error("Could not send password reminder. No user with the name \"" + name + "\" exists.");
     }
 
     config& user = *(users_->child(name));
 
     if(user["mail"].empty()) {
-        return false;
+        throw error("Could not send password reminder. The email address of the user \"" + name + "\" is empty");
     }
 
     std::stringstream msg;
     msg << "Your username: " << name << "\n" <<
             "Your password: " << user["password"];
 
-    //If sending succeeds return true, otherwise false
-    return send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Password Reminder", msg.str().c_str());
+    //If sending does not return true warn that no message was sent.
+    if(!(send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Password Reminder", msg.str().c_str()))) {
+        throw error("Could not send password reminder. There was an error sending the reminder email");
+    }
 
 }
 
-bool user_handler::remove_user(const std::string& name) {
+void user_handler::remove_user(const std::string& name) {
     //Return if the user does not exist
     if(!user_exists(name)) {
-        return false;
+        throw error("Could not remove user. No user with the name \"" + name + "\" exists.");
     }
     users_->remove_child(name, 0);
 
     //! @todo To save performance it we should of course not save
     //! the whole config everytime something changes
     save_config();
-
-    return true;
 }
 
 bool user_handler::login(const std::string& name, const std::string& password) {
@@ -193,12 +190,13 @@ bool user_handler::login(const std::string& name, const std::string& password) {
     return (user["password"] == password);
 }
 
-bool user_handler::set_user_attribute(const std::string& name,
+void user_handler::set_user_attribute(const std::string& name,
         const std::string& attribute, const std::string& value) {
 
     //Return if the user does not exist
     if(!user_exists(name)) {
-        return false;
+        throw error("Could not set attribute \"" + attribute  + "\" for user \"" + name +
+        "\". No user with the name with this name exists.");
     }
 
     config& user = *(users_->child(name));
@@ -207,8 +205,6 @@ bool user_handler::set_user_attribute(const std::string& name,
     //! @todo To save performance it we should of course not save
     //! the whole config everytime something changes
     save_config();
-
-    return true;
 }
 
 bool user_handler::user_exists(const std::string& name) {

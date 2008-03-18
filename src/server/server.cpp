@@ -1039,17 +1039,20 @@ void server::process_data_lobby(const network::connection sock,
             return;
 	    }
 	    //! @todo Check if provided values are sane
-	    if(user_handler_->add_user(pl->second.name(), (*data.child("register"))["mail"].to_string(),
-                (*data.child("register"))["password"].to_string())) {
+	    try {
+	        (user_handler_->add_user(pl->second.name(), (*data.child("register"))["mail"].to_string(),
+                (*data.child("register"))["password"].to_string()));
+
             std::stringstream msg;
-            msg << "Your username was registered." <<
+            msg << "Your username has been registered." <<
 					//Warn that providing an email address might be a good idea
 					((*data.child("register"))["mail"].empty() ?
 					" It is recommended that you provide an email address for password recovery." : "");
             lobby_.send_server_message(msg.str().c_str(), sock);
-        } else {
-            //! @todo Describe the error in detail
-            lobby_.send_server_message("There was an error registering your username", sock);
+
+        } catch (user_handler::error e) {
+            lobby_.send_server_message(("There was and error registering your username. The error message was: "
+            + e.message).c_str(), sock);
         }
         return;
 	}
@@ -1070,14 +1073,21 @@ void server::process_data_lobby(const network::connection sock,
 	    const simple_wml::node& update = *(data.child("update_details"));
 
 	    //! @todo Check if provided values are sane
-	    if(!(update["mail"].to_string().empty())) {
-	        user_handler_->set_mail(pl->second.name(), update["mail"].to_string());
-	    }
-	    if(!(update["password"].to_string().empty())) {
-	        user_handler_->set_password(pl->second.name(), update["password"].to_string());
-	    }
+	    try {
+            if(!(update["mail"].to_string().empty())) {
+                user_handler_->set_mail(pl->second.name(), update["mail"].to_string());
+            }
+            if(!(update["password"].to_string().empty())) {
+                user_handler_->set_password(pl->second.name(), update["password"].to_string());
+            }
 
         lobby_.send_server_message("Your user details have been updated.", sock);
+
+	    } catch (user_handler::error e) {
+            lobby_.send_server_message(("There was and error updating your details. The error message was: "
+            + e.message).c_str(), sock);
+	    }
+
         return;
 	}
 
