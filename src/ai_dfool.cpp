@@ -386,7 +386,7 @@ namespace dfool {
     temp["y"] = ys.str();
     units_[i].write(temp_unit);
     temp.add_child("unit",temp_unit);
-    //    std::cout<<"ai write: "<<temp_unit["description"]<<"\n";
+    //    std::cout<<"ai write: "<<temp_unit["id"]<<"\n";
   }
 
   void unit_memory::known_map(unit_map& u, size_t turn){

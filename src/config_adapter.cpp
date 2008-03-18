@@ -36,7 +36,7 @@ std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_sav
 	std::string save_id = cfg["save_id"];
 
 	if(save_id.empty()) {
-		save_id=cfg["description"];
+		save_id=cfg["id"];
 	}
 
 	if(save_id.empty()) {
