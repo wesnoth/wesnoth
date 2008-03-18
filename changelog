@@ -88,6 +88,8 @@ Version 1.5.0-svn:
      have multiple layers and the calculation and rendering are separated
      which means things can be drawn in front of units.
    * removed the now unused tilestack based drawing.
+   * fixed an alignement issue which caused a SIGBUS on a Sparc (debian bug
+     #426318)
 
 Version 1.4:
  * language and i18n:

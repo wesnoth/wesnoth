@@ -367,7 +367,15 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 
 static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 {
+#ifdef __GNUC__
+	// The address needs to be aligned on a Sparc system, if it's not aligned
+	// the SDLNet_Read32 call will cause a SIGBUS and the server will be 
+	// terminated.
+	// http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=426318
+	char num_buf[4] __attribute__ ((aligned (4)));
+#else
 	char num_buf[4];
+#endif
 	bool res = receive_with_timeout(sock,num_buf,4,false);
 
 	if(!res) {
