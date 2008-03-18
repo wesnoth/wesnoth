@@ -104,7 +104,7 @@ void make_add_diff(const simple_wml::node& src, const char* gamelist,
 	children[index]->copy_into(insert.add_child(type));
 }
 
-void make_delete_diff(const simple_wml::node& src,
+bool make_delete_diff(const simple_wml::node& src,
                       const char* gamelist,
                       const char* type,
                       const simple_wml::node* remove,
@@ -121,17 +121,20 @@ void make_delete_diff(const simple_wml::node& src,
 		top = &top->add_child("gamelist");
 	}
 
-	simple_wml::node& del = top->add_child("delete_child");
 	const simple_wml::node::child_list& children = src.children(type);
 	const simple_wml::node::child_list::const_iterator itor =
 	    std::find(children.begin(), children.end(), remove);
-	assert(itor != children.end());
+	if(itor == children.end()) {
+		return false;
+	}
 	const int index = itor - children.begin();
+	simple_wml::node& del = top->add_child("delete_child");
 	del.set_attr_int("index", index);
 	del.add_child(type);
+	return true;
 }
 
-void make_change_diff(const simple_wml::node& src,
+bool make_change_diff(const simple_wml::node& src,
                       const char* gamelist,
                       const char* type,
 					  const simple_wml::node* item,
@@ -147,13 +150,15 @@ void make_change_diff(const simple_wml::node& src,
 		top->set_attr_int("index", 0);
 		top = &top->add_child("gamelist");
 	}
-
-	simple_wml::node& diff = *top;
-	simple_wml::node& del = diff.add_child("delete_child");
 	const simple_wml::node::child_list& children = src.children(type);
 	const simple_wml::node::child_list::const_iterator itor =
 	    std::find(children.begin(), children.end(), item);
-	assert(itor != children.end());
+	if(itor == children.end()) {
+		return false;
+	}
+
+	simple_wml::node& diff = *top;
+	simple_wml::node& del = diff.add_child("delete_child");
 	const int index = itor - children.begin();
 	del.set_attr_int("index", index);
 	del.add_child(type);
@@ -163,6 +168,7 @@ void make_change_diff(const simple_wml::node& src,
 	simple_wml::node& insert = diff.add_child("insert_child");
 	insert.set_attr_int("index", index+1);
 	children[index]->copy_into(insert.add_child(type));
+	return true;
 }
 
 }
@@ -516,9 +522,10 @@ void server::run() {
 			const size_t index = std::find(users.begin(), users.end(), pl_it->second.config_address()) - users.begin();
 			if (index < users.size()) {
 				simple_wml::document diff;
-				make_delete_diff(games_and_users_list_.root(), NULL, "user",
-				                 pl_it->second.config_address(), diff);
-				lobby_.send_data(diff, e.socket);
+				if(make_delete_diff(games_and_users_list_.root(), NULL, "user",
+				                    pl_it->second.config_address(), diff)) {
+					lobby_.send_data(diff, e.socket);
+				}
 
 				games_and_users_list_.root().remove_child("user",index);
 			} else {
@@ -999,9 +1006,10 @@ void server::process_data_lobby(const network::connection sock,
 		data.root().child("create_game")->copy_into(g.level().root());
 		lobby_.remove_player(sock);
 		simple_wml::document diff;
-		make_change_diff(games_and_users_list_.root(), NULL,
-		                 "user", pl->second.config_address(), diff);
-		lobby_.send_data(diff);
+		if(make_change_diff(games_and_users_list_.root(), NULL,
+		                    "user", pl->second.config_address(), diff)) {
+			lobby_.send_data(diff);
+		}
 		return;
 	}
 
@@ -1064,11 +1072,12 @@ void server::process_data_lobby(const network::connection sock,
 
 		//send notification of changes to the game and user
 		simple_wml::document diff;
-		make_change_diff(*games_and_users_list_.root().child("gamelist"),
-		                 "gamelist", "game", (*g)->description(), diff);
-		make_change_diff(games_and_users_list_.root(), NULL,
-		                 "user", pl->second.config_address(), diff);
-		lobby_.send_data(diff);
+		if(make_change_diff(*games_and_users_list_.root().child("gamelist"),
+		                    "gamelist", "game", (*g)->description(), diff) ||
+		   make_change_diff(games_and_users_list_.root(), NULL,
+		                    "user", pl->second.config_address(), diff)) {
+			lobby_.send_data(diff);
+		}
 	}
 
 	// See if it's a message, in which case we add the name of the sender,
@@ -1299,11 +1308,12 @@ void server::process_data_game(const network::connection sock,
 
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document diff;
-			make_change_diff(*games_and_users_list_.root().child("gamelist"),
-			                 "gamelist", "game", g->description(), diff);
-			make_change_diff(games_and_users_list_.root(), NULL,
-			                 "user", pl->second.config_address(), diff);
-			lobby_.send_data(diff, sock);
+			if(make_change_diff(*games_and_users_list_.root().child("gamelist"),
+			                    "gamelist", "game", g->description(), diff) ||
+			   make_change_diff(games_and_users_list_.root(), NULL,
+			                    "user", pl->second.config_address(), diff)) {
+				lobby_.send_data(diff, sock);
+			}
 
 			// Send the player who has quit the gamelist.
 			send_doc(games_and_users_list_, sock);
@@ -1460,8 +1470,9 @@ void server::send_gamelist_diff(network::connection exclude)
 void server::update_game_in_lobby(const game* g, network::connection exclude)
 {
 	simple_wml::document diff;
-	make_change_diff(*games_and_users_list_.root().child("gamelist"), "gamelist", "game", g->description(), diff);
-	lobby_.send_data(diff, exclude);
+	if(make_change_diff(*games_and_users_list_.root().child("gamelist"), "gamelist", "game", g->description(), diff)) {
+		lobby_.send_data(diff, exclude);
+	}
 }
 
        #include <sys/types.h>
