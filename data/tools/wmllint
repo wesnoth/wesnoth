@@ -529,6 +529,10 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # to deserialize an empty unit.
     if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
+    # This assumes that conversion will always happen in units/ files.
+    if "units" not in filename and closer == "unit" and "race" in attributes:
+        print "%s, line %d: [unit] needs hand fixup to [unit_type]" % \
+              (filename, lineno)
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
@@ -2118,9 +2122,6 @@ if __name__ == '__main__':
                 line = line.replace("[unit]", "[unit_type]")
                 line = line.replace("[+unit]", "[+unit_type]")
                 line = line.replace("[/unit]", "[/unit_type]")
-            elif verbose > 1 and "unit]" in line and not within(("scenario","multiplayer","test","tutorial")):
-                print "%s, line %d: [unit] may need conversion to [unit_type]" % \
-                      (filename, lineno)
             # Handle SingleUnitWML or Standard Unit Filter or SideWML
             # Also, when macro calls have description= in them, the arg is
             # a SUF being passed in.
