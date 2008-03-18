@@ -433,10 +433,8 @@ void stop_music() {
 
 void stop_sound() {
 	if(mix_ok) {
-		{
-			Mix_HaltGroup(SOUND_SOURCES);
-			Mix_HaltGroup(SOUND_FX);
-		}
+		Mix_HaltGroup(SOUND_SOURCES);
+		Mix_HaltGroup(SOUND_FX);
 		sound_cache_iterator itor = sound_cache.begin();
 		while(itor != sound_cache.end())
 		{
@@ -512,7 +510,8 @@ void play_music()
 void play_new_music()
 {
 	music_start_time = 0; //reset status: no start time
-	want_new_music=true;
+	want_new_music = true;
+
 	if(!preferences::music_on() || !mix_ok || current_track.name.empty())
 		return;
 
@@ -534,17 +533,20 @@ void play_new_music()
 		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(current_track.name,music)).first;
 		last_track=current_track;
 	}
+
 	LOG_AUDIO << "Playing track '" << current_track.name << "'\n";
 	int fading_time=current_track.ms_before;
 	if(no_fading)
 	{
 		fading_time=0;
 	}
+
 	const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
 	if(res < 0)
 	{
 		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_track.name <<" \n";
 	}
+
 	want_new_music=false;
 }
 
@@ -565,9 +567,7 @@ void play_music_repeatedly(const std::string &name)
 
 void play_music_config(const config &music)
 {
-	struct music_track track(music["name"],
-							 music["ms_before"],
-							 music["ms_after"]);
+	struct music_track track(music["name"], music["ms_before"], music["ms_after"]);
 
 	// If they say play once, we don't alter playlist.
 	if (utils::string_bool(music["play_once"])) {
@@ -613,9 +613,11 @@ void music_thinker::process(events::pump_info &info) {
 			no_fading=true;
 			fadingout_time=0;
 		}
+
 		if(music_start_time && info.ticks(&music_refresh, music_refresh_rate) >= music_start_time - fadingout_time) {
 			want_new_music=true;
 		}
+
 		if(want_new_music) {
 			if(Mix_PlayingMusic()) {
 				Mix_FadeOutMusic(fadingout_time);
@@ -841,6 +843,7 @@ void set_music_volume(int vol)
 	if(mix_ok && vol >= 0) {
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
+
 		Mix_VolumeMusic(vol);
 	}
 }
