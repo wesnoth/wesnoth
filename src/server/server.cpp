@@ -715,33 +715,36 @@ void server::process_login(const network::connection sock,
 	}
 
     //Check for password
+    bool registered = false;
 	if(user_handler_) {
         std::string password = (*login)["password"].to_string();
-	    //This name is registered and no password provided
-	    if(user_handler_->user_exists(username) && password.empty()) {
-	        send_password_request(sock, "This username is registered on this server.");
-	        return;
-	    }
-	    //This name is registered and an incorrect password provided
-	    else if(user_handler_->user_exists(username) && !(user_handler_->login(username, password))) {
-	        send_password_request(sock, "The password you provided was incorrect");
+        if(user_handler_->user_exists(username)) {
+            //This name is registered and no password provided
+            if(password.empty()) {
+                send_password_request(sock, "This username is registered on this server.");
+                return;
+            }
+            //This name is registered and an incorrect password provided
+            else if(!(user_handler_->login(username, password))) {
+                send_password_request(sock, "The password you provided was incorrect");
 
-	        LOG_SERVER << network::ip_address(sock) << "\t"
-                    << "Login attempt with incorrect password for username '" << username << "'\n.";
+                LOG_SERVER << network::ip_address(sock) << "\t"
+                        << "Login attempt with incorrect password for username '" << username << "'\n.";
 
-	        //! @todo Stop brute-force attacks by rejecting  further login attempts by
-	        //! this IP for a few seconds or something similar
-	        return;
-	    }
+                //! @todo Stop brute-force attacks by rejecting  further login attempts by
+                //! this IP for a few seconds or something similar
+                return;
+            }
+	    registered = true;
+        }
 	}
-
-	//! @todo Somehow mark unregistered players
 
 	send_doc(join_lobby_response_, sock);
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 	const player new_player(username, player_cfg, default_max_messages_,
 		default_time_period_);
+    new_player.mark_registered(registered);
 	players_.insert(std::pair<network::connection,player>(sock, new_player));
 
 	not_logged_in_.remove_player(sock);
@@ -755,11 +758,9 @@ void server::process_login(const network::connection sock,
 	}
 
 	//If the username is not registered suggest to do so
-	if(user_handler_) {
-        if (!(user_handler_->user_exists(username))) {
+	if(user_handler_ && !registered) {
            lobby_.send_server_message("Your username is not registered. To prevent others from using \
 it type '/register <password> <email>'.", sock);
-        }
 	}
 
 
@@ -1052,6 +1053,15 @@ void server::process_data_lobby(const network::connection sock,
 					((*data.child("register"))["mail"].empty() ?
 					" It is recommended that you provide an email address for password recovery." : "");
             lobby_.send_server_message(msg.str().c_str(), sock);
+
+            //Mark the player as registered and send the other clients
+            //an update to dislpay this change
+            pl->second.mark_registered();
+
+            simple_wml::document diff;
+            make_change_diff(games_and_users_list_.root(), NULL,
+		                 "user", pl->second.config_address(), diff);
+            lobby_.send_data(diff);
 
         } catch (user_handler::error e) {
             lobby_.send_server_message(("There was and error registering your username. The error message was: "

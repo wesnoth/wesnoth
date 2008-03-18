@@ -30,6 +30,8 @@ public:
 	// mark a player as member of the game 'game_id' or as located in the lobby
 	void mark_available(const int game_id=0, const std::string location="");
 
+	void mark_registered(bool registered =true) const;
+
 
 	const std::string& name() const { return name_; }
 

@@ -47,6 +47,9 @@ config user_handler::read_config() const {
 void user_handler::load_config() {
 
     //Load configuration and initialize with default values if we don't find values
+
+    #ifndef NO_MAIL
+
     cfg_["from_address"] = cfg_["from_address"].empty() ? "NOREPLY@wesnoth.org" : cfg_["from_address"];
     cfg_["mail_server"] = cfg_["mail_server"].empty() ? "127.0.0.1" : cfg_["mail_server"];
 
@@ -61,6 +64,8 @@ void user_handler::load_config() {
         //! @todo catch bad lexical cast
         mail_port_ = lexical_cast_default<unsigned short>(cfg_["mail_port"]);
     }
+
+    #endif //NO_MAIL
 
     //Check if we already have users and
     //if we don't create a child for them
@@ -85,6 +90,8 @@ void user_handler::save_config() {
 
 bool user_handler::send_mail(const char* to_address, const char* subject, const char* message) {
 
+    #ifndef NO_MAIL
+
     jwsmtp::mailer m(to_address, cfg_["from_address"].c_str(), subject, message,
             cfg_["mail_server"].c_str(), mail_port_, false);
     if(!(cfg_["mail_user"].empty())) {
@@ -103,7 +110,12 @@ bool user_handler::send_mail(const char* to_address, const char* subject, const 
     if(m.response().substr(0,3) != "250") {
         return false;
     }
+
     return true;
+
+    #endif //NO_MAIL
+
+    return false;
 
 }
 
@@ -116,6 +128,8 @@ void user_handler::add_user(const std::string& name,
 
     // Check if provided values are sane
     // (e.g. the email is either empty or looks like user@domain)
+    // We also check the email with NO_MAIL defined because we
+    // might later decide to run the server with mailing enabled
     check_password(password);
     check_mail(mail);
 
@@ -124,7 +138,16 @@ void user_handler::add_user(const std::string& name,
         throw error("Could not add new user. A user with the name '" + name + "' already exists.");
     }
 
-    //! @todo I guess we should only allow every email address to be registered only once
+    //Check if the given email is not yet registered
+    if(!mail.empty()) {
+        const config::child_map& user_childs = users_->all_children();
+        for(config::child_map::const_iterator i = user_childs.begin(); i != user_childs.end(); ++i) {
+            std::cout << (*(users_->child(i->first)))["mail"] << std::endl;
+            if((*(users_->child(i->first)))["mail"] == mail) {
+                throw error("Could not add new user. The email address '" + mail + "' is already in use.");
+            }
+        }
+    }
 
     config& user = users_->add_child(name);
     user["mail"] = mail;
@@ -135,6 +158,8 @@ void user_handler::add_user(const std::string& name,
     save_config();
 
     std::cout << "Created new user '" << name << "'\n";
+
+    #ifndef NO_MAIL
 
     //Don't send a confirmation mail if we don't have an email
     if(mail.empty()) {
@@ -147,9 +172,13 @@ void user_handler::add_user(const std::string& name,
             "Your password: " << user["password"];
 
     send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Registration", msg.str().c_str());
+
+    #endif //NO_MAIL
 }
 
 void user_handler::password_reminder(const std::string& name) {
+    #ifndef NO_MAIL
+
     if(!user_exists(name)) {
         throw error("Could not send password reminder. No user with the name '" + name + "' exists.");
     }
@@ -168,6 +197,11 @@ void user_handler::password_reminder(const std::string& name) {
     if(!(send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Password Reminder", msg.str().c_str()))) {
         throw error("Could not send password reminder. There was an error sending the reminder email");
     }
+    return;
+
+    #endif //NO_MAIL
+
+    throw error("Could not send password reminder. This server is configured not to send emails.");
 
 }
 

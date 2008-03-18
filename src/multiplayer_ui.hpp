@@ -218,6 +218,7 @@ private:
 		std::string    location;
 		user_relation  relation;
 		user_state     state;
+		bool           registered;
 		bool operator> (const user_info& b) const;
 	};
 };

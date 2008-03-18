@@ -10,9 +10,9 @@
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
 
+#ifndef NO_MAIL
 #include <jwsmtp/jwsmtp.h>
-
-//! @todo Generally write nice log/error messages for all user_handler functions
+#endif
 
 class user_handler {
     public:
@@ -53,7 +53,7 @@ class user_handler {
         };
 
     private:
-        //! Sends an e-mail to a specified address. Requires access to an SMTP server.
+        //! Sends an email to a specified address. Requires access to an SMTP server.
         //! Returns false if the mail could not be sent.
         bool send_mail(const char* to_address, const char* subject, const char* message);
 

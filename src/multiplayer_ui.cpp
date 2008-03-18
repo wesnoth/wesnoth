@@ -29,6 +29,7 @@
 #include "video.hpp"
 #include "replay.hpp"
 #include "wml_separators.hpp"
+#include "serialization/string_utils.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NG LOG_STREAM(err, engine)
@@ -62,7 +63,7 @@ namespace {
 	}
 
 	user_menu_style umenu_style;
-	
+
 } // anon namespace
 
 namespace mp {
@@ -597,6 +598,7 @@ void ui::gamelist_updated(bool silent)
 		u_elem.game_id = "";
 		u_elem.location = "";
 		u_elem.state = (**user)["available"] == "no" ? GAME : LOBBY;
+		u_elem.registered = utils::string_bool((**user)["registered"]);
 		if(!(**user)["game_id"].empty()) {
 			u_elem.game_id = (**user)["game_id"];
 			if (u_elem.game_id == selected_game_) {
@@ -630,6 +632,8 @@ void ui::gamelist_updated(bool silent)
 	const std::string ingame_color_tag  = "#";
 	const std::string selgame_color_tag = "<0,191,255>";
 
+	const std::string registered_user_tag = "~";
+
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
 	std::vector<std::string> user_strings;
 	std::vector<std::string> menu_strings;
@@ -639,6 +643,7 @@ void ui::gamelist_updated(bool silent)
 		const std::string game_str = (u_itor->state == LOBBY) ? "" : " (" + u_itor->location + ")";
 		std::string img_str = "";
 		std::string color_str = "";
+		std::string reg_str = "";
 		switch (u_itor->state) {
 			case LOBBY:    color_str = lobby_color_tag;   break;
 			case GAME:     color_str = ingame_color_tag;  break;
@@ -652,8 +657,9 @@ void ui::gamelist_updated(bool silent)
 				case ME:      img_str = imgpre + "self.png"    + COLUMN_SEPARATOR; break;
 			}
 		}
+		reg_str = u_itor->registered ? registered_user_tag : "";
 		user_strings.push_back(u_itor->name);
-		menu_strings.push_back(img_str + color_str + u_itor->name + game_str + HELP_STRING_SEPARATOR + u_itor->name + game_str);
+		menu_strings.push_back(img_str + reg_str + color_str + u_itor->name + game_str + HELP_STRING_SEPARATOR + u_itor->name + game_str);
 		u_itor++;
 	}
 
