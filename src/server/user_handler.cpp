@@ -31,7 +31,7 @@ config user_handler::read_config() const {
 	try {
 		read(configuration, *stream, &errors);
 		if (errors.empty()) {
-			std::cout << "Server configuration from file: '" << users_file_
+			std::cout << "Read user_handler configuration from file: '" << users_file_
 				<< "' read.\n";
 		} else {
 			std::cerr << "ERROR: Errors reading configuration file: '"
@@ -77,13 +77,13 @@ void user_handler::save_config() {
 	try {
 		scoped_ostream users_file = ostream_file(users_file_);
 		write(*users_file , cfg_);
+		std::cout << "Users file written to '" << users_file_ << "'\n";
 	} catch(io_exception&) {
-		std::cerr << "error writing to users file '" << get_prefs_file() << "'\n";
+		std::cerr << "ERROR: Writing to users file '" << users_file_ << "'\n";
 	}
 }
 
 bool user_handler::send_mail(const char* to_address, const char* subject, const char* message) {
-    std::cout << "sending mail..." << "\n";
 
     jwsmtp::mailer m(to_address, cfg_["from_address"].c_str(), subject, message,
             cfg_["mail_server"].c_str(), mail_port_, false);
@@ -98,7 +98,7 @@ bool user_handler::send_mail(const char* to_address, const char* subject, const 
 
     m.send();
 
-    std::cout << m.response() << "\n";
+    std::cout << "Sent email to " << to_address << " with response '" << m.response() << "'\n";
 
     if(m.response().substr(0,3) != "250") {
         return false;
@@ -114,13 +114,14 @@ void user_handler::clean_up() {
 void user_handler::add_user(const std::string& name,
         const std::string& mail, const std::string& password) {
 
-    //! @todo Check if provided values are sane
-    //! (e.g. the email is either empty or looks like user@domain)
-
+    // Check if provided values are sane
+    // (e.g. the email is either empty or looks like user@domain)
+    check_password(password);
+    check_mail(mail);
 
     //Check if this user already exists
     if(user_exists(name)) {
-        throw error("Could not add new user. A user with the name \"" + name + "\" already exists.");
+        throw error("Could not add new user. A user with the name '" + name + "' already exists.");
     }
 
     //! @todo I guess we should only allow every email address to be registered only once
@@ -132,6 +133,8 @@ void user_handler::add_user(const std::string& name,
     //! @todo To save performance it we should of course not save
     //! the whole config everytime something changes
     save_config();
+
+    std::cout << "Created new user '" << name << "'\n";
 
     //Don't send a confirmation mail if we don't have an email
     if(mail.empty()) {
@@ -148,13 +151,13 @@ void user_handler::add_user(const std::string& name,
 
 void user_handler::password_reminder(const std::string& name) {
     if(!user_exists(name)) {
-        throw error("Could not send password reminder. No user with the name \"" + name + "\" exists.");
+        throw error("Could not send password reminder. No user with the name '" + name + "' exists.");
     }
 
     config& user = *(users_->child(name));
 
     if(user["mail"].empty()) {
-        throw error("Could not send password reminder. The email address of the user \"" + name + "\" is empty");
+        throw error("Could not send password reminder. The email address of the user '" + name + "' is empty");
     }
 
     std::stringstream msg;
@@ -171,13 +174,15 @@ void user_handler::password_reminder(const std::string& name) {
 void user_handler::remove_user(const std::string& name) {
     //Return if the user does not exist
     if(!user_exists(name)) {
-        throw error("Could not remove user. No user with the name \"" + name + "\" exists.");
+        throw error("Could not remove user. No user with the name '" + name + "' exists.");
     }
     users_->remove_child(name, 0);
 
     //! @todo To save performance it we should of course not save
     //! the whole config everytime something changes
     save_config();
+
+    std::cout << "Removed user '" << name << "'\n";
 }
 
 bool user_handler::login(const std::string& name, const std::string& password) {
@@ -195,8 +200,8 @@ void user_handler::set_user_attribute(const std::string& name,
 
     //Return if the user does not exist
     if(!user_exists(name)) {
-        throw error("Could not set attribute \"" + attribute  + "\" for user \"" + name +
-        "\". No user with the name with this name exists.");
+        throw error("Could not set attribute '" + attribute  + "' for user '" + name +
+        "'. No user with the name with this name exists.");
     }
 
     config& user = *(users_->child(name));
@@ -209,4 +214,29 @@ void user_handler::set_user_attribute(const std::string& name,
 
 bool user_handler::user_exists(const std::string& name) {
     return ((users_->child(name)));
+}
+
+void user_handler::set_mail(const std::string& user, const std::string& mail) {
+    check_mail(mail);
+    set_user_attribute(user, "mail", mail);
+}
+
+void user_handler::set_password(const std::string& user, const std::string& password) {
+    check_password(password);
+    set_user_attribute(user, "password", password);
+}
+
+void user_handler::check_mail(const std::string& mail) {
+    if(!(mail.empty() ||utils::isvalid_email(mail))) {
+        throw error("The email adress '" + mail + "' appears to be invalid.");
+    }
+}
+
+void user_handler::check_password(const std::string& password) {
+    //I guess it is a good idea to have the same restrictions for password as for usernames
+    if (!utils::isvalid_username(password)) {
+        throw error( "This password contains invalid "
+            "characters. Only alpha-numeric characters, underscores and hyphens"
+			"are allowed.");
+    }
 }

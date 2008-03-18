@@ -416,8 +416,35 @@ bool isvalid_username(const std::string& username) {
 	const size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const size_t valid_char =
 			std::count_if(username.begin(), username.end(), is_username_char);
-	if ((alnum + valid_char != username.size()) 
+	if ((alnum + valid_char != username.size())
 			|| valid_char == username.size() || username.empty() )
+	{
+		return false;
+	}
+	return true;
+}
+
+bool is_email_char(char c) {
+    //Are there any other non alpha-numeric characters allowed in email addresses?
+	return ((c == '_') || (c == '-') || (c == '.'));
+}
+
+bool is_at_symbol(char c) {
+	return (c == '@');
+}
+
+//! Check if an email address is valid.
+//! A valid email should look like <user>@<domain>
+bool isvalid_email(const std::string& email) {
+	const size_t alnum = std::count_if(email.begin(), email.end(), isalnum);
+	const size_t valid_char =
+			std::count_if(email.begin(), email.end(), is_email_char);
+	const size_t at_symbol =
+			std::count_if(email.begin(), email.end(), is_at_symbol);
+	if ((alnum + valid_char + at_symbol != email.size())
+            //We want exaclty one @
+            || at_symbol != 1
+			|| email.empty() )
 	{
 		return false;
 	}
@@ -494,7 +521,7 @@ bool word_match(const std::string& message, const std::string& word) {
 	return false;
 }
 
-//! Match using '*' as any number of characters (including none), 
+//! Match using '*' as any number of characters (including none),
 //! and '?' as any one character.
 bool wildcard_string_match(const std::string& str, const std::string& match) {
 	const bool wild_matching = (!match.empty() && match[0] == '*');
@@ -634,7 +661,7 @@ int byte_size_from_utf8_first(unsigned char ch)
 	return count;
 }
 
-utf8_iterator::utf8_iterator(const std::string& str) : 
+utf8_iterator::utf8_iterator(const std::string& str) :
 	current_char(0),
 	string_end(str.end()),
 	current_substr(std::make_pair(str.begin(), str.begin()))
@@ -642,7 +669,7 @@ utf8_iterator::utf8_iterator(const std::string& str) :
 	update();
 }
 
-utf8_iterator::utf8_iterator(std::string::const_iterator const &beg, 
+utf8_iterator::utf8_iterator(std::string::const_iterator const &beg,
 		std::string::const_iterator const &end) :
 	current_char(0),
 	string_end(end),
@@ -873,9 +900,9 @@ utf8_string lowercase(const utf8_string& s)
 //! Truncates a string.
 //!
 //! If the string send has more than size utf-8 characters it will be truncated
-//! to this size. 
+//! to this size.
 //! No assumptions can be made about the actual size of the string.
-//! 
+//!
 //! @param[in]  str     String which can be converted to utf-8.
 //! @param[out] str     String which contains maximal size utf-8 characters.
 //! @param size         The size to truncate at.

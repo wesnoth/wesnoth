@@ -725,6 +725,10 @@ void server::process_login(const network::connection sock,
 	    //This name is registered and an incorrect password provided
 	    else if(user_handler_->user_exists(username) && !(user_handler_->login(username, password))) {
 	        send_password_request(sock, "The password you provided was incorrect");
+
+	        LOG_SERVER << network::ip_address(sock) << "\t"
+                    << "Login attempt with incorrect password for username '" << username << "'\n.";
+
 	        //! @todo Stop brute-force attacks by rejecting  further login attempts by
 	        //! this IP for a few seconds or something similar
 	        return;
@@ -754,7 +758,7 @@ void server::process_login(const network::connection sock,
 	if(user_handler_) {
         if (!(user_handler_->user_exists(username))) {
            lobby_.send_server_message("Your username is not registered. To prevent others from using \
-it type \"/register <password> <email>\".", sock);
+it type '/register <password> <email>'.", sock);
         }
 	}
 
@@ -1038,7 +1042,6 @@ void server::process_data_lobby(const network::connection sock,
             lobby_.send_server_message("This server does not allow to register on it.", sock);
             return;
 	    }
-	    //! @todo Check if provided values are sane
 	    try {
 	        (user_handler_->add_user(pl->second.name(), (*data.child("register"))["mail"].to_string(),
                 (*data.child("register"))["password"].to_string()));
@@ -1065,14 +1068,13 @@ void server::process_data_lobby(const network::connection sock,
 	    }
 
 	    if(!(user_handler_->user_exists(pl->second.name()))) {
-            lobby_.send_server_message("You are not registered. Please use the \"/register\" command first.",
+            lobby_.send_server_message("You are not registered. Please use the '/register' command first.",
                     sock);
             return;
 	    }
 
 	    const simple_wml::node& update = *(data.child("update_details"));
 
-	    //! @todo Check if provided values are sane
 	    try {
             if(!(update["mail"].to_string().empty())) {
                 user_handler_->set_mail(pl->second.name(), update["mail"].to_string());

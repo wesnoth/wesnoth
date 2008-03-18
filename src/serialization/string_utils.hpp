@@ -73,11 +73,13 @@ bool string_bool(const std::string& str,bool def=false);
 bool word_completion(std::string& text, std::vector<std::string>& wordlist);
 //! Check if a message contains a word.
 bool word_match(const std::string& message, const std::string& word);
-//! Match using '*' as any number of characters (including none), 
+//! Match using '*' as any number of characters (including none),
 //! and '?' as any one character.
 bool wildcard_string_match(const std::string& str, const std::string& match);
 //! Check if the username contains only valid characters.
 bool isvalid_username(const std::string &login);
+//! Check if an email address looks like <user>@<domain>
+bool isvalid_email(const std::string &email);
 
 typedef std::map< std::string, t_string > string_map;
 //! Function which will interpolate variables, starting with '$' in the string 'str'

@@ -26,27 +26,24 @@ class user_handler {
         //! Remove users that registered but did never log in, etc.
         void clean_up();
 
-        //! @todo It might be a good idea to have all these boolean functions
-        //! rather throw exceptions to get more detailed error messages
-
         //! Adds a user.
         //! Returns false if adding fails (e.g. because a user with the same name already exists).
         void add_user(const std::string& name, const std::string& mail, const std::string& password);
+
         //! Removes a user-
-        //! Returns false if the user did not exist;
+        //! Returns false if the user does not exist
         void remove_user(const std::string& name);
 
+        //! Send a password reminder email to the given user
         void password_reminder(const std::string& name);
 
-        void set_mail(const std::string& user, const std::string& mail) {
-            set_user_attribute(user, "mail", mail);
-        }
+        void set_mail(const std::string& user, const std::string& mail);
+        void set_password(const std::string& user, const std::string& password);
 
-        void set_password(const std::string& user, const std::string& password) {
-            set_user_attribute(user, "password", password);
-        }
-
+        //! Returns true if the given password equals the password for the given user
         bool login(const std::string& name, const std::string& password);
+
+        //! Returns true if a user with the given name exists
         bool user_exists(const std::string& name);
 
 
@@ -62,6 +59,9 @@ class user_handler {
 
         void set_user_attribute(const std::string& name,
                 const std::string& attribute, const std::string& value);
+
+        void check_mail(const std::string& mail);
+        void check_password(const std::string& password);
 
         std::string users_file_;
         unsigned short mail_port_;
