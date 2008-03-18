@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-02 23:10+0100\n"
-"PO-Revision-Date: 2008-03-14 06:19+0300\n"
+"PO-Revision-Date: 2008-03-17 20:30+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3957,8 +3957,7 @@ msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Телепорт:\n"
-"Данный отряд может использовать один ход, чтобы телепортироваться между "
+" Данный отряд может использовать один ход, чтобы телепортироваться между "
 "двумя пустыми деревнями, принадлежащими его стороне."
 
 #: data/core/macros/special-notes.cfg:41
@@ -3987,7 +3986,9 @@ msgstr ""
 #: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
-msgstr " Этот отряд может передвигаться незамеченным по глубоком дну."
+msgstr ""
+" Этот отряд может передвигаться незамеченным в глубокой воде, так как ему не "
+"требуется дышать воздухом."
 
 #: data/core/macros/special-notes.cfg:53
 msgid ""
@@ -4041,12 +4042,13 @@ msgstr ""
 "но лишь при атаке. "
 
 #: data/core/macros/special-notes.cfg:74
+#, fuzzy
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
-" Атака на дистанции этого отряда является магической, что дает высокие шансы "
-"поразить противника."
+" Этот отряд имеет магическую атаку, что всегда даёт высокий шанс поразить "
+"противника."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4160,11 +4162,11 @@ msgstr "выносливая"
 
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
-msgstr "здоровяк"
+msgstr "живучий"
 
 #: data/core/macros/traits.cfg:133
 msgid "female^healthy"
-msgstr "здоровячка"
+msgstr "живучая"
 
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
@@ -6357,8 +6359,9 @@ msgid "Choose your preferred language:"
 msgstr "Выберите предпочитаемый язык:"
 
 #: src/game.cpp:1755
+#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
-msgstr "Следующие аддоны имеют ошибки и не могут быть загружены:"
+msgstr "Следующий аддон имеет ошибки и не может быть загружен:"
 
 #: src/game.cpp:1760
 msgid "ERROR DETAILS:"
