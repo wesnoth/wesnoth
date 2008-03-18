@@ -676,6 +676,15 @@ void game::process_message(simple_wml::document& data, const player_map::iterato
 		chat_message::truncate_message(str);
 		message->set_attr_dup("message", str.c_str());
 	}
+	// Only log in the lobby_.
+	if (owner_ != 0) {
+	} else if (msg.size() >= 3 && simple_wml::string_span(msg.begin(), 3) == "/me") {
+		LOG_GAME << network::ip_address(user->first) << "\t<"
+			<< user->second.name() << simple_wml::string_span(msg.begin() + 3, msg.size() - 3) << ">\n";
+        } else {
+		LOG_GAME << network::ip_address(user->first) << "\t<"
+			<< user->second.name() << "> " << msg << "\n";
+	}
 
 	send_data(data, user->first);
 }

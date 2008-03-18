@@ -751,7 +751,8 @@ void server::process_query(const network::connection sock,
 		response << help_msg;
 	} else if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name());
-	} else if (command == "metrics" || command == "motd" || command == "wml") {
+	} else if (command == "status " + pl->second.name() || command == "metrics"
+	|| command == "motd" || command == "wml") {
 		response << process_command(command.to_string());
 	} else if (command == admin_passwd_) {
 		LOG_SERVER << "New Admin recognized:" << "\tIP: "
@@ -799,6 +800,7 @@ std::string server::process_command(const std::string& query) {
 				(*g)->send_server_message(parameters.c_str());
 			}
 		}
+		LOG_SERVER << "<server> " + parameters + "\n";
 		out << "message '" << parameters << "' relayed to players\n";
 	} else if (command == "status") {
 		out << "STATUS REPORT\n";
