@@ -143,7 +143,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 				if ( ((**side)["side"] == (**lside)["side"])
 					&& ((**side)["current_player"] != (**lside)["current_player"]) ){
 					(**side)["current_player"] = (**lside)["current_player"];
-					(**side)["description"] = (**lside)["description"];
+					(**side)["id"] = (**lside)["id"];
 					(**side)["save_id"] = (**lside)["save_id"];
 					(**side)["controller"] = (**lside)["controller"];
 					break;

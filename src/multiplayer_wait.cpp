@@ -247,7 +247,7 @@ void wait::join_game(bool observe)
 		//available side.
 		int side_choice = 0;
 		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
-			if((**s)["controller"] == "network" && (**s)["description"].empty()) {
+			if((**s)["controller"] == "network" && (**s)["id"].empty()) {
 				if((**s)["save_id"] == preferences::login() || (**s)["current_player"] == preferences::login()) {
 					side_choice = s - sides_list.begin();
 				}
@@ -461,8 +461,8 @@ void wait::generate_menu()
 			}
 		}
 
-		if(!sd["description"].empty())
-			playerlist.push_back(sd["description"]);
+		if(!sd["id"].empty())
+			playerlist.push_back(sd["id"]);
 
 		std::string leader_name;
 		std::string leader_image;

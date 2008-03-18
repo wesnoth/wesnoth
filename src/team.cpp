@@ -89,7 +89,7 @@ team::team_info::team_info(const config& cfg) :
 		action_bonus_count(lexical_cast_default<int>(cfg["action_bonus_count"])),
 		flag(cfg["flag"]),
 		flag_icon(cfg["flag_icon"]),
-		description(cfg["description"]),
+		description(cfg["id"]),
 		objectives(cfg["objectives"]),
 		objectives_changed(utils::string_bool(cfg["objectives_changed"])),
 		controller(),
@@ -283,7 +283,7 @@ void team::team_info::write(config& cfg) const
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
 	cfg["flag_icon"] = flag_icon;
-	cfg["description"] = description;
+	cfg["id"] = description;
 	cfg["objectives"] = objectives;
 	cfg["objectives_changed"] = objectives_changed ? "yes" : "no";
 	cfg["countdown_time"]= countdown_time;

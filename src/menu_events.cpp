@@ -2012,7 +2012,7 @@ private:
 	void menu_handler::send_chat_message(const std::string& message, bool allies_only)
 	{
 		config cfg;
-		cfg["description"] = preferences::login();
+		cfg["id"] = preferences::login();
 		cfg["message"] = message;
 
 		const int side = is_observer() ? 0 : gui_->viewing_team()+1;
@@ -2031,7 +2031,7 @@ private:
 		}
 
 		recorder.speak(cfg);
-		add_chat_message(time(NULL), cfg["description"], side, message,
+		add_chat_message(time(NULL), cfg["id"], side, message,
 				private_message ? game_display::MESSAGE_PRIVATE : game_display::MESSAGE_PUBLIC);
 
 	}

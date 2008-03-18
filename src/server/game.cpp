@@ -757,7 +757,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 
 			// Force the description to be correct,
 			// to prevent spoofing of messages.
-			speak.set_attr_dup("description", user->second.name().c_str());
+			speak.set_attr_dup("id", user->second.name().c_str());
 			// Also check the side for players.
 			if (is_player(user->first)) {
 				const size_t side_num = speak["side"].to_int();
@@ -1226,7 +1226,7 @@ void game::send_server_message(const char* message, network::connection sock, si
 		simple_wml::node& cmd = doc.root().add_child("turn");
 		simple_wml::node& cfg = cmd.add_child("command");
 		simple_wml::node& msg = cfg.add_child("speak");
-		msg.set_attr("description", "server");
+		msg.set_attr("id", "server");
 		msg.set_attr_dup("message", message);
 	} else {
 		simple_wml::node& msg = doc.root().add_child("message");

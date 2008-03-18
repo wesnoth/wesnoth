@@ -294,7 +294,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			if(id.empty())
 				continue;
 			controllers[id] = player_controller((**side)["controller"],
-					(**side)["description"]);
+					(**side)["id"]);
 		}
 	}
 

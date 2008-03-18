@@ -223,7 +223,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 int get_first_human_team(const config::child_list::const_iterator& cfg, const config::child_list& unit_cfg){
 	int result = -1;
 	const std::string& controller = (**cfg)["controller"];
-	if (controller == preferences::client_type() && (**cfg)["description"] == preferences::login()) {
+	if (controller == preferences::client_type() && (**cfg)["id"] == preferences::login()) {
 		result = cfg - unit_cfg.begin();
 	} else if((**cfg)["controller"] == "human") {
 		result = cfg - unit_cfg.begin();

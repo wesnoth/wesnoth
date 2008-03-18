@@ -453,9 +453,9 @@ void replay::add_chat_log_entry(const config* speak, std::stringstream& str, con
 	const std::string& team_name = cfg["team_name"];
 	if(team_name == "" || team_name == team) {
 		if(team_name == "") {
-			str << "<" << cfg["description"] << "> ";
+			str << "<" << cfg["id"] << "> ";
 		} else {
-			str << "*" << cfg["description"] << "* ";
+			str << "*" << cfg["id"] << "* ";
 		}
 		str << cfg["message"] << "\n";
 	}
@@ -857,7 +857,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 					&& teams[disp.viewing_team()].team_name() == team_name)
 					|| (is_observer() && team_name == "observer"))
 			{
-				const std::string& speaker_name = (*child)["description"];
+				const std::string& speaker_name = (*child)["id"];
 				const std::string& message = (*child)["message"];
 				//if (!preferences::show_lobby_join(speaker_name, message)) return;
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);

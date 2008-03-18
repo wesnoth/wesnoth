@@ -67,7 +67,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(parent.disp(), parent.player_types_),
-	orig_controller_(parent.video(), cfg.get_attribute("description"), font::SIZE_SMALL),
+	orig_controller_(parent.video(), cfg.get_attribute("id"), font::SIZE_SMALL),
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
 	combo_faction_(parent.disp(), parent.player_factions_),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
@@ -557,7 +557,7 @@ config connect::side::get_config() const
 		res["side"] = lexical_cast<std::string>(index_ + 1);
 	}
 	res["controller"] = controller_names[controller_];
-	res["description"] = id_;
+	res["id"] = id_;
 	res["current_player"] = id_;
 
 	if (id_.empty()) {
@@ -674,7 +674,7 @@ config connect::side::get_config() const
 		config trimmed = cfg_;
 		trimmed["side"] = "";
 		trimmed["controller"] = "";
-		trimmed["description"] = "";
+		trimmed["id"] = "";
 		trimmed["team_name"] = "";
 		trimmed["user_team_name"] = "";
 		trimmed["colour"] = "";
