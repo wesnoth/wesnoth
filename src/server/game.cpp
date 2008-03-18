@@ -128,16 +128,13 @@ void game::start_game(const player_map::const_iterator starter) {
 		<< "\tfog: "       << s["mp_fog"]
 		<< "\tshroud: "    << s["mp_shroud"]
 		<< "\tobservers: " << s["observer"]
-		<< "\ttimer: "     << s["mp_countdown"];
-	
-	if(s["mp_countdown"].to_bool()) {
-		LOG_GAME << "\treservoir time: " << s["mp_countdown_reservoir_time"]
-			     << "\tinit time: "      << s["mp_countdown_init_time"]
-			     << "\taction bonus: "   << s["mp_countdown_action_bonus"]
-			     << "\tturn bonus: "     << s["mp_countdown_turn_bonus"];
-	}
-
-	LOG_GAME << "\n";
+		<< "\ttimer: "     << s["mp_countdown"]
+		<< (s["mp_countdown"].to_bool() ?
+			"\treservoir time: " + s["mp_countdown_reservoir_time"].to_string() +
+			"\tinit time: "      + s["mp_countdown_init_time"].to_string() +
+			"\taction bonus: "   + s["mp_countdown_action_bonus"].to_string() +
+			"\tturn bonus: "     + s["mp_countdown_turn_bonus"].to_string() : "")
+		<< "\n";
 
 	nsides_ = 0;
 	// Set all side controllers to 'human' so that observers will understand
