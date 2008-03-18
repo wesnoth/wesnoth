@@ -41,7 +41,7 @@ std::vector<Mix_Chunk*> channel_chunks;
 // is playing on a channel for fading/panning)
 std::vector<int> channel_ids;
 
-static bool play_sound_internal(const std::string& files, channel_group group, unsigned int repeats=0,
+static void play_sound_internal(const std::string& files, channel_group group, unsigned int repeats=0,
 				 unsigned int distance=0, int id=-1, int loop_ticks=0, int fadein_ticks=0);
 }
 
@@ -699,26 +699,12 @@ void play_sound_positioned(const std::string &files, int id, int repeats, unsign
 	}
 }
 
-bool play_sound_internal(const std::string& files, channel_group group, unsigned int repeats, 
-			unsigned int distance, int id, int loop_ticks, int fadein_ticks)
-{
-	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
-		return false;
-	}
+struct chunk_load_exception { };
 
-	std::string file = pick_one(files);
+static Mix_Chunk* load_chunk(const std::string& file, channel_group group) 
+{
 	sound_cache_iterator it_bgn, it_end;
 	sound_cache_iterator it;
-	int channel;
-
-	audio_lock lock();
-
-	// find a free channel in the desired group
-	channel = Mix_GroupAvailable(group);
-	if(channel == -1) {
-		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
-		return false;
-	}
 
 	sound_cache_chunk temp_chunk(file); // search the sound cache on this key
 	it_bgn = sound_cache.begin(), it_end = sound_cache.end();
@@ -729,6 +715,7 @@ bool play_sound_internal(const std::string& files, channel_group group, unsigned
 			// cached item has been used in multiple sound groups
 			it->group = NULL_CHANNEL;
 		}
+
 		//splice the most recently used chunk to the front of the cache
 		sound_cache.splice(it_bgn, sound_cache, it);
 	} else {
@@ -744,7 +731,7 @@ bool play_sound_internal(const std::string& files, channel_group group, unsigned
 		}
 		if(cache_full) {
 			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.\n";
-			return false;
+			throw chunk_load_exception();
 		}
 		temp_chunk.group = group;
 		std::string const &filename = get_binary_file_location("sounds", file);
@@ -753,17 +740,45 @@ bool play_sound_internal(const std::string& files, channel_group group, unsigned
 			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));
 		} else {
 			ERR_AUDIO << "Could not load sound with empty filename\n";
-			return false;
+			throw chunk_load_exception();
 		}
 
 		if (temp_chunk.get_data() == NULL) {
 			ERR_AUDIO << "Could not load sound file '" << filename << "': "
 				<< Mix_GetError() << "\n";
-			return false;
+			throw chunk_load_exception();
 		}
 
 		sound_cache.push_front(temp_chunk);
-		it = sound_cache.begin();
+	}
+
+	return sound_cache.begin()->get_data();
+}
+
+void play_sound_internal(const std::string& files, channel_group group, unsigned int repeats, 
+			unsigned int distance, int id, int loop_ticks, int fadein_ticks)
+{
+	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
+		return;
+	}
+
+	audio_lock lock();
+
+	// find a free channel in the desired group
+	int channel = Mix_GroupAvailable(group);
+	if(channel == -1) {
+		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
+		return;
+	}
+
+	Mix_Chunk *chunk;
+	std::string file = pick_one(files);
+
+	try {
+		chunk = load_chunk(file, group);
+		assert(chunk);
+	} catch(const chunk_load_exception& e) {
+		return;
 	}
 
 	/*
@@ -777,9 +792,9 @@ bool play_sound_internal(const std::string& files, channel_group group, unsigned
 	int res;
 	if(loop_ticks > 0) {
 		if(fadein_ticks > 0) {
-			res = Mix_FadeInChannelTimed(channel, it->get_data(), -1, fadein_ticks, loop_ticks);
+			res = Mix_FadeInChannelTimed(channel, chunk, -1, fadein_ticks, loop_ticks);
 		} else {
-			res = Mix_PlayChannel(channel, it->get_data(), -1);
+			res = Mix_PlayChannel(channel, chunk, -1);
 		}
 
 		if(res >= 0) {
@@ -787,23 +802,22 @@ bool play_sound_internal(const std::string& files, channel_group group, unsigned
 		}
 	} else {
 		if(fadein_ticks > 0) {
-			res = Mix_FadeInChannel(channel, it->get_data(), repeats, fadein_ticks);
+			res = Mix_FadeInChannel(channel, chunk, repeats, fadein_ticks);
 		} else {
-			res = Mix_PlayChannel(channel, it->get_data(), repeats);
+			res = Mix_PlayChannel(channel, chunk, repeats);
 		}
 	}
 
 	if(res < 0) {
 		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		//still keep it in the sound cache, in case we want to try again later
-		return false;
+		return;
 	}
 
 	channel_ids[channel] = id;
 
 	//reserve the channel's chunk from being freed, since it is playing
-	channel_chunks[res] = it->get_data();
-	return true;
+	channel_chunks[res] = chunk;
 }
 
 void play_sound(const std::string& files, channel_group group, unsigned int repeats)
