@@ -1309,7 +1309,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if(!to_variable.empty())
 		{
 			variable_info::array_range range = state_of_game->get_variable_cfgs(to_variable);
-			for(range; range.first != range.second; ++range.first)
+			for( ; range.first != range.second; ++range.first)
 			{
 				data.push_back(**range.first);
 			}
