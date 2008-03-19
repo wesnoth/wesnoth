@@ -535,8 +535,9 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	}
 
 	if(current == resolutions.end()) {
-		if(!resolutions.empty())
+		if(!resolutions.empty()) {
 			LOG_STREAM(err, display) << "No valid resolution found\n";
+		}
 		return false;
 	}
 
