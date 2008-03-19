@@ -41,9 +41,9 @@ namespace game_config
 	const bool gold_carryover_add = false;
 	const std::string version = VERSION;
 #ifdef SVNREV
-	const std::string svnrev = SVNREV;
+	const std::string revision = VERSION " (" SVNREV ")";
 #else
-	const std::string svnrev = "unknown";
+	const std::string revision = VERSION;
 #endif
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
 

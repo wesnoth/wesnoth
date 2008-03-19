@@ -464,9 +464,7 @@ bool game_controller::init_language()
 
 	if(!no_gui_) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
-		wm_title_string += " - " + game_config::version
-			+ (game_config::svnrev.empty() ? "" :
-			" (" + game_config::svnrev + ")");
+		wm_title_string += " - " + game_config::revision;
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 	}
 
@@ -1605,9 +1603,7 @@ bool game_controller::change_language()
 
 		if(!no_gui_) {
 			std::string wm_title_string = _("The Battle for Wesnoth");
-			wm_title_string += " - " + game_config::version
-				+ (game_config::svnrev.empty() ? "" :
-				" (" + game_config::svnrev + ")");
+			wm_title_string += " - " + game_config::revision;
 			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 		}
 
@@ -2352,10 +2348,7 @@ int main(int argc, char** argv)
 #endif
 
 	try {
-		const std::string rev = game_config::svnrev.empty() ? "" :
-			" (" + game_config::svnrev + ")";
-
-		std::cerr << "Battle for Wesnoth v" << VERSION << rev << '\n';
+		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 

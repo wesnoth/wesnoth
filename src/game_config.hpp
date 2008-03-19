@@ -34,7 +34,7 @@ namespace game_config
 	extern int kill_experience;
 	extern unsigned lobby_refresh;
 	extern const std::string version;
-	extern const std::string svnrev;
+	extern const std::string revision;
 
 	//! Default percentage gold carried over to the next scenario.
 	extern const int gold_carryover_percentage;
