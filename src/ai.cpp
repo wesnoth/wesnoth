@@ -706,9 +706,9 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		// If we are looking for the movement of enemies, then this unit must be an enemy unit.
 		// If we are looking for movement of our own units, it must be on our side.
 		// If we are assuming full movement, then it may be a unit on our side, or allied.
-		if(enemy && current_team().is_enemy(un_it->second.side()) == false ||
-		   !enemy && !assume_full_movement && un_it->second.side() != info_.team_num ||
-		   !enemy && assume_full_movement && current_team().is_enemy(un_it->second.side())) {
+		if((enemy && current_team().is_enemy(un_it->second.side()) == false) ||
+		   (!enemy && !assume_full_movement && un_it->second.side() != info_.team_num) ||
+		   (!enemy && assume_full_movement && current_team().is_enemy(un_it->second.side()))) {
 			continue;
 		}
 		// Discount incapacitated units
