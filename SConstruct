@@ -52,7 +52,7 @@ env.Default("wesnothd")
 # Program declarations (incomplete, no libraries yet)
 #
 
-env.Program("wesnothd", [
+wesnothd_sources = [
     "src/server/game.cpp",
     "src/server/input_stream.cpp",
     "src/server/metrics.cpp",
@@ -63,7 +63,8 @@ env.Program("wesnothd", [
     "src/network.cpp",
     "src/network_worker.cpp",
     "src/loadscreen_empty.cp"
-    ])
+    ]
+env.Program("wesnothd", wesnothd_sources, CPPPATH = ['src', 'src/server', "/usr/include/SDL"])
 
 #
 # Configuration
