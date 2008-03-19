@@ -212,7 +212,7 @@ namespace game_config
 		}
 	}
 
-	const void add_color_info(const config& v){
+	void add_color_info(const config& v){
 		const config::child_list& team_colors = v.get_children("color_range");
 		for(config::child_list::const_iterator teamC = team_colors.begin(); teamC != team_colors.end(); ++teamC) {
 			if(!(**teamC)["id"].empty() && !(**teamC)["rgb"].empty()){
