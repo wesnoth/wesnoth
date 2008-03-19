@@ -46,7 +46,7 @@ report generate_report(TYPE type,
 {
 	unit_map::iterator u = units.end();
 
-	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
+	if((int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) || type == POSITION) {
 
 		u = find_visible_unit(units,displayed_unit_hex,
 				      map,
