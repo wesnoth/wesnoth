@@ -24,11 +24,11 @@
 
 static bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
 {
-	const bool xoverlap = a.x >= b.x && a.x < b.x + b.w ||
-	                      b.x >= a.x && b.x < a.x + a.w;
+	const bool xoverlap = (a.x >= b.x && a.x < b.x + b.w) ||
+	                      (b.x >= a.x && b.x < a.x + a.w);
 
-	const bool yoverlap = a.y >= b.y && a.y < b.y + b.h ||
-	                      b.y >= a.y && b.y < a.y + a.h;
+	const bool yoverlap = (a.y >= b.y && a.y < b.y + b.h) ||
+	                      (b.y >= a.y && b.y < a.y + a.h);
 
 	return xoverlap && yoverlap;
 }
