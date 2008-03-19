@@ -51,7 +51,7 @@ env.Default("wesnothd")
 #
 # Program declarations (incomplete, no libraries yet)
 #
-commonlibs = Split("-lboost_iostreams-gcc41-mt-1_34_1 -lSDL_net -lSDL -lpthread")
+commonlibs = Split("wesnoth_core boost_iostreams-gcc41-mt-1_34_1 SDL_net SDL pthread")
 
 libwesnoth_core_sources = [
     "src/color_range.cpp",
@@ -162,7 +162,8 @@ wesnothd_sources = [
     ]
 env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs)
+            LIBS = commonlibs,
+            LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 #
 # Configuration
