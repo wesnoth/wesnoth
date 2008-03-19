@@ -67,7 +67,7 @@ bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 
 	const int xdiff = abs(a.x - b.x);
 	const int ydiff = abs(a.y - b.y);
-	return ydiff == 1 && a.x == b.x || xdiff == 1 && a.y == b.y ||
-	       xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_even(a.x) : is_even(b.x));
+	return ydiff == (1 && a.x == b.x) || (xdiff == 1 && a.y == b.y) ||
+	       (xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_even(a.x) : is_even(b.x)));
 }
 
