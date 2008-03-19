@@ -51,6 +51,101 @@ env.Default("wesnothd")
 #
 # Program declarations (incomplete, no libraries yet)
 #
+commonlibs = Split("-lboost_iostreams-gcc41-mt-1_34_1 -lSDL_net -lSDL -lpthread")
+
+libwesnoth_core_sources = [
+    "src/color_range.cpp",
+    "src/config.cpp",
+    "src/filesystem.cpp",
+    "src/game_config.cpp",
+    "src/gettext.cpp",
+    "src/log.cpp",
+    "src/map.cpp",
+    "src/thread.cpp",
+    "src/tstring.cpp",
+    "src/util.cpp",
+    "src/serialization/binary_or_text.cpp",
+    "src/serialization/binary_wml.cpp",
+    "src/serialization/parser.cpp",
+    "src/serialization/preprocessor.cpp",
+    "src/serialization/string_utils.cpp",
+    "src/serialization/tokenizer.cpp",
+    ]
+env.Library("wesnoth_core", libwesnoth_core_sources, 
+            CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
+
+wesnoth_sources = [
+    "about.cpp",
+    "actions.cpp",
+    "ai.cpp",
+    "ai_dfool.cpp",
+    "ai_attack.cpp",
+    "ai_move.cpp",
+    "ai_python.cpp",
+    "ai_village.cpp",
+    "animated_game.cpp",
+    "attack_prediction.cpp",
+    "callable_objects.cpp",
+    "config_adapter.cpp",
+    "dialogs.cpp",
+    "floating_textbox.cpp",
+    "formula.cpp",
+    "formula_ai.cpp",
+    "formula_function.cpp",
+    "formula_tokenizer.cpp",
+    "game_display.cpp",
+    "game_events.cpp",
+    "game_preferences.cpp",
+    "game_preferences_display.cpp",
+    "gamestatus.cpp",
+    "game.cpp",
+    "generate_report.cpp",
+    "generic_event.cpp",
+    "halo.cpp",
+    "help.cpp",
+    "intro.cpp",
+    "leader_list.cpp",
+    "menu_events.cpp",
+    "mouse_events.cpp",
+    "multiplayer.cpp",
+    "multiplayer_ui.cpp",
+    "multiplayer_wait.cpp",
+    "multiplayer_connect.cpp",
+    "multiplayer_create.cpp",
+    "multiplayer_lobby.cpp",
+    "network.cpp",
+    "network_worker.cpp",
+    "pathfind.cpp",
+    "playcampaign.cpp",
+    "play_controller.cpp",
+    "playmp_controller.cpp",
+    "playsingle_controller.cpp",
+    "playturn.cpp",
+    "publish_campaign.cpp",
+    "replay.cpp",
+    "replay_controller.cpp",
+    "sha1.cpp",
+    "settings.cpp",
+    "statistics.cpp",
+    "team.cpp",
+    "terrain_filter.cpp",
+    "titlescreen.cpp",
+    "tooltips.cpp",
+    "unit.cpp",
+    "unit_abilities.cpp",
+    "unit_animation.cpp",
+    "unit_display.cpp",
+    "unit_frame.cpp",
+    "unit_map.cpp",
+    "unit_types.cpp",
+    "upload_log.cpp",
+    "variable.cpp",
+    "variant.cpp",
+    "widgets/combo.cpp",
+    "widgets/scrollpane.cpp",
+]
+env.Program("wesnoth", wesnoth_sources,
+            CPPPATH = ['src', "/usr/include/SDL"])
 
 wesnothd_sources = [
     "src/server/game.cpp",
@@ -59,12 +154,15 @@ wesnothd_sources = [
     "src/server/player.cpp",
     "src/server/proxy.cpp",
     "src/server/server.cpp",
-    "src/server/monitor.cpp",
+    "src/server/simple_wml.cpp",
+    #"src/server/monitor.cpp",
     "src/network.cpp",
     "src/network_worker.cpp",
-    "src/loadscreen_empty.cp"
+    "src/loadscreen_empty.cpp"
     ]
-env.Program("wesnothd", wesnothd_sources, CPPPATH = ['src', 'src/server', "/usr/include/SDL"])
+env.Program("wesnothd", wesnothd_sources,
+            CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
+            LIBS = commonlibs)
 
 #
 # Configuration
@@ -129,8 +227,6 @@ if "game" not in map(str, BUILD_TARGETS):
     env["python"] = False
 
 env = conf.Finish()
-
-test_build = "svn" in version
 
 #
 # Generate the config file
