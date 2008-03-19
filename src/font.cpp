@@ -66,7 +66,7 @@ struct font_id
 	};
 	bool operator<(const font_id& o) const
 	{
-		return subset < o.subset || subset == o.subset && size < o.size;
+		return subset < o.subset || (subset == o.subset && size < o.size);
 	};
 
 	subset_id subset;
