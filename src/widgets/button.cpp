@@ -267,7 +267,7 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 		// the cursor is not over the widget
 		if (state_ == PRESSED_ACTIVE)
 			state_ = PRESSED;
-		else if (type_ != TYPE_CHECK && type_ != TYPE_IMAGE || state_ != PRESSED)
+		else if ((type_ != TYPE_CHECK && type_ != TYPE_IMAGE) || state_ != PRESSED)
 			state_ = NORMAL;
 	}
 }
