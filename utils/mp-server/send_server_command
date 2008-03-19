@@ -7,7 +7,10 @@ fi
 SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
 SOCKET=$SERVERBASE/build/var/run/socket
-
+if ! [ -d "$SERVERBASE" ]; then
+	echo "Server '$SERVER' not found."
+	exit 1
+fi
 if ! [ -e $SOCKET ]; then
 	echo "$SOCKET not found, using the 'oldbuild'."
 	SOCKET=$SERVERBASE/oldbuild/var/run/socket

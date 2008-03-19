@@ -7,7 +7,10 @@ fi
 SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
 SOCKET=$SERVERBASE/build/var/run/socket
-
+if ! [ -d "$SERVERBASE" ]; then
+	echo "Server '$SERVER' not found."
+	exit 1
+fi
 shift
 if [ "$*" == "" ]; then
 	message="The server will get restarted now. Please don't forget to save your game!"
