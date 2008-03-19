@@ -40,7 +40,7 @@
 static void teleport_unit_between( const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)) {
+	if(!disp || disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
 	}
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true);
@@ -68,7 +68,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 static void move_unit_between(const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)) {
+	if(!disp || disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
 	}
 
@@ -210,7 +210,7 @@ void unit_attack(
 	if(!disp || preferences::show_combat() == false) return;
 	unit_map& units = disp->get_units();
 	disp->select_hex(gamemap::location::null_location);
-	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b);
+	const bool hide = disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b));
 
 	if(!hide) {
 		// scroll such that there is at least half a hex spacing around fighters
