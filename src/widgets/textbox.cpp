@@ -543,9 +543,9 @@ void textbox::handle_event(const SDL_Event& event)
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
 	   c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME ||
 	   c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)) {
-		if(character != 0)
+		if(character != 0) {
 			DBG_G << "Char: " << character << ", c = " << c << "\n";
-
+		}
 		if(event.key.keysym.mod & copypaste_modifier) {
 			switch(c) {
 			case SDLK_v: // paste
