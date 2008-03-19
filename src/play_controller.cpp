@@ -303,7 +303,7 @@ void play_controller::search(){
 	menu_handler_.search();
 }
 
-const int play_controller::get_ticks(){
+int play_controller::get_ticks(){
 	return ticks_;
 }
 
