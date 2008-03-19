@@ -146,7 +146,7 @@ void ai::do_attack_analysis(
                        }
                }
 
-               if(is_flanked && enemy_units_around > 2 || enemy_units_around >= accessible_tiles - 1)
+               if((is_flanked && enemy_units_around > 2) || enemy_units_around >= accessible_tiles - 1)
                        is_surrounded = true;
 
 
