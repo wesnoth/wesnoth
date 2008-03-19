@@ -265,9 +265,9 @@ public:
 
 	//function which, when given a 1-based side will return the colour used by that side.
 	static const color_range get_side_color_range(int side);
-	static const Uint32 get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
-	static const Uint32 get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
-	static const Uint32 get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
+	static Uint32 get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
+	static Uint32 get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
+	static Uint32 get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
 	static const SDL_Color get_minimap_colour(int side);
 	static std::string get_side_colour_index(int side);
 	static std::string get_side_highlight(int side);
