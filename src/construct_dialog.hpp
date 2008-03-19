@@ -244,7 +244,7 @@ public:
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
 	const std::string textbox_text() const { return text_widget_->text();}
 	dialog_textbox& get_textbox() const { return *text_widget_; }
-	const bool option_checked(unsigned int option_index=0);
+	bool option_checked(unsigned int option_index=0);
 	display& get_display() { return disp_; }
 
 protected:

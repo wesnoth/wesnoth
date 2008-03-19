@@ -191,7 +191,7 @@ dialog::~dialog()
 //	}
 }
 
-const bool dialog::option_checked(unsigned int option_index)
+bool dialog::option_checked(unsigned int option_index)
 {
 	unsigned int i = 0;
 	button_pool_iterator b;
