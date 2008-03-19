@@ -1070,17 +1070,17 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					int direction = -1;
 
 					// If we are going north-south
-					if(last == adj[0] && next == adj[3] || last == adj[3] && next == adj[0]) {
+					if((last == adj[0] && next == adj[3]) || (last == adj[3] && next == adj[0])) {
 						direction = 0;
 					}
 
 					// If we are going south west-north east
-					else if(last == adj[1] && next == adj[4] || last == adj[4] && next == adj[1]) {
+					else if((last == adj[1] && next == adj[4]) || (last == adj[4] && next == adj[1])) {
 						direction = 1;
 					}
 
 					// If we are going south east-north west
-					else if(last == adj[2] && next == adj[5] || last == adj[5] && next == adj[2]) {
+					else if((last == adj[2] && next == adj[5]) || (last == adj[5] && next == adj[2])) {
 						direction = 2;
 					}
 
