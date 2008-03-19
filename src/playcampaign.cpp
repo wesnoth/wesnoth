@@ -414,7 +414,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// OBSERVER_END probably can be removed here if the observer disconnect
 		// bug (#10077) is fixed so that when the host ends the game observers
 		// again get asked if they want to save a replay of the game
-		if (res == VICTORY || io_type != IO_NONE && (res == DEFEAT || res == OBSERVER_END)) {
+		if (res == VICTORY || (io_type != IO_NONE && (res == DEFEAT || res == OBSERVER_END))) {
 			if (preferences::delete_saves())
 				clean_saves(gamestate.label);
 
