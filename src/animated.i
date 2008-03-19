@@ -214,7 +214,7 @@ int animated<T,T_void_value>::get_animation_time() const
 }
 
 template<typename T,  typename T_void_value>
-const int animated<T,T_void_value>::get_animation_duration() const
+int animated<T,T_void_value>::get_animation_duration() const
 {
 	return get_end_time() - get_begin_time();
 }
@@ -228,7 +228,7 @@ const T& animated<T,T_void_value>::get_current_frame() const
 }
 
 template<typename T,  typename T_void_value>
-const int animated<T,T_void_value>::get_current_frame_begin_time() const
+int animated<T,T_void_value>::get_current_frame_begin_time() const
 {
 	if(frames_.empty() )
 		return starting_frame_time_;
@@ -236,7 +236,7 @@ const int animated<T,T_void_value>::get_current_frame_begin_time() const
 }
 
 template<typename T,  typename T_void_value>
-const int animated<T,T_void_value>::get_current_frame_end_time() const
+int animated<T,T_void_value>::get_current_frame_end_time() const
 {
 	if(frames_.empty() )
 		return starting_frame_time_;
@@ -244,7 +244,7 @@ const int animated<T,T_void_value>::get_current_frame_end_time() const
 }
 
 template<typename T,  typename T_void_value>
-const int animated<T,T_void_value>::get_current_frame_duration() const
+int animated<T,T_void_value>::get_current_frame_duration() const
 {
 	if(frames_.empty() )
 		return 0;
@@ -252,7 +252,7 @@ const int animated<T,T_void_value>::get_current_frame_duration() const
 }
 
 template<typename T,  typename T_void_value>
-const int animated<T,T_void_value>::get_current_frame_time() const
+int animated<T,T_void_value>::get_current_frame_time() const
 {
 	if(frames_.empty() )
 		return 0;
