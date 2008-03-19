@@ -45,7 +45,7 @@ file_menu::file_menu(CVideo &disp, std::string start_file)
 	  chosen_file_(start_file), last_selection_(-1)
 {
 	// If the start file is not a file or directory, use the root.
-	if(!file_exists(chosen_file_) && !::is_directory(chosen_file_)
+	if((!file_exists(chosen_file_) && !::is_directory(chosen_file_))
 		|| !::is_directory(current_dir_)) {
 		current_dir_ = path_delim;
 		chosen_file_ = current_dir_;
@@ -226,7 +226,7 @@ bool file_menu::is_root(const std::string path) const {
 #ifdef __AMIGAOS4__
 	return path.size() == 0 || path[path.size()-1] == ':';
 #else
-	return path.size() == 0 || path.size() == 1 && path[0] == path_delim;
+	return path.size() == 0 || (path.size() == 1 && path[0] == path_delim);
 #endif
 }
 
