@@ -189,7 +189,7 @@ bool widget::enabled() const
 
 void widget::set_dirty(bool dirty)
 {
-	if (dirty && (volatile_ || hidden_override_ || state_ != DRAWN) || !dirty && state_ != DIRTY)
+	if ((dirty && (volatile_ || hidden_override_ || state_ != DRAWN)) || (!dirty && state_ != DIRTY))
 		return;
 
 	state_ = dirty ? DIRTY : DRAWN;
