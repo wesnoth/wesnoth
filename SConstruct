@@ -45,26 +45,25 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 #
 
 # FIXME: will need some elaboration under Windows
-env = Environment(tools=['gcc'], options = opts)
-env.Default("game")
+env = Environment(options = opts)
+env.Default("wesnothd")
 
 #
 # Program declarations (incomplete, no libraries yet)
 #
 
-if 0:
-    env.Program("wesnothd", [
-            "src/server/game.cpp",
-            "src/server/input_stream.cpp",
-            "src/server/metrics.cpp",
-            "src/server/player.cpp",
-            "src/server/proxy.cpp",
-            "src/server/server.cpp",
-            "src/server/monitor.cpp",
-            "src/network.cpp",
-            "src/network_worker.cpp",
-            "src/loadscreen_empty.cp"
-            ])
+env.Program("wesnothd", [
+    "src/server/game.cpp",
+    "src/server/input_stream.cpp",
+    "src/server/metrics.cpp",
+    "src/server/player.cpp",
+    "src/server/proxy.cpp",
+    "src/server/server.cpp",
+    "src/server/monitor.cpp",
+    "src/network.cpp",
+    "src/network_worker.cpp",
+    "src/loadscreen_empty.cp"
+    ])
 
 #
 # Configuration
