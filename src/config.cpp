@@ -440,7 +440,7 @@ void config::get_diff(const config& c, config& res) const
 	string_map::const_iterator i;
 	for(i = values.begin(); i != values.end(); ++i) {
 		const string_map::const_iterator j = c.values.find(i->first);
-		if(j == c.values.end() || i->second != j->second && i->second != "") {
+		if(j == c.values.end() || (i->second != j->second && i->second != "")) {
 			if(inserts == NULL) {
 				inserts = &res.add_child("insert");
 			}
