@@ -223,8 +223,9 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 		return new ai2(info);
     }
 #endif
-	else if(name != "")
+	else if(name != "") {
 		LOG_STREAM(err, ai) << "AI not found: '" << name << "'\n";
+	}
 
 	return new ai(info);
 }
