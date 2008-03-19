@@ -1677,8 +1677,9 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				}
 			}
 
-			if(force_valid_cache_)
+			if(force_valid_cache_) {
 				LOG_CONFIG << "skipping cache validation (forced)\n";
+			}
 
 			if(use_cache && file_exists(fname) && (force_valid_cache_ || file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum())) {
 				LOG_CONFIG << "found valid cache at '" << fname << "' using it\n";
