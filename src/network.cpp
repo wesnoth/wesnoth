@@ -428,7 +428,7 @@ void connect_operation::run()
 
 	sockets.push_back(connect_);
 
-	while(!notify_finished());
+	while(!notify_finished()) {};
 }
 
 } // end namespace
