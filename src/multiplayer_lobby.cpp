@@ -314,7 +314,7 @@ void gamebrowser::handle_event(const SDL_Event& event)
 					break;
 			}
 		}
-	} else if(event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT || event.type == DOUBLE_CLICK_EVENT) {
+	} else if((event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) || event.type == DOUBLE_CLICK_EVENT) {
 		int x = 0;
 		int y = 0;
 		if(event.type == SDL_MOUSEBUTTONDOWN) {
