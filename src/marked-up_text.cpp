@@ -443,7 +443,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 			}
 		}
 
-		if(line_break || current_word.empty() && ch == end) {
+		if(line_break || (current_word.empty() && ch == end)) {
 			SDL_Rect size = line_size(current_line, font_sz, style);
 			if(max_height > 0 && current_height + size.h >= size_t(max_height)) {
 				return wrapped_text;
