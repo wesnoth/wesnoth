@@ -470,8 +470,8 @@ void preprocessor_data::put(char c)
 		strings_.back() += c;
 		return;
 	}
-	if (linenum_ != target_.linenum_ && c != '\n' ||
-	    linenum_ != target_.linenum_ + 1 && c == '\n') {
+	if ((linenum_ != target_.linenum_ && c != '\n') ||
+	    (linenum_ != target_.linenum_ + 1 && c == '\n')) {
 		target_.linenum_ = linenum_;
 		if (c == '\n')
 			--target_.linenum_;
