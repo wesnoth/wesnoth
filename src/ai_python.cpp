@@ -738,7 +738,7 @@ static long location_internal_hash(wesnoth_location* obj)
 	// e.g. when checking all positions in a certain radius at the map border.
 	unsigned char x = static_cast<unsigned>(obj->location_->x);
 	unsigned char y = static_cast<unsigned>(obj->location_->y);
-	return x << 8 + y;
+	return (x << 8) + y;
 }
 
 static PyGetSetDef location_getseters[] = {
