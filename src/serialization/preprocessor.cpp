@@ -598,11 +598,12 @@ bool preprocessor_data::get_chunk()
 				if (d == '#')
 					found_enddef = 1;
 				else if (found_enddef > 0)
-					if (++found_enddef == 7)
+					if (++found_enddef == 7) {
 						if (std::equal(buffer.end() - 6, buffer.end(), "enddef"))
 							break;
 						else
 							found_enddef = 0;
+					}
 			}
 			if (found_enddef != 7) {
 				std::string error="Unterminated preprocessor definition at";		
