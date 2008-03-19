@@ -31,7 +31,8 @@ class unit_animation
 		//! Shouldn't be used so only declared.
 		unit_animation();
 	public:
-		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1};
+/* Please check the following as no name is given to the type */
+/*		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1}; */
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
