@@ -74,7 +74,7 @@ public:
 
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
-	const int get_ticks();
+	int get_ticks();
 
 protected:
 	void handle_event(const SDL_Event& event);
