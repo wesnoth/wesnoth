@@ -34,7 +34,7 @@ namespace gui{
 	public:
 		floating_textbox();
 
-		const TEXTBOX_MODE mode() const { return mode_; }
+		TEXTBOX_MODE mode() const { return mode_; }
 		const util::scoped_ptr<gui::button>& check() const { return check_; }
 		const util::scoped_ptr<gui::textbox>& box() const { return box_; }
 
