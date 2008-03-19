@@ -203,8 +203,9 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location& src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		const gamemap::location& dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		const gamemap::location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const gamemap::location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		std::cerr << "move(): " << src << ", " << dst << ")\n";
 		return variant(new move_callable(src, dst));
 	}
 };
@@ -683,7 +684,7 @@ bool formula_ai::make_move()
 			}
 			return false;
 		} else {
-			std::cerr << "UNRECOGNIZED MOVE\n";
+			std::cerr << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
 		}
 	}
 

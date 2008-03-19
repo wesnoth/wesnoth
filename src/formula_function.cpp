@@ -61,6 +61,30 @@ private:
 	}
 };
 
+class switch_function : public function_expression {
+public:
+	explicit switch_function(const args_list& args)
+	    : function_expression("switch", args, 4, -1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		variant var = args()[0]->evaluate(variables);
+		for(int n = 0; n < args().size()-1; n += 2) {
+			variant val = args()[n]->evaluate(variables);
+			if(val == var) {
+				return args()[n+1]->evaluate(variables);
+			}
+		}
+
+		if((args().size()%2) == 0) {
+			return args().back()->evaluate(variables);
+		} else {
+			return variant();
+		}
+	}
+};
+
 class rgb_function : public function_expression {
 public:
 	explicit rgb_function(const args_list& args)
@@ -572,6 +596,8 @@ expression_ptr create_function(const std::string& fn,
 		return expression_ptr(new dir_function(args));
 	} else if(fn == "if") {
 		return expression_ptr(new if_function(args));
+	} else if(fn == "switch") {
+		return expression_ptr(new switch_function(args));
 	} else if(fn == "abs") {
 		return expression_ptr(new abs_function(args));
 	} else if(fn == "min") {
