@@ -73,17 +73,17 @@ public:
 	int get_animation_time() const;
 	int get_animation_time_potential() const;
 
-	const int get_animation_duration() const;
+	int get_animation_duration() const;
 	const T& get_current_frame() const;
-	const int get_current_frame_begin_time() const;
-	const int get_current_frame_end_time() const;
-	const int get_current_frame_duration() const;
-	const int get_current_frame_time() const;
+	int get_current_frame_begin_time() const;
+	int get_current_frame_end_time() const;
+	int get_current_frame_duration() const;
+	int get_current_frame_time() const;
 	const T& get_first_frame() const;
 	const T& get_last_frame() const;
 	int get_frames_count() const;
 	void force_change() {does_not_change_ = false ; }
-	const bool does_not_change() const {return does_not_change_;}
+	bool does_not_change() const {return does_not_change_;}
 
 	static const T void_value_; //MSVC: the frame constructor below requires this to be public
 
