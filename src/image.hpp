@@ -97,7 +97,7 @@ namespace image {
 		const std::string &get_filename() const { return val_.filename_; }
 		const gamemap::location& get_loc() const { return val_.loc_ ; }
 		const std::string& get_modifications() const {return val_.modifications_;}
-		const type get_type() const { return val_.type_; };
+		type get_type() const { return val_.type_; };
 		// const int get_index() const { return index_; };
 
 		// returns true if the locator does not correspond to any
