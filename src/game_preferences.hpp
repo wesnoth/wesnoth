@@ -70,7 +70,7 @@ namespace preferences {
 	const std::string network_host();
 	void set_network_host(const std::string& host);
 	
-	const unsigned int get_ping_timeout();
+	unsigned int get_ping_timeout();
 	void set_ping_timeout(unsigned int timeout);
 
 	const std::string campaign_server();
