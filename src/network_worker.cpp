@@ -537,7 +537,6 @@ static int process_queue(void* shard_num)
 				if(stream.peek() == 31) {
 					read_gz(received_data->config_buf, stream);
 				} else {
-					assert(false);
 					compression_schema *compress;
 					{
 						const threading::lock lock_schemas(*schemas_mutex);
