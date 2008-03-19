@@ -588,8 +588,9 @@ const unit_type* unit::type() const
 	if(i != gamedata_->unit_types.end()) {
 		return &i->second;
 	}
-	if (!type_id().empty())
+	if (!type_id().empty()) {
 		LOG_STREAM(err, engine) << "type not found for nonempty unit " << type_id() << ", returning NULL!\n";
+	}
 
 	return NULL;
 }
