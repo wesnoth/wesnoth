@@ -243,7 +243,7 @@ void set_network_host(const std::string& host)
 	preferences::set("host", host);
 }
 
-const unsigned int get_ping_timeout()
+unsigned int get_ping_timeout()
 {
 	return lexical_cast_default<unsigned>(preferences::get("ping_timeout"), 0);
 }
