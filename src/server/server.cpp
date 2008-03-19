@@ -481,7 +481,7 @@ void server::run() {
 					continue;
 				}
 
-				const bool sample = (sample_counter++ % request_sample_frequency) == 0;
+				const bool sample = request_sample_frequency >= 1 && (sample_counter++ % request_sample_frequency) == 0;
 
 				struct tms before_parsing, after_parsing, after_processing;
 
@@ -943,6 +943,13 @@ std::string server::process_command(const std::string& query) {
 			}
 		}
 		if (!kicked) out << "No user matched '" << parameters << "'.\n";
+	} else if(command == "sample") {
+		request_sample_frequency = atoi(parameters.c_str());
+		if(request_sample_frequency <= 0) {
+			out << "Sampling turned off";
+		} else {
+			out << "Sampling every " << request_sample_frequency << " requests\n";
+		}
 	} else if (command == "motd") {
 		if (parameters == "") {
 			if (motd_ != "") {
