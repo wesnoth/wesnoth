@@ -1201,7 +1201,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	if (preferences::is_ignored(sender)) return;
 
 	if (bell) {
-		if (type == MESSAGE_PRIVATE && (!is_observer() || whisper)
+		if ((type == MESSAGE_PRIVATE && (!is_observer() || whisper))
 			|| utils::word_match(message, preferences::login())) {
 			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
 		} else if (preferences::is_friend(sender)) {
