@@ -693,7 +693,7 @@ void play_controller::handle_event(const SDL_Event& event)
 		if(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
 					SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {
 			while(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
-						SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0);
+						SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {};
 			mouse_handler_.mouse_motion(new_event.motion, browse_);
 		} else {
 			mouse_handler_.mouse_motion(event.motion, browse_);
