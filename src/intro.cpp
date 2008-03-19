@@ -338,7 +338,7 @@ static bool show_intro_part_helper(display &disp, const config& part,
 
 		const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN] || key[SDLK_KP_ENTER];
 
-		if(keydown && !last_key || next_button.pressed()) {
+		if((keydown && !last_key) || next_button.pressed()) {
 			if(skip == true || itor == utils::utf8_iterator::end(story)) {
 				break;
 			} else {
