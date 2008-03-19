@@ -573,7 +573,7 @@ unsigned combatant::min_hp() const
 	assert(summary[1].empty());
 
 	unsigned int i;
-	for (i = 0; summary[0][i] == 0; i++);
+	for (i = 0; summary[0][i] == 0; i++) {};
 	return i;
 }
 
