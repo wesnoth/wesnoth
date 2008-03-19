@@ -63,12 +63,19 @@
 #ifndef SIGHUP
 #define SIGHUP 20
 #endif
+// FIXME: should define SIGINT here too, but to what?
 
 sig_atomic_t config_reload = 0;
 
 void reload_config(int signal) {
 	assert(signal == SIGHUP);
 	config_reload = 1;
+}
+
+void exit_sigint(int signal) {
+	assert(signal == SIGINT);
+	LOG_SERVER << "SIGINT caught, exiting without cleanup immediately.\n";
+	exit(1);
 }
 
 namespace {
@@ -272,6 +279,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 {
 	load_config();
 	signal(SIGHUP, reload_config);
+	signal(SIGINT, exit_sigint);
 }
 
 void server::send_error(network::connection sock, const char* msg) const
