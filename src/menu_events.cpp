@@ -511,8 +511,8 @@ public:
 	void action(gui::dialog_process_info &info) {
 		const bool leader_bool = leader_bools_[get_menu().selection()];
 		scroll_btn_->enable(leader_bool);
-		if(leader_bool && (info.double_clicked || !info.key_down
-		&& (info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER]))) {
+		if(leader_bool && (info.double_clicked || (!info.key_down
+		&& (info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER])))) {
 			set_result(get_menu().selection());
 		} else if(!info.key_down && info.key[SDLK_ESCAPE]) {
 			set_result(gui::CLOSE_DIALOG);
