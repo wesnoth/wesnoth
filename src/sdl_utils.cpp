@@ -398,7 +398,7 @@ surface scale_surface_blended(surface const &surf, int w, int h)
 
 surface adjust_surface_colour(surface const &surf, int r, int g, int b)
 {
-	if(r == 0 && g == 0 && b == 0 || surf == NULL)
+	if((r == 0 && g == 0 && b == 0) || surf == NULL)
 		return create_optimized_surface(surf);
 
 	surface nsurf(make_neutral_surface(surf));
