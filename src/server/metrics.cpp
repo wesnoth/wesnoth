@@ -19,8 +19,26 @@
 
 #include "metrics.hpp"
 
+#include <algorithm>
 #include <time.h>
 #include <iostream>
+
+bool operator<(const metrics::sample& s, const simple_wml::string_span& name)
+{
+	return s.name < name;
+}
+
+bool operator<(const simple_wml::string_span& name, const metrics::sample& s)
+{
+	return name < s.name;
+}
+
+struct compare_samples_by_time {
+	bool operator()(const metrics::sample& a, const metrics::sample& b) const {
+		return a.processing_time < b.processing_time;
+	}
+};
+
 
 metrics::metrics() : most_consecutive_requests_(0),
                      current_requests_(0), nrequests_(0),
@@ -43,6 +61,33 @@ void metrics::service_request()
 void metrics::no_requests()
 {
 	current_requests_ = 0;
+}
+
+void metrics::record_sample(const simple_wml::string_span& name,
+                            clock_t parsing_time, clock_t processing_time)
+{
+	std::pair<std::vector<sample>::iterator,std::vector<sample>::iterator>
+	    range = std::equal_range(samples_.begin(), samples_.end(), name);
+	if(range.first == range.second) {
+		//protect against DoS with memory exhaustion
+		if(samples_.size() > 30) {
+			return;
+		}
+		int index = range.first - samples_.begin();
+		simple_wml::string_span dup_name(name.duplicate());
+		sample new_sample;
+		new_sample.name = dup_name;
+		new_sample.nsamples = 0;
+		new_sample.parsing_time = 0;
+		new_sample.processing_time = 0;
+		samples_.insert(range.first, new_sample);
+
+		range.first = samples_.begin() + index;
+	}
+
+	range.first->nsamples++;
+	range.first->parsing_time += parsing_time;
+	range.first->processing_time += processing_time;
 }
 
 void metrics::game_terminated(const std::string& reason)
@@ -71,6 +116,15 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 		for(std::map<std::string,int>::const_iterator i = met.terminations_.begin(); i != met.terminations_.end(); ++i) {
 			out << i->first << ": " << i->second << "\n";
 		}
+	}
+
+	std::vector<metrics::sample> ordered_samples = met.samples_;
+	std::sort(ordered_samples.begin(), ordered_samples.end(), compare_samples_by_time());
+
+	out << "\n\nRequest types:\n";
+
+	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
+		out << "'" << s->name << "' called " << s->nsamples << " times " << s->parsing_time << " parsing time, " << s->processing_time << " processing time\n";
 	}
 
 	return out;

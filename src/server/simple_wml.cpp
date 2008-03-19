@@ -397,6 +397,16 @@ const node::child_list& node::children(const char* name) const
 	return itor->second;
 }
 
+const string_span& node::first_child() const
+{
+	if(children_.empty()) {
+		static const string_span empty;
+		return empty;
+	}
+
+	return children_.begin()->first;
+}
+
 int node::output_size() const
 {
 /*

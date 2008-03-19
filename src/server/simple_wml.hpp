@@ -121,6 +121,8 @@ public:
 
 	const child_list& children(const char* name) const;
 
+	const string_span& first_child() const;
+
 	bool is_dirty() const { return output_cache_.is_null(); }
 
 	int output_size() const;

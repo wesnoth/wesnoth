@@ -23,6 +23,8 @@
 #include <map>
 #include <string>
 
+#include "simple_wml.hpp"
+
 class metrics
 {
 public:
@@ -31,11 +33,22 @@ public:
 	void service_request();
 	void no_requests();
 
+	void record_sample(const simple_wml::string_span& name,
+	                   clock_t parsing_time, clock_t processing_time);
+
 	void game_terminated(const std::string& reason);
 
 	friend std::ostream& operator<<(std::ostream& out, metrics& met);
 
+	struct sample {
+		simple_wml::string_span name;
+		int nsamples;
+		clock_t parsing_time, processing_time;
+	};
+
 private:
+	std::vector<sample> samples_;
+
 	int most_consecutive_requests_;
 	int current_requests_;
 	int nrequests_;
