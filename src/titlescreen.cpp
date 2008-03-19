@@ -126,7 +126,7 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 
 
 //! Read the file with the tips-of-the-day.
-static const void read_tips_of_day(config& tips_of_day)
+static void read_tips_of_day(config& tips_of_day)
 {
 	tips_of_day.clear();
 	LOG_CONFIG << "Loading tips of day\n";
@@ -145,7 +145,7 @@ static const void read_tips_of_day(config& tips_of_day)
 }
 
 //! Go to the next tips-of-the-day
-static const void next_tip_of_day(config& tips_of_day, bool reverse = false)
+static void next_tip_of_day(config& tips_of_day, bool reverse = false)
 {
 	// we just rotate the tip list, to avoid the need to keep track
 	// of the current one, and keep it valid, cycle it, etc... 
