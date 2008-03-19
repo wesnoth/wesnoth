@@ -52,7 +52,7 @@ static gamemap::location find_vacant(const gamemap& map,
 			gamemap::location adj[6];
 			get_adjacent_tiles(loc,adj);
 			for(int i = 0; i != 6; ++i) {
-				if(!map.on_board(adj[i]) || vacancy == VACANT_CASTLE && !map.is_castle(adj[i]))
+				if(!map.on_board(adj[i]) || (vacancy == VACANT_CASTLE && !map.is_castle(adj[i])))
 					continue;
 
 				const gamemap::location res =
