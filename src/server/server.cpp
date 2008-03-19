@@ -44,6 +44,8 @@
 #include <sstream>
 #include <vector>
 
+#include <sys/times.h>
+
 #include <csignal>
 
 //! fatal and directly server related errors/warnings,
@@ -77,6 +79,9 @@ void exit_sigint(int signal) {
 }
 
 namespace {
+
+// we take profiling info on every n requests
+int request_sample_frequency = 1;
 
 void send_doc(simple_wml::document& doc, network::connection connection)
 {
@@ -453,6 +458,8 @@ void server::run() {
 				}
 			}
 
+			static int sample_counter = 0;
+
 			std::vector<char> buf;
 			while ((sock = network::receive_data(buf)) != network::null_connection) {
 				metrics_.service_request();
@@ -474,12 +481,32 @@ void server::run() {
 					continue;
 				}
 
+				const bool sample = (sample_counter++ % request_sample_frequency) == 0;
+
+				struct tms before_parsing, after_parsing, after_processing;
+
+				if(sample) {
+					times(&before_parsing);
+				}
+
 				char* buf_ptr = new char [buf.size()];
 				memcpy(buf_ptr, &buf[0], buf.size());
 				simple_wml::string_span compressed_buf(buf_ptr, buf.size());
 				simple_wml::document data(compressed_buf);
 				std::vector<char>().swap(buf);
+
+				if(sample) {
+					times(&after_parsing);
+				}
+
 				process_data(sock, data);
+
+				if(sample) {
+					times(&after_processing);
+					metrics_.record_sample(data.root().first_child(),
+					          after_parsing.tms_utime - before_parsing.tms_utime,
+					          after_processing.tms_utime - after_parsing.tms_utime);
+				}
 			}
 
 			metrics_.no_requests();
@@ -1586,6 +1613,8 @@ int main(int argc, char** argv) {
 			}
 		} else if ((val == "--max-threads" || val == "-T") && arg+1 != argc) {
 			max_threads = atoi(argv[++arg]);
+		} else if(val == "--request_sample_frequency" && arg+1 != argc) {
+			request_sample_frequency = atoi(argv[++arg]);
 		} else if (val[0] == '-') {
 			ERR_SERVER << "unknown option: " << val << "\n";
 			return 0;
