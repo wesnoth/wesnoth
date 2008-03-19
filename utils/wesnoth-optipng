@@ -1,0 +1,121 @@
+#!/bin/sh
+#
+#  Script to strip ICC profiles from all png images and to recompress them
+#  afterwards via optipng
+#
+#  Run-time requirements: ImageMagick, OptiPNG
+#
+#  Copyright (C) 2004 by Crossbow/Miyo <miyo@iki.fi>
+#  Copyright (C) 2005 by Isaac Clerencia <isaac@warp.es>
+#  * (Ruby-ification and some features)
+#  Copyright (C) 2008 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+#  * (De-ruby-ification and some other features)
+#
+#  Part of the Battle for Wesnoth Project <http://www.wesnoth.org>
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License version 2 or,
+#  at your option any later version. This program is distributed in the
+#  hope that it will be useful, but WITHOUT ANY WARRANTY. See the COPYING
+#  file for more details.
+#
+
+####### VARIABLES #######
+current_file=""
+# Default optimization process nice
+opti_nice=19
+total_savings_size=0
+total_savings_filecount=0
+
+####### PROCEDURES #######
+user_int()
+{
+	if [ -n "${current_file}" ]; then
+		rm -f ${current_file}.stripped
+		#echo "Removing temp file ${current_file}.stripped..."
+		rm -f ${current_file}.new
+		#echo "Removing temp file ${current_file}.new..."
+	fi
+	if [ -z "$just_overall_statistics" ]; then
+		echo "Stopped by user request."
+	fi
+	exit
+}
+
+optimize_imgfile()
+{
+	current_file=${1}
+
+	if ! [ -e ${1} ]; then
+		echo "ERROR: image file ${1} not found"
+		return -1
+	fi
+
+	echo "* processing ${1} (nice = ${2})..."
+
+	nice -n $2 convert -strip ${1} ${1}.stripped
+	nice -n $2 optipng -q -o5 -nb -nc -np ${1}.stripped -out ${1}.new
+	rm -f ${1}.stripped
+
+	if [ -e ${1} ] && [ -e ${1}.new ]; then
+		# Compare output size with original and print per-file statistics
+		local old_png_size=`stat -c %s ${1} 2> /dev/null`
+		local new_png_size=`stat -c %s ${1}.new 2> /dev/null`
+
+		if [ "$old_png_size" -gt "$new_png_size" ]; then
+			local png_savings_size=$((${old_png_size}-${new_png_size}))
+			total_savings_size=$((${total_savings_size}+${png_savings_size}))
+			total_savings_filecount=$((1+${total_savings_filecount}))
+			mv -f ${1}.new ${1}
+			echo "  saved: ${png_savings_size} bytes, total saved: $((${total_savings_size}/1024)) KB"
+		else
+			rm -f ${1}.new
+			echo "  already optimized"
+		fi
+	else
+		echo "ERROR: temporary file ${1}.new disappeared mysteriously"
+	fi
+	
+	echo -ne "\n"
+}
+
+####### ACTUAL SCRIPT #######
+
+# Parse command line parameters
+while [ "${1}" != "" ]; do
+	if [ "${1}" = "--nice" ] || [ "${1}" = "-n" ]; then
+		opti_nice=$2
+		shift
+	elif [ "${1}" = "--help" ] || [ "${1}" = "-h" ]; then
+		cat << EOSTREAM
+Wesnoth automatic PNG optimization helper script
+Part of the Battle for Wesnoth project <www.wesnoth.org>
+
+Usage:
+  ${0} [{--nice|n} <value>] [{--help|-h}]
+
+Switches:
+  --nice / -n   Sets the process nice <value> under which the optimization
+                shall be done. If not specified, 19 (the lowest priority) is
+                assumed by default.
+
+  --help / -h   Displays this help text.
+
+This utility requires OptiPNG and ImageMagick's convert utility to be
+installed and available in PATH.
+EOSTREAM
+		exit 0
+	fi
+	shift
+done
+
+# Set-up a trap to avoid leaving orphan tempfiles behind.
+trap user_int SIGINT SIGKILL SIGTERM
+
+filelist=$(find -iname "*.png")
+for f in $filelist; do
+	optimize_imgfile $f $opti_nice
+done
+
+# Print overall statistics
+echo "*** Total saved: $((${total_savings_size}/1024)) KB on ${total_savings_filecount} files"
