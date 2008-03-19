@@ -260,6 +260,11 @@ manager::~manager()
 	}
 }
 
+void set_raw_data_only()
+{
+	network_worker_pool::set_raw_data_only();
+}
+
 server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false)
 {
 	if(create_server != NO_SERVER && !server_socket) {
@@ -715,6 +720,79 @@ connection receive_data(config& cfg, connection connection_num)
 	return result;
 }
 
+connection receive_data(std::vector<char>& buf)
+{
+	if(!socket_set) {
+		return 0;
+	}
+
+	check_error();
+
+	if(disconnection_queue.empty() == false) {
+		const network::connection sock = disconnection_queue.front();
+		disconnection_queue.pop_front();
+		throw error("",sock);
+	}
+
+	if(bad_sockets.count(0)) {
+		return 0;
+	}
+
+	if(sockets.empty()) {
+		return 0;
+	}
+
+	const int res = SDLNet_CheckSockets(socket_set,0);
+
+	for(std::set<network::connection>::iterator i = waiting_sockets.begin(); res != 0 && i != waiting_sockets.end(); ) {
+		connection_details& details = get_connection_details(*i);
+		const TCPsocket sock = details.sock;
+		if(SDLNet_SocketReady(sock)) {
+
+			// See if this socket is still waiting for it to be assigned its remote handle.
+			// If it is, then the first 4 bytes must be the remote handle.
+			if(is_pending_remote_handle(*i)) {
+				char buf[4];
+				int len = SDLNet_TCP_Recv(sock,buf,4);
+				if(len != 4) {
+					throw error("Remote host disconnected",*i);
+				}
+
+				const int remote_handle = SDLNet_Read32(buf);
+				set_remote_handle(*i,remote_handle);
+
+				continue;
+			}
+
+			waiting_sockets.erase(i++);
+			SDLNet_TCP_DelSocket(socket_set,sock);
+			network_worker_pool::receive_data(sock);
+		} else {
+			++i;
+		}
+	}
+
+
+	TCPsocket sock = network_worker_pool::get_received_data(buf);
+	if (sock == NULL) {
+		return 0;
+	}
+
+	SDLNet_TCP_AddSocket(socket_set,sock);
+
+	connection result = 0;
+	for(connection_map::const_iterator j = connections.begin(); j != connections.end(); ++j) {
+		if(j->second.sock == sock) {
+			result = j->first;
+			break;
+		}
+	}
+
+	assert(result != 0);
+	waiting_sockets.insert(result);
+	return result;
+}
+
 //! @todo Note the gzipped parameter should be removed later, we want to send
 //! all data gzipped. This can be done once the campaign server is also updated
 //! to work with gzipped data.
@@ -750,6 +828,34 @@ void send_data(const config& cfg, connection connection_num, const bool gzipped)
 
 	LOG_NW << "SENDING to: " << connection_num << ": " << cfg;
 	network_worker_pool::queue_data(info->second.sock, cfg, gzipped);
+}
+
+void send_raw_data(const char* buf, int len, connection connection_num)
+{
+	if(len == 0) {
+		return;
+	}
+
+	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
+		return;
+	}
+
+	if(!connection_num) {
+		for(sockets_list::const_iterator i = sockets.begin();
+		    i != sockets.end(); ++i) {
+			send_raw_data(buf, len, connection_num);
+		}
+		return;
+	}
+
+	const connection_map::iterator info = connections.find(connection_num);
+	if (info == connections.end()) {
+		ERR_NW << "Error: socket: " << connection_num
+			<< "\tnot found in connection_map. Not sending...\n";
+		return;
+	}
+
+	network_worker_pool::queue_raw_data(info->second.sock, buf, len);
 }
 
 void process_send_queue(connection, size_t)

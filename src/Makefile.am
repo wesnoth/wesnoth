@@ -153,6 +153,7 @@ wesnothd_SOURCES = \
 	server/player.cpp \
 	server/proxy.cpp \
 	server/server.cpp \
+	server/simple_wml.cpp \
 	network.cpp \
 	network_worker.cpp \
 	loadscreen_empty.cpp 

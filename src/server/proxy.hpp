@@ -15,8 +15,8 @@
 #ifndef PROXY_HPP_INCLUDED
 #define PROXY_HPP_INCLUDED
 
-#include "config.hpp"
 #include "network.hpp"
+#include "simple_wml.hpp"
 
 #include <string>
 
@@ -27,7 +27,7 @@ void create_proxy(network::connection sock, const std::string& host, int port);
 bool is_proxy(network::connection sock);
 void disconnect(network::connection sock);
 
-void received_data(network::connection sock, const config& data);
+void received_data(network::connection sock, simple_wml::document& data);
 
 }
 

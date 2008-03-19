@@ -16,20 +16,20 @@
 
 #include "player.hpp"
 
-player::player(const std::string& n, config& cfg, const size_t max_messages, const size_t time_period)
+player::player(const std::string& n, simple_wml::node& cfg, const size_t max_messages, const size_t time_period)
 	: name_(n), cfg_(cfg), flood_start_(0), messages_since_flood_start_(0),
 	MaxMessages(max_messages), TimePeriod(time_period)
 {
-	cfg_["name"] = n;
+	cfg_.set_attr_dup("name", n.c_str());
 	mark_available();
 }
 
 // keep 'available' and game name ('location') for backward compatibility
 void player::mark_available(const int game_id, const std::string location)
 {
-	cfg_["available"] = (game_id == 0) ? "yes" : "no";
-	cfg_["game_id"]   = lexical_cast<std::string>(game_id);
-	cfg_["location"]  = location;
+	cfg_.set_attr("available", (game_id == 0) ? "yes" : "no");
+	cfg_.set_attr_dup("game_id", lexical_cast<std::string>(game_id).c_str());
+	cfg_.set_attr_dup("location", location.c_str());
 }
 
 bool player::is_message_flooding() {

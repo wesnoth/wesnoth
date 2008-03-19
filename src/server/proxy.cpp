@@ -75,14 +75,15 @@ void disconnect(network::connection sock)
 	network::disconnect(peer);
 }
 
-void received_data(network::connection sock, const config& data)
+void received_data(network::connection sock, simple_wml::document& data)
 {
 	const network::connection peer = find_peer(sock);
 	if(!peer) {
 		return;
 	}
 
-	network::send_data(data, peer, true);
+	const simple_wml::string_span& output = data.output_compressed();
+	network::send_raw_data(output.begin(), output.size(), peer);
 }
 
 }

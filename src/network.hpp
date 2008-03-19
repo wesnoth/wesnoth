@@ -23,6 +23,7 @@ class config;
 #include "SDL_net.h"
 
 #include <string>
+#include <vector>
 
 namespace threading
 {
@@ -54,6 +55,8 @@ private:
 	manager(const manager&);
 	void operator=(const manager&);
 };
+
+void set_raw_data_only();
 
 //! A server manager causes listening on a given port
 //! to occur for the duration of its lifetime.
@@ -120,11 +123,14 @@ void queue_disconnect(connection connection_num);
 //! Throws error if an error occurred.
 connection receive_data(config& cfg, connection connection_num=0);
 connection receive_data(config& cfg, connection connection_num, unsigned int timeout);
+connection receive_data(std::vector<char>& buf);
 
 //! Function to send data down a given connection,
 //! or broadcast to all peers if connection_num is 0.
 //! Throws error.
 void send_data(const config& cfg, connection connection_num /*= 0*/, const bool gzipped);
+
+void send_raw_data(const char* buf, int len, connection connection_num);
 
 //! Function to send any data that is in a connection's send_queue,
 //! up to a maximum of 'max_size' bytes --

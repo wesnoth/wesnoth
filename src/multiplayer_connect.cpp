@@ -1004,7 +1004,7 @@ void connect::process_event()
 		if(network::nconnections() > 0) {
 			config cfg;
 			cfg.add_child("leave_game");
-			network::send_data(cfg, 0, false);
+			network::send_data(cfg, 0, true);
 		}
 
 		set_result(QUIT);
