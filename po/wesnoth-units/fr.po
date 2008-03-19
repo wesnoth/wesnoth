@@ -12,15 +12,14 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-16 11:59+0100\n"
-"PO-Revision-Date: 2007-11-08 19:45+0100\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"PO-Revision-Date: 2008-03-19 17:46+0100\n"
+"Last-Translator: Damien J <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.11.2\n"
-"X-Poedit-Bookmarks: -1,901,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. unit: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -35,6 +34,10 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"Le nom des chauves-souris sanguinaire provient de leur fourrure rougeâtre "
+"qui semble symboliser leur nourriture préférée. Ces créatures rapides "
+"peuvent drainer le sang de leur victime et récupérer une partie de l'énergie "
+"vitale de leur proie."
 
 #. attack: type=blade
 #. attack: type=pierce
@@ -56,18 +59,15 @@ msgstr "Chauve-souris vampire"
 
 #. unit: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
-#, fuzzy
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"Les chauves-souris vampires sont des créatures volantes mortes-vivantes qui "
-"attaquent en mordant leurs victimes. Bien que leurs crocs ne soient pas très "
-"puissants, elles sucent le sang et volent la vie de leurs proies pour se "
-"ressourcer.\n"
-"\n"
-"Remarque : "
+"Les chauves-souris vampires sont des créatures volantes qui se nourrissent "
+"du sang de leurs victimes. Bien que leurs crocs ne soient pas très "
+"puissants, elles se ressourcent en drainant l'énergie vitale mêlée au sang "
+"de leurs proies."
 
 #. unit: race=mechanical
 #: data/core/units/boats/Boat.cfg:4
@@ -80,7 +80,7 @@ msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
-"Souvent propulsés grâce à des rames ou des petites voiles, les bateaux  sont "
+"Souvent propulsés grâce à des rames ou des petites voiles, les bateaux sont "
 "utilisés pour naviguer sur de courtes distances et dans les eaux peu "
 "profondes que des navires plus grands ne peuvent traverser."
 
@@ -146,6 +146,10 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"Un homme du commun confondrait vraiment certains dracans avec des dragons "
+"s'ils ne portaient pas d'armure. Les créatures colossales connues sous le "
+"nom de « Dracans d'apocalypse » sont immunisées au feu et crachent des "
+"flammes impressionnantes."
 
 #. attack: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
@@ -243,9 +247,9 @@ msgid ""
 "combat."
 msgstr ""
 "Les pyrodracans forment la fière minorité qui a hérité des forces de leurs "
-"lointains ancêtres, particulièrement leur capacité de cracher du feu. Cela, "
-"ajouté à leur taille imposante et à leurs mains griffues, en font des "
-"ennemis redoutables en combat."
+"lointains ancêtres, en particulier leur capacité de cracher du feu. Cela, "
+"ajouté à leur taille imposante et à leurs griffes acérées, en font des "
+"ennemis redoutables."
 
 #. unit: race=drake
 #: data/core/units/drakes/Clasher.cfg:4
@@ -254,7 +258,6 @@ msgstr "Cogneur dracan"
 
 #. unit: race=drake
 #: data/core/units/drakes/Clasher.cfg:21
-#, fuzzy
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
 "assume their relegation to melee combat is because of disability - an "
@@ -271,21 +274,20 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
-"Les cogneurs dracans ne sont ni capables de voler ni de cracher du feu, et "
-"nombreux sont ceux qui supposent que leur spécialisation dans le combat au "
-"corps à corps est une façon d'utiliser ceux qui, sinon, ne seraient qu'un "
-"poids pour la société dracane. Il est sans doute vrai que les cogneurs "
-"dracans ont un handicap naturel dans ces domaines, mais ceux qui croient en "
-"cette théorie ne réalisent pas à quel point les cogneurs dracans sont "
-"efficaces quand il s'agit de combattre d'autres dracans.\n"
+"Un cogneur dracan ne peut ni voler ni cracher de feu ; beaucoup supposent "
+"que ces handicaps les ont poussés à se spécialiser au combat au corps à "
+"corps pour tenter d'éviter une mise au ban. Les cogneurs dracans présentent "
+"probablement quelques petites déficiences, mais ceux qui y croient ne "
+"réalisent pas à quel point ces unités sont efficaces pour combattre leurs "
+"semblables.\n"
 "\n"
-"Ce sont eux qui forment la caste des juges dans la société dracane. Bien que "
-"leur armement soit surtout cérémonial, leurs armes restent néanmoins très "
-"efficaces. Leurs rencontres avec d'autres races leur ont prouvé que leur "
-"taille et leur force étaient des armes à part entière, et que combiné avec "
-"les armes de leur caste, ils combattaient sans souffrir des faiblesses "
-"inhérentes à leur race et bénéficiaient d'une plus faible vulnérabilité aux "
-"lances et aux flèches."
+"Ils forment en fait la caste des juges dans la société des dracans. Leur "
+"armement, qui sert surtout pendant le cérémonial, reste néanmoins très "
+"efficaces. Leurs confrontations avec d'autres races ont prouvé que leur "
+"taille et leur force étaient des armes à part entière. Celles-ci associées à "
+"leur équipement leur permettent de compenser les faiblesses caractéristiques "
+"de leur race et les rendent, par exemple, moins vulnérables aux lances et "
+"aux flèches."
 
 #. attack: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:121
@@ -333,7 +335,7 @@ msgid ""
 msgstr ""
 "Les grands exécuteurs dracans incarnent la force brute de leur espèce. De "
 "longues heures à la forge leur ont fourni un arsenal impressionnant et les "
-"ont couverts d'une armure étincelante."
+"ont dotés d'une armure étincelante."
 
 #. attack: type=impact
 #: data/core/units/drakes/Enforcer.cfg:76
@@ -354,17 +356,16 @@ msgstr "Combattant dracan"
 
 #. unit: race=drake
 #: data/core/units/drakes/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
 "of their ancestors. They can also fly, which is troubling to any foe. Their "
 "great strength, coupled with their hardened scales, is rightly frightening "
 "to swordsman of any other race."
 msgstr ""
-"Non seulement les combattants dracans manient leurs cimeterres de façon "
-"mortelle, mais ils sont également capables de souffler le feu légendaire de "
-"leurs lointains ancêtres. Les combattants les plus doués rejoignent les "
-"rangs des guerriers dracans d'élite."
+"Les combattants dracans manient des cimeterres recourbés et sont capables de "
+"souffler le feu, comme leurs ancêtres. Ils savent également voler, ce qui "
+"perturbe leurs ennemis. Leur force incroyable et leurs écailles solides "
+"peuvent vraiment terrifier un spadassin de n'importe quelle espèce."
 
 #. attack: type=blade
 #: data/core/units/drakes/Fighter.cfg:65
@@ -394,7 +395,6 @@ msgstr "Dracan cœur-de-flamme"
 
 #. unit: race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves - have veins which course with fire rather than blood. "
@@ -403,10 +403,9 @@ msgid ""
 msgstr ""
 "On raconte que c'est du feu et non du sang qui circule dans les veines des "
 "dracans les plus anciens, directs descendants des dragons. Qu'ils puissent "
-"cracher du feu comme ils le font rend cette croyance plus crédible, mais "
-"bizarrement, personne n'a essayé d'en ouvrir un pour s'en assurer.\n"
-"\n"
-"Remarque : "
+"cracher du feu comme ils le font rend cette croyance d'autant plus "
+"crédible ; mais, bizarrement, personne n'a essayé d'en éventrer un pour s'en "
+"assurer."
 
 #. unit: race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -415,17 +414,14 @@ msgstr "Dracan flamboyant"
 
 #. unit: race=drake
 #: data/core/units/drakes/Flare.cfg:25
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
 "be such leaders, both in war and in peace."
 msgstr ""
 "Les dracans sont une race ancienne, assez sage pour écouter ses chefs "
-"naturels. Ceux appelés « flamboyants » par leurs ennemis sont les dracans qui "
-"aspirent à être de tels chefs, en temps de guerre ou de paix.\n"
-"\n"
-"Remarque : "
+"naturels. Ceux que leurs ennemis appellent « dracans flamboyants » aspirent "
+"à être de tels commandants, en période de guerre comme en temps de paix."
 
 #. unit: race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
@@ -444,12 +440,12 @@ msgid ""
 "reduction in their defensive abilities."
 msgstr ""
 "Le gladiateur a pris un chemin complètement différent des tailladeurs. "
-"Plutôt que de s'appuyer sur l'entraînement, ils ont choisi de concentrer "
-"leurs efforts sur la fabrication de leur armement. Ils sont les forgerons de "
-"la société dracane et possèdent donc les meilleures armes - les lames les "
-"plus coupantes, les lances les plus tranchantes, et les massues complètent "
-"leur arsenal déjà impressionnant. L'attention intense qu'ils portent à leurs "
-"armes diminue légèrement leurs capacités défensives."
+"Plutôt que de s'entraîner, ils ont choisi de concentrer leurs efforts sur la "
+"fabrication de leur armement. Ce sont les forgerons de la société dracane et "
+"ils possèdent donc les meilleures armes : les lames les plus coupantes, les "
+"lances les plus tranchantes, et les meilleures massues ; tout cela complète "
+"leur arsenal déjà impressionnant. L'attention intense qu'ils y portent "
+"diminue légèrement leurs capacités défensives."
 
 #. unit: race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -458,7 +454,6 @@ msgstr "Dracan tempête"
 
 #. unit: race=drake
 #: data/core/units/drakes/Glider.cfg:20
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little encumberment as possible, freeing themselves to "
 "fly to their full ability. These Drakes are competent fighters, possessing "
@@ -467,24 +462,19 @@ msgid ""
 "vantage point, these drakes can see past most defensive cover. Their skill "
 "at flying allows them the precision to target enemies under such cover."
 msgstr ""
-"Les dracans tempête portent une armure aussi légère que possible, afin de "
-"pouvoir échapper le plus vite possible à leurs ennemis lorsqu'ils quittent "
-"leurs cavernes. Ces dracans sont des combattants compétents et possèdent le "
-"feu intérieur qu'ils partagent avec les membres de leur espèce. Les dracans "
-"tempête peuvent utiliser leur grande vitesse pour se jeter violemment contre "
-"leurs ennemis. Les meilleurs d'entre eux peuvent espérer être acceptés parmi "
-"les rangs des dracans tornade. De leur point de vue aérien, ces dracans "
-"peuvent voir au travers de la plupart des lignes de défenses. Leur habileté "
-"au vol leur permet de viser avec précision des ennemis au travers de telles "
-"lignes.\n"
-"\n"
-"Remarque : "
+"Les dracans tempêtes portent aussi peu de matériel que possible pour pouvoir "
+"voler au mieux de leurs possibilités. Ces bons combattants possèdent le feu "
+"intérieur commun à la plupart des membres de leur espèce ; ils peuvent "
+"également profiter de leur vitesse pour se jeter violemment contre leurs "
+"ennemis. Du haut du ciel, ils peuvent voir au-delà des lignes de défenses, "
+"et leur habileté en vol leur permet de piquer précisément sur l'adversaire "
+"choisi."
 
 #. attack: type=impact
 #: data/core/units/drakes/Glider.cfg:75
 #: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
 msgid "slam"
-msgstr "atterrissage"
+msgstr "piqué"
 
 #. unit: race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
@@ -493,18 +483,15 @@ msgstr "Dracan cyclone"
 
 #. unit: race=drake
 #: data/core/units/drakes/Hurricane.cfg:29
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
 "drakes which are gifted with flight. Soaring high in the air, they can see "
 "past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
 "Maîtres du domaine aérien, les dracans cyclones forment l'élite des dracans "
-"ayant le don de voler. S'élevant haut dans les airs, ils peuvent voir au-"
-"delà de la plupart des couvertures défensives et cracher du feu sur leurs "
-"ennemis en toute impunité.\n"
-"\n"
-"Remarque : "
+"ayant le don de voler. En s'élevant haut dans les airs, ils peuvent voir au-"
+"delà de la majorité des couvertures défensives et cracher le feu sur leurs "
+"ennemis en toute impunité."
 
 #. unit: race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -533,7 +520,6 @@ msgstr "Dracan tornade"
 
 #. unit: race=drake
 #: data/core/units/drakes/Sky.cfg:28
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 "stooping dive and and their fire breath combine into a terrible weapon. By "
@@ -541,14 +527,10 @@ msgid ""
 "positions which would otherwise afford a great defensive advantage to their "
 "foes."
 msgstr ""
-"Les dracans tornade sont réellement les rois du ciel. Utilisant leur élan et "
-"leur souffle ardent, ces dracans sont un fléau pour beaucoup. Ils fondent "
-"rapidement sur leurs proies et disparaissent bien avant que quiconque ne "
-"puisse les arrêter. En attaquant du ciel, ils peuvent tirer avec précision "
-"sur les positions de quiconque aurait un important avantage défensif contre "
-"d'autres adversaires.\n"
-"\n"
-"Remarque : "
+"Les dracans tornade sont réellement les rois du ciel. Le formidable élan de "
+"leur plongeon en piqué et leur souffle ardent en font des assaillants "
+"redoutables. En attaquant du ciel, ils peuvent cracher avec une terrible "
+"précision leur feu sur les défenses stratégiques de leurs ennemis."
 
 #. unit: race=drake
 #: data/core/units/drakes/Slasher.cfg:4
@@ -557,7 +539,6 @@ msgstr "Tailladeur dracan"
 
 #. unit: race=drake
 #: data/core/units/drakes/Slasher.cfg:19
-#, fuzzy
 msgid ""
 "Slashers are Clashers who have chosen to master the use of a halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -569,10 +550,8 @@ msgstr ""
 "plutôt que de porter une lance et une épée. Leur grande taille leur permet "
 "d'utiliser une arme à leur échelle, suffisamment longue pour embrocher un "
 "cheval comme un homme embrocherait un sanglier. Leur entraînement a aussi "
-"amélioré leur résistance et leurs capacités défensives, ce qui est un "
-"avantage majeur sur leurs proches cousins les gladiateurs.\n"
-"\n"
-"Remarque : "
+"amélioré leur résistance et leurs capacités défensives, ce qui constitue un "
+"avantage majeur sur leurs proches cousins les gladiateurs."
 
 #. attack: type=blade
 #. attack: type=pierce
@@ -590,7 +569,6 @@ msgstr "Gardien dracan"
 
 #. unit: race=drake
 #: data/core/units/drakes/Warden.cfg:20
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -598,11 +576,9 @@ msgid ""
 "is the halberd, which they use to great effect."
 msgstr ""
 "Le gardien représente le summum de la caste des cogneurs, sélectionné parmi "
-"les meilleurs cogneurs. Ils ont tant amélioré leur force que peu de "
+"les meilleurs tailladeurs. Ils ont tant amélioré leur force que peu de "
 "guerriers sur cette terre oseraient les défier. L'arme de prédilection des "
-"gardiens est la hallebarde, qu'ils utilisent fort efficacement.\n"
-"\n"
-"Remarque : "
+"gardiens est la hallebarde, qu'ils utilisent fort efficacement."
 
 #. unit: race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -619,7 +595,7 @@ msgstr ""
 "Les guerriers dracans manient leurs lames avec une grande habileté et sont "
 "capables de souffler le feu légendaire de leurs lointains ancêtres. La "
 "grande force qui les caractérise leur permet de donner des coups "
-"dévastateurs et également de résister aux attaques punitives."
+"dévastateurs et de résister aux représailles."
 
 #. unit: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
@@ -633,6 +609,10 @@ msgid ""
 "rage before combat. These warriors forget all notion of defense, thinking "
 "only of the unrelenting assaults they are legendary for performing."
 msgstr ""
+"Les berserkers nains forment une caste rare parmi les nains. Ils entrent "
+"dans une rage impressionnante avant de combattre et oublient alors toute "
+"notion de défense, obsédés par les assauts frénétiques qui ont fait leur "
+"réputation légendaire."
 
 #. attack: type=blade
 #: data/core/units/dwarves/Berserker.cfg:31
@@ -657,14 +637,14 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
-"La raison pour laquelle les gardes dragon portent ce nom, donné par leurs "
-"frères nains, n'est pas très claire. Certains pensent qu'il viendrait de "
-"leur arme de prédilection, ces étranges bâtons qui crachent le feu et la "
-"mort. D'autres supposent que c'est parce que ces armes seraient une menace "
-"même contre un vrai dragon si une une telle chose était revue dans le monde "
-"connu. Quoi qu'il en soit, c'est pour ces armes que les gardiens des grandes "
-"citadelles naines sont à la fois craints et renommés ; ces armes ont brisé "
-"le plus puissant des guerriers d'un seul coup."
+"L'origine du nom des gardes dragon, attribué par leurs frères nains, n'est "
+"pas très claire. Certains pensent qu'il viendrait de leur arme de "
+"prédilection, cet étrange bâton qui crache le feu et la mort ; d'autres "
+"supposent que ces armes menaceraient même un vrai dragon, si seulement une "
+"telle chose venait à réapparaître dans le monde connu. Quoi qu'il en soit, "
+"c'est pour elles que les gardiens des grandes citadelles naines sont à la "
+"fois craints et renommés ; ces instruments ont pulvérisé les plus puissants "
+"guerriers d'un seul coup."
 
 #. attack: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:70
@@ -703,9 +683,9 @@ msgid ""
 "than compensate."
 msgstr ""
 "Les combattants nains manient de puissants marteaux et haches de guerre qui "
-"font d'eux de redoutables adversaires en corps à corps. Ils sont excellents "
-"dans les montagnes ou sous terre. Bien que pas vraiment rapides, leur force "
-"et leur endurance font plus que compenser."
+"font d'eux de redoutables adversaires en corps à corps. Ils excellent dans "
+"les montagnes ou sous terre. Leur force et leur endurance font plus que "
+"compenser leur lenteur."
 
 #. attack: type=blade
 #: data/core/units/dwarves/Fighter.cfg:35
@@ -737,6 +717,12 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"La race des nains a toujours été réputée pour sa vigueur et beaucoup de "
+"leurs guerriers s'équipent pour en tirer avantage. Les gardes nains marchent "
+"au combat en portant de gros boucliers et des lances. La plupart du temps, "
+"leur rôle consiste à tenir la ligne et faire chèrement payer à ceux qui "
+"veulent la forcer. Alors que le front progresse, ils sécurisent le terrain "
+"durement conquis."
 
 #. attack: type=pierce
 #: data/core/units/dwarves/Stalwart.cfg:43
@@ -760,10 +746,11 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
-"Revêtus d'une armure étincelante, ces nains ressemblent aux rois de sous les "
-"montagnes. Ils manient la hache et le marteau avec une grande habileté et "
-"peuvent atteindre une cible à la hachette à plusieurs pas. Bien que lents au "
-"déplacement, ces nains sont la preuve du talent de leurs semblables."
+"Revêtus d'une armure étincelante, ces nains ressemblent à des rois de "
+"dessous les montagnes. Ils manient la hache et le marteau avec une grande "
+"habileté et peuvent atteindre une cible à la hachette à plusieurs pas. Même "
+"s'ils se déplacent lentement, ces nains prouvent le talent de leurs "
+"semblables."
 
 #. attack: type=blade
 #: data/core/units/dwarves/Steelclad.cfg:29
@@ -790,10 +777,9 @@ msgid ""
 "power. Though rarely seen in combat, a master of these runes can put them to "
 "terrifying use."
 msgstr ""
-"La magie des nains, telle qu'elle est connue, se manifeste le plus souvent "
-"par l'inscription de runes à la surface d'un objet, l'imprégnant de "
-"puissance par leur seule présence. Bien que rarement vu en combat, un maître "
-"de ces runes peut en faire des utilisations terrifiantes."
+"La magie des nains consiste principalement à inscrire des runes à la surface "
+"des objets pour les imprégner de puissance. Bien que rarement aperçu en "
+"combat, un maître de ces runes peut les utiliser de façon terrifiante."
 
 #. attack: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -819,6 +805,12 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
+"Champions parmi leurs camarades soldats, les sentinelles naines forment le "
+"rempart des lignes de batailles. Mener un assaut frontal contre les rangs "
+"qu'ils renforcent est souvent hors de question ; cela ressemble plus à un "
+"suicide qu'à une attaque efficace. Ces nains sont des maîtres du corps à "
+"corps et peuvent s'agripper à un carré de terre aussi obstinément qu'un "
+"chêne."
 
 #. unit: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
@@ -833,6 +825,11 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"L'expérience et l'entraînement transforment les gardes en bons soldats. Ces "
+"troupes indéfectibles sont équipées en fonction de leurs compétences et "
+"peuvent résister à presque tout, sauf à l'assaut le plus acharné. Il est "
+"dangereux de céder un pouce de terrain face à eux car il sera difficile de "
+"le reconquérir."
 
 #. unit: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
@@ -855,7 +852,6 @@ msgstr "Foudroyeur nain"
 
 #. unit: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -864,12 +860,10 @@ msgid ""
 "made moreso by the secrecy which dwarves hold about their workings."
 msgstr ""
 "Les hommes de Wesnoth qui rencontrèrent les nains pour la première fois "
-"furent impressionnés par la puissance des foudroyeurs, capables de lancer la "
-"mort au loin au moyen de ces instruments étranges, ces... bâtons qu'ils "
-"apportaient pour la bataille. Lorsque la paix fut instaurée par Ka'lian, le "
-"peuple de Haldric, ne comprenant pas ces armes, et bien sûr incapable d'en "
-"fabriquer, réalisa qu'il était chanceux de ne plus combattre les nains et "
-"jura de ne plus le faire."
+"furent impressionnés par la puissance des foudroyeurs nains, capables de "
+"projeter la mort au loin au moyen de ces bâtons étranges apportés pour "
+"combattre. Le bruit assourdissant de ces « bâtons tonnerre » est terrifiant, "
+"d'autant plus que les nains gardent jalousement le secret de leurs travaux."
 
 #. attack: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:50
@@ -906,7 +900,7 @@ msgstr ""
 "l'intérieur.\n"
 "\n"
 "Même si un seul coup de ces « bâtons de tonnerre » peut nécessiter plusieurs "
-"minutes de préparation, pour les nains les résultats valent le coup "
+"minutes de préparation, pour les nains les résultats valent le « coup » "
 "d'attendre."
 
 #. unit: race=dwarf
@@ -916,19 +910,16 @@ msgstr "Ulfserker nain"
 
 #. unit: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these; in battle, they will work themselves into a blind rage "
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
-"Les nains sont une ancienne race de puissants combattants. Les ulfserkers "
-"sont les plus féroces d'entre eux : au combat, consommés par une folle furie "
-"intérieure, ils attaquent sans peur ni douleur, et sans considération pour "
-"les blessures qu'ils pourraient recevoir.\n"
-"\n"
-"Remarque : "
+"Les nains constituent une ancienne race de puissants combattants. Les "
+"ulfserkers sont les plus féroces d'entre eux ; au combat, ils brûlent d'une "
+"folle furie intérieure qui annihile la peur et la douleur, et qui leur fait "
+"totalement négliger les blessures qu'ils reçoivent."
 
 #. unit: race=elf
 #: data/core/units/elves/Archer.cfg:4
@@ -947,7 +938,7 @@ msgid ""
 msgstr ""
 "Les elfes ont toujours eu bonne réputation au tir à l'arc, un talent qui "
 "pour de nombreuses raisons leur vient naturellement. Même un individu "
-"fragile peut être mortel avec un arc à la main et en temps de guerre "
+"fragile peut être mortel avec un arc à la main, et en temps de guerre "
 "beaucoup prendront cette arme. Bien que leur manque relatif d'expérience au "
 "combat les laisse plutôt vulnérables, leur grâce naturelle leur permet de "
 "surpasser toutes les fraîches recrues humaines."
@@ -989,7 +980,6 @@ msgstr "Vengeur elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Avenger.cfg:23
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -1007,11 +997,9 @@ msgstr ""
 "arrivent, ces archers se découvrent et attaquent, brisant les lignes de "
 "soutien et encerclant l'ennemi en un seul mouvement.\n"
 "\n"
-"Cela a parfois été interprété comme une forme de vengeance de leurs frères "
+"Cela a parfois été interprété comme une façon de venger leurs frères "
 "disparus dans la bataille. Bien que ce ne soit pas la raison première, ce "
-"n'est pas inexact.\n"
-"\n"
-"Remarque : "
+"n'est pas inexact."
 
 #. female
 #: data/core/units/elves/Avenger.cfg:180
@@ -1025,7 +1013,6 @@ msgstr "Capitaine elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Captain.cfg:26
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. In this they differ greatly from "
@@ -1035,13 +1022,11 @@ msgid ""
 "quiet strengths of the elves."
 msgstr ""
 "Les elfes, contrairement à de nombreuses autres races, reconnaîtront et "
-"suivront rapidement un de leurs pairs qui a acquis une expérience du combat. "
-"C'est assez différent de l'humanité, pour qui le commandement est souvent un "
-"mélange inconstant de coercition et d'intimidation. Leur disposition à "
-"accepter la sagesse de leurs chefs et leur tendance à choisir des chefs "
-"méritants constitue un point fort des elfes.\n"
-"\n"
-"Remarque : "
+"suivront rapidement un de leurs pairs expérimenté au combat ; c'est très "
+"différent des humains, pour qui le commandement mélange souvent coercition "
+"et intimidation. Parmi les points forts des elfes, il y a leur disposition à "
+"accepter la sagesse de leurs chefs et leur tendance à choisir des meneurs "
+"méritants."
 
 #. unit: race=elf
 #: data/core/units/elves/Champion.cfg:4
@@ -1050,7 +1035,6 @@ msgstr "Champion elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Champion.cfg:20
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the rather docile reputation of their race. "
@@ -1058,12 +1042,11 @@ msgid ""
 "swordsmanship to which few can compare. Even archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
-"Les rares elfes qui se perfectionnent délibérément aux armes de guerre font "
-"quelque peu démentir la réputation de docilité de leur race. Le dévouement "
-"et le talent sont accompagnés d'une pureté de forme, et le résultat est une "
-"maîtrise de l'épée à laquelle peu peuvent se comparer. Même le tir à l'arc, "
-"considéré comme une aspiration secondaire, est exécuté avec une habileté que "
-"la plupart de l'humanité ne peut regarder qu'avec admiration."
+"Les rares elfes qui s'adonnent délibérément aux armes démentent quelque peu "
+"la réputation pacifique de leur race. Le dévouement et le talent "
+"accompagnent la pureté d'exécution, avec pour résultat une maîtrise de "
+"l'épée presque incomparable. Même le tir à l'arc, considéré comme "
+"secondaire, est effectué avec une habileté admirable."
 
 #. unit: race=elf
 #: data/core/units/elves/Druid.cfg:4
@@ -1072,7 +1055,6 @@ msgstr "Druidesse elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Druid.cfg:21
-#, fuzzy
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -1081,14 +1063,12 @@ msgid ""
 "Their chief ability lies in healing, and it is for this skill that the "
 "elvish druids are revered by their people."
 msgstr ""
-"La magie des druidesses elfes est peu adaptée au combat, mais est néanmoins "
-"efficace. D'un seul mot, elles sont capables d'animer les forêts dans "
-"lesquelles elles vivent et de frapper ceux qui menacent leur quiétude.\n"
+"La magie des druidesses elfes est peu adaptée au combat, mais elle est "
+"néanmoins efficace. D'un seul mot, elles sont capables d'animer les forêts "
+"dans lesquelles elles vivent et d'assaillir ainsi ceux qui menacent leur "
+"quiétude.\n"
 "\n"
-"La principale capacité des druidesses elfes est le soin, ce qui leur vaut "
-"d'être révérées par leur peuple.\n"
-"\n"
-"Remarque : "
+"Leur peuple les révère pour leur principale compétence : le soin."
 
 #. attack: type=impact
 #: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:28
@@ -1126,7 +1106,6 @@ msgstr "Enchanteresse elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Enchantress.cfg:19
-#, fuzzy
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "humans are almost universally incapable of understanding it, let alone using "
@@ -1134,13 +1113,11 @@ msgid ""
 "can be said that they are revered by their people, very little can be said "
 "about their actual function or purpose within that society."
 msgstr ""
-"La magie elfique est totalement différente de celle des hommes, et ceux-ci "
-"sont quasiment tous incapables de la comprendre et ne la pratiquent pas. "
-"D'ailleurs, les elfes qui en sont maîtres sont également énigmatiques ; même "
-"si on dit qu'ils sont vénérés par leur peuple, leur place et leur fonction "
-"réelles dans leur société restent méconnues.\n"
-"\n"
-"Remarque : "
+"La magie des elfes diffère totalement de celle des hommes et ces derniers "
+"sont quasiment tous incapables de la comprendre. Les elfes sont donc les "
+"seuls à la pratiquer et celles qui la maîtrisent demeurent également "
+"énigmatiques ; même si on prétend que leur peuple les vénère, leur place et "
+"leur fonction réelles dans ces sociétés restent méconnues."
 
 #. attack: type=impact
 #: data/core/units/elves/Enchantress.cfg:36
@@ -1188,9 +1165,9 @@ msgid ""
 "lack of practice."
 msgstr ""
 "Un elfe peut passer de combattant compétent à maître dans l'art du combat "
-"avec relativement peu d'expérience. Ceux qui sont honorés comme héros sont "
-"doués à la fois à l'épée et à l'arc, des compétences qui ne diminuent pas "
-"avec le manque de pratique."
+"avec relativement peu d'expérience. Ceux honorés comme des héros sont doués "
+"à la fois à l'épée et à l'arc ; et leurs compétences ne diminuent pas avec "
+"le manque de pratique."
 
 #. unit: race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -1205,6 +1182,10 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"Les meneurs elfes ne déclinent pas avec le grand âge. Au contraire, il "
+"atteignent là leur vrai potentiel. Silencieux et contemplatif durant les "
+"périodes de paix, un haut seigneur elfe au sommet de sa fureur est vraiment "
+"un spectacle terrifiant à contempler."
 
 #. unit: race=elf
 #: data/core/units/elves/Lady.cfg:5
@@ -1219,6 +1200,10 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Les elfes choisissent leurs chefs pour leur pouvoir et leur sagesse ; la "
+"prévoyance les a protégés durant les périodes troublées. Leur règne juste "
+"est récompensée par la loyauté sans faille de leur peuple, ce qui représente "
+"ce que peut espérer de mieux un dirigeant."
 
 #. unit: race=elf
 #: data/core/units/elves/Lord.cfg:4
@@ -1232,6 +1217,9 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Les elfes de la noblesse possèdent un mérite qui égale leur statut en "
+"société. Les seigneurs elfes sont les plus sages et les plus forts membres "
+"de leur peuple, et sont de redoutables magiciens."
 
 #. unit: race=elf
 #: data/core/units/elves/Marksman.cfg:4
@@ -1240,7 +1228,6 @@ msgstr "Tireur d'élite elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Marksman.cfg:22
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -1250,15 +1237,12 @@ msgid ""
 "Realizing this prodigious skill does come with one cost, that being a lack "
 "of practice with the sword."
 msgstr ""
-"Une des choses qui contribue à leur habileté à l'arc est la vue "
-"exceptionnelle des elfes. Un elfe entraîné au tir à l'arc peut atteindre des "
-"cibles qu'un homme ne pourrait même pas apercevoir, même la nuit, et peut "
-"décocher une seconde flèche aussitôt la première en vol.\n"
+"La vue exceptionnelle des elfes contribue à leur habileté à l'arc. Un elfe "
+"entraîné au tir à l'arc peut atteindre des cibles qu'un homme ne pourrait "
+"même pas apercevoir, même la nuit, et peut tirer une seconde flèche aussitôt "
+"la première décochée .\n"
 "\n"
-"Cette habileté prodigieuse a un coût, qui est le manque de pratique de "
-"l'épée.\n"
-"\n"
-"Remarque : "
+"Cette habileté prodigieuse a un coût : le manque de pratique de l'épée."
 
 #. attack: type=pierce
 #: data/core/units/elves/Marksman.cfg:62
@@ -1278,7 +1262,6 @@ msgstr "Maréchal elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Marshal.cfg:27
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for such things. "
@@ -1288,13 +1271,11 @@ msgid ""
 "master."
 msgstr ""
 "La longévité et l'intelligence naturelle des elfes en font des militaires "
-"redoutables et leur font surmonter leur aversion pour la guerre. Les elfes "
-"ont une mémoire beaucoup plus claire que l'espèce humaine et ont souvent une "
-"intuition de ce que les autres ne peuvent qu'être entraînés à faire. Dans "
-"les rares occasions où un elfe se consacre à la guerre, les stratégies qui "
-"en découlent sont le travail d'un maître.\n"
-"\n"
-"Remarque : "
+"redoutables et leur font surmonter leur aversion naturelle pour la guerre. "
+"Les elfes ont une mémoire beaucoup plus claire que l'espèce humaine et ont "
+"souvent une intuition de ce que les autres ne peuvent qu'être entraînés à "
+"faire. Dans les rares occasions où un elfe se consacre à la guerre, la "
+"stratégie qui en découle est le travail d'un maître."
 
 #. unit: race=elf
 #: data/core/units/elves/Outrider.cfg:4
@@ -1317,11 +1298,11 @@ msgstr ""
 "Les escorteurs elfes sont entraînés à être les courriers royaux des royaumes "
 "elfes. Malgré la nature pacifique de leur peuple, leur expérience les rend "
 "mortels au combat. Aucun homme n'a jamais approché leur habileté à "
-"l'utilisation d'un arc sur une monture - en fait, beaucoup auraient du mal à "
-"les égaler même au sol.\n"
+"l'utilisation d'un arc sur une monture ; en fait, beaucoup auraient du mal à "
+"les égaler, même au sol.\n"
 "\n"
 "La rapidité de ces soldats permet aux elfes de choisir où et quand ils "
-"veulent frapper quand ils combattent sur leur sol, ce qui a sauvé nombre "
+"veulent frapper quand ils combattent sur leurs terres, ce qui a sauvé nombre "
 "d'entre eux de la mort."
 
 #. unit: race=elf
@@ -1331,7 +1312,6 @@ msgstr "Rôdeur elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Ranger.cfg:20
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -1342,10 +1322,8 @@ msgstr ""
 "Un homme qui passerait des années dans la forêt n'aurait jamais le sentiment "
 "d'être invité dans ce lieu dont il n'a jamais vraiment fait partie. C'est le "
 "contraire pour les elfes. Tout elfe qui étudie les mystères de la forêt en "
-"devient maître et ceci forme un puissant outil de guerre si l'on y ajoute "
-"leur habileté à l'arc et à l'épée.\n"
-"\n"
-"Remarque : "
+"devient maître ; et ceci s'avère très utile en temps de guerre si l'on y "
+"ajoute leur habileté considérable à l'arc et à l'épée."
 
 #. female
 #: data/core/units/elves/Ranger.cfg:177
@@ -1359,7 +1337,6 @@ msgstr "Cavalier elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Rider.cfg:24
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal for any human. Awe of the rider is quite justified - "
@@ -1393,18 +1370,17 @@ msgid ""
 msgstr ""
 "Les cavaliers elfes des bois sont compétents à l'arc et à l'épée, mais leur "
 "vrai atout est l'équitation. Même les autres elfes sont surpris par leur "
-"vitesse incroyable dans la forêt sans aucun bruissement. Ils sont peut-être "
-"une des seules cavaleries existantes qui soit plus à l'aise dans les bois "
-"qu'en terrain ouvert."
+"vitesse incroyable dans la forêt sans aucun bruissement. Ils forment peut-"
+"être l'une des seules cavaleries existantes qui soit plus à l'aise dans les "
+"bois qu'en terrain ouvert."
 
 #. unit: race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr "Chaman elfe"
+msgstr "Chamane elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Shaman.cfg:23
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -1418,13 +1394,11 @@ msgstr ""
 "D'une nature en partie féerique, les elfes ont des pouvoirs magiques. Ils "
 "s'appuient sur leur affinité avec le monde naturel, qu'ils peuvent invoquer "
 "comme un allié au combat. Les ennemis égarés dans leurs forêts peuvent se "
-"retrouver enchevêtrés dans les racines sur lesquelles ils se tiennent, les "
-"rendant beaucoup moins dangereux.\n"
+"retrouver enchevêtrés dans les racines et immobilisé sur le sol sur lequel "
+"ils se tiennent.\n"
 "\n"
 "Les capacités de soin des elfes sont aussi remarquables et d'une utilité "
-"capitale dans la bataille.\n"
-"\n"
-"Remarque : "
+"capitale dans les batailles."
 
 #. unit: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
@@ -1433,7 +1407,6 @@ msgstr "Franc-tireur elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
-#, fuzzy
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
 "air with one of his own. It is a testament to the skill of the elves that "
@@ -1443,9 +1416,7 @@ msgstr ""
 "Une histoire raconte qu'un elfe a arrêté une flèche en la touchant en l'air "
 "avec l'une des siennes. Qu'une telle histoire puisse être prise au sérieux "
 "prouve l'habileté des elfes. Les franc-tireurs elfes ont, simplement, "
-"maîtrisé l'art du tir à l'arc.\n"
-"\n"
-"Remarque : "
+"maîtrisé l'art du tir à l'arc."
 
 #. female
 #: data/core/units/elves/Sharpshooter.cfg:157
@@ -1459,19 +1430,16 @@ msgstr "Nymphe elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Shyde.cfg:21
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
 "these beautiful stewards of the elven forests epitomize the grace and "
 "mystery of their people."
 msgstr ""
-"L'attachement au côté féerique finira par transformer une demoiselle elfe en "
-"une créature des deux mondes. Guidées par une nature dont on ne sait peu, "
-"ces belles gardiennes des forêts elfes incarnent la grâce et le mystère de "
-"leur peuple.\n"
-"\n"
-"Remarque : "
+"La dévotion à son côté féerique finira par transformer une demoiselle elfe "
+"en créature des deux mondes. Guidées par une nature presque inconnue, ces "
+"belles gardiennes des forêts elfes incarnent la grâce et le mystère de leur "
+"peuple."
 
 #. attack: type=impact
 #: data/core/units/elves/Shyde.cfg:28 data/core/units/elves/Sylph.cfg:27
@@ -1485,7 +1453,6 @@ msgstr "Sorcière elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Sorceress.cfg:21
-#, fuzzy
 msgid ""
 "The world of faerie is far more potent than the corporeal world. Simply "
 "bringing some of this world into our own can have violent results. This is "
@@ -1501,10 +1468,9 @@ msgstr ""
 "ce n'est d'ailleurs pas une tâche si facile, et c'est une manière très mal "
 "considérée d'utiliser leur force.\n"
 "\n"
-"Celles qui en sont capables sont cavalièrement appelées « Sorcières » par les "
-"autres races. Et elles sont très certainement capables d'agir de la sorte.\n"
-"\n"
-"Remarque :"
+"Celles qui en sont capables sont cavalièrement appelées « Sorcières » par "
+"les autres races. Et elles sont très certainement capables d'agir de la "
+"sorte."
 
 #. unit: race=elf
 #: data/core/units/elves/Sylph.cfg:4
@@ -1513,7 +1479,6 @@ msgstr "Sylphide elfe"
 
 #. unit: race=elf
 #: data/core/units/elves/Sylph.cfg:20
-#, fuzzy
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
 "mundane natures. They are possessed of wondrous, and sometimes terrifying "
@@ -1522,10 +1487,8 @@ msgid ""
 msgstr ""
 "Les mystérieuses et sages sylphides maîtrisent parfaitement leur nature à la "
 "fois féerique et terrestre. Elles possèdent des pouvoirs merveilleux et "
-"quelquefois terrifiants, et les légendes qui les entourent ont donné aux "
-"autres races une peur salutaire des elfes.\n"
-"\n"
-"Remarque : "
+"quelquefois terrifiants. Les légendes qui les entourent ont donné aux autres "
+"races une peur salutaire des elfes."
 
 #. attack: type=impact
 #: data/core/units/elves/Sylph.cfg:40
@@ -1539,7 +1502,6 @@ msgstr "Monteur de loup noir"
 
 #. unit: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1552,19 +1514,17 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke."
 msgstr ""
-"Les « loups noirs » ne se distinguent de la variété commune que par la taille "
-"et la couleur. Ils ont une taille au garrot généralement supérieure à celle "
-"d'un cheval et un appétit d'autant plus grand. Seul un fou voudrait en "
-"rencontrer ; les gobelins ont réussi à les dompter, si l'on peut dire, après "
-"en avoir payé le prix.\n"
+"Les « loups noirs » ne se distinguent de la variété commune que par la "
+"taille et la couleur. Leur garrot est généralement supérieur à celui d'un "
+"cheval et leur appétit d'autant plus grand. Seul un fou voudrait en "
+"rencontrer ; les gobelins ont réussi à les dompter et à les monter, après en "
+"avoir payé le prix.\n"
 "\n"
 "Les griffes d'un loup ne sont généralement pas considérées comme trop "
-"dangereuses, mais elles sont plus grosses et plus longues que des clous sur "
-"un animal de cette taille. Leurs cavaliers les enduisent d'un poison "
+"dangereuses mais celles de cet animal géant sont plus grosses et plus "
+"longues que des clous d'acier. Leurs cavaliers les enduisent d'un poison "
 "semblable à celui utilisé par les orcs assassins, rendant plus mortel encore "
-"un coup de patte de ces bêtes.\n"
-"\n"
-"Remarque : "
+"un coup de patte de ces bêtes."
 
 #. unit: race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
@@ -1573,19 +1533,16 @@ msgstr "Empaleur gobelin"
 
 #. unit: race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
 "line. Those who manage to survive their first few battles equip themselves "
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminuitive frames."
 msgstr ""
-"Les gobelins sont sacrifiés sur les lignes de front par les orcs. Ceux qui "
-"parviennent néanmoins à survivre s'équipent pour continuer leur besogne. Une "
-"lance beaucoup plus longue les aide à compenser leur faible portée et une "
-"meilleure armure les aide à défendre leur corps minuscule.\n"
-"\n"
-"Remarque : "
+"Les orcs utilisent les gobelins comme tirailleurs pour briser les lignes "
+"ennemies. Ceux qui parviennent à survivre à leurs premières batailles "
+"s'équipent d'une longue lance qui compense leur faible allonge et d'une "
+"meilleure armure qui protège leur corps minuscule."
 
 #. unit: race=goblin
 #: data/core/units/goblins/Knight.cfg:4
@@ -1603,11 +1560,10 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"Les « chevaliers » gobelins ont peu à voir avec les hommes qui possèdent ce "
-"titre et le titre n'est utilisé que pour parler de leurs ennemis. La "
-"similitude est simplement qu'ils forment l'élite des monteurs de loups, "
-"probablement promus à leur situation par une victoire lors d'un raid "
-"téméraire.\n"
+"Les « chevaliers » gobelins ont peu de rapport avec les hommes qui possèdent "
+"ce titre ; leurs ennemis utilisent d'ailleurs ce nom pour se moquer d'eux. "
+"La similitude est simplement qu'ils forment l'élite des monteurs de loups, "
+"probablement promus à ce rang par une victoire lors d'un raid téméraire.\n"
 "\n"
 "Les loups qu'ils possèdent sont élevés pour leur vitesse et leur force, ce "
 "qui les rend dangereux au combat."
@@ -1619,7 +1575,6 @@ msgstr "Pillard gobelin"
 
 #. unit: race=goblin
 #: data/core/units/goblins/Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -1627,11 +1582,10 @@ msgid ""
 "rally for defense or reprisal."
 msgstr ""
 "Certains gobelins entraînent leurs loups à surmonter leur peur du feu. Dans "
-"les raids, ces gobelins ont un rôle de soutien ; ils brûlent les demeures et "
-"les récoltes de leurs ennemis et portent des filets pour empêtrer ceux qui "
-"tentent de former une défense ou d'exercer des représailles.\n"
-"\n"
-"Remarque : "
+"les raids, ces gobelins exercent un rôle de soutien ; ils brûlent les "
+"demeures et les récoltes de leurs ennemis, et portent des filets pour "
+"empêtrer ceux qui tentent de former une défense ou d'exercer des "
+"représailles."
 
 #. attack: type=fire
 #: data/core/units/goblins/Pillager.cfg:34
@@ -1653,7 +1607,6 @@ msgstr "Meneur gobelin"
 
 #. unit: race=goblin
 #: data/core/units/goblins/Rouser.cfg:26
-#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1661,14 +1614,12 @@ msgid ""
 "Nonetheless, a rouser's frenzied goading effectively steels the younger at "
 "arms to fight harder and longer before they die."
 msgstr ""
-"Les porte-étendard sont une curiosité parmi les gobelins. Un gobelin ayant "
-"survécu à suffisamment de batailles pour être considéré comme un vétéran est "
-"une chose rare et il est encore plus rare que les autres gobelins le "
-"reconnaissent et le respectent dans son statut de vétéran. Néanmoins "
-"l'agitation frénétique des chefs gobelins pousse les plus jeunes à combattre "
-"plus longtemps et avec plus d'ardeur avant leur mort.\n"
-"\n"
-"Remarque : "
+"Les porte-étendard sont une curiosité parmi les gobelins. Il est rare que "
+"l'un d'eux survive à suffisamment de batailles pour être considéré comme un "
+"vétéran, mais il est encore plus rare que les autres l'acceptent et "
+"respectent son statut. Néanmoins l'agitation frénétique des meneurs gobelins "
+"pousse les plus jeunes à combattre plus longtemps et avec plus d'ardeur "
+"avant de périr."
 
 #. unit: race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
@@ -1689,10 +1640,10 @@ msgid ""
 "to state anything conclusive."
 msgstr ""
 "Dans toute portée d'orcs, certains naissent plus petits et plus faibles que "
-"les autres. Ces avortons sont appelés « gobelins » et sont méprisés par leurs "
-"semblables. Dans la bataille, ils reçoivent l'équipement le plus mauvais et "
-"servent de bouclier pour donner aux seigneurs de guerre le temps de se "
-"préparer au vrai assaut.\n"
+"les autres. Ces avortons sont appelés « gobelins » et sont méprisés par "
+"leurs semblables. Dans la bataille, ils reçoivent l'équipement le plus "
+"mauvais et servent de bouclier pour donner aux seigneurs de guerre le temps "
+"de se préparer au vrai assaut.\n"
 "\n"
 "Certains pensent que l'existence de ces créatures annonce le début de la fin "
 "de la lignée des orcs, mais personne n'en sait assez sur leur histoire pour "
@@ -1705,7 +1656,6 @@ msgstr "Monteur de loup"
 
 #. unit: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:36
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -1719,16 +1669,17 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
-"Personne n'est sûr de l'origine du dressage et de la monte des loups. Les "
-"gobelins sont plus petits et beaucoup plus légers que les orcs. Ceux qui "
-"réussissent à dresser eux-mêmes une monture ont un rôle plus sûr et, "
-"pourrait-on dire, plus amusant en combat.\n"
+"Personne ne connaît l'origine du dressage et de la monte des loups, mais les "
+"avantages qu'en tirent les gobelins sont évidents. Ceux-ci, plus petits et "
+"beaucoup plus chétifs que leurs frères orcs, doivent souvent participer aux "
+"moments les plus dangereux et les plus ingrats des affrontements ; ceux qui "
+"réussissent à dresser une monture ont un rôle plus sûr et, pourrait-on dire, "
+"plus amusant pendant les combats.\n"
 "\n"
-"Les loups ne pourront probablement jamais supporter le poids d'un homme en "
-"armure complète, mais un gobelin en armure de cuir est une simple charge à "
-"porter. Sensiblement différentes des chevaux, ces montures ont peu de "
-"difficultés à traverser les montagnes, mais l'eau et les forêts les "
-"ralentissent tout de même."
+"Les loups ne pourraient probablement jamais supporter le poids d'un homme en "
+"armure complète, mais un gobelin en armure de cuir est une charge facile à "
+"porter. Contrairement aux chevaux, ces montures traversent facilement les "
+"montagnes, mais l'eau et les forêts les ralentissent tout de même."
 
 #. unit: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -1742,9 +1693,9 @@ msgid ""
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
-"Ces majestueuses et puissantes créatures sont les maîtres du ciel. Les "
-"griffons sont à la fois dangereux et prudents face aux autres créatures "
-"intelligentes, elles ne doivent pas être dérangées sans une bonne raison."
+"Ces majestueuses et puissantes créatures dominent le ciel. Les griffons sont "
+"à la fois dangereux et belliqueux face aux autres créatures intelligentes, "
+"elles ne doivent donc pas être dérangées sans bonne raison."
 
 #. unit: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
@@ -1775,7 +1726,7 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
-"Seuls quelques élus peuvent tisser un lien d'amitié avec les puissants "
+"Seuls quelques élus savent tisser un lien d'amitié avec les puissants "
 "griffons. Ceux qui réussissent deviennent des monteurs de griffons et "
 "découvrent le monde des cieux sur le dos de ces créatures volantes."
 
@@ -1793,12 +1744,12 @@ msgid ""
 "head of a charge is a terrifying sight for infantry, and is often enough to "
 "break right through a defensive line."
 msgstr ""
-"Les grands chevaliers ont atteint le summum de leur habileté à la lance et à "
+"Les grands chevaliers ont atteint le summum de l'habileté à la lance et à "
 "l'épée. Entièrement revêtus d'une cuirasse et chevauchant des montures "
-"sélectionnées pour leur puissance plus que pour leur vitesse, ces guerriers "
-"forment le noyau dur de toute force de cavalerie sérieuse. Un grand "
-"chevalier à la tête d'une charge est quelque chose de terrifiant pour "
-"l'infanterie et suffit souvent à briser les lignes défensives ennemies."
+"sélectionnées pour leur puissance plus que pour leur vitesse, ces "
+"combattants constituent le noyau dur de toute cavalerie digne de ce nom. Un "
+"grand chevalier conduisant une charge terrifie l'infanterie et suffit "
+"souvent à briser les lignes défensives ennemies."
 
 #. attack: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
@@ -1847,13 +1798,13 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
-"Les lanciers sont parmi les cavaliers les plus braves et les plus craints de "
-"tout Wesnoth. Couverts d'une armure minimale, ils sont libres de galoper "
-"plus rapidement que leurs semblables. Les tactiques audacieuses qu'ils "
-"emploient sont à double tranchant, leur apportant la gloire ou une mort "
-"rapide. Les lanciers excellent à la poursuite des fantassins qui ont fait "
-"l'erreur de rompre leur formation et à la percée des lignes de défense. "
-"Cependant, ils sont d'une utilité moindre en défense."
+"Les lanciers sont parmi les cavaliers les plus braves et les plus redoutés "
+"de tout Wesnoth. Couverts d'une armure minimale, ils sont libres de galoper "
+"plus rapidement que leurs semblables. Leurs tactiques audacieuses sont à "
+"double tranchant, leur apportant la gloire ou une mort rapide. Les lanciers "
+"excellent pour poursuivre des fantassins qui ont fait l'erreur de rompre "
+"leur formation et pour percer des lignes de défense. Cependant, leur utilité "
+"est moindre en défense."
 
 #. unit: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
@@ -1880,6 +1831,22 @@ msgid ""
 "curious abilities; a paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
+"Chevalier de très grandes vertus, les paladins ont consacré leur force non "
+"au roi et à la couronne, mais à leur idéaux personnels de chevalerie et de "
+"quête du bien. Ils servent parfois dans des armées, mais leur loyauté "
+"première va souvent vers des ordres monastiques secrets qui outrepassent les "
+"frontières politiques et culturelles. Parfois, des dirigeants les "
+"persécutent car la loyauté et la valeur des paladins restent inébranlables ; "
+"les ambitieux les plus sinistres ont tenté de honnir et de disperser ces "
+"groupes ou, parfois, de fomenter des complots compliqués pour s'assurer les "
+"services de ces troupes sinon fidèles à leurs devoirs.\n"
+"\n"
+"Les paladins sont moins redoutables que les « grands chevaliers » qui "
+"dominent beaucoup d'armées, mais ce sont néanmoins des combattants de "
+"premier ordre. Par ailleurs, leur piété et leur sagesse confèrent à ces "
+"prêtres-combattants des compétences curieuses : ils s'avèrent très efficaces "
+"contre les choses surnaturelles ou magiques, et possèdent quelques "
+"connaissances en médecine et en soin."
 
 #. unit: race=human
 #: data/core/units/humans/Horseman.cfg:4
@@ -1898,13 +1865,12 @@ msgid ""
 "provide inviting targets."
 msgstr ""
 "Souvent originaires des régions plus sauvages de Wesnoth, les cavaliers sont "
-"entraînés dès leur enfance à monter à cheval et à suivre un code d'honneur "
-"strict. Une charge de cavaliers est une tactique puissante mais imprudente, "
-"dont la valeur a été prouvée à de nombreuses reprises sur le champ de "
-"bataille. Les cavaliers sont excellents face aux fantassins, "
-"particulièrement ceux qui se retrouvent isolés, mais doivent faire attention "
-"aux porte-lances et aux archers, pour qui ils représentent des cibles "
-"faciles du fait de leur grande taille et de leurs manœuvres."
+"entraînés dès l'enfance à monter à cheval et à obéir à un strict code "
+"d'honneur. Une charge de cavaliers est une tactique puissante mais risquée ; "
+"sa valeur a été prouvée à de nombreuses reprises sur le champ de bataille. "
+"Les cavaliers sont excellents face aux fantassins, particulièrement ceux "
+"isolés, mais ils doivent faire attention aux porte-lances et aux archers, "
+"pour qui ils représentent des cibles faciles à cause de leur grande taille."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
@@ -1920,12 +1886,11 @@ msgid ""
 "woodsmen, bowmen are competent with both a bow and a short sword, and are "
 "very common on the battlefield."
 msgstr ""
-"D'autres utilisations du tir à l'arc que pour la chasse du gibier ont été "
-"imaginées dès l'origine et les archers ont été indispensables à la guerre "
-"depuis des temps immémoriaux. Généralement d'une origine modeste, issus de "
-"familles de paysans ou de forestiers, les archers sont raisonnablement "
-"habiles à l'arc et à l'épée courte et sont très répandus dans les champs de "
-"bataille."
+"L'arc a servi à autre chose que la chasse dès son invention, et les archers "
+"ont été indispensables pour guerroyer depuis des temps immémoriaux. "
+"Généralement d'une origine modeste, issus de familles de paysans ou de "
+"forestiers, les archers sont habiles à l'arc et à l'épée courte et se "
+"retrouvent fréquemment sur les champs de bataille."
 
 #. attack: type=blade
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
@@ -1948,8 +1913,8 @@ msgid ""
 msgstr ""
 "Précurseurs d'un triomphe sur le champ de bataille, les cuirassiers savent "
 "parfaitement utiliser l'épée et l'arbalète à cheval. Leur mobilité les rend "
-"redoutables et leur courage est l'objet de nombreux récits et de nombreux "
-"chants."
+"redoutables, et leur puissance et leur courage font l'objet d'une multitude "
+"de légendes et de chants."
 
 #. attack: type=pierce
 #. attack: type=fire
@@ -1985,15 +1950,15 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scoutwork."
 msgstr ""
-"Les hussards se distinguent des cavaliers par l'équipement et la stratégie. "
-"Un hussard possède une armure plus lourde et porte une épée et un bouclier "
-"plutôt qu'une lance ; ils ne chargent pas, mais se ruent contre les ennemis "
-"pour les mettre en pièce à l'épée. La monture et le cavalier sont ainsi "
+"Les hussards se distinguent des cavaliers par leur équipement et leurs "
+"tactiques. Un hussard possède une armure plus lourde, et porte une épée et "
+"un bouclier plutôt qu'une lance ; ils ne chargent pas mais se ruent contre "
+"les ennemis pour les mettre en pièce. La monture et le cavalier sont ainsi "
 "utilisés efficacement au corps à corps.\n"
 "\n"
 "Les hussards sont très utiles pour prendre ou tenir des positions en terrain "
-"découvert, pour protéger des soldats alliés et pour la reconnaissance des "
-"zones inexplorées."
+"découvert, pour protéger des soldats alliés, et pour explorer des zones "
+"inconnues."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
@@ -2022,7 +1987,6 @@ msgstr "Duelliste"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -2037,19 +2001,19 @@ msgid ""
 "veterans typically do so by making such concessions to utility and survival."
 msgstr ""
 "Les nobles de Wesnoth ont pour étrange habitude d'envoyer leurs fils dans "
-"des ordres de spadassins ou de cavaliers dans l'espoir de les voir se "
-"couvrir de gloire. Les duellistes considèrent que la moindre insulte est une "
-"excuse valable pour démontrer brutalement leur noble naissance.\n"
+"des ordres de spadassins ou de cavaliers pour qu'ils apprennent les arts de "
+"la chevalerie ou de l'escrime. Leur nom de duelliste provient d'une triste "
+"habitude de ces jeunes aristocrates qui considèrent que la moindre insulte, "
+"réelle ou fantasmée, sert d'excuse valable pour prouver brutalement leur bon "
+"droit.\n"
 "\n"
-"Les bretteurs les plus expérimentés qui ont les manières de la noblesse, et "
-"qui en font d'ailleurs souvent partie, portent généralement une petite "
-"arbalète cachée sous leur cape. Celle-ci est lente à charger et son "
-"utilisation est généralement considérée comme déshonorante, mais elle "
-"s'avère très utile et ceux qui survivent suffisamment longtemps pour ne plus "
-"être des novices sont généralement ceux qui préfèrent augmenter leurs "
-"chances de survie aux dépens de l'honneur.\n"
-"\n"
-"Remarque : "
+"Les bretteurs expérimentés, qui ont les manières de la noblesse même s'ils "
+"n'en font pas toujours partie, portent généralement une petite arbalète "
+"cachée sous leur manteau ou sous leur cape. Cette arme, lente à charger et "
+"d'utilisation généralement considérée comme déshonorante, s'avère très "
+"utile ; ceux qui survivent suffisamment longtemps pour dépasser le stade de "
+"novice sont généralement les mêmes qui ont préféré privilégier l'efficacité "
+"à l'honneur."
 
 #. attack: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
@@ -2065,7 +2029,6 @@ msgstr "Bretteur"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2078,18 +2041,16 @@ msgid ""
 "disadvantage. They take relish in dancing circles around troops like heavy "
 "infantry, mocking the weight of their full armor."
 msgstr ""
-"Les bretteurs font partie d'une école qui considère comme leur pire ennemie "
-"l'armure portée par la plupart des soldats. Une armure ne fait qu'atténuer "
-"un choc, une esquive évite tout préjudice. Savoir esquiver un geste offensif "
-"est un luxe qui n'est accordé qu'à des corps souples qui endurent un "
-"entraînement rigoureux.\n"
+"Les bretteurs appartiennent à une école de pensée qui considère l'armure "
+"portée par la plupart des soldats comme leur pire ennemie : une cuirasse ne "
+"fait qu'atténuer un choc, une esquive empêche tout préjudice. Savoir "
+"gracieusement éviter un geste offensif est un luxe accordé uniquement à des "
+"corps souples endurcis par un entraînement rigoureux.\n"
 "\n"
-"Équipés d'une dague et d'un sabre, les bretteurs sont agiles et utiles dans "
-"de nombreuses situations où une armure serait une gêne. Ils aiment danser en "
-"cercle autour des troupes d'infanterie lourde, pour se moquer du prix payé "
-"pour ce blindage.\n"
-"\n"
-"Remarque : "
+"Équipés seulement d'une dague et d'un sabre, les bretteurs sont agiles et "
+"utiles dans de nombreuses situations où une armure serait une gêne. Ils "
+"aiment danser en cercle autour des ennemis, comme par exemple les troupes "
+"d'infanterie lourde, pour se moquer du poids de leur blindage."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
@@ -2098,16 +2059,13 @@ msgstr "Général"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_General.cfg:29
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
 msgstr ""
 "En tant que chefs des armées humaines, les généraux sont responsables de la "
-"protection de vastes et importantes parties des royaumes auxquels ils ont "
-"prêté serment d'allégeance.\n"
-"\n"
-"Remarque : "
+"protection de vastes ou d'importantes parties des royaumes auxquels ils ont "
+"prêté serment d'allégeance."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -2116,7 +2074,6 @@ msgstr "Maréchal"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have survived many trials by fire, "
@@ -2125,10 +2082,8 @@ msgid ""
 msgstr ""
 "Le grade de maréchal est l'un des plus estimés dans les armées humaines et "
 "ceux qui portent ce titre ont surpassé bien des fois l'épreuve du feu, "
-"prouvant leurs considérables capacités aussi bien au combat qu'au "
-"commandement tactique.\n"
-"\n"
-"Remarque : "
+"prouvant leurs formidables capacités aussi bien de combattant que de "
+"commandant."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
@@ -2137,7 +2092,6 @@ msgstr "Hallebardier"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -2161,13 +2115,11 @@ msgstr ""
 "Tout cela en fait une arme polyvalente dans les mêlées, particulièrement "
 "contre la cavalerie.\n"
 "\n"
-"Cependant, une hallebarde est considérablement plus chère à fabriquer et est "
-"beaucoup moins efficace dans les mains d'un novice. Dans les armées de "
-"Wesnoth, c'est une tradition de n'accorder ces armes qu'aux piquiers "
-"vétérans, qui ont prouvé qu'ils étaient capables d'utiliser correctement une "
-"telle arme dans un champ de bataille.\n"
-"\n"
-"Remarque : "
+"Cependant, une hallebarde est considérablement plus chère à fabriquer qu'une "
+"lance, et est beaucoup moins efficace dans les mains d'un novice. Dans les "
+"armées de Wesnoth, c'est une tradition de n'accorder ces armes qu'aux "
+"piquiers vétérans, qui ont prouvé qu'ils étaient capables d'utiliser "
+"correctement une telle arme dans un champ de bataille."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -2216,7 +2168,7 @@ msgid ""
 "comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
 "Les cogneurs de fer portent ce nom pour des raisons évidentes. Les hommes "
-"dans ces armures peuvent rivaliser avec la force des ogres, et sont les "
+"dans ces armures peuvent rivaliser avec la force des ogres et sont les "
 "champions des fiefs qu'ils servent. Ils sont toutefois onéreux à entretenir "
 "et ne peuvent être envoyés vers des batailles éloignées sans un plein convoi "
 "de serviteurs pour les soutenir.\n"
@@ -2224,7 +2176,7 @@ msgstr ""
 "Bien que stupéfiants au combat au corps à corps, il y a de nombreux "
 "inconvénients à être équipés comme ils le sont ; les cogneurs de fer se "
 "fatiguent vite et savent très bien qu'ils ne peuvent courir sur le champ de "
-"bataille. Trop souvent ont-ils vu impuissants un camarade tomber au loin, "
+"bataille. Trop souvent ont-ils vu, impuissants, un camarade tomber au loin, "
 "sans pouvoir le rejoindre pour le secourir."
 
 #. unit: race=human
@@ -2234,7 +2186,6 @@ msgstr "Javeliniste"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -2245,14 +2196,12 @@ msgid ""
 "melee."
 msgstr ""
 "Les porte-lances s'équipent presque toujours de quelques javelots pour "
-"tourmenter ou même tuer leurs ennemis à distance. Certains les apprécient "
-"assez et se découvrent un talent naturel à leur utilisation. Les "
-"javelinistes constituent un atout appréciable pour s'occuper des ennemis à "
-"distance. Ils peuvent lancer leurs javelots dans les rangs ennemis à une "
-"grande distance, souvent sans riposte de leur part, et bien se défendre au "
-"corps à corps.\n"
-"\n"
-"Remarque : "
+"harceler ou même tuer leurs ennemis. Certains les apprécient assez et se "
+"découvrent un talent naturel pour les utiliser. Les javelinistes capables de "
+"combiner des compétences au corps à corps et à distance constituent un atout "
+"appréciable pour une armée. Ils peuvent lancer leurs javelots dans les rangs "
+"ennemis à une grande portée, souvent sans riposte, et bien se défendre en "
+"mêlée."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
@@ -2261,15 +2210,12 @@ msgstr "Lieutenant"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:24
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
 msgstr ""
 "Habiles à l'épée et à l'arbalète, les lieutenants commandent de petits "
-"groupes de soldats humains et coordonnent leurs attaques.\n"
-"\n"
-"Remarque : "
+"groupes de soldats humains et coordonnent leurs attaques."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
@@ -2285,12 +2231,12 @@ msgid ""
 "carry their weapons as a badge of pride, and most bowmen look forward to the "
 "day they can begin using one."
 msgstr ""
-"Les grands arcs sont interdits aux archers débutants simplement à cause des "
-"lois physiques. Il faut une grande force pour en bander un, et la portée et "
-"la puissance augmentée n'est d'aucune utilité sans une bonne visée. C'est un "
-"don qui manque assurément aux débutants. Les grands archers portent leur "
-"armement comme une marque de leur fierté et la plupart des archers attendent "
-"avec impatience le jour où ils pourront en utiliser un."
+"Les grands arcs sont des armes très dangereuses mais trop techniques pour "
+"des archers débutants. Il faut une grande force pour en bander un, et "
+"l'augmentation de portée et de puissance ne sert à rien si la précision fait "
+"défaut. Les grands archers portent fièrement leur armement et la plupart des "
+"archers attendent avec impatience le jour où ils pourront utiliser cet "
+"instrument."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
@@ -2311,11 +2257,10 @@ msgid ""
 msgstr ""
 "Les maîtres archers ont atteint le sommet de leur art. Armés d'une épée et "
 "d'un grand arc en if, ces guerriers honorent les bataillons d'archers de "
-"leur présence, mettant à bas de nombreux ennemis de leurs tirs précis. Leur "
-"habileté à l'épée ne doit pas être oubliée ; ils sont au moins aussi bons "
-"qu'un spadassin novice. Des nombreuses races du monde, seuls les elfes "
-"surpassent l'humanité au tir à l'arc et leurs homologues humains affirment, "
-"peut-être par jalousie, que ce n'est que grâce à leur âge."
+"leur présence, abattant de nombreux ennemis avec leurs tirs précis. Leur "
+"habileté à l'épée ne doit pas être oubliée ; ils sont au moins aussi doués "
+"qu'un spadassin. Seuls les elfes surpassent ces hommes qui affirment, peut-"
+"être par jalousie, que ce n'est que grâce à leur âge."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
@@ -2324,7 +2269,6 @@ msgstr "Maître d'armes"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
 "station was a dangerous way of life, they have reached the time wherein they "
@@ -2338,19 +2282,17 @@ msgid ""
 "positions in which their flamboyant nature is not only accepted, but is "
 "perhaps even useful."
 msgstr ""
-"Les maîtres d'armes sont généralement très enviés. Bien qu'ils vivent une "
-"vie particulièrement dangereuse, ils ont atteint l'âge où ils récoltent les "
-"fruits de leur labeur. Connus pour leur talent et leurs manières brutales, "
-"ces messieurs ont les manières des vrais aristocrates et sont remarqués par "
-"bien des jeunes filles de haute naissance.\n"
+"Les maîtres d'armes ont une place enviée dans la vie. Malgré leur passé "
+"particulièrement dangereux, ils ont atteint l'âge où ils récoltent les "
+"fruits de leurs efforts. Réputés pour leurs compétences et leurs manières "
+"fougueuses, ces gentilshommes possèdent l'étiquette des vrais aristocrates "
+"et sont courtisés par bien des dames de haute naissance.\n"
 "\n"
 "Ils s'offrent habituellement le luxe de choisir leurs contrats et sont "
-"libres de battre la campagne si l'envie leur prenait. Plus souvent, ils "
+"libres de battre la campagne s'ils le veulent. Plus fréquemment, ils "
 "choisiront de devenir capitaines des gardes d'un château ou d'enseigner dans "
-"une académie militaire, des postes où leur nature flamboyante est non "
-"seulement bien acceptée, mais peut-être même utile.\n"
-"\n"
-"Remarque : "
+"une académie militaire ; leur nature flamboyante est non seulement bien "
+"acceptée à ces postes, mais peut même s'avérer utile."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
@@ -2359,7 +2301,6 @@ msgstr "Piquier"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -2369,14 +2310,12 @@ msgid ""
 "tactics, pikemen can also hold most other infantry at bay."
 msgstr ""
 "Les porte-lances prometteurs dans les armées de Wesnoth sont souvent promus "
-"comme piquiers et sont équipés de quelque chose de bien supérieur à leurs "
-"armures de cuir rapiécées de conscrits. Une pique est une arme plus longue "
-"qu'une lance, ce qui facilite différentes tactiques de combats. Un mur de "
-"piquiers est le fléau de n'importe quelle charge de cavalerie et, avec une "
-"discipline et une tactique appropriées, ils peuvent également tenir le gros "
-"de l'infanterie aux abois.\n"
-"\n"
-"Remarque : "
+"comme piquiers et sont équipés d'éléments bien supérieurs à leurs armures "
+"rapiécées de cuir de conscrits. Une pique est une arme plus longue qu'une "
+"lance et ainsi facilite différentes tactiques de combats. Des piquiers "
+"formant un mur sont le fléau de n'importe quelle charge de cavalerie ; et "
+"une discipline et des tactiques appropriées leur permettent également tenir "
+"le gros de l'infanterie aux abois."
 
 #. attack: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:53
@@ -2401,13 +2340,13 @@ msgid ""
 "they are well-renowned."
 msgstr ""
 "Les gardes royaux sont choisis parmi les meilleurs spadassins de Wesnoth. "
-"Servant pour n'importe quelle haute noblesse, ils servent comme gardes du "
-"corps et partiellement comme insignes de bureau pour leurs employeurs. Une "
-"force spéciale de gardes royaux est stationnée à la capitale, gardant le "
-"palace et la famille royale. À cause de la relation de confiance avec leur "
-"supérieur, ils sont envoyés, plutôt comme mercenaires, sur des missions "
-"d'une importance cruciale. Leur fiabilité et maîtrise du combat rapproché "
-"sont leurs meilleurs atouts, pour lesquels ils sont fort réputés."
+"Serviteurs de toute la haute noblesse, ils assument les fonctions de gardes "
+"du corps et même de représentants de leurs employeurs. Une unité spéciale de "
+"gardes royaux stationne dans la capitale, protégeant le palais et la famille "
+"royale. Leurs supérieurs leur accordent une extrême confiance et les "
+"préfèrent aux mercenaires pour les missions d'importance cruciale. Leur "
+"fiabilité et leur maîtrise du combat rapproché sont leurs meilleurs atouts "
+"et contribuent à leur excellente réputation."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -2432,7 +2371,6 @@ msgstr "Soldat de choc"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -2443,15 +2381,15 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
-"Les troupes de chocs sont de l'infanterie lourde d'élite, utilisée en partie "
-"pour intimider durant une guerre. Les seules personnes qui peuvent entrer "
-"dans leur rang sont prodigieusement bien bâties et ont un aspect redoutable "
-"lorsqu'elles sont entièrement revêtues d'une armure de plaques noires. La "
-"vision de troupes de chocs fracassant l'ennemi avec leurs étoiles du matin "
-"est souvent suffisante pour briser le moral de n'importe quel opposant, qui "
-"se demande parfois si une telle armure ne recouvre pas des monstres plutôt "
-"que des hommes. L'inconvénient d'une armure si lourde est bien sûr le temps "
-"que cela prend de rentrer et de sortir d'un combat."
+"Les troupes de chocs sont de l'infanterie lourde d'élite utilisée surtout "
+"pour intimider. Les seules personnes qui peuvent entrer dans leur rang sont "
+"prodigieusement bien bâties et ont un aspect redoutable lorsqu'elles sont "
+"entièrement revêtues d'une armure de plaques noires ornées de piquants. La "
+"vision de troupes de chocs fracassant l'ennemi est souvent suffisante pour "
+"briser le moral de n'importe quel opposant, qui se demande parfois si une "
+"telle cuirasse ne recouvre pas des monstres plutôt que des hommes. "
+"L'inconvénient d'une protection si lourde est bien sûr le temps que cela "
+"prend de rentrer et de sortir d'un combat."
 
 #. attack: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:98
@@ -2466,7 +2404,6 @@ msgstr "Porte-lance"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -2474,14 +2411,12 @@ msgid ""
 "armed with a shield and a few javelins, spearmen are the staple of most "
 "armies, often thrown into the front lines with only the most basic training."
 msgstr ""
-"Les épées sont pour beaucoup une dépense luxueuse et quelque chose que les "
-"paysans ne peuvent s'offrir. Les lances sont plus faciles à fabriquer et "
-"seront efficaces mêmes sans fer, quoique la plupart en ont un. Vêtus "
-"d'armure de cuir et souvent armés d'un bouclier et de quelques javelots, les "
-"porte-lances sont la base de beaucoup d'armées, souvent envoyés en première "
-"ligne sans beaucoup d'entraînement.\n"
-"\n"
-"Remarque : "
+"Les épées sont pour beaucoup une dépense luxueuse que les paysans ne peuvent "
+"s'offrir. Les lances sont plus faciles à fabriquer et seront efficaces mêmes "
+"sans fer, quoique la plupart en ont un. Vêtus d'armure de cuir et souvent "
+"armés d'un bouclier et de quelques javelots, les porte-lances sont la base "
+"de beaucoup d'armées et sont souvent envoyés en première ligne avec un "
+"entraînement rudimentaire."
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
@@ -2490,7 +2425,6 @@ msgstr "Spadassin"
 
 #. unit: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
-#, fuzzy
 msgid ""
 "An experienced soldier will often save enough to equip himself with a suit "
 "of scale or chain armor, and a sturdy broadsword. Though trading their "
@@ -2500,7 +2434,7 @@ msgid ""
 "a spear, and much better in close quarters."
 msgstr ""
 "Un soldat expérimenté économisera souvent assez pour s'équiper d'une armure "
-"d'écaille ou d'une côte de maille et d'un robuste glaive. Bien qu'échanger "
+"d'écailles ou d'une côte de maille et d'un robuste glaive. Bien qu'échanger "
 "sa lance contre une épée est souvent un changement qui heurte, la plupart "
 "des porte-lances saisissent la chance de faire le pas, ne connaissant que "
 "trop bien les limitations de l'arme qu'ils ont laissée derrière eux. Une "
@@ -2514,7 +2448,6 @@ msgstr "Mage"
 
 #. unit: race=human
 #: data/core/units/humans/Mage.cfg:23
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2535,26 +2468,24 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle."
 msgstr ""
-"Tous les hommes s'interrogent sur le monde qui les entoure, mais certains "
-"poussent ces réflexions plus loin que d'autres et en font le but premier de "
-"leur vie. Les mages passent de nombreuses années à étudier et amassent une "
-"quantité de savoir qui les distingue du commun des mortels. Ceux qui dédient "
-"leur vie à l'étude sont exceptionnels dans un monde où ceux qui savent lire "
-"ou écrire sont rares ; ils sont généralement entourés par de jeunes nobles "
-"prometteurs ou par des personnes qui cherchent à échapper au vide "
-"intellectuel que procure une vie de travail manuel.\n"
+"Les hommes s'interrogent souvent sur le monde qui les entoure. Certains "
+"essayent de dépasser le stade de la rêvasserie pour en faire le but premier "
+"de leur vie. Tout mage digne de ce nom a passé au moins une dizaine d'années "
+"à étudier et à amasser des savoirs qui les distinguent du commun des "
+"mortels. Ces hommes et ces femmes qui dédient leur vie à la recherche de la "
+"sagesse contrastent fortement avec la majorité qui ne sait que rarement lire "
+"ou écrire. La plupart sont de jeunes nobles prometteurs ou des personnes qui "
+"cherchent à échapper au vide intellectuel que procure le travail manuel.\n"
 "\n"
-"Avec toutes ces connaissances accumulées et ce monopole exercé sur le "
-"savoir, il peut sembler ironique de penser que les mages pourraient "
-"facilement contrôler la société humaine si l'envie leur prenait. Cependant "
-"leur véritable ambition n'est ni l'argent ni le pouvoir et ceux qui ont de "
-"telles motivations n'ont généralement pas l'étincelle de la passion "
-"nécessaire pour atteindre la véritable maîtrise de cet art.\n"
+"Ironiquement, avec toutes ces connaissances accumulées et ce monopole exercé "
+"sur le savoir, cette communauté de mages pourrait facilement contrôler la "
+"société si elle en avait envie. Cependant leur véritable ambition n'est ni "
+"l'argent ni le pouvoir ; ceux qui ont de telles motivations n'ont "
+"généralement pas la passion nécessaire pour véritablement maîtriser cet "
+"art.\n"
 "\n"
 "Les mages sont frêles et n'ont généralement pas l'habitude des champs de "
-"batailles. Cependant leurs puissants pouvoirs s'avèrent très utiles.\n"
-"\n"
-"Remarque : "
+"batailles. Cependant leurs puissants pouvoirs s'y avèrent très utiles."
 
 #. attack: type=fire
 #: data/core/units/humans/Mage.cfg:62
@@ -2574,7 +2505,6 @@ msgstr "Archimage"
 
 #. unit: race=human
 #: data/core/units/humans/Mage_Arch.cfg:20
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -2590,19 +2520,18 @@ msgid ""
 "lightly."
 msgstr ""
 "Le titre d'archimage n'est attribué qu'après une vie entière d'études et de "
-"découvertes. Les archimages sont souvent enseignants, ou conseillers des "
+"découvertes. Les archimages sont souvent enseignants ou conseillers de "
 "personnes suffisamment avisées pour écouter leurs sages préceptes. Ils "
-"s'associent souvent à des patrons aisés, ce qui est profitables aux deux "
-"parties : hormis une tâche occasionnelle ou un conseil, le mage reste libre "
-"de poursuivre ses recherches en toute quiétude. Les plus grandes "
-"réalisations humaines trouvent leurs origines dans ces arrangements ; les "
-"sciences, la philosophie et les arts embellissent le monde en général.\n"
+"s'associent souvent à des employeurs aisés, ce qui profite aux deux "
+"parties : hormis un enchantement occasionnel ou un petit conseil, ils "
+"restent libres de poursuivre leurs recherches en toute quiétude. Les plus "
+"grandes réalisations humaines trouvent leurs origines dans ces "
+"arrangements ; les sciences, la philosophie et les arts embellissent le "
+"monde en général.\n"
 "\n"
-"Les archimages manquent d'entrainement au combat mais peuvent, en cas de "
-"besoin, déchaîner toute la puissance de leur art, qu'il ne faut pas prendre "
-"à la légère.\n"
-"\n"
-"Remarque : "
+"Les archimages manquent d'entraînement au combat mais peuvent, en cas de "
+"besoin, déchaîner toute la puissance de leur art qu'il ne faut pas prendre à "
+"la légère."
 
 #. attack: type=fire
 #: data/core/units/humans/Mage_Great.cfg:38
@@ -2623,7 +2552,6 @@ msgstr "Grand mage"
 
 #. unit: race=human
 #: data/core/units/humans/Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -2637,17 +2565,16 @@ msgid ""
 "Though they are not warriors, by any means, the application of their art to "
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
-"Tout candidat au titre de Grand mage est déjà généralement une légende de "
-"son vivant. Les baladins des grandes villes ont rapidement appris que ce "
-"titre ne devait pas être utilisé à la légère. Le titre n'est donné par le "
-"conseil des mages qu'après un examen minutieux et un vote à la majorité. "
-"Toute personne pressentie pour ce titre maîtrise déjà pleinement son art et "
-"est l'un des meilleurs dans son domaine.\n"
+"Tout prétendant au titre de Grand mage est déjà presque une légende de son "
+"vivant ; les baladins des grandes villes ont rapidement appris que cette "
+"distinction ne devait pas être prise à la légère. Une candidature n'est "
+"proposée à un conseil d'importants mages anciens qu'après un examen "
+"minutieux et doit être confirmée par un vote à la majorité ; il n'en reste "
+"pas moins que toute personne pressentie pour ce titre maîtrise déjà "
+"pleinement son art et est l'une des meilleures dans son domaine.\n"
 "\n"
-"Ils ne sont pas des guerriers, mais l'utilisation de leur art au combat "
-"laisse généralement les soldats médusés.\n"
-"\n"
-"Remarque : "
+"Ce ne sont pas des guerriers, mais l'utilisation de leur art au combat "
+"laisse généralement à l'écart les soldats médusés."
 
 #. female
 #: data/core/units/humans/Mage_Great.cfg:119
@@ -2661,7 +2588,6 @@ msgstr "Mage rouge"
 
 #. unit: race=human
 #: data/core/units/humans/Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice and given the ruddy cloak of a master. "
@@ -2687,9 +2613,7 @@ msgstr ""
 "\n"
 "Les « Mages Rouges » sont physiquement fragiles et ne sont pas entraînés "
 "comme des guerriers, mais ils ont de nombreux sorts dans leurs manches, dont "
-"la boule de feu qui leur a donné leur surnom.\n"
-"\n"
-"Remarque : "
+"la boule de feu qui leur a valu leur surnom."
 
 #. female
 #: data/core/units/humans/Mage_Red.cfg:144
@@ -2707,10 +2631,11 @@ msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
+"Les mages d'argent sont en harmonie avec leur nature magique et sont très "
+"résistants aux dégâts non physiques."
 
 #. unit: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2736,20 +2661,17 @@ msgstr ""
 "leurs propres collègues. Bien qu'ils soient utiles à l'ordre des magiciens "
 "qui les emploient souvent au combat, ils restent quelque peu asociaux.\n"
 "\n"
-"Ils ont en fait leur propre ordre parmi les rangs des mages, un ordre avec "
-"des secrets propres et jalousement gardés. L'un d'entre eux est une "
-"apparente capacité à traverser de grandes distances, plus rapidement que "
-"n'importe qui à pied. Les membres de l'ordre d'argent refusent totalement de "
-"discuter du fonctionnement de ce pouvoir avec leurs camarades mages, et les "
-"rares personnes qui ont parfois fureté dans leurs travaux ont abandonné "
-"leurs efforts et n'en ont plus jamais parlé.\n"
+"Parmi les rangs des mages, ils ont en fait leur propre ordre avec leurs "
+"propres secrets jalousement gardés. L'un d'entre eux est une apparente "
+"capacité à traverser de grandes distances, plus rapidement que n'importe qui "
+"à pied. Les membres de l'ordre d'argent refusent obstinément de discuter du "
+"fonctionnement de ce pouvoir avec leurs camarades mages, et les rares "
+"personnes qui ont parfois fureté dans leurs travaux ont abandonné leurs "
+"efforts et n'en ont plus jamais parlé.\n"
 "\n"
-"Les mages d'argent sont souvent plus en meilleure conditions physiques que "
-"les autres mages et, si leurs aptitudes sont d'une utilité indéniable sur le "
-"champ de bataille, si on arrive à les convaincre de les utiliser.\n"
-"\n"
-"Remarques : les mages d'argent sont très résistants à toute forme de dégâts "
-"non physiques. "
+"Les mages d'argent sont souvent en meilleure conditions physiques que les "
+"autres mages et leurs aptitudes sont d'une utilité indéniable sur le champ "
+"de bataille si on arrive à les convaincre de les utiliser."
 
 #. female
 #: data/core/units/humans/Mage_Silver.cfg:150
@@ -2763,7 +2685,6 @@ msgstr "Mage blanc"
 
 #. unit: race=human
 #: data/core/units/humans/Mage_White.cfg:20
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -2775,19 +2696,15 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
-"Découvrant le monde environnant, la vérité sur la souffrance et la pauvreté "
-"dans laquelle vit l'humanité depuis trop souvent, certains mages pensent "
+"Découvrant le monde environnant et la vérité sur la souffrance et la "
+"pauvreté dans laquelle vit trop souvent l'humanité, certains mages pensent "
 "qu'ils ne peuvent se cloîtrer dans une vie d'étude. Ces hommes et femmes "
 "renoncent à la vie de mage et rejoignent les ordres monastiques, vouant "
 "leurs dons au bien de tous. Après leur ordination, ils parcourent souvent le "
 "monde, s'occupant des maladies et des blessures.\n"
 "\n"
-"Quoique non entraînés aux combats, il y a un ennemi contre qui ils sont un "
-"allié potentiel. En cas de besoin, ils peuvent invoquer la puissance de la "
-"lumière pour bannir les maudits qui n'appartiennent pas au monde des "
-"mortels.\n"
-"\n"
-"Remarques : "
+"Quoique non entraînés aux combats, ce sont de puissants alliés contre les "
+"choses magiques ou surnaturelles."
 
 #. attack: type=arcane
 #: data/core/units/merfolk/Priestess.cfg:71
@@ -2809,7 +2726,6 @@ msgstr "Mage de lumière"
 
 #. unit: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:22
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "spiritual powers. By strict devotion to the path of the light, they can call "
@@ -2824,9 +2740,7 @@ msgstr ""
 "\n"
 "Ces hommes et femmes suivent un code de piété et d'honneur très strict et "
 "travaillent sans relâche pour apporter la vie et l'ordre au monde troublé "
-"dans lequel ils vivent.\n"
-"\n"
-"Remarque : "
+"dans lequel ils vivent."
 
 #. female
 #: data/core/units/humans/Mage_of_Light.cfg:232
@@ -2896,7 +2810,6 @@ msgstr "Assassin"
 
 #. unit: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -2909,9 +2822,7 @@ msgstr ""
 "lestes, ces silhouettes menaçantes ne reculent devant rien pour envoyer en "
 "silence leur victime dans l'autre monde, que ce soit en lançant des couteaux "
 "empoisonnés, ou en leur plantant une dague dans le dos. Mortels la nuit, ces "
-"assassins sont moins à l'aise à la lumière du soleil.\n"
-"\n"
-"Remarques : "
+"assassins sont moins à l'aise à la lumière du soleil."
 
 #. attack: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
@@ -2938,7 +2849,7 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
-"Les bandits comprennent un ensemble varié d'hommes d'un passé généralement "
+"Les bandits comprennent un ensemble varié d'hommes au passé généralement "
 "douteux. Ils forment le bras armé des groupes de criminels organisés, et "
 "bien qu'ils puissent manquer de finesse ou d'intelligence, ils savent "
 "parfaitement bastonner de leurs victimes jusqu'à ce qu'elles se soumettent. "
@@ -3004,17 +2915,16 @@ msgstr "Fugitif"
 
 #. unit: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
-#, fuzzy
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
 "to elude capture. They can be dangerous and rightly fearful in their "
 "element, but are no match for the sheer numbers that law-abiding soldiery "
 "can throw at them."
 msgstr ""
-"Ces criminels récidivistes deviennent célèbres parmi les autorités pour "
-"leurs prouesses au combat et leur faculté d'évasion. Dangereux et rudes, ils "
-"peuvent susciter la crainte dans leur milieu, mais pas celle des "
-"professionnels du maintien de l'ordre."
+"Ces criminels récidivistes deviennent célèbres parmi les autorités pour leur "
+"brutalité et leur faculté d'évasion. Dangereux et effrayant, ils peuvent "
+"susciter la crainte dans leur milieu, mais pas celle des professionnels du "
+"maintien de l'ordre."
 
 #. female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:112
@@ -3023,15 +2933,14 @@ msgstr "Fugitive"
 
 #. female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:115
-#, fuzzy
 msgid ""
 "female^Veteran criminals become notorious for both their ruthlessness and "
 "ability to elude capture. They can be dangerous and rightly fearful in their "
 "element, but are no match for the sheer numbers that law-abiding soldiery "
 "can throw at them."
 msgstr ""
-"Ces criminels récidivistes deviennent célèbres parmi les autorités pour "
-"leurs prouesses au combat et leur faculté d'évasion. Dangereux et rudes, ils "
+"Ces criminelles récidivistes deviennent célèbres parmi les autorités pour "
+"leur brutalité et leur faculté d'évasion. Dangereux et effrayant, ils "
 "peuvent susciter la crainte dans leur milieu, mais pas celle des "
 "professionnels du maintien de l'ordre."
 
@@ -3056,7 +2965,6 @@ msgstr "Brigand"
 
 #. unit: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -3065,14 +2973,12 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark."
 msgstr ""
-"Les chefs de bande de n'importe quel groupe de voleurs gagnent leur place "
-"par le talent. Ces brigands ont passé de nombreux mauvais moments à bondir à "
-"travers les foules et à esquiver ceux qui leur voulaient du mal, gagnant des "
-"compétences très utiles au combat. Maîtres au couteau, ils peuvent également "
-"les jeter avec précision. Les longues heures passées à rôder dans la nuit "
-"leur ont appris à se battre plus efficacement dans le noir.\n"
-"\n"
-"Remarque : "
+"Les chefs de bande de tous les groupes de voleurs obtiennent leur rang grâce "
+"au talent. Ces brigands ont passé de nombreux moments désagréables à bondir "
+"à travers les foules et à esquiver ceux qui leur voulaient du mal, gagnant "
+"des compétences très utiles au combat. Maîtres au couteau, ils peuvent "
+"également les lancer avec précision. Les longues heures passées à rôder dans "
+"la nuit leur ont appris à se battre plus efficacement dans le noir."
 
 #. female
 #: data/core/units/humans/Outlaw_Rogue.cfg:141
@@ -3086,28 +2992,25 @@ msgstr "Voyou"
 
 #. unit: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
-#, fuzzy
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
 "Those that attempt to make their way through life by the heavy end of a "
 "stick, are known as 'Ruffians'. With enough luck and experience, they "
 "sometimes manage to avoid the stockade that awaits most of their colleagues."
 msgstr ""
-"Certains hommes sans talent particulier ne veulent ou ne peuvent pas vivre "
-"une existence honnête. Ceux qui tentent de tracer leur chemin à coups de "
-"bâton sont connus sous le nom de « Voyous ». Avec un peu d'expérience, ils "
-"peuvent apprendre à manier un plus grand gourdin ou lancer des objets, mais "
-"pas les deux."
+"Certains hommes sans talent particulier ne peuvent ou ne veulent pas vivre "
+"une existence honnête. Ceux qui tentent de traverser la vie à grands coups "
+"de bâton sont connus sous le nom de « Voyous ». Avec un peu d'expérience et "
+"de chance, ils arrivent parfois à éviter l'échafaud qui attend la plupart de "
+"leurs collègues."
 
 #. unit: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "Voleur"
 
-# rat-catcher = ?
 #. unit: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -3117,16 +3020,14 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a 'fair fight'."
 msgstr ""
-"Aussi longtemps que l'on se souvienne, les membres de la « guilde » des "
-"attrapeurs de rats qui sévissent dans toutes les grandes cités ont la "
+"Aussi longtemps que l'on se souvienne, les membres des différentes « guildes "
+"» des attrapeurs de rats qui sévissent dans toutes les grandes cités ont la "
 "curieuse pratique de décolorer leurs cheveux avec du citron jusqu'à ce "
-"qu'ils prennent une pâle couleur bleue. C'est audacieux de faire ceci, étant "
-"donné que leur profession les amène souvent dans des entreprises peu "
-"légales. Les voleurs ont de nombreux talents, lestes par nécessité et "
-"habiles au couteau. Ils utilisent avec bonheur des tactiques peu honorables "
-"en combat, ne voyant que peu d'intérêt aux combats « équitables ».\n"
-"\n"
-"Remarque : "
+"qu'ils prennent une pâle couleur bleue. Ceci est audacieux, étant donné que "
+"leur profession les mène souvent dans des entreprises peu légales. Les "
+"voleurs ont de nombreux talents, lestes par nécessité et habiles au couteau. "
+"Ils utilisent avec bonheur des tactiques peu honorables en combat, ne voyant "
+"que peu d'intérêt aux combats « équitables »."
 
 #. female
 #: data/core/units/humans/Outlaw_Thief.cfg:365
@@ -3189,10 +3090,10 @@ msgid ""
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
-"Les hommes des bois sont les chasseurs, bûcherons, charbonnier et autres qui "
-"gagnent leur pitance là où le monde des humains est à la limite de l'étendue "
-"sauvage. Des objets bricolés en bois subviennent à leur besoins quand les "
-"armes sont absentes."
+"Les hommes des bois sont des chasseurs, des bûcherons, des charbonniers, et "
+"d'autres, qui gagnent leur pitance là où le monde des humains borde les "
+"étendues sauvages. Des objets bricolés en bois subviennent à leurs besoins "
+"quand les armes font défaut."
 
 #. unit: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
@@ -3217,6 +3118,20 @@ msgid ""
 "save lives, ease travel, provide food, and their skill with a bow is "
 "capitally useful in a fight."
 msgstr ""
+"La chasse est un sport fréquent chez les nobles, mais constitue également un "
+"gagne-pain pour le peuple. Comme d'autres domaines, elles possède ses "
+"experts. Les traqueurs connaissent toutes les astuces du métier et savent "
+"habilement pister, utiliser un arc, et s'orienter dans les étendues "
+"sauvages. Ils tirent précisément sur des cibles mouvantes ou à couvert "
+"derrière un buisson. Ils se sont améliorés après des années de pratique, qui "
+"manque souvent aux archers des garnisons.\n"
+"\n"
+"Ces chasseurs sont employés par des hommes de loi ou des bandits habitant ou "
+"traversant une contrée inhospitalière. La nature peut réserver des surprises "
+"fatales, et tout commandant qui n'arrive pas à embaucher un guide peut "
+"perdre ses hommes rien qu'à cause du terrain. Les bons forestiers peuvent "
+"sauver des vies, faciliter les déplacements, fournir de la nourriture ; et "
+"leur compétence à l'arc est capitale durant une échauffourée."
 
 #. unit: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
@@ -3225,7 +3140,6 @@ msgstr "Braconnier"
 
 #. unit: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of soldiers or bandits "
@@ -3235,9 +3149,9 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
-"Un chasseur, surtout s'il tire à l'arc et même s'il n'est pas entraîné comme "
-"l'est un guerrier, a des capacités utiles en combat. N'importe quel groupe "
-"de bandits aura besoin de quelques braconniers, pas seulement pour chasser, "
+"Même s'il n'est pas entraîné comme l'est un guerrier, un chasseur, surtout "
+"s'il tire à l'arc, a des capacités utiles en combat. N'importe quel groupe "
+"de bandits aura besoin de quelques braconniers, non seulement pour chasser, "
 "mais aussi pour donner un coup de main dans les accrochages sérieux.\n"
 "\n"
 "Leur expérience rend les chasseurs particulièrement habiles la nuit, surtout "
@@ -3263,6 +3177,17 @@ msgid ""
 "even hear of it at all.  Rangers can be hired, but they are just as likely "
 "to be in the employ of bandits, as they are to be in the king's service."
 msgstr ""
+"Les rôdeurs sont renfermés et errants et ont choisi d'éviter leurs "
+"semblables pour quantité de raisons. Ils ont passé une grande partie de leur "
+"vie en pleine nature et en connaissent les nombreux secrets. Excellents "
+"pisteurs et explorateurs, ils peuvent découvrir de la nourriture et des "
+"abris là où d'autres ne verraient que des branchages ou des rochers.\n"
+"\n"
+"Ces hommes dérangent les dirigeants les plus autoritaires, car ils forment "
+"un élément incontrôlable par les chevaliers et les troupes stationnées. Ce "
+"sont des hommes aux motivations incertaines et ce sont les premiers à "
+"railler un traité royal si jamais ils en entendent parler. Ils peuvent être "
+"embauchés, mais plutôt par des bandits que par des serviteurs du roi."
 
 #. unit: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
@@ -3271,7 +3196,6 @@ msgstr "Trappeur"
 
 #. unit: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
-#, fuzzy
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
 "sizable group of people living in the wilderness. They can track both man "
@@ -3282,10 +3206,10 @@ msgid ""
 "unusually competent at night, and in forests and swamps."
 msgstr ""
 "Ces maîtres de la chasse en forêt sont des alliés de valeur pour n'importe "
-"quelle armée et sont indispensables dans tout groupe important de bandits. "
-"Ils peuvent aussi bien traquer des hommes ou des bêtes, suivant des traces "
-"que d'autres ne verraient pas, et sont souvent les seuls qui peuvent "
-"rapporter de la nourriture, animale ou végétale.\n"
+"quelle armée et sont indispensables dans tout groupe important vivant dans "
+"la nature. Ils peuvent aussi bien traquer des hommes ou des bêtes, "
+"remarquant des indices que d'autres ne verraient pas, et sont souvent les "
+"seuls qui peuvent rapporter de la nourriture, animale ou végétale.\n"
 "\n"
 "Leur adresse à la chasse les rend très utiles en combat, surtout la nuit, et "
 "dans les forêts et les marais."
@@ -3305,6 +3229,12 @@ msgid ""
 "man at the banks of the Alavynne, but who rode again the next day, in full "
 "number, and wrought the downfall of the crimson duke."
 msgstr ""
+"Des années de dévotion procurent à une prêtresse une grande clairvoyance sur "
+"le fonctionnement du monde, et lui accordent les faveurs de la lumière. Les "
+"contes et les chants rappellent régulièrement la puissance de ces dames de "
+"l'eau ; comme par exemple l'histoire de ces Chevaliers de la Tour d'Argent, "
+"acculés puis tués sur les rives d'Alavynne, mais qui chevauchaient tous dès "
+"le lendemain et qui travaillèrent à la chute du Duc Pourpre."
 
 #. unit: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
@@ -3313,7 +3243,6 @@ msgstr "Enchanteresse ondine"
 
 #. unit: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:19
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different than that of the elves. Those who master "
@@ -3322,15 +3251,12 @@ msgid ""
 "is forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss."
 msgstr ""
-"Bien que très différents, les ondins et les elfes ont de grands dons pour la "
-"magie. Ceux qui parviennent à maîtriser ces dons gagnent l'estime de leurs "
-"pairs et leurs talents sont utilisés pour de nombreux travaux, généralement "
-"pour fabriquer des objets impossibles à réaliser pour les humains. Il leur "
-"est strictement interdit d'utiliser ce pouvoir contre leur propre peuple, "
-"car ce pouvoir est surtout destiné à protéger les ondins des monstres qui "
-"rôdent dans les abysses.\n"
-"\n"
-"Remarque : "
+"Les ondins et les elfes ont de grandes compétences pour la magie, même si "
+"elle diffère considérablement d'un peuple à l'autre. Ceux qui maîtrisent ce "
+"don gagnent l'estime de leurs pairs ; leurs talents servent à de nombreux "
+"travaux, que l'humanité n'imagine même pas, et il leur est strictement "
+"interdit de les utiliser contre leur propre race : ces pouvoirs servent "
+"surtout à protéger les ondins des monstres qui rôdent dans les abysses."
 
 #. attack: type=impact
 #: data/core/units/merfolk/Siren.cfg:40
@@ -3339,7 +3265,6 @@ msgstr ""
 msgid "water spray"
 msgstr "jet d'eau"
 
-# Jean : Le rétiaire est le gladiateur armé d'un filet
 #. unit: race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
@@ -3347,7 +3272,6 @@ msgstr "Rétiaire ondin"
 
 #. unit: race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -3355,11 +3279,10 @@ msgid ""
 "and makes their race a threat even to enemies who merely approach the water."
 msgstr ""
 "Le lourd filet utilisé par les ondins au combat est une arme difficile à "
-"bien utiliser ; ceux qui la maîtrisent sont admirés par leurs camarades. "
-"Cette arme aide à construire l'hégémonie des ondins dans leur élément et "
-"fait de leur race une menace pour les ennemis approchant de l'eau.\n"
-"\n"
-"Remarque : "
+"bien utiliser ; ceux qui la maîtrisent sont estimés et admirés par leurs "
+"camarades. Cette arme aide à assurer l'hégémonie des ondins dans leur "
+"élément et fait de leur race une menace même pour des ennemis qui "
+"s'approcheraient trop près de l'eau."
 
 #. unit: race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -3393,7 +3316,6 @@ msgstr "Hoplite ondin"
 
 #. unit: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -3402,11 +3324,9 @@ msgid ""
 msgstr ""
 "Avec leurs pavois, les hoplites ondins forment la garde d'élite du royaume "
 "aquatique. Leur solide armure et leur discipline de fer leur permettent de "
-"tenir une ligne infranchissable sous le feu du combat. Dans les cas les plus "
-"désespérés, ils sont à même de faire de même à terre, bien que de manière "
-"moins efficace qu'une créature pourvue de jambes.\n"
-"\n"
-"Remarque : "
+"tenir un front infranchissable au plus fort de la bataille. Dans les cas les "
+"plus désespérés, ils peuvent faire de même à terre, mais de manière moins "
+"efficace qu'une créature pourvue de jambes."
 
 #. unit: race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
@@ -3433,7 +3353,6 @@ msgstr "Initiée ondine"
 
 #. unit: race=merman
 #: data/core/units/merfolk/Initiate.cfg:22
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -3442,16 +3361,12 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies."
 msgstr ""
-"Les jeunes ondines sont souvent formées à la magie de l'eau qu'il leur est "
-"aisée d'apprendre. Les étranges pouvoirs qu'elles obtiennent ne peuvent être "
-"imités par aucune autre magie. C'est une preuve du côté féerique de ces "
-"créatures.\n"
+"Les jeunes ondines sont souvent initiées à la magie de l'eau, innée chez ce "
+"peuple, qui leur confère d'étranges pouvoirs qu'aucune race ne peut imiter ; "
+"cela démontre le côté féerique de ces créatures.\n"
 "\n"
-"Les ondines sont fragiles, mais cette magie fait d'elles de redoutables "
-"combattantes et leur permet d'invoquer la puissance de l'eau qui les entoure "
-"pour frapper leurs adversaires.\n"
-"\n"
-"Remarque : "
+"Malgré leur fragilité, cette magie les transforme en redoutables "
+"combattantes pouvant invoquer l'eau aux alentours pour frapper leurs ennemis."
 
 #. unit: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
@@ -3479,7 +3394,6 @@ msgstr "Lanceur de filet ondin"
 
 #. unit: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -3490,17 +3404,14 @@ msgid ""
 "to level the playing field against troops on land, who would otherwise be at "
 "a great advantage."
 msgstr ""
-"La pêche, telle qu'elle est pratiquée par les ondins, consiste "
-"principalement à rabattre des bancs de poissons vers des filets étendus "
-"auparavant. Ces filets ne sont pas eux-mêmes très dangereux, mais peuvent "
-"s'avérer très efficaces contre des troupes qui tentent de traverser une "
-"rivière à gué. Des filets lestés, plus petits, à usage strictement "
-"militaire, peuvent également être lancés en l'air. Les ondins utilisent ces "
-"armes pour immobiliser les troupes ennemies dans l'eau comme sur terre, où "
-"leurs adversaires ont généralement une mobilité grandement supérieure à la "
-"leur.\n"
-"\n"
-"Remarque : "
+"La pêche pratiquée par les ondins consiste principalement à rabattre des "
+"bancs de poissons vers des filets étendus auparavant. Ceux-ci ne sont pas "
+"très dangereux, mais peuvent s'avérer très efficaces contre des troupes qui "
+"tentent de traverser une rivière à gué. Des filets lestés, plus petits, à "
+"usage strictement militaire, peuvent également être lancés en l'air. Les "
+"ondins utilisent ces armes pour immobiliser les ennemis dans l'eau, et "
+"surtout pour limiter les mouvement de leurs adversaires sur terre, où ces "
+"derniers seraient vraiment très avantagés."
 
 #. unit: race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -3509,7 +3420,6 @@ msgstr "Prêtresse ondine"
 
 #. unit: race=merman
 #: data/core/units/merfolk/Priestess.cfg:22
-#, fuzzy
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -3517,15 +3427,11 @@ msgid ""
 "piety also grants them certain powers, allowing them to guard their people "
 "against magical or unnatural things."
 msgstr ""
-"Chez les ondins le contact avec les dieux est généralement confié aux "
-"ondines. Ce sont elles qui dédient généralement leur vie au maintien de leur "
-"idéal de paix et de vie. Ce sont également elles qui apprennent à combattre "
-"le poison, les blessures et les maladies qui sont généralement communes aux "
-"humains. Leur dévouement et leur piété leur donnent également certains "
-"pouvoirs leur permettant de protéger les leurs des spectres et des morts-"
-"vivants.\n"
-"\n"
-"Remarque : "
+"Les ondines se chargent généralement des cérémonies mystiques, auxquelles "
+"elles sont prédisposées. Elles dédient généralement leur vie aux idéaux de "
+"paix et de prospérité sur le monde, et se dévouent aux arts qui rendent cela "
+"possible. Leur piété leur accorde également certains pouvoirs permettant de "
+"protéger les leurs de la magie ou de choses surnaturelles."
 
 #. unit: race=merman
 #: data/core/units/merfolk/Siren.cfg:4
@@ -3534,7 +3440,6 @@ msgstr "Sirène ondine"
 
 #. unit: race=merman
 #: data/core/units/merfolk/Siren.cfg:22
-#, fuzzy
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
 "connection to naia often causes them to be mistaken for naiads themselves. "
@@ -3546,18 +3451,15 @@ msgid ""
 "The myriad applications of this rarely occur to land dwellers, who simply "
 "regard it with wonder."
 msgstr ""
-"La nature féerique des ondins est particulièrement présente chez les sirènes "
-"dont le lien avec Naïa est si puissant qu'elles sont très souvent prise pour "
-"des naïades. Bien que ce soit loin de la vérité, l'erreur est compréhensible "
-"car les vraies naïades sont rarement vues, même par des sirènes. Leurs "
-"magies sont assez similaires ; l'eau qui entoure la sirène lui obéit comme "
-"s'il s'agissait de son propre corps.\n"
+"La nature féerique du peuple ondin imprègne particulièrement les sirènes, "
+"souvent confondues avec des naïades tellement elles se ressemblent. Cette "
+"erreur, bien loin de la vérité, est compréhensible car même les sirènes "
+"aperçoivent rarement les vraies naïades. Leurs magies sont assez "
+"similaires ; l'eau qui les entoure leur obéit comme s'il s'agissait de leur "
+"propre corps.\n"
 "\n"
 "Les nombreuses applications de ce pouvoir échappent généralement aux "
-"créatures terrestres qui se contentent de le regarder avec émerveillement.\n"
-"\n"
-"Remarque : l'attaque de la sirène est de nature magique et a toujours de "
-"grandes chances de toucher sa cible."
+"créatures terrestres qui se contentent de les regarder avec émerveillement."
 
 #. attack: type=impact
 #: data/core/units/merfolk/Siren.cfg:28
@@ -3579,12 +3481,12 @@ msgid ""
 "damage. They are also useful in melee, even deep under the surface, which is "
 "something that certainly cannot be said of arrows."
 msgstr ""
-"L'archerie est peu prisée par les ondins, qui préfèrent utiliser les "
-"javelots. Les javelots sont peu utiles sous l'eau, mais le sont extrêmement "
-"à la surface où leur poids permet de les plonger plusieurs pieds au-dessous "
-"de l'eau tout en gardant suffisamment d'élan pour rester efficaces. Ils sont "
-"aussi utiles au corps-à-corps, même sous la surface, ce qui ne peut "
-"certainement pas être dit des flèches."
+"L'archerie est peu prisée par les ondins, qui préfèrent les javelots ; ceux-"
+"ci sont peu utiles directement sous l'eau, mais le sont extrêmement à la "
+"surface où leur poids permet de tomber dans l'eau et de pénétrer de "
+"plusieurs pieds avec suffisamment d'élan pour rester efficaces. Ils servent "
+"aussi au corps à corps, même en profondeur, ce qui n'est pas le cas des "
+"flèches."
 
 #. unit: race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -3623,18 +3525,15 @@ msgstr "Araignée géante"
 
 #. unit: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:17
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
 "can also fling webs through the air, to trap their prey."
 msgstr ""
 "On dit que des araignées géantes errent dans les profondeurs de Knalga, "
-"dévorant de nombreuses victimes. Elles peuvent mordre en corps à corps, "
-"empoisonnant leurs adversaires ou attaquer à distance avec leur toile, "
-"ralentissant ainsi leurs ennemis.\n"
-"\n"
-"Remarque : "
+"dévorant de nombreuses victimes. Elles possèdent une méchante morsure qui "
+"empoisonne leurs adversaires et peuvent également projeter de la toile dans "
+"les airs pour emprisonner leurs proies."
 
 #. attack: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:46
@@ -3648,19 +3547,16 @@ msgstr "Calamar"
 
 #. unit: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
-"Les calamars sont de gigantesques créatures des mers. Ils peuvent saisir "
+"Les calamars sont de gigantesques créatures des mers qui peuvent saisir "
 "leurs adversaires avec leurs puissants tentacules ou cracher à distance une "
 "encre noire toxique. La meilleure manière de survivre à une rencontre avec "
-"ces monstres est de rester sur terre.\n"
-"\n"
-"Remarque : "
+"ces monstres est de rester sur terre."
 
 #. attack: type=impact
 #: data/core/units/monsters/Tentacle.cfg:62
@@ -3692,6 +3588,15 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"Un dragon est une bête légendaire appartenant normalement aux contes "
+"fantastiques. Ils demeurent très rares et seraient considérés comme des "
+"mythes sans les faits historiques qui commémorent les villes et les villages "
+"qu'ils ont rasés. Les légendes précisent clairement les ravages commis par "
+"ces créatures extrêmement fortes, très rapides, incroyablement rusées, et "
+"surtout emplies d'un impressionnant feu intérieur.\n"
+"\n"
+"On dit que combattre un dragon représente le plus formidable des dangers, "
+"réservé aux seuls fous ou aux plus braves chevaliers."
 
 #. attack: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:28
@@ -3715,9 +3620,9 @@ msgid ""
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by striking them with their fists."
 msgstr ""
-"Les colosses de boue sont des créatures magiques construites à partie de "
-"terre et d'eau. Ils attaquent en projetant de la boue sur leurs ennemis ou "
-"avec leurs poings argileux."
+"Les colosses de boue sont des créatures magiques composées de terre et "
+"d'eau. Ils attaquent en projetant de la boue ou en frappant avec leurs "
+"poings."
 
 #. attack: type=impact
 #: data/core/units/monsters/Yeti.cfg:36
@@ -3741,15 +3646,12 @@ msgstr "Scorpion géant"
 
 #. unit: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation."
 msgstr ""
-"Un scorpion normal est déjà assez dangereux, mais un de la taille d'un homme "
-"se passe de commentaire...\n"
-"\n"
-"Remarque : "
+"Un scorpion normal est déjà assez dangereux, mais il est inutile de "
+"commenter le danger représenté par un de ces animaux de la taille d'un homme."
 
 #. attack: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
@@ -3772,8 +3674,8 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"Les golems de boue sont des créatures magiques construites à partir de terre "
-"et d'eau. Ils attaquent en projetant de la boue sur leurs ennemis."
+"Les golems de boue sont des créatures magiques composées de terre et d'eau. "
+"Ils attaquent en projetant de la boue."
 
 #. unit: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -3802,12 +3704,12 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
-"Jadis une des plus puissantes des créatures vivantes, ce redoutable dragon "
-"n'est plus qu'os blanchis et tendons noircis. Longtemps après sa mort, il "
-"fut ressuscité par les sombres pouvoirs de la nécromancie, dont il est "
-"désormais le servant. Peut-être que le dragon squelettique n'est rien "
-"d'autres qu'un vieux tas d'os, mais peu parmi ceux qui ont pensé cela ont "
-"vécu suffisamment longtemps pour changer d'avis."
+"Jadis une des plus puissantes créatures vivantes, ce redoutable dragon n'est "
+"plus qu'os blanchis et tendons noircis. Longtemps après sa mort, il fut "
+"ressuscité par les pouvoirs maléfiques de la nécromancie, qu'il sert "
+"désormais. Le dragon squelettique n'est peut-être rien d'autre qu'un vieux "
+"tas d'os, mais peu de ceux qui ont pensé cela ont vécu suffisamment "
+"longtemps pour changer d'avis."
 
 #. attack: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
@@ -3821,15 +3723,12 @@ msgstr "Tentacule des profondeurs"
 
 #. unit: race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves."
 msgstr ""
 "Les tentacules des profondeurs sont les appendices de quelque monstre "
-"gigantesque qui se tapit au-dessous des vagues.\n"
-"\n"
-"Remarque : "
+"gigantesque qui se tapit au-dessous des vagues."
 
 #. unit: race=monster
 #: data/core/units/monsters/Wolf.cfg:4
@@ -3850,7 +3749,7 @@ msgid ""
 msgstr ""
 "On sait peu de choses sur les yétis, ces gigantesques humanoïdes simiesques "
 "qui vivent dans les montagnes enneigées les plus reculées. Peu de gens "
-"racontent en avoir vu un, et on doute de leur existence même."
+"racontent en avoir vu un et on doute même de leur existence."
 
 #. unit: race=naga
 #: data/core/units/nagas/Fighter.cfg:4
@@ -3866,12 +3765,11 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
-"Les nagas appartiennent à l'une des quelques races capables de se mouvoir "
-"librement dans l'eau, ce qui leur donne accès à un monde entièrement "
-"interdit aux habitants terriens. Toujours est-il qu'elles ne sont pas de "
-"vraies créatures des profondeurs et sont incapables de respirer sous l'eau. "
-"Elles sont petites et quelque peu frêles, mais souvent beaucoup plus agiles "
-"que leurs adversaires."
+"Les nagas appartiennent à l'une des rares espèces capables de se mouvoir "
+"librement dans l'eau, ce qui leur donne accès à un monde interdit aux êtres "
+"terrestres. Toujours est-il que leur incapacité à respirer sous l'eau n'en "
+"fait pas de vraies créatures des profondeurs. Ils sont petits et quelque peu "
+"frêles, mais souvent beaucoup plus agiles que leurs adversaires."
 
 #. female
 #: data/core/units/nagas/Fighter.cfg:63
@@ -3892,12 +3790,11 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them deadly mobility in water."
 msgstr ""
-"Les plus expérimentés des sabreurs nagas se lancent dans la caste des "
-"mirmillons, les maîtres des sabres doubles. Ils frappent aussi rapidement "
-"que les serpents auxquels ils ressemblent et esquivent les attaques par de "
-"gracieuses danses. Ils sont non seulement des adversaires efficaces sur "
-"terrain ouvert, mais leur capacité de natation leur permet une mobilité "
-"mortelle."
+"Les plus expérimentées des sabreurs nagas se lancent dans la caste des "
+"mirmillons, maîtres des sabres doubles. Ils frappent aussi prestement que "
+"les serpents auxquels ils ressemblent et esquivent gracieusement les "
+"attaques, comme en dansant. Ils constituent des adversaires puissants sur "
+"terrain ouvert et leur aptitude à nager leur confère une mobilité mortelle."
 
 #. female
 #: data/core/units/nagas/Myrmidon.cfg:67
@@ -3914,11 +3811,10 @@ msgid ""
 "allows them a deadly mobility."
 msgstr ""
 "Les plus expérimentées des sabreuses nagas se lancent dans la caste des "
-"mirmillons, les maîtres des sabres doubles. Elles frappent aussi rapidement "
-"que les serpents auxquels elles ressemblent et esquivent les attaques par de "
-"gracieuses danses. Elles sont non seulement des adversaires efficaces sur "
-"terrain ouvert, mais leur capacité de natation leur permet une mobilité "
-"mortelle."
+"mirmillons, maîtres des sabres doubles. Elles frappent aussi prestement que "
+"les serpents auxquels elles ressemblent et esquivent gracieusement les "
+"attaques, comme en dansant. Elles constituent des adversaires puissantes sur "
+"terrain ouvert et leur aptitude à nager leur confère une mobilité mortelle."
 
 #. unit: race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -3936,12 +3832,11 @@ msgid ""
 "greatly impedes the technique."
 msgstr ""
 "La plupart des jeunes guerriers nagas rêvent du jour où ils mériteront leur "
-"deuxième lame. Leur pratique martiale utilisant des sabres doubles est "
-"complètement différente de celle des orcs et des autres races, parce que eux "
-"ont commencé à apprendre l'art d'employer leur forme serpentine pour une "
-"meilleure efficacité, se tordant et se tournant pour esquiver les coups. "
-"Ceci les rend efficaces sur terre, mais le frottement de l'eau limite "
-"considérablement leurs capacités."
+"deuxième lame. Leur pratique martiale des sabres doubles est complètement "
+"différente de celle des orcs et de celle des autres races, car ils ont "
+"d'abord appris l'art d'employer efficacement leur forme serpentine, se "
+"tordant et se tournant pour esquiver les coups. Ceci les rend redoutables "
+"sur terre mais le manque d'eau limite considérablement leurs capacités."
 
 #. female
 #: data/core/units/nagas/Warrior.cfg:66
@@ -3960,11 +3855,11 @@ msgid ""
 msgstr ""
 "La plupart des jeunes guerrières nagas rêvent du jour où elles mériteront "
 "leur deuxième lame. Leur pratique martiale utilisant des sabres doubles est "
-"complètement différente de celle des orcs et des autres races, parce que "
-"elles ont commencé à apprendre l'art d'employer leur forme serpentine pour "
-"une meilleure efficacité, se tordant et se tournant pour esquiver les coups. "
-"Ceci les rend efficaces sur terre, mais le frottement de l'eau limite "
-"considérablement leurs capacités."
+"complètement différente de celle des orcs et de celle des autres races, car "
+"elles ont d'abord appris l'art d'employer efficacement leur forme "
+"serpentine, se tordant et se tournant pour esquiver les coups. Ceci les rend "
+"redoutables sur terre mais le manque d'eau limite considérablement leurs "
+"capacités."
 
 #. unit: race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -4002,8 +3897,8 @@ msgid ""
 "lack with great strength."
 msgstr ""
 "Quand ils sont encore jeunes, des ogres sont parfois capturés et enrôlés "
-"dans l'armée pour y être entraînés. Ils ne peuvent pas utiliser d'arme avec "
-"dextérité, mais cela importe peu vu leur force."
+"dans l'armée pour y être entraînés. Leur manque de dextérité est compensé "
+"par leur force."
 
 #. unit: race=orc
 #: data/core/units/orcs/Archer.cfg:4
@@ -4019,12 +3914,12 @@ msgid ""
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
-"Chez les orcs, les arcs sont considérés comme des armes de lâches; cependant "
-"certains d'entre eux, spécialement des orcs plus jeunes ou à la constitution "
-"plus menue, sont assez pragmatiques pour en user. Les archers orcs n'ont ni "
-"armure digne de ce nom, ni même un semblant d'entraînement. Mais si cocasses "
-"qu'ils laissent paraître, leurs armes restent assez mortelles, et les orcs "
-"qui les manient avancent rarement seuls."
+"Chez les orcs, les arcs sont considérés comme des armes de lâches ; "
+"cependant certains d'entre eux, spécialement les plus jeunes ou les plus "
+"menus, sont assez pragmatiques pour en user. Ces archers n'ont ni armure "
+"digne de ce nom, ni même un semblant d'entraînement. Mais leurs armes "
+"restent mortelles malgré ce mauvais équipement, et ceux qui les manient "
+"marchent rarement seuls."
 
 #. unit: race=orc
 #: data/core/units/orcs/Assassin.cfg:4
@@ -4033,7 +3928,6 @@ msgstr "Assassin orc"
 
 #. unit: race=orc
 #: data/core/units/orcs/Assassin.cfg:22
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -4043,12 +3937,10 @@ msgid ""
 msgstr ""
 "Bien que certains considèrent lâche l'utilisation du poison, c'est une arme "
 "qui a la faveur des orcs, particulièrement des moins solides d'entre eux. "
-"Les assassins orcs, qui en enduisent leurs couteaux de lancer, sont plutôt "
-"fragiles, mais étonnamment agiles. Ils portent rarement le coup fatal, mais "
-"leurs manœuvres aident beaucoup leurs semblables, plus grands et plus "
-"brutaux.\n"
-"\n"
-"Remarque : "
+"Les assassins qui en enduisent leurs couteaux de lancer sont plutôt fragiles "
+"pour des orcs, mais étonnamment agiles. Ils portent rarement le coup fatal, "
+"mais leurs manœuvres aident beaucoup leurs semblables, plus grands et plus "
+"brutaux."
 
 #. attack: type=blade
 #: data/core/units/orcs/Assassin.cfg:79 data/core/units/orcs/Slayer.cfg:36
@@ -4068,11 +3960,10 @@ msgid ""
 "enough to wield them are capable warriors, and what they lack in finesse, "
 "they make up for in numbers."
 msgstr ""
-"Les arbalètes orcs sont des copies grossières des armes humaines ou naines; "
-"Mais une arbalète quelle qu'elle soit, reste un dispositif très puissant. "
-"Les orcs qui ont le privilège de brandir de telles armes sont de bons "
-"guerriers, et ce qu'il ne gèrent pas par manque de finesse, ils l'obtiennent "
-"par leur nombre."
+"Les arbalètes des orcs sont des copies grossières des armes humaines ou "
+"naines ; mais une arbalète, quelle qu'elle soit, reste un engin très "
+"puissant. Les privilégiés qui les utilisent sont de bons guerriers, et ce "
+"qu'ils perdent en finesse est compensé par leur nombre."
 
 #. unit: race=orc
 #: data/core/units/orcs/Grunt.cfg:4
@@ -4086,9 +3977,9 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
-"Les grognards orcs composent la base des forces orcs. Bien que moins rapide "
-"que les humains ou les guerriers elfes, le grognard orc frappe bien plus "
-"fort et peut recevoir beaucoup plus de coups avant de tomber."
+"Les grognards orcs composent la base des forces orcs. Bien que moins rapides "
+"que les guerriers humains ou elfes, les grognards frappent bien plus fort et "
+"peuvent recevoir beaucoup plus de coups avant de tomber."
 
 #. unit: race=orc
 #: data/core/units/orcs/Leader.cfg:4
@@ -4097,7 +3988,6 @@ msgstr "Meneur orc"
 
 #. unit: race=orc
 #: data/core/units/orcs/Leader.cfg:25
-#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -4105,13 +3995,11 @@ msgid ""
 "rapport with their kin, especially goblins, and can inspire them to fight "
 "with uncharacteristic boldness."
 msgstr ""
-"Les meneurs orcs sont les chefs de bande de guerriers orcs. Ils manient "
-"l'arc en cas de nécessité mais sont bien plus habiles à l'épée ; ce sont des "
-"guerriers redoutables. Leurs talents de commandement les rend vraiment "
-"précieux dans les combats : s'il est perdu, il en est de même pour la "
-"bataille.\n"
-"\n"
-"Remarque : "
+"Les meneurs orcs vraiment astucieux tendent souvent à devenir chefs de "
+"bande. Ils emportent un arc en cas de nécessité, mais sont bien plus habiles "
+"à l'épée ; ces guerriers redoutables, très puissants en combat, ont aussi "
+"une certaine autorité sur leurs semblables, surtout les gobelins, qu'ils "
+"peuvent pousser à combattre avec une hardiesse inhabituelle."
 
 #. unit: race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -4127,6 +4015,11 @@ msgid ""
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
+"Tout orc qui arrive à éviter qu'une grande tribu se querelle et se déchire "
+"est souvent très intelligent, très autoritaire et invariablement très fort. "
+"Il maîtrise l'épée et l'arc, mais ses vraies compétences résident dans sa "
+"rare habileté à unir les autres orcs pour les combats et dans sa capacité à "
+"donner des ordres exécutés sans crainte et avec fidélité."
 
 #. attack: type=blade
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:33
@@ -4141,7 +4034,6 @@ msgstr "Massacreur orc"
 
 #. unit: race=orc
 #: data/core/units/orcs/Slayer.cfg:22
-#, fuzzy
 msgid ""
 "The larger or more skilled orcish assassins are called 'Slayers' by their "
 "enemies. Slayers are fast on their feet, and quite nimble in combat, "
@@ -4153,9 +4045,7 @@ msgstr ""
 "massacreurs » par leurs ennemis. Les massacreurs sont rapides et agiles en "
 "combat, bien qu'ils soient forcés de renoncer à toute armure pour cela. Leur "
 "arme de prédilection, le poison, est un outil vicieux et son utilisation sur "
-"le champ de bataille est souvent la réelle cause de la suprématie de orcs.\n"
-"\n"
-"Remarque : "
+"le champ de bataille est souvent la réelle cause de la suprématie de orcs."
 
 # Slurbow : sorte d'arbalète améliorée, notamment avec un "canon" métallique permettant au carreau de ne pas glisser de l'arme quand celle-ci est utilisée pour viser vers le haut ou le bas.
 #. unit: race=orc
@@ -4177,11 +4067,10 @@ msgid ""
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
 "Le dessin basique de l’arbalète a permis de développer l’arme du "
-"cranequinier : une arbalète des plus complexes, avec une crémaillère à "
-"manivelle pour la réarmer et souvent une gouttière de bois stratifié ou d’os "
-"qui maintient le carreau. Un objet pareil est plus facile à manier, et "
-"beaucoup plus puissant qu’une simple arbalète; aussi est-ce une arme dont la "
-"fabrication dépasse la compétence des orcs.\n"
+"cranequinier : plus complexe, avec une crémaillère à manivelle pour la "
+"réarmer et souvent une gouttière de bois stratifié ou d’os qui maintient le "
+"carreau. Un objet pareil est plus facile à manier et beaucoup plus puissant "
+"qu’une simple arbalète ; sa fabrication dépasse les compétences des orcs.\n"
 "\n"
 "Les orcs prisent de telles armes, qu’ils peuvent employer lors des pillages. "
 "Elles servent évidemment à équiper leurs plus forts et plus rusés archers."
@@ -4201,6 +4090,12 @@ msgid ""
 "surest way to disperse such a host is to slay this rare orc who can hold it "
 "together."
 msgstr ""
+"De temps en temps, un orc doté d'un grand charisme surgit pour commander les "
+"siens. S'il est également fort et astucieux, il finira inévitablement par "
+"diriger une grande horde de guerriers et deviendra une grande source de "
+"problèmes pour les races civilisées de ce monde. La méthode la plus efficace "
+"pour disperser une telle armée est de tuer cet orc d'exception qui la "
+"maintient unie."
 
 #. unit: race=orc
 #: data/core/units/orcs/Warlord.cfg:4
@@ -4215,8 +4110,8 @@ msgid ""
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
 "Seuls les orcs les plus rusés et possédant une grande force peuvent devenir "
-"des seigneurs de guerre. Habiles à l'épée et à l'arc, ces guerriers mènent "
-"les bataillons des orcs."
+"des seigneurs de guerre. Habiles à l'épée et à l'arc, ces guerriers bestiaux "
+"mènent leurs bataillons d'une main de fer."
 
 #. unit: race=orc
 #: data/core/units/orcs/Warrior.cfg:4
@@ -4241,7 +4136,6 @@ msgstr "Embusqueur saurien"
 
 #. unit: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this is combined with experience, strength, "
@@ -4251,16 +4145,13 @@ msgid ""
 "smallest gap in an enemy line, and have the prowess to make the enemy regret "
 "tactical mistakes."
 msgstr ""
-"Les sauriens sont rapides, légers et très agiles, et ils peuvent se déplacer "
-"sur un terrain difficile pour leur ennemis. Quand en plus ils ont de "
-"l'expérience, de la force et de l'équipement, n'importe lequel de ces "
-"guerriers s'avère particulièrement dangereux, surtout parce qu'il est "
-"beaucoup plus difficile à encercler que n'importe quel autre adversaire. "
-"Même en armure, les guerriers sauriens peuvent exploiter la plus petite "
-"brèche dans une ligne ennemie et ont le talent de faire regretter ses "
-"erreurs à l'ennemi.\n"
-"\n"
-"Remarque : "
+"Les sauriens sont très agiles et peuvent se déplacer sur un terrain "
+"difficile pour leurs ennemis. Quand en plus ils ont de l'expérience, de la "
+"force et de l'équipement, n'importe lequel de ces guerriers s'avère "
+"particulièrement dangereux, surtout parce qu'il est beaucoup plus difficile "
+"à encercler que n'importe qui d'autre. Même en armure, ces combattants "
+"peuvent exploiter la moindre brèche dans une ligne ennemie et ont le talent "
+"de faire regretter ses erreurs à l'adversaire."
 
 #. unit: race=lizard
 #: data/core/units/saurians/Augur.cfg:4
@@ -4269,17 +4160,14 @@ msgstr "Augure saurien"
 
 #. unit: race=lizard
 #: data/core/units/saurians/Augur.cfg:21
-#, fuzzy
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
 "it reeks of augury and black magic. It is little understood, but rightly "
 "regarded with fear by those against whom it is used."
 msgstr ""
-"Les sauriens ont une capacité que les humains nomment magie, mais c'est une "
-"magie puant l'occultisme et la sorcellerie. Quasiment incomprise, elle est "
-"crainte avec raison par ceux qui la subissent.\n"
-"\n"
-"Remarque : "
+"Les sauriens ont une science que les humains nomment sorcellerie, mais sa "
+"pratique pue l'occultisme et la magie noire. Quasiment incomprise, elle est "
+"crainte avec raison par ceux qui la subissent."
 
 #. attack: type=cold
 #: data/core/units/saurians/Soothsayer.cfg:75
@@ -4295,7 +4183,6 @@ msgstr "Flanqueur saurien"
 
 #. unit: race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
-#, fuzzy
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven, or human "
 "counterparts. This is of course a relative term, and they can still become "
@@ -4307,9 +4194,7 @@ msgstr ""
 "leurs équivalents elfes ou humains. C'est bien sûr un terme relatif et ils "
 "peuvent toujours devenir considérablement puissants, sans rien perdre de "
 "leur mobilité naturelle. C'est très dangereux lors d'un combat, et un ennemi "
-"négligeant peut rapidement voir ses troupes débordées par ces créatures.\n"
-"\n"
-"Remarque : "
+"négligeant peut rapidement voir ses troupes débordées par ces créatures."
 
 #. unit: race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
@@ -4318,7 +4203,6 @@ msgstr "Oracle saurien"
 
 #. unit: race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
-#, fuzzy
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -4331,10 +4215,8 @@ msgstr ""
 "d’horribles marques aux formes ésotériques, faites de peintures et de "
 "tatouages. Certains pensent que ce sont des visionnaires ou des oracles "
 "parmi ceux de leur race. Mais quelle que soit la fonction qu'ils exercent "
-"dans la société, ce sont indéniablement de puissants mages qui maîtrisent un "
-"art étrange contre lequel il faut être prudent.\n"
-"\n"
-"Remarque : "
+"dans leur « société », ce sont indéniablement de puissants mages qui "
+"maîtrisent un art étrange contre lequel il convient d'être prudent."
 
 #. unit: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
@@ -4343,7 +4225,6 @@ msgstr "Tirailleur saurien"
 
 #. unit: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
-#, fuzzy
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
 "of this, they are very, very agile. In combat, their size allows them to "
@@ -4353,12 +4234,14 @@ msgid ""
 "Spears are their preferred weapon, as their powerful hind legs can drive a "
 "spear with enough force to do considerable damage, either in hand or thrown."
 msgstr ""
-"Les sauriens sont de très faible constitution, mais sont très, très agiles. "
-"Au combat, leur taille leur permet de se faufiler derrière des défenses qui "
-"auraient stoppé n'importe quel homme aux abois. Ce sont donc des adversaires "
-"difficiles à arrêter.\n"
+"Les sauriens sont de très faible constitution mais, malgré la fragilité qui "
+"en résulte, sont très, très agiles. Au combat, leur taille leur permet de se "
+"faufiler à travers des défenses qui auraient stoppé n'importe quel homme "
+"acculé. Ce sont donc des adversaires difficiles à arrêter.\n"
 "\n"
-"Remarque : "
+"Les lances constituent leur arme de prédilection, car leur jambes arrières "
+"très puissantes leur permettent de les propulser suffisamment vigoureusement "
+"pour provoquer des dégâts considérables, au corps à corps comme à distance."
 
 #. unit: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
@@ -4367,7 +4250,6 @@ msgstr "Prédicateur saurien"
 
 #. unit: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
-#, fuzzy
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
 "magical and mysterious. It is clear that some of them are particularly "
@@ -4376,9 +4258,8 @@ msgid ""
 msgstr ""
 "Les sauriens sont connus pour avoir d'étranges capacités et de mystérieux "
 "arts magiques. Il est clair que certains d'entre eux sont particulièrement "
-"doués dans une sorte de médecine très appréciable au combat.\n"
-"\n"
-"Remarque : "
+"doués dans une sorte de médecine très appréciable à chaque combat mené "
+"contre eux."
 
 #. unit: race=troll
 #: data/core/units/trolls/Great.cfg:4
@@ -4387,7 +4268,6 @@ msgstr "Grand troll"
 
 #. unit: race=troll
 #: data/core/units/trolls/Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -4395,13 +4275,11 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
-"Quand un troll, force de la nature, est aussi sage et âgé, il devient "
-"quelque chose d'extraordinaire, un monstre dont on se souviendra des "
-"générations durant. Leurs faits d'armes et leur ruse sont à l'origine de "
-"beaucoup d'histoires sur les trolls et voir ces histoires en chair et en os "
-"ne diminue en rien leur grandeur.\n"
-"\n"
-"Remarque : "
+"Un troll âgé, sage, et doté par la nature d'une force extraordinaire, "
+"devient un être d'exception, devient une bête dont on se souviendra des "
+"générations durant. Leurs tours de force et leur ruse sont à l'origine de "
+"beaucoup de légendes concernant les trolls ; voir ces histoires s'incarner "
+"en chair et en os ne diminue en rien leur grandeur."
 
 #. unit: race=troll
 #: data/core/units/trolls/Hero.cfg:4
@@ -4410,7 +4288,6 @@ msgstr "Héros troll"
 
 #. unit: race=troll
 #: data/core/units/trolls/Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
@@ -4418,9 +4295,7 @@ msgid ""
 msgstr ""
 "Certains trolls sont nés avec une part excessive de la force et de la "
 "vitalité qui caractérisent déjà leur race. Dans une société où la force fait "
-"les lois, ceux-ci sont vénérés comme des héros dans leurs tribus.\n"
-"\n"
-"Remarque : "
+"les lois, ceux-ci sont vénérés comme des héros dans leurs tribus."
 
 #. unit: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
@@ -4429,7 +4304,6 @@ msgstr "Troll lanceur de pierres"
 
 #. unit: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -4441,11 +4315,7 @@ msgstr ""
 "de trolls et certains les ont choisis comme arme de prédilection. De telles "
 "pierres n'étant pas toujours faciles à trouver, les trolls lanceurs de "
 "pierres ont choisi de les transporter dans un sac jeté par dessus leurs "
-"épaules. Le sac de cuir est facilement adapté en une fronde grossière.\n"
-"\n"
-"Remarques : quoique peu précise, une pierre lancée par une de ces créatures "
-"est bien plus mortelle que n'importe quelle flèche, si elle réussit à "
-"toucher."
+"épaules. Le sac de cuir est facilement adapté en une fronde grossière."
 
 #. unit: race=troll
 #: data/core/units/trolls/Troll.cfg:4
@@ -4454,7 +4324,6 @@ msgstr "Troll"
 
 #. unit: race=troll
 #: data/core/units/trolls/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -4466,12 +4335,10 @@ msgstr ""
 "Les trolls ont toujours tourmenté les esprits des humains et des nains, qui "
 "restent perplexes sur l'origine de ces créatures et, peut-être plus encore, "
 "sur la force impérieuse derrière leur vitalité et leur vigueur "
-"surnaturelles. Un troll adulte dressé devant un homme est, même désarmé, une "
-"grande menace en combat. Les grands gourdins, leur arme favorite dans la "
-"bataille, agissent comme une extension de leurs bras, blessant leurs "
-"victimes et les poussant à la soumission.\n"
-"\n"
-"Remarque : "
+"surnaturelles. Un troll adulte dressé devant un homme représente, même "
+"désarmé, une grande menace en combat. Les grands gourdins, qui constituent "
+"leurs armes favorites, agissent comme des extensions de leurs bras pour "
+"marteler leurs victimes et les abattre."
 
 #. unit: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
@@ -4480,7 +4347,6 @@ msgstr "Guerrier troll"
 
 #. unit: race=troll
 #: data/core/units/trolls/Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -4491,18 +4357,15 @@ msgid ""
 "kind. Given how dangerous a troll is with its bare hands, the thought of a "
 "troll with proper armament is entirely unsettling."
 msgstr ""
-"Les trolls préfèrent n'utiliser aucun armement spécifique et n'en ont en "
+"Les trolls préfèrent n'utiliser aucun armement particulier et n'en ont en "
 "général pas besoin : n'importe quel gourdin ou rocher leur convient "
-"parfaitement. Toutefois, on a vu en plusieurs occasions des trolls revêtus "
-"d'armures rudimentaires et portant des marteaux en acier. On suppose que ce "
-"sont leurs alliés habituels, les orcs, qui en sont l'origine et qui les "
-"fabriquent, car des expéditions violentes dans plusieurs terriers trolls "
-"n'ont mis en évidence que de menues preuves d'utilisation d'outils et "
-"certainement aucune de ferronnerie d'aucune sorte. Étant donné la "
-"dangerosité des trolls au combat, l'idée d'un troll en armure complète est "
-"très troublante.\n"
-"\n"
-"Remarque : "
+"parfaitement. Toutefois, on en a vu plusieurs fois revêtus d'armures "
+"rudimentaires et portant des marteaux en acier. On suppose que ce sont leurs "
+"alliés habituels, les orcs, qui les fabriquent, car des expéditions "
+"violentes dans plusieurs terriers n'ont mis en évidence que de menues "
+"preuves d'utilisation d'outils et absolument aucune ferronnerie. Étant donné "
+"la dangerosité des trolls au combat, en imaginer un très bien équipé est "
+"totalement perturbant."
 
 #. unit: race=troll
 #: data/core/units/trolls/Whelp.cfg:4
@@ -4511,7 +4374,6 @@ msgstr "Jeune troll"
 
 #. unit: race=troll
 #: data/core/units/trolls/Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -4524,9 +4386,7 @@ msgstr ""
 "trolls sont maladroits et encore incapables de marcher correctement. Ils "
 "sont obligés au contraire de se balancer sur leurs quatre membres. Mais la "
 "gêne que cela leur cause est largement compensé par la force brute propre à "
-"leur race.\n"
-"\n"
-"Remarque : "
+"leur race."
 
 #. unit: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -4535,7 +4395,6 @@ msgstr "Goule"
 
 #. unit: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
-#, fuzzy
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. The "
@@ -4546,17 +4405,14 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred in all civilized lands."
 msgstr ""
-"Seuls ceux qui ont exploré les cercles de la nécromancie savent ce qu'il "
-"faut faire pour transformer une personne en goule, et c'est un secret qu'ils "
-"gardent précieusement. Des rites indicibles qu'ils effectuent résultent une "
-"bête qui n'a plus aucun souvenir de ses jours d'être humain, une créature "
-"qui traîne des pieds, nue comme à sa naissance, et qui se gave de la chair "
-"des morts.\n"
+"Seuls les nécromanciens les plus pervers et les plus sadiques savent comment "
+"transformer une personne en goule, et c'est un secret qu'ils ne révéleront "
+"pas. La bête qui en résulte est malheureusement trop bien connue : elle ne "
+"se souvient plus de sa vie d'être humain, elle erre nue comme à la "
+"naissance, et elle se gave de la chair des morts.\n"
 "\n"
 "C'est à cause de ce genre de choses que la nécromancie est condamnée avec "
-"une haine presque primaire dans toute contrée civilisée.\n"
-"\n"
-"Remarque : "
+"une haine presque primaire dans toute contrée civilisée."
 
 #. unit: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
@@ -4574,6 +4430,13 @@ msgid ""
 "from living men - a process about which almost nothing is known, but which "
 "can be nothing but nightmarish."
 msgstr ""
+"Le nécrophage, ou « Dévoreur des morts » est une chose monstrueuse et "
+"corpulente qui ne ressemble plus que de loin à un homme. Ils ressemblent à "
+"une masse pourrie qui pourrait se déplacer ; ils sévissent avec la maladie "
+"et l'empoisonnement du sang, et répandent une odeur infecte. Le fait le plus "
+"démentiel, car il semble bien qu'il s'agisse d'un fait, est qu'ils sont "
+"constitués d'hommes vivants ; presque rien n'est connu de ce processus qui "
+"doit être totalement cauchemardesque."
 
 #. unit: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
@@ -4582,20 +4445,17 @@ msgstr "Sans-âme"
 
 #. unit: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:22
-#, fuzzy
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
-"L’animation des cadavres est malheureusement une technique bien connue de de "
-"la magie noire; les adeptes de ces arts l’utilisent souvent pour se procurer "
-"servants et soldats malgré eux. Ces hères traînants sont souvent nombreux "
-"quoique fragiles ; néanmoins, au combat, un rien peu les réveiller, les "
-"rendant bien plus effroyables.\n"
-"\n"
-"Remarque : "
+"L’animation des cadavres est malheureusement familière à la magie noire ; "
+"ses adeptes l’utilisent souvent pour animer des serviteurs et des soldats "
+"malgré eux. Ces êtres traînants sont souvent nombreux mais fragiles ; "
+"néanmoins, au combat, un rien peut les éveiller et les rendre bien plus "
+"effroyables."
 
 #. attack: type=impact
 #. attack: type=arcane
@@ -4614,16 +4474,14 @@ msgstr "Zombi"
 
 #. unit: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:21
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
 "Les zombis sont les cadavres des morts réanimés par la magie noire. Bien que "
-"peu dangereux pour un soldat entraîné, la vue d’un de ses anciens camarades "
-"faire partie de leur nombre est pour le moins effrayante.\n"
-"Remarque : "
+"peu dangereux pour un soldat entraîné, la vision de l’un de ses anciens "
+"camarades dans leurs rangs est pour le moins effrayante."
 
 #. unit: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
@@ -4632,15 +4490,12 @@ msgstr "Ancienne liche"
 
 #. unit: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
-#, fuzzy
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
 "Un être de cet ordre est un héraut des temps ancestraux. Quiconque rencontre "
-"une ancienne liche doit craindre bien pire que la mort.\n"
-"\n"
-"Remarques : "
+"une ancienne liche doit craindre bien pire que la mort."
 
 #. attack: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
@@ -4664,7 +4519,6 @@ msgstr "Adepte des ténèbres"
 
 #. unit: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:25
-#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -4677,18 +4531,15 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
-"Pour séduire des pratiquants, l'attrait de la magie noire doit être d'une "
-"grande valeur car toute personne surprise à la pratique de cet art dans le "
-"monde civilisé est condamnée à mort. Et pourtant certains persistent, car le "
-"prix offert n'est rien de moins que l'immortalité. Cachés dans des sectes "
-"secrètes ou initiés dans les ordres sombres du monde occulte, la formation "
-"que ces fanatiques doivent endurer les mène souvent à leur épuisement et "
-"leur affaiblissement.\n"
+"L'attrait de la magie noire doit être très élevé pour séduire ses adeptes, "
+"car toute personne surprise pratiquant cet art dans le monde civilisé est "
+"condamnée à mort. Certains persistent pourtant, car la récompense attendue "
+"n'est rien moins que l'immortalité. Cachés dans des sectes secrètes ou "
+"initiés dans des ordres sombres du monde occulte, ces fanatiques endurent "
+"souvent une formation qui les affaiblit souvent jusqu'à l'épuisent.\n"
 "\n"
-"Dans de telles conditions, leur seule arme est l'art à l'apprentissage "
-"auquel ils consacrent leur vie.\n"
-"\n"
-"Remarque : "
+"Dans de telles conditions, leur seule arme est le sérieux qu'ils consacrent "
+"à l'apprentissage."
 
 #. attack: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
@@ -4704,7 +4555,6 @@ msgstr "Adepte des ténèbres"
 
 #. female
 #: data/core/units/undead/Necro_Dark_Adept.cfg:203
-#, fuzzy
 msgid ""
 "female^To attract any practitioners, the lure of black magic must be a great "
 "prize indeed, for anyone caught practicing the art in the civilized world is "
@@ -4717,18 +4567,15 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
-"Pour séduire des pratiquantes, l'attrait de la magie noire doit être d'une "
-"grande valeur car toute personne surprise à la pratique de cet art dans le "
-"monde civilisé est condamnée à mort. Et pourtant certaines persistent, car "
-"le prix offert n'est rien de moins que l'immortalité. Cachées dans des "
-"sectes secrètes ou initiées dans les ordres sombres du monde occulte, la "
-"formation que ces fanatiques doivent endurer les mène souvent à leur "
-"épuisement et leur affaiblissement.\n"
+"L'attrait de la magie noire doit être très élevé pour séduire ses adeptes, "
+"car toute personne surprise pratiquant cet art dans le monde civilisé est "
+"condamnée à mort. Certains persistent pourtant, car la récompense attendue "
+"n'est rien moins que l'immortalité. Cachées dans des sectes secrètes ou "
+"initiées dans des ordres sombres du monde occulte, ces fanatiques endurent "
+"souvent une formation qui les affaiblit souvent jusqu'à l'épuisent.\n"
 "\n"
-"Dans de telles conditions, leur seule arme est l'art à l'apprentissage "
-"auquel elles consacrent leur vie.\n"
-"\n"
-"Remarque : "
+"Dans de telles conditions, leur seule arme est le sérieux qu'elles "
+"consacrent à l'apprentissage."
 
 #. unit: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
@@ -4754,6 +4601,19 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"La crainte inspirée par la magie noire provient de l'ignorance qu'en a "
+"l'homme du commun. Les sorciers des ténèbres ont commencé à percer les "
+"secrets de la vie et de la mort, elle-même vraiment trop facile à infliger. "
+"Ce travail leur offre d'abord un premier aperçu des liens entre l'âme et la "
+"matière, puis leur donne la capacité à se livrer aux premiers essais "
+"fructueux pour manipuler ces liens. L'effroyable inconnue qui se cache par-"
+"delà la mort est entrevue et va faire l'objet de recherches approfondies.\n"
+"\n"
+"Au-delà des tentatives d'arracher leur propre immortalité à l'emprise de la "
+"nature, les applications initiales de leurs expériences sont abjectes : la "
+"vie insufflée à la matière morte permet de créer des serviteurs qui "
+"travailleront et tueront sans jamais questionner leur maître ; cette "
+"fidélité comblerait tout tyran et peut tenter tous ceux avides de pouvoir."
 
 #. female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
@@ -4779,6 +4639,19 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"La crainte inspirée par la magie noire provient de l'ignorance qu'en a "
+"l'homme du commun. Les sorcières des ténèbres ont commencé à percer les "
+"secrets de la vie et de la mort, elle-même vraiment trop facile à infliger. "
+"Ce travail leur offre d'abord un premier aperçu des liens entre l'âme et la "
+"matière, puis leur donne la capacité à se livrer aux premiers essais "
+"fructueux pour manipuler ces liens. L'effroyable inconnue qui se cache par-"
+"delà la mort est entrevue et va faire l'objet de recherches approfondies.\n"
+"\n"
+"Au-delà des tentatives d'arracher leur propre immortalité à l'emprise de la "
+"nature, les applications initiales de leurs expériences sont abjectes : la "
+"vie insufflée à la matière morte permet de créer des serviteurs qui "
+"travailleront et tueront sans jamais questionner leur maîtresse ; cette "
+"fidélité comblerait tout tyran et peut tenter tous ceux avides de pouvoir."
 
 #. unit: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
@@ -4787,7 +4660,6 @@ msgstr "Liche"
 
 #. unit: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:23
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -4800,18 +4672,14 @@ msgid ""
 "question can be raised at all, testifies to the magnitude of what their "
 "order has achieved."
 msgstr ""
-"La liche est l'incarnation du but ultime de la magie noire : la quête de "
-"l'immortalité. Bien que le sacrifice à faire soit énorme, la transformation "
-"en liche permet d'éviter l'aspect le plus terrifiant de la mort. En effet, "
-"c'est l'âme qui est maintenue intacte, alors que le corps peut se "
-"décomposer.\n"
+"La liche incarne le but ultime de la magie noire : la recherche de "
+"l'immortalité. Malgré l'énorme sacrifice consenti, cette renaissance permet "
+"d'éviter l'aspect le plus terrifiant de la mort ; en effet, l'âme et "
+"l'esprit sont maintenus intacts, même si le corps continue à se décomposer.\n"
 "\n"
-"Seuls les meilleurs nécromanciens savent si la vie ainsi obtenue est "
-"éternelle ou seulement prolongée. Mais le fait que la question se pose est "
-"une preuve de leurs effrayantes connaissances et de ce qu'ils ont déjà "
-"réalisé.\n"
-"\n"
-"Remarque : "
+"Seuls peut-être les meilleurs nécromanciens savent si l'existence ainsi "
+"obtenue est éternelle ou seulement prolongée. Mais l'absence de réponse "
+"prouve déjà le niveau des résultats obtenus."
 
 #. unit: race=human
 #: data/core/units/undead/Necromancer.cfg:4
@@ -4820,7 +4688,6 @@ msgstr "Nécromancien"
 
 #. unit: race=human
 #: data/core/units/undead/Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -4830,17 +4697,14 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
-"Une des plus grandes disciplines de ce que qui est considéré comme de la « "
-"magie noire » est l'art de la nécromancie, la terrible capacité de réveiller "
-"les morts avec une vie artificielle. Cet seule découverte a causé la "
-"condamnation par l'humanité de la « Magie Noire » pour les réalités "
-"cauchemardesques que cela a engendré, et a donné à la peur un large panel "
-"d’armes nouvelles.\n"
+"Une des plus grandes disciplines de la dite « Magie noire » est l'art de la "
+"nécromancie, cette terrible capacité d'animer les morts d'une vie "
+"artificielle. Cette seule découverte a déclenché sa condamnation par "
+"l'humanité : la magie noire pouvait maintenant utiliser ses créations "
+"cauchemardesques comme un nouvel arsenal pour répandre la terreur.\n"
 "\n"
-"Cette capacité, dans tous ses aspects, est le premier pas vers la défaite de "
-"la mort et de son ultime récompense.\n"
-"\n"
-"Remarques : "
+"Cette art, quelles qu'en soient les manifestations, forme la première étape "
+"pour vaincre la mort."
 
 # C'est le niveau de puissance le plus élevé qu'un mage noir peut atteindre sans lâcher prise avec l'humanité, mais c'est bien peu de chose à côté du pouvoir mortel des liches. Leur corps de mortels sont aussi rendus plus résistants par leur magie, par opposition à ceux décomposés et fragiles des liches.
 #. attack: type=impact
@@ -4860,7 +4724,6 @@ msgstr "Archer de la dévastation"
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:17
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4871,11 +4734,9 @@ msgstr ""
 "Les plus puissants des archers morts-vivants sont invariablement ceux qui "
 "furent archers dans leur précédente vie. Ils errent sur les champs de "
 "bataille, guidés par la mémoire pâlissante de leur ancien talent, ne "
-"connaissant ni ne se préoccupant de ce que sont à présent leur rôle et leurs "
+"connaissant ni ne se préoccupant de ce que sont à présent leur but et leurs "
 "ennemis. Ils sont seulement guidés par une méchanceté née de l'angoisse de "
-"leur existence vide et incohérente.\n"
-"\n"
-"Remarque : "
+"leur existence vide et torturée."
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -4884,7 +4745,6 @@ msgstr "Décocheur d'os"
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. The potency of their un-life is given equipment to match; "
@@ -4893,15 +4753,13 @@ msgid ""
 "victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
 "unfortunate enemies."
 msgstr ""
-"Parmi les créations des nécromanciens, certaines s'adaptent mieux à la "
-"pseudo-vie qui leur est donnée que d'autres. Et l’équipement qu’ils se "
-"procurent s’accorde au potentiel acquis de leur vivant. Ceci est "
-"particulièrement vrai pour les archers, souvent armés de façon ignoble. "
-"Leurs carquois sont remplis de flèches faites non pas de bois, mais des os "
-"de leurs victimes. C’est pourquoi ils sont surnommés « lanceurs d'os » par "
-"leurs infortunés ennemis, \n"
-"\n"
-"Remarque : "
+"Certaines créations des nécromanciens s'adaptent mieux que d'autres à la "
+"pseudo-vie qui leur est accordée, et s'équipent pour profiter au maximum du "
+"potentiel acquis de leur vivant. Ceci est particulièrement vrai pour les "
+"archers, souvent armés de façon ignoble : leurs carquois sont remplis de "
+"flèches faites non pas de bois, mais des os de leurs victimes. C’est "
+"pourquoi leurs infortunés ennemis les surnomment simplement « décocheurs "
+"d'os »."
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
@@ -4910,16 +4768,14 @@ msgstr "Chocob'os"
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:20
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
-"Montant les squelettes de grands oiseaux employés comme monture par une "
-"civilisation antique et perdue, les chocob'os peuvent se déplacer plus "
-"rapidement que la plupart des unités montées.\n"
-"Remarque : "
+"Montant des squelettes d'oiseaux ressemblant à des autruches autrefois "
+"employées comme montures par une civilisation perdue, les chocob'os peuvent "
+"se déplacer plus rapidement que la plupart des unités montées."
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
@@ -4928,19 +4784,16 @@ msgstr "Chevalier de la mort"
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and stung by betrayal, have come back to this world as Death Knights. "
 "Wielding the same weapons as in life, they command the Undead in their quest "
 "for revenge."
 msgstr ""
-"Parfois les guerriers et généraux parmi les plus puissants, maudits par la "
-"haine et un sentiment de trahison, reviennent en ce monde en tant que "
-"chevaliers de la mort. Ayant gardé leurs précédentes armes, ils dirigent les "
-"morts-vivants dans leur quête de vengeance.\n"
-"\n"
-"Remarque : "
+"Des contes disent que des guerriers et généraux parmi les plus puissants, "
+"animés par la haine et tourmentés par un sentiment de trahison, reviennent "
+"en ce monde en tant que chevaliers de la mort. Ayant gardé leurs précédentes "
+"armes, ils dirigent les morts-vivants dans leur quête de vengeance."
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
@@ -4949,7 +4802,6 @@ msgstr "Mortelame"
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters, recognizing "
@@ -4957,24 +4809,19 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
-"Dans leur vie, les abominations connues sous le nom de « mortelames » étaient "
-"des maîtres du combat, des soldats à la fois agiles et mortels. Leurs "
-"nouveaux maîtres le reconnaîtront souvent et tenteront d'en tirer avantage "
-"en les équipant pour qu'ils retrouvent leur talent passé. Bien que fragiles, "
-"ces monstres sont bien plus rapides que leurs semblables, tant dans leurs "
-"déplacements qu'avec leurs lames.\n"
-"\n"
-"Remarque : "
+"Par le passé, les abominations appelées « mortelames » étaient des maîtres "
+"du combat à la fois agiles et mortels. Leurs nouveaux maîtres le savent "
+"souvent et tenteront d'en profiter en les équipant pour qu'ils retrouvent "
+"leurs talents. Bien que fragiles, ces monstres sont bien plus rapides que "
+"leurs semblables, tant dans leurs déplacements qu'avec leurs lames."
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
 msgstr "Draug"
 
-# Traduction libre, j'ai pas tout compris à la VO
 #. unit: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
-#, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were. "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
@@ -4982,14 +4829,12 @@ msgid ""
 "for a peace bought only by strength of arms. And so they struggle; both "
 "unthinking, and unrelenting."
 msgstr ""
-"Dans ces corps décharnés, il ne reste presque rien de ce que furent ces "
-"hommes. Valeureux guerriers, ils sont maintenant perdus dans les nimbes en "
-"quête des grandes batailles de leur mémoire défaillante, se battant "
-"désespérément pour leur libération, pour une paix qu’ils arrachaient avant "
-"les armes au poing. Ainsi, ils perpétuent cette lutte, invariablement, tels "
-"des pantins.\n"
-"\n"
-"Remarque : "
+"Dans ces corps de géants décharnés, il ne reste presque rien de ce que "
+"furent ces hommes. Valeureux guerriers maintenant égarés dans les nimbes de "
+"la non-vie, ils sont perdus dans leurs souvenirs de combats héroïques et se "
+"battent désespérément pour être libérés, pour trouver une paix arrachée "
+"seulement par la force des armes. Ils luttent ainsi, sans réflexion ni "
+"rémission."
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
@@ -4998,7 +4843,6 @@ msgstr "Revenant"
 
 #. unit: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:17
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -5012,9 +4856,7 @@ msgstr ""
 "Même les sorciers qui les ont rappelés ne peuvent que faire des suppositions "
 "sur leur passé. Mises à part ces questions, un revenant est un outil "
 "puissant au combat : un guerrier sans peur qui ne sent pas la douleur et qui "
-"se battra jusqu'à la mort.\n"
-"\n"
-"Remarque : "
+"se battra jusqu'à la fin."
 
 #. unit: race=undead
 #: data/core/units/undead/Skeleton.cfg:4
@@ -5023,7 +4865,6 @@ msgstr "Squelette"
 
 #. unit: race=undead
 #: data/core/units/undead/Skeleton.cfg:18
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -5031,11 +4872,9 @@ msgid ""
 "any who would challenge their master."
 msgstr ""
 "Les squelettes sont les guerriers massacrés dans la bataille et ressuscités "
-"par la magie noire. Sans conscience propre, et résolus dans leur dessein, "
-"ils ne craignent ni la douleur ni la mort, et leur seule présence suffit "
-"souvent à effrayer quiconque se dresse contre leur maître.\n"
-"\n"
-"Remarque : "
+"par la magie noire. Sans conscience propre et résolus dans leur dessein, ils "
+"ne craignent ni la douleur ni la mort ; leur seule présence suffit souvent à "
+"effrayer quiconque se dresse contre leur maître."
 
 #. unit: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
@@ -5044,7 +4883,6 @@ msgstr "Archer squelette"
 
 #. unit: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -5053,12 +4891,10 @@ msgid ""
 "is already dead."
 msgstr ""
 "Un archer squelette est légèrement différent des « squelettes » qui "
-"l'accompagnent souvent. C'est un péché contre-nature, un guerrier rappelé de "
-"la mort pour se battre une fois de plus. Dans les mains de leur maître, ces "
-"soldats feront n'importe quoi pour achever les tâches exposées devant eux, "
-"la peur de la mort ne touchant pas celui qui est déjà mort.\n"
-"\n"
-"Remarque : "
+"l'accompagnent souvent. C'est un péché contre-nature, un guerrier rappelé "
+"des morts pour se battre une fois de plus. Entre les mains de leur maître, "
+"ces soldats feront tout pour réussir les tâches qui leur sont proposées, la "
+"crainte de périr ne concernant pas quelqu'un de déjà mort."
 
 #. unit: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -5067,7 +4903,6 @@ msgstr "Fantôme"
 
 #. unit: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:20
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -5077,16 +4912,14 @@ msgid ""
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
-"Une des grandes bontés de la création est que l'âme humaine est immuable et "
-"ne peut être détruite. Cependant, les nombreuses choses qu'un nécromancien "
-"peut en faire sont terrifiantes.\n"
+"Un des plus grands bienfaits de la création est que l'âme humaine est "
+"immuable et ne peut être détruite. Cependant, les nombreuses choses qu'un "
+"nécromancien peut en faire sont terrifiantes.\n"
 "\n"
-"Piégé dans un linceul d'enchantements maléfiques, un esprit est pareil au "
-"vent dans les voiles d'un navire. L'instrument résultant de cette prison est "
-"un serviteur infaillible, pouvant réaliser toute tâche pour laquelle son "
-"maître le juge adapté.\n"
-"\n"
-"Remarque : "
+"Piégé dans un linceul d'enchantements maléfiques, un esprit piégé est pareil "
+"au vent dans les voiles d'un navire. L'être maudit devient un serviteur "
+"infaillible devant réaliser toute tâche pour laquelle son maître le juge "
+"adapté."
 
 #. attack: type=cold
 #: data/core/units/undead/Spirit_Wraith.cfg:31
@@ -5102,19 +4935,16 @@ msgstr "Horreur nocturne"
 
 #. unit: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:17
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
 "living, and those who live to speak of them had no leisure to study their "
 "foe."
 msgstr ""
-"L'utilité des masques que portent ces créatures est inconnue, comme l'est le "
-"visage qu'ils cachent. Ces formes terribles sont rarement vues par les "
-"vivants et ceux qui survivent pour en parler n'ont pas eu le loisir "
-"d'étudier cet ennemi.\n"
-"\n"
-"Remarque : "
+"L'utilité des masques que portent ces créatures est inconnue, tout comme "
+"l'est le visage qu'ils cachent. Ces formes terribles sont rarement vues par "
+"les vivants et ceux qui survivent pour en parler n'ont pas eu le loisir "
+"d'étudier cet ennemi."
 
 #. unit: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
@@ -5123,7 +4953,6 @@ msgstr "Ombre"
 
 #. unit: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -5133,12 +4962,10 @@ msgid ""
 msgstr ""
 "Lorsque la lumière arriva dans l'univers donnant une forme à l'inconnu, la "
 "peur fut forcée de se retirer dans l'obscurité. Depuis ce jour, les ombres "
-"de la terre ont maintenu la terreur sur l'humanité, bien qu'elles ne sachent "
-"pas pourquoi.\n"
+"de la terre ont maintenu la terreur sur l'humanité, bien qu'elle ne sache "
+"pas ce qu'elle craint.\n"
 "\n"
-"C'est une question à laquelle un nécromancien répondra facilement.\n"
-"\n"
-"Remarques : "
+"Un nécromancien répondra facilement à cette question."
 
 #. unit: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
@@ -5147,7 +4974,6 @@ msgstr "Spectre"
 
 #. unit: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
@@ -5157,16 +4983,14 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake."
 msgstr ""
-"Parfois appelés les « hommes invisibles », les spectres forment le bras droit "
-"de la force de leur maître. Ces abominations sont, à juste titre, la terreur "
-"des vivants : ils sont aussi morts et mortels que leur apparence le laisse "
+"Parfois appelés les « hommes invisibles », les spectres composent "
+"l'essentiel des forces de leur maître. Ces maudites abominations terrorisent "
+"les vivants, car ils sont aussi mortels que leur apparence le laisse "
 "supposer.\n"
 "\n"
-"Créer un spectre n'est pas réellement un exploit ; le réel danger, lorsque "
-"l'on en rencontre un, est qu'il n'est probablement que le précurseur d'une "
-"force bien plus dangereuse.\n"
-"\n"
-"Remarques : "
+"La création d'un spectre constitue un bon tour d'adresse ; mais le vrai "
+"danger reste que sa rencontre ne présage souvent que la venue d'un péril "
+"bien plus redoutable."
 
 #. attack: type=arcane
 #: data/core/units/undead/Spirit_Wraith.cfg:20
@@ -5181,7 +5005,6 @@ msgstr "Apparition"
 
 #. unit: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:16
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them as if "
@@ -5189,15 +5012,12 @@ msgid ""
 "are invincible which is so frightening, a notion that is fortunately far "
 "from the truth."
 msgstr ""
-"Ces formes torturées de ce qui étaient jadis des guerriers sont parmi les "
-"choses les plus terrifiantes qu'un nécromancien puisse créer, étant donné "
-"qu'une épée les tranchera de part en part comme si elles étaient faites "
-"d'air, sans leur causer de dommages apparents. Ce qui inspire une telle peur "
-"est la pensée que ces monstres sont invincibles, une croyance qui est en "
-"fait loin de la vérité.\n"
-"\t\n"
-"\n"
-"Remarques : "
+"Ces formes torturées d'anciens guerriers sont parmi les choses les plus "
+"terrifiantes qu'un nécromancien puisse créer, étant donné qu'une épée les "
+"tranchera de part en part comme si elles étaient faites d'air, sans leur "
+"causer de dommages apparents. Ce qui inspire une telle peur est la pensée "
+"que ces monstres sont invincibles ; cette croyance est heureusement loin de "
+"la vérité."
 
 #. unit: race=wose
 #: data/core/units/wose/Ancient.cfg:4
@@ -5206,7 +5026,6 @@ msgstr "Wose ancestral"
 
 #. unit: race=wose
 #: data/core/units/wose/Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -5217,16 +5036,15 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
 msgstr ""
-"Il est des histoires étranges, comme celle de ce fermier qui avait un vieux "
-"chêne dans son champ, si ancien qu'il avait vu le père de son père creuser "
-"les sillons de ce champ. Ce chêne faisait partie de la mémoire de la "
-"famille. Quel surprise ce fut ce matin-là de ne trouver plus qu'un lopin de "
-"terre meuble là où, la veille, se tenait encore l'arbre vénérable.\n"
+"Une histoire étrange raconte qu'un fermier avait un vieux chêne dans son "
+"pré, si ancien qu'il poussait déjà quand son père creusait les premiers "
+"sillons de ce champ ; ce chêne faisait partie de la mémoire de la famille. "
+"Pour lui, quelle surprise ce fut ce matin-là, au réveil, de découvrir que "
+"l'arbre s'était évanouit, ne laissant à sa place qu'un lopin de terre "
+"meuble.\n"
 "\n"
 "Ce genre de légendes sont les seuls témoignages connus en ce qui concerne "
-"les woses les plus anciens.\n"
-"\n"
-"Remarque : "
+"les woses les plus anciens."
 
 #. attack: type=impact
 #: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
@@ -5241,7 +5059,6 @@ msgstr "Wose vénérable"
 
 #. unit: race=wose
 #: data/core/units/wose/Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -5255,18 +5072,16 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
-"On raconte que les woses prennent de nombreuses formes toutes semblables à "
-"des arbres, et qu'ils grandissent tout au long de leur vie. Des histoires "
-"parlent de woses qui ressemblent à des arbres dominant les créatures qui "
-"marchent à leurs pieds. C'est pourquoi on les voit si rarement : ils restent "
-"endormis, comme ils le font souvent. Un wose de cette stature ressemble "
-"simplement à un arbre étrange. Même un elfe insouciant peut parfois se "
-"laisser tromper.\n"
+"On raconte que les woses prennent de nombreuses formes toutes sylvestres, et "
+"qu'ils grandissent tout au long de leur vie. Des histoires parlent de woses "
+"qui ressemblent à des arbres dominant les créatures qui marchent à leurs "
+"pieds. C'est pourquoi on les voit si rarement : ils restent endormis, comme "
+"ils le font souvent. Un wose de cette stature ressemble simplement à un "
+"arbre de forme étrange. Même un elfe insouciant peut parfois se laisser "
+"tromper.\n"
 "\n"
 "Les woses ne sont vraiment pas des guerriers, mais leur force peut servir à "
-"la violence si quelqu'un réussit à déclencher la colère de ces créatures.\n"
-"\n"
-"Remarque : "
+"la violence si quelqu'un réussit à déclencher la colère de ces créatures."
 
 #. unit: race=wose
 #: data/core/units/wose/Wose.cfg:4
@@ -5275,7 +5090,6 @@ msgstr "Wose"
 
 #. unit: race=wose
 #: data/core/units/wose/Wose.cfg:20
-#, fuzzy
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -5288,19 +5102,16 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
 msgstr ""
-"Rarement aperçu, même par les elfes, un wose est un type de créature sur "
-"lequel on en connaît peu. Les elfes sont la principale source de "
-"connaissance à leur propos, ils savent que ces êtres ne descendent pas des "
-"arbres, malgré leur aspect similaire, et que les woses sont plus proches du "
-"monde des fées que les elfes eux-mêmes, quoique d'une manière différente. "
-"Les motivations et mécanismes de leur espèce sont inconnus, bien que la "
-"plupart avancent l'idée évidente que les woses sont les gardiens de la "
-"nature.\n"
+"Rarement aperçu, même par les elfes, un wose est un type de créature peu "
+"connu. Les elfes sont la principale source de connaissance à leur propos ; "
+"ils savent que ces êtres ne descendent pas des arbres, malgré leur aspect "
+"similaire, et que les woses sont plus proches du monde des fées que les "
+"elfes eux-mêmes, quoique d'une manière différente. Les motivations et "
+"mécanismes de leur espèce sont inconnus, bien que la plupart avancent l'idée "
+"évidente que les woses sont les gardiens de la nature.\n"
 "\n"
 "Les woses sont complètement pacifiques, mais possèdent une grande force. Ils "
-"ne sont, malgré tout, ni rapides, ni prompts à se déplacer.\n"
-"\n"
-"Remarque : "
+"ne sont, malgré tout, ni rapides, ni prompts à se déplacer."
 
 #~ msgid ""
 #~ "\n"
@@ -5349,58 +5160,3 @@ msgstr ""
 #~ "contrées sauvages. Ils traquent tout ce qui bouge sur leur territoire, "
 #~ "humains compris. Les bandes de bandits les recrutent pour leurs capacités "
 #~ "à ramener toute sorte de proies."
-
-# Benoît : Rajouter hors-la-loi fait doublon en français
-#~ msgid "Outlaw Ranger"
-#~ msgstr "Rôdeur"
-
-#~ msgid ""
-#~ "Rangers are wild men and masters of forest and hills. They are excellent "
-#~ "trackers, scouts, and archers, moving freely through the countryside "
-#~ "under the cover of night. Most rulers are afraid of rangers and would "
-#~ "rather put them in the dungeon than put their abilities to use."
-#~ msgstr ""
-#~ "Les rôdeurs sont des hommes sauvages et les maîtres des forêts et des "
-#~ "collines. Ce sont d'excellents pisteurs, éclaireurs et archers, se "
-#~ "déplaçant librement de nuit à travers la campagne. La plupart des "
-#~ "dirigeants ont peur des rôdeurs et préféreraient les mettre dans un "
-#~ "donjon plutôt que d'utiliser leurs aptitudes."
-
-#~ msgid "dummy"
-#~ msgstr "arme factice"
-
-#~ msgid "cold"
-#~ msgstr "froid"
-
-#~ msgid "arcane"
-#~ msgstr "sacré"
-
-#~ msgid "impact"
-#~ msgstr "contondant"
-
-#~ msgid "fire"
-#~ msgstr "feu"
-
-#~ msgid "blade"
-#~ msgstr "tranchant"
-
-#~ msgid "pierce"
-#~ msgstr "perforant"
-
-#~ msgid ""
-#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
-#~ "their hoped-for food with beast-like ferocity. When they are sated with "
-#~ "the flesh of their victims, they simply shrug off all damage sustained as "
-#~ "if they had been freshly summoned, to begin their search for flesh "
-#~ "again.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Rendus voraces par une faim démoniaque pour la chair morte, les "
-#~ "nécrophages attaquent ce qu'ils considèrent comme leur future nourriture "
-#~ "grâce à leurs griffes empoisonnées. Lorsqu'ils se repaissent de leurs "
-#~ "victimes, ils récupèrent naturellement de leurs blessures comme s'ils "
-#~ "venaient d'être invoqués par leur maître, pour ensuite recommencer leur "
-#~ "recherche incessante de nouvelles proies.\n"
-#~ "\n"
-#~ "Remarque : "

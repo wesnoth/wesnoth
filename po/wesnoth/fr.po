@@ -12,15 +12,14 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-17 10:29+0100\n"
-"PO-Revision-Date: 2008-03-10 20:21+0100\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"PO-Revision-Date: 2008-03-19 02:12+0100\n"
+"Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.11.2\n"
-"X-Poedit-Bookmarks: -1,901,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. advanced_preference: type=boolean
 #: data/_main.cfg:36
@@ -32,7 +31,6 @@ msgstr "Sauvegardes compressées"
 msgid "Mouse Scrolling"
 msgstr "Défilement de la souris"
 
-# Benoît : je suis pas sûr d'avoir compris de quoi il s'agit.
 #. advanced_preference: type=boolean
 #: data/_main.cfg:50
 msgid "Animate Map"
@@ -104,7 +102,7 @@ msgid ""
 msgstr ""
 "Magique :\n"
 "Cette attaque a toujours 70 % de chance d'atteindre sa cible quelque soit la "
-"configuration défensive de l'ennemi."
+"capacité défensive de l'ennemi."
 
 #. firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
@@ -195,9 +193,8 @@ msgstr "Traduction chinoise"
 
 #. about
 #: data/core/about.cfg:885
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Traduction chinoise"
+msgstr "Traduction chinoise (taïwan)"
 
 #. about
 #: data/core/about.cfg:892
@@ -602,6 +599,12 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"Faites très attention aux objectifs du scénario en début de jeu. Souvent, "
+"vous gagnerez en tuant tous les meneurs ennemis et ne serez battu qu'en "
+"perdant votre propre chef. Mais certains scénarios ont d'autres conditions "
+"de victoire : amener une unité à un point précis de la carte, secourir "
+"quelqu'un, résoudre une énigme, résister à un siège pendant un certain "
+"nombre de tours."
 
 #. topic
 #: data/core/help.cfg:154
@@ -613,6 +616,12 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Après avoir gagné un scénario, la carte se grise et le bouton de fin de tour "
+"se transforme en bouton de fin de scénario. Vous pouvez ainsi, par exemple, "
+"changer vos options de sauvegarde ou, en jeu multijoueurs, discuter avec les "
+"autres avant de continuer."
 
 #. topic
 #: data/core/help.cfg:159
@@ -1829,9 +1838,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités mécaniques ont généralement « Mécanique » comme seul trait. Commes "
-"ces unités n'ont pas vraiement de vie propre, le drain de vie, la peste et "
-"au poison n'ont aucun effet sur elles."
+"Les unités mécaniques ont généralement « Mécanique » comme seul trait. "
+"Commes ces unités n'ont pas vraiement de vie propre, le drain de vie, la "
+"peste et au poison n'ont aucun effet sur elles."
 
 #. topic
 #: data/core/help.cfg:398
@@ -1898,6 +1907,9 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"La topographie des cartes du jeu comprenddes terrains variés qui influent à "
+"la fois sur le déplacement des unités et sur leurs capacités défensives.\n"
+"\n"
 
 #. topic
 #: data/core/help.cfg:423
@@ -2551,6 +2563,7 @@ msgstr ""
 "<ref>dst=debug_commands text='Commandes du mode débug'</ref>.\n"
 "Le mode débug est désactivé à la fin de la partie ou par la commande :"
 "nodebug.\n"
+"\n"
 
 #. topic
 #: data/core/help.cfg:686
@@ -2589,6 +2602,9 @@ msgid ""
 "Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
+"\n"
+"Passe un domaine d'un niveau de journalisation à un autre.\n"
+"\n"
 
 #. topic
 #: data/core/help.cfg:695
@@ -2673,9 +2689,9 @@ msgstr ""
 "\n"
 "Donne le contrôle d'un camp (écrire ici le numéro de camp) à un joueur "
 "(écrire ici son surnom d'utilisateur ou d'observateur). vous pouvez regarder "
-"à qui appartient un camp dans la fenêtre « Paramètres du Scénario » ( appuyez "
+"à qui appartient un camp dans la fenêtre « Paramètres du Scénario » (appuyez "
 "sur le bouton « Suite » de la fenêtre d'état pour y accéder (alt+s par "
-"défaut).).\n"
+"défaut)).\n"
 "\n"
 
 #. topic
@@ -2691,6 +2707,7 @@ msgstr ""
 "Éjecte un utilisateur en mode multijoueur. Il pourra rejoindre la partie. "
 "C'est en général un moyen amical d'enlever quelqu'un qui a des problèmes de "
 "connexion ou autre.\n"
+"\n"
 
 #. topic
 #: data/core/help.cfg:723
@@ -2703,6 +2720,7 @@ msgstr ""
 "\n"
 "Ignore l'observateur spécifié. Si aucun nom n'est fourni, affiche la liste "
 "des utilisateurs ignorés.\n"
+"\n"
 
 #. topic
 #: data/core/help.cfg:724
@@ -3089,8 +3107,8 @@ msgid ""
 "unit."
 msgstr ""
 "Nécrophagie :\n"
-"Cette unité gagne un point de vie rajouté à chaque fois qu'elle tue une "
-"unité vivante. Ce point de vie est aussi ajouté au maximum."
+"Cette unité gagne un point de vie à chaque fois qu'elle tue une unité "
+"vivante. Ce point de vie est aussi ajouté au maximum."
 
 #: data/core/macros/abilities.cfg:500
 msgid "+1 max HP"
@@ -4351,7 +4369,7 @@ msgid ""
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
 " Cette unité peut se cacher dans les villages (à l'exception des villages "
-"marins), restant invisible de ses ennemis, sauf s'ils sont juste à coté."
+"aquatiques), restant invisible de ses ennemis, sauf s'ils sont juste à coté."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -4413,7 +4431,6 @@ msgstr ""
 "mais seulement en attaque."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -5379,6 +5396,9 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"N'oubliez pas de faire gagner de l'expérience à votre chef ! Vous devez le "
+"protéger, mais il risque d'être trop faible pour survivre aux futurs "
+"affrontements si vous le couvez trop."
 
 #. tip
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
@@ -5393,6 +5413,10 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"Le menu « Actions » permet de voir les mouvements ennemis pour indiquer les "
+"hexagones que votre adversaire peut atteindre (en supposant que vos unités "
+"restent là où elles sont). Utilisez cette possibilité pour vous assurer que "
+"vos unités faibles ou blessées seront à l'abri au tour suivant."
 
 #. tip
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
@@ -5418,6 +5442,9 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Les unités avec le trait « intelligent » ont besoin de moins d'expérience "
+"pour progresser. Au début des campagnes, essayez de leur faire porter le "
+"coup fatal pour profiter rapidement de troupes de haut niveau."
 
 #. tip
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
@@ -5431,6 +5458,9 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"Encercler est une tactique très efficace, surtout contre des adversaires "
+"rapides. Deux unités en vis-à-vis autour de l'ennemi ont des zones de "
+"contrôles qui limitent son déplacement à un hexagone."
 
 #. tip
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
@@ -5444,6 +5474,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
+"Vous pouvez soit recruter soit rappeler des unités en cliquant droit sur une "
+"case de château. Cela vous permet de choisir l'endroit où l'unité "
+"apparaitra. Un placement avisé permet parfois d'atteindre un village un tour "
+"plus tôt."
 
 #. tip
 #: data/hardwired/tips.cfg:23
@@ -5452,6 +5486,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Il existe plusieurs écrans de résumé dans le menu principal : par exemple, "
+"la table des états vous permet de comparer vos performances et celles de vos "
+"ennemis."
 
 #. tip
 #: data/hardwired/tips.cfg:27
@@ -5460,6 +5497,10 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Des unités avec le trait « rapide » peuvent se bouger d'un hexagone de plus "
+"par tour. Cela peut être très important quand le déplacement s'effectue sur "
+"terrain difficile, comme de l'eau ou des cavernes ; cela peut faire la "
+"différence entre bouger d'une case ou de deux."
 
 #. tip
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
@@ -5472,6 +5513,9 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Après avoir joué quelque scénarios, lisez attentivement la section « "
+"Déroulement du jeu » dans l'écran d'aide. Les détails deviennent cruciaux "
+"quand le jeu devient plus difficile !"
 
 #. tip
 #: data/hardwired/tips.cfg:35
@@ -5480,6 +5524,9 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"En campagne, il est souvent préférable de commencer un scénario avec des "
+"unités faibles qui sont prêtes à augmenter de niveau plutôt que de rappeler "
+"ces mêmes unités déjà à un niveau plus haut."
 
 #. tip
 #: data/hardwired/tips.cfg:39
@@ -5487,6 +5534,8 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Vous pouvez consulter le support technique, les guides stratégiques, "
+"l'histoire de Wesnoth, et bien plus encore sur le site www.wesnoth.org."
 
 #. tip
 #: data/hardwired/tips.cfg:40
@@ -5512,6 +5561,8 @@ msgstr "- Recueil Royal de Terminologie Militaire - Tome II, 212 YM"
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
+"Un plan paraissant ingénieux peut échouer si vous attaquez au mauvais moment "
+"de la journée."
 
 #. tip
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
@@ -5527,6 +5578,11 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
+"Vous ne saurez pas à qui vous avez affaire si vous jouez avec le voile ou le "
+"brouillard de guerre. Dans ce cas, utiliser des unités de reconnaissances à "
+"long rayon d'action en vaut la peine ; essayez de privilégier des éclaireurs "
+"qui peuvent facilement traverser les terrains environnants, car les unités "
+"voient aussi loin qu'elles peuvent se déplacer en un tour."
 
 #. tip
 #: data/hardwired/tips.cfg:55
@@ -5564,6 +5620,12 @@ msgid ""
 "not be removed unless the unit regenerates, or spends a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Les unités empoisonnées perdent huit points de vie par tour jusqu'à "
+"atteindre un point. Elles resteront au seuil de la mort jusqu'à la "
+"suppression du poison. Les soigneurs peuvent empêcher ses effets pendant un "
+"tour, mais le poison n'est enlevé que si la créature régénère, passe un tour "
+"dans un village, ou stationne à côté d'une unité qui possède la compétence "
+"de guérison."
 
 #. tip
 #: data/hardwired/tips.cfg:67
@@ -5585,13 +5647,13 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Les unités ont généralement une « zone de contrôle » sur chacun des hexagones "
-"qui leur sont adjacents. Si une unité se déplace dans la zone de contrôle "
-"ennemie, elle ne peut faire aucun autre mouvement pour ce tour. Cela veut "
-"dire que deux unités peuvent barrer la route à l'ennemi en ayant deux cases "
-"vides entre elles. Les unités de niveau 0 sont trop faibles pour contrôler "
-"une zone; les unités tirailleuses sont quant à elles suffisamment habiles "
-"pour ignorer ces zones."
+"Les unités ont généralement une « zone de contrôle » sur chacun des "
+"hexagones qui leur sont adjacents. Si une unité se déplace dans la zone de "
+"contrôle ennemie, elle ne peut faire aucun autre mouvement pour ce tour. "
+"Cela veut dire que deux unités peuvent barrer la route à l'ennemi en ayant "
+"deux cases vides entre elles. Les unités de niveau 0 sont trop faibles pour "
+"contrôler une zone; les unités tirailleuses sont quant à elles suffisamment "
+"habiles pour ignorer ces zones."
 
 #. tip
 #: data/hardwired/tips.cfg:75
@@ -5619,7 +5681,7 @@ msgid ""
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
 "Les unités stationnées dans un village regagnent 8 points de vie au début de "
-"leur tour, ou bien seront soignées du poison."
+"leur tour ou bien seront guéries du poison."
 
 #. tip
 #: data/hardwired/tips.cfg:83
@@ -5838,8 +5900,8 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"La capacité d'attaque  « ralentissement » divise par deux le déplacement et "
-"les dégâts faits par les ennemis jusqu'à la fin du tour."
+"Le « ralentissement » divise par deux le déplacement et les dégâts faits par "
+"les ennemis jusqu'à la fin du tour."
 
 #. tip
 #: data/hardwired/tips.cfg:159
@@ -5953,6 +6015,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Si un ennemi tire plus profit que vous d'un type rare de terrain, occuper "
+"ces endroits le prive de ses avantages."
 
 #. tip
 #: data/hardwired/tips.cfg:199
@@ -5961,6 +6025,10 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Peu d'unités savent bien se défendre dans l'eau ; des soldats attaquant "
+"depuis le bord d'une rive peuvent infliger des pertes sévères. Les elfes "
+"peuvent utiliser le même type de tactique en lisière de forêt, et les nains "
+"peuvent faire de même sur les flancs des montagnes."
 
 #. effect: type=fire
 #: data/scenario-test.cfg:697
@@ -6699,15 +6767,14 @@ msgid "Choose your preferred language:"
 msgstr "Choisissez votre langue préférée : "
 
 #: src/game.cpp:1756
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
-"La(les) extension(s) suivante(s) a(ont) des erreurs et ne peut(vent) pas "
-"être chargée(s) :"
+"Cette(ces) extension(s) a(ont) des erreurs et ne peut(vent) pas être chargée"
+"(s) :"
 msgstr[1] ""
-"La(les) extension(s) suivante(s) a(ont) des erreurs et ne peut(vent) pas "
-"être chargée(s) :"
+"Cette (ces) extension(s) a(ont) des erreurs et ne peut(vent) pas être chargée"
+"(s) :"
 
 #: src/game.cpp:1763
 msgid "ERROR DETAILS:"
@@ -6975,7 +7042,7 @@ msgstr "<header>text='Unités de cette race'</header>"
 
 #: src/help.cpp:2514 src/menu_events.cpp:716
 msgid " < Back"
-msgstr "< Précédent"
+msgstr " < Précédent"
 
 #: src/help.cpp:2515
 msgid "Forward >"
@@ -7156,7 +7223,7 @@ msgstr "Liste des unités"
 
 #: src/menu_events.cpp:500 src/menu_events.cpp:521
 msgid "Scroll To"
-msgstr "Déplacement vers"
+msgstr "Aller à"
 
 #: src/menu_events.cpp:550
 msgid "Leader"
@@ -7768,7 +7835,7 @@ msgstr "Carte(s) disponible(s) : "
 
 #: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:258
 msgid "Use map settings"
-msgstr "Utiliser les paramètres de la carte"
+msgstr "Paramètres de la carte"
 
 #: src/multiplayer_create.cpp:82
 msgid "Random start time"
@@ -7899,8 +7966,8 @@ msgstr "Mot de passe : "
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
-"Choisissez le mot de passe que les gens voulant se connecter à la partie en "
-"temps que joueurs doivent entrer."
+"Choisissez le mot de passe pour les gens voulant se connecter à la partie en "
+"temps que joueurs."
 
 #: src/multiplayer_create.cpp:338
 msgid "Turns: "
@@ -8487,7 +8554,7 @@ msgstr "Astuce suivante"
 
 #: src/titlescreen.cpp:375
 msgid "Show Battle for Wesnoth help"
-msgstr "Aide de La bataille pour Wesnoth"
+msgstr "Aide de « Bataille pour Wesnoth »"
 
 #: src/titlescreen.cpp:376
 msgid "Upload statistics"
