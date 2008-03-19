@@ -25,12 +25,12 @@
 class player
 {
 public:
-	player(const std::string& n, simple_wml::node& cfg, const size_t max_messages=4, const size_t time_period=10);
+	player(const std::string& n, simple_wml::node& cfg, bool registered, const size_t max_messages=4, const size_t time_period=10);
 
 	// mark a player as member of the game 'game_id' or as located in the lobby
 	void mark_available(const int game_id=0, const std::string location="");
 
-	void mark_registered(bool registered =true) const;
+	void mark_registered(bool registered =true);
 
 
 	const std::string& name() const { return name_; }

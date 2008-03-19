@@ -39,12 +39,19 @@ class user_handler {
 
         void set_mail(const std::string& user, const std::string& mail);
         void set_password(const std::string& user, const std::string& password);
+        void set_realname(const std::string& user, const std::string& realname);
 
         //! Returns true if the given password equals the password for the given user
         bool login(const std::string& name, const std::string& password);
 
         //! Returns true if a user with the given name exists
         bool user_exists(const std::string& name);
+
+        //! The user with the given name logged in
+        void user_logged_in(const std::string& name);
+
+        //! Returns a string containing info like the last login of this user
+        std::string user_info(const std::string& name);
 
 
         struct error {

@@ -231,6 +231,9 @@ private:
 	//! Handle queries from clients.
 	void process_query(const network::connection sock,
 	                   simple_wml::node& query);
+    //! Handle nickname registreation related requests from users
+	void process_nickserv(const network::connection sock,
+	                   simple_wml::node& data);
 	//! Process commands from admins and users.
 	std::string process_command(const std::string& cmd);
 	//! Handle private messages between players.
@@ -594,6 +597,8 @@ void server::process_data(const network::connection sock,
 		process_login(sock, data);
 	} else if (simple_wml::node* query = root.child("query")) {
 		process_query(sock, *query);
+	} else if (simple_wml::node* nickserv = root.child("nickserv")) {
+		process_nickserv(sock, *nickserv);
 	} else if (simple_wml::node* whisper = root.child("whisper")) {
 		process_whisper(sock, *whisper);
 	} else if (lobby_.is_observer(sock)) {
@@ -729,22 +734,23 @@ void server::process_login(const network::connection sock,
                 send_password_request(sock, "The password you provided was incorrect");
 
                 LOG_SERVER << network::ip_address(sock) << "\t"
-                        << "Login attempt with incorrect password for username '" << username << "'\n.";
+                        << "Login attempt with incorrect password for username '" << username << "'.\n";
 
-                //! @todo Stop brute-force attacks by rejecting  further login attempts by
+                //! @todo Stop brute-force attacks by rejecting  further login attempts from
                 //! this IP for a few seconds or something similar
                 return;
             }
+        //This name exists and the password was neither empty nor incorrect
 	    registered = true;
+	    user_handler_->user_logged_in(username);
         }
 	}
 
 	send_doc(join_lobby_response_, sock);
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	const player new_player(username, player_cfg, default_max_messages_,
+	const player new_player(username, player_cfg, registered, default_max_messages_,
 		default_time_period_);
-    new_player.mark_registered(registered);
 	players_.insert(std::pair<network::connection,player>(sock, new_player));
 
 	not_logged_in_.remove_player(sock);
@@ -760,7 +766,7 @@ void server::process_login(const network::connection sock,
 	//If the username is not registered suggest to do so
 	if(user_handler_ && !registered) {
            lobby_.send_server_message("Your username is not registered. To prevent others from using \
-it type '/register <password> <email>'.", sock);
+it type '/nickserv register <password> <email>'. Providing an email address is optional.", sock);
 	}
 
 
@@ -816,6 +822,100 @@ void server::process_query(const network::connection sock,
 		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	}
 	lobby_.send_server_message(response.str().c_str(), sock);
+}
+
+void server::process_nickserv(const network::connection sock, simple_wml::node& data) {
+	const player_map::iterator pl = players_.find(sock);
+	if (pl == players_.end()) {
+		DBG_SERVER << "ERROR: Could not find player with socket: " << sock << "\n";
+		return;
+	}
+
+	if(data.child("register")) {
+	    if(!user_handler_) {
+            lobby_.send_server_message("This server does not allow to register on it.", sock);
+            return;
+	    }
+	    try {
+	        (user_handler_->add_user(pl->second.name(), (*data.child("register"))["mail"].to_string(),
+                (*data.child("register"))["password"].to_string()));
+
+            std::stringstream msg;
+            msg << "Your username has been registered." <<
+					//Warn that providing an email address might be a good idea
+					((*data.child("register"))["mail"].empty() ?
+					" It is recommended that you provide an email address for password recovery." : "");
+            lobby_.send_server_message(msg.str().c_str(), sock);
+
+            //Mark the player as registered and send the other clients
+            //an update to dislpay this change
+            pl->second.mark_registered();
+
+            simple_wml::document diff;
+            make_change_diff(games_and_users_list_.root(), NULL,
+		                 "user", pl->second.config_address(), diff);
+            lobby_.send_data(diff);
+
+        } catch (user_handler::error e) {
+            lobby_.send_server_message(("There was and error registering your username. The error message was: "
+            + e.message).c_str(), sock);
+        }
+        return;
+	}
+
+    //A user requested to update his password or mail
+	if(data.child("set")) {
+	    if(!user_handler_) {
+            lobby_.send_server_message("This server does not allow to register on it.", sock);
+            return;
+	    }
+
+	    if(!(user_handler_->user_exists(pl->second.name()))) {
+            lobby_.send_server_message("You are not registered. Please register first",
+                    sock);
+            return;
+	    }
+
+	    const simple_wml::node& set = *(data.child("set"));
+
+	    try {
+            if(!(set["mail"].to_string().empty())) {
+                user_handler_->set_mail(pl->second.name(), set["mail"].to_string());
+            }
+            if(!(set["password"].to_string().empty())) {
+                user_handler_->set_password(pl->second.name(), set["password"].to_string());
+            }
+            if(!(set["realname"].to_string().empty())) {
+                user_handler_->set_realname(pl->second.name(), set["realname"].to_string());
+            }
+
+        lobby_.send_server_message("Your user details have been updated.", sock);
+
+	    } catch (user_handler::error e) {
+            lobby_.send_server_message(("There was and error updating your details. The error message was: "
+            + e.message).c_str(), sock);
+	    }
+
+        return;
+	}
+
+	if(data.child("info")) {
+	    if(!user_handler_) {
+            lobby_.send_server_message("This server does not allow to register on it. "
+            "No user info available." , sock);
+            return;
+	    }
+	    try {
+	        std::string res = user_handler_->user_info((*data.child("info"))["name"].to_string());
+	        lobby_.send_server_message(res.c_str(), sock);
+	    } catch (user_handler::error e) {
+            lobby_.send_server_message(("There was and error looking up the details of the user '" +
+            (*data.child("info"))["name"].to_string() + "'. " +" Tſhe error message was: "
+            + e.message).c_str(), sock);
+	    }
+
+	}
+
 }
 
 std::string server::process_command(const std::string& query) {
@@ -1036,71 +1136,6 @@ void server::process_data_lobby(const network::connection sock,
 		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
 			<< sock << ")\n";
 		return;
-	}
-
-	if(data.root().child("register")) {
-	    if(!user_handler_) {
-            lobby_.send_server_message("This server does not allow to register on it.", sock);
-            return;
-	    }
-	    try {
-	        (user_handler_->add_user(pl->second.name(), (*data.child("register"))["mail"].to_string(),
-                (*data.child("register"))["password"].to_string()));
-
-            std::stringstream msg;
-            msg << "Your username has been registered." <<
-					//Warn that providing an email address might be a good idea
-					((*data.child("register"))["mail"].empty() ?
-					" It is recommended that you provide an email address for password recovery." : "");
-            lobby_.send_server_message(msg.str().c_str(), sock);
-
-            //Mark the player as registered and send the other clients
-            //an update to dislpay this change
-            pl->second.mark_registered();
-
-            simple_wml::document diff;
-            make_change_diff(games_and_users_list_.root(), NULL,
-		                 "user", pl->second.config_address(), diff);
-            lobby_.send_data(diff);
-
-        } catch (user_handler::error e) {
-            lobby_.send_server_message(("There was and error registering your username. The error message was: "
-            + e.message).c_str(), sock);
-        }
-        return;
-	}
-
-    //A user requested to update his password or mail
-	if(data.root().child("update_details")) {
-	    if(!user_handler_) {
-            lobby_.send_server_message("This server does not allow to register on it.", sock);
-            return;
-	    }
-
-	    if(!(user_handler_->user_exists(pl->second.name()))) {
-            lobby_.send_server_message("You are not registered. Please use the '/register' command first.",
-                    sock);
-            return;
-	    }
-
-	    const simple_wml::node& update = *(data.child("update_details"));
-
-	    try {
-            if(!(update["mail"].to_string().empty())) {
-                user_handler_->set_mail(pl->second.name(), update["mail"].to_string());
-            }
-            if(!(update["password"].to_string().empty())) {
-                user_handler_->set_password(pl->second.name(), update["password"].to_string());
-            }
-
-        lobby_.send_server_message("Your user details have been updated.", sock);
-
-	    } catch (user_handler::error e) {
-            lobby_.send_server_message(("There was and error updating your details. The error message was: "
-            + e.message).c_str(), sock);
-	    }
-
-        return;
 	}
 
 	if (data.root().child("create_game")) {

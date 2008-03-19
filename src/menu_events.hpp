@@ -49,9 +49,9 @@ enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAV
 	}
 
 struct end_level_exception {
-	end_level_exception(LEVEL_RESULT res, const int percentage = -1, 
+	end_level_exception(LEVEL_RESULT res, const int percentage = -1,
 			const bool add = false, const bool bonus=true) :
-   		result(res), 
+   		result(res),
 		gold_bonus(bonus),
 		carryover_percentage(percentage),
 		carryover_add(add)
@@ -84,6 +84,7 @@ protected:
 			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE)=0;
 	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
 	void send_command(const std::string& cmd, const std::string& args="");
+	void send_nickserv_command(const std::string& cmd, const std::string& args);
 	void change_logging(const std::string& data);
 };
 

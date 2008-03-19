@@ -1854,6 +1854,59 @@ private:
 		} else if (cmd == "ping") {
 			data[cmd] = lexical_cast<std::string>(time(NULL));
 		}
+        std::cout << data;
+		network::send_data(data, 0, true);
+	}
+
+	void chat_handler::send_nickserv_command(const std::string& cmd, const std::string& args) {
+
+		unsigned int argc = 1;
+		std::string arg1, arg2;
+		std::string& subcmd = arg1;
+
+        std::string::size_type arg1_end = args.find_first_of(' ');
+		arg1 = args.substr(0, arg1_end);
+
+		if(arg1_end != std::string::npos) {
+            std::string::size_type arg2_start = args.find_first_not_of(' ',arg1_end);
+            if(arg2_start != std::string::npos) {
+                ++argc;
+                arg2 = args.substr(arg2_start,std::string::npos);
+            }
+		}
+
+        config data;
+        config& nickserv = data.add_child("nickserv");
+
+        std::string out;
+
+        if(cmd == "register") {
+		    nickserv.add_child("register")["password"] = arg1;
+		    if(argc > 1) {
+		        (*(nickserv.child("register")))["mail"] = arg2;
+		    }
+		    out = "registering with password *** and " + (arg2.empty() ? "no email address" : "email address " + arg2);
+
+		} else if (cmd == "info") {
+		    nickserv.add_child("info")["name"] = arg1;
+		    out = "requesting information for user " + arg1;
+		} else if (cmd == "set" && argc > 1) {
+            if(subcmd == "email") {
+		        nickserv.add_child("set")["mail"] = arg2;
+		        out = "setting email address to " + arg2;
+		    } else if(subcmd == "realname") {
+		        nickserv.add_child("set")["realname"] = arg2;
+		        out = "setting real name to " + arg2;
+		    } else if(subcmd == "password") {
+		        nickserv.add_child("set")["password"] = arg2;
+		        out = "setting password to ***";
+            }
+        } else {
+            add_chat_message(time(NULL), "nickserv", 0, "unrecognized subcommand " + cmd);
+            return;
+        }
+
+        add_chat_message(time(NULL), "nickserv", 0, out);
 		network::send_data(data, 0, true);
 	}
 
@@ -1895,6 +1948,7 @@ private:
 		const std::string& help_chat_help = _("Commands: msg/whisper <nick>"
 				" <message>, list <subcommand> [<argument>], me/emote <message>."
 				" Type /help [<command>] for detailed instructions.");
+				//! @todo write help for /nickserv
 		if ((cmd == "me" || cmd == "emote") && argc > 0) {
 			//emote message
 			send_chat_message("/me" + message.substr(cmd.size() + 1), allies_only);
@@ -1902,7 +1956,9 @@ private:
 				|| cmd == "mute" || cmd == "muteall" || cmd == "ping")
 		{
 			send_command(cmd, (argc > 1) ? arg1 + " " + arg2 : arg1);
-		} else if ((cmd == "m" || cmd == "msg" || cmd == "whisper") && argc > 1) {
+		} else if (cmd == "nickserv" && argc > 1) {
+		    send_nickserv_command(arg1, arg2);
+        } else if ((cmd == "m" || cmd == "msg" || cmd == "whisper") && argc > 1) {
 			config cwhisper,data;
 			cwhisper["message"] = arg2;
 			cwhisper["sender"] = preferences::login();
@@ -2002,35 +2058,7 @@ private:
 			} else {
 				add_chat_message(time(NULL), "list", 0, _("Unknown command: ") + arg1);
 			}
-        //! @todo Update /help command for /update and /register
-		} else if(cmd == "register" && argc > 0) {
-		    config data;
-		    config& reg = data.add_child("register");
-			reg["password"] = arg1;
-			reg["mail"] = argc > 1 ? arg2 : "";
-			add_chat_message(time(NULL), "register", 0,
-					"with password *** and " + (reg["mail"].empty() ? "no email address" : "email address " + arg2),
-					game_display::MESSAGE_PRIVATE);
-			network::send_data(data, 0, true);
-		} else if(cmd == "update" && argc > 1) {
-		    config data;
-		    config& up = data.add_child("update_details");
-
-		    if(arg1 == "mail" || arg1 == "email") {
-		        up["mail"] = arg2;
-                network::send_data(data, 0, true);
-                add_chat_message(time(NULL), "update", 0, _("updating email address to ") + arg2 + " ...");
-
-		    } else if(arg1 == "password") {
-		        up["password"] = arg2;
-                network::send_data(data, 0, true);
-                add_chat_message(time(NULL), "update", 0, _("updating password to *** ..."));
-
-		    } else {
-				add_chat_message(time(NULL), "update", 0, _("Unknown command: ") + arg1);
-		    }
-
-        } else {
+		} else {
 			//! @todo Rather show specific error messages for missing arguments.
 			// Command not accepted, show help.
 			add_chat_message(time(NULL), "help", 0, help_chat_help);
@@ -2348,7 +2376,7 @@ private:
 			game_events::fire(data);
 			gui_->redraw_everything();
 		} else if(cmd == "version") {
-			add_chat_message(time(NULL), "", 0, 
+			add_chat_message(time(NULL), "", 0,
 					 game_config::version
 					 + (game_config::svnrev.empty() ? "" :
 					    " (" + game_config::svnrev + ")"));

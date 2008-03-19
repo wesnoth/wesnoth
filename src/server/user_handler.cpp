@@ -57,12 +57,16 @@ void user_handler::load_config() {
 
     if(cfg_["mail_port"].empty()) {
         mail_port_ = jwsmtp::mailer::SMTP_PORT;
-        //! @todo catch bad lexical cast
         unsigned short default_port = jwsmtp::mailer::SMTP_PORT;
         cfg_["mail_port"] = lexical_cast_default<std::string>(default_port);
     } else {
-        //! @todo catch bad lexical cast
-        mail_port_ = lexical_cast_default<unsigned short>(cfg_["mail_port"]);
+        try {
+            mail_port_ = lexical_cast_default<unsigned short>(cfg_["mail_port"]);
+        } catch (bad_lexical_cast) {
+            std::cerr << "Bad lexical cast reading the 'mail_port', using default port.\n";
+            unsigned short default_port = jwsmtp::mailer::SMTP_PORT;
+            cfg_["mail_port"] = lexical_cast_default<std::string>(default_port);
+        }
     }
 
     #endif //NO_MAIL
@@ -99,7 +103,7 @@ bool user_handler::send_mail(const char* to_address, const char* subject, const 
         m.password( cfg_["mail_password"]);
     }
     //! @todo Sending the mail in a new thread
-    //! (as suggested on http://johnwiggins.net/jwsmtp/
+    //! (as suggested on http://johnwiggins.net/jwsmtp/)
     //! might be a very good idea.
     //! To bad I am not familiar with boost::thread
 
@@ -153,6 +157,10 @@ void user_handler::add_user(const std::string& name,
     user["mail"] = mail;
     user["password"] = password;
 
+    std::string now = lexical_cast_default<std::string>(time(NULL));
+    user["registration_date"] = now;
+    user["last_login"] = now;
+
     //! @todo To save performance it we should of course not save
     //! the whole config everytime something changes
     save_config();
@@ -175,6 +183,8 @@ void user_handler::add_user(const std::string& name,
 
     #endif //NO_MAIL
 }
+
+
 
 void user_handler::password_reminder(const std::string& name) {
     #ifndef NO_MAIL
@@ -203,6 +213,22 @@ void user_handler::password_reminder(const std::string& name) {
 
     throw error("Could not send password reminder. This server is configured not to send emails.");
 
+}
+
+void user_handler::user_logged_in(const std::string& name) {
+    if(!user_exists(name)) {
+        //No exception here because this function is called by the server, not by users
+        return;
+    }
+
+    config& user = *(users_->child(name));
+    user["last_login"] = lexical_cast_default<std::string>(time(NULL));
+
+    //! @todo To save performance it we should of course not save
+    //! the whole config everytime something changes
+    save_config();
+
+    //Should we keep track of the IPs used for logging into this account?
 }
 
 void user_handler::remove_user(const std::string& name) {
@@ -260,6 +286,10 @@ void user_handler::set_password(const std::string& user, const std::string& pass
     set_user_attribute(user, "password", password);
 }
 
+void user_handler::set_realname(const std::string& user, const std::string& realname) {
+    set_user_attribute(user, "realname", realname);
+}
+
 void user_handler::check_mail(const std::string& mail) {
     if(!(mail.empty() ||utils::isvalid_email(mail))) {
         throw error("The email adress '" + mail + "' appears to be invalid.");
@@ -273,4 +303,30 @@ void user_handler::check_password(const std::string& password) {
             "characters. Only alpha-numeric characters, underscores and hyphens"
 			"are allowed.");
     }
+}
+
+std::string user_handler::user_info(const std::string& name) {
+    if(!user_exists(name)) {
+        throw error("No user with the name '" + name + "' exists.");
+    }
+
+    config& user = *(users_->child(name));
+
+    char registration_date[99];
+    char last_login[99];
+
+    const time_t& reg_t = lexical_cast_default<time_t>(user["registration_date"]);
+    const time_t& last_t = lexical_cast_default<time_t>(user["last_login"]);
+
+    strftime(registration_date, 99, "%c", localtime(&reg_t));
+    strftime(last_login, 99, "%c", localtime(&last_t));
+
+    std::stringstream res;
+    res << "Username: " << name << "\n"
+            << (user["realname"].empty() ? "" : "Real name: " + user["realname"] + "\n")
+            << (user["mail"].empty() ? "" : "Email: " + user["mail"] + "\n")
+            << "Registration date: " << registration_date << "\n"
+            << "Last login: " << last_login;
+
+    return res.str();
 }

@@ -16,13 +16,14 @@
 
 #include "player.hpp"
 
-player::player(const std::string& n, simple_wml::node& cfg, const size_t max_messages, const size_t time_period)
+player::player(const std::string& n, simple_wml::node& cfg, bool registered,
+        const size_t max_messages, const size_t time_period)
 	: name_(n), cfg_(cfg), flood_start_(0), messages_since_flood_start_(0),
 	MaxMessages(max_messages), TimePeriod(time_period)
 {
 	cfg_.set_attr_dup("name", n.c_str());
 	mark_available();
-	mark_registered(false);
+	mark_registered(registered);
 }
 
 // keep 'available' and game name ('location') for backward compatibility
@@ -33,7 +34,7 @@ void player::mark_available(const int game_id, const std::string location)
 	cfg_.set_attr_dup("location", location.c_str());
 }
 
-void player::mark_registered(bool registered) const {
+void player::mark_registered(bool registered) {
     cfg_.set_attr("registered", registered ? "yes" : "no");
 }
 
