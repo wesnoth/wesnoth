@@ -1094,7 +1094,7 @@ bool mouse_handler::is_middle_click(const SDL_MouseButtonEvent& event)
 
 bool mouse_handler::is_right_click(const SDL_MouseButtonEvent& event)
 {
-	return event.button == SDL_BUTTON_RIGHT || event.button == SDL_BUTTON_LEFT && command_active();
+	return event.button == SDL_BUTTON_RIGHT || (event.button == SDL_BUTTON_LEFT && command_active());
 }
 
 void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool browse)
