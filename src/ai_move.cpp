@@ -602,7 +602,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				const int defense = best->second.defense_modifier(map_.get_terrain(*i));
 				const double vulnerability = power_projection(*i,enemy_dstsrc);
 
-				if(best_loc.valid() == false || defense < best_defense || defense == best_defense && vulnerability < best_vulnerability) {
+				if(best_loc.valid() == false || defense < best_defense || (defense == best_defense && vulnerability < best_vulnerability)) {
 					best_loc = *i;
 					best_defense = defense;
 					best_vulnerability = vulnerability;
@@ -635,8 +635,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		for(std::vector<location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end() && movement > 0; ++i) {
 
 			const double threat = power_projection(*i,enemy_dstsrc);
-			if(threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_dstsrc) ||
-			   i >= best_route.steps.end()-2 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side())) {
+			if((threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_dstsrc)) ||
+			   (i >= best_route.steps.end()-2 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side()))) {
 				dangerous = true;
 				break;
 			}
@@ -695,7 +695,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				const int defense = un.defense_modifier(map_.get_terrain(i->second));
 				const double threat = (power_projection(i->second,enemy_dstsrc)*defense)/100;
 
-				if(best_loc.valid() == false || threat < maximum<double>(best_threat,max_acceptable_threat) && distance < best_distance) {
+				if(best_loc.valid() == false || (threat < maximum<double>(best_threat,max_acceptable_threat) && distance < best_distance)) {
 					best_loc = i->second;
 					best_threat = threat;
 					best_distance = distance;
