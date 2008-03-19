@@ -57,7 +57,7 @@ char* compress_buffer(const char* input, string_span* span)
 
 	std::vector<char> buf(in.size()*2 + 80);
 	const int len = filter.read(&buf[0], buf.size()).gcount();
-	if(!filter.eof() && !filter.good() || len == buf.size()) {
+	if((!filter.eof() && !filter.good()) || len == buf.size()) {
 		throw error("failed to compress");
 	}
 
