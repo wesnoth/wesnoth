@@ -255,6 +255,26 @@ if not envdict["desktopdir"]:
     envdict["desktopdir"] = os.path.join(envdict["datadir"], "applicationa")
 configsyms["APP_ENTRY"] = envdict["desktopdir"]
 
+def config_build(target, source, env):
+    # Build a config.h file from configsyms
+    assert(str(source[0]) == "SConstruct")
+    wfp = open(str(target[0]), "w")
+    wfp.write("// This file is geneated by an scons recipe.  Do not hand-hack!\n")
+    for (sym, val) in configsyms.items():
+        if type(val) == type(""):
+            wfp.write('#define %s	"%s"\n' % (sym, val))
+        elif val == True:
+            wfp.write("#define %s	1\n" % sym)
+        elif val == False:
+            wfp.write("#undef %s\n" % sym)
+        else:
+            wfp.write("#define %s	%s\n" % (sym, val))
+    wfp.close()
+    return None
+config_builder = Builder(action = config_build)
+env.Append(BUILDERS = {'Config' : config_builder})
+env.Config("src/config.h", "SConstruct")
+
 #
 # How to build the Wesnoth configuration file
 #
