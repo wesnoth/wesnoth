@@ -158,7 +158,7 @@ def actualtype(a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
-    elif a.startswith('"') and a.endswith('"'):
+    elif a.startswith('"') and a.endswith('"') or a.startswith("_"):
         atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
