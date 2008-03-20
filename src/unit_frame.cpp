@@ -343,7 +343,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
 		image_loc = current_data.image_diagonal;
 	} 
-	if(image_loc.is_void()) { // invalid diag image, or not diagonal
+	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
 		image_loc = current_data.image;
 	}
 

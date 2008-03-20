@@ -1726,9 +1726,14 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	}
 
 
-	image::locator image_loc;
+	image::locator image_loc = image::locator();
 #ifndef LOW_MEM
-	image_loc = params.image;
+	if(facing_ != gamemap::location::NORTH && facing_ != gamemap::location::SOUTH) {
+		image_loc = params.image_diagonal;
+	} 
+	if(image_loc.is_void()|| image_loc.get_filename() == "") { // invalid diag image, or not diagonal
+		image_loc = params.image;
+	}
 	if(image_loc.is_void()) {
 		image_loc = absolute_image();
 	}
