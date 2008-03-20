@@ -184,6 +184,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	highlight(cfg[frame_string+"alpha"]);
 	offset(cfg[frame_string+"offset"]);
 	submerge(cfg[frame_string+"submerge"]);
+	x(cfg[frame_string+"x"]);
+	y(cfg[frame_string+"y"]);
 
 }
 
@@ -204,6 +206,8 @@ const frame_parameters frame_builder::parameters(int current_time, const frame_p
 	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,default_val.highlight_ratio);
 	result.offset = offset_.get_current_element(current_time,default_val.offset);
 	result.submerge = submerge_.get_current_element(current_time,default_val.submerge);
+	result.x = x_.get_current_element(current_time,default_val.x);
+	result.y = y_.get_current_element(current_time,default_val.y);
 	return result;
 }
 frame_builder & frame_builder::image(const image::locator image )
@@ -249,6 +253,8 @@ void frame_builder::recalculate_duration()
 	highlight_ratio_=progressive_double(highlight_ratio_.get_original(),duration_);
 	offset_=progressive_double(offset_.get_original(),duration_);
 	submerge_=progressive_double(submerge_.get_original(),duration_);
+	x_=progressive_int(x_.get_original(),duration_);
+	y_=progressive_int(y_.get_original(),duration_);
 }
 frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
 {
@@ -271,6 +277,16 @@ frame_builder & frame_builder::submerge(const std::string& submerge)
 	submerge_=progressive_double(submerge,duration_);
 	return *this;
 }
+frame_builder & frame_builder::x(const std::string& x)
+{
+	x_=progressive_int(x,duration_);
+	return *this;
+}
+frame_builder & frame_builder::y(const std::string& y)
+{
+	y_=progressive_int(y,duration_);
+	return *this;
+}
 bool frame_builder::does_not_change() const
 {
 	return halo_.does_not_change() &&
@@ -279,7 +295,9 @@ bool frame_builder::does_not_change() const
 		blend_ratio_.does_not_change() &&
 		highlight_ratio_.does_not_change() &&
 		offset_.does_not_change() &&
-		submerge_.does_not_change();
+		submerge_.does_not_change() &&
+		x_.does_not_change() &&
+		y_.does_not_change();
 }
 bool frame_builder::need_update() const
 {
@@ -289,7 +307,9 @@ bool frame_builder::need_update() const
 			!blend_ratio_.does_not_change() ||
 			!highlight_ratio_.does_not_change() ||
 			!offset_.does_not_change() ||
-			!submerge_.does_not_change() ) {
+			!submerge_.does_not_change() ||
+			!x_.does_not_change() ||
+			!y_.does_not_change() ) {
 			return true;
 	}
 	return false;
@@ -334,13 +354,16 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 				false
 				);
 	}
-	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2 ;
+	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2;
 	if (image != NULL) {
 		bool facing_west = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::SOUTH_WEST;
 		bool facing_north = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::NORTH || direction == gamemap::location::NORTH_EAST;
-		game_display::get_singleton()->render_unit_image(x- image->w/2, y - image->h/2, false, gamemap::get_drawing_order(src), image, facing_west, false,
-				ftofxp(current_data.highlight_ratio), current_data.blend_with, current_data.blend_ratio,current_data.submerge,!facing_north);
+		game_display::get_singleton()->render_unit_image(x + current_data.x- image->w/2,
+			       	y  + current_data.y- image->h/2, false,
+			       	gamemap::get_drawing_order(src), image, facing_west, false,
+				ftofxp(current_data.highlight_ratio), current_data.blend_with,
+			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
 	halo::remove(*halo_id);
 	*halo_id = halo::NO_HALO;

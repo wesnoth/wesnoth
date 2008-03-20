@@ -291,7 +291,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	std::vector<unit_animation>::const_iterator itor;
 	add_anims(animations,cfg);
 	for(itor = animations.begin(); itor != animations.end() ; itor++) {
-		if (std::find(itor->event_.begin(),itor->event_.end(),"_default_")!= itor->event_.end()) {
+		if (std::find(itor->event_.begin(),itor->event_.end(),"default")!= itor->event_.end()) {
 			animation_base.push_back(*itor);
 			animation_base.back().base_score_ = unit_animation::DEFAULT_ANIM;
 			animation_base.back().event_.clear();
@@ -434,7 +434,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
 	const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
 	for(anim_itor = standing_anims.begin(); anim_itor != standing_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="standing,_default_";
+		(**anim_itor)["apply_to"] ="standing,default";
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");

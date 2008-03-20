@@ -1720,7 +1720,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		int dx = static_cast<int>(params.halo_x * disp.get_zoom_factor());
 		int dy = static_cast<int>(params.halo_y * disp.get_zoom_factor());
 		if (facing_west) dx = -dx;
-		unit_anim_halo_ = halo::add(x + dx, y + dy,
+		unit_anim_halo_ = halo::add(x + dx, y+ dy,
 			params.halo, gamemap::location(-1, -1),
 			facing_west ? halo::HREVERSE : halo::NORMAL);
 	}
@@ -1808,8 +1808,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	}
 
 	if (image != NULL) {
-		int tmp_x = x - image->w/2;
-		int tmp_y = y - image->h/2;
+		const int tmp_x = params.x +x - image->w/2;
+		const int tmp_y = params.y +y - image->h/2;
 		disp.render_unit_image(tmp_x, tmp_y, fake, drawing_order, image, facing_west, stoned,
 				highlight_ratio, blend_with, blend_ratio, submerge);
 	}
