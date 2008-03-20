@@ -627,6 +627,11 @@ void tcanvas::ttext::draw(surface& canvas,
 	unsigned h_max = h_ - y_ - y_off;
 
 	SDL_Rect dst = { x_ + x_off, y_ + y_off, w_max, h_max };
+
+	// A hack to make the letters show up a bit readable it does however
+	// clear the back ground. This needs to be fixed but don't want to stall
+	// development too long on it.
+	SDL_SetAlpha(surf, 0, 0);
 	SDL_BlitSurface(surf, 0, canvas, &dst);
 }
 
