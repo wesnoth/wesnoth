@@ -580,6 +580,15 @@ expression_ptr function_symbol_table::create_function(const std::string& fn, con
 	return expression_ptr();
 }
 
+std::vector<std::string> function_symbol_table::get_function_names() const
+{
+	std::vector<std::string> res;
+	for(std::map<std::string, formula_function>::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); iter++ ) {
+		res.push_back((*iter).first);
+	}
+	return res;
+}
+
 expression_ptr create_function(const std::string& fn,
                                const std::vector<expression_ptr>& args,
 							   const function_symbol_table* symbols)

@@ -67,6 +67,25 @@ void map_formula_callable::set_value(const std::string& key, const variant& valu
 
 namespace {
 
+class function_list_expression : public formula_expression {
+public:
+	explicit function_list_expression(const function_symbol_table *symbols)
+		: symbols_(symbols)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		std::vector<variant> res;
+		std::vector<std::string> function_names = symbols_->get_function_names();
+		for(int i = 0; i < function_names.size(); i++) {
+			res.push_back(variant(function_names[i]));
+		}
+		return variant(&res);
+	}
+
+	const function_symbol_table* symbols_;
+};
+
 class list_expression : public formula_expression {
 public:
 	explicit list_expression(const std::vector<expression_ptr>& items)
@@ -511,7 +530,11 @@ expression_ptr parse_expression(const token* i1, const token* i2, const function
 				parse_args(i1+1,i2-1,&args,symbols);
 				return expression_ptr(new list_expression(args));
 		} else if(i2 - i1 == 1) {
-			if(i1->type == TOKEN_IDENTIFIER) {
+			if(i1->type == TOKEN_KEYWORD) {
+				if(std::string(i1->begin,i1->end) == "functions") {
+					return expression_ptr(new function_list_expression(symbols));
+				}
+			} else if(i1->type == TOKEN_IDENTIFIER) {
 				return expression_ptr(new identifier_expression(
 				                 std::string(i1->begin,i1->end)));
 			} else if(i1->type == TOKEN_INTEGER) {

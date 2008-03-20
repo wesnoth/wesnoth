@@ -32,6 +32,7 @@ struct token_type {
 
 //create the array with list of possible tokens
 token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|\\-|\\^|%|/|<=|>=|<|>|!=|=|\\.)"), TOKEN_OPERATOR },
+				{ regex("functions"),   TOKEN_KEYWORD },
 				{ regex("^'[^']*'"),    TOKEN_STRING_LITERAL },
 				{ regex("^[a-zA-Z_]+"), TOKEN_IDENTIFIER },
 				{ regex("^\\d+"),       TOKEN_INTEGER },
@@ -40,7 +41,7 @@ token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-
 				{ regex("^\\["),        TOKEN_LSQUARE },
 				{ regex("^\\]"),        TOKEN_RSQUARE },
 				{ regex("^,"),          TOKEN_COMMA },
-				{ regex("^\\s+"),       TOKEN_WHITESPACE } 
+				{ regex("^\\s+"),       TOKEN_WHITESPACE }
 };
 
 }
@@ -79,10 +80,10 @@ int main()
 						  TOKEN_WHITESPACE, TOKEN_LPARENS,
 						  TOKEN_INTEGER, TOKEN_OPERATOR,
 						  TOKEN_INTEGER, TOKEN_RPARENS,
-						  TOKEN_RPARENS,
+						  TOKEN_RPARENS, TOKEN_KEYWORD,
 	                      TOKEN_OPERATOR, TOKEN_INTEGER};
 	std::string tokens[] = {"(", "abc", " ", "+", " ", "4", " ",
-	                        "*", " ", "(", "5", "+", "3", ")", ")"};
+	                        "*", " ", "(", "5", "+", "3", ")", ")", "functions"};
 	for(int n = 0; n != sizeof(types)/sizeof(*types); ++n) {
 		token t = get_token(i1,i2);
 		assert(std::string(t.begin,t.end) == tokens[n]);

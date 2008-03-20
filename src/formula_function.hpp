@@ -101,6 +101,7 @@ public:
 	void add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args);
 	virtual expression_ptr create_function(const std::string& fn,
 					                       const std::vector<expression_ptr>& args) const;
+	std::vector<std::string> get_function_names() const;
 };
 
 expression_ptr create_function(const std::string& fn,
