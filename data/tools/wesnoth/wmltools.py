@@ -112,6 +112,8 @@ def formaltype(f):
         ftype = "span"
     elif f in ("RANGE",):
         ftype = "range"
+    elif f in ("ALIGN",):
+        ftype = "alignment"
     elif f in ("TERRAIN",):
         ftype = "terrain_code"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID") or f.endswith("_NAME"):
@@ -135,6 +137,8 @@ def formaltype(f):
     return ftype
 
 def actualtype(a):
+    if a is None:
+        return None
     # Deduce the type of the actual
     if a.isdigit() or a.startswith("-") and a[1:].isdigit():
         atype = "numeric"
@@ -144,6 +148,8 @@ def actualtype(a):
         atype = "span"
     elif a in ("melee", "ranged"):
         atype = "range"
+    elif a in ("lawful", "neutral", "chaotic"):
+        atype = "alignment"
     elif a.startswith("{") and a.endswith("}") or a.startswith("$"):
         atype = None	# Can't tell -- it's a macro expansion
     elif re.match(image_reference, a):
