@@ -77,6 +77,8 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	int scry = screen_.gety() - 2*(bw+bispw);	//!< Available height.
 	int pbw = scrx/2;							//!< Used width.
 	int pbh = scry/16;							//!< Used heigth.
+	int	lightning_thickness = 2;
+	
 	surface const gdis = screen_.getSurface();
 	SDL_Rect area;
 	// Draw logo if it was succesfully loaded.
@@ -118,10 +120,20 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
 	area.w = (prcnt_ * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.h = pbh;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,fcr,fcg,fcb));
+
+	SDL_Rect lightning = area;
+	lightning.h = lightning_thickness;
+	//we add 25% of white to the color of the bar to simulate a light effect
+	SDL_FillRect(gdis,&lightning,SDL_MapRGB(gdis->format,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4));
+	lightning.y = area.y+area.h-lightning.h;
+	//remove 50% of color to simulate a shadow effect
+	SDL_FillRect(gdis,&lightning,SDL_MapRGB(gdis->format,fcr/2,fcg/2,fcb/2));
+
 	// Draw the leftover bar area.
 	area.x = pbx + bw + bispw + (prcnt_ * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.y = pby + bw + bispw;
 	area.w = ((MAX_PERCENTAGE - prcnt_) * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.h = pbh;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,lcr,lcg,lcb));
+
 	// Clear the last text and draw new if text is provided.
 	if(text.length() > 0 && commit)
 	{
