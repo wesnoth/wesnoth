@@ -44,7 +44,8 @@
 #include <sstream>
 #include <vector>
 
-#include <sys/times.h>
+//#include <sys/times.h>
+#include <boost/timer.hpp>
 
 #include <csignal>
 
@@ -483,10 +484,13 @@ void server::run() {
 
 				const bool sample = request_sample_frequency >= 1 && (sample_counter++ % request_sample_frequency) == 0;
 
-				struct tms before_parsing, after_parsing, after_processing;
+				boost::timer parsing_timer;
+				double after_parsing, after_processing;
+//				struct tms before_parsing, after_parsing, after_processing;
 
 				if(sample) {
-					times(&before_parsing);
+	   			    parsing_timer.restart();
+//					times(&before_parsing);
 				}
 
 				char* buf_ptr = new char [buf.size()];
@@ -496,16 +500,20 @@ void server::run() {
 				std::vector<char>().swap(buf);
 
 				if(sample) {
-					times(&after_parsing);
+					after_parsing = parsing_timer.elapsed();   
+//					times(&after_parsing);
 				}
 
 				process_data(sock, data);
 
 				if(sample) {
-					times(&after_processing);
+					double after_processing = parsing_timer.elapsed();	   
+//					times(&after_processing);
 					metrics_.record_sample(data.root().first_child(),
-					          after_parsing.tms_utime - before_parsing.tms_utime,
-					          after_processing.tms_utime - after_parsing.tms_utime);
+//					          after_parsing.tms_utime - before_parsing.tms_utime,
+							  after_parsing,
+//					          after_processing.tms_utime - after_parsing.tms_utime);
+							  after_processing - after_parsing);
 				}
 			}
 
