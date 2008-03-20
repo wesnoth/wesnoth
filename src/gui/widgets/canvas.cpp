@@ -21,9 +21,11 @@
 #include "font.hpp"
 #include "formula.hpp"
 #include "image.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"
+#include "wml_exception.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -190,7 +192,7 @@ void tcanvas::tshape::put_pixel(unsigned start, Uint32 colour, unsigned w, unsig
 // the colour should be a const and the value send should already
 // be good for the wanted surface
 void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour, 
-		const int x1, int y1, const int x2, int y2)
+		const unsigned x1, unsigned y1, const unsigned x2, unsigned y2)
 {
 	colour = SDL_MapRGBA(canvas->format, 
 		((colour & 0xFF000000) >> 24),
@@ -201,10 +203,15 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	unsigned start = reinterpret_cast<unsigned>(canvas->pixels);
 	unsigned w = canvas->w;
 
-	DBG_G_D << "Shape: draw line from :" 
-		<< x1 << ',' << y1 << " to : " << x2 << ',' << y2
+	DBG_G_D << "Shape: draw line from " 
+		<< x1 << ',' << y1 << " to " << x2 << ',' << y2
 		<< " canvas width " << w << " canvas height "
 		<< canvas->h << ".\n";
+
+	assert(x1 < canvas->w);
+	assert(x2 < canvas->w);
+	assert(y1 < canvas->h);
+	assert(y2 < canvas->h);
 
 	// use a special case for vertical lines
 	if(x1 == x2) {
@@ -212,7 +219,7 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 			std::swap(y1, y2);	
 		}
 
-		for(int y = y1; y <= y2; ++y) {
+		for(unsigned y = y1; y <= y2; ++y) {
 			put_pixel(start, colour, w, x1, y);
 		}
 		return;
@@ -220,7 +227,7 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 
 	// use a special case for horizontal lines
 	if(y1 == y2) {
-		for(int x  = x1; x <= x2; ++x) {
+		for(unsigned x  = x1; x <= x2; ++x) {
 			put_pixel(start, colour, w, x, y1);
 		}
 		return;
@@ -242,7 +249,7 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	int y = y1;
 
 	// Blit
-	for (int x = x1; x <= x2; ++x) {
+	for (unsigned x = x1; x <= x2; ++x) {
 		put_pixel(start, colour, w, x, y);
 		if (d <= 0) {
 			d += incE;
@@ -358,31 +365,32 @@ void tcanvas::tline::draw(surface& canvas,
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
 	if(!x1_formula_.empty()) {
-		DBG_G_D << "Rectangle execute x1 formula '" << x1_formula_ << "'.\n";
+		DBG_G_D << "Line execute x1 formula '" << x1_formula_ << "'.\n";
 		x1_ = game_logic::formula(x1_formula_).execute(variables).as_int();
 	}
 
 	if(!y1_formula_.empty()) {
-		DBG_G_D << "Rectangle execute y1 formula '" << y1_formula_ << "'.\n";
+		DBG_G_D << "Line execute y1 formula '" << y1_formula_ << "'.\n";
 		y1_ = game_logic::formula(y1_formula_).execute(variables).as_int();
 	}
 
 	if(!x2_formula_.empty()) {
-		DBG_G_D << "Rectangle execute x2 formula '" << x2_formula_ << "'.\n";
+		DBG_G_D << "Line execute x2 formula '" << x2_formula_ << "'.\n";
 		x2_ = game_logic::formula(x2_formula_).execute(variables).as_int();
 	}
 
 	if(!y2_formula_.empty()) {
-		DBG_G_D << "Rectangle execute y2 formula '" << y2_formula_ << "'.\n";
+		DBG_G_D << "Line execute y2 formula '" << y2_formula_ << "'.\n";
 		y2_ = game_logic::formula(y2_formula_).execute(variables).as_int();
 	}
 
+	DBG_G_D << "Line: draw from " 
+		<< x1_ << ',' << y1_ << " to " << x2_ << ',' << y2_ 
+		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	DBG_G_D << "Line: draw from :" 
-		<< x1_ << ',' << y1_ << " to: " << x2_ << ',' << y2_ << '\n';
+	VALIDATE(x1_ < canvas->w && x2_ < canvas->w && y1_ < canvas->h 
+		&& y2_ < canvas->h, _("Line doesn't fit on canvas."));
 
-	// FIXME validate the line is on the surface !!!
-	
 	// FIXME respect the thickness.
 
 	// now draw the line we use Bresenham's algorithm, which doesn't
@@ -474,13 +482,15 @@ void tcanvas::trectangle::draw(surface& canvas,
 		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
 	}
 
+	DBG_G_D << "Rectangle: draw from " << x_ << ',' << y_
+		<< " width " << w_ << " height " << h_ 
+		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	DBG_G_D << "Rectangle: draw from :" << x_ << ',' << y_
-		<< " width: " << w_ << " height: " << h_ << '\n';
+	VALIDATE(x_ < canvas->w && x_ + w_ <= canvas->w && y_ < canvas->h 
+		&& y_ + h_ <= canvas->h, _("Rectangle doesn't fit on canvas."));
+
 
 	surface_lock locker(canvas);
-
-	//FIXME validate the input.
 
 	// draw the border
 	for(unsigned i = 0; i < border_thickness_; ++i) {

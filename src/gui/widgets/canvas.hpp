@@ -62,7 +62,7 @@ public:
 
 		void put_pixel(unsigned start, Uint32 colour, unsigned w, unsigned x, unsigned y);
 		void draw_line(surface& canvas, Uint32 colour, 
-			const int x1, int y1, const int x2, int y2);
+			const unsigned x1, unsigned y1, const unsigned x2, unsigned y2);
 
 	};
 
