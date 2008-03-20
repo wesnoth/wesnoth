@@ -76,7 +76,9 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> res;
-		std::vector<std::string> function_names = symbols_->get_function_names();
+		std::vector<std::string> function_names = builtin_function_names();
+		std::vector<std::string> more_function_names = symbols_->get_function_names();
+		function_names.insert(function_names.end(), more_function_names.begin(), more_function_names.end());
 		for(int i = 0; i < function_names.size(); i++) {
 			res.push_back(variant(function_names[i]));
 		}

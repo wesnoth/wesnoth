@@ -107,6 +107,7 @@ public:
 expression_ptr create_function(const std::string& fn,
                                const std::vector<expression_ptr>& args,
 							   const function_symbol_table* symbols);
+std::vector<std::string> builtin_function_names();
 
 }
 

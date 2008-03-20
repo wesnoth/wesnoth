@@ -257,10 +257,10 @@ private:
 	}
 };
 
-class choose_element_function : public function_expression {
+class choose_function : public function_expression {
 public:
-	explicit choose_element_function(const args_list& args)
-	     : function_expression("choose_element", args, 2, 2)
+	explicit choose_function(const args_list& args)
+	     : function_expression("choose", args, 2, 2)
 	{}
 
 private:
@@ -385,10 +385,10 @@ private:
 	}
 };
 
-class find_element_function : public function_expression {
+class find_function : public function_expression {
 public:
-	explicit find_element_function(const args_list& args)
-	    : function_expression("find_element", args, 2, 3)
+	explicit find_function(const args_list& args)
+	    : function_expression("find", args, 2, 3)
 	{}
 
 private:
@@ -589,6 +589,57 @@ std::vector<std::string> function_symbol_table::get_function_names() const
 	return res;
 }
 
+namespace {
+
+class base_function_creator {
+public:
+	virtual expression_ptr create_function(const std::vector<expression_ptr>& args) const = 0;
+};
+
+template<typename T>
+class function_creator : public base_function_creator {
+public:
+	virtual expression_ptr create_function(const std::vector<expression_ptr>& args) const {
+		return expression_ptr(new T(args));
+	}
+};
+
+typedef std::map<std::string, base_function_creator*> functions_map;
+
+functions_map& get_functions_map() {
+
+	static functions_map functions_table;
+
+	if(functions_table.empty()) {
+#define FUNCTION(name) functions_table[#name] = new function_creator<name##_function>();
+		FUNCTION(dir);
+		FUNCTION(if);
+		FUNCTION(switch);
+		FUNCTION(abs);
+		FUNCTION(min);
+		FUNCTION(max);
+		FUNCTION(choose);
+		FUNCTION(wave);
+		FUNCTION(sort);
+		FUNCTION(filter);
+		FUNCTION(find);
+		FUNCTION(map);
+		FUNCTION(sum);
+		FUNCTION(head);
+		FUNCTION(rgb);
+		FUNCTION(transition);
+		FUNCTION(color_transition);
+		FUNCTION(size);
+		FUNCTION(null);
+		FUNCTION(refcount);
+#undef FUNCTION
+	}
+
+	return functions_table;
+}
+
+}
+
 expression_ptr create_function(const std::string& fn,
                                const std::vector<expression_ptr>& args,
 							   const function_symbol_table* symbols)
@@ -601,50 +652,25 @@ expression_ptr create_function(const std::string& fn,
 	}
 
 	std::cerr << "FN: '" << fn << "' " << fn.size() << "\n";
-	if(fn == "dir") {
-		return expression_ptr(new dir_function(args));
-	} else if(fn == "if") {
-		return expression_ptr(new if_function(args));
-	} else if(fn == "switch") {
-		return expression_ptr(new switch_function(args));
-	} else if(fn == "abs") {
-		return expression_ptr(new abs_function(args));
-	} else if(fn == "min") {
-		return expression_ptr(new min_function(args));
-	} else if(fn == "max") {
-		return expression_ptr(new max_function(args));
-	} else if(fn == "choose") {
-		return expression_ptr(new choose_element_function(args));
-	} else if(fn == "wave") {
-		return expression_ptr(new wave_function(args));
-	} else if(fn == "sort") {
-		return expression_ptr(new sort_function(args));
-	} else if(fn == "filter") {
-		return expression_ptr(new filter_function(args));
-	} else if(fn == "find") {
-		return expression_ptr(new find_element_function(args));
-	} else if(fn == "map") {
-		return expression_ptr(new map_function(args));
-	} else if(fn == "sum") {
-		return expression_ptr(new sum_function(args));
-	} else if(fn == "head") {
-		return expression_ptr(new head_function(args));
-	} else if(fn == "rgb") {
-		return expression_ptr(new rgb_function(args));
-	} else if(fn == "transition") {
-		return expression_ptr(new transition_function(args));
-	} else if(fn == "color_transition") {
-		return expression_ptr(new color_transition_function(args));
-	} else if(fn == "size") {
-		return expression_ptr(new size_function(args));
-	} else if(fn == "null") {
-		return expression_ptr(new null_function(args));
-	} else if(fn == "refcount") {
-		return expression_ptr(new refcount_function(args));
-	} else {
+
+	functions_map::const_iterator i = get_functions_map().find(fn);
+	if(i == get_functions_map().end()) {
 		std::cerr << "no function '" << fn << "'\n";
 		throw formula_error();
 	}
+
+	return i->second->create_function(args);
+}
+
+std::vector<std::string> builtin_function_names()
+{
+	std::vector<std::string> res;
+	const functions_map& m = get_functions_map();
+	for(functions_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+		res.push_back(i->first);
+	}
+
+	return res;
 }
 
 }
