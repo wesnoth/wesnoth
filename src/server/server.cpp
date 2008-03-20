@@ -507,7 +507,7 @@ void server::run() {
 				process_data(sock, data);
 
 				if(sample) {
-					double after_processing = parsing_timer.elapsed();	   
+					after_processing = parsing_timer.elapsed();	   
 //					times(&after_processing);
 					metrics_.record_sample(data.root().first_child(),
 //					          after_parsing.tms_utime - before_parsing.tms_utime,
