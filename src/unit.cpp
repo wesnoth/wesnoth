@@ -1672,7 +1672,6 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 	const t_translation::t_terrain terrain = map.get_terrain(loc);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
-	const double submerge = is_flying() ? 0.0 : terrain_info.unit_submerge();
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
 	if (is_flying() && height_adjust < 0) {
 		height_adjust = 0;
@@ -1684,6 +1683,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	}
 	anim_->update_last_draw_time();
 	const frame_parameters params = anim_->get_current_params();
+	double submerge = params.submerge;
+	if(!submerge) submerge=	is_flying() ? 0.0 : terrain_info.unit_submerge();
 
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
 		frame_begin_time_ = anim_->get_current_frame_begin_time();

@@ -78,7 +78,8 @@ class frame_parameters{
 	blend_with(0),
 	blend_ratio(0.0),
 	highlight_ratio(1.0),
-	offset(0)
+	offset(0),
+	submerge(0.0)
 	{};
 
 	image::locator image;
@@ -94,6 +95,7 @@ class frame_parameters{
 	double blend_ratio;
 	double highlight_ratio;
 	double offset;
+	double submerge;
 } ;
 //! keep most parameters in a separate class to simplify handling of large number of parameters
 class frame_builder {
@@ -112,7 +114,8 @@ class frame_builder {
 		blend_with_(0),
 		blend_ratio_(""),
 		highlight_ratio_(""),
-		offset_("")
+		offset_(""),
+		submerge_("")
 	{};
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		//! allow easy chained modifications will raised assert if used after initialization
@@ -125,10 +128,12 @@ class frame_builder {
 		frame_builder & blend(const std::string& blend_ratio,const Uint32 blend_color);
 		frame_builder & highlight(const std::string& highlight);
 		frame_builder & offset(const std::string& offset);
+		frame_builder & submerge(const std::string& submerge);
 		//! getters for the different parameters
 		const frame_parameters parameters(int current_time, const frame_parameters & default_val = frame_parameters()) const;
 
 		int duration() const{ return duration_;};
+		void recalculate_duration();
 		bool does_not_change() const;
 		bool need_update() const;
 	private:
@@ -145,6 +150,7 @@ class frame_builder {
 		progressive_double blend_ratio_;
 		progressive_double highlight_ratio_;
 		progressive_double offset_;
+		progressive_double submerge_;
 
 };
 //! Describe a unit's animation sequence.

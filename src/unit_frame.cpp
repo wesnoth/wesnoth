@@ -183,6 +183,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	}
 	highlight(cfg[frame_string+"alpha"]);
 	offset(cfg[frame_string+"offset"]);
+	submerge(cfg[frame_string+"submerge"]);
 
 }
 
@@ -202,6 +203,7 @@ const frame_parameters frame_builder::parameters(int current_time, const frame_p
 	result.blend_ratio = blend_ratio_.get_current_element(current_time,default_val.blend_ratio);
 	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,default_val.highlight_ratio);
 	result.offset = offset_.get_current_element(current_time,default_val.offset);
+	result.submerge = submerge_.get_current_element(current_time,default_val.submerge);
 	return result;
 }
 frame_builder & frame_builder::image(const image::locator image )
@@ -235,13 +237,18 @@ frame_builder & frame_builder::halo(const std::string &halo, const std::string &
 frame_builder & frame_builder::duration(const int duration)
 {
 	duration_= duration;
+	recalculate_duration();
+	return *this;
+}
+void frame_builder::recalculate_duration()
+{
 	halo_ = progressive_string(halo_.get_original(),duration_);
 	halo_x_ = progressive_int(halo_x_.get_original(),duration_);
 	halo_y_ = progressive_int(halo_y_.get_original(),duration_);
 	blend_ratio_=progressive_double(blend_ratio_.get_original(),duration_);
 	highlight_ratio_=progressive_double(highlight_ratio_.get_original(),duration_);
 	offset_=progressive_double(offset_.get_original(),duration_);
-	return *this;
+	submerge_=progressive_double(submerge_.get_original(),duration_);
 }
 frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
 {
@@ -259,6 +266,11 @@ frame_builder & frame_builder::offset(const std::string& offset)
 	offset_=progressive_double(offset,duration_);
 	return *this;
 }
+frame_builder & frame_builder::submerge(const std::string& submerge)
+{
+	submerge_=progressive_double(submerge,duration_);
+	return *this;
+}
 bool frame_builder::does_not_change() const
 {
 	return halo_.does_not_change() &&
@@ -266,7 +278,8 @@ bool frame_builder::does_not_change() const
 		halo_y_.does_not_change() &&
 		blend_ratio_.does_not_change() &&
 		highlight_ratio_.does_not_change() &&
-		offset_.does_not_change();
+		offset_.does_not_change() &&
+		submerge_.does_not_change();
 }
 bool frame_builder::need_update() const
 {
@@ -275,7 +288,8 @@ bool frame_builder::need_update() const
 			!halo_y_.does_not_change() ||
 			!blend_ratio_.does_not_change() ||
 			!highlight_ratio_.does_not_change() ||
-			!offset_.does_not_change() ) {
+			!offset_.does_not_change() ||
+			!submerge_.does_not_change() ) {
 			return true;
 	}
 	return false;
@@ -326,7 +340,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 		bool facing_west = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::SOUTH_WEST;
 		bool facing_north = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::NORTH || direction == gamemap::location::NORTH_EAST;
 		game_display::get_singleton()->render_unit_image(x- image->w/2, y - image->h/2, false, gamemap::get_drawing_order(src), image, facing_west, false,
-				ftofxp(current_data.highlight_ratio), current_data.blend_with, current_data.blend_ratio,0,!facing_north);
+				ftofxp(current_data.highlight_ratio), current_data.blend_with, current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
 	halo::remove(*halo_id);
 	*halo_id = halo::NO_HALO;

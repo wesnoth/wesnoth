@@ -731,6 +731,7 @@ void unit_animation::particule::start_animation(int start_time,
 {
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
+	parameters_.duration(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles);
 	last_frame_begin_time_ = get_begin_time() -1;
 	if(src != gamemap::location::null_location || dst != gamemap::location::null_location) {
