@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-17 10:29+0100\n"
-"PO-Revision-Date: 2008-03-12 22:16+0100\n"
+"PO-Revision-Date: 2008-03-20 14:05+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -3080,8 +3080,8 @@ msgid ""
 msgstr ""
 "Zamoření morem:\n"
 "Když je jednotka zabita morovou ranou, je nahrazena stejnou jednotkou avšak "
-"patřící na stranu jednotky, která ji zabila (Toto nefunguje u nemrtvých či "
-"jednotek umístěných ve vesnicích)."
+"patřící na stranu jednotky, která ji zabila. Toto nefunguje u nemrtvých či "
+"jednotek umístěných ve vesnicích."
 
 #: data/core/macros/abilities.cfg:570
 msgid ""
@@ -3091,9 +3091,9 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Zamoření morem:\n"
-"Když je jednotka zabita morovou ranou, je nahrazena Chodící mrtvolou, avšak "
-"patřící na stranu jednotky, která ji zabila. Toto nefunguje u nemrtvých či "
-"jednotek umístěných ve vesnicích."
+"Když je jednotka zabita morovou ranou, je nahrazena Chodící mrtvolou, "
+"patřící však na stranu jednotky, která ji zabila. Toto nefunguje u nemrtvých "
+"či jednotek umístěných ve vesnicích."
 
 #: data/core/macros/abilities.cfg:580
 msgid "slows"
@@ -3247,8 +3247,7 @@ msgstr "Hodně zlata"
 #. message: speaker=unit
 #: data/core/macros/items.cfg:68
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
-"Přeji si, aby se mi tato jediná zlatá mince mince vrátila desetinásobně."
+msgstr "Přeji si, aby se mi tato jediná zlatá mince vrátila desetinásobně."
 
 #. option: speaker=narrator
 #: data/core/macros/items.cfg:75
@@ -3328,7 +3327,7 @@ msgstr "Lektvar rozkladu"
 #. object
 #: data/core/macros/items.cfg:283
 msgid "This poor unit drank something really bad."
-msgstr "Chudák jednotka vypila něco opravdu zlého."
+msgstr "Chudák jednotka, vypila něco opravdu zlého."
 
 #. object
 #: data/core/macros/items.cfg:318
@@ -4361,12 +4360,11 @@ msgstr ""
 "pouze při útoku."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Tato jednotka útočí na dálku magicky, takže má vždy velkou šanci zasáhnout "
+" Tato jednotka používá magické útoky, které mají vždy velkou šanci zasáhnout "
 "protivníka."
 
 #: data/core/macros/special-notes.cfg:77
@@ -6917,10 +6915,9 @@ msgid "Choose your preferred language:"
 msgstr "Vyber si preferovaný jazyk:"
 
 #: src/game.cpp:1756
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
+msgstr[0] "Následující rozšíření obsahovalo chybu a nemohlo být nahráno:"
 msgstr[1] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
 msgstr[2] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
 
@@ -8409,7 +8406,7 @@ msgid ""
 msgstr ""
 "Souběh her byl porušen a nelze pokračovat. Může se to stát z mnoha důvodů; "
 "například když jeden z hráčů upraví nastavení hry, možná při pokusu o "
-"podvádění. Nebo také při chybě hry, což je však zřídkavější.\n"
+"podvádění. Nebo také při chybě hry, což je však méně pravděpodobné.\n"
 "\n"
 "Přeješ si uložit záznam chyb hry?"
 
