@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-10 11:39+0100\n"
-"PO-Revision-Date: 2008-02-03 18:17+0300\n"
+"PO-Revision-Date: 2008-03-16 14:07+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -191,7 +191,7 @@ msgstr "Purvas"
 #. terrain
 #: data/core/terrain.cfg:654
 msgid "Farmland"
-msgstr ""
+msgstr "Dirbama žemė"
 
 #. terrain
 #: data/core/terrain.cfg:667
@@ -343,7 +343,7 @@ msgstr "Nustatymai"
 
 #: src/editor/editor_dialogs.cpp:254 src/game_preferences_display.cpp:202
 msgid "Scroll Speed:"
-msgstr ""
+msgstr "Slinkimo greitis:"
 
 #: src/editor/editor_dialogs.cpp:281 src/game_preferences_display.cpp:160
 #: src/hotkeys.cpp:64
@@ -369,11 +369,11 @@ msgstr "Keisti žemėlapio dydį"
 
 #: src/editor/editor_dialogs.cpp:388
 msgid "X offset:"
-msgstr ""
+msgstr "X postūmis:"
 
 #: src/editor/editor_dialogs.cpp:389
 msgid "Y offset:"
-msgstr ""
+msgstr "Y postūmis:"
 
 #: src/editor/editor_dialogs.cpp:468
 msgid "Smart expand"
@@ -517,7 +517,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:186
 msgid "Reverse Time Graphics"
-msgstr ""
+msgstr "Apsukti laiko grafiką"
 
 #: src/game_preferences_display.cpp:188
 msgid "Sound effects"
@@ -681,7 +681,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:356
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Rodyti ženkliukus prieš žaidėjų vardus vestibiulyje."
 
 #: src/game_preferences_display.cpp:359
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -744,6 +744,8 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
+"Rodyti spalvotą apskritimą virš kiekvieno dalinio pagrindo, kad parodyti, "
+"kurioje jis pusėje"
 
 #: src/game_preferences_display.cpp:390
 msgid "Choose whether the sun moves left-to-right or right-to-left"
@@ -759,7 +761,7 @@ msgstr "Naudoti specialius grafinius efektus (gali būti lėčiau)"
 
 #: src/game_preferences_display.cpp:398
 msgid "View and configure keyboard shortcuts"
-msgstr ""
+msgstr "Žiūrėti ir konfigūruoti sparčiuosius klavišus"
 
 #: src/game_preferences_display.cpp:689
 msgid "Speed: "
@@ -1219,6 +1221,9 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+"Vaizdo režimas negali būti pakeistas. Jūsų langų tvarkyklė turi būti "
+"nustatyta į 16 bitų pikseliui, kad žaidimas veiktų lango režime. Jūsų "
+"ekranas turi palaikyti 1024x768x16, kad žaidimas veiktų pilname ekrane."
 
 #: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
