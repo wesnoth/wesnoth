@@ -594,6 +594,7 @@ namespace {
 class base_function_creator {
 public:
 	virtual expression_ptr create_function(const std::vector<expression_ptr>& args) const = 0;
+	virtual ~base_function_creator() {}
 };
 
 template<typename T>
@@ -602,6 +603,7 @@ public:
 	virtual expression_ptr create_function(const std::vector<expression_ptr>& args) const {
 		return expression_ptr(new T(args));
 	}
+	virtual ~function_creator() {}
 };
 
 typedef std::map<std::string, base_function_creator*> functions_map;
