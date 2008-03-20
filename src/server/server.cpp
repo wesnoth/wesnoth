@@ -222,7 +222,9 @@ private:
 
 	time_t last_ping_;
 	time_t last_stats_;
+	time_t last_clean_;
 	void dump_stats(const time_t& now);
+	void clean_user_handler(const time_t& now);
 
 	void process_data(const network::connection sock,
 	                  simple_wml::document& data);
@@ -264,7 +266,8 @@ server::server(int port, input_stream& input, const std::string& config_file, co
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
 	games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC),
 	last_ping_(time(NULL)),
-	last_stats_(last_ping_)
+	last_stats_(last_ping_),
+	last_clean_(last_ping_)
 {
 	load_config();
 
@@ -413,6 +416,14 @@ void server::dump_stats(const time_t& now) {
 		<< "\tlobby_users = " << lobby_.nobservers() << "\n";
 }
 
+void server::clean_user_handler(const time_t& now) {
+	if(!user_handler_) {
+	    return;
+	}
+	last_clean_ = now;
+	user_handler_->clean_up();
+}
+
 void server::run() {
 	for (int loop = 0;; ++loop) {
 		SDL_Delay(20);
@@ -432,6 +443,8 @@ void server::run() {
 			if ((loop%100) == 0 && last_ping_ + 10 <= now) {
 				// Make sure we log stats every 5 minutes
 				if (last_stats_ + 5*60 <= now) dump_stats(now);
+				// Clean user_handler_ once a day
+				if (last_clean_ + 60*60*24 <= now) clean_user_handler(now);
 				// send a 'ping' to all players to detect ghosts
 				config ping;
 				ping["ping"] = lexical_cast<std::string>(now);
@@ -831,11 +844,13 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 		return;
 	}
 
+	//Check if this server allows nick registration at all
+    if(!user_handler_) {
+        lobby_.send_server_message("This server does not allow to register on it.", sock);
+        return;
+    }
+
 	if(data.child("register")) {
-	    if(!user_handler_) {
-            lobby_.send_server_message("This server does not allow to register on it.", sock);
-            return;
-	    }
 	    try {
 	        (user_handler_->add_user(pl->second.name(), (*data.child("register"))["mail"].to_string(),
                 (*data.child("register"))["password"].to_string()));
@@ -865,13 +880,8 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 
     //A user requested to update his password or mail
 	if(data.child("set")) {
-	    if(!user_handler_) {
-            lobby_.send_server_message("This server does not allow to register on it.", sock);
-            return;
-	    }
-
 	    if(!(user_handler_->user_exists(pl->second.name()))) {
-            lobby_.send_server_message("You are not registered. Please register first",
+            lobby_.send_server_message("You are not registered. Please register first.",
                     sock);
             return;
 	    }
@@ -889,7 +899,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
                 user_handler_->set_realname(pl->second.name(), set["realname"].to_string());
             }
 
-        lobby_.send_server_message("Your user details have been updated.", sock);
+            lobby_.send_server_message("Your user details have been updated.", sock);
 
 	    } catch (user_handler::error e) {
             lobby_.send_server_message(("There was and error updating your details. The error message was: "
@@ -899,12 +909,8 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
         return;
 	}
 
+    //A user requested information about another user
 	if(data.child("info")) {
-	    if(!user_handler_) {
-            lobby_.send_server_message("This server does not allow to register on it. "
-            "No user info available." , sock);
-            return;
-	    }
 	    try {
 	        std::string res = user_handler_->user_info((*data.child("info"))["name"].to_string());
 	        lobby_.send_server_message(res.c_str(), sock);
@@ -914,6 +920,32 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
             + e.message).c_str(), sock);
 	    }
 
+	}
+
+	//A user requested to delete his nick
+	if(data.child("drop")) {
+	    if(!(user_handler_->user_exists(pl->second.name()))) {
+            lobby_.send_server_message("You are not registered.",
+                    sock);
+            return;
+	    }
+
+        try {
+            user_handler_->remove_user(pl->second.name());
+            lobby_.send_server_message("Your username has been dropped.", sock);
+
+            //Mark the player as not registered and send the other clients
+            //an update to dislpay this change
+            pl->second.mark_registered(false);
+
+            simple_wml::document diff;
+            make_change_diff(games_and_users_list_.root(), NULL,
+		                 "user", pl->second.config_address(), diff);
+            lobby_.send_data(diff);
+	    } catch (user_handler::error e) {
+            lobby_.send_server_message(("There was and error dropping your username. The error message was: "
+            + e.message).c_str(), sock);
+	    }
 	}
 
 }

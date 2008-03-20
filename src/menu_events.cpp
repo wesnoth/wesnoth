@@ -1887,6 +1887,9 @@ private:
 		    }
 		    out = "registering with password *** and " + (arg2.empty() ? "no email address" : "email address " + arg2);
 
+		} else if (cmd == "drop") {
+		    nickserv.add_child("drop");
+		    out = "dropping your username";
 		} else if (cmd == "info") {
 		    nickserv.add_child("info")["name"] = arg1;
 		    out = "requesting information for user " + arg1;
@@ -1956,7 +1959,7 @@ private:
 				|| cmd == "mute" || cmd == "muteall" || cmd == "ping")
 		{
 			send_command(cmd, (argc > 1) ? arg1 + " " + arg2 : arg1);
-		} else if (cmd == "nickserv" && argc > 1) {
+		} else if (cmd == "nickserv" && (argc > 1 || (argc > 0 && arg1 == "drop"))) {
 		    send_nickserv_command(arg1, arg2);
         } else if ((cmd == "m" || cmd == "msg" || cmd == "whisper") && argc > 1) {
 			config cwhisper,data;

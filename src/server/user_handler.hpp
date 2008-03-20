@@ -4,11 +4,6 @@
 #include "../global.hpp"
 
 #include "../config.hpp"
-#include "../log.hpp"
-#include "../filesystem.hpp"
-#include "../serialization/parser.hpp"
-#include "../serialization/preprocessor.hpp"
-#include "../serialization/string_utils.hpp"
 
 #ifndef NO_MAIL
 #include <jwsmtp/jwsmtp.h>
@@ -23,14 +18,16 @@ class user_handler {
         void load_config();
         void save_config();
 
-        //! Remove users that registered but did never log in, etc.
         void clean_up();
+
+        //! Removes users that have not logged in for a certain amount of time
+        void remove_dead_users();
 
         //! Adds a user.
         //! Returns false if adding fails (e.g. because a user with the same name already exists).
         void add_user(const std::string& name, const std::string& mail, const std::string& password);
 
-        //! Removes a user-
+        //! Removes a user.
         //! Returns false if the user does not exist
         void remove_user(const std::string& name);
 
@@ -53,6 +50,9 @@ class user_handler {
         //! Returns a string containing info like the last login of this user
         std::string user_info(const std::string& name);
 
+        //! Returns true if we can send emails
+        bool mail();
+
 
         struct error {
             error(const std::string& msg) : message(msg) {}
@@ -72,6 +72,7 @@ class user_handler {
 
         std::string users_file_;
         unsigned short mail_port_;
+        unsigned short username_expiration_limit_;
 
         config cfg_;
         config* users_;

@@ -1,13 +1,15 @@
 #include "user_handler.hpp"
 
-#include <algorithm>
+#include "../log.hpp"
+#include "../filesystem.hpp"
+#include "../serialization/parser.hpp"
+#include "../serialization/preprocessor.hpp"
+#include "../serialization/string_utils.hpp"
+
 #include <cassert>
-#include <cerrno>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-#include <map>
-#include <set>
 #include <sstream>
 #include <vector>
 
@@ -17,6 +19,7 @@ user_handler::user_handler(const std::string& users_file) :
         cfg_(read_config())
 {
     load_config();
+    clean_up();
 }
 
 user_handler::~user_handler() {
@@ -48,24 +51,44 @@ void user_handler::load_config() {
 
     //Load configuration and initialize with default values if we don't find values
 
+        if(cfg_["username_expiration_limit"].empty()) {
+            unsigned short default_time = 60;
+            username_expiration_limit_ = default_time;
+            cfg_["username_expiration_limit"] = lexical_cast_default<std::string>(default_time);
+        } else {
+            try {
+                username_expiration_limit_ = lexical_cast_default<unsigned short>(cfg_["username_expiration_limit"]);
+            } catch (bad_lexical_cast) {
+                std::cerr << "Bad lexical cast reading 'username_expiration_limit', using default value.\n";
+                unsigned short default_time = 60;
+                username_expiration_limit_ = default_time;
+                cfg_["username_expiration_limit"] = lexical_cast_default<std::string>(default_time);
+            }
+        }
+
     #ifndef NO_MAIL
 
-    cfg_["from_address"] = cfg_["from_address"].empty() ? "NOREPLY@wesnoth.org" : cfg_["from_address"];
-    cfg_["mail_server"] = cfg_["mail_server"].empty() ? "127.0.0.1" : cfg_["mail_server"];
+    if(mail()) {
+        config& mail = *(cfg_.child("mail"));
 
-    //"mail_user" and "mail_password" may stay empty
+        mail["from_address"] = mail["from_address"].empty() ? "NOREPLY@wesnoth.org" : mail["from_address"];
+        mail["mail_server"] = mail["mail_server"].empty() ? "127.0.0.1" : mail["mail_server"];
 
-    if(cfg_["mail_port"].empty()) {
-        mail_port_ = jwsmtp::mailer::SMTP_PORT;
-        unsigned short default_port = jwsmtp::mailer::SMTP_PORT;
-        cfg_["mail_port"] = lexical_cast_default<std::string>(default_port);
-    } else {
-        try {
-            mail_port_ = lexical_cast_default<unsigned short>(cfg_["mail_port"]);
-        } catch (bad_lexical_cast) {
-            std::cerr << "Bad lexical cast reading the 'mail_port', using default port.\n";
+        //"mail_user" and "mail_password" may stay empty
+
+        if(mail["mail_port"].empty()) {
             unsigned short default_port = jwsmtp::mailer::SMTP_PORT;
-            cfg_["mail_port"] = lexical_cast_default<std::string>(default_port);
+            mail_port_ = default_port;
+            mail["mail_port"] = lexical_cast_default<std::string>(default_port);
+        } else {
+            try {
+                mail_port_ = lexical_cast_default<unsigned short>(mail["mail_port"]);
+            } catch (bad_lexical_cast) {
+                std::cerr << "Bad lexical cast reading the 'mail_port', using default port.\n";
+                unsigned short default_port = jwsmtp::mailer::SMTP_PORT;
+                mail_port_ = default_port;
+                mail["mail_port"] = lexical_cast_default<std::string>(default_port);
+            }
         }
     }
 
@@ -96,11 +119,18 @@ bool user_handler::send_mail(const char* to_address, const char* subject, const 
 
     #ifndef NO_MAIL
 
-    jwsmtp::mailer m(to_address, cfg_["from_address"].c_str(), subject, message,
-            cfg_["mail_server"].c_str(), mail_port_, false);
-    if(!(cfg_["mail_user"].empty())) {
-        m.username(cfg_["mail_user"]);
-        m.password( cfg_["mail_password"]);
+    //if we cannot send emails at all we of course also cannot send this one
+    if(!mail()) {
+        return false;
+    }
+
+    config& mail = *(cfg_.child("mail"));
+
+    jwsmtp::mailer m(to_address, mail["from_address"].c_str(), subject, message,
+            mail["mail_server"].c_str(), mail_port_, false);
+    if(!(mail["mail_user"].empty())) {
+        m.username(mail["mail_user"]);
+        m.password( mail["mail_password"]);
     }
     //! @todo Sending the mail in a new thread
     //! (as suggested on http://johnwiggins.net/jwsmtp/)
@@ -124,7 +154,35 @@ bool user_handler::send_mail(const char* to_address, const char* subject, const 
 }
 
 void user_handler::clean_up() {
-    //! @todo Write this function :)
+    std::cout << "User handler clean up...\n";
+    remove_dead_users();
+    std::cout << "Clean up finished\n";
+}
+
+void user_handler::remove_dead_users() {
+    //username_expiration_limit_ set to 0 means
+    //no expiration limit
+    if(!username_expiration_limit_) {
+        return;
+    }
+
+    time_t now = time(NULL);
+    //A minute has 60 seconds, an hour 60 minutes and
+    //a day 24 hours.
+    //Thus a day has 60 * 60 * 24 = 86400 seconds
+    time_t limit = username_expiration_limit_ * 86400;
+
+    const config::child_map& user_childs = users_->all_children();
+    for(config::child_map::const_iterator i = user_childs.begin(); i != user_childs.end(); ++i) {
+        const config& user = *(users_->child(i->first));
+        time_t last_login = lexical_cast_default<time_t>(user["last_login"]);
+        if((now - last_login) > limit) {
+            std::cout << "User '" << i->first << "' exceeds expiration date: ";
+            remove_user(i->first);
+        }
+    }
+
+    save_config();
 }
 
 void user_handler::add_user(const std::string& name,
@@ -146,7 +204,6 @@ void user_handler::add_user(const std::string& name,
     if(!mail.empty()) {
         const config::child_map& user_childs = users_->all_children();
         for(config::child_map::const_iterator i = user_childs.begin(); i != user_childs.end(); ++i) {
-            std::cout << (*(users_->child(i->first)))["mail"] << std::endl;
             if((*(users_->child(i->first)))["mail"] == mail) {
                 throw error("Could not add new user. The email address '" + mail + "' is already in use.");
             }
@@ -196,7 +253,7 @@ void user_handler::password_reminder(const std::string& name) {
     config& user = *(users_->child(name));
 
     if(user["mail"].empty()) {
-        throw error("Could not send password reminder. The email address of the user '" + name + "' is empty");
+        throw error("Could not send password reminder. The email address of the user '" + name + "' is empty.");
     }
 
     std::stringstream msg;
@@ -205,7 +262,7 @@ void user_handler::password_reminder(const std::string& name) {
 
     //If sending does not return true warn that no message was sent.
     if(!(send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Password Reminder", msg.str().c_str()))) {
-        throw error("Could not send password reminder. There was an error sending the reminder email");
+        throw error("Could not send password reminder. There was an error sending the reminder email.");
     }
     return;
 
@@ -236,6 +293,7 @@ void user_handler::remove_user(const std::string& name) {
     if(!user_exists(name)) {
         throw error("Could not remove user. No user with the name '" + name + "' exists.");
     }
+
     users_->remove_child(name, 0);
 
     //! @todo To save performance it we should of course not save
@@ -274,6 +332,17 @@ void user_handler::set_user_attribute(const std::string& name,
 
 bool user_handler::user_exists(const std::string& name) {
     return ((users_->child(name)));
+}
+
+bool user_handler::mail() {
+
+    //We should not even get to call this when compiling with NO_MAIL
+    //but some doulbe safety can never hurt :)
+    #ifdef NO_MAIL
+    return false;
+    #endif
+
+    return (cfg_.child("mail"));
 }
 
 void user_handler::set_mail(const std::string& user, const std::string& mail) {
