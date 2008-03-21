@@ -51,7 +51,9 @@ env.Default("wesnothd")
 #
 # Program declarations (incomplete, no libraries yet)
 #
-commonlibs = Split("boost_iostreams-mt SDL_net SDL_ttf SDL_mixer SDL pthread SDL_image")
+boost_libs = Split("boost_iostreams-mt boost_regex")
+SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL pthread SDL_image")
+commonlibs = SDL_libs + boost_libs
 
 libwesnoth_core_sources = [
     "src/color_range.cpp",
