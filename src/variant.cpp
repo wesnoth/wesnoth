@@ -419,7 +419,7 @@ void variant::serialize_to_string(std::string& str) const
 		str += boost::lexical_cast<std::string>(int_value_);
 		break;
 	case TYPE_CALLABLE:
-		std::cerr << "ERROR: attempt to serialize callable variant\n";
+		callable_->serialize(str);
 		break;
 	case TYPE_LIST: {
 		str += "[";
@@ -447,7 +447,11 @@ void variant::serialize_to_string(std::string& str) const
 
 void variant::serialize_from_string(const std::string& str)
 {
-	*this = game_logic::formula(str).execute();
+	try {
+		*this = game_logic::formula(str).execute();
+	} catch(...) {
+		*this = variant(str);
+	}
 }
 
 int variant::refcount() const

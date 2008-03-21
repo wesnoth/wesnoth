@@ -45,6 +45,13 @@ int location_callable::do_compare(const game_logic::formula_callable* callable) 
 	return loc_.y - other_loc.y;
 }
 
+void location_callable::serialize_to_string(std::string& str) const
+{
+	std::ostringstream s;
+	s << "loc(" << loc_.x << "," << loc_.y << ")";
+	str = s.str();
+}
+
 variant move_map_callable::get_value(const std::string& key) const
 {
 	using namespace game_logic;
@@ -106,7 +113,11 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "value") {
 		return variant(u_.cost());
 	} else if(key == "vars") {
-		return variant(u_.formula_vars());
+		if(u_.formula_vars()) {
+			return variant(u_.formula_vars().get());
+		} else {
+			return variant();
+		}
 	} else {
 		return variant();
 	}

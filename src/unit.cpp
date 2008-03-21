@@ -116,7 +116,7 @@ unit::unit(const unit& o):
            alpha_(o.alpha_),
 
            unit_formula_(o.unit_formula_),
-           formula_vars_(o.formula_vars_),
+           formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
 
            recruits_(o.recruits_),
 
@@ -1325,15 +1325,17 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	const config* ai_vars = cfg.child("ai_vars");
 	if (ai_vars)
 	{		
-		formula_vars_.clear();
+		formula_vars_ = new game_logic::map_formula_callable;
 		
 		variant var;
 		for(string_map::const_iterator i = ai_vars->values.begin(); i != ai_vars->values.end(); ++i) 
 		{ 
  			var.serialize_from_string(i->second);
-			formula_vars_.add(i->first, var);
+			formula_vars_->add(i->first, var);
 		}
-	}	
+	} else {
+		formula_vars_ = game_logic::map_formula_callable_ptr();
+	}
 	//remove ai_vars from private cfg 
 	cfg_.clear_children("ai_vars");
 
@@ -1510,13 +1512,13 @@ void unit::write(config& cfg) const
 		cfg["formula"] = unit_formula_;
 
 
-	if (!formula_vars_.empty())
+	if (formula_vars_ && formula_vars_->empty() == false)
 	{
 		cfg.add_child("ai_vars");
 		config* ai_vars = cfg.child("ai_vars");
 
 		std::string str;
-		for(game_logic::map_formula_callable::const_iterator i = formula_vars_.begin(); i != formula_vars_.end(); ++i) 
+		for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i) 
 		{ 
 			i->second.serialize_to_string(str);
 			if (!str.empty())

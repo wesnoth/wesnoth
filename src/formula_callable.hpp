@@ -65,12 +65,21 @@ public:
 	}
 
 	virtual void get_inputs(std::vector<formula_input>* inputs) const {};
+
+	void serialize(std::string& str) const {
+		serialize_to_string(str);
+	}
+
 protected:
 	virtual ~formula_callable() {}
 
 	virtual void set_value(const std::string& key, const variant& value);
 	virtual int do_compare(const formula_callable* callable) const {
 		return this < callable ? -1 : (this == callable ? 0 : 1);
+	}
+
+	virtual void serialize_to_string(std::string& str) const {
+		throw type_error("Tried to serialize type which cannot be serialized");
 	}
 private:
 	virtual variant get_value(const std::string& key) const = 0;

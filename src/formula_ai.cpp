@@ -80,9 +80,9 @@ private:
 		const args_list& arguments = args();
 		const expression_ptr& exp_p = arguments[0];
 		variant my_variant = exp_p->evaluate(variables);
-		const location_callable* loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables));
-		const location_callable* loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables));
-		return variant(distance_between(loc1->loc(), loc2->loc()));
+		const gamemap::location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const gamemap::location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		return variant(distance_between(loc1, loc2));
 	}
 };
 
@@ -316,17 +316,6 @@ private:
 	const formula_ai& ai_;
 };
 
-class loc_function : public function_expression {
-public:
-	explicit loc_function(const args_list& args)
-	  : function_expression("loc", args, 2, 2)
-	{}
-private:
-	variant execute(const formula_callable& variables) const {
-		return variant(new location_callable(gamemap::location(args()[0]->evaluate(variables).as_int()-1, args()[1]->evaluate(variables).as_int()-1)));
-	}
-};
-
 class is_village_function : public function_expression {
 public:
 	explicit is_village_function(const args_list& args)
@@ -493,8 +482,6 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new recruit_function(args));
 		} else if(fn == "is_village") {
 			return expression_ptr(new is_village_function(args));
-		} else if(fn == "loc") {
-			return expression_ptr(new loc_function(args));
 		} else if(fn == "unit_at") {
 			return expression_ptr(new unit_at_function(args, ai_));
 		} else if(fn == "unit_moves") {
@@ -628,6 +615,8 @@ void formula_ai::prepare_move() const
 bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
 	if(!formula_) {
+		ai_interface* fallback = create_ai("", get_info());
+		fallback->play_turn();
 		return false;
 	}
 
@@ -653,6 +642,7 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 		
 		const move_callable* move = try_convert_variant<move_callable>(*i);
 		const attack_callable* attack = try_convert_variant<attack_callable>(*i);
+		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(*i);
 		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(*i);
 		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(*i);
 		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(*i);
@@ -677,6 +667,29 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 			}
 			std::cerr << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
 			attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
+			made_move = true;
+		} else if(attack_analysis) {
+			//If we get an attack analysis back we will do the first attack.
+			//Then the AI can get run again and re-choose.
+			assert(attack_analysis->movements.empty() == false);
+
+			move_unit(attack_analysis->movements.front().first,
+			          attack_analysis->movements.front().second,
+					  possible_moves_);
+			const gamemap::location& src = attack_analysis->movements.front().second;
+			const gamemap::location& dst = attack_analysis->target;
+
+			if(get_info().units.count(src)) {
+				battle_context bc(get_info().map, get_info().teams,
+				                  get_info().units, get_info().state,
+								  get_info().gameinfo,
+				                  src, dst, -1, -1, 1.0, NULL,
+								  &get_info().units.find(src)->second);
+				attack_enemy(attack_analysis->movements.front().second,
+				             attack_analysis->target,
+							 bc.get_attacker_stats().attack_num,
+							 bc.get_defender_stats().attack_num);
+			}
 			made_move = true;
 		} else if(recruit_command) {
 			std::cerr << "RECRUIT: '" << recruit_command->type() << "'\n";

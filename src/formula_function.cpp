@@ -18,8 +18,10 @@
 #include <math.h>
 
 //#include "foreach.hpp"
+#include "callable_objects.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
+#include "map.hpp"
 
 #include "SDL.h"
 
@@ -277,7 +279,7 @@ private:
 		}
 
 		if(max_index == -1) {
-			return variant(0);
+			return variant();
 		} else {
 			return items[max_index];
 		}
@@ -513,6 +515,17 @@ private:
 	}
 };
 
+class loc_function : public function_expression {
+public:
+	explicit loc_function(const args_list& args)
+	  : function_expression("loc", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		return variant(new location_callable(gamemap::location(args()[0]->evaluate(variables).as_int()-1, args()[1]->evaluate(variables).as_int()-1)));
+	}
+};
+
 }
 
 formula_function_expression::formula_function_expression(const std::string& name, const args_list& args, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& arg_names)
@@ -634,6 +647,7 @@ functions_map& get_functions_map() {
 		FUNCTION(size);
 		FUNCTION(null);
 		FUNCTION(refcount);
+		FUNCTION(loc);
 #undef FUNCTION
 	}
 

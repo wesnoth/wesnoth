@@ -54,6 +54,8 @@ public:
 	{}
 
 	const gamemap::location& loc() const { return loc_; }
+
+	void serialize_to_string(std::string& str) const;
 };
 
 class move_callable : public game_logic::formula_callable {
