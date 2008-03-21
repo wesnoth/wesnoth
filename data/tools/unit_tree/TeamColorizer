@@ -1,0 +1,98 @@
+#!/usr/bin/env python
+"""
+TeamColorizer
+
+TeamColorize input output
+
+Map the magenta team-color patches in the input image to red in the
+output image, copy the result to output.
+"""
+
+import sys,getopt
+
+team_red=255
+team_green=0
+team_blue=0
+team_red_max=255
+team_green_max=255
+team_blue_max=255
+team_red_min=0
+team_green_min=0
+team_blue_min=0
+
+flag_rgb=((244,154,193),
+          (63,0,22),
+          (85,0,42),
+          (105,0,57),
+          (123,0,69),
+          (140,0,81),
+          (158,0,93),
+          (177,0,105),
+          (195,0,116),
+          (214,0,127),
+          (236,0,140),
+          (238,61,150),
+          (239,91,161),
+          (241,114,172),
+          (242,135,182),
+          (246,173,205),
+          (248,193,217),
+          (250,213,229),
+          #(253,233,241),	# Perl version didn't use this
+          )
+
+base_red = flag_rgb[0][0]
+base_green = flag_rgb[0][1]
+base_blue = flag_rgb[0][2]
+base_sum = base_red+base_green+base_blue
+
+convertor = "convert "
+for (red, green, blue) in flag_rgb:
+    sum=red+green+blue
+    if sum <= base_sum:
+        ratio = (sum * 1.0)/base_sum
+        new_red = int(team_red*ratio+team_red_min*(1-ratio))
+        new_green = int(team_green*ratio+team_green_min*(1-ratio))
+        new_blue = int(team_blue*ratio+team_blue_min*(1-ratio))
+    else:
+        ratio=(base_sum * 1.0)/sum
+        new_red = int(team_red*ratio+team_red_max*(1-ratio))
+        new_green = int(team_green*ratio+team_green_max*(1-ratio))
+        new_blue = int(team_blue*ratio+team_blue_max*(1-ratio))
+
+    #    print "red: red\tgreen: green\tblue: blue\told_rgb\n"
+    #    print "\tred: new_red\tgreen: new_green\tblue: new_blue\tnew_rgb\n"
+    convertor += " -fill \"#%02x%02x%02x\" -opaque \"#%02x%02x%02x\"" \
+                 % (new_red, new_green, new_blue,
+                    red, green, blue)
+
+
+if __name__ == '__main__':
+    (options, arguments) = getopt.getopt(sys.argv[1:], "h?dv",
+                                         ['help', 'dryrun', 'verbose'])
+    verbose = 0
+    dryrun = False
+    exclude = []
+    for (opt, val) in options:
+        if opt in ('-?', '-h', '--help'):
+            print __doc__
+            sys.exit(0)
+        elif opt in ('-d', '--dryrun'):
+            dryrun = True
+            verbose += 1
+        elif opt in ('-v', '--verbose'):
+            verbose += 1
+
+    if len(arguments) != 2:
+        print "usage: TeamColorizer [-h] [-d] [-v] input-file output-file";
+        sys.exit(1)
+    else:
+        (infilename, outfilename) = arguments
+
+    convertor + " " + infilename + " " + outfilename
+    if verbose:
+        print convertor
+    if not dryrun:
+        os.system(convertor)
+
+# TeamColorizer ends here.

@@ -6,14 +6,14 @@
 #   anim_header.html: Template for the header of the report of animations made
 #   index_base.html: Index page that will be presented, in case translations are not selected
 #   index_languages.html: Index page that will be presented, in case translations are selected
-#   TeamColorizer.pl: Script created by Darth Fool, to change the magenta color of the units pngs
+#   TeamColorizer: Script created by Darth Fool, to change the magenta color of the units pngs
 #   tree_fact_header.html: Template for the header of the tree by faction
 #   tree_footer.html: Template for the footer of the unit trees
 #   tree_header.html: Template for the header of the unit trees, except the ones by race of faction
 #   tree_race_header.html: Template for the header of the tree by race
 #   unit.html: Template for the unit page
 #   units.css: Style file for all the html pages
-# For converting the images using the TeamColorizer.pl script, ImageMagik must be installed,
+# For converting the images using the TeamColorizer script, ImageMagik must be installed,
 #   and the convert utility accessible from the console
 # The Perl module Locale::Maketext::Gettext is required for the translations, the latest version can be found at CPAN (http://cpan.org)
 #   If the translation is not going to be used, the line use Locale::Maketext::Gettext; can be commented to avoid installing the module
@@ -600,7 +600,7 @@ sub CopyImages {
 	}
 	# Unit images
 	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
-	my $colorizer = "TeamColorizer.pl";
+	my $colorizer = "TeamColorizer";
 	$colorizer = './' . $colorizer unless $windows;
 	while (<UNITS>) {
 		chomp;
