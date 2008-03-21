@@ -549,7 +549,21 @@ void formula_ai::play_turn()
 	recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruit"], &function_table);
 	move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
 
-	while(make_move()) {
+	//execute units formulas first
+	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+		if( (i->second.side() == get_info().team_num) && i->second.has_formula()) 
+		{
+			game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
+			game_logic::map_formula_callable callable(this);
+			callable.add_ref();
+			callable.add("me", variant(new unit_callable(*i, current_team(), get_info().team_num)));
+			make_move(formula, callable);
+		}
+	}
+
+	game_logic::map_formula_callable callable(this);
+	callable.add_ref();
+	while(make_move(move_formula_,callable)) {
 	}
 }
 
@@ -611,16 +625,17 @@ void formula_ai::prepare_move() const
 	move_maps_valid_ = true;
 }
 
-bool formula_ai::make_move()
+bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
-	if(!move_formula_) {
+	if(!formula_) {
 		return false;
 	}
 
 	move_maps_valid_ = false;
 
 	std::cerr << "do move...\n";
-	const variant var = move_formula_->execute(*this);
+	const variant var = formula_->execute(variables);
+	//const variant var = formula_->execute(*this);
 	std::vector<variant> vars;
 	if(var.is_list()) {
 		for(int n = 0; n != var.num_elements(); ++n) {

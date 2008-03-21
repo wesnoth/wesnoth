@@ -44,7 +44,7 @@ public:
 
 private:
 	void do_recruitment();
-	bool make_move();
+	bool make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	game_logic::const_formula_ptr recruit_formula_;

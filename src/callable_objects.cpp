@@ -105,6 +105,8 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(side_ == u_.side());
 	} else if(key == "value") {
 		return variant(u_.cost());
+	} else if(key == "vars") {
+		return variant(u_.formula_vars());
 	} else {
 		return variant();
 	}

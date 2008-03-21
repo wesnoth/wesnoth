@@ -106,11 +106,21 @@ public:
 	{}
 };
 
+
+
 class map_formula_callable : public formula_callable {
 public:
 	explicit map_formula_callable(const formula_callable* fallback=NULL);
 	map_formula_callable& add(const std::string& key, const variant& value);
 	void set_fallback(const formula_callable* fallback) { fallback_ = fallback; }
+	bool empty() const { return values_.empty(); }
+	void clear() { values_.clear(); }
+
+	typedef std::map<std::string,variant>::const_iterator const_iterator;
+
+	const_iterator begin() const { return values_.begin(); }
+	const_iterator end() const { return values_.end(); }
+
 private:
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<formula_input>* inputs) const;

@@ -24,6 +24,7 @@
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
+#include "formula_callable.hpp"
 
 class game_display;
 class gamestatus;
@@ -258,6 +259,10 @@ public:
 	bool has_ability_type(const std::string& ability) const;
 	bool abilities_affects_adjacent() const;
 
+	const game_logic::map_formula_callable* formula_vars() const { return &formula_vars_; }
+	bool has_formula() const { return !unit_formula_.empty(); }
+	const std::string& get_formula() const { return unit_formula_; }
+
 	void reset_modifications();
 	void backup_state();
 	void apply_modifications();
@@ -323,6 +328,9 @@ private:
 	unit_race::GENDER gender_;
 
 	fixed_t alpha_;
+
+	std::string unit_formula_;
+	game_logic::map_formula_callable formula_vars_;
 
 	std::vector<std::string> recruits_;
 
