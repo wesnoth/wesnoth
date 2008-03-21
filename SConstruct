@@ -51,7 +51,7 @@ env.Default("wesnothd")
 #
 # Program declarations (incomplete, no libraries yet)
 #
-commonlibs = Split("wesnoth_core boost_iostreams-mt SDL_net SDL pthread")
+commonlibs = Split("boost_iostreams-mt SDL_net SDL pthread")
 
 libwesnoth_core_sources = [
     "src/color_range.cpp",
@@ -72,6 +72,59 @@ libwesnoth_core_sources = [
     "src/serialization/tokenizer.cpp",
     ]
 env.Library("wesnoth_core", libwesnoth_core_sources, 
+            CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
+
+libwesnoth_sources = [
+	"src/astarnode.cpp",
+	"src/astarsearch.cpp",
+	"src/builder.cpp",
+	"src/cavegen.cpp",
+	"src/clipboard.cpp",
+	"src/construct_dialog.cpp",
+	"src/cursor.cpp",
+	"src/display.cpp",
+	"src/events.cpp",
+	"src/filechooser.cpp",
+	"src/font.cpp",
+	"src/hotkeys.cpp",
+	"src/image.cpp",
+	"src/key.cpp",
+	"src/language.cpp",
+	"src/loadscreen.cpp",
+	"src/map_create.cpp",
+	"src/map_label.cpp",
+	"src/mapgen.cpp",
+	"src/mapgen_dialog.cpp",
+	"src/marked-up_text.cpp",
+	"src/minimap.cpp",
+	"src/pathutils.cpp",
+	"src/preferences.cpp",
+	"src/preferences_display.cpp",
+	"src/race.cpp",
+	"src/random.cpp",
+	"src/reports.cpp",
+	"src/sdl_utils.cpp",
+	"src/show_dialog.cpp",
+	"src/sound.cpp",
+	"src/soundsource.cpp",
+	"src/terrain.cpp",
+	"src/terrain_translation.cpp",
+	"src/video.cpp",
+	"src/theme.cpp",
+	"src/widgets/button.cpp",
+	"src/widgets/file_menu.cpp",
+	"src/widgets/label.cpp",
+	"src/widgets/menu.cpp",
+	"src/widgets/menu_style.cpp",
+	"src/widgets/progressbar.cpp",
+	"src/widgets/scrollarea.cpp",
+	"src/widgets/scrollbar.cpp",
+	"src/widgets/slider.cpp",
+	"src/widgets/textbox.cpp",
+	"src/widgets/widget.cpp",
+	"src/wml_exception.cpp",
+        ]
+env.Library("wesnoth", libwesnoth_core_sources, 
             CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
 
 wesnoth_sources = [
@@ -146,7 +199,26 @@ wesnoth_sources = [
 ]
 env.Program("wesnoth", wesnoth_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs,
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
+            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+
+wesnoth_editor_sources = [
+	"src/editor/editor.cpp",
+	"src/editor/editor_layout.cpp",
+	"src/editor/map_manip.cpp",
+	"src/editor/editor_display.cpp",
+	"src/editor/editor_palettes.cpp",
+	"src/editor/editor_main.cpp",
+	"src/editor/editor_dialogs.cpp",
+	"src/editor/editor_undo.cpp",
+	"src/animated_editor.cpp",
+	"src/gamestatus_editor.cpp",
+	"src/generic_event.cpp",
+	"src/tooltips.cpp",
+        ]
+env.Program("wesnoth_editor", wesnoth_editor_sources,
+            CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 wesnothd_sources = [
@@ -163,7 +235,7 @@ wesnothd_sources = [
     ]
 env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs,
+            LIBS = commonlibs + ['wesnoth_core'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 #
