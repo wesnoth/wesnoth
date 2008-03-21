@@ -139,11 +139,11 @@ indent the line."
    "store_unit" "story" "switch" "target" "team" "teleport" "teleport_anim"
    "terrain" "terrain_graphics" "test" "theme" "then" "tile" "time" "time_area"
    "time_of_day" "topic" "toplevel" "trait" "turn" "tutorial" "unhide_unit"
-   "unit" "unit_type" "unit_abilities" "unit_alignment" "unit_description"
-   "unit_hp" "unit_image" "unit_level" "unit_moves" "unit_overlay"
-   "unit_profile" "unit_status" "unit_traits" "unit_type" "unit_weapons"
-   "unit_xp" "units" "unstone" "unstore_unit" "upkeep" "variable" "variables"
-   "village" "villages" "while")
+   "unit" "unit_type" "unit_abilities" "unit_alignment" "unit_hp" "unit_image" 
+   "unit_level" "unit_moves" "unit_name" "unit_overlay" "unit_profile" 
+   "unit_status" "unit_traits" "unit_type" "unit_weapons" "unit_xp" "units" 
+   "unstone" "unstore_unit" "upkeep" "variable" "variables" "village" 
+   "villages" "while")
   "A list of all tags available in WML.  This list is used by
   `wesnoth-insert-tag' to provide completion for tag names and
   `wesnoth-check-tag-names' to check for possible errors.")
