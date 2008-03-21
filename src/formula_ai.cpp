@@ -537,15 +537,25 @@ void formula_ai::play_turn()
 	move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
 
 	//execute units formulas first
+	std::vector<gamemap::location> formula_unit_loc;
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-		if( (i->second.side() == get_info().team_num) && i->second.has_formula()) 
+		if( (i->second.side() == get_info().team_num) && i->second.has_formula() ) 
 		{
-			game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
-			game_logic::map_formula_callable callable(this);
-			callable.add_ref();
-			callable.add("me", variant(new unit_callable(*i, current_team(), get_info().team_num)));
-			make_move(formula, callable);
+			formula_unit_loc.push_back(i->first);
 		}
+	}
+
+	for(std::vector<gamemap::location>::const_iterator i = formula_unit_loc.begin() ; i != formula_unit_loc.end() ; ++i)
+	{
+			unit_map::const_iterator unit_it = units_.find(*i);
+			if ( unit_it != units_.end() )
+			{
+				game_logic::const_formula_ptr formula(new game_logic::formula(unit_it->second.get_formula(), &function_table));
+				game_logic::map_formula_callable callable(this);
+				callable.add_ref();
+				callable.add("me", variant(new unit_callable(*unit_it, current_team(), get_info().team_num)));
+				make_move(formula, callable);
+			}
 	}
 
 	game_logic::map_formula_callable callable(this);
@@ -650,7 +660,8 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 		prepare_move();
 		if(move) {
 			std::cerr << "moving " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
-			if(possible_moves_.count(move->src()) > 0) {
+			unit_map::iterator i = units_.find(move->src());
+			if( (possible_moves_.count(move->src()) > 0) && (i->second.movement_left() != 0) ) {
 				move_unit(move->src(), move->dst(), possible_moves_);
 				made_move = true;
 			}
