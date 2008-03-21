@@ -2181,7 +2181,7 @@ private:
 			change_logging(data);
 		} else if (cmd == "theme") {
 			preferences::show_theme_dialog(*gui_);
-		} else if (cmd == "muteall" || cmd == "ping"
+		} else if ((cmd == "muteall" || cmd == "ping")
 				&& network::nconnections() != 0)
 		{
 			send_command(cmd);
