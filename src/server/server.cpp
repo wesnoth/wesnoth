@@ -700,6 +700,21 @@ void server::process_login(const network::connection sock,
 		return;
 	}
 
+	if(user_handler_) {
+        //If this is a request for password reminder
+        std::string password_reminder = (*login)["password_reminder"].to_string();
+        if(!password_reminder.empty()) {
+            try {
+                user_handler_->password_reminder(password_reminder);
+                send_error(sock, "Your password reminder email has been sent.");
+            } catch (user_handler::error e) {
+                send_error(sock, ("Your password reminder email could not be sent."
+                        " The error message was: " + e.message).c_str());
+            }
+            return;
+        }
+	}
+
 	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
 	std::string username = (*login)["username"].to_string();
 	if (!utils::isvalid_username(username)) {
@@ -739,12 +754,13 @@ void server::process_login(const network::connection sock,
         if(user_handler_->user_exists(username)) {
             //This name is registered and no password provided
             if(password.empty()) {
-                send_password_request(sock, "This username is registered on this server.");
+                send_password_request(sock, ("The username '" + username + "' is registered on this server.").c_str());
                 return;
             }
             //This name is registered and an incorrect password provided
             else if(!(user_handler_->login(username, password))) {
-                send_password_request(sock, "The password you provided was incorrect");
+                send_password_request(sock, ("The password you provided for the username '" + username +
+                        "' was incorrect.").c_str());
 
                 LOG_SERVER << network::ip_address(sock) << "\t"
                         << "Login attempt with incorrect password for username '" << username << "'.\n";
@@ -916,16 +932,25 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 	        lobby_.send_server_message(res.c_str(), sock);
 	    } catch (user_handler::error e) {
             lobby_.send_server_message(("There was and error looking up the details of the user '" +
-            (*data.child("info"))["name"].to_string() + "'. " +" Tſhe error message was: "
+            (*data.child("info"))["name"].to_string() + "'. " +" The error message was: "
             + e.message).c_str(), sock);
 	    }
-
+	    return;
 	}
 
 	//A user requested to delete his nick
 	if(data.child("drop")) {
 	    if(!(user_handler_->user_exists(pl->second.name()))) {
             lobby_.send_server_message("You are not registered.",
+                    sock);
+            return;
+	    }
+
+        //With the current policy of dissallowing to log in with a
+        //registerd username without the password we should never get
+        //to calling this
+	    if(!(pl->second.registered())) {
+            lobby_.send_server_message("You are not logged in.",
                     sock);
             return;
 	    }
@@ -946,8 +971,8 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
             lobby_.send_server_message(("There was and error dropping your username. The error message was: "
             + e.message).c_str(), sock);
 	    }
+	    return;
 	}
-
 }
 
 std::string server::process_command(const std::string& query) {

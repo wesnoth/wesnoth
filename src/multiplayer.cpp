@@ -220,32 +220,51 @@ static server_type open_connection(game_display& disp, const std::string& origin
 			bool first_time = true;
 			config* error = NULL;
 
-			do {
-				if(error != NULL) {
-					gui::dialog(disp,"",(*error)["message"],gui::OK_ONLY).show();
-				}
+            std::vector<std::string> opts;
+            opts.push_back(_("Log in with password"));
+            opts.push_back(_("Request password reminder for this username"));
+            opts.push_back(_("Choose a different username"));
 
-				std::string login = preferences::login();
+			do {
+                std::string login = preferences::login();
 				std::string password = "";
+				std::string password_reminder = "";
 
 				if(!first_time) {
 
-				    //This implementation is just a temporary hack
-
-				    //! @todo Instead of just asking for the password we should provide
-				    //! the user with a dialog where he can choose a different name,
-				    //! provide a password or request a password reminder
+				    //Somewhat hacky implementation
 
 				    //! @todo A fancy textbox that displays characters as dots or asterisk would
 				    //! be nice, just in chase your enemy is standing behind you
+
 				    if((*error).child("password_request")) {
-                        const int res = gui::show_dialog(disp, NULL, "",
-                                _("Please enter a password"), gui::OK_CANCEL,
-                                NULL, NULL, _("Password: "), &password, mp::max_login_size);
-                        if(res != 0 || password.empty()) {
-                            return ABORT_SERVER;
+                        const int res = gui::show_dialog(disp, NULL, _("Login"),
+                                (*error)["message"], gui::OK_CANCEL,
+                                &opts, NULL, _("Password: "), &password, mp::max_login_size);
+
+                        switch(res) {
+                            //Log in with password
+                            case 0:
+                                break;
+                            //Request a password reminder
+                            case 1:
+                                password_reminder = login;
+                                break;
+                            //Choose a different username
+                            case 2:
+                                password = "";
+                                goto new_username;
+                                break;
+                            default: return ABORT_SERVER;
                         }
+
 				    } else {
+                        if(error != NULL) {
+                            gui::dialog(disp,"",(*error)["message"],gui::OK_ONLY).show();
+                        }
+
+				        new_username:
+
                         const int res = gui::show_dialog(disp, NULL, "",
                                 _("You must log in to this server"), gui::OK_CANCEL,
                                 NULL, NULL, _("Login: "), &login, mp::max_login_size);
@@ -261,6 +280,8 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				config response;
 				response.add_child("login")["username"] = login;
 				(*(response.child("login")))["password"] = password;
+				(*(response.child("login")))["password_reminder"] = password_reminder;
+
 				network::send_data(response, 0, true);
 
 				network::connection data_res = network::receive_data(data, 0, 3000);

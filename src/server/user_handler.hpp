@@ -53,7 +53,6 @@ class user_handler {
         //! Returns true if we can send emails
         bool mail();
 
-
         struct error {
             error(const std::string& msg) : message(msg) {}
             std::string message;

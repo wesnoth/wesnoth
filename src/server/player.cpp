@@ -36,6 +36,7 @@ void player::mark_available(const int game_id, const std::string location)
 
 void player::mark_registered(bool registered) {
     cfg_.set_attr("registered", registered ? "yes" : "no");
+    registered_ = registered;
 }
 
 bool player::is_message_flooding() {

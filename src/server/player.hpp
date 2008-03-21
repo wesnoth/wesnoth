@@ -32,6 +32,7 @@ public:
 
 	void mark_registered(bool registered =true);
 
+    bool registered() const {return registered_;}
 
 	const std::string& name() const { return name_; }
 
@@ -43,6 +44,8 @@ public:
 private:
 	const std::string name_;
 	simple_wml::node& cfg_;
+
+	bool registered_;
 
 	time_t flood_start_;
 	unsigned int messages_since_flood_start_;
