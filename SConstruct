@@ -51,7 +51,7 @@ env.Default("wesnothd")
 #
 # Program declarations (incomplete, no libraries yet)
 #
-commonlibs = Split("boost_iostreams-mt SDL_net SDL pthread")
+commonlibs = Split("boost_iostreams-mt SDL_net SDL_ttf SDL_mixer SDL pthread SDL_image")
 
 libwesnoth_core_sources = [
     "src/color_range.cpp",
@@ -124,7 +124,7 @@ libwesnoth_sources = [
 	"src/widgets/widget.cpp",
 	"src/wml_exception.cpp",
         ]
-env.Library("wesnoth", libwesnoth_core_sources, 
+env.Library("wesnoth", libwesnoth_sources, 
             CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
 
 wesnoth_sources = [
@@ -287,14 +287,25 @@ if env["CC"] == "gcc":
 
 targets = map(str, BUILD_TARGETS)
 
-if 0:
-    if ("game" in targets or "editor" in targets):
-        if not conf.CheckLib('X11'):
-            print "Needed X lib for game or editor and didn't find it; exiting!"
-            Exit(1)
-        if not conf.CheckLib('SDL'):
-            print "Needed SDL lib for game or editor and didn't find it; exiting!"
-            Exit(1)
+if ("wesnoth" in targets or "wesnoth_editor" in targets):
+    if not conf.CheckLib('X11'):
+        print "Needed X lib for game or editor and didn't find it; exiting!"
+        Exit(1)
+    if not conf.CheckLib('SDL'):
+        print "Needed SDL lib for game or editor and didn't find it; exiting!"
+        Exit(1)
+    if not conf.CheckLib('SDL_net'):
+        print "Needed SDL network lib for game or editor and didn't find it; exiting!"
+        Exit(1)
+    if not conf.CheckLib('SDL_ttf'):
+        print "Needed SDL ttf font lib for game or editor and didn't find it; exiting!"
+        Exit(1)
+    if not conf.CheckLib('SDL_mixer'):
+        print "Needed SDL sound mixer lib for game or editor and didn't find it; exiting!"
+        Exit(1)
+    if not conf.CheckLib('SDL_image'):
+        print "Needed SDL image lib for game or editor and didn't find it; exiting!"
+        Exit(1)
 
 if "game" not in map(str, BUILD_TARGETS):
     print "*** Game build disabled, suppressing Python support."
