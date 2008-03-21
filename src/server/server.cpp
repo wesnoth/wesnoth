@@ -833,10 +833,10 @@ std::string server::process_command(const std::string& query) {
 		if (parameters == "") {
 			return "You must type a message.";
 		}
-		lobby_.send_server_message(parameters.c_str());
+		lobby_.send_server_message_to_all(parameters.c_str());
 		if (command == "msg") {
 			for (std::vector<game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
-				(*g)->send_server_message(parameters.c_str());
+				(*g)->send_server_message_to_all(parameters.c_str());
 			}
 		}
 		LOG_SERVER << "<server> " + parameters + "\n";
