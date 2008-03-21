@@ -48,12 +48,19 @@ env = Environment(options = opts)
 all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd"])
 env.Default("all")
 
+# FIXME: Currently this will only work under Linux
+svnrev = commands.getoutput("svnversion -n 2>/dev/null")
+
 #
 # Program declarations
 #
 boost_libs = Split("boost_iostreams-mt boost_regex")
 SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL pthread SDL_image")
 commonlibs = SDL_libs + boost_libs
+
+#color_range.cpp should be removed, but game_config depends on it.
+#game_config has very few things that are needed elsewhere, it should be
+#removed.  Requires moving path and version at least to other files.
 
 libwesnoth_core_sources = [
     "src/color_range.cpp",
@@ -129,6 +136,14 @@ libwesnoth_sources = [
 env.Library("wesnoth", libwesnoth_sources, 
             CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
 
+libwesnothd_sources = [
+    "src/network.cpp",
+    "src/network_worker.cpp",
+    "src/loadscreen_empty.cpp"
+    ]
+env.Library("wesnothd", libwesnothd_sources, 
+            CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
+
 wesnoth_sources = [
     "src/about.cpp",
     "src/actions.cpp",
@@ -168,15 +183,12 @@ wesnoth_sources = [
     "src/multiplayer_connect.cpp",
     "src/multiplayer_create.cpp",
     "src/multiplayer_lobby.cpp",
-    "src/network.cpp",
-    "src/network_worker.cpp",
     "src/pathfind.cpp",
     "src/playcampaign.cpp",
     "src/play_controller.cpp",
     "src/playmp_controller.cpp",
     "src/playsingle_controller.cpp",
     "src/playturn.cpp",
-    "src/publish_campaign.cpp",
     "src/replay.cpp",
     "src/replay_controller.cpp",
     "src/sha1.cpp",
@@ -201,7 +213,7 @@ wesnoth_sources = [
 ]
 env.Program("wesnoth", wesnoth_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth', 'wesnothd'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 wesnoth_editor_sources = [
@@ -225,14 +237,11 @@ env.Program("wesnoth_editor", wesnoth_editor_sources,
 
 campaignd_sources = [
 	"src/campaign_server/campaign_server.cpp",
-	"src/network.cpp",
-	"src/network_worker.cpp",
 	"src/publish_campaign.cpp",
-	"src/loadscreen_empty.cpp",
         ]
 env.Program("campaignd", campaignd_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth', 'wesnothd'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 wesnothd_sources = [
@@ -243,14 +252,18 @@ wesnothd_sources = [
     "src/server/proxy.cpp",
     "src/server/server.cpp",
     "src/server/simple_wml.cpp",
-    "src/network.cpp",
-    "src/network_worker.cpp",
-    "src/loadscreen_empty.cpp"
     ]
 env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs + ['wesnoth_core'],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnothd'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
+
+# FIXME: Include this in gameconfig.cpp when we switch over to scons.
+# Because of the content check, scons will do the right thing.
+# At that point -DSVNREV can be removed from CXXFLAGS.
+r = env.Command("revision_stamp.h", [],
+            'echo "#define REVISION \"%s\"" >revision_stamp.h' % svnrev)
+env.AlwaysBuild(r)
 
 #
 # Utility productions
@@ -294,7 +307,7 @@ else:
     env["CXXFLAGS"] = Split("-O2 -W -Wall -ansi")
 
 if env['tinygui']:
-    env["CXXFLAGS"].append(" -DUSE_TINY_GUI")
+    env["CXXFLAGS"].append("-DUSE_TINY_GUI")
 
 if env['lowmem']:
     env["CXXFLAGS"].append("-DLOW_MEM")
@@ -302,9 +315,12 @@ if env['lowmem']:
 if env['raw_sockets']:
     env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
 
+env["CXXFLAGS"].append("-DSVNREV=" + svnrev)
+
 #print "%s version %s, flags %s" % (env["CC"], cc_version, " ".join(env["CXXFLAGS"]))
 if env["CC"] == "gcc":
     (major, minor, rev) = map(int, cc_version.split("."))
+
     if major*10+minor < 33:
         print "Your compiler version is too old"
         Exit(1)
@@ -318,9 +334,6 @@ if ("wesnoth" in targets or "wesnoth_editor" in targets):
     if not conf.CheckLib('SDL'):
         print "Needed SDL lib for game or editor and didn't find it; exiting!"
         Exit(1)
-    if not conf.CheckLib('SDL_net'):
-        print "Needed SDL network lib for game or editor and didn't find it; exiting!"
-        Exit(1)
     if not conf.CheckLib('SDL_ttf'):
         print "Needed SDL ttf font lib for game or editor and didn't find it; exiting!"
         Exit(1)
@@ -331,7 +344,12 @@ if ("wesnoth" in targets or "wesnoth_editor" in targets):
         print "Needed SDL image lib for game or editor and didn't find it; exiting!"
         Exit(1)
 
-if "game" not in map(str, BUILD_TARGETS):
+if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
+    if not conf.CheckLib('SDL_net'):
+        print "Needed SDL network lib and didn't find it; exiting!"
+        Exit(1)
+
+if "wesnoth" not in map(str, BUILD_TARGETS):
     print "*** Game build disabled, suppressing Python support."
     env["python"] = False
 
