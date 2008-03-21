@@ -51,7 +51,7 @@ struct castle_cost_calculator : cost_calculator
 	castle_cost_calculator(const gamemap& map) : map_(map)
 	{}
 
-	virtual double cost(const gamemap::location&, const gamemap::location& loc, const double, const bool) const
+	virtual double cost(const gamemap::location&, const gamemap::location& loc, const double) const
 	{
 		if(!map_.is_castle(loc))
 			return 10000;
