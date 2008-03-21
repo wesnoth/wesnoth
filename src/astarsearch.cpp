@@ -108,7 +108,7 @@ static void a_star_explore_neighbours(gamemap::location const &dst, const double
 		if (locLocation.valid(int(parWidth), int(parHeight)) == false)
 			continue;
 		locNextNode = aStarGameWorld.getNodeFromLocation(locLocation, locIsCreated);
-		locCost = locCostFather + costCalculator->cost(parCurNode->loc,locLocation, locCostFather, locLocation == dst);
+		locCost = locCostFather + costCalculator->cost(parCurNode->loc,locLocation, locCostFather);
 		if (locIsCreated) {
 			locNextNode->initNode(locLocation, dst, locCost, parCurNode, teleports);
 			if (locNextNode->g + locNextNode->h < stop_at) {
@@ -161,7 +161,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 
 	DBG_PF << "A* search: " << src << " -> " << dst << '\n';
 
-	if (costCalculator->cost(src,dst, 0, true) >= stop_at) {
+	if (costCalculator->cost(src,dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
 		locRoute.move_left = int(costCalculator->getNoPathValue());
 		return locRoute;

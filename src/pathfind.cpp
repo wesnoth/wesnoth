@@ -288,7 +288,7 @@ shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 {
 }
 
-double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gamemap::location& loc, const double so_far, const bool isDst) const
+double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gamemap::location& loc, const double so_far) const
 {
 	assert(map_.on_board(loc));
 
@@ -336,11 +336,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	if (need_new_turn)
 		cost += remaining_movement;
 
-	// FIXME: The isDist check is obsolete and introduce a little inaccurancy.
-	// It comes trom the time when we returned getNoPathValue() in ZoC
-	// But pathfinding calls with a small maximum path length
-	// (like some AI stuff do) maybe rely on this.
-	if (!isDst && enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
+	if (enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
 		// Should cost us remaining movement.
 		//		 return getNoPathValue();
@@ -358,7 +354,7 @@ emergency_path_calculator::emergency_path_calculator(const unit& u, const gamema
 {
 }
 
-double emergency_path_calculator::cost(const gamemap::location&,const gamemap::location& loc, const double, const bool) const
+double emergency_path_calculator::cost(const gamemap::location&,const gamemap::location& loc, const double) const
 {
 	assert(map_.on_board(loc));
 
