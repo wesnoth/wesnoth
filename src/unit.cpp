@@ -516,7 +516,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	race_ = t->race_;
 	language_name_ = t->language_name();
-	cfg_["unit_description"] = t->unit_description();
+	cfg_["description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
 	max_experience_ = t->experience_needed(false);
 	level_ = t->level();
@@ -1205,7 +1205,10 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if (!cfg["user_description"].empty()) {
 		name_ = cfg["user_description"];
 	}
-	std::string custom_unit_desc = cfg["unit_description"];
+	std::string custom_unit_desc = cfg["description"];
+	// FIXME OBSOLETE This will go away in 1.5.3
+	if (custom_unit_desc.empty())
+		custom_unit_desc = cfg["unit_description"];
 
 	underlying_id_ = id_;
 	if(underlying_id_.empty()){
@@ -1306,7 +1309,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		flying_ = utils::string_bool(cfg["flying"]);
 	}
 	if(custom_unit_desc != "") {
-		cfg_["unit_description"] = custom_unit_desc;
+		cfg_["description"] = custom_unit_desc;
 	}
 
 	if(cfg["profile"] != "") {
@@ -1321,8 +1324,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 	if(!type_set) {
 		if(ut) {
-			if(cfg_["unit_description"] == "") {
-				cfg_["unit_description"] = ut->unit_description();
+			if(cfg_["description"] == "") {
+				cfg_["description"] = ut->unit_description();
 			}
 			config t_atks;
 			config u_atks;
@@ -1457,8 +1460,8 @@ void unit::write(config& cfg) const
 	if(uti != gamedata_->unit_types.end()) {
 		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}
-	if(ut && cfg["unit_description"] == ut->unit_description()) {
-		cfg["unit_description"] = "";
+	if(ut && cfg["description"] == ut->unit_description()) {
+		cfg["description"] = "";
 	}
 
 	std::stringstream hp;
@@ -2411,7 +2414,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					const std::string& portrait = (**i.first)["portrait"];
 					const std::string& description = (**i.first)["description"];
 					if(!portrait.empty()) cfg_["profile"] = portrait;
-					if(!description.empty()) cfg_["unit_description"] = description;
+					if(!description.empty()) cfg_["description"] = description;
 					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
 				} else if(apply_to == "new_attack") {
 					attacks_.push_back(attack_type(**i.first));
@@ -3114,8 +3117,6 @@ std::string get_checksum(const unit& u) {
 	unit_config["language_name"] = "";
 	unit_config["name"] = "";
 	unit_config["overlays"] = "";
-	unit_config["unit_description"] = "";
-	unit_config["user_description"] = "";
 	// Non-critical tags to ignore.
 	unit_config.clear_children("animation");
 	unit_config.clear_children("attack_anim");

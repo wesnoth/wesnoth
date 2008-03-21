@@ -869,7 +869,7 @@ def sanity_check(filename, lines):
                 pass
             elif key == 'name':		# FIXME: check this someday
                 pass
-            elif key in ("message", "name", "description", "story", "note", "text", "summary", "caption", "label", "unit_description", "cannot_use_message", "set_description") and not value.startswith("$"):
+            elif key in ("message", "name", "description", "story", "note", "text", "summary", "caption", "label", "cannot_use_message", "set_description") and not value.startswith("$"):
                 if not has_tr_mark:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
@@ -2144,6 +2144,9 @@ if __name__ == '__main__':
             if ".user_description" in line: 
                 print '"%s", line %d: .user_description may need hand fixup' % \
                                        (filename, lineno)
+            # In unit type definitions
+            if under("unit_type") or under("female") or under("unit"):
+                line = line.replace("unit_description=", "description=")
             # Inside themes
             if within("theme"):
                 line = line.replace("[unit_description]", "[unit_name]")

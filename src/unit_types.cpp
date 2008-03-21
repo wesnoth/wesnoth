@@ -713,7 +713,7 @@ const t_string& unit_type::unit_description() const
 {
 	static const t_string default_val("No description available");
 
-	const t_string& desc = cfg_["unit_description"];
+	const t_string& desc = cfg_["description"];
 	if(desc.empty())
 		return default_val;
 	else

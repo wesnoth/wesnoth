@@ -90,7 +90,7 @@ public:
 	//! The unit's profile
 	const std::string& profile() const;
 	//! Information about the unit -- a detailed description of it
-	const std::string& unit_description() const { return cfg_["unit_description"]; }
+	const std::string& unit_description() const { return cfg_["description"]; }
 
 	int hitpoints() const { return hit_points_; }
 	int max_hitpoints() const { return max_hit_points_; }

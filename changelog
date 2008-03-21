@@ -43,6 +43,9 @@ Version 1.5.0-svn:
    * In SingleUnitWML and SideWML, the generate_description= attribute is
      now generate_name=. generate_description= will still be accepted for 
      backwards compatibility. wmllint can safely do this up-conversion.
+   * In UnitWML, the unit_description= attribute is now description=.
+     unit_description= will still be accepted for backwards 
+     compatibility.  wmllint can safely do this up-conversion.
    * In ThemeWML, the unit_description= attribute is now unit_name=.
      unit_description= will still be accepted for backwards compatibility.
      wmllint can safely do this up-conversion. 
