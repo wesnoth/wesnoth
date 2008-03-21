@@ -32,7 +32,8 @@ struct token_type {
 
 //create the array with list of possible tokens
 token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|\\-|\\^|%|/|<=|>=|<|>|!=|=|\\.)"), TOKEN_OPERATOR },
-				{ regex("functions"),   TOKEN_KEYWORD },
+				{ regex("\\bfunctions\\b"),   TOKEN_KEYWORD },
+				{ regex("\\bdef\\b"),     TOKEN_KEYWORD },
 				{ regex("^'[^']*'"),    TOKEN_STRING_LITERAL },
 				{ regex("^[a-zA-Z_]+"), TOKEN_IDENTIFIER },
 				{ regex("^\\d+"),       TOKEN_INTEGER },

@@ -69,7 +69,7 @@ namespace {
 
 class function_list_expression : public formula_expression {
 public:
-	explicit function_list_expression(const function_symbol_table *symbols)
+	explicit function_list_expression(function_symbol_table *symbols)
 		: symbols_(symbols)
 	{}
 
@@ -85,7 +85,7 @@ private:
 		return variant(&res);
 	}
 
-	const function_symbol_table* symbols_;
+	function_symbol_table* symbols_;
 };
 
 class list_expression : public formula_expression {
@@ -417,11 +417,40 @@ int operator_precedence(const token& t)
 	return precedence_map[std::string(t.begin,t.end)];
 }
 
-expression_ptr parse_expression(const token* i1, const token* i2, const function_symbol_table* symbols);
+expression_ptr parse_expression(const token* i1, const token* i2, function_symbol_table* symbols);
+
+void parse_function_args(const token* &i1, const token* i2,
+		std::vector<std::string>* res)
+{
+	if(i1->type == TOKEN_LPARENS) {
+		++i1;
+	} else {
+		std::cerr << "Invalid function definition" << std::endl;
+		throw formula_error();
+	}
+
+	while((i1-> type != TOKEN_RPARENS) && (i1 != i2)) {
+		if(i1->type == TOKEN_IDENTIFIER) {
+			res->push_back(std::string(i1->begin, i1->end));
+		} else if (i1->type == TOKEN_COMMA) {
+			//do nothing
+		} else {
+			std::cerr << "Invalid function definition" << std::endl;
+			throw formula_error();
+		}
+		++i1;
+	}
+
+	if(i1->type != TOKEN_RPARENS) {
+		std::cerr << "Invalid function definition" << std::endl;
+		throw formula_error();
+	}
+	++i1;
+}
 
 void parse_args(const token* i1, const token* i2,
                 std::vector<expression_ptr>* res,
-				const function_symbol_table* symbols)
+				function_symbol_table* symbols)
 {
 	int parens = 0;
 	const token* beg = i1;
@@ -444,7 +473,7 @@ void parse_args(const token* i1, const token* i2,
 }
 
 void parse_where_clauses(const token* i1, const token * i2,
-			             expr_table_ptr res, const function_symbol_table* symbols) {
+			             expr_table_ptr res, function_symbol_table* symbols) {
 	int parens = 0;
 	const token *original_i1_cached = i1;
 	const token *beg = i1;
@@ -502,11 +531,28 @@ void parse_where_clauses(const token* i1, const token * i2,
 	}
 }
 
-expression_ptr parse_expression(const token* i1, const token* i2, const function_symbol_table* symbols)
+expression_ptr parse_expression(const token* i1, const token* i2, function_symbol_table* symbols)
 {
 	if(i1 == i2) {
 		std::cerr << "empty expression\n";
 		throw formula_error();
+	}
+
+	if(i1->type == TOKEN_KEYWORD &&
+			(i1+1)->type == TOKEN_IDENTIFIER) {
+		if(std::string(i1->begin,i1->end) == "def") {
+			++i1;
+			const std::string formula_name = std::string(i1->begin,i1->end);
+			std::vector<std::string> args;
+			parse_function_args(++i1, i2, &args);
+			const std::string formula_str = std::string(i1->begin, (i2-1)->end);
+			const std::string precond = "";
+			symbols->add_formula_function(formula_name,
+					const_formula_ptr(new formula(formula_str, symbols)),
+					formula::create_optional_formula(precond, symbols),
+					args);
+			return expression_ptr(new function_list_expression(symbols));
+		}
 	}
 
 	int parens = 0;
@@ -518,7 +564,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, const function
 			--parens;
 		} else if(parens == 0 && i->type == TOKEN_OPERATOR) {
 			if(op == NULL || operator_precedence(*op) >
-			                 operator_precedence(*i)) {
+							 operator_precedence(*i)) {
 				op = i;
 			}
 		}
@@ -609,7 +655,7 @@ formula_ptr formula::create_string_formula(const std::string& str)
 	return res;
 }
 
-formula_ptr formula::create_optional_formula(const std::string& str, const function_symbol_table* symbols)
+formula_ptr formula::create_optional_formula(const std::string& str, function_symbol_table* symbols)
 {
 	if(str.empty()) {
 		return formula_ptr();
@@ -623,7 +669,7 @@ formula_ptr formula::create_optional_formula(const std::string& str, const funct
 	}
 }
 
-formula::formula(const std::string& str, const function_symbol_table* symbols) : str_(str)
+formula::formula(const std::string& str, function_symbol_table* symbols) : str_(str)
 {
 	using namespace formula_tokenizer;
 

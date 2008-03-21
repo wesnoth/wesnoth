@@ -43,8 +43,8 @@ public:
 	// function which will create a formula that is a single string literal, 'str'.
 	// 'str' should not be enclosed in quotes.
 	static formula_ptr create_string_formula(const std::string& str);
-	static formula_ptr create_optional_formula(const std::string& str, const function_symbol_table* symbols=NULL);
-	explicit formula(const std::string& str, const function_symbol_table* symbols=NULL);
+	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols=NULL);
+	explicit formula(const std::string& str, function_symbol_table* symbols=NULL);
 	variant execute(const formula_callable& variables) const;
 	variant execute() const;
 	const std::string& str() const { return str_; }
