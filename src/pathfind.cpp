@@ -324,12 +324,19 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	if (remaining_movement < 0)
 		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
 
+	// we will always pay the terrain movement cost.
+	int cost = base_cost;
+
 	// Supposing we had 2 movement left, and wanted to move onto a hex
 	// which takes 3 movement, it's going to cost us 5 movement in total,
-	// since we sacrifice this turn's movement. Take that into account here.
-	int additional_cost = base_cost > remaining_movement ? remaining_movement : 0;
+	// since we sacrifice this turn's movement. So check that.
+	bool need_new_turn = base_cost > remaining_movement;
 
-	// The isDist check is obsolete and introduce a little inaccurancy.
+	// and if it happens, all remaining movements will be lost waiting the turn's end
+	if (need_new_turn)
+		cost += remaining_movement;
+
+	// FIXME: The isDist check is obsolete and introduce a little inaccurancy.
 	// It comes trom the time when we returned getNoPathValue() in ZoC
 	// But pathfinding calls with a small maximum path length
 	// (like some AI stuff do) maybe rely on this.
@@ -337,10 +344,13 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
 		// Should cost us remaining movement.
 		//		 return getNoPathValue();
-		return total_movement_ + additional_cost;
+
+		// the ZoC cost all remaining movements, but if we already use them
+		// in the sacrified turn, we will spend all our fresh total movement
+		cost += need_new_turn ? total_movement_ : remaining_movement;
 	}
 
-	return base_cost + additional_cost;
+	return cost;
 }
 
 emergency_path_calculator::emergency_path_calculator(const unit& u, const gamemap& map)
