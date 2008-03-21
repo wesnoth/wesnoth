@@ -44,12 +44,12 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 # Setup
 #
 
-# FIXME: will need some elaboration under Windows
 env = Environment(options = opts)
-env.Default("wesnothd")
+all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd"])
+env.Default("all")
 
 #
-# Program declarations (incomplete, no libraries yet)
+# Program declarations
 #
 boost_libs = Split("boost_iostreams-mt boost_regex")
 SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL pthread SDL_image")
@@ -223,6 +223,18 @@ env.Program("wesnoth_editor", wesnoth_editor_sources,
             LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
+campaignd_sources = [
+	"src/campaign_server/campaign_server.cpp",
+	"src/network.cpp",
+	"src/network_worker.cpp",
+	"src/publish_campaign.cpp",
+	"src/loadscreen_empty.cpp",
+        ]
+env.Program("campaignd", campaignd_sources,
+            CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
+            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+
 wesnothd_sources = [
     "src/server/game.cpp",
     "src/server/input_stream.cpp",
@@ -239,6 +251,16 @@ env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
             LIBS = commonlibs + ['wesnoth_core'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
+
+#
+# Utility productions
+#
+
+tags = env.Command("TAGS",
+            libwesnoth_sources + libwesnoth_core_sources + \
+            wesnoth_editor_sources + campaignd_sources + wesnothd_sources,
+            'etags -l c++ $SOURCES')
+env.Clean(all, 'TAGS')
 
 #
 # Configuration
@@ -280,7 +302,7 @@ if env['lowmem']:
 if env['raw_sockets']:
     env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
 
-print "%s version %s, flags %s" % (env["CC"], cc_version, " ".join(env["CXXFLAGS"]))
+#print "%s version %s, flags %s" % (env["CC"], cc_version, " ".join(env["CXXFLAGS"]))
 if env["CC"] == "gcc":
     (major, minor, rev) = map(int, cc_version.split("."))
     if major*10+minor < 33:
