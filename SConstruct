@@ -20,7 +20,10 @@ import os, sys, commands
 opts = Options()
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
 opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
+opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
+opts.Add(BoolOption('profile', 'Set to build for debugging', False))
+opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('tests', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('python','Clear to disable Python support', True))
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
@@ -82,8 +85,17 @@ if debug == "yes":
 else:
     env["CXXFLAGS"] = Split("-O2 -ansi")
 
+if env['profile']:
+    env["CXXFLAGS"].append("-pg")
+
+if env['strict']:
+    env["CXXFLAGS"].append("-Werror -Wno-unused -Wno-sign-compare")
+
 if env['tinygui']:
     env["CXXFLAGS"].append("-DUSE_TINY_GUI")
+
+if env['smallgui']:
+    env["CXXFLAGS"].append("-DUSE_SMALL_GUI")
 
 if env['lowmem']:
     env["CXXFLAGS"].append("-DLOW_MEM")
@@ -139,6 +151,7 @@ configsyms = {}
 
 configsyms["DATADIR"] = envdict["datadir"]
 configsyms["LOCALEDIR"] = envdict["localedir"]
+configsyms["PREFERENCES_DIR"] = envdict["prefsdir"]
 configsyms["USE_DUMMYLOCALES"] = envdict["dummy_locales"]
 #configsyms["USE_INTERNAL_DATA"] = envdict["internal_data"]
 
