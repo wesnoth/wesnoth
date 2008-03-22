@@ -121,6 +121,7 @@ libwesnoth_sources = [
     "src/soundsource.cpp",
     "src/terrain.cpp",
     "src/terrain_translation.cpp",
+    "src/tooltips.cpp",
     "src/video.cpp",
     "src/theme.cpp",
     "src/widgets/button.cpp",
@@ -192,7 +193,6 @@ wesnoth_sources = [
     "src/team.cpp",
     "src/terrain_filter.cpp",
     "src/titlescreen.cpp",
-    "src/tooltips.cpp",
     "src/unit.cpp",
     "src/unit_abilities.cpp",
     "src/unit_animation.cpp",
@@ -212,28 +212,27 @@ env.Program("wesnoth", wesnoth_sources,
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 wesnoth_editor_sources = [
-	"src/editor/editor.cpp",
-	"src/editor/editor_layout.cpp",
-	"src/editor/map_manip.cpp",
-	"src/editor/editor_display.cpp",
-	"src/editor/editor_palettes.cpp",
-	"src/editor/editor_main.cpp",
-	"src/editor/editor_dialogs.cpp",
-	"src/editor/editor_undo.cpp",
-	"src/animated_editor.cpp",
-	"src/gamestatus_editor.cpp",
-	"src/tooltips.cpp",
-        ]
+    "src/editor/editor.cpp",
+    "src/editor/editor_layout.cpp",
+    "src/editor/map_manip.cpp",
+    "src/editor/editor_display.cpp",
+    "src/editor/editor_palettes.cpp",
+    "src/editor/editor_main.cpp",
+    "src/editor/editor_dialogs.cpp",
+    "src/editor/editor_undo.cpp",
+    "src/animated_editor.cpp",
+    "src/gamestatus_editor.cpp",
+    ]
 env.Program("wesnoth_editor", wesnoth_editor_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
             LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 campaignd_sources = [
-	"src/campaign_server/campaign_server.cpp",
-	"src/publish_campaign.cpp",
-	"src/loadscreen_empty.cpp",
-        ]
+    "src/campaign_server/campaign_server.cpp",
+    "src/publish_campaign.cpp",
+    "src/loadscreen_empty.cpp",
+    ]
 env.Program("campaignd", campaignd_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
             LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
@@ -345,7 +344,7 @@ if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
         print "Needed SDL network lib and didn't find it; exiting!"
         Exit(1)
 
-if "wesnoth" not in map(str, BUILD_TARGETS):
+if "all" not in targets and "wesnoth" not in targets:
     print "*** Game build disabled, suppressing Python support."
     env["python"] = False
 
