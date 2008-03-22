@@ -1214,11 +1214,11 @@ void game::send_and_record_server_message(const char* message,
 	record_data(doc);
 }
 
-void game::send_server_message_to_all(const char* message) const
+void game::send_server_message_to_all(const char* message, network::connection exclude) const
 {
 	simple_wml::document doc;
 	send_server_message(message, 0, &doc);
-	send_data(doc);
+	send_data(doc, exclude);
 }
 
 void game::send_server_message(const char* message, network::connection sock, simple_wml::document* docptr) const
