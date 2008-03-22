@@ -540,18 +540,27 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 
 	if(i1->type == TOKEN_KEYWORD &&
 			(i1+1)->type == TOKEN_IDENTIFIER) {
-		if(std::string(i1->begin,i1->end) == "def") {
+		if(std::string(i1->begin, i1->end) == "def") {
 			++i1;
-			const std::string formula_name = std::string(i1->begin,i1->end);
+			const std::string formula_name = std::string(i1->begin, i1->end);
 			std::vector<std::string> args;
 			parse_function_args(++i1, i2, &args);
-			const std::string formula_str = std::string(i1->begin, (i2-1)->end);
+			const token* beg = i1;
+			while((i1 != i2) && (i1->type != TOKEN_SEMICOLON)) {
+				++i1;
+			}
+			const std::string formula_str = std::string(beg->begin, (i1-1)->end);
 			const std::string precond = "";
 			symbols->add_formula_function(formula_name,
 					const_formula_ptr(new formula(formula_str, symbols)),
 					formula::create_optional_formula(precond, symbols),
 					args);
-			return expression_ptr(new function_list_expression(symbols));
+			if((i1 == i2) || (i1 == (i2-1))) {
+				return expression_ptr(new function_list_expression(symbols));
+			}
+			else {
+				return parse_expression((i1+1), i2, symbols);
+			}
 		}
 	}
 
