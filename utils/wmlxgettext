@@ -20,7 +20,14 @@ $domain = $initialdomain unless defined $domain;
 our $module = dirname ($0) . "/wmltrans.pm";
 eval "require \"$module\";";
 
-## extract strings with their refs into %messages
+## extract strings with their refs and node info into %messages
+
+sub possible_node_info {
+  my ($nodeinfostack, $field, $value) = @_;
+  if ($field =~ m/\b(speaker|role|description|condition|type|race)\b/) {
+    push @{$nodeinfostack->[-1][2]}, "$field=$value";
+  }
+}
 
 our ($str,$translatable,$line,%messages,%nodeinfo);
 chdir $toplevel;
@@ -54,15 +61,22 @@ foreach my $file (@ARGV) {
     if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)/) {
       # single-line quoted string
 
-       # if translatable and in the requested domain
-      if ($1 ne '' and $domainstack[0] eq $domain) {
+      $translatable = ($1 ne '');
+      my $rest = $3;
+
+      # if translatable and in the requested domain
+      if ($translatable and $domainstack[0] eq $domain) {
         my $msg = raw2postring($2);
         push @{$messages{$msg}}, "$file:$.";
         push @{$nodeinfostack[-1][1]}, $msg if $valid_wml;
+
+      } elsif (not $translatable and m/(\S+)\s*=\s*\"([^\"]*)\"/) {
+        # may be a piece of node info to extract
+        possible_node_info(\@nodeinfostack, $1, $2) if $valid_wml;
       }
 
       # process remaining of the line
-      $_ = $3 . "\n";
+      $_ = $rest . "\n";
       redo LINE;
 
     } elsif (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\s*\"([^\"]*)/) {
@@ -99,10 +113,7 @@ foreach my $file (@ARGV) {
     } elsif (m/(\S+)\s*=\s*(.*?)\s*$/) {
       # single-line non-quoted string
       die "nested string in $file" if defined $str;
-      my ($field, $value) = ($1, $2);
-      if ($field =~ m/\b(speaker|role|description|condition|type|race)\b/) {
-        push @{$nodeinfostack[-1][2]}, "$field=$value" if $valid_wml;
-      }
+      possible_node_info(\@nodeinfostack, $1, $2) if $valid_wml;
 
 ### probably not needed ###
 #      # magic handling of weapon descriptions
@@ -219,7 +230,7 @@ foreach my $occurence (@revmessages) {
       for my $info (@{$nodeinfo{$key}}) {
         my ($name, $data) = @{$info};
         my $desc = join(", ", @{$data});
-        my $nodestr = $desc ? "$name: $desc" : $name;
+        my $nodestr = $desc ? "[$name]: $desc" : "[$name]";
         # Add only unique node info strings.
         if (not defined $added{$nodestr}) {
             $added{$nodestr} = 1;
