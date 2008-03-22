@@ -124,6 +124,7 @@ unit::unit(const unit& o):
            max_movement_(o.max_movement_),
            max_movement_b_(o.max_movement_b_),
            movement_costs_(o.movement_costs_),
+           defense_mods_(o.defense_mods_),
            hold_position_(o.hold_position_),
            end_turn_(o.end_turn_),
            resting_(o.resting_),
@@ -489,8 +490,9 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	cfg_.clear_children("attack");
 	cfg_.clear_children("abilities");
-	// Clear cache of movement costs
+	// Clear cache of movement costs and defense mods
 	movement_costs_.clear();
+	defense_mods_.clear();
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
@@ -2113,10 +2115,10 @@ int unit::movement_cost(const t_translation::t_terrain terrain) const
 
 int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) const
 {
-//	const std::map<terrain_type::TERRAIN,int>::const_iterator i = defense_mods_.find(terrain);
-//	if(i != defense_mods_.end()) {
-//		return i->second;
-//	}
+	const std::map<t_translation::t_terrain,int>::const_iterator d = defense_mods_.find(terrain);
+	if(d != defense_mods_.end()) {
+		return d->second;
+	}
 
 	assert(map_ != NULL);
 	// If this is an alias, then select the best of all underlying terrains
@@ -2149,8 +2151,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 			}
 		}
 
-//		defense_mods_.insert(std::pair<terrain_type::TERRAIN,int>(terrain,ret_value));
-
+		defense_mods_.insert(std::pair<t_translation::t_terrain,int>(terrain,ret_value));
 		return ret_value;
 	}
 
@@ -2176,7 +2177,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 		res = 0;
 	}
 
-//	defense_mods_.insert(std::pair<terrain_type::TERRAIN,int>(terrain,res));
+	defense_mods_.insert(std::pair<t_translation::t_terrain,int>(terrain,res));
 	return res;
 }
 
@@ -2619,6 +2620,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					if (ap) {
 						mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
 					}
+					defense_mods_.clear();
 				} else if (apply_to == "resistance") {
 					config *mv = cfg_.child("resistance");
 					config *ap = (**i.first).child("resistance");

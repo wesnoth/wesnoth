@@ -337,6 +337,7 @@ private:
 	int movement_;
 	int max_movement_, max_movement_b_;
 	mutable std::map<t_translation::t_terrain, int> movement_costs_; // movement cost cache
+	mutable std::map<t_translation::t_terrain, int> defense_mods_; // defense modifiers cache
 	bool hold_position_;
 	bool end_turn_;
 	bool resting_;
@@ -359,9 +360,6 @@ private:
 	int unit_value_;
 	gamemap::location goto_, interrupted_move_;
 	bool flying_, is_fearless_, is_healthy_;
-
-//		std::map<terrain_type::TERRAIN,int> movement_costs_, movement_costs_b_;
-//		std::map<terrain_type::TERRAIN,int> defense_mods_, defense_mods_b_;
 
 	string_map modification_descriptions_;
 	// Animations:
