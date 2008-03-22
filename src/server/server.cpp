@@ -1211,6 +1211,9 @@ void server::process_data_game(const network::connection sock,
 				<< g->id() << ") although it's already initialized.\n";
 			return;
 		}
+
+		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
+
 		simple_wml::node& desc = *g->description();
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
@@ -1254,6 +1257,8 @@ void server::process_data_game(const network::connection sock,
 		//g->take_side(sock);
 		g->update_side_data();
 		g->describe_slots();
+
+		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
 
 		// Send the update of the game description to the lobby.
 		simple_wml::document diff;
