@@ -304,7 +304,8 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	if (viewing_team_.shrouded(loc))
 		return getNoPathValue();
 
-	int const base_cost = unit_.movement_cost(map_[loc]);
+	const t_translation::t_terrain terrain = map_[loc];
+	int const base_cost = unit_.movement_cost(terrain);
 	// Pathfinding heuristic: the cost must be at least 1
 	VALIDATE(base_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
 	if (total_movement_ < base_cost)
@@ -325,7 +326,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
 
 	// we will always pay the terrain movement cost.
-	int cost = base_cost;
+	int move_cost = base_cost;
 
 	// Supposing we had 2 movement left, and wanted to move onto a hex
 	// which takes 3 movement, it's going to cost us 5 movement in total,
@@ -334,19 +335,23 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 
 	// and if it happens, all remaining movements will be lost waiting the turn's end
 	if (need_new_turn)
-		cost += remaining_movement;
+		move_cost += remaining_movement;
 
 	if (enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
-		// Should cost us remaining movement.
-		//		 return getNoPathValue();
-
 		// the ZoC cost all remaining movements, but if we already use them
 		// in the sacrified turn, we will spend all our fresh total movement
-		cost += need_new_turn ? total_movement_ : remaining_movement;
+		move_cost += need_new_turn ? total_movement_ : remaining_movement;
 	}
 
-	return cost;
+	// we add a tiny cost based on terrain defense, so the pathfinding
+	// prefer good terrains between 2 with the same MP cost
+	// we divide defense by 100 * 100, because defense it's 100-based
+	// and we don't want any impact on move cost for less then 100-steps path
+	// (even ~200 since mean defense is around ~50%)
+	const double defense_cost = unit_.defense_modifier(terrain) / 10000.0;
+
+	return move_cost + defense_cost;
 }
 
 emergency_path_calculator::emergency_path_calculator(const unit& u, const gamemap& map)
