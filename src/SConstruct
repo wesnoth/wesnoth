@@ -1,0 +1,224 @@
+Import('env')
+
+all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd"])
+env.Default("all")
+
+#
+# Program declarations
+#
+boost_libs = Split("boost_iostreams-mt boost_regex")
+SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL pthread SDL_image")
+commonlibs = SDL_libs + boost_libs
+
+#color_range.cpp should be removed, but game_config depends on it.
+#game_config has very few things that are needed elsewhere, it should be
+#removed.  Requires moving path and version at least to other files.
+
+libwesnoth_core_sources = [
+    "color_range.cpp",
+    "config.cpp",
+    "filesystem.cpp",
+    "game_config.cpp",
+    "gettext.cpp",
+    "log.cpp",
+    "map.cpp",
+    "network.cpp",
+    "network_worker.cpp",
+    "thread.cpp",
+    "tstring.cpp",
+    "util.cpp",
+    "serialization/binary_or_text.cpp",
+    "serialization/binary_wml.cpp",
+    "serialization/parser.cpp",
+    "serialization/preprocessor.cpp",
+    "serialization/string_utils.cpp",
+    "serialization/tokenizer.cpp",
+    ]
+env.Library("wesnoth_core", libwesnoth_core_sources, 
+            CPPPATH = ['.', 'src/serialization', "/usr/include/SDL"])
+
+libwesnoth_sources = [
+    "astarnode.cpp",
+    "astarsearch.cpp",
+    "builder.cpp",
+    "cavegen.cpp",
+    "clipboard.cpp",
+    "construct_dialog.cpp",
+    "cursor.cpp",
+    "display.cpp",
+    "events.cpp",
+    "filechooser.cpp",
+    "font.cpp",
+    "generic_event.cpp",
+    "hotkeys.cpp",
+    "image.cpp",
+    "key.cpp",
+    "language.cpp",
+    "loadscreen.cpp",
+    "map_create.cpp",
+    "map_label.cpp",
+    "mapgen.cpp",
+    "mapgen_dialog.cpp",
+    "marked-up_text.cpp",
+    "minimap.cpp",
+    "pathutils.cpp",
+    "preferences.cpp",
+    "preferences_display.cpp",
+    "race.cpp",
+    "random.cpp",
+    "reports.cpp",
+    "sdl_utils.cpp",
+    "show_dialog.cpp",
+    "sound.cpp",
+    "soundsource.cpp",
+    "terrain.cpp",
+    "terrain_translation.cpp",
+    "tooltips.cpp",
+    "video.cpp",
+    "theme.cpp",
+    "widgets/button.cpp",
+    "widgets/file_menu.cpp",
+    "widgets/label.cpp",
+    "widgets/menu.cpp",
+    "widgets/menu_style.cpp",
+    "widgets/progressbar.cpp",
+    "widgets/scrollarea.cpp",
+    "widgets/scrollbar.cpp",
+    "widgets/slider.cpp",
+    "widgets/textbox.cpp",
+    "widgets/widget.cpp",
+    "wml_exception.cpp",
+    ]
+env.Library("wesnoth", libwesnoth_sources, 
+            CPPPATH = ['.', 'src/serialization', "/usr/include/SDL"])
+
+wesnoth_sources = [
+    "about.cpp",
+    "actions.cpp",
+    "ai.cpp",
+    "ai_dfool.cpp",
+    "ai_attack.cpp",
+    "ai_move.cpp",
+    "ai_python.cpp",
+    "ai_village.cpp",
+    "animated_game.cpp",
+    "attack_prediction.cpp",
+    "callable_objects.cpp",
+    "config_adapter.cpp",
+    "dialogs.cpp",
+    "floating_textbox.cpp",
+    "formula.cpp",
+    "formula_ai.cpp",
+    "formula_function.cpp",
+    "formula_tokenizer.cpp",
+    "game_display.cpp",
+    "game_events.cpp",
+    "game_preferences.cpp",
+    "game_preferences_display.cpp",
+    "gamestatus.cpp",
+    "game.cpp",
+    "generate_report.cpp",
+    "halo.cpp",
+    "help.cpp",
+    "intro.cpp",
+    "leader_list.cpp",
+    "menu_events.cpp",
+    "mouse_events.cpp",
+    "multiplayer.cpp",
+    "multiplayer_ui.cpp",
+    "multiplayer_wait.cpp",
+    "multiplayer_connect.cpp",
+    "multiplayer_create.cpp",
+    "multiplayer_lobby.cpp",
+    "pathfind.cpp",
+    "playcampaign.cpp",
+    "play_controller.cpp",
+    "playmp_controller.cpp",
+    "playsingle_controller.cpp",
+    "playturn.cpp",
+    "publish_campaign.cpp",
+    "replay.cpp",
+    "replay_controller.cpp",
+    "sha1.cpp",
+    "settings.cpp",
+    "statistics.cpp",
+    "team.cpp",
+    "terrain_filter.cpp",
+    "titlescreen.cpp",
+    "unit.cpp",
+    "unit_abilities.cpp",
+    "unit_animation.cpp",
+    "unit_display.cpp",
+    "unit_frame.cpp",
+    "unit_map.cpp",
+    "unit_types.cpp",
+    "upload_log.cpp",
+    "variable.cpp",
+    "variant.cpp",
+    "widgets/combo.cpp",
+    "widgets/scrollpane.cpp",
+]
+env.Program("wesnoth", wesnoth_sources,
+            CPPPATH = ['.', 'server', "/usr/include/SDL"],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
+            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+
+wesnoth_editor_sources = [
+    "editor/editor.cpp",
+    "editor/editor_layout.cpp",
+    "editor/map_manip.cpp",
+    "editor/editor_display.cpp",
+    "editor/editor_palettes.cpp",
+    "editor/editor_main.cpp",
+    "editor/editor_dialogs.cpp",
+    "editor/editor_undo.cpp",
+    "animated_editor.cpp",
+    "gamestatus_editor.cpp",
+    ]
+env.Program("wesnoth_editor", wesnoth_editor_sources,
+            CPPPATH = ['.', 'server', "/usr/include/SDL"],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
+            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+
+campaignd_sources = [
+    "campaign_server/campaign_server.cpp",
+    "publish_campaign.cpp",
+    "loadscreen_empty.cpp",
+    ]
+env.Program("campaignd", campaignd_sources,
+            CPPPATH = ['.', 'server', "/usr/include/SDL"],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
+            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+
+wesnothd_sources = [
+    "server/game.cpp",
+    "server/input_stream.cpp",
+    "server/metrics.cpp",
+    "server/player.cpp",
+    "server/proxy.cpp",
+    "server/server.cpp",
+    "server/simple_wml.cpp",
+    "loadscreen_empty.cpp"
+    ]
+env.Program("wesnothd", wesnothd_sources,
+            CPPPATH = ['.', 'server', "/usr/include/SDL"],
+            LIBS = commonlibs + ['wesnoth_core'],
+            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+
+# FIXME: Include this in gameconfig.cpp when we switch over to scons.
+# Because of the content check, scons will do the right thing.
+# At that point -DSVNREV can be removed from CXXFLAGS.
+#r = env.Command("revision_stamp.h", [],
+#            'echo "#define REVISION \"%s\"" >revision_stamp.h' % svnrev)
+#env.AlwaysBuild(r)
+
+#
+# Utility productions
+#
+
+tags = env.Command("TAGS",
+            libwesnoth_sources + libwesnoth_core_sources + \
+            wesnoth_editor_sources + campaignd_sources + wesnothd_sources,
+            'etags -l c++ $SOURCES')
+env.Clean(all, 'TAGS')
+
