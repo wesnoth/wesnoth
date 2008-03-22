@@ -23,10 +23,13 @@ fi
 
 case $SERVER in
 	1.2 )	cd $SOURCE/1.2   || exit 1
+		CXXFLAGS='-ggdb3 -pg'
 	;;
 	1.4 )	cd $SOURCE/1.4   || exit 1
+		CXXFLAGS='-ggdb3 -pg -DNUM_SHARDS=7'
 	;;
 	*   )	cd $SOURCE/trunk || exit 1
+		CXXFLAGS='-O0 -ggdb3 -pg -DNUM_SHARDS=7'
 	;;
 esac
 
@@ -34,7 +37,7 @@ REVISION=""
 if [ "$2" != "" ]; then
 	REVISION="-r $2"
 fi
-echo 'svn update...'
+echo -n 'svn update... '
 rev=$(svn up $REVISION | tail -n 1 | sed -e 's/[^0-9]//g')
 if [ "$rev" == "" ]; then
 	echo "No revision information found."
@@ -48,7 +51,7 @@ mkdir $BUILD/$DIR
 
 echo 'autogen.sh and configure...'
 ./autogen.sh > $BUILD/$DIR/autogen.log
-./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-debug --enable-lite > $BUILD/$DIR/configure.log CXXFLAGS='-pg -DNUM_SHARDS=7' LDFLAGS='-pg'
+./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-lite > $BUILD/$DIR/configure.log CXXFLAGS=$CXXFLAGS LDFLAGS='-pg'
 make clean > /dev/null
 
 echo 'make...'
