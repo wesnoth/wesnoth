@@ -136,14 +136,6 @@ libwesnoth_sources = [
 env.Library("wesnoth", libwesnoth_sources, 
             CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
 
-libwesnothd_sources = [
-    "src/network.cpp",
-    "src/network_worker.cpp",
-    "src/loadscreen_empty.cpp"
-    ]
-env.Library("wesnothd", libwesnothd_sources, 
-            CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
-
 wesnoth_sources = [
     "src/about.cpp",
     "src/actions.cpp",
@@ -183,12 +175,15 @@ wesnoth_sources = [
     "src/multiplayer_connect.cpp",
     "src/multiplayer_create.cpp",
     "src/multiplayer_lobby.cpp",
+    "src/network.cpp",
+    "src/network_worker.cpp",
     "src/pathfind.cpp",
     "src/playcampaign.cpp",
     "src/play_controller.cpp",
     "src/playmp_controller.cpp",
     "src/playsingle_controller.cpp",
     "src/playturn.cpp",
+    "src/publish_campaign.cpp",
     "src/replay.cpp",
     "src/replay_controller.cpp",
     "src/sha1.cpp",
@@ -213,7 +208,7 @@ wesnoth_sources = [
 ]
 env.Program("wesnoth", wesnoth_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs + ['wesnoth_core', 'wesnoth', 'wesnothd'],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 wesnoth_editor_sources = [
@@ -237,11 +232,14 @@ env.Program("wesnoth_editor", wesnoth_editor_sources,
 
 campaignd_sources = [
 	"src/campaign_server/campaign_server.cpp",
+	"src/network.cpp",
+	"src/network_worker.cpp",
 	"src/publish_campaign.cpp",
+	"src/loadscreen_empty.cpp",
         ]
 env.Program("campaignd", campaignd_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs + ['wesnoth_core', 'wesnoth', 'wesnothd'],
+            LIBS = commonlibs + ['wesnoth_core', 'wesnoth'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 wesnothd_sources = [
@@ -252,10 +250,13 @@ wesnothd_sources = [
     "src/server/proxy.cpp",
     "src/server/server.cpp",
     "src/server/simple_wml.cpp",
+    "src/network.cpp",
+    "src/network_worker.cpp",
+    "src/loadscreen_empty.cpp"
     ]
 env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
-            LIBS = commonlibs + ['wesnoth_core', 'wesnothd'],
+            LIBS = commonlibs + ['wesnoth_core'],
             LIBPATH = [".", "src", "/lib", "/usr/lib"])
 
 # FIXME: Include this in gameconfig.cpp when we switch over to scons.
@@ -315,7 +316,7 @@ if env['lowmem']:
 if env['raw_sockets']:
     env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
 
-env["CXXFLAGS"].append("-DSVNREV=" + svnrev)
+env["CXXFLAGS"].append('-DSVNREV=\'"%s"\'' % svnrev)
 
 #print "%s version %s, flags %s" % (env["CC"], cc_version, " ".join(env["CXXFLAGS"]))
 if env["CC"] == "gcc":
