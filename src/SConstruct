@@ -161,7 +161,7 @@ wesnoth_sources = [
 env.Program("wesnoth", wesnoth_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
             LIBS = ['wesnoth_core', 'wesnoth'] + commonlibs,
-            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+            LIBPATH = [".", "/lib", "/usr/lib"])
 
 wesnoth_editor_sources = [
     "editor/editor.cpp",
@@ -176,9 +176,9 @@ wesnoth_editor_sources = [
     "gamestatus_editor.cpp",
     ]
 env.Program("wesnoth_editor", wesnoth_editor_sources,
-            CPPPATH = ['.', 'server', "/usr/include/SDL"],
+            CPPPATH = ['.', "/usr/include/SDL"],
             LIBS = ['wesnoth_core', 'wesnoth'] + commonlibs,
-            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+            LIBPATH = [".", "/lib", "/usr/lib"])
 
 campaignd_sources = [
     "campaign_server/campaign_server.cpp",
@@ -188,7 +188,7 @@ campaignd_sources = [
 env.Program("campaignd", campaignd_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
             LIBS = ['wesnoth_core', 'wesnoth'] + commonlibs,
-            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+            LIBPATH = [".", "/lib", "/usr/lib"])
 
 wesnothd_sources = [
     "server/game.cpp",
@@ -203,7 +203,7 @@ wesnothd_sources = [
 env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
             LIBS =  ['wesnoth_core'] + commonlibs,
-            LIBPATH = [".", "src", "/lib", "/usr/lib"])
+            LIBPATH = [".", "/lib", "/usr/lib"])
 
 # FIXME: Include this in gameconfig.cpp when we switch over to scons.
 # Because of the content check, scons will do the right thing.
@@ -222,3 +222,6 @@ tags = env.Command("TAGS",
             'etags -l c++ $SOURCES')
 env.Clean(all, 'TAGS')
 
+# Local variables:
+# mode: python
+# end:
