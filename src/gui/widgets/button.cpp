@@ -60,6 +60,19 @@ void tbutton::set_height(const unsigned height)
 	tcontrol::set_height(height);
 }
 
+void tbutton::set_label(const t_string& label)
+{
+
+	// set label in canvases
+	canvas_enabled_.set_variable("text", variant(label.str()));
+	canvas_disabled_.set_variable("text", variant(label.str()));
+	canvas_pressed_.set_variable("text", variant(label.str()));
+	canvas_focussed_.set_variable("text", variant(label.str()));
+
+	// inherited
+	tcontrol::set_label(label);
+}
+
 void tbutton::mouse_down(const tevent_info& /*event*/, bool& /*handled*/) 
 { 
 	DBG_G_E << "Button: left mouse button down.\n"; 
@@ -167,6 +180,14 @@ void tbutton::resolve_definition()
 		canvas_disabled_ = definition_->disabled.canvas;
 		canvas_pressed_ = definition_->pressed.canvas;
 		canvas_focussed_ = definition_->focussed.canvas;
+
+		// FIXME we need some extra routines since a lot of code will
+		// be duplicated here otherwise.
+		canvas_enabled_.set_variable("text", variant(label()));
+		canvas_disabled_.set_variable("text", variant(label()));
+		canvas_pressed_.set_variable("text", variant(label()));
+		canvas_focussed_.set_variable("text", variant(label()));
+
 	}
 }
 

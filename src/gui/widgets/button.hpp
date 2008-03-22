@@ -19,6 +19,7 @@
 
 #include "gui/widgets/settings.hpp"
 #include "log.hpp"
+#include "tstring.hpp"
 
 namespace gui2 {
 
@@ -41,6 +42,8 @@ public:
 	void set_width(const unsigned width);
 
 	void set_height(const unsigned height);
+
+	void set_label(const t_string& label);
 
 	void mouse_down(const tevent_info& /*event*/, bool& /*handled*/);
 	void mouse_up(const tevent_info& /*event*/, bool& /*handled*/);

@@ -67,8 +67,10 @@ twindow build(CVideo& video, const std::string& type)
 
 			const std::string id = definition->grid.widgets[x * cols + y].id;
 			const std::string def = definition->grid.widgets[x * cols + y].definition;
+			const t_string label = definition->grid.widgets[x * cols + y].label;
 			button->set_definition(id);
 			button->set_definition(def);
+			button->set_label(label);
 			window.add_child(button, x, y);
 
 			DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
@@ -194,7 +196,8 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 
 twindow_builder::tresolution::tgrid::twidget::twidget(const config& cfg) :
 	id(cfg["id"]),
-	definition(cfg["button_definition"])
+	definition(cfg["button_definition"]),
+	label(cfg["label"])
 {
 
 	if(definition.empty()) {

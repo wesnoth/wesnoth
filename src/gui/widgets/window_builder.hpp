@@ -15,6 +15,7 @@
 #ifndef __GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED__
 #define __GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED__
 
+#include "tstring.hpp"
 
 #include <string>
 #include <vector>
@@ -73,6 +74,7 @@ public:
 
 				std::string id;
 				std::string definition;
+				t_string label;
 			};
 
 			std::vector<twidget> widgets;

@@ -154,9 +154,17 @@ public:
 	private:
 		unsigned x_, y_;
 		unsigned w_, h_;
+
+		std::string
+			x_formula_,
+			y_formula_,
+			w_formula_,
+			h_formula_;
+
 		unsigned font_size_;
 		Uint32 colour_;
 		t_string text_;
+		std::string text_formula_; 
 	};
 
 	tcanvas();
@@ -174,6 +182,9 @@ public:
 	surface& surf() { return canvas_; }
 
 	void set_cfg(const config& cfg) { parse_cfg(cfg); }
+
+	void set_variable(const std::string& key, const variant& value)
+		{ variables_.add(key, value); }
 
 private:
 	void set_dirty(const bool dirty = true) { dirty_ = dirty; }

@@ -70,10 +70,22 @@ static Uint32 decode_colour(const std::string& colour)
 	return result;
 }
 
-//! A value can be either a number of a formula, if between brackets it is a formula
-//! else it will be read as an unsigned. 
-//! If empty neither is modified otherwise only the type it is is modified.
-static void read_possible_formula(const std::string str, unsigned& value, std::string& formula)
+//! Reads a value as formula or value depending on the contents.
+//!
+//! A value can either be formula or a text containing a value, this function
+//! determines the type and sets either the formula or the value part.
+//! Formulas always start with a opening bracket '('. 
+//!
+//! @param str               The text with the value or formula. (Since there
+//!                          are some problems with tempories when a value is
+//!                          taken from a (v)config it uses a copy instead of
+//!                          a reference.)
+//! @param value             The value part, if the text is a value this will
+//!                          be modified otherwise left untouched.
+//! @param formula           The value part, if the text is a formula this will
+//!                          be modified otherwise left untouched.
+template <class T>
+static void read_possible_formula(const std::string str, T& value, std::string& formula)
 {
 	if(str.empty()) {
 		return;
@@ -82,13 +94,37 @@ static void read_possible_formula(const std::string str, unsigned& value, std::s
 	if(str[0] == '(') {
 		formula = str;
 	} else {
-		value = lexical_cast_default<unsigned>(str);
+		value = lexical_cast_default<T>(str);
+	}
+}
+
+static void read_possible_formula(const std::string str, t_string& value, std::string& formula)
+{
+	if(str.empty()) {
+		return;
+	}
+
+	if(str[0] == '(') {
+		formula = str;
+	} else {
+		value = t_string(str);
+	}
+}
+
+static void read_possible_formula(const std::string str, std::string& value, std::string& formula)
+{
+	if(str.empty()) {
+		return;
+	}
+
+	if(str[0] == '(') {
+		formula = str;
+	} else {
+		value = str;
 	}
 }
 
 namespace gui2{
-
-
 
 tcanvas::tcanvas() :
 	shapes_(),
@@ -289,6 +325,7 @@ tcanvas::tline::tline(const vconfig& cfg) :
  * Variables:
  *     width unsigned                  The width of the canvas.
  *     height unsigned                 The height of the canvas.
+ *     text tstring                    The text to render on the widget.
  *
  * Note when drawing the valid coordinates are:
  * 0 -> width - 1
@@ -327,6 +364,7 @@ tcanvas::tline::tline(const vconfig& cfg) :
  *                                     signed number.
  * string                              A text.
  * tstring                             A translatable string.
+ * f_tstring                           Formula returning a translatable string.
  *
  * colour                              A string which constains the colour, this
  *                                     a group of 4 numbers between 0 and 255
@@ -365,22 +403,22 @@ void tcanvas::tline::draw(surface& canvas,
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
 	if(!x1_formula_.empty()) {
-		DBG_G_D << "Line execute x1 formula '" << x1_formula_ << "'.\n";
+		DBG_G_D << "Line: execute x1 formula '" << x1_formula_ << "'.\n";
 		x1_ = game_logic::formula(x1_formula_).execute(variables).as_int();
 	}
 
 	if(!y1_formula_.empty()) {
-		DBG_G_D << "Line execute y1 formula '" << y1_formula_ << "'.\n";
+		DBG_G_D << "Line: execute y1 formula '" << y1_formula_ << "'.\n";
 		y1_ = game_logic::formula(y1_formula_).execute(variables).as_int();
 	}
 
 	if(!x2_formula_.empty()) {
-		DBG_G_D << "Line execute x2 formula '" << x2_formula_ << "'.\n";
+		DBG_G_D << "Line: execute x2 formula '" << x2_formula_ << "'.\n";
 		x2_ = game_logic::formula(x2_formula_).execute(variables).as_int();
 	}
 
 	if(!y2_formula_.empty()) {
-		DBG_G_D << "Line execute y2 formula '" << y2_formula_ << "'.\n";
+		DBG_G_D << "Line: execute y2 formula '" << y2_formula_ << "'.\n";
 		y2_ = game_logic::formula(y2_formula_).execute(variables).as_int();
 	}
 
@@ -422,7 +460,7 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
 {
 /*WIKI
  * [rectangle]
- * Definition of a line.
+ * Definition of a rectangle.
  * Keys: 
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
@@ -439,6 +477,8 @@ tcanvas::trectangle::trectangle(const vconfig& cfg) :
  *
  * Variables:
  * See [line].
+ *
+ * [/rectangle]
  */
 	read_possible_formula(cfg["x"], x_, x_formula_);
 	read_possible_formula(cfg["y"], y_, y_formula_);
@@ -463,22 +503,22 @@ void tcanvas::trectangle::draw(surface& canvas,
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
 	if(!x_formula_.empty()) {
-		DBG_G_D << "Rectangle execute x formula '" << x_formula_ << "'.\n";
+		DBG_G_D << "Rectangle: execute x formula '" << x_formula_ << "'.\n";
 		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
 	}
 
 	if(!y_formula_.empty()) {
-		DBG_G_D << "Rectangle execute y formula '" << y_formula_ << "'.\n";
+		DBG_G_D << "Rectangle: execute y formula '" << y_formula_ << "'.\n";
 		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
 	}
 
 	if(!w_formula_.empty()) {
-		DBG_G_D << "Rectangle execute width formula '" << w_formula_ << "'.\n";
+		DBG_G_D << "Rectangle: execute width formula '" << w_formula_ << "'.\n";
 		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
 	}
 
 	if(!h_formula_.empty()) {
-		DBG_G_D << "Rectangle execute height formula '" << h_formula_ << "'.\n";
+		DBG_G_D << "Rectangle: execute height formula '" << h_formula_ << "'.\n";
 		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
 	}
 
@@ -579,34 +619,50 @@ void tcanvas::timage::draw(surface& canvas,
 }
 
 tcanvas::ttext::ttext(const vconfig& cfg) :
-	x_(lexical_cast_default<unsigned>(cfg["x"])),
-	y_(lexical_cast_default<unsigned>(cfg["y"])),
-	w_(lexical_cast_default<unsigned>(cfg["w"])),
-	h_(lexical_cast_default<unsigned>(cfg["h"])),
+	x_(0),
+	y_(0),
+	w_(0),
+	h_(0),
+	x_formula_(""),
+	y_formula_(""),
+	w_formula_(""),
+	h_formula_(""),
 	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
 	colour_(decode_colour(cfg["colour"])),
-	text_(cfg["text"])
+	text_(""),
+	text_formula_("")
 {
-
-//FIXME enhance the options and write the wiki block in the new style.
-
-//FIXME make sure text is rendered properly.
 
 /*WIKI
  * [text]
- *     x, y = (unsigned = 0), (unsigned = 0)    
- *                                    The top left corner of the bounding
- *                                    rectangle.
- *     w = (unsigned = 0)             The width of the bounding rectangle.
- *     h = (unsigned = 0)             The height of the bounding rectangle.
- *     font_size = (unsigned = 0)     The size of the font.
- *     colour = (widget.colour = "")  The colour of the text.
- *     text = (t_string = "")         The text to print, for now always printed
- *                                    centered in the area.
- *     debug = (string = "")          Debug message to show upon creation
- *                                    this message is not stored.
- * [/rectangle]
+ * Definition of text.
+ * Keys: 
+ *     x (f_unsigned = 0)              The x coordinate of the top left corner.
+ *     y (f_unsigned = 0)              The y coordinate of the top left corner.
+ *     w (f_unsigned = 0)              The width of the rectangle.
+ *     h (f_unsigned = 0)              The height of the rectangle.
+ *     font_size (unsigned = 0)        The size of the font to draw in.
+ *     colour (colour = "")            The colour of the text.
+ *     text (tstring = "")             The text to draw (translatable).
+ *     debug = (string = "")           Debug message to show upon creation
+ *                                     this message is not stored.
+ *
+ * NOTE there's no option of font style yet, alignment can be done with the
+ * forumulas.
+ *
+ * Variables:
+ *     text_width unsigned             The width of the rendered text.
+ *     text_height unsigned            The height of the renedered text.
+ * And also the ones defined in [line].
+ *
+ * [/text]
  */
+
+	read_possible_formula(cfg["x"], x_, x_formula_);
+	read_possible_formula(cfg["y"], y_, y_formula_);
+	read_possible_formula(cfg["w"], w_, w_formula_);
+	read_possible_formula(cfg["h"], h_, h_formula_);
+	read_possible_formula(cfg["text"], text_, text_formula_);
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -617,12 +673,56 @@ tcanvas::ttext::ttext(const vconfig& cfg) :
 void tcanvas::ttext::draw(surface& canvas,
 	const game_logic::map_formula_callable& variables)
 {
-	DBG_G_D << "Text: draw at " << x_ << ',' << y_ << " text '"
-		<< text_ << "'.\n";
+
+	assert(variables.has_key("text"));
+
+	// We first need to determine the size of the text which need the rendered 
+	// text. So resolve and render the text first and then start to resolve
+	// the other formulas.
+	if(!text_formula_.empty()) {
+		DBG_G_D << "Text: execute text formula '" << text_formula_ << "'.\n";
+		text_ = t_string(game_logic::formula(text_formula_).execute(variables).as_string());
+	}
 
 	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
 	surface surf(font::get_rendered_text(text_, font_size_, col, TTF_STYLE_NORMAL));
 
+	game_logic::map_formula_callable local_variables(variables);
+	local_variables.add("text_width", variant(surf->w));
+	local_variables.add("text_height", variant(surf->h));
+
+
+	//@todo formulas are now recalculated every draw cycle which is a 
+	// bit silly unless there has been a resize. So to optimize we should
+	// use an extra flag or do the calculation in a separate routine.
+	if(!x_formula_.empty()) {
+		DBG_G_D << "Text: execute x formula '" << x_formula_ << "'.\n";
+		x_ = game_logic::formula(x_formula_).execute(local_variables).as_int();
+	}
+
+	if(!y_formula_.empty()) {
+		DBG_G_D << "Text: execute y formula '" << y_formula_ << "'.\n";
+		y_ = game_logic::formula(y_formula_).execute(local_variables).as_int();
+	}
+
+	if(!w_formula_.empty()) {
+		DBG_G_D << "Text: execute width formula '" << w_formula_ << "'.\n";
+		w_ = game_logic::formula(w_formula_).execute(local_variables).as_int();
+	}
+
+	if(!h_formula_.empty()) {
+		DBG_G_D << "Text: execute height formula '" << h_formula_ << "'.\n";
+		h_ = game_logic::formula(h_formula_).execute(local_variables).as_int();
+	}
+
+	DBG_G_D << "Text: drawint text '" << text_
+		<< "' drawn from " << x_ << ',' << y_
+		<< " width " << w_ << " height " << h_ 
+		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+
+	VALIDATE(x_ < canvas->w && y_ < canvas->h, _("Text doesn't start on canvas."));
+
+	// A text might be to long and will be clipped.
 	if(surf->w > w_) {
 		WRN_G_D << "Text: text is too wide for the canvas and will be clipped.\n";
 	}
@@ -630,18 +730,15 @@ void tcanvas::ttext::draw(surface& canvas,
 	if(surf->h > h_) {
 		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
 	}
-	
-	unsigned x_off = (surf->w >= w_) ? 0 : ((w_ - surf->w) / 2);
-	unsigned y_off = (surf->h >= h_) ? 0 : ((h_ - surf->h) / 2);
-	unsigned w_max = w_ - x_ - x_off;
-	unsigned h_max = h_ - y_ - y_off;
 
-	SDL_Rect dst = { x_ + x_off, y_ + y_off, w_max, h_max };
-
+	//FIXME make sure text is rendered properly.
+	//
 	// A hack to make the letters show up a bit readable it does however
 	// clear the back ground. This needs to be fixed but don't want to stall
 	// development too long on it.
 	SDL_SetAlpha(surf, 0, 0);
+
+	SDL_Rect dst = { x_, y_, canvas->w, canvas->h };
 	SDL_BlitSurface(surf, 0, canvas, &dst);
 }
 
