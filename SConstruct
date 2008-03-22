@@ -70,6 +70,8 @@ libwesnoth_core_sources = [
     "src/gettext.cpp",
     "src/log.cpp",
     "src/map.cpp",
+    "src/network.cpp",
+    "src/network_worker.cpp",
     "src/thread.cpp",
     "src/tstring.cpp",
     "src/util.cpp",
@@ -175,8 +177,6 @@ wesnoth_sources = [
     "src/multiplayer_connect.cpp",
     "src/multiplayer_create.cpp",
     "src/multiplayer_lobby.cpp",
-    "src/network.cpp",
-    "src/network_worker.cpp",
     "src/pathfind.cpp",
     "src/playcampaign.cpp",
     "src/play_controller.cpp",
@@ -231,8 +231,6 @@ env.Program("wesnoth_editor", wesnoth_editor_sources,
 
 campaignd_sources = [
 	"src/campaign_server/campaign_server.cpp",
-	"src/network.cpp",
-	"src/network_worker.cpp",
 	"src/publish_campaign.cpp",
 	"src/loadscreen_empty.cpp",
         ]
