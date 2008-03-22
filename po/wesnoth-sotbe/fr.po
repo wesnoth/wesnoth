@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-21 11:31+0100\n"
-"PO-Revision-Date: 2008-03-12 20:05+0100\n"
-"Last-Translator: Guy de Latour <guydelatour@gloireetpouvoir.com>\n"
+"PO-Revision-Date: 2008-03-21 21:19+0100\n"
+"Last-Translator: Damien J <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,10 +28,11 @@ msgstr ""
 msgid "Son of the Black-Eye"
 msgstr "Le Fils de l'Œil-Noir"
 
+# Damien : abbréviation pour "Le Fils de l'Oeil Noir",sans utiliser Œ...
 #. campaign
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
 msgid "SotBE"
-msgstr "SotBE"
+msgstr "FdON"
 
 #. campaign
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
@@ -238,7 +239,6 @@ msgstr ""
 
 #. part
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:111
-#, fuzzy
 msgid ""
 "In the thirteenth year of Howgarth III - the successor of Rahul I - tension "
 "began to rise between orcish tribes and the northern humans. Famine led "
@@ -247,9 +247,11 @@ msgid ""
 "the pressure, either left Alliance territory or revolted and were destroyed."
 msgstr ""
 "Dans la treizième année de règne de Howgarth III, le successeur de Rahul "
-"Ier, la tension commença à monter entre les tribus d'orcs et les comtés "
-"humains du nord. La famine poussa les humains à coloniser quelques terres "
-"des orcs et à repousser ceux-ci dans des collines désolées."
+"Ier, la tension commença à monter entre les tribus d'orcs et les humains du "
+"nord. La famine poussa les humains à coloniser quelques terres des orcs "
+"repoussés dans des collines désolées. Les quelques orcs qui faisaient encore "
+"partie de l'Alliance, sentant croître la pression, soit laissèrent leurs "
+"territoires à leurs alliés, soit se révoltèrent, soit furent détruits."
 
 #. part
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:116
@@ -533,8 +535,8 @@ msgid ""
 "The Son of the Black-Eye will never 'flee'. But making a 'strategic "
 "withdrawal' is another matter."
 msgstr ""
-"Le fils de L'Œil-Noir ne fuit jamais. Cela dit, se lancer dans une « retraite "
-"stratégique » est tout à fait envisageable."
+"Le fils de L'Œil-Noir ne fuit jamais. Cela dit, se lancer dans une "
+"« retraite stratégique » est tout à fait envisageable."
 
 #. message
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:142
@@ -2507,14 +2509,14 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:207
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:176
 msgid "Thelarion"
-msgstr ""
+msgstr "Thelarion"
 
 #. side: type=Dwarvish Steelclad, description=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:142
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:227
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:79
 msgid "Darstang"
-msgstr ""
+msgstr "Darstang"
 
 #. unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:268
@@ -2734,12 +2736,12 @@ msgstr "Plouf"
 #. event
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:238
 msgid "Telamir"
-msgstr ""
+msgstr "Telamir"
 
 #. event
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:239
 msgid "Angthur"
-msgstr ""
+msgstr "Angthur"
 
 #. message: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:247
@@ -3174,12 +3176,12 @@ msgstr ""
 #. event
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:182
 msgid "Pelondras"
-msgstr ""
+msgstr "Pelondras"
 
 #. event
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:183
 msgid "Trithalsul"
-msgstr ""
+msgstr "Trithalsul"
 
 #. message: description=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:187
@@ -3276,7 +3278,7 @@ msgstr ""
 #. event
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:149
 msgid "Valan"
-msgstr ""
+msgstr "Valan"
 
 #. message
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:232
@@ -4582,12 +4584,12 @@ msgstr "Galion pirate"
 #. message: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:380
 msgid "The green earth will curse you for this...."
-msgstr ""
+msgstr "La verte terre vous maudira pour cela..."
 
 #. message: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:392
 msgid "Curse you, foul orc!"
-msgstr ""
+msgstr "Sois maudit, sale orc !"
 
 #~ msgid "Mkel"
 #~ msgstr "Mkel"
