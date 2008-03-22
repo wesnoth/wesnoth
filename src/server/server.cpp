@@ -101,6 +101,12 @@ void exit_sigint(int signal) {
 	exit(1);
 }
 
+void exit_sigterm(int signal) {
+	assert(signal == SIGTERM);
+	LOG_SERVER << "SIGTERM caught, exiting without cleanup immediately.\n";
+	exit(1);
+}
+
 namespace {
 
 // we take profiling info on every n requests
@@ -303,6 +309,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	load_config();
 	signal(SIGHUP, reload_config);
 	signal(SIGINT, exit_sigint);
+	signal(SIGTERM, exit_sigterm);
 }
 
 void server::send_error(network::connection sock, const char* msg) const
@@ -778,7 +785,7 @@ void server::process_login(const network::connection sock,
 
 	for (std::vector<game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
 		// Note: This string is parsed by the client to identify lobby join messages!
-		(*g)->send_server_message((username + " has logged into the lobby").c_str());
+		(*g)->send_server_message_to_all((username + " has logged into the lobby").c_str());
 	}
 }
 

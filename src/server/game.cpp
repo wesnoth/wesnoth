@@ -959,7 +959,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		<< (disconnect ? " and disconnected" : "")
 		<< ". (socket: " << user->first << ")\n";
 	if (game_ended) {
-		send_server_message((user->second.name() + " ended the game.").c_str(), player);
+		send_server_message_to_all((user->second.name() + " ended the game.").c_str(), player);
 		return true;
 	}
 	// Don't mark_available() since the player got already removed from the
@@ -1030,7 +1030,7 @@ void game::send_user_list(const network::connection exclude) const {
 
 //! A member asks for the next scenario to advance to.
 void game::load_next_scenario(const player_map::const_iterator user) const {
-	send_server_message((user->second.name() + " advances to the next scenario").c_str(), user->first);
+	send_server_message_to_all((user->second.name() + " advances to the next scenario").c_str(), user->first);
 	simple_wml::document cfg_scenario;
 	level_.root().copy_into(cfg_scenario.root().add_child("next_scenario"));
 	simple_wml::string_span data = cfg_scenario.output_compressed();
@@ -1242,7 +1242,6 @@ void game::send_server_message(const char* message, network::connection sock, si
 	}
 
 	if(sock) {
-		simple_wml::string_span str = doc.output_compressed();
-		network::send_raw_data(str.begin(), str.size(), sock);
+		send_to_one(doc, sock);
 	}
 }
