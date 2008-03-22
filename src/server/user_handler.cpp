@@ -224,21 +224,8 @@ void user_handler::add_user(const std::string& name,
 
     std::cout << "Created new user '" << name << "'\n";
 
-    #ifndef NO_MAIL
-
-    //Don't send a confirmation mail if we don't have an email
-    if(mail.empty()) {
-        return;
-    }
-
-    std::stringstream msg;
-    msg << "Thank you for registering on the Battle for Wesnoth Multiplayer Server.\n\n" <<
-            "Your username: " << name << "\n" <<
-            "Your password: " << user["password"];
-
-    send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Registration", msg.str().c_str());
-
-    #endif //NO_MAIL
+    //I don't think we need to send the user details via email,
+    //we don't require any account activation anyways.
 }
 
 
@@ -257,8 +244,9 @@ void user_handler::password_reminder(const std::string& name) {
     }
 
     std::stringstream msg;
-    msg << "Your username: " << name << "\n" <<
-            "Your password: " << user["password"];
+    msg << "Hello " << name << ",\n\n" <<
+            "Your password is '" << user["password"] << "'.\n\n" <<
+            "Have fun playing at Wesnoth!";
 
     //If sending does not return true warn that no message was sent.
     if(!(send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Password Reminder", msg.str().c_str()))) {

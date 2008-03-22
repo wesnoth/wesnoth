@@ -25,6 +25,7 @@
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
+#include "../thread.hpp"
 
 #include "game.hpp"
 #include "input_stream.hpp"
@@ -173,6 +174,9 @@ class server
 public:
 	server(int port, input_stream& input, const std::string& config_file, const std::string& users_file, size_t min_threads,size_t max_threads);
 	void run();
+	void pub_send_error(network::connection sock, const char* msg) const {
+	    send_error(sock, msg);
+	}
 private:
 	void send_error(network::connection sock, const char* msg) const;
 	void send_error_dup(network::connection sock, const std::string& msg) const;
@@ -252,6 +256,30 @@ private:
 
 	user_handler* user_handler_;
 };
+
+struct mail_info {
+    mail_info(server* s, user_handler* h, const network::connection sock,
+            const std::string& username) :
+            s_(s), h_(h), sock_(sock), username_(username) {}
+    server* s_;
+    user_handler* h_;
+    const network::connection sock_;
+    const std::string& username_;
+};
+
+int send_mail_thread(void* data) {
+    mail_info* m = reinterpret_cast<mail_info*>(data);
+
+    try {
+        m->h_->password_reminder(m->username_);
+        m->s_->pub_send_error(m->sock_, "Your password reminder email has been sent.");
+    } catch (user_handler::error e) {
+        m->s_->pub_send_error(m->sock_, ("There was an error sending your password reminder email."
+            " The error message was: " + e.message).c_str());
+    }
+
+    return 0;
+}
 
 server::server(int port, input_stream& input, const std::string& config_file, const std::string& users_file, size_t min_threads,size_t max_threads)
 	: net_manager_(min_threads,max_threads),
@@ -621,7 +649,6 @@ void server::process_data(const network::connection sock,
 	}
 }
 
-
 void server::process_login(const network::connection sock,
                            simple_wml::document& data) {
 	// See if the client is sending their version number.
@@ -704,13 +731,9 @@ void server::process_login(const network::connection sock,
         //If this is a request for password reminder
         std::string password_reminder = (*login)["password_reminder"].to_string();
         if(!password_reminder.empty()) {
-            try {
-                user_handler_->password_reminder(password_reminder);
-                send_error(sock, "Your password reminder email has been sent.");
-            } catch (user_handler::error e) {
-                send_error(sock, ("Your password reminder email could not be sent."
-                        " The error message was: " + e.message).c_str());
-            }
+            mail_info* m = new mail_info(this, user_handler_, sock, password_reminder);
+            void* v = reinterpret_cast<void*>(m);
+            threading::thread(&send_mail_thread, v);
             return;
         }
 	}
