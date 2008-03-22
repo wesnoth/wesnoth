@@ -116,9 +116,7 @@ public:
 		return started_ ? (termination_.empty() ? aborted : termination_) : not_started;
 	}
 
-	void set_termination_reason(const std::string& reason) {
-		if (termination_.empty()) { termination_ = reason; }
-	}
+	void set_termination_reason(const std::string& reason);
 
 private:
 	//forbidden operations
