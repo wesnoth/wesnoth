@@ -87,7 +87,7 @@ public:
 	//! Returns true iff the number of slots has changed.
 	bool describe_slots();
 
-	void send_server_message_to_all(const char* message) const;
+	void send_server_message_to_all(const char* message, network::connection exclude=0) const;
 	void send_server_message(const char* message, network::connection sock=0, simple_wml::document* doc=NULL) const;
 	//! Send data to all players in this game except 'exclude'.
 	void send_and_record_server_message(const char* message,
