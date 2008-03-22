@@ -725,7 +725,7 @@ void server::process_login(const network::connection sock,
 		send_error(sock, "This username is too long. Usernames must be 18 characers or less.");
 		return;
 	}
-	// Check if the uername is allowed.
+	// Check if the username is allowed.
 	for (std::vector<std::string>::const_iterator d_it = disallowed_names_.begin();
 		d_it != disallowed_names_.end(); ++d_it)
 	{
@@ -1438,12 +1438,6 @@ void server::process_data_game(const network::connection sock,
 		const simple_wml::node& info = *data.child("info");
 		if (info["type"] == "termination") {
 			g->set_termination_reason(info["condition"].to_string());
-			if (info["condition"] == "out of sync") {
-				// May be too noisy..
-				LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-					<< "\treports an out of sync error in game:\t\""
-					<< g->name() << "\" (" << g->id() << ").\n";
-			}
 		}
 		return;
 	} else if (data.child("turn")) {
