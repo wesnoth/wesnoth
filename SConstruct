@@ -24,7 +24,8 @@ opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(BoolOption('tests', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('python','Clear to disable Python support', True))
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
-opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240, resize images before installing', False))
+opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
+opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
@@ -33,7 +34,6 @@ opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 opts.Add(BoolOption('server_monitor', 'Set to enable enable server monitor thread; libgtop2 is required', False))
 #opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
-opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240, resize images before installing', False))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
@@ -56,7 +56,7 @@ SConscript('src/SConstruct', exports='env')
 #
 
 Help("""\
-Available build targets include: game editor server campaign-server tools.
+Available build targets include: all wesnoth wesnoth_editor wesnothd campaignd
 The 'install' target installs whatever you currently have built.
 If you have built tools and Python is available the Python helper modules
 will also be installed.
