@@ -733,7 +733,8 @@ void server::process_login(const network::connection sock,
         if(!password_reminder.empty()) {
             mail_info* m = new mail_info(this, user_handler_, sock, password_reminder);
             void* v = reinterpret_cast<void*>(m);
-            threading::thread(&send_mail_thread, v);
+            threading::thread t(&send_mail_thread, v);
+            t.detach();
             return;
         }
 	}
