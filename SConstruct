@@ -247,8 +247,6 @@ wesnothd_sources = [
     "src/server/proxy.cpp",
     "src/server/server.cpp",
     "src/server/simple_wml.cpp",
-    "src/network.cpp",
-    "src/network_worker.cpp",
     "src/loadscreen_empty.cpp"
     ]
 env.Program("wesnothd", wesnothd_sources,
@@ -302,7 +300,7 @@ debug = ARGUMENTS.get('debug', 'no')
 if debug == "yes":
     env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
 else:
-    env["CXXFLAGS"] = Split("-O2 -W -Wall -ansi")
+    env["CXXFLAGS"] = Split("-O2 -ansi")
 
 if env['tinygui']:
     env["CXXFLAGS"].append("-DUSE_TINY_GUI")
