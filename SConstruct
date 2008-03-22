@@ -35,7 +35,6 @@ opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', Fal
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
-opts.Add(BoolOption('server_monitor', 'Set to enable enable server monitor thread; libgtop2 is required', False))
 #opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
@@ -144,7 +143,7 @@ if "all" not in targets and "wesnoth" not in targets:
 env = conf.Finish()
 
 #
-# Generate the config file
+# Generate symbols for use at install time
 #
 
 configsyms = {}
@@ -169,26 +168,6 @@ configsyms["APP_ICON"] = envdict["icondir"]
 if not envdict["desktopdir"]:
     envdict["desktopdir"] = os.path.join(envdict["datadir"], "applicationa")
 configsyms["APP_ENTRY"] = envdict["desktopdir"]
-
-def config_build(target, source, env):
-    # Build a config.h file from configsyms
-    assert(str(source[0]) == "SConstruct")
-    wfp = open(str(target[0]), "w")
-    wfp.write("// This file is geneated by an scons recipe.  Do not hand-hack!\n")
-    for (sym, val) in configsyms.items():
-        if type(val) == type(""):
-            wfp.write('#define %s	"%s"\n' % (sym, val))
-        elif val == True:
-            wfp.write("#define %s	1\n" % sym)
-        elif val == False:
-            wfp.write("#undef %s\n" % sym)
-        else:
-            wfp.write("#define %s	%s\n" % (sym, val))
-    wfp.close()
-    return None
-config_builder = Builder(action = config_build)
-env.Append(BUILDERS = {'Config' : config_builder})
-env.Config("src/config.h", "SConstruct")
 
 #
 # How to build the Wesnoth configuration file
