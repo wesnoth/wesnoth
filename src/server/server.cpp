@@ -1363,7 +1363,7 @@ void server::process_data_game(const network::connection sock,
 					+ lexical_cast_default<std::string,size_t>(g->current_turn())
 					+ " with reason: '" + g->termination_reason() + "'" : "")
 				<< ".\n";
-			g->send_server_message((pl->second.name() + " ended the game.").c_str(), pl->first);
+			g->send_server_message_to_all((pl->second.name() + " ended the game.").c_str(), pl->first);
 			// Remove the player in delete_game() with all other remaining
 			// ones so he gets the updated gamelist.
 			delete_game(itor);
