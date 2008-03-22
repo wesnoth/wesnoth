@@ -174,9 +174,6 @@ class server
 public:
 	server(int port, input_stream& input, const std::string& config_file, const std::string& users_file, size_t min_threads,size_t max_threads);
 	void run();
-	void pub_send_error(network::connection sock, const char* msg) const {
-	    send_error(sock, msg);
-	}
 private:
 	void send_error(network::connection sock, const char* msg) const;
 	void send_error_dup(network::connection sock, const std::string& msg) const;
@@ -258,10 +255,9 @@ private:
 };
 
 struct mail_info {
-    mail_info(server* s, user_handler* h, const network::connection sock,
+    mail_info(user_handler* h, const network::connection sock,
             const std::string& username) :
-            s_(s), h_(h), sock_(sock), username_(username) {}
-    server* s_;
+            h_(h), sock_(sock), username_(username) {}
     user_handler* h_;
     const network::connection sock_;
     const std::string& username_;
@@ -269,14 +265,20 @@ struct mail_info {
 
 int send_mail_thread(void* data) {
     mail_info* m = reinterpret_cast<mail_info*>(data);
+    std::string msg;
 
     try {
         m->h_->password_reminder(m->username_);
-        m->s_->pub_send_error(m->sock_, "Your password reminder email has been sent.");
+        msg = "Your password reminder email has been sent.";
     } catch (user_handler::error e) {
-        m->s_->pub_send_error(m->sock_, ("There was an error sending your password reminder email."
-            " The error message was: " + e.message).c_str());
+        msg = ("There was an error sending your password reminder email."
+            " The error message was: " + e.message);
     }
+
+	simple_wml::document doc;
+	doc.root().add_child("error").set_attr("message", msg.c_str());
+	simple_wml::string_span output = doc.output_compressed();
+	network::send_raw_data(output.begin(), output.size(), m->sock_);
 
     return 0;
 }
@@ -731,7 +733,7 @@ void server::process_login(const network::connection sock,
         //If this is a request for password reminder
         std::string password_reminder = (*login)["password_reminder"].to_string();
         if(!password_reminder.empty()) {
-            mail_info* m = new mail_info(this, user_handler_, sock, password_reminder);
+            mail_info* m = new mail_info(user_handler_, sock, password_reminder);
             void* v = reinterpret_cast<void*>(m);
             threading::thread t(&send_mail_thread, v);
             t.detach();
