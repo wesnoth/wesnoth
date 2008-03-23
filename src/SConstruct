@@ -92,6 +92,12 @@ libwesnoth_sources = [
 env.Library("wesnoth", libwesnoth_sources, 
             CPPPATH = ['.', 'src/serialization', "/usr/include/SDL"])
 
+libwesnothd_sources = [
+    "loadscreen_empty.cpp",
+    ]
+env.Library("wesnothd", libwesnothd_sources, 
+            CPPPATH = ['.', "/usr/include/SDL"])
+
 wesnoth_sources = [
     "about.cpp",
     "actions.cpp",
@@ -183,11 +189,10 @@ env.Program("wesnoth_editor", wesnoth_editor_sources,
 campaignd_sources = [
     "campaign_server/campaign_server.cpp",
     "publish_campaign.cpp",
-    "loadscreen_empty.cpp",
     ]
 env.Program("campaignd", campaignd_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
-            LIBS = ['wesnoth_core', 'wesnoth'] + commonlibs,
+            LIBS = ['wesnoth_core', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 wesnothd_sources = [
@@ -198,11 +203,10 @@ wesnothd_sources = [
     "server/proxy.cpp",
     "server/server.cpp",
     "server/simple_wml.cpp",
-    "loadscreen_empty.cpp"
     ]
 env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
-            LIBS =  ['wesnoth_core'] + commonlibs,
+            LIBS =  ['wesnoth_core', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 # FIXME: Include this in gameconfig.cpp when we switch over to scons.
