@@ -361,7 +361,7 @@ void gamebrowser::handle_event(const SDL_Event& event)
 }
 
 struct minimap_cache_item {
-	std::string map_id;
+	std::string map_data;
 	surface mini_map;
 	std::string map_info_size;
 };
@@ -378,7 +378,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	std::vector<minimap_cache_item> minimap_cache;
 	for(std::vector<game_item>::iterator oldgame = games_.begin(); oldgame != games_.end(); ++oldgame) {
 		minimap_cache_item item;
-		item.map_id = oldgame->id;
+		item.map_data = oldgame->map_data;
 		item.mini_map = oldgame->mini_map;
 		item.map_info_size = oldgame->map_info_size;
 		minimap_cache.push_back(item);
@@ -417,7 +417,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				std::vector<minimap_cache_item>::iterator i;
 				bool found = false;
 				for(i = minimap_cache.begin(); i != minimap_cache.end() && !found; ++i) {
-					if (i->map_id == games_.back().id) {
+ 					if (i->map_data == games_.back().map_data) {
 						found = true;
 						games_.back().map_info_size = i->map_info_size;
 						games_.back().mini_map = i->mini_map;
