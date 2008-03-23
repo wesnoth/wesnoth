@@ -1165,7 +1165,7 @@ void connect::process_network_data(const config& data, const network::connection
 
 			// sides_[side_taken].set_connection(sock);
 			sides_[side_taken].import_network_user(data);
-			update_playerlist_state();
+			update_playerlist_state(false);
 			update_and_send_diff();
 
 			LOG_NW << "sent player data\n";
