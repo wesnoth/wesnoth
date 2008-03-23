@@ -110,6 +110,14 @@ libwesnoth_sdl_sources = [
 env.Library("wesnoth_sdl", libwesnoth_sdl_sources, 
             CPPPATH = ['.', "/usr/include/SDL"])
 
+libcutter_sources = [
+    "tools/exploder_utils.cpp",
+    "tools/exploder_cutter.cpp",
+    "tools/dummy_video.cpp",
+    ]
+env.Library("cutter", libcutter_sources, 
+            CPPPATH = ['.', "/usr/include/SDL"])
+
 wesnoth_sources = [
     "about.cpp",
     "actions.cpp",
@@ -221,25 +229,19 @@ env.Program("wesnothd", wesnothd_sources,
 
 cutter_sources = [
     "tools/cutter.cpp",
-    "tools/exploder_utils.cpp",
-    "tools/exploder_cutter.cpp",
-    "tools/dummy_video.cpp",
     ]
 env.Program("cutter", cutter_sources,
             CPPPATH = ['.', "/usr/include/SDL"],
-            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
+            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 exploder_sources = [
 	"tools/exploder.cpp",
-	"tools/exploder_utils.cpp",
-	"tools/exploder_cutter.cpp",
 	"tools/exploder_composer.cpp",
-	"tools/dummy_video.cpp",
         ]
 env.Program("exploder", exploder_sources,
             CPPPATH = ['.', "/usr/include/SDL"],
-            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
+            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 # FIXME: Include this in gameconfig.cpp when we switch over to scons.
