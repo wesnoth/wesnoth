@@ -37,7 +37,7 @@ int sqlite_database::exec(const std::string& query, std::vector<std::string>* da
             }
         }
     } else {
-        std::cerr << errmsg << std::endl;
+        std::cerr << "Error executing SQL query: " << errmsg << std::endl;
     }
 
     sqlite3_free_table(result);

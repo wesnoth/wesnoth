@@ -90,14 +90,18 @@ class user_handler {
         void check_mail(const std::string& mail);
         void check_password(const std::string& password);
 
+        //! A wrapper for user_data_.exec()
+        //! Throws an exception if the the query fails
+        //! User generated querys (e.g. registration of
+        //! a new nick, etc.) should use this.
+        void sql_query(const std::string query, std::vector<std::string>* data =NULL);
+
         std::string users_file_;
         unsigned short mail_port_;
         unsigned short username_expiration_limit_;
 
         config cfg_;
-
         sqlite_database user_data_;
-
         std::map<std::string,std::string*> users_;
 };
 

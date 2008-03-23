@@ -226,23 +226,18 @@ void user_handler::add_user(const std::string& name,
         }
     }
 
+    std::string now = lexical_cast_default<std::string>(time(NULL));
+
+    sql_query("insert into users (name,password,email,realname,registration_date,last_login) values ('" +
+            name + "','" + password + "','" + mail + "','','" + now + "','" + now + "')");
+
     users_.insert(std::pair<std::string,std::string*>(name,NULL));
     users_[name] = new std::string[uh::MAX_VALUE];
-
-    for(std::map<std::string,std::string*>::iterator a = users_.begin(); a!= users_.end(); ++a) {
-        std::cout << a->first << std::endl;
-        std::cout << a->second << std::endl;
-    }
-
-    std::string now = lexical_cast_default<std::string>(time(NULL));
 
     users_[name][uh::PASSWORD] = password;
     users_[name][uh::EMAIL]    = mail;
     users_[name][uh::REGISTRATION_DATE] = now;
     users_[name][uh::LAST_LOGIN] = now;
-
-    user_data_.exec("insert into users (name,password,email,realname,registration_date,last_login) values ('" +
-            name + "','" + password + "','" + mail + "','','" + now + "','" + now + "')");
 
     //I don't think we need to send the user details via email,
     //we don't require any account activation anyways.
@@ -294,9 +289,9 @@ void user_handler::remove_user(const std::string& name) {
         throw error("Could not remove user. No user with the name '" + name + "' exists.");
     }
 
-    users_.erase(users_.find(name));
+    sql_query("delete from users where name='" + name + "'");
 
-    user_data_.exec("delete from users where name='" + name + "'");
+    users_.erase(users_.find(name));
 
     std::cout << "Removed user '" << name << "'\n";
 }
@@ -320,6 +315,8 @@ void user_handler::set_user_attribute(const std::string& name,
         "'. No user with the name with this name exists.");
     }
 
+    sql_query("update users set " + attribute + "='" + value + "' where name='" + name + "'");
+
     std::string* u = users_[name];
 
     if(attribute == "password") {
@@ -333,8 +330,6 @@ void user_handler::set_user_attribute(const std::string& name,
     } else {
         std::cerr << "Call of set_user_attribute() with unknown attribute '" << attribute << "'.\n";
     }
-
-    user_data_.exec("update users set " + attribute + "='" + value + "' where name='" + name + "'");
 }
 
 bool user_handler::user_exists(const std::string& name) {
@@ -370,6 +365,13 @@ void user_handler::set_realname(const std::string& user, const std::string& real
 void user_handler::check_mail(const std::string& mail) {
     if(!(mail.empty() ||utils::isvalid_email(mail))) {
         throw error("The email adress '" + mail + "' appears to be invalid.");
+    }
+}
+
+void user_handler::sql_query(const std::string query, std::vector<std::string>* data) {
+    int r = user_data_.exec(query);
+    if(r != SQLITE_OK) {
+        throw error("Error executing SQL query.");
     }
 }
 
