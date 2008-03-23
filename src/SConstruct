@@ -1,15 +1,17 @@
+import sys
 Import('env')
 
+# Omits the 'test' target 
 all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
                         "cutter", "exploder"])
 env.Default("all")
 
 #
-# Program declarations
+# Libraries and source groups
 #
 boost_libs = Split("boost_iostreams-mt boost_regex")
 SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL pthread SDL_image")
-commonlibs = SDL_libs + boost_libs
+commonlibs = SDL_libs + boost_libs + ["-lpython"+sys.version[:3]]
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
@@ -94,6 +96,7 @@ env.Library("wesnoth", libwesnoth_sources,
 
 libwesnothd_sources = [
     "loadscreen_empty.cpp",
+    "tools/dummy_video.cpp",
     ]
 env.Library("wesnothd", libwesnothd_sources, 
             CPPPATH = ['.', "/usr/include/SDL"])
@@ -113,11 +116,11 @@ env.Library("wesnoth_sdl", libwesnoth_sdl_sources,
 libcutter_sources = [
     "tools/exploder_utils.cpp",
     "tools/exploder_cutter.cpp",
-    "tools/dummy_video.cpp",
     ]
 env.Library("cutter", libcutter_sources, 
             CPPPATH = ['.', "/usr/include/SDL"])
 
+# Used by both 'wesnoth' and 'test' targets
 wesnoth_sources = [
     "about.cpp",
     "actions.cpp",
@@ -142,7 +145,6 @@ wesnoth_sources = [
     "game_preferences.cpp",
     "game_preferences_display.cpp",
     "gamestatus.cpp",
-    "game.cpp",
     "generate_report.cpp",
     "halo.cpp",
     "help.cpp",
@@ -183,7 +185,12 @@ wesnoth_sources = [
     "widgets/combo.cpp",
     "widgets/scrollpane.cpp",
 ]
-env.Program("wesnoth", wesnoth_sources,
+
+#
+# Target declarations
+#
+
+env.Program("wesnoth", ["game.cpp"] + wesnoth_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
@@ -232,7 +239,7 @@ cutter_sources = [
     ]
 env.Program("cutter", cutter_sources,
             CPPPATH = ['.', "/usr/include/SDL"],
-            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
+            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 exploder_sources = [
@@ -241,7 +248,16 @@ exploder_sources = [
         ]
 env.Program("exploder", exploder_sources,
             CPPPATH = ['.', "/usr/include/SDL"],
-            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
+            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
+            LIBPATH = [".", "/lib", "/usr/lib"])
+
+test_sources = [
+	"tests/main.cpp",
+	"tests/test_util.cpp",
+        ]
+env.Program("test", test_sources,
+            CPPPATH = ['.', "/usr/include/SDL"],
+            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 # FIXME: Include this in gameconfig.cpp when we switch over to scons.
