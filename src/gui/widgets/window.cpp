@@ -90,12 +90,6 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 	for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
 		events::pump();
 
-	
-		// fixme hack to disable 
-		if(event_info_.mouse_right_button_down) {
-			status_ = REQUEST_CLOSE;
-		}
-
 		// fixme manual destroy
 		if(status_ == REQUEST_CLOSE) {
 			break;
@@ -207,128 +201,20 @@ void twindow::flip()
 //! Implement events::handler::handle_event().
 void twindow::handle_event(const SDL_Event& event)
 {
-	// set the type of event processing
-	// either focus object (key pressed)
-	// object under the mouse (eg mouse down, mouse move, mouse up) 
-	// all objects (resize, redraw)
-
-	event_info_.cycle();
-	switch(event.type) {
-		case SDL_MOUSEBUTTONDOWN:
-			handle_event_mouse_down(event);
-			break;
-		case SDL_MOUSEBUTTONUP:
-			handle_event_mouse_up(event);
-			break;
-		case SDL_MOUSEMOTION:
-			handle_event_mouse_move(event);
-			break;
-		case SDL_VIDEORESIZE:
-			handle_event_resize(event);
-			break;
+	if(event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) {
+		event_info_.handle_event(event, get_widget(tpoint(event.button.x - get_x(), event.button.y - get_y())));
+	} else if (event.type == SDL_MOUSEMOTION) {
+		event_info_.handle_event(event, get_widget(tpoint(event.motion.x - get_x(), event.motion.y - get_y())));
+	} else {
+		event_info_.handle_event(event, 0);
 	}
 }
 
-//! Handler for a mouse down.
-void twindow::handle_event_mouse_down(const SDL_Event& event)
+void twindow::window_resize(tevent_info&, 
+		const unsigned new_width, const unsigned new_height)
 {
-	event_info_.event_mouse_button = event.button.button;
-	event_info_.mouse_x = event.button.x;
-	event_info_.mouse_y = event.button.y;
-	event_info_.mouse_focus = get_widget(tpoint(event_info_.mouse_x - get_x(), event_info_.mouse_y - get_y()));
-
-	bool handled = false;
-	switch(event_info_.event_mouse_button) {
-		case SDL_BUTTON_LEFT   : 
-			event_info_.mouse_left_button_down = true;  
-			if(event_info_.mouse_focus) {
-				event_info_.mouse_focus->mouse_down(event_info_, handled);
-			}
-			break;
-		case SDL_BUTTON_MIDDLE : 
-			event_info_.mouse_middle_button_down = true; 
-			break;
-		case SDL_BUTTON_RIGHT  : 
-			event_info_.mouse_right_button_down = true;  
-			break;
-
-		// Note: other mouse buttons are ignored, the event
-		// is send but the status won't be remembered.
-	}
-}
-
-//! Handler for a mouse down.
-void twindow::handle_event_mouse_up(const SDL_Event& event)
-{
-	event_info_.event_mouse_button = event.button.button;
-	event_info_.mouse_x = event.button.x;
-	event_info_.mouse_y = event.button.y;
-	twidget* mouse_focus = get_widget(tpoint(event_info_.mouse_x - get_x(), event_info_.mouse_y - get_y()));
-
-	bool handled = false;
-	switch(event_info_.event_mouse_button) {
-		case SDL_BUTTON_LEFT   :
-			if(event_info_.mouse_focus) {
-
-				event_info_.mouse_focus->mouse_up(event_info_, handled);
-
-				if(event_info_.mouse_focus == mouse_focus) {
-
-					if(event_info_.mouse_focus->want_double_click()) {
-
-						// double click not implemented atm.
-						assert(false);
-
-
-					} else {
-						event_info_.mouse_focus->mouse_click(event_info_, handled);
-
-					}
-				}
-			}
-			
-			event_info_.mouse_left_button_down = false;
-			break;
-		case SDL_BUTTON_MIDDLE : 
-			event_info_.mouse_middle_button_down = false; 
-			break;
-		case SDL_BUTTON_RIGHT  : 
-			event_info_.mouse_right_button_down = false;  
-			break;
-
-		// Note: other mouse buttons are ignored, the event
-		// is send but the status won't be remembered.
-	}
-
-	event_info_.mouse_focus = 0; // Note to see what to do after moving
-}
-
-//! Handler for a mouse movement.
-void twindow::handle_event_mouse_move(const SDL_Event& event)
-{
-	event_info_.mouse_x = event.button.x;
-	event_info_.mouse_y = event.button.y;
-	twidget* mouse_focus = get_widget(tpoint(event_info_.mouse_x - get_x(), event_info_.mouse_y - get_y()));
-
-	if(mouse_focus != event_info_.mouse_focus) {
-		if(event_info_.mouse_focus) {
-			bool handled = false;
-			event_info_.mouse_focus->mouse_leave(event_info_, handled);
-		}
-
-		if(mouse_focus) {
-			bool handled = false;
-			mouse_focus->mouse_enter(event_info_, handled);
-		}
-	}
-
-	event_info_.mouse_focus = mouse_focus;
-}
-
-void twindow::handle_event_resize(const SDL_Event& event)
-{
-	screen_width = event.resize.w;
-	screen_height = event.resize.h;
+	screen_width = new_width;
+	screen_height = new_height;
 	need_layout_ = true;
 }
 

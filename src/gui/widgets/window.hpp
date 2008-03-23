@@ -92,17 +92,8 @@ private:
 	//! Implement events::handler::handle_event().
 	void handle_event(const SDL_Event& event);
 
-	//! Handler for a mouse down.
-	void handle_event_mouse_down(const SDL_Event& event);
-	
-	//! Handler for a mouse up.
-	void handle_event_mouse_up(const SDL_Event& event);
-	
-	//! Handler for a mouse movement.
-	void handle_event_mouse_move(const SDL_Event& event);
-
-	//! Handler for a resize of the main window.
-	void handle_event_resize(const SDL_Event& event);
+	void window_resize(tevent_info&, 
+		const unsigned new_width, const unsigned new_height);
 
 	//! When set the form needs a full layout redraw cycle.
 	bool need_layout_;

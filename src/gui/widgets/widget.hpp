@@ -59,14 +59,16 @@ struct terror
 	const std::string message;
 };
 
-
 //! Base class with all possible events, most widgets can ignore most of
 //! these, but they are available.
 class tevent_executor
 {
 public:
-	tevent_executor(const bool want_double_click = false/* true */) :
-		want_double_click_(want_double_click)
+	tevent_executor() :
+		wants_mouse_hover_(false),
+		wants_mouse_left_double_click_(false),
+		wants_mouse_middle_double_click_(false),
+		wants_mouse_right_double_click_(false)
 		{}
 	virtual ~tevent_executor() {}
 
@@ -81,38 +83,30 @@ public:
 // wait for possible double click if widget wants double click
 // - mouse click
 
+	virtual void mouse_enter(tevent_info&) {}
+	virtual void mouse_move(tevent_info&) {}
+	virtual void mouse_hover(tevent_info&) {}
+	virtual void mouse_leave(tevent_info&) {}
 
-	//! Happens when a mouse goes down on the widget. When the mouse goes
-	//! down this widget steals the mouse focus until the button is released.
-	virtual void mouse_down(const tevent_info&, bool&) {}
+	virtual void mouse_left_button_down(tevent_info&) {}
+	virtual void mouse_left_button_up(tevent_info&) {}
+	virtual void mouse_left_button_click(tevent_info&) {}
+	virtual void mouse_left_button_double_click(tevent_info&) {}
 
-	//! Happens when a mouse down focussed this widget and is released
-	//! again.
-	virtual void mouse_up(const tevent_info&, bool&) {}
+	virtual void mouse_middle_button_down(tevent_info&) {}
+	virtual void mouse_middle_button_up(tevent_info&) {}
+	virtual void mouse_middle_button_click(tevent_info&) {}
+	virtual void mouse_middle_button_double_click(tevent_info&) {}
 
-	//! Happens when a mouse down and up happen on the same widget.
-	virtual void mouse_click(const tevent_info&, bool&) {}
+	virtual void mouse_right_button_down(tevent_info&) {}
+	virtual void mouse_right_button_up(tevent_info&) {}
+	virtual void mouse_right_button_click(tevent_info&) {}
+	virtual void mouse_right_button_double_click(tevent_info&) {}
 
-	//! Happens when a mouse down and up happen twice on the same widget.
-	virtual void mouse_double_click(const tevent_info&, bool&) {}
-
-	//! Happens when the mouse moves over the widget and the focus 
-	//! isn't stolen by another widget.
-	virtual void mouse_enter(const tevent_info&, bool&) {}
-
-	//! Happens when the mouse leaves a widget, execpt when the focus
-	//! is captured. If this widget captures the focus the event is
-	//! send after the mouse button is released.
-	virtual void mouse_leave(const tevent_info&, bool&) {}
-
+	virtual void window_resize(tevent_info&, const unsigned /* new_width */, 
+		const unsigned /* new_height */) {}
 
 #if 0
-	virtual void mouse_enter();
-	virtual void mouse_move();
-	virtual void mouse_leave();
-
-	virtual void hover(); // send when mouse is on the widget for about 1 sec to show a short help
-
 	virtual void help(); // send when F1 is pressed on widget to get more help
 #endif
 
@@ -129,12 +123,31 @@ public:
 	// children.
 	virtual void layout() {}
 
-	bool want_double_click() const { return want_double_click_; }
+	bool wants_mouse_hover() const { return wants_mouse_hover_; }
+
+	bool wants_mouse_left_double_click() const { return wants_mouse_left_double_click_; }
+	bool wants_mouse_middle_double_click() const { return wants_mouse_middle_double_click_; }
+	bool wants_mouse_right_double_click() const { return wants_mouse_right_double_click_; }
+
+	tevent_executor& set_wants_mouse_hover(const bool hover = true) 
+		{ wants_mouse_hover_ = hover; return *this; }
+
+	tevent_executor& set_wants_mouse_left_double_click(const bool click = true) 
+		{ wants_mouse_left_double_click_ = click; return *this; }
+
+	tevent_executor& set_wants_mouse_middle_double_click(const bool click = true) 
+		{ wants_mouse_middle_double_click_ = click; return *this; }
+
+	tevent_executor& set_wants_mouse_right_double_click(const bool click = true) 
+		{ wants_mouse_right_double_click_ = click; return *this; }
 
 private:
 	//! If a widget doesn't want a double click we need to send a second
 	//! click instead of double click.
-	bool want_double_click_;
+	bool wants_mouse_hover_;
+	bool wants_mouse_left_double_click_;
+	bool wants_mouse_middle_double_click_;
+	bool wants_mouse_right_double_click_;
 };
 
 //! Base class for all widgets.

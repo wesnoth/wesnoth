@@ -18,34 +18,57 @@
 #ifndef __GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED__
 #define __GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED__
 
+#include "SDL.h"
+
+
 namespace gui2{
 
 class twidget;
 
-struct tevent_info 
+class tevent_info 
 {
+public:
 	tevent_info();
 
-	//! Sets status for next event.
-	void cycle();
+	void handle_event(const SDL_Event& event, twidget* mouse_over);
 
-	int mouse_x;                       //! The current mouse x.
-	int mouse_y;                       //! The current mouse y.
+	void mouse_capture(const bool capture = true);
 
-	int mouse_last_x;                  //! The mouse x in the last event.
-	int mouse_last_y;                  //! The mouse y in the last event.
+private:
 
-	bool mouse_left_button_down;       //! Is the left mouse button down?
-	bool mouse_middle_button_down;     //! Is the middle mouse button down?
-	bool mouse_right_button_down;      //! Is the right mouse button down?
+	int mouse_x_;                      //! The current mouse x.
+	int mouse_y_;                      //! The current mouse y.
 
-	bool mouse_last_left_button_down;  //! Was the left mouse button down in the last event?
-	bool mouse_last_middle_button_down;//! Was the middle mouse button down in the last event?
-	bool mouse_last_right_button_down; //! Was the right mouse button down in the last event?
+	bool mouse_left_button_down_;      //! Is the left mouse button down?
+	bool mouse_middle_button_down_;    //! Is the middle mouse button down?
+	bool mouse_right_button_down_;     //! Is the right mouse button down?
 
-	int event_mouse_button;            //! If a mouse event it shows which button changed.
+	Uint32 last_left_click_;	
+	Uint32 last_middle_click_;	
+	Uint32 last_right_click_;	
 
-	twidget* mouse_focus;
+	bool hover_pending_;			   //! Is there a hover event pending?
+	unsigned hover_id_;                //! Id of the pending hover event.
+	SDL_Rect hover_box_;               //! The area the mouse can move in, moving outside
+	                                   //! invalidates the pending hover event.
+    bool had_hover_;                   //! A widget only gets one hover event per enter cycle. 
+
+
+	twidget* mouse_focus_;
+	bool mouse_captured_;
+
+
+	void mouse_enter(const SDL_Event& event, twidget* mouse_over);
+	void mouse_move(const SDL_Event& event, twidget* mouse_over);
+	void mouse_hover(const SDL_Event& event, twidget* mouse_over);
+	void mouse_leave(const SDL_Event& event, twidget* mouse_over);
+
+
+	void mouse_left_button_down(const SDL_Event& event, twidget* mouse_over);
+	void mouse_left_button_up(const SDL_Event& event, twidget* mouse_over);
+
+	void set_hover(const bool test_on_widget = false);
+
 
 };
 
