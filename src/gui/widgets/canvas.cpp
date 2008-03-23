@@ -715,7 +715,7 @@ void tcanvas::ttext::draw(surface& canvas,
 		h_ = game_logic::formula(h_formula_).execute(local_variables).as_int();
 	}
 
-	DBG_G_D << "Text: drawint text '" << text_
+	DBG_G_D << "Text: drawing text '" << text_
 		<< "' drawn from " << x_ << ',' << y_
 		<< " width " << w_ << " height " << h_ 
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
