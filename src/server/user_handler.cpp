@@ -228,8 +228,11 @@ void user_handler::add_user(const std::string& name,
 
     std::string now = lexical_cast_default<std::string>(time(NULL));
 
-    sql_query("insert into users (name,password,email,realname,registration_date,last_login) values ('" +
-            name + "','" + password + "','" + mail + "','','" + now + "','" + now + "')");
+    sql_query(std::string(sqlite3_mprintf(
+            "insert into users (name,password,email,realname,registration_date,last_login) "
+            "values ('%q','%q','%q','','%q','%q')",
+            name.c_str(), password.c_str(), mail.c_str(), now.c_str(), now.c_str()))
+    );
 
     users_.insert(std::pair<std::string,std::string*>(name,NULL));
     users_[name] = new std::string[uh::MAX_VALUE];
@@ -289,7 +292,10 @@ void user_handler::remove_user(const std::string& name) {
         throw error("Could not remove user. No user with the name '" + name + "' exists.");
     }
 
-    sql_query("delete from users where name='" + name + "'");
+    sql_query(std::string(sqlite3_mprintf(
+            "delete from users where name='%q'",
+            name.c_str()))
+    );
 
     users_.erase(users_.find(name));
 
@@ -315,7 +321,10 @@ void user_handler::set_user_attribute(const std::string& name,
         "'. No user with the name with this name exists.");
     }
 
-    sql_query("update users set " + attribute + "='" + value + "' where name='" + name + "'");
+    sql_query(std::string(sqlite3_mprintf(
+            "update users set %q='%q' where name='%q'",
+            attribute.c_str(), value.c_str(), name.c_str()))
+    );
 
     std::string* u = users_[name];
 
