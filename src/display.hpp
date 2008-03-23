@@ -456,6 +456,8 @@ public:
 	enum tdrawing_layer{ 
 		LAYER_TERRAIN_BG,          //!< Layer for the terrain drawn behind the 
 		                           //!< unit.
+		LAYER_TERRAIN_TMP_BG,      //!< Layer which holds stuff that needs to be
+		                           //!< sorted out further, but under units
 		LAYER_UNIT_BG,             //!< Used for the ellipse behind the unit.
 		LAYER_UNIT_FIRST,          //!< Reserve layeres to be selected for WML.
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
@@ -464,10 +466,10 @@ public:
 		LAYER_UNIT_FAKE,           //!< The fake unit is drawn on this layer.
 		LAYER_TERRAIN_FG,          //!< Layer for the terrain drawn in front of
 		                           //!< the unit.
+		LAYER_TERRAIN_TMP_FG,      //!< Layer which holds stuff that needs to be
+		                           //!< sorted out further, but on top of units
 		LAYER_UNIT_BAR,            //!< Unit bars and overlays are drawn on
 		                           //!< this layer (for testing here).
-		LAYER_TERRAIN_TMP,         //!< Layer which holds stuff that needs to be
-		                           //!< sorted out further.
 		LAYER_LINGER_OVERLAY,      //!< The overlay used for the linger mode.
 		
 		LAYER_LAST_LAYER           //!< Don't draw to this layer it's a dummy

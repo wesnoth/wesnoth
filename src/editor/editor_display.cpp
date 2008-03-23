@@ -88,16 +88,16 @@ void editor_display::draw(bool update,bool force)
 
 			// Draw the grid, if it has been enabled
 			if(grid_ && map_.on_board(*it)) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
 					image::get_image(game_config::grid_image, image::SCALED_TO_HEX)));
 			}
 
 			// Paint selection and mouseover overlays
 			if(*it == selectedHex_ && map_.on_board(selectedHex_, true) && selected_hex_overlay_ != NULL) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
+				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
 			}
 			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_, true) && mouseover_hex_overlay_ != NULL) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
+				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
 			}
 
 			drawing_buffer_commit();
