@@ -25,7 +25,6 @@
 #include "network_worker.hpp"
 #include "network.hpp"
 #include "thread.hpp"
-//#include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"

@@ -28,7 +28,6 @@
 #include "settings.hpp"
 #include "util.hpp"
 #include "video.hpp" // non_interactive()
-#include "wesconfig.h"
 #include "wml_exception.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"

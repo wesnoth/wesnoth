@@ -25,7 +25,6 @@
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
-#include "wesconfig.h"
 #include "serialization/string_utils.hpp"
 
 #include "SDL_image.h"

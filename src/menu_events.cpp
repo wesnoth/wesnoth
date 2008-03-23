@@ -39,7 +39,6 @@
 #include "unit_display.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
-#include "wesconfig.h"
 #include "util.hpp"
 
 #include <algorithm>

@@ -37,7 +37,6 @@
 #include "util.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
-#include "wesconfig.h"
 #include "wml_exception.hpp"
 
 #include <cassert>

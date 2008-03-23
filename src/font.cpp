@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include "wesconfig.h"
 #include "global.hpp"
 
 #include "config.hpp"

@@ -25,7 +25,6 @@
 #include "util.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "wesconfig.h"
 
 #include <algorithm>
 #include <cassert>
