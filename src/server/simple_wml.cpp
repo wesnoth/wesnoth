@@ -409,11 +409,9 @@ const string_span& node::first_child() const
 
 int node::output_size() const
 {
-/*
 	if(output_cache_.empty() == false) {
 		return output_cache_.size();
 	}
-	*/
 
 	int res = 0;
 	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
@@ -452,14 +450,13 @@ void node::shift_buffers(int offset)
 
 void node::output(char*& buf)
 {
-/*
 	if(output_cache_.empty() == false) {
 		memcpy(buf, output_cache_.begin(), output_cache_.size());
 		shift_buffers(buf - output_cache_.begin());
 		buf += output_cache_.size();
 		return;
 	}
-*/
+
 	char* begin = buf;
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
