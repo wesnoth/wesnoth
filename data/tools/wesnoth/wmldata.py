@@ -225,6 +225,11 @@ class DataSub(Data):
         else:
             self.dict[data.name] = [data]
 
+    def append(self, other):
+        """Append all elements of other."""
+        for item in other.data:
+            self.insert(item)
+
     def insert(self, data):
         """Inserts a sub-element."""
         self.data += [data]

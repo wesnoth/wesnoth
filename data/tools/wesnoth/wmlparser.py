@@ -7,6 +7,12 @@ import re
 """Module implementing a WML parser."""
 
 class Error(Exception):
+    """
+    This is a custom exception the parser throws on errors. It can display
+    the position of the error as a tree of all files and macros leading to
+    the error, with line numbers.
+    """
+
     def __init__(self, parser, text):
         self.text = "%s:%d: %s" % (parser.filename, parser.line, text)
         for i in range(len(parser.texts)):
@@ -17,6 +23,10 @@ class Error(Exception):
         return self.text
 
 class Parser:
+    """
+    The main parser class. An instance of this is needed for parsing.
+    """
+
     class Macro:
         """Class to hold one single macro."""
         def __init__(self, name, params, text):
@@ -38,6 +48,7 @@ class Parser:
         user_dir is used for resolving {~filepath} and {@filepath}
         See http://www.wesnoth.org/wiki/PreprocessorRef
         """
+
         self.data_dir = data_dir
         self.user_dir = user_dir
 
@@ -55,6 +66,12 @@ class Parser:
 
         self.macro_not_found_callback = None
         self.no_macros = False
+
+        # If set, we actually do preprocessor logic with #ifdef and so on.
+        # Otherwise, they get included in the parse tree as nodes.
+        self.do_preprocessor_logic = False
+        # Internal flag while inside a non-parsed block
+        self.just_parse = False
 
         # If set, included files are only parsed when under the given directory.
         self.only_expand_pathes = []
@@ -260,6 +277,10 @@ class Parser:
         if macro[-1] != "}":
             raise Error(self, "Unclosed macro")
             return
+        
+        if self.just_parse:
+            # We do not execute any macros or file inclusions.
+            return None
 
         preserve = macro
         macro = macro[:-1] # Get rid of final }
@@ -502,7 +523,7 @@ class Parser:
             j += 1
         return data
 
-    def parse_top(self, data, state = None):
+    def parse_top(self, data, state = None, dont_parse_else = False):
         while 1:
             self.skip_whitespace_and_newlines()
             if self.at_end():
@@ -523,35 +544,66 @@ class Parser:
                     if text == None:
                         raise Error(self, "#define without #enddef")
                         return
-                    self.macros[params[0]] = self.Macro(params[0], params[1:], text)
+                    if not self.just_parse:
+                        self.macros[params[0]] = self.Macro(
+                            params[0], params[1:], text)
+                        if self.verbose:
+                            sys.stderr.write("New macro: %s.\n" % params[0])
 
                 elif self.check_for("undef "):
                     self.read_until(" ")
                     name = self.read_until(" \n")
                     self.macros[name] = None
-                elif self.check_for("ifdef "):
-                    self.read_until(" ")
+                elif self.check_for("ifdef ") or self.check_for("ifndef"):
+
+                    what = "#" + self.read_until(" ").rstrip()
+
                     name = self.read_until(" \n")
                     if name[-1] == " ": self.read_while(" \n")
                     name = name[:-1]
+
                     subdata = wmldata.DataIfDef(name, [], "then")
-                    self.parse_top(subdata, "#ifdef")
-                    data.insert(subdata)
-                elif self.check_for("ifndef "):
-                    self.read_until(" ")
-                    name = self.read_until(" \n")
-                    if name[-1] == " ": self.read_while(" \n")
-                    name = name[:-1]
-                    subdata = wmldata.DataIfDef(name, [], "then")
-                    self.parse_top(subdata, "#ifndef")
-                    data.insert(subdata)
+                    
+                    dont_parse_else = False
+                    if self.do_preprocessor_logic:
+                        dont_parse_else = True
+                        prev = self.just_parse
+                        if what == "#ifdef":
+                            if not name in self.macros:
+                                self.just_parse = True
+                                dont_parse_else = prev
+                        elif what == "#ifndef":
+                            if name in self.macros:
+                                self.just_parse = True
+                                dont_parse_else = prev
+
+                    self.parse_top(subdata, what, dont_parse_else)
+
+                    if self.do_preprocessor_logic:
+                        self.just_parse = prev
+                        if self.just_parse == False:
+                            elses = subdata.get_ifdefs("else")
+                            if dont_parse_else:
+                                if elses:
+                                    subdata.remove(elses[0])
+                                data.append(subdata)
+                            else:
+                                if elses:
+                                    data.append(elses[0])
+                    else:
+                        data.insert(subdata)
 
                 elif self.check_for("else"):
+
                     self.read_until("\n")
                     if state != "#ifdef" and state != "#ifndef":
                         raise Error(self, "#else without #ifdef")
                     subdata = wmldata.DataIfDef("else", [], "else")
+                    
+                    if self.do_preprocessor_logic:
+                        self.just_parse = dont_parse_else
                     self.parse_top(subdata, "#else")
+
                     data.insert(subdata)
                     return
 
@@ -632,6 +684,8 @@ if __name__ == "__main__":
 
     if options.verbose:
         wmlparser.verbose = True
+    
+    wmlparser.do_preprocessor_logic = True
 
     if options.execute:
         wmlparser.parse_text(options.execute)
