@@ -25,7 +25,6 @@ opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(BoolOption('profile', 'Set to build for debugging', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('tests', 'Set to enable static building of Wesnoth', False))
-opts.Add(BoolOption('python','Clear to disable Python support', True))
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
 opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
@@ -57,14 +56,17 @@ SConscript('src/SConstruct', exports='env')
 # Configuration
 #
 
+#The 'install' target installs whatever you currently have built.  If
+#you have built wmllint/wmlscope/wmlindent the Python helper modules
+#will also be installed.
+
 Help("""\
 Available build targets include:
 
-    all wesnoth wesnoth_editor wesnothd campaignd exploder cutter
-
-The 'install' target installs whatever you currently have built.
-If you have built tools and Python is available the Python helper modules
-will also be installed.
+    wesnoth wesnoth_editor wesnothd campaignd exploder cutter
+    all = all installables
+    test = unit test binary
+    tags = build tags for Emacs.
 
 """ + opts.GenerateHelpText(env))
 conf = Configure(env)
@@ -139,9 +141,10 @@ if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
         print "Needed SDL network lib and didn't find it; exiting!"
         Exit(1)
 
-if "all" not in targets and "wesnoth" not in targets:
-    print "*** Game build disabled, suppressing Python support."
-    env["python"] = False
+if "all" in targets or "wesnoth" in targets:
+    if not conf.CheckLib('python'+sys.version[:3]):
+        print "Needed Python lib for game and didn't find it; exiting!"
+        Exit(1)
 
 env = conf.Finish()
 
