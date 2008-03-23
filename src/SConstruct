@@ -98,6 +98,12 @@ libwesnothd_sources = [
 env.Library("wesnothd", libwesnothd_sources, 
             CPPPATH = ['.', "/usr/include/SDL"])
 
+libcampaignd_sources = [
+    "publish_campaign.cpp",
+    ]
+env.Library("campaignd", libcampaignd_sources, 
+            CPPPATH = ['.', "/usr/include/SDL"])
+
 wesnoth_sources = [
     "about.cpp",
     "actions.cpp",
@@ -142,7 +148,6 @@ wesnoth_sources = [
     "playmp_controller.cpp",
     "playsingle_controller.cpp",
     "playturn.cpp",
-    "publish_campaign.cpp",
     "replay.cpp",
     "replay_controller.cpp",
     "sha1.cpp",
@@ -166,7 +171,7 @@ wesnoth_sources = [
 ]
 env.Program("wesnoth", wesnoth_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
-            LIBS = ['wesnoth_core', 'wesnoth'] + commonlibs,
+            LIBS = ['wesnoth_core', 'wesnoth', 'campaignd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 wesnoth_editor_sources = [
@@ -188,11 +193,10 @@ env.Program("wesnoth_editor", wesnoth_editor_sources,
 
 campaignd_sources = [
     "campaign_server/campaign_server.cpp",
-    "publish_campaign.cpp",
     ]
 env.Program("campaignd", campaignd_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
-            LIBS = ['wesnoth_core', 'wesnothd', 'wesnoth'] + commonlibs,
+            LIBS = ['wesnoth_core', 'wesnothd', 'campaignd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 wesnothd_sources = [
