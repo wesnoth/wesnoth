@@ -1,7 +1,7 @@
 Import('env')
 
 all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
-                        "exploder"])
+                        "cutter", "exploder"])
 env.Default("all")
 
 #
@@ -217,6 +217,17 @@ wesnothd_sources = [
 env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
             LIBS =  ['wesnoth_core', 'wesnothd'] + commonlibs,
+            LIBPATH = [".", "/lib", "/usr/lib"])
+
+cutter_sources = [
+    "tools/cutter.cpp",
+    "tools/exploder_utils.cpp",
+    "tools/exploder_cutter.cpp",
+    "tools/dummy_video.cpp",
+    ]
+env.Program("cutter", cutter_sources,
+            CPPPATH = ['.', "/usr/include/SDL"],
+            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 exploder_sources = [
