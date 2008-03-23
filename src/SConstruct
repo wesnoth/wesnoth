@@ -1,6 +1,7 @@
 Import('env')
 
-all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd"])
+all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
+                        "exploder"])
 env.Default("all")
 
 #
@@ -67,7 +68,6 @@ libwesnoth_sources = [
     "race.cpp",
     "random.cpp",
     "reports.cpp",
-    "sdl_utils.cpp",
     "show_dialog.cpp",
     "sound.cpp",
     "soundsource.cpp",
@@ -102,6 +102,12 @@ libcampaignd_sources = [
     "publish_campaign.cpp",
     ]
 env.Library("campaignd", libcampaignd_sources, 
+            CPPPATH = ['.', "/usr/include/SDL"])
+
+libwesnoth_sdl_sources = [
+    "sdl_utils.cpp",
+    ]
+env.Library("wesnoth_sdl", libwesnoth_sdl_sources, 
             CPPPATH = ['.', "/usr/include/SDL"])
 
 wesnoth_sources = [
@@ -171,7 +177,7 @@ wesnoth_sources = [
 ]
 env.Program("wesnoth", wesnoth_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
-            LIBS = ['wesnoth_core', 'wesnoth', 'campaignd'] + commonlibs,
+            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 wesnoth_editor_sources = [
@@ -188,7 +194,7 @@ wesnoth_editor_sources = [
     ]
 env.Program("wesnoth_editor", wesnoth_editor_sources,
             CPPPATH = ['.', "/usr/include/SDL"],
-            LIBS = ['wesnoth_core', 'wesnoth'] + commonlibs,
+            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 campaignd_sources = [
@@ -211,6 +217,18 @@ wesnothd_sources = [
 env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
             LIBS =  ['wesnoth_core', 'wesnothd'] + commonlibs,
+            LIBPATH = [".", "/lib", "/usr/lib"])
+
+exploder_sources = [
+	"tools/exploder.cpp",
+	"tools/exploder_utils.cpp",
+	"tools/exploder_cutter.cpp",
+	"tools/exploder_composer.cpp",
+	"tools/dummy_video.cpp",
+        ]
+env.Program("exploder", exploder_sources,
+            CPPPATH = ['.', "/usr/include/SDL"],
+            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 # FIXME: Include this in gameconfig.cpp when we switch over to scons.

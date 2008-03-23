@@ -58,7 +58,10 @@ SConscript('src/SConstruct', exports='env')
 #
 
 Help("""\
-Available build targets include: all wesnoth wesnoth_editor wesnothd campaignd
+Available build targets include:
+
+    all wesnoth wesnoth_editor wesnothd campaignd exploder
+
 The 'install' target installs whatever you currently have built.
 If you have built tools and Python is available the Python helper modules
 will also be installed.
