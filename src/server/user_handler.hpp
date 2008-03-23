@@ -9,6 +9,26 @@
 #include <jwsmtp/jwsmtp.h>
 #endif
 
+#include "sqlite.hpp"
+
+
+#include <vector>
+#include <string>
+#include <map>
+
+namespace uh {
+
+    enum {
+        PASSWORD = 0,
+        EMAIL,
+        REALNAME,
+        REGISTRATION_DATE,
+        LAST_LOGIN,
+        MAX_VALUE
+    };
+
+}
+
 class user_handler {
     public:
         user_handler(const std::string& users_file);
@@ -16,6 +36,7 @@ class user_handler {
 
         config read_config() const;
         void load_config();
+        void load_users();
         void save_config();
 
         void clean_up();
@@ -74,7 +95,10 @@ class user_handler {
         unsigned short username_expiration_limit_;
 
         config cfg_;
-        config* users_;
+
+        sqlite_database user_data_;
+
+        std::map<std::string,std::string*> users_;
 };
 
 #endif

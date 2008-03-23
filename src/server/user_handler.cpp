@@ -12,13 +12,16 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <string>
 
 
 user_handler::user_handler(const std::string& users_file) :
         users_file_(users_file),
-        cfg_(read_config())
+        cfg_(read_config()),
+        user_data_(users_file_ + ".db")
 {
     load_config();
+    load_users();
     clean_up();
 }
 
@@ -69,7 +72,7 @@ void user_handler::load_config() {
     #ifndef NO_MAIL
 
     if(mail()) {
-        config& mail = *(cfg_.child("mail"));
+        config& mail = *(cfg_.child("email"));
 
         mail["from_address"] = mail["from_address"].empty() ? "NOREPLY@wesnoth.org" : mail["from_address"];
         mail["mail_server"] = mail["mail_server"].empty() ? "127.0.0.1" : mail["mail_server"];
@@ -93,16 +96,38 @@ void user_handler::load_config() {
     }
 
     #endif //NO_MAIL
+}
 
-    //Check if we already have users and
-    //if we don't create a child for them
-    if(cfg_.child("users")) {
-        users_ = cfg_.child("users");
-    } else {
-        users_ = &(cfg_.add_child("users"));
+void user_handler::load_users() {
+    //Create the table with the user details
+    //If it already exists this will just fail
+    user_data_.exec("create table users ("
+            "name text primary key,"
+            "password text,"
+            "email text,"
+            "realname text,"
+            "registration_date text,"
+            "last_login text"
+            ")");
+
+    std::vector<std::string> data;
+    user_data_.exec("select * from users", &data);
+
+    assert(data.size() % (uh::MAX_VALUE + 1) == 0);
+
+    int i = 0;
+    while(i < data.size()) {
+        std::string* u = new std::string[uh::MAX_VALUE];
+        users_.insert(std::pair<std::string,std::string*>(data[i++], u));
+
+        u[uh::PASSWORD]          = data[i+uh::PASSWORD];
+        u[uh::EMAIL]             = data[i+uh::EMAIL];
+        u[uh::REALNAME]          = data[i+uh::REALNAME];
+        u[uh::REGISTRATION_DATE] = data[i+uh::REGISTRATION_DATE];
+        u[uh::LAST_LOGIN]        = data[i+uh::LAST_LOGIN];
+
+        i += uh::MAX_VALUE;
     }
-
-    std::cout << cfg_ << std::endl;
 }
 
 void user_handler::save_config() {
@@ -124,7 +149,7 @@ bool user_handler::send_mail(const char* to_address, const char* subject, const 
         return false;
     }
 
-    config& mail = *(cfg_.child("mail"));
+    config& mail = *(cfg_.child("email"));
 
     jwsmtp::mailer m(to_address, mail["from_address"].c_str(), subject, message,
             mail["mail_server"].c_str(), mail_port_, false);
@@ -132,10 +157,6 @@ bool user_handler::send_mail(const char* to_address, const char* subject, const 
         m.username(mail["mail_user"]);
         m.password( mail["mail_password"]);
     }
-    //! @todo Sending the mail in a new thread
-    //! (as suggested on http://johnwiggins.net/jwsmtp/)
-    //! might be a very good idea.
-    //! To bad I am not familiar with boost::thread
 
     m.send();
 
@@ -172,17 +193,13 @@ void user_handler::remove_dead_users() {
     //Thus a day has 60 * 60 * 24 = 86400 seconds
     time_t limit = username_expiration_limit_ * 86400;
 
-    const config::child_map& user_childs = users_->all_children();
-    for(config::child_map::const_iterator i = user_childs.begin(); i != user_childs.end(); ++i) {
-        const config& user = *(users_->child(i->first));
-        time_t last_login = lexical_cast_default<time_t>(user["last_login"]);
+    for(std::map<std::string,std::string*>::const_iterator i = users_.begin(); i != users_.end(); ++i) {
+        time_t last_login = lexical_cast_default<time_t>(i->second[uh::LAST_LOGIN]);
         if((now - last_login) > limit) {
             std::cout << "User '" << i->first << "' exceeds expiration date: ";
             remove_user(i->first);
         }
     }
-
-    save_config();
 }
 
 void user_handler::add_user(const std::string& name,
@@ -202,30 +219,35 @@ void user_handler::add_user(const std::string& name,
 
     //Check if the given email is not yet registered
     if(!mail.empty()) {
-        const config::child_map& user_childs = users_->all_children();
-        for(config::child_map::const_iterator i = user_childs.begin(); i != user_childs.end(); ++i) {
-            if((*(users_->child(i->first)))["mail"] == mail) {
+        for(std::map<std::string,std::string*>::const_iterator i = users_.begin(); i != users_.end(); ++i) {
+            if(i->second[uh::EMAIL] == mail) {
                 throw error("Could not add new user. The email address '" + mail + "' is already in use.");
             }
         }
     }
 
-    config& user = users_->add_child(name);
-    user["mail"] = mail;
-    user["password"] = password;
+    users_.insert(std::pair<std::string,std::string*>(name,NULL));
+    users_[name] = new std::string[uh::MAX_VALUE];
+
+    for(std::map<std::string,std::string*>::iterator a = users_.begin(); a!= users_.end(); ++a) {
+        std::cout << a->first << std::endl;
+        std::cout << a->second << std::endl;
+    }
 
     std::string now = lexical_cast_default<std::string>(time(NULL));
-    user["registration_date"] = now;
-    user["last_login"] = now;
 
-    //! @todo To save performance it we should of course not save
-    //! the whole config everytime something changes
-    save_config();
+    users_[name][uh::PASSWORD] = password;
+    users_[name][uh::EMAIL]    = mail;
+    users_[name][uh::REGISTRATION_DATE] = now;
+    users_[name][uh::LAST_LOGIN] = now;
 
-    std::cout << "Created new user '" << name << "'\n";
+    user_data_.exec("insert into users (name,password,email,realname,registration_date,last_login) values ('" +
+            name + "','" + password + "','" + mail + "','','" + now + "','" + now + "')");
 
     //I don't think we need to send the user details via email,
     //we don't require any account activation anyways.
+
+    std::cout << "Created new user '" << name << "'\n";
 }
 
 
@@ -237,19 +259,19 @@ void user_handler::password_reminder(const std::string& name) {
         throw error("Could not send password reminder. No user with the name '" + name + "' exists.");
     }
 
-    config& user = *(users_->child(name));
+    std::string* u = users_[name];
 
-    if(user["mail"].empty()) {
+    if(u[uh::EMAIL].empty()) {
         throw error("Could not send password reminder. The email address of the user '" + name + "' is empty.");
     }
 
     std::stringstream msg;
     msg << "Hello " << name << ",\n\n" <<
-            "Your password is '" << user["password"] << "'.\n\n" <<
+            "Your password is '" << u[uh::PASSWORD] << "'.\n\n" <<
             "Have fun playing at Wesnoth!";
 
     //If sending does not return true warn that no message was sent.
-    if(!(send_mail(user["mail"].c_str(), "Wesnoth Multiplayer Server Password Reminder", msg.str().c_str()))) {
+    if(!(send_mail(u[uh::EMAIL].c_str(), "Wesnoth Multiplayer Server Password Reminder", msg.str().c_str()))) {
         throw error("Could not send password reminder. There was an error sending the reminder email.");
     }
     return;
@@ -261,17 +283,7 @@ void user_handler::password_reminder(const std::string& name) {
 }
 
 void user_handler::user_logged_in(const std::string& name) {
-    if(!user_exists(name)) {
-        //No exception here because this function is called by the server, not by users
-        return;
-    }
-
-    config& user = *(users_->child(name));
-    user["last_login"] = lexical_cast_default<std::string>(time(NULL));
-
-    //! @todo To save performance it we should of course not save
-    //! the whole config everytime something changes
-    save_config();
+    set_user_attribute(name, "last_login", lexical_cast_default<std::string>(time(NULL)));
 
     //Should we keep track of the IPs used for logging into this account?
 }
@@ -282,11 +294,9 @@ void user_handler::remove_user(const std::string& name) {
         throw error("Could not remove user. No user with the name '" + name + "' exists.");
     }
 
-    users_->remove_child(name, 0);
+    users_.erase(users_.find(name));
 
-    //! @todo To save performance it we should of course not save
-    //! the whole config everytime something changes
-    save_config();
+    user_data_.exec("delete from users where name='" + name + "'");
 
     std::cout << "Removed user '" << name << "'\n";
 }
@@ -297,8 +307,8 @@ bool user_handler::login(const std::string& name, const std::string& password) {
         return false;
     }
 
-    config& user = *(users_->child(name));
-    return (user["password"] == password);
+    std::string* u = users_[name];
+    return (u[uh::PASSWORD] == password);
 }
 
 void user_handler::set_user_attribute(const std::string& name,
@@ -310,16 +320,25 @@ void user_handler::set_user_attribute(const std::string& name,
         "'. No user with the name with this name exists.");
     }
 
-    config& user = *(users_->child(name));
-    user[attribute] = value;
+    std::string* u = users_[name];
 
-    //! @todo To save performance it we should of course not save
-    //! the whole config everytime something changes
-    save_config();
+    if(attribute == "password") {
+        u[uh::PASSWORD] = value;
+    } else if(attribute == "email") {
+        u[uh::EMAIL] = value;
+    } else if(attribute == "realname") {
+        u[uh::REALNAME] = value;
+    } else if(attribute == "last_login") {
+        u[uh::LAST_LOGIN] = value;
+    } else {
+        std::cerr << "Call of set_user_attribute() with unknown attribute '" << attribute << "'.\n";
+    }
+
+    user_data_.exec("update users set " + attribute + "='" + value + "' where name='" + name + "'");
 }
 
 bool user_handler::user_exists(const std::string& name) {
-    return ((users_->child(name)));
+    return (users_[name]);
 }
 
 bool user_handler::mail() {
@@ -330,12 +349,12 @@ bool user_handler::mail() {
     return false;
     #endif
 
-    return (cfg_.child("mail"));
+    return (cfg_.child("email"));
 }
 
 void user_handler::set_mail(const std::string& user, const std::string& mail) {
     check_mail(mail);
-    set_user_attribute(user, "mail", mail);
+    set_user_attribute(user, "email", mail);
 }
 
 void user_handler::set_password(const std::string& user, const std::string& password) {
@@ -344,6 +363,7 @@ void user_handler::set_password(const std::string& user, const std::string& pass
 }
 
 void user_handler::set_realname(const std::string& user, const std::string& realname) {
+    //Should we perform any check (e.g. max size)?
     set_user_attribute(user, "realname", realname);
 }
 
@@ -367,21 +387,21 @@ std::string user_handler::user_info(const std::string& name) {
         throw error("No user with the name '" + name + "' exists.");
     }
 
-    config& user = *(users_->child(name));
+    std::string* u = users_[name];
 
     char registration_date[99];
     char last_login[99];
 
-    const time_t& reg_t = lexical_cast_default<time_t>(user["registration_date"]);
-    const time_t& last_t = lexical_cast_default<time_t>(user["last_login"]);
+    const time_t& reg_t = lexical_cast_default<time_t>(u[uh::REGISTRATION_DATE]);
+    const time_t& last_t = lexical_cast_default<time_t>(u[uh::LAST_LOGIN]);
 
     strftime(registration_date, 99, "%c", localtime(&reg_t));
     strftime(last_login, 99, "%c", localtime(&last_t));
 
     std::stringstream res;
     res << "Username: " << name << "\n"
-            << (user["realname"].empty() ? "" : "Real name: " + user["realname"] + "\n")
-            << (user["mail"].empty() ? "" : "Email: " + user["mail"] + "\n")
+            << (u[uh::REALNAME].empty() ? "" : "Real name: " + u[uh::REALNAME] + "\n")
+            << (u[uh::EMAIL].empty() ? "" : "Email: " + u[uh::EMAIL] + "\n")
             << "Registration date: " << registration_date << "\n"
             << "Last login: " << last_login;
 

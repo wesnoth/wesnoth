@@ -156,6 +156,7 @@ wesnothd_SOURCES = \
 	server/proxy.cpp \
 	server/server.cpp \
 	server/simple_wml.cpp \
+	server/sqlite.cpp \
 	server/user_handler.cpp \
 	network.cpp \
 	network_worker.cpp \
@@ -247,6 +248,7 @@ noinst_HEADERS = \
 	server/input_stream.hpp \
 	server/proxy.hpp \
 	server/metrics.hpp \
+	server/sqlite.hpp \
 	server/user_handler.hpp \
 	editor/editor_undo.hpp \
 	editor/map_manip.hpp \
