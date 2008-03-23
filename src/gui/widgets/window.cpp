@@ -210,7 +210,7 @@ void twindow::handle_event(const SDL_Event& event)
 	}
 }
 
-void twindow::window_resize(tevent_info&, 
+void twindow::window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height)
 {
 	screen_width = new_width;

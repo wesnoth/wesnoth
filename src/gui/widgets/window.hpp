@@ -81,7 +81,7 @@ private:
 
 	tstatus status_;
 
-	tevent_info event_info_;
+	tevent_handler event_info_;
 
 	/***** The event processing stuff *****/
 
@@ -92,7 +92,7 @@ private:
 	//! Implement events::handler::handle_event().
 	void handle_event(const SDL_Event& event);
 
-	void window_resize(tevent_info&, 
+	void window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height);
 
 	//! When set the form needs a full layout redraw cycle.

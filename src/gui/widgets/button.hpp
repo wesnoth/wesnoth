@@ -46,14 +46,14 @@ public:
 	void set_label(const t_string& label);
 
 	
-	void mouse_enter(tevent_info&);
-	void mouse_hover(tevent_info&);
-	void mouse_leave(tevent_info&);
+	void mouse_enter(tevent_handler&);
+	void mouse_hover(tevent_handler&);
+	void mouse_leave(tevent_handler&);
 
-	void mouse_left_button_down(tevent_info& event);
-	void mouse_left_button_up(tevent_info&);
-	void mouse_left_button_click(tevent_info&);
-	void mouse_left_button_double_click(tevent_info&); //FIXME remove
+	void mouse_left_button_down(tevent_handler& event);
+	void mouse_left_button_up(tevent_handler&);
+	void mouse_left_button_click(tevent_handler&);
+	void mouse_left_button_double_click(tevent_handler&); //FIXME remove
 
 	void draw(surface& canvas);
 

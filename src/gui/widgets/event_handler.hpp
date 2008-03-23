@@ -25,10 +25,10 @@ namespace gui2{
 
 class twidget;
 
-class tevent_info 
+class tevent_handler 
 {
 public:
-	tevent_info();
+	tevent_handler();
 
 	void handle_event(const SDL_Event& event, twidget* mouse_over);
 

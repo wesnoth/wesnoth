@@ -55,7 +55,7 @@ static Uint32 hover_callback(Uint32 interval, void *param)
 //! At construction we should get the state and from that moment on we keep
 //! track of the changes ourselves, not yet sure what happens when an input
 //! blocker is used.
-tevent_info::tevent_info() :
+tevent_handler::tevent_handler() :
 	// fixme get state at construction
 	mouse_x_(-1),
 	mouse_y_(-1),
@@ -79,7 +79,7 @@ tevent_info::tevent_info() :
 	}
 }
 
-void tevent_info::handle_event(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::handle_event(const SDL_Event& event, twidget* mouse_over)
 {
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
@@ -143,13 +143,13 @@ void tevent_info::handle_event(const SDL_Event& event, twidget* mouse_over)
 
 }
 
-void tevent_info::mouse_capture(const bool capture)
+void tevent_handler::mouse_capture(const bool capture)
 {
 	assert(mouse_focus_);
 	mouse_captured_ = capture;
 }
 
-void tevent_info::mouse_enter(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_enter(const SDL_Event& event, twidget* mouse_over)
 {
 	assert(mouse_over);
 
@@ -159,7 +159,7 @@ void tevent_info::mouse_enter(const SDL_Event& event, twidget* mouse_over)
 	set_hover();
 }
 
-void tevent_info::mouse_hover(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_hover(const SDL_Event& event, twidget* mouse_over)
 {
 
 	const unsigned hover_id = *static_cast<unsigned*>(event.user.data1);
@@ -176,7 +176,7 @@ void tevent_info::mouse_hover(const SDL_Event& event, twidget* mouse_over)
 	had_hover_ = true;
 }
 
-void tevent_info::mouse_move(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 {
 	// Note we use the fact that a NULL pointer evaluates to false
 	// and non NULL pointer to true;
@@ -201,7 +201,7 @@ void tevent_info::mouse_move(const SDL_Event& event, twidget* mouse_over)
 	}
 }
 
-void tevent_info::mouse_leave(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_leave(const SDL_Event& event, twidget* mouse_over)
 {
 	assert(mouse_focus_);
 
@@ -212,7 +212,7 @@ void tevent_info::mouse_leave(const SDL_Event& event, twidget* mouse_over)
 	mouse_focus_ = 0;
 }
 
-void tevent_info::mouse_left_button_down(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_left_button_down(const SDL_Event& event, twidget* mouse_over)
 {
 	if(mouse_left_button_down_) {
 		WRN_G_E << "In 'left button down' but the mouse "
@@ -238,7 +238,7 @@ void tevent_info::mouse_left_button_down(const SDL_Event& event, twidget* mouse_
 	}
 }
 
-void tevent_info::mouse_left_button_up(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_left_button_up(const SDL_Event& event, twidget* mouse_over)
 {
 	if(!mouse_left_button_down_) {
 		WRN_G_E << "In 'left button up' but the mouse "
@@ -292,7 +292,7 @@ void tevent_info::mouse_left_button_up(const SDL_Event& event, twidget* mouse_ov
 
 }
 
-void tevent_info::set_hover(const bool test_on_widget)
+void tevent_handler::set_hover(const bool test_on_widget)
 {
 	// Only one hover event.
 	if(had_hover_) {

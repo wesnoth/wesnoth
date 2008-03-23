@@ -83,27 +83,27 @@ public:
 // wait for possible double click if widget wants double click
 // - mouse click
 
-	virtual void mouse_enter(tevent_info&) {}
-	virtual void mouse_move(tevent_info&) {}
-	virtual void mouse_hover(tevent_info&) {}
-	virtual void mouse_leave(tevent_info&) {}
+	virtual void mouse_enter(tevent_handler&) {}
+	virtual void mouse_move(tevent_handler&) {}
+	virtual void mouse_hover(tevent_handler&) {}
+	virtual void mouse_leave(tevent_handler&) {}
 
-	virtual void mouse_left_button_down(tevent_info&) {}
-	virtual void mouse_left_button_up(tevent_info&) {}
-	virtual void mouse_left_button_click(tevent_info&) {}
-	virtual void mouse_left_button_double_click(tevent_info&) {}
+	virtual void mouse_left_button_down(tevent_handler&) {}
+	virtual void mouse_left_button_up(tevent_handler&) {}
+	virtual void mouse_left_button_click(tevent_handler&) {}
+	virtual void mouse_left_button_double_click(tevent_handler&) {}
 
-	virtual void mouse_middle_button_down(tevent_info&) {}
-	virtual void mouse_middle_button_up(tevent_info&) {}
-	virtual void mouse_middle_button_click(tevent_info&) {}
-	virtual void mouse_middle_button_double_click(tevent_info&) {}
+	virtual void mouse_middle_button_down(tevent_handler&) {}
+	virtual void mouse_middle_button_up(tevent_handler&) {}
+	virtual void mouse_middle_button_click(tevent_handler&) {}
+	virtual void mouse_middle_button_double_click(tevent_handler&) {}
 
-	virtual void mouse_right_button_down(tevent_info&) {}
-	virtual void mouse_right_button_up(tevent_info&) {}
-	virtual void mouse_right_button_click(tevent_info&) {}
-	virtual void mouse_right_button_double_click(tevent_info&) {}
+	virtual void mouse_right_button_down(tevent_handler&) {}
+	virtual void mouse_right_button_up(tevent_handler&) {}
+	virtual void mouse_right_button_click(tevent_handler&) {}
+	virtual void mouse_right_button_double_click(tevent_handler&) {}
 
-	virtual void window_resize(tevent_info&, const unsigned /* new_width */, 
+	virtual void window_resize(tevent_handler&, const unsigned /* new_width */, 
 		const unsigned /* new_height */) {}
 
 #if 0

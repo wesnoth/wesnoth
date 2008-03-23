@@ -73,27 +73,27 @@ void tbutton::set_label(const t_string& label)
 	tcontrol::set_label(label);
 }
 
-void tbutton::mouse_enter(tevent_info&) 
+void tbutton::mouse_enter(tevent_handler&) 
 { 
 	DBG_G_E << "Button: mouse enter.\n"; 
 
 	set_state(FOCUSSED);
 }
 
-void tbutton::mouse_hover(tevent_info&)
+void tbutton::mouse_hover(tevent_handler&)
 {
 	DBG_G_E << "Button: mouse hover.\n"; 
 
 }
 
-void tbutton::mouse_leave(tevent_info&) 
+void tbutton::mouse_leave(tevent_handler&) 
 { 
 	DBG_G_E << "Button: mouse leave.\n"; 
 
 	set_state(ENABLED);
 }
 
-void tbutton::mouse_left_button_down(tevent_info& event) 
+void tbutton::mouse_left_button_down(tevent_handler& event) 
 { 
 	DBG_G_E << "Button: left mouse button down.\n"; 
 
@@ -102,19 +102,19 @@ void tbutton::mouse_left_button_down(tevent_info& event)
 	set_state(PRESSED);
 }
 
-void tbutton::mouse_left_button_up(tevent_info&) 
+void tbutton::mouse_left_button_up(tevent_handler&) 
 { 
 	DBG_G_E << "Button: left mouse button up.\n";
 
 	set_state(FOCUSSED);
 }
 
-void tbutton::mouse_left_button_click(tevent_info&) 
+void tbutton::mouse_left_button_click(tevent_handler&) 
 { 
 	DBG_G_E << "Button: left mouse button click.\n"; 
 }
 
-void tbutton::mouse_left_button_double_click(tevent_info&) 
+void tbutton::mouse_left_button_double_click(tevent_handler&) 
 { 
 	DBG_G_E << "Button: left mouse button double click.\n"; 
 }
