@@ -1,12 +1,12 @@
-# Danish translation of wesnoth-tutorial (da.po)
-# Dansk oversættelse for wesnoth-tutorial (da.po).
-# Copyright (C) 2007 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Danish translation of Wesnoth Tutorial.
+# Dansk oversættelse af Wesnoth prøvespil.
+# Copyright (C) 2007-2008 Wesnoth Development Team.
+# This file is distributed under the same license as the Battle for Wesnoth package.
 # Joe Hansen <joedalton2@yahoo.dk>, 2007, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.4.x\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-02 14:04+0100\n"
 "PO-Revision-Date: 2008-01-07 13:15+0200\n"
@@ -909,8 +909,9 @@ msgid "RECALL $recall_name1"
 msgstr "TILBAGEKALD $recall_name1"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:532
+#, fuzzy
 msgid "Right click on the tile south of you and recall $recall_name1"
-msgstr "Højreklik på feltet syd for dig og tilbagekald $recall_name1"
+msgstr "Højreklik på feltet placeret øst for dig og tilbagekald $recall_name2"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:541
 msgid ""
@@ -938,8 +939,9 @@ msgid "Elvish Fighter"
 msgstr "Elverkæmper"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:548
+#, fuzzy
 msgid "Right click on the tile south of you and recruit an Elvish Fighter"
-msgstr "Højreklik på feltet syd for dig og rekrutter en elverkæmper."
+msgstr "Højreklik på feltet øst for dig og rekrutter en elverkæmper."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:588
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
@@ -1017,11 +1019,11 @@ msgstr "Bueskytte #2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:711
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:748
 msgid "Recruit two Elvish Archers in tiles to your west"
-msgstr "Rekruter to elverbueskytter i felter mod vest"
+msgstr "Rekrutter to elverbueskytter i felter mod vest"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:724
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
-msgstr "Nej! Jeg sagde rekruter en elverKÆMPER! Prøv igen..."
+msgstr "Nej! Jeg sagde rekrutter en elverKÆMPER! Prøv igen..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1042,9 +1044,10 @@ msgstr ""
 "en ny $recruit.language_name|! Prøv igen..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:799
+#, fuzzy
 msgid "Right click on the tile south-east of you and recall $recall_name2"
 msgstr ""
-"Højreklik på feltet placeret sydøst fo dig og tilbagekald $recall_name2"
+"Højreklik på feltet placeret nordøst for dig og tilbagekald $recall_name1"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:800
 msgid "RECALL $recall_name2"
@@ -1052,8 +1055,9 @@ msgstr "TILBAGEKALD $recall_name2"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:804
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:847
+#, fuzzy
 msgid "Right click on the tile south-east of you and recruit an Elvish Fighter"
-msgstr "Højreklik på feltet sydøst for dig og rekruter en elverkæmper."
+msgstr "Højreklik på feltet nordøst for dig og rekrutter en elverkæmper."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:827
 msgid ""
@@ -1568,18 +1572,9 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
-"Quintaner bruges til at øve sig på. Det vil være ekstremt usædvanligt at "
+"Quintaner bruges til at øve sig på. Det vil være ekstremt usædvanligt, at "
 "blive angrebet af en."
 
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "plejl"
-
-#~ msgid "impact"
-#~ msgstr "slag"
-
-#~ msgid "fire"
-#~ msgstr "ild"
-
-#~ msgid "blade"
-#~ msgstr "klinge"

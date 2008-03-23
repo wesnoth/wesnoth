@@ -1,13 +1,14 @@
-# Danish translations for manual
-# Copyright (C) 2007 Wesnoth Development Team
+# Danish translation of Battle for Wesnoth User's Manual.
+# Dansk oversættelse af Kampen om Wesnoths brugermanual.
+# Copyright (C) 2007-2008 Wesnoth Development Team.
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Joe Hansen (joedalton2@yahoo.dk), 2007, 2008.
+# Joe Hansen <joedalton2@yahoo.dk>, 2007, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3.12+svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.4.x\n"
 "POT-Creation-Date: 2008-03-06 10:59+0100\n"
-"PO-Revision-Date: 2008-02-18 09:57+0200\n"
+"PO-Revision-Date: 2008-03-15 09:57+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -275,7 +276,6 @@ msgstr "Flerspiller"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:144
-#, fuzzy
 msgid ""
 "Click this button to play single scenarios against one or more opponents. "
 "You can play the games over the internet or at your computer, against "
@@ -285,10 +285,10 @@ msgid ""
 msgstr ""
 "Tryk på denne knap for at spille et enkelte scenarie mod en eller flere "
 "modstandere. Du kan spille over internettet eller på din egen computer mod "
-"computermodstandere eller andre menneskespillere. Når du vælger denne knap "
-"vil et dialogbillede komme frem og give dig mulighed for at vælge hvordan du "
-"vil spille scenariet. For at lære mere så se eventuelt <xref linkend="
-"\"scenarios\"/>."
+"computermodstandere eller andre spillere. Når du vælger denne knap vil et "
+"dialogbillede komme frem og give dig mulighed for at vælge hvordan du vil "
+"spille scenariet. For at lære mere så se eventuelt <link linkend=\"scenarios"
+"\">scenarier</link>."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:154
@@ -505,7 +505,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:301
-#, fuzzy
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -519,14 +518,14 @@ msgid ""
 "within the scenario."
 msgstr ""
 "Normalt spilles spil med andre spillere via internettet (du kan også afvikle "
-"dem via din egen LAN, hvis du har en). Fælles spil koordineres via Wesnoth "
-"flerspillerserveren. Disse spil kan vare fra 1 til 10 timer, afhængig af "
-"hvor mange spillere der er (og størrelsen af kortet). Den gennemsnitlige tid "
-"er mellem 3 og 7 timer. Spillene kan gemmes og hentes lige så mange gange du "
-"ønsker det. Så det er muligt at have et spil der varer 1 eller 2 uger, "
-"selvom selve spiltiden kun er nogle få timer. Du kan ikke medtage dine "
-"enheder i fælles spil fra et scenarie til et andet, så opbygning af din hærs "
-"styrke er kun muligt indenfor scenariets rammer."
+"dem via din egen LAN, hvis du har en). Alle disse spil koordineres via "
+"Wesnoth flerspillerserveren. Disse spil kan vare fra 1 til 10 timer, "
+"afhængig af hvor mange spillere der er (og størrelsen af kortet). Den "
+"gennemsnitlige tid er mellem 3 og 7 timer. Spillene kan gemmes og hentes "
+"lige så mange gange du ønsker det. Så det er muligt, at have et spil der "
+"varer 1 eller 2 uger, selvom selve spiltiden kun er nogle få timer. Du kan "
+"ikke medtage dine enheder i fælles spil fra et scenarie til et andet, så "
+"opbygning af din hærs styrke er kun muligt indenfor scenariets rammer."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:312
@@ -565,7 +564,6 @@ msgstr "Tilslut til vært/server"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:331
-#, fuzzy
 msgid ""
 "This option opens a dialog box allowing you to enter the address of the "
 "machine to join. In this dialog there also is the button \"View List\" that "
@@ -573,11 +571,9 @@ msgid ""
 "server is currently not available."
 msgstr ""
 "Dette valg åbner en dialogboks, hvor du kan indtaste adressen på den maskine "
-"du ønsker at tilslutte dig. Dette kan være en anden klient som afvikler et "
-"netværksspil uden brug af en server, eller en anden server. I denne "
-"dialogboks er der også en knap \"Vis liste\" som viser en liste over "
-"officielle servere, som kan bruges som reserve, hvis hovedserveren ikke er "
-"tilgængelig."
+"du ønsker at tilslutte dig. I denne dialogboks er der også en knap \"Vis "
+"liste\" som viser en liste over officielle servere, som kan bruges som "
+"reserve, hvis hovedserveren ikke er tilgængelig."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:336
@@ -592,7 +588,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:339
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -606,15 +601,17 @@ msgid ""
 "make firewall changes to join games hosted on a public server or by someone "
 "else."
 msgstr ""
-"Du kan afvikle spil med flere spillere via din klient uden brug af en "
-"dedikeret server. Hvis du afvikler et spil med din klient, er det nødvendigt "
-"at andre spillere kan forbinde sig via port 15000 ved brug af TCP. Hvis du "
-"er bag en brandmur, er det sikkert nødvendigt at ændre din brandmurs "
-"indstillinger for at tillade indgående forbindelser til port 15000, og "
-"fortælle din brandmur at den skal videresende denne trafik til maskinen som "
-"afvikler spillet. Det bør ikke være nødvendigt at ændre brandmuropsætninger "
-"for at slutte sig til spil der afvikles via en offentlig server eller af en "
-"anden."
+"For at kunne afvikle spil med flere spillere uden brug af en ekstern "
+"flerspillerserver, skal du selv starte serveren, som normalt hedder "
+"<emphasis>wesnothd</emphasis>. Herefter skal du forbindes med din egen "
+"maskine via indtastning af 127.0.0.1 i <emphasis>Tilslut til vært/server</"
+"emphasis>. Hvis du afvikler et spil, er det nødvendigt at andre spillere kan "
+"forbinde sig via port 15000 ved brug af TCP. Hvis du er bag en brandmur, er "
+"det sikkert nødvendigt at ændre din brandmurs indstillinger for at tillade "
+"indgående forbindelser til port 15000, og fortælle din brandmur at den skal "
+"videresende denne trafik til maskinen som afvikler spillet. Det bør ikke "
+"være nødvendigt at ændre brandmuropsætninger for at slutte sig til spil der "
+"afvikles via en offentlig server eller af en anden spiller."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -776,7 +773,6 @@ msgstr "Rekrutter og tilbagekald"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:482
-#, fuzzy
 msgid ""
 "When you first start a scenario or campaign you will only have a few units "
 "on the map. One of these will be your commander (identified by a little "
@@ -900,7 +896,6 @@ msgstr "Guld"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:540
-#, fuzzy
 msgid ""
 "Your army does not fight for free. It costs you gold to recruit units and "
 "gold to maintain them. You start each scenario with gold carried over from "
@@ -1569,7 +1564,6 @@ msgstr "Enheder"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1065
-#, fuzzy
 msgid ""
 "Battle for Wesnoth has hundreds of unit types which are characterized by a "
 "rich set of statistics. In addition, individual units can have specific "
@@ -1577,11 +1571,11 @@ msgid ""
 "other units of the same type. Finally, campaign designers can add unique "
 "units to their campaigns to further expand the options available to players."
 msgstr ""
-"Kampen om Wesnoth har hundreder af enhedstyper som har er karakteriseret ved "
-"mange variabler. Derudover har individuelle enheder specifikke <xref linkend="
-"\"traits\"/> som gør dem forskellig fra andre enheder af samme type. Endelig "
-"kan kampagnedesignere tilføje unikke enheder til deres kampagne for yderlige "
-"at øge mulighederne for spillerne."
+"Kampen om Wesnoth har hundreder af enhedstyper, som er karakteriseret ved "
+"mange variabler. Derudover har individuelle enheder specifikke <link linkend="
+"\"traits\">karaktertræk</link> som gør dem forskellig fra andre enheder af "
+"samme type. Endelig kan kampagnedesignere tilføje unikke enheder til deres "
+"kampagne for yderligere at øge mulighederne for spillerne."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1071
@@ -2920,6 +2914,11 @@ msgid ""
 "unit will suffer less damages from the attack type. A negative resistance "
 "figure indicates that the unit is especially vulnerable to this attack type."
 msgstr ""
+"Hver enhed er mere eller mindre sårbar over for forskellige angrebstyper. 6 "
+"tal i enhedens beskrivelse viser styrker og svagheder for enheden mod de 6 "
+"angrebstyper. Et positiv modstandstal indikerer at enheden vil modtage "
+"mindre skade fra angrebstypen. Et negativ tal indikerer at enheden er "
+"speciel modtagelige for denne angrebstype."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2164
@@ -2930,6 +2929,11 @@ msgid ""
 "are very resistant to blade and piercing weapon but very vulnerable to "
 "impact attacks and arcane attacks."
 msgstr ""
+"Eksempler: Hestedragernes skæl beskytter dem mod de fleste angrebstyper med "
+"undtagelse at stikvåben og kuldevåben. Kavaleri er normalt godt beskyttet "
+"med undtagelse af stikangreb som er deres svage punkt. Udøde er meget "
+"modstandsdygtige over for klinge og stikvåben, men meget modtagelige for "
+"stød- og magiangreb."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2170
@@ -2937,6 +2941,8 @@ msgid ""
 "Using the best attack type against enemy units will substantially increase "
 "your chances of killing them."
 msgstr ""
+"Ved at bruge den bedste angrebstype mod fjendtlige enheder vil du væsentlig "
+"øge dine muligheder for at dræbe dem."
 
 #: ../../doc/manual/manual.en.xml:2176 ../../doc/manual/manual.en.xml:2606
 msgid "Healing"
@@ -2951,6 +2957,11 @@ msgid ""
 "added on top of hitpoints recovered through healing so it is possible for a "
 "unit to recover up to a total of 10 hit points per turn."
 msgstr ""
+"En enhed kan maksimalt helbredes med 8 liv per runde. En enhed som ikke "
+"flytter eller kæmper i en runde siges at være <emphasis>hvilende</emphasis> "
+"og vil helbredes med 2 liv. Liv gendannet via <emphasis>hvilende</emphasis> "
+"tilføjes udover liv genskabt igennem helbredelse, så det er muligt for en "
+"enhed at få gendannet op til 10 liv per runde."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2183
@@ -3135,6 +3146,10 @@ msgid ""
 "them. The next section about zone of control (ZOC) shows how to restrict the "
 "enemy's moves."
 msgstr ""
+"Hvordan bevogter du sårede enheder? De bevogtes bedst ved at være uden for "
+"rækkevidde af modstanderen. Ingen fjende kan angribe, hvis denne ikke kan "
+"komme tæt nok på. Det næste afsnit om kontrolzoner (KZ) viser hvordan du "
+"begrænser fjendes bevægelser."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2299
@@ -3144,6 +3159,11 @@ msgid ""
 "control into account. Thus you can check that your near death unit, which is "
 "behind, indeed cannot be attacked as the enemy cannot move close to it."
 msgstr ""
+"I handlingsmenuen kan du vælge »Vis fjendtlige bevægelser« for at markere "
+"alle felter din modstander rent faktisk kan flytte til. Denne oplysning "
+"tager din kontrolzone med i beregningen. På denne måde kan du sikre dig at "
+"din næsten døde enhed, som gemmes bagved, virkelig ikke kan angribes hvis "
+"fjenden ikke kan flytte tæt på dig."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2305
@@ -3152,6 +3172,9 @@ msgid ""
 "to end your move out of striking range of the enemy army. He cannot attack "
 "but most likely will close into your striking range."
 msgstr ""
+"Når dine hære mødes, vil du måske ønske at være den første som angriber. Så "
+"forsøg at være uden for angrebsrækkevidde af den fjendtlige hær. Han kan så "
+"ikke angribe, men vil måske komme indenfor din angrebsrækkevidde."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2311
@@ -3166,6 +3189,10 @@ msgid ""
 "six neighboring tiles, it is forced to halt and its movement phase ends "
 "(only enemies with the rare skirmisher ability ignore this)."
 msgstr ""
+"Hver enhed på niveau 1 eller højere har en kontrolzone der dækker alle 6 "
+"felter omkring sig. Dette betyder at når først en fjende bevæger sig ind på "
+"en af disse seks felter, tvinges den til at stoppe og dens bevægelsesfase "
+"ender (kun fjender med den sjældne stifinderevne ignorer dette)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2317
@@ -3257,6 +3284,9 @@ msgid ""
 "defense against an enemy in a hex with low terrain. That way, the enemy's "
 "counterstrikes will be less likely to do damage."
 msgstr ""
+"Forsøg at positionere dine tropper så de angriber fra et felt med en høj "
+"forsvarsværdi mod en fjende i et felt med lavt terræn. På den måde vil "
+"fjendens modangreb gøre mindre skade."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2368
@@ -3265,6 +3295,9 @@ msgid ""
 "that attacking orcs must stand on grassland while your elves enjoy the high "
 "forest defenses."
 msgstr ""
+"For eksempel kan du placere dine elver lige indenfor en skovkant så de "
+"angribende orker må stå på græsland mens dine elver nyder glæde af den høje "
+"skovforsvarsværdi."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2374
