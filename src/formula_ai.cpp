@@ -329,8 +329,8 @@ private:
 		if(args().size() == 2) {
 			loc = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		} else {
-			loc = gamemap::location(args()[1]->evaluate(variables).as_int(),
-			                        args()[2]->evaluate(variables).as_int());
+			loc = gamemap::location( args()[1]->evaluate(variables).as_int() - 1,
+			                        args()[2]->evaluate(variables).as_int() - 1 );
 		}
 		return variant(m.is_village(loc));
 	}
