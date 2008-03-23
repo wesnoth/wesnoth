@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file event_info.hpp
+//! @file event_handler.hpp
 //! Contains the information with an event.
 
 #ifndef __GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED__

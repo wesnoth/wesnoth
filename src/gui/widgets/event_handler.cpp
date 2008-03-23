@@ -12,12 +12,12 @@
    See the COPYING file for more details.
 */
 
-//! @file event_info.cpp
-//! Implementation of event_info.hpp.
+//! @file event_handler.cpp
+//! Implementation of event_handler.hpp.
 //!
 //! More documentation at the end of the file.
 
-#include "gui/widgets/event_info.hpp"
+#include "gui/widgets/event_handler.hpp"
 
 #include "config.hpp"
 #include "events.hpp"

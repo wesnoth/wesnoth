@@ -20,7 +20,7 @@
 #define __GUI_WIDGETS_WINDOW_HPP_INCLUDED__
 
 #include "gui/widgets/canvas.hpp"
-#include "gui/widgets/event_info.hpp"
+#include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/settings.hpp"
 
