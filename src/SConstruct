@@ -9,6 +9,7 @@ env.Default("all")
 #
 # Implement configuration switches
 #
+extralibs=[]
 
 if env["debug"]:
     env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
@@ -33,13 +34,9 @@ if env['smallgui']:
 if env['lowmem']:
     env["CXXFLAGS"].append("-DLOW_MEM")
 
-# FIXME: Need to figure out how 
-#if env['fribidi']:
-#    if conf.CheckLib('fribidi'):
-#        env["CXXFLAGS"].append("-DHAVE_FRIBIDI")
-#        env.Append(LIBS="fribidi")
-#    else:
-#        print "*** libfribidi is not available, turning off bidi support."
+if env['fribidi']:
+        env["CXXFLAGS"].append("-DHAVE_FRIBIDI")
+        extralibs.append("fribidi")
 
 if env['raw_sockets']:
     env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
@@ -237,7 +234,7 @@ wesnoth_sources = [
 
 env.Program("wesnoth", ["game.cpp"] + wesnoth_sources,
             CPPPATH = ['.', 'server', "/usr/include/SDL"],
-            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs,
+            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 wesnoth_editor_sources = [
@@ -254,7 +251,7 @@ wesnoth_editor_sources = [
     ]
 env.Program("wesnoth_editor", wesnoth_editor_sources,
             CPPPATH = ['.', "/usr/include/SDL"],
-            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs,
+            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 campaignd_sources = [

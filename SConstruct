@@ -103,6 +103,9 @@ if ("wesnoth" in targets or "wesnoth_editor" in targets):
     if not conf.CheckLib('SDL_image'):
         print "Needed SDL image lib for game or editor and didn't find it; exiting!"
         Exit(1)
+    if env['fribidi'] and conf.CheckLib('fribidi'):
+        print "Can't find libfribidi, please install it or rebuild with fribidi=no."
+        Exit(1)
 
 if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
     if not conf.CheckLib('SDL_net'):
