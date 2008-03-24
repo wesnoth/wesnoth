@@ -19,6 +19,7 @@
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 #include "pathutils.hpp"
+#include "filesystem.hpp"
 
 namespace {
 using namespace game_logic;
@@ -550,6 +551,12 @@ void formula_ai::play_turn()
 	ai_function_symbol_table function_table(*this);
 
 	const config& ai_param = current_team().ai_parameters();
+	config::const_child_itors team_formula = ai_param.child_range("team_formula");
+	if(team_formula.first != team_formula.second) {
+		std::string rulebase = (**team_formula.first)["rulebase"];
+		const t_string& formula_string = read_file(std::string("data/") + rulebase + std::string(".fai"));
+		move_formula_ = game_logic::formula::create_optional_formula(formula_string, &function_table);
+	} else {
 	config::const_child_itors functions = ai_param.child_range("function");
 	for(config::const_child_iterator i = functions.first; i != functions.second; ++i) {
 		const t_string& name = (**i)["name"];
@@ -562,7 +569,7 @@ void formula_ai::play_turn()
 
 	recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruit"], &function_table);
 	move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
-
+	}
 	//execute units formulas first
 	std::vector<gamemap::location> formula_unit_loc;
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
@@ -574,15 +581,15 @@ void formula_ai::play_turn()
 
 	for(std::vector<gamemap::location>::const_iterator i = formula_unit_loc.begin() ; i != formula_unit_loc.end() ; ++i)
 	{
-			unit_map::const_iterator unit_it = units_.find(*i);
-			if ( unit_it != units_.end() )
-			{
-				game_logic::const_formula_ptr formula(new game_logic::formula(unit_it->second.get_formula(), &function_table));
-				game_logic::map_formula_callable callable(this);
-				callable.add_ref();
-				callable.add("me", variant(new unit_callable(*unit_it, current_team(), get_info().team_num)));
-				make_move(formula, callable);
-			}
+		unit_map::const_iterator unit_it = units_.find(*i);
+		if ( unit_it != units_.end() )
+		{
+			game_logic::const_formula_ptr formula(new game_logic::formula(unit_it->second.get_formula(), &function_table));
+			game_logic::map_formula_callable callable(this);
+			callable.add_ref();
+			callable.add("me", variant(new unit_callable(*unit_it, current_team(), get_info().team_num)));
+			make_move(formula, callable);
+		}
 	}
 
 	game_logic::map_formula_callable callable(this);
