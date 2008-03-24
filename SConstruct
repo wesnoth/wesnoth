@@ -24,7 +24,7 @@ opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOp
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(BoolOption('profile', 'Set to build for debugging', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
-opts.Add(BoolOption('tests', 'Set to enable static building of Wesnoth', False))
+opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
 opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
@@ -83,11 +83,13 @@ if not "/" in envdict["datadir"]:
 
 cc_version = env["CCVERSION"]
 
-debug = ARGUMENTS.get('debug', 'no')
-if debug == "yes":
+if env["debug"] == "yes":
     env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
 else:
     env["CXXFLAGS"] = Split("-O2 -ansi")
+
+if env['static']:
+    env["LDFLAGS"].append("-all-static")
 
 if env['profile']:
     env["CXXFLAGS"].append("-pg")
@@ -222,18 +224,6 @@ def wesconfig_build(target, source, env):
 wesconfig_builder = Builder(action = wesconfig_build)
 env.Append(BUILDERS = {'Wesconfig' : wesconfig_builder})
 env.Wesconfig("src/wesconfig.h", "SConstruct")
-
-# Build tests to crib from:
-# http://silvertree.googlecode.com/svn/trunk/{SConstruct,scons/}
-#
-# Tips on MacOS scons usage
-# http://www.scons.org/wiki/MacOSX
-#
-# Scons missing features:
-# 1. [] overloading should be used more -- in particular, environment and
-#    options dictionaries should be directly accessible through it.
-# 2. Where's the command-existence test?
-# 3. New builder: Make target from string in SConstruct itself.
 
 # Local variables:
 # mode: python
