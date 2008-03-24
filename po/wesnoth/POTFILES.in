@@ -6,12 +6,14 @@ src/ai_dfool.cpp
 src/ai_move.cpp
 src/ai_python.cpp
 src/ai_village.cpp
+src/animated_editor.cpp
 src/animated_game.cpp
 src/astarnode.cpp
 src/astarsearch.cpp
 src/attack_prediction.cpp
 src/boilerplate-header.cpp
 src/builder.cpp
+src/callable_objects.cpp
 src/campaign_server/campaign_server.cpp
 src/cavegen.cpp
 src/clipboard.cpp
@@ -24,6 +26,10 @@ src/display.cpp
 src/events.cpp
 src/filesystem.cpp
 src/floating_textbox.cpp
+src/formula_ai.cpp
+src/formula.cpp
+src/formula_function.cpp
+src/formula_tokenizer.cpp
 src/game_config.cpp
 src/game.cpp
 src/game_display.cpp
@@ -32,6 +38,15 @@ src/gamestatus.cpp
 src/generate_report.cpp
 src/generic_event.cpp
 src/gettext.cpp
+src/gui/dialogs/addon_connect.cpp
+src/gui/widgets/button.cpp
+src/gui/widgets/canvas.cpp
+src/gui/widgets/event_handler.cpp
+src/gui/widgets/grid.cpp
+src/gui/widgets/settings.cpp
+src/gui/widgets/widget.cpp
+src/gui/widgets/window_builder.cpp
+src/gui/widgets/window.cpp
 src/halo.cpp
 src/help.cpp
 src/intro.cpp
@@ -81,6 +96,7 @@ src/server/metrics.cpp
 src/server/player.cpp
 src/server/proxy.cpp
 src/server/server.cpp
+src/server/simple_wml.cpp
 src/settings.cpp
 src/sha1.cpp
 src/sound.cpp
@@ -101,7 +117,6 @@ src/tools/exploder.cpp
 src/tools/exploder_cutter.cpp
 src/tools/exploder_utils.cpp
 src/tools/key_test.cpp
-src/tools/wml_update.cpp
 src/tooltips.cpp
 src/tstring.cpp
 src/unit_abilities.cpp
@@ -114,6 +129,7 @@ src/unit_types.cpp
 src/upload_log.cpp
 src/util.cpp
 src/variable.cpp
+src/variant.cpp
 src/video.cpp
 src/widgets/button.cpp
 src/widgets/combo.cpp
