@@ -428,6 +428,31 @@ private:
 			return variant();
 		}
 
+		return variant(100 - un.defense_modifier(ai_.get_info().map[loc]));
+	}
+
+	const formula_ai& ai_;
+};
+
+class chance_to_hit_function : public function_expression {
+public:
+	chance_to_hit_function(const args_list& args, const formula_ai& ai_object)
+	  : function_expression("chance_to_hit", args, 2, 2), ai_(ai_object)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		variant u = args()[0]->evaluate(variables);
+		variant loc_var = args()[1]->evaluate(variables);
+		if(u.is_null() || loc_var.is_null()) {
+			return variant();
+		}
+
+		const unit& un = convert_variant<unit_callable>(u)->get_unit();
+		const gamemap::location& loc = convert_variant<location_callable>(loc_var)->loc();
+		if(!ai_.get_info().map.on_board(loc)) {
+			return variant();
+		}
+
 		return variant(un.defense_modifier(ai_.get_info().map[loc]));
 	}
 
@@ -494,6 +519,8 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new units_can_reach_function(args, ai_));
 		} else if(fn == "defense_on") {
 			return expression_ptr(new defense_on_function(args, ai_));
+		} else if(fn == "chance_to_hit") {
+			return expression_ptr(new chance_to_hit_function(args, ai_));
 		} else if(fn == "max_possible_damage") {
 			return expression_ptr(new max_possible_damage_function(args, ai_));
 		} else if(fn == "distance_to_nearest_unowned_village") {
@@ -788,7 +815,7 @@ variant formula_ai::get_value(const std::string& key) const
 			return variant();
 		}
 
-		return variant(new location_callable(i->first));
+		return variant(new unit_callable(*i, current_team(), get_info().team_num));
 	} else if(key == "vars") {
 		return variant(&vars_);
 	} else if(key == "keeps") {
