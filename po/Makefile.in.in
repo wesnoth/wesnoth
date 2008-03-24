@@ -15,6 +15,8 @@
 # - support for relative localedir
 # Modified by Guillaume Melquiond for Battle for Wesnoth, for:
 # - not shipping .gmo files in dist tarball
+# Modified by Nils Kneuper for Battle for Wesnoth, for:
+# - add FINDCFG to creating the tarball
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -347,6 +349,9 @@ dist2: stamp-po $(DISTFILES)
 	    dists="$$dists ChangeLog.$$i"; \
 	  fi; \
 	done; \
+        if test -f $(srcdir)/FINDCFG; then \
+          dists="$$dists FINDCFG"; \
+        fi; \
 	if test -f $(srcdir)/LINGUAS; then dists="$$dists LINGUAS"; fi; \
 	for file in $$dists; do \
 	  if test -f $$file; then \
