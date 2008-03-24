@@ -217,15 +217,6 @@ void user_handler::add_user(const std::string& name,
         throw error("Could not add new user. A user with the name '" + name + "' already exists.");
     }
 
-    //Check if the given email is not yet registered
-    if(!mail.empty()) {
-        for(std::map<std::string,std::string*>::const_iterator i = users_.begin(); i != users_.end(); ++i) {
-            if(i->second[uh::EMAIL] == mail) {
-                throw error("Could not add new user. The email address '" + mail + "' is already in use.");
-            }
-        }
-    }
-
     std::string now = lexical_cast_default<std::string>(time(NULL));
 
     sql_query(std::string(sqlite3_mprintf(
@@ -378,6 +369,17 @@ void user_handler::check_mail(const std::string& mail) {
     if(!(mail.empty() ||utils::isvalid_email(mail))) {
         throw error("The email adress '" + mail + "' appears to be invalid.");
     }
+
+    //Check if the given email is not yet registered
+    if(!mail.empty()) {
+        for(std::map<std::string,std::string*>::const_iterator i = users_.begin(); i != users_.end(); ++i) {
+
+            if(i->second[uh::EMAIL] == mail) {
+                throw error("The email address '" + mail + "' is already in use.");
+            }
+        }
+    }
+
 }
 
 void user_handler::sql_query(const std::string query, std::vector<std::string>* data) {
