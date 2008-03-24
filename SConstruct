@@ -26,13 +26,12 @@ opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 #opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
-opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
 opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
-# These are implemented in src/SConstruct
+# These are implemented in the build section
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(BoolOption('profile', 'Set to build for debugging', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
@@ -41,6 +40,7 @@ opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
+opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 
 #
