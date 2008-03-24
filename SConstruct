@@ -91,7 +91,7 @@ if not "/" in envdict["datadir"]:
 # Check some preconditions
 #
 
-if float(sys.version[:3]) < 2.5:
+if float(sys.version[:3]) < 2.4:
     print "Python version is too old, 2.4 or greater is required,"
     Exit(1)
 
@@ -657,8 +657,12 @@ env.Install(pythonlib, ['data/tools/wesnoth/wmltools.py',
                         'data/tools/wesnoth/wmliterator.py',
                         'data/tools/wesnoth/campaignserver_client.py',
                         ])
-#env.Install(datadir, 'data')
-env.Alias('install', [bindir, pythonlib])
+#env.Install(datadir, Mkdir(datadir))
+#datasubs = []
+#for subdir in Split('data fonts icons images sounds translations'):
+#    target = os.path.join(datadir, subdir)
+#    datasubs.append(env.Install(target, env.Copy(target, subdir)))
+#env.Alias('install', [bindir, pythonlib, datadir] + datasubs)
 
 #
 # Known problems:
