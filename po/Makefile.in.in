@@ -21,7 +21,7 @@
 #   * the package name is never gettext-tools, remove everything related
 #   * the variable EXTRA_LOCALE_CATEGORIES is always empty, remove the blocks
 #     using it
-#   * add FINDCFG to creating the package
+# - add FINDCFG to creating the tarball
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
