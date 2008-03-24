@@ -15,6 +15,12 @@
 # - support for relative localedir
 # Modified by Guillaume Melquiond for Battle for Wesnoth, for:
 # - not shipping .gmo files in dist tarball
+# Modified by Nils Kneuper for Battle for Wesnoth, for:
+# - remove everything that is not needed for Wesnoth since conditions are
+#   never met:
+#   * the package name is never gettext-tools, remove everything related
+#   * the variable EXTRA_LOCALE_CATEGORIES is always empty, remove the blocks
+#     using it
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -184,18 +190,6 @@ $(POFILES): $(srcdir)/$(DOMAIN).pot
 install: install-exec install-data
 install-exec:
 install-data: install-data-@USE_NLS@
-	if test "$(PACKAGE)" = "gettext-tools"; then \
-	  $(mkinstalldirs) $(DESTDIR)$(gettextsrcdir); \
-	  for file in $(DISTFILES.common) Makevars.template; do \
-	    $(INSTALL_DATA) $(srcdir)/$$file \
-			    $(DESTDIR)$(gettextsrcdir)/$$file; \
-	  done; \
-	  for file in Makevars; do \
-	    rm -f $(DESTDIR)$(gettextsrcdir)/$$file; \
-	  done; \
-	else \
-	  : ; \
-	fi
 install-data-no: all
 install-data-yes: all
 	$(mkinstalldirs) $(DESTDIR)$(datadir)
@@ -208,34 +202,6 @@ install-data-yes: all
 	  if test -r $$cat; then realcat=$$cat; else realcat=$(srcdir)/$$cat; fi; \
 	  $(INSTALL_DATA) $$realcat $(DESTDIR)$$dir/$(DOMAIN).mo; \
 	  echo "installing $$realcat as $(DESTDIR)$$dir/$(DOMAIN).mo"; \
-	  for lc in '' $(EXTRA_LOCALE_CATEGORIES); do \
-	    if test -n "$$lc"; then \
-	      if (cd $(DESTDIR)$(localedir)/$$lang && LC_ALL=C ls -l -d $$lc 2>/dev/null) | grep ' -> ' >/dev/null; then \
-	        link=`cd $(DESTDIR)$(localedir)/$$lang && LC_ALL=C ls -l -d $$lc | sed -e 's/^.* -> //'`; \
-	        mv $(DESTDIR)$(localedir)/$$lang/$$lc $(DESTDIR)$(localedir)/$$lang/$$lc.old; \
-	        mkdir $(DESTDIR)$(localedir)/$$lang/$$lc; \
-	        (cd $(DESTDIR)$(localedir)/$$lang/$$lc.old && \
-	         for file in *; do \
-	           if test -f $$file; then \
-	             ln -s ../$$link/$$file $(DESTDIR)$(localedir)/$$lang/$$lc/$$file; \
-	           fi; \
-	         done); \
-	        rm -f $(DESTDIR)$(localedir)/$$lang/$$lc.old; \
-	      else \
-	        if test -d $(DESTDIR)$(localedir)/$$lang/$$lc; then \
-	          :; \
-	        else \
-	          rm -f $(DESTDIR)$(localedir)/$$lang/$$lc; \
-	          mkdir $(DESTDIR)$(localedir)/$$lang/$$lc; \
-	        fi; \
-	      fi; \
-	      rm -f $(DESTDIR)$(localedir)/$$lang/$$lc/$(DOMAIN).mo; \
-	      ln -s ../LC_MESSAGES/$(DOMAIN).mo $(DESTDIR)$(localedir)/$$lang/$$lc/$(DOMAIN).mo 2>/dev/null || \
-	      ln $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(DOMAIN).mo $(DESTDIR)$(localedir)/$$lang/$$lc/$(DOMAIN).mo 2>/dev/null || \
-	      cp -p $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(DOMAIN).mo $(DESTDIR)$(localedir)/$$lang/$$lc/$(DOMAIN).mo; \
-	      echo "installing $$realcat link as $(DESTDIR)$(localedir)/$$lang/$$lc/$(DOMAIN).mo"; \
-	    fi; \
-	  done; \
 	done
 
 install-strip: install
@@ -243,11 +209,6 @@ install-strip: install
 installdirs: installdirs-exec installdirs-data
 installdirs-exec:
 installdirs-data: installdirs-data-@USE_NLS@
-	if test "$(PACKAGE)" = "gettext-tools"; then \
-	  $(mkinstalldirs) $(DESTDIR)$(gettextsrcdir); \
-	else \
-	  : ; \
-	fi
 installdirs-data-no:
 installdirs-data-yes:
 	$(mkinstalldirs) $(DESTDIR)$(datadir)
@@ -257,29 +218,6 @@ installdirs-data-yes:
 	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
 	  dir=$(localedir)/$$lang/LC_MESSAGES; \
 	  $(mkinstalldirs) $(DESTDIR)$$dir; \
-	  for lc in '' $(EXTRA_LOCALE_CATEGORIES); do \
-	    if test -n "$$lc"; then \
-	      if (cd $(DESTDIR)$(localedir)/$$lang && LC_ALL=C ls -l -d $$lc 2>/dev/null) | grep ' -> ' >/dev/null; then \
-	        link=`cd $(DESTDIR)$(localedir)/$$lang && LC_ALL=C ls -l -d $$lc | sed -e 's/^.* -> //'`; \
-	        mv $(DESTDIR)$(localedir)/$$lang/$$lc $(DESTDIR)$(localedir)/$$lang/$$lc.old; \
-	        mkdir $(DESTDIR)$(localedir)/$$lang/$$lc; \
-	        (cd $(DESTDIR)$(localedir)/$$lang/$$lc.old && \
-	         for file in *; do \
-	           if test -f $$file; then \
-	             ln -s ../$$link/$$file $(DESTDIR)$(localedir)/$$lang/$$lc/$$file; \
-	           fi; \
-	         done); \
-	        rm -f $(DESTDIR)$(localedir)/$$lang/$$lc.old; \
-	      else \
-	        if test -d $(DESTDIR)$(localedir)/$$lang/$$lc; then \
-	          :; \
-	        else \
-	          rm -f $(DESTDIR)$(localedir)/$$lang/$$lc; \
-	          mkdir $(DESTDIR)$(localedir)/$$lang/$$lc; \
-	        fi; \
-	      fi; \
-	    fi; \
-	  done; \
 	done
 
 # Define this as empty until I found a useful application.
@@ -288,13 +226,6 @@ installcheck:
 uninstall: uninstall-exec uninstall-data
 uninstall-exec:
 uninstall-data: uninstall-data-@USE_NLS@
-	if test "$(PACKAGE)" = "gettext-tools"; then \
-	  for file in $(DISTFILES.common) Makevars.template; do \
-	    rm -f $(DESTDIR)$(gettextsrcdir)/$$file; \
-	  done; \
-	else \
-	  : ; \
-	fi
 uninstall-data-no:
 uninstall-data-yes:
 	catalogs='$(CATALOGS)'; \
@@ -333,20 +264,9 @@ dist distdir:
 # This is a separate target because 'update-po' must be executed before.
 dist2: stamp-po $(DISTFILES)
 	dists="$(DISTFILES)"; \
-	if test "$(PACKAGE)" = "gettext-tools"; then \
-	  dists="$$dists Makevars.template"; \
-	fi; \
 	if test -f $(srcdir)/$(DOMAIN).pot; then \
 	  dists="$$dists $(DOMAIN).pot"; \
 	fi; \
-	if test -f $(srcdir)/ChangeLog; then \
-	  dists="$$dists ChangeLog"; \
-	fi; \
-	for i in 0 1 2 3 4 5 6 7 8 9; do \
-	  if test -f $(srcdir)/ChangeLog.$$i; then \
-	    dists="$$dists ChangeLog.$$i"; \
-	  fi; \
-	done; \
 	if test -f $(srcdir)/LINGUAS; then dists="$$dists LINGUAS"; fi; \
 	for file in $$dists; do \
 	  if test -f $$file; then \
@@ -372,7 +292,6 @@ update-po: Makefile
 
 .nop.po-update:
 	@lang=`echo $@ | sed -e 's/\.po-update$$//'`; \
-	if test "$(PACKAGE)" = "gettext-tools"; then PATH=`pwd`/../src:$$PATH; fi; \
 	tmpdir=`pwd`; \
 	echo "$$lang:"; \
 	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
