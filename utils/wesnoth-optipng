@@ -28,6 +28,13 @@ total_savings_size=0
 total_savings_filecount=0
 
 ####### PROCEDURES #######
+
+report_absent_tool()
+{
+    echo "$1 is not present in PATH. $(basename ${0}) requires it in order to work properly."
+    exit -1
+}
+
 user_int()
 {
 	if [ -n "${current_file}" ]; then
@@ -92,7 +99,7 @@ Wesnoth automatic PNG optimization helper script
 Part of the Battle for Wesnoth project <www.wesnoth.org>
 
 Usage:
-  ${0} [{--nice|n} <value>] [{--help|-h}]
+  $(basename ${0}) [{--nice|n} <value>] [{--help|-h}]
 
 Switches:
   --nice / -n   Sets the process nice <value> under which the optimization
@@ -109,6 +116,11 @@ EOSTREAM
 	shift
 done
 
+# Probe optipng
+nice -n $opti_nice optipng -v 2> /dev/null 1> /dev/null || report_absent_tool optipng
+# Probe IM's convert
+nice -n $opti_nice convert --help 2> /dev/null 1> /dev/null || report_absent_tool convert
+
 # Set-up a trap to avoid leaving orphan tempfiles behind.
 trap user_int SIGINT SIGKILL SIGTERM
 
@@ -119,3 +131,4 @@ done
 
 # Print overall statistics
 echo "*** Total saved: $((${total_savings_size}/1024)) KB on ${total_savings_filecount} files"
+exit 0
