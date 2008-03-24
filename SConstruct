@@ -15,18 +15,6 @@ import os, sys, commands
 #
 
 opts = Options()
-opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
-opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
-opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
-opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
-opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
-opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
-opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
-#opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
-opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
-opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
-opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
-opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
 # These are implemented in the build section
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
@@ -39,6 +27,22 @@ opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra func
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
+
+# These are implemented in the installation productions
+opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
+
+# FIXME: These are not yet implemented
+opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
+opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
+opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
+opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
+opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
+opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
+#opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
+opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
+opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
+opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
+opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
 #
 # Setup
@@ -427,7 +431,7 @@ wesnoth_sources = [
 # Target declarations
 #
 
-env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
+wesnoth = env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
             CPPPATH = commonpath + ['src/server'],
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
@@ -444,7 +448,7 @@ wesnoth_editor_sources = [
     "src/animated_editor.cpp",
     "src/gamestatus_editor.cpp",
     ]
-env.Program("wesnoth_editor", wesnoth_editor_sources,
+wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources,
             CPPPATH = commonpath,
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
@@ -452,7 +456,7 @@ env.Program("wesnoth_editor", wesnoth_editor_sources,
 campaignd_sources = [
     "src/campaign_server/campaign_server.cpp",
     ]
-env.Program("campaignd", campaignd_sources,
+campaignd = env.Program("campaignd", campaignd_sources,
             CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS = ['wesnoth_core', 'wesnothd', 'campaignd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
@@ -466,7 +470,7 @@ wesnothd_sources = [
     "src/server/server.cpp",
     "src/server/simple_wml.cpp",
     ]
-env.Program("wesnothd", wesnothd_sources,
+wesnothd = env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS =  ['wesnoth_core', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
@@ -474,7 +478,7 @@ env.Program("wesnothd", wesnothd_sources,
 cutter_sources = [
     "src/tools/cutter.cpp",
     ]
-env.Program("cutter", cutter_sources,
+cutter = env.Program("cutter", cutter_sources,
             CPPPATH = commonpath,
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
@@ -483,7 +487,7 @@ exploder_sources = [
     "src/tools/exploder.cpp",
     "src/tools/exploder_composer.cpp",
     ]
-env.Program("exploder", exploder_sources,
+exploder = env.Program("exploder", exploder_sources,
             CPPPATH = commonpath,
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
@@ -664,6 +668,29 @@ sources =   libwesnoth_sources + libwesnoth_core_sources + \
 
 env.Command("TAGS", sources, 'etags -l c++ $SOURCES')
 env.Clean(all, 'TAGS')
+
+#
+# Installation productions
+#
+bindir = env['prefix'] + "/bin"
+pythonlib = env['prefix'] + "/lib/python" + sys.version[:3]
+env.Install(bindir, wesnoth)
+env.Install(bindir, wesnoth_editor)
+env.Install(bindir, ['data/tools/wmlscope', 'data/tools/wmllint', 'data/tools/wmlindent'])
+env.Install(pythonlib, ['data/tools/wesnoth/wmltools.py',
+                        'data/tools/wesnoth/wmlparser.py',
+                        'data/tools/wesnoth/wmldata.py',
+                        'data/tools/wesnoth/wmliterator.py',
+                        'data/tools/wesnoth/campaignserver_client.py',
+                        ])
+env.Alias('install', [bindir, pythonlib])
+
+#
+# Known problems:
+#
+# 1. We don't yet check for SDL version too old
+# 2. We don't check for Ogg Vorbis support in SDL_mixer
+# FIXME tags other problems
 
 # Local variables:
 # mode: python
