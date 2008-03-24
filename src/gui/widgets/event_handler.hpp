@@ -18,23 +18,39 @@
 #ifndef __GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED__
 #define __GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED__
 
+#include "events.hpp"
+
 #include "SDL.h"
 
 
 namespace gui2{
 
+class tpoint;
 class twidget;
+class twindow;
 
-class tevent_handler 
+class tevent_handler : public events::handler
 {
 public:
 	tevent_handler();
 
-	void handle_event(const SDL_Event& event, twidget* mouse_over);
+	virtual ~tevent_handler() { leave(); }
+
+	void process_events() { events::pump(); }
+
+	//! Implement events::handler::handle_event().
+	void handle_event(const SDL_Event& event);
+
+	virtual twindow& get_window() = 0;
+
+	virtual twidget* get_widget(const tpoint& coordinate) = 0;
 
 	void mouse_capture(const bool capture = true);
 
 private:
+	//! we create a new event context so we're always modal.
+	//! Maybe this has to change, but not sure yet.
+	events::event_context event_context_;
 
 	int mouse_x_;                      //! The current mouse x.
 	int mouse_y_;                      //! The current mouse y.

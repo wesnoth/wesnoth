@@ -23,6 +23,8 @@
 #include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/settings.hpp"
+// The following due to tpoint.
+#include "gui/widgets/widget.hpp" 
 
 #include "sdl_utils.hpp"
 #include "video.hpp"
@@ -47,16 +49,10 @@ namespace gui2{
 // event aan ons te sturen, oftewel een movemove can dit genereren indien gewenst
 //
 // mogelijk dit ook gebruiken in de toekomst als aansturing van flip()
-class twindow : public tpanel, public events::handler/*, public virtual tevent_executor */
+class twindow : public tpanel, public tevent_handler
 {
 public:
 	twindow(CVideo& video, const int x, const int y, const int w, const int h);
-
-	~twindow() 
-		{ 
-			// We have to leave the event context before it's destroyed.
-			leave(); 
-		}
 
 	// show the window
 	// The flip function is the disp_.flip() if ommitted the video_flip() is used
@@ -71,6 +67,13 @@ public:
 
 	void set_height(const unsigned height);
 
+	twindow& get_window() { return *this; }
+
+	twidget* get_widget(const tpoint& coordinate) { return tgrid::get_widget(coordinate); }
+
+	tpoint client_position(const tpoint& screen_position) const
+		{ return tpoint(screen_position.x - get_x(), screen_position.y - get_y()); }
+
 protected:
 private:
 
@@ -80,17 +83,6 @@ private:
 	CVideo& video_;
 
 	tstatus status_;
-
-	tevent_handler event_info_;
-
-	/***** The event processing stuff *****/
-
-	//! we create a new event context so we're always modal.
-	//! Maybe this has to change, but not sure yet.
-	events::event_context event_context_;
-
-	//! Implement events::handler::handle_event().
-	void handle_event(const SDL_Event& event);
 
 	void window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height);

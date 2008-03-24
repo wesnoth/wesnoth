@@ -51,11 +51,9 @@ namespace gui2{
 twindow::twindow(CVideo& video, 
 		const int x, const int y, const int w, const int h) :
 	tpanel(),
-	events::handler(false), // don't join we haven't created a context yet
+	tevent_handler(),
 	video_(video),
 	status_(NEW),
-	event_info_(),
-	event_context_(),
 	need_layout_(true),
 	restorer_(),
 	canvas_background_(),
@@ -65,9 +63,6 @@ twindow::twindow(CVideo& video,
 	set_y(y);
 	set_width(w);
 	set_height(h);
-
-	// The event context is created now we join it.
-	join();
 }
 
 void twindow::show(const bool restore, void* /*flip_function*/)
@@ -88,7 +83,7 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 
 	// Start our loop drawing will happen here as well.
 	for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
-		events::pump();
+		process_events();
 
 		// fixme manual destroy
 		if(status_ == REQUEST_CLOSE) {
@@ -198,18 +193,6 @@ void twindow::flip()
 	video_.flip();
 }
 
-//! Implement events::handler::handle_event().
-void twindow::handle_event(const SDL_Event& event)
-{
-	if(event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) {
-		event_info_.handle_event(event, get_widget(tpoint(event.button.x - get_x(), event.button.y - get_y())));
-	} else if (event.type == SDL_MOUSEMOTION) {
-		event_info_.handle_event(event, get_widget(tpoint(event.motion.x - get_x(), event.motion.y - get_y())));
-	} else {
-		event_info_.handle_event(event, 0);
-	}
-}
-
 void twindow::window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height)
 {
@@ -221,7 +204,7 @@ void twindow::window_resize(tevent_handler&,
 void twindow::resolve_definition()
 {
 	if(definition_ == std::vector<twindow_definition::tresolution>::const_iterator()) {
-		definition_ = get_window(definition());
+		definition_ = gui2::get_window(definition());
 
 		canvas_background_ = definition_->background.canvas;
 		canvas_background_.set_width(get_width());

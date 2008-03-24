@@ -20,8 +20,8 @@
 #include "gui/widgets/event_handler.hpp"
 
 #include "config.hpp"
-#include "events.hpp"
 #include "gui/widgets/widget.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"
@@ -57,6 +57,8 @@ static Uint32 hover_callback(Uint32 interval, void *param)
 //! blocker is used.
 tevent_handler::tevent_handler() :
 	// fixme get state at construction
+	events::handler(false), // don't join we haven't created a context yet
+	event_context_(),
 	mouse_x_(-1),
 	mouse_y_(-1),
 	mouse_left_button_down_(false),
@@ -77,23 +79,33 @@ tevent_handler::tevent_handler() :
 			assert(false);
 		}
 	}
+
+	// The event context is created now we join it.
+	join();
 }
 
-void tevent_handler::handle_event(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::handle_event(const SDL_Event& event)
 {
+
+	twidget* mouse_over = 0; 
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
 
 			mouse_x_ = event.motion.x;
 			mouse_y_ = event.motion.y;
+			mouse_over =
+				get_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)));
 
 			mouse_move(event, mouse_over);
+
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
 
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
+			mouse_over =
+				get_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)));
 
 			switch(event.button.button) {
 				case SDL_BUTTON_LEFT : 
@@ -111,6 +123,8 @@ void tevent_handler::handle_event(const SDL_Event& event, twidget* mouse_over)
 
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
+			mouse_over =
+				get_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)));
 
 			switch(event.button.button) {
 
@@ -140,7 +154,6 @@ void tevent_handler::handle_event(const SDL_Event& event, twidget* mouse_over)
 			WRN_G_E << "Unhandled event " << static_cast<Uint32>(event.type) << ".\n";
 			break;
 		}
-
 }
 
 void tevent_handler::mouse_capture(const bool capture)
