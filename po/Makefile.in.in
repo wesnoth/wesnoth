@@ -21,6 +21,7 @@
 #   * the package name is never gettext-tools, remove everything related
 #   * the variable EXTRA_LOCALE_CATEGORIES is always empty, remove the blocks
 #     using it
+#   * add FINDCFG to creating the package
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -266,6 +267,9 @@ dist2: stamp-po $(DISTFILES)
 	dists="$(DISTFILES)"; \
 	if test -f $(srcdir)/$(DOMAIN).pot; then \
 	  dists="$$dists $(DOMAIN).pot"; \
+	fi; \
+	if test -f $(srcdir)/FINDCFG; then \
+	  dists="$$dists FINDCFG"; \
 	fi; \
 	if test -f $(srcdir)/LINGUAS; then dists="$$dists LINGUAS"; fi; \
 	for file in $$dists; do \
