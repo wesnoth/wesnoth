@@ -282,7 +282,7 @@ dnl generated only once above (before we start the for loops).
       ac_objext=$boost_save_ac_objext
       LDFLAGS=$boost_save_LDFLAGS
       if test x"$Boost_lib" = xyes; then
-        Boost_lib_LDFLAGS="-L$boost_ldpath -R$boost_ldpath"
+        Boost_lib_LDFLAGS="-L$boost_ldpath"
         Boost_lib_LIBS="-l$boost_lib"
         LIBS=$boost_save_LIBS
         break 6
