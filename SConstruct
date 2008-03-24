@@ -20,7 +20,6 @@ import os, sys, commands
 opts = Options()
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
 opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
-opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
@@ -42,6 +41,7 @@ opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
+opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 
 #
 # Setup

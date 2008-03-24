@@ -41,6 +41,9 @@ if env['fribidi']:
 if env['raw_sockets']:
     env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
 
+if env['prefsdir']:
+    env["CXXFLAGS"].append("-DPREFERENCES_DIR='%s'" % env['prefsdir'])
+
 cc_version = env["CCVERSION"]
 if env["CC"] == "gcc":
     (major, minor, rev) = map(int, cc_version.split("."))
