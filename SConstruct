@@ -1,16 +1,13 @@
 #
 # SCons build description for the Wesnoth project
 #
-# This is a deliberately straight-line translation of the old configure.ac;
-# it builds an autotools-like config.h for the C++ code.  The optipng
-# and internal-data options are omitted.
+# This is a deliberately straight-line translation of the old configure.ac.
+# The optipng and internal-data options are omitted.  The following constanta
+# should be set before release.
 #
 version = "1.5.0-svn"
 min_savegame_version = "1.3.10"
 
-#
-# Local scons modules
-#
 import os, sys, commands
 
 #
@@ -247,6 +244,7 @@ if env["CC"] == "gcc":
 boost_libs = Split("boost_iostreams-mt boost_regex")
 SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL_image SDL")
 commonlibs = SDL_libs + boost_libs + ["pthread", "-lpython"+sys.version[:3]]
+commonpath = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]]
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
@@ -273,7 +271,7 @@ libwesnoth_core_sources = [
     "src/serialization/tokenizer.cpp",
     ]
 env.Library("wesnoth_core", libwesnoth_core_sources, 
-            CPPPATH = ['src', 'src/serialization', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
+            CPPPATH = commonpath + ['src/serialization'])
 
 libwesnoth_sources = [
     "src/astarnode.cpp",
@@ -327,33 +325,33 @@ libwesnoth_sources = [
     "src/wml_exception.cpp",
     ]
 env.Library("wesnoth", libwesnoth_sources, 
-            CPPPATH = ['src', 'src/serialization', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
+            CPPPATH = commonpath + ['src/serialization'])
 
 libwesnothd_sources = [
     "src/loadscreen_empty.cpp",
     "src/tools/dummy_video.cpp",
     ]
 env.Library("wesnothd", libwesnothd_sources, 
-            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
+            CPPPATH = commonpath)
 
 libcampaignd_sources = [
     "src/publish_campaign.cpp",
     ]
 env.Library("campaignd", libcampaignd_sources, 
-            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
+            CPPPATH = commonpath)
 
 libwesnoth_sdl_sources = [
     "src/sdl_utils.cpp",
     ]
 env.Library("wesnoth_sdl", libwesnoth_sdl_sources, 
-            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
+            CPPPATH = commonpath)
 
 libcutter_sources = [
     "src/tools/exploder_utils.cpp",
     "src/tools/exploder_cutter.cpp",
     ]
 env.Library("cutter", libcutter_sources, 
-            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
+            CPPPATH = commonpath)
 
 # Used by both 'wesnoth' and 'test' targets
 wesnoth_sources = [
@@ -426,7 +424,7 @@ wesnoth_sources = [
 #
 
 env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
-            CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
+            CPPPATH = commonpath + ['src/server'],
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -443,7 +441,7 @@ wesnoth_editor_sources = [
     "src/gamestatus_editor.cpp",
     ]
 env.Program("wesnoth_editor", wesnoth_editor_sources,
-            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
+            CPPPATH = commonpath,
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -473,7 +471,7 @@ cutter_sources = [
     "src/tools/cutter.cpp",
     ]
 env.Program("cutter", cutter_sources,
-            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
+            CPPPATH = commonpath,
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -482,7 +480,7 @@ exploder_sources = [
     "src/tools/exploder_composer.cpp",
     ]
 env.Program("exploder", exploder_sources,
-            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
+            CPPPATH = commonpath,
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -491,7 +489,7 @@ test_sources = [
     "src/tests/test_util.cpp",
     ]
 env.Program("test", test_sources,
-            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
+            CPPPATH = commonpath,
             LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
