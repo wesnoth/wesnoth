@@ -95,7 +95,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location& loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		int best = 1000000;
 		const std::vector<gamemap::location>& villages = ai_.get_info().map.villages();
 		const std::set<gamemap::location>& my_villages = ai_.current_team().villages();
@@ -303,9 +303,9 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location& move_from = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		const gamemap::location& src = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
-		const gamemap::location& dst = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
+		const gamemap::location move_from = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const gamemap::location src = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		const gamemap::location dst = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
 		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables).as_int() : -1;
 		if(ai_.get_info().units.count(move_from) == 0 || ai_.get_info().units.count(dst) == 0) {
 			std::cerr << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
