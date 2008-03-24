@@ -49,6 +49,7 @@
 #include "titlescreen.hpp"
 #include "util.hpp"
 #include "upload_log.hpp"
+#include "wesconfig.h"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "serialization/binary_or_text.hpp"

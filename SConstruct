@@ -71,8 +71,8 @@ Available build targets include:
 
     wesnoth wesnoth_editor wesnothd campaignd exploder cutter
     all = all installables
-    test = unit test binary
-    tags = build tags for Emacs.
+    test = unit test binary (not an imstallable)
+    TAGS = build tags for Emacs.
 
 """ + opts.GenerateHelpText(env))
 conf = Configure(env)
@@ -86,6 +86,10 @@ if not "/" in envdict["datadir"]:
 #
 # Check some preconditions
 #
+
+if float(sys.version[:3]) < 2.5:
+    print "Python version is too old, 2.4 or greater is required,"
+    Exit(1)
 
 targets = map(str, BUILD_TARGETS)
 

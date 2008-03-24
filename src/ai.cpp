@@ -17,6 +17,7 @@
 //! @file ai.cpp
 //! Artificial intelligence - The computer commands the enemy.
 
+#include "wesconfig.h"
 #include "ai.hpp"
 #include "ai2.hpp"
 #include "ai_dfool.hpp"

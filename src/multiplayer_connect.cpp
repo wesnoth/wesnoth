@@ -29,6 +29,7 @@
 #include "statistics.hpp"
 #include "show_dialog.hpp"
 #include "serialization/string_utils.hpp"
+#include "wesconfig.h"
 
 #include <cassert>
 
