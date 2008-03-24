@@ -488,13 +488,14 @@ env.Program("exploder", exploder_sources,
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
+# FIXME: test build presently fails at link time.
 test_sources = [
     "src/tests/main.cpp",
     "src/tests/test_util.cpp",
     ]
 env.Program("test", test_sources,
-            CPPPATH = commonpath,
-            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
+            CPPPATH = commonpath + ['/usr/include'],
+            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs + ['boost_unit_test_framework'],
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 # FIXME: Include this in gameconfig.cpp when we switch over to scons.
