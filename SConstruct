@@ -21,15 +21,7 @@ opts = Options()
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
 opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
-opts.Add(BoolOption('debug', 'Set to build for debugging', False))
-opts.Add(BoolOption('profile', 'Set to build for debugging', False))
-opts.Add(BoolOption('strict', 'Set to strict compilation', False))
-opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
-opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
-opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
-opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
-opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
@@ -41,6 +33,16 @@ opts.Add(PathOption('localedir', 'sets the locale data directory to a non-defaul
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
 opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
+# These are implemented in src/SConstruct
+opts.Add(BoolOption('debug', 'Set to build for debugging', False))
+opts.Add(BoolOption('profile', 'Set to build for debugging', False))
+opts.Add(BoolOption('strict', 'Set to strict compilation', False))
+opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
+opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
+opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
+opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
+opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
+
 #
 # Setup
 #
@@ -49,6 +51,8 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 svnrev = commands.getoutput("svnversion -n 2>/dev/null")
 
 env = Environment(options = opts)
+
+env["CXXFLAGS"].append('-DSVNREV=\'"%s"\'' % svnrev)
 
 SConscript('src/SConstruct', exports='env')
 
@@ -80,44 +84,6 @@ if not "/" in envdict["datadir"]:
 #
 # Check some preconditions
 #
-
-cc_version = env["CCVERSION"]
-
-if env["debug"] == "yes":
-    env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
-else:
-    env["CXXFLAGS"] = Split("-O2 -ansi")
-
-if env['static']:
-    env["LDFLAGS"].append("-all-static")
-
-if env['profile']:
-    env["CXXFLAGS"].append("-pg")
-
-if env['strict']:
-    env["CXXFLAGS"].append("-Werror -Wno-unused -Wno-sign-compare")
-
-if env['tinygui']:
-    env["CXXFLAGS"].append("-DUSE_TINY_GUI")
-
-if env['smallgui']:
-    env["CXXFLAGS"].append("-DUSE_SMALL_GUI")
-
-if env['lowmem']:
-    env["CXXFLAGS"].append("-DLOW_MEM")
-
-if env['raw_sockets']:
-    env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
-
-env["CXXFLAGS"].append('-DSVNREV=\'"%s"\'' % svnrev)
-
-#print "%s version %s, flags %s" % (env["CC"], cc_version, " ".join(env["CXXFLAGS"]))
-if env["CC"] == "gcc":
-    (major, minor, rev) = map(int, cc_version.split("."))
-
-    if major*10+minor < 33:
-        print "Your compiler version is too old"
-        Exit(1)
 
 targets = map(str, BUILD_TARGETS)
 

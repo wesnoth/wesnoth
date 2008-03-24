@@ -7,6 +7,51 @@ all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
 env.Default("all")
 
 #
+# Implement configuration switches
+#
+
+if env["debug"]:
+    env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
+else:
+    env["CXXFLAGS"] = Split("-O2 -ansi")
+
+if env['static']:
+    env["LDFLAGS"].append("-all-static")
+
+if env['profile']:
+    env["CXXFLAGS"].append("-pg")
+
+if env['strict']:
+    env["CXXFLAGS"].append("-Werror -Wno-unused -Wno-sign-compare")
+
+if env['tinygui']:
+    env["CXXFLAGS"].append("-DUSE_TINY_GUI")
+
+if env['smallgui']:
+    env["CXXFLAGS"].append("-DUSE_SMALL_GUI")
+
+if env['lowmem']:
+    env["CXXFLAGS"].append("-DLOW_MEM")
+
+# FIXME: Need to figure out how 
+#if env['fribidi']:
+#    if conf.CheckLib('fribidi'):
+#        env["CXXFLAGS"].append("-DHAVE_FRIBIDI")
+#        env.Append(LIBS="fribidi")
+#    else:
+#        print "*** libfribidi is not available, turning off bidi support."
+
+if env['raw_sockets']:
+    env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
+
+cc_version = env["CCVERSION"]
+if env["CC"] == "gcc":
+    (major, minor, rev) = map(int, cc_version.split("."))
+    if major*10+minor < 33:
+        print "Your compiler version is too old"
+        Exit(1)
+
+#
 # Libraries and source groups
 #
 boost_libs = Split("boost_iostreams-mt boost_regex")
