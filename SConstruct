@@ -52,6 +52,8 @@ svnrev = commands.getoutput("svnversion -n 2>/dev/null")
 
 env = Environment(options = opts)
 
+env.TargetSignatures('content')
+
 env["CXXFLAGS"].append('-DSVNREV=\'"%s"\'' % svnrev)
 
 # Omits the 'test' target 
@@ -106,9 +108,9 @@ if ("wesnoth" in targets or "wesnoth_editor" in targets):
     if not conf.CheckLib('SDL_image'):
         print "Needed SDL image lib for game or editor and didn't find it; exiting!"
         Exit(1)
-#    if env['fribidi'] and conf.CheckLib('fribidi'):
-#        print "Can't find libfribidi, please install it or rebuild with fribidi=no."
-#        Exit(1)
+    if env['fribidi'] and conf.CheckLib('fribidi'):
+        print "Can't find libfribidi, please install it or rebuild with fribidi=no."
+        Exit(1)
 
 if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
     if not conf.CheckLib('SDL_net'):
@@ -163,23 +165,20 @@ wesconfig_h = '''
 //! DO NOT MODIFY THIS FILE !!!
 //! modify SConstruct otherwise the settings will be overwritten.
 
+// We are building with scons, so Python cannot be absent. 
+#define HAVE_PYTHON
 
-
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#else
 # define VERSION "%(version)s"
 # define PACKAGE "wesnoth"
 # ifndef LOCALEDIR
 #  define LOCALEDIR "translations"
 # endif
-#endif
 
 /**
  * Some older savegames of Wesnoth cannot be loaded anymore,
  * this variable defines the minimum required version.
  * It is only to be updated upon changes that break *all* saves/replays
- * (break as in crash wesnoth, not compatibility issues like stat changes)
+ * (break as in crash Wesnoth, not compatibility issues like stat changes)
  */
 #define MIN_SAVEGAME_VERSION "%(min_savegame_version)s"
 
@@ -225,9 +224,9 @@ if env['smallgui']:
 if env['lowmem']:
     env["CXXFLAGS"].append("-DLOW_MEM")
 
-#if env['fribidi']:
-#        env["CXXFLAGS"].append("-DHAVE_FRIBIDI")
-#        extralibs.append("fribidi")
+if env['fribidi']:
+        env["CXXFLAGS"].append("-DHAVE_FRIBIDI")
+        extralibs.append("fribidi")
 
 if env['raw_sockets']:
     env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
@@ -274,7 +273,7 @@ libwesnoth_core_sources = [
     "src/serialization/tokenizer.cpp",
     ]
 env.Library("wesnoth_core", libwesnoth_core_sources, 
-            CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
+            CPPPATH = ['src', 'src/serialization', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
 
 libwesnoth_sources = [
     "src/astarnode.cpp",
@@ -328,33 +327,33 @@ libwesnoth_sources = [
     "src/wml_exception.cpp",
     ]
 env.Library("wesnoth", libwesnoth_sources, 
-            CPPPATH = ['src', 'src/serialization', "/usr/include/SDL"])
+            CPPPATH = ['src', 'src/serialization', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
 
 libwesnothd_sources = [
     "src/loadscreen_empty.cpp",
     "src/tools/dummy_video.cpp",
     ]
 env.Library("wesnothd", libwesnothd_sources, 
-            CPPPATH = ['src', "/usr/include/SDL"])
+            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
 
 libcampaignd_sources = [
     "src/publish_campaign.cpp",
     ]
 env.Library("campaignd", libcampaignd_sources, 
-            CPPPATH = ['src', "/usr/include/SDL"])
+            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
 
 libwesnoth_sdl_sources = [
     "src/sdl_utils.cpp",
     ]
 env.Library("wesnoth_sdl", libwesnoth_sdl_sources, 
-            CPPPATH = ['src', "/usr/include/SDL"])
+            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
 
 libcutter_sources = [
     "src/tools/exploder_utils.cpp",
     "src/tools/exploder_cutter.cpp",
     ]
 env.Library("cutter", libcutter_sources, 
-            CPPPATH = ['src', "/usr/include/SDL"])
+            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]])
 
 # Used by both 'wesnoth' and 'test' targets
 wesnoth_sources = [
@@ -427,7 +426,7 @@ wesnoth_sources = [
 #
 
 env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
-            CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
+            CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -444,7 +443,7 @@ wesnoth_editor_sources = [
     "src/gamestatus_editor.cpp",
     ]
 env.Program("wesnoth_editor", wesnoth_editor_sources,
-            CPPPATH = ['src', "/usr/include/SDL"],
+            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -452,7 +451,7 @@ campaignd_sources = [
     "src/campaign_server/campaign_server.cpp",
     ]
 env.Program("campaignd", campaignd_sources,
-            CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
+            CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS = ['wesnoth_core', 'wesnothd', 'campaignd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -466,7 +465,7 @@ wesnothd_sources = [
     "src/server/simple_wml.cpp",
     ]
 env.Program("wesnothd", wesnothd_sources,
-            CPPPATH = ['src', 'src/server', "/usr/include/SDL"],
+            CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS =  ['wesnoth_core', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -474,7 +473,7 @@ cutter_sources = [
     "src/tools/cutter.cpp",
     ]
 env.Program("cutter", cutter_sources,
-            CPPPATH = ['src', "/usr/include/SDL"],
+            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -483,7 +482,7 @@ exploder_sources = [
     "src/tools/exploder_composer.cpp",
     ]
 env.Program("exploder", exploder_sources,
-            CPPPATH = ['src', "/usr/include/SDL"],
+            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
@@ -492,7 +491,7 @@ test_sources = [
     "src/tests/test_util.cpp",
     ]
 env.Program("test", test_sources,
-            CPPPATH = ['src', "/usr/include/SDL"],
+            CPPPATH = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
