@@ -30,9 +30,9 @@ opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOp
 
 # These are implemented in the installation productions
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
+opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
 
 # FIXME: These are not yet implemented
-opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
@@ -128,33 +128,6 @@ if "all" in targets or "wesnoth" in targets:
         Exit(1)
 
 env = conf.Finish()
-
-#
-# Generate symbols for use at install time
-#
-
-configsyms = {}
-
-configsyms["DATADIR"] = envdict["datadir"]
-configsyms["LOCALEDIR"] = envdict["localedir"]
-configsyms["PREFERENCES_DIR"] = envdict["prefsdir"]
-configsyms["USE_DUMMYLOCALES"] = envdict["dummy_locales"]
-#configsyms["USE_INTERNAL_DATA"] = envdict["internal_data"]
-
-if "/" in configsyms["LOCALEDIR"]:	# FIXME: Will this break on Windows?
-    configsyms["FULLLOCALEDIR"] = configsyms["LOCALEDIR"]
-    configsyms["HAS_RELATIVE_LOCALEDIR"] = 0
-else:
-    configsyms["FULLLOCALEDIR"] = os.path.join(configsyms["DATADIR"], configsyms["LOCALEDIR"])
-    configsyms["HAS_RELATIVE_LOCALEDIR"] = 1
-
-if not envdict["icondir"]:
-    envdict["icondir"] = os.path.join(envdict["datadir"], "icons")
-configsyms["APP_ICON"] = envdict["icondir"]
-
-if not envdict["desktopdir"]:
-    envdict["desktopdir"] = os.path.join(envdict["datadir"], "applicationa")
-configsyms["APP_ENTRY"] = envdict["desktopdir"]
 
 #
 # How to build the Wesnoth configuration file
@@ -674,6 +647,7 @@ env.Clean(all, 'TAGS')
 #
 bindir = env['prefix'] + "/bin"
 pythonlib = env['prefix'] + "/lib/python" + sys.version[:3]
+datadir = env['datadir']
 env.Install(bindir, wesnoth)
 env.Install(bindir, wesnoth_editor)
 env.Install(bindir, ['data/tools/wmlscope', 'data/tools/wmllint', 'data/tools/wmlindent'])
@@ -683,6 +657,7 @@ env.Install(pythonlib, ['data/tools/wesnoth/wmltools.py',
                         'data/tools/wesnoth/wmliterator.py',
                         'data/tools/wesnoth/campaignserver_client.py',
                         ])
+#env.Install(datadir, 'data')
 env.Alias('install', [bindir, pythonlib])
 
 #
