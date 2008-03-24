@@ -12,9 +12,9 @@ env.Default("all")
 extralibs=[]
 
 if env["debug"]:
-    env["CXXFLAGS"] = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
+    env["CXXFLAGS"] += Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
 else:
-    env["CXXFLAGS"] = Split("-O2 -ansi")
+    env["CXXFLAGS"] += Split("-O2 -ansi")
 
 if env['static']:
     env["LDFLAGS"].append("-all-static")
