@@ -144,8 +144,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_VIDEORESIZE:
-			//FIXME
-			std::cerr << "Resize isn't handled.\n";
+			get_window().window_resize(*this, event.resize.w, event.resize.h);
 			break;
 
 		default:

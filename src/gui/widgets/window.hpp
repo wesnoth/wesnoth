@@ -74,6 +74,9 @@ public:
 	tpoint client_position(const tpoint& screen_position) const
 		{ return tpoint(screen_position.x - get_x(), screen_position.y - get_y()); }
 
+	void window_resize(tevent_handler&, 
+		const unsigned new_width, const unsigned new_height);
+
 protected:
 private:
 
@@ -83,9 +86,6 @@ private:
 	CVideo& video_;
 
 	tstatus status_;
-
-	void window_resize(tevent_handler&, 
-		const unsigned new_width, const unsigned new_height);
 
 	//! When set the form needs a full layout redraw cycle.
 	bool need_layout_;
