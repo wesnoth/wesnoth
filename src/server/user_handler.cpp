@@ -342,7 +342,10 @@ void user_handler::set_user_attribute(const std::string& name,
 }
 
 bool user_handler::user_exists(const std::string& name) {
-    return (users_[name]);
+    std::map<std::string,std::string*>::const_iterator u =
+            users_.find(name);
+
+    return (u != users_.end());
 }
 
 bool user_handler::mail() {
