@@ -577,24 +577,32 @@ void play_controller::enter_textbox()
 		return;
 	}
 
+	const std::string str = menu_handler_.get_textbox().box()->text();
+	const unsigned int team_num = player_number_;
+	events::mouse_handler& mousehandler = mouse_handler_;
+
 	switch(menu_handler_.get_textbox().mode()) {
 	case gui::TEXTBOX_SEARCH:
-		menu_handler_.do_search(menu_handler_.get_textbox().box()->text());
+		menu_handler_.do_search(str);
+		menu_handler_.get_textbox().close(*gui_);
 		break;
 	case gui::TEXTBOX_MESSAGE:
 		menu_handler_.do_speak();
+		menu_handler_.get_textbox().close(*gui_);  //need to close that one after executing do_speak() !
 		break;
 	case gui::TEXTBOX_COMMAND:
-		menu_handler_.do_command(menu_handler_.get_textbox().box()->text(), player_number_, mouse_handler_);
+		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.do_command(str, team_num, mousehandler);
 		break;
 	case gui::TEXTBOX_AI:
-		menu_handler_.do_ai_formula(menu_handler_.get_textbox().box()->text(), player_number_, mouse_handler_);
+		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.do_ai_formula(str, team_num, mousehandler);
 		break;
 	default:
+		menu_handler_.get_textbox().close(*gui_);
 		LOG_STREAM(err, display) << "unknown textbox mode\n";
 	}
 
-	menu_handler_.get_textbox().close(*gui_);
 }
 
 team& play_controller::current_team() 
