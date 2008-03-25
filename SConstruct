@@ -30,7 +30,7 @@ opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOp
 
 # These are implemented in the installation productions
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
-opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "wesnoth", PathOption.PathAccept))
+opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/wesnoth", PathOption.PathAccept))
 
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
@@ -80,12 +80,6 @@ Available build targets include:
 
 """ + opts.GenerateHelpText(env))
 conf = Configure(env)
-
-envdict = env.Dictionary()
-
-# Simulate autools-like behavior of prefix and datadir
-if not "/" in envdict["datadir"]:
-    env["datadir"] = os.path.join(envdict["prefix"], envdict["datadir"])
 
 #
 # Check some preconditions
@@ -645,8 +639,13 @@ env.Clean(all, 'TAGS')
 #
 # Installation productions
 #
+
+# Simulate autools-like behavior of prefix and datadir
+if not env["datadir"].startswith("/"):
+    env["datadir"] = os.path.join(env["prefix"], env["datadir"])
+
 bindir = env['prefix'] + "/bin"
-pythonlib = env['prefix'] + "/lib/python" + sys.version[:3]
+pythonlib = env['prefix'] + "/lib/python/site-packages/wesnoth"
 datadir = env['datadir']
 env.Install(bindir, wesnoth)
 env.Install(bindir, wesnoth_editor)
@@ -657,12 +656,11 @@ env.Install(pythonlib, ['data/tools/wesnoth/wmltools.py',
                         'data/tools/wesnoth/wmliterator.py',
                         'data/tools/wesnoth/campaignserver_client.py',
                         ])
-#env.Install(datadir, Mkdir(datadir))
-#datasubs = []
-#for subdir in Split('data fonts icons images sounds translations'):
-#    target = os.path.join(datadir, subdir)
-#    datasubs.append(env.Install(target, env.Copy(target, subdir)))
-#env.Alias('install', [bindir, pythonlib, datadir] + datasubs)
+# FIXME: translations need to be installed as well, but need to be generated
+datasubs = []
+for subdir in Split('data fonts icons images sounds'):
+    datasubs.append(env.Install(datadir, subdir))
+env.Alias('install', [bindir, pythonlib])
 
 #
 # Known problems:
