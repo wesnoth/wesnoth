@@ -9,7 +9,9 @@
 //! before and after each release.
 
 // We are building with scons, so Python cannot be absent. 
-#define HAVE_PYTHON
+// this definition has to be done somewhere else or the normal builds
+// via autotools are broken, which is ATM not acceptable
+//#define HAVE_PYTHON
 
 # define VERSION "1.5.0-svn"
 # define PACKAGE "wesnoth"
