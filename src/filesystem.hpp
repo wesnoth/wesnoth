@@ -60,6 +60,10 @@ std::string get_saves_dir();
 std::string get_cache_dir();
 std::string get_intl_dir();
 std::string get_screenshot_dir();
+
+//! Get the next free filename using "name + number (5 digits) + extension"
+//! counter is used to hint the search and track the final number used
+std::string get_next_filename(const std::string& name, const std::string& extension, int& counter);
 std::string get_upload_dir();
 std::string get_user_data_dir();
 

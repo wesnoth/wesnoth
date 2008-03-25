@@ -63,6 +63,7 @@ const struct {
 	{ hotkey::HOTKEY_ZOOM_DEFAULT, "zoomdefault", N_("Default Zoom"), false },
 	{ hotkey::HOTKEY_FULLSCREEN, "fullscreen", N_("Toggle Full Screen"), false },
 	{ hotkey::HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false },
+	{ hotkey::HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false },
 	{ hotkey::HOTKEY_ACCELERATED, "accelerated", N_("Accelerated"), false },
 	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false },
 	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false },
@@ -806,6 +807,9 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		case HOTKEY_SCREENSHOT:
 			disp.screenshot();
+			break;
+		case HOTKEY_MAP_SCREENSHOT:
+			disp.map_screenshot();
 			break;
 		case HOTKEY_ACCELERATED:
 			preferences::set_turbo(!preferences::turbo());

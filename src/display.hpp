@@ -68,6 +68,9 @@ public:
 	// Gets the underlying screen object.
 	CVideo& video() { return screen_; }
 
+	// return the screen surface or the surface used for map_screenshot
+	surface get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
+
 	virtual bool in_game() const { return false; }
 
 	// the dimensions of the display. x and y are width/height.
@@ -84,6 +87,12 @@ public:
 		{ const SDL_Rect res = {0,0,w(),h()}; return res; }
 
 	/**
+	 * Returns the maximum area used for the map
+	 * regardless to resolution and view size
+	 */
+	const SDL_Rect& max_map_area() const;
+
+	/**
 	 * Returns the area used for the map
 	 */
 	const SDL_Rect& map_area() const;
@@ -93,8 +102,8 @@ public:
 	 * from the above. This area will get the background area
 	 * applied to it.
 	 */
-	const SDL_Rect& map_outside_area() const
-		{ return theme_.main_map_location(screen_area()); }
+	const SDL_Rect& map_outside_area() const { return map_screenshot_ ?
+		max_map_area() : theme_.main_map_location(screen_area()); }
 
 	//! Check if the bbox of the hex at x,y has pixels outside the area rectangle.
 	bool outside_area(const SDL_Rect& area, const int x,const int y) const;
@@ -163,6 +172,9 @@ public:
 
 	//! Make a screenshot and save it in a default location.
 	void screenshot();
+
+	//! Make a map-screenshot and save it in a default location.
+	void map_screenshot();
 
 	//! Invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
@@ -551,12 +563,17 @@ protected:
 	bool draw_init();
 	void draw_wrap(bool update,bool force,bool changed);
 
+	//! Used to indicate to drawing funtions that we are doing a map screenshot
+	bool map_screenshot_;
+
 private:
 	//! Handle for the label which displays frames per second.
 	int fps_handle_;
 
 	bool idle_anim_;
 	double idle_anim_rate_;
+
+	surface map_screenshot_surf_;
 };
 
 //! Simplified display class for the editor.

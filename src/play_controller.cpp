@@ -513,6 +513,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 	case hotkey::HOTKEY_FULLSCREEN:
 	case hotkey::HOTKEY_SCREENSHOT:
+	case hotkey::HOTKEY_MAP_SCREENSHOT:
 	case hotkey::HOTKEY_ACCELERATED:
 	case hotkey::HOTKEY_SAVE_MAP:
 	case hotkey::HOTKEY_TOGGLE_GRID:

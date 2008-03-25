@@ -110,9 +110,11 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 #else	
 	drawing_buffer_(),
 #endif	
+	map_screenshot_(false),
 	fps_handle_(0),
 	idle_anim_(preferences::idle_anim()),
-	idle_anim_rate_(1.0)
+	idle_anim_rate_(1.0),
+	map_screenshot_surf_(NULL)
 {
 	if(non_interactive()) {
 		screen_.lock_updates(true);
@@ -129,10 +131,9 @@ display::~display()
 {
 }
 
-const SDL_Rect& display::map_area() const
+const SDL_Rect& display::max_map_area() const
 {
-	static SDL_Rect res = {0, 0, 0, 0};
-	res = map_outside_area();
+	static SDL_Rect max_area = {0, 0, 0, 0};
 
 	// hex_size() is always a multiple of 4
 	// and hex_width() a multiple of 3,
@@ -141,19 +142,35 @@ const SDL_Rect& display::map_area() const
 	// To display a hex fully on screen,
 	// a little bit extra space is needed.
 	// Also added the border two times.
-	const int width  = static_cast<int>((map_.w() + 2 * theme_.border().size + 1.0/3.0) * hex_width());
-	const int height = static_cast<int>((map_.h() + 2 * theme_.border().size + 0.5) * hex_size());
+	max_area.w  = static_cast<int>((map_.w() + 2 * theme_.border().size + 1.0/3.0) * hex_width());
+	max_area.h = static_cast<int>((map_.h() + 2 * theme_.border().size + 0.5) * hex_size());
 
-	if(width < res.w) {
-		// map is smaller, center
-		res.x += (res.w - width)/2;
-		res.w = width;
+	return max_area;
+}
+
+const SDL_Rect& display::map_area() const
+{
+	static SDL_Rect max_area;
+	max_area = max_map_area();
+
+	// if it's for map_screenshot, maximize and don't recenter
+	if (map_screenshot_) {
+		return max_area;
 	}
 
-	if(height < res.h) {
+	static SDL_Rect res;
+	res = map_outside_area();
+
+	if(max_area.w < res.w) {
 		// map is smaller, center
-		res.y += (res.h - height)/2;
-		res.h = height;
+		res.x += (res.w - max_area.w)/2;
+		res.w = max_area.w;
+	}
+
+	if(max_area.h < res.h) {
+		// map is smaller, center
+		res.y += (res.h - max_area.h)/2;
+		res.h = max_area.h;
 	}
 
 	return res;
@@ -400,25 +417,53 @@ void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::locati
 
 void display::screenshot()
 {
-	std::string datadir = get_screenshot_dir();
-	static unsigned int counter = 0;
-	std::string name;
+	static int screenshot_counter = 0;
+	std::string filename = get_screenshot_dir() + "/" + _("Screenshot") + "_";
+	filename = get_next_filename(filename, ".bmp", screenshot_counter);
 
-	do {
-		std::stringstream filename;
+	SDL_SaveBMP(screen_.getSurface(), filename.c_str());
+}
 
-		filename << datadir << "/" << _("Screenshot") << "_";
-		filename.width(5);
-		filename.fill('0');
-		filename.setf(std::ios_base::right);
-		filename << counter << ".bmp";
+void display::map_screenshot()
+{
+	static int map_screenshot_counter = 0;
+	std::string filename = get_screenshot_dir() + "/" + _("Map_Screenshot") + "_";
+	filename = get_next_filename(filename, ".bmp", map_screenshot_counter);
 
-		counter++;
-		name = filename.str();
+	SDL_Rect area = max_map_area();
+	map_screenshot_surf_ = create_compatible_surface(screen_.getSurface(), area.w, area.h);
 
-	} while(file_exists(name));
+	if (map_screenshot_surf_ == NULL) {
+		std::cerr << "Can't create the screenshot surface. Maybe too big, try dezooming.\n";
+		return;
+	}
 
-	SDL_SaveBMP(screen_.getSurface().get(), name.c_str());
+	// back up the current map view position and move to top-left
+	int old_xpos = xpos_;
+	int old_ypos = ypos_;
+	xpos_ = 0;
+	ypos_ = 0;
+
+	// we reroute render output to the screenshot surface and invalidate all
+	map_screenshot_= true ;
+	invalidateAll_ = true;
+
+	DBG_DP << "draw() with map_screenshot\n";
+	draw(true,true);
+
+	// save the screenshot surface
+	SDL_SaveBMP(map_screenshot_surf_, filename.c_str());
+	//NOTE: need to be sure that we free this huge surface (enough?)
+	map_screenshot_surf_ = NULL;
+
+	// restore normal rendering
+	map_screenshot_= false;
+	xpos_ = old_xpos;
+	ypos_ = old_ypos;
+	// some drawing functions are confused by the temporary change
+	// of the map_area and thus affect the UI outside of the map
+	redraw_everything();
+	draw(true, true);
 }
 
 gui::button* display::find_button(const std::string& id)
@@ -612,7 +657,7 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 void display::drawing_buffer_commit()
 {
 	SDL_Rect clip_rect = map_area();
-	surface const dst(screen_.getSurface());
+	surface const dst(get_screen_surface());
 	clip_rect_setter set_clip_rect(dst, clip_rect);
 
 	// Simply go down all levels in the drawing_buffer_ and render them.
@@ -1043,9 +1088,9 @@ bool display::draw_init()
 	if(redraw_background_) {
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
-		const surface outside_surf(screen_.getSurface());
-		clip_rect_setter set_clip_rect(outside_surf, clip_rect);
-		draw_background(outside_surf, clip_rect, theme_.border().background_image);
+		const surface screen = get_screen_surface();
+		clip_rect_setter set_clip_rect(screen, clip_rect);
+		draw_background(screen, clip_rect, theme_.border().background_image);
 		update_rect(clip_rect);
 
 		redraw_background_ = false;
@@ -1196,12 +1241,14 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 	 * This way this code doesn't need modifications for other border sizes.
 	 */
 
+	surface screen = get_screen_surface();
+
 	// First handle the corners :
 	if(loc.x == -1 && loc.y == -1) { // top left corner
 		SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_ } ;
 		const surface border(image::get_image(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM));
 
-		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+		SDL_BlitSurface( border, NULL, screen, &rect);
 	} else if(loc.x == map_.w() && loc.y == -1) { // top right corner
 		SDL_Rect rect = { xpos, -1, 3 * zoom_/4, zoom_ } ;
 		surface border;
@@ -1216,14 +1263,14 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 			border = image::get_image(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM);
 		}
 
-		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+		SDL_BlitSurface( border, NULL, screen, &rect);
 
 	} else if(loc.x == -1 && loc.y == map_.h()) { // bottom left corner
 		SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_/2 } ;
 
 		const surface border(image::get_image(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM));
 
-		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+		SDL_BlitSurface( border, NULL, screen, &rect);
 
 	} else if(loc.x == map_.w() && loc.y == map_.h()) { // bottom right corner
 		SDL_Rect rect = { xpos, ypos, 3 * zoom_/4, zoom_/2 } ;
@@ -1235,20 +1282,20 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 			border = image::get_image(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM);
 		}
 
-		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+		SDL_BlitSurface( border, NULL, screen, &rect);
 
 	// Now handle the sides:
 	} else if(loc.x == -1) { // left side
 		SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 		const surface border(image::get_image(theme_.border().border_image_left, image::SCALED_TO_ZOOM));
 
-		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+		SDL_BlitSurface( border, NULL, screen, &rect);
 
 	} else if(loc.x == map_.w()) { // right side
 		SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 		const surface border(image::get_image(theme_.border().border_image_right, image::SCALED_TO_ZOOM));
 
-		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+		SDL_BlitSurface( border, NULL, screen, &rect);
 
 	} else if(loc.y == -1) { // top side
 		SDL_Rect rect = { xpos, -1, zoom_, zoom_/2 } ;
@@ -1262,7 +1309,7 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 			border = image::get_image(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM);
 		}
 
-		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+		SDL_BlitSurface( border, NULL, screen, &rect);
 
 	} else if(loc.y == map_.h()) { // bottom side
 		SDL_Rect rect = { xpos, -1, zoom_, zoom_/2 } ;
@@ -1276,7 +1323,7 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 			border = image::get_image(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM);
 		}
 
-		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+		SDL_BlitSurface( border, NULL, screen, &rect);
 	}
 }
 

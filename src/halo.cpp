@@ -185,7 +185,7 @@ bool effect::render()
 		return false;
 	}
 
-	surface const screen = disp->video().getSurface();
+	surface const screen = disp->get_screen_surface();
 
 	const clip_rect_setter clip_setter(screen,clip_rect);
 	if(buffer_ == NULL || buffer_->w != rect.w || buffer_->h != rect.h) {
@@ -209,7 +209,7 @@ void effect::unrender()
 		return;
 	}
 
-	surface const screen = disp->video().getSurface();
+	surface const screen = disp->get_screen_surface();
 
 	SDL_Rect clip_rect = disp->map_outside_area();
 	const clip_rect_setter clip_setter(screen,clip_rect);

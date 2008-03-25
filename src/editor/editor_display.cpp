@@ -53,8 +53,8 @@ void editor_display::draw(bool update,bool force)
 		changed = true;
 
 		SDL_Rect clip_rect = map_outside_area();
-		surface const dst(screen_.getSurface());
-		clip_rect_setter set_clip_rect(dst, clip_rect);
+		surface const screen(get_screen_surface());
+		clip_rect_setter set_clip_rect(screen, clip_rect);
 
 		std::set<gamemap::location>::const_iterator it;
 		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
