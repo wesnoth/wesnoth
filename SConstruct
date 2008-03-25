@@ -75,8 +75,10 @@ Available build targets include:
 
     wesnoth wesnoth_editor wesnothd campaignd exploder cutter
     all = all installables
-    test = unit test binary (not an imstallable)
-    TAGS = build tags for Emacs.
+    test = unit test binary (not an installable)
+    TAGS = build tags for Emacs (cleaned by 'scons -c all').
+    install = install all executables and tools
+    uninstall = uninstall all executables and tools
 
 """ + opts.GenerateHelpText(env))
 conf = Configure(env)
@@ -646,23 +648,32 @@ env.Clean(all, 'TAGS')
 # Installation productions
 #
 
-bindir = env['prefix'] + "/bin"
-pythonlib = env['prefix'] + "/lib/python/site-packages/wesnoth"
+bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
+pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
-env.Install(bindir, wesnoth)
-env.Install(bindir, wesnoth_editor)
-env.Install(bindir, ['data/tools/wmlscope', 'data/tools/wmllint', 'data/tools/wmlindent'])
-env.Install(pythonlib, ['data/tools/wesnoth/wmltools.py',
-                        'data/tools/wesnoth/wmlparser.py',
-                        'data/tools/wesnoth/wmldata.py',
-                        'data/tools/wesnoth/wmliterator.py',
-                        'data/tools/wesnoth/campaignserver_client.py',
-                        ])
-# FIXME: translations need to be installed as well, but need to be generated
-datasubs = []
-for subdir in Split('data fonts icons images sounds'):
-    datasubs.append(env.Install(datadir, subdir))
-env.Alias('install', [bindir, pythonlib] + datasubs)
+pythonbins = [wesnoth, wesnoth_editor, cutter, exploder]
+pythontools = Split("wmlscope wmllint wmlindent")
+pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py")
+
+for binary in pythonbins:
+    env.Install(bindir, binary)
+for tool in pythontools:
+    env.Install(bindir, 'data/tools/' + tool)
+for module in pythonmodules:
+    env.Install(pythonlib, 'data/tools/wesnoth/' + module)
+for subdir in Split('data fonts icons images sounds translations'):
+    env.Install(datadir, subdir)
+env.Alias('install', [bindir, datadir, pythonlib])
+
+#
+# Un-installation
+#
+deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), pythonbins) \
+            + [Delete(datadir), Delete(pythonlib)]
+uninstall = env.Command('uninstall', '', deletions)
+env.AlwaysBuild(uninstall)
+env.Precious(uninstall)
+
 
 #
 # Known problems:
