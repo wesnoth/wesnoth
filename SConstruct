@@ -5,9 +5,6 @@
 # The optipng and internal-data options are omitted.  The following constanta
 # should be set before release.
 #
-version = "1.5.0-svn"
-min_savegame_version = "1.3.10"
-
 import os, sys, commands
 
 #
@@ -27,6 +24,7 @@ opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra func
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
+opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 
 # These are implemented in the installation productions
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
@@ -161,17 +159,6 @@ wesconfig_h = '''
 #endif
 '''
 
-def wesconfig_build(target, source, env):
-    # Build a file from the wesconfig_h template
-    assert(str(source[0]) == "SConstruct")
-    wfp = open(str(target[0]), "w")
-    wfp.write(wesconfig_h % globals())
-    wfp.close()
-    return None
-wesconfig_builder = Builder(action = wesconfig_build)
-env.Append(BUILDERS = {'Wesconfig' : wesconfig_builder})
-env.Wesconfig("src/wesconfig.h", "SConstruct")
-
 #
 # Implement configuration switches
 #
@@ -209,6 +196,9 @@ if env['raw_sockets']:
 
 if env['prefsdir']:
     env["CXXFLAGS"].append("-DPREFERENCES_DIR='\"%s\"'" % env['prefsdir'])
+
+if env['python']:
+    env["CXXFLAGS"].append("-DHAVE_PYTHON")
 
 # Simulate autools-like behavior of prefix and datadir
 if not env["datadir"].startswith("/"):
