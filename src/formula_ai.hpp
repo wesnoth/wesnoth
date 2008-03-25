@@ -42,6 +42,10 @@ public:
 
 	void swap_move_map(move_map_backup& backup);
 
+	variant get_keeps() const;
+
+	const variant& get_keeps_cache() const { return keeps_cache_; }
+
 private:
 	void do_recruitment();
 	bool make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
@@ -58,8 +62,6 @@ private:
 	mutable move_map srcdst_, dstsrc_, full_srcdst_, full_dstsrc_, enemy_srcdst_, enemy_dstsrc_;
 	mutable variant attacks_cache_;
 	mutable variant keeps_cache_;
-
-	variant get_keeps() const;
 
 	game_logic::map_formula_callable vars_;
 };

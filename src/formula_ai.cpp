@@ -113,6 +113,39 @@ private:
 	const formula_ai& ai_;
 };
 
+class nearest_keep_function : public function_expression {
+public:
+	nearest_keep_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("nearest_keep", args, 1, 1), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		int best = 1000000;
+		int best_i = -1;
+
+		ai_.get_keeps();
+		int size = ai_.get_keeps_cache().num_elements();
+
+		for( int i = 0 ; i < size; ++i) {
+			int distance = distance_between(loc, convert_variant<location_callable>(ai_.get_keeps_cache()[i])->loc() );
+			if(distance < best)
+			{
+					best = distance;
+					best_i = i;
+			}
+		}
+
+		if( best_i != -1)
+			return variant(new location_callable(convert_variant<location_callable>(ai_.get_keeps_cache()[best_i])->loc()));
+		else
+			return variant();
+	}
+	
+	const formula_ai& ai_;
+};
+
 class outcomes_function : public function_expression {
 public:
 	outcomes_function(const args_list& args, const formula_ai& ai)
@@ -525,6 +558,8 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new max_possible_damage_function(args, ai_));
 		} else if(fn == "distance_to_nearest_unowned_village") {
 			return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
+		} else if(fn == "nearest_keep") {
+			return expression_ptr(new nearest_keep_function(args, ai_));
 		} else if(fn == "distance_between") {
 			return expression_ptr(new distance_between_function(args));
 		} else {
