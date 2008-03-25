@@ -612,7 +612,15 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	}
 
 	game_logic::formula f(formula_str, &function_table);
-	const variant v = f.execute(*this);
+
+	game_logic::map_formula_callable callable(this);
+	callable.add_ref();
+
+	const variant v = f.execute(callable);	
+
+	if ( execute_variant(v, true ) )
+		return "Made move: " + v.to_debug_string();
+
 	return v.to_debug_string();
 }
 
@@ -668,7 +676,13 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 
 	std::cerr << "do move...\n";
 	const variant var = formula_->execute(variables);
-	//const variant var = formula_->execute(*this);
+
+	return execute_variant(var);
+}
+
+//commandline=true when we evaluate formula from commandline, false otherwise (default)
+bool formula_ai::execute_variant(const variant& var, bool commandline)
+{
 	std::vector<variant> vars;
 	if(var.is_list()) {
 		for(int n = 0; n != var.num_elements(); ++n) {
@@ -679,6 +693,7 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 	}
 
 	bool made_move = false;
+
 	for(std::vector<variant>::const_iterator i = vars.begin(); i != vars.end(); ++i) {
 		if(i->is_null()) {
 			continue;
@@ -693,7 +708,7 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 
 		prepare_move();
 		if(move) {
-			std::cerr << "moving " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
+			std::cerr << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
 			unit_map::iterator i = units_.find(move->src());
 			if( (possible_moves_.count(move->src()) > 0) && (i->second.movement_left() != 0) ) {
 				move_unit(move->src(), move->dst(), possible_moves_);
@@ -706,7 +721,7 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 				//ordered to move so it can get a different command.
 				continue;
 			}
-
+			
 			if(attack->move_from() != attack->src()) {
 				move_unit(attack->move_from(), attack->src(), possible_moves_);
 			}
@@ -716,13 +731,29 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 		} else if(attack_analysis) {
 			//If we get an attack analysis back we will do the first attack.
 			//Then the AI can get run again and re-choose.
-			assert(attack_analysis->movements.empty() == false);
+			assert(attack_analysis->movements.empty() == false);			
+
+			//make sure that unit which has to attack is at given position and is able to attack
+			unit_map::const_iterator unit = units_.find(attack_analysis->movements.front().first);
+			if ( ( unit == units_.end() ) || (unit->second.attacks_left() == 0) )
+				continue;
+
+			const gamemap::location& src = attack_analysis->movements.front().second;
+			const gamemap::location& dst = attack_analysis->target;
+
+			//now check if location to which we want to move is still unoccupied
+			unit = units_.find(src);
+			if ( unit != units_.end() )
+				continue;
+
+			//now check if target is still valid
+			unit = units_.find(dst);
+			if ( unit == units_.end() )
+				continue;
 
 			move_unit(attack_analysis->movements.front().first,
 			          attack_analysis->movements.front().second,
 					  possible_moves_);
-			const gamemap::location& src = attack_analysis->movements.front().second;
-			const gamemap::location& dst = attack_analysis->target;
 
 			if(get_info().units.count(src)) {
 				battle_context bc(get_info().map, get_info().teams,
@@ -757,13 +788,15 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 			}
 			return false;
 		} else {
-			std::cerr << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
+			//this information is unneded when evaluating formulas form commandline
+			if (!commandline)
+				std::cerr << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
 		}
 	}
-
-
+	
 	return made_move;
 }
+
 
 void formula_ai::do_recruitment()
 {
