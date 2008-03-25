@@ -661,7 +661,7 @@ for tool in pythontools:
     env.Install(bindir, 'data/tools/' + tool)
 for module in pythonmodules:
     env.Install(pythonlib, 'data/tools/wesnoth/' + module)
-for subdir in Split('data fonts icons images sounds translations'):
+for subdir in Split('data fonts icons images sounds'):
     env.Install(datadir, subdir)
 env.Alias('install', [bindir, datadir, pythonlib])
 
@@ -680,6 +680,8 @@ env.Precious(uninstall)
 #
 # 1. We don't yet check for SDL version too old
 # 2. We don't check for Ogg Vorbis support in SDL_mixer
+# 3. Translations are not yet installed.
+# 4 Installation craps out with a mysterious "Is a directory" error.
 # FIXME tags other problems
 
 # Local variables:
