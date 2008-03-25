@@ -66,13 +66,13 @@ private:
 class switch_function : public function_expression {
 public:
 	explicit switch_function(const args_list& args)
-	    : function_expression("switch", args, 4, -1)
+	    : function_expression("switch", args, 3, -1)
 	{}
 
 private:
 	variant execute(const formula_callable& variables) const {
 		variant var = args()[0]->evaluate(variables);
-		for(int n = 0; n < args().size()-1; n += 2) {
+		for(int n = 1; n < args().size()-1; n += 2) {
 			variant val = args()[n]->evaluate(variables);
 			if(val == var) {
 				return args()[n+1]->evaluate(variables);
