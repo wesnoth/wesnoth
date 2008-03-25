@@ -137,6 +137,8 @@ wesconfig_h = '''
 //! DO NOT MODIFY THIS FILE !!!
 //! modify SConstruct otherwise the settings will be overwritten.
 
+#define WESNOTH_PATH	"%(datadir)s"
+
 // We are building with scons, so Python cannot be absent. 
 #define HAVE_PYTHON
 
@@ -205,6 +207,10 @@ if env['raw_sockets']:
 
 if env['prefsdir']:
     env["CXXFLAGS"].append("-DPREFERENCES_DIR='\"%s\"'" % env['prefsdir'])
+
+# Simulate autools-like behavior of prefix and datadir
+if not env["datadir"].startswith("/"):
+    env["datadir"] = os.path.join(env["prefix"], env["datadir"])
 
 cc_version = env["CCVERSION"]
 if env["CC"] == "gcc":
@@ -640,10 +646,6 @@ env.Clean(all, 'TAGS')
 # Installation productions
 #
 
-# Simulate autools-like behavior of prefix and datadir
-if not env["datadir"].startswith("/"):
-    env["datadir"] = os.path.join(env["prefix"], env["datadir"])
-
 bindir = env['prefix'] + "/bin"
 pythonlib = env['prefix'] + "/lib/python/site-packages/wesnoth"
 datadir = env['datadir']
@@ -660,7 +662,7 @@ env.Install(pythonlib, ['data/tools/wesnoth/wmltools.py',
 datasubs = []
 for subdir in Split('data fonts icons images sounds'):
     datasubs.append(env.Install(datadir, subdir))
-env.Alias('install', [bindir, pythonlib])
+env.Alias('install', [bindir, pythonlib] + datasubs)
 
 #
 # Known problems:
