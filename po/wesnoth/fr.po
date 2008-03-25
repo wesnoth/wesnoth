@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 16:13+0100\n"
-"PO-Revision-Date: 2008-03-20 23:13+0100\n"
-"Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
+"PO-Revision-Date: 2008-03-25 21:35+0100\n"
+"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1500,11 +1500,11 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"Il y a deux exceptions importantes à l'entretien : les unités avec le trait « "
-"fidèle » et les chefs ne nécessitent jamais d'entretien. Les unités avec "
+"Il y a deux exceptions importantes à l'entretien : les unités avec le trait "
+"« fidèle » et les chefs ne nécessitent jamais d'entretien. Les unités avec "
 "lesquelles vous débutez le scénario (comme Delfador), ou les unités qui vous "
-"rejoignent au cours d'un scénario (tel le cavalier dans le second niveau de « "
-"L'Héritier du trône ») auront généralement le trait fidèle. Le héros que "
+"rejoignent au cours d'un scénario (tel le cavalier dans le second niveau de "
+"« L'Héritier du trône ») auront généralement le trait fidèle. Le héros que "
 "vous incarnez (comme Konrad) sera presque toujours un chef."
 
 #. [topic]
@@ -3090,7 +3090,6 @@ msgid "backstab"
 msgstr "coup dans le dos"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3098,8 +3097,9 @@ msgid ""
 "incapacitated (e.g. turned to stone)."
 msgstr ""
 "Coup dans le dos :\n"
-"Cette attaque occasionne des dégâts doublés si une unité ennemie, et non "
-"pétrifiée, de la cible se trouve en vis-à-vis de l'attaquant."
+"Lorsqu'elle est utilisée offensivement, cette attaque occasionne des dégâts "
+"doublés si une unité ennemie, et non pétrifiée, de la cible se trouve en vis-"
+"à-vis de l'attaquant."
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
@@ -3196,15 +3196,15 @@ msgid "charge"
 msgstr "charge"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Charge :\n"
-"Cette attaque inflige le double de dégâts à la cible, mais l'attaquant "
-"recevra également le double de dégâts lors de la riposte."
+"Lorsqu'elle est utilisée offensivement, cette attaque inflige le double de "
+"dégâts à la cible, mais l'attaquant recevra également le double de dégâts "
+"lors de la riposte."
 
 #: data/core/macros/abilities.cfg:654
 msgid "drains"
@@ -4251,11 +4251,8 @@ msgstr ""
 "créatures magiques et aussi quelques dégâts sur les créatures non magiques."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" Cette unité est capable de soigner les unités environnantes et de les "
-"guérir du poison."
+msgstr " Cette unité est capable de prodiguer des soins de base."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4288,8 +4285,8 @@ msgstr ""
 " Cette unité inébranlable reçoit moitié moins de dégâts lorsqu'elle se "
 "défend."
 
+# Benoît : la description est incorrecte en anglais
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of below the leadership "
@@ -4366,15 +4363,14 @@ msgstr ""
 "jusqu'à sa mort ou jusqu'à celle de son adversaire."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Si un ennemi de la cible se trouve du coté opposé, cette unité peut la "
-"frapper dans le dos et infliger des dégâts doublés en se glissant derrière "
-"elle."
+" Si un ennemi de la cible se trouve du coté opposé, cette unité peut "
+"l'attaquer en la frappant dans le dos et infliger des dégâts doublés en se "
+"glissant derrière elle."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -5886,10 +5882,10 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Les unités ont généralement une « zone de contrôle » sur chacun des hexagones "
-"qui leur sont adjacents. Une unité qui se déplace dans la zone de contrôle "
-"ennemie ne peut faire aucun autre mouvement pour ce tour ; deux unités "
-"peuvent donc barrer un passage avec deux cases vides entre elles. Les "
+"Les unités ont généralement une « zone de contrôle » sur chacun des "
+"hexagones qui leur sont adjacents. Une unité qui se déplace dans la zone de "
+"contrôle ennemie ne peut faire aucun autre mouvement pour ce tour ; deux "
+"unités peuvent donc barrer un passage avec deux cases vides entre elles. Les "
 "tirailleurs sont quant à eux suffisamment habiles pour ignorer ces zones."
 
 #. [tip]
