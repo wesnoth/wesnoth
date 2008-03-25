@@ -19,7 +19,6 @@
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 #include "pathutils.hpp"
-#include "filesystem.hpp"
 
 namespace {
 using namespace game_logic;
@@ -553,8 +552,7 @@ void formula_ai::play_turn()
 	const config& ai_param = current_team().ai_parameters();
 	config::const_child_itors team_formula = ai_param.child_range("team_formula");
 	if(team_formula.first != team_formula.second) {
-		std::string rulebase = (**team_formula.first)["rulebase"];
-		const t_string& formula_string = read_file(std::string("data/") + rulebase + std::string(".fai"));
+		std::string formula_string = (**team_formula.first)["rulebase"];
 		move_formula_ = game_logic::formula::create_optional_formula(formula_string, &function_table);
 	} else {
 	config::const_child_itors functions = ai_param.child_range("function");
