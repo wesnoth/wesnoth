@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-16 11:59+0100\n"
+"POT-Creation-Date: 2008-03-25 14:27+0100\n"
 "PO-Revision-Date: 2007-27-07 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#. unit: race=bats
+#. [unit]: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
 msgstr "крво-шишмиш"
 
-#. unit: race=bats
+#. [unit]: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
 #, fuzzy
 msgid ""
@@ -40,8 +40,8 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=blade
-#. attack: type=pierce
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/core/units/bats/Bat_Blood.cfg:175
 #: data/core/units/bats/Bat_Vampire.cfg:174
 #: data/core/units/monsters/Wolf.cfg:49
@@ -53,12 +53,12 @@ msgstr ""
 msgid "fangs"
 msgstr "очњаци"
 
-#. unit: race=bats
+#. [unit]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
 msgstr "вампир-шишмиш"
 
-#. unit: race=bats
+#. [unit]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
 #, fuzzy
 msgid ""
@@ -72,35 +72,35 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=mechanical
+#. [unit]: race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 #, fuzzy
 msgid "Boat"
 msgstr "крво-шишмиш"
 
-#. unit: race=mechanical
+#. [unit]: race=mechanical
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
 
-#. unit: race=mechanical
+#. [unit]: race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
 msgstr "галија"
 
-#. unit: race=mechanical
+#. [unit]: race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr "Галије су прекоокеански бродови грађени за трговину и ношење товара."
 
-#. unit: race=mechanical
+#. [unit]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
 msgstr "гусарска галија"
 
-#. unit: race=mechanical
+#. [unit]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
@@ -110,18 +110,18 @@ msgstr ""
 "Гусарске галије су теретним бродовима што су вукови овцама. Гусари што њима "
 "једре су више него ради да растерете друге бродове њиховог тешког товара."
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 msgid "ballista"
 msgstr "балиста"
 
-#. unit: race=mechanical
+#. [unit]: race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
 msgstr "товарна галија"
 
-#. unit: race=mechanical
+#. [unit]: race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
@@ -130,12 +130,12 @@ msgstr ""
 "Товарне галије су добро наоружани бродови, који носе и војску. Када "
 "пристигну на обалу, могу изручити те снаге у напад."
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
 msgstr "змаго-судњичас"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Armageddon.cfg:26
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
@@ -147,7 +147,7 @@ msgstr ""
 "змајева, барем у очима обичног човека. Они познати као змагови-судњичаси су "
 "узвишена створења, како обдарена неизмерном ватром тако и неосетљива на њу."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/gryphons/Gryphon_Rider.cfg:29
 #: data/core/units/gryphons/Gryphon_Master.cfg:29
@@ -163,7 +163,7 @@ msgstr ""
 msgid "claws"
 msgstr "канџе"
 
-#. attack: type=fire
+#. [attack]: type=fire
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 #: data/core/units/drakes/Flare.cfg:91 data/core/units/drakes/Fire.cfg:79
 #: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
@@ -176,12 +176,12 @@ msgstr "канџе"
 msgid "fire breath"
 msgstr "ватродах"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
 msgstr "змаго-оштрохват"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
@@ -191,8 +191,8 @@ msgstr ""
 "Змагови који загосподаре употребом мача, бивају уведени у посебан ред. Белег "
 "су им црне и беле ратничке боје које с поносом носе у битку."
 
-#. attack: type=blade
-#. attack: type=arcane
+#. [attack]: type=blade
+#. [attack]: type=arcane
 #: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
 #: data/core/units/elves/Avenger.cfg:64 data/core/units/elves/Marksman.cfg:53
 #: data/core/units/elves/Scout.cfg:34 data/core/units/elves/Marshal.cfg:34
@@ -228,12 +228,12 @@ msgstr ""
 msgid "sword"
 msgstr "мач"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
 msgstr "змаго-кремен"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Burner.cfg:19
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
@@ -246,12 +246,12 @@ msgstr ""
 "спрегнуто са њиховом големошћу и застрашујућим канџама, чини их смртоносним "
 "противницима у борби."
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "змаго-сударач"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Clasher.cfg:21
 #, fuzzy
 msgid ""
@@ -285,7 +285,7 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:121
 #: data/core/units/saurians/Skirmisher.cfg:130
 #: data/core/units/saurians/Flanker.cfg:28
@@ -317,12 +317,12 @@ msgstr ""
 msgid "spear"
 msgstr "копље"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "змаго-силник"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
@@ -333,7 +333,7 @@ msgstr ""
 "ковачницама пружили су им накострешену спрему оружја, и обавили сјаним "
 "оклопом од главе до пете."
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
@@ -345,12 +345,12 @@ msgstr ""
 msgid "mace"
 msgstr "топуз"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
 msgstr "змаго-борац"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Fighter.cfg:19
 #, fuzzy
 msgid ""
@@ -364,17 +364,17 @@ msgstr ""
 "ком противнику. Њихова велика снага, у садејству са отврднулим крљуштима, "
 "право је застрашујућа за мачеваоце било које друге расе."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
 msgstr "јатаган"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
 msgstr "змаго-ватропир"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
@@ -385,12 +385,12 @@ msgstr ""
 "оклоп, бљују стубове ватре на свакога ко им се успротиви, као сведоџбу снази "
 "и величанствености своје врсте."
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "змаго-пламенодух"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
 #, fuzzy
 msgid ""
@@ -406,12 +406,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "змаго-бакљар"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Flare.cfg:25
 #, fuzzy
 msgid ""
@@ -425,12 +425,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
 msgstr "змаго-гладијатор"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
@@ -447,12 +447,12 @@ msgstr ""
 "сечива и копља, и топузе који употпуњују њихов већ импресиван арсенал. Такво "
 "поклањање пажње оружју донекле умањује њихове одбрамбене способности."
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "змаго-једрен"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Glider.cfg:20
 #, fuzzy
 msgid ""
@@ -473,18 +473,18 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:75
 #: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
 msgid "slam"
 msgstr "тресак"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
 msgstr "змаго-олујник"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Hurricane.cfg:29
 #, fuzzy
 msgid ""
@@ -498,12 +498,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "змаго-пакленик"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Inferno.cfg:19
 msgid ""
 "The flying conflagrations known as Drake Infernos are the masters of the "
@@ -518,12 +518,12 @@ msgstr ""
 "обојен оклоп белег је њихове поносите и моћне касте, идеалу којем теже "
 "њихови сународници."
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "змаго-небохват"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Sky.cfg:28
 #, fuzzy
 msgid ""
@@ -540,12 +540,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Slasher.cfg:4
 msgid "Drake Slasher"
 msgstr "змаго-дугорез"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Slasher.cfg:19
 #, fuzzy
 msgid ""
@@ -564,8 +564,8 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=blade
-#. attack: type=pierce
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/core/units/drakes/Warden.cfg:75 data/core/units/drakes/Warden.cfg:84
 #: data/core/units/drakes/Slasher.cfg:69 data/core/units/drakes/Slasher.cfg:78
 #: data/core/units/humans/Loyalist_Halberdier.cfg:29
@@ -573,12 +573,12 @@ msgstr ""
 msgid "halberd"
 msgstr "хелебарда"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "змаго-надзорник"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Warden.cfg:20
 #, fuzzy
 msgid ""
@@ -594,12 +594,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "змаго-ратник"
 
-#. unit: race=drake
+#. [unit]: race=drake
 #: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
@@ -610,12 +610,12 @@ msgstr ""
 "налик својим предацима. Њихова снага омогућава им да задају разарајуће "
 "ударце, и да поднесу узвраћање истом мером."
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
 msgstr "патуљ-безглав"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:19
 #, fuzzy
 msgid ""
@@ -630,18 +630,18 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:31
 #: data/core/units/dwarves/Ulfserker.cfg:31
 msgid "berserker frenzy"
 msgstr "безглави бес"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
 msgstr "патуљ-змајогард"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:19
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
@@ -661,7 +661,7 @@ msgstr ""
 "су ови чувари великих патуљаких цитадела и чувени и страхопоштовани; оружја "
 "које је сломило и највеће ратнике једним ударцем."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:70
 #: data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/dwarves/Dragonguard.cfg:25
@@ -679,17 +679,17 @@ msgstr ""
 msgid "dagger"
 msgstr "бодеж"
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:34
 msgid "dragonstaff"
 msgstr "змајоштап"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
 msgstr "патуљ-борац"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
@@ -702,7 +702,7 @@ msgstr ""
 "пећинама. Иако не тако хитри, њихова снага и издржљивост то више него "
 "надокнађују."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/dwarves/Fighter.cfg:35
 #: data/core/units/undead/Skele_Deathblade.cfg:105
 #: data/core/units/undead/Skele_Revenant.cfg:29
@@ -711,19 +711,19 @@ msgstr ""
 msgid "axe"
 msgstr "секира"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/dwarves/Steelclad.cfg:38
 #: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
 #: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
 msgstr "чекић"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
 msgstr "патуљ-бранич"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
 #, fuzzy
 msgid ""
@@ -742,7 +742,7 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/dwarves/Stalwart.cfg:43
 #: data/core/units/dwarves/Guardsman.cfg:40
 #: data/core/units/dwarves/Sentinel.cfg:48
@@ -751,12 +751,12 @@ msgstr ""
 msgid "javelin"
 msgstr "џилит"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
 msgstr "патуљ-господар"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
 msgid ""
 "Clad in shining armor, these dwarves look like kings from under the "
@@ -769,24 +769,24 @@ msgstr ""
 "погодити мету ручном секирицом. Иако спори у покрету, ови патуљци су "
 "сведочанство срчаности свога рода."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/dwarves/Steelclad.cfg:29
 #: data/core/units/dwarves/Lord.cfg:30
 #: data/core/units/undead/Skele_Death_Knight.cfg:46
 msgid "battle axe"
 msgstr "бојна секира"
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:47
 msgid "hatchet"
 msgstr "секирица"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
 msgstr "патуљ-рунотворац"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:19
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
@@ -798,22 +798,22 @@ msgstr ""
 "га својим самим присуством некако прожимају моћи. Иако ретко виђени у борби, "
 "мајстор руна може их употребити са страшном делотворношћу."
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:24
 msgid "runic hammer"
 msgstr "рунски чекић"
 
-#. attack: type=fire
+#. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:34
 msgid "Lightning bolt"
 msgstr "сноп муња"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
 msgstr "патуљ-стражар"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
 #, fuzzy
 msgid ""
@@ -831,12 +831,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
 msgstr "патуљ-стамен"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
 #, fuzzy
 msgid ""
@@ -852,12 +852,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
 msgstr "патуљ-гвозден"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:19
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
@@ -866,12 +866,12 @@ msgstr ""
 "Искуснији патуљачки гвозден-борци носе тешке челичне кошуљице и бојне "
 "оклопе, по којима су с правом чувени."
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
 msgstr "патуљ-громовник"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
@@ -886,18 +886,18 @@ msgstr ""
 "громоштапова је истински застрашујућа, и још више услед тајности којом "
 "патуљци штите њихова унутрашња устројства."
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
 msgid "thunderstick"
 msgstr "громоштап"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "патуљ-громогард"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:20
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
@@ -922,12 +922,12 @@ msgstr ""
 "Иако може проћи неколико минута док се припреми само један хитац из "
 "громоштапа, у очима патуљака његово дејство је сасвим достојно тог чекања."
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
 msgstr "патуљ-лудотрк"
 
-#. unit: race=dwarf
+#. [unit]: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:19
 #, fuzzy
 msgid ""
@@ -942,12 +942,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
 msgstr "вилин-стрелац"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Archer.cfg:21
 msgid ""
 "Elves have always had a reputation for archery, a skill that, for many "
@@ -963,8 +963,8 @@ msgstr ""
 "извесно неискуство у борби чини донекле рањивима, њихова природна складност "
 "осигураће да могу надмашити и најбоље људске новајлије."
 
-#. attack: type=pierce
-#. attack: type=fire
+#. [attack]: type=pierce
+#. [attack]: type=fire
 #: data/core/units/orcs/Sovereign.cfg:42 data/core/units/orcs/Archer.cfg:80
 #: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
 #: data/core/units/orcs/Leader.cfg:43 data/core/units/orcs/Ruler.cfg:41
@@ -988,17 +988,17 @@ msgstr ""
 msgid "bow"
 msgstr "лук"
 
-#. female
+#. [female]
 #: data/core/units/elves/Archer.cfg:171
 msgid "female^Elvish Archer"
 msgstr "вилин-стрелашица"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
 msgstr "вилин-осветник"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Avenger.cfg:23
 #, fuzzy
 msgid ""
@@ -1024,17 +1024,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. female
+#. [female]
 #: data/core/units/elves/Avenger.cfg:180
 msgid "female^Elvish Avenger"
 msgstr "вилин-осветница"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
 msgstr "вилин-капетан"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Captain.cfg:26
 #, fuzzy
 msgid ""
@@ -1053,12 +1053,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
 msgstr "вилин-победник"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Champion.cfg:20
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
@@ -1073,12 +1073,12 @@ msgstr ""
 "малобројни могу огледати. Чак и стрељаштво, које узимају за споредно, изводе "
 "мајсторском вештином."
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
 msgstr "вилин-друидка"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Druid.cfg:21
 #, fuzzy
 msgid ""
@@ -1098,7 +1098,7 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:28
 #: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:28
 #: data/core/units/saurians/Soothsayer.cfg:66
@@ -1117,22 +1117,22 @@ msgstr ""
 msgid "staff"
 msgstr "штап"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:37 data/core/units/elves/Shyde.cfg:41
 msgid "ensnare"
 msgstr "клопка"
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:53
 msgid "thorns"
 msgstr "трње"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
 msgstr "вилин-опсенарка"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Enchantress.cfg:19
 #, fuzzy
 msgid ""
@@ -1150,25 +1150,25 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36
 #: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:38
 msgid "entangle"
 msgstr "уплитање"
 
-#. attack: type=arcane
+#. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:47 data/core/units/elves/Lord.cfg:33
 #: data/core/units/elves/High_Lord.cfg:70
 #: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:52
 msgid "faerie fire"
 msgstr "вилин-ватра"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
 msgstr "вилин-борац"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Fighter.cfg:20
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
@@ -1181,12 +1181,12 @@ msgstr ""
 "усвојити основе мачевања и стрељаштва за несхватљиво кратко време, и добро "
 "их употребити на бојишту."
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
 msgstr "вилин-херој"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Hero.cfg:19
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
@@ -1198,13 +1198,13 @@ msgstr ""
 "способног борца у мајстора бојног поља. Они који су удостојени херојства, "
 "јаки су и на мачу и на луку, и те им вештине не вену чак и када не вежбају."
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 #, fuzzy
 msgid "Elvish High Lord"
 msgstr "вилин-борац"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/High_Lord.cfg:19
 msgid ""
 "The leaders of the elves do not fall sallow and frail with age. Rather, it "
@@ -1213,13 +1213,13 @@ msgid ""
 "indeed."
 msgstr ""
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Lady.cfg:5
 #, fuzzy
 msgid "female^Elvish Lady"
 msgstr "вилин-друидка"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Lady.cfg:21
 msgid ""
 "Elves choose their leaders for their power and wisdom; foresight is what has "
@@ -1228,13 +1228,13 @@ msgid ""
 "could ask for."
 msgstr ""
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Lord.cfg:4
 #, fuzzy
 msgid "Elvish Lord"
 msgstr "патуљ-господар"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Lord.cfg:18
 msgid ""
 "The nobility of the elves are possessed of merit to match their standing in "
@@ -1242,12 +1242,12 @@ msgid ""
 "fearsome in their command of magic."
 msgstr ""
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "вилин-оштроок"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Marksman.cfg:22
 #, fuzzy
 msgid ""
@@ -1268,23 +1268,23 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:62
 #: data/core/units/elves/Sharpshooter.cfg:59
 msgid "longbow"
 msgstr "дуги лук"
 
-#. female
+#. [female]
 #: data/core/units/elves/Marksman.cfg:172
 msgid "female^Elvish Marksman"
 msgstr "вилин-оштроока"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
 msgstr "вилин-маршал"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Marshal.cfg:27
 #, fuzzy
 msgid ""
@@ -1304,12 +1304,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
 msgstr "вилин-надјахач"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Outrider.cfg:23
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
@@ -1331,12 +1331,12 @@ msgstr ""
 "Брзина ових војника омогућава им да ударе где и када изаберу ако се боре на "
 "својој родној земљи, што је многе од њих спасило сигурне смрти."
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
 msgstr "вилин-шумочувар"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Ranger.cfg:20
 #, fuzzy
 msgid ""
@@ -1354,17 +1354,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. female
+#. [female]
 #: data/core/units/elves/Ranger.cfg:177
 msgid "female^Elvish Ranger"
 msgstr "вилин-шумочуварка"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
 msgstr "вилин-јахач"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Rider.cfg:24
 #, fuzzy
 msgid ""
@@ -1384,12 +1384,12 @@ msgstr ""
 "Ова упареност невероватне покретљивости и моћне борбене спреме, једна је од "
 "највећих предности које вилењаке истиче у борби."
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
 msgstr "вилин-извиђач"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Scout.cfg:23
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
@@ -1404,12 +1404,12 @@ msgstr ""
 "кроз најгушће грање провуку једва огребани. Они су, вероватно, једина "
 "позната коњица која се боље сналази у шуми него на отвореном простору."
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
 msgstr "вилин-врачарка"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Shaman.cfg:23
 #, fuzzy
 msgid ""
@@ -1432,12 +1432,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
 msgstr "вилин-далекометаш"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
 #, fuzzy
 msgid ""
@@ -1453,17 +1453,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. female
+#. [female]
 #: data/core/units/elves/Sharpshooter.cfg:157
 msgid "female^Elvish Sharpshooter"
 msgstr "вилин-далекометашица"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
 msgstr "вилин-шејда"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Shyde.cfg:21
 #, fuzzy
 msgid ""
@@ -1478,17 +1478,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:28 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
 msgstr "вилин-додир"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
 msgstr "вилин-чаробница"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Sorceress.cfg:21
 #, fuzzy
 msgid ""
@@ -1511,12 +1511,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
 msgstr "вилин-силфа"
 
-#. unit: race=elf
+#. [unit]: race=elf
 #: data/core/units/elves/Sylph.cfg:20
 #, fuzzy
 msgid ""
@@ -1531,17 +1531,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:40
 msgid "gossamer"
 msgstr "копрена"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
 msgstr "грозоседлаш"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
 #, fuzzy
 msgid ""
@@ -1568,12 +1568,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
 msgstr "гобли-набијач"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
 #, fuzzy
 msgid ""
@@ -1589,12 +1589,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
 msgstr "гобли-витез"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Knight.cfg:20
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
@@ -1613,12 +1613,12 @@ msgstr ""
 "Вуци који им се дају одгајају се за брзину и снагу, чинећи их врло опасним у "
 "борби."
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
 msgstr "гобли-пљачкаш"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Pillager.cfg:19
 #, fuzzy
 msgid ""
@@ -1634,24 +1634,24 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=fire
+#. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:34
 msgid "torch"
 msgstr "бакља"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/merfolk/Netcaster.cfg:31
 #: data/core/units/merfolk/Entangler.cfg:32
 #: data/core/units/goblins/Pillager.cfg:43
 msgid "net"
 msgstr "мрежа"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
 msgstr "гобли-подстрекач"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Rouser.cfg:26
 #, fuzzy
 msgid ""
@@ -1669,12 +1669,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
 msgstr "гобли-копљаник"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:20
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
@@ -1696,12 +1696,12 @@ msgstr ""
 "наслеђа, али нико не зна довољно о њиховом историјату да би донео непобитне "
 "закључке."
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
 msgstr "вукоседлаш"
 
-#. unit: race=goblin
+#. [unit]: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:36
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
@@ -1728,12 +1728,12 @@ msgstr ""
 "коња, лако им је да газе планинским тереном, али ће их вода и шума једнако "
 "успоравати."
 
-#. unit: race=gryphon
+#. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
 msgid "Gryphon"
 msgstr "грифон"
 
-#. unit: race=gryphon
+#. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:18
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
@@ -1744,12 +1744,12 @@ msgstr ""
 "обазриви према другим мислећим створењима, и стога их не треба узнемиравати "
 "без доброг разлога."
 
-#. unit: race=gryphon
+#. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
 msgstr "грифо-мајстор"
 
-#. unit: race=gryphon
+#. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
@@ -1760,12 +1760,12 @@ msgstr ""
 "постали духовни продужетак. Овај посебан однос међу њима чини да се тресу "
 "срца оних везаних за земљу, јер моћни пар може ударити изненада и ниоткуд."
 
-#. unit: race=gryphon
+#. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
 msgstr "грифо-јахач"
 
-#. unit: race=gryphon
+#. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:19
 msgid ""
 "Only a few are able to bond with the mighty Gryphons. Those who do may "
@@ -1776,12 +1776,12 @@ msgstr ""
 "успеју, постају грифонски јахачи, и откривају царство неба на леђима тих "
 "летећих звери."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
 msgstr "велевитез"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
@@ -1796,7 +1796,7 @@ msgstr ""
 "челу јуриша застрашујући је призор за пешадију, и често је довољан да "
 "пробије одбрамбену постројбу."
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
 #: data/core/units/humans/Horse_Paladin.cfg:49
@@ -1804,12 +1804,12 @@ msgstr ""
 msgid "lance"
 msgstr "бојно копље"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
 msgid "Knight"
 msgstr "витез"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
@@ -1827,12 +1827,12 @@ msgstr ""
 "безбедније за извођење. Међутим, и даље су им при руци бојна копља, која "
 "смотрено употребљавана могу им бити само од користи."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
 msgstr "јуришник"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
@@ -1849,12 +1849,12 @@ msgstr ""
 "злосрећне пешадинце који су расули своје редове, и у пробијању одбрамбених "
 "линија. Међутим, у одбрани имају ограничену употребу."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
 msgstr "паладин"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
@@ -1875,12 +1875,12 @@ msgid ""
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
 msgstr "коњаник"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Horseman.cfg:20
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
@@ -1898,12 +1898,12 @@ msgstr ""
 "али се морају пазити против копљаника и стрелаца, којима величина и замах "
 "коњаника представљају привлачне мете."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "лукаш"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -1918,18 +1918,18 @@ msgstr ""
 "лукаши имају примерену вештину у руковању луком и кратким мачем, и врло су "
 "чест призор на бојним пољима."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
 #: data/core/units/humans/Loyalist_Bowman.cfg:25
 msgid "short sword"
 msgstr "кратки мач"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
 msgstr "куразијер"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
@@ -1942,8 +1942,8 @@ msgstr ""
 "покретљивошћу; таква моћ, и одважна дела која подстиче, тема су многој причи "
 "и песми."
 
-#. attack: type=pierce
-#. attack: type=fire
+#. [attack]: type=pierce
+#. [attack]: type=fire
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
@@ -1959,12 +1959,12 @@ msgstr ""
 msgid "crossbow"
 msgstr "самострел"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
 msgstr "хусар"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
@@ -1984,12 +1984,12 @@ msgstr ""
 "Хусари су врло корисни за заузимање и држање положаја на отвореним теренима, "
 "за заклањање пријатељских војника, као и за извиђачке намене."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
 msgstr "драгун"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
@@ -2003,12 +2003,12 @@ msgstr ""
 "умешни са мачем, ови војници могу притискати напад и држати положаје које "
 "заузму. Њихова покретљивост и жилавост од велике су вредности на бојишту."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
 msgstr "изазивач"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
 #, fuzzy
 msgid ""
@@ -2039,19 +2039,19 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
 #: data/core/units/humans/Loyalist_Fencer.cfg:124
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:28
 msgid "sabre"
 msgstr "сабља"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
 msgstr "мачевалац"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
 #, fuzzy
 msgid ""
@@ -2081,12 +2081,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
 msgstr "генерал"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_General.cfg:29
 #, fuzzy
 msgid ""
@@ -2098,12 +2098,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
 msgstr "велемаршал"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
 #, fuzzy
 msgid ""
@@ -2118,12 +2118,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
 msgstr "хелебардир"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
 #, fuzzy
 msgid ""
@@ -2155,12 +2155,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
 msgstr "тешкоход"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
 msgid ""
 "Heavy infantry are an unusual choice for outfitting troops. They are very "
@@ -2180,12 +2180,12 @@ msgstr ""
 "снагу. Недостаци су очигледни, и по тежини метала и већим захтевима за "
 "одржавање, али у одређеним околностима, ове снаге су добрано вредне тога."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
 msgstr "башчелик"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
@@ -2209,12 +2209,12 @@ msgstr ""
 "Често им се догађа да виде како им саборац у даљини страда, али су немоћни "
 "да стигну на лице места довољно брзо да пруже помоћ."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
 msgstr "џилитер"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
 #, fuzzy
 msgid ""
@@ -2235,12 +2235,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
 msgstr "поручник"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:24
 #, fuzzy
 msgid ""
@@ -2252,12 +2252,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
 msgstr "дуголукаш"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:20
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
@@ -2272,12 +2272,12 @@ msgstr ""
 "оружје као белег поноса, и већина лукаша се нада дану када ће и сами моћи "
 "почети да га користе."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
 msgstr "мајстор-лукаш"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
@@ -2298,12 +2298,12 @@ msgstr ""
 "савременици нагађају, уз мало љубоморе, да то може бити само заслугом "
 "вилењачке дуговечности."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
 msgstr "мајстор-оружар"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
 #, fuzzy
 msgid ""
@@ -2331,12 +2331,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
 msgstr "дугокопљаш"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
 #, fuzzy
 msgid ""
@@ -2356,17 +2356,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:53
 msgid "pike"
 msgstr "дуго копље"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
 msgstr "царигардејац"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
@@ -2386,12 +2386,12 @@ msgstr ""
 "одашиље на задатке од кључне важности. Њихова поузданост и владање блиском "
 "борбом, по којима су надалеко чувени, највећи су им иметак."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
 msgstr "барјактар"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
@@ -2402,12 +2402,12 @@ msgstr ""
 "биће му потребно нешто искуства на терену пре него што његово заповедање "
 "постане ваљано и признато."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
 msgstr "бојолом"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
@@ -2427,18 +2427,18 @@ msgstr ""
 "понекад питају покрива ли тај оклоп чудовишта пре него људе. Недостатак "
 "тешког оклопа, свакако, јесте време потребно да се укључе и искључе из борбе."
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:98
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
 msgid "morning star"
 msgstr "северњача"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
 msgstr "копљаник"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:19
 #, fuzzy
 msgid ""
@@ -2456,12 +2456,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
 msgstr "мачерук"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
 #, fuzzy
 msgid ""
@@ -2479,12 +2479,12 @@ msgstr ""
 "недостатака, али је много покретљивији од копља, и стога много бољи за "
 "блиску борбу."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
 msgstr "маг"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage.cfg:23
 #, fuzzy
 msgid ""
@@ -2526,23 +2526,23 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=fire
+#. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:62
 #: data/core/units/humans/Mage_Silver.cfg:45
 msgid "missile"
 msgstr "пројектил"
 
-#. female
+#. [female]
 #: data/core/units/humans/Mage.cfg:166
 msgid "female^Mage"
 msgstr "мага"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
 msgstr "архимаг"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Arch.cfg:20
 #, fuzzy
 msgid ""
@@ -2572,24 +2572,24 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=fire
+#. [attack]: type=fire
 #: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:37
 #: data/core/units/humans/Mage_Red.cfg:62
 msgid "fireball"
 msgstr "ватрокугла"
 
-#. female
+#. [female]
 #: data/core/units/humans/Mage_Arch.cfg:118
 msgid "female^Arch Mage"
 msgstr "архимага"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
 msgstr "велики маг"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Great.cfg:21
 #, fuzzy
 msgid ""
@@ -2617,17 +2617,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. female
+#. [female]
 #: data/core/units/humans/Mage_Great.cfg:119
 msgid "female^Great Mage"
 msgstr "велика мага"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "црвени маг"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Red.cfg:20
 #, fuzzy
 msgid ""
@@ -2657,24 +2657,24 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. female
+#. [female]
 #: data/core/units/humans/Mage_Red.cfg:144
 msgid "female^Red Mage"
 msgstr "црвена мага"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
 msgstr "сребрни маг"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 #, fuzzy
 msgid ""
@@ -2717,17 +2717,17 @@ msgstr ""
 "Посебне напомене: Сребрни магови су добро прилагођени својој магичној "
 "природи и врло су отпорни на не-физичке нападе."
 
-#. female
+#. [female]
 #: data/core/units/humans/Mage_Silver.cfg:150
 msgid "female^Silver Mage"
 msgstr "сребрна мага"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
 msgstr "бели маг"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_White.cfg:20
 #, fuzzy
 msgid ""
@@ -2753,7 +2753,7 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=arcane
+#. [attack]: type=arcane
 #: data/core/units/merfolk/Priestess.cfg:71
 #: data/core/units/merfolk/Diviner.cfg:74
 #: data/core/units/humans/Mage_of_Light.cfg:107
@@ -2761,17 +2761,17 @@ msgstr ""
 msgid "lightbeam"
 msgstr "светлосноп"
 
-#. female
+#. [female]
 #: data/core/units/humans/Mage_White.cfg:264
 msgid "female^White Mage"
 msgstr "бела мага"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
 msgstr "маг светлости"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:22
 #, fuzzy
 msgid ""
@@ -2791,17 +2791,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. female
+#. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:232
 msgid "female^Mage of Light"
 msgstr "мага светлости"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
 msgstr "одметник"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw.cfg:18
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
@@ -2819,7 +2819,7 @@ msgstr ""
 "и лаке доступности муниције. Одметницима није најпријатније да се боре у по "
 "бела дана, већ им више одговара заклон ноћи."
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
@@ -2827,12 +2827,12 @@ msgstr ""
 msgid "sling"
 msgstr "праћка"
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw.cfg:105
 msgid "female^Outlaw"
 msgstr "одметница"
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw.cfg:108
 #, fuzzy
 msgid ""
@@ -2851,12 +2851,12 @@ msgstr ""
 "и лаке доступности муниције. Одметницима није најпријатније да се боре у по "
 "бела дана, већ им више одговара заклон ноћи."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "убица"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
 #, fuzzy
 msgid ""
@@ -2875,23 +2875,23 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
 msgid "knife"
 msgstr "нож"
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw_Assassin.cfg:167
 msgid "female^Assassin"
 msgstr "убица"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
 msgstr "разбојник"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
 msgid ""
 "Bandits are a motley collection of men, most of dubious background. They are "
@@ -2907,12 +2907,12 @@ msgstr ""
 "пријатно да дејствују по дневном светлу, већ су навикли на обављање послова "
 "ноћу."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
 msgstr "потрчко"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
@@ -2928,7 +2928,7 @@ msgstr ""
 "коју из тога извлаче, корисно им служи и у борби; без обзира на ништавно "
 "наоружање, добри су у малтретирању непријатеља, посебно под покровом мрака."
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
@@ -2936,12 +2936,12 @@ msgstr ""
 msgid "club"
 msgstr "батина"
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:165
 msgid "female^Footpad"
 msgstr "потрчкица"
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:168
 #, fuzzy
 msgid ""
@@ -2958,12 +2958,12 @@ msgstr ""
 "коју из тога извлаче, корисно им служи и у борби; без обзира на ништавно "
 "наоружање, добри су у малтретирању непријатеља, посебно под покровом мрака."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr "бегунац"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 #, fuzzy
 msgid ""
@@ -2977,12 +2977,12 @@ msgstr ""
 "немилосрдни, могу бити застрашујући у свом природном окружењу, али ипак нису "
 "дорасли професионалним снагама реда и закона."
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:112
 msgid "female^Fugitive"
 msgstr "бегуница"
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:115
 #, fuzzy
 msgid ""
@@ -2996,12 +2996,12 @@ msgstr ""
 "немилосрдни, могу бити застрашујући у свом природном окружењу, али ипак нису "
 "дорасли професионалним снагама реда и закона."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
 msgstr "друмаш"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
@@ -3010,12 +3010,12 @@ msgstr ""
 "Наоружани тешким топузинама, друмаши су последњи које бисте волели да "
 "сусретнете на пустом путу, касно у ноћ."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
 msgstr "нитков"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
 #, fuzzy
 msgid ""
@@ -3034,17 +3034,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:141
 msgid "female^Rogue"
 msgstr "нитковица"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
 msgstr "сировина"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
@@ -3057,12 +3057,12 @@ msgstr ""
 "каже се да су „сировине“. Уз довољно среће и искуства, некада успеју да "
 "избегну ћелију која чека већину њихове сорте."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "лопов"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
 #, fuzzy
 msgid ""
@@ -3084,17 +3084,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. female
+#. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:365
 msgid "female^Thief"
 msgstr "лоповка"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
 msgstr "вуцибатина"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:19
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
@@ -3109,12 +3109,12 @@ msgstr ""
 "Без обзира на појединачне прошлости, сви деле исти обичај пребијања својих "
 "жртава великим батинама."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "себар"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Peasant.cfg:20
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
@@ -3127,17 +3127,17 @@ msgstr ""
 "започне да гура сељаке противу непријатеља, тај је очито остао без способних "
 "снага."
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:25 data/core/units/humans/Peasant.cfg:34
 msgid "pitchfork"
 msgstr "вила"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
 msgstr "шумљак"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman.cfg:19
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoalburners, and others who eke out a "
@@ -3148,13 +3148,13 @@ msgstr ""
 "граници света људи и дивљине. Досетљивост и умеће са дрветом често им "
 "помогну где оружје не би."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 #, fuzzy
 msgid "Huntsman"
 msgstr "коњаник"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
@@ -3173,12 +3173,12 @@ msgid ""
 "capitally useful in a fight."
 msgstr ""
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
 msgstr "криволовац"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
 #, fuzzy
 msgid ""
@@ -3199,13 +3199,13 @@ msgstr ""
 "Теком свог искуства, ови ловци су необично делатни у току ноћи, и у шумама и "
 "мочварама."
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 #, fuzzy
 msgid "Ranger"
 msgstr "бодеж"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
@@ -3221,12 +3221,12 @@ msgid ""
 "to be in the employ of bandits, as they are to be in the king's service."
 msgstr ""
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
 msgstr "трапер"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
 #, fuzzy
 msgid ""
@@ -3246,12 +3246,12 @@ msgstr ""
 "Њихова ловачка вештина врло је корисна у борби, а чини их и необично вештим "
 "у току ноћи, у шумама и мочварама."
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
 msgstr "морен-богословка"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Diviner.cfg:24
 #, fuzzy
 msgid ""
@@ -3270,12 +3270,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
 msgstr "морен-опсенарка"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:19
 #, fuzzy
 msgid ""
@@ -3295,19 +3295,19 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:40
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:36
 msgid "water spray"
 msgstr "водени пљусак"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
 msgstr "морен-уплитач"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
 #, fuzzy
 msgid ""
@@ -3323,12 +3323,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
 msgstr "морен-борац"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Fighter.cfg:19
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
@@ -3337,8 +3337,8 @@ msgstr ""
 "Вешта морска створења, морејци су моћни и хитри у било којој воденој "
 "средини, али се тешко напрежу при кретању копном."
 
-#. attack: type=pierce
-#. attack: type=blade
+#. [attack]: type=pierce
+#. [attack]: type=blade
 #: data/core/units/merfolk/Warrior.cfg:23
 #: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 #: data/core/units/merfolk/Fighter.cfg:24
@@ -3346,12 +3346,12 @@ msgstr ""
 msgid "trident"
 msgstr "трозубац"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
 msgstr "морен-хоплит"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
 #, fuzzy
 msgid ""
@@ -3367,12 +3367,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
 msgstr "морен-ловац"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Hunter.cfg:19
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
@@ -3385,12 +3385,12 @@ msgstr ""
 "нужде, многи ће морејац ловачког позива понудити своје вештине редовима "
 "морејске војске."
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
 msgstr "морен-искушеница"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Initiate.cfg:22
 #, fuzzy
 msgid ""
@@ -3410,12 +3410,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
 msgstr "морен-џилитер"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
 msgid ""
 "Those mermen who master the art of javelinry can become nearly as effective "
@@ -3429,12 +3429,12 @@ msgstr ""
 "надомешта било који недостатак, посебно када су суочени са противницима који "
 "не пливају добро."
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
 msgstr "морен-мрежар"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
 #, fuzzy
 msgid ""
@@ -3457,12 +3457,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
 msgstr "морен-свештеница"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:22
 #, fuzzy
 msgid ""
@@ -3479,12 +3479,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
 msgstr "морен-сирена"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Siren.cfg:22
 #, fuzzy
 msgid ""
@@ -3510,17 +3510,17 @@ msgstr ""
 "Посебне напомене: напади сирена магичне су природе, те увек имају добре "
 "изгледе да погоде противнике."
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
 msgstr "најски додир"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
 msgstr "морен-копљаник"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
@@ -3537,12 +3537,12 @@ msgstr ""
 "корисни и у блиској борби, чак и дубоко испод површине, што се сигурно не "
 "може тврдити за стреле."
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
 msgstr "морен-тритон"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Triton.cfg:19
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
@@ -3553,12 +3553,12 @@ msgstr ""
 "поражавају сваког непријатеља довољно несмотреног да зађе у домаће окружење "
 "морејаца."
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
 msgstr "морен-ратник"
 
-#. unit: race=merman
+#. [unit]: race=merman
 #: data/core/units/merfolk/Warrior.cfg:18
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
@@ -3567,12 +3567,12 @@ msgstr ""
 "Морејски ратници чине језгро њихових војски. Рукујући моћним трозупцима, "
 "крвници су свима који се усуде да кроче у њихове воде."
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:4
 msgid "Giant Spider"
 msgstr "џиновски паук"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:17
 #, fuzzy
 msgid ""
@@ -3586,17 +3586,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:46
 msgid "web"
 msgstr "мрежа"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
 msgstr "сипа"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
 #, fuzzy
 msgid ""
@@ -3611,23 +3611,23 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/monsters/Tentacle.cfg:62
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
 msgid "tentacle"
 msgstr "пипак"
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:46
 msgid "ink"
 msgstr "тинта"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
 msgstr "ватрени змај"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:24
 #, fuzzy
 msgid ""
@@ -3652,22 +3652,22 @@ msgstr ""
 "За бој против змаја каже се да је врхунац опасности, пристао само највећим "
 "будалама, или најхрабријим од витезова."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:28
 msgid "bite"
 msgstr "угриз"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:37
 msgid "tail"
 msgstr "реп"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
 msgstr "џиновски муљогмиз"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
@@ -3678,7 +3678,7 @@ msgstr ""
 "воде. Нападају бљујући блатњаве груде на противнике, или их пљускавши својим "
 "песницама."
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:27
@@ -3687,18 +3687,18 @@ msgstr ""
 msgid "fist"
 msgstr "песница"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 msgid "mud glob"
 msgstr "муљогруда"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
 msgstr "џиновска шкорпија"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
 #, fuzzy
 msgid ""
@@ -3710,22 +3710,22 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=pierce
+#. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
 msgstr "жаока"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
 msgstr "клешта"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
 msgstr "муљогмиз"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:19
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
@@ -3734,24 +3734,24 @@ msgstr ""
 "Муљогмизи су магијски начињени од земље и воде. Нападају бљујући блатњаве "
 "груде на непријатеље."
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
 msgstr "морски змијар"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:21
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
 "Морски змијари су горостасна чудовишта, кадра да сама преврћу целе бродове."
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
 msgid "Skeletal Dragon"
 msgstr "ћеле-змај"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
@@ -3765,17 +3765,17 @@ msgstr ""
 "којима сада служи. Ћеле-змај можда личи на обичну врећу костију, али је мало "
 "оних који су тако размишљали доживело да се предомисли."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
 msgstr "чељусти"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
 msgstr "бездански пипак"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
 #, fuzzy
 msgid ""
@@ -3787,17 +3787,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
 msgstr "вук"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
 msgstr "јети"
 
-#. unit: race=monster
+#. [unit]: race=monster
 #: data/core/units/monsters/Yeti.cfg:18
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
@@ -3808,12 +3808,12 @@ msgstr ""
 "планинама, мало се зна. Малобројни су они који тврде да су се сусрели с "
 "једним, услед чега многи сумњају у њихово постојање."
 
-#. unit: race=naga
+#. [unit]: race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
 msgstr "нага-борац"
 
-#. unit: race=naga
+#. [unit]: race=naga
 #: data/core/units/nagas/Fighter.cfg:20
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
@@ -3828,17 +3828,17 @@ msgstr ""
 "улива им страх од морских бездана. Мали су и понешто крхког обличја, али "
 "често много окретљивији од својих противника."
 
-#. female
+#. [female]
 #: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
 msgstr "нага-борац"
 
-#. unit: race=naga
+#. [unit]: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
 msgstr "нага-мирмидон"
 
-#. unit: race=naga
+#. [unit]: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:20
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
@@ -3853,12 +3853,12 @@ msgstr ""
 "ком отвореном терену, већ им и способност пливања даје смртоносну "
 "покретљивост."
 
-#. female
+#. [female]
 #: data/core/units/nagas/Myrmidon.cfg:67
 msgid "Nagini Myrmidon"
 msgstr "нага-мирмидонка"
 
-#. female
+#. [female]
 #: data/core/units/nagas/Myrmidon.cfg:70
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
@@ -3873,12 +3873,12 @@ msgstr ""
 "ком отвореном терену, већ им и способност пливања даје смртоносну "
 "покретљивост."
 
-#. unit: race=naga
+#. [unit]: race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
 msgstr "нага-ратник"
 
-#. unit: race=naga
+#. [unit]: race=naga
 #: data/core/units/nagas/Warrior.cfg:19
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
@@ -3895,12 +3895,12 @@ msgstr ""
 "ударцима. Ово их чини опасним на копну, али водено окружење доста смета "
 "таквој техници."
 
-#. female
+#. [female]
 #: data/core/units/nagas/Warrior.cfg:66
 msgid "Nagini Warrior"
 msgstr "нага-ратница"
 
-#. female
+#. [female]
 #: data/core/units/nagas/Warrior.cfg:69
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
@@ -3917,12 +3917,12 @@ msgstr ""
 "ударцима. Ово их чини опасним на копну, али водено окружење доста смета "
 "таквој техници."
 
-#. unit: race=ogre
+#. [unit]: race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
 msgstr "огр"
 
-#. unit: race=ogre
+#. [unit]: race=ogre
 #: data/core/units/ogres/Ogre.cfg:21
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
@@ -3934,17 +3934,17 @@ msgstr ""
 "људима по обличју, иако огромна и наказна. Док им се лако може избећи или их "
 "се надмудрити, не треба потцењивати њихову снагу."
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
 msgid "cleaver"
 msgstr "сатара"
 
-#. unit: race=ogre
+#. [unit]: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
 msgstr "младогр"
 
-#. unit: race=ogre
+#. [unit]: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:21
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
@@ -3955,12 +3955,12 @@ msgstr ""
 "војскама. То што не умеју вешто руковати оружјем, пада у засенак када се "
 "узме у обзир њихова снага."
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
 msgstr "орко-стрелац"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Archer.cfg:19
 #, fuzzy
 msgid ""
@@ -3976,12 +3976,12 @@ msgstr ""
 "тако лоше употребљевано, њихово оружје може бити смртоносно, а и они који "
 "њиме рукују ретко наступају сами."
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
 msgstr "орко-убица"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Assassin.cfg:22
 #, fuzzy
 msgid ""
@@ -3999,17 +3999,17 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:79 data/core/units/orcs/Slayer.cfg:36
 msgid "throwing knives"
 msgstr "нож за бацање"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
 msgstr "орко-самострелац"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Crossbowman.cfg:18
 #, fuzzy
 msgid ""
@@ -4023,12 +4023,12 @@ msgstr ""
 "да га користе способни су ратници, и што им недостаје у финоћи покрета, "
 "надокнађују бројношћу."
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
 msgstr "орко-грокташ"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Grunt.cfg:19
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
@@ -4039,12 +4039,12 @@ msgstr ""
 "посебно вилењачких бораца, грокташи могу задавати много јаче ударце, и сами "
 "поднети више пре него настрадају."
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
 msgstr "орко-главник"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Leader.cfg:25
 #, fuzzy
 msgid ""
@@ -4061,12 +4061,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
 msgstr "орко-владар"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Ruler.cfg:24
 #, fuzzy
 msgid ""
@@ -4084,18 +4084,18 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=blade
+#. [attack]: type=blade
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:33
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:32
 msgid "greatsword"
 msgstr "велики мач"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
 msgstr "орко-кољач"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Slayer.cfg:22
 #, fuzzy
 msgid ""
@@ -4112,12 +4112,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
 msgstr "орко-љигалук"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:21
 #, fuzzy
 msgid ""
@@ -4140,12 +4140,12 @@ msgstr ""
 "Орци високо цене и увек се труде да заробе примерке овог оружја, који без "
 "изузетка завршавају у рукама њихових најснажнијих и најлукавијих стрелаца."
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
 msgstr "орко-суверен"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Sovereign.cfg:25
 #, fuzzy
 msgid ""
@@ -4165,12 +4165,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
 msgstr "орко-ратовођ"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Warlord.cfg:19
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
@@ -4181,12 +4181,12 @@ msgstr ""
 "Господари мачева, донекле познавши и стрељачке вештине, ови зверски ратници "
 "воде свој род гвозедном песницом."
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
 msgstr "орко-ратник"
 
-#. unit: race=orc
+#. [unit]: race=orc
 #: data/core/units/orcs/Warrior.cfg:18
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
@@ -4197,12 +4197,12 @@ msgstr ""
 "гласу међу својим саборцима, и страхопоштовани од стране непријатеља. Једина "
 "слабост им је у неумећу руковања луком."
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "Saurian Ambusher"
 msgstr "саур-заседник"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
 #, fuzzy
 msgid ""
@@ -4223,12 +4223,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
 msgstr "саур-претсказач"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Augur.cfg:21
 #, fuzzy
 msgid ""
@@ -4242,19 +4242,19 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=cold
+#. [attack]: type=cold
 #: data/core/units/saurians/Soothsayer.cfg:75
 #: data/core/units/saurians/Augur.cfg:75
 #: data/core/units/saurians/Oracle.cfg:75
 msgid "curse"
 msgstr "клетва"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "Saurian Flanker"
 msgstr "саур-боковњак"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
 #, fuzzy
 msgid ""
@@ -4272,12 +4272,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
 msgstr "саур-пророк"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
 #, fuzzy
 msgid ""
@@ -4297,12 +4297,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
 msgstr "саур-чаркаш"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
 #, fuzzy
 msgid ""
@@ -4325,12 +4325,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
 msgstr "саур-правоказ"
 
-#. unit: race=lizard
+#. [unit]: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
 #, fuzzy
 msgid ""
@@ -4345,12 +4345,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
 msgstr "трол-великан"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Great.cfg:19
 #, fuzzy
 msgid ""
@@ -4367,12 +4367,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
 msgstr "трол-херој"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Hero.cfg:18
 #, fuzzy
 msgid ""
@@ -4386,12 +4386,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
 msgstr "трол-каменохит"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
 #, fuzzy
 msgid ""
@@ -4409,12 +4409,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
 msgstr "трол"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Troll.cfg:18
 #, fuzzy
 msgid ""
@@ -4434,12 +4434,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
 msgstr "трол-ратник"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Warrior.cfg:20
 #, fuzzy
 msgid ""
@@ -4464,12 +4464,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
 msgstr "трол-штенац"
 
-#. unit: race=troll
+#. [unit]: race=troll
 #: data/core/units/trolls/Whelp.cfg:19
 #, fuzzy
 msgid ""
@@ -4486,12 +4486,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
 msgstr "свирепњак"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
 #, fuzzy
 msgid ""
@@ -4515,12 +4515,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
 msgstr "некрофаг"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
@@ -4532,12 +4532,12 @@ msgid ""
 "can be nothing but nightmarish."
 msgstr ""
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
 msgid "Soulless"
 msgstr "бездушник"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:22
 #, fuzzy
 msgid ""
@@ -4553,8 +4553,8 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
-#. attack: type=arcane
+#. [attack]: type=impact
+#. [attack]: type=arcane
 #: data/core/units/undead/Corpse_Walking.cfg:72
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:119
@@ -4563,12 +4563,12 @@ msgstr ""
 msgid "touch"
 msgstr "додир"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
 msgid "Walking Corpse"
 msgstr "бауљаш"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:21
 #, fuzzy
 msgid ""
@@ -4582,12 +4582,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
 msgstr "древни косац"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
 #, fuzzy
 msgid ""
@@ -4600,13 +4600,13 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=cold
+#. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:46
 msgid "chill tempest"
 msgstr "хладна олуја"
 
-#. attack: type=arcane
+#. [attack]: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:59
 #: data/core/units/undead/Necro_Lich.cfg:58
@@ -4615,12 +4615,12 @@ msgstr "хладна олуја"
 msgid "shadow wave"
 msgstr "талас сенки"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "мрачни упућеник"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:25
 #, fuzzy
 msgid ""
@@ -4647,19 +4647,19 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=cold
+#. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
 #: data/core/units/undead/Necromancer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
 msgid "chill wave"
 msgstr "талас мраза"
 
-#. female
+#. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:199
 msgid "female^Dark Adept"
 msgstr "мрачна упућеница"
 
-#. female
+#. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:203
 #, fuzzy
 msgid ""
@@ -4686,12 +4686,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "мрачни чаробњак"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:20
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -4711,13 +4711,13 @@ msgid ""
 "the merest desire for power."
 msgstr ""
 
-#. female
+#. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
 #, fuzzy
 msgid "Dark Sorceress"
 msgstr "мрачни чаробњак"
 
-#. female
+#. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:182
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -4737,12 +4737,12 @@ msgid ""
 "the merest desire for power."
 msgstr ""
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
 msgstr "косац"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:23
 #, fuzzy
 msgid ""
@@ -4768,12 +4768,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
 msgstr "некромансер"
 
-#. unit: race=human
+#. [unit]: race=human
 #: data/core/units/undead/Necromancer.cfg:21
 #, fuzzy
 msgid ""
@@ -4795,23 +4795,23 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:26
 msgid "plague staff"
 msgstr "кужни штап"
 
-#. female
+#. [female]
 #: data/core/units/undead/Necromancer.cfg:181
 #, fuzzy
 msgid "female^Necromancer"
 msgstr "некромансер"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:4
 msgid "Banebow"
 msgstr "крволук"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:17
 #, fuzzy
 msgid ""
@@ -4829,12 +4829,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
 msgstr "коскотрг"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
 #, fuzzy
 msgid ""
@@ -4853,12 +4853,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
 msgstr "чококост"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:20
 #, fuzzy
 msgid ""
@@ -4872,12 +4872,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
 msgstr "мртви витез"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
 #, fuzzy
 msgid ""
@@ -4893,12 +4893,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
 msgstr "смртокос"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
 #, fuzzy
 msgid ""
@@ -4916,12 +4916,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
 msgstr "грозомор"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
 #, fuzzy
 msgid ""
@@ -4938,12 +4938,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
 msgstr "враћеник"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:17
 #, fuzzy
 msgid ""
@@ -4962,12 +4962,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
 msgstr "скелет"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skeleton.cfg:18
 #, fuzzy
 msgid ""
@@ -4983,12 +4983,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
 msgstr "ћеле-стрелац"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
 #, fuzzy
 msgid ""
@@ -5006,12 +5006,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
 msgstr "дух"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:20
 #, fuzzy
 msgid ""
@@ -5033,19 +5033,19 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=cold
+#. [attack]: type=cold
 #: data/core/units/undead/Spirit_Wraith.cfg:31
 #: data/core/units/undead/Spirit_Ghost.cfg:131
 #: data/core/units/undead/Spirit_Spectre.cfg:56
 msgid "wail"
 msgstr "јаук"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
 msgstr "ноћорђав"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:17
 #, fuzzy
 msgid ""
@@ -5060,12 +5060,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
 msgstr "сенка"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:19
 #, fuzzy
 msgid ""
@@ -5083,12 +5083,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
 msgstr "сабласт"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
 #, fuzzy
 msgid ""
@@ -5110,18 +5110,18 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=arcane
+#. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Wraith.cfg:20
 #: data/core/units/undead/Spirit_Spectre.cfg:45
 msgid "baneblade"
 msgstr "проклетник"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
 msgstr "утвара"
 
-#. unit: race=undead
+#. [unit]: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:16
 #, fuzzy
 msgid ""
@@ -5138,12 +5138,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=wose
+#. [unit]: race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
 msgstr "древни ивер"
 
-#. unit: race=wose
+#. [unit]: race=wose
 #: data/core/units/wose/Ancient.cfg:20
 #, fuzzy
 msgid ""
@@ -5168,18 +5168,18 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. attack: type=impact
+#. [attack]: type=impact
 #: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
 #: data/core/units/wose/Elder.cfg:91
 msgid "crush"
 msgstr "гажење"
 
-#. unit: race=wose
+#. [unit]: race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
 msgstr "стари ивер"
 
-#. unit: race=wose
+#. [unit]: race=wose
 #: data/core/units/wose/Elder.cfg:19
 #, fuzzy
 msgid ""
@@ -5207,12 +5207,12 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#. unit: race=wose
+#. [unit]: race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
 msgstr "ивер"
 
-#. unit: race=wose
+#. [unit]: race=wose
 #: data/core/units/wose/Wose.cfg:20
 #, fuzzy
 msgid ""
