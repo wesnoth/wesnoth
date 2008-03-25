@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-02 23:10+0100\n"
-"PO-Revision-Date: 2008-03-17 10:55+0100\n"
+"PO-Revision-Date: 2008-03-25 16:50+0100\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2818,6 +2818,7 @@ msgid "backstab"
 msgstr "attacco alle spalle"
 
 #: data/core/macros/abilities.cfg:544
+#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -2825,9 +2826,10 @@ msgid ""
 "to stone)."
 msgstr ""
 "Attacco alle spalle:\n"
-"Questo attacco causa il doppio dei danni se è presente, sull lato opposto di "
-"quella attaccata, un'unità nemica di quella sotto attacco, e se questa non è "
-"stata resa incapace di combattere (ad es.: trasformata in pietra)."
+"Durante la fase offensiva, questo attacco causa il doppio dei danni se è "
+"presente, sul lato opposto di quella attaccata, un'unità nemica di quella "
+"sotto attacco, e se questa non è stata resa incapace di combattere (ad es.: "
+"trasformata in pietra)."
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
@@ -2925,14 +2927,16 @@ msgid "charge"
 msgstr "carica"
 
 #: data/core/macros/abilities.cfg:642
+#, fuzzy
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
 "Carica:\n"
-"Questo attacco procura il doppio del danno al bersaglio, ma rende possibile "
-"subire il doppio dei danni al contrattacco del nemico."
+"Durante la fase offensiva, questo attacco procura il doppio del danno al "
+"bersaglio. L'unità subirà anche il doppio dei danni al contrattacco del "
+"nemico."
 
 #: data/core/macros/abilities.cfg:654
 msgid "drains"
@@ -3978,12 +3982,14 @@ msgstr ""
 "solo mentre si difende."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Il comando di questa unità le unità alleate adiacenti più efficienti in "
-"combattimento, ma ciò vale esclusivamente per le unità di livello inferiore."
+" Il comando di questa unità rende le unità alleate adiacenti più efficienti "
+"in combattimento, ma ciò vale esclusivamente per le unità di livello "
+"inferiore."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4053,13 +4059,14 @@ msgstr ""
 "fino a che uno dei due combattenti muore."
 
 #: data/core/macros/special-notes.cfg:59
+#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target, this "
 "unit may backstab, inflicting double damage by creeping around behind that "
 "enemy."
 msgstr ""
 " Se c'è un'unità nemica di quella bersaglio sul lato opposto del bersaglio, "
-"questa unità può attaccarlo alle spalle, infliggendo il doppie dei danni, "
+"questa unità può attaccarla alle spalle, infliggendo il doppie dei danni, "
 "strisciando dietro il nemico."
 
 #: data/core/macros/special-notes.cfg:62
@@ -8353,6 +8360,9 @@ msgstr "Abilita l'invio del sommario"
 
 #~ msgid "Chinese (Taiwan) Translation"
 #~ msgstr "Traduzione in cinese (Taiwan)"
+
+#~ msgid " This unit is capable of basic healing."
+#~ msgstr " Questa unità è in grado di fornire cure di primo soccorso."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
