@@ -5,8 +5,8 @@
 //! @file wesconfig.h
 //! Some defines: VERSION, PACKAGE, MIN_SAVEGAME_VERSION
 //!
-//! DO NOT MODIFY THIS FILE !!!
-//! modify SConstruct otherwise the settings will be overwritten.
+//! This file should only be modified by the packager of the tarball
+//! before and after each release.
 
 // We are building with scons, so Python cannot be absent. 
 #define HAVE_PYTHON
