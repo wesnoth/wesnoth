@@ -144,6 +144,7 @@ private:
 	//! Send [observer] tags of all the observers in the game to the user or
 	//! everyone if none given.
 	void send_observerjoins(const network::connection sock=0) const;
+	void send_observerquit(const player_map::const_iterator observer) const;
 	void send_history(const network::connection sock) const;
 	//! In case of a host transfer, notify the new host about its status.
 	void notify_new_host();
