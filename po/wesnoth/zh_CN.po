@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -3970,10 +3970,9 @@ msgid ""
 msgstr "本单位的奥术攻击对不死族造成巨大的伤害，对活着的生物也能造成伤害。"
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
-msgstr "本单位可以实施基本的治疗，但只能推迟毒药的发作，不能治愈中毒效果。"
+#, fuzzy
+msgid " This unit is capable of basic healing."
+msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4000,9 +3999,11 @@ msgid ""
 msgstr "本单位的坚忍不拔使得某些攻击的伤害下降，但这支在本单位防守时有效。"
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 "本单位的领导能力使得相邻的友好单位获得更多的攻击输出，但只对等级较低的单位有"
 "效。"
@@ -8171,6 +8172,11 @@ msgstr "帮助我们改进韦诺，提升你的游戏体验！"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr "本单位可以实施基本的治疗，但只能推迟毒药的发作，不能治愈中毒效果。"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

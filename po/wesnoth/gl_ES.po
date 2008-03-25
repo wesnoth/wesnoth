@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl_ES\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-02-28 02:12+0100\n"
 "Last-Translator: Paco <fran dot dieguez at glug dot es>\n"
 "Language-Team: Galician <en@li.org>\n"
@@ -4263,12 +4263,11 @@ msgstr ""
 "máxicas, e algo de dano ás criaturas normais."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
+#, fuzzy
+msgid " This unit is capable of basic healing."
 msgstr ""
-"Esta é unidade ten a capacidade de curación básica, polo que só pode "
-"retrasar os efectos dun veleno, non curalos por completo."
+"Esta unidade ten a capacidade de curar todo o que a rodea, e curalas dos "
+"velenos."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4302,9 +4301,11 @@ msgstr ""
 "se está a defenderes."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 " O liderazgo desta unidade permitelle que as unidades amigas preto dela "
 "fagan máis dano en combate,  aínda que esto só se aplica a unidades de nivel "
@@ -8753,6 +8754,13 @@ msgstr "Axúdanos a mellorar Wesnoth para ti!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Activar a suba de resumos"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ "Esta é unidade ten a capacidade de curación básica, polo que só pode "
+#~ "retrasar os efectos dun veleno, non curalos por completo."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

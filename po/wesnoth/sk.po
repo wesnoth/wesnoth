@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2007-10-01 20:03+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -3762,12 +3762,10 @@ msgstr ""
 "živým bytostiam."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
+#, fuzzy
+msgid " This unit is capable of basic healing."
 msgstr ""
-" Táto jednotka dokáže základné uzdravovanie; účinky jedu vie však iba "
-"oddialiť, nie celkom vyliečiť."
+" Táto jednotka dokáže liečiť ostatné jednotky okolo nej, a zbaviť ich jedu."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -3799,9 +3797,11 @@ msgstr ""
 "obrane."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 " Velenie umožňuje tejto jednotke zvýšiť zranenie, ktoré jednotky na "
 "vedľajších políčkach spôsobujú v boji; platí to len na jednotky na nižšej "
@@ -8175,6 +8175,13 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ " Táto jednotka dokáže základné uzdravovanie; účinky jedu vie však iba "
+#~ "oddialiť, nie celkom vyliečiť."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

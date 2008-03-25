@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-03-10 17:47+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -4300,12 +4300,11 @@ msgstr ""
 "algo de daño a las criaturas vivas."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
+#, fuzzy
+msgid " This unit is capable of basic healing."
 msgstr ""
-"Esta unidad tiene una capacidad básica de sanación, por lo que sólo puede "
-"retrasar los efectos del veneno, no curarlos por completo."
+" Esta unidad es capaz de sanar a todos aquellos a su alrededor y curarles "
+"del veneno."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4339,9 +4338,11 @@ msgstr ""
 "mientras se defiende."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 " El liderazgo de esta unidad permite que las unidades amigas próximas a él "
 "hagan más daño en combate, aunque esto sólo se aplica a unidades de menor "
@@ -8962,6 +8963,13 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ "Esta unidad tiene una capacidad básica de sanación, por lo que sólo puede "
+#~ "retrasar los efectos del veneno, no curarlos por completo."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

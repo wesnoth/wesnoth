@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-03-01 15:53+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -4220,12 +4220,9 @@ msgstr ""
 "ondoden, maar ook levenden zijn niet veilig."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
-msgstr ""
-" Deze eenheid beschikt over de basisvaardigheden van de geneeskunst en kan "
-"de effecten van gif slechts vertragen, niet genezen."
+#, fuzzy
+msgid " This unit is capable of basic healing."
+msgstr " Deze eenheid kan degenen die hem omringen genezen, ook van vergif."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4256,9 +4253,11 @@ msgstr ""
 "tijdens de verdediging."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 " Het leiderschap van deze eenheid motiveert bevriende eenheden van lagere "
 "rang die naast hem staan, hun klappen komen daardoor harder aan bij de "
@@ -8547,6 +8546,13 @@ msgstr "Help ons Wesnoth te verbeteren!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Samenvattingen uploaden aan"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ " Deze eenheid beschikt over de basisvaardigheden van de geneeskunst en "
+#~ "kan de effecten van gif slechts vertragen, niet genezen."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

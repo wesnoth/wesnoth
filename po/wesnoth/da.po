@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-02-19 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -4210,12 +4210,9 @@ msgstr ""
 "også til nogle levende skabninger."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
-msgstr ""
-" Denne enhed er i stand til at foretage elementær helbredelse, men kan kun "
-"forsinke effekten af gift, ikke helbrede en forgiftning fuldstændig."
+#, fuzzy
+msgid " This unit is capable of basic healing."
+msgstr " Denne enhed kan helbrede enheder omkring den, og rense dem for gift."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4247,9 +4244,11 @@ msgstr ""
 "forsvarer sig."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 " Lederskabet hos denne enhed gør at vendlige enheder tæt på den giver mere "
 "skade i kamp. Det gælder dog kun for lavererangerende enheder."
@@ -8587,6 +8586,13 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ " Denne enhed er i stand til at foretage elementær helbredelse, men kan "
+#~ "kun forsinke effekten af gift, ikke helbrede en forgiftning fuldstændig."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

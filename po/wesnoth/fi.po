@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-02-27 09:43+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
@@ -4219,12 +4219,11 @@ msgstr ""
 "olennoille, ja jopa joillekin maallisille olennoille."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
+#, fuzzy
+msgid " This unit is capable of basic healing."
 msgstr ""
-"Tämä yksikkö osaa parantaa toisia yksiköitä. Se pystyy hidastamaan myrkyn "
-"vaikutusta muttei osaa poistaa sitä kokonaan."
+"Tämä yksikkö pystyy hoivaamaan ympärillään olevia yksiköitä ja parantamaan "
+"myrkytykset."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4258,9 +4257,11 @@ msgstr ""
 "joistain hyökkäyksistä."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 "Tämä yksikkö on johtaja. Sen ympärillä olevat matalampitasoiset yksiköt "
 "tekevät enemmän vahinkoa taistelussa."
@@ -8675,6 +8676,13 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Salli yhteenvetojen lataaminen"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ "Tämä yksikkö osaa parantaa toisia yksiköitä. Se pystyy hidastamaan myrkyn "
+#~ "vaikutusta muttei osaa poistaa sitä kokonaan."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

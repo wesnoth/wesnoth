@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-03-17 14:04+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -4329,13 +4329,12 @@ msgstr ""
 "schweren Schaden zu und verletzt auch Lebende."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
+#, fuzzy
+msgid " This unit is capable of basic healing."
 msgstr ""
 " Diese Einheit ist in der Lage, alle befreundeten, direkt benachbarten "
-"Einheiten von ihren Wunden zu heilen. Sie ist jedoch nicht in der Lage, die "
-"Wirkung eines Giftes aufzuheben."
+"Einheiten von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu "
+"kurieren."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4370,9 +4369,11 @@ msgstr ""
 "Schaden einige Angriffe, jedoch nur, wenn sich die Einheit verteidigt."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 " Die Führungsqualitäten dieser Einheit gewähren allen benachbarten eigenen "
 "Einheiten einen Schadensbonus, jedoch nur, wenn sie eine niedrigere Stufe "
@@ -9027,6 +9028,14 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Die Übertragung von Zusammenfassungen erlauben"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ " Diese Einheit ist in der Lage, alle befreundeten, direkt benachbarten "
+#~ "Einheiten von ihren Wunden zu heilen. Sie ist jedoch nicht in der Lage, "
+#~ "die Wirkung eines Giftes aufzuheben."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

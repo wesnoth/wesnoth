@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-03-02 13:57+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -4175,13 +4175,11 @@ msgstr ""
 "i fins i tot també contra certes unitats vivents."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
+#, fuzzy
+msgid " This unit is capable of basic healing."
 msgstr ""
-" Aquesta unitat és capaç de guarir d'una manera bàsica les unitats al seu "
-"voltant i, encara que no pot curar-les del verí, pot retardar els seus "
-"efectes."
+" Aquesta unitat és capaç de guarir les unitats al seu voltant i curar-les "
+"del verí."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4215,9 +4213,11 @@ msgstr ""
 "només quan defèn."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 "El lideratge d'aquesta unitat permet a les unitats amigues al seu voltant "
 "causar més dany en combat, encara que açò només s'aplica a unitats de nivell "
@@ -8413,6 +8413,14 @@ msgstr "Ajuda'ns a millorar Wesnoth!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Permetre la pujada de resums"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ " Aquesta unitat és capaç de guarir d'una manera bàsica les unitats al seu "
+#~ "voltant i, encara que no pot curar-les del verí, pot retardar els seus "
+#~ "efectes."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

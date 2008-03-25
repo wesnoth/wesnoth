@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -3767,12 +3767,9 @@ msgstr ""
 "nonnulli vivis."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
-msgstr ""
-" Haec unitas mederi potest, sed tantum eventus veneni retardare potest, non "
-"omnino curare."
+#, fuzzy
+msgid " This unit is capable of basic healing."
+msgstr " Haec unitas unitates vicinas mederi potest et eas a veneno curare."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -3803,9 +3800,11 @@ msgstr ""
 "tantum in defensu."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 " Ob ductu huius unitatis oppugnationes unitatum vicinorum maiorem damnum "
 "infligere possunt, sed tantum si sunt ex gradu inferiore."
@@ -8190,6 +8189,13 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Potestatem facere summaria mittendi"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ " Haec unitas mederi potest, sed tantum eventus veneni retardare potest, "
+#~ "non omnino curare."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

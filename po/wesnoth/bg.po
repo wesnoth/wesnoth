@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -3884,12 +3884,10 @@ msgstr ""
 "и на някои нормални същества."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
+#, fuzzy
+msgid " This unit is capable of basic healing."
 msgstr ""
-"Тази единица има основни лечителски умения, но при отравяне може само да "
-"забави действието на отрова, не и да я премахне."
+"Тази единица може да лекува съседните си единици, и да изцелява отравяне."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -3923,9 +3921,11 @@ msgstr ""
 "атаки, но само когато се защитава."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 "Водаческите умения на тази единица позволяват на съседните единици да се "
 "бият по-добре, но това важи само за единиците от по-ниско ниво."
@@ -8251,6 +8251,13 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Позволи качване на обобщения"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ "Тази единица има основни лечителски умения, но при отравяне може само да "
+#~ "забави действието на отрова, не и да я премахне."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

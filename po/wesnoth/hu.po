@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:26+0100\n"
+"POT-Creation-Date: 2008-03-25 16:13+0100\n"
 "PO-Revision-Date: 2008-03-01 15:24+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
 "Language-Team: Hungarian\n"
@@ -4284,12 +4284,11 @@ msgstr ""
 "élőholtaknak, de néhány még élőnek is."
 
 #: data/core/macros/special-notes.cfg:14
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
+#, fuzzy
+msgid " This unit is capable of basic healing."
 msgstr ""
-" Ez az egység képes csillapítani mások sebződését, bár a mérgeknek csak "
-"hátráltatja a hatását, nem tudja véglegesen gyógyítani."
+" Ez az egység képes gyógyítani a körülötte állók sebződéseit, valamint "
+"kigyógyítani őket a mérgezésből."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4322,9 +4321,11 @@ msgstr ""
 "sebződését, de kizárólag védekezéskor."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
+"damage in combat, though this only applies to units of below the leadership "
+"level."
 msgstr ""
 " Ennek az egységnek a hadvezetése lehetővé teszi a mellette álló baráti "
 "egységeknek, hogy többet sebezzenek a harc során, habár ez csak az "
@@ -8714,6 +8715,13 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
+
+#~ msgid ""
+#~ " This unit is capable of basic healing, though it can only delay the "
+#~ "effects of poison, not cure them entirely."
+#~ msgstr ""
+#~ " Ez az egység képes csillapítani mások sebződését, bár a mérgeknek csak "
+#~ "hátráltatja a hatását, nem tudja véglegesen gyógyítani."
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
