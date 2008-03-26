@@ -38,7 +38,7 @@ private:
 	
 	//! Used so unit_map can keep a count of iterators and clean invalid pointers when no iterators exist. Every iterator and accessor has a counter instance.
 	struct iterator_counter {
-			iterator_counter() : has_map_(false) {}
+			iterator_counter() : map_(NULL), has_map_(false) {}
 			iterator_counter(const unit_map* map) : map_(map), has_map_(true) 
 			{ map_->add_iter(); }
 			
