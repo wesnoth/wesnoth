@@ -608,11 +608,11 @@ env.Clean(all, 'TAGS')
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
-pythonbins = [wesnoth, wesnoth_editor, cutter, exploder]
+binaries = [wesnoth, wesnoth_editor, cutter, exploder]
 pythontools = Split("wmlscope wmllint wmlindent")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
-for binary in pythonbins:
+for binary in binaries:
     env.Install(bindir, binary)
 for tool in pythontools:
     env.Install(bindir, 'data/tools/' + tool)
@@ -625,7 +625,7 @@ env.Alias('install', [bindir, datadir, pythonlib])
 #
 # Un-installation
 #
-deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), pythonbins) \
+deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), binaries) \
             + [Delete(datadir), Delete(pythonlib)]
 uninstall = env.Command('uninstall', '', deletions)
 env.AlwaysBuild(uninstall)
