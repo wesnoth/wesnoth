@@ -684,8 +684,14 @@ void tcanvas::ttext::draw(surface& canvas,
 		text_ = t_string(game_logic::formula(text_formula_).execute(variables).as_string());
 	}
 
+	if(text_.empty()) {
+		DBG_G_D << "Text: no text to render, leave.\n";
+		return;
+	}
+
 	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
 	surface surf(font::get_rendered_text(text_, font_size_, col, TTF_STYLE_NORMAL));
+	assert(surf);
 
 	game_logic::map_formula_callable local_variables(variables);
 	local_variables.add("text_width", variant(surf->w));
