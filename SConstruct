@@ -124,42 +124,6 @@ if "all" in targets or "wesnoth" in targets:
 env = conf.Finish()
 
 #
-# How to build the Wesnoth configuration file
-#
-
-wesconfig_h = '''
-#ifndef WESCONFIG_H_INCLUDED
-#define WESCONFIG_H_INCLUDED
-
-//! @file wesconfig.h
-//! Some defines: VERSION, PACKAGE, MIN_SAVEGAME_VERSION
-//!
-//! DO NOT MODIFY THIS FILE !!!
-//! modify SConstruct otherwise the settings will be overwritten.
-
-#define WESNOTH_PATH	"%(datadir)s"
-
-// We are building with scons, so Python cannot be absent. 
-#define HAVE_PYTHON
-
-# define VERSION "%(version)s"
-# define PACKAGE "wesnoth"
-# ifndef LOCALEDIR
-#  define LOCALEDIR "translations"
-# endif
-
-/**
- * Some older savegames of Wesnoth cannot be loaded anymore,
- * this variable defines the minimum required version.
- * It is only to be updated upon changes that break *all* saves/replays
- * (break as in crash Wesnoth, not compatibility issues like stat changes)
- */
-#define MIN_SAVEGAME_VERSION "%(min_savegame_version)s"
-
-#endif
-'''
-
-#
 # Implement configuration switches
 #
 extralibs=[]
@@ -203,6 +167,8 @@ if env['python']:
 # Simulate autools-like behavior of prefix and datadir
 if not env["datadir"].startswith("/"):
     env["datadir"] = os.path.join(env["prefix"], env["datadir"])
+
+env["CXXFLAGS"].append("-DWESNOTH_PATH='\"%s\"'" % env['datadir'])
 
 cc_version = env["CCVERSION"]
 if env["CC"] == "gcc":
@@ -643,7 +609,7 @@ pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
 pythonbins = [wesnoth, wesnoth_editor, cutter, exploder]
 pythontools = Split("wmlscope wmllint wmlindent")
-pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py")
+pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
 for binary in pythonbins:
     env.Install(bindir, binary)
@@ -671,7 +637,7 @@ env.Precious(uninstall)
 # 1. We don't yet check for SDL version too old
 # 2. We don't check for Ogg Vorbis support in SDL_mixer
 # 3. Translations are not yet installed.
-# 4 Installation craps out with a mysterious "Is a directory" error.
+# 4. Installation craps out with a mysterious "Is a directory" error.
 # FIXME tags other problems
 
 # Local variables:
