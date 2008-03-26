@@ -41,6 +41,7 @@ token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-
 				{ regex("^\\)"),           TOKEN_RPARENS },
 				{ regex("^\\["),           TOKEN_LSQUARE },
 				{ regex("^\\]"),           TOKEN_RSQUARE },
+				{ regex("^\\{.*?\\}"),	   TOKEN_COMMENT },
 				{ regex("^,"),             TOKEN_COMMA },
 				{ regex("^;"),             TOKEN_SEMICOLON },
 				{ regex("^\\s+"),          TOKEN_WHITESPACE }

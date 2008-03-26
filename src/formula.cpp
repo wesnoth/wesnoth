@@ -325,6 +325,16 @@ private:
 	std::string id_;
 };
 
+class null_expression : public formula_expression {
+public:
+	explicit null_expression() {};
+private:
+	variant execute(const formula_callable& variables) const {
+		return variant();
+	}
+};
+
+
 class integer_expression : public formula_expression {
 public:
 	explicit integer_expression(int i) : i_(i)
@@ -692,7 +702,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) : str_(
 	while(i1 != i2) {
 		try {
 			tokens.push_back(get_token(i1,i2));
-			if(tokens.back().type == TOKEN_WHITESPACE) {
+			if((tokens.back().type == TOKEN_WHITESPACE) || (tokens.back().type == TOKEN_COMMENT)) {
 				tokens.pop_back();
 			}
 		} catch(token_error& /*e*/) {
@@ -701,7 +711,11 @@ formula::formula(const std::string& str, function_symbol_table* symbols) : str_(
 	}
 
 	try {
-		expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols);
+		if(tokens.size() != 0) {
+			expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols);
+		} else {
+			expr_ = expression_ptr(new null_expression());
+		}	
 	} catch(...) {
 		std::cerr << "error parsing formula '" << str << "'\n";
 		throw;
