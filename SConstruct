@@ -47,7 +47,7 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 #
 
 # FIXME: Currently this will only work under Linux
-svnrev = commands.getoutput("svnversion -n 2>/dev/null")
+svnrev = commands.getoutput("svnversion -n . 2>/dev/null")
 
 env = Environment(options = opts)
 
@@ -85,13 +85,13 @@ conf = Configure(env)
 # Check some preconditions
 #
 
-if float(sys.version[:3]) < 2.4:
-    print "Python version is too old, 2.4 or greater is required,"
-    Exit(1)
-
 targets = map(str, BUILD_TARGETS)
 
-if ("wesnoth" in targets or "wesnoth_editor" in targets):
+if "wesnoth" in targets and float(sys.version[:3]) < 2.4:
+    print "Python version is too old for game, 2.4 or greater is required,"
+    Exit(1)
+
+if "wesnoth" in targets or "wesnoth_editor" in targets:
     if not conf.CheckLib('X11'):
         print "Needed X lib for game or editor and didn't find it; exiting!"
         Exit(1)
@@ -128,13 +128,16 @@ env = conf.Finish()
 #
 extralibs=[]
 
+# This is so we don't need separate link lists for each binary
+env["LINKFLAGS"].append("-Wl,-as-needed")
+
 if env["debug"]:
     env["CXXFLAGS"] += Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
 else:
     env["CXXFLAGS"] += Split("-O2 -ansi")
 
 if env['static']:
-    env["LDFLAGS"].append("-all-static")
+    env["LINKFLAGS"].append("-all-static")
 
 if env['profile']:
     env["CXXFLAGS"].append("-pg")
@@ -642,6 +645,7 @@ env.Precious(uninstall)
 # 2. We don't check for Ogg Vorbis support in SDL_mixer
 # 3. Translations are not yet installed.
 # 4. Installation craps out with a mysterious "Is a directory" error.
+#    Data directory installation isn't done right anyway, as yet.
 # FIXME tags other problems
 
 # Local variables:
