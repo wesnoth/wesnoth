@@ -34,7 +34,7 @@ utils-unused:
 # References to terrain graphics go through so many layers of nasty
 # opaque macros that trying to reference-check them is hopeless.
 # So suppress reporting them unused even if they seem to have
-# no references.  2nd and 3rd option cover stuff known to be used in UMC.
+# no references.  2nd option covers stuff known to be used in UMC.
 FORCE_USED = --force-used "terrain/" \
 	--force-used "portraits/|images/|attacks/|projectiles/|windmill"
 images-unused:
