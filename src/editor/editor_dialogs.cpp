@@ -12,6 +12,9 @@
   See the COPYING file for more details.
 */
 
+//! @file editor/editor_dialogs.cpp
+//!
+
 #include "SDL.h"
 
 #define GETTEXT_DOMAIN "wesnoth-lib"

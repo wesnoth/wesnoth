@@ -12,7 +12,7 @@
   See the COPYING file for more details.
 */
 
-//! @file editor.cpp
+//! @file editor/editor.cpp
 //! Map-editor.
 
 #include "SDL.h"
@@ -206,13 +206,12 @@ map_editor::map_editor(editor_display &gui, editormap &map, config &theme, confi
 	load_tooltips();
 }
 
-/**
- * @todo
- * This should be replaced by a WML tag called 'tooltip='
- * in the data/themes/editor.cfg file.
- * The theme and display classes should then load
- * the given tooltip in the button.
- */
+
+//! @todo
+//! This should be replaced by a WML tag called 'tooltip='
+//! in the data/themes/editor.cfg file.
+//! The theme and display classes should then load
+//! the given tooltip in the button.
 void map_editor::load_tooltips()
 {
 	// Clear all previous tooltips
@@ -451,9 +450,8 @@ void map_editor::right_click(const gamemap::location hex_clicked ) {
 	}
 }
 
-/**
- * Change the language (effectively reload the editor).
- */
+
+//! Change the language (effectively reload the editor).
 void map_editor::change_language() {
 	std::vector<language_def> langdefs = get_languages();
 

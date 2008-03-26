@@ -12,6 +12,9 @@
   See the COPYING file for more details.
 */
 
+//! @file editor/editor_undo.cpp
+//!
+
 #include "editor_undo.hpp"
 
 namespace {

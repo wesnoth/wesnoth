@@ -11,6 +11,10 @@
 
   See the COPYING file for more details.
 */
+
+//! @file editor/editor.hpp
+//!
+
 #ifndef EDITOR_H_INCLUDED
 #define EDITOR_H_INCLUDED
 
@@ -42,59 +46,59 @@ namespace map_editor {
 
 bool check_data(std::string &data, std::string &filename, bool &from_scenario, config &game_cfg);
 
-/// A map editor. Receives SDL events and can execute hotkey commands.
+//! A map editor. Receives SDL events and can execute hotkey commands.
 class map_editor : public events::handler,
 				   public hotkey::command_executor {
 public:
 	map_editor(editor_display &gui, editormap &map, config &theme, config &game_config);
 	virtual ~map_editor();
 
-	/// Enter the main loop. The loop runs until set_abort() is called
-	/// to set an abort mode which makes the loop exit.
+	//! Enter the main loop. The loop runs until set_abort() is called
+	//! to set an abort mode which makes the loop exit.
 	void main_loop();
 
-	/// Set the filename that map should be saved as.
+	//! Set the filename that map should be saved as.
 	void set_file_to_save_as(const std::string, bool from_scenario);
 
-	/// How to abort the map editor.
-	/// DONT_ABORT is set during normal operation.
-	/// When ABORT_NORMALLY is set, the editor asks for confirmation and
-	/// if save is desired before it exits.
-	/// When ABORT_HARD is set, the editor exists without asking any
-	/// questions or saving.
+	//! How to abort the map editor.
+	//! DONT_ABORT is set during normal operation.
+	//! When ABORT_NORMALLY is set, the editor asks for confirmation and
+	//! if save is desired before it exits.
+	//! When ABORT_HARD is set, the editor exists without asking any
+	//! questions or saving.
 	enum ABORT_MODE {DONT_ABORT, ABORT_NORMALLY, ABORT_HARD};
 
-	/// Set the abort flag, which indicates if the editor should exit in
-	/// some way after the current iteration of the main loop.
+	//! Set the abort flag, which indicates if the editor should exit in
+	//! some way after the current iteration of the main loop.
 	void set_abort(const ABORT_MODE abort=ABORT_NORMALLY);
 
-	/// Save the current map. If filename is an empty string, use the
-	/// filename that is set with set_file_to_save_as(). A message box
-	/// that shows confirmation that the map was saved is shown if
-	/// display_confirmation is true. Return false if the save failed.
+	//! Save the current map. If filename is an empty string, use the
+	//! filename that is set with set_file_to_save_as(). A message box
+	//! that shows confirmation that the map was saved is shown if
+	//! display_confirmation is true. Return false if the save failed.
 	bool save_map(const std::string filename="",
 				  const bool display_confirmation=true);
 
-	/// Exception thrown when the loading of a map failed.
+	//! Exception thrown when the loading of a map failed.
 	struct load_map_exception {};
 
 	virtual void handle_event(const SDL_Event &event);
 
-	/// Handle a keyboard event. mousex and mousey is the current
-	/// position of the mouse.
+	//! Handle a keyboard event. mousex and mousey is the current
+	//! position of the mouse.
 	void handle_keyboard_event(const SDL_KeyboardEvent &event,
 							   const int mousex, const int mousey);
 
-	/// Handle a mouse button event. mousex and mousey is the current
-	/// position of the mouse.
+	//! Handle a mouse button event. mousex and mousey is the current
+	//! position of the mouse.
 	void handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 								   const int mousex, const int mousey);
 
-	/// Return true if the map has changed since the last time it was
-	/// saved.
+	//! Return true if the map has changed since the last time it was
+	//! saved.
 	bool changed_since_save() const;
 
-	/// Recalculate layout and redraw everything.
+	//! Recalculate layout and redraw everything.
 	void redraw_everything();
 
 	// Change the language in_game
@@ -111,8 +115,8 @@ public:
 	virtual void edit_load_map();
 	virtual void edit_save_map();
 	virtual void edit_save_as();
-	/// Display a dialog asking for a player number and set the starting
-	/// position of the given player to the currently selected hex.
+	//! Display a dialog asking for a player number and set the starting
+	//! position of the given player to the currently selected hex.
 	virtual void edit_set_start_pos();
 	virtual void edit_flood_fill();
 	virtual void edit_fill_selection();
@@ -123,8 +127,8 @@ public:
 	virtual void edit_revert();
 	virtual void edit_resize();
 	virtual void edit_flip();
-	/// Either select or deselect all hexes on the map depending on if
-	/// this operations has been invoked before or not.
+	//! Either select or deselect all hexes on the map depending on if
+	//! this operations has been invoked before or not.
 	virtual void edit_select_all();
 	virtual void edit_draw();
 	virtual void edit_refresh();
@@ -140,7 +144,7 @@ public:
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 
 
-	/// Exception thrown when new map is to be loaded.
+	//! Exception thrown when new map is to be loaded.
 	struct new_map_exception {
 		new_map_exception(const std::string &map, const std::string filename="", const bool scenario = false)
 			: new_map(map), new_filename(filename), from_scenario(scenario) {}
@@ -150,87 +154,87 @@ public:
 	};
 
 private:
-	/// What to perform while the left button is held down.
+	//! What to perform while the left button is held down.
 	enum LEFT_BUTTON_HELD_FUNC {DRAW_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
 								MOVE_SELECTION, NONE};
 
-	/// What to perform on a left button click.
+	//! What to perform on a left button click.
 	enum LEFT_BUTTON_FUNC {DRAW, SELECT_HEXES, FLOOD_FILL,
 						   SET_STARTING_POSITION, PASTE, NUM_L_BUTTON_FUNC};
 
-	/// Called in every iteration when the left mouse button is held
-	/// down. Note that this differs from a click.
+	//! Called in every iteration when the left mouse button is held
+	//! down. Note that this differs from a click.
 	void left_button_down(const int mousex, const int mousey);
 
-	/// Handle a left click on the location.
+	//! Handle a left click on the location.
 	void left_click(const gamemap::location loc);
 
-	/// Called in every iteration when the right mouse button is held
-	/// down. Note that this differs from a click.
+	//! Called in every iteration when the right mouse button is held
+	//! down. Note that this differs from a click.
 	void right_button_down(const int mousex, const int mousey);
 
-	/// Handle a right click on the location.
+	//! Handle a right click on the location.
 	void right_click(const gamemap::location loc);
 
-	/// Called in every iteration when the middle mouse button is held
-	/// down. Note that this differs from a click.
+	//! Called in every iteration when the middle mouse button is held
+	//! down. Note that this differs from a click.
 	void middle_button_down(const int mousex, const int mousey);
 
-	/// Confirm that exiting is desired and ask for saving of the map.
-	/// Return true if exit is confirmed and the save is successful or not
-	/// wanted. Return false if exit is cancelled or the requested save
-	/// failed.
+	//! Confirm that exiting is desired and ask for saving of the map.
+	//! Return true if exit is confirmed and the save is successful or not
+	//! wanted. Return false if exit is cancelled or the requested save
+	//! failed.
 	bool confirm_exit_and_save();
 
-	/// Set the starting position for the given player to the location
-	/// given.
+	//! Set the starting position for the given player to the location
+	//! given.
 	void set_starting_position(const int player, const gamemap::location loc);
 
-	/// Check whether the filename contains illegal characters.
+	//! Check whether the filename contains illegal characters.
 	bool verify_filename(const std::string& filename, bool show_error) const;
 
-	/// Display a menu with given items and at the given location.
+	//! Display a menu with given items and at the given location.
 	void show_menu(const std::vector<std::string>& items_arg, const int xloc,
 				   const int yloc, const bool context_menu=false);
 
-	/// Pass the command onto the hotkey handling system. Quit requests
-	/// are intercepted because the editor does not want the default
-	/// behavior of those.
+	//! Pass the command onto the hotkey handling system. Quit requests
+	//! are intercepted because the editor does not want the default
+	//! behavior of those.
 	void execute_command(const hotkey::HOTKEY_COMMAND command);
 
-	/// Draw terrain at a location. The operation is saved in the undo
-	/// stack. Update the map to reflect the change.
+	//! Draw terrain at a location. The operation is saved in the undo
+	//! stack. Update the map to reflect the change.
 	void draw_terrain(const t_translation::t_terrain terrain,
 					  const std::vector<gamemap::location> &hexes);
 
-	/// Re-set the labels for the starting positions of the
-	/// players. Should be called when the terrain has changed, which
-	/// may have changed the starting positions.
+	//! Re-set the labels for the starting positions of the
+	//! players. Should be called when the terrain has changed, which
+	//! may have changed the starting positions.
 	void recalculate_starting_pos_labels();
 
-	/// Update the selection and highlightning of the hexes the mouse
-	/// currently is over.
+	//! Update the selection and highlightning of the hexes the mouse
+	//! currently is over.
 	void update_mouse_over_hexes(const gamemap::location mouse_over_hex);
 
-	/// Insert the currently selected locations in the clipboard.
+	//! Insert the currently selected locations in the clipboard.
 	void insert_selection_in_clipboard();
 
-	/// Commit hexes filling.
+	//! Commit hexes filling.
 	void perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
 		const t_translation::t_terrain terrain, map_undo_action &undo_action);
 	
-	/// Commit the movement of a selection.
+	//! Commit the movement of a selection.
 	void perform_selection_move();
 
-	/// Highlight the currently selected hexes. If clear_old is true the
-	/// old highlighting is cleared, otherwise the current selection is
-	/// only added, which may leave old selected terrain still
-	/// highlighted.
+	//! Highlight the currently selected hexes. If clear_old is true the
+	//! old highlighting is cleared, otherwise the current selection is
+	//! only added, which may leave old selected terrain still
+	//! highlighted.
 	void highlight_selected_hexes(const bool clear_old=true);
 
-	/// Clear the highlighted hexes in the gui and set a variable to
-	/// indicate this so that the brush size highlighting may be
-	/// refreshed.
+	//! Clear the highlighted hexes in the gui and set a variable to
+	//! indicate this so that the brush size highlighting may be
+	//! refreshed.
 	void clear_highlighted_hexes_in_gui();
 
 	// Sets the special overlay with the selection of fore and background
@@ -238,44 +242,44 @@ private:
 	// Clears the special overlay
 	void reset_mouseover_overlay() { gui_.clear_mouseover_hex_overlay(); }
 
-	/// Terrain has changed at the specified hex through user drawing
-	/// (not undo/redo or other special things).
+	//! Terrain has changed at the specified hex through user drawing
+	//! (not undo/redo or other special things).
 	void terrain_changed(const gamemap::location &hex);
 //	void terrain_changed(const std::vector<gamemap::location> &hexes);
 //	void terrain_changed(const std::set<gamemap::location> &hexes);
 
-	/// Save an action so that it may be undone. Add an operation to the
-	/// number done since save.
+	//! Save an action so that it may be undone. Add an operation to the
+	//! number done since save.
 	void save_undo_action(const map_undo_action &action);
 
-	/// Call when the left mouse button function has changed. Updated
-	/// the report indicating what will be performed. New_function is
-	/// the hotkey-string describing the action.
+	//! Call when the left mouse button function has changed. Updated
+	//! the report indicating what will be performed. New_function is
+	//! the hotkey-string describing the action.
 	void left_button_func_changed(const LEFT_BUTTON_FUNC func);
 
-	/// Draw black squares around the buttons that are used to select
-	/// the left button function and draw a read square around the
-	/// currently selected function.
+	//! Draw black squares around the buttons that are used to select
+	//! the left button function and draw a read square around the
+	//! currently selected function.
 	void update_l_button_palette();
 
-	/// Return the hotkey-string representing the left button
-	/// function. The "action_" is left out.
+	//! Return the hotkey-string representing the left button
+	//! function. The "action_" is left out.
 	std::string get_action_name(const LEFT_BUTTON_FUNC func) const;
 
-	/// Return true if the menu is a button used for setting the left
-	/// mouse button function.
+	//! Return true if the menu is a button used for setting the left
+	//! mouse button function.
 	bool is_left_button_func_menu(const theme::menu &menu) const;
 
-	/// Draw the terrain on the hexes the mouse is over, taking account
-	/// for brush size.
+	//! Draw the terrain on the hexes the mouse is over, taking account
+	//! for brush size.
 	void draw_on_mouseover_hexes(const t_translation::t_terrain t);
 
 	// Load the tooltips for each button
 	void load_tooltips(void);
 
-	/// An item in the buffer. Consists of the copied terrain and an
-	/// offset. When pasting stuff, the offset is used to calculate
-	/// where to put the pasted hex
+	//! An item in the buffer. Consists of the copied terrain and an
+	//! offset. When pasting stuff, the offset is used to calculate
+	//! where to put the pasted hex
 	struct buffer_item {
 		buffer_item(const gamemap::location &o, t_translation::t_terrain t, int start_side) :
 			offset(o), terrain(t), starting_side(start_side) {}

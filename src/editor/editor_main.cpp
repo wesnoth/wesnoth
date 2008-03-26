@@ -12,6 +12,8 @@
   See the COPYING file for more details.
 */
 
+//! @file editor/editor_main.cpp
+//!
 
 #include "editor.hpp"
 #include "../config.hpp"
@@ -340,7 +342,7 @@ int main(int argc, char** argv)
 	while (!done) {
 		try {
 			std::cerr << "creating map...\n";
-			//! @todo allow the editor to also create mask maps
+			//! @todo Allow the editor to also create mask maps
 			editormap map(cfg, mapdata);
 
 			const config dummy_cfg;

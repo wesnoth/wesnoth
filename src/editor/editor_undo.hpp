@@ -15,6 +15,9 @@
 // This module is used to manage actions that may be undone in the map
 // editor.
 
+//! @file editor/editor_undo.hpp
+//!
+
 #ifndef EDITOR_UNDO_H_INCLUDED
 #define EDITOR_UNDO_H_INCLUDED
 
@@ -28,7 +31,7 @@
 
 namespace map_editor {
 
-/// A saved action that may be undone.
+//! A saved action that may be undone.
 class map_undo_action {
 public:
 	map_undo_action();
@@ -49,33 +52,33 @@ public:
 					 const t_translation::t_terrain& new_tr,
 					 const gamemap::location& lc);
 
-	/// Return true if a terrain change has been saved in this undo
-	/// action.
+	//! Return true if a terrain change has been saved in this undo
+	//! action.
 	bool terrain_set() const;
 
 	void set_selection(const std::set<gamemap::location> &old_selection,
 					   const std::set<gamemap::location> &new_selection);
 
-	/// Return true if a selection change has been saved in this undo
-	/// action.
+	//! Return true if a selection change has been saved in this undo
+	//! action.
 	bool selection_set() const;
 
 	void set_map_data(const std::string &old_data,
 					  const std::string &new_data);
 
-	/// Return true if a map data change has been saved in this undo
-	/// action.
+	//! Return true if a map data change has been saved in this undo
+	//! action.
 	bool map_data_set() const;
 
 	void add_starting_location(const int old_side, const int new_side,
 							   const gamemap::location &old_loc,
 							   const gamemap::location &new_loc);
 
-	/// Return true if starting locations have been saved in this undo
-	/// action.
+	//! Return true if starting locations have been saved in this undo
+	//! action.
 	bool starting_location_set() const;
 
-	/// Return true if something have been saved in this undo
+	//! Return true if something have been saved in this undo
 	bool something_set() const;
 
 private:
@@ -95,28 +98,28 @@ private:
 
 typedef std::deque<map_undo_action> map_undo_list;
 
-/// Add an undo action to the undo stack. Resize the stack if it gets
-/// larger than the maximum size. Add an operation to the number done
-/// since save. If keep_selection is true, it indicates that the
-/// selection has not changed and the currently selected terrain should
-/// be kept if this action is redone/undone. Also clear the redo stack.
+//! Add an undo action to the undo stack. Resize the stack if it gets
+//! larger than the maximum size. Add an operation to the number done
+//! since save. If keep_selection is true, it indicates that the
+//! selection has not changed and the currently selected terrain should
+//! be kept if this action is redone/undone. Also clear the redo stack.
 void add_undo_action(const map_undo_action &action);
 
-/// Return true if there exist any undo actions in the undo stack.
+//! Return true if there exist any undo actions in the undo stack.
 bool exist_undo_actions();
-/// Return true if there exist any redo actions in the redo stack.
+//! Return true if there exist any redo actions in the redo stack.
 bool exist_redo_actions();
 
 
-/// Remove, store in the redo stack and return the last undo action
-/// stored.
+//! Remove, store in the redo stack and return the last undo action
+//! stored.
 map_undo_action pop_undo_action();
 
-/// Remove, store in the undo stack and return the last redo action
-/// stored.
+//! Remove, store in the undo stack and return the last redo action
+//! stored.
 map_undo_action pop_redo_action();
 
-/// Clear all stored information about performed actions.
+//! Clear all stored information about performed actions.
 void clear_undo_actions();
 
 }
