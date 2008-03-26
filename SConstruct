@@ -142,6 +142,7 @@ if env['static']:
 
 if env['profile']:
     env["CXXFLAGS"].append("-pg")
+    env["LINKFLAGS"].append("-pg")
 
 if env['strict']:
     env["CXXFLAGS"].append("-Werror -Wno-unused -Wno-sign-compare")
@@ -198,6 +199,7 @@ if env["CC"] == "gcc":
 boost_libs = Split("boost_iostreams-mt boost_regex")
 SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL_image SDL")
 commonlibs = SDL_libs + boost_libs + ["pthread", "png", "-lpython"+sys.version[:3]]
+wesnothdlibs = ["SDL_net", "boost_iostreams-mt", "pthread"]
 commonpath = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]]
 
 #color_range.cpp should be removed, but game_config depends on it.
@@ -286,7 +288,7 @@ libwesnothd_sources = [
     "src/tools/dummy_video.cpp",
     ]
 env.Library("wesnothd", libwesnothd_sources, 
-            CPPPATH = commonpath)
+            CPPPATH = ['src', '/usr/include/SDL'])
 
 libcampaignd_sources = [
     "src/publish_campaign.cpp",
@@ -417,8 +419,8 @@ wesnothd_sources = [
     "src/server/simple_wml.cpp",
     ]
 wesnothd = env.Program("wesnothd", wesnothd_sources,
-            CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
-            LIBS =  ['wesnoth_core', 'wesnothd'] + commonlibs,
+            CPPPATH = ['src', 'src/server', '/usr/include/SDL'],
+            LIBS =  ['wesnoth_core', 'wesnothd'] + wesnothdlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 cutter_sources = [
@@ -619,6 +621,7 @@ env.Clean(all, 'TAGS')
 #
 # Installation productions
 #
+wesnothd_env = env.Clone()
 
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
@@ -636,6 +639,8 @@ for module in pythonmodules:
 for subdir in Split('data fonts icons images sounds'):
     env.Install(datadir, subdir)
 env.Alias('install', [bindir, datadir, pythonlib])
+
+wesnothd_env.Default(env.Alias("wesnothd-install", env.InstallAs(bindir + "/wesnothd", wesnothd)))
 
 #
 # Un-installation
