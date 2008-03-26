@@ -519,6 +519,7 @@ void server::run() {
 				memcpy(buf_ptr, &buf[0], buf.size());
 				simple_wml::string_span compressed_buf(buf_ptr, buf.size());
 				simple_wml::document data(compressed_buf);
+				data.take_ownership_of_buffer(buf_ptr);
 				std::vector<char>().swap(buf);
 
 				const clock_t after_parsing = get_cpu_time(sample);
