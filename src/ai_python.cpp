@@ -38,8 +38,6 @@
    supposed to be catched by user scripts.
 */
 
-#include "wesconfig.h"
-
 #ifdef HAVE_PYTHON
 
 #include "global.hpp"

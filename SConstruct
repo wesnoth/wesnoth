@@ -435,10 +435,11 @@ env.Program("test", test_sources,
 
 # FIXME: Include this in gameconfig.cpp when we switch over to scons.
 # Because of the content check, scons will do the right thing.
-# At that point -DSVNREV can be removed from CXXFLAGS.
-#r = env.Command("revision_stamp.h", [],
-#            'echo "#define REVISION \"%s\"" >revision_stamp.h' % svnrev)
-#env.AlwaysBuild(r)
+# At that point the following line and -DSVNREV can be removed from CXXFLAGS.
+env.Depends('src/game_config.o', 'revision_stamp.h')
+r = env.Command("revision_stamp.h", [],
+            'echo "#define REVISION \"%s\"" >revision_stamp.h' % svnrev)
+env.AlwaysBuild(r)
 
 #
 # File inventory, for archive makes abd analysis tools

@@ -40,7 +40,6 @@
 #include "video.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "wesconfig.h"
 #include <algorithm>
 
 #include "SDL_ttf.h"

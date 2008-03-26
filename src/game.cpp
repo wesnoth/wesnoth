@@ -49,7 +49,6 @@
 #include "titlescreen.hpp"
 #include "util.hpp"
 #include "upload_log.hpp"
-#include "wesconfig.h"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -285,6 +284,7 @@ game_controller::game_controller(int argc, char** argv)
 
 		}
 	}
+	std::cerr << "Data at '" << game_config::path << "'\n";
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if (no_sound || ((preferences::sound_on() || preferences::music_on() ||

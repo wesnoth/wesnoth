@@ -371,7 +371,7 @@ std::string get_cwd()
 	if(res != NULL) {
 		std::string str(res);
 
-#ifdef WIN32
+#ifdef _WIN32
 		std::replace(str.begin(),str.end(),'\\','/');
 #endif
 
