@@ -428,7 +428,7 @@ int node::output_size() const
 	return res;
 }
 
-void node::shift_buffers(int offset)
+void node::shift_buffers(ptrdiff_t offset)
 {
 	if(!output_cache_.empty()) {
 		output_cache_ = string_span(output_cache_.begin() + offset, output_cache_.size());
