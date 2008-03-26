@@ -34,103 +34,296 @@ class unit;
 
 class unit_map
 {
+private:
+	
+	//! Used so unit_map can keep a count of iterators and clean invalid pointers when no iterators exist. Every iterator and accessor has a counter instance.
+	struct iterator_counter {
+			iterator_counter() : has_map_(false) {}
+			iterator_counter(const unit_map* map) : map_(map), has_map_(true) 
+			{ map_->add_iter(); }
+			
+			iterator_counter(const iterator_counter& i) : has_map_(i.has_map_) 	{
+				if (has_map_) 
+					{ map_ = i.map_; map_->add_iter(); } 
+			}
+			
+			iterator_counter &operator =(const iterator_counter &that) {
+				if (this == &that)
+					return *this;
+				
+				if (has_map_) map_->remove_iter();
+				
+				has_map_ = that.has_map_;
+								
+				if (has_map_) {
+					map_=that.map_;
+					map_->add_iter();
+				}	
+				
+				return *this;			
+			}
+						
+			~iterator_counter() {if (has_map_) map_->remove_iter(); }
+		private:	
+			const unit_map* map_;
+			bool has_map_;			
+	};
+	
 public:
-	unit_map() { };
+	unit_map() : num_iters_(0), num_invalid_(0) { };
 	unit_map(const unit_map &that);
 	unit_map &operator =(const unit_map &that);
 	//! A unit map with a single unit in it.
 	explicit unit_map(const gamemap::location &loc, const unit &u);
 	~unit_map();
+	
+	//! Keyed with unit's underlying_id. bool flag is whether the following pair pointer is valid. pointer to pair used to imitate a map<location, unit>
+	typedef std::map<std::string,std::pair<bool, std::pair<gamemap::location,unit>*> > umap;
+	
+	//! Maintains only the valid pairs. Used to determine validity in umap, and for faster lookup by location.
+	typedef std::map<gamemap::location, std::pair<gamemap::location, unit>*> lmap;
+		
+	struct const_unit_iterator;	
+	struct unit_xy_iterator;
+	struct const_unit_xy_iterator;
+	struct xy_accessor;
+	struct const_xy_accessor;
 
-	//! We actually keep map to pointers to pairs.  Easy to fake iterators.
-	typedef std::map<gamemap::location,std::pair<gamemap::location,unit>*> pmap;
-	struct iterator;
-	struct const_iterator {
-		const_iterator() { }
-		const_iterator(const iterator &i) : i_(i.i_) { }
-
-		const std::pair<gamemap::location,unit>* operator->() const
-			{ return i_->second; }
-
-		const std::pair<gamemap::location,unit>& operator*() const;
-
-		const_iterator operator++()
-			{ return const_iterator(++i_); }
-
-		const_iterator operator++(int)
-			{ return const_iterator(i_++); }
-
-		const_iterator operator--()
-			{ return const_iterator(--i_); }
-
-		bool operator==(const const_iterator &that) const
-			{ return that.i_ == this->i_; }
-
-		bool operator!=(const const_iterator &that) const
-			{ return that.i_ != this->i_; }
-
-		explicit const_iterator(pmap::const_iterator i)	: i_(i) { }
-
-	private:
-		pmap::const_iterator i_;
-	};
-
-	struct iterator {
-		iterator() { }
-
-		std::pair<gamemap::location,unit> *operator->() const
-			{ return i_->second; }
-
+	//! For iterating over every unit. Iterator is valid as long as there is there is a unit w/ matching underlying_id in the map.
+	struct unit_iterator
+	{
+		unit_iterator() { }
+		
+		unit_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) { }
+		unit_iterator(umap::iterator i, unit_map* map) : counter(map), i_(i), map_(map) { }
+					
+		std::pair<gamemap::location,unit> *operator->() const;
 		std::pair<gamemap::location,unit>& operator*() const;
 
-		iterator operator++()
-			{ return iterator(++i_); }
+		unit_iterator operator++();
+		unit_iterator operator++(int);
+		
 
-		iterator operator++(int)
-			{ return iterator(i_++); }
-
-		bool operator==(const iterator &that) const
+		bool operator==(const unit_iterator &that) const
 			{ return that.i_ == this->i_; }
 
-		bool operator!=(const iterator &that) const
+		bool operator!=(const unit_iterator &that) const
 			{ return that.i_ != this->i_; }
-
-		explicit iterator(pmap::iterator i)	: i_(i) { }
-
-		friend struct const_iterator;
+			
+		bool valid() const
+			{ return i_ != map_->map_.end() && i_->second.first; }
+			
+		friend struct const_unit_iterator;
+		friend struct unit_xy_iterator;
+		friend struct const_unit_xy_iterator;
+		friend struct xy_accessor;
+		friend struct const_xy_accessor;
+		
 	private:
-		pmap::iterator i_;
+		iterator_counter counter;
+		
+		umap::iterator i_;
+		unit_map* map_;
 	};
+	
+	struct const_unit_iterator
+	{
+		const_unit_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) { }
+		
+		const_unit_iterator() { }
+				
+		const_unit_iterator(const const_unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) { }
+		const_unit_iterator(umap::const_iterator i, const unit_map* map): counter(map), i_(i), map_(map) { }
+		
+		const std::pair<gamemap::location,unit>* operator->() const;
+		const std::pair<gamemap::location,unit>& operator*() const;
 
-	iterator find(const gamemap::location &loc) {
-		return iterator(map_.find(loc));
-	}
-	const_iterator find(const gamemap::location &loc) const	{
-		return const_iterator(map_.find(loc));
-	}
+		const_unit_iterator operator++();
 
+		const_unit_iterator operator++(int);
+
+		const_unit_iterator operator--();
+
+		bool operator==(const const_unit_iterator &that) const
+			{ return that.i_ == this->i_; }
+
+		bool operator!=(const const_unit_iterator &that) const
+			{ return that.i_ != this->i_; }
+			
+		bool valid() const
+			{ return i_ != map_->map_.end() && i_->second.first; }
+			
+		friend struct const_unit_xy_iterator;
+		friend struct const_xy_accessor;
+		
+	private:	
+		iterator_counter counter;
+					
+		umap::const_iterator i_;	
+		const unit_map* map_;
+	};
+	
+	typedef unit_iterator iterator;
+	typedef const_unit_iterator const_iterator;
+	
+	//! Similar to unit_iterator, except that becomes invalid if unit is moved while the iterator points at it. Can update to the new position w/ update_loc().
+	struct unit_xy_iterator
+	{
+		unit_xy_iterator(const unit_iterator &i);
+		
+		unit_xy_iterator() { }
+				
+		unit_xy_iterator(const unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_)
+			{ if (i.valid()) loc_ = i.loc_; }
+			
+		unit_xy_iterator(umap::iterator i, unit_map* map, gamemap::location loc): counter(map), i_(i), map_(map), loc_(loc) { }
+		
+		std::pair<gamemap::location,unit>* operator->() const;
+		std::pair<gamemap::location,unit>& operator*() const;
+
+		unit_xy_iterator operator++();
+
+		unit_xy_iterator operator++(int);
+
+		bool operator==(const unit_xy_iterator &that) const
+			{ return that.i_ == this->i_; }
+
+		bool operator!=(const unit_xy_iterator &that) const
+			{ return that.i_ != this->i_; }
+			
+		bool valid() const;
+			
+		friend struct const_unit_xy_iterator;
+		friend struct xy_accessor;
+		friend struct const_xy_accessor;
+		
+	private:	
+		iterator_counter counter;	
+		
+		umap::iterator i_;	
+		unit_map* map_;
+		
+		gamemap::location loc_;	
+	};
+	
+	struct const_unit_xy_iterator
+	{
+		const_unit_xy_iterator(const unit_iterator &i);
+		const_unit_xy_iterator(const const_unit_iterator &i);
+		
+		const_unit_xy_iterator() { }
+							
+		const_unit_xy_iterator(umap::const_iterator i, const unit_map* map, gamemap::location loc): counter(map), i_(i), map_(map), loc_(loc)  { }
+					
+		const_unit_xy_iterator(const unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) 
+			{ if (i.valid()) loc_ = i.loc_; }			
+		const_unit_xy_iterator(const const_unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_)
+			{ if (i.valid()) loc_ = i.loc_; }
+
+		const std::pair<gamemap::location,unit>* operator->() const;
+		const std::pair<gamemap::location,unit>& operator*() const;
+
+		const_unit_xy_iterator operator++();
+
+		const_unit_xy_iterator operator++(int);
+
+		bool operator==(const const_unit_xy_iterator &that) const
+			{ return that.i_ == this->i_; }
+
+		bool operator!=(const const_unit_xy_iterator &that) const
+			{ return that.i_ != this->i_; }
+			
+		bool valid() const;
+		
+		friend struct const_xy_accessor;
+		
+	private:		
+		iterator_counter counter;
+		
+		umap::const_iterator i_;	
+		const unit_map* map_;
+		
+		gamemap::location loc_;	
+	};
+	
+	//! Used to access the unit at a given position. Is valid as long as any unit is in that position. Can switch from invalid to valid.
+	struct xy_accessor
+	{
+		xy_accessor(const unit_iterator &i);
+		xy_accessor(const unit_xy_iterator &i);		
+		xy_accessor() { }
+		
+		std::pair<gamemap::location,unit>* operator->();
+		std::pair<gamemap::location,unit>& operator*();
+		
+		bool valid();
+		
+	private:
+		iterator_counter counter;
+		
+		umap::iterator i_;
+		unit_map* map_;
+				
+		gamemap::location loc_;		
+	};
+	
+	struct const_xy_accessor
+	{
+		const_xy_accessor(const unit_iterator &i);
+		const_xy_accessor(const unit_xy_iterator &i);
+		const_xy_accessor(const const_unit_iterator &i);
+		const_xy_accessor(const const_unit_xy_iterator &i);
+				
+		const_xy_accessor() { }
+		
+		const std::pair<gamemap::location,unit>* operator->();
+		const std::pair<gamemap::location,unit>& operator*();
+		
+		bool valid();
+		
+	private:
+		iterator_counter counter;
+		
+		umap::const_iterator i_;
+		const unit_map* map_;
+				
+		gamemap::location loc_;		
+	};
+	
+	//! Return object can be implicitly converted to any of the other iterators or accessors
+	unit_iterator find(const gamemap::location &loc) ;
+	
+	//! Return object can be implicity converted to any of the other const iterators or accessors
+	const_unit_iterator find(const gamemap::location &loc) const;
+	
 	size_t count(const gamemap::location &loc) const {
-		return map_.count(loc);
+		return lmap_.count(loc);
 	}
 
-	iterator begin() {
-		return iterator(map_.begin());
+	//! Return object can be implicitly converted to any of the other iterators or accessors
+	unit_iterator begin();
+
+	//! Return object can be implicity converted to any of the other const iterators or accessors
+	const_unit_iterator begin() const {
+		umap::const_iterator i = map_.begin();
+		while (i != map_.end() && !i->second.first) { 
+			++i; 
+		}
+		return const_unit_iterator(i, this);
 	}
 
-	const_iterator begin() const {
-		return const_iterator(map_.begin());
+	//! Return object can be implicitly converted to any of the other iterators or accessors
+	unit_iterator end() {
+		return iterator(map_.end(), this);
 	}
 
-	iterator end() {
-		return iterator(map_.end());
-	}
-
-	const_iterator end() const {
-		return const_iterator(map_.end());
-	}
-
+	//! Return object can be implicity converted to any of the other const iterators or accessors
+	const_unit_iterator end() const {
+		return const_iterator(map_.end(), this);
+	}	
+	
 	size_t size() const {
-		return map_.size();
+		return lmap_.size();
 	}
 
 	void clear();
@@ -138,25 +331,40 @@ public:
 	//! Extract (like erase, only don't delete).
 	std::pair<gamemap::location,unit> *extract(const gamemap::location &loc);
 
-	//! Map owns pointer after this.  Loc must be currently empty.
+	//! Map owns pointer after this.  Loc must be currently empty. unit's underlying_id should not be present in the map already
 	void add(std::pair<gamemap::location,unit> *p);
 
 	//! Like add, but loc must be occupied (implicitly erased).
 	void replace(std::pair<gamemap::location,unit> *p);
 
-	void erase(iterator pos);
+	void erase(xy_accessor pos);
 	size_t erase(const gamemap::location &loc);
 
 	void swap(unit_map& o) {
 		map_.swap(o.map_);
+		lmap_.swap(o.lmap_);
 	}
-
+	
+	//! Removes invalid entries in map_. Called automatically when safe and needed.
+	void clean_invalid();
+		
 private:
-
+	
+	void update_validity(umap::iterator iter);	
 	void delete_all();
+	
+	void add_iter() const { ++num_iters_; }
+	void remove_iter() const { --num_iters_; }
 
-	//! A map of pairs is redundant, but makes it possible to imitate a map of location,unit.
-	std::map<gamemap::location,std::pair<gamemap::location,unit>*> map_;
+	
+	//! Key: unit's underlying_id. bool indicates validity of pointer. pointer to pair used to imitate a map<location, unit>
+	std::map<std::string,std::pair<bool, std::pair<gamemap::location,unit>*> > map_;
+	
+	//! Maintains only the valid pairs. Used to determine validity in umap, and for faster lookup by location.
+	std::map<gamemap::location, std::pair<gamemap::location, unit>*> lmap_;
+	
+	mutable size_t num_iters_;
+	size_t num_invalid_;
 };
 
 #endif	// UNIT_MAP_H_INCLUDED
