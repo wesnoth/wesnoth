@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
 "PO-Revision-Date: 2007-12-07 21:38+0100\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"Last-Translator: Damien J <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr "tout"
 #. [editor_group]
 #: data/core/editor-groups.cfg:17
 msgid "water"
-msgstr "eaux"
+msgstr "eau"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:29
@@ -36,12 +36,12 @@ msgstr "plat"
 #. [editor_group]
 #: data/core/editor-groups.cfg:35
 msgid "desert"
-msgstr "déserts"
+msgstr "désert"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:41
 msgid "forest"
-msgstr "forêts"
+msgstr "forêt"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:47
@@ -56,17 +56,17 @@ msgstr "accidenté"
 #. [editor_group]
 #: data/core/editor-groups.cfg:59
 msgid "cave"
-msgstr "cavernes"
+msgstr "caverne"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:65
 msgid "village"
-msgstr "villages"
+msgstr "village"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:71
 msgid "castle"
-msgstr "châteaux"
+msgstr "château"
 
 #. [menu]
 #: data/themes/editor.cfg:462
@@ -90,7 +90,7 @@ msgstr "villages"
 
 #: src/editor/editor.cpp:236
 msgid "Draw tiles"
-msgstr "Afficher les briques"
+msgstr "Afficher les cases"
 
 #: src/editor/editor.cpp:238
 msgid "Fill"
@@ -98,7 +98,7 @@ msgstr "Remplir"
 
 #: src/editor/editor.cpp:240
 msgid "Set player's starting position"
-msgstr "Placer la position de départ du joueur"
+msgstr "Définir la position de départ du joueur"
 
 #: src/editor/editor.cpp:242
 msgid "Zoom in"
@@ -118,7 +118,7 @@ msgstr "Refaire"
 
 #: src/editor/editor.cpp:250
 msgid "Zoom to default view"
-msgstr "Zoom à la vue par défaut"
+msgstr "Revenir à la vue par défaut"
 
 #: src/editor/editor.cpp:252
 msgid "Toggle grid"
@@ -150,7 +150,7 @@ msgstr "Choisissez votre langue préférée : "
 
 #: src/editor/editor.cpp:488 src/editor/editor_main.cpp:305
 msgid "Battle for Wesnoth Map Editor"
-msgstr "Éditeur de cartes de la bataille pour Wesnoth"
+msgstr "Éditeur de cartes de « Bataille pour Wesnoth »"
 
 #: src/editor/editor.cpp:516
 msgid "Save the Map As"
@@ -178,15 +178,15 @@ msgstr "Quel joueur débutera ici ?"
 
 #: src/editor/editor.cpp:621
 msgid "Choose a Map to Load"
-msgstr "Choisissez une carte à charger"
+msgstr "Choisissez la carte à charger"
 
 #: src/editor/editor.cpp:625
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
-"Avertissement : caractères illégaux rencontrés dans le nom de la carte. "
-"Veuillez sauvergarder sous un nom différent."
+"Attention : caractères non valides utilisés dans le nom de la carte. "
+"Veuillez sauvegarder sous un nom différent."
 
 #: src/editor/editor.cpp:638 src/editor/editor.cpp:719
 msgid "The file does not contain a valid map."
@@ -210,7 +210,7 @@ msgstr "Impossible de sauvegarder la carte : $msg"
 
 #: src/editor/editor.cpp:1396
 msgid "Error: Illegal character in filename."
-msgstr "Erreur : caractère illégal dans le nom du fichier."
+msgstr "Erreur : caractère non valide dans le nom du fichier."
 
 #: src/editor/editor_palettes.cpp:433
 msgid "FG"
@@ -225,8 +225,7 @@ msgstr "AP"
 msgid ""
 "Can't resize the map, the requested size is bigger than the maximum, size="
 msgstr ""
-"Impossible de redimensionner la carte, la taille supérieure au maximum. "
-"Taille ="
+"Impossible de redimensionner la carte, taille supérieure au maximum. Taille ="
 
 #: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
 #: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
