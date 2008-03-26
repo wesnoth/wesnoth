@@ -167,6 +167,18 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	VALIDATE(buttons.find("default") != buttons.end(), _ ("No default button defined."));
 
+	/***** Text box definitions *****/
+	const config::child_list& text_box_cfg = cfg.get_children("text_box_definition");
+	for(std::vector<config*>::const_iterator itor = text_box_cfg.begin();
+			itor != text_box_cfg.end(); ++itor) {
+
+		std::pair<std::string, ttext_box_definition> child;
+		child.first = child.second.read(**itor);
+		text_boxs.insert(child);
+	}
+
+	VALIDATE(text_boxs.find("default") != text_boxs.end(), _ ("No default text box defined."));
+
 	/***** Window types *****/
 	const config::child_list& window_instance_cfgs = cfg.get_children("window");
 	for(std::vector<config*>::const_iterator itor = window_instance_cfgs.begin();
@@ -301,6 +313,63 @@ tbutton_definition::tresolution::tstate::tstate(const config* cfg) :
 	canvas.set_cfg(*draw);
 }
 
+const std::string& ttext_box_definition::read(const config& cfg)
+{
+/*WIKI
+ * [text_box_definition]
+ * The definition of a normal text box.
+ *
+ *     id = (string = "")            Unique id for this gui (theme).
+ *     description = (t_string = "") Unique translatable name for this gui.
+ *
+ *     [resolution]                  The definitions of the text_box in various
+ *                                   resolutions.
+ * [/text_box_definition]
+ */
+	id = cfg["id"];
+	description = cfg["description"];
+
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
+
+	std::cerr << "Parsing text_box " << id << '\n';
+
+	const config::child_list& cfgs = cfg.get_children("resolution");
+	VALIDATE(!cfgs.empty(), _("No resolution defined."));
+	for(std::vector<config*>::const_iterator itor = cfgs.begin();
+			itor != cfgs.end(); ++itor) {
+
+		resolutions.push_back(tresolution(**itor));
+	}
+
+	return id;
+}
+
+ttext_box_definition::tresolution::tresolution(const config& cfg) :
+	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
+	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
+	min_width(lexical_cast_default<unsigned>(cfg["min_width"])),
+	min_height(lexical_cast_default<unsigned>(cfg["min_height"])),
+	default_width(lexical_cast_default<unsigned>(cfg["default_width"])),
+	default_height(lexical_cast_default<unsigned>(cfg["default_height"])),
+	max_width(lexical_cast_default<unsigned>(cfg["max_width"])),
+	max_height(lexical_cast_default<unsigned>(cfg["max_height"])),
+	enabled(cfg.child("state_enabled"))
+{
+	std::cerr << "Parsing resolution " 
+		<< window_width << ", " << window_height << '\n';
+}
+
+ttext_box_definition::tresolution::tstate::tstate(const config* cfg) :
+	canvas()
+{
+	const config* draw = cfg ? cfg->child("draw") : 0;
+
+	VALIDATE(draw, _("No state or draw section defined."));
+
+	canvas.set_cfg(*draw);
+}
+
 const std::string& twindow_definition::read(const config& cfg)
 {
 /*WIKI
@@ -393,6 +462,34 @@ std::vector<tbutton_definition::tresolution>::const_iterator get_button(const st
 	for(std::vector<tbutton_definition::tresolution>::const_iterator 
 			itor = button->second.resolutions.begin(),
 			end = button->second.resolutions.end();
+			itor != end;
+			++itor) {
+
+		if(screen_width <= itor->window_width &&
+				screen_height <= itor->window_height) {
+
+			return itor;
+		} else if (itor == end - 1) {
+			return itor;
+		}
+	}
+
+	assert(false);
+}
+
+std::vector<ttext_box_definition::tresolution>::const_iterator get_text_box(const std::string& definition)
+{
+	std::map<std::string, ttext_box_definition>::const_iterator 
+		text_box = current_gui->second.text_boxs.find(definition);
+
+	if(text_box == current_gui->second.text_boxs.end()) {
+		text_box = current_gui->second.text_boxs.find("default");
+		assert(text_box != current_gui->second.text_boxs.end());
+	}
+
+	for(std::vector<ttext_box_definition::tresolution>::const_iterator 
+			itor = text_box->second.resolutions.begin(),
+			end = text_box->second.resolutions.end();
 			itor != end;
 			++itor) {
 

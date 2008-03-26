@@ -46,6 +46,7 @@ public:
 	virtual twidget* get_widget(const tpoint& coordinate) = 0;
 
 	void mouse_capture(const bool capture = true);
+	void keyboard_capture(twidget* widget) { keyboard_focus_ = widget; }
 
 private:
 	//! we create a new event context so we're always modal.
@@ -73,6 +74,7 @@ private:
 	twidget* mouse_focus_;
 	bool mouse_captured_;
 
+	twidget* keyboard_focus_;
 
 	void mouse_enter(const SDL_Event& event, twidget* mouse_over);
 	void mouse_move(const SDL_Event& event, twidget* mouse_over);
@@ -85,6 +87,7 @@ private:
 
 	void set_hover(const bool test_on_widget = false);
 
+	void key_down(const SDL_Event& event);
 
 };
 

@@ -92,6 +92,50 @@ struct tbutton_definition
 	std::vector<tresolution> resolutions;
 };
 
+struct ttext_box_definition
+{
+	std::string id;
+	t_string description;
+
+	const std::string& read(const config& cfg);
+
+	struct tresolution 
+	{
+	private:
+		tresolution();
+
+	public:
+		tresolution(const config& cfg);
+
+		unsigned window_width;
+		unsigned window_height;
+
+		unsigned min_width;
+		unsigned min_height;
+
+		unsigned default_width;
+		unsigned default_height;
+
+		unsigned max_width;
+		unsigned max_height;
+
+		struct tstate
+		{
+		private:
+			tstate();
+
+		public:
+			tstate(const config* cfg);
+
+			tcanvas canvas;
+		};
+
+		tstate enabled;
+	};
+
+	std::vector<tresolution> resolutions;
+};
+
 struct twindow_definition
 {
 
@@ -147,12 +191,14 @@ struct tgui_definition
 	const std::string& read(const config& cfg);
 
 	std::map<std::string, tbutton_definition> buttons;
+	std::map<std::string, ttext_box_definition> text_boxs;
 	std::map<std::string, twindow_definition> windows;
 
 	std::map<std::string, twindow_builder> window_types;
 };
 
 	std::vector<tbutton_definition::tresolution>::const_iterator get_button(const std::string& definition);
+	std::vector<ttext_box_definition::tresolution>::const_iterator get_text_box(const std::string& definition);
 	std::vector<twindow_definition::tresolution>::const_iterator get_window(const std::string& definition);
 
 	std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type);

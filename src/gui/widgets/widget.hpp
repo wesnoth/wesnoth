@@ -103,6 +103,13 @@ public:
 	virtual void mouse_right_button_click(tevent_handler&) {}
 	virtual void mouse_right_button_double_click(tevent_handler&) {}
 
+	//! Handled, if there's a keyboard focus it will get the change to
+	//! handle the key first, if not done it's send to the window.
+	//! SDLKey the sdl key code needed for special keys
+	//! SDLMod the keyboard modifiers at moment of pressing
+	//! Unit16 the unicode for the pressed key
+	virtual void key_press(tevent_handler&, bool&, SDLKey, SDLMod, Uint16) {} 
+
 	virtual void window_resize(tevent_handler&, const unsigned /* new_width */, 
 		const unsigned /* new_height */) {}
 
@@ -299,7 +306,7 @@ public:
 	tcontrol(/*const int x = -1, const int y = -1, const int w = -1, const int h = -1*/);
 	virtual ~tcontrol() {}
 
-	void set_label(const std::string& label) { label_ = label; }
+	void set_label(const std::string& label) { label_ = label; set_dirty(); }
 
 	const std::string& label() const { return label_; }
 /*

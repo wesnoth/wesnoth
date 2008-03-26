@@ -72,7 +72,8 @@ tevent_handler::tevent_handler() :
 	hover_box_(),
 	had_hover_(false),
 	mouse_focus_(0),
-	mouse_captured_(false)
+	mouse_captured_(false),
+	keyboard_focus_(0)
 {
 	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
 		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
@@ -141,6 +142,10 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 		case HOVER_EVENT:
 			mouse_hover(event, 0);
+			break;
+
+		case SDL_KEYDOWN:
+			key_down(event);
 			break;
 
 		case SDL_VIDEORESIZE:
@@ -343,6 +348,18 @@ void tevent_handler::set_hover(const bool test_on_widget)
 			
 	// Fixme delay show be a setting
 	SDL_AddTimer(1500, hover_callback, hover);
+}
+
+void tevent_handler::key_down(const SDL_Event& event)
+{
+	bool handled = false;
+	if(keyboard_focus_) {
+		keyboard_focus_->key_press(*this, handled, event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
+	}
+
+	if(!handled) {
+		get_window().key_press(*this, handled, event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
+	}
 }
 
 /**

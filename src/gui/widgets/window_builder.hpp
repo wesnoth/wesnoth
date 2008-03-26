@@ -15,6 +15,7 @@
 #ifndef __GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED__
 #define __GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED__
 
+#include "reference_counted_object.hpp"
 #include "tstring.hpp"
 
 #include <string>
@@ -25,6 +26,7 @@ class CVideo;
 
 namespace gui2 {
 
+class twidget;
 class twindow;
 
 twindow build(CVideo& video, const std::string& type);
@@ -52,7 +54,7 @@ public:
 		
 		std::string definition;
 
-		struct tgrid
+		struct tgrid 
 		{
 		private:
 			tgrid();
@@ -63,21 +65,51 @@ public:
 			unsigned rows;
 			unsigned cols;
 
-			struct twidget
+			struct tbuilder_widget : public reference_counted_object
 			{
 			// NOTE a widget is always a button atm.
 			private:
-				twidget();
+				tbuilder_widget();
 
 			public:
-				twidget(const config& cfg);
+				tbuilder_widget(const config& cfg);
 
 				std::string id;
 				std::string definition;
 				t_string label;
+
+				virtual twidget* build() const = 0;
+				virtual ~tbuilder_widget() {}
 			};
 
-			std::vector<twidget> widgets;
+			struct tbuilder_button : public tbuilder_widget
+			{
+
+			private:
+				tbuilder_button();
+			public:
+				tbuilder_button(const config& cfg) : tbuilder_widget(cfg) {}
+
+				twidget* build () const;
+
+			};
+
+			struct tbuilder_text_box : public tbuilder_widget
+			{
+
+			private:
+				tbuilder_text_box();
+			public:
+				tbuilder_text_box(const config& cfg) : tbuilder_widget(cfg) {}
+
+				twidget* build () const;
+
+			};
+
+			typedef boost::intrusive_ptr<tbuilder_widget> tbuilder_widget_ptr;
+			typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
+
+			std::vector<tbuilder_widget_ptr> widgets;
 		};
 
 	

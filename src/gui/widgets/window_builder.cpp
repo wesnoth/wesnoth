@@ -18,6 +18,8 @@
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
+#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
@@ -63,19 +65,8 @@ twindow build(CVideo& video, const std::string& type)
 	for(unsigned x = 0; x < rows; ++x) {
 		for(unsigned y = 0; y < cols; ++y) {
 
-			tbutton *button = new tbutton();
-
-			const std::string id = definition->grid.widgets[x * cols + y].id;
-			const std::string def = definition->grid.widgets[x * cols + y].definition;
-			const t_string label = definition->grid.widgets[x * cols + y].label;
-			button->set_definition(id);
-			button->set_definition(def);
-			button->set_label(label);
-			window.add_child(button, x, y);
-
-			DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
-				<< def << "' at " << x << ", " << y << '\n';
-
+			twidget* widget = definition->grid.widgets[x * cols + y]->build();
+			window.add_child(widget, x, y);
 		}
 	}
 
@@ -174,8 +165,13 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 		for(std::vector<config*>::const_iterator col_itor = col_cfgs.begin();
 				col_itor != col_cfgs.end(); ++col_itor) {
 
-			assert((**col_itor).child("button"));
-			widgets.push_back(twidget(*((**col_itor).child("button"))));
+			if((**col_itor).child("button")) {
+				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
+			} else if ((**col_itor).child("text_box")) {
+				widgets.push_back(new tbuilder_text_box(*((**col_itor).child("text_box"))));
+			} else {
+				assert(false);
+			}
 
 			++col;
 		}
@@ -194,7 +190,7 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 		<< rows << " rows and " << cols << " columns.\n";
 }
 
-twindow_builder::tresolution::tgrid::twidget::twidget(const config& cfg) :
+twindow_builder::tresolution::tgrid::tbuilder_widget::tbuilder_widget(const config& cfg) :
 	id(cfg["id"]),
 	definition(cfg["button_definition"]),
 	label(cfg["label"])
@@ -208,6 +204,35 @@ twindow_builder::tresolution::tgrid::twidget::twidget(const config& cfg) :
 		<< id << "' and definition '" << definition << "'.\n";
 	
 }
+
+twidget* twindow_builder::tresolution::tgrid::tbuilder_button::build() const
+{
+	tbutton *button = new tbutton();
+
+	button->set_definition(id);
+	button->set_definition(definition);
+	button->set_label(label);
+
+	DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
+		<< definition << '\n';
+
+	return button;
+}
+
+twidget* twindow_builder::tresolution::tgrid::tbuilder_text_box::build() const
+{
+	ttext_box *text_box = new ttext_box();
+
+	text_box->set_definition(id);
+	text_box->set_definition(definition);
+	text_box->set_label(label);
+
+	DBG_G << "Window builder: placed text box '" << id << "' with defintion '" 
+		<< definition << '\n';
+
+	return text_box;
+}
+
 
 } // namespace gui2
 
