@@ -31,6 +31,27 @@ class twindow;
 
 twindow build(CVideo& video, const std::string& type);
 
+
+//! Contains the info needed to instantiate a widget.
+struct tbuilder_widget : public reference_counted_object
+{
+private:
+	tbuilder_widget();
+
+public:
+	tbuilder_widget(const config& cfg);
+
+	std::string id;
+	std::string definition;
+	t_string label;
+
+	virtual twidget* build() const = 0;
+	virtual ~tbuilder_widget() {}
+};
+
+typedef boost::intrusive_ptr<tbuilder_widget> tbuilder_widget_ptr;
+typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
+
 class twindow_builder
 {
 public:
@@ -64,50 +85,6 @@ public:
 
 			unsigned rows;
 			unsigned cols;
-
-			struct tbuilder_widget : public reference_counted_object
-			{
-			// NOTE a widget is always a button atm.
-			private:
-				tbuilder_widget();
-
-			public:
-				tbuilder_widget(const config& cfg);
-
-				std::string id;
-				std::string definition;
-				t_string label;
-
-				virtual twidget* build() const = 0;
-				virtual ~tbuilder_widget() {}
-			};
-
-			struct tbuilder_button : public tbuilder_widget
-			{
-
-			private:
-				tbuilder_button();
-			public:
-				tbuilder_button(const config& cfg) : tbuilder_widget(cfg) {}
-
-				twidget* build () const;
-
-			};
-
-			struct tbuilder_text_box : public tbuilder_widget
-			{
-
-			private:
-				tbuilder_text_box();
-			public:
-				tbuilder_text_box(const config& cfg) : tbuilder_widget(cfg) {}
-
-				twidget* build () const;
-
-			};
-
-			typedef boost::intrusive_ptr<tbuilder_widget> tbuilder_widget_ptr;
-			typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
 
 			std::vector<tbuilder_widget_ptr> widgets;
 		};

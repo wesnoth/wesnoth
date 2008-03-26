@@ -48,6 +48,31 @@
 
 namespace gui2 {
 
+struct tbuilder_button : public tbuilder_widget
+{
+
+private:
+	tbuilder_button();
+public:
+	tbuilder_button(const config& cfg) : tbuilder_widget(cfg) {}
+
+	twidget* build () const;
+
+};
+
+struct tbuilder_text_box : public tbuilder_widget
+{
+
+private:
+	tbuilder_text_box();
+public:
+	tbuilder_text_box(const config& cfg) : tbuilder_widget(cfg) {}
+
+	twidget* build () const;
+
+};
+
+
 twindow build(CVideo& video, const std::string& type)
 {
 	std::vector<twindow_builder::tresolution>::const_iterator 
@@ -190,7 +215,7 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 		<< rows << " rows and " << cols << " columns.\n";
 }
 
-twindow_builder::tresolution::tgrid::tbuilder_widget::tbuilder_widget(const config& cfg) :
+tbuilder_widget::tbuilder_widget(const config& cfg) :
 	id(cfg["id"]),
 	definition(cfg["button_definition"]),
 	label(cfg["label"])
@@ -205,7 +230,7 @@ twindow_builder::tresolution::tgrid::tbuilder_widget::tbuilder_widget(const conf
 	
 }
 
-twidget* twindow_builder::tresolution::tgrid::tbuilder_button::build() const
+twidget* tbuilder_button::build() const
 {
 	tbutton *button = new tbutton();
 
@@ -219,7 +244,7 @@ twidget* twindow_builder::tresolution::tgrid::tbuilder_button::build() const
 	return button;
 }
 
-twidget* twindow_builder::tresolution::tgrid::tbuilder_text_box::build() const
+twidget* tbuilder_text_box::build() const
 {
 	ttext_box *text_box = new ttext_box();
 
@@ -232,7 +257,6 @@ twidget* twindow_builder::tresolution::tgrid::tbuilder_text_box::build() const
 
 	return text_box;
 }
-
 
 } // namespace gui2
 
