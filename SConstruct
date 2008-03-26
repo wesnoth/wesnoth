@@ -128,8 +128,9 @@ env = conf.Finish()
 #
 extralibs=[]
 
-# This is so we don't need separate link lists for each binary
-env["LINKFLAGS"].append("-Wl,-as-needed")
+# FIXME: Unix-specific.
+# Link only on demand, so we don't need separate link lists for each binary
+env["LINKFLAGS"].append("-Wl,--as-needed")
 
 if env["debug"]:
     env["CXXFLAGS"] += Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
@@ -176,6 +177,12 @@ if not env["datadir"].startswith("/"):
 
 env["CXXFLAGS"].append("-DWESNOTH_PATH='\"%s\"'" % env['datadir'])
 
+if 'CXXFLAGS' in os.environ:
+    env["CXXFLAGS"].append(CXXFLAGS = os.environ['CXXFLAGS'])
+
+if 'LDFLAGS' in os.environ:
+    env["LINKFLAGS"].append(LINKFLAGS = os.environ['LDFLAGS'])
+
 cc_version = env["CCVERSION"]
 if env["CC"] == "gcc":
     (major, minor, rev) = map(int, cc_version.split("."))
@@ -186,9 +193,11 @@ if env["CC"] == "gcc":
 #
 # Libraries and source groups
 #
+# The png library specification is not needed everywhere.  Some versions of
+# (probably) SDL_image must carry it internally.
 boost_libs = Split("boost_iostreams-mt boost_regex")
 SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL_image SDL")
-commonlibs = SDL_libs + boost_libs + ["pthread", "-lpython"+sys.version[:3]]
+commonlibs = SDL_libs + boost_libs + ["pthread", "png", "-lpython"+sys.version[:3]]
 commonpath = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]]
 
 #color_range.cpp should be removed, but game_config depends on it.
