@@ -146,7 +146,7 @@ private:
 
 	void set_dirty();
 
-	void shift_buffers(int offset);
+	void shift_buffers(ptrdiff_t offset);
 
 	document* doc_;
 
