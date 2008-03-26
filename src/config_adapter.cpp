@@ -59,6 +59,10 @@ void get_player_info(const config& cfg, game_state& gamestate,
 {
 	player_info *player = NULL;
 
+	if(map.empty()) {
+		throw game::load_game_failed("Map not found");
+	}
+
 	if(cfg["controller"] == "human" ||
 	   cfg["controller"] == "network" ||
 	   cfg["persistent"] == "1") {
@@ -134,9 +138,6 @@ void get_player_info(const config& cfg, game_state& gamestate,
 		// Otherwise start it at the map-given starting position.
 		gamemap::location start_pos(cfg, &gamestate);
 
-		if(map.empty()) {
-			throw game::load_game_failed("Map not found");
-		}
 		if(cfg["x"].empty() && cfg["y"].empty()) {
 			start_pos = map.starting_position(side);
 		}
