@@ -178,10 +178,10 @@ if not env["datadir"].startswith("/"):
 env["CXXFLAGS"].append("-DWESNOTH_PATH='\"%s\"'" % env['datadir'])
 
 if 'CXXFLAGS' in os.environ:
-    env["CXXFLAGS"].append(CXXFLAGS = os.environ['CXXFLAGS'])
+    env.Append(CXXFLAGS = os.environ['CXXFLAGS'])
 
 if 'LDFLAGS' in os.environ:
-    env["LINKFLAGS"].append(LINKFLAGS = os.environ['LDFLAGS'])
+    env.Append(LINKFLAGS = os.environ['LDFLAGS'])
 
 cc_version = env["CCVERSION"]
 if env["CC"] == "gcc":
@@ -623,7 +623,7 @@ env.Clean(all, 'TAGS')
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
-binaries = [wesnoth, wesnoth_editor, cutter, exploder]
+binaries = [wesnoth, wesnothd, wesnoth_editor, cutter, exploder]
 pythontools = Split("wmlscope wmllint wmlindent")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
