@@ -1,9 +1,9 @@
 #
 # SCons build description for the Wesnoth project
 #
-# This is a deliberately straight-line translation of the old configure.ac.
-# The optipng and internal-data options are omitted.  The following constanta
-# should be set before release.
+# This is a deliberately straight-line translation of the old
+# configure.ac.  The optipng option is omitted.  The following
+# constanta should be set before release.
 #
 import os, sys, commands
 
@@ -23,6 +23,7 @@ opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 3
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
+opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 
@@ -36,7 +37,6 @@ opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', Fal
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
-#opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
@@ -157,6 +157,9 @@ if env['fribidi']:
 
 if env['raw_sockets']:
     env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
+
+if env['internal_data']:
+    env["CXXFLAGS"].append("-DUSE_INTERNAL_DATA")
 
 if env['prefsdir']:
     env["CXXFLAGS"].append("-DPREFERENCES_DIR='\"%s\"'" % env['prefsdir'])
