@@ -746,6 +746,7 @@ int unit_animation::get_begin_time() const
 void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, const std::string text, const Uint32 text_color,const bool accelerate)
 {
 		unit_anim_.accelerate = accelerate;
+		new_animation_frame();
 	unit_anim_.start_animation(start_time, src, dst, cycles);
 	if(!text.empty()) {
 		crude_animation crude_build;
