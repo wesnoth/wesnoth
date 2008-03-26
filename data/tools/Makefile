@@ -36,8 +36,7 @@ utils-unused:
 # So suppress reporting them unused even if they seem to have
 # no references.  2nd and 3rd option cover stuff known to be used in UMC.
 FORCE_USED = --force-used "terrain/" \
-	--force-used "portraits/|images/|attacks/|projectiles/|windmill" \
-	--force-used "undead/blackspell.png"
+	--force-used "portraits/|images/|attacks/|projectiles/|windmill"
 images-unused:
 	@echo "# Report on unused images"
 	@./wmlscope --crossreference --from images --refcount 0 $(FORCE_USED) $(MAINLINE) $(UMC)
