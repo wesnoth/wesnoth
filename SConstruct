@@ -1,7 +1,7 @@
 #
 # SCons build description for the Wesnoth project
 #
-import os, sys, commands, shutil
+import os, sys, commands, shutil, glob
 
 #
 # Build-control options
@@ -675,7 +675,6 @@ from os import access, F_OK
 install_wesnothd = wesnothd_env.Install(bindir, wesnothd)
 env.Alias("install-wesnothd", install_wesnothd)
 if not access(fifodir, F_OK):
-    print "FOOBAR!"
     wesnothd_env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
         Chmod(fifodir, 0700),
@@ -695,6 +694,25 @@ env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
 
 #
+# Making a distribution.
+#
+def manifest():
+    "Get an argument list suitable for passing to a distribution archiver."
+    # Start by getting a list of all files under version control
+    lst = commands.getoutput("svn -v status | awk '/^[^?]/ {print $4;}'")
+    # Omit everything with a data/ prefix to cut the list length below the
+    # shell argument limit, otherwise the archiver command will blow up.
+    lst = filter(lambda f: os.path.isfile(f) and not f.startswith("data/"),
+                 lst.split())
+    # Add data/ back to the end of the list.  This is safe only because we
+    # assume there will be no junk under data/.  But we'll filter out
+    # filenames with tildes in them (Emacs backup files) just in case.
+    lst.append("data/")
+    return lst
+env.Tar('wesnoth.tgz', manifest())
+env.Append(TARFLAGS='-z --exclude="~"', TARCOMSTR="Making tarball...")
+
+#
 # Known problems:
 #
 # 1. We don't yet check for SDL version too old
@@ -705,8 +723,7 @@ env.Precious(uninstall)
 #
 # 1. Building the unit-test binaries.
 # 2. Documentation formatting and man-page installation
-# 3. Make distribution tarballs.
-# 4. Translations handling other than installation (pot-update).
+# 3. Translations handling other than installation (pot-update).
 
 # Local variables:
 # mode: python
