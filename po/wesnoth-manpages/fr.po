@@ -38,7 +38,7 @@ msgstr "wesnoth"
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr "La bataille pour Wesnoth"
+msgstr "Bataille pour Wesnoth"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
@@ -51,7 +51,7 @@ msgstr "NOM"
 #: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr ""
-"wesnoth - La bataille pour Wesnoth, un jeu fantasy de stratégie tour par tour"
+"wesnoth - Bataille pour Wesnoth, un jeu fantasy de stratégie tour par tour"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
@@ -76,7 +76,7 @@ msgstr "DESCRIPTION"
 #: ../../doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
 msgstr ""
-"La bataille pour B<Wesnoth> est un jeu de stratégie tour par tour dans un "
+"Bataille pour B<Wesnoth> est un jeu de stratégie tour par tour dans un "
 "univers de fantasy."
 
 # type: Plain text
@@ -93,8 +93,8 @@ msgid ""
 msgstr ""
 "Venez à bout de tous les chefs ennemis en utilisant les unités adéquates et "
 "en gérant au mieux votre or et vos villages. Chaque unité a ses forces et "
-"ses faiblesses ; pour gagner, déployez vos troupes de façon optimales tout "
-"en empêchant vos ennemis de faire de même. Toutes les unités gagnent de "
+"ses faiblesses ; pour gagner, déployez vos troupes de façon optimale tout en "
+"empêchant vos ennemis de faire de même. Toutes les unités gagnent de "
 "l'expérience et acquièrent de nouvelles compétences, devenant plus "
 "puissantes. Jouez dans votre langue favorite, testez votre habileté contre "
 "l'ordinateur, ou rejoignez la grande communauté des joueurs en ligne de "
@@ -204,8 +204,8 @@ msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
-"Décompresse une sauvegarde qui est un fichier au format gzip et la place "
-"dans un fichier sans l'extension .gz. (I<fichier_d'entrée.gz>) sera effacé."
+"Décompresse une sauvegarde, normalement au format gzip, en un fichier sans "
+"l'extension .gz. (I<fichier_d'entrée.gz>) sera effacé."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:79
@@ -220,7 +220,7 @@ msgid ""
 "I<infile>."
 msgstr ""
 "Compresse une sauvegarde au format gzip et la place dans I<fichier d'entrée."
-"gz> et efface I<fichier_d'entrée>."
+"gz>, puis efface I<fichier_d'entrée>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:85 ../../doc/man/wesnothd.6:55
@@ -275,7 +275,7 @@ msgstr "B<--logdomains>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:103 ../../doc/man/wesnoth_editor.6:59
 msgid "Dumps a list of all log domains and exits."
-msgstr "Affiche la liste de tous les types d'alerte et quitte."
+msgstr "Affiche la liste de tous les types d'alertes et quitte."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:103
@@ -661,12 +661,12 @@ msgstr "wesnoth_editor"
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "Battle for Wesnoth map editor"
-msgstr "Éditeur de carte de la Bataille pour Wesnoth"
+msgstr "Éditeur de carte de Bataille pour Wesnoth"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:20
 msgid "wesnoth_editor - Battle for Wesnoth map editor"
-msgstr "wesnoth_editor - Éditeur de carte de la Bataille pour Wesnoth"
+msgstr "wesnoth_editor - Éditeur de carte de Bataille pour Wesnoth"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:26
@@ -676,7 +676,7 @@ msgstr "B<wesnoth_editor> [I<OPTIONS>] [I<CARTE>]"
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:31
 msgid "Battle for B<Wesnoth> map editor."
-msgstr "Éditeur de carte de la Bataille pour B<Wesnoth>."
+msgstr "Éditeur de carte de Bataille pour B<Wesnoth>."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:34
@@ -780,14 +780,13 @@ msgstr "wesnothd"
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr "Serveur multijoueur de la Bataille pour Wesnoth"
+msgstr "Serveur multijoueur de Bataille pour Wesnoth"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
 msgstr ""
-"wesnothd - Serveur pour jeu multijoueur en réseau de la Bataille pour "
-"B<Wesnoth>"
+"wesnothd - Serveur pour jeu multijoueur en réseau de Bataille pour B<Wesnoth>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
@@ -810,7 +809,7 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client or the socket."
 msgstr ""
-"Gère les jeux multijoueurs de la Bataille pour Wesnoth. Voir les commandes "
+"Gère les jeux multijoueurs de Bataille pour Wesnoth. Voir les commandes que "
 "que le serveur accepte par socket ou via le client wesnoth sur http://www."
 "wesnoth.org/wiki/ServerAdministration."
 
@@ -897,7 +896,7 @@ msgid ""
 "sets the maximum number of worker threads that will be created.  If set to "
 "B<0> there will be no limit (default: B<0>)."
 msgstr ""
-"Définit le nombre maximal de threads qui seront crées. Si ce nombre est nul, "
+"Définit le nombre maximal de threads qui seront créés. Si ce nombre est nul, "
 "il n'y a pas de limite (defaut : B<0>)."
 
 # type: TP
@@ -1020,7 +1019,7 @@ msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr ""
-"Période, en secondes, après laquelle un surnombre de messages est détectée. "
+"Période, en secondes, après laquelle un surnombre de messages est détecté. "
 "(par défaut : B<10> secondes)"
 
 # type: TP
@@ -1045,8 +1044,8 @@ msgstr "B<passwd>"
 msgid ""
 "The password used to gain admin privileges. Usually it starts with `admin '."
 msgstr ""
-"Mot de passe des habilitations de l'administrateur. Commence souvent par « "
-"admin »."
+"Mot de passe des habilitations de l'administrateur. Commence souvent par "
+"« admin »."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:132
