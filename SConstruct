@@ -54,10 +54,6 @@ env.TargetSignatures('content')
 # Configuration
 #
 
-#The 'install' target installs whatever you currently have built.  If
-#you have built wmllint/wmlscope/wmlindent the Python helper modules
-#will also be installed.
-
 Help("""\
 Available build targets include:
 
