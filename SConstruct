@@ -1,7 +1,7 @@
 #
 # SCons build description for the Wesnoth project
 #
-import os, sys, commands, shutil, glob
+import os, sys, commands, shutil
 
 #
 # Build-control options
@@ -69,6 +69,7 @@ Available build targets include:
     install-wesnothd = install the Wesnoth multiplayer server
     install-campaignd = install the Wesnoth campaign server
     uninstall = uninstall all executables, tools, and servers
+    wesnoth.tgz = make compressed distribution tarball
 
 """ + opts.GenerateHelpText(env))
 conf = Configure(env)
