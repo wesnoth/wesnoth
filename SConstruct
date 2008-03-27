@@ -48,8 +48,6 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 
 env = Environment(options = opts)
 
-env.TargetSignatures('content')
-
 # Omits the 'test' target 
 all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
                         "cutter", "exploder"])
@@ -459,6 +457,15 @@ env.Depends('src/game_config.o', 'src/revision.hpp')
 r = env.Command("src/revision.hpp", [],
                 lambda target, source, env: open(str(target[0]), "w").write("#define REVISION \"%s\"\n" % env["svnrev"]))
 env.AlwaysBuild(r)
+
+# Don't do this!  It looks tempting, because you could in theory prevent
+# a recompile-relink when revision.h gets remade with a later timestamp
+# but the same content.  Unfortunately doing this causes a crash in the
+# install production, at least in scons 0.97, right after the actions
+# finish (thus, probably, at target-signature generation time).
+#env.TargetSignatures('content')
+
+
 
 #
 # File inventory, for archive makes abd analysis tools
