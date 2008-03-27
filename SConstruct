@@ -686,7 +686,7 @@ env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 # Un-installation
 #
 deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + daemons) \
-            + [Delete(datadir), Delete(pythonlib)]
+            + [Delete(datadir), Delete(pythonlib), Delete(fifodir)]
 uninstall = env.Command('uninstall', '', deletions)
 env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
