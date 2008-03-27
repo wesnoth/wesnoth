@@ -846,7 +846,7 @@ private:
         // 29.11.07, YogiHH: I can't see why this is needed at all and it
         // breaks some savegame functionality. Probably the original reasons
         // for putting this in are no longer valid.
-        
+
 		// Clobber gold values to make sure the snapshot uses the values
 		// in [side] instead.
 		const config::child_list& players=start.get_children("player");
@@ -1089,7 +1089,7 @@ private:
 					clear_undo_stack(team_num);
 				} else {
 					undo_stack_.push_back(undo_action(new_unit,loc,RECRUIT_POS));
-				} 
+				}
 
 				gui_->recalculate_minimap();
 				gui_->invalidate_game_status();
@@ -1606,8 +1606,8 @@ private:
 			std::stringstream row;
 
 			std::string race;
-			const race_map::const_iterator race_it = gameinfo_.races.find(i->second.race());
-			if (race_it != gameinfo_.races.end()) {
+			const race_map::const_iterator race_it = gameinfo_.unit_types.races().find(i->second.race());
+			if (race_it != gameinfo_.unit_types.races().end()) {
 				race = race_it->second.plural_name();
 			}
 			row << race << COLUMN_SEPARATOR;
@@ -2128,7 +2128,7 @@ private:
 			const std::string side_s(data.begin(),j);
 			const std::string action(j,data.end());
 			// default to the current side if empty
-			const unsigned int side = side_s.empty() ? 
+			const unsigned int side = side_s.empty() ?
 				team_num : lexical_cast_default<unsigned int>(side_s);
 
 			if (side < 1 || side > teams_.size()) {
@@ -2267,7 +2267,7 @@ private:
 			// to an enum, then used to index an
 			// array of strings.
 			// But someday the code ought to be
-			// changed to allow general string 
+			// changed to allow general string
 			// alignments for UMC.
 			if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic")) {
 				ERR_NG << "Invalid alignment: '" << value

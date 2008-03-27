@@ -33,6 +33,9 @@
 #include <iostream>
 
 #define ERR_CONFIG LOG_STREAM(err, config)
+#define DBG_UT LOG_STREAM(debug, engine)
+#define LOG_UT LOG_STREAM(info, engine)
+#define ERR_UT LOG_STREAM(err, engine)
 
 attack_type::attack_type(const config& cfg)
 {
@@ -157,7 +160,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		damage_ = utils::apply_modifier(damage_, increase_damage, 1);
 
 		if(description != NULL) {
-			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage 
+			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage
 				<< " " << _n("damage","damage",lexical_cast<int>(increase_damage));
 		}
 	}
@@ -166,7 +169,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		num_attacks_ = utils::apply_modifier(num_attacks_, increase_attacks, 1);
 
 		if(description != NULL) {
-			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks 
+			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks
 				<< " " << _n("strike","strikes",lexical_cast<int>(increase_attacks));
 		}
 	}
@@ -199,14 +202,14 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 	if(increase_damage.empty() == false) {
 		if(description != NULL) {
-			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage 
+			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage
 				<< " " << _n("damage","damage",lexical_cast<int>(increase_damage));
 		}
 	}
 
 	if(increase_attacks.empty() == false) {
 		if(description != NULL) {
-			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks 
+			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks
 				<< " " << _n("strike","strikes",lexical_cast<int>(increase_attacks));
 		}
 	}
@@ -245,15 +248,15 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 	const t_string& flies = cfg["flies"];
 	if (!flies.empty())
 		cfg_["flies"]= cfg["flies"];
-	
+
 	const config* movement_costs = cfg.child("movement_costs");
 	if (movement_costs!=NULL)
 		cfg_.add_child("movement_costs", *movement_costs);
-	
+
 	const config* defense = cfg.child("defense");
 	if (defense!=NULL)
 		cfg_.add_child("defense", *defense);
-	
+
 	const config* resistance = cfg.child("resistance");
 	if (resistance!=NULL)
 		cfg_.add_child("resistance", *resistance);
@@ -475,6 +478,8 @@ bool unit_movement_type::is_flying() const
 
 unit_type::unit_type()
 {
+    DBG_UT << "unit_type default constructor\n";
+    build_status_ = NOT_BUILT;
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 }
@@ -488,6 +493,8 @@ unit_type::unit_type(const unit_type& o)
       genders_(o.genders_), animations_(o.animations_),
       flag_rgb_(o.flag_rgb_)
 {
+    DBG_UT << "unit_type copy-constructor\n";
+    build_status_ = o.build_status_;
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
 
@@ -500,11 +507,14 @@ unit_type::unit_type(const unit_type& o)
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
 {
-	build(cfg, mv_types, races, traits);
+    DBG_UT << "unit_type constructor cfg, mv_types, races, traits\n";
+    build_status_ = NOT_BUILT;
+	build_full(cfg, mv_types, races, traits);
 }
 
 unit_type::~unit_type()
 {
+    DBG_UT << "unit_type destructor\n";
 	delete gender_types_[unit_race::MALE];
 	delete gender_types_[unit_race::FEMALE];
 
@@ -513,10 +523,12 @@ unit_type::~unit_type()
 	}
 }
 
-void unit_type::build(const config& cfg, const movement_type_map& mv_types,
+void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
 {
-	cfg_ = cfg;
+    if (build_status_ == NOT_BUILT)
+        build_help_index(cfg, races);
+
 	movementType_ = unit_movement_type(cfg);
 	alpha_ = ftofxp(1.0);
 
@@ -621,19 +633,6 @@ void unit_type::build(const config& cfg, const movement_type_map& mv_types,
 		possibleTraits_.add_child("trait", **i);
 	}
 
-	const config* abil_cfg = cfg.child("abilities");
-	if(abil_cfg) {
-		const config::child_map& abi = abil_cfg->all_children();
-		for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
-			for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
-				if((**k)["name"] != "") {
-					abilities_.push_back((**k)["name"]);
-					ability_tooltips_.push_back((**k)["description"]);
-				}
-			}
-		}
-	}
-
 	if(cfg["zoc"] == "") {
 		zoc_ = lexical_cast_default<int>(cfg["level"]) > 0;
 	} else {
@@ -654,7 +653,11 @@ void unit_type::build(const config& cfg, const movement_type_map& mv_types,
 	const movement_type_map::const_iterator it = mv_types.find(move_type);
 
 	if(it != mv_types.end()) {
+	    DBG_UT << "setting parent for movement_type " << move_type << "\n";
 		movementType_.set_parent(&(it->second));
+	}
+	else{
+	    DBG_UT << "no parent found for movement_type " << move_type << "\n";
 	}
 
 	const std::string& advance_to_val = cfg["advanceto"];
@@ -667,7 +670,37 @@ void unit_type::build(const config& cfg, const movement_type_map& mv_types,
 	game_config::add_color_info(cfg);
 	// Deprecation messages, only seen when unit is parsed for the first time.
 
+	build_status_ = FULL;
+}
+
+void unit_type::build_help_index(const config& cfg, const race_map& races)
+{
+	cfg_ = cfg;
+
+	const race_map::const_iterator race_it = races.find(cfg["race"]);
+	if(race_it != races.end()) {
+		race_ = &race_it->second;
+	} else {
+		static const unit_race dummy_race;
+		race_ = &dummy_race;
+	}
+
+	const config* abil_cfg = cfg.child("abilities");
+	if(abil_cfg) {
+		const config::child_map& abi = abil_cfg->all_children();
+		for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
+			for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
+				if((**k)["name"] != "") {
+					abilities_.push_back((**k)["name"]);
+					ability_tooltips_.push_back((**k)["description"]);
+				}
+			}
+		}
+	}
+
 	hide_help_= utils::string_bool(cfg["hide_help"],false);
+
+	build_status_ = HELP_TOPIC_BUILT;
 }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
@@ -818,10 +851,9 @@ const std::string& unit_type::race() const
 }
 
 // Allow storing "advances from" info for convenience in Help.
-void unit_type::add_advancesfrom(const unit_type &from_unit)
+void unit_type::add_advancesfrom(std::string unit_id)
 {
-	const std::string &from_id = from_unit.cfg_["id"];
-	advances_from_.push_back(from_id);
+	advances_from_.push_back(unit_id);
 }
 
 
@@ -868,15 +900,15 @@ game_data::game_data(const config& cfg)
 
 void game_data::set_config(const config& cfg)
 {
-	static const std::vector<config*> dummy_traits;
-
-	const config::child_list& unit_traits = cfg.get_children("trait");
+    DBG_UT << "game_data::set_config, cfg:\n" << cfg;
+    unit_types.set_unit_config(cfg);
+	unit_types.set_unit_traits(cfg.get_children("trait"));
 
 	config::const_child_itors i;
 	for(i = cfg.child_range("movetype"); i.first != i.second; ++i.first)
 	{
 		const unit_movement_type move_type(**i.first);
-		movement_types.insert(
+		unit_types.movement_types().insert(
 			std::pair<std::string,unit_movement_type>(move_type.name(), move_type));
 		increment_set_config_progress();
 	}
@@ -884,7 +916,7 @@ void game_data::set_config(const config& cfg)
 	for(i = cfg.child_range("race"); i.first != i.second; ++i.first)
 	{
 		const unit_race race(**i.first);
-		races.insert(std::pair<std::string,unit_race>(race.id(),race));
+		unit_types.races().insert(std::pair<std::string,unit_race>(race.id(),race));
 		increment_set_config_progress();
 	}
 
@@ -901,10 +933,9 @@ void game_data::set_config(const config& cfg)
 			std::string id = (**i.first)["id"];
 			// we insert an empty unit_type and build it after the copy (for performance)
 			std::pair<unit_type_map::iterator,bool> insertion =
-				unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
-			if (insertion.second) {
-				insertion.first->second.build(**i.first,movement_types,races,unit_traits);
-			}
+				unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
+            lg::info(lg::config) << "added " << id << " to unit_type list (game_data.unit_types)\n";
+//			if (!insertion.second)
 			// TODO: else { warning for multiple units with same id}
 		}
 	}
@@ -923,9 +954,11 @@ void game_data::set_config(const config& cfg)
 			// we insert an empty unit_type and build it after the copy (for performance)
 			std::pair<unit_type_map::iterator,bool> insertion =
 				unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
+            /* obsolete because of lazy loading of unit_types
 			if (insertion.second) {
 				insertion.first->second.build(**i.first,movement_types,races,unit_traits);
 			}
+			*/
 			std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]" << std::endl;
 		}
 	}
@@ -940,7 +973,7 @@ void game_data::set_config(const config& cfg)
 			if(bu_cfg)
 			{
 				const std::string &based_from = (*bu_cfg)["id"];
-				unit_type_map::iterator from_unit = unit_types.find(based_from);
+				const unit_type_map::const_iterator from_unit = unit_types.find(based_from);
 				if(from_unit != unit_types.end())
 				{
 					// Derive a new unit type from an existing base unit id
@@ -949,10 +982,10 @@ void game_data::set_config(const config& cfg)
 					merge_cfg.clear_children("base_unit");
 					std::string id = merge_cfg["id"];
 					std::pair<unit_type_map::iterator,bool> insertion =
-					unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
-					if (insertion.second) {
-						insertion.first->second.build(merge_cfg,movement_types,races,unit_traits);
-					}
+					unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
+                    lg::info(lg::config) << "added " << id << " to unit_type list (game_data.unit_types)\n";
+//					if (!insertion.second) {
+//                  TODO: warn for multiple unit's with same id's
 					increment_set_config_progress();
 					--new_count;
 				}
@@ -978,89 +1011,169 @@ void game_data::set_config(const config& cfg)
 			base_unit_count = new_count;
 		}
 	}
-
-	// Fix up advance_from references
-	for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
-	{
-		config::const_child_itors af;
-		for(af = (*i.first)->child_range("advancefrom"); af.first != af.second; ++af.first)
-		{
-			const std::string &to = (**i.first)["id"];
-			const std::string &from = (**af.first)["unit_type"];
-			const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
-
-			unit_type_map::iterator from_unit = unit_types.find(from);
-			unit_type_map::iterator to_unit = unit_types.find(to);
-			if(from_unit==unit_types.end())
-			{
-				lg::warn(lg::config) << "unknown unit " << from << " in advancefrom\n";
-				continue;
-			}
-			assert(to_unit!=unit_types.end());
-
-			from_unit->second.add_advancement(to_unit->second,xp);
-			increment_set_config_progress();
-		}
-	}
-
-	// FIXME OBSOLETE compatibility hack to be removed in 1.5.3
-	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
-	{
-		config::const_child_itors af;
-		for(af = (*i.first)->child_range("advancefrom"); af.first != af.second; ++af.first)
-		{
-			const std::string &to = (**i.first)["id"];
-			const std::string &from = (**af.first)["unit"];
-			const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
-
-			unit_type_map::iterator from_unit = unit_types.find(from);
-			unit_type_map::iterator to_unit = unit_types.find(to);
-			if(from_unit==unit_types.end())
-			{
-				lg::warn(lg::config) << "unknown unit " << from << " in advancefrom\n";
-				continue;
-			}
-			assert(to_unit!=unit_types.end());
-
-			from_unit->second.add_advancement(to_unit->second,xp);
-			increment_set_config_progress();
-		}
-	}
-
-	// For all unit types, store what units they advance from
-	unit_type_map::iterator from_unit;
-	for(from_unit = unit_types.begin(); from_unit != unit_types.end(); ++from_unit)
-	{
-		std::vector<std::string> to_units_ids = from_unit->second.advances_to();
-		std::vector<std::string>::iterator to_unit_id;
-		for(to_unit_id = to_units_ids.begin(); to_unit_id != to_units_ids.end(); ++to_unit_id)
-		{
-			unit_type_map::iterator to_unit = unit_types.find(*to_unit_id);
-			if(to_unit != unit_types.end())
-			{
-				to_unit->second.add_advancesfrom(from_unit->second);
-			}
-			else
-			{
-				lg::warn(lg::config) << "unknown unit " << *to_unit_id
-					<< " advanced to by unit " << from_unit->first << "\n";
-			}
-		}
-	}
 }
 
 void game_data::clear()
 {
-	movement_types.clear();
 	unit_types.clear();
 	merged_units.clear();
-	races.clear();
+}
+
+game_data::unit_type_map::const_iterator game_data::unit_type_factory::find(const std::string& key)
+{
+    if (key.empty() || (key == "random"))
+        return types_.end();
+
+    unit_type_map::iterator itor = types_.find(key);
+
+    lg::info(lg::config) << "trying to find " << key  << " in unit_type list (game_data.unit_types)\n";
+    //This should not happen since it means the unit_type id has not been loaded
+    assert (itor != types_.end());
+
+    //check if the unit_type is constructed and build it if necessary
+    if (itor->second.id().empty()){
+        lg::info(lg::config) << "construct " << key  << " in unit_type list (game_data.unit_types)\n";
+        for(config::const_child_itors i = unit_cfg_->child_range("unit_type"); i.first != i.second; ++i.first)
+        {
+            std::string id = (**i.first)["id"];
+            if (id == key){
+                build_unit_type(key, unit_type::FULL);
+            }
+        }
+
+        // FIXME OBSOLETE compatibility hack to be removed in 1.5.3
+        for(config::const_child_itors i = unit_cfg_->child_range("unit"); i.first != i.second; ++i.first)
+        {
+            std::string id = (**i.first)["id"];
+            if (id == key){
+                build_unit_type(key, unit_type::FULL);
+            }
+        }
+    }
+
+    return types_.find(key);
+}
+
+const config& game_data::unit_type_factory::find_config(const std::string& key){
+    for(config::const_child_itors i = unit_cfg_->child_range("unit_type"); i.first != i.second; ++i.first)
+    {
+        std::string id = (**i.first)["id"];
+        if (id == key){
+            return **i.first;
+        }
+    }
+
+    // FIXME OBSOLETE compatibility hack to be removed in 1.5.3
+    for(config::const_child_itors i = unit_cfg_->child_range("unit"); i.first != i.second; ++i.first)
+    {
+        std::string id = (**i.first)["id"];
+        if (id == key){
+            return **i.first;
+        }
+    }
+
+    ERR_UT << "game_data::unit_type_factory::find_config: unit config for id " << key << " not found!\n";
+    assert(false);
+}
+
+void game_data::unit_type_factory::generate_help_info()
+{
+    assert(unit_cfg_ != NULL);
+
+    for(config::const_child_itors i = unit_cfg_->child_range("unit_type"); i.first != i.second; ++i.first)
+    {
+        unit_type_map::iterator itor = types_.find((**i.first)["id"]);
+        assert(itor != types_.end());
+
+        //build the stuff that is needed to feed the help index
+        if (itor->second.build_status() == unit_type::NOT_BUILT)
+            itor->second.build_help_index(**i.first, races_);
+
+        //find the units this one can advance into and add advancefrom information for them
+        std::vector<std::string> advance_to = utils::split((**i.first)["advanceto"]);
+        if ( (advance_to.size() > 0) && (advance_to[0] != "null") ){
+            int count = 0;
+            for (std::vector<std::string>::const_iterator i_adv = advance_to.begin(); i_adv != advance_to.end(); i_adv++){
+                count++;
+                DBG_UT << "Unit: " << (**i.first)["id"] << ", AdvanceTo " << count << ": " << *i_adv << "\n";
+                unit_type_map::iterator itor_advanceto = types_.find(*i_adv);
+                itor_advanceto->second.add_advancesfrom((**i.first)["id"]);
+            }
+        }
+    }
+
+    // FIXME OBSOLETE compatibility hack to be removed in 1.5.3
+    for(config::const_child_itors i = unit_cfg_->child_range("unit"); i.first != i.second; ++i.first)
+    {
+        unit_type_map::iterator itor = types_.find((**i.first)["id"]);
+        assert(itor != types_.end());
+
+        //build the stuff that is needed to feed the help index
+        if (itor->second.build_status() == unit_type::NOT_BUILT)
+            itor->second.build_help_index(**i.first, races_);
+
+        //find the units this one can advance into and add advancefrom information for them
+        std::vector<std::string> advance_to = utils::split((**i.first)["advanceto"]);
+        if ( (advance_to.size() > 0) && (advance_to[0] != "null") ){
+            int count = 0;
+            for (std::vector<std::string>::const_iterator i_adv = advance_to.begin(); i_adv != advance_to.end(); i_adv++){
+                count++;
+                DBG_UT << "Unit: " << (**i.first)["id"] << ", AdvanceTo " << count << ": " << *i_adv << "\n";
+                unit_type_map::iterator itor_advanceto = types_.find(*i_adv);
+                itor_advanceto->second.add_advancesfrom((**i.first)["id"]);
+            }
+        }
+    }
+}
+
+unit_type& game_data::unit_type_factory::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status){
+    unit_type_map::iterator ut = types_.find(key);
+
+    switch (status){
+        case unit_type::HELP_TOPIC_BUILT:
+            if (ut->second.build_status() == unit_type::NOT_BUILT)
+            {
+                const config& unit_cfg = find_config(key);
+                ut->second.build_help_index(unit_cfg, races_);
+            }
+            break;
+        case unit_type::WITHOUT_ANIMATIONS:
+        case unit_type::FULL:
+            if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
+                (ut->second.build_status() == unit_type::HELP_TOPIC_BUILT) )
+            {
+                const config& unit_cfg = find_config(key);
+                ut->second.build_full(unit_cfg, movement_types_, races_, unit_traits_);
+                add_advancement(unit_cfg, ut->second);
+            }
+            break;
+        default:
+            break;
+    }
+
+    return ut->second;
+}
+
+void game_data::unit_type_factory::add_advancement(const config& cfg, unit_type& to_unit){
+    config::const_child_itors af;
+    for(af = cfg.child_range("advancefrom"); af.first != af.second; ++af.first)
+    {
+        const std::string &from = (**af.first)["unit"];
+        const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
+
+        game_data::unit_type_map::iterator from_unit = types_.find(from);
+
+        // Fix up advance_from references
+        from_unit->second.add_advancement(to_unit, xp);
+
+        // Store what unit this type advances from
+		to_unit.add_advancesfrom(from);
+    }
 }
 
 // This function is only meant to return the likely state of not_living
 // for a new recruit of this type. It should not be used to check if
 // a particular unit is living or not, use get_state("not_living") for that.
-
 bool unit_type::not_living() const
 {
 		// If a unit hasn't been modified it starts out as living.

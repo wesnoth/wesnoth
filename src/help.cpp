@@ -52,6 +52,9 @@
 #include <set>
 #include <sstream>
 
+#define DBG_HELP LOG_STREAM(debug, help)
+#define LOG_HELP LOG_STREAM(info, help)
+#define ERR_HELP LOG_STREAM(err, help)
 
 namespace help {
 
@@ -132,7 +135,9 @@ public:
 	explicit topic_text(topic_generator *g): generator_(g) {}
 	topic_text &operator=(topic_generator *g);
 	topic_text(topic_text const &t);
-	operator std::vector< std::string > const &() const;
+	//operator std::vector< std::string > const &() const;
+
+    const std::vector<std::string>& parsed_text() const;
 };
 
 /// A topic contains a title, an id and some text.
@@ -151,7 +156,7 @@ struct topic
 	/// Comparison on the ID.
 	bool operator<(const topic &) const;
 	std::string title, id;
-	topic_text text;
+	mutable topic_text text;
 };
 
 typedef std::list<topic> topic_list;
@@ -853,6 +858,9 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level)
 {
+    if (section_cfg != NULL)
+        DBG_HELP << "parse_config_internal, section_cfg:\n" << *section_cfg;
+
 	if (level > max_section_level) {
 		std::cerr << "Maximum section depth has been reached. Maybe circular dependency?"
 				  << std::endl;
@@ -1036,7 +1044,7 @@ topic_text &topic_text::operator=(topic_generator *g)
 	return *this;
 }
 
-topic_text::operator std::vector< std::string > const &() const
+const std::vector<std::string>& topic_text::parsed_text() const
 {
 	if (generator_) {
 		parsed_text_ = parse_text((*generator_)());
@@ -1128,6 +1136,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	if (game_info == NULL) {
 		return topics;
 	}
+
 	std::map<std::string, std::string> ability_description;
 	std::map<std::string, std::set<std::string> > ability_units;
 	// Look through all the unit types, check if a unit of this type
@@ -1297,8 +1306,8 @@ public:
 		// respective topic.
 		const std::string race_id = type_.race();
 		std::string race_name;
-		const race_map::const_iterator race_it = game_info->races.find(race_id);
-		if (race_it != game_info->races.end()) {
+		const race_map::const_iterator race_it = game_info->unit_types.races().find(race_id);
+		if (race_it != game_info->unit_types.races().end()) {
 			race_name = race_it->second.plural_name();
 		} else {
 			race_name = _ ("race^Miscellaneous");
@@ -1546,12 +1555,12 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		config section_cfg;
 
 		bool hidden = (visible_races.count(*it) == 0);
-		
+
 		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + *it;
-		
+
 		std::string title;
-		const race_map::const_iterator race_it = game_info->races.find(*it);
-		if (race_it != game_info->races.end()) {
+		const race_map::const_iterator race_it = game_info->unit_types.races().find(*it);
+		if (race_it != game_info->unit_types.races().end()) {
 			title = race_it->second.plural_name();
 		} else {
 			title = _ ("race^Miscellaneous");
@@ -1574,7 +1583,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	}
 
 	std::set<std::string> race_units;
-	
+
 	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
 	    i != game_info->unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
@@ -1588,7 +1597,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		const std::string lang_name = type.language_name();
 		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  type.id();
 		topic unit_topic(lang_name, ref_id, "");
-		unit_topic.text = new unit_topic_generator(type);
+		//unit_topic.text = new unit_topic_generator(type);
 		topics.push_back(unit_topic);
 
 		if (!type.hide_help()) {
@@ -1603,8 +1612,8 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
-	const race_map::const_iterator race_it = game_info->races.find(race);
-	if (race_it != game_info->races.end()) {
+	const race_map::const_iterator race_it = game_info->unit_types.races().find(race);
+	if (race_it != game_info->unit_types.races().end()) {
 		race_name = race_it->second.plural_name();
 		race_description = race_it->second.description();
 		// if (description.empty()) description =  _("No description Available");
@@ -2034,7 +2043,7 @@ void help_text_area::set_items()
 		down_one_line();
 	}
 	// Parse and add the text.
-	std::vector<std::string> const &parsed_items = shown_topic_->text;
+	std::vector<std::string> const &parsed_items = shown_topic_->text.parsed_text();
 	std::vector<std::string>::const_iterator it;
 	for (it = parsed_items.begin(); it != parsed_items.end(); it++) {
 		if (*it != "" && (*it)[0] == '[') {
@@ -2692,6 +2701,7 @@ const section *find_section(const section &sec, const std::string &id)
 void help_browser::show_topic(const std::string &topic_id)
 {
 	const topic *t = find_topic(toplevel_, topic_id);
+
 	if (t != NULL) {
 		show_topic(*t);
 	} else if (topic_id.find(unit_prefix)==0 || topic_id.find(hidden_symbol() + unit_prefix)==0) {
@@ -2704,7 +2714,8 @@ void help_browser::show_topic(const std::string &topic_id)
 
 void help_browser::show_topic(const topic &t, bool save_in_history)
 {
-	log_scope("show_topic");
+	//log_scope("show_topic");
+    lg::scope_logger scope_topic(lg::general, "shop_topic");
 	if (save_in_history) {
 		forward_topics_.clear();
 		if (shown_topic_ != NULL) {
@@ -2714,6 +2725,16 @@ void help_browser::show_topic(const topic &t, bool save_in_history)
 			back_topics_.push_back(shown_topic_);
 		}
 	}
+
+    //if this is a unit help, check if all needed information is available
+    if (t.text.parsed_text().size() == 0){
+        if (t.id.find(unit_prefix) == 0){
+            std::string unit_id = t.id.substr(unit_prefix.length(), t.id.length() - unit_prefix.length());
+            unit_type& type = game_info->unit_types.build_unit_type(unit_id, unit_type::WITHOUT_ANIMATIONS);
+            t.text = new unit_topic_generator(type);
+        }
+    }
+
 	shown_topic_ = &t;
 	text_area_.show_topic(t);
 	menu_.select_topic(t);
@@ -2988,6 +3009,10 @@ void show_help(display &disp, const section &toplevel_sec,
 					 true, &buttons_ptr);
 	f.layout(xloc, yloc, width, height);
 	f.draw();
+
+    // Find all unit_types that have not been constructed yet and fill in the information
+    // needed to create the help topics
+    game_info->unit_types.generate_help_info();
 
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
 	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||

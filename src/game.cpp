@@ -82,6 +82,7 @@
 #define WRN_CONFIG LOG_STREAM(warn, config)
 #define LOG_CONFIG LOG_STREAM(info, config)
 #define LOG_GENERAL LOG_STREAM(info, general)
+#define DBG_GENERAL LOG_STREAM(debug, general)
 #define ERR_NET LOG_STREAM(err, network)
 #define LOG_NET LOG_STREAM(info, network)
 #define ERR_FS LOG_STREAM(err, filesystem)
@@ -134,8 +135,9 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
-	void read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache);
+	void read_game_cfg(bool use_cache);
 	void refresh_game_cfg(bool reset_translations=false);
+    void set_unit_data();
 
 	void upload_campaign(const std::string& campaign, network::connection sock);
 	void delete_campaign(const std::string& campaign, network::connection sock);
@@ -442,10 +444,7 @@ bool game_controller::init_config()
 	reset_game_cfg();
 	refresh_game_cfg();
 
-	game_config_.clear();
-	read_game_cfg(defines_map_, game_config_, use_caching_);
 	game_config::load_config(game_config_.child("game_config"));
-	old_defines_map_ = defines_map_;
 
 	hotkey::load_hotkeys(game_config_);
 	paths_manager_.set_paths(game_config_);
@@ -646,12 +645,12 @@ bool game_controller::play_multiplayer_mode()
 					if (
 						!faction_choices.empty() &&
 						std::find(faction_choices.begin(),faction_choices.end(),faction_id) == faction_choices.end()
-					) 
+					)
 						continue;
 					if (
 						!faction_excepts.empty() &&
 						std::find(faction_excepts.begin(),faction_excepts.end(),faction_id) != faction_excepts.end()
-					) 
+					)
 						continue;
 					j++;
 					if (rand()%j == 0) {
@@ -1635,7 +1634,7 @@ void game_controller::show_upload_begging()
 }
 
 //this function reads the game configuration, searching for valid cached copies first
-void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache)
+void game_controller::read_game_cfg(bool use_cache)
 {
 	log_scope("read_game_cfg");
 
@@ -1643,7 +1642,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 	bool is_valid = true;
 	std::stringstream str;
-	for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
+	for(preproc_map::const_iterator i = defines_map_.begin(); i != defines_map_.end(); ++i) {
 		if(i->second.value != "" || i->second.arguments.empty() == false) {
 			is_valid = false;
 			break;
@@ -1687,7 +1686,8 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				log_scope("read cache");
 				try {
 					scoped_istream stream = istream_file(fname);
-					read_compressed(cfg, *stream);
+					read_compressed(game_config_, *stream);
+					set_unit_data();
 					return;
 				} catch(config::error&) {
 					ERR_CONFIG << "cache is corrupt. Loading from files\n";
@@ -1698,19 +1698,19 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 			LOG_CONFIG << "no valid cache found. Writing cache to '" << fname << "'\n";
 
-			preproc_map defines_map(defines);
-			
+			preproc_map defines_map(defines_map_);
+
 			std::string error_log, user_error_log;
 
 			//read the file and then write to the cache
 			scoped_istream stream = preprocess_file("data/", &defines_map, &error_log);
-            
+
 			//reset the parse counter before reading the game files
 			if (loadscreen::global_loadscreen) {
 				loadscreen::global_loadscreen->parser_counter = 0;
 			}
 
-			read(cfg, *stream, &error_log);
+			read(game_config_, *stream, &error_log);
 
 			//load usermade add-ons
 			const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
@@ -1737,7 +1737,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 					read(user_campaign_cfg,*stream,&campaign_error_log);
 
 					if(campaign_error_log.empty()) {
-						cfg.append(user_campaign_cfg);
+						game_config_.append(user_campaign_cfg);
 					} else {
 						user_error_log += campaign_error_log;
 						error_campaigns.push_back(*uc);
@@ -1772,10 +1772,10 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				gui::show_error_message(disp(),msg.str());
 			}
 
-			cfg.merge_children("units");
+			game_config_.merge_children("units");
 
-			config& hashes = cfg.add_child("multiplayer_hashes");
-			for(config::child_list::const_iterator ch = cfg.get_children("multiplayer").begin(); ch != cfg.get_children("multiplayer").end(); ++ch) {
+			config& hashes = game_config_.add_child("multiplayer_hashes");
+			for(config::child_list::const_iterator ch = game_config_.get_children("multiplayer").begin(); ch != game_config_.get_children("multiplayer").end(); ++ch) {
 				hashes[(**ch)["id"]] = (*ch)->hash();
 			}
 
@@ -1787,7 +1787,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 			} else {
 				try {
 					scoped_ostream cache = ostream_file(fname);
-					write_compressed(*cache, cfg);
+					write_compressed(*cache, game_config_);
 					config checksum_cfg;
 					data_tree_checksum().write(checksum_cfg);
 					scoped_ostream checksum = ostream_file(fname_checksum);
@@ -1797,14 +1797,23 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				}
 			}
 
+            set_unit_data();
 			return;
 		}
 	}
 
 	ERR_CONFIG << "caching cannot be done. Reading file\n";
-	preproc_map defines_map(defines);
+	preproc_map defines_map(defines_map_);
 	scoped_istream stream = preprocess_file("data/", &defines_map);
-	read(cfg, *stream);
+	read(game_config_, *stream);
+	set_unit_data();
+}
+
+void game_controller::set_unit_data(){
+    const config* const units = game_config_.child("units");
+    if(units != NULL) {
+        units_data_.set_config(*units);
+    }
 }
 
 void game_controller::refresh_game_cfg(bool reset_translations)
@@ -1816,17 +1825,12 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 			units_data_.clear();
 			if(!reset_translations) {
 				game_config_.clear();
-				read_game_cfg(defines_map_, game_config_, use_caching_);
+				read_game_cfg(use_caching_);
 			} else {
 				game_config_.reset_translation();
 				// we may have translatable strings in [game_config]
 				// e.g. team color names are defined there
 				game_config::load_config(game_config_.child("game_config"));
-			}
-
-			const config* const units = game_config_.child("units");
-			if(units != NULL) {
-				units_data_.set_config(*units);
 			}
 
 			old_defines_map_ = defines_map_;
@@ -2122,10 +2126,10 @@ static int play_game(int argc, char** argv)
 			const std::string output_file(input_file + ".gz");
 
 			try {
-			std::ofstream ofile(output_file.c_str(), std::ios_base::out 
+			std::ofstream ofile(output_file.c_str(), std::ios_base::out
 					| std::ios_base::binary | std::ios_base::binary);
 
-				std::ifstream ifile(input_file.c_str(), 
+				std::ifstream ifile(input_file.c_str(),
 					std::ios_base::in | std::ios_base::binary);
 				boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
 				in.push(boost::iostreams::gzip_compressor());
@@ -2155,10 +2159,10 @@ static int play_game(int argc, char** argv)
 				input_file, 0, input_file.length() - 3);
 
 			try {
-				std::ofstream ofile(output_file.c_str(), std::ios_base::out 
+				std::ofstream ofile(output_file.c_str(), std::ios_base::out
 					| std::ios_base::binary | std::ios_base::binary);
 
-				std::ifstream ifile(input_file.c_str(), 
+				std::ifstream ifile(input_file.c_str(),
 					std::ios_base::in | std::ios_base::binary);
 				boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
 				in.push(boost::iostreams::gzip_decompressor());
@@ -2251,14 +2255,13 @@ static int play_game(int argc, char** argv)
 	loadscreen::global_loadscreen = NULL;
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
-	
-	//YogiHH:
-	//init_config already processed the configs, so we don't need to do it for the
-	//first loop pass.
+
 	for(int first_time = true;;first_time = false){
+        //init_config already processed the configs, so we don't need to do it for the
+        //first loop pass.
 		if (!first_time){
 			//make sure the game config is always set to how it should be at the title screen
-			game.reset_game_cfg();
+			//game.reset_game_cfg();
 		}
 
 		// reset the TC, since a game can modify it, and it may be used
@@ -2317,7 +2320,6 @@ static int play_game(int argc, char** argv)
 			about::show_about(game.disp());
 			continue;
 		} else if(res == gui::SHOW_HELP) {
-			//game.reset_game_cfg();
 			help::help_manager help_manager(&game.game_config(), &game.units_data(), NULL);
 			help::show_help(game.disp());
 			continue;
@@ -2375,7 +2377,7 @@ int main(int argc, char** argv)
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 	} catch(twml_exception& e) {
-		std::cerr << "WML exception:\nUser message: " 
+		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 	}
 

@@ -181,9 +181,9 @@ unit::unit(const unit& o):
 //! Initilizes a unit from a config.
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	const gamestatus* game_status, const std::vector<team>* teams,const config& cfg,
-	bool use_traits, game_state* state) : 
-		movement_(0), 
-		hold_position_(false), 
+	bool use_traits, game_state* state) :
+		movement_(0),
+		hold_position_(false),
 		resting_(false),
 		state_(STATE_STANDING),
 		facing_(gamemap::location::SOUTH_EAST),
@@ -464,7 +464,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 		// there aren't any more traits.
 		num_traits = type->second.num_traits();
 		for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
-			const size_t num = 
+			const size_t num =
 				(state ?  state->get_random() : get_random()) % candidate_traits.size();
 			traits.push_back(candidate_traits[num]);
 			candidate_traits.erase(candidate_traits.begin()+num);
@@ -503,7 +503,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	if (type() != NULL)
 	{
 		specific_profile = (cfg_["profile"] != type()->get_gender_unit_type(gender_).get_variation(variation_).cfg_["profile"]);
-		
+
 		if (specific_profile)
 		{
 			profile = cfg_["profile"];
@@ -614,11 +614,11 @@ SDL_Colour unit::hp_color() const
 {
 	double unit_energy = 0.0;
 	SDL_Color energy_colour = {0,0,0,0};
-	
+
 	if(max_hitpoints() > 0) {
 		unit_energy = double(hitpoints())/double(max_hitpoints());
 	}
-	
+
 	if(1.0 == unit_energy){
 		energy_colour.r = 33;
 		energy_colour.g = 225;
@@ -661,7 +661,7 @@ SDL_Colour unit::xp_color() const
 	const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
 	const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;
 	const bool far_advance  = max_experience() - experience() <= game_config::kill_experience*3;
-	
+
 	SDL_Color colour=normal_colour;
 	if(advances_to().size()){
 		if(near_advance){
@@ -698,7 +698,7 @@ void unit::new_turn()
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
 	set_state("hides","yes");
-	
+
 	if(incapacitated()) {
 		set_attacks(0);
 	}
@@ -891,7 +891,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	// description= can match either the id or the custom unit description.
 	// This is deliberate as a backward-compatibility-hack to
 	// accommodate pre-1.5.1 versions, but it may produce odd results.
-	// if (as in THoT) several units are deliberately given the same 
+	// if (as in THoT) several units are deliberately given the same
 	// user description.  After 1.5.3 the middle clause should go.
 	if(description.empty() == false && description != this->underlying_id() && description != name_) {
 		return false;
@@ -1102,7 +1102,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			std::vector<gamemap::location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				unit_map::const_iterator unit_itor = units_->find(adjacent[*j]);
-				if (unit_itor == units_->end() 
+				if (unit_itor == units_->end()
 				|| !unit_itor->second.matches_filter(*i, unit_itor->first, use_flat_tod)) {
 					continue;
 				}
@@ -1112,7 +1112,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 				}
 			}
 			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
-			std::vector<std::pair<int,int> > counts = (*i).has_attribute("count") 
+			std::vector<std::pair<int,int> > counts = (*i).has_attribute("count")
 				? utils::parse_ranges((*i)["count"]) : default_counts;
 			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
 			bool count_matches = false;
@@ -1295,8 +1295,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 	type_ = cfg_["type"];
 	if(!type_set || cfg["race"] != "") {
-		const race_map::const_iterator race_it = gamedata_->races.find(cfg["race"]);
-		if(race_it != gamedata_->races.end()) {
+		const race_map::const_iterator race_it = gamedata_->unit_types.races().find(cfg["race"]);
+		if(race_it != gamedata_->unit_types.races().end()) {
 			race_ = &race_it->second;
 		} else {
 			static const unit_race dummy_race;
@@ -1326,19 +1326,19 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	const config* ai_vars = cfg.child("ai_vars");
 	if (ai_vars)
-	{		
+	{
 		formula_vars_ = new game_logic::map_formula_callable;
-		
+
 		variant var;
-		for(string_map::const_iterator i = ai_vars->values.begin(); i != ai_vars->values.end(); ++i) 
-		{ 
+		for(string_map::const_iterator i = ai_vars->values.begin(); i != ai_vars->values.end(); ++i)
+		{
  			var.serialize_from_string(i->second);
 			formula_vars_->add(i->first, var);
 		}
 	} else {
 		formula_vars_ = game_logic::map_formula_callable_ptr();
 	}
-	//remove ai_vars from private cfg 
+	//remove ai_vars from private cfg
 	cfg_.clear_children("ai_vars");
 
 	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(cfg["type"]);
@@ -1520,8 +1520,8 @@ void unit::write(config& cfg) const
 		config* ai_vars = cfg.child("ai_vars");
 
 		std::string str;
-		for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i) 
-		{ 
+		for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
+		{
 			i->second.serialize_to_string(str);
 			if (!str.empty())
 			{
@@ -1781,7 +1781,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 #ifndef LOW_MEM
 	if(facing_ != gamemap::location::NORTH && facing_ != gamemap::location::SOUTH) {
 		image_loc = params.image_diagonal;
-	} 
+	}
 	if(image_loc.is_void()|| image_loc.get_filename() == "") { // invalid diag image, or not diagonal
 		image_loc = params.image;
 	}
@@ -1859,7 +1859,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 
 	if (ellipse_back != NULL) {
-		disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order, 
+		disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order,
 			display::tblit(xsrc, ysrc_adjusted-ellipse_floating, ellipse_back));
 	}
 
@@ -1871,7 +1871,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	}
 
 	if (ellipse_front != NULL) {
-		disp.drawing_buffer_add(display::LAYER_UNIT_FG, drawing_order, 
+		disp.drawing_buffer_add(display::LAYER_UNIT_FG, drawing_order,
 			display::tblit(xsrc, ysrc_adjusted-ellipse_floating, ellipse_front));
 	}
 
@@ -1900,7 +1900,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
-			disp.drawing_buffer_add(display::LAYER_UNIT_BAR, 
+			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 				drawing_order, display::tblit(xsrc, ysrc_adjusted, orb));
 		}
 
@@ -1917,16 +1917,16 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 		const fixed_t bar_alpha = (loc == disp.mouseover_hex() || loc == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
 
-		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted, 
+		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted,
 			drawing_order, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
 
 			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / maximum<int>(level_,1));
-			
+
 			SDL_Color colour=xp_color();
-			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted, 
+			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted,
 				drawing_order, xp_bar_height, filled, colour, bar_alpha);
 		}
 
@@ -1936,7 +1936,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
-				disp.drawing_buffer_add(display::LAYER_UNIT_BAR, 
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					drawing_order, display::tblit(xsrc, ysrc_adjusted, crown));
 			}
 		}
@@ -1944,7 +1944,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
-				disp.drawing_buffer_add(display::LAYER_UNIT_BAR, 
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					drawing_order, display::tblit(xsrc, ysrc_adjusted, ov_img));
 			}
 		}
@@ -2285,14 +2285,14 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 {
 	std::vector<std::pair<std::string,std::string> > temp;
 	std::pair<std::string,std::string> icon; //<image,tooltip>
-	
+
 	const config::child_list& advances = get_modification_advances();
 	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
 		icon.first=(**i)["icon"];
 		icon.second=(**i)["description"];
-		
+
 		for(unsigned int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
-			
+
 			temp.push_back(icon);
 		}
 	}
@@ -2372,7 +2372,7 @@ config::child_list unit::get_modification_advances() const
 			}
 		}
 	}
-	
+
 	return res;
 }
 
@@ -2752,7 +2752,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		}
 		//trait_description += t_string(N_(")"), "wesnoth");
 	}
-	
+
 	if (!mod["name"].empty()) {
 		utils::string_map symbols;
 		symbols["trait_name"] = mod["name"];
@@ -2761,7 +2761,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	} else if (!trait_description.empty()) {
 		description += trait_description;
 	}
-	
+
 	description += "\n";
 }
 
@@ -3080,7 +3080,7 @@ std::string get_checksum(const unit& u) {
 		"random_traits",
 		"resting",
 		"undead_variation",
-		"upkeep",	
+		"upkeep",
 		"value",
 		"zoc",
 		""};
@@ -3148,9 +3148,9 @@ std::string get_checksum(const unit& u) {
 		}
 	}
 	DBG_UT << wcfg;
- 
-	return wcfg.hash();	
-		
+
+	return wcfg.hash();
+
 	unit_config["controller"] = "";
 	// Since the ai messes up the 'moves' attribute, ignore that for the checksum
 	unit_config["moves"] = "";

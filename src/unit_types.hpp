@@ -156,15 +156,16 @@ public:
 	~unit_type();
 
 	//! Load data into an empty unit_type
-	void build(const config& cfg, const movement_type_map& movement_types,
+	void build_full(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
+    void build_help_index(const config& cfg, const race_map& races);
 
 	//! Adds an additional advancement path to a unit type.
 	//! This is used to implement the [advancefrom] tag.
 	void add_advancement(const unit_type &advance_to,int experience);
 
 	//! Adds units that this unit advances from, for help file purposes.
-	void add_advancesfrom(const unit_type &advance_from);
+	void add_advancesfrom(std::string unit_id);
 
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
@@ -237,6 +238,9 @@ public:
 	const std::string& race() const;
 	bool hide_help() const { return hide_help_; }
 
+    enum BUILD_STATUS {NOT_BUILT, HELP_TOPIC_BUILT, WITHOUT_ANIMATIONS, FULL};
+
+    BUILD_STATUS build_status() const { return build_status_; }
 private:
 	void operator=(const unit_type& o);
 
@@ -275,21 +279,69 @@ private:
 	mutable std::vector<unit_animation> animations_;
 
 	std::string flag_rgb_;
+
+	BUILD_STATUS build_status_;
 };
 
 class game_data
 {
 public:
+    typedef std::map<std::string,unit_type> unit_type_map;
+
+	class unit_type_factory
+	{
+		public:
+            unit_type_factory::unit_type_factory()
+            {
+                unit_cfg_ = NULL;
+            }
+
+            unit_type_factory::unit_type_factory(const config& unit_cfg) :
+                unit_cfg_(&unit_cfg)
+            {}
+
+            void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
+            void set_unit_traits(const config::child_list unit_traits) { unit_traits_ = unit_traits; }
+
+            movement_type_map& movement_types() { return movement_types_; }
+            race_map& races() { return races_; }
+            const config* unit_config() { return unit_cfg_; }
+
+			unit_type_map::const_iterator find(const std::string& key);
+			const config& find_config(const std::string& key);
+
+			unit_type_map::iterator end() { return types_.end(); }
+			unit_type_map::iterator begin() { return types_.begin(); }
+
+			void clear() {
+			    types_.clear();
+			    movement_types_.clear();
+			    races_.clear();
+            }
+
+			std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string,unit_type>& utype) { return types_.insert(utype); }
+
+            void generate_help_info();
+            unit_type& build_unit_type(const std::string& key, unit_type::BUILD_STATUS status);
+        private:
+            unit_type_factory(unit_type_factory& utf) {}
+
+            void add_advancement(const config& cfg, unit_type& to_unit);
+
+            mutable unit_type_map types_;
+            movement_type_map movement_types_;
+            race_map races_;
+            config::child_list unit_traits_;
+            const config* unit_cfg_;
+	};
+
 	game_data();
 	game_data(const config& cfg);
 	void set_config(const config& cfg);
 	void clear();
 
-	movement_type_map movement_types;
-	typedef std::map<std::string,unit_type> unit_type_map;
-	unit_type_map unit_types;
+	mutable unit_type_factory unit_types;
 	config merged_units;
-	race_map races;
 };
 
 #endif

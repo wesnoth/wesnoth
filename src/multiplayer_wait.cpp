@@ -95,7 +95,7 @@ void wait::leader_preview_pane::draw_contents()
 		std::string leader = leaders_.get_leader();
 		std::string gender = leaders_.get_gender();
 
-		const game_data::unit_type_map& utypes = data_->unit_types;
+		game_data::unit_type_factory& utypes = data_->unit_types;
 		std::string leader_name;
 		std::string image;
 
@@ -231,7 +231,7 @@ void wait::join_game(bool observe)
 
 	// Add the map name to the title.
 	append_to_title(": " + level_["name"]);
-	
+
 	if (!observe) {
 		const config::child_list& sides_list = level_.get_children("side");
 
@@ -329,7 +329,7 @@ void wait::start_game()
 
 
 
-	//! @todo Instead of using level_to_gamestate reinit the state_, 
+	//! @todo Instead of using level_to_gamestate reinit the state_,
 	//! this needs more testing -- Mordante
 	//! It seems level_to_gamestate is needed for the start of game
 	//! download, but downloads of later scenarios miss certain info
@@ -339,11 +339,11 @@ void wait::start_game()
 	if(level_.child("player") == 0) {
 		level_to_gamestate(level_, state_, level_["savegame"] == "yes");
 	} else {
-	
+
 		state_ = game_state(game_data_, level_);
 
-		// When we observe and don't have the addon installed we still need 
-		// the old way, no clue why however. Code is a copy paste of 
+		// When we observe and don't have the addon installed we still need
+		// the old way, no clue why however. Code is a copy paste of
 		// playcampaign.cpp:576 which shows an 'Unknown scenario: '$scenario|'
 		// error. This seems to work and have no side effects....
 		if(!state_.scenario.empty() && state_.scenario != "null") {
@@ -466,7 +466,7 @@ void wait::generate_menu()
 
 		std::string leader_name;
 		std::string leader_image;
-		const game_data::unit_type_map& utypes = game_data_.unit_types;
+		game_data::unit_type_factory& utypes = game_data_.unit_types;
 		const unit_type* ut;
 		const unit_type* utg;
 

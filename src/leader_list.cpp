@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file leader_list.cpp 
+//! @file leader_list.cpp
 //! Manage the selection of a leader, and select his/her gender.
 
 #include "global.hpp"
@@ -31,9 +31,9 @@ leader_list_manager::leader_list_manager(const config::child_list& side_list,
 	leaders_(),
 	genders_(),
 	gender_ids_(),
-	side_list_(side_list), 
+	side_list_(side_list),
 	data_(data),
-	leader_combo_(leader_combo), 
+	leader_combo_(leader_combo),
 	gender_combo_(gender_combo)
 {
 }
@@ -126,7 +126,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 		return;
 	}
 
-	const game_data::unit_type_map& utypes = data_->unit_types;
+	game_data::unit_type_factory& utypes = data_->unit_types;
 	if (utypes.find(leader) != utypes.end()) {
 		const unit_type* ut;
 		const unit_type* utg;
@@ -165,7 +165,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 		if (gender_combo_ != NULL) {
 			gender_combo_->set_items(genders_);
 			gender_index %= genders_.size();
-			gender_combo_->set_selected(gender_index);	
+			gender_combo_->set_selected(gender_index);
 		}
 	} else {
 		gender_ids_.push_back("random");
@@ -173,7 +173,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 		if (gender_combo_ != NULL) {
 			gender_combo_->enable(false);
 			gender_combo_->set_items(genders_);
-			gender_combo_->set_selected(0);	
+			gender_combo_->set_selected(0);
 		}
 	}
 }
@@ -183,7 +183,7 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 	std::vector<std::string> leader_strings;
 	for(itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
 
-		const game_data::unit_type_map& utypes = data_->unit_types;
+		game_data::unit_type_factory& utypes = data_->unit_types;
 
 		//const std::string name = data_->unit_types->find(*itor).language_name();
 		if (utypes.find(*itor) != utypes.end()) {
