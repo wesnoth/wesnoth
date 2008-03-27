@@ -632,14 +632,12 @@ daemons = [wesnothd, campaignd]
 pythontools = Split("wmlscope wmllint wmlindent")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
-env.Install(bindir, clientside)
-for tool in pythontools:
-    env.Install(bindir, 'data/tools/' + tool)
-for module in pythonmodules:
-    env.Install(pythonlib, 'data/tools/wesnoth/' + module)
-for subdir in Split('data fonts icons images sounds'):
-    env.Install(datadir, subdir)
-env.Alias('install', [bindir, datadir, pythonlib])
+env.Alias('install', [
+    env.Install(bindir, clientside),
+    env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
+    env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
+    env.Install(datadir, Split('data fonts icons images sounds'))
+    ])
 
 env.Alias("install-wesnothd", env.Clone().Install(bindir, wesnothd))
 env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
