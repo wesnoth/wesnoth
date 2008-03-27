@@ -46,14 +46,9 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 # Setup
 #
 
-# FIXME: Currently this will only work under Linux
-svnrev = commands.getoutput("svnversion -n . 2>/dev/null")
-
 env = Environment(options = opts)
 
 env.TargetSignatures('content')
-
-env["CXXFLAGS"].append('-DSVNREV=\'"%s"\'' % svnrev)
 
 # Omits the 'test' target 
 all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
@@ -131,6 +126,9 @@ extralibs=[]
 # FIXME: Unix-specific.
 # Link only on demand, so we don't need separate link lists for each binary
 env["LINKFLAGS"].append("-Wl,--as-needed")
+
+# Later in the recipe we will guarantee that src/revision.hpp exists 
+env["CXXFLAGS"].append('-DHAVE_REVISION')
 
 if env["debug"]:
     env["CXXFLAGS"] += Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
@@ -453,12 +451,11 @@ env.Program("test", test_sources,
             LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs + ['boost_unit_test_framework'],
             LIBPATH = [".", "/lib", "/usr/lib"])
 
-# FIXME: Include this in gameconfig.cpp when we switch over to scons.
-# Because of the content check, scons will do the right thing.
-# At that point the following line and -DSVNREV can be removed from CXXFLAGS.
-env.Depends('src/game_config.o', 'revision_stamp.h')
-r = env.Command("revision_stamp.h", [],
-            'echo "#define REVISION \"%s\"" >revision_stamp.h' % svnrev)
+# FIXME: Currently this will only work under Linux
+svnrev = commands.getoutput("svnversion -n . 2>/dev/null")
+env.Depends('src/game_config.o', 'src/revision.hpp')
+r = env.Command("revision.h", [],
+            'echo "#define REVISION \"%s\"" >src/revision.h' % svnrev)
 env.AlwaysBuild(r)
 
 #

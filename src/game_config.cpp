@@ -21,6 +21,9 @@
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "wesconfig.h"
+#ifdef HAVE_REVISION
+#include "revision.hpp"
+#endif /* HAVE_REVISION */
 
 #include <cstdlib>
 #include <sstream>
@@ -40,8 +43,8 @@ namespace game_config
 	const int gold_carryover_percentage = 80;
 	const bool gold_carryover_add = false;
 	const std::string version = VERSION;
-#ifdef SVNREV
-	const std::string revision = VERSION " (" SVNREV ")";
+#ifdef REVISION
+	const std::string revision = VERSION " (" REVISION ")";
 #else
 	const std::string revision = VERSION;
 #endif

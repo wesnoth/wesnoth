@@ -1,7 +1,3 @@
-SVNREV = $(shell svnversion -n $(topdir) 2>/dev/null)
-CFLAGS += "-DSVNREV=\"$(SVNREV)\""
-CXXFLAGS += "-DSVNREV=\"$(SVNREV)\""
-
 AUTOMAKE_OPTIONS = subdir-objects
 
 bin_PROGRAMS =
@@ -439,20 +435,25 @@ libwesnoth_a_SOURCES = \
 	wml_exception.cpp 
 
 # Until game_config.cpp is removed, this will be needed to ensure that the
-# SVNVER constant gets updated correctly.  If and when that definition is
+# REVISION constant gets updated correctly.  If and when that definition is
 # moved elsewhere, this dependency must follow it.
-game_config.o: revision-stamp 
+game_config.o: revision.hpp 
 
 # Should be touched each time the SVN revision number goes up 
-revision-stamp: FORCE
-	if [ x"$(SVNREV)" != x`cat revision-stamp 2>/dev/null` ]; then echo -n $(SVNREV) >revision-stamp; fi
+# Inclusion of this file should be guarded by HAVE_REVISION so checkouts 
+# into a Windows build environment won't break.
+REVISION = $(shell svnversion -n $(topdir) 2>/dev/null)
+.PRECIOUS: revision.hpp
+revision.hpp: FORCE
+	echo '#define REVISION	"$(REVISION)"' >/tmp/westemp$$$$; \
+	if cmp -s revision.hpp /tmp/westemp$$$$ 2>/dev/null; then :; else cp /tmp/westemp$$ revision.hpp; fi
 
 FORCE:
 
-AM_CXXFLAGS = -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+AM_CXXFLAGS = -DHAVE_REVISION -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"
 
-AM_CFLAGS = -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+AM_CFLAGS = -DHAVE_REVISION -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
 
 if PYTHON
