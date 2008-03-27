@@ -454,10 +454,10 @@ env.Program("test", test_sources,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 # FIXME: Currently this will only work under Linux
-svnrev = commands.getoutput("svnversion -n . 2>/dev/null")
+env["svnrev"] = commands.getoutput("svnversion -n . 2>/dev/null")
 env.Depends('src/game_config.o', 'src/revision.hpp')
-r = env.Command("revision.h", [],
-            'echo "#define REVISION \"%s\"" >src/revision.h' % svnrev)
+r = env.Command("src/revision.hpp", [],
+                lambda target, source, env: open(str(target[0]), "w").write("#define REVISION \"%s\"\n" % env["svnrev"]))
 env.AlwaysBuild(r)
 
 #
