@@ -102,11 +102,6 @@ AC_ARG_ENABLE([python_install],
 	      [python_install=$enableval],
 	      [python_install=no])
 
-AC_ARG_ENABLE([lite],
-              AS_HELP_STRING([--enable-lite], [enable lite version of wesnoth (without music or large images)]),
-	      [lite=$enableval],
-	      [lite=no])
-
 AC_ARG_ENABLE([tinygui],
               AS_HELP_STRING([--enable-tinygui], [enable GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing]),
 	      [tinygui=$enableval],
@@ -886,43 +881,41 @@ LIBS=$OLD_LIBS
 # Check for OGG support in SDL_mixer                                  #
 #######################################################################
 
-if test "x$lite" = "xno"; then
-    if test -e "data/core/music/main_menu.ogg" ; then
-        AC_LANG([C])
-	AC_MSG_CHECKING([for OGG support in SDL_mixer])
+if test -e "data/core/music/main_menu.ogg" ; then
+    AC_LANG([C])
+    AC_MSG_CHECKING([for OGG support in SDL_mixer])
 
-        OLD_CPPFLAGS=$CPPFLAGS
-	OLD_CFLAGS=$CFLAGS
-        OLD_LIBS=$LIBS
-
-
-	CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
-        CFLAGS="$CFLAGS $SDL_CFLAGS"
-	LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
-
-	ac_link="$LDPREFIX $ac_link"
-        AC_RUN_IFELSE([AC_LANG_SOURCE([
-	#include <SDL_mixer.h>
-        #include <stdlib.h>
-
-	int main(int argc, char **argv)
-        {
-	    Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
-	    if (music == NULL)
-		exit(1);
-	    exit(0);
-        }
-	])],
-	[AC_MSG_RESULT(yes)],
-	[AC_MSG_RESULT(no)]
-	[AC_MSG_ERROR([*** SDL_mixer has no OGG support! You need SDL_mixer with OGG support])],
-	[AC_MSG_RESULT([not tested in cross-compiling])])
+    OLD_CPPFLAGS=$CPPFLAGS
+    OLD_CFLAGS=$CFLAGS
+    OLD_LIBS=$LIBS
 
 
-        CPPFLAGS=$OLD_CPPFLAGS
-        CFLAGS=$OLD_CFLAGS
-        LIBS=$OLD_LIBS
-    fi
+    CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+    CFLAGS="$CFLAGS $SDL_CFLAGS"
+    LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
+
+    ac_link="$LDPREFIX $ac_link"
+    AC_RUN_IFELSE([AC_LANG_SOURCE([
+    #include <SDL_mixer.h>
+    #include <stdlib.h>
+
+    int main(int argc, char **argv)
+    {
+	Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
+	if (music == NULL)
+	    exit(1);
+	exit(0);
+    }
+    ])],
+    [AC_MSG_RESULT(yes)],
+    [AC_MSG_RESULT(no)]
+    [AC_MSG_ERROR([*** SDL_mixer has no OGG support! You need SDL_mixer with OGG support])],
+    [AC_MSG_RESULT([not tested in cross-compiling])])
+
+
+    CPPFLAGS=$OLD_CPPFLAGS
+    CFLAGS=$OLD_CFLAGS
+    LIBS=$OLD_LIBS
 fi
 
 #######################################################################
@@ -1043,10 +1036,6 @@ done])
 # Data file substitution.                                             #
 #######################################################################
 
-AM_CONDITIONAL([LITE], [test "x$lite" = "xyes"])
-if test "x$lite" = "xyes"; then
-    PACKAGE=$PACKAGE-lite
-fi
 AC_SUBST([DATA_FILES])
 AC_SUBST([FONT_FILES])
 AC_SUBST([IMAGE_FILES])

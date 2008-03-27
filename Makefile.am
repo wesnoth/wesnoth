@@ -6,12 +6,8 @@ bin_SCRIPTS =
 
 findfilterflags=! \( -name .svn -prune -o -name ".\#*" -o -name "*~" -o -name "*bak" -o -type d \)
 
-if LITE
-exclude=| egrep -v '(/sounds|/music)' 
-endif
-
-finddata=(cd $(top_srcdir) && find data fonts icons images sounds $(findfilterflags) -print ) $(exclude)
-finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \! \( -name .svn -prune \) -print ) $(exclude)
+finddata=(cd $(top_srcdir) && find data fonts icons images sounds $(findfilterflags) -print )
+finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \! \( -name .svn -prune \) -print )
 findnoinst=(cd $(top_srcdir) && find utils $(findfilterflags) -print )
 
 finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.txt")
