@@ -641,10 +641,8 @@ for subdir in Split('data fonts icons images sounds'):
     env.Install(datadir, subdir)
 env.Alias('install', [bindir, datadir, pythonlib])
 
-wesnothd_env = env.Clone()
-wesnothd_env.Default(env.Alias("wesnothd-install", env.Install(bindir, wesnothd)))
-campaignd_env = env.Clone()
-campaignd_env.Default(env.Alias("campaignd-install", env.Install(bindir, campaignd)))
+env.Alias("install-wesnothd", env.Clone().Install(bindir, wesnothd))
+env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 
 #
 # Un-installation
