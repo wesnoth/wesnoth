@@ -670,15 +670,16 @@ env.Alias('install', [
     ])
 
 wesnothd_env = env.Clone()
+wesnothd_env.TargetSignatures('build')
 # FIXME: Only works under Unixes
-fifobuilder = wesnothd_env.Command(bindir, '', [
-    Mkdir(fifodir),
-    Chmod(fifodir, 0700),
-    ])
-env.Alias("install-wesnothd", [ \
-    wesnothd_env.Install(bindir, wesnothd),
-    #wesnothd_env.Install(fifodir, fifobuilder),
-    ])
+from os import access, F_OK
+install_wesnothd = wesnothd_env.Install(bindir, wesnothd)
+env.Alias("install-wesnothd", install_wesnothd)
+if not access(fifodir, F_OK):
+    wesnothd_env.AddPostAction(install_wesnothd, [
+        Mkdir(fifodir),
+        Chmod(fifodir, 0700),
+        ])
 
 env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 
