@@ -291,12 +291,12 @@ public:
 	class unit_type_factory
 	{
 		public:
-            unit_type_factory::unit_type_factory()
+            unit_type_factory()
             {
                 unit_cfg_ = NULL;
             }
 
-            unit_type_factory::unit_type_factory(const config& unit_cfg) :
+            unit_type_factory(const config& unit_cfg) :
                 unit_cfg_(&unit_cfg)
             {}
 
