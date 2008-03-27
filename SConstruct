@@ -71,7 +71,9 @@ Available build targets include:
     test = unit test binary (not an installable)
     TAGS = build tags for Emacs (cleaned by 'scons -c all').
     install = install all executables and tools
-    uninstall = uninstall all executables and tools
+    install-wesnothd = install the Wesnoth multiplayer server
+    install-campaignd = install the Wesnoth campaign server
+    uninstall = uninstall all executables, tools, and servers
 
 """ + opts.GenerateHelpText(env))
 conf = Configure(env)
@@ -621,17 +623,16 @@ env.Clean(all, 'TAGS')
 #
 # Installation productions
 #
-wesnothd_env = env.Clone()
 
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
-binaries = [wesnoth, wesnothd, wesnoth_editor, cutter, exploder]
+clientside = [wesnoth, wesnoth_editor, cutter, exploder]
+daemons = [wesnothd, campaignd]
 pythontools = Split("wmlscope wmllint wmlindent")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
-for binary in binaries:
-    env.Install(bindir, binary)
+env.Install(bindir, clientside)
 for tool in pythontools:
     env.Install(bindir, 'data/tools/' + tool)
 for module in pythonmodules:
@@ -640,17 +641,19 @@ for subdir in Split('data fonts icons images sounds'):
     env.Install(datadir, subdir)
 env.Alias('install', [bindir, datadir, pythonlib])
 
-wesnothd_env.Default(env.Alias("wesnothd-install", env.InstallAs(bindir + "/wesnothd", wesnothd)))
+wesnothd_env = env.Clone()
+wesnothd_env.Default(env.Alias("wesnothd-install", env.Install(bindir, wesnothd)))
+campaignd_env = env.Clone()
+campaignd_env.Default(env.Alias("campaignd-install", env.Install(bindir, campaignd)))
 
 #
 # Un-installation
 #
-deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), binaries) \
+deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + daemons) \
             + [Delete(datadir), Delete(pythonlib)]
 uninstall = env.Command('uninstall', '', deletions)
 env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
-
 
 #
 # Known problems:
