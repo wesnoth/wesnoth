@@ -5,7 +5,7 @@
 # configure.ac.  The optipng option is omitted.  The following
 # constanta should be set before release.
 #
-import os, sys, commands
+import os, sys, commands, shutil
 
 #
 # Build-control options
@@ -637,6 +637,29 @@ daemons = [wesnothd, campaignd]
 pythontools = Split("wmlscope wmllint wmlindent")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
+def CopyFilter(fn):
+    "Filter out data-tree things that shouldn't be installed."
+    return not ".svn" in str(fn)
+
+def InstallFilteredHook(target, source, env):
+    if type(target) == type([]):
+        target = target[0]
+    target = str(target)
+    if type(source) == type([]):
+        map(lambda f: InstallFilteredHook(target, f, env), source)
+    elif os.path.isdir(str(source)):
+        if CopyFilter(source):
+            target = os.path.join(target, os.path.basename(str(source))) 
+            if not os.path.exists(target):
+                #print "Make directory", target
+                os.makedirs(target)
+            map(lambda f: InstallFilteredHook(target, os.path.join(str(source), f), env), os.listdir(str(source)))
+    elif CopyFilter(source):
+        #print "Copy  source=%s target=%s" % (str(source), target)
+        shutil.copy2(str(source), target)
+    return None
+env = Environment(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
+
 install_env = env.Clone()
 # TargetSignatures('content') causes a crash in the install
 # production, at least in scons 0.97, right after the actions finish
@@ -646,7 +669,7 @@ env.Alias('install', [
     install_env.Install(bindir, clientside),
     install_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
     install_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
-    install_env.Install(datadir, Split('data fonts icons images sounds'))
+    install_env.InstallFiltered(Dir(datadir), map(Dir, Split('data fonts icons images sounds translations')))
     ])
 
 env.Alias("install-wesnothd", env.Clone().Install(bindir, wesnothd))
