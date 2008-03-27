@@ -446,7 +446,7 @@ REVISION = $(shell svnversion -n $(topdir) 2>/dev/null)
 .PRECIOUS: revision.hpp
 revision.hpp: FORCE
 	echo '#define REVISION	"$(REVISION)"' >/tmp/westemp$$$$; \
-	if cmp -s revision.hpp /tmp/westemp$$$$ 2>/dev/null; then :; else cp /tmp/westemp$$ revision.hpp; fi
+	if cmp -s revision.hpp /tmp/westemp$$$$ 2>/dev/null; then :; else cp /tmp/westemp$$$$ revision.hpp; fi
 
 FORCE:
 
