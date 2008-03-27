@@ -53,6 +53,8 @@ all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
                         "cutter", "exploder"])
 env.Default("all")
 
+env.TargetSignatures('content')
+
 #
 # Configuration
 #
@@ -457,13 +459,9 @@ env.Depends('src/game_config.o', 'src/revision.hpp')
 r = env.Command("src/revision.hpp", [],
                 lambda target, source, env: open(str(target[0]), "w").write("#define REVISION \"%s\"\n" % env["svnrev"]))
 env.AlwaysBuild(r)
+env.TargetSignatures('content')
 
-# Don't do this!  It looks tempting, because you could in theory prevent
-# a recompile-relink when revision.h gets remade with a later timestamp
-# but the same content.  Unfortunately doing this causes a crash in the
-# install production, at least in scons 0.97, right after the actions
-# finish (thus, probably, at target-signature generation time).
-#env.TargetSignatures('content')
+
 
 
 
@@ -639,11 +637,16 @@ daemons = [wesnothd, campaignd]
 pythontools = Split("wmlscope wmllint wmlindent")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
+install_env = env.Clone()
+# TargetSignatures('content') causes a crash in the install
+# production, at least in scons 0.97, right after the actions finish
+# (thus, probably, at target-signature generation time).
+install_env.TargetSignatures('build')
 env.Alias('install', [
-    env.Install(bindir, clientside),
-    env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
-    env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
-    env.Install(datadir, Split('data fonts icons images sounds'))
+    install_env.Install(bindir, clientside),
+    install_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
+    install_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
+    install_env.Install(datadir, Split('data fonts icons images sounds'))
     ])
 
 env.Alias("install-wesnothd", env.Clone().Install(bindir, wesnothd))
