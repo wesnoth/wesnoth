@@ -10,7 +10,7 @@ SITE=$HOME/html/units
 SOURCE=$HOME/source
 
 if ! [ -d $SOURCE ]; then
-	echo "$SOURCE not found."
+	echo "'$SOURCE' not found."
 	exit 1
 fi
 
@@ -18,23 +18,20 @@ BRANCH=Development
 case $VERSION in
 	1.2 )	cd $SOURCE/1.2 || exit 1
 		BRANCH=Stable
-		rm -rf $SITE/$VERSION
 	;;
 	1.3.* ) cd $SOURCE/trunk || exit 1
 	;;
 	1.4 )	cd $SOURCE/1.4 || exit 1
 		BRANCH=Stable
-		rm -rf $SITE/$VERSION
 	;;
 	trunk ) cd $SOURCE/trunk || exit 1
-		rm -rf $SITE/$VERSION
 	;;
 	* ) 	echo "Unknown version."
 		exit 1
 	;;
 esac
-if [ -d $SITE/$VERSION ]; then
-	echo "$SITE/$VERSION already exists."
+if [ -d $SITE/$VERSION ] && [ "$BRANCH" != "Stable" ] && [ "$VERSION" != "trunk" ]; then
+	echo "'$SITE/$VERSION' already exists."
 	exit 1
 fi
 #echo 'svn update...'
@@ -48,6 +45,7 @@ if [ "$VERSION" != "trunk" ]; then
 	sed -i -e "s/\(my \$version = '\).*\(';\)/\1$VERSION\2/" units.pl
 fi
 ./units.pl
+rm -rf $SITE/$VERSION
 # move the generated files to their proper place
 mv files $SITE/$VERSION
 cp -p templates/units.css $SITE/$VERSION
