@@ -11,15 +11,18 @@ SERVERBASE=$HOME/servers/$SERVER
 SOURCE=$HOME/source/trunk
 THREADS=4
 
+if ! [ -d "$SERVERBASE" ]; then
+	echo "Server '$SERVER' not found."
+	exit 1
+fi
+[ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
+
 case $SERVER in
 	1.2 )	SOURCE=$HOME/source/1.2
 		THREADS=30
 		;;
 	* )
 esac
-
-[ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
-[ -d "$SERVERBASE" ] || exit 1
 
 ulimit -Ss 2048
 ulimit -c unlimited
@@ -36,7 +39,10 @@ do
 		PORT=$(cat $SERVERBASE/port)
 		REV=$(ls -l $SERVERBASE/build | sed -e 's,.*wesnothd-\(svn-.*\)_.*/,\1,')
 		cd $SERVERBASE/build || exit 1
-		[ -x bin/wesnothd-$SERVER ] || exit 1
+		if ! [ -x bin/wesnothd-$SERVER ]; then
+			echo "Executable 'bin/wesnothd-$SERVER' not found."
+			exit 1
+		fi
 		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > $SERVERBASE/logs/wesnothd.$DATE.$REV.log 2>&1 &
 		PID=$!
 		echo -n "started $SERVER server (revision: $REV, pid: $PID) at: "; date
@@ -46,15 +52,15 @@ do
 		mv currentlobby.log oldlobby.log > /dev/null 2>&1
 		ln -s logs/wesnothd.$DATE.$REV.log current.log
 		ln -s logs/lobby.$DATE.$REV.log currentlobby.log
-		mv gmon.out gmon.$DATE.out > /dev/null 2>&1
 		# wait a bit so the server is likely up and listening
 		sleep 1
 		if [ "$SERVER" == "1.2" ]; then
 			cd $SOURCE/utils/
 			./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
+			cd $SERVERBASE/build
 		fi
 		# wait for the server to terminate
 		wait $PID
-		cd
+		mv gmon.out gmon.$DATE.$REV.out > /dev/null 2>&1
 	fi
 done
