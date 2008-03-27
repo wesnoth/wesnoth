@@ -22,14 +22,16 @@ if ! [ -d $SOURCE ]; then
 fi
 
 case $SERVER in
-	1.2 )	cd $SOURCE/1.2   || exit 1
-		CXXFLAGS='-ggdb3 -pg'
+	1.2 )   cd $SOURCE/1.2   || exit 1
+		CXXFLAGS="$CXXFLAGS -ggdb3"
 	;;
-	1.4 )	cd $SOURCE/1.4   || exit 1
-		CXXFLAGS='-ggdb3 -pg -DNUM_SHARDS=7'
+	1.4 )   cd $SOURCE/1.4   || exit 1
+		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
+		#SCONS=yes
 	;;
-	*   )	cd $SOURCE/trunk || exit 1
-		CXXFLAGS='-O0 -ggdb3 -pg -DNUM_SHARDS=7'
+	*   )   cd $SOURCE/trunk || exit 1
+		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0"
+		SCONS=yes
 	;;
 esac
 
@@ -38,26 +40,33 @@ if [ "$2" != "" ]; then
 	REVISION="-r $2"
 fi
 echo -n 'svn update... '
-rev=$(svn up $REVISION | tail -n 1 | sed -e 's/[^0-9]//g')
+svn up $REVISION > /dev/null
+rev=$(svnversion -n src/)
+echo "to $rev"
 if [ "$rev" == "" ]; then
 	echo "No revision information found."
 	exit 1
 fi
 # reminder for local changes
-echo "to $rev"
-svn status
+#svn status
 DIR=wesnothd-svn-${rev}_$SERVER
-mkdir $BUILD/$DIR
+mkdir -p $BUILD/$DIR
 
-echo 'autogen.sh and configure...'
-./autogen.sh > $BUILD/$DIR/autogen.log
-./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-lite > $BUILD/$DIR/configure.log CXXFLAGS=$CXXFLAGS LDFLAGS='-pg'
-make clean > /dev/null
+if [ "$SCONS" == "yes" ]; then
+	mkdir -p $BUILD/$DIR/var/run
+	CXXFLAGS=$CXXFLAGS LDFLAGS=$LDFLAGS scons wesnothd-install prefix=$BUILD/$DIR fifodir=$BUILD/$DIR/var/run raw_sockets=1 profile=1 fribidi=0 python=0
+	mv $BUILD/$DIR/bin/wesnothd $BUILD/$DIR/bin/wesnothd-$SERVER
+else
+	echo 'autogen.sh and configure...'
+	./autogen.sh > $BUILD/$DIR/autogen.log
+	./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-lite --enable-profile --with-boost=$HOME/tools > $BUILD/$DIR/configure.log CXXFLAGS=$CXXFLAGS LDFLAGS=$LDFLAGS
+	make clean > /dev/null
 
-echo 'make...'
-make > $BUILD/$DIR/make.log || exit 1
-echo 'make install...'
-make install > $BUILD/$DIR/install.log || exit 1
+	echo 'make...'
+	make > $BUILD/$DIR/make.log || exit 1
+	echo 'make install...'
+	make install > $BUILD/$DIR/install.log || exit 1
+fi
 
 cd $SERVERBASE
 if [ -p $SOCKET ]; then
