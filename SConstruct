@@ -25,6 +25,7 @@ opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support',
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
+opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 
 # These are implemented in the installation productions
@@ -34,7 +35,6 @@ opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
-opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
@@ -168,6 +168,9 @@ if env['internal_data']:
 
 if env['prefsdir']:
     env["CXXFLAGS"].append("-DPREFERENCES_DIR='\"%s\"'" % env['prefsdir'])
+
+if env['fifodir']:
+    env["CXXFLAGS"].append("-DFIFODIR='\"%s\"'" % env['fifodir'])
 
 if env['python']:
     env["CXXFLAGS"].append("-DHAVE_PYTHON")
