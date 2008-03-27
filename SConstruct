@@ -23,6 +23,7 @@ opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fo
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
+opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 
 # These are implemented in the installation productions
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
@@ -33,7 +34,6 @@ opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
 opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
-opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
 opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
@@ -169,6 +169,11 @@ if env['fifodir']:
 
 if env['python']:
     env["CXXFLAGS"].append("-DHAVE_PYTHON")
+
+if env['localedir']:
+    env["CXXFLAGS"].append("-DLOCALEDIR='\"%s\"'" % env['localedir'])
+    if not os.path.isabs(env['localedir']):
+        env["CXXFLAGS"].append("-DHAS_RELATIVE_LOCALEDIR")
 
 # Simulate autools-like behavior of prefix and datadir
 if not env["datadir"].startswith("/"):
@@ -710,7 +715,8 @@ def manifest():
     lst.append("data/")
     return lst
 env.Tar('wesnoth.tgz', manifest())
-env.Append(TARFLAGS='-z --exclude="~"', TARCOMSTR="Making tarball...")
+env.Append(TARFLAGS='-z --exclude=".svn" --exclude="~"',
+           TARCOMSTR="Making tarball...")
 
 #
 # Known problems:
