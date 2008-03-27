@@ -175,6 +175,10 @@ if env['python']:
 if not env["datadir"].startswith("/"):
     env["datadir"] = os.path.join(env["prefix"], env["datadir"])
 
+# Simulate autools-like behavior of prefix and fifodir
+if not env["fifodir"].startswith("/"):
+    env["fifodir"] = os.path.join(env["prefix"], env["fifofodir"])
+
 env["CXXFLAGS"].append("-DWESNOTH_PATH='\"%s\"'" % env['datadir'])
 
 if 'CXXFLAGS' in os.environ:
@@ -624,6 +628,7 @@ env.Clean(all, 'TAGS')
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
+fifodir = env['fifodir']
 clientside = [wesnoth, wesnoth_editor, cutter, exploder]
 daemons = [wesnothd, campaignd]
 pythontools = Split("wmlscope wmllint wmlindent")
@@ -650,21 +655,31 @@ def InstallFilteredHook(target, source, env):
         #print "Copy  source=%s target=%s" % (str(source), target)
         shutil.copy2(str(source), target)
     return None
-env = Environment(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
+env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
 
-install_env = env.Clone()
+clientside_env = env.Clone()
 # TargetSignatures('content') causes a crash in the install
 # production, at least in scons 0.97, right after the actions finish
 # (thus, probably, at target-signature generation time).
-install_env.TargetSignatures('build')
+clientside_env.TargetSignatures('build')
 env.Alias('install', [
-    install_env.Install(bindir, clientside),
-    install_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
-    install_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
-    install_env.InstallFiltered(Dir(datadir), map(Dir, Split('data fonts icons images sounds translations')))
+    clientside_env.Install(bindir, clientside),
+    clientside_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
+    clientside_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
+    clientside_env.InstallFiltered(Dir(datadir), map(Dir, Split('data fonts icons images sounds translations')))
     ])
 
-env.Alias("install-wesnothd", env.Clone().Install(bindir, wesnothd))
+wesnothd_env = env.Clone()
+# FIXME: Only works under Unixes
+fifobuilder = wesnothd_env.Command(bindir, '', [
+    Mkdir(fifodir),
+    Chmod(fifodir, 0700),
+    ])
+env.Alias("install-wesnothd", [ \
+    wesnothd_env.Install(bindir, wesnothd),
+    #wesnothd_env.Install(fifodir, fifobuilder),
+    ])
+
 env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 
 #
