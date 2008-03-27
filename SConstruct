@@ -1,10 +1,6 @@
 #
 # SCons build description for the Wesnoth project
 #
-# This is a deliberately straight-line translation of the old
-# configure.ac.  The optipng option is omitted.  The following
-# constanta should be set before release.
-#
 import os, sys, commands, shutil
 
 #
@@ -461,10 +457,6 @@ r = env.Command("src/revision.hpp", [],
 env.AlwaysBuild(r)
 env.TargetSignatures('content')
 
-
-
-
-
 #
 # File inventory, for archive makes abd analysis tools
 #
@@ -689,10 +681,15 @@ env.Precious(uninstall)
 #
 # 1. We don't yet check for SDL version too old
 # 2. We don't check for Ogg Vorbis support in SDL_mixer
-# 3. Translations are not yet installed.
-# 4. Installation craps out with a mysterious "Is a directory" error.
-#    Data directory installation isn't done right anyway, as yet.
 # FIXME tags other problems
+#
+# To do:
+#
+# 1. Building the unit-test binaries.
+# 2. Documentation formatting and man-page installation
+# 3. Make distribution tarballs.
+# 4. Translations handling other than installation (pot-update).
+# 5. Setting uid and gid on the server binary
 
 # Local variables:
 # mode: python
