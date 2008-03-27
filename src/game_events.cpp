@@ -2229,6 +2229,31 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		new_handlers.push_back(event_handler(cfg.get_config()));
 	}
 	
+	// Fire any events
+	else if(cmd == "fire_event") {
+		gamemap::location loc1,loc2;
+		config data;		
+		if (cfg.has_child("primary_unit")) {
+			vconfig u = cfg.child("primary_unit");
+			if (u.has_attribute("x") && u.has_attribute("y"))
+				loc1 = cfg_to_loc(u);
+			if (u.has_attribute("weapon")) {
+				config& f = data.add_child("first");
+				f["weapon"] = u.get_attribute("weapon");
+			}
+		}
+		if (cfg.has_child("secondary_unit")) {
+			vconfig u = cfg.child("secondary_unit");
+			if (u.has_attribute("x") && u.has_attribute("y"))
+				loc2 = cfg_to_loc(u);
+			if (u.has_attribute("weapon")) {
+				config& s = data.add_child("second");
+				s["weapon"] = u.get_attribute("weapon");
+			}
+		}
+		game_events::fire(cfg["name"],loc1,loc2,data);
+	}
+	
 	// Setting of menu items
 	else if(cmd == "set_menu_item") {
 		/*
