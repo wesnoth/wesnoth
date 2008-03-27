@@ -27,12 +27,12 @@ opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 # These are implemented in the installation productions
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
 opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/wesnoth", PathOption.PathAccept))
+opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
+opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('lite', 'Set to build lite version of wesnoth (no music or large images)', False))
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
-opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
-opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
@@ -669,16 +669,19 @@ env.Alias('install', [
     clientside_env.InstallFiltered(Dir(datadir), map(Dir, Split('data fonts icons images sounds translations')))
     ])
 
+# FIXME: Only works under Unixes
 wesnothd_env = env.Clone()
 wesnothd_env.TargetSignatures('build')
-# FIXME: Only works under Unixes
 from os import access, F_OK
 install_wesnothd = wesnothd_env.Install(bindir, wesnothd)
 env.Alias("install-wesnothd", install_wesnothd)
 if not access(fifodir, F_OK):
+    print "FOOBAR!"
     wesnothd_env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
         Chmod(fifodir, 0700),
+        Action("chown %s:%s %s" %
+               (env["server_uid"], env["server_gid"], fifodir)),
         ])
 
 env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
@@ -705,7 +708,6 @@ env.Precious(uninstall)
 # 2. Documentation formatting and man-page installation
 # 3. Make distribution tarballs.
 # 4. Translations handling other than installation (pot-update).
-# 5. Setting uid and gid on the server binary
 
 # Local variables:
 # mode: python
