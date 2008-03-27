@@ -135,7 +135,6 @@ public:
 	explicit topic_text(topic_generator *g): generator_(g) {}
 	topic_text &operator=(topic_generator *g);
 	topic_text(topic_text const &t);
-	//operator std::vector< std::string > const &() const;
 
     const std::vector<std::string>& parsed_text() const;
 };
@@ -858,9 +857,6 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level)
 {
-    if (section_cfg != NULL)
-        DBG_HELP << "parse_config_internal, section_cfg:\n" << *section_cfg;
-
 	if (level > max_section_level) {
 		std::cerr << "Maximum section depth has been reached. Maybe circular dependency?"
 				  << std::endl;
@@ -2714,8 +2710,8 @@ void help_browser::show_topic(const std::string &topic_id)
 
 void help_browser::show_topic(const topic &t, bool save_in_history)
 {
-	//log_scope("show_topic");
-    lg::scope_logger scope_topic(lg::general, "shop_topic");
+	log_scope("show_topic");
+
 	if (save_in_history) {
 		forward_topics_.clear();
 		if (shown_topic_ != NULL) {
