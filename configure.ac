@@ -344,6 +344,7 @@ AC_PROG_CC
 AC_PROG_INSTALL
 AM_PROG_CC_C_O
 
+# *** Not yet covered by scons recipe
 # Check for __builtin_expect
 AC_TRY_LINK([int foo (int a) { a = __builtin_expect (a, 10); return a == 10 ? 0 : 1; }],
       [],
@@ -371,6 +372,7 @@ AM_CONDITIONAL([X11], [test "$have_libx11" = 'yes'])
 
 AC_PATH_PROGS([PNGMETA], [pngmeta], [none])
 
+# *** Not yet covered by scons recipe
 if test \( "x$PNGMETA" = "xnone" \) -a \( "x$TINYGUI" = xyes \); then
 	AC_MSG_ERROR([*** You must install the pngmeta utility before building with -- tinygui.])
 fi
@@ -503,6 +505,7 @@ AC_SUBST([PNG_CFLAGS])
 AC_SUBST([PNG_LIBS])
 AM_CONDITIONAL([LIBPNG], [test x$pngfound = xyes])
 
+# *** Not yet covered by scons recipe
 # Check for SDL version. Taken from sdl.m4
 
 AC_ARG_ENABLE([sdltest],
@@ -538,7 +541,7 @@ if test "x$enable_sdltest" = "xyes" ; then
     LIBS="$LIBS $SDL_LIBS"
 
     # Now check if the installed SDL is sufficiently new. (Also sanity
-    # checks the results of sdl-config to some extent
+    # checks the results of sdl-config to some extent)
 
     rm -f conf.sdltest
     AC_RUN_IFELSE([AC_LANG_SOURCE([
@@ -623,6 +626,7 @@ int main (int argc, char **argv)
     LIBS="$ac_save_LIBS"
 fi
 
+# *** Not yet covered by scons recipe
 # po4a
 
 AC_PATH_PROGS([PO4A], [po4a], [none])
@@ -671,6 +675,7 @@ if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL.la
 then SDL_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL.la
 else SDL_LIBS=`$SDL_CONFIG --libs`
 fi
+# *** Not yet covered by scons recipe
 case $host_os in
 	darwin*)
 		SDL_LIBS="-framework Carbon $SDL_LIBS"
@@ -798,6 +803,7 @@ AC_CHECK_FUNCS([floor socket strtoul])
 #######################################################################
 # Check for PNG support in SDL_image                                  #
 #######################################################################
+# *** Not yet covered by scons recipe
 
 AC_LANG([C])
 AC_MSG_CHECKING([for PNG support in SDL_image])
@@ -840,6 +846,7 @@ LIBS=$OLD_LIBS
 #######################################################################
 # Check for OGG support in SDL_mixer                                  #
 #######################################################################
+# *** Not yet covered by scons recipe
 
 if test -e "data/core/music/main_menu.ogg" ; then
     AC_LANG([C])
@@ -959,6 +966,7 @@ AM_CONDITIONAL([BOOST_AUTO_TEST], [test x"$boost_auto_test" = xyes])
 #######################################################################
 # Tune gettext stuff for our needs                                    #
 #######################################################################
+# *** Not yet covered by scons recipe
 
 case $srcdir in
 /*) topdir=$srcdir ;;
@@ -1022,7 +1030,7 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-trow/Makefile.in
 		 po/wesnoth-tsg/Makefile.in
 		 po/wesnoth-utbs/Makefile.in
-po/wesnoth-aoi/Makefile.in
+		 po/wesnoth-aoi/Makefile.in
 		 m4/Makefile
 		 icons/Makefile
 		 src/Makefile

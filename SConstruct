@@ -66,6 +66,7 @@ Available build targets include:
     install-campaignd = install the Wesnoth campaign server
     uninstall = uninstall all executables, tools, and servers
     wesnoth.tgz = make compressed distribution tarball
+    sanity_check = run a pre-release sanity check on the distrivution
 
 """ + opts.GenerateHelpText(env))
 conf = Configure(env)
@@ -714,6 +715,16 @@ def manifest():
 env.Tar('wesnoth.tgz', manifest())
 env.Append(TARFLAGS='-z --exclude=".svn" --exclude="~"',
            TARCOMSTR="Making tarball...")
+
+#
+# Sanity checking
+#
+sanity_check = env.Command('sanity_check', '', [
+    Action("cd utils; ./sanity_check"),
+    Action("cd data/tools; make sanity-check"),
+    ])
+env.AlwaysBuild(sanity_check)
+env.Precious(sanity_check)
 
 #
 # Known problems:

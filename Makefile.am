@@ -14,6 +14,7 @@ finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css"
 finddoc=($(finddocdist) | sed -e 's:doc/manual:manual:g' )
 finddocdirs=(cd $(top_srcdir)/doc && find manual -type d \! \( -name .svn -prune \) -print; )
 
+# *** Not yet covered by scons recipe
 # This is a workaround to include manpage and manual translation files in the
 # tarball. Manual and manpages are pre-built, so these files aren't actually
 # needed to build Wesnoth, but are included because .po files are the
@@ -28,6 +29,7 @@ w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	    *) f=$$p;; \
 	  esac;
 
+# *** Not yet covered by scons recipe
 bundle_contents=@PACKAGE_NAME@.app/Contents
 @PACKAGE@_bundle: src/@PACKAGE@
 	mkdir -p "$(bundle_contents)/MacOS"
@@ -35,6 +37,7 @@ bundle_contents=@PACKAGE_NAME@.app/Contents
 	echo "APPL????" > "$(bundle_contents)/PkgInfo"
 	$(INSTALL_PROGRAM) $< "$(bundle_contents)/MacOS/@PACKAGE_NAME@"
 
+# *** Not yet covered by scons recipe
 bundle_editor_contents=@PACKAGE_NAME@ Editor.app/Contents
 @PACKAGE@_editor_bundle: src/@PACKAGE@_editor
 	mkdir -p "$(bundle_editor_contents)/MacOS"
@@ -47,6 +50,7 @@ sanity-check:
 	cd utils; ./sanity_check
 	cd data/tools; make sanity-check
 
+# *** Not yet covered by scons recipe (optipng, dummylocales)
 install-data-local:
 	@$(NORMAL_INSTALL)
 if OPTIPNG
@@ -106,6 +110,7 @@ if TINYGUI
 endif
 endif
 
+# *** Not yet covered by scons recipe
 zip-install: install
 	$(top_srcdir)/utils/splittree "$(DESTDIR)$(pkgdatadir)" --zip
 
@@ -187,28 +192,34 @@ pkgpython_PYTHON = data/tools/wesnoth/wmltools.py \
     data/tools/wesnoth/__init__.py
 endif
 
+# *** Not yet covered by scons recipe
 update-po:
 	@cd po && make $@ || exit $?
 if MANUALUPDATE
 	@cd doc/manual && make update-po || exit $?
 endif
 
+# *** Not yet covered by scons recipe
 if PO4AUPDATE
 update-po4a:
 	@cd po && make update-po4a || exit $?
 	@echo -n "Removing empty man directories... "
 	@find doc/man/ -maxdepth 1 -type d -empty -exec rmdir {} \; && \
 		echo "done." || exit $?
+
+# *** Not yet covered by scons recipe
 if MANUALUPDATE
 	@cd doc/manual && make html || exit $?
 endif
 endif
 
+# *** Not yet covered by scons recipe
 if MANUALUPDATE
 manual-en:
 	@cd doc/manual && make manual.en.html || exit $?
 endif
 
+# *** Not yet covered by scons recipe
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
 wesnoth-deps.dot:
 	PERL5LIB=$(top_srcdir) graph-includes -verbose --class wesnoth --consolidate 1-1 \
