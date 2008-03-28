@@ -111,8 +111,10 @@ if "all" in targets or "wesnoth" in targets:
         print "Needed Python lib for game and didn't find it; exiting!"
         Exit(1)
 
-boost_test_dyn_link = conf.CheckCXXHeader('boost/test/unit_test.hpp')
-boost_auto_test = conf.CheckCXXHeader('boost/test/unit_test.hpp')
+boost_test_dyn_link = boost_auto_test = False
+if 'test' in COMMAND_LINE_TARGETS:
+    boost_test_dyn_link = conf.CheckCXXHeader('boost/test/unit_test.hpp')
+    boost_auto_test = conf.CheckCXXHeader('boost/test/unit_test.hpp')
 
 env = conf.Finish()
 
