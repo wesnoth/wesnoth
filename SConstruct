@@ -101,13 +101,13 @@ def CheckBoostLib(context, boost_lib, require_version = None):
     env = context.env
     boostdir = context.env.get("BOOSTDIR", "/usr/include/boost"))
     backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
-    env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [env["BOOSTLIBS"]])
+    env.AppendUnique(CPPPATH = [boostdir], LIBS = [env["BOOSTLIBS"]])
 
     boost_headers = { "regex" : "regex/config.hpp" }
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("BOOST_SUFFIX", "")
 
-    env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [env["BOOSTLIBS"]])
+    env.AppendUnique(CPPPATH = [boostdir], LIBS = [env["BOOSTLIBS"]])
     env.AppendUnique(LIBS = [libname])
 
     test_program = """
