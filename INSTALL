@@ -58,6 +58,14 @@ scons takes a prefix= argument that says where to install the game
 and its data.  The prefix defaults to /usr/local; for production builds
 you may want to set prefix=/usr.
 
+The target 'all' is equivalent to 'wesnoth wesnoth_editor cutter
+exploder wmllint wmlscope wmlindent'; it is the default.  
+
+So, for example, this builds game, editor, tools, and campaign server,
+enabling debugging on all:
+
+    scons debug=yes all campaignd 
+
 To build wesnothd:
 
    scons server_uid=<user> server_group=<group> wesnothd
@@ -73,6 +81,10 @@ fifodir=<directory>.
 If you want to install several versions of wesnoth you should use the
 prefsdir= parameter to get distinct preferences directories.  The
 default is '.wesnoth'.
+
+Installation productions 'install', 'install-wesnothd' and
+'install-campaignd' are available.  A plain 'install' installs
+all client-side tools.
 
 Notes on the deprecated autotools build:
 

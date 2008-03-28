@@ -45,19 +45,28 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 
 env = Environment(options = opts)
 
-Help("""\
-Available build targets include:
+Help("""Arguments may be a mixture of switches and targets an any order.
+Switches apply to the entire build regrdless of where they are in the order.
+Important switches include:
 
-    wesnoth wesnoth_editor wesnothd campaignd exploder cutter
-    all = all installables
-    test = unit test binary (not an installable)
+    prefix=/usr     probably what you want for production tools
+    debug=yes       enable compiler and linker debugging switches
+
+Available build targets include the individual binaries:
+
+    wesnoth wesnoth_editor wesnothd campaignd exploder cutter test
+
+The following special build targets
+
+    all = same as 'wesnoth wesnoth_editor exploder cutter'.
     TAGS = build tags for Emacs (cleaned by 'scons -c all').
-    install = install all executables and tools
-    install-wesnothd = install the Wesnoth multiplayer server
-    install-campaignd = install the Wesnoth campaign server
-    uninstall = uninstall all executables, tools, and servers
-    wesnoth.tgz = make compressed distribution tarball
-    sanity_check = run a pre-release sanity check on the distrivution
+    install = install 'all' executables, also wmlscope/wmllint/wmlindent.
+    install-wesnothd = install the Wesnoth multiplayer server.
+    install-campaignd = install the Wesnoth campaign server.
+    uninstall = uninstall all executables, tools, and servers.
+    wesnoth.tar.bz2 = make distribution tarball (cleaned by 'scons -c all').
+    sanity-check = run a pre-release sanity check on the distribution.
+    manual.en.html = HTML version of the English-language manual.
 
 """ + opts.GenerateHelpText(env))
 
@@ -850,6 +859,14 @@ env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
 
 #
+# Making the manual
+#
+env.Command("manual.en.xml", "doc/manual/manual.txt",
+	"asciidoc -b docbook -d book -n -a toc -o ${TARGET} ${SOURCE}")
+env.Command("manual.en.html", "manual.en.xml",
+	'xsltproc --nonet /etc/asciidoc/docbook-xsl/xhtml.xsl "${SOURCE}" >"${TARGET}"')
+
+#
 # Making a distribution.
 #
 def manifest():
@@ -865,15 +882,17 @@ def manifest():
     # filenames with tildes in them (Emacs backup files) just in case.
     lst.append("data/")
     return lst
-env.Tar('wesnoth.tgz', manifest())
-env.Append(TARFLAGS='-z --exclude=".svn" --exclude="~"',
+tarball = env.Tar('wesnoth.tar.bz2', manifest())
+env.Append(TARFLAGS='-j --exclude=".svn" --exclude="~"',
            TARCOMSTR="Making tarball...")
+env.Clean(all, 'wesnoth.tar.bz2')
+env.Alias('dist', tarball)
 
 #
 # Sanity checking
 #
-sanity_check = env.Command('sanity_check', '', [
-    Action("cd utils; ./sanity_check"),
+sanity_check = env.Command('sanity-check', '', [
+    Action("cd utils; ./sanity-check"),
     Action("cd data/tools; make sanity-check"),
     ])
 env.AlwaysBuild(sanity_check)
