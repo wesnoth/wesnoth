@@ -2,6 +2,7 @@
 # SCons build description for the Wesnoth project
 #
 import os, sys, commands, shutil
+from SCons.Script import *
 
 #
 # Build-control options
@@ -83,9 +84,6 @@ def CheckPKG(context, name):
      context.Result( ret )
      return ret
 
-# vi: syntax=python:et:ts=4
-from os.path import join
-from SCons.Script import *
 
 def CheckSDL(context, sdl_lib = "SDL", require_version = None):
     if require_version:
@@ -146,9 +144,26 @@ if not conf.CheckPKGConfig('0.15.0'):
      print 'pkg-config >= 0.15.0 not found.'
      Exit(1)
 
-# FIXME: It would be good to check for SDL_ttf >= 2.0.8 here
 if not conf.CheckSDL(require_version = '1.2.7'):
      print 'SDL >= 1.2.7 not found.'
+     Exit(1)
+#if conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
+#     print 'SDL_ttf >= 2.0.8 not found.'
+#     Exit(1)
+
+if not conf.TryLink('''
+    #include <SDL_mixer.h>
+    #include <stdlib.h>
+
+    int main(int argc, char **argv)
+    {
+	Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
+	if (music == NULL)
+	    exit(1);
+	exit(0);
+    }
+''', ".c"):
+     print "No Ogg Vorbis support in SDL!"
      Exit(1)
 
 #
@@ -828,12 +843,6 @@ sanity_check = env.Command('sanity_check', '', [
 env.AlwaysBuild(sanity_check)
 env.Precious(sanity_check)
 
-#
-# Known problems:
-#
-# 1. We don't check for Ogg Vorbis support in SDL_mixer
-# FIXME tags other problems
-#
 # To do:
 #
 # 1. Documentation formatting and man-page installation

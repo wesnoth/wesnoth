@@ -837,7 +837,6 @@ LIBS=$OLD_LIBS
 #######################################################################
 # Check for OGG support in SDL_mixer                                  #
 #######################################################################
-# *** Not yet covered by scons recipe
 
 if test -e "data/core/music/main_menu.ogg" ; then
     AC_LANG([C])
