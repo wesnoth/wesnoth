@@ -244,6 +244,9 @@ node::~node()
 			delete *j;
 		}	
 	}
+
+	//TODO: DEBUG CODE. Fill with a memory pattern to debug crashing!
+	memset(this, 0xab, sizeof(*this));
 }
 
 namespace {
@@ -690,6 +693,9 @@ document::~document()
 	delete root_;
 
 	detach_list();
+
+	//TODO: DEBUG CODE. Fill with a memory pattern to debug crashing!
+	memset(this, 0xab, sizeof(*this));
 }
 
 const char* document::dup_string(const char* str)
