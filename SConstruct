@@ -111,6 +111,9 @@ if "all" in targets or "wesnoth" in targets:
         print "Needed Python lib for game and didn't find it; exiting!"
         Exit(1)
 
+boost_test_dyn_link = conf.CheckCXXHeader('boost/test/unit_test.hpp')
+boost_auto_test = conf.CheckCXXHeader('boost/test/unit_test.hpp')
+
 env = conf.Finish()
 
 #
@@ -188,6 +191,14 @@ if 'CXXFLAGS' in os.environ:
 
 if 'LDFLAGS' in os.environ:
     env.Append(LINKFLAGS = os.environ['LDFLAGS'])
+
+test_env = env.Clone()
+if boost_test_dyn_link:
+    env["CXXFLAGS"].append("-DBOOST_TEST_DYN_LINK")
+    if boost_auto_test:
+        test_env["CXXFLAGS"].append("-DWESNOTH_BOOST_AUTO_TEST_MAIN")
+    else:
+        test_env["CXXFLAGS"].append("-DWESNOTH_BOOST_TEST_MAIN")
 
 cc_version = env["CCVERSION"]
 if env["CC"] == "gcc":
@@ -446,11 +457,12 @@ exploder = env.Program("exploder", exploder_sources,
             LIBPATH = [".", "/lib", "/usr/lib"])
 
 # FIXME: test build presently fails at link time.
+test_env = env.Clone()
 test_sources = [
     "src/tests/main.cpp",
     "src/tests/test_util.cpp",
     ]
-env.Program("test", test_sources,
+test_env.Program("test", test_sources,
             CPPPATH = commonpath + ['/usr/include'],
             LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs + ['boost_unit_test_framework'],
             LIBPATH = [".", "/lib", "/usr/lib"])
@@ -735,9 +747,8 @@ env.Precious(sanity_check)
 #
 # To do:
 #
-# 1. Building the unit-test binaries.
-# 2. Documentation formatting and man-page installation
-# 3. Translations handling other than installation (pot-update).
+# 1. Documentation formatting and man-page installation
+# 2. Translations handling other than installation (pot-update).
 
 # Local variables:
 # mode: python

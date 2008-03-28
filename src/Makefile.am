@@ -479,12 +479,10 @@ if PREFSDIR
     CXXFLAGS += -DPREFERENCES_DIR=\"$(prefsdir)\"
 endif
 
-# *** Not yet covered by scons recipe
 if BOOST_TEST_DYN_LINK
     CXXFLAGS += -DBOOST_TEST_DYN_LINK
 endif
 
-# *** Not yet covered by scons recipe
 if BOOST_AUTO_TEST
     CXXFLAGS += -DWESNOTH_BOOST_AUTO_TEST_MAIN
 else
