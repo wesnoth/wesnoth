@@ -335,7 +335,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 	// Check the side number.
-	const int side_num = cfg["side"].to_int();
+	const unsigned int side_num = cfg["side"].to_int();
 	if(side_num < 1 || side_num > gamemap::MAX_PLAYERS) {
 		std::ostringstream msg;
 		msg << "The side number has to be between 1 and " 
@@ -441,7 +441,7 @@ void game::send_change_controller(const size_t side_num,
 
 	// Update the level so observers who join get the new name.
 	const simple_wml::node::child_list& side_list = level_.root().children("side");
-	const int index = side_num - 1;
+	const unsigned int index = side_num - 1;
 	assert(index < side_list.size());
 	side_list[index]->set_attr_dup("current_player", newplayer->second.name().c_str());
 }

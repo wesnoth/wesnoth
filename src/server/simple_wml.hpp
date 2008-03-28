@@ -79,8 +79,8 @@ public:
 	char* duplicate() const;
 
 private:
-	const char* str_;
-	int size_;
+        const char* str_;
+        unsigned int size_;
 };
 
 std::ostream& operator<<(std::ostream& o, const string_span& s);

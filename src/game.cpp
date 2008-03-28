@@ -1967,6 +1967,51 @@ game_controller::~game_controller()
 	sound::close_sound();
 }
 
+// this is needed to allow identical functionality with clean refactoring
+// play_game only returns on an error, all returns within play_game can
+// be replaced with this
+void safe_exit(int res) {
+
+	LOG_GENERAL << "exiting with code " << res << "\n";
+#ifdef OS2 /* required to correctly shutdown SDL on OS/2 */
+        SDL_Quit();
+#endif
+	exit(res);
+}
+
+// maybe this should go in a util file somewhere?		
+void gzip_codec(const std::string & input_file, const std::string & output_file, bool encode) 
+{
+	try {
+	std::ofstream ofile(output_file.c_str(), std::ios_base::out 
+			| std::ios_base::binary | std::ios_base::binary);
+			std::ifstream ifile(input_file.c_str(), 
+			std::ios_base::in | std::ios_base::binary);
+		boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
+		if(encode)
+			in.push(boost::iostreams::gzip_compressor());
+		else
+			in.push(boost::iostreams::gzip_decompressor());
+		in.push(ifile);
+		boost::iostreams::copy(in, ofile);
+			ifile.close();
+		safe_exit(remove(input_file.c_str()));
+		}  catch(io_exception& e) {
+		std::cerr << "IO error: " << e.what() << "\n";
+	}
+}
+
+void gzip_encode(const std::string & input_file, const std::string & output_file)
+{
+	gzip_codec(input_file, output_file, true);
+}
+
+void gzip_decode(const std::string & input_file, const std::string & output_file)
+{
+	gzip_codec(input_file, output_file, false);
+}
+
+
 //! Process commandline-arguments
 static int play_game(int argc, char** argv)
 {
@@ -2357,11 +2402,7 @@ int main(int argc, char** argv)
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
 		const int res = play_game(argc,argv);
-		LOG_GENERAL << "exiting with code " << res << "\n";
-#ifdef OS2 /* required to correctly shutdown SDL on OS/2 */
-	        SDL_Quit();
-#endif
-		return res;
+		safe_exit(res);
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
 	} catch(font::manager::error&) {
