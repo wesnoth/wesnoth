@@ -150,10 +150,29 @@ int main(int argc, char **argv)
 }
 ''', ".c")
 
+def CheckPNG(context):
+     return context.TryLink('''
+#include <SDL_image.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv)
+{
+	SDL_RWops *src;
+	char *testimage = "${srcdir}/images/buttons/button-pressed.png";
+
+	src = SDL_RWFromFile(testimage, "rb");
+	if (src == NULL) {
+		exit(2);
+	}
+	exit(!IMG_isPNG(src));
+}
+''', ".c")
+
 conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPKG' : CheckPKG,
                                        'CheckSDL' : CheckSDL,
-                                       'CheckOgg' : CheckOgg})
+                                       'CheckOgg' : CheckOgg,
+                                       'CheckPNG' : CheckPNG, })
 
 if not conf.CheckPKGConfig('0.15.0'):
      print 'pkg-config >= 0.15.0 not found.'
@@ -166,9 +185,13 @@ if not conf.CheckSDL(require_version = '1.2.7'):
 #     print 'SDL_ttf >= 2.0.8 not found.'
 #     Exit(1)
 
-if not CheckOgg:
-     print "No Ogg Vorbis support in SDL!"
-     Exit(1)
+#if not conf.CheckOgg():
+#     print "No Ogg Vorbis support in SDL!"
+#     Exit(1)
+
+#if not conf.CheckPNG():
+#     print "No PNG support in SDL!"
+#     Exit(1)
 
 #
 # Check some preconditions
