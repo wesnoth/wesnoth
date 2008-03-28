@@ -145,7 +145,7 @@ void push_back(T& str, C c)
 	str[str.size()-1] = c;
 }
 
-#ifdef HAVE_BUILTIN_EXPECT
+#ifdef __GNUC__
 #define LIKELY(a)    __builtin_expect((a),1) // Tells GCC to optimize code so that if is likely to happen
 #define UNLIKELY(a)  __builtin_expect((a),0) // Tells GCC to optimize code so that if is unlikely to happen
 #else

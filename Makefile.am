@@ -14,7 +14,6 @@ finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css"
 finddoc=($(finddocdist) | sed -e 's:doc/manual:manual:g' )
 finddocdirs=(cd $(top_srcdir)/doc && find manual -type d \! \( -name .svn -prune \) -print; )
 
-# *** Not yet covered by scons recipe
 # This is a workaround to include manpage and manual translation files in the
 # tarball. Manual and manpages are pre-built, so these files aren't actually
 # needed to build Wesnoth, but are included because .po files are the
