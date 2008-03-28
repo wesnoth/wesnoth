@@ -28,15 +28,16 @@ ulimit -Ss 2048
 ulimit -c unlimited
 
 # send the standard server message to the appropriate server when killing it with ctrl+c
-trap "$HOME/bin/send_server_message $SERVER; sleep 2; $HOME/bin/send_server_command $SERVER shut_down; sleep 2; killall wesnothd-$SERVER; wait; echo -n 'terminated: '; date; exit 0" SIGINT
+trap "$HOME/bin/send_server_message $SERVER; sleep 2; killall wesnothd-$SERVER -q; echo -n 'terminated: '; date; exit 0" SIGINT
 
 while [ true ] 
 do
 	if ps -C wesnothd-$SERVER >/dev/null; then
 		sleep 10
 	else
-		DATE=$(date +"%Y%m%d-%H%M%S")
 		PORT=$(cat $SERVERBASE/port)
+		DATE=$(date +"%Y%m%d-%H%M%S")
+		BUILDDIR=$(ls -l $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
 		REV=$(ls -l $SERVERBASE/build | sed -e 's,.*wesnothd-\(svn-.*\)_.*/,\1,')
 		LOG=wesnothd.$DATE.$REV.log
 		cd $SERVERBASE/build || exit 1
@@ -44,13 +45,14 @@ do
 			echo "Executable 'bin/wesnothd-$SERVER' not found."
 			exit 1
 		fi
-		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > $SERVERBASE/logs/$LOG 2>&1 &
+		OPTIONS=-c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > $SERVERBASE/logs/$LOG 2>&1 &
+		nice -n 3 bin/wesnothd-$SERVER $OPTIONS
 		PID=$!
 		echo -n "started $SERVER server (revision: $REV, pid: $PID) at: "; date
-		ln -s $SERVERBASE/logs/$LOG $SERVERBASE/build/$LOG.$PID
+		ln -s ../../$SERVER/logs/$LOG $LOG.$PID
 		rm -f $SERVERBASE/old.log
 		mv $SERVERBASE/current.log $SERVERBASE/old.log > /dev/null 2>&1
-		ln -s $SERVERBASE/logs/$LOG $SERVERBASE/current.log
+		ln -s logs/$LOG ../../$SERVER/current.log
 		# wait a bit so the server is likely up and listening
 		sleep 1
 		if [ "$SERVER" == "1.2" ]; then
@@ -63,6 +65,7 @@ do
 		fi
 		# wait for the server to terminate
 		wait $PID
-		mv $SERVERBASE/gmon.out $SERVERBASE/gmon.$DATE.$REV.out > /dev/null 2>&1
+		# need to use the recorded path since the build/ symlink might have changed
+		mv $SERVERBASE/$BUILDDIR/gmon.out $SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out > /dev/null 2>&1
 	fi
 done
