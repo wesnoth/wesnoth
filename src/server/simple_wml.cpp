@@ -15,6 +15,13 @@ namespace simple_wml {
 
 namespace {
 
+void debug_delete(node* n) {
+	if(n) {
+		delete n;
+		memset(n, 0xab, sizeof(*n));
+	}
+}
+
 char* uncompress_buffer(const string_span& input, string_span* span)
 {
 	std::istringstream stream(std::string(input.begin(), input.end()));
@@ -120,7 +127,9 @@ std::ostream& operator<<(std::ostream& o, const string_span& s)
 
 node::node(document& doc, node* parent)
   : doc_(&doc), parent_(parent)
-{}
+{
+	fprintf(stderr, "c 0x%llx\n", (uint64_t)this);
+}
 
 node::node(document& doc, node* parent, const char** str, int depth)
   : doc_(&doc), parent_(parent)
@@ -235,18 +244,17 @@ node::node(document& doc, node* parent, const char** str, int depth)
 	}
 
 	output_cache_ = string_span(begin, s - begin);
+	fprintf(stderr, "p 0x%llx\n", (uint64_t)this);
 }
 
 node::~node()
 {
+	fprintf(stderr, "d 0x%llx\n", (uint64_t)this);
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			delete *j;
+			debug_delete(*j);
 		}	
 	}
-
-	//TODO: DEBUG CODE. Fill with a memory pattern to debug crashing!
-	memset(this, 0xab, sizeof(*this));
 }
 
 namespace {
@@ -360,7 +368,7 @@ void node::remove_child(const string_span& name, size_t index)
 		return;
 	}
 
-	delete list[index];
+	debug_delete(list[index]);
 	list.erase(list.begin() + index);
 }
 
@@ -690,12 +698,9 @@ document::~document()
 	}
 
 	buffers_.clear();
-	delete root_;
+	debug_delete(root_);
 
 	detach_list();
-
-	//TODO: DEBUG CODE. Fill with a memory pattern to debug crashing!
-	memset(this, 0xab, sizeof(*this));
 }
 
 const char* document::dup_string(const char* str)
@@ -761,7 +766,7 @@ string_span document::output_compressed()
 void document::compress()
 {
 	output_compressed();
-	delete root_;
+	debug_delete(root_);
 	root_ = NULL;
 	output_ = NULL;
 	std::vector<char*> new_buffers;
@@ -812,7 +817,7 @@ void document::clear()
 {
 	compressed_buf_ = string_span();
 	output_ = NULL;
-	delete root_;
+	debug_delete(root_);
 	root_ = new node(*this, NULL);
 	for(std::vector<char*>::iterator i = buffers_.begin(); i != buffers_.end(); ++i) {
 		delete [] *i;
