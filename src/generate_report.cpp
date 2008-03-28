@@ -104,7 +104,7 @@ report generate_report(TYPE type,
 		}
 		if(utils::string_bool(u->second.get_state("slowed"))) {
 			unit_status << "misc/slowed.png";
-			tooltip << _("slowed: ") << _("This unit has been slowed. It will only deal half its normal damage when attacking.");
+			tooltip << _("slowed: ") << _("This unit has been slowed. It will only deal half its normal damage when attacking and its movement cost is doubled.");
 			res.add_image(unit_status,tooltip);
 		}
 		if(utils::string_bool(u->second.get_state("poisoned"))) {
