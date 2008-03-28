@@ -47,23 +47,22 @@ do
 		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > $SERVERBASE/logs/$LOG 2>&1 &
 		PID=$!
 		echo -n "started $SERVER server (revision: $REV, pid: $PID) at: "; date
-		cd $SERVERBASE
-		rm -f old.log
-		mv current.log old.log > /dev/null 2>&1
-		ln -s logs/$LOG current.log
-		ln -s logs/$LOG build/$LOG
+		ln -s $SERVERBASE/logs/$LOG $SERVERBASE/build/$LOG.$PID
+		rm -f $SERVERBASE/old.log
+		mv $SERVERBASE/current.log $SERVERBASE/old.log > /dev/null 2>&1
+		ln -s $SERVERBASE/logs/$LOG $SERVERBASE/current.log
 		# wait a bit so the server is likely up and listening
 		sleep 1
 		if [ "$SERVER" == "1.2" ]; then
-			rm -f oldlobby.log
-			mv currentlobby.log oldlobby.log > /dev/null 2>&1
-			ln -s logs/lobby.$DATE.$REV.log currentlobby.log
+			rm -f $SERVERBASE/oldlobby.log
+			mv $SERVERBASE/currentlobby.log $SERVERBASE/oldlobby.log > /dev/null 2>&1
+			ln -s $SERVERBASE/logs/lobby.$DATE.$REV.log $SERVERBASE/currentlobby.log
 			cd $SOURCE/utils/
 			./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
-			cd $SERVERBASE/build
+			cd $SERVERBASE/build/
 		fi
 		# wait for the server to terminate
 		wait $PID
-		mv gmon.out gmon.$DATE.$REV.out > /dev/null 2>&1
+		mv $SERVERBASE/gmon.out $SERVERBASE/gmon.$DATE.$REV.out > /dev/null 2>&1
 	fi
 done
