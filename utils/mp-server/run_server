@@ -9,7 +9,6 @@ shift
 PARAMETERS=$*
 SERVERBASE=$HOME/servers/$SERVER
 SOURCE=$HOME/source/trunk
-THREADS=4
 
 if ! [ -d "$SERVERBASE" ]; then
 	echo "Server '$SERVER' not found."
@@ -17,12 +16,21 @@ if ! [ -d "$SERVERBASE" ]; then
 fi
 [ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
 
+THREADS=4
 case $SERVER in
-	1.2 )	SOURCE=$HOME/source/1.2
+	1.2 )	PORT=14999
 		THREADS=30
+		SOURCE=$HOME/source/1.2
+		;;
+	1.4 )	PORT=14998
+		;;
+	1.5* )	PORT=14999
+		;;
+	trunk )	PORT=15000
 		;;
 	* )
 esac
+OPTIONS="-c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
 
 ulimit -Ss 2048
 ulimit -c unlimited
@@ -35,7 +43,6 @@ do
 	if ps -C wesnothd-$SERVER >/dev/null; then
 		sleep 10
 	else
-		PORT=$(cat $SERVERBASE/port)
 		DATE=$(date +"%Y%m%d-%H%M%S")
 		BUILDDIR=$(ls -l $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
 		REV=$(ls -l $SERVERBASE/build | sed -e 's,.*wesnothd-\(svn-.*\)_.*/,\1,')
@@ -45,8 +52,7 @@ do
 			echo "Executable 'bin/wesnothd-$SERVER' not found."
 			exit 1
 		fi
-		OPTIONS=-c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > $SERVERBASE/logs/$LOG 2>&1 &
-		nice -n 3 bin/wesnothd-$SERVER $OPTIONS
+		nice -n 3 bin/wesnothd-$SERVER $OPTIONS > $SERVERBASE/logs/$LOG 2>&1 &
 		PID=$!
 		echo -n "started $SERVER server (revision: $REV, pid: $PID) at: "; date
 		ln -s ../../$SERVER/logs/$LOG $LOG.$PID
