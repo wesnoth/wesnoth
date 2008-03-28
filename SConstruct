@@ -1,7 +1,7 @@
 #
 # SCons build description for the Wesnoth project
 #
-import os, sys, commands, shutil
+import os, sys, commands, shutil, sets
 from SCons.Script import *
 
 #
@@ -69,7 +69,7 @@ env.Default("all")
 env.TargetSignatures('content')
 
 #
-# Configuration
+# Most of our required runtime support is from SDL.
 #
 
 def CheckPKGConfig(context, version):
@@ -83,7 +83,6 @@ def CheckPKG(context, name):
      ret = context.TryAction('pkg-config --exists \'%s\'' % name)[0]
      context.Result( ret )
      return ret
-
 
 def CheckSDL(context, sdl_lib = "SDL", require_version = None):
     if require_version:
@@ -152,7 +151,8 @@ def CheckOgg(context):
 '''
     #context.env.AppendUnique(LIBS = "SDL_mixer")
     context.Message("Checking for Ogg Vorbis support in SDL... ")
-    if context.TryRun(test_program, ".c"):
+    (result, output) = context.TryRun(test_program, ".c")
+    if result:
         context.Result("yes")
         return True
     else:
@@ -178,7 +178,7 @@ def CheckPNG(context):
 \n
 '''
     context.Message("Checking for PNG support in SDL... ")
-    result, output = context.TryRun(test_program, ".c")
+    (result, output) = context.TryRun(test_program, ".c")
     if result:
         context.Result("yes")
         return True
@@ -196,28 +196,28 @@ if not conf.CheckPKGConfig('0.15.0'):
      print 'pkg-config >= 0.15.0 not found.'
      Exit(1)
 
-if not conf.CheckSDL(require_version = '1.2.7'):
-     print 'SDL >= 1.2.7 not found!'
-     Exit(1)
-if not conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
-     print 'SDL_ttf >= 2.0.8 not found!'
-     Exit(1)
-if not conf.CheckSDL("SDL_mixer"):
-    print "SDL mixer not found!"
-if not conf.CheckSDL('SDL_image'):
-    print "Needed SDL image library, not found!"
-    Exit(1)
-
-if not conf.CheckOgg():
-     print "No Ogg Vorbis support in SDL!"
-     Exit(1)
-
-if not conf.CheckPNG():
-     print "No PNG support in SDL!"
-     Exit(1)
+targets = sets.Set(COMMAND_LINE_TARGETS)
+if not targets or (sets.Set(['all', 'wesnoth', 'wesnoth_editor']) & targets):
+    if not conf.CheckSDL(require_version = '1.2.7'):
+         print 'SDL >= 1.2.7 not found!'
+         Exit(1)
+    if not conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
+         print 'SDL_ttf >= 2.0.8 not found!'
+         Exit(1)
+    if not conf.CheckSDL("SDL_mixer"):
+        print "SDL mixer not found!"
+    if not conf.CheckSDL('SDL_image'):
+        print "Needed SDL image library, not found!"
+        Exit(1)
+    if not conf.CheckOgg():
+         print "No Ogg Vorbis support in SDL!"
+         Exit(1)
+    if not conf.CheckPNG():
+         print "No PNG support in SDL!"
+         Exit(1)
 
 #
-# Check some preconditions
+# Check some other preconditions
 #
 
 targets = map(str, BUILD_TARGETS)
@@ -235,7 +235,7 @@ if "wesnoth" in targets or "wesnoth_editor" in targets:
         Exit(1)
 
 if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
-    if not conf.CheckLib('SDL_net'):
+    if not conf.CheckSDL('SDL_net'):
         print "Needed SDL network lib and didn't find it; exiting!"
         Exit(1)
 
