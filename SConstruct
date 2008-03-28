@@ -137,36 +137,52 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         return False
 
 def CheckOgg(context):
-     return context.TryLink('''
-#include <SDL_mixer.h>
-#include <stdlib.h>
+    test_program = '''
+    #include <SDL_mixer.h>
+    #include <stdlib.h>
 
-int main(int argc, char **argv)
-{
-    Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
-    if (music == NULL)
-        exit(1);
-    exit(0);
-}
-''', ".c")
+    int main(int argc, char **argv)
+    {
+        Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
+        if (music == NULL)
+            exit(1);
+        exit(0);
+    }
+\n
+'''
+    context.Message("Checking for Ogg Vorbis support in SDL... ")
+    if context.TryLink(test_program, ".c"):
+        context.Result("yes")
+        return True
+    else:
+        context.Result("no")
+        return False
 
 def CheckPNG(context):
-     return context.TryLink('''
-#include <SDL_image.h>
-#include <stdlib.h>
+    test_program = '''
+    #include <SDL_image.h>
+    #include <stdlib.h>
 
-int main(int argc, char **argv)
-{
-	SDL_RWops *src;
-	char *testimage = "${srcdir}/images/buttons/button-pressed.png";
+    int main(int argc, char **argv)
+    {
+            SDL_RWops *src;
+            char *testimage = "${srcdir}/images/buttons/button-pressed.png";
 
-	src = SDL_RWFromFile(testimage, "rb");
-	if (src == NULL) {
-		exit(2);
-	}
-	exit(!IMG_isPNG(src));
-}
-''', ".c")
+            src = SDL_RWFromFile(testimage, "rb");
+            if (src == NULL) {
+                    exit(2);
+            }
+            exit(!IMG_isPNG(src));
+    }
+\n
+'''
+    context.Message("Checking for PNG support in SDL... ")
+    if context.TryLink(test_program, ".c"):
+        context.Result("yes")
+        return True
+    else:
+        context.Result("no")
+        return False
 
 conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPKG' : CheckPKG,
