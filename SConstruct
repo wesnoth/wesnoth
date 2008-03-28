@@ -8,7 +8,7 @@ from SCons.Script import *
 # Build-control options
 #
 
-opts = Options()
+opts = Options('.scons-option-cache')
 
 # These are implemented in the build section
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
@@ -39,12 +39,13 @@ opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
 opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
-
 #
 # Setup
 #
 
 env = Environment(options = opts)
+
+opts.Save('.scons-option-cache', env)
 
 Help("""Arguments may be a mixture of switches and targets an any order.
 Switches apply to the entire build regrdless of where they are in the order.
@@ -68,6 +69,10 @@ The following special build targets
     wesnoth.tar.bz2 = make distribution tarball (cleaned by 'scons -c all').
     sanity-check = run a pre-release sanity check on the distribution.
     manual.en.html = HTML version of the English-language manual.
+
+Options are cached in a file named .scons-option-cache and persist to later
+invocations.  The file is editable. Delete it to start fresh.  Current option
+values can be listed with 'scons -h'.
 
 If you set CXXFLAGS and/or LDFLAGS in the environmnt, the values will
 be appended to the appropriate variables withn scons.  You can use this,
@@ -313,7 +318,7 @@ if env["prereqs"]:
         if not conf.CheckLib('X11'):
             print "Needed X lib for game or editor and didn't find it; exiting!"
             Exit(1)
-        if env['fribidi'] and conf.CheckLib('fribidi'):
+        if env['fribidi'] and not conf.CheckLib('fribidi'):
             print "Can't find libfribidi, please install it or rebuild with fribidi=no."
             Exit(1)
 
