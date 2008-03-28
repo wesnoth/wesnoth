@@ -140,33 +140,6 @@ fi
 
 AM_CONDITIONAL([SMALLGUI], [test "x$smallgui" = "xyes"])
 
-AC_ARG_ENABLE([optipng],
-	AS_HELP_STRING([--enable-optipng],
-	[run optipng png compression before installing graphics]),
-	[optipng=$enableval],
-	[optipng=no])
-
-AM_CONDITIONAL([OPTIPNG], [test "x$optipng" = "xyes"])
-
-if test "x$optipng" = "xyes"
-then
-	AC_PATH_PROGS([OPTIPNG_BIN], [optipng], [none])
-	if test \( "x$OPTIPNG_BIN" = "xnone" \) -a \( "x$optipng" = xyes \); then
-		AC_MSG_ERROR([*** You must install the optipng utility before building with --optipng.])
-	else
-		echo "****************************************"
-		echo "*** optipng support enabled          ***"
-		echo "*** please keep in mind that optipng ***"
-		echo "*** - may take a long time to run    ***"
-		echo "*** - makes graphics unusable for    ***"
-		echo "***   artists to work on.            ***"
-		echo "***                                  ***"
-		echo "*** It is intented to optimize the   ***"
-		echo "*** file size for packaging.         ***"
-		echo "****************************************"
-	fi
-fi
-
 AC_ARG_ENABLE([lowmem],
               AS_HELP_STRING([--enable-lowmem], [reduce memory usage by removing extra functionality]),
 	      [lowmem=$enableval],

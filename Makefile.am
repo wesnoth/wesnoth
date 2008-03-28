@@ -49,15 +49,9 @@ sanity-check:
 	cd utils; ./sanity_check
 	cd data/tools; make sanity-check
 
-# *** Not yet covered by scons recipe (optipng, dummylocales)
+# *** Not yet covered by scons recipe (dummylocales)
 install-data-local:
 	@$(NORMAL_INSTALL)
-if OPTIPNG
-	(cd $(top_srcdir) && find images -name '*.png' -print  ) | while read p; do \
-	$(w_preparefileinstall) \
-	optipng -o4 $$d$$p; \
-	done
-endif
 if INSTALLDATA
 	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
 	( $(finddatadirs) ) | while read p; do \
