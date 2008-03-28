@@ -18,7 +18,6 @@ namespace {
 void debug_delete(node* n) {
 	if(n) {
 		delete n;
-		memset(n, 0xab, sizeof(*n));
 	}
 }
 

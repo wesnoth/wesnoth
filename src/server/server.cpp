@@ -800,7 +800,7 @@ void server::process_query(const network::connection sock,
 	const simple_wml::string_span& command(query["type"]);
 	std::ostringstream response;
 	const std::string& help_msg = "Available commands are: help, metrics,"
-			" motd, status.";
+			" motd, status, wml.";
 	if (admins_.count(sock) != 0) {
 		LOG_SERVER << "Admin Command:" << "\ttype: " << command
 			<< "\tIP: "<< network::ip_address(sock) 
