@@ -99,8 +99,7 @@ def restore_env(env, backup):
 
 def CheckBoostLib(context, boost_lib, require_version = None):
     env = context.env
-    boostdir = context.env.get("BOOSTDIR",
-                               os.path.join(context.env["prefix"], "boost"))
+    boostdir = context.env.get("BOOSTDIR", "/usr/include/boost"))
     backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
     env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [env["BOOSTLIBS"]])
 
@@ -143,7 +142,7 @@ def CheckBoost(context, boost_lib, require_version = None):
     else:
         context.Message("Checking for Boost %s library... " % boost_lib)
     check_result = CheckBoostLib(context, boost_lib, require_version)
-    if not check_result and not context.env["BOOST_SUFFIX"]:
+    if not check_result and not context.env.get("BOOST_SUFFIX"):
         context.env["BOOST_SUFFIX"] = "-mt"
         check_result = CheckBoostLib(context, boost_lib, require_version)
     if check_result:
