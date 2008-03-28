@@ -150,8 +150,9 @@ def CheckOgg(context):
     }
 \n
 '''
+    #context.env.AppendUnique(LIBS = "SDL_mixer")
     context.Message("Checking for Ogg Vorbis support in SDL... ")
-    if context.TryLink(test_program, ".c"):
+    if context.TryRun(test_program, ".c"):
         context.Result("yes")
         return True
     else:
@@ -166,7 +167,7 @@ def CheckPNG(context):
     int main(int argc, char **argv)
     {
             SDL_RWops *src;
-            char *testimage = "${srcdir}/images/buttons/button-pressed.png";
+            char *testimage = "images/buttons/button-pressed.png";
 
             src = SDL_RWFromFile(testimage, "rb");
             if (src == NULL) {
@@ -177,7 +178,8 @@ def CheckPNG(context):
 \n
 '''
     context.Message("Checking for PNG support in SDL... ")
-    if context.TryLink(test_program, ".c"):
+    result, output = context.TryRun(test_program, ".c")
+    if result:
         context.Result("yes")
         return True
     else:
@@ -195,19 +197,24 @@ if not conf.CheckPKGConfig('0.15.0'):
      Exit(1)
 
 if not conf.CheckSDL(require_version = '1.2.7'):
-     print 'SDL >= 1.2.7 not found.'
+     print 'SDL >= 1.2.7 not found!'
      Exit(1)
 if not conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
-     print 'SDL_ttf >= 2.0.8 not found.'
+     print 'SDL_ttf >= 2.0.8 not found!'
+     Exit(1)
+if not conf.CheckSDL("SDL_mixer"):
+    print "SDL mixer not found!"
+if not conf.CheckSDL('SDL_image'):
+    print "Needed SDL image library, not found!"
+    Exit(1)
+
+if not conf.CheckOgg():
+     print "No Ogg Vorbis support in SDL!"
      Exit(1)
 
-#if not conf.CheckOgg():
-#     print "No Ogg Vorbis support in SDL!"
-#     Exit(1)
-
-#if not conf.CheckPNG():
-#     print "No PNG support in SDL!"
-#     Exit(1)
+if not conf.CheckPNG():
+     print "No PNG support in SDL!"
+     Exit(1)
 
 #
 # Check some preconditions
@@ -223,18 +230,6 @@ if "wesnoth" in targets or "wesnoth_editor" in targets:
     if not conf.CheckLib('X11'):
         print "Needed X lib for game or editor and didn't find it; exiting!"
         Exit(1)
-    if not conf.CheckLib('SDL'):
-        print "Needed SDL lib for game or editor and didn't find it; exiting!"
-        Exit(1)
-    if not conf.CheckLib('SDL_ttf'):
-        print "Needed SDL ttf font lib for game or editor and didn't find it; exiting!"
-        Exit(1)
-    if not conf.CheckLib('SDL_mixer'):
-        print "Needed SDL sound mixer lib for game or editor and didn't find it; exiting!"
-        Exit(1)
-    if not conf.CheckLib('SDL_image'):
-        print "Needed SDL image lib for game or editor and didn't find it; exiting!"
-        Exit(1)
     if env['fribidi'] and conf.CheckLib('fribidi'):
         print "Can't find libfribidi, please install it or rebuild with fribidi=no."
         Exit(1)
@@ -248,8 +243,6 @@ if "all" in targets or "wesnoth" in targets:
     if not conf.CheckLib('python'+sys.version[:3]):
         print "Needed Python lib for game and didn't find it; exiting!"
         Exit(1)
-
-
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
