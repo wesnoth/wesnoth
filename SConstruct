@@ -37,22 +37,12 @@ opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
 opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
+
 #
 # Setup
 #
 
 env = Environment(options = opts)
-
-# Omits the 'test' target 
-all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
-                        "cutter", "exploder"])
-env.Default("all")
-
-env.TargetSignatures('content')
-
-#
-# Configuration
-#
 
 Help("""\
 Available build targets include:
@@ -69,7 +59,41 @@ Available build targets include:
     sanity_check = run a pre-release sanity check on the distrivution
 
 """ + opts.GenerateHelpText(env))
-conf = Configure(env)
+
+# Omits the 'test' target 
+all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
+                        "cutter", "exploder"])
+env.Default("all")
+
+env.TargetSignatures('content')
+
+#
+# Configuration
+#
+
+def CheckPKGConfig(context, version):
+     context.Message( 'Checking for pkg-config... ' )
+     ret = context.TryAction('pkg-config --atleast-pkgconfig-version=%s' % version)[0]
+     context.Result( ret )
+     return ret
+
+def CheckPKG(context, name):
+     context.Message( 'Checking for %s... ' % name )
+     ret = context.TryAction('pkg-config --exists \'%s\'' % name)[0]
+     context.Result( ret )
+     return ret
+
+conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
+                                       'CheckPKG' : CheckPKG })
+
+if not conf.CheckPKGConfig('0.15.0'):
+     print 'pkg-config >= 0.15.0 not found.'
+     Exit(1)
+
+# FIXME: It would be good to check for SDL_ttf >= 2.0.8 here
+if not conf.CheckPKG('SDL >= 1.2.7'):
+     print 'SDL >= 1.2.7 not found.'
+     Exit(1)
 
 #
 # Check some preconditions
@@ -110,6 +134,8 @@ if "all" in targets or "wesnoth" in targets:
     if not conf.CheckLib('python'+sys.version[:3]):
         print "Needed Python lib for game and didn't find it; exiting!"
         Exit(1)
+
+
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
@@ -749,8 +775,7 @@ env.Precious(sanity_check)
 #
 # Known problems:
 #
-# 1. We don't yet check for SDL version too old
-# 2. We don't check for Ogg Vorbis support in SDL_mixer
+# 1. We don't check for Ogg Vorbis support in SDL_mixer
 # FIXME tags other problems
 #
 # To do:

@@ -499,7 +499,6 @@ AC_SUBST([PNG_CFLAGS])
 AC_SUBST([PNG_LIBS])
 AM_CONDITIONAL([LIBPNG], [test x$pngfound = xyes])
 
-# *** Not yet covered by scons recipe
 # Check for SDL version. Taken from sdl.m4
 
 AC_ARG_ENABLE([sdltest],
