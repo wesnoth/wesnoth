@@ -614,7 +614,7 @@ sub CopyImages {
 	close UNITS;
 	# zombie units
 	if ($data_dir =~ /core/) {
-		my @zombies = qw/drake mounted saurian swimmer troll wose/;
+		my @zombies = qw//bat-se-3 drake mounted saurian swimmer troll wose/;
 		foreach $zombie (@zombies) {
 			system ("$colorizer $data_dir/images/units/undead/zombie-$zombie.png $html_dir/units/undead/zombie-$zombie.png");
 			system ("$colorizer $data_dir/images/units/undead/soulless-$zombie.png $html_dir/units/undead/soulless-$zombie.png");
