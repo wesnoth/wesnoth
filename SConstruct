@@ -136,9 +136,24 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         context.Result("no")
         return False
 
+def CheckOgg(context):
+     return context.TryLink('''
+#include <SDL_mixer.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv)
+{
+    Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
+    if (music == NULL)
+        exit(1);
+    exit(0);
+}
+''', ".c")
+
 conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPKG' : CheckPKG,
-                                       'CheckSDL' : CheckSDL,})
+                                       'CheckSDL' : CheckSDL,
+                                       'CheckOgg' : CheckOgg})
 
 if not conf.CheckPKGConfig('0.15.0'):
      print 'pkg-config >= 0.15.0 not found.'
@@ -151,18 +166,7 @@ if not conf.CheckSDL(require_version = '1.2.7'):
 #     print 'SDL_ttf >= 2.0.8 not found.'
 #     Exit(1)
 
-if not conf.TryLink('''
-    #include <SDL_mixer.h>
-    #include <stdlib.h>
-
-    int main(int argc, char **argv)
-    {
-	Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
-	if (music == NULL)
-	    exit(1);
-	exit(0);
-    }
-''', ".c"):
+if not CheckOgg:
      print "No Ogg Vorbis support in SDL!"
      Exit(1)
 
