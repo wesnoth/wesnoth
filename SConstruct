@@ -274,13 +274,12 @@ if not conf.CheckPKGConfig('0.15.0'):
      print 'pkg-config >= 0.15.0 not found.'
      Exit(1)
 
-env["BOOSTLIBS"] = "/usr/lib"
-if not conf.CheckBoost("iostreams"):
-     print 'boost_iostreams not found.'
-     Exit(1)
-
 # If user specified library locations, assume he knows what he's doing.
 if not 'CXXFLAGS' in os.environ and not 'LDFLAGS' in os.environ:
+    env["BOOSTLIBS"] = "/usr/lib"
+    if not conf.CheckBoost("iostreams"):
+         print 'boost_iostreams not found.'
+         Exit(1)
     targets = sets.Set(COMMAND_LINE_TARGETS)
     if not targets or (sets.Set(['all','wesnoth','wesnoth_editor']) & targets):
         if not conf.CheckSDL(require_version = '1.2.7'):
