@@ -12,6 +12,20 @@ AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [isaac@warp.es], [wesnoth])
 
 AC_REVISION([$Revision$])
 
+echo "****************************************"
+echo "***  The autotools build recipe is   ***"
+echo "***  DEPRECATED and UNSUPPORTED,     ***"
+echo "***  and will be removed in a future ***"
+echo "***  release.                        ***"
+echo "***                                  ***"
+echo "***  To build wesnoth, type 'scons'  ***"
+echo "***  in the distribution directory.  ***"
+echo "***  (You must have the SCons build  ***"
+echo "***  system installed for this to    ***"
+echo "***  actually work.)                 ***"
+echo "***                                  ***"
+echo "****************************************"
+
 AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_SRCDIR([src/actions.cpp])
 AC_CONFIG_HEADER([config.h])

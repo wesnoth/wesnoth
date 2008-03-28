@@ -7,26 +7,30 @@ You'll need to have these libraries (with equivalent devel versions) to build We
  libsdl-mixer1.2 (with Vorbis support)
  libsdl-net
  libsdl-ttf2.0.8
- libfreetype2
  libz
  boost_iostreams >= 1.33.0
  boost_regex >= 1.33.0
+
+You will need the following tools:
  
-Recommended (can be deactivated via ./configure --disable-python):
  python2.4
+ scons
 
 SDL* libraries can be found at http://www.libsdl.org . libfreetype can be found
 at http://www.freetype.org/ . python can be found at http://www.python.org .
 The boost libraries can be found at http://www.boost.org .
 
-You will also need to have a working installation of gettext to build the
+You will also need to have a working installation of GNU gettext to build the
 translations.
 
+Note: It has been reported (see https://gna.org/bugs/index.php?10326)
+that under gcc 3.3.6 you need to turn off optimizations or you will
+get a build that doesn't work for multiplayer.  We recommend building
+with gcc 4.
 
-The .tar.bz2 file is distributed with a working set of configure files. They
-are not in the SVN repository. Consequently, if you are building from
-SVN, you will need autoconf (>= 2.60) and automake (>= 1.9). Run './autogen.sh'
-then to generate the configure files.
+If you see lots of messages like "Type 'svnversion --help' for usage.",
+you have a Subversion client installed but it is not implementing the 
+-n option of svnversion. Time to update it.
 
 Sourcecode:
 
@@ -45,47 +49,43 @@ then
 
  $ cd wesnoth-x.y.z
 
-Do this 
+Simply type 'scons' in the top-level directory to build game, editor,
+and tools.  It is possible to select individual targets by naming them
+as scons arguments, including wesnothd (the Wesnoth multiplayer server)
+and campaignd (the campaign server).
+
+scons takes a prefix= argument that says where to install the game
+and its data.  The prefix defaults to /usr/local; for production builds
+you may want to set prefix=/usr.
+
+To build wesnothd:
+
+   scons server_uid=<user> server_group=<group> wesnothd
+
+where <user> and <group> are valid on your system.  A wesnothd
+subdirectory will be created under /var/run owned by
+<user>:<group>. This is relevant if you want to be able to communicate
+with wesnothd through a FIFO or named socket.  You have to run
+wesnothd with the user specified while configuring in order for it to
+work.  You can also specify the FIFO directory directly by using
+fifodir=<directory>.
+
+If you want to install several versions of wesnoth you should use the
+prefsdir= parameter to get distinct preferences directories.  The
+default is '.wesnoth'.
+
+Notes on the deprecated autotools build:
+
+The autotools build machinery is deprecated, unsupported, and will be
+removed in a future release.  You will need autoconf (>= 2.60) and
+automake (>= 1.9). Run './autogen.sh' to generate the configure
+files.  Then 
 
  $ ./configure
  $ make
  $ make install
 
-to compile the wesnoth binary and install it along with the game
-data to the default prefix, which is probably /usr/local.
-
-Note: It has been reported (see https://gna.org/bugs/index.php?10326)
-that under gcc 3.3.6 you need to turn off optimizations or you will
-get a build that doesn't work for multiplayer.  We recommend building
-with gcc 4.
-
-If you want to build wesnoth_editor too add the --enable-editor
-configure option.
-
-If you see lots of messages like "Type 'svnversion --help' for usage.",
-you have a Subversion client installed but it is not implementing the 
--n option of svnversion. Time to update it.
-
-In case you want wesnothd to be built you should add:
---enable-server --localstatedir=/var --with-server-uid=user
---with-server-gid=group
-
-$localstatedir/run is the location where a wesnothd subdirectory will be
-created owned by user:group. This is relevant if you want to be able
-to communicate with wesnothd through a fifo file named socket.
-You have to run wesnothd with the user specified while configuring in
-order for it to work.
-You can also specify the fifodir directly by using --with-fifodir
-This way localstatedir won't be used.
-
-If you want to install several versions of wesnoth you should use the
---with-preferences-dir= parameter to get distinct preferences directories.
-The default is '.wesnoth'.
-
-See './configure --help' for all available options.
-
-Rebuilding:
-
+as usual.  See './configure --help' for all available options.
 You should clean your existing wesnoth release build first with:
 
  $ make distclean
