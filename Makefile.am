@@ -103,10 +103,6 @@ if TINYGUI
 endif
 endif
 
-# *** Not yet covered by scons recipe
-zip-install: install
-	$(top_srcdir)/utils/splittree "$(DESTDIR)$(pkgdatadir)" --zip
-
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
 if INSTALLDATA
