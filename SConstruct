@@ -356,7 +356,7 @@ if env["CC"] == "gcc":
 #
 # The png library specification is not needed everywhere.  Some versions of
 # (probably) SDL_image must carry it internally.
-boost_libs = Split("boost_iostreams-mt boost_regex")
+boost_libs = Split("boost_iostreams boost_regex")
 SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL_image SDL")
 commonlibs = SDL_libs + boost_libs + ["pthread", "png", "-lpython"+sys.version[:3]]
 wesnothdlibs = ["SDL_net", "boost_iostreams-mt", "pthread"]
