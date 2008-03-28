@@ -8,7 +8,7 @@ Map the magenta team-color patches in the input image to red in the
 output image, copy the result to output.
 """
 
-import sys,getopt
+import sys,os,getopt
 
 team_red=255
 team_green=0
