@@ -583,6 +583,7 @@ formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false)
 void formula_ai::play_turn()
 {
 	ai_function_symbol_table function_table(*this);
+	game_logic::candidate_move_map candidate_moves;
 
 	const config& ai_param = current_team().ai_parameters();
 	config::const_child_itors team_formula = ai_param.child_range("team_formula");
@@ -607,14 +608,19 @@ void formula_ai::play_turn()
 	
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{		
+		std::vector<game_logic::const_formula_ptr> unit_candidate_moves; 
+		unit_candidate_moves.push_back(move_formula_);
 		if ( (i->second.side() == get_info().team_num) && i->second.has_formula() )
 		{
 			game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
 			game_logic::map_formula_callable callable(this);
+			unit_candidate_moves.push_back(formula);
 			callable.add_ref();
 			callable.add("me", variant(new unit_callable(*i, current_team(), get_info().team_num)));
 			make_move(formula, callable);
 		}		
+		candidate_moves.insert(std::pair<const std::string, std::vector<game_logic::const_formula_ptr> >
+					(i->second.underlying_id(), unit_candidate_moves));
 	}
 
 	game_logic::map_formula_callable callable(this);
