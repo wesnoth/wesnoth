@@ -99,14 +99,16 @@ def restore_env(env, backup):
 
 def CheckBoostLib(context, boost_lib, require_version = None):
     env = context.env
+    boostdir = context.env.get("BOOSTDIR",
+                               os.path.join(context.env["prefix"], "boost"))
     backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
-    env.AppendUnique(CPPPATH = [env["BOOSTDIR"]], LIBPATH = [env["BOOSTLIBS"]])
+    env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [env["BOOSTLIBS"]])
 
     boost_headers = { "regex" : "regex/config.hpp" }
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("BOOST_SUFFIX", "")
 
-    env.AppendUnique(CPPPATH = [env["BOOSTDIR"]], LIBPATH = [env["BOOSTLIBS"]])
+    env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [env["BOOSTLIBS"]])
     env.AppendUnique(LIBS = [libname])
 
     test_program = """
@@ -166,7 +168,8 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         except (ValueError, IndexError):
             patch_level = 0
 
-    sdldir = context.env.get("SDLDIR", context.env["prefix"])
+    sdldir = context.env.get("SDLDIR",
+                             os.path.join(context.env["prefix"], "SDL"))
     if sdl_lib == "SDL": 
         if require_version:
             context.Message("Checking for Simple DirectMedia Layer library version >= %d.%d.%d... " % (major_version, minor_version, patchlevel))
