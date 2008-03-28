@@ -38,23 +38,26 @@ do
 		DATE=$(date +"%Y%m%d-%H%M%S")
 		PORT=$(cat $SERVERBASE/port)
 		REV=$(ls -l $SERVERBASE/build | sed -e 's,.*wesnothd-\(svn-.*\)_.*/,\1,')
+		LOG=wesnothd.$DATE.$REV.log
 		cd $SERVERBASE/build || exit 1
 		if ! [ -x bin/wesnothd-$SERVER ]; then
 			echo "Executable 'bin/wesnothd-$SERVER' not found."
 			exit 1
 		fi
-		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > $SERVERBASE/logs/wesnothd.$DATE.$REV.log 2>&1 &
+		nice -n 3 bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > $SERVERBASE/logs/$LOG 2>&1 &
 		PID=$!
 		echo -n "started $SERVER server (revision: $REV, pid: $PID) at: "; date
 		cd $SERVERBASE
-		rm -f old.log oldlobby.log
+		rm -f old.log
 		mv current.log old.log > /dev/null 2>&1
-		mv currentlobby.log oldlobby.log > /dev/null 2>&1
-		ln -s logs/wesnothd.$DATE.$REV.log current.log
-		ln -s logs/lobby.$DATE.$REV.log currentlobby.log
+		ln -s logs/$LOG current.log
+		ln -s logs/$LOG build/$LOG
 		# wait a bit so the server is likely up and listening
 		sleep 1
 		if [ "$SERVER" == "1.2" ]; then
+			rm -f oldlobby.log
+			mv currentlobby.log oldlobby.log > /dev/null 2>&1
+			ln -s logs/lobby.$DATE.$REV.log currentlobby.log
 			cd $SOURCE/utils/
 			./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
 			cd $SERVERBASE/build
