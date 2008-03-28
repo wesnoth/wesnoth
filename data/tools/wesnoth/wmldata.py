@@ -88,7 +88,7 @@ class DataDefine(Data):
         self.data = define
 
     def copy(self):
-        return DataDefine(self.name, self.params, self.define)
+        return DataDefine(self.name, self.params, self.data)
 
     def get_value(self):
         return self.data
