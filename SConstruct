@@ -181,9 +181,9 @@ if not conf.CheckPKGConfig('0.15.0'):
 if not conf.CheckSDL(require_version = '1.2.7'):
      print 'SDL >= 1.2.7 not found.'
      Exit(1)
-#if conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
-#     print 'SDL_ttf >= 2.0.8 not found.'
-#     Exit(1)
+if not conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
+     print 'SDL_ttf >= 2.0.8 not found.'
+     Exit(1)
 
 #if not conf.CheckOgg():
 #     print "No Ogg Vorbis support in SDL!"
