@@ -68,6 +68,9 @@ The following special build targets
     sanity-check = run a pre-release sanity check on the distribution.
     manual.en.html = HTML version of the English-language manual.
 
+If you set CXXFLAGS and/or LDFLAGS in the environmnt, the values will
+be appended to the appropriate variables withn scons.  You can use this,
+for example, to point scons at non-default library locations.
 """ + opts.GenerateHelpText(env))
 
 # Omits the 'test' target 
@@ -276,25 +279,27 @@ if not conf.CheckBoost("iostreams"):
      print 'boost_iostreams not found.'
      Exit(1)
 
-targets = sets.Set(COMMAND_LINE_TARGETS)
-if not targets or (sets.Set(['all', 'wesnoth', 'wesnoth_editor']) & targets):
-    if not conf.CheckSDL(require_version = '1.2.7'):
-         print 'SDL >= 1.2.7 not found!'
-         Exit(1)
-    if not conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
-         print 'SDL_ttf >= 2.0.8 not found!'
-         Exit(1)
-    if not conf.CheckSDL("SDL_mixer"):
-        print "SDL mixer not found!"
-    if not conf.CheckSDL('SDL_image'):
-        print "Needed SDL image library, not found!"
-        Exit(1)
-    if not conf.CheckOgg():
-         print "No Ogg Vorbis support in SDL!"
-         Exit(1)
-    if not conf.CheckPNG():
-         print "No PNG support in SDL!"
-         Exit(1)
+# If user specified library locations, assume he knows what he's doing.
+if not 'CXXFLAGS' in os.environ and not 'LDFLAGS' in os.environ:
+    targets = sets.Set(COMMAND_LINE_TARGETS)
+    if not targets or (sets.Set(['all','wesnoth','wesnoth_editor']) & targets):
+        if not conf.CheckSDL(require_version = '1.2.7'):
+             print 'SDL >= 1.2.7 not found!'
+             Exit(1)
+        if not conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
+             print 'SDL_ttf >= 2.0.8 not found!'
+             Exit(1)
+        if not conf.CheckSDL("SDL_mixer"):
+            print "SDL mixer not found!"
+        if not conf.CheckSDL('SDL_image'):
+            print "Needed SDL image library, not found!"
+            Exit(1)
+        if not conf.CheckOgg():
+             print "No Ogg Vorbis support in SDL!"
+             Exit(1)
+        if not conf.CheckPNG():
+             print "No PNG support in SDL!"
+             Exit(1)
 
 #
 # Check some other preconditions
