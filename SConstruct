@@ -11,6 +11,7 @@ from SCons.Script import *
 opts = Options()
 
 # These are implemented in the build section
+opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(BoolOption('profile', 'Set to build for debugging', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
@@ -270,12 +271,14 @@ conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPNG' : CheckPNG,
                                        'CheckBoost' : CheckBoost })
 
-if not conf.CheckPKGConfig('0.15.0'):
-     print 'pkg-config >= 0.15.0 not found.'
-     Exit(1)
+#
+# Check some preconditions
+#
 
-# If user specified library locations, assume he knows what he's doing.
-if not 'CXXFLAGS' in os.environ and not 'LDFLAGS' in os.environ:
+if env["prereqs"]:
+    if not conf.CheckPKGConfig('0.15.0'):
+         print 'pkg-config >= 0.15.0 not found.'
+         Exit(1)
     env["BOOSTLIBS"] = "/usr/lib"
     if not conf.CheckBoost("iostreams"):
          print 'boost_iostreams not found.'
@@ -300,33 +303,29 @@ if not 'CXXFLAGS' in os.environ and not 'LDFLAGS' in os.environ:
              print "No PNG support in SDL!"
              Exit(1)
 
-#
-# Check some other preconditions
-#
+        targets = map(str, BUILD_TARGETS)
 
-targets = map(str, BUILD_TARGETS)
-
-if "wesnoth" in targets and float(sys.version[:3]) < 2.4:
-    print "Python version is too old for game, 2.4 or greater is required,"
-    Exit(1)
-
-if "wesnoth" in targets or "wesnoth_editor" in targets:
-    if not conf.CheckLib('X11'):
-        print "Needed X lib for game or editor and didn't find it; exiting!"
-        Exit(1)
-    if env['fribidi'] and conf.CheckLib('fribidi'):
-        print "Can't find libfribidi, please install it or rebuild with fribidi=no."
+    if "wesnoth" in targets and float(sys.version[:3]) < 2.4:
+        print "Python version is too old for game, 2.4 or greater is required,"
         Exit(1)
 
-if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
-    if not conf.CheckSDL('SDL_net'):
-        print "Needed SDL network lib and didn't find it; exiting!"
-        Exit(1)
+    if "wesnoth" in targets or "wesnoth_editor" in targets:
+        if not conf.CheckLib('X11'):
+            print "Needed X lib for game or editor and didn't find it; exiting!"
+            Exit(1)
+        if env['fribidi'] and conf.CheckLib('fribidi'):
+            print "Can't find libfribidi, please install it or rebuild with fribidi=no."
+            Exit(1)
 
-if "all" in targets or "wesnoth" in targets:
-    if not conf.CheckLib('python'+sys.version[:3]):
-        print "Needed Python lib for game and didn't find it; exiting!"
-        Exit(1)
+    if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
+        if not conf.CheckSDL('SDL_net'):
+            print "Needed SDL network lib and didn't find it; exiting!"
+            Exit(1)
+
+    if "all" in targets or "wesnoth" in targets:
+        if not conf.CheckLib('python'+sys.version[:3]):
+            print "Needed Python lib for game and didn't find it; exiting!"
+            Exit(1)
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
