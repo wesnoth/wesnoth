@@ -669,7 +669,6 @@ if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL.la
 then SDL_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL.la
 else SDL_LIBS=`$SDL_CONFIG --libs`
 fi
-# *** Not yet covered by scons recipe
 case $host_os in
 	darwin*)
 		SDL_LIBS="-framework Carbon $SDL_LIBS"

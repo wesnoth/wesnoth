@@ -220,6 +220,12 @@ commonlibs = SDL_libs + boost_libs + ["pthread", "png", "-lpython"+sys.version[:
 wesnothdlibs = ["SDL_net", "boost_iostreams-mt", "pthread"]
 commonpath = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]]
 
+# Platform-specific support, straight from configure.ac
+if sys.platform == 'win32':				# Microsoft Windows
+    commonlibs.append("unicows")			# Windows Unicode lib
+elif sys.platform == 'darwin':				# Mac OS X
+    event["CXXFLAGS"].append("-framework Carbon")	# Carbon GUI
+
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
 #removed.  Requires moving path and version at least to other files.
