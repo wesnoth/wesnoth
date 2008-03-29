@@ -35,6 +35,7 @@ opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 
 opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), images normal size', False))
+opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', True))
 
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
@@ -882,7 +883,7 @@ pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campai
 
 def CopyFilter(fn):
     "Filter out data-tree things that shouldn't be installed."
-    return not ".svn" in str(fn)
+    return not ".svn" in str(fn) and not "Makefile" in str(fn)
 
 def InstallFilteredHook(target, source, env):
     if type(target) == type([]):
@@ -894,11 +895,11 @@ def InstallFilteredHook(target, source, env):
         if CopyFilter(source):
             target = os.path.join(target, os.path.basename(str(source))) 
             if not os.path.exists(target):
-                #print "Make directory", target
-                os.makedirs(target)
+                 if env["verbose"]:
+                      print "Make directory", target
+                 os.makedirs(target)
             map(lambda f: InstallFilteredHook(target, os.path.join(str(source), f), env), os.listdir(str(source)))
     elif CopyFilter(source):
-        #print "Copy source=%s target=%s" % (str(source), target)
         if env["tinygui"] and source.endswith("jpg") or source.endswith("png"):
              (status, output) = commands.getstatusoutput("file "+ source)
              output = output.replace(" x ", "x")
@@ -911,12 +912,18 @@ def InstallFilteredHook(target, source, env):
                  for (large, small) in (("1024x768","320x240"),
                                         ("640x480","240x180"),
                                         ("205x205","240x180")):
-                     if large in output:
-                         os.system(command % (small, source, target))
+                      if large in output:
+                           command = command % (small, source, target)
+                           break
                  else:
-                     os.system(command % ("50%", source, target))
+                      command = command % ("50%", source, target)
+                 if env["verbose"]:
+                      print command
+                 os.system(command)
                  return None
         # Just copy non-images, and images if tinygui is off
+        if env["verbose"]:
+             print "cp %s %s" % (str(source), target)
         shutil.copy2(str(source), target)
     return None
 env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
