@@ -19,7 +19,7 @@ if TESTS
 bin_PROGRAMS += test
 endif
 
-CLEANFILES = 
+CLEANFILES = revision.hpp
 
 if TOOLS
 bin_PROGRAMS += exploder cutter
