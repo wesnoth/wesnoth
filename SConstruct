@@ -108,7 +108,8 @@ def restore_env(env, backup):
 
 def CheckBoostLib(context, boost_lib, require_version = None):
     env = context.env
-    boostdir = context.env.get("BOOSTDIR", "/usr/include")
+    boostdir = env.get("BOOSTDIR", "/usr/include")
+    boostlibdir = env.get("BOOSTLIBS", "/usr/lib")
     backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
 
     boost_headers = { "regex" : "regex/config.hpp",
@@ -116,7 +117,7 @@ def CheckBoostLib(context, boost_lib, require_version = None):
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("BOOST_SUFFIX", "")
 
-    env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [env["BOOSTLIBS"]])
+    env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     env.AppendUnique(LIBS = [libname])
 
     test_program = """
@@ -189,7 +190,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
             env.ParseConfig("sdl-config --cflags --libs")
         if env["PLATFORM"] == "win32":
             env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
-            env.AppendUnique(LIBS = Split("mingw32 SDLmain SDL SDL_image SDL_ttf"))
+            env.AppendUnique(LIBS = Split("mingw32 SDLmain SDL"))
             env.AppendUnique(LINKFLAGS = ["-mwindows"])
     else:
         if require_version:
@@ -284,7 +285,6 @@ if env["prereqs"]:
     if not conf.CheckPKGConfig('0.15.0'):
          print 'pkg-config >= 0.15.0 not found.'
          Exit(1)
-    env["BOOSTLIBS"] = "/usr/lib"
     if not conf.CheckBoost("iostreams"):
          print 'boost_iostreams not found.'
          Exit(1)
@@ -982,9 +982,8 @@ env.Precious(sanity_check)
 # 1. Documentation formatting and installation
 # 2. Manual page formatting and installation
 # 3. Dummy locales
-# 4. Translations handling other than installation (pot-update).
-# 5. Desktop entry and icon installation.
-# 6. Image resizing for tinygui 
+# 4. Desktop entry and icon installation.
+# 5. Translations handling other than installation (pot-update).
 
 # Local variables:
 # mode: python
