@@ -4,14 +4,21 @@ pkgdatadir=$(datadir)/@DATADIR@
 
 bin_SCRIPTS =
 
+# Ignore junk -- object files, editor backup files, wmllint backup files.
 findfilterflags=! \( -name .svn -prune -o -name ".\#*" -o -name "*~" -o -name "*bak" -o -type d \)
 
+# List all datafiles, ignoring junk
 finddata=(cd $(top_srcdir) && find data fonts icons images sounds $(findfilterflags) -print )
+# List all data subdirectories
 finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \! \( -name .svn -prune \) -print )
+# List non-installable utility files
 findnoinst=(cd $(top_srcdir) && find utils $(findfilterflags) -print )
 
+# Find files derived from the manual that should go in a distribution
 finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.txt")
+# Same list as previous, but with doc/ stripped off the front
 finddoc=($(finddocdist) | sed -e 's:doc/manual:manual:g' )
+# List all document directories
 finddocdirs=(cd $(top_srcdir)/doc && find manual -type d \! \( -name .svn -prune \) -print; )
 
 # This is a workaround to include manpage and manual translation files in the
@@ -29,6 +36,7 @@ w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  esac;
 
 # *** Not yet covered by scons recipe
+# Create Macintosh app bundle from the game 
 bundle_contents=@PACKAGE_NAME@.app/Contents
 @PACKAGE@_bundle: src/@PACKAGE@
 	mkdir -p "$(bundle_contents)/MacOS"
@@ -37,6 +45,7 @@ bundle_contents=@PACKAGE_NAME@.app/Contents
 	$(INSTALL_PROGRAM) $< "$(bundle_contents)/MacOS/@PACKAGE_NAME@"
 
 # *** Not yet covered by scons recipe
+# Create Macintosh app bundle from the editor
 bundle_editor_contents=@PACKAGE_NAME@ Editor.app/Contents
 @PACKAGE@_editor_bundle: src/@PACKAGE@_editor
 	mkdir -p "$(bundle_editor_contents)/MacOS"
@@ -49,10 +58,12 @@ sanity-check:
 	cd utils; ./sanity_check
 	cd data/tools; make sanity-check
 
-# *** Not yet covered by scons recipe (dummylocales)
+# *** Not yet covered by scons recipe (dummylocales. doc install, tinygui)
 install-data-local:
 	@$(NORMAL_INSTALL)
 if INSTALLDATA
+	: Replicate data directory skeleton under target shared-data directory.
+	: Then copy all corresponding files.
 	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
 	( $(finddatadirs) ) | while read p; do \
 	  $(mkdir_p) "$(DESTDIR)$(pkgdatadir)/$$p"; \
@@ -63,6 +74,8 @@ if INSTALLDATA
 	  echo $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
+	: Replicate doc directory skeleton under target doc subdirectory
+	: Then copy all corresponding files.
 	test -z "$(docdir)" || $(mkdir_p) "$(DESTDIR)$(docdir)"
 	( $(finddocdirs) ) | while read p; do \
 	  $(mkdir_p) "$(DESTDIR)$(docdir)/$$p"; \
@@ -73,6 +86,7 @@ if INSTALLDATA
 	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(docdir)/$$f"; cd ..; \
 	done
 if DUMMYLOCALES
+	: Create dummy locales beneath the Wesnoth data directory
 	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
 	if test -d "$(DESTDIR)$(pkgdatadir)/locales/C" ; then rm -r "$(DESTDIR)$(pkgdatadir)/locales/C" ; fi
 	echo | localedef --force "$(DESTDIR)$(pkgdatadir)/locales/C" 2> /dev/null; \
@@ -83,6 +97,7 @@ if DUMMYLOCALES
 	true
 endif
 if TINYGUI
+	: Shrink installed images by a factor of two.
 	(cd $(top_srcdir) && find data/core/images data/campaigns images  \( $(findfilterflags) -a -name '*.png' -and -not -name 'bar-energy-tinygui.png' -print \) ) | while read p; do \
 	  $(w_preparefileinstall) \
 	  eval `identify $$d$$p | cut -f 3 -d ' ' | sed s/^/imagewidth=/ | sed s/x/\;imageheight=/` ;\
