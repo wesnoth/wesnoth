@@ -159,7 +159,7 @@ node::node(document& doc, node* parent, const char** str, int depth)
 				throw error("unterminated element");
 			}
 
-			child_list& list = children_[string_span(s, end - s)];
+			child_list& list = get_children(string_span(s, end - s));
 
 			s = end + 1;
 
@@ -336,7 +336,7 @@ node& node::add_child_at(const char* name, size_t index)
 {
 	set_dirty();
 
-	child_list& list = children_[string_span(name)];
+	child_list& list = get_children(name);
 	if(index > list.size()) {
 		index = list.size();
 	}
@@ -350,7 +350,7 @@ node& node::add_child(const char* name)
 {
 	set_dirty();
 
-	child_list& list = children_[string_span(name)];
+	child_list& list = get_children(name);
 	list.push_back(new node(*doc_, this));
 	return *list.back();
 }
@@ -360,7 +360,7 @@ void node::remove_child(const string_span& name, size_t index)
 	set_dirty();
 
 	//if we don't already have a vector for this item we don't want to add one.
-	child_map::iterator itor = children_.find(name);
+	child_map::iterator itor = find_in_map(children_, name);
 	if(itor == children_.end()) {
 		return;
 	}
@@ -381,33 +381,85 @@ void node::remove_child(const char* name, size_t index)
 
 node* node::child(const char* name)
 {
-	child_map::iterator itor = children_.find(string_span(name));
-	if(itor == children_.end() || itor->second.empty()) {
-		return NULL;
+	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
+		if(i->first == name) {
+			if(i->second.empty()) {
+				return NULL;
+			} else {
+				return i->second.front();
+			}
+		}
 	}
 
-	return itor->second.front();
+	return NULL;
 }
 
 const node* node::child(const char* name) const
 {
-	child_map::const_iterator itor = children_.find(string_span(name));
-	if(itor == children_.end() || itor->second.empty()) {
-		return NULL;
+	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
+		if(i->first == name) {
+			if(i->second.empty()) {
+				return NULL;
+			} else {
+				return i->second.front();
+			}
+		}
 	}
 
-	return itor->second.front();
+	return NULL;
 }
 
 const node::child_list& node::children(const char* name) const
 {
-	static const node::child_list empty;
-	child_map::const_iterator itor = children_.find(string_span(name));
-	if(itor == children_.end()) {
-		return empty;
+	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
+		if(i->first == name) {
+			return i->second;
+		}
 	}
 
-	return itor->second;
+	static const node::child_list empty;
+	return empty;
+}
+
+node::child_list& node::get_children(const char* name)
+{
+	return get_children(string_span(name));
+}
+
+node::child_list& node::get_children(const string_span& name)
+{
+	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
+		if(i->first == name) {
+			return i->second;
+		}
+	}
+
+	children_.push_back(child_pair(string_span(name), child_list()));
+	return children_.back().second;
+}
+
+node::child_map::const_iterator node::find_in_map(const child_map& m, const string_span& attr)
+{
+	child_map::const_iterator i = m.begin();
+	for(; i != m.end(); ++i) {
+		if(i->first == attr) {
+			break;
+		}
+	}
+
+	return i;
+}
+
+node::child_map::iterator node::find_in_map(child_map& m, const string_span& attr)
+{
+	child_map::iterator i = m.begin();
+	for(; i != m.end(); ++i) {
+		if(i->first == attr) {
+			break;
+		}
+	}
+
+	return i;
 }
 
 const string_span& node::first_child() const
@@ -453,7 +505,7 @@ void node::shift_buffers(ptrdiff_t offset)
 	}
 
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
-		string_span& key = const_cast<string_span&>(i->first);
+		string_span& key = i->first;
 		key = string_span(key.begin() + offset, key.size());
 		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			(*j)->shift_buffers(offset);
@@ -489,7 +541,7 @@ void node::output(char*& buf)
 		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			*buf++ = '[';
 			memcpy(buf, i->first.begin(), i->first.size());
-			const_cast<string_span&>(i->first) = string_span(buf, i->first.size());
+			i->first = string_span(buf, i->first.size());
 			buf += i->first.size();
 			*buf++ = ']';
 			*buf++ = '\n';
@@ -562,7 +614,7 @@ void node::apply_diff(const node& diff)
 		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
 			const string_span& name = j->first;
 			for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
-				child_map::iterator itor = children_.find(name);
+				child_map::iterator itor = find_in_map(children_, name);
 				if(itor != children_.end()) {
 					if(index < itor->second.size()) {
 						itor->second[index]->apply_diff(**k);

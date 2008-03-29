@@ -144,8 +144,10 @@ private:
 	node(const node&);
 	void operator=(const node&);
 
-	void set_dirty();
+	child_list& get_children(const string_span& name);
+	child_list& get_children(const char* name);
 
+	void set_dirty();
 	void shift_buffers(ptrdiff_t offset);
 
 	document* doc_;
@@ -155,7 +157,11 @@ private:
 
 	node* parent_;
 
-	typedef std::map<string_span, child_list> child_map;
+	typedef std::pair<string_span, child_list> child_pair;
+	typedef std::vector<child_pair> child_map;
+
+	static child_map::const_iterator find_in_map(const child_map& m, const string_span& attr);
+	static child_map::iterator find_in_map(child_map& m, const string_span& attr);
 	child_map children_;
 
 	string_span output_cache_;
