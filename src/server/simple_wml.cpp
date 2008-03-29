@@ -372,6 +372,10 @@ void node::remove_child(const string_span& name, size_t index)
 
 	debug_delete(list[index]);
 	list.erase(list.begin() + index);
+
+	if(list.empty()) {
+		children_.erase(itor);
+	}
 }
 
 void node::remove_child(const char* name, size_t index)
@@ -383,11 +387,8 @@ node* node::child(const char* name)
 {
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
 		if(i->first == name) {
-			if(i->second.empty()) {
-				return NULL;
-			} else {
-				return i->second.front();
-			}
+			assert(i->second.empty() == false);
+			return i->second.front();
 		}
 	}
 
@@ -538,6 +539,7 @@ void node::output(char*& buf)
 	}
 
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
+		assert(i->second.empty() == false);
 		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			*buf++ = '[';
 			memcpy(buf, i->first.begin(), i->first.size());
