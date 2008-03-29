@@ -335,7 +335,8 @@ sub ProcessUnit {
 		}
 		# Soulless units, the stats are in the first {UNIT_BODY...}
 		if (/^{UNIT_BODY_\w+\s(\w+)\s(\w+)\s(\w+)\s(\w+)/) {
-			$unit{image2} = "units/undead/$1.png>&nbsp;\n<img src=units/undead/$1-drake.png>&nbsp;\n<img src=units/undead/$1-mounted.png>";
+			$unit{image2} = "units/undead/$1.png>&nbsp;\n<img src=units/undead/$1-bat-se-3.png>";
+			$unit{image2} .= "&nbsp;\n<img src=units/undead/$1-drake.png>&nbsp;\n<img src=units/undead/$1-mounted.png>";
 			$unit{image2} .= "&nbsp;\n<img src=units/undead/$1-saurian.png>&nbsp;\n<img src=units/undead/$1-swimmer.png>";
 			$unit{image2} .= "&nbsp;\n<img src=units/undead/$1-troll.png>&nbsp;\n<img src=units/undead/$1-wose.png";
 			$unit{image} = "units/undead/$1.png";
