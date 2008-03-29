@@ -1,14 +1,23 @@
 Version 1.5.0-svn:
  * campaigns:
+   * The Hammer of Thursagan:
+     * instead of leadership, the dwarvish loremaster unit line now has a
+       similar but unique inspire ability
    * Under the Burning Suns:
      * Minor cosmetic fixes
    * Northern Rebirth:
      * Major WML cleanup and optimisation
 	 * New respawn mechanism for white mages
+   * greatly updated the scenario music playlists in The Rise of Wesnoth,
+     Descent into Darkness and The South Guard
  * graphics:
    * Fixed broken TC on transport-galleon and drake walking corpse graphics
    * New portraits: Elvish Sorceress
    * add a little shadow on the bar of the loading screen
+   * new dungeon wall terrain
+   * a new city-themed village variation
+ * user interface:
+   * placement of the counters and displays of the top panel optimized
  * language and i18n:
    * new translation: Croatian
    * updated translations: Chiense, Czech, Danish, Dutch, French, Galician,
@@ -18,6 +27,7 @@ Version 1.5.0-svn:
  * map editor:
    * Fixed not working "Update transition" and make "Delay transition update"
      directly trigger an update when toggled off.
+   * add-ons can now make their custom terrains available in the editor
  * game engine
    * Implemented lazy loading for unit_types
  * multiplayer:
