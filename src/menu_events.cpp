@@ -889,9 +889,10 @@ private:
 
 	void menu_handler::load_game(){
 		bool show_replay = false;
-		const std::string game = dialogs::load_game_dialog(*gui_, game_config_, gameinfo_, &show_replay);
+		bool cancel_orders = false;
+		const std::string game = dialogs::load_game_dialog(*gui_, game_config_, gameinfo_, &show_replay, &cancel_orders);
 		if(game != "") {
-			throw game::load_game_exception(game,show_replay);
+			throw game::load_game_exception(game,show_replay,cancel_orders);
 		}
 	}
 

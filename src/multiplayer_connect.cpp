@@ -1409,8 +1409,11 @@ void connect::load_game()
 {
 	if(params_.saved_game) {
 		bool show_replay = false;
+		//bool cancel_orders = false;
 		const std::string game = dialogs::load_game_dialog(disp(), 
-								 game_config(), game_data_, &show_replay);
+								 game_config(), game_data_, &show_replay, 
+								 NULL);
+								 
 		if(game.empty()) {
 			set_result(CREATE);
 			return;

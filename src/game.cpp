@@ -179,6 +179,7 @@ private:
 
 	std::string loaded_game_;
 	bool loaded_game_show_replay_;
+	bool loaded_game_cancel_orders_;
 
 	preproc_map defines_map_, old_defines_map_;
 };
@@ -187,7 +188,8 @@ game_controller::game_controller(int argc, char** argv)
    : argc_(argc), arg_(1), argv_(argv), thread_manager(),
      test_scenario_("test"), test_mode_(false), multiplayer_mode_(false),
      no_gui_(false), use_caching_(true), force_valid_cache_(false),
-     force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false)
+     force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false),
+     loaded_game_cancel_orders_(false)
 {
 	bool no_sound = false;
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
@@ -502,6 +504,7 @@ bool game_controller::play_test()
 	} catch(game::load_game_exception& e) {
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
+		loaded_game_cancel_orders_ = e.cancel_orders;
 		test_mode_ = false;
 		return true;
 	}
@@ -701,6 +704,7 @@ bool game_controller::play_multiplayer_mode()
 		//the user's trying to load a game, so go into the normal title screen loop and load one
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
+		loaded_game_cancel_orders_ = e.cancel_orders;
 		return true;
 	} catch(twml_exception& e) {
 		e.show(disp());
@@ -722,8 +726,9 @@ bool game_controller::load_game()
 	state_ = game_state();
 
 	bool show_replay = loaded_game_show_replay_;
+	bool cancel_orders = loaded_game_cancel_orders_;
 
-	const std::string game = loaded_game_.empty() ? dialogs::load_game_dialog(disp(),game_config_,units_data_,&show_replay) : loaded_game_;
+	const std::string game = loaded_game_.empty() ? dialogs::load_game_dialog(disp(),game_config_,units_data_,&show_replay,&cancel_orders) : loaded_game_;
 
 	loaded_game_ = "";
 
@@ -858,6 +863,19 @@ bool game_controller::load_game()
 		    sides.first != sides.second; ++sides.first) {
 			if((**sides.first)["controller"] == "network")
 				(**sides.first)["controller"] = "human";
+		}
+	}
+	
+	if (cancel_orders) {
+		for(config::child_itors sides = state_.snapshot.child_range("side");
+			    sides.first != sides.second; ++sides.first) {
+				if((**sides.first)["controller"] == "human") {
+					for (config::child_itors units = (**sides.first).child_range("unit");
+							units.first != units.second; ++units.first) {
+						(**units.first)["goto_x"] = "-999";
+						(**units.first)["goto_y"] = "-999";
+					}
+				}
 		}
 	}
 
@@ -1571,6 +1589,7 @@ bool game_controller::play_multiplayer()
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
+		loaded_game_cancel_orders_ = e.cancel_orders;
 	} catch(twml_exception& e) {
 		e.show(disp());
 	}
@@ -1935,6 +1954,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
+		loaded_game_cancel_orders_ = e.cancel_orders;
 
 	} catch(twml_exception& e) {
 		e.show(disp());
@@ -1955,6 +1975,7 @@ void game_controller::play_replay()
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
+		loaded_game_cancel_orders_ = e.cancel_orders;
 
 	} catch(twml_exception& e) {
 		e.show(disp());

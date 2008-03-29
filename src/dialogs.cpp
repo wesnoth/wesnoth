@@ -628,7 +628,7 @@ std::string format_time_summary(time_t t)
 
 } // end anon namespace
 
-std::string load_game_dialog(display& disp, const config& game_config, const game_data& data, bool* show_replay)
+std::string load_game_dialog(display& disp, const config& game_config, const game_data& data, bool* show_replay, bool* cancel_orders)
 {
 	std::vector<save_info> games;
 	{
@@ -689,6 +689,13 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 			lmenu.add_option(_("Show replay"), false);
 		#endif
 	}
+	if(cancel_orders != NULL) {
+		#ifdef USE_SMALL_GUI
+			lmenu.add_option(_("Cancel orders"), false, gui::dialog::BUTTON_STANDARD);
+		#else
+			lmenu.add_option(_("Cancel orders"), false);
+		#endif
+	}
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
 
@@ -711,12 +718,15 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	res = filter->get_save_index(res);
 
 	if(show_replay != NULL) {
-	  *show_replay = lmenu.option_checked();
+	  *show_replay = lmenu.option_checked(0);
 
 		const config& summary = *summaries[res];
 		if(utils::string_bool(summary["replay"], false) && !utils::string_bool(summary["snapshot"], true)) {
 			*show_replay = true;
 		}
+	}
+	if (cancel_orders != NULL) {
+		*cancel_orders = lmenu.option_checked(1);
 	}
 
 	return games[res].name;

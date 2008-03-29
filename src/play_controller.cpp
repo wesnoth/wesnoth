@@ -472,7 +472,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 		unsigned i = static_cast<unsigned>(index);
 		if(i < savenames_.size() && !savenames_[i].empty()) {
 			// Load the game by throwing load_game_exception
-			throw game::load_game_exception(savenames_[i],false);
+			throw game::load_game_exception(savenames_[i],false,false);
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
 			if(gamestate_.last_selected.valid() && wml_commands_[i]->needs_select) {
