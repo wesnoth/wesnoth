@@ -72,15 +72,21 @@ Available build targets include the individual binaries:
 
 The following special build targets
 
-    all = same as 'wesnoth wesnoth_editor exploder cutter'.
-    TAGS = build tags for Emacs (cleaned by 'scons -c all').
+    all = same as 'wesnoth wesnoth_editor exploder cutter' (*).
+    TAGS = build tags for Emacs (*).
     install = install 'all' executables, also wmlscope/wmllint/wmlindent.
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
     uninstall = uninstall all executables, tools, and servers.
-    wesnoth.tar.bz2 = make distribution tarball (cleaned by 'scons -c all').
+    wesnoth.tar.bz2 = make distribution tarball (*).
+    wesnoth-data.tar.bz2 = make data tarball (*).
+    wesnoth-binaries.tar.bz2 = make data tarball (*).
+    wesnoth-bundle = make Mac OS application bundle from game (*)
+    wesnoth-editor-bundle = make Mac OS application bundle from editor (*).
     sanity-check = run a pre-release sanity check on the distribution.
     manual.en.html = HTML version of the English-language manual.
+
+Files made by targets maked '(*)' are cleaned by cleaned by 'scons -c all'
 
 Options are cached in a file named .scons-option-cache and persist to later
 invocations.  The file is editable. Delete it to start fresh.  Current option
@@ -1027,23 +1033,27 @@ env.Alias('dist', tarball)
 
 #
 # Making Mac OS X application bundles
+# FIXME: Path names are rooted at data/, they sgould be rooted at datadir
 #
-env.Command("Wesnoth.app", "wesnoth", [
-     Mkdir("${TARGET}/Contents"),
-     Mkdir("${TARGET}/Contents/MacOS"),
-     Mkdir("${TARGET}/Contents/Resources"),
-     Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
-     Copy("${TARGET}/Contents/MacOS", "wesnoth"),
-     ])
-env.Clean(all, "Wesnoth.app")    
-env.Command("Wesnoth Editor.app", "wesnoth_editor", [
-     Mkdir("${TARGET}/Contents"),
-     Mkdir("${TARGET}/Contents/MacOS"),
-     Mkdir("${TARGET}/Contents/Resources"),
-     Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
-     Copy("${TARGET}/Contents/MacOS", "wesnoth_editor"),
-     ])
-env.Clean(all, "Wesnoth Editor.app")
+env.Alias("wesnoth-bundle",
+          env.Command("Battle For Wesnoth.app", "wesnoth", [
+              Mkdir("${TARGET}/Contents"),
+              Mkdir("${TARGET}/Contents/MacOS"),
+              Mkdir("${TARGET}/Contents/Resources"),
+              Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
+              Copy("${TARGET}/Contents/MacOS", "wesnoth"),
+              ]))
+env.Clean(all, "Battle For Wesnoth.app")    
+env.Alias("wesnoth-editor-bundle",
+          env.Command("Battle For Wesnoth Editor.app", "wesnoth_editor", [
+              Mkdir("${TARGET}/Contents"),
+              Mkdir("${TARGET}/Contents/MacOS"),
+              Mkdir("${TARGET}/Contents/Resources"),
+              Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
+              Copy("${TARGET}/Contents/MacOS", "wesnoth_editor"),
+              ]))
+env.Clean(all, "Battle For Wesnoth Editor.app")
+
 
 #
 # Sanity checking
