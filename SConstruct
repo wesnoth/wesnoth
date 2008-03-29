@@ -1033,7 +1033,6 @@ env.Alias('dist', tarball)
 
 #
 # Making Mac OS X application bundles
-# FIXME: Path names are rooted at data/, they sgould be rooted at datadir
 #
 env.Alias("wesnoth-bundle",
           env.Command("Battle For Wesnoth.app", "wesnoth", [
@@ -1041,7 +1040,7 @@ env.Alias("wesnoth-bundle",
               Mkdir("${TARGET}/Contents/MacOS"),
               Mkdir("${TARGET}/Contents/Resources"),
               Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
-              Copy("${TARGET}/Contents/MacOS", "wesnoth"),
+              Copy("${TARGET}/Contents/MacOS/wesnoth", "wesnoth"),
               ]))
 env.Clean(all, "Battle For Wesnoth.app")    
 env.Alias("wesnoth-editor-bundle",
@@ -1050,10 +1049,9 @@ env.Alias("wesnoth-editor-bundle",
               Mkdir("${TARGET}/Contents/MacOS"),
               Mkdir("${TARGET}/Contents/Resources"),
               Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
-              Copy("${TARGET}/Contents/MacOS", "wesnoth_editor"),
+              Copy("${TARGET}/Contents/MacOS/wesnoth_editor", "wesnoth_editor"),
               ]))
 env.Clean(all, "Battle For Wesnoth Editor.app")
-
 
 #
 # Sanity checking
