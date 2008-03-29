@@ -15,28 +15,26 @@ from SCons.Script import *
 
 opts = Options('.scons-option-cache')
 
-# These are implemented in the build section
-opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
-opts.Add(BoolOption('debug', 'Set to build for debugging', False))
-opts.Add(BoolOption('profile', 'Set to build for debugging', False))
-opts.Add(BoolOption('strict', 'Set to strict compilation', False))
-opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
-opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
-opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), images normal size', False))
-opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
-opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
-opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
-opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
-opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
-opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
-opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
-opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
-
-# These are implemented in the installation productions
-opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
+# These are implemented
 opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/wesnoth", PathOption.PathAccept))
-opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
+opts.Add(BoolOption('debug', 'Set to build for debugging', False))
+opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
+opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
+opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
+opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
+opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
+opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
+opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
+opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
+opts.Add(BoolOption('profile', 'Set to build for debugging', False))
+opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
+opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
+opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
+opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
+opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
+opts.Add(BoolOption('strict', 'Set to strict compilation', False))
+opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), images normal size', False))
 
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
