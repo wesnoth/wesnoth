@@ -14,6 +14,7 @@
 # 4. Desktop entry and icon installation.
 # 5. Translations handling other than installation (pot-update).
 # 6. Construction of Apple application bundles.
+# 7. Making binary and data-only distribution tarballs
 
 import os, sys, commands, shutil, sets
 from SCons.Script import *
@@ -716,6 +717,7 @@ r = env.Command("src/revision.hpp", [],
                 lambda target, source, env: open(str(target[0]), "w").write("#define REVISION \"%s\"\n" % env["svnrev"]))
 env.AlwaysBuild(r)
 env.TargetSignatures('content')
+env.Clean(all, "src/revision.hpp")
 
 #
 # File inventory, for archive makes abd analysis tools
@@ -998,7 +1000,7 @@ def manifest():
     # filenames with tildes in them (Emacs backup files) just in case.
     lst.append("data/")
     return lst
-tarball = env.Tar('wesnoth.tar.bz2', manifest())
+tarball = env.Tar('wesnoth.tar.bz2', manifest() + ["src/revision.hpp"])
 env.Append(TARFLAGS='-j --exclude=".svn" --exclude="~"',
            TARCOMSTR="Making tarball...")
 env.Clean(all, 'wesnoth.tar.bz2')
