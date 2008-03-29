@@ -320,7 +320,8 @@ if env["prereqs"]:
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
-    have_python = (float(sys.version[:3]) >= 2.4) and conf.CheckLib('python'+sys.version[:3]) or Warning("Python >= 2.4 not found. The game cannot be built.")
+    if env["python"]:
+        env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckLib('python'+sys.version[:3]) or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
 else:
     have_client_prereqs = True
     have_python = True
@@ -617,7 +618,7 @@ wesnoth_sources = [
 # Target declarations
 #
 
-if have_client_prereqs and have_python:
+if have_client_prereqs:
     wesnoth = env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
             CPPPATH = commonpath + ['src/server'],
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs,
