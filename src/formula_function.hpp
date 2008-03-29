@@ -98,7 +98,7 @@ class function_symbol_table {
 	std::map<std::string, formula_function> custom_formulas_;
 public:
 	virtual ~function_symbol_table() {}
-	void add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args);
+	virtual void add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args);
 	virtual expression_ptr create_function(const std::string& fn,
 					                       const std::vector<expression_ptr>& args) const;
 	std::vector<std::string> get_function_names() const;

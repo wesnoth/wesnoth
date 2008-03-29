@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#include <boost/regex.hpp>
+
 #include "actions.hpp"
 #include "callable_objects.hpp"
 #include "formula.hpp"
@@ -525,6 +527,7 @@ private:
 
 class ai_function_symbol_table : public function_symbol_table {
 	formula_ai& ai_;
+	std::set<std::string> move_functions;
 
 	expression_ptr create_function(const std::string& fn,
 	                               const std::vector<expression_ptr>& args) const {
@@ -566,8 +569,19 @@ class ai_function_symbol_table : public function_symbol_table {
 			return function_symbol_table::create_function(fn, args);
 		}
 	}
-
+	
 public:
+
+	void add_formula_function(const std::string& name, const_formula_ptr formula, 
+							  const_formula_ptr precondition, const std::vector<std::string>& args)
+	{
+		if(boost::regex_search(name,boost::regex("^ai_move"))) {
+			move_functions.insert(name);
+		}
+		function_symbol_table::add_formula_function(name, formula, precondition, args);
+	}
+
+
 	explicit ai_function_symbol_table(formula_ai& ai) : ai_(ai)
 	{}
 };
