@@ -47,7 +47,7 @@ opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 
 opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
-opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', True))
+opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', False))
 
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
@@ -968,8 +968,8 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
                                            "icons/wesnoth_editor-icon.png"))
      env.Alias('install',
                clientside_env.Install(env["desktopdir"],
-                                      ["icons/wesnoth.desktop.png",
-                                       "icons/wesnoth_editor.desktop.png",
+                                      ["icons/wesnoth.desktop",
+                                       "icons/wesnoth_editor.desktop",
                                        ]))
 
 # FIXME: Only works under Unixes
