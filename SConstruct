@@ -11,10 +11,9 @@
 # 1. Documentation formatting and installation
 # 2. Manual page formatting and installation
 # 3. Dummy locales
-# 4. Desktop entry and icon installation.
-# 5. Translations handling other than installation (pot-update).
-# 6. Construction of Apple application bundles.
-# 7. Making binary and data-only distribution tarballs
+# 4. Translations handling other than installation (pot-update).
+# 5. Construction of Apple application bundles.
+# 6. Making binary and data-only distribution tarballs
 
 import os, sys, commands, shutil, sets
 from SCons.Script import *
@@ -30,6 +29,9 @@ opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
+opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
+opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "share/applications", PathOption.PathAccept))
+opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "share/icons", PathOption.PathAccept))
 opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
@@ -49,9 +51,6 @@ opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.
 
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
-opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
-opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "icons", PathOption.PathAccept))
-opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "applications", PathOption.PathAccept))
 
 #
 # Setup
@@ -398,13 +397,10 @@ if env['localedir']:
     if not os.path.isabs(env['localedir']):
         env["CXXFLAGS"].append("-DHAS_RELATIVE_LOCALEDIR")
 
-# Simulate autools-like behavior of prefix and datadir
-if not env["datadir"].startswith("/"):
-    env["datadir"] = os.path.join(env["prefix"], env["datadir"])
-
-# Simulate autools-like behavior of prefix and fifodir
-if not env["fifodir"].startswith("/"):
-    env["fifodir"] = os.path.join(env["prefix"], env["fifofodir"])
+# Simulate autools-like behavior of prefix on various paths
+for d in ("datadir", "fifodir", "icondir", "desktopdir"):
+     if not os.path.isabs(env[d]):
+          env[d] = os.path.join(env["prefix"], env[d])
 
 env["CXXFLAGS"].append("-DWESNOTH_PATH='\"%s\"'" % env['datadir'])
 
@@ -953,6 +949,28 @@ env.Alias('install', [
     clientside_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
     clientside_env.InstallFiltered(Dir(datadir), map(Dir, Split('data fonts icons images sounds translations')))
     ])
+if have_client_prereqs and have_X and env["desktop_entry"]:
+     if sys.platform == "darwin":
+          env.Alias('install',
+                    clientside_env.Install(env["icondir"],
+                                           "icons/wesnoth-icon-Mac.png"))
+     else:
+          env.Alias('install',
+                    clientside_env.Install(env["icondir"],
+                                           "icons/wesnoth-icon.png"))
+     if sys.platform == "darwin":
+          env.Alias('install',
+                    clientside_env.Install(env["icondir"],
+                                           "icons/wesnoth_editor-icon-Mac.png"))
+     else:
+          env.Alias('install',
+                    clientside_env.Install(env["icondir"],
+                                           "icons/wesnoth_editor-icon.png"))
+     env.Alias('install',
+               clientside_env.Install(env["desktopdir"],
+                                      ["icons/wesnoth.desktop.png",
+                                       "icons/wesnoth_editor.desktop.png",
+                                       ]))
 
 # FIXME: Only works under Unixes
 wesnothd_env = env.Clone()
