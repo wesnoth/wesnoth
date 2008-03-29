@@ -1,5 +1,5 @@
 # (Battle for Wesnoth) Danish translation of Battle for Wesnoth.
-# Copyright (C) 2005-2007 Wesnoth development team
+# Copyright (C) 2005-2008 Wesnoth development team.
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Anders K. Madsen (madsen@lillesvin.linux.dk), 2005.
 # Joe Hansen (joedalton2@yahoo.dk), 2007, 2008.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-02 23:10+0100\n"
-"PO-Revision-Date: 2008-02-19 13:44+0200\n"
+"PO-Revision-Date: 2008-03-22 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -2233,7 +2233,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2614,15 +2613,14 @@ msgid "teleport"
 msgstr "teleport"
 
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "Teleport:\n"
-"Denne enhed kan teleportere mellem to venligsindede landsbyer hvis den "
-"bruger et af dens runder."
+"Denne enhed kan teleportere mellem to tomme venligsindede landsbyer hvis den "
+"bruger en af dens runder."
 
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
@@ -3911,14 +3909,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " Oplysning øger lysniveauet i nærvedliggende arealer."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teleport:\n"
-"Denne enhed kan teleportere mellem to venligsindede landsbyer hvis den "
-"bruger et af dens runder."
+" Denne enhed kan teleportere mellem to tomme venligsindede landsbyer hvis "
+"den bruger en af dens runder."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4004,12 +4000,13 @@ msgstr ""
 "fjender, men kun under angreb."
 
 #: data/core/macros/special-notes.cfg:74
+#, fuzzy
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
-" Afstandsvåbenet på denne enhed er magisk og har derfor altid en høj chance "
-"for at ramme en modstander."
+" Enheden har magisk angreb, som altid har en høj chance for at ramme en "
+"modstander."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4212,7 +4209,6 @@ msgid "race^Drakes"
 msgstr "Hestedrager"
 
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4444,6 +4440,32 @@ msgid ""
 "exception of trolls. Many of their settlements cannot be reliably dated, "
 "undoubtedly having existed for over a millennium."
 msgstr ""
+"Sammenlignet med mennesker er elver noget højere, mere behændige men mindre "
+"kraftige. De har spidse ører, lys hud og normalt blondt hår. Få forskelle "
+"mellem mennesker og elver er mere udtalt end den sidst nævntes lange liv - "
+"de fleste lever, med mindre sygdom, ulykker eller krig indtræffer før, i op "
+"til hele to århundreder. Nogle få elver med stor magisk talent er kendt for "
+"at have levet yderligere i et århundrede. Normalt begynder elverne at kunne "
+"mærke alderen efter deres 20. årti og de dør normalt indenfor et par årtier "
+"herefter. Elver har en mindre iboende naturlig magisk kraft, men kun få kan "
+"bruge den direkte. Magiens tilstedeværelse giver dem deres stærke sanser og "
+"lange liv. En stor mængde elver har magiske talenter såsom skydefærdigheder "
+"eller evnen til at kunne holde sig uset, hvilket gør dem i stand til at "
+"udføre ting andre finder særdeles imponerende. De elver som lærer brugen af "
+"disse krafter kan blive særdeles formidable i anvendelsen af dem. Mange "
+"vælger at anvende deres talent til at helbrede andre.\n"
+"\n"
+"Elver bruger meget af deres tid på deres talenter og evner. De som ikke har "
+"magiske evner, bruger typisk meget tid på deres fysiske evner. Som resultat "
+"af dette er elver ekseptionel dygtige med en bue, hvilket nok er deres "
+"vigtigste våben i krig. De fleste elvertropper bærer en bue og ingen anden "
+"race har bueskytter der kan matche dem i fart og præcision. Alle elver har "
+"også en uforklaret forkærlighed for uspoleret natur. De føler sig ofte ikke "
+"komfortable i åbent terræn, hvilket har ført til at deres hjem ligger i "
+"skovene på Det Store Kontinent, såsom Aethenwood i sydvest og Wesmere i "
+"nordvest. Elver er den ældste race på kontinentet, dog måske med undtagelse "
+"af troldene. En stor del af deres bosættelser kan troværdigt dateres som "
+"have værende eksisterende i mere end et årtusinde."
 
 #: data/core/units.cfg:103
 msgid "race^Goblin"
@@ -6112,9 +6134,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log på den officielle Wesnoth multiplayer server"
 
 #: src/game.cpp:1491
-#, fuzzy
 msgid "Join a different server"
-msgstr "Tilslut dig den officielle server"
+msgstr "Tilslut dig en anden server"
 
 #: src/game.cpp:1493
 msgid "Local Game"
@@ -6149,9 +6170,10 @@ msgid "Choose your preferred language:"
 msgstr "Vælg dit foretrukne sprog:"
 
 #: src/game.cpp:1755
+#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr ""
-"Følgende udvidelsesmodul(er) indeholder fejl og kunne derfor ikke indlæses:"
+"Følgende udvidelsesmodul indeholder fejl og kunne derfor ikke indlæses:"
 
 #: src/game.cpp:1760
 msgid "ERROR DETAILS:"
@@ -8009,6 +8031,9 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
 
+#~ msgid "Chinese (Taiwan) Translation"
+#~ msgstr "Kinesisk (Taiwan) oversættelse"
+
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
 #~ "player must control both, and the destination village must be unoccupied."
@@ -8236,9 +8261,6 @@ msgstr "Slå sending af resumer til"
 
 #~ msgid "Choose the campaign you want to play:"
 #~ msgstr "Vælg hvilken kampagne du vil spille:"
-
-#~ msgid "/level"
-#~ msgstr "/level"
 
 #~ msgid ""
 #~ "Veteran criminals become notorious among the authorities for both their "
