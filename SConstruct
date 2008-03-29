@@ -284,6 +284,17 @@ def CheckPNG(context):
         context.Result("no")
         return False
 
+#
+# Check some preconditions
+#
+
+def Die(message):
+    print message
+    Exit(1)
+
+def Warning(message):
+    print message
+
 conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPKG' : CheckPKG,
                                        'CheckSDL' : CheckSDL,
@@ -291,60 +302,34 @@ conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPNG' : CheckPNG,
                                        'CheckBoost' : CheckBoost })
 
-#
-# Check some preconditions
-#
-
 if env["prereqs"]:
-    if not conf.CheckPKGConfig('0.15.0'):
-         print 'pkg-config >= 0.15.0 not found.'
-         Exit(1)
-    if not conf.CheckBoost("iostreams"):
-         print 'boost_iostreams not found.'
-         Exit(1)
-    targets = sets.Set(COMMAND_LINE_TARGETS)
-    if not targets or (sets.Set(['all','wesnoth','wesnoth_editor']) & targets):
-        if not conf.CheckSDL(require_version = '1.2.7'):
-             print 'SDL >= 1.2.7 not found!'
-             Exit(1)
-        if not conf.CheckSDL("SDL_ttf", require_version = "2.0.8"):
-             print 'SDL_ttf >= 2.0.8 not found!'
-             Exit(1)
-        if not conf.CheckSDL("SDL_mixer"):
-            print "SDL mixer not found!"
-        if not conf.CheckSDL('SDL_image'):
-            print "Needed SDL image library, not found!"
-            Exit(1)
-        if not conf.CheckOgg():
-             print "No Ogg Vorbis support in SDL!"
-             Exit(1)
-        if not conf.CheckPNG():
-             print "No PNG support in SDL!"
-             Exit(1)
+    conf.CheckPKGConfig('0.15.0') and conf.CheckBoost("iostreams") or Die("Base prerequisites are not met.")
 
-        targets = map(str, BUILD_TARGETS)
+    have_client_prereqs = \
+        conf.CheckSDL(require_version = '1.2.7') and \
+        conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
+        conf.CheckSDL("SDL_mixer") and \
+        conf.CheckSDL("SDL_image") and \
+        conf.CheckOgg() and \
+        conf.CheckPNG() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
 
-    if "wesnoth" in targets and float(sys.version[:3]) < 2.4:
-        print "Python version is too old for game, 2.4 or greater is required,"
-        Exit(1)
+    have_python_24 = float(sys.version[:3]) < 2.4
 
-    if "wesnoth" in targets or "wesnoth_editor" in targets:
-        if not conf.CheckLib('X11'):
-            print "Needed X lib for game or editor and didn't find it; exiting!"
-            Exit(1)
-        if env['fribidi'] and not conf.CheckLib('fribidi'):
-            print "Can't find libfribidi, please install it or rebuild with fribidi=no."
-            Exit(1)
+    have_X = conf.CheckLib('X11') or Warning("wesnoth_editor cannot be built.")
+    have_fribidi = False
+    if env['fribidi']:
+        have_fribidi = conf.CheckLib('fribidi') or Die("Can't find libfribidi, please install it or rebuild with fribidi=no.")
 
-    if ("wesnoth" in targets or "wesnothd" in targets or "campaignd" in targets):
-        if not conf.CheckSDL('SDL_net'):
-            print "Needed SDL network lib and didn't find it; exiting!"
-            Exit(1)
+    have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
-    if "all" in targets or "wesnoth" in targets:
-        if not conf.CheckLib('python'+sys.version[:3]):
-            print "Needed Python lib for game and didn't find it; exiting!"
-            Exit(1)
+    have_python_lib = conf.CheckLib('python'+sys.version[:3])
+else:
+    have_client_prereqs = True
+    have_python_24 = True
+    have_X = True
+    have_fribidi = True
+    have_server_prereqs = True
+    have_python_lib = True
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
@@ -638,10 +623,13 @@ wesnoth_sources = [
 # Target declarations
 #
 
-wesnoth = env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
+if have_client_prereqs:
+    wesnoth = env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
             CPPPATH = commonpath + ['src/server'],
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
+else:
+    wesnoth = None
 
 wesnoth_editor_sources = [
     "src/editor/editor.cpp",
@@ -655,18 +643,24 @@ wesnoth_editor_sources = [
     "src/animated_editor.cpp",
     "src/gamestatus_editor.cpp",
     ]
-wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources,
+if have_client_prereqs and have_X:
+    wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources,
             CPPPATH = commonpath,
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs + extralibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
+else:
+    wesnoth_editor = None
 
 campaignd_sources = [
     "src/campaign_server/campaign_server.cpp",
     ]
-campaignd = env.Program("campaignd", campaignd_sources,
+if have_server_prereqs:
+    campaignd = env.Program("campaignd", campaignd_sources,
             CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
             LIBS = ['wesnoth_core', 'wesnothd', 'campaignd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
+else:
+    campaignd = None
 
 wesnothd_sources = [
     "src/server/game.cpp",
@@ -677,27 +671,36 @@ wesnothd_sources = [
     "src/server/server.cpp",
     "src/server/simple_wml.cpp",
     ]
-wesnothd = env.Program("wesnothd", wesnothd_sources,
+if have_server_prereqs:
+    wesnothd = env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['src', 'src/server', '/usr/include/SDL'],
             LIBS =  ['wesnoth_core', 'wesnothd'] + wesnothdlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
+else:
+    wesnothd = None
 
 cutter_sources = [
     "src/tools/cutter.cpp",
     ]
-cutter = env.Program("cutter", cutter_sources,
+if have_client_prereqs:
+    cutter = env.Program("cutter", cutter_sources,
             CPPPATH = commonpath,
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
+else:
+    cutter = None
 
 exploder_sources = [
     "src/tools/exploder.cpp",
     "src/tools/exploder_composer.cpp",
     ]
-exploder = env.Program("exploder", exploder_sources,
+if have_client_prereqs:
+    exploder = env.Program("exploder", exploder_sources,
             CPPPATH = commonpath,
             LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
             LIBPATH = [".", "/lib", "/usr/lib"])
+else:
+    exploder = None
 
 # FIXME: test build presently fails at link time.
 test_env = env.Clone()
@@ -887,8 +890,8 @@ bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
 fifodir = env['fifodir']
-clientside = [wesnoth, wesnoth_editor, cutter, exploder]
-daemons = [wesnothd, campaignd]
+clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
+daemons = filter(lambda x : x, [wesnothd, campaignd])
 pythontools = Split("wmlscope wmllint wmlindent")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
