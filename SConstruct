@@ -364,7 +364,7 @@ if env['profile']:
     env["LINKFLAGS"].append("-pg")
 
 if env['strict']:
-    env["CXXFLAGS"].append("-Werror -Wno-unused -Wno-sign-compare")
+    env["CXXFLAGS"] += Split("-Werror -Wno-unused -Wno-sign-compare")
 
 if env['tinygui']:
     env["CXXFLAGS"].append("-DUSE_TINY_GUI")
