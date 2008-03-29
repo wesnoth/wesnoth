@@ -6,6 +6,15 @@
 # 2. Unix file(1), on installation only.
 # 3. Unix convert(1), on installation only, if using tinygui.
 #
+# To do (list is now exhaustive):
+#
+# 1. Documentation formatting and installation
+# 2. Manual page formatting and installation
+# 3. Dummy locales
+# 4. Desktop entry and icon installation.
+# 5. Translations handling other than installation (pot-update).
+# 6. Construction of Apple application bundles.
+
 import os, sys, commands, shutil, sets
 from SCons.Script import *
 
@@ -1004,14 +1013,6 @@ sanity_check = env.Command('sanity-check', '', [
     ])
 env.AlwaysBuild(sanity_check)
 env.Precious(sanity_check)
-
-# To do:
-#
-# 1. Documentation formatting and installation
-# 2. Manual page formatting and installation
-# 3. Dummy locales
-# 4. Desktop entry and icon installation.
-# 5. Translations handling other than installation (pot-update).
 
 # Local variables:
 # mode: python
