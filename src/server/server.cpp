@@ -1485,9 +1485,18 @@ void server::process_data_game(const network::connection sock,
 
 void server::delete_game(std::vector<game*>::iterator game_it) {
 	metrics_.game_terminated((*game_it)->termination_reason());
-	// Delete the game from the games_and_users_list_.
+
 	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
 	assert(gamelist != NULL);
+
+	// Send a diff of the gamelist with the game deleted to players in the lobby
+	simple_wml::document diff;
+	if(make_delete_diff(*gamelist, "gamelist", "game",
+	                    (*game_it)->description(), diff)) {
+		lobby_.send_data(diff);
+	}
+
+	// Delete the game from the games_and_users_list_.
 	const simple_wml::node::child_list& games = gamelist->children("game");
 	const simple_wml::node::child_list::const_iterator g =
 		std::find(games.begin(), games.end(), (*game_it)->description());
@@ -1518,11 +1527,9 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 	(*game_it)->send_data(leave_game_doc);
 	// Put the remaining users back in the lobby.
 	lobby_.add_players(**game_it, true);
+
 	delete *game_it;
 	games_.erase(game_it);
-
-	//refresh the lobby for everyone, including the players who were in the game
-	send_gamelist_diff();
 }
 
 void server::send_gamelist_diff(network::connection exclude)

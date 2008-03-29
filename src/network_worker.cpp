@@ -129,7 +129,7 @@ struct buffer {
 
 bool managed = false, raw_data_only = false;
 typedef std::vector< buffer* > buffer_set;
-buffer_set bufs[NUM_SHARDS];
+buffer_set outgoing_bufs[NUM_SHARDS];
 
 struct schema_pair
 {
@@ -446,7 +446,7 @@ static int process_queue(void* shard_num)
 			waiting_threads[shard]++;
 			for(;;) {
 
-				buffer_set::iterator itor = bufs[shard].begin(), itor_end = bufs[shard].end();
+				buffer_set::iterator itor = outgoing_bufs[shard].begin(), itor_end = outgoing_bufs[shard].end();
 				for(; itor != itor_end; ++itor) {
 					socket_state_map::iterator lock_it = sockets_locked[shard].find((*itor)->sock);
 					assert(lock_it != sockets_locked[shard].end());
@@ -454,7 +454,7 @@ static int process_queue(void* shard_num)
 						lock_it->second = SOCKET_LOCKED;
 						sent_buf = *itor;
 						sock = sent_buf->sock;
-						bufs[shard].erase(itor);
+						outgoing_bufs[shard].erase(itor);
 						break;
 					}
 				}
@@ -710,7 +710,7 @@ void queue_raw_data(TCPsocket sock, const char* buf, int len)
 	make_network_buffer(buf, len, queued_buf->raw_buffer);
 	const int shard = get_shard(sock);
 	const threading::lock lock(*shard_mutexes[shard]);
-	bufs[shard].push_back(queued_buf);
+	outgoing_bufs[shard].push_back(queued_buf);
 	socket_state_map::const_iterator i = sockets_locked[shard].insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY)).first;
 	if(i->second == SOCKET_READY || i->second == SOCKET_ERRORED) {
 		cond[shard]->notify_one();
@@ -729,7 +729,7 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 		const int shard = get_shard(sock);
 		const threading::lock lock(*shard_mutexes[shard]);
 
-		bufs[shard].push_back(queued_buf);
+		outgoing_bufs[shard].push_back(queued_buf);
 
 		socket_state_map::const_iterator i = sockets_locked[shard].insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY)).first;
 		if(i->second == SOCKET_READY || i->second == SOCKET_ERRORED) {
@@ -747,11 +747,11 @@ void remove_buffers(TCPsocket sock)
 {
 	{
 		const int shard = get_shard(sock);
-		for(buffer_set::iterator i = bufs[shard].begin(); i != bufs[shard].end();) {
+		for(buffer_set::iterator i = outgoing_bufs[shard].begin(); i != outgoing_bufs[shard].end();) {
 			if ((*i)->sock == sock)
 			{
 				buffer* buf = *i;
-				i = bufs[shard].erase(i);
+				i = outgoing_bufs[shard].erase(i);
 				delete buf;
 			}
 			else
