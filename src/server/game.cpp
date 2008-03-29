@@ -644,6 +644,7 @@ network::connection game::ban_user(const simple_wml::node& ban,
 		static simple_wml::document leave_game("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 		static const simple_wml::string_span leave_game_data = leave_game.output_compressed();
 		network::send_raw_data(leave_game_data.begin(), leave_game_data.size(), user->first);
+		remove_player(user->first);
 		return user->first;
 	}
 	// Don't return the user if he wasn't in this game.
