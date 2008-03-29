@@ -31,10 +31,10 @@ opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
-opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
+opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), images normal size', False))
 opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
-opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), images normal size', False))
+opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', True))
 
 # FIXME: These are not yet implemented
