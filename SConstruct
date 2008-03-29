@@ -293,6 +293,7 @@ def Die(message):
 
 def Warning(message):
     print message
+    return False
 
 conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPKG' : CheckPKG,
@@ -312,8 +313,6 @@ if env["prereqs"]:
         conf.CheckOgg() and \
         conf.CheckPNG() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
 
-    have_python_24 = float(sys.version[:3]) < 2.4
-
     have_X = conf.CheckLib('X11') or Warning("wesnoth_editor cannot be built.")
     have_fribidi = False
     if env['fribidi']:
@@ -321,14 +320,13 @@ if env["prereqs"]:
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
-    have_python_lib = conf.CheckLib('python'+sys.version[:3])
+    have_python = (float(sys.version[:3]) >= 2.4) and conf.CheckLib('python'+sys.version[:3]) or Warning("Python >= 2.4 not found. The game cannot be built.")
 else:
     have_client_prereqs = True
-    have_python_24 = True
+    have_python = True
     have_X = True
     have_fribidi = True
     have_server_prereqs = True
-    have_python_lib = True
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
@@ -619,7 +617,7 @@ wesnoth_sources = [
 # Target declarations
 #
 
-if have_client_prereqs:
+if have_client_prereqs and have_python:
     wesnoth = env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
             CPPPATH = commonpath + ['src/server'],
             LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs,
