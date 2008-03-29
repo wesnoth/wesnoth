@@ -1528,6 +1528,8 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 	// Put the remaining users back in the lobby.
 	lobby_.add_players(**game_it, true);
 
+	(*game_it)->send_data(games_and_users_list_);
+
 	delete *game_it;
 	games_.erase(game_it);
 }
