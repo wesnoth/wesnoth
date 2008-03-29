@@ -329,7 +329,6 @@ if env["prereqs"]:
         env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckLib('python'+sys.version[:3]) or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
 else:
     have_client_prereqs = True
-    have_python = True
     have_X = True
     have_fribidi = True
     have_server_prereqs = True
@@ -1060,7 +1059,7 @@ env.Clean(all, "Battle For Wesnoth Editor.app")
 # Sanity checking
 #
 sanity_check = env.Command('sanity-check', '', [
-    Action("cd utils; ./sanity-check"),
+    Action("cd utils; ./sanity_check"),
     Action("cd data/tools; make sanity-check"),
     ])
 env.AlwaysBuild(sanity_check)
