@@ -127,7 +127,6 @@ std::ostream& operator<<(std::ostream& o, const string_span& s)
 node::node(document& doc, node* parent)
   : doc_(&doc), parent_(parent)
 {
-	fprintf(stderr, "c 0x%llx\n", (uint64_t)this);
 }
 
 node::node(document& doc, node* parent, const char** str, int depth)
@@ -243,12 +242,10 @@ node::node(document& doc, node* parent, const char** str, int depth)
 	}
 
 	output_cache_ = string_span(begin, s - begin);
-	fprintf(stderr, "p 0x%llx\n", (uint64_t)this);
 }
 
 node::~node()
 {
-	fprintf(stderr, "d 0x%llx\n", (uint64_t)this);
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			debug_delete(*j);
@@ -362,7 +359,13 @@ void node::remove_child(const string_span& name, size_t index)
 {
 	set_dirty();
 
-	child_list& list = children_[name];
+	//if we don't already have a vector for this item we don't want to add one.
+	child_map::iterator itor = children_.find(name);
+	if(itor == children_.end()) {
+		return;
+	}
+
+	child_list& list = itor->second;
 	if(index >= list.size()) {
 		return;
 	}
