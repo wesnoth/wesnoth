@@ -58,7 +58,7 @@ sanity-check:
 	cd utils; ./sanity_check
 	cd data/tools; make sanity-check
 
-# *** Not yet covered by scons recipe (dummylocales. doc install, tinygui)
+# *** Not yet covered by scons recipe (dummylocales. doc install)
 install-data-local:
 	@$(NORMAL_INSTALL)
 if INSTALLDATA

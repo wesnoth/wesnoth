@@ -1,6 +1,11 @@
 #
 # SCons build description for the Wesnoth project
 #
+# Prerequisites are:
+# 1. Subversion command-line client programs svnstatus and svnversion.
+# 2. Unix file(1), on installation only.
+# 3. Unix convert(1), on installation only, if using tinygui.
+#
 import os, sys, commands, shutil, sets
 from SCons.Script import *
 
@@ -895,7 +900,25 @@ def InstallFilteredHook(target, source, env):
                 os.makedirs(target)
             map(lambda f: InstallFilteredHook(target, os.path.join(str(source), f), env), os.listdir(str(source)))
     elif CopyFilter(source):
-        #print "Copy  source=%s target=%s" % (str(source), target)
+        #print "Copy source=%s target=%s" % (str(source), target)
+        if env["tinygui"] and source.endswith("jpg") or source.endswith("png"):
+             (status, output) = commands.getstatusoutput("file "+ source)
+             output = output.replace(" x ", "x")
+             target = os.path.join(target, os.path.basename(source))
+             if "RGBA" in output or "alpha" in output:
+                 command = "convert -filter point -resize %s %s %s"
+             else:
+                 command = "convert -filter point -resize %s %s %s"
+             if status == 0:
+                 for (large, small) in (("1024x768","320x240"),
+                                        ("640x480","240x180"),
+                                        ("205x205","240x180")):
+                     if large in output:
+                         os.system(command % (small, source, target))
+                 else:
+                     os.system(command % ("50%", source, target))
+                 return None
+        # Just copy non-images, and images if tinygui is off
         shutil.copy2(str(source), target)
     return None
 env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
