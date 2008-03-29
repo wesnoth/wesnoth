@@ -279,10 +279,6 @@ int main(int argc, char** argv)
 
 	defines_map["MEDIUM"] = preproc_define();
 	defines_map["NORMAL"] = preproc_define();
-	// Multiplayer define is needed to access the random map generator
-	// settings. Maybe they should be moved? Or set an EDITOR define and
-	// make it load that way maybe.
-	defines_map["MULTIPLAYER"] = preproc_define();
 
 #if defined(__APPLE__)
 	defines_map["APPLE"] = preproc_define();
