@@ -17,7 +17,7 @@ opts.Add(BoolOption('profile', 'Set to build for debugging', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), resize images before installing', False))
-opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
+opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), images normal size', False))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
@@ -979,8 +979,12 @@ env.Precious(sanity_check)
 
 # To do:
 #
-# 1. Documentation formatting and man-page installation
-# 2. Translations handling other than installation (pot-update).
+# 1. Documentation formatting and installation
+# 2. Manual page formatting and installation
+# 3. Dummy locales
+# 4. Translations handling other than installation (pot-update).
+# 5. Desktop entry and icon installation.
+# 6. Image resizing for tinygui 
 
 # Local variables:
 # mode: python
