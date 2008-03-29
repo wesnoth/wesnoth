@@ -35,7 +35,6 @@ w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	    *) f=$$p;; \
 	  esac;
 
-# *** Not yet covered by scons recipe
 # Create Macintosh app bundle from the game 
 bundle_contents=@PACKAGE_NAME@.app/Contents
 @PACKAGE@_bundle: src/@PACKAGE@
@@ -44,7 +43,6 @@ bundle_contents=@PACKAGE_NAME@.app/Contents
 	echo "APPL????" > "$(bundle_contents)/PkgInfo"
 	$(INSTALL_PROGRAM) $< "$(bundle_contents)/MacOS/@PACKAGE_NAME@"
 
-# *** Not yet covered by scons recipe
 # Create Macintosh app bundle from the editor
 bundle_editor_contents=@PACKAGE_NAME@ Editor.app/Contents
 @PACKAGE@_editor_bundle: src/@PACKAGE@_editor

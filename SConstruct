@@ -12,8 +12,7 @@
 # 2. Manual page formatting and installation
 # 3. Dummy locales
 # 4. Translations handling other than installation (pot-update).
-# 5. Construction of Apple application bundles.
-# 6. Making binary and data-only distribution tarballs
+# 5. Making binary and data-only distribution tarballs
 
 import os, sys, commands, shutil, sets
 from SCons.Script import *
@@ -1005,7 +1004,7 @@ env.Command("manual.en.html", "manual.en.xml",
 	'xsltproc --nonet /etc/asciidoc/docbook-xsl/xhtml.xsl "${SOURCE}" >"${TARGET}"')
 
 #
-# Making a distribution.
+# Making a distribution tarball.
 #
 def manifest():
     "Get an argument list suitable for passing to a distribution archiver."
@@ -1025,6 +1024,26 @@ env.Append(TARFLAGS='-j --exclude=".svn" --exclude="~"',
            TARCOMSTR="Making tarball...")
 env.Clean(all, 'wesnoth.tar.bz2')
 env.Alias('dist', tarball)
+
+#
+# Making Mac OS X application bundles
+#
+env.Command("Wesnoth.app", "wesnoth", [
+     Mkdir("${TARGET}/Contents"),
+     Mkdir("${TARGET}/Contents/MacOS"),
+     Mkdir("${TARGET}/Contents/Resources"),
+     Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
+     Copy("${TARGET}/Contents/MacOS", "wesnoth"),
+     ])
+env.Clean(all, "Wesnoth.app")    
+env.Command("Wesnoth Editor.app", "wesnoth_editor", [
+     Mkdir("${TARGET}/Contents"),
+     Mkdir("${TARGET}/Contents/MacOS"),
+     Mkdir("${TARGET}/Contents/Resources"),
+     Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
+     Copy("${TARGET}/Contents/MacOS", "wesnoth_editor"),
+     ])
+env.Clean(all, "Wesnoth Editor.app")
 
 #
 # Sanity checking
