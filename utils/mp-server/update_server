@@ -20,7 +20,9 @@ if ! [ -d $SOURCE ]; then
 	echo "$SOURCE not found."
 	exit 1
 fi
-
+# only really needed on server.wesnoth.org
+CXXFLAGS="$CXXFLAGS -I$HOME/tools/include"
+LDFLAGS="$LDFLAGS -L$HOME/tools/lib"
 case $SERVER in
 	1.2 )   cd $SOURCE/1.2   || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3"
@@ -54,12 +56,13 @@ mkdir -p $BUILD/$DIR
 
 if [ "$SCONS" == "yes" ]; then
 	mkdir -p $BUILD/$DIR/var/run
-	CXXFLAGS=$CXXFLAGS LDFLAGS=$LDFLAGS scons install-wesnothd prefix=$BUILD/$DIR fifodir=$BUILD/$DIR/var/run raw_sockets=1 profile=1 fribidi=0 python=0
+	CXXFLAGS=$CXXFLAGS LDFLAGS=$LDFLAGS scons install-wesnothd prefix=$BUILD/$DIR fifodir=$BUILD/$DIR/var/run raw_sockets=1 profile=1 fribidi=0 python=0 prereqs=0 localedir= prefsdir= | tee $BUILD/$DIR/scons.log || exit 1
+	echo "adding '$SERVER' suffix..."
 	mv $BUILD/$DIR/bin/wesnothd $BUILD/$DIR/bin/wesnothd-$SERVER
 else
 	echo 'autogen.sh and configure...'
 	./autogen.sh > $BUILD/$DIR/autogen.log
-	./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-lite --enable-profile --with-boost=$HOME/tools > $BUILD/$DIR/configure.log CXXFLAGS=$CXXFLAGS LDFLAGS=$LDFLAGS
+	./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-lite --enable-profile --with-boost=$HOME/tools > $BUILD/$DIR/configure.log CXXFLAGS=$CXXFLAGS LDFLAGS=$LDFLAGS || exit 1
 	make clean > /dev/null
 
 	echo 'make...'
