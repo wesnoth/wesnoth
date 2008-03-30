@@ -964,7 +964,7 @@ env.Alias('install-clientside', [
     clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth_editor.6"),
     ])
 # Localized man pages
-for lang in os.listdir("doc/man"):
+for lang in filter(lambda dir: dir != ".svn", os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
      if os.path.isdir(sourcedir):
           targetdir = os.path.join(mandir, lang, "man6")
@@ -972,10 +972,7 @@ for lang in os.listdir("doc/man"):
                                       os.path.join(sourcedir, "wesnoth.6"),
                                       os.path.join(sourcedir, "wesnoth_editor.6"),
                                       ])
-          clientside_env.AddPreAction(inst, [
-               Mkdir(os.path.dirname(targetdir)),
-               Mkdir(targetdir),
-               ])
+          env.Alias('install', inst)
 # Icon and desktop files
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
