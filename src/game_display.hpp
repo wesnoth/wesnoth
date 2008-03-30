@@ -210,8 +210,6 @@ private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
 
-	void zoom_redraw_hook() {energy_bar_rects_.clear();}
-
 	void draw_sidebar();
 	void draw_game_status();
 

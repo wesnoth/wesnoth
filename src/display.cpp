@@ -1446,7 +1446,6 @@ void display::set_zoom(int amount)
 		zoom_ = new_zoom;
 		bounds_check_position();
 
-		zoom_redraw_hook();
 		image::set_zoom(zoom_);
 		map_labels_.recalculate_labels();
 		redraw_background_ = true;

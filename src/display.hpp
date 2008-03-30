@@ -371,8 +371,6 @@ protected:
 
 	void draw_minimap();
 
-	virtual void zoom_redraw_hook() {};
-
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
 	std::vector<surface> get_terrain_images(const gamemap::location &loc,
