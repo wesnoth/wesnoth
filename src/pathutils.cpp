@@ -57,6 +57,30 @@ void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res)
 	res->y = a.y - (is_even(a.x) ? 1:0);
 }
 
+void get_tile_ring(const gamemap::location& a, const int r, std::vector<gamemap::location>& res)
+{
+	if(r <= 0) {
+		return;
+	}
+
+	gamemap::location loc = a.get_direction(gamemap::location::SOUTH_WEST, r);
+
+	for(int n = 0; n != 6; ++n) {
+		const gamemap::location::DIRECTION dir = static_cast<gamemap::location::DIRECTION>(n);
+		for(int i = 0; i != r; ++i) {
+			res.push_back(loc);
+			loc = loc.get_direction(dir, 1);
+		}
+	}
+}
+
+void get_tiles_in_radius(const gamemap::location& a, const int r, std::vector<gamemap::location>& res)
+{
+	for(int n = 0; n <= r; ++n) {
+		get_tile_ring(a, n, res);
+	}
+}
+
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 {
 	// Two tiles are adjacent:

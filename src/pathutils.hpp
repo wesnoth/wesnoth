@@ -27,6 +27,15 @@ bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
 //! res must point to an array of 6 location objects.
 void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res);
 
+
+//! Function which, given a location, will place all locations in a ring of
+//! distance r in res. res must be a std::vector of location
+void get_tile_ring(const gamemap::location& a, const int r, std::vector<gamemap::location>& res);
+
+//! Function which, given a location, will place all locations in the radius of r in res
+//! res must be a std::vector of location
+void get_tiles_in_radius(const gamemap::location& a, const int r, std::vector<gamemap::location>& res);
+
 //! Function which gives the number of hexes between two tiles
 //! (i.e. the minimum number of hexes that have to be traversed
 //! to get from one hex to the other).

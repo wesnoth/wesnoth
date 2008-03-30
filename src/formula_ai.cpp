@@ -148,6 +148,33 @@ private:
 	const formula_ai& ai_;
 };
 
+class close_enemies_function : public function_expression {
+public:
+	close_enemies_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("close_enemies", args, 2, 2), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		std::vector<variant> vars;
+		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		int range = args()[1]->evaluate(variables).as_int();
+		unit_map::const_iterator un = ai_.get_info().units.begin();
+		unit_map::const_iterator end = ai_.get_info().units.end();
+		while (un != end) {
+			if (distance_between(loc, un->first) <= range) {
+				if (un->second.side() != ai_.get_info().team_num) {
+					vars.push_back(variant(new unit_callable(*un, ai_.current_team(), un->second.side())));
+				}
+			}
+			++un;			
+		}
+		return variant(&vars);
+	}
+
+	const formula_ai& ai_;
+};
+
 class outcomes_function : public function_expression {
 public:
 	outcomes_function(const args_list& args, const formula_ai& ai)
@@ -563,6 +590,8 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
 		} else if(fn == "nearest_keep") {
 			return expression_ptr(new nearest_keep_function(args, ai_));
+		} else if(fn == "close_enemies") {
+			return expression_ptr(new close_enemies_function(args, ai_));
 		} else if(fn == "distance_between") {
 			return expression_ptr(new distance_between_function(args));
 		} else {
