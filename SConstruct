@@ -1028,12 +1028,12 @@ if not access(fifodir, F_OK):
 env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 
 #
-# If we have the right tool in place, create targets to invoke gmsgfmt to
+# If we have the right tool in place, create targets to invoke msgfmt to
 # compile message catalogs to binary format at installation time.
 # Without this step, the i18n support won't work.
 #
-if not env.WhereIs("gmsgfmt"):
-    print "Can't find gmsgfmt, i18n support won't work in this build."
+if not env.WhereIs("msgfmt"):
+    print "Can't find msgfmt, i18n support won't work in this build."
 else:
     translation_dirs = os.listdir("po")
     translation_dirs.remove(".svn")
@@ -1052,7 +1052,7 @@ else:
             env.Command(
                 os.path.join("translations", lingua, "LC_MESSAGES", name+".mo"),
                 os.path.join("po", name, lingua + ".po"),
-                "gmsgfmt -c --statistics -o $TARGET $SOURCE"
+                "msgfmt -c --statistics -o $TARGET $SOURCE"
                 )
 
 #
