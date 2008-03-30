@@ -1032,7 +1032,9 @@ env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 # compile message catalogs to binary format at installation time.
 # Without this step, the i18n support won't work.
 #
-if env.WhereIs("gmsgfmt"):
+if not env.WhereIs("gmsgfmt"):
+    print "Can't find gmsgfmt, i18n support won't work in this build."
+else:
     translation_dirs = os.listdir("po")
     translation_dirs.remove(".svn")
     translation_dirs.remove("wesnoth-manpages")
@@ -1052,8 +1054,7 @@ if env.WhereIs("gmsgfmt"):
                 os.path.join("po", name, lingua + ".po"),
                 "gmsgfmt -c --statistics -o $TARGET $SOURCE"
                 )
-    else:
-        print "Can't find gmsgfmt, i18n support won't work in this build."
+
 #
 # Un-installation
 #
