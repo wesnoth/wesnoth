@@ -61,7 +61,6 @@ attack_type::attack_type(const config& cfg)
 	attack_weight_ = lexical_cast_default<double>(cfg["attack_weight"],1.0);
 	defense_weight_ = lexical_cast_default<double>(cfg["defense_weight"],1.0);
 
-	gamedata_=NULL;
 	unitmap_=NULL;
 	map_=NULL;
 	game_status_=NULL;
@@ -889,18 +888,14 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	}
 }
 
+unit_type_data* unit_type_data::instance_ = NULL;
 
-game_data::game_data()
+unit_type_data::unit_type_data()
 {}
 
-game_data::game_data(const config& cfg)
+void unit_type_data::set_config(const config& cfg)
 {
-	set_config(cfg);
-}
-
-void game_data::set_config(const config& cfg)
-{
-    DBG_UT << "game_data::set_config, cfg:\n" << cfg;
+    DBG_UT << "unit_type_data::set_config, cfg:\n" << cfg;
     unit_types.set_unit_config(cfg);
 	unit_types.set_unit_traits(cfg.get_children("trait"));
 
@@ -934,7 +929,7 @@ void game_data::set_config(const config& cfg)
 			// we insert an empty unit_type and build it after the copy (for performance)
 			std::pair<unit_type_map::iterator,bool> insertion =
 				unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
-            lg::info(lg::config) << "added " << id << " to unit_type list (game_data.unit_types)\n";
+            lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 //			if (!insertion.second)
 			// TODO: else { warning for multiple units with same id}
 		}
@@ -983,7 +978,7 @@ void game_data::set_config(const config& cfg)
 					std::string id = merge_cfg["id"];
 					std::pair<unit_type_map::iterator,bool> insertion =
 					unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
-                    lg::info(lg::config) << "added " << id << " to unit_type list (game_data.unit_types)\n";
+                    lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 //					if (!insertion.second) {
 //                  TODO: warn for multiple unit's with same id's
 					increment_set_config_progress();
@@ -1013,26 +1008,26 @@ void game_data::set_config(const config& cfg)
 	}
 }
 
-void game_data::clear()
+void unit_type_data::clear()
 {
 	unit_types.clear();
 	merged_units.clear();
 }
 
-game_data::unit_type_map::const_iterator game_data::unit_type_factory::find(const std::string& key)
+unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_factory::find(const std::string& key)
 {
     if (key.empty() || (key == "random"))
         return types_.end();
 
     unit_type_map::iterator itor = types_.find(key);
 
-    lg::info(lg::config) << "trying to find " << key  << " in unit_type list (game_data.unit_types)\n";
+    lg::info(lg::config) << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
     //This should not happen since it means the unit_type id has not been loaded
     assert (itor != types_.end());
 
     //check if the unit_type is constructed and build it if necessary
     if (itor->second.id().empty()){
-        lg::info(lg::config) << "construct " << key  << " in unit_type list (game_data.unit_types)\n";
+        lg::info(lg::config) << "construct " << key  << " in unit_type list (unit_type_data.unit_types)\n";
         for(config::const_child_itors i = unit_cfg_->child_range("unit_type"); i.first != i.second; ++i.first)
         {
             std::string id = (**i.first)["id"];
@@ -1054,7 +1049,7 @@ game_data::unit_type_map::const_iterator game_data::unit_type_factory::find(cons
     return types_.find(key);
 }
 
-const config& game_data::unit_type_factory::find_config(const std::string& key){
+const config& unit_type_data::unit_type_factory::find_config(const std::string& key){
     for(config::const_child_itors i = unit_cfg_->child_range("unit_type"); i.first != i.second; ++i.first)
     {
         std::string id = (**i.first)["id"];
@@ -1072,11 +1067,11 @@ const config& game_data::unit_type_factory::find_config(const std::string& key){
         }
     }
 
-    ERR_UT << "game_data::unit_type_factory::find_config: unit config for id " << key << " not found!\n";
+    ERR_UT << "unit_type_data::unit_type_factory::find_config: unit config for id " << key << " not found!\n";
     assert(false);
 }
 
-void game_data::unit_type_factory::generate_help_info()
+void unit_type_data::unit_type_factory::generate_help_info()
 {
     assert(unit_cfg_ != NULL);
 
@@ -1126,7 +1121,7 @@ void game_data::unit_type_factory::generate_help_info()
     }
 }
 
-unit_type& game_data::unit_type_factory::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status){
+unit_type& unit_type_data::unit_type_factory::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status){
     unit_type_map::iterator ut = types_.find(key);
 
     switch (status){
@@ -1154,14 +1149,14 @@ unit_type& game_data::unit_type_factory::build_unit_type(const std::string& key,
     return ut->second;
 }
 
-void game_data::unit_type_factory::add_advancement(const config& cfg, unit_type& to_unit){
+void unit_type_data::unit_type_factory::add_advancement(const config& cfg, unit_type& to_unit){
     config::const_child_itors af;
     for(af = cfg.child_range("advancefrom"); af.first != af.second; ++af.first)
     {
         const std::string &from = (**af.first)["unit"];
         const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
 
-        game_data::unit_type_map::iterator from_unit = types_.find(from);
+        unit_type_data::unit_type_map::iterator from_unit = types_.find(from);
 
         // Fix up advance_from references
         from_unit->second.add_advancement(to_unit, xp);

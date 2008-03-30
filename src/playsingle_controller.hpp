@@ -29,7 +29,7 @@ struct upload_log;
 class playsingle_controller : public play_controller
 {
 public:
-	playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
+	playsingle_controller(const config& level, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 
 	LEVEL_RESULT play_scenario(const std::vector<config*>& story, upload_log& log, bool skip_replay);
@@ -84,7 +84,7 @@ private:
 	void report_victory(std::stringstream& report,
 		    end_level_exception& end_level,
 		    int player_gold,
-		    int remaining_gold, int finishing_bonus_per_turn, 
+		    int remaining_gold, int finishing_bonus_per_turn,
 		    int turns_left, int finishing_bonus);
 };
 

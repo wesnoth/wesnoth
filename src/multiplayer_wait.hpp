@@ -28,7 +28,7 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(game_display& disp, const config& cfg, const game_data& data, chat& c, config& gamelist);
+	wait(game_display& disp, const config& cfg, chat& c, config& gamelist);
 	virtual void process_event();
 
 	void join_game(bool observe);
@@ -48,7 +48,7 @@ private:
 	class leader_preview_pane : public gui::preview_pane
 	{
 	public:
-		leader_preview_pane(game_display& disp, const game_data* data,
+		leader_preview_pane(game_display& disp,
 				const config::child_list& side_list);
 
 		bool show_above() const;
@@ -67,7 +67,6 @@ private:
 		gui::combo gender_combo_; // Must appear before the leader_list_manager
 		leader_list_manager leaders_;
 		size_t  selection_;
-		const game_data* data_;
 	};
 
 	void generate_menu();
@@ -77,7 +76,6 @@ private:
 	gui::menu game_menu_;
 
 	// int team_;
-	const game_data& game_data_;
 
 	config level_;
 	game_state state_;

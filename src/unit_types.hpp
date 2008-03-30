@@ -27,7 +27,7 @@
 class unit_type;
 class unit;
 class unit_ability_list;
-class game_data;
+class unit_type_data;
 class gamestatus;
 class team;
 
@@ -53,7 +53,7 @@ public:
 	std::vector<std::string> special_tooltips(bool force=false) const;
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
-                              const game_data* gamedata, const unit_map* unitmap,
+                              const unit_map* unitmap,
 							  const gamemap* map, const gamestatus* game_status,
 							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
 	void set_specials_context(const gamemap::location& loc,const gamemap::location& dloc, const unit& un, bool attacker =true) const;
@@ -72,7 +72,6 @@ public:
 	const config& get_cfg() const { return cfg_; }
 	mutable gamemap::location aloc_,dloc_;
 	mutable bool attacker_;
-	mutable const game_data* gamedata_;
 	mutable const unit_map* unitmap_;
 	mutable const gamemap* map_;
 	mutable const gamestatus* game_status_;
@@ -146,7 +145,7 @@ class unit_type
 {
 public:
 	friend class unit;
-	friend class game_data;
+	friend class unit_type_data;
 
 	unit_type();
 	unit_type(const config& cfg, const movement_type_map& movement_types,
@@ -283,9 +282,16 @@ private:
 	BUILD_STATUS build_status_;
 };
 
-class game_data
+class unit_type_data
 {
 public:
+    static unit_type_data& instance() {
+        if (instance_ == NULL)
+            instance_ = new unit_type_data();
+
+        return *instance_;
+    }
+
     typedef std::map<std::string,unit_type> unit_type_map;
 
 	class unit_type_factory
@@ -335,13 +341,17 @@ public:
             const config* unit_cfg_;
 	};
 
-	game_data();
-	game_data(const config& cfg);
 	void set_config(const config& cfg);
 	void clear();
 
 	mutable unit_type_factory unit_types;
 	config merged_units;
+
+    protected:
+        unit_type_data();
+
+	private:
+        static unit_type_data* instance_;
 };
 
 #endif

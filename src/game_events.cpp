@@ -67,7 +67,6 @@ gamemap* game_map = NULL;
 unit_map* units = NULL;
 std::vector<team>* teams = NULL;
 game_state* state_of_game = NULL;
-const game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
 int floating_label = 0;
 Uint32 unit_mutations = 0;
@@ -834,13 +833,12 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if (side_num >= teams->size()) side_num = 0;
 
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
-		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
-		if(itor != game_data_ptr->unit_types.end()) {
-			assert(game_data_ptr != NULL);
+		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::instance().unit_types.find(type);
+		if(itor != unit_type_data::instance().unit_types.end()) {
 			assert(units != NULL);
 			assert(game_map != NULL);
 			assert(status_ptr != NULL);
-			unit dummy_unit(game_data_ptr,units,game_map,status_ptr,teams,&itor->second,side_num+1,false,true,gender,variation);
+			unit dummy_unit(units,game_map,status_ptr,teams,&itor->second,side_num+1,false,true,gender,variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<gamemap::location> path;
@@ -1063,7 +1061,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				var = str_cast(value);
 			}
 		}
-		
+
 		const t_string string_length_target = cfg["string_length"];
 		if(string_length_target.empty() == false) {
 			const int value = string_length_target.str().length();
@@ -1243,29 +1241,29 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 			var = random_value;
 		}
-		
+
 
 		const vconfig::child_list join_elements = cfg.get_children("join");
         if(!join_elements.empty())
 		{
             const vconfig join_element=join_elements.front();
-        
+
 			std::string array_name=join_element["variable"];
 			std::string separator=join_element["separator"];
 			std::string key_name=join_element["key"];
-			
+
 			if(key_name.empty())
 			{
 				key_name="value";
 			}
-			
+
 			bool remove_empty=utils::string_bool(join_element["remove_empty"]);
-			
+
 			variable_info::array_range array=state_of_game->get_variable_cfgs(array_name);
-			
+
 			std::string joined_string;
 			std::string current_string;
-			
+
 			for(std::vector<config*>::iterator i=array.first; i!=array.second; ++i)
 			{
 				current_string=(**i)[key_name];
@@ -1273,38 +1271,38 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				{
 					continue;
 				}
-				
+
 				joined_string+=current_string;
 				if(i+1!=array.second)
 				{
 					joined_string+=separator;
 				}
 			}
-			
+
 			var=joined_string;
 		}
 
 	}
-	
+
 	else if(cmd == "set_variables")
     {
 		assert(state_of_game != NULL);
 
 		const std::string name = cfg["name"];
-		
+
 		std::string mode = cfg["mode"]; //should be one of replace, extend, merge
 		if(mode!="append"&&mode!="merge")
 		{
 			mode="replace";
 		}
-		
+
         const t_string to_variable = cfg["to_variable"];
 		const vconfig::child_list values = cfg.get_children("value");
 		const config::child_list literals = cfg.get_config().get_children("literal");
 		const vconfig::child_list split_elements = cfg.get_children("split");
-		
+
 		std::vector<config> data;
-		
+
 		if(!to_variable.empty())
 		{
 			variable_info::array_range range = state_of_game->get_variable_cfgs(to_variable);
@@ -1324,7 +1322,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			}
 		} else if(!split_elements.empty()) {
             const vconfig split_element=split_elements.front();
-        
+
 			std::string split_string=split_element["list"];
 			std::string separator_string=split_element["separator"];
 			std::string key_name=split_element["key"];
@@ -1334,11 +1332,11 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			bool remove_empty=utils::string_bool(split_element["remove_empty"]);
-			
+
 			char* separator = separator_string.empty() ? NULL : &separator_string[0];
-			
+
 			std::vector<std::string> split_vector;
-			
+
 			//if no separator is specified, explode the string
 			if(separator == NULL)
 			{
@@ -1346,11 +1344,11 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				{
 					split_vector.push_back(&*i);
 				}
-			} 
+			}
 			else {
 				split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
 			}
-			
+
             state_of_game->clear_variable_cfg(name);
 			for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 			{
@@ -1359,7 +1357,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				data.push_back(item);
 			}
 		}
-		
+
 		if(!data.empty())
 		{
 			if(mode == "replace")
@@ -1423,7 +1421,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 		const std::string var_name = cfg["variable"];
 		const std::string& var = state_of_game->get_variable_const(var_name);
-		
+
 		bool not_found = true;
 		const vconfig::child_list& cases = cfg.get_children("case");
 		// execute all cases where the value matches
@@ -1491,8 +1489,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					std::vector<unit>::iterator ui;
 					for(ui = player->available_units.begin();
 							ui != player->available_units.end(); ++ui) {
-						assert(game_data_ptr != NULL);
-						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+						ui->set_game_context(units,game_map,status_ptr,teams);
 						scoped_recall_unit auto_store("this_unit", player_id,
 							(ui - player->available_units.begin()));
 						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
@@ -1510,8 +1507,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					// Iterate over the units, and try to find one that matches
 					for(ui = pi->second.available_units.begin();
 							ui != pi->second.available_units.end(); ++ui) {
-						assert(game_data_ptr != NULL);
-						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+						ui->set_game_context(units,game_map,status_ptr,teams);
 						scoped_recall_unit auto_store("this_unit", pi->first,
 							(ui - pi->second.available_units.begin()));
 						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
@@ -1618,7 +1614,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			soundsource::sourcespec spec(id, sounds, lexical_cast_default<int>(delay, 1000), lexical_cast_default<int>(chance, 100));
-			
+
 			spec.loop(lexical_cast_default<int>(loop, 0));
 
 			if(!full_range.empty()) {
@@ -1630,7 +1626,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			if(play_fogged.empty()) {
-				spec.check_fog(true); 
+				spec.check_fog(true);
 			} else {
 				spec.check_fog(utils::string_bool(play_fogged));
 			}
@@ -1706,12 +1702,11 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 	// If we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
-		assert(game_data_ptr != NULL);
 		assert(units != NULL);
 		assert(game_map != NULL);
 		assert(status_ptr != NULL);
 		assert(state_of_game != NULL);
-		unit new_unit(game_data_ptr,units,game_map,status_ptr,teams,cfg.get_parsed_config(),true, state_of_game);
+		unit new_unit(units,game_map,status_ptr,teams,cfg.get_parsed_config(),true, state_of_game);
 		preferences::encountered_units().insert(new_unit.type_id());
 		gamemap::location loc = cfg_to_loc(cfg);
 
@@ -1773,8 +1768,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				DBG_NG << "checking unit against filter...\n";
-				assert(game_data_ptr != NULL);
-				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+				u->set_game_context(units,game_map,status_ptr,teams);
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 				if(game_events::unit_matches_filter(*u, &unit_filter, gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
@@ -2129,7 +2123,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 
 			if(!options.empty()) {
-				do_replay_handle(*screen,*game_map,*game_data_ptr,*units,*teams,
+				do_replay_handle(*screen,*game_map,*units,*teams,
 						   side ,*status_ptr,*state_of_game,std::string("choose"));
 				const config* action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("choose").empty()) {
@@ -2139,7 +2133,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				option_chosen = atol(val.c_str());
 			}
 			if(has_text_input) {
-				do_replay_handle(*screen,*game_map,*game_data_ptr,*units,*teams,
+				do_replay_handle(*screen,*game_map,*units,*teams,
 						   side ,*status_ptr,*state_of_game,std::string("input"));
 				const config* action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("input").empty()) {
@@ -2148,7 +2142,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				text_input_result = (*(action->get_children("input").front()))["text"];
 			}
 		}
-		
+
 		// Implement the consequences of the choice
 		if(options.empty() == false) {
 			if(size_t(option_chosen) >= menu_items.size()) {
@@ -2158,7 +2152,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				       << " was expected.\n";
 				replay::throw_error(errbuf.str());
 			}
-			
+
 			vconfig::child_list events = option_events[option_chosen];
 			for(vconfig::child_list::const_iterator itor = events.begin();
 			itor != events.end(); ++itor) {
@@ -2174,7 +2168,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			state_of_game->set_variable(variable_name, text_input_result);
 		}
 	}
-	
+
 	else if(cmd == "kill") {
 		// Use (x,y) iteration, because firing events ruins unit_map iteration
 		for(gamemap::location loc(0,0); loc.x < game_map->w(); ++loc.x) {
@@ -2200,7 +2194,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				}
 			}
 		}
-		
+
 		// If the filter doesn't contain positional information,
 		// then it may match units on all recall lists.
 		if(cfg["x"].empty() && cfg["y"].empty()) {
@@ -2211,8 +2205,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			{
 				std::vector<unit>& avail_units = pi->second.available_units;
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					assert(game_data_ptr != NULL);
-					j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+					j->set_game_context(units,game_map,status_ptr,teams);
 					scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
 						j = avail_units.erase(j);
@@ -2223,12 +2216,12 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 	}
-	
+
 	// Adding of new events
 	else if(cmd == "event") {
 		new_handlers.push_back(event_handler(cfg.get_config()));
 	}
-	
+
 	// Fire any events
 	else if(cmd == "fire_event") {
 		gamemap::location loc1,loc2;
@@ -2307,7 +2300,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		vconfig filter = cfg.child("filter");
 		if(filter.null())
 			filter = &empty_filter;
-		
+
 		std::string variable = cfg["variable"];
 		if(variable.empty()) {
 			variable="unit";
@@ -2315,19 +2308,19 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		const std::string mode = cfg["mode"];
 		config to_store;
 		variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
-		
+
 		const bool kill_units = utils::string_bool(cfg["kill"]);
-		
+
 		for(unit_map::iterator i = units->begin(); i != units->end();) {
 			if(game_events::unit_matches_filter(i,filter) == false) {
 				++i;
 				continue;
 			}
-			
+
 			config& data = to_store.add_child(varinfo.key);
 			i->first.write(data);
 			i->second.write(data);
-			
+
 			if(kill_units) {
 				units->erase(i++);
 				unit_mutations++;
@@ -2335,16 +2328,15 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				++i;
 			}
 		}
-		
+
 		if(filter["x"].empty() && filter["y"].empty()) {
 			std::map<std::string, player_info>& players = state_of_game->players;
-			
+
 			for(std::map<std::string, player_info>::iterator pi = players.begin();
 					pi!=players.end(); ++pi) {
 				std::vector<unit>& avail_units = pi->second.available_units;
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				assert(game_data_ptr != NULL);
-				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+				j->set_game_context(units,game_map,status_ptr,teams);
 				scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
 				if(game_events::unit_matches_filter(*j, filter,gamemap::location()) == false) {
 						++j;
@@ -2354,7 +2346,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					j->write(data);
 					data["x"] = "recall";
 					data["y"] = "recall";
-					
+
 					if(kill_units) {
 						j = avail_units.erase(j);
 					} else {
@@ -2368,29 +2360,28 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		}
 		varinfo.vars->append(to_store);
 	}
-	
+
 	else if(cmd == "unstore_unit") {
 		assert(state_of_game != NULL);
 		const config& var = state_of_game->get_variable_cfg(cfg["variable"]);
-		
+
 		try {
-			assert(game_data_ptr != NULL);
 			assert(units != NULL);
 			assert(game_map != NULL);
 			assert(status_ptr != NULL);
-			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var, false);
-			
+			const unit u(units,game_map,status_ptr,teams,var, false);
+
 			preferences::encountered_units().insert(u.type_id());
 			gamemap::location loc(var, game_events::get_state_of_game());
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {
 					loc = find_vacant_tile(*game_map,*units,loc);
 				}
-				
+
 				units->erase(loc);
 				units->add(new std::pair<gamemap::location,unit>(loc,u));
 				unit_mutations++;
-				
+
 				std::string text = cfg["text"];
 				if(!text.empty())
 				{
@@ -2405,27 +2396,27 @@ void event_handler::handle_event_command(const queued_event& event_info,
 						screen->float_label(loc,text,red,green,blue);
 					}
 				}
-				
+
 				if(utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()) {
 					// Try to advance the unit
-					
+
 					//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
 					const t_string& side_str = state_of_game->get_variable("side_number");
 					const int side = lexical_cast_default<int>(side_str.base_str(), -1);
-					
+
 					// Select advancement if it is on the playing side and the player is a human
 					const bool sel = (side == static_cast<int>(u.side())
 					                 && (*teams)[side-1].is_human());
-					
+
 					// The code in dialogs::advance_unit tests whether the unit can advance
-					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel, true);
+					dialogs::advance_unit(*game_map, *units, loc, *screen, !sel, true);
 				}
 
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
-				
+
 				if(player) {
-					
+
 					// Test whether the recall list has duplicates if so warn.
 					// This might be removed at some point but the uniqueness of
 					// the description is needed to avoid the recall duplication
@@ -2436,12 +2427,12 @@ void event_handler::handle_event_command(const queued_event& event_info,
 						for(std::vector<unit>::const_iterator citor =
 								player->available_units.begin();
 								citor != player->available_units.end(); ++citor) {
-							
+
 							const std::string desciption =
 								citor->underlying_id();
 							if(std::find(desciptions.begin(), desciptions.end(),
 									desciption) != desciptions.end()) {
-								
+
 								lg::wml_error << "Recall list has duplicate unit "
 									"description '" << desciption
 									<< "' unstore_unit may not work as expected.\n";
@@ -2450,7 +2441,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 							}
 						}
 					}
-					
+
 					// Avoid duplicates in the list.
 					//! @todo it would be better to change available_units from
 					//! a vector to a map and use the underlying_id
@@ -2477,9 +2468,9 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			// If we unstore a leader make sure the team gets a leader if not the loading
 			// in MP might abort since a side without a leader has a recall list.
 			if(u.can_recruit()) {
-				(*teams)[u.side() - 1].no_leader() = false; 
+				(*teams)[u.side() - 1].no_leader() = false;
 			}
-				
+
 		} catch(game::load_game_failed& e) {
 			ERR_NG << "could not de-serialize unit: '" << e.message << "'\n";
 		}
@@ -2955,8 +2946,7 @@ manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
 		 soundsource::manager& sndsources_,
                  unit_map& units_,
                  std::vector<team>& teams_,
-                 game_state& state_of_game_, gamestatus& status,
-		 const game_data& game_data_) :
+                 game_state& state_of_game_, gamestatus& status) :
 	variable_manager(&state_of_game_)
 {
 	const config::child_list& events_list = cfg.get_children("event");
@@ -2977,7 +2967,6 @@ manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
 	game_map = &map_;
 	units = &units_;
 	state_of_game = &state_of_game_;
-	game_data_ptr = &game_data_;
 	status_ptr = &status;
 
 	used_items.clear();
@@ -3044,7 +3033,6 @@ manager::~manager() {
 	game_map = NULL;
 	units = NULL;
 	state_of_game = NULL;
-	game_data_ptr = NULL;
 	status_ptr = NULL;
 	for(config::child_list::iterator d = unit_wml_configs.begin(); d != unit_wml_configs.end(); ++d) {
 		delete *d;

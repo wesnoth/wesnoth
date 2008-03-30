@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file dialogs.cpp 
+//! @file dialogs.cpp
 //! Various dialogs: advance_unit, show_objectives, save+load game, network::connection.
 
 #include "global.hpp"
@@ -46,8 +46,7 @@
 namespace dialogs
 {
 
-void advance_unit(const game_data& info,
-		  const gamemap& map,
+void advance_unit(const gamemap& map,
                   unit_map& units,
                   gamemap::location loc,
                   game_display& gui,
@@ -66,7 +65,7 @@ void advance_unit(const game_data& info,
 
 	std::vector<unit> sample_units;
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
-		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
+		sample_units.push_back(::get_advanced_unit(units,loc,*op));
 		const unit& type = sample_units.back();
 
 #ifdef LOW_MEM
@@ -80,7 +79,7 @@ void advance_unit(const game_data& info,
 	const config::child_list& mod_options = u->second.get_modification_advances();
 
 	for(config::child_list::const_iterator mod = mod_options.begin(); mod != mod_options.end(); ++mod) {
-		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type_id()));
+		sample_units.push_back(::get_advanced_unit(units,loc,u->second.type_id()));
 		sample_units.back().add_modification("advance",**mod);
 		const unit& type = sample_units.back();
 		if((**mod)["image"].str().size()){
@@ -124,10 +123,10 @@ void advance_unit(const game_data& info,
 	recorder.choose_option(res);
 
 	LOG_DP << "animating advancement...\n";
-	animate_unit_advancement(info,units,loc,gui,size_t(res));
-	
-	// In some rare cases the unit can have enough XP to advance again, 
-	// so try to do that. 
+	animate_unit_advancement(units,loc,gui,size_t(res));
+
+	// In some rare cases the unit can have enough XP to advance again,
+	// so try to do that.
 	// Make sure that we don't enter an infinite level loop.
 	u = units.find(loc);
 	if(u != units.end()) {
@@ -135,7 +134,7 @@ void advance_unit(const game_data& info,
 		if(u->second.experience() < 81) {
 			// For all leveling up we have to add advancement to replay here because replay
 			// doesn't handle multi advancemnet
-			advance_unit(info, map, units, loc, gui, random_choice, true);
+			advance_unit(map, units, loc, gui, random_choice, true);
 		} else {
 			LOG_STREAM(err, config) << "Unit has an too high amount of " << u->second.experience()
 				<< " XP left, cascade leveling disabled\n";
@@ -145,7 +144,7 @@ void advance_unit(const game_data& info,
 	}
 }
 
-bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, game_display& gui, size_t choice)
+bool animate_unit_advancement(unit_map& units, gamemap::location loc, game_display& gui, size_t choice)
 {
 	const events::command_disabler cmd_disabler;
 
@@ -161,7 +160,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 		return false;
 	}
 
-	// When the unit advances, it fades to white, and then switches 
+	// When the unit advances, it fades to white, and then switches
 	// to the new unit, then fades back to the normal colour
 
 	if(!gui.video().update_locked()) {
@@ -173,7 +172,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 
 	if(choice < options.size()) {
 		const std::string& chosen_unit = options[choice];
-		::advance_unit(info,units,loc,chosen_unit);
+		::advance_unit(units,loc,chosen_unit);
 	} else {
 		unit amla_unit(u->second);
 
@@ -267,7 +266,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 		}
 
 		if (std::count_if(fname->begin(),fname->end(),is_illegal_file_char)) {
-			gui::message_dialog(disp, _("Error"), 
+			gui::message_dialog(disp, _("Error"),
 				_("Save names may not contain colons, slashes, or backslashes. "
 				"Please choose a different name.")).show();
 			overwrite = 1;
@@ -275,7 +274,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 		}
 
 		if (is_gzip_file(*fname)) {
-			gui::message_dialog(disp, _("Error"), 
+			gui::message_dialog(disp, _("Error"),
 				_("Save names should not end on '.gz'. "
 				"Please choose a different name.")).show();
 			overwrite = 1;
@@ -407,9 +406,9 @@ static const int save_preview_border = 10;
 class save_preview_pane : public gui::preview_pane
 {
 public:
-	save_preview_pane(CVideo &video, const config& game_config, gamemap* map, const game_data& data,
+	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
 	                  const std::vector<save_info>& info, const std::vector<config*>& summaries, const load_game_filter_textbox& textbox)
-		: gui::preview_pane(video), game_config_(&game_config), map_(map), data_(&data), info_(&info), summaries_(&summaries), index_(0), textbox_(textbox)
+		: gui::preview_pane(video), game_config_(&game_config), map_(map), info_(&info), summaries_(&summaries), index_(0), textbox_(textbox)
 	{
 		set_measurements(minimum<int>(200,video.getx()/4),
 				 minimum<int>(400,video.gety() * 4/5));
@@ -426,7 +425,6 @@ public:
 private:
 	const config* game_config_;
 	gamemap* map_;
-	const game_data* data_;
 	const std::vector<save_info>* info_;
 	const std::vector<config*>* summaries_;
 	int index_;
@@ -461,8 +459,8 @@ void save_preview_pane::draw_contents()
 
 	int ypos = area.y;
 
-	const game_data::unit_type_map::const_iterator leader = data_->unit_types.find(summary["leader"]);
-	if(leader != data_->unit_types.end()) {
+	const unit_type_data::unit_type_map::const_iterator leader = unit_type_data::instance().unit_types.find(summary["leader"]);
+	if(leader != unit_type_data::instance().unit_types.end()) {
 
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->second.image()));
@@ -628,7 +626,7 @@ std::string format_time_summary(time_t t)
 
 } // end anon namespace
 
-std::string load_game_dialog(display& disp, const config& game_config, const game_data& data, bool* show_replay, bool* cancel_orders)
+std::string load_game_dialog(display& disp, const config& game_config, bool* show_replay, bool* cancel_orders)
 {
 	std::vector<save_info> games;
 	{
@@ -678,7 +676,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 			  _("Choose the game to load"), gui::NULL_DIALOG);
 	lmenu.set_basic_behavior(gui::OK_CANCEL);
 	load_game_filter_textbox* filter = new load_game_filter_textbox(disp.video(), items, lmenu);
-	save_preview_pane save_preview(disp.video(),game_config,&map_obj,data,games,summaries,*filter);
+	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,summaries,*filter);
 	lmenu.set_textbox(filter);
 	lmenu.add_pane(&save_preview);
 	// create an option for whether the replay should be shown or not
@@ -823,10 +821,10 @@ void unit_preview_pane::draw_contents()
 		desc << font::NORMAL_TEXT << det.name;
 		const std::string description = desc.str();
 		description_rect = font::text_area(description, font::SIZE_NORMAL);
-		description_rect = font::draw_text(&video(), area, 
-							font::SIZE_NORMAL, font::NORMAL_COLOUR, 
-							desc.str(), right_align ?  image_rect.x : 
-							image_rect.x + image_rect.w - description_rect.w, 
+		description_rect = font::draw_text(&video(), area,
+							font::SIZE_NORMAL, font::NORMAL_COLOUR,
+							desc.str(), right_align ?  image_rect.x :
+							image_rect.x + image_rect.w - description_rect.w,
 							image_rect.y + image_rect.h + details_button_.location().h);
 	}
 
@@ -932,11 +930,11 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 		 a != abilities.end(); a+=2) {
 		det.abilities.push_back(*a);
 	}
-	
+
 	det.hitpoints = u.hitpoints();
 	det.max_hitpoints = u.max_hitpoints();
 	det.hp_color = font::color2markup(u.hp_color());
-	
+
 	det.experience = u.experience();
 	det.max_experience = u.max_experience();
 	det.xp_color = font::color2markup(u.xp_color());
@@ -1000,7 +998,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	}
 
 	det.abilities = t->abilities();
-	
+
 	det.hitpoints = t->hitpoints();
 	det.max_hitpoints = t->hitpoints();
 	det.hp_color = "<33,225,0>"; // from unit::hp_color()
@@ -1029,7 +1027,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 
 void unit_types_preview_pane::process_event()
 {
-	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(size())) { 
+	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
 		const unit_type* type = (*unit_types_)[index_];
 		if (type != NULL)
 			show_unit_description(disp_, *type);
@@ -1185,7 +1183,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 		events::raise_draw_event();
 		disp.flip();
 		events::pump();
-		
+
 		if(res != 0) {
 			return res;
 		}

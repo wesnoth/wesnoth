@@ -297,7 +297,7 @@ namespace dfool {
     return(um.end());
   }
 
-  unit_memory::unit_memory(const game_data& gamedata, const config& cfg) : 
+  unit_memory::unit_memory(const config& cfg) :
   	units_(),
 	ids_(),
 	turns_(),
@@ -307,7 +307,7 @@ namespace dfool {
     for(config::child_list::const_iterator mem = mem_list.begin(); mem != mem_list.end(); ++mem) {
       config unit_cfg = *((*mem)->child("unit"));
 
-      unit u(gamedata , unit_cfg);
+      unit u(unit_cfg);
 
       int t = atoi((**mem)["turn"].c_str());
 

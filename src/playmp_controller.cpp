@@ -30,10 +30,10 @@
 unsigned int playmp_controller::replay_last_turn_ = 0;
 
 playmp_controller::playmp_controller(const config& level,
-	const game_data& gameinfo, game_state& state_of_game, const int ticks,
+	game_state& state_of_game, const int ticks,
 	const int num_turns, const config& game_config, CVideo& video,
 	bool skip_replay, bool is_host)
-	: playsingle_controller(level, gameinfo, state_of_game, ticks, num_turns,
+	: playsingle_controller(level, state_of_game, ticks, num_turns,
 		game_config, video, skip_replay)
 {
 	beep_warning_time_ = 0;
@@ -99,7 +99,7 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 					// reset gui to prev human one
 					if (!teams_[team_index-1].is_human()) {
 						int t = find_human_team_before(team_index);
-						
+
 						if (t <= 0)
 							t = gui_->get_playing_team() + 1;
 
@@ -124,7 +124,7 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 void playmp_controller::before_human_turn(bool save){
 	playsingle_controller::before_human_turn(save);
 
-	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
+	turn_data_ = new turn_info(gamestate_,status_,
 		*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
 	turn_data_->replay_error().attach_handler(this);
 	turn_data_->host_transfer().attach_handler(this);
@@ -298,7 +298,7 @@ void playmp_controller::linger(upload_log& log)
 		try {
 			// reimplement parts of play_side()
 			player_number_ = first_player_;
-			turn_data_ = new turn_info(gameinfo_, gamestate_, status_,
+			turn_data_ = new turn_info(gamestate_, status_,
 			                           *gui_,map_, teams_, player_number_,
 			                           units_, replay_sender_, undo_stack_);
 			turn_data_->replay_error().attach_handler(this);
@@ -344,7 +344,7 @@ void playmp_controller::wait_for_upload()
 
 	const bool set_turn_data = (turn_data_ == 0);
 	if(set_turn_data) {
-		turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
+		turn_data_ = new turn_info(gamestate_,status_,
 						*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
 		turn_data_->replay_error().attach_handler(this);
 		turn_data_->host_transfer().attach_handler(this);
@@ -359,7 +359,7 @@ void playmp_controller::wait_for_upload()
 			std::deque<config> backlog;
 			if(res != network::null_connection) {
 				try{
-					if(turn_data_->process_network_data(cfg,res,backlog,skip_replay_) 
+					if(turn_data_->process_network_data(cfg,res,backlog,skip_replay_)
 							== turn_info::PROCESS_END_LINGER) {
 						break;
 					}
@@ -425,7 +425,7 @@ void playmp_controller::play_network_turn(){
 
 	browse_ = true;
 	gui_->enable_menu("endturn", false);
-	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
+	turn_info turn_data(gamestate_,status_,*gui_,
 				map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
 	turn_data.replay_error().attach_handler(this);
 	turn_data.host_transfer().attach_handler(this);
@@ -493,7 +493,7 @@ void playmp_controller::process_oos(const std::string& err_msg){
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
-	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
+	turn_info turn_data(gamestate_,status_,*gui_,
 						map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
 
 	if (name == "ai_user_interact"){

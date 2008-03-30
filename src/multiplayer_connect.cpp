@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file multiplayer_connect.cpp 
+//! @file multiplayer_connect.cpp
 //! Prepare to join a multiplayer-game.
 
 #include "global.hpp"
@@ -80,7 +80,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	allow_player_(utils::string_bool(cfg_.get_attribute("allow_player"), true)),
 	enabled_(!parent_->params_.saved_game), changed_(false),
-	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
+	llm_(parent.era_sides_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
 	if(allow_player_ && enabled_) {
 		controller_ = parent_->default_controller_;
@@ -125,7 +125,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	label_gold_.hide(!enabled_);
 	label_income_.hide(!enabled_);
 
-	std::vector<std::string>::const_iterator itor = 
+	std::vector<std::string>::const_iterator itor =
 			std::find(parent_->team_names_.begin(), parent_->team_names_.end(),
 			cfg_.get_attribute("team_name"));
 	if(itor == parent_->team_names_.end()) {
@@ -152,7 +152,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_faction_.set_items(pseudo_factions);
 		combo_faction_.set_selected(0);
 
-		// Hack: if there is a unit which can recruit, use it as a leader. 
+		// Hack: if there is a unit which can recruit, use it as a leader.
 		// Necessary to display leader information when loading saves.
 		config::const_child_itors side_units = cfg.child_range("unit");
 		std::string leader_type;
@@ -167,9 +167,9 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		if(leader_type.empty()) {
 			leader_name_pseudolist.push_back("-");
 		} else {
-			game_data::unit_type_map::const_iterator leader_name =
-				parent_->game_data_.unit_types.find(leader_type);
-			if(leader_name == parent_->game_data_.unit_types.end()) {
+			unit_type_data::unit_type_map::const_iterator leader_name =
+				unit_type_data::instance().unit_types.find(leader_type);
+			if(leader_name == unit_type_data::instance().unit_types.end()) {
 				leader_name_pseudolist.push_back("-");
 			} else {
 				if (gender_ == "female")
@@ -186,8 +186,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 		if (!gender_.empty()) {
 			if (leader_type.empty()
-					|| parent_->game_data_.unit_types.find(leader_type)
-					== parent_->game_data_.unit_types.end())
+					|| unit_type_data::instance().unit_types.find(leader_type)
+					== unit_type_data::instance().unit_types.end())
 			{
 				gender_name_pseudolist.push_back("-");
 			} else {
@@ -230,8 +230,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			llm_.set_leader_combo(NULL);
 			llm_.set_gender_combo(NULL);
 			std::vector<std::string> leader_name_pseudolist;
-			game_data::unit_type_map::const_iterator leader_name = parent_->game_data_.unit_types.find(leader_);
-			if(leader_name == parent_->game_data_.unit_types.end()) {
+			unit_type_data::unit_type_map::const_iterator leader_name = unit_type_data::instance().unit_types.find(leader_);
+			if(leader_name == unit_type_data::instance().unit_types.end()) {
 				leader_name_pseudolist.push_back("?");
 			} else {
 				leader_name_pseudolist.push_back(leader_name->second.language_name());
@@ -240,7 +240,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			combo_leader_.set_selected(0);
 			std::vector<std::string> gender_name_pseudolist;
 			if (!gender_.empty()) {
-				if(leader_name == parent_->game_data_.unit_types.end()) {
+				if(leader_name == unit_type_data::instance().unit_types.end()) {
 					gender_name_pseudolist.push_back("?");
 				} else {
 					if (gender_ == "female")
@@ -256,7 +256,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			combo_gender_.set_selected(0);
 		}
 
-		// Try to pick a faction for the sake of appearance 
+		// Try to pick a faction for the sake of appearance
 		// and for filling in the blanks
 		if(faction_ == 0) {
 			std::vector<std::string> find;
@@ -545,7 +545,7 @@ config connect::side::get_config() const
 {
 	config res(cfg_);
 
-	// If the user is allowed to change type, faction, leader etc, 
+	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
 	if(enabled_ && !parent_->era_sides_.empty()) {
 		// Merge the faction data to res
@@ -819,7 +819,7 @@ void connect::side::resolve_random()
 		if(faction_excepts.size() == 1 && faction_excepts.front() == "") {
 			faction_excepts.clear();
 		}
-		
+
 		// Builds the list of sides eligible for choice (nonrandom factions)
 		std::vector<int> nonrandom_sides;
 		for(config::child_iterator itor = parent_->era_sides_.begin();
@@ -829,12 +829,12 @@ void connect::side::resolve_random()
 				if (
 					!faction_choices.empty() &&
 					std::find(faction_choices.begin(),faction_choices.end(),faction_id) == faction_choices.end()
-				) 
+				)
 					continue;
 				if (
 					!faction_excepts.empty() &&
 					std::find(faction_excepts.begin(),faction_excepts.end(),faction_id) != faction_excepts.end()
-				) 
+				)
 					continue;
 				nonrandom_sides.push_back(itor - parent_->era_sides_.begin());
 			}
@@ -872,9 +872,9 @@ void connect::side::resolve_random()
 	}
 	// Resolve random genders "very much" like standard unit code
 	if (llm_.get_gender() == "random" || solved_random_leader) {
-		game_data::unit_type_map::const_iterator ut = parent_->game_data_.unit_types.find(leader_.empty() ? llm_.get_leader() : leader_);
+		unit_type_data::unit_type_map::const_iterator ut = unit_type_data::instance().unit_types.find(leader_.empty() ? llm_.get_leader() : leader_);
 
-		if (ut != parent_->game_data_.unit_types.end()) {
+		if (ut != unit_type_data::instance().unit_types.end()) {
 			const std::vector<unit_race::GENDER> glist = ut->second.genders();
 			if (!glist.empty()) {
 				const int gchoice = rand() % glist.size();
@@ -899,11 +899,10 @@ void connect::side::resolve_random()
 	}
 }
 
-connect::connect(game_display& disp, const config& game_config, const game_data& data,
+connect::connect(game_display& disp, const config& game_config,
 		chat& c, config& gamelist, const create::parameters& params,
 		mp::controller default_controller) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
-	game_data_(data),
 	level_(),
 	state_(),
 	params_(params),
@@ -949,7 +948,7 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 		create_game["password"] = params.password;
 	}
 /*
-	// The number of human-controlled sides is important to know 
+	// The number of human-controlled sides is important to know
 	// to let the server decide how many players can join this game
 	int human_sides = 0;
 	config::child_list cfg_sides = current_config()->get_children("side");
@@ -1016,7 +1015,7 @@ void connect::process_event()
 			set_result(mp::ui::PLAY);
 	}
 
-	// If something has changed in the level config, 
+	// If something has changed in the level config,
 	// send it to the network:
 	if (changed) {
 		update_playerlist_state();
@@ -1044,9 +1043,9 @@ void connect::start_game()
 	update_and_send_diff(true);
 
 	// Build the gamestate object after updating the level
-	
+
 	level_to_gamestate(level_, state_, params_.saved_game);
-	
+
 	// add era events only if not save
 	const config* const era_cfg = level_.child("era");
 	if (era_cfg != NULL && level_["savegame"] != "yes") {
@@ -1319,8 +1318,8 @@ void connect::lists_init()
 	player_types_.push_back(_("Computer Player"));
 	player_types_.push_back(_("Empty"));
 
-	for(std::vector<config*>::const_iterator faction = era_sides_.begin(); 
-													   faction != era_sides_.end(); 
+	for(std::vector<config*>::const_iterator faction = era_sides_.begin();
+													   faction != era_sides_.end();
 													   ++faction) {
 		player_factions_.push_back((**faction)["name"]);
 	}
@@ -1347,7 +1346,7 @@ void connect::lists_init()
 				user_team_name = team_name;
 			}
 
-			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), 
+			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(),
 															team_names_.end(), team_name);
 			if(itor == team_names_.end()) {
 				team_names_.push_back(team_name);
@@ -1364,7 +1363,7 @@ void connect::lists_init()
 			if(team_name.empty())
 				team_name = side_num;
 
-			std::vector<std::string>::const_iterator itor = std::find(map_team_names.begin(), 
+			std::vector<std::string>::const_iterator itor = std::find(map_team_names.begin(),
 															map_team_names.end(), team_name);
 			if(itor == map_team_names.end()) {
 				map_team_names.push_back(team_name);
@@ -1395,7 +1394,7 @@ void connect::lists_init()
 	for(side_list::iterator s = sides_.begin(); s != sides_.end(); ++s) {
 		const int side_num = s - sides_.begin();
 		const int spos = 60 * (side_num-offset);
-		if(!s->allow_player()) {                
+		if(!s->allow_player()) {
 			offset++;
 			continue;
 		}
@@ -1410,10 +1409,10 @@ void connect::load_game()
 	if(params_.saved_game) {
 		bool show_replay = false;
 		//bool cancel_orders = false;
-		const std::string game = dialogs::load_game_dialog(disp(), 
-								 game_config(), game_data_, &show_replay, 
+		const std::string game = dialogs::load_game_dialog(disp(),
+								 game_config(), &show_replay,
 								 NULL);
-								 
+
 		if(game.empty()) {
 			set_result(CREATE);
 			return;
@@ -1422,7 +1421,7 @@ void connect::load_game()
 		std::string error_log;
 		{
 			cursor::setter cur(cursor::WAIT);
-			::load_game(game_data_, game, state_, &error_log);
+			::load_game(game, state_, &error_log);
 		}
 		if(!error_log.empty()) {
 			gui::show_error_message(disp(),
@@ -1441,7 +1440,7 @@ void connect::load_game()
 		}
 
 		if(state_.version != game_config::version) {
-			// Do not load if too old, but if either the savegame or 
+			// Do not load if too old, but if either the savegame or
 			// the current game has the version 'test' allow loading.
 			if(state_.version < game_config::min_savegame_version &&
 					game_config::test_version.full != state_.version &&
@@ -1488,7 +1487,7 @@ void connect::load_game()
 		level_["random_seed"] = start_data["random_seed"];
 		level_["random_calls"] = start_data["random_calls"];
 
-		// Adds the replay data, and the replay start, to the level, 
+		// Adds the replay data, and the replay start, to the level,
 		// so clients can receive it.
 		level_.add_child("replay") = state_.replay_data;
 		if(!state_.starting_pos.empty())
@@ -1531,7 +1530,7 @@ void connect::load_game()
 	// Add the map name to the title.
 	append_to_title(" - " + level_["name"]);
 
-	
+
 	std::string era;
 	if (params_.saved_game
 		&& level_.child("snapshot")->child("era"))
@@ -1554,7 +1553,7 @@ void connect::load_game()
 		}
 		// FIXME: @todo We should tell user about missing era but still load game
 		WRN_CF << "Missing era in MP load game " << era << "\n";
-		
+
 	}
 	if (era_cfg)
 	{
@@ -1634,15 +1633,15 @@ void connect::update_playerlist_state(bool silent)
 	waiting_label_.set_text(sides_available() ? _("Waiting for players to join...") : "");
 	launch_.enable(!sides_available());
 
-	// If the "gamelist_" variable has users, use it. 
+	// If the "gamelist_" variable has users, use it.
 	// Else, extracts the user list from the actual player list.
 	if (gamelist().child("user") != NULL) {
 		ui::gamelist_updated(silent);
 	} else {
 		// Updates the player list
 		std::vector<std::string> playerlist;
-		for(connected_user_list::const_iterator itor = users_.begin(); 
-													   itor != users_.end(); 
+		for(connected_user_list::const_iterator itor = users_.begin();
+													   itor != users_.end();
 													   ++itor) {
 			playerlist.push_back(itor->name);
 		}
@@ -1677,7 +1676,7 @@ int connect::find_player_side(const std::string& id) const
 
 void connect::update_user_combos()
 {
-	for (side_list::iterator itor = sides_.begin(); 
+	for (side_list::iterator itor = sides_.begin();
 									itor != sides_.end(); ++itor) {
 		itor->update_user_list();
 	}
@@ -1692,7 +1691,7 @@ void connect::kick_player(const std::string& name)
 	if(player->controller != CNTR_NETWORK)
 		return;
 
-	// If we are the server, kick the user ourselves; 
+	// If we are the server, kick the user ourselves;
 	// else, ask the server to do so.
 	if(network::is_server()) {
 		network::disconnect(player->connection);

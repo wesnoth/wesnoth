@@ -40,7 +40,7 @@ class team;
 class play_controller : public hotkey::command_executor, public events::handler, public events::observer
 {
 public:
-	play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
+	play_controller(const config& level, game_state& state_of_game,
 		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay, bool is_replay);
 	~play_controller();
 
@@ -97,7 +97,7 @@ protected:
 	bool clear_shroud();
 	bool enemies_visible() const;
 	void enter_textbox();
-	
+
 	team& current_team();
 	const team& current_team() const;
 
@@ -120,7 +120,6 @@ protected:
 	game_display* gui_;
 	const set_random_generator generator_setter;
 	const statistics::scenario_context statistics_context_;
-	const game_data& gameinfo_;
 	const config& level_;
 	const config& game_config_;
 	std::vector<team> teams_;

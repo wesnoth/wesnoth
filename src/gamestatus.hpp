@@ -71,10 +71,10 @@ struct wml_menu_item
 	config command;
 };
 
-//! Information on a particular player of the game. 
+//! Information on a particular player of the game.
 struct player_info
 {
-	player_info() : 
+	player_info() :
 		name(),
 		gold(-1) ,
 		gold_add(false),
@@ -82,21 +82,21 @@ struct player_info
 		can_recruit()
 	{}
 
-	std::string name;                  //!< Stores the current_player name 
-	int gold;                          //!< Amount of gold the player has saved 
-	bool gold_add;                     //!< Amount of gold is added to the 
+	std::string name;                  //!< Stores the current_player name
+	int gold;                          //!< Amount of gold the player has saved
+	bool gold_add;                     //!< Amount of gold is added to the
 	                                   //!< starting gold, if not it uses the highest
-	                                   //!< of the two. 
-	std::vector<unit> available_units; //!< Units the player may recall 
-	std::set<std::string> can_recruit; //!< Units the player has the ability to recruit 
-	
+	                                   //!< of the two.
+	std::vector<unit> available_units; //!< Units the player may recall
+	std::set<std::string> can_recruit; //!< Units the player has the ability to recruit
+
 	void debug();
 };
 
 class game_state : public variable_set
 {
 public:
-	game_state() : 
+	game_state() :
 		label(),
 		version(),
 		campaign_type(),
@@ -111,11 +111,11 @@ public:
 		players(),
 		scoped_variables(),
 		wml_menu_items(),
-		difficulty("NORMAL"), 
+		difficulty("NORMAL"),
 		replay_data(),
 		starting_pos(),
 		snapshot(),
-		last_selected(gamemap::location::null_location), 
+		last_selected(gamemap::location::null_location),
 		variables(),
 		temporaries(),
 		random_seed_(rand()),
@@ -124,7 +124,7 @@ public:
 		{}
 
 	game_state(const game_state& state);
-	game_state(const game_data& data, const config& cfg, bool show_replay = false);
+	game_state(const config& cfg, bool show_replay = false);
 
 	~game_state();
 	game_state& operator=(const game_state& state);
@@ -201,9 +201,9 @@ public:
 	//! Resets the random to the 0 calls and the seed to the random
 	//! this way we stay in the same sequence but don't have a lot
 	//! calls. Used when moving to the next scenario.
-	void rotate_random() 
+	void rotate_random()
 		{ random_seed_ = random_pool_; random_calls_ = 0; }
-	
+
 
 	int get_random_seed() const { return random_seed_; }
 	int get_random_calls() const { return random_calls_; }
@@ -226,7 +226,7 @@ private:
 	void random_next();
 
 	//! Loads the recall list.
-	void load_recall_list(const game_data& data, const config::child_list& players);
+	void load_recall_list(const config::child_list& players);
 };
 
 
@@ -317,7 +317,7 @@ scoped_ostream open_save_game(const std::string &label);
 void finish_save_game(config_writer &out, const game_state& gamestate, const std::string &label);
 
 //! Load/Save games.
-void load_game(const game_data& data, const std::string& name, game_state& gamestate, std::string* error_log);
+void load_game(const std::string& name, game_state& gamestate, std::string* error_log);
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log);
 //! Throws gamestatus::save_game_failed
 void save_game(const game_state& gamestate);

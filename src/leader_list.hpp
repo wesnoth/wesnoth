@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file leader_list.hpp 
+//! @file leader_list.hpp
 //!
 
 #ifndef LEADER_LIST_HPP_INCLUDED
@@ -29,7 +29,7 @@ class leader_list_manager
 public:
 	static const std::string random_enemy_picture;
 
-	leader_list_manager(const config::child_list& side_list, const game_data* data,
+	leader_list_manager(const config::child_list& side_list,
 			gui::combo* leader_combo = NULL, gui::combo* gender_combo = NULL);
 
 	void set_leader_combo(gui::combo* combo);
@@ -47,7 +47,6 @@ private:
 	std::vector<std::string> genders_;
 	std::vector<std::string> gender_ids_;
 	config::child_list side_list_;
-	const game_data* data_;
 	gui::combo* leader_combo_;
 	gui::combo* gender_combo_;
 };

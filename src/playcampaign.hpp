@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file playcampaign.hpp 
+//! @file playcampaign.hpp
 //!
 
 #ifndef PLAYCAMPAIGN_H_INCLUDED
@@ -24,7 +24,6 @@
 class display;
 class game_state;
 class config;
-class game_data;
 struct upload_log;
 
 enum io_type_t {
@@ -33,17 +32,15 @@ enum io_type_t {
 	IO_CLIENT
 };
 
-LEVEL_RESULT play_game(display& disp, game_state& state, 
+LEVEL_RESULT play_game(display& disp, game_state& state,
 		const config& game_config,
-		const game_data& units_data, 
 		upload_log &log,
 		io_type_t io_type=IO_NONE,
 		bool skip_replay = false);
 
 
-void play_replay(display& disp, game_state& state, 
-		const config& game_config,
-		const game_data& units_data, CVideo& video);
+void play_replay(display& disp, game_state& state,
+		const config& game_config, CVideo& video);
 
 #endif // PLAYCAMPAIGN_H_INCLUDED
 

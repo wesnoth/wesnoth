@@ -38,7 +38,7 @@ struct command_disabler
 class mouse_handler{
 public:
 	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
-		gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack);
+		gamestatus& status, undo_list& undo_stack, undo_list& redo_stack);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_team(const int team_number);
@@ -95,7 +95,6 @@ private:
 	unit_map& units_;
 	gamemap& map_;
 	gamestatus& status_;
-	const game_data& gameinfo_;
 	undo_list& undo_stack_;
 	undo_list& redo_stack_;
 

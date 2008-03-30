@@ -49,9 +49,9 @@ enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAV
 	}
 
 struct end_level_exception {
-	end_level_exception(LEVEL_RESULT res, const int percentage = -1, 
+	end_level_exception(LEVEL_RESULT res, const int percentage = -1,
 			const bool add = false, const bool bonus=true) :
-   		result(res), 
+   		result(res),
 		gold_bonus(bonus),
 		carryover_percentage(percentage),
 		carryover_add(add)
@@ -90,7 +90,7 @@ protected:
 class menu_handler : private chat_handler {
 public:
 	menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
-		const config& level, const game_data& gameinfo, const gamemap& map,
+		const config& level, const gamemap& map,
 		const config& game_config, const gamestatus& status, game_state& gamestate,
 		undo_list& undo_stack, undo_list& redo_stack);
 	virtual ~menu_handler();
@@ -171,7 +171,6 @@ private:
 	unit_map& units_;
 	std::vector<team>& teams_;
 	const config& level_;
-	const game_data& gameinfo_;
 	const gamemap& map_;
 	const config& game_config_;
 	const gamestatus& status_;

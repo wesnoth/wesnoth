@@ -38,9 +38,9 @@ public:
 	//! info is structure which holds references to all the important objects
 	//! that an AI might need access to, in order to make and implement its decisions.
 	struct info {
-		info(game_display& disp, const gamemap& map, const game_data& gameinfo, unit_map& units,
+		info(game_display& disp, const gamemap& map, unit_map& units,
 			std::vector<team>& teams, unsigned int team_num, const gamestatus& state, class turn_info& turn_data, class game_state& game_state)
-			: disp(disp), map(map), gameinfo(gameinfo), units(units), teams(teams),
+			: disp(disp), map(map), units(units), teams(teams),
 			  team_num(team_num), state(state), turn_data_(turn_data), game_state_(game_state)		{}
 
 		//! The display object, used to draw the moves the AI makes.
@@ -48,9 +48,6 @@ public:
 
 		//! The map of the game -- use this object to find the terrain at any location.
 		const gamemap& map;
-
-		//! Contains information about the types of units and races in the game.
-		const game_data& gameinfo;
 
 		//! The map of units. It maps locations -> units.
 		unit_map& units;

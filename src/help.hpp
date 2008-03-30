@@ -19,7 +19,6 @@
 
 class config;
 class display;
-class game_data;
 class gamemap;
 
 #include "hotkeys.hpp"
@@ -28,7 +27,7 @@ class gamemap;
 namespace help {
 
 struct help_manager {
-	help_manager(const config *game_config, const game_data *game_info, gamemap *map);
+	help_manager(const config *game_config, gamemap *map);
 	~help_manager();
 };
 

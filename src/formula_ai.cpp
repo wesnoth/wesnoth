@@ -60,7 +60,7 @@ public:
 			ai.swap_move_map(backup);
 		}
 		swapper(formula_ai& ai, position_callable& pos)
-		  : ai(ai), a(ai.get_info().units), b(pos.units_) { 
+		  : ai(ai), a(ai.get_info().units), b(pos.units_) {
 		  swap();
 		}
 
@@ -111,7 +111,7 @@ private:
 
 		return variant(best);
 	}
-	
+
 	const formula_ai& ai_;
 };
 
@@ -144,7 +144,7 @@ private:
 		else
 			return variant();
 	}
-	
+
 	const formula_ai& ai_;
 };
 
@@ -164,7 +164,7 @@ private:
 			pair->first = analysis->movements[n].second;
 			units_with_moves.add(pair);
 		}
-		
+
 		std::vector<variant> vars;
 		if(analysis->chance_to_kill > 0.0) {
 			unit_map units(units_with_moves);
@@ -317,8 +317,8 @@ public:
 	                int weapon)
 	  : move_from_(move_from), src_(src), dst_(dst),
 		bc_(ai.get_info().map, ai.get_info().teams, ai.get_info().units,
-			ai.get_info().state, ai.get_info().gameinfo,
-			src, dst, weapon, -1, 1.0, NULL, &ai.get_info().units.find(move_from)->second)
+			ai.get_info().state, src, dst, weapon, -1, 1.0, NULL,
+			&ai.get_info().units.find(move_from)->second)
 	{
 	}
 
@@ -619,9 +619,9 @@ void formula_ai::play_turn()
 	move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
 	}
 	//execute units formulas first
-	
+
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
-	{		
+	{
 		std::vector<game_logic::const_formula_ptr> unit_candidate_moves; 
 		unit_candidate_moves.push_back(move_formula_);
 		if ( (i->second.side() == get_info().team_num) && i->second.has_formula() )
@@ -632,7 +632,7 @@ void formula_ai::play_turn()
 			callable.add_ref();
 			callable.add("me", variant(new unit_callable(*i, current_team(), get_info().team_num)));
 			make_move(formula, callable);
-		}		
+		}
 		candidate_moves.insert(std::pair<const std::string, std::vector<game_logic::const_formula_ptr> >
 					(i->second.underlying_id(), unit_candidate_moves));
 	}
@@ -661,7 +661,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();
 
-	const variant v = f.execute(callable);	
+	const variant v = f.execute(callable);
 
 	if ( execute_variant(v, true ) )
 		return "Made move: " + v.to_debug_string();
@@ -743,7 +743,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		if(i->is_null()) {
 			continue;
 		}
-		
+
 		const move_callable* move = try_convert_variant<move_callable>(*i);
 		const attack_callable* attack = try_convert_variant<attack_callable>(*i);
 		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(*i);
@@ -766,7 +766,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				//ordered to move so it can get a different command.
 				continue;
 			}
-			
+
 			if(attack->move_from() != attack->src()) {
 				move_unit(attack->move_from(), attack->src(), possible_moves_);
 			}
@@ -776,7 +776,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else if(attack_analysis) {
 			//If we get an attack analysis back we will do the first attack.
 			//Then the AI can get run again and re-choose.
-			assert(attack_analysis->movements.empty() == false);			
+			assert(attack_analysis->movements.empty() == false);
 
 			//make sure that unit which has to attack is at given position and is able to attack
 			unit_map::const_iterator unit = units_.find(attack_analysis->movements.front().first);
@@ -803,7 +803,6 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			if(get_info().units.count(src)) {
 				battle_context bc(get_info().map, get_info().teams,
 				                  get_info().units, get_info().state,
-								  get_info().gameinfo,
 				                  src, dst, -1, -1, 1.0, NULL,
 								  &get_info().units.find(src)->second);
 				attack_enemy(attack_analysis->movements.front().second,
@@ -838,7 +837,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				std::cerr << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
 		}
 	}
-	
+
 	return made_move;
 }
 

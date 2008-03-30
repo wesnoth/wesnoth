@@ -33,7 +33,7 @@ class unit;
 class turn_info
 {
 public:
-	turn_info(const game_data& gameinfo, game_state& state_of_game,
+	turn_info(game_state& state_of_game,
 	          const gamestatus& status, game_display& gui, gamemap& map,
 		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
 		  replay_network_sender& network_sender, undo_list& undo_stack);
@@ -44,12 +44,12 @@ public:
 
 	void send_data();
 
-	enum PROCESS_DATA_RESULT { 
-		PROCESS_CONTINUE, 
-		PROCESS_RESTART_TURN, 
-		PROCESS_END_TURN, 
+	enum PROCESS_DATA_RESULT {
+		PROCESS_CONTINUE,
+		PROCESS_RESTART_TURN,
+		PROCESS_END_TURN,
 		//! When the host uploaded the next scenario this is returned.
-		PROCESS_END_LINGER        
+		PROCESS_END_LINGER
 		};
 
 	//function which will process incoming network data, and act on it. If there is
@@ -66,7 +66,6 @@ public:
 private:
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 
-	const game_data& gameinfo_;
 	game_state& state_of_game_;
 	const gamestatus& status_;
 	game_display& gui_;

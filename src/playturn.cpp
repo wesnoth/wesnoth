@@ -28,11 +28,11 @@
 #include "team.hpp"
 #include "unit.hpp"
 
-turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
+turn_info::turn_info(game_state& state_of_game,
                      const gamestatus& status, game_display& gui, gamemap& map,
 		     std::vector<team>& teams, unsigned int team_num, unit_map& units,
 			 replay_network_sender& replay_sender, undo_list& undo_stack)
-  : gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
+  : state_of_game_(state_of_game), status_(status),
     gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), undo_stack_(undo_stack),
 	replay_sender_(replay_sender), replay_error_("network_replay_error"),
@@ -121,7 +121,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			replay_obj.start_replay();
 
 			try{
-				turn_end = do_replay(gui_, map_, gameinfo_, units_, teams_,
+				turn_end = do_replay(gui_, map_, units_, teams_,
 						team_num_, status_, state_of_game_, &replay_obj);
 			}
 			catch (replay::error& e){
@@ -177,7 +177,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			{
 				restart = false;
 			}
-			
+
 			return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 		}
 	}

@@ -67,12 +67,12 @@ void remove_old_auto_saves()
 	}
 }
 
-std::vector<std::string> create_unit_table(const game_data& gameinfo, const statistics::stats::str_int_map& m, unsigned int team)
+std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m, unsigned int team)
 {
 	std::vector<std::string> table;
 	for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		const game_data::unit_type_map::const_iterator type = gameinfo.unit_types.find(i->first);
-		if(type == gameinfo.unit_types.end()) {
+		const unit_type_data::unit_type_map::const_iterator type = unit_type_data::instance().unit_types.find(i->first);
+		if(type == unit_type_data::instance().unit_types.end()) {
 			continue;
 		}
 
@@ -92,14 +92,13 @@ std::vector<std::string> create_unit_table(const game_data& gameinfo, const stat
 class statistics_dialog : public gui::dialog
 {
 public:
-	statistics_dialog(game_display &disp, const std::string& title, const game_data& gameinfo, const unsigned int team,
+	statistics_dialog(game_display &disp, const std::string& title, const unsigned int team,
 		const std::string& player);
 	~statistics_dialog();
 protected:
 	void action(gui::dialog_process_info &dp_info);
 private:
 	gui::dialog_button *detail_btn_;
-	const game_data& gameinfo_;
 	std::string player_name_;
 	statistics::stats stats_;
 	unsigned int team_num_;
@@ -124,23 +123,23 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 	case gui::CLOSE_DIALOG:
 		break;
 	case 0:
-		items_sub = create_unit_table(gameinfo_, stats_.recruits, team_num_);
+		items_sub = create_unit_table(stats_.recruits, team_num_);
 		title = _("Recruits");
 		break;
 	case 1:
-		items_sub = create_unit_table(gameinfo_, stats_.recalls, team_num_);
+		items_sub = create_unit_table(stats_.recalls, team_num_);
 		title = _("Recalls");
 		break;
 	case 2:
-		items_sub = create_unit_table(gameinfo_, stats_.advanced_to, team_num_);
+		items_sub = create_unit_table(stats_.advanced_to, team_num_);
 		title = _("Advancements");
 		break;
 	case 3:
-		items_sub = create_unit_table(gameinfo_, stats_.deaths, team_num_);
+		items_sub = create_unit_table(stats_.deaths, team_num_);
 		title = _("Losses");
 		break;
 	case 4:
-		items_sub = create_unit_table(gameinfo_, stats_.killed, team_num_);
+		items_sub = create_unit_table(stats_.killed, team_num_);
 		//! @todo FIXME? Perhaps killed units shouldn't have the same team-color as your own.
 		title = _("Kills");
 		break;
@@ -157,8 +156,8 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 }
 
 statistics_dialog::statistics_dialog(game_display &disp, const std::string& title,
-const game_data& gameinfo, const unsigned int team, const std::string& player)
-: dialog(disp, title, "", gui::NULL_DIALOG), gameinfo_(gameinfo), player_name_(player),
+const unsigned int team, const std::string& player)
+: dialog(disp, title, "", gui::NULL_DIALOG), player_name_(player),
 team_num_(team), unit_count_(5,0)
 {
 	detail_btn_ = new gui::standard_dialog_button(disp.video(), _("Details"), 0 , false);
@@ -321,10 +320,10 @@ namespace events{
 	}
 
 	menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
-		const config& level, const game_data& gameinfo, const gamemap& map,
+		const config& level, const gamemap& map,
 		const config& game_config, const gamestatus& status, game_state& gamestate,
 		undo_list& undo_stack, undo_list& redo_stack) :
-	gui_(gui), units_(units), teams_(teams), level_(level), gameinfo_(gameinfo), map_(map),
+	gui_(gui), units_(units), teams_(teams), level_(level), map_(map),
 		game_config_(game_config), status_(status), gamestate_(gamestate), undo_stack_(undo_stack),
 		redo_stack_(redo_stack)
 	{
@@ -354,7 +353,7 @@ namespace events{
 		//add player's name to title of dialog
 		std::stringstream title_str;
 		title_str <<  _("Statistics") << " (" << player << ")";
-		statistics_dialog stats_dialog(*gui_, title_str.str(), gameinfo_, team_num, player);
+		statistics_dialog stats_dialog(*gui_, title_str.str(), team_num, player);
 		stats_dialog.show();
 	}
 
@@ -890,7 +889,7 @@ private:
 	void menu_handler::load_game(){
 		bool show_replay = false;
 		bool cancel_orders = false;
-		const std::string game = dialogs::load_game_dialog(*gui_, game_config_, gameinfo_, &show_replay, &cancel_orders);
+		const std::string game = dialogs::load_game_dialog(*gui_, game_config_, &show_replay, &cancel_orders);
 		if(game != "") {
 			throw game::load_game_exception(game,show_replay,cancel_orders);
 		}
@@ -979,8 +978,8 @@ private:
 		const std::set<std::string>& recruits = current_team.recruits();
 		for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
 			const std::map<std::string,unit_type>::const_iterator
-					u_type = gameinfo_.unit_types.find(*it);
-			if(u_type == gameinfo_.unit_types.end()) {
+					u_type = unit_type_data::instance().unit_types.find(*it);
+			if(u_type == unit_type_data::instance().unit_types.end()) {
 				ERR_NG << "could not find unit '" << *it << "'\n";
 				return;
 			}
@@ -1058,8 +1057,8 @@ private:
 		}
 
 		const std::map<std::string,unit_type>::const_iterator
-				u_type = gameinfo_.unit_types.find(name);
-		assert(u_type != gameinfo_.unit_types.end());
+				u_type = unit_type_data::instance().unit_types.find(name);
+		assert(u_type != unit_type_data::instance().unit_types.end());
 
 		if(u_type->second.cost() > current_team.gold()) {
 			gui::message_dialog(*gui_,"",
@@ -1069,7 +1068,7 @@ private:
 
 			//create a unit with traits
 			recorder.add_recruit(recruit_num, last_hex);
-			unit new_unit(&gameinfo_,&units_,&map_,&status_,&teams_,&(u_type->second),team_num,true);
+			unit new_unit(&units_,&map_,&status_,&teams_,&(u_type->second),team_num,true);
 			gamemap::location loc = last_hex;
 			const std::string& msg = recruit_unit(map_,team_num,units_,new_unit,loc,(gui_!=NULL));
 			if(msg.empty()) {
@@ -1195,7 +1194,7 @@ private:
 					unit& un = recall_list[res];
 					gamemap::location loc = last_hex;
 					recorder.add_recall(res,loc);
-					un.set_game_context(&gameinfo_,&units_,&map_,&status_,&teams_);
+					un.set_game_context(&units_,&map_,&status_,&teams_);
 					const std::string err = recruit_unit(map_,team_num,units_,un,loc,(gui_!=NULL));
 					if(!err.empty()) {
 						recorder.undo();
@@ -1348,7 +1347,7 @@ private:
 				unit un = recall_list[action.recall_pos];
 
 				recorder.add_recall(action.recall_pos,action.recall_loc);
-				un.set_game_context(&gameinfo_,&units_,&map_,&status_,&teams_);
+				un.set_game_context(&units_,&map_,&status_,&teams_);
 				const std::string& msg = recruit_unit(map_,team_num,units_,un,action.recall_loc,(gui_!=NULL));
 				if(msg.empty()) {
 					statistics::recall_unit(un);
@@ -1603,12 +1602,12 @@ private:
 									_("Type");
 		options.push_back(heading);
 
-		for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
+		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.begin(); i != unit_type_data::instance().unit_types.end(); ++i) {
 			std::stringstream row;
 
 			std::string race;
-			const race_map::const_iterator race_it = gameinfo_.unit_types.races().find(i->second.race());
-			if (race_it != gameinfo_.unit_types.races().end()) {
+			const race_map::const_iterator race_it = unit_type_data::instance().unit_types.races().find(i->second.race());
+			if (race_it != unit_type_data::instance().unit_types.races().end()) {
 				race = race_it->second.plural_name();
 			}
 			row << race << COLUMN_SEPARATOR;
@@ -1638,7 +1637,7 @@ private:
 		if (size_t(choice) < unit_choices.size()) {
 			units_.erase(mousehandler.get_last_hex());
 
-			unit chosen(&gameinfo_,&units_,&map_,&status_,&teams_,unit_choices[choice],1,false);
+			unit chosen(&units_,&map_,&status_,&teams_,unit_choices[choice],1,false);
 			chosen.new_turn();
 			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),chosen));
 
@@ -2278,7 +2277,7 @@ private:
 			config cfg;
 			i->second.write(cfg);
 			cfg[name] = value;
-			i->second = unit(&gameinfo_,&units_,&map_,&status_,&teams_,cfg);
+			i->second = unit(&units_,&map_,&status_,&teams_,cfg);
 			gui_->invalidate(i->first);
 			gui_->invalidate_unit();
 		} else if(game_config::debug && cmd == "buff") {
@@ -2297,13 +2296,13 @@ private:
 				gui_->invalidate_unit();
 			}
 		} else if(game_config::debug && cmd == "create" && map_.on_board(mousehandler.get_last_hex())) {
-			const game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.find(data);
-			if(i == gameinfo_.unit_types.end()) {
+			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.find(data);
+			if(i == unit_type_data::instance().unit_types.end()) {
 				return;
 			}
 
 			units_.erase(mousehandler.get_last_hex());
-			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false)));
+			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit(&units_,&map_,&status_,&teams_,&i->second,1,false)));
 			gui_->invalidate(mousehandler.get_last_hex());
 			gui_->invalidate_unit();
 		} else if(game_config::debug && cmd == "fog") {
@@ -2331,8 +2330,8 @@ private:
 		replay_network_sender dummy_sender(dummy_replay);
 		undo_list dummy_undo;
 
-		turn_info turn_data(gameinfo_, gamestate_, status_, *gui_, const_cast<gamemap&>(map_), teams_, team_num, units_, dummy_sender, dummy_undo);
-		ai_interface::info info(*gui_, map_, gameinfo_, units_, teams_, team_num, status_, turn_data, gamestate_);
+		turn_info turn_data(gamestate_, status_, *gui_, const_cast<gamemap&>(map_), teams_, team_num, units_, dummy_sender, dummy_undo);
+		ai_interface::info info(*gui_, map_, units_, teams_, team_num, status_, turn_data, gamestate_);
 		formula_ai eval(info);
 		try {
 			add_chat_message(time(NULL), _("ai"), 0, eval.evaluate(str));

@@ -131,7 +131,6 @@ public:
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
 	const config& game_config(){return game_config_;};
-	const game_data& units_data(){return units_data_;};
 
 private:
 	game_controller(const game_controller&);
@@ -173,7 +172,6 @@ private:
 	int force_bpp_;
 
 	config game_config_;
-	game_data units_data_;
 
 	util::scoped_ptr<game_display> disp_;
 
@@ -249,7 +247,7 @@ game_controller::game_controller(int argc, char** argv)
 			}
 		} else if(val == "--with-replay") {
 			loaded_game_show_replay_ = true;
-		
+
 		} else if(val == "--nogui") {
 			no_gui_ = true;
 			no_sound = true;
@@ -267,7 +265,7 @@ game_controller::game_controller(int argc, char** argv)
 			//Do we have any server specified ?
 			if(argc_ > arg_+1){
 				multiplayer_server_ = argv_[arg_+1];
-				++arg_;	
+				++arg_;
 			//Pick the first server in config
 			}else{
 				if(game_config::server_list.size() > 0)
@@ -466,7 +464,7 @@ bool game_controller::init_video()
 
 bool game_controller::init_config()
 {
-	units_data_.clear();
+	unit_type_data::instance().clear();
 	//Resets old_defines_map_, to force refresh_game_cfg to reload
 	//everything.
 	old_defines_map_.clear();
@@ -527,7 +525,7 @@ bool game_controller::play_test()
 
 	try {
 		upload_log nolog(false);
-		::play_game(disp(),state_,game_config_,units_data_,nolog);
+		::play_game(disp(),state_,game_config_,nolog);
 	} catch(game::load_game_exception& e) {
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
@@ -723,8 +721,7 @@ bool game_controller::play_multiplayer_mode()
 	try {
 		upload_log nolog(false);
 		state_.snapshot = level;
-		::play_game(disp(),state_,game_config_,units_data_,nolog);
-		//play_level(units_data_,game_config_,&level,video_,state_,story);
+		::play_game(disp(),state_,game_config_,nolog);
 	} catch(game::error& e) {
 		std::cerr << "caught error: '" << e.message << "'\n";
 	} catch(game::load_game_exception& e) {
@@ -755,7 +752,7 @@ bool game_controller::load_game()
 	bool show_replay = loaded_game_show_replay_;
 	bool cancel_orders = loaded_game_cancel_orders_;
 
-	const std::string game = loaded_game_.empty() ? dialogs::load_game_dialog(disp(),game_config_,units_data_,&show_replay,&cancel_orders) : loaded_game_;
+	const std::string game = loaded_game_.empty() ? dialogs::load_game_dialog(disp(),game_config_,&show_replay,&cancel_orders) : loaded_game_;
 
 	loaded_game_ = "";
 
@@ -828,7 +825,7 @@ bool game_controller::load_game()
 			}
 		}
 
-		state_ = game_state(units_data_, cfg, show_replay);
+		state_ = game_state(cfg, show_replay);
 
 		// Get the status of the random in the snapshot.
 		// For a replay we need to restore the start only, the replaying gets at
@@ -892,7 +889,7 @@ bool game_controller::load_game()
 				(**sides.first)["controller"] = "human";
 		}
 	}
-	
+
 	if (cancel_orders) {
 		for(config::child_itors sides = state_.snapshot.child_range("side");
 			    sides.first != sides.second; ++sides.first) {
@@ -1603,7 +1600,7 @@ bool game_controller::play_multiplayer()
 			defines_map_[state_.campaign_define] = preproc_define();
 			refresh_game_cfg();
 			events::discard(INPUT_MASK); // prevent the "keylogger" effect
-			cursor::set(cursor::NORMAL); 
+			cursor::set(cursor::NORMAL);
 		}
 
 		if(res == 2) {
@@ -1613,8 +1610,8 @@ bool game_controller::play_multiplayer()
 			const mp::controller cntr = mp::CNTR_LOCAL;
 			const bool is_server = false;
 
-			mp::start_server(disp(), game_config_, units_data_, cntr, is_server);
-	
+			mp::start_server(disp(), game_config_, cntr, is_server);
+
 		} else if(res == 0 || res == 1 || res == 3 ) {
 			std::string host;
 			if(res == 0) {
@@ -1623,7 +1620,7 @@ bool game_controller::play_multiplayer()
 				host = multiplayer_server_;
 				multiplayer_server_ = "";
 			}
-			mp::start_client(disp(), game_config_, units_data_, host);
+			mp::start_client(disp(), game_config_, host);
 		}
 	} catch(game::load_game_failed& e) {
 		gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
@@ -1895,7 +1892,7 @@ void game_controller::read_game_cfg(bool use_cache)
 void game_controller::set_unit_data(){
     const config* const units = game_config_.child("units");
     if(units != NULL) {
-        units_data_.set_config(*units);
+        unit_type_data::instance().set_config(*units);
     }
 }
 
@@ -1905,7 +1902,7 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 		if(old_defines_map_.empty() || defines_map_ != old_defines_map_ || reset_translations) {
 			cursor::setter cur(cursor::WAIT);
 
-			units_data_.clear();
+			unit_type_data::instance().clear();
 			if(!reset_translations) {
 				game_config_.clear();
 				read_game_cfg(use_caching_);
@@ -2006,7 +2003,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 					   || state_.campaign_type == "scenario"
 					   || state_.campaign_type == "tutorial");
 
-		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_, log);
+		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_, log);
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if((result == VICTORY || result == LEVEL_CONTINUE_NO_SAVE) && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
@@ -2032,7 +2029,7 @@ void game_controller::play_replay()
 	const binary_paths_manager bin_paths_manager(game_config_);
 
 	try {
-		::play_replay(disp(),state_,game_config_,units_data_,video_);
+		::play_replay(disp(),state_,game_config_,video_);
 
 	} catch(game::load_game_exception& e) {
 
@@ -2064,13 +2061,13 @@ void safe_exit(int res) {
 	exit(res);
 }
 
-// maybe this should go in a util file somewhere?		
-void gzip_codec(const std::string & input_file, const std::string & output_file, bool encode) 
+// maybe this should go in a util file somewhere?
+void gzip_codec(const std::string & input_file, const std::string & output_file, bool encode)
 {
 	try {
-	std::ofstream ofile(output_file.c_str(), std::ios_base::out 
+	std::ofstream ofile(output_file.c_str(), std::ios_base::out
 			| std::ios_base::binary | std::ios_base::binary);
-			std::ifstream ifile(input_file.c_str(), 
+			std::ifstream ifile(input_file.c_str(),
 			std::ios_base::in | std::ios_base::binary);
 		boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
 		if(encode)
@@ -2413,7 +2410,7 @@ static int play_game(int argc, char** argv)
 		if(game.play_multiplayer_mode() == false) {
 			return 0;
 		}
-	
+
 		recorder.clear();
 
 		//Start directly a campaign
@@ -2466,7 +2463,7 @@ static int play_game(int argc, char** argv)
 			about::show_about(game.disp());
 			continue;
 		} else if(res == gui::SHOW_HELP) {
-			help::help_manager help_manager(&game.game_config(), &game.units_data(), NULL);
+			help::help_manager help_manager(&game.game_config(), NULL);
 			help::show_help(game.disp());
 			continue;
 		} else if(res == gui::GET_ADDONS) {

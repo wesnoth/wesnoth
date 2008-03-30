@@ -27,12 +27,13 @@ class unit;
 
 class attack_type;
 class team;
-class game_data;
+class unit_type_data;
 
 #include "global.hpp"
 #include "map.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
+#include "unit_types.hpp"
 
 #include <deque>
 #include <sstream>
@@ -100,7 +101,7 @@ public:
 				   const attack_type *opp_weapon,
 				   const unit_map& units,
 				   const std::vector<team>& teams,
-				   const gamestatus& status, const gamemap& map, const game_data& gamedata);
+				   const gamestatus& status, const gamemap& map);
 		~unit_stats();
 
 		//! Dumps the statistics of a unit on stdout. Remove it eventually.
@@ -112,7 +113,7 @@ public:
 	// 0.0 means we ignore harm weight).
 	// prev_def is for predicting multiple attacks against a defender.
 	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-				   const gamestatus& status, const game_data& gamedata,
+				   const gamestatus& status,
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 				   int attacker_weapon = -1, int defender_weapon = -1, double aggression = 0.0, const combatant *prev_def = NULL, const unit* attacker_ptr=NULL);
 
@@ -144,13 +145,13 @@ private:
 
 	int choose_attacker_weapon(const unit &attacker, const unit &defender,
 								const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-								const gamestatus& status, const game_data& gamedata,
+								const gamestatus& status,
 								const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 								double harm_weight, int *defender_weapon, const combatant *prev_def);
 
 	int choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
 							   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-							   const gamestatus& status, const game_data& gamedata,
+							   const gamestatus& status,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc, const combatant *prev_def);
 
 	// Statistics of the units.
@@ -171,7 +172,6 @@ class attack {
             int defend_with,
             unit_map& units,
             const gamestatus& state,
-            const game_data& info,
 			bool update_display = true);
 		~attack();
 	private:
@@ -187,7 +187,6 @@ class attack {
 		int defend_with_;
 		unit_map& units_;
 		const gamestatus& state_;
-		const game_data& info_;
 		unit_map::iterator a_,d_; // attacker and defender
 		std::string a_id_, d_id_;
 		std::stringstream errbuf_;
@@ -237,16 +236,14 @@ void calculate_healing(game_display& disp, const gamemap& map,
 //! and the name of the unit it is advancing to,
 //! Will return the advanced version of this unit.
 //! (with traits and items retained).
-unit get_advanced_unit(const game_data& info,
-                  unit_map& units,
+unit get_advanced_unit(unit_map& units,
                   const gamemap::location& loc, const std::string& advance_to);
 
 //! Function which will advance the unit at loc to 'advance_to'.
 //  Note that 'loc' is not a reference, because if it were a reference,
 //  we couldn't safely pass in a reference to the item in the map
 //  that we're going to delete, since deletion would invalidate the reference.
-void advance_unit(const game_data& info,
-                  unit_map& units,
+void advance_unit(unit_map& units,
                   gamemap::location loc, const std::string& advance_to);
 
 //! function which tests if the unit at loc is currently affected by leadership.
@@ -282,26 +279,26 @@ int combat_modifier(const gamestatus& status,
 
 //! Records information to be able to undo a movement.
 struct undo_action {
-	undo_action(unit u, 
-		const std::vector<gamemap::location>& rt, 
+	undo_action(unit u,
+		const std::vector<gamemap::location>& rt,
 		int sm, int timebonus = 0, int orig = -1) :
-			route(rt), 
-			starting_moves(sm), 
+			route(rt),
+			starting_moves(sm),
 			original_village_owner(orig),
 			recall_loc(),
-			recall_pos(-1), 
-			affected_unit(u), 
-			countdown_time_bonus(timebonus) 
+			recall_pos(-1),
+			affected_unit(u),
+			countdown_time_bonus(timebonus)
 			{}
 
 	undo_action(const unit& u, const gamemap::location& loc, const int pos) :
 		route(),
 		starting_moves(),
 		original_village_owner(),
-		recall_loc(loc), 
-		recall_pos(pos), 
-		affected_unit(u), 
-		countdown_time_bonus(1) 
+		recall_loc(loc),
+		recall_pos(pos),
+		affected_unit(u),
+		countdown_time_bonus(1)
 		{}
 
 	std::vector<gamemap::location> route;
@@ -322,7 +319,7 @@ typedef std::deque<undo_action> undo_list;
 //! a goto order will be set.
 //! If move_recorder is not NULL, the move will be recorded in it.
 //! If undos is not NULL, undo information will be added.
-size_t move_unit(game_display* disp, 
+size_t move_unit(game_display* disp,
 				const gamemap& map,
 				unit_map& units, std::vector<team>& teams,
 				std::vector<gamemap::location> steps,
@@ -331,7 +328,7 @@ size_t move_unit(game_display* disp,
 				bool continue_move = false, bool should_clear_shroud=true);
 
 //! Function which recalculates the fog.
-void recalculate_fog(const gamemap& map, 
+void recalculate_fog(const gamemap& map,
 		      unit_map& units, std::vector<team>& teams, int team);
 
 //! Function which will clear shroud away for the given 0-based team

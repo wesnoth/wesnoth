@@ -32,10 +32,10 @@
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 
-playsingle_controller::playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
+playsingle_controller::playsingle_controller(const config& level, game_state& state_of_game,
 											 const int ticks, const int num_turns, const config& game_config, CVideo& video,
 											 bool skip_replay)
-	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay, false),
+	: play_controller(level, state_of_game, ticks, num_turns, game_config, video, skip_replay, false),
 	cursor_setter(cursor::NORMAL), replay_sender_(recorder) , turn_over_(false)
 {
 	end_turn_ = false;
@@ -153,7 +153,7 @@ void playsingle_controller::report_victory(
 		    std::stringstream& report,
 		    end_level_exception& end_level,
 		    int player_gold,
-		    int remaining_gold, int finishing_bonus_per_turn, 
+		    int remaining_gold, int finishing_bonus_per_turn,
 		    int turns_left, int finishing_bonus)
 {
 	report << _("Remaining gold: ")
@@ -234,7 +234,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	victory_conditions::set_victory_when_enemies_defeated(
 						level_["victory_when_enemies_defeated"] != "no");
 	victory_conditions::set_carryover_percentage(
-		lexical_cast_default<int>(level_["carryover_percentage"], 
+		lexical_cast_default<int>(level_["carryover_percentage"],
 		game_config::gold_carryover_percentage));
 	victory_conditions::set_carryover_add(utils::string_bool(
 		level_["carryover_add"], game_config::gold_carryover_add));
@@ -324,7 +324,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			else
 				return QUIT;
 		} else if (end_level.result == VICTORY
-		|| end_level.result == LEVEL_CONTINUE 
+		|| end_level.result == LEVEL_CONTINUE
 		|| end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 			if(end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 				gamestate_.completion = "running";
@@ -350,7 +350,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 					player->name = i->current_player();
 			}
 
-			// Add all the units that survived the scenario.  
+			// Add all the units that survived the scenario.
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
 				player_info *player=gamestate_.get_player(teams_[un->second.side()-1].save_id());
 
@@ -398,10 +398,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 					if (player) {
 						// Store the gold for all players.
-						player->gold = ((i->gold() + finishing_bonus) 
+						player->gold = ((i->gold() + finishing_bonus)
 								* end_level.carryover_percentage) / 100;
 						player->gold_add = end_level.carryover_add;
-						
+
 						// Only show the report for ourselves.
 						if (!i->is_persistent())
 							continue;
@@ -456,7 +456,7 @@ void playsingle_controller::play_turn(bool save)
 	events::raise_draw_event();
 
 	LOG_NG << "turn: " << status_.turn() << "\n";
-	
+
 	if(non_interactive())
 		std::cout << "Turn " << status_.turn() << ":" << std::endl;
 
@@ -470,7 +470,7 @@ void playsingle_controller::play_turn(bool save)
 		if (replaying_) {
 			LOG_NG << "doing replay " << player_number_ << "\n";
 			try {
-				replaying_ = ::do_replay(*gui_, map_, gameinfo_, units_, teams_,
+				replaying_ = ::do_replay(*gui_, map_, units_, teams_,
 						player_number_, status_, gamestate_);
 			} catch(replay::error&) {
 				gui::message_dialog(*gui_,"",_("The file you have tried to load is corrupt")).show();
@@ -482,7 +482,7 @@ void playsingle_controller::play_turn(bool save)
 			// If a side is dead end the turn.
 			if ((current_team().is_human() && team_units(units_, player_number_) == 0))
 			{
-				turn_info turn_data(gameinfo_, gamestate_, status_, *gui_, map_,
+				turn_info turn_data(gamestate_, status_, *gui_, map_,
 						teams_, player_number_, units_, replay_sender_, undo_stack_);
 				recorder.end_turn();
 				turn_data.sync_network();
@@ -492,13 +492,13 @@ void playsingle_controller::play_turn(bool save)
 		}
 
 		finish_side_turn();
-		
+
 		if(non_interactive()) {
 			std::cout << " Player " << player_number_ << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
 		}
-		
+
 		check_victory(units_, teams_, *gui_);
 	}
 
@@ -690,10 +690,10 @@ void playsingle_controller::play_ai_turn(){
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
-	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
+	turn_info turn_data(gamestate_,status_,*gui_,
 			map_, teams_, player_number_, units_, replay_sender_, undo_stack_);
 
-	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data, gamestate_);
+	ai_interface::info ai_info(*gui_,map_,units_,teams_,player_number_,status_, turn_data, gamestate_);
 	util::scoped_ptr<ai_interface> ai_obj(create_ai(current_team().ai_algorithm(),ai_info));
 	ai_obj->user_interact().attach_handler(this);
 	ai_obj->unit_recruited().attach_handler(this);

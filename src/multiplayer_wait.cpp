@@ -45,14 +45,14 @@ const int leader_pane_border = 10;
 
 namespace mp {
 
-wait::leader_preview_pane::leader_preview_pane(game_display& disp, const game_data* data,
+wait::leader_preview_pane::leader_preview_pane(game_display& disp,
 		const config::child_list& side_list) :
 	gui::preview_pane(disp.video()),
 	side_list_(side_list),
 	leader_combo_(disp, std::vector<std::string>()),
 	gender_combo_(disp, std::vector<std::string>()),
-	leaders_(side_list, data, &leader_combo_, &gender_combo_),
-	selection_(0), data_(data)
+	leaders_(side_list, &leader_combo_, &gender_combo_),
+	selection_(0)
 {
 	set_location(leader_pane_position);
 }
@@ -95,7 +95,7 @@ void wait::leader_preview_pane::draw_contents()
 		std::string leader = leaders_.get_leader();
 		std::string gender = leaders_.get_gender();
 
-		game_data::unit_type_factory& utypes = data_->unit_types;
+		unit_type_data::unit_type_factory& utypes = unit_type_data::instance().unit_types;
 		std::string leader_name;
 		std::string image;
 
@@ -189,13 +189,12 @@ handler_vector wait::leader_preview_pane::handler_members() {
 }
 
 
-wait::wait(game_display& disp, const config& cfg, const game_data& data,
+wait::wait(game_display& disp, const config& cfg,
 		mp::chat& c, config& gamelist) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(disp.video(), _("Cancel")),
 	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
-	game_data_(data),
 	stop_updates_(false)
 {
 	game_menu_.set_numeric_keypress_selection(false);
@@ -284,7 +283,7 @@ void wait::join_game(bool observe)
 			}
 
 			std::vector<gui::preview_pane* > preview_panes;
-			leader_preview_pane leader_selector(disp(), &game_data_,
+			leader_preview_pane leader_selector(disp(),
 					possible_sides);
 			preview_panes.push_back(&leader_selector);
 
@@ -340,7 +339,7 @@ void wait::start_game()
 		level_to_gamestate(level_, state_, level_["savegame"] == "yes");
 	} else {
 
-		state_ = game_state(game_data_, level_);
+		state_ = game_state(level_);
 
 		// When we observe and don't have the addon installed we still need
 		// the old way, no clue why however. Code is a copy paste of
@@ -466,7 +465,7 @@ void wait::generate_menu()
 
 		std::string leader_name;
 		std::string leader_image;
-		game_data::unit_type_factory& utypes = game_data_.unit_types;
+		unit_type_data::unit_type_factory& utypes = unit_type_data::instance().unit_types;
 		const unit_type* ut;
 		const unit_type* utg;
 

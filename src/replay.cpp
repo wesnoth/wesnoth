@@ -202,7 +202,7 @@ void replay::save_game(const std::string& label, const config& snapshot,
 
 	saveInfo_.label = label;
 
-	std::string filename = label; 
+	std::string filename = label;
 	if(preferences::compress_saves()) {
 		filename += ".gz";
 	}
@@ -459,7 +459,7 @@ void replay::add_chat_log_entry(const config* speak, std::stringstream& str, con
 		}
 		str << cfg["message"] << "\n";
 	}
-	
+
 }
 
 void replay::remove_command(int index)
@@ -751,7 +751,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 	}
 }
 
-bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo,
+bool do_replay(game_display& disp, const gamemap& map,
 	unit_map& units, std::vector<team>& teams, int team_num,
 	const gamestatus& state, game_state& state_of_game, replay* obj)
 {
@@ -768,14 +768,13 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 	const set_random_generator generator_setter(&get_replay_source());
 
 	update_locker lock_update(disp.video(),get_replay_source().is_skipping());
-	return do_replay_handle(disp, map, gameinfo,
-							units, teams, team_num, state, state_of_game,
+	return do_replay_handle(disp, map, units, teams, team_num, state, state_of_game,
 						   std::string(""));
 }
 
-bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& gameinfo,
+bool do_replay_handle(game_display& disp, const gamemap& map,
 					  unit_map& units, std::vector<team>& teams, int team_num,
-					  const gamestatus& state, game_state& state_of_game, 
+					  const gamestatus& state, game_state& state_of_game,
 					  const std::string& do_untill)
 {
 	//a list of units that have promoted from the last attack
@@ -788,10 +787,10 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 	for(;;) {
 		config* const cfg = get_replay_source().get_next_action();
 		config* child;
-		
+
 
 		//do we need to recalculate shroud after this action is processed?
-		
+
 		bool fix_shroud = false;
 		if (cfg)
 		{
@@ -801,7 +800,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 		{
 			DBG_REPLAY << "Repaly data at end\n";
 		}
-		
+
 
 		//if we are expecting promotions here
 		if(advancing_units.empty() == false) {
@@ -816,7 +815,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 				const int val = lexical_cast_default<int>((*child)["value"]);
 
-				dialogs::animate_unit_advancement(gameinfo,units,advancing_units.front(),disp,val);
+				dialogs::animate_unit_advancement(units,advancing_units.front(),disp,val);
 
 				advancing_units.pop_front();
 
@@ -839,7 +838,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 		}
 
 		// We return if caller wants it for this tag
-		if (!do_untill.empty() 
+		if (!do_untill.empty()
 			&& cfg->child(do_untill) != NULL)
 		{
 			get_replay_source().revert_action();
@@ -899,7 +898,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 			} else {
 				// Users can rename units while it's being killed at another machine.
 				// This since the player can rename units when it's not his/her turn.
-				// There's not a simple way to prevent that so in that case ignore the 
+				// There's not a simple way to prevent that so in that case ignore the
 				// rename instead of throwing an OOS.
 				WRN_REPLAY << "attempt to rename unit at location: "
 				   << loc << ", where none exists (anymore).\n";
@@ -935,14 +934,14 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 			std::set<std::string>::const_iterator itor = recruits.begin();
 			std::advance(itor,val);
-			const std::map<std::string,unit_type>::const_iterator u_type = gameinfo.unit_types.find(*itor);
-			if(u_type == gameinfo.unit_types.end()) {
+			const std::map<std::string,unit_type>::const_iterator u_type = unit_type_data::instance().unit_types.find(*itor);
+			if(u_type == unit_type_data::instance().unit_types.end()) {
 				std::stringstream errbuf;
 				errbuf << "recruiting illegal unit: '" << *itor << "'\n";
 				replay::throw_error(errbuf.str());
 			}
 
-			unit new_unit(&gameinfo,&units,&map,&state,&teams,&(u_type->second),team_num,true, false);
+			unit new_unit(&units,&map,&state,&teams,&(u_type->second),team_num,true, false);
 			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc);
 			if(!res.empty()) {
 				std::stringstream errbuf;
@@ -983,7 +982,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 			if(val >= 0 && val < int(player->available_units.size())) {
 				statistics::recall_unit(player->available_units[val]);
-				player->available_units[val].set_game_context(&gameinfo,&units,&map,&state,&teams);
+				player->available_units[val].set_game_context(&units,&map,&state,&teams);
 				recruit_unit(map,team_num,units,player->available_units[val],loc);
 				player->available_units.erase(player->available_units.begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
@@ -1176,7 +1175,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map, const game_data& g
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
 
-			DELAY_END_LEVEL(delayed_exception, attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !get_replay_source().is_skipping()));
+			DELAY_END_LEVEL(delayed_exception, attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, !get_replay_source().is_skipping()));
 
 			DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";;
 

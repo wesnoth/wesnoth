@@ -53,8 +53,7 @@ std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_sav
 
 void get_player_info(const config& cfg, game_state& gamestate,
 					 std::string save_id, std::vector<team>& teams,
-					 const config& level, const game_data& gameinfo,
-					 gamemap& map, unit_map& units,
+					 const config& level, gamemap& map, unit_map& units,
 					 gamestatus& game_status, bool snapshot, bool replay)
 {
 	player_info *player = NULL;
@@ -82,7 +81,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 	LOG_NG << "found gold: '" << gold << "'\n";
 
 	int ngold = lexical_cast_default<int>(gold);
-	
+
 	/* This is the gold carry-over mechanism for subsequent campaign
        scenarios. Snapshots and replays are loaded from savegames and
        got their own gold information, which must not be altered here
@@ -118,7 +117,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 
 	// If this side tag describes the leader of the side
 	if(!utils::string_bool(cfg["no_leader"]) && cfg["controller"] != "null") {
-		unit new_unit(&gameinfo, &units, &map, &game_status, &teams, cfg, true);
+		unit new_unit(&units, &map, &game_status, &teams, cfg, true);
 
 		// Search the recall list for leader units, and if there is one,
 		// use it in place of the config-described unit
@@ -127,7 +126,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 				it != player->available_units.end(); ++it) {
 				if(it->can_recruit()) {
 					new_unit = *it;
-					new_unit.set_game_context(&gameinfo, &units, &map, &game_status, &teams);
+					new_unit.set_game_context(&units, &map, &game_status, &teams);
 					player->available_units.erase(it);
 					break;
 				}
@@ -153,7 +152,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 
 		utils::string_map symbols;
 		symbols["side"] = lexical_cast<std::string>(side);
-		VALIDATE(units.count(start_pos) == 0, 
+		VALIDATE(units.count(start_pos) == 0,
 			 t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
 
 		new_unit.new_turn();
@@ -185,7 +184,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 		player->available_units.clear();
 	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-		unit new_unit(&gameinfo, &units, &map, &game_status,&teams,**su,true);
+		unit new_unit(&units, &map, &game_status,&teams,**su,true);
 
 		new_unit.set_side(side);
 

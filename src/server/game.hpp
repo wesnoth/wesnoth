@@ -16,13 +16,14 @@
 #define GAME_HPP_INCLUDED
 
 #include "../network.hpp"
+#include "player.hpp"
 
 #include "simple_wml.hpp"
 
 #include <map>
 #include <vector>
 
-class player;
+//class player;
 
 typedef std::map<network::connection,player> player_map;
 typedef std::vector<network::connection> user_vector;

@@ -89,7 +89,7 @@ void ai::do_attack_analysis(
 		std::vector<attack_type>& attacks = unit_itor->second.attacks();
 		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
 			a->set_specials_context(gamemap::location(),gamemap::location(),
-															&gameinfo_,&units_,&map_,&state_,&teams_,true,NULL);
+															&units_,&map_,&state_,&teams_,true,NULL);
 			if(a->get_special_bool("backstab")) {
 				backstab = true;
 			}
@@ -242,7 +242,7 @@ void ai::do_attack_analysis(
 
 			cur_analysis.is_surrounded = is_surrounded;
 
-			cur_analysis.analyze(map_, units_, teams_, state_, gameinfo_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
+			cur_analysis.analyze(map_, units_, teams_, state_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
 
 			//Remove this short-circuiting logic for now.. --David
 			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
@@ -268,7 +268,7 @@ void ai::do_attack_analysis(
 
 void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
-								  const gamestatus& status, const game_data& gamedata,
+								  const gamestatus& status,
 								  class ai& ai_obj,
                                   const move_map& dstsrc, const move_map& srcdst,
                                   const move_map& enemy_dstsrc, double aggression)
@@ -358,7 +358,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			from_cache = true;
 			bc = new battle_context(usc->second.first, usc->second.second);
 		} else {
-			bc = new battle_context(map, teams, units, status, gamedata, m->second, target, att_weapon, def_weapon, aggression, prev_def);
+			bc = new battle_context(map, teams, units, status, m->second, target, att_weapon, def_weapon, aggression, prev_def);
 		}
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);
@@ -725,7 +725,7 @@ bool ai::desperate_attack(const gamemap::location &loc)
 				for (unsigned int i = 0; i != attacks.size(); ++i) {
 					// Skip weapons with attack_weight=0
 					if (attacks[i].attack_weight() > 0) {
-						battle_context bc(map_, teams_, units_, state_, gameinfo_, loc, adj[n], i);
+						battle_context bc(map_, teams_, units_, state_, loc, adj[n], i);
 						combatant att(bc.get_attacker_stats());
 						combatant def(bc.get_defender_stats());
 						att.fight(def);
@@ -759,7 +759,7 @@ bool ai::desperate_attack(const gamemap::location &loc)
 				for (unsigned int i = 0; i != attacks.size(); ++i) {
 					// SKip weapons with attack_weight=0
 					if (attacks[i].attack_weight() > 0) {
-						battle_context bc(map_, teams_, units_, state_, gameinfo_, adj[n], loc, i);
+						battle_context bc(map_, teams_, units_, state_, adj[n], loc, i);
 						combatant att(bc.get_attacker_stats());
 						combatant def(bc.get_defender_stats());
 						att.fight(def);
@@ -775,7 +775,7 @@ bool ai::desperate_attack(const gamemap::location &loc)
 
 	// It is possible that there were no adjacent units to attack...
 	if (least_hp != u.hitpoints() + 1) {
-		battle_context bc(map_, teams_, units_, state_, gameinfo_, loc, adj[best_dir], -1, -1, 0.5);
+		battle_context bc(map_, teams_, units_, state_, loc, adj[best_dir], -1, -1, 0.5);
 		attack_enemy(loc, adj[best_dir], bc.get_attacker_stats().attack_num,
 					 bc.get_defender_stats().attack_num);
 		return true;

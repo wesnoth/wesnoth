@@ -277,7 +277,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 // creating the dialogs, then, according to the dialog result, of calling other
 // of those screen functions.
 
-static void enter_wait_mode(game_display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, bool observe)
+static void enter_wait_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, bool observe)
 {
 	mp::ui::result res;
 	game_state state;
@@ -288,7 +288,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, game_
 	statistics::fresh_stats();
 
 	{
-		mp::wait ui(disp, game_config, data, chat, gamelist);
+		mp::wait ui(disp, game_config, chat, gamelist);
 
 		ui.join_game(observe);
 
@@ -311,7 +311,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, game_
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, nolog, IO_CLIENT, 
+		play_game(disp, state, game_config, nolog, IO_CLIENT,
 			preferences::skip_mp_replay() && observe);
 		recorder.clear();
 
@@ -322,9 +322,9 @@ static void enter_wait_mode(game_display& disp, const config& game_config, game_
 	}
 }
 
-static void enter_create_mode(game_display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server);
+static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server);
 
-static void enter_connect_mode(game_display& disp, const config& game_config, game_data& data,
+static void enter_connect_mode(game_display& disp, const config& game_config,
 		mp::chat& chat, config& gamelist, const mp::create::parameters& params,
 		mp::controller default_controller, bool is_server)
 {
@@ -341,7 +341,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config, ga
 	statistics::fresh_stats();
 
 	{
-		mp::connect ui(disp, game_config, data, chat, gamelist, params, default_controller);
+		mp::connect ui(disp, game_config, chat, gamelist, params, default_controller);
 		run_lobby_loop(disp, ui);
 
 		res = ui.get_result();
@@ -356,12 +356,12 @@ static void enter_connect_mode(game_display& disp, const config& game_config, ga
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, nolog, IO_SERVER);
+		play_game(disp, state, game_config, nolog, IO_SERVER);
 		recorder.clear();
 
 		break;
 	case mp::ui::CREATE:
-		enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
+		enter_create_mode(disp, game_config, chat, gamelist, default_controller, is_server);
 		break;
 	case mp::ui::QUIT:
 	default:
@@ -370,7 +370,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config, ga
 	}
 }
 
-static void enter_create_mode(game_display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server)
+static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server)
 {
 	mp::ui::result res;
 	mp::create::parameters params;
@@ -384,7 +384,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, gam
 
 	switch (res) {
 	case mp::ui::CREATE:
-		enter_connect_mode(disp, game_config, data, chat, gamelist, params, default_controller, is_server);
+		enter_connect_mode(disp, game_config, chat, gamelist, params, default_controller, is_server);
 		break;
 	case mp::ui::QUIT:
 	default:
@@ -394,7 +394,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, gam
 	}
 }
 
-static void enter_lobby_mode(game_display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist)
+static void enter_lobby_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist)
 {
 	mp::ui::result res;
 
@@ -408,7 +408,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 		switch (res) {
 		case mp::ui::JOIN:
 			try {
-				enter_wait_mode(disp, game_config, data, chat, gamelist, false);
+				enter_wait_mode(disp, game_config, chat, gamelist, false);
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
 					gui::show_error_message(disp, error.message);
@@ -419,7 +419,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 			break;
 		case mp::ui::OBSERVE:
 			try {
-				enter_wait_mode(disp, game_config, data, chat, gamelist, true);
+				enter_wait_mode(disp, game_config, chat, gamelist, true);
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
 					gui::show_error_message(disp, error.message);
@@ -430,7 +430,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 			break;
 		case mp::ui::CREATE:
 			try {
-				enter_create_mode(disp, game_config, data, chat, gamelist, mp::CNTR_NETWORK, false);
+				enter_create_mode(disp, game_config, chat, gamelist, mp::CNTR_NETWORK, false);
 			} catch(config::error& error) {
 				if (!error.message.empty())
 					gui::show_error_message(disp, error.message);
@@ -456,7 +456,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 
 namespace mp {
 
-void start_server(game_display& disp, const config& game_config, game_data& data,
+void start_server(game_display& disp, const config& game_config,
 		mp::controller default_controller, bool is_server)
 {
 	const set_random_generator generator_setter(&recorder);
@@ -464,10 +464,10 @@ void start_server(game_display& disp, const config& game_config, game_data& data
 	config gamelist;
 	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
-	enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
+	enter_create_mode(disp, game_config, chat, gamelist, default_controller, is_server);
 }
 
-void start_client(game_display& disp, const config& game_config, game_data& data,
+void start_client(game_display& disp, const config& game_config,
 		const std::string host)
 {
 	const set_random_generator generator_setter(&recorder);
@@ -479,12 +479,12 @@ void start_client(game_display& disp, const config& game_config, game_data& data
 
 	switch(type) {
 	case WESNOTHD_SERVER:
-		enter_lobby_mode(disp, game_config, data, chat, gamelist);
+		enter_lobby_mode(disp, game_config, chat, gamelist);
 		break;
 	case SIMPLE_SERVER:
 		playmp_controller::set_replay_last_turn(0);
 		preferences::set_message_private(false);
-		enter_wait_mode(disp, game_config, data, chat, gamelist, false);
+		enter_wait_mode(disp, game_config, chat, gamelist, false);
 		break;
 	case ABORT_SERVER:
 		break;

@@ -108,7 +108,7 @@ protected:
 					move_unit(best_movement.second,best_movement.first,possible_moves);
 					battle_context bc(get_info().map, get_info().teams,
 									  get_info().units, get_info().state,
-									  get_info().gameinfo, best_movement.first,
+									  best_movement.first,
 									  i->first, -1, -1, current_team().aggression());
 					attack_enemy(best_movement.first,i->first,
 								 bc.get_attacker_stats().attack_num,
@@ -231,17 +231,16 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 }
 
 ai::ai(ai_interface::info& info) :
-	ai_interface(info), 
+	ai_interface(info),
 	defensive_position_cache_(),
-	threats_found_(false), 
+	threats_found_(false),
 	attacks_(),
 	disp_(info.disp),
-	map_(info.map), 
-	gameinfo_(info.gameinfo), 
+	map_(info.map),
 	units_(info.units),
-	teams_(info.teams), 
+	teams_(info.teams),
 	team_num_(info.team_num),
-	state_(info.state), 
+	state_(info.state),
 	consider_combat_(true),
 	additional_targets_(),
 	unit_movement_scores_(),
@@ -268,7 +267,7 @@ bool ai::recruit_usage(const std::string& usage)
 	// matches the desired usage type, and comes in under budget.
 	const std::set<std::string>& recruits = current_team().recruits();
 	for(std::map<std::string,unit_type>::const_iterator i =
-	    gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i)
+	    unit_type_data::instance().unit_types.begin(); i != unit_type_data::instance().unit_types.end(); ++i)
 	{
 		const std::string& name = i->second.id();
 		// If usage is empty consider any unit.
@@ -318,8 +317,8 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	recorder.add_recruit(num,loc);
 	replay_undo replay_guard(recorder);
 
-	game_data::unit_type_map::const_iterator u = info_.gameinfo.unit_types.find(unit_name);
-	if(u == info_.gameinfo.unit_types.end()) {
+	unit_type_data::unit_type_map::const_iterator u = unit_type_data::instance().unit_types.find(unit_name);
+	if(u == unit_type_data::instance().unit_types.end()) {
 		return false;
 	}
 
@@ -334,7 +333,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	    " gold=" << (current_team().gold()) <<
 	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
 
-	unit new_unit(&info_.gameinfo,&info_.units,&info_.map,&info_.state,&info_.teams,&u->second,info_.team_num,true);
+	unit new_unit(&info_.units,&info_.map,&info_.state,&info_.teams,&u->second,info_.team_num,true);
 
 	// See if we can actually recruit (i.e. have enough room etc.)
 	std::string recruit_err = recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,preferences::show_ai_moves());
@@ -569,7 +568,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	return to;
 }
 
-bool ai::multistep_move_possible(const location& from, 
+bool ai::multistep_move_possible(const location& from,
 	const location& to, const location& via,
 	const std::map<location,paths>& possible_moves) const
 {
@@ -657,7 +656,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
 				   !itor->second.incapacitated()) {
 					battle_context bc(map_, teams_, units_, state_,
-									  gameinfo_, res, *adj_i, -1, -1, current_team().aggression());
+									  res, *adj_i, -1, -1, current_team().aggression());
 					attack_enemy(res,itor->first,bc.get_attacker_stats().attack_num,bc.get_defender_stats().attack_num);
 					break;
 				}
@@ -1077,7 +1076,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 		// Recalc appropriate weapons here: AI uses approximations.
 		battle_context bc(map_, teams_, units_, state_,
-						  gameinfo_, to, target_loc, -1, -1,
+						  to, target_loc, -1, -1,
 						  current_team().aggression());
 		attack_enemy(to, target_loc, bc.get_attacker_stats().attack_num,
 				bc.get_defender_stats().attack_num);
@@ -1100,13 +1099,13 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 //! @param u            The location of the attacking unit. (Note this shouldn't
 //!                     be a reference since attack::attack() can invalidate the
 //!                     unit_map and references to the map are also invalid then.)
-//! @param target       The location of the target unit. This unit must be in 
+//! @param target       The location of the target unit. This unit must be in
 //!                     range of the attacking unit's weapon. (See note at param u.)
-//! @param weapon       The number of the weapon (0-based) which should be used 
+//! @param weapon       The number of the weapon (0-based) which should be used
 //!                     by the attacker. (It must be a valid weapon of the attacker.)
-//! @param def_weapon   The number of the weapon (0-based) which should be used 
+//! @param def_weapon   The number of the weapon (0-based) which should be used
 //!                     by the defender. (It must be a valid weapon of the defender.)
-void ai_interface::attack_enemy(const location u, 
+void ai_interface::attack_enemy(const location u,
 		const location target, int weapon, int def_weapon)
 {
 	// Stop the user from issuing any commands while the unit is attacking
@@ -1125,30 +1124,30 @@ void ai_interface::attack_enemy(const location u,
 		recorder.add_attack(u,target,weapon,def_weapon);
 		try {
 			attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon,
-					info_.units, info_.state, info_.gameinfo);
+					info_.units, info_.state);
 		}
 		catch (end_level_exception&)
 		{
-			dialogs::advance_unit(info_.gameinfo,info_.map,info_.units,u,info_.disp,true);
-			
+			dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
+
 			const unit_map::const_iterator defender = info_.units.find(target);
 			if(defender != info_.units.end()) {
 				const size_t defender_team = size_t(defender->second.side()) - 1;
 				if(defender_team < info_.teams.size()) {
-					dialogs::advance_unit(info_.gameinfo, info_.map, info_.units,
+					dialogs::advance_unit(info_.map, info_.units,
 							target, info_.disp, !info_.teams[defender_team].is_human());
 				}
 			}
 
 			throw;
 		}
-		dialogs::advance_unit(info_.gameinfo,info_.map,info_.units,u,info_.disp,true);
+		dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
 
 		const unit_map::const_iterator defender = info_.units.find(target);
 		if(defender != info_.units.end()) {
 			const size_t defender_team = size_t(defender->second.side()) - 1;
 			if(defender_team < info_.teams.size()) {
-				dialogs::advance_unit(info_.gameinfo, info_.map, info_.units,
+				dialogs::advance_unit(info_.map, info_.units,
 						target, info_.disp, !info_.teams[defender_team].is_human());
 			}
 		}
@@ -1399,7 +1398,7 @@ bool ai::move_to_targets(std::map<gamemap::location, paths>& possible_moves,
 				if(enemy != units_.end() &&
 				   current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
 					// Current behavior is to only make risk-free attacks.
-					battle_context bc(map_, teams_, units_, state_, gameinfo_, arrived_at, adj[n], -1, -1, 100.0);
+					battle_context bc(map_, teams_, units_, state_, arrived_at, adj[n], -1, -1, 100.0);
 					if (bc.get_defender_stats().damage == 0) {
 						attack_enemy(arrived_at, adj[n], bc.get_attacker_stats().attack_num,
 								bc.get_defender_stats().attack_num);
@@ -1523,8 +1522,8 @@ void ai::analyze_potential_recruit_combat()
 	const std::set<std::string>& recruits = current_team().recruits();
 	std::set<std::string>::const_iterator i;
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
-		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
-		if(info == gameinfo_.unit_types.end() || not_recommended_units_.count(*i)) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::instance().unit_types.find(*i);
+		if(info == unit_type_data::instance().unit_types.end() || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -1536,8 +1535,8 @@ void ai::analyze_potential_recruit_combat()
 			}
 
 			unit const &un = j->second;
-			const game_data::unit_type_map::const_iterator enemy_info = gameinfo_.unit_types.find(un.type_id());
-			VALIDATE((enemy_info != gameinfo_.unit_types.end()), _("Unknown unit type : ") + un.type_id());
+			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::instance().unit_types.find(un.type_id());
+			VALIDATE((enemy_info != unit_type_data::instance().unit_types.end()), _("Unknown unit type : ") + un.type_id());
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
@@ -1561,8 +1560,8 @@ void ai::analyze_potential_recruit_combat()
 	// if they have a score more than 600 below
 	// the best unit of that usage type.
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
-		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
-		if(info == gameinfo_.unit_types.end() || not_recommended_units_.count(*i)) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::instance().unit_types.find(*i);
+		if(info == unit_type_data::instance().unit_types.end() || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -1624,12 +1623,12 @@ void ai::analyze_potential_recruit_movements()
 	std::map<std::string,int> best_scores;
 
 	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
-		if(info == gameinfo_.unit_types.end()) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::instance().unit_types.find(*i);
+		if(info == unit_type_data::instance().unit_types.end()) {
 			continue;
 		}
 
-		const unit temp_unit(&get_info().gameinfo, &get_info().units,&get_info().map,
+		const unit temp_unit(&get_info().units,&get_info().map,
 				&get_info().state, &get_info().teams, &info->second, team_num_);
 		unit_map units;
 		const temporary_unit_placer placer(units,start,temp_unit);
@@ -1672,10 +1671,10 @@ void ai::analyze_potential_recruit_movements()
 	for(std::map<std::string,int>::iterator j = unit_movement_scores_.begin();
 			j != unit_movement_scores_.end(); ++j) {
 
-		const game_data::unit_type_map::const_iterator info =
-			gameinfo_.unit_types.find(j->first);
+		const unit_type_data::unit_type_map::const_iterator info =
+			unit_type_data::instance().unit_types.find(j->first);
 
-		if(info == gameinfo_.unit_types.end()) {
+		if(info == unit_type_data::instance().unit_types.end()) {
 			continue;
 		}
 

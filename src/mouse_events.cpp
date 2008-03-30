@@ -83,7 +83,7 @@ namespace{
 		// Lengthy constructor.
 		battle_prediction_pane(game_display &disp, const battle_context& bc, const gamemap& map,
 							   const std::vector<team>& teams, const unit_map& units,
-							   const gamestatus& status, const game_data& gamedata,
+							   const gamestatus& status,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc);
 
 		// This method is called to draw the dialog contents.
@@ -102,7 +102,6 @@ namespace{
 		const std::vector<team>& teams_;
 		const unit_map& units_;
 		const gamestatus& status_;
-		const game_data& gamedata_;
 		const gamemap::location& attacker_loc_;
 		const gamemap::location& defender_loc_;
 		const unit& attacker_;
@@ -184,10 +183,10 @@ namespace{
 
 	battle_prediction_pane::battle_prediction_pane(game_display &disp, const battle_context& bc, const gamemap& map,
 												   const std::vector<team>& teams, const unit_map& units,
-												   const gamestatus& status, const game_data& gamedata,
+												   const gamestatus& status,
 												   const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
 				: gui::preview_pane(disp.video()), disp_(disp), bc_(bc), map_(map), teams_(teams), units_(units), status_(status),
-				  gamedata_(gamedata), attacker_loc_(attacker_loc), defender_loc_(defender_loc),
+				  attacker_loc_(attacker_loc), defender_loc_(defender_loc),
 				  attacker_(units.find(attacker_loc)->second), defender_(units.find(defender_loc)->second)
 	{
 		// Predict the battle outcome.
@@ -262,7 +261,7 @@ namespace{
 
 			// Set specials context (for safety, it should not have changed normally).
 			const attack_type *weapon = stats.weapon;
-			weapon->set_specials_context(u_loc, opp_loc, &gamedata_, &units_, &map_, &status_, &teams_, stats.is_attacker, opp_weapon);
+			weapon->set_specials_context(u_loc, opp_loc, &units_, &map_, &status_, &teams_, stats.is_attacker, opp_weapon);
 
 			// Get damage modifiers.
 			unit_ability_list dmg_specials = weapon->get_specials("damage");
@@ -649,10 +648,10 @@ namespace{
 	public:
 		attack_prediction_displayer(game_display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
 								    const std::vector<team>& teams, const unit_map& units,
-								    const gamestatus& status, const game_data& gamedata,
+								    const gamestatus& status,
 									const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
 				: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), status_(status),
-				  gamedata_(gamedata), attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
+				  attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
 
 		// This method is called when the button is pressed.
 		RESULT button_pressed(int selection)
@@ -662,7 +661,7 @@ namespace{
 
 			if(index < bc_vector_.size()) {
 				battle_prediction_pane battle_pane(disp_, bc_vector_[index], map_, teams_, units_, status_,
-												   gamedata_, attacker_loc_, defender_loc_);
+												   attacker_loc_, defender_loc_);
 				std::vector<gui::preview_pane*> preview_panes;
 				preview_panes.push_back(&battle_pane);
 
@@ -679,15 +678,14 @@ namespace{
 	const std::vector<team>& teams_;
 		const unit_map& units_;
 		const gamestatus& status_;
-		const game_data& gamedata_;
 		const gamemap::location& attacker_loc_;
 		const gamemap::location& defender_loc_;
 	};
 } //end anonymous namespace
 
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
-				gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack):
-gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(gameinfo),
+				gamestatus& status, undo_list& undo_stack, undo_list& redo_stack):
+gui_(gui), teams_(teams), units_(units), map_(map), status_(status),
 undo_stack_(undo_stack), redo_stack_(redo_stack)
 {
 	singleton_ = this;
@@ -869,7 +867,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
 				// the movement_reset is active only if it's not the unit's turn
 				unit_movement_resetter move_reset(selected_unit->second,
-						selected_unit->second.side() != team_num_); 
+						selected_unit->second.side() != team_num_);
 				current_route_ = get_route(selected_unit, dest, viewing_team());
 				if(!browse) {
 					(*gui_).set_route(&current_route_);
@@ -992,7 +990,7 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 			unit_map::const_iterator occupant = find_unit(*i);
 			if (occupant != units_.end() && occupant != un)
 				continue;
-			
+
 			allowed_teleports.insert(*i);
 		}
 	}
@@ -1053,7 +1051,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 			minimap_scrolling_ = true;
 			last_hex_ = loc;
 			gui_->scroll_to_tile(loc,game_display::WARP,false);
-		} 
+		}
 	} else if (event.button == SDL_BUTTON_WHEELUP) {
 		scrolly = - preferences::scroll_speed();
 	} else if (event.button == SDL_BUTTON_WHEELDOWN) {
@@ -1346,7 +1344,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	for (i = 0; i < attacker->second.attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->second.attacks()[i].attack_weight() > 0) {
-			battle_context bc(map_, teams_, units_, status_, gameinfo_, attacker->first, defender->first, i);
+			battle_context bc(map_, teams_, units_, status_, attacker->first, defender->first, i);
 			bc_vector.push_back(bc);
 			if (bc.better_attack(bc_vector[best], 0.5)) {
 				best = i;
@@ -1399,7 +1397,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	gui_->highlight_hex(gamemap::location());
 	gui_->draw(true,true);
 
-	attack_prediction_displayer ap_displayer(*gui_, bc_vector, map_, teams_, units_, status_, gameinfo_, attacker_loc, defender_loc);
+	attack_prediction_displayer ap_displayer(*gui_, bc_vector, map_, teams_, units_, status_, attacker_loc, defender_loc);
 	std::vector<gui::dialog_button_info> buttons;
 	buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
 
@@ -1441,17 +1439,17 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 		try {
-			attack(*gui_,map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,status_,gameinfo_);
+			attack(*gui_,map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,status_);
 		} catch(end_level_exception&) {
 			//if the level ends due to a unit being killed, still see if
 			//either the attacker or defender should advance
-			dialogs::advance_unit(gameinfo_,map_,units_,attacker_loc,*gui_);
-			dialogs::advance_unit(gameinfo_,map_,units_,defender_loc,*gui_,!defender_human);
+			dialogs::advance_unit(map_,units_,attacker_loc,*gui_);
+			dialogs::advance_unit(map_,units_,defender_loc,*gui_,!defender_human);
 			throw;
 		}
 
-		dialogs::advance_unit(gameinfo_,map_,units_,attacker_loc,*gui_);
-		dialogs::advance_unit(gameinfo_,map_,units_,defender_loc,*gui_,!defender_human);
+		dialogs::advance_unit(map_,units_,attacker_loc,*gui_);
+		dialogs::advance_unit(map_,units_,defender_loc,*gui_,!defender_human);
 
 		check_victory(units_, teams_, *gui_);
 
@@ -1514,7 +1512,7 @@ void mouse_handler::cycle_units(const bool browse, const bool reverse)
 		} else {
 			if (it == units_.end())
 				it = units_.begin();
-			else	
+			else
 				++it;
 		}
 	} while (it != itx && !unit_in_cycle(it));

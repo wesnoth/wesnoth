@@ -189,7 +189,7 @@ std::string generate_game_uuid()
 
 	return uuid.str();
 }
-#endif 
+#endif
 
 //! Reads turns and time information from parameters.
 //! It sets random starting ToD and current_tod to config.
@@ -416,7 +416,7 @@ bool gamestatus::next_turn()
 	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
-static player_info read_player(const game_data& data, const config* cfg)
+static player_info read_player(const config* cfg)
 {
 	player_info res;
 
@@ -427,7 +427,7 @@ static player_info read_player(const game_data& data, const config* cfg)
 
 	const config::child_list& units = cfg->get_children("unit");
 	for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
-		res.available_units.push_back(unit(data,**i,false));
+		res.available_units.push_back(unit(**i,false));
 	}
 
 	res.can_recruit.clear();
@@ -441,7 +441,7 @@ static player_info read_player(const game_data& data, const config* cfg)
 	return res;
 }
 
-game_state::game_state(const game_data& data, const config& cfg, bool show_replay) :
+game_state::game_state(const config& cfg, bool show_replay) :
 		label(cfg["label"]),
 		version(cfg["version"]),
 		campaign_type(cfg["campaign_type"]),
@@ -474,7 +474,7 @@ game_state::game_state(const game_data& data, const config& cfg, bool show_repla
 	const config* snapshot = cfg.child("snapshot");
 
 	// We have to load era id for MP games so they can load correct era.
-	
+
 
 	if ((snapshot != NULL) && (!snapshot->empty()) && (!show_replay)) {
 
@@ -483,14 +483,14 @@ game_state::game_state(const game_data& data, const config& cfg, bool show_repla
 		seed_random(random_seed_, lexical_cast_default<unsigned>((*snapshot)["random_calls"]));
 
 		// Midgame saves have the recall list stored in the snapshot.
-		load_recall_list(data, snapshot->get_children("player"));
+		load_recall_list(snapshot->get_children("player"));
 
 	} else {
-		// Start of scenario save, replays and MP campaign network next scenario 
+		// Start of scenario save, replays and MP campaign network next scenario
 		// have the recall list stored in root of the config.
-		load_recall_list(data, cfg.get_children("player"));
+		load_recall_list(cfg.get_children("player"));
 	}
-         
+
 	std::cerr << "scenario: '" << scenario << "'\n";
 	std::cerr << "next_scenario: '" << next_scenario << "'\n";
 
@@ -805,7 +805,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 
 void copy_era(config &cfg)
 {
-	if (cfg.child("replay_start") 
+	if (cfg.child("replay_start")
 		&& cfg.child("replay_start")->child("era")
 		&& cfg.child("snapshot"))
 	{
@@ -814,7 +814,7 @@ void copy_era(config &cfg)
 	}
 }
 
-void load_game(const game_data& data, const std::string& name, game_state& gamestate, std::string* error_log)
+void load_game(const std::string& name, game_state& gamestate, std::string* error_log)
 {
 	log_scope("load_game");
 
@@ -822,7 +822,7 @@ void load_game(const game_data& data, const std::string& name, game_state& games
 	read_save_file(name,cfg,error_log);
 	copy_era(cfg);
 
-	gamestate = game_state(data,cfg);
+	gamestate = game_state(cfg);
 }
 
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log){
@@ -871,7 +871,7 @@ void finish_save_game(config_writer &out, const game_state& gamestate, const std
 // Throws game::save_game_failed
 void save_game(const game_state& gamestate)
 {
-	std::string filename = gamestate.label; 
+	std::string filename = gamestate.label;
 	if(preferences::compress_saves()) {
 		filename += ".gz";
 	}
@@ -1149,7 +1149,7 @@ int game_state::get_random()
 {
 	random_next();
 	++random_calls_;
-	DBG_NG << "pulled user random " << random_pool_ 
+	DBG_NG << "pulled user random " << random_pool_
 		<< " for call " << random_calls_ << '\n';
 
 	return (static_cast<unsigned>(random_pool_ / 65536) % 32768);
@@ -1168,8 +1168,8 @@ void game_state::seed_random(const int seed, const unsigned call_count)
 	for(random_calls_ = 0; random_calls_ < call_count; ++random_calls_) {
 		random_next();
 	}
-	DBG_NG << "Seeded random with " << random_seed_ << " with " 
-		<< random_calls_ << " calls, pool is now at " 
+	DBG_NG << "Seeded random with " << random_seed_ << " with "
+		<< random_calls_ << " calls, pool is now at "
 		<< random_pool_ << '\n';
 }
 
@@ -1177,16 +1177,15 @@ void game_state::seed_random(const int seed, const unsigned call_count)
 void game_state::random_next()
 {
 	// Use the simple random generator as shown in man rand(3).
-	// The division is done separately since we also want to 
+	// The division is done separately since we also want to
 	// quickly go the the wanted index in the random list.
 	random_pool_ = random_pool_ * 1103515245 + 12345;
 }
 
 //! Loads the recall list.
 //!
-//! @param game_data    data parameter of game_state::game_state.
 //! @param players      Reference to the players section to load.
-void game_state::load_recall_list(const game_data& data, const config::child_list& players)
+void game_state::load_recall_list(const config::child_list& players)
 {
 	if(!players.empty()) {
 		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
@@ -1195,7 +1194,7 @@ void game_state::load_recall_list(const game_data& data, const config::child_lis
 			if(save_id.empty()) {
 				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
 			} else {
-				player_info player = read_player(data, *i);
+				player_info player = read_player(*i);
 				this->players.insert(std::pair<std::string, player_info>(save_id,player));
 			}
 		}
@@ -1290,7 +1289,7 @@ void player_info::debug(){
 	LOG_NG << "\tEnd available units\n";
 }
 
-wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) : 
+wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		name(),
 		image(),
 		description(),

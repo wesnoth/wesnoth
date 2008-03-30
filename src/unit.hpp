@@ -58,17 +58,17 @@ public:
 	// Copy constructor
 	unit(const unit& u);
 	// Initilizes a unit from a config
-	unit(const game_data& gamedata, const config& cfg, bool use_traits=false);
-	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
-		const gamestatus* game_status, const std::vector<team>* teams, 
+	unit(const config& cfg, bool use_traits=false);
+	unit(unit_map* unitmap, const gamemap* map,
+		const gamestatus* game_status, const std::vector<team>* teams,
 		const config& cfg, bool use_traits=false, game_state* state = 0);
 	// Initializes a unit from a unit type
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
-	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
+	unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
 	virtual ~unit();
 	unit& operator=(const unit&);
 
-	void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
+	void set_game_context(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
 
 	//! Advances this unit to another type
 	void advance_to(const unit_type* t, bool use_traits=false, game_state* state = 0);
@@ -270,7 +270,7 @@ public:
 	void add_trait(std::string /*trait*/);
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_traits_description();
-	std::string generate_name( game_state* state = 0) const 
+	std::string generate_name( game_state* state = 0) const
 		{ return race_->generate_name(string_gender(cfg_["gender"]), state); }
 
 	// Only see_all=true use caching
@@ -380,7 +380,6 @@ private:
 	config modifications_;
 
 	friend void attack_type::set_specials_context(const gamemap::location& loc, const gamemap::location&, const unit& un, bool) const;
-	const game_data* gamedata_;
 	const unit_map* units_;
 	const gamemap* map_;
 	const gamestatus* gamestatus_;

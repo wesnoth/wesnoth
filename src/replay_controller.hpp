@@ -25,7 +25,7 @@ class video;
 class replay_controller : public play_controller
 {
 public:
-	replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
+	replay_controller(const config& level, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video);
 	~replay_controller();
 
@@ -73,7 +73,7 @@ private:
 };
 
 
-LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& terrain_config,
+LEVEL_RESULT play_replay_level(const config& terrain_config,
 		const config* level, CVideo& video,
 		game_state& state_of_game);
 

@@ -58,7 +58,7 @@ public:
 		//! Returns true if this side changed since last call to changed()
 		bool changed();
 
-		//! Gets a config object representing this side. 
+		//! Gets a config object representing this side.
 		//! If include_leader is set to true, the config objects include
 		//! the "type=" defining the leader type, else it does not.
 		config get_config() const;
@@ -84,7 +84,7 @@ public:
 
 		const std::string& get_save_id() const;
 
-		//! Imports data from the network into this side, 
+		//! Imports data from the network into this side,
 		//! and updates the UI accordingly.
 		void import_network_user(const config& data);
 
@@ -100,7 +100,7 @@ public:
 		void update_controller_ui();
 		void update_ui();
 
-		//! The mp::connect widget owning this mp::connect::side. 
+		//! The mp::connect widget owning this mp::connect::side.
 		//! Used in the constructor, must be first.
 		connect* parent_;
 
@@ -149,18 +149,18 @@ public:
 	typedef std::vector<side> side_list;
 
 
-	connect(game_display& disp, const config& game_config, const game_data& data,
+	connect(game_display& disp, const config& game_config,
 			chat& c, config& gamelist, const create::parameters& params,
 			mp::controller default_controller);
 
 	virtual void process_event();
 
-	/** Returns the game state, which contains all information 
+	/** Returns the game state, which contains all information
 	 * about the current scenario.
 	 */
 	const game_state& get_state();
 
-	/** Updates the current game state, resolves random factions, 
+	/** Updates the current game state, resolves random factions,
 	 * and sends a "start game" message to the network.
 	 */
 	void start_game();
@@ -193,8 +193,8 @@ private:
 	//! Returns true if there still are sides available for this game.
 	bool sides_available();
 
-	//! Updates the state of the player list, 
-	//! the launch button and of the start game label, 
+	//! Updates the state of the player list,
+	//! the launch button and of the start game label,
 	//! to reflect the actual state.
 	void update_playerlist_state(bool silent=true);
 
@@ -209,9 +209,6 @@ private:
 
 	//! Removes a player and kicks it from the game.
 	void kick_player(const std::string& name);
-
-	//! This is the main, and global, game data.
-	const game_data& game_data_;
 
 	config level_;
 

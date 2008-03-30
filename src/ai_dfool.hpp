@@ -48,7 +48,7 @@ namespace dfool {
 
   class unit_memory{
   public:
-    unit_memory(const game_data& gamedata, const config& cfg);
+    unit_memory(const config& cfg);
     void add_unit_sighting(unit u, gamemap::location l, size_t t);
     void remove_unit_sighting(std::string id);
     //void purge(int turn = -1); // Clean outdated entries
@@ -97,7 +97,7 @@ namespace dfool {
   //! and does not make decisions based on unseen units.
   class dfool_ai : public ai_interface {
   public:
-    dfool_ai(info& i) : ai_interface(i),unit_memory_(i.gameinfo , i.teams[i.team_num-1].ai_memory()){}
+    dfool_ai(info& i) : ai_interface(i),unit_memory_(i.teams[i.team_num-1].ai_memory()){}
     void play_turn();
   private:
     //    std::map<std::string,target> target_map_;

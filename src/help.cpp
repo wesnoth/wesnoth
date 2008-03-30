@@ -558,7 +558,6 @@ static std::string get_first_word(const std::string &s);
 
 namespace {
 	const config *game_cfg = NULL;
-	const game_data *game_info = NULL;
 	gamemap *map = NULL;
 	// The default toplevel.
 	help::section toplevel;
@@ -724,10 +723,9 @@ static void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v,
 
 namespace help {
 
-help_manager::help_manager(const config *cfg, const game_data *gameinfo, gamemap *_map)
+help_manager::help_manager(const config *cfg, gamemap *_map)
 {
 	game_cfg = cfg == NULL ? &dummy_cfg : cfg;
-	game_info = gameinfo;
 	map = _map;
 }
 
@@ -798,7 +796,6 @@ void generate_contents()
 help_manager::~help_manager()
 {
 	game_cfg = NULL;
-	game_info = NULL;
 	map = NULL;
 	toplevel.clear();
 	hidden_sections.clear();
@@ -1055,14 +1052,10 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 {
 
 	std::vector<topic> topics;
-	if (game_info == NULL) {
-		return topics;
-	}
-
 	std::map<std::string, std::string> special_description;
 	std::map<std::string, std::set<std::string> > special_units;
-	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
-	    i != game_info->unit_types.end(); i++) {
+	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.begin();
+	    i != unit_type_data::instance().unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
 		// Only show the weapon special if we find it on a unit that
 		// detailed description should be shown about.
@@ -1129,18 +1122,14 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 std::vector<topic> generate_ability_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
-	if (game_info == NULL) {
-		return topics;
-	}
-
 	std::map<std::string, std::string> ability_description;
 	std::map<std::string, std::set<std::string> > ability_units;
 	// Look through all the unit types, check if a unit of this type
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
 	// not encountered yet.
-	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
-	    i != game_info->unit_types.end(); ++i) {
+	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.begin();
+	    i != unit_type_data::instance().unit_types.end(); ++i) {
 		const unit_type &type = (*i).second;
 		if (description_type(type) == FULL_DESCRIPTION) {
 			std::vector<std::string> descriptions = type.ability_tooltips();
@@ -1252,8 +1241,8 @@ public:
 					++from_iter)
 			{
 				std::string unit_id = *from_iter;
-				std::map<std::string,unit_type>::const_iterator type = game_info->unit_types.find(unit_id);
-				if (type != game_info->unit_types.end())
+				std::map<std::string,unit_type>::const_iterator type = unit_type_data::instance().unit_types.find(unit_id);
+				if (type != unit_type_data::instance().unit_types.end())
 				{
 					std::string lang_unit = type->second.language_name();
 					std::string ref_id;
@@ -1280,8 +1269,8 @@ public:
 				 advance_end = next_units.end();
 				 advance_it != advance_end; ++advance_it) {
 				std::string unit_id = *advance_it;
-				std::map<std::string,unit_type>::const_iterator type = game_info->unit_types.find(unit_id);
-				if(type != game_info->unit_types.end()) {
+				std::map<std::string,unit_type>::const_iterator type = unit_type_data::instance().unit_types.find(unit_id);
+				if(type != unit_type_data::instance().unit_types.end()) {
 					std::string lang_unit = type->second.language_name();
 					std::string ref_id;
 					if (description_type(type->second) == FULL_DESCRIPTION && !type->second.hide_help()) {
@@ -1302,8 +1291,8 @@ public:
 		// respective topic.
 		const std::string race_id = type_.race();
 		std::string race_name;
-		const race_map::const_iterator race_it = game_info->unit_types.races().find(race_id);
-		if (race_it != game_info->unit_types.races().end()) {
+		const race_map::const_iterator race_it = unit_type_data::instance().unit_types.races().find(race_id);
+		if (race_it != unit_type_data::instance().unit_types.races().end()) {
 			race_name = race_it->second.plural_name();
 		} else {
 			race_name = _ ("race^Miscellaneous");
@@ -1528,13 +1517,11 @@ public:
 
 void generate_races_sections(const config *help_cfg, section &sec, int level)
 {
-	if (game_info == NULL) {return;}
-
 	std::set<std::string> races;
 	std::set<std::string> visible_races;
 
-	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
-	    i != game_info->unit_types.end(); i++) {
+	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.begin();
+	    i != unit_type_data::instance().unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type == FULL_DESCRIPTION) {
@@ -1555,8 +1542,8 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + *it;
 
 		std::string title;
-		const race_map::const_iterator race_it = game_info->unit_types.races().find(*it);
-		if (race_it != game_info->unit_types.races().end()) {
+		const race_map::const_iterator race_it = unit_type_data::instance().unit_types.races().find(*it);
+		if (race_it != unit_type_data::instance().unit_types.races().end()) {
 			title = race_it->second.plural_name();
 		} else {
 			title = _ ("race^Miscellaneous");
@@ -1574,14 +1561,10 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 std::vector<topic> generate_unit_topics(const bool sort_generated, const std::string& race)
 {
 	std::vector<topic> topics;
-	if (game_info == NULL) {
-		return topics;
-	}
-
 	std::set<std::string> race_units;
 
-	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
-	    i != game_info->unit_types.end(); i++) {
+	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.begin();
+	    i != unit_type_data::instance().unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
 
 		if (type.race() != race)
@@ -1608,8 +1591,8 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
-	const race_map::const_iterator race_it = game_info->unit_types.races().find(race);
-	if (race_it != game_info->unit_types.races().end()) {
+	const race_map::const_iterator race_it = unit_type_data::instance().unit_types.races().find(race);
+	if (race_it != unit_type_data::instance().unit_types.races().end()) {
 		race_name = race_it->second.plural_name();
 		race_description = race_it->second.description();
 		// if (description.empty()) description =  _("No description Available");
@@ -2726,7 +2709,7 @@ void help_browser::show_topic(const topic &t, bool save_in_history)
     if (t.text.parsed_text().size() == 0){
         if (t.id.find(unit_prefix) == 0){
             std::string unit_id = t.id.substr(unit_prefix.length(), t.id.length() - unit_prefix.length());
-            unit_type& type = game_info->unit_types.build_unit_type(unit_id, unit_type::WITHOUT_ANIMATIONS);
+            unit_type& type = unit_type_data::instance().unit_types.build_unit_type(unit_id, unit_type::WITHOUT_ANIMATIONS);
             t.text = new unit_topic_generator(type);
         }
     }
@@ -3008,7 +2991,7 @@ void show_help(display &disp, const section &toplevel_sec,
 
     // Find all unit_types that have not been constructed yet and fill in the information
     // needed to create the help topics
-    game_info->unit_types.generate_help_info();
+    unit_type_data::instance().unit_types.generate_help_info();
 
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
 	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||

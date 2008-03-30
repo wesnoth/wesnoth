@@ -167,7 +167,6 @@ unit::unit(const unit& o):
            draw_bars_(o.draw_bars_),
 
            modifications_(o.modifications_),
-           gamedata_(o.gamedata_),
            units_(o.units_),
            map_(o.map_),
            gamestatus_(o.gamestatus_),
@@ -179,7 +178,7 @@ unit::unit(const unit& o):
 }
 
 //! Initilizes a unit from a config.
-unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
+unit::unit(unit_map* unitmap, const gamemap* map,
 	const gamestatus* game_status, const std::vector<team>* teams,const config& cfg,
 	bool use_traits, game_state* state) :
 		movement_(0),
@@ -194,7 +193,6 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 		unit_halo_(halo::NO_HALO),
 		unit_anim_halo_(halo::NO_HALO),
 		draw_bars_(false),
-		gamedata_(gamedata),
 		units_(unitmap),
 		map_(map),
 		gamestatus_(game_status),
@@ -208,12 +206,12 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	game_config::add_color_info(cfg);
 }
 
-unit::unit(const game_data& gamedata,const config& cfg,bool use_traits) : movement_(0),
+unit::unit(const config& cfg,bool use_traits) : movement_(0),
            hold_position_(false), resting_(false), state_(STATE_STANDING),
            facing_(gamemap::location::SOUTH_EAST),
            flying_(false),anim_(NULL),next_idling_(0),frame_begin_time_(0),
            unit_halo_(halo::NO_HALO),unit_anim_halo_(halo::NO_HALO),draw_bars_(false),
-           gamedata_(&gamedata), units_(NULL),map_(NULL), gamestatus_(NULL)
+           units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg,use_traits);
 	getsHit_=0;
@@ -250,12 +248,12 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 }
 
 //! Initializes a unit from a unit type.
-unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
+unit::unit(unit_map* unitmap, const gamemap* map,
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t,
            int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
            variation_(variation), gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false),
            state_(STATE_STANDING), facing_(gamemap::location::SOUTH_EAST),draw_bars_(false),
-           gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
+           units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
 {
 	goto_ = gamemap::location();
 	side_ = side;
@@ -296,7 +294,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
            variation_(variation),gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
            state_(STATE_STANDING),facing_(gamemap::location::SOUTH_EAST),draw_bars_(false),
-           gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
+           units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
 {
 	goto_ = gamemap::location();
 	side_ = side;
@@ -362,9 +360,8 @@ unit& unit::operator=(const unit& u)
 
 
 
-void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams)
+void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams)
 {
-	gamedata_ = gamedata;
 	units_ = unitmap;
 	map_ = map;
 	gamestatus_ = game_status;
@@ -395,11 +392,10 @@ void unit::add_trait(std::string /*trait*/)
 
 void unit::generate_traits(bool musthaveonly, game_state* state)
 {
-	assert(gamedata_ != NULL);
 	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
-	const game_data::unit_type_map::const_iterator type = gamedata_->unit_types.find(type_id());
+	const unit_type_data::unit_type_map::const_iterator type = unit_type_data::instance().unit_types.find(type_id());
 	// Calculate the unit's traits
-	if (type == gamedata_->unit_types.end()) {
+	if (type == unit_type_data::instance().unit_types.end()) {
 		std::string error_message = _("Unknown unit type '$type|'");
 		utils::string_map symbols;
 		symbols["type"] = type_id();
@@ -588,9 +584,8 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 const unit_type* unit::type() const
 {
-	assert(gamedata_ != NULL);
-	std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(type_id());
-	if(i != gamedata_->unit_types.end()) {
+	std::map<std::string,unit_type>::const_iterator i = unit_type_data::instance().unit_types.find(type_id());
+	if(i != unit_type_data::instance().unit_types.end()) {
 		return &i->second;
 	}
 	if (!type_id().empty()) {
@@ -1182,7 +1177,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	/* */
 
 	if(cfg["gender"].empty()) {
-		const game_data::unit_type_map::const_iterator ut = gamedata_->unit_types.find(cfg["type"]);
+		const unit_type_data::unit_type_map::const_iterator ut = unit_type_data::instance().unit_types.find(cfg["type"]);
 		//! @todo FIXME shadowmaster: in my opinion, the following condition check
 		//! should be done earlier in this function as it is repated later for other
 		//! operations; i.e. it must be a sanity check to be performed as soon as possible
@@ -1190,7 +1185,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		//! throw an error at the start of this function, right after getting id/type from
 		//! the config obj. Not sure if that would be wanted; can the engine handle units
 		//! that don't have an equivalent unit_type obj associated?
-		if (ut != gamedata_->unit_types.end())
+		if (ut != unit_type_data::instance().unit_types.end())
 			gender_ = generate_gender(ut->second, utils::string_bool(cfg_["random_gender"], false), state);
 		else
 			ERR_UT << "no valid unit_type found for unit WML id \"" << cfg["type"] << "\"!\n";
@@ -1200,7 +1195,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	variation_ = cfg["variation"];
 
-	assert(gamedata_ != NULL);
 	id_ = cfg["id"];
 	name_ = cfg["name"];
 	// FIXME OBSOLETE This will go away in 1.5.3
@@ -1270,10 +1264,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	bool type_set = false;
 	type_ = "";
-	assert(gamedata_ != NULL);
 	if(!cfg["type"].empty()) {
-		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
-		if(i != gamedata_->unit_types.end()) {
+		std::map<std::string,unit_type>::const_iterator i = unit_type_data::instance().unit_types.find(cfg["type"]);
+		if(i != unit_type_data::instance().unit_types.end()) {
 			advance_to(&i->second.get_gender_unit_type(gender_), use_traits, state);
 			type_set = true;
 		} else {
@@ -1295,8 +1288,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 	type_ = cfg_["type"];
 	if(!type_set || cfg["race"] != "") {
-		const race_map::const_iterator race_it = gamedata_->unit_types.races().find(cfg["race"]);
-		if(race_it != gamedata_->unit_types.races().end()) {
+		const race_map::const_iterator race_it = unit_type_data::instance().unit_types.races().find(cfg["race"]);
+		if(race_it != unit_type_data::instance().unit_types.races().end()) {
 			race_ = &race_it->second;
 		} else {
 			static const unit_race dummy_race;
@@ -1341,10 +1334,10 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	//remove ai_vars from private cfg
 	cfg_.clear_children("ai_vars");
 
-	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(cfg["type"]);
+	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::instance().unit_types.find(cfg["type"]);
 	const unit_type* ut = NULL;
 
-	if(uti != gamedata_->unit_types.end()) {
+	if(uti != unit_type_data::instance().unit_types.end()) {
 		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}
 	if(!type_set) {
@@ -1480,9 +1473,9 @@ void unit::write(config& cfg) const
 	cfg.add_child("abilities",abilities_b_);
 	cfg["x"] = x;
 	cfg["y"] = y;
-	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(type_id());
+	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::instance().unit_types.find(type_id());
 	const unit_type* ut = NULL;
-	if(uti != gamedata_->unit_types.end()) {
+	if(uti != unit_type_data::instance().unit_types.end()) {
 		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}
 	if(ut && cfg["description"] == ut->unit_description()) {
@@ -2446,9 +2439,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				// for the first time.
 				if(apply_to == "variation" && no_add == false) {
 					variation_ = (**i.first)["name"];
-					assert(gamedata_ != NULL);
-					const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(type_id());
-										if(var == gamedata_->unit_types.end()) {
+					const unit_type_data::unit_type_map::const_iterator var = unit_type_data::instance().unit_types.find(type_id());
+										if(var == unit_type_data::instance().unit_types.end()) {
 						std::string error_message = _("Unknown unit type '$type|'");
 						utils::string_map symbols;
 						symbols["type"] = type_id();

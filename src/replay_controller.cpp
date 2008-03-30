@@ -42,14 +42,14 @@
 #define LOG_REPLAY LOG_STREAM(info, replay)
 #define ERR_REPLAY LOG_STREAM(err, replay)
 
-LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_config,
+LEVEL_RESULT play_replay_level(const config& game_config,
 		const config* level, CVideo& video, game_state& state_of_game)
 {
 	try{
 		const int ticks = SDL_GetTicks();
 		const int num_turns = atoi((*level)["turns"].c_str());
 		DBG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-		replay_controller replaycontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video);
+		replay_controller replaycontroller(*level, state_of_game, ticks, num_turns, game_config, video);
 		DBG_NG << "created objects... " << (SDL_GetTicks() - replaycontroller.get_ticks()) << "\n";
 		const events::command_disabler disable_commands;
 
@@ -66,10 +66,10 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 	return LEVEL_CONTINUE;
 }
 
-replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
+replay_controller::replay_controller(const config& level, game_state& state_of_game,
 						   const int ticks, const int num_turns, const config& game_config,
 						   CVideo& video)
-	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, false, true),
+	: play_controller(level, state_of_game, ticks, num_turns, game_config, video, false, true),
 	  gamestate_start_(state_of_game), status_start_(level, num_turns, &state_of_game)
 {
 	current_turn_ = 1;
@@ -179,7 +179,7 @@ void replay_controller::reset_replay(){
 	if (events_manager_ != NULL){
 		delete events_manager_;
 		events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_,
-								units_,teams_, gamestate_,status_,gameinfo_);
+								units_,teams_, gamestate_,status_);
 	}
 
 	gui_->new_turn();
@@ -334,7 +334,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 
 		DBG_REPLAY << "doing replay " << player_number_ << "\n";
 		try {
-			::do_replay(*gui_, map_, gameinfo_, units_, teams_,
+			::do_replay(*gui_, map_, units_, teams_,
 					player_number_, status_, gamestate_);
 		} catch(replay::error&) {
 			if(!continue_replay()) {

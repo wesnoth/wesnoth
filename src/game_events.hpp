@@ -23,7 +23,6 @@
 #include <vector>
 #include <map>
 
-class game_data;
 class game_display;
 class game_state;
 class gamestatus;
@@ -56,7 +55,7 @@ struct manager {
 	// and must remain valid for the life of the object.
 	manager(const config& scenario_cfg, game_display& disp, gamemap& map,
 			soundsource::manager& sndsources, unit_map& units, std::vector<team>& teams,
-			game_state& state_of_game, gamestatus& status, const game_data& data);
+			game_state& state_of_game, gamestatus& status);
 	~manager();
 
 	variable::manager variable_manager;

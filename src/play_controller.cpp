@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file play_controller.cpp 
+//! @file play_controller.cpp
 //! Handle input via mouse & keyboard, events, schedule commands.
 
 #include "play_controller.hpp"
@@ -33,16 +33,16 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-play_controller::play_controller(const config& level, const game_data& gameinfo,
+play_controller::play_controller(const config& level,
 	game_state& state_of_game, int ticks, int num_turns, const config& game_config,
 	CVideo& video, bool skip_replay, bool is_replay) :
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(),
-	help_manager_(&game_config, &gameinfo, &map_), mouse_handler_(gui_, teams_,
-		units_, map_, status_, gameinfo, undo_stack_, redo_stack_),
-	menu_handler_(gui_, units_, teams_, level, gameinfo, map_, game_config,
+	help_manager_(&game_config, &map_), mouse_handler_(gui_, teams_,
+		units_, map_, status_, undo_stack_, redo_stack_),
+	menu_handler_(gui_, units_, teams_, level, map_, game_config,
 		status_, state_of_game, undo_stack_, redo_stack_),
 	generator_setter(&recorder), statistics_context_(level["name"]),
-	gameinfo_(gameinfo), level_(level), game_config_(game_config),
+	level_(level), game_config_(game_config),
 	gamestate_(state_of_game), status_(level, num_turns, &state_of_game),
 	map_(game_config, level["map_data"]), ticks_(ticks),
 	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
@@ -70,7 +70,7 @@ play_controller::~play_controller(){
 void play_controller::init(CVideo& video, bool is_replay){
 	loadscreen::global_loadscreen_manager loadscreen_manager(video);
 
-	// If the recorder has no event, adds an "game start" event 
+	// If the recorder has no event, adds an "game start" event
 	// to the recorder, whose only goal is to initialize the RNG
 	if(recorder.empty()) {
 		recorder.add_start();
@@ -100,7 +100,7 @@ void play_controller::init(CVideo& video, bool is_replay){
 		if (first_human_team_ == -1){
 			first_human_team_ = get_first_human_team(ui, unit_cfg);
 		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_, status_, snapshot, is_replay );
+		get_player_info(**ui, gamestate_, save_id, teams_, level_, map_, units_, status_, snapshot, is_replay );
 	}
 
 	loadscreen::global_loadscreen->set_progress(80, _("Initializing display"));
@@ -157,7 +157,7 @@ void play_controller::init_managers(){
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_,
-                                                   units_,teams_, gamestate_,status_,gameinfo_);
+                                                   units_,teams_, gamestate_,status_);
 
 	halo_manager_ = new halo::manager(*gui_);
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
@@ -340,7 +340,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	team& current_team = teams_[team_index];
 
 	mouse_handler_.set_team(team_index+1);
-	
+
 	// If we are observers we move to watch next team if it is allowed
 	if (team_manager_.is_observer()
 		&& !current_team.get_disallow_observers()) {
@@ -353,9 +353,9 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	gamestate_.set_variable("side_number",player_number_str.str());
 	gamestate_.last_selected = gamemap::location::null_location;
 
-	/*  
-		Normally, events must not be actively fired through replays, because 
-		they have been recorded previously and therefore will get executed anyway. 
+	/*
+		Normally, events must not be actively fired through replays, because
+		they have been recorded previously and therefore will get executed anyway.
 		Firing them in the normal code would lead to double execution.
 		However, the following events are different in that they need to be executed _now_
 		(before calculation of income and healing) or we will risk OOS errors if we manipulate
@@ -375,9 +375,9 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		real_side_change = false;
 	}
 
-	// We want to work out if units for this player should get healed, 
-	// and the player should get income now. 
-	// Healing/income happen if it's not the first turn of processing, 
+	// We want to work out if units for this player should get healed,
+	// and the player should get income now.
+	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game, and this is not the player it started with.
 	const bool turn_refresh = status_.turn() > start_turn_ || (loading_game_ && team_index != (first_player_ - 1));
 
@@ -427,7 +427,7 @@ void play_controller::finish_side_turn(){
 			uit->second.end_turn();
 	}
 
-	// This implements "delayed map sharing." 
+	// This implements "delayed map sharing."
 	// It is meant as an alternative to shared vision.
 	if(current_team().copy_ally_shroud()) {
 		gui_->recalculate_minimap();
@@ -606,16 +606,16 @@ void play_controller::enter_textbox()
 
 }
 
-team& play_controller::current_team() 
-{ 
-	assert(player_number_ > 0 && player_number_ <= teams_.size()); 
-	return teams_[player_number_-1]; 
+team& play_controller::current_team()
+{
+	assert(player_number_ > 0 && player_number_ <= teams_.size());
+	return teams_[player_number_-1];
 }
-	
-const team& play_controller::current_team() const 
-{ 
-	assert(player_number_ > 0 && player_number_ <= teams_.size()); 
-	return teams_[player_number_-1]; 
+
+const team& play_controller::current_team() const
+{
+	assert(player_number_ > 0 && player_number_ <= teams_.size());
+	return teams_[player_number_-1];
 }
 
 //! Find a human team (ie one we own) starting backwards from 'team_num'.
@@ -670,7 +670,7 @@ void play_controller::handle_event(const SDL_Event& event)
 		// intentionally fall-through
 	case SDL_KEYUP:
 
-		// If the user has pressed 1 through 9, we want to show 
+		// If the user has pressed 1 through 9, we want to show
 		// how far the unit can move in that many turns
 		if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '7') {
 			const int new_path_turns = (event.type == SDL_KEYDOWN) ?
@@ -691,7 +691,7 @@ void play_controller::handle_event(const SDL_Event& event)
 			}
 		}
 //%%
-//		std::cerr << "@play_controller.cpp::handle_event : Key pressed: " << event.key.keysym.sym 
+//		std::cerr << "@play_controller.cpp::handle_event : Key pressed: " << event.key.keysym.sym
 //				<< std::endl;
 
 		break;

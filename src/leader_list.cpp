@@ -27,12 +27,11 @@
 const std::string leader_list_manager::random_enemy_picture("random-dice.png~RC(magenta>1)");
 
 leader_list_manager::leader_list_manager(const config::child_list& side_list,
-		const game_data* data, gui::combo* leader_combo , gui::combo* gender_combo):
+		gui::combo* leader_combo , gui::combo* gender_combo):
 	leaders_(),
 	genders_(),
 	gender_ids_(),
 	side_list_(side_list),
-	data_(data),
 	leader_combo_(leader_combo),
 	gender_combo_(gender_combo)
 {
@@ -126,7 +125,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 		return;
 	}
 
-	game_data::unit_type_factory& utypes = data_->unit_types;
+	unit_type_data::unit_type_factory& utypes = unit_type_data::instance().unit_types;
 	if (utypes.find(leader) != utypes.end()) {
 		const unit_type* ut;
 		const unit_type* utg;
@@ -183,7 +182,7 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 	std::vector<std::string> leader_strings;
 	for(itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
 
-		game_data::unit_type_factory& utypes = data_->unit_types;
+		unit_type_data::unit_type_factory& utypes = unit_type_data::instance().unit_types;
 
 		//const std::string name = data_->unit_types->find(*itor).language_name();
 		if (utypes.find(*itor) != utypes.end()) {

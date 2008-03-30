@@ -122,7 +122,7 @@ protected:
 	std::set<location> attacks_;
 
 	//! Sees if it's possible for a unit to move 'from' -> 'via' -> 'to' all in one turn.
-	bool multistep_move_possible(const location& from, 
+	bool multistep_move_possible(const location& from,
 		const location& to, const location& via,
 		const std::map<location,paths>& possible_moves) const;
 
@@ -131,7 +131,7 @@ public:
 	{
 		void analyze(const gamemap& map, unit_map& units,
 					 const std::vector<team>& teams,
-					 const gamestatus& status, const game_data& gamedata,
+					 const gamestatus& status,
 					 class ai& ai_obj,
 					 const move_map& dstsrc, const move_map& srcdst,
 					 const move_map& enemy_dstsrc, double aggression);
@@ -249,7 +249,6 @@ protected:
 
 	game_display& disp_;
 	const gamemap& map_;
-	const game_data& gameinfo_;
 	unit_map& units_;
 	std::vector<team>& teams_;
 	unsigned int team_num_;
@@ -317,7 +316,7 @@ protected:
 	friend struct attack_analysis;
 
 private:
-	void find_villages(/*std::vector<unit_map::const_iterator>& our_units, 
+	void find_villages(/*std::vector<unit_map::const_iterator>& our_units,
 		std::vector<std::vector<gamemap::location> >& reachable_villages, */
 		std::map<gamemap::location /*unit location*/, std::vector<gamemap::location /* villages we can reach*/> >& reachmap,
 		std::vector<std::pair<gamemap::location,gamemap::location> >& moves,

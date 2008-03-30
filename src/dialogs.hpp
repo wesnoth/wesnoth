@@ -18,7 +18,6 @@ class attack_type;
 class config;
 class display;
 class game_display;
-class game_data;
 class unit;
 class unit_map;
 class unit_type;
@@ -43,10 +42,10 @@ namespace dialogs {
 //
 // the game only expects an advancement to be triggered by a fight, it the cause for
 // advancement is different (eg unstore_unit) the add_replay_event should be set
-void advance_unit(const game_data& info, const gamemap& map,unit_map& units, gamemap::location loc,
+void advance_unit(const gamemap& map,unit_map& units, gamemap::location loc,
 				  game_display& gui, bool random_choice=false, const bool add_replay_event=false);
 
-bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, game_display& gui, size_t choice);
+bool animate_unit_advancement(unit_map& units, gamemap::location loc, game_display& gui, size_t choice);
 
 void show_objectives(game_display& disp, const config& level, const std::string& objectives);
 
@@ -64,7 +63,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 //of the save they want to load. Stores whether the user wants to show
 //a replay of the game in show_replay. If show_replay is NULL, then
 //the user will not be asked if they want to show a replay.
-std::string load_game_dialog(display& disp, const config& terrain_config, const game_data& data, bool* show_replay, bool* cancel_orders);
+std::string load_game_dialog(display& disp, const config& terrain_config, bool* show_replay, bool* cancel_orders);
 
 class unit_preview_pane : public gui::preview_pane
 {

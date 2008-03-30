@@ -317,11 +317,11 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 {
 	int illuminates = -1;
 	assert(units_ && map_ && gamestatus_);
-	
+
 	if (const config* afilter = cfg.child("filter"))
 		if (!matches_filter(afilter,loc, cache_illuminates(illuminates, ability)))
 			return false;
-	
+
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	config::child_list::const_iterator i, i_end;
@@ -370,7 +370,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const gamemap::location& loc) const
 {
 	int illuminates = -1;
-	
+
 	assert(dir >=0 && dir <= 5);
 	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
 	const config::child_list& affect_adj = cfg.get_children("affect_adjacent");
@@ -806,13 +806,12 @@ bool attack_type::special_affects_self(const config& cfg) const
 	return false;
 }
 void attack_type::set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
-                              const game_data* gamedata, const unit_map* unitmap,
+                              const unit_map* unitmap,
 							  const gamemap* map, const gamestatus* game_status,
 							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack) const
 {
 	aloc_ = aloc;
 	dloc_ = dloc;
-	gamedata_ = gamedata;
 	unitmap_ = unitmap;
 	map_ = map;
 	game_status_ = game_status;
@@ -825,7 +824,6 @@ void attack_type::set_specials_context(const gamemap::location& loc, const gamem
 {
 	aloc_ = loc;
 	dloc_ = dloc;
-	gamedata_ = un.gamedata_;
 	unitmap_ = un.units_;
 	map_ = un.map_;
 	game_status_ = un.gamestatus_;
