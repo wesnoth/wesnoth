@@ -964,7 +964,7 @@ env.Alias('install-clientside', [
     clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth_editor.6"),
     ])
 # Localized man pages
-for lang in filter(lambda dir: dir != ".svn", os.listdir("doc/man")):
+for lang in filter(CopyFilter, os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
      if os.path.isdir(sourcedir):
           targetdir = os.path.join(mandir, lang, "man6")
@@ -1005,9 +1005,9 @@ from os import access, F_OK
 install_wesnothd = wesnothd_env.Install(bindir, wesnothd)
 env.Alias("install-wesnothd", install_wesnothd)
 wesnothd_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"),
-for lang in os.listdir("doc/man"):
+for lang in filter(CopyFilter, os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
-     if os.path.isdir(sourcedir) and CopyFilter(sourcedir):
+     if os.path.isdir(sourcedir):
           targetdir = os.path.join(mandir, lang, "man6")
           env.Alias('install-wesnothd',
                wesnothd_env.Install(targetdir, [
