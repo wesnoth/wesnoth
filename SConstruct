@@ -34,6 +34,7 @@ opts.Add(PathOption('icondir', 'sets the icons directory to a non-default locati
 opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
+opts.Add(BoolOption('nls','enable compile/install of gettext message catalogs',True))
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
@@ -345,6 +346,14 @@ boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
     boost_test_dyn_link = conf.CheckCXXHeader('boost/test/unit_test.hpp')
     boost_auto_test = conf.CheckCXXHeader('boost/test/unit_test.hpp')
+
+have_gmsgfmt = env.WhereIs("gmsgfmt")
+if not have_gmsgfmt:
+     env["nls"] = False
+if not have_gmsgfmt:
+     print "NLS tools are not present..."
+if not env['nls']:
+     print "NLS catalogue installation is disabled."
 
 env = conf.Finish()
 
@@ -896,6 +905,9 @@ env.Clean(all, 'TAGS')
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
+installable_subdirs = Split('data fonts icons images sounds')
+if env['nls']:
+     installable_subdirs.append("translations")
 fifodir = env['fifodir']
 mandir = os.path.join(env["prefix"], "share/man")
 clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
@@ -961,7 +973,7 @@ env.Alias('install-clientside', [
     clientside_env.Install(bindir, clientside),
     clientside_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
     clientside_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
-    clientside_env.InstallFiltered(Dir(datadir), map(Dir, Split('data fonts icons images sounds translations'))),
+    clientside_env.InstallFiltered(Dir(datadir), map(Dir, installable_subdirs)),
     clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
     clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth_editor.6"),
     ])
@@ -1032,9 +1044,7 @@ env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 # compile message catalogs to binary format at installation time.
 # Without this step, the i18n support won't work.
 #
-if not env.WhereIs("msgfmt"):
-    print "Can't find msgfmt, i18n support won't work in this build."
-else:
+if env["nls"]:
     translation_dirs = os.listdir("po")
     translation_dirs.remove(".svn")
     translation_dirs.remove("wesnoth-manpages")
