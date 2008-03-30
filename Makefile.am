@@ -56,12 +56,12 @@ sanity-check:
 	cd utils; ./sanity_check
 	cd data/tools; make sanity-check
 
-# *** Not yet covered by scons recipe (dummylocales. doc install)
+# *** Not yet covered by scons recipe (dummylocales)
 install-data-local:
 	@$(NORMAL_INSTALL)
 if INSTALLDATA
-	: Replicate data directory skeleton under target shared-data directory.
-	: Then copy all corresponding files.
+	@echo "Replicate data directory skeleton under target shared-data directory."
+	@echo "Then copy all corresponding files."
 	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
 	( $(finddatadirs) ) | while read p; do \
 	  $(mkdir_p) "$(DESTDIR)$(pkgdatadir)/$$p"; \
@@ -72,8 +72,8 @@ if INSTALLDATA
 	  echo $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
-	: Replicate doc directory skeleton under target doc subdirectory
-	: Then copy all corresponding files.
+	@echo "Replicate doc directory skeleton under target doc subdirectory"
+	@echo "Then copy all corresponding files."
 	test -z "$(docdir)" || $(mkdir_p) "$(DESTDIR)$(docdir)"
 	( $(finddocdirs) ) | while read p; do \
 	  $(mkdir_p) "$(DESTDIR)$(docdir)/$$p"; \
@@ -84,7 +84,7 @@ if INSTALLDATA
 	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(docdir)/$$f"; cd ..; \
 	done
 if DUMMYLOCALES
-	: Create dummy locales beneath the Wesnoth data directory
+	@echo "Create dummy locales beneath the Wesnoth data directory"
 	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
 	if test -d "$(DESTDIR)$(pkgdatadir)/locales/C" ; then rm -r "$(DESTDIR)$(pkgdatadir)/locales/C" ; fi
 	echo | localedef --force "$(DESTDIR)$(pkgdatadir)/locales/C" 2> /dev/null; \
@@ -95,7 +95,7 @@ if DUMMYLOCALES
 	true
 endif
 if TINYGUI
-	: Shrink installed images by a factor of two.
+	@echo "Shrink installed images by a factor of two."
 	(cd $(top_srcdir) && find data/core/images data/campaigns images  \( $(findfilterflags) -a -name '*.png' -and -not -name 'bar-energy-tinygui.png' -print \) ) | while read p; do \
 	  $(w_preparefileinstall) \
 	  eval `identify $$d$$p | cut -f 3 -d ' ' | sed s/^/imagewidth=/ | sed s/x/\;imageheight=/` ;\
@@ -114,6 +114,7 @@ if TINYGUI
 	  } \
 	done
 endif
+	@echo "Local installation is complete"
 endif
 
 uninstall-local:
@@ -211,13 +212,11 @@ update-po4a:
 	@find doc/man/ -maxdepth 1 -type d -empty -exec rmdir {} \; && \
 		echo "done." || exit $?
 
-# *** Not yet covered by scons recipe
 if MANUALUPDATE
 	@cd doc/manual && make html || exit $?
 endif
 endif
 
-# *** Not yet covered by scons recipe
 if MANUALUPDATE
 manual-en:
 	@cd doc/manual && make manual.en.html || exit $?
