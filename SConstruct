@@ -885,32 +885,12 @@ sources =   libwesnoth_sources + libwesnoth_core_sources + \
 env.Command("TAGS", sources, 'etags -l c++ $SOURCES')
 env.Clean(all, 'TAGS')
 
-translation_dirs = os.listdir("po")
-translation_dirs.remove(".svn")
-translation_dirs.remove("wesnoth-manpages")
-translation_dirs.remove("wesnoth-manual")
-translation_dirs = map(lambda dir: os.path.join("po", dir), translation_dirs)
-translation_dirs = filter(os.path.isdir, translation_dirs)
-
-lingua_re = re.compile(r"po/.*/(.*)\.po")
-for dir in translation_dirs:
-    pos = glob(os.path.join(dir, "*.po"))
-    linguas = map(lingua_re.findall, pos)
-    for lingua in linguas:
-        lingua = lingua[0]
-        name = os.path.basename(dir)
-	env.Command(
-            os.path.join("translations", lingua, "LC_MESSAGES", name + ".mo"),
-	    os.path.join("po", name, lingua + ".po"),
-            "gmsgfmt -c --statistics -o $TARGET $SOURCE"
-	    )
-
 #
 # Unix installation productions
 #
 # These will not be portable to Windows or Mac. They assume a Unix-like
 # directory structure and FreeDesktop standard locations foicon, app,
-# snd doc files.
+# and doc files.
 #
 
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
@@ -1047,6 +1027,33 @@ if not access(fifodir, F_OK):
 
 env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 
+#
+# If we have the right tool in place, create targets to invoke gmsgfmt to
+# compile message catalogs to binary format at installation time.
+# Without this step, the i18n support won't work.
+#
+if env.WhereIs("gmsgfmt"):
+    translation_dirs = os.listdir("po")
+    translation_dirs.remove(".svn")
+    translation_dirs.remove("wesnoth-manpages")
+    translation_dirs.remove("wesnoth-manual")
+    translation_dirs = map(lambda dir: os.path.join("po", dir),
+                           translation_dirs)
+    translation_dirs = filter(os.path.isdir, translation_dirs)
+    lingua_re = re.compile(r"po/.*/(.*)\.po")
+    for dir in translation_dirs:
+        pos = glob(os.path.join(dir, "*.po"))
+        linguas = map(lingua_re.findall, pos)
+        for lingua in linguas:
+            lingua = lingua[0]
+            name = os.path.basename(dir)
+            env.Command(
+                os.path.join("translations", lingua, "LC_MESSAGES", name+".mo"),
+                os.path.join("po", name, lingua + ".po"),
+                "gmsgfmt -c --statistics -o $TARGET $SOURCE"
+                )
+    else:
+        print "Can't find gmsgfmt, i18n support won't work in this build."
 #
 # Un-installation
 #
