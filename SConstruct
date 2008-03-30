@@ -438,11 +438,13 @@ commonlibs = SDL_libs + boost_libs + ["pthread", "png", "-lpython"+sys.version[:
 wesnothdlibs = ["SDL_net", "boost_iostreams-mt", "pthread"]
 commonpath = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]]
 
+env.Append(LIBPATH = ".")
+
 # Platform-specific support, straight from configure.ac
 if sys.platform == 'win32':				# Microsoft Windows
     commonlibs.append("unicows")			# Windows Unicode lib
 elif sys.platform == 'darwin':				# Mac OS X
-    event["CXXFLAGS"].append("-framework Carbon")	# Carbon GUI
+    env["CXXFLAGS"].append("-framework Carbon")		# Carbon GUI
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
@@ -624,8 +626,7 @@ wesnoth_sources = [
 if have_client_prereqs:
     wesnoth = env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
             CPPPATH = commonpath + ['src/server'],
-            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs,
-            LIBPATH = [".", "/lib", "/usr/lib"])
+            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs)
 else:
     wesnoth = None
 
@@ -644,8 +645,7 @@ wesnoth_editor_sources = [
 if have_client_prereqs and have_X:
     wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources,
             CPPPATH = commonpath,
-            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs + extralibs,
-            LIBPATH = [".", "/lib", "/usr/lib"])
+            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs + extralibs)
 else:
     wesnoth_editor = None
 
@@ -655,8 +655,7 @@ campaignd_sources = [
 if have_server_prereqs:
     campaignd = env.Program("campaignd", campaignd_sources,
             CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
-            LIBS = ['wesnoth_core', 'wesnothd', 'campaignd', 'wesnoth'] + commonlibs,
-            LIBPATH = [".", "/lib", "/usr/lib"])
+            LIBS = ['wesnoth_core', 'wesnothd', 'campaignd', 'wesnoth'] + commonlibs)
 else:
     campaignd = None
 
@@ -672,8 +671,7 @@ wesnothd_sources = [
 if have_server_prereqs:
     wesnothd = env.Program("wesnothd", wesnothd_sources,
             CPPPATH = ['src', 'src/server', '/usr/include/SDL'],
-            LIBS =  ['wesnoth_core', 'wesnothd'] + wesnothdlibs,
-            LIBPATH = [".", "/lib", "/usr/lib"])
+            LIBS =  ['wesnoth_core', 'wesnothd'] + wesnothdlibs)
 else:
     wesnothd = None
 
@@ -683,8 +681,7 @@ cutter_sources = [
 if have_client_prereqs:
     cutter = env.Program("cutter", cutter_sources,
             CPPPATH = commonpath,
-            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
-            LIBPATH = [".", "/lib", "/usr/lib"])
+            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs)
 else:
     cutter = None
 
@@ -695,8 +692,7 @@ exploder_sources = [
 if have_client_prereqs:
     exploder = env.Program("exploder", exploder_sources,
             CPPPATH = commonpath,
-            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs,
-            LIBPATH = [".", "/lib", "/usr/lib"])
+            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs)
 else:
     exploder = None
 
@@ -708,8 +704,7 @@ test_sources = [
     ]
 test_env.Program("test", test_sources,
             CPPPATH = commonpath + ['/usr/include'],
-            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs + ['boost_unit_test_framework'],
-            LIBPATH = [".", "/lib", "/usr/lib"])
+            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs + ['boost_unit_test_framework'])
 
 # FIXME: Currently this will only work under Linux
 env["svnrev"] = commands.getoutput("svnversion -n . 2>/dev/null")
