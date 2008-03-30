@@ -986,10 +986,12 @@ env.Alias('install-clientside', [
     clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth_editor.6"),
     ])
 # Localized man pages
+localized_man_dirs = []
 for lang in filter(CopyFilter, os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
      if os.path.isdir(sourcedir):
           targetdir = os.path.join(mandir, lang, "man6")
+          localized_man_dirs.append(targetdir)
           env.Alias('install-clientside', 
                     clientside_env.Install(targetdir, [
                                       os.path.join(sourcedir, "wesnoth.6"),
@@ -1049,7 +1051,9 @@ env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 # Un-installation
 #
 deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + daemons) \
-            + [Delete(datadir), Delete(pythonlib), Delete(fifodir)]
+            + [Delete(datadir), Delete(pythonlib), Delete(fifodir)] \
+            + map(lambda x: Delete(os.path.join(mandir, "man6", x)), [ "wesnoth.6", "wesnoth_editor.6" ]) \
+            + Flatten(map(lambda mandir : map(lambda x: Delete(os.path.join(mandir, x)), [ "wesnoth.6", "wesnoth_editor.6" ]), localized_man_dirs))
 uninstall = env.Command('uninstall', '', deletions)
 env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
