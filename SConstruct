@@ -972,7 +972,7 @@ for lang in filter(lambda dir: dir != ".svn", os.listdir("doc/man")):
                                       os.path.join(sourcedir, "wesnoth.6"),
                                       os.path.join(sourcedir, "wesnoth_editor.6"),
                                       ])
-          env.Alias('install', inst)
+          env.Alias('install-clientside', inst)
 # Icon and desktop files
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
