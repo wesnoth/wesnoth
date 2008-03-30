@@ -896,6 +896,8 @@ unit_type_data::unit_type_data()
 void unit_type_data::set_config(const config& cfg)
 {
     DBG_UT << "unit_type_data::set_config, cfg:\n" << cfg;
+
+    clear();
     unit_types.set_unit_config(cfg);
 	unit_types.set_unit_traits(cfg.get_children("trait"));
 
@@ -914,6 +916,9 @@ void unit_type_data::set_config(const config& cfg)
 		unit_types.races().insert(std::pair<std::string,unit_race>(race.id(),race));
 		increment_set_config_progress();
 	}
+
+	//Add dummy unit
+	unit_types.insert(std::pair<const std::string,unit_type>("dummy_unit",unit_type()));
 
 	unsigned base_unit_count = 0;
 	for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
@@ -1022,8 +1027,11 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_factory:
     unit_type_map::iterator itor = types_.find(key);
 
     lg::info(lg::config) << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
-    //This should not happen since it means the unit_type id has not been loaded
-    assert (itor != types_.end());
+
+    //This might happen if units of another era are requested (for example for savegames)
+    if (itor == types_.end()){
+        return types_.find("dummy_unit");
+    }
 
     //check if the unit_type is constructed and build it if necessary
     if (itor->second.id().empty()){

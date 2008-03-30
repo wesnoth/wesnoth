@@ -464,7 +464,6 @@ bool game_controller::init_video()
 
 bool game_controller::init_config()
 {
-	unit_type_data::instance().clear();
 	//Resets old_defines_map_, to force refresh_game_cfg to reload
 	//everything.
 	old_defines_map_.clear();
@@ -1902,7 +1901,6 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 		if(old_defines_map_.empty() || defines_map_ != old_defines_map_ || reset_translations) {
 			cursor::setter cur(cursor::WAIT);
 
-			unit_type_data::instance().clear();
 			if(!reset_translations) {
 				game_config_.clear();
 				read_game_cfg(use_caching_);
