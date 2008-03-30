@@ -5,13 +5,13 @@
 # 1. Subversion command-line client programs svnstatus and svnversion.
 # 2. Unix file(1), on installation only.
 # 3. Unix convert(1), on installation only, if using tinygui.
+# 4. gmsgfmt(1) for making builds with i18n support.
 #
 # To do (list is now exhaustive):
 #
-# 1. Documentation formatting and installation
-# 2. Dummy locales
-# 3. Translations handling other than installation (pot-update).
-# 4. Making binary and data-only distribution tarballs
+# 1. Dummy locales
+# 2. Translations handling other than installation (pot-update).
+# 3. Making binary and data-only distribution tarballs
 
 import os, sys, commands, shutil, sets, re
 from glob import glob
@@ -905,6 +905,7 @@ env.Clean(all, 'TAGS')
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
+docdir = os.path.join(env['prefix'], "share/doc/wesnoth")
 installable_subdirs = Split('data fonts icons images sounds')
 if env['nls']:
      installable_subdirs.append("translations")
@@ -974,6 +975,7 @@ env.Alias('install-clientside', [
     clientside_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
     clientside_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
     clientside_env.InstallFiltered(Dir(datadir), map(Dir, installable_subdirs)),
+    clientside_env.InstallFiltered(Dir(docdir), Dir("doc/manual")),
     clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
     clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth_editor.6"),
     ])
@@ -1069,7 +1071,7 @@ if env["nls"]:
 # Un-installation
 #
 deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + daemons) \
-            + [Delete(datadir), Delete(pythonlib), Delete(fifodir)] \
+            + [Delete(datadir), Delete(pythonlib), Delete(fifodir), Delete(docdir)] \
             + map(lambda x: Delete(os.path.join(mandir, "man6", x)), [ "wesnoth.6", "wesnoth_editor.6" ]) \
             + Flatten(map(lambda mandir : map(lambda x: Delete(os.path.join(mandir, x)), [ "wesnoth.6", "wesnoth_editor.6" ]), localized_man_dirs))
 uninstall = env.Command('uninstall', '', deletions)
