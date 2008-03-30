@@ -1445,7 +1445,7 @@ void server::process_data_game(const network::connection sock,
 		if (user) {
 			lobby_.add_player(user, true);
 			if (g->describe_slots()) {
-				send_gamelist_diff(sock);
+				send_gamelist_diff(user);
 			}
 			// Send the removed user the lobby game list.
 			send_doc(games_and_users_list_, user);
