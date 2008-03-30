@@ -9,10 +9,9 @@
 # To do (list is now exhaustive):
 #
 # 1. Documentation formatting and installation
-# 2. Manual page formatting and installation
-# 3. Dummy locales
-# 4. Translations handling other than installation (pot-update).
-# 5. Making binary and data-only distribution tarballs
+# 2. Dummy locales
+# 3. Translations handling other than installation (pot-update).
+# 4. Making binary and data-only distribution tarballs
 
 import os, sys, commands, shutil, sets
 from SCons.Script import *
@@ -882,13 +881,18 @@ env.Command("TAGS", sources, 'etags -l c++ $SOURCES')
 env.Clean(all, 'TAGS')
 
 #
-# Installation productions
+# Unix installation productions
+#
+# These will not be portable to Windows or Mac. They assume a Unix-like
+# directory structure and FreeDesktop standard locations foicon, app,
+# snd doc files.
 #
 
 bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
 fifodir = env['fifodir']
+mandir = os.path.join(env["prefix"], "share/man")
 clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
 pythontools = Split("wmlscope wmllint wmlindent")
@@ -941,17 +945,35 @@ def InstallFilteredHook(target, source, env):
     return None
 env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
 
+# Client install
 clientside_env = env.Clone()
 # TargetSignatures('content') causes a crash in the install
 # production, at least in scons 0.97, right after the actions finish
 # (thus, probably, at target-signature generation time).
 clientside_env.TargetSignatures('build')
+# Install binaries, Python modules, data, and English-language man pages
 env.Alias('install', [
     clientside_env.Install(bindir, clientside),
     clientside_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
     clientside_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
-    clientside_env.InstallFiltered(Dir(datadir), map(Dir, Split('data fonts icons images sounds translations')))
+    clientside_env.InstallFiltered(Dir(datadir), map(Dir, Split('data fonts icons images sounds translations'))),
+    clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
+    clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth_editor.6"),
     ])
+# Localized man pages
+for lang in os.listdir("doc/man"):
+     sourcedir = os.path.join("doc/man", lang)
+     if os.path.isdir(sourcedir):
+          targetdir = os.path.join(mandir, lang, "man6")
+          inst = clientside_env.Install(targetdir, [
+                                      os.path.join(sourcedir, "wesnoth.6"),
+                                      os.path.join(sourcedir, "wesnoth_editor.6"),
+                                      ])
+          clientside_env.AddPreAction(inst, [
+               Mkdir(os.path.dirname(targetdir)),
+               Mkdir(targetdir),
+               ])
+# Icon and desktop files
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
           env.Alias('install',
@@ -975,7 +997,7 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
                                        "icons/wesnoth_editor.desktop",
                                        ]))
 
-# FIXME: Only works under Unixes
+# Wesnoth server install
 wesnothd_env = env.Clone()
 wesnothd_env.TargetSignatures('build')
 from os import access, F_OK
