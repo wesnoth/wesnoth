@@ -73,7 +73,8 @@ The following special build targets
 
     all = same as 'wesnoth wesnoth_editor exploder cutter' (*).
     TAGS = build tags for Emacs (*).
-    install = install 'all' executables, also wmlscope/wmllint/wmlindent.
+    install-clientside = install 'all' executables + wmlscope/wmllint/wmlindent.
+    install = synonym for install-clientside
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
     uninstall = uninstall all executables, tools, and servers.
@@ -954,7 +955,7 @@ clientside_env = env.Clone()
 # (thus, probably, at target-signature generation time).
 clientside_env.TargetSignatures('build')
 # Install binaries, Python modules, data, and English-language man pages
-env.Alias('install', [
+env.Alias('install-clientside', [
     clientside_env.Install(bindir, clientside),
     clientside_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
     clientside_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
@@ -978,26 +979,27 @@ for lang in os.listdir("doc/man"):
 # Icon and desktop files
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
-          env.Alias('install',
+          env.Alias('install-clientside',
                     clientside_env.Install(env["icondir"],
                                            "icons/wesnoth-icon-Mac.png"))
      else:
-          env.Alias('install',
+          env.Alias('install-clientside',
                     clientside_env.Install(env["icondir"],
                                            "icons/wesnoth-icon.png"))
      if sys.platform == "darwin":
-          env.Alias('install',
+          env.Alias('install-clientside',
                     clientside_env.Install(env["icondir"],
                                            "icons/wesnoth_editor-icon-Mac.png"))
      else:
-          env.Alias('install',
+          env.Alias('install-clientside',
                     clientside_env.Install(env["icondir"],
                                            "icons/wesnoth_editor-icon.png"))
-     env.Alias('install',
+     env.Alias('install-clientside',
                clientside_env.Install(env["desktopdir"],
                                       ["icons/wesnoth.desktop",
                                        "icons/wesnoth_editor.desktop",
                                        ]))
+env.Alias('install', 'install-clientside')
 
 # Wesnoth server install
 wesnothd_env = env.Clone()
