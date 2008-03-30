@@ -203,7 +203,7 @@ private:
 	//! The current scenario data.
 	simple_wml::document level_;
 	//! Replay data.
-	std::vector<simple_wml::document*> history_;
+	mutable std::vector<simple_wml::document*> history_;
 	//! Pointer to the game's description in the games_and_users_list_.
 	simple_wml::node* description_;
 
