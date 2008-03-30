@@ -80,7 +80,7 @@ public:
 
 private:
 	const char* str_;
-	int size_;
+	unsigned int size_;
 };
 
 std::ostream& operator<<(std::ostream& o, const string_span& s);

@@ -310,7 +310,7 @@ void game::update_side_data() {
 
 void game::transfer_side_control(const network::connection sock, const simple_wml::node& cfg) {
 	DBG_GAME << "transfer_side_control...\n";
-	if (!is_player(sock)) {
+	if (!is_player(sock) && sock != owner_) {
 		send_server_message("You cannot change controllers: not a player.", sock);
 		return;
 	}
@@ -335,7 +335,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 	// Check the side number.
-	const int side_num = cfg["side"].to_int();
+	const unsigned int side_num = cfg["side"].to_int();
 	if(side_num < 1 || side_num > gamemap::MAX_PLAYERS) {
 		std::ostringstream msg;
 		msg << "The side number has to be between 1 and " 
@@ -358,7 +358,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		std::stringstream msg;
 		msg << "You can't give away side " << side_num << ". It's controlled by '"
 			<< old_player_name << "' not you.";
-		DBG_GAME << msg << "\n";
+		DBG_GAME << msg.str() << "\n";
 		send_server_message(msg.str().c_str(), sock);
 		return;
 	}
@@ -381,7 +381,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		observer_join.root().add_child("observer").set_attr_dup("name", old_player_name.c_str());
 		send_data(observer_join, old_player);
 		// If the old player was the host of the game, choose another player.
-		if (old_player == owner_) {
+		/*if (old_player == owner_) {
 			host_leave = true;
 			if (players_.empty()) {
 				owner_ = newplayer->first;
@@ -389,7 +389,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 				owner_ = players_.front();
 			}
 			notify_new_host();
-		}
+		}*/
 	}
 	side_controllers_[side_num - 1] = "network";
 	sides_taken_[side_num - 1] = true;
@@ -399,15 +399,11 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	if (host_leave) transfer_ai_sides();
 
 	// If we gave the new side to an observer add him to players_.
-	const user_vector::iterator itor = std::find(observers_.begin(),
-			observers_.end(), newplayer->first);
-	if (itor != observers_.end()) {
-		players_.push_back(*itor);
-		observers_.erase(itor);
+	if (is_observer(newplayer->first)) {
+		players_.push_back(newplayer->first);
+		observers_.erase(std::remove(observers_.begin(), observers_.end(), newplayer->first), observers_.end());
 		// Send everyone but the new player the observer_quit message.
-		simple_wml::document observer_quit;
-		observer_quit.root().add_child("observer_quit").set_attr_dup("name", newplayer_name);
-		send_data(observer_quit, newplayer->first);
+		send_observerquit(newplayer);
 	}
 }
 
@@ -445,7 +441,7 @@ void game::send_change_controller(const size_t side_num,
 
 	// Update the level so observers who join get the new name.
 	const simple_wml::node::child_list& side_list = level_.root().children("side");
-	const int index = side_num - 1;
+	const unsigned int index = side_num - 1;
 	assert(index < side_list.size());
 	side_list[index]->set_attr_dup("current_player", newplayer->second.name().c_str());
 }
@@ -700,7 +696,8 @@ bool game::is_legal_command(const simple_wml::node& command, bool is_player) {
 		|| command.child("clear_labels")
 		|| command.child("rename")
 		|| command.child("countdown_update")
-		/* || command.child("choose")*/))
+		|| command.child("advance_unit")
+		|| command.child("choose")))
 	{
 		return true;
 	}
@@ -735,7 +732,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 				<< ". Current player is: "
 				<< (player_info_->find(current_player()) != player_info_->end()
 					? player_info_->find(current_player())->second.name()
-					: "(unfound) ") << nsides_ << "/" << end_turn_
+					: "(unfound) ")// << nsides_ << "/" << end_turn_
 				<< ".\n";
 			LOG_GAME << msg.str();
 			send_and_record_server_message(msg.str().c_str());
@@ -967,13 +964,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	// games_and_users_list_.
 	if (!disconnect) user->second.mark_available();
 	if (observer) {
-		//they're just an observer, so send them having quit to clients
-		simple_wml::document observer_quit;
-
-		//don't need to dup the attribute because this document is
-		//short-lived.
-		observer_quit.root().add_child("observer_quit").set_attr("name", user->second.name().c_str());
-		send_data(observer_quit);
+		send_observerquit(user);
 	} else {
 		send_and_record_server_message((user->second.name()
 				+ (disconnect ? " has disconnected." : " has left the game.")).c_str(), player);
@@ -992,6 +983,13 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		side_controllers_[side_num] = "human";
 		sides_taken_[side_num] = true;
 		sides_[side_num] = owner_;
+		// Check whether the host is actually a player and make him one if not.
+		if (!is_player(owner_)) {
+			DBG_GAME << "making the owner a player...\n";
+			observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
+			players_.push_back(owner_);
+			send_observerquit(player_info_->find(owner_));
+		}
 		send_change_controller(side_num + 1, player_info_->find(owner_));
 
 		//send the host a notification of removal of this side
@@ -1124,6 +1122,18 @@ void game::send_observerjoins(const network::connection sock) const {
 	}
 }
 
+void game::send_observerquit(const player_map::const_iterator observer) const {
+	if (observer == player_info_->end()) {
+		return;
+	}
+	simple_wml::document observer_quit;
+
+	//don't need to dup the attribute because this document is
+	//short-lived.
+	observer_quit.root().add_child("observer_quit").set_attr("name", observer->second.name().c_str());
+	send_data(observer_quit, observer->first);
+}
+
 void game::send_history(const network::connection sock) const
 {
 	for(std::vector<simple_wml::document*>::const_iterator i = history_.begin();
@@ -1241,17 +1251,9 @@ void game::send_server_message(const char* message, network::connection sock, si
 	}
 
 	simple_wml::document& doc = *docptr;
-	if(started_) {
-		simple_wml::node& cmd = doc.root().add_child("turn");
-		simple_wml::node& cfg = cmd.add_child("command");
-		simple_wml::node& msg = cfg.add_child("speak");
-		msg.set_attr("description", "server");
-		msg.set_attr_dup("message", message);
-	} else {
-		simple_wml::node& msg = doc.root().add_child("message");
-		msg.set_attr("sender", "server");
-		msg.set_attr_dup("message", message);
-	}
+	simple_wml::node& msg = doc.root().add_child("message");
+	msg.set_attr("sender", "server");
+	msg.set_attr_dup("message", message);
 
 	if(sock) {
 		send_to_one(doc, sock);
