@@ -36,6 +36,8 @@ private:
 	bool active_;
 };
 
+network::pending_statistics get_pending_stats();
+
 void set_raw_data_only();
 
 //! Function to asynchronously received data to the given socket.

@@ -100,7 +100,6 @@ unsigned int waiting_threads[NUM_SHARDS];
 size_t min_threads = 0;
 size_t max_threads = 0;
 
-
 int get_shard(TCPsocket sock) { return intptr_t(sock)%NUM_SHARDS; }
 
 struct buffer {
@@ -635,6 +634,22 @@ manager::~manager()
 
 		DBG_NW << "exiting manager::~manager()\n";
 	}
+}
+
+network::pending_statistics get_pending_stats()
+{
+	network::pending_statistics stats;
+	stats.npending_sends = 0;
+	stats.nbytes_pending_sends = 0;
+	for(int shard = 0; shard != NUM_SHARDS; ++shard) {
+		const threading::lock lock(*shard_mutexes[shard]);
+		stats.npending_sends += outgoing_bufs[shard].size();
+		for(buffer_set::const_iterator i = outgoing_bufs[shard].begin(); i != outgoing_bufs[shard].end(); ++i) {
+			stats.nbytes_pending_sends += (*i)->raw_buffer.size();
+		}
+	}
+
+	return stats;
 }
 
 void set_raw_data_only()

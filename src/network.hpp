@@ -34,6 +34,13 @@ namespace threading
 
 namespace network {
 
+struct pending_statistics {
+	int npending_sends;
+	int nbytes_pending_sends;
+};
+
+pending_statistics get_pending_stats();
+
 // A network manager must be created before networking can be used.
 // It must be destroyed only after all networking activity stops.
 
