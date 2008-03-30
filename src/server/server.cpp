@@ -44,9 +44,32 @@
 #include <sstream>
 #include <vector>
 
+#include <csignal>
+
+#ifndef _WIN32
 #include <sys/times.h>
 
-#include <csignal>
+namespace {
+
+clock_t get_cpu_time(bool active) {
+	if(!active) {
+		return 0;
+	}
+	struct tms buf;
+	times(&buf);
+	return buf.tms_utime + buf.tms_stime;
+}
+
+}
+
+#else
+
+// on Windows we don't calculate CPU time
+clock_t get_cpu_time(bool active) {
+	return 0;
+}
+
+#endif
 
 //! fatal and directly server related errors/warnings,
 //! ie not caused by erroneous client data
@@ -494,11 +517,7 @@ void server::run() {
 
 				const bool sample = request_sample_frequency >= 1 && (sample_counter++ % request_sample_frequency) == 0;
 
-				struct tms before_parsing, after_parsing, after_processing;
-
-				if(sample) {
-					times(&before_parsing);
-				}
+				const clock_t before_parsing = get_cpu_time(sample);
 
 				char* buf_ptr = new char [buf.size()];
 				memcpy(buf_ptr, &buf[0], buf.size());
@@ -507,17 +526,15 @@ void server::run() {
 				data.take_ownership_of_buffer(buf_ptr);
 				std::vector<char>().swap(buf);
 
-				if(sample) {
-					times(&after_parsing);
-				}
+				const clock_t after_parsing = get_cpu_time(sample);
 
 				process_data(sock, data);
 
 				if(sample) {
-					times(&after_processing);
+					const clock_t after_processing = get_cpu_time(sample);
 					metrics_.record_sample(data.root().first_child(),
-					          after_parsing.tms_utime - before_parsing.tms_utime,
-					          after_processing.tms_utime - after_parsing.tms_utime);
+					          after_parsing - before_parsing,
+							  after_processing - after_parsing);
 				}
 			}
 
