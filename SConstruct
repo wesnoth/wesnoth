@@ -13,7 +13,8 @@
 # 3. Translations handling other than installation (pot-update).
 # 4. Making binary and data-only distribution tarballs
 
-import os, sys, commands, shutil, sets
+import os, sys, commands, shutil, sets, re
+from glob import glob
 from SCons.Script import *
 
 #
@@ -71,7 +72,7 @@ Available build targets include the individual binaries:
 
 The following special build targets
 
-    all = same as 'wesnoth wesnoth_editor exploder cutter' (*).
+    all = wesnoth wesnoth_editor exploder cutter wesnothd campaignd (*).
     TAGS = build tags for Emacs (*).
     install-clientside = install 'all' executables + wmlscope/wmllint/wmlindent.
     install = synonym for install-clientside
@@ -80,7 +81,7 @@ The following special build targets
     uninstall = uninstall all executables, tools, and servers.
     dist = make distribution tarball as wesnoth.tar.bz2 (*).
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
-    binary_dist = make data tarball as wesnoth-binaries.tar.bz2 (*).
+    binary-dist = make data tarball as wesnoth-binaries.tar.bz2 (*).
     wesnoth-bundle = make Mac OS application bundle from game (*)
     wesnoth-editor-bundle = make Mac OS application bundle from editor (*).
     sanity-check = run a pre-release sanity check on the distribution.
@@ -92,8 +93,8 @@ Options are cached in a file named .scons-option-cache and persist to later
 invocations.  The file is editable. Delete it to start fresh.  Current option
 values can be listed with 'scons -h'.
 
-If you set CXXFLAGS and/or LDFLAGS in the environmnt, the values will
-be appended to the appropriate variables withn scons.  You can use this,
+If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
+be appended to the appropriate variables within scons.  You can use this,
 for example, to point scons at non-default library locations.
 """ + opts.GenerateHelpText(env))
 
@@ -877,9 +878,10 @@ sources =   libwesnoth_sources + libwesnoth_core_sources + \
             cutter_sources + exploder_sources + test_sources
 
 #
-# Utility productions
+# Utility productions (Unix-like systems only)
 #
 
+# Make a tags file for Emacs
 env.Command("TAGS", sources, 'etags -l c++ $SOURCES')
 env.Clean(all, 'TAGS')
 
@@ -890,8 +892,6 @@ translation_dirs.remove("wesnoth-manual")
 translation_dirs = map(lambda dir: os.path.join("po", dir), translation_dirs)
 translation_dirs = filter(os.path.isdir, translation_dirs)
 
-from glob import glob
-import re
 lingua_re = re.compile(r"po/.*/(.*)\.po")
 for dir in translation_dirs:
     pos = glob(os.path.join(dir, "*.po"))
