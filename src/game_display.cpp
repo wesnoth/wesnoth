@@ -676,11 +676,10 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	const size_t unfilled = static_cast<const size_t>(height*(1.0 - filled));
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
-		const Uint32 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		const Uint8 r_alpha = minimum<unsigned>(unsigned(fxpmult(alpha,255)),255);
-		surface filled_surf(SDL_CreateRGBSurface(SDL_SWSURFACE, bar_loc.w, height - unfilled, 32,  /*col.r << 16, col.g << 8, col.b, 0x44000000*/0xFF0000, 0xFF00, 0xFF, 0 ) );
+		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = {0, 0, bar_loc.w, height-unfilled};
-		fill_rect_alpha(filled_area, colour, r_alpha, filled_surf);
+		SDL_FillRect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		drawing_buffer_add(LAYER_UNIT_BAR, drawing_order, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf));
 	} 
 }
