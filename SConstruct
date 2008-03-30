@@ -883,6 +883,28 @@ sources =   libwesnoth_sources + libwesnoth_core_sources + \
 env.Command("TAGS", sources, 'etags -l c++ $SOURCES')
 env.Clean(all, 'TAGS')
 
+translation_dirs = os.listdir("po")
+translation_dirs.remove(".svn")
+translation_dirs.remove("wesnoth-manpages")
+translation_dirs.remove("wesnoth-manual")
+translation_dirs = map(lambda dir: os.path.join("po", dir), translation_dirs)
+translation_dirs = filter(os.path.isdir, translation_dirs)
+
+from glob import glob
+import re
+lingua_re = re.compile(r"po/.*/(.*)\.po")
+for dir in translation_dirs:
+    pos = glob(os.path.join(dir, "*.po"))
+    linguas = map(lingua_re.findall, pos)
+    for lingua in linguas:
+        lingua = lingua[0]
+        name = os.path.basename(dir)
+	env.Command(
+            os.path.join("translations", lingua, "LC_MESSAGES", name + ".mo"),
+	    os.path.join("po", name, lingua + ".po"),
+            "gmsgfmt -c --statistics -o $TARGET $SOURCE"
+	    )
+
 #
 # Unix installation productions
 #
