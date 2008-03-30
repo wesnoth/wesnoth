@@ -816,7 +816,7 @@ void server::process_query(const network::connection sock,
 	} else if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name());
 	} else if (command == "status " + pl->second.name() || command == "metrics"
-	|| command == "motd" || command == "wml") {
+	|| command == "motd" || command == "wml" || command == "netstats") {
 		response << process_command(command.to_string());
 	} else if (command == admin_passwd_) {
 		LOG_SERVER << "New Admin recognized:" << "\tIP: "
@@ -842,7 +842,7 @@ std::string server::process_command(const std::string& query) {
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: (k)ban(s) [<mask>],"
-			"kick <mask>, help, metrics, (lobby)msg <message>, motd [<message>],"
+			"kick <mask>, help, metrics, netstats, (lobby)msg <message>, motd [<message>],"
 			"status [<mask>], unban <ipmask>";
 	if (command == "shut_down") {
 		throw network::error("shut down");
@@ -854,6 +854,11 @@ std::string server::process_command(const std::string& query) {
 		"Number of users in the lobby = " << lobby_.nobservers() << "\n";
 	} else if (command == "wml") {
 		out << simple_wml::document::stats();
+	} else if (command == "netstats") {
+		network::pending_statistics stats = network::get_pending_stats();
+		out << "Network stats:\nPending send buffers: "
+		    << stats.npending_sends << "\nBytes in buffers: "
+			<< stats.nbytes_pending_sends << "\n";
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";

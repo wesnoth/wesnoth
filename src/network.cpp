@@ -223,6 +223,11 @@ void error::disconnect()
 	if(socket) network::disconnect(socket);
 }
 
+pending_statistics get_pending_stats()
+{
+	return network_worker_pool::get_pending_stats();
+}
+
 manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 {
 	// If the network is already being managed
