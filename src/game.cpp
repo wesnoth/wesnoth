@@ -116,6 +116,8 @@ public:
 	void set_tutorial();
 
 	bool new_campaign();
+	bool goto_campaign();
+	bool goto_multiplayer();
 	bool play_multiplayer();
 	void manage_addons();
 	void download_campaigns(std::string host);
@@ -182,6 +184,9 @@ private:
 	bool loaded_game_cancel_orders_;
 
 	preproc_map defines_map_, old_defines_map_;
+
+	std::string multiplayer_server_;
+	bool jump_to_campaign_, jump_to_multiplayer_;
 };
 
 game_controller::game_controller(int argc, char** argv)
@@ -189,7 +194,8 @@ game_controller::game_controller(int argc, char** argv)
      test_scenario_("test"), test_mode_(false), multiplayer_mode_(false),
      no_gui_(false), use_caching_(true), force_valid_cache_(false),
      force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false),
-     loaded_game_cancel_orders_(false)
+     loaded_game_cancel_orders_(false),
+     jump_to_campaign_(false), jump_to_multiplayer_(false)
 {
 	bool no_sound = false;
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
@@ -236,11 +242,14 @@ game_controller::game_controller(int argc, char** argv)
 				++arg_;
 				force_bpp_ = lexical_cast_default<int>(argv_[arg_],-1);
 			}
-		} else if(val == "--load") {
+		} else if(val == "--load" || val == "-l") {
 			if(arg_+1 != argc_) {
 				++arg_;
 				loaded_game_ = argv_[arg_];
 			}
+		} else if(val == "--with-replay") {
+			loaded_game_show_replay_ = true;
+		
 		} else if(val == "--nogui") {
 			no_gui_ = true;
 			no_sound = true;
@@ -249,7 +258,25 @@ game_controller::game_controller(int argc, char** argv)
 			preferences::set_fullscreen(false);
 		} else if(val == "--fullscreen" || val == "-f") {
 			preferences::set_fullscreen(true);
-		} else if(val == "--multiplayer") {
+
+		} else if(val == "--campaign" || val == "-c") {
+			jump_to_campaign_ = true;
+
+		} else if(val == "--server" || val == "-s"){
+			jump_to_multiplayer_ = true;
+			//Do we have any server specified ?
+			if(argc_ > arg_+1){
+				multiplayer_server_ = argv_[arg_+1];
+				++arg_;	
+			//Pick the first server in config
+			}else{
+				if(game_config::server_list.size() > 0)
+					multiplayer_server_ = preferences::network_host();
+				else
+					multiplayer_server_ = "";
+			}
+
+		} else if(val == "--multiplayer" || val == "-m") {
 			multiplayer_mode_ = true;
 			break; //parse the rest of the arguments when we set up the game
 		} else if(val == "--test" || val == "-t") {
@@ -986,6 +1013,32 @@ bool game_controller::new_campaign()
 
 }
 
+bool game_controller::goto_campaign()
+{
+	if(jump_to_campaign_){
+		jump_to_campaign_ = false;
+		if(new_campaign()) {
+			play_game(game_controller::RELOAD_DATA);
+		}else{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool game_controller::goto_multiplayer()
+{
+	if(jump_to_multiplayer_){
+		jump_to_multiplayer_ = false;
+		if(play_multiplayer()){
+			;
+		}else{
+			return false;
+		}
+	}
+	return true;
+}
+
 static std::string format_file_size(const std::string& size_str)
 {
 	double size = lexical_cast_default<double>(size_str,0.0);
@@ -1499,41 +1552,49 @@ void game_controller::remove_campaign(const std::string& campaign)
 		delete_directory(campaign_dir + ".cfg");
 }
 
+
 bool game_controller::play_multiplayer()
 {
+	int res;
+
 	state_ = game_state();
 	state_.campaign_type = "multiplayer";
 	state_.campaign_define = "MULTIPLAYER";
 
-	std::vector<std::string> host_or_join;
-	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
-	char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;
+	//Print Gui only if the user hasn't specified any server
+	if( multiplayer_server_.empty() ){
+		std::vector<std::string> host_or_join;
+		std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
+		char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;
 
-	host_or_join.push_back(pre + "server.png"
-		+ sep1 + _("Join Official Server")
-		+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
-	host_or_join.push_back(pre + "serverother.png"
-		+ sep1 + _("Connect to Server")
-		+ sep2 + _("Join a different server"));
-	host_or_join.push_back(pre + "hotseat.png"
-		+ sep1 + _("Local Game")
-		+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
+		host_or_join.push_back(pre + "server.png"
+			+ sep1 + _("Join Official Server")
+			+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
+		host_or_join.push_back(pre + "serverother.png"
+			+ sep1 + _("Connect to Server")
+			+ sep2 + _("Join a different server"));
+		host_or_join.push_back(pre + "hotseat.png"
+			+ sep1 + _("Local Game")
+			+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
 
-	std::string login = preferences::login();
+		std::string login = preferences::login();
 
-	int res;
-	{
-		gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
-		d.set_menu(host_or_join);
-		d.set_textbox(_("Login: "), login, mp::max_login_size, font::relative_size(250));
-		res = d.show();
-		login = d.textbox_text();
+		{
+			gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
+			d.set_menu(host_or_join);
+			d.set_textbox(_("Login: "), login, mp::max_login_size, font::relative_size(250));
+			res = d.show();
+			login = d.textbox_text();
+		}
+		if (res < 0)
+			return false;
+
+
+		preferences::set_login(login);
+
+	}else{
+		res = 3;
 	}
-	if (res < 0)
-		return false;
-
-
-	preferences::set_login(login);
 
 	try {
 
@@ -1542,6 +1603,7 @@ bool game_controller::play_multiplayer()
 			defines_map_[state_.campaign_define] = preproc_define();
 			refresh_game_cfg();
 			events::discard(INPUT_MASK); // prevent the "keylogger" effect
+			cursor::set(cursor::NORMAL); 
 		}
 
 		if(res == 2) {
@@ -1552,13 +1614,15 @@ bool game_controller::play_multiplayer()
 			const bool is_server = false;
 
 			mp::start_server(disp(), game_config_, units_data_, cntr, is_server);
-
-		} else if(res == 0 || res == 1) {
+	
+		} else if(res == 0 || res == 1 || res == 3 ) {
 			std::string host;
 			if(res == 0) {
 				host = preferences::server_list().front().address;
+			}else if(res == 3){
+				host = multiplayer_server_;
+				multiplayer_server_ = "";
 			}
-
 			mp::start_client(disp(), game_config_, units_data_, host);
 		}
 	} catch(game::load_game_failed& e) {
@@ -2066,6 +2130,7 @@ static int play_game(int argc, char** argv)
 			<< "  -h, --help                   prints this message and exits.\n"
 			<< "  --load SAVEGAME              loads the file SAVEGAME from the standard save\n"
 			<< "                               game directory.\n"
+			<< "  --with-replay                replays the file SAVEGAME loaded with --load option.\n"
 			<< "  --log-<level>=<domain1>,<domain2>,...\n"
 			<< "                               sets the severity level of the log domains.\n"
 			<< "                               'all' can be used to match any log domain.\n"
@@ -2086,7 +2151,9 @@ static int play_game(int argc, char** argv)
 			<< "  -v, --version                prints the game's version number and exits.\n"
 			<< "  -w, --windowed               runs the game in windowed mode.\n"
 			<< "  --no-delay                   run the game without any delays.\n"
-			<< "  --multiplayer                runs a multiplayer game. There are additional\n"
+			<< "  -c, --campaign               skip menu, and go directly to campaign selection menu.\n"
+			<< "  -s, --server [host]          skip menu, and connect to the host if specified or to the first host in your preferences.\n"
+			<< "  -m, --multiplayer            runs a multiplayer game. There are additional\n"
 			<< "                               options that can be used as explained below:\n"
 			<< "  --algorithm<number>=value    selects a non-standard algorithm to be used by the\n"
 			<< "                               AI controller for this side.\n"
@@ -2246,6 +2313,7 @@ static int play_game(int argc, char** argv)
 			std::cout << lg::list_logdomains() << "\n";
 			return 0;
 		}
+
 	}
 
 	srand(time(NULL));
@@ -2345,8 +2413,20 @@ static int play_game(int argc, char** argv)
 		if(game.play_multiplayer_mode() == false) {
 			return 0;
 		}
-
+	
 		recorder.clear();
+
+		//Start directly a campaign
+		if(game.goto_campaign() == false){
+			continue; //Go to main menu
+		}
+
+		//Start directly a multiplayer
+		//Eventually with a specified server
+		if(game.goto_multiplayer() == false){
+			continue; //Go to main menu
+		}
+
 
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TIP_NEXT;
 

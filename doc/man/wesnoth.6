@@ -47,6 +47,9 @@ campaigns, and share them with others.
 sets BitsPerPixel value. Example:
 .B --bpp 32
 .TP
+.B -c, --campaign
+skip menu, show directly the campaign menu.
+.TP
 .BI --compress \ infile\ outfile
 compresses a savefile
 .RI ( infile )
@@ -89,6 +92,9 @@ displays a summary of command line options to standard output, and exits.
 .BI --load \ savegame
 loads the file savegame from the standard save game directory.
 .TP
+.B --with-replay
+replays the game loaded with --load option.
+.TP
 .BI --log- level = domain1 , domain2 , ...
 sets the severity level of the log domains.
 .B all
@@ -106,7 +112,7 @@ the number of frames per second the game can show, the value should be between
 the 1 and 1000, the default is
 .BR 50 . 
 .TP
-.B --multiplayer
+.B -m, --multiplayer
 runs a multiplayer game. There are additional options that can be used
 together with
 .B --multiplayer
@@ -124,6 +130,10 @@ prints the name of the game data directory and exits.
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
 .B -r 800x600
+.TP
+.BI -s,\ --server\ [host]
+skip menu, connect to specified host if any, otherwise connect to the first server in preferences. Example:
+.B --server server.wesnoth.org
 .TP
 .B -t, --test
 runs the game in a small test scenario.
