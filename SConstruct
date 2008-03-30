@@ -104,7 +104,7 @@ env.Default("all")
 env.TargetSignatures('content')
 
 #
-# Most of our required runtime support is from Boost SDL.
+# Generic pkg-config support is not presentluy used, but might be in the future
 #
 
 def CheckPKGConfig(context, version):
@@ -112,6 +112,16 @@ def CheckPKGConfig(context, version):
      ret = context.TryAction('pkg-config --atleast-pkgconfig-version=%s' % version)[0]
      context.Result( ret )
      return ret
+
+def CheckPKG(context, name):
+     context.Message( 'Checking for %s... ' % name )
+     ret = context.TryAction('pkg-config --exists \'%s\'' % name)[0]
+     context.Result( ret )
+     return ret
+
+#
+# Most of our required runtime support is from Boost SDL.
+#
 
 def backup_env(env, vars):
     backup = dict()
@@ -177,12 +187,6 @@ def CheckBoost(context, boost_lib, require_version = None):
     else:
         context.Result("no")
     return check_result
-
-def CheckPKG(context, name):
-     context.Message( 'Checking for %s... ' % name )
-     ret = context.TryAction('pkg-config --exists \'%s\'' % name)[0]
-     context.Result( ret )
-     return ret
 
 def CheckSDL(context, sdl_lib = "SDL", require_version = None):
     if require_version:
@@ -306,8 +310,11 @@ conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPNG' : CheckPNG,
                                        'CheckBoost' : CheckBoost })
 
+#if env["prereqs"]:
+#    conf.CheckPKGConfig('0.15.0') or Die("Base prerequisites are not met.")
+
 if env["prereqs"]:
-    conf.CheckPKGConfig('0.15.0') and conf.CheckBoost("iostreams") or Die("Base prerequisites are not met.")
+    conf.CheckBoost("iostreams") or Die("Boost prerequisites are not met.")
 
     have_client_prereqs = \
         conf.CheckSDL(require_version = '1.2.7') and \
