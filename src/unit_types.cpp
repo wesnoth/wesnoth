@@ -917,9 +917,6 @@ void unit_type_data::set_config(const config& cfg)
 		increment_set_config_progress();
 	}
 
-	//Add dummy unit
-	unit_types.insert(std::pair<const std::string,unit_type>("dummy_unit",unit_type()));
-
 	unsigned base_unit_count = 0;
 	for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
 	{
@@ -1030,7 +1027,13 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_factory:
 
     //This might happen if units of another era are requested (for example for savegames)
     if (itor == types_.end()){
-        return types_.find("dummy_unit");
+        itor == types_.find("dummy_unit");
+        if (itor != types_.end())
+            return itor;
+        else{
+            types_.insert(std::pair<std::string, unit_type>("dummy_unit", unit_type()) );
+            return types_.find("dummy_unit");
+        }
     }
 
     //check if the unit_type is constructed and build it if necessary

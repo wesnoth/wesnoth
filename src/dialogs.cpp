@@ -971,6 +971,8 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	if (t==NULL)
 		return det;
 
+    unit_type_data::instance().unit_types.build_unit_type(t->id(), unit_type::WITHOUT_ANIMATIONS);
+
 	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_colour_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);
 
