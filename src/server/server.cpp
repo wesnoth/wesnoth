@@ -1424,7 +1424,7 @@ void server::process_data_game(const network::connection sock,
 		const simple_wml::node& change = *data.child("change_controller");
 		g->transfer_side_control(sock, change);
 		if (g->describe_slots()) {
-			send_gamelist_diff();
+			update_game_in_lobby(g);
 		}
 		// FIXME: Why not save it in the history_? (if successful)
 		return;
@@ -1449,7 +1449,7 @@ void server::process_data_game(const network::connection sock,
 		if (user) {
 			lobby_.add_player(user, true);
 			if (g->describe_slots()) {
-				send_gamelist_diff(user);
+				update_game_in_lobby(g, user);
 			}
 			// Send the removed user the lobby game list.
 			send_doc(games_and_users_list_, user);
@@ -1541,16 +1541,6 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 
 	delete *game_it;
 	games_.erase(game_it);
-}
-
-void server::send_gamelist_diff(network::connection exclude)
-{
-	//for nowe we send the full game and users list every time, and then
-	//send an empty diff to let the clients know they should do an update
-	lobby_.send_data(games_and_users_list_, exclude);
-
-	static simple_wml::document empty_gamelist_diff_doc("[gamelist_diff]\n[/gamelist_diff]\n", simple_wml::INIT_COMPRESSED);
-	lobby_.send_data(empty_gamelist_diff_doc, exclude);
 }
 
 void server::update_game_in_lobby(const game* g, network::connection exclude)
