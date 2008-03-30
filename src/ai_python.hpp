@@ -54,6 +54,7 @@ public:
     W(team_targets);
     W(get_units);
     W(log_message);
+    W(log);
     W(get_location);
     W(get_map);
     W(get_teams);

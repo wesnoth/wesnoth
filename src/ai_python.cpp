@@ -168,10 +168,9 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 	for (size_t advance = 0; advance < type->unit_type_->advances_to().size(); advance++)
 	{
 		std::map<std::string,unit_type>::const_iterator t = 
-			running_instance->get_info().
-			gameinfo.unit_types.find(type->unit_type_->advances_to()[advance]);
+			unit_type_data::instance().unit_types.find(type->unit_type_->advances_to()[advance]);
 
-		assert(t != running_instance->get_info().gameinfo.unit_types.end());
+		assert(t != unit_type_data::instance().unit_types.end());
 		r = PyList_SetItem(list,advance,wrap_unittype(t->second));
 	}
 	return list;
@@ -1034,8 +1033,8 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 	int idx = 0;
 	for (std::set<std::string>::const_iterator recruit = team->team_->recruits().begin(); recruit != team->team_->recruits().end(); ++recruit)
 	{
-		std::map<std::string,unit_type>::const_iterator t = running_instance->get_info().gameinfo.unit_types.find(*recruit);
-		assert(t != running_instance->get_info().gameinfo.unit_types.end());
+		std::map<std::string,unit_type>::const_iterator t = unit_type_data::instance().unit_types.find(*recruit);
+		assert(t != unit_type_data::instance().unit_types.end());
 		r = PyList_SetItem(list,idx++,wrap_unittype(t->second));
 	}
 	return list;
@@ -1308,6 +1307,16 @@ PyObject* python_ai::wrapper_log_message(PyObject* /*self*/, PyObject* args)
 	return Py_None;
 }
 
+PyObject* python_ai::wrapper_log(PyObject* /*self*/, PyObject* args)
+{
+	const char *msg;
+	if (!PyArg_ParseTuple( args, STRINGVALUE, &msg))
+		return NULL;
+	LOG_AI << msg;
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
 PyObject* python_ai::wrapper_get_units(PyObject* /*self*/, PyObject* args)
 {
 	if ( !PyArg_ParseTuple( args, NOVALUE) )
@@ -1473,7 +1482,6 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		inf.teams,
 		inf.units,
 		inf.state,
-		inf.gameinfo,
 		*from->location_,
 		*to->location_,
 		weapon);
@@ -1595,7 +1603,6 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 		inf.teams,
 		inf.units,
 		inf.state,
-		inf.gameinfo,
 		*from->location_,
 		*to->location_,
 		weapon);
@@ -1773,6 +1780,10 @@ static PyMethodDef wesnoth_python_methods[] = {
     MDEF("log_message", python_ai::wrapper_log_message,		
 		"Parameters: string\n"
 		"Logs a message, displayed as a chat message, if debug is enabled." )
+	MDEF("log", python_ai::wrapper_log,		
+		"Parameters: string\n"
+		"Writes a debug message to the AI log. This should be used instead of "
+		"print to not clutter stdout if AI logging is disabled.")
     MDEF("get_units", python_ai::wrapper_get_units,
 		"Returns: units\n"
 		"Returns a dictionary containing (location, unit) pairs.")
