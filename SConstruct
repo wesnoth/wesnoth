@@ -1004,6 +1004,15 @@ wesnothd_env.TargetSignatures('build')
 from os import access, F_OK
 install_wesnothd = wesnothd_env.Install(bindir, wesnothd)
 env.Alias("install-wesnothd", install_wesnothd)
+wesnothd_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"),
+for lang in os.listdir("doc/man"):
+     sourcedir = os.path.join("doc/man", lang)
+     if os.path.isdir(sourcedir) and CopyFilter(sourcedir):
+          targetdir = os.path.join(mandir, lang, "man6")
+          env.Alias('install-wesnothd',
+               wesnothd_env.Install(targetdir, [
+               os.path.join(sourcedir, "wesnothd.6"),
+               ]))
 if not access(fifodir, F_OK):
     wesnothd_env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
