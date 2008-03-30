@@ -46,6 +46,11 @@ bool haloes = true;
 std::set<std::string> encountered_units_set;
 std::set<t_translation::t_terrain> encountered_terrains_set;
 
+std::vector<std::string> formula_history_vector;
+std::vector<std::string> search_history_vector;
+std::vector<std::string> chat_history_vector;
+std::vector<std::string> command_history_vector;
+
 //! Add a nick to the specified relation setting.
 void add_relation(const std::string nick, const std::string relation) {
 	std::vector<std::string> r = utils::split(preferences::get(relation));
@@ -669,6 +674,22 @@ std::set<std::string> &encountered_units() {
 
 std::set<t_translation::t_terrain> &encountered_terrains() {
 	return encountered_terrains_set;
+}
+
+std::vector<std::string> &formula_history() {
+	return formula_history_vector;
+}
+
+std::vector<std::string> &search_history() {
+	return search_history_vector;
+}
+
+std::vector<std::string> &chat_history() {
+	return chat_history_vector;
+}
+
+std::vector<std::string> &command_history() {
+	return command_history_vector;
 }
 
 bool green_confirm()

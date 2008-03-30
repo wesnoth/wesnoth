@@ -106,8 +106,26 @@ namespace gui{
 			check_->set_check(checked);
 		}
 
-
 		box_.assign(new gui::textbox(gui.video(),100,"",true,256,0.8,0.6));
+
+		if (mode == gui::TEXTBOX_AI) {
+			preferences::formula_history().push_back("");
+			box_->set_history(preferences::formula_history());
+		}
+		else if (mode == gui::TEXTBOX_SEARCH) {
+			preferences::search_history().push_back("");
+			box_->set_history(preferences::search_history());
+		}
+		else if (mode == gui::TEXTBOX_MESSAGE) {
+			preferences::chat_history().push_back("");
+			box_->set_history(preferences::chat_history());
+		}
+		else if (mode == gui::TEXTBOX_COMMAND) {
+			preferences::command_history().push_back("");
+			box_->set_history(preferences::command_history());
+		}
+		else {
+		}
 
 		update_location(gui);
 	}

@@ -43,7 +43,7 @@ const int font_size = font::SIZE_PLUS;
 
 textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, double alpha, double alpha_focus, const bool auto_join)
 	   : scrollarea(video, auto_join), max_size_(max_size), text_(utils::string_to_wstring(text)),
-	     cursor_(text_.size()), selstart_(-1), selend_(-1),
+	     cursor_(text_.size()), history_cursor_(0), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
 	     wrap_(false), line_height_(0), yscroll_(0), alpha_(alpha),
@@ -385,8 +385,8 @@ bool textbox::requires_event_focus(const SDL_Event* event) const
 	if(event->type == SDL_KEYDOWN) {
 		SDLKey key = event->key.keysym.sym;
 		switch(key) {
-		case SDLK_UP:
-		case SDLK_DOWN:
+//		case SDLK_UP:
+//		case SDLK_DOWN:
 		case SDLK_PAGEUP:
 		case SDLK_PAGEDOWN:
 			//in the future we may need to check for input history or multi-line support
@@ -496,6 +496,22 @@ void textbox::handle_event(const SDL_Event& event)
 
 	if(c == SDLK_RIGHT && cursor_ < static_cast<int>(text_.size()))
 		++cursor_;
+
+	if(c == SDLK_DOWN) {
+		if (history_cursor_ < history_vector_.size() - 1) {
+			history_cursor_++;
+			cursor_ = 0;
+			set_text(history_vector_.at(history_cursor_));
+		}
+	}
+
+	if(c == SDLK_UP) {
+		if (history_cursor_ > 0) {
+			history_cursor_--;
+			cursor_ = 0;
+			set_text(history_vector_.at(history_cursor_));
+		}
+	}
 
 	// ctrl-a, ctrl-e and ctrl-u are readline style shortcuts, even on Macs
 	if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))

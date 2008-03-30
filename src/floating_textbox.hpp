@@ -20,6 +20,8 @@
 
 #include "scoped_resource.hpp"
 #include "widgets/textbox.hpp"
+#include <vector>
+#include <string>
 
 class game_display;
 class team;
@@ -37,7 +39,7 @@ namespace gui{
 		TEXTBOX_MODE mode() const { return mode_; }
 		const util::scoped_ptr<gui::button>& check() const { return check_; }
 		const util::scoped_ptr<gui::textbox>& box() const { return box_; }
-
+		
 		void close(game_display& gui);
 		void update_location(game_display& gui);
 		void show(gui::TEXTBOX_MODE mode, const std::string& label,
@@ -48,7 +50,7 @@ namespace gui{
 	private:
 		util::scoped_ptr<gui::textbox> box_;
 		util::scoped_ptr<gui::button> check_;
-
+		
 		TEXTBOX_MODE mode_;
 
 		std::string label_string_;
