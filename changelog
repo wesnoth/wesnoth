@@ -71,6 +71,8 @@ Version 1.5.0-svn:
    * new [switch] conditional command
    * new [fire_event] event tag to fire any custom event
    * new [unit_side] theme element : this is the side of the current unit (flag)
+   * Preprocessor now logs when it encounters an undefined macro, and when it
+     fails opening a file.
  * miscellaneous and bug fixes:
    * Added new commandline options (patch #1031)
      -s or --server [host] connect to host specified or to the first server

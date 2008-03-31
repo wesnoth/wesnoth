@@ -311,8 +311,15 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::vector<std:
 {
 	if (is_directory(name))
 		get_files_in_dir(name, &files_, NULL, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DO_REORDER);
-	else
-		new preprocessor_data(t, called_macros_, istream_file(name), "", name, 1, directory_name(name), t.textdomain_);
+	else {
+		std::istream * file_stream = istream_file(name);
+		if (!file_stream->good()) {
+			ERR_CF << "Could not open file " << name << "\n";
+			delete file_stream;
+		}
+		else
+			new preprocessor_data(t, called_macros_, file_stream, "", name, 1, directory_name(name), t.textdomain_);
+	}
 	pos_ = files_.begin();
 	end_ = files_.end();
 }
@@ -843,6 +850,7 @@ bool preprocessor_data::get_chunk()
 					strings_.back() += res.str();
 				}
 			} else if (target_.depth_ < 40) {
+				LOG_CF << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
 				pop_token();
 				std::string prefix;
 				std::string nfname;
