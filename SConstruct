@@ -911,7 +911,7 @@ textdomains = map(lambda dir: os.path.join("po", dir),
 textdomains = filter(os.path.isdir, textdomains)
 lingua_re = re.compile(r"po/.*/(.*)\.po")
 
-if "update-po" in COMMAND_LINE_TARGETS:
+if "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
         name = os.path.basename(domain)
         sources = File(os.path.join(domain, "POTFILES.in")).get_contents().split("\n")
@@ -955,7 +955,11 @@ if "update-po" in COMMAND_LINE_TARGETS:
             env.InstallAs(pot, wml_pot)
         else:
             env.InstallAs(pot, source_pot)
+    env.Alias("pot-update", "po")
 
+if "update-po" in COMMAND_LINE_TARGETS:
+    for domain in textdomains:
+        name = os.path.basename(domain)
         linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
         for lingua in linguas:
             if env["lingua"] == "all" or lingua == env["lingua"]:
