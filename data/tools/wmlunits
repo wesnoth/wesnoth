@@ -66,9 +66,11 @@ class UnitList:
             units = WML.get_first("+units")
 
         newunits = units.get_all("unit_type")
+        self.units_by_campaign[campaign] = []
         for unit in newunits:
-            unit.campaign = campaign
-        self.units_by_campaign[campaign] = newunits
+            if unit.get_text_val("do_not_list", "no") == "no":
+                self.units_by_campaign[campaign].append(unit)
+                unit.campaign = campaign
 
     def find_unit(self, unit_id):
         "Find unit by id.  Relies on IDs being unique."
