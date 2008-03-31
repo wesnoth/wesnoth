@@ -96,18 +96,7 @@ if __name__ == "__main__":
             else:
                 dst = arguments.pop()
 
-    # First, pop upward to the top-level directory.
-    upwards = os.getcwd().split(os.sep)
-    upwards.reverse()
-    for pathpart in upwards:
-        if pathpart == "wesnoth":
-            break
-        else:
-            os.chdir("..")
-    else:
-        sys.stderr.write("wmlmove: must be run from within a Battle "
-                         "for Wesnoth source tree.\n")
-        sys.exit(1)
+    pop_to_top("wmlmove")
 
     if listspaces:
         print "\n".join(map(os.path.basename, scopelist()))

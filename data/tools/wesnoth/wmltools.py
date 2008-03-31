@@ -8,6 +8,20 @@ import sys, os, re, sre_constants, md5, glob
 resource_extensions = ("png", "jpg", "ogg", "wav", "map", "mask")
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
+def pop_to_top(whoami):
+    "Pop upward to the top-level directory."
+    upwards = os.getcwd().split(os.sep)
+    upwards.reverse()
+    for pathpart in upwards:
+        if pathpart == "wesnoth":
+            break
+        else:
+            os.chdir("..")
+    else:
+        sys.stderr.write(whoami + ": must be run from within a Battle "
+                         "for Wesnoth source tree.\n")
+        sys.exit(1)
+
 def string_strip(value):
     "String-strip the value"
     if value.startswith('"'):
