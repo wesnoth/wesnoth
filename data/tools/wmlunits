@@ -40,13 +40,12 @@ class UnitList:
             parser.parse_file(os.path.join(units_filename))
         parser.parse_top(WML)
 
-	# Collect unit data
-        newunits = WML.get_first("+units").get_all("unit_type")
-        for unit in newunits:
-            unit.campaign = campaign
-        self.units_by_campaign[campaign] = newunits
+        self.campaign = campaign
 
-def report_unit_names(unitlist, isocode):
+	# Collect unit data
+        self.units_by_campaign[campaign] = WML.get_first("+units").get_all("unit_type")
+
+def report_unit_names(campaign, unitlist, isocode):
     tx = None
     doubles = {}
     races = {}
@@ -76,9 +75,9 @@ def report_unit_names(unitlist, isocode):
         r = r[0].upper() + r[1:]
         l = u.get_text_val("level")
         levels = races.get(r, {})
-        unitlist = levels.get(l, [])
-        unitlist.append(u)
-        levels[l] = unitlist
+        ulist = levels.get(l, [])
+        ulist.append(u)
+        levels[l] = ulist
         races[r] = levels
 
     def poname(name):
@@ -86,10 +85,10 @@ def report_unit_names(unitlist, isocode):
 
     def place_units(race):
         if use_html:
-            print "<font size=5>%s</font>" % (race + description)
+            print "<font size=5>%s - %s</font>" % (race, campaign)
             print "<table border=solid>"
         else:
-            print '| colspan="6" | <font size=5>%s</font>' % (race + description)
+            print '| colspan="6" | <font size=5>%s - %s</font>' % (race, campaign)
             print '|-'
             print '| level 0 || level 1 || level 2 || level 3 || level 4 || level 5'
         levels = []
@@ -189,8 +188,8 @@ if __name__ == '__main__':
     else:
         print '{| border="solid"'
 
-    for unitgroup in unitlist.units_by_campaign.values():
-        report_unit_names(unitgroup, isocode)
+    for (campaign, unitgroup) in unitlist.units_by_campaign.items():
+        report_unit_names(campaign, unitgroup, isocode)
 
     if use_html:
         print "</body></html>"
