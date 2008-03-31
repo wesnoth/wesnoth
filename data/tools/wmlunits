@@ -200,8 +200,22 @@ def report_unit_names(campaign, unitlist, isocode):
     for race in rlist:
         place_units(race)
 
+def force_encoding():
+    """
+    Temporary hack to always have redirecting of the script output always
+    produce utf8. Can be removed once there is a way to output to a file.
+    """
+    if sys.stdout.encoding == "UTF-8": return
+    out = sys.stdout
+    class stdout_wrapper:
+        def write(self, x):
+            out.write(x.encode("utf8"))
+    sys.stdout = stdout_wrapper()
+
 if __name__ == '__main__':
     import getopt
+    
+    force_encoding()
 
     try:
         (options, arguments) = getopt.getopt(sys.argv[1:], "hl:?", [
