@@ -64,6 +64,9 @@ class UnitList:
                 "#define %s\n#enddef\n%s" % (define, text_to_parse))
             # This time, it oughta work.
             units = WML.get_first("+units")
+            if not units:
+                # This campaign has no units. Nothing to do.
+                return
 
         newunits = units.get_all("unit_type")
         self.units_by_campaign[campaign] = []
