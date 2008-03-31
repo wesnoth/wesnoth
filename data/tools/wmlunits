@@ -40,10 +40,33 @@ class UnitList:
             parser.parse_file(os.path.join(units_filename))
         parser.parse_top(WML)
 
-        self.campaign = campaign
-
 	# Collect unit data
-        self.units_by_campaign[campaign] = WML.get_first("+units").get_all("unit_type")
+        newunits = WML.get_first("+units").get_all("unit_type")
+        for unit in newunits:
+            unit.campaign = campaign
+        self.units_by_campaign[campaign] = newunits
+
+    def find_unit(self, unit_id):
+        "Find unit by id.  Relies on IDs being unique."
+        for c in campaigns:
+            for u in self.units_by_campaign[c]:
+                if u.get_text_val("id") == unit_id:
+                    return u
+        return None
+
+    def lookup(self, unit_id, attr):
+        "Get named attribute from unit, resolving [base_unit] references."
+        u = self.find_unit(unit_id)
+        firsttry = u.get_text_val(attr)
+        if firsttry:
+            return (firsttry, u.textdomain)
+        baseunit = u.get_first("base_unit")
+        if baseunit is None:
+            return None
+        print "*** Found baseunit %s while looking up (%s,%s)" \
+              % (baseunit, unit_id, attr)
+        # FIXME: lookup through baseunit doesn't work yet.
+        return None
 
 def report_unit_names(campaign, unitlist, isocode):
     tx = None
@@ -156,7 +179,7 @@ if __name__ == '__main__':
     except getopt.GetoptError:
         help()
         sys.exit(1)
-    isocode = "fr"
+    isocode = "de"
     use_html = False    
     for (switch, val) in options:
         if switch in ('-h', '--html'):
