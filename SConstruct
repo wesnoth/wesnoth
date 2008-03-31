@@ -5,7 +5,7 @@
 # 1. Subversion command-line client programs svnstatus and svnversion.
 # 2. Unix file(1), on installation only.
 # 3. Unix convert(1), on installation only, if using tinygui.
-# 4. gmsgfmt(1) for making builds with i18n support.
+# 4. msgfmt(1) for making builds with i18n support.
 #
 # To do (list is now exhaustive):
 #
@@ -347,10 +347,10 @@ if 'test' in COMMAND_LINE_TARGETS:
     boost_test_dyn_link = conf.CheckCXXHeader('boost/test/unit_test.hpp')
     boost_auto_test = conf.CheckCXXHeader('boost/test/unit_test.hpp')
 
-have_gmsgfmt = env.WhereIs("gmsgfmt")
-if not have_gmsgfmt:
+have_msgfmt = env.WhereIs("msgfmt")
+if not have_msgfmt:
      env["nls"] = False
-if not have_gmsgfmt:
+if not have_msgfmt:
      print "NLS tools are not present..."
 if not env['nls']:
      print "NLS catalogue installation is disabled."
@@ -935,7 +935,7 @@ def InstallFilteredHook(target, source, env):
                  os.makedirs(target)
             map(lambda f: InstallFilteredHook(target, os.path.join(str(source), f), env), os.listdir(str(source)))
     elif CopyFilter(source):
-        if env["tinygui"] and source.endswith("jpg") or source.endswith("png"):
+        if env["tinygui"] and (source.endswith("jpg") or source.endswith("png")):
              (status, output) = commands.getstatusoutput("file "+ source)
              output = output.replace(" x ", "x")
              target = os.path.join(target, os.path.basename(source))
