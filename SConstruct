@@ -910,7 +910,7 @@ textdomains = map(lambda dir: os.path.join("po", dir),
 textdomains = filter(os.path.isdir, textdomains)
 lingua_re = re.compile(r"po/.*/(.*)\.po")
 
-if "pot-update" in COMMAND_LINE_TARGETS:
+if "update-po" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
         name = os.path.basename(domain)
         sources = File(os.path.join(domain, "POTFILES.in")).get_contents().split("\n")
@@ -955,8 +955,19 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         else:
             env.InstallAs(pot, source_pot)
 
+        linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
+        for lingua in linguas:
+            lingua = lingua.rstrip("\n")
+            update_po = env.Command(
+                os.path.join(domain, lingua + ".po"),
+                os.path.join(domain, name + ".pot"),
+                "msgmerge $TARGET $SOURCE -o $TARGET"
+                )
+            env.Precious(update_po)
+            NoClean(update_po)
 
-    env.Alias("pot-update", "po")
+
+    env.Alias("update-po", "po")
 
 #
 # Unix installation productions
