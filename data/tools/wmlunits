@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+"""
+wmlunits -- List unit names by race and level in either wikimedia or HTML tables
+
+usage: wmlunits [-h] [-l lang]
+
+   -h        = list as html
+   -l lang   = specify language (as ISO country code)
+"""
 
 # Makes things faster on 32-bit systems
 try: import psyco; psyco.full()
@@ -13,22 +21,33 @@ import wesnoth.wmltools as wmltools
 class translation(dict):
     "Parses po files to create a translation dictionary. Eats lots of core!"
     def __init__(self, textdomain, isocode):
-        gettext = file("po/wesnoth-%s/%s.po" % (textdomain, isocode)).read()
-        matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
         self.gettext = {}
-        id = ""
-        for match in matches:
-            text = "".join(re.compile('"(.*?)"').findall(match[1].replace("\\n", "")))
-            if match[0] == "msgid":
-                id = text
-            else:
-                self.gettext[id] = text
+        self.isocode = isocode
+        if self.isocode != "en":
+            gettext = file("po/wesnoth-%s/%s.po" % (textdomain, isocode)).read()
+            matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
+            id = ""
+            for match in matches:
+                text = "".join(re.compile('"(.*?)"').findall(match[1].replace("\\n", "")))
+                if match[0] == "msgid":
+                    id = text
+                else:
+                    self.gettext[id] = text
     def get(self, key, dflt):
-        return self.gettext.get(key, dflt)
+        if self.isocode == "en":
+            return key
+        else:
+            return self.gettext.get(key, dflt)
     def __getitem__(self, key):
-        return self.gettext[key]
+        if self.isocode == "en":
+            return key
+        else:
+            return self.gettext[key]
     def __contains__(self, key):
-        return key in self.gettext.keys()
+        if self.isocode == "en":
+            return True
+        else:
+            return key in self.gettext.keys()
 
 def list_units(units_filename, text_to_parse, domain, isocode, campaign):
     "List all units in the specified namespace, None = mainline."
@@ -141,20 +160,38 @@ def list_units(units_filename, text_to_parse, domain, isocode, campaign):
         place_units(race)
 
 if __name__ == '__main__':
-    use_html = False
+    import getopt
 
-    wmltools.pop_to_top("wmlmove")
+    try:
+        (options, arguments) = getopt.getopt(sys.argv[1:], "hl:?", [
+            "html",
+            "lang=",
+            "usage",
+            ])
+    except getopt.GetoptError:
+        help()
+        sys.exit(1)
+    isocode = "fr"
+    use_html = False    
+    for (switch, val) in options:
+        if switch in ('-h', '--html'):
+            html = True
+        elif switch in ('-l', '--lang'):
+            isocode = val
+        elif switch in ('-?', '--usage'):
+            print __doc__
+            sys.exit(1)
+
+    wmltools.pop_to_top("wmlunits")
     datadir = os.getcwd() + "/data"
 
-    class Dummy: pass
-
-    if use_html: print "<html><body>"
-    else: print '{| border="solid"'
+    if use_html:
+        print "<html><body>"
+    else:
+        print '{| border="solid"'
 
     # Mainline
-    list_units(
-        "data/core/units.cfg", None,
-        "units", "de", " - mainline")
+    list_units("data/core/units.cfg", None, "units", isocode, " - mainline")
 
     # Campaigns
     campaigns = glob.glob("data/campaigns/*")
@@ -166,9 +203,11 @@ if __name__ == '__main__':
         if abbreviation == "t": abbreviation = "tutorial"
         description = dirname[10:].replace("_", " ")
         list_units(None, "[+units]{%s/units}[/units]" % dirname,
-                   abbreviation, "de", " - " + description)
+                   abbreviation, isocode, " - " + description)
 
-    if use_html: print "</body></html>"
-    else: print "|}"
+    if use_html:
+        print "</body></html>"
+    else:
+        print "|}"
 
 
