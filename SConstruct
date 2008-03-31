@@ -16,6 +16,7 @@
 
 import os, sys, commands, shutil, sets, re
 from glob import glob
+from subprocess import Popen, PIPE
 from SCons.Script import *
 
 #
@@ -914,7 +915,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         sources = File(os.path.join(domain, "POTFILES.in")).get_contents().split("\n")
         sources = filter(lambda x : x and not x.isspace(), sources)
         if sources:
-            env.Command(
+            source_pot = env.Command(
                 os.path.join(domain, name + ".cpp.po"),
                 sources,
                 """xgettext --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
@@ -922,7 +923,37 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
                 --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
                 --keyword=_ --keyword=N_ --output=$TARGET \
-                """ % (name, os.path.join(domain, "POTFILES.in")))
+                ;sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
+                """ % (name, os.path.join(domain, "POTFILES.in"))
+                )
+        cfgs = []
+        FINDCFG = os.path.join(domain, "FINDCFG")
+        if os.path.exists(FINDCFG):
+            findcfg_process = Popen(["sh", FINDCFG], stdout = PIPE)
+            findcfg_process.wait()
+            cfgs = findcfg_process.stdout.read().split("\n")
+            cfgs.remove("")
+        if cfgs:
+            wml_pot = env.Command(
+                os.path.join(domain, name + ".wml.po"),
+                cfgs,
+                "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % name
+                )
+
+        pot = os.path.join(domain, name + ".pot")
+        env.Precious(pot)
+        NoClean(pot)
+        if cfgs and sources:
+            env.Command(
+                pot,
+                [source_pot, wml_pot],
+                "msgcat --sort-by-file $SOURCES -o $TARGET"
+                )
+        elif cfgs:
+            env.InstallAs(pot, wml_pot)
+        else:
+            env.InstallAs(pot, source_pot)
+
 
     env.Alias("pot-update", "po")
 
