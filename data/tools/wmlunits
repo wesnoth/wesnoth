@@ -1,0 +1,161 @@
+#!/usr/bin/env python
+
+# Makes things faster on 32-bit systems
+try: import psyco; psyco.full()
+except ImportError: pass
+
+import sys, os, re, glob
+
+sys.path.append("data/tools")
+import wesnoth.wmldata as wmldata
+import wesnoth.wmlparser as wmlparser
+
+use_html = False
+wpath = "../.."
+datadir = wpath + "/data"
+
+class Dummy: pass
+
+def list_units(units_filename, text_to_parse, po_filename, campaign):
+
+    # read translations
+    gettext = file(po_filename).read()
+    matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
+    gettext = {}
+    id = ""
+    for match in matches:
+        text = "".join(re.compile('"(.*?)"').findall(match[1].replace("\\n", "")))
+        if match[0] == "msgid":
+            id = text
+        else:
+            gettext[id] = text
+
+    # Create a new parser.
+    parser = wmlparser.Parser(datadir)
+    WML = wmldata.DataSub("WML")
+    
+    # First, parse through some macro definitions.
+    parser.parse_text("{core/macros/}\n")
+    parser.parse_top(None)
+
+    # Now parse the actual text.
+    if text_to_parse:
+        parser.parse_text(text_to_parse)
+    else:
+        parser.parse_file(os.path.join(units_filename))
+    parser.parse_top(WML)
+
+    units = WML.get_first("+units")
+
+    doubles = {}
+    races = {}
+    for u in  units.get_all("unit_type"):
+        name = u.get_text_val("name")
+        if name == None or name == "":
+            sys.stderr.write("Empty name detected! (id = %s)\n" %
+                u.get_text_val("id"))
+            continue
+        if not name in gettext:
+            # Hm...
+            sys.stderr.write("Unit %s has no translation (?)\n" % name)
+        if name in doubles:
+            sys.stderr.write("Unit %s found multiple times!\n" % name)
+            continue
+        doubles[name] = 1
+
+        r = u.get_text_val("race") or "unknown"
+        r = r[0].upper() + r[1:]
+        l = u.get_text_val("level")
+        levels = races.get(r, {})
+        unitlist = levels.get(l, [])
+        unitlist.append(u)
+        levels[l] = unitlist
+        races[r] = levels
+
+    def poname(name):
+        return name[name.find("^") + 1:]
+
+    def place_units(race):
+        if use_html:
+            print "<font size=5>%s</font>" % (race + campaign)
+            print "<table border=solid>"
+        else:
+            print '| colspan="6" | <font size=5>%s</font>' % (race + campaign)
+            print '|-'
+            print '| level 0 || level 1 || level 2 || level 3 || level 4 || level 5'
+        levels = []
+        for i in range(6):
+            levels.append(races[race].get(str(i), []))
+
+        row = 0
+        while 1:
+            if use_html: print "<tr>"
+            else: print "|-"
+            ok = False
+            units = []
+            for i in range(6):
+                if row < len(levels[i]):
+                    ok = True
+            if not ok: break
+            for i in range(6):
+                if use_html: print "<td>"
+                else: print "|",
+                if row < len(levels[i]):
+                    u = levels[i][row]
+                    name = u.get_text_val("name")
+                    translated = gettext.get(name, "?")
+                    if use_html:
+                        print "<b>%s</b>" % translated
+                        print "<br>"
+                        print poname(name)
+                    else:
+                        print "'''%s''' <br>" % translated,
+                        print poname(name),
+                    f = u.get_first("female")
+                    if f:
+                        name = f.get_text_val("name")
+                        translated = gettext.get(name, "?")
+                        if use_html:
+                            print "<br>"
+                            print "<b>%s</b>" % translated
+                            print "<br>"
+                            print  poname(name)
+                        else:
+                            print "<br>",
+                            print "'''%s''' <br>" % translated,
+                            print poname(name),
+                if use_html: print "</td>"
+                else: print
+            if use_html: print "</tr>"
+            else: print "|-"
+            row += 1
+        if use_html: print "</table>"
+
+    rlist = races.keys()
+    rlist.sort()
+    for race in rlist:
+        place_units(race)
+
+if use_html: print "<html><body>"
+else: print '{| border="solid"'
+
+# Mainline
+list_units(
+    wpath + "/data/core/units.cfg", None,
+    wpath + "/po/wesnoth-units/de.po", " - mainline")
+
+# Campaigns
+campaigns = glob.glob("data/campaigns/*")
+for campaign in campaigns:
+    dirname = campaign[5:] # strip leading data/
+    abbreviation = [dirname[i] for i in range(len(dirname))
+        if dirname[i - 1] in ["/", "_"]]
+    abbreviation = "".join(abbreviation).lower()
+    if abbreviation == "t": abbreviation = "tutorial"
+    description = dirname[10:].replace("_", " ")
+    list_units(None, "[+units]{%s/units}[/units]" % dirname,
+        wpath + "/po/wesnoth-%s/de.po" % abbreviation,
+        " - " + description)
+
+if use_html: print "</body></html>"
+else: print "|}"
