@@ -37,7 +37,6 @@ opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fo
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('nls','enable compile/install of gettext message catalogs',True))
-opts.Add('lingua', 'Language update-po will update.', 'all')
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
@@ -967,24 +966,26 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 env.InstallAs(pot, source_pot),
                     Delete(os.path.join(domain, name + ".cpp.po"))
                 )
-    env.Alias("pot-update", "po")
+
+        env.Alias("pot-update", pot)
 
 if "update-po" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
         name = os.path.basename(domain)
         linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
         for lingua in linguas:
-            if env["lingua"] == "all" or lingua == env["lingua"]:
-                lingua = lingua.rstrip("\n")
-                update_po = env.Command(
-                    os.path.join(domain, lingua + ".po"),
-                    os.path.join(domain, name + ".pot"),
-                    "msgmerge $TARGET $SOURCE -o $TARGET"
-                    )
-                env.Precious(update_po)
-                NoClean(update_po)
+            lingua = lingua.rstrip("\n")
+            update_po = env.Command(
+                os.path.join(domain, lingua + ".po"),
+                os.path.join(domain, name + ".pot"),
+                "msgmerge $TARGET $SOURCE -o $TARGET"
+                )
+            env.Precious(update_po)
+            NoClean(update_po)
 
-    env.Alias("update-po", "po")
+            env.Alias(lingua, update_po)
+
+    env.Alias("update-po", [])
 
 #
 # Unix installation productions
