@@ -946,15 +946,27 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         env.Precious(pot)
         NoClean(pot)
         if cfgs and sources:
-            env.Command(
-                pot,
-                [source_pot, wml_pot],
-                "msgcat --sort-by-file $SOURCES -o $TARGET"
+            env.AddPostAction(
+                env.Command(
+                    pot,
+                    [source_pot, wml_pot],
+                    "msgcat --sort-by-file $SOURCES -o $TARGET"
+                    ),
+                        [
+                        Delete(os.path.join(domain, name + ".wml.po")),
+                        Delete(os.path.join(domain, name + ".cpp.po"))
+                        ]
                 )
         elif cfgs:
-            env.InstallAs(pot, wml_pot)
+            env.AddPostAction(
+                env.InstallAs(pot, wml_pot),
+                    Delete(os.path.join(domain, name + ".wml.po"))
+                )
         else:
-            env.InstallAs(pot, source_pot)
+            env.AddPostAction(
+                env.InstallAs(pot, source_pot),
+                    Delete(os.path.join(domain, name + ".cpp.po"))
+                )
     env.Alias("pot-update", "po")
 
 if "update-po" in COMMAND_LINE_TARGETS:
