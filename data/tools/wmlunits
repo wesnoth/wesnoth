@@ -54,10 +54,14 @@ class UnitList:
         units = WML.get_first("+units")
 	    # If no [+units] section, assume it is inside a [campaign].
         if not units:
-            campaign = WML.get_first("campaign")
+            campaign_wml = WML.get_first("campaign")
+            if not campaign_wml:
+                # FIXME: The tutorial has no [campaign], need to special case it
+                # somehow. Currently, we ignore it.
+                return
             # Now we get the define - strange, but seems to be how Wesnoth
             # works..
-            define = campaign.get_text_val("define")
+            define = campaign_wml.get_text_val("define")
 
             # Re-parse, this time with the define defined.
             WML = parse_core_macros_and_WML(
