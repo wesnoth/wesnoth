@@ -10,19 +10,29 @@ import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 import wesnoth.wmltools as wmltools
 
-def list_units(units_filename, text_to_parse, po_filename, campaign):
+class translation(dict):
+    "Parses po files to create a translation dictionary. Eats lots of core!"
+    def __init__(self, textdomain, isocode):
+        gettext = file("po/wesnoth-%s/%s.po" % (textdomain, isocode)).read()
+        matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
+        self.gettext = {}
+        id = ""
+        for match in matches:
+            text = "".join(re.compile('"(.*?)"').findall(match[1].replace("\\n", "")))
+            if match[0] == "msgid":
+                id = text
+            else:
+                self.gettext[id] = text
+    def get(self, key, dflt):
+        return self.gettext.get(key, dflt)
+    def __getitem__(self, key):
+        return self.gettext[key]
+    def __contains__(self, key):
+        return key in self.gettext.keys()
 
-    # read translations
-    gettext = file(po_filename).read()
-    matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
-    gettext = {}
-    id = ""
-    for match in matches:
-        text = "".join(re.compile('"(.*?)"').findall(match[1].replace("\\n", "")))
-        if match[0] == "msgid":
-            id = text
-        else:
-            gettext[id] = text
+def list_units(units_filename, text_to_parse, domain, isocode, campaign):
+    "List all units in the specified namespace, None = mainline."
+    tx = translation(domain, isocode)
 
     # Create a new parser.
     parser = wmlparser.Parser(datadir)
@@ -49,7 +59,7 @@ def list_units(units_filename, text_to_parse, po_filename, campaign):
             sys.stderr.write("Empty name detected! (id = %s)\n" %
                 u.get_text_val("id"))
             continue
-        if not name in gettext:
+        if not name in tx:
             # Hm...
             sys.stderr.write("Unit %s has no translation (?)\n" % name)
         if name in doubles:
@@ -97,7 +107,7 @@ def list_units(units_filename, text_to_parse, po_filename, campaign):
                 if row < len(levels[i]):
                     u = levels[i][row]
                     name = u.get_text_val("name")
-                    translated = gettext.get(name, "?")
+                    translated = tx.get(name, "?")
                     if use_html:
                         print "<b>%s</b>" % translated
                         print "<br>"
@@ -108,7 +118,7 @@ def list_units(units_filename, text_to_parse, po_filename, campaign):
                     f = u.get_first("female")
                     if f:
                         name = f.get_text_val("name")
-                        translated = gettext.get(name, "?")
+                        translated = tx.get(name, "?")
                         if use_html:
                             print "<br>"
                             print "<b>%s</b>" % translated
@@ -144,7 +154,7 @@ if __name__ == '__main__':
     # Mainline
     list_units(
         "data/core/units.cfg", None,
-        "po/wesnoth-units/de.po", " - mainline")
+        "units", "de", " - mainline")
 
     # Campaigns
     campaigns = glob.glob("data/campaigns/*")
@@ -156,8 +166,7 @@ if __name__ == '__main__':
         if abbreviation == "t": abbreviation = "tutorial"
         description = dirname[10:].replace("_", " ")
         list_units(None, "[+units]{%s/units}[/units]" % dirname,
-            "po/wesnoth-%s/de.po" % abbreviation,
-            " - " + description)
+                   abbreviation, "de", " - " + description)
 
     if use_html: print "</body></html>"
     else: print "|}"
