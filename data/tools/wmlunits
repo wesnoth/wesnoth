@@ -42,104 +42,104 @@ class UnitList:
 
         self.description = description
 
-    def report_units(self, isocode):
-        tx = None
-        doubles = {}
-        self.races = {}
-        for u in  self.units.get_all("unit_type"):
-            # Fetch name of unit
-            name = u.get_text_val("name")
-            if name == None or name == "":
-                sys.stderr.write("Empty name detected! (id = %s)\n" %
-                    u.get_text_val("id"))
-                continue
-            # Swap in the appropriate translation dictionary for this unit
-            if not u.textdomain:
-                sys.stderr.write("Unit %s has no textdomain (?)\n" % name)
-                continue
-            if tx == None or u.textdomain != tx.textdomain:
-                tx = wmltools.Translation(u.textdomain, isocode)
-            # Sanity check
-            if not name in tx:
-                # Hm...
-                sys.stderr.write("Unit %s has no translation (?)\n" % name)
-            if name in doubles:
-                sys.stderr.write("Unit %s found multiple times!\n" % name)
-                continue
-            doubles[name] = 1
+def report_unit_names(unitlist, isocode):
+    tx = None
+    doubles = {}
+    races = {}
+    for u in  unitlist.units.get_all("unit_type"):
+        # Fetch name of unit
+        name = u.get_text_val("name")
+        if name == None or name == "":
+            sys.stderr.write("Empty name detected! (id = %s)\n" %
+                u.get_text_val("id"))
+            continue
+        # Swap in the appropriate translation dictionary for this unit
+        if not u.textdomain:
+            sys.stderr.write("Unit %s has no textdomain (?)\n" % name)
+            continue
+        if tx == None or u.textdomain != tx.textdomain:
+            tx = wmltools.Translation(u.textdomain, isocode)
+        # Sanity check
+        if not name in tx:
+            # Hm...
+            sys.stderr.write("Unit %s has no translation (?)\n" % name)
+        if name in doubles:
+            sys.stderr.write("Unit %s found multiple times!\n" % name)
+            continue
+        doubles[name] = 1
 
-            r = u.get_text_val("race") or "unknown"
-            r = r[0].upper() + r[1:]
-            l = u.get_text_val("level")
-            self.levels = self.races.get(r, {})
-            self.unitlist = self.levels.get(l, [])
-            self.unitlist.append(u)
-            self.levels[l] = self.unitlist
-            self.races[r] = self.levels
+        r = u.get_text_val("race") or "unknown"
+        r = r[0].upper() + r[1:]
+        l = u.get_text_val("level")
+        levels = races.get(r, {})
+        unitlist = levels.get(l, [])
+        unitlist.append(u)
+        levels[l] = unitlist
+        races[r] = levels
 
-        def poname(name):
-            return name[name.find("^") + 1:]
+    def poname(name):
+        return name[name.find("^") + 1:]
 
-        def place_units(race):
-            if use_html:
-                print "<font size=5>%s</font>" % (race + self.description)
-                print "<table border=solid>"
-            else:
-                print '| colspan="6" | <font size=5>%s</font>' % (race + self.description)
-                print '|-'
-                print '| level 0 || level 1 || level 2 || level 3 || level 4 || level 5'
-            self.levels = []
+    def place_units(race):
+        if use_html:
+            print "<font size=5>%s</font>" % (race + description)
+            print "<table border=solid>"
+        else:
+            print '| colspan="6" | <font size=5>%s</font>' % (race + description)
+            print '|-'
+            print '| level 0 || level 1 || level 2 || level 3 || level 4 || level 5'
+        levels = []
+        for i in range(6):
+            levels.append(races[race].get(str(i), []))
+
+        row = 0
+        while 1:
+            if use_html: print "<tr>"
+            else: print "|-"
+            ok = False
+            units = []
             for i in range(6):
-                self.levels.append(self.races[race].get(str(i), []))
-
-            row = 0
-            while 1:
-                if use_html: print "<tr>"
-                else: print "|-"
-                ok = False
-                units = []
-                for i in range(6):
-                    if row < len(self.levels[i]):
-                        ok = True
-                if not ok: break
-                for i in range(6):
-                    if use_html: print "<td>"
-                    else: print "|",
-                    if row < len(self.levels[i]):
-                        u = self.levels[i][row]
-                        name = u.get_text_val("name")
+                if row < len(levels[i]):
+                    ok = True
+            if not ok: break
+            for i in range(6):
+                if use_html: print "<td>"
+                else: print "|",
+                if row < len(levels[i]):
+                    u = levels[i][row]
+                    name = u.get_text_val("name")
+                    translated = tx.get(name, "?")
+                    if use_html:
+                        print "<b>%s</b>" % translated
+                        print "<br>"
+                        print poname(name)
+                    else:
+                        print "'''%s''' <br>" % translated,
+                        print poname(name),
+                    f = u.get_first("female")
+                    if f:
+                        name = f.get_text_val("name")
                         translated = tx.get(name, "?")
                         if use_html:
+                            print "<br>"
                             print "<b>%s</b>" % translated
                             print "<br>"
-                            print poname(name)
+                            print  poname(name)
                         else:
+                            print "<br>",
                             print "'''%s''' <br>" % translated,
                             print poname(name),
-                        f = u.get_first("female")
-                        if f:
-                            name = f.get_text_val("name")
-                            translated = tx.get(name, "?")
-                            if use_html:
-                                print "<br>"
-                                print "<b>%s</b>" % translated
-                                print "<br>"
-                                print  poname(name)
-                            else:
-                                print "<br>",
-                                print "'''%s''' <br>" % translated,
-                                print poname(name),
-                    if use_html: print "</td>"
-                    else: print
-                if use_html: print "</tr>"
-                else: print "|-"
-                row += 1
-            if use_html: print "</table>"
+                if use_html: print "</td>"
+                else: print
+            if use_html: print "</tr>"
+            else: print "|-"
+            row += 1
+        if use_html: print "</table>"
 
-        rlist = self.races.keys()
-        rlist.sort()
-        for race in rlist:
-            place_units(race)
+    rlist = races.keys()
+    rlist.sort()
+    for race in rlist:
+        place_units(race)
 
 if __name__ == '__main__':
     import getopt
@@ -184,7 +184,7 @@ if __name__ == '__main__':
         print '{| border="solid"'
 
     for unitlist in allunits:
-        unitlist.report_units(isocode)
+        report_unit_names(unitlist, isocode)
 
     if use_html:
         print "</body></html>"
