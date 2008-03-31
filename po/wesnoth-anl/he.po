@@ -1,0 +1,1113 @@
+# translation of he.po to Hebrew
+# ----wesnoth.po
+# Hebrew translations for Battle for Wesnoth package.
+# Copyright (C) 2005 Wesnoth development team
+# This file is distributed under the same license as the wesnoth package.
+#
+#
+# Oron Peled <oron@actcom.co.il>, 2005.
+# Ely Levy <nakeee@gmail.com>, 2005, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: he\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2008-03-31 21:40+0200\n"
+"PO-Revision-Date: 2006-02-13 01:20+0200\n"
+"Last-Translator: Ely Levy <nakeee@gmail.com>\n"
+"Language-Team: Hebrew\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.1\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#. [multiplayer]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
+#, fuzzy
+msgid "4p - A New Land"
+msgstr "4ש - לגונה"
+
+#. [multiplayer]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
+msgid ""
+"This 4p survival scenario allows you to construct buildings and terraform "
+"the land. Use map settings. Recommended starting gold=100."
+msgstr ""
+
+#. [part]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
+msgid ""
+"In the aftermath of the great war the remnants of humanity fled to an "
+"obscure secluded glen. Though they knew they could not hide from the mighty "
+"armies that had crushed their homeland, the leaders of the resistance hoped "
+"only for enough time to rebuild their forces."
+msgstr ""
+
+#. [objectives]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
+msgid "`Right-click on your leader during your turn for help"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
+msgid "You must survive until turn 25."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:363
+msgid ""
+"You destroy the mushroom mine. The northwest undead now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:383
+msgid ""
+"You destroy the mushroom mine. The northeast orcs now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:403
+msgid ""
+"You destroy the mushroom mine. The southwest orcs now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:423
+msgid ""
+"You destroy the mushroom mine. The southeast undead now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:515
+msgid ""
+"One of your peasants has happened upon some spider's nests in the north and "
+"south."
+msgstr ""
+
+#. [message]: type=Peasant
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:521
+msgid ""
+"I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
+"them?"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:533
+msgid ""
+"Move any unit next to these captives and they will join your side. The "
+"spiders guarding each captive are currently wounded, the sooner you get "
+"there the better chance you have of killing them."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:544
+msgid ""
+"Your men report strange sounds coming from some caves to the east and west."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:550
+msgid ""
+"It would seem the enemy has built some underground mushroom mines nearby - "
+"it must be where the mainstay of their resources are produced. If we could "
+"destroy them our chances wouldn't nearly be so slim."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:562
+msgid ""
+"Move any unit onto these villages to destroy the mine. Each one you destroy "
+"will reduce the enemy's income by 10."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:574
+msgid "This battle is nearly at an end. Victory is close at hand!"
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:585
+msgid ""
+"We have survived the onslaught! The tide of the battle has turned, victory "
+"cannot elude us now!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:589
+msgid "You have won the game, but you may continue if you wish..."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
+msgid "I have fallen, but all is not lost!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:616
+msgid "I am done for, but we have yet to lose this battle!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:628
+msgid "Comrades, avenge me!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:640
+msgid "Do not fear, there is hope for us still!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:74
+msgid "The chest contains {TREASURE} gold."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
+msgid "Return to menu"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
+msgid ""
+"Peasants are your workers. Depending on the terrain, right-clicking on a "
+"peasant allows you to terraform the landscape and/or build castles, mines, "
+"farms, villages and universities."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:26
+msgid ""
+"Mages are your wise men. They can study at universities, pursuing advances "
+"in mining, farming and recruitment."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:36
+msgid ""
+"Farms can only be planted on grassland. Move a peasant onto a farm and he "
+"will begin to automatically harvest the cash crop."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:46
+msgid ""
+"Villages can only be built on grassland. They provide income and healing as "
+"usual. Right-click on a peasant in a village and you can establish a "
+"university."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:56
+msgid ""
+"Mines can be built on hills or mountains. A peasant on a mine will "
+"automatically dig for gold at the start of your turn."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:66
+msgid ""
+"Any of the 'Elven' style villages represent universities. At the start of "
+"your turn, Mages in universities automatically add to the study progress of "
+"your chosen research target. Right-click on a mage in a university to change "
+"research target."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:76
+msgid ""
+"Right-clicking on your leader when in a univerity allows you to select "
+"special diplomatic options."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
+msgid "Select a topic."
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
+msgid "Done"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+msgid "@Peasants"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
+msgid "@Mages"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
+msgid "@Farms"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
+msgid "@Villages"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
+msgid "@Mines"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
+msgid "@Universities"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
+msgid "@Diplomacy"
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:4
+msgid "@$player[{TARGET_SIDE}].name"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:15
+msgid "I hereby donate 20 gold to the coffers of $player[{TARGET_SIDE}].name|."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:31
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of agriculture"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:47
+msgid ""
+"$player[{TARGET_SIDE}].name|, since our wisdom exceeds yours I have "
+"instructed my scholars to further your understanding of agriculture."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:56
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of mining"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:72
+msgid ""
+"$player[{TARGET_SIDE}].name|, since the wisdom of my people exceeds yours I "
+"have instructed my scholars to aid you in your efforts to learn the science "
+"of mining."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:81
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of warfare"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:97
+msgid ""
+"You know worryingly little about the arts of war, $player[{TARGET_SIDE}]."
+"name|. I feel an obligation to instruct you in this vital matter."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:147
+msgid ""
+"What shall I do?\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:45
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:152
+msgid "Nothing"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:162
+msgid ""
+"@Donate Funds\n"
+"Give 20 gold to another player"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:172
+msgid "Who will you donate funds to?"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:175
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:209
+msgid "Back"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
+msgid ""
+"@Share Knowledge\n"
+"Help an ally with their research"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:206
+msgid "Who will you share knowledge with?"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:245
+msgid ""
+"@Negotiate with the Dwarves\n"
+"Lets you recruit a Dwarvish unit\n"
+"Negotiation Progress: $player[$side_number].leader_option_1.progress|/$player"
+"[$side_number].leader_option_1.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:270
+msgid ""
+"@Negotiate with the Elves\n"
+"Lets you recruit an Elvish unit\n"
+"Negotiation Progress: $player[$side_number].leader_option_2.progress|/$player"
+"[$side_number].leader_option_2.target"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:308
+msgid ""
+"Our talks are complete - the Dwarves will gladly fight by your side. Which "
+"of our brethren do you want to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:330
+msgid ""
+"Our talks are complete - the Elves shall aid you in this battle. Which our "
+"of kin do you wish to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:33
+msgid ""
+"Which type of unit would you like to be able to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:90
+msgid ""
+"We are currently studying $player[$side_number].research.current_target|. To "
+"which end would you have our scholars devote their minds?\n"
+" \n"
+"Our farms produce $player[$side_number].farming.gold|g\n"
+"Our mines produce $player[$side_number].mining.gold|g\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
+msgid "Continue as before"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:104
+msgid ""
+"@Agriculture\n"
+"Farmers produce +1 gold\n"
+"Study Progress: $player[$side_number].farming.progress|/$player"
+"[$side_number].farming.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:117
+msgid ""
+"@Mining \n"
+"Miners produce +1 gold \n"
+"Study Progress: $player[$side_number].mining.progress|/$player[$side_number]."
+"mining.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:130
+msgid ""
+"@Warfare\n"
+"Allows you to recruit a new type of unit\n"
+"Study Progress: $player[$side_number].warfare.progress|/$player"
+"[$side_number].warfare.target"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:182
+msgid ""
+"$player[$side_number].name|'s farms now produce $player[$side_number]."
+"farming.gold gold."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:199
+msgid ""
+"$player[$side_number].name|'s mines now produce $player[$side_number].mining."
+"gold gold."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:215
+msgid ""
+"$player[$side_number].name|, we have finished researching warfare. Right-"
+"click on a mage in a university to select a unit to recruit."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:130
+msgid "Let's cut you free!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:134
+msgid "You release the creature from the web and it agrees to help you."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:42
+msgid ""
+"What shall I do my liege?\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:57
+msgid "@Convert to Grassland"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:57
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:72
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:263
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:398
+msgid "`Cost: 0g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:72
+msgid "@Plant Farm"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:84
+msgid "`Cost: 15g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:84
+msgid "@Build Village"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:102
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:357
+msgid "`Cost: 6g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:102
+msgid "@Build Castle"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:119
+msgid "`Cost: 4g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:119
+msgid "@Flood the Field"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:136
+msgid "@Plant Saplings"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:136
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:278
+msgid "`Cost: 1g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:156
+msgid "`Earns: 1g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:156
+msgid "@Chop Down Forest"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:182
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:203
+msgid "@Build Mine"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:182
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:203
+msgid "`Cost: 25g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:224
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:316
+msgid "`Cost: 3g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:224
+msgid "@Make a Ford"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:242
+msgid "`Cost: 5g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:242
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:278
+msgid "@Landfill"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:263
+msgid "@Destroy the Ford"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:299
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:316
+msgid "@Smash Cave Floor"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:299
+msgid "`Cost: 2g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:333
+msgid "@Harvest Mushrooms"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:333
+msgid "`Earns: 3g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:357
+msgid "@Build a Keep"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:377
+msgid "`Cost: 7g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:377
+msgid "@Establish Univeristy"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:398
+msgid "@Clear the Ground"
+msgstr ""
+
+#~ msgid "User Map"
+#~ msgstr "מפת משתמש"
+
+#~ msgid "Random"
+#~ msgstr "אקראי"
+
+#~ msgid "Default"
+#~ msgstr "ברירת מחדל"
+
+#~ msgid "Age of Heroes"
+#~ msgstr "עידן הגיבורים"
+
+#~ msgid "Great War"
+#~ msgstr "מלחמה גדולה"
+
+#~ msgid "Alliance of Darkness"
+#~ msgstr "ברית החושך"
+
+#~ msgid "Alliance of Light"
+#~ msgstr "ברית האור"
+
+#~ msgid "Drakes"
+#~ msgstr "דרקודם"
+
+#~ msgid "Knalgan Alliance"
+#~ msgstr "ברית קנלגאן"
+
+#~ msgid "Loyalists"
+#~ msgstr "נאמנים"
+
+#~ msgid "Northerners"
+#~ msgstr "צפוניים"
+
+#~ msgid "Rebels"
+#~ msgstr "מורדים"
+
+#~ msgid "Undead"
+#~ msgstr "אל-מתים"
+
+#, fuzzy
+#~ msgid "2p - Caves of the Basilisk"
+#~ msgstr "4ש - האי של הורטיי"
+
+#~ msgid "2p - Cynsaun Battlefield"
+#~ msgstr "2ש - שדה הקרב סינסאון"
+
+#, fuzzy
+#~ msgid " Recommended settings of 150 gold and 2 gold per village."
+#~ msgstr "מפה קטנה ל 2 נגד 2. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid ""
+#~ "There is much to explore in this vast battlefront, designed for players "
+#~ "who favor epic, large-scale duel matches."
+#~ msgstr ""
+#~ "יש הרבה לגלות בחזית הקרב רחבת הידיים הזאת, מתוכנן לשחקנים שאוהבים מערכות "
+#~ "דו-קרב רחבות היקף עם עלילה. מומלץ להגדיר 150ז ו1ז לכפר."
+
+#~ msgid "2p - Den of Onis"
+#~ msgstr "2ש - מאורת אונים"
+
+#, fuzzy
+#~ msgid ""
+#~ "Danger lurks around every corner in this underground battlefield, a duel "
+#~ "map where players must find the balance between force and subterfuge."
+#~ msgstr ""
+#~ "סכנה אורבת בכל פינה של שדה הקרב התת-קרקעי הזה, מפת דו קרב שבה כח ועורמה "
+#~ "נפגשים. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid " Recommended setting of 2 gold per village."
+#~ msgstr "מפה קטנה ל 2 נגד 2. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid "2p - Fallenstar Lake"
+#~ msgstr "2ש - אגם המטאור"
+
+#, fuzzy
+#~ msgid ""
+#~ "Long ago, a great star fell from the heavens, leaving its mark on this "
+#~ "coniferous region."
+#~ msgstr ""
+#~ " לפני שנים רבות, נפל משמיים מטאור ענקי, והשאיר את חותמו על אזור מחטני זה. "
+#~ "מומלץ להגדיר 2ז לכפר."
+
+#~ msgid "2p - Hamlets"
+#~ msgstr "2ש - כפרונים"
+
+#, fuzzy
+#~ msgid ""
+#~ "Warfare transforms the simple farms and villages of a peaceful region "
+#~ "into a subtly parceled battlefield."
+#~ msgstr ""
+#~ "המלחמה הופכת את החוות וכפרים הפשוטים של איזור שליו לשדה קרב מורכב. מומלץ "
+#~ "להגדיר 2ז לכפר."
+
+#~ msgid "2p - Hornshark Island"
+#~ msgstr "2ש - אי כריש-הקרן"
+
+#, fuzzy
+#~ msgid ""
+#~ "Players must navigate the dispersive terrain of this small but "
+#~ "topographically dense island."
+#~ msgstr ""
+#~ "שחקנים חייבים לנווט את סוגי השטח המגוונים של אי שהוא אולי קטן אבל צפוף "
+#~ "מבחינה טופולוגית. מומלץ להגדיר 2ז לכפר."
+
+#~ msgid "2p - Sablestone Delta"
+#~ msgstr "2ש - דלתת האבן השחורה"
+
+#, fuzzy
+#~ msgid ""
+#~ "Two armies collide on this disjointed coastal landscape of hidden caves "
+#~ "and jagged rivers."
+#~ msgstr ""
+#~ "שני צבאות נפגשים על שטח חופי מקוטע של מערות חבויות ונהרות משוננים. מומלץ "
+#~ "להגדיר 2ז לכפר."
+
+#~ msgid "2p - Silverhead Crossing"
+#~ msgstr "2ש - מעבר ראש-הכסף"
+
+#, fuzzy
+#~ msgid ""
+#~ "Players must traverse all manner of terrain in pursuit of victory on this "
+#~ "multi-fronted duel map."
+#~ msgstr ""
+#~ "השחקנים חייבים לחצות סוגי שטח שונים במרדף אחרי הניצחון במפת הדו-קרב רבת "
+#~ "החזיתות הזו. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid "statue"
+#~ msgstr "מצב"
+
+#~ msgid "2p - Sullas Ruins"
+#~ msgstr "2ש - חורבות סולסמלאת"
+
+#, fuzzy
+#~ msgid ""
+#~ "Flooded by the seas and battered by the winter elements, only ruins, "
+#~ "water and ice now remain in the shadow of this once mighty empire."
+#~ msgstr ""
+#~ "מוצפים על ידי הים ומוכים על ידי איתני החורף, רק הריסות, מים וקרח נותרו "
+#~ "עכשיו בצל של מה שהיה פעם אימפריה אדירה. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid "2p - The Freelands"
+#~ msgstr "4ש - האדמות הפראיות"
+
+#, fuzzy
+#~ msgid "2p - Weldyn Channel"
+#~ msgstr "2ש - הסתער"
+
+#~ msgid "2p - Wesbowl"
+#~ msgstr "2ש -- ווסכדור"
+
+#~ msgid ""
+#~ "In Wesbowl, a player has to get any of the balls to the other player's "
+#~ "end zone as often as possible. However, the other player can attack your "
+#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
+#~ "when units are killed, they return to that player's end zone with an "
+#~ "injury."
+#~ msgstr ""
+#~ "בווסכדור, השחקן חייב להביא את אחד מהכדורים לאזור הסוף של השחקן השני מספר "
+#~ "לעתים קרובות ככל האפשר. אבל, השחקן השני יכול לתקוף את יחידותיך. ווסכדור "
+#~ "משוחק עם כלי נשק קהים, ומרפאים נמצאים קרוב, לכן כאשר יחידות נהרגות, הם "
+#~ "חוזרות פגועות לאזור הסוף של השחקן אלו הן שייכות."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Move either ball to your opponent's end zone more times than they move a "
+#~ "ball to yours.\n"
+#~ "Defeat:\n"
+#~ "#Opponent moves the balls to your end zone more times than you move them "
+#~ "to the opponent's end zone"
+#~ msgstr ""
+#~ "\n"
+#~ "ניצחון:\n"
+#~ "@הבא את אחד הכדורים אל איזור הסוף של היריב שלך יותר פעמים מאשר הוא מביא "
+#~ "את אחד הכדורים לשלך\n"
+#~ "תבוסה:\n"
+#~ "#היריב מביא את אחד הכדורים אל אזור הסוף שלך יותר פעמים מאשר אתה מביא את "
+#~ "אחד הכדורים  לשלו"
+
+#~ msgid "Red scores! Current score is $redscore-$bluescore"
+#~ msgstr "האדום מבקיע! הניקוד הנוכחי הוא $redscore-$bluescore"
+
+#~ msgid "Blue scores! Current score is $redscore-$bluescore"
+#~ msgstr "הכחול מבקיע! הניקוד הנוכחי הוא $redscore-$bluescore"
+
+#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+#~ msgstr "האם להעביר את הכדור ל$passto. הדפס ($xloc,$yloc)?"
+
+#~ msgid "Yes!"
+#~ msgstr "כן!"
+
+#~ msgid "No"
+#~ msgstr "לא"
+
+#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
+#~ msgstr "הקבוצה הכחולה ניצחה! התוצאה הסופית:  $redscore-$bluescore"
+
+#~ msgid "Red team wins! Final score: $redscore-$bluescore"
+#~ msgstr "הקבוצה אדומה ניצחה! התוצאה הסופית:  $redscore-$bluescore"
+
+#~ msgid "Draw! Final score: $redscore-$bluescore"
+#~ msgstr "שיוויון! התוצאה הסופית:  $redscore-$bluescore"
+
+#, fuzzy
+#~ msgid "Three players come head to head on this water-cut battlefield."
+#~ msgstr ""
+#~ "שלושה שחקנים נלחמים ראש בראש בשדה הקרב חצוי המים הזה. מומלץ להגדיר 2ז "
+#~ "לכפר."
+
+#~ msgid "3p - Island of the Horatii"
+#~ msgstr "4ש - האי של הורטיי"
+
+#, fuzzy
+#~ msgid ""
+#~ "Controlling the central island is often the key to victory in this "
+#~ "21x21hex 3 player free for all map."
+#~ msgstr ""
+#~ "שליטה על האי המרכזי היא לעיתים קרובות המפתח לניצחון. מפת משחק חופשי ל 3 "
+#~ "השחקנים בגודל 21x21. מומלץ להגדיר 2ז לכפר."
+
+#~ msgid "3p - Morituri"
+#~ msgstr "3ש - מוריטורי"
+
+#, fuzzy
+#~ msgid ""
+#~ "Only one faction will emerge victorious from this tightly bordered three-"
+#~ "player map."
+#~ msgstr ""
+#~ "רק סיעה אחת תצא מנצחת מהמפה זו שמחולקת על ידי שלושה גבולות צמודים. מומלץ "
+#~ "להגדיר 2ז לכפר."
+
+#~ msgid "4p - Blue Water Province"
+#~ msgstr "4ש - מושבת המים הכחולים"
+
+#, fuzzy
+#~ msgid ""
+#~ "Historians write that Bluewater Province has been destroyed and rebuilt "
+#~ "some twenty times. Now, as armies once again converge on the rocky "
+#~ "streams and snowcapped mountains of this small province, its villagers "
+#~ "hardly seem to take notice."
+#~ msgstr ""
+#~ "מסופר שמושבת המים הכחולים נהרסה ונבנתה מחדש לפחות 20 פעם. כעת, בעוד "
+#~ "הצבאות נאספים שוב על הנחלים הסלעיים ועל ההרים עם הפסגות מכוסות השלג של "
+#~ "המושבה הקטנה הזאת, הכפריים שלה בקושי שמים לב. מומלץ להגדיר 2ז לכפר."
+
+#~ msgid "4p - Castle Hopping Isle"
+#~ msgstr "4ש - האי קפיצה בין טירות"
+
+#, fuzzy
+#~ msgid "Hop from castle to castle while fighting over a central isle."
+#~ msgstr ""
+#~ "שני צבאות נפגשים על שטח חופי מקוטע של מערות חבויות ונהרות משוננים. מומלץ "
+#~ "להגדיר 2ז לכפר."
+
+#~ msgid "4p - Clash"
+#~ msgstr "4ש - התנגשות"
+
+#, fuzzy
+#~ msgid "4p - Hamlets"
+#~ msgstr "2ש - כפרונים"
+
+#~ msgid "4p - King of the Hill"
+#~ msgstr "4ש - מלך הגבעה"
+
+#, fuzzy
+#~ msgid ""
+#~ "Controlling the area around the central keep is very lucrative in this "
+#~ "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+#~ msgstr ""
+#~ "שליטה על האיזור מסביב למצודה המרכזית היא רווחית מאד. מפת משחק חופשי ל 4 "
+#~ "בגודל 36X36. טובה גם למשחק עם קבוצות. ישנם 36 כפרים. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid " Recommended setting of 2 gold per village and 150 starting gold."
+#~ msgstr "מפה קטנה ל 2 נגד 2. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid " Recommended setting of 1 gold per village."
+#~ msgstr "מפה קטנה ל 2 נגד 2. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid "Four factions contend for dominance over this watery settlement."
+#~ msgstr "ארבע סיעות מתחרות על השליטה בישוב המימי הזה. מומלץ להגדיר 1ז לכפר."
+
+#~ msgid "4p - Loris River"
+#~ msgstr "4ש -נהר לוריס"
+
+#, fuzzy
+#~ msgid ""
+#~ "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
+#~ "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
+#~ msgstr ""
+#~ "מפה בגודל 25x25 ל 2 נגד 2. ממורכזת מסביב לנהר עם זוג מצודות בפינות "
+#~ "מרוחקות. מתוכננת עבור 1 ו 3 נגד 2 ו 4. ישנם 28 כפרים. מומלץ להגדיר 2ז "
+#~ "לכפר."
+
+#~ msgid "4p - Morituri"
+#~ msgstr "4ש - מוריטורי"
+
+#, fuzzy
+#~ msgid "Who will emerge from the confines of this perilous battlefield?"
+#~ msgstr "מי יצא כמנצח מהתחומו של שדה הקרב המסוכן הזה? מומלץ להגדיר 2ז לכפר."
+
+#~ msgid "4p - Paths of Daggers"
+#~ msgstr "4ש - שבילי הסכינים"
+
+#, fuzzy
+#~ msgid " Recommended setting of 2 gold per village, 28 villages."
+#~ msgstr "מפה קטנה ל 2 נגד 2. מומלץ להגדיר 2ז לכפר."
+
+#, fuzzy
+#~ msgid ""
+#~ "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
+#~ "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+#~ msgstr ""
+#~ "מפה בגודל 35X27 2 נגד 2 עם חמישה שבילי עימות נפרדים. מאוזנת למשחק של "
+#~ "המזרח נגד המערב (1 ו3 נגד 2 ו 4), אבל עובדת טוב עבור כל חלוקה לקבוצות או "
+#~ "משחק חופשי. 28 כפרים. מומלץ להגדיר 2ז לכפר."
+
+#~ msgid "4p - Siege Castles"
+#~ msgstr "4ש - מצור טירות"
+
+#, fuzzy
+#~ msgid ""
+#~ "40X30 4 player map where 4 mighty castles face off at the convergence of "
+#~ "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
+#~ "villages."
+#~ msgstr ""
+#~ "מפה בגודל 25x25 ל 2 נגד 2. ממורכזת מסביב לנהר עם זוג מצודות בפינות "
+#~ "מרוחקות. מתוכננת עבור 1 ו 3 נגד 2 ו 4. ישנם 28 כפרים. מומלץ להגדיר 2ז "
+#~ "לכפר."
+
+#~ msgid "4p - The Wilderlands"
+#~ msgstr "4ש - האדמות הפראיות"
+
+#, fuzzy
+#~ msgid ""
+#~ "A vast region of wild, untamed wilderness, its terrain dotted with "
+#~ "forests, caves, rivers, and the ruins of ancient fortresses."
+#~ msgstr ""
+#~ "אזור רחב ידיים של טבע פראי ולא מעובד, שטחו מנוקד ביערות, מערות, נהרות, "
+#~ "והריסות של מצודות עתיקות. מומלץ להגדיר 1ז לכפר."
+
+#, fuzzy
+#~ msgid "Monsters"
+#~ msgstr "מהלכים"
+
+#~ msgid "5p - Forest of Fear"
+#~ msgstr "4ש - יער הפחד"
+
+#~ msgid "In this mixed landscape, five armies battle for supremacy."
+#~ msgstr "בפני השטח המגוונים האלו, חמישה צבאות נלחמים לעליונות."
+
+#, fuzzy
+#~ msgid ""
+#~ "Only a true tactician will survive in this deadly and confining "
+#~ "battlefield, where six boxed-in armies come to a head."
+#~ msgstr ""
+#~ "רק טקטיקן אמיתי ישרוד את שדה הקרב הקטלני והמגביל הזה, היכן ששת הצבאות "
+#~ "הלכודים ביחד נפגשים ראש בראש. מומלץ להגדיר 2ז לכפר."
+
+#~ msgid "6p - Crusaders' Field"
+#~ msgstr "6ש - שדה לוחמי הקודש"
+
+#, fuzzy
+#~ msgid ""
+#~ "The rallying cries of battle can once again be heard on this time-worn "
+#~ "field of war, where the ghosts of thousands of brave warriors float "
+#~ "invisibly through the mountains, trees and rivers."
+#~ msgstr ""
+#~ "קריאות ההתקבצות אל הקרב נשמעות שוב בשדה המלחמה מוכה הזמן הזה, איכן "
+#~ "שרוחותיהם של אלפי לוחמים אמיצים מרחפות בלתי נראות דרך ההרים, העצים "
+#~ "והנהרות. מומלץ להגדיר 1ז לכפר."
+
+#~ msgid "6p - Hexcake"
+#~ msgstr "6ש - עוגה משושה"
+
+#~ msgid "2 vs. 2 or 3 vs. 3 team game."
+#~ msgstr "משחק צוות של 2 נגד 2 או 3 נגד 3."
+
+#, fuzzy
+#~ msgid "Turn 2: Loyalists"
+#~ msgstr "נאמנים"
+
+#, fuzzy
+#~ msgid "Turn 8: Rebels"
+#~ msgstr "מורדים"
+
+#, fuzzy
+#~ msgid "Turn 11: Northerners"
+#~ msgstr "צפוניים"
+
+#, fuzzy
+#~ msgid "Turn 14: Drakes"
+#~ msgstr "הוריקן דרקודמי"
+
+#, fuzzy
+#~ msgid "Death"
+#~ msgstr "ברירת מחדל"
+
+#~ msgid "Attacker"
+#~ msgstr "תוקפת"
+
+#~ msgid "Defender"
+#~ msgstr "מגנה"
+
+#, fuzzy
+#~ msgid "8p - Mokena Prairie"
+#~ msgstr "3ש - מוריטורי"
+
+#, fuzzy
+#~ msgid "8p - Morituri"
+#~ msgstr "3ש - מוריטורי"
+
+#, fuzzy
+#~ msgid ""
+#~ "Teamwork and tactics are key to victory in this unusual battlefield, "
+#~ "where eight armies fight to the finish."
+#~ msgstr ""
+#~ "רק טקטיקן אמיתי ישרוד את שדה הקרב הקטלני והמגביל הזה, היכן ששת הצבאות "
+#~ "הלכודים ביחד נפגשים ראש בראש. מומלץ להגדיר 2ז לכפר."
+
+#~ msgid "Random map"
+#~ msgstr "מפה אקראית"
+
+#~ msgid ""
+#~ "Randomly generated map. Note: random maps are often unbalanced, but if "
+#~ "you have time, you can regenerate them until you get a good one."
+#~ msgstr ""
+#~ "מפה שמיוצרת באופן אקראי. שים לב: מפות אקראיות הן לעיתים קרובות לא "
+#~ "מאוזנות, אבל אם יש לך את הזמן, אתה יכול ליצור אותן מחדש עד שתקבל אחת טובה."
+
+#~ msgid "Random map (Desert)"
+#~ msgstr "מפה אקראית (מדבר)"
+
+#~ msgid ""
+#~ "A random map with sand as the primary terrain. Note: random maps are "
+#~ "often unbalanced, but if you have time, you can regenerate them until you "
+#~ "get a good one."
+#~ msgstr ""
+#~ "מפה אקראית עם חול כסוג השטח העיקרי. שים לב: מפות אקראיות הן לעיתים קרובות "
+#~ "לא מאוזנות, אבל אם יש לך את הזמן, אתה יכול ליצור אותן מחדש עד שתקבל אחת "
+#~ "טובה."
+
+#~ msgid "Random map (Marsh)"
+#~ msgstr "מפה אקראית (ביצות)"
+
+#~ msgid ""
+#~ "A random map with swamp as the primary terrain. Note: random maps are "
+#~ "often unbalanced, but if you have time, you can regenerate them until you "
+#~ "get a good one."
+#~ msgstr ""
+#~ "מפה אקראית עם ביצה כסוג השטח העיקרי. שים לב: מפות אקראיות הן לעיתים "
+#~ "קרובות לא מאוזנות, אבל אם יש לך את הזמן, אתה יכול ליצור אותן מחדש עד "
+#~ "שתקבל אחת טובה."
+
+#~ msgid "Random map (Winter)"
+#~ msgstr "מפה אקראית (חורף)"
+
+#~ msgid ""
+#~ "A random map set in the break between spring and winter, mainly with "
+#~ "snowy terrains. Note: random maps are often unbalanced, but if you have "
+#~ "time, you can regenerate them until you get a good one."
+#~ msgstr ""
+#~ "מפה אקראית שנמצאת בהפסקה בין הסתיו לחורף, עם בעיקר שטחים מושלגים. שים לב: "
+#~ "מפות אקראיות הן לעיתים קרובות לא מאוזנות, אבל אם יש לך את הזמן, אתה יכול "
+#~ "ליצור אותן מחדש עד שתקבל אחת טובה."
+
+#~ msgid "2p - Blitz"
+#~ msgstr "2ש - מתקפת בזק"
+
+#~ msgid "3p - Triple Blitz"
+#~ msgstr "3ש - מתקפת בזק משולשת"

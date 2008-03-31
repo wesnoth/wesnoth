@@ -1,0 +1,971 @@
+# Basque translations for Battle for Wesnoth package.
+# vim:set encoding=utf-8:
+# Copyright (C) 2004,2005 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Alfredo Beaumont Sainz <ziberpunk@ziberghetto.dhis.org>, 2004,2005.
+# Julen Landa Alustiza <julen@mundurat.net>, 2004, 2005
+# Mikel Olasagasti Uranga <hey_neken@mundurat.net>, 2005
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 1.0\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2008-03-31 21:40+0200\n"
+"PO-Revision-Date: 2005-08-23 11:08+0100\n"
+"Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
+"Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Basque\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. [multiplayer]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
+#, fuzzy
+msgid "4p - A New Land"
+msgstr "4j - Irla bat"
+
+#. [multiplayer]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
+msgid ""
+"This 4p survival scenario allows you to construct buildings and terraform "
+"the land. Use map settings. Recommended starting gold=100."
+msgstr ""
+
+#. [part]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
+msgid ""
+"In the aftermath of the great war the remnants of humanity fled to an "
+"obscure secluded glen. Though they knew they could not hide from the mighty "
+"armies that had crushed their homeland, the leaders of the resistance hoped "
+"only for enough time to rebuild their forces."
+msgstr ""
+
+#. [objectives]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
+msgid "`Right-click on your leader during your turn for help"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
+msgid "You must survive until turn 25."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:363
+msgid ""
+"You destroy the mushroom mine. The northwest undead now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:383
+msgid ""
+"You destroy the mushroom mine. The northeast orcs now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:403
+msgid ""
+"You destroy the mushroom mine. The southwest orcs now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:423
+msgid ""
+"You destroy the mushroom mine. The southeast undead now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:515
+msgid ""
+"One of your peasants has happened upon some spider's nests in the north and "
+"south."
+msgstr ""
+
+#. [message]: type=Peasant
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:521
+msgid ""
+"I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
+"them?"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:533
+msgid ""
+"Move any unit next to these captives and they will join your side. The "
+"spiders guarding each captive are currently wounded, the sooner you get "
+"there the better chance you have of killing them."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:544
+msgid ""
+"Your men report strange sounds coming from some caves to the east and west."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:550
+msgid ""
+"It would seem the enemy has built some underground mushroom mines nearby - "
+"it must be where the mainstay of their resources are produced. If we could "
+"destroy them our chances wouldn't nearly be so slim."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:562
+msgid ""
+"Move any unit onto these villages to destroy the mine. Each one you destroy "
+"will reduce the enemy's income by 10."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:574
+msgid "This battle is nearly at an end. Victory is close at hand!"
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:585
+msgid ""
+"We have survived the onslaught! The tide of the battle has turned, victory "
+"cannot elude us now!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:589
+msgid "You have won the game, but you may continue if you wish..."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
+msgid "I have fallen, but all is not lost!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:616
+msgid "I am done for, but we have yet to lose this battle!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:628
+msgid "Comrades, avenge me!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:640
+msgid "Do not fear, there is hope for us still!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:74
+msgid "The chest contains {TREASURE} gold."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
+msgid "Return to menu"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
+msgid ""
+"Peasants are your workers. Depending on the terrain, right-clicking on a "
+"peasant allows you to terraform the landscape and/or build castles, mines, "
+"farms, villages and universities."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:26
+msgid ""
+"Mages are your wise men. They can study at universities, pursuing advances "
+"in mining, farming and recruitment."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:36
+msgid ""
+"Farms can only be planted on grassland. Move a peasant onto a farm and he "
+"will begin to automatically harvest the cash crop."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:46
+msgid ""
+"Villages can only be built on grassland. They provide income and healing as "
+"usual. Right-click on a peasant in a village and you can establish a "
+"university."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:56
+msgid ""
+"Mines can be built on hills or mountains. A peasant on a mine will "
+"automatically dig for gold at the start of your turn."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:66
+msgid ""
+"Any of the 'Elven' style villages represent universities. At the start of "
+"your turn, Mages in universities automatically add to the study progress of "
+"your chosen research target. Right-click on a mage in a university to change "
+"research target."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:76
+msgid ""
+"Right-clicking on your leader when in a univerity allows you to select "
+"special diplomatic options."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
+msgid "Select a topic."
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
+msgid "Done"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+msgid "@Peasants"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
+msgid "@Mages"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
+msgid "@Farms"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
+msgid "@Villages"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
+msgid "@Mines"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
+msgid "@Universities"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
+msgid "@Diplomacy"
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:4
+msgid "@$player[{TARGET_SIDE}].name"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:15
+msgid "I hereby donate 20 gold to the coffers of $player[{TARGET_SIDE}].name|."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:31
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of agriculture"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:47
+msgid ""
+"$player[{TARGET_SIDE}].name|, since our wisdom exceeds yours I have "
+"instructed my scholars to further your understanding of agriculture."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:56
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of mining"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:72
+msgid ""
+"$player[{TARGET_SIDE}].name|, since the wisdom of my people exceeds yours I "
+"have instructed my scholars to aid you in your efforts to learn the science "
+"of mining."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:81
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of warfare"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:97
+msgid ""
+"You know worryingly little about the arts of war, $player[{TARGET_SIDE}]."
+"name|. I feel an obligation to instruct you in this vital matter."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:147
+msgid ""
+"What shall I do?\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:45
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:152
+msgid "Nothing"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:162
+msgid ""
+"@Donate Funds\n"
+"Give 20 gold to another player"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:172
+msgid "Who will you donate funds to?"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:175
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:209
+msgid "Back"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
+msgid ""
+"@Share Knowledge\n"
+"Help an ally with their research"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:206
+msgid "Who will you share knowledge with?"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:245
+msgid ""
+"@Negotiate with the Dwarves\n"
+"Lets you recruit a Dwarvish unit\n"
+"Negotiation Progress: $player[$side_number].leader_option_1.progress|/$player"
+"[$side_number].leader_option_1.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:270
+msgid ""
+"@Negotiate with the Elves\n"
+"Lets you recruit an Elvish unit\n"
+"Negotiation Progress: $player[$side_number].leader_option_2.progress|/$player"
+"[$side_number].leader_option_2.target"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:308
+msgid ""
+"Our talks are complete - the Dwarves will gladly fight by your side. Which "
+"of our brethren do you want to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:330
+msgid ""
+"Our talks are complete - the Elves shall aid you in this battle. Which our "
+"of kin do you wish to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:33
+msgid ""
+"Which type of unit would you like to be able to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:90
+msgid ""
+"We are currently studying $player[$side_number].research.current_target|. To "
+"which end would you have our scholars devote their minds?\n"
+" \n"
+"Our farms produce $player[$side_number].farming.gold|g\n"
+"Our mines produce $player[$side_number].mining.gold|g\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
+msgid "Continue as before"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:104
+msgid ""
+"@Agriculture\n"
+"Farmers produce +1 gold\n"
+"Study Progress: $player[$side_number].farming.progress|/$player"
+"[$side_number].farming.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:117
+msgid ""
+"@Mining \n"
+"Miners produce +1 gold \n"
+"Study Progress: $player[$side_number].mining.progress|/$player[$side_number]."
+"mining.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:130
+msgid ""
+"@Warfare\n"
+"Allows you to recruit a new type of unit\n"
+"Study Progress: $player[$side_number].warfare.progress|/$player"
+"[$side_number].warfare.target"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:182
+msgid ""
+"$player[$side_number].name|'s farms now produce $player[$side_number]."
+"farming.gold gold."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:199
+msgid ""
+"$player[$side_number].name|'s mines now produce $player[$side_number].mining."
+"gold gold."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:215
+msgid ""
+"$player[$side_number].name|, we have finished researching warfare. Right-"
+"click on a mage in a university to select a unit to recruit."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:130
+msgid "Let's cut you free!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:134
+msgid "You release the creature from the web and it agrees to help you."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:42
+msgid ""
+"What shall I do my liege?\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:57
+msgid "@Convert to Grassland"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:57
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:72
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:263
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:398
+msgid "`Cost: 0g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:72
+msgid "@Plant Farm"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:84
+msgid "`Cost: 15g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:84
+msgid "@Build Village"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:102
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:357
+msgid "`Cost: 6g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:102
+msgid "@Build Castle"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:119
+msgid "`Cost: 4g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:119
+msgid "@Flood the Field"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:136
+msgid "@Plant Saplings"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:136
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:278
+msgid "`Cost: 1g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:156
+msgid "`Earns: 1g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:156
+msgid "@Chop Down Forest"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:182
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:203
+msgid "@Build Mine"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:182
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:203
+msgid "`Cost: 25g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:224
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:316
+msgid "`Cost: 3g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:224
+msgid "@Make a Ford"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:242
+msgid "`Cost: 5g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:242
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:278
+msgid "@Landfill"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:263
+msgid "@Destroy the Ford"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:299
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:316
+msgid "@Smash Cave Floor"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:299
+msgid "`Cost: 2g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:333
+msgid "@Harvest Mushrooms"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:333
+msgid "`Earns: 3g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:357
+msgid "@Build a Keep"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:377
+msgid "`Cost: 7g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:377
+msgid "@Establish Univeristy"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:398
+msgid "@Clear the Ground"
+msgstr ""
+
+#~ msgid "User Map"
+#~ msgstr "Erabiltzailearen mapa"
+
+#~ msgid "Random"
+#~ msgstr "Ausazkoa"
+
+#~ msgid "Default"
+#~ msgstr "Lehenetsia"
+
+#~ msgid "Age of Heroes"
+#~ msgstr "Heroien Garaia"
+
+#~ msgid "Great War"
+#~ msgstr "Guda Handia"
+
+#~ msgid "Alliance of Darkness"
+#~ msgstr "Itzaletako Aliantza"
+
+#~ msgid "Alliance of Light"
+#~ msgstr "Argiaren Aliantza"
+
+#~ msgid "Drakes"
+#~ msgstr "Drakuak"
+
+#~ msgid "Knalgan Alliance"
+#~ msgstr "Knalgan-en aliantza"
+
+#~ msgid "Loyalists"
+#~ msgstr "Leialak"
+
+#~ msgid "Rebels"
+#~ msgstr "Errebeldeak"
+
+#~ msgid "Undead"
+#~ msgstr "Ez Hilak"
+
+#, fuzzy
+#~ msgid "2p - Caves of the Basilisk"
+#~ msgstr "4j - Mendilerroaren Errege"
+
+#, fuzzy
+#~ msgid "2p - Cynsaun Battlefield"
+#~ msgstr "Printzesaren Borrokalekua"
+
+#, fuzzy
+#~ msgid " Recommended settings of 150 gold and 2 gold per village."
+#~ msgstr ""
+#~ "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko "
+#~ "ezarpena gomendatzen da."
+
+#, fuzzy
+#~ msgid "Lose all your team's leaders"
+#~ msgstr "Konrad-en heriotza"
+
+#~ msgid "2p - Den of Onis"
+#~ msgstr "2j - Onis-en gordelekua"
+
+#, fuzzy
+#~ msgid " Recommended setting of 2 gold per village."
+#~ msgstr ""
+#~ "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko "
+#~ "ezarpena gomendatzen da."
+
+#, fuzzy
+#~ msgid "2p - Fallenstar Lake"
+#~ msgstr "2j - Meteoroen Lakua"
+
+#, fuzzy
+#~ msgid ""
+#~ "Long ago, a great star fell from the heavens, leaving its mark on this "
+#~ "coniferous region."
+#~ msgstr ""
+#~ "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
+#~ "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#~ msgid "2p - Hamlets"
+#~ msgstr "2p - Herriak"
+
+#, fuzzy
+#~ msgid ""
+#~ "Warfare transforms the simple farms and villages of a peaceful region "
+#~ "into a subtly parceled battlefield."
+#~ msgstr ""
+#~ "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
+#~ "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#~ msgid "2p - Hornshark Island"
+#~ msgstr "2j - Marrazoen Irla"
+
+#, fuzzy
+#~ msgid ""
+#~ "Players must navigate the dispersive terrain of this small but "
+#~ "topographically dense island."
+#~ msgstr ""
+#~ "Hiru jokalari borrokatzen dute eskualde txiki eta itxi honentan. "
+#~ "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#~ msgid "2p - Sablestone Delta"
+#~ msgstr "2j - Sableharkaitz-aren Delta"
+
+#, fuzzy
+#~ msgid ""
+#~ "Two armies collide on this disjointed coastal landscape of hidden caves "
+#~ "and jagged rivers."
+#~ msgstr ""
+#~ "Bi armada talka egiten dute kobazulo izkutu eta ibai koskaduneko kostako "
+#~ "paisai honetan. Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#~ msgid "2p - Silverhead Crossing"
+#~ msgstr "2j - Zilarburuko gurutxea"
+
+#, fuzzy
+#~ msgid "statue"
+#~ msgstr "Egoera"
+
+#~ msgid "2p - Sullas Ruins"
+#~ msgstr "2j - Sullas-eko Hondakinak"
+
+#, fuzzy
+#~ msgid "2p - The Freelands"
+#~ msgstr "4j - Irla bat"
+
+#, fuzzy
+#~ msgid "2p - Weldyn Channel"
+#~ msgstr "2j - Kargatu"
+
+#~ msgid "2p - Wesbowl"
+#~ msgstr "2p - Wesbol"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Move either ball to your opponent's end zone more times than they move a "
+#~ "ball to yours.\n"
+#~ "Defeat:\n"
+#~ "#Opponent moves the balls to your end zone more times than you move them "
+#~ "to the opponent's end zone"
+#~ msgstr ""
+#~ "\n"
+#~ "Garaipena:\n"
+#~ "@Mugitu edozein pilota zure arerioaren zonaldearen bukaeraraino hark zure "
+#~ "zonaldera mugitzen duen baino gehiagotan\n"
+#~ "Porrota:\n"
+#~ "#Arerioak pilotak zure zonaldera mugitzen ditu zuk bere zonaldera "
+#~ "mugitzen dituzun baino gehiagotan"
+
+#~ msgid "Red scores! Current score is $redscore-$bluescore"
+#~ msgstr "Tantoa gorrientzarako! Uneko puntuaketa $redscore-$bluescore da"
+
+#~ msgid "Blue scores! Current score is $redscore-$bluescore"
+#~ msgstr "Tantoa urdinentzako! Uneko puntuaketa $redscore-$bluescore da"
+
+#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+#~ msgstr "Pilota $passto.type -ri ($xlock, $yloc) pasatu beharko nioke?"
+
+#~ msgid "Yes!"
+#~ msgstr "Bai!"
+
+#~ msgid "No"
+#~ msgstr "Ez"
+
+#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
+#~ msgstr "Talde urdinak irabazi du! Azken emaitza: $redscore-$bluescore"
+
+#~ msgid "Red team wins! Final score: $redscore-$bluescore"
+#~ msgstr "Talde gorriak irabazi du! Azken emaitza: $redscore-$bluescore"
+
+#~ msgid "Draw! Final score: $redscore-$bluescore"
+#~ msgstr "Berdinketa! Azken emaitza: $redscore-$bluescore"
+
+#, fuzzy
+#~ msgid "Three players come head to head on this water-cut battlefield."
+#~ msgstr ""
+#~ "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
+#~ "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#, fuzzy
+#~ msgid "3p - Island of the Horatii"
+#~ msgstr "4j - Mendilerroaren Errege"
+
+#~ msgid "3p - Morituri"
+#~ msgstr "3j - Morituri"
+
+#, fuzzy
+#~ msgid ""
+#~ "Only one faction will emerge victorious from this tightly bordered three-"
+#~ "player map."
+#~ msgstr ""
+#~ "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
+#~ "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#~ msgid "4p - Castle Hopping Isle"
+#~ msgstr "4p - Gazteluz gazteluko Irla"
+
+#, fuzzy
+#~ msgid "Hop from castle to castle while fighting over a central isle."
+#~ msgstr ""
+#~ "Bi armada talka egiten dute kobazulo izkutu eta ibai koskaduneko kostako "
+#~ "paisai honetan. Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#~ msgid "4p - Clash"
+#~ msgstr "4j - Erronka"
+
+#, fuzzy
+#~ msgid "4p - Hamlets"
+#~ msgstr "2p - Herriak"
+
+#~ msgid "4p - King of the Hill"
+#~ msgstr "4j - Mendilerroaren Errege"
+
+#, fuzzy
+#~ msgid " Recommended setting of 2 gold per village and 150 starting gold."
+#~ msgstr ""
+#~ "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko "
+#~ "ezarpena gomendatzen da."
+
+#, fuzzy
+#~ msgid " Recommended setting of 1 gold per village."
+#~ msgstr ""
+#~ "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko "
+#~ "ezarpena gomendatzen da."
+
+#, fuzzy
+#~ msgid "Four factions contend for dominance over this watery settlement."
+#~ msgstr ""
+#~ "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko "
+#~ "ezarpena gomendatzen da."
+
+#, fuzzy
+#~ msgid "4p - Loris River"
+#~ msgstr "2j - Ibaian Zehar"
+
+#, fuzzy
+#~ msgid "4p - Morituri"
+#~ msgstr "3j - Morituri"
+
+#, fuzzy
+#~ msgid "Who will emerge from the confines of this perilous battlefield?"
+#~ msgstr ""
+#~ "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
+#~ "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#, fuzzy
+#~ msgid " Recommended setting of 2 gold per village, 28 villages."
+#~ msgstr ""
+#~ "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko "
+#~ "ezarpena gomendatzen da."
+
+#, fuzzy
+#~ msgid "4p - Siege Castles"
+#~ msgstr "Gazteluen arteko errepideak"
+
+#, fuzzy
+#~ msgid "4p - The Wilderlands"
+#~ msgstr "4j - Irla bat"
+
+#, fuzzy
+#~ msgid "Monsters"
+#~ msgstr "Mugimenduak"
+
+#, fuzzy
+#~ msgid "5p - Auction-X"
+#~ msgstr "Ekintzak"
+
+#~ msgid "5p - Forest of Fear"
+#~ msgstr "5p - Beldurraren Basoa"
+
+#~ msgid "2 vs. 2 or 3 vs. 3 team game."
+#~ msgstr "2 vs. 2 edo 3 vs. 3 talde jokua."
+
+#, fuzzy
+#~ msgid "Turn 2: Loyalists"
+#~ msgstr "Leialak"
+
+#, fuzzy
+#~ msgid "Turn 8: Rebels"
+#~ msgstr "Txandak: "
+
+#, fuzzy
+#~ msgid "Turn 14: Drakes"
+#~ msgstr "Draku urakana"
+
+#, fuzzy
+#~ msgid "Death of your team leaders."
+#~ msgstr "Konrad-en heriotza"
+
+#, fuzzy
+#~ msgid "Death"
+#~ msgstr "Lehenetsia"
+
+#~ msgid "Attacker"
+#~ msgstr "Erasotzaile"
+
+#~ msgid "Defender"
+#~ msgstr "Defentsari"
+
+#, fuzzy
+#~ msgid "8p - Mokena Prairie"
+#~ msgstr "3j - Morituri"
+
+#, fuzzy
+#~ msgid "8p - Morituri"
+#~ msgstr "3j - Morituri"
+
+#, fuzzy
+#~ msgid ""
+#~ "Teamwork and tactics are key to victory in this unusual battlefield, "
+#~ "where eight armies fight to the finish."
+#~ msgstr ""
+#~ "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
+#~ "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
+
+#~ msgid "Random map"
+#~ msgstr "Ausazko mapa"
+
+#~ msgid "Random map (Desert)"
+#~ msgstr "Ausazko mapa (desertua)"
+
+#~ msgid "Random map (Marsh)"
+#~ msgstr "Ausazko mapa (Marsh)"
+
+#~ msgid "Random map (Winter)"
+#~ msgstr "Ausazko mapa (Negua)"
+
+#~ msgid "2p - Blitz"
+#~ msgstr "2j - Eraso zuzena"
+
+#, fuzzy
+#~ msgid "Defeat enemy leader"
+#~ msgstr "Konrad-en heriotza"
+
+#, fuzzy
+#~ msgid "Defeat enemy leader(s)"
+#~ msgstr "Konrad-en heriotza"

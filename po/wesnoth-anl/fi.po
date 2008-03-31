@@ -1,0 +1,1814 @@
+# Copyright (C) 2004 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2008-03-31 21:40+0200\n"
+"PO-Revision-Date: 2007-12-01 21:31+0200\n"
+"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. [multiplayer]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
+#, fuzzy
+msgid "4p - A New Land"
+msgstr "4p - Laguuni"
+
+#. [multiplayer]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
+msgid ""
+"This 4p survival scenario allows you to construct buildings and terraform "
+"the land. Use map settings. Recommended starting gold=100."
+msgstr ""
+
+#. [part]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
+msgid ""
+"In the aftermath of the great war the remnants of humanity fled to an "
+"obscure secluded glen. Though they knew they could not hide from the mighty "
+"armies that had crushed their homeland, the leaders of the resistance hoped "
+"only for enough time to rebuild their forces."
+msgstr ""
+
+#. [objectives]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
+msgid "`Right-click on your leader during your turn for help"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
+msgid "You must survive until turn 25."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:363
+msgid ""
+"You destroy the mushroom mine. The northwest undead now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:383
+msgid ""
+"You destroy the mushroom mine. The northeast orcs now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:403
+msgid ""
+"You destroy the mushroom mine. The southwest orcs now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:423
+msgid ""
+"You destroy the mushroom mine. The southeast undead now have 10 less income."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:515
+msgid ""
+"One of your peasants has happened upon some spider's nests in the north and "
+"south."
+msgstr ""
+
+#. [message]: type=Peasant
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:521
+msgid ""
+"I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
+"them?"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:533
+msgid ""
+"Move any unit next to these captives and they will join your side. The "
+"spiders guarding each captive are currently wounded, the sooner you get "
+"there the better chance you have of killing them."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:544
+msgid ""
+"Your men report strange sounds coming from some caves to the east and west."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:550
+msgid ""
+"It would seem the enemy has built some underground mushroom mines nearby - "
+"it must be where the mainstay of their resources are produced. If we could "
+"destroy them our chances wouldn't nearly be so slim."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:562
+msgid ""
+"Move any unit onto these villages to destroy the mine. Each one you destroy "
+"will reduce the enemy's income by 10."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:574
+msgid "This battle is nearly at an end. Victory is close at hand!"
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:585
+msgid ""
+"We have survived the onslaught! The tide of the battle has turned, victory "
+"cannot elude us now!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:589
+msgid "You have won the game, but you may continue if you wish..."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
+msgid "I have fallen, but all is not lost!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:616
+msgid "I am done for, but we have yet to lose this battle!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:628
+msgid "Comrades, avenge me!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:640
+msgid "Do not fear, there is hope for us still!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:74
+msgid "The chest contains {TREASURE} gold."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
+msgid "Return to menu"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
+msgid ""
+"Peasants are your workers. Depending on the terrain, right-clicking on a "
+"peasant allows you to terraform the landscape and/or build castles, mines, "
+"farms, villages and universities."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:26
+msgid ""
+"Mages are your wise men. They can study at universities, pursuing advances "
+"in mining, farming and recruitment."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:36
+msgid ""
+"Farms can only be planted on grassland. Move a peasant onto a farm and he "
+"will begin to automatically harvest the cash crop."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:46
+msgid ""
+"Villages can only be built on grassland. They provide income and healing as "
+"usual. Right-click on a peasant in a village and you can establish a "
+"university."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:56
+msgid ""
+"Mines can be built on hills or mountains. A peasant on a mine will "
+"automatically dig for gold at the start of your turn."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:66
+msgid ""
+"Any of the 'Elven' style villages represent universities. At the start of "
+"your turn, Mages in universities automatically add to the study progress of "
+"your chosen research target. Right-click on a mage in a university to change "
+"research target."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:76
+msgid ""
+"Right-clicking on your leader when in a univerity allows you to select "
+"special diplomatic options."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
+msgid "Select a topic."
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
+msgid "Done"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+msgid "@Peasants"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
+msgid "@Mages"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
+msgid "@Farms"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
+msgid "@Villages"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
+msgid "@Mines"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
+msgid "@Universities"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
+msgid "@Diplomacy"
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:4
+msgid "@$player[{TARGET_SIDE}].name"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:15
+msgid "I hereby donate 20 gold to the coffers of $player[{TARGET_SIDE}].name|."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:31
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of agriculture"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:47
+msgid ""
+"$player[{TARGET_SIDE}].name|, since our wisdom exceeds yours I have "
+"instructed my scholars to further your understanding of agriculture."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:56
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of mining"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:72
+msgid ""
+"$player[{TARGET_SIDE}].name|, since the wisdom of my people exceeds yours I "
+"have instructed my scholars to aid you in your efforts to learn the science "
+"of mining."
+msgstr ""
+
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:81
+msgid ""
+"@$player[{TARGET_SIDE}].name\n"
+"Share knowledge of warfare"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:97
+msgid ""
+"You know worryingly little about the arts of war, $player[{TARGET_SIDE}]."
+"name|. I feel an obligation to instruct you in this vital matter."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:147
+msgid ""
+"What shall I do?\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:45
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:152
+msgid "Nothing"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:162
+msgid ""
+"@Donate Funds\n"
+"Give 20 gold to another player"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:172
+msgid "Who will you donate funds to?"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:175
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:209
+msgid "Back"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
+msgid ""
+"@Share Knowledge\n"
+"Help an ally with their research"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:206
+msgid "Who will you share knowledge with?"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:245
+msgid ""
+"@Negotiate with the Dwarves\n"
+"Lets you recruit a Dwarvish unit\n"
+"Negotiation Progress: $player[$side_number].leader_option_1.progress|/$player"
+"[$side_number].leader_option_1.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:270
+msgid ""
+"@Negotiate with the Elves\n"
+"Lets you recruit an Elvish unit\n"
+"Negotiation Progress: $player[$side_number].leader_option_2.progress|/$player"
+"[$side_number].leader_option_2.target"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:308
+msgid ""
+"Our talks are complete - the Dwarves will gladly fight by your side. Which "
+"of our brethren do you want to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:330
+msgid ""
+"Our talks are complete - the Elves shall aid you in this battle. Which our "
+"of kin do you wish to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:33
+msgid ""
+"Which type of unit would you like to be able to recruit?\n"
+"                                                                                    "
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:90
+msgid ""
+"We are currently studying $player[$side_number].research.current_target|. To "
+"which end would you have our scholars devote their minds?\n"
+" \n"
+"Our farms produce $player[$side_number].farming.gold|g\n"
+"Our mines produce $player[$side_number].mining.gold|g\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
+msgid "Continue as before"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:104
+msgid ""
+"@Agriculture\n"
+"Farmers produce +1 gold\n"
+"Study Progress: $player[$side_number].farming.progress|/$player"
+"[$side_number].farming.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:117
+msgid ""
+"@Mining \n"
+"Miners produce +1 gold \n"
+"Study Progress: $player[$side_number].mining.progress|/$player[$side_number]."
+"mining.target"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:130
+msgid ""
+"@Warfare\n"
+"Allows you to recruit a new type of unit\n"
+"Study Progress: $player[$side_number].warfare.progress|/$player"
+"[$side_number].warfare.target"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:182
+msgid ""
+"$player[$side_number].name|'s farms now produce $player[$side_number]."
+"farming.gold gold."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:199
+msgid ""
+"$player[$side_number].name|'s mines now produce $player[$side_number].mining."
+"gold gold."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:215
+msgid ""
+"$player[$side_number].name|, we have finished researching warfare. Right-"
+"click on a mage in a university to select a unit to recruit."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:130
+msgid "Let's cut you free!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:134
+msgid "You release the creature from the web and it agrees to help you."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:42
+msgid ""
+"What shall I do my liege?\n"
+"                                                                                    "
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:57
+msgid "@Convert to Grassland"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:57
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:72
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:263
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:398
+msgid "`Cost: 0g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:72
+msgid "@Plant Farm"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:84
+msgid "`Cost: 15g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:84
+msgid "@Build Village"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:102
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:357
+msgid "`Cost: 6g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:102
+msgid "@Build Castle"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:119
+msgid "`Cost: 4g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:119
+msgid "@Flood the Field"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:136
+msgid "@Plant Saplings"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:136
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:278
+msgid "`Cost: 1g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:156
+msgid "`Earns: 1g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:156
+msgid "@Chop Down Forest"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:182
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:203
+msgid "@Build Mine"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:182
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:203
+msgid "`Cost: 25g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:224
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:316
+msgid "`Cost: 3g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:224
+msgid "@Make a Ford"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:242
+msgid "`Cost: 5g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:242
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:278
+msgid "@Landfill"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:263
+msgid "@Destroy the Ford"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:299
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:316
+msgid "@Smash Cave Floor"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:299
+msgid "`Cost: 2g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:333
+msgid "@Harvest Mushrooms"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:333
+msgid "`Earns: 3g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:357
+msgid "@Build a Keep"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:377
+msgid "`Cost: 7g"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:377
+msgid "@Establish Univeristy"
+msgstr ""
+
+#. [option]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:398
+#, fuzzy
+msgid "@Clear the Ground"
+msgstr "Selkeä sää"
+
+#~ msgid "User Map"
+#~ msgstr "Käyttäjän kartta"
+
+#~ msgid "Random"
+#~ msgstr "Satunnainen"
+
+#~ msgid "Default"
+#~ msgstr "Taistelu Wesnothista"
+
+#~ msgid "Age of Heroes"
+#~ msgstr "Sankareiden aika"
+
+#~ msgid "Great War"
+#~ msgstr "Suuri sota"
+
+#~ msgid "Alliance of Darkness"
+#~ msgstr "Pimeyden liittokunta"
+
+#~ msgid "Alliance of Light"
+#~ msgstr "Valon liittokunta"
+
+#~ msgid "Drakes"
+#~ msgstr "Draakit"
+
+#~ msgid "Knalgan Alliance"
+#~ msgstr "Knalgan liittouma"
+
+#~ msgid "Loyalists"
+#~ msgstr "Uskolliset"
+
+#~ msgid "Northerners"
+#~ msgstr "Pohjalaiset"
+
+#~ msgid "Rebels"
+#~ msgstr "Kapinalliset"
+
+#~ msgid "Undead"
+#~ msgstr "Epäkuolleet"
+
+#~ msgid "2p - Caves of the Basilisk"
+#~ msgstr "2p - Basiliskiluolat"
+
+#~ msgid ""
+#~ "Players must maneuver their units through the divisive terrain of this "
+#~ "long-feared region, once the home of a legendary Elder Basilisk. The "
+#~ "caves and the stark wilderness surrounding them are filled with the "
+#~ "petrified forms of some of Wesnoth's greatest heroes."
+#~ msgstr ""
+#~ "Pelaajien yksiköt joutuvat kulkemaan vaikeassa maastossa tällä "
+#~ "pelottavalla seudulla, joka on täynnä kivisiä patsaita. Seutu oli joskus "
+#~ "tarunomaisen Suuren Basiliskin koti, ja patsaiksi kivettyneiden joukossa "
+#~ "on useita Wesnothin muinaisia suuria sankareita."
+
+#~ msgid "teamname^North"
+#~ msgstr "Pohjoinen"
+
+#~ msgid "teamname^South"
+#~ msgstr "Etelä"
+
+#~ msgid ""
+#~ "The winds of the dark sky blew so cold,\n"
+#~ "The moon was high, the night was old,\n"
+#~ "Brave was the drake that dared forsake\n"
+#~ "His home to steal the Basilisk's gold.\n"
+#~ "\n"
+#~ "On that dark night, the skies so churned,\n"
+#~ "He disregarded what he had learned,\n"
+#~ "Foolish but brave, to the Basilisk's cave,\n"
+#~ "He flew, and the fire within him burned.\n"
+#~ "\n"
+#~ "Alas, that fire burns no more,\n"
+#~ "For the Basilisk, with one mighty roar,\n"
+#~ "Chilled him to the bone, and he turned to stone,\n"
+#~ "And so he stays forevermore.\n"
+#~ "\n"
+#~ "The winds of the sky blow so cold,\n"
+#~ "The years pass by, the days are old,\n"
+#~ "Here stands that drake, who dared forsake\n"
+#~ "His home to steal the Basilisk's gold.\n"
+#~ "(inscribed by Flametrooper)"
+#~ msgstr ""
+#~ "Tumman taivaan tuulet kylminä puhalsi,\n"
+#~ "Aamuyön kuu korkealta kuumotti,\n"
+#~ "Urhea oli se draakki, joka lähteä uskalsi,\n"
+#~ "basiliskin kultaa havitteli.\n"
+#~ "\n"
+#~ "Tumman taivaan tuulet kylminä puhalsi,\n"
+#~ "Draakki oppimastaan vähät välitti,\n"
+#~ "Uhkarohkeasti hän luolaan lennähti,\n"
+#~ "ja sisällänsä tuli leimusi.\n"
+#~ "\n"
+#~ "Vaan oi, kun tuo tuli niin pian sammahti,\n"
+#~ "kun basiliski tuo suuri kerran karjaisi,\n"
+#~ "patsaaksi draakkiraukan näin kivetti,\n"
+#~ "siinä hän nyt seisoo ja pysyy iäti.\n"
+#~ "\n"
+#~ "Tumman taivaan tuulet kylminä puhaltaa,\n"
+#~ "Kuluvat pois vuodet päivä kerrallaan,\n"
+#~ "Niin käy sille, joka kultaa halajaa,\n"
+#~ "Iäksi jää hän patsaana seisomaan.\n"
+#~ "(kaiversi Flametrooper)"
+
+#~ msgid "Xikkrisx"
+#~ msgstr "Xikkrisx"
+
+#~ msgid "Oxsrrsk"
+#~ msgstr "Oxsrrsk"
+
+#~ msgid ""
+#~ "Slim of Stature, dexterous Hands\n"
+#~ "- - Seven Stones and Eleven\n"
+#~ "Left his Foes so slim a Chance\n"
+#~ "- - Seven Stones and Eleven\n"
+#~ "Marksman known as Dragonbane\n"
+#~ "'mongst the Statues here was slain\n"
+#~ "- - Seven Stones - and the Elven\n"
+#~ "(inscribed by Gauteamus)"
+#~ msgstr ""
+#~ "Hoikka ja notkea varreltaan\n"
+#~ "- - Seitsemän kivistä, ja yksiVihollisensa ain' sai kaatumaan,\n"
+#~ "- - Seitsemän kivistä, ja yksiTarkk' ampuja, joka Lohikäärmeentappajana "
+#~ "tunnettiin,\n"
+#~ "Täällä patsaiden joukossa tapettiin- - Seitsemän kivistä, ja yksi haltia"
+#~ "(kaivertanut Gauteamus)"
+
+#~ msgid "Blum Duk"
+#~ msgstr "Blum Duk"
+
+#~ msgid ""
+#~ "Blum Duk was renowned among his goblin clan for having tamed one of the "
+#~ "Dire Wolves of the mountains, and he had the courage to match. His "
+#~ "leadership and skills alone were what kept the area's goblins alive "
+#~ "despite human and elvish menaces. Rumor had it that his wolf had slain "
+#~ "fifty men and a hundred Elves.\n"
+#~ "Thus, when he heard of the awful monster that was inhabiting the area, it "
+#~ "was only natural that he ride out alone to face it. All the other goblins "
+#~ "expected him to slay the creature easily and drag back its carcass to "
+#~ "feast on.\n"
+#~ "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
+#~ "cowered in fright. He tried to wheel his wolf around to run away, but it "
+#~ "wouldn't move. As the creature stalked towards him, he screamed his last "
+#~ "words: Good Gog, dog, are yer legs made of stone?!?\n"
+#~ "(inscribed by Elvish Pillager)"
+#~ msgstr ""
+#~ "Blum Duk oli hiisiklaanissaan saavuttanut mainetta kesytettyään yhden "
+#~ "vuorten hukista, ja hänen urheutensa oli hänen maineensa veroinen. Vain "
+#~ "hänen taitonsa ja johtamiskykynsä ansiosta hänen heimonsa selviytyi "
+#~ "ihmisten ja haltiain paineessa. Huhu kertoi, että hänen sutensa yksin oli "
+#~ "tappanut viisikymmentä ihmistä ja sata haltiaa.\n"
+#~ "Kun hän kuuli, että lähettyville oli asettunut valtava hirviö, oli vain "
+#~ "luonnollista, että hän ratsasti yksin sitä vastaan. Kaikki muut hiidet "
+#~ "valmistautuivat jo juhla-ateriaan, jonka he saisivat nauttia, kun Blum "
+#~ "Duk palaisi hirviön raadon kanssa.\n"
+#~ "Basiliski oli kuitenkin liian kova pala hänellekin. Heti sen nähdessään "
+#~ "hän säikähti ja yritti kääntää hukkasa toiseen suuntaan, mutta tämä ei "
+#~ "liikahtanutkaan. Kun olio laahusti hitaasti häntä kohti, hän karjui "
+#~ "viimeiset sanansa: Vauhtia, koira, vai ovatko jalkasi kivestä tehdyt?\n"
+#~ "(kaivertanut Elvish Pillager)"
+
+#~ msgid "Rah Ihn Mar"
+#~ msgstr "Rah Ihn Mar"
+
+#~ msgid ""
+#~ "Rah Ihn Mar, Champion of the Burning Hills, made his way to the "
+#~ "Ruaskkolin Lake region in pursuit of the Elvish Hero Terowydlithrol, "
+#~ "known amoung Elves as ''The Dragonbane.'' It was said that Terowydlithrol "
+#~ "had killed a Dragon of Fire that threatened an Elvish village, and "
+#~ "initiated a ''counterattack'' in which some 37 Drakes, camping in a "
+#~ "nearby ravine and believed to be in allegiance with the Dragon, were "
+#~ "slaughtered. Knowing that these Drakes were innocent, Rah Ihn Mar came to "
+#~ "Ruaskkolin Lake to hunt down and slay Terowydlithrol, who had been seen "
+#~ "entering the region but a day ago. Burning for vengeance, Rah Ihn Mar "
+#~ "began the hunt....."
+#~ msgstr ""
+#~ "Rah Ihn Mar, Palavien kukkuloiden mestari, selvisi Raskkolinin "
+#~ "järviseudulle jahdatessaan haltiasankari Terowydlithrolia, tunnettu "
+#~ "haltioiden keskuudessa “Lohikäärmekirouksena“. On sanottu, että "
+#~ "Terowydlithrol oli tappanut Tulen lohikäärmeen, joka uhkasi haltiakylää, "
+#~ "ja aloitti “vastahyökkäyksen“, jossa 37 draakkia, jotka olivat "
+#~ "leiriytyneet läheiseen kuiluun ja uskottiin olevan yhteistyössä "
+#~ "lohikäärmeen kanssa, teurastettiin. Tietäen, että nämä draakit olivat "
+#~ "syyttömiä, Rah Ihn Mar tuli Ruaskkolinin järvelle saalistaakseen ja "
+#~ "surmatakseen Terowydlithrolin, joka oli nähty saapuvan alueelle vain "
+#~ "päivä sitten. Palaen kostosta, Rah Ihn Mar aloitti saalistuksen..."
+
+#~ msgid ""
+#~ "He had lived there for ages upon ages, in the depths of the water, "
+#~ "preying upon the various fish and frogs and merfolk that entered his "
+#~ "domain. It was his lake, no other's, and though it was not large, he was "
+#~ "its master. Then, the Basilisk came, and looked into the Serpent's eyes. "
+#~ "And the Serpent had not died, but it was no longer alive. Thus the new "
+#~ "lord of the lake had arrived.\n"
+#~ "(inscribed by Turin)"
+#~ msgstr ""
+#~ "Hän oli elänyt siellä ikiajat, veden syvyyksissä, saalistaen kaloja, "
+#~ "sammakoita ja vetehisiä, jotka sattuivat uimaan lähettyvillä. Se oli "
+#~ "hänen järvensä, ja vaikka se ei ollut suuri, niin hän hallitsi sitä. "
+#~ "Sitten basiliski tuli ja katsoi vesikäärmeen silmiin. Vesikäärme ei "
+#~ "kuollut siihen, muttei enää elänytkään. Ja niin järvi sai uuden "
+#~ "hallitsijan.\n"
+#~ "(kaivertanut Turin)"
+
+#~ msgid ""
+#~ "A brave hero of Wesnoth's Golden Age, this great rider and commander of "
+#~ "men came to this evil place while on a raid against the orcs. Caught "
+#~ "unaware by the foul creatures, many of his fellows were killed, but he "
+#~ "fought valiantly, slaying many a foe. But alas! The foul Basilisk turned "
+#~ "him to stone even as he slew the last orc. Now all that is left is a "
+#~ "stark reminder of his once great bearing and strength.\n"
+#~ "(inscribed by Fynmiir)"
+#~ msgstr ""
+#~ "Tämä Wesnothin kulta-ajalla elänyt suuri sankari ja sotajoukkojen "
+#~ "komentaja tuli tähän pahuuden pesään matkalla hyökkäysretkellään örkkien "
+#~ "maahan. Katalien olentojen yllättämänä monet hänen tovereistaan saivat "
+#~ "surmansa, mutta hän taisteli urheasti tappaen monta vihollista. Mutta "
+#~ "voi! Vaikka hän sai viimeisenkin örkin tapettua, hirmuinen basiliski "
+#~ "muutti hänet kiveksi. Hänen suuresta voimastaan ja ylväästä asennostaan "
+#~ "on jäljellä enää muisto.\n"
+#~ "(kaivertanut Fynmiir)"
+
+#~ msgid "Bramwythl"
+#~ msgstr "Bramwythl"
+
+#~ msgid ""
+#~ "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
+#~ "other Woses. More than any other Wose, he enjoyed simply standing alone "
+#~ "in the sun, arms upraised, admiring the beauty of the empty sky. Once, "
+#~ "even, he confided in a fellow that his greatest wish was to be able to "
+#~ "bask forever in the sun's glory.\n"
+#~ "However, not long after, the local wose community heard of the approach "
+#~ "of a horrible monster, powerful enough to easily destroy the few woses "
+#~ "that lived in the area. They quickly moved off (quickly for Woses, "
+#~ "anyway), but Bramwythl was left behind - in their haste, no one had "
+#~ "remembered to find him and tell him of the danger.\n"
+#~ "He was taken quite unawares by the Basilisk, and turned to stone before "
+#~ "he even recognized the beast. His petrified form still stands there "
+#~ "today, warmed by the sun's rays, under an open sky. His greatest wish has "
+#~ "been granted.\n"
+#~ "(inscribed by Elvish Pillager)"
+#~ msgstr ""
+#~ "Bramwythl-puu oli hidasliikkeinen, jopa puupaimenten mittakavassa. "
+#~ "Enemmän kuin kukaan toinen puupaimen hän nautti yksinkertaisesti "
+#~ "istumisesta auringossa kädet koholla, ihaillen pilvettömän taivaan "
+#~ "kauneutta. Kerran hän jopa paljasti ystävälleen, että hänen suurin "
+#~ "toiveensa oli muuttua puuksi jälleen, ja lämmitellä iäti auringon "
+#~ "loisteessa.\n"
+#~ "Pian tämän jälkeen seudun puupaimenet kuulivat hirviön saapumisesta. "
+#~ "Hirviö oli kuulemma niin vahva, että se pystyi helposti tuhoamaan alueen "
+#~ "kaikki puupaimenet. He lähtivät alueelta nopeasti (ainakin puiden "
+#~ "mittakaavassa), mutta Bramwythl jäi jälkeen, koska kaikessa kiireessä "
+#~ "kukaan ei ollut muistanut kertoa hänelle vaarasta.\n"
+#~ "Hän ei edes huomannut basiliskia ennen, kuin oli jo kiveä. Hänen "
+#~ "kivettynyt runkonsa on siellä yhä, auringonsäteiden hyväiltävänä avoimen "
+#~ "taivaan alla. Hänen suurin toiveensa oli käynyt toteen.\n"
+#~ "(kaivertanut Elvish Pillager)"
+
+#~ msgid "Talael Ryndoc"
+#~ msgstr "Talael Ryndoc"
+
+#~ msgid ""
+#~ "General Talael Ryndoc came to this place to fight a duel with the Grand "
+#~ "Marshal Aethec Corryn, but the two men never found one another. "
+#~ msgstr ""
+#~ "Kenraali Talael Ryndoc tuli tähän paikkaan taistellakseen kaksintaistelun "
+#~ "Suurmarsalkka Aethec Corrynin kanssa, mutta he eivät koskaan löytäneet "
+#~ "toisiaan."
+
+#~ msgid "Aethec Corryn"
+#~ msgstr "Aethec Corryn"
+
+#~ msgid ""
+#~ "The last words spoken by Grand Marshal Aethec Corryn: ''Talael Ryndoc! I "
+#~ "am through searching for you! I shall make my way back to Haldric's Hall, "
+#~ "and inform the court that you were too much of a coward to attend our "
+#~ "duel! Your disgrace shall be more agonizing than the death I'd have given "
+#~ "you!''\n"
+#~ "\n"
+#~ "Perhaps he should not have shouted quite so loudly.... "
+#~ msgstr ""
+#~ "Suurmarsalkka Aethec Corrynin viimiset sanat: “Talael Ryndoc! Olen tullut "
+#~ "etsimään sinua! Tulen pääsemään takaisin Haldricin saliin, ja "
+#~ "ilmoittamaan oikeudelle, että olit liian pelkuri osallistuaksemme "
+#~ "kaksintaisteluumme! Häpeäsi tulee olemaan tuskallisempi kuin kuolema, "
+#~ "jonka olisin antanut sinulle!“\n"
+#~ "\n"
+#~ "Ehkäpä hänen ei olisi pitänyt huutaa niin kovaa...."
+
+#~ msgid "Rilhon"
+#~ msgstr "Rilhon"
+
+#~ msgid ""
+#~ "This brave warrior, known as Rilhon among the Naga, heard tell of a "
+#~ "fabulous treasure that had been lost in these watery caves- a spear whose "
+#~ "head was said to have been fashioned from the tooth of Chak'kso Ney'yks, "
+#~ "an Elder Basilisk slain long ago by the Elvish hero, Eloralduil. "
+#~ "According to the legend, the weapon rested somewhere on the bottom of "
+#~ "this very lake (Ruaskkolin Lake, named for a well-known Sea Serpent who "
+#~ "made it his home). Having prepared himself for battle with the Serpent, "
+#~ "Rilhon met with two rather large surprises. The first was the petrified "
+#~ "form of Ruaskkolin the Serpent. The second was the very-much-alive "
+#~ "Chak'kso Ney'yks, who was, oddly enough, in possession of all of his "
+#~ "teeth.\n"
+#~ "(inscribed by Paterson)"
+#~ msgstr ""
+#~ "Tämä urhea soturi, Rilhonina tunnettu Nagojen keskuudessa, kuuli "
+#~ "kerrottavan upeasta aarteesta, joka oli kadonnut näihin vesiluoliin - "
+#~ "keihäästä, jonka kärjen sanottiin olleen tehty Chak'kso Ney'yksin "
+#~ "hampaasta, tuon suuren basiliskin, jonka tappoi kauan sitten Eloralduil, "
+#~ "haltiasankari. Tarinan mukaan ase oli jossain tämän järven pohjassa "
+#~ "(Ruaskkolin-järven pohjassa, joka oli nimetty siellä asuneen vesikäärmeen "
+#~ "mukaan.) Valmistauduttuaan taisteluun vesikäärmeen kanssa, Rilhon koki "
+#~ "kaksi suurta yllätystä, Ensimmäinen oli Ruaskkolin-käärmeen kivettynyt "
+#~ "hahmo. Toinen oli Chak'kso Ney'yks, jolla oli edelleen kaikki hampaat "
+#~ "tallella.\n"
+#~ "(kaivertanut Paterson)"
+
+#~ msgid ""
+#~ "Through waves and rocky channels\n"
+#~ "blue and white\n"
+#~ "she pulled and pushed the tides\n"
+#~ "and taught the fishes how to speak to planets\n"
+#~ "silver green\n"
+#~ "with magic\n"
+#~ "running from her spirit into skins of kelp and shells of snails\n"
+#~ "a twisting of her tail and hands\n"
+#~ "she sent her songs to run on pin-tipped legs about the sands\n"
+#~ "and now\n"
+#~ "and now the strangest pause\n"
+#~ "for years and years\n"
+#~ "she hasn't moved her eyes\n"
+#~ "\n"
+#~ "(inscribed by MJQ)"
+#~ msgstr ""
+#~ "Läpi aaltojen ja kivisten kanavain\n"
+#~ "sinisten ja valkoisten\n"
+#~ "hän veti ja työnsi aaltoja\n"
+#~ "opetti kaloja puhumaan planeettojen kanssa\n"
+#~ "hopeanvihreiden\n"
+#~ "taikuudella\n"
+#~ "hänen hengestään pulppusi levälauttoja ja etanankuoria\n"
+#~ "taivuttaen häntäänsä ja käsiään\n"
+#~ "hän lähetti laulunsa juoksemaan hiekkaa myöten kapein jaloin\n"
+#~ "ja nyt\n"
+#~ "ja nyt oudoin katkos\n"
+#~ "koska vuosisatoihin\n"
+#~ "hän ei ole liikuttanut silmiään\n"
+#~ "\n"
+#~ "(kaivertanut MJQ)"
+
+#~ msgid "2p - Cynsaun Battlefield"
+#~ msgstr "2p - Cynsaun taistelukenttä"
+
+#~ msgid " Recommended settings of 150 gold and 2 gold per village."
+#~ msgstr "Suositellut asetukset 150 kultapalaa ja 2 kultapala / kylä."
+
+#~ msgid ""
+#~ "There is much to explore in this vast battlefront, designed for players "
+#~ "who favor epic, large-scale duel matches."
+#~ msgstr ""
+#~ "Tällä laajalla rintamalla on paljon tutkittavaa. Suunniteltu pelaajille, "
+#~ "joita kiinnostaa eeppiset, laaja-mittaiset kaksintaistelut."
+
+#~ msgid "2p - Dark Forecast (Survival)"
+#~ msgstr "2p - Pimeä Ennustus (Selviytyminen)"
+
+#~ msgid ""
+#~ "Dark Forecast is a survival scenario for solitaire or two-player "
+#~ "teambased play against randomly AI spawned units. Victory is achieved by "
+#~ "surviving all enemy waves.  During the course of gameplay, the terrain "
+#~ "will change based on random weather effects."
+#~ msgstr ""
+#~ "Pimeä ennustus on selviytymisskenaario yhdelle tai kahdelle pelaajalle "
+#~ "tiimissä pelaten satunnaisesti ilmestyviä tietokoneyksiköitä vastaan. "
+#~ "Voitto on saavutettavissa selviytymällä kaikista vihollisaalloista. Pelin "
+#~ "edetessä, maasto muuttuu satunnaisten sääefektien mukaan."
+
+#~ msgid ""
+#~ "The screams and pleas for mercy are finally silenced, as you remove your "
+#~ "blood soaked blade from the last of the rebels. There will be no more "
+#~ "resistance from the local scum. Your reign has finally earned stability."
+#~ msgstr ""
+#~ "Huudot ja armonpyynnöt ovat viimeinkin vaimenneet, samalla kun poistat "
+#~ "verta valuvan miekkasi viimeisestä kapinallisesta. Ei ole enempää "
+#~ "vastustusta paikalliselta roskaväeltä. Valtasi on viimeinkin saavuttanut "
+#~ "vakauden."
+
+#~ msgid ""
+#~ "The last and most powerful of these creatures are almost upon us. I feel "
+#~ "that if we can finish them off in time, we shall be victorious."
+#~ msgstr ""
+#~ "Viimeinen ja voimakkain näistä olennoista on melkein saavuttanut meidän. "
+#~ "Tunnen, että jos voimme viimeistellä heidät ajallaan, olemme voitokkaita."
+
+#~ msgid "Heavy Snowfall"
+#~ msgstr "Voimakas lumipyry"
+
+#~ msgid "Snowfall"
+#~ msgstr "Lumisade"
+
+#~ msgid "Heavy Rains"
+#~ msgstr "Voimakas sade"
+
+#~ msgid "Drought"
+#~ msgstr "Kuivuus"
+
+#~ msgid "Single player mode - uses the reduced strength spawns."
+#~ msgstr "Yksinpelitila - käyttää heikompia vihollisia."
+
+#~ msgid "Two player mode - uses the full strength spawns."
+#~ msgstr "Kaksinpelitila - käyttää täysvoimaisia vihollisia."
+
+#~ msgid "Survive and defeat the waves of opposition."
+#~ msgstr "Selviydy ja kukista kaikki vastarinnan aallot."
+
+#~ msgid "Defeat all waves"
+#~ msgstr "Kukista kaikki aallot"
+
+#~ msgid "Lose all your team's leaders"
+#~ msgstr "Menetät kaikki joukkueesi johtajat"
+
+#~ msgid "Dark Forecast - a random survival scenario"
+#~ msgstr "Pimeä ennustus - satunnaisselviytymisskenaario"
+
+#~ msgid ""
+#~ "Your aim is to survive the spawning waves and defeat the final arch-"
+#~ "enemies.\n"
+#~ "       \n"
+#~ "The spawning waves are generated randomly and will different each time "
+#~ "Dark Forecast is played.\n"
+#~ "\n"
+#~ "\n"
+#~ "They appear along the north, south and west map edges - though they are "
+#~ "most likely to spawn on the west edge. The spawn waves appear at somewhat "
+#~ "regular intervals.\n"
+#~ "\n"
+#~ "\n"
+#~ "The weather will also change randomly, affecting the layout of the map.\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "#Dark Forecast was made by:\n"
+#~ "\n"
+#~ "@jb\n"
+#~ "- map design, spawn groups and scenario concept\n"
+#~ "\n"
+#~ "@Rhuvaen\n"
+#~ "- WML implementation"
+#~ msgstr ""
+#~ "Tehtäväsi on selviytyä syntyvistä aalloista ja voittaa viimeiset "
+#~ "arkkiviholliset.\n"
+#~ "\n"
+#~ "Ilmestyvät aallot ovat generoitu satunnaisesti, ja ovat erilaisia joka "
+#~ "Pimeän Ennustuksen pelikerralla.\n"
+#~ "\n"
+#~ "\n"
+#~ "Ne ilmestyvät pohjoisen, etelän ja lännen rajoilla - Vaikka he tuppaavat "
+#~ "useimmiten ilmestymään läntiselle rajalle. Aallot tulevat kutakuinkin "
+#~ "säännöllisin väliajoin.\n"
+#~ "\n"
+#~ "\n"
+#~ "Sää vaihtelee myös satunnaisesti, vaikuttaen kartan muotoon.\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "#Pimeän Ennustuksen on tehnyt:\n"
+#~ "\n"
+#~ "@jb\n"
+#~ "- kartan ulkoasu, olentoryhmät ja skenaarion konsepti\n"
+#~ "\n"
+#~ "@Rhuvaen\n"
+#~ "- WML-toteutus"
+
+#~ msgid "So this is the accursed valley - a land ours for the taking."
+#~ msgstr "Siis tämä on kirottu laakso - laakso kypsänä poimittavaksi."
+
+#~ msgid ""
+#~ "The inhabitants are rumored to be a strange alliance of man and beast, "
+#~ "and our claim is not going to be unopposed. We must be prepared for the "
+#~ "surprises of this land."
+#~ msgstr ""
+#~ "Väen huhutaan olevan omituinen liitto miehen ja pedon välillä, ja meidän "
+#~ "vaateemme ei tule olemaan ilman vastustusta. Meidän täytyy valmistautua "
+#~ "yllätyksiin tässä maassa."
+
+#~ msgid ""
+#~ "Then let us discover what lies in waiting and teach them not to oppose "
+#~ "our claim."
+#~ msgstr ""
+#~ "Siinä tapauksessa, päästä meidät tutkimaan, mitä odottaminen tarkoittaa "
+#~ "ja opeta heille olemaan vastustamatta meidän vaadetta."
+
+#~ msgid ""
+#~ "Ugh!  How can this be?  Defeated by mere barbarians! My gods have "
+#~ "forsaken me..."
+#~ msgstr ""
+#~ "Ugh! Voiko tämä olla? Häviö pelkille barbaareille! Jumalani ovat "
+#~ "unohtaneet minut..."
+
+#~ msgid ""
+#~ "Cheers of your enemy are the last thing you hear as you slip into death..."
+#~ "their joy fills your last moments with pure hate."
+#~ msgstr ""
+#~ "Vihollisesi kiitokset ovat viimeinen asia lipuessasi kuolemaan...heidän "
+#~ "ilo täyttää sinun viimeiset hetkesi puhtaalla vihalla."
+
+#~ msgid ""
+#~ "The enemy cheers as a dark mist rises from the land, engulfing you. As "
+#~ "ghostly wisps drain away your will, you realize that your time in this "
+#~ "land is over."
+#~ msgstr ""
+#~ "Vihollinen juhlii samalla kun tumma sumu nousee maasta, niellen sinut. "
+#~ "Samalla kun aavemaiset suortuvat imevät tahtosi pois, tajuat, että sinun "
+#~ "aikasi tässä maassa on ohitse."
+
+#~ msgid "2p - Den of Onis"
+#~ msgstr "2p - Pirujen pesä"
+
+#~ msgid ""
+#~ "Danger lurks around every corner in this underground battlefield, a duel "
+#~ "map where players must find the balance between force and subterfuge."
+#~ msgstr ""
+#~ "Vaara piilee joka kulman takana tässä maanalaisessa "
+#~ "kaksintaistelukentässä, jossa pelaajien täytyy löytää tasapaino voiman ja "
+#~ "verukkeiden väliltä."
+
+#~ msgid " Recommended setting of 2 gold per village."
+#~ msgstr "Suositeltu asetus 2 kultapalaa / kylä."
+
+#~ msgid "2p - Fallenstar Lake"
+#~ msgstr "2p - Pudonneen tähden järvi"
+
+#~ msgid ""
+#~ "Long ago, a great star fell from the heavens, leaving its mark on this "
+#~ "coniferous region."
+#~ msgstr ""
+#~ "Kauan sitten suuri tähti putosi taivaista jättäen jälkensä tälle muutoin "
+#~ "havupuiselle olevalle seudulle."
+
+#~ msgid "teamname^West"
+#~ msgstr "Länsi"
+
+#~ msgid "teamname^East"
+#~ msgstr "Itä"
+
+#~ msgid "2p - Hamlets"
+#~ msgstr "2p - Kyläset"
+
+#~ msgid ""
+#~ "Warfare transforms the simple farms and villages of a peaceful region "
+#~ "into a subtly parceled battlefield."
+#~ msgstr ""
+#~ "Sota on muuttanut nämä yksinkertaiset maatilat ja kylät rauhallisesta "
+#~ "alueesta hienovaraiseksi ja tiiviiksi taistelukentäksi."
+
+#~ msgid "2p - Hornshark Island"
+#~ msgstr "2p - Sarvihaisaari"
+
+#~ msgid ""
+#~ "Players must navigate the dispersive terrain of this small but "
+#~ "topographically dense island."
+#~ msgstr ""
+#~ "Pelaajien on löydettävä tiensä tämän pienen mutta monimuotoisen saaren "
+#~ "maastoissa."
+
+#~ msgid "2p - Sablestone Delta"
+#~ msgstr "2p - Mustakiven suisto"
+
+#~ msgid ""
+#~ "Two armies collide on this disjointed coastal landscape of hidden caves "
+#~ "and jagged rivers."
+#~ msgstr ""
+#~ "Kaksi armeijaa kohtaavat tällä pienellä, vaikeakulkuisella, jokien ja "
+#~ "luolien täyttämällä alueella."
+
+#~ msgid "2p - Silverhead Crossing"
+#~ msgstr "2p - Hopeapään ylityspaikka"
+
+#~ msgid ""
+#~ "Players must traverse all manner of terrain in pursuit of victory on this "
+#~ "multi-fronted duel map."
+#~ msgstr ""
+#~ "Pelaajien pitää ylittää kaikenlaista maastoa voidakseen voittaa tällä "
+#~ "monirintamaisella kaksintaistelukartalla."
+
+#~ msgid "statue"
+#~ msgstr "patsas"
+
+#~ msgid "This is a sculpture made of stone."
+#~ msgstr "Tämä on kivestä tehty veistos."
+
+#~ msgid "2p - Sullas Ruins"
+#~ msgstr "2p - Sullaksen rauniot"
+
+#~ msgid ""
+#~ "Flooded by the seas and battered by the winter elements, only ruins, "
+#~ "water and ice now remain in the shadow of this once mighty empire."
+#~ msgstr ""
+#~ "Tästä tulvien ja talven tuhoamasta, muinoin mahtavasta imperiumista on "
+#~ "jäljellä enää raunioita, vettä ja jäätä."
+
+#~ msgid "Statue of Sulla"
+#~ msgstr "Sullan patsas."
+
+#~ msgid ""
+#~ "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
+#~ "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking "
+#~ "Glacier, Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
+#~ msgstr ""
+#~ "Sulla Suuren kivinen näköispatsas. Sulla on tunnettu myös Sulla "
+#~ "Oikeudenmukaisena, Sulla Tyrannina, Uppoavan tornin keisarinnana, Lady "
+#~ "Kävelevänä jäätikkönä, Sulla Jätteenpolttajana, Sulla Ylpeänä ja Sulla "
+#~ "Vanhurskaana."
+
+#~ msgid "Statue of Lhun-dup"
+#~ msgstr "Lhun-dupin patsas."
+
+#~ msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
+#~ msgstr "Lhun-dupin kivinen näköispatsas, Sullan palvelija."
+
+#~ msgid "Statue of Ri-nzen"
+#~ msgstr "Ri-nzenin patsas"
+
+#~ msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
+#~ msgstr "Ri-nzenin kivinen näköispatsas, Sullan palvelija."
+
+#~ msgid "Statue of Ten-zin"
+#~ msgstr "Ten-zinin patsas"
+
+#~ msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
+#~ msgstr "Ten-zinin kivinen näköispatsas, Sullan palvelija."
+
+#~ msgid "Statue of Lo-bsang"
+#~ msgstr "Lo-bsangin  patsas."
+
+#~ msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
+#~ msgstr "Lo-bsangin kivinen näköispatsas, Sullan palvelija."
+
+#~ msgid "2p - The Freelands"
+#~ msgstr "2p - Vapaat maat"
+
+#~ msgid "A duel map for super fast play."
+#~ msgstr "Kaksinpelikartta erittäin nopeaan pelaamiseen."
+
+#~ msgid "2p - Weldyn Channel"
+#~ msgstr "2p - Weldynin kanava"
+
+#~ msgid "2p - Wesbowl"
+#~ msgstr "2p - Wesbowl"
+
+#~ msgid ""
+#~ "In Wesbowl, a player has to get any of the balls to the other player's "
+#~ "end zone as often as possible. However, the other player can attack your "
+#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
+#~ "when units are killed, they return to that player's end zone with an "
+#~ "injury."
+#~ msgstr ""
+#~ "Wesbowlissa pelaajan pitää saada mikä tahansa palloista toisen pelaajan "
+#~ "päätyalueelle. Toinen pelaaja voi kuitenkin hyökätä yksiköittesi "
+#~ "kimppuun. Wesbowlia pelataan tylpillä aseilla ja parantajia on "
+#~ "saatavilla, joten jos yksikkö kukistetaan, se palaa omaan päätyynsä "
+#~ "loukkaantuneena."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Move either ball to your opponent's end zone more times than they move a "
+#~ "ball to yours.\n"
+#~ "Defeat:\n"
+#~ "#Opponent moves the balls to your end zone more times than you move them "
+#~ "to the opponent's end zone"
+#~ msgstr ""
+#~ "\n"
+#~ "Voitto:\n"
+#~ "@Liikuta kumpi tahansa pallo vastustajan päätyalueelle useampia kertoja "
+#~ "kuin he tuovat kumman tahansa pallon sinun päätyalueellesi.\n"
+#~ "Häviö:\n"
+#~ "#Vastustajasi tuo palloja päätyysi useamminen kuin sinä viet palloja "
+#~ "heidän päätyynsä."
+
+#~ msgid "Red scores! Current score is $redscore-$bluescore"
+#~ msgstr "Punainen tekee maalin!  Tilanne: $redscore-$bluescore"
+
+#~ msgid "Blue scores! Current score is $redscore-$bluescore"
+#~ msgstr "Sininen tekee maalin!  Tilanne: $redscore-$bluescore"
+
+#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+#~ msgstr "Pitäisikö minun syöttää pallo yksikölle: $passto.type ($xloc,$yloc)"
+
+#~ msgid "Yes!"
+#~ msgstr "Kyllä!"
+
+#~ msgid "No"
+#~ msgstr "Ei"
+
+#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
+#~ msgstr "Sininen joukkue voitti!  Tilanne: $redscore-$bluescore"
+
+#~ msgid "Red team wins! Final score: $redscore-$bluescore"
+#~ msgstr "Punainen joukkue voitti!  Tilanne: $redscore-$bluescore"
+
+#~ msgid "Draw! Final score: $redscore-$bluescore"
+#~ msgstr "Tasapeli!  Tilanne: $redscore-$bluescore"
+
+#~ msgid "3p - Alirok Marsh"
+#~ msgstr "3p - Alirokin suo"
+
+#~ msgid "Three players come head to head on this water-cut battlefield."
+#~ msgstr ""
+#~ "Kolme pelaajaa asettuu vastakkain tällä veden halkomalla "
+#~ "taistelukentällä. "
+
+#~ msgid "3p - Island of the Horatii"
+#~ msgstr "3p - Horatiisaari"
+
+#~ msgid ""
+#~ "Controlling the central island is often the key to victory in this "
+#~ "21x21hex 3 player free for all map."
+#~ msgstr ""
+#~ "Keskussaaren hallitseminen on usein avain voittoon tässä 21x21 "
+#~ "suuruisessa kolminpelikartassa."
+
+#~ msgid "3p - Morituri"
+#~ msgstr "3p - Morituri"
+
+#~ msgid ""
+#~ "Only one faction will emerge victorious from this tightly bordered three-"
+#~ "player map."
+#~ msgstr ""
+#~ "Vain yksi osapuoli voittaa tällä tiukasti rajatulla kolmen pelaajan "
+#~ "kartalla. "
+
+#~ msgid "4p - Blue Water Province"
+#~ msgstr "4p - Sinisen veden maa"
+
+#~ msgid ""
+#~ "Historians write that Bluewater Province has been destroyed and rebuilt "
+#~ "some twenty times. Now, as armies once again converge on the rocky "
+#~ "streams and snowcapped mountains of this small province, its villagers "
+#~ "hardly seem to take notice."
+#~ msgstr ""
+#~ "Historioitsijoiden mukaan Sinisen veden maa on tuhottu ja rakennettu "
+#~ "uudelleen parisenkymmentä kertaa. Nyt, kun armeijat jälleen kohtaavat "
+#~ "kivisillä virroilla ja lumihuippuisten vuorten alla, kiviäkin kiinnostaa "
+#~ "enemmän kuin kyläläisiä."
+
+#~ msgid "teamname^Team 1"
+#~ msgstr "Joukkue 1"
+
+#~ msgid "teamname^Team 2"
+#~ msgstr "Joukkue 2"
+
+#~ msgid "4p - Castle Hopping Isle"
+#~ msgstr "4p - Linnahyppely"
+
+#~ msgid "Hop from castle to castle while fighting over a central isle."
+#~ msgstr "Hypi linnasta linnaan taistellen samalla keskussaarella."
+
+#~ msgid "4p - Clash"
+#~ msgstr "4p - Yhteentörmäys"
+
+#~ msgid "Small map for 2 vs. 2."
+#~ msgstr "Pieni kartta 2 vastaan 2 peliin."
+
+#~ msgid "4p - Hamlets"
+#~ msgstr "4p - Kyläset"
+
+#~ msgid "4p - Isar's Cross"
+#~ msgstr "4p - Isarin risti"
+
+#~ msgid ""
+#~ "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#~ "rotation of units and planning of moves is important. Teams set for "
+#~ "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
+#~ "gold, 20 villages."
+#~ msgstr ""
+#~ "Hyvin pieni kartta kahdelle kahden hengen joukkueelle. Lyhyet etäisyydet "
+#~ "tarkoittavat, että siirtojärjestys ja siirtojen suunnittelu on tärkeää. "
+#~ "Joukkue 1 & 4 (koillinen) pelaa joukkuetta 2 & 3 (lounas) vastaan. "
+#~ "Suunniteltu 75 kultapalan aloitukselle, 20 kylää."
+
+#~ msgid "teamname^South-West"
+#~ msgstr "Lounas"
+
+#~ msgid "teamname^North-East"
+#~ msgstr "Koillinen"
+
+#~ msgid "4p - King of the Hill"
+#~ msgstr "4p - Kukkulan kuningas"
+
+#~ msgid ""
+#~ "Controlling the area around the central keep is very lucrative in this "
+#~ "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+#~ msgstr ""
+#~ "Keskilinnakkeen alueen hallinta on erittäin hyödyllistä tässä 36x36 "
+#~ "neljän pelaajan kartassa. Peli toimii joko kaikki kaikkia vastaan tai "
+#~ "kahden pelaajan joukkueissa. Kyliä on 36."
+
+#~ msgid " Recommended setting of 2 gold per village and 150 starting gold."
+#~ msgstr ""
+#~ "Suositellut asetukset ovat 2 kultapalaa / kylä ja 150 kultapalaa "
+#~ "aloitukseen."
+
+#~ msgid "teamname^South-East"
+#~ msgstr "Kaakko"
+
+#~ msgid "teamname^North-West"
+#~ msgstr "Luode"
+
+#~ msgid " Recommended setting of 1 gold per village."
+#~ msgstr "Suositeltu asetus yksi kultapala / kylä."
+
+#~ msgid "Four factions contend for dominance over this watery settlement."
+#~ msgstr "Neljä osapuolta taistelee tämän vetisen alueen herruudesta."
+
+#~ msgid "4p - Loris River"
+#~ msgstr "4p - Lorisjoki"
+
+#~ msgid ""
+#~ "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
+#~ "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
+#~ msgstr ""
+#~ "25x25 heksan kartta kahdelle kahden hengen joukkueelle. Kartta keskittyy "
+#~ "joen ympärille linnakkeiden ollessa vastakkaisissa kulmissa. Suunniteltu "
+#~ "pelattavaksi tiimeillä 1 & 4 ja 2 & 3. 28 kylää."
+
+#~ msgid "4p - Morituri"
+#~ msgstr "4p - Morituri"
+
+#~ msgid "Who will emerge from the confines of this perilous battlefield?"
+#~ msgstr "Kuka selviää voittajana tältä petolliselta taistelutantereelta?"
+
+#~ msgid "4p - Paths of Daggers"
+#~ msgstr "4p - Tikaritiet"
+
+#~ msgid " Recommended setting of 2 gold per village, 28 villages."
+#~ msgstr "Suositeltu asetus 2 kultapalaa / kylä, 28 kylää."
+
+#~ msgid ""
+#~ "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
+#~ "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+#~ msgstr ""
+#~ "35x27 kartta kahdelle 2 hengen joukkueelle, jossa on viisi erillistä "
+#~ "taistelurintamaa. Suunniteltu pelattavaksi itä länttä vastaan (1,4 "
+#~ "vastaan 2,3), mutta toimii muillakin joukkueilla tai kaikki kaikkia "
+#~ "vastaan."
+
+#~ msgid "4p - Siege Castles"
+#~ msgstr "4p - Piiritetyt linnat"
+
+#~ msgid ""
+#~ "40X30 4 player map where 4 mighty castles face off at the convergence of "
+#~ "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
+#~ "villages."
+#~ msgstr ""
+#~ "40x30 heksan kartta neljälle pelaajalle. Neljän mahtavan linnan "
+#~ "sotajoukot kohtaavat kahden joen risteyksessä. Kartta toimii hyvin kahden "
+#~ "hengen joukkueilla tai kaikki kaikkia vastaan. Kyliä on noin 45."
+
+#~ msgid "4p - The Wilderlands"
+#~ msgstr "4p - Villit maat"
+
+#~ msgid ""
+#~ "A vast region of wild, untamed wilderness, its terrain dotted with "
+#~ "forests, caves, rivers, and the ruins of ancient fortresses."
+#~ msgstr ""
+#~ "Valtava alue villiä, kesyttämätöntä autiomaata. Maastossa on metsää, "
+#~ "luolia, jokia ja muinaisten linnoitusten raunioita."
+
+#~ msgid "Monsters"
+#~ msgstr "Hirviöt"
+
+#~ msgid "4p - Xanthe Chaos"
+#~ msgstr "4p - Kullankeltainen kaaos"
+
+#~ msgid ""
+#~ "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
+#~ "center common."
+#~ msgstr ""
+#~ "24X28 heksan kaksi vastaan kaksi -kartta lisälinnakkeilla, ja suuri "
+#~ "sotkuinen taistelu keskellä karttaa."
+
+#~ msgid "5p - Auction-X"
+#~ msgstr "5p - Huutokauppa-X"
+
+#~ msgid ""
+#~ "4 players surround a central keep, play vs the AI survival style, or as a "
+#~ "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
+#~ "FFA, and the best way to determine how much is an auction, LOWEST bid "
+#~ "wins. It is a very small map so 75 gold is recommended for the other "
+#~ "players."
+#~ msgstr ""
+#~ "Neljä pelaajaa keskuslinnakkeen ympärillä, pelaten tekoälyä vastaan "
+#~ "selviytymistyyliin, kaikki vastaan kaikki tai neljä vastaan yksi. "
+#~ "Keskuspelaaja tarvitsee enemmän kultaa 4 v 1 tai kaikki v kaikki -"
+#~ "pelityyleissä. Paras tyyli kullan määrän päättämiseen on huutokauppa, "
+#~ "ALIN huuto voittaa. Tämä on erittäin pieni kartta, joten 75 kultapalaa on "
+#~ "suositus muille pelaajille."
+
+#~ msgid "teamname^Northeast"
+#~ msgstr "Koillinen"
+
+#~ msgid "teamname^Southeast"
+#~ msgstr "Kaakko"
+
+#~ msgid "teamname^Southwest"
+#~ msgstr "Lounas"
+
+#~ msgid "teamname^Northwest"
+#~ msgstr "Luode"
+
+#~ msgid "teamname^Center"
+#~ msgstr "Keskusta"
+
+#~ msgid "5p - Forest of Fear"
+#~ msgstr "5p - Pelon metsä"
+
+#~ msgid "In this mixed landscape, five armies battle for supremacy."
+#~ msgstr ""
+#~ "Tässä vaihtelevassa maastossa viisi armeijaa hakevat yliotetta "
+#~ "vastustajistaan."
+
+#~ msgid "6p - Amohsad Caldera"
+#~ msgstr "6p - Amohsad Caldera"
+
+#~ msgid ""
+#~ "Only a true tactician will survive in this deadly and confining "
+#~ "battlefield, where six boxed-in armies come to a head."
+#~ msgstr ""
+#~ "Vain todellinen taktikko selviytyy tässä kuolettavassa ja rajatussa "
+#~ "kartassa, jossa kuusi armeijaa kohtaa."
+
+#~ msgid "6p - Crusaders' Field"
+#~ msgstr "6p - Taistojen Tanner"
+
+#~ msgid ""
+#~ "The rallying cries of battle can once again be heard on this time-worn "
+#~ "field of war, where the ghosts of thousands of brave warriors float "
+#~ "invisibly through the mountains, trees and rivers."
+#~ msgstr ""
+#~ "Sotahuudot kaikuvat jälleen tällä ajan kuluttamalla sotatantereella, "
+#~ "missä tuhansien rohkeiden soturien haamut leijailevat näkymättöminä "
+#~ "vuorilla, metsissä ja joen varrella."
+
+#~ msgid "6p - Hexcake"
+#~ msgstr "6p - Heksakakku"
+
+#~ msgid "2 vs. 2 or 3 vs. 3 team game."
+#~ msgstr "2v2 tai 3v3 joukkupeli."
+
+#~ msgid "Turn 2: Loyalists"
+#~ msgstr "Vuoro 2: Lainkuuliaiset"
+
+#~ msgid "Turn 5: Knalgans"
+#~ msgstr "Vuoro 5: Knalga"
+
+#~ msgid "Turn 8: Rebels"
+#~ msgstr "Vuoro 8: Kapinalliset"
+
+#~ msgid "Turn 11: Northerners"
+#~ msgstr "Vuoro 11: Pohjalaiset"
+
+#~ msgid "Turn 14: Drakes"
+#~ msgstr "Vuoro 14: Draakit"
+
+#~ msgid "Turn 17: Undead"
+#~ msgstr "Vuoro 17: Epäkuolleet"
+
+#~ msgid "Tower of Doom"
+#~ msgstr "Tuomion torni"
+
+#~ msgid "6p - Team Survival"
+#~ msgstr "6p - Joukkueselviytyminen"
+
+#~ msgid "Scenario where the objective is to survive for as long as possible."
+#~ msgstr ""
+#~ "Skenaario, missä tehtävänä on selviytyä niin pitkään kuin vain on "
+#~ "mahdollista."
+
+#~ msgid "Survive for 32 turns."
+#~ msgstr "Selviydy 32 vuoroa."
+
+#~ msgid "Hint: Learning the enemy spawnpoints and types helps alot."
+#~ msgstr ""
+#~ "Vihje: Vihollisen ilmaantumispaikkojen ja tyyppien opetteleminen auttaa "
+#~ "paljon."
+
+#~ msgid "Survive all enemy attacks."
+#~ msgstr "Selviydy kaikista vihollisten hyökkäyksistä."
+
+#~ msgid "Death of your team leaders."
+#~ msgstr "Päällikkösi kuolema."
+
+#~ msgid "Faery"
+#~ msgstr "Faery"
+
+#~ msgid ""
+#~ "Congratulations for surviving the map that so many people claim is "
+#~ "impossible. Frankly, I haven't got a clue as to how you did it, so send "
+#~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
+#~ msgstr ""
+#~ "Onnittelut selviytymisestä kartassa, jonka niin monet julistavat "
+#~ "mahdottomaksi. Suoraan sanoen, en osaa sanoa kuinka teit sen, joten "
+#~ "lähetä minulle uusinta osoitteeseen roze@roze.mine.nu. Kiitoksia!"
+
+#~ msgid "Death"
+#~ msgstr "Kuolema"
+
+#~ msgid ""
+#~ "You have lost this game, but fear not. You can always try again. And "
+#~ "again. And again. *Muahahaha*"
+#~ msgstr ""
+#~ "Olet hävinnyt tämän pelin, mutta älä pelkää. Voit aina yrittää uudestaan. "
+#~ "Ja uudestaan. Ja taas. *Kärsi!*"
+
+#~ msgid "Attacker"
+#~ msgstr "Hyökkääjä"
+
+#~ msgid "Defender"
+#~ msgstr "Puolustaja"
+
+#~ msgid "6p - The Manzivan Traps"
+#~ msgstr "6p - Manzivanin ansat"
+
+#~ msgid ""
+#~ "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
+#~ "and confusing area of terrain where it is easy to end up out of position "
+#~ "or over extended. Teams set for players 145 vs. 236 (east vs west). "
+#~ "Designed for 100 starting gold, has 33 villages."
+#~ msgstr ""
+#~ "40X20 heksan kolme vastaan kolme -kartta. Manzivanin ansat ovat laajasti "
+#~ "tunnettu vaikeakulkuiseksi ja hämmentäväksi maa-alueeksi, missä on helppo "
+#~ "eksyä pois paikoiltaan tai liian laajalle alueelle. Joukkueet ovat "
+#~ "asetettu pelaajille 145 ja 236 (itä vastaan länsi). Suunniteltu 100 "
+#~ "aloituskultapalalle, kartassa on 33 kylää."
+
+#~ msgid "6p - Waterloo Sunset"
+#~ msgstr "6p - Auringonlasku Waterloossa"
+
+#~ msgid ""
+#~ "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
+#~ "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
+#~ "south), but having players 146 or 136 as a team is also interesting. "
+#~ "Designed for 150 starting gold, has 44 villages."
+#~ msgstr ""
+#~ "40x30 ruudun kokoinen kartta kahdelle kolmen hengen joukkueelle. Oman "
+#~ "liittouman joustava koordinointi on tärkeää, jotta oma puoli pysyy "
+#~ "voitollisena. Joukkueet ovat 1,4,5 ja 2,3,6, mutta mahdollisesti 1,4,6 "
+#~ "tai 1,3,6 voi olla myös mielenkiintoinen. Kartta on suunniteltu 150 "
+#~ "aloituskultapalalle. Kartassa on 44 kylää."
+
+#~ msgid "8p - Mokena Prairie"
+#~ msgstr "8p - Mokenan preeria"
+
+#~ msgid ""
+#~ "Inspired from Morituri, this 8 player map creates an epic battle scene "
+#~ "that requires two teams to coordinate on both offense and defense."
+#~ msgstr ""
+#~ "Inspiroituna Moriturista, tämä kahdeksan pelaajan kartta luo eeppisen "
+#~ "taistelupaikan, joka vaatii kahden joukkueen hallitsevan sekä "
+#~ "puolustuksen, että hyökkäyksen."
+
+#~ msgid "teamname^east"
+#~ msgstr "itä"
+
+#~ msgid "teamname^west"
+#~ msgstr "länsi"
+
+#~ msgid "8p - Morituri"
+#~ msgstr "8p - Morituri"
+
+#~ msgid ""
+#~ "Teamwork and tactics are key to victory in this unusual battlefield, "
+#~ "where eight armies fight to the finish."
+#~ msgstr ""
+#~ "Vain todellinen diplomaatti ja taktikko selviytyy tässä erikoisessa "
+#~ "kartassa, jossa kahdeksan armeijaa kohtaa."
+
+#~ msgid "9p - Merkwuerdigliebe"
+#~ msgstr "9p - Erikoista rakkautta"
+
+#~ msgid ""
+#~ "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
+#~ "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
+#~ "vs. southeast vs. southwest). There are very few villages per player, so "
+#~ "3 gold per villages is recommended."
+#~ msgstr ""
+#~ "Hyvin pieni kartta kolmelle kolmen hengen joukkueelle. Koska pelaajia on "
+#~ "niin monta, suosittelemme 60 sekunnin ajastinta. Joukkueet ovat 1,5,9 "
+#~ "vastaan 2,6,7 vastaan 3,4,8 (pohjoinen v kaakko v lounas). Koska kyliä on "
+#~ "niin vähän pelaajaa kohti, suosittelemme 3 kultapalaa vuoroa kohti."
+
+#~ msgid "Random map"
+#~ msgstr "Satunnaisesti luotu kartta"
+
+#~ msgid ""
+#~ "Randomly generated map. Note: random maps are often unbalanced, but if "
+#~ "you have time, you can regenerate them until you get a good one."
+#~ msgstr ""
+#~ "Satunnainen kartta. Huomaa, että satunnaiset kartat ovat usein "
+#~ "epätasaisia, mutta jos sinulla on aikaa, voit luoda uuden, kunnes saat "
+#~ "hyvän kartan."
+
+#~ msgid "Random map (Desert)"
+#~ msgstr "Satunnainen aavikkokartta"
+
+#~ msgid ""
+#~ "A random map with sand as the primary terrain. Note: random maps are "
+#~ "often unbalanced, but if you have time, you can regenerate them until you "
+#~ "get a good one."
+#~ msgstr ""
+#~ "Satunnainen kartta, jossa hiekka on pääasiallinen maasto. Huomaa, että "
+#~ "satunnaiset kartat ovat usein epätasaisia, mutta jos sinulla on aikaa, "
+#~ "voit luoda uuden, kunnes saat hyvän kartan."
+
+#~ msgid "Random map (Marsh)"
+#~ msgstr "Satunnainen suokartta"
+
+#~ msgid ""
+#~ "A random map with swamp as the primary terrain. Note: random maps are "
+#~ "often unbalanced, but if you have time, you can regenerate them until you "
+#~ "get a good one."
+#~ msgstr ""
+#~ "Satunnainen kartta, jossa suo on pääasiallinen maasto. Huomaa, että "
+#~ "satunnaiset kartat ovat usein epätasaisia, mutta jos sinulla on aikaa, "
+#~ "voit luoda uuden, kunnes saat hyvän kartan."
+
+#~ msgid "Random map (Winter)"
+#~ msgstr "Satunnainen talvikartta"
+
+#~ msgid ""
+#~ "A random map set in the break between spring and winter, mainly with "
+#~ "snowy terrains. Note: random maps are often unbalanced, but if you have "
+#~ "time, you can regenerate them until you get a good one."
+#~ msgstr ""
+#~ "Satunnainen kartta talven ja kevään välissä. Lumi on pääasiallinen "
+#~ "maasto. Huomaa, että satunnaiset kartat ovat usein epätasaisia, mutta jos "
+#~ "sinulla on aikaa, voit luoda uuden, kunnes saat hyvän kartan."
+
+#~ msgid "Wesnoth Benchmark: AI"
+#~ msgstr "Wesnothin nopeustestausta: tekoäly"
+
+#~ msgid ""
+#~ "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end."
+#~ msgstr ""
+#~ "Wesnothin nopeustestausta, käytä parametreja --nogui --no-delay --"
+#~ "multiplayer --scenario=wesbench_ai --exit-at-end."
+
+#~ msgid "Wesnoth Benchmark: Scrolling"
+#~ msgstr "Wesnothin nopeustestausta: ruudun vierittäminen"
+
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
+#~ msgstr ""
+#~ "Wesnothin nopeustestausta, käytä parametreja --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
+
+#~ msgid "Wesnoth Benchmark: Walking through Shroud"
+#~ msgstr "Wesnothin nopeustestausta: kulkeminen tuntemattomassa maastossa"
+
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
+#~ msgstr ""
+#~ "Wesnothin nopeustestausta, käytä parametreja --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "2p - Blitz"
+#~ msgstr "2p - Salamasota"
+
+#~ msgid "3p - Triple Blitz"
+#~ msgstr "3p - Salamasota kolmelle"
+
+#, fuzzy
+#~ msgid "Defeat enemy leader"
+#~ msgstr "Päällikkösi kuolema."
+
+#, fuzzy
+#~ msgid "Defeat enemy leader(s)"
+#~ msgstr "Päällikkösi kuolema."
+
+#~ msgid "Era of Turmoil"
+#~ msgstr "Sekasorron aikakausi"
