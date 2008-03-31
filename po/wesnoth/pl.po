@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 16:13+0100\n"
-"PO-Revision-Date: 2008-03-23 19:47+0100\n"
+"PO-Revision-Date: 2008-03-29 18:53+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -3089,7 +3089,6 @@ msgid "backstab"
 msgstr "cios w plecy"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3097,9 +3096,9 @@ msgid ""
 "incapacitated (e.g. turned to stone)."
 msgstr ""
 "Cios w plecy:\n"
-"Ten atak wyrządza podwójne obrażenia, jeśli po drugiej stronie atakowanego "
-"znajduje się wroga mu jednostka, która jest w pełni sprawna (np. nie jest "
-"zamieniona w kamień)."
+"Wykorzystany podczas ataku cios w plecy wyrządza podwójne obrażenia, jeśli "
+"po drugiej stronie atakowanego znajduje się wroga mu jednostka, która jest w "
+"pełni sprawna (czyli nie jest np. zamieniona w kamień)."
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
@@ -3197,15 +3196,14 @@ msgid "charge"
 msgstr "szarża"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Szarża:\n"
-"Ten atak zadaje podwójne obrażenia przeciwnikowi, ale również sprawia, że "
-"jego kontratak zadaje podwójne obrażenia."
+"Atak szarżą podwójne obrażenia przeciwnikowi, ale również sprawia, że jego "
+"kontratak zadaje podwójne obrażenia."
 
 #: data/core/macros/abilities.cfg:654
 msgid "drains"
@@ -4244,11 +4242,8 @@ msgstr ""
 "skromniejsze istotom żyjącym."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" Jednostka posiada umiejętności leczenia otaczających ją jednostek oraz "
-"potrafi wyleczyć je z zatrucia."
+msgstr " Jednostka posiada umiejętności leczenia."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4282,15 +4277,14 @@ msgstr ""
 "niektórych ataków, ale tylko podczas obrony."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of below the leadership "
 "level."
 msgstr ""
 " Zdolności przywódcze tej jednostki sprawiają, że znajdujące się obok niej "
-"przyjazne jednostki zadają w walce większe obrażenia, choć dotyczy to tylko "
-"jednostek niższego poziomu."
+"przyjazne jednostki zadają w walce większe obrażenia, ale dotyczy to tylko "
+"jednostek niższego poziomu od dowódcy."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4360,15 +4354,14 @@ msgstr ""
 "przeciwnika do momentu, gdy zostanie zabita lub go pokona."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
 " Jeśli po drugiej stronie wrogiej jednostki znajduje się jednostka "
-"sojusznicza, ta jednostka potrafi zadać wyrządzający podwójne obrażenia cios "
-"w plecy, jeżeli tylko zdoła zakraść się za przeciwnika."
+"sojusznicza, jednostka potrafi podczas ataku zadać wyrządzający podwójne "
+"obrażenia cios w plecy, jeżeli tylko zdoła zakraść się za przeciwnika."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
