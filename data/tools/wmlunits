@@ -18,40 +18,9 @@ import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 import wesnoth.wmltools as wmltools
 
-class translation(dict):
-    "Parses po files to create a translation dictionary. Eats lots of core!"
-    def __init__(self, textdomain, isocode):
-        self.gettext = {}
-        self.isocode = isocode
-        if self.isocode != "en":
-            gettext = file("po/wesnoth-%s/%s.po" % (textdomain, isocode)).read()
-            matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
-            id = ""
-            for match in matches:
-                text = "".join(re.compile('"(.*?)"').findall(match[1].replace("\\n", "")))
-                if match[0] == "msgid":
-                    id = text
-                else:
-                    self.gettext[id] = text
-    def get(self, key, dflt):
-        if self.isocode == "en":
-            return key
-        else:
-            return self.gettext.get(key, dflt)
-    def __getitem__(self, key):
-        if self.isocode == "en":
-            return key
-        else:
-            return self.gettext[key]
-    def __contains__(self, key):
-        if self.isocode == "en":
-            return True
-        else:
-            return key in self.gettext.keys()
-
 def list_units(units_filename, text_to_parse, domain, isocode, campaign):
     "List all units in the specified namespace, None = mainline."
-    tx = translation(domain, isocode)
+    tx = wmltools.Translation(domain, isocode)
 
     # Create a new parser.
     parser = wmlparser.Parser(datadir)

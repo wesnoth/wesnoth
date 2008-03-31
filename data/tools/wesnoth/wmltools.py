@@ -584,6 +584,46 @@ class CrossRef:
         except KeyError:
             return 0
 
+#
+# String translations from po files.  The advantage of this code is that it
+# does not require the gettext binary message catalogs to have been compiled.
+# The disavantage is that it eats lots of core!
+#
+
+class Translation(dict):
+    "Parses a po file to create a translation dictionary."
+    def __init__(self, textdomain, isocode, topdir=""):
+        self.gettext = {}
+        self.isocode = isocode
+        if self.isocode != "en":
+            fn = "po/wesnoth-%s/%s.po" % (textdomain, isocode)
+            if topdir:
+                fn = os.path.join(topdir, fn)
+            gettext = file(fn).read()
+            matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
+            id = ""
+            for match in matches:
+                text = "".join(re.compile('"(.*?)"').findall(match[1].replace("\\n", "")))
+                if match[0] == "msgid":
+                    id = text
+                else:
+                    self.gettext[id] = text
+    def get(self, key, dflt):
+        if self.isocode == "en":
+            return key
+        else:
+            return self.gettext.get(key, dflt)
+    def __getitem__(self, key):
+        if self.isocode == "en":
+            return key
+        else:
+            return self.gettext[key]
+    def __contains__(self, key):
+        if self.isocode == "en":
+            return True
+        else:
+            return key in self.gettext.keys()
+
 ## Namespace management
 #
 # This is the only part of the code that actually knows about the
