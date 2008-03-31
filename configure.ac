@@ -597,7 +597,6 @@ int main (int argc, char **argv)
     LIBS="$ac_save_LIBS"
 fi
 
-# *** Not yet covered by scons recipe
 # po4a
 
 AC_PATH_PROGS([PO4A], [po4a], [none])
@@ -934,7 +933,6 @@ AM_CONDITIONAL([BOOST_AUTO_TEST], [test x"$boost_auto_test" = xyes])
 #######################################################################
 # Tune gettext stuff for our needs                                    #
 #######################################################################
-# *** Not yet covered by scons recipe
 
 case $srcdir in
 /*) topdir=$srcdir ;;

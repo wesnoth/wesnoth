@@ -197,14 +197,12 @@ pkgpython_PYTHON = data/tools/wesnoth/wmltools.py \
     data/tools/wesnoth/__init__.py
 endif
 
-# *** Not yet covered by scons recipe
 update-po:
 	@cd po && make $@ || exit $?
 if MANUALUPDATE
 	@cd doc/manual && make update-po || exit $?
 endif
 
-# *** Not yet covered by scons recipe
 if PO4AUPDATE
 update-po4a:
 	@cd po && make update-po4a || exit $?

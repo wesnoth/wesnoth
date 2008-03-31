@@ -11,8 +11,8 @@
 # To do (list is now exhaustive):
 #
 # 1. Dummy locales
-# 2. Translations handling other than installation (pot-update).
-# 3. Making binary and data-only distribution tarballs
+# 2. Making binary and data-only distribution tarballs
+# 3. Making code dpenency graph
 
 import os, sys, commands, shutil, sets, re
 from glob import glob
@@ -82,6 +82,7 @@ The following special build targets
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
     uninstall = uninstall all executables, tools, and servers.
+    pot-update = perform gettext message catalog generation
     dist = make distribution tarball as wesnoth.tar.bz2 (*).
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
     binary-dist = make data tarball as wesnoth-binaries.tar.bz2 (*).
