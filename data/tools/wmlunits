@@ -6,15 +6,9 @@ except ImportError: pass
 
 import sys, os, re, glob
 
-sys.path.append("data/tools")
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
-
-use_html = False
-wpath = "../.."
-datadir = wpath + "/data"
-
-class Dummy: pass
+import wesnoth.wmltools as wmltools
 
 def list_units(units_filename, text_to_parse, po_filename, campaign):
 
@@ -136,26 +130,36 @@ def list_units(units_filename, text_to_parse, po_filename, campaign):
     for race in rlist:
         place_units(race)
 
-if use_html: print "<html><body>"
-else: print '{| border="solid"'
+if __name__ == '__main__':
+    use_html = False
 
-# Mainline
-list_units(
-    wpath + "/data/core/units.cfg", None,
-    wpath + "/po/wesnoth-units/de.po", " - mainline")
+    wmltools.pop_to_top("wmlmove")
+    datadir = os.getcwd() + "/data"
 
-# Campaigns
-campaigns = glob.glob("data/campaigns/*")
-for campaign in campaigns:
-    dirname = campaign[5:] # strip leading data/
-    abbreviation = [dirname[i] for i in range(len(dirname))
-        if dirname[i - 1] in ["/", "_"]]
-    abbreviation = "".join(abbreviation).lower()
-    if abbreviation == "t": abbreviation = "tutorial"
-    description = dirname[10:].replace("_", " ")
-    list_units(None, "[+units]{%s/units}[/units]" % dirname,
-        wpath + "/po/wesnoth-%s/de.po" % abbreviation,
-        " - " + description)
+    class Dummy: pass
 
-if use_html: print "</body></html>"
-else: print "|}"
+    if use_html: print "<html><body>"
+    else: print '{| border="solid"'
+
+    # Mainline
+    list_units(
+        "data/core/units.cfg", None,
+        "po/wesnoth-units/de.po", " - mainline")
+
+    # Campaigns
+    campaigns = glob.glob("data/campaigns/*")
+    for campaign in campaigns:
+        dirname = campaign[5:] # strip leading data/
+        abbreviation = [dirname[i] for i in range(len(dirname))
+            if dirname[i - 1] in ["/", "_"]]
+        abbreviation = "".join(abbreviation).lower()
+        if abbreviation == "t": abbreviation = "tutorial"
+        description = dirname[10:].replace("_", " ")
+        list_units(None, "[+units]{%s/units}[/units]" % dirname,
+            "po/wesnoth-%s/de.po" % abbreviation,
+            " - " + description)
+
+    if use_html: print "</body></html>"
+    else: print "|}"
+
+
