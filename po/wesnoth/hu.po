@@ -1,23 +1,21 @@
-# translation of hu-wesnoth.po to Hungarian
+# translation of wesnoth.pot to Hungarian
 # Hungarian translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-#
-# Automatically generated, 2004.
 # Széll Tamás <tomi@digiflex.hu>, 2005.
 # Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2007, 2008.
-# Pintér Csaba, 2008.
-# Fábián Balázs, 2008.
+# Pintér Csaba <piere-d-siorac@freemail.hu>, 2008.
+# Fábián Balázs <nermal93@freemail.hu>, 2008.
 # Barthalos Márton <barthalosmarton@yahoo.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 16:13+0100\n"
-"PO-Revision-Date: 2008-03-01 15:24+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
-"Language-Team: Hungarian\n"
+"PO-Revision-Date: 2008-03-31 20:55+0200\n"
+"Last-Translator: Barthalos Márton <barthalosmarton@yahoo.com>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -197,9 +195,8 @@ msgstr "Kínai Fordítás"
 
 #. [about]
 #: data/core/about.cfg:889
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Kínai Fordítás"
+msgstr "Kínai (Tajvani) Fordítás"
 
 #. [about]
 #: data/core/about.cfg:896
@@ -1345,7 +1342,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:278
 msgid "Healing"
-msgstr "Gyógyulás"
+msgstr "Gyógyítás"
 
 #. [topic]
 #: data/core/help.cfg:279
@@ -1421,8 +1418,8 @@ msgstr ""
 "\n"
 "Gyógyító egységek: A <ref>dst=ability_cures text=Gyógyítás</ref> "
 "képességével rendelkező egységek minden, a közvetlen közelükben tartózkodó "
-"baráti egységet meg tudnak gyógyítani a mérgezéstől (a gyógyításon felül, ha "
-"ezt a képességet is birtokolják)."
+"baráti egységet meg tudnak gyógyítani a mérgezéstől (a csillapításhoz képest "
+"elsődlegesen, ha ezt a képességet is birtokolják)."
 
 #. [topic]
 #: data/core/help.cfg:287
@@ -2572,7 +2569,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2998,15 +2994,14 @@ msgstr "teleportáció"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "Teleportáció:\n"
-"Ez az egység egy lépésből képes bármely két szövetséges település közti "
-"azonnali térugrásos helyváltoztatásra."
+"Ez az egység bármely két éppen üresen álló szövetséges falu között képes "
+"egyetlen lépéspont felhasználásával térugrásos helyváltoztatásra."
 
 #. [hides]
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
@@ -3056,7 +3051,7 @@ msgstr ""
 #. [hides]
 #: data/core/macros/abilities.cfg:423 data/core/macros/abilities.cfg:428
 msgid "concealment"
-msgstr "Rejtőzködés"
+msgstr "rejtőzködés"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:427 data/core/macros/abilities.cfg:432
@@ -3125,20 +3120,19 @@ msgstr "+1 max ÉP"
 
 #: data/core/macros/abilities.cfg:542
 msgid "backstab"
-msgstr "orvtámadás"
+msgstr "hátbatámadás"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (e.g. turned to stone)."
 msgstr ""
-"Orvtámadás:\n"
-"Ez a támadás kétszeres sebzéssel jár, ha a célpont átellenes oldalán is áll "
-"egy számára ellenséges egység. (Kivéve, ha ez az egység nem harcképes, "
-"például kővé vált.)"
+"Hátbatámadás:\n"
+"Ez az egység támadáskor kétszeres sebzést okoz, ha a célpont átellenes "
+"oldalán is áll egy számára ellenséges egység. (Kivéve, ha ez az egység nem "
+"harcképes, például kővé vált.)"
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
@@ -3235,15 +3229,14 @@ msgid "charge"
 msgstr "roham"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Roham:\n"
-"Ez a támadás a célpontnak dupla sebzést okoz, ugyanakkor az egység által a "
-"célponttól kapott sebzés is a kétszeresére nő."
+"Ez az egység támadáskor dupla sebzést okoz a célpontnak, ugyanakkor az "
+"elszenvedett sebzése is a kétszeresére nő."
 
 #: data/core/macros/abilities.cfg:654
 msgid "drains"
@@ -4284,11 +4277,8 @@ msgstr ""
 "élőholtaknak, de néhány még élőnek is."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" Ez az egység képes gyógyítani a körülötte állók sebződéseit, valamint "
-"kigyógyítani őket a mérgezésből."
+msgstr " Ez az egység képes gyógyítani."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4321,15 +4311,14 @@ msgstr ""
 "sebződését, de kizárólag védekezéskor."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of below the leadership "
 "level."
 msgstr ""
 " Ennek az egységnek a hadvezetése lehetővé teszi a mellette álló baráti "
-"egységeknek, hogy többet sebezzenek a harc során, habár ez csak az "
-"alacsonyabb szintű egységekre vonatkozik."
+"egységeknek, hogy többet sebezzenek a harc során, bár ez csak a hadvezetés "
+"szintje alatti egységekre vonatkozik."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4345,14 +4334,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " A megvilágítás megnöveli a napfény szintjét a környező mezőkön."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teleportáció:\n"
-"Ez az egység egy lépésből képes bármely két szövetséges település közti "
-"azonnali térugrásos helyváltoztatásra."
+" Ez az egység egy lépéspontból képes bármely két üresen álló szövetséges "
+"falu köztitérugrásos helyváltoztatásra."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4399,15 +4386,14 @@ msgstr ""
 "folytatja, amíg vagy ő vagy ellenfele el nem esik."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Ez az egység orvtámadást hajthat végre, ha a megtámadott egységnek a "
-"támadással ellentétes oldalán is van egy, a számára ellenséges egység. Ez "
-"kétszeres sebzést jelent."
+" Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is "
+"van egy, a célpont számára ellenséges egység, a támadó hátbatámadással "
+"támad. Ez kétszeres sebzést jelent."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -4439,13 +4425,12 @@ msgstr ""
 "áldozat megsebzésére, de csak támadáskor."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Ennek az egységnek a távolsági támadása mágikus, ezért mindig jó eséllyel "
-"célba talál."
+" Ennek az egységnek van mágikus támadása, amellyel mindig jó eséllyel célba "
+"talál."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4685,7 +4670,6 @@ msgstr "Perzsekények"
 
 #. [race]
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4752,21 +4736,68 @@ msgid ""
 msgstr ""
 "A perzsekények nagy, szárnyas tűzokádó lények, emlékeztetnek a valódi "
 "sárkányokra. Egy átlagos felnőtt perzsekény körülbelül három méter magas, és "
-"könnyen eléri egy ember és egy ló együttes súlyát. A bőrük kemény "
-"pikkelyekből áll, amely ellenáll a legtöbb fizikai támadásnak, kivéve a "
+"könnyen eléri egy ember és egy ló együttes súlyát. A bőrüket kemény "
+"pikkelyek fedik, így ellenállnak a legtöbb fizikai támadásnak, kivéve a "
 "páncéltörő és a hideg sebzéseket. A legtöbb perzsekény repülésre született, "
-"így nagy távolságokat képesek gyorsan megtenni. Azonban nagy súlyuk némileg "
-"korlátozza repülési képességeiket, emiatt a levegőben kissé suták. Ahol "
-"lehetséges, kihasználják a terep adta lehetőségeket, és a dombokat, "
-"hegyeket, fákat felszállóállásként használják, hogy nagyobb magasságot és "
-"sebességet érhessenek el. Ellenségeik szerencséjére elég ügyetlen lények, és "
-"meglepően lassúak a csatában. Ez, ötvözve a nagy méretükkel, könnyű "
-"célponttá teszi őket azok számára, akiknek mégis van bátorságuk megtámadni "
-"őket.\n"
+"így nagy távolságokat képesek gyorsan megtenni. Ugyanakkor nagy súlyuk "
+"némileg korlátozza repülési képességeiket, emiatt a levegőben kissé suták. "
+"Ahol lehetséges, kihasználják a terep adottságait, és a dombokat, hegyeket, "
+"fákat felszállóállásként használják, hogy nagyobb magasságot és sebességet "
+"érhessenek el. Ellenségeik szerencséjére elég ügyetlen lények, és meglepően "
+"lassúak a csatában. Ez, ötvözve a nagy méretükkel, könnyű célponttá teszi "
+"őket azok számára, akiknek mégis van bátorságuk megtámadni őket.\n"
 "\n"
 "A perzsekények ízig-vérig mágikus lények, életerejüket egy titokzatos belső "
-"tűzből nyerik. Ugyanakkor ez a belső tűz jelenti legnagyobb gyengeségüket "
-"is, hiszen kifejezetten érzékennyé teszi őket a hideg támadásokkal szemben."
+"tűzből nyerik. Ezt könnyen szemügyre vehetjük, amikor valamelyikük elpusztul "
+"a csata során; a belső tűz elszabadul, és hamuvá perzseli a holttestet. Ez a "
+"belső tűz egyben legnagyobb gyengeségük is, rendkívül sérülékennyé teszi "
+"őket a hideg támadásokkal szemben. A perzsekények mágikus természetük "
+"ellenére nem képesek szabályozott utakra terelni a mágiát. A velükszületett "
+"bűverő lehetővé teszi a tűzokádást, illetve magát azt, hogy életre keljenek, "
+"azonban akaratlagosan irányítani nem tudják.\n"
+"\n"
+"<header>text='Társadalmi berendezkedés'</header>\n"
+"A perzsekények faja viszonylag harcias, társadalmukat leginkább úgy "
+"jellemezhetnénk, hogy harci műveltségű közösségek. A perzsekény törzsek "
+"magja egy veterán harcosokból álló kis csoport, élén egy kölcsönösen "
+"tisztelt - vagy egyszerűen csak rettegett - vezetővel, aki vasököllel "
+"irányítja a közösséget. A szigorú hierarchiában betöltött helyéért minden "
+"perzsekénynek magának kell megküzdenie. Engedelmeskedniük kell a "
+"feljebbvalóiknak, és vezényelniük kell az alattvalóikat. A vezérkarba csak "
+"úgy kerülhetnek be, ha párbajra hívják egy feljebbvalójukat, és legyőzik. "
+"Így alakítják ki a vezérkaron belüli rangsort. A fajtársak között a "
+"megtévesztés minden formáját kivétel nélkül elfogadhatatlannak tartják, aki "
+"ilyesmihez folyamodik, gyávának bélyegzik.\n"
+"\n"
+"Bár harcias természetük és nagy területi igényeik miatt elszántan védelmezik "
+"a felségterületüket, más nagyobb fajok által uralt területeket ritkán "
+"háborgatnak vagy szállnak meg. Ehelyett inkább csak lakatlan vidékeken "
+"telepednek le, és itt jelölik ki területüket. Étrendjük elsősorban nagyobb "
+"vadállatokból áll, amelyeket maguk ejtenek el az otthonuk körüli alföldeken, "
+"de a fiókák és az alsóbbrendű perzsekények egyes mohákat és gombákat is "
+"fogyasztanak, melyeket a barlangjaik mélyén termesztenek. Az egyetlen "
+"technológiai mesterség, amelyben a perzsekények kimagaslóak, a vértezet- és "
+"fegyverkovácsolás, de nem is igen van más tudományra, illetve műveltségre "
+"szükségük. Ugyanakkor az a kevés szerszám, amelyet készítenek, olyan jó "
+"minőségű, hogy szinte semmi sem veheti fel velük a versenyt, talán csak a "
+"legnagyszerűbb törp kohók remekei.\n"
+"\n"
+"A perzsekények tojásokból kelnek ki, és természetes körülmények között "
+"általában húsz-harminc évig élnek. Egy perzsekény számára nincs nemesebb, "
+"mint ha ütközetben hagyhatja el az árnyékvilágot. Ellentétben más fajok "
+"véneivel, a perzsekények egyre agresszívebbek és vakmerőbbek lesznek, ahogy "
+"közeledik az életük vége, talán éppen azért, hogy így biztosítsák a helyüket "
+"fajuk hős legendáinak sorában.\n"
+"\n"
+"<header>text='Földrajz'</header>\n"
+"A perzsekények a Nagy Tengerben található Morogor szigetéről származnak. "
+"Azonban, mivel a sziget századok óta süllyed, a perzsekény telepesek lassan "
+"egyre inkább meghódítják a Nagy Kontinenst. Otthonaikat igyekeznek tűzhányók "
+"közelében, a hegyek barlangjaiban berendezni, hogy védelmet biztosítsanak a "
+"tojásaiknak, fiókáiknak és kovácsműhelyeiknek. Bár a perzsekények jobban "
+"kedvelik a meleget, belső tüzük még viszonylag hideg éghajlaton is "
+"könnyűszerrel biztosítja az életben maradást, így sikerrel népesítették be a "
+"Nagy Kontinensen messze északon húzódó hegyeket."
 
 #. [race]
 #: data/core/units.cfg:74
@@ -4836,24 +4867,53 @@ msgid ""
 msgstr ""
 "A törpök bányászaikról, kovácsaikról, kereskedőikről és harcosaikról "
 "híresek. A harmadik legősibbnek tartott faj a nagy kontinensen a tündék és a "
-"trollok után; korai történetük homályba borul.\n"
+"trollok után; korai történetük homályba borul. Legendák mesélnek a rég "
+"elfeledett időkről, amikor a törpök barlangjaikon keresztül először kezdtek "
+"feljönni a felszínre földalatti világukból. Semmit nem tudunk az ezt "
+"megelőző életükről, vagy hogy miért jöttek föl a felszíni világra, de azóta "
+"a földrész történelmének szerves részeivé lettek. Nem sokkal azután, hogy "
+"feljöttek a mélyből, összeütközésbe kerültek a föld őshonos lakóival, a "
+"tündékkel. Hogy eredetileg mi robbantotta ki a viszálykodást, azt már senki "
+"sem tudja, de a két faj azóta három hosszú háborút vívott, amelyeket csak "
+"néhány évtizednyi béke választott el egymástól. A háborúk során a törpöknek "
+"nem sikerült kiűzniük a tündéket a déli nagy erdőkből, de a kontinens északi "
+"részén húzódó dombokon és hegyeken sikerült megerősíteniük az állásaikat. "
+"Ezt a területet úgy hívják ma, hogy Északi vidék. Azóta a törpök hihetetlen "
+"erődítményeket és településeket építettek szerte a területük hegyein és "
+"szirtjein.\n"
+"\n"
+"Talán éppen elszigeteltségük miatt a törpök általánosan bizalmatlanok vagy "
+"ellenségesek a legtöbb más fajjal szemben, különösen a tündékkel. Egyetlen "
+"kivétel van erre, az emberekkel szemben nem tanúsítanak ilyen viselkedést. "
+"Ennek okai egészen I. Haldric koráig nyúlnak vissza, amikor az emberek és az "
+"orkok a kontinensre érkeztek. Ekkoriban a törpök néhány embernek, főleg "
+"wesnothi szakadároknak és törvényen kívülieknek, megengedték, hogy "
+"letelepedjenek az Északi vidék egyes területetein. Az ok nem meglepő. Ezen "
+"embereknek a helyzete a törpöket üldöztetésük korai történelmére "
+"emlékeztette, és ez együttérzést váltott ki belőlük. Ugyanakkor sok előnyük "
+"is származott abból, ha szövetségre léptek ezekkel a számkivetettekkel. "
+"Olyan területeken telepítették le őket, ahol a törpök maguk nem laktak "
+"szívesen: síkságokon, erdőkben, mocsarakban. Így nem volt gondjuk azzal, "
+"hogy hogyan védjék ezeket a területeket. Később, amikor az orkok fenyegetővé "
+"váltak, a törpök és ember szövetségeseik megalakították a Knalgai "
+"Szövetséget, hogy megvédjék közös birodalmukat.\n"
 "\n"
 "Emberi mértékkel nézve a törpök eléggé apró termetűek, de egyáltalán nem "
 "törékenyek. Szívós és erőteljes harcosaikat kontinensszerte egyaránt félik "
 "és tisztelik a harcban tanúsított bátorságukért. Ráadásul a törpök jól "
 "boldogulnak a számok világában, és híresek késművességükről is. A törp "
 "kovácsok halálos fegyvereikkel és nehézpáncélzataikkal szereztek maguknak "
-"nevet. Ezek a felszerelések párjukat ritkítják minőségben, talán csak a "
-"perzsekény fegyverkovácsok remekei veszik fel a harcot velük. "
-"Intelligenciájuk és természetes kíváncsiságuk a földrész legfejlettebb "
-"technikájú fajává tette őket. Egyik leghíresebb és leginkább félt "
-"találmányuk egy rejtélyes por, amely tűz vagy szikra hatására hatalmasat "
-"robban. Egyes törp harcosok arra használják ezt a port, hogy apró tárgyakat "
-"félelmetes sebességre gyorsítva elhajítsanak. A technológiai fejlettségük "
-"miatt sok törp ma már egyre kevésbé bízik a varázslásban. Azonban néhányan "
-"továbbra is gyakorolják a mágia egyik formáját, amely rúnák vésésén alapul. "
-"Ők a rúnakovácsok, akik arra használják ezeket a véseteket, hogy a "
-"segítségükkel megbűvölt tárgyaknak valamilyen tulajdonságát felerősítsék."
+"nevet. Ezeknek a felszereléseknek párját ritkító a minőségük, talán csak a "
+"perzsekény fegyverkovácsok remekei veszik fel velük a harcot.A törpöket "
+"intelligenciájuk és természetes kíváncsiságuk a földrész legfejlettebb "
+"technikájú fajává tette. Egyik leghíresebb és legrettegettebb találmányuk "
+"egy rejtélyes por, amely tűz vagy szikra hatására hatalmasat robban. Egyes "
+"törp harcosok arra használják ezt a port, hogy apró tárgyakat félelmetes "
+"sebességre gyorsítva elhajítsanak. A technológiai fejlettségük miatt sok "
+"törp ma már egyre kevésbé bízik a varázslásban. Azonban néhányan továbbra is "
+"gyakorolják a mágia egyik formáját, amely rúnák vésésén alapul. Ők a "
+"rúnakovácsok, akik arra használják ezeket a véseteket, hogy a segítségükkel "
+"megbűvölt tárgyaknak valamilyen tulajdonságát felerősítsék."
 
 #. [race]
 #: data/core/units.cfg:89
@@ -4903,7 +4963,7 @@ msgstr ""
 "Az emberekkel összehasonlítva a tündék valamivel magasabbak, fürgébbek, de "
 "kevésbé szívósak. A fülük kissé hegyes, a bőrük fehér, a hajuk általában "
 "szőke. A legfeltűnőbb különbség emberek és tündék között, hogy a tündék két "
-"évszázadig is elélnek - kivéve betegség, háború esetén. Bár egyes, kimagasló "
+"évszázadig is elélnek - kivéve betegség, háború esetén. Bár egyes kimagasló "
 "varázslói képességekkel megáldott tündékről úgy tudjuk, hogy akár egy teljes "
 "évszázaddal túlélhetik fajtársaikat, a legtöbb tündét a huszadik "
 "életévtizede közeledtével lassan elkezdi elhagyni a testi ereje, és néhány "
@@ -4911,19 +4971,24 @@ msgstr ""
 "tündével veleszületik. Bár legtöbben nem képesek szabályozott csatornákba "
 "terelni, a mágia lappangó jelenlétének köszönhetik az éles érzékeiket és a "
 "hosszú életüket. Sokuknak ad a mágia különleges képességeket, mint a "
-"mesterlövészet vagy a lopakodás, amelyekkel olyan feladatokat láthatnak el, "
+"mesterlövészet vagy a lopakodás, ezekkel olyan feladatokat láthatnak el, "
 "amelyek a legtöbbeket ámulatba ejtik. Azok a tündék, akik sokkal "
 "általánosabb formákban tanulják meg alkalmazni az erőt, egész félelmetessé "
 "válhatnak a használata során. Sokan úgy döntenek, hogy az adományt mások "
 "gyógyítására fordítják.\n"
 "\n"
 "A tündék idejük legnagyobb részét képességeik tökéletesítésével töltik. Akik "
-"nem annyira értenek a mágiához, azok rendszerint fizikai ügyességük "
+"kevésbé értenek a mágiához, azok rendszerint fizikai ügyességük "
 "fejlesztésének szentelik idejüket. Ennek eredményeként a tündék kimagaslóan "
-"jó íjászok, harcművészetüknek talán ez a legfontosabb eleme. Minden tündéről "
-"elmondható még az is, hogy megmagyarázhatatlan módon vonzódik az érintetlen "
-"természethez. Nem is érzik magukat igazán jól a kietlen tájakon, ezért "
-"otthonaikat is a Nagy Kontinens erdőiben építették fel."
+"jó íjászok, harcművészetüknek talán ez a legfontosabb eleme. A legtöbb "
+"harcoló tündének van íja, íjászaik gyorsaságával és pontosságával semmilyen "
+"más faj nem kelhet versenyre. Minden tündéről elmondható még az is, hogy "
+"megmagyarázhatatlan módon vonzódik az érintetlen természethez. Nem is érzik "
+"magukat igazán jól a kietlen tájakon, ezért otthonaikat is a Nagy Kontinens "
+"erdőiben építették fel, mint Aethenwoodot délnyugaton és Wesmere-t "
+"északnyugaton. A tündék a legősibb faj a kontinensen, talán csak a trollok "
+"ősibbek. Sok településükről nem lehet tudni, hogy mikor alapították, de "
+"kétségtelenül már több mint ezer éve állnak."
 
 #. [race]: description=
 #: data/core/units.cfg:103
@@ -5012,7 +5077,7 @@ msgid ""
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 "Az emberi faj rendkívül sokszínű. Eredetileg az Öreg Kontinensről "
-"származnak, de az egész világot benépesítették, és számtalan, eltérő "
+"származnak, de az egész világot benépesítették, és számtalan eltérő "
 "kultúrájú népcsoportot hoztak létre. Bár más teremtményekkel ellentétben "
 "nincs a vérükben a mágia, gyakorlással képessé válhatnak a bűvös erők "
 "irányítására, sőt többfajta mágiával is jól boldogulnak. Nincsenek "
@@ -5024,7 +5089,30 @@ msgstr ""
 "emberek többsége, ahogy más fajok népei is, ösztönösen irtózik az "
 "élőholtaktól. Az emberek alacsonyabbak a tündéknél, de még így is magasabbak "
 "mint a törpök. A bőrük színe igen változatos, a majdnem fehértől egészen a "
-"sötétbarnáig terjedhet."
+"sötétbarnáig terjedhet.\n"
+"\n"
+"<header>text='A Korona alattvalói'</header>\n"
+"Az emberek rengeteg különböző csoportot alkotnak, ám a Nagy Kontinensen "
+"többségük a Wesnothi Korona uralma alatt él. Messze nyugatról, a "
+"tengerentúli Zöld Szigetről érkeztek, és amikor megjelentek a Nagy "
+"Kontinensen, az ország belsejében hamar megalapították fővárosukat, Weldynt. "
+"A következő századok során számos további várost építettek kontinensszerte. "
+"Az országot a Wesnothi Korona katonái védik, az ismert világ legjobban "
+"szervezett hadseregét alkotva. Harcosaikat a főbb tartományokból toborozzák, "
+"ahol a férfiakat már egészen fiatal korukban besorozzák.\n"
+"\n"
+"<header>text='A klánok'</header>\n"
+"Wesnoth keleti tartományaiban, a Klánföldeken, sokkal több nyílt síkság és "
+"hegylánc van, mint a nyugati, sokkal civilizáltabb területeken. Ez a lovas "
+"klánok otthona, akik szövetségben állnak a Wesnothi Koronával, de teljesen "
+"önállóak, és fenntartják a függetlenségüket. Néhányan alárendelt államnak "
+"tartják, amely élelmet és katonákat küld a Koronának a védelemért cserébe. "
+"Mások szerint egyenjogú Wesnoth nyugati felével. Akárhogy is, a keleti "
+"tartományokban nincs olyan sorkatonaság, mint Nyugat-Wesnothban. A harci "
+"kiképzés része a klánok életének; a szülők fiatal koruktól kezdve tanítják a "
+"gyerekeket lovagolni, harcolni és nyilazni. Általánosságban a klánharcosok "
+"nem olyan szervezettek, mint a civilizált harcosok, de a két csoport "
+"gyengeségei és erősségei jól kiegyensúlyozzák egymást."
 
 #. [race]: description=
 #: data/core/units.cfg:139
@@ -5181,12 +5269,60 @@ msgid ""
 "assassination."
 msgstr ""
 "Ránézésre az orkok félig emberek, félig szörnyetegek. Magasabbak, "
-"robusztusabbak és erősebbek mint az emberek. Természetüknél fogva harciasak, "
-"szilajak és kegyetlenek. A vérük sötétebb és sűrűbb mint az embereké, és nem "
-"túl igényesek a személyes megjelenésükre és a tisztaságra. Az orkok még "
-"saját fajtársaikkal szemben is igen erőszakosak, ennek ellenére falkában "
-"élnek; egy ork sosem él és nem is tesz meg nagyobb távolságot, ha nincsenek "
-"legalább féltucatnyian a csoportban."
+"robusztusabbak és erősebbek, mint az emberek. Természetüknél fogva "
+"harciasak, szilajak és kegyetlenek. A vérük sötétebb és sűrűbb, mint az "
+"embereké, és nem túl igényesek a személyes megjelenésükre és a tisztaságra. "
+"Az orkok még saját fajtársaikkal szemben is igen erőszakosak, ennek ellenére "
+"falkában élnek; egy ork sosem él és nem is tesz meg nagyobb távolságot, ha "
+"nincsenek legalább féltucatnyian a csoportban.\n"
+"\n"
+"<header>text='Társadalmi berendezkedés'</header>\n"
+"Csaknem minden ork egy törzs vagy klán tagja. A szomszédos törzsek közötti "
+"viszony általában erőszakos, kivéve, ha egy közös ellenség fenyegeti a "
+"létezésüket, vagy egy nagy fosztogatás lehetősége felülírja a kölcsönös "
+"ellenségeskedést. Időről időre egy erős törzsfőnök kiemelkedik a többi "
+"közül, és több törzs élére áll, általában úgy, hogy megfélemlíti a követőit. "
+"Az ork törzsek békeidőben jószerivel csak azzal foglalkoznak, hogy eddzenek, "
+"és felkészüljenek a következő fegyveres összecsapásra. Ismeretes, hogy az "
+"orkoknak van egy barbár írásrendszerük - általában vérrel írnak -, bár "
+"elsősorban csak arra használják, hogy sértéseket és fenyegetéseket váltsanak "
+"egymás közt a törzsi vezetők.\n"
+"\n"
+"Az ork közösségek alapja az erőfölény; akié az erő, azé a jog, és egy vezető "
+"csak addig vezet és él, amíg valakinek nem sikerül elragadni a címet tőle. A "
+"lehetséges törzsi vezetők folyamatosan a hatalomért vívott állandó "
+"küzdelemtől fortyognak. Egy ork vezető ritkán él pár évnél többet, hogy "
+"kiélvezze teljhatalmát, mielőtt megölnék a tisztségéért - bár a történészek "
+"feljegyeztek pár neves kivételt. Az orkok nem tartanak becsületkódexet, és "
+"mivel a vitathatatlan nyers erő általánosan elfogadott módja a hatalom "
+"kinyilvánításának, a merénylet, mérgezés, hátbatámadás teljesen járható útja "
+"annak, hogy valaki elérje a céljait.\n"
+"\n"
+"Az orkok főleg kietlen területeken élnek, gyakran dombokon és hegyeken, néha "
+"barlangokban. Növénytermesztéssel és állattartással nem foglalkoznak, de "
+"testfelépítésük és brutalitásuk eredményeként rátermett vadászok. Nagy "
+"létszámú hordáik viszonylag rövid idő alatt bármilyen területen képesek "
+"levadászni mindent, ami nagyobb a rágcsálóknál. Emiatt és a gyenge lábakon "
+"álló vezetés miatt az ork törzsek mondhatni félnomád életet élnek, sosem "
+"telepednek le egy helyen hosszabb időre. A nagyobb törzsek néha erősebben, "
+"évekre, évtizedekre is megvetik a lábukat egy-egy területen, nagy, városokat "
+"idéző táborhelyet építenek, de még ezeket is könnyedén lebontják és "
+"elhagyják, ha új helyet kell keresni a horda számára.\n"
+"\n"
+"A legidősebb ismert orkok ötven-hatvan év körüliek voltak, de igen kevesen "
+"élnek két-három évtizednél többet, mielőtt meghalnak, akár háborúban, akár "
+"egy fajtársuk kezétől. A legvénebb orkok gyakran sámánok, és valószínűleg ők "
+"az egyetlenek, akiket a többi ork megbízhatónak és semlegesnek tart. A "
+"szokás eredete ismeretlen, a sámánok nem folynak bele közvetlenül az ork "
+"közösség életébe, csak mint tanácsadók szerepelnek - más esetben nem is "
+"tűrnék, ha valaki tanácsokat osztogat. A sámánok sok szempontból ellentétei "
+"a többi orknak: testfelépítésük gyakran gyengébb, satnyább, a harcban "
+"járatlanok. Bár az orkok a nyers erőre hagyatkoznak, az erő nem minden "
+"orknak adatik meg. Sok ork kisebbnek és gyengébbnek születik, mint a "
+"többiek, és az erősebb testvéreik már újszülöttként kiszorítják őket. Az "
+"erősebbek elragadják az étel nagyját, és így erősebbre, nagyobbra nőnek, míg "
+"a gyengébb testvérek nem. Közülük sokan másban szereznek jártasságot, mint "
+"az íjászat és a orgyilkosság."
 
 #. [race]
 #: data/core/units.cfg:218
@@ -5251,7 +5387,32 @@ msgstr ""
 "bármiért is harcba bocsátkozzanak, hacsak nem azért, hogy megvédjék magukat "
 "azoktól, akik ellenségesek velük szemben. Ez egyben azt is jelenti, hogy "
 "ritkán kell aggódniuk bármi miatt, és idejük nagy részét alvással vagy "
-"szemlélődéssel tölthetik."
+"szemlélődéssel tölthetik. A trollok furcsán viszonyulnak a természethez. Ők "
+"nem az élő dolgokhoz kötődnek, mint a tündék, inkább a földhöz és a "
+"kövekhez. Némiképp kíváncsiak a környezetükre, és sok fiatalabb kölyök "
+"élvezettel járja a világot. Ahogy a trollok öregednek, egyre közömbösebbek "
+"lesznek, fokozatosan elvesztik a környezetük iránti érdeklődésüket, és "
+"idejük nagyobb részét alvással töltik a barlangjuk egy csendes, megszokott "
+"sarkában. Így megy ez mindaddig, amíg végül elpusztulnak, és a testük lassan "
+"élettelen kőszoborrá válik.\n"
+"\n"
+"A legtöbb ember szemében a trollok nem többek, mint egy újabb faj a szilaj "
+"szörnyetegek sorában. Ennek a közkeletű tévedésnek a terjedése részben az "
+"orkok számlájára írható, akik ráveszik a trollokat, hogy csatlakozzanak a "
+"seregeikhez. Mivel a trollok elég együgyűek, és nem értik más fajok "
+"módszereit, sőt néha még megkülönböztetni sem képesek őket, az orkok "
+"általában elég könnyen meggyőzik őket, hogy ha csatlakoznak hozzájuk, "
+"bosszút állhatnak azokon, akik korábban vadásztak rájuk. Aztán ezeket az új "
+"harcosokat csatarendbe állítják azok ellen, akikkel az orkok épp háborúban "
+"állnak, függetlenül attól, hogy azok korábban a trollok ellenségei voltak-e "
+"vagy sem, így aztán egyre több ellenségük lesz a félrevezetett trolloknak. "
+"Mégis, leggyakoribb ellenségük a törpök; a két faj közötti ellenségeskedés "
+"ősidőkre nyúlik vissza.\n"
+"\n"
+"<header>text='Földrajz'</header>\n"
+"A Nagy Kontinens hegyeit a trollok már jóval azelőtt lakták, hogy a törpök "
+"bevándoroltak volna oda. A trollokat gyakran látni a Wesnothtól északra és "
+"keletre fekvő hegyláncokon, meg persze ahol ork hordák járnak."
 
 #. [race]
 #: data/core/units.cfg:238
@@ -5307,7 +5468,20 @@ msgstr ""
 "talán pár havonta van szükség arra, hogy a holtidéző ránézzen a "
 "teremtményeire.\n"
 "\n"
-"A holtidézés tudománya szinte teljes egészében az emberek sajátja."
+"A holtidézés tudománya szinte kizárólag az embereké. Még a mágiára hajlamos "
+"fajok, mint a tündék és a sellők is csak nagyon kevés olyan fajtársukról "
+"számolnak be legendáikban, akik beleásták magukat a sötét tanokba. A "
+"feltevés szerint a holtidéző mágiához jó alkalmazkodóképesség és rugalmas "
+"gondolkodásmód szükséges, melyek szélsőséges formája leginkább csak az "
+"emberekben található meg. A legtöbb holtidéző végső célja az, hogy az élet "
+"megőrzésének és áttöltésének ugyanezt a művészetét magukra is alkalmazzák, "
+"megváltoztassák magukat bármi áron, hogy az elméjük és a szellemük "
+"megőrzésével végleg elkerüljék a halált.\n"
+"\n"
+"<header>text='Földrajz'</header>\n"
+"Bár az élőholt főurak jelentősebb számban csak I. Haldric uralkodása idején "
+"érkeztek a Nagy Kontinensre, a tündék és a törpök számára már korábban sem "
+"voltak ismeretlenek."
 
 #. [race]: description=
 #: data/core/units.cfg:254
@@ -5991,7 +6165,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:159
 msgid "Arcane attacks are very powerful against undead."
-msgstr "A szent támadások kifejezetten hatékonyak élőholt egységek ellen."
+msgstr "A földöntúli támadások kifejezetten hatékonyak élőholt egységek ellen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
@@ -6800,9 +6974,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Bejelentkezés a Wesnoth hivatalos többjátékos kiszolgálójára"
 
 #: src/game.cpp:1492
-#, fuzzy
 msgid "Join a different server"
-msgstr "Csatlakozás a hivatalos kiszolgálóhoz"
+msgstr "Csatlakozás másik kiszolgálóhoz"
 
 #: src/game.cpp:1494
 msgid "Local Game"
@@ -6838,11 +7011,10 @@ msgid "Choose your preferred language:"
 msgstr "A megfelelő nyelv kiválasztása:"
 
 #: src/game.cpp:1756
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "Hiba a következő kiegészítés(ek)ben, a betöltés sikertelen: "
-msgstr[1] "Hiba a következő kiegészítés(ek)ben, a betöltés sikertelen: "
+msgstr[0] "Hiba a következő kiegészítésben, a betöltés sikertelen: "
+msgstr[1] "Hiba a következő kiegészítésekben, a betöltés sikertelen: "
 
 #: src/game.cpp:1763
 msgid "ERROR DETAILS:"
@@ -6961,7 +7133,7 @@ msgstr "Ellenállások: "
 
 #: src/generate_report.cpp:176 src/multiplayer_create.cpp:399
 msgid "Experience Modifier: "
-msgstr "Szintlépés-alakító: "
+msgstr "Szintlépési küszöb: "
 
 #: src/generate_report.cpp:247
 msgid "tooltip^damage"
@@ -8064,7 +8236,7 @@ msgstr "Falu arany: "
 
 #: src/multiplayer_create.cpp:397
 msgid "Exp. Mod.: "
-msgstr "Szintlépés-alakító: "
+msgstr "Szintlépési küszöb: "
 
 #: src/multiplayer_create.cpp:530
 msgid "Players: "
@@ -8715,24 +8887,3 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
-
-#~ msgid ""
-#~ " This unit is capable of basic healing, though it can only delay the "
-#~ "effects of poison, not cure them entirely."
-#~ msgstr ""
-#~ " Ez az egység képes csillapítani mások sebződését, bár a mérgeknek csak "
-#~ "hátráltatja a hatását, nem tudja véglegesen gyógyítani."
-
-#~ msgid ""
-#~ " This unit can teleport between any two villages instantly, though the "
-#~ "player must control both, and the destination village must be unoccupied."
-#~ msgstr ""
-#~ " Ez az egység képes azonnal teleportálódni bármely két falu között, de "
-#~ "mindkettőnek saját falunak kell lennie, és a célállomáson nem szabad más "
-#~ "egységnek tartózkodnia."
-
-#~ msgid "Connect to Host/Server"
-#~ msgstr "Csatlakozás hálózati játékhoz/kiszolgálóhoz"
-
-#~ msgid "Join a server or hosted game"
-#~ msgstr "Csatlakozás egy kiszolgálóhoz vagy egy hálózati játékhoz"

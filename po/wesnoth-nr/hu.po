@@ -1,17 +1,21 @@
-# translation of hu-nr.po to Hungarian
-# Majsa Norbert, 2008.
+# translation of wesnoth-nr.pot to Hungarian
+# Hungarian translations for Battle for Wesnoth package.
+# Copyright (C) 2008 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Majsa Norbert <nmajsa@monocom.hu>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-nr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 16:14+0100\n"
-"PO-Revision-Date: 2008-03-01 18:34+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
+"PO-Revision-Date: 2008-03-31 20:48+0100\n"
+"Last-Translator: Majsa Norbert <nmajsa@monocom.hu>\n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Bookmarks: 756,348,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Generator: KBabel 1.11.4\n"
 
@@ -82,24 +86,22 @@ msgstr ""
 "gondolták, hogy harcuk lesz azoknak a nagyszerű eseményeknek az elindítója, "
 "miáltal az Északiföldek dicsősége újra visszatér.\n"
 "\n"
-"(Szakavatott szint, 14 pálya)"
+"(Szakavatott szint, 14 pálya.)"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:27
 msgid "Campaign Design"
-msgstr "Hadjárat tervezője"
+msgstr "Hadjárat tervezés"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:33
-#, fuzzy
 msgid "Artwork and Graphics Design"
-msgstr "Grafika"
+msgstr "Művészeti és grafikai tervezés"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:48
-#, fuzzy
 msgid "Prose, Grammatical and WML Assistance"
-msgstr "Próza, Helyesírási é WML segítség"
+msgstr "Prózai, nyelvezeti és WML támogatás"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:54
@@ -113,9 +115,8 @@ msgstr "Fordítók"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:82
-#, fuzzy
 msgid "Code and Translation Assistance"
-msgstr "Programozás és Fordítás"
+msgstr "Programozási és fordítói támogatás"
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:5
@@ -136,9 +137,9 @@ msgid ""
 "trade mingled more with the other kindred races than was common elsewhere. "
 "Dwarven Doors grew populous and wealthy."
 msgstr ""
-"Wesnoth messzi északi részén, Knalga a törp barlangok bejárata mellet terült "
-"a Törp Ajtóként ismert vidék. élelmet, fát és ruhát hoztak Wesnoth minden "
-"részéről és sok tünde földről, hogy a felszínen élők elcseréljék őket "
+"Wesnoth messzi északi részén Knalga, a törp barlangok bejárata mellett "
+"terült a Törp Ajtóként ismert vidék. Élelmet, fát és ruhát hoztak Wesnoth "
+"minden részéről és sok tünde földről, hogy a felszínen élők elcseréljék őket "
 "drágakövekre, fémre és törpök készítette trágyakra. Törpök és emberek éltek "
 "itt egymás mellet, még a tündérek is gyakrabban keveredtek az itt élőkkel, "
 "mint bárhol máshol. A TörpAjtók népessége egyre csak gyarapodott és egyre "
@@ -358,27 +359,23 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:73
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:143
-#, fuzzy
 msgid "Tallin"
 msgstr "Tallin"
 
 #. [side]: type=Orcish Warlord, description=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:92
-#, fuzzy
 msgid "Al'Tar"
 msgstr "Al'Tar"
 
 #. [side]: type=Orcish Warrior, description=Garrugch
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:104
-#, fuzzy
 msgid "Garrugch"
 msgstr "Garrugch"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:127
-#, fuzzy
 msgid "Defeat enemy leaders"
-msgstr "Győzd le az ellenséges vezéreket"
+msgstr "Legyőzöd az ellenséges vezéreket"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:784
@@ -408,9 +405,8 @@ msgstr "Győzd le az ellenséges vezéreket"
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:768
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:793
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:818
-#, fuzzy
 msgid "Death of Tallin"
-msgstr "ha Tallin meghal"
+msgstr "Tallin elesik"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:490
@@ -428,7 +424,6 @@ msgstr "Túlléped a körök számát"
 
 #. [unit]: type=Peasant, description=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:151
-#, fuzzy
 msgid "Zlex"
 msgstr "Zlex"
 
@@ -567,13 +562,11 @@ msgstr "Hahh! Grunt láncold le a maradék parasztot."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:245
-#, fuzzy
 msgid "YES! We did it! We are free!"
 msgstr "IGEN! Megcsináltuk! Szabadok vagyunk!"
 
 #. [unit]: type=Orcish Grunt, description=Un'Yin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:260
-#, fuzzy
 msgid "Un'Yin"
 msgstr "Un'Yin"
 
@@ -619,9 +612,8 @@ msgstr "*LEDÖF*"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:360
-#, fuzzy
 msgid "Ugh!"
-msgstr "Ugh!"
+msgstr "Áhh!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:365
@@ -788,9 +780,8 @@ msgstr "Neep Neep!"
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:230
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:434
-#, fuzzy
 msgid "Ahhhh!"
-msgstr "Ahhhh!"
+msgstr "Áhhhh!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:235
@@ -802,13 +793,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:241
 msgid "Find the Dwarves"
-msgstr ""
+msgstr "Megtalálod a törpöket"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:245
-#, fuzzy
 msgid "Clear the Caves"
-msgstr "tisztítsd meg a bányákat"
+msgstr "Megtisztítod a barlangokat"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:788
@@ -818,9 +808,8 @@ msgstr "tisztítsd meg a bányákat"
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:989
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1014
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:190
-#, fuzzy
 msgid "Death of Hamel"
-msgstr "ha meghal Hamel"
+msgstr "Hamel elesik"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:276
@@ -857,7 +846,7 @@ msgstr "Camerin"
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:497
 #, fuzzy
 msgid "Hey, what's going on in here?"
-msgstr "Hé, mi lenne ha bemennénk ide?"
+msgstr "Hé, mi lenne, ha bemennénk ide?"
 
 #. [message]: role=Admirer
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:328
@@ -1002,9 +991,8 @@ msgstr "Juss el Tallinnal a Törp toronyig vagy..."
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:421
-#, fuzzy
 msgid "Clear the Caves (Bonus)"
-msgstr "Megtisztítod a barlangokat(bónusz)"
+msgstr "Megtisztítod a barlangokat (bónusz)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:792
@@ -1013,22 +1001,22 @@ msgstr "Megtisztítod a barlangokat(bónusz)"
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:780
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:805
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:830
-#, fuzzy
 msgid "Turns Run Out"
-msgstr "Lejárnak a körök"
+msgstr "Túlléped a körök számát"
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:449
 #, fuzzy
 msgid "Well met, Tallin. My men have told me of your victory against Al'Tar."
 msgstr ""
-"Örülök, hogy találkoztunk Tallin. Az embereim mesélté győzelmed Al'Tar "
+"Örülök, hogy találkoztunk Tallin. Az embereim mesélték győzelmed Al'Tar "
 "felett."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:453
+#, fuzzy
 msgid "Thank you and well-met indeed, Lord Hamel."
-msgstr ""
+msgstr "Köszönöm és légy üdvözölve, Hamel nagyúr."
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:459
@@ -1044,6 +1032,7 @@ msgstr "Awww! Megöltük mind?"
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:542
+#, fuzzy
 msgid ""
 "Oh, don't mind him, that'd be Camerin. He used to be yer usual scholarly "
 "mage, and he moved awa' up here to be alone and study. But then when the "
@@ -1054,6 +1043,13 @@ msgid ""
 "very wide berth by now. So just be polite, give him some room and you'll "
 "find he is relatively harmless..."
 msgstr ""
+"Ó ne aggódj miatta ő csak Camerin. Valamikor varázs iskolában tanított, de "
+"aztán fel jött ide, hogy egyedül lehessen és tanulhasson. De amikor az orkok "
+"betörtek ide kicsit megbolondult. Szerintem néhány portyázó ork kifosztotta "
+"a kunyhóját és felégette a fejegyzéseit vagy miét. Bármi történt is "
+"beleőrült. Azóta ezeket a berlangokat rója és minden szörnyet elpusztít aki "
+"az útjába akad. Így aztán békén hagyják és próbállják elkerülni. Szóval légy "
+"udvarias, ne menj túl közel hozzá és meglátod alapvetően ártalmatlan..."
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:578
@@ -1121,8 +1117,9 @@ msgstr "Trollok és csotvázak hordái? Hol? Menjünk hadd égessem fel őket!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:614
+#, fuzzy
 msgid "Err... ok...."
-msgstr ""
+msgstr "Őőő... Jól van..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:619
@@ -1132,19 +1129,16 @@ msgstr "*Biztonságos egy ilyen hóldkórost magunkkal hoznunk?*"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:636
-#, fuzzy
 msgid "BURN, YOU DISGUSTING FILTH!"
 msgstr "ÉGJETEK GUSZTUSTALAN FÉRGEK!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:641
-#, fuzzy
 msgid "Ahhh! Fire!"
-msgstr "Ahhh! Tűz!"
+msgstr "Óóóhhh! Tűz!"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:653
-#, fuzzy
 msgid "YEAH! DIE, SCUM, DIE!"
 msgstr "IGEN! PUSZTULJ, FATTYÚ PUSZTULJ!"
 
@@ -1190,7 +1184,6 @@ msgstr "Sötétség vad isteneire, mik azok ott!"
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:732
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:775
-#, fuzzy
 msgid "Skeletons!"
 msgstr "Csontvázak!"
 
@@ -1215,14 +1208,12 @@ msgstr ""
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:818
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:855
-#, fuzzy
 msgid "They are attacking us!"
 msgstr "Megtámadtak minket!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:823
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:860
-#, fuzzy
 msgid "Destroy them!"
 msgstr "Pusztuljanak!"
 
@@ -1283,8 +1274,9 @@ msgstr "*BUMM*"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:953
+#, fuzzy
 msgid "....right."
-msgstr ""
+msgstr "....rendben."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:991
@@ -1480,11 +1472,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:59
+#, fuzzy
 msgid ""
 "What is the story with those skeletons anyway? They look like they were "
 "dwarves when they lived, but now they just seem to be mindless killers, "
 "attacking anyone and anything."
 msgstr ""
+"Mi van ezekkel a csontvázakkal? Úgy tűnik mikor éltek törpök voltak, de most "
+"csak agyatlan gyilkosok akik mindent és mindenkit megtámadnak."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:64
@@ -1644,7 +1639,6 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:4
-#, fuzzy
 msgid "Clearing the Mines"
 msgstr "Megtisztítod a bányákat"
 
@@ -1717,7 +1711,6 @@ msgstr ""
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:128
-#, fuzzy
 msgid "Tallin, are you OK?!"
 msgstr "Tallin, jól vagy?"
 
@@ -1737,30 +1730,28 @@ msgstr "......dögölj.... meg..... kicsi.....törp.....féreg!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:141
-#, fuzzy
 msgid "Tallin! No!"
 msgstr "Tallin! Ne!"
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:146
-#, fuzzy
 msgid "Tallin, what are you doing?"
 msgstr "Tallin, mit csinálsz?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:151
 msgid ".....Death!..... Blood!...."
-msgstr ""
+msgstr ".....Halál!..... Vér!...."
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:170
+#, fuzzy
 msgid "Ahhh! Treacherous human! Kill him, men!"
-msgstr ""
+msgstr "Ahhh! Álnok emberek! Öljétek meg őket!"
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:175
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2140
-#, fuzzy
 msgid "HAHAHAHAHAHAHA!"
 msgstr "HAHAHAHAHAHAHA!"
 
@@ -2061,14 +2052,14 @@ msgstr ""
 
 #. [message]: description=Necrophage
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:976
-#, fuzzy
 msgid "FOOOOOOOD!"
 msgstr "KAJAAAAAAA!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:982
+#, fuzzy
 msgid "Holly Lords of Light, what kind of vile creation are those things!"
-msgstr ""
+msgstr "Fények szent urai, miféle ördögi kreálmányok azok a dolgok?"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:993
@@ -2089,10 +2080,13 @@ msgstr ""
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:1005
+#, fuzzy
 msgid ""
 "Pah! They look like fat slugs to me. Come on boys, lets chop them to pieces "
 "before they can leave the canal."
 msgstr ""
+"Pfúj! Olyanok mint a meztelencsigák. Gyerünk fiúk szeleteljük fel őket "
+"mielőtt elhagynák a kanálist."
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:4
@@ -2113,7 +2107,7 @@ msgstr "Trevor"
 #. [side]: type=Death Knight, description=Author
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:197
 msgid "Author"
-msgstr ""
+msgstr "Szerző"
 
 #. [side]: type=Death Knight, description=Sam
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:224
@@ -2499,26 +2493,22 @@ msgstr "AHHHHHHHHH!"
 
 #. [message]: description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:897
-#, fuzzy
 msgid "... wait a second, who are you?"
 msgstr "... egy pillanat, ki vagy te?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:902
-#, fuzzy
 msgid "I.... I am one of Tallin's men..."
 msgstr "Én.... Én Tallin egyik embere vagyok..."
 
 #. [message]: description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:907
-#, fuzzy
 msgid "Who is this Tallin?"
 msgstr "Ki az a Tallin?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:912
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:28
-#, fuzzy
 msgid "I am."
 msgstr "Én."
 
@@ -2586,7 +2576,6 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:967
-#, fuzzy
 msgid "?????"
 msgstr "?????"
 
@@ -2640,8 +2629,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1007
+#, fuzzy
 msgid "Let me guess. Malifor?"
-msgstr ""
+msgstr "Hadd találjam ki. Malifor?"
 
 #. [message]: description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1012
@@ -2731,7 +2721,7 @@ msgstr " *sniff* Embereket érzek."
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1133
 #, fuzzy
 msgid "You are just plain deaf. I heard them coming from a mile off."
-msgstr "Tök süket vagy. Már egy mérföldről hallottam, hogy közeednek."
+msgstr "Tök süket vagy. Már egy mérföldről hallottam, hogy közelednek."
 
 #. [message]: description=Naga Guard
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1138
@@ -2967,7 +2957,6 @@ msgstr "Nagyszerű isten hozott körünkben."
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1539
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1667
-#, fuzzy
 msgid "Thank you, Tallin."
 msgstr "Köszönöm, Tallin."
 
@@ -3697,9 +3686,12 @@ msgstr ""
 
 #. [message]: description=Study Guard
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2700
+#, fuzzy
 msgid ""
 "They are attacking the master's study! We must stop them! Call the reserves!"
 msgstr ""
+"Megtámadják a mester dolgozósobáját! Meg kell állítanunk őket! Hívjátok a "
+"tartalékokat."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2705
@@ -4363,7 +4355,6 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:197
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:60
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:43
-#, fuzzy
 msgid "Rakshas"
 msgstr "Rakshas"
 
@@ -4425,16 +4416,21 @@ msgstr ""
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:384
+#, fuzzy
 msgid ""
 "I am not so sure it's that simple Tallin. Think back to those orcs back in "
 "dwarven doors, and those wolves on the way to the mines; they were both "
 "saying something about 'The Master'."
 msgstr ""
+"Én nem vagyok benne olyan biztos, hogy ez ilyen egyszerű. Gondolj csak "
+"vissza az orkokra Törpkapuknál vagy azokra a farkasokra a bányák felé vezető "
+"úton, mindannyian valami 'Mesterről' beszéltek."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:389
+#, fuzzy
 msgid "Yeah?"
-msgstr ""
+msgstr "Valóban?"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:394
@@ -4450,15 +4446,13 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:405
-#, fuzzy
 msgid "Defeat Rakshas... if you can..."
-msgstr "Győzd le Rakshast... ha tudod..."
+msgstr "Legyőzöd Rakshast... ha tudod..."
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:409
-#, fuzzy
 msgid "Or, resist till end of turns"
-msgstr "Vagy, tarts ki a körök végéig"
+msgstr "Vagy, kitartasz a körök végéig"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:427
@@ -4468,8 +4462,9 @@ msgstr "Ahhhh! Fuss az életedért!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:432
+#, fuzzy
 msgid "What the... Hey, where do you think you are running off to you coward!"
-msgstr ""
+msgstr "Mi a ... Hé miből gondolod, hogy el futhatsz te gyáva!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:437
@@ -4479,17 +4474,24 @@ msgstr "Állítsd meg!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:442
+#, fuzzy
 msgid ""
 "It's too late, I am sorry, Tallin, he got away! We did not expect he would "
 "flee like a coward."
 msgstr ""
+"Túl késő, sajnálom Tallin, elmenekült! Nem számítotunk rá, hogy elszalad, "
+"mint egy gyáva nyúl!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:447
+#, fuzzy
 msgid ""
 "Damn! We had the opportunity to end the war in one stroke there. Now we will "
 "have to go after him, assuming we can break this siege!"
 msgstr ""
+"A fenébe! Meg volt rá a lehetőségünk, hogy egy csapással véget vessünk a "
+"háborúnak. Most meg üldözhetjük, feltéve, hogy át tudunk törni ezen a "
+"seregen!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:455
@@ -4542,13 +4544,15 @@ msgstr ""
 
 #. [message]: description=Goblin Knight
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:560
+#, fuzzy
 msgid "HAHAHAHAHA, GOT YOU, SUCKERS!"
-msgstr ""
+msgstr "HAHAHAHAHA, MOST ELKAPLAK FATTYÚ!"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:565
+#, fuzzy
 msgid "CHARGE!!!"
-msgstr ""
+msgstr "ROHAM!!!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:570
@@ -4715,13 +4719,11 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:56
-#, fuzzy
 msgid "Destroy the Invaders"
-msgstr "Pusztítsd el a megszállókat"
+msgstr "Elpusztítod a megszállókat"
 
 #. [side]: type=Swordsman, description=Friend
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:84
-#, fuzzy
 msgid "Friend"
 msgstr "Barát"
 
@@ -4743,8 +4745,9 @@ msgstr "Istenem! Tallin te vagy?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:287
+#, fuzzy
 msgid " $betrayed_friend.user_description, I..."
-msgstr ""
+msgstr " $betrayed_friend.user_description, Én..."
 
 #. [message]: description=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:292
@@ -4754,7 +4757,6 @@ msgstr "Gyerünk Tallin, beszélj hozzám!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:298
-#, fuzzy
 msgid ".........."
 msgstr ".........."
 
@@ -5171,15 +5173,13 @@ msgstr "Ro'Arthian"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:295
-#, fuzzy
 msgid "Save Stalrag from Ro'Sothian."
-msgstr "Mentsd meg Stalragot Ro'Sothiantól"
+msgstr "Megmented Stalragot Ro'Sothiantól"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:299
-#, fuzzy
 msgid "Death of Tallin or Stalrag."
-msgstr "ha meghal Tallin vagy Stalrag."
+msgstr "Tallin vagy Stalrag elesik"
 
 #. [unit]: type=$Sothian_in_command.type, description=Ro'Sothian
 #. [unit]: type=Lich, description=Ro'Sothian
@@ -5474,15 +5474,13 @@ msgstr "És valaki tartsa szemmel. Nem akarom, hogy meglépjen."
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:818
-#, fuzzy
 msgid "Capture Ro'Arthian."
-msgstr "Fogd el Ro'Arthiant"
+msgstr "Elfogod Ro'Arthiant"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:826
-#, fuzzy
 msgid "Death of Stalrag."
-msgstr "ha meghal Stalrag"
+msgstr "Stalrag elesik"
 
 #. [message]: description=Ro'Sothian1
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:870
@@ -5790,9 +5788,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:38
-#, fuzzy
 msgid "Resist Till the End of Turns"
-msgstr "Állj ellen a körök végéig"
+msgstr "Kitartasz a körök végéig"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:342
@@ -6265,7 +6262,7 @@ msgstr "Akkor fegyverbe, emberek! Knalgáért és a hercegnőért!"
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:187
 msgid "Rescue the Princess"
-msgstr "mentsd meg a hercegnőt"
+msgstr "Megmented a hercegnőt"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:482
@@ -6282,9 +6279,8 @@ msgstr "mentsd meg a hercegnőt"
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:772
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:797
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:822
-#, fuzzy
 msgid "Death of Ro'Arthian"
-msgstr "ha meghal Ro'Arthian"
+msgstr "Ro'Arthian elesik"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:486
@@ -6301,9 +6297,8 @@ msgstr "ha meghal Ro'Arthian"
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:776
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:801
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:826
-#, fuzzy
 msgid "Death of Ro'Sothian"
-msgstr "ha meghal Ro'Sothian"
+msgstr "Ro'Sothian elesik"
 
 #. [side]: type=Orcish Warlord, description=Atul
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:224
@@ -6643,15 +6638,13 @@ msgstr "Kishmish"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:321
-#, fuzzy
 msgid "Find the Rod of Justice"
-msgstr "Találd meg az igazság botját"
+msgstr "Megtalálod az Igazság botját"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:329
-#, fuzzy
 msgid "Death of Abhai"
-msgstr "ha meghal Abhai"
+msgstr "Abhai elesik"
 
 #. [message]: description=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:467
@@ -6754,8 +6747,9 @@ msgstr ""
 
 #. [message]: description=Troll
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:639
+#, fuzzy
 msgid "Bah! More undead. Alert chief!"
-msgstr ""
+msgstr "Hah! Mégtöbb élőholt. Riadóztassátok a főnököt!"
 
 #. [unit]: type=Dwarvish Lord, description=Haffel
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:683
@@ -6769,22 +6763,29 @@ msgstr "Hekkna"
 
 #. [message]: description=Haffel
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:760
+#, fuzzy
 msgid "Sound the alert boys, a group of undead approach."
-msgstr ""
+msgstr "Fújjátok meg a kürtöket, egy csapat előholt közeleg."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:766
+#, fuzzy
 msgid ""
 "Peace, peace! We do not wish to fight. Let us pass and we shall do you no "
 "harm."
 msgstr ""
+"Béke, békével jöttünk! Nem akarunk harcolni. Engedjetek át és nem esik "
+"bántódásotok."
 
 #. [message]: description=Haffel
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:771
+#, fuzzy
 msgid ""
 "Ha! You hear that, brother! This scum says he means us no harm, and simply "
 "wishes to pass!"
 msgstr ""
+"Hah! Hallotad ezt testvér! Ez a féreg azt mondta nem akar bántani minket, és "
+"csak át akar kelni!"
 
 #. [message]: description=Hekkna
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:776
@@ -6793,10 +6794,13 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:782
+#, fuzzy
 msgid ""
 "We have no business with these creatures you speak of. We simply seek the "
 "Rod of Justice."
 msgstr ""
+"Semmi dolgunk azokkal a lényekkel amikről beszéltél. Egyszerűen csak az "
+"Igazság botját keressük."
 
 #. [message]: description=Haffel
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:787
@@ -7022,14 +7026,17 @@ msgstr ""
 #. [unit]: type=Troll Warrior, description=Ung
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:68
 msgid "Ung"
-msgstr ""
+msgstr "Ung"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:141
+#, fuzzy
 msgid ""
 "After rescuing the princess, Tallin and his allies quickly withdrew into the "
 "caves."
 msgstr ""
+"Miután kimenekítették a hercegnőt, Tallin és szövetsgesei gyorsan "
+"visszavonultak a barlangokba."
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:147
@@ -7241,22 +7248,30 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:314
+#, fuzzy
 msgid "Uh huh. Good for you."
-msgstr ""
+msgstr "Huh. Jó nektek."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:319
+#, fuzzy
 msgid ""
 "The only problem - or the major one, anyway - is these blasted orcs. They "
 "all have united under the leadership of this guy called Rakshas and are "
 "determined to make Knalga into an orcish stronghold - enslaving or killing "
 "any humans, dwarves or anything else along the way."
 msgstr ""
+"Az egyetlen problémát - tulajdonképpen a legnagyobbat - ezek az átkozott "
+"orkok jelentik. Mindannyian egy vezető alatt egyesültek, akit Rakshasnak "
+"hívnak. Ő elhatározta, hogy Knalgából egy ork erődítményt csinál, megölve "
+"vagy rabszolgasorba taszítva minden embert, törpöt vagy bárkit aki az útjába "
+"áll."
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:324
+#, fuzzy
 msgid "So what does this have to do with me?"
-msgstr ""
+msgstr "És mi közöm van nekem ehhez?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:329
@@ -7268,20 +7283,23 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:334
+#, fuzzy
 msgid "Pff, foolish human. What in the world gave you that idea."
-msgstr ""
+msgstr "Pff, bolond ember! Honnét vetted ezt az ostoba ötletet?"
 
 #. [message]: description=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:339
+#, fuzzy
 msgid "Ungrateful minx! I'm sorely tempted to break your neck!"
-msgstr ""
+msgstr "Hálátlan nőszemély! Legszívesebben kitörném a nyakadat!"
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:344
+#, fuzzy
 msgid ""
 "Make one move towards me, lich, and you'll find yourself dangling off the "
 "end of a vine."
-msgstr ""
+msgstr "Még egy mozdulat vili, és ott fogsz lógni egy faágon."
 
 #. [message]: description=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:349
@@ -7314,13 +7332,15 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:379
+#, fuzzy
 msgid "Mind your betters, mage!"
-msgstr ""
+msgstr "Vigyázz magadra varázsló!"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:384
+#, fuzzy
 msgid "Mind your tongue, elf!"
-msgstr ""
+msgstr "Fékezd a meg nyelved tünde!"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:391
@@ -7331,10 +7351,13 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:396
+#, fuzzy
 msgid ""
 "Who said that I wasn't going to repay you? When I get back to the elves, we "
 "will give you five thousand gold for your trouble."
 msgstr ""
+"Ki mondta, hogy nem fizetünk nektek? Amint visszamegyek a tündékhez, ötezer "
+"aranyat adunk a fáradtságotokért."
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:401
@@ -7350,8 +7373,9 @@ msgstr "Ez a te dolgod ember.Nem az enyém."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:411
+#, fuzzy
 msgid " *sigh* Oh well. It isn't as if we weren't expecting this."
-msgstr ""
+msgstr "*Sóhaj* Hát. Ez nem egészen az amire számítottunk."
 
 #. [message]: description=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:416
@@ -7370,8 +7394,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:426
+#, fuzzy
 msgid "Well, it's pointless to linger here. Let's get back to Knalga."
-msgstr ""
+msgstr "Hát felesleges itt időznünk. Gyerünk vissza Knalgába!"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:434
@@ -7922,17 +7947,22 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:283
+#, fuzzy
 msgid "You're right, Hamel, sorry. Were you able to pursue the trolls?"
-msgstr ""
+msgstr "Igazad van Hamel, sajnálom. Tudjátok üldözni a trollokat?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:288
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:382
+#, fuzzy
 msgid ""
 "We tried, Tallin, but with the orcs still pressing our southern defenses and "
 "other groups of trolls trying to break through everywhere, we simply didna "
 "ha' the manpower."
 msgstr ""
+"Próbáltuk Tallin, de az orkok még mindig támadják a déli védelmi vonalainkat "
+"és több csapat troll is támad minket mindenhol, egyszerűen már nincs ennyi "
+"törp harcosunk."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:298
@@ -8144,16 +8174,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:715
-#, fuzzy
 msgid "Defeat the enemy leaders or"
-msgstr "Győzd le az ellenséges vezéreket vagy"
+msgstr "Legyőzöd az ellenséges vezéreket vagy"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:719
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1222
-#, fuzzy
 msgid "Resist as long as you can"
-msgstr "Állj ellen amíg lehetséges"
+msgstr "Kitartasz, ameddig csak tudsz"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:757
@@ -8335,23 +8363,27 @@ msgstr "Nagyszerű emberek. Az út tiszta előttünk, előre a győzelemért!"
 
 #. [message]: description=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1007
+#, fuzzy
 msgid " *sniff sniff*"
-msgstr ""
+msgstr "*szimatolás*"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1012
+#, fuzzy
 msgid "What's up big guy?"
-msgstr ""
+msgstr "Mi van nagyfiú?"
 
 #. [message]: description=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1017
+#, fuzzy
 msgid " *flap flap flap*"
-msgstr ""
+msgstr "*szárnycsapkodás*"
 
 #. [message]: role=supporter
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1054
+#, fuzzy
 msgid "Hey! Where is he going?"
-msgstr ""
+msgstr "Hé! Hova megy?"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1059
@@ -9150,9 +9182,8 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:763
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:788
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:813
-#, fuzzy
 msgid "Defeat the orcs"
-msgstr "Győzd le az orkokat"
+msgstr "Legyőzöd az orkokat"
 
 #. [message]: description=Ha'Tuil
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:847
@@ -9232,18 +9263,25 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:18
+#, fuzzy
 msgid ""
 "Battle plans were quickly made; the party split into three groups. Two of "
 "the groups immediately set off northwest and southwest respectively while "
 "the third group rested for an hour and then set off directly west."
 msgstr ""
+"A haditervet gyorsan kidolgozták, a csapat három részre oszlott. Kettő "
+"közülük azonnal elindult északnyugatnak és délnyugatnak, míg a harmadik "
+"csoport pihent néhány órát majd egynesen nyugatnak tartott."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:22
+#, fuzzy
 msgid ""
 "The idea was to completely surround Rakshas on all sides, cutting off any "
 "chance of escape or reinforcements."
 msgstr ""
+"A terv az volt, hogy minden oldalról bekerítik Rakshast, elvágva mindentől, "
+"hogy ne legyen esékye elszökni vagy utánpótlást hívni."
 
 #. [side]: type=Orcish Warlord, description=Calter
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:157
@@ -9294,57 +9332,76 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:619
+#, fuzzy
 msgid "A few short hours later all the groups converged on the fortress."
-msgstr ""
+msgstr "Néhány óra múlva mindegyik csapat elérte az erődött."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:763
+#, fuzzy
 msgid ""
 "Rakshas! You have evaded me for the last time. Now come out and die like a "
 "man!"
 msgstr ""
+"Rakshas! Legutóbb elmenekültél előlem. Most gyere ki és halj meg mint egy "
+"férfi!"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:768
+#, fuzzy
 msgid "What the...? How did he get here?"
-msgstr ""
+msgstr "Mi a...? Hogy kerültek ezek ide?"
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:779
+#, fuzzy
 msgid ""
 "We have crushed and scattered your entire eastern flank, and now it's your "
 "turn!"
-msgstr ""
+msgstr "Elpusztítottuk az egész keleti szárnyadat, és most te következel!"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:784
+#, fuzzy
 msgid ""
 "You slimy little elf! So you have joined hands with these humans, have you? "
 "Very well, both of you shall soon be dead!"
 msgstr ""
+"Talpnyaló tündék! Szóval összefogtatok az emberekkel, nem igaz? Mindegy "
+"nemsokára mind meghaltok!"
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:789
+#, fuzzy
 msgid ""
 "Good luck, you monster. You are cut off and surrounded. We shall kill you "
 "and feed your carcass to the vultures and wild beasts."
 msgstr ""
+"Sok szerencsét te féreg. Bekerítettünk és elvágtunk mindenkitől. "
+"Felkoncolunk és a hulládat kidobjuk a keselyűknek és a vadaknak."
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:794
+#, fuzzy
 msgid ""
 "Hahahahah! You fools, do you not see that you are right in the heart of "
 "orcish territory, surrounded yourselves! Why, at this very moment my entire "
 "western army is marching this way. They will soon be here and will scatter "
 "your forces like straw!"
 msgstr ""
+"Hahaha! Bolondok, észre se vettétek, hogy az ork tartomány közepén vagytok. "
+"Bekeríttettek, magatokat kerítettétek be! Ezekben a pillanatokban is ide "
+"tart az egész északi szárnyam. Nemsokára ideérnek és elsöpörnek benneteket "
+"mint egy szalmaszálat."
 
 #. [message]: description=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:801
+#, fuzzy
 msgid ""
 "We have crushed and scattered your entire eastern flank, buddy, and now it's "
 "your turn!"
 msgstr ""
+"Elpusztítottuk az egész keleti szárnyadat pajtás, és most te következel!"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:806
@@ -9362,21 +9419,27 @@ msgstr "Nekünk nincs szemgolyónk te ostoba!"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:816
+#, fuzzy
 msgid ""
 "PAH! You fools, know that you shall soon be outnumbered and surrounded. At "
 "this very moment my entire western army is marching this way. They will soon "
 "be here and will scatter your puny forces like straw!"
 msgstr ""
+"Hahh! Bolondok tudjátok meg nemsokára túlerőben leszünk és bekerítünk "
+"benneteket. Ezekben a pillanatokban is ide tart az egész északi szárnyam. "
+"Nemsokára ideérnek és elsöpörnek benneteket mint egy szalmaszálat."
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:890
+#, fuzzy
 msgid "Will they, now?"
-msgstr ""
+msgstr "Tényleg ide tartanak?"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:895
+#, fuzzy
 msgid "WHAT!?!?!"
-msgstr ""
+msgstr "MI!?!?!"
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:900
@@ -9425,7 +9488,7 @@ msgstr "HIDELÉRT!!!"
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:936
 msgid "FOR DWARVEN DOORS!!!"
-msgstr "A TÖRP AJTÓKÉRT!!!"
+msgstr "A Törp Kapuért!!!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:941
@@ -9468,8 +9531,9 @@ msgstr "Pusztulj, gyilkos szörny! Többé nem fogod terrorizálni észak népé
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1079
+#, fuzzy
 msgid "Learn the fate of one who offends the Dwarves of Knalga."
-msgstr ""
+msgstr "Most megtudod mi a sorsa annak ki megsérti Knalga törpjeit."
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1084
@@ -9515,13 +9579,16 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1137
+#, fuzzy
 msgid "Sweet gods, look at all those orcs pouring out of that fortress."
 msgstr ""
+"Az istenekre, nézzétek azokat az orkokat csak úgy ömlenek a az erődből."
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1142
+#, fuzzy
 msgid "Aye, and not just any orcs either, those are all hardened veterans!"
-msgstr ""
+msgstr "Igen, és azok nem egyszerű orkok, hanem a legkeményebb veteránok!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1147
@@ -9757,8 +9824,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:401
+#, fuzzy
 msgid " 'Lord' Oh no!"
-msgstr ""
+msgstr "'Uram' na nee!"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:406
@@ -10239,8 +10307,10 @@ msgstr "Ahhhhhhh!"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:320
+#, fuzzy
 msgid "You monsters think you are so tough don't you? Well check this out."
 msgstr ""
+"Azt hiszitek ti szörnyek, hogy kemények vagytok? Hát most majd meglátjuk."
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:341
@@ -10249,45 +10319,53 @@ msgstr ""
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:345
+#, fuzzy
 msgid "Well, be grateful that you are alive."
-msgstr ""
+msgstr "Hát hálásak vagyunk, hogy életben maradtál."
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:349
+#, fuzzy
 msgid " *giggle* Thank you honey."
-msgstr ""
+msgstr "*kuncogva* Köszönöm kedvesem."
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:354
+#, fuzzy
 msgid "Thank the lords of light, not me!"
-msgstr ""
+msgstr "A fény urainak köszönd, ne nekem!"
 
 #. [message]: description=Father Marcus
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:373
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:665
+#, fuzzy
 msgid "You incompetent fools, you think you can kill us? Good luck!"
-msgstr ""
+msgstr "Ostoba bolondok, azt hiszitek meg tudtok minket ölni? Sok szerencsét!"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:395
+#, fuzzy
 msgid "Ouch! That hurt. Let's try not to do that again, OK?"
-msgstr ""
+msgstr "Aú! Ez fájt. Legközelebb ezt ne csináld, jó?"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:409
+#, fuzzy
 msgid "Ack! Stupid slobbering beast!"
-msgstr ""
+msgstr "Értettem! Ostoba nyáladzó szörny!"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:414
+#, fuzzy
 msgid "Your efforts to destroy us are in vain, you foul creature."
-msgstr ""
+msgstr "Erőfeszítéseid az elpusztításomra hiábavalóak, te bolond teremtmény."
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:435
+#, fuzzy
 msgid "There we go, payback time!"
-msgstr ""
+msgstr "Itt jövünk a visszavágóra!"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:449
@@ -10304,8 +10382,9 @@ msgstr "Elbukni? Soha! Ez a szó nem szerepel a szótáramban."
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:475
+#, fuzzy
 msgid "There we go, let's give this one more shot!"
-msgstr ""
+msgstr "Mi jövünk, gyerünk már csak egy csapás kell neki!"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:479
@@ -10577,18 +10656,3 @@ msgid ""
 msgstr ""
 "Bolondok! Azt hittétek ilyen könnyű engem megölni? A hulláitok majd engem "
 "fognak szolgálni. Támadjátok őket!"
-
-#, fuzzy
-#~ msgid "Ahhh, yes, 400 gold. Praise the Master *snicker* ."
-#~ msgstr "Ahh igen 400 arany. A Mesternek hála. *kuncogva*"
-
-#, fuzzy
-#~ msgid ""
-#~ "You foolish humans! You shall all soon be meat for my wolves! "
-#~ "REINFORCEMENTS!"
-#~ msgstr ""
-#~ "Bolond emberek! A farkasaink fognak felzabálni benneteket! ERŐSÍTÉS!"
-
-#, fuzzy
-#~ msgid "Amulet of Strength"
-#~ msgstr "Az erő Amuletje"
