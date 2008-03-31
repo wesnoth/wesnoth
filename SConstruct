@@ -1,3 +1,4 @@
+# vi: syntax=python:et:ts=4
 #
 # SCons build description for the Wesnoth project
 #
@@ -895,6 +896,37 @@ env.Command("TAGS", sources, 'etags -l c++ $SOURCES')
 env.Clean(all, 'TAGS')
 
 #
+# Gettext message catalog generation
+#
+
+textdomains = os.listdir("po")
+textdomains.remove(".svn")
+textdomains.remove("wesnoth-manpages")
+textdomains.remove("wesnoth-manual")
+textdomains = map(lambda dir: os.path.join("po", dir),
+                           textdomains)
+textdomains = filter(os.path.isdir, textdomains)
+lingua_re = re.compile(r"po/.*/(.*)\.po")
+
+if "pot-update" in COMMAND_LINE_TARGETS:
+    for domain in textdomains:
+        name = os.path.basename(domain)
+        sources = File(os.path.join(domain, "POTFILES.in")).get_contents().split("\n")
+        sources = filter(lambda x : x and not x.isspace(), sources)
+        if sources:
+            env.Command(
+                os.path.join(domain, name + ".cpp.po"),
+                sources,
+                """xgettext --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
+                --from-code=UTF-8 --sort-by-file --keyword=sgettext \
+                --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
+                --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
+                --keyword=_ --keyword=N_ --output=$TARGET \
+                """ % (name, os.path.join(domain, "POTFILES.in")))
+
+    env.Alias("pot-update", "po")
+
+#
 # Unix installation productions
 #
 # These will not be portable to Windows or Mac. They assume a Unix-like
@@ -1047,20 +1079,12 @@ env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 # Without this step, the i18n support won't work.
 #
 if env["nls"]:
-    translation_dirs = os.listdir("po")
-    translation_dirs.remove(".svn")
-    translation_dirs.remove("wesnoth-manpages")
-    translation_dirs.remove("wesnoth-manual")
-    translation_dirs = map(lambda dir: os.path.join("po", dir),
-                           translation_dirs)
-    translation_dirs = filter(os.path.isdir, translation_dirs)
-    lingua_re = re.compile(r"po/.*/(.*)\.po")
-    for dir in translation_dirs:
-        pos = glob(os.path.join(dir, "*.po"))
+    for domain in textdomains:
+        pos = glob(os.path.join(domain, "*.po"))
         linguas = map(lingua_re.findall, pos)
         for lingua in linguas:
             lingua = lingua[0]
-            name = os.path.basename(dir)
+            name = os.path.basename(domain)
             env.Command(
                 os.path.join("translations", lingua, "LC_MESSAGES", name+".mo"),
                 os.path.join("po", name, lingua + ".po"),
