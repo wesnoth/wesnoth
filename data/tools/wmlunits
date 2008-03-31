@@ -19,7 +19,10 @@ import wesnoth.wmlparser as wmlparser
 import wesnoth.wmltools as wmltools
 
 class UnitList:
-    def __init__(self, units_filename, text_to_parse, description):
+    def __init__(self):
+        self.units_by_campaign = {}
+
+    def add(self, units_filename, text_to_parse, campaign):
         "Collect all units in the specified namespace, None = mainline."
 
         # Create a new parser.
@@ -38,15 +41,16 @@ class UnitList:
         parser.parse_top(WML)
 
 	# Collect unit data
-        self.units = WML.get_first("+units")
-
-        self.description = description
+        newunits = WML.get_first("+units").get_all("unit_type")
+        for unit in newunits:
+            unit.campaign = campaign
+        self.units_by_campaign[campaign] = newunits
 
 def report_unit_names(unitlist, isocode):
     tx = None
     doubles = {}
     races = {}
-    for u in  unitlist.units.get_all("unit_type"):
+    for u in  unitlist:
         # Fetch name of unit
         name = u.get_text_val("name")
         if name == None or name == "":
@@ -167,15 +171,17 @@ if __name__ == '__main__':
     wmltools.pop_to_top("wmlunits")
     datadir = os.getcwd() + "/data"
 
+    unitlist = UnitList()
+
     # Parse all unit data
-    allunits = [UnitList("data/core/units.cfg", None, " - mainline")]
+    unitlist.add("data/core/units.cfg", None, "mainline")
     campaigns = glob.glob("data/campaigns/*")
     for campaign in campaigns:
         dirname = campaign[5:] # strip leading data/
         description = dirname[10:].replace("_", " ")
-        allunits.append(UnitList(None,
-                                 "[+units]{%s/units}[/units]" % dirname,
-                                 " - " + description))
+        unitlist.add(None,
+                     "[+units]{%s/units}[/units]" % dirname,
+                     description)
 
     # Report generation
     if use_html:
@@ -183,8 +189,8 @@ if __name__ == '__main__':
     else:
         print '{| border="solid"'
 
-    for unitlist in allunits:
-        report_unit_names(unitlist, isocode)
+    for unitgroup in unitlist.units_by_campaign.values():
+        report_unit_names(unitgroup, isocode)
 
     if use_html:
         print "</body></html>"
