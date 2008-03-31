@@ -37,19 +37,27 @@ class UnitList:
             parser.parse_file(os.path.join(units_filename))
         parser.parse_top(WML)
 
+	# Collect unit data
         self.units = WML.get_first("+units")
-        self.races = {}
 
-    def report_units(self, domain, isocode, campaign):
-        tx = wmltools.Translation(domain, isocode)
+    def report_units(self, isocode, campaign):
+        tx = None
         doubles = {}
-        races = {}
+        self.races = {}
         for u in  self.units.get_all("unit_type"):
+            # Fetch name of unit
             name = u.get_text_val("name")
             if name == None or name == "":
                 sys.stderr.write("Empty name detected! (id = %s)\n" %
                     u.get_text_val("id"))
                 continue
+            # Swap in the appropriate translation dictionary for this unit
+            if not u.textdomain:
+                sys.stderr.write("Unit %s has no textdomain (?)\n" % name)
+                continue
+            if tx == None or u.textdomain != tx.textdomain:
+                tx = wmltools.Translation(u.textdomain, isocode)
+            # Sanity check
             if not name in tx:
                 # Hm...
                 sys.stderr.write("Unit %s has no translation (?)\n" % name)
@@ -164,19 +172,15 @@ if __name__ == '__main__':
 
     # Mainline
     mainline = UnitList("data/core/units.cfg", None)
-    mainline.report_units("units", isocode, " - mainline")
+    mainline.report_units(isocode, " - mainline")
 
     # Campaigns
     campaigns = glob.glob("data/campaigns/*")
     for campaign in campaigns:
         dirname = campaign[5:] # strip leading data/
-        abbreviation = [dirname[i] for i in range(len(dirname))
-            if dirname[i - 1] in ["/", "_"]]
-        abbreviation = "".join(abbreviation).lower()
-        if abbreviation == "t": abbreviation = "tutorial"
         description = dirname[10:].replace("_", " ")
         campaign = UnitList(None, "[+units]{%s/units}[/units]" % dirname)
-        campaign.report_units(abbreviation, isocode, " - " + description)
+        campaign.report_units(isocode, " - " + description)
 
     if use_html:
         print "</body></html>"

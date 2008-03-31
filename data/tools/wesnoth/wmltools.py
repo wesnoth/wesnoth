@@ -593,10 +593,11 @@ class CrossRef:
 class Translation(dict):
     "Parses a po file to create a translation dictionary."
     def __init__(self, textdomain, isocode, topdir=""):
-        self.gettext = {}
+        self.textdomain = textdomain
         self.isocode = isocode
+        self.gettext = {}
         if self.isocode != "en":
-            fn = "po/wesnoth-%s/%s.po" % (textdomain, isocode)
+            fn = "po/%s/%s.po" % (textdomain, isocode)
             if topdir:
                 fn = os.path.join(topdir, fn)
             gettext = file(fn).read()
