@@ -969,7 +969,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
 
         env.Alias("pot-update", pot)
 
-if "update-po" in COMMAND_LINE_TARGETS:
+if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
         name = os.path.basename(domain)
         linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
@@ -984,6 +984,7 @@ if "update-po" in COMMAND_LINE_TARGETS:
             NoClean(update_po)
 
             env.Alias(lingua, update_po)
+            env.Alias("pot-update", update_po)
 
     env.Alias("update-po", [])
 
