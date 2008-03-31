@@ -142,3 +142,27 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("is_enemy", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("is_mine", FORMULA_READ_ONLY));
 }
+
+variant terrain_callable::get_value(const std::string& key) const
+{
+	if(key == "x") {
+		return variant(loc_.x+1);
+	} else if(key == "y") {
+		return variant(loc_.y+1);
+	} else if(key == "loc") {
+		return variant(new location_callable(loc_));
+	} else if(key == "id") {
+		return variant(std::string(t_.id()));
+	} else
+		return variant();
+}
+	
+void terrain_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	using game_logic::FORMULA_READ_ONLY;
+	inputs->push_back(game_logic::formula_input("x", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("y", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("loc", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
+}
+	

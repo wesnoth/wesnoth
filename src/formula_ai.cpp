@@ -115,6 +115,40 @@ private:
 	const formula_ai& ai_;
 };
 
+class nearest_loc_function : public function_expression {
+public:
+	nearest_loc_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("nearest_loc", args, 2, 2), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		variant items = args()[1]->evaluate(variables); 
+		int best = 1000000;
+		int best_i = -1;
+
+		for(int i = 0; i < items.num_elements(); ++i) {
+
+			const gamemap::location move_loc = convert_variant<location_callable>(items[i])->loc();
+			int distance = distance_between(loc, move_loc);
+
+			if(distance < best) {
+					best = distance;
+					best_i = i;
+			}
+		}
+
+		if( best_i != -1)
+			return variant(new location_callable(convert_variant<location_callable>(items[best_i])->loc()));
+		else
+			return variant();
+	}
+
+	const formula_ai& ai_;
+};
+
+
 class nearest_keep_function : public function_expression {
 public:
 	nearest_keep_function(const args_list& args, const formula_ai& ai)
@@ -590,6 +624,8 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
 		} else if(fn == "nearest_keep") {
 			return expression_ptr(new nearest_keep_function(args, ai_));
+		} else if(fn == "nearest_loc") {
+			return expression_ptr(new nearest_loc_function(args, ai_));
 		} else if(fn == "close_enemies") {
 			return expression_ptr(new close_enemies_function(args, ai_));
 		} else if(fn == "distance_between") {

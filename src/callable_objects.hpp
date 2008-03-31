@@ -36,7 +36,33 @@ public: \
 	} \
 };
 
+class terrain_callable : public game_logic::formula_callable {
+public:
+	typedef gamemap::location location;
+	terrain_callable(const terrain_type& t, const location loc)
+	  : loc_(loc), t_(t)
+	{}
+
+	variant get_value(const std::string& key) const;
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+private:
+	const location loc_;
+	const terrain_type &t_;
+};
+
 CALLABLE_WRAPPER_START(gamemap)
+	if(key == "terrain") {
+		int w = object_.w();
+		int h = object_.h();
+		std::vector<variant> vars;
+		for(int i = 0;i < w; i++) {
+			for(int j = 0;j < h; j++) {
+				const gamemap::location loc(i,j);
+				vars.push_back(variant(new terrain_callable(object_.get_terrain_info(loc), loc)));
+			}
+		}
+		return variant(&vars);
+	} else
 	CALLABLE_WRAPPER_FN(w)
 	CALLABLE_WRAPPER_FN(h)
 CALLABLE_WRAPPER_END
