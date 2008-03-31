@@ -12,7 +12,7 @@
 #
 # 1. Dummy locales
 # 2. Making binary and data-only distribution tarballs
-# 3. Making code dpenency graph
+# 3. Making code dependency graph (.dot, at end of Makefile.in)
 
 import os, sys, commands, shutil, sets, re
 from glob import glob
