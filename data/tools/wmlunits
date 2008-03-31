@@ -18,30 +18,54 @@ import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 import wesnoth.wmltools as wmltools
 
+def parse_core_macros_and_WML(text_to_parse):    
+    # Create a new parser.
+    parser = wmlparser.Parser(datadir)
+    parser.do_preprocessor_logic = True
+    #parser.verbose = True
+    
+    # Create a new WML object.
+    WML = wmldata.DataSub("WML")
+    
+    # Parse some macros.
+    # TODO: Obviously, this is not ideal, e.g. we parse the macros multiple
+    # times. Could easily be fixed by keeping a reference to parser.macros
+    # and re-using it instead of re-parsing.
+    parser.parse_text("{core/macros/}\n")
+    parser.parse_top(None)
+    
+    # Parse the actual WML.
+    parser.parse_text(text_to_parse)
+    parser.parse_top(WML)
+    
+    return WML
+
 class UnitList:
     def __init__(self):
         self.units_by_campaign = {}
 
-    def add(self, units_filename, text_to_parse, campaign):
+    def add(self, text_to_parse, campaign):
         "Collect all units in the specified namespace, None = mainline."
 
-        # Create a new parser.
-        parser = wmlparser.Parser(datadir)
-        WML = wmldata.DataSub("WML")
+        WML = parse_core_macros_and_WML(text_to_parse)
+        #WML.debug()
+        
+        # Collect unit data. First, we look for a [+units] section.
+        units = WML.get_first("+units")
+	    # If no [+units] section, assume it is inside a [campaign].
+        if not units:
+            campaign = WML.get_first("campaign")
+            # Now we get the define - strange, but seems to be how Wesnoth
+            # works..
+            define = campaign.get_text_val("define")
 
-        # First, parse through some macro definitions.
-        parser.parse_text("{core/macros/}\n")
-        parser.parse_top(None)
+            # Re-parse, this time with the define defined.
+            WML = parse_core_macros_and_WML(
+                "#define %s\n#enddef\n%s" % (define, text_to_parse))
+            # This time, it oughta work.
+            units = WML.get_first("+units")
 
-        # Now parse the actual text.
-        if text_to_parse:
-            parser.parse_text(text_to_parse)
-        else:
-            parser.parse_file(os.path.join(units_filename))
-        parser.parse_top(WML)
-
-	# Collect unit data
-        newunits = WML.get_first("+units").get_all("unit_type")
+        newunits = units.get_all("unit_type")
         for unit in newunits:
             unit.campaign = campaign
         self.units_by_campaign[campaign] = newunits
@@ -196,14 +220,15 @@ if __name__ == '__main__':
     unitlist = UnitList()
 
     # Parse all unit data
-    unitlist.add("data/core/units.cfg", None, "mainline")
+    # This reads in units.cfg, giving us all the mainline units.
+    #unitlist.add("{units.cfg}", "mainline")
+    # Now we read each campaign in turn to get its units.
     campaigns = glob.glob("data/campaigns/*")
     for campaign in campaigns:
         dirname = campaign[5:] # strip leading data/
+        if not dirname.startswith("campaigns/Under"): continue
         description = dirname[10:].replace("_", " ")
-        unitlist.add(None,
-                     "[+units]{%s/units}[/units]" % dirname,
-                     description)
+        unitlist.add("{%s}" % dirname, description)
 
     # Report generation
     if use_html:
