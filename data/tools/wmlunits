@@ -223,12 +223,11 @@ if __name__ == '__main__':
 
     # Parse all unit data
     # This reads in units.cfg, giving us all the mainline units.
-    #unitlist.add("{units.cfg}", "mainline")
+    unitlist.add("{core/units.cfg}", "mainline")
     # Now we read each campaign in turn to get its units.
     campaigns = glob.glob("data/campaigns/*")
     for campaign in campaigns:
         dirname = campaign[5:] # strip leading data/
-        if not dirname.startswith("campaigns/Under"): continue
         description = dirname[10:].replace("_", " ")
         unitlist.add("{%s}" % dirname, description)
 
