@@ -617,11 +617,7 @@ class Parser:
 
                 elif self.check_for("textdomain"):
                     self.read_until(" ")
-                    name = self.read_until("\n").strip()
-                    if name == "wesnoth":
-                        self.textdomain = "wesnoth"
-                    else:
-                        self.textdomain = ""
+                    self.textdomain = self.read_until("\n").strip()
                 else: # comment
                     line = self.read_until("\n")
                     comment = c + line
@@ -634,7 +630,7 @@ class Parser:
                     if state == name[1:] or state == "+" + name[1:]:
                         return
                     raise Error(self, "Mismatched closing tag [%s], expected [/%s]" % (name, state))
-                subdata = wmldata.DataSub(name)
+                subdata = wmldata.DataSub(name, textdomain=self.textdomain)
                 self.parse_top(subdata, name)
                 data.insert(subdata)
             elif c == '{':

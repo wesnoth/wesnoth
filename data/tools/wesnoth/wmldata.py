@@ -122,11 +122,12 @@ class WMLException(Exception):
         return self.text
 
 class DataSub(Data):
-    def __init__(self, name, sub = []):
+    def __init__(self, name, sub = [], textdomain=None):
         """The sub parameter is a list of sub-elements."""
         Data.__init__(self, name)
         self.data = []
         self.dict = {}
+        self.textdomain = textdomain
 
         for element in sub:
             self.insert(element)
