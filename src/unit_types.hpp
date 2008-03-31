@@ -345,7 +345,6 @@ public:
 	void clear();
 
 	mutable unit_type_factory unit_types;
-	config merged_units;
 
     protected:
         unit_type_data();

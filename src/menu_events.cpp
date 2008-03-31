@@ -1602,8 +1602,11 @@ private:
 									_("Type");
 		options.push_back(heading);
 
-		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.begin(); i != unit_type_data::instance().unit_types.end(); ++i) {
+		for(unit_type_data::unit_type_map::iterator i = unit_type_data::instance().unit_types.begin(); i != unit_type_data::instance().unit_types.end(); ++i) {
 			std::stringstream row;
+
+            const config& unit_cfg = unit_type_data::instance().unit_types.find_config(i->first);
+            i->second.build_help_index(unit_cfg, unit_type_data::instance().unit_types.races());
 
 			std::string race;
 			const race_map::const_iterator race_it = unit_type_data::instance().unit_types.races().find(i->second.race());

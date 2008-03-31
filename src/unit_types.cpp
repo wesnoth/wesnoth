@@ -917,103 +917,62 @@ void unit_type_data::set_config(const config& cfg)
 		increment_set_config_progress();
 	}
 
-	unsigned base_unit_count = 0;
 	for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
 	{
+	    std::string id = (**i.first)["id"];
 		if((**i.first).child("base_unit"))
 		{
-			++base_unit_count;
+            // Derive a new unit type from an existing base unit id
+			const std::string based_from = (*(**i.first).child("base_unit"))["id"];
+			config from_cfg = unit_types.find_config(based_from);
+
+            //merge the base_unit config into this one
+            //ugly hack, but couldn't think of anything better for the moment
+            from_cfg.merge_with(**i.first);
+            (**i.first).merge_with(from_cfg);
+
+            (**i.first).clear_children("base_unit");
+            (**i.first)["id"] = id;
 		}
-		else
-		{
-			// LOAD UNIT TYPES
-			std::string id = (**i.first)["id"];
-			// we insert an empty unit_type and build it after the copy (for performance)
-			std::pair<unit_type_map::iterator,bool> insertion =
-				unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
-            lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
-//			if (!insertion.second)
-			// TODO: else { warning for multiple units with same id}
-		}
+        // we insert an empty unit_type and build it after the copy (for performance)
+        std::pair<unit_type_map::iterator,bool> insertion =
+            unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
+        //	if (!insertion.second)
+        // TODO: else { warning for multiple units with same id}
+        lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 	}
 
 	// FIXME OBSOLETE compatibility hack to be removed in 1.5.3
 	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
 	{
+	    std::string id = (**i.first)["id"];
 		if((**i.first).child("base_unit"))
 		{
-			++base_unit_count;
-		}
-		else
-		{
-			// LOAD UNIT TYPES
-			std::string id = (**i.first)["id"];
-			// we insert an empty unit_type and build it after the copy (for performance)
-			std::pair<unit_type_map::iterator,bool> insertion =
-				unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
-            /* obsolete because of lazy loading of unit_types
-			if (insertion.second) {
-				insertion.first->second.build(**i.first,movement_types,races,unit_traits);
-			}
-			*/
-			std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]" << std::endl;
-		}
-	}
+            // Derive a new unit type from an existing base unit id
+			const std::string based_from = (*(**i.first).child("base_unit"))["id"];
+			config from_cfg = unit_types.find_config(based_from);
 
-	while(base_unit_count > 0)
-	{
-		unsigned new_count = base_unit_count;
-		std::string skipped;
-		for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
-		{
-			const config *bu_cfg = (**i.first).child("base_unit");
-			if(bu_cfg)
-			{
-				const std::string &based_from = (*bu_cfg)["id"];
-				const unit_type_map::const_iterator from_unit = unit_types.find(based_from);
-				if(from_unit != unit_types.end())
-				{
-					// Derive a new unit type from an existing base unit id
-					config merge_cfg = merged_units.add_child(based_from, from_unit->second.cfg_);
-					merge_cfg.merge_with(**i.first);
-					merge_cfg.clear_children("base_unit");
-					std::string id = merge_cfg["id"];
-					std::pair<unit_type_map::iterator,bool> insertion =
-					unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
-                    lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
-//					if (!insertion.second) {
-//                  TODO: warn for multiple unit's with same id's
-					increment_set_config_progress();
-					--new_count;
-				}
-				else if(skipped.empty())
-				{
-					skipped = based_from;
-				}
-				else
-				{
-					skipped += ',' + based_from;
-				}
-			}
+            //merge the base_unit config into this one
+            //ugly hack, but couldn't think of anything better for the moment
+            from_cfg.merge_with(**i.first);
+            (**i.first).merge_with(from_cfg);
+
+            (**i.first).clear_children("base_unit");
+            (**i.first)["id"] = id;
 		}
-		// If we iterate through the whole list and no work was done, an error has occurred
-		if(new_count >= base_unit_count)
-		{
-			lg::warn(lg::config) << "unknown unit(s) " << skipped
-				<< " specified in [base_unit] id(s)\n";
-			break;
-		}
-		else
-		{
-			base_unit_count = new_count;
-		}
+        // we insert an empty unit_type and build it after the copy (for performance)
+        std::pair<unit_type_map::iterator,bool> insertion =
+            unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
+        //	if (!insertion.second)
+        // TODO: else { warning for multiple units with same id}
+        lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+		std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]" << std::endl;
 	}
 }
 
 void unit_type_data::clear()
 {
 	unit_types.clear();
-	merged_units.clear();
 }
 
 unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_factory::find(const std::string& key)
