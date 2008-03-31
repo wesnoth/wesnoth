@@ -37,6 +37,7 @@ opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fo
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('nls','enable compile/install of gettext message catalogs',True))
+opts.Add('lingua', 'Language update-po will update.', 'all')
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
@@ -902,7 +903,7 @@ env.Clean(all, 'TAGS')
 #
 
 textdomains = os.listdir("po")
-textdomains.remove(".svn")
+textdomains = filter(lambda x: x != ".svn", textdomains)
 textdomains.remove("wesnoth-manpages")
 textdomains.remove("wesnoth-manual")
 textdomains = map(lambda dir: os.path.join("po", dir),
@@ -957,15 +958,15 @@ if "update-po" in COMMAND_LINE_TARGETS:
 
         linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
         for lingua in linguas:
-            lingua = lingua.rstrip("\n")
-            update_po = env.Command(
-                os.path.join(domain, lingua + ".po"),
-                os.path.join(domain, name + ".pot"),
-                "msgmerge $TARGET $SOURCE -o $TARGET"
-                )
-            env.Precious(update_po)
-            NoClean(update_po)
-
+            if env["lingua"] == "all" or lingua == env["lingua"]:
+                lingua = lingua.rstrip("\n")
+                update_po = env.Command(
+                    os.path.join(domain, lingua + ".po"),
+                    os.path.join(domain, name + ".pot"),
+                    "msgmerge $TARGET $SOURCE -o $TARGET"
+                    )
+                env.Precious(update_po)
+                NoClean(update_po)
 
     env.Alias("update-po", "po")
 
