@@ -19,6 +19,12 @@ from glob import glob
 from subprocess import Popen, PIPE
 from SCons.Script import *
 
+# Warn user of current set of build options.
+if os.path.exists('.scons-option-cache'):
+    optfile = file('.scons-option-cache')
+    print "Saved options:", optfile.read().replace("\n", ", ")[:-2]
+    optfile.close()
+
 #
 # Build-control options
 #
