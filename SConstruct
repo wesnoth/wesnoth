@@ -50,6 +50,7 @@ opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False)
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', False))
+opts.Add('cachedir', 'Directory that contains a cache of derived files.', '')
 
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
@@ -101,6 +102,9 @@ If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
 be appended to the appropriate variables within scons.  You can use this,
 for example, to point scons at non-default library locations.
 """ + opts.GenerateHelpText(env))
+
+if env["cachedir"]:
+    CacheDir(env["cachedir"])
 
 # Omits the 'test' target 
 all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
