@@ -89,7 +89,9 @@ The following special build targets
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
     uninstall = uninstall all executables, tools, and servers.
-    pot-update = perform gettext message catalog generation
+    pot-update = generate gettext message catalog templates and merge them with localized message catalogs
+    update-po = merge message catalog templates with localized message catalogs for particular lingua
+    af bg ca ... = linguas for update-po
     dist = make distribution tarball as wesnoth.tar.bz2 (*).
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
     binary-dist = make data tarball as wesnoth-binaries.tar.bz2 (*).
