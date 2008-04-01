@@ -551,9 +551,15 @@ void save_preview_pane::draw_contents()
 
 		if(campaign_type == "scenario") {
 			const config* campaign = game_config_->find_child("campaign","id",summary["campaign"]);
-			utils::string_map symbols;
-			symbols["campaign_name"] = (*campaign)["name"];
-			str << vgettext("Campaign: $campaign_name", symbols);	// FIXME: isn't this superfluous?
+			if (campaign != NULL) {
+				utils::string_map symbols;
+				symbols["campaign_name"] = (*campaign)["name"];
+				//!@todo FIXME: this is a superfluous manner of making the string,
+				//! however, I'll keep it in 1.4 for the sake of not breaking existing translations
+				str << vgettext("Campaign: $campaign_name", symbols);
+			} else {
+				str << _("#(Invalid)");
+			}
 		} else if(campaign_type == "multiplayer") {
 			str << _("Multiplayer");
 		} else if(campaign_type == "tutorial") {
