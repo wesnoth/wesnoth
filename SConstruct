@@ -985,6 +985,8 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
 
             env.Alias(lingua, update_po)
             env.Alias("pot-update", update_po)
+            if lingua in COMMAND_LINE_TARGETS:
+                env.AlwaysBuild(update_po)
 
     env.Alias("update-po", [])
 
