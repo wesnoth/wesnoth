@@ -2129,7 +2129,7 @@ if __name__ == '__main__':
                    standard_unit_filter() or \
                    under("side") or \
                    re.search("{[A-Z]+.*description=.*}", line):
-                if "id" not in tagstack[-1][1]:
+                if "id" not in tagstack[-1][1] and "_" not in line:
                     line = re.sub(r"\bdescription\s*=", "id=", line)
                 if "name" not in tagstack[-1][1]:
                     line = re.sub(r"user_description\s*=", "name=", line)
@@ -2153,7 +2153,7 @@ if __name__ == '__main__':
         # Report the changes
         if verbose > 0 and line != original:
             msg = "%s, line %d: %s -> %s" % \
-                  (filename, lineno, line.strip(), line.strip())
+                  (filename, lineno, original.strip(), line.strip())
             print msg
         return line
 
