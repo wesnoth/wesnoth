@@ -7,12 +7,12 @@
 # 2. Unix file(1), on installation only.
 # 3. Unix convert(1), on installation only, if using tinygui.
 # 4. msgfmt(1) for making builds with i18n support.
+# 5. graph-includes for making the project dependency graph.
 #
 # To do (list is now exhaustive):
 #
 # 1. Dummy locales
 # 2. Making binary and data-only distribution tarballs
-# 3. Making code dependency graph (.dot, at end of Makefile.in)
 
 import os, sys, commands, shutil, sets, re
 from glob import glob
@@ -31,7 +31,7 @@ if os.path.exists('.scons-option-cache'):
 
 opts = Options('.scons-option-cache')
 
-# These are implemented
+opts.Add('cachedir', 'Directory that contains a cache of derived files.', '')
 opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
@@ -56,7 +56,6 @@ opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False)
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', False))
-opts.Add('cachedir', 'Directory that contains a cache of derived files.', '')
 
 # FIXME: These are not yet implemented
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
@@ -84,6 +83,7 @@ The following special build targets
 
     all = wesnoth wesnoth_editor exploder cutter wesnothd campaignd (*).
     TAGS = build tags for Emacs (*).
+    wesnoth-deps.png = project dependency graph
     install-clientside = install 'all' executables + wmlscope/wmllint/wmlindent.
     install = synonym for install-clientside
     install-wesnothd = install the Wesnoth multiplayer server.
@@ -1240,6 +1240,17 @@ sanity_check = env.Command('sanity-check', '', [
     ])
 env.AlwaysBuild(sanity_check)
 env.Precious(sanity_check)
+
+#
+# Make the project dependency graph (requires graph-includes).
+#
+env.Command("wesnoth-deps.dot", [],
+            "graph-includes -verbose --class wesnoth \
+	  -sysI /usr/include/c++/4.0 -sysI /usr/include -sysI /usr/include/SDL \
+	  --prefixstrip src/ -I src src > ${TARGET}")
+env.Command("wesnoth-deps.png", "wesnoth-deps.dot",
+            "dot -Tpng -o ${TARGET} ${SOURCE}")
+env.Clean(all, ["wesnoth-deps.dot", "wesnoth-deps.png"])
 
 # Local variables:
 # mode: python

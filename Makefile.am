@@ -220,7 +220,6 @@ manual-en:
 	@cd doc/manual && make manual.en.html || exit $?
 endif
 
-# *** Not yet covered by scons recipe
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
 wesnoth-deps.dot:
 	PERL5LIB=$(top_srcdir) graph-includes -verbose --class wesnoth --consolidate 1-1 \
