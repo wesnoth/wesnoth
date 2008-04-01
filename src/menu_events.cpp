@@ -72,8 +72,8 @@ std::vector<std::string> create_unit_table(const statistics::stats::str_int_map&
 {
 	std::vector<std::string> table;
 	for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator type = unit_type_data::instance().unit_types.find(i->first);
-		if(type == unit_type_data::instance().unit_types.end()) {
+		const unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find(i->first);
+		if(type == unit_type_data::types().end()) {
 			continue;
 		}
 
@@ -979,8 +979,8 @@ private:
 		const std::set<std::string>& recruits = current_team.recruits();
 		for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
 			const std::map<std::string,unit_type>::const_iterator
-					u_type = unit_type_data::instance().unit_types.find(*it);
-			if(u_type == unit_type_data::instance().unit_types.end()) {
+					u_type = unit_type_data::types().find(*it);
+			if(u_type == unit_type_data::types().end()) {
 				ERR_NG << "could not find unit '" << *it << "'\n";
 				return;
 			}
@@ -1058,8 +1058,8 @@ private:
 		}
 
 		const std::map<std::string,unit_type>::const_iterator
-				u_type = unit_type_data::instance().unit_types.find(name);
-		assert(u_type != unit_type_data::instance().unit_types.end());
+				u_type = unit_type_data::types().find(name);
+		assert(u_type != unit_type_data::types().end());
 
 		if(u_type->second.cost() > current_team.gold()) {
 			gui::message_dialog(*gui_,"",
@@ -1603,15 +1603,14 @@ private:
 									_("Type");
 		options.push_back(heading);
 
-		for(unit_type_data::unit_type_map::iterator i = unit_type_data::instance().unit_types.begin(); i != unit_type_data::instance().unit_types.end(); ++i) {
+		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i) {
 			std::stringstream row;
 
-            const config& unit_cfg = unit_type_data::instance().unit_types.find_config(i->first);
-            i->second.build_help_index(unit_cfg, unit_type_data::instance().unit_types.races());
+            unit_type_data::types().find(i->first, unit_type::WITHOUT_ANIMATIONS);
 
 			std::string race;
-			const race_map::const_iterator race_it = unit_type_data::instance().unit_types.races().find(i->second.race());
-			if (race_it != unit_type_data::instance().unit_types.races().end()) {
+			const race_map::const_iterator race_it = unit_type_data::types().races().find(i->second.race());
+			if (race_it != unit_type_data::types().races().end()) {
 				race = race_it->second.plural_name();
 			}
 			row << race << COLUMN_SEPARATOR;
@@ -2120,7 +2119,7 @@ private:
 			gui::dialog(*gui_,"",msg).show();
 		}
 	}
-	
+
 	//A function object class with only the constructor public.
 	//Will execute one specified console command if possible.
 	//To add a new console command:
@@ -2132,8 +2131,8 @@ private:
 	class console_handler
 	{
 		public:
-			console_handler(menu_handler& menu_handler, 
-				mouse_handler& mouse_handler, const std::string& cmd, 
+			console_handler(menu_handler& menu_handler,
+				mouse_handler& mouse_handler, const std::string& cmd,
 				const std::string data, const unsigned int team_num)
 			: menu_handler_(menu_handler), mouse_handler_(mouse_handler)
 				,cmd_(cmd), data_(data), team_num_(team_num)
@@ -2143,10 +2142,10 @@ private:
 				}
 				dispatch();
 			}
-					
+
 		private:
 			typedef void (console_handler::*command_handler)();
-			
+
 			struct command
 			{
 				command_handler handler;
@@ -2157,7 +2156,7 @@ private:
 				: handler(h), help(help), debug_only(false), network_only(false)
 				{
 				}
-				command& set_debug_only() 
+				command& set_debug_only()
 				{
 					debug_only = true;
 					return *this;
@@ -2175,36 +2174,36 @@ private:
 					return flags;
 				}
 			};
-			
+
 			typedef std::map<std::string, command> command_map;
 			typedef std::map<std::string, std::string> command_alias_map;
-			
+
 			static command_map command_map_;
 			static command_alias_map command_alias_map_;
 			menu_handler& menu_handler_;
 			mouse_handler& mouse_handler_;
 			const std::string & cmd_;
 			const std::string & data_;
-			const unsigned int team_num_;		
+			const unsigned int team_num_;
 
 			static command& register_command(const std::string& cmd,
 				command_handler h, const std::string& help)
 			{
 				return command_map_.insert(
-					command_map::value_type(cmd,command(h, help))).first->second; 
+					command_map::value_type(cmd,command(h, help))).first->second;
 			}
 			static void assert_existence(const std::string& cmd)
 			{
 				assert(command_map_.count(cmd));
 			}
-			static void register_alias(const std::string& to_cmd, 
+			static void register_alias(const std::string& to_cmd,
 				const std::string& cmd)
 			{
 				assert_existence(to_cmd);
 				command_alias_map_.insert(
 					command_alias_map::value_type(cmd,to_cmd));
 			}
-					
+
 			static void init_command_map();
 			static std::string get_actual_cmd(const std::string& cmd);
 			static const command* get_command(const std::string& cmd);
@@ -2213,7 +2212,7 @@ private:
 			const std::vector<std::string> get_aliases(const std::string& cmd);
 			void help();
 			void help(const std::string& cmd);
-			
+
 			void do_refresh();
 			void do_droid();
 			void do_log();
@@ -2245,25 +2244,25 @@ private:
 			void do_event();
 			void do_version();
 	};
-		
+
 	console_handler::command_map console_handler::command_map_;
 	console_handler::command_alias_map console_handler::command_alias_map_;
-	
+
 	void console_handler::print(const std::string& title,
 		const std::string& message)
 	{
-		menu_handler_.add_chat_message(time(NULL), title, 0, message);				
+		menu_handler_.add_chat_message(time(NULL), title, 0, message);
 	}
-	
+
 	void console_handler::init_command_map()
 	{
 		register_command("help", &console_handler::help,
 			"[command] - Command help");
 		register_command("refresh", &console_handler::do_refresh,
 			"Refresh gui");
-		register_command("droid", &console_handler::do_droid, 
+		register_command("droid", &console_handler::do_droid,
 			"[<side> [on/off]] - AI control").set_debug_only();
-		register_command("log", &console_handler::do_log, 
+		register_command("log", &console_handler::do_log,
 			"<level> <domain> - Change the log level of a log domain.");
 		register_command("theme", &console_handler::do_theme, "");
 		register_command("muteall", &console_handler::do_network_send_cmd,
@@ -2278,9 +2277,9 @@ private:
 			"").set_network_only();
 		register_command("query", &console_handler::do_network_send_cmd_data,
 			"").set_network_only();
-		register_command("control", &console_handler::do_control, 
+		register_command("control", &console_handler::do_control,
 			"<side> <nick>").set_network_only();
-		register_command("control", &console_handler::do_clear, 
+		register_command("control", &console_handler::do_clear,
 			"Clear chat history");
 		register_command("sunset", &console_handler::do_sunset,
 			"Change time of day").set_debug_only();
@@ -2299,7 +2298,7 @@ private:
 			&console_handler::do_ignore_replay_errors, "Ignore replay errors");
 		register_command("nosaves", &console_handler::do_nosaves,
 			"Do not autosave");
-		register_command("next_level", &console_handler::do_next_level, 
+		register_command("next_level", &console_handler::do_next_level,
 			"Advance to next level").set_debug_only();
 		register_alias("next_level", "n");
 		register_command("debug", &console_handler::do_debug,
@@ -2322,15 +2321,15 @@ private:
 			"Toggle fog for current player").set_debug_only();
 		register_command("shroud", &console_handler::do_shroud,
 			"Toggle shroud for current player").set_debug_only();
-		register_command("gold", &console_handler::do_gold, 
+		register_command("gold", &console_handler::do_gold,
 			"Give gold to current player").set_debug_only();
 		register_command("throw", &console_handler::do_event,
 			"Fire game event").set_debug_only();
 		register_alias("throw", "fire");
-		register_command("version", &console_handler::do_version, 
+		register_command("version", &console_handler::do_version,
 			"Display version information");
 	}
-	
+
 	std::string console_handler::get_actual_cmd(const std::string& cmd)
 	{
 		command_alias_map::const_iterator i = command_alias_map_.find(cmd);
@@ -2342,7 +2341,7 @@ private:
 		}
 		return real_cmd;
 	}
-	
+
 	const console_handler::command* console_handler::get_command(
 		const std::string& cmd)
 	{
@@ -2353,7 +2352,7 @@ private:
 			return 0;
 		}
 	}
-	
+
 	const std::vector<std::string> console_handler::get_aliases(
 		const std::string& cmd)
 	{
@@ -2367,18 +2366,18 @@ private:
 		}
 		return aliases;
 	}
-	
+
 	void console_handler::dispatch()
 	{
 		std::string actual_cmd = get_actual_cmd(cmd_);
 		if (const command* c = get_command(actual_cmd)) {
 			if (c->debug_only && !game_config::debug) return;
 			if (c->network_only || network::nconnections() != 0) return;
-			
+
 			(this->*(c->handler))();
 		}
 	}
-	
+
 	void console_handler::help()
 	{
 		std::string actual_cmd = get_actual_cmd(data_);
@@ -2399,7 +2398,7 @@ private:
 		print("help", ss.str());
 		print("help", "Type :help <command> for more info");
 	}
-	
+
 	void console_handler::help(const std::string& cmd)
 	{
 		const command* c = get_command(cmd);
@@ -2424,7 +2423,7 @@ private:
 			print("help", ss.str());
 		}
 	}
-	
+
 	void menu_handler::do_command(const std::string& str,
 			const unsigned int team_num, mouse_handler& mousehandler)
 	{
@@ -2441,7 +2440,7 @@ private:
 		image::flush_cache();
 		menu_handler_.gui_->redraw_everything();
 	}
-	
+
 	void console_handler::do_droid() {
 		// :droid [<side> [on/off]]
 		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),' ');
@@ -2634,8 +2633,8 @@ private:
 	}
 	void console_handler::do_create() {
 		if (menu_handler_.map_.on_board(mouse_handler_.get_last_hex())) {
-			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.find(data_);
-			if(i == unit_type_data::instance().unit_types.end()) {
+			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find(data_);
+			if(i == unit_type_data::types().end()) {
 				return;
 			}
 

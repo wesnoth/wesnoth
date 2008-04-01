@@ -459,8 +459,8 @@ void save_preview_pane::draw_contents()
 
 	int ypos = area.y;
 
-	const unit_type_data::unit_type_map::const_iterator leader = unit_type_data::instance().unit_types.find(summary["leader"]);
-	if(leader != unit_type_data::instance().unit_types.end()) {
+	const unit_type_data::unit_type_map::const_iterator leader = unit_type_data::types().find(summary["leader"]);
+	if(leader != unit_type_data::types().end()) {
 
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->second.image()));
@@ -977,7 +977,8 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	if (t==NULL)
 		return det;
 
-    unit_type_data::instance().unit_types.build_unit_type(t->id(), unit_type::WITHOUT_ANIMATIONS);
+    //FIXME: There should be a better way to deal with this
+    unit_type_data::types().find(t->id(), unit_type::WITHOUT_ANIMATIONS);
 
 	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_colour_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);

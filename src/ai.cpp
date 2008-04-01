@@ -267,7 +267,7 @@ bool ai::recruit_usage(const std::string& usage)
 	// matches the desired usage type, and comes in under budget.
 	const std::set<std::string>& recruits = current_team().recruits();
 	for(std::map<std::string,unit_type>::const_iterator i =
-	    unit_type_data::instance().unit_types.begin(); i != unit_type_data::instance().unit_types.end(); ++i)
+	    unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i)
 	{
 		const std::string& name = i->second.id();
 		// If usage is empty consider any unit.
@@ -317,8 +317,8 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	recorder.add_recruit(num,loc);
 	replay_undo replay_guard(recorder);
 
-	unit_type_data::unit_type_map::const_iterator u = unit_type_data::instance().unit_types.find(unit_name);
-	if(u == unit_type_data::instance().unit_types.end()) {
+	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find(unit_name);
+	if(u == unit_type_data::types().end()) {
 		return false;
 	}
 
@@ -1522,8 +1522,8 @@ void ai::analyze_potential_recruit_combat()
 	const std::set<std::string>& recruits = current_team().recruits();
 	std::set<std::string>::const_iterator i;
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::instance().unit_types.find(*i);
-		if(info == unit_type_data::instance().unit_types.end() || not_recommended_units_.count(*i)) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find(*i);
+		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -1535,8 +1535,8 @@ void ai::analyze_potential_recruit_combat()
 			}
 
 			unit const &un = j->second;
-			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::instance().unit_types.find(un.type_id());
-			VALIDATE((enemy_info != unit_type_data::instance().unit_types.end()), _("Unknown unit type : ") + un.type_id());
+			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find(un.type_id());
+			VALIDATE((enemy_info != unit_type_data::types().end()), _("Unknown unit type : ") + un.type_id());
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
@@ -1560,8 +1560,8 @@ void ai::analyze_potential_recruit_combat()
 	// if they have a score more than 600 below
 	// the best unit of that usage type.
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::instance().unit_types.find(*i);
-		if(info == unit_type_data::instance().unit_types.end() || not_recommended_units_.count(*i)) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find(*i);
+		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -1623,8 +1623,8 @@ void ai::analyze_potential_recruit_movements()
 	std::map<std::string,int> best_scores;
 
 	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::instance().unit_types.find(*i);
-		if(info == unit_type_data::instance().unit_types.end()) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find(*i);
+		if(info == unit_type_data::types().end()) {
 			continue;
 		}
 
@@ -1672,9 +1672,9 @@ void ai::analyze_potential_recruit_movements()
 			j != unit_movement_scores_.end(); ++j) {
 
 		const unit_type_data::unit_type_map::const_iterator info =
-			unit_type_data::instance().unit_types.find(j->first);
+			unit_type_data::types().find(j->first);
 
-		if(info == unit_type_data::instance().unit_types.end()) {
+		if(info == unit_type_data::types().end()) {
 			continue;
 		}
 

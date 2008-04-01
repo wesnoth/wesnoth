@@ -833,8 +833,8 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if (side_num >= teams->size()) side_num = 0;
 
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
-		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::instance().unit_types.find(type);
-		if(itor != unit_type_data::instance().unit_types.end()) {
+		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find(type);
+		if(itor != unit_type_data::types().end()) {
 			assert(units != NULL);
 			assert(game_map != NULL);
 			assert(status_ptr != NULL);
@@ -2225,7 +2225,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	// Fire any events
 	else if(cmd == "fire_event") {
 		gamemap::location loc1,loc2;
-		config data;		
+		config data;
 		if (cfg.has_child("primary_unit")) {
 			vconfig u = cfg.child("primary_unit");
 			if (u.has_attribute("x") && u.has_attribute("y"))
@@ -2246,7 +2246,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		}
 		game_events::fire(cfg["name"],loc1,loc2,data);
 	}
-	
+
 	// Setting of menu items
 	else if(cmd == "set_menu_item") {
 		/*

@@ -95,7 +95,7 @@ void wait::leader_preview_pane::draw_contents()
 		std::string leader = leaders_.get_leader();
 		std::string gender = leaders_.get_gender();
 
-		unit_type_data::unit_type_factory& utypes = unit_type_data::instance().unit_types;
+		unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
 		std::string leader_name;
 		std::string image;
 
@@ -465,7 +465,7 @@ void wait::generate_menu()
 
 		std::string leader_name;
 		std::string leader_image;
-		unit_type_data::unit_type_factory& utypes = unit_type_data::instance().unit_types;
+		unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
 		const unit_type* ut;
 		const unit_type* utg;
 

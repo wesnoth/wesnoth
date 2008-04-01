@@ -1891,7 +1891,7 @@ void game_controller::read_game_cfg(bool use_cache)
 void game_controller::set_unit_data(){
     const config* const units = game_config_.child("units");
     if(units != NULL) {
-        unit_type_data::instance().set_config(*units);
+        unit_type_data::types().set_config(*units);
     }
 }
 

@@ -1103,9 +1103,9 @@ attack::attack(game_display& gui, const gamemap& map,
 					// plague units make new units on the target hex
 					unit_type_data::unit_type_map::const_iterator reanimitor;
 					LOG_NG<<"trying to reanimate "<<a_stats_->plague_type<<std::endl;
-					reanimitor = unit_type_data::instance().unit_types.find(a_stats_->plague_type);
+					reanimitor = unit_type_data::types().find(a_stats_->plague_type);
 					LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
-					if(reanimitor != unit_type_data::instance().unit_types.end()) {
+					if(reanimitor != unit_type_data::types().end()) {
 						unit newunit=unit(&units_,&map_,&state_,&teams_,&reanimitor->second,a_->second.side(),true,true);
 						newunit.set_attacks(0);
 						// Apply variation
@@ -1324,9 +1324,9 @@ attack::attack(game_display& gui, const gamemap& map,
 					// plague units make new units on the target hex.
 					unit_type_data::unit_type_map::const_iterator reanimitor;
 					LOG_NG<<"trying to reanimate "<<d_stats_->plague_type<<std::endl;
-					reanimitor = unit_type_data::instance().unit_types.find(d_stats_->plague_type);
+					reanimitor = unit_type_data::types().find(d_stats_->plague_type);
 					LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
-					if(reanimitor != unit_type_data::instance().unit_types.end()) {
+					if(reanimitor != unit_type_data::types().end()) {
 						unit newunit=unit(&units_,&map_,&state_,&teams_,&reanimitor->second,d_->second.side(),true,true);
 						// Apply variation
 						if(strcmp(undead_variation.c_str(),"null")){
@@ -1657,9 +1657,9 @@ void calculate_healing(game_display& disp, const gamemap& map,
 unit get_advanced_unit(unit_map& units,
                   const gamemap::location& loc, const std::string& advance_to)
 {
-	const std::map<std::string,unit_type>::const_iterator new_type = unit_type_data::instance().unit_types.find(advance_to);
+	const std::map<std::string,unit_type>::const_iterator new_type = unit_type_data::types().find(advance_to);
 	const unit_map::iterator un = units.find(loc);
-	if(new_type != unit_type_data::instance().unit_types.end() && un != units.end()) {
+	if(new_type != unit_type_data::types().end() && un != units.end()) {
 		unit new_unit(un->second);
 		new_unit.get_experience(-new_unit.max_experience());
 		new_unit.advance_to(&(new_type->second));

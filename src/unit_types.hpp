@@ -294,45 +294,38 @@ public:
 
     typedef std::map<std::string,unit_type> unit_type_map;
 
-	class unit_type_factory
+	class unit_type_map_wrapper
 	{
-		public:
-            unit_type_factory()
-            {
-                unit_cfg_ = NULL;
-            }
+        friend class unit_type_data;
 
-            unit_type_factory(const config& unit_cfg) :
-                unit_cfg_(&unit_cfg)
-            {}
+		public:
+            const race_map& races() const { return races_; }
+            void set_config(const config& cfg);
+
+			unit_type_map::const_iterator begin() const { return types_.begin(); }
+			unit_type_map::const_iterator end() const { return types_.end(); }
+            unit_type_map::const_iterator find(const std::string& key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
+
+            void build_all(unit_type::BUILD_STATUS status) const;
+
+        private:
+            unit_type_map_wrapper() { unit_cfg_ = NULL; }
+            unit_type_map_wrapper(unit_type_map_wrapper& utf) {}
 
             void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
             void set_unit_traits(const config::child_list unit_traits) { unit_traits_ = unit_traits; }
 
-            movement_type_map& movement_types() { return movement_types_; }
-            race_map& races() { return races_; }
-            const config* unit_config() { return unit_cfg_; }
-
-			unit_type_map::const_iterator find(const std::string& key);
-			const config& find_config(const std::string& key);
-
-			unit_type_map::iterator end() { return types_.end(); }
-			unit_type_map::iterator begin() { return types_.begin(); }
-
+			const config& find_config(const std::string& key) const;
+			std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string,unit_type>& utype) { return types_.insert(utype); }
 			void clear() {
 			    types_.clear();
 			    movement_types_.clear();
 			    races_.clear();
             }
 
-			std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string,unit_type>& utype) { return types_.insert(utype); }
-
-            void generate_help_info();
-            unit_type& build_unit_type(const std::string& key, unit_type::BUILD_STATUS status);
-        private:
-            unit_type_factory(unit_type_factory& utf) {}
-
-            void add_advancement(const config& cfg, unit_type& to_unit);
+            unit_type& build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const;
+            void add_advancefrom(const config& unit_cfg) const;
+            void add_advancement(const config& cfg, unit_type& to_unit) const;
 
             mutable unit_type_map types_;
             movement_type_map movement_types_;
@@ -341,16 +334,13 @@ public:
             const config* unit_cfg_;
 	};
 
-	void set_config(const config& cfg);
-	void clear();
+    static unit_type_map_wrapper& types() { return instance().unit_types_; }
 
-	mutable unit_type_factory unit_types;
+private:
+    static unit_type_data* instance_;
+    mutable unit_type_map_wrapper unit_types_;
 
-    protected:
-        unit_type_data();
-
-	private:
-        static unit_type_data* instance_;
+    unit_type_data();
 };
 
 #endif

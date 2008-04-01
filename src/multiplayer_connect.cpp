@@ -168,8 +168,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			leader_name_pseudolist.push_back("-");
 		} else {
 			unit_type_data::unit_type_map::const_iterator leader_name =
-				unit_type_data::instance().unit_types.find(leader_type);
-			if(leader_name == unit_type_data::instance().unit_types.end()) {
+				unit_type_data::types().find(leader_type);
+			if(leader_name == unit_type_data::types().end()) {
 				leader_name_pseudolist.push_back("-");
 			} else {
 				if (gender_ == "female")
@@ -186,8 +186,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 		if (!gender_.empty()) {
 			if (leader_type.empty()
-					|| unit_type_data::instance().unit_types.find(leader_type)
-					== unit_type_data::instance().unit_types.end())
+					|| unit_type_data::types().find(leader_type)
+					== unit_type_data::types().end())
 			{
 				gender_name_pseudolist.push_back("-");
 			} else {
@@ -230,8 +230,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			llm_.set_leader_combo(NULL);
 			llm_.set_gender_combo(NULL);
 			std::vector<std::string> leader_name_pseudolist;
-			unit_type_data::unit_type_map::const_iterator leader_name = unit_type_data::instance().unit_types.find(leader_);
-			if(leader_name == unit_type_data::instance().unit_types.end()) {
+			unit_type_data::unit_type_map::const_iterator leader_name = unit_type_data::types().find(leader_);
+			if(leader_name == unit_type_data::types().end()) {
 				leader_name_pseudolist.push_back("?");
 			} else {
 				leader_name_pseudolist.push_back(leader_name->second.language_name());
@@ -240,7 +240,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			combo_leader_.set_selected(0);
 			std::vector<std::string> gender_name_pseudolist;
 			if (!gender_.empty()) {
-				if(leader_name == unit_type_data::instance().unit_types.end()) {
+				if(leader_name == unit_type_data::types().end()) {
 					gender_name_pseudolist.push_back("?");
 				} else {
 					if (gender_ == "female")
@@ -872,9 +872,9 @@ void connect::side::resolve_random()
 	}
 	// Resolve random genders "very much" like standard unit code
 	if (llm_.get_gender() == "random" || solved_random_leader) {
-		unit_type_data::unit_type_map::const_iterator ut = unit_type_data::instance().unit_types.find(leader_.empty() ? llm_.get_leader() : leader_);
+		unit_type_data::unit_type_map::const_iterator ut = unit_type_data::types().find(leader_.empty() ? llm_.get_leader() : leader_);
 
-		if (ut != unit_type_data::instance().unit_types.end()) {
+		if (ut != unit_type_data::types().end()) {
 			const std::vector<unit_race::GENDER> glist = ut->second.genders();
 			if (!glist.empty()) {
 				const int gchoice = rand() % glist.size();

@@ -893,19 +893,19 @@ unit_type_data* unit_type_data::instance_ = NULL;
 unit_type_data::unit_type_data()
 {}
 
-void unit_type_data::set_config(const config& cfg)
+void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
 {
     DBG_UT << "unit_type_data::set_config, cfg:\n" << cfg;
 
     clear();
-    unit_types.set_unit_config(cfg);
-	unit_types.set_unit_traits(cfg.get_children("trait"));
+    set_unit_config(cfg);
+	set_unit_traits(cfg.get_children("trait"));
 
 	config::const_child_itors i;
 	for(i = cfg.child_range("movetype"); i.first != i.second; ++i.first)
 	{
 		const unit_movement_type move_type(**i.first);
-		unit_types.movement_types().insert(
+		movement_types_.insert(
 			std::pair<std::string,unit_movement_type>(move_type.name(), move_type));
 		increment_set_config_progress();
 	}
@@ -913,7 +913,7 @@ void unit_type_data::set_config(const config& cfg)
 	for(i = cfg.child_range("race"); i.first != i.second; ++i.first)
 	{
 		const unit_race race(**i.first);
-		unit_types.races().insert(std::pair<std::string,unit_race>(race.id(),race));
+		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
 		increment_set_config_progress();
 	}
 
@@ -924,7 +924,7 @@ void unit_type_data::set_config(const config& cfg)
 		{
             // Derive a new unit type from an existing base unit id
 			const std::string based_from = (*(**i.first).child("base_unit"))["id"];
-			config from_cfg = unit_types.find_config(based_from);
+			config from_cfg = find_config(based_from);
 
             //merge the base_unit config into this one
             //ugly hack, but couldn't think of anything better for the moment
@@ -936,7 +936,7 @@ void unit_type_data::set_config(const config& cfg)
 		}
         // we insert an empty unit_type and build it after the copy (for performance)
         std::pair<unit_type_map::iterator,bool> insertion =
-            unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
+            insert(std::pair<const std::string,unit_type>(id,unit_type()));
         //	if (!insertion.second)
         // TODO: else { warning for multiple units with same id}
         lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
@@ -950,7 +950,7 @@ void unit_type_data::set_config(const config& cfg)
 		{
             // Derive a new unit type from an existing base unit id
 			const std::string based_from = (*(**i.first).child("base_unit"))["id"];
-			config from_cfg = unit_types.find_config(based_from);
+			config from_cfg = find_config(based_from);
 
             //merge the base_unit config into this one
             //ugly hack, but couldn't think of anything better for the moment
@@ -962,7 +962,7 @@ void unit_type_data::set_config(const config& cfg)
 		}
         // we insert an empty unit_type and build it after the copy (for performance)
         std::pair<unit_type_map::iterator,bool> insertion =
-            unit_types.insert(std::pair<const std::string,unit_type>(id,unit_type()));
+            insert(std::pair<const std::string,unit_type>(id,unit_type()));
         //	if (!insertion.second)
         // TODO: else { warning for multiple units with same id}
         lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
@@ -970,12 +970,7 @@ void unit_type_data::set_config(const config& cfg)
 	}
 }
 
-void unit_type_data::clear()
-{
-	unit_types.clear();
-}
-
-unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_factory::find(const std::string& key)
+unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrapper::find(const std::string& key, unit_type::BUILD_STATUS status) const
 {
     if (key.empty() || (key == "random"))
         return types_.end();
@@ -996,119 +991,56 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_factory:
     }
 
     //check if the unit_type is constructed and build it if necessary
-    if (itor->second.id().empty()){
-        lg::info(lg::config) << "construct " << key  << " in unit_type list (unit_type_data.unit_types)\n";
-        for(config::const_child_itors i = unit_cfg_->child_range("unit_type"); i.first != i.second; ++i.first)
-        {
-            std::string id = (**i.first)["id"];
-            if (id == key){
-                build_unit_type(key, unit_type::FULL);
-            }
-        }
-
-        // FIXME OBSOLETE compatibility hack to be removed in 1.5.3
-        for(config::const_child_itors i = unit_cfg_->child_range("unit"); i.first != i.second; ++i.first)
-        {
-            std::string id = (**i.first)["id"];
-            if (id == key){
-                build_unit_type(key, unit_type::FULL);
-            }
-        }
-    }
+    build_unit_type(key, status);
 
     return types_.find(key);
 }
 
-const config& unit_type_data::unit_type_factory::find_config(const std::string& key){
-    for(config::const_child_itors i = unit_cfg_->child_range("unit_type"); i.first != i.second; ++i.first)
-    {
-        std::string id = (**i.first)["id"];
-        if (id == key){
-            return **i.first;
-        }
-    }
+const config& unit_type_data::unit_type_map_wrapper::find_config(const std::string& key) const
+{
+    const config* cfg = unit_cfg_->find_child("unit_type", "id", key);
+
+    if (cfg != NULL)
+        return *cfg;
 
     // FIXME OBSOLETE compatibility hack to be removed in 1.5.3
-    for(config::const_child_itors i = unit_cfg_->child_range("unit"); i.first != i.second; ++i.first)
-    {
-        std::string id = (**i.first)["id"];
-        if (id == key){
-            return **i.first;
-        }
-    }
+    cfg = unit_cfg_->find_child("unit", "id", key);
 
-    ERR_UT << "unit_type_data::unit_type_factory::find_config: unit config for id " << key << " not found!\n";
-    assert(false);
+    assert(cfg != NULL);
+    return *cfg;
 }
 
-void unit_type_data::unit_type_factory::generate_help_info()
+void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS status) const
 {
     assert(unit_cfg_ != NULL);
 
-    for(config::const_child_itors i = unit_cfg_->child_range("unit_type"); i.first != i.second; ++i.first)
-    {
-        unit_type_map::iterator itor = types_.find((**i.first)["id"]);
-        assert(itor != types_.end());
-
-        //build the stuff that is needed to feed the help index
-        if (itor->second.build_status() == unit_type::NOT_BUILT)
-            itor->second.build_help_index(**i.first, races_);
-
-        //find the units this one can advance into and add advancefrom information for them
-        std::vector<std::string> advance_to = utils::split((**i.first)["advanceto"]);
-        if ( (advance_to.size() > 0) && (advance_to[0] != "null") ){
-            int count = 0;
-            for (std::vector<std::string>::const_iterator i_adv = advance_to.begin(); i_adv != advance_to.end(); i_adv++){
-                count++;
-                DBG_UT << "Unit: " << (**i.first)["id"] << ", AdvanceTo " << count << ": " << *i_adv << "\n";
-                unit_type_map::iterator itor_advanceto = types_.find(*i_adv);
-                itor_advanceto->second.add_advancesfrom((**i.first)["id"]);
-            }
-        }
-    }
-
-    // FIXME OBSOLETE compatibility hack to be removed in 1.5.3
-    for(config::const_child_itors i = unit_cfg_->child_range("unit"); i.first != i.second; ++i.first)
-    {
-        unit_type_map::iterator itor = types_.find((**i.first)["id"]);
-        assert(itor != types_.end());
-
-        //build the stuff that is needed to feed the help index
-        if (itor->second.build_status() == unit_type::NOT_BUILT)
-            itor->second.build_help_index(**i.first, races_);
-
-        //find the units this one can advance into and add advancefrom information for them
-        std::vector<std::string> advance_to = utils::split((**i.first)["advanceto"]);
-        if ( (advance_to.size() > 0) && (advance_to[0] != "null") ){
-            int count = 0;
-            for (std::vector<std::string>::const_iterator i_adv = advance_to.begin(); i_adv != advance_to.end(); i_adv++){
-                count++;
-                DBG_UT << "Unit: " << (**i.first)["id"] << ", AdvanceTo " << count << ": " << *i_adv << "\n";
-                unit_type_map::iterator itor_advanceto = types_.find(*i_adv);
-                itor_advanceto->second.add_advancesfrom((**i.first)["id"]);
-            }
-        }
+    for (unit_type_map::const_iterator u = types_.begin(); u != types_.end(); u++){
+        build_unit_type(u->first, status);
     }
 }
 
-unit_type& unit_type_data::unit_type_factory::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status){
+unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const
+{
     unit_type_map::iterator ut = types_.find(key);
+    const config& unit_cfg = find_config(key);
 
     switch (status){
         case unit_type::HELP_TOPIC_BUILT:
+            //build the stuff that is needed to feed the help index
             if (ut->second.build_status() == unit_type::NOT_BUILT)
-            {
-                const config& unit_cfg = find_config(key);
                 ut->second.build_help_index(unit_cfg, races_);
-            }
+
+            add_advancefrom(unit_cfg);
             break;
         case unit_type::WITHOUT_ANIMATIONS:
         case unit_type::FULL:
             if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
                 (ut->second.build_status() == unit_type::HELP_TOPIC_BUILT) )
             {
-                const config& unit_cfg = find_config(key);
                 ut->second.build_full(unit_cfg, movement_types_, races_, unit_traits_);
+
+                if (ut->second.build_status() == unit_type::NOT_BUILT)
+                    add_advancefrom(unit_cfg);
                 add_advancement(unit_cfg, ut->second);
             }
             break;
@@ -1119,7 +1051,23 @@ unit_type& unit_type_data::unit_type_factory::build_unit_type(const std::string&
     return ut->second;
 }
 
-void unit_type_data::unit_type_factory::add_advancement(const config& cfg, unit_type& to_unit){
+void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_cfg) const
+{
+    //find the units this one can advance into and add advancefrom information for them
+    std::vector<std::string> advance_to = utils::split(unit_cfg["advanceto"]);
+    if ( (advance_to.size() > 0) && (advance_to[0] != "null") ){
+        int count = 0;
+        for (std::vector<std::string>::const_iterator i_adv = advance_to.begin(); i_adv != advance_to.end(); i_adv++){
+            count++;
+            DBG_UT << "Unit: " << unit_cfg["id"] << ", AdvanceTo " << count << ": " << *i_adv << "\n";
+            unit_type_map::iterator itor_advanceto = types_.find(*i_adv);
+            itor_advanceto->second.add_advancesfrom(unit_cfg["id"]);
+        }
+    }
+}
+
+void unit_type_data::unit_type_map_wrapper::add_advancement(const config& cfg, unit_type& to_unit) const
+{
     config::const_child_itors af;
     for(af = cfg.child_range("advancefrom"); af.first != af.second; ++af.first)
     {

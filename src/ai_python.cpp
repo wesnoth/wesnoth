@@ -167,10 +167,10 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 	int r;
 	for (size_t advance = 0; advance < type->unit_type_->advances_to().size(); advance++)
 	{
-		std::map<std::string,unit_type>::const_iterator t = 
-			unit_type_data::instance().unit_types.find(type->unit_type_->advances_to()[advance]);
+		std::map<std::string,unit_type>::const_iterator t =
+			unit_type_data::types().find(type->unit_type_->advances_to()[advance]);
 
-		assert(t != unit_type_data::instance().unit_types.end());
+		assert(t != unit_type_data::types().end());
 		r = PyList_SetItem(list,advance,wrap_unittype(t->second));
 	}
 	return list;
@@ -220,10 +220,10 @@ static PyMethodDef unittype_methods[] = {
 	{ NULL, NULL, 0, NULL }
 };
 
-static int unittype_internal_compare(wesnoth_unittype* left, 
+static int unittype_internal_compare(wesnoth_unittype* left,
 	wesnoth_unittype* right)
 {
-	return reinterpret_cast<long>(left->unit_type_) - 
+	return reinterpret_cast<long>(left->unit_type_) -
 		reinterpret_cast<long>(right->unit_type_);
 }
 
@@ -1033,8 +1033,8 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 	int idx = 0;
 	for (std::set<std::string>::const_iterator recruit = team->team_->recruits().begin(); recruit != team->team_->recruits().end(); ++recruit)
 	{
-		std::map<std::string,unit_type>::const_iterator t = unit_type_data::instance().unit_types.find(*recruit);
-		assert(t != unit_type_data::instance().unit_types.end());
+		std::map<std::string,unit_type>::const_iterator t = unit_type_data::types().find(*recruit);
+		assert(t != unit_type_data::types().end());
 		r = PyList_SetItem(list,idx++,wrap_unittype(t->second));
 	}
 	return list;
@@ -1073,7 +1073,7 @@ static PyMethodDef team_methods[] = {
 		"Parameters: location\n"
 		"Returns: result\n"
 		"True if the team owns a village at the given location.")
-	MDEF("recruits", python_ai::wrapper_team_recruits,	
+	MDEF("recruits", python_ai::wrapper_team_recruits,
 		"Returns: recruits\n"
 		"Returns a list of wesnoth.unittype objects"
 		" of all possible recruits for this team.")
@@ -1460,7 +1460,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 	// and then the code below will horribly fail).
 	if (!tiles_adjacent(*from->location_, *to->location_))
 		return_none;
-	
+
 	// check if units actually exist
 	bool fromexists = false;
 	bool toexists  = false;
@@ -1472,7 +1472,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 			toexists = true;
 		}
 	}
-	
+
 	if (!fromexists or !toexists) return_none;
 
 	info& inf = running_instance->get_info();
@@ -1720,16 +1720,16 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 	// loc initialises to x=-1000, y=-1000. i.e. temporarily moves the unit off the map
 	gamemap::location loc;
 	wesnoth_location* to = reinterpret_cast<wesnoth_location*>(wrap_location(loc));
-	
+
 	if (!PyArg_ParseTuple(args, CC("O!|O!"), &wesnoth_location_type, &from,
 		&wesnoth_location_type, &to))
 		return NULL;
-	
+
 	// Trivial case, just return the current move_maps
 	if (*from->location_ == *to->location_) {
 	    // PyTuple_New creates a new reference (which we will return)
 		PyObject* ret = PyTuple_New(2);
-		
+
 		/* wrap_move_map creates a new reference, PyTuple_SetItem takes away
 		 * a reference - so this should cancel out and we don't need to
 		 * change reference counts ourselves.
@@ -1739,12 +1739,12 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 
 		return ret;
 	}
-	
+
 	info& inf = running_instance->get_info();
-	
+
 	unit_map::iterator u_it = inf.units.find(*from->location_);
 	if (u_it == inf.units.end()) return_none;
-	
+
 	// Temporarily move our unit to the specified location, storing any
 	// unit that might happen to be there already.
 	std::pair<gamemap::location,unit> *temp = inf.units.extract(*to->location_);
@@ -1752,35 +1752,35 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 	std::pair<gamemap::location,unit> *original = inf.units.extract(*from->location_);
 	std::pair<gamemap::location,unit> test(*to->location_, u_it->second);
 	inf.units.add(&test);
-	
+
 	ai_interface::move_map test_src_dst;
 	ai_interface::move_map test_dst_src;
 	std::map<gamemap::location, paths> possible_moves;
-	
+
 	running_instance->calculate_moves(inf.units, possible_moves, test_src_dst, test_dst_src, true);
-	
+
 	// Restore old positions again
 	temp = inf.units.extract(*to->location_);
 	inf.units.add(original);
 	if (backup)
 		inf.units.add(backup);
-	
+
 	PyObject* srcdst = wrap_move_map(test_src_dst);
 	PyObject* dstsrc = wrap_move_map(test_dst_src);
 	// possible_moves not used
-	
+
 	PyObject* ret = PyTuple_New(2);
 	PyTuple_SetItem(ret, 0, srcdst);
 	PyTuple_SetItem(ret, 1, dstsrc);
-	
+
 	return ret;
 }
 
 static PyMethodDef wesnoth_python_methods[] = {
-    MDEF("log_message", python_ai::wrapper_log_message,		
+    MDEF("log_message", python_ai::wrapper_log_message,
 		"Parameters: string\n"
 		"Logs a message, displayed as a chat message, if debug is enabled." )
-	MDEF("log", python_ai::wrapper_log,		
+	MDEF("log", python_ai::wrapper_log,
 		"Parameters: string\n"
 		"Writes a debug message to the AI log. This should be used instead of "
 		"print to not clutter stdout if AI logging is disabled.")
@@ -1895,7 +1895,7 @@ void python_ai::initialize_python()
 	Py_Register(wesnoth_gamestatus_type, "gamestatus");
 }
 
-/*** 
+/***
  * Invoke the named python script using Wesnoth's builtin Python interpreter.
  */
 void python_ai::invoke(std::string name)
@@ -1931,7 +1931,7 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info), exception(Q
 
 python_ai::~python_ai()
 {
-	// This is called whenever the AI is destroyed after its turn - 
+	// This is called whenever the AI is destroyed after its turn -
 	// the Python interpreter itself will be auto cleaned up at program exit.
 	LOG_AI << "Closing Python instance.\n";
 	running_instance = NULL;
@@ -1943,7 +1943,7 @@ void python_ai::play_turn()
 
 	std::string script_name = current_team().ai_parameters()["python_script"];
 	if (script_name.substr(script_name.length() - 3) != ".py") {
-		// Make sure the script ends in .py here - 
+		// Make sure the script ends in .py here -
 		// Wesnoth will not execute any other files.
 		std::cerr << "\"" << script_name << "\" is not a valid script name.\n";
 		return;
@@ -1959,7 +1959,7 @@ void python_ai::play_turn()
 	if (!game_config::path.empty()) path = game_config::path;
 	LOG_AI << "Executing Python script \"" << script << "\".\n";
 	LOG_AI << "Python path: \"" << path << "/data/ais" << "\"\n";
-	// Run the python script. We actually execute a short inline python script, 
+	// Run the python script. We actually execute a short inline python script,
 	// which sets up the module search path to the data path,
 	// runs the script, and then resets the path.
 	std::string python_code;
