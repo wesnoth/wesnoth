@@ -253,7 +253,7 @@ class AI:
             resistance /= n
 
             debug("%s: speed: %f, defense: %f, aggression: %f, resistance: %f" %
-                (recruit.name, speed, defense, aggression, resistance)
+                (recruit.name, speed, defense, aggression, resistance))
 
             recruits_list.append((recruit, speed, defense, aggression, resistance))
 
@@ -280,7 +280,7 @@ class AI:
                     r = random.uniform(0, total_v)
                     while 1:
                         v, recruit = heapq.heappop(heap)
-                        debug("%d %d" % % (r, v))
+                        debug("%d %d" % (r, v))
                         r += v
                         if r <= 0: break
 
