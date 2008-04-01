@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 16:13+0100\n"
-"PO-Revision-Date: 2008-03-20 14:05+0100\n"
+"PO-Revision-Date: 2008-03-29 21:28+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -3056,7 +3056,6 @@ msgid "backstab"
 msgstr "zezadu"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3066,7 +3065,7 @@ msgstr ""
 "Útok zezadu:\n"
 "Tento útok působí dvojnásobné poranění, když se na opačné straně cíle útoku "
 "nachází bojeschopná jednotka (nebyla kupříkladu proměněna v kámen) k ní "
-"nepřátelská."
+"nepřátelská. Platí to však pouze pro útok."
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
@@ -3162,7 +3161,6 @@ msgid "charge"
 msgstr "výpad"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -3170,7 +3168,8 @@ msgid ""
 msgstr ""
 "Výpad:\n"
 "Tento útok působí dvojnásobné poranění protivníka. Také ale znamená "
-"dvojnásobné poranění útočníka při protivníkově odvetném útoku."
+"dvojnásobné poranění útočníka při protivníkově odvetném útoku. Platí to však "
+"pouze pro ofenzivní použití."
 
 #: data/core/macros/abilities.cfg:654
 msgid "drains"
@@ -4214,10 +4213,8 @@ msgstr ""
 "některým živým stvořením."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" Tato jednotka je schopna jednak léčit, ale také uzdravit jednotky z otravy."
+msgstr " Tato jednotka je schopna základní léčby."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4248,7 +4245,6 @@ msgstr ""
 "některými typy útoků, ale pouze při obraně."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of below the leadership "
@@ -4324,7 +4320,6 @@ msgstr ""
 "útoku, dokud ona či její nepřítel nepadne v boji."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4332,7 +4327,7 @@ msgid ""
 msgstr ""
 " Pokud právě nějaký spojenec zaměstnává nepřátelskou jednotku, tato jednotka "
 "se může připlížit a napadnout ji nečekaně zezadu (z opačné strany), což "
-"způsobí dvojnásobná zranění napadené jednotky."
+"způsobí dvojnásobná zranění napadené jednotky. Platí to však pouze pro útok."
 
 # pův.: "procitnou "
 #: data/core/macros/special-notes.cfg:62
@@ -6785,7 +6780,7 @@ msgstr "Autor"
 
 #: src/game.cpp:1183
 msgid "Downloads"
-msgstr "Věci ke stažení"
+msgstr "Stažení"
 
 #: src/game.cpp:1183
 msgid "Size"
@@ -8807,36 +8802,3 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
-
-#~ msgid ""
-#~ " This unit is capable of basic healing, though it can only delay the "
-#~ "effects of poison, not cure them entirely."
-#~ msgstr ""
-#~ " Tato jednotka je schopna ošetřovat, ale není schopna uzdravit jednotku z "
-#~ "otravy, pouze oddálit působení jedu."
-
-#~ msgid ""
-#~ " This unit can teleport between any two villages instantly, though the "
-#~ "player must control both, and the destination village must be unoccupied."
-#~ msgstr ""
-#~ " Tyto jednotky ovládají schopnost teleportace, a to mezi dvěma vesnicemi "
-#~ "ovládanými stejnou stranou, přičemž obě musejí být neobsazené."
-
-#~ msgid "Connect to Host/Server"
-#~ msgstr "Připoj se k serveru/hostiteli"
-
-#~ msgid "Join a server or hosted game"
-#~ msgstr "Připoj se k serveru nebo hostované hře"
-
-#~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-#~ msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-
-#~ msgid "Host Networked Game"
-#~ msgstr "Hostuj síťovou hru"
-
-#~ msgid ""
-#~ "Host a game using the built-in server. Not well maintained, better use "
-#~ "the dedicated server 'wesnothd'."
-#~ msgstr ""
-#~ "Hostuj síťovou hru za použití vestavěného serveru. Vzhledem k chybovosti "
-#~ "je lepší použít oddělený server v programu „wesnothd“."

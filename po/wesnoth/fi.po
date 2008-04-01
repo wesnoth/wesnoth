@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 16:13+0100\n"
-"PO-Revision-Date: 2008-02-27 09:43+0200\n"
-"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
+"PO-Revision-Date: 2008-03-31 23:38+0200\n"
+"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,9 +78,9 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Hurma:\n"
-"Taistelussa hurmayksiköt jatkavat, kunnes jompikunpi osapuoli kuolee. (Tai "
-"taistelu on jatkunut jo 30 kierrosta.)"
+"Hurmos:\n"
+"Taistelussa hurmayksiköt jatkavat, kunnes jompikunpi osapuoli kuolee tai "
+"taistelu on jatkunut jo 30 kierrosta."
 
 #. [chance_to_hit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
@@ -2519,7 +2519,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2532,8 +2531,8 @@ msgstr ""
 "\n"
 "Vaihda armeijan komentajuutta ihmisen ja tietokonepelaajan välillä. Tämän "
 "komennon voi antaa vain pelaaja, joka kontrolloi armeijaa. Jos toista "
-"parametri ei syötetä, vaihtaa ihmisen ja tietokoneen välillä. Jos parametri "
-"on 'on', asettaa tietokonekontrollin. Jos se on 'off', asettaa "
+"parametria ei syötetä, vaihtaa ihmisen ja tietokoneen välillä. Jos parametri "
+"on ‘on’, asettaa tietokonekontrollin. Jos se on ‘off’, asettaa "
 "ihmiskontrollin. Oletuksena vaikuttaa tällä hetkellä aktiiviseen puoleen, "
 "jos parametrejä ei ole annettu.\n"
 "\n"
@@ -2939,14 +2938,14 @@ msgstr "kaukosiirto"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "Kaukosiirto:\n"
-"Tämä yksikkö voi kaukosiirtyä välittömästi kahden ystävällisen kylän välillä."
+"Tämä yksikkö voi kaukosiirtyä kahden ystävällisen kylän välillä kuluttamalla "
+"(vain) yhden liikepisteen."
 
 #. [hides]
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
@@ -4281,13 +4280,12 @@ msgstr ""
 "astetta kirkkaammaksi."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Kaukosiirto:\n"
-"Tämä yksikkö voi kaukosiirtyä välittömästi kahden ystävällisen kylän välillä."
+"Tämä yksikkö voi käyttää yhden liikepisteen kaukosiirtyäkseen minkä tahansa "
+"tyhjän sekä oman puolensa kylän välillä."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4589,12 +4587,12 @@ msgstr "Sinivihreä"
 #. [race]: description=
 #: data/core/units.cfg:43
 msgid "race^Bat"
-msgstr "Lepakot"
+msgstr "Lepakko"
 
 #. [race]: description=
 #: data/core/units.cfg:44
 msgid "race+female^Bat"
-msgstr "Lepakot"
+msgstr "Lepakko"
 
 #. [race]: description=
 #: data/core/units.cfg:45
@@ -4604,21 +4602,20 @@ msgstr "Lepakot"
 #. [race]
 #: data/core/units.cfg:52
 msgid "race^Drake"
-msgstr "Draakit"
+msgstr "Draakki"
 
 #. [race]
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
-msgstr "Draakit"
+msgstr "Draakki"
 
 #. [race]
 #: data/core/units.cfg:54
 msgid "race^Drakes"
-msgstr "Lohikäärmeet"
+msgstr "Draakit"
 
 #. [race]
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4750,12 +4747,12 @@ msgstr ""
 #. [race]
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
-msgstr "Kääpiöt"
+msgstr "Kääpiö"
 
 #. [race]
 #: data/core/units.cfg:75
 msgid "race+female^Dwarf"
-msgstr "Kääpiöt"
+msgstr "Kääpiö"
 
 #. [race]
 #: data/core/units.cfg:76
@@ -4867,12 +4864,12 @@ msgstr ""
 #. [race]
 #: data/core/units.cfg:89
 msgid "race^Elf"
-msgstr "Haltiat"
+msgstr "Haltia"
 
 #. [race]
 #: data/core/units.cfg:90
 msgid "race+female^Elf"
-msgstr "Haltiat"
+msgstr "Haltia"
 
 #. [race]
 #: data/core/units.cfg:91
@@ -4941,12 +4938,12 @@ msgstr ""
 #. [race]: description=
 #: data/core/units.cfg:103
 msgid "race^Goblin"
-msgstr "Goblinit"
+msgstr "Goblin"
 
 #. [race]: description=
 #: data/core/units.cfg:104
 msgid "race+female^Goblin"
-msgstr "Goblinit"
+msgstr "Goblin"
 
 #. [race]: description=
 #: data/core/units.cfg:105
@@ -4956,12 +4953,12 @@ msgstr "Goblinit"
 #. [race]: description=
 #: data/core/units.cfg:113
 msgid "race^Gryphon"
-msgstr "Aarnikotkat"
+msgstr "Aarnikotka"
 
 #. [race]: description=
 #: data/core/units.cfg:114
 msgid "race+female^Gryphon"
-msgstr "Aarnikotkat"
+msgstr "Aarnikotka"
 
 #. [race]: description=
 #: data/core/units.cfg:115
@@ -4971,12 +4968,12 @@ msgstr "Aarnikotkat"
 #. [race]
 #: data/core/units.cfg:123
 msgid "race^Human"
-msgstr "Ihmiset"
+msgstr "Ihminen"
 
 #. [race]
 #: data/core/units.cfg:124
 msgid "race+female^Human"
-msgstr "Ihmiset"
+msgstr "Ihminen"
 
 #. [race]
 #: data/core/units.cfg:125
@@ -5024,16 +5021,57 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
+"Ihmisten rotu on erittäin monipuolinen. Vaikka ihmiset alun perin tulivat "
+"Vanhalta mantereelta, ihmiset ovat levittäytyneet ympäri maailmaa ja "
+"jakautuneet moneen erilaiseen kulttuuriin ja rotuun. Vaikka ihmiset eivät "
+"ole perehtyneet magiaan kuten muut olennot, he voivat oppia hyödyntämään "
+"sitä ja oppimaan enemmän magian tyyppejä kuin suurin osa muista. Heillä ei "
+"ole ylimääräisiä erikoiskykyjä eikä taipumuksia lukuun ottamatta heidän "
+"monipuolisuuttaan ja tarmokkuuttaan. Vaikka he usein ovat riidoissa kaikkien "
+"rotujen kanssa, he voivat joskus muodostaa liittoumia vähemmän "
+"agressiivisten rotujen, kuten haltioiden ja kääpiöiden, kanssa. Vähemmän "
+"omantunnontarkat heidän joukossaan eivät epäröi myöskään palkkasoturiörkkien "
+"palkkaamista. Heillä ei ole luonnollisia vihollisia, vaikkakin suurimmalla "
+"osalla ihmisistä, kuten suurimmalla osalla kaikkien rotujen kansoista, on "
+"vaistomainen inho epäkuolleita kohtaan. Ihmiset ovat lyhyempiä kuin haltiat, "
+"mutta silti pidempiä kuin kääpiöt. Heidän ihonvärinsä voi vaihdella lähes "
+"valkoisesta tummanruskeaan.\n"
+"\n"
+"<header>text='Kruunun alamaiset'</header>\n"
+"On olemassa monenlaisia eri ihmisryhmiä, mutta suurin osa heistä Suurella "
+"mantereella elää Wesnothin kruunun alamaisina. Ensimmäsien kerran ihmiset "
+"ilmestyivät Suurelle mantereelle läntisestä merentakaisesta maasta, "
+"Vihreältä saarelta, ja pian perustivat pääkaupunkinsa Weldynin sisämaahan. "
+"Seuraavien vuosisatojen ajan he rakensivat monia kaupunkeja ympäri mannerta. "
+"Kaksi sotilasta Wesnothin kruunusta suojelevat maata muodostaen tunnetun "
+"maailman organisoiduimman sotilasjoukon. Sen taistelijat tulevat "
+"pääprovinsseista, joissa kaikki miehet ovat asevelvollisia jo aikaisessa "
+"iässä.\n"
+"\n"
+"<header>text='Klaaninmiehet'</header>\n"
+"Wesnothin itäiset provinssit, jotka tunnetaan myöskin Klaanien kotimaana, "
+"ovat maantieteellisesti enemmän avoimia tasankoja ja aaltoilevia kukkuloita "
+"kuin läntiset sivistyneemmät provinssit. Ne ovat koti Hevosklaaneille, jotka "
+"ovat liittoutuneet Wesnothin kruunun kanssa, mutta toimivat itsenäisesti ja "
+"pitävät yllä omaa identiteettiään. Jotkut pitävät heitä vasallivaltiona, "
+"joka lähettää ruokaa ja sotilaita Kruunulle vaihtokaupaksi suojeluksesta. "
+"Toiset sanovat heidän olevan yhtä vahvoja kuin Wesnothin länsipuolisko. Joka "
+"tapauksessa itäisillä provinsseilla ei ole sellaista asevelvollisarmeijaa "
+"kuin Länsi-Wesnothilla. Taisteluja varten harjoitteleminen on osa "
+"klaanilaisten elämää: vanhemmat opettavat lapset ratsastamaan hevosilla, "
+"taistelemaan sekä ampumaan jousella jo hyvin varhain. Yleisesti Klaanien "
+"soturit ovat vähemmän organisoituja kuin sivistyneet taistelijat, ja näiden "
+"ryhmien vahvuudet ja heikkoudet täydentävät toisiaan."
 
 #. [race]: description=
 #: data/core/units.cfg:139
 msgid "race^Saurian"
-msgstr "Liskot"
+msgstr "Lisko"
 
 #. [race]: description=
 #: data/core/units.cfg:140
 msgid "race+female^Saurian"
-msgstr "Liskot"
+msgstr "Lisko"
 
 #. [race]: description=
 #: data/core/units.cfg:141
@@ -5043,7 +5081,7 @@ msgstr "Liskot"
 #. [race]: description=
 #: data/core/units.cfg:150
 msgid "race^Mechanical"
-msgstr "Mekaaniset"
+msgstr "Mekaaninen"
 
 #. [race]: description=
 #: data/core/units.cfg:151
@@ -5053,12 +5091,12 @@ msgstr "Mekaaniset"
 #. [race]: description=
 #: data/core/units.cfg:161
 msgid "race^Merman"
-msgstr "Merenmiehet"
+msgstr "Merenmies"
 
 #. [race]: description=
 #: data/core/units.cfg:162
 msgid "race^Mermaid"
-msgstr "Merennaiset"
+msgstr "Merennainen"
 
 #. [race]: description=
 #: data/core/units.cfg:163
@@ -5068,7 +5106,7 @@ msgstr "Merenmiehet"
 #. [race]: description=
 #: data/core/units.cfg:171
 msgid "race^Monster"
-msgstr "Hirviöt"
+msgstr "Hirviö"
 
 #. [race]: description=
 #: data/core/units.cfg:172
@@ -5078,12 +5116,12 @@ msgstr "Hirviöt"
 #. [race]: description=
 #: data/core/units.cfg:179
 msgid "race^Naga"
-msgstr "Nagat"
+msgstr "Naga"
 
 #. [race]: description=
 #: data/core/units.cfg:180
 msgid "race^Nagani"
-msgstr "Nagat"
+msgstr "Naga"
 
 #. [race]: description=
 #: data/core/units.cfg:181
@@ -5093,12 +5131,12 @@ msgstr "Nagat"
 #. [race]: description=
 #: data/core/units.cfg:189
 msgid "race^Ogre"
-msgstr "Jätit"
+msgstr "Jätti"
 
 #. [race]: description=
 #: data/core/units.cfg:190
 msgid "race+female^Ogre"
-msgstr "Jätit"
+msgstr "Jätti"
 
 #. [race]: description=
 #: data/core/units.cfg:191
@@ -5108,12 +5146,12 @@ msgstr "Jätit"
 #. [race]
 #: data/core/units.cfg:199
 msgid "race^Orc"
-msgstr "Örkit"
+msgstr "Örkki"
 
 #. [race]
 #: data/core/units.cfg:200
 msgid "race+female^Orc"
-msgstr "Örkit"
+msgstr "Örkki"
 
 #. [race]
 #: data/core/units.cfg:201
@@ -5179,16 +5217,77 @@ msgid ""
 "individuals tend to specialize in other skills, like archery or "
 "assassination."
 msgstr ""
+"Ulkonäöltään örkit ovat puoliksi ihmisiä ja puoliksi petoja. He ovat "
+"pidempiä, rotevampia ja vahvempia kuin ihmiset. He ovat luonnostaan "
+"sotaisia, julmia ja raakoja. Heidän verensä on tummempaa ja tiheämpää kuin "
+"normaaleiden ihmisten, ja he eivät huolehdi henkilökohtaisesta hygieniasta "
+"tai ulkonäöstään. Vaikka örkit ovat väkivaltaisia olentoja jopa keskenään, "
+"ovat he silti laumasieluja: örkki ei koskaan matkusta pitkään tai asu yksin "
+"pienemmissä kuin puolen tusinan ryhmissä.\n"
+"\n"
+"<header>text='Yhteiskunta'</header>\n"
+"Lähes jokainen örkki on jonkin heimon tai klaanin jäsen. Naapuriheimojen "
+"väliset suhteet ovat yleensä väkivaltaiset, paitsi tapauksissa, joissa "
+"yhteinen vihollinen uhkaa heidän olemassaoloaan tai suuren ryöstösaaliin "
+"mahdollisuus päihittää keskinäisen vihanpidon. Silloin tällöin jokin vahva "
+"päällikkö saattaa nousta johtamaan useaa heimoa, yleensä uhkailemalla "
+"kannattajia. Rauhan aikana örkkiheimo keskittyy lähes ainoastaan "
+"vahvistamaan itseään valmistellakseen seuraavaa aseistettua välikohtausta. "
+"Örkit ovat tunnettuja raakalaismaisesta kirjoitustavastaan – yleensä verestä "
+"– vaikka sitä useimmiten käytetään herjausten vaihtamisessa tai "
+"heimojohtajien välisissä uhkauksissa.\n"
+"\n"
+"Örkkiyhteiskunnat perustuvat myös hiukan muuhunkin kuin voimaan: mahti tekee "
+"oikeutta, ja johtaja johtaa ja selviytyy ainoastaan niin kauan, kun kukaan "
+"ei onnistu riistämään titteliä häneltä. Ainainen kamppailu voimasta kiehuu "
+"hiljalleen potentiaalisten heimojohtajien välillä. Örkkijohtaja harvoin elää "
+"enemmän kuin kourallisen vuosia nauttiakseen absoluuttisesta "
+"vaikutusvallastaan ennen kuin hänet surmataan asemansa takia – vaikka "
+"historia tunteekin muutamia merkittäviä poikkeuksia. Örkeillä ei ole mitään "
+"ihmeempiä kunniasääntöjä, ja kun kiistämätön raaka voima on yleensä suosittu "
+"keino käyttää voimaa, salamurhaaminen, myrkyttäminen ja selkäänpuukottaminen "
+"ovat kelpo keinoja päästä tavoitteisiinsa.\n"
+"\n"
+"Örkit enimmäkseen elelevät maaseudulla, usein kukkulaisilla tai "
+"vuoristoisilla alueilla, joskus luolissa. He eivät viljele maata eivätkä "
+"pidä karjaa, mutta he ovat päteviä metsästäjiä fyysisen pituutensa ja "
+"eläimellisyytensä tuloksena. Heidän suuren lukumääränsä tähden he ovat "
+"kykeneviä metsästämään alueen tyhjäksi kaikesta jyrsijää suuremmasta "
+"suhteellisen lyhyessä ajassa. Tämän ja heidän epävakaan johtajuutensa takia "
+"örkkiheimoilla on tapana elää puolipaimentolaista elämäntyyliä jäämättä "
+"koskaan yhdelle alueelle liian pitkäksi aikaa. Suuremmat heimot voivat "
+"vakiintua lujasti samalle alueelle vuosiksi, jopa vuosikymmeniksi, ja "
+"rakentaa suuria leirejä tai lähes kaupunkeja, mutta jopa nämä ovat helposti "
+"purettavissa ja hylättävissä, jos tulee tarvetta sijoittaa lauma uudelleen.\n"
+"\n"
+"Vanhimmat tunnetut örkit ovat olleet iältään noin 50–60-vuotiaita, mutta "
+"hyvin harva yksilö koskaan elää näkemään kahta tai kolmea vuosikymmentä "
+"ennen loppunsa kohtaamista joko sodassa tai lajitoverinsa kädestä. Vanhimmat "
+"örkit ovat yleensä shamaaneja, jotka ovat ehkäpä ainoita, jotka moni "
+"heidänlajisensa näkee näkee luotettavina ja neutraaleina. Tottumuksen "
+"alkuperä ei ole tiedossa, sillä shamaanit eivät suoraan tue paljoakaan "
+"örkkiyhteiskuntia, vaan toimivat neuvonantajina – mikä on jotakin sellaista, "
+"mitä örkit muuten eivät tapaa sietää. Shamaanit ovat monella tavalla monen "
+"muun örkin vastakohtia: he ovat yleensä fyysisesti riutuneita sekä heikkoja "
+"verrattuna muihin, ja heiltä puuttuu taistelutaitoja. Huolimatta heidän "
+"luottamuksestaan raakaan voimaan ei sellaista lainkaan kehity likikään "
+"kaikille örkeille. Moni örkki on syntynyt pienempänä ja heikompana kuin "
+"muut, ja heidän ollessaan lähes vastasyntyneitä, heidän vahvemmat "
+"sisaruksensa ovat näyttäneet heille heidän paikkansa. Vahvemmat "
+"rutiininomaisesti riistävät ruuasta suurimman osaan ja näin kasvavat yhä "
+"vahvemmiksi, kun taas heidän heikommat sisaruksensa eivät. Monet näistä "
+"yksilöistä yleensä erikoistuvat muihin taitoihin, kuten jousiammuntaan tai "
+"salamurhaamiseen."
 
 #. [race]
 #: data/core/units.cfg:218
 msgid "race^Troll"
-msgstr "Peikot"
+msgstr "Peikko"
 
 #. [race]
 #: data/core/units.cfg:219
 msgid "race+female^Troll"
-msgstr "Peikot"
+msgstr "Peikko"
 
 #. [race]
 #: data/core/units.cfg:220
@@ -5233,16 +5332,52 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
+"Peikot ovat antiikkisia olentoja, yksi vanhimmista lajeista, jonka tiedetään "
+"asuttavan Suurta mannerta. Ne ovat suuria, hitaita, yksinkertaisia ja asuvat "
+"äärimmäisen pitkän elämän syvillä luolissaan tai korkeiden vuorien päällä. "
+"Peikkojen kaikista tunnetuin piirre on sisäinen elinvoima, joka elättää ja "
+"parantaa heitä ajan kanssa. Tuloksena heidän elämänsä on erittäin erilainen "
+"kuin kuin kenenkään muun tunnetun rodun. Peikoilla on vain muutama oikea "
+"tarve: ne tarvitsevat vähän ruokaa tai vettä, ja niin heillä on vähän "
+"kiihoketta ahdistella, turvallisuuden lisäksi, niitä, jotka ovat "
+"vihamielisiä peikkoja kohti. Käännettynä tämä tarkoittaa, ettei peikkojen "
+"tarvitse yleensä huolehtia yhtään mistään, ja ne voivat kuluttaa aikansa "
+"nukkuen tai kontemplaatiossa. Peikoilla on eriskummallista "
+"hengenheimolaisuutta luonnon kanssa. He eivät asetu yhteen elävien kohteiden "
+"kanssa, kuten haltiat, mutta kivien ja maan. He ovat myös jokseenkin "
+"omalaatuisia ympäristöään kohti, ja useat nuoret pennut jopa nauttivat "
+"matkaamisesta ja maailman näkemisestä. Samalla kun peikko kasvaa "
+"vanhemmaksi, se tapaa muuttua koko ajan passiivisemmaksi, asteittain  "
+"menettäen kiinnostuksensa ympäristöönsä ja kuluttaen enemmän aikaasa nukkuen "
+"hiljaisessa ja tutussa nurkassa kotiluolassaan. Tämä jatkuu, kunnes peikko "
+"viimein kuolee ruumiinsa muuttuessa hitaasti elottomaksi kivipatsaaksi.\n"
+"\n"
+"Monet näkevät peikkojen olevan vain hieman enemmän kuin yksi "
+"raakalaishirviölajeista. Tämä yleinen väärinkäsitys johtuu örkkien "
+"suostutteluista saaden peikot armeijoihinsa. Koska peikot ovat melko "
+"yksinkertaisia eivätkä ymmärrä muiden lajien tapoja, tai välillä ne eivät "
+"edes erota niitä toisistaan, örkkikoplan on helppo vakuuttaa peikkojoukon "
+"saavan heihin liittymällä tarkan koston niistä, jotka aikaisemmin "
+"saalistivat niitä. Nämä uudet alokkaat lähetetään örkkien tämänhetkistä "
+"vastustajaa vastaan, riippumatta siitä, olivatko he peikkojen alkuperäisiä "
+"vihollisia, vaiko eivät, aiheuttaen jopa enemmän vihollisia harhautetuille "
+"peikoille. Yleisin vihollinen peikoille on kääpiöt, viha näiden rodun "
+"välillä on ikiaikainen.\n"
+"\n"
+"<header>text='Maantiede'</header>\n"
+"Peikot ovat asuttaneet Suuren mantereen vuoristoja kauemmin kuin sinne "
+"siirtyneet kääpiöt. Peikot ovat yleinen näky vuoristolinjoilla pohjoisessa "
+"ja eteläisessä Wesnothissa, ja missä tahansa örkkilaumat vaeltavat."
 
 #. [race]
 #: data/core/units.cfg:238
 msgid "race^Undead"
-msgstr "Epäkuolleet"
+msgstr "Epäkuollut"
 
 #. [race]
 #: data/core/units.cfg:239
 msgid "race+female^Undead"
-msgstr "Epäkuolleet"
+msgstr "Epäkuollut"
 
 #. [race]
 #: data/core/units.cfg:240
@@ -5306,7 +5441,7 @@ msgstr ""
 #. [race]: description=
 #: data/core/units.cfg:254
 msgid "race^Wose"
-msgstr "Puupaimenet"
+msgstr "Puupaimen"
 
 #. [race]: description=
 #: data/core/units.cfg:255
@@ -5316,17 +5451,17 @@ msgstr "Puupaimenet"
 #. [language]
 #: data/hardwired/english.cfg:3
 msgid "Easy"
-msgstr "helppo"
+msgstr "Helppo"
 
 #. [language]
 #: data/hardwired/english.cfg:4
 msgid "Medium"
-msgstr "normaali"
+msgstr "Keskitaso"
 
 #. [language]
 #: data/hardwired/english.cfg:5
 msgid "Hard"
-msgstr "vaikea"
+msgstr "Vaikea"
 
 #. [language]
 #: data/hardwired/english.cfg:10
@@ -5493,7 +5628,7 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"‘Toiminnot’-valikosta voit valita ‘Näytä vihollisten liikkeet’ korostaaksesi "
+"”Toiminnot”-valikosta voit valita ”Näytä vihollisten liikkeet” korostaaksesi "
 "kaikki mahdolliset heksat, joihin vastustajasi voi siirtyä (edellyttäen "
 "omien yksiköittesi pysyvän paikoillaan). Käytä tätä varmistaaksesi, ettei "
 "vihollinen voi saavuttaa sinun heikkoja tai vahingoittuneita yksiköitäsi "
@@ -5514,7 +5649,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
 #: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
 msgid "- The Wesnoth Tactical Guide"
-msgstr "-Wesnothin taktinen opaskirja"
+msgstr "- Wesnothin taktinen opaskirja"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -5523,7 +5658,7 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
-"Yksiköt ‘älykäs’-ominaisuudella vaativat vähemmän kokemusta kehittyäkseen. "
+"Yksiköt ”älykäs”-ominaisuudella vaativat vähemmän kokemusta kehittyäkseen. "
 "Kampanjan aikaisessa vaiheissa yritä antaa viimeistelyiskut näitten "
 "yksiköitten toimesta, jotta saat korkeatasoisia yksiköitä nopeammin. "
 
@@ -5541,7 +5676,7 @@ msgid ""
 msgstr ""
 "Kahdella yksiköllä ympäröinti on erittäin voimakas, varsinkin nopeita "
 "yksiköitä vastaan. Sijoittamalla kaksi yksikköä vastakkain vastustajan "
-"ympärille, heidän aluekontrollinsa estää vastustajan yksikköä liikkumasta "
+"ympärille heidän aluekontrollinsa estää vastustajan yksikköä liikkumasta "
 "yhtä heksaa kauemmaksi. "
 
 #. [tip]
@@ -5556,9 +5691,9 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
-"Voit käyttää ‘värvää’ ja ‘kutsu’-komentoja klikkaamalla oikealla "
+"Voit käyttää ”Värvää”- ja ”Kutsu”-komentoja klikkaamalla oikealla "
 "hiirenkorvalla linnan heksaa. Tämä antaa sinun päättää, mihin heksaan haluat "
-"uuden yksikön. Sijoittamalla uuden yksiköt viisaasti voit päästä joihinkin "
+"uuden yksikön. Sijoittamalla uudet yksiköt viisaasti voit päästä joihinkin "
 "kyliin aikaisemmin. "
 
 #. [tip]
@@ -5568,8 +5703,8 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
-"Päävalikossa on joitain hyödyllisiä ruutuja: ‘Statistiikka’, esimerkiksi, "
-"antaa sinun tietää vihollistesi tilanteen, ja miten pärjäät heihin nähden."
+"Päävalikossa on joitain hyödyllisiä vaihtoehtoja: esimerkiksi ”Tilastot” "
+"antaa sinun tietää vihollistesi tilanteen ja miten pärjäät heihin nähden."
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -5578,7 +5713,7 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
-"Yksiköt ominaisuudella ‘nopea’ voivat liikkua yhden ylimääräisen heksan "
+"Yksiköt ominaisuudella ”nopea” voivat liikkua yhden ylimääräisen heksan "
 "vuorossa. Tämä voi olla erittäin tärkeää, milloin liikutaan vaikean maaston "
 "läpi, kuten vedessä tai luolissa. Se voi päästää sinut kohdan läpi vain "
 "yhdellä siirrolla, muiden jäädessä jälkeen."
@@ -5594,8 +5729,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
-"Muutaman skenaarion pelattuasi, lue ‘Peli’-osa ohjeesta huolellisesti. "
-"Yksityiskohdat tulevat tärkeämmiksi skenaarioiden muuttuessa haastavimmiksi!"
+"Muutaman skenaarion pelattuasi, lue ”Peli”-osa ohjeesta huolellisesti. "
+"Yksityiskohdat tulevat tärkeämmiksi skenaarioiden muuttuessa haastavammiksi!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:35
@@ -5605,7 +5740,7 @@ msgid ""
 "higher level."
 msgstr ""
 "On yleensä parempi aloittaa kampanjan seuraava skenaario alemman tason "
-"yksiköillä, jotka ovat juuri kehittymässä kuin samoilla korkeamman tason "
+"yksiköillä, jotka ovat juuri kehittymässä, kuin samoilla korkeamman tason "
 "yksiköillä."
 
 #. [tip]
@@ -5628,7 +5763,7 @@ msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
 msgstr ""
-"Lainkuuliaiset yksiköt taistelevat parhaiten päivisin, kaoottiset öisin, ja "
+"Lainkuuliaiset yksiköt taistelevat parhaiten päivisin, kaoottiset öisin ja "
 "neutraaleihin yksiköihin ei päivän ja yön vaihtelu vaikuta."
 
 #. [tip]
@@ -5648,7 +5783,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr "- Taktisen analysoinnin käsikirja, Volume I - Haldric II, 42WV"
+msgstr "- Taktisen analysoinnin käsikirja, Osa I - Haldric II, 42WV"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
@@ -5658,8 +5793,8 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
-"Jos olet pelaamassa ‘sumulla’ tai ‘hunnulla’, et näe, mitä olet kohtaamassa. "
-"Tälläisessä tapauksessa, pitkän matkan tiedustelijayksiköt ovat arvonsa "
+"Jos pelaat ”sumulla” tai ”hunnulla”, et näe mitä olet kohtaamassa. "
+"Tälläisessä tapauksessa pitkän matkan tiedustelijayksiköt ovat arvonsa "
 "väärtejä. Yritä valita tiedustelijat, jotka voivat helposti liikkua "
 "ympäröivässä maastossa, koska yksiköt näkevät juuri niin pitkälle kuin "
 "voivat yhdessä kierroksessa liikkua."
@@ -5674,7 +5809,7 @@ msgid ""
 msgstr ""
 "Hyökkäyksiä on kuutta tyyppiä: lävistys, teräase, murjova, tuli, kylmä ja "
 "salatiede. Eri yksiköillä on heikkouksia erilaisia hyökkäyksiä vastaan. "
-"Paina yksikköä hiiren oikealla napilla, valitse 'Yksikön kuvaus' nähdäksesi, "
+"Paina yksikköä hiiren oikealla napilla, valitse ”Yksikön kuvaus” nähdäksesi, "
 "kuinka hyvin yksikkö vastustaa erilaisia hyökkäystyyppejä."
 
 #. [tip]
@@ -5686,9 +5821,8 @@ msgid ""
 "right corner of the screen."
 msgstr ""
 "Maasto, jossa yksikkösi on, määrää vihollisten mahdollisuuden osua "
-"yksikköösi taistelussa. Puolustusprosentti tällä hetkellä valitulle "
-"yksikölle tällä hetkellä valitussa maastossa näkyy ruuden oikeassa "
-"yläkulmassa."
+"yksikköösi taistelussa. Puolustusprosentti valitulle yksikölle maastossa, "
+"jossa yksikkö sijaitsee, näkyy ruudun oikeassa yläkulmassa."
 
 #. [tip]
 #: data/hardwired/tips.cfg:63
@@ -5699,11 +5833,11 @@ msgid ""
 "not be removed unless the unit regenerates, or spends a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
-"Myrkytetyt yksilöt menettävät kahdeksan osumapistettä joka vuorolla, kunnes "
+"Myrkytetyt yksilöt menettävät kahdeksan elämäpistettä joka vuorolla, kunnes "
 "he ovat pisteen päässä kuolemasta. He jäävät kuoleman ovelle, kunnes myrkky "
 "on poistettu. Hoivaajat voivat estää myrkytetyn yksikön tilan huonontumisen, "
-"mutta myrkky ei katoa, ennen kuin yksikkö uusiutuu, tai viettää vuoron "
-"kylässä, tai parantamaan kykenevän yksikön vieressä."
+"mutta myrkky ei katoa ennen kuin yksikkö uusiutuu tai viettää vuoron kylässä "
+"tai parantamaan kykenevän yksikön vieressä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
@@ -5712,9 +5846,9 @@ msgid ""
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"Voit käyttää yksiköitä aikaisemmista taisteluista valitsemalla 'kutsu "
-"veteraaniyksikkö' pelivalikosta. Kutsumalla samat yksiköt yhä uudelleen, "
-"voit luoda tehokkaan ja kokeneen armeijan."
+"Voit käyttää yksiköitä aikaisemmista taisteluista valitsemalla ”Kutsu "
+"veteraaniyksikkö” pelivalikosta. Kutsumalla samat yksiköt yhä uudelleen voit "
+"luoda tehokkaan ja kokeneen armeijan."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -5726,11 +5860,11 @@ msgid ""
 "are skilled enough to ignore these zones."
 msgstr ""
 "Yksiköt hallitsevat kaikkia vieressään olevia heksoja. Jos yksikkö liikkuu "
-"vihollisen hallitsemaan heksaan se ei voi liikkua enempää tällä vuorolla. "
+"vihollisen hallitsemaan heksaan, se ei voi liikkua enempää sillä vuorolla. "
 "Tämä tarkoittaa, että yksiköillä voi olla kaksi tyhjää heksaa välissään, ja "
-"silti muodostaa esteen viholliselle. (Tason 0 yksiköt ovat liian heikkoja "
-"hallitsemaan aluetta ja kahakoitsijat osaavat taitavasti välttää näiden "
-"alueiden vaikutukset.)"
+"silti ne muodostavat esteen viholliselle. (Tason 0 yksiköt ovat liian "
+"heikkoja hallitsemaan aluetta ja kahakoitsijat osaavat taitavasti välttää "
+"näiden alueiden vaikutukset.)"
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
@@ -5741,14 +5875,14 @@ msgid ""
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
 "Mahdollisuus osua yksikköön riippuu yleensä yksikön puolustustaidosta siinä "
-"maastossa, missä se on. Maagisilla hyökkäyksillä on kuitenkin aina 70% "
-"mahdollisuus osua sekä hyökkäyksessä, että puolustuksessa. Tarkk’ampujilla "
-"on aina vähintään 60% mahdollisuus osua hyökkäyksessä."
+"maastossa, jossa se on. Maagisilla hyökkäyksillä on kuitenkin aina 70% "
+"mahdollisuus osua sekä hyökätessä että puolustaessa. Tarkk'ampujilla on aina "
+"vähintään 60% mahdollisuus osua hyökätessä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr "- Taktisen analysoinnin käsikirja, Volume II - Haldric II, 43WV"
+msgstr "- Taktisen analysoinnin käsikirja, Osa II - Haldric II, 43WV"
 
 #. [tip]
 #: data/hardwired/tips.cfg:79
@@ -5756,8 +5890,8 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"Kylässä oleva yksikkö parantuu 8 elämäpisteellä vuoronsa alussa, tai "
-"parantuu myrkytyksestä."
+"Kylässä oleva yksikkö parantuu 8 elämäpisteellä vuoronsa alussa tai parantuu "
+"myrkytyksestä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
@@ -5812,7 +5946,7 @@ msgid ""
 msgstr ""
 "Yksikön tappaminen on paras tapa saada kokemusta. Yksikkö, joka antaa "
 "viimeisen iskun viholliselle, saa kahdeksan kokemuspistettä jokaisesta "
-"vihollisyksikön tasosta, tai neljä kokemuspistettä nolla–tason vastustajasta."
+"vihollisyksikön tasosta tai neljä kokemuspistettä 0-tason vastustajasta."
 
 #. [tip]
 #: data/hardwired/tips.cfg:99
@@ -5821,7 +5955,7 @@ msgid ""
 "well in hills, mountains and caves."
 msgstr ""
 "Haltiat liikkuvat ja taistelevat hyvin metsissä. Kääpiöt puolestaan "
-"kukkuloilla,vuorilla ja luolissa."
+"kukkuloilla, vuorilla ja luolissa."
 
 #. [tip]
 #: data/hardwired/tips.cfg:103
@@ -5852,7 +5986,7 @@ msgstr "- Kuningas Konrad, 552WV"
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"Älä pelkää vetäytyä ja järjestäytyä uudestaan, se on usein avain voittoon."
+"Älä pelkää vetäytyä ja järjestäytyä uudestaan – se on usein avain voittoon."
 
 #. [tip]
 #: data/hardwired/tips.cfg:112
@@ -5891,7 +6025,7 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Luurangot ovat vastustuskykyisiä kylmälle, lävistäville ja teräaseilla "
+"Luurangot ovat vastustuskykyisiä kylmille, lävistäville ja teräaseilla "
 "tehdyille iskuille, mutta herkkiä murjoville iskuille, tulelle ja "
 "salatiedehyökkäyksille."
 
@@ -5948,7 +6082,7 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"Viedessäsi hiiren kursorin vihollisyksikön päälle, näet, kuinka pitkälle se "
+"Viedessäsi hiiren kursorin vihollisyksikön päälle, näet kuinka pitkälle se "
 "voi liikkua."
 
 #. [tip]
@@ -5957,7 +6091,7 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Parantajat tuovat sinulle voiton, vaikka eivät itse taistelisikaan - käytä "
+"Parantajat tuovat sinulle voiton, vaikka eivät itse taistelisikaan – käytä "
 "niitä hyökkäävien yksiköiden tukemiseen."
 
 #. [tip]
@@ -5990,8 +6124,8 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
-"Yksiköt paranevat, kun ne nousevat kokemustason. Viisaasti käytettynä tämä "
-"voi ratkaista voiton."
+"Yksiköt paranevat nostaessaan kokemustasoaan. Viisaasti käytettynä tämä voi "
+"ratkaista voiton."
 
 #. [tip]
 #: data/hardwired/tips.cfg:167
@@ -6012,9 +6146,9 @@ msgid ""
 "your lower-level units instead."
 msgstr ""
 "Yksiköt voivat yletä enimmäistasonsa jälkeenkin, jolloin useimmiten yksikön "
-"enimmäis-EP nousee kolmella ja parantuvat kokonaan. Enimmäistason jälkeinen "
-"yleneminen eli EYJ (yleisesti AMLA) on kuitenkin joka ylenemisen jälkeen "
-"vaikeampaa. Niinpä on usein järkevämpää yrittää saada alempitasoisia "
+"enimmäis-EP nousee kolmella ja yksikkö parantuu kokonaan. Enimmäistason "
+"jälkeinen yleneminen eli EJY (yleisesti AMLA) on kuitenkin joka ylenemisen "
+"jälkeen vaikeampaa. Niinpä on usein järkevämpää yrittää saada alempitasoisia "
 "yksiköitä ylenemään."
 
 #. [tip]
@@ -6025,7 +6159,7 @@ msgid ""
 "is best to scout specific types of terrain."
 msgstr ""
 "Kartoissa, joissa on käytössä sumu tai huntu, näkevät yksiköt vain niin "
-"kauas kuin pystyvät liikkumaan. Muista tämä päättäessäsi, mikä yksikkö on "
+"kauas kuin pystyvät liikkumaan. Muista tämä päättäessäsi mikä yksikkö on "
 "paras tiedustelemaan missäkin maastossa."
 
 #. [tip]
@@ -6035,7 +6169,7 @@ msgid ""
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
 "Wesnothissa lähes jokaisesta kohteesta näytöllä on saatavilla vihje. Pidä "
-"hiiren osoitinta kohteen päällä saadaksesi kohteen selityksen."
+"hiiren osoitinta kohteen päällä saadaksesi kohteesta selityksen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:183
@@ -6046,8 +6180,8 @@ msgid ""
 "can adjust campaign difficulty."
 msgstr ""
 "Voit lähettää Wesnoth-projektille anonyymiä tietoa sinun edistymisestäsi "
-"käyttäen ”Auta Wesnothia”-nappulaa(nappula sijaitsee oikeassa alakulmassa "
-"kirjekuoreksi naamioituneena). Tämä tieto on tärkeää, jotta voimme entistä "
+"käyttäen ”Auta Wesnothia”-nappulaa. (Nappula sijaitsee oikeassa alakulmassa "
+"kirjekuoreksi naamioituneena.) Tämä tieto on tärkeää, jotta voimme entistä "
 "tarkemmin säätää kampanjoiden vaikeusasteita."
 
 #. [tip]
@@ -6058,13 +6192,13 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 "Kehittääkseen pienitasoisia yksiköitä nopeasti, ryhmitä ne veteraanin kanssa "
-"ja käytä veteraania vahingoittamaan kohdetta tarpeeksi heikomman yksikön "
-"saamiseksi aiheuttamaan tapon vastustajalle."
+"ja käytä veteraania vahingoittamaan kohdetta tarpeeksi saadaksesi heikomman "
+"yksikön aiheuttamaan tappoiskun."
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
 msgid "- Queen Li'sar, 528YW"
-msgstr "- Kuningaar Li-sar, 528WV"
+msgstr "- Kuningaar Li'sar, 528WV"
 
 #. [tip]
 #: data/hardwired/tips.cfg:191
@@ -6073,8 +6207,8 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
-"Et voi peruuttaa siirtoa, joka on puhdistanut yhtään sumua tai huntua. Pistä "
-"'Viivytä peitteen päivityksiä'-asetus päälle, milloin tarvitset tälläisissä "
+"Et voi peruuttaa siirtoa, joka on puhdistanut yhtään sumua tai huntua. Aseta "
+"”Viivytä peitteen päivitystä”-asetus päälle, jos tarvitset tällaisissä "
 "tilanteissa peruutustoimintoa. "
 
 #. [tip]
@@ -6093,7 +6227,7 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
-"Muutamilla yksiköillä on hyvä puolustus vedessä; hyökkääjien linja joen "
+"Muutamilla yksiköillä on hyvä puolustus vedessä: hyökkääjien linja joen "
 "reunalla voi aiheuttaa suuria määriä uhreja. Haltiat voivat käyttää "
 "metsänreunaa samanlaiseen tarkoitukseen, ja kääpiöt vuoristoa. "
 
@@ -6148,7 +6282,7 @@ msgstr "KP"
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
-msgstr "kultaa"
+msgstr "kultapalaa"
 
 #. [label]
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
@@ -6199,7 +6333,7 @@ msgstr "E"
 #. [label]
 #: data/themes/dfool.cfg:252
 msgid "MP"
-msgstr "moninpeli"
+msgstr "MP"
 
 #. [label]
 #: data/themes/macros.cfg:59
@@ -6239,7 +6373,7 @@ msgstr "palauta alkutilanteeseen"
 #. [menu]: type=image
 #: data/themes/macros.cfg:128
 msgid "Next Turn"
-msgstr "Sueraava vuoro"
+msgstr "Seuraava vuoro"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:129
@@ -6780,9 +6914,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Kirjaudu Wesnothin viralliselle moninpelipalvelimelle."
 
 #: src/game.cpp:1492
-#, fuzzy
 msgid "Join a different server"
-msgstr "Ota yhteys viralliseen palvelimeen"
+msgstr "Ota yhteys toiselle palvelimelle"
 
 #: src/game.cpp:1494
 msgid "Local Game"
@@ -7089,7 +7222,7 @@ msgstr "< Takaisin"
 
 #: src/help.cpp:2515
 msgid "Forward >"
-msgstr "eteenpäin >"
+msgstr "Eteenpäin >"
 
 #: src/help.cpp:2627
 msgid "Reference to unknown topic: "
@@ -7205,7 +7338,7 @@ msgstr "Vahinko"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Yhteensä"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
@@ -7217,7 +7350,7 @@ msgstr "Aiheutettu"
 
 #: src/menu_events.cpp:246
 msgid "Taken"
-msgstr ""
+msgstr "Vastaanotettu"
 
 #: src/menu_events.cpp:296 src/menu_events.cpp:300
 msgid "Do you really want to dismiss him?"

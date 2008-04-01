@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 16:15+0100\n"
-"PO-Revision-Date: 2008-03-20 14:09+0100\n"
+"PO-Revision-Date: 2008-03-29 21:21+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -1984,6 +1984,7 @@ msgstr ""
 "blouzněním, ale my si nemůžeme dovolit riskovat. Co kdyby jeho bláznivé "
 "kouzlení fungovalo!"
 
+# říká Aiglondur (trpaslík)
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:341
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1026
@@ -2318,6 +2319,7 @@ msgstr ""
 "do velkého zla. Kdo nyní vezme na svá bedra tíhu očištění tohoto místa od "
 "této nákazy?"
 
+# Vyprávění
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:110
 msgid ""
@@ -2351,11 +2353,13 @@ msgstr ""
 "Bylo mi řečeno, že tady najdu Aiglondura z Knalgy. Nesu zprávu od Lorda "
 "Tallina, Protektora Aliance. "
 
+# říká Aiglondur (trpaslík)
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:151
 msgid "I am he. Speak your message."
 msgstr "To jsem já. Jak zní ten vzkaz?"
 
+# říká Pelias (člověk)
 #. [message]: description=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:157
 msgid ""
@@ -2371,6 +2375,7 @@ msgstr ""
 "vzkazy s určitými skřetími náčelníky uvnitř Aliance a vaše vítězství "
 "zabránilo nebezpečné revoltě."
 
+# říká Pelias (člověk)
 #. [message]: description=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:162
 msgid ""
@@ -2394,6 +2399,7 @@ msgstr ""
 "Nebude jistě žádnou hanbou pro spoluvládce řídit toto místo, tak jak to dělá "
 "lord Hamel v případě Knalgy."
 
+# Vyprávění
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:177
 msgid ""
@@ -2407,6 +2413,7 @@ msgstr ""
 msgid "It would be fitting.  The Loremasters will approve."
 msgstr "To by šlo. Obřadníci to podpoří."
 
+# říká Aiglondur (trpaslík)
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:188
 msgid ""
@@ -2476,11 +2483,13 @@ msgstr ""
 "Ke schopnostem letopisců se u obřadníků přidává schopnost poskytnout "
 "ošetření."
 
+# Název jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:4
 msgid "Dwarvish Masked Dragonguard"
-msgstr ""
+msgstr "Maskovaná trpasličí dračí stráž"
 
+# Popis jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:21
 msgid ""
@@ -2493,26 +2502,35 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
+"Původ názvu Trpasličí dračí stráže není příliš jasný, nicméně toto jméno jim "
+"dali jejich bratři trpaslíci. Někteří se domnívají, že jméno souvisí s "
+"jejich volbou zbraně. Tyto divné hole chrlí oheň a smrt. Jiní se naopak "
+"domnívají, že jméno pochází z možnosti, že právě takováto zbraň může být "
+"hrozbou proti skutečným drakům. V každém případě je to kvůli těmto zbraním, "
+"díky jejichž používání je tato stráž velkých trpasličích pevností proslulá a "
+"tolik obávaná."
 
+# zbraň
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:43
 msgid "dagger"
-msgstr ""
+msgstr "dýka"
 
+# zbraň
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:36
 msgid "dragonstaff"
-msgstr ""
+msgstr "dračí hůl"
 
 # Název jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:5
-#, fuzzy
 msgid "Dwarvish Masked Fighter"
-msgstr "Trpasličí obřadník"
+msgstr "Maskovaný trpasličí bojovník"
 
+# Popis jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:21
 msgid ""
@@ -2521,27 +2539,32 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
+"Trpasličí bojovníci používají ohromné válečné sekery, které je činí "
+"obávanými protivníky v boji zblízka. Vynikají v horském terénu a pod zemí. I "
+"když nejsou rychlí, je to kompenzováno jejich silou a výdrží."
 
+# zbraň
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:36
 msgid "axe"
-msgstr ""
+msgstr "sekera"
 
+# zbraň
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:39
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:39
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:44
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:30
 msgid "hammer"
-msgstr ""
+msgstr "kladivo"
 
 # Název jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:4
-#, fuzzy
 msgid "Dwarvish Masked Lord"
-msgstr "Trpasličí obřadník"
+msgstr "Maskovaný trpasličí lord"
 
+# Popis jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:20
 msgid ""
@@ -2550,35 +2573,47 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"Pokryti lesklým brněním, tito trpaslíci vypadají jako králové z podhůří. "
+"Dokonale vládnou sekerami a palicemi a hozenou sekyrkou jsou schopni "
+"zasáhnout pohyblivý cíl na mnoho stop. Ačkoliv jsou při pochodu pomalí, jsou "
+"tito trpaslíci dokladem statečnosti svého národa."
 
+# zbraň
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:30
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:30
 msgid "battle axe"
-msgstr ""
+msgstr "válečná sekera"
 
+# zbraň
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:47
 msgid "hatchet"
-msgstr ""
+msgstr "sekyrka"
 
+# Název jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:4
 msgid "Dwarvish Masked Steelclad"
-msgstr ""
+msgstr "Maskovaný trpasličí těžkooděnec"
 
+# Popis jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:20
 msgid ""
 "The more experienced Dwarvish fighters wear heavy chain mail and plate "
 "armor, for which they are rightly famous."
 msgstr ""
+"Zkušení trpasličí těžkooděnci nosí těžké drátěné či plátové zbroje, díky "
+"kterým jsou po právu proslulí."
 
+# Název jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:4
 msgid "Dwarvish Masked Thunderer"
-msgstr ""
+msgstr "Maskovaný trpasličí hromovládce"
 
+# Popis jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:21
 msgid ""
@@ -2588,18 +2623,26 @@ msgid ""
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
 "made moreso by the secrecy which dwarves hold about their workings."
 msgstr ""
+"Když lidé Wesnothu poprvé narazili na trpaslíky, byli zmateni silou "
+"Trpasličích hromovládců, kteří uměli zabít na dálku s pomocí neznámých holí, "
+"které používali v bitvě. Ohlušující rachot těchto „hromových holí“ vzbuzuje "
+"děs, stejně jako tajnůstkářství trpaslíků, kteří se odmítají s kýmkoliv "
+"podělit o tajemství jejich funkce."
 
+# zbraň
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:36
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:52
 msgid "thunderstick"
-msgstr ""
+msgstr "hromová hůl"
 
+# Název jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:4
 msgid "Dwarvish Masked Thunderguard"
-msgstr ""
+msgstr "Maskovaná trpasličí hromová stráž"
 
+# Popis jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:22
 msgid ""
@@ -2614,14 +2657,23 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"Trpasličí hromová stráž je proslulá pro své zvláštní zbraně, podivné hole ze "
+"dřeva a železa dělající ohlušující rámus. Způsob fungování těchto zbraní je "
+"zahalen tajemstvím, které si trpaslíci Knalgy, kteří je ovládají a nejspíš i "
+"vyrábějí, berou do hrobu. Neví se víc, než jen to, že trpaslíci do hlavní "
+"svých zbraní sypají černý prach , o němž říkají, že je potravou pro pohyb "
+"bestie uvězněné uvnitř.\n"
+"\n"
+"Ačkoliv příprava na jediný výstřel z těchto „hromových holí“ může zabrat "
+"několik minut, výsledek za tu námahu určitě stojí."
 
 # Název jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
-#, fuzzy
 msgid "Dwarvish Runemaster"
-msgstr "Trpasličí obřadník"
+msgstr "Maskovaný trpasličí mistr run"
 
+# Popis jednotky
 #. [unit]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:25
 msgid ""
@@ -2632,11 +2684,19 @@ msgid ""
 "their runes cause the physical blows of their enemies to deal less damage "
 "than would be expected."
 msgstr ""
+"Kromě výjimečných jednotlivců ovládajících nadpřirozené dovednosti je Mistr "
+"run nejvyšší hodností, jíž mohou dosáhnout ti, kteří ovládají runová umění. "
+"Mistři run jsou schopni udeřit protivníky takřka stejně silně jako ti "
+"nejlepší válečníci a mohou tak být obávanými protivníky i bez užití svého "
+"umění. S ním se však stavájí takřka neporazitelnými, neboť jejich runy "
+"působí fyzická zranění jejich nepřátelům, zatímco sami jsou zraňováni méně, "
+"než by se dalo očekávat."
 
+# zbraň
 #. [attack]: type=cold
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:80
 msgid "chill tempest"
-msgstr ""
+msgstr "mrazivá bouře"
 
 # Název jednotky
 #. [unit]: race=dwarf
@@ -2717,6 +2777,7 @@ msgstr ""
 msgid "Only mages can wield the Staff."
 msgstr "Hůl může ovládat pouze mág."
 
+# říká nositel hole
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:116
 msgid ""
