@@ -166,7 +166,6 @@ BINARY_STAGING=/tmp/$(PACKAGE)-$(VERSION)-staging
 BINARY_DIST=/tmp/$(PACKAGE)-binary-$(VERSION).tar.gz
 DATA_DIST=/tmp/$(PACKAGE)-data-$(VERSION).tar.gz
 
-# *** Not yet covered by scons recipe
 binary-dist:
 	@rm -rf $(BINARY_STAGING) $(BINARY_DIST)
 	@make install-exec DESTDIR=$(BINARY_STAGING)
@@ -174,7 +173,6 @@ binary-dist:
 	@rm -rf $(BINARY_STAGING)
 	@echo "Precompiled binary tarball is in $(BINARY_DIST)"
 
-# *** Not yet covered by scons recipe
 data-dist:
 	@rm -rf $(BINARY_STAGING) $(DATA_DIST)
 	@make install-data DESTDIR=$(BINARY_STAGING)

@@ -12,7 +12,6 @@
 # To do (list is now exhaustive):
 #
 # 1. Dummy locales
-# 2. Making binary and data-only distribution tarballs
 
 import os, sys, commands, shutil, sets, re
 from glob import glob
@@ -1210,6 +1209,25 @@ if 'dist' in COMMAND_LINE_TARGETS:	# Speedup, the manifest is expensive
                TARCOMSTR="Making distribution tarball...")
     env.Clean(all, 'wesnoth.tar.bz2')
     env.Alias('dist', dist_tarball)
+
+#
+# Make binary distribution (from installed client side)
+#
+bin_tar_env = env.Clone()
+bin_tarball = bin_tar_env.Tar('wesnoth-binary.tar.bz2',
+                              os.path.join(bindir,"wesnoth"))
+bin_tar_env.Append(TARFLAGS='-j', TARCOMSTR="Making binary tarball...")
+env.Clean(all, 'wesnoth-binary.tar.bz2')
+env.Alias('binary-dist', bin_tarball)
+
+#
+# Make data distribution (from installed client side)
+#
+data_tar_env = env.Clone()
+data_tarball = data_tar_env.Tar('wesnoth-data.tar.bz2', datadir)
+data_tar_env.Append(TARFLAGS='-j', TARCOMSTR="Making data tarball...")
+env.Clean(all, 'wesnoth-data.tar.bz2')
+env.Alias('data-dist', data_tarball)
 
 #
 # Making Mac OS X application bundles
