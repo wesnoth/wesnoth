@@ -41,6 +41,7 @@
 #include "wml_separators.hpp"
 #include "util.hpp"
 
+#include <boost/algorithm/string/join.hpp>
 #include <algorithm>
 #include <cassert>
 #include <sstream>
@@ -2119,7 +2120,311 @@ private:
 			gui::dialog(*gui_,"",msg).show();
 		}
 	}
+	
+	//A function object class with only the constructor public.
+	//Will execute one specified console command if possible.
+	//To add a new console command:
+	//  * add a new private void function() to console_handler
+	//  * add it to the function map in init_command_map, setting debug_only or
+	//    network_only if applicable (a function is free to do any other checks
+	//    but these two help categorize commands and are thus centralized
+	//  * remember to add some short usage information in init_command_map()
+	class console_handler
+	{
+		public:
+			console_handler(menu_handler& menu_handler, 
+				mouse_handler& mouse_handler, const std::string& cmd, 
+				const std::string data, const unsigned int team_num)
+			: menu_handler_(menu_handler), mouse_handler_(mouse_handler)
+				,cmd_(cmd), data_(data), team_num_(team_num)
+			{
+				if (command_map_.empty()) {
+					init_command_map();
+				}
+				dispatch();
+			}
+					
+		private:
+			typedef void (console_handler::*command_handler)();
+			
+			struct command
+			{
+				command_handler handler;
+				std::string help;
+				bool debug_only;
+				bool network_only;
+				command(command_handler h, std::string help)
+				: handler(h), help(help), debug_only(false), network_only(false)
+				{
+				}
+				command& set_debug_only() 
+				{
+					debug_only = true;
+					return *this;
+				}
+				command& set_network_only()
+				{
+					network_only = true;
+					return *this;
+				}
+				std::string get_flags() const
+				{
+					std::string flags;
+					if (debug_only) flags += "D";
+					if (network_only) flags += "N";
+					return flags;
+				}
+			};
+			
+			typedef std::map<std::string, command> command_map;
+			typedef std::map<std::string, std::string> command_alias_map;
+			
+			static command_map command_map_;
+			static command_alias_map command_alias_map_;
+			menu_handler& menu_handler_;
+			mouse_handler& mouse_handler_;
+			const std::string & cmd_;
+			const std::string & data_;
+			const unsigned int team_num_;		
 
+			static command& register_command(const std::string& cmd,
+				command_handler h, const std::string& help)
+			{
+				return command_map_.insert(
+					command_map::value_type(cmd,command(h, help))).first->second; 
+			}
+			static void assert_existence(const std::string& cmd)
+			{
+				assert(command_map_.count(cmd));
+			}
+			static void register_alias(const std::string& to_cmd, 
+				const std::string& cmd)
+			{
+				assert_existence(to_cmd);
+				command_alias_map_.insert(
+					command_alias_map::value_type(cmd,to_cmd));
+			}
+					
+			static void init_command_map();
+			static std::string get_actual_cmd(const std::string& cmd);
+			static const command* get_command(const std::string& cmd);
+			void dispatch();
+			void print(const std::string& title, const std::string& message);
+			const std::vector<std::string> get_aliases(const std::string& cmd);
+			void help();
+			void help(const std::string& cmd);
+			
+			void do_refresh();
+			void do_droid();
+			void do_log();
+			void do_theme();
+			void do_network_send_cmd();
+			void do_network_send_cmd_data();
+			void do_control();
+			void do_clear();
+			void do_sunset();
+			void do_fps();
+			void do_benchmark();
+			void do_save();
+			void do_save_quit();
+			void do_quit();
+			void do_ignore_replay_errors();
+			void do_nosaves();
+			void do_next_level();
+			void do_debug();
+			void do_nodebug();
+			void do_set_var();
+			void do_show_var();
+			void do_unit();
+			void do_buff();
+			void do_unbuff();
+			void do_create();
+			void do_fog();
+			void do_shroud();
+			void do_gold();
+			void do_event();
+			void do_version();
+	};
+		
+	console_handler::command_map console_handler::command_map_;
+	console_handler::command_alias_map console_handler::command_alias_map_;
+	
+	void console_handler::print(const std::string& title,
+		const std::string& message)
+	{
+		menu_handler_.add_chat_message(time(NULL), title, 0, message);				
+	}
+	
+	void console_handler::init_command_map()
+	{
+		register_command("help", &console_handler::help,
+			"[command] - Command help");
+		register_command("refresh", &console_handler::do_refresh,
+			"Refresh gui");
+		register_command("droid", &console_handler::do_droid, 
+			"[<side> [on/off]] - AI control").set_debug_only();
+		register_command("log", &console_handler::do_log, 
+			"<level> <domain> - Change the log level of a log domain.");
+		register_command("theme", &console_handler::do_theme, "");
+		register_command("muteall", &console_handler::do_network_send_cmd,
+			"").set_network_only();
+		register_command("ping", &console_handler::do_network_send_cmd,
+			"").set_network_only();
+		register_command("ban", &console_handler::do_network_send_cmd_data,
+			"").set_network_only();
+		register_command("kick", &console_handler::do_network_send_cmd_data,
+			"").set_network_only();
+		register_command("mute", &console_handler::do_network_send_cmd_data,
+			"").set_network_only();
+		register_command("query", &console_handler::do_network_send_cmd_data,
+			"").set_network_only();
+		register_command("control", &console_handler::do_control, 
+			"<side> <nick>").set_network_only();
+		register_command("control", &console_handler::do_clear, 
+			"Clear chat history");
+		register_command("sunset", &console_handler::do_sunset,
+			"Change time of day").set_debug_only();
+		register_command("fps", &console_handler::do_fps, "Show fps");
+		register_command("benchmark", &console_handler::do_benchmark,
+			"Benchmark");
+		register_command("save", &console_handler::do_save, "Save game");
+		register_alias("save", "w");
+		register_command("quit", &console_handler::do_quit, "Quit game");
+		register_alias("quit", "q");
+		register_alias("quit", "q!");
+		register_command("save_quit", &console_handler::do_save_quit,
+			"Save and quit");
+		register_alias("save_quit", "wq");
+		register_command("ignore_replay_errors",
+			&console_handler::do_ignore_replay_errors, "Ignore replay errors");
+		register_command("nosaves", &console_handler::do_nosaves,
+			"Do not autosave");
+		register_command("next_level", &console_handler::do_next_level, 
+			"Advance to next level").set_debug_only();
+		register_alias("next_level", "n");
+		register_command("debug", &console_handler::do_debug,
+			"Turn on debug mode");
+		register_command("nodebug", &console_handler::do_nodebug,
+			"Turn off debug mode");
+		register_command("set_var", &console_handler::do_set_var,
+			"Set variable").set_debug_only();
+		register_command("show_var", &console_handler::do_show_var,
+			"Show variable").set_debug_only();
+		register_command("unit", &console_handler::do_unit,
+			"Modify unit").set_debug_only();
+		register_command("buff", &console_handler::do_buff,
+			"Add unit trait").set_debug_only();
+		register_command("unbuff", &console_handler::do_unbuff,
+			"Remove unit trait").set_debug_only();
+		register_command("create", &console_handler::do_create,
+			"Create unit").set_debug_only();
+		register_command("fog", &console_handler::do_fog,
+			"Toggle fog for current player").set_debug_only();
+		register_command("shroud", &console_handler::do_shroud,
+			"Toggle shroud for current player").set_debug_only();
+		register_command("gold", &console_handler::do_gold, 
+			"Give gold to current player").set_debug_only();
+		register_command("throw", &console_handler::do_event,
+			"Fire game event").set_debug_only();
+		register_alias("throw", "fire");
+		register_command("version", &console_handler::do_version, 
+			"Display version information");
+	}
+	
+	std::string console_handler::get_actual_cmd(const std::string& cmd)
+	{
+		command_alias_map::const_iterator i = command_alias_map_.find(cmd);
+		std::string real_cmd;
+		if (i != command_alias_map_.end()) {
+			real_cmd = i->second;
+		} else {
+			real_cmd = cmd;
+		}
+		return real_cmd;
+	}
+	
+	const console_handler::command* console_handler::get_command(
+		const std::string& cmd)
+	{
+		command_map::const_iterator i = command_map_.find(cmd);
+		if (i != command_map_.end()) {
+			return &i->second;
+		} else {
+			return 0;
+		}
+	}
+	
+	const std::vector<std::string> console_handler::get_aliases(
+		const std::string& cmd)
+	{
+		std::vector<std::string> aliases;
+		command_alias_map::const_iterator i = command_alias_map_.begin();
+		while (i != command_alias_map_.end()) {
+			if (i->second == cmd) {
+				aliases.push_back(i->first);
+			}
+			i++;
+		}
+		return aliases;
+	}
+	
+	void console_handler::dispatch()
+	{
+		std::string actual_cmd = get_actual_cmd(cmd_);
+		if (const command* c = get_command(actual_cmd)) {
+			if (c->debug_only && !game_config::debug) return;
+			if (c->network_only || network::nconnections() != 0) return;
+			
+			(this->*(c->handler))();
+		}
+	}
+	
+	void console_handler::help()
+	{
+		std::string actual_cmd = get_actual_cmd(data_);
+		if (get_command(actual_cmd)) {
+			return help(actual_cmd);
+		}
+		command_map::const_iterator i = command_map_.begin();
+		std::stringstream ss;
+		while (i != command_map_.end()) {
+			ss << i->first << " ";
+			std::string flags = i->second.get_flags();
+			if (!flags.empty()) {
+				ss << "(" << flags << ") ";
+			}
+			i++;
+		}
+		print("help", "Available commands (D - debug-mode only, N - network games only):");
+		print("help", ss.str());
+		print("help", "Type :help <command> for more info");
+	}
+	
+	void console_handler::help(const std::string& cmd)
+	{
+		const command* c = get_command(cmd);
+		if (c) {
+			std::stringstream ss;
+			ss << ":" << cmd << " ";
+			if (c->help == "") {
+				ss << "no help available";
+			} else {
+				ss << c->help;
+			}
+			if (c->debug_only) {
+				ss << " (debug command)";
+			}
+			if (c->network_only) {
+				ss << " (network command)";
+			}
+			const std::vector<std::string> l = get_aliases(cmd);
+			if (!l.empty()) {
+				ss << " (aliases: " << boost::algorithm::join(l," ") << ")";
+			}
+			print("help", ss.str());
+		}
+	}
+	
 	void menu_handler::do_command(const std::string& str,
 			const unsigned int team_num, mouse_handler& mousehandler)
 	{
@@ -2129,209 +2434,238 @@ private:
 		const std::string::const_iterator i = std::find(str.begin(),str.end(),' ');
 		const std::string cmd(str.begin(),i);
 		const std::string data(i == str.end() ? str.end() : i+1,str.end());
+		console_handler console(*this, mousehandler, cmd, data, team_num);
+	}
 
-		if(cmd == "refresh") {
-			image::flush_cache();
-			gui_->redraw_everything();
-		} else if (cmd == "droid") {
-			// :droid [<side> [on/off]]
-			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
-			const std::string side_s(data.begin(),j);
-			const std::string action(j,data.end());
-			// default to the current side if empty
-			const unsigned int side = side_s.empty() ?
-				team_num : lexical_cast_default<unsigned int>(side_s);
+	void console_handler::do_refresh() {
+		image::flush_cache();
+		menu_handler_.gui_->redraw_everything();
+	}
+	
+	void console_handler::do_droid() {
+		// :droid [<side> [on/off]]
+		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),' ');
+		const std::string side_s(data_.begin(),j);
+		const std::string action(j,data_.end());
+		// default to the current side if empty
+		const unsigned int side = side_s.empty() ?
+			team_num_ : lexical_cast_default<unsigned int>(side_s);
 
-			if (side < 1 || side > teams_.size()) {
-				utils::string_map symbols;
-				symbols["side"] = side_s;
-				add_chat_message(time(NULL), _("error"), 0, vgettext(
-						"Can't droid invalid side: '$side'.", symbols));
-				return;
-			} else if (teams_[side - 1].is_network()) {
-				utils::string_map symbols;
-				symbols["side"] = lexical_cast<std::string>(side);
-				add_chat_message(time(NULL), _("error"), 0, vgettext(
-						"Can't droid networked side: '$side'.", symbols));
-				return;
-			} else if (teams_[side - 1].is_human() && action != " off") {
-				//this is our side, so give it to AI
-				teams_[side - 1].make_ai();
-				textbox_info_.close(*gui_);
-				if(team_num == side) {
-					//if it is our turn at the moment, we have to indicate to the
-					//play_controller, that we are no longer in control
-					throw end_turn_exception(side);
-				}
-			} else if (teams_[side - 1].is_ai() && action != " on") {
-				teams_[side - 1].make_human();
+		if (side < 1 || side > menu_handler_.teams_.size()) {
+			utils::string_map symbols;
+			symbols["side"] = side_s;
+			print(_("error"), vgettext(
+					"Can't droid invalid side: '$side'.", symbols));
+			return;
+		} else if (menu_handler_.teams_[side - 1].is_network()) {
+			utils::string_map symbols;
+			symbols["side"] = lexical_cast<std::string>(side);
+			print(_("error"), vgettext(
+					"Can't droid networked side: '$side'.", symbols));
+			return;
+		} else if (menu_handler_.teams_[side - 1].is_human() && action != " off") {
+			//this is our side, so give it to AI
+			menu_handler_.teams_[side - 1].make_ai();
+			menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+			if(team_num_ == side) {
+				//if it is our turn at the moment, we have to indicate to the
+				//play_controller, that we are no longer in control
+				throw end_turn_exception(side);
 			}
-		} else if (cmd == "log") {
-			// :log <level> <domain>  Change the log level of a log domain.
-			change_logging(data);
-		} else if (cmd == "theme") {
-			preferences::show_theme_dialog(*gui_);
-		} else if ((cmd == "muteall" || cmd == "ping")
-				&& network::nconnections() != 0)
+		} else if (menu_handler_.teams_[side - 1].is_ai() && action != " on") {
+			menu_handler_.teams_[side - 1].make_human();
+		}
+	}
+	void console_handler::do_log() {
+		// :log <level> <domain>  Change the log level of a log domain.
+		menu_handler_.change_logging(data_);
+	}
+	void console_handler::do_theme() {
+		preferences::show_theme_dialog(*menu_handler_.gui_);
+	}
+	void console_handler::do_network_send_cmd() {
+		menu_handler_.send_command(cmd_);
+	}
+	void console_handler::do_network_send_cmd_data() {
+		menu_handler_.send_command(cmd_, data_);
+	}
+	void console_handler::do_control() {
+		// :control <side> <nick>
+		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),' ');
+		if(j == data_.end())
 		{
-			send_command(cmd);
-		} else if ((cmd == "ban" || cmd == "kick" || cmd == "mute"
-				|| cmd == "query") && network::nconnections() != 0)
-		{
-			send_command(cmd, data);
-		} else if(cmd == "control" && network::nconnections() != 0) {
-			// :control <side> <nick>
-			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
-			if(j == data.end())
-			{
+			print(_("error"), _("Usage: control <side> <nick>"));
+			return;
+		}
+		const std::string side(data_.begin(),j);
+		const std::string player(j+1,data_.end());
+		unsigned int side_num;
+		try {
+			side_num = lexical_cast<unsigned int>(side);
+		} catch(bad_lexical_cast&) {
+			utils::string_map symbols;
+			symbols["side"] = side;
+			print(_("error"), vgettext(
+					"Can't change control of invalid side: '$side'.", symbols));
+			return;
+		}
+		if (side_num < 1 || side_num > menu_handler_.teams_.size()) {
+			utils::string_map symbols;
+			symbols["side"] = side;
+			print(_("error"), vgettext(
+					"Can't change control of out-of-bounds side: '$side'.",
+					symbols));
+			return;
+		}
+		//if this is our side we are always allowed to change the controller
+		if(menu_handler_.teams_[side_num - 1].is_human()){
+			if (player == preferences::login())
+				return;
+			menu_handler_.change_side_controller(side,player,true);
+			menu_handler_.teams_[side_num - 1].make_network();
+			menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
+			if(team_num_ == side_num) {
+				//if it is our turn at the moment, we have to indicate to the
+				//play_controller, that we are no longer in control
+				menu_handler_.gui_->set_team(0);
+				throw end_turn_exception(side_num);
+			}
+		} else {
+			//it is not our side, the server will decide if we can change the
+			//controller (that is if we are host of the game)
+			menu_handler_.change_side_controller(side,player);
+		}
+	}
+	void console_handler::do_clear() {
+		menu_handler_.gui_->clear_chat_messages();
+	}
+	void console_handler::do_sunset() {
+		int delay = lexical_cast_default<int>(data_);
+		menu_handler_.gui_->sunset(delay);
+	}
+	void console_handler::do_fps() {
+		preferences::set_show_fps(!preferences::show_fps());
+	}
+	void console_handler::do_benchmark() {
+		menu_handler_.gui_->toggle_benchmark();
+	}
+	void console_handler::do_save() {
+		menu_handler_.save_game(data_,gui::NULL_DIALOG);
+	}
+	void console_handler::do_save_quit() {
+		menu_handler_.save_game(data_,gui::NULL_DIALOG);
+		throw end_level_exception(QUIT);
+	}
+	void console_handler::do_quit() {
+		throw end_level_exception(QUIT);
+	}
+	void console_handler::do_ignore_replay_errors() {
+		game_config::ignore_replay_errors = (data_ != "off") ? true : false;
+	}
+	void console_handler::do_nosaves() {
+		game_config::disable_autosave = (data_ != "off") ? true : false;
+	}
+	void console_handler::do_next_level() {
+		throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
+	}
+	void console_handler::do_debug() {
+		print(cmd_, _("Debug mode activated!"));
+		game_config::debug = true;
+	}
+	void console_handler::do_nodebug() {
+		print(cmd_, _("Debug mode deactivated!"));
+		game_config::debug = false;
+	}
+	void console_handler::do_set_var() {
+		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),'=');
+		if(j != data_.end()) {
+			const std::string name(data_.begin(),j);
+			const std::string value(j+1,data_.end());
+			menu_handler_.gamestate_.set_variable(name,value);
+		}
+	}
+	void console_handler::do_show_var() {
+		gui::message_dialog to_show(*menu_handler_.gui_,"",menu_handler_.gamestate_.get_variable(data_));
+		to_show.show();
+	}
+	void console_handler::do_unit() {
+		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
+		if (i == menu_handler_.units_.end()) return;
+		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),'=');
+		if (j == data_.end()) return;
 
-				add_chat_message(time(NULL), _("error"), 0,
-						_("Usage: control <side> <nick>"));
-				return;
-			}
-			const std::string side(data.begin(),j);
-			const std::string player(j+1,data.end());
-			unsigned int side_num;
-			try {
-				side_num = lexical_cast<unsigned int, std::string>(side);
-			} catch(bad_lexical_cast&) {
-				utils::string_map symbols;
-				symbols["side"] = side;
-				add_chat_message(time(NULL), _("error"), 0, vgettext(
-						"Can't change control of invalid side: '$side'.", symbols));
-				return;
-			}
-			if (side_num < 1 || side_num > teams_.size()) {
-				utils::string_map symbols;
-				symbols["side"] = side;
-				add_chat_message(time(NULL), _("error"), 0, vgettext(
-						"Can't change control of out-of-bounds side: '$side'.",
-						symbols));
-				return;
-			}
-			//if this is our side we are always allowed to change the controller
-			if(teams_[side_num - 1].is_human()){
-				if (player == preferences::login())
-					return;
-				change_side_controller(side,player,true);
-				teams_[side_num - 1].make_network();
-				textbox_info_.close(*gui_);
-				if(team_num == side_num) {
-					//if it is our turn at the moment, we have to indicate to the
-					//play_controller, that we are no longer in control
-					gui_->set_team(0);
-					throw end_turn_exception(side_num);
-				}
-			} else {
-				//it is not our side, the server will decide if we can change the
-				//controller (that is if we are host of the game)
-				change_side_controller(side,player);
-			}
-		} else if(cmd == "clear") {
-			gui_->clear_chat_messages();
-		} else if(game_config::debug && cmd == "sunset") {
-			int delay = lexical_cast_default<int>(data);
-			gui_->sunset(delay);
-		} else if(cmd == "fps") {
-			preferences::set_show_fps(!preferences::show_fps());
-		} else if(cmd == "benchmark") {
-			gui_->toggle_benchmark();
-		} else if(cmd == "w") {
-			save_game(data,gui::NULL_DIALOG);
-		} else if(cmd == "wq") {
-			save_game(data,gui::NULL_DIALOG);
-			throw end_level_exception(QUIT);
-		} else if(cmd == "q!" || cmd == "q") {
-			throw end_level_exception(QUIT);
-		} else if(cmd == "ignore_replay_errors") {
-			game_config::ignore_replay_errors = (data != "off") ? true : false;
-		} else if(cmd == "nosaves") {
-			game_config::disable_autosave = (data != "off") ? true : false;
-		} else if(cmd == "n" && game_config::debug) {
-			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
-		} else if(cmd == "debug" && network::nconnections() == 0) {
-			add_chat_message(time(NULL), cmd, 0, _("Debug mode activated!"));
-			game_config::debug = true;
-		} else if(cmd == "nodebug") {
-			add_chat_message(time(NULL), cmd, 0, _("Debug mode deactivated!"));
-			game_config::debug = false;
-		} else if(game_config::debug && cmd == "set_var") {
-				const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
-				if(j != data.end()) {
-					const std::string name(data.begin(),j);
-					const std::string value(j+1,data.end());
-					gamestate_.set_variable(name,value);
-				}
-		} else if(game_config::debug && cmd == "show_var") {
-			gui::message_dialog to_show(*gui_,"",gamestate_.get_variable(data));
-			to_show.show();
-		} else if(game_config::debug && cmd == "unit") {
-			const unit_map::iterator i = current_unit(mousehandler);
-			if (i == units_.end()) return;
-			const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
-			if (j == data.end()) return;
+		const std::string name(data_.begin(),j);
+		const std::string value(j+1,data_.end());
+		// FIXME: Avoids a core dump on display
+		// because alignment strings get reduced
+		// to an enum, then used to index an
+		// array of strings.
+		// But someday the code ought to be
+		// changed to allow general string
+		// alignments for UMC.
+		if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic")) {
+			ERR_NG << "Invalid alignment: '" << value
+				<< "', needs to be one of lawful, neutral or chaotic.\n";
+			return;
+		}
+		config cfg;
+		i->second.write(cfg);
+		cfg[name] = value;
+		i->second = unit(&menu_handler_.units_,&menu_handler_.map_,&menu_handler_.status_,&menu_handler_.teams_,cfg);
+		menu_handler_.gui_->invalidate(i->first);
+		menu_handler_.gui_->invalidate_unit();
+	}
+	void console_handler::do_buff() {
+		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
+		if(i != menu_handler_.units_.end()) {
+			i->second.add_trait(data_);
+			menu_handler_.gui_->invalidate(i->first);
+			menu_handler_.gui_->invalidate_unit();
+		}
+	}
+	void console_handler::do_unbuff() {
+		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
+		if(i != menu_handler_.units_.end()) {
+			// FIXME: 'data_' is the trait.  Clear it.
 
-			const std::string name(data.begin(),j);
-			const std::string value(j+1,data.end());
-			// FIXME: Avoids a core dump on display
-			// because alignment strings get reduced
-			// to an enum, then used to index an
-			// array of strings.
-			// But someday the code ought to be
-			// changed to allow general string
-			// alignments for UMC.
-			if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic")) {
-				ERR_NG << "Invalid alignment: '" << value
-					<< "', needs to be one of lawful, neutral or chaotic.\n";
-				return;
-			}
-			config cfg;
-			i->second.write(cfg);
-			cfg[name] = value;
-			i->second = unit(&units_,&map_,&status_,&teams_,cfg);
-			gui_->invalidate(i->first);
-			gui_->invalidate_unit();
-		} else if(game_config::debug && cmd == "buff") {
-			const unit_map::iterator i = current_unit(mousehandler);
-			if(i != units_.end()) {
-				i->second.add_trait(data);
-				gui_->invalidate(i->first);
-				gui_->invalidate_unit();
-			}
-		} else if(game_config::debug && cmd == "unbuff") {
-			const unit_map::iterator i = current_unit(mousehandler);
-			if(i != units_.end()) {
-				// FIXME: 'data' is the trait.  Clear it.
-
-				gui_->invalidate(i->first);
-				gui_->invalidate_unit();
-			}
-		} else if(game_config::debug && cmd == "create" && map_.on_board(mousehandler.get_last_hex())) {
-			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.find(data);
+			menu_handler_.gui_->invalidate(i->first);
+			menu_handler_.gui_->invalidate_unit();
+		}
+	}
+	void console_handler::do_create() {
+		if (menu_handler_.map_.on_board(mouse_handler_.get_last_hex())) {
+			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::instance().unit_types.find(data_);
 			if(i == unit_type_data::instance().unit_types.end()) {
 				return;
 			}
 
-			units_.erase(mousehandler.get_last_hex());
-			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit(&units_,&map_,&status_,&teams_,&i->second,1,false)));
-			gui_->invalidate(mousehandler.get_last_hex());
-			gui_->invalidate_unit();
-		} else if(game_config::debug && cmd == "fog") {
-			teams_[team_num - 1].set_fog( !teams_[team_num - 1].uses_fog() );
-			recalculate_fog(map_,units_,teams_, team_num - 1);
-			gui_->redraw_everything();
-		} else if(game_config::debug && cmd == "shroud") {
-			teams_[team_num - 1].set_shroud( !teams_[team_num - 1].uses_shroud() );
-			gui_->redraw_everything();
-		} else if(game_config::debug && cmd == "gold") {
-			teams_[team_num - 1].spend_gold(-lexical_cast_default<int>(data,1000));
-			gui_->redraw_everything();
-		} else if(game_config::debug && (cmd == "throw" || cmd == "fire")) {
-			game_events::fire(data);
-			gui_->redraw_everything();
-		} else if(cmd == "version") {
-			add_chat_message(time(NULL), "", 0, game_config::revision);
+			menu_handler_.units_.erase(mouse_handler_.get_last_hex());
+			menu_handler_.units_.add(new std::pair<gamemap::location,unit>(
+				mouse_handler_.get_last_hex(),
+				unit(&menu_handler_.units_,&menu_handler_.map_,&menu_handler_.status_,&menu_handler_.teams_,&i->second,1,false)));
+			menu_handler_.gui_->invalidate(mouse_handler_.get_last_hex());
+			menu_handler_.gui_->invalidate_unit();
 		}
+	}
+	void console_handler::do_fog() {
+		menu_handler_.teams_[team_num_ - 1].set_fog( !menu_handler_.teams_[team_num_ - 1].uses_fog() );
+		recalculate_fog(menu_handler_.map_,menu_handler_.units_,menu_handler_.teams_, team_num_ - 1);
+		menu_handler_.gui_->redraw_everything();
+	}
+	void console_handler::do_shroud() {
+		menu_handler_.teams_[team_num_ - 1].set_shroud( !menu_handler_.teams_[team_num_ - 1].uses_shroud() );
+		menu_handler_.gui_->redraw_everything();
+	}
+	void console_handler::do_gold() {
+		menu_handler_.teams_[team_num_ - 1].spend_gold(-lexical_cast_default<int>(data_,1000));
+		menu_handler_.gui_->redraw_everything();
+	}
+	void console_handler::do_event() {
+		game_events::fire(data_);
+		menu_handler_.gui_->redraw_everything();
+	}
+	void console_handler::do_version() {
+		print("version", game_config::revision);
 	}
 
 	void menu_handler::do_ai_formula(const std::string& str,
