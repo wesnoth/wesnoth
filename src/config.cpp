@@ -626,6 +626,26 @@ void config::merge_with(const config& c)
 	}
 }
 
+void config::merge_and_keep(const config& c)
+{
+	// Merge not existing attributes first
+	string_map::const_iterator attrib_it, attrib_end = c.values.end();
+	for(attrib_it = c.values.begin(); attrib_it != attrib_end; ++attrib_it) {
+	    if (values[attrib_it->first] == "")
+            values[attrib_it->first] = attrib_it->second;
+	}
+
+	// Now merge unshared tags
+	for(child_map::const_iterator i = c.children.begin(); i != c.children.end(); ++i) {
+		const std::string& tag = i->first;
+		child_map::const_iterator j = children.find(tag);
+		if (j == children.end()) {
+		    for (int count=0; count < i->second.size(); count++)
+                add_child(tag, *i->second[count]);
+		}
+	}
+}
+
 bool config::matches(const config &filter) const
 {
 	// First match values. all values should match.

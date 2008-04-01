@@ -927,10 +927,7 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
 			config from_cfg = find_config(based_from);
 
             //merge the base_unit config into this one
-            //ugly hack, but couldn't think of anything better for the moment
-            from_cfg.merge_with(**i.first);
-            (**i.first).merge_with(from_cfg);
-
+            (**i.first).merge_and_keep(from_cfg);
             (**i.first).clear_children("base_unit");
             (**i.first)["id"] = id;
 		}
