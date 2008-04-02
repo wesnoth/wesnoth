@@ -215,7 +215,7 @@ def force_encoding():
 if __name__ == '__main__':
     import getopt
     
-    force_encoding()
+    #force_encoding()
 
     try:
         (options, arguments) = getopt.getopt(sys.argv[1:], "hl:?", [
