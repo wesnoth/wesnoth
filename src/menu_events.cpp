@@ -40,8 +40,8 @@
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
 #include "util.hpp"
+#include "serialization/string_utils.hpp"
 
-#include <boost/algorithm/string/join.hpp>
 #include <algorithm>
 #include <cassert>
 #include <sstream>
@@ -2418,7 +2418,7 @@ private:
 			}
 			const std::vector<std::string> l = get_aliases(cmd);
 			if (!l.empty()) {
-				ss << " (aliases: " << boost::algorithm::join(l," ") << ")";
+				ss << " (aliases: " << utils::join(l,' ') << ")";
 			}
 			print("help", ss.str());
 		}
