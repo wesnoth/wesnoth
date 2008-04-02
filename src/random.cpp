@@ -17,7 +17,7 @@
 //! Generate random numbers.
 //!
 //! There are various ways to get a random number.
-//! rand()              This can be used for things that never are send over the 
+//! rand()              This can be used for things that never are send over the
 //!                     network e.g. generate a random map (the final result the
 //!                     map is send, but the other players don't need to generate
 //!                     the map.
@@ -32,7 +32,7 @@
 //!                     A random generator which is seeded by the host of an MP
 //!                     game. This generator is (not yet) synchronized over the
 //!                     network. It's only used by [set_variable]rand=. The map
-//!                     designer has to make sure it stays in sync. This 
+//!                     designer has to make sure it stays in sync. This
 //!                     generator can be used at the same time at multiple client
 //!                     since the generators are always in sync.
 
@@ -127,3 +127,66 @@ void set_random_results(const config& cfg)
 	assert(random_generator!=NULL);
 	random_generator->set_random_results(cfg);
 }
+
+simple_rng::simple_rng() :
+    random_seed_(rand()),
+    random_pool_(random_seed_),
+    random_calls_(0)
+{}
+
+simple_rng::simple_rng(const config& cfg) :
+    //! @todo  older savegames don't have random_seed stored, evaluate later
+    //! whether default can be removed again. Look after branching 1.5.
+    random_seed_(lexical_cast_default<int>(cfg["random_seed"], 42)),
+    random_pool_(random_seed_),
+    random_calls_(0)
+{}
+
+//! Get a new random number.
+int simple_rng::get_random()
+{
+	random_next();
+	++random_calls_;
+	//DBG_NG << "pulled user random " << random_pool_
+	//	<< " for call " << random_calls_ << '\n';
+
+	return (static_cast<unsigned>(random_pool_ / 65536) % 32768);
+}
+
+//! Seeds the random pool.
+//!
+//! @param call_count   Upon loading we need to restore the state at saving
+//!                     so set the number of times a random number is generated
+//!                     for replays the orginal value is required.
+void simple_rng::seed_random(const unsigned call_count)
+{
+    seed_random(random_seed_, call_count);
+}
+
+//! Seeds the random pool.
+//!
+//! @param seed         The initial value for the random engine.
+//! @param call_count   Upon loading we need to restore the state at saving
+//!                     so set the number of times a random number is generated
+//!                     for replays the orginal value is required.
+void simple_rng::seed_random(const int seed, const unsigned call_count)
+{
+	random_pool_ = seed;
+	random_seed_ = seed;
+	for(random_calls_ = 0; random_calls_ < call_count; ++random_calls_) {
+		random_next();
+	}
+	//DBG_NG << "Seeded random with " << random_seed_ << " with "
+	//	<< random_calls_ << " calls, pool is now at "
+	//	<< random_pool_ << '\n';
+}
+
+//! Sets the next random number in the pool.
+void simple_rng::random_next()
+{
+	// Use the simple random generator as shown in man rand(3).
+	// The division is done separately since we also want to
+	// quickly go the the wanted index in the random list.
+	random_pool_ = random_pool_ * 1103515245 + 12345;
+}
+

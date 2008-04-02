@@ -238,7 +238,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 	cfg_["random_gender"] = "no";
 	if(genders.empty() == false) {
 		if(state) {
-			return gen ? genders[state->get_random() % genders.size()] : genders.front();
+			return gen ? genders[state->rng().get_random() % genders.size()] : genders.front();
 		} else {
 			return gen ? genders[get_random() % genders.size()] : genders.front();
 		}
@@ -461,7 +461,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 		num_traits = type->second.num_traits();
 		for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
 			const size_t num =
-				(state ?  state->get_random() : get_random()) % candidate_traits.size();
+				(state ?  state->rng().get_random() : get_random()) % candidate_traits.size();
 			traits.push_back(candidate_traits[num]);
 			candidate_traits.erase(candidate_traits.begin()+num);
 		}
@@ -1213,7 +1213,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(underlying_id_.empty()){
 		char buf[80];
 		snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), state ?
-			state->get_random() : get_random());
+			state->rng().get_random() : get_random());
 		underlying_id_ = buf;
 	}
 	if(id_.empty()) {
@@ -1447,7 +1447,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 	// FIXME OBSOLETE Remove in 1.5.3
 	if(utils::string_bool(cfg["generate_name"]) || utils::string_bool(cfg["generate_description"])) {
-		name_ = generate_name(state);
+		name_ = generate_name(&(state->rng()));
 		cfg_["generate_name"] = "";
 	}
 

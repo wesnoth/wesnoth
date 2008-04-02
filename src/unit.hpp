@@ -270,8 +270,8 @@ public:
 	void add_trait(std::string /*trait*/);
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_traits_description();
-	std::string generate_name( game_state* state = 0) const
-		{ return race_->generate_name(string_gender(cfg_["gender"]), state); }
+	std::string generate_name( simple_rng* rng = 0) const
+		{ return race_->generate_name(string_gender(cfg_["gender"]), rng); }
 
 	// Only see_all=true use caching
 	bool invisible(const gamemap::location& loc,

@@ -834,7 +834,7 @@ bool game_controller::load_game()
 			(cfg["random_seed"], 42);
 		const unsigned calls = show_replay ? 0 :
 			lexical_cast_default<unsigned> (state_.snapshot["random_calls"]);
-		state_.seed_random(seed, calls);
+		state_.rng().seed_random(seed, calls);
 
 	} catch(game::error& e) {
 		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');

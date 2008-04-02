@@ -17,7 +17,6 @@
 
 #include "global.hpp"
 
-#include "gamestatus.hpp"
 #include "race.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
@@ -51,8 +50,8 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 	return res;
 }
 
-static wide_string markov_generate_name(const markov_prefix_map& prefixes, 
-	size_t chain_size, size_t max_len, game_state* state)
+static wide_string markov_generate_name(const markov_prefix_map& prefixes,
+	size_t chain_size, size_t max_len, simple_rng* rng)
 {
 	if(chain_size == 0)
 		return wide_string();
@@ -72,7 +71,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 	std::vector<int> random(max_len);
 	size_t j = 0;
 	for(; j < max_len; ++j) {
-		random[j] = state ? state->get_random() : get_random();
+		random[j] = rng ? rng->get_random() : get_random();
 	}
 
 	j = 0;
@@ -131,26 +130,26 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 	return originalRes;
 }
 
-unit_race::unit_race() : 
+unit_race::unit_race() :
 		id_(),
 		plural_name_(),
 		description_(),
-		ntraits_(0), 
-		chain_size_(0), 
-		traits_(&empty_traits), 
+		ntraits_(0),
+		chain_size_(0),
+		traits_(&empty_traits),
 		global_traits_(true)
 {
 		name_[MALE] = "";
 		name_[FEMALE] = "";
 }
 
-unit_race::unit_race(const config& cfg) : 
+unit_race::unit_race(const config& cfg) :
 		id_(cfg["id"]),
-		plural_name_(cfg["plural_name"]), 
+		plural_name_(cfg["plural_name"]),
 		description_(cfg["description"]),
 		ntraits_(atoi(cfg["num_traits"].c_str())),
 		chain_size_(atoi(cfg["markov_chain_size"].c_str())),
-		traits_(&cfg.get_children("trait")), 
+		traits_(&cfg.get_children("trait")),
 		global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
 
 {
@@ -184,10 +183,10 @@ unit_race::unit_race(const config& cfg) :
 }
 
 std::string unit_race::generate_name(
-		unit_race::GENDER gender, game_state* state) const
+		unit_race::GENDER gender, simple_rng* rng) const
 {
 	return utils::wstring_to_string(
-		markov_generate_name(next_[gender], chain_size_, 12, state));
+		markov_generate_name(next_[gender], chain_size_, 12, rng));
 }
 
 bool unit_race::uses_global_traits() const

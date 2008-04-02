@@ -455,7 +455,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		// Switch to the next scenario.
 		gamestate.scenario = gamestate.next_scenario;
-		gamestate.rotate_random();
+		gamestate.rng().rotate_random();
 
 		if(io_type == IO_CLIENT) {
 			if (gamestate.next_scenario.empty()) return res;

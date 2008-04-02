@@ -62,7 +62,7 @@ namespace {
 	}
 
 	user_menu_style umenu_style;
-	
+
 } // anon namespace
 
 namespace mp {
@@ -100,7 +100,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 	const std::string seed = level["random_seed"];
 	if(! seed.empty()) {
 		const unsigned calls = lexical_cast_default<unsigned>(level["random_calls"]);
-		state.seed_random(lexical_cast<int>(seed), calls);
+		state.rng().seed_random(lexical_cast<int>(seed), calls);
 	} else {
 		ERR_NG << "No random seed found, random "
 			"events will probably be out of sync.\n";

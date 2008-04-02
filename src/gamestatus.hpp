@@ -20,6 +20,7 @@
 #define GAME_STATUS_HPP_INCLUDED
 
 #include "filesystem.hpp"
+#include "random.hpp"
 #include "team.hpp"
 #include "unit.hpp"
 #include "variable.hpp"
@@ -117,10 +118,7 @@ public:
 		snapshot(),
 		last_selected(gamemap::location::null_location),
 		variables(),
-		temporaries(),
-		random_seed_(rand()),
-		random_pool_(random_seed_),
-		random_calls_(0)
+		temporaries()
 		{}
 
 	game_state(const game_state& state);
@@ -173,6 +171,9 @@ public:
 	void clear_variable(const std::string& varname);
 	void clear_variable_cfg(const std::string& varname); // Clears only the config children
 
+    const simple_rng& rng() const { return rng_; }
+    simple_rng& rng() { return rng_; }
+
 	std::string difficulty; //!< The difficulty level the game is being played on.
 
 	//! If the game is saved mid-level, we have a series of replay steps
@@ -192,38 +193,11 @@ public:
 	//! the last location where a select event fired.
 	gamemap::location last_selected;
 
-	//! Get a new random number.
-	int get_random();
-
-	//! Seeds the random pool.
-	void seed_random(const int seed, const unsigned call_count = 0);
-
-	//! Resets the random to the 0 calls and the seed to the random
-	//! this way we stay in the same sequence but don't have a lot
-	//! calls. Used when moving to the next scenario.
-	void rotate_random()
-		{ random_seed_ = random_pool_; random_calls_ = 0; }
-
-
-	int get_random_seed() const { return random_seed_; }
-	int get_random_calls() const { return random_calls_; }
-
 private:
+    simple_rng rng_;
 	config variables;
 	mutable config temporaries; // lengths of arrays, etc.
 	friend struct variable_info;
-
-	//! Initial seed for the pool.
-	int random_seed_;
-
-	//! State for the random pool.
-	int random_pool_;
-
-	//! Number of time a random number is generated.
-	unsigned random_calls_;
-
-	//! Sets the next random number in the pool.
-	void random_next();
 
 	//! Loads the recall list.
 	void load_recall_list(const config::child_list& players);
