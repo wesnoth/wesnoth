@@ -154,7 +154,7 @@ public:
 	void merge_with(const config& c);
 	//! Merge config 'c' into this config.
 	//! Keeps this config's values and does not add existing elements.
-    void config::merge_and_keep(const config& c);
+    void merge_and_keep(const config& c);
 
 	bool matches(const config &filter) const;
 
