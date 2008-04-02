@@ -1002,6 +1002,23 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     env.Alias("update-po", [])
 
 #
+# Dummy locales
+#
+
+if env["dummy_locales"]:
+    env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | localedef --force \"$TARGET\" 2> /dev/null")
+    language_cfg_re = re.compile(r"data/languages/(.*)\.cfg")
+    language_cfgs = glob("data/languages/*.cfg")
+    languages = Flatten(map(language_cfg_re.findall, language_cfgs))
+    languages = map(lambda x: x + "@wesnoth", languages)
+    for language in languages:
+        env.Command(
+            os.path.join("locales", language),
+            "locales/C",
+            "ln -sf $SOURCE.filebase $TARGET"
+            )
+
+#
 # Unix installation productions
 #
 # These will not be portable to Windows or Mac. They assume a Unix-like
