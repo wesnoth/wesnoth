@@ -339,6 +339,11 @@ class Parser:
                 self.push_text(path, self.read_encoded(path), cd = os.path.dirname(path))
             return None
 
+        # It's OK for user directories not to exist.
+        # Nothing prefixed with ~ can be a macro.
+        if macro.startswith("~"):
+            return None
+
         # No file was found, try to do macro expansion.
         self.push_text("macro", preserve)
 
