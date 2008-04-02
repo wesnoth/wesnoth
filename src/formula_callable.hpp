@@ -118,7 +118,26 @@ public:
 	{}
 };
 
+class formula_variant_callable_with_backup : public formula_callable {
+	variant var_;
+	const formula_callable& backup_;
+	variant get_value(const std::string& key) const {
+		variant var = var_.get_member(key);
+		if(var.is_null()) {
+			return backup_.query_value(key);
+		}
 
+		return var;
+	}
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+		backup_.get_inputs(inputs);
+	}
+
+public:
+	formula_variant_callable_with_backup(const variant& var, const formula_callable& backup) : formula_callable(false), var_(var), backup_(backup)
+	{}
+};
 
 class map_formula_callable : public formula_callable {
 public:

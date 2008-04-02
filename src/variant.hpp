@@ -46,6 +46,8 @@ public:
 	const variant& operator[](size_t n) const;
 	size_t num_elements() const;
 
+	variant get_member(const std::string& str) const;
+
 	bool is_string() const { return type_ == TYPE_STRING; }
 	bool is_null() const { return type_ == TYPE_NULL; }
 	bool is_int() const { return type_ == TYPE_INT; }

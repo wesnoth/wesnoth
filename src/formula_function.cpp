@@ -271,7 +271,7 @@ private:
 		int max_index = -1;
 		variant max_value;
 		for(int n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
+			const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
 			if(max_index == -1 || val > max_value) {
 				max_index = n;
 				max_value = val;
@@ -366,7 +366,7 @@ private:
 		const variant items = args()[0]->evaluate(variables);
 		if(args().size() == 2) {
 			for(int n = 0; n != items.num_elements(); ++n) {
-				const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
+				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
 				if(val.as_bool()) {
 					vars.push_back(items[n]);
 				}
@@ -376,7 +376,7 @@ private:
 			const std::string self = args()[1]->evaluate(variables).as_string();
 			for(int n = 0; n != items.num_elements(); ++n) {
 				self_callable.add(self, items[n]);
-				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_callable_with_backup(*items[n].as_callable(), variables)));
+				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
 				if(val.as_bool()) {
 					vars.push_back(items[n]);
 				}
@@ -399,7 +399,7 @@ private:
 
 		if(args().size() == 2) {
 			for(int n = 0; n != items.num_elements(); ++n) {
-				const variant val = args()[1]->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
+				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
 				if(val.as_bool()) {
 					return items[n];
 				}
@@ -409,7 +409,7 @@ private:
 			const std::string self = args()[1]->evaluate(variables).as_string();
 			for(int n = 0; n != items.num_elements(); ++n) {
 				self_callable.add(self, items[n]);
-				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_callable_with_backup(*items[n].as_callable(), variables)));
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
 				if(val.as_bool()) {
 					return items[n];
 				}
@@ -432,7 +432,7 @@ private:
 
 		if(args().size() == 2) {
 			for(int n = 0; n != items.num_elements(); ++n) {
-				const variant val = args().back()->evaluate(formula_callable_with_backup(*items[n].as_callable(), variables));
+				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(items[n], variables));
 				vars.push_back(val);
 			}
 		} else {
@@ -440,7 +440,7 @@ private:
 			const std::string self = args()[1]->evaluate(variables).as_string();
 			for(int n = 0; n != items.num_elements(); ++n) {
 				self_callable.add(self, items[n]);
-				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_callable_with_backup(*items[n].as_callable(), variables)));
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
 				vars.push_back(val);
 			}
 		}

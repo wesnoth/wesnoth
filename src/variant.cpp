@@ -202,6 +202,19 @@ size_t variant::num_elements() const
 	return list_->elements.size();
 }
 
+variant variant::get_member(const std::string& str) const
+{
+	if(is_callable()) {
+		return callable_->query_value(str);
+	}
+
+	if(str == "self") {
+		return *this;
+	} else {
+		return variant();
+	}
+}
+
 bool variant::as_bool() const
 {
 	switch(type_) {

@@ -847,6 +847,7 @@ void document::generate_root()
 		output_ = uncompressed_buf.begin();
 	}
 
+	assert(root_ == NULL);
 	const char* cbuf = output_;
 	root_ = new node(*this, NULL, &cbuf);
 }
