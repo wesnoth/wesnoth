@@ -425,6 +425,9 @@ if env['localedir']:
     if not os.path.isabs(env['localedir']):
         env["CXXFLAGS"].append("-DHAS_RELATIVE_LOCALEDIR")
 
+if env['dummy_locales']:
+    env["CXXFLAGS"].append("-DUSE_DUMMYLOCALES")
+
 # Simulate autools-like behavior of prefix on various paths
 for d in ("datadir", "fifodir", "icondir", "desktopdir"):
      if not os.path.isabs(env[d]):
@@ -1026,7 +1029,9 @@ datadir = env['datadir']
 docdir = os.path.join(env['prefix'], "share/doc/wesnoth")
 installable_subdirs = Split('data fonts icons images sounds')
 if env['nls']:
-     installable_subdirs.append("translations")
+    installable_subdirs.append("translations")
+if env['dummy_locales']:
+    installable_subdirs.append("locales")
 fifodir = env['fifodir']
 mandir = os.path.join(env["prefix"], "share/man")
 clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
