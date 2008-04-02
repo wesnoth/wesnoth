@@ -25,6 +25,7 @@
 #include "util.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "wesconfig.h" //without this DUMMYLOCALES break
 
 #include <algorithm>
 #include <cassert>

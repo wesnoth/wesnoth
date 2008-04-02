@@ -13,11 +13,17 @@
 // via autotools are broken, which is ATM not acceptable
 //#define HAVE_PYTHON
 
+// without this ifdef DUMMYLOCALES break, so leave it in even though is seems
+// to not have any real purpose...
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#else
 # define VERSION "1.5.0-svn"
 # define PACKAGE "wesnoth"
 # ifndef LOCALEDIR
 #  define LOCALEDIR "translations"
 # endif
+#endif
 
 /**
  * Some older savegames of Wesnoth cannot be loaded anymore,
