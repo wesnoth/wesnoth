@@ -157,6 +157,7 @@ public:
 	//! Load data into an empty unit_type
 	void build_full(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
+	//! Partially load data into an empty unit_type
     void build_help_index(const config& cfg, const race_map& races);
 
 	//! Adds an additional advancement path to a unit type.
@@ -169,17 +170,17 @@ public:
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
 	//! Info on the type of unit that the unit reanimates as.
-	const std::string& undead_variation() const { return cfg_["undead_variation"]; }
+	const std::string& undead_variation() const { return undead_variation_; }
 
-	unsigned int num_traits() const { return (cfg_["num_traits"].size() ? atoi(cfg_["num_traits"].c_str()) : race_->num_traits()); }
+	unsigned int num_traits() const { return (num_traits_ ? num_traits_ : race_->num_traits()); }
 
 	std::string generate_name() const { return race_->generate_name(string_gender(cfg_["gender"])); }
 
 	//! The name of the unit in the current language setting.
-	const t_string& language_name() const { return cfg_["name"]; }
+	const t_string& language_name() const { return language_name_; }
 
-	const std::string& id() const;
-	const std::string& image() const { return cfg_["image"]; }
+	const std::string& id() const { return id_; }
+	const std::string& image() const { return image_; }
 	const std::string& image_profile() const;
 	const t_string& unit_description() const;
 
@@ -237,18 +238,29 @@ public:
 	const std::string& race() const;
 	bool hide_help() const { return hide_help_; }
 
-    enum BUILD_STATUS {NOT_BUILT, HELP_TOPIC_BUILT, WITHOUT_ANIMATIONS, FULL};
+    enum BUILD_STATUS {NOT_BUILT, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
 
     BUILD_STATUS build_status() const { return build_status_; }
 private:
 	void operator=(const unit_type& o);
 
+	config cfg_;
+
+	std::string id_;
+    t_string language_name_;
+    t_string description_;
+    std::string undead_variation_;
+
+    std::string image_;
+    std::string image_profile_;
+	std::string flag_rgb_;
+
+    unsigned int num_traits_;
+
 	unit_type* gender_types_[2];
 
 	typedef std::map<std::string,unit_type*> variations_map;
 	variations_map variations_;
-
-	config cfg_;
 
 	const unit_race* race_;
 
@@ -256,8 +268,6 @@ private:
 
 	std::vector<std::string> abilities_;
 	std::vector<std::string> ability_tooltips_;
-
-	mutable std::string id_;
 
 	bool zoc_, hide_help_;
 
@@ -276,8 +286,6 @@ private:
 
 	// animations are loaded only after the first animations() call
 	mutable std::vector<unit_animation> animations_;
-
-	std::string flag_rgb_;
 
 	BUILD_STATUS build_status_;
 };

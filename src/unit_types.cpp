@@ -484,13 +484,15 @@ unit_type::unit_type()
 }
 
 unit_type::unit_type(const unit_type& o)
-    : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
+    : cfg_(o.cfg_), id_(o.id_), language_name_(o.language_name_), description_(o.description_),
+      undead_variation_(o.undead_variation_),
+      image_(o.image_), image_profile_(o.image_profile_), flag_rgb_(o.flag_rgb_),
+      num_traits_(o.num_traits_), variations_(o.variations_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
       hide_help_(o.hide_help_), advances_to_(o.advances_to_), advances_from_(o.advances_from_),
       experience_needed_(o.experience_needed_), alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
-      genders_(o.genders_), animations_(o.animations_),
-      flag_rgb_(o.flag_rgb_)
+      genders_(o.genders_), animations_(o.animations_)
 {
     DBG_UT << "unit_type copy-constructor\n";
     build_status_ = o.build_status_;
@@ -676,6 +678,14 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 {
 	cfg_ = cfg;
 
+	id_ = cfg_["id"];
+	language_name_ = cfg_["name"];
+	description_ = cfg_["description"];
+	undead_variation_ = cfg_["undead_variation"];
+	image_ = cfg_["image"];
+    image_profile_ = cfg_["profile"];
+    num_traits_ = atoi(cfg_["num_traits"].c_str());
+
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
@@ -699,7 +709,7 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 
 	hide_help_= utils::string_bool(cfg["hide_help"],false);
 
-	build_status_ = HELP_TOPIC_BUILT;
+	build_status_ = HELP_INDEX;
 }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
@@ -722,34 +732,22 @@ const unit_type& unit_type::get_variation(const std::string& name) const
 	}
 }
 
-const std::string& unit_type::id() const
-{
-	if(id_.empty()) {
-		id_ = cfg_["id"];
-		//id_.erase(std::remove(id_.begin(),id_.end(),' '),id_.end());
-	}
-
-	return id_;
-}
-
 const std::string& unit_type::image_profile() const
 {
-	const std::string& val = cfg_["profile"];
-	if(val.size() == 0)
-		return image();
+	if(image_profile_.size() == 0)
+		return image_;
 	else
-		return val;
+		return image_profile_;
 }
 
 const t_string& unit_type::unit_description() const
 {
 	static const t_string default_val("No description available");
 
-	const t_string& desc = cfg_["description"];
-	if(desc.empty())
+	if(description_.empty())
 		return default_val;
 	else
-		return desc;
+		return description_;
 }
 
 const std::vector<unit_animation>& unit_type::animations() const {
@@ -1022,7 +1020,7 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
     const config& unit_cfg = find_config(key);
 
     switch (status){
-        case unit_type::HELP_TOPIC_BUILT:
+        case unit_type::HELP_INDEX:
             //build the stuff that is needed to feed the help index
             if (ut->second.build_status() == unit_type::NOT_BUILT)
                 ut->second.build_help_index(unit_cfg, races_);
@@ -1032,7 +1030,7 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
         case unit_type::WITHOUT_ANIMATIONS:
         case unit_type::FULL:
             if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
-                (ut->second.build_status() == unit_type::HELP_TOPIC_BUILT) )
+                (ut->second.build_status() == unit_type::HELP_INDEX) )
             {
                 ut->second.build_full(unit_cfg, movement_types_, races_, unit_traits_);
 

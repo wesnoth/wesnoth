@@ -2991,7 +2991,7 @@ void show_help(display &disp, const section &toplevel_sec,
 
     // Find all unit_types that have not been constructed yet and fill in the information
     // needed to create the help topics
-    unit_type_data::types().build_all(unit_type::HELP_TOPIC_BUILT);
+    unit_type_data::types().build_all(unit_type::HELP_INDEX);
 
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
 	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
