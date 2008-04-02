@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# encoding: utf8
 
 import wmldata, os, glob, sys
 import re
@@ -128,7 +127,8 @@ class Parser:
         text = text.replace("\r\n", "\n").replace("\t", " ")
         self.push_text("inline", text)
 
-    def push_text(self, filename, text, params = None, cd = None):
+    def push_text(self, filename, text, params = None, cd = None,
+        initial_textdomain = ""):
         """
         Recursively parse a sub-document, e.g. when a file is included or a
         macro is executed.
@@ -143,7 +143,7 @@ class Parser:
         self.filename, self.text, self.params = filename, text, params
         self.textpos = 0
         self.line = 1
-        self.textdomain = ""
+        self.textdomain = initial_textdomain
         if cd: self.current_path = cd
 
     def pop_text(self):
@@ -413,7 +413,7 @@ class Parser:
                     params[1 + i])
 
             if text:
-                self.push_text(name, text)
+                self.push_text(name, text, initial_textdomain = self.textdomain)
             else:
                 pass # empty macro, nothing to do
         else:
