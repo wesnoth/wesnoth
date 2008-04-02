@@ -8,10 +8,6 @@
 # 3. Unix convert(1), on installation only, if using tinygui.
 # 4. msgfmt(1) for making builds with i18n support.
 # 5. graph-includes for making the project dependency graph.
-#
-# To do (list is now exhaustive):
-#
-# 1. Dummy locales
 
 import os, sys, commands, shutil, sets, re
 from glob import glob
@@ -33,6 +29,7 @@ opts = Options('.scons-option-cache')
 opts.Add('cachedir', 'Directory that contains a cache of derived files.', '')
 opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
+opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
 opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
 opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
@@ -55,9 +52,6 @@ opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False)
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', False))
-
-# FIXME: These are not yet implemented
-opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
 
 #
 # Setup
