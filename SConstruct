@@ -325,14 +325,14 @@ conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
 #    conf.CheckPKGConfig('0.15.0') or Die("Base prerequisites are not met.")
 
 if env["prereqs"]:
-    conf.CheckBoost("iostreams") or Die("Boost prerequisites are not met.")
+    conf.CheckBoost("iostreams", require_version = "1.33.0") or Die("Boost prerequisites are not met.")
 
     have_client_prereqs = \
         conf.CheckBoost("regex") and \
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
-        conf.CheckSDL("SDL_mixer") and \
-        conf.CheckSDL("SDL_image") and \
+        conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
+        conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
         conf.CheckOgg() and \
         conf.CheckPNG() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
 
