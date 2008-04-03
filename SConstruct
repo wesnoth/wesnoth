@@ -328,6 +328,7 @@ if env["prereqs"]:
     conf.CheckBoost("iostreams") or Die("Boost prerequisites are not met.")
 
     have_client_prereqs = \
+        conf.CheckBoost("regex") and \
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer") and \
