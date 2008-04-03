@@ -669,7 +669,6 @@ wesnoth_editor_sources = [
     "src/editor/editor_dialogs.cpp",
     "src/editor/editor_undo.cpp",
     "src/animated_editor.cpp",
-    "src/gamestatus_editor.cpp",
     ]
 if have_client_prereqs and have_X:
     wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources,
