@@ -32,6 +32,7 @@ public:
 	ttext_box() :
 		tcontrol(),
 		canvas_(),
+		restorer_(),
 		definition_(),
 		dragging_(false),
 		sel_start_(0),
@@ -76,6 +77,8 @@ protected:
 private:
 
 	tcanvas canvas_;
+
+	surface restorer_;
 
 	std::vector<ttext_box_definition::tresolution>::const_iterator definition_;
 

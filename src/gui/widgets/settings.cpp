@@ -361,6 +361,7 @@ ttext_box_definition::tresolution::tresolution(const config& cfg) :
 }
 
 ttext_box_definition::tresolution::tstate::tstate(const config* cfg) :
+	full_redraw(utils::string_bool(cfg ? (*cfg)["full_redraw"] : false)), // FIXME document
 	canvas()
 {
 	const config* draw = cfg ? cfg->child("draw") : 0;

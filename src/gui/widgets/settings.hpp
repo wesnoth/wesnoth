@@ -127,6 +127,8 @@ struct ttext_box_definition
 		public:
 			tstate(const config* cfg);
 
+			bool full_redraw;
+
 			tcanvas canvas;
 		};
 

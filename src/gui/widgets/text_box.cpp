@@ -125,6 +125,14 @@ void ttext_box::draw(surface& canvas)
 	SDL_Rect rect = get_rect();
 
 	DBG_G_D << "Text box: drawing enabled state.\n";
+	if(!restorer_) {
+		restorer_ = get_surface_portion(canvas, rect);
+	} 
+	if(definition_->enabled.full_redraw) {
+		SDL_BlitSurface(restorer_, 0, canvas, &rect);
+		rect = get_rect();
+	}
+
 	canvas_.draw(true);
 	SDL_BlitSurface(canvas_.surf(), 0, canvas, &rect);
 
