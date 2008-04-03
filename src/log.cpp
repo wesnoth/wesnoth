@@ -58,7 +58,9 @@ logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
 log_domain general("general"), ai("ai"), config("config"), display("display"),
 	engine("engine"), network("network"), mp_server("server"),
 	filesystem("filesystem"), audio("audio"), notifs("notifs"),
-	replay("replay"), help("help");
+	replay("replay"), help("help"), gui("gui"), gui_parse("gui_parse"), 
+	gui_draw("gui_draw"), gui_event("gui_event");
+
 log_domain::log_domain(char const *name) : domain_(log_domains.size())
 {
 	logd d = { name, 0 };
