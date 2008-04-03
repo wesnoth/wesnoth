@@ -626,10 +626,18 @@ unit_races = []
 
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
-    unit_id = ""
+    for i in range(len(lines)):
+        # Check for things marked translated that aren't strings
+        if "_" in lines[i] and not "wmllint: ignore" in lines[i]:
+            m = re.search(r'[=(]\s*_\s+("?)', lines[i])
+            if m and not m.group(1):
+                msg = '"%s", line %d: translatability mark before non-string' % \
+                      (filename, i+1)
+                print >>sys.stderr, msg
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units deived via [base_unit].
     # Also, build dictionaries of unit movement types and races
+    unit_id = ""
     in_unit_type = False
     in_attack_filter = False
     for i in range(len(lines)):
@@ -2087,13 +2095,6 @@ if __name__ == '__main__':
                         # 1.3.1 to 1.3.2 conversion
                         for (old, new) in conversion2.items():
                             line = old.sub(new, line)
-        # Check for things marked translated that aren't strings
-        if "_" in line and not "wmllint: ignore" in line:
-            m = re.search(r'[=(]\s*_\s+("?)', line)
-            if m and not m.group(1):
-                msg = '"%s", line %d: translatability mark before non-string' % \
-                      (filename, lineno)
-                print >>sys.stderr, msg
         # Perform unconditional line changes
         for (old, new) in linechanges:
             line = line.replace(old, new)
