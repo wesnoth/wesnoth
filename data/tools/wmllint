@@ -1859,7 +1859,7 @@ def translator(filename, mapxforms, textxform, versions):
     unclosed = None
     linecount = 1
     startline = None
-    depth = quotecount = 0
+    quotecount = 0
     display_state = False
     singleline = False
     for i in range(len(transformed)):
@@ -1869,11 +1869,6 @@ def translator(filename, mapxforms, textxform, versions):
                 if not display_state and quotecount % 2:
                     print >>sys.stderr, '"%s", line %d: newline within string' % (filename, linecount)
             linecount += 1
-        elif transformed[i] == '{':
-            if depth == 0:
-                unclosed = startline = linecount
-                quotecount = 0
-            depth += 1
         elif transformed[i-7:i] == "message" and not transformed[i] == ']':
             singleline = True
         elif re.match(" *wmllint: *display +on", transformed[i:]):
@@ -1884,14 +1879,6 @@ def translator(filename, mapxforms, textxform, versions):
             quotecount += 1
             if quotecount % 2 == 0:
                 singleline = False
-        elif transformed[i] == '}':
-            depth -= 1
-            if depth == 0:
-                unclosed = None
-                if quotecount % 2:
-                    print >>sys.stderr, '"%s", line %d: unbalanced quote.' % (filename, startline)
-    if unclosed:
-        print >>sys.stderr, '"%s", line %d: unbalanced {.' % (filename, unclosed)
     # Return None if the transformation functions made no changes.
     if "".join(unmodified) != transformed:
         return transformed
