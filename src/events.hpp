@@ -20,6 +20,7 @@
 
 //our user-defined double-click event type
 #define DOUBLE_CLICK_EVENT SDL_USEREVENT
+#define HOVER_EVENT (SDL_USEREVENT + 1)
 
 namespace events
 {
