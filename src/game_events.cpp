@@ -2501,6 +2501,12 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		loc_store.clear();
 		loc.write(loc_store);
 		game_map->write_terrain(loc, loc_store);
+		if (game_map->is_village(loc)) {
+			std::stringstream sd;
+			int side = village_owner(loc,*teams) + 1;
+			sd << side;
+			loc_store["owner_side"]= sd.str();
+		}
 	}
 
 	/* [store_villages] : store villages into an array
@@ -2536,6 +2542,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				config &loc_store = to_store.add_child(varinfo.key);
 				j->write(loc_store);
 				game_map->write_terrain(*j, loc_store);
+				std::stringstream sd;
+				int side = village_owner(*j,*teams) + 1;
+				sd << side;
+				loc_store["owner_side"]= sd.str();
 			}
 		}
 		varinfo.vars->clear_children(varinfo.key);
@@ -2559,6 +2569,12 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			config &loc_store = state_of_game->add_variable_cfg(variable);
 			j->write(loc_store);
 			game_map->write_terrain(*j, loc_store);
+			if (game_map->is_village(*j)) {
+				std::stringstream sd;
+				int side = village_owner(*j,*teams) + 1;
+				sd << side;
+				loc_store["owner_side"]= sd.str();
+			}
 		}
 	}
 
