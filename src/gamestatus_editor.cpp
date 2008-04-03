@@ -18,8 +18,9 @@
 //! many more dependencies pulled in.
 
 #include "gamestatus.hpp"
-
+#if 0
 int game_state::get_random()
 {
 	return rand();
 }
+#endif
