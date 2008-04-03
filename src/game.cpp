@@ -1808,7 +1808,7 @@ void game_controller::read_game_cfg(bool use_cache)
 
 				try {
 					preproc_map user_defines_map(defines_map);
-					scoped_istream stream = preprocess_file(toplevel,&user_defines_map,&user_error_log);
+					scoped_istream stream = preprocess_file(toplevel, &user_defines_map);
 
 					std::string campaign_error_log;
 
@@ -1826,7 +1826,7 @@ void game_controller::read_game_cfg(bool use_cache)
 					error_campaigns.push_back(*uc);
 
 					user_error_log += err.message + "\n";
-                } catch(preproc_config::error&) {
+				} catch(preproc_config::error&) {
 					ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
 					error_campaigns.push_back(*uc);
                     //no need to modify the error log here, already done by the preprocessor
