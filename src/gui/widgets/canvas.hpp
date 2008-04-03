@@ -193,13 +193,15 @@ private:
 
 	std::vector<tshape_ptr> shapes_;
 
-	bool dirty_;
 	unsigned w_;
 	unsigned h_;
 
+	//! The canvas we draw all items on.
 	surface canvas_;
 
 	game_logic::map_formula_callable variables_;
+
+	bool dirty_;
 };
 
 } // namespace gui2

@@ -128,21 +128,21 @@ namespace gui2{
 
 tcanvas::tcanvas() :
 	shapes_(),
-	dirty_(true),
 	w_(0),
 	h_(0),
 	canvas_(),
-	variables_()
+	variables_(),
+	dirty_(true)
 {
 }
 
 tcanvas::tcanvas(const config& cfg) :
 	shapes_(),
-	dirty_(true),
 	w_(0),
 	h_(0),
 	canvas_(),
-	variables_()
+	variables_(),
+	dirty_(true)
 {
 	parse_cfg(cfg);
 }
