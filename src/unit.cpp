@@ -1447,7 +1447,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 	// FIXME OBSOLETE Remove in 1.5.3
 	if(utils::string_bool(cfg["generate_name"]) || utils::string_bool(cfg["generate_description"])) {
-		name_ = generate_name(&(state->rng()));
+		name_ = generate_name(state ? &(state->rng()) : 0);
 		cfg_["generate_name"] = "";
 	}
 
