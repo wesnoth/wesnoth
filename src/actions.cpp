@@ -121,9 +121,9 @@ bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const g
 }
 
 std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
-		unit new_unit, gamemap::location& recruit_location,
+		unit new_unit, gamemap::location& recruit_location,const bool is_recall,
 		const bool show, const bool need_castle, const bool full_movement,
-		const bool wml_recall)
+		const bool wml_triggered)
 {
 	const events::command_disabler disable_commands;
 
@@ -180,11 +180,27 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 
 	units.add(new std::pair<gamemap::location,unit>(recruit_location,new_unit));
 
-	LOG_NG << "firing prerecruit event\n";
-	game_events::fire("prerecruit",recruit_location);
+	if (is_recall)
+	{
+		LOG_NG << "firing prerecall event\n";
+		game_events::fire("prerecall",recruit_location);
+	}
+	else
+	{
+		LOG_NG << "firing prerecruit event\n";
+		game_events::fire("prerecruit",recruit_location);
+	}
 	if(show)unit_display::unit_recruited(recruit_location);
-	LOG_NG << "firing recruit event\n";
-	game_events::fire("recruit",recruit_location);
+	if (is_recall)
+	{
+		LOG_NG << "firing recall event\n";
+		game_events::fire("recall",recruit_location);
+	}
+	else
+	{
+		LOG_NG << "firing recruit event\n";
+		game_events::fire("recruit",recruit_location);
+	}
 
 	const std::string checksum = get_checksum(new_unit);
 
@@ -192,7 +208,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 	if(ran_results != NULL) {
 		// When recalling from WML there should be no random results, if we use
 		// random we might get the replay out of sync.
-		assert(!wml_recall);
+		assert(!wml_triggered);
 		const std::string rc = (*ran_results)["checksum"];
 		if(rc != checksum) {
 			ERR_NG << "SYNC: In recruit " << new_unit.type_id() <<
@@ -208,7 +224,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 			}
 		}
 
-	} else if(wml_recall == false) {
+	} else if(wml_triggered == false) {
 		config cfg;
 		cfg["checksum"] = checksum;
 		set_random_results(cfg);
@@ -218,7 +234,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 }
 
 gamemap::location under_leadership(const unit_map& units,
-                                   const gamemap::location& loc, int* bonus)
+		const gamemap::location& loc, int* bonus)
 {
 
 	const unit_map::const_iterator un = units.find(loc);
@@ -234,10 +250,10 @@ gamemap::location under_leadership(const unit_map& units,
 }
 
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-							   const gamestatus& status,
-							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-							   int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def, const unit* attacker_ptr)
-	: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
+		const gamestatus& status,
+		const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+		int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def, const unit* attacker_ptr)
+: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
 {
 	const unit& attacker = attacker_ptr ? *attacker_ptr : units.find(attacker_loc)->second;
 	const unit& defender = units.find(defender_loc)->second;
@@ -247,21 +263,21 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	// Haven't found a way for the Python API to prevent this problem.
 	// So instead of segfaulting it sends an assertion failure.
 	VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
-		_("An invalid weapon is selected, possibly by the Python AI."));
+			_("An invalid weapon is selected, possibly by the Python AI."));
 
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
 		VALIDATE(defender_weapon == -1,
-			_("An invalid weapon is send, possibly due to the Python AI."));
+				_("An invalid weapon is send, possibly due to the Python AI."));
 
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
-												 status, attacker_loc, defender_loc,
-												 harm_weight, &defender_weapon, prev_def);
+				status, attacker_loc, defender_loc,
+				harm_weight, &defender_weapon, prev_def);
 	} else if (defender_weapon == -1) {
 		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon, map, teams,
-												 units, status, attacker_loc, defender_loc, prev_def);
+				units, status, attacker_loc, defender_loc, prev_def);
 	}
 
 	// If those didn't have to generate statistics, do so now.
@@ -270,26 +286,26 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		const attack_type *ddef = NULL;
 		if (attacker_weapon >= 0) {
 			VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
-				_("An invalid weapon is selected, possibly by the Python AI."));
+					_("An invalid weapon is selected, possibly by the Python AI."));
 			adef = &attacker.attacks()[attacker_weapon];
 		}
 		if (defender_weapon >= 0) {
 			VALIDATE(defender_weapon < static_cast<int>(defender.attacks().size()),
-				_("An invalid weapon is selected, possibly by the Python AI."));
+					_("An invalid weapon is selected, possibly by the Python AI."));
 			ddef = &defender.attacks()[defender_weapon];
 		}
 		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
 		attacker_stats_ = new unit_stats(attacker, attacker_loc, attacker_weapon,
-										 true, defender, defender_loc, ddef,
-										units, teams, status, map);
+				true, defender, defender_loc, ddef,
+				units, teams, status, map);
 		defender_stats_ = new unit_stats(defender, defender_loc, defender_weapon, false,
-										 attacker, attacker_loc, adef,
-										 units, teams, status, map);
+				attacker, attacker_loc, adef,
+				units, teams, status, map);
 	}
 }
 
-battle_context::battle_context(const battle_context &other)
-	: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
+	battle_context::battle_context(const battle_context &other)
+: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
 {
 	*this = other;
 }
@@ -304,10 +320,10 @@ battle_context::battle_context(const unit_stats &att, const unit_stats &def) :
 
 battle_context::~battle_context()
 {
-delete attacker_stats_;
-delete defender_stats_;
-delete attacker_combatant_;
-delete defender_combatant_;
+	delete attacker_stats_;
+	delete defender_stats_;
+	delete attacker_combatant_;
+	delete defender_combatant_;
 }
 battle_context& battle_context::operator=(const battle_context &other)
 {
@@ -326,10 +342,10 @@ battle_context& battle_context::operator=(const battle_context &other)
 
 //! @todo FIXME: Hand previous defender unit in here.
 int battle_context::choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
-										   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-										   const gamestatus& status,
-										   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-										   const combatant *prev_def)
+		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
+		const gamestatus& status,
+		const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+		const combatant *prev_def)
 {
 	const attack_type &att = attacker.attacks()[attacker_weapon];
 	std::vector<unsigned int> choices;
@@ -360,19 +376,19 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		if (def.defense_weight() > max_weight) {
 			max_weight = def.defense_weight();
 			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
-								attacker, attacker_loc, &att,
-								units, teams, status, map);
+					attacker, attacker_loc, &att,
+					units, teams, status, map);
 			min_rating = static_cast<int>(def_stats->num_blows * def_stats->damage *
-				def_stats->chance_to_hit * def.defense_weight());
+					def_stats->chance_to_hit * def.defense_weight());
 
 			delete def_stats;
 		}
 		else if (def.defense_weight() == max_weight) {
 			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
-								attacker, attacker_loc, &att,
-								units, teams, status, map);
+					attacker, attacker_loc, &att,
+					units, teams, status, map);
 			int simple_rating = static_cast<int>(def_stats->num_blows * def_stats->damage *
-				def_stats->chance_to_hit * def.defense_weight());
+					def_stats->chance_to_hit * def.defense_weight());
 
 			if (simple_rating < min_rating )
 				min_rating = simple_rating;
@@ -384,22 +400,22 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 	for (i = 0; i < choices.size(); i++) {
 		const attack_type &def = defender.attacks()[choices[i]];
 		unit_stats *att_stats = new unit_stats(attacker, attacker_loc, attacker_weapon,
-											   true, defender, defender_loc, &def,
-											   units, teams, status, map);
+				true, defender, defender_loc, &def,
+				units, teams, status, map);
 		unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
-											   attacker, attacker_loc, &att,
-											   units, teams, status, map);
+				attacker, attacker_loc, &att,
+				units, teams, status, map);
 
 		combatant *att_comb = new combatant(*att_stats);
 		combatant *def_comb = new combatant(*def_stats, prev_def);
 		att_comb->fight(*def_comb);
 
 		int simple_rating = static_cast<int>(def_stats->num_blows *
-			def_stats->damage * def_stats->chance_to_hit * def.defense_weight());
+				def_stats->damage * def_stats->chance_to_hit * def.defense_weight());
 
 		if (simple_rating >= min_rating &&
-			( !attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0) )
-		) {
+				( !attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0) )
+		   ) {
 			delete attacker_combatant_;
 			delete defender_combatant_;
 			delete attacker_stats_;
@@ -420,10 +436,10 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 }
 
 int battle_context::choose_attacker_weapon(const unit &attacker, const unit &defender,
-												const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-												const gamestatus& status,
-												const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-												double harm_weight, int *defender_weapon, const combatant *prev_def)
+		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
+		const gamestatus& status,
+		const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+		double harm_weight, int *defender_weapon, const combatant *prev_def)
 {
 	std::vector<unsigned int> choices;
 
@@ -439,7 +455,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 		return -1;
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], map, teams, units,
-			status, attacker_loc, defender_loc, prev_def);
+				status, attacker_loc, defender_loc, prev_def);
 		return choices[0];
 	}
 
@@ -450,7 +466,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 	for (i = 0; i < choices.size(); i++) {
 		const attack_type &att = attacker.attacks()[choices[i]];
 		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], map, teams, units,
-												status, attacker_loc, defender_loc, prev_def);
+				status, attacker_loc, defender_loc, prev_def);
 		// If that didn't simulate, do so now.
 		if (!attacker_combatant_) {
 			const attack_type *def = NULL;
@@ -458,17 +474,17 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 				def = &defender.attacks()[def_weapon];
 			}
 			attacker_stats_ = new unit_stats(attacker, attacker_loc, choices[i],
-											 true, defender, defender_loc, def,
-											 units, teams, status, map);
+					true, defender, defender_loc, def,
+					units, teams, status, map);
 			defender_stats_ = new unit_stats(defender, defender_loc, def_weapon, false,
-											 attacker, attacker_loc, &att,
-											 units, teams, status, map);
+					attacker, attacker_loc, &att,
+					units, teams, status, map);
 			attacker_combatant_ = new combatant(*attacker_stats_);
 			defender_combatant_ = new combatant(*defender_stats_, prev_def);
 			attacker_combatant_->fight(*defender_combatant_);
 		}
 		if (!best_att_comb || better_combat(*attacker_combatant_, *defender_combatant_,
-											*best_att_comb, *best_def_comb, harm_weight)) {
+					*best_att_comb, *best_def_comb, harm_weight)) {
 			delete best_att_comb;
 			delete best_def_comb;
 			delete best_att_stats;
@@ -500,8 +516,8 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 
 // Does combat A give us a better result than combat B?
 bool battle_context::better_combat(const combatant &us_a, const combatant &them_a,
-								   const combatant &us_b, const combatant &them_b,
-								   double harm_weight)
+		const combatant &us_b, const combatant &them_b,
+		double harm_weight)
 {
 	double a, b;
 
@@ -552,44 +568,44 @@ const combatant &battle_context::get_defender_combatant(const combatant *prev_de
 }
 
 battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u_loc,
-									   int u_attack_num, bool attacking,
-									   const unit &opp, const gamemap::location& opp_loc,
-									   const attack_type *opp_weapon,
-									   const unit_map& units,
-									   const std::vector<team>& teams,
-									   const gamestatus& status,
-									   const gamemap& map) :
-		weapon(0),
-		attack_num(u_attack_num),
-		is_attacker(attacking),
-		is_poisoned(utils::string_bool(u.get_state("poisoned"))),
-		is_slowed(utils::string_bool(u.get_state("slowed"))),
-		slows(false),
-		drains(false),
-		stones(false),
-		plagues(false),
-		poisons(false),
-		backstab_pos(false),
-		swarm(false),
-		firststrike(false),
-		rounds(1),
-		hp(0),
-		max_hp(max_hp = u.max_hitpoints()),
-		chance_to_hit(0),
-		damage(0),
-		slow_damage(0),
-		num_blows(0),
-		swarm_min(0),
-		swarm_max(0),
-		plague_type()
+		int u_attack_num, bool attacking,
+		const unit &opp, const gamemap::location& opp_loc,
+		const attack_type *opp_weapon,
+		const unit_map& units,
+		const std::vector<team>& teams,
+		const gamestatus& status,
+		const gamemap& map) :
+	weapon(0),
+	attack_num(u_attack_num),
+	is_attacker(attacking),
+	is_poisoned(utils::string_bool(u.get_state("poisoned"))),
+	is_slowed(utils::string_bool(u.get_state("slowed"))),
+	slows(false),
+	drains(false),
+	stones(false),
+	plagues(false),
+	poisons(false),
+	backstab_pos(false),
+	swarm(false),
+	firststrike(false),
+	rounds(1),
+	hp(0),
+	max_hp(max_hp = u.max_hitpoints()),
+	chance_to_hit(0),
+	damage(0),
+	slow_damage(0),
+	num_blows(0),
+	swarm_min(0),
+	swarm_max(0),
+	plague_type()
 {
 	// Get the current state of the unit.
 	if (attack_num >= 0) {
 		weapon = &u.attacks()[attack_num];
 	}
 	if(u.hitpoints() < 0) {
-//! @todo FIXME enable after 1.3.2 and find out why this happens -- Mordante
-//		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
+		//! @todo FIXME enable after 1.3.2 and find out why this happens -- Mordante
+		//		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
 		hp = 0;
 	} else if(u.hitpoints() > u.max_hitpoints()) {
 		// If a unit has more hp as it's maximum the engine will fail
@@ -624,7 +640,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !plague_specials.empty() && opp.get_state("not_living") != "yes" &&
-				  strcmp(opp.undead_variation().c_str(), "null") && !map.is_village(opp_loc);
+			strcmp(opp.undead_variation().c_str(), "null") && !map.is_village(opp_loc);
 
 		if (!plague_specials.empty()) {
 			if((*plague_specials.cfgs.front().first)["type"] == "")
@@ -717,7 +733,7 @@ void battle_context::unit_stats::dump() const
 bool battle_context::better_attack(class battle_context &that, double harm_weight)
 {
 	return better_combat(get_attacker_combatant(), get_defender_combatant(),
-						 that.get_attacker_combatant(), that.get_defender_combatant(), harm_weight);
+			that.get_attacker_combatant(), that.get_defender_combatant(), harm_weight);
 }
 
 static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
@@ -755,8 +771,8 @@ void attack::fire_event(const std::string& n)
 
 		// We want to fire attack_end event in any case! Even if one of units was removed by WML
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
-				attacker_,
-				defender_, dat));
+					attacker_,
+					defender_, dat));
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
@@ -817,14 +833,14 @@ attack::~attack()
 //! Battle logic
 
 attack::attack(game_display& gui, const gamemap& map,
-            std::vector<team>& teams,
-            gamemap::location attacker,
-            gamemap::location defender,
-            int attack_with,
-			int defend_with,
-            unit_map& units,
-            const gamestatus& state,
-	    bool update_display) :
+		std::vector<team>& teams,
+		gamemap::location attacker,
+		gamemap::location defender,
+		int attack_with,
+		int defend_with,
+		unit_map& units,
+		const gamestatus& state,
+		bool update_display) :
 	gui_(gui),
 	map_(map),
 	teams_(teams),
@@ -991,7 +1007,7 @@ attack::attack(game_display& gui, const gamemap& map,
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
-			                           : statistics::attack_context::MISSES, attacker_damage_);
+					: statistics::attack_context::MISSES, attacker_damage_);
 
 			if(ran_results == NULL) {
 				log_scope2(engine, "setting random results");
@@ -1060,7 +1076,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				d_ = units_.find(death_loc);
 				a_ = units_.find(attacker_loc);
 				if(d_ == units_.end() || !death_loc.matches_unit(d_->second)
-				|| d_->second.hitpoints() > 0) {
+						|| d_->second.hitpoints() > 0) {
 					// WML has invalidated the dying unit, abort
 					break;
 				}
@@ -1093,7 +1109,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				}
 
 				if(attacker_invalid || a_ == units_.end()
-				|| !attacker_loc.matches_unit(a_->second)) {
+						|| !attacker_loc.matches_unit(a_->second)) {
 					// WML has invalidated the killing unit, abort
 					break;
 				}
@@ -1124,7 +1140,7 @@ attack::attack(game_display& gui, const gamemap& map,
 						}
 					}
 				} else {
-					   LOG_NG<<"unit not reanimated"<<std::endl;
+					LOG_NG<<"unit not reanimated"<<std::endl;
 				}
 				if (update_display_){
 					recalculate_fog(map_,units_,teams_,defender_side-1);
@@ -1135,7 +1151,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				break;
 			} else if(hits) {
 				if (a_stats_->poisons &&
-				   !utils::string_bool(d_->second.get_state("poisoned"))) {
+						!utils::string_bool(d_->second.get_state("poisoned"))) {
 					d_->second.set_state("poisoned","yes");
 					LOG_NG << "defender poisoned\n";
 				}
@@ -1283,7 +1299,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				refresh_bc();
 			}
 			attack_stats.defend_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
-			                           : statistics::attack_context::MISSES, defender_damage_);
+					: statistics::attack_context::MISSES, defender_damage_);
 			if(hits || dies){
 				int amount_drained = d_stats_->drains ? defender_damage_ / 2 : 0;
 
@@ -1353,7 +1369,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				break;
 			} else if(hits) {
 				if (d_stats_->poisons &&
-				   !utils::string_bool(a_->second.get_state("poisoned"))) {
+						!utils::string_bool(a_->second.get_state("poisoned"))) {
 					a_->second.set_state("poisoned","yes");
 					LOG_NG << "attacker poisoned\n";
 				}
@@ -1433,8 +1449,8 @@ int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
 }
 
 bool get_village(const gamemap::location& loc, game_display& disp,
-                 std::vector<team>& teams, size_t team_num,
-                 const unit_map& units, int *action_timebonus)
+		std::vector<team>& teams, size_t team_num,
+		const unit_map& units, int *action_timebonus)
 {
 	if(team_num < teams.size() && teams[team_num].owns_village(loc)) {
 		return false;
@@ -1502,8 +1518,8 @@ void reset_resting(unit_map& units, unsigned int side)
 }
 
 void calculate_healing(game_display& disp, const gamemap& map,
-                       unit_map& units, unsigned int side,
-					   const std::vector<team>& teams, bool update_display)
+		unit_map& units, unsigned int side,
+		const std::vector<team>& teams, bool update_display)
 {
 	// We look for all allied units, then we see if our healer is near them.
 	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
@@ -1640,9 +1656,9 @@ void calculate_healing(game_display& disp, const gamemap& map,
 		}
 
 		if ( !recorder.is_skipping()
-			&& update_display
-			&& !(i->second.invisible(i->first,units,teams) &&
-				teams[disp.viewing_team()].is_enemy(side))) {
+				&& update_display
+				&& !(i->second.invisible(i->first,units,teams) &&
+					teams[disp.viewing_team()].is_enemy(side))) {
 			unit_display::unit_healing(i->second,i->first,healers,healing);
 		}
 		if (healing > 0)
@@ -1655,7 +1671,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 
 
 unit get_advanced_unit(unit_map& units,
-                  const gamemap::location& loc, const std::string& advance_to)
+		const gamemap::location& loc, const std::string& advance_to)
 {
 	const std::map<std::string,unit_type>::const_iterator new_type = unit_type_data::types().find(advance_to);
 	const unit_map::iterator un = units.find(loc);
@@ -1666,12 +1682,12 @@ unit get_advanced_unit(unit_map& units,
 		return new_unit;
 	} else {
 		throw game::game_error("Could not find the unit being advanced"
-		                             " to: " + advance_to);
+				" to: " + advance_to);
 	}
 }
 
 void advance_unit(unit_map& units,
-                  gamemap::location loc, const std::string& advance_to)
+		gamemap::location loc, const std::string& advance_to)
 {
 	if(units.count(loc) == 0) {
 		return;
@@ -1693,7 +1709,7 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 {
 	std::vector<int> seen_leaders;
 	for(unit_map::const_iterator i = units.begin();
-	    i != units.end(); ++i) {
+			i != units.end(); ++i) {
 		if(i->second.can_recruit()) {
 			DBG_NG << "seen leader for side " << i->second.side() << "\n";
 			seen_leaders.push_back(i->second.side());
@@ -1735,7 +1751,7 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 		}
 
 		if (victory_conditions::victory_when_enemies_defeated() == false
-			&& (found_player || is_observer())){
+				&& (found_player || is_observer())){
 			// This level has asked not to be ended by this condition.
 			return;
 		}
@@ -1753,8 +1769,8 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 		LOG_NG << "throwing end level exception...\n";
 
 		throw end_level_exception(found_player ? VICTORY : DEFEAT,
-			victory_conditions::get_carryover_percentage(),
-			victory_conditions::get_carryover_add());
+				victory_conditions::get_carryover_percentage(),
+				victory_conditions::get_carryover_add());
 	}
 }
 
@@ -1773,7 +1789,7 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ga
 		for(int i = 0; i != 7; ++i) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
-			   itor->second.get_ability_bool("illuminates",itor->first) && !itor->second.incapacitated()) {
+					itor->second.get_ability_bool("illuminates",itor->first) && !itor->second.incapacitated()) {
 				unit_ability_list illum = itor->second.get_abilities("illuminates",itor->first);
 				unit_abilities::effect illum_effect(illum,lighten,false);
 				int mod = illum_effect.get_composite_value();
@@ -1791,11 +1807,11 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ga
 }
 
 int combat_modifier(const gamestatus& status,
-			const unit_map& units,
-			const gamemap::location& loc,
-			 unit_type::ALIGNMENT alignment,
-			 bool is_fearless,
-			const gamemap& map)
+		const unit_map& units,
+		const gamemap::location& loc,
+		unit_type::ALIGNMENT alignment,
+		bool is_fearless,
+		const gamemap& map)
 {
 	const time_of_day& tod = timeofday_at(status,units,loc,map);
 
@@ -1813,84 +1829,84 @@ int combat_modifier(const gamestatus& status,
 
 namespace {
 
-bool clear_shroud_loc(const gamemap& map, team& tm,
-                      const gamemap::location& loc,
-                      std::vector<gamemap::location>* cleared)
-{
-	bool result = false;
-	gamemap::location adj[7];
-	get_adjacent_tiles(loc,adj);
-	adj[6] = loc;
-	bool on_board_loc = map.on_board(loc);
-	for(int i = 0; i != 7; ++i) {
+	bool clear_shroud_loc(const gamemap& map, team& tm,
+			const gamemap::location& loc,
+			std::vector<gamemap::location>* cleared)
+	{
+		bool result = false;
+		gamemap::location adj[7];
+		get_adjacent_tiles(loc,adj);
+		adj[6] = loc;
+		bool on_board_loc = map.on_board(loc);
+		for(int i = 0; i != 7; ++i) {
 
-		// We clear one past the edge of the board, so that the half-hexes
-		// at the edge can also be cleared of fog/shroud.
-		if (on_board_loc || map.on_board(adj[i])) {
-			// Both functions should be executed so don't use || which
-			// uses short-cut evaluation.
-			const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
+			// We clear one past the edge of the board, so that the half-hexes
+			// at the edge can also be cleared of fog/shroud.
+			if (on_board_loc || map.on_board(adj[i])) {
+				// Both functions should be executed so don't use || which
+				// uses short-cut evaluation.
+				const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
 
-			if(res && cleared != NULL) {
-				cleared->push_back(adj[i]);
-			}
-
-			result |= res;
-		}
-	}
-
-	return result;
-}
-
-//! Returns true iff some shroud is cleared.
-//! seen_units will return new units that have been seen by this unit.
-//! If known_units is NULL, seen_units can be NULL and will not be changed.
-bool clear_shroud_unit(const gamemap& map,
-		const unit_map& units, const gamemap::location& loc,
-		std::vector<team>& teams, int team,
-		const std::set<gamemap::location>* known_units = NULL,
-		std::set<gamemap::location>* seen_units = NULL,
-		std::set<gamemap::location>* stoned_units = NULL)
-{
-	std::vector<gamemap::location> cleared_locations;
-
-	const unit_map::const_iterator u = units.find(loc);
-	if(u == units.end()) {
-		return false;
-	}
-
-	paths p(map,units,loc,teams,true,false,teams[team],0,false,true);
-	for(paths::routes_map::const_iterator i = p.routes.begin();
-	    i != p.routes.end(); ++i) {
-		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
-	}
-
-	// clear_shroud_loc is supposed not introduce repetition in cleared_locations
-	for(std::vector<gamemap::location>::const_iterator it =
-	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
-
-		const unit_map::const_iterator sighted = units.find(*it);
-		if(sighted != units.end() &&
-		  (sighted->second.invisible(*it,units,teams) == false
-		  || teams[team].is_enemy(sighted->second.side()) == false)) {
-			//check if we know this unit, but we always know oursefl
-			//just in case we managed to move on a fogged hex (teleport)
-			if(!(seen_units == NULL || known_units == NULL)
-					&& known_units->count(*it) == 0 && *it != loc) {
-				if (!utils::string_bool(sighted->second.get_state("stoned")))
-				{
-					seen_units->insert(*it);
+				if(res && cleared != NULL) {
+					cleared->push_back(adj[i]);
 				}
-				else
-				{
-					stoned_units->insert(*it);
-				}
+
+				result |= res;
 			}
 		}
+
+		return result;
 	}
 
-	return cleared_locations.empty() == false;
-}
+	//! Returns true iff some shroud is cleared.
+	//! seen_units will return new units that have been seen by this unit.
+	//! If known_units is NULL, seen_units can be NULL and will not be changed.
+	bool clear_shroud_unit(const gamemap& map,
+			const unit_map& units, const gamemap::location& loc,
+			std::vector<team>& teams, int team,
+			const std::set<gamemap::location>* known_units = NULL,
+			std::set<gamemap::location>* seen_units = NULL,
+			std::set<gamemap::location>* stoned_units = NULL)
+	{
+		std::vector<gamemap::location> cleared_locations;
+
+		const unit_map::const_iterator u = units.find(loc);
+		if(u == units.end()) {
+			return false;
+		}
+
+		paths p(map,units,loc,teams,true,false,teams[team],0,false,true);
+		for(paths::routes_map::const_iterator i = p.routes.begin();
+				i != p.routes.end(); ++i) {
+			clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
+		}
+
+		// clear_shroud_loc is supposed not introduce repetition in cleared_locations
+		for(std::vector<gamemap::location>::const_iterator it =
+				cleared_locations.begin(); it != cleared_locations.end(); ++it) {
+
+			const unit_map::const_iterator sighted = units.find(*it);
+			if(sighted != units.end() &&
+					(sighted->second.invisible(*it,units,teams) == false
+					 || teams[team].is_enemy(sighted->second.side()) == false)) {
+				//check if we know this unit, but we always know oursefl
+				//just in case we managed to move on a fogged hex (teleport)
+				if(!(seen_units == NULL || known_units == NULL)
+						&& known_units->count(*it) == 0 && *it != loc) {
+					if (!utils::string_bool(sighted->second.get_state("stoned")))
+					{
+						seen_units->insert(*it);
+					}
+					else
+					{
+						stoned_units->insert(*it);
+					}
+				}
+			}
+		}
+
+		return cleared_locations.empty() == false;
+	}
 
 }
 
@@ -1911,7 +1927,7 @@ void recalculate_fog(const gamemap& map,
 }
 
 bool clear_shroud(game_display& disp, const gamemap& map,
-                  unit_map& units, std::vector<team>& teams, int team)
+		unit_map& units, std::vector<team>& teams, int team)
 {
 	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
 		return false;
@@ -1938,12 +1954,12 @@ bool clear_shroud(game_display& disp, const gamemap& map,
 }
 
 size_t move_unit(game_display* disp,
-                 const gamemap& map,
-                 unit_map& units, std::vector<team>& teams,
-                 std::vector<gamemap::location> route,
-                 replay* move_recorder, undo_list* undo_stack,
-                 gamemap::location *next_unit, bool continue_move,
-                 bool should_clear_shroud)
+		const gamemap& map,
+		unit_map& units, std::vector<team>& teams,
+		std::vector<gamemap::location> route,
+		replay* move_recorder, undo_list* undo_stack,
+		gamemap::location *next_unit, bool continue_move,
+		bool should_clear_shroud)
 {
 	assert(route.empty() == false);
 
@@ -2011,7 +2027,7 @@ size_t move_unit(game_display* disp,
 			//we don't want to interrupt our move when we are on an other unit
 			//or a uncaptured village (except if it was our plan to end there)
 			if( units.count(*step) == 0 &&
-				(!map.is_village(*step) || team.owns_village(*step) || step+1==route.end()) ) {
+					(!map.is_village(*step) || team.owns_village(*step) || step+1==route.end()) ) {
 				DBG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
 				// Temporarily reset the unit's moves to full
@@ -2022,10 +2038,10 @@ size_t move_unit(game_display* disp,
 				const temporary_unit_placer unit_placer(units,*step,ui->second);
 				if( team.auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(map,units,*step,teams,
-					    ui->second.side()-1,&known_units,&seen_units,&stoned_units);
+							ui->second.side()-1,&known_units,&seen_units,&stoned_units);
 				} else {
 					clear_shroud_unit(map,units,*step,teams,
-						ui->second.side()-1,&known_units,&seen_units,&stoned_units);
+							ui->second.side()-1,&known_units,&seen_units,&stoned_units);
 				}
 				if(should_clear_stack) {
 					disp->invalidate_all();
@@ -2067,11 +2083,11 @@ size_t move_unit(game_display* disp,
 
 			const unit_map::const_iterator it = units.find(adjacent[i]);
 			if(it != units.end() && team.is_enemy(it->second.side()) &&
-			   it->second.invisible(it->first,units,teams)) {
+					it->second.invisible(it->first,units,teams)) {
 				discovered_unit = true;
 				unit_ability_list hides = it->second.get_abilities("hides",it->first);
 				for(std::vector<std::pair<config*,gamemap::location> >::const_iterator hide_it = hides.cfgs.begin();
-				    hide_it != hides.cfgs.end(); ++hide_it) {
+						hide_it != hides.cfgs.end(); ++hide_it) {
 					ambushed_string =(*hide_it->first)["alert"];
 				}
 				should_clear_stack = true;
@@ -2279,7 +2295,7 @@ size_t move_unit(game_display* disp,
 }
 
 bool unit_can_move(const gamemap::location& loc, const unit_map& units,
-                   const gamemap& map, const std::vector<team>& teams)
+		const gamemap& map, const std::vector<team>& teams)
 {
 	const unit_map::const_iterator u_it = units.find(loc);
 	assert(u_it != units.end());
@@ -2317,21 +2333,21 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 }
 
 void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& map,
-	unit_map& units, std::vector<team>& teams, int team)
+		unit_map& units, std::vector<team>& teams, int team)
 {
 	// No need to do this if the team isn't using fog or shroud.
 	if(!teams[team].uses_shroud() && !teams[team].uses_fog())
 		return;
 
 	/*
-		This function works thusly:
-		1. run through the list of undo_actions
-		2. for each one, play back the unit's move
-		3. for each location along the route, clear any "shrouded" squares that the unit can see
-		4. clear the undo_list
-		5. call clear_shroud to update the fog of war for each unit.
-		6. fix up associated display stuff (done in a similar way to turn_info::undo())
-	*/
+	   This function works thusly:
+	   1. run through the list of undo_actions
+	   2. for each one, play back the unit's move
+	   3. for each location along the route, clear any "shrouded" squares that the unit can see
+	   4. clear the undo_list
+	   5. call clear_shroud to update the fog of war for each unit.
+	   6. fix up associated display stuff (done in a similar way to turn_info::undo())
+	   */
 	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
 		LOG_NG << "Turning an undo...\n";
 		if(un->is_recall() || un->is_recruit()) continue;
@@ -2370,8 +2386,8 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 }
 
 bool backstab_check(const gamemap::location& attacker_loc,
-	const gamemap::location& defender_loc,
-	const unit_map& units, const std::vector<team>& teams)
+		const gamemap::location& defender_loc,
+		const unit_map& units, const std::vector<team>& teams)
 {
 	const unit_map::const_iterator defender =
 		units.find(defender_loc);
@@ -2391,9 +2407,9 @@ bool backstab_check(const gamemap::location& attacker_loc,
 	if(opp == units.end()) return false; // No opposite unit
 	if(opp->second.incapacitated()) return false;
 	if(size_t(defender->second.side()-1) >= teams.size() ||
-		size_t(opp->second.side()-1) >= teams.size())
+			size_t(opp->second.side()-1) >= teams.size())
 		return true; // If sides aren't valid teams, then they are enemies
-        if(teams[defender->second.side()-1].is_enemy(opp->second.side()))
-                return true; // Defender and opposite are enemies
+	if(teams[defender->second.side()-1].is_enemy(opp->second.side()))
+		return true; // Defender and opposite are enemies
 	return false; // Defender and opposite are friends
 }

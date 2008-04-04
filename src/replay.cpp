@@ -942,7 +942,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 
 			unit new_unit(&units,&map,&state,&teams,&(u_type->second),team_num,true, false);
-			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc);
+			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc,false);
 			if(!res.empty()) {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
@@ -983,7 +983,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			if(val >= 0 && val < int(player->available_units.size())) {
 				statistics::recall_unit(player->available_units[val]);
 				player->available_units[val].set_game_context(&units,&map,&state,&teams);
-				recruit_unit(map,team_num,units,player->available_units[val],loc);
+				recruit_unit(map,team_num,units,player->available_units[val],loc,true);
 				player->available_units.erase(player->available_units.begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
 			} else {

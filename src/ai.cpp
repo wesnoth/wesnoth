@@ -336,7 +336,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	unit new_unit(&info_.units,&info_.map,&info_.state,&info_.teams,&u->second,info_.team_num,true);
 
 	// See if we can actually recruit (i.e. have enough room etc.)
-	std::string recruit_err = recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,preferences::show_ai_moves());
+	std::string recruit_err = recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,false,preferences::show_ai_moves());
 	if(recruit_err.empty()) {
 
 		statistics::recruit_unit(new_unit);

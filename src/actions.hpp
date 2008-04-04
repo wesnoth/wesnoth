@@ -57,9 +57,9 @@ struct end_level_exception;
 // describing the reason will be returned.
 // On success, the return string is empty.
 std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
-		unit u, gamemap::location& recruit_location,const bool show=false,
-		const bool need_castle=true, const bool full_movement=false,
-		const bool wml_recall=false);
+		unit u, gamemap::location& recruit_location,const bool is_recall,
+		const bool show=false,const bool need_castle=true, 
+		const bool full_movement=false,const bool wml_triggered=false);
 
 //! Computes the statistics of a battle between an attacker and a defender unit.
 class battle_context
