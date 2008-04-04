@@ -39,7 +39,26 @@
 
 namespace gui2 {
 
-void ttext_box::set_width(const unsigned width)
+void ttext_::set_cursor(const size_t offset, const bool select)
+{
+	if(select) {
+
+		if(sel_start_ == offset) {
+			sel_len_ = 0;
+		} else if (offset > sel_start_) {
+			sel_len_ = sel_start_ - offset;
+		} else { // sel_start_ < offset
+			sel_len_ = - (sel_start_ - offset);
+		}
+
+	} else {
+		assert(offset <= label().size());
+		sel_start_ = offset;
+		sel_len_ = 0;
+	}
+}
+
+void ttext_::set_width(const unsigned width)
 { 
 	// resize canvasses
 	canvas_.set_width(width);
@@ -48,7 +67,7 @@ void ttext_box::set_width(const unsigned width)
 	tcontrol::set_width(width);
 }
 
-void ttext_box::set_height(const unsigned height) 
+void ttext_::set_height(const unsigned height) 
 { 
 	// resize canvasses
 	canvas_.set_height(height);
@@ -57,7 +76,7 @@ void ttext_box::set_height(const unsigned height)
 	tcontrol::set_height(height);
 }
 
-void ttext_box::set_label(const t_string& label)
+void ttext_::set_label(const t_string& label)
 {
 
 	// set label in canvases
@@ -67,19 +86,19 @@ void ttext_box::set_label(const t_string& label)
 	tcontrol::set_label(label);
 }
 
-void ttext_box::mouse_move(tevent_handler&)
+void ttext_::mouse_move(tevent_handler&)
 {
 	DBG_G_E << "Text_box: mouse move.\n"; 
 
 	// if in select mode select text and move cursor
 }
 
-void ttext_box::mouse_hover(tevent_handler&)
+void ttext_::mouse_hover(tevent_handler&)
 {
 	DBG_G_E << "Text_box: mouse hover.\n"; 
 }
 
-void ttext_box::mouse_left_button_down(tevent_handler& event) 
+void ttext_::mouse_left_button_down(tevent_handler& event) 
 { 
 	DBG_G_E << "Text_box: left mouse button down.\n"; 
 
@@ -90,13 +109,13 @@ void ttext_box::mouse_left_button_down(tevent_handler& event)
 	event.mouse_capture();
 }
 
-void ttext_box::mouse_left_button_up(tevent_handler&) 
+void ttext_::mouse_left_button_up(tevent_handler&) 
 { 
 	// reset select  mode
 	DBG_G_E << "Text_box: left mouse button up.\n";
 }
 
-void ttext_box::mouse_left_button_double_click(tevent_handler&) 
+void ttext_::mouse_left_button_double_click(tevent_handler&) 
 { 
 	DBG_G_E << "Text_box: left mouse button double click.\n";
 
@@ -105,22 +124,88 @@ void ttext_box::mouse_left_button_double_click(tevent_handler&)
 
 }
 
-void ttext_box::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
+void ttext_::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
 	DBG_G_E << "Text_box: key press.\n";
-	
 
-	if(unicode >= 32 && unicode != 127) {
-		// FIXME this is rather inefficent!!!
-		std::string text = label();
-		text.insert(text.begin() + sel_start_++, unicode);
-		set_label(text);
+	switch(key) {
+
+		case SDLK_LEFT :
+			handle_key_left_arrow(modifier, handled);
+			break;
+
+		case SDLK_RIGHT :
+			handle_key_right_arrow(modifier, handled);
+			break;
+
+		case SDLK_UP :
+			handle_key_up_arrow(modifier, handled);
+			break;
+
+		case SDLK_DOWN :
+			handle_key_down_arrow(modifier, handled);
+			break;
+
+		case SDLK_PAGEUP :
+			handle_key_page_up(modifier, handled);
+			break;
+
+		case SDLK_PAGEDOWN :
+			handle_key_page_down(modifier, handled);
+			break;
+
+		case SDLK_a :
+			if(!modifier & KMOD_CTRL) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+			
+			// If ctrl-a is used for home drop the control modifier
+			modifier &~ KMOD_CTRL;
+			/* FALL DOWN */
+
+		case SDLK_HOME :
+			handle_key_home(modifier, handled);
+			break;
+			
+		case SDLK_e :
+			if(!modifier & KMOD_CTRL) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+			
+			// If ctrl-e is used for end drop the control modifier
+			modifier &~ KMOD_CTRL;
+			/* FALL DOWN */
+
+		case SDLK_END :
+			handle_key_end(modifier, handled);
+			break;
+
+		case SDLK_BACKSPACE :
+			handle_key_backspace(modifier, handled);
+			break;
+
+		case SDLK_u :
+			if(modifier & KMOD_CTRL) {
+				handle_key_clear_line(modifier, handled);
+			} else {
+				handle_key_default(handled, key, modifier, unicode);
+			}
+			break;
+
+		case SDLK_DELETE :
+			handle_key_delete(modifier, handled);
+			break;
+			
+		default :
+			handle_key_default(handled, key, modifier, unicode);
+
 	}
-
 
 }
 
-void ttext_box::draw(surface& canvas)
+void ttext_::draw(surface& canvas)
 {
 	SDL_Rect rect = get_rect();
 
@@ -139,7 +224,7 @@ void ttext_box::draw(surface& canvas)
 	set_dirty(false);
 }
 
-tpoint ttext_box::get_best_size() const
+tpoint ttext_::get_best_size() const
 {
 	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
 		return tpoint(get_text_box(definition())->default_width, get_text_box(definition())->default_height); 
@@ -148,7 +233,7 @@ tpoint ttext_box::get_best_size() const
 	}
 }
 
-void ttext_box::set_best_size(const tpoint& origin)
+void ttext_::set_best_size(const tpoint& origin)
 {
 	resolve_definition();
 
@@ -158,7 +243,7 @@ void ttext_box::set_best_size(const tpoint& origin)
 	set_height(definition_->default_height);
 }
 
-void ttext_box::resolve_definition()
+void ttext_::resolve_definition()
 {
 	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
 		definition_ = get_text_box(definition());
@@ -170,6 +255,114 @@ void ttext_box::resolve_definition()
 		canvas_.set_variable("text", variant(label()));
 	}
 }
+
+// Go a character left of not at start of buffer else beep.
+// ctrl moves a word instead of character.
+// shift selects while moving.
+void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
+{
+	DBG_G_E << "Text_box: key press: left arrow.\n";
+
+	handled = true;
+	if(sel_start_) {
+		set_cursor(sel_start_ - 1, modifier & KMOD_SHIFT);
+	}
+}
+
+// Go a character right of not at end of buffer else beep.
+// ctrl moves a word instead of character.
+// shift selects while moving.
+void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
+{
+	DBG_G_E << "Text_box: key press: right arrow.\n";
+
+	handled = true;
+	if(sel_start_ < label().size()) {
+		set_cursor(sel_start_ + 1, modifier & KMOD_SHIFT);
+	}
+}
+
+// Go to the beginning of the line.
+// ctrl moves the start of data (except when ctrl-e but caller does that) 
+// shift selects while moving.
+void ttext_::handle_key_home(SDLMod modifier, bool& handled)
+{
+	DBG_G_E << "Text_box: key press: home.\n";
+
+	handled = true;
+	if(modifier & KMOD_CTRL) {
+		goto_start_of_data(modifier & KMOD_SHIFT);
+	} else {
+		goto_start_of_line(modifier & KMOD_SHIFT);
+	}
+}
+
+// Go to the end of the line.
+// ctrl moves the end of data (except when ctrl-a but caller does that) 
+// shift selects while moving.
+void ttext_::handle_key_end(SDLMod modifier, bool& handled)
+{
+	DBG_G_E << "Text_box: key press: end.\n";
+
+	handled = true;
+	if(modifier & KMOD_CTRL) {
+		goto_end_of_data(modifier & KMOD_SHIFT);
+	} else {
+		goto_end_of_line(modifier & KMOD_SHIFT);
+	}
+}
+
+// Deletes the character in front of the cursor (if not at the beginning).
+void ttext_::handle_key_backspace(SDLMod modifier, bool& handled)
+{
+	DBG_G_E << "Text_box: key press: backspace.\n";
+
+	handled = true;
+	if(sel_start_){
+		label().erase(--sel_start_, 1);
+		set_label(label());
+		set_dirty();
+		set_cursor(sel_start_, false);
+	} else {
+		// FIXME beep
+	}
+
+}
+
+// Deletes either the selection or the character beyond the cursor
+void ttext_::handle_key_delete(SDLMod modifier, bool& handled)
+{
+	DBG_G_E << "Text_box: key press: delete.\n";
+
+	handled = true;
+	if(sel_len_ != 0) {
+		assert(false); // FIXME implement
+	} else {
+
+	}
+		
+}
+
+void ttext_::handle_key_default(bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
+{
+	DBG_G_E << "Text_box: key press: default.\n";
+
+	if(unicode >= 32 && unicode != 127) {
+		handled = true;
+		label().insert(label().begin() + sel_start_++, unicode);
+		set_label(label());
+		set_dirty();
+	}
+}
+
+void ttext_box::handle_key_clear_line(SDLMod modifier, bool& handled)
+{
+	handled = true;
+	set_label("");
+	set_sel_start(0);
+	set_sel_len(0);
+}
+
 
 } //namespace gui2
 

@@ -309,6 +309,10 @@ public:
 	void set_label(const std::string& label) { label_ = label; set_dirty(); }
 
 	const std::string& label() const { return label_; }
+
+	//! Note when modifing the label the caller should set the widget to
+	//! dirty.
+	std::string& label() { return label_; }
 /*
 	// moving an object doesn't dirty it, it should dirty the parent container...
 	virtual void set_x(const int x) { x_ = x; }
