@@ -21,10 +21,16 @@
 
 #include <iosfwd>
 #include <string>
+#include <vector>
 
 namespace lg {
 
 class logger;
+
+struct logd {
+	char const *name_;
+	int severity_;
+};
 
 class log_domain {
 	int domain_;
@@ -32,6 +38,9 @@ public:
 	log_domain(char const *name);
 	friend class logger;
 };
+
+//exposed to make inlining possible
+extern std::vector<logd> log_domains;
 
 bool set_log_domain_severity(std::string const &name, int severity);
 std::string list_logdomains();
@@ -42,7 +51,11 @@ class logger {
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
 	std::ostream &operator()(log_domain const &domain, bool show_names = true) const;
-	bool dont_log(log_domain const &domain) const;
+	bool dont_log(log_domain const &domain) const
+	{
+		logd const &d = log_domains[domain.domain_];
+		return severity_ > d.severity_;
+	}	
 };
 
 void timestamps(bool);
@@ -55,12 +68,27 @@ extern log_domain general, ai, config, display, engine, network, mp_server,
 class scope_logger
 {
 	int ticks_;
-	std::string str_;
-	std::ostream &output_;
+	std::ostream *output_;
+	const char* str_;
 public:
-	scope_logger(log_domain const &domain, std::string const &str);
-	~scope_logger();
+	scope_logger(log_domain const &domain, const char* str)
+	: output_(0)
+	{
+		if (!debug.dont_log(domain)) do_log_entry(domain, str);
+	}
+	scope_logger(log_domain const &domain, const std::string& str)
+	: output_(0)
+	{
+		if (!debug.dont_log(domain)) do_log_entry(domain, str.c_str());
+	}
+	~scope_logger()
+	{
+		if (output_) do_log_exit();
+	}
 	void do_indent() const;
+private:
+	void do_log_entry(log_domain const &domain, const char* str);
+	void do_log_exit();
 };
 
 /**

@@ -31,11 +31,6 @@
 
 namespace {
 
-struct logd {
-	char const *name_;
-	int severity_;
-};
-
 class null_streambuf : public std::streambuf
 {
 	virtual int overflow(int c) { return std::char_traits< char >::not_eof(c); }
@@ -45,13 +40,13 @@ public:
 
 } // end anonymous namespace
 
-static std::vector< logd > log_domains;
 static std::ostream null_ostream(new null_streambuf);
 static int indent = 0;
 static bool timestamp = true;
 
 namespace lg {
 
+std::vector< lg::logd > log_domains;
 void timestamps(bool t) { timestamp = t; }
 
 logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
@@ -100,12 +95,6 @@ std::string list_logdomains()
 	return domainlist;
 }
 
-bool logger::dont_log(log_domain const &domain) const
-{
-	logd const &d = log_domains[domain.domain_];
-	return severity_ > d.severity_;
-}
-
 std::string get_timestamp(const time_t& t, const std::string& format) {
 	char buf[100];
 	strftime(buf, 100, format.c_str(), localtime(&t));
@@ -126,27 +115,29 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names) cons
 	}
 }
 
-scope_logger::scope_logger(log_domain const &domain, const std::string& str)
-	: ticks_(SDL_GetTicks()), str_(str), output_(debug(domain, false))
+void scope_logger::do_log_entry(log_domain const &domain, const char* str)
 {
+	output_ = &debug(domain, false);
+	str_ = str;
+	ticks_ = SDL_GetTicks();
 	do_indent();
-	output_ << "BEGIN: " << str_ << "\n";
+	(*output_) << "BEGIN: " << str_ << "\n";
 	++indent;
-}
+}	
 
-scope_logger::~scope_logger()
+void scope_logger::do_log_exit()
 {
 	const int ticks = SDL_GetTicks() - ticks_;
 	--indent;
 	do_indent();
-	if (timestamp) output_ << get_timestamp(time(NULL));
-	output_ << "END: " << str_ << " (took " << ticks << "ms)\n";
-}
+	if (timestamp) (*output_) << get_timestamp(time(NULL));
+	(*output_) << "END: " << str_ << " (took " << ticks << "ms)\n";
+}	
 
 void scope_logger::do_indent() const
 {
 	for(int i = 0; i != indent; ++i)
-		output_ << "  ";
+		(*output_) << "  ";
 }
 
 std::stringstream wml_error;
