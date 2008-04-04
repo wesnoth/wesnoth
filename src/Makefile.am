@@ -65,6 +65,17 @@ wesnoth_source = \
 	gamestatus.cpp \
 	generate_report.cpp \
 	generic_event.cpp \
+	gui/dialogs/addon_connect.cpp \
+	gui/widgets/button.cpp \
+	gui/widgets/canvas.cpp \
+	gui/widgets/event_handler.cpp \
+	gui/widgets/grid.cpp \
+	gui/widgets/label.cpp \
+	gui/widgets/settings.cpp \
+	gui/widgets/text_box.cpp \
+	gui/widgets/widget.cpp \
+	gui/widgets/window.cpp \
+	gui/widgets/window_builder.cpp \
 	halo.cpp \
 	help.cpp \
 	intro.cpp \
@@ -283,6 +294,17 @@ noinst_HEADERS = \
 	generic_event.hpp \
 	gettext.hpp \
 	global.hpp \
+	gui/dialogs/addon_connect.hpp \
+	gui/widgets/button.hpp \
+	gui/widgets/canvas.hpp \
+	gui/widgets/event_handler.hpp \
+	gui/widgets/grid.hpp \
+	gui/widgets/label.hpp \
+	gui/widgets/settings.hpp \
+	gui/widgets/text_box.hpp \
+	gui/widgets/widget.hpp \
+	gui/widgets/window.hpp \
+	gui/widgets/window_builder.hpp \
 	halo.hpp \
 	help.hpp \
 	hotkeys.hpp \
