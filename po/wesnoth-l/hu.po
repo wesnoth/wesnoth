@@ -1,14 +1,19 @@
-# translation of hu-l.po to Hungarian
+# translation of wesnoth-l.pot to Hungarian
+# Hungarian traslation for Battle for Wesnoth package.
+# Copyright (C) 2008 Wesnoth development team
+# This file is released under the same license as the Battle for Wesnoth package.
+#
 # Kovács Dániel <consalamander@kalandozok.hu>, 2008.
 # Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2008.
+# Udvari Zsolt <udvzsolt@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-l\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2008-03-01 18:30+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
-"Language-Team: Hungarian\n"
+"PO-Revision-Date: 2008-04-04 16:22+0200\n"
+"Last-Translator: Udvari Zsolt <udvzsolt@gmail.com>\n"
+"Language-Team: Wesnoth Hungarian Translation Team <NONE>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -103,7 +108,7 @@ msgstr "A Portya"
 #. [label]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:16
 msgid "Dallben"
-msgstr ""
+msgstr "Dallben"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:21
@@ -219,7 +224,7 @@ msgstr "Harper elesik"
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:90
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:104
 msgid "Turns run out"
-msgstr "Kifutsz az időből"
+msgstr "Túlléped a körök számát"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:151
@@ -653,7 +658,6 @@ msgstr ""
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:171
-#, fuzzy
 msgid ""
 "You do not understand. We attacked a Wesnoth army patrol. Not only that, the "
 "leader was no man I had ever seen in Annuvin province before. Never has one "
@@ -666,40 +670,54 @@ msgstr ""
 
 #. [message]: description=Harper
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:175
+#, fuzzy
 msgid ""
 "Had they taken my uncle, they would have surely shown up in Delwyn today "
 "with the same ultimatum. As it is, several riders escaped."
 msgstr ""
+"Elvitték a bátyámat, és már meg kellett volna jelenniük Delwyn-ben egy "
+"hasonló ultimátummal. Ahogy láttuk, néhány lovas megszökött."
 
 #. [message]: description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:179
+#, fuzzy
 msgid ""
 "Well, it won't be long until they report back to the local garrison with the "
 "details of your encounter."
 msgstr ""
+"Igen, elképzelhetetlen, hogy még ne érkezett volna jelentés a helyőrséghez "
+"az összeütközésetek részleteiről."
 
 #. [message]: description=Advisor
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:183
-#, fuzzy
 msgid "Then they'll be back in force."
 msgstr "Akkor vissza fognak térni."
 
+# NEM TELJES!!!
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:187
+#, fuzzy
 msgid ""
 "An offense to decency, this is! Since when has Wesnoth been ruled by fear "
 "and treachery? We should consult with Lord Maddock of Elensefar. We have "
 "known him for years to be noble in deed as well as in name."
 msgstr ""
+"A tisztességről és a bűnről beszélünk? Amíg Wesnothban a félelem és az "
+"árulás uralkodott? Beszélnünk kell Lord Maddock-kal Elensefarban. "
 
+# NEM TELJES!!!
 #. [message]: description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:191
+#, fuzzy
 msgid ""
 "I agree. But, Baldras, what will you tell him? We know something has been "
 "going badly wrong in Wesnoth of late, that more than ordinary corruption and "
 "incompetence is afoot. But when the effects fall on mere peasants, the wrong "
 "of it may not seem so obvious from a noble's chair."
 msgstr ""
+"Egyetértek. De, Baldras, mit fogsz neki mondani? Úgy tudjuk, nagyon rossz "
+"fordulatot vettek a dolgok Wesnothban, elharapózott a korrupció és a hozzá "
+"nem értés."
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:195
@@ -785,7 +803,7 @@ msgstr "Törvénytelen szabályok"
 #. [label]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:16
 msgid "Elensefar"
-msgstr ""
+msgstr "Elensefar"
 
 #. [label]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:21
@@ -800,25 +818,21 @@ msgstr "Maddock úr"
 
 #. [side]: type=General, description=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:72
-#, fuzzy
 msgid "Kestrel"
 msgstr "Kestrel"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:99
-#, fuzzy
 msgid "Defeat the enemy general"
-msgstr "Győzd le az ellenséges vezért."
+msgstr "Legyőzöd az ellenséges vezért"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:111
-#, fuzzy
 msgid "Death of Maddock"
-msgstr "Meghal Maddock"
+msgstr "Maddock elesik"
 
 #. [unit]: type=Lieutenant, description=Rothel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:134
-#, fuzzy
 msgid "Rothel"
 msgstr "Rothel"
 
@@ -992,25 +1006,21 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:5
-#, fuzzy
 msgid "Hide and Seek"
 msgstr "Bújócska"
 
 #. [time]
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:29
-#, fuzzy
 msgid "Midnight"
 msgstr "Éjfél"
 
 #. [side]: type=Master Bowman, description=Quentin
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:54
-#, fuzzy
 msgid "Quentin"
 msgstr "Quentin"
 
 #. [side]: type=Rogue, description=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:88
-#, fuzzy
 msgid "Hans"
 msgstr "Hans"
 
@@ -1050,7 +1060,6 @@ msgstr "Link"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:517
-#, fuzzy
 msgid "Who are you?"
 msgstr "Ki vagy te?"
 
@@ -1167,44 +1176,37 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:5
-#, fuzzy
 msgid "The Gray Woods"
 msgstr "A Szürke Erdő"
 
 #. [side]: type=Shadow Lord, description=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:184
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:65
-#, fuzzy
 msgid "Helicrom"
 msgstr "Helicrom"
 
 #. [side]: type=Necromancer, description=Mal-Jarrof
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:99
-#, fuzzy
 msgid "Mal-Jarrof"
 msgstr "Mal-Jarrof"
 
 #. [side]: type=Necromancer, description=Mal-Jerod
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:113
-#, fuzzy
 msgid "Mal-Jerod"
 msgstr "Mal-Jerod"
 
 #. [side]: type=Lich, description=Sel-Mana
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:127
-#, fuzzy
 msgid "Sel-Mana"
 msgstr "Sel-Mana"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:149
-#, fuzzy
 msgid "Defeat the lich and its minions"
-msgstr "Elpusztítod a Vilit és a követőit"
+msgstr "Elpusztítod a villit és a követőit"
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:229
-#, fuzzy
 msgid "The leader, I presume."
 msgstr "Gyanítom, hogy a vezető."
 
@@ -1409,7 +1411,6 @@ msgstr "Az embereim... nem tudtak megvédeni engem! Végem..."
 
 #. [scenario]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:5
-#, fuzzy
 msgid "The Hunters"
 msgstr "A vadászok"
 
@@ -1453,31 +1454,26 @@ msgstr ""
 
 #. [side]: type=Royal Guard, description=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:58
-#, fuzzy
 msgid "Archarel"
-msgstr "roham"
+msgstr "Archarel"
 
 #. [side]: type=Iron Mauler, description=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:74
-#, fuzzy
 msgid "Linneus"
 msgstr "Linneus"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:92
-#, fuzzy
 msgid "Kill all enemy forces"
 msgstr "Legyőzöd az összes ellenséges erőt"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:128
-#, fuzzy
 msgid "Jingo"
 msgstr "Jingo"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:129
-#, fuzzy
 msgid "Majel"
 msgstr "Majel"
 
@@ -1508,13 +1504,11 @@ msgstr ""
 
 #. [event]: description=Pitcher 20 14}, description=Pitcher 28 18}, description=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:158
-#, fuzzy
 msgid "Pitcher"
 msgstr "Pitcher"
 
 #. [message]: description=Pitcher
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:165
-#, fuzzy
 msgid "(Baldras!)"
 msgstr "(Baldras!)"
 
@@ -1673,7 +1667,6 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:5
-#, fuzzy
 msgid "Glory"
 msgstr "Dicsőség"
 
@@ -1726,27 +1719,23 @@ msgstr ""
 
 #. [side]: type=General, description=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:67
-#, fuzzy
 msgid "Dommel"
 msgstr "Dommel"
 
 #. [side]: type=Orcish Warlord, description=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:122
-#, fuzzy
 msgid "Vashna"
 msgstr "Vashna"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:278
-#, fuzzy
 msgid "Destroy the stronghold of Halstead"
-msgstr "Elpusztítod Halstead erősségét"
+msgstr "Elpusztítod a Halstead erődöt"
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:395
-#, fuzzy
 msgid "There it is. The stronghold of Halstead."
-msgstr "Ott van. Halstead erőssége."
+msgstr "Nézzétek. A Halstead erőd."
 
 #. [message]: description=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:408
@@ -1905,7 +1894,6 @@ msgstr "Lovasok északnyugatról! Tartsátok a pozíciót, katonák."
 
 #. [unit]: type=Paladin, description=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:526
-#, fuzzy
 msgid "Sir Gwydion"
 msgstr "Gwydion úr"
 
@@ -2121,9 +2109,8 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:5
-#, fuzzy
 msgid "Liberty - Epilogue"
-msgstr "Szabadság - Epilógus"
+msgstr "Szabadság - Végszó"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:12
@@ -2299,25 +2286,21 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:74
-#, fuzzy
 msgid "astral blade"
 msgstr "csillagpenge"
 
 #. [attack]: type=cold
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:85
-#, fuzzy
 msgid "shadow bolt"
-msgstr "Árny hullám"
+msgstr "árnyhullám"
 
 #. [attack]: type=impact
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:97
-#, fuzzy
 msgid "shadow blast"
-msgstr "Árny lövedék"
+msgstr "árnylövedék"
 
 #. [unit]: race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
-#, fuzzy
 msgid "Shadow Mage"
 msgstr "Árnymágus"
 
@@ -2335,13 +2318,11 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:38
-#, fuzzy
 msgid "ice blast"
-msgstr "Jégcsóva"
+msgstr "jégcsóva"
 
 #. [unit]: race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
-#, fuzzy
 msgid "Skeleton Rider"
 msgstr "Csontlovas"
 
@@ -2452,7 +2433,7 @@ msgstr "female^Határőrnő"
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:132
 msgid "Peasant Hunter"
-msgstr "Paraszt Vadász"
+msgstr "Paraszt vadász"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:135
@@ -2465,7 +2446,7 @@ msgstr ""
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:147
 msgid "Peasant Trapper"
-msgstr "Paraszt Csapdaállító"
+msgstr "Paraszt csapdaállító"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:152
@@ -2482,7 +2463,7 @@ msgstr ""
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:164
 msgid "Peasant Huntsman"
-msgstr "Paraszt Vadász"
+msgstr "Paraszt vadász"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:168
@@ -2497,7 +2478,6 @@ msgstr ""
 
 #. [object]
 #: data/campaigns/Liberty/utils/utils.cfg:62
-#, fuzzy
 msgid "Holy Ankh"
 msgstr "Szent Ankh"
 
@@ -2517,30 +2497,25 @@ msgstr "Egy különös oltár van itt, rajta egy medállal. Nem akarom megfogni.
 
 #. [effect]: type=arcane
 #: data/campaigns/Liberty/utils/utils.cfg:79
-#, fuzzy
 msgid "holy ankh"
 msgstr "szent ankh"
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/utils/utils.cfg:147
-#, fuzzy
 msgid "Tell my wife... that I loved her!"
 msgstr "Mondd meg a feleségemnek... hogy szeretem!"
 
 #. [message]: description=Harper
 #: data/campaigns/Liberty/utils/utils.cfg:161
-#, fuzzy
 msgid "Unngh... Now our people may never be free..."
-msgstr "Unngh...lehet, hogy népünk már sohasem elsz szabad..."
+msgstr "Unngh...lehet, hogy népünk már sohasem lesz szabad..."
 
 #. [message]: description=Relnan
 #: data/campaigns/Liberty/utils/utils.cfg:175
-#, fuzzy
 msgid "I am finished... will we ever be free?"
-msgstr "Én ezzel bevégeztem...Szabadok leszünk valaha?"
+msgstr "Én ezzel bevégeztem... Szabadok leszünk valaha is?"
 
 #. [message]: description=Lord Maddock
 #: data/campaigns/Liberty/utils/utils.cfg:189
-#, fuzzy
 msgid "How can this be? We have lost."
-msgstr "Hogy történhetett. Elvesztünk."
+msgstr "Hogy történhetett ez? Elvesztünk."
