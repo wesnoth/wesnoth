@@ -17,6 +17,7 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/widget.hpp"
@@ -55,6 +56,18 @@ private:
 	tbuilder_button();
 public:
 	tbuilder_button(const config& cfg) : tbuilder_widget(cfg) {}
+
+	twidget* build () const;
+
+};
+
+struct tbuilder_label : public tbuilder_widget
+{
+
+private:
+	tbuilder_label();
+public:
+	tbuilder_label(const config& cfg) : tbuilder_widget(cfg) {}
 
 	twidget* build () const;
 
@@ -192,6 +205,8 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 
 			if((**col_itor).child("button")) {
 				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
+			} else if((**col_itor).child("label")) {
+				widgets.push_back(new tbuilder_label(*((**col_itor).child("label"))));
 			} else if ((**col_itor).child("text_box")) {
 				widgets.push_back(new tbuilder_text_box(*((**col_itor).child("text_box"))));
 			} else {
@@ -239,9 +254,23 @@ twidget* tbuilder_button::build() const
 	button->set_label(label);
 
 	DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
-		<< definition << '\n';
+		<< definition << "'.\n";
 
 	return button;
+}
+
+twidget* tbuilder_label::build() const
+{
+	tlabel *tmp_label = new tlabel();
+
+	tmp_label->set_definition(id);
+	tmp_label->set_definition(definition);
+	tmp_label->set_label(label);
+
+	DBG_G << "Window builder: placed label '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	return tmp_label;
 }
 
 twidget* tbuilder_text_box::build() const
@@ -253,7 +282,7 @@ twidget* tbuilder_text_box::build() const
 	text_box->set_label(label);
 
 	DBG_G << "Window builder: placed text box '" << id << "' with defintion '" 
-		<< definition << '\n';
+		<< definition << "'.\n";
 
 	return text_box;
 }

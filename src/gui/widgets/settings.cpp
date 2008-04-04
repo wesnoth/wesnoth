@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window_builder.hpp"
 #include "log.hpp"
@@ -167,6 +168,18 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	VALIDATE(buttons.find("default") != buttons.end(), _ ("No default button defined."));
 
+	/***** Label definitions *****/
+	const config::child_list& label_cfgs = cfg.get_children("label_definition");
+	for(std::vector<config*>::const_iterator itor = label_cfgs.begin();
+			itor != label_cfgs.end(); ++itor) {
+
+		std::pair<std::string, tlabel_definition> child;
+		child.first = child.second.read(**itor);
+		labels.insert(child);
+	}
+
+	VALIDATE(labels.find("default") != labels.end(), _ ("No default label defined."));
+
 	/***** Text box definitions *****/
 	const config::child_list& text_box_cfg = cfg.get_children("text_box_definition");
 	for(std::vector<config*>::const_iterator itor = text_box_cfg.begin();
@@ -304,6 +317,99 @@ tbutton_definition::tresolution::tresolution(const config& cfg) :
 }
 
 tbutton_definition::tresolution::tstate::tstate(const config* cfg) :
+	canvas()
+{
+	const config* draw = cfg ? cfg->child("draw") : 0;
+
+	VALIDATE(draw, _("No state or draw section defined."));
+
+	canvas.set_cfg(*draw);
+}
+
+const std::string& tlabel_definition::read(const config& cfg)
+{
+/*WIKI
+ * [label_definition]
+ * The definition of a normal push label.
+ *
+ *     id = (string = "")            Unique id for this gui (theme).
+ *     description = (t_string = "") Unique translatable name for this gui.
+ *
+ *     [resolution]                  The definitions of the label in various
+ *                                   resolutions.
+ * [/label_definition]
+ */
+	id = cfg["id"];
+	description = cfg["description"];
+
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
+
+	std::cerr << "Parsing label " << id << '\n';
+
+	const config::child_list& cfgs = cfg.get_children("resolution");
+	VALIDATE(!cfgs.empty(), _("No resolution defined."));
+	for(std::vector<config*>::const_iterator itor = cfgs.begin();
+			itor != cfgs.end(); ++itor) {
+
+		resolutions.push_back(tresolution(**itor));
+	}
+
+	return id;
+}
+
+tlabel_definition::tresolution::tresolution(const config& cfg) :
+	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
+	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
+	min_width(lexical_cast_default<unsigned>(cfg["min_width"])),
+	min_height(lexical_cast_default<unsigned>(cfg["min_height"])),
+	default_width(lexical_cast_default<unsigned>(cfg["default_width"])),
+	default_height(lexical_cast_default<unsigned>(cfg["default_height"])),
+	max_width(lexical_cast_default<unsigned>(cfg["max_width"])),
+	max_height(lexical_cast_default<unsigned>(cfg["max_height"])),
+	text_extra_width(lexical_cast_default<unsigned>(cfg["text_extra_width"])),
+	text_extra_height(lexical_cast_default<unsigned>(cfg["text_extra_height"])),
+	text_font_size(lexical_cast_default<unsigned>(cfg["text_font_size"])),
+	enabled(cfg.child("state_enabled"))
+{
+/*WIKI
+ * [resolution]
+ *     window_width = (unsigned = 0) Width of the application window.
+ *     window_height = (unsigned = 0) 
+ *                                   Height of the application window.
+ *     min_width = (unsigned = 0)    The minimum width of the widget.
+ *     min_height = (unsigned = 0)   The minimum height of the widget.
+ *
+ *     default_width = (unsigned = 0)
+ *                                   The default width of the widget.
+ *     default_height = (unsigned = 0)
+ *                                   The default height of the widget.
+ *
+ *     max_width = (unsigned = 0)    The maximum width of the widget.
+ *     max_height = (unsigned = 0)   The maximum height of the widget.
+ *
+ *     text_extra_width = (unsigned = 0)
+ *                                   The extra width needed to determine the 
+ *                                   minimal size for the text.
+ *     text_extra_height = (unsigned = 0)
+ *                                   The extra height needed to determine the
+ *                                   minimal size for the text.
+ *     text_font_size = (unsigned =0)
+ *                                   The font size, which needs to be used to 
+ *                                   determine the minimal size for the text.
+ *
+ *     [state_enabled]               Settings for the enabled state.
+ *                                   when the mouse moves over the label).
+ *
+ *
+ * [/resolution]
+ */
+
+	std::cerr << "Parsing resolution " 
+		<< window_width << ", " << window_height << '\n';
+}
+
+tlabel_definition::tresolution::tstate::tstate(const config* cfg) :
 	canvas()
 {
 	const config* draw = cfg ? cfg->child("draw") : 0;
@@ -463,6 +569,34 @@ std::vector<tbutton_definition::tresolution>::const_iterator get_button(const st
 	for(std::vector<tbutton_definition::tresolution>::const_iterator 
 			itor = button->second.resolutions.begin(),
 			end = button->second.resolutions.end();
+			itor != end;
+			++itor) {
+
+		if(screen_width <= itor->window_width &&
+				screen_height <= itor->window_height) {
+
+			return itor;
+		} else if (itor == end - 1) {
+			return itor;
+		}
+	}
+
+	assert(false);
+}
+
+std::vector<tlabel_definition::tresolution>::const_iterator get_label(const std::string& definition)
+{
+	std::map<std::string, tlabel_definition>::const_iterator 
+		label = current_gui->second.labels.find(definition);
+
+	if(label == current_gui->second.labels.end()) {
+		label = current_gui->second.labels.find("default");
+		assert(label != current_gui->second.labels.end());
+	}
+
+	for(std::vector<tlabel_definition::tresolution>::const_iterator 
+			itor = label->second.resolutions.begin(),
+			end = label->second.resolutions.end();
 			itor != end;
 			++itor) {
 
