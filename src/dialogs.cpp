@@ -720,9 +720,9 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 		return "";
 
 	res = filter->get_save_index(res);
-
+	int option_index = 0;
 	if(show_replay != NULL) {
-	  *show_replay = lmenu.option_checked(0);
+	  *show_replay = lmenu.option_checked(option_index++);
 
 		const config& summary = *summaries[res];
 		if(utils::string_bool(summary["replay"], false) && !utils::string_bool(summary["snapshot"], true)) {
@@ -730,7 +730,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 		}
 	}
 	if (cancel_orders != NULL) {
-		*cancel_orders = lmenu.option_checked(1);
+		*cancel_orders = lmenu.option_checked(option_index++);
 	}
 
 	return games[res].name;
