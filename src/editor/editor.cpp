@@ -863,7 +863,12 @@ void map_editor::perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
 	for (it = fill_hexes.begin(); it != fill_hexes.end(); it++) {
 		if (map_.on_board(*it, true)) {
 			undo_action.add_terrain(map_.get_terrain(*it), terrain, *it);
-			map_.set_terrain(*it, terrain);
+			if (terrain.base == t_translation::NO_LAYER) {
+				map_.set_overlay(*it, terrain);
+            }
+			else {
+				map_.set_terrain(*it, terrain);
+            }
 			terrain_changed(*it);
 		}
 	}
@@ -987,7 +992,12 @@ void map_editor::redo() {
 			for(std::map<gamemap::location, t_translation::t_terrain>::const_iterator it =
 					action.redo_terrains().begin();
 				it != action.redo_terrains().end(); ++it) {
-				map_.set_terrain(it->first, it->second);
+                if (it->second.base == t_translation::NO_LAYER) {
+                    map_.set_overlay(it->first, it->second);
+                }
+                else {
+                    map_.set_terrain(it->first, it->second);
+                }
 				terrain_changed(it->first);
 			}
 		}
@@ -1204,7 +1214,12 @@ void map_editor::draw_terrain(const t_translation::t_terrain terrain,
 		const t_translation::t_terrain old_terrain = map_.get_terrain(*it);
 		if(terrain != old_terrain) {
 			undo_action.add_terrain(old_terrain, terrain, *it);
-			map_.set_terrain(*it, terrain);
+            if (terrain.base == t_translation::NO_LAYER) {
+                map_.set_overlay(*it, terrain);
+            }
+            else {
+                map_.set_terrain(*it, terrain);
+            }
 			// always rebuild localy to show the drawing progress
 			gui_.rebuild_terrain(*it);
 			gui_.invalidate(*it);

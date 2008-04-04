@@ -72,14 +72,20 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	// The rest of the code assumes this is a valid pointer
 	assert(checked_group_btn_ != 0);
 
-	// Add the groups for all terrains to the map
+	// add the groups for all terrains to the map
 	t_translation::t_list::const_iterator t_itor = terrains_.begin();
 	for(; t_itor != terrains_.end(); ++t_itor) {
-		// Add the terrain to the requested groups
-		const std::vector<std::string>& key =
-			utils::split(map_.get_terrain_info(*t_itor).editor_group());
+        const terrain_type& t_info = map_.get_terrain_info(*t_itor);
 
-		for(std::vector<std::string>::const_iterator k_itor = key.begin();
+        // don't display terrains that were automatically created from base+overlay
+		if (t_info.is_combined())
+			continue;
+
+		// add the terrain to the requested groups
+		const std::vector<std::string>& key = 
+			utils::split(t_info.editor_group());
+		
+		for(std::vector<std::string>::const_iterator k_itor = key.begin(); 
 				k_itor != key.end(); ++k_itor)
 		 {
 			terrain_map_[*k_itor].push_back(*t_itor);

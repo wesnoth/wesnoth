@@ -127,6 +127,7 @@ const t_terrain PLUS = string_to_number_("+");
 const t_terrain MINUS = string_to_number_("-");
 const t_terrain NOT = string_to_number_("!");
 const t_terrain STAR = string_to_number_("*");
+const t_terrain BASE = string_to_number_("_bas");
 
 /***************************************************************************************/
 

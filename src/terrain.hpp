@@ -28,8 +28,10 @@ public:
 
 	terrain_type();
 	terrain_type(const config& cfg);
+	terrain_type(const terrain_type& base, const terrain_type& overlay);
 
 	const std::string& minimap_image() const { return minimap_image_; }
+	const std::string& minimap_image_overlay() const { return minimap_image_overlay_; }
 	const std::string& editor_image() const { return editor_image_; }
 	const t_string& name() const { return name_; }
 	const std::string& id() const { return id_; }
@@ -63,9 +65,13 @@ public:
 
 	const std::string& editor_group() const { return editor_group_; }
 
+	bool is_overlay() const { return overlay_; }
+	bool is_combined() const { return combined_; }
+
 private:
 	//! The image used in the minimap
 	std::string minimap_image_;
+	std::string minimap_image_overlay_;
 
 	//! The image used in the editor pallete if not defined in WML it will
 	//! be initialized with the value of minimap_image_
@@ -96,9 +102,14 @@ private:
 	std::string editor_group_;
 
 	bool village_, castle_, keep_;
+
+	bool overlay_, combined_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain);
+
+void merge_alias_lists(t_translation::t_list& first, const t_translation::t_list& second);
+
 #endif

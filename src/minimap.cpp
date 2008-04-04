@@ -88,6 +88,24 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 						VALIDATE(false, msg);
 					}
 
+					//Compose images of base and overlay if neccessary
+					if(map.get_terrain_info(terrain).is_combined()) {
+						surface overlay(get_image("terrain/" + map.get_terrain_info(terrain).minimap_image_overlay() + ".png",image::HEXED));
+						if(overlay != 0) {
+							surface combined = create_compatible_surface(tile, tile->w, tile->h);
+
+							SDL_Rect r;
+							r.x = 0;
+							r.y = 0;
+							SDL_BlitSurface(tile, NULL, combined, &r);
+							r.x = (tile->w - overlay->w)/2;
+							r.y = (tile->h - overlay->h)/2;
+							SDL_BlitSurface(overlay, NULL, combined, &r);
+							tile = combined;
+						}
+
+					}
+
 					surf = surface(scale_surface_blended(tile,scale,scale));
 
 					VALIDATE(surf != NULL, _("Error creating or aquiring an image."));

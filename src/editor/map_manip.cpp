@@ -338,7 +338,12 @@ void flood_fill(gamemap &map, const gamemap::location &start_loc,
 		if (log != NULL) {
 			log->push_back(std::make_pair(loc, terrain_to_fill));
 		}
-		map.set_terrain(loc, fill_with);
+		if (fill_with.base == t_translation::NO_LAYER) {
+			map.set_overlay(loc, fill_with);
+        }
+		else {
+			map.set_terrain(loc, fill_with);
+        }
 	}
 }
 

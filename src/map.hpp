@@ -217,6 +217,16 @@ public:
 	//! Clobbers over the terrain at location 'loc', with the given terrain.
 	void set_terrain(const location& loc, const t_translation::t_terrain terrain);
 
+	//! clobbers over the overlay terrain at location 'loc', with the given terrain.
+	//! This method checks if the base and new overlay can be combined, or if
+	//! base+new overlay are already valid, if it isn't it will fail silently.
+	void set_overlay(const location& loc, const t_translation::t_terrain terrain);
+
+	//! clobbers over the base terrain at location 'loc', with the given terrain.
+	//! This method checks if the new base and old overlay can be combined, or if
+	//! new base+overlay are already valid, if it isn't it will fail silently.
+	void set_base(const location& loc, const t_translation::t_terrain terrain);
+
 	//! Returns a list of the frequencies of different terrain types on the map, 
 	//! with terrain nearer the center getting weighted higher.
 	const std::map<t_translation::t_terrain, size_t>& get_weighted_terrain_frequencies() const;
