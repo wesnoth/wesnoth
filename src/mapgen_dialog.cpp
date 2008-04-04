@@ -357,14 +357,21 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 
 	// A map generator can fail so try a few times to get a map before aborting.
 	std::string map;
+	// Keep a copy of labels as it can be written to by the map generator func
+	std::map<gamemap::location,std::string> labels_copy;
 	int tries = 10;
 	do {
+		if (labels) {
+				labels_copy = *labels;
+		}
 		map = default_generate_map(width_, height_, island_size, island_off_center,
 			iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
 			castle_size_, nplayers_, link_castles_, labels, cfg_);
 		--tries; 
 	} while (tries && map.empty());
-
+	if (labels) {
+		labels->swap(labels_copy);
+	}
 	return map;
 }
 
