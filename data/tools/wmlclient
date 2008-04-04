@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 # encoding: utf8
+"""
+wmlclient -- a command-line client for the Wesnoth campaign server
+
+This tool is mainly intendended for WML authors and maintainers.
+It can be used to manage the WML content on the Wesnoth cammpaign server.
+Available functions include listing, downloading, uploading, and deleting
+add-ons.
+"""
 
 import sys, os.path, re, time, glob
-# in case the wesnoth python package has not been installed
-sys.path.append("data/tools")
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 from wesnoth.campaignserver_client import CampaignClient

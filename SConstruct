@@ -77,7 +77,7 @@ The following special build targets
     all = wesnoth wesnoth_editor exploder cutter wesnothd campaignd (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
-    install-clientside = install 'all' executables + wmlscope/wmllint/wmlindent.
+    install-clientside = install 'all' executables and scripts.
     install = synonym for install-clientside
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
@@ -1036,7 +1036,7 @@ fifodir = env['fifodir']
 mandir = os.path.join(env["prefix"], "share/man")
 clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
-pythontools = Split("wmlscope wmllint wmlindent")
+pythontools = Split("wmlscope wmllint wmlindent wmlclient")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
 def CopyFilter(fn):

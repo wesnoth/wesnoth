@@ -23,7 +23,7 @@ CLEANFILES = revision.hpp
 
 if TOOLS
 bin_PROGRAMS += exploder cutter
-bin_SCRIPTS += wmlscope wmllint wmlindent
+bin_SCRIPTS += wmlscope wmllint wmlindent wmlclient
 CLEANFILES += $(bin_SCRIPTS)
 endif
 
