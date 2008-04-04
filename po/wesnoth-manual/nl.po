@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-03-06 10:59+0100\n"
-"PO-Revision-Date: 2008-02-27 16:41+0100\n"
+"PO-Revision-Date: 2008-04-04 12:12+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: none <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -278,7 +278,6 @@ msgstr "Multiplayer"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:144
-#, fuzzy
 msgid ""
 "Click this button to play single scenarios against one or more opponents. "
 "You can play the games over the internet or at your computer, against "
@@ -290,7 +289,7 @@ msgstr ""
 "spelen. Deze kan je spelen via het internet of lokaal op je eigen computer "
 "tegen computergestuurde en menselijke tegenstanders. Wanneer je op deze knop "
 "klikt verschijnt er een dialoogscherm voor de keuze hoe het scenario te "
-"spelen. Voor meer zie <xref linkend=\"scenarios\"/>."
+"spelen. Voor meer zie <link linkend=\"scenarios\">scenario's</link>."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:154
@@ -511,7 +510,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:301
-#, fuzzy
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -527,12 +525,13 @@ msgstr ""
 "Over het algemeen worden multiplayer spelen gespeeld tegen andere spelers "
 "via het internet (ook mogelijke via een lokaal netwerk). Deze spelen worden "
 "beheerd door de Wesnoth multiplayerserver. Multiplayer spelen kunnen zolang "
-"duren als nodig, van 1 tot 10 uur, afhankelijk van het aantal spelers en de "
-"grote van de kaart. Gemiddeld duurt zo'n spel ergens tussen de 3 en 7 uur. "
-"Het spel kan zovaak opgeslagen en geladen worden als je wilt. Zo is het "
-"mogelijk dat sommige spellen minstens een week of twee duren. Het is niet "
-"mogelijk eenheden over te nemen van het ene scenario naar een volgend "
-"scenario. Het opbouwen van een leger dient dus in een scenario te gebeuren."
+"duren als nodig, van 1 tot 10 uur, afhankelijk van het aantal spelers (en de "
+"grote van de kaart). Gemiddeld duurt zo'n spel ergens tussen de 3 en 7 uur. "
+"Het spel kan zo vaak opgeslagen en geladen worden als je wilt. Zo is het "
+"mogelijk dat sommige spellen minstens een week of twee duren zelfs als de "
+"speeltijd maar een paar uur is. Het is niet mogelijk eenheden over te nemen "
+"van het ene scenario naar een volgend scenario. Het opbouwen van een leger "
+"dient dus in een scenario te gebeuren."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:312
@@ -551,7 +550,7 @@ msgstr "<phrase>Multiplayer dialoog</phrase>"
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:323
 msgid "Join official Server"
-msgstr ""
+msgstr "Inloggen op de officiële server"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:324
@@ -568,7 +567,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:330
 msgid "Connect to Host/Server"
-msgstr ""
+msgstr "Verbinden met Host/Server"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:331
@@ -626,7 +625,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:368
-#, fuzzy
 msgid "The Game Screen"
 msgstr "Het spel scherm"
 
@@ -1180,7 +1178,7 @@ msgstr "Ctrl-s"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:810
 msgid "Save game"
-msgstr ""
+msgstr "Spel opslaan"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:815
@@ -1190,7 +1188,7 @@ msgstr "Ctrl-o"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:818
 msgid "Load game"
-msgstr ""
+msgstr "Spel laden"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:823
@@ -1200,7 +1198,7 @@ msgstr "Ctrl-p"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:826
 msgid "Go to Preferences menu"
-msgstr ""
+msgstr "Naar het voorkeuren menu"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:831
@@ -1210,7 +1208,7 @@ msgstr "Ctrl-q"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:834
 msgid "Quit game"
-msgstr ""
+msgstr "Spel afsluiten"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:839
@@ -1220,7 +1218,7 @@ msgstr "/"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:842
 msgid "Search (find label or unit by name)"
-msgstr ""
+msgstr "Zoeken (een label of eenheid op naam vinden)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:847
@@ -1489,7 +1487,6 @@ msgstr "Eenheden"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1065
-#, fuzzy
 msgid ""
 "Battle for Wesnoth has hundreds of unit types which are characterized by a "
 "rich set of statistics. In addition, individual units can have specific "
@@ -1499,9 +1496,9 @@ msgid ""
 msgstr ""
 "Strijd om Wesnoth heeft honderden typen eenheden, elk gekarakteriseerd door "
 "een ruime verzameling eigenschappen. Als toevoeging heeft elk individuele "
-"eenheid specieke karaktertrekken (<xref linkend=\"traits\"/>). Deze "
+"eenheid specifieke <link linkend=\"traits\">karaktertrekken</link>. Deze "
 "karaktertrekken maken elke eenheid subtiel anders. Verder kunnen veldtocht "
-"ontwerpens unieke eenheden toevoegen aan hun veldtochten om de mogelijkheden "
+"ontwerpers unieke eenheden toevoegen aan hun veldtochten om de mogelijkheden "
 "van de spelers nog verder uit te breiden."
 
 # type: Content of: <book><chapter><section><simpara>
@@ -2566,7 +2563,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2079
 msgid "Fighting"
-msgstr ""
+msgstr "Vechten"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2080
@@ -2622,7 +2619,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2113
 msgid "Attack types"
-msgstr ""
+msgstr "Aanvalstypen"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2117
@@ -2815,12 +2812,12 @@ msgstr ""
 # type: Content of: <book><chapter><title>
 #: ../../doc/manual/manual.en.xml:2268
 msgid "Strategy and Tips"
-msgstr ""
+msgstr "Strategie en tips"
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2270
 msgid "Basic Strategy"
-msgstr ""
+msgstr "Basis strategie"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2271
@@ -2833,7 +2830,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2276
 msgid "Don't waste units"
-msgstr ""
+msgstr "Verspil geen eenheden"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2277
@@ -2860,7 +2857,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2293
 msgid "Out of the enemy's reach"
-msgstr ""
+msgstr "Buiten vijandelijk bereik"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2294
@@ -2978,7 +2975,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2363
 msgid "Use the terrain"
-msgstr ""
+msgstr "Gebruik het terrein"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2364
@@ -3260,7 +3257,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2571
 msgid "Time of day really matters:"
-msgstr ""
+msgstr "Tijdstip op de dag maakt werkelijk uit:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2576
@@ -3303,7 +3300,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2615
 msgid "Winning a scenario"
-msgstr ""
+msgstr "Een scenario winnen"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2619
@@ -3361,7 +3358,3 @@ msgstr ""
 #: ../../doc/manual/manual.en.xml:2665
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr ""
-
-# type: Content of: <book><chapter><section><section><title>
-#~ msgid "Money"
-#~ msgstr "Geld"
