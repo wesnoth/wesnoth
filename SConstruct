@@ -339,7 +339,7 @@ if env["prereqs"]:
     have_X = conf.CheckLib('X11') or Warning("wesnoth_editor cannot be built.")
     have_fribidi = False
     if env['fribidi']:
-        have_fribidi = conf.CheckLib('fribidi') or Die("Can't find libfribidi, please install it or rebuild with fribidi=no.")
+        have_fribidi = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Die("Can't find libfribidi, please install it or rebuild with fribidi=no.")
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
