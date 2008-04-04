@@ -944,10 +944,12 @@ bool game_controller::new_campaign()
 		campaign_desc.push_back(std::pair<std::string,std::string>(desc,image));
 	}
 
-	dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
 	if(campaign_names.size() <= 0) {
+	  gui::show_error_message(disp(),
+				  _("No campaigns are available.\n"));
 		return false;
 	}
+	dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
 	gui::dialog cmenu(disp(), _("Play a campaign"), " ", gui::OK_CANCEL);
 	cmenu.set_menu(campaign_names);
 	cmenu.add_pane(&campaign_preview);
