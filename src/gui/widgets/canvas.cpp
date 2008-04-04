@@ -218,7 +218,7 @@ void tcanvas::parse_cfg(const config& cfg)
 	}
 }
 
-void tcanvas::tshape::put_pixel(unsigned start, Uint32 colour, unsigned w, unsigned x, unsigned y)
+void tcanvas::tshape::put_pixel(ptrdiff_t start, Uint32 colour, unsigned w, unsigned x, unsigned y)
 {
 	// fixme the 4 is true due to Uint32..
 	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
@@ -236,7 +236,7 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 		((colour & 0x0000FF00) >> 8),
 		((colour & 0x000000FF)));
 
-	unsigned start = reinterpret_cast<unsigned>(canvas->pixels);
+	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
 	unsigned w = canvas->w;
 
 	DBG_G_D << "Shape: draw line from " 

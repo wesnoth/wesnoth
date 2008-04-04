@@ -60,7 +60,7 @@ public:
 
 		// draw basic primitives
 
-		void put_pixel(unsigned start, Uint32 colour, unsigned w, unsigned x, unsigned y);
+		void put_pixel(ptrdiff_t start, Uint32 colour, unsigned w, unsigned x, unsigned y);
 		void draw_line(surface& canvas, Uint32 colour, 
 			const unsigned x1, unsigned y1, const unsigned x2, unsigned y2);
 
