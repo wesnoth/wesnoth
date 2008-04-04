@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 16:13+0100\n"
-"PO-Revision-Date: 2008-03-01 15:53+0100\n"
+"PO-Revision-Date: 2008-04-04 12:03+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -190,9 +190,8 @@ msgstr "Chinese Vertaling"
 
 #. [about]
 #: data/core/about.cfg:889
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Chinese Vertaling"
+msgstr "Chinese (Taiwan) Vertaling"
 
 #. [about]
 #: data/core/about.cfg:896
@@ -2515,7 +2514,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2933,7 +2931,6 @@ msgstr "teleportatie"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
@@ -3062,7 +3059,6 @@ msgid "backstab"
 msgstr "ruggesteek"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3169,7 +3165,6 @@ msgid "charge"
 msgstr "stormloop"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -4222,7 +4217,7 @@ msgstr ""
 #: data/core/macros/special-notes.cfg:14
 #, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr " Deze eenheid kan degenen die hem omringen genezen, ook van vergif."
+msgstr " Deze eenheid kan "
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4253,13 +4248,12 @@ msgstr ""
 "tijdens de verdediging."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of below the leadership "
 "level."
 msgstr ""
-" Het leiderschap van deze eenheid motiveert bevriende eenheden van lagere "
+" Het leiderschap van deze eenheid motiveert bevriende eenheden met lagere "
 "rang die naast hem staan, hun klappen komen daardoor harder aan bij de "
 "vijand."
 
@@ -4276,14 +4270,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " Verlichting verhoogt het lichtniveau van de omringende vakjes."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teleportatie:\n"
-"Deze eenheid kan teleporteren tussen twee bevriende dorpen en gebruikt "
-"daarvoor slechts een van zijn zetten."
+" Deze eenheid kan met een beurt teleporteren tussen twee lege bevriende "
+"dorpen."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4330,7 +4322,6 @@ msgstr ""
 "slachtoffer erbij neervalt."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4368,7 +4359,6 @@ msgstr ""
 "hij aanvalt."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -6659,9 +6649,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log in op de officiële Wesnoth multiplayerserver"
 
 #: src/game.cpp:1492
-#, fuzzy
 msgid "Join a different server"
-msgstr "Inloggen op de officiële server"
+msgstr "Inloggen op een andere server"
 
 #: src/game.cpp:1494
 msgid "Local Game"
@@ -6696,11 +6685,10 @@ msgid "Choose your preferred language:"
 msgstr "Kies een taal:"
 
 #: src/game.cpp:1756
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "De volgende add-on(s) bevat fouten en konden niet worden geladen:"
-msgstr[1] "De volgende add-on(s) bevat fouten en konden niet worden geladen:"
+msgstr[0] "De volgende add-on bevat fouten en kon niet worden geladen:"
+msgstr[1] "De volgende add-ons bevatten fouten en konden niet worden geladen:"
 
 #: src/game.cpp:1763
 msgid "ERROR DETAILS:"
