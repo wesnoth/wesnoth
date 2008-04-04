@@ -54,6 +54,7 @@ class unit_animation
 		void start_animation(int start_time,const gamemap::location &src = gamemap::location::null_location, const gamemap::location &dst = gamemap::location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0,const bool accelerate = true);
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
 		void redraw();
+		void invalidate( ) const;
 
 	friend class unit;
 	protected:
@@ -80,6 +81,7 @@ class unit_animation
 			bool need_update() const;
 			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
 			void redraw( );
+			void invalidate( ) const;
 			void start_animation(int start_time,const gamemap::location& src,const  gamemap::location& dst, bool cycles=false);
 			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time(),default_val)); };
 			bool accelerate;

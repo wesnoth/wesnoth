@@ -174,6 +174,7 @@ class unit_frame {
 		int duration() const { return builder_.duration();};
 		bool does_not_change() const{ return builder_.does_not_change();};
 		bool need_update() const{ return builder_.need_update();};
+		void invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & default_val) const;
 	private:
 		frame_builder builder_;
 

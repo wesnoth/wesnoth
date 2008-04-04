@@ -190,6 +190,8 @@ public:
 
 	// Will be overridden in the display subclass
 	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
+	virtual void invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) ;
+	virtual void invalidate_zone(const int x1,const int y1, const int x2, const int y2); 
 	virtual void draw_minimap_units() {};
 
 	const gamemap& get_map()const { return map_;}

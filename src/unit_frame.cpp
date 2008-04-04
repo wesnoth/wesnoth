@@ -405,3 +405,37 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 		}
 	}
 }
+void unit_frame::invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & default_val) const
+{
+	const int xsrc = game_display::get_singleton()->get_location_x(src);
+	const int ysrc = game_display::get_singleton()->get_location_y(src);
+	const int xdst = game_display::get_singleton()->get_location_x(dst);
+	const int ydst = game_display::get_singleton()->get_location_y(dst);
+	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
+
+	const frame_parameters current_data = builder_.parameters(frame_time,default_val);
+	double tmp_offset = current_data.offset;
+	int d2 = game_display::get_singleton()->hex_size() / 2;
+
+	image::locator image_loc;
+	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
+		image_loc = current_data.image_diagonal;
+	} 
+	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
+		image_loc = current_data.image;
+	}
+
+	surface image;
+	if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
+		image=image::get_image(image_loc,
+				image::SCALED_TO_ZOOM,
+				false
+				);
+	}
+	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x;
+	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.x;
+	if (image != NULL) {
+		game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
+
+	}
+}

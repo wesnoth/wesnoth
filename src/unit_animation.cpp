@@ -708,6 +708,14 @@ void unit_animation::redraw()
 		anim_itor->second.redraw();
 	}
 }
+void unit_animation::invalidate() const
+{
+
+	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		anim_itor->second.invalidate();
+	}
+}
 void unit_animation::particule::redraw()
 {
 	const unit_frame& current_frame= get_current_frame();
@@ -718,6 +726,12 @@ void unit_animation::particule::redraw()
 	} else {
 		current_frame.redraw(get_current_frame_time(),false,src_,dst_,&halo_id_,default_val);
 	}
+}
+void unit_animation::particule::invalidate() const
+{
+	const unit_frame& current_frame= get_current_frame();
+	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
+	current_frame.invalidate(get_current_frame_time(),src_,dst_,default_val);
 }
 
 unit_animation::particule::~particule()

@@ -2010,6 +2010,7 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 			over.insert(arr[i]);
 		}
 	}
+	if(get_animation()) get_animation()->invalidate();
 
 	return over;
 }
