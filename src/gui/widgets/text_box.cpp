@@ -155,7 +155,7 @@ void ttext_::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod 
 			break;
 
 		case SDLK_a :
-			if(!modifier & KMOD_CTRL) {
+			if(!(modifier & KMOD_CTRL)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
@@ -169,7 +169,7 @@ void ttext_::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod 
 			break;
 			
 		case SDLK_e :
-			if(!modifier & KMOD_CTRL) {
+			if(!(modifier & KMOD_CTRL)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
@@ -338,7 +338,9 @@ void ttext_::handle_key_delete(SDLMod modifier, bool& handled)
 	if(sel_len_ != 0) {
 		assert(false); // FIXME implement
 	} else {
-
+		label().erase(sel_start_, 1);
+		set_label(label());
+		set_dirty();
 	}
 		
 }
