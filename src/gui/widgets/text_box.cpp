@@ -161,7 +161,7 @@ void ttext_::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod 
 			}
 			
 			// If ctrl-a is used for home drop the control modifier
-			modifier &~ KMOD_CTRL;
+			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
 			/* FALL DOWN */
 
 		case SDLK_HOME :
@@ -175,7 +175,7 @@ void ttext_::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod 
 			}
 			
 			// If ctrl-e is used for end drop the control modifier
-			modifier &~ KMOD_CTRL;
+			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
 			/* FALL DOWN */
 
 		case SDLK_END :
