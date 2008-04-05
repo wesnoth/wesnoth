@@ -1036,7 +1036,7 @@ fifodir = env['fifodir']
 mandir = os.path.join(env["prefix"], "share/man")
 clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
-pythontools = Split("wmlscope wmllint wmlindent wmlclient")
+pythontools = Split("wmlscope wmllint wmlindent add-on_manager.py")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
 def CopyFilter(fn):

@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # encoding: utf8
 """
-wmlclient -- a command-line client for the Wesnoth campaign server
+add-on_manager.py -- a command-line client for the Wesnoth add-on server
 
-This tool is mainly intendended for WML authors and maintainers.
-It can be used to manage the WML content on the Wesnoth cammpaign server.
+This tool is mainly intendended for user-made content authors and maintainers.
+It can be used to manage the WML content on the Wesnoth add-on server.
 Available functions include listing, downloading, uploading, and deleting
 add-ons.
 """
@@ -27,56 +27,56 @@ if __name__ == "__main__":
         help = "specify server port or BfW version (%s)" % " or ".join(
         map(lambda x: x[1], CampaignClient.portmap)),
         default = CampaignClient.portmap[0][0])
-    optionparser.add_option("-l", "--list", help = "list available campaigns",
+    optionparser.add_option("-l", "--list", help = "list available add-ons",
         action = "store_true",)
     optionparser.add_option("-w", "--wml",
-        help = "when listing campaigns, list the raw wml",
+        help = "when listing add-ons, list the raw wml",
         action = "store_true",)
     optionparser.add_option("-C", "--color",
         help = "use colored WML output",
         action = "store_true",)
     optionparser.add_option("-c", "--campaigns-dir",
-        help = "directory where campaigns are stored",
+        help = "directory where add-ons are stored",
         default = ".")
     optionparser.add_option("-P", "--password",
         help = "password to use")
     optionparser.add_option("-d", "--download",
-        help = "download the named campaign; " +
-        "name may be a Python regexp matched against all campaign names " +
+        help = "download the named add-on; " +
+        "name may be a Python regexp matched against all add-on names " +
         "(specify the path where to put it with -c, " +
         "current directory will be used by default)")
     optionparser.add_option("-u", "--upload",
-        help = "Upload campaign. " +
-        "UPLOAD should be either the name of a campaign subdirectory," +
+        help = "Upload an add-on. " +
+        "UPLOAD should be either the name of a add-on subdirectory," +
         "(in which case the client looks for _server.pbl beneath it) " +
         "or a path to the .pbl file (in which case the name of the " +
-        "campaign subdirectory is the name of the path with .pbl removed)")
+        "add-on subdirectory is the name of the path with .pbl removed)")
     optionparser.add_option("-s", "--status",
         help = "Display the status of addons installed in the given " +
         "directory.")
     optionparser.add_option("-f", "--update",
-        help = "Update all installed campaigns in the given directory. " +
+        help = "Update all installed add-ons in the given directory. " +
         "This works by comparing the info.cfg file in each addon directory " +
         "with the version on the server.")
     optionparser.add_option("-v", "--validate",
-        help = "validate python scripts in a campaign " +
-        "(VALIDATE specifies the name of the campaign, " +
+        help = "validate python scripts in an add-on " +
+        "(VALIDATE specifies the name of the add-on, " +
         "set the password with -P)")
     optionparser.add_option("-V", "--verbose",
         help = "be even more verbose for everything",
         action = "store_true",)
     optionparser.add_option("-r", "--remove",
-        help = "remove the named campaign from the server, " +
+        help = "remove the named add-on from the server, " +
         "set the password -P")
     optionparser.add_option("-R", "--raw-download",
         action = "store_true",
         help = "download as a binary WML packet")
     optionparser.add_option("-U", "--unpack",
         help = "unpack the file UNPACK as a binary WML packet " +
-        "(specify the campaign path with -c)")
+        "(specify the add-on path with -c)")
     optionparser.add_option("--change-passphrase", nargs = 3,
-        metavar = "CAMPAIGN OLD NEW",
-        help = "Change the passphrase for CAMPAIGN from OLD to NEW")
+        metavar = "ADD-ON OLD NEW",
+        help = "Change the passphrase for ADD-ON from OLD to NEW")
     options, args = optionparser.parse_args()
 
     port = options.port
@@ -119,7 +119,7 @@ if __name__ == "__main__":
 
     def get_info(name):
         """
-        Get info for a locally installed campaign. It expects a direct path
+        Get info for a locally installed add-on. It expects a direct path
         to the info.cfg file.
         """
         if not os.path.exists(name): return None, None
@@ -244,7 +244,7 @@ if __name__ == "__main__":
         cs = CampaignClient(address)
         data = cs.list_campaigns()
         if not data:
-            sys.stderr.write("Could not connect to campaign server.\n")
+            sys.stderr.write("Could not connect to the add-on server.\n")
             sys.exit(-1)
         campaigns = {}
         for c in data.get_or_create_sub("campaigns").get_all("campaign"):

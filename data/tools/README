@@ -4,6 +4,11 @@ also belong here.
 
 == Scripts ==
 
+=== add-on_manager.py ===
+
+Command-line client for uploading WML content to and downloading from
+the add-on server.
+
 === wmllint ===
 
 This tool lifts WML from older dialects to current and performs sanity checks.
@@ -21,11 +26,6 @@ Use this tool to generate commands that will move a unit between
 namespaces; campaign to core, core to campaign, or campaign to
 campaign.  See the header comment of wmlmove for a description and
 invocation options.
-
-=== wmlclient ===
-
-Command-line client for uploading WML content to and downloading from
-the campaign server.
 
 === wmlunits ===
 
