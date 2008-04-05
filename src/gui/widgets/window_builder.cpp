@@ -55,10 +55,18 @@ struct tbuilder_button : public tbuilder_widget
 private:
 	tbuilder_button();
 public:
-	tbuilder_button(const config& cfg) : tbuilder_widget(cfg) {}
+	tbuilder_button(const config& cfg) : 
+		tbuilder_widget(cfg),
+		retval_(0)
+	{ read_extra(cfg); }
 
 	twidget* build () const;
 
+private:
+	int retval_;
+
+	//! After reading the general part in the constructor read extra data.
+	void read_extra(const config& cfg);
 };
 
 struct tbuilder_label : public tbuilder_widget
@@ -67,7 +75,9 @@ struct tbuilder_label : public tbuilder_widget
 private:
 	tbuilder_label();
 public:
-	tbuilder_label(const config& cfg) : tbuilder_widget(cfg) {}
+	tbuilder_label(const config& cfg) :
+		tbuilder_widget(cfg)
+	{}
 
 	twidget* build () const;
 
@@ -79,7 +89,9 @@ struct tbuilder_text_box : public tbuilder_widget
 private:
 	tbuilder_text_box();
 public:
-	tbuilder_text_box(const config& cfg) : tbuilder_widget(cfg) {}
+	tbuilder_text_box(const config& cfg) :
+		tbuilder_widget(cfg)
+	{}
 
 	twidget* build () const;
 
@@ -148,7 +160,6 @@ const std::string& twindow_builder::read(const config& cfg)
 
 		resolutions.push_back(tresolution(**itor));
 	}
-
 
 	return id_;
 }
@@ -242,7 +253,6 @@ tbuilder_widget::tbuilder_widget(const config& cfg) :
 
 	DBG_G_P << "Window builder: found widget with id '" 
 		<< id << "' and definition '" << definition << "'.\n";
-	
 }
 
 twidget* tbuilder_button::build() const
@@ -253,16 +263,21 @@ twidget* tbuilder_button::build() const
 	button->set_definition(definition);
 	button->set_label(label);
 
-	//fixme the reader for button needs to read return_value
-	//if 0 test the id to be a common id.
-	
-	//FIXME needs to be a map as lookup
-	button->set_retval(tbutton::get_retval_by_id(id));
+	if(retval_) {
+		button->set_retval(retval_);
+	} else {
+		button->set_retval(tbutton::get_retval_by_id(id));
+	}
 
 	DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return button;
+}
+
+void tbuilder_button::read_extra(const config& cfg)
+{
+	retval_ = lexical_cast_default<int>(cfg["return_value"]);
 }
 
 twidget* tbuilder_label::build() const
