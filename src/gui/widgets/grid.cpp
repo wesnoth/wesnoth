@@ -116,7 +116,7 @@ void tgrid::set_cols(const unsigned cols)
 	}
 
 	cols_ = cols;
-	children_.resize(cols_ * cols_);
+	children_.resize(rows_ * cols_);
 }
 
 void tgrid::remove_child(const unsigned row, const unsigned col)
