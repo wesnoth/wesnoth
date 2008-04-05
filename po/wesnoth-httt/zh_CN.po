@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:27+0100\n"
+"POT-Creation-Date: 2008-04-05 20:49+0200\n"
 "PO-Revision-Date: 2008-02-26 14:54+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team:  <zh@li.org>\n"
@@ -2162,7 +2162,7 @@ msgstr "耀桥"
 #. [event]
 #. [side]: type=Princess, description=Li'sar
 #. [unit]: description=Li'sar, type=$stored_Lisar.type
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:705
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:645
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:55
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:82
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:364
@@ -2948,7 +2948,7 @@ msgid "Sea Serpent"
 msgstr "蛟龙"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:675
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:615
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:360
 msgid "Cuttle Fish"
 msgstr "鱿鱼怪"
@@ -3262,92 +3262,77 @@ msgid "Excellent. We must find a way underground before we are overwhelmed."
 msgstr "甚好。吾等需于敌军聚集之前寻得通路。"
 
 #. [message]: role=Outlaw_Advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:227
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:243
 msgid ""
 "My uncle used to smuggle... err... I mean... trade food for the dwarves. He "
 "could get grain carts in under the very noses of those ugly orcs."
 msgstr "吾叔伯曾涉私运 ...呃 ... 售食物于矮人。他能将粮车从丑半兽妖鼻下越过。"
 
 #. [message]: role=Outlaw_Advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:231
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:247
 msgid "He must be hiding in one of those villages."
 msgstr "他定是躲于一个村里。"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:259
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:261
 msgid ""
 "The defense of the dwarves must have been strong. Look at those ruined "
 "towers!"
 msgstr "矮人守军必定很强。看那守望台废墟！"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:263
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:265
 msgid ""
 "The battle outside was fierce and lasted a full half-year. But, the battles "
 "inside the tunnels were worse."
 msgstr "外围之战，甚为凶狠，耐足半年。里内之战，更不胜说！"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:276
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:278
 msgid ""
 "The pillars of Thunedain. He was a legendary dwarvish lord who made his last "
 "stand here. May we triumph where he fell."
 msgstr "栋梁瑟。相传其乃坚守此地之矮人领主，覆没于此，希吾等莫要重蹈覆辙。"
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:280
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:282
 msgid ""
 "I would settle for escape, though I know not which I dread more: foul orcs "
 "or fetid caves."
 msgstr "吾有意逃走，却不知臭半兽妖与这肮脏窑洞，何者更可怕乎！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:291
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:295
 msgid "Back to the abyss, spawn of filth!"
 msgstr "污秽怪物，下地狱去吧！"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:354
-msgid "How are we doing, $outlaw_name|?"
-msgstr "如何行之，$outlaw_name|?"
-
-#. [message]: description=$outlaw_name
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:361
-msgid "The same as always, Uncle!"
-msgstr "叔伯，亦同以往而已！"
-
-#. [message]: description=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:365
-msgid "That bad, huh?"
-msgstr "非善，孰如？"
-
-#. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:397
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:314
 msgid "Uncle Somf"
 msgstr "宋叔伯"
 
-#. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:421
-msgid "$outlaw_name|! How have you been? I haven't seen you in years."
-msgstr "$outlaw_name|! 吾等有数年未见。子为何来？"
-
-#. [else]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:426
-msgid "Haw! Any friend of $outlaw_name is a friend of mine too."
-msgstr "哈哇！$outlaw_name之友亦吾友也。"
-
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:432
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:318
 msgid "Who... who's here?"
 msgstr "停！此乃何人，报上名来？"
 
-#. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:442
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:333
+msgid "$outlaw_name|! How have you been? I haven't seen you in years."
+msgstr "$outlaw_name|! 吾等有数年未见。子为何来？"
+
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:340
+msgid "Haw! Any friend of $outlaw_name is a friend of mine too."
+msgstr "哈哇！$outlaw_name之友亦吾友也。"
+
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:347
 msgid "We need to make it into the caves of the dwarves."
 msgstr "吾等需经此，入矮人国度。"
 
-#. [message]: description=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:455
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:361
 msgid ""
 "The mine entrances were all collapsed intentionally during the fighting. The "
 "doors, while heavily defended, remain accessible. The orcish hordes that "
@@ -3355,116 +3340,131 @@ msgid ""
 msgstr ""
 "战斗之中，国门为其所损毁，小门仍可通行。兽妖之军已被击退，然尔等可潜入之。"
 
-#. [message]: description=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:461
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:367
 msgid ""
 "The best way is through the mine tunnels. The orcs have never found all the "
 "mine entrances, and many still lead deep underground."
 msgstr "上策乃是经此矿道，兽妖未曾寻得所有矿井入口，然其大多能至地下深处。"
 
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:400
+msgid "How are we doing, $outlaw_name|?"
+msgstr "如何行之，$outlaw_name|?"
+
+#. [message]: speaker=$outlaw_advisor_store.description
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:404
+msgid "The same as always, Uncle!"
+msgstr "叔伯，亦同以往而已！"
+
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:408
+msgid "That bad, huh?"
+msgstr "非善，孰如？"
+
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:499
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:439
 msgid "The doors... they can be moved!"
 msgstr "此门……可以通行！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:503
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:443
 msgid "Quickly, now, let us slip inside and hope the dwarves do not object..."
 msgstr "快，沿此路下行，望矮人莫加阻拦……"
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:507
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:447
 msgid "... and that the orcs do not follow."
 msgstr "……而兽妖不能跟从。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:513
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:453
 msgid "The doors are closed and barred from the inside!"
 msgstr "门关着，朝内锁住！"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:517
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:457
 msgid "We can't get in! What should we do now?"
 msgstr "进不去呀！如何是好？"
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:521
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:461
 msgid ""
 "It is said that the orcs used old mine tunnels to surprise the dwarves. "
 "There appears to be one nearby, to the north-east."
 msgstr "传说半兽妖以废旧矿道袭矮人。定是东北方那个！"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:525
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:465
 msgid "Then we must make it to that tunnel!"
 msgstr "那吾等需去那通道！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:549
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:489
 msgid "This old mine seems to be connected to the main tunnels."
 msgstr "此废矿似连接主通道啊！"
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:553
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:493
 msgid "I am hesitant to enter. It will be so difficult in the darkness!"
 msgstr "吾不愿进去。黑漆漆的，好不困难！"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:557
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:497
 msgid "There is no time for idle chatter or delay of any kind. Onward!"
 msgstr "已没时间闲聊或耽误。进发！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:563
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:503
 msgid ""
 "I have reached the mine entrance, but there is no tunnel here. Rock and "
 "rubble completely block the way."
 msgstr "吾已到此矿口，然砖石堵塞，此处无路可行啊！"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:567
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:507
 msgid "I hope we can make it through the main doors, then."
 msgstr "如此，则望正门能够通行"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:571
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:511
 msgid "It is our only choice now. Hurry!"
 msgstr "别无选择！快行！"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:598
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:627
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:538
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:567
 msgid "Pray that we live to see sunlight again."
 msgstr "望吾等能再见此阳光。"
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:645
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:585
 msgid ""
 "We have defeated the foul orcs guarding this land, but we must continue "
 "without rest. More will surely come!"
 msgstr "吾军已击退此地半兽妖，但不可歇息，需得马上继续。定会有更多兽妖前来！"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:655
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:595
 msgid ""
 "Indeed we must not delay. Let us breach the great doors to the dwarven "
 "kingdom."
 msgstr "吾等确不可延误。打破大门进入吧！"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:661
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:601
 msgid ""
 "Indeed we must not delay. The mines in the northeast are the best way to "
 "enter."
 msgstr "吾等确不可延误。东北方废矿是最佳入口！"
 
 #. [message]: description=Cuttle Fish
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:680
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:620
 msgid "Ruarrrrr!!!"
 msgstr "啊呜！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:684
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:624
 msgid "A monster was hiding in that lake!"
 msgstr "湖中有怪物！"
 
@@ -3476,19 +3476,19 @@ msgstr "湖中有怪物！"
 # The word "xu" suggests hairy features (beard = hu xu, tentacles of ant is acceptable, but not a monster!)
 # "chu shou" sounds OK, but was from the site that wrongly translated "elves" to "dwarves". So if one can translate to "shou" (hand), surely one can use "jiao" (leg) also, right? I'm not sure. So someone, please advice.
 #. [message]: role=whiner
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:692
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:632
 msgid ""
 "The legend was true! There are always tentacled creatures hiding in the "
 "lakes near the Dwarven Kingdoms."
 msgstr "传说是实！矮人国湖中常有多足水怪躲藏。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:702
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:642
 msgid "But Konrad's party was not alone in entering the caves..."
 msgstr "但孔列一行非独自入洞……"
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:718
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:658
 msgid ""
 "Whew! We make our way through the dangerous fog of the mountains, and now "
 "there is all this chaos before us! Come on, men! We must make it to the "
@@ -7477,7 +7477,7 @@ msgstr "火焰剑"
 
 #. [option]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:110
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:231
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:228
 msgid "No"
 msgstr "不是"
 
@@ -7511,14 +7511,12 @@ msgid ""
 msgstr "探入战甲，非观之重量。经及套入，确舒适于体。可担当外在硬伤！"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:179
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:181
 msgid "void armor"
 msgstr "空虚之铠"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:188
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:194
 msgid ""
 "The Void Armor grants the following resistances:\n"
 "blade:  50%\n"
@@ -7533,12 +7531,12 @@ msgstr ""
 "火焰：+10%"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:381
 msgid "Scepter of Fire"
 msgstr "宣火皇柄"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
 msgid ""
 "This ancient Scepter was forged by the great Dwarves of the Deep Mountains. "
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
@@ -7546,55 +7544,55 @@ msgid ""
 msgstr "此皇柄乃群山中矮人所铸。韦诺王权象征，持者以皇柄之能，疾出火球杀敌！"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:385
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr "此乃宣火皇柄。唯继位者可夺！"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:413
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:410
 msgid "Here it is at last, I have the Scepter!"
 msgstr "原来于此，吾获皇柄！"
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:417
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:414
 msgid "So it is in our hands! Now let us leave this stinking pit."
 msgstr "其终入吾等之手！让吾等脱此腥臭之所。"
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:421
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:418
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr "吾以为朝北行些，便可返回。"
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:442
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:439
 msgid "At last! I have the Scepter!"
 msgstr "吾终获皇柄！"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:446
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:443
 msgid ""
 "Indeed. You managed to reach it, Li'sar. I hope you shall use it wisely."
 msgstr "的确。汝得柄，丽萨，望君善用之。"
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:450
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:447
 msgid ""
 "My first use for it is going to be to help us get out of this hole! I hope "
 "you consider that wise."
 msgstr "此柄首功，将带吾等出洞！望汝可以此举为明。"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:454
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:451
 msgid ""
 "The Scepter makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
 msgstr "皇柄使人力盛，却非成仙。望汝慎用之。即来也，北方必有出路！"
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:458
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:455
 msgid "I think I know what I'm doing. Come, let us go!"
 msgstr "吾知吾所为何也。众人往前！"
 

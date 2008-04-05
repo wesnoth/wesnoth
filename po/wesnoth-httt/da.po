@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-25 14:27+0100\n"
+"POT-Creation-Date: 2008-04-05 20:49+0200\n"
 "PO-Revision-Date: 2008-02-26 22:09+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -2319,7 +2319,7 @@ msgstr "Elbridge"
 #. [event]
 #. [side]: type=Princess, description=Li'sar
 #. [unit]: description=Li'sar, type=$stored_Lisar.type
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:705
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:645
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:55
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:82
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:364
@@ -3167,7 +3167,7 @@ msgid "Sea Serpent"
 msgstr "Søslange"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:675
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:615
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:360
 msgid "Cuttle Fish"
 msgstr "Kæmpeblæksprutte"
@@ -3520,7 +3520,7 @@ msgid "Excellent. We must find a way underground before we are overwhelmed."
 msgstr "Glimrende. Vi må finde en underjordisk vej før vi bliver overmandet."
 
 #. [message]: role=Outlaw_Advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:227
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:243
 msgid ""
 "My uncle used to smuggle... err... I mean... trade food for the dwarves. He "
 "could get grain carts in under the very noses of those ugly orcs."
@@ -3529,12 +3529,12 @@ msgstr ""
 "Han kunne snige kornvogne ind lige under snuderne på de grimme orker."
 
 #. [message]: role=Outlaw_Advisor
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:231
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:247
 msgid "He must be hiding in one of those villages."
 msgstr "Han må gemme sig i en af de landsbyer."
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:259
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:261
 msgid ""
 "The defense of the dwarves must have been strong. Look at those ruined "
 "towers!"
@@ -3542,7 +3542,7 @@ msgstr ""
 "Dværgenes forsvar må have været stærkt. Prøv at se på de ødelagte tårne!"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:263
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:265
 msgid ""
 "The battle outside was fierce and lasted a full half-year. But, the battles "
 "inside the tunnels were worse."
@@ -3551,7 +3551,7 @@ msgstr ""
 "var endnu værre."
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:276
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:278
 msgid ""
 "The pillars of Thunedain. He was a legendary dwarvish lord who made his last "
 "stand here. May we triumph where he fell."
@@ -3560,7 +3560,7 @@ msgstr ""
 "gjorde sin sidste modstand her. Må vi triumfere hvor han faldt."
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:280
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:282
 msgid ""
 "I would settle for escape, though I know not which I dread more: foul orcs "
 "or fetid caves."
@@ -3569,52 +3569,37 @@ msgstr ""
 "mest: Fæle orker eller stinkende huler."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:291
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:295
 msgid "Back to the abyss, spawn of filth!"
 msgstr "Tilbage til dybet, beskidte bæst!"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:354
-msgid "How are we doing, $outlaw_name|?"
-msgstr "Hvor godt er vi på vej, $outlaw_name|?"
-
-#. [message]: description=$outlaw_name
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:361
-msgid "The same as always, Uncle!"
-msgstr "Det samme som altid onkel!"
-
-#. [message]: description=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:365
-msgid "That bad, huh?"
-msgstr "Så slemt huh?"
-
-#. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:397
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:314
 msgid "Uncle Somf"
 msgstr "Onkel Somf"
 
-#. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:421
-msgid "$outlaw_name|! How have you been? I haven't seen you in years."
-msgstr "$outlaw_name|! Hvordan er det gået? Jeg har ikke set dig i årevis."
-
-#. [else]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:426
-msgid "Haw! Any friend of $outlaw_name is a friend of mine too."
-msgstr "Haw! Enhver ven af $outlaw_name er også en ven af mig."
-
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:432
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:318
 msgid "Who... who's here?"
 msgstr "Hvem... Hvem der?"
 
-#. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:442
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:333
+msgid "$outlaw_name|! How have you been? I haven't seen you in years."
+msgstr "$outlaw_name|! Hvordan er det gået? Jeg har ikke set dig i årevis."
+
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:340
+msgid "Haw! Any friend of $outlaw_name is a friend of mine too."
+msgstr "Haw! Enhver ven af $outlaw_name er også en ven af mig."
+
+#. [message]: speaker=Konrad
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:347
 msgid "We need to make it into the caves of the dwarves."
 msgstr "Vi må nå ned i dværgenes huler."
 
-#. [message]: description=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:455
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:361
 msgid ""
 "The mine entrances were all collapsed intentionally during the fighting. The "
 "doors, while heavily defended, remain accessible. The orcish hordes that "
@@ -3624,8 +3609,8 @@ msgstr ""
 "forsvaret, var stadig tilgængelige. Orkhærne som angriber dem blev slået "
 "tilbage, men du kan måske snige dig ind uset."
 
-#. [message]: description=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:461
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:367
 msgid ""
 "The best way is through the mine tunnels. The orcs have never found all the "
 "mine entrances, and many still lead deep underground."
@@ -3633,34 +3618,49 @@ msgstr ""
 "Den bedste vej er igennem minetunnelerne. Orkerne har aldrig fundet alle "
 "mineindgangene, og mange fører stadig dybt under jorden."
 
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:400
+msgid "How are we doing, $outlaw_name|?"
+msgstr "Hvor godt er vi på vej, $outlaw_name|?"
+
+#. [message]: speaker=$outlaw_advisor_store.description
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:404
+msgid "The same as always, Uncle!"
+msgstr "Det samme som altid onkel!"
+
+#. [message]: speaker=Uncle Somf
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:408
+msgid "That bad, huh?"
+msgstr "Så slemt huh?"
+
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:499
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:439
 msgid "The doors... they can be moved!"
 msgstr "Dørene... de kan flyttes!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:503
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:443
 msgid "Quickly, now, let us slip inside and hope the dwarves do not object..."
 msgstr ""
 "Hurtig nu lad os komme indenfor og håbe at dværge ikke har indvindinger..."
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:507
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:447
 msgid "... and that the orcs do not follow."
 msgstr "... og at orkerne ikke følger efter."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:513
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:453
 msgid "The doors are closed and barred from the inside!"
 msgstr "Dørene er lukket og blokkeret indefra!"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:517
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:457
 msgid "We can't get in! What should we do now?"
 msgstr "Vi kan ikke komme ind! Hvad skal vi gøre?"
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:521
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:461
 msgid ""
 "It is said that the orcs used old mine tunnels to surprise the dwarves. "
 "There appears to be one nearby, to the north-east."
@@ -3669,27 +3669,27 @@ msgstr ""
 "af disse tæt på, mod nordøst."
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:525
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:465
 msgid "Then we must make it to that tunnel!"
 msgstr "Vi er nødt til at klare os frem til tunnelen!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:549
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:489
 msgid "This old mine seems to be connected to the main tunnels."
 msgstr "Den gamle mine ser ud til at være forbundet med hovedtunnelerne."
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:553
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:493
 msgid "I am hesitant to enter. It will be so difficult in the darkness!"
 msgstr "Jeg er ikke glad for at gå derind. Det bliver så svært i mørket!"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:557
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:497
 msgid "There is no time for idle chatter or delay of any kind. Onward!"
 msgstr "Der er ikke tid til småsnak eller forsinkelse af nogen slags. Videre!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:563
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:503
 msgid ""
 "I have reached the mine entrance, but there is no tunnel here. Rock and "
 "rubble completely block the way."
@@ -3698,23 +3698,23 @@ msgstr ""
 "spærrer fuldstændig vejen."
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:567
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:507
 msgid "I hope we can make it through the main doors, then."
 msgstr "Jeg håber vi kan komme igennem hoveddøren."
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:571
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:511
 msgid "It is our only choice now. Hurry!"
 msgstr "Det er vores eneste chance. Hurtigt!"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:598
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:627
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:538
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:567
 msgid "Pray that we live to see sunlight again."
 msgstr "Bed til at vi lever længe nok til at se solen igen."
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:645
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:585
 msgid ""
 "We have defeated the foul orcs guarding this land, but we must continue "
 "without rest. More will surely come!"
@@ -3723,7 +3723,7 @@ msgstr ""
 "fortsætte uden hvile, for der kommer ganske sikkert flere!"
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:655
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:595
 msgid ""
 "Indeed we must not delay. Let us breach the great doors to the dwarven "
 "kingdom."
@@ -3732,7 +3732,7 @@ msgstr ""
 "dværgenes kongedømme."
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:661
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:601
 msgid ""
 "Indeed we must not delay. The mines in the northeast are the best way to "
 "enter."
@@ -3740,17 +3740,17 @@ msgstr ""
 "Vi må bestemt ikke tøve. Minerne i nordøst er den bedste måde at komme ind."
 
 #. [message]: description=Cuttle Fish
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:680
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:620
 msgid "Ruarrrrr!!!"
 msgstr "Ruarrrrr!!!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:684
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:624
 msgid "A monster was hiding in that lake!"
 msgstr "Der gemte sig et monster i den sø!"
 
 #. [message]: role=whiner
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:692
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:632
 msgid ""
 "The legend was true! There are always tentacled creatures hiding in the "
 "lakes near the Dwarven Kingdoms."
@@ -3759,12 +3759,12 @@ msgstr ""
 "dværgenes kongeriger."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:702
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:642
 msgid "But Konrad's party was not alone in entering the caves..."
 msgstr "Men Konrads gruppe var ikke de eneste der gik ind i minerne..."
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:718
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:658
 msgid ""
 "Whew! We make our way through the dangerous fog of the mountains, and now "
 "there is all this chaos before us! Come on, men! We must make it to the "
@@ -8239,7 +8239,7 @@ msgstr "flammesværd"
 
 #. [option]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:110
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:231
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:228
 msgid "No"
 msgstr "Nej"
 
@@ -8278,14 +8278,12 @@ msgstr ""
 "skade!"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:179
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:181
 msgid "void armor"
 msgstr "ubenyttet rustning"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:188
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:194
 msgid ""
 "The Void Armor grants the following resistances:\n"
 "blade:  50%\n"
@@ -8300,12 +8298,12 @@ msgstr ""
 "ild:   +10 %"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:381
 msgid "Scepter of Fire"
 msgstr "Ildscepter"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
 msgid ""
 "This ancient Scepter was forged by the great Dwarves of the Deep Mountains. "
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
@@ -8316,7 +8314,7 @@ msgstr ""
 "ildkugler mod fjender af den der har scepteret!"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:385
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
@@ -8325,28 +8323,28 @@ msgstr ""
 "tage det!"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:413
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:410
 msgid "Here it is at last, I have the Scepter!"
 msgstr "Endelig, her er det! Jeg har scepteret!"
 
 #. [message]: description=Kalenz
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:417
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:414
 msgid "So it is in our hands! Now let us leave this stinking pit."
 msgstr "So er det i vores besiddelse. Lad os forlade dette stinkende hul."
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:421
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:418
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr "Jeg tror at hvis vi rejse en smule mod nord kan vi måske komme ud."
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:442
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:439
 msgid "At last! I have the Scepter!"
 msgstr "Endelig! Jeg har scepteret!"
 
 #. [message]: description=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:446
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:443
 msgid ""
 "Indeed. You managed to reach it, Li'sar. I hope you shall use it wisely."
 msgstr ""
@@ -8354,7 +8352,7 @@ msgstr ""
 "bruge det med kløgt."
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:450
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:447
 msgid ""
 "My first use for it is going to be to help us get out of this hole! I hope "
 "you consider that wise."
@@ -8363,7 +8361,7 @@ msgstr ""
 "det for at være klogt."
 
 #. [message]: description=Delfador
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:454
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:451
 msgid ""
 "The Scepter makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
@@ -8372,7 +8370,7 @@ msgstr ""
 "omtanke. Lad os gå der skulle være en udgang mod nord!"
 
 #. [message]: description=Li'sar
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:458
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:455
 msgid "I think I know what I'm doing. Come, let us go!"
 msgstr "Jeg ved hvad jeg gør. Kom, lad os gå!"
 
