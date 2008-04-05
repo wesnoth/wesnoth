@@ -240,7 +240,7 @@ tbuilder_widget::tbuilder_widget(const config& cfg) :
 		definition = "default";
 	}
 
-	DBG_G_P << "Window builder: found button with id '" 
+	DBG_G_P << "Window builder: found widget with id '" 
 		<< id << "' and definition '" << definition << "'.\n";
 	
 }
