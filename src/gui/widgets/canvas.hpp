@@ -31,7 +31,6 @@
 
 class config;
 class surface;
-class vconfig;
 
 namespace gui2 {
 
@@ -73,7 +72,7 @@ public:
 	class tline : public tshape
 	{
 	public:
-		tline(const vconfig& cfg);
+		tline(const config& cfg);
 
 		//! Implement shape::draw().
 		void draw(surface& canvas,
@@ -101,7 +100,7 @@ public:
 	class trectangle : public tshape
 	{
 	public:
-		trectangle(const vconfig& cfg);
+		trectangle(const config& cfg);
 
 		//! Implement shape::draw().
 		void draw(surface& canvas,
@@ -129,7 +128,7 @@ public:
 	class timage : public tshape
 	{
 	public:
-		timage(const vconfig& cfg);
+		timage(const config& cfg);
 		
 		//! Implement shape::draw().
 		void draw(surface& canvas,
@@ -145,7 +144,7 @@ public:
 	class ttext : public tshape
 	{
 	public:
-		ttext(const vconfig& cfg);
+		ttext(const config& cfg);
 		
 		//! Implement shape::draw().
 		void draw(surface& canvas,

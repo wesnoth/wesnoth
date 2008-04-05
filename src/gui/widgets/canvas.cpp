@@ -24,7 +24,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
-#include "variable.hpp"
 #include "wml_exception.hpp"
 
 #include <algorithm>
@@ -199,7 +198,7 @@ void tcanvas::parse_cfg(const config& cfg)
 			cfg.ordered_begin(); itor != cfg.ordered_end(); ++itor) {
 
 		const std::string& type = *((*itor).first);;
-		const vconfig data(&(*((*itor).second)));
+		const config& data = *((*itor).second);
 
 		DBG_G_P << "Canvas: found shape of the type " << type << ".\n";
 
@@ -296,7 +295,7 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	}
 }
 
-tcanvas::tline::tline(const vconfig& cfg) :
+tcanvas::tline::tline(const config& cfg) :
 	x1_(0),
 	y1_(0),
 	x2_(0),
@@ -445,7 +444,7 @@ void tcanvas::tline::draw(surface& canvas,
 	
 }
 
-tcanvas::trectangle::trectangle(const vconfig& cfg) :
+tcanvas::trectangle::trectangle(const config& cfg) :
 	x_(0),
 	y_(0),
 	w_(0),
@@ -584,7 +583,7 @@ void tcanvas::trectangle::draw(surface& canvas,
 */	
 }
 
-tcanvas::timage::timage(const vconfig& cfg) :
+tcanvas::timage::timage(const config& cfg) :
 	src_clip_(),
 	dst_clip_(),
 	image_()
@@ -618,7 +617,7 @@ void tcanvas::timage::draw(surface& canvas,
 	SDL_BlitSurface(image_, &src_clip, canvas, &dst_clip);
 }
 
-tcanvas::ttext::ttext(const vconfig& cfg) :
+tcanvas::ttext::ttext(const config& cfg) :
 	x_(0),
 	y_(0),
 	w_(0),
