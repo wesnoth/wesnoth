@@ -12,7 +12,7 @@ namespace forum_auth {
 // * Failure to obtain database connection data
 // * Failure to connect to database
 // * Failure to find entry coresponding to username
-// * Two cases of invalid hash
+
 class forum_auth
 {
 	private :
@@ -52,7 +52,7 @@ bool forum_auth::validate(void)
 	if(!db_access_file.is_open())
 	{
 		std::string error("Forum auth : No file with access data\n");
-		throw &error;
+		throw error;
 	}
 	db_access_file >> db_name;
 	db_access_file >> db_host;
@@ -63,7 +63,7 @@ bool forum_auth::validate(void)
 	if (!db_interface.connect(db_name, db_host, db_user, db_password))
 	{
 		std::string error("Forum auth : Connection to the databese failed\n");
-		throw &error;
+		throw error;
 	}
 // Retrive users' password as hash
 	std::string sql("SELECT hash FROM phpbb3_wesnothd WHERE username='");
@@ -73,9 +73,9 @@ bool forum_auth::validate(void)
 	if(!(mysqlpp::StoreQueryReult sql_res = query.store()))
 	{
 		std::string error("Forum auth : User not found");
-		throw &error;
+		throw error;
 	}
-	hash = sql_res[0][0];
+	hash = std::string(sql_res[0][0]);
 // Check hash prefix, if different than $H$ hash is invalid
 	if(hash.substr(0,3) != "$H$")
 		return false;
