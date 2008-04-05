@@ -15,22 +15,12 @@
 #ifndef __GUI_WIDGETS_WIDGET_HPP_INCLUDED__
 #define __GUI_WIDGETS_WIDGET_HPP_INCLUDED__
 
-#include "gui/widgets/canvas.hpp"
 #include "gui/widgets/event_handler.hpp"
-
 #include "sdl_utils.hpp"
-#include "video.hpp"
 
-#include "tstring.hpp"
-#include "config.hpp"
-#include "variable.hpp"
-
-#include "events.hpp"
 #include "SDL.h"
 
 #include <string>
-#include <vector>
-#include <map>
 
 
 namespace gui2 {

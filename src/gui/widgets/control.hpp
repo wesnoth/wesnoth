@@ -15,7 +15,9 @@
 #ifndef __GUI_WIDGETS_CONTROL_HPP_INCLUDED__
 #define __GUI_WIDGETS_CONTROL_HPP_INCLUDED__
 
+#include "gui/widgets/canvas.hpp"
 #include "gui/widgets/widget.hpp"
+#include "tstring.hpp"
 
 namespace gui2 {
 
