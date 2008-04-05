@@ -16,6 +16,7 @@
 #define __GUI_WIDGETS_GRID_HPP_INCLUDED__
 
 #include "gui/widgets/widget.hpp"
+#include "gui/widgets/control.hpp"
 
 namespace gui2 {
 
@@ -200,7 +201,7 @@ class tpanel : public tgrid, public tcontrol
 public:
 	tpanel() : 
 		tgrid(0, 0, 0, 0),
-		tcontrol()
+		tcontrol(0)
 		{}
 
 private:

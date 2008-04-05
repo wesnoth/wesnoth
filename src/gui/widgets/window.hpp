@@ -82,6 +82,12 @@ public:
 	void window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height);
 
+	//! A window is always active atm so ignore the request.
+	void set_active(const bool active) {}
+	bool get_active() const { return true; }
+	unsigned get_state() const { return 0; }
+	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
+
 protected:
 private:
 

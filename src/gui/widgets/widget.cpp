@@ -88,13 +88,4 @@ twindow* twidget::get_window()
 	return dynamic_cast<twindow*>(result);
 }
 
-tcontrol::tcontrol() :
-	visible_(true),
-	label_(),
-	tooltip_(),
-	help_message_(),
-	canvas_()
-{
-}
-
 } // namespace gui2

@@ -15,7 +15,7 @@
 #ifndef __GUI_WIDGETS_LABEL_HPP_INCLUDED__
 #define __GUI_WIDGETS_LABEL_HPP_INCLUDED__
 
-#include "gui/widgets/widget.hpp"
+#include "gui/widgets/control.hpp"
 
 #include "gui/widgets/settings.hpp"
 
@@ -26,27 +26,23 @@ class tlabel : public tcontrol
 public:
 	
 	tlabel() :
-		tcontrol(),
-		canvas_()
+		tcontrol(1)
 	{}
 
-	void set_width(const unsigned width);
-
-	void set_height(const unsigned height);
-
-	void set_label(const t_string& label);
+	void set_active(const bool active) { /*FIXME IMPLEMENT*/ };
+	bool get_active() const { return true; /* FIXME IMPLEMENT */ }
+	unsigned get_state() const { return 0; /* FIXME IMPLEMENT */ }
+	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
 	void mouse_hover(tevent_handler&);
 
-	void draw(surface& canvas);
+	void draw(surface& surface);
 
 	// note we should check whether the label fits in the label
 	tpoint get_best_size() const;
 
 	void set_best_size(const tpoint& origin);
 private:
-
-	tcanvas canvas_;
 
 	std::vector<tlabel_definition::tresolution>::const_iterator definition_;
 

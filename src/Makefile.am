@@ -68,6 +68,7 @@ wesnoth_source = \
 	gui/dialogs/addon_connect.cpp \
 	gui/widgets/button.cpp \
 	gui/widgets/canvas.cpp \
+	gui/widgets/control.cpp \
 	gui/widgets/event_handler.cpp \
 	gui/widgets/grid.cpp \
 	gui/widgets/label.cpp \
@@ -298,6 +299,7 @@ noinst_HEADERS = \
 	gui/dialogs/addon_connect.hpp \
 	gui/widgets/button.hpp \
 	gui/widgets/canvas.hpp \
+	gui/widgets/control.hpp \
 	gui/widgets/event_handler.hpp \
 	gui/widgets/grid.hpp \
 	gui/widgets/label.hpp \

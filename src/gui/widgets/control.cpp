@@ -12,8 +12,9 @@
    see the copying file for more details.
 */
 
-#include "gui/widgets/label.hpp"
+#include "gui/widgets/control.hpp"
 
+#include "foreach.hpp"
 #include "log.hpp"
 
 #define DBG_G LOG_STREAM(debug, gui)
@@ -36,63 +37,67 @@
 #define WRN_G_P LOG_STREAM(warn, gui_parse)
 #define ERR_G_P LOG_STREAM(err, gui_parse)
 
-
 namespace gui2 {
 
-tpoint tlabel::get_best_size() const
+tcontrol::tcontrol(const unsigned canvas_count) :
+	visible_(true),
+	label_(),
+	tooltip_(),
+	help_message_(),
+	canvas_(canvas_count)
 {
-	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
-		return tpoint(get_label(definition())->default_width, get_label(definition())->default_height); 
-	} else {
-		return tpoint(definition_->default_width, definition_->default_height); 
+}
+
+void tcontrol::set_width(const unsigned width)
+{ 
+	// resize canvasses
+	foreach(tcanvas& canvas, canvas_) {
+		canvas.set_width(width);
 	}
+
+	// inherited
+	twidget::set_width(width);
 }
 
-void tlabel::mouse_hover(tevent_handler&)
+void tcontrol::set_height(const unsigned height) 
+{ 
+	// resize canvasses
+	foreach(tcanvas& canvas, canvas_) {
+		canvas.set_height(height);
+	}
+
+	// inherited
+	twidget::set_height(height);
+}
+void tcontrol::set_label(const std::string& label)
 {
-	DBG_G_E << "Text_box: mouse hover.\n"; 
+
+	// set label in canvases
+	foreach(tcanvas& canvas, canvas_) {
+		canvas.set_variable("text", variant(label));
+	}
+
+	label_ = label; 
+	set_dirty();
 }
 
-void tlabel::draw(surface& surface)
+void tcontrol::draw(surface& surface)
 {
 	SDL_Rect rect = get_rect();
 
-	DBG_G_D << "Label: drawing enabled state.\n";
-/*	if(!restorer_) {
-		restorer_ = get_surface_portion(canvas, rect);
+	DBG_G_D << "Control: drawing.\n";
+	if(!restorer_) {
+		restorer_ = get_surface_portion(surface, rect);
 	} 
-	if(definition_->enabled.full_redraw) {
-		SDL_BlitSurface(restorer_, 0, canvas, &rect);
+	if(full_redraw()) {
+		SDL_BlitSurface(restorer_, 0, surface, &rect);
 		rect = get_rect();
 	}
-*/
-	canvas(0).draw(true);
-	SDL_BlitSurface(canvas(0).surf(), 0, surface, &rect);
+	canvas(get_state()).draw(true);
+	SDL_BlitSurface(canvas(get_state()).surf(), 0, surface, &rect);
 
 	set_dirty(false);
 }
-
-void tlabel::set_best_size(const tpoint& origin)
-{
-	resolve_definition();
-
-	set_x(origin.x);
-	set_y(origin.y);
-	set_width(definition_->default_width);
-	set_height(definition_->default_height);
-}
-
-void tlabel::resolve_definition()
-{
-	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
-		definition_ = get_label(definition());
-
-		canvas(0) = definition_->enabled.canvas;
-
-		canvas(0).set_variable("text", variant(label()));
-	}
-}
-
 } // namespace gui2
 
 

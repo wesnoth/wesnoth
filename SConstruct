@@ -554,6 +554,7 @@ libwesnoth_sources = [
     "src/gui/dialogs/addon_connect.cpp",
     "src/gui/widgets/button.cpp",
     "src/gui/widgets/canvas.cpp",
+    "src/gui/widgets/control.cpp",
     "src/gui/widgets/event_handler.cpp",
     "src/gui/widgets/grid.cpp",
     "src/gui/widgets/label.cpp",

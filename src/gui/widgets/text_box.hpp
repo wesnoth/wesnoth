@@ -15,7 +15,7 @@
 #ifndef __GUI_WIDGETS_TEXT_BOX_HPP_INCLUDED__
 #define __GUI_WIDGETS_TEXT_BOX_HPP_INCLUDED__
 
-#include "gui/widgets/widget.hpp"
+#include "gui/widgets/control.hpp"
 
 #include "gui/widgets/settings.hpp"
 
@@ -32,9 +32,7 @@ class ttext_ : public tcontrol
 
 public:
 	ttext_() :
-		tcontrol(),
-		canvas_(),
-		restorer_(),
+		tcontrol(1),
 		definition_(),
 		dragging_(false),
 		sel_start_(0),
@@ -42,11 +40,10 @@ public:
 		max_length_(std::string::npos)
 	{}
 
-	void set_width(const unsigned width);
-
-	void set_height(const unsigned height);
-
-	void set_label(const t_string& label);
+	void set_active(const bool active) { /*FIXME IMPLEMENT*/ };
+	bool get_active() const { return true; /* FIXME IMPLEMENT */ }
+	unsigned get_state() const { return 0; /* FIXME IMPLEMENT */ }
+	bool full_redraw() const;
 
 	void mouse_move(tevent_handler&);
 	void mouse_hover(tevent_handler&);
@@ -57,13 +54,9 @@ public:
 
 	void key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
-
-	void draw(surface& canvas);
-
 	tpoint get_best_size() const;
 
 	void set_best_size(const tpoint& origin);
-
 
 protected:
 
@@ -82,9 +75,6 @@ protected:
 	void  set_sel_len(const unsigned sel_len) { sel_len_ = sel_len; set_dirty(); }
 
 private:
-	tcanvas canvas_;
-
-	surface restorer_;
 
 	std::vector<ttext_box_definition::tresolution>::const_iterator definition_;
 

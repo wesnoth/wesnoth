@@ -15,38 +15,24 @@
 #ifndef __GUI_WIDGETS_BUTTON_HPP_INCLUDED__
 #define __GUI_WIDGETS_BUTTON_HPP_INCLUDED__
 
-#include "gui/widgets/widget.hpp"
+#include "gui/widgets/control.hpp"
 
 #include "gui/widgets/settings.hpp"
-#include "log.hpp"
-#include "tstring.hpp"
 
 namespace gui2 {
 
 // Class for a simple push button
 class tbutton : public tcontrol
 {
-	friend void load_settings();
 public:
 	tbutton() : 
-		tcontrol(),
-		canvas_enabled_(),
-		canvas_disabled_(),
-		canvas_pressed_(),
-		canvas_focussed_(),
+		tcontrol(COUNT),
 		state_(ENABLED),
 		definition_(),
 		retval_(0)
 		{
 		}
 
-	void set_width(const unsigned width);
-
-	void set_height(const unsigned height);
-
-	void set_label(const t_string& label);
-
-	
 	void mouse_enter(tevent_handler&);
 	void mouse_hover(tevent_handler&);
 	void mouse_leave(tevent_handler&);
@@ -55,8 +41,6 @@ public:
 	void mouse_left_button_up(tevent_handler&);
 	void mouse_left_button_click(tevent_handler&);
 	void mouse_left_button_double_click(tevent_handler&); //FIXME remove
-
-	void draw(surface& canvas);
 
 	// note we should check whether the label fits in the button
 	tpoint get_best_size() const;
@@ -80,17 +64,16 @@ public:
 
 	//! Gets the retval for the default buttons.
 	static RETVAL get_retval_by_id(const std::string& id);
+
+	void set_active(const bool active);
+	bool get_active() const;
+	unsigned get_state() const { return state_; }
+	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
+
 protected:
 	
 private:
-
-	tcanvas 
-		canvas_enabled_,
-		canvas_disabled_,
-		canvas_pressed_,
-		canvas_focussed_;
-
-	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED };
+	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
 
 	void set_state(tstate state);
 	tstate state_;

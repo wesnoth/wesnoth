@@ -190,9 +190,9 @@ public:
 	void set_definition(const std::string& definition) 
 		{ definition_ = definition; }
 
-	// draw event does nothing by default, maybe make pure virtual later
-	// fixme add force as parameter
-	virtual void draw(surface& /*canvas*/) {}
+	//! Draws a widget.
+	// FIXME add force as parameter
+	virtual void draw(surface& /*surface*/) = 0;
 
 	// invisible widgets never hit, only items with a size NOT here
 	// virtual bool does_hit(const int x, const int y) const { return false; }
@@ -274,56 +274,6 @@ private:
 	int x_, y_;
 	unsigned w_, h_;
 	bool dirty_;
-};
-
-//! Base class for all visible items.
-class tcontrol : public virtual twidget
-{
-
-public:
-
-	tcontrol();
-	virtual ~tcontrol() {}
-
-	void set_visible(const bool visible) { visible_ = visible; set_dirty(); }
-	bool get_visible() const { return visible_; }
-
-	void set_label(const std::string& label) { label_ = label; set_dirty(); }
-
-	const std::string& label() const { return label_; }
-
-	//! Note when modifing the label the caller should set the widget to
-	//! dirty.
-	std::string& label() { return label_; }
-
-	// Note setting the tooltip_ doesn't dirty an object.
-	void set_tooltip(const t_string& tooltip) { tooltip_ = tooltip; }
-	const t_string& tooltip() const { return tooltip_; }
-
-	// Note setting the help_message_ doesn't dirty an object.
-	void set_help_message(const t_string& help_message) { help_message_ = help_message; }
-	const t_string& help_message() const { return help_message_; }
-
-	std::vector<tcanvas>& canvas() { return canvas_; }
-
-//	void set_active(const bool active) = 0;
-//	bool get_active() const = 0;
-
-private:
-
-	//! Visible state of the widget, invisible isn't drawn.
-	bool visible_;
-
-	std::string label_;
-
-	//! When hovering a tooltip with extra information can show up. (FIXME implement)
-	t_string tooltip_;
-
-	//! When the user presses help a tooltip with even more info can be shown. (FIXME implement)
-	t_string help_message_;
-
-	//! Holds all canvas objects for a control. (FIXME implement)
-	std::vector<tcanvas> canvas_;
 };
 
 } // namespace gui2

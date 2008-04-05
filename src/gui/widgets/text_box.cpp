@@ -58,32 +58,10 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 	}
 }
 
-void ttext_::set_width(const unsigned width)
-{ 
-	// resize canvasses
-	canvas_.set_width(width);
-
-	// inherited
-	tcontrol::set_width(width);
-}
-
-void ttext_::set_height(const unsigned height) 
-{ 
-	// resize canvasses
-	canvas_.set_height(height);
-
-	// inherited
-	tcontrol::set_height(height);
-}
-
-void ttext_::set_label(const t_string& label)
+bool ttext_::full_redraw() const
 {
-
-	// set label in canvases
-	canvas_.set_variable("text", variant(label.str()));
-
-	// inherited
-	tcontrol::set_label(label);
+	// FIXME make sure definition_ is valid before usage!
+	return definition_->enabled.full_redraw;
 }
 
 void ttext_::mouse_move(tevent_handler&)
@@ -205,25 +183,6 @@ void ttext_::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod 
 
 }
 
-void ttext_::draw(surface& canvas)
-{
-	SDL_Rect rect = get_rect();
-
-	DBG_G_D << "Text box: drawing enabled state.\n";
-	if(!restorer_) {
-		restorer_ = get_surface_portion(canvas, rect);
-	} 
-	if(definition_->enabled.full_redraw) {
-		SDL_BlitSurface(restorer_, 0, canvas, &rect);
-		rect = get_rect();
-	}
-
-	canvas_.draw(true);
-	SDL_BlitSurface(canvas_.surf(), 0, canvas, &rect);
-
-	set_dirty(false);
-}
-
 tpoint ttext_::get_best_size() const
 {
 	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
@@ -248,11 +207,11 @@ void ttext_::resolve_definition()
 	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
 		definition_ = get_text_box(definition());
 
-		canvas_= definition_->enabled.canvas;
+		canvas(0) = definition_->enabled.canvas;
 
 		// FIXME we need some extra routines since a lot of code will
 		// be duplicated here otherwise.
-		canvas_.set_variable("text", variant(label()));
+		canvas(0).set_variable("text", variant(label()));
 	}
 }
 

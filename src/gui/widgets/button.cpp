@@ -15,6 +15,7 @@
 #include "gui/widgets/button.hpp"
 
 #include "gui/widgets/window.hpp"
+#include "log.hpp"
 
 #define DBG_G LOG_STREAM(debug, gui)
 #define LOG_G LOG_STREAM(info, gui)
@@ -38,42 +39,6 @@
 
 namespace gui2 {
 
-void tbutton::set_width(const unsigned width)
-{ 
-	// resize canvasses
-	canvas_enabled_.set_width(width);
-	canvas_disabled_.set_width(width);
-	canvas_pressed_.set_width(width);
-	canvas_focussed_.set_width(width);
-
-	// inherited
-	tcontrol::set_width(width);
-}
-
-void tbutton::set_height(const unsigned height) 
-{ 
-	// resize canvasses
-	canvas_enabled_.set_height(height);
-	canvas_disabled_.set_height(height);
-	canvas_pressed_.set_height(height);
-	canvas_focussed_.set_height(height);
-
-	// inherited
-	tcontrol::set_height(height);
-}
-
-void tbutton::set_label(const t_string& label)
-{
-
-	// set label in canvases
-	canvas_enabled_.set_variable("text", variant(label.str()));
-	canvas_disabled_.set_variable("text", variant(label.str()));
-	canvas_pressed_.set_variable("text", variant(label.str()));
-	canvas_focussed_.set_variable("text", variant(label.str()));
-
-	// inherited
-	tcontrol::set_label(label);
-}
 
 void tbutton::mouse_enter(tevent_handler&) 
 { 
@@ -132,39 +97,6 @@ void tbutton::mouse_left_button_double_click(tevent_handler&)
 	DBG_G_E << "Button: left mouse button double click.\n"; 
 }
 
-void tbutton::draw(surface& canvas)
-{
-	SDL_Rect rect = get_rect();
-	switch(state_) {
-
-		case ENABLED : 
-			DBG_G_D << "Button: drawing enabled state.\n";
-			canvas_enabled_.draw(true);
-			SDL_BlitSurface(canvas_enabled_.surf(), 0, canvas, &rect);
-			break;
-
-		case DISABLED : 
-			DBG_G_D << "Button: drawing disabled state.\n";
-			canvas_disabled_.draw(true);
-			SDL_BlitSurface(canvas_disabled_.surf(), 0, canvas, &rect);
-			break;
-
-		case PRESSED :
-			DBG_G_D << "Button: drawing pressed state.\n";
-			canvas_pressed_.draw(true);
-			SDL_BlitSurface(canvas_pressed_.surf(), 0, canvas, &rect);
-			break;
-
-		case FOCUSSED :
-			DBG_G_D << "Button: drawing focussed state.\n";
-			canvas_focussed_.draw(true);
-			SDL_BlitSurface(canvas_focussed_.surf(), 0, canvas, &rect);
-			break;
-	}
-
-	set_dirty(false);
-}
-
 tpoint tbutton::get_best_size() const
 {
 	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
@@ -198,6 +130,20 @@ tbutton::RETVAL tbutton::get_retval_by_id(const std::string& id)
 
 }
 
+void tbutton::set_active(const bool active)
+{
+	if(active && state_ == DISABLED) {
+		set_state(ENABLED);
+	} else if(!active && state_ != DISABLED) {
+		set_state(DISABLED);
+	}
+}
+
+bool tbutton::get_active() const
+{
+	return state_ != DISABLED;
+}
+
 void tbutton::set_state(tstate state)
 {
 	if(state != state_) {
@@ -211,18 +157,14 @@ void tbutton::resolve_definition()
 	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
 		definition_ = get_button(definition());
 
-		canvas_enabled_ = definition_->enabled.canvas;
-		canvas_disabled_ = definition_->disabled.canvas;
-		canvas_pressed_ = definition_->pressed.canvas;
-		canvas_focussed_ = definition_->focussed.canvas;
+		canvas(0) =  definition_->enabled.canvas;
+		canvas(1) = definition_->disabled.canvas;
+		canvas(2) = definition_->pressed.canvas;
+		canvas(3) = definition_->focussed.canvas;
 
-		// FIXME we need some extra routines since a lot of code will
-		// be duplicated here otherwise.
-		canvas_enabled_.set_variable("text", variant(label()));
-		canvas_disabled_.set_variable("text", variant(label()));
-		canvas_pressed_.set_variable("text", variant(label()));
-		canvas_focussed_.set_variable("text", variant(label()));
-
+		// FIXME also an ugly hack, maybe set the stuff correct 
+		// just prior to draw... only need to find out when needed.
+		set_label(label());
 	}
 }
 
