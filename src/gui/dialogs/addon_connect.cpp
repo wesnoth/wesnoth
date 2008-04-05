@@ -35,7 +35,7 @@ static void hello()
 	std::cerr << "\n\n\nHello world.\n\n\n";
 }
 
-void addon_connect(CVideo& video, const std::string& server)
+int addon_connect(CVideo& video, const std::string& server)
 {
 
 	gui2::init();
@@ -43,7 +43,7 @@ void addon_connect(CVideo& video, const std::string& server)
 
 //	window.connect("connect", &hello);
 
-	window.show(true);
+	return window.show(true);
 }
 
 

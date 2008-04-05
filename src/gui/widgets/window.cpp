@@ -54,6 +54,7 @@ twindow::twindow(CVideo& video,
 	tevent_handler(),
 	video_(video),
 	status_(NEW),
+	retval_(0),
 	need_layout_(true),
 	restorer_(),
 	canvas_background_(),
@@ -65,7 +66,7 @@ twindow::twindow(CVideo& video,
 	set_height(h);
 }
 
-void twindow::show(const bool restore, void* /*flip_function*/)
+int twindow::show(const bool restore, void* /*flip_function*/)
 {
 	log_scope2(gui_draw, "Window: show.");	
 
@@ -75,7 +76,7 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 
 	}
 	
-	// We cut a piec of the screen and use that, that way all coordinates
+	// We cut a piece of the screen and use that, that way all coordinates
 	// are relative to the window.
 	SDL_Rect rect = get_rect();
 	restorer_ = get_surface_portion(video_.getSurface(), rect);
@@ -143,6 +144,8 @@ void twindow::show(const bool restore, void* /*flip_function*/)
 		update_rect(get_rect());
 		flip();
 	}
+
+	return retval_;
 }
 
 void twindow::layout(const SDL_Rect position)

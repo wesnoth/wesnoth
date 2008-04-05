@@ -14,6 +14,8 @@
 
 #include "gui/widgets/button.hpp"
 
+#include "gui/widgets/window.hpp"
+
 #define DBG_G LOG_STREAM(debug, gui)
 #define LOG_G LOG_STREAM(info, gui)
 #define WRN_G LOG_STREAM(warn, gui)
@@ -112,6 +114,17 @@ void tbutton::mouse_left_button_up(tevent_handler&)
 void tbutton::mouse_left_button_click(tevent_handler&) 
 { 
 	DBG_G_E << "Button: left mouse button click.\n"; 
+
+	// If a button has a retval do the default handling.
+	if(retval_ != 0) {
+		twindow* window = get_window();
+		if(window) {
+			window->set_retval(retval_);
+			return;
+		}
+	}
+
+	// Do the custom handling (not implemented yet) FIXME
 }
 
 void tbutton::mouse_left_button_double_click(tevent_handler&) 
@@ -169,6 +182,20 @@ void tbutton::set_best_size(const tpoint& origin)
 	set_y(origin.y);
 	set_width(definition_->default_width);
 	set_height(definition_->default_height);
+}
+
+tbutton::RETVAL tbutton::get_retval_by_id(const std::string& id)
+{
+	//! Note it might change to a map later depending on the number
+	//! of items.
+	if(id == "ok") {
+		return OK;
+	} else if(id == "cancel") {
+		return CANCEL;
+	} else {
+		return NONE;
+	}
+
 }
 
 void tbutton::set_state(tstate state)

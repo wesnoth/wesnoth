@@ -35,7 +35,8 @@ public:
 		canvas_pressed_(),
 		canvas_focussed_(),
 		state_(ENABLED),
-		definition_()
+		definition_(),
+		retval_(0)
 		{
 		}
 
@@ -62,6 +63,23 @@ public:
 
 	void set_best_size(const tpoint& origin);
 
+	void set_retval(const int retval) { retval_ = retval; }
+
+	//! Default button values, values are subject to change.
+	//! Note this might be moved somewhere else since it will
+	//! force people to include the button, while it should
+	//! be and implementation detail for most callers.
+	enum RETVAL {
+		NONE = 0,                      //!< Dialog is closed with no return 
+		                               //!< value, should be rare but eg a
+		                               //!< message popup can do it.
+		OK = -1,                       //!< Dialog is closed with ok button.
+		CANCEL = -2,                   //!< Dialog is closed with the cancel 
+		                               //!<  button.
+		};
+
+	//! Gets the retval for the default buttons.
+	static RETVAL get_retval_by_id(const std::string& id);
 protected:
 	
 private:
@@ -80,6 +98,8 @@ private:
 	std::vector<tbutton_definition::tresolution>::const_iterator definition_;
 
 	void resolve_definition();
+
+	int retval_;
 };
 
 

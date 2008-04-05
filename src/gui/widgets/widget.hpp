@@ -157,6 +157,8 @@ private:
 	bool wants_mouse_right_double_click_;
 };
 
+class twindow;
+
 //! Base class for all widgets.
 //! This is a non visible widget but it does have dimentions and size hints.
 class twidget : public virtual tevent_executor
@@ -237,6 +239,9 @@ public:
 		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
 			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
 	}
+
+	//! The toplevel item should always be a window if not null is returned
+	twindow* get_window();
 
 protected:	
 	virtual void set_dirty(const bool dirty = true) 

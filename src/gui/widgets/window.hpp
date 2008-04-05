@@ -56,12 +56,17 @@ public:
 
 	// show the window
 	// The flip function is the disp_.flip() if ommitted the video_flip() is used
-	void show(const bool restore = true, void* flip_function = 0);
+	int show(const bool restore = true, void* flip_function = 0);
 
 	// layout the window
 	void layout(const SDL_Rect position);
 
 	enum tstatus{ NEW, SHOWING, REQUEST_CLOSE, CLOSED };
+
+	void close() { status_ = REQUEST_CLOSE; }
+
+	void set_retval(const int retval, const bool close_window = true)
+		{ retval_ = retval; if(close_window) close(); }
 
 	void set_width(const unsigned width);
 
@@ -86,6 +91,9 @@ private:
 	CVideo& video_;
 
 	tstatus status_;
+
+	// return value of the window, 0 default.
+	int retval_;
 
 	//! When set the form needs a full layout redraw cycle.
 	bool need_layout_;

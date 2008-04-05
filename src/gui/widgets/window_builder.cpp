@@ -253,6 +253,12 @@ twidget* tbuilder_button::build() const
 	button->set_definition(definition);
 	button->set_label(label);
 
+	//fixme the reader for button needs to read return_value
+	//if 0 test the id to be a common id.
+	
+	//FIXME needs to be a map as lookup
+	button->set_retval(tbutton::get_retval_by_id(id));
+
 	DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 

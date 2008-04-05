@@ -16,6 +16,7 @@
 
 #include "filesystem.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -71,6 +72,20 @@ std::ostream &operator<<(std::ostream &stream, const tpoint& point)
 {
 	stream << point.x << ',' << point.y;
 	return stream;
+}
+
+twindow* twidget::get_window()
+{
+	// Go up into the parent tree until we find the top level
+	// parent, we can also be the toplevel so start with
+	// ourselves instead of our parent.
+	twidget* result = this;
+	while(result->parent_) {
+		result = result->parent_;
+	}
+
+	// on error dynamic_cast return 0 which is what we want.
+	return dynamic_cast<twindow*>(result);
 }
 
 #if 0

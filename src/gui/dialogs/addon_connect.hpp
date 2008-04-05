@@ -21,7 +21,7 @@ class CVideo;
 
 namespace gui2 {
 
-	void addon_connect(CVideo& video, const std::string& server);
+	int addon_connect(CVideo& video, const std::string& server);
 
 } // namespace gui2
 
