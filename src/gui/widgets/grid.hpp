@@ -70,6 +70,8 @@ public:
 	void set_cols(const unsigned cols);
 	unsigned int get_cols() const { return cols_; }
 
+	void set_rows_cols(const unsigned rows, const unsigned cols);
+
 	void remove_child(const unsigned row, const unsigned col);
 	void remove_child(const std::string& id, const bool find_all = false);
 

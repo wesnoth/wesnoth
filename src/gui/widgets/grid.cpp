@@ -97,12 +97,7 @@ void tgrid::set_rows(const unsigned rows)
 		return;
 	}
 
-	if(!children_.empty()) {
-		WRN_G << "Grid: resizing a non-empty grid may give unexpected problems.\n";
-	}
-
-	rows_ = rows;
-	children_.resize(rows_ * cols_);
+	set_rows_cols(rows, cols_);
 }
 
 void tgrid::set_cols(const unsigned cols)
@@ -111,10 +106,21 @@ void tgrid::set_cols(const unsigned cols)
 		return;
 	}
 
+	set_rows_cols(rows_, cols);
+}
+
+void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
+{
+
+	if(rows == rows_ && cols == cols_) {
+		return;
+	}
+
 	if(!children_.empty()) {
 		WRN_G << "Grid: resizing a non-empty grid may give unexpected problems.\n";
 	}
 
+	rows_ = rows;
 	cols_ = cols;
 	children_.resize(rows_ * cols_);
 }

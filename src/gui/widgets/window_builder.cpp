@@ -109,8 +109,7 @@ twindow build(CVideo& video, const std::string& type)
 	const unsigned rows = definition->grid.rows;
 	const unsigned cols = definition->grid.cols;
 
-	window.set_rows(rows);
-	window.set_cols(cols);
+	window.set_rows_cols(rows, cols);
 
 	for(unsigned x = 0; x < rows; ++x) {
 		for(unsigned y = 0; y < cols; ++y) {
