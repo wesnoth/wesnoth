@@ -88,57 +88,12 @@ twindow* twidget::get_window()
 	return dynamic_cast<twindow*>(result);
 }
 
-#if 0
-tcontainer::~tcontainer()
-{
-	for(std::multimap<std::string, twidget *>::iterator itor = 
-			children_.begin(); itor !=  children_.end(); ++itor) {
-    
-		delete itor->second;
-	}
-}
-twidget* tcontainer::child(const std::string& id)
-{
-	std::multimap<std::string, twidget *>::iterator itor = children_.find(id);
-	if(itor == children_.end()) {
-		return 0;
-	} else {
-		return itor->second;
-	}
-
-}
-
-void tcontainer::add_child(twidget *child) 
-{ 
-	if(child) {
-		children_.insert(std::make_pair(child->id(), child)); 
-	}
-}
-
-bool tcontainer::remove_child(const std::string& id) 
-{
-	std::multimap<std::string, twidget *>::iterator itor = children_.find(id);
-	if(itor == children_.end()) {
-		return false;
-	} else {
-		delete itor->second;
-		children_.erase(itor);
-		return true;
-	}
-}
-#endif
-
-tcontrol::tcontrol(/*const int x, const int y, const int w, const int h*/) :
-/*	x_(x),
-	y_(y),
-	w_(w),
-	h_(h),
-	dirty_(true),
-*/	visible_(true),
+tcontrol::tcontrol() :
+	visible_(true),
 	label_(),
 	tooltip_(),
 	help_message_(),
-	canvas_(0)
+	canvas_()
 {
 }
 

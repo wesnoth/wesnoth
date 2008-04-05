@@ -29,6 +29,7 @@
 #include "SDL.h"
 
 #include <string>
+#include <vector>
 #include <map>
 
 
@@ -275,45 +276,17 @@ private:
 	bool dirty_;
 };
 
-#if 0
-//! Base classs to hold widgets. Will be used for lists
-class tcontainer 
-{
-public:
-	tcontainer() {}
-
-	~tcontainer();
-
-	//! finds a child
-	twidget* child(const std::string& id);
-
-	void add_child(twidget *child);
-
-	bool remove_child(const std::string& id);
-
-	// NOTE this baseclass has no sizes so hit also fails it would be nice to 
-	// find a good pure virtual function to avoid usage or scrap the entire
-	// class and merge it with the panel class... but we still want a spacer type...
-
-protected:
-	std::multimap<std::string, twidget *>& children() { return children_; }
-
-private:
-
-	std::multimap<std::string, twidget *> children_;
-
-};
-#endif
-
-
 //! Base class for all visible items.
 class tcontrol : public virtual twidget
 {
 
 public:
 
-	tcontrol(/*const int x = -1, const int y = -1, const int w = -1, const int h = -1*/);
+	tcontrol();
 	virtual ~tcontrol() {}
+
+	void set_visible(const bool visible) { visible_ = visible; set_dirty(); }
+	bool get_visible() const { return visible_; }
 
 	void set_label(const std::string& label) { label_ = label; set_dirty(); }
 
@@ -322,208 +295,36 @@ public:
 	//! Note when modifing the label the caller should set the widget to
 	//! dirty.
 	std::string& label() { return label_; }
-/*
-	// moving an object doesn't dirty it, it should dirty the parent container...
-	virtual void set_x(const int x) { x_ = x; }
-	int get_x() const { return x_; }
 
-	virtual void set_y(const int y) { y_ = y; }
-	int get_y() const { return y_; }
+	// Note setting the tooltip_ doesn't dirty an object.
+	void set_tooltip(const t_string& tooltip) { tooltip_ = tooltip; }
+	const t_string& tooltip() const { return tooltip_; }
 
-	// resizing an object dirties it
-	// note most items should not be resized manually but with a sizer
-	virtual void set_width(const int width) { w_ = width; set_dirty(); }
-	int get_width() const { return w_; }
+	// Note setting the help_message_ doesn't dirty an object.
+	void set_help_message(const t_string& help_message) { help_message_ = help_message; }
+	const t_string& help_message() const { return help_message_; }
 
-	virtual void set_height(const int height) { h_ = height; set_dirty(); }
-	int get_height() const { return h_; }
-*/	
-/*
-	bool does_hit(const int x, const int y) const 
-		{ return visible_ && x => x_ && x < (x_ + w_) && y >= y_ && y < (y_ + h_); }
-*/
-//	void handle_event(const SDL_Event& event);
-protected:
-	bool canvas_load_image();
+	std::vector<tcanvas>& canvas() { return canvas_; }
 
-	void canvas_draw_text();
+//	void set_active(const bool active) = 0;
+//	bool get_active() const = 0;
 
-//	void draw(surface& parent_canvas);
-/*
-	virtual void set_dirty(const bool dirty = true) { dirty_ = dirty; }
-
-	SDL_Rect get_rect() const 
-		{ return create_rect( x_, y_, w_, h_ ); }
-*/
 private:
-//	int x_, y_, w_, h_;
 
-//	bool dirty_;
+	//! Visible state of the widget, invisible isn't drawn.
 	bool visible_;
 
 	std::string label_;
-	std::string tooltip_;
-	std::string help_message_;
 
-	surface canvas_;
+	//! When hovering a tooltip with extra information can show up. (FIXME implement)
+	t_string tooltip_;
+
+	//! When the user presses help a tooltip with even more info can be shown. (FIXME implement)
+	t_string help_message_;
+
+	//! Holds all canvas objects for a control. (FIXME implement)
+	std::vector<tcanvas> canvas_;
 };
-
-#if 0
-/**
- *  tscroll_panel is a panel which handels scrolling for 
- *  clients which have more data then can be shown
- *  eg the text on a message box.
- */
-class tscrollpanel : public tpanel /*etc*/
-{
-};
-#endif
-/**
- * The slider has a few extra option
- * min, max minimum maximum of the slider
- *
- * min_Value if min is reached a special value can be returned
- * max_value idem for max
- *
- * min_text if min is reached a special caption can be shown
- * max_text idem for max
- */
-class tslider
-{
-};
-
-/**
- * Invisible container holding children
- */
-/*
-class tgrid : public twidget, public tcontainer
-{
-
-};
-*/
-
-
-/**
- * A widget has a mouse over which can either popup directly or after a fixed delay (this is a flag)
- * A widget has a help after pressing F1 it shows a larger tooltip with more info
- */
-
-// base widget definition
-#if 0
-
-[widget_defaults]
-	font_height = 8
-	height = 12
-
-	tooltip_popup_time = 300 		# ms before tooltip pops up automatically
-	tooltip_mouse_move_delta = 2    # number of pixels the mouse can be moved to still be recorded as the same place
-
-[/widget_defaults]
-
-// basic stuff about buttons
-[widget_definition]
-	class = tbutton               # defines a button widget
-	# height inherited
-	# font_height inherited
-	width = 80
-
-	tooltip_delay = true          # should the tooltip pop up directly or wait for the timeout
-
-[/widget_definition]
-
-#endif
-
-
-//dialog definition
-#if 0
-
-[dialog]
-	id = dialog_mapgen            # this id is used internally as well so we know
-	                              # which elements to expect
-
-    [widget]
-		id = widget_width         # this id is also known in the code, only widgets 
-		                          # used in the code need an id. The code knows it is
-								  # a widget which has the following methods
-								  # void set_minimum(int)
-								  # void set_maximum(int)
-								  # void set_value(int)
-								  # int get_value()
-								  #
-								  # suggest_step(int) proposes a step if applicable
-								  # set_set(int) forces a step
-
-		type = slider             # this tells we want to use a slider widget but 
-		                          # could have been an int_box as well.
-
-		# 
-		label_position = left
-
-		tooltip_delay = false     # override the value in the base class
-		tooltip_message = _"foo"  # message on the tooltip
-		help_message = _"agasdg"  # the help message
-
-	[/widget]
-
-	[widget]
-		type = slider
-		id = height
-
-		# 
-		label_position = bottom
-
-[/dialog]
-
-
-#endif
-
-
-// examples of the draw language
-#if 0
-
-positive numbers are from 0,0 negative from width, height
-
-[line]
-	x, y =
-	w, h =
-	colour = r, g, b, a
-	thickness =  
-[/line]
-
-// note a circle bending outwards is impossible do to the - parameter
-[circle]
-	x, y = centre
-	border_colour = r, g, b, a
-	border_thickness = 
-
-	# fill colour only used if start_angle == 0 && end_angle == 360
-	fill_colour = r, g, b, a
-
-	# angle draw, twelve oclock is 0° and the angles increas clockwise
-	start_angle = 0 # starts at
-	end_abgle = 360 # ends at including
-[/circle]
-
-[rectangle]
-
-	x, y =
-	w, h =
-
-	border_colour = r, g, b, a
-	border_thickness = 
-
-	fill_colour = r, g, b, a
-[/rectangle]
-
-// support for polygons may follow later
-
-[image]
-	x, y  = location to insert the top left corner of the image
-
-	filename = file to load
-[/image]
-
-#endif
 
 } // namespace gui2
 
