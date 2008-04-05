@@ -44,8 +44,6 @@ private:
 
 };
 
-	int addon_connect(CVideo& video, const std::string& server);
-
 } // namespace gui2
 
 #endif
