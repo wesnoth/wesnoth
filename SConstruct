@@ -110,7 +110,7 @@ if env["cachedir"]:
 # Omits the 'test' target 
 all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
                         "cutter", "exploder"])
-env.Default("all")
+env.Default(["wesnoth", "wesnothd"])
 
 env.TargetSignatures('content')
 
@@ -976,6 +976,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 )
 
         env.Alias("pot-update", pot)
+        env.Alias("pot-update", "translations")
 
 if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
