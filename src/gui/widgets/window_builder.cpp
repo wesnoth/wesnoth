@@ -249,7 +249,7 @@ twidget* tbuilder_button::build() const
 {
 	tbutton *button = new tbutton();
 
-	button->set_definition(id);
+	button->set_id(id);
 	button->set_definition(definition);
 	button->set_label(label);
 
@@ -269,7 +269,7 @@ twidget* tbuilder_label::build() const
 {
 	tlabel *tmp_label = new tlabel();
 
-	tmp_label->set_definition(id);
+	tmp_label->set_id(id);
 	tmp_label->set_definition(definition);
 	tmp_label->set_label(label);
 
@@ -283,7 +283,7 @@ twidget* tbuilder_text_box::build() const
 {
 	ttext_box *text_box = new ttext_box();
 
-	text_box->set_definition(id);
+	text_box->set_id(id);
 	text_box->set_definition(definition);
 	text_box->set_label(label);
 
