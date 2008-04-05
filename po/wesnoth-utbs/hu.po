@@ -1,11 +1,16 @@
+# translation of wesnoth-utbs.pot to Hungarian
+# Hungarian translation for Battle for Wesnoth package.
+# Copyright (C) 2008 Wesnoth development team
+# This file is ditributed under the same license as the Battle for Wesnoth package.
 #
+# Pintér Csaba <piere-d-siorac@freemail.hu>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: wescamp-i 18n\n"
+"Project-Id-Version: hu-utbs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:29+0100\n"
-"PO-Revision-Date: 2007-03-18 16:52+0100\n"
-"Last-Translator: Soltész Adrián <majominia@gmail.com>\n"
+"PO-Revision-Date: 2008-04-04 17:28+0200\n"
+"Last-Translator: Pintér Csaba <piere-d-siorac@freemail.hu>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,12 +20,12 @@ msgstr ""
 #. [campaign]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:14
 msgid "Under the Burning Suns"
-msgstr "A tűző nap alatt (angol)"
+msgstr "A tűző nap alatt (nagyrészt angol)"
 
 #. [campaign]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
 msgid "UtBS"
-msgstr ""
+msgstr "Atna"
 
 #. [unit]: race=elf
 #. [campaign]
@@ -37,7 +42,7 @@ msgstr "(Normál)"
 #. [campaign]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:21
 msgid "(Challenging)"
-msgstr "(Kihívás)"
+msgstr "(Kihívást jelentő)"
 
 #. [unit]: race=elf
 #. [campaign]
@@ -48,8 +53,9 @@ msgstr "Sivatagi őrző"
 
 #. [campaign]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:22
+#, fuzzy
 msgid "(Nightmare)"
-msgstr ""
+msgstr "(Nehéz)"
 
 #. [unit]: race=elf
 #. [campaign]
@@ -60,7 +66,6 @@ msgstr "Sivatagi csavargó"
 
 #. [campaign]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
 "ruins of fallen empires. Lead your people out of the desert on an epic "
@@ -70,32 +75,35 @@ msgid ""
 msgstr ""
 "A lepusztult jövőben tündék kis csoportja próbál túlélni a bukott birodalom "
 "romjai között. Vezesd át a sivatagon néped ebben az epikus utazásban, hogy "
-"találjatok egy új otthont. "
+"találjatok egy új otthont.\n"
+"\n"
+"(Profi szint, 11 pálya, néhány átépítés alatt)\n"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:32
 msgid "Campaign Design"
-msgstr ""
+msgstr "Hadjárat tervezés"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:41
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Hadjárat karbantartás"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:50
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Illusztráció és grafikai tervezés"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:86
+#, fuzzy
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Vegyes"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:99
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr ""
+msgstr "Külön köszönet mindazoknak, akiket elfelejtettem megemlíteni."
 
 #. [scenario]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:8
@@ -126,7 +134,7 @@ msgid ""
 "homeland in the Great Southern Desert. I write this story so that our "
 "descendants may know of our travels, and remember the sacrifices we made."
 msgstr ""
-"Ez a Quenothi tündék vándorlásának krónikája, akik a Nagy Déli Sivatagból "
+"Ez a Quenoth tündék vándorlásának krónikája, akik a Nagy Déli Sivatagból "
 "indulak el útjukra. Azért írom le e történetet, hogy utódaink emlékezzenek "
 "rá, hogy tudják, milyen áldozatokat kellett hoznunk."
 
@@ -205,8 +213,9 @@ msgstr "Nym"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:286
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:436
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/prestart.cfg:9
+#, fuzzy
 msgid "Starting Objectives:"
-msgstr ""
+msgstr "Kezdeti Célok:"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:171
@@ -222,49 +231,47 @@ msgstr "Mengmented a túlélő tündéket"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1742
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/prestart.cfg:23
 msgid "Death of Kaleh, Nym, Garak or Zhul"
-msgstr "Kaleh, Nym, Garak vagy Zul meghal"
+msgstr "Kaleh, Nym, Garak vagy Zul elesik"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:198
 msgid "Lrea"
-msgstr ""
+msgstr "Lrea"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:199
-#, fuzzy
 msgid "Danu"
-msgstr "Darius"
+msgstr "Danu"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:200
 msgid "Hamuil"
-msgstr ""
+msgstr "Hamuil"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:201
 msgid "Vemuil"
-msgstr ""
+msgstr "Vemuil"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:202
 msgid "Frea"
-msgstr ""
+msgstr "Frea"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:203
 msgid "Piyru"
-msgstr ""
+msgstr "Piyru"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:204
-#, fuzzy
 msgid "Anioh"
-msgstr "Anarion"
+msgstr "Anioh"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:205
 msgid "Taliu"
-msgstr ""
+msgstr "Taliu"
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:214
@@ -606,10 +613,11 @@ msgstr ""
 #. [unit]: type=Cuttle Fish, description=Deep One
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:769
 msgid "Deep One"
-msgstr ""
+msgstr "Kalmárhal"
 
 #. [unit]: type=Cuttle Fish, description=Deep One
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:770
+#, fuzzy
 msgid ""
 "The Deep Ones are gigantic aquatic monsters that lurk in the dark places of "
 "the world. Rarely do they come to the surface, and when they do the best way "
@@ -617,6 +625,10 @@ msgid ""
 "grab their opponents with strong tentacles, or spit a poisonous black ink "
 "from a distance."
 msgstr ""
+"A Kalmárhalak olyan óriási vízi szörnyek, amik  a világ sötét helyeiken "
+"leselkednek. Ritkán jönnek a felszínre, viszont ha megteszik, akkor a parton "
+"kell maradnunk, hogy túléjük velük a találkozást. Erős csápjaikkal "
+"megragadják az áldozatukat, vagy mérgező fekete tintájukkal köpik le őket."
 
 #. [message]: description=Deep One
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:800
@@ -851,7 +863,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1193
-#, fuzzy
 msgid "Pythos"
 msgstr "Pythos"
 
@@ -1251,7 +1262,6 @@ msgstr ""
 
 #. [message]: description=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:309
-#, fuzzy
 msgid ""
 "I've seen the ancient remains of stone castles and markers in the sands. The "
 "paths of the ancients may serve us yet again. If we follow the paths from "
@@ -1291,13 +1301,14 @@ msgid ""
 "regain full attack strength and some of the lost hitpoints."
 msgstr ""
 "Néhány napszakon (Hajnal, Reggel, Dél, Délután és Szürkület) játszódó körök "
-"végén a sivatagon, úton, romokon vagy dűnéken tartózkodó egységek sérülnek. "
-"Az életpontjuk így egyig csökkenhet. Minden kör kezdetén az óázisokban "
-"(sekéklyvíz) tartózkodó egységek visszanyernek 8 életpontot. "
+"végén a sivatagon, úton, romokon vagy dűnéken tartózkodó egységek sérülnek a "
+"szomjúságtól. Minden körben a szomjúság csökkenti az egység sebzését és "
+"életpontjait, amit a sámánok és a druidák sem gyógyíthatják meg. Egyedül egy "
+"oázis (sekély víz) adja vissza az egység teljes sebzését és életpontjai egy "
+"részét. "
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:326
-#, fuzzy
 msgid ""
 "Kaleh, be careful you don't recruit too many guards to go with us. I doubt "
 "we're going to find any other villages out in the sands, so the income that "
@@ -1305,7 +1316,7 @@ msgid ""
 "more experienced they often require more support, so we don't want to run "
 "out of supplies halfway across the desert."
 msgstr ""
-"És Kaleh, ne toboroz túl sok egységet. Nem hinném, hogy találunk falvakat a "
+"Kaleh, ne toboroz túl sok egységet. Nem hinném, hogy találunk falvakat a "
 "pusztában, úgyhogy a mostani bevételünkkel kell végigjutni a sivatagon. "
 "Emlékezz, hogy tapasztalt embereinkre később is számíthatunk, több támogatás "
 "is kell, úgyhogy nem lenne jó kifogyni az összes pénzből."
@@ -1317,14 +1328,14 @@ msgstr "Huh, nemsokára elérjük a Sziklaormot, úgyhogy: Előre!"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:572
-#, fuzzy
 msgid "thirst"
-msgstr "tövisek"
+msgstr "szomjúság"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:586
+#, fuzzy
 msgid "refreshed"
-msgstr ""
+msgstr "Felfrissült"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:637
@@ -1343,25 +1354,33 @@ msgstr "A körök végén nem kap életpont levonást a sivatagban ez az egység
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:693
+#, fuzzy
 msgid "Wait. I think I spotted something ahead of us..."
-msgstr ""
+msgstr "Várj. Mintha látnék valamit elöttünk..."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:697
+#, fuzzy
 msgid "What? I don't see a thing."
-msgstr ""
+msgstr "Mit? Én nem látok semmit."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:701
+#, fuzzy
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgstr ""
+"Látod azokat a fénylő pontokat? Skorpiók! Hatalmasak! Egy egész fészekre "
+"való!"
 
 #. [message]: description=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:708
+#, fuzzy
 msgid ""
 "Do you want us to fight? We can still avoid them, but they are between us "
 "and the next oasis."
 msgstr ""
+"Harcolni akarsz velük? Még elkerülhetjük őket, de pont közöttünk és a "
+"következő oázis között vannak."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:725
@@ -1370,7 +1389,6 @@ msgstr "Skorpiók! Ráleltünk a fészkükre!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:759
-#, fuzzy
 msgid ""
 "The scorpions were devouring some poor person's body. There doesn't seem to "
 "be much of him or her left, but wait...what's this? It looks like a tiny "
@@ -1379,11 +1397,11 @@ msgid ""
 "suffer from thirst or hunger, nor cold, nor heat. I've heard tales of such "
 "magical items, and we can certainly use it now."
 msgstr ""
-"A skorpiók felfaltak egy szerencsétlen embert... A legnagyobb rész, ami "
-"maradt belőle, a bal oldala. De várj... mi az ott? Egy kis arany gyűrű... És "
-"úgy látom, tünde rúnák tarkítják. Ez a Vándorok Gyűrűje! Aki viseli, annak "
-"nem kell enni, inni, jól megvan hidegben és melegben egyaránt. Rengeteg "
-"legendát hallottam róla, és pont jókor találjuk meg."
+"A skorpiók felfaltak egy szerencsétlen embert... Nem sok maradt belőle. De "
+"várj... mi az ott? Egy kis arany gyűrű... És úgy látom, tünde rúnák "
+"tarkítják, de alig olvasható. Ez a Vándorok Gyűrűje! Aki viseli, az nem "
+"szenved sem éhségtől, sem szomjúságtól, jól megvan hidegben és melegben "
+"egyaránt. Rengeteg legendát hallottam róla, és pont jókor találjuk meg."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:764
@@ -1396,7 +1414,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:789
-#, fuzzy
 msgid ""
 "Look, an oasis! Its refreshing water will allow our people to regain "
 "strength and rest safely on the grass during the heat of the day."
@@ -1407,33 +1424,41 @@ msgstr ""
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:807
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:809
+#, fuzzy
 msgid "Hunting Ogre"
-msgstr ""
+msgstr "Óriás vadászat"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:851
+#, fuzzy
 msgid ""
 "Shh... Ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
 msgstr ""
+"Pssszt..Óriások elöttünk, a dűne mögött. A következő oázist csak rajtuk "
+"keresztül érhetjük el."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:855
+#, fuzzy
 msgid "No chance to sneak around?"
-msgstr ""
+msgstr "Semmi esély rá, hogy elosonjunk mellettük?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:859
+#, fuzzy
 msgid ""
 "We would have to cover extra distance in difficult terrain. If you want to "
 "bypass them I suggest going straight north in the hopes of finding an oasis "
 "there."
 msgstr ""
+"Jobban el kell tőlük távolodnunk, nagyon nehéz terepen. Ha el akarjuk "
+"kerülni őket, akkor egyenesen északra kell mennünk, és reméljük van arra "
+"oázis."
 
 #. [message]: type=Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:874
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:898
-#, fuzzy
 msgid "Fresh meat!"
 msgstr "Friss hús!"
 
@@ -1441,7 +1466,7 @@ msgstr "Friss hús!"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:893
 #, fuzzy
 msgid "Ogre ambush!"
-msgstr "Óriás támadás!"
+msgstr "Óriás rajtaütés!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:903
@@ -1454,7 +1479,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:926
-#, fuzzy
 msgid ""
 "That's the last of them. This looks like a hunting party, they must have a "
 "camp around here somewhere."
@@ -1464,45 +1488,58 @@ msgstr ""
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:940
+#, fuzzy
 msgid ""
 "Hey! Look there, they dropped something... A stone bottle, sealed. I wonder "
 "what's inside..."
 msgstr ""
+"Hé! Nézz oda! Elejtettek valamit...Egy lezárt kőkorsó. Vajon mi lehet "
+"benne..."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:953
+#, fuzzy
 msgid "Nym! No! Don't open..."
-msgstr ""
+msgstr "Ne!! Ne nyisd ki..."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:963
+#, fuzzy
 msgid ""
 "Too late. And it's just sand inside. Not worth... Whoa! What's happening?!"
 msgstr ""
+"Túl késő. Ráadásul csak homok van benne. Nem érte meg. Á! Mi a fene folyik "
+"itt?"
 
+# Nem tudom, hogy melyik egységről van szó. A legjobb tippem a sártipró
 #. [unit]: type=Dust Devil, description=Dust Devil
 #. [unit]: race=monster
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:969
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:4
+#, fuzzy
 msgid "Dust Devil"
-msgstr ""
+msgstr "Sártipró"
 
 #. [message]: description=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:982
+#, fuzzy
 msgid "It's a dust devil, but I have never seen one so small before."
-msgstr ""
+msgstr "Ez egy Sártipró, de még nem láttam ilyen kicsit."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1026
+#, fuzzy
 msgid "It seems to like you, looks like you just got yourself a pet."
-msgstr ""
+msgstr "Úgy tűnik kedvel téged, szereztél magadnak egy háziállatot."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1031
+#, fuzzy
 msgid ""
 "Girl, I told you not to open it. Let's go, I'd really like to get to an "
 "oasis soon."
 msgstr ""
+"Mondtam, hogy ne nyisd ki. Menjünk, szeretnék mihamarabb egy oázisba érni."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1067
@@ -1524,7 +1561,9 @@ msgstr "Fekete Kéz Ruffian "
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
-msgstr "Ez a mi ozáisunk! De a ti véretekkel fogjuk megöntözni!"
+msgstr ""
+"Én még azt hittem, hogy ez egy unalmas őrjárat lesz. Ti ott! Tündék! Ez a mi "
+"ozáisunk és a ti véretekkel fogjuk megöntözni!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1104
@@ -1666,10 +1705,13 @@ msgstr "Őr"
 
 #. [message]: description=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1555
+#, fuzzy
 msgid ""
 "The most hated living in my castle! To me! To me stray souls of the deserts! "
 "Let's cleanse this pollution!"
 msgstr ""
+"Legnagyobb ellenségeim a kastélyomban! Hozzám! Hozzám sivatag kóbor "
+"szellemei! Írtsuk ki őket!"
 
 #. [message]: description=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1560
@@ -1679,8 +1721,7 @@ msgid ""
 "more powerful than before. Death reigns eternal, your scorched bones and "
 "lifeless body will join my host."
 msgstr ""
-"Soha többé nem fogják pogányok beszennyezni a váram! Várj egy kicsit... "
-"emlékszem rátok, tündék! Azt hittétek, legyőztetk, de erősebb lettem, mint "
+"Emlékszem rátok, tündék! Azt hittétek, legyőztetek, de erősebb lettem, mint "
 "valaha! A halál mindenható! Hamarosan a szétégetett csontjaid egy új mestert "
 "fognak követni!"
 
@@ -1693,12 +1734,12 @@ msgstr ""
 
 #. [message]: description=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1579
+#, fuzzy
 msgid "Nooo... (fades)"
-msgstr ""
+msgstr "Nem..."
 
 #. [message]: description=$speaking_unit.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1589
-#, fuzzy
 msgid "Searching his castle, we found a chest filled with gold."
 msgstr "Átkutattuk a várat, és egy ládára leltünk, benne $goldreward arannyal."
 
@@ -1779,7 +1820,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1738
 msgid "Defeat Outlaw Leader"
-msgstr "Megölöd a törvényen kívüli vezért"
+msgstr "Legyőzöd a törvényen kívüli vezért"
 
 #. [unit]: description=Thorn, type=Outlaw
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1750
@@ -1981,8 +2022,9 @@ msgstr ""
 
 #. [else]: (role=LostSoul, (role=LostSoul, (role=LostSoul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2420
+#, fuzzy
 msgid "Lost Soul"
-msgstr ""
+msgstr "Elveszett Lélek"
 
 #. [message]: description=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2439
@@ -2006,15 +2048,19 @@ msgstr "A forró nap és a gyülekező élőholtak nem túl jó kombináció."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2458
+#, fuzzy
 msgid "You come and rise again, spirits? Have we not defeated you before?"
-msgstr ""
+msgstr "Újra feltámadtak a lelkek? Nem győztük már le őt?"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2463
+#, fuzzy
 msgid ""
 "These lost souls cannot hold onto anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
 msgstr ""
+"Az elveszett lelkeknek nem mardt másuk, mint rég elmúlt életük emlékei. "
+"Éjszakáról éjszakára újra és újra zaklatni fognak."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2521
@@ -2212,7 +2258,6 @@ msgstr "De az embereink  veszélyben vannak, az élőholtak megölik őket!"
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:140
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:145
-#, fuzzy
 msgid ""
 "There's no way we can marshal our people to escape the battle in time. We "
 "must protect our people's $village_counter encampments from the undead."
@@ -2386,7 +2431,7 @@ msgstr "Megölöd a Fertőzött Garakot (vagy)"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:271
 msgid "Defeat remaining Undead Lord"
-msgstr "Legyőzöd az Élőholt Vezért."
+msgstr "Legyőzöd az Élőholt Vezért"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:276
@@ -2420,7 +2465,7 @@ msgstr "Kevesebb, mint 6 falud van"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:908
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:1066
 msgid "Death of Kaleh, Nym or Zhul"
-msgstr "Kaleh, Nym vay Zhul meghal"
+msgstr "Kaleh, Nym vay Zhul elesik"
 
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:295
@@ -2447,8 +2492,9 @@ msgstr ""
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:305
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:266
+#, fuzzy
 msgid "A token to remember us by..."
-msgstr ""
+msgstr "Egy emléktárgy, hogy emlékezzenek ránk..."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:310
@@ -2459,8 +2505,9 @@ msgstr "Aaaauuugggghhhh!"
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:315
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:274
+#, fuzzy
 msgid "He just collapsed!"
-msgstr ""
+msgstr "Ő egyszerűen összeesett!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:367
@@ -2478,25 +2525,33 @@ msgstr "Vége. Nincs tovább."
 #. [message]: description=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:387
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:237
+#, fuzzy
 msgid ""
 "There's too many of them and the night is almost gone. Pull back you "
 "wretches, pull back!"
 msgstr ""
+"Túl sokan vannak és az éjszaka már majdnem elmúlt. Vissza ti átkozottak, "
+"vissza!"
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:394
+#, fuzzy
 msgid ""
 "I can see the first rays of Naia shining over the horizon. She never looked "
 "so beautiful. The undead forces have crumbled into dust and the remaining "
 "orcs are retreating with the dawn. But what of Garak?"
 msgstr ""
+"Látom Naia első sugarait a horizonton. Sose nézett ki szebben. Hajnal "
+"beálltával az élőholt csapatok porrá váltak és a maradék orkok "
+"visszavonultak. De mi van Garak-val?"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:399
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:77
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:366
+#, fuzzy
 msgid "He's...He's still breathing!"
-msgstr ""
+msgstr "Ő...még lélegzik!"
 
 #. [message]: description=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:404
@@ -2512,10 +2567,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:120
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:299
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:379
+#, fuzzy
 msgid ""
 "From the sands he came, to the sands he will return. We remember and honor "
 "his sacrifice, and I vow that his death will not be in vain. "
 msgstr ""
+"Porból lettünk és porrá leszünk. Emlékezni és becsülni fogjuk áldozatát és "
+"esküszöm, hogy halála nem volt hiába való."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:420
@@ -2530,23 +2588,29 @@ msgstr "Viszlát, öreg barátom, Eloh lángja világítsa meg utad."
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:128
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:307
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:387
+#, fuzzy
 msgid ""
 "He was as brave and valiant a fighter as I have ever seen in my travels."
 msgstr ""
+"Ő volt a legderekabb és  legbátorabb harcos, akit utázom során valaha is "
+"láttam."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:430
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:132
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:311
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:391
+#, fuzzy
 msgid ""
 "He was a bastard at times.... But...but why did he have to die? It...it just "
 "doesn't make sense. "
 msgstr ""
+"Néha kibírhatatlan volt...de...miért kellett meghalnia? Ennek nincs értelme."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:447
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:245
+#, fuzzy
 msgid ""
 "That was a very brave thing you did, Kaleh, defeating both of those Undead "
 "Lords. It took great courage and strength. Because of your daring attack, we "
@@ -2554,6 +2618,10 @@ msgid ""
 "fewer of our people died than would have if we had had to wait out the long "
 "night."
 msgstr ""
+"Bátor tett volt, hogy mindkét élőholt vezért legyőzted. Nagy bátorság és erő "
+"kellett hozzá. Merész támadásodnak köszönhetően nem kellett várnunk, hogy a "
+"hajnal megmentsen minket. A megmentőnk vagy. Sokkal többen haltak volna meg, "
+"ha meg kellett volna várnunk a hajnalt."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:452
@@ -2561,6 +2629,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:146
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:249
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:405
+#, fuzzy
 msgid ""
 "Though we saved almost all our people this time, we won't always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2568,6 +2637,11 @@ msgid ""
 "costly to recruit new warriors. It would be wise to stockpile gold against "
 "this eventuality."
 msgstr ""
+"Habár népünk nagy részét sikerült megmenteni ez alkalommal. Nem leszünk "
+"mindig ilyen szerencsések. Azok a tündék, akik szembe szálltak veled, "
+"visszafognak térni, ha látják csökkennek a harcosaink száma. Egyre "
+"költségesebbé fog válni új harcosokat toborozni. Bölcs lenne kis aranyat "
+"gyűjteni erre az eshetőségre."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:473
@@ -2594,6 +2668,7 @@ msgstr "Igen, de milyen áron?"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:507
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:167
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:426
+#, fuzzy
 msgid ""
 "Though we saved almost all our people this time, we won't always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2601,11 +2676,17 @@ msgid ""
 "costly to recruit new warriors. It would be wise to stockpile gold against "
 "this eventuality."
 msgstr ""
+"Habár népünk nagy részét sikerült megmenteni ez alkalommal. Nem leszünk "
+"mindig ilyen szerencsések. Azok a tündék, akik szembe szálltak veled, "
+"visszafognak térni, ha látják csökkennek a harcosaink száma. Egyre "
+"költségesebbé fog válni új harcosokat toborozni. Bölcs lenne kis aranyat "
+"gyűjteni erre az eshetőségre."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:526
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:180
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:439
+#, fuzzy
 msgid ""
 "We have suffered losses, but we we are not broken yet. We have saved most of "
 "our people tonight. But while elves who have fought with you in the past "
@@ -2613,11 +2694,17 @@ msgid ""
 "become more and more costly to recruit new warriors. It would be wise to "
 "stockpile gold against this eventuality."
 msgstr ""
+"Veszteségeket szenvedtünk, de nem törtünk meg. Majdnem mindenkit "
+"megmentettünk ma este. Azok a tündék, akik szembe szálltak veled, "
+"visszafognak térni, ha látják csökkennek a harcosaink száma. Egyre "
+"költségesebbé fog válni új harcosokat toborozni. Bölcs lenne kis aranyat "
+"gyűjteni erre az eshetőségre."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:538
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:187
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:446
+#, fuzzy
 msgid ""
 "We have suffered grievous losses, but we we are not broken yet. Long will "
 "this slaughter be remembered by our people. Where was Eloh during the "
@@ -2626,33 +2713,46 @@ msgid ""
 "become more and more costly to recruit new warriors. It would be wise to "
 "stockpile gold against this eventuality."
 msgstr ""
+"Fájdalmas veszteségeket szenvedtünk, de még nem törtünk meg. Ez a "
+"mészárlásra mindenki emlékezni fog. Hol volt Eloh a sötétség alatt? Attól "
+"félek, hogy azok a tündék, akik szembe szálltak veled, visszafognak térni, "
+"ha látják csökkennek a harcosaink száma. Egyre költségesebbé fog válni új "
+"harcosokat toborozni. Bölcs lenne kis aranyat gyűjteni erre az eshetőségre."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:556
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:198
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:457
+#, fuzzy
 msgid ""
 "All this death and destruction. What were those shades arguing over? Was "
 "this all just some sort of demented game?"
 msgstr ""
+"Ez halál és pusztulás. Miről vitatkoznak azok az árnyak? Mindez csupán egy "
+"őrült játék lett volna?"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:561
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:202
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:461
+#, fuzzy
 msgid ""
 "The lords of the dead are powerful and twisted indeed. Only Eloh knows the "
 "truth of what happened tonight."
 msgstr ""
+"A halál lordjai hatalmas és eltorzultak egyben. Eloh tudja csak mi történ ma."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:566
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:206
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:465
+#, fuzzy
 msgid ""
 "I don't want to be here tomorrow night to find out. The hills to the north "
 "are close. Let's be far away before another nightfall."
 msgstr ""
+"Nem szeretnék itt lenni holnap este, hogy kiderítsem. Az északi dombok közel "
+"vannak. Legyünk minnél messzebb az újabb éjszaka beállta elött."
 
 #. [side]: description=Azkotep, type=Spectre
 #. [then]
@@ -2675,13 +2775,13 @@ msgstr "Ystara"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:799
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/prestart.cfg:11
 msgid "Survive Until Dawn (or)"
-msgstr "Kibírod hajnalig (vagy)"
+msgstr "Kitartasz hajnalig (vagy)"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:804
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/prestart.cfg:15
 msgid "Defeat all Undead Leaders"
-msgstr "Megölöd az Élőhalott vezéreket"
+msgstr "Legyőzöd az Élőhalott vezéreket"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:940
@@ -2701,8 +2801,9 @@ msgstr "Grak"
 
 #. [message]: description=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:986
+#, fuzzy
 msgid "Curse you! I will not forget this. You will rue this night."
-msgstr ""
+msgstr "Átok rád! Ezt nem fogom elfelejteni. Meg fogod bánni ezt az estét."
 
 #. [message]: description=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1009
@@ -2728,7 +2829,7 @@ msgstr "Ganthos"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/orc_party.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/orc_party.cfg:63
 msgid "Goblin Raider"
-msgstr "Goblin Portyázó"
+msgstr "Kobold Portyázó"
 
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1072
@@ -2761,18 +2862,24 @@ msgstr "Ork Portyázó"
 #. [message]: description=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1124
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/orc_party.cfg:105
+#, fuzzy
 msgid ""
 "What's this on our borders? Stinkin' elves and more undead? We'll teach them "
 "a lesson they won't soon forget. Attack!"
 msgstr ""
+"Mi ez a határunkon? Büdös tündék és még több élőholt? Olyan leckét adunk "
+"nekik, amit soha nem felejtenek el. Támadás!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1129
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/orc_party.cfg:109
+#, fuzzy
 msgid ""
 "If those raiders capture any of our encampments, I fear our people's fate "
 "will be just as bad as if it was captured by the undead."
 msgstr ""
+"Ha azok a lovasok elfoglalják a táborunkat, akkor félek népünk sorsa "
+"ugyanolyan sanyarúvá válik, mintha az élőholtak foglalnák el."
 
 #. [scenario]
 #. [then]
@@ -2794,48 +2901,61 @@ msgstr "Fertőzött Garak"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1284
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1308
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1340
+#, fuzzy
 msgid "I can just barely see the sun poking over the dunes. It is almost dawn!"
-msgstr ""
+msgstr "Éppen hogy látom a nap sugarait a dombok fölött. Mindgyárt hajnalodik!"
 
 #. [message]: description=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1289
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:56
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:511
+#, fuzzy
 msgid ""
 "No! This contest is not over yet, Azkotep. I shall show you a taste of my "
 "true power."
 msgstr ""
+"Nem! A mérkőzésnek még nincs vége, Azkotep. Most egy kis ízelítőt adok neked "
+"a  hatalmamból."
 
 #. [message]: description=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1313
+#, fuzzy
 msgid ""
 "No, I shall have my revenge. I shall show you that darkness is strongest "
 "just before dawn. I call upon the lord of death and decay, grant me my "
 "vengeance!"
 msgstr ""
+"Nem, nekem kellett volna bosszút állnom. Még hajnal elött megmutatom, hogy a "
+"sötétség erősebb. Megidézem a Halál istenét, segítse bosszúmat!"
 
 #. [message]: description=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1345
+#, fuzzy
 msgid ""
 "No, I shall have my revenge. I shall show you that darkness is strongest "
 "just before dawn. I call upon the powers of disease and despair, grant me my "
 "vengeance!"
 msgstr ""
+"Nem, nekem kellett volna bosszút állnom. Még hajnal elött megmutatom, hogy a "
+"sötétség erősebb.  Romlás és betegség erői, segítsétek bosszúmat!"
 
 #. [message]: description=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1377
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1413
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:346
+#, fuzzy
 msgid ""
 "Hah, now you have learned the flesh is always weaker than the powers of the "
 "undead."
 msgstr ""
+"Most megtanultad, hogy a hús mindig gyengébb, mint az élőholtak hatalma."
 
 #. [message]: description=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1395
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:352
+#, fuzzy
 msgid "My undead zombies shall always defeat the living."
-msgstr ""
+msgstr "Az én élőholt zombiajim mindig legyőzik az élőket."
 
 #. [message]: description=Ystara
 #. [message]: description=Azkotep
@@ -2843,10 +2963,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1461
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1544
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:33
+#, fuzzy
 msgid ""
 "You think you have defeated me, don't you? Foolish boy, I shall assume a new "
 "form more powerful and horrible than you could ever imagine!"
 msgstr ""
+"Azt hiszed legyőztél engem, ugye? Ostoba fiú, Olyan hatalmasabb és "
+"borzalmasabb formában fogok visszatérni, amit még elképzelni se tudsz."
 
 #. [message]: description=Azkotep
 #. [message]: description=Ystara
@@ -2854,50 +2977,63 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1466
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1549
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:37
+#, fuzzy
 msgid ""
 "How dare you interfere in our contest! I did not need your help. I shall "
 "teach you not to cross a lord of darkness."
 msgstr ""
+"Hogy merészelsz beleavatkozni a mérkőzésünkbe! Nincs szükségem a "
+"segítségedre. Megtanítalak, hogy ne avatkozz a sötétség urának dolgába."
 
 #. [message]: description=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1482
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1565
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:64
+#, fuzzy
 msgid ""
 "See, I told you I was more powerful. This game is over, now I can leave this "
 "shell of a body."
 msgstr ""
+"Látod, mondtam, hogy én vagyok az erősebb. A játéknak vége, most már, "
+"elhagyhatom ezt a testet."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1653
+#, fuzzy
 msgid "They're raising the corpses of our slain people! What a horrible fate!"
-msgstr ""
+msgstr "Feltámasztják a lemészárolt emberek testét! Micsoda borzalmas sors!"
 
 #. [message]: description=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1658
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/destroy_tent.cfg:62
+#, fuzzy
 msgid "Then we shall have to give them a proper cremation."
-msgstr ""
+msgstr "Meg kéne adnunk a kellő végtisztességet."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1701
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/destroy_tent.cfg:89
+#, fuzzy
 msgid ""
 "Too many of our people have been killed. We will surely be overwhelmed by "
 "the undead now. All is lost!"
 msgstr ""
+"Túl sokan haltak meg közülünk! Bizonyára lerohannak az élőholtak. Minden "
+"elveszett!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1717
+#, fuzzy
 msgid ""
 "This darkness will never end, and the undead will soon overwhelm us. I'm "
 "sorry Garak, we couldn't save you."
 msgstr ""
+"A sötétségnek sosincs vége, és az élőholtak, hamarosan eltipornak. Sajnálom "
+"Garak, hogy nem tudtunk megmenteni."
 
 #. [scenario]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night_alt.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night_alt.cfg:28
-#, fuzzy
 msgid "A Stirring in the Night (development branch)"
 msgstr "Mozgás az éjszakában"
 
@@ -3006,10 +3142,13 @@ msgstr "Kaleh eléri a tárnát a térkép északi peremén."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:578
+#, fuzzy
 msgid ""
 "Those mountains are huge! I never thought they would be so big. And what's "
 "that white stuff on the tops of the peaks?"
 msgstr ""
+"Ezek a hegyek hatalmasak! Sose hittem volna, hogy ekkorák lesznek. Mi a fene "
+"az a fehér valami a hegycsúcsokon?"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:583
@@ -3024,19 +3163,24 @@ msgstr ""
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:588
+#, fuzzy
 msgid ""
 "I had another vision last night, Eloh told me that we had to continue north, "
 "but instead of trying to go over the mountains, she said that we had to go "
 "underneath them."
 msgstr ""
+"Este újabb látomásom volt. Eloh azt mondta, hogy folytassuk utunkat észak "
+"felé, de nem a hegyeken keresztül, hanem alattuk."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:593
+#, fuzzy
 msgid "Underneath them? But how?"
-msgstr ""
+msgstr "Alattuk? Hogy?"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:598
+#, fuzzy
 msgid ""
 "Orcs and Goblins have been living here for hundreds of years and their "
 "network of tunnels and caves is more extensive than you might think. Who "
@@ -3044,9 +3188,15 @@ msgid ""
 "those frozen peaks. As much as I dislike those pitch-black caves, if we want "
 "to cross these mountains we may have no choice."
 msgstr ""
+"Az orkok és koboldok több száz éve élnek itt, az alagút hálózatuk sokkal "
+"nagyobb, mint ahogy hiszed. Ki tudja milyen mélyre hatoltak? Nem készültünk "
+"fel bejárni az összes alagutat. Én se szeretem ezeket a korom sötét "
+"barlangokat, de ha át akarunk kellni a hegyeken, akkor nincs más "
+"választásunk."
 
 #. [message]: description=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:603
+#, fuzzy
 msgid ""
 "Other creatures besides orcs dig tunnels in the earth. Long ago dwarves "
 "mined mountains such as these, and huge trolls like to hide in the deep dark "
@@ -3055,13 +3205,21 @@ msgid ""
 "mountains. I fear no darkness, and you won't be lacking a source of fire or "
 "light."
 msgstr ""
+"Orkok mellet más lények is ástak alagutakat. Réges régen törpök bányásztak "
+"az ilyen hegyekben és hatalmas trollok bújkáltak a sötétben a föld alatt. Ha "
+"az istened olyan mindentudó, mint ahogy hiszed Kaleh, akkor nem csodálkoznék "
+"ha nem lenne egy út ami átvisz a hegyek alatt. Nem félek a sötétségtől, nem "
+"fogod hiányolni a tűz és fény forrását."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:608
+#, fuzzy
 msgid ""
 "Well if we are going to go under these mountains, we're certainly going to "
 "have our hands full fighting all those orcs and goblins."
 msgstr ""
+"Nos, ha ezek a hegyek alá megyünk, biztos, hogy elfoglaltak lesznek a "
+"kezeink, míg ezekkel az orkokkal és koboldokkal harcolunk."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:613
@@ -3077,10 +3235,12 @@ msgstr ""
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:618
+#, fuzzy
 msgid ""
 "Strike hard and fast and also be careful--right, this is going to be fun."
-msgstr ""
+msgstr "Üss keményen, gyorsan és légy óvatos. Élvezetes lesz."
 
+# Nem tudom milyen egységre gondol
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:799
 msgid "Goblin Coward"
@@ -3102,8 +3262,9 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:875
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:877
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:878
+#, fuzzy
 msgid "Goblin Scout"
-msgstr ""
+msgstr "Kobold felderítő"
 
 #. [message]: description=Goblin Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:830
@@ -3112,13 +3273,15 @@ msgstr "Támadás!"
 
 #. [message]: description=Goblin Coward
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:836
+#, fuzzy
 msgid "Run away!"
-msgstr ""
+msgstr "Menekülj!"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:841
+#, fuzzy
 msgid "Goblins are so predictable."
-msgstr ""
+msgstr "A koboldok olyan kiszámíthatóak."
 
 #. [then]
 #. [scenario]
@@ -3153,29 +3316,37 @@ msgstr "Tavi Naga"
 
 #. [message]: description=Orac
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:933
+#, fuzzy
 msgid ""
 "Come forth, creatures of the lake! Fulfill the oaths you have made and help "
 "us drive these hated creatures from our lands."
 msgstr ""
+"Gyertek elő, tavak lényei! Teljesítsétek eskütöket és segítsetek kiűzni "
+"ezeket a lényeket a földünkről."
 
 #. [message]: description=Scylla
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:938
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1061
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1104
+#, fuzzy
 msgid "Sssslay them all! In the name of the ssscaled one!"
-msgstr ""
+msgstr "Öljétek meg mindet!"
 
 #. [message]: description=Panok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:964
+#, fuzzy
 msgid "These elves are stronger than we thought. Send for more reinforcements!"
-msgstr ""
+msgstr "Ezek a tündék erősebbek, mint ahogy hittük. Küldjetek még erősítést!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:969
+#, fuzzy
 msgid ""
 "How can he move that fast? He is faster than any goblin rider I have ever "
 "seen. It's almost unnatural."
 msgstr ""
+"Hogy tud ilyen gyorsan mozogni? Gyorsabb az összes kobold lovasnál, amit "
+"eddig láttam. Ez majdnem természetellenes."
 
 #. [message]: description=Panok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:984
@@ -3184,15 +3355,19 @@ msgstr "Gaagghhh!!!"
 
 #. [message]: description=$speaking_unit.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1007
+#, fuzzy
 msgid ""
 "Wait a minute. He was wearing a silver ring on one of his fingers. I think "
 "the ring might be magical. Maybe that's why he was moving so fast."
 msgstr ""
+"Várj egy percet. Egy ezüst gyűrűt visel az ujjain. Szerintem ez egy "
+"varázsgyűrű. Talán ezért volt olyan gyors."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1013
+#, fuzzy
 msgid "I think, Kaleh, that you should take the ring."
-msgstr ""
+msgstr "Úgy gondolom, Kaleh vedd föl a gyűrűt."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1018
@@ -3214,12 +3389,17 @@ msgstr ""
 #. [message]: description=Orac
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1056
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1099
+#, fuzzy
 msgid ""
 "The elves have killed Panok the goblin! The other goblins may flee to the "
 "caves, but we will not give up these hills without a fight. Come forth, "
 "creatures of the lake! Fulfill the oaths you have made and help us drive "
 "these hated creatures from our lands."
 msgstr ""
+"A tündék megölték Panok-ot a koboldot! A többi kobold a barlangokba "
+"menekült, de mi nem adjuk fel a dombot harc nélkül. Gyertek elő tavak "
+"lényei! Teljesítsétek eskütöket és segítsetek kiűzni ezeket a lényeket a "
+"területünkről."
 
 #. [object]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1133
@@ -3233,34 +3413,49 @@ msgstr "Ez a gyűrű növeli a max. sebességet eggyel."
 
 #. [message]: description=$explorer.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1172
+#, fuzzy
 msgid ""
 "Ugh! These tunnels are pitch black! It's as bad as fighting in a moonless "
 "night, and it stinks of orc filth. I can hardly think of a place I would "
 "less like to go into."
 msgstr ""
+"Ezek az alagutak szurok sötétek! Olyan, mint hold nélküli éjszakán harcolni, "
+"ráadásul a hely az ork szennytől bűzlik. Nem ismerek más helyet ahova ennél "
+"kevésbé  szivesebben mennék."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1178
+#, fuzzy
 msgid ""
 "We have no choice. We cannot cross over these mountains, so we must go "
 "beneath them. If the orcs skulk in their tunnels and block our way, we must "
 "enter their dark places and fight them, no matter what the conditions."
 msgstr ""
+"Nincs más választásunk. Nem tudunk átkellni a hegyeken, tehát alattuk kell "
+"átmennünk. Ha az ork semmittevők elállnánk az utunkat akkor meg kell "
+"küzdenünk velük, bármilyenek is a körülmények."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1183
+#, fuzzy
 msgid ""
 "Remember, Kaleh, it's nasty fighting underground. Marksmen and Sharpshooters "
 "who can shoot well anywhere will be invaluable, as will Captains and "
 "Marshals who can inspire our people."
 msgstr ""
+"Emlékezz Kaleh, veszélyes a földalatt harcolni. Mesterlövészek és Elit "
+"íjásszok, akik kiválóan lőnek felbecsülhetetlenek, úgy mint a Kapitányok és "
+"Marsallok, akik ösztönzik a harcosokat."
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1188
+#, fuzzy
 msgid ""
 "Also, any time you find a particularly tough orc blocking a passage, my "
 "fireballs can blast him quick enough."
 msgstr ""
+"Ráadásul, ha egy ork elállja az utadat a tűzlabdáim elég gyorsan el tudják "
+"intézni őt."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1246
@@ -3275,10 +3470,13 @@ msgstr ""
 
 #. [message]: description=$explorer.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1277
+#, fuzzy
 msgid ""
 "Looks like he's been squirreling away his stolen loot in this cave. Not that "
 "he had much. Must be hard times."
 msgstr ""
+"Úgy tűnik ebben a barlangban rejtette el a zsákmányát. Nem mintha sok lenne. "
+"Nehéz idők járhatnak."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1327
@@ -3294,60 +3492,78 @@ msgstr ""
 
 #. [option]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1329
+#, fuzzy
 msgid "I fear no creature, I will take the blade!"
-msgstr ""
+msgstr "Nem félek senkitől és semmitől,  majd én elveszem a pengét!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1339
+#, fuzzy
 msgid ""
 "The blade is chill to the touch and gives off a cold glow. I wonder how it "
 "came to be here."
 msgstr ""
+"A penge hideg tappintású és a hideg sugárzik belőle. Kiváncsi bagyok hogy "
+"került ide."
 
 #. [object]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1352
+#, fuzzy
 msgid "Cold Blade"
-msgstr ""
+msgstr "Fagy Penge"
 
 #. [object]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1353
+#, fuzzy
 msgid ""
 "The unit who wields this blade will deal cold damage with its melee attack."
 msgstr ""
+"Az egység, mely ezt a pengét viseli, fagy sebzést okoz a közelharc "
+"támadásainál."
 
 #. [command]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1364
+#, fuzzy
 msgid "Purple Abomination"
-msgstr ""
+msgstr "Bíbor Undor"
 
 #. [message]: description=Purple Abomination
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1371
+#, fuzzy
 msgid "I am an abomination, please kill me."
-msgstr ""
+msgstr "Én egy undor vagyok, kérlek ölj meg."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1378
+#, fuzzy
 msgid "I've seen some ugly creatures in my day, but that thing is just wrong."
-msgstr ""
+msgstr "Életem során számos ronda teremtményt láttam, de ez mindene túltesz."
 
 #. [message]: description=Purple Abomination
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1385
+#, fuzzy
 msgid "The voices say I have no choice, I must attack!"
-msgstr ""
+msgstr "A hang mondta, nincs más választásom, mint támadni!"
 
 #. [option]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1391
+#, fuzzy
 msgid "I don't like the sound of this. I'm out of here."
-msgstr ""
+msgstr "Nem tetszik ez a hang. Én megyek innen."
 
 #. [message]: description=$explorer.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1415
+#, fuzzy
 msgid ""
 "This is the end of the line. The water is too deep for me to continue any "
 "further. I'm freezing cold, wet, and I can't see a thing. I'm not exactly "
 "sure what I'm doing up here. Some strange influence made me want to come up "
 "here, but I don't know what made me think it could be of any good."
 msgstr ""
+"Itt az út vége. A víz túl mély, hogy tovább tudjak menni. Fázom, vizes "
+"vagyok, nem látok semmit. Nem vagyok biztos benne, hogy mit keresek itt. "
+"Valami azt sugalta, hogy ide kell jönnöm. Nem tudom, mi késztetett arra, "
+"hogy azt gondoljam jól teszem."
 
 #. [unit]: type=Dark Assassin3, description=Cloaked Figure
 #. [unit]: type=Dark Assassin1, description=Cloaked Figure
@@ -3360,30 +3576,37 @@ msgstr "Köpenyes Alak"
 
 #. [message]: description=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1524
+#, fuzzy
 msgid "Kaleh, I am death incarnate."
-msgstr ""
+msgstr "Kaleh, I vagyok a halál megtestesítője."
 
 #. [message]: description=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1530
+#, fuzzy
 msgid "And I shall avenge all those you have killed!"
-msgstr ""
+msgstr "Most bosszút állok mindazokért, akiket megöltél!"
 
 #. [message]: description=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2064
+#, fuzzy
 msgid "I promise we shall meet again."
-msgstr ""
+msgstr "Ígérem még találkozunk."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2075
+#, fuzzy
 msgid "He just disappeared. That's odd."
-msgstr ""
+msgstr "Egyszerűen eltűnt. Ez furcsa."
 
 #. [message]: description=$unit_var.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2099
+#, fuzzy
 msgid ""
 "Huh? What happened? Must have been another stupid elf trick! Well it won't "
 "stop me from killing you!"
 msgstr ""
+"Huh? Mi történt? Biztos még egy ostoba tünde trükk! Nos ez nem fog "
+"visszatartani, hogy megöljelek!"
 
 #. [message]: description=$unit_var.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2124
@@ -3392,33 +3615,43 @@ msgstr "Mi történt? Hol vagyok?"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2129
+#, fuzzy
 msgid "Where did you go?"
-msgstr ""
+msgstr "Hova tűntél?"
 
 #. [message]: description=$unit_var.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2134
+#, fuzzy
 msgid ""
 "I don't know, someone just knocked me out. I didn't get a good look at them."
-msgstr ""
+msgstr "Nem tudom, valaki leütött. Nem tudtam megnézni ki volt."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2227
+#, fuzzy
 msgid ""
 "This passage seems different from the other tunnels and caves. It is wide "
 "and smooth and leads sharply downwards. I bet this was the way that Eloh was "
 "talking about."
 msgstr ""
+"Az átjáró különbözött a többi alagúttól és barlangtól. Ez széles, sima és "
+"egyenesen lefelé vezet. Fogadok, hogy ez az az út, amiről Eloh beszélt."
 
 #. [message]: description=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2232
+#, fuzzy
 msgid ""
 "This is no natural passage, and the walls are too well carved and smooth to "
 "be made by orcs. I wouldn't be surprised if this was once carved out by "
 "dwarves. I wonder if there are any still left in these mountains..."
 msgstr ""
+"Ez nem egy természetes átjáró, a falak túl jól faragottak és túl simák. Nem "
+"lepnék meglepve, ha kiderülne, hogy a törpök készítették. Kiváncsi vagyok, "
+"hogy maradtak-e belőlük ezekben a hegyekben..."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2244
+#, fuzzy
 msgid ""
 "Having killed all the orc and goblin leaders in the immediate vicinity, we "
 "can take our time and should have no trouble bringing the rest of our people "
@@ -3426,36 +3659,53 @@ msgid ""
 "dangers we don't. We really are putting our lives in Eloh's palm; may she "
 "guide us as well as she has before."
 msgstr ""
+"A környéken lévő  összes ork és kobold vezető megölése után nem kéne "
+"bajlódnunk, avval, hogy lehozzuk a többieket ide.  Különös, feltételezésem "
+"szerint ismert veszélyt ismeretlen veszélyre cseréljük. Életünket Eloh "
+"kezébe adjuk, bizonyosan továbbra is vezetni fog minket, mint ahogy eddig. "
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2251
+#, fuzzy
 msgid ""
 "Now that you've found the way we should be able to get the rest of our "
 "people past the orcs. It's odd, I guess we're trading the dangers we know "
 "for the dangers we don't. We really are putting our lives in Eloh's palm, "
 "may she guide as well as she has before."
 msgstr ""
+"Most, hogy végre megtaláltad az utat, át kell hoznunk a többieket az orkokon "
+"keresztül. Különös, feltételezésem szerint ismert veszélyt ismeretlen "
+"veszélyre cseréljük. Életünket Eloh kezébe adjuk, bizonyosan továbbra is "
+"vezetni fog minket, mint ahogy eddig. "
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2258
+#, fuzzy
 msgid ""
 "I'll just be happy when I can breathe fresh air again and see the suns and "
 "stars. Still, who knows what we'll encounter deep under the earth?"
 msgstr ""
+"Boldog leszek, amikor újra friss levegőt szívhatok, és láthatom a napot és a "
+"csillagokat. Ki tudja mivel találkozunk még a föld mélyén?"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2263
+#, fuzzy
 msgid "Well, there's only one way to find out."
-msgstr ""
+msgstr "Nos, csak egy módja van, hogy megtudjuk."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:2289
+#, fuzzy
 msgid ""
 "We've taken too long to get our people into the tunnels! Even more orcs are "
 "coming across the foothills from the east and west and flanking us. There's "
 "no way we can kill all these orcs and goblins. We'll never make it to safety "
 "now."
 msgstr ""
+"Túl sokáig tartott, hogy bejuttassuk az embereket az alagutakba. Egyre több "
+"ork érkezik a keleti és nyugati dombokon keresztül. Körüvesznek minket. "
+"Lehetetlen, hogy mindegyiket megöljük. Nem fog sikerülni."
 
 #. [scenario]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:7
@@ -3539,38 +3789,53 @@ msgstr "Rygar"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:741
+#, fuzzy
 msgid ""
 "You mentioned that Dwarves and Trolls often lived underground, Elyssa. I've "
 "only heard myths, have you every met a Dwarf or a Troll?"
 msgstr ""
+"Te említetted, hogy a Törpök és a Trollok a földalatt élnek, Elyssa. Én csak "
+"legendákból ismerem őket. Találkoztál már Törppel, vagy Trollal?"
 
 #. [message]: description=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:746
+#, fuzzy
 msgid ""
 "No I haven't, I don't often explore underground unless I have to. There are "
 "lots of nasty things that lurk far away from the light of the suns. But I've "
 "read a bit about them, and have even met a few people who had dealings with "
 "Dwarves."
 msgstr ""
+"Nem, még nem. Nem túl gyakran járkálok a földalatt, hacsak nem szükséges. "
+"Nagyon sok lény bújkál ott a napfény elől. Azonban olvastam róluk, és számos "
+"emberrel találkoztam, akik találkoztak velük."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:751
+#, fuzzy
 msgid "What are Dwarves like?"
-msgstr ""
+msgstr "Hogy néznek ki a törpék?"
 
 #. [message]: description=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:756
+#, fuzzy
 msgid ""
 "They're a proud people, and some would say greedy. They love their gold and "
 "fine metals, and forge many beautiful things. I should warn you, they have "
 "little liking for Elves. There was some betrayal many years ago, though I "
 "don't know what happened."
 msgstr ""
+"Ők büszke lények, néhányak azt mondják kapzsik. Szeretik az aranyukat és a "
+"jó fémeket, amikből sok szép dolgot készítenek. Figyelmeztetlek nem nagyon "
+"kedvelik a tündéket. Volt valami árulás néhány éve, de nem igazán tudom mi "
+"történt."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:761
 msgid "And what about Trolls? I'm not sure I'd want to meet one face to face."
 msgstr ""
+"És mi a helyzet a Trollokkal? Nem vagyok biztos benne, hogy szemtől szembe "
+"akarnék találkoznék velük."
 
 #. [message]: description=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:766
@@ -3584,21 +3849,27 @@ msgstr ""
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:771
+#, fuzzy
 msgid ""
 "Well, with Eloh's guidance, I hope we find these tunnels deserted. I'll be "
 "happy if our biggest problem is not getting lost. I have little wish to meet "
 "either Dwarves or Trolls. But Eloh will watch over us."
 msgstr ""
+"Nos, remélem Eloh vezetésével üresen találjuk ezeket az alagutakat. Boldog "
+"leszek ha problémánk nem súlyosbodik. Nem nagyon szeretnék tálálkozni sem a "
+"Törpökkel sem a Trollokkal. Eloh figyel bennünket."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:776
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:828
+#, fuzzy
 msgid "Will she? I got the impression she was powerless underground."
-msgstr ""
+msgstr "Igen? Az volt a benyomásom, hogy ő tehetetlen a földalatt."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:781
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:833
+#, fuzzy
 msgid ""
 "Where did you get that idea? Certainly Eloh is strongest during the day, "
 "when the suns are shining down on us. But it is said that even in the "
@@ -3609,36 +3880,52 @@ msgid ""
 "do to unduly worry our people. Eloh will always protect us, if we follow her "
 "path. "
 msgstr ""
+"Honnan jött ez az ötleted? Igaz, hogy Eloh nappal a legerősebb, amikor ránk "
+"süt a nap, de még az éjszaka sötétségében is védi a követőit. Az Aranykorban "
+"a szent tünde harcosok hatalmas keresztes hadjáratokat vezettek az orkok és "
+"egyéb ostoba lények ellen a föld alá, Eloh segítségével. Hűség a mi "
+"pajzsunk, Kaleh. Javaslom tartsd meg magadnak a kétségeidet, nem hat jól az "
+"embereinkre. Eloh mindig meg fog védeni minket, ha az ő útját követjük."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:786
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:838
+#, fuzzy
 msgid ""
 "Then let us hope the rest of our journey may be as uneventful as it has been "
 "this far."
 msgstr ""
+"Reméljük a maradék utunk is olyan eseménytelen lesz, mint ahogy eddig volt."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:793
+#, fuzzy
 msgid ""
 "I've heard of dwarves, but do you have any idea, Zhul, what kinds of "
 "creatures we might encounter underground?"
 msgstr ""
+"Már hallottam a Törpökről, de van ötleted Zhul, hogy milyen lényekkel "
+"találkozhatunk még a földalatt?"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:798
+#, fuzzy
 msgid ""
 "These tunnels are foreign to me; I know little more than you do. All I know "
 "about dwarves is from the few tales from the Golden Age."
 msgstr ""
+"Ezek az alagutak ismeretlenek a számomra, nem sokkal tudok nálad többet. A "
+"törpökről is csak az Aranykori mesékből tudok."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:803
+#, fuzzy
 msgid "What are they like?"
-msgstr ""
+msgstr "Hogy néznek ki?"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:808
+#, fuzzy
 msgid ""
 "They lived deep under the earth, mining gold and fine metals and forging "
 "many beautiful things. We were once allies during the Golden Age, but in the "
@@ -3646,6 +3933,11 @@ msgid ""
 "survived. But in the golden age they were very helpful in our wars against "
 "the orcs and trolls."
 msgstr ""
+"Ők mélyen a föld alatt éltek, aranyat és finom fémeket bányásztak, amikből "
+"sok szép dolgot készítettek. Valaha szövetségesek voltunk az Aranykorban, de "
+"a harc és a becsapódás káoszában elvesztettük velük a kapcsolatot. Nem "
+"tudom, hogy egyikük is életben lenne. Az Aranykorban nagy segítségünkre "
+"voltak az orkok és a trollok ellen."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:813
@@ -3668,16 +3960,23 @@ msgstr ""
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:823
+#, fuzzy
 msgid ""
 "But with Eloh's guidance, I hope we find these tunnels deserted. I'd be "
 "happy if our biggest problem is not getting lost. Still, even underground "
 "Eloh will watch over us."
 msgstr ""
+"Nos, remélem Eloh vezetésével üresen találjuk ezeket az alagutakat. Boldog "
+"leszek ha problémánk nem súlyosbodik. Még most a földalatt Eloh figyeli "
+"utunkat."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:857
+#, fuzzy
 msgid "All I'm saying is that these tunnels aren't as bad as I expected."
 msgstr ""
+"Mindössze azt mondom, hogy ezek az alagutad nem olyan szörnyűek, mint ahogy "
+"vártam."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:862
@@ -3691,32 +3990,40 @@ msgstr "Hangyák. Nagyon nagy hangyák. Talán nem akarnak támadni."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:915
+#, fuzzy
 msgid "On the other hand, that spider probably is."
-msgstr ""
+msgstr "Másik részről a az a pók az."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:920
+#, fuzzy
 msgid "Caught between a spider and its prey. Not a good place to be."
-msgstr ""
+msgstr "A pók és a zsákmánya között ragadva. Nem túl jó hely."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:948
+#, fuzzy
 msgid ""
 "Woah! Did you see that? That huge stalactite just fell and crushed the "
 "spider. Aren't we lucky!"
 msgstr ""
+"Hű! Láttad azt? A hatalmas csepkő egyszerűen lezuhant és agyon nyomta a "
+"pókot! Szerencsések vagyunk, vagy nem?"
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:953
+#, fuzzy
 msgid "Eloh must indeed be watching over us."
-msgstr ""
+msgstr "Eloh óvó szeme van felettünk."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:973
+#, fuzzy
 msgid ""
 "You know, if all we discover down here are insects, I'll be very "
 "disappointed. "
 msgstr ""
+"Tudod, ha csak bogarakat találunk idelent, akkor nagyon csalódott leszek."
 
 #. [message]: description=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:984
@@ -3725,87 +4032,110 @@ msgstr "A pókok nem rovarok."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:989
+#, fuzzy
 msgid "Thanks for the clarification."
-msgstr ""
+msgstr "Köszönet a tisztázásért."
 
 #. [unit]: type=Dwarvish Fighter, description=Wounded Dwarf
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:840
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1000
+#, fuzzy
 msgid "Wounded Dwarf"
-msgstr ""
+msgstr "Sérült Törp"
 
 #. [message]: description=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1005
+#, fuzzy
 msgid "Help! They're everywhere!"
-msgstr ""
+msgstr "Segítség! Mindenütt ott vannak!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1015
+#, fuzzy
 msgid "Nym, your timing is impeccable."
-msgstr ""
+msgstr "Időzítésed kifogástalan."
 
 #. [message]: description=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1026
+#, fuzzy
 msgid "That's a dwarf, but it looks like he's been beaten to a pulp."
-msgstr ""
+msgstr "Az egy törp, de úgy néz ki valaki súlyosan megsebezte."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1033
+#, fuzzy
 msgid "Short and hairy, he must be a dwarf. But he's been beaten to a pulp."
-msgstr ""
+msgstr "Alacsony és szőrős, biztos hogy törp. Valaki alaposan elbánt vele."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1040
+#, fuzzy
 msgid ""
 "I don't know what 'they' are, but we can't go back. Prepare yourselves for "
 "anything, everyone."
 msgstr ""
+"Nem tudom kik 'azok', de nem fordulhatunk vissza. Készüljetek fel mindenre."
 
 #. [message]: description=Fundin
 #. [message]: description=Nori
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1078
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1125
+#, fuzzy
 msgid ""
 "What are you doing back here? The trolls hide in the southern tunnels, not "
 "this way."
-msgstr ""
+msgstr "Mit csinálsz itt? A trollok a déli alagutakban rejtőznek nem itt."
 
 #. [message]: description=Fundin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1093
+#, fuzzy
 msgid ""
 "Treacherous elves, how can you fight with such horrid creatures as Trolls. I "
 "will cleave all in two with my axe!"
 msgstr ""
+"Áruló tündék! Hogy harcolhattok az olyan szörnyű lényekkel, mint a  trollok? "
+"Csatabárdommal mindannyiótokat levágom!"
 
 #. [message]: description=Nori
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1140
+#, fuzzy
 msgid ""
 "If you think you can take these caves from us, then you are fools. We are "
 "masters of fighting underground and we will die to defend our home. Fight "
 "on, my brothers!"
 msgstr ""
+"Ha azt hiszitek, hogy elvehetitek ezeket a barlangokat tőlünk, akkor ostobák "
+"vagytok. Mi a harc mesterei vagyunk, képesek vagyunk meghalni az otthonunk "
+"megvédéséért. Harcra hát testvéreim!"
 
 #. [message]: description=Thungar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1172
+#, fuzzy
 msgid "Nasty Dwarves and Stinkin' Elves, we will smash you all!"
-msgstr ""
+msgstr "Piszkos törpök és büdös tündék, mindegyiket összezúzzuk!"
 
 #. [message]: description=Thungar
 #. [message]: description=Gnarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1179
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1218
+#, fuzzy
 msgid ""
 "What you doing back here? Nasty dwarves are to the north, no dwarves this "
 "way. Go back and fight bravely."
 msgstr ""
+"Mit csinálsz itt? A piszkos törpök északon vannak, erre nincsen törp. Menj "
+"vissza és küzdj bátran."
 
 #. [message]: description=Gnarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1211
+#, fuzzy
 msgid ""
 "Kill the elves! We must stop them here. This is our land, crush the "
 "intruders!"
 msgstr ""
+"Öljétek meg a tündéket! Itt kell megállítani őket. Ez a mi földünk. Zúzzátok "
+"szét a behatolókat!"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1267
@@ -3857,27 +4187,35 @@ msgstr "Woah."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1409
+#, fuzzy
 msgid "I think I preferred the spider and the ants..."
-msgstr ""
+msgstr "Jobban kedveltem a pókokat és a hangyákat..."
 
 #. [message]: description=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1414
+#, fuzzy
 msgid "Stand firm boys, here they come!"
-msgstr ""
+msgstr "Készüljetek fel fiúk, itt jönnek!"
 
 #. [message]: description=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1419
+#, fuzzy
 msgid ""
 "You invade our tunnels, you slaughter our women and children, by Griknagh we "
 "will make you pay!"
 msgstr ""
+"Megszálltad az alagutainkat, lemészároltad gyermekeinket és nőinket, "
+"Griknagh által megfizetsz!"
 
 #. [message]: description=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1424
+#, fuzzy
 msgid ""
 "Tenacious savages, aren't they? But these tunnels are rich in ore, and we "
 "won't let a couple of trolls keep them from us. "
 msgstr ""
+"Makacsok és barbárok, nem igaz? Ezek az alagutak gazdagok ércben, nem fogjuk "
+"hagyni, hogy pár troll elválasszon tőlünk."
 
 #. [message]: description=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1429
@@ -3921,41 +4259,58 @@ msgstr ""
 
 #. [message]: description=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1464
+#, fuzzy
 msgid ""
 "They invade our land and kill our young. Dwarves always want more, always "
 "greedy for glittery rocks."
 msgstr ""
+"Megszálltak a területünk és megölték a fiataljainkat. A törpök mindig többet "
+"akarnak, mindig mohón vágynak a fényes sziklákra."
 
 #. [message]: description=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1469
+#, fuzzy
 msgid ""
 "Those monsters killed me boys. Kaleh, if you be of stout heart, help us "
 "drive these lummoxes from our tunnels."
 msgstr ""
+"Ezek a szörnyek megölték a fiaimat. Kaleh, ha a szívedre hallgatsz segítesz "
+"kiűzni ezeket a szörnyeket az alagutainkból."
 
 #. [message]: description=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1474
+#, fuzzy
 msgid "No, this is our home. Help us, little ones, and we will help you."
 msgstr ""
+"Nem, ez a mi otthonunk. Segíts nekünk, kis emberek, és mi segíteni fogunk "
+"neked."
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1479
+#, fuzzy
 msgid ""
 "There's too many of them for us to try to take them both on, and besides "
 "with all these branching tunnels we'll have no idea which way to go. I think "
 "we should take them up on their offer; ally ourselves with one of the "
 "factions so we can get their help in finding a way back to the surface."
 msgstr ""
+"Túl sokan vannak, hogy mindkettőjüket elintézzük, ráadásul nem is tudjuk "
+"merre kéne mennünk. Szerintem el kéne fogadni valamelyikük ajánlatát és "
+"valamelyik oldalra állni. Cserébe segíthetnek visszajutni a felszínre."
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1484
+#, fuzzy
 msgid ""
 "But even if we do, what about all of our people? How can we safely escort "
 "them through this war zone?"
 msgstr ""
+"Még ha ezt tesszük is, mi lesz a népünkkel? Hogy visszük biztonságban át "
+"ezen a harctéren?"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1489
+#, fuzzy
 msgid ""
 "We won't. If we keep the majority of our people hidden back up the passage "
 "we should be able to protect them, at least for a little while. In the "
@@ -3963,61 +4318,77 @@ msgid ""
 "Zhul, if we're lucky we may just be able to negotiate a safe passage out of "
 "here."
 msgstr ""
+"Nem tesszük azt. Ha az emberek többségét az átjáró végében elrejtjük, akkor "
+"egy kis ideig mgvédhetjük őket. Közben mi előre megyünk és megtisztítjuk ezt "
+"a zűrzavart. Azt hiszem igazad van Zhul, ha szerencsések leszünk, akkor "
+"megegyezhetünk, hogy mutassanak eg biztonságos kijáratot innen."
 
 #. [message]: description=$explorer.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1498
+#, fuzzy
 msgid "But they both look evenly matched. Who should we ally with?"
-msgstr ""
+msgstr "Mindkettő ugyanolyan erősnek tűnik. Kivel kéne szövetkeznünk?"
 
 #. [option]: description=$explorer.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1501
 msgid "Let's aid the Dwarves."
-msgstr "Segítsünk a Törpöknek."
+msgstr "Segítsünk a törpöknek."
 
 #. [message]: description=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1520
+#, fuzzy
 msgid ""
 "Bah! Your kind all the same. Everyone turns on Trolls. But you'll see, "
 "Griknagh will smash you all."
 msgstr ""
+"A te fajtád nem változott. Mindenki a trollok ellen fordul. Majd meglátod, "
+"Griknagh összezúz mindenkit."
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1531
 msgid "Defeat Troll Leaders"
-msgstr "Megölöd a Troll vezéreket."
+msgstr "Legyőzöd a troll vezéreket."
 
 #. [option]: description=$explorer.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1543
 msgid "Let's aid the Trolls."
-msgstr "Segítsünk a Trolloknak."
+msgstr "Segítsünk a trolloknak."
 
 #. [message]: description=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1562
+#, fuzzy
 msgid ""
 "I knew elves couldn't be trusted. Foolish boy, you will regret your "
 "betrayal. Taste dwarven steel!"
 msgstr ""
+"Tudtam, hogy a tündékben nem lehet megbízni. Ostoba kölyök, megbánod még az "
+"árulásodat. Kostold meg a törp acélt!"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1572
 msgid "Defeat Dwarf Leaders"
-msgstr "Megölöd a Törp vezéreket."
+msgstr "Legyőzöd a törp vezéreket"
 
 #. [message]: description=$explorer.description
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1593
+#, fuzzy
 msgid ""
 "There seems to be an abandoned Dwarvish fortress right in front of us. If we "
 "can fight our way to the keep, we should be able to start rallying our "
 "warriors to help in the battle."
 msgstr ""
+"Mintha egy elhagyott törp erőd lenne mellettünk. Ha el tudunk jutni odáig, "
+"akkor összegyűjthetjük a harcosainkat a csatához."
 
+# Ha jól emlékszem ez az egység van a küldetésben, Skirmisher egységnevet nem találtam.
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1610
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1613
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1615
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1617
+#, fuzzy
 msgid "Troll Skirmisher"
-msgstr ""
+msgstr "Troll Sámán"
 
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1625
@@ -4062,21 +4433,23 @@ msgstr "Troll Lánggyújó"
 
 #. [message]: description=Troll Flamecaster
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2148
-#, fuzzy
 msgid "Burn, burn and die!"
 msgstr "Égj, égj, ölj!"
 
 #. [message]: description=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2171
+#, fuzzy
 msgid "Dive for cover!"
-msgstr ""
+msgstr "Fedezékbe!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2176
+#, fuzzy
 msgid ""
 "Those new troll shamans are decimating the dwarves with blasts of fire! This "
 "doesn't look good."
 msgstr ""
+"A troll sámánok megtizedelik a törpöket a tűz lökésekkel! Nem állunk jól."
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2300
@@ -4092,50 +4465,62 @@ msgstr "Ne!!!"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2328
-#, fuzzy
 msgid "Help me!!!"
 msgstr "Segíts!"
 
 #. [message]: description=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2343
+#, fuzzy
 msgid "More accursed troll magic. Fall back! "
-msgstr ""
+msgstr "Még több átkozott troll mágia. Visszavonulás!"
 
 #. [message]: description=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2348
+#, fuzzy
 msgid ""
 "I need to go back and rally more reinforcements. We're hurtin', Kaleh, I'll "
 "need your men to cover for us. Do you best, boy, and may Moradin watch over "
 "you."
 msgstr ""
+"Vissza kell mennem és több erősítést gyűjteni. Fájdalom, de fedeznetek kell "
+"minket Kaleh. Sok sikert, Moradin óvjon téged!"
 
+# Ha jól emlékszem ez az egység van a küldetésben, Skirmisher egységnevet nem találtam.
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2367
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2375
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2385
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2396
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2407
+#, fuzzy
 msgid "Dwarf Grenadier"
-msgstr ""
+msgstr "Törp villámőrző"
 
 #. [message]: description=Dwarf Grenadier
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2413
+#, fuzzy
 msgid ""
 "Let's blast those monsters back to the pits they spawned from! Fire in the "
 "hole!"
 msgstr ""
+"Robbantsuk fel ezeket a szörnyeket, űzzük vissza oda ahonnan jöttek. "
+"Tüzeljetek!"
 
 #. [message]: description=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2436
+#, fuzzy
 msgid "More Dwarven trickery! Fall back!"
-msgstr ""
+msgstr "Még több törp trükk! Visszavonulás!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2441
+#, fuzzy
 msgid ""
 "Those new dwarves are lobbing explosives at the trolls with devastating "
 "effect! I don't think the trolls can take this much longer."
 msgstr ""
+"Ezek az új törpök pusztító hatású robbanóanyagot használnak a trollok ellen. "
+"Nem hiszem, hogy a troll tovább bírnák."
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2574
@@ -4144,10 +4529,13 @@ msgstr "Gaggghhh!"
 
 #. [message]: description=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2589
+#, fuzzy
 msgid ""
 "I must go back and find more trolls to fight. You must hold them back, "
 "Kaleh. Be strong like rock. Griknagh will be with you."
 msgstr ""
+"Mennem kell, hogy több trollt találjak. Vissza kell tartanod őket Kaleh. "
+"Légy erős, mint a szikla! Griknagh legyen veled."
 
 #. [unit]: type=Troll Shaman, description=Thu'lok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2621
@@ -4176,10 +4564,13 @@ msgstr "Groo"
 
 #. [message]: description=Thu'lok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2703
+#, fuzzy
 msgid ""
 "Our leader sent us to help you. We fight for you until all the dwarves are "
 "dead. We will avenge the deaths of our people!"
 msgstr ""
+"Vezetőnk küldött, hogy segítsünk nektek. Veletek harcolunk, míg az összes "
+"törp meg nem halt. Megbosszúljuk embereink halálát!"
 
 #. [unit]: type=Dwarvish Fighter, description=Dwalim
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2719
@@ -4208,54 +4599,74 @@ msgstr "Runin"
 
 #. [message]: description=Dwalim
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2812
+#, fuzzy
 msgid ""
 "Looks like we came just in time. Our chief told us we're to fight with you "
 "until all the trolls are dead. Tell us where to go, I want to kill me some "
 "troll!"
 msgstr ""
+"Úgy látszik éppen időben érkeztünk. A vezetőnk utasított, hogy harcoljunk "
+"veletek, míg az összes troll nem halt meg. Mondd merre menjünk, megakarok "
+"ölni pár trollt!"
 
 #. [message]: role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2925
+#, fuzzy
 msgid ""
 "The trolls display the skulls of their enemies as a way of marking their "
 "territory. How barbaric."
 msgstr ""
+"A trollok kirakták az ellenségeik koponyáit területük jelöléseként. Milyen "
+"barbár szokás."
 
 #. [message]: role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2965
+#, fuzzy
 msgid ""
 "The dwarves use stone cairns to mark their territory. What a waste of good "
 "throwing stones."
 msgstr ""
+"A törpök a területük jelölésére használják ezeket a kőhalmokat. Milyen "
+"pocsékolása a jó hajító köveknek."
 
 #. [message]: description=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2982
+#, fuzzy
 msgid ""
 "Congratulations! Some of trolls didn't think you strong enough to beat "
 "dwarves."
 msgstr ""
+"Gratulálok! Egyes trollok nem hitték, hogy elég erős vagy, hogy legyőzd a "
+"törpöket."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2987
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3078
+#, fuzzy
 msgid "Where did you come from?"
-msgstr ""
+msgstr "Hogy kerültél ide??"
 
 #. [message]: description=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2992
+#, fuzzy
 msgid ""
 "There many secret tunnels that you sun dwellers not know of. Only troll "
 "know. We smarter than you think. Zurg would have killed dwarves himself, but "
 "he was just sent back from where real fighting is."
 msgstr ""
+"Számos titkos alagút van, amit ti naplakók nem ismertek, csak a trollok. "
+"Okosabbak vagyunk, mint ahogy gondolod. Zurg legyőzte volna a törpöket, de "
+"visszaküldték ahol az igazi csata folyik."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2997
+#, fuzzy
 msgid "The real fighting? I thought that was what we were waist-deep in?"
-msgstr ""
+msgstr "Az igazi csata? Azt hittem, a kellős közepén vagyunk a harcnak."
 
 #. [message]: description=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3002
+#, fuzzy
 msgid ""
 "While you fighting, another clan of dwarves sneak around and flank us. They "
 "tricksy like that. We must leave you and run back to defend women and little "
@@ -4263,14 +4674,21 @@ msgid ""
 "But dwarves make mistake, you stronger than dwarf or troll thought. You "
 "trolls' secret weapon."
 msgstr ""
+"Miközben harcoltál egy másik törp klán észrevétlenül megkerült minket. Ők "
+"ilyen trükkösek. Itt kellett hagynunk téged és visszasietni, hogy megvédjük "
+"aí nőket és a fiatal trollokat. A törpök sose adják fel, sok troll meghalt "
+"ma a kemény csatában. De a törpök tévednek, te erősebb vagy, mint ahogy a "
+"törpök vagy a trollok gondolták. Te vagy a trollok titkos fegyvere."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3007
+#, fuzzy
 msgid "How do you mean?"
-msgstr ""
+msgstr "Ezt hogy érted?"
 
 #. [message]: description=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3012
+#, fuzzy
 msgid ""
 "Right before battle, we find secret passage just to the north leading "
 "straight to big dwarf stronghold. Hiding in stronghold is big important "
@@ -4281,21 +4699,36 @@ msgid ""
 "do this and we can drive them back. Then troll leader can help show you how "
 "to return to surface. You come with Zurg, he show you way to secret passage."
 msgstr ""
+"Pont a csata elött találtunk egy titkos átjárót, ami északra egy nagy törp "
+"erődbe vezet. Az erődben egy hatalmas törp rejtőzik, ő irányítja a törp "
+"seregeket. A törpök mindig is azt hitték, hogy ők a legerősebbek a "
+"környéken. Így csak kevés törp őrzi az erődöt. Ha ti tündék képesek vagytok "
+"áttörni a törp védelmen és megölni a törp vezért, az olyan kárt okozna a "
+"törpöknél, hogy ami elégé összezavarnák őket. Ekkor már könnyű prédák "
+"lesznek nekünk. Ha megteszed vissza tudjuk szorítani őket. Ezek után a troll "
+"vezetők biztos segíteni fognak a felszínre jutni. Zurg-vel mész, aki "
+"megmutatja a titkos átjárót."
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3017
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3108
+#, fuzzy
 msgid ""
 "Their knowledge of these tunnels is uncanny. I could have sworn a minute ago "
 "that that wall was solid rock."
 msgstr ""
+"Hátborzongató az alagutakról való tudásuk. Meg mertem volna esküdni, hogy "
+"egy percel ezelött az fal tömör szikla volt."
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3028
+#, fuzzy
 msgid ""
 "Wait a moment Zurg, we must deal with this mysterious cloaked figure before "
 "we can follow you."
 msgstr ""
+"Várj egy percet Zurg, előbb le kell számolnunk ezzel a titokzatos köpenyes "
+"alakkal, mielött követnénk téged."
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3037
@@ -4305,29 +4738,38 @@ msgstr "Legyőzöd a Köpenyes Alakot"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3055
+#, fuzzy
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
 "together, we must follow Zurg."
 msgstr ""
+"Úgy hangzik a munkákat még nem fejeztük be. Nos jól van, gyerünk, követnünk "
+"kell Zurg-ot."
 
 #. [message]: description=Grendel
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3073
+#, fuzzy
 msgid ""
 "Congratulations, some of me boys didn't think you could beat the trolls."
-msgstr ""
+msgstr "Gratulálok, néhányan nem hitték, hogy le tudod győzni a trollokat."
 
 #. [message]: description=Grendel
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3083
+#, fuzzy
 msgid ""
 "Don't think you know all the tunnels and passages that twist through these "
 "caves, elf. I would have killed him myself, but I was just sent back from "
 "the main front of the battle."
 msgstr ""
+"Ne hidd, hogy ismered az összes alagutat és átjárót, ami ezeken a "
+"barlangokon keresztül vezet, tünde. Én magam öltem volna meg a trollokat, de "
+"hátra küldtek a csata fő frontjára."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3088
+#, fuzzy
 msgid "The front? I thought this was the front."
-msgstr ""
+msgstr "Frontra? Azt hittem ez a front."
 
 #. [message]: description=Grendel
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3093
@@ -4489,7 +4931,7 @@ msgstr ""
 #. [scenario]: description=troll_wc_1}, description=troll_wc_2}, description=troll_wc_3}, description=troll_wc_4}, description=troll_wc_5}, description=troll_wc_6}, description=troll_wc_5}, description=troll_wc_6}
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:6
 msgid "In the Tunnels of the Trolls"
-msgstr "A Troll Tárnákban"
+msgstr "A troll tárnákban"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:179
@@ -4507,7 +4949,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:207
 msgid "Kill Troll Leader"
-msgstr ""
+msgstr "Megölöd a troll vezért"
 
 #. [unit]: type=Troll, description=Troll Interrogator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:445
@@ -4976,7 +5418,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2243
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2315
 msgid "Dwarf Ghost"
-msgstr "Törp Szellem"
+msgstr "Törp szellem"
 
 #. [message]: description=Dwarf Ghost
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2251
@@ -5963,7 +6405,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:7
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:8
 msgid "Talking with Trolls"
-msgstr "Beszéd a Trollokkal"
+msgstr "Beszéd a trollokkal"
 
 #. [side]: description=Great Leader Darmog, type=Great Troll
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:43
@@ -6437,22 +6879,21 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1482
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1519
 msgid "Bellerin"
-msgstr ""
+msgstr "Bellerin"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1456
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1493
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1530
 msgid "Durth"
-msgstr ""
+msgstr "Durth"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1467
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1504
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1541
-#, fuzzy
 msgid "Othgar"
-msgstr "Thungar"
+msgstr "Othgar"
 
 #. [message]: description=Durth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1554
@@ -7625,7 +8066,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4967
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5116
 msgid "Death of Kaleh, Nym, or Zhul"
-msgstr "Kaleh, Nym vagy Zhul meghal"
+msgstr "Kaleh, Nym vagy Zhul elesik"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4254
@@ -8128,7 +8569,7 @@ msgstr ""
 #. [unit]: type=Spectre, description=Undead Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5272
 msgid "Undead Leader"
-msgstr "Élőholt Vezér"
+msgstr "Élőholt vezér"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5310
@@ -8671,7 +9112,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1523
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1557
 msgid "Death of Kaleh, Nym, Zhul"
-msgstr "Kaleh, Nym, Zhul meghal"
+msgstr "Kaleh, Nym, Zhul elesik"
 
 #. [unit]: type=Desert Fighter, description=Ulothanir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:684
@@ -9156,7 +9597,7 @@ msgstr "Legyőzöd Tanstafaalt és Eloht"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1316
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1318
 msgid "Elvish Rebel"
-msgstr "Tünde Lázadó"
+msgstr "Tünde lázadó"
 
 #. [message]: description=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1414
@@ -9688,7 +10129,6 @@ msgstr "Mérges Rák"
 
 #. [message]: description=Angry Crab
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3167
-#, fuzzy
 msgid "Aaaargh! Fresh meat!"
 msgstr "Aaaargh! Friss hús!"
 
@@ -11588,7 +12028,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:348
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1401
 msgid "Death of Kaleh"
-msgstr "Kaleh meghal"
+msgstr "Kaleh elesik"
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:373
@@ -11893,12 +12333,12 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:7
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:8
 msgid "Epilogue"
-msgstr "Epilógus"
+msgstr "Végszó"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:39
 msgid "Epilogue:"
-msgstr "Epilógus:"
+msgstr "Végszó:"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:94
@@ -12407,10 +12847,9 @@ msgstr ""
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:153
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/creep_death.cfg:412
-#, fuzzy
 msgid "Well, only $elven_camps encampments remain, but we will survive."
 msgstr ""
-"Mindössze $village_countertáborunk maradt, de legalább túléltük ezt az "
+"Mindössze $village_counter táborunk maradt, de legalább túléltük ezt az "
 "éjszakát."
 
 #. [message]: description=Nym
@@ -12514,7 +12953,6 @@ msgstr ""
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:39
-#, fuzzy
 msgid ""
 "Look, dawn is nigh, our salvation is almost at hand. Even the long dark "
 "can't last forever, and with the light of the sun the undead power wanes and "
@@ -12561,12 +12999,12 @@ msgid ""
 "No! How dare you! I shall have my vengeance upon you for spoiling this "
 "contest! Darkness shall reign until I have triumphed!"
 msgstr ""
-"Nem! Bosszút állok rajtatok! A sötétség fog uralkodni, s én győzedelmeskedem!"
+"Nem! Hogy merészelitek ezt?! Bosszút állok rajtatok! A sötétség fog "
+"uralkodni, s én győzedelmeskedem!"
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:154
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:604
-#, fuzzy
 msgid ""
 "Maybe I spoke too soon. Curse Uria, he has even blotted out the stars, all "
 "is darkness. Kaleh, our course is clear, we must destroy that abomination."
@@ -12581,9 +13019,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:483
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:610
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:768
-#, fuzzy
 msgid "Defeat Azkotep"
-msgstr "Azkotep"
+msgstr "Öld meg Azkotep-et"
 
 #. [message]: description=Azkotep
 #. [message]: description=Ystara
@@ -12605,17 +13042,15 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:479
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:764
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:1054
-#, fuzzy
 msgid "Defeat Possessed Garak (or)"
-msgstr "Megölöd a Fertőzött Garakot (vagy)"
+msgstr "Legyőzöd a fertőzött Garakot (vagy)"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:318
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:900
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:1058
-#, fuzzy
 msgid "Defeat Ystara"
-msgstr "Ystara"
+msgstr "Legyőzöd Ystarat"
 
 #. [message]: description=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:434
@@ -12627,7 +13062,6 @@ msgstr ""
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:438
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:541
-#, fuzzy
 msgid "Eloh protect us, what has she done?"
 msgstr "Eloh, könyörülj, mi történt vele?"
 
@@ -12643,7 +13077,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:1005
 #, fuzzy
 msgid "Eloh protect us, what is happening?"
-msgstr "Eloh, könyörülj, mi történt vele?"
+msgstr "Eloh, könyörülj, mi történik vele?"
 
 #. [message]: description=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:734
@@ -12653,11 +13087,11 @@ msgid ""
 "I told you, I will be back you fools! Now I shall have my vengeance upon you "
 "all. Darkness shall reign until I have triumphed!"
 msgstr ""
-"Nem! Bosszút állok rajtatok! A sötétség fog uralkodni, s én győzedelmeskedem!"
+"Én megmondtam, hogy visszatérek bolondok! Bosszút állok rajtatok! A sötétség "
+"fog uralkodni, s én győzedelmeskedem!"
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/possesion.cfg:894
-#, fuzzy
 msgid ""
 "Maybe I spoke too soon. Curse Uria, she has even blotted out the stars, all "
 "is darkness. Kaleh, our course is clear, we must destroy that abomination."
@@ -12671,23 +13105,20 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/scenario_start.cfg:35
 #, fuzzy
 msgid "Kaleh, wake up! Sentries report movement in the sands!"
-msgstr "Kaleh, ébredj! A felderítők mozgást érzékeltek a homokban!"
+msgstr "Kaleh, ébredj! A felderítők mozgást láttak a homokban!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/scenario_start.cfg:39
-#, fuzzy
 msgid "Orcs?"
-msgstr "Orac"
+msgstr "Orkok?"
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/scenario_start.cfg:43
-#, fuzzy
 msgid "I don't..."
 msgstr "Nem hiszem..."
 
 #. [message]: description=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/scenario_start.cfg:59
-#, fuzzy
 msgid ""
 "You always were an arrogant little bastard. Grek will swallow your soul, or "
 "what's left of it."
@@ -12697,7 +13128,6 @@ msgstr ""
 
 #. [message]: description=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/scenario_start.cfg:63
-#, fuzzy
 msgid ""
 "You spurned me once and I will make you pay. To battle, my minions! Become "
 "my wrath!"
@@ -12705,7 +13135,6 @@ msgstr "Egyszer elzavartál, most megfizetsz érte. Lásd a holtak haragját!"
 
 #. [message]: description=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/scenario_start.cfg:67
-#, fuzzy
 msgid "... think so. You really know how to pick a campsite, Kaleh."
 msgstr ""
 "Csodás, két élőholt nagyúr harcának kellős közepébe csöppentünk. Te tényleg "
@@ -12713,7 +13142,6 @@ msgstr ""
 
 #. [message]: description=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/scenario_start.cfg:87
-#, fuzzy
 msgid ""
 "But if the battle spills around our people will be slaughtered by the undead "
 "hordes!"
@@ -12721,7 +13149,6 @@ msgstr "De az embereink  veszélyben vannak, az élőholtak megölik őket!"
 
 #. [message]: description=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/scenario_start.cfg:91
-#, fuzzy
 msgid ""
 "There's no way we can escape the battle in time. We must protect the camp "
 "from the undead."
@@ -12992,32 +13419,29 @@ msgstr "Íj"
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:156
 msgid "female^Desert Archer"
-msgstr "Sivatagi Íjásznő"
+msgstr "Sivatagi íjásznő"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:4
 msgid "Desert Avenger"
-msgstr "Sivatagi Fejvadász"
+msgstr "Sivatagi fejvadász"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:46
-#, fuzzy
 msgid ""
 "Desert Avengers are extremely skillful and extremely quick, powerful in all "
 "forms of combat. Like their kin, they prefer the sword to the bow and are "
 "adept at sneaking around and backstabbing their enemies."
 msgstr ""
-"A Sivatagi Fejvadászok rendkívül gyorsak és ügyesek, ütőképesek a harc "
+"A Sivatagi fejvadászok rendkívül gyorsak és ügyesek, ütőképesek a harc "
 "minden formájában. Ügyesen bánnak a karddal és az íjjal, és képesek az "
-"ellenfelet hátulról meglepni. \n"
-"\n"
-"Megjegyzés: Ha egy egységet már megtámadtak, a Fejvadász képes mögé kerülni "
-"és dupla sebzést okozni."
+"ellenfelet hátulról meglepni.Megjegyzés: Ha egy egységet már megtámadtak, a "
+"Fejvadász képes mögé kerülni és dupla sebzést okozni."
 
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:174
 msgid "female^Desert Avenger"
-msgstr "Sivatagi Fejvadásznő"
+msgstr "Sivatagi fejvadásznő"
 
 #. [unit]: race=elf
 #. [variation]
@@ -13025,7 +13449,7 @@ msgstr "Sivatagi Fejvadásznő"
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:175
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:206
 msgid "Desert Captain"
-msgstr "Sivatagi Kapitány"
+msgstr "Sivatagi kapitány"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:43
@@ -13034,7 +13458,7 @@ msgid ""
 "level 1 units on adjacent hexes. Desert Captains prefer engaging the enemy "
 "in melee combat, but are trained in archery as well."
 msgstr ""
-"A Kapitányok képesek a többi tünde egységet vezetni a harcban, így minden "
+"A kapitányok képesek a többi tünde egységet vezetni a harcban, így minden "
 "első szintű egységnek jelentős harci bónuszokat ad, ha mellettük áll. "
 "Közelharc és íjászatban is egyaránt megállják helyüket."
 
@@ -13043,7 +13467,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:301
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:4
 msgid "Desert Champion"
-msgstr "Sivatagi Bajnok"
+msgstr "Sivatagi bajnok"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:40
@@ -13052,14 +13476,14 @@ msgid ""
 "wounds in close combat. Master fighters, they are also skilled with the bow, "
 "able to inflict damage on their enemies from both near and far."
 msgstr ""
-"A Sivatagi Bajnokok a mesterei a kardforgatásnak, így közelharcban óriási "
-"sebeket ejtenek. A harc mesterei, , és íjaikkal egyaránt veszélyesek közel "
-"és távol."
+"A Sivatagi bajnokok a mesterei a kardforgatásnak, így közelharcban óriási "
+"sebeket ejtenek. A harc mesterei, és íjaikkal is nagyon veszélyesek közel és "
+"távol."
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
 msgid "Desert Druid"
-msgstr "Sivatagi Druida"
+msgstr "Sivatagi druida"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:33
@@ -13098,7 +13522,7 @@ msgstr "tövisek"
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:143
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:6
 msgid "Desert Fighter"
-msgstr "Sivatagi Harcos"
+msgstr "Sivatagi harcos"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:41
@@ -13118,7 +13542,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:238
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:269
 msgid "Desert Hero"
-msgstr "Sivatagi Hős"
+msgstr "Sivatagi hős"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:39
@@ -13135,7 +13559,7 @@ msgstr ""
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Horseman.cfg:4
 msgid "Desert Horseman"
-msgstr "Sivatagi Lovas"
+msgstr "Sivatagi lovas"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Horseman.cfg:45
@@ -13147,9 +13571,7 @@ msgid ""
 "generations the Elves have greatly increased their equestrian skills."
 msgstr ""
 "A sebességükért cserébe ütőképes fegyverzetet kaptak. Nagyon jól harcolnak a "
-"nyílt homokon, nemzedékeken keresztül tökéletesítették a lovas "
-"képességeiket.\n"
-"\n"
+"nyílt homokon, nemzedékeken keresztül tökéletesítették a lovas képességeiket."
 "Megjegyzés: A Portyázó képességnek köszönhetően ez az egység szabadon "
 "mozoghat az ellenfél vonalai között."
 
@@ -13160,7 +13582,7 @@ msgid ""
 "quickly entangle others with their bolas and then finish them off with their "
 "swords."
 msgstr ""
-"A Sivatagi Cserkészek a homokból lesnek prédájukra. Képesek lelassítani "
+"A Sivatagi cserkészek a homokból lesnek prédájukra. Képesek lelassítani "
 "ellenfeleiket a bolájukkal, majd megölik őket kardjukkal."
 
 #. [attack]: type=impact
@@ -13172,7 +13594,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:405
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Hunter.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:48
-#, fuzzy
 msgid "bolas"
 msgstr "bola"
 
@@ -13181,12 +13602,12 @@ msgstr "bola"
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:119
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Hunter.cfg:4
 msgid "female^Desert Hunter"
-msgstr "Sivatagi Cserkésznő"
+msgstr "Sivatagi cserkésznő"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:4
 msgid "Desert Marksman"
-msgstr "Sivatagi Mesterlövész"
+msgstr "Sivatagi mesterlövész"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:28
@@ -13213,14 +13634,14 @@ msgstr "hosszúíj"
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:160
 msgid "female^Desert Marksman"
-msgstr "Sivatagi Mesterlövésznő"
+msgstr "Sivatagi mesterlövésznő"
 
 #. [unit]: race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:332
 msgid "Desert Marshal"
-msgstr "Sivatagi Marsall"
+msgstr "Sivatagi marsall"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:44
@@ -13237,7 +13658,7 @@ msgstr ""
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:4
 msgid "Desert Outrider"
-msgstr "Sivatagi Portyázó"
+msgstr "Sivatagi portyázó"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:42
@@ -13246,8 +13667,8 @@ msgid ""
 "weaker units and exposed flanks. Skilled in the sword, and trained in the "
 "bow, they strike hard before flying off into the sands to evade response."
 msgstr ""
-"A Portyázó képesek a sivatgon is gyorsan átkelni, emellett jól bánnak "
-"karddal és íjjal is jól bánnak.  "
+"A portyázók képesek a sivatagon is gyorsan átkelni, emellett jól bánnak a "
+"karddal és az íjjal is."
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:33
@@ -13270,12 +13691,12 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:137
 msgid "female^Desert Prowler"
-msgstr "Sivatagi Csavargónő"
+msgstr "Sivatagi csavargónő"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:4
 msgid "Desert Ranger"
-msgstr "Sivatagi Vadász"
+msgstr "Sivatagi vadász"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:35
@@ -13301,7 +13722,7 @@ msgstr ""
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Rider.cfg:4
 msgid "Desert Rider"
-msgstr "Sivatagi Lovas"
+msgstr "Sivatagi lovas"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Rider.cfg:41
@@ -13309,13 +13730,13 @@ msgid ""
 "Swift riders, Desert Riders are fast in the open desert. They can use a bow "
 "from horseback, but prefer to engage in melee combat when necessary."
 msgstr ""
-"A Sivatagi Lovasok gyorsan mozognak a nyílt sivatagban. Képesek íjjal is "
+"A Sivatagi lovasok gyorsan mozognak a nyílt sivatagban. Képesek íjjal is "
 "támadni, de a közelharcot kedvelik."
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:6
 msgid "Desert Scout"
-msgstr "Sivatagi Felderítő"
+msgstr "Sivatagi felderítő"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:42
@@ -13323,7 +13744,7 @@ msgid ""
 "Desert Scouts move swiftly across the sands. Their skill on horseback is "
 "virtually unmatched, although they do lack power in combat."
 msgstr ""
-"A Sivatagi Felderítők gyorsan mozogank a nyílt sivatagban. Nagyon jó "
+"A Sivatagi felderítők gyorsan mozogank a nyílt sivatagban. Nagyon jó "
 "lovasok, ám harcban hiányosságaik vannak."
 
 #. [unit]: race=elf
@@ -13348,12 +13769,12 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:122
 msgid "female^Desert Sentinel"
-msgstr "Sivatagi Őrzőnő"
+msgstr "Sivatagi őrzőnő"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:6
 msgid "Desert Shaman"
-msgstr "Sivatagi Sámán"
+msgstr "Sivatagi sámán"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:33
@@ -13362,7 +13783,7 @@ msgid ""
 "entangling attack slows enemies down and reduces by one the number of times "
 "they may attack. Shamans also possess basic healing abilities."
 msgstr ""
-"A Sivatagi Sámánok kevésbé erőszakos módszereket alkalmaznak. Lelassítják "
+"A Sivatagi sámánok kevésbé erőszakos módszereket alkalmaznak. Lelassítják "
 "ellenfeleiket, akik így kevesebbet mozoghatnak és támadhatnak. A SÁmánok "
 "ismerik a gyógyítás mesterségének alapjait."
 
@@ -13403,20 +13824,18 @@ msgstr "Sivatagi Kisaszony"
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:37
-#, fuzzy
 msgid ""
 "Desert Shydes are elves that are devoted to nature and their faerie side. "
 "Dragonfly wings sprout from their backs and change them into beautiful "
 "creatures. They are capable of gliding unencumbered across almost any "
 "terrain."
 msgstr ""
-"A Kisasszonyok a természetnek szentelik életüket, így szitakötőszárnyak "
+"A Tündeisasszonyok a természetnek szentelik életüket, így szitakötőszárnyak "
 "nőnek a hátukból, a mesebeli teremtményekké válnak, akik súlytalanul "
-"lebegnek minden terület felett.\n"
-"\n"
-"Megjegyzés: Ez az egység képes lelassítani ellenfeleiket, így a mozgásuk és "
-"sebzésük korlátozódik a kör végéig. A Kisaszonyok képesek gyógyítani a "
-"mellettük álló barátságos egységeket, és kikúrálni őket a mérgezésből."
+"lebegnek minden terület felett.Megjegyzés: Ez az egység képes lelassítani "
+"ellenfeleiket, így a mozgásuk és sebzésük korlátozódik a kör végéig. A "
+"Tündérkisaszonyok képesek gyógyítani a mellettük álló barátságos egységeket, "
+"és kikúrálni őket a mérgezésből."
 
 #. [unit]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:37
@@ -13772,7 +14191,6 @@ msgstr "Lángoló kard"
 
 #. [unit]: race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:97
-#, fuzzy
 msgid "Kaleh of the Quenoth Elves"
 msgstr "Kaleh vagyok, a Quenothi tündék vezére."
 
@@ -14131,9 +14549,8 @@ msgstr "Eloh, irgalmazz, végem..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:78
-#, fuzzy
 msgid "Aaaargh! Curse you!"
-msgstr "Aaaargh! Friss hús!"
+msgstr "Aaaargh! Átok rád!"
 
 #. [message]: description=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:104
@@ -14213,9 +14630,8 @@ msgstr "Emberi Hajó"
 
 #. [terrain]
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:69
-#, fuzzy
 msgid "Campfire"
-msgstr "tűz"
+msgstr "Tábortűz"
 
 #. [terrain]
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:82
@@ -14301,98 +14717,3 @@ msgstr "Hosszú Éjszaka (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:184
 msgid "The Long Dark (4)"
 msgstr "Hosszú Éjszaka (4)"
-
-#~ msgid "Bernard"
-#~ msgstr "Bernard"
-
-#~ msgid "Daryl"
-#~ msgstr "Daryl"
-
-#~ msgid "Oswald"
-#~ msgstr "Oswald"
-
-#~ msgid "baneblade"
-#~ msgstr "mérgezett penge"
-
-#~ msgid ""
-#~ "Desert Druids are powerful masters of the sands. Brilliant at ensnaring "
-#~ "unwary opponents, they use their vast knowledge of the plants of the "
-#~ "desert to heal allies. Druids are excellent supporting units in any group "
-#~ "of elves.\n"
-#~ "\n"
-#~ "Special Notes: A druid's entangling attack slows enemies down, halving "
-#~ "their movement speed and attack damage. Druids are capable of healing "
-#~ "units around them, and curing them of poison."
-#~ msgstr ""
-#~ "A Sivatagi Druidák a homokból merítik hatalmukat. Kivállóak a "
-#~ "figyelmetlen egységek csapdába ejtésében, és gyógyfüveket haználnak "
-#~ "társaik gyógyítására. A Sivatagi Druidák bármely tünde sergben "
-#~ "nélkülözhetetlen egységek.\n"
-#~ "\n"
-#~ "Megjegyzés: A druida képes lelassítani ellenfeleiket, így mozgásuk és "
-#~ "sebzésük is feleződik a kör végéig. Emellett képes a körülötte álló, "
-#~ "barátságos egységeket gyógyítani."
-
-#~ msgid ""
-#~ "Desert Marshals are master commanders, able to inspire confidence in any "
-#~ "level 1 or 2 unit in adjacent hexes, causing them to fight with increased "
-#~ "skill. Desert Marshals prefer engaging the enemy in melee combat, but are "
-#~ "trained in archery as well.\n"
-#~ "\n"
-#~ "Special Notes: the leadership of a Marshal enables friendly units next to "
-#~ "it to deal more damage in combat, though this only applies to units of "
-#~ "lower level"
-#~ msgstr ""
-#~ "A Sivatagi Marsallok mesterei  a taktikának, képesek a nála kisebb szintű "
-#~ "egységek támadását növelni, ha melléjük áll. Magában is ütőképes egység, "
-#~ "íjjal és karddal egyaránt.\n"
-#~ "\n"
-#~ "Megjegyzés: A Hadvezetés képességgel a melette álló, tapasztalatlanabb "
-#~ "egységeknek növeli a sebzését."
-
-#, fuzzy
-#~ msgid ""
-#~ "Desert Fighters make up the bulk of the Elven military in Quenoth. They "
-#~ "are trained in both sword and bow, though like most of their kin, they "
-#~ "prefer swordplay to archery. These Elves are deft of foot, and fight best "
-#~ "in the open sands."
-#~ msgstr ""
-#~ "A Sivatagi Harcosok a tünde csapatok zömét alkotják. Edzettek "
-#~ "kardforgatásban és az íj használatában egyaránt, de a pengét jobban "
-#~ "kedvelik, mint a nyilak kilövését. Ezek a tündék gyorslábúak és legjobban "
-#~ "a nyílt homokon küzdenek."
-
-#, fuzzy
-#~ msgid ""
-#~ "Desert Sentinels patrol the sands; they are trained to avoid enemies when "
-#~ "it is advantageous. They can cripple opponents with their bolas and are "
-#~ "deadly with their swords."
-#~ msgstr ""
-#~ "A Sivatagi Őrzők vigyázzák a homokot; képzettek az ellenség "
-#~ "eltávolításában. Bolával támadják meg ellenfeleiket, s karddal adják meg "
-#~ "a kegyelemdöfést.\n"
-#~ "\n"
-#~ "Megjegyzés: A Portyázás képesség lehetővé teszi, hogy az ellenséges "
-#~ "egységek között is szabadon járkálhassanak."
-
-#, fuzzy
-#~ msgid "Hey Naru, the rocks have stopped falling. You can come out now!"
-#~ msgstr "Hé, Nisa, már elmúlt a veszély. Előbújhatsz!"
-
-#~ msgid ""
-#~ "Please, have mercy on us. We'm just trying to survive in this horrible "
-#~ "land."
-#~ msgstr "Könyörül. Mi csak próbálunk túlélni ezen a szörnyűséges helyet."
-
-#~ msgid "cold"
-#~ msgstr "hideg"
-
-#~ msgid "blade"
-#~ msgstr "penge"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "Narn"
-
-#~ msgid "web"
-#~ msgstr "Háló"
