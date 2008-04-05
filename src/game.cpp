@@ -29,6 +29,8 @@
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/addon_connect.hpp"
+#include "gui/widgets/button.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
@@ -93,6 +95,8 @@ static bool less_campaigns_rank(const config* a, const config* b) {
 }
 
 namespace {
+
+static bool new_widgets = false;
 
 class game_controller
 {
@@ -294,6 +298,9 @@ game_controller::game_controller(int argc, char** argv)
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
 			no_sound = true;
+		} else if(val == "--new-widgets") {
+			// This is a hidden option to enable the new widget toolkit.
+			new_widgets = true;
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -1077,16 +1084,30 @@ namespace
 	void game_controller::manage_addons()
 	{
 		int res;
+		std::string host;
+		if(new_widgets) {
+			gui2::taddon_connect addon_dlg;
+			
+			addon_dlg.set_host_name(preferences::campaign_server());
+			addon_dlg.show(disp().video());
+			
+			res = addon_dlg.get_retval();
+			if(res == gui2::tbutton::OK) {
+				res = 0;
+				host = addon_dlg.host_name();
+			} 
+		} else {
 
-		gui::dialog d(disp(),
-				    _("Connect to Server"),
-				    _("You will now connect to a server to download add-ons."),
-				    gui::OK_CANCEL);
-		d.set_textbox(_("Server: "), preferences::campaign_server());
-		d.add_button( new gui::dialog_button(disp().video(), _("Remove Add-ons"),
-			gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
-		res = d.show();
-		const std::string host = d.textbox_text();
+			gui::dialog d(disp(),
+						_("Connect to Server"),
+						_("You will now connect to a server to download add-ons."),
+						gui::OK_CANCEL);
+			d.set_textbox(_("Server: "), preferences::campaign_server());
+			d.add_button( new gui::dialog_button(disp().video(), _("Remove Add-ons"),
+				gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
+			res = d.show();
+			host = d.textbox_text();
+		}
 
 		if (res == 0 )	// Get Add-Ons
 		{
