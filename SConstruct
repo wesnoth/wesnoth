@@ -337,9 +337,8 @@ if env["prereqs"]:
         conf.CheckPNG() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
 
     have_X = conf.CheckLib('X11') or Warning("wesnoth_editor cannot be built.")
-    have_fribidi = False
     if env['fribidi']:
-        have_fribidi = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Die("Can't find libfribidi, please install it or rebuild with fribidi=no.")
+        env['fribidi'] = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Warning("Can't find libfribidi, disabling freebidi support.")
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
@@ -348,7 +347,6 @@ if env["prereqs"]:
 else:
     have_client_prereqs = True
     have_X = True
-    have_fribidi = True
     have_server_prereqs = True
 
 boost_test_dyn_link = boost_auto_test = False
