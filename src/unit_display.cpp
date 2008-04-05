@@ -78,11 +78,13 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 	unit_animator animator;
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a);
 	animator.start_animations();
+        animator.pause_animation();
+	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
+        animator.restart_animation();
 	int target_time = animator.get_animation_time_potential();
 	target_time += 150;
 	target_time -= target_time%150;
 	if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=150;
-	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 	animator.wait_until(target_time);
 	gamemap::location arr[6];
 	get_adjacent_tiles(a, arr);

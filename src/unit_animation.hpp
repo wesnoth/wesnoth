@@ -52,6 +52,8 @@ class unit_animation
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; };
 		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; };
 		void start_animation(int start_time,const gamemap::location &src = gamemap::location::null_location, const gamemap::location &dst = gamemap::location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0,const bool accelerate = true);
+                void pause_animation();
+                void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
 		void redraw();
 		void invalidate( ) const;
@@ -130,6 +132,8 @@ class unit_animator
 				const attack_type* attack=NULL, const attack_type* second_attack = NULL,
 				int swing_num =0);
 		void start_animations();
+                void pause_animation();
+                void restart_animation();
 		void empty(){start_time_ = INT_MIN ; animated_units_.clear();};
 
 

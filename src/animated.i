@@ -115,6 +115,10 @@ void animated<T,T_void_value>::update_last_draw_time(double acceleration)
                 start_tick_ =  last_update_tick_ +
                         static_cast<int>(( starting_frame_time_ - tmp)/acceleration_);
         }
+        if(!started_ && start_tick_ != 0) {
+                // animation is paused
+                start_tick_ +=current_ticks -last_update_tick_;
+        }
 	last_update_tick_ = current_ticks;
 	if (need_first_update_) {
 		need_first_update_ = false;
@@ -156,7 +160,7 @@ bool animated<T,T_void_value>::need_update() const
 	if(frames_.empty()) {
 		return false;
 	}
-	if(!started_) {
+	if(!started_ && start_tick_ == 0) {
 		return false;
 	}
 	if(current_ticks >
@@ -173,7 +177,7 @@ bool animated<T,T_void_value>::animation_finished_potential() const
 {
 	if(frames_.empty())
 		return true;
-	if(!started_)
+	if(!started_ && start_tick_ == 0)
 		return true;
 	if(cycles_ )
                 return true;
@@ -187,7 +191,7 @@ bool animated<T,T_void_value>::animation_finished() const
 {
 	if(frames_.empty())
 		return true;
-	if(!started_)
+	if(!started_ && start_tick_ == 0)
 		return true;
         if(cycles_)
                 return true;
@@ -200,7 +204,7 @@ bool animated<T,T_void_value>::animation_finished() const
 template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_animation_time_potential() const
 {
-	if(!started_  ) return starting_frame_time_;
+	if(!started_  && start_tick_ == 0 ) return starting_frame_time_;
 
 	return  tick_to_time(current_ticks);
 }
@@ -208,7 +212,7 @@ int animated<T,T_void_value>::get_animation_time_potential() const
 template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_animation_time() const
 {
-	if(!started_  ) return starting_frame_time_;
+	if(!started_  && start_tick_ == 0 ) return starting_frame_time_;
 
 	return  tick_to_time(last_update_tick_);
 }
@@ -291,13 +295,13 @@ int animated<T,T_void_value>::get_begin_time() const
 template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::time_to_tick(int animation_time) const
 {
-        if(!started_) return 0;
+        if(!started_ && start_tick_ == 0) return 0;
         return start_tick_ + static_cast<int>((animation_time-starting_frame_time_)/acceleration_);
 }
 template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::tick_to_time(int animation_tick) const
 {
-        if(!started_) return 0;
+        if(!started_ && start_tick_ == 0) return 0;
 	return static_cast<int>(
         (static_cast<double>(animation_tick - start_tick_) *
         acceleration_) + starting_frame_time_);

@@ -700,6 +700,24 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 		anim_itor->second.start_animation(start_time,src,dst,cycles);
 	}
 }
+void unit_animation::pause_animation()
+{
+
+	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
+	unit_anim_.pause_animation();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		anim_itor->second.pause_animation();
+	}
+}
+void unit_animation::restart_animation()
+{
+
+	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
+	unit_anim_.restart_animation();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		anim_itor->second.restart_animation();
+	}
+}
 void unit_animation::redraw()
 {
 
@@ -880,4 +898,20 @@ int unit_animator::get_end_time() const
 	       }
         }
         return end_time;
+}
+void unit_animator::pause_animation()
+{
+        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+	       if(anim->my_unit->get_animation()) {
+                anim->my_unit->get_animation()->pause_animation();
+	       }
+        }
+}
+void unit_animator::restart_animation()
+{
+        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+	       if(anim->my_unit->get_animation()) {
+                anim->my_unit->get_animation()->restart_animation();
+	       }
+        }
 }

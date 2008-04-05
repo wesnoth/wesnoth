@@ -54,6 +54,8 @@ public:
 	//! The first frame of the animation to start may be set
 	//! to any value by using a start_time different to 0.
 	void start_animation(int start_time, bool cycles=false);
+	void pause_animation(){ started_ =false;};
+	void restart_animation(){if(start_tick_) started_ = true;};
 
 	int get_begin_time() const;
 	int get_end_time() const;

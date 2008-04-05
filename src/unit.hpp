@@ -184,6 +184,7 @@ public:
 	void set_standing(const gamemap::location& loc, bool with_bars = true);
 	void set_idling(const game_display& disp,const gamemap::location& loc);
 	void set_selecting(const game_display& disp,const gamemap::location& loc);
+	unit_animation* get_animation() {  return anim_;};
 	const unit_animation* get_animation() const {  return anim_;};
 	void set_facing(gamemap::location::DIRECTION dir);
 	gamemap::location::DIRECTION facing() const { return facing_; }
