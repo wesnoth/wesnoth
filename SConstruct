@@ -976,7 +976,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 )
 
         env.Alias("pot-update", pot)
-        env.Alias("pot-update", "translations")
+    env.Alias("pot-update", "translations")
 
 if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
@@ -993,7 +993,6 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
             NoClean(update_po)
 
             env.Alias(lingua, update_po)
-            env.Alias("pot-update", update_po)
             if lingua in COMMAND_LINE_TARGETS:
                 env.AlwaysBuild(update_po)
 
