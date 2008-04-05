@@ -247,6 +247,31 @@ twidget* tgrid::get_widget(const tpoint& coordinate)
 	return 0;
 }
 
+//! Gets a widget with the wanted id.
+//! Override base class.
+twidget* tgrid::get_widget_by_id(const std::string& id)
+{
+
+	//! FIXME we need to store the sizes, since this is quite
+	//! pathatic.
+	for(unsigned row = 0; row < rows_; ++row) {
+		for(unsigned col = 0; col < cols_; ++col) {
+
+			twidget* widget = child(row, col).widget();
+			if(!widget) {
+				continue;
+			}
+			
+			widget = widget->get_widget_by_id(id);
+			if(widget) { 
+				return widget;
+			}
+		}
+	}
+	
+	return twidget::get_widget_by_id(id);
+}
+
 tpoint tgrid::tchild::get_best_size()
 {
 	if(!dirty_ && (!widget_ || !widget_->dirty())) {

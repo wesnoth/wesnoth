@@ -21,6 +21,29 @@ class CVideo;
 
 namespace gui2 {
 
+class taddon_connect
+{
+public:
+	taddon_connect() : 
+		retval_(0),
+		host_name_()
+	{}
+
+	void show(CVideo& video);
+
+	int get_retval() const { return retval_; }
+
+	const std::string& host_name() const { return host_name_; }
+
+	void set_host_name(const std::string& host_name) 
+		{ host_name_ = host_name; }
+
+private:
+	int retval_;
+	std::string host_name_;
+
+};
+
 	int addon_connect(CVideo& video, const std::string& server);
 
 } // namespace gui2

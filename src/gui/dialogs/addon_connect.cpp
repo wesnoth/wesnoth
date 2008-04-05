@@ -30,20 +30,23 @@
 
 namespace gui2 {
 
-static void hello()
-{
-	std::cerr << "\n\n\nHello world.\n\n\n";
-}
-
-int addon_connect(CVideo& video, const std::string& server)
+void taddon_connect::show(CVideo& video)
 {
 
 	gui2::init();
-	gui2::twindow window = build(video, get_id(ADDON_CONNECT));
 
-//	window.connect("connect", &hello);
+	twindow window = build(video, get_id(ADDON_CONNECT));
 
-	return window.show(true);
+	tcontrol* host_widget = dynamic_cast<tcontrol*>(window.get_widget_by_id("host_name"));
+	if(host_widget) {
+		host_widget->set_label(host_name_);
+	}
+
+	retval_ = window.show(true);
+
+	if(host_widget) {
+		host_name_= host_widget->label();
+	}
 }
 
 

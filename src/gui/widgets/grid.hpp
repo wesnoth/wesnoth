@@ -83,6 +83,10 @@ public:
 	//! Override base class.
 	twidget* get_widget(const tpoint& coordinate);
 
+	//! Gets a widget with the wanted id.
+	//! Override base class.
+	twidget* get_widget_by_id(const std::string& id);
+
 private:
 	class tchild 
 	{

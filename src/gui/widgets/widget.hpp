@@ -240,6 +240,10 @@ public:
 			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
 	}
 
+	//! Gets a widget with the wanted id.
+	twidget* get_widget_by_id(const std::string& id)
+		{ return id_ == id ? this : 0; }
+
 	//! The toplevel item should always be a window if not null is returned
 	twindow* get_window();
 
