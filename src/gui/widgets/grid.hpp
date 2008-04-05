@@ -71,7 +71,7 @@ public:
 	unsigned int get_cols() const { return cols_; }
 
 	void remove_child(const unsigned row, const unsigned col);
-	void removed_child(const std::string& id, const bool find_all = false);
+	void remove_child(const std::string& id, const bool find_all = false);
 
 	//! Inherited
 	tpoint get_best_size();

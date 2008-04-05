@@ -129,7 +129,7 @@ void tgrid::remove_child(const unsigned row, const unsigned col)
 	cell.set_widget(0);
 }
 
-void tgrid::removed_child(const std::string& id, const bool find_all)
+void tgrid::remove_child(const std::string& id, const bool find_all)
 {
 	for(std::vector<tchild>::iterator itor = children_.begin();
 			itor != children_.end(); ++itor) {
