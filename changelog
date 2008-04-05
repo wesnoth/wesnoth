@@ -20,6 +20,7 @@ Version 1.5.0-svn:
    * placement of the counters and displays of the top panel optimized
    * new history feature for entering searches, chat messages, commands, and
      AI formulas
+   * optional cancelling of unit orders in load-game dialog (patch #1024)
  * language and i18n:
    * new translation: Croatian
    * updated translations: Chienese, Czech, Danish, Dutch, Finnish, French,
@@ -76,9 +77,12 @@ Version 1.5.0-svn:
    * new [unit_side] theme element : this is the side of the current unit (flag)
    * Preprocessor now logs when it encounters an undefined macro, and when it
      fails opening a file.
-   * Implemented prerecall/recall. Now prerecruit/recruit will no more trigger on recall events
-   * Add support for overlay terrains (terrains which can be placed above any base terrain)
+   * Implemented prerecall/recall. Now prerecruit/recruit will no more trigger
+     on recall events
+   * Add support for overlay terrains (terrains which can be placed above any
+     base terrain)
  * miscellaneous and bug fixes:
+   * Changed logging to have less overhead when it is turned off (patch #1038)
    * Fixed error message for broken add-on campaigns (bug #11078)
    * Refactored the in-game console and added help function (patch #1036)
    * Added new commandline options (patch #1031)
