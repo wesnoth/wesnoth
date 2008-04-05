@@ -553,6 +553,17 @@ libwesnoth_sources = [
     "src/widgets/textbox.cpp",
     "src/widgets/widget.cpp",
     "src/wml_exception.cpp",
+    "src/gui/dialogs/addon_connect.cpp",
+    "src/gui/widgets/button.cpp",
+    "src/gui/widgets/canvas.cpp",
+    "src/gui/widgets/event_handler.cpp",
+    "src/gui/widgets/grid.cpp",
+    "src/gui/widgets/label.cpp",
+    "src/gui/widgets/settings.cpp",
+    "src/gui/widgets/text_box.cpp",
+    "src/gui/widgets/widget.cpp",
+    "src/gui/widgets/window.cpp",
+    "src/gui/widgets/window_builder.cpp",
     ]
 env.Library("wesnoth", libwesnoth_sources, 
             CPPPATH = commonpath + ['src/serialization'])
