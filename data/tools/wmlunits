@@ -23,6 +23,9 @@ def parse_core_macros_and_WML(text_to_parse):
     parser = wmlparser.Parser(datadir)
     parser.do_preprocessor_logic = True
     #parser.verbose = True
+
+    # Suppress complaints about undefined terrain macros
+    parser.set_macro_not_found_callback(lambda wmlparser, name, params: name.startswith("TERRAIN") or name == "DISABLE_TRANSITIONS")
     
     # Create a new WML object.
     WML = wmldata.DataSub("WML")
