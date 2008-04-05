@@ -356,7 +356,7 @@ class event_handler
 {
 public:
 	event_handler(const config& cfg) :
-		name_(cfg["name"]),
+		names_(utils::split(cfg["name"])),
 		first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
 		disabled_(false),rebuild_screen_(false),
 		cfg_(&cfg)
@@ -370,7 +370,7 @@ public:
 		cfg = cfg_.get_config();
 	}
 
-	const std::string& name() const { return name_; }
+	const std::vector< std::string >& names() const { return names_; }
 
 	bool first_time_only() const { return first_time_only_; }
 
@@ -415,7 +415,7 @@ public:
 private:
 	void handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated, bool& skip_messages);
 
-	std::string name_;
+	std::vector< std::string > names_;
 	bool first_time_only_;
 	bool disabled_;
 	bool rebuild_screen_;
@@ -2743,8 +2743,13 @@ static void commit_new_handlers() {
 	// Commit any spawned events-within-events
 	while(new_handlers.size() > 0) {
 		event_handler& new_handler = new_handlers.back();
-		events_map.insert(std::pair<std::string,event_handler>(new_handler.name(),new_handler));
-		LOG_NG << "spawning new handler for event " << new_handler.name() << "\n";
+		std::vector<std::string> names = new_handler.names();
+		std::vector<std::string>::iterator iter,end;
+		for (iter = names.begin(),end = names.end();
+		     iter != end; ++iter) {
+		  events_map.insert(std::pair<std::string,event_handler>(*iter,new_handler));
+		  LOG_NG << "spawning new handler for event " << *iter << "\n";
+		}
 		//new_handler.cfg_->debug(lg::info(lg::engine));
 		new_handlers.pop_back();
 	}
@@ -2762,8 +2767,12 @@ static void commit_wmi_commands() {
 				mref->command["name"] = mref->name;
 				mref->command["first_time_only"] = "no";
 				event_handler new_handler(mref->command);
-				events_map.insert(std::pair<std::string,event_handler>(
-					new_handler.name(), new_handler));
+				std::vector<std::string> names = new_handler.names();
+				std::vector<std::string>::iterator iter,end;
+				for (iter = names.begin(),end = names.end();
+				     iter != end; ++iter) {
+				  events_map.insert(std::pair<std::string,event_handler>(*iter, new_handler));
+				}
 			}
 		} else if(mref->command.empty()) {
 			mref->command["name"] = mref->name;
@@ -2969,8 +2978,12 @@ manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
 	for(config::child_list::const_iterator i = events_list.begin();
 	    i != events_list.end(); ++i) {
 		event_handler new_handler(**i);
-		events_map.insert(std::pair<std::string,event_handler>(
-					new_handler.name(), new_handler));
+		std::vector<std::string> names = new_handler.names();
+		std::vector<std::string>::iterator iter,end;
+		for (iter = names.begin(),end = names.end();
+		     iter != end; ++iter) {
+		  events_map.insert(std::pair<std::string,event_handler>(*iter, new_handler));
+		}
 	}
 	std::vector<std::string> unit_ids = utils::split(cfg["unit_wml_ids"]);
 	for(std::vector<std::string>::const_iterator id_it = unit_ids.begin(); id_it != unit_ids.end(); ++id_it) {
@@ -2999,8 +3012,12 @@ manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
 	while(itor != state_of_game->wml_menu_items.end()) {
 		if(!itor->second->command.empty()) {
 			event_handler new_handler(itor->second->command);
-			events_map.insert(std::pair<std::string,event_handler>(
-				new_handler.name(), new_handler));
+			std::vector<std::string> names = new_handler.names();
+			std::vector<std::string>::iterator iter,end;
+			for (iter = names.begin(),end = names.end();
+			     iter != end; ++iter) {
+			  events_map.insert(std::pair<std::string,event_handler>(*iter, new_handler));
+			}
 		}
 		++itor;
 		++wmi_count;
@@ -3084,7 +3101,12 @@ void add_events(const config::child_list& cfgs,const std::string& id)
 		for(config::child_list::const_iterator new_ev = cfgs.begin(); new_ev != cfgs.end(); ++ new_ev) {
 			unit_wml_configs.push_back(new config(**new_ev));
 			event_handler new_handler(*unit_wml_configs.back());
-			events_map.insert(std::pair<std::string,event_handler>(new_handler.name(), new_handler));
+			std::vector<std::string> names = new_handler.names();
+			std::vector<std::string>::iterator iter,end;
+			for (iter = names.begin(),end = names.end();
+			     iter != end; ++iter) {
+			  events_map.insert(std::pair<std::string,event_handler>(*iter, new_handler));
+			}
 		}
 	}
 }
