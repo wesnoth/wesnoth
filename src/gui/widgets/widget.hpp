@@ -168,8 +168,8 @@ public:
 		parent_(0),
 		x_(-1),
 		y_(-1),
-		w_(-1),
-		h_(-1),
+		w_(0),
+		h_(0),
 		dirty_(true)
 		{}
 	virtual ~twidget() {}
