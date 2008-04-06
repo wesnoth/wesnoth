@@ -216,6 +216,8 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         except (ValueError, IndexError):
             patch_level = 0
 
+    backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
+
     sdldir = context.env.get("SDLDIR", "/usr/")
     if sdl_lib == "SDL": 
         if require_version:
@@ -255,6 +257,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         return True
     else:
         context.Result("no")
+        restore_env(env, backup)
         return False
 
 def CheckOgg(context):
