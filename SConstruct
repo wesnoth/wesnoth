@@ -1143,7 +1143,7 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
      env.Alias("install-editor",
                           env.Install(env["desktopdir"],
                                          "icons/wesnoth_editor.desktop"))
-InstallLocalizedManPage("install_editor", "wesnoth_editor.6", env)
+InstallLocalizedManPage("install-editor", "wesnoth_editor.6", env)
 
 # Python tools
 install_pytools = env.Alias("install-pytools", [
@@ -1156,7 +1156,7 @@ install_pytools = env.Alias("install-pytools", [
 # Wesnoth MP server install
 install_wesnothd = env.Install(bindir, wesnothd)
 env.Alias("install-wesnothd", install_wesnothd)
-env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"),
+env.Alias("install-wesnothd", env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"))
 for lang in filter(CopyFilter, os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
      if os.path.isdir(sourcedir):
@@ -1200,7 +1200,7 @@ if env["nls"]:
 deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + daemons) \
             + [Delete(datadir), Delete(pythonlib), Delete(fifodir), Delete(docdir)] \
             + map(lambda x: Delete(os.path.join(mandir, "man6", x)), [ "wesnoth.6", "wesnoth_editor.6" ]) \
-            + Flatten(map(lambda mandir : map(lambda x: Delete(os.path.join(mandir, x)), [ "wesnoth.6", "wesnoth_editor.6" ]), localized_man_dirs.values()))
+            + Flatten(map(lambda mandir : map(lambda x: Delete(os.path.join(mandir, x)), [ "wesnoth.6", "wesnoth_editor.6", "wesnothd.6" ]), localized_man_dirs.values()))
 uninstall = env.Command('uninstall', '', deletions)
 env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
