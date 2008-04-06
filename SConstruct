@@ -52,6 +52,9 @@ opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False)
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
 opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', False))
+opts.Add(PathOption('boostdir', 'Directory of boost installation.', '/usr/include'))
+opts.Add(PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'))
+opts.Add('boost_suffix', 'Suffix of boost libraries.')
 
 #
 # Setup
@@ -146,14 +149,14 @@ def restore_env(env, backup):
 
 def CheckBoostLib(context, boost_lib, require_version = None):
     env = context.env
-    boostdir = env.get("BOOSTDIR", "/usr/include")
-    boostlibdir = env.get("BOOSTLIBDIR", "/usr/lib")
+    boostdir = env.get("boostdir", "/usr/include")
+    boostlibdir = env.get("boostlibdir", "/usr/lib")
     backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
 
     boost_headers = { "regex" : "regex/config.hpp",
                       "iostreams" : "iostreams/constants.hpp" }
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
-    libname = "boost_" + boost_lib + env.get("BOOST_SUFFIX", "")
+    libname = "boost_" + boost_lib + env.get("boost_suffix", "")
 
     env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     env.AppendUnique(LIBS = [libname])
@@ -190,8 +193,8 @@ def CheckBoost(context, boost_lib, require_version = None):
     else:
         context.Message("Checking for Boost %s library... " % boost_lib)
     check_result = CheckBoostLib(context, boost_lib, require_version)
-    if not check_result and not context.env.get("BOOST_SUFFIX"):
-        context.env["BOOST_SUFFIX"] = "-mt"
+    if not check_result and not context.env.get("boost_suffix"):
+        context.env["boost_suffix"] = "-mt"
         check_result = CheckBoostLib(context, boost_lib, require_version)
     if check_result:
         context.Result("yes")
@@ -456,9 +459,9 @@ if env["CC"] == "gcc":
 
 # Platform-specific support, straight from configure.ac
 if env["PLATFORM"] == 'win32':				# Microsoft Windows
-    env.Append("unicows")			# Windows Unicode lib
+    env.Append(LIBS = "unicows")			# Windows Unicode lib
 elif env["PLATFORM"] == 'darwin':				# Mac OS X
-    env.Append("-framework Carbon")		# Carbon GUI
+    env.Append(FRAMEWORKS = "Carbon")		# Carbon GUI
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
