@@ -21,7 +21,12 @@
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 #include "pathutils.hpp"
+#include "log.hpp"
 #include "attack_prediction.hpp"
+
+#define LOG_AI LOG_STREAM(info, ai)
+#define WRN_AI LOG_STREAM(warn, ai)
+#define ERR_AI LOG_STREAM(err, ai)
 
 namespace {
 using namespace game_logic;
@@ -193,7 +198,12 @@ private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> vars;
 		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		size_t range = static_cast<size_t>(args()[1]->evaluate(variables).as_int());
+		int range_s = args()[1]->evaluate(variables).as_int();
+		if (range_s < 0) {
+			WRN_AI << "close_enemies_function: range is negative (" << range_s << ")\n";
+			range_s = 0;
+		}
+		size_t range = static_cast<size_t>(range_s);
 		unit_map::const_iterator un = ai_.get_info().units.begin();
 		unit_map::const_iterator end = ai_.get_info().units.end();
 		while (un != end) {
@@ -277,7 +287,7 @@ private:
 			status.push_back(variant("Poisoned"));
 		if (bc.get_attacker_combatant().slowed != 0)
 			status.push_back(variant("Slowed"));
-		if (bc.get_defender_stats().stones && hitLeft[0].as_int() != bc.get_attacker_stats().hp)
+		if (bc.get_defender_stats().stones && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
 			status.push_back(variant("Stoned"));
 		if (bc.get_defender_stats().plagues && hitLeft[0].as_int() == 0)
 			status.push_back(variant("Zombiefied"));
@@ -300,7 +310,7 @@ private:
 			status.push_back(variant("Poisoned"));
 		if (bc.get_defender_combatant().slowed != 0)
 			status.push_back(variant("Slowed"));
-		if (bc.get_attacker_stats().stones && hitLeft[0].as_int() != bc.get_attacker_stats().hp)
+		if (bc.get_attacker_stats().stones && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
 			status.push_back(variant("Stoned"));
 		if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
 			status.push_back(variant("Zombiefied"));
