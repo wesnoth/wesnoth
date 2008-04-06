@@ -349,6 +349,9 @@ else:
     have_X = True
     have_server_prereqs = True
 
+env.Append(CPPPATH = ["src", "/usr/include/python%s" % sys.version[:3]])
+env.Append(LIBS = ["png"])
+
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
     boost_test_dyn_link = conf.CheckCXXHeader('boost/test/unit_test.hpp')
@@ -367,7 +370,6 @@ env = conf.Finish()
 #
 # Implement configuration switches
 #
-extralibs=[]
 
 # FIXME: Unix-specific.
 # Link only on demand, so we don't need separate link lists for each binary
@@ -402,7 +404,6 @@ if env['lowmem']:
 
 if env['fribidi']:
         env["CXXFLAGS"].append("-DHAVE_FRIBIDI")
-        extralibs.append("fribidi")
 
 if env['raw_sockets']:
     env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
@@ -455,24 +456,11 @@ if env["CC"] == "gcc":
         print "Your compiler version is too old"
         Exit(1)
 
-#
-# Libraries and source groups
-#
-# The png library specification is not needed everywhere.  Some versions of
-# (probably) SDL_image must carry it internally.
-boost_libs = Split("boost_iostreams boost_regex")
-SDL_libs = Split("SDL_net SDL_ttf SDL_mixer SDL_image SDL")
-commonlibs = SDL_libs + boost_libs + ["pthread", "png", "-lpython"+sys.version[:3]]
-wesnothdlibs = ["SDL_net", "boost_iostreams-mt", "pthread"]
-commonpath = ['src', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]]
-
-env.Append(LIBPATH = ".")
-
 # Platform-specific support, straight from configure.ac
-if sys.platform == 'win32':				# Microsoft Windows
-    commonlibs.append("unicows")			# Windows Unicode lib
-elif sys.platform == 'darwin':				# Mac OS X
-    env["CXXFLAGS"].append("-framework Carbon")		# Carbon GUI
+if env["PLATFORM"] == 'win32':				# Microsoft Windows
+    env.Append("unicows")			# Windows Unicode lib
+elif env["PLATFORM"] == 'darwin':				# Mac OS X
+    env.Append("-framework Carbon")		# Carbon GUI
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
@@ -498,8 +486,7 @@ libwesnoth_core_sources = [
     "src/serialization/string_utils.cpp",
     "src/serialization/tokenizer.cpp",
     ]
-env.Library("wesnoth_core", libwesnoth_core_sources, 
-            CPPPATH = commonpath + ['src/serialization'])
+libwesnoth_core = env.Library("wesnoth_core", libwesnoth_core_sources)
 
 libwesnoth_sources = [
     "src/astarnode.cpp",
@@ -564,34 +551,30 @@ libwesnoth_sources = [
     "src/gui/widgets/window.cpp",
     "src/gui/widgets/window_builder.cpp",
     ]
-env.Library("wesnoth", libwesnoth_sources, 
-            CPPPATH = commonpath + ['src/serialization'])
+libwesnoth = env.Library("wesnoth", libwesnoth_sources)
 
 libwesnothd_sources = [
     "src/loadscreen_empty.cpp",
     "src/tools/dummy_video.cpp",
     ]
-env.Library("wesnothd", libwesnothd_sources, 
+libwesnothd = env.Library("wesnothd", libwesnothd_sources, 
             CPPPATH = ['src', '/usr/include/SDL'])
 
 libcampaignd_sources = [
     "src/publish_campaign.cpp",
     ]
-env.Library("campaignd", libcampaignd_sources, 
-            CPPPATH = commonpath)
+libcampaignd = env.Library("campaignd", libcampaignd_sources)
 
 libwesnoth_sdl_sources = [
     "src/sdl_utils.cpp",
     ]
-env.Library("wesnoth_sdl", libwesnoth_sdl_sources, 
-            CPPPATH = commonpath)
+libwesnoth_sdl = env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
 
 libcutter_sources = [
     "src/tools/exploder_utils.cpp",
     "src/tools/exploder_cutter.cpp",
     ]
-env.Library("cutter", libcutter_sources, 
-            CPPPATH = commonpath)
+libcutter = env.Library("cutter", libcutter_sources)
 
 # Used by both 'wesnoth' and 'test' targets
 wesnoth_sources = [
@@ -664,9 +647,7 @@ wesnoth_sources = [
 #
 
 if have_client_prereqs:
-    wesnoth = env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources,
-            CPPPATH = commonpath + ['src/server'],
-            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth', 'campaignd'] + commonlibs + extralibs)
+    wesnoth = env.Program("wesnoth", ["src/game.cpp"] + wesnoth_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd])
 else:
     wesnoth = None
 
@@ -682,9 +663,7 @@ wesnoth_editor_sources = [
     "src/animated_editor.cpp",
     ]
 if have_client_prereqs and have_X:
-    wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources,
-            CPPPATH = commonpath,
-            LIBS = ['wesnoth_core', 'wesnoth_sdl', 'wesnoth'] + commonlibs + extralibs)
+    wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth])
 else:
     wesnoth_editor = None
 
@@ -692,9 +671,7 @@ campaignd_sources = [
     "src/campaign_server/campaign_server.cpp",
     ]
 if have_server_prereqs:
-    campaignd = env.Program("campaignd", campaignd_sources,
-            CPPPATH = ['src', 'src/server', '/usr/include/SDL', '/usr/include/python%s' % sys.version[:3]],
-            LIBS = ['wesnoth_core', 'wesnothd', 'campaignd', 'wesnoth'] + commonlibs)
+    campaignd = env.Program("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libwesnoth])
 else:
     campaignd = None
 
@@ -708,9 +685,7 @@ wesnothd_sources = [
     "src/server/simple_wml.cpp",
     ]
 if have_server_prereqs:
-    wesnothd = env.Program("wesnothd", wesnothd_sources,
-            CPPPATH = ['src', 'src/server', '/usr/include/SDL'],
-            LIBS =  ['wesnoth_core', 'wesnothd'] + wesnothdlibs)
+    wesnothd = env.Program("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd])
 else:
     wesnothd = None
 
@@ -718,9 +693,7 @@ cutter_sources = [
     "src/tools/cutter.cpp",
     ]
 if have_client_prereqs:
-    cutter = env.Program("cutter", cutter_sources,
-            CPPPATH = commonpath,
-            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs)
+    cutter = env.Program("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth])
 else:
     cutter = None
 
@@ -729,9 +702,7 @@ exploder_sources = [
     "src/tools/exploder_composer.cpp",
     ]
 if have_client_prereqs:
-    exploder = env.Program("exploder", exploder_sources,
-            CPPPATH = commonpath,
-            LIBS =  ['cutter', 'wesnoth_core', 'wesnoth_sdl', 'wesnothd', 'wesnoth'] + commonlibs)
+    exploder = env.Program("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth])
 else:
     exploder = None
 
@@ -742,8 +713,8 @@ test_sources = [
     "src/tests/test_util.cpp",
     ]
 test_env.Program("test", test_sources,
-            CPPPATH = commonpath + ['/usr/include'],
-            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + commonlibs + ['boost_unit_test_framework'])
+            CPPPATH = env["CPPPATH"] + ['/usr/include'],
+            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + env["LIBS"] + ['boost_unit_test_framework'])
 
 # FIXME: Currently this will only work under Linux
 env["svnrev"] = commands.getoutput("svnversion -n . 2>/dev/null")
