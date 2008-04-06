@@ -12,6 +12,7 @@
 import os, sys, commands, shutil, sets, re
 from glob import glob
 from subprocess import Popen, PIPE
+from os import access, F_OK
 from SCons.Script import *
 
 # Warn user of current set of build options.
@@ -26,6 +27,7 @@ if os.path.exists('.scons-option-cache'):
 
 opts = Options('.scons-option-cache')
 
+opts.Add(PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept))
 opts.Add('cachedir', 'Directory that contains a cache of derived files.', '')
 opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
@@ -43,6 +45,7 @@ opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
 opts.Add(BoolOption('profile', 'Set to build for debugging', False))
+#opts.Add('programsuffix', 'suffix to append to names of installed programs',"")
 opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
@@ -71,20 +74,21 @@ Important switches include:
     prefix=/usr     probably what you want for production tools
     debug=yes       enable compiler and linker debugging switches
 
-Available build targets include the individual binaries:
+With no arguments, the recipe builds wesnoth and wesnothd.  Available
+build targets include the individual binaries:
 
     wesnoth wesnoth_editor wesnothd campaignd exploder cutter test
 
-The following special build targets
+You can make the following special build targets:
 
     all = wesnoth wesnoth_editor exploder cutter wesnothd campaignd (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
-    install-clientside = install 'all' executables and scripts.
     install = synonym for install-clientside
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
-    uninstall = uninstall all executables, tools, and servers.
+    install-pytools = install all Python tools and modules
+    uninstall = uninstall all executables, tools, modules, and servers.
     pot-update = generate gettext message catalog templates and merge them with localized message catalogs
     update-po = merge message catalog templates with localized message catalogs for particular lingua
     af bg ca ... = linguas for update-po
@@ -430,7 +434,7 @@ if env['dummy_locales']:
     env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
 
 # Simulate autools-like behavior of prefix on various paths
-for d in ("datadir", "fifodir", "icondir", "desktopdir"):
+for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir"):
      if not os.path.isabs(env[d]):
           env[d] = os.path.join(env["prefix"], env[d])
 
@@ -1007,25 +1011,32 @@ if env["dummy_locales"]:
 # and doc files.
 #
 
-bindir = os.path.normpath(os.path.join(env['prefix'], "bin"))
+bindir = env['bindir']
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
 docdir = os.path.join(env['prefix'], "share/doc/wesnoth")
-installable_subdirs = Split('data fonts icons images sounds')
+installable_subs = Split('data fonts icons images sounds')
 if env['nls']:
-    installable_subdirs.append("translations")
+    installable_subs.append("translations")
 if env['dummy_locales']:
-    installable_subdirs.append("locales")
+    installable_subs.append("locales")
 fifodir = env['fifodir']
 mandir = os.path.join(env["prefix"], "share/man")
 clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
 pythontools = Split("wmlscope wmllint wmlindent add-on_manager.py")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
+localized_man_dirs = {}
 
 def CopyFilter(fn):
     "Filter out data-tree things that shouldn't be installed."
     return not ".svn" in str(fn) and not "Makefile" in str(fn)
+
+for lang in filter(CopyFilter, os.listdir("doc/man")):
+     sourcedir = os.path.join("doc/man", lang)
+     if os.path.isdir(sourcedir):
+          targetdir = os.path.join(mandir, lang, "man6")
+          localized_man_dirs[sourcedir] = targetdir
 
 def InstallFilteredHook(target, source, env):
     if type(target) == type([]):
@@ -1070,63 +1081,80 @@ def InstallFilteredHook(target, source, env):
     return None
 env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
 
-# Client install
-clientside_env = env.Clone()
+def InstallLocalizedManPage(action, page, env):
+    actions = []
+    for (sourcedir, targetdir) in localized_man_dirs.items():
+        env.AddPostAction(action, env.Install(targetdir, 
+                                              os.path.join(sourcedir, page)))
+
 # TargetSignatures('content') causes a crash in the install
 # production, at least in scons 0.97, right after the actions finish
-# (thus, probably, at target-signature generation time).
-clientside_env.TargetSignatures('build')
-# Install binaries, Python modules, data, and English-language man pages
-env.Alias('install-clientside', [
-    clientside_env.Install(bindir, clientside),
-    clientside_env.Install(bindir, map(lambda tool : 'data/tools/' + tool, pythontools)),
-    clientside_env.Install(pythonlib, map(lambda module : 'data/tools/wesnoth/' + module, pythonmodules)),
-    clientside_env.InstallFiltered(Dir(datadir), map(Dir, installable_subdirs)),
-    clientside_env.InstallFiltered(Dir(docdir), Dir("doc/manual")),
-    clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
-    clientside_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth_editor.6"),
-    ])
-# Localized man pages
-localized_man_dirs = []
-for lang in filter(CopyFilter, os.listdir("doc/man")):
-     sourcedir = os.path.join("doc/man", lang)
-     if os.path.isdir(sourcedir):
-          targetdir = os.path.join(mandir, lang, "man6")
-          localized_man_dirs.append(targetdir)
-          env.Alias('install-clientside', 
-                    clientside_env.Install(targetdir, [
-                                      os.path.join(sourcedir, "wesnoth.6"),
-                                      os.path.join(sourcedir, "wesnoth_editor.6"),
-                                      ]))
-# Icon and desktop files
+# (thus, probably, at target-signature generation time).  So
+# disable it for installation productions.
+install_env = env.Clone()
+install_env.TargetSignatures('build')
+
+# Now the actual installation productions
+
+install_data = install_env.Clone().InstallFiltered(Dir(datadir),
+                                                   map(Dir, installable_subs))
+
+install_manual = install_env.Clone().InstallFiltered(Dir(docdir),
+                                                     Dir("doc/manual"))
+
+# The game and associated resources
+iw_env = install_env.Clone()
+install_wesnoth = iw_env.Alias("install-wesnoth", [
+    iw_env.Install(bindir, wesnoth),
+    iw_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
+    install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
-          env.Alias('install-clientside',
-                    clientside_env.Install(env["icondir"],
-                                           "icons/wesnoth-icon-Mac.png"))
+          iw_env.AddPostAction(install_wesnoth,
+                               iw_env.Install(env["icondir"],
+                                              "icons/wesnoth-icon-Mac.png"))
      else:
-          env.Alias('install-clientside',
-                    clientside_env.Install(env["icondir"],
-                                           "icons/wesnoth-icon.png"))
-     if sys.platform == "darwin":
-          env.Alias('install-clientside',
-                    clientside_env.Install(env["icondir"],
-                                           "icons/wesnoth_editor-icon-Mac.png"))
-     else:
-          env.Alias('install-clientside',
-                    clientside_env.Install(env["icondir"],
-                                           "icons/wesnoth_editor-icon.png"))
-     env.Alias('install-clientside',
-               clientside_env.Install(env["desktopdir"],
-                                      ["icons/wesnoth.desktop",
-                                       "icons/wesnoth_editor.desktop",
-                                       ]))
-env.Alias('install', 'install-clientside')
+         iw_env.AddPostAction(install_wesnoth,
+                              iw_env.Install(env["icondir"],
+                                             "icons/wesnoth-icon.png"))
+     env.AddPostAction(install_wesnoth,
+               iw_env.Install(env["desktopdir"],
+                                      "icons/wesnoth.desktop"))
+InstallLocalizedManPage(install_wesnoth, "wesnoth.6", iw_env)
 
-# Wesnoth server install
+# The editor and associated resources
+ie_env = install_env.Clone()
+install_editor = ie_env.Alias("install-editor", [
+    ie_env.Install(bindir, wesnoth_editor),
+    ie_env.Install(os.path.join(mandir, "man6"),
+                                "doc/man/wesnoth_editor.6"),
+    install_data, install_manual])
+if have_client_prereqs and have_X and env["desktop_entry"]:
+     if sys.platform == "darwin":
+          ie_env.AddPostAction(install_editor,
+                               ie_env.Install(env["icondir"],
+                                              "icons/wesnoth_editor-icon-Mac.png"))
+     else:
+          ie_env.AddPostAction(install_editor,
+                               ie_env.Install(env["icondir"],
+                                              "icons/wesnoth_editor-icon.png"))
+     ie_env.AddPostAction(install_editor,
+                          ie_env.Install(env["desktopdir"],
+                                         "icons/wesnoth_editor.desktop"))
+InstallLocalizedManPage(install_editor, "wesnoth_editor.6", ie_env)
+
+# Python tools
+install_pytools_env = install_env.Clone()
+install_pytools = install_pytools_env.Alias("install-pytools", [
+    install_pytools_env.Install(bindir,
+                                map(lambda tool: 'data/tools/' + tool, pythontools)),
+    install_pytools_env.Install(pythonlib,
+                                map(lambda module: 'data/tools/wesnoth/' + module, pythonmodules)),
+    ])
+
+# Wesnoth MP server install
 wesnothd_env = env.Clone()
 wesnothd_env.TargetSignatures('build')
-from os import access, F_OK
 install_wesnothd = wesnothd_env.Install(bindir, wesnothd)
 env.Alias("install-wesnothd", install_wesnothd)
 wesnothd_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"),
@@ -1146,6 +1174,7 @@ if not access(fifodir, F_OK):
                (env["server_uid"], env["server_gid"], fifodir)),
         ])
 
+# Wesnoth campaign server
 env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
 
 #
@@ -1172,7 +1201,7 @@ if env["nls"]:
 deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + daemons) \
             + [Delete(datadir), Delete(pythonlib), Delete(fifodir), Delete(docdir)] \
             + map(lambda x: Delete(os.path.join(mandir, "man6", x)), [ "wesnoth.6", "wesnoth_editor.6" ]) \
-            + Flatten(map(lambda mandir : map(lambda x: Delete(os.path.join(mandir, x)), [ "wesnoth.6", "wesnoth_editor.6" ]), localized_man_dirs))
+            + Flatten(map(lambda mandir : map(lambda x: Delete(os.path.join(mandir, x)), [ "wesnoth.6", "wesnoth_editor.6" ]), localized_man_dirs.values()))
 uninstall = env.Command('uninstall', '', deletions)
 env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
