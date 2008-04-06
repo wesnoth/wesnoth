@@ -2258,7 +2258,7 @@ variant ai::attack_analysis::get_value(const std::string& key) const
 		return variant(new location_callable(target));
 	} else if(key == "movements") {
 		std::vector<variant> res;
-		for(int n = 0; n != movements.size(); ++n) {
+		for(size_t n = 0; n != movements.size(); ++n) {
 			map_formula_callable* item = new map_formula_callable(NULL);
 			item->add("src", variant(new location_callable(movements[n].first)));
 			item->add("dst", variant(new location_callable(movements[n].second)));
@@ -2268,7 +2268,7 @@ variant ai::attack_analysis::get_value(const std::string& key) const
 		return variant(&res);
 	} else if(key == "units") {
 		std::vector<variant> res;
-		for(int n = 0; n != movements.size(); ++n) {
+		for(size_t n = 0; n != movements.size(); ++n) {
 			res.push_back(variant(new location_callable(movements[n].first)));
 		}
 

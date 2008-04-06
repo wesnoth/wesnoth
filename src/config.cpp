@@ -640,7 +640,7 @@ void config::merge_and_keep(const config& c)
 		const std::string& tag = i->first;
 		child_map::const_iterator j = children.find(tag);
 		if (j == children.end()) {
-		    for (int count=0; count < i->second.size(); count++)
+		    for (size_t count=0; count < i->second.size(); count++)
                 add_child(tag, *i->second[count]);
 		}
 	}

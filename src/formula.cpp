@@ -79,7 +79,7 @@ private:
 		std::vector<std::string> function_names = builtin_function_names();
 		std::vector<std::string> more_function_names = symbols_->get_function_names();
 		function_names.insert(function_names.end(), more_function_names.begin(), more_function_names.end());
-		for(int i = 0; i < function_names.size(); i++) {
+		for(size_t i = 0; i < function_names.size(); i++) {
 			res.push_back(variant(function_names[i]));
 		}
 		return variant(&res);
@@ -378,7 +378,7 @@ private:
 			return str_;
 		} else {
 			std::string res = str_.as_string();
-			for(int i=0; i < subs_.size(); ++i) {
+			for(size_t i=0; i < subs_.size(); ++i) {
 				const substitution& sub = subs_[i];
 				const std::string str = sub.calculation->execute(variables).string_cast();
 				res.insert(sub.pos, str);

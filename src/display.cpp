@@ -2016,7 +2016,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 }
 
 void display::invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) {
-	const SDL_Rect& rect = map_area();
+	// unused variable - const SDL_Rect& rect = map_area();
 	for (int x = minimum<int>(first_corner.x,second_corner.x); x <= maximum<int>(first_corner.x,second_corner.x);x++) {
 		for (int y = minimum<int>(first_corner.y,second_corner.y); y <= maximum<int>(first_corner.y,second_corner.y);y++) {
 			invalidate(gamemap::location(x,y));

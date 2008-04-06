@@ -128,7 +128,7 @@ private:
 		int best = 1000000;
 		int best_i = -1;
 
-		for(int i = 0; i < items.num_elements(); ++i) {
+		for(size_t i = 0; i < items.num_elements(); ++i) {
 
 			const gamemap::location move_loc = convert_variant<location_callable>(items[i])->loc();
 			int distance = distance_between(loc, move_loc);
@@ -192,7 +192,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> vars;
 		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		int range = args()[1]->evaluate(variables).as_int();
+		size_t range = static_cast<size_t>(args()[1]->evaluate(variables).as_int());
 		unit_map::const_iterator un = ai_.get_info().units.begin();
 		unit_map::const_iterator end = ai_.get_info().units.end();
 		while (un != end) {
@@ -220,7 +220,7 @@ private:
 		variant attack = args()[0]->evaluate(variables);
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
-		for(int n = 0; n != analysis->movements.size(); ++n) {
+		for(size_t n = 0; n != analysis->movements.size(); ++n) {
 			std::pair<gamemap::location,unit>* pair = units_with_moves.extract(analysis->movements[n].first);
 			pair->first = analysis->movements[n].second;
 			units_with_moves.add(pair);
@@ -795,7 +795,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 {
 	std::vector<variant> vars;
 	if(var.is_list()) {
-		for(int n = 0; n != var.num_elements(); ++n) {
+		for(size_t n = 0; n != var.num_elements(); ++n) {
 			vars.push_back(var[n]);
 		}
 	} else {
@@ -916,7 +916,7 @@ void formula_ai::do_recruitment()
 	variant var = recruit_formula_->execute(*this);
 	std::vector<variant> vars;
 	if(var.is_list()) {
-		for(int n = 0; n != var.num_elements(); ++n) {
+		for(size_t n = 0; n != var.num_elements(); ++n) {
 			vars.push_back(var[n]);
 		}
 	} else {

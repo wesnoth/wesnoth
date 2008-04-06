@@ -50,12 +50,12 @@ public:
 	    : name_(name), args_(args)
 	{
 		set_name(name.c_str());
-		if(min_args != -1 && args_.size() < min_args) {
+		if(min_args != -1 && args_.size() < static_cast<size_t>(min_args)) {
 			std::cerr << "too few arguments\n";
 			throw formula_error();
 		}
 
-		if(max_args != -1 && args_.size() > max_args) {
+		if(max_args != -1 && args_.size() > static_cast<size_t>(max_args)) {
 			std::cerr << "too many arguments\n";
 			throw formula_error();
 		}

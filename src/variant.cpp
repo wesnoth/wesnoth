@@ -247,12 +247,12 @@ variant variant::operator+(const variant& v) const
 		if(v.type_ == TYPE_LIST) {
 			std::vector<variant> res;
 			res.reserve(list_->elements.size() + v.list_->elements.size());
-			for(int i = 0; i<list_->elements.size(); ++i) {
+			for(size_t i = 0; i<list_->elements.size(); ++i) {
 				const variant& var = list_->elements[i];
 				res.push_back(var);
 			}
 
-			for(int j = 0; j<v.list_->elements.size(); ++j) {
+			for(size_t j = 0; j<v.list_->elements.size(); ++j) {
 				const variant& var = v.list_->elements[j];
 				res.push_back(var);
 			}
@@ -330,7 +330,7 @@ bool variant::operator==(const variant& v) const
 			return false;
 		}
 
-		for(int n = 0; n != num_elements(); ++n) {
+		for(size_t n = 0; n != num_elements(); ++n) {
 			if((*this)[n] != v[n]) {
 				return false;
 			}
@@ -381,7 +381,7 @@ bool variant::operator<=(const variant& v) const
 	}
 
 	case TYPE_LIST: {
-		for(int n = 0; n != num_elements() && n != v.num_elements(); ++n) {
+		for(size_t n = 0; n != num_elements() && n != v.num_elements(); ++n) {
 			if((*this)[n] < v[n]) {
 				return true;
 			} else if((*this)[n] > v[n]) {
@@ -437,7 +437,7 @@ void variant::serialize_to_string(std::string& str) const
 	case TYPE_LIST: {
 		str += "[";
 		bool first_time = true;
-		for(int i=0; i<list_->elements.size(); ++i) {
+		for(size_t i=0; i<list_->elements.size(); ++i) {
 			const variant& var = list_->elements[i];
 			if(!first_time) {
 				str += ",";
@@ -495,7 +495,7 @@ std::string variant::string_cast() const
 		return "(object)";
 	case TYPE_LIST: {
 		std::string res = "";
-		for(int i=0; i<list_->elements.size(); ++i) {
+		for(size_t i=0; i<list_->elements.size(); ++i) {
 			const variant& var = list_->elements[i];
 			if(!res.empty()) {
 				res += ", ";
@@ -531,7 +531,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 		break;
 	case TYPE_LIST: {
 		s << "[";
-		for(int n = 0; n != num_elements(); ++n) {
+		for(size_t n = 0; n != num_elements(); ++n) {
 			if(n != 0) {
 				s << ", ";
 			}
@@ -547,7 +547,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 			seen->push_back(callable_);
 			std::vector<game_logic::formula_input> v = callable_->inputs();
 			bool first = true;
-			for(int i=0; i<v.size(); ++i) {
+			for(size_t i=0; i<v.size(); ++i) {
 				const game_logic::formula_input& input = v[i];
 				if(!first) {
 					s << ", ";

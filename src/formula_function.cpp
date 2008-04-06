@@ -41,7 +41,7 @@ private:
 		const formula_callable* callable = var.as_callable();
 		std::vector<formula_input> inputs = callable->inputs();
 		std::vector<variant> res;
-		for(int i=0; i<inputs.size(); ++i) {
+		for(size_t i=0; i<inputs.size(); ++i) {
 			const formula_input& input = inputs[i];
 			res.push_back(variant(input.name));
 		}
@@ -72,7 +72,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		variant var = args()[0]->evaluate(variables);
-		for(int n = 1; n < args().size()-1; n += 2) {
+		for(size_t n = 1; n < args().size()-1; n += 2) {
 			variant val = args()[n]->evaluate(variables);
 			if(val == var) {
 				return args()[n+1]->evaluate(variables);
@@ -149,7 +149,7 @@ private:
 		const int value = args()[0]->evaluate(variables).as_int();
 		int begin = args()[1]->evaluate(variables).as_int();
 		int end = -1;
-		int n = 3;
+		size_t n = 3;
 		while(n < args().size()) {
 			end = args()[n]->evaluate(variables).as_int();
 			if(value >= begin && value <= end) {
@@ -207,10 +207,10 @@ private:
 	variant execute(const formula_callable& variables) const {
 		bool found = false;
 		int res = 0;
-		for(int n = 0; n != args().size(); ++n) {
+		for(size_t n = 0; n != args().size(); ++n) {
 			const variant v = args()[n]->evaluate(variables);
 			if(v.is_list()) {
-				for(int m = 0; m != v.num_elements(); ++m) {
+				for(size_t m = 0; m != v.num_elements(); ++m) {
 					if(!found || v[m].as_int() < res) {
 						res = v[m].as_int();
 						found = true;
@@ -238,10 +238,10 @@ private:
 	variant execute(const formula_callable& variables) const {
 		bool found = false;
 		int res = 0;
-		for(int n = 0; n != args().size(); ++n) {
+		for(size_t n = 0; n != args().size(); ++n) {
 			const variant v = args()[n]->evaluate(variables);
 			if(v.is_list()) {
-				for(int m = 0; m != v.num_elements(); ++m) {
+				for(size_t m = 0; m != v.num_elements(); ++m) {
 					if(!found || v[m].as_int() > res) {
 						res = v[m].as_int();
 						found = true;
@@ -270,7 +270,7 @@ private:
 		const variant items = args()[0]->evaluate(variables);
 		int max_index = -1;
 		variant max_value;
-		for(int n = 0; n != items.num_elements(); ++n) {
+		for(size_t n = 0; n != items.num_elements(); ++n) {
 			const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
 			if(max_index == -1 || val > max_value) {
 				max_index = n;
@@ -341,7 +341,7 @@ private:
 		variant list = args()[0]->evaluate(variables);
 		std::vector<variant> vars;
 		vars.reserve(list.num_elements());
-		for(int n = 0; n != list.num_elements(); ++n) {
+		for(size_t n = 0; n != list.num_elements(); ++n) {
 			vars.push_back(list[n]);
 		}
 
@@ -365,7 +365,7 @@ private:
 		std::vector<variant> vars;
 		const variant items = args()[0]->evaluate(variables);
 		if(args().size() == 2) {
-			for(int n = 0; n != items.num_elements(); ++n) {
+			for(size_t n = 0; n != items.num_elements(); ++n) {
 				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
 				if(val.as_bool()) {
 					vars.push_back(items[n]);
@@ -374,7 +374,7 @@ private:
 		} else {
 			map_formula_callable self_callable;
 			const std::string self = args()[1]->evaluate(variables).as_string();
-			for(int n = 0; n != items.num_elements(); ++n) {
+			for(size_t n = 0; n != items.num_elements(); ++n) {
 				self_callable.add(self, items[n]);
 				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
 				if(val.as_bool()) {
@@ -398,7 +398,7 @@ private:
 		const variant items = args()[0]->evaluate(variables);
 
 		if(args().size() == 2) {
-			for(int n = 0; n != items.num_elements(); ++n) {
+			for(size_t n = 0; n != items.num_elements(); ++n) {
 				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
 				if(val.as_bool()) {
 					return items[n];
@@ -407,7 +407,7 @@ private:
 		} else {
 			map_formula_callable self_callable;
 			const std::string self = args()[1]->evaluate(variables).as_string();
-			for(int n = 0; n != items.num_elements(); ++n) {
+			for(size_t n = 0; n != items.num_elements(); ++n) {
 				self_callable.add(self, items[n]);
 				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
 				if(val.as_bool()) {
@@ -431,14 +431,14 @@ private:
 		const variant items = args()[0]->evaluate(variables);
 
 		if(args().size() == 2) {
-			for(int n = 0; n != items.num_elements(); ++n) {
+			for(size_t n = 0; n != items.num_elements(); ++n) {
 				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(items[n], variables));
 				vars.push_back(val);
 			}
 		} else {
 			map_formula_callable self_callable;
 			const std::string self = args()[1]->evaluate(variables).as_string();
-			for(int n = 0; n != items.num_elements(); ++n) {
+			for(size_t n = 0; n != items.num_elements(); ++n) {
 				self_callable.add(self, items[n]);
 				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
 				vars.push_back(val);
@@ -461,7 +461,7 @@ private:
 		if(args().size() >= 2) {
 			res = args()[1]->evaluate(variables);
 		}
-		for(int n = 0; n != items.num_elements(); ++n) {
+		for(size_t n = 0; n != items.num_elements(); ++n) {
 			res = res + items[n];
 		}
 
@@ -532,7 +532,7 @@ formula_function_expression::formula_function_expression(const std::string& name
   : function_expression(name, args, arg_names.size(), arg_names.size()),
     formula_(formula), precondition_(precondition), arg_names_(arg_names), star_arg_(-1)
 {
-	for(int n = 0; n != arg_names_.size(); ++n) {
+	for(size_t n = 0; n != arg_names_.size(); ++n) {
 		if(arg_names_.empty() == false && arg_names_[n][arg_names_[n].size()-1] == '*') {
 			arg_names_[n].resize(arg_names_[n].size()-1);
 			star_arg_ = n;
@@ -548,10 +548,10 @@ variant formula_function_expression::execute(const formula_callable& variables) 
 	std::cerr << indent << "executing '" << formula_->str() << "'\n";
 	const int begin_time = SDL_GetTicks();
 	map_formula_callable callable;
-	for(int n = 0; n != arg_names_.size(); ++n) {
+	for(size_t n = 0; n != arg_names_.size(); ++n) {
 		variant var = args()[n]->evaluate(variables);
 		callable.add(arg_names_[n], var);
-		if(n == star_arg_) {
+		if(static_cast<int>(n) == star_arg_) {
 			callable.set_fallback(var.as_callable());
 		}
 	}
@@ -559,7 +559,7 @@ variant formula_function_expression::execute(const formula_callable& variables) 
 	if(precondition_) {
 		if(!precondition_->execute(callable).as_bool()) {
 			std::cerr << "FAILED function precondition for function '" << formula_->str() << "' with arguments: ";
-			for(int n = 0; n != arg_names_.size(); ++n) {
+			for(size_t n = 0; n != arg_names_.size(); ++n) {
 				std::cerr << "  arg " << (n+1) << ": " << args()[n]->evaluate(variables).to_debug_string() << "\n";
 			}
 		}

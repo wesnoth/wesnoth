@@ -174,7 +174,7 @@ int positional_source::calculate_volume(const gamemap::location &loc, const disp
 
 	SDL_Rect area = disp.map_area();
 	gamemap::location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
-	int distance = distance_between(loc, center);
+	size_t distance = distance_between(loc, center);
 
 	if(distance <= _range) {
 		return 0;

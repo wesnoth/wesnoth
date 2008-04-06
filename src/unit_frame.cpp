@@ -415,7 +415,7 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 
 	const frame_parameters current_data = builder_.parameters(frame_time,default_val);
 	double tmp_offset = current_data.offset;
-	int d2 = game_display::get_singleton()->hex_size() / 2;
+	//unused var - int d2 = game_display::get_singleton()->hex_size() / 2;
 
 	image::locator image_loc;
 	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
