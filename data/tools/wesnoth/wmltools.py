@@ -596,11 +596,22 @@ class Translation(dict):
         self.textdomain = textdomain
         self.isocode = isocode
         self.gettext = {}
-        if self.isocode != "en":
-            fn = "po/%s/%s.po" % (textdomain, isocode)
-            if topdir:
-                fn = os.path.join(topdir, fn)
-            gettext = file(fn).read()
+        if self.isocode != "C":
+            isocode2 = isocode[:isocode.rfind("_")]
+            for code in [isocode, isocode2]:
+                fn = "po/%s/%s.po" % (textdomain, code)
+                if topdir: fn = os.path.join(topdir, fn)
+                try:
+                    f = file(fn)
+                    break
+                except IOError:
+                    pass
+            else:
+                sys.stderr.write("No translations found for %s. Aborting.\n" %
+                    isocode)
+                sys.exit(1)
+
+            gettext = f.read().decode("utf8")
             matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
             id = ""
             for match in matches:
@@ -610,20 +621,32 @@ class Translation(dict):
                 else:
                     self.gettext[id] = text
     def get(self, key, dflt):
-        if self.isocode == "en":
+        if self.isocode == "C":
             return key
         else:
             return self.gettext.get(key, dflt)
     def __getitem__(self, key):
-        if self.isocode == "en":
+        if self.isocode == "C":
             return key
         else:
             return self.gettext[key]
     def __contains__(self, key):
-        if self.isocode == "en":
+        if self.isocode == "C":
             return True
         else:
             return key in self.gettext.keys()
+
+class Translations:
+    "Wraps around Translation to support multiple languages and domains."
+    def __init__(self, topdir = ""):
+        self.translations = {}
+        self.topdir = topdir
+    def get(self, textdomain, isocode, key, default):
+        t = (textdomain, isocode)
+        if not t in self.translations:
+            self.translations[t] = Translation(textdomain, isocode, self.topdir)
+        result = self.translations[t].get(key, default)   
+        return result
 
 ## Namespace management
 #
