@@ -32,7 +32,7 @@ class ttext_ : public tcontrol
 
 public:
 	ttext_() :
-		tcontrol(1),
+		tcontrol(COUNT),
 		definition_(),
 		dragging_(false),
 		sel_start_(0),
@@ -75,6 +75,11 @@ protected:
 	void  set_sel_len(const unsigned sel_len) { sel_len_ = sel_len; set_dirty(); }
 
 private:
+	//! Note the order of the states must be the same as defined in settings.hpp.
+	enum tstate { ENABLED, DISABLED, FOCUSSED, COUNT };
+
+	void set_state(tstate state);
+	tstate state_;
 
 	std::vector<ttext_box_definition::tresolution>::const_iterator definition_;
 

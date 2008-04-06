@@ -26,12 +26,12 @@ class tlabel : public tcontrol
 public:
 	
 	tlabel() :
-		tcontrol(1)
+		tcontrol(COUNT)
 	{}
 
-	void set_active(const bool active) { /*FIXME IMPLEMENT*/ };
-	bool get_active() const { return true; /* FIXME IMPLEMENT */ }
-	unsigned get_state() const { return 0; /* FIXME IMPLEMENT */ }
+	void set_active(const bool active) { set_state(active ? ENABLED : DISABLED); };
+	bool get_active() const { return state_ == ENABLED; }
+	unsigned get_state() const { return state_; }
 	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
 	void mouse_hover(tevent_handler&);
@@ -43,6 +43,11 @@ public:
 
 	void set_best_size(const tpoint& origin);
 private:
+	//! Note the order of the states must be the same as defined in settings.hpp.
+	enum tstate { ENABLED, DISABLED, COUNT };
+
+	void set_state(tstate state);
+	tstate state_;
 
 	std::vector<tlabel_definition::tresolution>::const_iterator definition_;
 

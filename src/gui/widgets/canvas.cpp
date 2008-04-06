@@ -361,6 +361,8 @@ tcanvas::tline::tline(const config& cfg) :
  * int                                 Signed number (whole numbers).
  * f_int                               Signed number or formula returning an
  *                                     signed number.
+ * bool                                A boolean value accepts the normal 
+ *                                     values as the rest of the game.
  * string                              A text.
  * tstring                             A translatable string.
  * f_tstring                           Formula returning a translatable string.

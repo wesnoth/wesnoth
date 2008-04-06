@@ -61,7 +61,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 bool ttext_::full_redraw() const
 {
 	// FIXME make sure definition_ is valid before usage!
-	return definition_->enabled.full_redraw;
+	return definition_->state[get_state()].full_redraw;
 }
 
 void ttext_::mouse_move(tevent_handler&)
@@ -202,16 +202,27 @@ void ttext_::set_best_size(const tpoint& origin)
 	set_height(definition_->default_height);
 }
 
+void ttext_::set_state(tstate state)
+{
+	if(state != state_) {
+		state_ = state;
+		set_dirty(true);
+	}
+}
+
 void ttext_::resolve_definition()
 {
 	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
 		definition_ = get_text_box(definition());
 
-		canvas(0) = definition_->enabled.canvas;
+		assert(canvas().size() == definition_->state.size());
+		for(size_t i = 0; i < canvas().size(); ++i) {
+			canvas(i) = definition_->state[i].canvas;
+		}
 
-		// FIXME we need some extra routines since a lot of code will
-		// be duplicated here otherwise.
-		canvas(0).set_variable("text", variant(label()));
+		// FIXME also an ugly hack, maybe set the stuff correct 
+		// just prior to draw... only need to find out when needed.
+		set_label(label());
 	}
 }
 
@@ -323,7 +334,6 @@ void ttext_box::handle_key_clear_line(SDLMod modifier, bool& handled)
 	set_sel_start(0);
 	set_sel_len(0);
 }
-
 
 } //namespace gui2
 

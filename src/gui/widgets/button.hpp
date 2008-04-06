@@ -73,6 +73,7 @@ public:
 protected:
 	
 private:
+	//! Note the order of the states must be the same as defined in settings.hpp.
 	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
 
 	void set_state(tstate state);

@@ -82,12 +82,23 @@ void tlabel::set_best_size(const tpoint& origin)
 	set_height(definition_->default_height);
 }
 
+void tlabel::set_state(tstate state)
+{
+	if(state != state_) {
+		state_ = state;
+		set_dirty(true);
+	}
+}
+
 void tlabel::resolve_definition()
 {
 	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
 		definition_ = get_label(definition());
 
-		canvas(0) = definition_->enabled.canvas;
+		assert(canvas().size() == definition_->state.size());
+		for(size_t i = 0; i < canvas().size(); ++i) {
+			canvas(i) = definition_->state[i].canvas;
+		}
 
 		canvas(0).set_variable("text", variant(label()));
 	}

@@ -247,7 +247,81 @@ const std::string& tbutton_definition::read(const config& cfg)
 	return id;
 }
 
-tbutton_definition::tresolution::tresolution(const config& cfg) :
+void tbutton_definition::tresolution::read_extra(const config& cfg)
+{
+/*WIKI
+ * [button_definition][resolution]
+ *     [state_enabled]               Settings for the enabled state.
+ *     [state_disabled]              Settings for the disabled state.
+ *     [state_pressed]               Settings for the pressed state.
+ *     [state_focussed]              Settings for the focussed state (happens
+ *                                   when the mouse moves over the button).
+ * [/resolution][/button_definition]
+ */
+
+	// Note the order should be the same as the enum tstate is button.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_pressed")));
+	state.push_back(tstate_definition(cfg.child("state_focussed")));
+}
+
+const std::string& tlabel_definition::read(const config& cfg)
+{
+/*WIKI
+ * [label_definition]
+ * The definition of a normal push label.
+ *
+ *     id = (string = "")            Unique id for this gui (theme).
+ *     description = (t_string = "") Unique translatable name for this gui.
+ *
+ *     [resolution]                  The definitions of the label in various
+ *                                   resolutions.
+ * [/label_definition]
+ */
+	id = cfg["id"];
+	description = cfg["description"];
+
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
+
+	std::cerr << "Parsing label " << id << '\n';
+
+	const config::child_list& cfgs = cfg.get_children("resolution");
+	VALIDATE(!cfgs.empty(), _("No resolution defined."));
+	for(std::vector<config*>::const_iterator itor = cfgs.begin();
+			itor != cfgs.end(); ++itor) {
+
+		resolutions.push_back(tresolution(**itor));
+	}
+
+	return id;
+}
+
+tstate_definition::tstate_definition(const config* cfg) :
+	full_redraw(cfg ? utils::string_bool((*cfg)["full_redraw"]) : false),
+	canvas()
+{
+/*WIKI
+ * [state]
+ * Definition of a state. A state contains the info what to do in a state.
+ * Atm this is rather focussed on the drawing part, might change later.
+ * Keys: 
+ *     full_redraw (bool = false)      Does this state need a full redraw when
+ *                                     it's being drawn? Normally only required
+ *                                     if the widget is (partly) transparent.
+ *     [draw]                          Section with drawing directions for a canvas.
+ * [/state]
+ */
+
+	const config* draw = cfg ? cfg->child("draw") : 0;
+
+	VALIDATE(draw, _("No state or draw section defined."));
+
+	canvas.set_cfg(*draw);
+}
+
+tresolution_definition_::tresolution_definition_(const config& cfg) :
 	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
 	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
 	min_width(lexical_cast_default<unsigned>(cfg["min_width"])),
@@ -259,10 +333,7 @@ tbutton_definition::tresolution::tresolution(const config& cfg) :
 	text_extra_width(lexical_cast_default<unsigned>(cfg["text_extra_width"])),
 	text_extra_height(lexical_cast_default<unsigned>(cfg["text_extra_height"])),
 	text_font_size(lexical_cast_default<unsigned>(cfg["text_font_size"])),
-	enabled(cfg.child("state_enabled")),
-	disabled(cfg.child("state_disabled")),
-	pressed(cfg.child("state_pressed")),
-	focussed(cfg.child("state_focussed"))
+	state()
 {
 /*WIKI
  * [resolution]
@@ -302,121 +373,25 @@ tbutton_definition::tresolution::tresolution(const config& cfg) :
  *                                   The font size, which needs to be used to 
  *                                   determine the minimal size for the text.
  *
+ * [/resolution]
+ */
+
+	std::cerr << "Parsing resolution " 
+		<< window_width << ", " << window_height << '\n';
+}
+
+void tlabel_definition::tresolution::read_extra(const config& cfg)
+{
+/*WIKI
+ * [label_definition][resolution]
  *     [state_enabled]               Settings for the enabled state.
  *     [state_disabled]              Settings for the disabled state.
- *     [state_pressed]               Settings for the pressed state.
- *     [state_focussed]              Settings for the focussed state (happens
- *                                   when the mouse moves over the button).
- *
- *
- * [/resolution]
+ * [/resolution][/label_definition]
  */
 
-	std::cerr << "Parsing resolution " 
-		<< window_width << ", " << window_height << '\n';
-}
-
-tbutton_definition::tresolution::tstate::tstate(const config* cfg) :
-	canvas()
-{
-	const config* draw = cfg ? cfg->child("draw") : 0;
-
-	VALIDATE(draw, _("No state or draw section defined."));
-
-	canvas.set_cfg(*draw);
-}
-
-const std::string& tlabel_definition::read(const config& cfg)
-{
-/*WIKI
- * [label_definition]
- * The definition of a normal push label.
- *
- *     id = (string = "")            Unique id for this gui (theme).
- *     description = (t_string = "") Unique translatable name for this gui.
- *
- *     [resolution]                  The definitions of the label in various
- *                                   resolutions.
- * [/label_definition]
- */
-	id = cfg["id"];
-	description = cfg["description"];
-
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
-
-	std::cerr << "Parsing label " << id << '\n';
-
-	const config::child_list& cfgs = cfg.get_children("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = cfgs.begin();
-			itor != cfgs.end(); ++itor) {
-
-		resolutions.push_back(tresolution(**itor));
-	}
-
-	return id;
-}
-
-tlabel_definition::tresolution::tresolution(const config& cfg) :
-	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
-	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
-	min_width(lexical_cast_default<unsigned>(cfg["min_width"])),
-	min_height(lexical_cast_default<unsigned>(cfg["min_height"])),
-	default_width(lexical_cast_default<unsigned>(cfg["default_width"])),
-	default_height(lexical_cast_default<unsigned>(cfg["default_height"])),
-	max_width(lexical_cast_default<unsigned>(cfg["max_width"])),
-	max_height(lexical_cast_default<unsigned>(cfg["max_height"])),
-	text_extra_width(lexical_cast_default<unsigned>(cfg["text_extra_width"])),
-	text_extra_height(lexical_cast_default<unsigned>(cfg["text_extra_height"])),
-	text_font_size(lexical_cast_default<unsigned>(cfg["text_font_size"])),
-	enabled(cfg.child("state_enabled"))
-{
-/*WIKI
- * [resolution]
- *     window_width = (unsigned = 0) Width of the application window.
- *     window_height = (unsigned = 0) 
- *                                   Height of the application window.
- *     min_width = (unsigned = 0)    The minimum width of the widget.
- *     min_height = (unsigned = 0)   The minimum height of the widget.
- *
- *     default_width = (unsigned = 0)
- *                                   The default width of the widget.
- *     default_height = (unsigned = 0)
- *                                   The default height of the widget.
- *
- *     max_width = (unsigned = 0)    The maximum width of the widget.
- *     max_height = (unsigned = 0)   The maximum height of the widget.
- *
- *     text_extra_width = (unsigned = 0)
- *                                   The extra width needed to determine the 
- *                                   minimal size for the text.
- *     text_extra_height = (unsigned = 0)
- *                                   The extra height needed to determine the
- *                                   minimal size for the text.
- *     text_font_size = (unsigned =0)
- *                                   The font size, which needs to be used to 
- *                                   determine the minimal size for the text.
- *
- *     [state_enabled]               Settings for the enabled state.
- *                                   when the mouse moves over the label).
- *
- *
- * [/resolution]
- */
-
-	std::cerr << "Parsing resolution " 
-		<< window_width << ", " << window_height << '\n';
-}
-
-tlabel_definition::tresolution::tstate::tstate(const config* cfg) :
-	canvas()
-{
-	const config* draw = cfg ? cfg->child("draw") : 0;
-
-	VALIDATE(draw, _("No state or draw section defined."));
-
-	canvas.set_cfg(*draw);
+	// Note the order should be the same as the enum tstate is label.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
 }
 
 const std::string& ttext_box_definition::read(const config& cfg)
@@ -451,30 +426,21 @@ const std::string& ttext_box_definition::read(const config& cfg)
 	return id;
 }
 
-ttext_box_definition::tresolution::tresolution(const config& cfg) :
-	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
-	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
-	min_width(lexical_cast_default<unsigned>(cfg["min_width"])),
-	min_height(lexical_cast_default<unsigned>(cfg["min_height"])),
-	default_width(lexical_cast_default<unsigned>(cfg["default_width"])),
-	default_height(lexical_cast_default<unsigned>(cfg["default_height"])),
-	max_width(lexical_cast_default<unsigned>(cfg["max_width"])),
-	max_height(lexical_cast_default<unsigned>(cfg["max_height"])),
-	enabled(cfg.child("state_enabled"))
+void ttext_box_definition::tresolution::read_extra(const config& cfg)
 {
-	std::cerr << "Parsing resolution " 
-		<< window_width << ", " << window_height << '\n';
-}
+/*WIKI
+ * [label_definition][resolution]
+ *     [state_enabled]               Settings for the enabled state.
+ *     [state_disabled]              Settings for the disabled state.
+ *     [state_focussed]              Settings for the focussed state (happens
+ *                                   when the it captures the keyboard).
+ * [/resolution][/label_definition]
+ */
 
-ttext_box_definition::tresolution::tstate::tstate(const config* cfg) :
-	full_redraw(utils::string_bool(cfg ? (*cfg)["full_redraw"] : false)), // FIXME document
-	canvas()
-{
-	const config* draw = cfg ? cfg->child("draw") : 0;
-
-	VALIDATE(draw, _("No state or draw section defined."));
-
-	canvas.set_cfg(*draw);
+	// Note the order should be the same as the enum tstate is text_box.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_focussed")));
 }
 
 const std::string& twindow_definition::read(const config& cfg)

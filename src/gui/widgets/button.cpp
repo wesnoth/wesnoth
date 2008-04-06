@@ -157,10 +157,10 @@ void tbutton::resolve_definition()
 	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
 		definition_ = get_button(definition());
 
-		canvas(0) =  definition_->enabled.canvas;
-		canvas(1) = definition_->disabled.canvas;
-		canvas(2) = definition_->pressed.canvas;
-		canvas(3) = definition_->focussed.canvas;
+		assert(canvas().size() == definition_->state.size());
+		for(size_t i = 0; i < canvas().size(); ++i) {
+			canvas(i) = definition_->state[i].canvas;
+		}
 
 		// FIXME also an ugly hack, maybe set the stuff correct 
 		// just prior to draw... only need to find out when needed.
