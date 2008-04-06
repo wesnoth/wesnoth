@@ -353,12 +353,13 @@ if env["prereqs"]:
 
     if env["python"]:
         env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckLib('python'+sys.version[:3]) or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
+        env.Append(CPPPATH = ["/usr/include/python%s" % sys.version[:3]])
 else:
     have_client_prereqs = True
     have_X = True
     have_server_prereqs = True
 
-env.Append(CPPPATH = ["src", "/usr/include/python%s" % sys.version[:3]])
+env.Append(CPPPATH = ["src"])
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
