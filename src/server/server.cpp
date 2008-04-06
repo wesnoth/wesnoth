@@ -287,7 +287,6 @@ private:
 	                       simple_wml::document& data);
 	void delete_game(std::vector<game*>::iterator game_it);
 
-	void send_gamelist_diff(network::connection sock=0);
 	void update_game_in_lobby(const game* g, network::connection exclude=0);
 };
 
@@ -1150,10 +1149,11 @@ void server::process_data_lobby(const network::connection sock,
 
 		//send notification of changes to the game and user
 		simple_wml::document diff;
-		if(make_change_diff(*games_and_users_list_.root().child("gamelist"),
-		                    "gamelist", "game", (*g)->description(), diff) ||
-		   make_change_diff(games_and_users_list_.root(), NULL,
-		                    "user", pl->second.config_address(), diff)) {
+		bool diff1 = make_change_diff(*games_and_users_list_.root().child("gamelist"),
+					      "gamelist", "game", (*g)->description(), diff);
+		bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
+					      "user", pl->second.config_address(), diff);
+		if (diff1 || diff2) {
 			lobby_.send_data(diff);
 		}
 	}
@@ -1391,10 +1391,11 @@ void server::process_data_game(const network::connection sock,
 
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document diff;
-			if(make_change_diff(*games_and_users_list_.root().child("gamelist"),
-			                    "gamelist", "game", g->description(), diff) ||
-			   make_change_diff(games_and_users_list_.root(), NULL,
-			                    "user", pl->second.config_address(), diff)) {
+			bool diff1 = make_change_diff(*games_and_users_list_.root().child("gamelist"),
+						      "gamelist", "game", g->description(), diff);
+			bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
+						      "user", pl->second.config_address(), diff);
+			if (diff1 || diff2) {
 				lobby_.send_data(diff, sock);
 			}
 
@@ -1453,6 +1454,8 @@ void server::process_data_game(const network::connection sock,
 			}
 			// Send the removed user the lobby game list.
 			send_doc(games_and_users_list_, user);
+			// FIXME: should also send a user diff to the lobby
+			//        to mark this player as available for others
 		}
 		return;
 	// If info is being provided about the game state.
@@ -1500,9 +1503,10 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 
 	// Send a diff of the gamelist with the game deleted to players in the lobby
 	simple_wml::document diff;
+	bool send_diff = false;
 	if(make_delete_diff(*gamelist, "gamelist", "game",
 	                    (*game_it)->description(), diff)) {
-		lobby_.send_data(diff);
+		send_diff = true;
 	}
 
 	// Delete the game from the games_and_users_list_.
@@ -1525,10 +1529,17 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 		const player_map::iterator pl = players_.find(*user);
 		if (pl != players_.end()) {
 			pl->second.mark_available();
+			if (make_change_diff(games_and_users_list_.root(), NULL,
+					     "user", pl->second.config_address(), diff)) {
+				send_diff = true;
+			}
 		} else {
 			ERR_SERVER << "ERROR: Could not find user in players_. (socket: "
 				<< *user << ")\n";
 		}
+	}
+	if (send_diff) {
+		lobby_.send_data(diff);
 	}
 
 	//send users in the game a notification to leave the game since it has ended
