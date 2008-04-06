@@ -21,6 +21,7 @@
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 #include "pathutils.hpp"
+#include "attack_prediction.hpp"
 
 namespace {
 using namespace game_logic;
@@ -208,6 +209,108 @@ private:
 
 	const formula_ai& ai_;
 };
+
+
+class outcome_callable : public formula_callable {
+	std::vector<variant> hitLeft_, prob_, status_;
+	variant get_value(const std::string& key) const {
+		if(key == "hitpoints_left") {
+			return variant(new std::vector<variant>(hitLeft_));
+		} else if(key == "probability") {
+			return variant(new std::vector<variant>(prob_));
+		} else if(key == "possible_status") {
+			return variant(new std::vector<variant>(status_));
+		} else {
+			return variant();
+		}
+	}
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("hitpoints_left", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("probability", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("possible_status", game_logic::FORMULA_READ_ONLY));
+	}
+public:
+	outcome_callable(		const std::vector<variant>& hitLeft,
+					const std::vector<variant>& prob,
+					const std::vector<variant>& status)
+	  : hitLeft_(hitLeft), prob_(prob), status_(status)
+	{
+	}
+
+	const std::vector<variant>& hitLeft() const { return hitLeft_; }
+	const std::vector<variant>& prob() const { return prob_; }
+	const std::vector<variant>& status() const { return status_; }
+};
+
+class calculate_outcome_function : public function_expression {
+public:
+	calculate_outcome_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("calculate_outcome", args, 3, 4), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		std::vector<variant> vars;
+		int weapon;
+		if (args().size() > 3) weapon = args()[3]->evaluate(variables).as_int();
+		else weapon = -1;
+		battle_context bc(ai_.get_info().map, ai_.get_info().teams, ai_.get_info().units,
+			ai_.get_info().state, convert_variant<location_callable>(args()[1]->evaluate(variables))->loc(), 
+			convert_variant<location_callable>(args()[2]->evaluate(variables))->loc(), weapon, -1, 1.0, NULL,
+			&ai_.get_info().units.find(convert_variant<location_callable>(args()[0]->evaluate(variables))->loc())->second);
+		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
+		std::vector<double>::iterator it = hp_dist.begin();
+		int i = 0;
+		std::vector<variant> hitLeft;
+		std::vector<variant> prob;
+		while (it != hp_dist.end()) {
+			if (*it != 0) {
+				hitLeft.push_back(variant(i));
+				prob.push_back(variant(int(*it*10000)));
+			}
+			++it;
+			++i;
+		}
+		std::vector<variant> status;
+		if (bc.get_attacker_combatant().poisoned != 0)
+			status.push_back(variant("Poisoned"));
+		if (bc.get_attacker_combatant().slowed != 0)
+			status.push_back(variant("Slowed"));
+		if (bc.get_defender_stats().stones && hitLeft[0].as_int() != bc.get_attacker_stats().hp)
+			status.push_back(variant("Stoned"));
+		if (bc.get_defender_stats().plagues && hitLeft[0].as_int() == 0)
+			status.push_back(variant("Zombiefied"));
+		vars.push_back(variant(new outcome_callable(hitLeft, prob, status)));
+		hitLeft.clear();
+		prob.clear();		
+		status.clear();
+		hp_dist = bc.get_defender_combatant().hp_dist;
+		it = hp_dist.begin();
+		i = 0;
+		while (it != hp_dist.end()) {
+			if (*it != 0) {
+				hitLeft.push_back(variant(i));
+				prob.push_back(variant(int(*it*10000)));
+			}
+			++it;
+			++i;
+		}
+		if (bc.get_defender_combatant().poisoned != 0)
+			status.push_back(variant("Poisoned"));
+		if (bc.get_defender_combatant().slowed != 0)
+			status.push_back(variant("Slowed"));
+		if (bc.get_attacker_stats().stones && hitLeft[0].as_int() != bc.get_attacker_stats().hp)
+			status.push_back(variant("Stoned"));
+		if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
+			status.push_back(variant("Zombiefied"));
+		vars.push_back(variant(new outcome_callable(hitLeft, prob, status)));
+		return variant(&vars);
+	}
+
+	const formula_ai& ai_;
+};
+
 
 class outcomes_function : public function_expression {
 public:
@@ -628,6 +731,8 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new nearest_loc_function(args, ai_));
 		} else if(fn == "close_enemies") {
 			return expression_ptr(new close_enemies_function(args, ai_));
+		} else if(fn == "calculate_outcome") {
+			return expression_ptr(new calculate_outcome_function(args, ai_));
 		} else if(fn == "distance_between") {
 			return expression_ptr(new distance_between_function(args));
 		} else {
