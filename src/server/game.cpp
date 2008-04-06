@@ -202,6 +202,7 @@ bool game::take_side(const player_map::const_iterator user)
 		{
 			side_num = (**side)["side"].to_int();
 			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) continue;
+			if (sides_taken_[side_num - 1]) continue;
 			side_controllers_[side_num - 1] = "network";
 			sides_[side_num - 1] = user->first;
 			sides_taken_[side_num - 1] = true;
@@ -210,6 +211,7 @@ bool game::take_side(const player_map::const_iterator user)
 			
 			simple_wml::string_span data = cfg.output_compressed();
 			network::send_raw_data(data.begin(), data.size(), owner_);
+			DBG_GAME << "take_side: took side " << side_num << " because the name matched\n";
 			DBG_GAME << debug_player_info();
 			return true;
 		}
@@ -222,6 +224,8 @@ bool game::take_side(const player_map::const_iterator user)
 				side_num = (**side)["side"].to_int();
 			} catch (bad_lexical_cast&) { continue; }
 			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) continue;
+			if (sides_taken_[side_num - 1]) continue;
+			// we expect that the host will really use our proposed side number (he could do different)
 			side_controllers_[side_num - 1] = "network";
 			sides_[side_num - 1] = user->first;
 			sides_taken_[side_num - 1] = true;
@@ -229,10 +233,12 @@ bool game::take_side(const player_map::const_iterator user)
 			// Tell the host which side the new player should take.
 			simple_wml::string_span data = cfg.output_compressed();
 			network::send_raw_data(data.begin(), data.size(), owner_);
+			DBG_GAME << "take_side: took the first free network side which was " << side_num << "\n";
 			DBG_GAME << debug_player_info();
 			return true;
 		}
 	}
+	DBG_GAME << "take_side: there are no more sides available\n";
 	//if we get here we couldn't find a side to take
 	return false;
 }
@@ -855,7 +861,7 @@ bool game::end_turn() {
 	return true;
 }
 
-void game::add_player(const network::connection player, const bool observer) {
+void game::add_player(const network::connection player, bool observer) {
 	if(is_member(player)) {
 		ERR_GAME << "ERROR: Player is already in this game. (socket: "
 			<< player << ")\n";
@@ -882,6 +888,7 @@ void game::add_player(const network::connection player, const bool observer) {
 	} else if (!allow_observers()) {
 		return; //false;
 	} else {
+		observer = true;
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
 
@@ -909,6 +916,11 @@ void game::add_player(const network::connection player, const bool observer) {
 		send_history(player);
 	} else {
 		send_user_list();
+	}
+
+	if (observer && end_turn_ == 0) {
+		// in case someone took the last slot right before this player
+		send_server_message("You are an observer.", player);
 	}
 }
 
