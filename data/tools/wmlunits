@@ -1,24 +1,23 @@
 #!/usr/bin/env python
 """
-wmlunits -- List unit names by race and level in either wikimedia or HTML tables
+wmlunits -- tool to output information on all units in HTML
 
-usage: wmlunits [-h] [-l lang]
-
-   -h        = list as html
-   -l lang   = specify language (as ISO country code)
+Run without arguments to see usage.
 """
 
 # Makes things faster on 32-bit systems
 try: import psyco; psyco.full()
 except ImportError: pass
 
-import sys, os, re, glob
+import sys, os, re, glob, shutil, copy
 
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 import wesnoth.wmltools as wmltools
 
+macros_parsed = None
 def parse_core_macros_and_WML(text_to_parse):    
+    global macros_parsed
     # Create a new parser.
     parser = wmlparser.Parser(datadir)
     parser.do_preprocessor_logic = True
@@ -34,8 +33,13 @@ def parse_core_macros_and_WML(text_to_parse):
     # TODO: Obviously, this is not ideal, e.g. we parse the macros multiple
     # times. Could easily be fixed by keeping a reference to parser.macros
     # and re-using it instead of re-parsing.
-    parser.parse_text("{core/macros/}\n")
-    parser.parse_top(None)
+    if macros_parsed:
+        parser.macros = copy.copy(macros_parsed)
+    else:
+        print "Parsing core macros."
+        parser.parse_text("{core/macros/}\n")
+        parser.parse_top(None)
+        macros_parsed = copy.copy(parser.macros)
     
     # Parse the actual WML.
     parser.parse_text(text_to_parse)
@@ -43,12 +47,38 @@ def parse_core_macros_and_WML(text_to_parse):
     
     return WML
 
+class ImageCollector:
+    def __init__(self):
+        self.images = {}
+    def add(self, campaign, path):
+        self.images[path] = campaign
+    def copy_images(self, target_path):
+        for i, c in self.images.items():
+            if c == "mainline":
+                ipath = os.path.join("data/core/images", i)
+            else:
+                ipath = os.path.join("data/campaigns/%s/images" % c, i)
+            opath = os.path.join(target_path, "pics", campaign, i)
+            try:
+                os.makedirs(os.path.dirname(opath))
+            except OSError:
+                pass
+            if os.path.exists(ipath):
+                shutil.copy2(ipath, opath)
+            else:
+                sys.stderr.write(
+                    "Warning: Required image \"%s\" does not exist.\n" % ipath)
+
+image_collector = ImageCollector()
+
 class UnitList:
     def __init__(self):
         self.units_by_campaign = {}
+        self.unit_lookup = {}
+        self.race_lookup = {}
 
     def add(self, text_to_parse, campaign):
-        "Collect all units in the specified namespace, None = mainline."
+        "Collect all units in the specified namespace."
 
         WML = parse_core_macros_and_WML(text_to_parse)
         #WML.debug()
@@ -75,170 +105,440 @@ class UnitList:
                 # This campaign has no units. Nothing to do.
                 return
 
+        # Find all units types.
         newunits = units.get_all("unit_type")
         self.units_by_campaign[campaign] = []
         for unit in newunits:
             if unit.get_text_val("do_not_list", "no") == "no":
+                uid = unit.get_text_val("id")
                 self.units_by_campaign[campaign].append(unit)
+                self.unit_lookup[uid] = unit
                 unit.campaign = campaign
 
-    def find_unit(self, unit_id):
-        "Find unit by id.  Relies on IDs being unique."
-        for c in campaigns:
-            for u in self.units_by_campaign[c]:
-                if u.get_text_val("id") == unit_id:
-                    return u
-        return None
+        # Find all races.
+        newraces = units.get_all("race")
+        for race in newraces:
+            rid = race.get_text_val("id")
+            self.race_lookup[rid] = race
 
-    def lookup(self, unit_id, attr):
-        "Get named attribute from unit, resolving [base_unit] references."
-        u = self.find_unit(unit_id)
-        firsttry = u.get_text_val(attr)
-        if firsttry:
-            return (firsttry, u.textdomain)
-        baseunit = u.get_first("base_unit")
-        if baseunit is None:
-            return None
-        print "*** Found baseunit %s while looking up (%s,%s)" \
-              % (baseunit, unit_id, attr)
-        # FIXME: lookup through baseunit doesn't work yet.
-        return None
+        # Store the race of each unit for easier access later.
+        for unit in newunits:
+            race = self.get_unit_value(unit, "race")
+            try: unit.race = self.race_lookup[race]
+            except KeyError:
+                unit.race = None
+                sys.stderr.write("Warning: No race \"%s\" found (%s).\n" % (
+                    race, unit.get_text_val("id")))
 
-def report_unit_names(campaign, unitlist, isocode):
-    tx = None
-    doubles = {}
-    races = {}
-    for u in  unitlist:
-        # Fetch name of unit
-        name = u.get_text_val("name")
-        if name == None or name == "":
-            sys.stderr.write("Empty name detected! (id = %s)\n" %
-                u.get_text_val("id"))
-            continue
-        # Swap in the appropriate translation dictionary for this unit
-        if not u.textdomain:
-            sys.stderr.write("Unit %s has no textdomain (?)\n" % name)
-            continue
-        if tx == None or u.textdomain != tx.textdomain:
-            tx = wmltools.Translation(u.textdomain, isocode)
-        # Sanity check
-        if not name in tx:
-            # Hm...
-            sys.stderr.write("Unit %s has no translation (?)\n" % name)
-        if name in doubles:
-            sys.stderr.write("Unit %s found multiple times!\n" % name)
-            continue
-        doubles[name] = 1
+    def get_unit_value(self, unit, attribute, default = None):
+        value = unit.get_text_val(attribute, None)
+        if value == None:
+            b = unit.get_first("base_unit")
+            if b:
+                buid = b.get_text_val("id")
+                try: baseunit = self.unit_lookup[buid]
+                except KeyError:
+                    sys.stderr.write(
+                        "Warning: No baseunit \"%s\" for \"%s\".\n" % (
+                        buid, unit.get_text_val("id")))
+                    return default
+                return self.get_unit_value(baseunit, attribute, default)
+            return default
+        return value
 
-        r = u.get_text_val("race") or "unknown"
-        r = r[0].upper() + r[1:]
-        l = u.get_text_val("level")
-        levels = races.get(r, {})
-        ulist = levels.get(l, [])
-        ulist.append(u)
-        levels[l] = ulist
-        races[r] = levels
+class UnitForest:
+    """
+    Contains the forest of unit advancement trees.
+    """
+    def __init__(self):
+        self.trees = {}
 
-    def poname(name):
-        return name[name.find("^") + 1:]
+    def add_node(self, un):
+        """
+        Add a new unit to the forest.
+        """
+        # First, we check if any of the new node's advancements already is in
+        # the forest. If so, remove it and attach it to the new node.
+        for cid in un.child_ids:
+            if cid in self.trees:
+                un.children.append(self.trees[cid])
+                del self.trees[cid]
 
-    def place_units(race):
-        if use_html:
-            print "<font size=5>%s - %s</font>" % (race, campaign)
-            print "<table border=solid>"
+        # Next, we check if the ndoe is an advancement of an existing node. If
+        # so, add it there.
+        for rootnode in self.trees.values():
+            if rootnode.try_add(un):
+                return
+
+        # Else, add a new tree with the new ndoe as root.
+        self.trees[un.id] = un
+
+    def update_breadth(self):
+        self.breadth = sum([x.update_breadth() for x in self.trees.values()])
+        return self.breadth
+
+class UnitNode:
+    """
+    A node in the advancement trees forest.
+    """
+    def __init__(self, unit):
+        self.unit = unit
+        self.children = []
+        self.id = unit.get_text_val("id")
+        self.child_ids = []
+        advanceto = unit.get_text_val("advanceto")
+        if advanceto and advanceto != "null":
+            for advance in advanceto.split(","):
+                advance = advance.strip()
+                self.child_ids.append(advance)
+
+    def try_add(self, un):
+        # A child of yours truly?
+        if un.id in self.child_ids:
+            self.children.append(un)
+            return True
+        # A recursive child?
+        for child in self.children:
+            if child.try_add(un): return True
+        return False
+
+    def update_breadth(self):
+        if not self.children:
+            self.breadth = 1
         else:
-            print '| colspan="6" | <font size=5>%s - %s</font>' % (race, campaign)
-            print '|-'
-            print '| level 0 || level 1 || level 2 || level 3 || level 4 || level 5'
-        levels = []
+            self.breadth = sum([x.update_breadth() for x in self.children])
+        return self.breadth   
+
+class RaceNode:
+    def __init__(self, race):
+        self.race = race
+
+html_header = '''
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet href=\"../style.css\" type=\"text/css\">
+</head>
+<body>'''.strip()
+
+html_footer = "</body></html>"
+
+class HTMLOutput:
+    def __init__(self, isocode, output, verbose = False):
+        self.isocode = isocode
+        self.output = output
+        self.verbose = verbose
+        
+        # Handle translations.
+        self.gettext = wmltools.Translations()
+
+    def get_translation(self, item, attribute):
+        value = item.get_text_val(attribute)
+        text = self.gettext.get(item.textdomain, self.isocode, value, None)
+        if not text:
+            text = value
+            if self.verbose:
+                sys.stderr.write("Warning: No translation for %s/%s/%s.\n" % (
+                    self.isocode, item.textdomain, value))
+        return text[text.find("^") + 1:]
+
+    def analyze_units(self, campaign, unitlist):
+        # Lookup tables.
+        unit_lookup = {}
+        race_lookup = {}
+
+        # Build an advancement tree forest of all units.
+        forest = UnitForest()
+        for u in unitlist.units_by_campaign[campaign]:
+            forest.add_node(UnitNode(u))
+        forest.update_breadth()
+
+        # Partition trees by race of first unit.
+        races = {}
+        for tree in forest.trees.values():
+            u = tree.unit
+            # FIXME: use translated name for sorting
+            race = u.get_text_val("race")
+            if not race: continue
+            races[race] = races.get(race, []) + [tree]        
+        racelist = races.keys()
+        racelist.sort()  
+
+        rows_count = forest.breadth + len(racelist)
+        # Create empty grid.
+        rows = []
+        for j in range(rows_count):
+            column = []
+            for i in range(6):
+                column.append((1, 1, None))
+            rows.append(column)
+
+        # Sort advancement trees by name of first unit and place into the grid.
+        def by_name(t1, t2):
+            u1 = t1.unit
+            u2 = t2.unit
+            # FIXME: Use translated name for sorting
+            u1name = u1.get_text_val("name")
+            u2name = u2.get_text_val("name")
+            return cmp(u1name, u2name)
+
+        def grid_place(nodes, x):
+            nodes.sort(cmp = by_name)
+            for node in nodes:
+                level = int(node.unit.get_text_val("level"))
+                rows[x][level] = (1, node.breadth, node)
+                for i in range(1, node.breadth):
+                    rows[x + i][level] = (0, 0, node)
+                grid_place(node.children, x)
+                x += node.breadth
+            return x
+
+        x = 0
+        for race in racelist:
+            node = RaceNode(unitlist.race_lookup[race])
+            rows[x][0] = (6, 1, node)
+            for i in range(1, 6):
+                rows[x][i] = (0, 0, None)
+            nodes = races[race]
+            x += 1
+            x = grid_place(nodes, x)
+            
+        self.racelist = racelist
+        self.unitgrid = rows
+
+    def write_navbar(self):
+        def write(x): self.output.write(x)
+        languages = find_languages()
+        langlist = languages.keys()
+        langlist.sort()
+        write("<div id=\"navbar\">\n")
+
+        write("Language:\n")
+        for lang in langlist:
+            write(" <a href=\"../%s/index.html\">%s</a>" % (
+                lang, languages[lang]))
+        write("<br/>\n")
+
+        write("By Campaign: TODO<br/>\n")
+        write("By Faction: TODO<br/>\n")
+
+        write("By Race: ")
+        write("<a href=\"index.html\">All</a>")
+        for rid in self.racelist:
+            race = unitlist.race_lookup[rid]
+            racename = self.get_translation(race, "plural_name")
+            write(" <a href=\"index.html\">%s</a>" % racename)
+        write("<br/>\n")
+
+        write("</div>\n")
+
+    def write_units(self, campaign, unitlist):
+        def write(x): self.output.write(x)
+        rows = self.unitgrid
+        write("<table>\n")
+        write("<colgroup>")
         for i in range(6):
-            levels.append(races[race].get(str(i), []))
+            write("<col class=\"col%d\" />" % i)
+        write("</colgroup>")
+        for row in range(len(rows)):
+            write("<tr>\n")
+            for column in range(6):
+                hspan, vspan, un = rows[row][column]
+                if vspan:
+                    attributes = ""
+                    if hspan == 1 and vspan == 1:
+                        pass
+                    elif hspan == 1:
+                        attributes += " rowspan=%d" % vspan
+                    elif vspan == 1:
+                        attributes += " colspan=%d" % hspan
 
-        row = 0
-        while 1:
-            if use_html: print "<tr>"
-            else: print "|-"
-            ok = False
-            units = []
-            for i in range(6):
-                if row < len(levels[i]):
-                    ok = True
-            if not ok: break
-            for i in range(6):
-                if use_html: print "<td>"
-                else: print "|",
-                if row < len(levels[i]):
-                    u = levels[i][row]
-                    name = u.get_text_val("name")
-                    translated = tx.get(name, "?")
-                    if use_html:
-                        print "<b>%s</b>" % translated
-                        print "<br>"
-                        print poname(name)
+                    if un and isinstance(un, RaceNode):
+                        # FIXME: translation
+                        racename = self.get_translation(un.race, "plural_name")
+                        attributes += " class=\"raceheader\""
+                        write("<td%s>" % attributes)
+                        write("%s" % racename)
+                        write("</td>\n")
+                    elif un:
+                        u = un.unit
+                        attributes += " class=\"unitcell\""
+                        write("<td%s>" % attributes)
+                        # FIXME: translation
+                        name = self.get_translation(u, "name")
+                        cost = u.get_text_val("cost")
+                        hp = u.get_text_val("hitpoints")
+                        mp = u.get_text_val("movement")
+                        xp = u.get_text_val("experience")
+                        image = u.get_text_val("image")
+                        level = u.get_text_val("level")
+                        image_collector.add(campaign, image)
+                        image = os.path.join("../pics/%s" % campaign, image)
+                        write("<div class=\"l\">L%s</div>" % level)
+                        write("%s<br/>" % name)
+                        write('<img src="%s" alt="(image)" />\n' % image)
+                        write("<div class=\"attributes\">")
+                        write("cost: %s<br />" % cost)
+                        write("HP: %s<br />" % hp)
+                        write("MP: %s<br />" % mp)
+                        write("XP: %s<br />" % xp)
+                        write("</div>")
+                        write("</td>\n")
                     else:
-                        print "'''%s''' <br>" % translated,
-                        print poname(name),
-                    f = u.get_first("female")
-                    if f:
-                        name = f.get_text_val("name")
-                        translated = tx.get(name, "?")
-                        if use_html:
-                            print "<br>"
-                            print "<b>%s</b>" % translated
-                            print "<br>"
-                            print  poname(name)
-                        else:
-                            print "<br>",
-                            print "'''%s''' <br>" % translated,
-                            print poname(name),
-                if use_html: print "</td>"
-                else: print
-            if use_html: print "</tr>"
-            else: print "|-"
-            row += 1
-        if use_html: print "</table>"
+                        write("<td class=\"empty\"></td>")
+            write("</tr>\n")
+        write("</table>\n")
 
-    rlist = races.keys()
-    rlist.sort()
-    for race in rlist:
-        place_units(race)
+    def create_page(self, campaign, unitlist):
+        self.output.write(html_header)
+       
+        self.analyze_units(campaign, unitlist)
+        self.write_navbar()
+        self.write_units(campaign, unitlist)
+            
+        self.output.write(html_footer)
 
-def force_encoding():
+languages_found = {}
+def find_languages():
     """
-    Temporary hack to always have redirecting of the script output always
-    produce utf8. Can be removed once there is a way to output to a file.
+    Returns a dictionary mapping isocodes to languages.
     """
-    if sys.stdout.encoding == "UTF-8": return
-    out = sys.stdout
-    class stdout_wrapper:
-        def write(self, x):
-            out.write(x.encode("utf8"))
-    sys.stdout = stdout_wrapper()
+    global languages
+    if languages_found: return languages_found
+    parser = wmlparser.Parser(datadir)
+    WML = wmldata.DataSub("WML")
+    parser.parse_text("{languages}\n")
+    parser.parse_top(WML)
+
+    for locale in WML.get_all("locale"):
+        isocode = locale.get_text_val("locale")
+        name = locale.get_text_val("name")
+        languages_found[isocode] = name
+    return languages_found
+
+class MyFile:
+    """
+    I don't understand why this is needed..
+    """
+    def __init__(self, filename, mode):
+        self.f = open(filename, mode)
+    def write(self, x):
+        x = x.encode("utf8")
+        self.f.write(x)
+
+def generate_report(out_path, isocode, campaign, unitlist):
+    if not campaign in unitlist.units_by_campaign: return
+    print "Generating report for %s_%s." % (isocode, campaign)
+    path = os.path.join(out_path, isocode + "_" + campaign)
+    if not os.path.isdir(path): os.mkdir(path)
+    output = MyFile(os.path.join(path, "index.html"), "w")
+    html = HTMLOutput(isocode, output)
+    html.create_page(campaign, unitlist)
+
+def write_index(out_path):
+    output = MyFile(os.path.join(out_path, "index.html"), "w")
+    output.write(html_header)
+    for campaign in all_campaigns:
+        output.write("<a href=\"C_%s/index.html\">%s</a>" % (
+            campaign, campaign.replace("_", " ")))
+    output.write(html_footer)
+
+# FIXME: place into a separate file, no points inlining this here...
+style_css = """
+body {
+    background-color: #fffbf0;
+    }
+table {
+    width: 100%;
+    border: none;
+    }
+td {
+    border: none;
+    }
+td.unitcell {
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #cfcbc0;
+    }
+div#navbar a {
+    color: black;
+    font-size: small;
+    font-weight: bold;
+}
+td.raceheader {
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    }
+tr.levels th {
+    border-bottom: 1px solid #cfcbc0;
+}
+td.empty {
+    background-color: #fffbf0;
+    }
+col.col0 {
+    background-color: #efebe0;
+    width: 16%;
+}
+col.col1 {
+    background-color: #f7ebd8;
+    width: 16%;
+}
+col.col2 {
+    background-color: #f4ebdc;
+    width: 16%;
+}
+col.col3 {
+    background-color: #efebe0;
+    width: 16%;
+}
+col.col4 {
+    background-color: #f4ebdc;
+    width: 16%;
+}
+col.col5 {
+    background-color: #f7ebd8;
+    width: 16%;
+}
+td.unitcell img {
+    float: left;
+    }
+div.l {
+    color: gray;
+    font-weight: normal;
+    font-size: xx-small;
+    border: 1px solid;
+    float: right;
+    margin: 0px;
+    }
+div.attributes {
+    font-size: small;
+    font-weight: normal;
+    text-align: left;
+    }
+"""
 
 if __name__ == '__main__':
-    import getopt
-    
-    #force_encoding()
+    global all_campaigns
+    import optparse
 
-    try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "hl:?", [
-            "html",
-            "lang=",
-            "usage",
-            ])
-    except getopt.GetoptError:
-        help()
-        sys.exit(1)
-    isocode = "de"
-    use_html = False    
-    for (switch, val) in options:
-        if switch in ('-h', '--html'):
-            html = True
-        elif switch in ('-l', '--lang'):
-            isocode = val
-        elif switch in ('-?', '--usage'):
-            print __doc__
-            sys.exit(1)
+    op = optparse.OptionParser()
+    op.add_option("-c", "--campaign", default = "all",
+        help = "Specify a campaign.")
+    op.add_option("-l", "--language", default = "all",
+        help = "Specify a language.")
+    op.add_option("-o", "--output",
+        help = "Specify output directory.")
+    op.add_option("-n", "--nocopy", action = "store_true",
+        help = "No copying of files.")
+    options, args = op.parse_args()
+    
+    if not options.output:
+        op.print_help()
+        sys.exit(-1)
 
     wmltools.pop_to_top("wmlunits")
     datadir = os.getcwd() + "/data"
@@ -247,26 +547,48 @@ if __name__ == '__main__':
 
     # Parse all unit data
     # This reads in units.cfg, giving us all the mainline units.
-    unitlist.add("{core/units.cfg}", "mainline")
+    all_campaigns = []
+    #if options.campaign == "all" or options.campaign == "mainline":
+    if 1: # Always need them for standard races
+        print "Reading mainline units."
+        unitlist.add("{core/units.cfg}", "mainline")
+        all_campaigns.append("mainline")
     # Now we read each campaign in turn to get its units.
     campaigns = glob.glob("data/campaigns/*")
     for campaign in campaigns:
         dirname = campaign[5:] # strip leading data/
-        description = dirname[10:].replace("_", " ")
-        unitlist.add("{%s}" % dirname, description)
+        description = dirname[10:]
+        if options.campaign == "all" or options.campaign == description:
+            print "Reading %s units." % description
+            unitlist.add("{%s}" % dirname, description)
+            all_campaigns.append(description)
 
     # Report generation
-    if use_html:
-        print "<html><body>"
+    if not os.path.isdir(options.output):
+        os.mkdir(options.output)
+    write_index(options.output)
+    open(os.path.join(options.output, "style.css"), "w").write(style_css)
+    if options.language == "all":
+        languages = find_languages().keys()
     else:
-        print '{| border="solid"'
-
-    for (campaign, unitgroup) in unitlist.units_by_campaign.items():
-        report_unit_names(campaign, unitgroup, isocode)
-
-    if use_html:
-        print "</body></html>"
+        languages = [options.language]
+    if options.campaign == "all":
+        campaigns = all_campaigns
     else:
-        print "|}"
+        campaigns = [options.campaign]
 
+    if not campaigns:
+        sys.stderr.write("No such campaign: %s\n" % options.campaign)
+        sys.exit(1)    
+
+    if not languages:
+        sys.stderr.write("No such language: %s\n" % options.language)
+        sys.exit(1)    
+
+    for isocode in languages:
+        for campaign in campaigns:
+            generate_report(options.output, isocode, campaign, unitlist)
+
+    if not options.nocopy:
+        image_collector.copy_images(options.output)
 
