@@ -220,9 +220,7 @@ void ttext_::resolve_definition()
 			canvas(i) = definition_->state[i].canvas;
 		}
 
-		// FIXME also an ugly hack, maybe set the stuff correct 
-		// just prior to draw... only need to find out when needed.
-		set_label(label());
+		 set_canvas_text();
 	}
 }
 
@@ -290,7 +288,7 @@ void ttext_::handle_key_backspace(SDLMod modifier, bool& handled)
 	handled = true;
 	if(sel_start_){
 		label().erase(--sel_start_, 1);
-		set_label(label());
+		set_canvas_text();
 		set_dirty();
 		set_cursor(sel_start_, false);
 	} else {
@@ -309,7 +307,7 @@ void ttext_::handle_key_delete(SDLMod modifier, bool& handled)
 		assert(false); // FIXME implement
 	} else {
 		label().erase(sel_start_, 1);
-		set_label(label());
+		set_canvas_text();
 		set_dirty();
 	}
 		
@@ -322,7 +320,7 @@ void ttext_::handle_key_default(bool& handled, SDLKey key, SDLMod modifier, Uint
 	if(unicode >= 32 && unicode != 127) {
 		handled = true;
 		label().insert(label().begin() + sel_start_++, unicode);
-		set_label(label());
+		set_canvas_text();
 		set_dirty();
 	}
 }

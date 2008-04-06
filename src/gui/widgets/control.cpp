@@ -69,16 +69,25 @@ void tcontrol::set_height(const unsigned height)
 	// inherited
 	twidget::set_height(height);
 }
+
 void tcontrol::set_label(const std::string& label)
 {
-
-	// set label in canvases
-	foreach(tcanvas& canvas, canvas_) {
-		canvas.set_variable("text", variant(label));
+	if(label == label_) {
+		return;
 	}
 
 	label_ = label; 
+	set_canvas_text();
 	set_dirty();
+}
+
+//! Sets the text variable for the canvases.
+void tcontrol::set_canvas_text()
+{
+	// set label in canvases
+	foreach(tcanvas& canvas, canvas_) {
+		canvas.set_variable("text", variant(label_));
+	}
 }
 
 void tcontrol::draw(surface& surface)
@@ -98,6 +107,7 @@ void tcontrol::draw(surface& surface)
 
 	set_dirty(false);
 }
+
 } // namespace gui2
 
 

@@ -162,9 +162,7 @@ void tbutton::resolve_definition()
 			canvas(i) = definition_->state[i].canvas;
 		}
 
-		// FIXME also an ugly hack, maybe set the stuff correct 
-		// just prior to draw... only need to find out when needed.
-		set_label(label());
+		set_canvas_text();
 	}
 }
 

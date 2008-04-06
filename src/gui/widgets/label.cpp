@@ -100,7 +100,7 @@ void tlabel::resolve_definition()
 			canvas(i) = definition_->state[i].canvas;
 		}
 
-		canvas(0).set_variable("text", variant(label()));
+		 set_canvas_text();
 	}
 }
 

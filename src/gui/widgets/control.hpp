@@ -31,11 +31,14 @@ public:
 	tcontrol(const unsigned canvas_count);
 	virtual ~tcontrol() {}
 
+	//! Inherited from twidget.
 	void set_width(const unsigned width);
 
+	//! Inherited from twidget.
 	void set_height(const unsigned height);
 
-	void set_visible(const bool visible) { visible_ = visible; set_dirty(); }
+	void set_visible(const bool visible) 
+		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
 	bool get_visible() const { return visible_; }
 
 	void set_label(const std::string& label);
@@ -57,10 +60,15 @@ public:
 	std::vector<tcanvas>& canvas() { return canvas_; }
 	tcanvas& canvas(const unsigned index) { return canvas_[index]; } // FIXME an assert would be nice
 
-	//! Draws the widget.
+	//! Inherited from twidget.
 	void draw(surface& surface);
 
+	//! Sets the control in the active state, when inactive a control can't be
+	//! used and doesn't react to events. (Note read-only for a ttext_ is a
+	//! different state.)
 	virtual void set_active(const bool active) = 0;
+
+	//! Gets the active state of the control.
 	virtual bool get_active() const = 0;
 
 protected:
@@ -71,11 +79,15 @@ protected:
 	//! Does the widget need to restore the surface before (re)painting?
 	virtual bool full_redraw() const = 0;
 
+	//! Sets the text variable for the canvases.
+	virtual void set_canvas_text();
+
 private:
 
-	//! Visible state of the widget, invisible isn't drawn.
+	//! Visible state of the control, invisible isn't drawn.
 	bool visible_;
 
+	//! The label associated with a lot of widgets to show a (non editable) text.
 	std::string label_;
 
 	//! When hovering a tooltip with extra information can show up. (FIXME implement)
@@ -91,7 +103,6 @@ private:
 	//! redrawing. This is needed for semi-tranparent items, the user
 	//! defines whether it's required or not.
 	surface restorer_;
-
 };
 
 } // namespace gui2
