@@ -1275,12 +1275,7 @@ void map_editor::right_button_down(const int /*mousex*/, const int /*mousey*/) {
 	// Draw with the background terrain on rightclick,
 	// no matter what operations are wanted with the left button.
 	//! @todo TODO evaluate if this is what is the smartest thing to do.
-	if (DRAW_BASE_TERRAIN) {
-		draw_on_mouseover_hexes(palette_.selected_bg_terrain(), true);
-	}
-	else {
-		draw_on_mouseover_hexes(palette_.selected_bg_terrain());
-	}
+	draw_on_mouseover_hexes(palette_.selected_bg_terrain());
 }
 
 void map_editor::middle_button_down(const int mousex, const int mousey) {
