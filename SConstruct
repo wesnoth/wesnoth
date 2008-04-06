@@ -147,11 +147,11 @@ def restore_env(env, backup):
 def CheckBoostLib(context, boost_lib, require_version = None):
     env = context.env
     boostdir = env.get("BOOSTDIR", "/usr/include")
-    boostlibdir = env.get("BOOSTLIBS", "/usr/lib")
+    boostlibdir = env.get("BOOSTLIBDIR", "/usr/lib")
     backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
 
     boost_headers = { "regex" : "regex/config.hpp",
-                      "iostreams" : "iostreams/stream.hpp" }
+                      "iostreams" : "iostreams/constants.hpp" }
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("BOOST_SUFFIX", "")
 
@@ -209,8 +209,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         except (ValueError, IndexError):
             patch_level = 0
 
-    sdldir = context.env.get("SDLDIR",
-                             os.path.join(context.env["prefix"], "SDL"))
+    sdldir = context.env.get("SDLDIR", "/usr/")
     if sdl_lib == "SDL": 
         if require_version:
             context.Message("Checking for Simple DirectMedia Layer library version >= %d.%d.%d... " % (major_version, minor_version, patchlevel))
@@ -350,7 +349,6 @@ else:
     have_server_prereqs = True
 
 env.Append(CPPPATH = ["src", "/usr/include/python%s" % sys.version[:3]])
-env.Append(LIBS = ["png"])
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
@@ -373,67 +371,67 @@ env = conf.Finish()
 
 # FIXME: Unix-specific.
 # Link only on demand, so we don't need separate link lists for each binary
-env["LINKFLAGS"].append("-Wl,--as-needed")
+env.Append(LINKFLAGS = "-Wl,--as-needed")
 
 # Later in the recipe we will guarantee that src/revision.hpp exists 
-env["CXXFLAGS"].append('-DHAVE_REVISION')
+env.Append(CPPDEFINES = 'HAVE_REVISION')
 
 if env["debug"]:
-    env["CXXFLAGS"] += Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")
+    env.AppendUnique(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"))
 else:
-    env["CXXFLAGS"] += Split("-O2 -ansi")
+    env.AppendUnique(CXXFLAGS = Split("-O2 -ansi"))
 
 if env['static']:
-    env["LINKFLAGS"].append("-all-static")
+    env.AppendUnique(LINKFLAGS = "-all-static")
 
 if env['profile']:
-    env["CXXFLAGS"].append("-pg")
-    env["LINKFLAGS"].append("-pg")
+    env.AppendUnique(CXXFLAGS = "-pg")
+    env.AppendUnique(LINKFLAGS = "-pg")
 
 if env['strict']:
-    env["CXXFLAGS"] += Split("-Werror -Wno-unused -Wno-sign-compare")
+    env.AppendUnique(CXXFLAGS = Split("-Werror -Wno-unused -Wno-sign-compare"))
 
 if env['tinygui']:
-    env["CXXFLAGS"].append("-DUSE_TINY_GUI")
+    env.Append(CPPDEFINES = "USE_TINY_GUI")
 
 if env['smallgui']:
-    env["CXXFLAGS"].append("-DUSE_SMALL_GUI")
+    env.Append(CPPDEFINES = "USE_SMALL_GUI")
 
 if env['lowmem']:
-    env["CXXFLAGS"].append("-DLOW_MEM")
+    env.Append(CPPDEFINES = "LOW_MEM")
 
 if env['fribidi']:
-        env["CXXFLAGS"].append("-DHAVE_FRIBIDI")
+    env.Append(CPPDEFINES = "HAVE_FRIBIDI")
 
 if env['raw_sockets']:
-    env["CXXFLAGS"].append("-DNETWORK_USE_RAW_SOCKETS")
+    env.Append(CPPDEFINES = "NETWORK_USE_RAW_SOCKETS")
 
 if env['internal_data']:
-    env["CXXFLAGS"].append("-DUSE_INTERNAL_DATA")
+    env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
 if env['prefsdir']:
-    env["CXXFLAGS"].append("-DPREFERENCES_DIR='\"%s\"'" % env['prefsdir'])
+    env.Append(CPPDEFINES = "PREFERENCES_DIR='\"%s\"'" % env['prefsdir'] )
 
 if env['fifodir']:
-    env["CXXFLAGS"].append("-DFIFODIR='\"%s\"'" % env['fifodir'])
+    env.Append(CPPDEFINES = "FIFODIR='\"%s\"'" % env['fifodir'] )
 
 if env['python']:
-    env["CXXFLAGS"].append("-DHAVE_PYTHON")
+    env.Append(CPPDEFINES = "HAVE_PYTHON")
 
 if env['localedir']:
-    env["CXXFLAGS"].append("-DLOCALEDIR='\"%s\"'" % env['localedir'])
+    env.Append(CPPDEFINES = "LOCALEDIR='\"%s\"'" % env['localedir'] )
     if not os.path.isabs(env['localedir']):
-        env["CXXFLAGS"].append("-DHAS_RELATIVE_LOCALEDIR")
+        env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
 
 if env['dummy_locales']:
-    env["CXXFLAGS"].append("-DUSE_DUMMYLOCALES")
+    env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
 
 # Simulate autools-like behavior of prefix on various paths
 for d in ("datadir", "fifodir", "icondir", "desktopdir"):
      if not os.path.isabs(env[d]):
           env[d] = os.path.join(env["prefix"], env[d])
 
-env["CXXFLAGS"].append("-DWESNOTH_PATH='\"%s\"'" % env['datadir'])
+env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
 
 if 'CXXFLAGS' in os.environ:
     env.Append(CXXFLAGS = os.environ['CXXFLAGS'])
@@ -443,11 +441,11 @@ if 'LDFLAGS' in os.environ:
 
 test_env = env.Clone()
 if boost_test_dyn_link:
-    env["CXXFLAGS"].append("-DBOOST_TEST_DYN_LINK")
+    test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
     if boost_auto_test:
-        test_env["CXXFLAGS"].append("-DWESNOTH_BOOST_AUTO_TEST_MAIN")
+        test_env["CXXFLAGS"].Append(CPPDEFINES = "WESNOTH_BOOST_AUTO_TEST_MAIN")
     else:
-        test_env["CXXFLAGS"].append("-DWESNOTH_BOOST_TEST_MAIN")
+        test_env["CXXFLAGS"].Append(CPPDEFINES = "WESNOTH_BOOST_TEST_MAIN")
 
 cc_version = env["CCVERSION"]
 if env["CC"] == "gcc":
@@ -693,7 +691,8 @@ cutter_sources = [
     "src/tools/cutter.cpp",
     ]
 if have_client_prereqs:
-    cutter = env.Program("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth])
+    cutter = env.Program("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
+        LIBS = env["LIBS"] + ["png"])
 else:
     cutter = None
 
@@ -702,7 +701,8 @@ exploder_sources = [
     "src/tools/exploder_composer.cpp",
     ]
 if have_client_prereqs:
-    exploder = env.Program("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth])
+    exploder = env.Program("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
+        LIBS = env["LIBS"] + ["png"])
 else:
     exploder = None
 
