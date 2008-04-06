@@ -257,7 +257,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         return True
     else:
         context.Result("no")
-        restore_env(env, backup)
+        restore_env(context.env, backup)
         return False
 
 def CheckOgg(context):
