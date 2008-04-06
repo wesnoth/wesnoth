@@ -14,12 +14,12 @@
 
 #include "gui/dialogs/addon_connect.hpp"
 
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/window_builder.hpp"
-#include "gui/widgets/button.hpp"
-
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "log.hpp"
 #include "video.hpp"
 
@@ -36,16 +36,15 @@ void taddon_connect::show(CVideo& video)
 	gui2::init();
 
 	twindow window = build(video, get_id(ADDON_CONNECT));
-
-	tcontrol* host_widget = dynamic_cast<tcontrol*>(window.get_widget_by_id("host_name"));
+	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.get_widget_by_id("host_name"));
 	if(host_widget) {
-		host_widget->set_label(host_name_);
+		host_widget->set_text(host_name_);
 	}
 
 	retval_ = window.show(true);
 
 	if(host_widget) {
-		host_name_= host_widget->label();
+		host_name_= host_widget->get_text();
 	}
 }
 

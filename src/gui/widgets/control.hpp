@@ -45,10 +45,6 @@ public:
 
 	const std::string& label() const { return label_; }
 
-	//! Note when modifing the label the caller should set the widget to
-	//! dirty.
-	std::string& label() { return label_; }
-
 	// Note setting the tooltip_ doesn't dirty an object.
 	void set_tooltip(const t_string& tooltip) { tooltip_ = tooltip; }
 	const t_string& tooltip() const { return tooltip_; }

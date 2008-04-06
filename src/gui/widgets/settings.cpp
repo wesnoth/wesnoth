@@ -142,7 +142,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
-	std::cerr << "Parsing gui " << id << '\n';
+	DBG_G_P << "Parsing gui " << id << '\n';
 
 	/***** Window definitions *****/
 	const config::child_list& window_cfgs = cfg.get_children("window_definition");
@@ -234,7 +234,7 @@ const std::string& tbutton_definition::read(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
-	std::cerr << "Parsing button " << id << '\n';
+	DBG_G_P << "Parsing button " << id << '\n';
 
 	const config::child_list& cfgs = cfg.get_children("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
@@ -285,7 +285,7 @@ const std::string& tlabel_definition::read(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
-	std::cerr << "Parsing label " << id << '\n';
+	DBG_G_P << "Parsing label " << id << '\n';
 
 	const config::child_list& cfgs = cfg.get_children("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
@@ -369,14 +369,15 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  *     text_extra_height = (unsigned = 0)
  *                                   The extra height needed to determine the
  *                                   minimal size for the text.
- *     text_font_size = (unsigned =0)
- *                                   The font size, which needs to be used to 
+ *     text_font_size = (unsigned)   The font size, which needs to be used to 
  *                                   determine the minimal size for the text.
  *
  * [/resolution]
  */
 
-	std::cerr << "Parsing resolution " 
+	VALIDATE(text_font_size, missing_mandatory_wml_key("resolution", "text_font_size"));
+
+	DBG_G_P << "Parsing resolution " 
 		<< window_width << ", " << window_height << '\n';
 }
 
@@ -413,7 +414,7 @@ const std::string& ttext_box_definition::read(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
-	std::cerr << "Parsing text_box " << id << '\n';
+	DBG_G_P << "Parsing text_box " << id << '\n';
 
 	const config::child_list& cfgs = cfg.get_children("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
@@ -462,7 +463,7 @@ const std::string& twindow_definition::read(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
-	std::cerr << "Parsing window " << id << '\n';
+	DBG_G_P << "Parsing window " << id << '\n';
 
 	const config::child_list& cfgs = cfg.get_children("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
@@ -508,7 +509,7 @@ twindow_definition::tresolution::tresolution(const config& cfg) :
  * [/resolution]
  */
 
-	std::cerr << "Parsing resolution " 
+	DBG_G_P << "Parsing resolution " 
 		<< window_width << ", " << window_height << '\n';
 }
 

@@ -14,7 +14,12 @@
 
 #include "gui/widgets/text_box.hpp"
 
+#include "font.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
+
+#include <numeric>
 
 #define DBG_G LOG_STREAM(debug, gui)
 #define LOG_G LOG_STREAM(info, gui)
@@ -50,18 +55,17 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		} else { // sel_start_ < offset
 			sel_len_ = - (sel_start_ - offset);
 		}
+		set_canvas_text();
+		set_dirty();
 
 	} else {
-		assert(offset <= label().size());
+		assert(offset <= text_.size());
 		sel_start_ = offset;
 		sel_len_ = 0;
-	}
-}
 
-bool ttext_::full_redraw() const
-{
-	// FIXME make sure definition_ is valid before usage!
-	return definition_->state[get_state()].full_redraw;
+		set_canvas_text();
+		set_dirty();
+	}
 }
 
 void ttext_::mouse_move(tevent_handler&)
@@ -98,7 +102,7 @@ void ttext_::mouse_left_button_double_click(tevent_handler&)
 	DBG_G_E << "Text_box: left mouse button double click.\n";
 
 	sel_start_ = 0;
-	sel_len_ = label().size();
+	sel_len_ = text_.size();
 
 }
 
@@ -183,23 +187,18 @@ void ttext_::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod 
 
 }
 
-tpoint ttext_::get_best_size() const
-{
-	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
-		return tpoint(get_text_box(definition())->default_width, get_text_box(definition())->default_height); 
-	} else {
-		return tpoint(definition_->default_width, definition_->default_height); 
-	}
-}
+void ttext_::set_text(const std::string& text)
+{ 
+	if(text != text_) { 
+		text_ = text; 
+		calculate_char_offset(); 
 
-void ttext_::set_best_size(const tpoint& origin)
-{
-	resolve_definition();
-
-	set_x(origin.x);
-	set_y(origin.y);
-	set_width(definition_->default_width);
-	set_height(definition_->default_height);
+		// default to put the cursor at the end of the buffer.
+		sel_start_ = text_.size();
+		sel_len_ = 0;
+		set_canvas_text();
+		set_dirty(); 
+	} 
 }
 
 void ttext_::set_state(tstate state)
@@ -207,20 +206,6 @@ void ttext_::set_state(tstate state)
 	if(state != state_) {
 		state_ = state;
 		set_dirty(true);
-	}
-}
-
-void ttext_::resolve_definition()
-{
-	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
-		definition_ = get_text_box(definition());
-
-		assert(canvas().size() == definition_->state.size());
-		for(size_t i = 0; i < canvas().size(); ++i) {
-			canvas(i) = definition_->state[i].canvas;
-		}
-
-		 set_canvas_text();
 	}
 }
 
@@ -245,7 +230,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	DBG_G_E << "Text_box: key press: right arrow.\n";
 
 	handled = true;
-	if(sel_start_ < label().size()) {
+	if(sel_start_ < text_.size()) {
 		set_cursor(sel_start_ + 1, modifier & KMOD_SHIFT);
 	}
 }
@@ -287,10 +272,7 @@ void ttext_::handle_key_backspace(SDLMod modifier, bool& handled)
 
 	handled = true;
 	if(sel_start_){
-		label().erase(--sel_start_, 1);
-		set_canvas_text();
-		set_dirty();
-		set_cursor(sel_start_, false);
+		delete_char(true);
 	} else {
 		// FIXME beep
 	}
@@ -304,13 +286,10 @@ void ttext_::handle_key_delete(SDLMod modifier, bool& handled)
 
 	handled = true;
 	if(sel_len_ != 0) {
-		assert(false); // FIXME implement
-	} else {
-		label().erase(sel_start_, 1);
-		set_canvas_text();
-		set_dirty();
+		delete_selection();
+	} else if (sel_start_ < text_.size()) {
+		delete_char(false);
 	}
-		
 }
 
 void ttext_::handle_key_default(bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
@@ -319,18 +298,187 @@ void ttext_::handle_key_default(bool& handled, SDLKey key, SDLMod modifier, Uint
 
 	if(unicode >= 32 && unicode != 127) {
 		handled = true;
-		label().insert(label().begin() + sel_start_++, unicode);
-		set_canvas_text();
-		set_dirty();
+		insert_char(unicode);
+	}
+}
+
+
+
+
+static surface render_text(const std::string& text, unsigned font_size)
+{
+	static SDL_Color col = {0, 0, 0, 0};
+	return font::get_rendered_text(text, font_size, col, TTF_STYLE_NORMAL);
+}
+
+//! Helper function for text more efficient as set_text.
+//! Inserts a character at the cursor.
+void ttext_box::insert_char(Uint16 unicode)
+{
+	if(sel_len() > 0) {
+		delete_selection();
+	}
+
+	// Determine the width of the new character.
+	std::string tmp_text;
+	tmp_text.insert(tmp_text.begin(), unicode);
+
+	surface surf = render_text(tmp_text, definition_->text_font_size);
+	assert(surf);
+	const unsigned width = surf->w;
+
+	// Insert the char in the buffer, we need to assume it's a wide string.
+	wide_string tmp = utils::string_to_wstring(text());
+	tmp.insert(tmp.begin() + sel_start(), unicode);
+	text() = utils::wstring_to_string(tmp);
+
+	// Update the widths.
+	character_offset_.insert(character_offset_.begin() + sel_start(), width);
+	if(sel_start() != 0) {
+		character_offset_[sel_start()] += character_offset_[sel_start() - 1]; 
+	}
+
+	++sel_start();
+	for(size_t i = sel_start(); i < character_offset_.size(); ++i) {
+		character_offset_[i] += width;
+	}
+
+	set_cursor(sel_start(), false);
+	set_canvas_text();
+	set_dirty();
+}
+
+//! Deletes the character.
+//!
+//! @param before_cursor     If true it deletes the character before the cursor
+//!                          (backspace) else the character after the cursor
+//!                          (delete). 
+void ttext_box::delete_char(const bool before_cursor)
+{
+	if(before_cursor) {
+		--sel_start();
+		set_cursor(sel_start(), false);
+	}
+
+	sel_len() = 1;
+
+	delete_selection();
+}
+
+//! Deletes the current selection.
+void ttext_box::delete_selection()
+{
+	assert(sel_len() != 0);
+
+	// If we have a negative range change it to a positive range.
+	// This makes the rest of the algoritms easier.
+	if(sel_len() < 0) {
+		sel_len() = - sel_len();
+		sel_start() -= sel_len();
+		set_cursor(sel_start(), false);
+	}
+
+	// Update the text, we need to assume it's a wide string.
+	wide_string tmp = utils::string_to_wstring(text());
+	tmp.erase(tmp.begin() + sel_start(), tmp.begin() + sel_start() + sel_len());
+	text() = utils::wstring_to_string(tmp);
+
+	// Update the offsets
+	const unsigned width = character_offset_[sel_start() + sel_len() - 1] - 
+		(sel_start() ? character_offset_[sel_start() - 1] : 0);
+
+	character_offset_.erase(character_offset_.begin() + sel_start(), character_offset_.begin() + sel_start() + sel_len());
+	for(size_t i = sel_start(); i < character_offset_.size(); ++i) {
+		character_offset_[i] -= width;
+	}
+
+	sel_len() = 0;
+	set_canvas_text();
+	set_dirty();
+}
+
+bool ttext_box::full_redraw() const
+{
+	if(definition_ != std::vector<ttext_box_definition::tresolution>::const_iterator()) {
+		return definition_->state[get_state()].full_redraw;
+	} else {
+		return 0;
+	}
+}
+
+//! Inherited from tcontrol.
+void ttext_box::set_canvas_text()
+{
+	foreach(tcanvas& tmp, canvas()) {
+		tmp.set_variable("text", variant(text()));
+		//FIXME add selection info.
+		if(text().empty() || sel_start() == 0) {
+			tmp.set_variable("cursor_offset", variant(0));
+		} else {
+			tmp.set_variable("cursor_offset", variant(character_offset_[sel_start() -1] + 0));
+		}
+	}
+}
+
+tpoint ttext_box::get_best_size() const
+{
+	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
+		return tpoint(get_text_box(definition())->default_width, get_text_box(definition())->default_height); 
+	} else {
+		return tpoint(definition_->default_width, definition_->default_height); 
+	}
+}
+
+void ttext_box::set_best_size(const tpoint& origin)
+{
+	resolve_definition();
+
+	set_x(origin.x);
+	set_y(origin.y);
+	set_width(definition_->default_width);
+	set_height(definition_->default_height);
+}
+
+//! Calculates the offsets of all chars.
+void ttext_box::calculate_char_offset()
+{
+	character_offset_.clear();
+
+	std::string rendered_text;
+	const unsigned font_size = 
+		definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator() ?
+		0 : definition_->text_font_size;
+
+	// FIXME we assume the text start at offset 0!!!
+	foreach(const wchar_t& unicode, utils::string_to_wstring(text())) {
+		rendered_text.insert(rendered_text.end(), unicode);
+		surface surf = render_text(rendered_text, font_size);
+		assert(surf);
+		character_offset_.push_back(surf->w);
+
 	}
 }
 
 void ttext_box::handle_key_clear_line(SDLMod modifier, bool& handled)
 {
 	handled = true;
-	set_label("");
-	set_sel_start(0);
-	set_sel_len(0);
+
+	set_text("");
+}
+
+void ttext_box::resolve_definition()
+{
+	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
+		definition_ = get_text_box(definition());
+
+		assert(canvas().size() == definition_->state.size());
+		for(size_t i = 0; i < canvas().size(); ++i) {
+			canvas(i) = definition_->state[i].canvas;
+		}
+
+		calculate_char_offset();
+		set_canvas_text();
+	}
 }
 
 } //namespace gui2

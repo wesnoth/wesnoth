@@ -299,7 +299,8 @@ twidget* tbuilder_text_box::build() const
 
 	text_box->set_id(id);
 	text_box->set_definition(definition);
-	text_box->set_label(label);
+	// A textbox doesn't have a label but a text
+	text_box->set_text(label);
 
 	DBG_G << "Window builder: placed text box '" << id << "' with defintion '" 
 		<< definition << "'.\n";

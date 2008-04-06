@@ -33,17 +33,16 @@ class ttext_ : public tcontrol
 public:
 	ttext_() :
 		tcontrol(COUNT),
-		definition_(),
-		dragging_(false),
+		text_(),
 		sel_start_(0),
 		sel_len_(0),
-		max_length_(std::string::npos)
+		max_length_(std::string::npos),
+		dragging_(false)
 	{}
 
 	void set_active(const bool active) { /*FIXME IMPLEMENT*/ };
 	bool get_active() const { return true; /* FIXME IMPLEMENT */ }
 	unsigned get_state() const { return 0; /* FIXME IMPLEMENT */ }
-	bool full_redraw() const;
 
 	void mouse_move(tevent_handler&);
 	void mouse_hover(tevent_handler&);
@@ -54,14 +53,15 @@ public:
 
 	void key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
-	tpoint get_best_size() const;
 
-	void set_best_size(const tpoint& origin);
+	void set_text(const std::string& text); 
+	std::string get_text() const { return text_; }
+	const std::string& text() const { return text_; }
 
 protected:
 
 	virtual void goto_end_of_line(const bool select = false) = 0;
-	void goto_end_of_data(const bool select = false) { set_cursor(label().size(), select); }
+	void goto_end_of_data(const bool select = false) { set_cursor(text_.size(), select); }
 
 	virtual void goto_start_of_line(const bool select = false) = 0;
 	void goto_start_of_data(const bool select = false) { set_cursor(0, select); }
@@ -74,6 +74,23 @@ protected:
 	size_t get_sel_len() const { return sel_len_; }
 	void  set_sel_len(const unsigned sel_len) { sel_len_ = sel_len; set_dirty(); }
 
+	//! Inserts a character at the cursor.
+	virtual void insert_char(Uint16 unicode) = 0;
+
+	//! Deletes the character.
+	virtual void delete_char(const bool before_cursor) = 0;
+
+	//! Deletes the current selection.
+	virtual void delete_selection() = 0;
+
+protected:
+
+	std::string& text() { return text_; }
+
+	size_t& sel_start() { return sel_start_; }
+
+	int& sel_len() { return sel_len_; }
+
 private:
 	//! Note the order of the states must be the same as defined in settings.hpp.
 	enum tstate { ENABLED, DISABLED, FOCUSSED, COUNT };
@@ -81,17 +98,22 @@ private:
 	void set_state(tstate state);
 	tstate state_;
 
-	std::vector<ttext_box_definition::tresolution>::const_iterator definition_;
 
-	void resolve_definition();
+	//! The text in the widget.
+	std::string text_;
 
-	bool dragging_;
+	//! Calculates the offsets of all chars.
+	virtual void calculate_char_offset() = 0;
+
 	size_t sel_start_;
 	//! positive sel_len_ means selection to the right.
 	//! negative sel_len_ means selection to the left.
 	//! sel_len_ == 0 means no selection.
-	unsigned sel_len_;
+	int sel_len_;
 	size_t max_length_;
+
+	//! Is the mouse in dragging mode, this affects selection in mouse movee
+	bool dragging_;
 
 	// handling of special keys first the pure virtuals
 	virtual void handle_key_up_arrow(SDLMod modifier, bool& handled) = 0;
@@ -132,6 +154,8 @@ private:
 	// These are ignored by a single line edit box which is the default behaviour.
 	virtual void handle_key_page_up(SDLMod modifier, bool& handled) {}
 	virtual void handle_key_page_down(SDLMod modifier, bool& handled) {}
+
+	virtual void resolve_definition() = 0;
 };
 
 //! Class for a single line text area.
@@ -141,7 +165,9 @@ class ttext_box : public ttext_
 public:
 
 	ttext_box() :
-		ttext_()
+		ttext_(),
+		character_offset_(),
+		definition_()
 	{}
 
 
@@ -155,11 +181,26 @@ protected:
 //	void copy();
 //	void paste();
 //	
+	//! Inherited from ttext_.
+	void insert_char(Uint16 unicode);
 
+	//! Inherited from ttext_.
+	void delete_char(const bool before_cursor);
+
+	//! Inherited from ttext_.
+	void delete_selection();
+
+	bool full_redraw() const;
+
+	//! Inherited from tcontrol.
+	void set_canvas_text();
 
 	void goto_end_of_line(const bool select = false) { goto_end_of_data(select); }
 	void goto_start_of_line(const bool select = false) { goto_start_of_data(select); }
 
+	tpoint get_best_size() const;
+
+	void set_best_size(const tpoint& origin);
 private:
 
 	void handle_key_up_arrow(SDLMod modifier, bool& handled) {};
@@ -168,7 +209,15 @@ private:
 	// Clears the current line
 	void handle_key_clear_line(SDLMod modifier, bool& handled);
 
+	//! Contains the end offset of each character in the text area.
+	std::vector<unsigned> character_offset_;
 
+	//! Inherited from ttext_.
+	void calculate_char_offset();
+
+	std::vector<ttext_box_definition::tresolution>::const_iterator definition_;
+
+	void resolve_definition();
 };
 
 
