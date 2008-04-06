@@ -1081,10 +1081,10 @@ def InstallFilteredHook(target, source, env):
     return None
 env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
 
-def InstallLocalizedManPage(action, page, env):
+def InstallLocalizedManPage(alias, page, env):
     actions = []
     for (sourcedir, targetdir) in localized_man_dirs.items():
-        env.AddPostAction(action, env.Install(targetdir, 
+        env.Alias(alias, env.Install(targetdir, 
                                               os.path.join(sourcedir, page)))
 
 # TargetSignatures('content') causes a crash in the install
@@ -1096,78 +1096,73 @@ install_env.TargetSignatures('build')
 
 # Now the actual installation productions
 
-install_data = install_env.Clone().InstallFiltered(Dir(datadir),
-                                                   map(Dir, installable_subs))
+install_data = env.InstallFiltered(Dir(datadir),
+                                       map(Dir, installable_subs))
 
-install_manual = install_env.Clone().InstallFiltered(Dir(docdir),
-                                                     Dir("doc/manual"))
+install_manual = env.InstallFiltered(Dir(docdir),
+                                       Dir("doc/manual"))
 
 # The game and associated resources
-iw_env = install_env.Clone()
-install_wesnoth = iw_env.Alias("install-wesnoth", [
-    iw_env.Install(bindir, wesnoth),
-    iw_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
+env.Alias("install-wesnoth", [
+    env.Install(bindir, wesnoth),
+    env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
     install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
-          iw_env.AddPostAction(install_wesnoth,
-                               iw_env.Install(env["icondir"],
+         env.Alias("install-wesnoth",
+                               env.Install(env["icondir"],
                                               "icons/wesnoth-icon-Mac.png"))
      else:
-         iw_env.AddPostAction(install_wesnoth,
-                              iw_env.Install(env["icondir"],
+         env.Alias("install-wesnoth",
+                              env.Install(env["icondir"],
                                              "icons/wesnoth-icon.png"))
-     env.AddPostAction(install_wesnoth,
-               iw_env.Install(env["desktopdir"],
+     env.Alias("install-wesnoth",
+               env.Install(env["desktopdir"],
                                       "icons/wesnoth.desktop"))
-InstallLocalizedManPage(install_wesnoth, "wesnoth.6", iw_env)
+InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
 # The editor and associated resources
-ie_env = install_env.Clone()
-install_editor = ie_env.Alias("install-editor", [
-    ie_env.Install(bindir, wesnoth_editor),
-    ie_env.Install(os.path.join(mandir, "man6"),
+install_editor = env.Alias("install-editor", [
+    env.Install(bindir, wesnoth_editor),
+    env.Install(os.path.join(mandir, "man6"),
                                 "doc/man/wesnoth_editor.6"),
     install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
-          ie_env.AddPostAction(install_editor,
-                               ie_env.Install(env["icondir"],
+          env.Alias("install-editor",
+                               env.Install(env["icondir"],
                                               "icons/wesnoth_editor-icon-Mac.png"))
      else:
-          ie_env.AddPostAction(install_editor,
-                               ie_env.Install(env["icondir"],
+          env.Alias("install-editor",
+                               env.Install(env["icondir"],
                                               "icons/wesnoth_editor-icon.png"))
-     ie_env.AddPostAction(install_editor,
-                          ie_env.Install(env["desktopdir"],
+     env.Alias("install-editor",
+                          env.Install(env["desktopdir"],
                                          "icons/wesnoth_editor.desktop"))
-InstallLocalizedManPage(install_editor, "wesnoth_editor.6", ie_env)
+InstallLocalizedManPage("install_editor", "wesnoth_editor.6", env)
 
 # Python tools
-install_pytools_env = install_env.Clone()
-install_pytools = install_pytools_env.Alias("install-pytools", [
-    install_pytools_env.Install(bindir,
-                                map(lambda tool: 'data/tools/' + tool, pythontools)),
-    install_pytools_env.Install(pythonlib,
-                                map(lambda module: 'data/tools/wesnoth/' + module, pythonmodules)),
+install_pytools = env.Alias("install-pytools", [
+    env.Install(bindir,
+                      map(lambda tool: 'data/tools/' + tool, pythontools)),
+    env.Install(pythonlib,
+                      map(lambda module: 'data/tools/wesnoth/' + module, pythonmodules)),
     ])
 
 # Wesnoth MP server install
-wesnothd_env = env.Clone()
-wesnothd_env.TargetSignatures('build')
-install_wesnothd = wesnothd_env.Install(bindir, wesnothd)
+install_wesnothd = env.Install(bindir, wesnothd)
 env.Alias("install-wesnothd", install_wesnothd)
-wesnothd_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"),
+env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"),
 for lang in filter(CopyFilter, os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
      if os.path.isdir(sourcedir):
           targetdir = os.path.join(mandir, lang, "man6")
           env.Alias('install-wesnothd',
-               wesnothd_env.Install(targetdir, [
-               os.path.join(sourcedir, "wesnothd.6"),
+               env.Install(targetdir, [
+                    os.path.join(sourcedir, "wesnothd.6"),
                ]))
 if not access(fifodir, F_OK):
-    wesnothd_env.AddPostAction(install_wesnothd, [
+    env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
         Chmod(fifodir, 0700),
         Action("chown %s:%s %s" %
@@ -1175,7 +1170,7 @@ if not access(fifodir, F_OK):
         ])
 
 # Wesnoth campaign server
-env.Alias("install-campaignd", env.Clone().Install(bindir, campaignd))
+env.Alias("install-campaignd", Install(bindir, campaignd))
 
 #
 # If we have the right tool in place, create targets to invoke msgfmt to
