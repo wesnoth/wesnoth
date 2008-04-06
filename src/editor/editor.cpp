@@ -412,6 +412,11 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 		}
 		l_button_held_func_ = NONE;
 	}
+	else if ( (key_[SDLK_RALT] || key_[SDLK_LALT]) && l_button_func_ == DRAW) {
+		reset_mouseover_overlay();
+		draw_on_mouseover_hexes(palette_.selected_fg_terrain(), true);
+		l_button_held_func_ = DRAW_BASE_TERRAIN;
+	}
 	else if (selected_hexes_.find(hex_clicked) != selected_hexes_.end()) {
 		l_button_held_func_ = MOVE_SELECTION;
 		selection_move_start_ = hex_clicked;
@@ -1181,6 +1186,10 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 		reset_mouseover_overlay();
 		draw_on_mouseover_hexes(palette_.selected_fg_terrain());
 	}
+	else if (l_button_held_func_ == DRAW_BASE_TERRAIN && mouse_moved_) {
+		reset_mouseover_overlay();
+		draw_on_mouseover_hexes(palette_.selected_fg_terrain(), true);
+	}
 	else if (l_button_held_func_ == MOVE_SELECTION && mouse_moved_) {
 		reset_mouseover_overlay();
 		//(*it-selection_move_start_) + hex
@@ -1196,16 +1205,16 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	}
 }
 
-void map_editor::draw_on_mouseover_hexes(const t_translation::t_terrain terrain) {
+void map_editor::draw_on_mouseover_hexes(const t_translation::t_terrain terrain, const bool base_only) {
 	if(map_.on_board(selected_hex_, true)) {
 		std::vector<gamemap::location> hexes =
 			get_tiles(map_, selected_hex_, brush_.selected_brush_size());
-		draw_terrain(terrain, hexes);
+		draw_terrain(terrain, hexes, base_only);
 	}
 }
 
 void map_editor::draw_terrain(const t_translation::t_terrain terrain,
-		const std::vector<gamemap::location> &hexes)
+                              const std::vector<gamemap::location> &hexes, const bool base_only)
 {
 	map_undo_action undo_action;
 	
@@ -1214,12 +1223,16 @@ void map_editor::draw_terrain(const t_translation::t_terrain terrain,
 		const t_translation::t_terrain old_terrain = map_.get_terrain(*it);
 		if(terrain != old_terrain) {
 			undo_action.add_terrain(old_terrain, terrain, *it);
-            if (terrain.base == t_translation::NO_LAYER) {
-                map_.set_overlay(*it, terrain);
-            }
-            else {
-                map_.set_terrain(*it, terrain);
-            }
+			if (terrain.base == t_translation::NO_LAYER) {
+				map_.set_overlay(*it, terrain);
+			}
+			else if (base_only) {
+				map_.set_base(*it, terrain);
+			}
+			else {
+				map_.set_terrain(*it, terrain);
+			}
+
 			// always rebuild localy to show the drawing progress
 			gui_.rebuild_terrain(*it);
 			gui_.invalidate(*it);
@@ -1262,7 +1275,12 @@ void map_editor::right_button_down(const int /*mousex*/, const int /*mousey*/) {
 	// Draw with the background terrain on rightclick,
 	// no matter what operations are wanted with the left button.
 	//! @todo TODO evaluate if this is what is the smartest thing to do.
-	draw_on_mouseover_hexes(palette_.selected_bg_terrain());
+	if (DRAW_BASE_TERRAIN) {
+		draw_on_mouseover_hexes(palette_.selected_bg_terrain(), true);
+	}
+	else {
+		draw_on_mouseover_hexes(palette_.selected_bg_terrain());
+	}
 }
 
 void map_editor::middle_button_down(const int mousex, const int mousey) {

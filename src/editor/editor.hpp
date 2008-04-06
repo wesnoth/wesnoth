@@ -155,7 +155,7 @@ public:
 
 private:
 	//! What to perform while the left button is held down.
-	enum LEFT_BUTTON_HELD_FUNC {DRAW_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
+	enum LEFT_BUTTON_HELD_FUNC {DRAW_TERRAIN, DRAW_BASE_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
 								MOVE_SELECTION, NONE};
 
 	//! What to perform on a left button click.
@@ -205,7 +205,7 @@ private:
 	//! Draw terrain at a location. The operation is saved in the undo
 	//! stack. Update the map to reflect the change.
 	void draw_terrain(const t_translation::t_terrain terrain,
-					  const std::vector<gamemap::location> &hexes);
+					  const std::vector<gamemap::location> &hexes, const bool base_only);
 
 	//! Re-set the labels for the starting positions of the
 	//! players. Should be called when the terrain has changed, which
@@ -272,7 +272,7 @@ private:
 
 	//! Draw the terrain on the hexes the mouse is over, taking account
 	//! for brush size.
-	void draw_on_mouseover_hexes(const t_translation::t_terrain t);
+	void draw_on_mouseover_hexes(const t_translation::t_terrain t, const bool base_only = false);
 
 	// Load the tooltips for each button
 	void load_tooltips(void);
