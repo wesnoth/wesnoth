@@ -82,7 +82,7 @@ void tcontrol::set_size(const SDL_Rect& rect)
 	twidget::set_size(rect);
 }
 
-void tcontrol::set_label(const std::string& label)
+void tcontrol::set_label(const t_string& label)
 {
 	if(label == label_) {
 		return;

@@ -44,9 +44,9 @@ public:
 		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
 	bool get_visible() const { return visible_; }
 
-	void set_label(const std::string& label);
+	void set_label(const t_string& label);
 
-	const std::string& label() const { return label_; }
+	const t_string& label() const { return label_; }
 
 	// Note setting the tooltip_ doesn't dirty an object.
 	void set_tooltip(const t_string& tooltip) { tooltip_ = tooltip; }
@@ -87,7 +87,7 @@ private:
 	bool visible_;
 
 	//! The label associated with a lot of widgets to show a (non editable) text.
-	std::string label_;
+	t_string label_;
 
 	//! When hovering a tooltip with extra information can show up. (FIXME implement)
 	t_string tooltip_;
