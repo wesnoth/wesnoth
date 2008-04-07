@@ -117,11 +117,6 @@ public:
 	virtual void help(); // send when F1 is pressed on widget to get more help
 #endif
 
-	// layout sets up the children, this is only used by container
-	// containers should know their own size and optimize their 
-	// children.
-	virtual void layout() {}
-
 	bool wants_mouse_hover() const { return wants_mouse_hover_; }
 
 	bool wants_mouse_left_double_click() const { return wants_mouse_left_double_click_; }
