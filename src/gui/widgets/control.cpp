@@ -70,6 +70,18 @@ void tcontrol::set_height(const unsigned height)
 	twidget::set_height(height);
 }
 
+void tcontrol::set_size(const SDL_Rect& rect)
+{
+	// resize canvasses
+	foreach(tcanvas& canvas, canvas_) {
+		canvas.set_width(rect.w);
+		canvas.set_height(rect.h);
+	}
+
+	// inherited
+	twidget::set_size(rect);
+}
+
 void tcontrol::set_label(const std::string& label)
 {
 	if(label == label_) {

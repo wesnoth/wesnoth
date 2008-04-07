@@ -41,6 +41,7 @@ private:
 public:
 	tbuilder_widget(const config& cfg);
 
+	//! Parameters for the widget.
 	std::string id;
 	std::string definition;
 	t_string label;
@@ -73,6 +74,9 @@ public:
 
 		// note x, y hardcoded.
 		
+		// FIXME add min max and default size
+		// the we can use best size to get the best.
+		
 		std::string definition;
 
 		struct tgrid 
@@ -86,6 +90,17 @@ public:
 			unsigned rows;
 			unsigned cols;
 
+			//! The scale factor for the rows / columns.
+			std::vector<unsigned> row_scale;
+			std::vector<unsigned> col_scale;
+
+			//! The flags per grid cell.
+			std::vector<unsigned> flags;
+
+			//! The border size per grid cell.
+			std::vector<unsigned> border_size;
+
+			//! The widgets per grid cell.
 			std::vector<tbuilder_widget_ptr> widgets;
 		};
 

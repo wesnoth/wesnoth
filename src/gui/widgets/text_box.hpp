@@ -198,7 +198,11 @@ protected:
 	void goto_end_of_line(const bool select = false) { goto_end_of_data(select); }
 	void goto_start_of_line(const bool select = false) { goto_start_of_data(select); }
 
+	// note we should check whether the label fits in the button
+	// Inherited from twidget.
+	tpoint get_minimum_size() const;
 	tpoint get_best_size() const;
+	tpoint get_maximum_size() const;
 
 	void set_best_size(const tpoint& origin);
 private:

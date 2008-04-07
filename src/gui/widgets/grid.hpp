@@ -26,22 +26,22 @@ class tgrid : public virtual twidget
 
 public:
 	// ***** ***** FLAGS ***** *****
-	static const unsigned VERTICAL_RESIZE_GROW           = 1 << 1;
+//	static const unsigned VERTICAL_RESIZE_GROW           = 1 << 1;
 	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT   = 1 << 2;
 
-	static const unsigned VERTICAL_ALIGN_TOP             = 1 << 4;   
-	static const unsigned VERTICAL_ALIGN_CENTER          = 1 << 5;   
-	static const unsigned VERTICAL_ALIGN_BOTTOM          = 1 << 6;   
-	static const unsigned VERTICAL_ALIGN_LANGUAGE        = 1 << 7;   
+	static const unsigned VERTICAL_ALIGN_TOP             = 3 << 4;   
+	static const unsigned VERTICAL_ALIGN_CENTER          = 2 << 4;   
+	static const unsigned VERTICAL_ALIGN_BOTTOM          = 1 << 4;   
+//	static const unsigned VERTICAL_ALIGN_LANGUAGE        = 0 << 4;   
 
 
-	static const unsigned HORIZONTAL_RESIZE_GROW         = 1 << 16;
+//	static const unsigned HORIZONTAL_RESIZE_GROW         = 1 << 16;
 	static const unsigned HORIZONTAL_GROW_SEND_TO_CLIENT = 1 << 17;
 
-	static const unsigned HORIZONTAL_ALIGN_TOP           = 1 << 18;   
-	static const unsigned HORIZONTAL_ALIGN_CENTER        = 1 << 19;   
-	static const unsigned HORIZONTAL_ALIGN_BOTTOM        = 1 << 20;   
-	static const unsigned HORIZONTAL_ALIGN_LANGUAGE      = 1 << 21;   
+	static const unsigned HORIZONTAL_ALIGN_LEFT          = 3 << 18;   
+	static const unsigned HORIZONTAL_ALIGN_CENTER        = 2 << 18;   
+	static const unsigned HORIZONTAL_ALIGN_RIGHT         = 1 << 18;   
+//	static const unsigned HORIZONTAL_ALIGN_LANGUAGE      = 0 << 18;   
 
 
 	static const unsigned BORDER_TOP                     = 1 << 24;
@@ -55,15 +55,16 @@ public:
 
 	virtual ~tgrid();
 
-	void add_child(twidget* widget, const unsigned row, 
-		const unsigned col, const unsigned flags, const unsigned border_size);
-	
-	void add_child(twidget* widget, const unsigned row, const unsigned col)
-		{ add_child(widget, row, col, default_flags_, default_border_size_); }
-
+#if 0
+	// FIXME if these are really not needed remove them.
 	void add_child(twidget* widget, const unsigned row, const unsigned col, const unsigned flags)
 		{ add_child(widget, row, col, flags, default_border_size_); }
 	 
+	void add_child(twidget* widget, const unsigned row, const unsigned col)
+		{ add_child(widget, row, col, default_flags_, default_border_size_); }
+#endif
+	void add_child(twidget* widget, const unsigned row, 
+		const unsigned col, const unsigned flags, const unsigned border_size);
 	
 	void set_rows(const unsigned rows);
 	unsigned int get_rows() const { return rows_; }
@@ -73,14 +74,27 @@ public:
 
 	void set_rows_cols(const unsigned rows, const unsigned cols);
 
+	void set_row_scaling(const unsigned row, const unsigned scale)
+		{ row_scaling_[row] = scale; set_dirty(); } //FIXME add assert.
+
+	void set_col_scaling(const unsigned col, const unsigned scale)
+		{ col_scaling_[col] = scale; set_dirty(); } //FIXME add assert.
+
 	void remove_child(const unsigned row, const unsigned col);
 	void remove_child(const std::string& id, const bool find_all = false);
 
-	//! Inherited
-	tpoint get_best_size();
+	//FIXME  add the option to set the proportional growth for each row and column
 
-	//! Inherited
+	//! Inherited from twidget.
+	tpoint get_minimum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
+	tpoint get_best_size() const;
+	tpoint get_maximum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); }
+
+	//! Inherited from twidget.
 	void set_best_size(const tpoint& origin);
+
+	//! Inherited from twidget.
+	void set_size(const SDL_Rect& rect);
 
 	//! Gets the widget at the wanted coordinates.
 	//! Override base class.
@@ -89,6 +103,9 @@ public:
 	//! Gets a widget with the wanted id.
 	//! Override base class.
 	twidget* get_widget_by_id(const std::string& id);
+
+	//! Inherited from twidget.
+	void draw(surface& surface) { /* FIXME IMPLEMENT */ }
 
 private:
 	class tchild 
@@ -100,7 +117,7 @@ private:
 			border_size_(0),
 			widget_(0),
 			best_size_(0, 0),
-			dirty_(true),
+			minimum_size_(0, 0),
 			clip_()
 
 			// Fixme make a class wo we can store some properties in the cache 
@@ -111,18 +128,20 @@ private:
 		void set_id(const std::string& id) { id_ = id; }
 
 		unsigned get_flags() const { return flags_; }
-		void set_flags(const unsigned flags) { flags_ = flags; dirty_ = true; }
+		void set_flags(const unsigned flags) { flags_ = flags; set_dirty(); }
 
 		unsigned get_border_size() const { return border_size_; }
 		void set_border_size(const unsigned border_size) 
-			{  border_size_ = border_size; dirty_ = true; }
+			{  border_size_ = border_size; set_dirty(); }
 
 		twidget* widget() { return widget_; }
-		void set_widget(twidget* widget) { widget_ = widget; dirty_ = true; }
+		void set_widget(twidget* widget) { widget_ = widget; set_dirty(); }
 
 		//! Gets the best size for the cell, not const since we modify the internal
 		//! state, might use mutable later (if really needed).
-		tpoint get_best_size();
+		tpoint get_best_size() const;
+
+		void set_size(tpoint orig, tpoint size);
 
 	private:
 		//! The id of the widget if it has a widget.
@@ -140,14 +159,22 @@ private:
 
 		//! The best size for this cell, determined by the best size
 		//! of the widget and the border_size_ and flags_.
-		tpoint best_size_;
+		mutable tpoint best_size_;
 
-		//! Tracks the dirty state of the cell regarding best_size_.
-		bool dirty_;
+		//! The minimum size for this cell, like best_size_.
+		mutable tpoint minimum_size_;
 
 		//! The clipping area for the widget. This is also the size of 
 		//! the container.
 		SDL_Rect clip_;
+
+		//! Sets the calculations to be dirty, this means all caches
+		//! are simply cleared.
+		void set_dirty()  // FIXME rename to clear cache??
+		{ 
+			best_size_ = tpoint(0, 0); 
+			minimum_size_ = tpoint(0, 0); 
+		}
 
 	}; // class tchild
 
@@ -178,33 +205,101 @@ public:
 	iterator end() { return iterator(children_.end()); }
 
 private:
+	//! The number of rows / columns.
 	unsigned rows_;
 	unsigned cols_;
 
+	//! Default flags for a grid cell.
 	const unsigned default_flags_;
 
+	//! Default border size for a grid cell.
 	const unsigned default_border_size_;
 
-	
+	//! The optimal row heights / col widths.
+	mutable std::vector<unsigned> best_row_height_; //FIXME implement
+	mutable std::vector<unsigned> best_col_width_; //FIXME implement
 
+	//! The minimal row heights / col widths.
+	mutable std::vector<unsigned> minimum_row_height_; //FIXME implement
+	mutable std::vector<unsigned> minimum_col_width_; //FIXME implement
 
+	//! The row heights / col widths currently used.
+	std::vector<unsigned> row_height_;
+	std::vector<unsigned> col_width_;
+
+	//! The resize factors for rows / cols.
+	std::vector<unsigned> row_scaling_;
+	std::vector<unsigned> col_scaling_;
+
+	//! Contains all cells.
 	std::vector<tchild> children_;
-	tchild& child(const unsigned row, const unsigned col)
+	const tchild& child(const unsigned row, const unsigned col) const
 		{ return children_[rows_ * col + row]; }
+	tchild& child(const unsigned row, const unsigned col)
+		{ clear_cache(); return children_[rows_ * col + row]; }
 
+	void clear_cache();
+
+	void layout(const tpoint& origin);
 };
 
 //! Visible container to hold children.
-class tpanel : public tgrid, public tcontrol
+class tpanel : public tcontrol
 {
 
 public:
 	tpanel() : 
-		tgrid(0, 0, 0, 0),
-		tcontrol(0)
-		{}
+		tcontrol(0),
+		grid_(0, 0, 0, 0)
+		{
+			grid_.set_parent(this);
+		}
+
+	
+	// Inherited from twidget.
+	twidget* get_widget(const tpoint& coordinate) { return grid_.get_widget(coordinate); }
+
+	// Inherited from twidget.
+	twidget* get_widget_by_id(const std::string& id) { return grid_.get_widget_by_id(id); }
+
+	// Inherited from twidget.
+	bool dirty() const { return twidget::dirty() || grid_.dirty(); }
+
+
+	//***** **** wrappers to the grid **** ****
+	tgrid::iterator begin() { return grid_.begin(); }
+	tgrid::iterator end() { return grid_.end(); }
+
+	void set_client_size(const SDL_Rect& rect) { grid_.set_size(rect); }
+
+	void set_rows(const unsigned rows) { grid_.set_rows(rows); }
+	unsigned int get_rows() const { return grid_.get_rows(); }
+
+	void set_cols(const unsigned cols) { grid_.set_cols(cols); }
+	unsigned int get_cols() const { return grid_.get_cols(); }
+
+	void set_rows_cols(const unsigned rows, const unsigned cols)
+		{ grid_.set_rows_cols(rows, cols); }
+#if 0
+	// FIXME if these are really not needed remove them.
+	void add_child(twidget* widget, const unsigned row, const unsigned col)
+		{ grid_.add_child(widget, row, col); }
+
+	void add_child(twidget* widget, const unsigned row, const unsigned col, const unsigned flags)
+		{ grid_.add_child(widget, row, col, flags); }
+#endif
+	void add_child(twidget* widget, const unsigned row, 
+		const unsigned col, const unsigned flags, const unsigned border_size)
+		{ grid_.add_child(widget, row, col, flags, border_size); }
+	
+	void set_row_scaling(const unsigned row, const unsigned scale) 
+		{ grid_.set_row_scaling(row, scale); }
+
+	void set_col_scaling(const unsigned col, const unsigned scale)
+		{ grid_.set_col_scaling(col, scale); }
 
 private:
+	tgrid grid_;
 
 }; 
 

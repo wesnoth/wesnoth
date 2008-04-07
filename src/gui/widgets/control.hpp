@@ -37,6 +37,9 @@ public:
 	//! Inherited from twidget.
 	void set_height(const unsigned height);
 
+	//! Inherited from twidget.
+	void set_size(const SDL_Rect& rect);
+
 	void set_visible(const bool visible) 
 		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
 	bool get_visible() const { return visible_; }

@@ -39,12 +39,30 @@
 
 namespace gui2 {
 
+tpoint tlabel::get_minimum_size() const
+{
+	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
+		return tpoint(get_label(definition())->min_width, get_label(definition())->min_height); 
+	} else {
+		return tpoint(definition_->min_width, definition_->min_height); 
+	}
+}
+
 tpoint tlabel::get_best_size() const
 {
 	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
 		return tpoint(get_label(definition())->default_width, get_label(definition())->default_height); 
 	} else {
 		return tpoint(definition_->default_width, definition_->default_height); 
+	}
+}
+
+tpoint tlabel::get_maximum_size() const
+{
+	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
+		return tpoint(get_label(definition())->max_width, get_label(definition())->max_height); 
+	} else {
+		return tpoint(definition_->max_width, definition_->max_height); 
 	}
 }
 

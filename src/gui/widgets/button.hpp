@@ -43,7 +43,10 @@ public:
 	void mouse_left_button_double_click(tevent_handler&); //FIXME remove
 
 	// note we should check whether the label fits in the button
+	// Inherited from twidget.
+	tpoint get_minimum_size() const;
 	tpoint get_best_size() const;
+	tpoint get_maximum_size() const;
 
 	void set_best_size(const tpoint& origin);
 

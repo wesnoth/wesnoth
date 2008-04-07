@@ -420,12 +420,30 @@ void ttext_box::set_canvas_text()
 	}
 }
 
+tpoint ttext_box::get_minimum_size() const
+{
+	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
+		return tpoint(get_text_box(definition())->min_width, get_text_box(definition())->min_height); 
+	} else {
+		return tpoint(definition_->min_width, definition_->min_height); 
+	}
+}
+
 tpoint ttext_box::get_best_size() const
 {
 	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
 		return tpoint(get_text_box(definition())->default_width, get_text_box(definition())->default_height); 
 	} else {
 		return tpoint(definition_->default_width, definition_->default_height); 
+	}
+}
+
+tpoint ttext_box::get_maximum_size() const
+{
+	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
+		return tpoint(get_text_box(definition())->max_width, get_text_box(definition())->max_height); 
+	} else {
+		return tpoint(definition_->max_width, definition_->max_height); 
 	}
 }
 

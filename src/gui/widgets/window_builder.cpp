@@ -104,7 +104,8 @@ twindow build(CVideo& video, const std::string& type)
 		definition = get_window_builder(type);
 
 
-	twindow window(video, 100, 100, definition->width, definition->height);
+	twindow window(video, 100, 100, definition->width, definition->height); // FIXME use proper origin
+//	twindow window(video, 0, 0, definition->width, definition->height); // FIXME use proper origin
 
 	const unsigned rows = definition->grid.rows;
 	const unsigned cols = definition->grid.cols;
@@ -112,10 +113,15 @@ twindow build(CVideo& video, const std::string& type)
 	window.set_rows_cols(rows, cols);
 
 	for(unsigned x = 0; x < rows; ++x) {
+		window.set_row_scaling(x, definition->grid.row_scale[x]);
 		for(unsigned y = 0; y < cols; ++y) {
 
+			if(x == 0) {
+				window.set_col_scaling(y, definition->grid.col_scale[y]);
+			}
+
 			twidget* widget = definition->grid.widgets[x * cols + y]->build();
-			window.add_child(widget, x, y);
+			window.add_child(widget, x, y, definition->grid.flags[x * cols + y],  definition->grid.border_size[x * cols + y]);
 		}
 	}
 
@@ -196,6 +202,59 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	
 }
 
+static unsigned read_flags(const config& cfg)
+{
+	unsigned flags = 0;
+
+	// Read the flags. FIXME document.
+	std::string v_align = cfg["vertical_alignment"];
+	if(v_align == "top") {
+		flags |= tgrid::VERTICAL_ALIGN_TOP;
+	} else if(v_align == "bottom") {
+		flags |= tgrid::VERTICAL_ALIGN_BOTTOM;
+	} else {
+		flags |= tgrid::VERTICAL_ALIGN_CENTER;
+	}
+
+	std::string h_align = cfg["horizontal_alignment"];
+	if(h_align == "left") {
+		flags |= tgrid::HORIZONTAL_ALIGN_LEFT;
+	} else if(h_align == "right") {
+		flags |= tgrid::HORIZONTAL_ALIGN_RIGHT;
+	} else {
+		flags |= tgrid::HORIZONTAL_ALIGN_CENTER;
+	}
+
+	std::vector<std::string> border = utils::split(cfg["border"]);
+	if(std::find(border.begin(), border.end(), "all") != border.end()) {
+		flags |= tgrid::BORDER_TOP 
+			| tgrid::BORDER_BOTTOM | tgrid::BORDER_LEFT | tgrid::BORDER_RIGHT;
+	} else {
+		if(std::find(border.begin(), border.end(), "top") != border.end()) {
+			flags |= tgrid::BORDER_TOP;
+		}
+		if(std::find(border.begin(), border.end(), "bottom") != border.end()) {
+			flags |= tgrid::BORDER_BOTTOM;
+		}
+		if(std::find(border.begin(), border.end(), "left") != border.end()) {
+			flags |= tgrid::BORDER_LEFT;
+		}
+		if(std::find(border.begin(), border.end(), "right") != border.end()) {
+			flags |= tgrid::BORDER_RIGHT;
+		}
+	}
+
+	if(utils::string_bool(cfg["vertical_grow"])) {
+		flags |= tgrid::VERTICAL_GROW_SEND_TO_CLIENT;
+	}
+
+	if(utils::string_bool(cfg["horizontal_grow"])) {
+		flags |= tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT;
+	}
+
+	return flags;
+}
+
 twindow_builder::tresolution::tgrid::tgrid(const config* cfg) : 
 	rows(0),
 	cols(0),
@@ -209,9 +268,17 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 
 		unsigned col = 0;
 
+		row_scale.push_back(lexical_cast_default<unsigned>((**row_itor)["scale"]));
+
 		const config::child_list& col_cfgs = (**row_itor).get_children("column");
 		for(std::vector<config*>::const_iterator col_itor = col_cfgs.begin();
 				col_itor != col_cfgs.end(); ++col_itor) {
+
+			flags.push_back(read_flags(**col_itor));
+			border_size.push_back(lexical_cast_default<unsigned>((**col_itor)["border_size"]));
+			if(rows == 0) {
+				col_scale.push_back(lexical_cast_default<unsigned>((**col_itor)["scale"]));
+			}
 
 			if((**col_itor).child("button")) {
 				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
@@ -249,6 +316,7 @@ tbuilder_widget::tbuilder_widget(const config& cfg) :
 	if(definition.empty()) {
 		definition = "default";
 	}
+
 
 	DBG_G_P << "Window builder: found widget with id '" 
 		<< id << "' and definition '" << definition << "'.\n";

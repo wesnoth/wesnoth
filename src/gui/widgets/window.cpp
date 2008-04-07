@@ -109,9 +109,8 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 			SDL_Rect temp_rect = {0, 0, screen->w, screen->h};
 			fill_rect_alpha(temp_rect, 0, 1, screen);
 #endif
-
+			// FIXME call grid().draw() and it do it's drawing.
 			for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
-
 				if(! *itor || !itor->dirty()) {
 					continue;
 				}
@@ -152,21 +151,11 @@ void twindow::layout(const SDL_Rect position)
 {
 	need_layout_ = false;
 
-	tpoint best_size = get_best_size();
+	DBG_G << "Window: layout area " << position.x
+		<< ',' << position.y << " x " << position.w 
+		<< ',' << position.h << ".\n";
 
-	if(best_size.x < position.w && best_size.y < position.h) {
-		set_best_size(tpoint(position.x, position.y));
-		return;
-	}
-
-	DBG_G << "Window: layout can't be set to best size, try minimum.\n";
-
-	// Implement the code.
-	assert(false);
-
-	// Failed at best size try minumum.
-	
-	// Failed at minimum log error and try to do the best possible thing.
+	set_client_size(position); 
 }
 
 void twindow::set_width(const unsigned width)

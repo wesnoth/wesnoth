@@ -97,12 +97,30 @@ void tbutton::mouse_left_button_double_click(tevent_handler&)
 	DBG_G_E << "Button: left mouse button double click.\n"; 
 }
 
+tpoint tbutton::get_minimum_size() const
+{
+	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
+		return tpoint(get_button(definition())->min_width, get_button(definition())->min_height); 
+	} else {
+		return tpoint(definition_->min_width, definition_->min_height); 
+	}
+}
+
 tpoint tbutton::get_best_size() const
 {
 	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
 		return tpoint(get_button(definition())->default_width, get_button(definition())->default_height); 
 	} else {
 		return tpoint(definition_->default_width, definition_->default_height); 
+	}
+}
+
+tpoint tbutton::get_maximum_size() const
+{
+	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
+		return tpoint(get_button(definition())->max_width, get_button(definition())->max_height); 
+	} else {
+		return tpoint(definition_->max_width, definition_->max_height); 
 	}
 }
 

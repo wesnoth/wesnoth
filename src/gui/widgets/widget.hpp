@@ -37,7 +37,16 @@ struct tpoint
 
 	int x;
 	int y;
+
+	bool operator==(const tpoint& point) const { return x == point.x && y == point.y; }
+	bool operator<(const tpoint& point) const 
+		{ return x < point.x || (x == point.x && y < point.y); }
+
+	bool operator<=(const tpoint& point) const 
+		{ return x < point.x || (x == point.x && y <= point.y); }
+		
 };
+
 
 std::ostream &operator<<(std::ostream &stream, const tpoint& point);
 
@@ -107,14 +116,6 @@ public:
 #if 0
 	virtual void help(); // send when F1 is pressed on widget to get more help
 #endif
-
-	//! determines the best size for a widget.
-	// x = best width
-	// y = best height
-	virtual tpoint get_best_size() const { return tpoint(0, 0); }
-
-	//! determines the minimal size for a widget, needed?
-
 
 	// layout sets up the children, this is only used by container
 	// containers should know their own size and optimize their 
@@ -204,7 +205,8 @@ public:
 	virtual void set_height(const unsigned height) { h_ = height; set_dirty(); }
 	unsigned get_height() const { return h_; }
 
-	bool dirty() const { return dirty_; }
+	//! Is the widget dirty?
+	virtual bool dirty() const { return dirty_; }
 
 	//! Sets the best size for the object.
 	virtual void set_best_size(const tpoint& origin)
@@ -213,6 +215,15 @@ public:
 
 	//! Sets the minumum size for the object.
 //	virtual void set_minimum_size();
+
+	//! Gets the minimum size for the object should != 0,0.
+	virtual tpoint get_minimum_size() const = 0;	
+
+	//! Gets the best size for the object should != 0,0.
+	virtual tpoint get_best_size() const = 0;	
+
+	//! Gets the best size for an object, 0,0 means no limits.
+	virtual tpoint get_maximum_size() const = 0;	
 
 	//! Sets a predefined size for the object.
 	virtual void set_size(const SDL_Rect& rect)
@@ -225,14 +236,14 @@ public:
 	}
 
 	//! Gets the widget at the wanted coordinates.
-	twidget* get_widget(const tpoint& coordinate) 
+	virtual twidget* get_widget(const tpoint& coordinate) 
 	{ 
 		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
 			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
 	}
 
 	//! Gets a widget with the wanted id.
-	twidget* get_widget_by_id(const std::string& id)
+	virtual twidget* get_widget_by_id(const std::string& id)
 		{ return id_ == id ? this : 0; }
 
 	//! The toplevel item should always be a window if not null is returned

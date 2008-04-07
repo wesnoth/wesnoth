@@ -74,7 +74,8 @@ public:
 
 	twindow& get_window() { return *this; }
 
-	twidget* get_widget(const tpoint& coordinate) { return tgrid::get_widget(coordinate); }
+	//! Inherited from tevent_handler
+	twidget* get_widget(const tpoint& coordinate) { return tpanel::get_widget(coordinate); }
 
 	tpoint client_position(const tpoint& screen_position) const
 		{ return tpoint(screen_position.x - get_x(), screen_position.y - get_y()); }
@@ -87,6 +88,11 @@ public:
 	bool get_active() const { return true; }
 	unsigned get_state() const { return 0; }
 	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
+
+	// Inherited from twidget.
+	tpoint get_minimum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
+	tpoint get_best_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
+	tpoint get_maximum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); }
 
 protected:
 private:
