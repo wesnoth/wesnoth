@@ -1155,8 +1155,18 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 void unit::read(const config& cfg, bool use_traits, game_state* state)
 {
 	if(cfg["type"].empty()) {
-		throw game::load_game_failed("Attempt to de-serialize an empty unit");
+		throw game::load_game_failed("Attempt to de-serialize a unit with no 'type' field (probably empty)");
 	}
+	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::types().find(cfg["type"]);
+	if(uti == unit_type_data::types().end()) {
+		std::string error_message = _("Unknown unit type '$type|'");
+		utils::string_map symbols;
+		symbols["type"] = cfg["type"];
+		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+		LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
+		throw game::game_error(error_message);
+	}
+
 	cfg_ = cfg;
 	side_ = lexical_cast_default<int>(cfg["side"]);
 	if(side_ <= 0) {
@@ -1168,27 +1178,17 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	// Prevent un-initialized variables
 	hit_points_=1;
 
-	// These are restored here since the base values are stored so and traits
-	// might get applied later (due to advance_to()). If we restore these
-	// afterwards the traits modifications get lost.
+	// These are restored here since the base values are stored so
+	// and traits might get applied later (due to
+	// advance_to()). If we restore these afterwards the traits
+	// modifications get lost.
 	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"], 1);
 	max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
 	max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
 	/* */
 
 	if(cfg["gender"].empty()) {
-		const unit_type_data::unit_type_map::const_iterator ut = unit_type_data::types().find(cfg["type"]);
-		//! @todo FIXME shadowmaster: in my opinion, the following condition check
-		//! should be done earlier in this function as it is repated later for other
-		//! operations; i.e. it must be a sanity check to be performed as soon as possible
-		//! to avoid wasting time in futile operations with an unexistent unit, and instead
-		//! throw an error at the start of this function, right after getting id/type from
-		//! the config obj. Not sure if that would be wanted; can the engine handle units
-		//! that don't have an equivalent unit_type obj associated?
-		if (ut != unit_type_data::types().end())
-			gender_ = generate_gender(ut->second, utils::string_bool(cfg_["random_gender"], false), state);
-		else
-			ERR_UT << "no valid unit_type found for unit WML id \"" << cfg["type"] << "\"!\n";
+		gender_ = generate_gender(uti->second, utils::string_bool(cfg_["random_gender"], false), state);
 	} else {
 		gender_ = string_gender(cfg["gender"]);
 	}
@@ -1334,12 +1334,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	//remove ai_vars from private cfg
 	cfg_.clear_children("ai_vars");
 
-	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::types().find(cfg["type"]);
-	const unit_type* ut = NULL;
+	const unit_type* ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
 
-	if(uti != unit_type_data::types().end()) {
-		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
-	}
 	if(!type_set) {
 		if(ut) {
 			if(cfg_["description"] == "") {
