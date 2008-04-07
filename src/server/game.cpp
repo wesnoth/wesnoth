@@ -35,12 +35,16 @@
 namespace chat_message {
 
 const size_t max_message_length = 256;
-static void truncate_message(t_string& str) {
-	// The string send can contain utf-8 so truncate as wide_string otherwise
-	// an corrupted utf-8 string can be returned.
-	std::string tmp = str.str();
-	utils::truncate_as_wstring(tmp, max_message_length);
-	str = tmp;
+static void truncate_message(const simple_wml::string_span& str, simple_wml::node& message) {
+	// testing for msg.size() is not sufficient but we're not getting false negatives
+	// and it's cheaper than always converting to wstring.
+	if(str.size() > chat_message::max_message_length) {
+		std::string tmp(str.begin(), str.end());
+		// The string can contain utf-8 characters so truncate as wide_string otherwise
+		// a corrupted utf-8 string can be returned.
+		utils::truncate_as_wstring(tmp, max_message_length);
+		message.set_attr_dup("message", tmp.c_str());
+	}
 }
 
 } // end chat_message namespace
@@ -674,14 +678,11 @@ void game::process_message(simple_wml::document& data, const player_map::iterato
 	message->set_attr_dup("sender", user->second.name().c_str());
 	
 	const simple_wml::string_span& msg = (*message)["message"];
-	if(msg.size() > chat_message::max_message_length) {
-		t_string str(msg.begin(), msg.end());
-		chat_message::truncate_message(str);
-		message->set_attr_dup("message", str.c_str());
-	}
+	chat_message::truncate_message(msg, *message);
+
 	// Only log in the lobby_.
 	if (owner_ != 0) {
-	} else if (msg.size() >= 3 && simple_wml::string_span(msg.begin(), 3) == "/me") {
+	} else if (msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
 		LOG_GAME << network::ip_address(user->first) << "\t<"
 			<< user->second.name() << simple_wml::string_span(msg.begin() + 3, msg.size() - 3) << ">\n";
         } else {
@@ -753,11 +754,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			}
 
 			const simple_wml::string_span& msg = speak["message"];
-			if(msg.size() > chat_message::max_message_length) {
-				t_string str(msg.begin(), msg.end());
-				chat_message::truncate_message(str);
-				speak.set_attr_dup("message", str.c_str());
-			}
+			chat_message::truncate_message(msg, speak);
 
 			// Force the description to be correct,
 			// to prevent spoofing of messages.
