@@ -719,8 +719,6 @@ if have_client_prereqs:
 else:
     exploder = None
 
-# FIXME: test build presently fails at link time.
-test_env = env.Clone()
 test_sources = [
     "src/tests/main.cpp",
     "src/tests/test_util.cpp",
