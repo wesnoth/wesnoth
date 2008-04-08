@@ -395,7 +395,14 @@ public:
 	}
 	const vconfig::child_list first_special_filters()
 	{
-		return cfg_.get_children("special_filter");
+		vconfig::child_list kids;
+		kids = cfg_.get_children("filter_attack");
+		// FIXME OBSOLETE: remove in 1.5.3
+		if (!kids.empty())
+			return kids;
+		else
+			return cfg_.get_children("special_filter"); 
+
 	}
 
 	const vconfig::child_list second_arg_filters()
@@ -404,7 +411,13 @@ public:
 	}
 	const vconfig::child_list second_special_filters()
 	{
-		return cfg_.get_children("special_filter_second");
+		vconfig::child_list kids;
+		kids = cfg_.get_children("filter_second_attack");
+		// FIXME OBSOLETE: remove in 1.5.3
+		if (!kids.empty())
+			return kids;
+		else
+			return cfg_.get_children("special_filter_second"); 
 	}
 
 	bool handle_event(const queued_event& event_info,

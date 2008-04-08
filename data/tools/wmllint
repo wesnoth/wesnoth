@@ -474,7 +474,22 @@ linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
         ("canrecruit=0", "canrecruit=no"),
         ("generate_description", "generate_name"),
-)
+        # These changed just after 1.5.0
+        ("[special_filter]", "[filter_attack]"),
+        ("[wml_filter]", "[filter_wml]"),
+        ("[unit_filter]", "[filter]"),
+        ("[secondary_unit_filter]", "[filter_second]"),
+        ("[attack_filter]", "[filter_attack]"),
+        ("[secondary_attack_filter]", "[filter_second_attack]"),
+        ("[special_filter_second]", "[filter_second_attack]"),
+        ("[/special_filter]", "[/filter_attack]"),
+        ("[/wml_filter]", "[/filter_wml]"),
+        ("[/unit_filter]", "[/filter]"),
+        ("[/secondary_unit_filter]", "[/filter_second]"),
+        ("[/attack_filter]", "[/filter_attack]"),
+        ("[/secondary_attack_filter]", "[/filter_second_attack]"),
+        ("[/special_filter_second]", "[/filter_second_attack]"),
+        )
 
 def maptransform2(filename, baseline, inmap, y):
     "Convert a map line between 1.3.x formats."
@@ -639,13 +654,13 @@ def sanity_check(filename, lines):
     # Also, build dictionaries of unit movement types and races
     unit_id = ""
     in_unit_type = False
-    in_attack_filter = False
+    in_filter_attack = False
     for i in range(len(lines)):
-        if "[attack_filter]" in lines[i]:
-            in_attack_filter = True
+        if "[filter_attack]" in lines[i]:
+            in_filter_attack = True
             continue
-        elif "[/attack_filter]" in lines[i]:
-            in_attack_filter = False
+        elif "[/filter_attack]" in lines[i]:
+            in_filter_attack = False
             continue
         elif "[unit_type]" in lines[i]:
             traits = []
@@ -684,7 +699,7 @@ def sanity_check(filename, lines):
             notes = []
             unit_id = ""
             has_special_notes = False
-        if in_unit_type and not in_attack_filter:
+        if in_unit_type and not in_filter_attack:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
                 if key == "id" and not unit_id:
@@ -1184,9 +1199,9 @@ def hack_syntax(filename, lines):
             for i in range(len(animation)):
                 animation[i] = outdent(animation[i])
             indent = leader(animation[1])
-            animation.insert(1, indent + "[/attack_filter]\n")
+            animation.insert(1, indent + "[/filter_attack]\n")
             animation.insert(1, indent + baseindent + "name="+aframe.name+"\n")
-            animation.insert(1, indent + "[attack_filter]\n")
+            animation.insert(1, indent + "[filter_attack]\n")
             # Save it and delete it from its original location
             aframe.wml = "".join(animation)
             lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
@@ -1271,9 +1286,9 @@ def hack_syntax(filename, lines):
             before = outer + "[/effect]\n" \
                      + outer + "[effect]\n" \
                      + ws + "apply_to=new_animation\n"
-            after = ws + baseindent + "[attack_filter]\n" \
+            after = ws + baseindent + "[filter_attack]\n" \
                     + ws + baseindent*2 + "name=" + attackname +" \n" \
-                    + ws + baseindent + "[/attack_filter]\n"
+                    + ws + baseindent + "[/filter_attack]\n"
             lines[i] = before \
                        + lines[i].replace("animation", "attack_anim") \
                        + after
@@ -1304,9 +1319,9 @@ def hack_syntax(filename, lines):
             outer = outdent(ws)
             insertion = outer + "[/attack]\n" \
                         + outer + "[attack_anim]\n" \
-                        + ws + "[attack_filter]\n" \
+                        + ws + "[filter_attack]\n" \
                         + ws + baseindent + "name=" + attackname +" \n" \
-                        + ws + "[/attack_filter]\n"
+                        + ws + "[/filter_attack]\n"
             lines[i] = insertion + lines[i]
             if soundpath:
                 lines[i] += ws + baseindent + "sound=" + soundpath + "\n"
@@ -1509,9 +1524,9 @@ start_time=-150
     duration=300
     image=%s
 [/frame]
-[attack_filter]
+[filter_attack]
     range=%s
-[/attack_filter]
+[/filter_attack]
 [/attack_anim]\
 """
     for i in range(len(lines)):

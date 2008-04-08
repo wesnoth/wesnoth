@@ -147,11 +147,19 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 		directions_.push_back(d);
 	}
 	config::const_child_iterator itor;
+	for(itor = cfg.child_range("filter").first; itor <cfg.child_range("filter").second;itor++) {
+		unit_filter_.push_back(**itor);
+	}
+	// FIXME OBSOLETE: Remove in 1.5.3
 	for(itor = cfg.child_range("unit_filter").first; itor <cfg.child_range("unit_filter").second;itor++) {
 		unit_filter_.push_back(**itor);
 	}
 
 	for(itor = cfg.child_range("secondary_unit_filter").first; itor <cfg.child_range("secondary_unit_filter").second;itor++) {
+		secondary_unit_filter_.push_back(**itor);
+	}
+	// FIXME OBSOLETE: Remove in 1.5.3
+	for(itor = cfg.child_range("filter_second").first; itor <cfg.child_range("filter_second").second;itor++) {
 		secondary_unit_filter_.push_back(**itor);
 	}
 	frequency_ = atoi(cfg["frequency"].c_str());
@@ -180,9 +188,17 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	for(swing=swing_str.begin() ; swing != swing_str.end() ; swing++) {
 		swing_num_.push_back(atoi(swing->c_str()));
 	}
+	for(itor = cfg.child_range("filter_attack").first; itor <cfg.child_range("filter_attack").second;itor++) {
+		primary_attack_filter_.push_back(**itor);
+	}
+	// FIXME OBSOLETE: Remove in 1.5,3
 	for(itor = cfg.child_range("attack_filter").first; itor <cfg.child_range("attack_filter").second;itor++) {
 		primary_attack_filter_.push_back(**itor);
 	}
+	for(itor = cfg.child_range("filter_second_attack").first; itor <cfg.child_range("filter_second_attack").second;itor++) {
+		secondary_attack_filter_.push_back(**itor);
+	}
+	// FIXME OBSOLETE: Remove in 1.5,3
 	for(itor = cfg.child_range("secondary_attack_filter").first; itor <cfg.child_range("secondary_attack_filter").second;itor++) {
 		secondary_attack_filter_.push_back(**itor);
 	}

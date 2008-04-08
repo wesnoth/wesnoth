@@ -1031,13 +1031,25 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	// If a key is in the unit and in the filter, they should match
 	// filter only => not for us
 	// unit only => not filtered
-	const vconfig::child_list& wmlcfgs = cfg.get_children("wml_filter");
+	const vconfig::child_list& wmlcfgs = cfg.get_children("filter_wml");
 	if (!wmlcfgs.empty()) {
 		config unit_cfg;
 		write(unit_cfg);
 		// Now, match the kids, WML based
 		for(unsigned int i=0; i < wmlcfgs.size(); ++i) {
 			if(!unit_cfg.matches(wmlcfgs[i].get_parsed_config())) {
+				return false;
+			}
+		}
+	}
+	// FIXME OBSOLETE: Remove in 1.5.3
+	const vconfig::child_list& wmlcfgs_old = cfg.get_children("wml_filter");
+	if (!wmlcfgs_old.empty()) {
+		config unit_cfg;
+		write(unit_cfg);
+		// Now, match the kids, WML based
+		for(unsigned int i=0; i < wmlcfgs_old.size(); ++i) {
+			if(!unit_cfg.matches(wmlcfgs_old[i].get_parsed_config())) {
 				return false;
 			}
 		}
