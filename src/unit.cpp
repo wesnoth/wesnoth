@@ -1262,21 +1262,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		cfg_.remove_child("modifications",0);
 	}
 
-	bool type_set = false;
 	type_ = "";
-	if(!cfg["type"].empty()) {
-		std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find(cfg["type"]);
-		if(i != unit_type_data::types().end()) {
-			advance_to(&i->second.get_gender_unit_type(gender_), use_traits, state);
-			type_set = true;
-		} else {
-			std::string error_message = _("Unknown unit type '$type|'");
-			utils::string_map symbols;
-			symbols["type"] = cfg["type"];
-			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
-			throw game::game_error(error_message);
-		}
+	advance_to(&uti->second.get_gender_unit_type(gender_), use_traits, state);
 		attacks_left_ = max_attacks_;
 		if(cfg["moves"]=="") {
 			movement_ = max_movement_;
@@ -1285,9 +1272,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 			attacks_left_ = 0;
 			movement_ = 0;
 		}
-	}
+
 	type_ = cfg_["type"];
-	if(!type_set || cfg["race"] != "") {
+	if(cfg["race"] != "") {
 		const race_map::const_iterator race_it = unit_type_data::types().races().find(cfg["race"]);
 		if(race_it != unit_type_data::types().races().end()) {
 			race_ = &race_it->second;
@@ -1297,10 +1284,10 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		}
 	}
 	variation_ = cfg["variation"];
-	if(!type_set || cfg["max_attacks"] != "") {
+	if(cfg["max_attacks"] != "") {
 		max_attacks_ = minimum<int>(1,lexical_cast_default<int>(cfg["max_attacks"]));
 	}
-	if(!type_set || cfg["zoc"] != "") {
+	if(cfg["zoc"] != "") {
 		emit_zoc_ = lexical_cast_default<int>(cfg["zoc"]);
 	}
 	if(cfg["flying"] != "") {
@@ -1336,34 +1323,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	const unit_type* ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
 
-	if(!type_set) {
-		if(ut) {
-			if(cfg_["description"] == "") {
-				cfg_["description"] = ut->unit_description();
-			}
-			config t_atks;
-			config u_atks;
-			config::const_child_itors range;
-			for(range = ut->cfg_.child_range("attack");
-				range.first != range.second; ++range.first) {
-				t_atks.add_child("attack",**range.first);
-			}
-			for(range = cfg.child_range("attack");
-				range.first != range.second; ++range.first) {
-				u_atks.add_child("attack",**range.first);
-			}
-			t_atks.merge_with(u_atks);
-			for(range = t_atks.child_range("attack");
-				range.first != range.second; ++range.first) {
-				attacks_.push_back(attack_type(**range.first));
-			}
-		} else {
-			for(config::const_child_itors range = cfg.child_range("attack");
-				range.first != range.second; ++range.first) {
-				attacks_.push_back(attack_type(**range.first));
-			}
-		}
-	}
 	cfg_.clear_children("attack");
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
@@ -1380,15 +1339,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian","yes");
 	}
-	if(!type_set) {
-		if(ut) {
-			animations_ = ut->animations();
-		} else {
-			unit_animation::fill_initial_animations(animations_,cfg_);
-		}
-	} else {
 		unit_animation::fill_initial_animations(animations_,cfg_);
-	}
 	// Remove animations from private cfg, since they're not needed there now
 	cfg_.clear_children("animation");
 
@@ -1406,13 +1357,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	cfg_.clear_children("healed_anim");
 	cfg_.clear_children("poison_anim");
 
-	if(!type_set) {
-		backup_state();
-		if(utils::string_bool(cfg_["random_traits"], true)) {
-			generate_traits(!use_traits, state);
-		}
-		apply_modifications();
-	}
 	if(cfg["hitpoints"] != "") {
 		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
 	} else {
