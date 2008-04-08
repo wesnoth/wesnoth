@@ -212,21 +212,6 @@ tpoint tgrid::get_best_size() const
 		std::accumulate(best_row_height_.begin(), best_row_height_.end(), 0));
 }
 
-void tgrid::set_best_size(const tpoint& origin)
-{
-	// Update the sizes.
-	get_best_size();
-	assert(best_col_width_.size() == cols_);
-	assert(best_row_height_.size() == rows_);
-
-	row_height_ = best_row_height_;
-	col_width_ = best_col_width_;
-
-	layout(origin);
-	return;
-
-}
-
 void tgrid::set_size(const SDL_Rect& rect)
 {
 	twidget::set_size(rect);
@@ -359,6 +344,17 @@ twidget* tgrid::get_widget_by_id(const std::string& id)
 	return twidget::get_widget_by_id(id);
 }
 
+void tgrid::load_config()
+{
+	for(std::vector<tchild>::iterator itor = children_.begin();
+			itor != children_.end(); ++itor) {
+
+		if(itor->widget()) {
+			itor->widget()->load_config();
+		}
+	}
+}
+
 void tgrid::clear_cache()
 {
 	best_row_height_.clear();
@@ -415,7 +411,6 @@ tpoint tgrid::tchild::get_best_size() const
 void tgrid::tchild::set_size(tpoint orig, tpoint size)
 {
 	assert(widget());
-	widget()->set_best_size(orig); // needed for calling resolve_resolution()
 
 	if(border_size_) {
 		if(flags_ & BORDER_TOP) {

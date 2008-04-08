@@ -203,14 +203,6 @@ public:
 	//! Is the widget dirty?
 	virtual bool dirty() const { return dirty_; }
 
-	//! Sets the best size for the object.
-	virtual void set_best_size(const tpoint& origin)
-		{ set_size(create_rect(origin, get_best_size())); }
-		
-
-	//! Sets the minumum size for the object.
-//	virtual void set_minimum_size();
-
 	//! Gets the minimum size for the object should != 0,0.
 	virtual tpoint get_minimum_size() const = 0;	
 
@@ -244,6 +236,9 @@ public:
 	//! The toplevel item should always be a window if not null is returned
 	twindow* get_window();
 
+	//! loads the configuration of the widget, mainly used for controls.
+	virtual void load_config() {} 
+
 protected:	
 	virtual void set_dirty(const bool dirty = true) 
 	{ 
@@ -270,6 +265,7 @@ private:
 	int x_, y_;
 	unsigned w_, h_;
 	bool dirty_;
+
 };
 
 } // namespace gui2

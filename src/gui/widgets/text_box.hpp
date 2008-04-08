@@ -154,8 +154,6 @@ private:
 	// These are ignored by a single line edit box which is the default behaviour.
 	virtual void handle_key_page_up(SDLMod modifier, bool& handled) {}
 	virtual void handle_key_page_down(SDLMod modifier, bool& handled) {}
-
-	virtual void resolve_definition() = 0;
 };
 
 //! Class for a single line text area.
@@ -166,8 +164,7 @@ public:
 
 	ttext_box() :
 		ttext_(),
-		character_offset_(),
-		definition_()
+		character_offset_()
 	{}
 
 
@@ -198,13 +195,9 @@ protected:
 	void goto_end_of_line(const bool select = false) { goto_end_of_data(select); }
 	void goto_start_of_line(const bool select = false) { goto_start_of_data(select); }
 
-	// note we should check whether the label fits in the button
-	// Inherited from twidget.
-	tpoint get_minimum_size() const;
-	tpoint get_best_size() const;
-	tpoint get_maximum_size() const;
+	//! Inherited from twidget.
+	void load_config();
 
-	void set_best_size(const tpoint& origin);
 private:
 
 	void handle_key_up_arrow(SDLMod modifier, bool& handled) {};
@@ -218,10 +211,6 @@ private:
 
 	//! Inherited from ttext_.
 	void calculate_char_offset();
-
-	std::vector<ttext_box_definition::tresolution>::const_iterator definition_;
-
-	void resolve_definition();
 };
 
 

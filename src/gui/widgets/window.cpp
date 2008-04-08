@@ -75,6 +75,9 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 		// FIXME throw an exception
 
 	}
+
+	// Update all configs.
+	load_config();
 	
 	// We cut a piece of the screen and use that, that way all coordinates
 	// are relative to the window.

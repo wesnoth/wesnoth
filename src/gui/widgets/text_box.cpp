@@ -323,7 +323,7 @@ void ttext_box::insert_char(Uint16 unicode)
 	std::string tmp_text;
 	tmp_text.insert(tmp_text.begin(), unicode);
 
-	surface surf = render_text(tmp_text, definition_->text_font_size);
+	surface surf = render_text(tmp_text, config()->text_font_size);
 	assert(surf);
 	const unsigned width = surf->w;
 
@@ -399,11 +399,8 @@ void ttext_box::delete_selection()
 
 bool ttext_box::full_redraw() const
 {
-	if(definition_ != std::vector<ttext_box_definition::tresolution>::const_iterator()) {
-		return definition_->state[get_state()].full_redraw;
-	} else {
-		return 0;
-	}
+	assert(config());
+	return config()->state[get_state()].full_redraw;
 }
 
 //! Inherited from tcontrol.
@@ -420,52 +417,19 @@ void ttext_box::set_canvas_text()
 	}
 }
 
-tpoint ttext_box::get_minimum_size() const
-{
-	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
-		return tpoint(get_text_box(definition())->min_width, get_text_box(definition())->min_height); 
-	} else {
-		return tpoint(definition_->min_width, definition_->min_height); 
-	}
-}
-
-tpoint ttext_box::get_best_size() const
-{
-	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
-		return tpoint(get_text_box(definition())->default_width, get_text_box(definition())->default_height); 
-	} else {
-		return tpoint(definition_->default_width, definition_->default_height); 
-	}
-}
-
-tpoint ttext_box::get_maximum_size() const
-{
-	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
-		return tpoint(get_text_box(definition())->max_width, get_text_box(definition())->max_height); 
-	} else {
-		return tpoint(definition_->max_width, definition_->max_height); 
-	}
-}
-
-void ttext_box::set_best_size(const tpoint& origin)
-{
-	resolve_definition();
-
-	set_x(origin.x);
-	set_y(origin.y);
-	set_width(definition_->default_width);
-	set_height(definition_->default_height);
-}
-
 //! Calculates the offsets of all chars.
 void ttext_box::calculate_char_offset()
 {
+	// If the text is set before the config is loaded do it ourselves.
+	// This isn't really clean solution, maybe fix it later.
+	if(!config()) {
+		load_config();
+	}
+	assert(config());
 	character_offset_.clear();
 
 	std::string rendered_text;
-	const unsigned font_size = 
-		definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator() ?
-		0 : definition_->text_font_size;
+	const unsigned font_size = config()->text_font_size;
 
 	// FIXME we assume the text start at offset 0!!!
 	foreach(const wchar_t& unicode, utils::string_to_wstring(text())) {
@@ -484,17 +448,16 @@ void ttext_box::handle_key_clear_line(SDLMod modifier, bool& handled)
 	set_text("");
 }
 
-void ttext_box::resolve_definition()
+void ttext_box::load_config()
 {
-	if(definition_ == std::vector<ttext_box_definition::tresolution>::const_iterator()) {
-		definition_ = get_text_box(definition());
+	if(!config()) {
+		set_config(get_text_box(definition()));
 
-		assert(canvas().size() == definition_->state.size());
+		assert(canvas().size() == config()->state.size());
 		for(size_t i = 0; i < canvas().size(); ++i) {
-			canvas(i) = definition_->state[i].canvas;
+			canvas(i) = config()->state[i].canvas;
 		}
 
-		calculate_char_offset();
 		set_canvas_text();
 	}
 }

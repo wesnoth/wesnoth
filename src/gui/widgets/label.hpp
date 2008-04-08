@@ -38,23 +38,15 @@ public:
 
 	void draw(surface& surface);
 
-	// note we should check whether the label fits in the label
-	// Inherited from twidget.
-	tpoint get_minimum_size() const;
-	tpoint get_best_size() const;
-	tpoint get_maximum_size() const;
+	//! Inherited from twidget.
+	void load_config();
 
-	void set_best_size(const tpoint& origin);
 private:
 	//! Note the order of the states must be the same as defined in settings.hpp.
 	enum tstate { ENABLED, DISABLED, COUNT };
 
 	void set_state(tstate state);
 	tstate state_;
-
-	std::vector<tlabel_definition::tresolution>::const_iterator definition_;
-
-	void resolve_definition();
 };
 
 } // namespace gui2

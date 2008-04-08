@@ -97,43 +97,6 @@ void tbutton::mouse_left_button_double_click(tevent_handler&)
 	DBG_G_E << "Button: left mouse button double click.\n"; 
 }
 
-tpoint tbutton::get_minimum_size() const
-{
-	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
-		return tpoint(get_button(definition())->min_width, get_button(definition())->min_height); 
-	} else {
-		return tpoint(definition_->min_width, definition_->min_height); 
-	}
-}
-
-tpoint tbutton::get_best_size() const
-{
-	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
-		return tpoint(get_button(definition())->default_width, get_button(definition())->default_height); 
-	} else {
-		return tpoint(definition_->default_width, definition_->default_height); 
-	}
-}
-
-tpoint tbutton::get_maximum_size() const
-{
-	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
-		return tpoint(get_button(definition())->max_width, get_button(definition())->max_height); 
-	} else {
-		return tpoint(definition_->max_width, definition_->max_height); 
-	}
-}
-
-void tbutton::set_best_size(const tpoint& origin)
-{
-	resolve_definition();
-
-	set_x(origin.x);
-	set_y(origin.y);
-	set_width(definition_->default_width);
-	set_height(definition_->default_height);
-}
-
 tbutton::RETVAL tbutton::get_retval_by_id(const std::string& id)
 {
 	//! Note it might change to a map later depending on the number
@@ -145,7 +108,6 @@ tbutton::RETVAL tbutton::get_retval_by_id(const std::string& id)
 	} else {
 		return NONE;
 	}
-
 }
 
 void tbutton::set_active(const bool active)
@@ -170,14 +132,14 @@ void tbutton::set_state(tstate state)
 	}
 }
 
-void tbutton::resolve_definition()
+void tbutton::load_config()
 {
-	if(definition_ == std::vector<tbutton_definition::tresolution>::const_iterator()) {
-		definition_ = get_button(definition());
+	if(!config()) {
+		set_config(get_button(definition()));
 
-		assert(canvas().size() == definition_->state.size());
+		assert(canvas().size() == config()->state.size());
 		for(size_t i = 0; i < canvas().size(); ++i) {
-			canvas(i) = definition_->state[i].canvas;
+			canvas(i) = config()->state[i].canvas;
 		}
 
 		set_canvas_text();

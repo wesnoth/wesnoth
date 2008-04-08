@@ -241,7 +241,7 @@ const std::string& tbutton_definition::read(const config& cfg)
 	for(std::vector<config*>::const_iterator itor = cfgs.begin();
 			itor != cfgs.end(); ++itor) {
 
-		resolutions.push_back(tresolution(**itor));
+		resolutions.push_back(new tresolution(**itor));
 	}
 
 	return id;
@@ -292,7 +292,7 @@ const std::string& tlabel_definition::read(const config& cfg)
 	for(std::vector<config*>::const_iterator itor = cfgs.begin();
 			itor != cfgs.end(); ++itor) {
 
-		resolutions.push_back(tresolution(**itor));
+		resolutions.push_back(new tresolution(**itor));
 	}
 
 	return id;
@@ -421,7 +421,7 @@ const std::string& ttext_box_definition::read(const config& cfg)
 	for(std::vector<config*>::const_iterator itor = cfgs.begin();
 			itor != cfgs.end(); ++itor) {
 
-		resolutions.push_back(tresolution(**itor));
+		resolutions.push_back(new tresolution(**itor));
 	}
 
 	return id;
@@ -523,7 +523,7 @@ twindow_definition::tresolution::tlayer::tlayer(const config* cfg) :
 	canvas.set_cfg(*draw);
 }
 
-std::vector<tbutton_definition::tresolution>::const_iterator get_button(const std::string& definition)
+tresolution_definition_* get_button(const std::string& definition)
 {
 	std::map<std::string, tbutton_definition>::const_iterator 
 		button = current_gui->second.buttons.find(definition);
@@ -533,25 +533,25 @@ std::vector<tbutton_definition::tresolution>::const_iterator get_button(const st
 		assert(button != current_gui->second.buttons.end());
 	}
 
-	for(std::vector<tbutton_definition::tresolution>::const_iterator 
+	for(std::vector<tresolution_definition_*>::const_iterator 
 			itor = button->second.resolutions.begin(),
 			end = button->second.resolutions.end();
 			itor != end;
 			++itor) {
 
-		if(screen_width <= itor->window_width &&
-				screen_height <= itor->window_height) {
+		if(screen_width <= (**itor).window_width &&
+				screen_height <= (**itor).window_height) {
 
-			return itor;
+			return *itor;
 		} else if (itor == end - 1) {
-			return itor;
+			return *itor;
 		}
 	}
 
 	assert(false);
 }
 
-std::vector<tlabel_definition::tresolution>::const_iterator get_label(const std::string& definition)
+tresolution_definition_* get_label(const std::string& definition)
 {
 	std::map<std::string, tlabel_definition>::const_iterator 
 		label = current_gui->second.labels.find(definition);
@@ -561,25 +561,25 @@ std::vector<tlabel_definition::tresolution>::const_iterator get_label(const std:
 		assert(label != current_gui->second.labels.end());
 	}
 
-	for(std::vector<tlabel_definition::tresolution>::const_iterator 
+	for(std::vector<tresolution_definition_*>::const_iterator 
 			itor = label->second.resolutions.begin(),
 			end = label->second.resolutions.end();
 			itor != end;
 			++itor) {
 
-		if(screen_width <= itor->window_width &&
-				screen_height <= itor->window_height) {
+		if(screen_width <= (**itor).window_width &&
+				screen_height <= (**itor).window_height) {
 
-			return itor;
+			return *itor;
 		} else if (itor == end - 1) {
-			return itor;
+			return *itor;
 		}
 	}
 
 	assert(false);
 }
 
-std::vector<ttext_box_definition::tresolution>::const_iterator get_text_box(const std::string& definition)
+tresolution_definition_* get_text_box(const std::string& definition)
 {
 	std::map<std::string, ttext_box_definition>::const_iterator 
 		text_box = current_gui->second.text_boxs.find(definition);
@@ -589,18 +589,18 @@ std::vector<ttext_box_definition::tresolution>::const_iterator get_text_box(cons
 		assert(text_box != current_gui->second.text_boxs.end());
 	}
 
-	for(std::vector<ttext_box_definition::tresolution>::const_iterator 
+	for(std::vector<tresolution_definition_*>::const_iterator 
 			itor = text_box->second.resolutions.begin(),
 			end = text_box->second.resolutions.end();
 			itor != end;
 			++itor) {
 
-		if(screen_width <= itor->window_width &&
-				screen_height <= itor->window_height) {
+		if(screen_width <= (**itor).window_width &&
+				screen_height <= (**itor).window_height) {
 
-			return itor;
+			return *itor;
 		} else if (itor == end - 1) {
-			return itor;
+			return *itor;
 		}
 	}
 

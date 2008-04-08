@@ -39,33 +39,6 @@
 
 namespace gui2 {
 
-tpoint tlabel::get_minimum_size() const
-{
-	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
-		return tpoint(get_label(definition())->min_width, get_label(definition())->min_height); 
-	} else {
-		return tpoint(definition_->min_width, definition_->min_height); 
-	}
-}
-
-tpoint tlabel::get_best_size() const
-{
-	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
-		return tpoint(get_label(definition())->default_width, get_label(definition())->default_height); 
-	} else {
-		return tpoint(definition_->default_width, definition_->default_height); 
-	}
-}
-
-tpoint tlabel::get_maximum_size() const
-{
-	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
-		return tpoint(get_label(definition())->max_width, get_label(definition())->max_height); 
-	} else {
-		return tpoint(definition_->max_width, definition_->max_height); 
-	}
-}
-
 void tlabel::mouse_hover(tevent_handler&)
 {
 	DBG_G_E << "Text_box: mouse hover.\n"; 
@@ -90,16 +63,6 @@ void tlabel::draw(surface& surface)
 	set_dirty(false);
 }
 
-void tlabel::set_best_size(const tpoint& origin)
-{
-	resolve_definition();
-
-	set_x(origin.x);
-	set_y(origin.y);
-	set_width(definition_->default_width);
-	set_height(definition_->default_height);
-}
-
 void tlabel::set_state(tstate state)
 {
 	if(state != state_) {
@@ -108,17 +71,17 @@ void tlabel::set_state(tstate state)
 	}
 }
 
-void tlabel::resolve_definition()
+void tlabel::load_config()
 {
-	if(definition_ == std::vector<tlabel_definition::tresolution>::const_iterator()) {
-		definition_ = get_label(definition());
+	if(!config()) {
+		set_config(get_label(definition()));
 
-		assert(canvas().size() == definition_->state.size());
+		assert(canvas().size() == config()->state.size());
 		for(size_t i = 0; i < canvas().size(); ++i) {
-			canvas(i) = definition_->state[i].canvas;
+			canvas(i) = config()->state[i].canvas;
 		}
 
-		 set_canvas_text();
+		set_canvas_text();
 	}
 }
 

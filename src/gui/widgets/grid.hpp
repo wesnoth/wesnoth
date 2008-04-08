@@ -91,9 +91,6 @@ public:
 	tpoint get_maximum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); }
 
 	//! Inherited from twidget.
-	void set_best_size(const tpoint& origin);
-
-	//! Inherited from twidget.
 	void set_size(const SDL_Rect& rect);
 
 	//! Gets the widget at the wanted coordinates.
@@ -106,6 +103,9 @@ public:
 
 	//! Inherited from twidget.
 	void draw(surface& surface) { /* FIXME IMPLEMENT */ }
+
+	//! Inherited from twidget.
+	void load_config();
 
 private:
 	class tchild 
@@ -297,6 +297,10 @@ public:
 
 	void set_col_scaling(const unsigned col, const unsigned scale)
 		{ grid_.set_col_scaling(col, scale); }
+
+	//! Inherited from twidget.
+	//FIXME we also need to load our own config
+	void load_config() { grid_.load_config(); }
 
 private:
 	tgrid grid_;

@@ -44,7 +44,9 @@ tcontrol::tcontrol(const unsigned canvas_count) :
 	label_(),
 	tooltip_(),
 	help_message_(),
-	canvas_(canvas_count)
+	canvas_(canvas_count),
+	restorer_(),
+	config_(0)
 {
 }
 
@@ -92,6 +94,25 @@ void tcontrol::set_label(const t_string& label)
 	set_canvas_text();
 	set_dirty();
 }
+
+tpoint tcontrol::get_minimum_size() const
+{
+	assert(config_);
+	return tpoint(config_->min_width, config_->min_height);
+}
+
+tpoint tcontrol::get_best_size() const
+{
+	assert(config_);
+	return tpoint(config_->default_width, config_->default_height);
+}
+
+tpoint tcontrol::get_maximum_size() const
+{
+	assert(config_);
+	return tpoint(config_->max_width, config_->max_height);
+}
+
 
 //! Sets the text variable for the canvases.
 void tcontrol::set_canvas_text()

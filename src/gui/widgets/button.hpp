@@ -28,7 +28,6 @@ public:
 	tbutton() : 
 		tcontrol(COUNT),
 		state_(ENABLED),
-		definition_(),
 		retval_(0)
 		{
 		}
@@ -41,14 +40,6 @@ public:
 	void mouse_left_button_up(tevent_handler&);
 	void mouse_left_button_click(tevent_handler&);
 	void mouse_left_button_double_click(tevent_handler&); //FIXME remove
-
-	// note we should check whether the label fits in the button
-	// Inherited from twidget.
-	tpoint get_minimum_size() const;
-	tpoint get_best_size() const;
-	tpoint get_maximum_size() const;
-
-	void set_best_size(const tpoint& origin);
 
 	void set_retval(const int retval) { retval_ = retval; }
 
@@ -73,6 +64,9 @@ public:
 	unsigned get_state() const { return state_; }
 	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
+	//! Inherited from twidget.
+	void load_config();
+
 protected:
 	
 private:
@@ -81,11 +75,7 @@ private:
 
 	void set_state(tstate state);
 	tstate state_;
-
-	std::vector<tbutton_definition::tresolution>::const_iterator definition_;
-
-	void resolve_definition();
-
+ 
 	int retval_;
 };
 

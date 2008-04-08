@@ -16,6 +16,7 @@
 #define __GUI_WIDGETS_CONTROL_HPP_INCLUDED__
 
 #include "gui/widgets/canvas.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget.hpp"
 #include "tstring.hpp"
 
@@ -70,6 +71,12 @@ public:
 	//! Gets the active state of the control.
 	virtual bool get_active() const = 0;
 
+	// note we should check whether the label fits in the button
+	// Inherited from twidget.
+	tpoint get_minimum_size() const;
+	tpoint get_best_size() const;
+	tpoint get_maximum_size() const;
+
 protected:
 
 	//! Returns the id of the state, which is also the index for the canvas.
@@ -80,6 +87,11 @@ protected:
 
 	//! Sets the text variable for the canvases.
 	virtual void set_canvas_text();
+
+	tresolution_definition_* config() { return config_; }
+	const tresolution_definition_* const config() const { return config_; }
+
+	void set_config(tresolution_definition_* config) { config_ = config; }
 
 private:
 
@@ -102,6 +114,10 @@ private:
 	//! redrawing. This is needed for semi-tranparent items, the user
 	//! defines whether it's required or not.
 	surface restorer_;
+
+	//! Contains a pointer to the configuration of this button at the 
+	//! current resolution.
+ 	tresolution_definition_* config_;
 };
 
 } // namespace gui2
