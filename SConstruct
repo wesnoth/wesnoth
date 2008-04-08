@@ -1107,7 +1107,7 @@ install_manual = install_env.InstallFiltered(Dir(docdir),
                                        Dir("doc/manual"))
 
 # The game and associated resources
-install_wesnoth = install_env.Alias("install-wesnoth", [
+install_env.Alias("install-wesnoth", [
     install_env.Install(bindir, wesnoth),
     install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
     install_data, install_manual])
@@ -1126,7 +1126,7 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
 InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
 # The editor and associated resources
-install_wesnoth_editor = install_env.Alias("install-wesnoth_editor", [
+install_env.Alias("install-wesnoth_editor", [
     install_env.Install(bindir, wesnoth_editor),
     install_env.Install(os.path.join(mandir, "man6"),
                                 "doc/man/wesnoth_editor.6"),
@@ -1146,7 +1146,7 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
 InstallLocalizedManPage("install-wesnoth_editor", "wesnoth_editor.6", env)
 
 # Python tools
-install_pytools = install_env.Alias("install-pytools", [
+install_env.Alias("install-pytools", [
     install_env.Install(bindir,
                       map(lambda tool: 'data/tools/' + tool, pythontools)),
     install_env.Install(pythonlib,
@@ -1154,7 +1154,7 @@ install_pytools = install_env.Alias("install-pytools", [
     ])
 
 # Wesnoth MP server install
-install_wesnothd = install_env.Alias("install-wesnothd", install_env.Install(bindir, wesnothd))
+install_env.Alias("install-wesnothd", install_env.Install(bindir, wesnothd))
 install_env.Alias("install-wesnothd", install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"))
 for lang in filter(CopyFilter, os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
@@ -1165,7 +1165,7 @@ for lang in filter(CopyFilter, os.listdir("doc/man")):
                     os.path.join(sourcedir, "wesnothd.6"),
                ]))
 if not access(fifodir, F_OK):
-    install_env.AddPostAction(install_wesnothd, [
+    install_env.Alias('install-wesnothd', [
         Mkdir(fifodir),
         Chmod(fifodir, 0700),
         Action("chown %s:%s %s" %
@@ -1173,28 +1173,26 @@ if not access(fifodir, F_OK):
         ])
 
 # Wesnoth campaign server
-install_campaignd = install_env.Alias("install-campaignd",
-                                      Install(bindir, campaignd))
+install_env.Alias("install-campaignd", Install(bindir, campaignd))
 
 # And the artists' tools
-install_cutter = install_env.Alias("install-cutter",
-                                   Install(bindir, cutter))
-install_exploder = install_env.Alias("install-exploder",
-                                     Install(bindir, exploder))
+install_env.Alias("install-cutter", Install(bindir, cutter))
+install_env.Alias("install-exploder", Install(bindir, exploder))
 
 # Compute things for default install based on which targets have been created.
 for installable in ('wesnoth', 'wesnoth_editor',
                     'wesnothd', 'campaignd',
                     'exploder', 'cutter'):
     if os.path.exists(installable):
-        install_env.Alias('install', eval('install_' + installable))
+        install_env.Alias('install', install_env.Alias('install-'+installable))
 
 #
 # If we have the right tool in place, create targets to invoke msgfmt to
 # compile message catalogs to binary format at installation time.
-# Without this step, the i18n support won't work.
+# Without this step, the i18n support won't work.  Note, the actions
+# this generates should firte only when installing data.
 #
-if env["nls"] and 'wesnoth' in BUILD_TARGETS or 'wesnoth_editor' in BUILD_TARGETS:
+if env["nls"]:
     for domain in textdomains:
         pos = glob(os.path.join(domain, "*.po"))
         linguas = map(lingua_re.findall, pos)
