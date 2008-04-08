@@ -74,6 +74,13 @@ Version 1.5.0-svn:
    * In ThemeWML, the unit_description= attribute is now unit_name=.
      unit_description= will still be accepted for backwards compatibility.
      wmllint can safely do this up-conversion. 
+   * In AnimationWML, the [unit_filter] tag is now [filter], the    
+     [secondary_unit_filter] tag is now [filter_second], and the
+     [attack_filter] tag is now [filter_attack], and the
+     [secondary_attack_filter] tag is now [filter_second_attack]
+   * In EventWML, the [special_filter] tag is now [filter_attack] and the
+     [special_filter_second] tag is now [filter_second_attack]
+   * In the Standard Unit Filter, the [wml_filter] tag is now [filter_wml]
    * it's now possible to specify with loop= how many times a sample
      associated with a sound source should be played
    * locations stored in variable now include ownership information for villages
