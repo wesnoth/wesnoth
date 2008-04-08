@@ -33,7 +33,7 @@ class ParserWithCoreMacros:
         parser.parse_top(None)
         self.core_macros = parser.macros
                 
-    def parse(self, text_to_parse):
+    def parse(self, text_to_parse, ignore_macros = None):
         # Create the real parser.
         parser = wmlparser.Parser(datadir)
         parser.do_preprocessor_logic = True
@@ -43,6 +43,9 @@ class ParserWithCoreMacros:
         # Suppress complaints about undefined terrain macros
         parser.set_macro_not_found_callback(lambda wmlparser, name, params:
         name.startswith("TERRAIN") or name == "DISABLE_TRANSITIONS")
+        
+        if ignore_macros:
+            parser.macro_callback = ignore_macros
 
         # Create a WML root element and parse the given text into it.
         WML = wmldata.DataSub("WML")
@@ -116,7 +119,8 @@ class UnitList:
 
             # Re-parse, this time with the define defined.
             WML = self.parser.parse(
-                "#define %s\n#enddef\n%s" % (define, text_to_parse))
+                "#define %s\n#enddef\n%s" % (define, text_to_parse),
+                ignore_macros = lambda x: x.find("%s/scenarios" % campaign) == -1)
             # This time, it oughta work.
             units = WML.get_first("+units")
             if not units:

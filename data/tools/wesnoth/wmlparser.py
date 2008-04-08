@@ -64,6 +64,9 @@ class Parser:
 
         self.textdomain = ""
 
+        # Callback which is called for each macro. If it returns False, the
+        # macro is ignored.
+        self.macro_callback = None
         self.macro_not_found_callback = None
         self.no_macros = False
         
@@ -290,6 +293,10 @@ class Parser:
 
         preserve = macro
         macro = macro[:-1] # Get rid of final }
+        
+        if self.macro_callback:
+            if not self.macro_callback(macro): return None
+        
         # If the macro starts with ~, assume a file in userdata.
         if macro[0] == "~":
             if self.user_dir:
