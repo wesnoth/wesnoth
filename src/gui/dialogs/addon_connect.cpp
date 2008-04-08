@@ -23,10 +23,10 @@
 #include "log.hpp"
 #include "video.hpp"
 
-#define DBG_GUI LOG_STREAM(debug, widget)
-#define LOG_GUI LOG_STREAM(info, widget)
-#define WRN_GUI LOG_STREAM(warn, widget)
-#define ERR_GUI LOG_STREAM(err, widget)
+#define DBG_GUI LOG_STREAM_INDENT(debug, widget)
+#define LOG_GUI LOG_STREAM_INDENT(info, widget)
+#define WRN_GUI LOG_STREAM_INDENT(warn, widget)
+#define ERR_GUI LOG_STREAM_INDENT(err, widget)
 
 namespace gui2 {
 

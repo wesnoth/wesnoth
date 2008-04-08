@@ -26,10 +26,10 @@
 #include "serialization/parser.hpp"
 #include "variable.hpp"
 
-#define DBG_G_E LOG_STREAM(debug, gui_event)
-#define LOG_G_E LOG_STREAM(info, gui_event)
-#define WRN_G_E LOG_STREAM(warn, gui_event)
-#define ERR_G_E LOG_STREAM(err, gui_event)
+#define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
+#define LOG_G_E LOG_STREAM_INDENT(info, gui_event)
+#define WRN_G_E LOG_STREAM_INDENT(warn, gui_event)
+#define ERR_G_E LOG_STREAM_INDENT(err, gui_event)
 
 namespace gui2{
 
