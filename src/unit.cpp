@@ -1166,6 +1166,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
 		throw game::game_error(error_message);
 	}
+	type_ = cfg["type"];
 
 	cfg_ = cfg;
 	side_ = lexical_cast_default<int>(cfg["side"]);
@@ -1178,14 +1179,10 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	// Prevent un-initialized variables
 	hit_points_=1;
 
-	// These are restored here since the base values are stored so
-	// and traits might get applied later (due to
-	// advance_to()). If we restore these afterwards the traits
-	// modifications get lost.
+	// Collect these early so they can be modified by traits.
 	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"], 1);
 	max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
 	max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
-	/* */
 
 	if(cfg["gender"].empty()) {
 		gender_ = generate_gender(uti->second, utils::string_bool(cfg_["random_gender"], false), state);
@@ -1262,9 +1259,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		cfg_.remove_child("modifications",0);
 	}
 
-	type_ = "";
 	advance_to(&uti->second.get_gender_unit_type(gender_), use_traits, state);
-	type_ = cfg_["type"];
 	if(cfg["race"] != "") {
 		const race_map::const_iterator race_it = unit_type_data::types().races().find(cfg["race"]);
 		if(race_it != unit_type_data::types().races().end()) {
@@ -1330,10 +1325,11 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian","yes");
 	}
-		unit_animation::fill_initial_animations(animations_,cfg_);
-	// Remove animations from private cfg, since they're not needed there now
-	cfg_.clear_children("animation");
 
+	// Attach animations for this unit to the in-core object
+	unit_animation::fill_initial_animations(animations_,cfg_);
+	// Remove animations from private cfg, they're not needed there now
+	cfg_.clear_children("animation");
 	cfg_.clear_children("defend");
 	cfg_.clear_children("teleport_anim");
 	cfg_.clear_children("extra_anim");
