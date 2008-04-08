@@ -101,16 +101,22 @@ std::string get_timestamp(const time_t& t, const std::string& format) {
 	return buf;
 }
 
-std::ostream &logger::operator()(log_domain const &domain, bool show_names) const
+std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool indent) const
 {
 	logd const &d = log_domains[domain.domain_];
 	if (severity_ > d.severity_)
 		return null_ostream;
 	else {
-		if (timestamp)
+		if(indent) {
+			for(int i = 0; i != indent; ++i)
+				std::cerr << "  ";
+			}
+		if (timestamp) {
 			std::cerr << get_timestamp(time(NULL));
-		if (show_names)
+		}
+		if (show_names) {
 			std::cerr << name_ << ' ' << d.name_ << ": ";
+		}			
 		return std::cerr;
 	}
 }

@@ -50,7 +50,9 @@ class logger {
 	int severity_;
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
-	std::ostream &operator()(log_domain const &domain, bool show_names = true) const;
+	std::ostream &operator()(log_domain const &domain, 
+		bool show_names = true, bool indent = false) const;
+
 	bool dont_log(log_domain const &domain) const
 	{
 		logd const &d = log_domains[domain.domain_];
@@ -108,5 +110,8 @@ extern std::stringstream wml_error;
 #define log_scope2(a,b) lg::scope_logger scope_logging_object__(lg::a, b);
 
 #define LOG_STREAM(a, b) if (lg::a.dont_log(lg::b)) ; else lg::a(lg::b)
+
+// When using log_scope/log_scope2 it is nice to have all output indented.
+#define LOG_STREAM_INDENT(a,b) if (lg::a.dont_log(lg::b)) ; else lg::a(lg::b, true, true)
 
 #endif
