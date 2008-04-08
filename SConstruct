@@ -84,9 +84,11 @@ You can make the following special build targets:
     all = wesnoth wesnoth_editor exploder cutter wesnothd campaignd (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
-    install = synonym for install-clientside
+    install = install all executables that currently exist, and any data needed
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
+    install-cutter = install the castle cutter
+    install-exploder = install the castle exploder
     install-pytools = install all Python tools and modules
     uninstall = uninstall all executables, tools, modules, and servers.
     pot-update = generate gettext message catalog templates and merge them with localized message catalogs
