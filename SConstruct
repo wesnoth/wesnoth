@@ -45,7 +45,7 @@ opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
 opts.Add(BoolOption('profile', 'Set to build for debugging', False))
-opts.Add('program_suffix', 'suffix to append to names of installed programs',"")
+#opts.Add('program_suffix', 'suffix to append to names of installed programs',"")
 opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
