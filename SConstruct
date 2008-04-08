@@ -45,7 +45,7 @@ opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
 opts.Add(BoolOption('profile', 'Set to build for debugging', False))
-#opts.Add('programsuffix', 'suffix to append to names of installed programs',"")
+opts.Add('program_suffix', 'suffix to append to names of installed programs',"")
 opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
@@ -456,9 +456,9 @@ test_env = env.Clone()
 if boost_test_dyn_link:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
     if boost_auto_test:
-        test_env["CXXFLAGS"].Append(CPPDEFINES = "WESNOTH_BOOST_AUTO_TEST_MAIN")
+        test_env.Append(CPPDEFINES = "WESNOTH_BOOST_AUTO_TEST_MAIN")
     else:
-        test_env["CXXFLAGS"].Append(CPPDEFINES = "WESNOTH_BOOST_TEST_MAIN")
+        test_env.Append(CPPDEFINES = "WESNOTH_BOOST_TEST_MAIN")
 
 cc_version = env["CCVERSION"]
 if env["CC"] == "gcc":
@@ -470,8 +470,8 @@ if env["CC"] == "gcc":
 # Platform-specific support, straight from configure.ac
 if env["PLATFORM"] == 'win32':				# Microsoft Windows
     env.Append(LIBS = "unicows")			# Windows Unicode lib
-elif env["PLATFORM"] == 'darwin':				# Mac OS X
-    env.Append(FRAMEWORKS = "Carbon")		# Carbon GUI
+elif env["PLATFORM"] == 'darwin':			# Mac OS X
+    env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
@@ -725,9 +725,9 @@ test_sources = [
     "src/tests/main.cpp",
     "src/tests/test_util.cpp",
     ]
-test_env.Program("test", test_sources,
+test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth],
             CPPPATH = env["CPPPATH"] + ['/usr/include'],
-            LIBS =  ['wesnoth_core', 'wesnoth_sdl', 'wesnothd'] + env["LIBS"] + ['boost_unit_test_framework'])
+            LIBS = env["LIBS"] + ['boost_unit_test_framework'])
 
 # FIXME: Currently this will only work under Linux
 env["svnrev"] = commands.getoutput("svnversion -n . 2>/dev/null")
