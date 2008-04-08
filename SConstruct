@@ -1100,73 +1100,72 @@ install_env.TargetSignatures('build')
 
 # Now the actual installation productions
 
-install_data = env.InstallFiltered(Dir(datadir),
+install_data = install_env.InstallFiltered(Dir(datadir),
                                        map(Dir, installable_subs))
 
-install_manual = env.InstallFiltered(Dir(docdir),
+install_manual = install_env.InstallFiltered(Dir(docdir),
                                        Dir("doc/manual"))
 
 # The game and associated resources
-env.Alias("install-wesnoth", [
-    env.Install(bindir, wesnoth),
-    env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
+install_wesnoth = install_env.Alias("install-wesnoth", [
+    install_env.Install(bindir, wesnoth),
+    install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
     install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
-         env.Alias("install-wesnoth",
-                               env.Install(env["icondir"],
+         install_env.Alias("install-wesnoth",
+                               install_env.Install(env["icondir"],
                                               "icons/wesnoth-icon-Mac.png"))
      else:
-         env.Alias("install-wesnoth",
-                              env.Install(env["icondir"],
+         install_env.Alias("install-wesnoth",
+                              install_env.Install(env["icondir"],
                                              "icons/wesnoth-icon.png"))
-     env.Alias("install-wesnoth",
-               env.Install(env["desktopdir"],
+     install_env.Alias("install-wesnoth",
+               install_env.Install(env["desktopdir"],
                                       "icons/wesnoth.desktop"))
 InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
 # The editor and associated resources
-install_editor = env.Alias("install-editor", [
-    env.Install(bindir, wesnoth_editor),
-    env.Install(os.path.join(mandir, "man6"),
+install_wesnoth_editor = install_env.Alias("install-wesnoth_editor", [
+    install_env.Install(bindir, wesnoth_editor),
+    install_env.Install(os.path.join(mandir, "man6"),
                                 "doc/man/wesnoth_editor.6"),
     install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
-          env.Alias("install-editor",
-                               env.Install(env["icondir"],
+          install_env.Alias("install-wesnoth_editor",
+                               install_env.Install(env["icondir"],
                                               "icons/wesnoth_editor-icon-Mac.png"))
      else:
-          env.Alias("install-editor",
-                               env.Install(env["icondir"],
+          install_env.Alias("install-wesnoth_editor",
+                               install_env.Install(env["icondir"],
                                               "icons/wesnoth_editor-icon.png"))
-     env.Alias("install-editor",
-                          env.Install(env["desktopdir"],
+     install_env.Alias("install-wesnoth_editor",
+                          install_env.Install(env["desktopdir"],
                                          "icons/wesnoth_editor.desktop"))
-InstallLocalizedManPage("install-editor", "wesnoth_editor.6", env)
+InstallLocalizedManPage("install-wesnoth_editor", "wesnoth_editor.6", env)
 
 # Python tools
-install_pytools = env.Alias("install-pytools", [
-    env.Install(bindir,
+install_pytools = install_env.Alias("install-pytools", [
+    install_env.Install(bindir,
                       map(lambda tool: 'data/tools/' + tool, pythontools)),
-    env.Install(pythonlib,
+    install_env.Install(pythonlib,
                       map(lambda module: 'data/tools/wesnoth/' + module, pythonmodules)),
     ])
 
 # Wesnoth MP server install
-install_wesnothd = env.Install(bindir, wesnothd)
-env.Alias("install-wesnothd", install_wesnothd)
-env.Alias("install-wesnothd", env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"))
+install_wesnothd = install_env.Alias("install-wesnothd", install_env.Install(bindir, wesnothd))
+install_env.Alias("install-wesnothd", install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"))
 for lang in filter(CopyFilter, os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
      if os.path.isdir(sourcedir):
           targetdir = os.path.join(mandir, lang, "man6")
-          env.Alias('install-wesnothd',
-               env.Install(targetdir, [
+          install_env.Alias('install-wesnothd',
+               install_env.Install(targetdir, [
                     os.path.join(sourcedir, "wesnothd.6"),
                ]))
 if not access(fifodir, F_OK):
-    env.AddPostAction(install_wesnothd, [
+    install_env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
         Chmod(fifodir, 0700),
         Action("chown %s:%s %s" %
@@ -1174,14 +1173,28 @@ if not access(fifodir, F_OK):
         ])
 
 # Wesnoth campaign server
-env.Alias("install-campaignd", Install(bindir, campaignd))
+install_campaignd = install_env.Alias("install-campaignd",
+                                      Install(bindir, campaignd))
+
+# And the artists' tools
+install_cutter = install_env.Alias("install-cutter",
+                                   Install(bindir, cutter))
+install_exploder = install_env.Alias("install-exploder",
+                                     Install(bindir, exploder))
+
+# Compute things for default install based on which targets have been created.
+for installable in ('wesnoth', 'wesnoth_editor',
+                    'wesnothd', 'campaignd',
+                    'exploder', 'cutter'):
+    if os.path.exists(installable):
+        install_env.Alias('install', eval('install_' + installable))
 
 #
 # If we have the right tool in place, create targets to invoke msgfmt to
 # compile message catalogs to binary format at installation time.
 # Without this step, the i18n support won't work.
 #
-if env["nls"]:
+if env["nls"] and 'wesnoth' in BUILD_TARGETS or 'wesnoth_editor' in BUILD_TARGETS:
     for domain in textdomains:
         pos = glob(os.path.join(domain, "*.po"))
         linguas = map(lingua_re.findall, pos)
