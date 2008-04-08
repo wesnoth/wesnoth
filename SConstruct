@@ -1156,8 +1156,11 @@ install_env.Alias("install-pytools", [
     ])
 
 # Wesnoth MP server install
-install_env.Alias("install-wesnothd", install_env.Install(bindir, wesnothd))
-install_env.Alias("install-wesnothd", install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6"))
+install_wesnothd = install_env.Install(bindir, wesnothd)
+install_env.Alias("install-wesnothd", [
+                                install_wesnothd,
+                                install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6")
+                                ])
 for lang in filter(CopyFilter, os.listdir("doc/man")):
      sourcedir = os.path.join("doc/man", lang)
      if os.path.isdir(sourcedir):
@@ -1167,7 +1170,7 @@ for lang in filter(CopyFilter, os.listdir("doc/man")):
                     os.path.join(sourcedir, "wesnothd.6"),
                ]))
 if not access(fifodir, F_OK):
-    install_env.Alias('install-wesnothd', [
+    install_env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
         Chmod(fifodir, 0700),
         Action("chown %s:%s %s" %
