@@ -1264,15 +1264,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	type_ = "";
 	advance_to(&uti->second.get_gender_unit_type(gender_), use_traits, state);
-		attacks_left_ = max_attacks_;
-		if(cfg["moves"]=="") {
-			movement_ = max_movement_;
-		}
-		if(movement_ < 0) {
-			attacks_left_ = 0;
-			movement_ = 0;
-		}
-
 	type_ = cfg_["type"];
 	if(cfg["race"] != "") {
 		const race_map::const_iterator race_it = unit_type_data::types().races().find(cfg["race"]);
