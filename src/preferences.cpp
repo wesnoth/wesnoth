@@ -408,6 +408,49 @@ bool set_music(bool ison) {
 
 namespace {
 	double scroll = 0.2;
+	
+	void normalize_editor_rgb(int rval)
+	{
+		if (rval < -255) {
+			rval = -255;
+		}
+		else if (rval > 255) {
+			rval = 255;
+		}
+	}
+}
+
+void set_editor_r(int value)
+{
+	normalize_editor_rgb(value);
+	prefs["editor_r"] = lexical_cast<std::string>(value);
+}
+
+void set_editor_g(int value)
+{
+	normalize_editor_rgb(value);
+	prefs["editor_g"] = lexical_cast<std::string>(value);
+}
+
+void set_editor_b(int value)
+{
+	normalize_editor_rgb(value);
+	prefs["editor_b"] = lexical_cast<std::string>(value);
+}
+
+int editor_r(void)
+{
+	return lexical_cast_in_range<int>(get("editor_r"), 0, -255, 255);
+}
+
+int editor_g(void)
+{
+	return lexical_cast_in_range<int>(get("editor_g"), 0, -255, 255);
+}
+
+int editor_b(void)
+{
+	return lexical_cast_in_range<int>(get("editor_b"), 0, -255, 255);
 }
 
 int scroll_speed()

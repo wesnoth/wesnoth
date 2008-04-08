@@ -591,6 +591,11 @@ public:
 	//! Rebuild the dynamic terrain at the given location.
 	void rebuild_terrain(const gamemap::location &loc)
 		{ builder_.rebuild_terrain(loc); }
+
+	//! Updates editor light levels from preferences
+	void update_light_levels();
+private:
+	int lr_, lg_, lb_;
 };
 
 #endif

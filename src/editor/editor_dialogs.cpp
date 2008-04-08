@@ -239,7 +239,7 @@ void preferences_dialog(display &disp, config &prefs) {
 	const gui::dialog_manager dialog_mgr;
 
 	const int width = 600;
-	const int height = 200;
+	const int height = 400;
 	const int xpos = disp.w()/2 - width/2;
 	const int ypos = disp.h()/2 - height/2;
 
@@ -302,8 +302,78 @@ void preferences_dialog(display &disp, config &prefs) {
 	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,
 								scroll_pos + 80 + 50);
 
-	bool redraw_all = true;
+	// Time of Day lighting level sliders, etc.
+	const std::string& lighting_header_label = _("Lighting levels (time of day):");
+	SDL_Rect lighting_header_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
+	                                                lighting_header_label,0,0
+	                                               );
+	lighting_header_rect.x = scroll_rect.x;
+	lighting_header_rect.y = resolution_button.location().y + resolution_button.height() + 40;
+	
+	const std::string& lighting_r_label = _("light_level^Red:");
+	const std::string& lighting_g_label = _("light_level^Green:");
+	const std::string& lighting_b_label = _("light_level^Blue:");
+	SDL_Rect lighting_r_rect = font::draw_text(NULL,clip_rect,12,font::NORMAL_COLOUR,lighting_r_label,0,0);
+	SDL_Rect lighting_g_rect = font::draw_text(NULL,clip_rect,12,font::NORMAL_COLOUR,lighting_g_label,0,0);
+	SDL_Rect lighting_b_rect = font::draw_text(NULL,clip_rect,12,font::NORMAL_COLOUR,lighting_b_label,0,0);
 
+	lighting_r_rect.x = resolution_button.location().x;
+	lighting_r_rect.y = lighting_header_rect.y + 40;
+	
+	lighting_g_rect.x = resolution_button.location().x;
+	lighting_g_rect.y = lighting_r_rect.y + 40;
+	
+	lighting_b_rect.x = resolution_button.location().x;
+	lighting_b_rect.y = lighting_g_rect.y + 40;
+
+	gui::slider lighting_r_slider(disp.video());
+	gui::slider lighting_g_slider(disp.video());
+	gui::slider lighting_b_slider(disp.video());
+	
+	const int rgb_sliders_ref_x = lighting_r_rect.x +
+	                              maximum<int>(maximum<int>(lighting_r_rect.w, lighting_g_rect.w), lighting_b_rect.w);
+	const int rgb_sliders_ref_width = hotkeys_button.location().x + hotkeys_button.location().w - rgb_sliders_ref_x;
+	
+	SDL_Rect r_rect = { rgb_sliders_ref_x, lighting_r_rect.y, rgb_sliders_ref_width, 10};
+	SDL_Rect g_rect = { rgb_sliders_ref_x, lighting_g_rect.y, rgb_sliders_ref_width, 10};
+	SDL_Rect b_rect = { rgb_sliders_ref_x, lighting_b_rect.y, rgb_sliders_ref_width, 10};
+
+	lighting_r_slider.set_value(preferences::editor_r());
+	lighting_g_slider.set_value(preferences::editor_g());
+	lighting_b_slider.set_value(preferences::editor_b());
+	
+	lighting_r_slider.set_min(-255);
+	lighting_g_slider.set_min(-255);
+	lighting_b_slider.set_min(-255);
+	
+	lighting_r_slider.set_max(255);
+	lighting_g_slider.set_max(255);
+	lighting_b_slider.set_max(255);
+	
+	lighting_r_slider.set_location(r_rect);
+	lighting_g_slider.set_location(g_rect);
+	lighting_b_slider.set_location(b_rect);
+	
+	// NOTE: padding
+	std::string lighting_value_r = "0000";
+	std::string lighting_value_g = "0000";
+	std::string lighting_value_b = "0000";
+	
+	SDL_Rect lighting_value_r_rect = font::draw_text(NULL,clip_rect,12,font::NORMAL_COLOUR,lighting_value_r,0,0);
+	SDL_Rect lighting_value_g_rect = font::draw_text(NULL,clip_rect,12,font::NORMAL_COLOUR,lighting_value_g,0,0);
+	SDL_Rect lighting_value_b_rect = font::draw_text(NULL,clip_rect,12,font::NORMAL_COLOUR,lighting_value_b,0,0);
+	
+	lighting_value_r_rect.x = rgb_sliders_ref_x + rgb_sliders_ref_width + 20;
+	lighting_value_g_rect.x = rgb_sliders_ref_x + rgb_sliders_ref_width + 20;
+	lighting_value_b_rect.x = rgb_sliders_ref_x + rgb_sliders_ref_width + 20;
+	
+	lighting_value_r_rect.y = r_rect.y;
+	lighting_value_g_rect.y = g_rect.y;
+	lighting_value_b_rect.y = b_rect.y;
+
+	bool redraw_all = true;
+	bool redraw_slider_values = false;
+	
 	for(;;) {
 		if(close_button.pressed()) {
 			break;
@@ -322,15 +392,23 @@ void preferences_dialog(display &disp, config &prefs) {
 			grid_button.set_dirty();
 			hotkeys_button.set_dirty();
 			scroll_slider.set_dirty();
+			lighting_r_slider.set_dirty();
+			lighting_g_slider.set_dirty();
+			lighting_b_slider.set_dirty();
 
 			font::draw_text(&disp.video(),clip_rect,14,font::NORMAL_COLOUR,scroll_label,
 		                scroll_rect.x,scroll_rect.y);
+			font::draw_text(&disp.video(),clip_rect,14,font::NORMAL_COLOUR,lighting_header_label,lighting_header_rect.x,lighting_header_rect.y);
+
+			font::draw_text(&disp.video(),clip_rect,12,font::NORMAL_COLOUR,lighting_r_label,lighting_r_rect.x,lighting_r_rect.y);
+			font::draw_text(&disp.video(),clip_rect,12,font::NORMAL_COLOUR,lighting_g_label,lighting_g_rect.x,lighting_g_rect.y);
+			font::draw_text(&disp.video(),clip_rect,12,font::NORMAL_COLOUR,lighting_b_label,lighting_b_rect.x,lighting_b_rect.y);
 
 			update_rect(screen_area());
 
 			redraw_all = false;
+			redraw_slider_values = true;
 		}
-
 
 		if(grid_button.pressed()) {
 			preferences::set_grid(grid_button.checked());
@@ -349,8 +427,56 @@ void preferences_dialog(display &disp, config &prefs) {
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
+		
+		//!@todo FIXME: this could be made simpler with gui::label widgets, but I'm too lazy to go
+		//! and learn how to use them, thus I'll concentrate on the real feature -- shadowmaster
+		if (lighting_r_slider.value_change() || redraw_slider_values) {
+			draw_solid_tinted_rectangle(
+				lighting_value_r_rect.x-2, lighting_value_r_rect.y-2,
+				lighting_value_r_rect.w+4, lighting_value_r_rect.h+4,
+				30, 30, 30,
+				1.0,
+				disp.video().getSurface()
+				);
+			lighting_value_r = str_cast<int>(lighting_r_slider.value());
+			font::draw_text(&disp.video(), clip_rect, 12, font::NORMAL_COLOUR,
+				lighting_value_r, lighting_value_r_rect.x, lighting_value_r_rect.y);
+			update_rect(lighting_value_r_rect);
+		}
+		if (lighting_g_slider.value_change() || redraw_slider_values) {
+			draw_solid_tinted_rectangle(
+				lighting_value_g_rect.x-2, lighting_value_g_rect.y-2,
+				lighting_value_g_rect.w+4, lighting_value_g_rect.h+4,
+				30, 30, 30,
+				1.0,
+				disp.video().getSurface()
+				);
+			lighting_value_g = str_cast<int>(lighting_g_slider.value());
+			font::draw_text(&disp.video(), clip_rect, 12, font::NORMAL_COLOUR,
+				lighting_value_g, lighting_value_g_rect.x, lighting_value_g_rect.y
+				);
+			update_rect(lighting_value_g_rect);
+		}
+		if (lighting_b_slider.value_change() || redraw_slider_values) {
+			draw_solid_tinted_rectangle(
+				lighting_value_b_rect.x-2, lighting_value_b_rect.y-2,
+				lighting_value_b_rect.w+4, lighting_value_b_rect.h+4,
+				30, 30, 30,
+				1.0,
+				disp.video().getSurface()
+				);
+			lighting_value_b = str_cast<int>(lighting_b_slider.value());
+			font::draw_text(&disp.video(), clip_rect, 12, font::NORMAL_COLOUR,
+				lighting_value_b, lighting_value_b_rect.x, lighting_value_b_rect.y
+				);
+			update_rect(lighting_value_b_rect);
+		}
+		redraw_slider_values = false;
 
 		preferences::set_scroll_speed(scroll_slider.value());
+		preferences::set_editor_r(lighting_r_slider.value());
+		preferences::set_editor_g(lighting_g_slider.value());
+		preferences::set_editor_b(lighting_b_slider.value());
 
 		disp.update_display();
 

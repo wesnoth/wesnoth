@@ -48,6 +48,11 @@ void editor_display::draw(bool update,bool force)
 {
 	bool changed = display::draw_init();
 
+	//!@todo FIXME: this should be done from the preferences dialog as well,
+	//! to reflect changes for the user before closing it
+	this->update_light_levels();
+	image::set_colour_adjustment(lr_, lg_, lb_);
+
 	//int simulate_delay = 0;
 	if(!map_.empty() && !invalidated_.empty()) {
 		changed = true;
@@ -80,6 +85,8 @@ void editor_display::draw(bool update,bool force)
 				continue;
 			}
 
+			//!@todo FIXME: this seems to have no effect, and to be left-over of the
+			//! time of day light system used before around version 0.9
 			const std::string nodarken = "morning";
 			drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
 				get_terrain_images(*it,nodarken,image_type,ADJACENT_BACKGROUND)));
@@ -150,4 +157,10 @@ void editor_display::draw(bool update,bool force)
 	display::draw_wrap(update, force, changed);
 }
 
+void editor_display::update_light_levels(void)
+{
+	this->lr_ = preferences::editor_r();
+	this->lg_ = preferences::editor_g();
+	this->lb_ = preferences::editor_b();
+}
 
