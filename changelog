@@ -15,9 +15,9 @@ Version 1.5.0-svn:
  * graphics:
    * Fixed broken TC on transport-galleon and drake walking corpse graphics
    * New portraits: Elvish Sorceress
-   * add a little shadow on the bar of the loading screen
+   * added a light shadow on the bar of the loading screen
    * new dungeon wall terrain
-   * a new city-themed village variation
+   * new city-themed village variation
    * added a new experimental gui engine available when starting with
      --new-widgets. The engine doesn't do much yet.
  * user interface:
@@ -36,6 +36,8 @@ Version 1.5.0-svn:
      directly trigger an update when toggled off.
    * add-ons can now make their custom terrains available in the editor
    * Draw base terrain under an overlay when ALT is pressed
+   * Implemented adjustable lighting levels (time of day)
+     (debian bug #458305 / gna bug #11408)
  * game engine
    * Implemented lazy loading for unit_types
  * multiplayer:
