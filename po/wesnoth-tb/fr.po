@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:28+0100\n"
-"PO-Revision-Date: 2008-03-02 13:05+0100\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"PO-Revision-Date: 2008-04-08 19:12+0100\n"
+"Last-Translator: Damien J <guydelatourATgloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,10 +16,11 @@ msgstr ""
 msgid "A Tale Of Two Brothers"
 msgstr "L'Histoire de deux frères"
 
+# Abbréviation pour "Histoire de Deux Frères"
 #. [campaign]
 #: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "AToTB"
-msgstr "LHdDF"
+msgstr "HdDF"
 
 #. [campaign]
 #: data/campaigns/Two_Brothers/_main.cfg:17
@@ -55,13 +56,13 @@ msgstr ""
 "Bjarn appelle à l'aide son frère Arne, il est victorieux mais Bjarn est "
 "enlevé. Pourrez-vous le sauver ? \n"
 "\n"
-"(Niveau débutant, 4 scénarios; le niveau « difficile » sera un bon défi pour "
-"les joueurs plus expérimentés)."
+"(Niveau débutant, 4 scénarios ; le niveau « difficile » sera un bon défi "
+"pour les joueurs plus expérimentés)."
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:24
 msgid "Campaign Design"
-msgstr "Concept de la campagne"
+msgstr "Conception de la campagne"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:33
@@ -71,7 +72,7 @@ msgstr "Maintenance de la campagne"
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:39
 msgid "Artwork and Graphics Design"
-msgstr "Art et design graphique"
+msgstr "Conception graphique"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:48
@@ -81,8 +82,7 @@ msgstr "Divers"
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:55
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr ""
-"Et remerciments particuliers à tous les autres que je n'ai pas mentionné."
+msgstr "Et remerciements particuliers à tous ceux que je n'ai pas mentionnés."
 
 # rooting out est plus l'idée de retirer du coin comme on enlève une plante.
 #. [scenario]
@@ -214,7 +214,7 @@ msgstr ""
 #. [message]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:255
 msgid "'ello there, Bjarn. So, what's the big fuss?"
-msgstr "Salut, Bjarn. Alors, qu'est ce que c'est que cette histoire ?"
+msgstr "Salut, Bjarn. Alors, qu'est-ce que c'est que cette histoire ?"
 
 #. [message]: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:259
@@ -338,7 +338,7 @@ msgstr "La Poursuite"
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:75
 msgid "Fight your way through the woods before the kidnappers escape"
 msgstr ""
-"Combattez en traversant les bois et rejoignez les ravisseurs avant qu'ils ne "
+"Combattre en traversant les bois et rejoindre les ravisseurs avant qu'ils ne "
 "s'échappent"
 
 #. [side]: type=Elvish Rider, description=Nil-Galion
@@ -383,7 +383,7 @@ msgid ""
 "Those men had some great arguments persuading me to not allow you to enter "
 "this forest. Any further, and you will die."
 msgstr ""
-"Ces hommes avaient de très bons arguments pour me persuader de ne pas vous "
+"Ces hommes avaient de solides arguments pour me persuader de ne pas vous "
 "autoriser à entrer dans cette forêt. Si vous essayez, vous mourrez."
 
 #. [message]: role=speaker
@@ -411,7 +411,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:320
 msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "Tuez l'adepte des ténèbres avant l'arrivée de ses renforts"
+msgstr "Tuer l'adepte des ténèbres avant l'arrivée de ses renforts"
 
 #. [message]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:338
@@ -658,22 +658,22 @@ msgstr "Le mot de passe est"
 #. [option]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:305
 msgid "$first_password_1|!"
-msgstr "$first_password_1 !"
+msgstr "$first_password_1| !"
 
 #. [option]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:311
 msgid "$first_password_2|!"
-msgstr "$first_password_2 !"
+msgstr "$first_password_2| !"
 
 #. [option]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:317
 msgid "$first_password_3|!"
-msgstr "$first_password_3 !"
+msgstr "$first_password_3| !"
 
 #. [option]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:323
 msgid "$first_password_4|!"
-msgstr "$first_password_4 !"
+msgstr "$first_password_4| !"
 
 #. [message]: description=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:339
@@ -731,25 +731,25 @@ msgstr "Oh, bien sûr. J'avais presque oublié."
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:438
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:554
 msgid "$second_password_1|!"
-msgstr "$second_password_1 !"
+msgstr "$second_password_1| !"
 
 #. [option]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:444
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:560
 msgid "$second_password_2|!"
-msgstr "$second_password_2 !"
+msgstr "$second_password_2| !"
 
 #. [option]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:450
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:566
 msgid "$second_password_3|!"
-msgstr "$second_password_3 !"
+msgstr "$second_password_3| !"
 
 #. [option]: description=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:456
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:572
 msgid "$second_password_4|!"
-msgstr "$second_password_4 !"
+msgstr "$second_password_4| !"
 
 #. [message]: description=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:471
@@ -796,7 +796,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:633
 msgid "Move Arne to the cell with his brother to free him"
-msgstr "Amenez Arne à la cellule de son frère pour le libérer"
+msgstr "Amener Arne à la cellule de son frère pour le libérer"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:663
@@ -837,7 +837,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:756
 msgid "Kill the dark sorcerer to get the cellkey"
-msgstr "Tuez le sorcier des ténèbres pour obtenir la clé de la cellule"
+msgstr "Tuer le sorcier des ténèbres pour obtenir la clé de la cellule"
 
 #. [message]: description=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:797
