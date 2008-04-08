@@ -3,6 +3,13 @@
 
 """
 This module represents the internal appearance of WML.
+
+Note: We cannot store textdomain information, due to how the parser work.
+For example:
+    name = _"x" + {foor} + {bar}
+That string may actually be composed from three different textdomains. The
+textdomain stuff in here is therefore only useful to CampGen, as that does
+not allow composed strings like above.
 """
 
 import re, sys, os
@@ -40,15 +47,13 @@ class Data:
 
 class DataText(Data):
     """Represents any text strings."""
-    def __init__(self, name, text, translatable = False, textdomain = ""):
+    def __init__(self, name, text, translatable = False):
         Data.__init__(self, name)
         self.data = text
         self.translatable = translatable
-        self.textdomain = textdomain
 
     def copy(self):
-        return DataText(self.name, self.data, self.translatable,
-            self.textdomain)
+        return DataText(self.name, self.data, self.translatable)
 
     def get_value(self):
         return self.data

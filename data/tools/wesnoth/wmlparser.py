@@ -28,8 +28,9 @@ class Parser:
 
     class Macro:
         """Class to hold one single macro."""
-        def __init__(self, name, params, text):
-            self.name, self.params, self.text = name, params, text
+        def __init__(self, name, params, text, textdomain):
+            self.name, self.params, self.text, self.textdomain =\
+                name, params, text, textdomain
 
     class TextState:
         def __init__(self, filename, text, textpos, line, current_path,
@@ -65,6 +66,11 @@ class Parser:
 
         self.macro_not_found_callback = None
         self.no_macros = False
+        
+        # If set to a function, the function is called with the current
+        # textdomain and string as arguments for any translatable string, and
+        # is expected to return a translation.
+        self.gettext = None
 
         # If set, we actually do preprocessor logic with #ifdef and so on.
         # Otherwise, they get included in the parse tree as nodes.
@@ -344,7 +350,8 @@ class Parser:
         if macro.startswith("~"):
             return None
 
-        # No file was found, try to do macro expansion.
+        # No file was found, try to do macro expansion. First, push the
+        # macro call again. E.g. {blah 1 2 3}.
         self.push_text("macro", preserve)
 
         # Find all parameters.
@@ -418,7 +425,7 @@ class Parser:
                     params[1 + i])
 
             if text:
-                self.push_text(name, text, initial_textdomain = self.textdomain)
+                self.push_text(name, text, initial_textdomain = macro.textdomain)
             else:
                 pass # empty macro, nothing to do
         else:
@@ -483,12 +490,18 @@ class Parser:
                         variable += c  
             else:
                 if c == '"':
+                    # We want the textdomain at the beginning of the string,
+                    # the end of the string may be outside a macro and already
+                    # in another textdomain.
+                    textdomain = self.textdomain
                     # remove possible _
                     i = len(value)
                     while i > 0:
                         i -= 1
                         if value[i] != " ": break
+                    got_underscore = False
                     if value and value[i] == "_":
+                        got_underscore = True
                         translatable = True
                         # This is not the assignement =, but from e.g. MENU_IMG_TXT
                         if i == 0 or value[i - 1] in [" ", "="]:
@@ -499,6 +512,9 @@ class Parser:
                             value = value[:i]
 
                     string = self.parse_string()
+                    if got_underscore:
+                        if self.gettext:
+                            string = self.gettext(textdomain, string)
                     value += string
                     spaces = ""
                 else:
@@ -523,8 +539,7 @@ class Parser:
         data = []
         j = 0
         for i in range(len(variables)):
-            data += [wmldata.DataText(variables[i], values[j],
-                translatable = translatable, textdomain = self.textdomain)]
+            data += [wmldata.DataText(variables[i], values[j])]
             j += 1
         return data
 
@@ -551,7 +566,7 @@ class Parser:
                         return
                     if not self.just_parse:
                         self.macros[params[0]] = self.Macro(
-                            params[0], params[1:], text)
+                            params[0], params[1:], text, self.textdomain)
                         if self.verbose:
                             sys.stderr.write("New macro: %s.\n" % params[0])
 
@@ -635,7 +650,7 @@ class Parser:
                     if state == name[1:] or state == "+" + name[1:]:
                         return
                     raise Error(self, "Mismatched closing tag [%s], expected [/%s]" % (name, state))
-                subdata = wmldata.DataSub(name, textdomain=self.textdomain)
+                subdata = wmldata.DataSub(name)
                 self.parse_top(subdata, name)
                 data.insert(subdata)
             elif c == '{':

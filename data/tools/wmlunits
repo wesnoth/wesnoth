@@ -15,47 +15,55 @@ import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 import wesnoth.wmltools as wmltools
 
-macros_parsed = None
-def parse_core_macros_and_WML(text_to_parse):    
-    global macros_parsed
-    # Create a new parser.
-    parser = wmlparser.Parser(datadir)
-    parser.do_preprocessor_logic = True
-    #parser.verbose = True
+class ParserWithCoreMacros:
+    def __init__(self, isocode):
+        # Handle translations.
+        self.translations = wmltools.Translations()
+        def gettext(textdomain, x):
+            return self.translations.get(textdomain, isocode, x, x)
+        self.gettext = gettext
 
-    # Suppress complaints about undefined terrain macros
-    parser.set_macro_not_found_callback(lambda wmlparser, name, params:
-        name.startswith("TERRAIN") or name == "DISABLE_TRANSITIONS")
-    
-    # Create a new WML object.
-    WML = wmldata.DataSub("WML")
-    
-    # Parse some macros.
-    if macros_parsed:
-        parser.macros = copy.copy(macros_parsed)
-    else:
-        print "Parsing core macros."
+        # Create a new parser for the macros.
+        parser = wmlparser.Parser(datadir)
+        parser.do_preprocessor_logic = True
+        parser.gettext = self.gettext
+        
+        # Parse core macros.
         parser.parse_text("{core/macros/}\n")
         parser.parse_top(None)
-        macros_parsed = copy.copy(parser.macros)
-    
-    # Parse the actual WML.
-    parser.parse_text(text_to_parse)
-    parser.parse_top(WML)
-    
-    return WML
+        self.core_macros = parser.macros
+                
+    def parse(self, text_to_parse):
+        # Create the real parser.
+        parser = wmlparser.Parser(datadir)
+        parser.do_preprocessor_logic = True
+        parser.gettext = self.gettext
+        parser.macros = copy.copy(self.core_macros)
+        
+        # Suppress complaints about undefined terrain macros
+        parser.set_macro_not_found_callback(lambda wmlparser, name, params:
+        name.startswith("TERRAIN") or name == "DISABLE_TRANSITIONS")
+
+        # Create a WML root element and parse the given text into it.
+        WML = wmldata.DataSub("WML")
+        parser.parse_text(text_to_parse)
+        parser.parse_top(WML)
+ 
+        return WML
 
 class ImageCollector:
     def __init__(self):
         self.images = {}
     def add(self, campaign, path):
-        self.images[path] = campaign
+        self.images[(path, campaign)] = True
     def copy_and_color_images(self, target_path):
-        for i, c in self.images.items():
-            if c == "mainline":
-                ipath = os.path.join("data/core/images", i)
-            else:
-                ipath = os.path.join("data/campaigns/%s/images" % c, i)
+        for i, c in self.images.keys():
+
+            if c == "mainline": bases = ["core/images"]
+	    else: bases = ["campaigns/%s/images" % c, "campaigns/%s/images/units" % c, "core/images"]
+	    for base in bases:
+                ipath = os.path.join("data/%s" % base, i)
+		if os.path.exists(ipath): break
             opath = os.path.join(target_path, "pics", c, i)
             try:
                 os.makedirs(os.path.dirname(opath))
@@ -68,22 +76,31 @@ class ImageCollector:
                 os.system(command)
             else:
                 sys.stderr.write(
-                    "Warning: Required image \"%s\" does not exist.\n" % ipath)
+                    "Warning: Required image %s: \"%s\" does not exist.\n" % (c, i))
 
 image_collector = ImageCollector()
 
 class UnitList:
-    def __init__(self):
+    def __init__(self, isocode):
         self.units_by_campaign = {}
         self.unit_lookup = {}
         self.race_lookup = {}
+        self.terrain_lookup = {}
+        self.movetype_lookup = {}
+        self.parser = ParserWithCoreMacros(isocode)
+
+    def add_terrains(self):
+        WML = self.parser.parse("{core/terrain.cfg}\n")
+
+        for terrain in WML.get_all("terrain"):
+            tid = terrain.get_text_val("id")
+            self.terrain_lookup[tid] = terrain
 
     def add(self, text_to_parse, campaign):
         "Collect all units in the specified namespace."
 
-        WML = parse_core_macros_and_WML(text_to_parse)
-        #WML.debug()
-        
+        WML = self.parser.parse(text_to_parse)
+
         # Collect unit data. First, we look for a [+units] section.
         units = WML.get_first("+units")
 	    # If no [+units] section, assume it is inside a [campaign].
@@ -98,7 +115,7 @@ class UnitList:
             define = campaign_wml.get_text_val("define")
 
             # Re-parse, this time with the define defined.
-            WML = parse_core_macros_and_WML(
+            WML = self.parser.parse(
                 "#define %s\n#enddef\n%s" % (define, text_to_parse))
             # This time, it oughta work.
             units = WML.get_first("+units")
@@ -121,8 +138,14 @@ class UnitList:
         for race in newraces:
             rid = race.get_text_val("id")
             self.race_lookup[rid] = race
+        
+        # Find all movetypes.
+        newmovetypes = units.get_all("movetype")
+        for movetype in newmovetypes:
+            mtname = movetype.get_text_val("name")
+            self.movetype_lookup[mtname] = movetype
 
-        # Store the race of each unit for easier access later.
+        # Store the race and movetype of each unit for easier access later.
         for unit in newunits:
             race = self.get_unit_value(unit, "race")
             try: unit.race = self.race_lookup[race]
@@ -130,20 +153,30 @@ class UnitList:
                 unit.race = None
                 sys.stderr.write("Warning: No race \"%s\" found (%s).\n" % (
                     race, unit.get_text_val("id")))
+            movetype = self.get_unit_value(unit, "movement_type")
+            try: unit.movetype = self.movetype_lookup[movetype]
+            except KeyError: unit.movetype = None
+
         return len(newunits)
+
+    def get_base_unit(self, unit):
+        b = unit.get_first("base_unit")
+        if b:
+            buid = b.get_text_val("id")
+            try: baseunit = self.unit_lookup[buid]
+            except KeyError:
+                sys.stderr.write(
+                    "Warning: No baseunit \"%s\" for \"%s\".\n" % (
+                    buid, unit.get_text_val("id")))
+                return None
+            return baseunit
+        return None
 
     def get_unit_value(self, unit, attribute, default = None):
         value = unit.get_text_val(attribute, None)
         if value == None:
-            b = unit.get_first("base_unit")
-            if b:
-                buid = b.get_text_val("id")
-                try: baseunit = self.unit_lookup[buid]
-                except KeyError:
-                    sys.stderr.write(
-                        "Warning: No baseunit \"%s\" for \"%s\".\n" % (
-                        buid, unit.get_text_val("id")))
-                    return default
+            baseunit = self.get_base_unit(unit)
+            if baseunit:
                 return self.get_unit_value(baseunit, attribute, default)
             return default
         return value
@@ -154,30 +187,43 @@ class UnitForest:
     """
     def __init__(self):
         self.trees = {}
+        self.lookup = {}
 
     def add_node(self, un):
         """
         Add a new unit to the forest.
         """
+        
+        self.lookup[un.id] = un
+        
         # First, we check if any of the new node's advancements already is in
         # the forest. If so, remove it and attach it to the new node.
         for cid in un.child_ids:
             if cid in self.trees:
                 un.children.append(self.trees[cid])
+                self.lookup[cid].parent_ids.append(un.id)
                 del self.trees[cid]
 
-        # Next, we check if the ndoe is an advancement of an existing node. If
+        # Next, we check if the node is an advancement of an existing node. If
         # so, add it there.
         for rootnode in self.trees.values():
             if rootnode.try_add(un):
                 return
 
-        # Else, add a new tree with the new ndoe as root.
+        # Else, add a new tree with the new node as root.
         self.trees[un.id] = un
 
     def update_breadth(self):
         self.breadth = sum([x.update_breadth() for x in self.trees.values()])
         return self.breadth
+
+    def get_children(self, uid):
+        un = self.lookup[uid]
+        return un.child_ids
+    
+    def get_parents(self, uid):
+        un = self.lookup[uid]
+        return un.parent_ids
 
 class UnitNode:
     """
@@ -188,6 +234,7 @@ class UnitNode:
         self.children = []
         self.id = unit.get_text_val("id")
         self.child_ids = []
+        self.parent_ids = []
         advanceto = unit.get_text_val("advanceto")
         if advanceto and advanceto != "null":
             for advance in advanceto.split(","):
@@ -198,6 +245,7 @@ class UnitNode:
         # A child of yours truly?
         if un.id in self.child_ids:
             self.children.append(un)
+            un.parent_ids.append(self.id)
             return True
         # A recursive child?
         for child in self.children:
@@ -227,33 +275,23 @@ html_header = '''
 html_footer = "</body></html>"
 
 class HTMLOutput:
-    def __init__(self, isocode, output, campaign, verbose = False):
+    def __init__(self, isocode, output, campaign, unitlist, verbose = False):
         self.isocode = isocode
         self.output = output
         self.campaign = campaign
         self.verbose = verbose
-        
-        # Handle translations.
-        self.gettext = wmltools.Translations()
+        self.target = "index.html"
+        self.unitlist = unitlist
+        self.forest = None
 
-    def get_translation(self, item, attribute):
-        value = item.get_text_val(attribute)
-        text = self.gettext.get(item.textdomain, self.isocode, value, None)
-        if not text:
-            text = value
-            if self.verbose:
-                sys.stderr.write("Warning: No translation for %s/%s/%s.\n" % (
-                    self.isocode, item.textdomain, value))
-        return text[text.find("^") + 1:]
+    def get_translation(self, textdomain, key):
+        return self.unitlist.parser.translations.get(textdomain, self.isocode,
+            key, key)
 
-    def analyze_units(self, unitlist): 
-        # Lookup tables.
-        unit_lookup = {}
-        race_lookup = {}
-
+    def analyze_units(self): 
         # Build an advancement tree forest of all units.
-        forest = UnitForest()
-        for u in unitlist.units_by_campaign[self.campaign]:
+        forest = self.forest = UnitForest()
+        for u in self.unitlist.units_by_campaign[self.campaign]:
             forest.add_node(UnitNode(u))
         forest.update_breadth()
 
@@ -281,7 +319,7 @@ class HTMLOutput:
         def by_name(t1, t2):
             u1 = t1.unit
             u2 = t2.unit
-            # FIXME: Use translated name for sorting
+
             u1name = u1.get_text_val("name")
             u2name = u2.get_text_val("name")
             return cmp(u1name, u2name)
@@ -299,7 +337,7 @@ class HTMLOutput:
 
         x = 0
         for race in racelist:
-            node = RaceNode(unitlist.race_lookup[race])
+            node = RaceNode(self.unitlist.race_lookup[race])
             rows[x][0] = (6, 1, node)
             for i in range(1, 6):
                 rows[x][i] = (0, 0, None)
@@ -315,38 +353,63 @@ class HTMLOutput:
         languages = find_languages()
         langlist = languages.keys()
         langlist.sort()
-        write("<div id=\"navbar\">\n")
+        write("<table class=\"navbar\">")
 
-        write("Language:\n")
-        for lang in langlist:
-            write(" <a href=\"../%s_%s/index.html\">%s</a>" % (
-                lang, self.campaign, languages[lang]))
-        write("<br/>\n")
-
-        write("By Campaign: ")
+        write("<tr>\n")
+        write("<th>By Campaign</th></tr><tr><td>")
         for campaign in all_campaigns:
             lang = self.isocode
             # FIXME: translate campaign names
-            write(" <a href=\"../%s_%s/index.html\">%s</a>" % (
+            write(" <a href=\"../%s_%s/index.html\">%s</a><br/>\n" % (
                 lang, campaign, campaign.replace("_", " ")))
-        write("<br/>\n")
+        write("</td>\n")
+        write("</tr>\n")
 
-        write("By Faction: TODO<br/>\n")
+        write("<tr>\n")
+        write("<th>By Faction</th></tr><tr><td>TODO</td>\n")
+        write("</tr>\n")
 
-        write("By Race: ")
-        write("<a href=\"index.html\">All</a>")
+        write("<tr>\n")
+        write("<th>By Race</th></tr><tr><td>")
+        write("<a href=\"index.html\">All</a><br/>\n")
         for rid in self.racelist:
-            race = unitlist.race_lookup[rid]
-            racename = self.get_translation(race, "plural_name")
-            write(" <a href=\"index.html\">%s</a>" % racename)
-        write("<br/>\n")
+            race = self.unitlist.race_lookup[rid]
+            racename = race.get_text_val("plural_name")
+            write(" <a href=\"index.html\">%s</a><br/>" % racename)
+        write("</td>\n")
+        write("</tr>\n")
+        
+        write("<tr>\n")
+        write("<th>Language</th></tr><tr><td>")
+        for lang in langlist:
+            write(" <a href=\"../%s_%s/%s\">%s</a><br/>\n" % (
+                lang, self.campaign, self.target, languages[lang]))
+        write("</td>\n")
+        write("</tr>\n")
 
-        write("</div>\n")
+        write("</table>\n")
 
-    def write_units(self, unitlist):
+    def pic(self, u, x):
+        image = self.unitlist.get_unit_value(x, "image")  
+        if not image:
+            if x.name == "female":
+                baseunit = self.unitlist.get_base_unit(u)
+                if baseunit:
+                    female = baseunit.get_first("female")
+                    return self.pic(u, female)
+            sys.stderr.write(
+                "Warning: Missing image for unit %s(%s).\n" % (
+                u.get_text_val("id"), x.name))
+            return None
+        image_collector.add(self.campaign, image)
+        image = os.path.join("../pics/%s" % self.campaign,
+            image)
+        return image
+
+    def write_units(self):
         def write(x): self.output.write(x)
         rows = self.unitgrid
-        write("<table>\n")
+        write("<table class=\"units\">\n")
         write("<colgroup>")
         for i in range(6):
             write("<col class=\"col%d\" />" % i)
@@ -365,8 +428,7 @@ class HTMLOutput:
                         attributes += " colspan=%d" % hspan
 
                     if un and isinstance(un, RaceNode):
-                        # FIXME: translation
-                        racename = self.get_translation(un.race, "plural_name")
+                        racename = un.race.get_text_val("plural_name")
                         attributes += " class=\"raceheader\""
                         write("<td%s>" % attributes)
                         write("%s" % racename)
@@ -375,46 +437,26 @@ class HTMLOutput:
                         u = un.unit
                         attributes += " class=\"unitcell\""
                         write("<td%s>" % attributes)
-                        # FIXME: translation
-                        name = self.get_translation(u, "name")
-                        female = u.get_first("female")
-                        if female:
-                            fname = self.get_translation(female, "name")
-                            if fname != name:
-                                name += "<br/>" + fname
+
+                        name = u.get_text_val("name")
+                        
+                        uid = u.get_text_val("id")
                         cost = u.get_text_val("cost")
                         hp = u.get_text_val("hitpoints")
                         mp = u.get_text_val("movement")
                         xp = u.get_text_val("experience")
                         level = u.get_text_val("level")
                         
-                        def pic(x):
-                            image = x.get_text_val("image")
-                            if not image:
-                                sys.stderr.write(
-                                    "Warning: Missing image for unit %s(%s).\n" % (
-                                    u.get_text_val("id"), x.name))
-                                return None
-                            image_collector.add(campaign, image)
-                            image = os.path.join("../pics/%s" % self.campaign,
-                                image)
-                            return image
-
                         write("<div class=\"l\">L%s</div>" % level)
-                        write("%s<br/>" % name)
+                        link = "../%s_%s/%s.html" % (self.isocode,
+                            self.campaign, uid)
+                        write("<a href=\"%s\">%s</a><br/>" % (link, name))
                         
-                        if female:
-                            mimage = pic(u)
-                            fimage = pic(female)
-                            if not fimage: fimage = mimage
-                            write('<table class="female"><tr><td>')
-                            write('<img src="%s" alt="(image)" />\n' % mimage)
-                            write('</td></tr><tr><td>')
-                            write('<img src="%s" alt="(image)" />\n' % fimage)
-                            write('</td></tr></table>\n')
-                        else:
-                            image = pic(u)
-                            write('<img src="%s" alt="(image)" />\n' % image)
+                        write('<div class="pic">')
+                        image = self.pic(u, u)
+                        write('<a href=\"%s\"><img src="%s" alt="(image)" /></a>\n' % (
+                            link, image))
+                        write('</div>\n')
                         write("<div class=\"attributes\">")
                         write("cost: %s<br />" % cost)
                         write("HP: %s<br />" % hp)
@@ -427,14 +469,190 @@ class HTMLOutput:
             write("</tr>\n")
         write("</table>\n")
 
-    def create_page(self, unitlist):
+    def write_unit_tree(self):
         self.output.write(html_header % {"path" : "../"})
        
-        self.analyze_units(unitlist)
+        self.analyze_units()
         self.write_navbar()
-        self.write_units(unitlist)
+        self.write_units()
             
         self.output.write(html_footer)
+
+    def write_unit_report(self, output, unit):
+        def write(x): self.output.write(x)
+
+        self.output = output
+        write(html_header % {"path" : "../"})
+        self.write_navbar()
+
+        # Write unit name, picture and description.
+        uid = unit.get_text_val("id")
+        uname = unit.get_text_val("name")
+        display_name = uname
+
+        female = unit.get_first("female")
+        if female:
+            fname = female.get_text_val("name")
+            if fname != uname:
+                display_name += "<br/>" + fname
+
+        write("<h1>%s</h1>\n" % display_name)
+        
+        write('<div class="pic">')
+        if female:
+            mimage = self.pic(unit, unit)
+            fimage = self.pic(unit, female)
+            if not fimage: fimage = mimage
+            write('<img src="%s" alt="(image)" />\n' % mimage)
+            write('<img src="%s" alt="(image)" />\n' % fimage)
+        else:
+            image = self.pic(unit, unit)
+            write('<img src="%s" alt="(image)" />\n' % image)
+        write('</div>\n')
+                        
+        description = unit.get_text_val("description")
+        if not description: description = "-"
+        write("<p>%s</p>\n" % description)
+        
+        # Base info.
+        
+        hp = self.unitlist.get_unit_value(unit, "hitpoints")
+        mp = self.unitlist.get_unit_value(unit, "movement")
+        xp = self.unitlist.get_unit_value(unit, "experience")
+        level = self.unitlist.get_unit_value(unit, "level")
+        alignment = self.unitlist.get_unit_value(unit, "alignment")  
+
+        write("<p>%s" % self.get_translation("wesnoth", "Advances from: "))
+        for pid in self.forest.get_parents(uid):
+            link = "../%s_%s/%s.html" % (self.isocode, self.campaign, pid)
+            name = self.unitlist.unit_lookup[pid].get_text_val("name")
+            write(" <a href=\"%s\">%s</a>" % (link, name))
+        write("</p>\n")
+        write("<p>%s" % self.get_translation("wesnoth", "Advances to: "))
+        for cid in self.forest.get_children(uid):
+            link = "../%s_%s/%s.html" % (self.isocode, self.campaign, cid)
+            name = self.unitlist.unit_lookup[cid].get_text_val("name")
+            write(" <a href=\"%s\">%s</a>" % (link, name))
+        write("</p>\n")
+        write("<table class=\"unitinfo\">\n")
+        for val in ["cost", "hitpoints", "movement", "experience", "level",
+            "alignment"]:
+            write("<tr>\n")
+            write("<th>%s</th>" % val)
+            x = self.unitlist.get_unit_value(unit, val)
+            write("<td>%s</td>" % x)
+            write("</tr>\n")
+        write("</table>\n")
+        
+        # Write info about movement costs and terrain defense.
+        write("<table class=\"unitinfo\">\n")
+        write("<tr>\n")
+        write("<th>Terrain</th><th>Movement</th><th>Defense</th>\n")
+        write("</tr>\n")
+        
+        def find_attr(what, key):
+            if unit.movetype:
+                mtx = unit.movetype.get_first(what)
+                mty = None
+                if mtx: mty = mtx.get_text_val(key)
+            x = unit.get_first(what)
+            y = None
+            if x: y = x.get_text_val(key)
+            if y:
+                return True, y
+            if unit.movetype and mty != None:
+                return False, mty
+            return False, "-"
+
+        terrains = self.unitlist.terrain_lookup
+        terrainlist = []
+        for tid, t in terrains.items():
+            if tid in ["off_map", "fog", "shroud"]: continue
+            if t.get_first("aliasof"): continue
+            name = t.get_text_val("name")
+            terrainlist.append((name, tid))
+        terrainlist.sort()
+
+        for tname, tid in terrainlist:
+            special, c = find_attr("movement_costs", tid)
+            ccell = "td"
+            if special: ccell += ' class="special"'
+            dcell = "td"
+            special, d = find_attr("defense", tid)
+            if special: dcell += ' class="special"'
+
+            write("<tr>\n")
+            write("<td>%s</td><%s>%s</td><%s>%s</td>\n" % (
+                tname, ccell, c, dcell, d))
+            write("</tr>\n")
+        write("</table>\n")
+        
+        # Write info about resistances.
+        resistances = [
+            "blade",
+            "pierce",
+            "impact",
+            "fire",
+            "cold",
+            "arcane"]
+
+        write("<table class=\"unitinfo\">\n")
+        for rid in resistances:
+            special, r = find_attr("resistance", rid)
+            rcell = "td"
+            if special: rcell += ' class="special"'
+            write("<tr>\n")
+            write("<th>%s</th><td>%s</td>\n" % (
+                self.get_translation("wesnoth", rid), r))
+            write("</tr>\n")
+        write("</table>\n")
+        
+        # Write info about attacks.
+        write("<table class=\"unitinfo\">\n")
+        for attack in unit.get_all("attack"):
+            write("<tr>")
+            
+            aid = attack.get_text_val("name")
+            aname = attack.get_text_val("description")
+
+            icon = attack.get_text_val("icon")
+            if not icon:
+                icon = "attacks/%s.png" % aid
+            image_collector.add(self.campaign, icon)
+            icon = os.path.join("../pics/%s" % self.campaign, icon)
+            write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % icon)
+
+            write("<td>%s" % aname)
+            
+            t = attack.get_text_val("type")
+            write("<br/>%s</td>" % self.get_translation("wesnoth", t))
+
+            n = attack.get_text_val("number")
+            x = attack.get_text_val("damage")
+            try:
+                x = " ".join(int(n) * [x])
+            except TypeError:
+                sys.stderr.write("Warning: Invalid damage for %s in %s.\n" % (
+                    aname, uname.encode("utf8")))
+                x = "?"
+            write("<td>%s" % x)
+
+            r = attack.get_text_val("range")
+            write("<br/>%s</td>" % self.get_translation("wesnoth", r))
+            
+            s = []
+            specials = attack.get_first("specials")
+            if specials:
+                for special in specials.children():
+                    s.append(special.name)
+            s = "<br/>".join(s)
+            write("<td>%s</td>" % s)
+            
+            
+            write("</tr>")
+        write("</table>\n")
+
+        write(html_footer)
 
 languages_found = {}
 def find_languages():
@@ -486,8 +704,14 @@ def generate_report(out_path, isocode, campaign, unitlist):
     path = os.path.join(out_path, isocode + "_" + campaign)
     if not os.path.isdir(path): os.mkdir(path)
     output = MyFile(os.path.join(path, "index.html"), "w")
-    html = HTMLOutput(isocode, output, campaign)
-    html.create_page(unitlist)
+    html = HTMLOutput(isocode, output, campaign, unitlist)
+    html.write_unit_tree()
+    
+    for unit in unitlist.units_by_campaign[campaign]:
+        uid = unit.get_text_val("id")
+        output = MyFile(os.path.join(path, "%s.html" % uid), "w")
+        html.target = "%s.html" % uid
+        html.write_unit_report(output, unit)        
 
 def write_index(out_path):
     output = MyFile(os.path.join(out_path, "index.html"), "w")
@@ -501,8 +725,54 @@ def write_index(out_path):
     output.write("</div>")
     output.write(html_footer)
 
-if __name__ == '__main__':
+def output(isocode):
     global all_campaigns
+
+    unitlist = UnitList(isocode)
+
+    # Parse all unit data
+    # This reads in units.cfg, giving us all the mainline units.
+    all_campaigns = []
+    all_updated_campaigns = []
+    
+    print "Reading WML stuff."
+    unitlist.add_terrains()
+
+    print "Reading mainline units."
+    unitlist.add("{core/units.cfg}", "mainline")
+    all_updated_campaigns.append("mainline")
+    all_campaigns.append("mainline")
+
+    # Now we read each campaign in turn to get its units.
+    campaigns = glob.glob("data/campaigns/*")
+    for campaign in campaigns:
+        dirname = campaign[5:] # strip leading data/
+        description = dirname[10:]
+        if options.campaign == "all" or options.campaign == description:
+            print "Reading %s units." % description
+            if unitlist.add("{%s}" % dirname, description):
+                all_updated_campaigns.append(description)
+                all_campaigns.append(description)
+
+    # Report generation
+    if not os.path.isdir(options.output):
+        os.mkdir(options.output)
+    write_index(options.output)
+
+    if options.campaign == "all":
+        campaigns = all_updated_campaigns
+    else:
+        campaigns = [options.campaign]
+
+    if not campaigns:
+        sys.stderr.write("No such campaign: %s\n" % options.campaign)
+        sys.exit(1)    
+
+    for campaign in campaigns:
+        generate_report(options.output, isocode, campaign, unitlist)
+
+if __name__ == '__main__':
+    global options
     import optparse
 
     op = optparse.OptionParser()
@@ -522,55 +792,18 @@ if __name__ == '__main__':
 
     wmltools.pop_to_top("wmlunits")
     datadir = os.getcwd() + "/data"
-
-    unitlist = UnitList()
-
-    # Parse all unit data
-    # This reads in units.cfg, giving us all the mainline units.
-    all_campaigns = []
-    all_updated_campaigns = []
-    #if options.campaign == "all" or options.campaign == "mainline":
-    if 1: # Always need them for standard races
-        print "Reading mainline units."
-        unitlist.add("{core/units.cfg}", "mainline")
-        all_updated_campaigns.append("mainline")
-    all_campaigns.append("mainline")
-    # Now we read each campaign in turn to get its units.
-    campaigns = glob.glob("data/campaigns/*")
-    for campaign in campaigns:
-        dirname = campaign[5:] # strip leading data/
-        description = dirname[10:]
-        if options.campaign == "all" or options.campaign == description:
-            print "Reading %s units." % description
-            if unitlist.add("{%s}" % dirname, description):
-                all_updated_campaigns.append(description)
-                all_campaigns.append(description)
-
-    # Report generation
-    if not os.path.isdir(options.output):
-        os.mkdir(options.output)
-    write_index(options.output)
-
+    
     if options.language == "all":
         languages = find_languages().keys()
     else:
         languages = [options.language]
-    if options.campaign == "all":
-        campaigns = all_updated_campaigns
-    else:
-        campaigns = [options.campaign]
-
-    if not campaigns:
-        sys.stderr.write("No such campaign: %s\n" % options.campaign)
-        sys.exit(1)    
-
+    
     if not languages:
         sys.stderr.write("No such language: %s\n" % options.language)
-        sys.exit(1)    
-
+        sys.exit(1)  
+    
     for isocode in languages:
-        for campaign in campaigns:
-            generate_report(options.output, isocode, campaign, unitlist)
+        output(isocode)
 
     if not options.nocopy:
         print "Copying files."

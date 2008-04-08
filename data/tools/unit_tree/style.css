@@ -1,24 +1,47 @@
 body {
+    background-color: #c0cbcf;
+    margin: 0px;
+    }
+table.units {
     background-color: #fffbf0;
-    }
-table {
-    width: 100%;
+    margin: 0px;
     border: none;
+    padding: 0px;
+    border-spacing: 0px;
     }
-table.frmale {
+div.pic {
     margin: 0px;
     padding: 0px;
     border: none;
-    }
-td {
-    border: none;
+    display: inline;
+    float: left;
     }
 td.unitcell {
+    font-size: small;
     text-align: center;
     font-weight: bold;
     border-bottom: 2px solid #cfcbc0;
+    border-top: 2px solid #fffbf0;
+    border-right: 2px solid #fffbf0;
     }
-div#navbar a {
+td.unitcell a {
+    color: black;
+    font-size: normal;
+    text-decoration: none;
+}
+table.navbar {
+    margin: 0px;
+    float: left;
+    width: 0px;
+    border-spacing: 0px;
+    padding: 2px;
+    border: 1px solid #b0bbff;
+}
+table.navbar th {
+    color: white;
+    font-weight: bold;
+}
+table.navbar a {
     color: black;
     font-size: small;
     font-weight: bold;
@@ -29,9 +52,22 @@ td.raceheader {
     font-size: xx-large;
     font-weight: bold;
     text-align: center;
+    border: 1px solid #b0bbff;
     }
 tr.levels th {
     border-bottom: 1px solid #cfcbc0;
+}
+table.unitinfo {
+    background-color: #efebd0;
+    margin: 2px;
+    border: 1px solid black;
+    float: left;
+}
+table.unitinfo th {
+    text-align: left;
+}
+td.special {
+    color: red;
 }
 td.empty {
     background-color: #fffbf0;
@@ -60,9 +96,6 @@ col.col5 {
     background-color: #f7ebd8;
     width: 16%;
 }
-td.unitcell img {
-    float: left;
-    }
 div.l {
     color: gray;
     font-weight: normal;

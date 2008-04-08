@@ -615,14 +615,16 @@ class Translation(dict):
             matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
             id = ""
             for match in matches:
-                text = "".join(re.compile('"(.*?)"').findall(match[1].replace("\\n", "")))
+                text = "".join(re.compile('"(.*?)"').findall(match[1]))
                 if match[0] == "msgid":
-                    id = text
+                    id = text.replace("\\n", "\n")
                 else:
-                    self.gettext[id] = text
+                    self.gettext[id] = text.replace("\\n", "\n")
     def get(self, key, dflt):
         if self.isocode == "C":
-            return key
+            if key:
+                return key[key.find("^") + 1:]
+            return "?"
         else:
             return self.gettext.get(key, dflt)
     def __getitem__(self, key):
