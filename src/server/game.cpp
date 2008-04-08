@@ -1145,11 +1145,26 @@ void game::send_observerquit(const player_map::const_iterator observer) const {
 
 void game::send_history(const network::connection sock) const
 {
-	for(std::vector<simple_wml::document*>::const_iterator i = history_.begin();
-	    i != history_.end(); ++i) {
-		const simple_wml::string_span& data = (*i)->output_compressed();
-		network::send_raw_data(data.begin(), data.size(), sock);
+	if(history_.empty()) {
+		return;
 	}
+
+	//we make a new document based on converting to plain text and
+	//concatenating the buffers.
+	//TODO: Work out how to concentate buffers without decompressing.
+	std::string buf;
+	for(std::vector<simple_wml::document*>::iterator i = history_.begin();
+	    i != history_.end(); ++i) {
+		buf += (*i)->output();
+		delete *i;
+	}
+
+	simple_wml::document* doc = new simple_wml::document(buf.c_str(), simple_wml::INIT_STATIC);
+	const simple_wml::string_span& data = doc->output_compressed();
+	doc->compress();
+	network::send_raw_data(data.begin(), data.size(), sock);
+	history_.clear();
+	history_.push_back(doc);
 }
 
 void game::record_data(simple_wml::document* data) {
