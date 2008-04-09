@@ -1087,11 +1087,11 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 
 						if (!type.hide_help()) {
 							//add a link in the list of units having this special
-							std::string lang_name = type.type_name();
+							std::string type_name = type.type_name();
 							std::string ref_id = unit_prefix + type.id();
 							//we put the translated name at the beginning of the hyperlink,
 							//so the automatic alphabetic sorting of std::set can use it
-							std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+							std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
 							special_units[special].insert(link);
 						}
 					}
@@ -1154,11 +1154,11 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 
 				if (!type.hide_help()) {
 					//add a link in the list of units having this ability
-					std::string lang_name = type.type_name();
+					std::string type_name = type.type_name();
 					std::string ref_id = unit_prefix +  type.id();
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
-					std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+					std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
 					ability_units[*it].insert(link);
 				}
 			}
@@ -1573,16 +1573,16 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		if (desc_type != FULL_DESCRIPTION)
 			continue;
 
-		const std::string lang_name = type.type_name();
+		const std::string type_name = type.type_name();
 		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  type.id();
-		topic unit_topic(lang_name, ref_id, "");
+		topic unit_topic(type_name, ref_id, "");
 		//unit_topic.text = new unit_topic_generator(type);
 		topics.push_back(unit_topic);
 
 		if (!type.hide_help()) {
 			// we also record an hyperlink of this unit
 			// in the list used for the race topic
-			std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+			std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
 			race_units.insert(link);
 		}
 	}

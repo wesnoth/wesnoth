@@ -71,7 +71,7 @@ public:
 	enum TYPE { SHOW_ALL, SHOW_BASIC };
 	struct details {
 		surface image;
-	  	std::string name, lang_name;
+	  	std::string name, type_name;
 		int level;
 		std::string alignment, traits;
 		std::vector<std::string> abilities;

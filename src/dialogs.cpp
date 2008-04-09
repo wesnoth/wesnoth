@@ -925,7 +925,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.image = u.still_image();
 
 	det.name = u.name();
-	det.lang_name = u.type_name();
+	det.type_name = u.type_name();
 	det.level = u.level();
 	det.alignment = unit_type::alignment_description(u.alignment());
 	det.traits = u.traits_description();
@@ -984,7 +984,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.image = image::get_image(t->image()+mod);
 
 	det.name = "";
-	det.lang_name = t->type_name();
+	det.type_name = t->type_name();
 	det.level = t->level();
 	det.alignment = unit_type::alignment_description(t->alignment());
 
