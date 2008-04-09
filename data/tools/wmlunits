@@ -65,7 +65,7 @@ class ImageCollector:
             if c == "mainline": bases = ["core/images"]
 	    else: bases = ["campaigns/%s/images" % c, "campaigns/%s/images/units" % c, "core/images"]
 	    for base in bases:
-                ipath = os.path.join("data/%s" % base, i)
+                ipath = os.path.join(os.path.join(datadir, "%s" % base), i)
 		if os.path.exists(ipath): break
             opath = os.path.join(target_path, "pics", c, i)
             try:
@@ -74,7 +74,7 @@ class ImageCollector:
                 pass
             if os.path.exists(ipath):
                 #shutil.copy2(ipath, opath)
-                command = "data/tools/unit_tree/TeamColorizer %s %s" % (
+                command = os.path.join(datadir, "tools/unit_tree/TeamColorizer") + " %s %s" % (
                     ipath, opath)
                 os.system(command)
             else:
@@ -866,14 +866,19 @@ if __name__ == '__main__':
         help = "Specify output directory.")
     op.add_option("-n", "--nocopy", action = "store_true",
         help = "No copying of files.")
+    op.add_option("-d", "--datadir",
+        help = "Specify Wesnoth's data to use.")
     options, args = op.parse_args()
-    
+
     if not options.output:
         op.print_help()
         sys.exit(-1)
 
-    wmltools.pop_to_top("wmlunits")
-    datadir = os.getcwd() + "/data"
+    if not options.datadir:
+        wmltools.pop_to_top("wmlunits")
+        datadir = os.getcwd() + "/data"
+    else:
+        datadir = options.datadir
     
     if options.language == "all":
         languages = find_languages().keys()
@@ -890,7 +895,7 @@ if __name__ == '__main__':
     if not options.nocopy:
         print "Copying files."
         image_collector.copy_and_color_images(options.output)
-        shutil.copy2("data/tools/unit_tree/style.css", options.output)
+        shutil.copy2(os.path.join(datadir, "tools/unit_tree/style.css"), options.output)
         for grab in [
             "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
             "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
