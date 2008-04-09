@@ -358,7 +358,7 @@ class HTMLOutput:
             return cmp(u1name, u2name)
 
         def grid_place(nodes, x):
-            nodes.sort(cmp = by_name)
+            nodes.sort(by_name)
             for node in nodes:
                 level = int(node.unit.get_text_val("level"))
                 rows[x][level] = (1, node.breadth, node)
@@ -873,6 +873,8 @@ if __name__ == '__main__':
     if not options.output:
         op.print_help()
         sys.exit(-1)
+        
+    options.output = os.path.expanduser(options.output)
 
     if not options.datadir:
         wmltools.pop_to_top("wmlunits")
