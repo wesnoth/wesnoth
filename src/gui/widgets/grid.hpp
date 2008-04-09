@@ -102,7 +102,7 @@ public:
 	twidget* get_widget_by_id(const std::string& id);
 
 	//! Inherited from twidget.
-	void draw(surface& surface) { /* FIXME IMPLEMENT */ }
+	void draw(surface& surface);
 
 	//! Inherited from twidget.
 	void load_config();
@@ -297,6 +297,10 @@ public:
 
 	void set_col_scaling(const unsigned col, const unsigned scale)
 		{ grid_.set_col_scaling(col, scale); }
+
+	//! Inherited from twidget.
+	//FIXME we also need to load our own config
+	void draw(surface& surface) { grid_.draw(surface); }
 
 	//! Inherited from twidget.
 	//FIXME we also need to load our own config

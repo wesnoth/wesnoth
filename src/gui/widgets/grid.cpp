@@ -214,6 +214,8 @@ tpoint tgrid::get_best_size() const
 
 void tgrid::set_size(const SDL_Rect& rect)
 {
+	log_scope2(gui, "Grid: set size");
+
 	twidget::set_size(rect);
 
 	const tpoint orig(rect.x, rect.y);
@@ -240,48 +242,50 @@ void tgrid::set_size(const SDL_Rect& rect)
 		col_width_ = best_col_width_;
 
 		// expand it.
-		const unsigned w = size.x - best_size.x;
-		unsigned w_size = std::accumulate(col_scaling_.begin(), col_scaling_.end(), 0);
-		DBG_G << "Grid: extra width " << w << " will be divided amount " << w_size << " units in " << cols_ << " columns.\n";
+		if(size.x > best_size.x) {
+			const unsigned w = size.x - best_size.x;
+			unsigned w_size = std::accumulate(col_scaling_.begin(), col_scaling_.end(), 0);
+			DBG_G << "Grid: extra width " << w << " will be divided amount " << w_size << " units in " << cols_ << " columns.\n";
 
-		if(w_size == 0) {
-			// If all sizes are 0 reset them to 1
-			foreach(unsigned& val, col_scaling_) {
-				val = 1;
+			if(w_size == 0) {
+				// If all sizes are 0 reset them to 1
+				foreach(unsigned& val, col_scaling_) {
+					val = 1;
+				}
+				w_size = cols_;
 			}
-			w_size = cols_;
-		}
-		// We might have a bit 'extra' if the division doesn't fix exactly
-		// but we ignore that part for now.
-		const unsigned w_normal = w / w_size;
-		for(unsigned i = 0; i < cols_; ++i) {
-			col_width_[i] += w_normal * col_scaling_[i];
-			DBG_G << "Grid: column " << i << " with scale factor " 
-				<< col_scaling_[i] << " set width to " << col_width_[i] << ".\n";
-		}
-
-
-
-		const unsigned h = size.y - best_size.y;
-		unsigned h_size = std::accumulate(row_scaling_.begin(), row_scaling_.end(), 0);
-		DBG_G << "Grid: extra height " << h << " will be divided amount " << h_size << " units in " << rows_ << " rows.\n";
-
-		if(h_size == 0) {
-			// If all sizes are 0 reset them to 1
-			foreach(unsigned& val, row_scaling_) {
-				val = 1;
+			// We might have a bit 'extra' if the division doesn't fix exactly
+			// but we ignore that part for now.
+			const unsigned w_normal = w / w_size;
+			for(unsigned i = 0; i < cols_; ++i) {
+				col_width_[i] += w_normal * col_scaling_[i];
+				DBG_G << "Grid: column " << i << " with scale factor " 
+					<< col_scaling_[i] << " set width to " << col_width_[i] << ".\n";
 			}
-			h_size = rows_;
-		}
-		// We might have a bit 'extra' if the division doesn't fix exactly
-		// but we ignore that part for now.
-		const unsigned h_normal = h / h_size;
-		for(unsigned i = 0; i < rows_; ++i) {
-			row_height_[i] += h_normal * row_scaling_[i];
-			DBG_G << "Grid: row " << i  << " with scale factor "
-				<< row_scaling_[i] << " set height to " << row_height_[i] << ".\n";
+
 		}
 
+		if(size.y > best_size.y) {
+			const unsigned h = size.y - best_size.y;
+			unsigned h_size = std::accumulate(row_scaling_.begin(), row_scaling_.end(), 0);
+			DBG_G << "Grid: extra height " << h << " will be divided amount " << h_size << " units in " << rows_ << " rows.\n";
+
+			if(h_size == 0) {
+				// If all sizes are 0 reset them to 1
+				foreach(unsigned& val, row_scaling_) {
+					val = 1;
+				}
+				h_size = rows_;
+			}
+			// We might have a bit 'extra' if the division doesn't fix exactly
+			// but we ignore that part for now.
+			const unsigned h_normal = h / h_size;
+			for(unsigned i = 0; i < rows_; ++i) {
+				row_height_[i] += h_normal * row_scaling_[i];
+				DBG_G << "Grid: row " << i  << " with scale factor "
+					<< row_scaling_[i] << " set height to " << row_height_[i] << ".\n";
+			}
+		}
 
 		layout(orig);
 		return;
@@ -342,6 +346,21 @@ twidget* tgrid::get_widget_by_id(const std::string& id)
 	}
 	
 	return twidget::get_widget_by_id(id);
+}
+
+void tgrid::draw(surface& surface)
+{
+	for(iterator itor = begin(); itor != end(); ++itor) {
+		if(! *itor || !itor->dirty()) {
+			continue;
+		}
+
+		log_scope2(gui_draw, "Grid: draw child.");
+
+		itor->draw(surface);
+	}
+
+	set_dirty(false);
 }
 
 void tgrid::load_config()

@@ -26,6 +26,7 @@ class CVideo;
 
 namespace gui2 {
 
+class tbuilder_grid;
 class twidget;
 class twindow;
 
@@ -39,12 +40,8 @@ private:
 	tbuilder_widget();
 
 public:
-	tbuilder_widget(const config& cfg);
+	tbuilder_widget(const config& /*cfg*/) {}
 
-	//! Parameters for the widget.
-	std::string id;
-	std::string definition;
-	t_string label;
 
 	virtual twidget* build() const = 0;
 	virtual ~tbuilder_widget() {}
@@ -79,33 +76,8 @@ public:
 		
 		std::string definition;
 
-		struct tgrid 
-		{
-		private:
-			tgrid();
-
-		public:
-			tgrid(const config* cfg);
-
-			unsigned rows;
-			unsigned cols;
-
-			//! The scale factor for the rows / columns.
-			std::vector<unsigned> row_scale;
-			std::vector<unsigned> col_scale;
-
-			//! The flags per grid cell.
-			std::vector<unsigned> flags;
-
-			//! The border size per grid cell.
-			std::vector<unsigned> border_size;
-
-			//! The widgets per grid cell.
-			std::vector<tbuilder_widget_ptr> widgets;
-		};
-
 	
-		tgrid grid;
+		tbuilder_grid* grid;
 	};
 
 	std::vector<tresolution> resolutions;

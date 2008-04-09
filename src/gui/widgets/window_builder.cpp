@@ -49,54 +49,90 @@
 
 namespace gui2 {
 
-struct tbuilder_button : public tbuilder_widget
+struct tbuilder_control : public tbuilder_widget
+{
+private:
+	tbuilder_control();
+public:
+
+	tbuilder_control(const config& cfg);
+
+	//! Parameters for the control.
+	std::string id;
+	std::string definition;
+	t_string label;
+};
+
+struct tbuilder_button : public tbuilder_control
 {
 
 private:
 	tbuilder_button();
 public:
-	tbuilder_button(const config& cfg) : 
-		tbuilder_widget(cfg),
-		retval_(0)
-	{ read_extra(cfg); }
+	tbuilder_button(const config& cfg);
 
 	twidget* build () const;
 
 private:
 	int retval_;
-
-	//! After reading the general part in the constructor read extra data.
-	void read_extra(const config& cfg);
 };
 
-struct tbuilder_label : public tbuilder_widget
+struct tbuilder_label : public tbuilder_control
 {
 
 private:
 	tbuilder_label();
 public:
 	tbuilder_label(const config& cfg) :
-		tbuilder_widget(cfg)
+		tbuilder_control(cfg)
 	{}
 
 	twidget* build () const;
 
 };
 
-struct tbuilder_text_box : public tbuilder_widget
+struct tbuilder_text_box : public tbuilder_control
 {
 
 private:
 	tbuilder_text_box();
 public:
 	tbuilder_text_box(const config& cfg) :
-		tbuilder_widget(cfg)
+		tbuilder_control(cfg)
 	{}
 
 	twidget* build () const;
-
 };
 
+struct tbuilder_grid : public tbuilder_widget
+{
+private:
+	tbuilder_grid();
+
+public:
+	tbuilder_grid(const config& cfg);
+	unsigned rows;
+	unsigned cols;
+
+	//! The scale factor for the rows / columns.
+	std::vector<unsigned> row_scale;
+	std::vector<unsigned> col_scale;
+
+	//! The flags per grid cell.
+	std::vector<unsigned> flags;
+
+	//! The border size per grid cell.
+	std::vector<unsigned> border_size;
+
+	//! The widgets per grid cell.
+	std::vector<tbuilder_widget_ptr> widgets;
+
+	twidget* build () const;
+
+private:
+	//! After reading the general part in the constructor read extra data.
+	void read_extra(const config& cfg);
+};
 
 twindow build(CVideo& video, const std::string& type)
 {
@@ -107,21 +143,23 @@ twindow build(CVideo& video, const std::string& type)
 	twindow window(video, 100, 100, definition->width, definition->height); // FIXME use proper origin
 //	twindow window(video, 0, 0, definition->width, definition->height); // FIXME use proper origin
 
-	const unsigned rows = definition->grid.rows;
-	const unsigned cols = definition->grid.cols;
+	log_scope2(gui, "Window builder: building grid for window");
+
+	const unsigned rows = definition->grid->rows;
+	const unsigned cols = definition->grid->cols;
 
 	window.set_rows_cols(rows, cols);
 
 	for(unsigned x = 0; x < rows; ++x) {
-		window.set_row_scaling(x, definition->grid.row_scale[x]);
+		window.set_row_scaling(x, definition->grid->row_scale[x]);
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
-				window.set_col_scaling(y, definition->grid.col_scale[y]);
+				window.set_col_scaling(y, definition->grid->col_scale[y]);
 			}
 
-			twidget* widget = definition->grid.widgets[x * cols + y]->build();
-			window.add_child(widget, x, y, definition->grid.flags[x * cols + y],  definition->grid.border_size[x * cols + y]);
+			twidget* widget = definition->grid->widgets[x * cols + y]->build();
+			window.add_child(widget, x, y, definition->grid->flags[x * cols + y],  definition->grid->border_size[x * cols + y]);
 		}
 	}
 
@@ -175,7 +213,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	width(lexical_cast_default<unsigned>(cfg["width"])),
 	height(lexical_cast_default<unsigned>(cfg["height"])),
 	definition(cfg["window_definition"]),
-	grid(cfg.child("grid"))
+	grid(0) //new tbuilder_grid(cfg.child("grid")))
 {
 /*WIKI
  * [resolution]
@@ -192,6 +230,10 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  * [/resolution]
  */
+
+	VALIDATE(cfg.child("grid"), _("No grid defined."));
+
+	grid = new tbuilder_grid(*(cfg.child("grid")));
 
 	DBG_G_P << "Window builder: parsing resolution " 
 		<< window_width << ',' << window_height << '\n';
@@ -255,14 +297,19 @@ static unsigned read_flags(const config& cfg)
 	return flags;
 }
 
-twindow_builder::tresolution::tgrid::tgrid(const config* cfg) : 
+tbuilder_grid::tbuilder_grid(const config& cfg) : 
+	tbuilder_widget(cfg),
 	rows(0),
 	cols(0),
+	row_scale(),
+	col_scale(),
+	flags(),
+	border_size(),
 	widgets()
 {
-	VALIDATE(cfg, _("No grid defined."));
+	log_scope2(gui_parse, "Window builder: parsing a grid");
 
-	const config::child_list& row_cfgs = cfg->get_children("row");
+	const config::child_list& row_cfgs = cfg.get_children("row");
 	for(std::vector<config*>::const_iterator row_itor = row_cfgs.begin();
 			row_itor != row_cfgs.end(); ++row_itor) {
 
@@ -284,8 +331,10 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
 			} else if((**col_itor).child("label")) {
 				widgets.push_back(new tbuilder_label(*((**col_itor).child("label"))));
-			} else if ((**col_itor).child("text_box")) {
+			} else if((**col_itor).child("text_box")) {
 				widgets.push_back(new tbuilder_text_box(*((**col_itor).child("text_box"))));
+			} else if((**col_itor).child("grid")) {
+				widgets.push_back(new tbuilder_grid(*((**col_itor).child("grid"))));
 			} else {
 				assert(false);
 			}
@@ -307,7 +356,8 @@ twindow_builder::tresolution::tgrid::tgrid(const config* cfg) :
 		<< rows << " rows and " << cols << " columns.\n";
 }
 
-tbuilder_widget::tbuilder_widget(const config& cfg) :
+tbuilder_control::tbuilder_control(const config& cfg) :
+	tbuilder_widget(cfg),
 	id(cfg["id"]),
 	definition(cfg["button_definition"]),
 	label(cfg["label"])
@@ -318,7 +368,7 @@ tbuilder_widget::tbuilder_widget(const config& cfg) :
 	}
 
 
-	DBG_G_P << "Window builder: found widget with id '" 
+	DBG_G_P << "Window builder: found control with id '" 
 		<< id << "' and definition '" << definition << "'.\n";
 }
 
@@ -342,9 +392,10 @@ twidget* tbuilder_button::build() const
 	return button;
 }
 
-void tbuilder_button::read_extra(const config& cfg)
+tbuilder_button::tbuilder_button(const config& cfg) :
+	tbuilder_control(cfg),
+	retval_(lexical_cast_default<int>(cfg["return_value"]))
 {
-	retval_ = lexical_cast_default<int>(cfg["return_value"]);
 }
 
 twidget* tbuilder_label::build() const
@@ -375,6 +426,35 @@ twidget* tbuilder_text_box::build() const
 
 	return text_box;
 }
+
+twidget* tbuilder_grid::build() const
+{
+	tgrid *grid = new tgrid(0, 0, 0, 0);
+
+	grid->set_rows_cols(rows, cols);
+
+	log_scope2(gui, "Window builder: building grid");
+
+	DBG_G << "Window builder: grid has " << rows << " rows and "
+		<< cols << " columns.\n";
+
+	for(unsigned x = 0; x < rows; ++x) {
+		grid->set_row_scaling(x, row_scale[x]);
+		for(unsigned y = 0; y < cols; ++y) {
+
+			if(x == 0) {
+				grid->set_col_scaling(y, col_scale[y]);
+			}
+
+			DBG_G << "Window builder: adding child at " << x << ',' << y << ".\n";
+
+			twidget* widget = widgets[x * cols + y]->build();
+			grid->add_child(widget, x, y, flags[x * cols + y],  border_size[x * cols + y]);
+		}
+	}
+
+	return grid;
+}	
 
 } // namespace gui2
 
