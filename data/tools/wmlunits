@@ -668,12 +668,7 @@ class HTMLOutput:
 
             n = attack.get_text_val("number")
             x = attack.get_text_val("damage")
-            try:
-                x = " ".join(int(n) * [x])
-            except TypeError:
-                sys.stderr.write("Warning: Invalid damage for %s in %s.\n" % (
-                    aname, uname.encode("utf8")))
-                x = "?"
+            x = "%s - %s" % (x, n)
             write("<td>%s" % x)
 
             r = attack.get_text_val("range")
@@ -708,6 +703,7 @@ class HTMLOutput:
         write("</tr>\n")
         for rid in resistances:
             special, r = find_attr("resistance", rid)
+            r = "%d%%" % (100 - int(r))
             rcell = "td"
             if special: rcell += ' class="special"'
             write("<tr>\n")
@@ -739,6 +735,8 @@ class HTMLOutput:
             dcell = "td"
             special, d = find_attr("defense", tid)
             if special: dcell += ' class="special"'
+            
+            d = "%d%%" % (100 - int(d))
 
             write("<tr>\n")
             write("<td>%s</td><%s>%s</td><%s>%s</td>\n" % (
