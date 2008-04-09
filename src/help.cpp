@@ -1087,7 +1087,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 
 						if (!type.hide_help()) {
 							//add a link in the list of units having this special
-							std::string lang_name = type.language_name();
+							std::string lang_name = type.type_name();
 							std::string ref_id = unit_prefix + type.id();
 							//we put the translated name at the beginning of the hyperlink,
 							//so the automatic alphabetic sorting of std::set can use it
@@ -1154,7 +1154,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 
 				if (!type.hide_help()) {
 					//add a link in the list of units having this ability
-					std::string lang_name = type.language_name();
+					std::string lang_name = type.type_name();
 					std::string ref_id = unit_prefix +  type.id();
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
@@ -1244,7 +1244,7 @@ public:
 				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find(unit_id);
 				if (type != unit_type_data::types().end())
 				{
-					std::string lang_unit = type->second.language_name();
+					std::string lang_unit = type->second.type_name();
 					std::string ref_id;
 					if (description_type(type->second) == FULL_DESCRIPTION && !type->second.hide_help()) {
 						ref_id = unit_prefix + type->second.id();
@@ -1271,7 +1271,7 @@ public:
 				std::string unit_id = *advance_it;
 				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find(unit_id);
 				if(type != unit_type_data::types().end()) {
-					std::string lang_unit = type->second.language_name();
+					std::string lang_unit = type->second.type_name();
 					std::string ref_id;
 					if (description_type(type->second) == FULL_DESCRIPTION && !type->second.hide_help()) {
 						ref_id = unit_prefix + type->second.id();
@@ -1573,7 +1573,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		if (desc_type != FULL_DESCRIPTION)
 			continue;
 
-		const std::string lang_name = type.language_name();
+		const std::string lang_name = type.type_name();
 		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  type.id();
 		topic unit_topic(lang_name, ref_id, "");
 		//unit_topic.text = new unit_topic_generator(type);

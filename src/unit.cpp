@@ -94,7 +94,7 @@ unit::unit(const unit& o):
            id_(o.id_),
            name_(o.name_),
            underlying_id_(o.underlying_id_),
-           language_name_(o.language_name_),
+           type_name_(o.type_name_),
            undead_variation_(o.undead_variation_),
            variation_(o.variation_),
 
@@ -516,7 +516,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	advances_to_ = t->advances_to();
 
 	race_ = t->race_;
-	language_name_ = t->language_name();
+	type_name_ = t->type_name();
 	cfg_["description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
 	max_experience_ = t->experience_needed(false);
@@ -1248,7 +1248,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		advances_to_.clear();
 	}
 
-	language_name_ = cfg["language_name"];
+	type_name_ = cfg["language_name"];
 	undead_variation_ = cfg["undead_variation"];
 
 	flag_rgb_ = cfg["flag_rgb"];
@@ -1503,7 +1503,7 @@ void unit::write(config& cfg) const
 	cfg["advances_to"] = utils::join(advances_to_);
 
 	cfg["race"] = race_->id();
-	cfg["language_name"] = language_name_;
+	cfg["language_name"] = type_name_;
 	cfg["undead_variation"] = undead_variation_;
 	cfg["variation"] = variation_;
 	cfg["level"] = lexical_cast_default<std::string>(level_);

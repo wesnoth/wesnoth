@@ -184,7 +184,7 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 
 		unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
 
-		//const std::string name = data_->unit_types->find(*itor).language_name();
+		//const std::string name = data_->unit_types->find(*itor).type_name();
 		if (utypes.find(*itor) != utypes.end()) {
 			const unit_type* ut;
 			ut = &(utypes.find(*itor)->second);
@@ -195,7 +195,7 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::FEMALE));
 				}
 			}
-			const std::string name =  ut->language_name();
+			const std::string name =  ut->type_name();
 			const std::string image = ut->image();
 
 #ifdef LOW_MEM

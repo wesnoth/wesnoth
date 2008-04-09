@@ -79,14 +79,16 @@ public:
 	const unit_type* type() const;
 
 	//! The unique internal ID of the unit
-	const std::string& id() const { if (id_.empty()) return language_name(); else return id_; }
+	const std::string& id() const { if (id_.empty()) return type_name(); else return id_; }
 	const std::string& underlying_id() const { return underlying_id_; }
 
 	//! The unit type name
+	const t_string& type_name() const {return type_name_;}
+	const std::string& undead_variation() const {return undead_variation_;}
+
+        //! The unit name for display 
 	const std::string& name() const {return (name_);}
 	void rename(const std::string& name) {if (!unrenamable_) name_= name;}
-	const t_string& language_name() const {return language_name_;}
-	const std::string& undead_variation() const {return undead_variation_;}
 
 	//! The unit's profile
 	const std::string& profile() const;
@@ -311,7 +313,7 @@ private:
 	std::string id_;
 	std::string name_;
 	std::string underlying_id_;
-	t_string language_name_;
+	t_string type_name_;
 	std::string undead_variation_;
 	std::string variation_;
 

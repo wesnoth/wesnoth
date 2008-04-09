@@ -112,7 +112,7 @@ void wait::leader_preview_pane::draw_contents()
 			} else
 				utg = ut;
 
-			leader_name = utg->language_name();
+			leader_name = utg->type_name();
 #ifdef LOW_MEM
 			image = utg->image();
 #else
@@ -126,7 +126,7 @@ void wait::leader_preview_pane::draw_contents()
 			if (utypes.find(*itor) != utypes.end()) {
 				if(itor != recruit_list.begin())
 					recruit_string << ", ";
-				recruit_string << utypes.find(*itor)->second.language_name();
+				recruit_string << utypes.find(*itor)->second.type_name();
 			}
 		}
 
@@ -481,7 +481,7 @@ void wait::generate_menu()
 			} else
 				utg = ut;
 
-			leader_name = utg->language_name();
+			leader_name = utg->type_name();
 #ifdef LOW_MEM
 			leader_image = utg->image();
 #else

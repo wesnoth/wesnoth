@@ -62,7 +62,7 @@ report generate_report(TYPE type,
 	case UNIT_NAME:
 		return report(u->second.name(),"",u->second.name());
 	case UNIT_TYPE:
-	        return report(u->second.language_name(),"",u->second.unit_description());
+	        return report(u->second.type_name(),"",u->second.unit_description());
 	case UNIT_RACE:
 	        return report(u->second.race()->name(u->second.gender()));
 	case UNIT_SIDE: {
@@ -284,7 +284,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				{
 					seen_units.insert(u_it->second.type_id());
 					const int resistance = u_it->second.resistance_against(*at_it,false,u_it->first) - 100;
-					resistances[resistance].push_back(u_it->second.language_name());
+					resistances[resistance].push_back(u_it->second.type_name());
 				}
 			}
 

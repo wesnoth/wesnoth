@@ -2030,7 +2030,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			if(caption.empty()) {
 				caption = speaker->second.name();
 				if(caption.empty()) {
-					caption = speaker->second.language_name();
+					caption = speaker->second.type_name();
 				}
 			}
 			LOG_DP << "done scrolling to speaker...\n";

@@ -484,7 +484,7 @@ unit_type::unit_type()
 }
 
 unit_type::unit_type(const unit_type& o)
-    : cfg_(o.cfg_), id_(o.id_), language_name_(o.language_name_), description_(o.description_),
+    : cfg_(o.cfg_), id_(o.id_), type_name_(o.type_name_), description_(o.description_),
       undead_variation_(o.undead_variation_),
       image_(o.image_), image_profile_(o.image_profile_), flag_rgb_(o.flag_rgb_),
       num_traits_(o.num_traits_), variations_(o.variations_), race_(o.race_),
@@ -679,7 +679,7 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 	cfg_ = cfg;
 
 	id_ = cfg_["id"];
-	language_name_ = cfg_["name"];
+	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
 	undead_variation_ = cfg_["undead_variation"];
 	image_ = cfg_["image"];

@@ -83,7 +83,7 @@ std::vector<std::string> create_unit_table(const statistics::stats::str_int_map&
 #ifndef LOW_MEM
 		str << "~RC(" << type->second.flag_rgb() << ">" << team << ")";
 #endif
-		str << COLUMN_SEPARATOR	<< type->second.language_name() << COLUMN_SEPARATOR << i->second << "\n";
+		str << COLUMN_SEPARATOR	<< type->second.type_name() << COLUMN_SEPARATOR << i->second << "\n";
 		table.push_back(str.str());
 	}
 
@@ -401,7 +401,7 @@ namespace events{
 //				row << "<255,255,200>";
                 row << "<205,173,0>";   // gold3
 			}
-			row << i->second.language_name() << COLUMN_SEPARATOR;
+			row << i->second.type_name() << COLUMN_SEPARATOR;
 			if(i->second.can_recruit() ) {
 //				row << "<255,255,200>";
                 row << "<205,173,0>";   // gold3
@@ -997,7 +997,7 @@ private:
 #ifndef LOW_MEM
 			description << "~RC(" << type->flag_rgb() << ">" << team::get_side_colour_index(team_num) << ")";
 #endif
-			description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type->language_name() << "\n"
+			description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type->type_name() << "\n"
 					<< prefix << type->cost() << " " << sngettext("unit^Gold", "Gold", type->cost());
 
 			items.push_back(description.str());
@@ -1148,7 +1148,7 @@ private:
 				option << "~RC("  << u->team_color() << ">" << team::get_side_colour_index(team_num) << ")";
 #endif
 				option << COLUMN_SEPARATOR
-					<< u->language_name() << COLUMN_SEPARATOR
+					<< u->type_name() << COLUMN_SEPARATOR
 					<< name << COLUMN_SEPARATOR
 					<< u->level() << COLUMN_SEPARATOR
 					<< u->experience() << "/";
@@ -1614,7 +1614,7 @@ private:
 				race = race_it->second.plural_name();
 			}
 			row << race << COLUMN_SEPARATOR;
-			row << i->second.language_name() << COLUMN_SEPARATOR;
+			row << i->second.type_name() << COLUMN_SEPARATOR;
 
 			options.push_back(row.str());
 			unit_choices.push_back(&(i->second));

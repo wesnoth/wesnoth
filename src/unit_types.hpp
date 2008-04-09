@@ -177,7 +177,7 @@ public:
 	std::string generate_name() const { return race_->generate_name(string_gender(cfg_["gender"])); }
 
 	//! The name of the unit in the current language setting.
-	const t_string& language_name() const { return language_name_; }
+	const t_string& type_name() const { return type_name_; }
 
 	const std::string& id() const { return id_; }
 	const std::string& image() const { return image_; }
@@ -247,7 +247,7 @@ private:
 	config cfg_;
 
 	std::string id_;
-    t_string language_name_;
+    t_string type_name_;
     t_string description_;
     std::string undead_variation_;
 
