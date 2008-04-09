@@ -31,7 +31,7 @@ struct token_type {
 };
 
 //create the array with list of possible tokens
-token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|\\-|\\^|%|/|<=|>=|<|>|!=|=|\\.)"), TOKEN_OPERATOR },
+token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|-(?=[^>])|\\^|%|/|<=|>=|<|>|!=|=|\\.)"), TOKEN_OPERATOR },
 				{ regex("^functions\\b"),  TOKEN_KEYWORD },
 				{ regex("^def\\b"),        TOKEN_KEYWORD },
 				{ regex("^'[^']*'"),       TOKEN_STRING_LITERAL },
@@ -41,10 +41,13 @@ token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-
 				{ regex("^\\)"),           TOKEN_RPARENS },
 				{ regex("^\\["),           TOKEN_LSQUARE },
 				{ regex("^\\]"),           TOKEN_RSQUARE },
-				{ regex("^\\{.*?\\}"),	   TOKEN_COMMENT },
+				{ regex("^\\{"),           TOKEN_LBRACKET },
+				{ regex("^\\}"),           TOKEN_RBRACKET },
+				{ regex("^#.*?#"),	   TOKEN_COMMENT },
 				{ regex("^,"),             TOKEN_COMMA },
 				{ regex("^;"),             TOKEN_SEMICOLON },
-				{ regex("^\\s+"),          TOKEN_WHITESPACE }
+				{ regex("^\\s+"),          TOKEN_WHITESPACE },
+				{ regex("^->"),          TOKEN_POINTER }
 };
 
 }
@@ -57,7 +60,7 @@ token get_token(iterator& i1, iterator i2) {
 			res.type = t.type;
 			res.begin = i1;
 			i1 = res.end = i1 + match.length();
-
+			
 			return res;
 		}
 	}

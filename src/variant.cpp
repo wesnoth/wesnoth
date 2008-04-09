@@ -28,6 +28,8 @@ std::string variant_type_to_string(variant::TYPE type) {
 		return "list";
 	case variant::TYPE_STRING: 
 		return "string";
+	case variant::TYPE_MAP: 
+		return "map";
 	default:
 		assert(false);
 		return "invalid";
@@ -80,6 +82,13 @@ struct variant_string {
 	int refcount;
 };
 
+struct variant_map {
+	variant_map() : refcount(0)
+	{}
+	std::map<variant,variant> elements;
+	int refcount;
+};
+
 void variant::increment_refcount()
 {
 	switch(type_) {
@@ -88,6 +97,9 @@ void variant::increment_refcount()
 		break;
 	case TYPE_STRING:
 		++string_->refcount;
+		break;
+	case TYPE_MAP:
+		++map_->refcount;
 		break;
 	case TYPE_CALLABLE:
 		intrusive_ptr_add_ref(callable_);
@@ -111,6 +123,11 @@ void variant::release()
 	case TYPE_STRING:
 		if(--string_->refcount == 0) {
 			delete string_;
+		}
+		break;
+	case TYPE_MAP:
+		if(--map_->refcount == 0) {
+			delete map_;
 		}
 		break;
 	case TYPE_CALLABLE:
@@ -154,6 +171,15 @@ variant::variant(const std::string& str)
 	increment_refcount();
 }
 
+variant::variant(std::map<variant,variant>* map)
+    : type_(TYPE_MAP)
+{
+	assert(map);
+	map_ = new variant_map;
+	map_->elements.swap(*map);
+	increment_refcount();
+}
+
 variant::variant(const variant& v)
 {
 	memcpy(this, &v, sizeof(v));
@@ -191,15 +217,44 @@ const variant& variant::operator[](size_t n) const
 	return list_->elements[n];
 }
 
+const variant& variant::operator[](const variant v) const
+{
+	if(type_ == TYPE_CALLABLE) {
+		assert(v.as_int() == 0);
+		return *this;
+	}
+
+	if(type_ == TYPE_MAP) {
+		assert(map_);
+		std::map<variant,variant>::const_iterator i = map_->elements.find(v);
+		if (i == map_->elements.end())
+		{
+			static variant null_variant;
+			return null_variant;
+		}
+		return i->second;
+	} else if(type_ == TYPE_LIST) {
+		return operator[](v.as_int());
+	} else {
+		throw type_error(formatter() << "type error: " << " expected a list or a map but found " << variant_type_to_string(type_) << " (" << to_debug_string() << ")");
+	}	
+}
+
 size_t variant::num_elements() const
 {
 	if(type_ == TYPE_CALLABLE) {
 		return 1;
 	}
 
-	must_be(TYPE_LIST);
-	assert(list_);
-	return list_->elements.size();
+	if (type_ == TYPE_LIST) {
+		assert(list_);
+		return list_->elements.size();
+	} else if (type_ == TYPE_MAP) {
+		assert(map_);
+		return map_->elements.size();
+	} else {
+		throw type_error(formatter() << "type error: " << " expected a list or a map but found " << variant_type_to_string(type_) << " (" << to_debug_string() << ")");
+	}
 }
 
 variant variant::get_member(const std::string& str) const
@@ -226,6 +281,8 @@ bool variant::as_bool() const
 		return callable_ != NULL;
 	case TYPE_LIST:
 		return !list_->elements.empty();
+	case TYPE_MAP:
+		return !map_->elements.empty();
 	case TYPE_STRING:
 		return !string_->str.empty();
 	default:
@@ -255,6 +312,17 @@ variant variant::operator+(const variant& v) const
 			for(size_t j = 0; j<v.list_->elements.size(); ++j) {
 				const variant& var = v.list_->elements[j];
 				res.push_back(var);
+			}
+
+			return variant(&res);
+		}
+	}
+	if(type_ == TYPE_MAP) {
+		if(v.type_ == TYPE_MAP) {
+			std::map<variant,variant> res(map_->elements);
+
+			for(std::map<variant,variant>::const_iterator i = v.map_->elements.begin(); i != v.map_->elements.end(); ++i) {
+				res[i->first] = i->second;
 			}
 
 			return variant(&res);
@@ -339,6 +407,10 @@ bool variant::operator==(const variant& v) const
 		return true;
 	}
 
+	case TYPE_MAP: {
+		return map_->elements == v.map_->elements;
+	}
+
 	case TYPE_CALLABLE: {
 		return callable_->equals(v.callable_);
 	}
@@ -356,15 +428,7 @@ bool variant::operator!=(const variant& v) const
 bool variant::operator<=(const variant& v) const
 {
 	if(type_ != v.type_) {
-		if(type_ == TYPE_NULL) {
-			return variant(0) <= v;
-		}
-
-		if(v.type_ == TYPE_NULL) {
-			return *this <= variant(0);
-		}
-
-		return false;
+		return type_ < v.type_;
 	}
 
 	switch(type_) {
@@ -390,6 +454,10 @@ bool variant::operator<=(const variant& v) const
 		}
 
 		return num_elements() <= v.num_elements();
+	}
+
+	case TYPE_MAP: {
+		return map_->elements <= v.map_->elements;
 	}
 
 	case TYPE_CALLABLE: {
@@ -448,6 +516,21 @@ void variant::serialize_to_string(std::string& str) const
 		str += "]";
 		break;
 	}
+	case TYPE_MAP: {
+		str += "{";
+		bool first_time = true;
+		for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+			if(!first_time) {
+				str += ",";
+			}
+			first_time = false;
+			i->first.serialize_to_string(str);
+			str += "->";
+			i->second.serialize_to_string(str);
+		}
+		str += "}";
+		break;
+	}
 	case TYPE_STRING:
 		str += "'";
 		str += string_->str;
@@ -475,6 +558,9 @@ int variant::refcount() const
 		break;
 	case TYPE_STRING:
 		return string_->refcount;
+		break;
+	case TYPE_MAP:
+		return map_->refcount;
 		break;
 	case TYPE_CALLABLE:
 		return callable_->refcount();
@@ -504,6 +590,18 @@ std::string variant::string_cast() const
 			res += var.string_cast();
 		}
 
+		return res;
+	}
+	case TYPE_MAP: {
+		std::string res = "";
+		for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+			if(!res.empty()) {
+				res += ",";
+			}
+			res += i->first.string_cast();
+			res += "->";
+			res += i->second.string_cast();
+		}
 		return res;
 	}
 
@@ -564,6 +662,21 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 			}
 		} else {
 			s << "...";
+		}
+		s << "}";
+		break;
+	}
+	case TYPE_MAP: {
+		s << "{";
+		bool first_time = true;
+		for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+			if(!first_time) {
+				s << ",";
+			}
+			first_time = false;
+			s << i->first.to_debug_string(seen);
+			s << "->";
+			s << i->second.to_debug_string(seen);
 		}
 		s << "}";
 		break;

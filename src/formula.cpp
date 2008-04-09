@@ -108,6 +108,27 @@ private:
 	std::vector<expression_ptr> items_;
 };
 
+class map_expression : public formula_expression {
+public:
+	explicit map_expression(const std::vector<expression_ptr>& items)
+	   : items_(items)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		std::map<variant,variant> res;
+		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); ( i != items_.end() ) && ( i+1 != items_.end() ) ; i+=2) {
+				variant key = (*i)->evaluate(variables);
+				variant value = (*(i+1))->evaluate(variables);
+				res[ key ] = value;
+		}
+
+		return variant(&res);
+	}
+
+	std::vector<expression_ptr> items_;
+};
+
 class unary_operator_expression : public formula_expression {
 public:
 	unary_operator_expression(const std::string& op, expression_ptr arg)
@@ -487,6 +508,41 @@ void parse_args(const token* i1, const token* i2,
 	}
 }
 
+void parse_set_args(const token* i1, const token* i2,
+                std::vector<expression_ptr>* res,
+				function_symbol_table* symbols)
+{
+	int parens = 0;
+	bool check_pointer = false;
+	const token* beg = i1;
+	while(i1 != i2) {
+		if(i1->type == TOKEN_LPARENS || i1->type == TOKEN_LSQUARE) {
+			++parens;
+		} else if(i1->type == TOKEN_RPARENS || i1->type == TOKEN_RSQUARE) {
+			--parens;
+		} else if( i1->type == TOKEN_POINTER && !parens ) {
+			if (!check_pointer) {
+				check_pointer = true;
+				res->push_back(parse_expression(beg,i1, symbols));
+				beg = i1+1;
+			} else {
+				std::cerr << "Too many '->' operators\n";
+				throw formula_error();
+			}
+		} else if( i1->type == TOKEN_COMMA && !parens ) {
+			check_pointer = false;
+			res->push_back(parse_expression(beg,i1, symbols));
+			beg = i1+1;
+		}
+
+		++i1;
+	}
+
+	if(beg != i1) {
+		res->push_back(parse_expression(beg,i1, symbols));
+	}
+}
+
 void parse_where_clauses(const token* i1, const token * i2,
 			             expr_table_ptr res, function_symbol_table* symbols) {
 	int parens = 0;
@@ -598,9 +654,15 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		if(i1->type == TOKEN_LPARENS && (i2-1)->type == TOKEN_RPARENS) {
 			return parse_expression(i1+1,i2-1,symbols);
 		} else if(i1->type == TOKEN_LSQUARE && (i2-1)->type == TOKEN_RSQUARE) {
+				//create a list
 				std::vector<expression_ptr> args;
 				parse_args(i1+1,i2-1,&args,symbols);
 				return expression_ptr(new list_expression(args));
+		} else if(i1->type == TOKEN_LBRACKET && (i2-1)->type == TOKEN_RBRACKET) {
+				//create a map TODO: add support for a set
+				std::vector<expression_ptr> args;
+				parse_set_args(i1+1,i2-1,&args,symbols);
+				return expression_ptr(new map_expression(args));
 		} else if(i2 - i1 == 1) {
 			if(i1->type == TOKEN_KEYWORD) {
 				if(std::string(i1->begin,i1->end) == "functions") {
