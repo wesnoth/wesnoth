@@ -101,13 +101,13 @@ std::string get_timestamp(const time_t& t, const std::string& format) {
 	return buf;
 }
 
-std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool indent) const
+std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
 {
 	logd const &d = log_domains[domain.domain_];
 	if (severity_ > d.severity_)
 		return null_ostream;
 	else {
-		if(indent) {
+		if(do_indent) {
 			for(int i = 0; i != indent; ++i)
 				std::cerr << "  ";
 			}
@@ -123,10 +123,9 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 
 void scope_logger::do_log_entry(log_domain const &domain, const char* str)
 {
-	output_ = &debug(domain, false);
+	output_ = &debug(domain, false, true);
 	str_ = str;
 	ticks_ = SDL_GetTicks();
-	do_indent();
 	(*output_) << "BEGIN: " << str_ << "\n";
 	++indent;
 }	

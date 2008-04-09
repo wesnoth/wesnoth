@@ -51,7 +51,7 @@ class logger {
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
 	std::ostream &operator()(log_domain const &domain, 
-		bool show_names = true, bool indent = false) const;
+		bool show_names = true, bool do_indent = false) const;
 
 	bool dont_log(log_domain const &domain) const
 	{
