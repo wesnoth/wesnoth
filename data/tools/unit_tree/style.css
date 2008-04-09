@@ -1,6 +1,9 @@
 body {
-    background-color: #c0cbcf;
+    background-color:  #fffbf0;
     margin: 0px;
+    }
+h1 {
+    text-align: center;
     }
 table.units {
     background-color: #fffbf0;
@@ -8,7 +11,40 @@ table.units {
     border: none;
     padding: 0px;
     border-spacing: 0px;
+    width: auto;
     }
+div.header {
+    background:#444444 url("headerbg.jpg") repeat-x scroll center top;
+    border-bottom:1px solid #000000;
+    margin:0pt;
+    padding:0pt;
+    width:100%;
+    text-align: center;
+}
+div.topnav {
+    background:#272727 url("navbg.png") repeat-x scroll center bottom;
+    border-top:1px solid #595959;
+    margin:0pt;
+    padding:3px 4px 15px;
+    text-align:center;
+}
+div.topnav a {
+    color:#B48648;
+    font-family:"Trebuchet MS",sans-serif;
+    line-height:0.8em;
+    font-size:0.8em;
+    font-weight:bold;
+    text-decoration:none;
+}
+div.topnav a:hover {
+    color:#CCCCCC;
+}
+img {
+    border: none;
+}
+div.header img {
+    vertical-align:middle;
+}
 div.pic {
     margin: 0px;
     padding: 0px;
@@ -35,24 +71,26 @@ table.navbar {
     width: 0px;
     border-spacing: 0px;
     padding: 2px;
-    border: 1px solid #b0bbff;
+    border-right: 1px solid black;
 }
 table.navbar th {
-    color: white;
+    color: black;
     font-weight: bold;
 }
 table.navbar a {
-    color: black;
+    color: #B48648;
     font-size: small;
     font-weight: bold;
 }
 td.raceheader {
-    background-color: black;
-    color: white;
-    font-size: xx-large;
+    background:#272727 url("navbg.png") repeat-x scroll center bottom;
+    border-top:1px solid #595959;
+    margin:0pt;
+    padding:1px 1px 10px 1px;
+    text-align:center;
+    color: #B48648;
+    font-size: x-large;
     font-weight: bold;
-    text-align: center;
-    border: 1px solid #b0bbff;
     }
 tr.levels th {
     border-bottom: 1px solid #cfcbc0;
