@@ -835,7 +835,7 @@ void unit_preview_pane::draw_contents()
 	}
 
 	std::stringstream text;
-	text << det.name << "\n"
+	text << det.type_name << "\n"
 		<< font::BOLD_TEXT << _("level") << " " << det.level << "\n"
 		<< det.alignment << "\n"
 		<< det.traits << "\n";
