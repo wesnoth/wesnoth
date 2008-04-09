@@ -33,6 +33,7 @@ class ttext_ : public tcontrol
 public:
 	ttext_() :
 		tcontrol(COUNT),
+		state_(ENABLED),
 		text_(),
 		sel_start_(0),
 		sel_len_(0),
@@ -42,7 +43,7 @@ public:
 
 	void set_active(const bool active) { /*FIXME IMPLEMENT*/ };
 	bool get_active() const { return true; /* FIXME IMPLEMENT */ }
-	unsigned get_state() const { return 0; /* FIXME IMPLEMENT */ }
+	unsigned get_state() const { return state_; }
 
 	void mouse_move(tevent_handler&);
 	void mouse_hover(tevent_handler&);
@@ -186,8 +187,6 @@ protected:
 
 	//! Inherited from ttext_.
 	void delete_selection();
-
-	bool full_redraw() const;
 
 	//! Inherited from tcontrol.
 	void set_canvas_text();

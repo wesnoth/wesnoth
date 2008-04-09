@@ -397,12 +397,6 @@ void ttext_box::delete_selection()
 	set_dirty();
 }
 
-bool ttext_box::full_redraw() const
-{
-	assert(config());
-	return config()->state[get_state()].full_redraw;
-}
-
 //! Inherited from tcontrol.
 void ttext_box::set_canvas_text()
 {

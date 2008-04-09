@@ -62,7 +62,6 @@ public:
 	void set_active(const bool active);
 	bool get_active() const;
 	unsigned get_state() const { return state_; }
-	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
 	//! Inherited from twidget.
 	void load_config();

@@ -83,7 +83,7 @@ protected:
 	virtual unsigned get_state() const = 0;
 
 	//! Does the widget need to restore the surface before (re)painting?
-	virtual bool full_redraw() const = 0;
+	virtual bool full_redraw() const;
 
 	//! Sets the text variable for the canvases.
 	virtual void set_canvas_text();

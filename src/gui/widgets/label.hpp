@@ -26,17 +26,15 @@ class tlabel : public tcontrol
 public:
 	
 	tlabel() :
-		tcontrol(COUNT)
+		tcontrol(COUNT),
+		state_(ENABLED)
 	{}
 
 	void set_active(const bool active) { set_state(active ? ENABLED : DISABLED); };
 	bool get_active() const { return state_ == ENABLED; }
 	unsigned get_state() const { return state_; }
-	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
 	void mouse_hover(tevent_handler&);
-
-	void draw(surface& surface);
 
 	//! Inherited from twidget.
 	void load_config();

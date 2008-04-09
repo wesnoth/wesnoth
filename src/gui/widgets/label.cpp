@@ -44,25 +44,6 @@ void tlabel::mouse_hover(tevent_handler&)
 	DBG_G_E << "Text_box: mouse hover.\n"; 
 }
 
-void tlabel::draw(surface& surface)
-{
-	SDL_Rect rect = get_rect();
-
-	DBG_G_D << "Label: drawing enabled state.\n";
-/*	if(!restorer_) {
-		restorer_ = get_surface_portion(canvas, rect);
-	} 
-	if(definition_->enabled.full_redraw) {
-		SDL_BlitSurface(restorer_, 0, canvas, &rect);
-		rect = get_rect();
-	}
-*/
-	canvas(0).draw(true);
-	SDL_BlitSurface(canvas(0).surf(), 0, surface, &rect);
-
-	set_dirty(false);
-}
-
 void tlabel::set_state(tstate state)
 {
 	if(state != state_) {

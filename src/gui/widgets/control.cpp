@@ -113,6 +113,12 @@ tpoint tcontrol::get_maximum_size() const
 	return tpoint(config_->max_width, config_->max_height);
 }
 
+//! Does the widget need to restore the surface before (re)painting?
+bool tcontrol::full_redraw() const
+{
+	assert(config());
+	return config()->state[get_state()].full_redraw;
+}
 
 //! Sets the text variable for the canvases.
 void tcontrol::set_canvas_text()
