@@ -586,19 +586,42 @@ void tcanvas::trectangle::draw(surface& canvas,
 }
 
 tcanvas::timage::timage(const config& cfg) :
+	x_(0),
+	y_(0),
+	w_(0),
+	h_(0),
+	x_formula_(""),
+	y_formula_(""),
+	w_formula_(""),
+	h_formula_(""),
 	src_clip_(),
 	dst_clip_(),
 	image_()
 {
-
-//FIXME enhance the options and write the wiki block in the new style.
-
 /*WIKI
  * [image]
- *     name = (string)                The name of the image.
- *     debug = (string = "")          Debug message to show upon creation
+ * Definition of an image.
+ * Keys: 
+ *     x (f_unsigned = 0)              The x coordinate of the top left corner.
+ *     y (f_unsigned = 0)              The y coordinate of the top left corner.
+ *     w (f_unsigned = 0)              The width of the image, if not zero the
+ *                                     image will be scaled to the desired width.
+ *     h (f_unsigned = 0)              The height of the image, if not zero the
+ *                                     image will be scaled to the desired height.
+ *     name (string = "")              The name of the image.
+ *     debug = (string = "")           Debug message to show upon creation
+ *                                     this message is not stored.
+ *
+ * Variables:
+ * See [line].
+ *
  * [/image]
  */
+
+	read_possible_formula(cfg["x"], x_, x_formula_);
+	read_possible_formula(cfg["y"], y_, y_formula_);
+	read_possible_formula(cfg["w"], w_, w_formula_);
+	read_possible_formula(cfg["h"], h_, h_formula_);
 
 	image_.assign(image::get_image(image::locator(cfg["name"])));
 	src_clip_ = create_rect(0, 0, image_->w, image_->h);
@@ -614,9 +637,56 @@ void tcanvas::timage::draw(surface& canvas,
 {
 	DBG_G_D << "Image: draw.\n";
 
+	if(!x_formula_.empty()) {
+		DBG_G_D << "Image: execute x formula '" << x_formula_ << "'.\n";
+		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
+	}
+
+	if(!y_formula_.empty()) {
+		DBG_G_D << "Image: execute y formula '" << y_formula_ << "'.\n";
+		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
+	}
+
+	if(!w_formula_.empty()) {
+		DBG_G_D << "Image: execute width formula '" << w_formula_ << "'.\n";
+		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
+	}
+
+	if(!h_formula_.empty()) {
+		DBG_G_D << "Image: execute height formula '" << h_formula_ << "'.\n";
+		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
+	}
+
+	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
 	SDL_Rect dst_clip = dst_clip_;
-	SDL_BlitSurface(image_, &src_clip, canvas, &dst_clip);
+	dst_clip.x = x_;
+	dst_clip.y = y_;
+	unsigned w = w_;
+	unsigned h = h_;
+	surface surf;
+
+	// Test whether we need to scale and do the scaling if needed.
+	if(w || h) {
+		if(!w) {
+			w = image_->w;
+		}
+
+		if(!h) {
+			h = image_->h;
+		}
+
+		DBG_G_D << "Image: scaling from " << image_->w 
+			<< ',' << image_->h << " to " << w << ',' << h << ".\n";
+
+		surf = scale_surface(image_, w, h);
+		src_clip.w = w;
+		src_clip.h = h;
+	} else {
+		surf = image_;
+	}
+
+	SDL_BlitSurface(surf, &src_clip, canvas, &dst_clip);
 }
 
 tcanvas::ttext::ttext(const config& cfg) :

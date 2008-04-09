@@ -135,6 +135,15 @@ public:
 			const game_logic::map_formula_callable& variables);
 
 	private:
+		unsigned x_, y_;
+		unsigned w_, h_;
+
+		std::string
+			x_formula_,
+			y_formula_,
+			w_formula_,
+			h_formula_;
+
 		SDL_Rect src_clip_;
 		SDL_Rect dst_clip_;
 		surface image_;
