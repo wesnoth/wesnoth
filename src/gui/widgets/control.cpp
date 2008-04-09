@@ -14,8 +14,10 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "font.hpp"
 #include "foreach.hpp"
 #include "log.hpp"
+#include "util.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
 #define LOG_G LOG_STREAM_INDENT(info, gui)
@@ -98,13 +100,28 @@ void tcontrol::set_label(const t_string& label)
 tpoint tcontrol::get_minimum_size() const
 {
 	assert(config_);
-	return tpoint(config_->min_width, config_->min_height);
+	const tpoint min_size(config_->min_width, config_->min_height);
+	if(label_.empty()) {
+		return min_size;
+	}
+
+	SDL_Rect rect = font::line_size(label_, config_->text_font_size);
+	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
+	return maximum(min_size, text_size);
 }
 
 tpoint tcontrol::get_best_size() const
 {
 	assert(config_);
-	return tpoint(config_->default_width, config_->default_height);
+
+	const tpoint default_size(config_->default_width, config_->default_height);
+	if(label_.empty()) {
+		return default_size;
+	}
+
+	SDL_Rect rect = font::line_size(label_, config_->text_font_size);
+	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
+	return maximum(default_size, text_size);
 }
 
 tpoint tcontrol::get_maximum_size() const
