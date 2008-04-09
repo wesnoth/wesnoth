@@ -89,7 +89,7 @@ protected:
 	virtual void set_canvas_text();
 
 	tresolution_definition_* config() { return config_; }
-	const tresolution_definition_* const config() const { return config_; }
+	const tresolution_definition_* config() const { return config_; }
 
 	void set_config(tresolution_definition_* config) { config_ = config; }
 
