@@ -240,6 +240,28 @@ const variant& variant::operator[](const variant v) const
 	}	
 }
 
+variant variant::get_keys() const
+{
+	must_be(TYPE_MAP);
+	assert(map_);
+	std::vector<variant> tmp;
+	for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+			tmp.push_back(i->first);
+	}
+	return variant(&tmp);
+}
+
+variant variant::get_values() const
+{
+	must_be(TYPE_MAP);
+	assert(map_);
+	std::vector<variant> tmp;
+	for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+			tmp.push_back(i->second);
+	}
+	return variant(&tmp);
+}
+
 size_t variant::num_elements() const
 {
 	if(type_ == TYPE_CALLABLE) {

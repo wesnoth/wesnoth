@@ -102,6 +102,9 @@ public:
 	bool operator<=(const variant&) const;
 	bool operator>=(const variant&) const;
 
+	variant get_keys() const;
+	variant get_values() const;
+
 	void serialize_to_string(std::string& str) const;
 	void serialize_from_string(const std::string& str);
 

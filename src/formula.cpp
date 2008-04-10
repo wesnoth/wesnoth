@@ -217,6 +217,26 @@ private:
 	expression_ptr left_, right_;
 };
 
+class square_bracket_expression : public formula_expression { //TODO
+public:
+	square_bracket_expression(expression_ptr left, expression_ptr key)
+	   : left_(left), key_(key)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant left = left_->evaluate(variables);
+		const variant key = key_->evaluate(variables);
+		if(left.is_list() || left.is_map()) {
+			return left[ key ];
+		} else {
+			std::cerr << "illegal usage of operator []'\n";
+			throw formula_error();
+		}
+	}
+
+	expression_ptr left_, key_;
+};
+
 class operator_expression : public formula_expression {
 public:
 	operator_expression(const std::string& op, expression_ptr left,
@@ -491,9 +511,9 @@ void parse_args(const token* i1, const token* i2,
 	int parens = 0;
 	const token* beg = i1;
 	while(i1 != i2) {
-		if(i1->type == TOKEN_LPARENS || i1->type == TOKEN_LSQUARE) {
+		if(i1->type == TOKEN_LPARENS || i1->type == TOKEN_LSQUARE || i1->type == TOKEN_LBRACKET ) {
 			++parens;
-		} else if(i1->type == TOKEN_RPARENS || i1->type == TOKEN_RSQUARE) {
+		} else if(i1->type == TOKEN_RPARENS || i1->type == TOKEN_RSQUARE || i1->type == TOKEN_RBRACKET) {
 			--parens;
 		} else if(i1->type == TOKEN_COMMA && !parens) {
 			res->push_back(parse_expression(beg,i1, symbols));
@@ -653,11 +673,24 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 	if(op == NULL) {
 		if(i1->type == TOKEN_LPARENS && (i2-1)->type == TOKEN_RPARENS) {
 			return parse_expression(i1+1,i2-1,symbols);
-		} else if(i1->type == TOKEN_LSQUARE && (i2-1)->type == TOKEN_RSQUARE) {
-				//create a list
-				std::vector<expression_ptr> args;
-				parse_args(i1+1,i2-1,&args,symbols);
-				return expression_ptr(new list_expression(args));
+		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list definition, or a operator 
+				const token* tok = i2-2;
+				while (tok->type != TOKEN_LSQUARE && tok != i1) {
+						--tok;
+				}	
+				if (tok->type == TOKEN_LSQUARE) {
+					if (tok == i1) {
+						//create a list
+						std::vector<expression_ptr> args;
+						parse_args(i1+1,i2-1,&args,symbols);
+						return expression_ptr(new list_expression(args));
+					} else {
+						//execute operator [ ]
+						return expression_ptr(new square_bracket_expression(
+											parse_expression(i1,tok,symbols),
+								 				parse_expression(tok+1,i2-1,symbols)));
+					}
+				}
 		} else if(i1->type == TOKEN_LBRACKET && (i2-1)->type == TOKEN_RBRACKET) {
 				//create a map TODO: add support for a set
 				std::vector<expression_ptr> args;

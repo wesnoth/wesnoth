@@ -259,6 +259,32 @@ private:
 	}
 };
 
+class keys_function : public function_expression {
+public:
+	explicit keys_function(const args_list& args)
+	     : function_expression("keys", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant map = args()[0]->evaluate(variables);
+		return map.get_keys();
+	}
+};
+
+class values_function : public function_expression {
+public:
+	explicit values_function(const args_list& args)
+	     : function_expression("values", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant map = args()[0]->evaluate(variables);
+		return map.get_values();
+	}
+};
+
 class choose_function : public function_expression {
 public:
 	explicit choose_function(const args_list& args)
@@ -648,6 +674,8 @@ functions_map& get_functions_map() {
 		FUNCTION(null);
 		FUNCTION(refcount);
 		FUNCTION(loc);
+		FUNCTION(keys);
+		FUNCTION(values);
 #undef FUNCTION
 	}
 
