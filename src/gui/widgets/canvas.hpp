@@ -48,6 +48,7 @@ class tcanvas
 public:
 
 	//! Base class for all other shapes.
+	//! The other shapes are declared and defined in canvas.cpp.
 	class tshape : public reference_counted_object
 	{
 	public:
@@ -67,115 +68,6 @@ public:
 
 	typedef boost::intrusive_ptr<tshape> tshape_ptr;
 	typedef boost::intrusive_ptr<const tshape> const_tshape_ptr;
-
-	//! Definition of a line shape.
-	class tline : public tshape
-	{
-	public:
-		tline(const config& cfg);
-
-		//! Implement shape::draw().
-		void draw(surface& canvas,
-			const game_logic::map_formula_callable& variables);
-
-	private:
-		unsigned x1_, y1_;
-		unsigned x2_, y2_;
-
-		std::string
-			x1_formula_,
-			y1_formula_,
-			x2_formula_,
-			y2_formula_;
-
-		Uint32 colour_;
-		//! The thickness of the line:
-		//! if the value is odd the x and y are the middle of the line.
-		//! if the value is even the x and y are the middle of a line
-		//! with width - 1. (0 is special case, does nothing.)
-		unsigned thickness_;
-	};
-
-	//! Definition of a rectangle shape.
-	class trectangle : public tshape
-	{
-	public:
-		trectangle(const config& cfg);
-
-		//! Implement shape::draw().
-		void draw(surface& canvas,
-			const game_logic::map_formula_callable& variables);
-
-	private:
-		unsigned x_, y_;
-		unsigned w_, h_;
-	
-		std::string
-			x_formula_,
-			y_formula_,
-			w_formula_,
-			h_formula_;
-
-		//! Border thickness if 0 the fill colour is used for the entire 
-		//! widget.
-		unsigned border_thickness_;
-		Uint32 border_colour_;
-
-		Uint32 fill_colour_;
-	};
-
-	//! Definition of an image shape.
-	class timage : public tshape
-	{
-	public:
-		timage(const config& cfg);
-		
-		//! Implement shape::draw().
-		void draw(surface& canvas,
-			const game_logic::map_formula_callable& variables);
-
-	private:
-		unsigned x_, y_;
-		unsigned w_, h_;
-
-		std::string
-			x_formula_,
-			y_formula_,
-			w_formula_,
-			h_formula_;
-
-		SDL_Rect src_clip_;
-		SDL_Rect dst_clip_;
-		surface image_;
-
-		bool stretch_;
-	};
-
-	//! Definition of a text shape.
-	class ttext : public tshape
-	{
-	public:
-		ttext(const config& cfg);
-		
-		//! Implement shape::draw().
-		void draw(surface& canvas,
-			const game_logic::map_formula_callable& variables);
-
-	private:
-		unsigned x_, y_;
-		unsigned w_, h_;
-
-		std::string
-			x_formula_,
-			y_formula_,
-			w_formula_,
-			h_formula_;
-
-		unsigned font_size_;
-		Uint32 colour_;
-		t_string text_;
-		std::string text_formula_; 
-	};
 
 	tcanvas();
 	tcanvas(const config& cfg);

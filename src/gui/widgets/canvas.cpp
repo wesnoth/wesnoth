@@ -125,6 +125,678 @@ static void read_possible_formula(const std::string str, std::string& value, std
 
 namespace gui2{
 
+namespace {
+
+//! Definition of a line shape.
+class tline : public tcanvas::tshape
+{
+public:
+	tline(const config& cfg);
+
+	//! Implement shape::draw().
+	void draw(surface& canvas,
+		const game_logic::map_formula_callable& variables);
+
+private:
+	unsigned x1_, y1_;
+	unsigned x2_, y2_;
+
+	std::string
+		x1_formula_,
+		y1_formula_,
+		x2_formula_,
+		y2_formula_;
+
+	Uint32 colour_;
+	//! The thickness of the line:
+	//! if the value is odd the x and y are the middle of the line.
+	//! if the value is even the x and y are the middle of a line
+	//! with width - 1. (0 is special case, does nothing.)
+	unsigned thickness_;
+};
+
+tline::tline(const config& cfg) :
+	x1_(0),
+	y1_(0),
+	x2_(0),
+	y2_(0),
+	x1_formula_(),
+	y1_formula_(),
+	x2_formula_(),
+	y2_formula_(),
+	colour_(decode_colour(cfg["colour"])),
+	thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
+{
+/*WIKI
+ * [line]
+ * Definition of a line.
+ * Keys: 
+ *     x1 (f_unsigned = 0)             The x coordinate of the startpoint.
+ *     y1 (f_unsigned = 0)             The y coordinate of the startpoint.
+ *     x2 (f_unsigned = 0)             The x coordinate of the endpoint.
+ *     y2 (f_unsigned = 0)             The y coordinate of the endpoint.
+ *     colour (widget = "")            The colour of the line.
+ *     thickness = (unsigned = 0)      The thickness of the line if 0 nothing
+ *                                     is drawn.
+ *     debug = (string = "")           Debug message to show upon creation
+ *                                     this message is not stored.
+ *
+ * Variables:
+ *     width unsigned                  The width of the canvas.
+ *     height unsigned                 The height of the canvas.
+ *     text tstring                    The text to render on the widget.
+ *
+ * Note when drawing the valid coordinates are:
+ * 0 -> width - 1
+ * 0 -> height -1
+ *
+ * Drawing outside this area will result in unpredicatable results including
+ * crashing. (That should be fixed, when encountered.)
+ *
+ * [/line]
+ */
+
+/*WIKI
+ * This code can be used by a parser to generate the wiki page
+ * structure
+ * [tag name]
+ * param type_info description
+ *
+ * param                               Name of the parameter.
+ * 
+ * type_info = ( type = default_value) The info about a optional parameter.
+ * type_info = ( type )                The info about a mandatory parameter
+ * type_info = [ type_info ]           The info about a conditional parameter 
+ *                                     description should explain the reason.
+ *
+ * description                         Description of the parameter.
+ *
+ *
+ *
+ * types
+ * unsigned                            Unsigned number (positive whole numbers
+ *                                     and zero).
+ * f_unsigned                          Unsinged number or formula returning an
+ *                                     unsigned number.
+ * int                                 Signed number (whole numbers).
+ * f_int                               Signed number or formula returning an
+ *                                     signed number.
+ * bool                                A boolean value accepts the normal 
+ *                                     values as the rest of the game.
+ * string                              A text.
+ * tstring                             A translatable string.
+ * f_tstring                           Formula returning a translatable string.
+ *
+ * colour                              A string which constains the colour, this
+ *                                     a group of 4 numbers between 0 and 255
+ *                                     separated by a comma. The numbers are red
+ *                                     component, green component, blue 
+ *                                     component and alpha. A colour of 0 is not
+ *                                     available. An alpha of 0 is fully 
+ *                                     transparent. Ommitted values are set to 0.
+ *
+ *
+ * Formulas are a funtion between brackets, that way the engine can see whether
+ * there is standing a plain number or a formula eg:
+ * 0     A value of zero
+ * (0)   A formula returning zero
+ *
+ * When formulas are available the text should state the available variables
+ * which are available in that function.
+ */
+
+	read_possible_formula(cfg["x1"], x1_, x1_formula_);
+	read_possible_formula(cfg["y1"], y1_, y1_formula_);
+	read_possible_formula(cfg["x2"], x2_, x2_formula_);
+	read_possible_formula(cfg["y2"], y2_, y2_formula_);
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_G_P << "Line: found debug message '" << debug << "'.\n";
+	}
+
+}
+
+void tline::draw(surface& canvas,
+	const game_logic::map_formula_callable& variables)
+{
+	//@todo formulas are now recalculated every draw cycle which is a 
+	// bit silly unless there has been a resize. So to optimize we should
+	// use an extra flag or do the calculation in a separate routine.
+	if(!x1_formula_.empty()) {
+		DBG_G_D << "Line: execute x1 formula '" << x1_formula_ << "'.\n";
+		x1_ = game_logic::formula(x1_formula_).execute(variables).as_int();
+	}
+
+	if(!y1_formula_.empty()) {
+		DBG_G_D << "Line: execute y1 formula '" << y1_formula_ << "'.\n";
+		y1_ = game_logic::formula(y1_formula_).execute(variables).as_int();
+	}
+
+	if(!x2_formula_.empty()) {
+		DBG_G_D << "Line: execute x2 formula '" << x2_formula_ << "'.\n";
+		x2_ = game_logic::formula(x2_formula_).execute(variables).as_int();
+	}
+
+	if(!y2_formula_.empty()) {
+		DBG_G_D << "Line: execute y2 formula '" << y2_formula_ << "'.\n";
+		y2_ = game_logic::formula(y2_formula_).execute(variables).as_int();
+	}
+
+	DBG_G_D << "Line: draw from " 
+		<< x1_ << ',' << y1_ << " to " << x2_ << ',' << y2_ 
+		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+
+	VALIDATE(x1_ < canvas->w && x2_ < canvas->w && y1_ < canvas->h 
+		&& y2_ < canvas->h, _("Line doesn't fit on canvas."));
+
+	// FIXME respect the thickness.
+
+	// now draw the line we use Bresenham's algorithm, which doesn't
+	// support antialiasing. The advantage is that it's easy for testing.
+	
+	// lock the surface
+	surface_lock locker(canvas);
+	if(x1_ > x2_) {
+		// invert points
+		draw_line(canvas, colour_, x2_, y2_, x1_, y1_);
+	} else {
+		draw_line(canvas, colour_, x1_, y1_, x2_, y2_);
+	}
+	
+}
+
+
+
+//! Definition of a rectangle shape.
+class trectangle : public tcanvas::tshape
+{
+public:
+	trectangle(const config& cfg);
+
+	//! Implement shape::draw().
+	void draw(surface& canvas,
+		const game_logic::map_formula_callable& variables);
+
+private:
+	unsigned x_, y_;
+	unsigned w_, h_;
+
+	std::string
+		x_formula_,
+		y_formula_,
+		w_formula_,
+		h_formula_;
+
+	//! Border thickness if 0 the fill colour is used for the entire 
+	//! widget.
+	unsigned border_thickness_;
+	Uint32 border_colour_;
+
+	Uint32 fill_colour_;
+};
+
+trectangle::trectangle(const config& cfg) :
+	x_(0),
+	y_(0),
+	w_(0),
+	h_(0),
+	x_formula_(),
+	y_formula_(),
+	w_formula_(),
+	h_formula_(),
+	border_thickness_(lexical_cast_default<unsigned>(cfg["border_thickness"])),
+	border_colour_(decode_colour(cfg["border_colour"])),
+	fill_colour_(decode_colour(cfg["fill_colour"]))
+{
+/*WIKI
+ * [rectangle]
+ * Definition of a rectangle.
+ * Keys: 
+ *     x (f_unsigned = 0)              The x coordinate of the top left corner.
+ *     y (f_unsigned = 0)              The y coordinate of the top left corner.
+ *     w (f_unsigned = 0)              The width of the rectangle.
+ *     h (f_unsigned = 0)              The height of the rectangle.
+ *     border_thickness (unsigned = 0) The thickness of the border if the 
+ *                                     thickness is zero it's not drawn.
+ *     border_colour (colour = "")     The colour of the border if empty it's
+ *                                     not drawn.
+ *     fill_colour (colour = "")       The colour of the interior if ommitted
+ *                                     it's not drawn.
+ *     debug = (string = "")           Debug message to show upon creation
+ *                                     this message is not stored.
+ *
+ * Variables:
+ * See [line].
+ *
+ * [/rectangle]
+ */
+	read_possible_formula(cfg["x"], x_, x_formula_);
+	read_possible_formula(cfg["y"], y_, y_formula_);
+	read_possible_formula(cfg["w"], w_, w_formula_);
+	read_possible_formula(cfg["h"], h_, h_formula_);
+
+	if(border_colour_ == 0) {
+		border_thickness_ = 0;
+	}
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_G_P << "Rectangle: found debug message '" << debug << "'.\n";
+	}
+}
+
+void trectangle::draw(surface& canvas,
+	const game_logic::map_formula_callable& variables)
+{
+
+	//@todo formulas are now recalculated every draw cycle which is a 
+	// bit silly unless there has been a resize. So to optimize we should
+	// use an extra flag or do the calculation in a separate routine.
+	if(!x_formula_.empty()) {
+		DBG_G_D << "Rectangle: execute x formula '" << x_formula_ << "'.\n";
+		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
+	}
+
+	if(!y_formula_.empty()) {
+		DBG_G_D << "Rectangle: execute y formula '" << y_formula_ << "'.\n";
+		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
+	}
+
+	if(!w_formula_.empty()) {
+		DBG_G_D << "Rectangle: execute width formula '" << w_formula_ << "'.\n";
+		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
+	}
+
+	if(!h_formula_.empty()) {
+		DBG_G_D << "Rectangle: execute height formula '" << h_formula_ << "'.\n";
+		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
+	}
+
+	DBG_G_D << "Rectangle: draw from " << x_ << ',' << y_
+		<< " width " << w_ << " height " << h_ 
+		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+
+	VALIDATE(x_ < canvas->w && x_ + w_ <= canvas->w && y_ < canvas->h 
+		&& y_ + h_ <= canvas->h, _("Rectangle doesn't fit on canvas."));
+
+
+	surface_lock locker(canvas);
+
+	// draw the border
+	for(unsigned i = 0; i < border_thickness_; ++i) {
+
+		const unsigned left = x_ + i;
+		const unsigned right = left + w_ - (i * 2) - 1;
+		const unsigned top = y_ + i;
+		const unsigned bottom = top + h_ - (i * 2) - 1;
+
+		// top horizontal (left -> right)
+		draw_line(canvas, border_colour_, left, top, right, top);
+
+		// right vertical (top -> bottom)
+		draw_line(canvas, border_colour_, right, top, right, bottom);
+
+		// bottom horizontal (left -> right)
+		draw_line(canvas, border_colour_, left, bottom, right, bottom);
+
+		// left vertical (top -> bottom)
+		draw_line(canvas, border_colour_, left, top, left, bottom);
+
+	}
+
+	// The fill_rect_alpha code below fails, can't remember the exact cause
+	// so use the slow line drawing method to fill the rect.
+	if(fill_colour_) {
+		
+		const unsigned left = x_ + border_thickness_;
+		const unsigned right = left + w_ - (2 * border_thickness_) - 1;
+		const unsigned top = y_ + border_thickness_;
+		const unsigned bottom = top + h_ - (2 * border_thickness_);
+
+		for(unsigned i = top; i < bottom; ++i) {
+			
+			draw_line(canvas, fill_colour_, left, i, right, i);
+		}
+	}
+/*
+	const unsigned left = x_ + border_thickness_ + 1;
+	const unsigned top = y_ + border_thickness_ + 1;
+	const unsigned width = w_ - (2 * border_thickness_) - 2;
+	const unsigned height = h_ - (2 * border_thickness_) - 2;
+	SDL_Rect rect = create_rect(left, top, width, height);
+
+	const Uint32 colour = fill_colour_ & 0xFFFFFF00;
+	const Uint8 alpha = fill_colour_ & 0xFF;
+
+	// fill
+	fill_rect_alpha(rect, colour, alpha, canvas);
+	canvas = blend_surface(canvas, 255, 0xAAAA00);	
+*/	
+}
+
+
+
+//! Definition of an image shape.
+class timage : public tcanvas::tshape
+{
+public:
+	timage(const config& cfg);
+	
+	//! Implement shape::draw().
+	void draw(surface& canvas,
+		const game_logic::map_formula_callable& variables);
+
+private:
+	unsigned x_, y_;
+	unsigned w_, h_;
+
+	std::string
+		x_formula_,
+		y_formula_,
+		w_formula_,
+		h_formula_;
+
+	SDL_Rect src_clip_;
+	SDL_Rect dst_clip_;
+	surface image_;
+
+	bool stretch_;
+};
+
+timage::timage(const config& cfg) :
+	x_(0),
+	y_(0),
+	w_(0),
+	h_(0),
+	x_formula_(""),
+	y_formula_(""),
+	w_formula_(""),
+	h_formula_(""),
+	src_clip_(),
+	dst_clip_(),
+	image_(),
+	stretch_(utils::string_bool(cfg["stretch"]))
+{
+/*WIKI
+ * [image]
+ * Definition of an image.
+ * Keys: 
+ *     x (f_unsigned = 0)              The x coordinate of the top left corner.
+ *     y (f_unsigned = 0)              The y coordinate of the top left corner.
+ *     w (f_unsigned = 0)              The width of the image, if not zero the
+ *                                     image will be scaled to the desired width.
+ *     h (f_unsigned = 0)              The height of the image, if not zero the
+ *                                     image will be scaled to the desired height.
+ *     stretch (bool = false)          Border images often need to be either 
+ *                                     stretched in the width or the height. If
+ *                                     that's the case use stretch. It only works
+ *                                     if only the heigth or the width is not zero.
+ *                                     It will copy the first pixel the the others.
+ *     name (string = "")              The name of the image.
+ *     debug = (string = "")           Debug message to show upon creation
+ *                                     this message is not stored.
+ *
+ * Variables:
+ * See [line].
+ *
+ * [/image]
+ */
+
+	read_possible_formula(cfg["x"], x_, x_formula_);
+	read_possible_formula(cfg["y"], y_, y_formula_);
+	read_possible_formula(cfg["w"], w_, w_formula_);
+	read_possible_formula(cfg["h"], h_, h_formula_);
+
+	image_.assign(image::get_image(image::locator(cfg["name"])));
+	src_clip_ = create_rect(0, 0, image_->w, image_->h);
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_G_P << "Image: found debug message '" << debug << "'.\n";
+	}
+}
+
+void timage::draw(surface& canvas,
+	const game_logic::map_formula_callable& variables)
+{
+	DBG_G_D << "Image: draw.\n";
+
+	if(!x_formula_.empty()) {
+		DBG_G_D << "Image: execute x formula '" << x_formula_ << "'.\n";
+		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
+	}
+
+	if(!y_formula_.empty()) {
+		DBG_G_D << "Image: execute y formula '" << y_formula_ << "'.\n";
+		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
+	}
+
+	if(!w_formula_.empty()) {
+		DBG_G_D << "Image: execute width formula '" << w_formula_ << "'.\n";
+		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
+	}
+
+	if(!h_formula_.empty()) {
+		DBG_G_D << "Image: execute height formula '" << h_formula_ << "'.\n";
+		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
+	}
+
+	// Copy the data to local variables to avoid overwriting the originals.
+	SDL_Rect src_clip = src_clip_;
+	SDL_Rect dst_clip = dst_clip_;
+	dst_clip.x = x_;
+	dst_clip.y = y_;
+	unsigned w = w_;
+	unsigned h = h_;
+	surface surf;
+
+	// Test whether we need to scale and do the scaling if needed.
+	if(w || h) {
+		bool done = false;
+		bool stretch = stretch_ && (!!w ^ !!h);
+		if(!w) {
+			if(stretch) { 
+				DBG_G_D << "Image: vertical stretch from " << image_->w 
+					<< ',' << image_->h << " to a height of " << h << ".\n";
+
+				surf = stretch_surface_vertical(image_, h);	
+				done = true;
+			}
+			w = image_->w;
+		}
+
+		if(!h) {
+			if(stretch) { 
+				DBG_G_D << "Image: horizontal stretch from " << image_->w 
+					<< ',' << image_->h << " to a width of " << w << ".\n";
+
+				surf = stretch_surface_horizontal(image_, w);	
+				done = true;
+			}
+			h = image_->h;
+		}
+
+		if(!done) {
+
+			DBG_G_D << "Image: scaling from " << image_->w 
+				<< ',' << image_->h << " to " << w << ',' << h << ".\n";
+
+			surf = scale_surface(image_, w, h);
+		}
+		src_clip.w = w;
+		src_clip.h = h;
+	} else {
+		surf = image_;
+	}
+
+	SDL_BlitSurface(surf, &src_clip, canvas, &dst_clip);
+}
+
+
+
+//! Definition of a text shape.
+class ttext : public tcanvas::tshape
+{
+public:
+	ttext(const config& cfg);
+	
+	//! Implement shape::draw().
+	void draw(surface& canvas,
+		const game_logic::map_formula_callable& variables);
+
+private:
+	unsigned x_, y_;
+	unsigned w_, h_;
+
+	std::string
+		x_formula_,
+		y_formula_,
+		w_formula_,
+		h_formula_;
+
+	unsigned font_size_;
+	Uint32 colour_;
+	t_string text_;
+	std::string text_formula_; 
+};
+
+ttext::ttext(const config& cfg) :
+	x_(0),
+	y_(0),
+	w_(0),
+	h_(0),
+	x_formula_(""),
+	y_formula_(""),
+	w_formula_(""),
+	h_formula_(""),
+	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
+	colour_(decode_colour(cfg["colour"])),
+	text_(""),
+	text_formula_("")
+{
+
+/*WIKI
+ * [text]
+ * Definition of text.
+ * Keys: 
+ *     x (f_unsigned = 0)              The x coordinate of the top left corner.
+ *     y (f_unsigned = 0)              The y coordinate of the top left corner.
+ *     w (f_unsigned = 0)              The width of the rectangle.
+ *     h (f_unsigned = 0)              The height of the rectangle.
+ *     font_size (unsigned = 0)        The size of the font to draw in.
+ *     colour (colour = "")            The colour of the text.
+ *     text (tstring = "")             The text to draw (translatable).
+ *     debug = (string = "")           Debug message to show upon creation
+ *                                     this message is not stored.
+ *
+ * NOTE there's no option of font style yet, alignment can be done with the
+ * forumulas.
+ *
+ * Variables:
+ *     text_width unsigned             The width of the rendered text.
+ *     text_height unsigned            The height of the renedered text.
+ * And also the ones defined in [line].
+ *
+ * [/text]
+ */
+
+	read_possible_formula(cfg["x"], x_, x_formula_);
+	read_possible_formula(cfg["y"], y_, y_formula_);
+	read_possible_formula(cfg["w"], w_, w_formula_);
+	read_possible_formula(cfg["h"], h_, h_formula_);
+	read_possible_formula(cfg["text"], text_, text_formula_);
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_G_P << "Text: found debug message '" << debug << "'.\n";
+	}
+}
+
+void ttext::draw(surface& canvas,
+	const game_logic::map_formula_callable& variables)
+{
+
+	assert(variables.has_key("text"));
+
+	// We first need to determine the size of the text which need the rendered 
+	// text. So resolve and render the text first and then start to resolve
+	// the other formulas.
+	if(!text_formula_.empty()) {
+		DBG_G_D << "Text: execute text formula '" << text_formula_ << "'.\n";
+		text_ = t_string(game_logic::formula(text_formula_).execute(variables).as_string());
+	}
+
+	if(text_.empty()) {
+		DBG_G_D << "Text: no text to render, leave.\n";
+		return;
+	}
+
+	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
+	surface surf(font::get_rendered_text(text_, font_size_, col, TTF_STYLE_NORMAL));
+	assert(surf);
+
+	game_logic::map_formula_callable local_variables(variables);
+	local_variables.add("text_width", variant(surf->w));
+	local_variables.add("text_height", variant(surf->h));
+
+
+	//@todo formulas are now recalculated every draw cycle which is a 
+	// bit silly unless there has been a resize. So to optimize we should
+	// use an extra flag or do the calculation in a separate routine.
+	if(!x_formula_.empty()) {
+		DBG_G_D << "Text: execute x formula '" << x_formula_ << "'.\n";
+		x_ = game_logic::formula(x_formula_).execute(local_variables).as_int();
+	}
+
+	if(!y_formula_.empty()) {
+		DBG_G_D << "Text: execute y formula '" << y_formula_ << "'.\n";
+		y_ = game_logic::formula(y_formula_).execute(local_variables).as_int();
+	}
+
+	if(!w_formula_.empty()) {
+		DBG_G_D << "Text: execute width formula '" << w_formula_ << "'.\n";
+		w_ = game_logic::formula(w_formula_).execute(local_variables).as_int();
+	}
+
+	if(!h_formula_.empty()) {
+		DBG_G_D << "Text: execute height formula '" << h_formula_ << "'.\n";
+		h_ = game_logic::formula(h_formula_).execute(local_variables).as_int();
+	}
+
+	DBG_G_D << "Text: drawing text '" << text_
+		<< "' drawn from " << x_ << ',' << y_
+		<< " width " << w_ << " height " << h_ 
+		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+
+	VALIDATE(x_ < canvas->w && y_ < canvas->h, _("Text doesn't start on canvas."));
+
+	// A text might be to long and will be clipped.
+	if(surf->w > w_) {
+		WRN_G_D << "Text: text is too wide for the canvas and will be clipped.\n";
+	}
+	
+	if(surf->h > h_) {
+		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
+	}
+
+	//FIXME make sure text is rendered properly.
+	//
+	// A hack to make the letters show up a bit readable it does however
+	// clear the back ground. This needs to be fixed but don't want to stall
+	// development too long on it.
+	SDL_SetAlpha(surf, 0, 0);
+
+	SDL_Rect dst = { x_, y_, canvas->w, canvas->h };
+	SDL_BlitSurface(surf, 0, canvas, &dst);
+}
+
+
+
+} // namespace
+
+
+
 tcanvas::tcanvas() :
 	shapes_(),
 	w_(0),
@@ -295,553 +967,5 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	}
 }
 
-tcanvas::tline::tline(const config& cfg) :
-	x1_(0),
-	y1_(0),
-	x2_(0),
-	y2_(0),
-	x1_formula_(),
-	y1_formula_(),
-	x2_formula_(),
-	y2_formula_(),
-	colour_(decode_colour(cfg["colour"])),
-	thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
-{
-/*WIKI
- * [line]
- * Definition of a line.
- * Keys: 
- *     x1 (f_unsigned = 0)             The x coordinate of the startpoint.
- *     y1 (f_unsigned = 0)             The y coordinate of the startpoint.
- *     x2 (f_unsigned = 0)             The x coordinate of the endpoint.
- *     y2 (f_unsigned = 0)             The y coordinate of the endpoint.
- *     colour (widget = "")            The colour of the line.
- *     thickness = (unsigned = 0)      The thickness of the line if 0 nothing
- *                                     is drawn.
- *     debug = (string = "")           Debug message to show upon creation
- *                                     this message is not stored.
- *
- * Variables:
- *     width unsigned                  The width of the canvas.
- *     height unsigned                 The height of the canvas.
- *     text tstring                    The text to render on the widget.
- *
- * Note when drawing the valid coordinates are:
- * 0 -> width - 1
- * 0 -> height -1
- *
- * Drawing outside this area will result in unpredicatable results including
- * crashing. (That should be fixed, when encountered.)
- *
- * [/line]
- */
-
-/*WIKI
- * This code can be used by a parser to generate the wiki page
- * structure
- * [tag name]
- * param type_info description
- *
- * param                               Name of the parameter.
- * 
- * type_info = ( type = default_value) The info about a optional parameter.
- * type_info = ( type )                The info about a mandatory parameter
- * type_info = [ type_info ]           The info about a conditional parameter 
- *                                     description should explain the reason.
- *
- * description                         Description of the parameter.
- *
- *
- *
- * types
- * unsigned                            Unsigned number (positive whole numbers
- *                                     and zero).
- * f_unsigned                          Unsinged number or formula returning an
- *                                     unsigned number.
- * int                                 Signed number (whole numbers).
- * f_int                               Signed number or formula returning an
- *                                     signed number.
- * bool                                A boolean value accepts the normal 
- *                                     values as the rest of the game.
- * string                              A text.
- * tstring                             A translatable string.
- * f_tstring                           Formula returning a translatable string.
- *
- * colour                              A string which constains the colour, this
- *                                     a group of 4 numbers between 0 and 255
- *                                     separated by a comma. The numbers are red
- *                                     component, green component, blue 
- *                                     component and alpha. A colour of 0 is not
- *                                     available. An alpha of 0 is fully 
- *                                     transparent. Ommitted values are set to 0.
- *
- *
- * Formulas are a funtion between brackets, that way the engine can see whether
- * there is standing a plain number or a formula eg:
- * 0     A value of zero
- * (0)   A formula returning zero
- *
- * When formulas are available the text should state the available variables
- * which are available in that function.
- */
-
-	read_possible_formula(cfg["x1"], x1_, x1_formula_);
-	read_possible_formula(cfg["y1"], y1_, y1_formula_);
-	read_possible_formula(cfg["x2"], x2_, x2_formula_);
-	read_possible_formula(cfg["y2"], y2_, y2_formula_);
-
-	const std::string& debug = (cfg["debug"]);
-	if(!debug.empty()) {
-		DBG_G_P << "Line: found debug message '" << debug << "'.\n";
-	}
-
-}
-
-void tcanvas::tline::draw(surface& canvas,
-	const game_logic::map_formula_callable& variables)
-{
-	//@todo formulas are now recalculated every draw cycle which is a 
-	// bit silly unless there has been a resize. So to optimize we should
-	// use an extra flag or do the calculation in a separate routine.
-	if(!x1_formula_.empty()) {
-		DBG_G_D << "Line: execute x1 formula '" << x1_formula_ << "'.\n";
-		x1_ = game_logic::formula(x1_formula_).execute(variables).as_int();
-	}
-
-	if(!y1_formula_.empty()) {
-		DBG_G_D << "Line: execute y1 formula '" << y1_formula_ << "'.\n";
-		y1_ = game_logic::formula(y1_formula_).execute(variables).as_int();
-	}
-
-	if(!x2_formula_.empty()) {
-		DBG_G_D << "Line: execute x2 formula '" << x2_formula_ << "'.\n";
-		x2_ = game_logic::formula(x2_formula_).execute(variables).as_int();
-	}
-
-	if(!y2_formula_.empty()) {
-		DBG_G_D << "Line: execute y2 formula '" << y2_formula_ << "'.\n";
-		y2_ = game_logic::formula(y2_formula_).execute(variables).as_int();
-	}
-
-	DBG_G_D << "Line: draw from " 
-		<< x1_ << ',' << y1_ << " to " << x2_ << ',' << y2_ 
-		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
-
-	VALIDATE(x1_ < canvas->w && x2_ < canvas->w && y1_ < canvas->h 
-		&& y2_ < canvas->h, _("Line doesn't fit on canvas."));
-
-	// FIXME respect the thickness.
-
-	// now draw the line we use Bresenham's algorithm, which doesn't
-	// support antialiasing. The advantage is that it's easy for testing.
-	
-	// lock the surface
-	surface_lock locker(canvas);
-	if(x1_ > x2_) {
-		// invert points
-		draw_line(canvas, colour_, x2_, y2_, x1_, y1_);
-	} else {
-		draw_line(canvas, colour_, x1_, y1_, x2_, y2_);
-	}
-	
-}
-
-tcanvas::trectangle::trectangle(const config& cfg) :
-	x_(0),
-	y_(0),
-	w_(0),
-	h_(0),
-	x_formula_(),
-	y_formula_(),
-	w_formula_(),
-	h_formula_(),
-	border_thickness_(lexical_cast_default<unsigned>(cfg["border_thickness"])),
-	border_colour_(decode_colour(cfg["border_colour"])),
-	fill_colour_(decode_colour(cfg["fill_colour"]))
-{
-/*WIKI
- * [rectangle]
- * Definition of a rectangle.
- * Keys: 
- *     x (f_unsigned = 0)              The x coordinate of the top left corner.
- *     y (f_unsigned = 0)              The y coordinate of the top left corner.
- *     w (f_unsigned = 0)              The width of the rectangle.
- *     h (f_unsigned = 0)              The height of the rectangle.
- *     border_thickness (unsigned = 0) The thickness of the border if the 
- *                                     thickness is zero it's not drawn.
- *     border_colour (colour = "")     The colour of the border if empty it's
- *                                     not drawn.
- *     fill_colour (colour = "")       The colour of the interior if ommitted
- *                                     it's not drawn.
- *     debug = (string = "")           Debug message to show upon creation
- *                                     this message is not stored.
- *
- * Variables:
- * See [line].
- *
- * [/rectangle]
- */
-	read_possible_formula(cfg["x"], x_, x_formula_);
-	read_possible_formula(cfg["y"], y_, y_formula_);
-	read_possible_formula(cfg["w"], w_, w_formula_);
-	read_possible_formula(cfg["h"], h_, h_formula_);
-
-	if(border_colour_ == 0) {
-		border_thickness_ = 0;
-	}
-
-	const std::string& debug = (cfg["debug"]);
-	if(!debug.empty()) {
-		DBG_G_P << "Rectangle: found debug message '" << debug << "'.\n";
-	}
-}
-
-void tcanvas::trectangle::draw(surface& canvas,
-	const game_logic::map_formula_callable& variables)
-{
-
-	//@todo formulas are now recalculated every draw cycle which is a 
-	// bit silly unless there has been a resize. So to optimize we should
-	// use an extra flag or do the calculation in a separate routine.
-	if(!x_formula_.empty()) {
-		DBG_G_D << "Rectangle: execute x formula '" << x_formula_ << "'.\n";
-		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
-	}
-
-	if(!y_formula_.empty()) {
-		DBG_G_D << "Rectangle: execute y formula '" << y_formula_ << "'.\n";
-		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
-	}
-
-	if(!w_formula_.empty()) {
-		DBG_G_D << "Rectangle: execute width formula '" << w_formula_ << "'.\n";
-		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
-	}
-
-	if(!h_formula_.empty()) {
-		DBG_G_D << "Rectangle: execute height formula '" << h_formula_ << "'.\n";
-		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
-	}
-
-	DBG_G_D << "Rectangle: draw from " << x_ << ',' << y_
-		<< " width " << w_ << " height " << h_ 
-		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
-
-	VALIDATE(x_ < canvas->w && x_ + w_ <= canvas->w && y_ < canvas->h 
-		&& y_ + h_ <= canvas->h, _("Rectangle doesn't fit on canvas."));
-
-
-	surface_lock locker(canvas);
-
-	// draw the border
-	for(unsigned i = 0; i < border_thickness_; ++i) {
-
-		const unsigned left = x_ + i;
-		const unsigned right = left + w_ - (i * 2) - 1;
-		const unsigned top = y_ + i;
-		const unsigned bottom = top + h_ - (i * 2) - 1;
-
-		// top horizontal (left -> right)
-		draw_line(canvas, border_colour_, left, top, right, top);
-
-		// right vertical (top -> bottom)
-		draw_line(canvas, border_colour_, right, top, right, bottom);
-
-		// bottom horizontal (left -> right)
-		draw_line(canvas, border_colour_, left, bottom, right, bottom);
-
-		// left vertical (top -> bottom)
-		draw_line(canvas, border_colour_, left, top, left, bottom);
-
-	}
-
-	// The fill_rect_alpha code below fails, can't remember the exact cause
-	// so use the slow line drawing method to fill the rect.
-	if(fill_colour_) {
-		
-		const unsigned left = x_ + border_thickness_;
-		const unsigned right = left + w_ - (2 * border_thickness_) - 1;
-		const unsigned top = y_ + border_thickness_;
-		const unsigned bottom = top + h_ - (2 * border_thickness_);
-
-		for(unsigned i = top; i < bottom; ++i) {
-			
-			draw_line(canvas, fill_colour_, left, i, right, i);
-		}
-	}
-/*
-	const unsigned left = x_ + border_thickness_ + 1;
-	const unsigned top = y_ + border_thickness_ + 1;
-	const unsigned width = w_ - (2 * border_thickness_) - 2;
-	const unsigned height = h_ - (2 * border_thickness_) - 2;
-	SDL_Rect rect = create_rect(left, top, width, height);
-
-	const Uint32 colour = fill_colour_ & 0xFFFFFF00;
-	const Uint8 alpha = fill_colour_ & 0xFF;
-
-	// fill
-	fill_rect_alpha(rect, colour, alpha, canvas);
-	canvas = blend_surface(canvas, 255, 0xAAAA00);	
-*/	
-}
-
-tcanvas::timage::timage(const config& cfg) :
-	x_(0),
-	y_(0),
-	w_(0),
-	h_(0),
-	x_formula_(""),
-	y_formula_(""),
-	w_formula_(""),
-	h_formula_(""),
-	src_clip_(),
-	dst_clip_(),
-	image_(),
-	stretch_(utils::string_bool(cfg["stretch"]))
-{
-/*WIKI
- * [image]
- * Definition of an image.
- * Keys: 
- *     x (f_unsigned = 0)              The x coordinate of the top left corner.
- *     y (f_unsigned = 0)              The y coordinate of the top left corner.
- *     w (f_unsigned = 0)              The width of the image, if not zero the
- *                                     image will be scaled to the desired width.
- *     h (f_unsigned = 0)              The height of the image, if not zero the
- *                                     image will be scaled to the desired height.
- *     stretch (bool = false)          Border images often need to be either 
- *                                     stretched in the width or the height. If
- *                                     that's the case use stretch. It only works
- *                                     if only the heigth or the width is not zero.
- *                                     It will copy the first pixel the the others.
- *     name (string = "")              The name of the image.
- *     debug = (string = "")           Debug message to show upon creation
- *                                     this message is not stored.
- *
- * Variables:
- * See [line].
- *
- * [/image]
- */
-
-	read_possible_formula(cfg["x"], x_, x_formula_);
-	read_possible_formula(cfg["y"], y_, y_formula_);
-	read_possible_formula(cfg["w"], w_, w_formula_);
-	read_possible_formula(cfg["h"], h_, h_formula_);
-
-	image_.assign(image::get_image(image::locator(cfg["name"])));
-	src_clip_ = create_rect(0, 0, image_->w, image_->h);
-
-	const std::string& debug = (cfg["debug"]);
-	if(!debug.empty()) {
-		DBG_G_P << "Image: found debug message '" << debug << "'.\n";
-	}
-}
-
-void tcanvas::timage::draw(surface& canvas,
-	const game_logic::map_formula_callable& variables)
-{
-	DBG_G_D << "Image: draw.\n";
-
-	if(!x_formula_.empty()) {
-		DBG_G_D << "Image: execute x formula '" << x_formula_ << "'.\n";
-		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
-	}
-
-	if(!y_formula_.empty()) {
-		DBG_G_D << "Image: execute y formula '" << y_formula_ << "'.\n";
-		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
-	}
-
-	if(!w_formula_.empty()) {
-		DBG_G_D << "Image: execute width formula '" << w_formula_ << "'.\n";
-		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
-	}
-
-	if(!h_formula_.empty()) {
-		DBG_G_D << "Image: execute height formula '" << h_formula_ << "'.\n";
-		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
-	}
-
-	// Copy the data to local variables to avoid overwriting the originals.
-	SDL_Rect src_clip = src_clip_;
-	SDL_Rect dst_clip = dst_clip_;
-	dst_clip.x = x_;
-	dst_clip.y = y_;
-	unsigned w = w_;
-	unsigned h = h_;
-	surface surf;
-
-	// Test whether we need to scale and do the scaling if needed.
-	if(w || h) {
-		bool done = false;
-		bool stretch = stretch_ && (!!w ^ !!h);
-		if(!w) {
-			if(stretch) { 
-				DBG_G_D << "Image: vertical stretch from " << image_->w 
-					<< ',' << image_->h << " to a height of " << h << ".\n";
-
-				surf = stretch_surface_vertical(image_, h);	
-				done = true;
-			}
-			w = image_->w;
-		}
-
-		if(!h) {
-			if(stretch) { 
-				DBG_G_D << "Image: horizontal stretch from " << image_->w 
-					<< ',' << image_->h << " to a width of " << w << ".\n";
-
-				surf = stretch_surface_horizontal(image_, w);	
-				done = true;
-			}
-			h = image_->h;
-		}
-
-		if(!done) {
-
-			DBG_G_D << "Image: scaling from " << image_->w 
-				<< ',' << image_->h << " to " << w << ',' << h << ".\n";
-
-			surf = scale_surface(image_, w, h);
-		}
-		src_clip.w = w;
-		src_clip.h = h;
-	} else {
-		surf = image_;
-	}
-
-	SDL_BlitSurface(surf, &src_clip, canvas, &dst_clip);
-}
-
-tcanvas::ttext::ttext(const config& cfg) :
-	x_(0),
-	y_(0),
-	w_(0),
-	h_(0),
-	x_formula_(""),
-	y_formula_(""),
-	w_formula_(""),
-	h_formula_(""),
-	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
-	colour_(decode_colour(cfg["colour"])),
-	text_(""),
-	text_formula_("")
-{
-
-/*WIKI
- * [text]
- * Definition of text.
- * Keys: 
- *     x (f_unsigned = 0)              The x coordinate of the top left corner.
- *     y (f_unsigned = 0)              The y coordinate of the top left corner.
- *     w (f_unsigned = 0)              The width of the rectangle.
- *     h (f_unsigned = 0)              The height of the rectangle.
- *     font_size (unsigned = 0)        The size of the font to draw in.
- *     colour (colour = "")            The colour of the text.
- *     text (tstring = "")             The text to draw (translatable).
- *     debug = (string = "")           Debug message to show upon creation
- *                                     this message is not stored.
- *
- * NOTE there's no option of font style yet, alignment can be done with the
- * forumulas.
- *
- * Variables:
- *     text_width unsigned             The width of the rendered text.
- *     text_height unsigned            The height of the renedered text.
- * And also the ones defined in [line].
- *
- * [/text]
- */
-
-	read_possible_formula(cfg["x"], x_, x_formula_);
-	read_possible_formula(cfg["y"], y_, y_formula_);
-	read_possible_formula(cfg["w"], w_, w_formula_);
-	read_possible_formula(cfg["h"], h_, h_formula_);
-	read_possible_formula(cfg["text"], text_, text_formula_);
-
-	const std::string& debug = (cfg["debug"]);
-	if(!debug.empty()) {
-		DBG_G_P << "Text: found debug message '" << debug << "'.\n";
-	}
-}
-
-void tcanvas::ttext::draw(surface& canvas,
-	const game_logic::map_formula_callable& variables)
-{
-
-	assert(variables.has_key("text"));
-
-	// We first need to determine the size of the text which need the rendered 
-	// text. So resolve and render the text first and then start to resolve
-	// the other formulas.
-	if(!text_formula_.empty()) {
-		DBG_G_D << "Text: execute text formula '" << text_formula_ << "'.\n";
-		text_ = t_string(game_logic::formula(text_formula_).execute(variables).as_string());
-	}
-
-	if(text_.empty()) {
-		DBG_G_D << "Text: no text to render, leave.\n";
-		return;
-	}
-
-	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
-	surface surf(font::get_rendered_text(text_, font_size_, col, TTF_STYLE_NORMAL));
-	assert(surf);
-
-	game_logic::map_formula_callable local_variables(variables);
-	local_variables.add("text_width", variant(surf->w));
-	local_variables.add("text_height", variant(surf->h));
-
-
-	//@todo formulas are now recalculated every draw cycle which is a 
-	// bit silly unless there has been a resize. So to optimize we should
-	// use an extra flag or do the calculation in a separate routine.
-	if(!x_formula_.empty()) {
-		DBG_G_D << "Text: execute x formula '" << x_formula_ << "'.\n";
-		x_ = game_logic::formula(x_formula_).execute(local_variables).as_int();
-	}
-
-	if(!y_formula_.empty()) {
-		DBG_G_D << "Text: execute y formula '" << y_formula_ << "'.\n";
-		y_ = game_logic::formula(y_formula_).execute(local_variables).as_int();
-	}
-
-	if(!w_formula_.empty()) {
-		DBG_G_D << "Text: execute width formula '" << w_formula_ << "'.\n";
-		w_ = game_logic::formula(w_formula_).execute(local_variables).as_int();
-	}
-
-	if(!h_formula_.empty()) {
-		DBG_G_D << "Text: execute height formula '" << h_formula_ << "'.\n";
-		h_ = game_logic::formula(h_formula_).execute(local_variables).as_int();
-	}
-
-	DBG_G_D << "Text: drawing text '" << text_
-		<< "' drawn from " << x_ << ',' << y_
-		<< " width " << w_ << " height " << h_ 
-		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
-
-	VALIDATE(x_ < canvas->w && y_ < canvas->h, _("Text doesn't start on canvas."));
-
-	// A text might be to long and will be clipped.
-	if(surf->w > w_) {
-		WRN_G_D << "Text: text is too wide for the canvas and will be clipped.\n";
-	}
-	
-	if(surf->h > h_) {
-		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
-	}
-
-	//FIXME make sure text is rendered properly.
-	//
-	// A hack to make the letters show up a bit readable it does however
-	// clear the back ground. This needs to be fixed but don't want to stall
-	// development too long on it.
-	SDL_SetAlpha(surf, 0, 0);
-
-	SDL_Rect dst = { x_, y_, canvas->w, canvas->h };
-	SDL_BlitSurface(surf, 0, canvas, &dst);
-}
 
 } // namespace gui2
