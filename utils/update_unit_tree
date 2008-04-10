@@ -40,17 +40,24 @@ fi
 #echo 'svn update...'
 #svn update
 #svn status
-cd data/tools/unit_tree/ || exit 1
+if [ "$VERSION" == "trunk"]; then
+	data/tools/wmlunits -d data/ -o $SITE/temp || exit 1
+	rm -rf $SITE/$VERSION
+	# move the generated files to their proper place
+	mv $SITE/temp $SITE/$VERSION
+else
+	cd data/tools/unit_tree/ || exit 1
+	# make sure we update with the right version
+	sed -i -e "s/\(my \$version = '\).*\(';\)/\1$VERSION\2/" units.pl
+	./units.pl || exit 1
+	rm -rf $SITE/$VERSION
+	# move the generated files to their proper place
+	mv files $SITE/$VERSION
+	cp -p templates/units.css $SITE/$VERSION
+	# revert to prevent future conflicts if $version changed
+	svn revert units.pl
+fi
 if [ "$VERSION" != "trunk" ] && ! [ $(grep "<p><a href=\"$VERSION/index.html\">$VERSION ($BRANCH)</a></p>" $SITE/index.html) ]; then
 	# insert a link for the new version
 	sed -i -e "s,\(<p><a href=\"trunk/index.html\">Trunk</a></p>\),\1\n<p><a href=\"$VERSION/index.html\">$VERSION ($BRANCH)</a></p>," $SITE/index.html
 fi
-# make sure we update with the right version
-sed -i -e "s/\(my \$version = '\).*\(';\)/\1$VERSION\2/" units.pl
-./units.pl || exit 1
-rm -rf $SITE/$VERSION
-# move the generated files to their proper place
-mv files $SITE/$VERSION
-cp -p templates/units.css $SITE/$VERSION
-# revert to prevent future conflicts if $version changed
-svn revert units.pl
