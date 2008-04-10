@@ -119,6 +119,13 @@ bool operator<(const surface& a, const surface& b);
 
 surface make_neutral_surface(surface const &surf);
 surface create_optimized_surface(surface const &surf);
+
+//! Streches a surface in the horizontal direction.
+surface stretch_surface_horizontal(const surface& surf, const unsigned w);
+
+//! Streches a surface in the vertical direction.
+surface stretch_surface_vertical(const surface& surf, const unsigned h);
+
 surface scale_surface(surface const &surf, int w, int h);
 surface scale_surface_blended(surface const &surf, int w, int h);
 surface adjust_surface_colour(surface const &surf, int r, int g, int b);

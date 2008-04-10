@@ -147,6 +147,8 @@ public:
 		SDL_Rect src_clip_;
 		SDL_Rect dst_clip_;
 		surface image_;
+
+		bool stretch_;
 	};
 
 	//! Definition of a text shape.

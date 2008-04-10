@@ -596,7 +596,8 @@ tcanvas::timage::timage(const config& cfg) :
 	h_formula_(""),
 	src_clip_(),
 	dst_clip_(),
-	image_()
+	image_(),
+	stretch_(utils::string_bool(cfg["stretch"]))
 {
 /*WIKI
  * [image]
@@ -608,6 +609,11 @@ tcanvas::timage::timage(const config& cfg) :
  *                                     image will be scaled to the desired width.
  *     h (f_unsigned = 0)              The height of the image, if not zero the
  *                                     image will be scaled to the desired height.
+ *     stretch (bool = false)          Border images often need to be either 
+ *                                     stretched in the width or the height. If
+ *                                     that's the case use stretch. It only works
+ *                                     if only the heigth or the width is not zero.
+ *                                     It will copy the first pixel the the others.
  *     name (string = "")              The name of the image.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
@@ -668,18 +674,37 @@ void tcanvas::timage::draw(surface& canvas,
 
 	// Test whether we need to scale and do the scaling if needed.
 	if(w || h) {
+		bool done = false;
+		bool stretch = stretch_ && (!!w ^ !!h);
 		if(!w) {
+			if(stretch) { 
+				DBG_G_D << "Image: vertical stretch from " << image_->w 
+					<< ',' << image_->h << " to a height of " << h << ".\n";
+
+				surf = stretch_surface_vertical(image_, h);	
+				done = true;
+			}
 			w = image_->w;
 		}
 
 		if(!h) {
+			if(stretch) { 
+				DBG_G_D << "Image: horizontal stretch from " << image_->w 
+					<< ',' << image_->h << " to a width of " << w << ".\n";
+
+				surf = stretch_surface_horizontal(image_, w);	
+				done = true;
+			}
 			h = image_->h;
 		}
 
-		DBG_G_D << "Image: scaling from " << image_->w 
-			<< ',' << image_->h << " to " << w << ',' << h << ".\n";
+		if(!done) {
 
-		surf = scale_surface(image_, w, h);
+			DBG_G_D << "Image: scaling from " << image_->w 
+				<< ',' << image_->h << " to " << w << ',' << h << ".\n";
+
+			surf = scale_surface(image_, w, h);
+		}
 		src_clip.w = w;
 		src_clip.h = h;
 	} else {

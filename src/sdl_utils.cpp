@@ -151,6 +151,119 @@ surface create_optimized_surface(surface const &surf)
 	return result;
 }
 
+//! Streches a surface in the horizontal direction.
+//!
+//! The stretches a surface it uses the first pixel in the horizontal
+//! direction of the original surface and copies that to the destination.
+//! This means only the first column of the original is used for the destination.
+//! @param surf              The source surface.
+//! @param w                 The width of the resulting surface.
+//!
+//! @return                  An optimized surface.
+//!                          returned. 
+//! @retval 0                Returned upon error.
+//! @retval surf             Returned if w == surf->w.
+surface stretch_surface_horizontal(const surface& surf, const unsigned w)
+{
+	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
+	assert(SDL_ALPHA_TRANSPARENT==0);
+
+	if(surf == NULL)
+		return NULL;
+
+	if(w == surf->w) {
+		return surf;
+	}
+	assert(w > 0);
+
+	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE, 
+		w, surf->h, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+		
+	surface src(make_neutral_surface(surf));
+	// Now both surfaces are always in the "neutral" pixel format
+
+	if(src == NULL || dst == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
+		return NULL;
+	}
+
+	{
+		// Extra scoping used for the surface_lock.
+		surface_lock src_lock(src);
+		surface_lock dst_lock(dst);
+
+		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
+		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+
+		for(unsigned y = 0; y < src->h; ++y) {
+			const Uint32 pixel = src_pixels [y * src->w];
+			for(unsigned x = 0; x < w; ++x) {
+
+				*dst_pixels++ = pixel;
+			
+			}
+		}
+	}
+
+	return create_optimized_surface(dst);
+}
+
+//! Streches a surface in the vertical direction.
+//!
+//! The stretches a surface it uses the first pixel in the vertical
+//! direction of the original surface and copies that to the destination.
+//! This means only the first row of the original is used for the destination.
+//! @param surf              The source surface.
+//! @param h                 The height of the resulting surface.
+//!
+//! @return                  An optimized surface.
+//!                          returned. 
+//! @retval 0                Returned upon error.
+//! @retval surf             Returned if h == surf->h.
+surface stretch_surface_vertical(const surface& surf, const unsigned h)
+{
+	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
+	assert(SDL_ALPHA_TRANSPARENT==0);
+
+	if(surf == NULL)
+		return NULL;
+
+	if(h == surf->h) {
+		return surf;
+	}
+	assert(h > 0);
+
+	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE, 
+		surf->w, h, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+		
+	surface src(make_neutral_surface(surf));
+	// Now both surfaces are always in the "neutral" pixel format
+
+	if(src == NULL || dst == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
+		return NULL;
+	}
+
+	{
+		// Extra scoping used for the surface_lock.
+		surface_lock src_lock(src);
+		surface_lock dst_lock(dst);
+
+		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
+		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+
+		for(unsigned y = 0; y < h; ++y) {
+			for(unsigned x = 0; x < src->w; ++x) {
+
+				*dst_pixels++ = src_pixels[x];
+			}
+		}
+	}
+
+	return create_optimized_surface(dst);
+}
+
+
 // NOTE: Don't pass this function 0 scaling arguments.
 surface scale_surface(surface const &surf, int w, int h)
 {
