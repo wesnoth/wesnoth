@@ -723,7 +723,13 @@ class HTMLOutput:
             specials = attack.get_first("specials")
             if specials:
                 for special in specials.children():
-                    s.append(special.name)
+                    sname = special.get_text_val("name")
+                    if sname:
+                        s.append(sname)
+                    else:
+                        sys.stderr.write(
+                            "Warning: Weapon special %s has no name for %s.\n" % (
+                            special.name, uid))
             s = "<br/>".join(s)
             write("<td>%s</td>" % s)
             
