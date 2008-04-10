@@ -354,7 +354,7 @@ class Parser:
 
         # It's OK for user directories not to exist.
         # Nothing prefixed with ~ can be a macro.
-        if macro.startswith("~"):
+        if macro.startswith("~") and not self.verbose:
             return None
 
         # No file was found, try to do macro expansion. First, push the
@@ -425,11 +425,18 @@ class Parser:
                     raise Error(self, "Not enough parameters for macro %s. " % name +
                         "%d given but %d needed %s." % (len(params) - 1,
                             len(macro.params), macro.params))
-                if self.verbose:
-                    s = "Replacing {%s} with %s" % (macro.params[i], params[1 + i])
+                rep = params[1 + i]
+                # Handle gettext replacement here, since inside the macro
+                # the textdomain will be wrong.
+                if self.gettext and rep and rep[0] == "_":
+                    q = rep.find('"')
+                    qe = rep.find('"', q + 1)
+                    rep = self.gettext(self.textdomain, rep[q + 1:qe])
+                    rep = '"' + rep + '"'
+                if self.verbose:                        
+                    s = "Replacing {%s} with %s" % (macro.params[i], rep)
                     print s.encode("utf8")
-                text = text.replace("{%s}" % macro.params[i],
-                    params[1 + i])
+                text = text.replace("{%s}" % macro.params[i], rep)
 
             if text:
                 self.push_text(name, text, initial_textdomain = macro.textdomain)
@@ -707,6 +714,10 @@ if __name__ == "__main__":
 
     if options.verbose:
         wmlparser.verbose = True
+        def gt(domain, x):
+            print "gettext: '%s' '%s'" % (domain, x)
+            return x
+        wmlparser.gettext = gt
     
     wmlparser.do_preprocessor_logic = True
 
