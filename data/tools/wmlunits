@@ -67,7 +67,6 @@ class ImageCollector:
 	    else:
 	        bases = ["campaigns/%s/images" % c,
 	        "%s/campaigns/%s/images" % (userdir, c),
-	        "%s/%s/images" % (userdir, c),
 	        "campaigns/%s/images/units" % c,
 	        "core/images"]
 	    for base in bases:
@@ -199,7 +198,7 @@ class UnitList:
         #enddef
         #define RANDOM_SIDE
         #enddef
-        {~campaigns/%s.cfg}{~/%s.cfg}""" % (addon, addon), addon)
+        {~campaigns/%s.cfg}""" % addon, addon)
 
     def get_base_unit(self, unit):
         b = unit.get_first("base_unit")
