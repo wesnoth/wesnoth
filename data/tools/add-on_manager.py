@@ -15,7 +15,7 @@ import wesnoth.wmlparser as wmlparser
 from wesnoth.campaignserver_client import CampaignClient
 
 if __name__ == "__main__":
-    import optparse, subprocess
+    import optparse
     try: import psyco
     except ImportError: pass
     else: psyco.full()
