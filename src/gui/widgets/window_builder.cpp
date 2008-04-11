@@ -212,7 +212,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
 	width(lexical_cast_default<unsigned>(cfg["width"])),
 	height(lexical_cast_default<unsigned>(cfg["height"])),
-	definition(cfg["window_definition"]),
+	definition(cfg["definition"]),
 	grid(0) //new tbuilder_grid(cfg.child("grid")))
 {
 /*WIKI
@@ -223,7 +223,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *     width = (unsigned)            Width of the window to show.
  *     height = (unsigned)           Height of the window to show.
  *
- *     window_definition = (string = "default")
+ *     definition = (string = "default")
  *                                   Definition of the window which we want to show.
  *
  *     [grid]                        The grid with the widgets to show.
@@ -359,7 +359,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 tbuilder_control::tbuilder_control(const config& cfg) :
 	tbuilder_widget(cfg),
 	id(cfg["id"]),
-	definition(cfg["button_definition"]),
+	definition(cfg["definition"]),
 	label(cfg["label"])
 {
 
