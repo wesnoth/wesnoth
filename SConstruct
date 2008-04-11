@@ -1009,8 +1009,8 @@ if "update-po4a" in COMMAND_LINE_TARGETS:
     NoClean(po4a_targets)
     for lingua in linguas:
         po4a_targets.append(os.path.join("doc/manual", "manual." + lingua + ".xml"))
-    env.Command(po4a_targets, "doc/manual/manual.en.xml",
-                              """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manual.cfg""", chdir = "po/wesnoth-manual")
+    env.AlwaysBuild(env.Command(po4a_targets, "doc/manual/manual.en.xml",
+                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manual.cfg""", chdir = "po/wesnoth-manual"))
     env.Alias("update-po4a", "po/wesnoth-manual/wesnoth-manual.pot")
 
     linguas = parse_po4a_cfg(File("po/wesnoth-manpages/wesnoth-manpages.cfg").get_contents())["po4a_langs"].split()
@@ -1021,8 +1021,8 @@ if "update-po4a" in COMMAND_LINE_TARGETS:
     NoClean(po4a_targets)
     for lingua in linguas:
         po4a_targets += [ os.path.join("doc/man", lingua, x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ]
-    env.Command(po4a_targets, [ os.path.join("doc/man", x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ],
-                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manpages.cfg""", chdir = "po/wesnoth-manpages")
+    env.AlwaysBuild(env.Command(po4a_targets, [ os.path.join("doc/man", x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ],
+                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manpages.cfg""", chdir = "po/wesnoth-manpages"))
     env.Alias("update-po4a", "po/wesnoth-manpages/wesnoth-manpages.pot")
 
 #
@@ -1257,20 +1257,23 @@ env.Precious(uninstall)
 #
 # Making the manual
 #
-if "manual" in COMMAND_LINE_TARGETS:
+if "manual" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS:
     env.Command("doc/manual/manual.en.xml", "doc/manual/manual.txt",
     	"asciidoc -b docbook -d book -n -a toc -o $TARGET $SOURCE && dos2unix $TARGET")
-    env.Command("doc/manual/manual.en.html", "doc/manual/manual.en.xml",
-    	"""xsltproc --nonet \
-        --stringparam callout.graphics 0 \
-        --stringparam navig.graphics 0 \
-        --stringparam admon.textlabel 1 \
-        --stringparam admon.graphics 0 \
-        --stringparam html.stylesheet ./styles/manual.css \
-        /etc/asciidoc/docbook-xsl/xhtml.xsl \
-        $SOURCE > $TARGET \
-        """)
-    env.Alias("manual", "doc/manual/manual.en.html")
+    manuals = glob("doc/manual/*.xml")
+    if "doc/manual/manual.en.xml" not in manuals: manuals.append("doc/manual/manual.en.xml")
+    for manual in manuals:
+        html = env.Command(manual.replace(".xml", ".html"), manual,
+    	    """xsltproc --nonet \
+            --stringparam callout.graphics 0 \
+            --stringparam navig.graphics 0 \
+            --stringparam admon.textlabel 1 \
+            --stringparam admon.graphics 0 \
+            --stringparam html.stylesheet ./styles/manual.css \
+            /etc/asciidoc/docbook-xsl/xhtml.xsl \
+            $SOURCE > $TARGET \
+            """)
+        env.Alias("manual", html)
 
 #
 # Making a distribution tarball.
