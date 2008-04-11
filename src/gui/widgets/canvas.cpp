@@ -26,6 +26,8 @@
 #include "serialization/parser.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/static_assert.hpp>
+
 #include <algorithm>
 #include <cassert>
 
@@ -69,63 +71,133 @@ static Uint32 decode_colour(const std::string& colour)
 	return result;
 }
 
-//! Reads a value as formula or value depending on the contents.
-//!
-//! A value can either be formula or a text containing a value, this function
-//! determines the type and sets either the formula or the value part.
-//! Formulas always start with a opening bracket '('. 
-//!
-//! @param str               The text with the value or formula. (Since there
-//!                          are some problems with tempories when a value is
-//!                          taken from a (v)config it uses a copy instead of
-//!                          a reference.)
-//! @param value             The value part, if the text is a value this will
-//!                          be modified otherwise left untouched.
-//! @param formula           The value part, if the text is a formula this will
-//!                          be modified otherwise left untouched.
-template <class T>
-static void read_possible_formula(const std::string str, T& value, std::string& formula)
-{
-	if(str.empty()) {
-		return;
-	}
-
-	if(str[0] == '(') {
-		formula = str;
-	} else {
-		value = lexical_cast_default<T>(str);
-	}
-}
-
-static void read_possible_formula(const std::string str, t_string& value, std::string& formula)
-{
-	if(str.empty()) {
-		return;
-	}
-
-	if(str[0] == '(') {
-		formula = str;
-	} else {
-		value = t_string(str);
-	}
-}
-
-static void read_possible_formula(const std::string str, std::string& value, std::string& formula)
-{
-	if(str.empty()) {
-		return;
-	}
-
-	if(str[0] == '(') {
-		formula = str;
-	} else {
-		value = str;
-	}
-}
-
 namespace gui2{
 
 namespace {
+
+//! Template class can hold a value or a formula calculating the value.
+template <class T>
+class tformula
+{
+public:	
+	tformula<T>(const std::string& str) : 
+		formula_(),
+		value_()
+	{
+		if(str.empty()) {
+			return;
+		}
+
+		if(str[0] == '(') {
+			formula_ = str;
+		} else {
+			convert(str);
+		}
+
+	}
+
+	//! Returns the value, can only be used it the data is no formula.
+	//! 
+	//! Another option would be to cache the output of the formula in value_
+	//! and always allow this function. But for now decided that the caller
+	//! needs to do the caching. It might be changed later.
+	T operator()() const
+	{
+		assert(!has_formula());
+		return value_;
+	}
+	
+	//! Returns the value, can always be used.
+	T operator() (const game_logic::map_formula_callable& variables) const
+	{
+		if(has_formula()) {
+			DBG_G_D << "Formula: execute '" << formula_ << "'.\n";
+			return execute(variables);
+		} else {
+			return value_;
+		}
+	}
+
+	//! Determine whether the class contains a formula.
+	bool has_formula() const { return !formula_.empty(); }
+
+private:
+	
+	//! Converts the string ot the template value.
+	void convert(const std::string& str);
+
+	T execute(const game_logic::map_formula_callable& variables) const;
+
+	//! If there is a formula it's stored in this string, empty if no formula.
+	std::string formula_;
+
+	//! If no formula it contains the value.
+	T value_;
+
+};
+
+template<>
+bool tformula<bool>::execute(const game_logic::map_formula_callable& variables) const
+{
+	return game_logic::formula(formula_).execute(variables).as_bool();
+}
+
+template<>
+int tformula<int>::execute(const game_logic::map_formula_callable& variables) const
+{
+	return game_logic::formula(formula_).execute(variables).as_int();
+}
+
+template<>
+unsigned tformula<unsigned>::execute(const game_logic::map_formula_callable& variables) const
+{
+	return game_logic::formula(formula_).execute(variables).as_int();
+}
+
+template<>
+std::string tformula<std::string>::execute(const game_logic::map_formula_callable& variables) const
+{
+	return game_logic::formula(formula_).execute(variables).as_string();
+}
+
+template<>
+t_string tformula<t_string>::execute(const game_logic::map_formula_callable& variables) const
+{
+	return game_logic::formula(formula_).execute(variables).as_string();
+}
+
+template<class T>
+T tformula<T>::execute(const game_logic::map_formula_callable& variables) const
+{
+	// Every type needs it's own execute function avoid instantiation of the
+	// default execute.
+	BOOST_STATIC_ASSERT(sizeof(T) == 0);
+	return T();
+}
+
+template<>
+void tformula<bool>::convert(const std::string& str)
+{
+	value_ = utils::string_bool(str);
+}
+
+template<>
+void tformula<std::string>::convert(const std::string& str)
+{
+	value_ = str;
+}
+
+template<>
+void tformula<t_string>::convert(const std::string& str)
+{
+	value_ = str;
+}
+
+template<class T>
+void tformula<T>::convert(const std::string& str)
+{ 
+	value_ = lexical_cast_default<T>(str); 
+}
 
 //! Definition of a line shape.
 class tline : public tcanvas::tshape
@@ -138,14 +210,11 @@ public:
 		const game_logic::map_formula_callable& variables);
 
 private:
-	unsigned x1_, y1_;
-	unsigned x2_, y2_;
-
-	std::string
-		x1_formula_,
-		y1_formula_,
-		x2_formula_,
-		y2_formula_;
+	tformula<unsigned> 
+		x1_, 
+		y1_,
+		x2_,
+		y2_;
 
 	Uint32 colour_;
 	//! The thickness of the line:
@@ -156,14 +225,10 @@ private:
 };
 
 tline::tline(const config& cfg) :
-	x1_(0),
-	y1_(0),
-	x2_(0),
-	y2_(0),
-	x1_formula_(),
-	y1_formula_(),
-	x2_formula_(),
-	y2_formula_(),
+	x1_(cfg["x1"]),
+	y1_(cfg["y1"]),
+	x2_(cfg["x2"]),
+	y2_(cfg["y2"]),
 	colour_(decode_colour(cfg["colour"])),
 	thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
 {
@@ -245,11 +310,6 @@ tline::tline(const config& cfg) :
  * which are available in that function.
  */
 
-	read_possible_formula(cfg["x1"], x1_, x1_formula_);
-	read_possible_formula(cfg["y1"], y1_, y1_formula_);
-	read_possible_formula(cfg["x2"], x2_, x2_formula_);
-	read_possible_formula(cfg["y2"], y2_, y2_formula_);
-
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_G_P << "Line: found debug message '" << debug << "'.\n";
@@ -263,32 +323,18 @@ void tline::draw(surface& canvas,
 	//@todo formulas are now recalculated every draw cycle which is a 
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
-	if(!x1_formula_.empty()) {
-		DBG_G_D << "Line: execute x1 formula '" << x1_formula_ << "'.\n";
-		x1_ = game_logic::formula(x1_formula_).execute(variables).as_int();
-	}
-
-	if(!y1_formula_.empty()) {
-		DBG_G_D << "Line: execute y1 formula '" << y1_formula_ << "'.\n";
-		y1_ = game_logic::formula(y1_formula_).execute(variables).as_int();
-	}
-
-	if(!x2_formula_.empty()) {
-		DBG_G_D << "Line: execute x2 formula '" << x2_formula_ << "'.\n";
-		x2_ = game_logic::formula(x2_formula_).execute(variables).as_int();
-	}
-
-	if(!y2_formula_.empty()) {
-		DBG_G_D << "Line: execute y2 formula '" << y2_formula_ << "'.\n";
-		y2_ = game_logic::formula(y2_formula_).execute(variables).as_int();
-	}
+	
+	const unsigned x1 = x1_(variables);
+	const unsigned y1 = y1_(variables);
+	const unsigned x2 = x2_(variables);
+	const unsigned y2 = y2_(variables);
 
 	DBG_G_D << "Line: draw from " 
-		<< x1_ << ',' << y1_ << " to " << x2_ << ',' << y2_ 
+		<< x1 << ',' << y1 << " to " << x2 << ',' << y2 
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(x1_ < canvas->w && x2_ < canvas->w && y1_ < canvas->h 
-		&& y2_ < canvas->h, _("Line doesn't fit on canvas."));
+	VALIDATE(x1 < canvas->w && x2 < canvas->w && y1 < canvas->h 
+		&& y2 < canvas->h, _("Line doesn't fit on canvas."));
 
 	// FIXME respect the thickness.
 
@@ -297,13 +343,12 @@ void tline::draw(surface& canvas,
 	
 	// lock the surface
 	surface_lock locker(canvas);
-	if(x1_ > x2_) {
+	if(x1 > x2) {
 		// invert points
-		draw_line(canvas, colour_, x2_, y2_, x1_, y1_);
+		draw_line(canvas, colour_, x2, y2, x1, y1);
 	} else {
-		draw_line(canvas, colour_, x1_, y1_, x2_, y2_);
+		draw_line(canvas, colour_, x1, y1, x2, y2);
 	}
-	
 }
 
 
@@ -319,14 +364,11 @@ public:
 		const game_logic::map_formula_callable& variables);
 
 private:
-	unsigned x_, y_;
-	unsigned w_, h_;
-
-	std::string
-		x_formula_,
-		y_formula_,
-		w_formula_,
-		h_formula_;
+	tformula<unsigned> 
+		x_, 
+		y_,
+		w_,
+		h_;
 
 	//! Border thickness if 0 the fill colour is used for the entire 
 	//! widget.
@@ -337,14 +379,10 @@ private:
 };
 
 trectangle::trectangle(const config& cfg) :
-	x_(0),
-	y_(0),
-	w_(0),
-	h_(0),
-	x_formula_(),
-	y_formula_(),
-	w_formula_(),
-	h_formula_(),
+	x_(cfg["x"]),
+	y_(cfg["y"]),
+	w_(cfg["w"]),
+	h_(cfg["h"]),
 	border_thickness_(lexical_cast_default<unsigned>(cfg["border_thickness"])),
 	border_colour_(decode_colour(cfg["border_colour"])),
 	fill_colour_(decode_colour(cfg["fill_colour"]))
@@ -371,11 +409,6 @@ trectangle::trectangle(const config& cfg) :
  *
  * [/rectangle]
  */
-	read_possible_formula(cfg["x"], x_, x_formula_);
-	read_possible_formula(cfg["y"], y_, y_formula_);
-	read_possible_formula(cfg["w"], w_, w_formula_);
-	read_possible_formula(cfg["h"], h_, h_formula_);
-
 	if(border_colour_ == 0) {
 		border_thickness_ = 0;
 	}
@@ -393,32 +426,17 @@ void trectangle::draw(surface& canvas,
 	//@todo formulas are now recalculated every draw cycle which is a 
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
-	if(!x_formula_.empty()) {
-		DBG_G_D << "Rectangle: execute x formula '" << x_formula_ << "'.\n";
-		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
-	}
+	const unsigned x = x_(variables);
+	const unsigned y = y_(variables);
+	const unsigned w = w_(variables);
+	const unsigned h = h_(variables);
 
-	if(!y_formula_.empty()) {
-		DBG_G_D << "Rectangle: execute y formula '" << y_formula_ << "'.\n";
-		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
-	}
-
-	if(!w_formula_.empty()) {
-		DBG_G_D << "Rectangle: execute width formula '" << w_formula_ << "'.\n";
-		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
-	}
-
-	if(!h_formula_.empty()) {
-		DBG_G_D << "Rectangle: execute height formula '" << h_formula_ << "'.\n";
-		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
-	}
-
-	DBG_G_D << "Rectangle: draw from " << x_ << ',' << y_
-		<< " width " << w_ << " height " << h_ 
+	DBG_G_D << "Rectangle: draw from " << x << ',' << y
+		<< " width " << w << " height " << h 
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(x_ < canvas->w && x_ + w_ <= canvas->w && y_ < canvas->h 
-		&& y_ + h_ <= canvas->h, _("Rectangle doesn't fit on canvas."));
+	VALIDATE(x < canvas->w && x + w <= canvas->w && y < canvas->h 
+		&& y + h <= canvas->h, _("Rectangle doesn't fit on canvas."));
 
 
 	surface_lock locker(canvas);
@@ -426,10 +444,10 @@ void trectangle::draw(surface& canvas,
 	// draw the border
 	for(unsigned i = 0; i < border_thickness_; ++i) {
 
-		const unsigned left = x_ + i;
-		const unsigned right = left + w_ - (i * 2) - 1;
-		const unsigned top = y_ + i;
-		const unsigned bottom = top + h_ - (i * 2) - 1;
+		const unsigned left = x + i;
+		const unsigned right = left + w - (i * 2) - 1;
+		const unsigned top = y + i;
+		const unsigned bottom = top + h - (i * 2) - 1;
 
 		// top horizontal (left -> right)
 		draw_line(canvas, border_colour_, left, top, right, top);
@@ -449,10 +467,10 @@ void trectangle::draw(surface& canvas,
 	// so use the slow line drawing method to fill the rect.
 	if(fill_colour_) {
 		
-		const unsigned left = x_ + border_thickness_;
-		const unsigned right = left + w_ - (2 * border_thickness_) - 1;
-		const unsigned top = y_ + border_thickness_;
-		const unsigned bottom = top + h_ - (2 * border_thickness_);
+		const unsigned left = x + border_thickness_;
+		const unsigned right = left + w - (2 * border_thickness_) - 1;
+		const unsigned top = y + border_thickness_;
+		const unsigned bottom = top + h - (2 * border_thickness_);
 
 		for(unsigned i = top; i < bottom; ++i) {
 			
@@ -488,14 +506,11 @@ public:
 		const game_logic::map_formula_callable& variables);
 
 private:
-	unsigned x_, y_;
-	unsigned w_, h_;
-
-	std::string
-		x_formula_,
-		y_formula_,
-		w_formula_,
-		h_formula_;
+	tformula<unsigned>
+		x_, 
+		y_,
+		w_,
+		h_;
 
 	SDL_Rect src_clip_;
 	SDL_Rect dst_clip_;
@@ -505,14 +520,10 @@ private:
 };
 
 timage::timage(const config& cfg) :
-	x_(0),
-	y_(0),
-	w_(0),
-	h_(0),
-	x_formula_(""),
-	y_formula_(""),
-	w_formula_(""),
-	h_formula_(""),
+	x_(cfg["x"]),
+	y_(cfg["y"]),
+	w_(cfg["w"]),
+	h_(cfg["h"]),
 	src_clip_(),
 	dst_clip_(),
 	image_(),
@@ -543,11 +554,6 @@ timage::timage(const config& cfg) :
  * [/image]
  */
 
-	read_possible_formula(cfg["x"], x_, x_formula_);
-	read_possible_formula(cfg["y"], y_, y_formula_);
-	read_possible_formula(cfg["w"], w_, w_formula_);
-	read_possible_formula(cfg["h"], h_, h_formula_);
-
 	image_.assign(image::get_image(image::locator(cfg["name"])));
 	src_clip_ = create_rect(0, 0, image_->w, image_->h);
 
@@ -562,33 +568,19 @@ void timage::draw(surface& canvas,
 {
 	DBG_G_D << "Image: draw.\n";
 
-	if(!x_formula_.empty()) {
-		DBG_G_D << "Image: execute x formula '" << x_formula_ << "'.\n";
-		x_ = game_logic::formula(x_formula_).execute(variables).as_int();
-	}
-
-	if(!y_formula_.empty()) {
-		DBG_G_D << "Image: execute y formula '" << y_formula_ << "'.\n";
-		y_ = game_logic::formula(y_formula_).execute(variables).as_int();
-	}
-
-	if(!w_formula_.empty()) {
-		DBG_G_D << "Image: execute width formula '" << w_formula_ << "'.\n";
-		w_ = game_logic::formula(w_formula_).execute(variables).as_int();
-	}
-
-	if(!h_formula_.empty()) {
-		DBG_G_D << "Image: execute height formula '" << h_formula_ << "'.\n";
-		h_ = game_logic::formula(h_formula_).execute(variables).as_int();
-	}
+	//@todo formulas are now recalculated every draw cycle which is a 
+	// bit silly unless there has been a resize. So to optimize we should
+	// use an extra flag or do the calculation in a separate routine.
+	const unsigned x = x_(variables);
+	const unsigned y = y_(variables);
+	unsigned w = w_(variables);
+	unsigned h = h_(variables);
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
 	SDL_Rect dst_clip = dst_clip_;
-	dst_clip.x = x_;
-	dst_clip.y = y_;
-	unsigned w = w_;
-	unsigned h = h_;
+	dst_clip.x = x;
+	dst_clip.y = y;
 	surface surf;
 
 	// Test whether we need to scale and do the scaling if needed.
@@ -646,34 +638,26 @@ public:
 		const game_logic::map_formula_callable& variables);
 
 private:
-	unsigned x_, y_;
-	unsigned w_, h_;
-
-	std::string
-		x_formula_,
-		y_formula_,
-		w_formula_,
-		h_formula_;
+	tformula<unsigned>
+		x_, 
+		y_,
+		w_,
+		h_;
 
 	unsigned font_size_;
 	Uint32 colour_;
-	t_string text_;
-	std::string text_formula_; 
+
+	tformula<t_string> text_;
 };
 
 ttext::ttext(const config& cfg) :
-	x_(0),
-	y_(0),
-	w_(0),
-	h_(0),
-	x_formula_(""),
-	y_formula_(""),
-	w_formula_(""),
-	h_formula_(""),
+	x_(cfg["x"]),
+	y_(cfg["y"]),
+	w_(cfg["w"]),
+	h_(cfg["h"]),
 	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
 	colour_(decode_colour(cfg["colour"])),
-	text_(""),
-	text_formula_("")
+	text_(cfg["text"])
 {
 
 /*WIKI
@@ -701,12 +685,6 @@ ttext::ttext(const config& cfg) :
  * [/text]
  */
 
-	read_possible_formula(cfg["x"], x_, x_formula_);
-	read_possible_formula(cfg["y"], y_, y_formula_);
-	read_possible_formula(cfg["w"], w_, w_formula_);
-	read_possible_formula(cfg["h"], h_, h_formula_);
-	read_possible_formula(cfg["text"], text_, text_formula_);
-
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_G_P << "Text: found debug message '" << debug << "'.\n";
@@ -722,18 +700,15 @@ void ttext::draw(surface& canvas,
 	// We first need to determine the size of the text which need the rendered 
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
-	if(!text_formula_.empty()) {
-		DBG_G_D << "Text: execute text formula '" << text_formula_ << "'.\n";
-		text_ = t_string(game_logic::formula(text_formula_).execute(variables).as_string());
-	}
+	const t_string text = text_(variables);
 
-	if(text_.empty()) {
+	if(text.empty()) {
 		DBG_G_D << "Text: no text to render, leave.\n";
 		return;
 	}
 
 	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
-	surface surf(font::get_rendered_text(text_, font_size_, col, TTF_STYLE_NORMAL));
+	surface surf(font::get_rendered_text(text, font_size_, col, TTF_STYLE_NORMAL));
 	assert(surf);
 
 	game_logic::map_formula_callable local_variables(variables);
@@ -744,39 +719,24 @@ void ttext::draw(surface& canvas,
 	//@todo formulas are now recalculated every draw cycle which is a 
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
-	if(!x_formula_.empty()) {
-		DBG_G_D << "Text: execute x formula '" << x_formula_ << "'.\n";
-		x_ = game_logic::formula(x_formula_).execute(local_variables).as_int();
-	}
+	const unsigned x = x_(local_variables);
+	const unsigned y = y_(local_variables);
+	const unsigned w = w_(local_variables);
+	const unsigned h = h_(local_variables);
 
-	if(!y_formula_.empty()) {
-		DBG_G_D << "Text: execute y formula '" << y_formula_ << "'.\n";
-		y_ = game_logic::formula(y_formula_).execute(local_variables).as_int();
-	}
-
-	if(!w_formula_.empty()) {
-		DBG_G_D << "Text: execute width formula '" << w_formula_ << "'.\n";
-		w_ = game_logic::formula(w_formula_).execute(local_variables).as_int();
-	}
-
-	if(!h_formula_.empty()) {
-		DBG_G_D << "Text: execute height formula '" << h_formula_ << "'.\n";
-		h_ = game_logic::formula(h_formula_).execute(local_variables).as_int();
-	}
-
-	DBG_G_D << "Text: drawing text '" << text_
-		<< "' drawn from " << x_ << ',' << y_
-		<< " width " << w_ << " height " << h_ 
+	DBG_G_D << "Text: drawing text '" << text
+		<< "' drawn from " << x << ',' << y
+		<< " width " << w << " height " << h 
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(x_ < canvas->w && y_ < canvas->h, _("Text doesn't start on canvas."));
+	VALIDATE(x < canvas->w && y < canvas->h, _("Text doesn't start on canvas."));
 
 	// A text might be to long and will be clipped.
-	if(surf->w > w_) {
+	if(surf->w > w) {
 		WRN_G_D << "Text: text is too wide for the canvas and will be clipped.\n";
 	}
 	
-	if(surf->h > h_) {
+	if(surf->h > h) {
 		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
 	}
 
@@ -787,15 +747,11 @@ void ttext::draw(surface& canvas,
 	// development too long on it.
 	SDL_SetAlpha(surf, 0, 0);
 
-	SDL_Rect dst = { x_, y_, canvas->w, canvas->h };
+	SDL_Rect dst = { x, y, canvas->w, canvas->h };
 	SDL_BlitSurface(surf, 0, canvas, &dst);
 }
 
-
-
 } // namespace
-
-
 
 tcanvas::tcanvas() :
 	shapes_(),
