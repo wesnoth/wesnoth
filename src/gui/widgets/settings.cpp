@@ -529,6 +529,8 @@ tresolution_definition_* get_button(const std::string& definition)
 		button = current_gui->second.buttons.find(definition);
 
 	if(button == current_gui->second.buttons.end()) {
+		LOG_G << "Button: definition '" 
+			<< definition << "' not found, falling back to 'default'.\n";
 		button = current_gui->second.buttons.find("default");
 		assert(button != current_gui->second.buttons.end());
 	}
@@ -557,6 +559,8 @@ tresolution_definition_* get_label(const std::string& definition)
 		label = current_gui->second.labels.find(definition);
 
 	if(label == current_gui->second.labels.end()) {
+		LOG_G << "Label: definition '" 
+			<< definition << "' not found, falling back to 'default'.\n";
 		label = current_gui->second.labels.find("default");
 		assert(label != current_gui->second.labels.end());
 	}
@@ -585,6 +589,8 @@ tresolution_definition_* get_text_box(const std::string& definition)
 		text_box = current_gui->second.text_boxs.find(definition);
 
 	if(text_box == current_gui->second.text_boxs.end()) {
+		LOG_G << "Text_box: definition '" 
+			<< definition << "' not found, falling back to 'default'.\n";
 		text_box = current_gui->second.text_boxs.find("default");
 		assert(text_box != current_gui->second.text_boxs.end());
 	}
@@ -613,6 +619,8 @@ std::vector<twindow_definition::tresolution>::const_iterator get_window(const st
 		window = current_gui->second.windows.find(definition);
 
 	if(window == current_gui->second.windows.end()) {
+		LOG_G << "Window: definition '" 
+			<< definition << "' not found, falling back to 'default'.\n";
 		window = current_gui->second.windows.find("default");
 		assert(window != current_gui->second.windows.end());
 	}
