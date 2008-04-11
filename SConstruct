@@ -1006,12 +1006,24 @@ if "update-po4a" in COMMAND_LINE_TARGETS:
     for lingua in linguas:
         po4a_targets.append(os.path.join("po/wesnoth-manual", lingua + ".po"))
     env.Precious(po4a_targets)
+    NoClean(po4a_targets)
     for lingua in linguas:
         po4a_targets.append(os.path.join("doc/manual", "manual." + lingua + ".xml"))
     env.Command(po4a_targets, "doc/manual/manual.en.xml",
                               """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manual.cfg""", chdir = "po/wesnoth-manual")
     env.Alias("update-po4a", "po/wesnoth-manual/wesnoth-manual.pot")
 
+    linguas = parse_po4a_cfg(File("po/wesnoth-manpages/wesnoth-manpages.cfg").get_contents())["po4a_langs"].split()
+    po4a_targets = ["po/wesnoth-manpages/wesnoth-manpages.pot"]
+    for lingua in linguas:
+        po4a_targets.append(os.path.join("po/wesnoth-manpages", lingua + ".po"))
+    env.Precious(po4a_targets)
+    NoClean(po4a_targets)
+    for lingua in linguas:
+        po4a_targets += [ os.path.join("doc/man", lingua, x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ]
+    env.Command(po4a_targets, [ os.path.join("doc/man", x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ],
+                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manpages.cfg""", chdir = "po/wesnoth-manpages")
+    env.Alias("update-po4a", "po/wesnoth-manpages/wesnoth-manpages.pot")
 
 #
 # Dummy locales
