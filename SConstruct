@@ -991,6 +991,29 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     env.Alias("update-po", [])
 
 #
+# Manual and man pages translation
+#
+
+def parse_po4a_cfg(cfg_file):
+    cfg_file = cfg_file.replace("\\\n", "")
+    po4a_cfg_re = re.compile(r"^\[(.*)\] (.*)$", re.MULTILINE)
+    opts = dict(po4a_cfg_re.findall(cfg_file))
+    return opts
+
+if "update-po4a" in COMMAND_LINE_TARGETS:
+    linguas = parse_po4a_cfg(File("po/wesnoth-manual/wesnoth-manual.cfg").get_contents())["po4a_langs"].split()
+    po4a_targets = ["po/wesnoth-manual/wesnoth-manual.pot"]
+    for lingua in linguas:
+        po4a_targets.append(os.path.join("po/wesnoth-manual", lingua + ".po"))
+    env.Precious(po4a_targets)
+    for lingua in linguas:
+        po4a_targets.append(os.path.join("doc/manual", "manual." + lingua + ".xml"))
+    env.Command(po4a_targets, "doc/manual/manual.en.xml",
+                              """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manual.cfg""", chdir = "po/wesnoth-manual")
+    env.Alias("update-po4a", "po/wesnoth-manual/wesnoth-manual.pot")
+
+
+#
 # Dummy locales
 #
 
