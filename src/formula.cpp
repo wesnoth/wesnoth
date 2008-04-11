@@ -675,7 +675,13 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			return parse_expression(i1+1,i2-1,symbols);
 		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list definition, or a operator 
 				const token* tok = i2-2;
-				while (tok->type != TOKEN_LSQUARE && tok != i1) {
+				int square_parens = 0;
+				while ( (tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
+						if (tok->type == TOKEN_RSQUARE) {
+							square_parens++;
+						} else if(tok->type == TOKEN_LSQUARE) {
+							square_parens--;
+						}
 						--tok;
 				}	
 				if (tok->type == TOKEN_LSQUARE) {
