@@ -1218,6 +1218,7 @@ install_env.Alias("install-cutter", Install(bindir, cutter))
 install_env.Alias("install-exploder", Install(bindir, exploder))
 
 # Compute things for default install based on which targets have been created.
+install_env.Alias('install', [])
 for installable in ('wesnoth', 'wesnoth_editor',
                     'wesnothd', 'campaignd',
                     'exploder', 'cutter'):
