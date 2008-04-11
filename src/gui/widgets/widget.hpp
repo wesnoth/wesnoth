@@ -203,10 +203,10 @@ public:
 	//! Is the widget dirty?
 	virtual bool dirty() const { return dirty_; }
 
-	//! Gets the minimum size for the object should != 0,0.
+	//! Gets the minimum size for the object, 0,0 means no size required.
 	virtual tpoint get_minimum_size() const = 0;	
 
-	//! Gets the best size for the object should != 0,0.
+	//! Gets the best size for the object, 0,0 means no size required.
 	virtual tpoint get_best_size() const = 0;	
 
 	//! Gets the best size for an object, 0,0 means no limits.
