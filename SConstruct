@@ -93,6 +93,7 @@ You can make the following special build targets:
     uninstall = uninstall all executables, tools, modules, and servers.
     pot-update = generate gettext message catalog templates and merge them with localized message catalogs
     update-po = merge message catalog templates with localized message catalogs for particular lingua
+    update-po4a = update translations of manual and manpages
     af bg ca ... = linguas for update-po
     dist = make distribution tarball as wesnoth.tar.bz2 (*).
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
@@ -100,7 +101,7 @@ You can make the following special build targets:
     wesnoth-bundle = make Mac OS application bundle from game (*)
     wesnoth-editor-bundle = make Mac OS application bundle from editor (*).
     sanity-check = run a pre-release sanity check on the distribution.
-    manual.en.html = HTML version of the English-language manual.
+    manual = regenerate English-language manual and, possibly, localized manuals if appropriate xmls exist.
 
 Files made by targets maked '(*)' are cleaned by cleaned by 'scons -c all'
 
