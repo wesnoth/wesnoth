@@ -1213,7 +1213,7 @@ if env["nls"]:
 #
 deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + daemons) \
             + [Delete(datadir), Delete(pythonlib), Delete(fifodir), Delete(docdir)] \
-            + map(lambda x: Delete(os.path.join(mandir, "man6", x)), [ "wesnoth.6", "wesnoth_editor.6" ]) \
+            + map(lambda x: Delete(os.path.join(mandir, "man6", x)), [ "wesnoth.6", "wesnoth_editor.6", "wesnothd.6" ]) \
             + Flatten(map(lambda mandir : map(lambda x: Delete(os.path.join(mandir, x)), [ "wesnoth.6", "wesnoth_editor.6", "wesnothd.6" ]), localized_man_dirs.values()))
 uninstall = env.Command('uninstall', '', deletions)
 env.AlwaysBuild(uninstall)
@@ -1222,10 +1222,20 @@ env.Precious(uninstall)
 #
 # Making the manual
 #
-env.Command("manual.en.xml", "doc/manual/manual.txt",
-	"asciidoc -b docbook -d book -n -a toc -o ${TARGET} ${SOURCE}")
-env.Command("manual.en.html", "manual.en.xml",
-	'xsltproc --nonet /etc/asciidoc/docbook-xsl/xhtml.xsl "${SOURCE}" >"${TARGET}"')
+if "manual" in COMMAND_LINE_TARGETS:
+    env.Command("doc/manual/manual.en.xml", "doc/manual/manual.txt",
+    	"asciidoc -b docbook -d book -n -a toc -o $TARGET $SOURCE && dos2unix $TARGET")
+    env.Command("doc/manual/manual.en.html", "doc/manual/manual.en.xml",
+    	"""xsltproc --nonet \
+        --stringparam callout.graphics 0 \
+        --stringparam navig.graphics 0 \
+        --stringparam admon.textlabel 1 \
+        --stringparam admon.graphics 0 \
+        --stringparam html.stylesheet ./styles/manual.css \
+        /etc/asciidoc/docbook-xsl/xhtml.xsl \
+        $SOURCE > $TARGET \
+        """)
+    env.Alias("manual", "doc/manual/manual.en.html")
 
 #
 # Making a distribution tarball.
