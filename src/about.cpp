@@ -49,7 +49,7 @@ void add_lines(std::vector<std::string> &res, config const &c) {
 	}
 
 	std::vector<std::string> lines = utils::split(c["text"], '\n');
-    for(std::vector<std::string>::iterator line = lines.begin();
+	for(std::vector<std::string>::iterator line = lines.begin();
 		line != lines.end(); line++) {
 		if((*line)[0] == '+' && (*line).size()>1){
 			*line = N_("+  " + (*line).substr(1,(*line).size()-1));
