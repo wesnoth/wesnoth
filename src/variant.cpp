@@ -3,7 +3,6 @@
 #include <cmath>
 #include <set>
 #include <stdlib.h>
-#include <vector>
 #include <iostream>
 #include <string.h>
 
