@@ -45,35 +45,6 @@
 
 namespace gui2 {
 
-namespace {
-	static bool initialized_ = false;
-
-
-}
-
-bool init() {
-	if(initialized_) {
-		return true;
-	}
-	
-	load_settings();
-
-	initialized_ = true;
-
-	return initialized_;
-}
-
-SDL_Rect create_rect(const tpoint& origin, const tpoint& size) 
-{ 
-	return ::create_rect(origin.x, origin.y, size.x, size.y); 
-}
-
-std::ostream &operator<<(std::ostream &stream, const tpoint& point)
-{
-	stream << point.x << ',' << point.y;
-	return stream;
-}
-
 twindow* twidget::get_window()
 {
 	// Go up into the parent tree until we find the top level

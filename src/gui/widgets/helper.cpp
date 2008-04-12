@@ -13,6 +13,8 @@
 */
 
 #include "gui/widgets/helper.hpp"
+#include "gui/widgets/settings.hpp"
+#include "serialization/string_utils.hpp"
 
 #include "log.hpp"
 
@@ -40,6 +42,34 @@
 
 namespace gui2 {
 
+namespace {
+	static bool initialized_ = false;
+}
+
+bool init() {
+	if(initialized_) {
+		return true;
+	}
+	
+	load_settings();
+
+	initialized_ = true;
+
+	return initialized_;
+}
+
+SDL_Rect create_rect(const tpoint& origin, const tpoint& size) 
+{ 
+	return ::create_rect(origin.x, origin.y, size.x, size.y); 
+}
+
+std::ostream &operator<<(std::ostream &stream, const tpoint& point)
+{
+	stream << point.x << ',' << point.y;
+	return stream;
+}
+
+
 int decode_font_style(const std::string& style)
 {
 	if(style == "bold") {
@@ -55,6 +85,24 @@ int decode_font_style(const std::string& style)
 	ERR_G << "Unknown style '" << style << "' using 'normal' instead.\n";
 
 	return TTF_STYLE_NORMAL;
+}
+
+Uint32 decode_colour(const std::string& colour)
+{
+	std::vector<std::string> fields = utils::split(colour);
+
+	// make sure we have four fields
+	while(fields.size() < 4) fields.push_back("0");
+
+	Uint32 result = 0;
+	for(int i = 0; i < 4; ++i) {
+		// shift the previous value before adding, since it's a nop on the
+		// first run there's no need for an if.
+		result = result << 8;
+		result |= lexical_cast_default<int>(fields[i]);
+	}
+
+	return result;
 }
 
 } // namespace gui2

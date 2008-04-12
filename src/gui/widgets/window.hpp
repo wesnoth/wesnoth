@@ -22,9 +22,8 @@
 #include "gui/widgets/canvas.hpp"
 #include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/grid.hpp"
+#include "gui/widgets/helper.hpp" 
 #include "gui/widgets/settings.hpp"
-// The following due to tpoint.
-#include "gui/widgets/widget.hpp" 
 
 #include "sdl_utils.hpp"
 #include "video.hpp"

@@ -16,6 +16,7 @@
 #define __GUI_WIDGETS_WIDGET_HPP_INCLUDED__
 
 #include "gui/widgets/event_handler.hpp"
+#include "gui/widgets/helper.hpp"
 #include "sdl_utils.hpp"
 
 #include "SDL.h"
@@ -24,40 +25,6 @@
 
 
 namespace gui2 {
-
-// init needs a cfg object later to init the subsystem
-bool init();
-
-struct tpoint
-{
-	tpoint(const int x_, const int y_) : 
-		x(x_),
-		y(y_) 
-		{}
-
-	int x;
-	int y;
-
-	bool operator==(const tpoint& point) const { return x == point.x && y == point.y; }
-	bool operator<(const tpoint& point) const 
-		{ return x < point.x || (x == point.x && y < point.y); }
-
-	bool operator<=(const tpoint& point) const 
-		{ return x < point.x || (x == point.x && y <= point.y); }
-		
-};
-
-
-std::ostream &operator<<(std::ostream &stream, const tpoint& point);
-
-SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
-
-struct terror 
-{
-	terror(const std::string& msg) : message(msg) {}
-
-	const std::string message;
-};
 
 //! Base class with all possible events, most widgets can ignore most of
 //! these, but they are available.

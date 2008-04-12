@@ -52,25 +52,6 @@
 #define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
 #define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
 
-static Uint32 decode_colour(const std::string& colour);
-
-static Uint32 decode_colour(const std::string& colour)
-{
-	std::vector<std::string> fields = utils::split(colour);
-
-	// make sure we have four fields
-	while(fields.size() < 4) fields.push_back("0");
-
-	Uint32 result = 0;
-	for(int i = 0; i < 4; ++i) {
-		// shift the previous value before adding, since it's a nop on the
-		// first run there's no need for an if.
-		result = result << 8;
-		result |= lexical_cast_default<int>(fields[i]);
-	}
-
-	return result;
-}
 
 namespace gui2{
 
@@ -568,7 +549,7 @@ timage::timage(const config& cfg) :
  */
 
 	image_.assign(image::get_image(image::locator(cfg["name"])));
-	src_clip_ = create_rect(0, 0, image_->w, image_->h);
+	src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
