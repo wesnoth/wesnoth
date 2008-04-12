@@ -119,7 +119,7 @@ private:
 
 	void resolve_definition();
 
-	SDL_Rect get_client_rect();
+	SDL_Rect get_client_rect() const;
 };
 
 } // namespace gui2

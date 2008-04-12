@@ -212,7 +212,7 @@ void twindow::resolve_definition()
 
 }
 
-SDL_Rect twindow::get_client_rect()
+SDL_Rect twindow::get_client_rect() const
 {
 	assert(definition_ != std::vector<twindow_definition::tresolution>::const_iterator());
 
