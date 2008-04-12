@@ -74,6 +74,7 @@ wesnoth_source = \
 	gui/widgets/label.cpp \
 	gui/widgets/settings.cpp \
 	gui/widgets/text_box.cpp \
+	gui/widgets/helper.cpp \
 	gui/widgets/widget.cpp \
 	gui/widgets/window.cpp \
 	gui/widgets/window_builder.cpp \
@@ -305,6 +306,7 @@ noinst_HEADERS = \
 	gui/widgets/label.hpp \
 	gui/widgets/settings.hpp \
 	gui/widgets/text_box.hpp \
+	gui/widgets/helper.hpp \
 	gui/widgets/widget.hpp \
 	gui/widgets/window.hpp \
 	gui/widgets/window_builder.hpp \

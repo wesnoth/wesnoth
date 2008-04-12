@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/helper.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window_builder.hpp"
@@ -333,6 +334,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
 	text_extra_width(lexical_cast_default<unsigned>(cfg["text_extra_width"])),
 	text_extra_height(lexical_cast_default<unsigned>(cfg["text_extra_height"])),
 	text_font_size(lexical_cast_default<unsigned>(cfg["text_font_size"])),
+	text_font_style(decode_font_style(cfg["text_font_style"])),
 	state()
 {
 /*WIKI
@@ -370,6 +372,9 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  *                                   The extra height needed to determine the
  *                                   minimal size for the text.
  *     text_font_size = (unsigned)   The font size, which needs to be used to 
+ *                                   determine the minimal size for the text.
+ *     text_font_style (font_style = "")  
+ *                                   The font style, which needs to be used to
  *                                   determine the minimal size for the text.
  *
  * [/resolution]

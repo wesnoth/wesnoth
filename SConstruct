@@ -559,6 +559,7 @@ libwesnoth_sources = [
     "src/gui/widgets/label.cpp",
     "src/gui/widgets/settings.cpp",
     "src/gui/widgets/text_box.cpp",
+	"src/gui/widgets/utils.cpp",
     "src/gui/widgets/widget.cpp",
     "src/gui/widgets/window.cpp",
     "src/gui/widgets/window_builder.cpp",

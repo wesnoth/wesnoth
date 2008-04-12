@@ -79,6 +79,7 @@ public:
 	unsigned text_extra_width;
 	unsigned text_extra_height;
 	unsigned text_font_size;
+	int text_font_style;
 
 	std::vector<tstate_definition> state;
 

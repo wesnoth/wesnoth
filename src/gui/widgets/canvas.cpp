@@ -22,6 +22,7 @@
 #include "formula.hpp"
 #include "image.hpp"
 #include "gettext.hpp"
+#include "gui/widgets/helper.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "wml_exception.hpp"
@@ -300,6 +301,18 @@ tline::tline(const config& cfg) :
  *                                     available. An alpha of 0 is fully 
  *                                     transparent. Ommitted values are set to 0.
  *
+ * font_style                          A string which contains the style of the
+ *                                     font:
+ *                                     * normal    normal font
+ *                                     * bold      bold font
+ *                                     * italic    italic font
+ *                                     * underline underlined font
+ *                                     Since SDL has problems combining these
+ *                                     styles only one can be picked. Once SDL
+ *                                     will allow multiple options, this type
+ *                                     will be transformed to a comma separated
+ *                                     list. If empty we default to the normal
+ *                                     style.
  *
  * Formulas are a funtion between brackets, that way the engine can see whether
  * there is standing a plain number or a formula eg:
@@ -645,6 +658,7 @@ private:
 		h_;
 
 	unsigned font_size_;
+	int font_style_;
 	Uint32 colour_;
 
 	tformula<t_string> text_;
@@ -656,6 +670,7 @@ ttext::ttext(const config& cfg) :
 	w_(cfg["w"]),
 	h_(cfg["h"]),
 	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
+	font_style_(decode_font_style(cfg["font_style"])),
 	colour_(decode_colour(cfg["colour"])),
 	text_(cfg["text"])
 {
@@ -669,13 +684,13 @@ ttext::ttext(const config& cfg) :
  *     w (f_unsigned = 0)              The width of the rectangle.
  *     h (f_unsigned = 0)              The height of the rectangle.
  *     font_size (unsigned = 0)        The size of the font to draw in.
+ *     font_style (font_style = "")    The style of the text.
  *     colour (colour = "")            The colour of the text.
  *     text (tstring = "")             The text to draw (translatable).
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
  *
- * NOTE there's no option of font style yet, alignment can be done with the
- * forumulas.
+ * NOTE alignment can be done with the forumulas.
  *
  * Variables:
  *     text_width unsigned             The width of the rendered text.
@@ -708,7 +723,7 @@ void ttext::draw(surface& canvas,
 	}
 
 	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
-	surface surf(font::get_rendered_text(text, font_size_, col, TTF_STYLE_NORMAL));
+	surface surf(font::get_rendered_text(text, font_size_, col, font_style_));
 	assert(surf);
 
 	game_logic::map_formula_callable local_variables(variables);

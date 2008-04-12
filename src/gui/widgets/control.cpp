@@ -105,7 +105,7 @@ tpoint tcontrol::get_minimum_size() const
 		return min_size;
 	}
 
-	SDL_Rect rect = font::line_size(label_, config_->text_font_size);
+	SDL_Rect rect = font::line_size(label_, config_->text_font_size, config_->text_font_style);
 	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
 	return maximum(min_size, text_size);
 }
@@ -119,7 +119,7 @@ tpoint tcontrol::get_best_size() const
 		return default_size;
 	}
 
-	SDL_Rect rect = font::line_size(label_, config_->text_font_size);
+	SDL_Rect rect = font::line_size(label_, config_->text_font_size, config_->text_font_style);
 	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
 	return maximum(default_size, text_size);
 }
