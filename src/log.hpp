@@ -20,6 +20,7 @@
 #define LOG_HPP_INCLUDED
 
 #include <iosfwd>
+#include <iostream>
 #include <string>
 #include <vector>
 
