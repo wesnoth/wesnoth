@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Branko Kokanovic, 2006.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2007-08-05 03:32+0100\n"
+"PO-Revision-Date: 2008-03-21 12:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
+"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. [tutorial]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
@@ -30,7 +30,7 @@ msgstr "Pa, kad tako veliš..."
 #. [tutorial]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:43
 msgid "Wesnoth Tutorial"
-msgstr "Tutorijal Vesnotov"
+msgstr "Podučavanje Vesnotu"
 
 #. [side]: type=Fighter, description=student
 #. [command]
@@ -111,7 +111,7 @@ msgid ""
 "For this tutorial, you are playing Konrad. "
 msgstr ""
 "\n"
-"U ovom tutorijalu vodićeš Konrada. "
+"Tokom ove obuke, vodićeš Konrada. "
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
@@ -125,13 +125,12 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:205
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "*Left click to continue..."
 msgstr ""
 "\n"
-"*Levo klikni ili pritisni taster za dalje..."
+"*Klikni levim da nastaviš..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:210
@@ -140,21 +139,21 @@ msgid ""
 "For this tutorial, you are playing Li'sar. "
 msgstr ""
 "\n"
-"U ovom tutorijalu vodićeš Lizaru. "
+"Tokom ove obuke vodićeš Lizaru. "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:409
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:509
 msgid "Left click on Konrad"
-msgstr "Levo klikni na Konrada"
+msgstr "Klikni levim na Konrada"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:217
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:410
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:510
 msgid "Left click on Li'sar"
-msgstr "Levo klikni na Lizaru"
+msgstr "Klikni levim na Lizaru"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
@@ -177,7 +176,7 @@ msgid ""
 "*Left click or any key to continue..."
 msgstr ""
 "\n"
-"*Levo klikni ili pritisni taster za dalje..."
+"*Klikni levim ili pritisni taster da nastaviš..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:241
@@ -206,7 +205,7 @@ msgstr "Pomeri Lizaru do Delfadora klikom na polje označeno sa „OVDE“."
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:263
 msgid "Left click on tile labelled HERE"
-msgstr "Levo klikni na polje gde piše OVDE"
+msgstr "Klikni levim na polje gde piše OVDE"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:298
@@ -219,7 +218,7 @@ msgstr ""
 "*Ček'!\n"
 "Ode na pogrešno mesto! Čim nestane ova poruka, možeš da pritisneš „u“ da "
 "opozoveš potez, i potom uradiš kako ti rekoh.\n"
-"*Levo klikni ili pritisni bilo koji taster za dalje..."
+"*Klikni levim ili pritisni bilo koji taster da nastaviš..."
 
 #. [message]: description=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
@@ -253,7 +252,6 @@ msgstr "Drvenka? Zar da se pretvaram kako se borim sa lutkom?!"
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:382
-#, fuzzy
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr "Dete moje, imaš 32 udarpoena i mač. Cenim da ćeš sigurno pobediti."
 
@@ -339,7 +337,6 @@ msgstr "LUTKA dobija potez?"
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:484
-#, fuzzy
 msgid ""
 "Yes: it's a magical quintain.\n"
 "See the 3-5 in its description? The first number tells you that it does "
@@ -402,7 +399,7 @@ msgstr ""
 "Sada „poseduješ“ selo — nad njim se vijori barjak tvoj, a pojaviće se i „1“ "
 "pored ikone kuće na vrhu ekrana. Sela daju zlato; u kesu ti se slivaju dva "
 "zlatnika na potez, pa još po jedan za svako selo koje je tvoje.\n"
-"*Levo klikni ili pritisni taster za dalje..."
+"*Klikni levim ili pritisni taster da nastaviš..."
 
 #. [event]
 #. [then]
@@ -417,7 +414,6 @@ msgstr "Klikni na „Gotovo“"
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
-#, fuzzy
 msgid ""
 "You're about to be healed by 8 hitpoints. But I think you're going to need "
 "some help against that quintain."
@@ -466,12 +462,12 @@ msgstr ""
 "Kad se zatekneš u zamku, možeš najamljivati u poljima njegovih zidina, tako "
 "što ćeš desno kliknuti i izabrati „Unajmi“. Ovoga jutra, daće ti se samo "
 "jedan tip jedinica na izbor, te ga izaberi.\n"
-"*Levo klikni ili pritisni taster za dalje..."
+"*Klikni levim ili pritisni taster da nastaviš..."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:613
 msgid "Right click on one castle tile and select Recruit"
-msgstr "Desno klikni na polje zamka i izaberi „Unajmi“"
+msgstr "Klikni desnim na polje zamka i izaberi „Unajmi“"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:634
@@ -487,13 +483,13 @@ msgstr ""
 "sledeći.\n"
 "Napomena: posle ove poruke, možeš preći mišem preko jedinice da vidiš njen "
 "opis desno na ekranu.\n"
-"*Levo klikni ili pritisni taster za dalje..."
+"*Klikni levim ili pritisni taster da nastaviš..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:641
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:671
 msgid "Right click on the other castle tile and Recruit another unit"
-msgstr "Desno klikni na drugo polje zamka i unajmi još jednu jedinicu"
+msgstr "Klikni desnim na drugo polje zamka i unajmi još jednu jedinicu"
 
 #. [message]: description=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:684
@@ -530,7 +526,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Left click on an Elvish Fighter"
-msgstr "Levo klikni na vilin-borca"
+msgstr "Klikni levim na vilin-borca"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
@@ -540,7 +536,7 @@ msgstr "Završi svoj potez, a onda napadni ponovo."
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:707
 msgid "Left click on the Quintain to attack it."
-msgstr "Levo klikni na drvenka da ga napadneš."
+msgstr "Klikni levim na drvenka da ga napadneš."
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:736
@@ -625,7 +621,7 @@ msgid ""
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
 "Napomena:\n"
-"Desnim klikom na jedinicu možeš videti njen detaljan opis."
+"Klikom desnim na jedinicu možeš videti njen detaljan opis."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:846
@@ -693,12 +689,11 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:914
 msgid "The quintain is dead, sirs, and I have gained more experience!"
-msgstr "Drvenko je uništen, gospodo, a ja sam skupio više iskustva!"
+msgstr "Drvenko je uništen, gospodo, a ja sakupih iskustva!"
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:923
-#, fuzzy
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful. "
@@ -737,7 +732,7 @@ msgstr "Da, još uvek isprobavam."
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:970
 msgid "No, I think I've got it."
-msgstr "Ne, mislim da sam shvatio."
+msgstr "Ne, mislim da sve shvatih."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
@@ -747,6 +742,9 @@ msgid ""
 "the state of your troops before clicking 'End Scenario' to continue to the "
 "next scenario."
 msgstr ""
+"Posle saopštenja pobede, mapa će biti zasivljena da ukaže na kraj scenarija, "
+"ali ćeš moći da ispitaš konačne položaje i stanje svoje vojske. Potom klikni "
+"na „Kraj“ da produžiš na sledeći scenario."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
 msgid ""
@@ -810,9 +808,9 @@ msgid ""
 "it will heal it by 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack: it is fairly weak itself."
 msgstr ""
-"Uz malu pomoć, može. Ako postaviš vrača pored jedinice koja se brani, lečiće "
-"je 4 udarpoena po potezu. Samo pazi da ne izložiš vrača napadu, jer je "
-"prilično slab sam za sebe."
+"Uz malu pomoć, može. Ako postaviš vračarku pored jedinice koja se brani, "
+"lečiće je 4 udarpoena po potezu. Samo pazi da ne izložiš vračarku napadu, "
+"jer je prilično slab sam za sebe."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
@@ -863,7 +861,7 @@ msgstr "Da, unajmi još jedinica, mislim da će ti trebati!"
 #. [tutorial]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
-msgstr "Tutorijal Vesnotov, deo drugi"
+msgstr "Podučavnje Vesnotu, deo drugi"
 
 #. [side]: type=Orcish Warrior, description=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
@@ -989,9 +987,9 @@ msgid ""
 "the key: it has a village, for healing injured units, and forest in which we "
 "fight so well."
 msgstr ""
-"Stoga je mogućnije da pohitaju k nama preko mosta. Ostvo u sredini mora biti "
-"naš oslonac — ima selo za vidanje naših junaka, i šumu u kojoj se tako dobro "
-"borimo."
+"Stoga je mogućnije da pohitaju k nama preko mosta. Ostrvo u sredini mora "
+"biti naš oslonac — ima selo za vidanje naših junaka, i šumu u kojoj se tako "
+"dobro borimo."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:457
@@ -1004,7 +1002,7 @@ msgstr ""
 "Počnimo onda, okupljanjem nekoliko jedinica:\n"
 " dva vilin-borca\n"
 " dva vilin-strelca\n"
-" jedan vilin-vrač"
+" jedna vilin-vračarka"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:525
@@ -1013,9 +1011,9 @@ msgid ""
 "and $recall_name2 gained $recall_xp2. You should recall them now so they can "
 "gain more experience, rather than recruiting new ones."
 msgstr ""
-"Tokom tutorijala do sada, $recall_name1 sakupi $recall_xp1 iskustva, a "
-"$recall_name2 sakupi $recall_xp2. Bolje ih sazovi pre najamljivanja novih "
-"jedinica, tako da mogu steći još iskustva."
+"Za obuke do sada, $recall_name1 sakupi $recall_xp1 iskustva, a $recall_name2 "
+"sakupi $recall_xp2. Bolje ih sazovi pre najamljivanja novih jedinica, tako "
+"da mogu steći još iskustva."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:529
@@ -1024,9 +1022,9 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
-"Tokom tutorijala do sada, $recall_name1 sakupi $recall_xp1 iskustva. Bolje "
-"sazovi sada tu jedinicu, a unajmi još jednu (unajmljivanje je ionako "
-"jeftinije od sazivanja starih saboraca)."
+"Za obuke do sada, $recall_name1 sakupi $recall_xp1 iskustva. Bolje sazovi "
+"sada tu jedinicu, a unajmi još jednu (unajmljivanje je ionako jeftinije od "
+"sazivanja starih saboraca)."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:532
@@ -1035,9 +1033,8 @@ msgstr "SAZOVI $recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
-#, fuzzy
 msgid "Right click on the tile north-east of you and recall $recall_name1"
-msgstr "Desno klikni na polje jugoistočno od sebe i sazovi $recall_name2"
+msgstr "Klikni desnim na polje severoistočno od sebe i sazovi $recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:542
@@ -1068,14 +1065,13 @@ msgstr "Vilin-borac"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:549
-#, fuzzy
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
-msgstr "Desno klikni na polje jugoistočno od sebe i unajmi vilin-borca"
+msgstr "Klikni desnim na polje severoistočno od sebe i unajmi vilin-borca"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:589
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
-msgstr "Šta bi?! Rekoh unajmi vilin-VRAČA! Hajde ponovo..."
+msgstr "Šta bi?! Rekoh unajmi vilin-VRAČARKU! Hajde ponovo..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:598
@@ -1084,9 +1080,9 @@ msgid ""
 "it. It also has a special attack which slows enemies, halving the damage "
 "they do!"
 msgstr ""
-"Vrač je relativno slaba jedinica, ali ume da leči jedinice u svojoj blizini. "
-"Takođe poznaje tehniku napada kojom usporava neprijatelje, prepolovljavajući "
-"štetu koju nanose!"
+"Vračarka je relativno slaba jedinica, ali ume da leči jedinice u svojoj "
+"blizini. Takođe poznaje tehniku napada kojom usporava neprijatelje, "
+"prepolovljavajući štetu koju nanose!"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:599
@@ -1130,12 +1126,12 @@ msgstr "Eovinjal"
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:643
 msgid "Shaman"
-msgstr "vrač"
+msgstr "vračarka"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:644
 msgid "Recruit an Elvish Shaman to your north"
-msgstr "Unajmi vilin-vrača u polju severno"
+msgstr "Unajmi vilin-vračarku u polju severno"
 
 #. [unit]: description=Elriend, type=Elvish Archer
 #. [else]
@@ -1197,9 +1193,8 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:800
-#, fuzzy
 msgid "Right click on the tile east of you and recall $recall_name2"
-msgstr "Desno klikni na polje jugoistočno od sebe i sazovi $recall_name2"
+msgstr "Klikni desnim na polje istočno od sebe i sazovi $recall_name2"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:801
@@ -1209,9 +1204,8 @@ msgstr "SAZOVI $recall_name2"
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:805
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:848
-#, fuzzy
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-msgstr "Desno klikni na polje južno od sebe i unajmi vilin-borca."
+msgstr "Klikni desnim na polje istočno od sebe i unajmi vilin-borca."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:828
@@ -1354,18 +1348,18 @@ msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
-"Pošalji drugog borca i vrača na jug, da bi mogli da napadnu u sledećem "
+"Pošalji drugog borca i vračarku na jug, da bi mogli da napadnu u sledećem "
 "potezu, a onda se vrati u zamak da unajmiš još jedinica!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:967
 msgid "Move Fighter and Shaman south, then return Konrad to the Keep"
-msgstr "Pošalji borca i vrača na jug, a onda vrati Konrada u zamak"
+msgstr "Pošalji borca i vračarku na jug, a onda vrati Konrada u zamak"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:968
 msgid "Move Fighter and Shaman south, then return Li'sar to the Keep"
-msgstr "Pošalji borca i vrača na jug, a onda vrati Lizaru u zamak"
+msgstr "Pošalji borca i vračarku na jug, a onda vrati Lizaru u zamak"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
@@ -1458,13 +1452,13 @@ msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, it will heal "
 "it at the beginning of next turn, too."
 msgstr ""
-"Da. Ukoliko vrač stoji odmah iza te jedinice na mostu, zalečiće i nju na "
+"Da. Ukoliko vračarka stoji odmah iza te jedinice na mostu, zalečiće i nju na "
 "početku sledećeg poteza."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1067
 msgid "Move Shaman onto bridge to stand behind unit"
-msgstr "Pomeri vrača na most tačno iza odbrambene jedinice"
+msgstr "Pomeri vračarku na most tačno iza branilačke jedinice"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1113
@@ -1724,7 +1718,6 @@ msgstr "Dugo ti je trebalo, sada se nikada nećemo osloboditi ovih orkova!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1610
-#, fuzzy
 msgid ""
 "You have been victorious over the Orcs. Next, you may want to try one of the "
 "campaigns with a Beginner level, such as The South Guard, Two Brothers or "

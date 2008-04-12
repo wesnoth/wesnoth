@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Branko Kokanovic, 2006.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2007-30-07 12:00+0200\n"
+"PO-Revision-Date: 2008-03-21 12:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
+"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. [terrain]
 #: data/core/terrain.cfg:13
@@ -173,7 +173,7 @@ msgstr "bezdan"
 #. [terrain]
 #: data/core/terrain.cfg:594
 msgid "Lava chasm"
-msgstr ""
+msgstr "bezdan lave"
 
 #. [terrain]
 #: data/core/terrain.cfg:604
@@ -209,7 +209,7 @@ msgstr "pećina"
 #. [terrain]
 #: data/core/terrain.cfg:689
 msgid "Cave Lit"
-msgstr "pećinsko svetlo"
+msgstr "pećina osvetljena"
 
 #. [terrain]
 #: data/core/terrain.cfg:699 data/core/terrain.cfg:707
@@ -218,9 +218,8 @@ msgstr "gljivarski gaj"
 
 #. [terrain]
 #: data/core/terrain.cfg:716
-#, fuzzy
 msgid "Mushroom Grove Lit"
-msgstr "gljivarski gaj"
+msgstr "gljivarski gaj osvetljen"
 
 #. [terrain]
 #: data/core/terrain.cfg:726
@@ -230,7 +229,7 @@ msgstr "stenovita pećina"
 #. [terrain]
 #: data/core/terrain.cfg:736
 msgid "Rockbound Cave Lit"
-msgstr "osvetljena stenovita pećina"
+msgstr "stenovita pećina osvetljena"
 
 #. [terrain]
 #: data/core/terrain.cfg:753 data/core/terrain.cfg:764
@@ -277,7 +276,7 @@ msgstr "pećinski zid"
 #. [terrain]
 #: data/core/terrain.cfg:1006
 msgid "Void"
-msgstr ""
+msgstr "praznina"
 
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
 #: src/editor/editor_dialogs.cpp:423
@@ -329,11 +328,11 @@ msgstr "Stvori nasumičnu mapu"
 
 #: src/editor/editor_dialogs.cpp:100
 msgid "Random Generator Settings"
-msgstr "Postavke generatora nasumičnih mapa"
+msgstr "Postavke generatora nasumičnosti"
 
 #: src/editor/editor_dialogs.cpp:178
 msgid "Map creation failed."
-msgstr "Stvaranje mape nije uspelo."
+msgstr "Neuspelo stvaranje mape."
 
 #: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:103
 #: src/preferences_display.cpp:227
@@ -373,15 +372,15 @@ msgstr "Promeni veličinu mape"
 
 #: src/editor/editor_dialogs.cpp:388
 msgid "X offset:"
-msgstr ""
+msgstr "X-pomak:"
 
 #: src/editor/editor_dialogs.cpp:389
 msgid "Y offset:"
-msgstr ""
+msgstr "Y-pomak:"
 
 #: src/editor/editor_dialogs.cpp:468
 msgid "Smart expand"
-msgstr ""
+msgstr "Pametno proširi"
 
 #: src/editor/editor_dialogs.cpp:557
 msgid "X-Axis"
@@ -421,7 +420,7 @@ msgstr "Stvaranje direktorijuma nije uspelo."
 
 #: src/game_preferences.cpp:217
 msgid "No server has been defined."
-msgstr ""
+msgstr "Server nije zadat."
 
 #: src/game_preferences.cpp:281
 msgid "player"
@@ -437,12 +436,11 @@ msgstr "Preskoči poteze VI"
 
 #: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Sačuvaj snimak pri ji./vi. pobedi ili vi. porazu"
 
 #: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "Automatski briši samočuvanja na kraju scenarija."
+msgstr "Briši samočuvanja pri ji./vi. pobedi ili vi. porazu"
 
 #: src/game_preferences_display.cpp:166
 msgid "Do Not Show Lobby Joins"
@@ -484,66 +482,76 @@ msgstr "Dodaj kao ignorisanog"
 msgid "Remove"
 msgstr "Ukloni"
 
+# кућица
 #: src/game_preferences_display.cpp:176
 msgid "Show Floating Labels"
-msgstr "Prikaži plutajuće etikete"
+msgstr "Plutajuće etikete"
 
+# кућица
 #: src/game_preferences_display.cpp:177
 msgid "Turn Dialog"
 msgstr "Dijalog poteza"
 
+# кућица
 #: src/game_preferences_display.cpp:178
 msgid "Turn Bell"
 msgstr "Zvono poteza"
 
+# кућица
 #: src/game_preferences_display.cpp:179
 msgid "Show Team Colors"
-msgstr "Prikaži boje timova"
+msgstr "Boje timova"
 
+# кућица
 #: src/game_preferences_display.cpp:180
 msgid "Show Color Cursors"
-msgstr "Prikaži boje kursora"
+msgstr "Kursori u boji"
 
+# кућица
 #: src/game_preferences_display.cpp:181
 msgid "Show Haloing Effects"
-msgstr "Prikaži halo-efekte"
+msgstr "Oreolski efekti"
 
 #: src/game_preferences_display.cpp:182
-#, fuzzy
 msgid "Change Resolution"
-msgstr "Izaberi rezoluciju"
+msgstr "Promeni rezoluciju"
 
 #: src/game_preferences_display.cpp:183
 msgid "Theme"
 msgstr "Tema"
 
+# кућица
 #: src/game_preferences_display.cpp:185
 msgid "Adjust Gamma"
-msgstr "Naštimaj gamu"
+msgstr "Štimanje game"
 
+# кућица
 #: src/game_preferences_display.cpp:186
 msgid "Reverse Time Graphics"
-msgstr "Izvrni grafiku doba dana"
+msgstr "Izvrnuta grafika doba dana"
 
+# кућица
 #: src/game_preferences_display.cpp:188
 msgid "Sound effects"
 msgstr "Zvučni efekti"
 
+# кућица
 #: src/game_preferences_display.cpp:189
 msgid "Music"
 msgstr "Muzika"
 
+# кућица
 #: src/game_preferences_display.cpp:190
 msgid "Chat Timestamping"
 msgstr "Beleženje vremena ćaskanja"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Napredne opcije"
 
 #: src/game_preferences_display.cpp:192
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Standardne opcije"
 
 #: src/game_preferences_display.cpp:193
 msgid "User Interface Sounds"
@@ -557,9 +565,10 @@ msgstr "Posebno"
 msgid "Apply"
 msgstr "Primeni"
 
+# кућица
 #: src/game_preferences_display.cpp:198
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "Stajaće animacije jedinica"
 
 #: src/game_preferences_display.cpp:200
 msgid "Music Volume:"
@@ -587,7 +596,7 @@ msgstr "Učestanost uzorkovanja (Hz):"
 
 #: src/game_preferences_display.cpp:206
 msgid "Frequency:"
-msgstr ""
+msgstr "Učestanost:"
 
 #: src/game_preferences_display.cpp:230
 msgid "Sound effects on/off"
@@ -655,28 +664,27 @@ msgstr "Izaberi da li se igra preko celog ekrana ili u prozoru"
 
 #: src/game_preferences_display.cpp:307
 msgid "Make units move and fight faster"
-msgstr "Neka se jedinice brže kreću i bore"
+msgstr "Jedinice da se brže kreću i bore"
 
 #: src/game_preferences_display.cpp:324
 msgid "Units move and fight speed"
 msgstr "Brzina kretanja i borbe jedinica"
 
 #: src/game_preferences_display.cpp:327
-#, fuzzy
 msgid "Show unit idle animations"
-msgstr "Preskoči animaciju"
+msgstr "Prikazuj stajaće animacije jedinica"
 
 #: src/game_preferences_display.cpp:333
 msgid "Set the frequency of unit idle animations"
-msgstr ""
+msgstr "Odredi učestanost stajaćih animacija jedinica"
 
 #: src/game_preferences_display.cpp:338
 msgid "Set maximum number of automatic saves to be retained"
-msgstr ""
+msgstr "Postavi najveći broj samočuvanja za zadržati"
 
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
-msgstr "Ne animirati VI jedinice prilikom kretanja"
+msgstr "Ne animiraj VI jedinice prilikom kretanja"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -712,15 +720,15 @@ msgstr "Nazad na višeigračke opcije"
 
 #: src/game_preferences_display.cpp:367
 msgid "Add this username to your friends list"
-msgstr "Dodaj ovo korisničko ime na spisak prijatelja"
+msgstr "Dodaj korisničko ime na spisak prijatelja"
 
 #: src/game_preferences_display.cpp:368
 msgid "Add this username to your ignores list"
-msgstr "Dodaj ovo korisničko ime na spisak ignorisanih"
+msgstr "Dodaj korisničko ime na spisak ignorisanih"
 
 #: src/game_preferences_display.cpp:369
 msgid "Remove this username from your list"
-msgstr "Ukloni ovo korisničko ime sa spiska"
+msgstr "Ukloni korisničko ime sa spiska"
 
 #: src/game_preferences_display.cpp:372
 msgid "Insert a username"
@@ -728,7 +736,7 @@ msgstr "Umetni korisničko ime"
 
 #: src/game_preferences_display.cpp:375
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Prikaži iznad jedinica tekst koji pokazuje štetu nanetu pri udaru"
+msgstr "Prikaži iznad jedinica tekst sa pretrpljenom štetom pri udaru"
 
 #: src/game_preferences_display.cpp:377
 msgid "Change the resolution the game runs at"
@@ -750,21 +758,19 @@ msgstr "Zazvoni na početku mog poteza"
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
-msgstr ""
-"Prikaži obojeni krug oko osnove svake jedinice koji kazuje kojoj strani "
-"pripada"
+msgstr "Prikaži oko osnove svake jedinice krug u boji strane kojoj pripada"
 
 #: src/game_preferences_display.cpp:390
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr "Izaberi da li se sunce pomera s leva na desno ili obrnuto"
+msgstr "Izaberi kretanje sunca s leva na desno ili obrnuto"
 
 #: src/game_preferences_display.cpp:393
 msgid "Use colored mouse cursors (may be slower)"
-msgstr "Koristi obojene kursore miša (može biti sporije)"
+msgstr "Koristi obojene kursore miša (može usporavati)"
 
 #: src/game_preferences_display.cpp:396
 msgid "Use graphical special effects (may be slower)"
-msgstr "Koristi specijalne grafičke efekte (može biti sporije)"
+msgstr "Koristi specijalne grafičke efekte (može usporavati)"
 
 #: src/game_preferences_display.cpp:398
 msgid "View and configure keyboard shortcuts"
@@ -776,20 +782,19 @@ msgstr "Brzina: "
 
 #: src/game_preferences_display.cpp:694 src/game_preferences_display.cpp:696
 msgid "Maximum Auto-Saves: "
-msgstr ""
+msgstr "Najviše autočuvanja: "
 
 #: src/game_preferences_display.cpp:694
 msgid "infinite"
-msgstr ""
+msgstr "bezbroj"
 
 #: src/game_preferences_display.cpp:866
 msgid "Chat Lines: "
 msgstr "Redovi ćaskanja: "
 
 #: src/game_preferences_display.cpp:888 src/game_preferences_display.cpp:896
-#, fuzzy
 msgid "Invalid username"
-msgstr "Umetni korisničko ime"
+msgstr "Neispravno korisničko ime"
 
 #: src/game_preferences_display.cpp:968
 msgid "yes"
@@ -801,7 +806,7 @@ msgstr "ne"
 
 #: src/game_preferences_display.cpp:1001
 msgid "(empty list)"
-msgstr ""
+msgstr "(prazan spisak)"
 
 #: src/game_preferences_display.cpp:1119
 msgid "Prefs section^General"
@@ -829,13 +834,11 @@ msgstr "Sačuvana podešavanja teme: "
 
 #: src/game_preferences_display.cpp:1164
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
-"Nova tema će se pokazati pri sledećem pokretanju nove ili učitavanju igre."
+msgstr "Nova tema će se iskazati u sledećoj novoj ili učitanoj igri."
 
 #: src/game_preferences_display.cpp:1168
-#, fuzzy
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Nema poznatih tema. Pokušajte da promenite u okviru postojeće igre."
+msgstr "Nema poznatih tema. Pokušajte da promenite u okviru tekuće igre."
 
 #: src/hotkeys.cpp:54
 msgid "Next Unit"
@@ -875,7 +878,7 @@ msgstr "Umanji"
 
 #: src/hotkeys.cpp:63
 msgid "Default Zoom"
-msgstr "Podrazumevano uvećanje"
+msgstr "Osnovno uvećanje"
 
 #: src/hotkeys.cpp:65
 msgid "Screenshot"
@@ -891,16 +894,15 @@ msgstr "Opis jedinice"
 
 #: src/hotkeys.cpp:68
 msgid "Rename Unit"
-msgstr "Promeni ime jedinice"
+msgstr "Preimenuj jedinicu"
 
 #: src/hotkeys.cpp:69
 msgid "Save Game"
 msgstr "Sačuvaj igru"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "Čuvaj snimke"
+msgstr "Sačuvaj snimak"
 
 #: src/hotkeys.cpp:71
 msgid "Save The Map"
@@ -1063,9 +1065,8 @@ msgid "Fill Selection"
 msgstr "Ispuni izbor"
 
 #: src/hotkeys.cpp:116
-#, fuzzy
 msgid "Rotate Selection"
-msgstr "Ispuni izbor"
+msgstr "Zaokreni izbor"
 
 #: src/hotkeys.cpp:117
 msgid "Cut"
@@ -1089,7 +1090,7 @@ msgstr "Prevrni mapu"
 
 #: src/hotkeys.cpp:123
 msgid "Select All"
-msgstr "Izaberi ve"
+msgstr "Izaberi sve"
 
 #: src/hotkeys.cpp:124
 msgid "Draw Terrain"
@@ -1148,17 +1149,16 @@ msgid "Enter user command"
 msgstr "Unesi korisničku naredbu"
 
 #: src/hotkeys.cpp:140
-#, fuzzy
 msgid "Clear messages"
-msgstr "Ukloni etikete"
+msgstr "Očisti poruke"
 
 #: src/hotkeys.cpp:142
 msgid "User-Command#2"
-msgstr ""
+msgstr "Korisnička-naredba#2"
 
 #: src/hotkeys.cpp:143
 msgid "User-Command#3"
-msgstr ""
+msgstr "Korisnička-naredba#3"
 
 #: src/hotkeys.cpp:525 src/hotkeys.cpp:848
 msgid "Do you really want to quit?"
@@ -1218,15 +1218,15 @@ msgstr "ostrvski"
 
 #: src/marked-up_text.cpp:357
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "Najveća širina teksta je ispod 1."
 
 #: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Ne mogu da dobavim sliku terena: $terrain"
 
 #: src/minimap.cpp:93 src/minimap.cpp:105
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Greška u stvaranju ili dobavljanju slike."
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
@@ -1234,9 +1234,9 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"Promena video režima nije uspela. Vaš menadžer prozora mora podržavati 16 "
-"bita po pikselu da bi pokrenuo igru u prozoru. Vaš prikaz mora podržavati "
-"1024x768x16 da biste pokrenuli igru preko celog ekrana."
+"Promena video režima nije uspela. Menadžer prozora mora podržavati 16 bita "
+"po pikselu da bi igra radila u prozoru. Prikaz mora podržavati 1024×768×16 "
+"da bi igra išla preko celog ekrana."
 
 #: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
@@ -1252,7 +1252,7 @@ msgstr "radnja"
 
 #: src/preferences_display.cpp:256
 msgid "Binding"
-msgstr "vezano"
+msgstr "sveza"
 
 #: src/preferences_display.cpp:268
 msgid "Change Hotkey"
@@ -1278,7 +1278,7 @@ msgstr "Greška"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr ""
+msgstr "Nađen teren sa niskom dužom od četiri znaka. Teren na koji ovo utiče:"
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
@@ -1289,20 +1289,24 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Greška zbog mogućeg neispravnog WML-a\n"
+"Poruka je:"
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
-msgstr ""
+msgstr "Kada prijavljujete grešku, molimo uključite i sledeću poruku:"
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"U odeljku ‘[$section|]’ gde ‘$primary_key| = $primary_value’ nije postavljen "
+"obavezni ključ ‘$key|’."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
+msgstr "U odeljku ‘[$section|]’ nije postavljen obavezni ključ ‘$key|’."
 
 #, fuzzy
 #~ msgid "Automatically delete saves on SP victory or SP/MP defeat"

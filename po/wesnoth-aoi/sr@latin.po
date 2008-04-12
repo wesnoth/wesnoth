@@ -1,54 +1,62 @@
+# Serbian translations for Battle for Wesnoth package.
+# Copyright (C) 2007 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Chusslove Illich <caslav.ilic@gmx.net>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
+"Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2005-04-18 18:06+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2008-03-23 12:00+0100\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
+"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:11
 msgid "An Orcish Incursion"
-msgstr ""
+msgstr "Orkovski upad"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:12
 msgid "AOI"
-msgstr ""
+msgstr "OU"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:16
 msgid "Fighter"
-msgstr ""
+msgstr "borac"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:16
 msgid "(Beginner)"
-msgstr ""
+msgstr "(početnik)"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:17
 msgid "(Normal)"
-msgstr ""
+msgstr "(normalno)"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:17
 msgid "Lord"
-msgstr ""
+msgstr "gospodar"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:18
 msgid "High Lord"
-msgstr ""
+msgstr "nadgospodar"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:18
 msgid "(Challenging)"
-msgstr ""
+msgstr "(izazovno)"
 
 #. [campaign]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
@@ -58,32 +66,36 @@ msgid ""
 "\n"
 "(Novice level, 7 scenarios.)"
 msgstr ""
+"Brani vilenjačke šume od prvih orkova što stigoše na Veliki kontinent, "
+"spoznavajući u međuvremenu vredne taktike.\n"
+"\n"
+"(Početnički nivo, 7 scenarija.)"
 
 #. [about]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:35
 msgid "Campaign Design"
-msgstr ""
+msgstr "Dizajn pohoda"
 
 #. [about]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:41
 msgid "Adaptation for mainline"
-msgstr ""
+msgstr "Prilagođavanje za glavni tok"
 
 #. [scenario]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:3
 msgid "Defend the Forest"
-msgstr ""
+msgstr "Odbrani šumu"
 
 #. [side]: type=Elvish Lord, description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:17
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:23
 msgid "Erlornas"
-msgstr ""
+msgstr "Erlornas"
 
 #. [side]: type=Orcish Warrior, description=Urugha
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:47
 msgid "Urugha"
-msgstr ""
+msgstr "Uruga"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:65
@@ -92,11 +104,14 @@ msgid ""
 "Elves can move fast and safely among the trees. Pick off the enemy grunts "
 "with your archers from the safety of the forest."
 msgstr ""
+"Savet:\n"
+"Vilenjaci se umeju brzo i bezbedno kretati među drvećem. Skidaj "
+"neprijateljske groktaše svojim strelcima iz zaklona šume."
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:68
 msgid "Defeat Urugha"
-msgstr ""
+msgstr "Poraziš li Urugu"
 
 #. [objective]: condition=lose
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:130
@@ -107,7 +122,7 @@ msgstr ""
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:72
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:72
 msgid "Death of Erlornas"
-msgstr ""
+msgstr "Nastrada li Erlornas"
 
 #. [objective]: condition=lose
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:134
@@ -118,12 +133,12 @@ msgstr ""
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:76
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:76
 msgid "Time runs out"
-msgstr ""
+msgstr "Isteknu li potezi"
 
 #. [unit]: type=Elvish Rider, description=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:83
 msgid "Lomarfel"
-msgstr ""
+msgstr "Lomarfel"
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:112
@@ -134,6 +149,11 @@ msgid ""
 "small-scale clashes - little more, in truth, than armed squabbles - found "
 "themselves required to gird for warfare of unaccustomed intensity."
 msgstr ""
+"Prispeće ljudi i orkova izazva potrese među starosedelačkim narodima Velikog "
+"kontinenta. Vilenjaci, patuljci i drugi, koji su postigli međusobnu "
+"ravnotežu i privikli se tokom stoleća na ništa više od manjih zađevica — "
+"zaista, koliko oružanih prepirki — nađoše se u nuždi opremanja za ratovanje "
+"neočekivane siline."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:117
@@ -142,6 +162,9 @@ msgid ""
 "Peoples, their first encounters with humans went less well than either side "
 "might have wished. "
 msgstr ""
+"Možda najviše pogođeni bejahu vilenjaci. Najstariji i najmudriji među "
+"Usmenim narodima, prvi susret s ljudima prođe im lošije nego što je ijedna "
+"strana mogla želeti. "
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:121
@@ -150,6 +173,9 @@ msgid ""
 "and grace which elves could recognize as kindred to their own nature. Not so "
 "with orcs."
 msgstr ""
+"Ali ljudi, iako sirovi i napadni, posedovaše bar iskru pesme i sklada koju "
+"vilenjaci mogaše prepoznati kao srodnu sopstvenoj prirodi. Ne, međutim, i "
+"orci."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:126
@@ -159,12 +185,16 @@ msgid ""
 "until the day that an elvish noble of ancient line, Erlornas by name, "
 "encountered the new foe."
 msgstr ""
+"Mnoge godine pošto se Haldrikov narod iskrca, orci behu tek malo do glasine "
+"što je zabrinjavala zelenu visprenost vilenjaka. To jest, do dana kada "
+"vilenjački plemić drevnog srodstva, po imenu Erlornas, susrete novog "
+"protivnika."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:138
 msgid ""
 "The orcs were sighted at the northern marches of the great forest of Wesmere."
-msgstr ""
+msgstr "Spaziše orke u severnim močvarama velike Vesmerske šume."
 
 #. [message]: description=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:191
@@ -172,6 +202,8 @@ msgid ""
 "My lord Erlornas! A party of orcs has encamped to the north. That is the "
 "stench of their burnings drifting on the wind!"
 msgstr ""
+"Gospodaru Erlornase! Orkovska družina se ulogorila ka severu. To je zadah "
+"njihovih sagorevina što ga donosi vetar!"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:195
@@ -180,6 +212,9 @@ msgid ""
 "killers...but I did not believe any could be so wantonly filthy as the "
 "reports made them."
 msgstr ""
+"Kakvo je ovo svetogrđe? Čuo sam da se o orcima priča kao zagađivačima, "
+"drvoubicama, ali... Ne verovah da iko može biti tako obesno prljav kakvim ih "
+"izveštaji prikazivaše."
 
 #. [message]: description=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:199
@@ -188,6 +223,9 @@ msgid ""
 "wood but of the new-murdered corpses of the singing trees. They trample the "
 "greensward into mud and do not even bury their foul dung."
 msgstr ""
+"Svedočimo istinitosti toga, gospodaru. Pale velike vatre, ne od mrtvopalog "
+"dreveta, već od novoubijenih lešina pevajućih stabala. Gaze zelene poljane "
+"do blata, i čak i ne zatrpavaju svoj pogani izmet."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:203
@@ -196,11 +234,14 @@ msgid ""
 "shall arm the folk; we should be able to drive them off. All the same, you "
 "had best ride for reinforcements, Lomarfel."
 msgstr ""
+"Oni su pošast za naše šume, ne sme ih se propustiti u Vesmer. Naoružaću "
+"narod; trebalo bi da ih možemo izgnati. Svejedno, ti Lomarfele najbolje "
+"pohitaj po pojačanja."
 
 #. [message]: description=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:207
 msgid "Yes, my lord!"
-msgstr ""
+msgstr "Razumem, gospodaru!"
 
 #. [message]: speaker=unit
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:239
@@ -208,6 +249,8 @@ msgid ""
 "A thousand curses on you, tree-shagger! You will suffer... My master, "
 "Rualsha, approaches. He will wipe your people from the face of this earth!"
 msgstr ""
+"Hiljadu ti prokletinja, drvoljupče! Patićeš... pristiže moj poglavar, "
+"Rualša. Obrisaće on tvoj narod s lica zemlje!"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:243
@@ -215,16 +258,18 @@ msgid ""
 "Hmmm... Who is this Rualsha, I wonder? I will have to take a scouting party "
 "north to see what is afoot there..."
 msgstr ""
+"Hm... Pitam se, ko je taj Rualša? Moraću poslati izviđačku družinu na sever, "
+"da jave šta se onamo zapodenulo."
 
 #. [scenario]
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:3
 msgid "Assassins"
-msgstr ""
+msgstr "Ubice"
 
 #. [side]: type=Orcish Slayer, description=Gharlsa
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:35
 msgid "Gharlsa"
-msgstr ""
+msgstr "Garlsa"
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:63
@@ -233,6 +278,9 @@ msgid ""
 "ground through the violated forest.  Erlornas and his followers pursued them "
 "north and west."
 msgstr ""
+"Lako beše pratiti orkovske tragove — brazde isprevrtane zemlje kroz "
+"oskrnavljenu šumu. Erlornas i njegovi sledbenici slediše ih ka severu i "
+"zapadu."
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:72
@@ -242,16 +290,19 @@ msgid ""
 "villages, where poisoning can be cured, and force your enemies to attack you "
 "from the river."
 msgstr ""
+"Savet:\n"
+"Ubice je teško pogoditi, a otrov im je podmukao. Drži se blizu sela, gde se "
+"otrov može isceljivati, i nateraj neprijatelja da udari preko reke."
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:75
 msgid "Defeat Gharlsa"
-msgstr ""
+msgstr "Poraziš li Garlsu"
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:123
 msgid "The orcs left a stinking spoor straight to this place."
-msgstr ""
+msgstr "Orci su ostavili smrdljivi trag pravo do ovog mesta."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:128
@@ -259,11 +310,13 @@ msgid ""
 "There is some sort of keep ahead, here where we thought no people with the "
 "wit to raise such a pile dwelt."
 msgstr ""
+"Ispred se diže nekakva kula, ovde gde mislismo da nema naroda s dovoljno "
+"pameti da sagradi tako nešto."
 
 #. [message]: description=Gharlsa
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:133
 msgid "Gharlsa sees elves... yes... fresh meat for our wolves, yes, yes..."
-msgstr ""
+msgstr "Garlsa vidi vilenjake... Da... Sveže meso našim vukovima, da, da..."
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:138
@@ -271,21 +324,23 @@ msgid ""
 "Does that demented creature really think he can kill us? Let us teach him a "
 "lesson!"
 msgstr ""
+"Misli li zbilja to poremećeno stvorenje da nam može nauditi? Očitajmo mu "
+"bukvicu!"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:143
 msgid "Be careful...he may be more dangerous than he appears."
-msgstr ""
+msgstr "Oprezno... Može biti opasniji nego što deluje."
 
 #. [message]: description=Gharlsa
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:161
 msgid "Yes... yes... slay them, my assassins!"
-msgstr ""
+msgstr "Da... Da... Posecite ih, ubice moje!"
 
 #. [message]: speaker=unit
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:279
 msgid "Aiieeee!  I die, but Rualsha's vengeance shall fall upon you!"
-msgstr ""
+msgstr "Aijii! Umirem, ali će vas Rualšina osveta brzo sustići!"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:283
@@ -293,16 +348,18 @@ msgid ""
 "Whoever Rualsha is, he is not here to take it, wretch. Perhaps we will find "
 "him further north."
 msgstr ""
+"Ko god da je taj Rualša, nije ovde da je izvrši, grozoto. Možda ćemo ga naći "
+"dalje na severu."
 
 #. [scenario]
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:3
 msgid "Wasteland"
-msgstr ""
+msgstr "Pustara"
 
 #. [side]: type=Orcish Warlord, description=Gnargha
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:36
 msgid "Gnargha"
-msgstr ""
+msgstr "Gnarga"
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:48
@@ -312,6 +369,9 @@ msgid ""
 "around them became clear.  This had been forest once.  The orcs had killed "
 "it."
 msgstr ""
+"Kako su napredovali dalje ka severu, zelena šuma se tanjila, utapajući se u "
+"ogoljenu i nagriženu zemlju. Postepeno, posečeni panjevi i mrtvo drvo oko "
+"njih obznanjivaše jasan nauk. Ovo nekada beše šuma, a orci su je ubili."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:53
@@ -320,6 +380,9 @@ msgid ""
 "elvish trackers was more than equal to following.  They pursued with grimmer "
 "purpose now."
 msgstr ""
+"Orkovski trag se sve manje izdvajao u pustoši, ali je veština vilenjačkih "
+"tragača bila više nego dovoljna da se isprati. Sledili su, sada sa "
+"strašnijom namerom."
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:65
@@ -328,11 +391,14 @@ msgid ""
 "There are no villages in this scenario - you must use healers instead. Use "
 "hit and run tactics to weaken enemy units who cannot heal themselves."
 msgstr ""
+"Savet:\n"
+"U ovom scenariju nema sela — namesto njih moraš koristiti vidare. Primeni "
+"taktiku „udri i beži“ na neprijateljske jedinice koje se ne mogu same lečiti."
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:68
 msgid "Defeat Gnargha"
-msgstr ""
+msgstr "Poraziš li Gnargu"
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:110
@@ -340,6 +406,8 @@ msgid ""
 "The foul orcs have devastated this area, destroying the trees and "
 "slaughtering the animals for sport... it saddens me to see such waste."
 msgstr ""
+"Pogani orci opustošiše ovo područje, razarajući drveće i ubijajući životinje "
+"zabave radi... Kako me rastužuje takvo rasipanje."
 
 #. [message]: description=Gnargha
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:115
@@ -348,6 +416,9 @@ msgid ""
 "few nights ago. Know this: Lord Rualsha has permitted me to be the agent of "
 "his revenge!"
 msgstr ""
+"Pozdravi, Erlornase! Ja sam Gnarga, brate Urge, kojeg si posekao pre "
+"nekoliko noći. Znaj ovo: gospodar Rualša mi je odredio da budem sredstvo "
+"njegove odmazde!"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:120
@@ -355,6 +426,8 @@ msgid ""
 "I have no quarrel with you, Gnargha, nor with your leader Rualsha - but I "
 "cannot permit you to invade our lands. Leave now, and we shall be at peace."
 msgstr ""
+"Nisam u zavadi s tobom, Gnarga, niti s tvojim vođem Rualšom — ali vam ne "
+"mogu dopustiti da zauzmete naše zemlje. Otiđite sada, i rastaćemo se u miru."
 
 #. [message]: description=Gnargha
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:125
@@ -363,6 +436,9 @@ msgid ""
 "are even weaker than we guessed. And you, you killed my brother; prepare "
 "yourself for a slow and painful death!"
 msgstr ""
+"Mir?! Bah! Vi vilenjaci gnjezdite se na zemlji koja bi mogla hraniti mnoge "
+"orkiće, a čak ste slabiji nego što smo mišljali. A ti, ubio si moga brata; "
+"spremi se na sporu i bolnu smrt!"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:137
@@ -370,21 +446,23 @@ msgid ""
 "Gnargha and his troops must have come down out of that valley to the "
 "north... that is where we will go next!"
 msgstr ""
+"Gnarga i njegove snage mora da se spustiše iz one doline ka severu. Tamo nam "
+"je sledeće odredište!"
 
 #. [scenario]
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:3
 msgid "Valley of Trolls"
-msgstr ""
+msgstr "Dolina trolova"
 
 #. [side]: type=Troll Warrior, description=Gurk
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:57
 msgid "Gurk"
-msgstr ""
+msgstr "Gurk"
 
 #. [side]: type=Troll Warrior, description=Hrugu
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:97
 msgid "Hrugu"
-msgstr ""
+msgstr "Hrugu"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:123
@@ -393,11 +471,14 @@ msgid ""
 "Trolls are very dangerous if they can attack as a group. Use the cave-mouths "
 "as bottlenecks to fight them one at a time."
 msgstr ""
+"Savet:\n"
+"Trolovi su vrlo opasni kad smognu udariti udruženo. Koristi ustâ pećina kao "
+"uska grla da bi ih tukao jednog po jednog."
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:126
 msgid "Defeat all enemy leaders"
-msgstr ""
+msgstr "Poraziš li sve neprijateljske vođ^e"
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:168
@@ -405,6 +486,8 @@ msgid ""
 "We are far from our lands, now, Erlornas, and we have driven the orcs from "
 "the forest. Why do we not return home?"
 msgstr ""
+"Daleko smo sada od svojih zemalja, Erlornase, a isterasmo orke iz šume. "
+"Zašto se ne bismo vratili k domu?"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:172
@@ -413,6 +496,9 @@ msgid ""
 "warlord in search of pillage. He is planning an invasion, I'm sure of it. We "
 "must gather more information about his plans before we go back."
 msgstr ""
+"Čuo si šta orci rekoše — da je Rualša više od običnog pljačkaškog ratovođa u "
+"potrazi za plenom. Naumio je najezdu, siguran sam u to. Moramo saznati više "
+"o njegovim planovima pre nego što se vratimo."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:176
@@ -421,6 +507,9 @@ msgid ""
 "there is a mage dwelling somewhere nearby. Or perhaps more than one; the "
 "traces are mixed, and some of them have an unwholesome flavor."
 msgstr ""
+"I nije to sve. Zemaljske su struje ovde poremećene. Mislim da u blizini "
+"obitava neki mag. Ili čak više od jednog; tragovi su pomešani, a neki od "
+"njih odaju uznemirujuću gorčinu."
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:180
@@ -428,11 +517,13 @@ msgid ""
 "It would be dire indeed for us if these orcs have magic to add to their "
 "battle-might."
 msgstr ""
+"Bilo bi uistinu strašno po nas ako bi orci pridodali magiju svojoj bojnoj "
+"sili."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:184
 msgid "We must discover if this is so."
-msgstr ""
+msgstr "Moramo otkriti je li to tako."
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:188
@@ -440,21 +531,23 @@ msgid ""
 "Information will do us no good if we are killed before we return with it! "
 "These mountains look like troll territory."
 msgstr ""
+"Saznanja nam neće vredeti ako stradamo pre nego što se vratimo s njima! Ove "
+"planine nalikuju zabranu trolova."
 
 #. [scenario]
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:3
 msgid "Linaera the Quick"
-msgstr ""
+msgstr "Linaera Brza"
 
 #. [side]: type=Orcish Warlord, description=Krughnar
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:46
 msgid "Krughnar"
-msgstr ""
+msgstr "Krugnar"
 
 #. [side]: type=Silver Mage, description=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:69
 msgid "Linaera"
-msgstr ""
+msgstr "Linaera"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:83
@@ -463,27 +556,30 @@ msgid ""
 "This enemy is too strong for you to defeat alone. Use mounted units, and "
 "Linaera's power of teleportation to mount hit and run attacks."
 msgstr ""
+"Savet:\n"
+"Ovaj je protivnik prejak da bi ga sam pobedio. Koristi konjičke snage, i "
+"Lineaerino umeće teleportacije za „udri i beži“ napade."
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:86
 msgid "Defeat Krughnar"
-msgstr ""
+msgstr "Poraziš li Krugnara"
 
 #. [objective]: condition=lose
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:58
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:94
 msgid "Death of Linaera"
-msgstr ""
+msgstr "Nastrada li Linaera"
 
 #. [unit]: type=Horseman, description=Ceoddyn
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:106
 msgid "Ceoddyn"
-msgstr ""
+msgstr "Seodin"
 
 #. [unit]: type=Horseman, description=Midry
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:114
 msgid "Midry"
-msgstr ""
+msgstr "Midri"
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:151
@@ -491,6 +587,8 @@ msgid ""
 "We are far from the lands granted to humans, my lord Erlornas! But there is "
 "plainly one living in that tower to the west."
 msgstr ""
+"Daleko smo od ljudima podarenih zemalja, gospodaru Erlornase, ali očigledno "
+"jedno od njih prebiva u onoj kuli na zapadu."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:155
@@ -498,11 +596,13 @@ msgid ""
 "Some of our mages crave solitude for their studies. Humans are, perhaps, "
 "likewise."
 msgstr ""
+"Neki naši magovi žude za samoćom radi svojih proučavanja. Ljudi, možda, "
+"istodobno."
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:159
 msgid "It trespasses, and should be driven out!"
-msgstr ""
+msgstr "Na tuđoj je zemlji, i treba ga isterati!"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:163
@@ -510,6 +610,8 @@ msgid ""
 "Hold. It is only one human, or a few of them at most. Time enough to speak "
 "of driving it out when we are not fighting orcs."
 msgstr ""
+"Stoj. To je samo jedno ljudsko biće, nekoliko najviše. O isterivanju možemo "
+"i kasnije, kada nam ne budu pretili orci."
 
 #. [message]: description=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:167
@@ -518,6 +620,9 @@ msgid ""
 "seige to my tower for weeks... we are nearly out of supplies. Our people "
 "have always been friendly to the elves - will you not assist us?"
 msgstr ""
+"Pomozite! Velika sila orkovska spusti se sa severa, i opseda moju kulu već "
+"nedeljama. Zalihe su nam skoro presušile. Naš narod je oduvek prijatelj "
+"vilenjacima — hoćete li nam pomoći?"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:172
@@ -525,12 +630,14 @@ msgid ""
 "Yes, of course! But... I wish to defeat the vile orcs and drive them away "
 "from our borders. Will you join us in attacking them?"
 msgstr ""
+"Da, ovaj, naravno! Ali... Želim da porazim rđave orke i prognam ih izvan "
+"naših granica. Hoćete li nam se pridružiti u napadu?"
 
 #. [message]: description=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:177
 msgid ""
 "Nothing would please me better! I will place all my powers at your command."
-msgstr ""
+msgstr "Ništa mi više ne godilo! Staviću sve svoje moći tebi na zapovest."
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:255
@@ -538,6 +645,8 @@ msgid ""
 "My lord... humans cannot be trusted! They shift their allegiances with the "
 "changing of the wind!"
 msgstr ""
+"Gospodaru, ljudima se ne može verovati! Premeću odanost kako vetrovi menjaju "
+"pravac!"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:260
@@ -545,6 +654,8 @@ msgid ""
 "That may be, but I do not think this one will betray us to the orcs. And we "
 "may need her assistance, too: that is a powerful force of orcs ahead."
 msgstr ""
+"To može biti, ali ne mislim da će nas ova izdati orcima. A i njena nam pomoć "
+"može koristiti: pred nam je silna vojska orkovska."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:276
@@ -552,6 +663,8 @@ msgid ""
 "Oh, no! Without Linaera's help, I cannot hope to defeat such a great force "
 "of orcs. I must return to Wesmere and bring reinforcements."
 msgstr ""
+"O, ne! Bez Linaerine pomoći, ne mogu se nadati prevagnuću nad tolikim "
+"orcima. Moramo nazad u Vesmer, po pojačanja."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:287
@@ -559,6 +672,8 @@ msgid ""
 "Thank you, Linaera. I couldn't have defeated the orcs without your help... "
 "How can I repay you?"
 msgstr ""
+"Hvala ti, Linaera. Ne bismo svladali orke bez tvoje pomoći. Kako ti se mogu "
+"odužiti?"
 
 #. [message]: description=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:292
@@ -567,22 +682,25 @@ msgid ""
 "here. I had meant to deal with it myself, but if you elves revere the green "
 "earth I think you will want it abolished as much as do I."
 msgstr ""
+"Ima zaista jedno... Zla sila mori močvare istočno odavde. Htedoh sama da se "
+"pobrinem za to, ali ako vi vilenjaci štujete zelenu zemljicu, mislim da će "
+"vam jednako kao i meni prijati ukidanje te napasti."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:297
 msgid ""
 "Ah. I have felt this thing's taint in the earth. Very well... to the east!"
-msgstr ""
+msgstr "Zbilja. Osetih ljagu te stvari u zemlji. Vrlo dobro, na istok!"
 
 #. [scenario]
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:3
 msgid "A Detour through the Swamp"
-msgstr ""
+msgstr "Stanka u močvari"
 
 #. [side]: type=Lich, description=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:34
 msgid "Keremal"
-msgstr ""
+msgstr "Keremal"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:47
@@ -591,11 +709,14 @@ msgid ""
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
 msgstr ""
+"Savet:\n"
+"Nemrtvi su otporni na fizičke napade. Napadaj ih magovima, a vilenjake "
+"koristi za zaštitu i podršku njima."
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:50
 msgid "Defeat Keremal"
-msgstr ""
+msgstr "Poraziš li Keremala"
 
 #. [message]: description=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:100
@@ -604,6 +725,9 @@ msgid ""
 "bog. My apprentices and I have the power to dispel them, but you must "
 "protect us from their weapons."
 msgstr ""
+"Zloduh što se nastani u ovom mokrozemlju pretvori ga u ljigavu kaljugu. Moji "
+"šegrti i ja posedujemo moći da ga raščinimo, ali nas morate zaštiti njihovih "
+"ovozemljaskih oružja."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:117
@@ -611,6 +735,8 @@ msgid ""
 "All is lost! Without Linaera's help, I cannot hope to defeat these "
 "horrifying apparitions!"
 msgstr ""
+"Sve je izgubljeno! Bez Linaerine pomoći, nemamo izgleda da nadjačamo ove "
+"užasavajuće privide!"
 
 #. [message]: description=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:132
@@ -618,6 +744,8 @@ msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in persuit of the orcs."
 msgstr ""
+"Hvala ti, Erlornase. Sada se s mirom mogu vratiti svojoj kuli. Ali mi se "
+"čini da neki od mojih šegrta žele poći s tobom na sever, u poteru za orcima."
 
 #. [message]: role=mage
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:137
@@ -625,21 +753,23 @@ msgid ""
 "I have always wished to see elves, and now I have fought alongside them! May "
 "I please come with you?"
 msgstr ""
+"Oduvek želeh da upoznam vilenjake, a sad se još borih uz njihovu stranu! "
+"Mogu li, molim, poći s vama?"
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:142
 msgid "Certainly... I shall be glad of your help."
-msgstr ""
+msgstr "Svakako. Draga će mi biti vaša pomoć."
 
 #. [scenario]
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:3
 msgid "Showdown"
-msgstr ""
+msgstr "Obračun"
 
 #. [side]: type=Orcish Sovereign, description=Rualsha-Tan
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:76
 msgid "Rualsha-Tan"
-msgstr ""
+msgstr "Rualša-Tan"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:93
@@ -648,11 +778,14 @@ msgid ""
 "Your enemy is well defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
 msgstr ""
+"Savet:\n"
+"Neprijatelj tvoj dobro je branjen od napada sa juga. Upotrebi šumočuvare za "
+"šunjanje kroz šumu i izvedi iznenadni napad sa severa."
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:96
 msgid "Defeat Rualsha-Tan"
-msgstr ""
+msgstr "Poraziš li Rualšu-Tana"
 
 #. [message]: description=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:197
@@ -661,6 +794,9 @@ msgid ""
 "has deliberated, and asks you to defeat Rualsha quickly before he can muster "
 "a full invasion force."
 msgstr ""
+"Gospodaru! Naporno jahasmo pet dana jahali da vas dostignemo! Savet je "
+"većao, i traži od vas da porazite Rualšu brzo, pre nego što sakupi punu "
+"udarnu silu."
 
 #. [message]: description=Rualsha-Tan
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:202
@@ -668,6 +804,8 @@ msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
 msgstr ""
+"Bedni vilenjačići! Celokupna moja sila samo što nije, onda ćemo vas "
+"smožditi. Molićete nas za brzu smrt!"
 
 #. [message]: speaker=unit
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:217
@@ -675,6 +813,8 @@ msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
 msgstr ""
+"Mene možeš poseći, Erlornase, ali moji narod je još tu. Neće zaboraviti! "
+"Goniće vas, i potpuno razoriti... Mi ćemo... Mi... Argh..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:223
@@ -683,17 +823,19 @@ msgid ""
 "they scattered, and fled from the elves back to their fastnesses in the far "
 "north."
 msgstr ""
+"Ali Rualša preceni volju svoje vojske. Kako im vođ postrada, rasuše se, i "
+"razbežaše od vilenjaka u svoj žurbi, nazad ka dalekom severu."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:236
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
-msgstr ""
+msgstr "Žalosno je oduzeti život, čak i varvarina poput Rualše."
 
 #. [message]: role=Advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:241
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
-msgstr ""
+msgstr "Ako orci pritisnu, moraćemo se navići na ovakve pohode."
 
 #. [message]: description=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:246
@@ -701,3 +843,5 @@ msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
 "upon its heels."
 msgstr ""
+"Bojim se da nam to sledi. Danas izborismo prvu pobedu, ali je ona samo uvod "
+"u mračna vremena što stižu."

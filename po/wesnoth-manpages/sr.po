@@ -2,20 +2,20 @@
 # Copyright (C) 2006 Wesnoth development team.
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-02-02 21:15+0100\n"
-"PO-Revision-Date: 2007-02-08 12:00+0200\n"
+"PO-Revision-Date: 2008-03-21 12:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
-"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
+"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -26,9 +26,9 @@ msgstr "WESNOTH"
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnoth_editor.6:16
 #: ../../doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2007"
-msgstr "2006"
+msgstr "2007"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -52,7 +52,7 @@ msgstr "ИМЕ"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr "wesnoth — Бој за Веснот, фантазијска стратегија на потезе"
+msgstr "wesnoth — „Бој за Веснот“, фантазијска стратегија на потезе"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
@@ -76,7 +76,7 @@ msgstr "ОПИС"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr "Бој за B<Веснот> је фантазијска стратешка игра на потезе."
+msgstr "„Бој за B<Веснот>“ је фантазијска стратешка игра на потезе."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:42
@@ -114,65 +114,61 @@ msgstr "B<--bpp>I<\\ број>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:49 ../../doc/man/wesnoth_editor.6:38
-#, fuzzy
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-msgstr "поставља вредност BitsPerPixel. Пример: --bpp 32"
+msgstr "поставља вредност BitsPerPixel. Пример: B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--compress>I<\\ infile\\ outfile>"
-msgstr "B<--compress>I<\\ E<lt>улдатE<gt>>B<\\ >I<E<lt>издатE<gt>>"
+msgstr "B<--compress>I<\\ улдат\\ издат>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:55
-#, fuzzy
 msgid ""
 "compresses a savefile (I<infile>)  that is in text WML format into binary "
 "WML format (I<outfile>)."
 msgstr ""
-"пакује датотеку сачуване игре (улдат) која је у текстуалном ВМЛ формату, у "
-"бинарни ВМЛ фомат (издат)."
+"пакује датотеку сачуване игре (I<улдат>) која је у текстуалном ВМЛ формату, "
+"у бинарни ВМЛ фомат (I<издат>)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:55
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-d, --debug>"
-msgstr "B<-d>, B<--debug>"
+msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy
 msgid ""
 "shows extra debugging information and enables additional command mode "
 "options in-game (see the website at http://www.wesnoth.org/wiki/CommandMode "
 "for more information about command mode)."
 msgstr ""
 "приказује додатне исправљачке податке и омогућава допунске опције командног "
-"режима током игре (погледајте вики на http://www.wesnoth.org/ за више детаља "
-"о командном режиму)."
+"режима током игре (више детаља о потражите на http://www.wesnoth.org/wiki/"
+"CommandMode)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--decompress>I<\\ infile\\ outfile>"
-msgstr "B<--decompress>I<\\ E<lt>улдатE<gt>>B<\\ >I<E<lt>издатE<gt>>"
+msgstr "B<--decompress>I<\\ улдат\\ издат>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
 msgid ""
 "decompresses a savefile (I<infile>)  that is in binary WML format into text "
 "WML format (I<outfile>)."
 msgstr ""
-"распакује датотеку сачуване игре (улдат) која је у бинарном ВМЛ формату, у "
-"текстуални ВМЛ формат (издат)."
+"распакује датотеку сачуване игре (I<улдат>) која је у бинарном ВМЛ формату, "
+"у текстуални ВМЛ формат (I<издат>)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-f, --fullscreen>"
-msgstr "B<-f>, B<--fullscreen>"
+msgstr "B<-f, --fullscreen>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:69
@@ -194,9 +190,9 @@ msgstr "приказује број кадрова по секунди док т
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--gunzip>I<\\ infile.gz>"
-msgstr "B<--load>I<\\ сачувигра>"
+msgstr "B<--gunzip>I<\\ улдат.gz>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:79
@@ -204,28 +200,29 @@ msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
+"распакује датотеку, која треба да је у формату ГЗИП, и складишти је без "
+"наставка .gz. I<улдат.gz> ће бити уклоњена."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:79
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--gzip>I<\\ infile>"
-msgstr "B<--load>I<\\ сачувигра>"
+msgstr "B<--gzip>I<\\ улдат>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:85
-#, fuzzy
 msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
 msgstr ""
-"пакује датотеку сачуване игре (улдат) која је у текстуалном ВМЛ формату, у "
-"бинарни ВМЛ фомат (издат)."
+"пакује датотеку у формат ГЗИП, складишти је као I<улдат>.gz и уклања "
+"I<улдат>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:85 ../../doc/man/wesnothd.6:55
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-h, --help>"
-msgstr "B<-h,\\ --help>"
+msgstr "B<-h, --help>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:88
@@ -235,7 +232,7 @@ msgstr "приказује сажетак опција командне лини
 
 # type: TP
 #: ../../doc/man/wesnoth.6:88
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--load>I<\\ savegame>"
 msgstr "B<--load>I<\\ сачувигра>"
 
@@ -248,19 +245,18 @@ msgstr "учитава сачувану игру из стандарног ди�
 #: ../../doc/man/wesnoth.6:91 ../../doc/man/wesnothd.6:58
 #, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
-msgstr ""
+msgstr "B<--log->I<ниво>B<=>I<домен1>B<,>I<домен2>B<,>I<...>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:100 ../../doc/man/wesnoth_editor.6:56
-#, fuzzy
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 "B<debug>.  By default the B<error> level is used."
 msgstr ""
-"поставља ниво строжине исправљачких домена. „all“ се може употребити за "
-"поклапање свих домена. B<--log-info> приказује све поруке, B<--log-warning> "
-"само упозорења и грешке, а B<--log-error> само грешке."
+"поставља ниво озбиљности домена бележења. B<all> се може употребити за "
+"поклапање свих домена, а доступни су: B<error>,\\ B<warning>,\\ B<info>,\\ "
+"B<debug>. Подразумеванo се користи B<error>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:100 ../../doc/man/wesnoth_editor.6:56
@@ -281,13 +277,12 @@ msgstr "B<--max-fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
-#, fuzzy
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is B<50>."
 msgstr ""
 "број кадрова по секунди које игра може да прикаже, требало би да буде између "
-"1 и 1000, а подразумевано је 50."
+"1 и 1000, а подразумевано је B<50>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:108
@@ -339,21 +334,20 @@ msgstr "исписује име директоријума са подацима
 
 # type: TP
 #: ../../doc/man/wesnoth.6:123 ../../doc/man/wesnoth_editor.6:62
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
-msgstr "B<-r>, B<--resolution>\\ I<XxY>"
+msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:127
-#, fuzzy
 msgid "sets the screen resolution. Example: B<-r 800x600>"
-msgstr "поставља резолуцију екрана. Пример: -r 800x600"
+msgstr "поставља резолуцију екрана. Пример: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:127
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-t, --test>"
-msgstr "B<-t>, B<--test>"
+msgstr "B<-t, --test>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:130
@@ -362,9 +356,9 @@ msgstr "покреће игру са малим пробним сценарио�
 
 # type: TP
 #: ../../doc/man/wesnoth.6:130
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-v, --version>"
-msgstr "B<-v>, B<--version>"
+msgstr "B<-v, --version>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:133
@@ -373,9 +367,9 @@ msgstr "приказује број верзије и излази."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:133
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-w, --windowed>"
-msgstr "B<-w>, B<--windowed>"
+msgstr "B<-w, --windowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:136
@@ -390,13 +384,12 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:140
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
 "покреће игру без икаквих застоја, за пробу графичких перформанси. Ово је "
-"аутоматски угкључено ако се зада --nogui."
+"аутоматски угкључено ако се зада B<--nogui>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:140
@@ -438,74 +431,69 @@ msgstr "Опције уз --multiplayer"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:156
-#, fuzzy
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
 "number of players possible in the chosen scenario."
 msgstr ""
-"Опције посебне по страни у вишеиграчком режиму означене су са "
-"E<lt>бројE<gt>, где E<lt>бројE<gt> треба заменити бројем стране. То је "
-"обично 1 или 2, али зависи од броја играча дозвољених за изабрани сценарио."
+"Опције посебне по страни у вишеиграчком режиму означене су са I<број>, где "
+"I<број> треба заменити бројем стране. То је обично 1 или 2, али зависи од "
+"броја играча дозвољених за изабрани сценарио."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
-msgstr "B<--algorithmE<lt>бројE<gt>=value>"
+msgstr "B<--algorithm>I<број>B<=>I<вредност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:163
-#, fuzzy
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
 msgstr ""
 "бира нестандардни алгоритам за ВИ управљање задатом страном. Могуће "
-"вредности: „idle_ai“ и „sample_ai“."
+"вредности: B<idle_ai> и B<sample_ai>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:163
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
-msgstr "B<--controllerE<lt>бројE<gt>=value>"
+msgstr "B<--controller>I<број>B<=>I<вредност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:169
-#, fuzzy
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
-"бира управљача за задату страну. Могуће вредности су: „human“ (човек) и "
-"„ai“ (ВИ)."
+"бира управљача за задату страну. Могуће вредности су: B<human> (човек) и "
+"B<ai> (ВИ)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:169
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--era=>I<value>"
-msgstr "B<--era=вредност>"
+msgstr "B<--era=>I<вредност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:176
-#, fuzzy
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
 "eras.cfg> file."
 msgstr ""
-"употребите ово за играње у изабраној епохи уместо подразумеване („Default“). "
-"Епоха се бира преко идентификатора; могуће вредности описане су у датотеци "
-"data/multiplayer.cfg"
+"употребите ово за играње у изабраној епохи уместо подразумеване "
+"(B<Default>). Епоха се бира кључем; могуће вредности описане су у датотеци "
+"B<data/multiplayer/eras.cfg>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:176
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
-msgstr "B<--parmE<lt>бројE<gt>=број:вредност>"
+msgstr "B<--parm>I<број>B<=>I<име>B<:>I<вредност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:185
-#, fuzzy
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -517,23 +505,24 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:185
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--scenario=>I<value>"
-msgstr "B<--scenario=вредност>"
+msgstr "B<--scenario=>I<вредност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:189
-#, fuzzy
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
-msgstr "бира вишеиграчки сценарио. Подразумеван је „multiplayer_Charge“."
+msgstr ""
+"бира вишеиграчки сценарио по кључу. Подразумеван је "
+"B<multiplayer_The_Freelands>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:189
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
-msgstr "B<--sideE<lt>бројE<gt>=вредност>"
+msgstr "B<--side>I<број>B<=>I<вредност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:194
@@ -541,36 +530,34 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
-"бира фракцију из текуће епохе за задату страну. Фракција се бира преко "
-"идентификатора; могуће вредности описане су у датотеци data/multiplayer.cfg"
+"бира фракцију из текуће епохе за задату страну. Фракција се бира кључем; "
+"могуће вредности описане су у датотеци data/multiplayer.cfg"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:194
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--turns=>I<value>"
-msgstr "B<--turns=вредност>"
+msgstr "B<--turns=>I<вредност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
-msgstr "поставља број потеза за изабрани сценарио. Подразумевано је „50“."
+msgstr "поставља број потеза за изабрани сценарио. Подразумевано је B<50>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:198
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
-msgstr ""
+msgstr "Пример пробе сопствене ВИ против подразумеване, без покретања ГУИ-ја:"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:201
-#, fuzzy
 msgid ""
 "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
 msgstr ""
-"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
-"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
+"B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:202 ../../doc/man/wesnoth_editor.6:74
@@ -586,13 +573,12 @@ msgstr "Написао Дејвид Вајт (David White) E<lt>davidnwhite@veri
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Уредили Нилс Кнојпер (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
+"E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:209 ../../doc/man/wesnoth_editor.6:81
@@ -619,10 +605,9 @@ msgstr "АУТОРСКА ПРАВА"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:215 ../../doc/man/wesnoth_editor.6:87
 #: ../../doc/man/wesnothd.6:174
-#, fuzzy
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Ауторска права \\(co 2003-2006 Дејвид Вајт (David White) "
+"Ауторска права \\(co 2003-2007 Дејвид Вајт (David White) "
 "E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
@@ -665,30 +650,28 @@ msgstr "wesnoth_editor"
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "Battle for Wesnoth map editor"
-msgstr "Уређивач мапа Боја за Веснот"
+msgstr "Уређивач мапа „Боја за Веснот“"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:20
-#, fuzzy
 msgid "wesnoth_editor - Battle for Wesnoth map editor"
-msgstr "Уређивач мапа Боја за Веснот"
+msgstr "wesnoth_editor — уређивач мапа „Боја за Веснот“"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:26
-#, fuzzy
 msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-msgstr "B<wesnoth> [I<ОПЦИЈЕ>] [I<ПУТАЊА_ДО_ПОДАТАКА>]"
+msgstr "B<wesnoth_editor> [I<ОПЦИЈЕ>] [I<МАПА>]"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:31
 msgid "Battle for B<Wesnoth> map editor."
-msgstr "Уређивач мапа Боја за B<Веснот>."
+msgstr "Уређивач мапа „Боја за B<Веснот>“."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:34
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--bpp>\\ number"
-msgstr "B<--bpp>I<\\ број>"
+msgstr "B<--bpp>\\ број"
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:38
@@ -727,13 +710,12 @@ msgstr "говори вам шта чине опције командне лин
 #: ../../doc/man/wesnoth_editor.6:47
 #, no-wrap
 msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-msgstr ""
+msgstr "B<--log->нивоB<=>домен1B<,>домен2B<,>..."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:66
-#, fuzzy
 msgid "sets screen resolution. Example: B<-r 800x600>"
-msgstr "поставља резолуцију екрана. Пример: -r 800x600"
+msgstr "поставља резолуцију екрана. Пример: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:66
@@ -759,19 +741,17 @@ msgstr "покреће уређивач унутар прозора."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:79
-#, fuzzy
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
 "E<lt>ott@gaon.netE<gt>."
 msgstr ""
-"Уредили Нилс Кнојпер (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
+"Уредили Нилс Кнојпер (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt> и ott "
+"E<lt>ott@gaon.netE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:94
-#, fuzzy
 msgid "B<wesnoth>(6), B<wesnothd>(6)"
-msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+msgstr "B<wesnoth>(6), B<wesnothd>(6)"
 
 # type: TH
 #: ../../doc/man/wesnothd.6:16
@@ -789,28 +769,26 @@ msgstr "wesnothd"
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr "Вишеиграчки мрежни домар Боја за Веснот"
+msgstr "Вишеиграчки мрежни домар „Боја за Веснот“"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr "wesnothd — вишеиграчки мрежни домар Боја за B<Веснот>"
+msgstr "wesnothd — вишеиграчки мрежни домар „Боја за B<Веснот>“"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
-#, fuzzy
 msgid ""
 "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<путања>\\|] [\\|B<-p> I<порт>\\|] "
-"[\\|B<-t> I<број>\\|] [\\|B<-T> I<број>\\|]"
+"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<путања>\\|] [\\|B<-p> I<порт>\\|] [\\|"
+"B<-t> I<број>\\|] [\\|B<-T> I<број>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:39
-#, fuzzy
 msgid "B<wesnothd> B<-V>"
-msgstr "B<wesnoth_editor>"
+msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
@@ -819,32 +797,32 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client or the socket."
 msgstr ""
-"Управља вишеиграчким сесијама Боја за Веснот. Погледајте http://www.wesnoth."
-"org/wiki/ServerAdministration за наредбе које сервер прихвата преко клијента "
-"или сокета."
+"Управља вишеиграчким сесијама „Боја за Веснот“. Погледајте http://www."
+"wesnoth.org/wiki/ServerAdministration за наредбе које сервер прихвата преко "
+"клијента или сокета."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c\\ >I<path>B<,\\ --config>I<\\ path>"
-msgstr "B<-c,\\ --config>I<\\ путања>"
+msgstr "B<-c\\ >I<путања>B<,\\ --config>I<\\ путања>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:52
-#, fuzzy
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
-"казује домару где се налази датотека са подешавањима. За синтаксу погледајте "
-"одељак B<ПОДЕШАВАЊА СЕРВЕРА> испод."
+"казује домару где се налази поставна датотека. За синтаксу погледајте одељак "
+"B<ПОСТАВА СЕРВЕРА> испод. Поставу можете поново учитати слањем СИГХУП "
+"серверском процесу."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-d, --daemon>"
-msgstr "B<-d,\\ --daemon>"
+msgstr "B<-d, --daemon>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:55
@@ -853,70 +831,67 @@ msgstr "покреће wesnothd као домар."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:72
-#, fuzzy
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 "B<debug>.  By default the B<error> level is used and the B<info> level for "
 "the B<server> domain."
 msgstr ""
-"поставља ниво строжине исправљачких домена. „all“ се може употребити за "
-"поклапање свих домена. B<--log-info> приказује све поруке, B<--log-warning> "
-"само упозорења и грешке, а B<--log-error> само грешке."
+"поставља ниво озбиљности домена бележења. B<all> се може употребити за "
+"поклапање свих домена, а доступни су: B<error>,\\ B<warning>,\\ B<info>,\\ "
+"B<debug>. Подразумеванo се користи B<error>, осим за домен B<server> где "
+"B<info>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:72
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
-msgstr "B<-p,\\ --port>I<\\ порт>"
+msgstr "B<-p\\ >I<порт>B<,\\ --port>I<\\ порт>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:77
-#, fuzzy
 msgid ""
 "binds the server to the specified port. If no port is specified, port "
 "B<15000> will be used."
 msgstr ""
 "везује сервер за наведени порт. Ако се порт не наведе, подразумевано се "
-"користи 15000."
+"користи B<15000>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:77
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ број>"
+msgstr "B<-t\\ >I<број>B<,\\ --threads>I<\\ број>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:81
-#, fuzzy
 msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
-"поставља највећи број радних нити на чекању за мрежни У/И (подразумевано: 5, "
-"највише: 30)."
+"поставља највећи број радних нити на чекању за мрежни У/И (подразумевано: "
+"B<5>,\\ највише:\\ B<30>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:81
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
-msgstr "B<-T,\\ --max-threads>I<\\ број>"
+msgstr "B<-T\\ >I<број>B<,\\ --max-threads>I<\\ број>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:88
-#, fuzzy
 msgid ""
 "sets the maximum number of worker threads that will be created.  If set to "
 "B<0> there will be no limit (default: B<0>)."
 msgstr ""
-"поставља највећи број радних нити које могу бити створене; ако се зада 0, "
-"нема ограничења (подразумевано: 0)."
+"поставља највећи број радних нити које могу бити створене; ако се зада B<0>, "
+"нема ограничења (подразумевано: B<0>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:88
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-V, --version>"
-msgstr "B<-V,\\ --version>"
+msgstr "B<-V, --version>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
@@ -925,21 +900,20 @@ msgstr "приказује број верзије и излази."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:91
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-v, --verbose>"
-msgstr "B<-v,\\ --verbose>"
+msgstr "B<-v, --verbose>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:94
-#, fuzzy
 msgid "turns debug logging on."
-msgstr "укључује детаљније бележење."
+msgstr "укључује исправљачко бележење."
 
 # type: SH
 #: ../../doc/man/wesnothd.6:95
 #, no-wrap
 msgid "SERVER CONFIG"
-msgstr "ПОДЕШАВАЊА СЕРВЕРА"
+msgstr "ПОСТАВА СЕРВЕРА"
 
 # type: SS
 #: ../../doc/man/wesnothd.6:97
@@ -981,11 +955,12 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
-#, fuzzy
 msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
-msgstr "број дозвољених веза са исте ИП адресе (подразумевно: 5)"
+msgstr ""
+"број дозвољених веза са исте ИП адресе, B<0> значи безброј (подразумевно: "
+"B<5>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:113
@@ -995,7 +970,6 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:120
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -1004,8 +978,8 @@ msgid ""
 msgstr ""
 "имена/надимци које сервер не прихвата. Прихватају се ‘*’ и ‘?’ као џокери "
 "(погледајте B<glob>(7) за више детаља). Подразумеване вредности, које се "
-"користе ако се ништа не зада, су: ‘server,ai,player,network,human,admin,"
-"computer’"
+"користе ако се ништа не зада, су: B<*admin*,*admln*,*server*,ai,ai?,computer,"
+"human,network,player>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:120
@@ -1015,11 +989,10 @@ msgstr "B<max_messages>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:123
-#, fuzzy
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr ""
-"број дозвољених порука за време B<messages_time_period> (подразумевано: 4)"
+"број дозвољених порука за време B<messages_time_period> (подразумевано: B<4>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:123
@@ -1029,13 +1002,12 @@ msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:126
-#, fuzzy
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr ""
 "временски период у секундама који се разматра за откривање поплаве порука "
-"(подразумевано: 10 секунди)"
+"(подразумевано: B<10> секунди)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:126
@@ -1056,11 +1028,10 @@ msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:132
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges. Usually it starts with `admin '."
 msgstr ""
-"лозинка за стицање администраторских овлашћења. Обично почиње са „admin “"
+"лозинка за стицање администраторских овлашћења. Обично почиње са ‘admin  ’"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:132
@@ -1081,9 +1052,8 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:138
-#, fuzzy
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
-msgstr "Пример: versions_accepted=\"*\" прихвата било коју ниску верзије."
+msgstr "Пример: B<versions_accepted=\"*\"> прихвата било коју ниску верзије."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:139
@@ -1139,7 +1109,6 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:162
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1147,11 +1116,10 @@ msgid ""
 msgstr ""
 "B<[proxy]> ознака која говори серверу да се понаша као посредник и "
 "прослеђује захтеве повезаних клијената на одређени сервер. Прихвата исте "
-"кључеве као и [redirect]"
+"кључеве као и B<[redirect]>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:168
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
@@ -1160,8 +1128,8 @@ msgid ""
 msgstr ""
 "Написао Дејвид Вајт (David White) E<lt>davidnwhite@verizon.netE<gt>. Уредили "
 "Нилс Кнојпер (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton@sonnenkinder.orgE<gt>. Ову "
-"упутну страну првобитно је написао Сирил Буторс (Cyril Bouthors) "
+"E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton.de@gmail.comE<gt>. Ову упутну "
+"страну првобитно је написао Сирил Буторс (Cyril Bouthors) "
 "E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
