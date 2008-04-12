@@ -39,6 +39,7 @@ void taddon_connect::show(CVideo& video)
 	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.get_widget_by_id("host_name"));
 	if(host_widget) {
 		host_widget->set_text(host_name_);
+		window.keyboard_capture(host_widget);
 	}
 
 	retval_ = window.show(true);
