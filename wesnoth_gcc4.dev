@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth_gcc4.dev
 Name=wesnoth
-UnitCount=277
+UnitCount=279
 Type=0
 Ver=1
 ObjFiles=
@@ -2829,6 +2829,26 @@ BuildCmd=
 
 [Unit277]
 FileName=src\gui\widgets\window_builder.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit278]
+FileName=src\gui\widgets\helper.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit279]
+FileName=src\gui\widgets\helper.hpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
