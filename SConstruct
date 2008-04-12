@@ -478,182 +478,181 @@ elif env["PLATFORM"] == 'darwin':			# Mac OS X
 #game_config has very few things that are needed elsewhere, it should be
 #removed.  Requires moving path and version at least to other files.
 
-libwesnoth_core_sources = [
-    "src/color_range.cpp",
-    "src/config.cpp",
-    "src/filesystem.cpp",
-    "src/game_config.cpp",
-    "src/gettext.cpp",
-    "src/log.cpp",
-    "src/map.cpp",
-    "src/network.cpp",
-    "src/network_worker.cpp",
-    "src/thread.cpp",
-    "src/tstring.cpp",
-    "src/util.cpp",
-    "src/serialization/binary_or_text.cpp",
-    "src/serialization/binary_wml.cpp",
-    "src/serialization/parser.cpp",
-    "src/serialization/preprocessor.cpp",
-    "src/serialization/string_utils.cpp",
-    "src/serialization/tokenizer.cpp",
-    ]
+libwesnoth_core_sources = Split("""
+    src/color_range.cpp
+    src/config.cpp
+    src/filesystem.cpp
+    src/game_config.cpp
+    src/gettext.cpp
+    src/log.cpp
+    src/map.cpp
+    src/network.cpp
+    src/network_worker.cpp
+    src/thread.cpp
+    src/tstring.cpp
+    src/util.cpp
+    src/serialization/binary_or_text.cpp
+    src/serialization/binary_wml.cpp
+    src/serialization/parser.cpp
+    src/serialization/preprocessor.cpp
+    src/serialization/string_utils.cpp
+    src/serialization/tokenizer.cpp
+    """)
 libwesnoth_core = env.Library("wesnoth_core", libwesnoth_core_sources)
 
-libwesnoth_sources = [
-    "src/astarnode.cpp",
-    "src/astarsearch.cpp",
-    "src/builder.cpp",
-    "src/cavegen.cpp",
-    "src/clipboard.cpp",
-    "src/construct_dialog.cpp",
-    "src/cursor.cpp",
-    "src/display.cpp",
-    "src/events.cpp",
-    "src/filechooser.cpp",
-    "src/font.cpp",
-    "src/generic_event.cpp",
-    "src/hotkeys.cpp",
-    "src/image.cpp",
-    "src/key.cpp",
-    "src/language.cpp",
-    "src/loadscreen.cpp",
-    "src/map_create.cpp",
-    "src/map_label.cpp",
-    "src/mapgen.cpp",
-    "src/mapgen_dialog.cpp",
-    "src/marked-up_text.cpp",
-    "src/minimap.cpp",
-    "src/pathutils.cpp",
-    "src/preferences.cpp",
-    "src/preferences_display.cpp",
-    "src/race.cpp",
-    "src/random.cpp",
-    "src/reports.cpp",
-    "src/show_dialog.cpp",
-    "src/sound.cpp",
-    "src/soundsource.cpp",
-    "src/terrain.cpp",
-    "src/terrain_translation.cpp",
-    "src/tooltips.cpp",
-    "src/video.cpp",
-    "src/theme.cpp",
-    "src/widgets/button.cpp",
-    "src/widgets/file_menu.cpp",
-    "src/widgets/label.cpp",
-    "src/widgets/menu.cpp",
-    "src/widgets/menu_style.cpp",
-    "src/widgets/progressbar.cpp",
-    "src/widgets/scrollarea.cpp",
-    "src/widgets/scrollbar.cpp",
-    "src/widgets/slider.cpp",
-    "src/widgets/textbox.cpp",
-    "src/widgets/widget.cpp",
-    "src/wml_exception.cpp",
-    "src/gui/dialogs/addon_connect.cpp",
-    "src/gui/widgets/button.cpp",
-    "src/gui/widgets/canvas.cpp",
-    "src/gui/widgets/control.cpp",
-    "src/gui/widgets/event_handler.cpp",
-    "src/gui/widgets/grid.cpp",
-    "src/gui/widgets/label.cpp",
-    "src/gui/widgets/settings.cpp",
-    "src/gui/widgets/text_box.cpp",
-	"src/gui/widgets/helper.cpp",
-    "src/gui/widgets/widget.cpp",
-    "src/gui/widgets/window.cpp",
-    "src/gui/widgets/window_builder.cpp",
-    ]
+libwesnoth_sources = Split("""
+    src/astarnode.cpp
+    src/astarsearch.cpp
+    src/builder.cpp
+    src/cavegen.cpp
+    src/clipboard.cpp
+    src/construct_dialog.cpp
+    src/cursor.cpp
+    src/display.cpp
+    src/events.cpp
+    src/filechooser.cpp
+    src/font.cpp
+    src/generic_event.cpp
+    src/hotkeys.cpp
+    src/image.cpp
+    src/key.cpp
+    src/language.cpp
+    src/loadscreen.cpp
+    src/map_create.cpp
+    src/map_label.cpp
+    src/mapgen.cpp
+    src/mapgen_dialog.cpp
+    src/marked-up_text.cpp
+    src/minimap.cpp
+    src/pathutils.cpp
+    src/preferences.cpp
+    src/preferences_display.cpp
+    src/race.cpp
+    src/random.cpp
+    src/reports.cpp
+    src/show_dialog.cpp
+    src/sound.cpp
+    src/soundsource.cpp
+    src/terrain.cpp
+    src/terrain_translation.cpp
+    src/tooltips.cpp
+    src/video.cpp
+    src/theme.cpp
+    src/widgets/button.cpp
+    src/widgets/file_menu.cpp
+    src/widgets/label.cpp
+    src/widgets/menu.cpp
+    src/widgets/menu_style.cpp
+    src/widgets/progressbar.cpp
+    src/widgets/scrollarea.cpp
+    src/widgets/scrollbar.cpp
+    src/widgets/slider.cpp
+    src/widgets/textbox.cpp
+    src/widgets/widget.cpp
+    src/wml_exception.cpp
+    src/gui/dialogs/addon_connect.cpp
+    src/gui/widgets/button.cpp
+    src/gui/widgets/canvas.cpp
+    src/gui/widgets/control.cpp
+    src/gui/widgets/event_handler.cpp
+    src/gui/widgets/grid.cpp
+    src/gui/widgets/label.cpp
+    src/gui/widgets/settings.cpp
+    src/gui/widgets/text_box.cpp
+    src/gui/widgets/helper.cpp
+    src/gui/widgets/widget.cpp
+    src/gui/widgets/window.cpp
+    src/gui/widgets/window_builder.cpp
+    """)
 libwesnoth = env.Library("wesnoth", libwesnoth_sources)
 
-libwesnothd_sources = [
-    "src/loadscreen_empty.cpp",
-    "src/tools/dummy_video.cpp",
-    ]
-libwesnothd = env.Library("wesnothd", libwesnothd_sources, 
-            CPPPATH = ['src', '/usr/include/SDL'])
+libwesnothd_sources = Split("""
+    src/loadscreen_empty.cpp
+    src/tools/dummy_video.cpp
+    """)
+libwesnothd = env.Library("wesnothd", libwesnothd_sources)
 
-libcampaignd_sources = [
-    "src/publish_campaign.cpp",
-    ]
+libcampaignd_sources = Split("""
+    src/publish_campaign.cpp
+    """)
 libcampaignd = env.Library("campaignd", libcampaignd_sources)
 
-libwesnoth_sdl_sources = [
-    "src/sdl_utils.cpp",
-    ]
+libwesnoth_sdl_sources = Split("""
+    src/sdl_utils.cpp
+    """)
 libwesnoth_sdl = env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
 
-libcutter_sources = [
-    "src/tools/exploder_utils.cpp",
-    "src/tools/exploder_cutter.cpp",
-    ]
+libcutter_sources = Split("""
+    src/tools/exploder_utils.cpp
+    src/tools/exploder_cutter.cpp
+    """)
 libcutter = env.Library("cutter", libcutter_sources)
 
 # Used by both 'wesnoth' and 'test' targets
-wesnoth_sources = [
-    "src/about.cpp",
-    "src/actions.cpp",
-    "src/ai.cpp",
-    "src/ai_dfool.cpp",
-    "src/ai_attack.cpp",
-    "src/ai_move.cpp",
-    "src/ai_python.cpp",
-    "src/ai_village.cpp",
-    "src/animated_game.cpp",
-    "src/attack_prediction.cpp",
-    "src/callable_objects.cpp",
-    "src/config_adapter.cpp",
-    "src/dialogs.cpp",
-    "src/floating_textbox.cpp",
-    "src/formula.cpp",
-    "src/formula_ai.cpp",
-    "src/formula_function.cpp",
-    "src/formula_tokenizer.cpp",
-    "src/game_display.cpp",
-    "src/game_events.cpp",
-    "src/game_preferences.cpp",
-    "src/game_preferences_display.cpp",
-    "src/gamestatus.cpp",
-    "src/generate_report.cpp",
-    "src/halo.cpp",
-    "src/help.cpp",
-    "src/intro.cpp",
-    "src/leader_list.cpp",
-    "src/menu_events.cpp",
-    "src/mouse_events.cpp",
-    "src/multiplayer.cpp",
-    "src/multiplayer_ui.cpp",
-    "src/multiplayer_wait.cpp",
-    "src/multiplayer_connect.cpp",
-    "src/multiplayer_create.cpp",
-    "src/multiplayer_lobby.cpp",
-    "src/pathfind.cpp",
-    "src/playcampaign.cpp",
-    "src/play_controller.cpp",
-    "src/playmp_controller.cpp",
-    "src/playsingle_controller.cpp",
-    "src/playturn.cpp",
-    "src/replay.cpp",
-    "src/replay_controller.cpp",
-    "src/sha1.cpp",
-    "src/settings.cpp",
-    "src/statistics.cpp",
-    "src/team.cpp",
-    "src/terrain_filter.cpp",
-    "src/titlescreen.cpp",
-    "src/unit.cpp",
-    "src/unit_abilities.cpp",
-    "src/unit_animation.cpp",
-    "src/unit_display.cpp",
-    "src/unit_frame.cpp",
-    "src/unit_map.cpp",
-    "src/unit_types.cpp",
-    "src/upload_log.cpp",
-    "src/variable.cpp",
-    "src/variant.cpp",
-    "src/widgets/combo.cpp",
-    "src/widgets/scrollpane.cpp",
-]
+wesnoth_sources = Split("""
+    src/about.cpp
+    src/actions.cpp
+    src/ai.cpp
+    src/ai_dfool.cpp
+    src/ai_attack.cpp
+    src/ai_move.cpp
+    src/ai_python.cpp
+    src/ai_village.cpp
+    src/animated_game.cpp
+    src/attack_prediction.cpp
+    src/callable_objects.cpp
+    src/config_adapter.cpp
+    src/dialogs.cpp
+    src/floating_textbox.cpp
+    src/formula.cpp
+    src/formula_ai.cpp
+    src/formula_function.cpp
+    src/formula_tokenizer.cpp
+    src/game_display.cpp
+    src/game_events.cpp
+    src/game_preferences.cpp
+    src/game_preferences_display.cpp
+    src/gamestatus.cpp
+    src/generate_report.cpp
+    src/halo.cpp
+    src/help.cpp
+    src/intro.cpp
+    src/leader_list.cpp
+    src/menu_events.cpp
+    src/mouse_events.cpp
+    src/multiplayer.cpp
+    src/multiplayer_ui.cpp
+    src/multiplayer_wait.cpp
+    src/multiplayer_connect.cpp
+    src/multiplayer_create.cpp
+    src/multiplayer_lobby.cpp
+    src/pathfind.cpp
+    src/playcampaign.cpp
+    src/play_controller.cpp
+    src/playmp_controller.cpp
+    src/playsingle_controller.cpp
+    src/playturn.cpp
+    src/replay.cpp
+    src/replay_controller.cpp
+    src/sha1.cpp
+    src/settings.cpp
+    src/statistics.cpp
+    src/team.cpp
+    src/terrain_filter.cpp
+    src/titlescreen.cpp
+    src/unit.cpp
+    src/unit_abilities.cpp
+    src/unit_animation.cpp
+    src/unit_display.cpp
+    src/unit_frame.cpp
+    src/unit_map.cpp
+    src/unit_types.cpp
+    src/upload_log.cpp
+    src/variable.cpp
+    src/variant.cpp
+    src/widgets/combo.cpp
+    src/widgets/scrollpane.cpp
+    """)
 
 #
 # Target declarations
@@ -664,67 +663,67 @@ if have_client_prereqs:
 else:
     wesnoth = None
 
-wesnoth_editor_sources = [
-    "src/editor/editor.cpp",
-    "src/editor/editor_layout.cpp",
-    "src/editor/map_manip.cpp",
-    "src/editor/editor_display.cpp",
-    "src/editor/editor_palettes.cpp",
-    "src/editor/editor_main.cpp",
-    "src/editor/editor_dialogs.cpp",
-    "src/editor/editor_undo.cpp",
-    "src/animated_editor.cpp",
-    ]
+wesnoth_editor_sources = Split("""
+    src/editor/editor.cpp
+    src/editor/editor_layout.cpp
+    src/editor/map_manip.cpp
+    src/editor/editor_display.cpp
+    src/editor/editor_palettes.cpp
+    src/editor/editor_main.cpp
+    src/editor/editor_dialogs.cpp
+    src/editor/editor_undo.cpp
+    src/animated_editor.cpp
+    """)
 if have_client_prereqs and have_X:
     wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth])
 else:
     wesnoth_editor = None
 
-campaignd_sources = [
-    "src/campaign_server/campaign_server.cpp",
-    ]
+campaignd_sources = Split("""
+    src/campaign_server/campaign_server.cpp
+    """)
 if have_server_prereqs:
     campaignd = env.Program("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libwesnoth])
 else:
     campaignd = None
 
-wesnothd_sources = [
-    "src/server/game.cpp",
-    "src/server/input_stream.cpp",
-    "src/server/metrics.cpp",
-    "src/server/player.cpp",
-    "src/server/proxy.cpp",
-    "src/server/server.cpp",
-    "src/server/simple_wml.cpp",
-    ]
+wesnothd_sources = Split("""
+    src/server/game.cpp
+    src/server/input_stream.cpp
+    src/server/metrics.cpp
+    src/server/player.cpp
+    src/server/proxy.cpp
+    src/server/server.cpp
+    src/server/simple_wml.cpp
+    """)
 if have_server_prereqs:
     wesnothd = env.Program("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd])
 else:
     wesnothd = None
 
-cutter_sources = [
-    "src/tools/cutter.cpp",
-    ]
+cutter_sources = Split("""
+    src/tools/cutter.cpp
+    """)
 if have_client_prereqs:
     cutter = env.Program("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
         LIBS = env["LIBS"] + ["png"])
 else:
     cutter = None
 
-exploder_sources = [
-    "src/tools/exploder.cpp",
-    "src/tools/exploder_composer.cpp",
-    ]
+exploder_sources = Split("""
+    src/tools/exploder.cpp
+    src/tools/exploder_composer.cpp
+    """)
 if have_client_prereqs:
     exploder = env.Program("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
         LIBS = env["LIBS"] + ["png"])
 else:
     exploder = None
 
-test_sources = [
-    "src/tests/main.cpp",
-    "src/tests/test_util.cpp",
-    ]
+test_sources = Split("""
+    src/tests/main.cpp
+    src/tests/test_util.cpp
+    """)
 test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth],
             CPPPATH = env["CPPPATH"] + ['/usr/include'],
             LIBS = env["LIBS"] + ['boost_unit_test_framework'])
@@ -741,149 +740,149 @@ env.Clean(all, "src/revision.hpp")
 #
 # File inventory, for archive makes abd analysis tools
 #
-headers = [
-    "src/tools/exploder_composer.hpp",
-    "src/tools/exploder_utils.hpp",
-    "src/tools/exploder_cutter.hpp",
-    "src/serialization/tokenizer.hpp",
-    "src/serialization/parser.hpp",
-    "src/serialization/binary_or_text.hpp",
-    "src/serialization/binary_wml.hpp",
-    "src/serialization/preprocessor.hpp",
-    "src/serialization/string_utils.hpp",
-    "src/widgets/progressbar.hpp",
-    "src/widgets/textbox.hpp",
-    "src/widgets/combo.hpp",
-    "src/widgets/file_menu.hpp",
-    "src/widgets/scrollpane.hpp",
-    "src/widgets/menu.hpp",
-    "src/widgets/button.hpp",
-    "src/widgets/label.hpp",
-    "src/widgets/slider.hpp",
-    "src/widgets/scrollbar.hpp",
-    "src/widgets/widget.hpp",
-    "src/widgets/scrollarea.hpp",
-    "src/server/player.hpp",
-    "src/server/game.hpp",
-    "src/server/input_stream.hpp",
-    "src/server/proxy.hpp",
-    "src/server/metrics.hpp",
-    "src/editor/editor_undo.hpp",
-    "src/editor/map_manip.hpp",
-    "src/editor/editor_layout.hpp",
-    "src/editor/editor.hpp",
-    "src/editor/editor_palettes.hpp",
-    "src/editor/editor_dialogs.hpp",
-    "src/about.hpp",
-    "src/actions.hpp",
-    "src/ai.hpp",
-    "src/ai2.hpp",
-    "src/ai_dfool.hpp",
-    "src/ai_interface.hpp",
-    "src/ai_python.hpp",
-    "src/animated.hpp",
-    "src/animated.i",
-    "src/array.hpp",
-    "src/astarnode.hpp",
-    "src/attack_prediction.hpp",
-    "src/builder.hpp",
-    "src/cavegen.hpp",
-    "src/clipboard.hpp",
-    "src/color_range.hpp",
-    "src/config.hpp",
-    "src/config_adapter.hpp",
-    "src/construct_dialog.hpp",
-    "src/cursor.hpp",
-    "src/dialogs.hpp",
-    "src/display.hpp",
-    "src/events.hpp",
-    "src/file_chooser.hpp",
-    "src/filesystem.hpp",
-    "src/floating_textbox.hpp",
-    "src/font.hpp",
-    "src/game_config.hpp",
-    "src/game_display.hpp",
-    "src/game_errors.hpp",
-    "src/game_events.hpp",
-    "src/game_preferences.hpp",
-    "src/gamestatus.hpp",
-    "src/generic_event.hpp",
-    "src/gettext.hpp",
-    "src/global.hpp",
-    "src/halo.hpp",
-    "src/help.hpp",
-    "src/hotkeys.hpp",
-    "src/image.hpp",
-    "src/intro.hpp",
-    "src/key.hpp",
-    "src/language.hpp",
-    "src/leader_list.hpp",
-    "src/loadscreen.hpp",
-    "src/log.hpp",
-    "src/map.hpp",
-    "src/map_create.hpp",
-    "src/map_label.hpp",
-    "src/mapgen.hpp",
-    "src/mapgen_dialog.hpp",
-    "src/marked-up_text.hpp",
-    "src/menu_events.hpp",
-    "src/minimap.hpp",
-    "src/mouse_events.hpp",
-    "src/multiplayer.hpp",
-    "src/multiplayer_connect.hpp",
-    "src/multiplayer_create.hpp",
-    "src/multiplayer_lobby.hpp",
-    "src/multiplayer_ui.hpp",
-    "src/multiplayer_wait.hpp",
-    "src/network.hpp",
-    "src/network_worker.hpp",
-    "src/pathfind.hpp",
-    "src/pathutils.hpp",
-    "src/play_controller.hpp",
-    "src/playcampaign.hpp",
-    "src/playmp_controller.hpp",
-    "src/playsingle_controller.hpp",
-    "src/playturn.hpp",
-    "src/preferences.hpp",
-    "src/preferences_display.hpp",
-    "src/publish_campaign.hpp",
-    "src/race.hpp",
-    "src/random.hpp",
-    "src/replay.hpp",
-    "src/replay_controller.hpp",
-    "src/reports.hpp",
-    "src/scoped_resource.hpp",
-    "src/sha1.hpp",
-    "src/settings.hpp",
-    "src/sdl_utils.hpp",
-    "src/show_dialog.hpp",
-    "src/sound.hpp",
-    "src/soundsource.hpp",
-    "src/statistics.hpp",
-    "src/team.hpp",
-    "src/terrain.hpp",
-    "src/terrain_filter.hpp",
-    "src/terrain_translation.hpp",
-    "src/theme.hpp",
-    "src/thread.hpp",
-    "src/titlescreen.hpp",
-    "src/tooltips.hpp",
-    "src/tstring.hpp",
-    "src/unit.hpp",
-    "src/unit_abilities.hpp",
-    "src/unit_animation.hpp",
-    "src/unit_display.hpp",
-    "src/unit_frame.hpp",
-    "src/unit_map.hpp",
-    "src/unit_types.hpp",
-    "src/upload_log.hpp",
-    "src/util.hpp",
-    "src/variable.hpp",
-    "src/video.hpp",
-    "src/wml_separators.hpp",
-    "src/wesconfig.h",
-    "src/wml_exception.hpp",
-]
+headers = Split("""
+    src/tools/exploder_composer.hpp
+    src/tools/exploder_utils.hpp
+    src/tools/exploder_cutter.hpp
+    src/serialization/tokenizer.hpp
+    src/serialization/parser.hpp
+    src/serialization/binary_or_text.hpp
+    src/serialization/binary_wml.hpp
+    src/serialization/preprocessor.hpp
+    src/serialization/string_utils.hpp
+    src/widgets/progressbar.hpp
+    src/widgets/textbox.hpp
+    src/widgets/combo.hpp
+    src/widgets/file_menu.hpp
+    src/widgets/scrollpane.hpp
+    src/widgets/menu.hpp
+    src/widgets/button.hpp
+    src/widgets/label.hpp
+    src/widgets/slider.hpp
+    src/widgets/scrollbar.hpp
+    src/widgets/widget.hpp
+    src/widgets/scrollarea.hpp
+    src/server/player.hpp
+    src/server/game.hpp
+    src/server/input_stream.hpp
+    src/server/proxy.hpp
+    src/server/metrics.hpp
+    src/editor/editor_undo.hpp
+    src/editor/map_manip.hpp
+    src/editor/editor_layout.hpp
+    src/editor/editor.hpp
+    src/editor/editor_palettes.hpp
+    src/editor/editor_dialogs.hpp
+    src/about.hpp
+    src/actions.hpp
+    src/ai.hpp
+    src/ai2.hpp
+    src/ai_dfool.hpp
+    src/ai_interface.hpp
+    src/ai_python.hpp
+    src/animated.hpp
+    src/animated.i
+    src/array.hpp
+    src/astarnode.hpp
+    src/attack_prediction.hpp
+    src/builder.hpp
+    src/cavegen.hpp
+    src/clipboard.hpp
+    src/color_range.hpp
+    src/config.hpp
+    src/config_adapter.hpp
+    src/construct_dialog.hpp
+    src/cursor.hpp
+    src/dialogs.hpp
+    src/display.hpp
+    src/events.hpp
+    src/file_chooser.hpp
+    src/filesystem.hpp
+    src/floating_textbox.hpp
+    src/font.hpp
+    src/game_config.hpp
+    src/game_display.hpp
+    src/game_errors.hpp
+    src/game_events.hpp
+    src/game_preferences.hpp
+    src/gamestatus.hpp
+    src/generic_event.hpp
+    src/gettext.hpp
+    src/global.hpp
+    src/halo.hpp
+    src/help.hpp
+    src/hotkeys.hpp
+    src/image.hpp
+    src/intro.hpp
+    src/key.hpp
+    src/language.hpp
+    src/leader_list.hpp
+    src/loadscreen.hpp
+    src/log.hpp
+    src/map.hpp
+    src/map_create.hpp
+    src/map_label.hpp
+    src/mapgen.hpp
+    src/mapgen_dialog.hpp
+    src/marked-up_text.hpp
+    src/menu_events.hpp
+    src/minimap.hpp
+    src/mouse_events.hpp
+    src/multiplayer.hpp
+    src/multiplayer_connect.hpp
+    src/multiplayer_create.hpp
+    src/multiplayer_lobby.hpp
+    src/multiplayer_ui.hpp
+    src/multiplayer_wait.hpp
+    src/network.hpp
+    src/network_worker.hpp
+    src/pathfind.hpp
+    src/pathutils.hpp
+    src/play_controller.hpp
+    src/playcampaign.hpp
+    src/playmp_controller.hpp
+    src/playsingle_controller.hpp
+    src/playturn.hpp
+    src/preferences.hpp
+    src/preferences_display.hpp
+    src/publish_campaign.hpp
+    src/race.hpp
+    src/random.hpp
+    src/replay.hpp
+    src/replay_controller.hpp
+    src/reports.hpp
+    src/scoped_resource.hpp
+    src/sha1.hpp
+    src/settings.hpp
+    src/sdl_utils.hpp
+    src/show_dialog.hpp
+    src/sound.hpp
+    src/soundsource.hpp
+    src/statistics.hpp
+    src/team.hpp
+    src/terrain.hpp
+    src/terrain_filter.hpp
+    src/terrain_translation.hpp
+    src/theme.hpp
+    src/thread.hpp
+    src/titlescreen.hpp
+    src/tooltips.hpp
+    src/tstring.hpp
+    src/unit.hpp
+    src/unit_abilities.hpp
+    src/unit_animation.hpp
+    src/unit_display.hpp
+    src/unit_frame.hpp
+    src/unit_map.hpp
+    src/unit_types.hpp
+    src/upload_log.hpp
+    src/util.hpp
+    src/variable.hpp
+    src/video.hpp
+    src/wml_separators.hpp
+    src/wesconfig.h
+    src/wml_exception.hpp
+    """)
 
 sources =   libwesnoth_sources + libwesnoth_core_sources + \
             libwesnothd_sources + libcampaignd_sources + \
