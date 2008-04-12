@@ -103,7 +103,7 @@ You can make the following special build targets:
     sanity-check = run a pre-release sanity check on the distribution.
     manual = regenerate English-language manual and, possibly, localized manuals if appropriate xmls exist.
 
-Files made by targets maked '(*)' are cleaned by cleaned by 'scons -c all'
+Files made by targets marked '(*)' are cleaned by cleaned by 'scons -c all'
 
 Options are cached in a file named .scons-option-cache and persist to later
 invocations.  The file is editable. Delete it to start fresh.  Current option
