@@ -19,7 +19,6 @@
 
 #include "global.hpp"
 
-#include "config.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 
