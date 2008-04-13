@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2008-04-13 16:21+0200\n"
-"PO-Revision-Date: 2008-02-21 22:14+0100\n"
+"PO-Revision-Date: 2008-04-13 23:39+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -121,14 +121,15 @@ msgstr "Définit la valeur de bits par pixel (couleurs). Exemple : B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "skip menu, show directly the campaign menu."
 msgstr ""
+"Saute le menu principal pour aller directement dans le menu des campagnes."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
@@ -262,14 +263,14 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:94
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:97
 msgid "replays the game loaded with --load option."
-msgstr ""
+msgstr "Rejoue la partie chargée avec l'option --load."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:97 ../../doc/man/wesnothd.6:58
@@ -316,9 +317,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:114
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:120
@@ -375,9 +376,9 @@ msgstr "Définit la résolution de l'écran. Exemple : B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:133
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<<-s,\\ --server\\ [serveur]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:137
@@ -385,6 +386,9 @@ msgid ""
 "skip menu, connect to specified host if any, otherwise connect to the first "
 "server in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"Saute le menu principal, se connecte au serveur s'il est spécifié ou bien au "
+"premier serveur stocké dans les preferences. Exemple : B<--server server."
+"wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:137
