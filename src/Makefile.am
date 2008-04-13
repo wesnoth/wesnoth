@@ -289,6 +289,13 @@ noinst_HEADERS = \
 	filesystem.hpp \
 	floating_textbox.hpp \
 	font.hpp \
+	formula_ai.hpp \
+	formula_callable_fwd.hpp \
+	formula_callable.hpp \
+	formula_function.hpp \
+	formula_fwd.hpp \
+	formula.hpp \
+	formula_tokenizer.hpp \
 	game_config.hpp \
 	game_display.hpp \
 	game_errors.hpp \
