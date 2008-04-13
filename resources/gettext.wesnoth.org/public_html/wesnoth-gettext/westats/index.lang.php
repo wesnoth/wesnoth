@@ -129,10 +129,10 @@ Version:
 <td align="left">
 Show:
 <a href="index.php?package=alloff&amp;order=trans">Official packages</a>
-||<a href="index.php?package=allcore&amp;order=trans">Official core packages</a>
-||<a href="index.php?package=all&amp;order=trans">All packages</a>
-||<a href="index.php?package=allun&amp;order=trans">All unofficial packages</a>
-||<strong>By language</strong>
+|| <a href="index.php?package=allcore&amp;order=trans">Official core packages</a>
+|| <a href="index.php?package=all&amp;order=trans">All packages</a>
+|| <a href="index.php?package=allun&amp;order=trans">All unofficial packages</a>
+|| <strong>By language</strong>
 <br/>
 Language:
 <?

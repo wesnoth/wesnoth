@@ -83,7 +83,7 @@ function getdomain($string) {
 }
 
 function getpackage($string) {
-	return str_replace("wesnoth-","",$string) . "-po";
+	return str_replace("wesnoth-","",$string);
 }
 
 ?>

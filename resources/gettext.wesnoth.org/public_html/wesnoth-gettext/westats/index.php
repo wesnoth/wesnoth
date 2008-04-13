@@ -235,25 +235,25 @@ Show:
 <? }else{ ?>
 <a href="?package=alloff&amp;order=<?=$order?>&amp;version=<?=$version?>">All official packages</a>
 <? }
-echo "||";
+echo " || ";
 if($package=='allcore'){ ?>
 <strong>Official core packages</strong>
 <? }else{ ?>
 <a href="?package=allcore&amp;order=<?=$order?>&amp;version=<?=$version?>">Official core packages</a>
 <? }
-echo "||";
+echo " || ";
    if($package=='all'){ ?>
 <strong>All packages</strong>
 <? }else{ ?>
 <a href="?package=all&amp;order=<?=$order?>&amp;version=<?=$version?>">All packages</a>
 <? }
-echo "||";
+echo " || ";
 if($package=='allun'){ ?>
 <strong>All unofficial packages</strong>
 <? }else{ ?>
 <a href="?package=allun&amp;order=<?=$order?>&amp;version=<?=$version?>">All unofficial packages</a>
 <? }
-echo "||";
+echo " || ";
 ?>
 <a href="index.lang.php?version=<?=$version?>">By language</a>
 <?
