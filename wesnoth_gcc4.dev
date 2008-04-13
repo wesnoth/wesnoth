@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth_gcc4.dev
 Name=wesnoth
-UnitCount=279
+UnitCount=281
 Type=0
 Ver=1
 ObjFiles=
@@ -27,7 +27,7 @@ CustomMakefile=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=0000000000000000010100
+CompilerSettings=0000000000000001010000
 
 [Unit4]
 FileName=src\widgets\menu.cpp
@@ -2849,6 +2849,26 @@ BuildCmd=
 
 [Unit279]
 FileName=src\gui\widgets\helper.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit280]
+FileName=src\gui\widgets\tooltip.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit281]
+FileName=src\gui\widgets\tooltip.hpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
