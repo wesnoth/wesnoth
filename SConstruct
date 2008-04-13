@@ -730,7 +730,7 @@ test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth],
             LIBS = env["LIBS"] + ['boost_unit_test_framework'])
 
 # FIXME: Currently this will only work under Linux
-env["svnrev"] = commands.getoutput("svnversion -n . 2>/dev/null")
+env["svnrev"] = commands.getoutput("LC_ALL=C svnversion -n . 2>/dev/null")
 env.Depends('src/game_config.o', 'src/revision.hpp')
 revision_define = ""
 if env["svnrev"] != "" and env["svnrev"] != "exported":
