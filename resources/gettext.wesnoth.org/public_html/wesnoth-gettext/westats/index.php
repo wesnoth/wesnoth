@@ -276,7 +276,6 @@ echo "||";
 			$packdisplay = $pack;
 			if($i==1){
 				$pack = getdomain($pack);
-				$packdisplay = substr($packdisplay,0,-3);
 			}
 			if($pack==$package){ 
 				if($i==1){
