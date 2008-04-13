@@ -1,24 +1,24 @@
 #!/bin/bash
 SVNCHECKOUTPATH=/public/vhost/w/wesnoth/source
 
-echo update started at `date` >> ~/g.w.o-updates.log
+echo update started at `date` >> $HOME/g.w.o-updates.log
 
 #update the 1.4 checkout
 cd $SVNCHECKOUTPATH/1.4/po
-svn cleanup
+#svn cleanup
 svn up
 
 #update the trunk checkout
 cd $SVNCHECKOUTPATH/trunk/po
-svn cleanup
+#svn cleanup
 svn up
 
 #update the wescamp checkout
-#cd $SVNCHECKOUTPATH/wescamp-i18n/
+cd $SVNCHECKOUTPATH/wescamp-i18n/
 #svn cleanup
-#svn up
+svn up trunk/ branches/
 
 #update the stats
-cd ~/html/gettext/
-php grab-stats.php >> ~/g.w.o-updates.log
-echo update completed at `date` >> ~/g.w.o-updates.log
+cd $HOME/html/gettext/
+php grab-stats.php >> $HOME/g.w.o-updates.log
+echo update completed at `date` >> $HOME/g.w.o-updates.log
