@@ -648,7 +648,7 @@ def sanity_check(filename, lines):
             if m and not m.group(1):
                 msg = '"%s", line %d: translatability mark before non-string' % \
                       (filename, i+1)
-                print >>sys.stderr, msg
+                print msg
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units deived via [base_unit].
     # Also, build dictionaries of unit movement types and races
@@ -892,7 +892,7 @@ def sanity_check(filename, lines):
                 pass
             elif key == 'name':		# FIXME: check this someday
                 pass
-            elif key in ("message", "name", "description", "story", "note", "text", "summary", "caption", "label", "cannot_use_message", "set_description", "user_team_name") and not value.startswith("$"):
+            elif key in ("message", "name", "description", "story", "note", "text", "summary", "caption", "label", "cannot_use_message", "set_description", "userteam_name") and not value.startswith("$"):
                 if not has_tr_mark:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
@@ -1458,7 +1458,7 @@ def hack_syntax(filename, lines):
                 in_death_commented = lines[i].strip().startswith("#")
             elif "[/death]" in lines[i]:
                 if frame_start is None:
-                    print >>sys.stderr, '"%s", %d: [death] with no frames' % (filename, i)
+                    print '"%s", %d: [death] with no frames' % (filename, i)
                     continue
                 # Find the image tag
                 for inside in range(frame_start, frame_end):
@@ -1466,7 +1466,7 @@ def hack_syntax(filename, lines):
                         image = lines[inside].strip().split("=")[1]
                         break
                 else:
-                    print >>sys.stderr,'"%s", line %d: no image in last frame'\
+                    print'"%s", line %d: no image in last frame'\
                           % (filename, i)
                     continue
                 # Modify the death wrapper
@@ -1512,7 +1512,7 @@ def hack_syntax(filename, lines):
             name_pos = wmlfind("name=", name_pos)
         for (key, linenos) in duplist.items():
             if len(linenos) > 1:
-                print >>sys.stderr, 'warning: duplicated attack %s at:' % key
+                print 'warning: duplicated attack %s at:' % key
                 for dup in linenos:
                     print '"%s", %d: %s' % (filename, dup, key)
     # Lift obsolete image_short and image_long tags
@@ -1669,7 +1669,7 @@ def translator(filename, mapxforms, textxform, versions):
             if refname == refname.upper():
                 refname = None
             if 'mask=' in line and refname and not refname.endswith(".mask"):
-                print >>sys.stderr, \
+                print \
                       '"%s", line %d: fatal error, mask file without .mask extension (%s)' \
                       % (filename, lineno+1, refname)
                 sys.exit(1)
@@ -1749,7 +1749,7 @@ def translator(filename, mapxforms, textxform, versions):
                         fields = map(lambda x: x, line)
                     outmap.append(fields)
                     if not maskwarn and maptype == 'map' and "_s" in line:
-                        print >>sys.stderr, \
+                        print \
                               '"%s", line %d: warning, fog in map file' \
                               % (filename, lineno+1)
                         maskwarn = True
@@ -1810,9 +1810,9 @@ def translator(filename, mapxforms, textxform, versions):
             newdata.append(newline + terminator)
             if newline != line:
                 if verbose > 0:
-                    print >>sys.stderr, 'wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
+                    print 'wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
         elif "map_data=" in line and line.count('"') > 1:
-            print >>sys.stderr, 'wmllint: "%s", line %d: one-line map.' % (filename, lineno)
+            print 'wmllint: "%s", line %d: one-line map.' % (filename, lineno)
             newdata.append(line + terminator)
         else:
             # Handle text (non-map) lines.  It can use within().
@@ -1860,7 +1860,7 @@ def translator(filename, mapxforms, textxform, versions):
                 unbalanced = False
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
-        print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
+        print '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
     tagstack = []
     if iswml(filename):
         # Perform semantic sanity checks
@@ -1890,7 +1890,7 @@ def translator(filename, mapxforms, textxform, versions):
             if singleline:
                 singleline = False
                 if not display_state and quotecount % 2:
-                    print >>sys.stderr, '"%s", line %d: newline within string' % (filename, linecount)
+                    print '"%s", line %d: newline within string' % (filename, linecount)
             linecount += 1
         elif transformed[i-7:i] == "message" and not transformed[i] == ']':
             singleline = True
@@ -2018,7 +2018,7 @@ if __name__ == '__main__':
     if oldversion in versions:
         versions = versions[versions.index(oldversion):]
     else:
-        print >>sys.stderr, "wmllint: unrecognized version."
+        print "wmllint: unrecognized version."
         sys.exit(1)
     if upconvert and not dryrun and not clean and not revert and not diffs and len(versions) > 1:
         explain = "Upgrades for:"
@@ -2227,6 +2227,6 @@ if __name__ == '__main__':
         # Constency-check everything we got from the file scans
         consistency_check()
     except KeyboardInterrupt:
-        print >>sys.stderr, "Aborted"
+        print "Aborted"
 
 # wmllint ends here
