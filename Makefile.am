@@ -182,7 +182,7 @@ data-dist:
 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = config/config.rpath config/mkinstalldirs config/py-compile src/revision.hpp
+EXTRA_DIST = config/config.rpath config/mkinstalldirs config/py-compile
 
 if PYTHON_INSTALL
 pkgpython_PYTHON = data/tools/wesnoth/wmltools.py \
