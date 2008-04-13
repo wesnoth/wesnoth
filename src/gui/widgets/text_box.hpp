@@ -46,7 +46,6 @@ public:
 	unsigned get_state() const { return state_; }
 
 	void mouse_move(tevent_handler&);
-	void mouse_hover(tevent_handler&);
 
 	void mouse_left_button_down(tevent_handler& event);
 	void mouse_left_button_up(tevent_handler&);

@@ -18,6 +18,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "config.hpp"
+#include "font.hpp"
 #include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
@@ -58,12 +59,22 @@ twindow::twindow(CVideo& video,
 	need_layout_(true),
 	restorer_(),
 	canvas_background_(),
-	canvas_foreground_()
+	canvas_foreground_(),
+	tooltip_(),
+	help_popup_()
 {
 	set_x(x);
 	set_y(y);
 	set_width(w);
 	set_height(h);
+
+	tooltip_.set_definition("default");
+	tooltip_.load_config();
+	tooltip_.set_visible(false);
+
+	help_popup_.set_definition("default");
+	help_popup_.load_config();
+	help_popup_.set_visible(false);
 }
 
 int twindow::show(const bool restore, void* /*flip_function*/)
@@ -126,6 +137,12 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 				canvas_foreground_.draw();
 				SDL_Rect blit = {0, 0, screen->w, screen->h};
 				SDL_BlitSurface(canvas_foreground_.surf(), 0, screen, &blit);
+			}
+			if(tooltip_.dirty()) {
+				tooltip_.draw(screen);
+			}
+			if(help_popup_.dirty()) {
+				help_popup_.draw(screen);
 			}
 
 			rect = get_rect();
@@ -226,6 +243,84 @@ SDL_Rect twindow::get_client_rect() const
 	
 	return result;
 
+}
+
+void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
+{
+	DBG_G << "Showing tooltip message: '" << tooltip << "'.\n";
+
+	assert(!tooltip.empty());
+
+	twidget* widget = get_widget(location);
+	assert(widget);
+	
+	const SDL_Rect widget_rect = widget->get_rect();
+	const SDL_Rect client_rect = get_client_rect();
+
+	tooltip_.set_label(tooltip);
+	const tpoint size = tooltip_.get_best_size();
+
+	SDL_Rect tooltip_rect = {0, 0, size.x, size.y};
+
+	// Find the best position to place the widget
+	if(widget_rect.y - size.y > 0) {
+		// put above
+		tooltip_rect.y = widget_rect.y - size.y;
+	} else {
+		//put below no test
+		tooltip_rect.y = widget_rect.y + widget_rect.h;
+	}
+
+	if(widget_rect.x + size.x < client_rect.w) {
+		// Directly above the mouse
+		tooltip_rect.x = widget_rect.x;
+	} else {
+		// shift left, no test
+		tooltip_rect.x = client_rect.w - size.x;
+	}
+
+	tooltip_.set_size(tooltip_rect);
+	tooltip_.set_visible();
+}
+
+void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
+{
+	// Note copy past of twindow::do_show_tooltip except that the help may be empty.
+	DBG_G << "Showing help message: '" << help_popup << "'.\n";
+
+	if(help_popup.empty()) {
+		return;
+	}
+	twidget* widget = get_widget(location);
+	assert(widget);
+	
+	const SDL_Rect widget_rect = widget->get_rect();
+	const SDL_Rect client_rect = get_client_rect();
+
+	help_popup_.set_label(help_popup);
+	const tpoint size = help_popup_.get_best_size();
+
+	SDL_Rect help_popup_rect = {0, 0, size.x, size.y};
+
+	// Find the best position to place the widget
+	if(widget_rect.y - size.y > 0) {
+		// put above
+		help_popup_rect.y = widget_rect.y - size.y;
+	} else {
+		//put below no test
+		help_popup_rect.y = widget_rect.y + widget_rect.h;
+	}
+
+	if(widget_rect.x + size.x < client_rect.w) {
+		// Directly above the mouse
+		help_popup_rect.x = widget_rect.x;
+	} else {
+		// shift left, no test
+		help_popup_rect.x = client_rect.w - size.x;
+	}
+
+	help_popup_.set_size(help_popup_rect);
+	help_popup_.set_visible();
 }
 
 } // namespace gui2

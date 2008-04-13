@@ -75,11 +75,6 @@ void ttext_::mouse_move(tevent_handler&)
 	// if in select mode select text and move cursor
 }
 
-void ttext_::mouse_hover(tevent_handler&)
-{
-	DBG_G_E << "Text_box: mouse hover.\n"; 
-}
-
 void ttext_::mouse_left_button_down(tevent_handler& event) 
 { 
 	DBG_G_E << "Text_box: left mouse button down.\n"; 

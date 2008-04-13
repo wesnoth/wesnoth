@@ -47,12 +47,6 @@ void tbutton::mouse_enter(tevent_handler&)
 	set_state(FOCUSSED);
 }
 
-void tbutton::mouse_hover(tevent_handler&)
-{
-	DBG_G_E << "Button: mouse hover.\n"; 
-
-}
-
 void tbutton::mouse_leave(tevent_handler&) 
 { 
 	DBG_G_E << "Button: mouse leave.\n"; 

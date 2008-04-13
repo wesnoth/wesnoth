@@ -193,6 +193,18 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	VALIDATE(text_boxs.find("default") != text_boxs.end(), _ ("No default text box defined."));
 
+	/***** Tooltip definitions *****/
+	const config::child_list& tooltip_cfg = cfg.get_children("tooltip_definition");
+	for(std::vector<config*>::const_iterator itor = tooltip_cfg.begin();
+			itor != tooltip_cfg.end(); ++itor) {
+
+		std::pair<std::string, ttooltip_definition> child;
+		child.first = child.second.read(**itor);
+		tooltips.insert(child);
+	}
+
+	VALIDATE(tooltips.find("default") != tooltips.end(), _ ("No default tooltip defined."));
+
 	/***** Window types *****/
 	const config::child_list& window_instance_cfgs = cfg.get_children("window");
 	for(std::vector<config*>::const_iterator itor = window_instance_cfgs.begin();
@@ -449,6 +461,51 @@ void ttext_box_definition::tresolution::read_extra(const config& cfg)
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
 }
 
+const std::string& ttooltip_definition::read(const config& cfg)
+{
+/*WIKI
+ * [tooltip_definition]
+ * The definition of a tooltip box.
+ *
+ *     id = (string = "")            Unique id for this gui (theme).
+ *     description = (t_string = "") Unique translatable name for this gui.
+ *
+ *     [resolution]                  The definitions of the tooltip in various
+ *                                   resolutions.
+ * [/tooltip_definition]
+ */
+	id = cfg["id"];
+	description = cfg["description"];
+
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
+
+	DBG_G_P << "Parsing tooltip " << id << '\n';
+
+	const config::child_list& cfgs = cfg.get_children("resolution");
+	VALIDATE(!cfgs.empty(), _("No resolution defined."));
+	for(std::vector<config*>::const_iterator itor = cfgs.begin();
+			itor != cfgs.end(); ++itor) {
+
+		resolutions.push_back(new tresolution(**itor));
+	}
+
+	return id;
+}
+
+void ttooltip_definition::tresolution::read_extra(const config& cfg)
+{
+/*WIKI
+ * [label_definition][resolution]
+ *     [state_enabled]               Settings for the enabled state.
+ * [/resolution][/label_definition]
+ */
+
+	// Note only one state for a tooltip.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+}
+
+
 const std::string& twindow_definition::read(const config& cfg)
 {
 /*WIKI
@@ -603,6 +660,36 @@ tresolution_definition_* get_text_box(const std::string& definition)
 	for(std::vector<tresolution_definition_*>::const_iterator 
 			itor = text_box->second.resolutions.begin(),
 			end = text_box->second.resolutions.end();
+			itor != end;
+			++itor) {
+
+		if(screen_width <= (**itor).window_width &&
+				screen_height <= (**itor).window_height) {
+
+			return *itor;
+		} else if (itor == end - 1) {
+			return *itor;
+		}
+	}
+
+	assert(false);
+}
+
+tresolution_definition_* get_tooltip(const std::string& definition)
+{
+	std::map<std::string, ttooltip_definition>::const_iterator 
+		tooltip = current_gui->second.tooltips.find(definition);
+
+	if(tooltip == current_gui->second.tooltips.end()) {
+		LOG_G << "Tooltip: definition '" 
+			<< definition << "' not found, falling back to 'default'.\n";
+		tooltip = current_gui->second.tooltips.find("default");
+		assert(tooltip != current_gui->second.tooltips.end());
+	}
+
+	for(std::vector<tresolution_definition_*>::const_iterator 
+			itor = tooltip->second.resolutions.begin(),
+			end = tooltip->second.resolutions.end();
 			itor != end;
 			++itor) {
 

@@ -52,6 +52,18 @@ tcontrol::tcontrol(const unsigned canvas_count) :
 {
 }
 
+void tcontrol::mouse_hover(tevent_handler& event)
+{
+	DBG_G_E << "Control: mouse hover.\n"; 
+	event.show_tooltip(tooltip_, 5000); //FIXME timout should be a parameter
+}
+
+void tcontrol::help_key(tevent_handler& event)
+{
+	DBG_G_E << "Control: help key.\n"; 
+	event.show_help_popup(help_message_, 0); //FIXME timout should be a parameter
+}
+
 void tcontrol::set_width(const unsigned width)
 { 
 	// resize canvasses
@@ -121,6 +133,8 @@ tpoint tcontrol::get_best_size() const
 
 	SDL_Rect rect = font::line_size(label_, config_->text_font_size, config_->text_font_style);
 	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
+	// FIXME test x and y separatly if Y == 0 
+	// FIXME also test for max
 	return maximum(default_size, text_size);
 }
 
@@ -148,7 +162,19 @@ void tcontrol::set_canvas_text()
 
 void tcontrol::draw(surface& surface)
 {
+	set_dirty(false);
 	SDL_Rect rect = get_rect();
+
+	if(!visible_) {
+		// When not visible we first restore our original surface.
+		// Next time when visible we grab the background again.
+		if(restorer_) {
+			DBG_G_D << "Control: drawing setting invisible.\n";
+			SDL_BlitSurface(restorer_, 0, surface, &rect);
+			restorer_ = 0;
+		}
+		return;
+	}
 
 	DBG_G_D << "Control: drawing.\n";
 	if(!restorer_) {
@@ -160,8 +186,6 @@ void tcontrol::draw(surface& surface)
 	}
 	canvas(get_state()).draw(true);
 	SDL_BlitSurface(canvas(get_state()).surf(), 0, surface, &rect);
-
-	set_dirty(false);
 }
 
 } // namespace gui2

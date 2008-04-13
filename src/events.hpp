@@ -21,6 +21,7 @@
 //our user-defined double-click event type
 #define DOUBLE_CLICK_EVENT SDL_USEREVENT
 #define HOVER_EVENT (SDL_USEREVENT + 1)
+#define HOVER_REMOVE_POPUP_EVENT (SDL_USEREVENT + 2)
 
 namespace events
 {

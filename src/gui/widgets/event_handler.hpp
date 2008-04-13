@@ -19,13 +19,14 @@
 #define __GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED__
 
 #include "events.hpp"
+#include "gui/widgets/helper.hpp"
 
 #include "SDL.h"
 
+class t_string;
 
 namespace gui2{
 
-class tpoint;
 class twidget;
 class twindow;
 
@@ -47,6 +48,13 @@ public:
 
 	void mouse_capture(const bool capture = true);
 	void keyboard_capture(twidget* widget) { keyboard_focus_ = widget; }
+
+	//! We impement the handling of the tip, but call the do functions
+	//! which are virtual.
+	void show_tooltip(const t_string& tooltip, const unsigned timeout);
+	void remove_tooltip();
+	void show_help_popup(const t_string& help_popup, const unsigned timeout);
+	void remove_help_popup();
 
 private:
 	//! we create a new event context so we're always modal.
@@ -70,6 +78,10 @@ private:
 	                                   //! invalidates the pending hover event.
     bool had_hover_;                   //! A widget only gets one hover event per enter cycle. 
 
+	//! The widget that created the tooltip / tooltip.
+	twidget* tooltip_;
+	twidget* help_popup_;
+
 
 	twidget* mouse_focus_;
 	bool mouse_captured_;
@@ -89,6 +101,10 @@ private:
 
 	void key_down(const SDL_Event& event);
 
+	virtual void do_show_tooltip(const tpoint& location, const t_string& tooltip) = 0;
+	virtual void do_remove_tooltip() = 0;
+	virtual void do_show_help_popup(const tpoint& location, const t_string& help_popup) = 0;
+	virtual void do_remove_help_popup() = 0;
 };
 
 } // namespace gui2

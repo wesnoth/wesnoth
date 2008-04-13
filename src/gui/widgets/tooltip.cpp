@@ -12,7 +12,7 @@
    see the copying file for more details.
 */
 
-#include "gui/widgets/label.hpp"
+#include "gui/widgets/tooltip.hpp"
 
 #include "log.hpp"
 
@@ -36,21 +36,12 @@
 #define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
 #define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
 
-
 namespace gui2 {
 
-void tlabel::set_state(tstate state)
-{
-	if(state != state_) {
-		state_ = state;
-		set_dirty(true);
-	}
-}
-
-void tlabel::load_config()
+void ttooltip::load_config()
 {
 	if(!config()) {
-		set_config(get_label(definition()));
+		set_config(get_tooltip(definition()));
 
 		assert(canvas().size() == config()->state.size());
 		for(size_t i = 0; i < canvas().size(); ++i) {
@@ -62,5 +53,4 @@ void tlabel::load_config()
 }
 
 } // namespace gui2
-
 

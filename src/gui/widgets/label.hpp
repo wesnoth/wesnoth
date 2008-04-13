@@ -34,8 +34,6 @@ public:
 	bool get_active() const { return state_ == ENABLED; }
 	unsigned get_state() const { return state_; }
 
-	void mouse_hover(tevent_handler&);
-
 	//! Inherited from twidget.
 	void load_config();
 

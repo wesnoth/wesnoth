@@ -57,10 +57,14 @@ public:
 
 	tbuilder_control(const config& cfg);
 
+	void init_control(tcontrol* control) const;
+
 	//! Parameters for the control.
 	std::string id;
 	std::string definition;
 	t_string label;
+	t_string tooltip;
+	t_string help;
 };
 
 struct tbuilder_button : public tbuilder_control
@@ -360,7 +364,9 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 	tbuilder_widget(cfg),
 	id(cfg["id"]),
 	definition(cfg["definition"]),
-	label(cfg["label"])
+	label(cfg["label"]),
+	tooltip(cfg["tooltip"]),
+	help(cfg["help"])
 {
 
 	if(definition.empty()) {
@@ -372,13 +378,22 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 		<< id << "' and definition '" << definition << "'.\n";
 }
 
+void tbuilder_control::init_control(tcontrol* control) const
+{
+	assert(control);
+
+	control->set_id(id);
+	control->set_definition(definition);
+	control->set_label(label);
+	control->set_tooltip(tooltip);
+	control->set_help_message(help);
+}
+
 twidget* tbuilder_button::build() const
 {
 	tbutton *button = new tbutton();
 
-	button->set_id(id);
-	button->set_definition(definition);
-	button->set_label(label);
+	init_control(button);
 
 	if(retval_) {
 		button->set_retval(retval_);
@@ -402,9 +417,7 @@ twidget* tbuilder_label::build() const
 {
 	tlabel *tmp_label = new tlabel();
 
-	tmp_label->set_id(id);
-	tmp_label->set_definition(definition);
-	tmp_label->set_label(label);
+	init_control(tmp_label);
 
 	DBG_G << "Window builder: placed label '" << id << "' with defintion '" 
 		<< definition << "'.\n";
@@ -416,8 +429,8 @@ twidget* tbuilder_text_box::build() const
 {
 	ttext_box *text_box = new ttext_box();
 
-	text_box->set_id(id);
-	text_box->set_definition(definition);
+	init_control(text_box);
+
 	// A textbox doesn't have a label but a text
 	text_box->set_text(label);
 

@@ -33,7 +33,6 @@ public:
 		}
 
 	void mouse_enter(tevent_handler&);
-	void mouse_hover(tevent_handler&);
 	void mouse_leave(tevent_handler&);
 
 	void mouse_left_button_down(tevent_handler& event);

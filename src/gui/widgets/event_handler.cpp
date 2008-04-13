@@ -24,6 +24,7 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
+#include "tstring.hpp"
 #include "variable.hpp"
 
 #define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
@@ -52,6 +53,25 @@ static Uint32 hover_callback(Uint32 interval, void *param)
 	return 0;
 }
 
+static Uint32 popup_callback(Uint32 interval, void*)
+{
+	DBG_G_E << "Pushing popup removal event in queue.\n";
+
+	SDL_Event event;
+	SDL_UserEvent data;
+
+	data.type = HOVER_REMOVE_POPUP_EVENT;
+	data.code = 0;
+	data.data1 = 0;
+	data.data2 = 0;
+
+	event.type = HOVER_REMOVE_POPUP_EVENT;
+	event.user = data;
+	
+	SDL_PushEvent(&event);
+	return 0;
+}
+
 //! At construction we should get the state and from that moment on we keep
 //! track of the changes ourselves, not yet sure what happens when an input
 //! blocker is used.
@@ -71,6 +91,8 @@ tevent_handler::tevent_handler() :
 	hover_id_(0),
 	hover_box_(),
 	had_hover_(false),
+	tooltip_(0),
+	help_popup_(0),
 	mouse_focus_(0),
 	mouse_captured_(false),
 	keyboard_focus_(0)
@@ -144,6 +166,11 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			mouse_hover(event, 0);
 			break;
 
+		case HOVER_REMOVE_POPUP_EVENT:
+			remove_tooltip();
+			remove_help_popup();
+			break;
+
 		case SDL_KEYDOWN:
 			key_down(event);
 			break;
@@ -166,8 +193,77 @@ void tevent_handler::mouse_capture(const bool capture)
 	mouse_captured_ = capture;
 }
 
+void tevent_handler::show_tooltip(const t_string& tooltip, const unsigned timeout)
+{
+	DBG_G_E << "Event: show tooltip.\n";
+
+	assert(!tooltip_);
+
+	if(help_popup_) {
+		remove_help_popup();
+	}
+
+	tooltip_ = mouse_focus_;
+
+	do_show_tooltip(get_window().client_position(tpoint(mouse_x_, mouse_y_)), tooltip);
+
+	if(timeout) {
+		SDL_AddTimer(timeout, popup_callback, 0);
+	}
+}
+
+void tevent_handler::remove_tooltip()
+{
+	if(!tooltip_) {
+		return;
+	}
+
+	tooltip_ = 0;
+
+	do_remove_tooltip();
+}
+
+void tevent_handler::show_help_popup(const t_string& help_popup, const unsigned timeout)
+{
+	DBG_G_E << "Event: show help popup.\n";
+
+	if(help_popup_) {
+		DBG_G_E << "Help is already there, bailing out.\n";
+		return;
+	}
+
+	if(tooltip_) {
+		remove_tooltip();
+	}
+
+	// Kill hover events FIXME not documented.
+	had_hover_ = true;
+	hover_pending_ = false;
+
+	help_popup_ = mouse_focus_;
+
+	do_show_help_popup(get_window().client_position(tpoint(mouse_x_, mouse_y_)), help_popup);
+
+	if(timeout) {
+		SDL_AddTimer(timeout, popup_callback, 0);
+	}
+}
+
+void tevent_handler::remove_help_popup()
+{
+	if(!help_popup_) {
+		return;
+	}
+
+	help_popup_ = 0;
+
+	do_remove_help_popup();
+}
+
 void tevent_handler::mouse_enter(const SDL_Event& event, twidget* mouse_over)
 {
+	DBG_G_E << "Event: remove tooltip.\n";
+
 	assert(mouse_over);
 
 	mouse_focus_ = mouse_over;
@@ -224,6 +320,9 @@ void tevent_handler::mouse_leave(const SDL_Event& event, twidget* mouse_over)
 
 	had_hover_ = false;
 	hover_pending_ =false;
+
+	remove_tooltip();
+	remove_help_popup();
 
 	mouse_focus_->mouse_leave(*this);
 	mouse_focus_ = 0;
@@ -352,6 +451,14 @@ void tevent_handler::set_hover(const bool test_on_widget)
 
 void tevent_handler::key_down(const SDL_Event& event)
 {
+	// We capture the F! for the help, but only if the mouse is on an object.
+	if(mouse_focus_/* && !mouse_captured_ 
+			&& event.key.keysym.mod == 0 */ && event.key.keysym.sym == SDLK_F1) {
+
+		mouse_focus_->help_key(*this);
+		return;
+	}
+
 	bool handled = false;
 	if(keyboard_focus_) {
 		keyboard_focus_->key_press(*this, handled, event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);

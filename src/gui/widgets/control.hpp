@@ -32,6 +32,12 @@ public:
 	tcontrol(const unsigned canvas_count);
 	virtual ~tcontrol() {}
 
+	//! Inherted from twidget.
+	void mouse_hover(tevent_handler& event);
+
+	//! Inherted from twidget.
+	void help_key(tevent_handler& event);
+
 	//! Inherited from twidget.
 	void set_width(const unsigned width);
 
@@ -41,7 +47,7 @@ public:
 	//! Inherited from twidget.
 	void set_size(const SDL_Rect& rect);
 
-	void set_visible(const bool visible) 
+	void set_visible(const bool visible = true) 
 		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
 	bool get_visible() const { return visible_; }
 
@@ -50,7 +56,8 @@ public:
 	const t_string& label() const { return label_; }
 
 	// Note setting the tooltip_ doesn't dirty an object.
-	void set_tooltip(const t_string& tooltip) { tooltip_ = tooltip; }
+	void set_tooltip(const t_string& tooltip) 
+		{ tooltip_ = tooltip; set_wants_mouse_hover(!tooltip_.empty()); }
 	const t_string& tooltip() const { return tooltip_; }
 
 	// Note setting the help_message_ doesn't dirty an object.

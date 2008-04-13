@@ -80,9 +80,8 @@ public:
 	virtual void window_resize(tevent_handler&, const unsigned /* new_width */, 
 		const unsigned /* new_height */) {}
 
-#if 0
-	virtual void help(); // send when F1 is pressed on widget to get more help
-#endif
+	//! When F1 is pressed this event is triggered.
+	virtual void help_key(tevent_handler&) {}
 
 	bool wants_mouse_hover() const { return wants_mouse_hover_; }
 
@@ -206,15 +205,15 @@ public:
 	//! loads the configuration of the widget, mainly used for controls.
 	virtual void load_config() {} 
 
+	SDL_Rect get_rect() const 
+		{ return ::create_rect( x_, y_, w_, h_ ); }
+
 protected:	
 	virtual void set_dirty(const bool dirty = true) 
 	{ 
 		dirty_ = dirty; 
 		if(parent_ && dirty) parent_->set_dirty(true);
 	}
-
-	SDL_Rect get_rect() const 
-		{ return ::create_rect( x_, y_, w_, h_ ); }
 
 private:
 	//! The id is the unique name of the widget in a certain context. This is

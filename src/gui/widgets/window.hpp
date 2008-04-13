@@ -24,6 +24,7 @@
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/helper.hpp" 
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/tooltip.hpp"
 
 #include "sdl_utils.hpp"
 #include "video.hpp"
@@ -79,6 +80,10 @@ public:
 	tpoint client_position(const tpoint& screen_position) const
 		{ return tpoint(screen_position.x - get_x(), screen_position.y - get_y()); }
 
+	tpoint screen_position(const tpoint& client_position) const
+		{ return tpoint(client_position.x + get_x(), client_position.y + get_y()); }
+
+
 	void window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height);
 
@@ -88,7 +93,7 @@ public:
 	unsigned get_state() const { return 0; }
 	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
-	// Inherited from twidget.
+	//! Inherited from twidget.
 	tpoint get_minimum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
 	tpoint get_best_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
 	tpoint get_maximum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); }
@@ -120,6 +125,18 @@ private:
 	void resolve_definition();
 
 	SDL_Rect get_client_rect() const;
+
+	//! Inherited from tevent_handler.
+	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
+	void do_remove_tooltip() { tooltip_.set_visible(false); }
+	void do_show_help_popup(const tpoint& location, const t_string& help_popup);
+	void do_remove_help_popup() { help_popup_.set_visible(false); }
+
+	//! Widget for the tooltip.
+	ttooltip tooltip_;
+
+	//! Widget for the help popup FIXME should be thelp_popup.
+	ttooltip help_popup_;
 };
 
 } // namespace gui2
