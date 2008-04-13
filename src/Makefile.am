@@ -315,7 +315,7 @@ game_config.o: revision.hpp
 # Should be touched each time the SVN revision number goes up 
 # Inclusion of this file should be guarded by HAVE_REVISION so checkouts 
 # into a Windows build environment won't break.
-REVISION = $(shell LANG=C svnversion -n $(topdir) 2>/dev/null)
+REVISION = $(shell LC_ALL=C svnversion -n $(topdir) 2>/dev/null)
 .PRECIOUS: revision.hpp
 revision.hpp: FORCE
 	if [ "$(REVISION)" == "" ] || [ "$(REVISION)" == "exported" ]; then echo '' >/tmp/westemp$$$$; \
