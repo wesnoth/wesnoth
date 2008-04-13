@@ -98,6 +98,10 @@ public:
 	tpoint get_best_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
 	tpoint get_maximum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); }
 
+	//! Gets the coordinates of the client area, for external use the height
+	//! and the width are the most interesting things.
+	SDL_Rect get_client_rect() const;
+
 protected:
 private:
 
@@ -123,8 +127,6 @@ private:
 	std::vector<twindow_definition::tresolution>::const_iterator definition_;
 
 	void resolve_definition();
-
-	SDL_Rect get_client_rect() const;
 
 	//! Inherited from tevent_handler.
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);

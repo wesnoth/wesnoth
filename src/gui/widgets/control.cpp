@@ -16,7 +16,9 @@
 
 #include "font.hpp"
 #include "foreach.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
+#include "marked-up_text.hpp"
 #include "util.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
@@ -43,6 +45,8 @@ namespace gui2 {
 
 tcontrol::tcontrol(const unsigned canvas_count) :
 	visible_(true),
+	multiline_label_(false),
+	wrapped_label_(),
 	label_(),
 	tooltip_(),
 	help_message_(),
@@ -94,6 +98,9 @@ void tcontrol::set_size(const SDL_Rect& rect)
 		canvas.set_height(rect.h);
 	}
 
+	// clear the cache.
+	wrapped_label_.clear();
+	
 	// inherited
 	twidget::set_size(rect);
 }
@@ -104,7 +111,8 @@ void tcontrol::set_label(const t_string& label)
 		return;
 	}
 
-	label_ = label; 
+	label_ = label;
+	wrapped_label_.clear();
 	set_canvas_text();
 	set_dirty();
 }
@@ -117,31 +125,107 @@ tpoint tcontrol::get_minimum_size() const
 		return min_size;
 	}
 
-	SDL_Rect rect = font::line_size(label_, config_->text_font_size, config_->text_font_style);
-	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
-	return maximum(min_size, text_size);
+	if(!multiline_label_) {
+		return get_single_line_best_size(min_size);
+	} else {
+		return get_multi_line_best_size(min_size);
+	}
 }
 
 tpoint tcontrol::get_best_size() const
 {
 	assert(config_);
 
+	// Return default on an empty label.
 	const tpoint default_size(config_->default_width, config_->default_height);
 	if(label_.empty()) {
 		return default_size;
 	}
 
-	SDL_Rect rect = font::line_size(label_, config_->text_font_size, config_->text_font_style);
-	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
-	// FIXME test x and y separatly if Y == 0 
-	// FIXME also test for max
-	return maximum(default_size, text_size);
+	if(!multiline_label_) {
+		return get_single_line_best_size(default_size);
+	} else {
+		return get_multi_line_best_size(default_size);
+	}
 }
 
 tpoint tcontrol::get_maximum_size() const
 {
 	assert(config_);
 	return tpoint(config_->max_width, config_->max_height);
+}
+
+tpoint tcontrol::get_single_line_best_size(const tpoint& config_size) const
+{
+	assert(!label_.empty());
+
+	// Get the best size depending on the label.
+	SDL_Rect rect = font::line_size(label_, config_->text_font_size, config_->text_font_style);
+	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
+
+	// Get the best size if default has a 0 value always use the size of the text.
+	tpoint size(0, 0);
+	if(config_size == size) { // config_size == 0,0
+		size = text_size;
+	} else if(!config_size.x) {
+		size = tpoint(text_size.x, maximum(config_size.y, text_size.y));
+	} else if(!config_size.y) {
+		size = tpoint(maximum(config_size.x, text_size.x), text_size.y);
+	} else {
+		size = maximum(config_size, text_size);
+	}
+
+	// Honour the maximum.
+	const tpoint maximum_size(config_->max_width, config_->max_height);
+	if(maximum_size.x && size.x > maximum_size.x) {
+		size.x = maximum_size.x;
+	}
+	if(maximum_size.y && size.y > maximum_size.y) {
+		size.y = maximum_size.y;
+	}
+	return size;
+}
+
+tpoint tcontrol::get_multi_line_best_size(const tpoint& config_size) const
+{
+	assert(!label_.empty());
+
+	// In multiline mode we only expect a fixed width and no
+	// fixed height so we ignore the height ;-)
+	const tpoint maximum_size(config_->max_width, config_->max_height);
+	if(config_size.y || maximum_size.y) {
+		WRN_G << "Control: Multiline items don't respect the wanted height.\n";
+	}
+	unsigned width = 0;
+	if(!config_size.x && !maximum_size.x) {
+		// FIMXE implement
+/*		const twindow* window = get_window();
+		if(window) {
+			const SDL_Rect rect = window->get_client_rect();
+			LOG_G << "Control: Multiline items want a width, falling back to window size.\n";
+			width = rect.w;
+		} else {
+*/			ERR_G << "Control: Multiline items want a width, no window setting hardcoded.\n";
+			width = 100;
+//		}
+	} else {
+
+		if(!config_size.x) {
+			width = maximum_size.x;
+		} else if(!maximum_size.x) {
+			width = config_size.x;
+		} else {
+			width = minimum(config_size.x, maximum_size.x);
+		}
+	}
+
+	static const SDL_Color col = {0, 0, 0, 0};
+	const std::string& wrapped_message = font::word_wrap_text(label_, config_->text_font_size, width);
+	surface surf = font::get_rendered_text(wrapped_message, config_->text_font_size, col);
+	assert(surf);
+
+	std::cerr << "Multiline size for width: " << width << " surface size: "  << surf->w << ',' << surf->h << ".\n";
+	return tpoint(surf->w + config_->text_extra_width, surf->h + config_->text_extra_height);
 }
 
 //! Does the widget need to restore the surface before (re)painting?
@@ -162,6 +246,8 @@ void tcontrol::set_canvas_text()
 
 void tcontrol::draw(surface& surface)
 {
+	assert(config_);
+
 	set_dirty(false);
 	SDL_Rect rect = get_rect();
 
@@ -184,6 +270,15 @@ void tcontrol::draw(surface& surface)
 		SDL_BlitSurface(restorer_, 0, surface, &rect);
 		rect = get_rect();
 	}
+
+	if(multiline_label_) {
+		// Set the text hardcoded in multiline mode.
+		if(wrapped_label_.empty()) {
+			wrapped_label_ = font::word_wrap_text(label_, config_->text_font_size, get_width());
+		}
+		canvas(get_state()).set_variable("text", variant(wrapped_label_));
+	}
+
 	canvas(get_state()).draw(true);
 	SDL_BlitSurface(canvas(get_state()).surf(), 0, surface, &rect);
 }

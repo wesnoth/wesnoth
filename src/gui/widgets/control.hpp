@@ -51,6 +51,9 @@ public:
 		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
 	bool get_visible() const { return visible_; }
 
+	void set_multiline_label(const bool multiline = true) 
+		{ if(multiline != multiline_label_) { multiline_label_ = multiline; set_dirty(); } }
+
 	void set_label(const t_string& label);
 
 	const t_string& label() const { return label_; }
@@ -84,6 +87,12 @@ public:
 	tpoint get_best_size() const;
 	tpoint get_maximum_size() const;
 
+private:
+	//! Helpers
+	tpoint get_single_line_best_size(const tpoint& config_size) const;
+	tpoint get_multi_line_best_size(const tpoint& config_size) const;
+
+public:
 protected:
 
 	//! Returns the id of the state, which is also the index for the canvas.
@@ -105,6 +114,14 @@ private:
 	//! Visible state of the control, invisible isn't drawn.
 	bool visible_;
 
+	//! Can the label contain multiple lines.
+	bool multiline_label_;
+
+	//! If multiline we need to have a version of the label wrapped to fit
+	//! in the widget. This value is cached so changes to the label or widget
+	//! size should clear us.
+	std::string wrapped_label_;
+
 	//! The label associated with a lot of widgets to show a (non editable) text.
 	t_string label_;
 
@@ -125,6 +142,7 @@ private:
 	//! Contains a pointer to the configuration of this button at the 
 	//! current resolution.
  	tresolution_definition_* config_;
+
 };
 
 } // namespace gui2
