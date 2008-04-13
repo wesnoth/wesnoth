@@ -44,6 +44,7 @@ Version 1.5.0-svn:
    * Removed Wesbowl
    * Merged 4p A New Land by Bob_the_Mighty
  * WML engine:
+   * new tag [insert_tag] to place dynamic WML content
    * Fixed most C++ probes for boolean WML attributes to use 
      utils::string_bool() rather than true/false or yes/no string comparisons;
      as a result, they should accept true non-zero values, "on", "yes" or "true"

@@ -282,12 +282,12 @@ bool conditional_passed(const unit_map* units,
 
 	// Handle [and], [or], and [not] with in-order precedence
 	int or_count = 0;
-	config::all_children_iterator cond_i = cond.get_config().ordered_begin();
-	config::all_children_iterator cond_end = cond.get_config().ordered_end();
+	vconfig::all_children_iterator cond_i = cond.ordered_begin();
+	vconfig::all_children_iterator cond_end = cond.ordered_end();
 	while(cond_i != cond_end)
 	{
-		const std::string& cond_name = *((*cond_i).first);
-		const vconfig cond_filter(&(*((*cond_i).second)));
+		const std::string& cond_name = cond_i.get_key();
+		const vconfig& cond_filter = cond_i.get_child();
 
 		// Handle [and]
 		if(cond_name == "and")
@@ -401,7 +401,7 @@ public:
 		if (!kids.empty())
 			return kids;
 		else
-			return cfg_.get_children("special_filter"); 
+			return cfg_.get_children("special_filter");
 
 	}
 
@@ -417,7 +417,7 @@ public:
 		if (!kids.empty())
 			return kids;
 		else
-			return cfg_.get_children("special_filter_second"); 
+			return cfg_.get_children("special_filter_second");
 	}
 
 	bool handle_event(const queued_event& event_info,
@@ -2812,13 +2812,11 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 	if(cfg.null()) {
 		cfg = cfg_;
 	}
-	for(config::all_children_iterator i = cfg.get_config().ordered_begin();
-			i != cfg.get_config().ordered_end(); ++i) {
-
-		const std::pair<const std::string*,const config*> item = *i;
+	for(vconfig::all_children_iterator i = cfg.ordered_begin();
+			i != cfg.ordered_end(); ++i) {
 
         //mutated and skip_messages will be modified
-		handle_event_command(event_info, *item.first, vconfig(item.second), mutated, skip_messages);
+		handle_event_command(event_info, i.get_key(), i.get_child(), mutated, skip_messages);
 	}
 
 	// We do this once the event has completed any music alterations
@@ -2940,12 +2938,12 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 	}
 
 	// Handle [and], [or], and [not] with in-order precedence
-	config::all_children_iterator cond_i = filter.get_config().ordered_begin();
-	config::all_children_iterator cond_end = filter.get_config().ordered_end();
+	vconfig::all_children_iterator cond_i = filter.ordered_begin();
+	vconfig::all_children_iterator cond_end = filter.ordered_end();
 	while(cond_i != cond_end)
 	{
-		const std::string& cond_name = *((*cond_i).first);
-		const vconfig cond_filter(&(*((*cond_i).second)));
+		const std::string& cond_name = cond_i.get_key();
+		const vconfig& cond_filter = cond_i.get_child();
 
 		// Handle [and]
 		if(cond_name == "and")

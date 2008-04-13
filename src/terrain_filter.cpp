@@ -33,7 +33,7 @@
 #define ERR_NG LOG_STREAM(err, engine)
 
 
-terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map, 
+terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
 	const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 	const size_t max_loop) : cfg_(cfg), map_(map), status_(game_status), units_(units)
 {
@@ -48,12 +48,12 @@ terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& origina
 	flatten(original.flat_);
 }
 
-terrain_filter::terrain_filter(const terrain_filter& other) : 
+terrain_filter::terrain_filter(const terrain_filter& other) :
 	xy_pred(), // We should construct this too, since it has no datamembers
 	           // use the default constructor.
 	cfg_(other.cfg_),
-	map_(other.map_), 
-	status_(other.status_), 
+	map_(other.map_),
+	status_(other.status_),
 	units_(other.units_)
 {
 	restrict(other.max_loop_);
@@ -72,8 +72,8 @@ terrain_filter& terrain_filter::operator=(const terrain_filter& other)
 
 namespace {
 	struct cfg_isor {
-		bool operator() (std::pair<const std::string*,const config*> val) {
-			return *(val.first) == "or";
+		bool operator() (std::pair<const std::string,const vconfig> val) {
+			return val.first == "or";
 		}
 	};
 } //end anonymous namespace
@@ -177,7 +177,7 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 				}
 			}
 			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
-			std::vector<std::pair<int,int> > counts = (*i).has_attribute("count") 
+			std::vector<std::pair<int,int> > counts = (*i).has_attribute("count")
 				? utils::parse_ranges((*i)["count"]) : default_counts;
 			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
 			bool count_matches = false;
@@ -278,12 +278,12 @@ bool terrain_filter::match(const gamemap::location& loc)
 		bool matches = match_internal(*i, false);
 
 		//handle [and], [or], and [not] with in-order precedence
-		config::all_children_iterator cond = cfg_.get_config().ordered_begin();
-		config::all_children_iterator cond_end = cfg_.get_config().ordered_end();
+		vconfig::all_children_iterator cond = cfg_.ordered_begin();
+		vconfig::all_children_iterator cond_end = cfg_.ordered_end();
 		while(cond != cond_end)
 		{
-			const std::string& cond_name = *((*cond).first);
-			const vconfig cond_cfg(&(*((*cond).second)));
+			const std::string& cond_name = cond.get_key();
+			const vconfig& cond_cfg = cond.get_child();
 
 			//handle [and]
 			if(cond_name == "and")
@@ -383,8 +383,8 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 	}
 
 	//handle [and], [or], and [not] with in-order precedence
-	config::all_children_iterator cond = cfg_.get_config().ordered_begin();
-	config::all_children_iterator cond_end = cfg_.get_config().ordered_end();
+	vconfig::all_children_iterator cond = cfg_.ordered_begin();
+	vconfig::all_children_iterator cond_end = cfg_.ordered_end();
 	int ors_left = std::count_if(cond, cond_end, cfg_isor());
 	while(cond != cond_end)
 	{
@@ -393,8 +393,8 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 			return;
 		}
 
-		const std::string& cond_name = *((*cond).first);
-		const vconfig cond_cfg(&(*((*cond).second)));
+		const std::string& cond_name = cond.get_key();
+		const vconfig& cond_cfg = cond.get_child();
 
 		//handle [and]
 		if(cond_name == "and") {

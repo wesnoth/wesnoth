@@ -822,13 +822,13 @@ bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool
 	}
 
 	// Handle [and], [or], and [not] with in-order precedence
-	config::all_children_iterator cond = cfg.get_config().ordered_begin();
-	config::all_children_iterator cond_end = cfg.get_config().ordered_end();
+	vconfig::all_children_iterator cond = cfg.ordered_begin();
+	vconfig::all_children_iterator cond_end = cfg.ordered_end();
 	while(cond != cond_end)
 	{
 
-		const std::string& cond_name = *((*cond).first);
-		const vconfig cond_filter(&(*((*cond).second)));
+		const std::string& cond_name = cond.get_key();
+		const vconfig& cond_filter = cond.get_child();
 
 		// Handle [and]
 		if(cond_name == "and") {

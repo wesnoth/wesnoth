@@ -33,7 +33,7 @@ class vconfig
 {
 public:
 	vconfig();
-	vconfig(const config* cfg);
+	vconfig(const config* cfg, bool is_volatile=false);
 
 	vconfig& operator=(const vconfig cfg);
 	vconfig& operator=(const config* cfg);
@@ -52,9 +52,43 @@ public:
 	const t_string& get_attribute(const std::string& key) const { return (*cfg_)[key]; }
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
 	bool empty() const { return (null() || cfg_->empty()); }
+	bool is_volatile() const { return volatile_; }
+
+	struct all_children_iterator {
+		typedef std::pair<const std::string, const vconfig> value_type;
+		typedef std::forward_iterator_tag iterator_category;
+		typedef int difference_type;
+		typedef std::auto_ptr<value_type> pointer;
+		typedef value_type& reference;
+		typedef config::all_children_iterator Itor;
+		explicit all_children_iterator(Itor i=Itor());
+
+		all_children_iterator& operator++();
+		all_children_iterator  operator++(int);
+
+		value_type operator*() const;
+		pointer operator->() const;
+
+		const std::string get_key() const;
+		size_t get_index() const;
+		const vconfig get_child() const;
+
+		bool operator==(all_children_iterator i) const;
+		bool operator!=(all_children_iterator i) const;
+
+	private:
+		Itor i_;
+		unsigned inner_index_;
+		unsigned index_offset_;
+	};
+
+	//! In-order iteration over all children.
+	all_children_iterator ordered_begin() const;
+	all_children_iterator ordered_end() const;
 
 private:
 	const config* cfg_;
+	bool volatile_;
 };
 
 namespace variable

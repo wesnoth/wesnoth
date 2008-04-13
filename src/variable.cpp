@@ -37,24 +37,26 @@ namespace
 }
 
 vconfig::vconfig() :
-	cfg_(NULL)
+	cfg_(NULL), volatile_(false)
 {
 }
 
-vconfig::vconfig(const config* cfg) :
-	cfg_(cfg)
+vconfig::vconfig(const config* cfg, bool is_volatile) :
+	cfg_(cfg), volatile_(is_volatile)
 {
 }
 
 vconfig& vconfig::operator=(const vconfig cfg)
 {
 	cfg_ = cfg.cfg_;
+	volatile_ = cfg.volatile_;
 	return *this;
 }
 
 vconfig& vconfig::operator=(const config* cfg)
 {
 	cfg_ = cfg;
+	//is volatile? assume current setting
 	return *this;
 }
 
@@ -69,29 +71,97 @@ const config vconfig::get_parsed_config() const
 	}
 
 	for(config::all_children_iterator child = cfg_->ordered_begin();
-			child != cfg_->ordered_end(); ++child) {
+        child != cfg_->ordered_end(); ++child)
+    {
 
-		res.add_child(*(*child).first, vconfig((*child).second).get_parsed_config());
+        const std::string &child_key = *(*child).first;
+        if(child_key == "insert_tag") {
+            vconfig insert_cfg(child->second);
+            const t_string& name = insert_cfg["name"];
+            variable_info vinfo(insert_cfg["variable"], true, variable_info::TYPE_CONTAINER);
+            if(vinfo.explicit_index) {
+                res.add_child(name, vconfig(&(vinfo.as_container()), true).get_parsed_config());
+            } else {
+                variable_info::array_range range = vinfo.as_array();
+                if(range.first == range.second) {
+                    res.add_child(name); //add empty tag
+                }
+                while(range.first != range.second) {
+                    res.add_child(name, vconfig(*range.first++, true).get_parsed_config());
+                }
+            }
+        } else {
+            res.add_child(child_key, vconfig((*child).second).get_parsed_config());
+        }
 	}
 	return res;
 }
 
 vconfig::child_list vconfig::get_children(const std::string& key) const
 {
-	const config::child_list& list = cfg_->get_children(key);
-	vconfig::child_list res(list.size());
-	std::copy(list.begin(), list.end(),res.begin());
+	vconfig::child_list res;
+
+	for(config::all_children_iterator child = cfg_->ordered_begin();
+        child != cfg_->ordered_end(); ++child)
+    {
+        const std::string &child_key = *(*child).first;
+        if(child_key == key) {
+            res.push_back(vconfig(child->second, volatile_));
+        } else if(child_key == "insert_tag") {
+            vconfig insert_cfg(child->second);
+            if(insert_cfg["name"] == key) {
+                variable_info vinfo(insert_cfg["variable"], true, variable_info::TYPE_CONTAINER);
+                if(vinfo.explicit_index) {
+                    res.push_back(vconfig(&(vinfo.as_container()), true));
+                } else {
+                    variable_info::array_range range = vinfo.as_array();
+                    if(range.first == range.second) {
+                        //push back an empty (volatile) tag
+                        res.push_back(vconfig(&(vinfo.as_container()), true));
+                    }
+                    while(range.first != range.second) {
+                        res.push_back(vconfig(*range.first++, true));
+                    }
+                }
+            }
+        }
+    }
 	return res;
 }
 
 vconfig vconfig::child(const std::string& key) const
 {
-	return vconfig(cfg_->child(key));
+    const config *natural = cfg_->child(key);
+    if(natural)
+    {
+        return vconfig(natural, volatile_);
+    }
+    for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
+        chitors.first != chitors.second; ++chitors.first)
+    {
+        vconfig insert_cfg(*chitors.first);
+        if(insert_cfg["name"] == key) {
+            variable_info vinfo(insert_cfg["variable"], true, variable_info::TYPE_CONTAINER);
+            return vconfig(&(vinfo.as_container()), true);
+        }
+    }
+    return vconfig();
 }
 
 bool vconfig::has_child(const std::string& key) const
 {
-	return (cfg_->child(key) != NULL);
+	if(cfg_->child(key) != NULL) {
+	    return true;
+	}
+    for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
+        chitors.first != chitors.second; ++chitors.first)
+    {
+        vconfig insert_cfg(*chitors.first);
+        if(insert_cfg["name"] == key) {
+            return true;
+        }
+    }
+    return false;
 }
 
 const t_string vconfig::expand(const std::string& key) const
@@ -104,6 +174,91 @@ const t_string vconfig::expand(const std::string& key) const
 		}
 	}
 	return t_string(val);
+}
+
+vconfig::all_children_iterator::all_children_iterator(config::all_children_iterator i)
+: i_(i), inner_index_(0), index_offset_(0)
+{
+}
+
+vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
+{
+    if(i_.get_key() == "insert_tag") {
+        variable_info vinfo(vconfig(&i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
+        if(vinfo.is_valid && !vinfo.explicit_index) {
+            variable_info::array_range range = vinfo.as_array();
+            if(range.first != range.second && range.first + (++inner_index_) != range.second) {
+                ++index_offset_;
+                return *this;
+            }
+        }
+    }
+	++i_;
+	inner_index_ = 0;
+	return *this;
+}
+
+vconfig::all_children_iterator vconfig::all_children_iterator::operator++(int)
+{
+	vconfig::all_children_iterator i = *this;
+	this->operator++();
+	return i;
+}
+
+std::pair<const std::string,const vconfig> vconfig::all_children_iterator::operator*() const
+{
+    return std::make_pair<const std::string, const vconfig>(get_key(), get_child());
+}
+
+vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator->() const
+{
+	return pointer(new std::pair<const std::string, const vconfig>(get_key(), get_child()));
+}
+
+const std::string vconfig::all_children_iterator::get_key() const
+{
+    const std::string& key = i_.get_key();
+    if(key == "insert_tag") {
+        return vconfig(&i_.get_child())["name"];
+    }
+	return key;
+}
+
+const vconfig vconfig::all_children_iterator::get_child() const
+{
+    if(i_.get_key() == "insert_tag") {
+        variable_info vinfo(vconfig(&i_.get_child())["variable"], true, variable_info::TYPE_CONTAINER);
+        if(inner_index_ == 0) {
+            return vconfig(&vinfo.as_container(), true);
+        }
+        return vconfig(*(vinfo.as_array().first + inner_index_), true);
+    }
+    return vconfig(&i_.get_child());
+}
+
+size_t vconfig::all_children_iterator::get_index() const
+{
+	return i_.get_index() + index_offset_;
+}
+
+bool vconfig::all_children_iterator::operator==(all_children_iterator i) const
+{
+	return (i_ == i.i_ && inner_index_ == i.inner_index_);
+}
+
+bool vconfig::all_children_iterator::operator!=(all_children_iterator i) const
+{
+	return (i_ != i.i_ || inner_index_ != i.inner_index_);
+}
+
+vconfig::all_children_iterator vconfig::ordered_begin() const
+{
+	return all_children_iterator(cfg_->ordered_begin());
+}
+
+vconfig::all_children_iterator vconfig::ordered_end() const
+{
+	return all_children_iterator(cfg_->ordered_end());
 }
 
 namespace variable
