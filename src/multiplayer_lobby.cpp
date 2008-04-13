@@ -125,7 +125,9 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 	// Set font color
 	SDL_Color font_color;
-	if (game.vacant_slots > 0) {
+	if (!game.password_required) {
+		font_color = font::BAD_COLOUR;
+	} else if (game.vacant_slots > 0) {
 		if (game.reloaded || game.started) {
 			font_color = font::YELLOW_COLOUR;
 		} else {
@@ -393,6 +395,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.push_back(game_item());
 		games_.back().password_required = (**game)["password"] == "yes";
 		games_.back().reloaded = (**game)["savegame"] == "yes";
+		games_.back().have_era = true;
 		if((**game)["mp_era"] != "") {
 			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
 			utils::string_map symbols;
@@ -400,6 +403,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			if (era_cfg != NULL) {
 				games_.back().map_info = era_cfg->get_attribute("name");
 			} else {
+				if((**game)["require_era"] == "yes") {
+					games_.back().have_era = false;
+				}
 				games_.back().map_info = vgettext("Unknown era: $era_id", symbols);
 				verified = false;
 			}
