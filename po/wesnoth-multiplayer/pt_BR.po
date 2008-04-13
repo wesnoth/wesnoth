@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 10:56+0100\n"
+"POT-Creation-Date: 2008-04-13 16:22+0200\n"
 "PO-Revision-Date: 2007-11-15 01:50+0900\n"
 "Last-Translator: Claudio Terra <cbterra@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -17,69 +17,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#. [generic_multiplayer]
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
 msgstr "Mapa do Usuário"
 
+#. [multiplayer_side]
 #: data/multiplayer/eras.cfg:5
 msgid "Random"
 msgstr "Mapa aleatório"
 
+#. [era]
 #: data/multiplayer/eras.cfg:12
 msgid "Default"
 msgstr "Padrão"
 
+#. [era]
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
 msgstr "Era dos Heróis"
 
+#. [era]
 #: data/multiplayer/eras.cfg:38
 msgid "Great War"
 msgstr "A Grande Guerra"
 
+#. [multiplayer_side]: type=Dark Sorcerer
 #: data/multiplayer/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
 msgstr "Aliança da Escuridão"
 
+#. [multiplayer_side]: type=White Mage
 #: data/multiplayer/factions/alliance_of_light.cfg:4
 msgid "Alliance of Light"
 msgstr "Aliança da Luz"
 
+#. [multiplayer_side]: type=Drake Flare
+#. [multiplayer_side]: type=Drake Flameheart
 #: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
 msgstr "Draconianos"
 
+#. [multiplayer_side]: type=Dwarvish Steelclad
+#. [multiplayer_side]: type=Dwarvish Lord
 #: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Aliança de Knalga"
 
+#. [multiplayer_side]: type=Lieutenant
+#. [multiplayer_side]: type=General
 #: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "Leais"
 
+#. [multiplayer_side]: type=Orcish Warlord
+#. [multiplayer_side]: type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Nortistas"
 
+#. [multiplayer_side]: type=Elvish Marshal
+#. [multiplayer_side]: type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Rebeldes"
 
+#. [multiplayer_side]: type=Dark Sorcerer
+#. [multiplayer_side]: type=Lich
 #: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "Mortos-Vivos"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:31
+#. [multiplayer]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 msgid "2p - Caves of the Basilisk"
 msgstr "2p - Caverna do Basilisco"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
+#. [multiplayer]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
 msgid ""
 "Players must maneuver their units through the divisive terrain of this long-"
 "feared region, once the home of a legendary Elder Basilisk. The caves and "
@@ -91,8 +112,9 @@ msgstr ""
 "regiões selvagens ao seu redor estão pontilhada pelas formas petrificadas de "
 "alguns dos maiores heróis de Wesnoth."
 
+#. [side]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:20
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:46
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:48
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:57
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:20
@@ -108,7 +130,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:20
 #: data/multiplayer/scenarios/4p_Morituri.cfg:18
 #: data/multiplayer/scenarios/4p_Morituri.cfg:51
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:62
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:64
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:20
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:20
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:26
@@ -119,8 +141,9 @@ msgstr ""
 msgid "teamname^North"
 msgstr "Norte"
 
+#. [side]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:31
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:58
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:60
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:31
@@ -133,7 +156,7 @@ msgstr "Norte"
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:31
 #: data/multiplayer/scenarios/4p_Morituri.cfg:29
 #: data/multiplayer/scenarios/4p_Morituri.cfg:40
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:50
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:52
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:31
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:64
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:20
@@ -141,7 +164,8 @@ msgstr "Norte"
 msgid "teamname^South"
 msgstr "Sul"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:93
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -185,11 +209,13 @@ msgstr ""
 "Para roubar do basilisco o tesouro.\n"
 "(inscrito por Flametrooper)"
 
+#. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:97
 msgid "Xikkrisx"
 msgstr "Xikkrisx"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:99
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:100
 msgid ""
 "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
 "the Elders of the Rysssrylosszkk Clan (translation: ''The Hunts-Foes-In-"
@@ -233,11 +259,13 @@ msgstr ""
 "estátua dentro de uma pequena caverna, e deitou-se para descansar. Ele foi "
 "acordado por um rugido de estremecer a alma."
 
+#. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:103
 msgid "Oxsrrsk"
 msgstr "Oxsrrsk"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:105
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:106
 msgid ""
 "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival "
 "Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-Rzzak) a "
@@ -277,6 +305,7 @@ msgstr ""
 "Confiante em sua abilidade de localizar essa poderosa criatura e colocá-la a "
 "seu serviço, Oxsrrsk saiu em sua jornada..."
 
+#. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:118
 msgid ""
 "Slim of Stature, dexterous Hands\n"
@@ -297,11 +326,13 @@ msgstr ""
 "- - Sete Pedras - e os Elfos \n"
 "(inscrito por Gauteamus)"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:121
 msgid "Blum Duk"
 msgstr "Blum Duk"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:127
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:126
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -334,11 +365,13 @@ msgstr ""
 "pedra?!? \n"
 "(inscrito por Elvish Pillager)"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:131
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
 msgid "Rah Ihn Mar"
 msgstr "Rah Ihn Mar"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:133
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:131
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
 "Lake region in pursuit of the Elvish Hero Terowydlithrol, known amoung Elves "
@@ -361,7 +394,8 @@ msgstr ""
 "apenas um dia atrás. Com a vingança queimando em seu peito, Rah Ihn Mar "
 "começou a caçada..."
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:140
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:138
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -378,7 +412,8 @@ msgstr ""
 "também não estava mais viva. Assim chegou o novo senhor do lago. \n"
 "(inscrito por Turin)"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:145
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -397,11 +432,13 @@ msgstr ""
 "beleza de outrora. \n"
 "(inscrito por Fynmiir)"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:151
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:148
 msgid "Bramwythl"
 msgstr "Bramwythl"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:153
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -437,11 +474,13 @@ msgstr ""
 "desejo foi realizado. \n"
 "(inscrito por Elvish Pillager)"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:160
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid "Talael Ryndoc"
 msgstr "Talael Ryndoc"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:159
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
@@ -449,11 +488,13 @@ msgstr ""
 "O General Talael Ryndoc veio para este lugar para um duelo com o Grande "
 "Marechal Aethec Corryn, mas os dois homens nunca se encontraram. "
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:166
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
 msgid "Aethec Corryn"
 msgstr "Aethec Corryn"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: ''Talael Ryndoc! I am "
 "through searching for you! I shall make my way back to Haldric's Hall, and "
@@ -470,11 +511,13 @@ msgstr ""
 "\n"
 "Talvez ele não devesse ter gritado tão alto.... "
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:174
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
 msgid "Rilhon"
 msgstr "Rilhon"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:177
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
 "treasure that had been lost in these watery caves- a spear whose head was "
@@ -500,7 +543,8 @@ msgstr ""
 "aparentemente, ainda tinha todos os seus dentes consigo. \n"
 "(inscrito por Paterson)"
 
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:197
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:193
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -534,14 +578,17 @@ msgstr ""
 "\n"
 "(inscrito por MJQ)"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Campo de Batalha de Cynsaun"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid " Recommended settings of 150 gold and 2 gold per village."
 msgstr "Recomenda-se 150 ouros iniciais e 2 peças de ouro por aldeia."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
@@ -550,10 +597,12 @@ msgstr ""
 "Há muito o que explorar neste vasto campo de batalha, criado para jogadores "
 "que preferem duelos épicos, de grande escala."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p - Dark Forecast (Survival)"
 msgstr "2p - Previsão Sombria (Sobrevivência)"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player teambased "
@@ -566,7 +615,8 @@ msgstr ""
 "será alcançada se sobreviverem a todos os ataques inimigos. Durante o jogo, "
 "o terreno irá mudar de acordo com efeitos de clima aleatórios."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:473
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:472
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -576,7 +626,8 @@ msgstr ""
 "lâmina ensanguentada do corpo do último dos rebeldes. Não haverá mais "
 "resistência da ralé local. Seu reino finalmente chegou à estabilidade."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:834
+#. [message]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:833
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -584,50 +635,62 @@ msgstr ""
 "As últimas e mais poderosas das criaturas estão quase chegando em nossa "
 "posição. Acredito que se pudermos derrotá-las, a vitória sera nossa."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1011
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1010
 msgid "Heavy Snowfall"
 msgstr "Nevasca Pesada"
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1025
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1024
 msgid "Snowfall"
 msgstr "Nevasca"
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1045
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1044
 msgid "Heavy Rains"
 msgstr "Temporal"
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1059
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1058
 msgid "Drought"
 msgstr "Seca"
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1067
+#. [else]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1066
 msgid "Clear Weather"
 msgstr "Tempo Claro"
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1419
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1418
 msgid "Single player mode - uses the reduced strength spawns."
 msgstr "Modo de Um Jogador - inimigos com força reduzida."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1422
+#. [else]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1421
 msgid "Two player mode - uses the full strength spawns."
 msgstr "Modo de Dois Jogadores - inimigos com força total."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
+#. [objectives]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1441
 msgid "Survive and defeat the waves of opposition."
 msgstr "Sobreviva e derrote as ondas de ataque."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1444
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1443
 msgid "Defeat all waves"
 msgstr "Derrote todas as ondas de ataque"
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1447
 msgid "Lose all your team's leaders"
 msgstr "Perca todos os líderes do seu time"
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1459
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
 msgid "Dark Forecast - a random survival scenario"
 msgstr "Previsão Sombria - um cenário aleatório de sobrevivência"
 
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1480
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
@@ -678,11 +741,13 @@ msgstr ""
 "@Rhuvaen\n"
 "- Implementação do WML"
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1484
+#. [message]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1485
 msgid "So this is the accursed valley - a land ours for the taking."
 msgstr "Então este é o vale maldito - uma terra pronta para tomarmos."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1488
+#. [message]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1489
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -692,7 +757,8 @@ msgstr ""
 "não conseguiremos tomar esta terra sem oposição deles. Devemos ter cuidado "
 "com as surpresas deste lugar."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1492
+#. [message]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1493
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -700,14 +766,16 @@ msgstr ""
 "Então vamos descobrir o que nos espera, e ensiná-los a não se oporem ao "
 "nosso poder."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1529
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1530
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
 "Ugh! Como pode? Derrotado por meros bárbaros! Meus deuses me abandonaram..."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1543
+#. [message]: speaker=second_unit
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1544
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -716,7 +784,8 @@ msgstr ""
 "enquando cai para a morte... a alegria deles enche seus últimos momentos de "
 "puro ódio."
 
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1565
+#. [message]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1566
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -726,10 +795,12 @@ msgstr ""
 "Enquanto sussurros fantasmagóricos drenam sua força de vontade, você "
 "compreende que seu tempo nesta terra acabou."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
 msgstr "2p - Gruta de Onis"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
@@ -739,6 +810,7 @@ msgstr ""
 "de duelo onde os jogadores devem encontrar um equilíbrio entre força bruta e "
 "subterfúgio."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
@@ -757,16 +829,18 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:38
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 msgid " Recommended setting of 2 gold per village."
 msgstr "Recomendado 2 ouros por vila."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 msgid "2p - Fallenstar Lake"
 msgstr "2p - Lago Meteoro"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
@@ -775,6 +849,7 @@ msgstr ""
 "Há muito tempo atrás, uma grande estrela caiu dos céus, deixando sua marca "
 "nesta região de coníferas."
 
+#. [side]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:20
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
 #: data/multiplayer/scenarios/4p_Clash.cfg:40
@@ -786,7 +861,6 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:21
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:20
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
@@ -794,6 +868,7 @@ msgstr ""
 msgid "teamname^West"
 msgstr "Oeste"
 
+#. [side]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:31
 #: data/multiplayer/scenarios/4p_Clash.cfg:29
 #: data/multiplayer/scenarios/4p_Clash.cfg:51
@@ -805,17 +880,18 @@ msgstr "Oeste"
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:29
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:31
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 msgid "teamname^East"
 msgstr "Leste"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
 msgstr "2p - Casebres"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 msgid ""
@@ -825,10 +901,12 @@ msgstr ""
 "A guerra transformou as fazendas e vilas simples de uma região pacífica em "
 "um campo de batalha dividido."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
 msgstr "2p - Ilha de Hornshark"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
@@ -837,10 +915,12 @@ msgstr ""
 "Os jogadores devem navegar o terreno disperso desta ilha pequena mas "
 "topograficamente densa."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
 msgstr "2p - Delta Sablestone"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
@@ -849,10 +929,12 @@ msgstr ""
 "Dois exércitos se confrontam neste terreno quebrado, cheio de cavernas "
 "escondidas e rios selvagens."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
 msgstr "2p - Cruzamento SilverHead"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
@@ -861,19 +943,23 @@ msgstr ""
 "Os jogadores devem atravessar vários tipos de terrenos em busca da vitória "
 "neste mapa de duelo com múltiplas frentes de combate."
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:20
+#. [trait]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:21
 msgid "statue"
 msgstr "estátua"
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:21
+#. [trait]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:22
 msgid "This is a sculpture made of stone."
 msgstr "Esta é uma escultura feita em pedra."
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:35
+#. [multiplayer]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:37
 msgid "2p - Sullas Ruins"
 msgstr "2p - Ruínas Sullas"
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
+#. [multiplayer]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:38
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
@@ -881,11 +967,13 @@ msgstr ""
 "Inundada pelos mares e castigada por rigorosos invernos, apenas ruínas, água "
 "e gelo permanecem como sombras deste outrora glorioso império."
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:76
+#. [side]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Sulla"
 msgstr "Estátua de Sulla"
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:78
+#. [unit]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:80
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
@@ -895,134 +983,78 @@ msgstr ""
 "Sulla a Tirana, Imperadora da Torre Submersa, Dama da Geleira Ambulante, "
 "Sulla a Incineradora, Sulla a Orgulhosa e Sulla a Divina."
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:81
+#. [side]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
 msgid "Statue of Lhun-dup"
 msgstr "Estátua de Lhun-dup"
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
+#. [unit]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:84
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
 msgstr "Uma imagem em pedra de Lhun-dup, Servo de Sulla."
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:85
+#. [side]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "Statue of Ri-nzen"
 msgstr "Estátua de Ri-nzen"
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
+#. [unit]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:88
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
 msgstr "Uma imagem em pedra de Ri-nzen, Servo de Sulla."
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
+#. [side]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
 msgid "Statue of Ten-zin"
 msgstr "Estátua de Ten-zin"
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
+#. [unit]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:92
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
 msgstr "Uma imagem em pedra de Ten-zin, Servo de Sulla."
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:93
+#. [side]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:94
 msgid "Statue of Lo-bsang"
 msgstr "Estátua de Lo-bsang"
 
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:94
+#. [unit]
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:96
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Uma imagem em pedra de Lo-bsang, Servo de Sulla."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
 msgid "2p - The Freelands"
 msgstr "2p - As Terras Livres"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
 msgid "A duel map for super fast play."
 msgstr "Um mapa de duelo para um jogo super rápido."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p - Weldyn Channel"
 msgstr "2p - Canal de Weldyn"
 
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:4
-msgid "2p - Wesbowl"
-msgstr "2p - Wesbowl"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:6
-msgid ""
-"In Wesbowl, a player has to get any of the balls to the other player's end "
-"zone as often as possible. However, the other player can attack your units. "
-"Wesbowl is played with blunt weapons, and healers are on hand, so when units "
-"are killed, they return to that player's end zone with an injury."
-msgstr ""
-"Em Wesbowl, o jogador deve levar sua bola até a linha final de seu oponente. "
-"Porém, o outro jogador pode atacar suas unidades. Wesbowl é jogado com armas "
-"sem corte, e existem médicos de plantão, de forma que quando unidades são "
-"mortas, elas voltam para a linha final de seu respectivo jogador."
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:11
-msgid ""
-"\n"
-"Victory:\n"
-"@Move either ball to your opponent's end zone more times than they move a "
-"ball to yours.\n"
-"Defeat:\n"
-"#Opponent moves the balls to your end zone more times than you move them to "
-"the opponent's end zone"
-msgstr ""
-"\n"
-"Vitória:\n"
-"@Leve alguma das bolas para o fim da área do oponente mais vezes do que ele "
-"levar a bola deles para a sua\n"
-"Derrota:\n"
-"#Oponente leva as bolas para o fim da sua área mais vezes do que você "
-"consegue levá-las"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:181
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:427
-msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "Ponto para o vermelho! A pontuação atual é $redscore-$bluescore"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:224
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:470
-msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "Ponto para o azul! A pontuação atual é $redscore-$bluescore"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:307
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:553
-msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Devo passar a bola para $passto.type ($xloc,$yloc)?"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:309
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:555
-msgid "Yes!"
-msgstr "Sim!"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:331
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:577
-msgid "No"
-msgstr "Não"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:600
-msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "O time azul vence! Pontuação final: $redscore-$bluescore"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:613
-msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "O time vermelho vence! Pontuação final: $redscore-$bluescore"
-
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:626
-msgid "Draw! Final score: $redscore-$bluescore"
-msgstr "Empate! Pontuação final: $redscore-$bluescore"
-
+#. [multiplayer]
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
 msgstr "3p - Pântano de Alirok"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr "3 Jogadores disputam mano a mano sobre este campo cortado pela água."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "3p - Ilha dos Horatii"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
@@ -1031,20 +1063,24 @@ msgstr ""
 "Controlar a ilha central é em geral a chave para a vitória neste mapa de "
 "21x21 hexágonos, 3 jogadores todos contra todos."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
 msgstr "3p - Morituri"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr "Somente uma facção emergirá vitoriosa deste mapa apertado."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
 msgstr "4p - Província de Blue Water"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 msgid ""
 "Historians write that Bluewater Province has been destroyed and rebuilt some "
@@ -1057,6 +1093,7 @@ msgstr ""
 "direcionem para os rios pedregosos e para as montanhas nevadas desta pequena "
 "província, seus moradores mal parecem notar a diferença."
 
+#. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:20
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:53
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:18
@@ -1072,6 +1109,7 @@ msgstr ""
 msgid "teamname^Team 1"
 msgstr "Time 1"
 
+#. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:31
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:42
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:29
@@ -1087,30 +1125,37 @@ msgstr "Time 1"
 msgid "teamname^Team 2"
 msgstr "Time 2"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
 msgstr "4p - Ilha dos Castelos"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
 msgstr "Pule de castelo em castelo enquanto luta pela ilha central."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p - Clash"
 msgstr "4p - Confronto"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
 msgstr "Pequeno mapa para 2 contra 2."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p - Hamlets"
 msgstr "4p - Casebres"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
 msgstr "4p - A travessia de Isar"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
@@ -1123,6 +1168,7 @@ msgstr ""
 "Configure os times para jogadores 1 e 4 contra 2 e 3 (nordeste contra "
 "sudoeste). Recomendado 75 ouros iniciais, 20 vilas."
 
+#. [side]
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:29
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:40
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:73
@@ -1136,6 +1182,7 @@ msgstr ""
 msgid "teamname^South-West"
 msgstr "Sul-Oeste"
 
+#. [side]
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:18
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:51
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:62
@@ -1147,10 +1194,12 @@ msgstr "Sul-Oeste"
 msgid "teamname^North-East"
 msgstr "Norte-Leste"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p - King of the Hill"
 msgstr "4p - O Rei da Montanha"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
@@ -1160,11 +1209,13 @@ msgstr ""
 "36x36 hexágonos, 4 jogadores todos contra todos. Pode ser jogado em 2 contra "
 "2 também. Há 36 aldeias."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr "Recomenda-se 2 ouros por aldeia e 150 ouros iniciais."
 
+#. [side]
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:37
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:48
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
@@ -1176,6 +1227,7 @@ msgstr "Recomenda-se 2 ouros por aldeia e 150 ouros iniciais."
 msgid "teamname^South-East"
 msgstr "Sul-Leste"
 
+#. [side]
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:26
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:59
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
@@ -1183,24 +1235,29 @@ msgstr "Sul-Leste"
 msgid "teamname^North-West"
 msgstr "Norte-Oeste"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 msgid "4p - Lagoon"
 msgstr "4p - Lagoa"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid " Recommended setting of 1 gold per village."
 msgstr "Recomenda-se 1 ouro por aldeia."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid "Four factions contend for dominance over this watery settlement."
 msgstr "Quatro facções disputam o domínio deste reino das águas."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p - Loris River"
 msgstr "4p - Rio Loris"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
@@ -1210,22 +1267,27 @@ msgstr ""
 "rio com um par de fortes em cantos opostos. Jogadores 1 e 3 jogam contra 2 e "
 "4. Há 28 aldeias."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
 msgstr "4p - Morituri"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 msgid "Who will emerge from the confines of this perilous battlefield?"
 msgstr "Quem sairá vitorioso deste perigoso campo de batalha?"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
 msgstr "4p - Caminhos das Adagas"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
 msgstr " Recomenda-se 2 ouros por aldeia, 28 aldeias."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
@@ -1235,10 +1297,12 @@ msgstr ""
 "combate. Balanceado para um jogo de leste contra oeste (jogadores 1 e 3 "
 "contra 2 e 4), mas funciona bem com qualquer time, ou todos contra todos."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
 msgstr "4p - Castelos em Cerco"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
@@ -1248,10 +1312,12 @@ msgstr ""
 "no ponto de convergência de dois rios. Funciona bem em 2 contra 2 ou todos "
 "contra todos. Há aproximadamente 45 vilas."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:26
 msgid "4p - The Wilderlands"
 msgstr "4p - As Terras Selvagens"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
@@ -1260,14 +1326,12 @@ msgstr ""
 "Uma vasta região de natureza indomada, pontilhada por florestas, cavernas, "
 "rios e as ruínas de fortalezas ancestrais."
 
-#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:80
-msgid "Monsters"
-msgstr "Monstros"
-
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p - Xanthe Chaos"
 msgstr "4p - Caos de Xanthe"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
@@ -1276,10 +1340,12 @@ msgstr ""
 "Um mapa 24x28 para 2 contra 2 jogadores, com fortalezas extras e uma batalha "
 "confusa no centro."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p - Auction-X"
 msgstr "5p - Leilão-X"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
 msgid ""
 "4 players surround a central keep, play vs the AI survival style, or as a "
@@ -1294,38 +1360,47 @@ msgstr ""
 "posição do meio. É um mapa muito pequeno, então recomenda-se 75 peças de "
 "ouro para os outros jogadores."
 
+#. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 msgid "teamname^Northeast"
 msgstr "Nordeste"
 
+#. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 msgid "teamname^Southeast"
 msgstr "Sudeste"
 
+#. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 msgid "teamname^Southwest"
 msgstr "Sudoeste"
 
+#. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
 msgstr "Noroeste"
 
+#. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
 msgid "teamname^Center"
 msgstr "Centro"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
 msgstr "5p - Floresta do Medo"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "Neste território mixto, cinco exércitos lutam por supremacia."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:5
 msgid "6p - Amohsad Caldera"
 msgstr "6p - Caldera de Amohsad"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
@@ -1334,10 +1409,12 @@ msgstr ""
 "Apenas um verdadeiro mestre tático sobreviverá neste campo restritivo e "
 "mortal, onde 6 exércitos se encontram."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
 msgstr "6p - Campo dos Cruzados"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
@@ -1348,10 +1425,12 @@ msgstr ""
 "tempo, onde os fantasmas de milhares de bravos guerreiros flutuam invisíveis "
 "por entre as montanhas, rios e árvores."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
 msgstr "6p - Bolo de Hexágonos"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Jogo de 2 contra 2, ou 3 contra 3 jogadores."
@@ -1384,34 +1463,42 @@ msgstr "Turno 17: Mortos Vivos"
 msgid "Tower of Doom"
 msgstr "Torre da Perdição"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
 msgstr "6p - Sobrevivência em Time"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr "Cenário no qual o objetivo é sobreviver o maior tempo possível."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Survive for 32 turns."
 msgstr "Sobreviver por 32 turnos."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr "Dica: Aprender onde e quais inimigos aparecem ajuda bastante."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
 msgid "Survive all enemy attacks."
 msgstr "Sobreviver a todos os ataques inimigos."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 msgid "Death of your team leaders."
 msgstr "Morte dos líderes."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid "Faery"
 msgstr "Fada"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
@@ -1422,10 +1509,12 @@ msgstr ""
 "a verdade, eu não faço idéia de como você conseguiu, então me envie o replay "
 "do seu jogo por e-mail: roze@roze.mine.nu. Obrigado!"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 msgid "Death"
 msgstr "Morte"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
@@ -1434,10 +1523,12 @@ msgstr ""
 "Você perdeu. Mas nao tema. Você pode sempre tentar novamente. E de novo. E "
 "de novo. Muhahahahahah!"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
 msgid "Attacker"
 msgstr "Atacante"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:384
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:386
@@ -1447,10 +1538,12 @@ msgstr "Atacante"
 msgid "Defender"
 msgstr "Defensor"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
 msgstr "6p - A Armadilha de Manzivan"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:9
 msgid ""
 "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
@@ -1464,10 +1557,12 @@ msgstr ""
 "jogadores 1, 4 e 5 contra os 2, 3 e 6 (leste contra oeste). Sugere-se 100 "
 "peças de ouro iniciais, tem 33 aldeias."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
 msgstr "6p - Pôr do Sol em Waterloo"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
@@ -1481,10 +1576,12 @@ msgstr ""
 "montar um time com os jogadores 1, 3 e 6 ou 1, 4 e 6 também é interessante. "
 "Recomenda-se 150 peças de ouro iniciais, 44 aldeias."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 msgid "8p - Mokena Prairie"
 msgstr "8p - Pradaria de Mokena"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
@@ -1493,6 +1590,7 @@ msgstr ""
 "Inspirado em Morituri, este mapa de 8 jogadores recria uma batalha épica, e "
 "requer que ambos os times se coordenem no ataque e na defesa."
 
+#. [side]
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:18
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:40
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:62
@@ -1500,6 +1598,7 @@ msgstr ""
 msgid "teamname^east"
 msgstr "leste"
 
+#. [side]
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:29
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:51
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:73
@@ -1507,10 +1606,12 @@ msgstr "leste"
 msgid "teamname^west"
 msgstr "Oeste"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
 msgstr "8p - Morituri"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
@@ -1519,10 +1620,12 @@ msgstr ""
 "Trabalho de equipe e táticas são a chave para a vitória neste campo de "
 "batalha incomum, onde oito exércitos lutam até o final."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p - Merkwuerdigliebe"
 msgstr "9p - Merkwuerdigliebe"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
@@ -1536,11 +1639,14 @@ msgstr ""
 "(norte contra sudeste contra sudoeste). Há bem poucas aldeias por jogador, "
 "então também recomenda-se 3 peças de ouro por aldeia."
 
+#. [scenario]
+#. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
 msgstr "Mapa aleatório"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
@@ -1549,11 +1655,14 @@ msgstr ""
 "Mapa aleatório. Nota: mapas aleatórios são freqüentemente desbalanceados, "
 "mas se você tiver tempo, pode regenerá-los até obter um bom mapa."
 
+#. [scenario]
+#. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
 msgstr "Mapa aleatório (Deserto)"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
 msgid ""
 "A random map with sand as the primary terrain. Note: random maps are often "
@@ -1564,11 +1673,14 @@ msgstr ""
 "são freqüentemente desbalanceados, mas se você tiver tempo, pode regenerá-"
 "los até obter um bom mapa."
 
+#. [scenario]
+#. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
 msgstr "Mapa aleatório (Pântano)"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
 msgid ""
 "A random map with swamp as the primary terrain. Note: random maps are often "
@@ -1579,11 +1691,14 @@ msgstr ""
 "aleatórios são freqüentemente desbalanceados, mas se você tiver tempo, pode "
 "regenerá-los até obter um bom mapa."
 
+#. [scenario]
+#. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
 msgstr "Mapa aleatório (Inverno)"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
 msgid ""
 "A random map set in the break between spring and winter, mainly with snowy "
@@ -1594,10 +1709,12 @@ msgstr ""
 "nevados. Nota: mapas aleatórios são freqüentemente desbalanceados, mas se "
 "você tiver tempo, pode regenerá-los até obter um bom mapa."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid "Wesnoth Benchmark: AI"
 msgstr "Benchmark para Wesnoth: IA"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
@@ -1606,10 +1723,12 @@ msgstr ""
 "Um benchmark para wesnoth, use as opções --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
 msgstr "Benchmark para Wesnoth: Scrolling"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
@@ -1618,10 +1737,12 @@ msgstr ""
 "Um benchmark para wesnoth, use as opções --no-delay --multiplayer --"
 "scenario=wesbench_scroll --exit-at-end"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid "Wesnoth Benchmark: Walking through Shroud"
 msgstr "Benchmark para Wesnoth: Andando pela Névoa"
 
+#. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
@@ -1629,3 +1750,63 @@ msgid ""
 msgstr ""
 "Um benchmark para wesnoth, use as opções --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end"
+
+#~ msgid "2p - Wesbowl"
+#~ msgstr "2p - Wesbowl"
+
+#~ msgid ""
+#~ "In Wesbowl, a player has to get any of the balls to the other player's "
+#~ "end zone as often as possible. However, the other player can attack your "
+#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
+#~ "when units are killed, they return to that player's end zone with an "
+#~ "injury."
+#~ msgstr ""
+#~ "Em Wesbowl, o jogador deve levar sua bola até a linha final de seu "
+#~ "oponente. Porém, o outro jogador pode atacar suas unidades. Wesbowl é "
+#~ "jogado com armas sem corte, e existem médicos de plantão, de forma que "
+#~ "quando unidades são mortas, elas voltam para a linha final de seu "
+#~ "respectivo jogador."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Move either ball to your opponent's end zone more times than they move a "
+#~ "ball to yours.\n"
+#~ "Defeat:\n"
+#~ "#Opponent moves the balls to your end zone more times than you move them "
+#~ "to the opponent's end zone"
+#~ msgstr ""
+#~ "\n"
+#~ "Vitória:\n"
+#~ "@Leve alguma das bolas para o fim da área do oponente mais vezes do que "
+#~ "ele levar a bola deles para a sua\n"
+#~ "Derrota:\n"
+#~ "#Oponente leva as bolas para o fim da sua área mais vezes do que você "
+#~ "consegue levá-las"
+
+#~ msgid "Red scores! Current score is $redscore-$bluescore"
+#~ msgstr "Ponto para o vermelho! A pontuação atual é $redscore-$bluescore"
+
+#~ msgid "Blue scores! Current score is $redscore-$bluescore"
+#~ msgstr "Ponto para o azul! A pontuação atual é $redscore-$bluescore"
+
+#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+#~ msgstr "Devo passar a bola para $passto.type ($xloc,$yloc)?"
+
+#~ msgid "Yes!"
+#~ msgstr "Sim!"
+
+#~ msgid "No"
+#~ msgstr "Não"
+
+#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
+#~ msgstr "O time azul vence! Pontuação final: $redscore-$bluescore"
+
+#~ msgid "Red team wins! Final score: $redscore-$bluescore"
+#~ msgstr "O time vermelho vence! Pontuação final: $redscore-$bluescore"
+
+#~ msgid "Draw! Final score: $redscore-$bluescore"
+#~ msgstr "Empate! Pontuação final: $redscore-$bluescore"
+
+#~ msgid "Monsters"
+#~ msgstr "Monstros"

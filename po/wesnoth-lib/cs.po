@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 10:56+0100\n"
+"POT-Creation-Date: 2008-04-13 16:22+0200\n"
 "PO-Revision-Date: 2008-03-21 12:26+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -26,221 +26,294 @@ msgstr ""
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 
-#: data/core/terrain.cfg:17
+#. [terrain]
+#: data/core/terrain.cfg:13
 msgid "None"
 msgstr "Nic"
 
-#: data/core/terrain.cfg:25
+#. [terrain]
+#: data/core/terrain.cfg:20
 msgid "Shroud"
 msgstr "Zahalení tmou"
 
-#: data/core/terrain.cfg:32
+#. [terrain]
+#: data/core/terrain.cfg:27
 msgid "Fog"
 msgstr "Mlha"
 
-#: data/core/terrain.cfg:43
+#. [terrain]
+#: data/core/terrain.cfg:38
 msgid "Ice"
 msgstr "Led"
 
-#: data/core/terrain.cfg:54
+#. [terrain]
+#: data/core/terrain.cfg:48
 msgid "Snow"
 msgstr "Sníh"
 
-#: data/core/terrain.cfg:68 data/core/terrain.cfg:78 data/core/terrain.cfg:88
-#: data/core/terrain.cfg:99 data/core/terrain.cfg:109
-#: data/core/terrain.cfg:119 data/core/terrain.cfg:130
-#: data/core/terrain.cfg:140 data/core/terrain.cfg:150
-#: data/core/terrain.cfg:162 data/core/terrain.cfg:172
-#: data/core/terrain.cfg:183 data/core/terrain.cfg:197
-#: data/core/terrain.cfg:207 data/core/terrain.cfg:218
+#. [terrain]
+#: data/core/terrain.cfg:61 data/core/terrain.cfg:70 data/core/terrain.cfg:79
+#: data/core/terrain.cfg:176 data/core/terrain.cfg:185
+#: data/core/terrain.cfg:195 data/core/terrain.cfg:207
+#: data/core/terrain.cfg:217 data/core/terrain.cfg:228
 msgid "Bridge"
 msgstr "Most"
 
-#: data/core/terrain.cfg:234
+#. [terrain]
+#: data/core/terrain.cfg:243
 msgid "Encampment"
 msgstr "Ležení"
 
-#: data/core/terrain.cfg:246 data/core/terrain.cfg:257
-#: data/core/terrain.cfg:269
+#. [terrain]
+#: data/core/terrain.cfg:254 data/core/terrain.cfg:264
+#: data/core/terrain.cfg:275
 msgid "Castle"
 msgstr "Hrad"
 
-#: data/core/terrain.cfg:281
+#. [terrain]
+#: data/core/terrain.cfg:286
 msgid "Ruin"
 msgstr "Zřícenina"
 
-#: data/core/terrain.cfg:293
+#. [terrain]
+#: data/core/terrain.cfg:297
 msgid "Sunken Ruin"
 msgstr "Zatopená zřícenina"
 
-#: data/core/terrain.cfg:306
+#. [terrain]
+#: data/core/terrain.cfg:309
 msgid "Swamp Ruin"
 msgstr "Propadlá zřícenina"
 
-#: data/core/terrain.cfg:332 data/core/terrain.cfg:345
-#: data/core/terrain.cfg:358 data/core/terrain.cfg:371
-#: data/core/terrain.cfg:384 data/core/terrain.cfg:397
-#: data/core/terrain.cfg:410
+#. [terrain]
+#: data/core/terrain.cfg:334 data/core/terrain.cfg:346
+#: data/core/terrain.cfg:358 data/core/terrain.cfg:370
+#: data/core/terrain.cfg:382 data/core/terrain.cfg:394
+#: data/core/terrain.cfg:406
 msgid "Keep"
 msgstr "Tvrz"
 
-#: data/core/terrain.cfg:437
+#. [terrain]
+#: data/core/terrain.cfg:432
 msgid "Crater"
 msgstr "Kráter"
 
-#: data/core/terrain.cfg:448
+#. [terrain]
+#: data/core/terrain.cfg:442
 msgid "Desert"
 msgstr "Poušť"
 
-#: data/core/terrain.cfg:459
+#. [terrain]
+#: data/core/terrain.cfg:452
 msgid "Rubble"
 msgstr "Smetí"
 
-#: data/core/terrain.cfg:470
+#. [terrain]
+#: data/core/terrain.cfg:462
 msgid "Sand"
 msgstr "Písek"
 
-#: data/core/terrain.cfg:479
+#. [terrain]
+#: data/core/terrain.cfg:470
 msgid "Oasis"
 msgstr "Oáza"
 
-#: data/core/terrain.cfg:495
+#. [terrain]
+#: data/core/terrain.cfg:485
 msgid "Snow Forest"
 msgstr "Zasněžený les"
 
-#: data/core/terrain.cfg:506
+#. [terrain]
+#: data/core/terrain.cfg:495
 msgid "Great Tree"
 msgstr "Velký strom"
 
-#: data/core/terrain.cfg:516
+#. [terrain]
+#: data/core/terrain.cfg:504
 msgid "Forest"
 msgstr "Les"
 
-#: data/core/terrain.cfg:525
+#. [terrain]
+#: data/core/terrain.cfg:512
 msgid "Tropical Forest"
 msgstr "Tropický les"
 
-#: data/core/terrain.cfg:539 data/core/terrain.cfg:548
-#: data/core/terrain.cfg:558
+#. [terrain]
+#: data/core/terrain.cfg:525 data/core/terrain.cfg:534
+#: data/core/terrain.cfg:543
 msgid "Grassland"
 msgstr "Louka"
 
-#: data/core/terrain.cfg:568
+#. [terrain]
+#: data/core/terrain.cfg:552
 msgid "Savanna"
 msgstr "Step"
 
-#: data/core/terrain.cfg:582
+#. [terrain]
+#: data/core/terrain.cfg:565
 msgid "Snow Hills"
 msgstr "Zasněžené hory"
 
-#: data/core/terrain.cfg:593
+#. [terrain]
+#: data/core/terrain.cfg:575
 msgid "Dunes"
 msgstr "Duny"
 
-#: data/core/terrain.cfg:604
+#. [terrain]
+#: data/core/terrain.cfg:585
 msgid "Hills"
 msgstr "Kopce"
 
-#: data/core/terrain.cfg:617 data/core/terrain.cfg:627
+#. [terrain]
+#: data/core/terrain.cfg:597 data/core/terrain.cfg:606
 msgid "Mountains"
 msgstr "Hory"
 
-#: data/core/terrain.cfg:640
+#. [terrain]
+#: data/core/terrain.cfg:618
 msgid "Chasm"
 msgstr "Rokle"
 
-#: data/core/terrain.cfg:649
+#. [terrain]
+#: data/core/terrain.cfg:627
 msgid "Lava chasm"
 msgstr "Lávová rokle"
 
-#: data/core/terrain.cfg:660
+#. [terrain]
+#: data/core/terrain.cfg:637
 msgid "Lava"
 msgstr "Láva"
 
-#: data/core/terrain.cfg:675 data/core/terrain.cfg:695
-#: data/core/terrain.cfg:704
+#. [terrain]
+#: data/core/terrain.cfg:651 data/core/terrain.cfg:669
+#: data/core/terrain.cfg:678
 msgid "Road"
 msgstr "Cesta"
 
-#: data/core/terrain.cfg:685
+#. [terrain]
+#: data/core/terrain.cfg:660
 msgid "Dirt"
 msgstr "Bahno"
 
-#: data/core/terrain.cfg:714
+#. [terrain]
+#: data/core/terrain.cfg:687
 msgid "Farmland"
 msgstr "Pole"
 
-#: data/core/terrain.cfg:728
+#. [terrain]
+#: data/core/terrain.cfg:700
 msgid "Swamp"
 msgstr "Mokřina"
 
-#: data/core/terrain.cfg:743
+#. [terrain]
+#: data/core/terrain.cfg:714
 msgid "Cave"
 msgstr "Jeskyně"
 
-#: data/core/terrain.cfg:752
+#. [terrain]
+#: data/core/terrain.cfg:722
 msgid "Cave Lit"
 msgstr "Osvětlená jeskyně"
 
-#: data/core/terrain.cfg:763 data/core/terrain.cfg:772
+#. [terrain]
+#: data/core/terrain.cfg:732 data/core/terrain.cfg:740
 msgid "Mushroom Grove"
 msgstr "Houbový háj"
 
-#: data/core/terrain.cfg:782
+#. [terrain]
+#: data/core/terrain.cfg:749
 msgid "Mushroom Grove Lit"
 msgstr "Osvětlený houbový háj"
 
-#: data/core/terrain.cfg:793
+#. [terrain]
+#: data/core/terrain.cfg:759
 msgid "Rockbound Cave"
 msgstr "Skalnatá jeskyně"
 
-#: data/core/terrain.cfg:804
+#. [terrain]
+#: data/core/terrain.cfg:769
 msgid "Rockbound Cave Lit"
 msgstr "Osvětlená skalnatá jeskyně"
 
-#: data/core/terrain.cfg:822 data/core/terrain.cfg:834
-#: data/core/terrain.cfg:848 data/core/terrain.cfg:860
-#: data/core/terrain.cfg:874 data/core/terrain.cfg:886
-#: data/core/terrain.cfg:897 data/core/terrain.cfg:909
-#: data/core/terrain.cfg:921 data/core/terrain.cfg:933
-#: data/core/terrain.cfg:947 data/core/terrain.cfg:959
-#: data/core/terrain.cfg:971 data/core/terrain.cfg:984
-#: data/core/terrain.cfg:1000 data/core/terrain.cfg:1012
+#. [terrain]
+#: data/core/terrain.cfg:786 data/core/terrain.cfg:797
+#: data/core/terrain.cfg:810 data/core/terrain.cfg:821
+#: data/core/terrain.cfg:834 data/core/terrain.cfg:845
+#: data/core/terrain.cfg:855 data/core/terrain.cfg:865
+#: data/core/terrain.cfg:876 data/core/terrain.cfg:887
+#: data/core/terrain.cfg:898 data/core/terrain.cfg:911
+#: data/core/terrain.cfg:922 data/core/terrain.cfg:933
+#: data/core/terrain.cfg:945 data/core/terrain.cfg:960
+#: data/core/terrain.cfg:971
 msgid "Village"
 msgstr "Vesnice"
 
-#: data/core/terrain.cfg:1028
+#. [terrain]
+#: data/core/terrain.cfg:986
 msgid "Deep Water"
 msgstr "Hluboká voda"
 
-#: data/core/terrain.cfg:1039
+#. [terrain]
+#: data/core/terrain.cfg:996
 msgid "Shallow Water"
 msgstr "Mělká voda"
 
-#: data/core/terrain.cfg:1050
+#. [terrain]
+#: data/core/terrain.cfg:1006
 msgid "River Ford"
 msgstr "Brod řeky"
 
-#: data/core/terrain.cfg:1066
+#. [terrain]
+#: data/core/terrain.cfg:1021
 msgid "Impassable Mountains"
 msgstr "Neschůdné hory"
 
 # pořadí?
-#: data/core/terrain.cfg:1076
+#. [terrain]
+#: data/core/terrain.cfg:1030
 msgid "Impassable Desert Mountains"
 msgstr "Neschůdné pouštní hory"
 
-#: data/core/terrain.cfg:1087
+#. [terrain]
+#: data/core/terrain.cfg:1040
 msgid "Cave Wall"
 msgstr "Jeskynní hradba"
 
+#. [terrain]
+#: data/core/terrain.cfg:1050
+#, fuzzy
+msgid "Wall"
+msgstr "Jeskynní hradba"
+
 # nicota?
-#: data/core/terrain.cfg:1097
+#. [terrain]
+#: data/core/terrain.cfg:1060
 msgid "Void"
 msgstr "Prázdnota"
 
+#. [terrain]
+#: data/core/terrain.cfg:1073
+msgid "Flat"
+msgstr ""
+
+#. [terrain]
+#: data/core/terrain.cfg:1079
+msgid "Frozen"
+msgstr ""
+
+#. [terrain]
+#: data/core/terrain.cfg:1085
+#, fuzzy
+msgid "Impassable"
+msgstr "Neschůdné hory"
+
+#. [terrain]
+#: data/core/terrain.cfg:1091
+msgid "Unwalkable"
+msgstr ""
+
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
-#: src/editor/editor_dialogs.cpp:423
+#: src/editor/editor_dialogs.cpp:552
 msgid "OK"
 msgstr "OK"
 
@@ -253,7 +326,7 @@ msgid "No"
 msgstr "Ne"
 
 #: src/construct_dialog.cpp:151 src/construct_dialog.cpp:154
-#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:422
+#: src/editor/editor_dialogs.cpp:104 src/editor/editor_dialogs.cpp:551
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -261,97 +334,113 @@ msgstr "Zrušit"
 msgid "Close"
 msgstr "Zavřít"
 
-#: src/editor/editor_dialogs.cpp:49
+#: src/editor/editor_dialogs.cpp:52
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Přijdeš o změny, které jsi v mapě udělal. Pokračovat?"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:196
 msgid "Create New Map"
 msgstr "Vytvoř novou mapu"
 
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:386
+#: src/editor/editor_dialogs.cpp:84 src/editor/editor_dialogs.cpp:515
 #: src/mapgen_dialog.cpp:114
 msgid "Width:"
 msgstr "Šířka:"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:387
+#: src/editor/editor_dialogs.cpp:85 src/editor/editor_dialogs.cpp:516
 #: src/mapgen_dialog.cpp:115
 msgid "Height:"
 msgstr "Výška:"
 
-#: src/editor/editor_dialogs.cpp:98
+#: src/editor/editor_dialogs.cpp:101
 msgid "Generate New Map"
 msgstr "Vygeneruj novou mapu"
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:102
 msgid "Generate Random Map"
 msgstr "Vygeneruj náhodnou mapu"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:103
 msgid "Random Generator Settings"
 msgstr "Nastavení generátoru"
 
-#: src/editor/editor_dialogs.cpp:178
+#: src/editor/editor_dialogs.cpp:181
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
-#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:103
+#: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:103
 #: src/preferences_display.cpp:227
 msgid "Close Window"
 msgstr "Zavři okno"
 
-#: src/editor/editor_dialogs.cpp:250 src/game_preferences_display.cpp:61
-#: src/hotkeys.cpp:84
+#: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:61
+#: src/hotkeys.cpp:85
 msgid "Preferences"
 msgstr "Nastavení"
 
-#: src/editor/editor_dialogs.cpp:254 src/game_preferences_display.cpp:202
+#: src/editor/editor_dialogs.cpp:257 src/game_preferences_display.cpp:202
 msgid "Scroll Speed:"
 msgstr "Rychlost posouvání:"
 
-#: src/editor/editor_dialogs.cpp:281 src/game_preferences_display.cpp:160
+#: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:160
 #: src/hotkeys.cpp:64
 msgid "Toggle Full Screen"
 msgstr "Okno/Celá obrazovka"
 
-#: src/editor/editor_dialogs.cpp:288 src/game_preferences_display.cpp:163
+#: src/editor/editor_dialogs.cpp:291 src/game_preferences_display.cpp:163
 msgid "Show Grid"
 msgstr "Zobrazuj mřížku"
 
-#: src/editor/editor_dialogs.cpp:295
+#: src/editor/editor_dialogs.cpp:298
 msgid "Video Mode"
 msgstr "Grafický mód"
 
-#: src/editor/editor_dialogs.cpp:298 src/game_preferences_display.cpp:184
+#: src/editor/editor_dialogs.cpp:301 src/game_preferences_display.cpp:184
 msgid "Hotkeys"
 msgstr "Klávesové zkratky"
 
-#: src/editor/editor_dialogs.cpp:384 src/editor/editor_dialogs.cpp:496
-#: src/hotkeys.cpp:121
+#: src/editor/editor_dialogs.cpp:306
+msgid "Lighting levels (time of day):"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:313
+msgid "light_level^Red:"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:314
+msgid "light_level^Green:"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:315
+msgid "light_level^Blue:"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
+#: src/hotkeys.cpp:122
 msgid "Resize Map"
 msgstr "Změň velikost"
 
-#: src/editor/editor_dialogs.cpp:388
+#: src/editor/editor_dialogs.cpp:517
 msgid "X offset:"
 msgstr "offset X:"
 
-#: src/editor/editor_dialogs.cpp:389
+#: src/editor/editor_dialogs.cpp:518
 msgid "Y offset:"
 msgstr "offset Y:"
 
-#: src/editor/editor_dialogs.cpp:468
+#: src/editor/editor_dialogs.cpp:597
 msgid "Smart expand"
 msgstr "Chytré rozšíření"
 
-#: src/editor/editor_dialogs.cpp:557
+#: src/editor/editor_dialogs.cpp:686
 msgid "X-Axis"
 msgstr "X-ová osa"
 
-#: src/editor/editor_dialogs.cpp:558
+#: src/editor/editor_dialogs.cpp:687
 msgid "Y-Axis"
 msgstr "Y-ová osa"
 
-#: src/editor/editor_dialogs.cpp:559
+#: src/editor/editor_dialogs.cpp:688
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Převrať dokola (může změnit rozměry mapy):"
 
@@ -381,11 +470,11 @@ msgstr "Jméno: "
 msgid "Creation of the directory failed."
 msgstr "Složku se nezdařilo vytvořit."
 
-#: src/game_preferences.cpp:217
+#: src/game_preferences.cpp:221
 msgid "No server has been defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/game_preferences.cpp:281
+#: src/game_preferences.cpp:285
 msgid "player"
 msgstr "hráč"
 
@@ -800,6 +889,80 @@ msgstr "Nové téma se projeví na další nové, nebo načtené hře."
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Žádná známá témata. Zkus změnit během existující hry."
 
+#: src/gui/widgets/canvas.cpp:331
+msgid "Line doesn't fit on canvas."
+msgstr ""
+
+#: src/gui/widgets/canvas.cpp:433
+msgid "Rectangle doesn't fit on canvas."
+msgstr ""
+
+#: src/gui/widgets/canvas.cpp:728
+msgid "Text doesn't start on canvas."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:119
+#, fuzzy
+msgid "No default gui defined."
+msgstr "Nebyl definován žádný server."
+
+#: src/gui/widgets/settings.cpp:158
+#, fuzzy
+msgid "No default window defined."
+msgstr "Nebyl definován žádný server."
+
+#: src/gui/widgets/settings.cpp:170
+#, fuzzy
+msgid "No default button defined."
+msgstr "Nebyl definován žádný server."
+
+#: src/gui/widgets/settings.cpp:182
+#, fuzzy
+msgid "No default label defined."
+msgstr "Nebyl definován žádný server."
+
+#: src/gui/widgets/settings.cpp:194
+msgid "No default text box defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:206
+msgid "No default tooltip defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:224
+msgid "Window not defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:253 src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:437 src/gui/widgets/settings.cpp:486
+#: src/gui/widgets/settings.cpp:531 src/gui/widgets/window_builder.cpp:204
+#, fuzzy
+msgid "No resolution defined."
+msgstr "Nebyl definován žádný server."
+
+#: src/gui/widgets/settings.cpp:332
+#, fuzzy
+msgid "No state or draw section defined."
+msgstr "Nebyl definován žádný server."
+
+#: src/gui/widgets/settings.cpp:583
+#, fuzzy
+msgid "No layer or draw section defined."
+msgstr "Nebyl definován žádný server."
+
+#: src/gui/widgets/window_builder.cpp:238
+#, fuzzy
+msgid "No grid defined."
+msgstr "Nebyl definován žádný server."
+
+#: src/gui/widgets/window_builder.cpp:353
+msgid "A row must have a column."
+msgstr ""
+
+#: src/gui/widgets/window_builder.cpp:354
+msgid "Number of columns differ."
+msgstr ""
+
 #: src/hotkeys.cpp:54
 msgid "Next Unit"
 msgstr "Další jednotka"
@@ -845,290 +1008,295 @@ msgid "Screenshot"
 msgstr "Screenshot (kopie obrazovky)"
 
 #: src/hotkeys.cpp:66
+#, fuzzy
+msgid "Map Screenshot"
+msgstr "Screenshot (kopie obrazovky)"
+
+#: src/hotkeys.cpp:67
 msgid "Accelerated"
 msgstr "Zrychlit"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Unit Description"
 msgstr "Popis jednotky"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Rename Unit"
 msgstr "Přejmenuj"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Save Game"
 msgstr "Ulož hru"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Save Replay"
 msgstr "Ulož záznam"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Save The Map"
 msgstr "Ulož mapu"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Load Game"
 msgstr "Načti hru"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Recruit"
 msgstr "Naverbuj"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Repeat Recruit"
 msgstr "Zopakuj verbování"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Recall"
 msgstr "Přivolej"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "End Turn"
 msgstr "Ukonči kolo"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Toggle Grid"
 msgstr "Zapni/vypni mřížku"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Mouse Scrolling"
 msgstr "Posouvat pomocí myši"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Status Table"
 msgstr "Přehledová tabulka"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Mute"
 msgstr "Ztlumit zvuk"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Speak"
 msgstr "Mluv"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Create Unit (Debug!)"
 msgstr "Vytvoř jednotku (Debug!)"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Change Unit Side (Debug!)"
 msgstr "Změň stranu jednotky (Debug!)"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Scenario Objectives"
 msgstr "Úkoly scénáře"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Unit List"
 msgstr "Seznam jednotek"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Statistics"
 msgstr "Statistiky"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Quit Game"
 msgstr "Ukončit hru"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Set Team Label"
 msgstr "Umísti týmový popisek"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Set Label"
 msgstr "Umísti popisek"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Clear Labels"
 msgstr "Smaž popisek"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Show Enemy Moves"
 msgstr "Ukaž tahy nepřítele"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Best Possible Enemy Moves"
 msgstr "Nejlepší možné tahy nepřítele"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Play"
 msgstr "Hrát"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Reset"
 msgstr "Resetovat"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Next Turn"
 msgstr "Další kolo"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Next Side"
 msgstr "Další strana"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Full map"
 msgstr "Celá mapa"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Each team"
 msgstr "Všechny týmy"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Team 1"
 msgstr "Tým 1"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Skip animation"
 msgstr "Přeskočit animaci"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Set Terrain"
 msgstr "Nastav terén"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Quit Editor"
 msgstr "Ukončení editoru"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "New Map"
 msgstr "Nová mapa"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Load Map"
 msgstr "Načti mapu"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Save Map"
 msgstr "Ulož mapu"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Save As"
 msgstr "Ulož jako"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Set Player's keep"
 msgstr "Urči hráčovu pevnost"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Flood Fill"
 msgstr "Vyplň plochu"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Fill Selection"
 msgstr "Vyplň výběr"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Rotate Selection"
 msgstr "Otoč výběr"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Cut"
 msgstr "Vyřízni"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Copy"
 msgstr "Kopíruj"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Paste"
 msgstr "Vlož"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Revert from Disk"
 msgstr "Obnov z disku"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Flip Map"
 msgstr "Otoč mapu"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Select All"
 msgstr "Vyber vše"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Draw Terrain"
 msgstr "Nakresli terén"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Refresh Image Cache"
 msgstr "Obnov obrazovou paměť"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Delay transition updates"
 msgstr "Pozdrž překreslování přechodů"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Update transitions"
 msgstr "Obnov přechody"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Delay Shroud Updates"
 msgstr "Pozdrž překreslování mlhy"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Update Shroud Now"
 msgstr "Obnov mlhu"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Continue Move"
 msgstr "Pokračuj v pohybu"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Find Label or Unit"
 msgstr "Najdi popisek nebo jednotku"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Speak to Ally"
 msgstr "Mluv ke spojencům"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Speak to All"
 msgstr "Mluv ke všem"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Help"
 msgstr "Nápověda"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "View Chat Log"
 msgstr "Ukaž záznam rozhovoru"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Change the language"
 msgstr "Změnit používaný jazyk"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Enter user command"
 msgstr "Vlož uživatelský příkaz"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Clear messages"
 msgstr "Smaž zprávy"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "User-Command#2"
 msgstr "Uživatelský příkaz #2"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "User-Command#3"
 msgstr "Uživatelský příkaz #3"
 
-#: src/hotkeys.cpp:513 src/hotkeys.cpp:840
+#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
 msgid "Do you really want to quit?"
 msgstr "Opravdu chceš skončit?"
 
-#: src/hotkeys.cpp:513 src/hotkeys.cpp:840
+#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
 msgid "Quit"
 msgstr "Konec"
 
@@ -1188,7 +1356,7 @@ msgstr "Maximální šířka textu je menší než 1."
 msgid "Could not get image for terrain: $terrain."
 msgstr "Nelze načíst obrázek pro terén $terrain."
 
-#: src/minimap.cpp:93 src/minimap.cpp:105
+#: src/minimap.cpp:111 src/minimap.cpp:123
 msgid "Error creating or aquiring an image."
 msgstr "Chyba při vytváření nebo získávání obrázku."
 
@@ -1227,11 +1395,11 @@ msgstr "Změň klávesovou zkratku"
 msgid "This Hotkey is already in use."
 msgstr "Tato zkratka je již použita pro jinou akci."
 
-#: src/preferences_display.cpp:428
+#: src/preferences_display.cpp:435
 msgid "There are no alternative video modes available"
 msgstr "Žádné jiné grafické módy nejsou k dispozici."
 
-#: src/preferences_display.cpp:457
+#: src/preferences_display.cpp:464
 msgid "Choose Resolution"
 msgstr "Vyber si rozlišení"
 
@@ -1239,13 +1407,13 @@ msgstr "Vyber si rozlišení"
 msgid "Error"
 msgstr "Chyba"
 
-#: src/terrain_translation.cpp:681
+#: src/terrain_translation.cpp:682
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr "Nalezen terén s řetězcem s více než čtyřmi znaky, postižený terén :"
 
-#: src/terrain_translation.cpp:765
+#: src/terrain_translation.cpp:766
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Nalezen nepoužitelný terén, pravděpodobně verze 1.2; vstup: "
 

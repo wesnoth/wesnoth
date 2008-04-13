@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl_ES\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 10:56+0100\n"
+"POT-Creation-Date: 2008-04-13 16:22+0200\n"
 "PO-Revision-Date: 2008-02-18 17:09+0100\n"
 "Last-Translator: \n"
 "Language-Team: Galician <en@li.org>\n"
@@ -22,155 +22,169 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: data/core/editor-groups.cfg:11
+#. [editor_group]
+#: data/core/editor-groups.cfg:10
 msgid "all"
 msgstr "todo"
 
-#: data/core/editor-groups.cfg:17
+#. [editor_group]
+#: data/core/editor-groups.cfg:16
 msgid "water"
 msgstr "auga"
 
-#: data/core/editor-groups.cfg:29
+#. [editor_group]
+#: data/core/editor-groups.cfg:28
 msgid "flat"
 msgstr "chán"
 
-#: data/core/editor-groups.cfg:35
+#. [editor_group]
+#: data/core/editor-groups.cfg:34
 msgid "desert"
 msgstr "deserto"
 
-#: data/core/editor-groups.cfg:41
+#. [editor_group]
+#: data/core/editor-groups.cfg:40
 msgid "forest"
 msgstr "bosque"
 
-#: data/core/editor-groups.cfg:47
+#. [editor_group]
+#: data/core/editor-groups.cfg:46
 msgid "frozen"
 msgstr "conxelado"
 
-#: data/core/editor-groups.cfg:53
+#. [editor_group]
+#: data/core/editor-groups.cfg:52
 msgid "rough"
 msgstr "abrupto"
 
-#: data/core/editor-groups.cfg:59
+#. [editor_group]
+#: data/core/editor-groups.cfg:58
 msgid "cave"
 msgstr "cova"
 
-#: data/core/editor-groups.cfg:65
+#. [editor_group]
+#: data/core/editor-groups.cfg:64
 msgid "village"
 msgstr "vila"
 
-#: data/core/editor-groups.cfg:71
+#. [editor_group]
+#: data/core/editor-groups.cfg:70
 msgid "castle"
 msgstr "castelo"
 
+#. [menu]
 #: data/themes/editor.cfg:462
 msgid "File"
 msgstr "Ficheiro"
 
+#. [menu]
 #: data/themes/editor.cfg:472
 msgid "Edit"
 msgstr "Editar"
 
+#. [menu]
 #: data/themes/editor.cfg:481
 msgid "Settings"
 msgstr "Preferencias"
 
+#. [label]
 #: data/themes/editor.cfg:500
 msgid "villages"
 msgstr "vila"
 
-#: src/editor/editor.cpp:236
+#: src/editor/editor.cpp:235
 msgid "Draw tiles"
 msgstr "Debuxar hexágonos"
 
-#: src/editor/editor.cpp:238
+#: src/editor/editor.cpp:237
 msgid "Fill"
 msgstr "Recheo"
 
-#: src/editor/editor.cpp:240
+#: src/editor/editor.cpp:239
 msgid "Set player's starting position"
 msgstr "Establecer o punto de inicio do xogador"
 
-#: src/editor/editor.cpp:242
+#: src/editor/editor.cpp:241
 msgid "Zoom in"
 msgstr "Achegar"
 
-#: src/editor/editor.cpp:244
+#: src/editor/editor.cpp:243
 msgid "Zoom out"
 msgstr "Alonxar"
 
-#: src/editor/editor.cpp:246
+#: src/editor/editor.cpp:245
 msgid "Undo"
 msgstr "Desfacer"
 
-#: src/editor/editor.cpp:248
+#: src/editor/editor.cpp:247
 msgid "Redo"
 msgstr "Refacer"
 
-#: src/editor/editor.cpp:250
+#: src/editor/editor.cpp:249
 msgid "Zoom to default view"
 msgstr "Ampliación a vista predeterminada"
 
-#: src/editor/editor.cpp:252
+#: src/editor/editor.cpp:251
 msgid "Toggle grid"
 msgstr "Amosar reixa"
 
-#: src/editor/editor.cpp:254
+#: src/editor/editor.cpp:253
 msgid "Resize the map"
 msgstr "Redimensionar o mapa"
 
-#: src/editor/editor.cpp:256
+#: src/editor/editor.cpp:255
 msgid "Flip map"
 msgstr "Virar o mapa"
 
-#: src/editor/editor.cpp:258
+#: src/editor/editor.cpp:257
 msgid "Update transitions"
 msgstr "Actualizar as transicións"
 
-#: src/editor/editor.cpp:260
+#: src/editor/editor.cpp:259
 msgid "Delay transition updates"
 msgstr "Retraso entre as actualizacións da transición"
 
-#: src/editor/editor.cpp:472
+#: src/editor/editor.cpp:475
 msgid "Language"
 msgstr "Lingua"
 
-#: src/editor/editor.cpp:473
+#: src/editor/editor.cpp:476
 msgid "Choose your preferred language:"
 msgstr "Escolla a súa lingua preferida:"
 
-#: src/editor/editor.cpp:490 src/editor/editor_main.cpp:305
+#: src/editor/editor.cpp:493 src/editor/editor_main.cpp:303
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Editor de Mapas de Battle for Wesnoth"
 
-#: src/editor/editor.cpp:517
+#: src/editor/editor.cpp:520
 msgid "Save the Map As"
 msgstr "Gardar o Mapa Coma"
 
-#: src/editor/editor.cpp:528
+#: src/editor/editor.cpp:531
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "O mapa xa existe. Desexa sobrescribilo?"
 
-#: src/editor/editor.cpp:551
+#: src/editor/editor.cpp:554
 msgid "None"
 msgstr "Ningún"
 
-#: src/editor/editor.cpp:556 src/editor/editor.cpp:1387
+#: src/editor/editor.cpp:559 src/editor/editor.cpp:1414
 msgid "Player"
 msgstr "Xogador"
 
-#: src/editor/editor.cpp:560
+#: src/editor/editor.cpp:563
 msgid "Which Player?"
 msgstr "Que xogador?"
 
-#: src/editor/editor.cpp:561
+#: src/editor/editor.cpp:564
 msgid "Which player should start here?"
 msgstr "Que xogador debe comezar aqui?"
 
-#: src/editor/editor.cpp:621
+#: src/editor/editor.cpp:624
 msgid "Choose a Map to Load"
 msgstr "Escolla un Mapa para Cargar"
 
-#: src/editor/editor.cpp:625
+#: src/editor/editor.cpp:628
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -178,35 +192,35 @@ msgstr ""
 "Advertencia: Atopáronse caracteres prohibidos no nome do mapa. Gárdeo cun "
 "nome diferente."
 
-#: src/editor/editor.cpp:638 src/editor/editor.cpp:718
+#: src/editor/editor.cpp:641 src/editor/editor.cpp:721
 msgid "The file does not contain a valid map."
 msgstr "O ficheiro non contén un mapa válido."
 
-#: src/editor/editor.cpp:1266
+#: src/editor/editor.cpp:1293
 msgid "Quit Editor"
 msgstr "Saír do Editor"
 
-#: src/editor/editor.cpp:1270
+#: src/editor/editor.cpp:1297
 msgid "Do you want to save the map before quitting?"
 msgstr "Desexa gardar o mapa antes de saír?"
 
-#: src/editor/editor.cpp:1318
+#: src/editor/editor.cpp:1345
 msgid "Map saved."
 msgstr "Gardouse o mapa."
 
-#: src/editor/editor.cpp:1326
+#: src/editor/editor.cpp:1353
 msgid "Could not save the map: $msg"
 msgstr "Non se puido garda-lo mapa: $msg"
 
-#: src/editor/editor.cpp:1341
+#: src/editor/editor.cpp:1368
 msgid "Error: Illegal character in filename."
 msgstr "Erro: caracteres prohibidos no nome do ficheiro."
 
-#: src/editor/editor_palettes.cpp:433
+#: src/editor/editor_palettes.cpp:438
 msgid "FG"
 msgstr "Primeiro Plano"
 
-#: src/editor/editor_palettes.cpp:435
+#: src/editor/editor_palettes.cpp:440
 msgid "BG"
 msgstr "Fondo"
 

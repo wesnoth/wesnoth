@@ -48,6 +48,9 @@ unidades personalizadas, escenarios o campañas y compártalas con otros.
 \fB\-\-bpp\fP\fI\ número\fP
 establece el valor de BitsPorPixel. Por ejemplo: \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ fichero de entrada\ fichero de salida\fP
 comprime un fichero de partida guardada (|<fichero de entrada>) que está en
 formato WML de texto a un formato WML binario (|<fichero de salida>).
@@ -85,6 +88,9 @@ estándar, y finaliza.
 carga un fichero de partida guardada desde el directorio estándar de juegos
 guardados.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 establece el nivel de gravedad de los dominios de depuración. \fBall\fP puede
 usarse para seleccionar todos los dominios.Niveles disponibles: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto se utilitzará el nivel
@@ -97,7 +103,7 @@ Vuelca una lista de todos los dominios de registro y sale.
 el número de cuadros por segundo que el juego puede mostrar, el valor
 debería estar entre 1 y 1000, por defecto es \fB50\fP.
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 ejecuta un juego multijugador. Existen opciones adicionales que pueden
 usarse junto con \fB\-\-multiplayer\fP como se explica más abajo.
 .TP 
@@ -112,6 +118,10 @@ muestra el nombre del directorio de datos de juego y finaliza.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 establece la resolución de la pantalla. Por ejemplo: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 ejecuta el juego en un escenario de prueba pequeño.

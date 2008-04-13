@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 10:56+0100\n"
+"POT-Creation-Date: 2008-04-13 16:22+0200\n"
 "PO-Revision-Date: 2007-12-06 00:53+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -17,219 +17,292 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: data/core/terrain.cfg:17
+#. [terrain]
+#: data/core/terrain.cfg:13
 msgid "None"
 msgstr "Nenhum"
 
-#: data/core/terrain.cfg:25
+#. [terrain]
+#: data/core/terrain.cfg:20
 msgid "Shroud"
 msgstr "Escuridão"
 
-#: data/core/terrain.cfg:32
+#. [terrain]
+#: data/core/terrain.cfg:27
 msgid "Fog"
 msgstr "Fumaça"
 
-#: data/core/terrain.cfg:43
+#. [terrain]
+#: data/core/terrain.cfg:38
 msgid "Ice"
 msgstr "Gelo"
 
-#: data/core/terrain.cfg:54
+#. [terrain]
+#: data/core/terrain.cfg:48
 msgid "Snow"
 msgstr "Neve"
 
-#: data/core/terrain.cfg:68 data/core/terrain.cfg:78 data/core/terrain.cfg:88
-#: data/core/terrain.cfg:99 data/core/terrain.cfg:109
-#: data/core/terrain.cfg:119 data/core/terrain.cfg:130
-#: data/core/terrain.cfg:140 data/core/terrain.cfg:150
-#: data/core/terrain.cfg:162 data/core/terrain.cfg:172
-#: data/core/terrain.cfg:183 data/core/terrain.cfg:197
-#: data/core/terrain.cfg:207 data/core/terrain.cfg:218
+#. [terrain]
+#: data/core/terrain.cfg:61 data/core/terrain.cfg:70 data/core/terrain.cfg:79
+#: data/core/terrain.cfg:176 data/core/terrain.cfg:185
+#: data/core/terrain.cfg:195 data/core/terrain.cfg:207
+#: data/core/terrain.cfg:217 data/core/terrain.cfg:228
 msgid "Bridge"
 msgstr "Ponte"
 
-#: data/core/terrain.cfg:234
+#. [terrain]
+#: data/core/terrain.cfg:243
 msgid "Encampment"
 msgstr "Acampamento"
 
-#: data/core/terrain.cfg:246 data/core/terrain.cfg:257
-#: data/core/terrain.cfg:269
+#. [terrain]
+#: data/core/terrain.cfg:254 data/core/terrain.cfg:264
+#: data/core/terrain.cfg:275
 msgid "Castle"
 msgstr "Castelo"
 
-#: data/core/terrain.cfg:281
+#. [terrain]
+#: data/core/terrain.cfg:286
 msgid "Ruin"
 msgstr "Ruína"
 
-#: data/core/terrain.cfg:293
+#. [terrain]
+#: data/core/terrain.cfg:297
 msgid "Sunken Ruin"
 msgstr "Ruína inundada"
 
-#: data/core/terrain.cfg:306
+#. [terrain]
+#: data/core/terrain.cfg:309
 msgid "Swamp Ruin"
 msgstr "Ruína no Pântano"
 
-#: data/core/terrain.cfg:332 data/core/terrain.cfg:345
-#: data/core/terrain.cfg:358 data/core/terrain.cfg:371
-#: data/core/terrain.cfg:384 data/core/terrain.cfg:397
-#: data/core/terrain.cfg:410
+#. [terrain]
+#: data/core/terrain.cfg:334 data/core/terrain.cfg:346
+#: data/core/terrain.cfg:358 data/core/terrain.cfg:370
+#: data/core/terrain.cfg:382 data/core/terrain.cfg:394
+#: data/core/terrain.cfg:406
 msgid "Keep"
 msgstr "Forte"
 
-#: data/core/terrain.cfg:437
+#. [terrain]
+#: data/core/terrain.cfg:432
 msgid "Crater"
 msgstr "Cratera"
 
-#: data/core/terrain.cfg:448
+#. [terrain]
+#: data/core/terrain.cfg:442
 msgid "Desert"
 msgstr "Deserto"
 
-#: data/core/terrain.cfg:459
+#. [terrain]
+#: data/core/terrain.cfg:452
 msgid "Rubble"
 msgstr "Destroços"
 
-#: data/core/terrain.cfg:470
+#. [terrain]
+#: data/core/terrain.cfg:462
 msgid "Sand"
 msgstr "Areia"
 
-#: data/core/terrain.cfg:479
+#. [terrain]
+#: data/core/terrain.cfg:470
 msgid "Oasis"
 msgstr "Oasis"
 
-#: data/core/terrain.cfg:495
+#. [terrain]
+#: data/core/terrain.cfg:485
 msgid "Snow Forest"
 msgstr "Floresta Nevada"
 
-#: data/core/terrain.cfg:506
+#. [terrain]
+#: data/core/terrain.cfg:495
 msgid "Great Tree"
 msgstr "Grande Árvore"
 
-#: data/core/terrain.cfg:516
+#. [terrain]
+#: data/core/terrain.cfg:504
 msgid "Forest"
 msgstr "Floresta"
 
-#: data/core/terrain.cfg:525
+#. [terrain]
+#: data/core/terrain.cfg:512
 msgid "Tropical Forest"
 msgstr "Floresta Tropical"
 
-#: data/core/terrain.cfg:539 data/core/terrain.cfg:548
-#: data/core/terrain.cfg:558
+#. [terrain]
+#: data/core/terrain.cfg:525 data/core/terrain.cfg:534
+#: data/core/terrain.cfg:543
 msgid "Grassland"
 msgstr "Pradaria"
 
-#: data/core/terrain.cfg:568
+#. [terrain]
+#: data/core/terrain.cfg:552
 msgid "Savanna"
 msgstr "Savana"
 
-#: data/core/terrain.cfg:582
+#. [terrain]
+#: data/core/terrain.cfg:565
 msgid "Snow Hills"
 msgstr "Colinas Nevadas"
 
-#: data/core/terrain.cfg:593
+#. [terrain]
+#: data/core/terrain.cfg:575
 msgid "Dunes"
 msgstr "Dunas"
 
-#: data/core/terrain.cfg:604
+#. [terrain]
+#: data/core/terrain.cfg:585
 msgid "Hills"
 msgstr "Colinas"
 
-#: data/core/terrain.cfg:617 data/core/terrain.cfg:627
+#. [terrain]
+#: data/core/terrain.cfg:597 data/core/terrain.cfg:606
 msgid "Mountains"
 msgstr "Montanhas"
 
-#: data/core/terrain.cfg:640
+#. [terrain]
+#: data/core/terrain.cfg:618
 msgid "Chasm"
 msgstr "Desfiladeiro"
 
-#: data/core/terrain.cfg:649
+#. [terrain]
+#: data/core/terrain.cfg:627
 msgid "Lava chasm"
 msgstr "Desfiladeiro com lava"
 
-#: data/core/terrain.cfg:660
+#. [terrain]
+#: data/core/terrain.cfg:637
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/terrain.cfg:675 data/core/terrain.cfg:695
-#: data/core/terrain.cfg:704
+#. [terrain]
+#: data/core/terrain.cfg:651 data/core/terrain.cfg:669
+#: data/core/terrain.cfg:678
 msgid "Road"
 msgstr "Estrada"
 
-#: data/core/terrain.cfg:685
+#. [terrain]
+#: data/core/terrain.cfg:660
 msgid "Dirt"
 msgstr "Terra Batida"
 
-#: data/core/terrain.cfg:714
+#. [terrain]
+#: data/core/terrain.cfg:687
 msgid "Farmland"
 msgstr "Fazenda"
 
-#: data/core/terrain.cfg:728
+#. [terrain]
+#: data/core/terrain.cfg:700
 msgid "Swamp"
 msgstr "Pântano"
 
-#: data/core/terrain.cfg:743
+#. [terrain]
+#: data/core/terrain.cfg:714
 msgid "Cave"
 msgstr "Caverna"
 
-#: data/core/terrain.cfg:752
+#. [terrain]
+#: data/core/terrain.cfg:722
 msgid "Cave Lit"
 msgstr "Caverna Iluminada"
 
-#: data/core/terrain.cfg:763 data/core/terrain.cfg:772
+#. [terrain]
+#: data/core/terrain.cfg:732 data/core/terrain.cfg:740
 msgid "Mushroom Grove"
 msgstr "Colônia de Cogumelos"
 
-#: data/core/terrain.cfg:782
+#. [terrain]
+#: data/core/terrain.cfg:749
 msgid "Mushroom Grove Lit"
 msgstr "Colônia de Cogumelos Iluminada"
 
-#: data/core/terrain.cfg:793
+#. [terrain]
+#: data/core/terrain.cfg:759
 msgid "Rockbound Cave"
 msgstr "Cavernas Rochosas"
 
-#: data/core/terrain.cfg:804
+#. [terrain]
+#: data/core/terrain.cfg:769
 msgid "Rockbound Cave Lit"
 msgstr "Caverna rochosa Iluminada"
 
-#: data/core/terrain.cfg:822 data/core/terrain.cfg:834
-#: data/core/terrain.cfg:848 data/core/terrain.cfg:860
-#: data/core/terrain.cfg:874 data/core/terrain.cfg:886
-#: data/core/terrain.cfg:897 data/core/terrain.cfg:909
-#: data/core/terrain.cfg:921 data/core/terrain.cfg:933
-#: data/core/terrain.cfg:947 data/core/terrain.cfg:959
-#: data/core/terrain.cfg:971 data/core/terrain.cfg:984
-#: data/core/terrain.cfg:1000 data/core/terrain.cfg:1012
+#. [terrain]
+#: data/core/terrain.cfg:786 data/core/terrain.cfg:797
+#: data/core/terrain.cfg:810 data/core/terrain.cfg:821
+#: data/core/terrain.cfg:834 data/core/terrain.cfg:845
+#: data/core/terrain.cfg:855 data/core/terrain.cfg:865
+#: data/core/terrain.cfg:876 data/core/terrain.cfg:887
+#: data/core/terrain.cfg:898 data/core/terrain.cfg:911
+#: data/core/terrain.cfg:922 data/core/terrain.cfg:933
+#: data/core/terrain.cfg:945 data/core/terrain.cfg:960
+#: data/core/terrain.cfg:971
 msgid "Village"
 msgstr "Aldeia"
 
-#: data/core/terrain.cfg:1028
+#. [terrain]
+#: data/core/terrain.cfg:986
 msgid "Deep Water"
 msgstr "Águas profundas"
 
-#: data/core/terrain.cfg:1039
+#. [terrain]
+#: data/core/terrain.cfg:996
 msgid "Shallow Water"
 msgstr "Águas rasas"
 
-#: data/core/terrain.cfg:1050
+#. [terrain]
+#: data/core/terrain.cfg:1006
 msgid "River Ford"
 msgstr "Riacho"
 
-#: data/core/terrain.cfg:1066
+#. [terrain]
+#: data/core/terrain.cfg:1021
 msgid "Impassable Mountains"
 msgstr "Montanhas Impassáveis"
 
-#: data/core/terrain.cfg:1076
+#. [terrain]
+#: data/core/terrain.cfg:1030
 msgid "Impassable Desert Mountains"
 msgstr "Montanhas Impassáveis do Deserto"
 
-#: data/core/terrain.cfg:1087
+#. [terrain]
+#: data/core/terrain.cfg:1040
 msgid "Cave Wall"
 msgstr "Parede de Caverna"
 
-#: data/core/terrain.cfg:1097
+#. [terrain]
+#: data/core/terrain.cfg:1050
+#, fuzzy
+msgid "Wall"
+msgstr "Parede de Caverna"
+
+#. [terrain]
+#: data/core/terrain.cfg:1060
 msgid "Void"
 msgstr "Vazio"
 
+#. [terrain]
+#: data/core/terrain.cfg:1073
+msgid "Flat"
+msgstr ""
+
+#. [terrain]
+#: data/core/terrain.cfg:1079
+msgid "Frozen"
+msgstr ""
+
+#. [terrain]
+#: data/core/terrain.cfg:1085
+#, fuzzy
+msgid "Impassable"
+msgstr "Montanhas Impassáveis"
+
+#. [terrain]
+#: data/core/terrain.cfg:1091
+msgid "Unwalkable"
+msgstr ""
+
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
-#: src/editor/editor_dialogs.cpp:423
+#: src/editor/editor_dialogs.cpp:552
 msgid "OK"
 msgstr "OK"
 
@@ -242,7 +315,7 @@ msgid "No"
 msgstr "Não"
 
 #: src/construct_dialog.cpp:151 src/construct_dialog.cpp:154
-#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:422
+#: src/editor/editor_dialogs.cpp:104 src/editor/editor_dialogs.cpp:551
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -250,97 +323,113 @@ msgstr "Cancelar"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/editor/editor_dialogs.cpp:49
+#: src/editor/editor_dialogs.cpp:52
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Suas modificações feitas no mapa serão perdidas. Continuar?"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:196
 msgid "Create New Map"
 msgstr "Criar novo mapa"
 
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:386
+#: src/editor/editor_dialogs.cpp:84 src/editor/editor_dialogs.cpp:515
 #: src/mapgen_dialog.cpp:114
 msgid "Width:"
 msgstr "Largura:"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:387
+#: src/editor/editor_dialogs.cpp:85 src/editor/editor_dialogs.cpp:516
 #: src/mapgen_dialog.cpp:115
 msgid "Height:"
 msgstr "Altura:"
 
-#: src/editor/editor_dialogs.cpp:98
+#: src/editor/editor_dialogs.cpp:101
 msgid "Generate New Map"
 msgstr "Gerar novo mapa"
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:102
 msgid "Generate Random Map"
 msgstr "Gerar mapa aleatório"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:103
 msgid "Random Generator Settings"
 msgstr "Configurações do gerador aleatório"
 
-#: src/editor/editor_dialogs.cpp:178
+#: src/editor/editor_dialogs.cpp:181
 msgid "Map creation failed."
 msgstr "Falha na criação do mapa"
 
-#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:103
+#: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:103
 #: src/preferences_display.cpp:227
 msgid "Close Window"
 msgstr "Fechar Janela"
 
-#: src/editor/editor_dialogs.cpp:250 src/game_preferences_display.cpp:61
-#: src/hotkeys.cpp:84
+#: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:61
+#: src/hotkeys.cpp:85
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/editor/editor_dialogs.cpp:254 src/game_preferences_display.cpp:202
+#: src/editor/editor_dialogs.cpp:257 src/game_preferences_display.cpp:202
 msgid "Scroll Speed:"
 msgstr "Velocidade de scroll:"
 
-#: src/editor/editor_dialogs.cpp:281 src/game_preferences_display.cpp:160
+#: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:160
 #: src/hotkeys.cpp:64
 msgid "Toggle Full Screen"
 msgstr "Alternar Tela Cheia"
 
-#: src/editor/editor_dialogs.cpp:288 src/game_preferences_display.cpp:163
+#: src/editor/editor_dialogs.cpp:291 src/game_preferences_display.cpp:163
 msgid "Show Grid"
 msgstr "Mostrar Grade"
 
-#: src/editor/editor_dialogs.cpp:295
+#: src/editor/editor_dialogs.cpp:298
 msgid "Video Mode"
 msgstr "Modo de vídeo"
 
-#: src/editor/editor_dialogs.cpp:298 src/game_preferences_display.cpp:184
+#: src/editor/editor_dialogs.cpp:301 src/game_preferences_display.cpp:184
 msgid "Hotkeys"
 msgstr "Teclas de Atalho"
 
-#: src/editor/editor_dialogs.cpp:384 src/editor/editor_dialogs.cpp:496
-#: src/hotkeys.cpp:121
+#: src/editor/editor_dialogs.cpp:306
+msgid "Lighting levels (time of day):"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:313
+msgid "light_level^Red:"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:314
+msgid "light_level^Green:"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:315
+msgid "light_level^Blue:"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
+#: src/hotkeys.cpp:122
 msgid "Resize Map"
 msgstr "Redimensionar Mapa"
 
-#: src/editor/editor_dialogs.cpp:388
+#: src/editor/editor_dialogs.cpp:517
 msgid "X offset:"
 msgstr "Desvio de X:"
 
-#: src/editor/editor_dialogs.cpp:389
+#: src/editor/editor_dialogs.cpp:518
 msgid "Y offset:"
 msgstr "Desvio de Y:"
 
-#: src/editor/editor_dialogs.cpp:468
+#: src/editor/editor_dialogs.cpp:597
 msgid "Smart expand"
 msgstr "Redimensionamento inteligente"
 
-#: src/editor/editor_dialogs.cpp:557
+#: src/editor/editor_dialogs.cpp:686
 msgid "X-Axis"
 msgstr "Eixo X"
 
-#: src/editor/editor_dialogs.cpp:558
+#: src/editor/editor_dialogs.cpp:687
 msgid "Y-Axis"
 msgstr "Eixo Y"
 
-#: src/editor/editor_dialogs.cpp:559
+#: src/editor/editor_dialogs.cpp:688
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Girar o mapa (isso pode mudar as dimensões do mapa):"
 
@@ -368,11 +457,11 @@ msgstr "Nome: "
 msgid "Creation of the directory failed."
 msgstr "Criação da pasta falhou.."
 
-#: src/game_preferences.cpp:217
+#: src/game_preferences.cpp:221
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:281
+#: src/game_preferences.cpp:285
 msgid "player"
 msgstr "jogador"
 
@@ -785,6 +874,73 @@ msgstr "O novo tema terá efeito a partir do próximo jogo novo ou carregado."
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nenhum tema conhecido. Tente mudar de dentro de um jogo existente."
 
+#: src/gui/widgets/canvas.cpp:331
+msgid "Line doesn't fit on canvas."
+msgstr ""
+
+#: src/gui/widgets/canvas.cpp:433
+msgid "Rectangle doesn't fit on canvas."
+msgstr ""
+
+#: src/gui/widgets/canvas.cpp:728
+msgid "Text doesn't start on canvas."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:119
+msgid "No default gui defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:158
+msgid "No default window defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:170
+msgid "No default button defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:182
+msgid "No default label defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:194
+msgid "No default text box defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:206
+msgid "No default tooltip defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:224
+msgid "Window not defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:253 src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:437 src/gui/widgets/settings.cpp:486
+#: src/gui/widgets/settings.cpp:531 src/gui/widgets/window_builder.cpp:204
+#, fuzzy
+msgid "No resolution defined."
+msgstr "Falha na criação do mapa"
+
+#: src/gui/widgets/settings.cpp:332
+msgid "No state or draw section defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:583
+msgid "No layer or draw section defined."
+msgstr ""
+
+#: src/gui/widgets/window_builder.cpp:238
+msgid "No grid defined."
+msgstr ""
+
+#: src/gui/widgets/window_builder.cpp:353
+msgid "A row must have a column."
+msgstr ""
+
+#: src/gui/widgets/window_builder.cpp:354
+msgid "Number of columns differ."
+msgstr ""
+
 #: src/hotkeys.cpp:54
 msgid "Next Unit"
 msgstr "Próxima unidade"
@@ -830,291 +986,296 @@ msgid "Screenshot"
 msgstr "Foto da tela"
 
 #: src/hotkeys.cpp:66
+#, fuzzy
+msgid "Map Screenshot"
+msgstr "Foto da tela"
+
+#: src/hotkeys.cpp:67
 msgid "Accelerated"
 msgstr "Acelerado"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Unit Description"
 msgstr "Descrição da unidade"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Rename Unit"
 msgstr "Renomear unidade"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Save Game"
 msgstr "Salvar Jogo"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 #, fuzzy
 msgid "Save Replay"
 msgstr "Salvar Mapa"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Save The Map"
 msgstr "Salvar o Mapa"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Load Game"
 msgstr "Carregar Jogo"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Recruit"
 msgstr "Recrutar"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Repeat Recruit"
 msgstr "Repetir Recrutamento"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Recall"
 msgstr "Convocar"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "End Turn"
 msgstr "Terminar Turno"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Toggle Grid"
 msgstr "Alternar Grade"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Mouse Scrolling"
 msgstr "Scroll do Mouse"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Status Table"
 msgstr "Tabela de Estatus"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Mute"
 msgstr "Mudo"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Speak"
 msgstr "Falar"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Create Unit (Debug!)"
 msgstr "Criar Unidade (Debug!)"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Change Unit Side (Debug!)"
 msgstr "Mudar Time da Unidade (Debug!)"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Scenario Objectives"
 msgstr "Objetivos do Cenário"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Unit List"
 msgstr "Lista de Unidades"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Quit Game"
 msgstr "Sair do Jogo"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Set Team Label"
 msgstr "Definir Nome do Time"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Set Label"
 msgstr "Colocar Nome"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Clear Labels"
 msgstr "Apagar Nomes"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Show Enemy Moves"
 msgstr "Mostrar Movimentos do Inimigo"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Best Possible Enemy Moves"
 msgstr "Melhores Possíveis Movimentos do Inimigo"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Play"
 msgstr "Reproduzir"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Reset"
 msgstr "Reiniciar"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Stop"
 msgstr "Parar"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Next Turn"
 msgstr "Próximo turno"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Next Side"
 msgstr "Próximo time"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Full map"
 msgstr "Mapa Completo"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Each team"
 msgstr "Cada time"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Team 1"
 msgstr "Time 1"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Skip animation"
 msgstr "Pular Animação"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Set Terrain"
 msgstr "Desenhar Terreno"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Quit Editor"
 msgstr "Sair do Editor"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "New Map"
 msgstr "Novo Mapa"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Load Map"
 msgstr "Carregar Mapa"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Save Map"
 msgstr "Salvar Mapa"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Save As"
 msgstr "Salvar como"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Set Player's keep"
 msgstr "Escolher castelo do Jogador"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Flood Fill"
 msgstr "Preencher"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Fill Selection"
 msgstr "Preencher Seleção"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Rotate Selection"
 msgstr "Rotacionar Seleção"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Paste"
 msgstr "Colar"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Revert from Disk"
 msgstr "Carregar Original"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Flip Map"
 msgstr "Inverter Mapa"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Select All"
 msgstr "Selecionar Tudo"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Draw Terrain"
 msgstr "Desenhar Terreno"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Refresh Image Cache"
 msgstr "Atualizar Cache de Imagens"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Delay transition updates"
 msgstr "Atrasar atualização das transições"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Update transitions"
 msgstr "Atualizar transições"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Delay Shroud Updates"
 msgstr "Atrasar atualização da neblina"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Update Shroud Now"
 msgstr "Atualizar neblina agora"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Continue Move"
 msgstr "Continuar Movimento"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Find Label or Unit"
 msgstr "Encontrar Nome ou Unidade"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Speak to Ally"
 msgstr "Falar com Aliados"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Speak to All"
 msgstr "Falar com Todos"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "View Chat Log"
 msgstr "Ver log da conversa"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Change the language"
 msgstr "Mudar o idioma"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Enter user command"
 msgstr "Digitar comando do usuário"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Clear messages"
 msgstr "Apagar mensagens"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "User-Command#2"
 msgstr "Comando-Personalizado#2"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "User-Command#3"
 msgstr "Comando-Personalizado#3"
 
-#: src/hotkeys.cpp:513 src/hotkeys.cpp:840
+#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
 msgid "Do you really want to quit?"
 msgstr "Você realmente quer sair?"
 
-#: src/hotkeys.cpp:513 src/hotkeys.cpp:840
+#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
 msgid "Quit"
 msgstr "Sair"
 
@@ -1174,7 +1335,7 @@ msgstr ""
 msgid "Could not get image for terrain: $terrain."
 msgstr ""
 
-#: src/minimap.cpp:93 src/minimap.cpp:105
+#: src/minimap.cpp:111 src/minimap.cpp:123
 msgid "Error creating or aquiring an image."
 msgstr ""
 
@@ -1213,11 +1374,11 @@ msgstr "Mudar tecla de atalho"
 msgid "This Hotkey is already in use."
 msgstr "Esta tecla de atalho já esta em uso."
 
-#: src/preferences_display.cpp:428
+#: src/preferences_display.cpp:435
 msgid "There are no alternative video modes available"
 msgstr "Não existem outros modos de vídeo disponíveis"
 
-#: src/preferences_display.cpp:457
+#: src/preferences_display.cpp:464
 msgid "Choose Resolution"
 msgstr "Escolher a resolução"
 
@@ -1225,13 +1386,13 @@ msgstr "Escolher a resolução"
 msgid "Error"
 msgstr "Erro"
 
-#: src/terrain_translation.cpp:681
+#: src/terrain_translation.cpp:682
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
 
-#: src/terrain_translation.cpp:765
+#: src/terrain_translation.cpp:766
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Terreno Inválido encontrado, provavelmente da versão 1.2, terreno = "
 

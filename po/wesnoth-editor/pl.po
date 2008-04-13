@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 10:56+0100\n"
+"POT-Creation-Date: 2008-04-13 16:22+0200\n"
 "PO-Revision-Date: 2007-12-09 18:53+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
@@ -16,190 +16,204 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/core/editor-groups.cfg:11
+#. [editor_group]
+#: data/core/editor-groups.cfg:10
 msgid "all"
 msgstr "wszystkie"
 
-#: data/core/editor-groups.cfg:17
+#. [editor_group]
+#: data/core/editor-groups.cfg:16
 msgid "water"
 msgstr "woda"
 
-#: data/core/editor-groups.cfg:29
+#. [editor_group]
+#: data/core/editor-groups.cfg:28
 msgid "flat"
 msgstr "równina"
 
-#: data/core/editor-groups.cfg:35
+#. [editor_group]
+#: data/core/editor-groups.cfg:34
 msgid "desert"
 msgstr "pustynia"
 
-#: data/core/editor-groups.cfg:41
+#. [editor_group]
+#: data/core/editor-groups.cfg:40
 msgid "forest"
 msgstr "las"
 
-#: data/core/editor-groups.cfg:47
+#. [editor_group]
+#: data/core/editor-groups.cfg:46
 msgid "frozen"
 msgstr "lód"
 
-#: data/core/editor-groups.cfg:53
+#. [editor_group]
+#: data/core/editor-groups.cfg:52
 msgid "rough"
 msgstr "nierówności"
 
-#: data/core/editor-groups.cfg:59
+#. [editor_group]
+#: data/core/editor-groups.cfg:58
 msgid "cave"
 msgstr "jaskinia"
 
-#: data/core/editor-groups.cfg:65
+#. [editor_group]
+#: data/core/editor-groups.cfg:64
 msgid "village"
 msgstr "wioska"
 
-#: data/core/editor-groups.cfg:71
+#. [editor_group]
+#: data/core/editor-groups.cfg:70
 msgid "castle"
 msgstr "zamek"
 
+#. [menu]
 #: data/themes/editor.cfg:462
 msgid "File"
 msgstr "Plik"
 
+#. [menu]
 #: data/themes/editor.cfg:472
 msgid "Edit"
 msgstr "Edycja"
 
+#. [menu]
 #: data/themes/editor.cfg:481
 msgid "Settings"
 msgstr "Ustawienia"
 
+#. [label]
 #: data/themes/editor.cfg:500
 msgid "villages"
 msgstr "wioski"
 
-#: src/editor/editor.cpp:236
+#: src/editor/editor.cpp:235
 msgid "Draw tiles"
 msgstr "Rysuj pola"
 
-#: src/editor/editor.cpp:238
+#: src/editor/editor.cpp:237
 msgid "Fill"
 msgstr "Wypełnienie"
 
-#: src/editor/editor.cpp:240
+#: src/editor/editor.cpp:239
 msgid "Set player's starting position"
 msgstr "Ustaw początkową pozycję gracza"
 
-#: src/editor/editor.cpp:242
+#: src/editor/editor.cpp:241
 msgid "Zoom in"
 msgstr "Przybliż"
 
-#: src/editor/editor.cpp:244
+#: src/editor/editor.cpp:243
 msgid "Zoom out"
 msgstr "Oddal"
 
-#: src/editor/editor.cpp:246
+#: src/editor/editor.cpp:245
 msgid "Undo"
 msgstr "Cofnij"
 
-#: src/editor/editor.cpp:248
+#: src/editor/editor.cpp:247
 msgid "Redo"
 msgstr "Ponów"
 
-#: src/editor/editor.cpp:250
+#: src/editor/editor.cpp:249
 msgid "Zoom to default view"
 msgstr "Ustaw domyślne zbliżenie"
 
-#: src/editor/editor.cpp:252
+#: src/editor/editor.cpp:251
 msgid "Toggle grid"
 msgstr "Przełącz siatkę"
 
-#: src/editor/editor.cpp:254
+#: src/editor/editor.cpp:253
 msgid "Resize the map"
 msgstr "Zmień rozmiar mapy"
 
-#: src/editor/editor.cpp:256
+#: src/editor/editor.cpp:255
 msgid "Flip map"
 msgstr "Odwróć mapę"
 
-#: src/editor/editor.cpp:258
+#: src/editor/editor.cpp:257
 msgid "Update transitions"
 msgstr "Aktualizacja przejść"
 
-#: src/editor/editor.cpp:260
+#: src/editor/editor.cpp:259
 msgid "Delay transition updates"
 msgstr "Opóźniaj aktualizację przejść"
 
-#: src/editor/editor.cpp:472
+#: src/editor/editor.cpp:475
 msgid "Language"
 msgstr "Język"
 
-#: src/editor/editor.cpp:473
+#: src/editor/editor.cpp:476
 msgid "Choose your preferred language:"
 msgstr "Wybierz preferowany język:"
 
-#: src/editor/editor.cpp:490 src/editor/editor_main.cpp:305
+#: src/editor/editor.cpp:493 src/editor/editor_main.cpp:303
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Edytor map Bitwy o Wesnoth"
 
-#: src/editor/editor.cpp:517
+#: src/editor/editor.cpp:520
 msgid "Save the Map As"
 msgstr "Zapisz Mapę Jako"
 
-#: src/editor/editor.cpp:528
+#: src/editor/editor.cpp:531
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Mapa już istnieje. Czy chcesz ją nadpisać?"
 
-#: src/editor/editor.cpp:551
+#: src/editor/editor.cpp:554
 msgid "None"
 msgstr "Brak"
 
-#: src/editor/editor.cpp:556 src/editor/editor.cpp:1387
+#: src/editor/editor.cpp:559 src/editor/editor.cpp:1414
 msgid "Player"
 msgstr "Gracz"
 
-#: src/editor/editor.cpp:560
+#: src/editor/editor.cpp:563
 msgid "Which Player?"
 msgstr "Który Gracz?"
 
-#: src/editor/editor.cpp:561
+#: src/editor/editor.cpp:564
 msgid "Which player should start here?"
 msgstr "Który gracz powinien tutaj zaczynać?"
 
-#: src/editor/editor.cpp:621
+#: src/editor/editor.cpp:624
 msgid "Choose a Map to Load"
 msgstr "Wybierz mapę do załadowania"
 
-#: src/editor/editor.cpp:625
+#: src/editor/editor.cpp:628
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
 "Ostrzeżenie: niedozwolone znaki w nazwie mapy. Zapisz mapę pod inną nazwą."
 
-#: src/editor/editor.cpp:638 src/editor/editor.cpp:718
+#: src/editor/editor.cpp:641 src/editor/editor.cpp:721
 msgid "The file does not contain a valid map."
 msgstr "Plik nie zawiera prawidłowej mapy."
 
-#: src/editor/editor.cpp:1266
+#: src/editor/editor.cpp:1293
 msgid "Quit Editor"
 msgstr "Wyjście z edytora"
 
-#: src/editor/editor.cpp:1270
+#: src/editor/editor.cpp:1297
 msgid "Do you want to save the map before quitting?"
 msgstr "Czy chcesz zapisać mapę przed wyjściem?"
 
-#: src/editor/editor.cpp:1318
+#: src/editor/editor.cpp:1345
 msgid "Map saved."
 msgstr "Mapa zapisana."
 
-#: src/editor/editor.cpp:1326
+#: src/editor/editor.cpp:1353
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
-#: src/editor/editor.cpp:1341
+#: src/editor/editor.cpp:1368
 msgid "Error: Illegal character in filename."
 msgstr "Błąd: niewłaściwy znak w nazwie pliku."
 
-#: src/editor/editor_palettes.cpp:433
+#: src/editor/editor_palettes.cpp:438
 msgid "FG"
 msgstr "FG"
 
-#: src/editor/editor_palettes.cpp:435
+#: src/editor/editor_palettes.cpp:440
 msgid "BG"
 msgstr "BG"
 

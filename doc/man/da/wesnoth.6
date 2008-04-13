@@ -46,6 +46,9 @@ dine egne enheder, scenarier eller kampagner, og del dem med andre.
 \fB\-\-bpp\fP\fI\ nummer\fP
 indstiller BitsPerPixel værdien. Eksempel: \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ valgtfil\ nyfil\fP
 komprimerer en gemt fil (\fIvalgtfil\fP)  som er i tekstformatet WML til binært
 WML. (\fInyfil\fP).
@@ -81,6 +84,9 @@ afslutter.
 \fB\-\-load\fP\fI\ savegame\fP
 henter det gemte spil fra standardkataloget for gemte spil.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 indstiller strenghedsniveauet på fejlsøgningsdomænerne. \fBall\fP kan bruges
 til alle fejlsøgningsdomæner. Tilgængelige niveauer: \fBfejl\fP,\ \fBadvarsel\fP,\ \fBinfo\fP,\ \fBfejlsøgning\fP.  Som standard bruges \fBfejl\fP\-niveauet.
@@ -92,7 +98,7 @@ Gemmer en liste med alle logdomæner og afslutter.
 antallet af billeder per sekund som spillet kan vise, værdien bør være
 mellem 1 og 1000. Standarden er \fB50\fP.
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 afvikler et flerspiller spil. Der er ekstra indstillinger, som kan bruges
 med \fB\-\-multiplayer\fP som forklaret nedenfor.
 .TP 
@@ -107,6 +113,10 @@ udskriver navnet på spildatakataloget og afslutter.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 indstiller skærmopløsningen. Eksempel: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 afvikler spillet i et lille testscenarie.

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 10:56+0100\n"
+"POT-Creation-Date: 2008-04-13 16:22+0200\n"
 "PO-Revision-Date: 2008-02-12 20:47+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: eo-EO\n"
@@ -13,155 +13,169 @@ msgstr ""
 "X-Poedit-Language: Esperanto\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: data/core/editor-groups.cfg:11
+#. [editor_group]
+#: data/core/editor-groups.cfg:10
 msgid "all"
 msgstr "ĉiuj"
 
-#: data/core/editor-groups.cfg:17
+#. [editor_group]
+#: data/core/editor-groups.cfg:16
 msgid "water"
 msgstr "akvo"
 
-#: data/core/editor-groups.cfg:29
+#. [editor_group]
+#: data/core/editor-groups.cfg:28
 msgid "flat"
 msgstr "glata"
 
-#: data/core/editor-groups.cfg:35
+#. [editor_group]
+#: data/core/editor-groups.cfg:34
 msgid "desert"
 msgstr "dezerto"
 
-#: data/core/editor-groups.cfg:41
+#. [editor_group]
+#: data/core/editor-groups.cfg:40
 msgid "forest"
 msgstr "arbaro"
 
-#: data/core/editor-groups.cfg:47
+#. [editor_group]
+#: data/core/editor-groups.cfg:46
 msgid "frozen"
 msgstr "glaciita"
 
-#: data/core/editor-groups.cfg:53
+#. [editor_group]
+#: data/core/editor-groups.cfg:52
 msgid "rough"
 msgstr "monteca"
 
-#: data/core/editor-groups.cfg:59
+#. [editor_group]
+#: data/core/editor-groups.cfg:58
 msgid "cave"
 msgstr "kaverno"
 
-#: data/core/editor-groups.cfg:65
+#. [editor_group]
+#: data/core/editor-groups.cfg:64
 msgid "village"
 msgstr "vilaĝo"
 
-#: data/core/editor-groups.cfg:71
+#. [editor_group]
+#: data/core/editor-groups.cfg:70
 msgid "castle"
 msgstr "kastelo"
 
+#. [menu]
 #: data/themes/editor.cfg:462
 msgid "File"
 msgstr "Dosiero"
 
+#. [menu]
 #: data/themes/editor.cfg:472
 msgid "Edit"
 msgstr "Redakti"
 
+#. [menu]
 #: data/themes/editor.cfg:481
 msgid "Settings"
 msgstr "Agordaĵoj"
 
+#. [label]
 #: data/themes/editor.cfg:500
 msgid "villages"
 msgstr "vilaĝoj"
 
-#: src/editor/editor.cpp:236
+#: src/editor/editor.cpp:235
 msgid "Draw tiles"
 msgstr "Pentri ĉelojn"
 
-#: src/editor/editor.cpp:238
+#: src/editor/editor.cpp:237
 msgid "Fill"
 msgstr "Plenigi"
 
-#: src/editor/editor.cpp:240
+#: src/editor/editor.cpp:239
 msgid "Set player's starting position"
 msgstr "Marki startan pozicion de ludanto"
 
-#: src/editor/editor.cpp:242
+#: src/editor/editor.cpp:241
 msgid "Zoom in"
 msgstr "Zomi"
 
-#: src/editor/editor.cpp:244
+#: src/editor/editor.cpp:243
 msgid "Zoom out"
 msgstr "Malzomi"
 
-#: src/editor/editor.cpp:246
+#: src/editor/editor.cpp:245
 msgid "Undo"
 msgstr "Malfari"
 
-#: src/editor/editor.cpp:248
+#: src/editor/editor.cpp:247
 msgid "Redo"
 msgstr "Refari"
 
-#: src/editor/editor.cpp:250
+#: src/editor/editor.cpp:249
 msgid "Zoom to default view"
 msgstr "Defaŭlta zomo"
 
-#: src/editor/editor.cpp:252
+#: src/editor/editor.cpp:251
 msgid "Toggle grid"
 msgstr "Ŝalti kradeton"
 
-#: src/editor/editor.cpp:254
+#: src/editor/editor.cpp:253
 msgid "Resize the map"
 msgstr "Ŝanĝi grandecon de la mapo"
 
-#: src/editor/editor.cpp:256
+#: src/editor/editor.cpp:255
 msgid "Flip map"
 msgstr "Renversi mapon"
 
-#: src/editor/editor.cpp:258
+#: src/editor/editor.cpp:257
 msgid "Update transitions"
 msgstr "Ĝisdatigi transirojn"
 
-#: src/editor/editor.cpp:260
+#: src/editor/editor.cpp:259
 msgid "Delay transition updates"
 msgstr "Haltigi ĝisdatigon de transiroj"
 
-#: src/editor/editor.cpp:472
+#: src/editor/editor.cpp:475
 msgid "Language"
 msgstr "Lingvo"
 
-#: src/editor/editor.cpp:473
+#: src/editor/editor.cpp:476
 msgid "Choose your preferred language:"
 msgstr "Elektu vian preferan lingvon:"
 
-#: src/editor/editor.cpp:490 src/editor/editor_main.cpp:305
+#: src/editor/editor.cpp:493 src/editor/editor_main.cpp:303
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Batalo por Vesnot: Redaktilo de mapoj."
 
-#: src/editor/editor.cpp:517
+#: src/editor/editor.cpp:520
 msgid "Save the Map As"
 msgstr "Savi la Mapon Kiel..."
 
-#: src/editor/editor.cpp:528
+#: src/editor/editor.cpp:531
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "La mapo jam ekzistas. Ĉu vi volas anstaŭigi ĝin?"
 
-#: src/editor/editor.cpp:551
+#: src/editor/editor.cpp:554
 msgid "None"
 msgstr "Neniu"
 
-#: src/editor/editor.cpp:556 src/editor/editor.cpp:1387
+#: src/editor/editor.cpp:559 src/editor/editor.cpp:1414
 msgid "Player"
 msgstr "Ludanto"
 
-#: src/editor/editor.cpp:560
+#: src/editor/editor.cpp:563
 msgid "Which Player?"
 msgstr "Kiu Ludanto?"
 
-#: src/editor/editor.cpp:561
+#: src/editor/editor.cpp:564
 msgid "Which player should start here?"
 msgstr "Kiu ludanto komencos ĉi tie?"
 
-#: src/editor/editor.cpp:621
+#: src/editor/editor.cpp:624
 msgid "Choose a Map to Load"
 msgstr "Elektu Mapon por Ŝarĝado"
 
-#: src/editor/editor.cpp:625
+#: src/editor/editor.cpp:628
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -169,35 +183,35 @@ msgstr ""
 "Averto: Nelegala simbolo en nomo de la mapo. Vi devas savi mapon kun alia "
 "nomo."
 
-#: src/editor/editor.cpp:638 src/editor/editor.cpp:718
+#: src/editor/editor.cpp:641 src/editor/editor.cpp:721
 msgid "The file does not contain a valid map."
 msgstr "La dosiero ne enhavas mapon."
 
-#: src/editor/editor.cpp:1266
+#: src/editor/editor.cpp:1293
 msgid "Quit Editor"
 msgstr "Eliri"
 
-#: src/editor/editor.cpp:1270
+#: src/editor/editor.cpp:1297
 msgid "Do you want to save the map before quitting?"
 msgstr "Ĉu vi volas savi la mapon antaŭ eliro?"
 
-#: src/editor/editor.cpp:1318
+#: src/editor/editor.cpp:1345
 msgid "Map saved."
 msgstr "Mapo estas savita."
 
-#: src/editor/editor.cpp:1326
+#: src/editor/editor.cpp:1353
 msgid "Could not save the map: $msg"
 msgstr "Vi ne povas savi mapon: $msg"
 
-#: src/editor/editor.cpp:1341
+#: src/editor/editor.cpp:1368
 msgid "Error: Illegal character in filename."
 msgstr "Eraro: Nelegala simbolo en nomo de dosiero."
 
-#: src/editor/editor_palettes.cpp:433
+#: src/editor/editor_palettes.cpp:438
 msgid "FG"
 msgstr "Antaŭa"
 
-#: src/editor/editor_palettes.cpp:435
+#: src/editor/editor_palettes.cpp:440
 msgid "BG"
 msgstr "Malantaŭa"
 

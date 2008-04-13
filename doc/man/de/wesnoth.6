@@ -43,6 +43,9 @@ Fertigkeiten, Waffen und Sprüchen aus und zerschmettern Sie Ihre Gegner.
 Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: \fB\-\-bpp
 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ entpackte_datei\ komprimierte_datei\fP
 Wandelt eine normale WML\-Textdatei (\fIentpackte_datei\fP) in einen als
 WML\-Binärdatei komprimierten Spielstand (\fIkomprimierte_datei\fP) um.
@@ -81,6 +84,9 @@ Gibt die möglichen Kommandozeilenoptionen aus.
 Lädt die Datei `Spielstand' aus dem Standardverzeichnis für gespeicherte
 Spiele.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
 Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
 zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig wird die Stufe \fBerror\fP verwendet.
@@ -93,7 +99,7 @@ Setzt die Anzahl der gezeichneten Bilder pro Sekunde, die vom Spiel
 angezeigt werden. Der Wert sollte zwischen 1 und 1000 liegen. Der Standard
 ist \fB50\fP.
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 Startet das Spiel im Mehrspieler\-Modus. Es gibt noch zusätzliche Optionen
 die zusammen mit \fB\-\-multiplayer\fP verwendet werden können. Diese werden
 weiter unten näher erklärt.
@@ -110,6 +116,10 @@ Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet.
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 Ermöglicht es, die Auflösung zu bestimmen, in der das Spiel gestartet
 wird. Beispiel: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 Startet das Programm mit einem kleinen Testszenario.

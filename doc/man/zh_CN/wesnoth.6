@@ -41,6 +41,9 @@ wesnoth \- 韦诺之战，一个非常好的回合制策略游戏
 \fB\-\-bpp\fP\fI\ number\fP
 设置每象素占多少位(BitsPerPixel)。例如：\fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ infile\ outfile\fP
 将文本格式的WML存档文件(\fIinfile\fP)压缩为二进制格式的WML存档文件(\fIoutfile\fP)。
 .TP 
@@ -69,6 +72,9 @@ http://www.wesnoth.org/wiki/CommandMode
 \fB\-\-load\fP\fI\ savegame\fP
 从标准存档目录读取存档文件
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 设置debug的级别.\fBall\fP用来匹配任意bebug级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. 默认的级别是\fBerror\fP。
 .TP 
@@ -78,7 +84,7 @@ http://www.wesnoth.org/wiki/CommandMode
 \fB\-\-max\-fps\fP
 游戏每秒能显示的帧数，可以设为1－1000的数，默认为\fB50\fP。
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 启动一个多人游戏。关于多人游戏下面有更多选项可以与\fB\-\-multiplayer\fP一起使用。
 .TP 
 \fB\-\-nocache\fP
@@ -92,6 +98,10 @@ http://www.wesnoth.org/wiki/CommandMode
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 设置屏幕分辨率。例如： \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 使用一个小的测试场景启动游戏

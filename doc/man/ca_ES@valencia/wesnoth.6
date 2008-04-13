@@ -1,0 +1,212 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2007 wesnoth "La batalla per Wesnoth"
+.
+.SH NOM
+wesnoth \- La batalla per Wesnoth, un joc d'estrategia fantàstica per tandes
+.
+.SH SINOPSIS
+.
+\fBwesnoth\fP [\fIOPCIONS\fP] [\fIRUTA_ALS_DATOS\fP]
+.
+.SH DESCRIPCIÓ
+.
+La batalla per \fBWesnoth\fP es un joc d'estrategia fantàstica per tandes.
+
+Derrote a tots els líders enemics usant un conjunt equilibrat de tropes,
+tenint cuitat d'administrar els seus recursos d'or i aldees. Cada unitat té
+els seus propis punts forts i débils; per a guanyar, desplegue les seues
+forces de la millor manera posible, mentres evita que el seu enemic faça lo
+mateix. Segon les unitats van guanyant experiencia, adquirixen noves
+habilitats i se tornen més poderoses. Jugue en la seua propia llengua i
+prove la seua habilitat contra un sabut adversari controlat pel ordinador, o
+úna's a la gran comunitat de jugadors en llínea de Wesnoth. Cree les seues
+propies unitats personalisades, escenaris o campanyas i compartix\-les ab
+atres.
+.
+.SH OPCIONS
+.
+.TP 
+\fB\-\-bpp\fP\fI\ número\fP
+estableix el valor de BitsPerPixel. Per eixemple: \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
+\fB\-\-compress\fP\fI\ archiu d'entrada\ archiu d'eixida\fP
+comprimix un archiu de partida guardada (|<archiu d'entrada>) que està en
+format WML de texto a un format WML binari (|<archiu d'eixida>).
+.TP 
+\fB\-d, \-\-debug\fP
+mostra informació extra de depuració i activa opcions adicionals en la
+llínea de órdens dins del joc (veja el wiki en
+http://www.wesnoth.org/wiki/CommandMode per a més informació sobre la llínea
+d'órdens).
+.TP 
+\fB\-\-decompress\fP\fI\ archiu_d'entrada\ archiu_d'eixida\fP
+descomprimix un archiu de partida guardada (|<archiu d'entrada>) que està en
+format WML binari a un format WML de texto (|<archiu d'eixida>).
+.TP 
+\fB\-f, \-\-fullscreen\fP
+eixecuta el joc en modo de pantalla completa.
+.TP 
+\fB\-\-fps\fP
+mostra el número de quadres per segon als que s'està eixecutant el joc
+actualment, en un racó de la pantalla.
+.TP 
+\fB\-\-gunzip\fP\fI\ archiu_d'entrada.gz\fP
+Descomprimix un archiu que deuría estar en format gzip i ho almacena sense
+el sufix .gz. El \fIinfile.gz\fP serà eliminat.
+.TP 
+\fB\-\-gzip\fP\fI\ archiu_d'entrada\fP
+comprimix un archiu en format gzip, ho guarda com \fIarchiu_d'entrada\fP.gz i
+elimina \fIarchiu_d'entrada\fP.
+.TP 
+\fB\-h, \-\-help\fP
+mostra un resum de les opcions de llínea d'órdens en la eixida estándart, i
+finalisa.
+.TP 
+\fB\-\-load\fP\fI\ partida_guardada\fP
+carrega un archiu de partida guardada des del directori estàndart de jocs
+guardats.
+.TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+estableix el nivell de gravetat dels dominis de depuració. \fBall\fP pot
+usar\-se per a seleccionar tots els dominis. Nivells disponibles: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Per defecte s'usarà el nivell \fBerror\fP.
+.TP 
+\fB\-\-logdomains\fP
+Bolca una llista de tots els dominis de registre i finalisa.
+.TP 
+\fB\-\-max\-fps\fP
+el número de quadres per segon que el joc pot mostrar, el valor deuría estar
+entre 1 i 1000, per defecte és \fB50\fP.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+eixecuta un joc multijugador. Existixen opcions adicionals que poden usar\-se
+junt ab \fB\-\-multiplayer\fP com s'explica més avall.
+.TP 
+\fB\-\-nocache\fP
+deshabilita el cache de datos de joc.
+.TP 
+\fB\-\-nosound\fP
+eixecuta el joc sense sons ni música.
+.TP 
+\fB\-\-path\fP
+mostra el nom del directori de datos de joc i finalisa.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+estableix la resolució de la pantalla. Per eixemple: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-t, \-\-test\fP
+eixecuta el joc en un escenari de prova chicotet.
+.TP 
+\fB\-v, \-\-version\fP
+mostra el número de versió i finalisa.
+.TP 
+\fB\-w, \-\-windowed\fP
+eixecuta el joc en una finestra.
+.TP 
+\fB\-\-no\-delay\fP
+eixecuta el joc sense retarts per a fer una prova de rendiment gràfic.  Açò
+s'activa automàticament ab \fB\-\-nogui\fP.
+.TP 
+\fB\-\-nogui\fP
+eixecuta el joc sense l'interfaç gràfic. Ha d'aparèixer abans de
+\fB\-\-multiplayer\fP per a que tinga l'efecte desijat.
+.TP 
+\fB\-\-exit\-at\-end\fP
+finalisa una volta que s'ha completat l'escenari, sense mostrar un diàlec de
+victoria o derrota que requerix que l'usuari pulse en Aceptar.  Açò s'usa
+també per a proves de rendiment automatisades.
+.
+.SH "Opcions per a \-\-multiplayer"
+.
+Les opcions multijugador específiques de bando esten marcades ab \fInumber\fP. 
+\fInumber\fP ha de reemplasar\-se per un número de bando. Habitualment és 1 ó 2
+pero depend del número de jugadors posibles en l'escenari triat.
+.TP 
+\fB\-\-algorithm\fP\fInúmero\fP\fB=\fP\fIvalor\fP
+selecciona un algoritme distint de l'habitual per a ser usat pel controlador
+d'IA d'este bando. Els valors disponibles son: \fBidle_ai\fP i \fBsample_ai\fP.
+.TP  
+\fB\-\-controller\fP\fInúmero\fP\fB=\fP\fIvalor\fP
+selecciona el controlador per a este bando. Els valors disponibles son:
+\fBhumà\fP i \fBai\fP.
+.TP  
+\fB\-\-era=\fP\fIvalor\fP
+use esta opció per a jugar en la era seleccionada en conte de la era per
+defecte (denominada \fBPer defecte\fP). La era se selecciona usant un número de
+identificació (id). Les eres se describen en l'archiu
+\fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-parm\fP\fInúmero\fP\fB=\fP\fInom\fP\fB:\fP\fIvalor\fP
+estableix parámetros adicionals per a este bando. Este parámetro depend de
+les opcions usades ab \fB\-\-controller\fP i \fB\-\-algorithm.\fP Només deuría ser
+útil a la gent que esta disenyant la seua propia IA. (no esta encara
+documentat completament)
+.TP 
+\fB\-\-scenario=\fP\fIvalor\fP
+selecciona un escenari multijugador per id. El id d'escenari per defecte és
+\fBmultiplayer_Les_Terres_Lliures\fP.
+.TP 
+\fB\-\-side\fP\fInúmero\fP\fB=\fP\fIvalor\fP
+selecciona una facció de la era actual per a este bando. La facción se
+selecciona usant un identificador numéric (id). Les faccions se describixen
+en l'archiu data/multiplayer.cfg.
+.TP 
+\fB\-\-turns=\fP\fIvalor\fP
+estableix el número de tandes per al escenari triat. Per defecte és \fB50\fP.
+.TP 
+Eixemple per a posar a prova la teua propia IA contra la IA per defecte sense iniciar l'Interfaç Gràfic d'Usuari:
+\fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py\fP
+.
+.SH AUTOR
+.
+Escrit per David White <davidnwhite@verizon.net>.
+.br
+Editat per Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> i Soliton <soliton.de@gmail.com>.
+.br
+Esta pàgina de manual va ser escrita inicialment per Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Visite la pàgina web oficial: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Açò és Software Lliure; este software está llicenciat baix la GPL versió 2,
+segon ha segut publicada per la Free Software Foundation.  No existix CAP
+garantía; ni inclús per al SEU ÚS COMERCIAL o ADECUACIÓ A UN PROPÓSIT
+PARTICULAR.
+.
+.SH "VEJA'S TAMBÉ"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

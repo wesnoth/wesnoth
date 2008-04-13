@@ -49,6 +49,9 @@ másokkal is.
 \fB\-\-bpp\fP\fI\ szám\fP
 meghatározza az egy képpontra jutó bitek számát. Példa: \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ bemeneti_fájl\ kimeneti_fájl\fP
 betömörít egy szöveges WML formátumú mentett állást (bemeneti fájl) bináris
 WML formátumba (kimeneti fájl).
@@ -84,6 +87,9 @@ megjeleníti a parancssori lehetõségek rövid leírását, majd kilép.
 Betölti a mentett_állás néven tárolt játékot a mentéseket tartalmazó
 könyvtárból.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 beállítja a naplózási tartomány szintjét. Az \fBall\fP minden naplózási
 tartományra illeszkedik. Beállítható szintek: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Alapértelmezettként az  \fBerror\fP szint van beállítva.
@@ -95,7 +101,7 @@ Kilistázza az összes naplózási tartományt, majd kilép.
 a másodpercenkénti képernyõfrissítések (fps) száma, ennek értéke 1 és 1000
 között kell legyen, alapértelmezetten \fB50\fP
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 a játékot többjátékos üzemmódban indítja el. A \fB\-\-multiplayer\fP opcióval
 használható egyéb opciókat bõvebben lásd alább.
 .TP 
@@ -110,6 +116,10 @@ kiírja a játék adatkönyvtárának nevét, majd kilép.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 beállítja a képernyõ felbontását. Példa: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 elindítja a játékot, és betölt egy kis tesztpályát.

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-03-06 10:56+0100\n"
+"POT-Creation-Date: 2008-04-13 16:22+0200\n"
 "PO-Revision-Date: 2008-04-09 15:56+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -17,10 +17,12 @@ msgstr ""
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-Country: NETHERLANDS\n"
 
+#. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
 msgstr "Bloedvleermuis"
 
+#. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
 msgid ""
 "Blood Bats are so-named because of their ruddy hue, which some mark as a "
@@ -32,6 +34,8 @@ msgstr ""
 "hun voorkeursdiëet. Ze zijn zeer snel en kunnen het bloed uit hun "
 "slachtoffers zuigen waarbij ze zich terug aansterken."
 
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/core/units/bats/Bat_Blood.cfg:175
 #: data/core/units/bats/Bat_Vampire.cfg:174
 #: data/core/units/monsters/Wolf.cfg:49
@@ -43,10 +47,12 @@ msgstr ""
 msgid "fangs"
 msgstr "tanden"
 
+#. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
 msgstr "Vampier"
 
+#. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
@@ -57,10 +63,12 @@ msgstr ""
 "Hun klauwen zijn niet bijzonder sterk maar ze kunnen zich aansterken.met het "
 "bloed dat ze uit hun slachtoffers zuigen"
 
+#. [unit_type]: race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
 msgstr "Boot"
 
+#. [unit_type]: race=mechanical
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
@@ -70,18 +78,22 @@ msgstr ""
 "korte afstanden af te leggen en daar te komen waar grote schepen niet kunnen "
 "komen."
 
+#. [unit_type]: race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
 msgstr "Galjoen"
 
+#. [unit_type]: race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr "Galjoenen zijn zeeschepen gebouwd voor handel en transport."
 
+#. [unit_type]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
 msgstr "Piratengaljoen"
 
+#. [unit_type]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
@@ -92,15 +104,18 @@ msgstr ""
 "schapen. De piraten aan boord willen graag helpen met het uitladen van "
 "beladen schepen."
 
+#. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 msgid "ballista"
 msgstr "ballista"
 
+#. [unit_type]: race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
 msgstr "Transportgaljoen"
 
+#. [unit_type]: race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
@@ -109,10 +124,12 @@ msgstr ""
 "Transportgaljoenen zijn goed bewapende schepen, geschikt om troepen te "
 "vervoeren. Als ze de kust bereiken kunnen ze de aanvalstroepen lossen."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
 msgstr "Armageddondraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Armageddon.cfg:26
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
@@ -125,6 +142,7 @@ msgstr ""
 "'armageddondraaklingen' zijn gigantisch en beschikken over een gigantisch "
 "vuur waarvoor ze ook nog immuun zijn."
 
+#. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/gryphons/Gryphon_Rider.cfg:29
 #: data/core/units/gryphons/Gryphon_Master.cfg:29
@@ -135,11 +153,12 @@ msgstr ""
 #: data/core/units/goblins/Direwolf_Rider.cfg:42
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:53
-#: data/core/units/undead/Spirit_Shadow.cfg:27
+#: data/core/units/undead/Spirit_Shadow.cfg:122
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 msgid "claws"
 msgstr "klauwen"
 
+#. [attack]: type=fire
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 #: data/core/units/drakes/Flare.cfg:91 data/core/units/drakes/Fire.cfg:79
 #: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
@@ -152,10 +171,12 @@ msgstr "klauwen"
 msgid "fire breath"
 msgstr "vuuradem"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
 msgstr "Draakling Zwaardmeester"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
@@ -166,6 +187,8 @@ msgstr ""
 "een bijzonder genootschap, waarvan het kentekenen de zwart-witte "
 "oorlogskleuren zijn."
 
+#. [attack]: type=blade
+#. [attack]: type=arcane
 #: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
 #: data/core/units/elves/Avenger.cfg:64 data/core/units/elves/Marksman.cfg:53
 #: data/core/units/elves/Scout.cfg:34 data/core/units/elves/Marshal.cfg:34
@@ -175,7 +198,7 @@ msgstr ""
 #: data/core/units/elves/High_Lord.cfg:61 data/core/units/elves/Hero.cfg:23
 #: data/core/units/elves/Champion.cfg:24 data/core/units/elves/Fighter.cfg:24
 #: data/core/units/elves/Sharpshooter.cfg:50
-#: data/core/units/nagas/Warrior.cfg:29 data/core/units/nagas/Myrmidon.cfg:30
+#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:82
 #: data/core/units/drakes/Enforcer.cfg:67
 #: data/core/units/drakes/Warrior.cfg:72
@@ -201,10 +224,12 @@ msgstr ""
 msgid "sword"
 msgstr "zwaard"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
 msgstr "Vlammendraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Burner.cfg:19
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
@@ -217,10 +242,12 @@ msgstr ""
 "het vermogen vuur te spuwen. Dat, in combinatie met hun enorme omvang en "
 "scherpe klauwen, maakt hen tot gevaarlijke tegenstanders."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "Draakling Geweldenaar"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Clasher.cfg:21
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
@@ -252,15 +279,16 @@ msgstr ""
 "traditionele bewapening zorgde voor strijders die niet langer de typische "
 "zwakte van hun ras voor speren en pijlen delen."
 
+#. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:121
 #: data/core/units/saurians/Skirmisher.cfg:130
 #: data/core/units/saurians/Flanker.cfg:28
 #: data/core/units/saurians/Flanker.cfg:37
 #: data/core/units/saurians/Ambusher.cfg:27
 #: data/core/units/saurians/Ambusher.cfg:36
-#: data/core/units/dwarves/Stalwart.cfg:35
+#: data/core/units/dwarves/Stalwart.cfg:34
 #: data/core/units/dwarves/Guardsman.cfg:31
-#: data/core/units/dwarves/Sentinel.cfg:40
+#: data/core/units/dwarves/Sentinel.cfg:39
 #: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
 #: data/core/units/merfolk/Netcaster.cfg:23
 #: data/core/units/merfolk/Entangler.cfg:24
@@ -283,10 +311,12 @@ msgstr ""
 msgid "spear"
 msgstr "speer"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "Draakling Dwinger"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
@@ -297,6 +327,7 @@ msgstr ""
 "uren in de smidse gaven hun met een arsenaal aan wapens en een glinsterend "
 "pantser dat hun van kop tot teen bedekt."
 
+#. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
@@ -308,10 +339,12 @@ msgstr ""
 msgid "mace"
 msgstr "goedendag"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
 msgstr "Draakling Strijder"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Fighter.cfg:19
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
@@ -324,14 +357,17 @@ msgstr ""
 "tegenstander lastig is. Hun grote kracht gekoppeld aan hun hardheid is "
 "beangstigend voor zwaardvechters van ieder ander ras."
 
+#. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
 msgstr "kromzwaard"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
 msgstr "Vuurdraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
@@ -343,10 +379,12 @@ msgstr ""
 "die hen bedreigt. Ze zijn een symbool voor de kracht en majesteit van hun "
 "ras."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "Vuurhartdraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
@@ -360,10 +398,12 @@ msgstr ""
 "om de een of andere reden heeft nog niemand de proef op de som genomen en er "
 "een opengesneden."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "Fakkeldraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Flare.cfg:25
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
@@ -374,10 +414,12 @@ msgstr ""
 "luisteren. Degenen die 'fakkels' genoemd worden door hun soortgenoten, "
 "streven ernaar zulke leiders te worden, zowel in oorlog als in vrede."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
 msgstr "Draakling Gladiator"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
@@ -395,10 +437,12 @@ msgstr ""
 "goedendags vervolmaken hun wapenarsenaal. Hun focus op wapentuig gaat "
 "enigszins ten koste van hun verdedigingstechnieken."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "Zweefdraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Glider.cfg:20
 msgid ""
 "Drake Gliders wear as little encumberment as possible, freeing themselves to "
@@ -416,15 +460,18 @@ msgstr ""
 "veel verdedigingswerken zien. Hierdoor kunnen ze ingegraven vijanden toch "
 "zeer precies bestoken."
 
+#. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:75
 #: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
 msgid "slam"
 msgstr "smak"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
 msgstr "Orkaandraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Hurricane.cfg:29
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
@@ -436,10 +483,12 @@ msgstr ""
 "meeste verdedigingen heen kijken en hun vijanden genadeloos met vuur "
 "bestoken."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "Infernodraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Inferno.cfg:19
 msgid ""
 "The flying conflagrations known as Drake Infernos are the masters of the "
@@ -454,10 +503,12 @@ msgstr ""
 "Hun glanzende, vlammenkleurige pantsering is een teken van hun trotse en "
 "machtige klasse; het ideaal waar hun soortgenoten naar streven."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "Hemeldraakling"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Sky.cfg:28
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
@@ -472,10 +523,12 @@ msgstr ""
 "nauwkeurigheid vuurspuwen naar plaatsen die anders een groot voordeel aan de "
 "vijandelijke verdediger geven."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Slasher.cfg:4
 msgid "Drake Slasher"
 msgstr "Draakling Hakker"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Slasher.cfg:19
 msgid ""
 "Slashers are Clashers who have chosen to master the use of a halberd instead "
@@ -492,6 +545,8 @@ msgstr ""
 "verbeterd, waarin ze een groot voordeel hebben ten opzichte van hun neven de "
 "gladiatoren."
 
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/core/units/drakes/Warden.cfg:75 data/core/units/drakes/Warden.cfg:84
 #: data/core/units/drakes/Slasher.cfg:69 data/core/units/drakes/Slasher.cfg:78
 #: data/core/units/humans/Loyalist_Halberdier.cfg:29
@@ -499,10 +554,12 @@ msgstr ""
 msgid "halberd"
 msgstr "hellebaard"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "Draakling Wachter"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Warden.cfg:20
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
@@ -515,10 +572,12 @@ msgstr ""
 "wereld het tegen hen op durven nemen. Het lievelingswapen van de wachter is "
 "de hellebaard, waar ze uiterst vaardig mee om gaan."
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "Draakling Krijger"
 
+#. [unit_type]: race=drake
 #: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
@@ -529,10 +588,12 @@ msgstr ""
 "beschikken over de vuuradem van hun voorouders. Hun kracht laat hen toe "
 "krachtig toe te slaan en met gelijke maat hun afstraffing te weerstaan."
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
 msgstr "Dwergenrazer"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:19
 msgid ""
 "Berserkers are a rare caste of Dwarves, who work themselves into a towering "
@@ -543,15 +604,18 @@ msgstr ""
 "totale razernij inleven. Deze strijders vergeten aan hun eigen verdediging "
 "te denken en blijven zonder ophouden verder aanvallen."
 
+#. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:31
 #: data/core/units/dwarves/Ulfserker.cfg:31
 msgid "berserker frenzy"
 msgstr "razernij"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
 msgstr "Dwergendraakwachter"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:19
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
@@ -569,6 +633,7 @@ msgstr ""
 "van de grote steden der dwergen, ze vuren naar de vijand met zogenaamde "
 "draakstaven, het summum onder de dwergse vuurwapens."
 
+#. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:70
 #: data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/dwarves/Dragonguard.cfg:25
@@ -586,14 +651,17 @@ msgstr ""
 msgid "dagger"
 msgstr "dolk"
 
+#. [attack]: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:34
 msgid "dragonstaff"
 msgstr "drakenstaf"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
 msgstr "Dwergenkrijger"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
@@ -606,6 +674,7 @@ msgstr ""
 "hun best in bergrijke gebieden en ondergronds. Hun gebrek aan snelheid wordt "
 "ruimschoots gecompenseerd door hun kracht en uithoudingsvermogen."
 
+#. [attack]: type=blade
 #: data/core/units/dwarves/Fighter.cfg:35
 #: data/core/units/undead/Skele_Deathblade.cfg:105
 #: data/core/units/undead/Skele_Revenant.cfg:29
@@ -614,16 +683,19 @@ msgstr ""
 msgid "axe"
 msgstr "bijl"
 
+#. [attack]: type=impact
 #: data/core/units/dwarves/Steelclad.cfg:38
 #: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
 #: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
 msgstr "hamer"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
 msgstr "Dwergengardist"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
 msgid ""
 "The dwarven race has always been famed for its sturdiness of build, and many "
@@ -639,18 +711,21 @@ msgstr ""
 "doorbreken zware verliezen toe te brengen. Wanneer de lijn voowaarts gaat "
 "zijn zij het die het moeilijk gewonnen voordeel zullen beveiligen."
 
-#: data/core/units/dwarves/Stalwart.cfg:44
+#. [attack]: type=pierce
+#: data/core/units/dwarves/Stalwart.cfg:43
 #: data/core/units/dwarves/Guardsman.cfg:40
-#: data/core/units/dwarves/Sentinel.cfg:49
+#: data/core/units/dwarves/Sentinel.cfg:48
 #: data/core/units/humans/Loyalist_Javelineer.cfg:39
 #: data/core/units/humans/Loyalist_Spearman.cfg:74
 msgid "javelin"
 msgstr "speer"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
 msgstr "Dwergenheer"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
 msgid ""
 "Clad in shining armor, these dwarves look like kings from under the "
@@ -664,20 +739,24 @@ msgstr ""
 "Ondanks hun traagheid vormen deze dwergen het bewijs voor de kundigheid van "
 "hun ras."
 
+#. [attack]: type=blade
 #: data/core/units/dwarves/Steelclad.cfg:29
 #: data/core/units/dwarves/Lord.cfg:30
 #: data/core/units/undead/Skele_Death_Knight.cfg:46
 msgid "battle axe"
 msgstr "strijdbijl"
 
+#. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:47
 msgid "hatchet"
 msgstr "werpbijl"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
 msgstr "Runemeester"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:19
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
@@ -690,18 +769,22 @@ msgstr ""
 "strijd gezien worden kan een runenmeester er een verschrikkelijk effect "
 "hebben."
 
+#. [attack]: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:24
 msgid "runic hammer"
 msgstr "runehamer"
 
+#. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:34
 msgid "Lightning bolt"
 msgstr "Bliksemschicht"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
 msgstr "Dwergenschildwacht"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
 msgid ""
 "Champions among their fellow troops, the dwarven sentinels form the bulwark "
@@ -716,10 +799,12 @@ msgstr ""
 "dwergen zijn meesters in het nabije gevect en ze kunnen beter standhouden "
 "dan een volgroeide dipgewortelde eik."
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
 msgstr "Dwergenwachter"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
 msgid ""
 "The wiles of experience and training turn guardsmen into worthy soldiers. "
@@ -732,10 +817,12 @@ msgstr ""
 "alle aanvallen. Een kritieke positie verliezen aan één van hen is een "
 "gevaarlijke zaak want de herovering zal alles behalve gemakkelijk zijn."
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
 msgstr "Dwergenstaalstrijder"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:19
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
@@ -744,10 +831,12 @@ msgstr ""
 "De meer ervaren Staalstrijders dragen een zware maliënkolder en een stalen "
 "harnas."
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
 msgstr "Donderdwerg"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
@@ -762,15 +851,18 @@ msgstr ""
 "droegen. Het oorverdovende geluid van deze 'donderstaf' is beangstigend wat "
 "nog verergerd wordt door de geheimhouding van de dwergen over hun werking."
 
+#. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
 msgid "thunderstick"
 msgstr "donderstok"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "Dwergendonderwachter"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:20
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
@@ -795,10 +887,12 @@ msgstr ""
 "Hoewel een enkel schot van deze 'donderstaven' verscheidene minuten "
 "voorbereiding vergt, vinden de dwergen het zondermeer de moeite waard."
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
 msgstr "Dwergenulfenaar"
 
+#. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:19
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
@@ -811,10 +905,12 @@ msgstr ""
 "razernij waardoor ze angst noch pijn voelen en van geen ophouden weten en "
 "geen aandacht schenken aan hun verwondingen."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
 msgstr "Elfenboogschutter"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Archer.cfg:21
 msgid ""
 "Elves have always had a reputation for archery, a skill that, for many "
@@ -831,6 +927,8 @@ msgstr ""
 "op het slagveld hen parten speelt, kunnen ze dankzij hun natuurlijke "
 "souplesse alle menselijke rekruten de baas."
 
+#. [attack]: type=pierce
+#. [attack]: type=fire
 #: data/core/units/orcs/Sovereign.cfg:42 data/core/units/orcs/Archer.cfg:80
 #: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
 #: data/core/units/orcs/Leader.cfg:43 data/core/units/orcs/Ruler.cfg:41
@@ -854,14 +952,17 @@ msgstr ""
 msgid "bow"
 msgstr "boog"
 
+#. [female]
 #: data/core/units/elves/Archer.cfg:171
 msgid "female^Elvish Archer"
 msgstr "Elfenboogschutster"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
 msgstr "Elfenwreker"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Avenger.cfg:23
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
@@ -884,14 +985,17 @@ msgstr ""
 "eerdere gevechten zijn omgekomen. Hoewel dat iets te simpel is gedacht, is "
 "het ook niet geheel onjuist."
 
+#. [female]
 #: data/core/units/elves/Avenger.cfg:180
 msgid "female^Elvish Avenger"
 msgstr "Elfenwreekster"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
 msgstr "Elfenkapitein"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Captain.cfg:26
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
@@ -908,10 +1012,12 @@ msgstr ""
 "wijsheid van hun leiders te erkennen en hun neiging capabele leiders te "
 "kiezen vormen een stille kracht van de elfen."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
 msgstr "Elfenzwaardmeester"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Champion.cfg:20
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
@@ -928,10 +1034,12 @@ msgstr ""
 "vaardig bedreven, dat de meeste mensen slechts met verbazing kunnen "
 "toekijken."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
 msgstr "Elfendruïde"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Druid.cfg:21
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
@@ -948,8 +1056,9 @@ msgstr ""
 "Het sterkste punt van de Elfendruïde is de kennis van de geneeskunde en om "
 "die kunde worden ze geroemd."
 
-#: data/core/units/elves/Enchantress.cfg:25 data/core/units/elves/Druid.cfg:28
-#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:27
+#. [attack]: type=impact
+#: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:28
+#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:28
 #: data/core/units/saurians/Soothsayer.cfg:66
 #: data/core/units/saurians/Augur.cfg:66
 #: data/core/units/saurians/Oracle.cfg:66
@@ -966,19 +1075,23 @@ msgstr ""
 msgid "staff"
 msgstr "staf"
 
+#. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:37 data/core/units/elves/Shyde.cfg:41
 msgid "ensnare"
 msgstr "verstrik"
 
+#. [attack]: type=pierce
 #: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:53
 msgid "thorns"
 msgstr "doornen"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
 msgstr "Elfenbezweerster"
 
-#: data/core/units/elves/Enchantress.cfg:18
+#. [unit_type]: race=elf
+#: data/core/units/elves/Enchantress.cfg:19
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "humans are almost universally incapable of understanding it, let alone using "
@@ -992,21 +1105,25 @@ msgstr ""
 "moet worden dat ze aanbeden worden door hun volk kan er weinig gezegd worden "
 "over hun funktie en doel in deze samenleving."
 
-#: data/core/units/elves/Enchantress.cfg:35
-#: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:37
+#. [attack]: type=impact
+#: data/core/units/elves/Enchantress.cfg:36
+#: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:38
 msgid "entangle"
 msgstr "omwortel"
 
-#: data/core/units/elves/Enchantress.cfg:46 data/core/units/elves/Lord.cfg:33
+#. [attack]: type=arcane
+#: data/core/units/elves/Enchantress.cfg:47 data/core/units/elves/Lord.cfg:33
 #: data/core/units/elves/High_Lord.cfg:70
-#: data/core/units/elves/Sorceress.cfg:48 data/core/units/elves/Sylph.cfg:52
+#: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:52
 msgid "faerie fire"
 msgstr "feeënvuur"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
 msgstr "Elfenkrijger"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Fighter.cfg:20
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
@@ -1019,10 +1136,12 @@ msgstr ""
 "leert de beginselen van het zwaardvechten en boogschieten onwaarschijnlijk "
 "snel en zet die effectief in op het slagveld."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
 msgstr "Elfenheld"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Hero.cfg:19
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
@@ -1035,10 +1154,12 @@ msgstr ""
 "met de boog als met het zwaard. Vaardigheden die ze nooit bij gebrek aan "
 "oefening verleren."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
 msgstr "Hoge Elfenheer"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/High_Lord.cfg:19
 msgid ""
 "The leaders of the elves do not fall sallow and frail with age. Rather, it "
@@ -1051,10 +1172,12 @@ msgstr ""
 "nadenkend in vredestiijd maar de ontketende toorn van een hoge heer is een "
 "impressionant zicht."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Lady.cfg:5
 msgid "female^Elvish Lady"
 msgstr "Elfendame"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Lady.cfg:21
 msgid ""
 "Elves choose their leaders for their power and wisdom; foresight is what has "
@@ -1067,10 +1190,12 @@ msgstr ""
 "beloond met de onwankelbare trouw van hun volk, het grootste geschenk dat "
 "een heerser kan vragen."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
 msgstr "Elfenheer"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Lord.cfg:18
 msgid ""
 "The nobility of the elves are possessed of merit to match their standing in "
@@ -1081,10 +1206,12 @@ msgstr ""
 "bevestigen. Elvenheren zijn de wijste en sterkste van hun volk en "
 "aangstaanjagend wanneer ze hun magische kunst ten toon spreiden."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "Elfenlangboogschutter"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Marksman.cfg:22
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
@@ -1104,19 +1231,23 @@ msgstr ""
 "Deze uitzonderlijke vaardigheid heeft een prijs: deze elfen blinken niet uit "
 "in het zwaardvechten."
 
+#. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:62
 #: data/core/units/elves/Sharpshooter.cfg:59
 msgid "longbow"
 msgstr "longbow"
 
+#. [female]
 #: data/core/units/elves/Marksman.cfg:172
 msgid "female^Elvish Marksman"
 msgstr "Elfenlangboogschutster"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
 msgstr "Elfenmaarschalk"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Marshal.cfg:27
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
@@ -1134,10 +1265,12 @@ msgstr ""
 "oorlogvoeren, wordt hij waarlijk een meester in de krijgskunst."
 
 # Elvenvoorhoede lijkt mij een verzameling Elfenridders die vooruit gaat in de strijd..
+#. [unit_type]: race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
 msgstr "Elfenridders"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Outrider.cfg:23
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
@@ -1160,10 +1293,12 @@ msgstr ""
 "iemand in hun thuisland aan te vallen. Iets wat al vaker enigen van de dood "
 "gered heeft."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
 msgstr "Elfendoler"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Ranger.cfg:20
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
@@ -1179,14 +1314,17 @@ msgstr ""
 "Gecombineerd met een aanzienlijk talent voor boogschieten en zwaardvechten "
 "is deze elf een dodelijke vijand."
 
+#. [female]
 #: data/core/units/elves/Ranger.cfg:177
 msgid "female^Elvish Ranger"
 msgstr "Elfendoolster"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
 msgstr "Elfenruiter"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Rider.cfg:24
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
@@ -1205,10 +1343,12 @@ msgstr ""
 "De combinatie van hoge mobiliteit en goede krijgskunst is een van de "
 "grootste voordelen die elfen in de strijd hebben."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
 msgstr "Elfenverkenner"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Scout.cfg:23
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
@@ -1223,10 +1363,12 @@ msgstr ""
 "ook maar een schrammetje op te lopen. Ze zijn misschien wel de enige ruiters "
 "die het bos verkiezen boven de open vlaktes."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
 msgstr "Elfensjamaan"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Shaman.cfg:23
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
@@ -1246,10 +1388,12 @@ msgstr ""
 "Ook de geneeskrachtige gaven van de elven zijn opmerkelijk en onmisbaar op "
 "het slagveld."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
 msgstr "Elfensherpschutter"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
@@ -1262,14 +1406,17 @@ msgstr ""
 "deze elfen zou het verhaal wel eens waar kunnen zijn. De scherpschutters "
 "onder de elfen hebben het boogschieten volledig onder de knie."
 
+#. [female]
 #: data/core/units/elves/Sharpshooter.cfg:157
 msgid "female^Elvish Sharpshooter"
 msgstr "Elfenscherpschutster"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
 msgstr "Elfenfee"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Shyde.cfg:21
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
@@ -1282,15 +1429,18 @@ msgstr ""
 "slechts weinig begrepen wordt, zijn deze prachtige verzorgers van het "
 "Elfenbos het toppunt van de gratie en het mysterie van het elfenvolk."
 
+#. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:28 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
 msgstr "feeënstreel"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
 msgstr "Elfentovenares"
 
-#: data/core/units/elves/Sorceress.cfg:20
+#. [unit_type]: race=elf
+#: data/core/units/elves/Sorceress.cfg:21
 msgid ""
 "The world of faerie is far more potent than the corporeal world. Simply "
 "bringing some of this world into our own can have violent results. This is "
@@ -1308,10 +1458,12 @@ msgstr ""
 "Zij die dit kunnen worden door andere rassen als 'tovenaressen' beschouwd en "
 "zijn deze titel meer dan waard."
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
 msgstr "Sidhe"
 
+#. [unit_type]: race=elf
 #: data/core/units/elves/Sylph.cfg:20
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
@@ -1324,14 +1476,17 @@ msgstr ""
 "Legendes rond hun onstaan hebben tot een gezonde angst voor elven geleid bij "
 "andere rassen."
 
+#. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:40
 msgid "gossamer"
 msgstr "spinrag"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
 msgstr "Bloedwolfruiter"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
@@ -1355,10 +1510,12 @@ msgstr ""
 "pinnen. Hun berijders smeren een gif zoals dat van de orkdoder op de voorste "
 "klauwen zodat een klauw van deze beesten een dodelijke sneer wordt."
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
 msgstr "Kobold Spieser"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
@@ -1371,10 +1528,12 @@ msgstr ""
 "beter materiaal te voorzien. Een veel grotere speer compenseert hun korte "
 "armen en steviger pantsers beschermd hun fragiele lichamen."
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
 msgstr "Kobold Roofridder"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Knight.cfg:20
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
@@ -1393,10 +1552,12 @@ msgstr ""
 "De wolven waar ze op rijden worden gefokt op snelheid en kracht, wat ze "
 "behoorlijk gevaarlijk maakt in de strijd."
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
 msgstr "Kobold Brandschatter"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Pillager.cfg:19
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
@@ -1408,20 +1569,24 @@ msgstr ""
 "Tijdens rooftochten ondersteunen deze kobolden door te brandschatten en met "
 "hun  netten verwarring te zaaien bij de verdedigers."
 
+#. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:34
 msgid "torch"
 msgstr "fakkel"
 
+#. [attack]: type=impact
 #: data/core/units/merfolk/Netcaster.cfg:31
 #: data/core/units/merfolk/Entangler.cfg:32
 #: data/core/units/goblins/Pillager.cfg:43
 msgid "net"
 msgstr "net"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
 msgstr "Kobold Plunderaar"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Rouser.cfg:26
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
@@ -1436,10 +1601,12 @@ msgstr ""
 "respecteren. Desalniettemin kan een vaandeldrager de jongere strijders "
 "aansporen om tot aan het einde langer en harder te vechten."
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
 msgstr "Kobold Speervechter"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:20
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
@@ -1461,10 +1628,12 @@ msgstr ""
 "het verval van de orkse bloedlijn, hoewel niemand genoeg weet van hun "
 "geschiedenis om duidelijke conclusies te trekken."
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
 msgstr "Wolfruiter"
 
+#. [unit_type]: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:36
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
@@ -1489,10 +1658,12 @@ msgstr ""
 "bewegen deze rijdieren makkelijk door de bergen, hoewel water en bos ook hen "
 "vertragen."
 
+#. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
 msgid "Gryphon"
 msgstr "Griffioen"
 
+#. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:18
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
@@ -1502,10 +1673,12 @@ msgstr ""
 "Half leeuw, half vogel, deze majestueuze schepsels domineren de hemel van de "
 "wereld. Zonder een goede reden is het beter ze niet te storen."
 
+#. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
 msgstr "Griffioenmeester"
 
+#. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
@@ -1517,10 +1690,12 @@ msgstr ""
 "aardbewoners doet beven, want deze machtige schepsel kunnen hen van overal "
 "belagen."
 
+#. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
 msgstr "Griffioenruiter"
 
+#. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:19
 msgid ""
 "Only a few are able to bond with the mighty Gryphons. Those who do may "
@@ -1531,10 +1706,12 @@ msgstr ""
 "vormen met de machtige griffioenen. Zij die deze vliegende beesten kunnen "
 "berijden ontdekken de wereld van de hemel."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
 msgstr "Grootofficier"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
@@ -1549,6 +1726,7 @@ msgstr ""
 "vooraan een stormloop is een angstaanjagende aanblik voor infanterie en is "
 "vaak genoeg om dwars door een verdedigingslinie te breken."
 
+#. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
 #: data/core/units/humans/Horse_Paladin.cfg:49
@@ -1556,10 +1734,12 @@ msgstr ""
 msgid "lance"
 msgstr "lans"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
 msgid "Knight"
 msgstr "Ridder"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
@@ -1577,10 +1757,12 @@ msgstr ""
 "overigens niet aan de wilgen gehangen, en hun groeiende ervaring met dit "
 "wapen is in hun voordeel."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
 msgstr "Lansenier"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
@@ -1598,10 +1780,12 @@ msgstr ""
 "doorspiezen van verdedigingslinies. Ze zijn echter van beperkt nut in de "
 "verdediging."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
 msgstr "Paladijn"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
@@ -1638,10 +1822,12 @@ msgstr ""
 "verzorging bijstaan. Ze zijn ook zeer krachtig in het bestrijden van "
 "magische of onnatuurlijke vijanden."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
 msgstr "Ruiter"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Horseman.cfg:20
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
@@ -1660,10 +1846,12 @@ msgstr ""
 "geraakt, maar moeten uitkijken met speermannen en boogschutters voor wie de "
 "grote ruiters een verleidelijk doelwit vormen."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "Boogschutter"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -1677,15 +1865,18 @@ msgstr ""
 "Boogschutters zijn meestal van lage komaf en in grote getale terug te "
 "vinden, ze zijn behendig met zowel de boog als het korte zwaard."
 
+#. [attack]: type=blade
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
 #: data/core/units/humans/Loyalist_Bowman.cfg:25
 msgid "short sword"
 msgstr "kort zwaard"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
 msgstr "Kurassier"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
@@ -1698,6 +1889,8 @@ msgstr ""
 "Dit gecombineerd met hun mobiliteit geeft hun een angstaanjagende sterkte. "
 "En de heldenmoed die ze vaak ten toon spreiden inspireerde menig lied."
 
+#. [attack]: type=pierce
+#. [attack]: type=fire
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
@@ -1713,10 +1906,12 @@ msgstr ""
 msgid "crossbow"
 msgstr "kruisboog"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
 msgstr "Cavalerist"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
@@ -1737,10 +1932,12 @@ msgstr ""
 "Cavaleristen zijn bruikbaar voor het innemen en behouden van posities op het "
 "open veld en doen goed dienst als verkenners."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
 msgstr "Dragonder"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
@@ -1755,10 +1952,12 @@ msgstr ""
 "naar voren en kunnen het gewonnen terrein vasthouden. Hun mobiliteit en "
 "veerkracht maken hen uiterst waardevol op het slagveld."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
 msgstr "Duelist"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
 #, fuzzy
 msgid ""
@@ -1780,16 +1979,19 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
 #: data/core/units/humans/Loyalist_Fencer.cfg:124
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:28
 msgid "sabre"
 msgstr "sabel"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
 msgstr "Schermer"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
 #, fuzzy
 msgid ""
@@ -1810,10 +2012,12 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
 msgstr "Generaal"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_General.cfg:29
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
@@ -1822,10 +2026,12 @@ msgstr ""
 "De generaals, leiders van de legers, zijn verantwoordelijk voor de "
 "bescherming van grote delen van het de koningrijken der mensen."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
 msgstr "Grootmaarschalk"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
@@ -1837,10 +2043,12 @@ msgstr ""
 "en zij die hem dragen hebben vele beproevingen doorstaan die hun grote "
 "vaardigheid in het gevecht en hun tactisch inzicht bewijzen."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
 msgstr "Hellebaardier"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
 #, fuzzy
 msgid ""
@@ -1864,10 +2072,12 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
 msgstr "Zware Infanterie"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
 msgid ""
 "Heavy infantry are an unusual choice for outfitting troops. They are very "
@@ -1882,10 +2092,12 @@ msgstr ""
 "De zware infanterie is gemanteld in staal. Ze zijn uitermate robuust maar "
 "traag..."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
 msgstr "IJzermaler"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
 #, fuzzy
 msgid ""
@@ -1904,10 +2116,12 @@ msgstr ""
 "berucht voor hun ongelooflijk brutale hamerslagen en hun robuustheid. Indien "
 "ze niet zo traag zouden zijn, heersten ze beslist over het hele continent."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
 msgstr "Speerwerper"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
@@ -1924,10 +2138,12 @@ msgstr ""
 "aanwinst voor een leger door goede vaardigheden in gevechten op zowel korte "
 "als lange afstand."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
 msgstr "Luitenant"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:24
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
@@ -1936,10 +2152,12 @@ msgstr ""
 "De luitenant leidt met zwaard en kruisboog kleine groepen soldaten en "
 "coördineert hun aanvallen."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
 msgstr "Langboogschutter"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:20
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
@@ -1954,10 +2172,12 @@ msgstr ""
 "richten. Langboogschutters dragen hun wapens met trots en de meeste "
 "boogschutters zien uit naar de dag dat ze een langboog kunnen gaan gebruiken."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
 msgstr "Meesterboogschutter"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
@@ -1976,10 +2196,12 @@ msgstr ""
 "de vele rassen in de wereld zijn alleen elfen beter met pijl en boog en vele "
 "denken, misschien door afgunst, dat dit enkel komt door hun hogere ouderdom."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
 msgstr "Wapenmeester"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
 #, fuzzy
 msgid ""
@@ -2008,10 +2230,12 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
 msgstr "Piekenier"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
 #, fuzzy
 msgid ""
@@ -2027,14 +2251,17 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:53
 msgid "pike"
 msgstr "piek"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
 msgstr "Koninklijke Gardist"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
@@ -2050,10 +2277,12 @@ msgstr ""
 "krachtigsten uit het Rijk Wesnoth. Ze worden alleen in kritieke situaties "
 "gebruikt, en totnogtoe hebben ze hun taak steeds volbracht."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
 msgstr "Sergeant"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
@@ -2064,10 +2293,12 @@ msgstr ""
 "Ze hebben al een scholing achter de rug maar benodigen nog veldervaring "
 "vooraleer hun leiderschap als deugdelijk erkend wordt."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
 msgstr "Schoktroep"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
 #, fuzzy
 msgid ""
@@ -2083,15 +2314,18 @@ msgstr ""
 "De schoktroepen behoren tot de elitesoldaten in Wesnoth. Ze zijn traag, maar "
 "ongelooflijk sterk, en worden gevreesd in Wesnoth en ver erbuiten."
 
+#. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:98
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
 msgid "morning star"
 msgstr "morgenster"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
 msgstr "Speerman"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:19
 #, fuzzy
 msgid ""
@@ -2108,10 +2342,12 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
 msgstr "Zwaardvechter"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
 #, fuzzy
 msgid ""
@@ -2125,10 +2361,12 @@ msgstr ""
 "De zwaardvechter is de basis van de mensenlegers. Deze jonge soldaten "
 "krijgen een basistraining en doen het meeste van het vechten aan het front."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
 msgstr "Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage.cfg:23
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
@@ -2168,19 +2406,23 @@ msgstr ""
 "Fysiek broos en onervaren in het gevecht hebben magiërs toch enige, op het "
 "slagveld nuttige, eigenschappen."
 
+#. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:62
 #: data/core/units/humans/Mage_Silver.cfg:45
 msgid "missile"
 msgstr "projectiel"
 
+#. [female]
 #: data/core/units/humans/Mage.cfg:166
 msgid "female^Mage"
 msgstr "Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
 msgstr "Oppermagiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Arch.cfg:20
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
@@ -2207,20 +2449,24 @@ msgstr ""
 "volle kracht van hun magische kunsten inzetten, wat niet licht opgevat kan "
 "worden."
 
+#. [attack]: type=fire
 #: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:37
 #: data/core/units/humans/Mage_Red.cfg:62
 msgid "fireball"
 msgstr "vuurbal"
 
+#. [female]
 #: data/core/units/humans/Mage_Arch.cfg:118
 msgid "female^Arch Mage"
 msgstr "Oppermagiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
 msgstr "Meester-Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Great.cfg:21
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
@@ -2247,14 +2493,17 @@ msgstr ""
 "Hoewel ze geenszins krijgers zijn, kijken soldaten liever van een afstandje "
 "toe, als de Meester-Magiër zijn vaardigheden toepast op het strijdveld."
 
+#. [female]
 #: data/core/units/humans/Mage_Great.cfg:119
 msgid "female^Great Mage"
 msgstr "Meester-Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "Rode Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Red.cfg:20
 #, fuzzy
 msgid ""
@@ -2282,14 +2531,17 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [female]
 #: data/core/units/humans/Mage_Red.cfg:144
 msgid "female^Red Mage"
 msgstr "Rode Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
 msgstr "Zilveren Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
@@ -2298,6 +2550,7 @@ msgstr ""
 "SPECIALE_NOTA^ Zilveren magiërs zijn goed bekend met hun magische natuur en "
 "zijn daardoor zeer weerbaar tegen niet fysieke schade."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 #, fuzzy
 msgid ""
@@ -2340,14 +2593,17 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [female]
 #: data/core/units/humans/Mage_Silver.cfg:150
 msgid "female^Silver Mage"
 msgstr "Zilveren Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
 msgstr "Witte Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_White.cfg:20
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
@@ -2370,6 +2626,7 @@ msgstr ""
 "Hoewel niet getraind voor het gevecht zijn ze een machtige bondgenoot "
 "tegenover magische of onnatuurlijke zaken."
 
+#. [attack]: type=arcane
 #: data/core/units/merfolk/Priestess.cfg:71
 #: data/core/units/merfolk/Diviner.cfg:74
 #: data/core/units/humans/Mage_of_Light.cfg:107
@@ -2377,14 +2634,17 @@ msgstr ""
 msgid "lightbeam"
 msgstr "lichtstraal"
 
+#. [female]
 #: data/core/units/humans/Mage_White.cfg:264
 msgid "female^White Mage"
 msgstr "Witte Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
 msgstr "Magiër des Licht"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:22
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
@@ -2402,14 +2662,17 @@ msgstr ""
 "Deze mannen en vrouwen, die zich aan een strenge code van plicht en eer "
 "houden, werken onvermoeibaar om leven en orde te brengen in de wereld."
 
+#. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:232
 msgid "female^Mage of Light"
 msgstr "Magiër des Licht"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
 msgstr "Brigant"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw.cfg:18
 #, fuzzy
 msgid ""
@@ -2424,6 +2687,7 @@ msgstr ""
 "Briganten vechten beter 's nachts. Vrouwelijk Briganten zien er goed uit "
 "terwijl ze dit doen."
 
+#. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
@@ -2431,10 +2695,12 @@ msgstr ""
 msgid "sling"
 msgstr "slinger"
 
+#. [female]
 #: data/core/units/humans/Outlaw.cfg:105
 msgid "female^Outlaw"
 msgstr "Brigante"
 
+#. [female]
 #: data/core/units/humans/Outlaw.cfg:108
 #, fuzzy
 msgid ""
@@ -2449,10 +2715,12 @@ msgstr ""
 "Briganten vechten beter 's nachts. Vrouwelijk Briganten zien er goed uit "
 "terwijl ze dit doen."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "Sluipmoordenaar"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
@@ -2468,19 +2736,23 @@ msgstr ""
 "messen, hetzij met een dolksteek in de rug. Dodelijk in de nacht, maar "
 "enigszins schuw overdag."
 
+#. [attack]: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
 msgid "knife"
 msgstr "mes"
 
+#. [female]
 #: data/core/units/humans/Outlaw_Assassin.cfg:167
 msgid "female^Assassin"
 msgstr "Kunoichi"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
 msgstr "Bandiet"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
 msgid ""
 "Bandits are a motley collection of men, most of dubious background. They are "
@@ -2495,10 +2767,12 @@ msgstr ""
 "in het afstraffen van vijanden. Zoals alle schurken voelen ze zich overdag "
 "niet op hun gemak en werken ze het liefste 's nachts."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
 msgstr "Voetscout"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
@@ -2515,6 +2789,7 @@ msgstr ""
 "minderwaardige bewapening hun vijanden toch goed kunnen tergen, vooral als "
 "het donker is."
 
+#. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
@@ -2522,10 +2797,12 @@ msgstr ""
 msgid "club"
 msgstr "knuppel"
 
+#. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:165
 msgid "female^Footpad"
 msgstr "Voetscout"
 
+#. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:168
 msgid ""
 "female^These petty criminals are often derisively called 'footpads' by their "
@@ -2542,10 +2819,12 @@ msgstr ""
 "hun minderwaardige bewapening hun vijanden toch goed kunnen tergen, vooral "
 "als het donker is."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr "Voortvluchtige"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
@@ -2558,10 +2837,12 @@ msgstr ""
 "wanneer ze zich in hun element voelen maar ze kunnen niet op tegen het "
 "numeriek veel grotere aantal gezagstrouwe soldaten."
 
+#. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:112
 msgid "female^Fugitive"
 msgstr "Voortvluchtige"
 
+#. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:115
 msgid ""
 "female^Veteran criminals become notorious for both their ruthlessness and "
@@ -2574,10 +2855,12 @@ msgstr ""
 "angstaanjagend zijn wanneer ze zich in hun element voelen maar ze kunnen "
 "niet op tegen het numeriek veel grotere aantal gezagstrouwe soldaten."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
 msgstr "Struikrover"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
@@ -2586,10 +2869,12 @@ msgstr ""
 "Bewapend met een grote knots zijn struikrovers de laatste personen die je 's "
 "avonds laat wilt tegenkomen op een verlaten weggetje."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
 msgstr "Schurk"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
 #, fuzzy
 msgid ""
@@ -2605,14 +2890,17 @@ msgstr ""
 "toestaat twee keer zoveel schade te berokkenen dan normaal wanneer een "
 "bevriende eenheid de vijand langsvoor afleidt."
 
+#. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:141
 msgid "female^Rogue"
 msgstr "Schurk"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
 msgstr "Woesteling"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
@@ -2625,10 +2913,12 @@ msgstr ""
 "'woestelingen' genoemd. Met genoeg geluk en ervaring kunnen ze soms het lot "
 "van veel hun collega's voorkomen."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "Dief"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
@@ -2647,14 +2937,17 @@ msgstr ""
 "messen. Deze niet zo eerbare taktieken gebruiken ze liever in de strijd dan "
 "een riskanter eerlijk gevect aan te gaan."
 
+#. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:365
 msgid "female^Thief"
 msgstr "Dievegge"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
 msgstr "Vrijbuiter"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:19
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
@@ -2669,10 +2962,12 @@ msgstr ""
 "boeven om in hun onderhoud te voorzien. Ongeacht hun achtergrond hebben ze "
 "allemaal één ding gemeen: ze slaan op hun vijanden in met grote knuppels."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "Boer"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Peasant.cfg:20
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
@@ -2684,14 +2979,17 @@ msgstr ""
 "van de laatste hoop. Ook al zijn ze niet erg afschrikwekkend, ze zullen hun "
 "haard en huis verdedigen met alles wat ze in zich hebben. "
 
+#. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:25 data/core/units/humans/Peasant.cfg:34
 msgid "pitchfork"
 msgstr "riek"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
 msgstr "Bosman"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman.cfg:19
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoalburners, and others who eke out a "
@@ -2702,10 +3000,12 @@ msgstr ""
 "van de de beschaafde wereld. Gezond verstand en woudkennis behelpen ze vaak "
 "meer dan wapens."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 msgid "Huntsman"
 msgstr "Jager"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
@@ -2740,10 +3040,12 @@ msgstr ""
 "proviand zorgen en hun kunde met de boog kan zeer nuttig zijn tijdens een "
 "gevecht."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
 msgstr "Stroper"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
@@ -2763,10 +3065,12 @@ msgstr ""
 "Door hun ervaring zijn deze jagers vooral in staat om bij nacht en in bossen "
 "en moerassen te vechten."
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 msgid "Ranger"
 msgstr "Boswachter"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
@@ -2795,10 +3099,12 @@ msgstr ""
 "tenmiste bereikt. Ze kunnen net zo goed door bandieten als door de koning "
 "ingehuurd worden "
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
 msgstr "Valzetter"
 
+#. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
@@ -2817,10 +3123,12 @@ msgstr ""
 "Hun jachtkunde is zeer bruikbaar in de strijd en zorgt ervoor dat ze "
 "ongewoon goed zijn in de nachtelijke bossen en moerassen."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
 msgstr "Meerminziener"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Diviner.cfg:24
 msgid ""
 "Years of devotion will endow a priestess with great wisdom on the workings "
@@ -2837,10 +3145,12 @@ msgstr ""
 "tot de laatste man gedood bij de oevers van de Alavynne toch opnieuw "
 "uitreden de dag erop en hierdoor de val van de rode hertog bewerkstelligden."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
 msgstr "Meermintovenares"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:19
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
@@ -2857,16 +3167,19 @@ msgstr ""
 "is verboden tegen hun eigen ras - deze kracht is het leeuwendeel wat hun "
 "volk beschermd tegen monsters die uit de afgrond omhoogkomen."
 
+#. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:40
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:36
 msgid "water spray"
 msgstr "waterstraal"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
 msgstr "Meermannetmeester"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
 #, fuzzy
 msgid ""
@@ -2880,10 +3193,12 @@ msgstr ""
 "soortgenoten. Dit wapen maakt de meermannen een bedreiging voor alle "
 "vijanden die het water zelfs maar naderen."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
 msgstr "Meermanstrijder"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Fighter.cfg:19
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
@@ -2892,6 +3207,8 @@ msgstr ""
 "De meermannen, die handige schepsels van de zee zijn snel en krachtig in "
 "elke waterige omgeving maar kunnen amper bewegen op het land."
 
+#. [attack]: type=pierce
+#. [attack]: type=blade
 #: data/core/units/merfolk/Warrior.cfg:23
 #: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 #: data/core/units/merfolk/Fighter.cfg:24
@@ -2899,10 +3216,12 @@ msgstr ""
 msgid "trident"
 msgstr "drietand"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
 msgstr "Meermanhopliet"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
@@ -2916,10 +3235,12 @@ msgstr ""
 "zelfs op het land, maar door gebrek aan benen bij lange na niet zo goed als "
 "in het water."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
 msgstr "Meermanjager"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Hunter.cfg:19
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
@@ -2932,10 +3253,12 @@ msgstr ""
 "water. Wanneer dat nodig is, zullen vele meermannen met dat beroep zich "
 "vrijwillig als soldaat aanmelden."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
 msgstr "Meermin"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Initiate.cfg:22
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
@@ -2952,10 +3275,12 @@ msgstr ""
 "Ondanks hun fragiliteit maakt dit hen behoorlijk sterk in het gevecht, omdat "
 "ze een beroep kunnen doen op het het water zelf dat hen omgeeft."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
 msgstr "Meermanspeerwerper"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
 msgid ""
 "Those mermen who master the art of javelinry can become nearly as effective "
@@ -2969,10 +3294,12 @@ msgstr ""
 "mobiliteit een groot voordeel ten op zichte van vijanden die niet kunnen "
 "zwemmen."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
 msgstr "Meermannetwerper"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
 #, fuzzy
 msgid ""
@@ -2991,10 +3318,12 @@ msgstr ""
 "vertragen, wanneer die bijvoorbeeld probeert een rivier over te steken. In "
 "de strijd worden kleinere, verzwaarde netten gebruikt."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
 msgstr "Meerminpriesteres"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:22
 #, fuzzy
 msgid ""
@@ -3013,10 +3342,12 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
 msgstr "Meerminsirene"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Siren.cfg:22
 #, fuzzy
 msgid ""
@@ -3041,14 +3372,17 @@ msgstr ""
 "Bijzonderheden: de waterstralen die tovenaressen oproepen zijn van een "
 "magische aard en hebben als zodanig altijd een hoge raakkans."
 
+#. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
 msgstr "naiastreel"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
 msgstr "Meermanspeervechter"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
 #, fuzzy
 msgid ""
@@ -3064,10 +3398,12 @@ msgstr ""
 "oppervlakte zeer gevaarlijk. Bovendien zijn ze onderwater als korte-afstands "
 "wapens veel effectiever dan pijlen."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
 msgstr "Meermanvorst"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Triton.cfg:19
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
@@ -3078,10 +3414,12 @@ msgstr ""
 "drietand verslaan ze elke vijand die dom genoeg is om in hun favoriete "
 "milieu te komen."
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
 msgstr "Meermankrijger"
 
+#. [unit_type]: race=merman
 #: data/core/units/merfolk/Warrior.cfg:18
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
@@ -3090,10 +3428,12 @@ msgstr ""
 "De Meerman Strijders vormen het hart van de meermanlegers. Hun krachtige "
 "drietand wordt menig vijand fataal."
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:4
 msgid "Giant Spider"
 msgstr "Reuzenspin"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:17
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
@@ -3104,14 +3444,17 @@ msgstr ""
 "reeds vele slachtoffers. Ze hebben een giftige beet in lijf aan lijf "
 "gevechten en vallen aan met een web van veraf."
 
+#. [attack]: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:46
 msgid "web"
 msgstr "web"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
 msgstr "Kraken"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
 #, fuzzy
 msgid ""
@@ -3125,19 +3468,23 @@ msgstr ""
 "aftstand. De beste manier om een ontmoeting met deze monsters te overleven "
 "is aan wal te blijven."
 
+#. [attack]: type=impact
 #: data/core/units/monsters/Tentacle.cfg:62
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
 msgid "tentacle"
 msgstr "tentakel"
 
+#. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:46
 msgid "ink"
 msgstr "inkt"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
 msgstr "Vuurdraak"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:24
 msgid ""
 "A dragon is a legendary creature, normally seen only in fantastic tales. "
@@ -3162,18 +3509,22 @@ msgstr ""
 "Een draak bevechten is het toppunt van gevaar, enkel geschikt voor dwazen of "
 "de dapperste ridders."
 
+#. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:28
 msgid "bite"
 msgstr "bijt"
 
+#. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:37
 msgid "tail"
 msgstr "staart"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
 msgstr "Reuzenmodderkruiper"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
@@ -3184,6 +3535,7 @@ msgstr ""
 "magische constructie van aarde en water besproeit zijn vijanden met kokend "
 "water en bestookt ze met vuisten van modder."
 
+#. [attack]: type=impact
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:27
@@ -3192,15 +3544,18 @@ msgstr ""
 msgid "fist"
 msgstr "vuist"
 
+#. [attack]: type=impact
 #: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 msgid "mud glob"
 msgstr "Modderbubbel"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
 msgstr "Reuzenschorpioen"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
@@ -3209,18 +3564,22 @@ msgstr ""
 "Als een gewone schorpioen al gevaarlijk is, dan is een schorpioen zo groot "
 "als een mens dat is behoeft geen uitleg."
 
+#. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
 msgstr "steek"
 
+#. [attack]: type=impact
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
 msgstr "tang"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
 msgstr "Modderkruiper"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:19
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
@@ -3229,10 +3588,12 @@ msgstr ""
 "Modderkruipers zijn magische constructies van aarde en water. Ze besproeien "
 "hun vijanden met kokend water."
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
 msgstr "Zeeslang"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:21
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
@@ -3240,10 +3601,12 @@ msgstr ""
 "De Zeeslang is een gigantisch monster en kan gemakkelijk een boot doen "
 "kapseizen."
 
+#. [unit_type]: race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
 msgid "Skeletal Dragon"
 msgstr "Skeletdraak"
 
+#. [unit_type]: race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
@@ -3259,14 +3622,17 @@ msgstr ""
 "slechts weinigen die hem zo beschouwden hebben nog van gedachte kunnen "
 "veranderen."
 
+#. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
 msgstr "kaak"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
 msgstr "Tentakel uit de Diepte"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
@@ -3275,14 +3641,17 @@ msgstr ""
 "De tentakels uit de diepte zijn de aanhangsels van gigantische monsters die "
 "beneden de waterspiegel huizen."
 
+#. [unit_type]: race=monster, description=Wolves are aggressive animals that hunt in packs. Although weak individually, a wolf pack can kill even the strongest man in minutes.
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
 msgstr "Wolf"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
 msgstr "Yeti"
 
+#. [unit_type]: race=monster
 #: data/core/units/monsters/Yeti.cfg:18
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
@@ -3293,10 +3662,12 @@ msgstr ""
 "weinigen hebben een ontmoeting met deze monsters overleefd, er wordt dan ook "
 "aan hun bestaan getwijfeld."
 
+#. [unit_type]: race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
 msgstr "Nagastrijder"
 
+#. [unit_type]: race=naga
 #: data/core/units/nagas/Fighter.cfg:20
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
@@ -3311,14 +3682,17 @@ msgstr ""
 "niet kunnen ademen blijven ze angstvallig weg van de allerdiepste zeeën. Ze "
 "zijn klein en zwak gebouwd, maar meestal leniger dan hun tegenstanders."
 
+#. [female]
 #: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
 msgstr "Naginistrijder"
 
+#. [unit_type]: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
 msgstr "Nagamyrmidon"
 
+#. [unit_type]: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:20
 #, fuzzy
 msgid ""
@@ -3334,11 +3708,13 @@ msgstr ""
 "vijandelijke aanvallen. Niet alleen zijn het geduchte tegenstanders op het "
 "open veld, ze verplaatsen zich ook razendsnel omdat ze kunnen zwemmen."
 
-#: data/core/units/nagas/Myrmidon.cfg:68
+#. [female]
+#: data/core/units/nagas/Myrmidon.cfg:67
 msgid "Nagini Myrmidon"
 msgstr "Naginimyrmidon"
 
-#: data/core/units/nagas/Myrmidon.cfg:71
+#. [female]
+#: data/core/units/nagas/Myrmidon.cfg:70
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -3352,10 +3728,12 @@ msgstr ""
 "vijandelijke aanvallen. Niet alleen zijn het geduchte tegenstanders op het "
 "open veld, ze verplaatsen zich ook razendsnel omdat ze kunnen zwemmen."
 
+#. [unit_type]: race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
 msgstr "Nagakrijger"
 
+#. [unit_type]: race=naga
 #: data/core/units/nagas/Warrior.cfg:19
 #, fuzzy
 msgid ""
@@ -3373,11 +3751,13 @@ msgstr ""
 "duikelend ontwijken ze de aanvallen van hun tegenstanders. Ze zijn sterk op "
 "het land, maar in het water worden ze gehinderd in hun bewegingen."
 
-#: data/core/units/nagas/Warrior.cfg:67
+#. [female]
+#: data/core/units/nagas/Warrior.cfg:66
 msgid "Nagini Warrior"
 msgstr "Naginikrijger"
 
-#: data/core/units/nagas/Warrior.cfg:70
+#. [female]
+#: data/core/units/nagas/Warrior.cfg:69
 #, fuzzy
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
@@ -3394,10 +3774,12 @@ msgstr ""
 "duikelend ontwijken ze de aanvallen van hun tegenstanders. Ze zijn sterk op "
 "het land, maar in het water worden ze gehinderd in hun bewegingen."
 
+#. [unit_type]: race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
 msgstr "Boeman"
 
+#. [unit_type]: race=ogre
 #: data/core/units/ogres/Ogre.cfg:21
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
@@ -3409,14 +3791,17 @@ msgstr ""
 "de wildernis leven. Ze zijn dan wel niet de snelste of de slimste, maar hun "
 "kracht valt niet te onderschatten."
 
+#. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
 msgid "cleaver"
 msgstr "vlees doorkluwer"
 
+#. [unit_type]: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
 msgstr "Jonge Boeman"
 
+#. [unit_type]: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:21
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
@@ -3427,10 +3812,12 @@ msgstr ""
 "leger. Ze kunnen nog geen wapens met kunde gebruiken maar dat maken ze met "
 "hun kracht ruimschoots goed."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
 msgstr "Orkboogschutter"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Archer.cfg:19
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
@@ -3445,10 +3832,12 @@ msgstr ""
 "en hebben weinig of geen training. Maar desondanks kunnen deze wapens nog "
 "steeds dodelijk zijn en hun gebruikers marcheren zelden alleen."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
 msgstr "Orkdoder"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Assassin.cfg:22
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
@@ -3464,14 +3853,17 @@ msgstr ""
 "het uitschakelen van de vijand, in tegenstelling tot hun brutalere "
 "soortgenoten brengen ze zelden de genadeslag toe."
 
+#. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:79 data/core/units/orcs/Slayer.cfg:36
 msgid "throwing knives"
 msgstr "messen werpen"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
 msgstr "Orkkruisboogschutter"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Crossbowman.cfg:18
 msgid ""
 "Orcish crossbows are crude imitations of human or dwarvish design; a "
@@ -3484,10 +3876,12 @@ msgstr ""
 "bevoorrechte orks die ze gebruiken zijn bekwame strijders en wat ze in "
 "finesse ontbreken maken ze goed met hun aantallen."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
 msgstr "Orkgrunt"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Grunt.cfg:19
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
@@ -3498,10 +3892,12 @@ msgstr ""
 "trager dan elfen of mensen maar ze kunnen zware slagen toebrengen en meer "
 "slagen verteren."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
 msgstr "Orkleider"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Leader.cfg:25
 #, fuzzy
 msgid ""
@@ -3517,10 +3913,12 @@ msgstr ""
 "onmisbaar op het slagveld: als de Leider verloren gaat, is ook de strijd "
 "verloren."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
 msgstr "Orkse Heerser"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Ruler.cfg:24
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
@@ -3535,15 +3933,18 @@ msgstr ""
 "zeldzame kwaliteit om andere orks in de strijd te kunnen leiden. Ze geven "
 "orders die niet door angst maar door loyauteit gevolgd worden."
 
+#. [attack]: type=blade
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:33
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:32
 msgid "greatsword"
 msgstr "grootzwaard"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
 msgstr "Orkmoordenaar"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Slayer.cfg:22
 msgid ""
 "The larger or more skilled orcish assassins are called 'Slayers' by their "
@@ -3558,10 +3959,12 @@ msgstr ""
 "maar het veelvuldige gebruik bij veldslagen is vaak de echte reden voor "
 "orkse overwinningen."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
 msgstr "Orkarbalestschutter"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:21
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
@@ -3584,10 +3987,12 @@ msgstr ""
 "Orks prijzen deze wapens die ze via plundering bekomen dan ook zeer hoog. Ze "
 "belanden steevast in de handen van de sterkste en bekwaamste boogschutters."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
 msgstr "Orkheerser"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Sovereign.cfg:25
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
@@ -3604,10 +4009,12 @@ msgstr ""
 "om zo een leger te verslaan is de zeldzame ork die het kan samenhouden te "
 "doden."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
 msgstr "Orkkrijgsheer"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Warlord.cfg:19
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
@@ -3618,10 +4025,12 @@ msgstr ""
 "worden. Ze zijn bedreven in het gebruik van zwaard en boog. Deze beest-"
 "strijders leiden de orkse vernielstroepen."
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
 msgstr "Orkkrijger"
 
+#. [unit_type]: race=orc
 #: data/core/units/orcs/Warrior.cfg:18
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
@@ -3632,10 +4041,12 @@ msgstr ""
 "bij de orks en ten zeerste gevreesd bij hun vijanden. Hun enigste zwakte is "
 "hun onkunde een boog te hanteren."
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "Saurian Ambusher"
 msgstr "Sauriaanse Sluiper"
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
@@ -3653,10 +4064,12 @@ msgstr ""
 "gebruik maken van het kleinste gat in een vijandelijke linie om de vijand "
 "zijn taktische fouten te laten betreuren."
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
 msgstr "Sauriaanse Waarzegger"
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Augur.cfg:21
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
@@ -3667,16 +4080,19 @@ msgstr ""
 "praktijk richt zich vooral op zwarte magie en voorspellingen. Weinig ervan "
 "is begrepen maar het wordt bevreesd door hen die het ondervonden."
 
+#. [attack]: type=cold
 #: data/core/units/saurians/Soothsayer.cfg:75
 #: data/core/units/saurians/Augur.cfg:75
 #: data/core/units/saurians/Oracle.cfg:75
 msgid "curse"
 msgstr "vloek"
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "Saurian Flanker"
 msgstr "Saurian Tuimelaar"
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven, or human "
@@ -3691,10 +4107,12 @@ msgstr ""
 "Dit is zeer gevaarlijk in de strijd en een onoplettende vijand kan zijn "
 "ondersteuningstroepen door hun geflankeerd zien."
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
 msgstr "Sauriaanse Orakel"
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
@@ -3711,10 +4129,12 @@ msgstr ""
 "onmiskenbaar krachtig door de vreemde magie die ze bezitten en men moet ze "
 "steeds met argwaan bekijken."
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
 msgstr "Sauriaanse Warzaaier"
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
@@ -3732,10 +4152,12 @@ msgstr ""
 "Speren zijn hun voorkeurswapen sinds hun krachtige achterpoten hun speer met "
 "grote kracht en dodelijkheid vooruit kunnen stuwen."
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
 msgstr "Sauriaanse Ziener"
 
+#. [unit_type]: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
@@ -3748,10 +4170,12 @@ msgstr ""
 "in heelkunde wat een groot voordeel geeft wanneer er ergens een strijd bezig "
 "is."
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
 msgstr "Grote Trol"
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Great.cfg:19
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
@@ -3766,10 +4190,12 @@ msgstr ""
 "van de meeste trolverhalen en wanneer men de verhalen werkelijkheid ziet "
 "worden ziet men dat er niets van gelogen is."
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
 msgstr "Trol Held"
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Hero.cfg:18
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
@@ -3780,10 +4206,12 @@ msgstr ""
 "ras. In een gemeenschap waar het recht van de sterkste geldt, worden zij als "
 "helden gezien."
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
 msgstr "Rotsslingeraar"
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
@@ -3798,10 +4226,12 @@ msgstr ""
 "sleuren rotsslingeraars ze mee in een grote zak over hun schouders. "
 "Hetzelfde leer waarvan de zak gemaakt is, dient ook als slinger."
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
 msgstr "Trol"
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Troll.cfg:18
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
@@ -3818,10 +4248,12 @@ msgstr ""
 "gevecht. De grote knuppels, die ze graag gebruiken, vormen een verlenging "
 "van hun armen en worden gebruikt om hun prooi tot moes te slaan."
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
 msgstr "Trolstrijder"
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Warrior.cfg:20
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
@@ -3841,10 +4273,12 @@ msgstr ""
 "metaalbewerking. Gegeven het gevaar van een trol in het gevecht is de "
 "gedachte aan een volledig uitgeruste trol uiterst beangstigend."
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
 msgstr "Trolwelp"
 
+#. [unit_type]: race=troll
 #: data/core/units/trolls/Whelp.cfg:19
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
@@ -3859,10 +4293,12 @@ msgstr ""
 "vier poten. Maar elke hinder die ze daarvan ondervinden wordt teniet gedaan "
 "door hun brute kracht."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
 msgstr "Gaul"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
@@ -3883,10 +4319,12 @@ msgstr ""
 "Het zijn dergelijke zaken die ertoe geleidt hebben dat dodenbezwering in "
 "zowat alle beschaafde landen ten strengste veroordeeld wordt."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
 msgstr "Necrophagus"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
@@ -3904,11 +4342,13 @@ msgstr ""
 "andere man gemaakt zijn uit levende mensen door een proces waarvan niets "
 "bekend is maar dat verschrikkelijk moet zijn."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
 msgid "Soulless"
 msgstr "Zielloze"
 
-#: data/core/units/undead/Corpse_Soulless.cfg:22
+#. [unit_type]: race=undead
+#: data/core/units/undead/Corpse_Soulless.cfg:20
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -3921,19 +4361,23 @@ msgstr ""
 "aantallen, aanvankelijk kwetsbaar maar een gevecht kan ze opwekken en veel "
 "krachtiger maken."
 
-#: data/core/units/undead/Corpse_Walking.cfg:72
+#. [attack]: type=impact
+#. [attack]: type=arcane
+#: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:119
 #: data/core/units/undead/Necro_Lich.cfg:34
-#: data/core/units/undead/Corpse_Soulless.cfg:73
+#: data/core/units/undead/Corpse_Soulless.cfg:26
 msgid "touch"
 msgstr "aanraking"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
 msgid "Walking Corpse"
 msgstr "Wandelend Lijk"
 
-#: data/core/units/undead/Corpse_Walking.cfg:21
+#. [unit_type]: race=undead
+#: data/core/units/undead/Corpse_Walking.cfg:19
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -3944,10 +4388,12 @@ msgstr ""
 "vroegere kameraad in hun rangen te zien is op zijn zachtst gezegd "
 "afschrikkwekkend."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
 msgstr "Oude Lich"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
@@ -3957,11 +4403,13 @@ msgstr ""
 "Iemand die een Oude Lich tegenkomt, heeft vermoedelijk ergere dingen dan de "
 "dood om zich zorgen over te maken."
 
+#. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:46
 msgid "chill tempest"
 msgstr "vriesstorm"
 
+#. [attack]: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:59
 #: data/core/units/undead/Necro_Lich.cfg:58
@@ -3970,10 +4418,12 @@ msgstr "vriesstorm"
 msgid "shadow wave"
 msgstr "schaduwgolf"
 
+#. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Zwarte Adept"
 
+#. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:25
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
@@ -3997,16 +4447,19 @@ msgstr ""
 "Derhalve is het enige wapen dat hun ter beschikking staat de magie waar ze "
 "zich met hart en ziel op toeleggen."
 
+#. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
 #: data/core/units/undead/Necromancer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
 msgid "chill wave"
 msgstr "koudegolf"
 
+#. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:199
 msgid "female^Dark Adept"
 msgstr "Zwarte Adept"
 
+#. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:203
 msgid ""
 "female^To attract any practitioners, the lure of black magic must be a great "
@@ -4030,10 +4483,12 @@ msgstr ""
 "Derhalve is het enige wapen dat hun ter beschikking staat de magie waar ze "
 "zich met hart en ziel op toeleggen."
 
+#. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "Zwarte Magiër"
 
+#. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:20
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -4068,10 +4523,12 @@ msgstr ""
 "stellen. Deze wezens hebben de trouw waarvan iedere tiran droomt en die "
 "zelfs hen die nauwelijks dromen van macht in verleiding brengt."
 
+#. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
 msgid "Dark Sorceress"
 msgstr "Zwarte Magiër"
 
+#. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:182
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -4106,10 +4563,12 @@ msgstr ""
 "stellen. Deze wezens hebben de trouw waarvan iedere tiran droomt en die "
 "zelfs hen die nauwelijks dromen van macht in verleiding brengt."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
 msgstr "Zielenzuiger"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:23
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
@@ -4134,10 +4593,12 @@ msgstr ""
 "alleen al het stellen van deze vraag toont aan dat ze iets gigantisch "
 "bereikt hebben."
 
+#. [unit_type]: race=human
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
 msgstr "Dodenbezweerder"
 
+#. [unit_type]: race=human
 #: data/core/units/undead/Necromancer.cfg:21
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
@@ -4154,18 +4615,22 @@ msgstr ""
 "zijn echter ontdekkingen met verschrikkelijke gevolgen en dit alleen is "
 "genoeg voor de meeste mensen om deze kunst als 'zwarte magie' af te wijzen."
 
+#. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:26
 msgid "plague staff"
 msgstr "peststaf"
 
+#. [female]
 #: data/core/units/undead/Necromancer.cfg:181
 msgid "female^Necromancer"
 msgstr "Dodenbezweerder"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:4
 msgid "Banebow"
 msgstr "Banvloekschutter"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:17
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
@@ -4180,10 +4645,12 @@ msgstr ""
 "onwetend over wat hun doel is en wie hun vijand. Ze worden slecht gedreven "
 "door kwaadaardigheid ontsproten aan hun lege en verwarrende bestaan."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
 msgstr "Beenderschutter"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
@@ -4199,10 +4666,12 @@ msgstr ""
 "vijanden 'Beenderschieters' genoemd. Deze gruwelijke wezens zijn een "
 "verschrikking voor elk levend wezen."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
 msgstr "Beenderruiter"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:20
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
@@ -4213,10 +4682,12 @@ msgstr ""
 "werden als rijdier door een verloren gegane beschaving. Beenderruiters zijn "
 "sneller dan de meeste cavalerie-eenheden."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
 msgstr "Doodsridder"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
@@ -4229,10 +4700,12 @@ msgstr ""
 "nog steeds dezelfde wapens als toen ze leefden en bevelen nu de ondoden in "
 "hun zoektocht naar wraak."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
 msgstr "Doodskling"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
@@ -4247,10 +4720,12 @@ msgstr ""
 "recht doet. Deze monsters, hoewel kwetsbaar, zijn veel sneller dan de "
 "anderen van hun soort, zowel qua beweging als met hun klingen."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
 msgstr "Draugr"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
 msgid ""
 "There is little left, in these towering ruins, of the men they once were. "
@@ -4265,10 +4740,12 @@ msgstr ""
 "herinneringen, zoeken ze wanhopig naar bevrijding, naar een rust slechts "
 "verkregen in de strijd. En zo blijven ze voortvechten zonder besef of pauze."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
 msgstr "Wedergekomene"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:17
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
@@ -4284,10 +4761,12 @@ msgstr ""
 "ook, een wedergekomene is een machtig wapen in de strijd: een krijger die "
 "angst noch pijn kent, één die strijdt tot het bitter einde."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
 msgstr "Skelet"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton.cfg:18
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
@@ -4300,10 +4779,12 @@ msgstr ""
 "en kennen geen angst voor pijn of de dood. Alleen hun aanwezigheid al is "
 "vaak genoeg om degenen die hun meesters bedreigen te verjagen."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
 msgstr "Skeletboogschutter"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
@@ -4318,10 +4799,12 @@ msgstr ""
 "het uiterste gaan om hun opdrachten te volbrengen want de dood jaagt de "
 "doden geen angst aan."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
 msgstr "Spook"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:20
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
@@ -4341,16 +4824,19 @@ msgstr ""
 "loyale dienaar die niet anders kan dan iedere taak die zijn meester vervuld "
 "wil zien uit te voeren."
 
+#. [attack]: type=cold
 #: data/core/units/undead/Spirit_Wraith.cfg:31
 #: data/core/units/undead/Spirit_Ghost.cfg:131
 #: data/core/units/undead/Spirit_Spectre.cfg:56
 msgid "wail"
 msgstr "huil"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
 msgstr "Nacht-Onding"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:17
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
@@ -4363,11 +4849,13 @@ msgstr ""
 "zelden gezien door de levenden, en zij die een ontmoeting overleefden wilden "
 "ze snel mogelijk terug vergeten."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
 msgstr "Schaduw"
 
-#: data/core/units/undead/Spirit_Shadow.cfg:18
+#. [unit_type]: race=undead
+#: data/core/units/undead/Spirit_Shadow.cfg:19
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -4384,10 +4872,12 @@ msgstr ""
 "Deze onbelichaamde schepsels kunnen 's achts volledig in de omgeving opgaan "
 "en blijven zo ongedetecteerd door eenieder."
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
 msgstr "Schim"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
@@ -4406,15 +4896,18 @@ msgstr ""
 "slechts de voorbode is van de veel gevaarlijkere macht die hem vermoedelijk "
 "volgt."
 
+#. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Wraith.cfg:20
 #: data/core/units/undead/Spirit_Spectre.cfg:45
 msgid "baneblade"
 msgstr "verderfijzer"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
 msgstr "Geest"
 
+#. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:16
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
@@ -4429,10 +4922,12 @@ msgstr ""
 "gevoed door het geloof in hun onkwetsbaarheid. Een geloof dat overigens ver "
 "bezijden de waarheid is."
 
+#. [unit_type]: race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
 msgstr "Eeuwenoude Ent"
 
+#. [unit_type]: race=wose
 #: data/core/units/wose/Ancient.cfg:20
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
@@ -4455,15 +4950,18 @@ msgstr ""
 "Dit soort gebeurtenissen zijn de enige aanwijzingen die er zijn voor wat "
 "vermoedelijke de alleroudste enten zijn."
 
+#. [attack]: type=impact
 #: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
 #: data/core/units/wose/Elder.cfg:91
 msgid "crush"
 msgstr "verpletter"
 
+#. [unit_type]: race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
 msgstr "Oude Ent"
 
+#. [unit_type]: race=wose
 #: data/core/units/wose/Elder.cfg:19
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
@@ -4488,10 +4986,12 @@ msgstr ""
 "Enten zijn in geen enkel opzicht krijgers, maar de kracht die ze bezitten "
 "stelt hen in staat rake klappen uit te delen wanneer hun toorn gewekt wordt."
 
+#. [unit_type]: race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
 msgstr "Ent"
 
+#. [unit_type]: race=wose
 #: data/core/units/wose/Wose.cfg:20
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "

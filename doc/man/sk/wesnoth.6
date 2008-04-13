@@ -47,6 +47,9 @@ hráèmi.
 \fB\-\-bpp\fP\fI\ èíslo\fP
 nastaví poèet bitov na obrazový bod (BitsPerPixel). Napríklad: \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ vstupný_súbor\ výstupný_súbor\fP
 zbalí ulo¾enú hru v textovom formáte WML (\fIvstupný_súbor\fP) do binárneho
 formátu WML (\fIvýstupný_súbor\fP).
@@ -80,6 +83,9 @@ vypí¹e súhrn mo¾ností príkazového riadku do ¹tandardného výstupu, a skonèí.
 \fB\-\-load\fP\fI\ ulo¾ená_hra\fP
 naèíta ulo¾enú hru z daného súboru v ¹tandardnom adresári ulo¾ených hier
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
 nastaví úroveò záva¾nosti zapisovacích domén. \fBall\fP znamená v¹etky
 zapisovacie domény. Mo¾né úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. ©tandardne sa pou¾íva úroveò \fBerror\fP.
@@ -91,7 +97,7 @@ Vypí¹e zoznam v¹etkých domén logu a vypne sa.
 poèet snímok za sekundu, ktoré mô¾e hra zobrazi»; hodnota by mala by» medzi
 1 a 1000, ¹tandardne je \fB50\fP.
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 spustí hru pre viacerých hráèov. Ïal¹ie mo¾nosti pou¾uteµné v kombinácii s
 \fB\-\-multiplayer\fP sú vysvetlené ni¾¹ie.
 .TP 
@@ -106,6 +112,10 @@ vypí¹e názov dátového adresára hry a skonèí.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastaví rozlí¹enie obrazovky. Napríklad: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 spustí hru s malou testovacou scénou.

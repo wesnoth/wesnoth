@@ -49,6 +49,9 @@ innym graczom.
 \fB\-\-bpp\fP\fI\ liczba\fP
 ustawia liczbê bitów na piksel. Przyk³ad: \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ plikwejsciowyE\ plikwyjsciowy\fP
 kompresuje plik zapisu w tekstowym formacie WML (\fIplikwejsciowy\fP) do
 binarnego formatu WML (\fIplikwyjsciowy\fP).
@@ -83,6 +86,9 @@ koñczy dzia³anie.
 \fB\-\-load\fP\fI\ plikzapisu\fP
 ³aduje plik zapisu z domy¶lnego katalogu zapisu gry.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIpoziom\fP\fB=\fP\fIdomena1\fP\fB,\fP\fIdomena2\fP\fB,\fP\fI...\fP
 okre¶la poziom istotno¶ci domen debugowania. \fBall\fP oznacza dopasowanie
 wszystkich domen debugowania. Dostêpne poziomy: \fBerror\fP (b³êdy),\ \fBwarning\fP (ostrze¿enia),\ \fBinfo\fP (informacje),\ \fBdebug\fP
@@ -95,7 +101,7 @@ dokonuje zrzutu wszystkich domen dzienników i koñczy dzia³anie.
 liczba klatek na sekundê wy¶wietlanych przez grê. Warto¶æ ta powinna
 zawieraæ siê miêdzy 1 a 1000, przy czym domy¶lna warto¶æ to \fB50\fP.
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 uruchamia grê wieloosobow±. Wraz z prze³±cznikiem \fB\-\-multiplayer\fP mo¿na
 u¿ywaæ dodatkowych opcji, które zosta³y obja¶nione poni¿ej.
 .TP 
@@ -110,6 +116,10 @@ wy¶wietla nazwê katalogu z danymi gry i koñczy dzia³anie.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 ustawia rozdzielczo¶æ ekranu gry. Przyk³ad: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 uruchamia grê z ma³ym scenariuszem testowym.

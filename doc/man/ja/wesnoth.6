@@ -39,6 +39,9 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームです。
 \fB\-\-bpp\fP\fI\ number\fP
 ピクセル当りのビット数の値を設定。例: \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ infile\ outfile\fP
 テキストWML形式のセーブファイル(\fIinfile\fP)をバイナリWML形式(\fIoutfile\fP)に圧縮する。
 .TP 
@@ -67,6 +70,9 @@ gzip フォーマットのファイルを展開して .gz という拡張子を除いたファイルに保存する
 \fB\-\-load\fP\fI\ savegame\fP
 ファイル savegame を標準のセーブゲームディレクトリから読み込む。
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 ログ領域(domain)の厳密さのレベルを設定する。 \fBall\fP は、どのログ領域にも対応させるために利用される。 有効なレベルは以下の通り。
 \fBerror\fP、\ \fBwarning\fP、\ \fBinfo\fP、\ \fBdebug\fP。デフォルトでは \fBerror\fP レベルが使用される。
@@ -77,7 +83,7 @@ gzip フォーマットのファイルを展開して .gz という拡張子を除いたファイルに保存する
 \fB\-\-max\-fps\fP
 ゲームにおける 1 秒間あたりのフレーム数。値は 1 から 1000 までで、デフォルトは \fB50\fP。
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 マルチプレイヤーゲームを実行する。 \fB\-\-multiplayer\fP と共に利用できる追加のオプションは後述。
 .TP 
 \fB\-\-nocache\fP
@@ -91,6 +97,10 @@ gzip フォーマットのファイルを展開して .gz という拡張子を除いたファイルに保存する
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 画面解像度を設定する。 例: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 簡単なテストシナリオでゲームを実行する。

@@ -46,6 +46,9 @@ scenarios en deel ze met anderen.
 \fB\-\-bpp\fP\fI\ nummer\fP
 stelt BitsPerPixel waarde in. Bijvoorbeeld \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ invoerbestand\ uitvoerbestand\fP
 comprimeert een in tekst WML opgeslagen spel (\fIinvoerbestand\fP) naar een
 binair WML formaat (uitvoerbestand).
@@ -80,6 +83,9 @@ toont een samenvatting van command line opties en sluit af.
 \fB\-\-load\fP\fI\ opgeslagen spel\fP
 laad het bewaarde bestand vanuit de standaard save game map.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomein1\fP\fB,\fP\fIdomein2\fP\fB,\fP\fI...\fP
 stelt het meldingsniveau van de logdomeinen in. \fBall\fP kan gebruikt worden
 om alle logdomeinen te kiezen. Beschikbare niveaus zijn \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. De standaard is \fBerror\fP.
@@ -91,7 +97,7 @@ Dumpt een lijst met alle logdomeinen en sluit af.
 het aantal beelden per seconde dat het spel kan tonen, de waarde moet tussen
 1 en 1000 zijn, standaard is \fB50\fP
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 start een multiplayer spel. Er zijn meer opties die samen met
 \fB\-\-multiplayer\fP gebruikt kunnen worden zoals hieronder beschreven.
 .TP 
@@ -106,6 +112,10 @@ toont het pad van de speldata map en sluit af.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 bepaalt de beeldresolutie. Bijvoorbeeld: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 draait het spel in een klein test scenario.

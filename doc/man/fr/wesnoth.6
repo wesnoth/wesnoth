@@ -18,11 +18,10 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2007 wesnoth "La bataille pour Wesnoth"
+.TH WESNOTH 6 2007 wesnoth "Bataille pour Wesnoth"
 .
 .SH NOM
-wesnoth \- La bataille pour Wesnoth, un jeu fantasy de stratégie tour par
-tour
+wesnoth \- Bataille pour Wesnoth, un jeu fantasy de stratégie tour par tour
 .
 .SH SYNOPSIS
 .
@@ -30,13 +29,13 @@ tour
 .
 .SH DESCRIPTION
 .
-La bataille pour \fBWesnoth\fP est un jeu de stratégie tour par tour dans un
+Bataille pour \fBWesnoth\fP est un jeu de stratégie tour par tour dans un
 univers de fantasy.
 
 Venez à bout de tous les chefs ennemis en utilisant les unités adéquates et
 en gérant au mieux votre or et vos villages. Chaque unité a ses forces et
-ses faiblesses\ ; pour gagner, déployez vos troupes de façon optimales tout
-en empêchant vos ennemis de faire de même. Toutes les unités gagnent de
+ses faiblesses\ ; pour gagner, déployez vos troupes de façon optimale tout en
+empêchant vos ennemis de faire de même. Toutes les unités gagnent de
 l'expérience et acquièrent de nouvelles compétences, devenant plus
 puissantes. Jouez dans votre langue favorite, testez votre habileté contre
 l'ordinateur, ou rejoignez la grande communauté des joueurs en ligne de
@@ -48,6 +47,9 @@ partagez\-les avec d'autres.
 .TP 
 \fB\-\-bpp\fP\fI\ nombre\fP
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
 .TP 
 \fB\-\-compress\fP\fI\ fichier_d'entrée\ fichier_de_sortie\fP
 Compresse une sauvegarde au format texte WML (\fIfichier_d'entrée\fP) en format
@@ -71,12 +73,12 @@ Affiche, dans un angle de l'écran, le nombre actuel d'images par seconde du
 jeu.
 .TP 
 \fB\-\-gunzip\fP\fI\ fichier_d'entrée.gz\fP
-Décompresse une sauvegarde qui est un fichier au format gzip et la place
-dans un fichier sans l'extension .gz. (\fIfichier_d'entrée.gz\fP) sera effacé.
+Décompresse une sauvegarde, normalement au format gzip, en un fichier sans
+l'extension .gz. (\fIfichier_d'entrée.gz\fP) sera effacé.
 .TP 
 \fB\-\-gzip\fP\fI\ fichier_d'entrée\fP
 Compresse une sauvegarde au format gzip et la place dans \fIfichier
-d'entrée.gz\fP et efface \fIfichier_d'entrée\fP.
+d'entrée.gz\fP, puis efface \fIfichier_d'entrée\fP.
 .TP 
 \fB\-h, \-\-help\fP
 Affiche un résumé des options de ligne de commande sur la sortie standard et
@@ -86,18 +88,21 @@ quitte le programme.
 Charge le fichier de sauvegarde à partir du répertoire de sauvegarde par
 défaut.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomaine1\fP\fB,\fP\fIdomaine2\fP\fB,\fP\fI...\fP
 Définit le niveau d'alerte du débogueur. \fBall\fP permet de suivre tous les
 niveaux de déboguage. Niveaux disponibles : \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Le niveau par défaut est \fBerror\fP.
 .TP 
 \fB\-\-logdomains\fP
-Affiche la liste de tous les types d'alerte et quitte.
+Affiche la liste de tous les types d'alertes et quitte.
 .TP 
 \fB\-\-max\-fps\fP
 Nombre d'images par seconde que le jeu peut afficher. La valeur doit être
 comprise entre 1 et 1000, la valeur par défaut est \fB50\fP.
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 Lance un jeu multijoueurs. Des options supplémentaires peuvent être
 utilisées avec \fB\-\-multiplayer\fP\ : voir ci\-dessous.
 .TP 
@@ -112,6 +117,10 @@ Affiche le nom du répertoire principal du jeu et quitte le programme.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-résolution\fP\ \fIX\fP\fBx\fP\fIY\fP
 Définit la résolution de l'écran. Exemple\ : \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 Lance le jeu avec un petit scénario de test.

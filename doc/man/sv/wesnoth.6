@@ -48,6 +48,9 @@ dela med dig av dem till andra spelare.
 \fB\-\-bpp\fP\fI\ nummer\fP
 anger antalet bitar per pixel. Exempel: \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ infil\ utfil\fP
 komprimerar en fil (\fIinfil\fP) med ett sparat spel i WML\-textformat till en
 fil i binärt WML\-format (\fIutfil\fP).
@@ -83,6 +86,9 @@ visar en sammanfattning av möjliga kommandoradsflaggor.
 kör spelet som finns sparat i filen \fIfil\fP, som finns i spelets standardmapp
 för sparade spel.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fInivå\fP\fB=\fP\fIdomän1\fP\fB,\fP\fIdomän2\fP\fB,\fP\fI...\fP
 anger allvarlighetsgraden för loggdomänerna. För att se allt kan \fBall\fP
 användas. Möjliga nivåer: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardnivå: \fBerror\fP.
@@ -94,7 +100,7 @@ visar en lista över loggningsdomänerna.
 antal ramar per sekund som spelet kan visa; värdet skall ligga mellan 1 och
 1000, standardvärdet är \fB50\fP.
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 kör ett gruppspel. Ytterligare flaggor kan användas tillsammans med
 \fB\-\-multiplayer\fP såsom beskrivs nedan.
 .TP 
@@ -109,6 +115,10 @@ visar namnet på speldatamappen.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 anger skärmupplösningen. Exempel: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 kör spelet i ett litet testscenario.

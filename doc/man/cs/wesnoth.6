@@ -47,6 +47,9 @@ ostatními.
 \fB\-\-bpp\fP\fI\ èíslo\fP
 nastavuje hodnotu BitsPerPixel \- poèet bitù na bod. Pøíklad: \fB\-\-bpp 32\fP
 .TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
 \fB\-\-compress\fP\fI\ vstupní_soubor\ výstupní_soubor\fP
 komprimuje soubor s ulo¾enou hrou (\fIvstupní_soubor\fP), který je v textovém
 formátu WML, do binárního tvaru (\fIvýstupní_soubor\fP).
@@ -81,6 +84,9 @@ zobrazuje nápovìdu k parametrùm pøíkazové øádky.
 \fB\-\-load\fP\fI\ soubor_se_hrou\fP
 nahraje ulo¾enou hru ze souboru ze standardního adresáøe pro ulo¾ené hry.
 .TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIkategorie1\fP\fB,\fP\fIkategorie2\fP\fB,\fP\fI...\fP
 nastavuje úroveò záva¾nosti pro jednotlivé kategorie. \fBall\fP znamená, ¾e
 budou vypisovány v¹echny kategorie. Dostupné kategorie: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Implicitnì je aktivována kategorie
@@ -93,7 +99,7 @@ Vypí¹e seznam v¹ech kategorií logování a skonèí.
 poèet snímkù za sekundu které mù¾e hra zobrazit, hodnota by mìla nále¾et do
 rozsahu 1 a¾ 1000, implicitnì \fB50\fP.
 .TP 
-\fB\-\-multiplayer\fP
+\fB\-m, \-\-multiplayer\fP
 spou¹tí hru více hráèù. Ní¾e jsou popsány dal¹í volby, které se k této volbì
 vá¾í.
 .TP 
@@ -108,6 +114,10 @@ pouze zobrazí cestu k adresáøi s daty a skonèí.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastavuje rozli¹ení. Pøíklad: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 spou¹tí hru v malém testovacím scénáøi.
