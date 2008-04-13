@@ -24,7 +24,8 @@ $official = true;
 
 $existing_packs = explode(" ", $packages);
 $existing_corepacks = explode(" ", $corepackages);
-$existing_extra_packs = explode(" ", $extrapackages);
+$existing_extra_packs_t = explode(" ", $extratpackages);
+$existing_extra_packs_b = explode(" ", $extrabpackages);
 $firstpack = $existing_packs[0];
 $stats = array();
 if(!isset($_GET['package'])){
@@ -83,17 +84,13 @@ if($package=='alloff' || $package == 'allcore'){
 		if($i==0){
 			$packs = $existing_packs;
 		}else{
-			$packs = $existing_extra_packs;
+			$packs = ($version == 'trunk') ? $existing_extra_packs_t : $existing_extra_packs_b;
 		}
 		foreach($packs as $pack){
-			if($i == 0) {
-				if($version == 'branch') {
-					$statsfile = 'branchstats';
-				} else {
-					$statsfile = 'trunkstats';
-				}
+			if($version == 'branch') {
+				$statsfile = 'branchstats';
 			} else {
-				$statsfile = 'stats';
+				$statsfile = 'trunkstats';
 			}
 			if($i==1){
 				$pack = getdomain($pack);
@@ -121,13 +118,14 @@ if($package=='alloff' || $package == 'allcore'){
 		}
 	}
 }elseif($package=='allun'){
-	$packs = $existing_extra_packs;
+	$packs = ($version == 'trunk') ? $existing_extra_packs_t : $existing_extra_packs_b;
 	foreach($packs as $pack){
 		$pack = getdomain($pack);
-		if (!file_exists("stats/" . $pack . "/stats")) {
+		$statsfile = $version . 'stats';
+		if (!file_exists("stats/" . $pack . "/$statsfile")) {
 			continue;
 		}
-		$serialized = file_get_contents("stats/" . $pack . "/stats");
+		$serialized = file_get_contents("stats/" . $pack . "/$statsfile");
 		$tmpstats = array();
 		$tmpstats = unserialize($serialized);
 		foreach($tmpstats as $lang => $stat){
@@ -147,11 +145,7 @@ if($package=='alloff' || $package == 'allcore'){
 	}
 }else{
 	$package = $_GET['package'];
-	if(in_array($package,$existing_packs)){
-		$statsfile = $version . "stats";
-	} else {
-		$statsfile = "stats";
-	}
+	$statsfile = $version . "stats";
 	if (!file_exists("stats/" . $package . "/" . $statsfile)) {
 		$nostats=true;
 	}else{
@@ -164,11 +158,7 @@ if(!$nostats){
 	//get total number of strings
 	$main_total=$stats["_pot"][1]+$stats["_pot"][2]+$stats["_pot"][3];
 	unset($stats["_pot"]);
-	if(in_array($firstpack,$existing_packs)){
-		$statsfile = $version . "stats";
-	} else {
-		$statsfile = "stats";
-	}
+	$statsfile = $version . "stats";
 	$filestat = stat("stats/" . $firstpack ."/" . $statsfile);
 	$date = $filestat[9];
 
@@ -235,7 +225,6 @@ Version:
 <? }else{ ?>
 <strong>Development</strong> || <a href="?version=branch&amp;package=<?=$package?>"><?=$branch?></a>
 <? } ?>
-(only meaningful for official packs)
 </td>
 </tr>
 <tr>
@@ -273,7 +262,7 @@ echo "||";
 			$packs = $existing_packs;
 			echo "<br/>Official: ";
 		}else{
-			$packs = $existing_extra_packs;
+			$packs = ($version == 'trunk') ? $existing_extra_packs_t : $existing_extra_packs_b;
 			echo "<br/>Unofficial: ";
 		}
 		$first=true;

@@ -23,7 +23,8 @@ function cmp_alpha($a, $b){
 
 $existing_packs = explode(" ", $packages);
 $existing_corepacks = explode(" ", $corepackages);
-$existing_extra_packs = explode(" ", $extrapackages);
+$existing_extra_packs_t = explode(" ", $extratpackages);
+$existing_extra_packs_b = explode(" ", $extrabpackages);
 $stats = array();
 
 if(!isset($_GET['version'])){
@@ -44,15 +45,11 @@ if($lang != "") {
 		if($i==0){
 			$packs = $existing_packs;
 		}else{
-			$packs = $existing_extra_packs;
+			$packs = ($version == 'trunk') ? $existing_extra_packs_t : $existing_extra_packs_b;
 		}
 		foreach($packs as $pack){
-			if($i==1){
-				$pack = getdomain($pack);
-				$statsfile = "stats";
-			} else {
-				$statsfile = $version . "stats";
-			}
+			if($i==1) $pack = getdomain($pack);
+			$statsfile = $version . "stats";
 			if (!file_exists("stats/" . $pack . "/" . $statsfile)) {
 				continue;
 			}
@@ -78,11 +75,7 @@ if($lang != "") {
 	unset($lang);
 }
 $firstpack = $existing_packs[0];
-if(in_array($firstpack,$existing_packs)){
-	$statsfile = $version . "stats";
-} else {
-	$statsfile = "stats";
-}
+$statsfile = $version . "stats";
 $filestat = stat("stats/" . $firstpack . "/" . $statsfile);
 $date = $filestat[9];
 ?>
@@ -130,7 +123,6 @@ Version:
 <? }else{ ?>
 <a href="?version=trunk&amp;package=<?=$package?>&amp;lang=<?=$lang?>">Development</a>  || <strong><?=$branch?></strong>
 <? } ?>
-(only meaningful for official packs)
 </td>
 </tr>
 <tr>
@@ -220,7 +212,8 @@ foreach($stats as $stat){
 		}
 		echo "<strong><a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $stat[4]. "/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
 	}else{
-		echo "<strong><a href='http://svn.berlios.de/viewcvs/*checkout*/wescamp-i18n/" . getpackage($stat[4]) . "/po/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
+		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
+		echo "<strong><a href='http://svn.berlios.de/viewcvs/*checkout*/wescamp-i18n/$repo/" . getpackage($stat[4]) . "/po/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
 	}
 
 ?>

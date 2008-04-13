@@ -27,80 +27,58 @@ $currdate = date("Y-m-d",mktime());
 }
 
 $packs = explode(" ", $packages);
-$extrapacks = explode(" ", $extrapackages);
+$extratpacks = explode(" ", $extratpackages);
+$extrabpacks = explode(" ", $extrabpackages);
 
-echo "<h1>Getting stats for trunk</h1>";
+function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) or extras (0), package array
+{
+	//these are defined in config.php
+	global $trunkbasedir;
+	global $branchbasedir;
+	global $extratbasedir;
+	global $extrabbasedir;
 
-#Get trunk stats
-foreach($packs as $package){
-	$stats = array();
-	$languages = file_get_contents($trunkbasedir . "/po/" . $package . "/LINGUAS");
-	$languages = substr($languages, 0, strlen($languages)-1);
-	$langs = explode(" ", $languages);
-	echo "<h2>Getting stats for package $package</h2>";
-	$stats["_pot"]=getstats($trunkbasedir . "/po/" . $package . "/" . $package . ".pot");
-	if(!file_exists("stats/" . $package)){
-		system("mkdir stats/" . $package);
+	foreach($packs as $package){
+		$stats = array();
+		if ($official)
+		{
+			$basedir = ($tob == "trunk") ? $trunkbasedir : $branchbasedir;
+			$po_dir = $basedir . "/po/" . $package . "/";
+			$domain = $package;
+		} else { // wescamp
+			$basedir = ($tob == "trunk") ? $extratbasedir : $extrabbasedir;
+			$po_dir = $basedir . "/" . $package . "/po/";
+			$domain = getdomain($package);
+		}
+		$languages = file_get_contents($po_dir . "/LINGUAS");
+		$languages = substr($languages, 0, strlen($languages)-1);
+		$langs = explode(" ", $languages);
+		echo "<h2>Getting stats for package $package</h2>";
+		$stats["_pot"] = getstats("$po_dir/" . $domain . ".pot");
+		if (!file_exists("stats/" . $domain))
+		{
+			system("mkdir stats/" . $domain);
+		}
+		foreach ($langs as $lang)
+		{
+			echo "Getting stats for lang $lang<br/>";
+			$pofile = $po_dir . "/" . $lang . ".po";
+			$stats[$lang] = getstats($pofile);
+		}
+	
+		$serialized = serialize($stats);
+		$file = fopen("stats/" . $domain . "/" . $tob . "stats", "wb");
+		fwrite($file, $serialized);
+		fclose($file);
 	}
-	foreach($langs as $lang){
-		echo "Getting stats for lang $lang<br/>";
-		$pofile = $trunkbasedir . "/po/" . $package . "/" . $lang . ".po";
-		$stats[$lang]=getstats($pofile);
-	}
-
-	$serialized = serialize($stats);
-	$file = fopen("stats/" . $package . "/trunkstats", "wb");
-	fwrite($file, $serialized);
-	fclose($file); 
 }
 
-echo "<h1>Getting stats for branch</h1>";
+echo "<h1>Getting stats for trunk</h1>\n";
+grab_stats("trunk", 1, $packs);
+grab_stats("trunk", 0, $extratpacks);
 
-#Get branch stats
-foreach($packs as $package){
-	$stats = array();
-	$languages = file_get_contents($branchbasedir . "/po/" . $package . "/LINGUAS");
-	$languages = substr($languages, 0, strlen($languages)-1);
-	$langs = explode(" ", $languages);
-	echo "<h2>Getting stats for package $package</h2>";
-	$stats["_pot"]=getstats($branchbasedir . "/po/" . $package . "/" . $package . ".pot");
-	if(!file_exists("stats/" . $package)){
-		system("mkdir stats/" . $package);
-	}
-	foreach($langs as $lang){
-		echo "Getting stats for lang $lang<br/>";
-		$pofile = $branchbasedir . "/po/" . $package . "/" . $lang . ".po";
-		$stats[$lang]=getstats($pofile);
-	}
+echo "<h1>Getting stats for branch ($branch)</h1>\n";
+grab_stats("branch", 1, $packs);
+grab_stats("branch", 0, $extrabpacks);
 
-	$serialized = serialize($stats);
-	$file = fopen("stats/" . $package . "/branchstats", "wb");
-	fwrite($file, $serialized);
-	fclose($file); 
-}
-
-// TODO:
-// Adjust wescamp stats to work nicely with the new server interface
-// deactivated for the moment
-//foreach($extrapacks as $package){
-//	$stats = array();
-//	$domain = getdomain($package);
-//	$languages = file_get_contents($extrabasedir . "/" . $package . "/po/LINGUAS");
-//	$languages = substr($languages, 0, strlen($languages)-1);
-//	$langs = explode(" ", $languages);
-//	echo "<h2>Getting stats for package $package</h2>";
-//	$stats["_pot"]=getstats($extrabasedir . "/" . $package . "/po/" . $domain . ".pot");
-//	if(!file_exists("stats/" . $domain)){
-//		system("mkdir stats/" . $domain);
-//	}
-//	foreach($langs as $lang){
-//		echo "Getting stats for lang $lang<br/>";
-//		$pofile = $extrabasedir . "/" . $package . "/po/" . $lang . ".po";
-//		$stats[$lang]=getstats($pofile);
-//	}
-//	$serialized = serialize($stats);
-//	$file = fopen("stats/" . $domain . "/stats", "wb");
-//	fwrite($file, $serialized);
-//	fclose($file); 
-//}
 ?>

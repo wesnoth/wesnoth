@@ -13,29 +13,41 @@ $msgfmt="/usr/bin/msgfmt";
 $branch="1.4";
 
 $trunkbasedir="/public/vhost/w/wesnoth/source/trunk/";
-$branchbasedir="/public/vhost/w/wesnoth/source/" . $branch . "/";
-//$extrabasedir="/public/vhost/w/wesnoth/source/wescamp-i18n/";
+$branchbasedir="/public/vhost/w/wesnoth/source/$branch/";
+$extratbasedir="/public/vhost/w/wesnoth/source/wescamp-i18n/trunk/"; //trunk
+$extrabbasedir="/public/vhost/w/wesnoth/source/wescamp-i18n/branches/$branch/"; //branch
 
 //$packages = file_get_contents($basedir . "/po/DOMAINS");
 //$packages = substr($packages, 0, strlen($packages)-1);
 $corepackages = "wesnoth wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-httt wesnoth-tutorial";
 //$packages = trim(system("grep ^SUBDIRS " . $basedir . "/po/Makefile.am | cut -d= -f2"));
-$packages = "wesnoth wesnoth-lib wesnoth-editor wesnoth-units wesnoth-multiplayer wesnoth-anl wesnoth-tutorial wesnoth-manpages wesnoth-manual wesnoth-aoi wesnoth-did wesnoth-ei wesnoth-httt wesnoth-l wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-thot wesnoth-trow wesnoth-tsg wesnoth-utbs";
+$packages = "wesnoth wesnoth-lib wesnoth-editor wesnoth-units wesnoth-multiplayer wesnoth-tutorial wesnoth-manpages wesnoth-manual wesnoth-aoi wesnoth-did wesnoth-ei wesnoth-httt wesnoth-l wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-thot wesnoth-trow wesnoth-tsg wesnoth-utbs";
 
 //get unofficial packages
-// TODO:
-// reactivate when stuff adjusted for new infrastructure
-// deactivated for not
-//$dir = opendir($extrabasedir);
-//
-//$extra_packages = "";
-//while (false !== ($file = readdir($dir))) { 
-//	if($file[0] != '.'){
-//		$packarray[] = $file;
-//	}
-//}
-//sort($packarray);
-//$extrapackages = implode(" ", $packarray);
+//trunk
+$packarray = array();
+$dir = opendir($extratbasedir); //trunk
+while (false !== ($file = readdir($dir))) { 
+	if($file[0] != '.'){
+		$packarray[] = $file;
+	}
+}
+closedir($dir);
+sort($packarray);
+$extratpackages = implode(" ", $packarray);
+
+//branch
+$packarray = array();
+$dir = opendir($extrabbasedir); //branch
+while (false !== ($file = readdir($dir))) { 
+	if($file[0] != '.'){
+		$packarray[] = $file;
+	}
+}
+closedir($dir);
+sort($packarray);
+$extrabpackages = implode(" ", $packarray);
+
 
 
 //$languages = file_get_contents($basedir . "/po/LINGUAS");

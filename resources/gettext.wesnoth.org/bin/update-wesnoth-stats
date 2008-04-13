@@ -1,5 +1,5 @@
 #!/bin/bash
-SVNCHECKOUTPATH=/public/vhost/w/wesnoth/source
+SVNCHECKOUTPATH=/home/ben/public_html/wesnoth/gettext/source
 
 echo update started at `date` >> ~/g.w.o-updates.log
 
@@ -19,6 +19,6 @@ svn up
 #svn up
 
 #update the stats
-cd ~/html/gettext/
+cd ~/public_html/wesnoth/gettext/
 php grab-stats.php >> ~/g.w.o-updates.log
 echo update completed at `date` >> ~/g.w.o-updates.log
