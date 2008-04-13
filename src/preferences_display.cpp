@@ -233,8 +233,8 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	f.draw();
 
 	SDL_Rect clip_rect = { 0, 0, disp.w (), disp.h () };
-	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_PLUS,
-					     font::NORMAL_COLOUR,_("Press desired Hotkey"),
+	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
+					     font::NORMAL_COLOUR,_("Press desired Hotkey (Esc cancels)"),
 					     0, 0);
 
 	std::vector<std::string> menu_items;
@@ -268,12 +268,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::button change_button (disp.video(), _("Change Hotkey"));
 	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30),ypos + font::relative_size(30));
 
-	//! @todo  FIXME: TODO This have to be added after string freeze
 	//! @todo Remember to make Clear Hotkey translateable
-#if 0
-	gui::button clear_button (disp.video(), ("Clear Hotkey"));
+	gui::button clear_button (disp.video(), _("Clear Hotkey"));
 	clear_button.set_location(xpos + width - clear_button.width () - font::relative_size(30),ypos + font::relative_size(80));
-#endif
 //	gui::button save_button (disp.video(), _("Save Hotkeys"));
 //	save_button.set_location(xpos + width - save_button.width () - font::relative_size(30),ypos + font::relative_size(130));
 
@@ -305,10 +302,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 									text_size.h+12);
 			mini_frame.draw_background();
 			mini_frame.draw_border();
-			//! @todo FIXME: add to text mention about esc clearing hotkey after string freeze is over!
 			font::draw_text (&disp.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOUR,
-				 _("Press desired Hotkey"),centerx-text_size.w/2-10,
-				 centery-text_size.h/2-3);
+				 _("Press desired Hotkey (Esc cancels)"),centerx-text_size.w/2,
+				 centery-text_size.h/2);
 			disp.update_display();
 			SDL_Event event;
 			event.type = 0;
@@ -329,17 +325,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			restorer.restore();
 			disp.update_display();
 
-			if (keycode == SDLK_ESCAPE && mod == 0)
-			{
-				// clear hotkey
-				hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
-				newhk.clear_hotkey();
-				menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
-
-			}
-			else
-			{
-
+			if (keycode == SDLK_ESCAPE && mod == 0) {
+				//cancel -- no action
+			} else {
 				const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(character, keycode, (mod & KMOD_SHIFT) != 0,
 						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
@@ -363,15 +351,13 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 //				hotkey::save_hotkeys(*save_config);
 //			}
 //		}
-//! FIXME: remember to uncomment this also after string freeze
-#if 0
+
 		if (clear_button.pressed()) {
 			// clear hotkey
-			hotkey::hotkey_item& newhk = hotkey::clear_hotkey(menu_.selection());
+			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
 			newhk.clear_hotkey();
 			menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
 		}
-#endif
 
 		menu_.process();
 
