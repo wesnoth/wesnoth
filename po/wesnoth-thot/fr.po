@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-05 20:50+0200\n"
-"PO-Revision-Date: 2007-12-15 14:30+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2008-04-13 23:44+0100\n"
+"Last-Translator: Aurélien Paulus <aurelien.paulus@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,42 +14,43 @@ msgstr ""
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:9
 msgid "The Hammer of Thursagan"
-msgstr ""
+msgstr "Le marteau de Thursagan"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
+#, fuzzy
 msgid "THoT"
-msgstr ""
+msgstr "THoT"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:16
 msgid "Fighter"
-msgstr ""
+msgstr "(Combattant)"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:16
 msgid "(Easy)"
-msgstr ""
+msgstr "(Facile)"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
 msgid "Steelclad"
-msgstr ""
+msgstr "Nain cuirassé"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
 msgid "(Normal)"
-msgstr ""
+msgstr "(Normal)"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
 msgid "(Challenging)"
-msgstr ""
+msgstr "(Difficile)"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
 msgid "Lord"
-msgstr ""
+msgstr "Seigneur"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:21
@@ -61,36 +62,50 @@ msgid ""
 "\n"
 "(Intermediate level, 13 scenarios.)"
 msgstr ""
+"Dans les premières années de l'Alliance du nord, une expédition venue de "
+"Knalga chercha à  rencontrer les leurs à Kal Kartha et à en apprendre plus "
+"sur le destin du légendaire marteau de Thursagan. Les périls de leur voyage "
+"à travers les pays nordiques, déjà grands, n'étaient rien comparés au mal "
+"qu'ils allaient combattre à la fin.\n"
+"\n"
+"(Niveau intermediaire, 13 scenarios.)"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:25
 msgid "Author"
-msgstr ""
+msgstr "Auteur"
 
+# Si vous savez mieux que moi comment traduire cette phrase, je suis intéressé !
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:31
+#, fuzzy
 msgid "Special Guest Designer"
-msgstr ""
+msgstr "Dessins originaux de"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:37
+#, fuzzy
 msgid "Art"
-msgstr ""
+msgstr "Art"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:43
+#, fuzzy
 msgid "Brainstorming, playtesting, and spousal support"
 msgstr ""
+"Discussions en équipe, tests de la jouabilité et support de la campagne"
 
 #. [scenario]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:3
+#, fuzzy
 msgid "At The East Gate"
-msgstr ""
+msgstr "À la Porte de l'Est"
 
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:24
+#, fuzzy
 msgid "East Gate"
-msgstr ""
+msgstr "La Porte de l'Est"
 
 #. [side]: type=Dwarvish Fighter, description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:30
@@ -106,22 +121,25 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:19
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:26
 msgid "Aiglondur"
-msgstr ""
+msgstr "Aiglondur"
 
+# Choix délibéré pour rendre le sens de bash (frapper) et Nark (mettre en rogne). Cela dit il doit y avoir meilleur mais ça m'échappe. Je compte sur la personne qui relira pour trouver un chouette néologisme si je ne trouve pas d'ici là !
 #. [side]: type=Orcish Warrior, description=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:64
+#, fuzzy
 msgid "Bashnark"
-msgstr ""
+msgstr "Têtaclaque"
 
 #. [unit]: type=Gryphon Rider, description=Pelmathidrol
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:82
 msgid "Pelmathidrol"
-msgstr ""
+msgstr "Pelmathridol"
 
+# Attention, encore le prénom
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:94
 msgid "Defeat Bashnark"
-msgstr ""
+msgstr "Vaincre Têtaclaque"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:283
@@ -137,7 +155,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:274
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:187
 msgid "Death of Aiglondur"
-msgstr ""
+msgstr "Mort d'Aiglondur"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:291
@@ -152,7 +170,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:282
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:199
 msgid "Time runs out"
-msgstr ""
+msgstr "Fin des tours atteinte"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:112
@@ -165,6 +183,14 @@ msgid ""
 "even greater than before, and began also reaching out for contact with their "
 "scattered kinfolk."
 msgstr ""
+"Dans les premières années qui suivirent la création de l'Alliance nordique, "
+"les nains de Knalga et la population humaine qui vivaient aux Portes des "
+"Nains étaient tout à fait absorbés par la reconstruiction de tout ce qui "
+"avait été détruit durant la longue occupation des orcs. Pourtant, ils se "
+"remirent bientôt à prospérer. Les nains commençaient à fouiller leur passé "
+"pour trouver l'inspiration nécessaire à la reconstuction de Knalga : la "
+"ville devait devenir encore plus grande qu'auparavant. Il renouèrent aussi "
+"le contact avec tous les leurs qui étaient disséminés."
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:117
@@ -174,6 +200,10 @@ msgid ""
 "year 550 after the founding of Wesnoth, the captain of the East Gate "
 "received a warning that a small band of rogue orcs had been sighted."
 msgstr ""
+"Cependant, la menace que représentait les orcs, les bandits et les mort-"
+"vivants n'était pas encore écartée. Les nains restaient sur le qui-vive à  "
+"l'approche de Knalga. En l'an 550 après la fondation de Wesnoth, le "
+"capitaine de la Porte de l'Est appris qu'une bande d'orcs avait été repérée."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:127
@@ -181,6 +211,8 @@ msgid ""
 "Up axes! We will be the Northern Alliance's arm today,\n"
 "and kill or scatter these invaders."
 msgstr ""
+"Levez vos haches ! Nous serons en ce jour le bras de l'Alliance nordique.\n"
+"Tuez ou dispersez ces envahisseurs !"
 
 #. [message]: description=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:131
@@ -188,30 +220,38 @@ msgid ""
 "We are the true orcs, not the weaklings who ally with human-worms and stinky-"
 "midgets like you. You will be meat for our wolves."
 msgstr ""
+"Nous sommes de vrais orcs, pas ces gringalets qui se sont alliés avec ces "
+"larves d'humains et avec les boules puantes dans votre espèce ! Vous "
+"servirez de repas pour nos loups !"
 
+# Comment traduiriez-vous Loremaster ?
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:142
 msgid ""
 "What is this? Their vanquished leader wears a cloak-pin of dwarvish make.  "
 "And it bears a loremaster's emblem."
 msgstr ""
+"Qu'est-ce que cela ? Il y a une épingle faite un nain sur la cape de leur "
+"chef. Elle porte l'emblème d'un maître de tradition."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:146
 msgid "The maker's mark is strange to me. We had best consult the lord Hamel."
 msgstr ""
+"L'artisan de cette marque m'est étrange. Nous ferions mieux de consulter le "
+"seigneur Hamel."
 
 #. [scenario]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:3
 msgid "Reclaiming The Past"
-msgstr ""
+msgstr "Reconquérir le passé"
 
 #. [side]: type=Dwarvish Lord, description=Hamel
 #. [side]: type=Dwarvish Fighter, description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:23
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:19
 msgid "Hamel"
-msgstr ""
+msgstr "Hamel"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:52
@@ -221,13 +261,17 @@ msgid ""
 "Alliance. Beside the dais stood a stranger in the robes of the Order of "
 "Loremasters..."
 msgstr ""
+"Après la victoire contre les orcs, Aiglondur fut convoqué dans l'antichambre "
+"d'Hamel, seigneur de Knalga et seigneur des Compagnons de l'Alliance "
+"nordique. À côté de l'estrade de bois se tenait un étranger habillé d'une "
+"robe de l'Ordre des Maîtres de tradition..."
 
 #. [unit]: type=Dwarvish Witness, description=Angarthing_dummy
 #. [unit]: type=Dwarvish Witness, description=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:64
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:130
 msgid "Angarthing"
-msgstr ""
+msgstr "Angarthing"
 
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:100
@@ -236,6 +280,9 @@ msgid ""
 "I make known to ye Angarthing, loremaster in training, who recognized the "
 "mark on it."
 msgstr ""
+"Aiglondur, ce que vous avez découvert est troublant, même si tous pensent "
+"que ce n'est rien. Je vous présente Angarthing, maître de la tradition en "
+"formation, qui a reconnu la marque."
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:104
@@ -246,11 +293,18 @@ msgid ""
 "it; no orc should know even that loremasters exist, let alone come near "
 "enough one to get this."
 msgstr ""
+"La marque qui se trouve sur cette épingle à cape provient de chez nos "
+"cousins de Kal Kartha, dans les collines orientales. Je n'ai reçu aucune "
+"nouvelle d'eux depuis bien avant que Tallin ne libère Knalga du joug des "
+"orcs. Le fait qu'un orc soit venu pour entrer en possession de cet objet "
+"nous trouble. Aucun orc ne doit découvrir l'existence des Maîtres de la "
+"tradition, ni même approcher de trop près l'un d'entre eux pour s'emparer "
+"d'une telle chose."
 
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:108
 msgid "I fear some grave ill may have become Kal Kartha."
-msgstr ""
+msgstr "Je crains qu'un grand malheur ne soit arrivé à Kal Kartha"
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:112
@@ -259,11 +313,14 @@ msgid ""
 "keepers since a hero of their line recovered it from the Caverns of Flame, "
 "centuries ago."
 msgstr ""
+"Et j'ai peur pour le Marteau de Thursagan. Nos cousins de Kal Kartha en sont "
+"les gardiens depuis qu'un de leur héros l'avait récupérée de la caverne "
+"enflammée, il y a de cela quelques siècles."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:116
 msgid "The Hammer of Thursagan?"
-msgstr ""
+msgstr "Le marteau de Thursagan ?"
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:120
@@ -273,6 +330,11 @@ msgid ""
 "wield it, and our oldest histories hint that this very hammer was used to "
 "forge the dwarves themselves in the heart of the earth."
 msgstr ""
+"Ouep mon p'tit gars. L'outil même qui a servi à notre plus grand graveur de "
+"runes à réaliser le sceptre de feu. Il est très ancient, bien plus que "
+"Thursagan. Il fut le dernier à le manier, et nos plus vieux récits remontent "
+"à ce marteau qui fut précisément utilisé pour forger les nains eux-mêmes au "
+"cœur de la terre."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:124
@@ -280,7 +342,10 @@ msgid ""
 "But if the dwarves of Kal Kartha have held it all this time, why has none "
 "wielded it since Thursagan?"
 msgstr ""
+"Mais si les nains de Kal Kartha possédaient le marteau depuis tout ce temps, "
+"pourquoi ne l'ont-ils plus utilisé depuis Thursagan ?"
 
+# Problème ici avec "arcanisters". J'ai traduis ça par "obscurantistes" mais n'est-ce pas une histoire de magiciens ? La question est posée ;-)
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:128
 msgid ""
@@ -291,6 +356,14 @@ msgid ""
 "secrets died with them. That is why there are nae runesmiths among the "
 "Dwarves today, and sorely we miss them."
 msgstr ""
+"Parce que lorsque Thursagan mouru en brûlant, la main sur le marteau, tous "
+"les \"maîtres runiques\" et tous les \"obscurantistes\" qui vivaient à ce "
+"moment — tous ceux qui s'étaient dévoué à l'artisanat et qui s'étaient "
+"rassemblés autour de la force du marteau — périrent subitement et de manière "
+"innatendue sans la moindre marque sur eux, tous tués au même moment. Leurs "
+"secrets de fabrication les suivèrent dans la tombe. C'est pourquoi il n'y a "
+"plus le moindre graveur de runes parmi les nains aujourd'hui, et ils nous "
+"manquent terriblement."
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:132
@@ -299,11 +372,14 @@ msgid ""
 "of Loremasters has given me leave to reveal that the craft secrets were not, "
 "actually, quite as lost as we believed."
 msgstr ""
+"C'est ce qui se dit, mon seigneur Hamel, et c'est la vérité excepté cela : "
+"l'Ordre des maîtres de la tradition m'a envoyé pour annoncer que les secrets "
+"de fabrication n'étaient en fait pas aussi perdus qu'on ne le pense."
 
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:136
 msgid "What is this ye say?  Nae lost?"
-msgstr ""
+msgstr "Qu'est-ce que vous racontez ? Ils ne seraient pas perdus ?"
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:140
@@ -312,11 +388,15 @@ msgid ""
 "cave-in hard by where Thursagan himself once had a workshop here, before he "
 "left to study in solitude in the further North."
 msgstr ""
+"Ouep. Vous vous rapellez qu'en réparant les galleries occidentales nous "
+"avons dégagé une petite salle complètement effondrée dans laquelle Thursagan "
+"lui-même avait aménagé son propre atelier, avant de le quitter afin "
+"d'étudier dans la solitude plus loin au nord."
 
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:144
 msgid "And ye found something?"
-msgstr ""
+msgstr "Et vous avez trouvé quelque chose ?"
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:148
@@ -327,11 +407,17 @@ msgid ""
 "that, with the book and the Hammer to hand, we could train and initiate "
 "runesmiths once more."
 msgstr ""
+"Un livre. Le livre de Thursagan, dans un compartiment secret et verrouillé "
+"qu'il a probablement creusé à même la roche sans l'aide de quelque science "
+"runique que soit. Cela nous a demandé beaucoup de travail pour percer son "
+"code. Toutefois il se pourrait qu'avec le livre et le marteau en main, nous "
+"soyons à nouveau en mesure d'entraîner et d'initier des graveurs de runes."
 
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:152
 msgid "And for what cause ha' I heard naught o' this?"
 msgstr ""
+"Et pour quelle raison n'ai jamais entendu le moindre mot de tout ceci ?"
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:156
@@ -341,6 +427,10 @@ msgid ""
 "of which holding shall have the training of the new runesmiths in its hands "
 "would be...delicate."
 msgstr ""
+"Mon seigneur, la trouvaille était trop récente. Nous sommes toujours en "
+"train de décoder le bouquin. Voici la raison : avec le marteau à Kal Kartha "
+"et le livre ici, la question de savoir qui tiendra entre ses mains la "
+"formation des nouveaux graveurs de runes risque d'être très ... délicate."
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:160
@@ -348,6 +438,8 @@ msgid ""
 "We feared stirring up a controversy before the book was even properly "
 "understood."
 msgstr ""
+"Nous craignions de provoquer une polémique retentissante avant que le livre "
+"ne soit convenablement compris."
 
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:164
@@ -356,6 +448,9 @@ msgid ""
 "been kept in the dark. But ye came to me with a request, and I think I ken "
 "what it will be."
 msgstr ""
+"Je vais soutenir ce qui fut bien pensé, même si je ne suis guère heureux "
+"d'avoir été tenu en dehors du secret. Cependant vous êtes venu avec une "
+"requête, et je pense bien saisir de quoi il retourne."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:168
@@ -363,21 +458,25 @@ msgid ""
 "That is obvious; the Order of Loremasters wants to send an expedition to Kal "
 "Kartha to find what has become of our kindred and the Hammer."
 msgstr ""
+"C'est évident, l'Ordre des maîtres de la tradition veut envoyer une "
+"expédition à Kal Kartha pour savoir ce que sont devenus nos cousins et le "
+"marteau."
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:172
 msgid "Indeed, Lord Hamel, that is what we came to ask."
-msgstr ""
+msgstr "En effet, seigneur Hamel, c'est ce que nous sommes venus quémander."
 
+# You spoke my guess c'est "vous avez parlé  à mon hôte" ou "vous avez parlé (vous mon hôte)" ?
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:176
 msgid "And you spoke my guess, Aiglondur. Are you nae kin of mine?"
-msgstr ""
+msgstr "Et tu as parlé mon hôte, Aiglondur. N'es-tu pas de ma famille ?"
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:180
 msgid "Your great-nephew, my lord."
-msgstr ""
+msgstr "Votre petit neveu, mon seigneur."
 
 #. [message]: description=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:184
@@ -386,16 +485,20 @@ msgid ""
 "to use it well. I have decided. You and Angarthing will fare to Kal Kartha "
 "together, as soon as may be, with the best men of your guard."
 msgstr ""
+"Tu es jeune et tu n'as pas encore fait tes preuves... mais tu as le titre, "
+"et tu as déjà montré l'abilité avec laquelle tu l'utilises. J'ai pris ma "
+"décision. Angarthing et toi allez vous rendre à Kal Kartha ensemble, aussi "
+"tôt que possible, avec les meilleurs hommes de ta garde."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:188
 msgid "Aye, my Lord Hamel."
-msgstr ""
+msgstr "Ouep, monseigneur Hamel"
 
 #. [message]: description=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:192
 msgid "The Order thanks you, Lord Hamel"
-msgstr ""
+msgstr "L'Ordre vous remercie, seigneur Hamel."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:196
@@ -403,21 +506,23 @@ msgid ""
 "We must make haste; winter approaches, and travel over the mountains will "
 "soon grow dangerous."
 msgstr ""
+"Nous devons nous hâter, l'hiver approche, et traverser les montagnes "
+"deviendra sous peu de plus en plus dangereux."
 
 #. [scenario]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:3
 msgid "Strange Allies"
-msgstr ""
+msgstr "Une drôle d'alliance"
 
 #. [side]: type=Orcish Warrior, description=Marth Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:42
 msgid "Marth Tak"
-msgstr ""
+msgstr "Marth Tak"
 
 #. [side]: type=Outlaw, description=Gothras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:81
 msgid "Gothras"
-msgstr ""
+msgstr "Gothras"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:118
@@ -427,62 +532,78 @@ msgid ""
 "the wilder march country, where raids by large bands of hostile orcs and men "
 "were all too common."
 msgstr ""
+"Angarthing, Aiglondur et la troupe de nains voyagèrent rapidement vers l'est "
+"à travers les terres sûres de l'Alliance nordique. Bientôt, ils arrivèrent à "
+"la marche la plus sauvage du pays, où les raids perpétrés par de grands "
+"rassemblements d'orc hostiles et d'hommes étaient devenus habituels."
 
 #. [message]: description=Marth Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:144
 msgid "In the name of the Alliance, quit these lands now!"
-msgstr ""
+msgstr "Au nom de l'Alliance, quittez ces terres maintenant !"
 
+# J'ai peur de ne pas avoir bien saisi la phrase...
+# - Dog of an orc c'est un juron ou une insulte ?
+# - To the DarK Gods with you and your precious Alliance... pas très bien compris !
 #. [message]: description=Gothras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:148
 msgid ""
 "We will fare where we will and take what we will, dog of an orc. To the Dark "
 "Gods with you and your precious 'Alliance'."
 msgstr ""
+"Nous irons où bon nous semble et nous prendrons ce que nous voulons, chien "
+"d'orc ! Par les dieux sombres avec vous et votre précieuse \"Alliance\"."
 
 #. [message]: description=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:152
+#, fuzzy
 msgid ""
 "Now that is a sight still strange to my eyes - an orc fighting for the "
 "Northern Alliance."
 msgstr ""
+"À présent je peine à en croire mes yeux : un orc qui se bat pour l'Alliance "
+"nordique."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:156
+#, fuzzy
 msgid ""
 "I'm surprised myself that so many of the orcish tribes came over to the "
 "Alliance. Not so strange to see humans raiding us, worse luck."
 msgstr ""
+"Je suis fort surpris que tant de tribus orques se soient rapprochées de "
+"l'Alliance. Ce n'est pas si étrange de voir les humains menez ces raids "
+"contre nous, c'est pire."
 
 #. [message]: description=Marth Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:160
 msgid "You, on the road! Are you of the Northern Alliance or not?"
-msgstr ""
+msgstr "Vous, sur la route ! Êtes-vous de l'Alliance ?"
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:164
 msgid "We are."
-msgstr ""
+msgstr "Nous en sommes."
 
 #. [message]: description=Marth Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:168
 msgid "Well, then, honor the treaty as I have."
-msgstr ""
+msgstr "Bien, alors, honorez le traité comme je l'ai fait."
 
 #. [message]: description=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:172
 msgid "That is our duty"
-msgstr ""
+msgstr "C'est notre devoir."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:176
 msgid "For the Alliance!  Axes up!"
-msgstr ""
+msgstr "Pour l'Alliance ! Levez-vos haches !"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:183
 msgid "Help Marth Tak defeat Gothras"
-msgstr ""
+msgstr "Aidez Marth Tak à vaincre Gothras"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:287
@@ -497,17 +618,17 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:278
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:191
 msgid "Death of Angarthing"
-msgstr ""
+msgstr "Mort d'Angarthing"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:195
 msgid "Death of Marth Tak"
-msgstr ""
+msgstr "Mort de Marth Tak"
 
 #. [message]: description=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:213
 msgid "We have failed our duty to the Alliance."
-msgstr ""
+msgstr "Nous avons manqué à notre devoir envers l'Alliance."
 
 #. [message]: description=Marth Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:234
@@ -515,6 +636,8 @@ msgid ""
 "My thanks, dwarves.  These bandits might have hacked a bloody swathe through "
 "the Alliance's tribes if we had not killed them here."
 msgstr ""
+"Merci, nains. Ces bandits auraient pu mettre à feu et à sang un vaste "
+"territoire à travers les tribus de l'Alliance si nous ne les avions tués ici."
 
 #. [message]: description=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:239
@@ -523,21 +646,26 @@ msgid ""
 "than against.  But we cannot linger here to celebrate; we are journeying "
 "east."
 msgstr ""
+"C'est moi qui vous remercie, pour m'avoir prouvé que je peux autant me "
+"battre avec que contre les orcs. Mais nous ne pouvons rester plus longtemps "
+"pour fêter cette victoire, nous voyageons vers l'est."
 
 #. [message]: description=Marth Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:244
 msgid "East, eh? You won't find many friends in that direction. Travel safely."
 msgstr ""
+"L'est, hein ? Vous ne trouverez pas beaucoup d'amis dans cette direction. "
+"Voyagez prudemment."
 
 #. [scenario]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:3
 msgid "Troll Bridge"
-msgstr ""
+msgstr "Le pont du troll"
 
 #. [side]: type=Troll, description=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:34
 msgid "Gronk"
-msgstr ""
+msgstr "Gronk"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:70
