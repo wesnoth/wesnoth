@@ -1128,8 +1128,9 @@ env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
 def InstallLocalizedManPage(alias, page, env):
     actions = []
     for (sourcedir, targetdir) in localized_man_dirs.items():
-        env.Alias(alias, env.Install(targetdir, 
-                                              os.path.join(sourcedir, page)))
+        sourcefile = os.path.join(sourcedir, page)
+        if os.path.isfile(sourcefile):
+            env.Alias(alias, env.Install(targetdir, sourcefile))
 
 # TargetSignatures('content') causes a crash in the install
 # production, at least in scons 0.97, right after the actions finish
@@ -1200,13 +1201,11 @@ install_env.Alias("install-wesnothd", [
                                 install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6")
                                 ])
 for lang in filter(CopyFilter, os.listdir("doc/man")):
-     sourcedir = os.path.join("doc/man", lang)
-     if os.path.isdir(sourcedir):
+     sourcefile = os.path.join("doc/man", lang, "wesnothd.6")
+     if os.path.isfile(sourcefile):
           targetdir = os.path.join(mandir, lang, "man6")
           install_env.Alias('install-wesnothd',
-               install_env.Install(targetdir, [
-                    os.path.join(sourcedir, "wesnothd.6"),
-               ]))
+               install_env.Install(targetdir, sourcefile))
 if not access(fifodir, F_OK):
     install_env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
