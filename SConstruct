@@ -732,8 +732,11 @@ test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth],
 # FIXME: Currently this will only work under Linux
 env["svnrev"] = commands.getoutput("svnversion -n . 2>/dev/null")
 env.Depends('src/game_config.o', 'src/revision.hpp')
+revision_define = ""
+if env["svnrev"] != "" and env["svnrev"] != "exported":
+    revision_define = "#define REVISION \"%s\"\n" % env["svnrev"]
 r = env.Command("src/revision.hpp", [],
-                lambda target, source, env: open(str(target[0]), "w").write("#define REVISION \"%s\"\n" % env["svnrev"]))
+                lambda target, source, env: open(str(target[0]), "w").write(revision_define))
 env.AlwaysBuild(r)
 env.TargetSignatures('content')
 env.Clean(all, "src/revision.hpp")
