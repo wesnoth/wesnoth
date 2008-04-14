@@ -654,13 +654,21 @@ def sanity_check(filename, lines):
     # Also, build dictionaries of unit movement types and races
     unit_id = ""
     in_unit_type = False
+    in_theme = False
     in_filter_attack = False
+    unit_race = None
     for i in range(len(lines)):
         if "[filter_attack]" in lines[i]:
             in_filter_attack = True
             continue
         elif "[/filter_attack]" in lines[i]:
             in_filter_attack = False
+            continue
+        elif "[theme]" in lines[i]:
+            in_theme = True
+            continue
+        elif "[/theme]" in lines[i]:
+            in_theme = False
             continue
         elif "[unit_type]" in lines[i]:
             traits = []
@@ -693,12 +701,17 @@ def sanity_check(filename, lines):
                           % (filename, in_unit_type, unit_id, "+".join(missing_traits))
                 if not (notes or traits) and has_special_notes:
                     print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
-                          % (filename, in_unit_type, unit_id)
+                         % (filename, in_unit_type, unit_id)
+                if not in_theme and not unit_race:
+                    print '"%s", line %d: unit %s has no race' \
+                         % (filename, in_unit_type, unit_id)
             in_unit_type = None
             traits = []
             notes = []
             unit_id = ""
             has_special_notes = False
+            derived_unit = False
+            unit_race = None
         if in_unit_type and not in_filter_attack:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
@@ -716,7 +729,8 @@ def sanity_check(filename, lines):
                 elif key == "race":
                     if '{' not in value:
                         assert(unit_id)
-                        unit_races.append((unit_id, filename, i+1, value))
+                        unit_race = value
+                        unit_races.append((unit_id, filename, i+1, unit_race))
             except TypeError:
                 pass
             if "{SPECIAL_NOTES}" in lines[i]:
