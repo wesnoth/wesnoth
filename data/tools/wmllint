@@ -546,7 +546,7 @@ def validate_on_pop(tagstack, closer, filename, lineno):
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
     # This assumes that conversion will always happen in units/ files.
     if "units" not in filename and closer == "unit" and "race" in attributes:
-        print "%s, line %d: [unit] needs hand fixup to [unit_type]" % \
+        print '"%s", line %d: [unit] needs hand fixup to [unit_type]' % \
               (filename, lineno)
 
 def within(tag):
@@ -650,7 +650,7 @@ def sanity_check(filename, lines):
                       (filename, i+1)
                 print msg
     # Sanity-check abilities and traits against notes macros.
-    # Note: This check is disabled on units deived via [base_unit].
+    # Note: This check is disabled on units derived via [base_unit].
     # Also, build dictionaries of unit movement types and races
     unit_id = ""
     in_unit_type = False
@@ -892,7 +892,7 @@ def sanity_check(filename, lines):
                 pass
             elif key == 'name':		# FIXME: check this someday
                 pass
-            elif key in ("message", "name", "description", "story", "note", "text", "summary", "caption", "label", "cannot_use_message", "set_description", "userteam_name") and not value.startswith("$"):
+            elif key in ("message", "name", "description", "story", "note", "text", "summary", "caption", "label", "cannot_use_message", "set_description", "user_team_name") and not value.startswith("$"):
                 if not has_tr_mark:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
