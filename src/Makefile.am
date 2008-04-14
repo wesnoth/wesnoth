@@ -23,7 +23,7 @@ CLEANFILES = revision.hpp
 
 if TOOLS
 bin_PROGRAMS += exploder cutter
-bin_SCRIPTS += wmlscope wmllint wmlindent add-on_manager.py
+bin_SCRIPTS += wmlscope wmllint wmlindent wesnoth_addon_client
 CLEANFILES += $(bin_SCRIPTS)
 endif
 
