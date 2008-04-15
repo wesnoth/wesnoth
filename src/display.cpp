@@ -2027,4 +2027,4 @@ void display::invalidate_rectangle(const gamemap::location& first_corner, const 
 void display::invalidate_zone(const int x1,const int y1, const int x2, const int y2) {
 	const SDL_Rect& rect = map_area();
 	invalidate_rectangle(pixel_position_to_hex(x1 - rect.x, y1 - rect.y),pixel_position_to_hex(x2 - rect.x, y2 - rect.y));
-};
+}

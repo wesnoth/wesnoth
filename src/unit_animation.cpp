@@ -787,7 +787,7 @@ void unit_animation::particule::start_animation(int start_time,
 		src_ = src;
 		dst_ = dst;
 	}
-};
+}
 
 void unit_animator::add_animation(unit* animated_unit,const std::string& event,
 		const gamemap::location &src , const int value,bool with_bars,bool cycles,

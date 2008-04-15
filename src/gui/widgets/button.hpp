@@ -51,7 +51,7 @@ public:
 		                               //!< value, should be rare but eg a
 		                               //!< message popup can do it.
 		OK = -1,                       //!< Dialog is closed with ok button.
-		CANCEL = -2,                   //!< Dialog is closed with the cancel 
+		CANCEL = -2                    //!< Dialog is closed with the cancel 
 		                               //!<  button.
 		};
 
