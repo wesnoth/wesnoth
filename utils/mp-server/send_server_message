@@ -9,7 +9,7 @@ SERVERBASE=$HOME/servers/$SERVER
 SOCKET=$SERVERBASE/build/var/run/socket
 
 shift
-if [ "$*" == "" ]; then
+if [ "$*" = "" ]; then
 	message="The server will get restarted now. Please don't forget to save your game!"
 	echo "Sending standard message: $message"
 else

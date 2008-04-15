@@ -35,7 +35,7 @@ if [ "$2" != "" ]; then
 fi
 echo 'svn update...'
 rev=$(svn up $REVISION | tail -n 1 | sed -e 's/[^0-9]//g')
-if [ "$rev" == "" ]; then
+if [ "$rev" = "" ]; then
 	echo "No revision information found."
 	exit 1
 fi
