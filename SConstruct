@@ -1298,7 +1298,7 @@ if 'dist' in COMMAND_LINE_TARGETS:	# Speedup, the manifest is expensive
         lst.append("data/")
         return lst
     dist_env = env.Clone()
-    dist_tarball = env.Tar('wesnoth.tar.bz2',
+    dist_tarball = dist_env.Tar('wesnoth.tar.bz2',
                            dist_manifest()+["src/revision.hpp"])
     dist_env.Append(TARFLAGS='-j --exclude=".svn" --exclude="~"',
                TARCOMSTR="Making distribution tarball...")
