@@ -271,15 +271,28 @@ bool ai::recruit_usage(const std::string& usage)
 	{
 		const std::string& name = i->second.id();
 		// If usage is empty consider any unit.
+		LOG_AI << name << " considered\n";
 		if (i->second.usage() == usage || usage == "") {
 			found = true;
-			if(recruits.count(name)
-				&& current_team().gold() - i->second.cost() > min_gold
-				&& not_recommended_units_.count(name) == 0)
-			{
-				LOG_AI << "recommending '" << name << "'\n";
-				options.push_back(name);
+			LOG_AI << name << " considered for " << usage << " recruitment\n";
+			if (!recruits.count(name)) {
+				LOG_AI << name << " rejected, not in recruitment list\n";
+				continue;
 			}
+
+			if (current_team().gold() - i->second.cost()>min_gold) {
+				LOG_AI << name << " rejected, cost too high\n";
+				continue;
+			}
+
+			if (not_recommended_units_.count(name))
+			{
+				LOG_AI << name << " rejected, bad terrain or combat\n";
+				continue;
+			}
+
+			LOG_AI << "recommending '" << name << "'\n";
+			options.push_back(name);
 		}
 	}
 
