@@ -3,25 +3,24 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-05 20:51+0200\n"
-"PO-Revision-Date: 2007-01-31 13:23+0100\n"
+"PO-Revision-Date: 2008-04-15 22:09+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Poedit-Language: Slovak\n"
 "X-Poedit-Country: SLOVAKIA\n"
 
 #. [campaign]
 #: data/campaigns/The_South_Guard/_main.cfg:9
 msgid "The South Guard"
-msgstr "Južná posádka"
+msgstr "Južná hliadka"
 
 #. [campaign]
 #: data/campaigns/The_South_Guard/_main.cfg:10
 msgid "TSG"
-msgstr ""
+msgstr "JH"
 
 #. [campaign]
 #: data/campaigns/The_South_Guard/_main.cfg:19
@@ -34,7 +33,7 @@ msgid ""
 "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Mladý rytier zvaný Deoran je vyslaný, aby prevzal velenie nad Južnou "
-"posádkou... Poznámka: Táto kampaň je navrhnutá pre začiatočníkov vo "
+"hliadkou... Poznámka: Táto kampaň je navrhnutá pre začiatočníkov vo "
 "Wesnothe. Úroveň \"civilistu\" je zvlášť vhodná pre tých, ktorí hrajú "
 "Wesnoth po prvýkrát.\n"
 "\n"
@@ -47,15 +46,13 @@ msgstr "Vojak"
 
 #. [campaign]
 #: data/campaigns/The_South_Guard/_main.cfg:22
-#, fuzzy
 msgid "(Easy)"
-msgstr "(ľahká)"
+msgstr "(Ľahká)"
 
 #. [campaign]
 #: data/campaigns/The_South_Guard/_main.cfg:22
-#, fuzzy
 msgid "(Normal)"
-msgstr "(normálna)"
+msgstr "(Normálna)"
 
 #. [campaign]
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -70,22 +67,22 @@ msgstr "Regrút"
 #. [campaign]
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "(Beginner)"
-msgstr ""
+msgstr "(Najľahšia)"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:27
 msgid "Campaign Design"
-msgstr ""
+msgstr "Dizajn príbehu"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:33
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Údržba príbehu"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:47
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Grafický a umelecký dizajn"
 
 #. [scenario]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
@@ -185,11 +182,10 @@ msgstr ""
 #. [unit]: description=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:170
 msgid "Moreth"
-msgstr "Moreth"
+msgstr "Moret"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:181
-#, fuzzy
 msgid ""
 "You'll never take this village! I've seen your kind kill too many townsmen, "
 "and I'll defend them to the death!"
@@ -199,46 +195,43 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:187
-#, fuzzy
 msgid ""
 "My kind? I am a soldier of Wesnoth, a messenger of King Haldric, and the new "
 "commander of the South Guard! What do you mean, 'my kind'?"
 msgstr ""
-"Takých ako ja?  Ja som bojovník Wesnothu, posol kráľa Haldrika a nový "
-"veliteľ Južnej Stráže! Čo myslíš tým 'taký ako ty'?"
+"Takých ako ja?  Ja som bojovník Wesnotu, posol kráľa Haldrika a nový veliteľ "
+"Južnej hliadky! Čo myslíš tým 'takí ako ja'?"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:192
-#, fuzzy
 msgid ""
 "Sorry, sir! I thought you were one of the bandits who have been ransacking "
 "the towns and killing the villagers. What are you doing here? Sir Gerrick "
 "and I were the last of the South Guard..."
 msgstr ""
-"Prepáčte pane! Myslel som že ste jeden z tých banditov, ktorí prepadávajú "
-"mestá a zabíjajú obyvateľov. Čo tu robíte? "
+"Prepáčte pane! Myslel som že ste jeden z tých banditov, ktorí rabujú mestá a "
+"zabíjajú obyvateľov. Čo tu robíte? Pán Gerrik a ja sme boli posledný z "
+"Južnej hliadky... "
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:197
-#, fuzzy
 msgid ""
 "I have been sent to take command of the South Guard and set things right. We "
 "must arm the villagers and drive off the bandits before they can do any more "
 "harm!"
 msgstr ""
-"Vyslali ma aby som prevzal velenie Južnej hliadky a napravil veci. Musíme "
-"ozbrojiť dedinčanov a zahnať banditov skôr ako budú môcť napáchať väčšie "
-"škody."
+"Vyslali ma aby som prevzal velenie Južnej hliadky a dal veci do poriadku. "
+"Musíme ozbrojiť dedinčanov a zahnať banditov skôr ako budú môcť napáchať "
+"väčšie škody."
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:202
-#, fuzzy
 msgid ""
 "You should head to the river fort! Sir Gerrick will want to know that "
 "reinforcements have arrived!"
 msgstr ""
-"Mal by si ísť ku riečnej pevnosti! Sir Gerrick bude chcieť počuť že dorazily "
-"posily."
+"Mal by si ísť ku riečnej pevnosti! Pán Gerrik bude chcieť počuť že dorazili "
+"posily!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:211
@@ -251,7 +244,6 @@ msgstr ""
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:217
-#, fuzzy
 msgid ""
 "Ha! This new commander is a mere boy. He will soon share the fate of that "
 "swine Loris!"
@@ -262,46 +254,41 @@ msgstr ""
 #. [unit]: type=South Guard Captain, description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:239
 msgid "Sir Gerrick"
-msgstr "Pán Gerrick"
+msgstr "Pán Gerrik"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:250
-#, fuzzy
 msgid ""
 "My lord, it is good that King Haldric has sent you to our lands! Bandits "
 "have overrun the whole countryside, and are killing and pillaging without "
 "pity. You must raise the South Guard again and drive off the bandits!"
 msgstr ""
 "Pane, sme vďační, že kráľ Haldrik poslal práve vás do týchto končín! Banditi "
-"obsadili prakticky celé okolie, zabíjajú a lúpia bez najmenšieho náznaku "
-"ľútosti či zmilovania. Musíte znovu vybudovať celú južnú posádku a tých "
-"banditov odtiaľto vyhnať!"
+"obsadili celé okolie, zabíjajú a lúpia bez najmenšieho náznaku ľútosti či "
+"zmilovania. Musíte znovu vybudovať celú Južnú hliadku a tých banditov "
+"odtiaľto vyhnať!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:255
-#, fuzzy
 msgid ""
 "No doubt I am needed here. Unfortunately I have seen only farm tools to arm "
 "our men with. They are valorous, but cannot fight bandits with pitchforks!"
 msgstr ""
-"Nepochybuje, že moja prítomnosť je tu dôležitá. Bohužiaľ, vidím tu tak "
-"maximálne pár hospodárskych nástrojov, ktorými by som vedel vyzbrojiť "
-"svojich mužov. Moji ľudia sú sice odvážni, ale zasa bojovať s banditmi iba s "
-"vidlami nie je dobrý nápad!"
+"Nepochybuje, že moja prítomnosť tu, je dôležitá. Bohužiaľ, vidím tu len pár "
+"hospodárskych nástrojov, ktorými by som vedel vyzbrojiť svojich mužov. Moji "
+"ľudia sú síce odvážni, ale nemôžu bojovať s banditami iba s vidlami!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:260
-#, fuzzy
 msgid ""
 "I will open the citadel's armory. We have a supply of spears and bows, and "
 "lacked only a leader to bring us to battle with them!"
 msgstr ""
-"Otvorím zbrojnicu v pevnosti. Máme zásobu oštepov a lukov, chýba nám len "
-"vodca, ktorý nás povedie do boja."
+"Otvorím zbrojnicu v pevnosti. Máme zásobu oštepov a lukov. Chýba nám len "
+"vodca, ktorý nás povedie do boja proti nim!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:267
-#, fuzzy
 msgid ""
 "Sir Gerrick is an infantry commander. He is a strong warrior in his own "
 "right, but when he is near less experienced troops, he makes their attack "
@@ -309,18 +296,17 @@ msgid ""
 msgstr ""
 "Veliteľom pechoty je pán Gerrik. Je to mocný bojovník, sám osebe, ale ak sa "
 "nachádza v blízkosti menej skúsených jednotiek, je schopný zlepšiť ich "
-"morálku a tí potom bojujú lepšie!"
+"morálku a tie potom bojujú lepšie!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:273
-#, fuzzy
 msgid ""
 "Units that have a hero marker are vital to your campaign. If any of them "
 "die, you will lose the scenario, so guard them carefully!"
 msgstr ""
-"Jednotky, ktoré majú nad svojou figúrkou značku hrdinu, sú pre úspech "
+"Jednotky, ktoré majú nad svojou postavou značku hrdinu, sú pre úspech "
 "aktuálnej výpravy životne dôležité. Ak ktorýkoľvek z hrdinov padne, tento "
-"scenár ste prakticky prehrali, takže dávajte na tieto jednotky veľký pozor!"
+"príbeh ste prehrali, takže dávajte na tieto jednotky veľký pozor!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:280
@@ -341,7 +327,7 @@ msgstr "Porazíš Urza Matína"
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:341
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:802
 msgid "Death of Sir Gerrick"
-msgstr "Zomrie pán Gerrick"
+msgstr "Zomrie pán Gerrik"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:301
@@ -350,25 +336,23 @@ msgstr "Vráť sa nazad k táborisku, kde si začal a naverbuj nejaké jednotky!
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:324
-#, fuzzy
 msgid ""
 "While you're in your camp, you can recruit more troops. Build up a small "
 "force to use against the bandits that Urza Mathin recruits."
 msgstr ""
-"Pokiaľ sa tvoj vodca nachádza v táborisku, môžeš verbovať ďalšie a ďalšie "
-"jednotky. Vybuduj si malý oddiel a použi ho v boji proti lúpežníkom a "
-"banditom, ktorých si medzitým naverbuje Urza Matín."
+"Pokiaľ sa tvoj vodca nachádza v táborisku, môžeš verbovať ďalšie jednotky. "
+"Vybuduj si malý oddiel a použi ho v boji proti banditom, ktorých si medzitým "
+"naverbuje Urza Matín."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:330
-#, fuzzy
 msgid ""
 "Bowmen have a strong ranged attack, and are very effective against units "
 "that lack a ranged attack, like Thieves and Thugs. They also carry a sword "
 "and can defend themselves against melee attacks."
 msgstr ""
 "Lukostrelci majú silný útok na diaľku a sú veľmi efektívni proti jednotkám, "
-"ktoré nemôžu bojovať na diaľku - napríklad zlodeji a lupiči. Lukostrelci "
+"ktoré nemôžu bojovať na diaľku - napríklad zlodeji a hrdlorezi. Lukostrelci "
 "tiež nosia meče a môžu sa tak brániť útokom zblízka."
 
 #. [message]: speaker=narrator
@@ -379,13 +363,12 @@ msgid ""
 "They also have a weak ranged attack. They form the backbone of the South "
 "Guard."
 msgstr ""
-"Oštepníci sú relatívne silní v boji zblízka a sú vcelku efektívni v boji "
-"proti väčšine protivníkov. Majú však relatívne slabý útok na diaľku. V "
-"južnej posádke tvoria oštepníci základ každej bojovej jednotky."
+"Oštepníci sú silní v boji zblízka a celkom efektívni v boji proti väčšine "
+"protivníkov. Majú však relatívne slabý útok na diaľku. V Južnej hliadke "
+"tvoria oštepníci základ každej bojovej jednotky."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:339
-#, fuzzy
 msgid ""
 "The best army will have a mix of units to deal with the different enemies "
 "that you will encounter. For now, concentrate on creating a small corps of "
@@ -397,49 +380,45 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:362
-#, fuzzy
 msgid ""
 "Sir, bandits are most dangerous at night. Let us hold the north bank of the "
 "river until dawn and press our attack in the morning!"
 msgstr ""
 "Pane, tí banditi sú najnebezpečnejší v noci. Mali by sme udržať severný breh "
-"rieky až do svitania a potom na úsvite zahájiť protiútok!"
+"rieky až do svitania a potom na úsvite začať protiútok!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:368
-#, fuzzy
 msgid ""
 "All of your units are 'lawful'. This means that they receive a combat bonus "
 "during the day, and a penalty at night. Urza Mathin's units are all "
 "'chaotic', which means that they receive a bonus at night and a penalty "
 "during the day. You will be much more effective fighting during the day."
 msgstr ""
-"Všetky tvoje jednotky sú tzv. \"jednotky poriadku\". To znamená, že počas "
-"dňa všetky získavajú v boji bonus a počas noci zasa silu strácajú. Jednotky, "
-"ktorým velí Urza Matín, sú naopak tzv. \"chaotické\", čo znamená, že "
-"získavajú bonus počas noci a silu strácajú počas dňa. Tvoje jednotky budú "
-"efektívnejšie a budú bojovať lepšie práve počas dní."
+"Všetky tvoje jednotky sú \"jednotky poriadku\". To znamená, že počas dňa "
+"všetky získavajú v boji bonus a počas noci zasa silu strácajú. Jednotky, "
+"ktorým velí Urza Matín, sú naopak \"chaotické\", čo znamená, že získavajú "
+"bonus počas noci a silu strácajú počas dňa. Tvoje jednotky budú "
+"efektívnejšie a budú bojovať lepšie práve počas dňa."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:388
-#, fuzzy
 msgid ""
 "My lord! The dawn is breaking - now is the time for us to attack and drive "
 "these bandits from our lands. To me men of the South Guard!"
 msgstr ""
 "Môj pane! Blíži sa úsvit, je čas, aby sme zahájili protiútok a vyhnali tých "
-"banditov z našich zemí. Vojaci južnej posádky, všetci ku mne!"
+"banditov z našich zemí. Vojaci Južnej hliadky, všetci ku mne!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:394
-#, fuzzy
 msgid ""
 "During the day your units will deal more damage, and Urza Mathin's less. The "
 "more of his troops you can defeat during the day, the better!"
 msgstr ""
-"Počas dňa budú tvoji vojaci spôsobovať väčšie zranenia a jednotky patriace "
-"pod Urzu Matína budú zasa slabšie. Inak povedané, mal by si zneškodniť čo "
-"možno najviac jeho jednotiek počas dňa!"
+"Počas dňa budú tvoji vojaci spôsobovať väčšie zranenia a jednotky Urzu "
+"Matína budú zasa slabšie. Inak povedané, mal by si zneškodniť čo možno "
+"najviac jeho jednotiek počas dňa!"
 
 #. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter, description=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:421
@@ -453,17 +432,15 @@ msgstr "Ylla"
 
 #. [message]: speaker=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:450
-#, fuzzy
 msgid ""
 "Your people have been allies of our lord, King Typhon. We will help you "
 "drive these bandits from your land if you allow us to live here in peace."
 msgstr ""
-"Vaši ľudia boli spojencami nášho pána, Kráľa Tyfóna. Pomôžeme vám vyhnať "
+"Vaši ľudia boli spojencami nášho pána, kráľa Tyfóna. Pomôžeme vám vyhnať "
 "banditov z vášho kraja, ak nám tu dovolíte žiť v pokoji."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:455
-#, fuzzy
 msgid ""
 "We welcome your aid in the fight against these criminals! The rivers of this "
 "land are yours if you will aid us in our battles."
@@ -473,7 +450,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:462
-#, fuzzy
 msgid ""
 "You may now recruit Merman Hunters. Mermen are aquatic creatures. Keep them "
 "in rivers and swamps and they will fight well! Put them on dry land and "
@@ -481,7 +457,7 @@ msgid ""
 msgstr ""
 "Teraz môžeš verbovať morských lovcov. Morskí ľudia sú vodné bytosti. Ak ich "
 "rozmiestniš v riekach a močiaroch, bude to pre nich prirodzené prostredie, v "
-"ktorom bojujú lepšie! Ak ich však nasadíš na suchej zemi, ich sila rapídne "
+"ktorom bojujú lepšie! Ak ich však nasadíš na suchej zemi, ich sila veľmi "
 "poklesne!"
 
 #. [unit]: type=Longbowman, description=Aleron
@@ -493,19 +469,17 @@ msgstr "Aleron"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:497
-#, fuzzy
 msgid "Who goes there! Come out of the house now!"
-msgstr "Kto je tam? Vyjdite z domu, ihneď!"
+msgstr "Kto je tam?! Vyjdite z domu, ihneď!"
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:501
-#, fuzzy
 msgid ""
 "Stay! It's me, Aleron! The villagers hid me from the bandits when the town "
 "was overrun. They have kept me safe, though I was gravely wounded..."
 msgstr ""
 "Počkajte! To som ja, Aleron! Keď banditi prepadli mesto, dedinčania ma pred "
-"nimi ukryli. Bol som síce vážne zranený, ale bol som v bezpečí."
+"nimi ukryli. Bol som síce vážne zranený, ale bol som v bezpečí..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:505
@@ -516,7 +490,6 @@ msgstr "Som rád, že som ťa našiel živého, Aleron. Obávali sme sa najhorš
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:509
-#, fuzzy
 msgid ""
 "Let us punish these bandits for their crimes and murders! My wounds are "
 "healed and I am ready for battle!"
@@ -526,30 +499,26 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:513
-#, fuzzy
 msgid ""
 "Aleron is a longbowman, stronger and better trained than regular bowmen. His "
 "arrows are deadly to enemies without a ranged attack."
 msgstr ""
-"Aleron je lučištník s dlhým lukom, silnejší a lepšie trénovaný ako radový "
-"lučištník. Jeho šípy sú smrtiace pre nepriateľov, ktorí nemajú útok do "
-"diaľky."
+"Aleron je lukostrelec, silnejší a lepšie trénovaný ako radový lukostrelec. "
+"Jeho šípy sú smrtiace pre nepriateľov, ktorí nemajú útok do diaľky."
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:533
-#, fuzzy
 msgid "Not more bandits... We have nothing left. Begone!"
-msgstr "To snáď nie... ďalší banditi... Už tu nič pre vás nezostalo. Odíďte!"
+msgstr "To snáď nie... Ďalší banditi... Už tu nič pre vás nezostalo. Odíďte!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:537
-#, fuzzy
 msgid ""
 "We are no bandits. The banner of the South Guard flies again! Help us drive "
 "these criminals from your land."
 msgstr ""
-"My nie sme banditi. Prišli sme, lebo sme videli vlajku južnej posádky znovu "
-"viať na vežiach! Pomôžte nám vyhnať týchto kriminálnikov z našej zeme."
+"My nie sme banditi. Prišli sme, lebo sme videli vlajku Južnej hliadky znovu "
+"viať na vežiach! Pomôžte nám vyhnať týchto zločincov z našej zeme."
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:541
@@ -572,7 +541,6 @@ msgstr "Glasar"
 
 #. [message]: speaker=Glasar
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:561
-#, fuzzy
 msgid "This village is ours to plunder! Begone or I will kill you all!"
 msgstr ""
 "Táto dedina je naša a môžeme ju vyrabovať! Zmiznite odtiaľto, ináč vás "
@@ -580,28 +548,26 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:565
-#, fuzzy
 msgid ""
 "Do you not see the banners flying in the wind? The South Guard fights again. "
 "Flee while you can, or you will meet swift death on our spears!"
 msgstr ""
-"Nevidíš vlajky južnej posádky znovu vejúce vo vetre? Južná posádka je opäť "
-"bojaschopná. Mal by si utiecť, ináč ťa dostihne smrť na hrotoch našich mečov!"
+"Nevidíš vlajky Južnej hliadky znovu vejúce vo vetre? Južná hliadka je opäť "
+"bojaschopná. Mal by si utiecť, ináč ťa dostihne smrť na hrotoch našich "
+"oštepov!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:588
-#, fuzzy
 msgid ""
 "Remember, Moreth told you that you should go meet Sir Gerrick at the river "
 "fort. Move Deoran there and find out what Sir Gerrick has to say!"
 msgstr ""
-"Nezabúdaj, že ti Moreth povedal, aby si išiel a stretol sa s pánom Gerrikom "
+"Nezabúdaj, že ti Moret povedal, aby si išiel a stretol sa s pánom Gerrikom "
 "pri riečnej pevnosti. Presuň Deorana do pevnosti a zisti, čo ti chce pán "
 "Gerrik povedať!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:621
-#, fuzzy
 msgid ""
 "Remember, your job is to defeat Urza Mathin. He should be your main target. "
 "Archers will be especially effective against him, because he has no ranged "
@@ -613,36 +579,32 @@ msgstr ""
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:639
-#, fuzzy
 msgid "My days of pillage and plunder are over! My brothers will avenge me..."
 msgstr ""
 "Dni mojich beztrestných lúpeží sú zrátané! Ale moji bratia ma pomstia..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:644
-#, fuzzy
 msgid ""
 "He is dead! Congratulations, commander. We thought we would never see "
 "reinforcements - Did Sir Loris send you from Westin?"
 msgstr ""
-"Je po ňom! Blahoželám veliteľ. Mysleli sme si, že posily už nikdy neuvidíme, "
-"poslal vás pán Loris z Westinu?"
+"Je po ňom! Blahoželám veliteľ. Mysleli sme si, že posily už nikdy neuvidíme. "
+"Poslal vás pán Loris z Westinu?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:649
-#, fuzzy
 msgid ""
 "No. I have been sent by King Haldric to take command of the South Guard. The "
 "king has heard no news in weeks. How long have you and your men been shut up "
 "in the citadel?"
 msgstr ""
-"Nie. Mňa poslal osobne kráľ Haldrik, aby som prevzal velenie nad južnou "
-"posádkou. Kráľ nedostával z tohto regiónu žiadne správy po celé týždne. Ako "
-"dlho ste boli zatvorení v tej pevnosti?"
+"Nie. Poslal ma kráľ Haldrik, aby som prevzal velenie nad Južnou hliadkou. "
+"Kráľ nedostával z tejto provincie žiadne správy po celé týždne. Ako dlho ste "
+"boli zatvorení v tej pevnosti?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:654
-#, fuzzy
 msgid ""
 "Almost two months. Sir Loris took one of our patrols along the Westin road "
 "and never returned; and the next night, bandits struck and killed eight of "
@@ -650,21 +612,20 @@ msgid ""
 "Westin. We never thought we would see men sent from the King!"
 msgstr ""
 "Takmer dva mesiace. Pán Loris sa vybral s menším oddielom smerom na "
-"westinskú cestu a už sa nikdy nevrátil. Potom na druhú noc po jeho odchode "
+"westinskú cestu a už sa nikdy nevrátil. Potom, druhú noc po jeho odchode "
 "zaútočili banditi a zabili osem mojich vojakov. Udržali sme síce pevnosť, "
 "ale naša nádej na dlhšie udržanie sa bola takmer mizivá. Čakali sme posily z "
 "Westinu, nikdy nás nenapadlo, že nás zachránia priamo vojaci od kráľa!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:660
-#, fuzzy
 msgid ""
 "This is worse than even my darkest fears. We must ride to Westin at once, "
 "and hope that Sir Loris is there and well! Come men! Ride for Westin!"
 msgstr ""
-"Tak toto vyzerá horšie, než som si predstavoval i v tých najdivokejších "
-"snoch. Musíme urýchlene ísť do Westinu a dúfať, že tam niekde nájdeme pána "
-"Lorisa, živého a zdravého! Vpred! A smerom na Westin!"
+"Tak toto vyzerá horšie, než v mojich najtemnejších obavách. Musíme ísť "
+"urýchlene do Westinu a dúfať, že tam niekde nájdeme pána Lorisa, živého a "
+"zdravého! Vpred! Smerom na Westin!"
 
 #. [scenario]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:5
@@ -694,37 +655,34 @@ msgstr "Zločinec"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:185
-#, fuzzy
 msgid ""
 "Look! There is smoke coming from Westin. That can only mean that bandits "
 "have overrun the garrison and are sacking the city!"
 msgstr ""
-"Pozrite! Z Westinu stúpa dym. To môže znamenať len jedno - tí banditi museli "
+"Pozrite! Z Westinu stúpa dym. To môže znamenať len jedno. Tí banditi museli "
 "dobyť mesto, poraziť posádku a teraz rabujú mesto!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:189
-#, fuzzy
 msgid ""
 "If too much time passes and they are unchecked, they will leave the city in "
 "ruins and make a great slaughter of all who live therein. We must act "
 "quickly."
 msgstr ""
 "Ak im necháme príliš veľa času a nepostavíme sa im na odpor, tak sa obávam, "
-"že z mesta ostane rumovisko a väčšina jeho obyvateľov zahynie. Musíme jednať "
-"a to rýchlo!"
+"že z mesta zostanú len ruiny a väčšina jeho obyvateľov zahynie. Musíme "
+"jednať a to rýchlo."
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:196
-#, fuzzy
 msgid ""
 "What!? If there are soldiers of Wesnoth coming from the northern forts, then "
 "my brother Mathin is surely dead... They will pay for his death, just as Sir "
 "Loris paid for his pride!"
 msgstr ""
-"Čože!? Ak toto sú vojaci z Wesnotských severných pevností, znamená to, že "
-"môj brat Matín je pravdepodobne mŕtvy... Zaplatíte za jeho smrť, tak ako ten "
-"váš Loris zaplatil za svoju pýchu!"
+"Čože!? Ak sú to vojaci z wesnotských severných pevností, znamená to, že môj "
+"brat Matín je určite mŕtvy... Zaplatíte za jeho smrť, tak ako ten váš Loris "
+"zaplatil za svoju pýchu!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:202
@@ -754,13 +712,11 @@ msgstr "Minister Hylas"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:300
-#, fuzzy
 msgid "More bandits?! They'll feel the deadly bite of my lance!"
 msgstr "Ďalší banditi?! Okúsia môj smrtiaci oštep!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:304
-#, fuzzy
 msgid ""
 "Peace! for I am no enemy. I am Minister Hylas, advisor to Sir Loris! You "
 "came just in time! We couldn't have held them off another day..."
@@ -770,42 +726,39 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:308
-#, fuzzy
 msgid ""
 "Indeed, our arrival was timely. But where is Sir Loris? Where is the "
 "garrison of the city? I was sent by Haldric to relieve him and take command "
 "of the South Guard, for the king has heard no news from Westin in two months."
 msgstr ""
 "Tak je, prišli sme práve včas. Ale kde vlastne je pán Loris? A kde je celá "
-"posádka tohto mesta? Poslal ma sem kráľ Haldrik, aby som vystriedal Lorisa a "
-"prevzal velenie nad južnou hliadkou, pretože na kráľovskom dvore nemali z "
-"Westinu žiadne správy viac než dva mesiace."
+"posádka tohto mesta? Poslal ma sem kráľ Haldrik, aby som vystriedal pána "
+"Lorisa a prevzal velenie nad Južnou hliadkou, pretože kráľ nemal z Westinu "
+"žiadne správy viac než dva mesiace."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:312
-#, fuzzy
 msgid ""
 "Alas, Sir Loris will find no relief now. He is buried northwest of the city "
 "where he fell. For weeks we warned him of the new power of these bandits. "
 "And yet he would never lead his men against them until their strength had "
 "waxed and ours waned."
 msgstr ""
-"Bohužiaľ, Lorisa už nikto nevystrieda. Pochovali sme ho na severozápadnom "
-"konci mesta, tam kde padol. Celé týždne sme ho upozorňovali na túto novú "
-"silu, ktorú predstavovali hordy banditov. Ale on sa nikdy nepostavil so "
-"svojou armádou proti ich vyčíňaniu, až kým sa ich moc nezvýšila natoľko, že "
-"sme na nich už nemali."
+"Bohužiaľ, pána Lorisa už nikto nevystrieda. Pochovali sme ho na "
+"severozápadnom konci mesta, tam kde padol. Celé týždne sme ho upozorňovali "
+"na túto novú silu, ktorú predstavovali banditi. Ale on sa nikdy nepostavil "
+"so svojou armádou proti ich vyčíňaniu, až kým sa ich moc nezvýšila natoľko, "
+"že sme ich už nemohli zastaviť."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:317
-#, fuzzy
 msgid ""
 "It grieves me to learn of his death, foolish though he may have been! Now, "
 "though, there are more pressing matters. Rise, men of Wesnoth! We must drive "
 "these bandits from our city!"
 msgstr ""
-"Som veľmi zarmútený správou o jeho smrti, nech bolo jeho správenie akokoľvek "
-"hlúpe! Teraz ale je potrebné, aby sme sa venovali ostatným nutným "
+"Som veľmi zarmútený správou o jeho smrti, nech bolo jeho správanie akokoľvek "
+"hlúpe! Teraz je ale potrebné, aby sme sa venovali ostatným nutným "
 "záležitostiam. Povstaňte a do zbrane, muži z Wesnotu! Musíme tých banditov "
 "vyhnať z nášho mesta!"
 
@@ -861,12 +814,11 @@ msgstr "Zomrie Minister Hylas"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:398
-#, fuzzy
 msgid ""
 "They are almost to the great hall! Hurry, Deoran! You must reach the citadel "
 "or all will be lost!"
 msgstr ""
-"Už sa takmer dostali k hlavnému palácu! Rýchlo, Deoran! Musíš sa dostať do "
+"Už sa takmer dostali k hlavnej sieni! Rýchlo, Deoran! Musíš sa dostať do "
 "pevnosti, ináč sme všetci stratení!"
 
 #. [message]: speaker=narrator
@@ -880,35 +832,31 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:422
-#, fuzzy
 msgid "We're too late! They're burning the city..."
 msgstr "Prišli sme príliš neskoro! Zapaľujú mesto..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:427
-#, fuzzy
 msgid ""
 "Westin has fallen! This is a problem too great for me to handle - I must "
 "return to Haldric and tell him of our loss..."
 msgstr ""
-"Westin padol! Tento problem sám nevyriešim - musím sa vrátiť ku Haldrikovi a "
+"Westin padol! Tento problém sám nevyriešim. Musím sa vrátiť ku Haldrikovi a "
 "podať mu správu o tejto strate..."
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:451
-#, fuzzy
 msgid ""
 "Now the Guard will feel the wrath of my new friends! It is time for the dead "
 "to wage war! Rise, warriors!"
 msgstr ""
-"Teraz pocíti táto posádka hnev mojich nových priateľov! Je čas, aby aj mŕtvi "
+"Teraz pocíti táto Hliadka hnev mojich nových priateľov! Je čas, aby mŕtvi "
 "vybojovali svoju vojnu! Povstaňte z mŕtvych, vojaci!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:456
-#, fuzzy
 msgid "What devilry is this?! Those are no living men that fight for him!"
-msgstr "Čo je toto za pekelné kúzlo?! Veď na jeho strane bojujú neživí vojaci!"
+msgstr "Čo je toto za pekelné kúzlo?! Na jeho strane bojujú neživí vojaci!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:460
@@ -917,8 +865,8 @@ msgid ""
 "He has made some pact with the undead. How could a mere brigand have gained "
 "such great powers?"
 msgstr ""
-"Uzavrel dohodu s nemŕtvymi - čo ma znepokojuje viac, je to, ako mohol taký "
-"zelenáč ako on dosiahnuť také magické schopnosti?"
+"Uzavrel dohodu s nemŕtvymi. Čo ma znepokojuje viac, je ale to, ako mohol "
+"taký obyčajný bandita ako on dosiahnuť také magické schopnosti?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:464
@@ -929,7 +877,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:471
-#, fuzzy
 msgid ""
 "Not only will Minister Hylas's arcane attack melt undead bones, but he can "
 "also heal wounded units near him."
@@ -939,7 +886,6 @@ msgstr ""
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:491
-#, fuzzy
 msgid "Leave nothing standing! Burn their villages down and kill them all!"
 msgstr ""
 "Nenechajte kameň na kameni! Vypáľte tie ich dediny a všetkých ich "
@@ -952,16 +898,14 @@ msgstr "Pomstíme smrť tvojho brata!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:499
-#, fuzzy
 msgid "They are burning our villages! We must stop them!"
 msgstr "Vypaľujú naše dediny! Musíme ich zastaviť!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:538
-#, fuzzy
 msgid "My brother has died unavenged! What have we done!?"
 msgstr ""
-"Môj brat zahynul a ja som ho nedokázal pomstiť! Čo sme to len spáchali!?"
+"Môj brat zahynul a ja som ho nedokázal pomstiť! Čo sme to len spravili!?"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:543
@@ -970,7 +914,6 @@ msgstr "Veliteľ, ako je možné, že obyčajný bandita dokáže vzkriesiť nem
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:548
-#, fuzzy
 msgid ""
 "Just before the bandit raids began, an ambassador came to Sir Loris from the "
 "elves of the Aethenwood west of here. He asked that a knight be sent to "
@@ -987,7 +930,6 @@ msgstr "A išiel pán Loris k elfom?"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:558
-#, fuzzy
 msgid ""
 "No. He suspected the elves of some trickery and made no reply to them. "
 "Perhaps they know the origin of these dead warriors we now face."
@@ -997,19 +939,17 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:563
-#, fuzzy
 msgid ""
 "My men have been trained to fight the living. I do not know that we can "
 "protect the city from foes so dark as these. I shall go meet the elves and "
 "see if they can be of any aid!"
 msgstr ""
-"Moji vojaci boli trénovaní na to, aby bojovali so živými. Nemám veľa viery, "
-"že dokážeme ubrániť mesto voči protivníkom tak temným ako títo tu. Pôjdem "
-"teda a navštívim elfov. Uvidíme, čí nám dokážu nejak pomôcť!"
+"Moji vojaci boli trénovaní na to, aby bojovali so živými. Neviem či dokážeme "
+"ubrániť mesto voči protivníkom tak temným ako títo tu. Pôjdem teda a "
+"navštívim elfov. Uvidíme, čí nám dokážu nejako pomôcť!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:568
-#, fuzzy
 msgid ""
 "I will accompany you, my lord. I have studied the arts of holy magic and my "
 "skill may be of some use against the dark ones."
@@ -1019,7 +959,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:573
-#, fuzzy
 msgid ""
 "Deoran sent a rider to request mounted reinforcements and set out at once "
 "towards the Aethenwood..."
@@ -1041,11 +980,10 @@ msgstr "Urza Fastik"
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:133
 #, fuzzy
 msgid "Deoran and his men came to the eastern border of the Aethenwood..."
-msgstr "Deoran so svojou družinou prišli na hranicu elfských lesov"
+msgstr "Deoran so svojou družinou prišli na hranicu elfských lesov..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:139
-#, fuzzy
 msgid ""
 "Look, men! There is the forest of the Elves to the northwest. Let us hasten "
 "across the river and the hills."
@@ -1055,7 +993,6 @@ msgstr ""
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:144
-#, fuzzy
 msgid ""
 "Be careful, Deoran. No man has set foot in the elvish woods for many a year. "
 "We do not know how they will receive us. Sir Loris thought that it was some "
@@ -1067,7 +1004,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:149
-#, fuzzy
 msgid ""
 "But if we do not discover the source of these undead warriors, the whole "
 "province shall surely be swallowed up by them, and then their bandit masters "
@@ -1079,7 +1015,6 @@ msgstr ""
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:154
-#, fuzzy
 msgid ""
 "I have lost two brothers to Deoran - I shall not allow him to reach the "
 "accursed elves! Deoran will die before he reaches the western forest!"
@@ -1090,7 +1025,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:162
-#, fuzzy
 msgid ""
 "You must move Deoran to the center of the elvish citadel. Be sure to recruit "
 "a force strong enough to drive off the bandits before moving Deoran from his "
@@ -1107,9 +1041,8 @@ msgstr "Presunieš Deorana do elfského mesta v severných lesoch"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:201
-#, fuzzy
 msgid "There is so much ground to cover. If only our riders would arrive!"
-msgstr "Tá vzdialenosť je príliš veľká. Keby len prišli na pomoc moji jadci!"
+msgstr "Tá oblasť je príliš veľká. Keby len prišli na pomoc naši jazdci!"
 
 #. [unit]: description=Jarek
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:211
@@ -1126,7 +1059,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:230
-#, fuzzy
 msgid ""
 "You may now recruit Cavalrymen. They are fast and deadly on grassland, but "
 "weak in forests and hills. They can keep up with Deoran, so use them to "
@@ -1139,22 +1071,20 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:247
-#, fuzzy
 msgid ""
 "What have we done?! Even our undead allies cannot stand against this "
 "commander!"
 msgstr ""
-"Čo sme to vykonali?! Ani naši nemŕtvi partneri nedokážu odolať tomu ich "
+"Čo sme to vykonali?! Ani naši nemŕtvi spojenci nedokážu odolať tomuto "
 "veliteľovi!"
 
 #. [message]: role=second
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:257
-#, fuzzy
 msgid ""
 "I hope that's the last of the bandits! How many more of these foul undead "
 "must we fight?"
 msgstr ""
-"Tak dúfam, že toto bol posledný z tých banditov! Koľko ešte tých odporných "
+"Dúfam, že toto bol posledný z tých banditov! Koľko ešte tých odporných "
 "nemŕtvych stretneme v boji?"
 
 #. [message]: speaker=Deoran
@@ -1169,33 +1099,32 @@ msgstr ""
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:279
 msgid "Linderion"
-msgstr ""
+msgstr "Linderion"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:280
-#, fuzzy
 msgid "Mithalwe"
-msgstr "Mitche"
+msgstr "Mithalwe"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:281
 msgid "Sidaurios"
-msgstr ""
+msgstr "Sidaurios"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:282
 msgid "Eltenmir"
-msgstr ""
+msgstr "Eltenmir"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:283
 msgid "Vardanos"
-msgstr ""
+msgstr "Vardanos"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:284
 msgid "Talchar"
-msgstr ""
+msgstr "Talchar"
 
 #. [unit]: type=Elvish Shyde, type=Elvish Druid, description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:294
@@ -1204,9 +1133,8 @@ msgstr "Etiliel"
 
 #. [message]: speaker=Linderion
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:308
-#, fuzzy
 msgid "Halt! Who has entered our citadel without leave?"
-msgstr "Stáť! Kto vstúpil do pevnosti bez povolenia?"
+msgstr "Stáť! Kto vstúpil do našej pevnosti bez povolenia?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:313
@@ -1215,13 +1143,12 @@ msgstr "De..."
 
 #. [message]: speaker=Linderion
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:318
-#, fuzzy
 msgid ""
 "Speak carefully, for the penalty for trespass on our lands is death, and "
 "your life is thus forfeit."
 msgstr ""
 "Buď opatrný a premysli si, čo nám povieš, pretože trestom za vniknutie na "
-"naše územie je smrť, tvoj život je v našich rukách."
+"naše územie je smrť. Tvoj život je v našich rukách."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:324
@@ -1230,7 +1157,6 @@ msgstr "Deora..."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:329
-#, fuzzy
 msgid ""
 "Stay a moment. This man wears the colors of Wesnoth, and Kalenz told us not "
 "all the folk of Wesnoth are foes of the elves. Tell us, then, what brings "
@@ -1238,58 +1164,54 @@ msgid ""
 msgstr ""
 "Počkaj chvíľu. Ten jazdec má na sebe farby Wesnotu a Kalenz nám vravel, že "
 "nie všetci z Wesnotu sú nepriateľmi elfov. Povedz nám teda, čo ťa privádza "
-"do tejto posvätnej pevnosti slávneho Elrathu?"
+"do tejto posvätnej pevnosti slávneho Elratu?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:334
-#, fuzzy
 msgid ""
 "My lady, we have come to the elves to seek guidance. Bandits and criminals "
 "in our land have summoned the dead to help them plunder our farms and "
 "villages. They are coming across the river from the great forest to the "
 "south of our lands, where no man has yet traveled."
 msgstr ""
-"Moja pani, prichádzame, aby sme vás poprosili o radu. Banditi a kriminálnici "
-"v našej zemi začali povolávať mŕtvych, aby im pomáhali rabovať naše farmy a "
+"Moja pani, prichádzame, aby sme vás poprosili o radu. Banditi a zločinci v "
+"našej zemi začali povolávať mŕtvych, aby im pomáhali rabovať naše farmy a "
 "dediny. Prichádzajú spoza veľkej rieky, odniekiaľ od veľkého lesa, smerom na "
-"juh od našich krajín. Tam ešte žiaden človek nevkročil."
+"juh od našich krajín, kde ešte žiaden človek nevkročil."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:339
-#, fuzzy
 msgid ""
 "The elves know of the great southern forest, and have walked its paths many "
 "times. What would you do, Deoran?"
 msgstr ""
-"Elfi vedia o tom veľkom južnom lese, o ktorom rozprávaš. Mnohokrát kráčali "
-"po jeho lesných cestách. Čo máš v úmysle, Deoran?"
+"Elfoviai vedia o tom veľkom južnom lese, o ktorom rozprávaš. Mnohokrát "
+"kráčali po jeho lesných cestách. Čo máš v úmysle, Deoran?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:344
-#, fuzzy
 msgid ""
 "I would lead my men south of the river to find the source of these beings of "
 "darkness that we might destroy it. For surely, ere that be done, we cannot "
 "stand against them for long."
 msgstr ""
 "Povediem svoje oddiely na juh od rieky, aby som našiel zdroj tých temných "
-"bytostí a aby som sa pokúsil ich zničiť. Inakšie nemáme veľa šancí, aby sme "
-"proti nim dlho vydržali."
+"bytostí a aby som sa pokúsil ich zničiť. Inak nemáme šancu, aby sme proti "
+"nim dlho vydržali."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:349
-#, fuzzy
 msgid ""
 "Indeed you are brave to face such foes. But I fear that alone you will fail "
 "and fall. One elf now lives who remembers the secrets of the undead that we "
 "learned when Haldric I came to our land. His name is Mebrin, and he lives, "
 "secluded in the hills, near here. I will take you to him."
 msgstr ""
-"Si naozaj odvážný, keď si trúfaš na takýchto nepriateľov. Obávam sa ale, že "
-"samému sa ti to nepodarí, padneš a dostaneš nás všetkých do záhuby. Existuje "
+"Si naozaj odvážny, keď si trúfaš na takýchto nepriateľov. Obávam sa ale, že "
+"samému sa ti to nepodarí. Padneš a dostaneš nás všetkých do záhuby. Existuje "
 "ale jeden elf, ktorý ovláda tajomstvá nemŕtvych, ktoré sme sa naučili v "
 "čase, keď sem prišiel Haldrik. Ten elf sa volá Mebrin a žije tuto neďaleko "
-"na samote v kopcoch. Odvediem vás k nemu."
+"na samote v kopcoch. Zavediem vás k nemu."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:355
@@ -1313,18 +1235,16 @@ msgstr "Jera Ilras"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:168
-#, fuzzy
 msgid ""
 "We have followed you away from our homes and left them unguarded. Now, where "
 "can we find this sage who knows the southern forest well?"
 msgstr ""
 "Nasledovali sme ťa hlboko do týchto končín, ďaleko od našich domovov, ktoré "
-"ostali nechránené. Takže, kde sa vlastne ten váš mudrc, čo tie južné lesy "
+"zostali nechránené. Takže, kde sa vlastne ten váš mudrc, čo tie južné lesy "
 "tak dobre pozná, nachádza?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:173
-#, fuzzy
 msgid ""
 "This is the Vale of Blossoming Trees. Our great sages come here to live when "
 "they feel that it is time for them to allow others to lead our people. The "
@@ -1337,7 +1257,6 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:180
-#, fuzzy
 msgid ""
 "Why, my lady, are there humans camped to the south of us? Are they friends "
 "of the elves? I had thought that no humans had set foot in this valley."
@@ -1348,7 +1267,6 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:186
-#, fuzzy
 msgid ""
 "What!? Those are no friends of the elves! They are brigands, and they must "
 "be destroyed!"
@@ -1356,7 +1274,6 @@ msgstr "Čože!? To nie sú priatelia elfov! Sú to lupiči a musíme ich porazi
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:191
-#, fuzzy
 msgid ""
 "Perhaps they are allied with the bandits who have been sacking our towns! "
 "They have grown bold to attack the elves!"
@@ -1366,13 +1283,12 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:196
-#, fuzzy
 msgid ""
 "Destroy these intruders, and I will ask him to help you. He is ancient, and "
 "he remembers well Haldric's betrayal of the elves, so if a human sets foot "
 "in his village first, he almost certainly will have nothing to do with us!"
 msgstr ""
-"Poraz tých lotrov a ja požiadam Mebrina, aby ti pomohol. Je to veľmi starý "
+"Znič tých lotrov a ja požiadam Mebrina, aby ti pomohol. Je to veľmi starý "
 "elf, ktorý si bohužiaľ dobre pamätá na Haldrikovu zradu nášho národa, takže "
 "ak by sa do jeho osady dostal ako prvý človek, celkom určite by s nami "
 "nechcel mať nič spoločné!"
@@ -1384,31 +1300,25 @@ msgstr "Vyzerá to teda na veľmi prívetivého chlapíka..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:206
-#, fuzzy
 msgid ""
 "Yet, as she says, he is our best hope to rid our lands of this new menace. "
 "We do that which we must. Ethiliel, you make for Mebrin's village. We will "
 "handle the intruders."
 msgstr ""
-"Každopádne, ako vraví tá elfská pani, je to naša najlepšia nádej, ako zbaviť "
+"Každopádne, ako vraví tá elfská pani. Je to naša najlepšia nádej, ako zbaviť "
 "našu domovinu tejto hrozby. Urobíme to, čo je potrebné. Etiliel, choď do "
-"Mebrinovej osady. My sa postaráme o týchto výtržníkov."
+"Mebrinovej osady. My sa postaráme o tých výtržníkov."
 
 #. [message]: speaker=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:211
-#, fuzzy
 msgid "Ha! You're too late. We've taken what we want from this valley."
 msgstr ""
-"Cha! Prichádzate neskoro. Už sme si z tohto údolia vzali, čo sme chceli. A "
-"teraz sa vaša krv a plač zmieša s krvou a plačom elfov!"
+"Cha! Prichádzate neskoro. Už sme si z tohto údolia vzali, čo sme chceli."
 
 #. [message]: speaker=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:216
-#, fuzzy
 msgid "Now your blood and tears will join that of the elves!"
-msgstr ""
-"Cha! Prichádzate neskoro. Už sme si z tohto údolia vzali, čo sme chceli. A "
-"teraz sa vaša krv a plač zmieša s krvou a plačom elfov!"
+msgstr "A teraz sa vaša krv a plač zmieša s krvou a plačom elfov!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:222
@@ -1435,17 +1345,15 @@ msgstr "Etiliel zomrie"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:266
-#, fuzzy
 msgid ""
 "Our weapons are useless against these skeletons! They have nothing for our "
 "shafts to pierce but air!"
 msgstr ""
-"Naše zbrane na tých kostlivcov neúčinkujú! Nie je na nich, čo by sme "
+"Naše zbrane na tých kostlivcov neúčinkujú! Nie je na nich nič, čo by sme "
 "dokázali prebodnúť - iba vzduch!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:270
-#, fuzzy
 msgid ""
 "We must clear out these undead if you are to reach Mebrin's village! What "
 "should we do?"
@@ -1455,28 +1363,25 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:275
-#, fuzzy
 msgid ""
 "For now, I can slow them down. Where are the elves who used to live in this "
 "valley? They should come to our aid!"
 msgstr ""
-"Nateraz ich trochu spomalím ja. Kde sú elfi, ktorí v tomto údolí zvykli žiť? "
+"Nateraz ich trochu spomalím. Kde sú elfovia, ktorí v tomto údolí zvykli žiť? "
 "Mali by nám prísť na pomoc!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:280
-#, fuzzy
 msgid ""
 "You said this valley would be safe, and we find it filled with skeletal "
 "foes! Cannot some of your elf friends help us in our struggle?"
 msgstr ""
-"Hovorila si, že toto údolie bude bezpečné a namiesto toho je to tu plné tých "
-"kostlivcov. Nemohli by nejakí tí tvoji elfskí priatelia v tomto boji trochu "
+"Hovorila si, že toto údolie bude bezpečné a namiesto toho je plné tých "
+"kostlivcov. Nemohli by nám nejakí tvoji elfskí priatelia v tomto boji trochu "
 "pomôcť?"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:293
-#, fuzzy
 msgid "I shall not join these accursed undead! Bury me deeply my friends..."
 msgstr ""
 "Nemám v úmysle sa pripojiť k tým prekliatym nemŕtvym! Pochovajte ma tak "
@@ -1484,7 +1389,6 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:298
-#, fuzzy
 msgid "You shall not die in vain! My bodyguard will avenge you!"
 msgstr "Nezomrieš nadarmo! Môj osobný strážca ťa pomstí!"
 
@@ -1505,7 +1409,6 @@ msgstr "Elfský osobný strážca"
 
 #. [message]: speaker=Elvish Bodyguard
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:384
-#, fuzzy
 msgid ""
 "We stand ready, my lady, to protect you! We shall lead these men of Wesnoth "
 "into the fray!"
@@ -1520,19 +1423,17 @@ msgstr "Zomieram pre svoju pani..."
 
 #. [message]: speaker=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:408
-#, fuzzy
 msgid "Finally, release! Thank you, my friends..."
 msgstr "Konečne voľný! Ďakujem vám, priatelia..."
 
 #. [message]: speaker=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:453
-#, fuzzy
 msgid ""
 "You're too late! You'll never find our stronghold, and even if you did, what "
 "can you do against the dead!"
 msgstr ""
 "Idete príliš neskoro! Nikdy nenájdete našu pevnosť a aj keby ste ju našli..."
-"Čo zmôžete proti mŕtvym?"
+"Čo zmôžete proti mŕtvym!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:458
@@ -1541,7 +1442,6 @@ msgstr "Aspoň od teba bude teraz pokoj a nebudeš nás už obťažovať!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:510
-#, fuzzy
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Si tam? Prišli sme sem hľadať tvoju pomoc!"
 
@@ -1560,7 +1460,6 @@ msgstr "Mebrin! Kde si?!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:532
-#, fuzzy
 msgid ""
 "His home is empty... There are footprints leading away to the south... What "
 "can have happened here?"
@@ -1574,7 +1473,6 @@ msgstr "Ten kto vyvolal nemŕtvych bude asi vedieť kde je."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:542
-#, fuzzy
 msgid ""
 "There is no blood here, yet no Mebrin. Someone must have kidnapped him. But "
 "the undead would have slain him and made him one of them. Who then can have "
@@ -1591,7 +1489,6 @@ msgstr "Možno ho uniesli banditi, ktorí vyvolávali nemŕtvych."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:553
-#, fuzzy
 msgid ""
 "We must follow these footprints into the woods! Whoever took our greatest "
 "sage must pay! Nothing will stop the vengeance of the elves!"
@@ -1632,13 +1529,12 @@ msgstr "Mal M'brin"
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:199
-#, fuzzy
 msgid ""
 "The heat in this forest is oppressive, and this fog cannot be natural. I "
 "wonder what evil lurks nearby?"
 msgstr ""
 "Teplo v tomto lese je naozaj zarážajúce a tá hmla tiež nevyzerá veľmi "
-"prirodzene. Ktovie, aká hrozba tu poblíž číha?"
+"prirodzene. Ktovie, aká hrozba tu blízko číha?"
 
 #. [message]: description=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:204
@@ -1647,8 +1543,8 @@ msgid ""
 "I fear the fog emanates from some powerful lord of the undead. We may be "
 "overmatched..."
 msgstr ""
-"Obávam sa, že tá hmla pochádza od nejakého dosť mocného vládcu tých "
-"nemŕtvych. Že by sme ťahali za kratší koniec toho povrazu..."
+"Obávam sa, že tá hmla pochádza od nejakého mocného vládcu tých nemŕtvych. Že "
+"by sme ťahali za kratší koniec toho povrazu..."
 
 #. [message]: description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:209
@@ -1658,7 +1554,6 @@ msgstr "Toto je trochu iné, než bojovať s banditmi na rovinách vo Westine!"
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:214
-#, fuzzy
 msgid ""
 "I have brought many of my people along to aid us. My soldiers and shamans "
 "will now fight at your command."
@@ -1668,7 +1563,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:220
-#, fuzzy
 msgid ""
 "Elvish Fighters are at home in the thick forests. They have both a sword and "
 "a bow and are deadly with both. They are quick and can hold their own "
@@ -1681,7 +1575,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:225
-#, fuzzy
 msgid ""
 "Elvish Shamans are no match for most enemies in single combat. They do, "
 "however, heal units next to them every turn. Use them to bolster your "
@@ -1689,8 +1582,8 @@ msgid ""
 msgstr ""
 "Elfskí šamani nepredstavujú pre väčšinu protivníkov žiadnu výraznú hrozbu. "
 "Dokážu však uzdravovať jednotky vo svojej blízkosti. Môžeš ich teda použiť "
-"na poistenie a tylové zabezpečenie hlavnej línie, ktorá sa dostáva do paľby "
-"a šamani dokážu tieto jednotky uzdraviť."
+"na poistenie a zabezpečenie hlavnej línie, ktorá sa dostáva do paľby a "
+"šamani dokážu tieto jednotky uzdraviť."
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:230
@@ -1699,7 +1592,6 @@ msgstr "Prečo sme sa zastavili a utáborili tu?"
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:235
-#, fuzzy
 msgid ""
 "The great river is before us. No elf, still living, has crossed it. If the "
 "undead come from across the river, then we must search for them carefully, "
@@ -1710,7 +1602,6 @@ msgstr ""
 
 #. [message]: description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:240
-#, fuzzy
 msgid ""
 "I fear no forests. Let us find this river and whatever enemies lie beyond."
 msgstr ""
@@ -1718,15 +1609,13 @@ msgstr ""
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:245
-#, fuzzy
 msgid "Very well. We will seek the river and probe its secrets."
-msgstr "Výborne. Nájdeme rieku a preskúmame jej tajomstvá."
+msgstr "Tak teda dobre. Nájdeme rieku a preskúmame jej tajomstvá."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:251
-#, fuzzy
 msgid "Investigate the areas to the south of the Black River"
-msgstr "Preskúmaš územia na juh od Veľkej rieky."
+msgstr "Preskúmaš územia na juh od Čiernej rieky."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:287
@@ -1735,11 +1624,8 @@ msgstr "Vládca nemŕtvych je porazený!"
 
 #. [message]: description=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:292
-#, fuzzy
 msgid "No... I fear there is still much evil present. "
-msgstr ""
-"Nie. Mám obavy, že je tu stále cítiť priveľa zla a temna. Toto musel byť iba "
-"nejaký nižší posluhovač omnoho temnejšieho vládcu."
+msgstr "Nie... mám obavy, že je tu stále cítiť priveľa zla a temna."
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:297
@@ -1747,22 +1633,22 @@ msgid ""
 "Surely the undead infestation cannot be dispatched so easily. We have merely "
 "destroyed a servant of a far darker master."
 msgstr ""
+"Pochopiteľne, nemŕtvi nemôžu byť zničení tak ľahko. Zničili sme len "
+"služobníka temného vládcu."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:350
 msgid ""
 "I think I see something moving in the fog... it looks like an encampment!"
-msgstr ""
+msgstr "Zdá sa mi, že sa v hmle niečo pohlo... vyzerá to ako táborisko!"
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:365
-#, fuzzy
 msgid "Thank heaven! You're alive!"
 msgstr "Vďaka bohu! Žijete!"
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:370
-#, fuzzy
 msgid ""
 "Save your thanks! We are here to root out all the evil from these woods, and "
 "that means you!"
@@ -1772,7 +1658,6 @@ msgstr ""
 
 #. [message]: description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:375
-#, fuzzy
 msgid ""
 "Draw your swords and say your prayers! You cannot stand against us! You will "
 "pay for your crimes!"
@@ -1797,7 +1682,6 @@ msgstr "A čo má byť?"
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:390
-#, fuzzy
 msgid ""
 "A year ago we ventured into the land of the elves in secret, and we captured "
 "a great sage. We forced him to teach us the secrets of this forest and of "
@@ -1809,17 +1693,15 @@ msgstr ""
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:395
-#, fuzzy
 msgid ""
 "You imprisoned Mebrin!? For that you must surely pay. Speak swiftly so that "
 "we may end this parlay and dispatch you quickly! We will have vengeance!"
 msgstr ""
-"Vy ste uväznili Mebrina!? Za to musíte zaplatiť. Hovor rýchlo, nech túto "
-"frašku ukončime a tým i tvoj život! Pomstíme sa!"
+"Vy ste uväznili Mebrina!? Za to musíte zaplatiť. Hovor rýchlo, nech tento "
+"rozhovor ukončíme a tým i tvoj život! Pomstíme sa!"
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:400
-#, fuzzy
 msgid ""
 "Hear me out! He taught us to summon the dead to fight for us. We were weak "
 "and foolish and soon summoned undead that we could not control. Mebrin too "
@@ -1834,7 +1716,6 @@ msgstr ""
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:406
-#, fuzzy
 msgid "Lies! Mebrin would never fight for the undead, much less lead them!"
 msgstr ""
 "To je lož! Mebrin by nikdy nebojoval po boku nemŕtvych, nieto ešte bol ich "
@@ -1842,39 +1723,35 @@ msgstr ""
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:411
-#, fuzzy
 msgid "But what do you want us to do about it? You are criminals!"
 msgstr "Ale čo chceš, aby sme s tým spravili? Vy ste zločinci!"
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:416
-#, fuzzy
 msgid ""
 "Join us in the fight! Together we can drive off these cruel undead and "
 "restore peace to the land."
 msgstr ""
-"Pripojte sa k nám! Spolu tých hnusných kostlivcov vytlačíme a znovu zavládne "
+"Pripojte sa k nám! Spolu tých hnusných kostlivcov vyženieme a znovu zavládne "
 "v tejto zemi mier."
 
 #. [message]: description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:421
-#, fuzzy
 msgid ""
 "My lord, they could be valuable allies, and the undead are a greater threat "
 "to our lands. Justice can wait until we are all safely in Westin."
 msgstr ""
 "Môj pane, môžu to byť užitoční spojenci a každopádne, tí nemŕtvi predstavujú "
-"väčšiu hrozbu pre našu zem, než banditi. Dočkajú sa svojej spravodlivosti, "
-"ale až keď budeme bezpečne nazad vo Westine."
+"väčšiu hrozbu pre našu zem, než banditi. Dočkajú sa spravodlivosti, ale až "
+"keď budeme bezpečne nazad vo Westine."
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:427
-#, fuzzy
 msgid ""
 "But think of the destruction they wrought on your borders! You cannot ally "
 "yourselves with these evil men! Vengeance!"
 msgstr ""
-"Ale pomyslite iba na všetku tú skazu, čo spôsobili vo vašich pohraničných "
+"Ale pomyslite na všetku tú skazu, čo spôsobili vo vašich pohraničných "
 "oblastiach! Nemôžete sa len tak spojiť s týmito zločincami! To už nechceš "
 "pomstu?"
 
@@ -1894,30 +1771,29 @@ msgstr "Dobre. Všetci ľudia sa musia spojiť proti nemŕtvym."
 msgid ""
 "We will now fight alongside you, come my thugs and footpads, rally to me!"
 msgstr ""
-"Na túto chvíľu budeme bojovať bok po boku a ja ti dám k dispozícii a pod "
-"tvoje velenie všetkyc svojich zlodejov, banditov i poskokov."
+"Teraz budeme bojovať bok po boku a ja ti dám k dispozícii a pod tvoje "
+"velenie všetkých svojich hrdlorezov, banditov i poskokov. "
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:493
-#, fuzzy
 msgid ""
 "You are no better than these criminals! We shall see if you can find your "
 "own way out of the forest! Come, my people, let us return to our lands. We "
 "were foolish to ever have any dealings with these humans. Do not set foot in "
 "our land ever again, Deoran, for you have brought us nothing but grief."
 msgstr ""
-"Nie ste o nič lepší než táto banda kriminálnikov! Uvidíme, či z tohto lesa "
-"nájdete cestu von! Poďme, moji vojaci sa vracajú domov. Boli sme opäť príliš "
+"Nie ste o nič lepší než táto banda zločincov! Uvidíme, či z tohto lesa "
+"nájdete cestu von! Poďme, moji vojaci, vráťme sa domov. Boli sme opäť príliš "
 "hlúpi, keď sme sa dali nahovoriť, aby sme jednali s ľuďmi. Neopováž sa znovu "
-"vstúpiť na našu pôdu, Deoran, neprinášaš nám nič, iba skazu a žiaľ."
+"vkročiť na našu pôdu, Deoran. Neprinášaš nám nič, iba skazu a žiaľ."
 
 #. [message]: description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:505
-#, fuzzy
 msgid ""
 "The elves have abandoned us in this accursed forest! We are surely lost!"
 msgstr ""
-"Tí elfi nás fakt opustili a nechali v tomto prekliatom lese! Nemáme šancu!"
+"Tí elfovia nás naozaj opustili a nechali v tomto prekliatom lese! Sme "
+"stratení!"
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:510
@@ -1926,7 +1802,6 @@ msgstr "Nemajte obavy, vyvediem vás von, keď nastane správny čas."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:533
-#, fuzzy
 msgid "Find the source of the undead and destroy it"
 msgstr "Nájdeš zdroj nemŕtvych a zničíš ho."
 
@@ -1938,7 +1813,6 @@ msgstr "Zomrie Urza Afalas"
 
 #. [option]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:562
-#, fuzzy
 msgid ""
 "Your crimes are too great. You will fall with the rest of the foul undead!"
 msgstr ""
@@ -1947,16 +1821,15 @@ msgstr ""
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:566
-#, fuzzy
 msgid "Then this parlay is over! You may have sounded the doom of all of us!"
 msgstr ""
-"Tak potom vyjednávanie skončilo! Asi ste práve rozhodli o skaze nás všetkých!"
+"Tak potom vyjednávanie skončilo! Možno ste práve rozhodli o skaze nás "
+"všetkých!"
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:572
-#, fuzzy
 msgid "You will pay for taking Mebrin from us! If he is harmed..."
-msgstr "A zaplatíte zato, že ste uniesli Mebrina! Ak ste mu ublížili..."
+msgstr "Zaplatíte zato, že ste uniesli Mebrina! Ak ste mu ublížili..."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:583
@@ -1978,7 +1851,6 @@ msgstr ""
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:641
-#, fuzzy
 msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr ""
 "Vy blázni! Ten kostej bude smrť nás všetkých! Spečatili ste našu skazu!"
@@ -1995,27 +1867,24 @@ msgstr "Graar!"
 
 #. [message]: description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:691
-#, fuzzy
 msgid ""
 "Well! That was easier than I thought it'd be. Looks like the undead aren't "
 "so tough after all!"
 msgstr ""
-"Tož! To bolo jednoduchšie, než to spočiatku vyzeralo. Zdá sa, že tí nemŕtvi "
-"nie sú až tak silní!"
+"Dobre! Bolo to jednoduchšie, než to spočiatku vyzeralo. Zdá sa, že tí "
+"nemŕtvi nie sú až tak silní!"
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:696
-#, fuzzy
 msgid ""
 "Indeed. The dark king has fallen. Now that the elves have abandoned us, our "
 "lives depend on Urza Afalas. Will you lead us from this accursed forest?"
 msgstr ""
-"Tak je. Temný vládca padlo. Teraz, keď nás tí elfi opustili, naše životy "
-"závisia na Urza Afalasovi. Vyvedieš nás z tohto prekliateho lesa?"
+"Tak je. Temný vládca padol. Teraz, keď nás tí elfovia opustili, naše životy "
+"závisia na Urzovi Afalasovi. Vyvedieš nás z tohto prekliateho lesa?"
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:700
-#, fuzzy
 msgid ""
 "What choice do I have? My life is in as much danger as yours. I will lead "
 "you and your men back to the lands of Wesnoth if you will grant me pardon."
@@ -2044,17 +1913,15 @@ msgstr "Tak sme ich oboch porazili, zločincov i nemŕtvych!"
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:724
-#, fuzzy
 msgid ""
 "We should make haste to return to Wesnoth before the harvest. Fall has "
 "already been upon us for some time."
 msgstr ""
-"Ponáhľajme sa nazad do Wesnotu, aby sme ešte stihli žatvu. Už sa blíži "
-"jeseň..."
+"Mali by sme sa rýchlo vrátiť nazad do Wesnotu, aby sme ešte stihli žatvu. Už "
+"sa blíži jeseň..."
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:728
-#, fuzzy
 msgid ""
 "Do not be so hasty; great mages are no mere tricksters to be defeated so "
 "easily. I fear that there are tunnels and catacombs buried beneath his "
@@ -2062,21 +1929,19 @@ msgid ""
 "the land of his evil, we must enter the darkness and root him out from "
 "within."
 msgstr ""
-"Len sa tak neponáhľaj - veľkí mágovia nie sú kdeakí potulní felčiari, "
-"ktorých je jednoducho poraziť. Obávam sa, že hlboko pod jeho pevnosťou bude "
-"množstvo tunelov a chodieb a že sme porazili tak akurát jeho zjav. Ak chceme "
-"očistiť túto zem od jeho zloby, asi nemáme na výber, iba zísť dole do "
-"temnoty a vykoreniť ho od samého spodku."
+"Len sa tak neponáhľaj; veľkí mágovia nie sú kdeakí potulní felčiari, ktorých "
+"je ľahké poraziť. Obávam sa, že hlboko pod jeho pevnosťou bude množstvo "
+"tunelov a chodieb a že sme porazili len jeho zjav. Ak chceme očistiť túto "
+"zem od jeho zloby, asi nemáme na výber, iba zísť dolu do temnoty a vykoreniť "
+"ho od samého vnútra."
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:733
-#, fuzzy
 msgid "My men are not dwarves! How are we to fight in catacombs and tunnels?"
 msgstr "Moji muži nie sú trpaslíci! Ako máme bojovať v katakombách a tuneloch?"
 
 #. [message]: description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:737
-#, fuzzy
 msgid ""
 "Someone must take news back to Wesnoth of this new evil that lurks near our "
 "borders. Who knows how many more of these undead are hiding in the forest."
@@ -2096,19 +1961,17 @@ msgstr ""
 
 #. [message]: description=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:745
-#, fuzzy
 msgid "Indeed I do. My kinsfolk will protect you and your message!"
 msgstr "Súhlasím. Môj národ ochráni teba, aj správu ktorú nesieš!"
 
 #. [message]: description=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:749
-#, fuzzy
 msgid ""
 "Fare well, Deoran! I will be there to greet you when you return to Kerlath "
 "Province."
 msgstr ""
-"Nech sa ti tuto darí, Deoran! Budem ťa čakať v Kerlate, aby som ťa pozdravil "
-"ako hrdinu."
+"Nech sa ti darí, Deoran! Budem ťa čakať v Kerlate, aby som ťa privítal ako "
+"hrdinu."
 
 #. [scenario]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:5
@@ -2117,19 +1980,18 @@ msgstr "Dobré a zlé zvesti"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:67
-#, fuzzy
 msgid "Ssesseth"
 msgstr "S'sst"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:68
 msgid "Zasz"
-msgstr ""
+msgstr "Zasz"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:69
 msgid "Zerix"
-msgstr ""
+msgstr "Zerix"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:71
@@ -2139,17 +2001,17 @@ msgstr "Škorpión"
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:72
 msgid "Kramak"
-msgstr ""
+msgstr "Kramak"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:74
 msgid "Issorai"
-msgstr ""
+msgstr "Issorai"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:75
 msgid "Zarr"
-msgstr ""
+msgstr "Zar"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:78
@@ -2163,19 +2025,19 @@ msgstr "Abdur"
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:85
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:93
 msgid "Queen Xeila"
-msgstr ""
+msgstr "Hadia kráľovná"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:83
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:90
 msgid "Ssanur"
-msgstr ""
+msgstr "Ssanur"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:86
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:94
 msgid "Lesssh"
-msgstr ""
+msgstr "Lesssh"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:92
@@ -2185,11 +2047,10 @@ msgstr "Kallen"
 #. [unit]: type=Elvish Ranger, description=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:180
 msgid "Eliomir"
-msgstr ""
+msgstr "Eliomir"
 
 #. [message]: speaker=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:198
-#, fuzzy
 msgid ""
 "Sir Gerrick, you must make it back to Kerlath Province and warn your people "
 "of the danger from the south. We will lead you through the forest and clear "
@@ -2197,20 +2058,20 @@ msgid ""
 "as well, and any ones you leave behind will still have time to catch up with "
 "Ethiliel and Deoran."
 msgstr ""
-"Pán Gerrik, musíte ste ísť nazad do Kerlatu a varovať váš národ ohľadom "
+"Pán Gerrik, musíte ste ísť nazad do Kerlatu a varovať vašich ľudí ohľadom "
 "hrozby z juhu. My vás prevedieme cez les a pomôžeme vám vyhnúť sa "
-"nepriateľom."
+"nepriateľom. Môžete si vybrať niekoľko z našich najskúsenejších bojovníkov a "
+"tí ktorí zostanú pozadu pôjdu s Etiliel a Deoranom."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:211
-#, fuzzy
 msgid ""
 "With the bandits and undead vanquished behind us, what foes can there be "
 "ahead? Let us hope this is a speedy journey, for the spectre of winter looms."
 msgstr ""
-"Keďže sme sa zbavili banditov i nemŕtvych, akí ďalší protivníci na nás ešte "
-"číhajú? Dúfajme, že táto cesta ubehne rýchlo, pretože zima sa rýchlo "
-"približuje."
+"Keď už sme sa zbavili banditov i nemŕtvych, akí ďalší protivníci na nás ešte "
+"číhajú? Dúfajme, že táto cesta ubehne rýchlo, pretože zima sa nezadržateľne "
+"blíži."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:217
@@ -2220,7 +2081,6 @@ msgstr "Dostaneš pána Gerrika na severný okraj lesov"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:248
-#, fuzzy
 msgid ""
 "Hss... Here are the humans who have made a pact with the cursed mermen! "
 "Hss..."
@@ -2230,41 +2090,35 @@ msgstr ""
 
 #. [message]: speaker=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:252
-#, fuzzy
 msgid "We have stumbled into a den of nagas!"
 msgstr "Narazili sme na oblasť pod kontrolou Nagov - hadích ľudí!"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:256
-#, fuzzy
 msgid "Hss... We will kill them all, my brood. Hss..."
 msgstr "Sss... Všetkých ich pozabíjame, deti moje. Sss..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:260
-#, fuzzy
 msgid ""
 "We must clear this road for Deoran and Ethiliel! We must destroy the naga "
 "lair!"
 msgstr ""
-"Musíme vyčistiť túto cestu už len kvôli Deoranovi a Etiliel! Musíme zničiť "
-"to hadie hniezdo!"
+"Musíme uvoľniť túto cestu už len kvôli Deoranovi a Etiliel! Musíme zničiť to "
+"hadie hniezdo!"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:266
-#, fuzzy
 msgid "Hss... elves! Are they friends or enemies? Hss..."
 msgstr "Sss... Elfovia! Priatelia, alebo nepriatelia? Sss..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:270
-#, fuzzy
 msgid "We are weary travelers, seeking our homes. If you but let us pass..."
-msgstr "Sme unavení pocestní, hľadáme svoj domov. Nechajte nás prejsť..."
+msgstr "Sme unavení pocestní, hľadajúci naše domovy. Nechajte nás prejsť..."
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:274
-#, fuzzy
 msgid ""
 "Hss... And humans! Humans drained our swamps and made them fields for farms, "
 "and now they have found my winter nest. The Land-Walkers must die! Hss..."
@@ -2274,7 +2128,6 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:278
-#, fuzzy
 msgid ""
 "She won't listen. If we leave these nagas here, they will ambush Deoran and "
 "Ethiliel! We must destroy them!"
@@ -2284,16 +2137,15 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:292
-#, fuzzy
 msgid "Defeat the Queen Xeila"
-msgstr "Porazíš Hadiu kráľovnu"
+msgstr "Porazíš Hadiu kráľovnú"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:325
 msgid ""
 "There are a group of naga occupying this area... they don't look very "
 "friendly."
-msgstr ""
+msgstr "Túto oblasť obýva skupina hadích ľudí... nevyzerajú veľmi priateľsky."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:330
@@ -2301,12 +2153,13 @@ msgid ""
 "if they are hostile to us, they could endanger Deoran and Ethiliel as well. "
 "Perhaps their leader can be reasoned with."
 msgstr ""
+"Ak sa k nám budú chovať nepriateľsky, môžu ohroziť aj Deorana a Etiliel. "
+"Snáď sa nám podarí dohovoriť sa s ich kráľovnou."
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:345
-#, fuzzy
 msgid "Hss... Who will watch over my brood now? Hss..."
-msgstr "Sss... Kto sa bude teraz starať o moje mladé? Sss..."
+msgstr "Sss... Kto sa bude teraz starať o moje mláďatá? Sss..."
 
 #. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:359
@@ -2320,9 +2173,8 @@ msgstr "Ehm, pán ohyzd, my naozaj nie sme veľmi chutnou potravou."
 
 #. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:367
-#, fuzzy
 msgid "Oh. Me only want tasty food. Go away."
-msgstr "Oh. Ja chcieť len chutné jedlo. Vy ísť preč!"
+msgstr "Oh. Ja chcieť len chutné jedlo. Vy ísť preč."
 
 #. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:375
@@ -2336,7 +2188,6 @@ msgstr "Hnusné jedlo! Bolí ma. Arrrrggghhhh!!"
 
 #. [message]: speaker=Abdur
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:398
-#, fuzzy
 msgid ""
 "Travelers in this desolate land! I seek that dark Sage who is rumored to "
 "dwell in these lands. Surely you have come from him?"
@@ -2364,6 +2215,8 @@ msgid ""
 "These naga are still in control of the road. We must clear the way for "
 "Deoran and Ethiliel!"
 msgstr ""
+"Tí hadí ľudia majú stále kontrolu nad cestou. Musíme ju uvoľniť pre Deorana "
+"a Etiliel! "
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:440
@@ -2372,17 +2225,16 @@ msgid ""
 "I will hasten back to Kerlath Province now and seek the advice of the "
 "Council of Westin..."
 msgstr ""
-"Poponáhľam sa teraz do Kerlatu, aby som získal názor Westinskej rady na "
+"Teraz sa poponáhľam do Kerlatu, aby som požiadal o názor Westinskú radu na "
 "situáciu..."
 
 #. [message]: speaker=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:444
-#, fuzzy
 msgid ""
 "We too will return to our councils. We have much to tell them... Much indeed."
 msgstr ""
-"Aj my sa vrátime k našej rade. Je to veľa, o čom sa treba poradiť. Naozaj "
-"veľa."
+"Aj my sa vrátime k našim radám. Je toho veľa, o čom sa treba poradiť... "
+"Naozaj veľa."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:448
@@ -2407,23 +2259,21 @@ msgstr "Fššt"
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:121
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:125
 msgid "Wizzi"
-msgstr ""
+msgstr "Wizzi"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:494
-#, fuzzy
 msgid ""
 "We have to go even further west. There are elves living to the north, and I "
 "don't think they'll receive us too kindly!"
 msgstr ""
 "Musíme ísť ešte ďalej na západ. Na severe sú elfovia a nemyslím, že nás "
-"príjmu priateľsky!"
+"prijmú príliš priateľsky!"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:495
-#, fuzzy
 msgid "Come on! Hurry!"
-msgstr "Poďme! Pohnite sebou!"
+msgstr "Poďme! Rýchlo!"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:496
@@ -2443,7 +2293,7 @@ msgstr "Už iba kúsok!"
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:696
 msgid "You humans have kidnaped Mebrin the Sage. You will pay for your crimes."
-msgstr ""
+msgstr "Vy ľudia ste uniesli mudrca Mebrina. Zaplatíte za vaše zločiny."
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:700
@@ -2452,6 +2302,8 @@ msgid ""
 "himself into Lich. By the laws of Wesnoth, the punnishment for his crimes is "
 "death!"
 msgstr ""
+"Ten váš mudrc Mebrin je zločinec. Praktikuje čiernu mágiu a premenil sám "
+"seba na kosteja. Podľa zákonov Wesnotu je trest za jeho zločiny, smrť!"
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:705
@@ -2459,6 +2311,8 @@ msgid ""
 "It is you who is a criminal and who is in a company of criminals. We will "
 "not let you kill Mebrin!"
 msgstr ""
+"Si to ty, kto je zločinec a kto je v spoločnosti zločincov. Nedovolíme ti "
+"zabiť Mebrina!"
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:709
@@ -2466,11 +2320,13 @@ msgid ""
 "I was a fool to waste my words on you. Prepare to meet your beloved Mebrin "
 "or should I say Mal M'brin in hell, elves !"
 msgstr ""
+"Bolo hlúpe myslieť si že vás prehovorím. Pripravte sa na stretnutie v pekle "
+"s vaším milovaným Mebrinom, alebo skôr Mal M'brinom, elfovia!"
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:722
 msgid "Get them !"
-msgstr ""
+msgstr "Na nich !"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:740
@@ -2483,14 +2339,12 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:746
-#, fuzzy
 msgid "Will this forest ever end? How can we know what path to take?!"
 msgstr ""
-"Má tento les vôbec nejaký koniec? Ako máme vedieť, ktorou cestou sa vydať!?"
+"Má tento les vôbec nejaký koniec? Ako máme vedieť, ktorou cestou sa vydať?!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:750
-#, fuzzy
 msgid ""
 "You have to follow me! There are many false paths in these woods. Some are "
 "dead ends, others are even worse!"
@@ -2500,30 +2354,26 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:754
-#, fuzzy
 msgid "Can we trust him? His people are murderers and thieves!"
-msgstr "Môžeme mu veriť? Jeho ľudia sú vrahovia a zlodeji."
+msgstr "Môžeme mu veriť? Jeho ľudia sú vrahovia a zlodeji!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:758
-#, fuzzy
 msgid ""
 "Do we have any choice? Our food is running out, and it will be winter soon..."
-msgstr "Máme inú možnosť? Jedlo sa nám míňa a za chvíľu je tu zima..."
+msgstr "Máme inú možnosť? Jedlo sa nám míňa a čoskoro je tu zima..."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:779
-#, fuzzy
 msgid ""
 "This way! The only ford is a bit west of here, and the path to the north "
 "will lead you into trouble!"
 msgstr ""
-"Tatiaľto! Jediný brod je kúsok na západ a cesta na sever by nás priviedla do "
+"Tadiaľto! Jediný brod je kúsok na západ a cesta na sever by nás priviedla do "
 "problémov!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:784
-#, fuzzy
 msgid ""
 "I think we should head north. The road leads north, and the ford is north. "
 "Why does he want us to head west?"
@@ -2536,7 +2386,7 @@ msgstr ""
 msgid ""
 "Beware! I sense that there are undead monsters who have escaped Mal M'brin's "
 "control running around in that area."
-msgstr ""
+msgstr "Pozor! Cítim že"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:794
@@ -2545,19 +2395,16 @@ msgstr "Dostaneš sa na severný okraj lesa"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:898
-#, fuzzy
 msgid "Hurry! There are bandits in these woods!"
 msgstr "Pohnite sa! V týchto lesoch sú banditi!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:902
-#, fuzzy
 msgid "Why should that worry us?! Aren't you their leader?"
-msgstr "Prečo by sme sa mali tým znepokojovať? Nie si ich vodca?"
+msgstr "Prečo by sme sa tým mali znepokojovať?! Nie si ich vodca?"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:906
-#, fuzzy
 msgid "We're bandits, after all. Not all of them are loyal to me."
 msgstr "My sme banditi, nezabúdajte. Nie všetci sú mi verní."
 
@@ -2571,34 +2418,33 @@ msgstr "Rieka je priamo pred nami"
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:947
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:951
 msgid "The elves payed us well to kill you."
-msgstr ""
+msgstr "Elfovia nám dobre zaplatili aby sme vás zabili."
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:955
 msgid "You bastards!"
-msgstr ""
+msgstr "Vy bastardi!"
 
 #. [message]: type=Thief
 #. [message]: type=Rogue
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:959
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:963
 msgid "You would have done the same to us if you were in our place!"
-msgstr ""
+msgstr "Urobili by ste to isté keby ste boli na našom mieste!"
 
 #. [message]: description=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:967
 msgid "I probably would have..."
-msgstr ""
+msgstr "Asi áno..."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:980
-#, fuzzy
 msgid ""
 "From here you can see the banks of the river! Across it we will find the sun "
 "again, and an end to these cursed trees!"
 msgstr ""
-"Odtiaľto je možné vidieť brehy rieky! A za riekou znovu nájdeme slnko a "
-"svetlo a bude koniec týmto prekliatym stromom!"
+"Odtiaľto je možné vidieť brehy rieky! Za riekou znovu nájdeme slnko a svetlo "
+"a bude koniec týmto prekliatym stromom!"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:993
@@ -2630,9 +2476,8 @@ msgstr "Ale pobili sme nemŕtvych - chceme sa vrátiť do našich domovov!"
 
 #. [message]: speaker=Plinth
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1019
-#, fuzzy
 msgid "Nevertheless, we will have vengeance for Mebrin!!"
-msgstr "Každopádne Mebrina musíme pomstiť!"
+msgstr "Každopádne, Mebrina musíme pomstiť!!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1033
@@ -2651,9 +2496,8 @@ msgstr "Len dúfam, že táto milosť vydrží aj po návrate do Westinu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1046
-#, fuzzy
 msgid "But there was a dark cloud looming behind Deoran and his men..."
-msgstr "Ale nad Deoranom a jeho vojakmi sa vznášali temné mraky..."
+msgstr "Ale nad Deoranom a jeho vojakmi sa začali vznášať temné mraky..."
 
 #. [scenario]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:5
@@ -2669,13 +2513,11 @@ msgstr "Mal M'Brin"
 
 #. [side]: type=Soulless, description=Groth
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:103
-#, fuzzy
 msgid "Groth"
-msgstr "Gruth"
+msgstr "Grot"
 
 #. [side]: type=Troll Hero, description=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:143
-#, fuzzy
 msgid "Grek"
 msgstr "Jarek"
 
@@ -2715,7 +2557,6 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:343
-#, fuzzy
 msgid ""
 "Proceed slowly, who knows what evils inhabited these parts before Mebrin was "
 "turned! We cannot be too careful."
@@ -2727,9 +2568,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:349
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:524
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:578
-#, fuzzy
 msgid "Find the source of the undead under the citadel"
-msgstr "Nájdeš zdroj nemŕtvych pod pevnosťou."
+msgstr "Nájdeš zdroj nemŕtvych pod pevnosťou"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:384
@@ -2737,6 +2577,8 @@ msgid ""
 "What horrid creature may that be? I've seen many wicked things in my life, "
 "but never one such as that."
 msgstr ""
+"Aké ohavné stvorenie to môže byť?  V živote som videl už veľa skazených "
+"vecí, ale toto ešte nie. "
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:389
@@ -2745,58 +2587,60 @@ msgid ""
 "stories of these creatures but I wouldn't have expected to come across "
 "one... the least of all here. Let us proceed with caution."
 msgstr ""
+"Musí to byť nejaký strážca ktorého tu nechal Mebrin. My elfovia sme už o "
+"tých stvoreniach počuli ale nikdy by som nečakala, že na jedného narazíme... "
+"najmä nie tu. Postupujme, ale opatrne."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:402
-#, fuzzy
 msgid ""
 "Ha! Humans and elves! What are you doing in our caves, and why shouldn't we "
 "grind your bones and gnaw on your flesh?"
 msgstr ""
-"Ha! Ľudia a elfovia! Čo hľadáte v našich jaskyniach? A prečo by sme nemali "
+"Cha! Ľudia a elfovia! Čo hľadáte v našich jaskyniach a prečo by sme nemali "
 "rozdrviť vaše kosti a obhrýzť z nich mäso?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:407
-#, fuzzy
 msgid "We mean no trespass. We are hunting the undead."
-msgstr "Nemienime vás nijak vyrušovať. Iba prenasledujeme nemŕtvych."
+msgstr "Nemienime vás nijako vyrušovať. Iba prenasledujeme nemŕtvych."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:412
-#, fuzzy
 msgid ""
 "Undead! Ha! We kill undead all the time. You be friendly enough so we won't "
 "kill you, but why should we help you?"
-msgstr "Nemŕtvi! Ha! My ich zabíjame stále. Prečo by sme vám mali pomôcť?"
+msgstr ""
+"Nemŕtvi! Cha! My ich zabíjame stále. Ste celkom priateľskí takže vás "
+"nechceme zabiť, ale prečo by sme vám mali pomôcť?"
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:473
-#, fuzzy
 msgid ""
 "Gold is good. We can trade gold for weapons and fire. We will help you "
 "defeat the undead now."
-msgstr "Zlato je dobré. Môžeme ho vymeniť za zbrane. Teraz vás nezabijeme."
+msgstr ""
+"Zlato je dobré. Môžeme ho vymeniť za zbrane a oheň. Teraz vám pomôžeme "
+"poraziť nemŕtvych."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:477
-#, fuzzy
 msgid ""
 "What aid can you offer us? We are not well suited to fighting in the caves."
 msgstr ""
-"Môžete nám poskytnúť pomoc v boji proti nemŕtvym? Nie sme moc dobre vybavení "
-"na boj v jaskyniach."
+"Môžete nám poskytnúť pomoc v boji proti nemŕtvym? Nie sme dobre vybavení na "
+"boj v jaskyniach."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:481
-#, fuzzy
 msgid ""
 "We already planned to kill the undead ourselves... First we kill dwarves "
 "though! Now we have dwarvish thunder fire and many trolls ready for "
 "fighting. They come too and help you smash them undead."
 msgstr ""
-"Cha! S tými nemŕtvymi sme si to plánovali vybaviť sami... Najprv si to ale "
-"vybavíme s trpaslíkmi! Teraz máme možnosť dostať sa k ich hromovému ohňu."
+"Už sme si to s nemŕtvymi plánovali vybaviť sami... Najprv si to ale vybavíme "
+"s trpaslíkmi! Teraz máme ich hromový oheň a veľa trollov pripravených na "
+"boj. Pôjdu tiež a pomôžu vám rozmetať tých nemŕtvych."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:485
@@ -2805,8 +2649,8 @@ msgid ""
 "Go here and light the thunder fire and it will blast a backdoor into the "
 "lich's lair!"
 msgstr ""
-"Poď sem, odpáľ to, a vytvoríš si tak zadné dvierka priamo do kostejovho "
-"brlohu!"
+"Poď sem, zapáľ hromový oheň a vytvoríš si tak zadné dvierka priamo do "
+"kostejovho brlohu!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:496
@@ -2815,11 +2659,11 @@ msgstr "Čo im máme ponúknuť za ich pomoc?"
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:498
-#, fuzzy
 msgid ""
 "We will give you $troll_help_cost gold pieces if you help us defeat the "
 "undead."
-msgstr "Keď budú nemŕtvi porazení, zaplatíme vám 50 zlatých."
+msgstr ""
+"Zaplatíme vám $troll_help_cost zlatých ak nám pomôžete poraziť nemŕtvych."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:518
@@ -2827,6 +2671,8 @@ msgid ""
 "Haha, you humans and elves poor, you have not enough gold! If you want troll "
 "help, you must come to me when you have the gold."
 msgstr ""
+"Chacha, vy ľudia a biedny elfovia, nemáte dosť zlata! Ak chcete aby vám "
+"trollovia pomohli, príďte keď budete mať zlato."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:528
@@ -2835,6 +2681,7 @@ msgid ""
 "Meet with and pay the troll leader $troll_help_cost gold to receive their "
 "help"
 msgstr ""
+"Nájdi vodcu trollov a zaplať mu $troll_help_cost zlatých, aby ti pomohli"
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:556
@@ -2844,14 +2691,13 @@ msgstr "Ponúkneme ti slobodu a miesto v našej zemi."
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:560
 msgid "Ha! Who wants stupid human lands!"
-msgstr ""
+msgstr "Cha! Kto chce hlúpe územia ľudí!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:564
-#, fuzzy
 msgid "Then you will not aid us in our quest to destroy the undead menace?"
 msgstr ""
-"Takže sa ku nám nepripojíte a nepomôžete nám v boji proti hrozbe nemŕtvych?"
+"Takže sa k nám nepripojíte a nepomôžete nám v boji proti hrozbe nemŕtvych?"
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:568
@@ -2859,6 +2705,9 @@ msgid ""
 "Bah! We destroy the undead when we want. Maybe wait for a few years first. "
 "If you want troll help, you come see me and give proper payment!"
 msgstr ""
+"Pche! Zničíme nemŕtvych, až keď budeme chcieť. Skúste počkať pár rokov, "
+"možno sa dočkáte. Ak chcete pomoc trollov, navštívte ma s náležitým "
+"množstvom zlata!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:572
@@ -2866,22 +2715,23 @@ msgid ""
 "These creatures are much too simpleminded to be of any help to us but at "
 "least they will not attack us outright. We will have to face Mebrin alone."
 msgstr ""
+"Tieto stvorenia sú príliš hlúpe aby nám pomohli, ale aspoň sa na nás rovno "
+"nevrhnú. Budeme sa musieť postaviť proti Mebrinovi sami."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:639
 msgid "Ha, you can afford troll help this time?"
-msgstr ""
+msgstr "Cha, teraz si môžete dovoliť pomoc trollov?"
 
 #. [option]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:648
-#, fuzzy
 msgid "Here's $troll_help_cost for your help against the undead."
-msgstr "Dobre. Všetci ľudia sa musia spojiť proti nemŕtvym."
+msgstr "Tu je $troll_help_cost zlatých za vašu pomoc proti nemŕtvym."
 
 #. [option]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:656
 msgid "No, sorry."
-msgstr ""
+msgstr "Nie, prepáč."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:686
@@ -2896,12 +2746,12 @@ msgstr "Prerazil som!"
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:736
 msgid "Mebrin! My teacher of old! Can that truly be you?"
-msgstr ""
+msgstr "Mebrin! Môj starý učiteľ! Si to naozaj ty?"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:741
 msgid "Eth..Ethiliel? You are here?"
-msgstr ""
+msgstr "Et..Etiliel? Čo tu robíš?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:746
@@ -2909,6 +2759,7 @@ msgid ""
 "How did you come to be here, you of all people, shut away from the trees and "
 "the light of the sun?"
 msgstr ""
+"Ako si sa sem dostal, práve ty, tak ďaleko od stromov a slnečného svetla?"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:751
@@ -2917,11 +2768,14 @@ msgid ""
 "Kidnapped me to raise undead for them. Menaced me with cold iron...ahh, the "
 "iron on my skin, it burned, it burned!"
 msgstr ""
+"Rozbil som ich reťaze. Tí prekliati ľudia ma spútali. Spútali ma! Uniesli ma "
+"aby som im zvolával nemŕtvych. Vyhrážali sa mi studeným železom... ach, "
+"železo na mojej koži! Pálilo to, pálilo to!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:756
 msgid "What is this? Elves bear steel swords."
-msgstr ""
+msgstr "Čože? Elfovia používajú železné meče."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:761
@@ -2931,6 +2785,9 @@ msgid ""
 "touches on mysteries that are not for men to know, human. I bind you never "
 "to speak of it."
 msgstr ""
+"Sú to len bojovníci. Všetci elfovia cítia tieň železa a pre tých ktorí sa "
+"zaoberajú vyššími umeniami, je to záhuba, narúšajúca ich mágiu. Ale to sa "
+"netýka toho, čo môžu ľudia vedieť. Prikazujem ti o tom nikdy nehovoriť."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:766
@@ -2939,6 +2796,9 @@ msgid ""
 "bring my new servants north to the lands we so foolishly granted to men in "
 "ages past, and destroy them all!"
 msgstr ""
+"Ľudia! Zradcovia! Vrahovia stromov! Sú odpadom tohoto sveta! Privediem "
+"svojich nových služobníkov na sever do zemí, ktoré sme im kedysi tak hlúpo "
+"prenechali a všetkých ich zničím! "
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:771
@@ -2948,9 +2808,13 @@ msgid ""
 "speaking. He would never have allied himself with the dead against the "
 "living!"
 msgstr ""
+"Tvojich služobníkov! Tvoji služobníci sú mnohokrát horší ako ktorýkoľvek "
+"človek. Smrdia hrobmi. Nemôžeš byť ten mudrc Mebrin, ktorého som už poznala. "
+"On by sa nikdy nespojil s mŕtvymi proti živým! "
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:776
+#, fuzzy
 msgid ""
 "I am called Mal M'Brin now, Ethiliel, best student of mine. It is time for a "
 "new lesson. I was such as you, full of doubt and weakness, but now I have "
@@ -2958,6 +2822,10 @@ msgid ""
 "have touched the void at the heart of all things. You, too, can partake of "
 "its boundless power."
 msgstr ""
+"Etiliel, moja najlepšia žiačka, teraz sa nazývam Mal M'Brin. Je čas na novú "
+"lekciu. Bol som ako ty, slabý a plný pochybností, ale tým všetkým som "
+"prešiel a teraz som lepší, než kedykoľvek predtým. V smrti je nekonečno a ja "
+"som sa dotkol prázdnoty srdcí všetkého. Aj ty môžeš skúsiť tú nekonečnú silu."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:781
@@ -2965,6 +2833,8 @@ msgid ""
 "Join me! Stand by my side! We shall rise and sweep the humans from the green "
 "world. Their corpses will serve us; their bones will dance for our pleasure."
 msgstr ""
+"Pripoj sa ku mne! Spolu povstaneme a vymetieme ľudí zo sveta zelene. Ich "
+"mŕtvoly nám budú slúžiť; ich kosti budú tancovať pre naše potešenie."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:786
@@ -2972,24 +2842,26 @@ msgid ""
 "And when we were done, what would we have become? Unlife. Hungering shadows, "
 "devouring all we once cherished."
 msgstr ""
+"A keď skončíme, čo sa z nás stane? Nemŕtvi. Hladujúce tiene, ktoré pohltia "
+"všetko, čo sme kedysi mali radi."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:792
 msgid ""
 "No. It shall not be. The sage Mebrin is dead. It is time to put him to rest."
 msgstr ""
+"Nie, tak to nebude. Mudrc Mebrin je mŕtvy. Je čas dopriať mu odpočinok."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:798
-#, fuzzy
 msgid ""
 "Even a mere human can see that you have become a mockery of all that you "
 "once believed in. I will destroy you and your works if it's the last thing I "
 "do!"
 msgstr ""
 "Môžeš vychvaľovať svoju silu, ako len chceš, ale stal si sa iba atrapou a "
-"výsmechom všetkého, v čo si kedysi veril. Zničíme ťa a spolu s tebou i celé "
-"tvoje temné dielo, aj keby to mala byť posledná vec, čo urobíme!"
+"výsmechom všetkého, v čo si kedysi veril. Zničím ťa a spolu s tebou i celé "
+"tvoje temné dielo, aj keby to mala byť posledná vec, čo urobím!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:802
@@ -2997,6 +2869,8 @@ msgid ""
 "You, destroy me? Fool human. You will die, and the elves you have seduced "
 "with you. And you shall serve me beyond death, forever."
 msgstr ""
+"Ty, a zničiť mňa? Si hlupák. Zomrieš a elfovia ktorých si pobláznil, s "
+"tebou. Po smrti mi budeš slúžiť naveky."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:814
@@ -3085,34 +2959,31 @@ msgstr "Hliadka smrti"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:168
-#, fuzzy
 msgid ""
 "We have escaped the great forest, but look! The undead are chasing us - we "
 "must not have rooted them all out of the wood."
 msgstr ""
-"Unikli sme z velkého lesa, ale pozrite! Nemŕtvi nás prenasledujú - nezničili "
+"Unikli sme z veľkého lesa, ale pozrite! Nemŕtvi nás prenasledujú - nezničili "
 "sme všetkých čo boli v lese."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:172
-#, fuzzy
 msgid ""
 "My lord, you must hasten back to Westin to prepare a defense against them. I "
 "will command the defense of the border forts."
 msgstr ""
 "Môj pane, musíte sa ponáhľať nazad do Westinu a pripraviť ho na obranu. Ja "
-"sa postarám o obranu týchto prihraničných pevností."
+"sa postarám o obranu prihraničných pevností."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:176
-#, fuzzy
 msgid ""
 "I too will make my stand here - I owe you my life and must atone for my "
 "crimes. Together we will hold off the foul undead as long as we can."
 msgstr ""
-"Ja tu tiež zostanem - dlhujem ti svoj život a musím napraviť hriechy zo "
-"svojho zločineckého života. Spolu skúsime udržať tých odporných nemŕtvych, "
-"ako sa len bude dlho dať."
+"Ja tu tiež zostanem - dlhujem ti svoj život a musím odčiniť moje zločiny. "
+"Spolu sa pokúsime udržať tých odporných nemŕtvych tak dlho, ako sa len bude "
+"dať."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:180
@@ -3122,38 +2993,36 @@ msgid ""
 "Westin while I prepare the city's defenses. We shall return as soon as we "
 "can in force and relieve you."
 msgstr ""
-"Pôjdem teda do Westinu a zburcujem radu. Vrátime sa čoskoro a dovedieme "
-"posily, aby vás vystriedali."
+"Minister Hylas, poďte so mnou do Westinu. Musíte zvolať Westinskú radu a "
+"pripraviť obranu mesta. Vrátime sa čoskoro a dovedieme posily, aby vás "
+"vystriedali."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:184
-#, fuzzy
 msgid ""
 "Make no promises you know you cannot keep. Organize the defense of Westin, "
 "and if you survive, remember those who fell here."
 msgstr ""
-"Nesľubuj veci, o ktorých vieš, že sú prázdne. Zabezpeč obranu Westinu a ak "
-"prežiješ, skús nezabudnúť na tých, ktorí tu padli."
+"Nesľubuj veci, o ktorých vieš, že ich nemôžeš splniť. Zabezpeč obranu "
+"Westinu a ak prežiješ, skús nezabudnúť na tých, ktorí tu padli."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:191
-#, fuzzy
 msgid ""
 "Your name will be sounded in the roll of heroes, and you will be avenged. "
 "Thank you, my friend."
 msgstr ""
 "Vaše mená budú zapísané medzi hrdinov nášho národa a pomstíme vás. Ďakujem "
-"ti, priateľu."
+"ti, priateľ môj."
 
 #. [message]: speaker=Lt. Illan
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:209
-#, fuzzy
 msgid ""
 "We are yours to command, Sir Gerrick. Our men are not the great warriors "
 "that you and Deoran are, but we will hold our lines staunchly, until the "
 "bitter end."
 msgstr ""
-"Sme k vašim služám, pán Gerrik. Naši muži nie sú až takí schopní bojovníci, "
+"Sme k vašim službám, pán Gerrik. Naši muži nie sú až takí schopní bojovníci, "
 "ako ste vy či Deoran, ale statočne budeme držať líniu, až do posledného "
 "dychu."
 
@@ -3164,19 +3033,17 @@ msgstr "Udržíš líniu a pána Gerrika nažive ako sa len bude dlho dať"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:222
-#, fuzzy
 msgid ""
 "There is no way to win this scenario, and no way to lose. Hold off the "
 "undead hordes as long as you can. Keep Sir Gerrick alive as long as you can. "
 "Every turn that passes strengthens the defenses of Westin."
 msgstr ""
-"Neexistuje spôsob ako tento scénar vyhrať, ale rovnako nemôžeš ani prehrať. "
-"Skús odolávať hordám nemŕtvych ako dlho dokážeš. Udrž pána Gerrika nažive čo "
-"možno najdlhšie. Každým ťahom posilňuješ obranu Westinu."
+"Neexistuje spôsob ako tento príbeh vyhrať, ale rovnako nemôžeš ani prehrať. "
+"Skús odolávať hordám nemŕtvych tak dlho, ako len dokážeš. Udrž pána Gerrika "
+"nažive čo možno najdlhšie. Každým ťahom posilňuješ obranu Westinu."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:254
-#, fuzzy
 msgid "Now I will never see my home again... Hold back the undead, Gerrick!"
 msgstr "Už nikdy neuvidím svoj domov... Zadržte tých nemŕtvych, Gerrik!"
 
@@ -3191,33 +3058,32 @@ msgstr ""
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:270
-#, fuzzy
 msgid ""
 "We will crush Westin as we have crushed you! No one shall stand between us "
 "and our home."
 msgstr ""
-"Rozdrvíme Westin rovnako, ako sme rozdrvili vás! Nikto nebude stáť v ceste "
-"medzi nami a našim novým domovom."
+"Rozdrvíme Westin rovnako, ako rozdrvíme vás! Nikto nebude stáť v ceste medzi "
+"nami a našim novým domovom."
 
 #. [scenario]
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:4
 msgid "Return To Kerlath"
-msgstr ""
+msgstr "Vráť sa do Kerlatu"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:51
 msgid "Move Deoran into Kerlath Province"
-msgstr ""
+msgstr "Presuň Deorana do provincie Kerlat"
 
 #. [side]: type=Outlaw, description=Tharzo Kalain
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:106
 msgid "Tharzo Kalain"
-msgstr ""
+msgstr "Tarzo Kalain"
 
 #. [side]: type=Lieutenant, description=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:143
 msgid "Plynry"
-msgstr ""
+msgstr "Plynry"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:232
@@ -3225,16 +3091,15 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:234
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:235
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:236
-#, fuzzy
 msgid "Border Guard"
-msgstr "Hliadka smrti"
+msgstr "Pohraničná hliadka"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:250
 msgid ""
 "Tharzo! That meddler who killed the Urza brothers approaches from the south. "
 "His men and horses look worn out."
-msgstr ""
+msgstr "Tarzo! "
 
 #. [message]: speaker=Tharzo Kalain
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:255
@@ -3242,16 +3107,18 @@ msgid ""
 "The dark gods have put revenge in our laps. Destroy them all before they "
 "reach the border fort!"
 msgstr ""
+"Bohovia temnôt nám vložili do rúk pomstu. Pobite ich skôr ako sa dostanú po "
+"hraničnú pevnosť!"
 
 #. [message]: speaker=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:270
 msgid "Halt! Who comes to the border of Wesnoth?"
-msgstr ""
+msgstr "Stáť! Kto prichádza k hraniciam Wesnotu?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:275
 msgid "It is I, Deoran, commander of the South Guard, and my men."
-msgstr ""
+msgstr "To som ja, Deoran, veliteľ Južnej hliadky a moji muži."
 
 #. [message]: speaker=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:280
@@ -3259,11 +3126,13 @@ msgid ""
 "Deoran? You had been thought lost long since. But I see by your men's gear "
 "and drill that they are of the South Guard indeed. Pass.."
 msgstr ""
+"Deoran? Mysleli sme si, že ste všetci mŕtvi. Ale vidím podľa výzbroje a "
+"disciplíny, že ste skutočne Južná hliadka. Pokračujte.."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:285
 msgid "We, and our elvish allies, have won a great battle against a lich."
-msgstr ""
+msgstr "My a naši elfskí spojenci, sme vyhrali veľký boj proti kostejom."
 
 #. [message]: speaker=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:290
@@ -3271,6 +3140,8 @@ msgid ""
 "Elvish allies? I think you had best make haste to Westin. There are rumors "
 "of trouble with the elves of the Aethenwood."
 msgstr ""
+"Elfskí spojenci? Myslím že bude najlepšie, ak sa poponáhľate do Westinu. "
+"Povráva sa, že s elfami z elfských lesov sú problémy."
 
 #. [scenario]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:5
@@ -3297,24 +3168,21 @@ msgstr "Poručík Nilaf"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:201
-#, fuzzy
 msgid ""
 "Look! The undead army has broken through Sir Gerrick's lines! Alas, he is "
 "lost!"
 msgstr ""
 "Pozrite sa! Hordy nemŕtvych prelomili obranné línie pána Gerrika! To môže "
-"znamenať len jedno, bol porazený!"
+"znamenať len jedno; bol porazený!"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:206
-#, fuzzy
 msgid ""
 "Since I was a boy, Gerrick was my leader, and there was no one braver. Today "
 "we shall defend our homes, and avenge him!"
 msgstr ""
-"Od svojho detstva bol Gerrik mojim vzorom a nepoznal som nikoho, kto by bol "
-"odvážnejší či statočnejší. Dnes budeme v jeho mene brániť naše domovy a "
-"pomstíme ho!"
+"Od môjho detstva bol Gerrik mojim vzorom a nepoznal som nikoho, kto by bol "
+"odvážnejší. Dnes budeme v jeho mene brániť naše domovy a pomstíme ho!"
 
 #. [message]: speaker=Jarek
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:217
@@ -3327,17 +3195,13 @@ msgstr ""
 
 #. [message]: speaker=Lt. Nilaf
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:221
-#, fuzzy
 msgid "Indeed, Lord, we are ready to defend our homes!"
 msgstr "Tak je pane, sme pripravení brániť naše domovy!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:233
-#, fuzzy
 msgid "I have summoned the great Council of Westin!"
-msgstr ""
-"A ja som zvolal Veľkú Westinskú Radu! Aj oni budú bojovať spolu s nami, "
-"všetkou silou, ktorú majú!"
+msgstr "Zvolal som veľkú Westinskú Radu!"
 
 #. [then]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:235
@@ -3351,21 +3215,21 @@ msgid ""
 "Hylas, I have made all possible haste, but my Council bretheren are not as "
 "swift as I. I fear that they will not arrive in time!"
 msgstr ""
+"Hylas, ponáhľal som sa ako sa len dalo, ale moji bratia z Rady nie sú takí "
+"rýchli ako ja. Obávam sa, že sem nestihnú doraziť včas!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:242
-#, fuzzy
 msgid ""
 "Minister Mefel, we are cheered by your presence. I trust that you and "
 "Minister Hylas will help us send these dark forces back to the abyss that "
 "spawned them!"
 msgstr ""
-"Hylas, odpovedáme na tvoju prosbu a radi sa pripojíme k zvrhnutiu týchto "
-"temných síl nazad do priepasti, z ktorej vyliezli!"
+"Minister Mefel, sme veľmi radi že ste tu. Verím že vy a Minister Hylas nám "
+"pomôžete poslať tie temné sily späť do pekla odkiaľ prišli!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:257
-#, fuzzy
 msgid ""
 "And I have summoned the great Council of Westin! They will battle with all "
 "their might!"
@@ -3399,13 +3263,12 @@ msgstr "Vaša pomoc je viac než vítaná."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:275
-#, fuzzy
 msgid ""
 "We have rallied all the forces that we will be able to! Let us not make Sir "
 "Gerrick's sacrifice a vain one. For Wesnoth!"
 msgstr ""
-"Zburcovali sme všetky sily, čo sa dalo! Nedopusťme, aby bola Gerrikova obeta "
-"márna. V mene Wesnotu!"
+"Zburcovali sme všetky oddiely, čo sa dalo! Nedopusťme, aby bola Gerrikova "
+"obeta márna. Za Wesnot!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:281
@@ -3434,7 +3297,6 @@ msgstr "Itelden"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:120
-#, fuzzy
 msgid ""
 "Commander! I took your message to the council, and your deeds have pleased "
 "them. Are the undead finally gone from our lands?"
@@ -3444,33 +3306,30 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:124
-#, fuzzy
 msgid ""
 "The undead are gone! Perhaps now there will be peace for a time in Westin. "
 "You have our thanks Lady Ethiliel."
 msgstr ""
-"Je po nich! Snáď bude teraz konečne mier a pokoj i vo Westine. Naša vďaka "
-"patrí najmä vám, pani Etiliel."
+"Je po nich! Snáď bude teraz vo Westine načas mier a pokoj . Naša vďaka patrí "
+"najmä vám, pani Etiliel."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:128
-#, fuzzy
 msgid ""
 "Though the undead are vanquished, they have brought us much sorrow. Deoran, "
 "your people have restored their honor. Let us part in peace."
 msgstr ""
 "Aj keď sme sa zbavili nemŕtvych, spôsobili nám nesmierne utrpenie. Deoran, "
-"vaši ľudia si znovu vyslúžili svoju česť. Rozíďme sa teda v pokoji a mieri."
+"vaši ľudia si znovu vyslúžili svoju česť. Rozíďme sa teda v mieri."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:132
-#, fuzzy
 msgid ""
 "Indeed. Neither the bandits nor the undead will trouble us for some time. We "
 "will tend our wounds and you yours."
 msgstr ""
 "Tak je. Už nám nebudú strpčovať život ani banditi, ani nemŕtvi a snáď to "
-"nejakú chvíľu vydrží. Je čas, aby sme vyliečili staré i nové rany."
+"nejakú chvíľu vydrží. Je čas, aby sme vyliečili naše rany a vy vaše."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:136
@@ -3490,47 +3349,42 @@ msgstr "Zaplatíš za Mebrinovu smrť!"
 
 #. [message]: speaker=Poor Farmer
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:169
-#, fuzzy
 msgid "I am just a farmer! What did I do?!"
 msgstr "Ja som len obyčajný farmár! Čo som spravil?!"
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:173
-#, fuzzy
 msgid ""
 "What did you do?! Your people kidnapped and murdered our greatest leader! "
 "And now you will pay!"
 msgstr ""
-"Čo si spravil?! Tvoji ľudia uniesli a zabili nášho najväčšieho vodcu! A "
+"Čo si to vykonal?! Tvoji ľudia uniesli a zabili nášho najväčšieho vodcu! A "
 "teraz za to zaplatia!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:194
-#, fuzzy
 msgid "He just killed that innocent farmer! We must stop him!"
 msgstr "Práve zabil nevinného farmára! Musíme ho zastaviť!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:198
-#, fuzzy
 msgid ""
 "Stop, Ithelden! I have traveled with these humans, and they are not the ones "
 "who harmed Mebrin. They are our allies!"
 msgstr ""
-"Stoj Itelden, prestaň!  Veľa som precestovala s týmito ľuďmi a oni nie sú "
-"tí, ktorí ublížili Mebrinovi. Oni sú naši spojenci!"
+"Stoj, Itelden!  Veľa som precestovala s týmito ľuďmi a oni nie sú tí, ktorí "
+"ublížili Mebrinovi. Oni sú naši spojenci!"
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:202
-#, fuzzy
 msgid ""
 "You too, Ethiliel? All these menfolk are the same! They fell trees to till "
 "the earth; now they have felled our leader! We cannot brook such deeds! You "
 "will die with them!"
 msgstr ""
-"Aj ty Etiliel? Všetci títo ľudia sú na jedno kopyto! Rúbu stromy, aby mohol "
-"zorať zem a teraz popravili i nášho vodcu! Nemôžeme nechať také správanie "
-"bez odozvy! Zomrieš spolu s nimi!"
+"Aj ty Etiliel? Všetci títo ľudia sú rovnakí! Rúbu stromy, aby mohli zorať "
+"zem a teraz popravili i nášho vodcu! Nemôžeme nechať také skutky bez odozvy! "
+"Zomrieš spolu s nimi!"
 
 #. [event]
 #. [unit]: type=$unit_type, description=Disciple of Mebrin
@@ -3557,40 +3411,36 @@ msgstr "Za každého nášinca, ktorého porazíte, povstanú ďaľší."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:298
-#, fuzzy
 msgid ""
 "We won't be able to hold them off for long. I should go reason with them!"
 msgstr ""
-"Nedokážeme im vzdorovať príliš dlho. Musím ísť a skúsiť sa s ním "
-"porozprávať! Snáď sa na mňa neodváži priamo zaútočiť."
+"Nedokážeme im vzdorovať príliš dlho. Mal by som sa pokúsiť s nimi "
+"porozprávať!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:302
-#, fuzzy
 msgid ""
 "Are you sure that the elves will greet you any more kindly than they have "
 "met us? After all, you did lead us into the forests..."
 msgstr ""
-"Akú máš istotu, že ťa elfi príjmu srdečnejšie než nás? Tak či onak, pravdou "
-"je, že z lesa sme sa dostali vďaka tebe..."
+"Akú máš istotu, že ťa elfovia prijmú priateľskejšie než nás? Tak či onak, "
+"pravdou je, že do pevnosti si nás zaviedol ty..."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:306
-#, fuzzy
 msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
 msgstr "Možno nie, ale je to naša jediná nádej. Musím sa dostať k Iteldenovi!"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:309
-#, fuzzy
 msgid "Ithelden's base"
-msgstr "Itelden"
+msgstr "Iteldenova základňa"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:315
 #, fuzzy
 msgid "Send Ethiliel to the Great Tree and parlay with Ithelden"
-msgstr "Dostaneš Etiliel k Veľkému Stromu na vyjednávanie s Iteldenom"
+msgstr "Dostaneš Etiliel k Veľkému stromu na vyjednávanie s Iteldenom"
 
 #. [message]: description=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:336
@@ -3598,13 +3448,15 @@ msgid ""
 "Ithelden's elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
 msgstr ""
+"Iteldenovi elfovia zabili Etiliel! Teraz už nemáme žiadnu šancu uzatvoriť s "
+"nimi dohodu. Vojna s Elfami je neodvratná."
 
 #. [message]: description=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:340
 msgid ""
 "We are far away from Weldyn. We'll surely all be killed long before any "
 "reinforcements arrive."
-msgstr ""
+msgstr "Sme ďaleko od Weldynu. Určite nás zabijú skôr ako dorazia posily."
 
 #. [scenario]
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
@@ -3670,23 +3522,28 @@ msgstr "kopija"
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:111
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:232
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:42
-#, fuzzy
 msgid "mace"
-msgstr "kopija"
+msgstr "palcát"
 
 #. [unit]: race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:4
+#, fuzzy
 msgid "Eyestalk"
-msgstr ""
+msgstr "'X'"
 
 #. [unit]: race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:25
+#, fuzzy
 msgid ""
 "Named 'Eyestalks' for obvious reasons, these plant-like creatures can focus "
 "their gaze onto an unsuspecting victim to draw life energy straight out of "
 "them to replenish their own. While almost defenseless against melee attacks, "
 "its deadly gaze from afar is not to be underestimated."
 msgstr ""
+"Názov 'X' bol zvolený z jasných dôvodov. Tieto rastlinné stvorenia upierajú "
+"pohľad na nič netušiacu obeť aby z nej vysali životnú energiu a posilnili sa "
+"ňou. Aj keď sa nevedia takmer vôbec brániť pri fyzických útokoch, ich "
+"smrtiaci pohľad netreba podceňovať."
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:32
@@ -3696,9 +3553,8 @@ msgstr "Myssh"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:86
-#, fuzzy
 msgid "gaze"
-msgstr "kosa"
+msgstr "pohľad"
 
 #. [unit]: race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
@@ -3707,15 +3563,14 @@ msgstr "Veliteľ jazdy"
 
 #. [unit]: race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:27
-#, fuzzy
 msgid ""
 "Leaders of the border guards, mounted commanders are trained not only to "
 "ride and fight, but to lead. They command the garrisons that keep peace in "
 "the provinces of Wesnoth."
 msgstr ""
-"Vodcovia hraničnej jazdnej stráže netrénujú iba jazdecké a bojové umenie, "
-"ale i taktiku, stratégiu a vodcovstvo. Velia posádkam, ktoré udržujú mier v "
-"šírych provinciách okolo Wesnotu."
+"Vodcovia pohraničných hliadok, velitelia jazdy, netrénujú iba jazdecké a "
+"bojové umenie, ale i taktiku, stratégiu a vodcovstvo. Velia posádkam, ktoré "
+"udržujú mier v šírych provinciách Wesnotu."
 
 #. [unit]: race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
@@ -3724,15 +3579,14 @@ msgstr "Poručík pechoty"
 
 #. [unit]: race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:28
-#, fuzzy
 msgid ""
 "Commanders of the infantry of Wesnoth are responsible for the garrison and "
 "defense of the border towns and villages. They are drawn from the ranks of "
 "veteran soldiers, not nobility, and all have shown leadership and courage in "
 "battle."
 msgstr ""
-"Velitelia wesnotskej pechoty sú zodpovední za hraničné posádky a za obranu "
-"hraničných miest a dedín. Sú vyberaní spomedzi skúsených radových vojakov, "
+"Velitelia wesnotskej pechoty sú zodpovední za pohraničné posádky a za obranu "
+"pohraničných miest a dedín. Sú vyberaní spomedzi skúsených radových vojakov, "
 "nie šľachty, a všetci dokázali svoje vodcovské schopnosti a odvahu priamo v "
 "boji."
 
@@ -3743,7 +3597,6 @@ msgstr "Kadet"
 
 #. [unit]: race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:27
-#, fuzzy
 msgid ""
 "Scarcely 17 or 18 years old, the sons of knights and lords were given mounts "
 "and swords and told to become leaders of men. Those whose mettle was strong "
@@ -3756,19 +3609,18 @@ msgstr ""
 #. [unit]: race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
 msgid "Mounted General"
-msgstr ""
+msgstr "Generál jazdy"
 
 #. [unit]: race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:29
-#, fuzzy
 msgid ""
 "Being the most able leaders of the border guards, Mounted Generals are "
 "trained not only to ride and fight, but to lead. They command the garrisons "
 "that keep peace in the provinces of Wesnoth."
 msgstr ""
-"Vodcovia hraničnej jazdnej stráže netrénujú iba jazdecké a bojové umenie, "
+"Vodcovia pohraničnej jazdnej stráže netrénujú iba jazdecké a bojové umenie, "
 "ale i taktiku, stratégiu a vodcovstvo. Velia posádkam, ktoré udržujú mier v "
-"šírych provinciách okolo Wesnotu."
+"šírych provinciách Wesnotu."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:13
@@ -3782,13 +3634,11 @@ msgstr "Okúste chladnú oceľ!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:39
-#, fuzzy
 msgid "I have lost all helping the humans... Now they will surely perish!"
-msgstr "Obetoval som všetko pomoci ľuďom... Teraz ich určite zničia!"
+msgstr "Obetoval som všetko na pomoc ľuďom... Teraz určite zahynú!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:53
-#, fuzzy
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "Svojmu kráľovstvu som obetoval všetko! Pomsti ma, Deoran!"
 
@@ -3799,14 +3649,12 @@ msgstr "Už nikdy neuvidím Westin slobodný..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:82
-#, fuzzy
 msgid "Far from home I fall - but not in vain! Guard our people, Deoran!"
 msgstr ""
 "Zomieram ďaleko od domova, ale nie nadarmo! Deoran, pomôž nášmu národu!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:30
-#, fuzzy
 msgid ""
 "Thugs are the mainstay of the bandit armies. They do not have a ranged "
 "attack, and are vulnerable to your archers. Deoran's lance will also strike "
@@ -3816,11 +3664,10 @@ msgstr ""
 "Hrdlorezi sú hlavnou zložkou armád banditov. Nedokážu bojovať na diaľku a sú "
 "zvlášť zraniteľní lukostrelcami. Deoranova kopija dokáže takisto nahnať do "
 "ich sŕdc nesmierny strach! Rovnako ako ostatné jednotky banditov aj "
-"hrdlorezi sú nebezpečnejší počas nocí."
+"hrdlorezi sú nebezpečnejší počas noci."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:57
-#, fuzzy
 msgid ""
 "Thieves are more subtle than thugs. They try to surround your units and stab "
 "them in the back. Make sure that thieves never have an opportunity to attack "
@@ -3832,62 +3679,58 @@ msgstr ""
 "snažia obkľúčiť jednotku protivníka a zaútočiť odzadu. Musíš zabrániť "
 "možnosti útoku zlodejov v situáciach, keď majú spojenca priamo na druhej "
 "strane jednotky, na ktorú útočia. Inak dokážu zlodeji spôsobiť tejto "
-"nešťastnej jednotky dvakrát väčšie zranenia! Podobne ako hrdlorezi aj "
+"nešťastnej jednotke dvakrát väčšie zranenia! Podobne ako hrdlorezi aj "
 "zlodeji sú vystavení útokom na diaľku od tvojich lukostrelcov."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:84
-#, fuzzy
 msgid ""
 "Footpads are the scouts of the bandit armies. They are quick, and have both "
 "a melee attack and a ranged attack. Neither of their attacks is very strong, "
 "however, and your spearmen will make quick work of them during the day."
 msgstr ""
-"Poskoci sú prakticky prieskukmníkmi armád banditov. Sú rýchli a ovládajú boj "
-"zblízka i na diaľku. Ani jeden spôsob boja nie je zvlášť efektívny a silný, "
-"takže tvoji oštepníci si s nimi počas dňa dokážu rýchlo poradiť."
+"Poskokovia sú prieskumníkmi armád banditov. Sú rýchli a ovládajú boj zblízka "
+"i na diaľku. Ani jeden spôsob boja nie je zvlášť efektívny a silný, takže "
+"tvoji oštepníci si s nimi počas dňa dokážu rýchlo poradiť."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:111
-#, fuzzy
 msgid ""
 "Skeletons are the bones of fallen warriors raised by some dark magic. They "
 "are almost immune to piercing weapons like arrows and spears. Bladed attacks "
 "like swords will injure them, and Minister Hylas's arcane attack is deadly "
 "against them. Like the rest of the bandits, they are more dangerous at night!"
 msgstr ""
-"Kostlivci pochádzajú z tiel a kostí padlých bojovníkov vzkriesených s "
-"použitím temnej mágie. Sú prakticky úplne odolní voči bodným zbraniam ako sú "
-"oštepy či šípy. Sečné útoky im zvyčajne ublížia viac, no úplne smrtiacimi sú "
-"pre nich útoky vyvolané kúzlami svetla, ktoré ovláda Minister Hylas. Podobne "
-"ako banditi sú aj kostlivci omnoho silnejší počas noci!"
+"Kostlivci pochádzajú z kostí padlých bojovníkov vzkriesených s použitím "
+"temnej mágie. Sú takmer úplne odolní voči bodným zbraniam ako sú oštepy či "
+"šípy. Sečné útoky im zvyčajne ublížia viac, no úplne smrtiacimi sú pre nich "
+"útoky vyvolané kúzlami svetla, ktoré ovláda Minister Hylas. Podobne ako "
+"banditi sú aj kostlivci omnoho silnejší počas noci!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:138
-#, fuzzy
 msgid ""
 "Walking corpses are the bodies of slain warriors, filled with some black "
 "magic. They are slow and weak - any of your units is more than a match for "
 "them. They are only dangerous in packs..."
 msgstr ""
 "Chodiace mŕtvoly sú vlastne telá zabitých bojovníkov, ktoré sú pod kontrolou "
-"čiernej mágie. Sú to pomalé tvory, ktorákoľvek tvoja jednotka by nemala mať "
+"čiernej mágie. Sú pomalé a slabé - ktorákoľvek tvoja jednotka by nemala mať "
 "problém si poradiť s jednou mŕtvolou. Obzvlášť nebezpečné sú tieto mŕtvoly "
-"kvôli ich tendencii útočiť vo veľkých skupinách!"
+"vtedy, keď útočia vo veľkých skupinách..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:20
-#, fuzzy
 msgid ""
 "During the reign of Haldric VII, the land of Wesnoth was peaceful. Konrad I "
 "had driven off the orcs in the north. The eastern forts were quiet and "
 "almost deserted. The elves in the western forest kept to their own affairs. "
 "In the prosperous south men built new towns and farms."
 msgstr ""
-"Počas vlády kráľa Haldrika VII. bol Wesnot relatívne bezpečný. Konrad I. "
-"vyhnal orkov zo severu. Východné pevnosti boli úplne pokojné a takmer "
-"ľudoprázdne. Elfi v západných lesoch sa o záležitosti iných národov prestali "
-"zaujiímať. A na prosperujúcom juhu budovali ľudia nové mestá a farmy."
+"Počas vlády kráľa Haldrika VII. panoval vo Wesnote mier. Konrad I. vyhnal "
+"orkov zo severu. Východné pevnosti boli úplne pokojné a takmer ľudoprázdne. "
+"Elfovia v západných lesoch sa o záležitosti iných národov prestali zaujímať "
+"a na prosperujúcom juhu budovali ľudia nové mestá a farmy."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:24
@@ -3901,18 +3744,25 @@ msgid ""
 "the ancient heart forest of the Great Continent so dense and gloomy that "
 "even elves forbore from dwelling there."
 msgstr ""
+"Osem rokov Južná hliadka bránila farmy a domy obklopujúce mesto Westin, "
+"hlavné mesto najjužnejšej pohraničnej provincie Wesnotu, Kerlat. "
+"Najneľútostnejší nepriatelia ktorým museli čeliť boli občasní banditi. "
+"Orkovia boli ďaleko na severe. V elfských lesoch na západe žili elfovia, nie "
+"nepriatelia ľudí, ale ľahostajní k ich záležitostiam. V divočine južne do "
+"Kerlatu žilo niekoľko skupín vyhnancov. V tých miestach sa zachovala časť "
+"pôvodného lesa Veľkého kontinentu - temného a nepreniknuteľného tak, že ani "
+"elfovia ho nechceli obývať. "
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:28
-#, fuzzy
 msgid ""
 "Then, in the spring of the ninth year the reports from the South Guard, "
 "under the command of Sir Loris, suddenly ceased. King Haldric decided to "
 "send someone to investigate."
 msgstr ""
 "No na jar v deviatom roku odrazu prestali prichádzať správy od pána Lorisa, "
-"veliteľa južných posádok. Kráľ Haldrik sa rozhodol vyslať do oblasti "
-"vyšetrovateľa."
+"veliteľa Južnej hliadky. Kráľ Haldrik sa rozhodol vyslať do oblasti niekoho, "
+"kto vypátra, čo sa stalo."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:32
@@ -3922,6 +3772,10 @@ msgid ""
 "alongside Konrad I in the wars against the orcs. The king had a mission for "
 "Haldiel's son."
 msgstr ""
+"Kráľ Haldrik si dal predvolať mladého, neznámeho ale odhodlaného dôstojníka "
+"menom Deoran. Deoran bol syn Haldiela, ktorý statočne bojoval po boku "
+"Konrada I. vo vojnách proti orkom. Kráľ mal pre Haldielovho syna pripravenú "
+"úlohu."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:36
@@ -3930,33 +3784,33 @@ msgid ""
 "Westin, to demand an accounting from Sir Loris, the commander of the South "
 "Guard..."
 msgstr ""
+"Kráľ Haldrik mladého Deorana pasoval za rytiera a hneď po tom mu dal rozkaz "
+"ísť do Westinu a požiadať o správu pána Lorisa, veliteľa Južnej hliadky..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:57
-#, fuzzy
 msgid ""
 "Having defeated Urza Mathin, Deoran immediately sent scouts out into the "
 "whole countryside. His men reported bandits roaming freely over the border, "
 "terrorizing the peasants and villagers. Nowhere did they find soldiers of "
 "the South Guard."
 msgstr ""
-"Po porážke Urzu Matína, Deoran okamžite vyslal prieskumníkov do okolia. Títo "
+"Po porážke Urzu Matína, Deoran okamžite vyslal prieskumníkov do okolia. Tí "
 "hlásili veľké bandy lupičov a banditov voľne sa pohybujúcich po krajine a "
 "cez hranice, pritom terorizujúc farmárov a dedinčanov. Po vojakoch z Južnej "
-"posádky však nebolo ani stopy."
+"hliadky však nebolo ani stopy."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:61
-#, fuzzy
 msgid ""
 "Deoran decided to take action and wipe out the bandits. He gathered the men "
 "of Sir Gerrick's command and whatever peasants were of strong body and "
 "fighting age. With this small force he rode in haste to Westin, capital of "
 "the province."
 msgstr ""
-"Deoran sa teda rozhodol konať rázne a vybaviť si účty s banditmi. Dal dokopy "
-"vojakov z Gerrikovho oddielu a pridal k nim všetkých farmárov, ktorí boli "
-"dostatočne silní a schopní. Na čele tohto malého oddielu sa vydal do "
+"Deoran sa teda rozhodol konať rázne a vybaviť si účty s banditami. Dal "
+"dokopy vojakov z Gerrikovho oddielu a pridal k nim všetkých farmárov, ktorí "
+"boli dostatočne silní a schopní. Na čele tohto malého oddielu sa vydal do "
 "Westinu, hlavného mesta provincie."
 
 #. [part]
@@ -3970,17 +3824,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:86
-#, fuzzy
 msgid ""
 "Ethiliel led the men of the South Guard into the southern forest. Shadows "
 "soon covered their paths day and night, and a thick fog filled the air."
 msgstr ""
-"Etiliel viedla vojakov z Južnej posádky do južných lesov. Onedlho sa okolo "
+"Etiliel viedla vojakov z Južnej hliadky do južných lesov. Onedlho sa okolo "
 "výpravy vznášali iba tiene a hustá hmla."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:91
-#, fuzzy
 msgid ""
 "For many weeks they marched down nameless paths that no man had trod before. "
 "From time to time they saw ghostly images of elven villages and halls in the "
@@ -3988,18 +3840,17 @@ msgid ""
 msgstr ""
 "Mnoho týždňov pochodovali po cestách bez mena, o ktorých žiadny človek "
 "predtým ani len netušil. Čas od času narazili na opustené elfské osady a "
-"budovy v hlbokých lesoch, ale ako postupovali, aj tieto zvyšky civilizácie "
-"sa stávali čoraz zriedkavejšie."
+"budovy v hlbokých lesoch, ale ako postupovali ďalej, aj tieto zvyšky "
+"civilizácie sa stávali čoraz zriedkavejšie."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:96
-#, fuzzy
 msgid ""
 "Finally Ethiliel told the men to halt and pitch camp - they had reached the "
 "Black River, beyond which no elf or man would willingly pass."
 msgstr ""
 "Nakoniec im Etiliel povedala, aby zastavili a postavili tábor - dostali sa k "
-"veľkej rieky, cez ktorú by za normálnych okolností nechcel prejsť žiaden "
+"Čiernej rieke, cez ktorú by za normálnych okolností nechcel prejsť žiaden "
 "človek ani elf."
 
 #. [part]
@@ -4009,6 +3860,8 @@ msgid ""
 "north for home. As they re-crossed the Black River, fall was fading into "
 "winter."
 msgstr ""
+"Po porážke Mal M'Brina, sa Deoranove jednotky a ich elfskí spojenci vybrali "
+"na sever domov. Keď prekračovali späť Čiernu rieku, jeseň vystriedala zima."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:110
@@ -4017,22 +3870,23 @@ msgid ""
 "lifted by the thought of home, but their bodies became gaunt. The long weeks "
 "of trudging northward took its toll."
 msgstr ""
+"V temných lesoch nebolo veľa príležitostí zaobstarať si potravu. Náladu "
+"mužov zlepšovala len spomienka na domov ale ich telá sa stali vychudnuté. "
+"Dlhé týždne plahočenia sa na sever si vzali svoju daň."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:119
-#, fuzzy
 msgid ""
 "Snow fell as Deoran, Sir Gerrick and Urza Afalas emerged from the great "
 "southern forest. An oppressive silence hung over the land, and an ominous "
 "gloom followed close behind the men of the South Guard."
 msgstr ""
 "Keď sa Deoran, Gerrik a Urza Afalas dostali z veľkých južných lesov, napadol "
-"prvý sneh. Krajina stíchla a za vojakmi z Južnej posádky za vznášala tichá "
+"prvý sneh. Krajina stíchla a nad vojakmi z Južnej hliadky sa vznášala tichá "
 "no výrazná hrozba."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:124
-#, fuzzy
 msgid ""
 "Finally they arrived at the southern border of Wesnoth and the forts that "
 "guarded it. The undead were close on their heels..."
@@ -4042,7 +3896,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:133
-#, fuzzy
 msgid ""
 "Finally the sun broke the horizon and its rays breathed new life into the "
 "weary defenders of Westin. A great cry echoed through the valley as the men "
@@ -4051,28 +3904,26 @@ msgid ""
 msgstr ""
 "Konečne vyšlo na horizonte slnko a jeho lúče vdýchli unaveným obrancom "
 "Westinu nový život. Ohromný pokrik sa ozýval celým údolím, keď sa vojaci "
-"Južnej posádky odhodlali na protiútok, aby zatlačili svojich elfských "
+"Južnej hliadky odhodlali na protiútok, aby zatlačili svojich elfských "
 "protivníkov čím ďalej od mestských hradieb. A potom, náhle pokryla okolie "
 "hustá hmla..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:138
-#, fuzzy
 msgid ""
 "When the fog broke, Ethiliel stood alone, facing the wall of spears. Bathed "
 "in light, she spoke to the men of Wesnoth, saying, 'Stop! Enough blood has "
 "been spilled before the walls of this city! The injury you menfolk have done "
 "to the elves is great, but your service also was worthy.'"
 msgstr ""
-"Keď sa hmla znovu dvihla, stála Etiliel sama proti nepreniknuteľnej stene "
-"oštepov. Vo svite slnka prehovorila k vojakom z Wesnotu: \"Prestaňte! Už sa "
+"Keď sa hmla znovu zdvihla, stála Etiliel sama proti nepreniknuteľnej stene "
+"oštepov. Vo svite slnka prehovorila k vojakom Wesnotu: \"Prestaňte! Už sa "
 "prelialo príliš veľa krvi pod hradbami tohto nešťastného mesta! Vy ľudia ste "
 "elfov veľmi urazili ale na druhej strane, vaše činy z posledných týždňov "
 "boli k nezaplateniu.\""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:142
-#, fuzzy
 msgid ""
 "These are the terms of the peace between us: any man found in the forest or "
 "hills that belong to the elves will taste death. No more will the elves send "
@@ -4083,39 +3934,36 @@ msgstr ""
 "nájdeme akéhokoľvek človeka v lesoch či kopcoch, ktoré patria do krajiny "
 "elfov, tento narušiteľ musí zomrieť. Elfskí vyslanci nevstúpia viac na "
 "územie Westinu a nebudú pôsobiť v úlohe poradcov. Už nikdy v budúcnosti "
-"nebude človek vítaní v zelených lesoch."
+"nebude človek vítaný v zelených lesoch."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:146
-#, fuzzy
 msgid ""
 "Thus an uneasy peace was consummated between man and elf. For many weeks the "
 "South Guard patrolled the borders of the elven woods and watched over the "
 "growing farms and villages. Finally, as the snow melted and the roads bore "
 "their burdens again, a messenger came from King Haldric."
 msgstr ""
-"A tak uzavreli ľudia a elfi neľahký mier. Mnoho týždňov hliadkovali vojaci z "
-"Južnej posádky na hraniciach elfských lesov a dozerali na znovu sa "
+"A tak uzavreli ľudia a elfovia neľahký mier. Mnoho týždňov hliadkovali "
+"vojaci z Južnej hliadky na hraniciach elfských lesov a dozerali na znovu sa "
 "rozrastajúce farmy a dediny. Nakoniec, keď sa sneh konečne roztopil a cesty "
 "boli opäť voľné, dorazil posol od kráľa Haldrika."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:150
-#, fuzzy
 msgid ""
 "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "
 "every commander would be needed to weather the storm..."
 msgstr ""
 "Pán Deoran, rytier Wesnotu, je povolaný na audienciu priamo ku kráľovi "
-"Haldrikovi. Búrkové mraky sa zhromažďujú nad krajinou a kráľ potrebuje "
+"Haldrikovi. Búrkové mraky sa zhromažďujú nad krajinou a kráľ bude potrebovať "
 "každého veliteľa, aby túto búrku zažehnal...\n"
 "\n"
 "(Verzia 1.2.0, September 2006 -- preklad Martin \"Arðarïeŀ\" Džbor)"
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:160
-#, fuzzy
 msgid ""
 "With bitter spears and grim expression, the men of Wesnoth launched the last "
 "assault on the undead. As they cut through lifeless flesh and shattered "
@@ -4131,7 +3979,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:166
-#, fuzzy
 msgid ""
 "Exhausted, Deoran dropped his lance to the ground. The men around him slowly "
 "lifted their helmets from their brows. The moans of the wounded overshadowed "
@@ -4143,7 +3990,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:171
-#, fuzzy
 msgid ""
 "For days the healers of Westin worked feverishly to save as many of the "
 "valiant soldiers as they were able. Many mounds, though, were raised as "
@@ -4152,12 +3998,11 @@ msgid ""
 msgstr ""
 "Mnoho dní sa felčiari z Westinu snažili zachrániť čo možno najviac "
 "statočných vojakov, zranených v poslednej bitke. Bohužiaľ, nové a nové "
-"mohyle vyrastali vo poliach okolo mesta pre tých, ktorým žiadna snaha "
+"mohyly vyrastali vo poliach okolo mesta pre tých, ktorým žiadna snaha "
 "nepomohla a dostali sa už len na zoznam padlých hrdinov."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:176
-#, fuzzy
 msgid ""
 "The loftiest mound belonged to Sir Gerrick. After the battle, Deoran led an "
 "expedition to the southern border posts, and there he found Sir Gerrick's "
@@ -4172,7 +4017,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:180
-#, fuzzy
 msgid ""
 "Gerrick's name was added at the top of the roll of fallen heroes, and read "
 "aloud at the beginning of every great council. The memory of his desperate "
@@ -4181,25 +4025,23 @@ msgid ""
 msgstr ""
 "Gerrikovo meno bolo zapísané na začiatok zoznamu padlých hrdinov a bol mu "
 "vzdaný hold na začiatku každého zasadnutia Westinskej rady. Pamiatka na jeho "
-"zúfalý posledný boj na hraniciach sa dostali do piesní a legiend a nebola "
+"zúfalý posledný boj na hraniciach sa dostala do piesní a legiend a nebola "
 "zabudnutá po mnoho generácií."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:185
-#, fuzzy
 msgid ""
 "Deoran spent his days visiting the wounded and directing the men as they "
 "rebuilt the shattered walls and ramparts of the city. Finally, as the snow "
 "melted and the roads bore their burdens again, a messenger came from King "
 "Haldric."
 msgstr ""
-"Deoran trávil svoje dní návštevami ranených a riadením obnovy poškodených "
+"Deoran trávil svoje dni návštevami ranených a riadením obnovy poškodených "
 "hradieb a obranných veží mesta. Nakoniec, po tom čo sa roztopil posledný "
 "sneh, objavil sa v meste posol od kráľa Haldrika."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:190
-#, fuzzy
 msgid ""
 "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "
@@ -4207,6 +4049,6 @@ msgid ""
 msgstr ""
 "Pán Deoran, rytier Wesnotu, je pozvaný na súrnu audienciu k samotnému "
 "kráľovi Haldrikovi do Weldynu. Búrkové mraky sa znovu sťahujú nad krajinou a "
-"každý skúsený veliteľ je potrebný na zažehnanie blížiaceho sa útoku...\n"
+"každý skúsený veliteľ bude potrebný na zažehnanie blížiaceho sa útoku...\n"
 "\n"
 "(Verzia 1.2.0, September 2006 -- preklad Martin \"Arðarïeŀ\" Džbor)"
