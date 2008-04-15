@@ -44,7 +44,7 @@ echo -n 'svn update... '
 svn up $REVISION > /dev/null
 rev=$(svnversion -n src/)
 echo "to $rev"
-if [ "$rev" == "" ]; then
+if [ "$rev" = "" ]; then
 	echo "No revision information found."
 	exit 1
 fi

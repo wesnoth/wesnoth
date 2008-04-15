@@ -61,7 +61,7 @@ do
 		ln -s logs/$LOG ../../$SERVER/current.log
 		# wait a bit so the server is likely up and listening
 		sleep 1
-		if [ "$SERVER" == "1.2" ]; then
+		if [ "$SERVER" = "1.2" ]; then
 			rm -f $SERVERBASE/oldlobby.log
 			mv $SERVERBASE/currentlobby.log $SERVERBASE/oldlobby.log > /dev/null 2>&1
 			ln -s $SERVERBASE/logs/lobby.$DATE.$REV.log $SERVERBASE/currentlobby.log
