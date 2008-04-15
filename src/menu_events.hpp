@@ -72,7 +72,7 @@ namespace events{
 
 class chat_handler {
 public:
-	chat_handler() {}
+	chat_handler();
 	virtual ~chat_handler();
 
 protected:
@@ -85,6 +85,7 @@ protected:
 	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
 	void send_command(const std::string& cmd, const std::string& args="");
 	void change_logging(const std::string& data);
+	friend class chat_command_handler;
 };
 
 class menu_handler : private chat_handler {

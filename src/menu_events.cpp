@@ -21,6 +21,7 @@
 
 #include "construct_dialog.hpp"
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "formula_ai.hpp"
 #include "game_display.hpp"
 #include "game_config.hpp"
@@ -1799,6 +1800,468 @@ private:
 	{
 		gui_->add_chat_message(time, speaker, side, message, type, false);
 	}
+	
+	//A helper class template with a slim public interface
+	//This represents a map of strings to void()-member-function-of-Worker-pointers 
+	//with all the common functionality like general help, command help and aliases
+	//Usage (of a derived class): Derived(specific-arguments) d; d.dispatch(command);
+	//Derived classes should override virtual functions where noted.
+	//The template parameter currently must be the dervived class itself,
+	//i.e. class X : public map_command_handler<X>
+	//To add a new command in a derived class:
+	//  * add a new private void function() to the derived class
+	//  * add it to the function map in init_map there, setting flags like 
+	//    "D" for debug only (checking the flag is also done in the derived class)
+	//  * remember to add some help and/or usage information in init_map()
+	template <class Worker>
+	class map_command_handler
+	{
+		public:
+			typedef void (Worker::*command_handler)();
+			struct command
+			{
+				command_handler handler;
+				std::string help; //long help text
+				std::string usage; //only args info
+				std::string flags;
+				explicit command(command_handler h, const std::string help="", 
+					const std::string& usage="", const std::string flags="")
+				: handler(h), help(help), usage(usage), flags(flags)
+				{
+				}								
+				bool has_flag(const char f) const
+				{
+					return flags.find(f) != flags.npos;
+				}
+				command& add_flag(const char f)
+				{
+					flags += f;
+					return *this;
+				}
+			};
+			typedef std::map<std::string, command> command_map;
+			typedef std::map<std::string, std::string> command_alias_map;
+
+			map_command_handler()
+			{
+			}
+			bool empty() const
+			{
+				return command_map_.empty();
+			}
+			bool has_command(std::string& cmd) const
+			{
+				return get_command(cmd) != 0;
+			}
+			//actual work function
+			void dispatch(std::string cmd)
+			{
+				parse_cmd(cmd);
+				if (empty()) {
+					init_map_default();
+					init_map();
+				}				
+				if (cmd_.empty()) {
+					return;
+				}
+				std::string actual_cmd = get_actual_cmd(cmd_);
+				if (const command* c = get_command(actual_cmd)) {
+					if (is_enabled(*c)) {
+						(static_cast<Worker*>(this)->*(c->handler))();
+					}
+				} else if (help_on_unknown_) {
+					print("help", "Unknown command, try " + cmd_prefix_ + "help "
+						"for a list of available commands");
+				}
+			}			
+		protected:						
+			void init_map_default() 
+			{
+				register_command("help", &map_command_handler<Worker>::help,
+					"Command list and help.", "[command]");
+			}
+			//derived classes initialize the map overriding this function
+			virtual void init_map() = 0;
+			//overriden in derived classes to actually print the messages somwehere
+			virtual void print(const std::string& title, const std::string& message) = 0;			
+			//should be overriden in derived classes if the commands have flags
+			//this should return a string describing what all the flags mean
+			virtual std::string get_flags_description() const
+			{
+				return "";
+			}
+			//this should return a string describing the flags of the given command
+			virtual std::string get_command_flags_description(const command& c) const
+			{
+				return "";
+			}
+			//this should be overriden if e.g. flags are used to control command
+			//availability. Return false if the command should not be executed by dispach()
+			virtual bool is_enabled(const command& c) const 
+			{
+				return true;
+			}
+			void parse_cmd(const std::string& cmd_string)
+			{
+				args_ = utils::split(cmd_string, ' ');
+				cmd_ = args_.empty() ? "" : args_[0];
+				data_ = (cmd_string.begin() + cmd_.size() == cmd_string.end()) ? "" 
+					: std::string(cmd_string.begin() + cmd_.size() + 1, cmd_string.end());
+			}
+			//safe n-th argunment getter
+			std::string get_arg(unsigned argn) const
+			{
+				return (argn >= 0 && argn < args_.size()) ? args_[argn] : "";
+			}
+			//take aliases into account
+			std::string get_actual_cmd(const std::string& cmd) const
+			{
+				command_alias_map::const_iterator i = command_alias_map_.find(cmd);
+				return i != command_alias_map_.end() ? i->second : cmd;
+			}
+			const command* get_command(const std::string& cmd) const
+			{
+				typename command_map::const_iterator i = command_map_.find(cmd);
+				return i != command_map_.end() ? &i->second : 0;
+			}
+			void help()
+			{
+				//print command-specific help if available, otherwise list commands
+				if (help_command(get_arg(1))) {
+					return;
+				}
+				std::stringstream ss;
+				BOOST_FOREACH(typename command_map::value_type i, command_map_) {
+					ss << i.first << " ";
+					ss << i.second.usage << " ";
+					if (!i.second.flags.empty()) {
+						ss << "(" << i.second.flags << ") ";
+					}
+				}
+				print("help", "Available commands " + get_flags_description() + ":");
+				print("help", ss.str());
+				print("help", "Type " + cmd_prefix_ + "help <command> for more info");				
+			}
+			//returns true if the command exists.
+			bool help_command(const std::string& acmd)
+			{
+				std::string cmd = get_actual_cmd(acmd);
+				const command* c = get_command(cmd);
+				if (c) {
+					std::stringstream ss;
+					ss << cmd_prefix_ << cmd;
+					if (c->help.empty() && c->usage.empty()) {
+						ss << " No help available.";
+					} else {
+						ss << " - " << c->help;
+					}
+					if (!c->usage.empty()) {
+						ss << " Usage: " << cmd_prefix_ << cmd << " " << c->usage;
+					}
+					ss << get_command_flags_description(*c);
+					const std::vector<std::string> l = get_aliases(cmd);
+					if (!l.empty()) {
+						ss << " (aliases: " << utils::join(l,' ') << ")";
+					}
+					print("help", ss.str());
+				}
+				return c != 0;
+			}
+			std::vector<std::string> args_;
+			std::string cmd_;
+			std::string data_;
+		protected:
+			//show a "try help" message on unknown command?
+			static void set_help_on_unknown(bool value)
+			{
+				help_on_unknown_ = value;
+			}
+			//this is display-only
+			static void set_cmd_prefix(std::string value)
+			{
+				cmd_prefix_ = value;
+			}
+			virtual void register_command(const std::string& cmd,
+				command_handler h, const std::string& help="", 
+				const std::string& usage="", const std::string& flags="")
+			{
+				command c = command(h, help, usage, flags);
+				std::pair<typename command_map::iterator, bool> r;
+				r = command_map_.insert(typename command_map::value_type(cmd, c));
+				if (!r.second) { //overwrite if exists
+					r.first->second = c;
+				}
+			}
+			virtual void assert_existence(const std::string& cmd) {
+				assert(command_map_.count(cmd));
+			}
+			virtual void register_alias(const std::string& to_cmd,
+				const std::string& cmd)
+			{
+				assert_existence(to_cmd);
+				command_alias_map_.insert(
+					command_alias_map::value_type(cmd,to_cmd));
+			}
+			//get all aliases of a command.
+			static const std::vector<std::string> get_aliases(const std::string& cmd)
+			{
+				std::vector<std::string> aliases;
+				typedef command_alias_map::value_type p;
+				BOOST_FOREACH(p i, command_alias_map_) {
+					if (i.second == cmd) {
+						aliases.push_back(i.first);
+					}
+				}
+				return aliases;
+			}
+		private:
+			static command_map command_map_;
+			static command_alias_map command_alias_map_;
+			static bool help_on_unknown_;
+			static std::string cmd_prefix_;									
+	};
+	
+	//static member definitions
+	template <class Worker>
+	typename map_command_handler<Worker>::command_map map_command_handler<Worker>::command_map_;
+	
+	template <class Worker>
+	typename map_command_handler<Worker>::command_alias_map map_command_handler<Worker>::command_alias_map_;
+	
+	template <class Worker>
+	bool map_command_handler<Worker>::help_on_unknown_ = true;
+	
+	template <class Worker>
+	std::string map_command_handler<Worker>::cmd_prefix_;
+
+	//command handler for chat /commands
+	class chat_command_handler : public map_command_handler<chat_command_handler>
+	{
+		public:
+			typedef map_command_handler<chat_command_handler> map;
+			chat_command_handler(chat_handler& chathandler, bool allies_only)
+			: map(), chat_handler_(chathandler), allies_only_(allies_only)
+			{
+			}
+			
+		protected:
+			void do_emote();
+			void do_network_send();
+			void do_whisper();
+			void do_log();
+			void do_ignore();
+			void do_friend();
+			void do_remove();
+			void do_display();
+			void do_clear();
+
+			void print(const std::string& title, const std::string& message)
+			{
+				chat_handler_.add_chat_message(time(NULL), title, 0, message);
+			}
+			void init_map()
+			{
+				set_cmd_prefix("/");				
+				register_command("query", &chat_command_handler::do_network_send,
+					"");
+				register_command("ban", &chat_command_handler::do_network_send,
+					"", "<nick>");
+				register_command("kick", &chat_command_handler::do_network_send,
+					"", "<nick>");
+				register_command("mute", &chat_command_handler::do_network_send,
+					"", "<nick>");
+				register_command("muteall", &chat_command_handler::do_network_send,
+					"", "");
+				register_command("ping", &chat_command_handler::do_network_send,
+					"", "<nick>");
+				register_command("emote", &chat_command_handler::do_emote, 
+					"Send an emotion or personal action in chat.", "<message>");
+				register_alias("emote", "me");
+				register_command("whisper", &chat_command_handler::do_whisper, 
+					"Sends a private message. "
+					"You can't send messages to players that control "
+					"any side in a game.", "<nick> <message>");
+				register_alias("whisper", "msg");
+				register_alias("whisper", "m");
+				register_command("log", &chat_command_handler::do_log,
+					"Change the log level of a log domain.", "<level> <domain>");
+				register_command("ignore", &chat_command_handler::do_ignore, 
+					"Add a nick to your ignores list.", "<nick>");
+				register_command("friend", &chat_command_handler::do_friend, 
+					"Add a nick to your friends list.", "<nick>");
+				register_command("remove", &chat_command_handler::do_remove, 
+					"Remove a nick from your ignores or friends list.", "<nick>");
+				register_command("remove-all", &chat_command_handler::do_clear, 
+					"Clear your complete ignores and friends list.");
+				register_command("list", &chat_command_handler::do_display, 
+					"Show your ignores and friends list.");
+				register_alias("list", "display");
+			}
+		private:
+			chat_handler& chat_handler_;
+			bool allies_only_;
+	};
+	
+	//command handler for user :commands. Also understands all chat commands
+	//via inheritance. This complicates some things a bit.
+	class console_handler : public map_command_handler<console_handler>, private chat_command_handler
+	{
+		public:
+			//convenience typedef
+			typedef map_command_handler<console_handler> chmap;
+			console_handler(menu_handler& menu_handler,
+				mouse_handler& mouse_handler, const unsigned int team_num)
+			: chmap(), chat_command_handler(menu_handler, true), menu_handler_(menu_handler), mouse_handler_(mouse_handler)
+				, team_num_(team_num), cmd_(chmap::cmd_), data_(chmap::data_), args_(chmap::args_)
+			{
+			}
+			void dispatch(const std::string& cmd)
+			{
+				chat_command_handler::parse_cmd(cmd);
+				chmap::dispatch(cmd);
+			}		
+		protected:
+			//chat_command_handler's init_map() will end up calling these.
+			//this makes sure the commands end up in our map
+			virtual void register_command(const std::string& cmd,
+				chat_command_handler::command_handler h, const std::string& help="", 
+				const std::string& usage="", const std::string& flags="")
+			{
+				chmap::register_command(cmd, h, help, usage, flags);
+			}
+			virtual void assert_existence(const std::string& cmd) {
+				chmap::assert_existence(cmd);
+			}
+			virtual void register_alias(const std::string& to_cmd,
+				const std::string& cmd)
+			{
+				chmap::register_alias(to_cmd, cmd);
+			}			
+			
+			//these are needed to avoid ambiguities introduced by inheriting from console_command_handler
+			using chmap::register_command;
+			using chmap::register_alias;
+			using chmap::help;
+			using chmap::get_arg;
+			
+			void do_refresh();
+			void do_droid();
+			void do_theme();
+			void do_network_send_cmd();
+			void do_network_send_cmd_data();
+			void do_control();
+			void do_clear();
+			void do_sunset();
+			void do_fps();
+			void do_benchmark();
+			void do_save();
+			void do_save_quit();
+			void do_quit();
+			void do_ignore_replay_errors();
+			void do_nosaves();
+			void do_next_level();
+			void do_debug();
+			void do_nodebug();
+			void do_set_var();
+			void do_show_var();
+			void do_unit();
+			void do_buff();
+			void do_unbuff();
+			void do_create();
+			void do_fog();
+			void do_shroud();
+			void do_gold();
+			void do_event();
+			void do_version();
+
+			std::string get_flags_description() const {
+				return "(D) - debug only";
+			}
+			std::string get_command_flags_description(const map::command& c) const
+			{
+				return std::string(c.has_flag('D') ? " (debug command)" : "");
+			}
+			bool is_enabled(const map::command& c) const
+			{
+				return !(c.has_flag('D') && !game_config::debug);
+			}
+			void print(const std::string& title, const std::string& message)
+			{
+				menu_handler_.add_chat_message(time(NULL), title, 0, message);
+			}
+			void init_map()
+			{
+				chat_command_handler::init_map();//grab chat_ /command handlers
+				chmap::set_cmd_prefix(":");
+				register_command("refresh", &console_handler::do_refresh,
+					"Refresh gui.");
+				register_command("droid", &console_handler::do_droid,
+					"AI control of a side.", "[<side> [on/off]]", "D");
+				register_command("theme", &console_handler::do_theme);
+				register_command("control", &console_handler::do_control,
+					"Assign control of a side", "<side> <nick>");
+				register_command("clear", &console_handler::do_clear,
+					"Clear chat history.");
+				register_command("sunset", &console_handler::do_sunset,
+					"Change time of day.", "", "D");
+				register_command("fps", &console_handler::do_fps, "Show fps.");
+				register_command("benchmark", &console_handler::do_benchmark);
+				register_command("save", &console_handler::do_save, "Save game.");
+				register_alias("save", "w");
+				register_command("quit", &console_handler::do_quit, "Quit game.");
+				register_alias("quit", "q");
+				register_alias("quit", "q!");
+				register_command("save_quit", &console_handler::do_save_quit,
+					"Save and quit.");
+				register_alias("save_quit", "wq");
+				register_command("ignore_replay_errors", &console_handler::do_ignore_replay_errors, 
+					"Ignore replay errors.");
+				register_command("nosaves", &console_handler::do_nosaves,
+					"Do not autosave.");
+				register_command("next_level", &console_handler::do_next_level,
+					"Advance to next level", "", "D");
+				register_alias("next_level", "n");
+				register_command("debug", &console_handler::do_debug,
+					"Turn on debug mode.");
+				register_command("nodebug", &console_handler::do_nodebug,
+					"Turn off debug mode.");
+				register_command("set_var", &console_handler::do_set_var,
+					"Set scenario variable.", "<var>=<value>", "D");
+				register_command("show_var", &console_handler::do_show_var,
+					"Show variable", "<var>", "D");
+				register_command("unit", &console_handler::do_unit,
+					"Modify unit.", "", "D");
+				register_command("buff", &console_handler::do_buff,
+					"Add unit trait.", "", "D");
+				register_command("unbuff", &console_handler::do_unbuff,
+					"Remove unit trait.", "", "D");
+				register_command("create", &console_handler::do_create,
+					"Create unit.", "", "D");
+				register_command("fog", &console_handler::do_fog,
+					"Toggle fog for current player.", "", "D");
+				register_command("shroud", &console_handler::do_shroud,
+					"Toggle shroud for current player.", "", "D");
+				register_command("gold", &console_handler::do_gold,
+					"Give gold to current player.", "", "D");
+				register_command("throw", &console_handler::do_event,
+					"Fire game event.", "", "D");
+				register_alias("throw", "fire");
+				register_command("version", &console_handler::do_version,
+					"Display version information.");
+			}
+		private:
+			menu_handler& menu_handler_;
+			mouse_handler& mouse_handler_;
+			const unsigned int team_num_;
+			//these are needed to avoid ambiguities introduced by inhriting from console_command_handler
+			const std::string & cmd_;
+			const std::string & data_;
+			const std::vector<std::string> & args_;
+	};
+
+	chat_handler::chat_handler()
+	{
+	}
 
 	chat_handler::~chat_handler()
 	{
@@ -1865,149 +2328,94 @@ private:
 			return;
 		}
 		bool is_command = (message.at(0) == '/');
-		unsigned int argc = 0;
-		std::string cmd, arg1, arg2;
 
-		if(is_command){
-			std::string::size_type sp1 = message.find_first_of(' ');
-			cmd = message.substr(1, sp1 - 1);
-			if(sp1 != std::string::npos) {
-				std::string::size_type arg1_start = message.find_first_not_of(' ',sp1);
-				if(arg1_start != std::string::npos) {
-					++argc;
-					std::string::size_type substr_len, sp2;
-					sp2 = message.find(' ',arg1_start);
-					substr_len = (sp2 == std::string::npos) ? sp2 : sp2 - arg1_start;
-					arg1 = message.substr(arg1_start,substr_len);
-					if(sp2 != std::string::npos) {
-						std::string::size_type arg2_end = message.find_last_not_of(' ');
-						if(arg2_end > sp2) {
-							++argc;
-							arg2 = message.substr(sp2+1, arg2_end - sp2);
-						}
-					}
-				}
-			}
-		} else {
+		if(!is_command) {
 			send_chat_message(message, allies_only);
 			return;
 		}
-		DBG_NG << "cmd: '" << cmd << "' argc: '" << argc << "' arg1: '" << arg1
-			<< "' arg2: '" << arg2 << "'\n";
-		const std::string& help_chat_help = _("Commands: msg/whisper <nick>"
-				" <message>, list <subcommand> [<argument>], me/emote <message>."
-				" Type /help [<command>] for detailed instructions.");
-		if ((cmd == "me" || cmd == "emote") && argc > 0) {
-			//emote message
-			send_chat_message("/me" + message.substr(cmd.size() + 1), allies_only);
-		} else if (cmd == "query" || cmd == "ban" || cmd == "kick"
-				|| cmd == "mute" || cmd == "muteall" || cmd == "ping")
-		{
-			send_command(cmd, (argc > 1) ? arg1 + " " + arg2 : arg1);
-		} else if ((cmd == "m" || cmd == "msg" || cmd == "whisper") && argc > 1) {
-			config cwhisper,data;
-			cwhisper["message"] = arg2;
-			cwhisper["sender"] = preferences::login();
-			cwhisper["receiver"] = arg1;
-			data.add_child("whisper", cwhisper);
-			add_chat_message(time(NULL), "whisper to " + cwhisper["receiver"], 0,
-					cwhisper["message"], game_display::MESSAGE_PRIVATE);
-			network::send_data(data, 0, true);
-		} else if (cmd == "log") {
-			change_logging((argc > 1) ? arg1 + " " + arg2 : arg1);
-		} else if (cmd == "help") {
-			bool have_command = (argc > 0);
-			bool have_subcommand = (argc > 1);
-			const std::string& command = arg1;
-			const std::string& subcommand = arg2;
-
-			if (!have_command) {
-				add_chat_message(time(NULL), "help", 0, help_chat_help);
-			} else if (command == "whisper" || command == "msg") {
-				//! @todo /msg should be replaced by the used command.
-				add_chat_message(time(NULL), "help", 0, _("Sends a private message. "
-						"You can't send messages to players that control "
-						"any side in a game. Usage: /msg <nick> <message>"));
-			} else if (command == "list") {
-				if (!have_subcommand) {
-					add_chat_message(time(NULL), "help", 0,
-							_("Ignore messages from players on the ignore list"
-							" and highlight players on the friends list."
-							" Usage: /list <subcommand> [<argument>]"
-							" Subcommands: addfriend, addignore, remove,"
-							" display, clear."
-							" Type /help list <subcommand> for more info."));
-				} else if (subcommand == "addfriend"){
-					add_chat_message(time(NULL), "help", 0,
-							_("Add a nick to your friends list."
-							" Usage: /list addfriend <nick>"));
-				} else if (subcommand == "addignore"){
-					add_chat_message(time(NULL), "help", 0 ,
-							_("Add a nick to your ignores list."
-							" Usage: /list ignore <nick>"));
-				} else if (subcommand == "remove") {
-					add_chat_message(time(NULL), "help", 0,
-							_("Remove a nick from your ignores or friends list."
-							" Usage: /list remove <nick>"));
-				} else if (subcommand == "clear") {
-					add_chat_message(time(NULL), "help", 0,
-							_("Clear your complete ignores and friends list."
-							" Usage: /list clear"));
-				} else if (subcommand == "display") {
-					add_chat_message(time(NULL), "help", 0,
-							_("Show your ignores and friends list."
-							" Usage: /list display"));
-				} else {
-					add_chat_message(time(NULL), "help", 0, _("Unknown subcommand."));
-				}
-			} else if (command == "emote" || command == "me") {
-				//! @todo /me should be replaced by the used command.
-				add_chat_message(time(NULL), "help", 0,
-						_("Send an emotion or personal action in chat. "
-						"Usage: /me <message>"));
-			} else {
-				add_chat_message(time(NULL), "help", 0, _("Unknown command."));
-			}
-		} else if (cmd == "list" && argc > 0) {
-			if (arg1 == "addignore") {
-				const std::string msg =
-						(preferences::add_ignore(arg2)
-						? _("Added to ignore list: ") : _("Invalid username: "))
-						+ arg2;
-				add_chat_message(time(NULL), "ignores list", 0,	msg);
-			} else if (arg1 == "addfriend") {
-				const std::string msg =
-						(preferences::add_friend(arg2)
-						? _("Added to friends list: ") : _("Invalid username: "))
-						+ arg2;
-				add_chat_message(time(NULL), "friends list", 0, msg);
-			} else if (arg1 == "remove") {
-				preferences::remove_friend(arg2);
-				preferences::remove_ignore(arg2);
-				add_chat_message(time(NULL), "list", 0, _("Removed from list: ")
-						+ arg2, game_display::MESSAGE_PRIVATE);
-			} else if (arg1 == "display") {
-				const std::string& text_friend = preferences::get_friends();
-				const std::string& text_ignore = preferences::get_ignores();
-				if (!text_friend.empty()) {
-					add_chat_message(time(NULL), "friends list", 0, text_friend);
-				}
-				if (!text_ignore.empty()) {
-					add_chat_message(time(NULL), "ignores list", 0, text_ignore);
-				} else if (text_friend.empty()) {
-					add_chat_message(time(NULL), "list", 0,
-							_("There are no players on your friends or ignore list."));
-				}
-			} else if (arg1 == "clear") {
-				preferences::clear_friends();
-				preferences::clear_ignores();
-			} else {
-				add_chat_message(time(NULL), "list", 0, _("Unknown command: ") + arg1);
-			}
+		std::string cmd(message.begin() + 1, message.end());
+		chat_command_handler cch(*this, allies_only);
+		cch.dispatch(cmd);
+	}
+	void chat_command_handler::do_emote()
+	{
+		chat_handler_.send_chat_message("/me " + data_, allies_only_);
+	}
+	void chat_command_handler::do_network_send()
+	{
+		chat_handler_.send_command(cmd_, data_);
+	}
+	void chat_command_handler::do_whisper()
+	{
+		if (args_.size() < 3) return;
+		config cwhisper, data;
+		cwhisper["message"] = get_arg(2);
+		cwhisper["sender"] = preferences::login();
+		cwhisper["receiver"] = get_arg(1);
+		data.add_child("whisper", cwhisper);
+		chat_handler_.add_chat_message(time(NULL), 
+			"whisper to " + cwhisper["receiver"], 0,
+			cwhisper["message"], game_display::MESSAGE_PRIVATE);
+		network::send_data(data, 0, true);
+	}
+	void chat_command_handler::do_log()
+	{
+		chat_handler_.change_logging(data_);
+	}
+	
+	void chat_command_handler::do_ignore()
+	{
+		if (get_arg(1).empty()) {
+			const std::string& tmp = preferences::get_ignores();
+			print("ignores list", tmp.empty() ? "(empty)" : tmp);
 		} else {
-			//! @todo Rather show specific error messages for missing arguments.
-			// Command not accepted, show help.
-			add_chat_message(time(NULL), "help", 0, help_chat_help);
+			const std::string msg =	(preferences::add_ignore(get_arg(1))
+				? _("Added to ignore list: ") : _("Invalid username: "))
+				+ get_arg(1);
+			print("list", msg);
+		}
+	}
+	void chat_command_handler::do_friend()
+	{
+		if (get_arg(1).empty()) {
+			const std::string& tmp = preferences::get_friends();
+			print("friends list", tmp.empty() ? "(empty)" : tmp);
+		} else {
+			const std::string msg =
+				(preferences::add_friend(get_arg(1))
+				? _("Added to friends list: ") : _("Invalid username: "))
+				+ get_arg(1);
+			print("list", msg);
+		}
+	}
+	void chat_command_handler::do_remove()
+	{
+		preferences::remove_friend(get_arg(1));
+		preferences::remove_ignore(get_arg(1));
+		print("list", _("Removed from list: ") + get_arg(1));
+	}
+	void chat_command_handler::do_display()
+	{
+		const std::string& text_friend = preferences::get_friends();
+		const std::string& text_ignore = preferences::get_ignores();
+		if (!text_friend.empty()) {
+			print("friends list", text_friend);
+		}
+		if (!text_ignore.empty()) {
+			print("ignores list", text_ignore);
+		} else if (text_friend.empty()) {
+			print("list", _("There are no players on your friends or ignore list."));
+		}
+	}
+	void chat_command_handler::do_clear()
+	{
+		const std::string& text_friend = preferences::get_friends();
+		const std::string& text_ignore = preferences::get_ignores();
+		bool empty = text_friend.empty() && text_ignore.empty();
+		preferences::clear_friends();
+		preferences::clear_ignores();
+		if (!empty) {
+			print("list", "Friends and ignores lists cleared");
 		}
 	}
 
@@ -2120,320 +2528,14 @@ private:
 		}
 	}
 
-	//A function object class with only the constructor public.
-	//Will execute one specified console command if possible.
-	//To add a new console command:
-	//  * add a new private void function() to console_handler
-	//  * add it to the function map in init_command_map, setting debug_only or
-	//    network_only if applicable (a function is free to do any other checks
-	//    but these two help categorize commands and are thus centralized
-	//  * remember to add some short usage information in init_command_map()
-	class console_handler
-	{
-		public:
-			console_handler(menu_handler& menu_handler,
-				mouse_handler& mouse_handler, const std::string& cmd,
-				const std::string data, const unsigned int team_num)
-			: menu_handler_(menu_handler), mouse_handler_(mouse_handler)
-				,cmd_(cmd), data_(data), team_num_(team_num)
-			{
-				if (command_map_.empty()) {
-					init_command_map();
-				}
-				dispatch();
-			}
-
-		private:
-			typedef void (console_handler::*command_handler)();
-
-			struct command
-			{
-				command_handler handler;
-				std::string help;
-				bool debug_only;
-				bool network_only;
-				command(command_handler h, std::string help)
-				: handler(h), help(help), debug_only(false), network_only(false)
-				{
-				}
-				command& set_debug_only()
-				{
-					debug_only = true;
-					return *this;
-				}
-				command& set_network_only()
-				{
-					network_only = true;
-					return *this;
-				}
-				std::string get_flags() const
-				{
-					std::string flags;
-					if (debug_only) flags += "D";
-					if (network_only) flags += "N";
-					return flags;
-				}
-			};
-
-			typedef std::map<std::string, command> command_map;
-			typedef std::map<std::string, std::string> command_alias_map;
-
-			static command_map command_map_;
-			static command_alias_map command_alias_map_;
-			menu_handler& menu_handler_;
-			mouse_handler& mouse_handler_;
-			const std::string & cmd_;
-			const std::string & data_;
-			const unsigned int team_num_;
-
-			static command& register_command(const std::string& cmd,
-				command_handler h, const std::string& help)
-			{
-				return command_map_.insert(
-					command_map::value_type(cmd,command(h, help))).first->second;
-			}
-			static void assert_existence(const std::string& cmd)
-			{
-				assert(command_map_.count(cmd));
-			}
-			static void register_alias(const std::string& to_cmd,
-				const std::string& cmd)
-			{
-				assert_existence(to_cmd);
-				command_alias_map_.insert(
-					command_alias_map::value_type(cmd,to_cmd));
-			}
-
-			static void init_command_map();
-			static std::string get_actual_cmd(const std::string& cmd);
-			static const command* get_command(const std::string& cmd);
-			void dispatch();
-			void print(const std::string& title, const std::string& message);
-			const std::vector<std::string> get_aliases(const std::string& cmd);
-			void help();
-			void help(const std::string& cmd);
-
-			void do_refresh();
-			void do_droid();
-			void do_log();
-			void do_theme();
-			void do_network_send_cmd();
-			void do_network_send_cmd_data();
-			void do_control();
-			void do_clear();
-			void do_sunset();
-			void do_fps();
-			void do_benchmark();
-			void do_save();
-			void do_save_quit();
-			void do_quit();
-			void do_ignore_replay_errors();
-			void do_nosaves();
-			void do_next_level();
-			void do_debug();
-			void do_nodebug();
-			void do_set_var();
-			void do_show_var();
-			void do_unit();
-			void do_buff();
-			void do_unbuff();
-			void do_create();
-			void do_fog();
-			void do_shroud();
-			void do_gold();
-			void do_event();
-			void do_version();
-	};
-
-	console_handler::command_map console_handler::command_map_;
-	console_handler::command_alias_map console_handler::command_alias_map_;
-
-	void console_handler::print(const std::string& title,
-		const std::string& message)
-	{
-		menu_handler_.add_chat_message(time(NULL), title, 0, message);
-	}
-
-	void console_handler::init_command_map()
-	{
-		register_command("help", &console_handler::help,
-			"[command] - Command help");
-		register_command("refresh", &console_handler::do_refresh,
-			"Refresh gui");
-		register_command("droid", &console_handler::do_droid,
-			"[<side> [on/off]] - AI control").set_debug_only();
-		register_command("log", &console_handler::do_log,
-			"<level> <domain> - Change the log level of a log domain.");
-		register_command("theme", &console_handler::do_theme, "");
-		register_command("muteall", &console_handler::do_network_send_cmd,
-			"").set_network_only();
-		register_command("ping", &console_handler::do_network_send_cmd,
-			"").set_network_only();
-		register_command("ban", &console_handler::do_network_send_cmd_data,
-			"").set_network_only();
-		register_command("kick", &console_handler::do_network_send_cmd_data,
-			"").set_network_only();
-		register_command("mute", &console_handler::do_network_send_cmd_data,
-			"").set_network_only();
-		register_command("query", &console_handler::do_network_send_cmd_data,
-			"").set_network_only();
-		register_command("control", &console_handler::do_control,
-			"<side> <nick>").set_network_only();
-		register_command("control", &console_handler::do_clear,
-			"Clear chat history");
-		register_command("sunset", &console_handler::do_sunset,
-			"Change time of day").set_debug_only();
-		register_command("fps", &console_handler::do_fps, "Show fps");
-		register_command("benchmark", &console_handler::do_benchmark,
-			"Benchmark");
-		register_command("save", &console_handler::do_save, "Save game");
-		register_alias("save", "w");
-		register_command("quit", &console_handler::do_quit, "Quit game");
-		register_alias("quit", "q");
-		register_alias("quit", "q!");
-		register_command("save_quit", &console_handler::do_save_quit,
-			"Save and quit");
-		register_alias("save_quit", "wq");
-		register_command("ignore_replay_errors",
-			&console_handler::do_ignore_replay_errors, "Ignore replay errors");
-		register_command("nosaves", &console_handler::do_nosaves,
-			"Do not autosave");
-		register_command("next_level", &console_handler::do_next_level,
-			"Advance to next level").set_debug_only();
-		register_alias("next_level", "n");
-		register_command("debug", &console_handler::do_debug,
-			"Turn on debug mode");
-		register_command("nodebug", &console_handler::do_nodebug,
-			"Turn off debug mode");
-		register_command("set_var", &console_handler::do_set_var,
-			"Set variable").set_debug_only();
-		register_command("show_var", &console_handler::do_show_var,
-			"Show variable").set_debug_only();
-		register_command("unit", &console_handler::do_unit,
-			"Modify unit").set_debug_only();
-		register_command("buff", &console_handler::do_buff,
-			"Add unit trait").set_debug_only();
-		register_command("unbuff", &console_handler::do_unbuff,
-			"Remove unit trait").set_debug_only();
-		register_command("create", &console_handler::do_create,
-			"Create unit").set_debug_only();
-		register_command("fog", &console_handler::do_fog,
-			"Toggle fog for current player").set_debug_only();
-		register_command("shroud", &console_handler::do_shroud,
-			"Toggle shroud for current player").set_debug_only();
-		register_command("gold", &console_handler::do_gold,
-			"Give gold to current player").set_debug_only();
-		register_command("throw", &console_handler::do_event,
-			"Fire game event").set_debug_only();
-		register_alias("throw", "fire");
-		register_command("version", &console_handler::do_version,
-			"Display version information");
-	}
-
-	std::string console_handler::get_actual_cmd(const std::string& cmd)
-	{
-		command_alias_map::const_iterator i = command_alias_map_.find(cmd);
-		std::string real_cmd;
-		if (i != command_alias_map_.end()) {
-			real_cmd = i->second;
-		} else {
-			real_cmd = cmd;
-		}
-		return real_cmd;
-	}
-
-	const console_handler::command* console_handler::get_command(
-		const std::string& cmd)
-	{
-		command_map::const_iterator i = command_map_.find(cmd);
-		if (i != command_map_.end()) {
-			return &i->second;
-		} else {
-			return 0;
-		}
-	}
-
-	const std::vector<std::string> console_handler::get_aliases(
-		const std::string& cmd)
-	{
-		std::vector<std::string> aliases;
-		command_alias_map::const_iterator i = command_alias_map_.begin();
-		while (i != command_alias_map_.end()) {
-			if (i->second == cmd) {
-				aliases.push_back(i->first);
-			}
-			i++;
-		}
-		return aliases;
-	}
-
-	void console_handler::dispatch()
-	{
-		std::string actual_cmd = get_actual_cmd(cmd_);
-		if (const command* c = get_command(actual_cmd)) {
-			if (c->debug_only && !game_config::debug) return;
-			if (c->network_only || network::nconnections() != 0) return;
-
-			(this->*(c->handler))();
-		}
-	}
-
-	void console_handler::help()
-	{
-		std::string actual_cmd = get_actual_cmd(data_);
-		if (get_command(actual_cmd)) {
-			return help(actual_cmd);
-		}
-		command_map::const_iterator i = command_map_.begin();
-		std::stringstream ss;
-		while (i != command_map_.end()) {
-			ss << i->first << " ";
-			std::string flags = i->second.get_flags();
-			if (!flags.empty()) {
-				ss << "(" << flags << ") ";
-			}
-			i++;
-		}
-		print("help", "Available commands (D - debug-mode only, N - network games only):");
-		print("help", ss.str());
-		print("help", "Type :help <command> for more info");
-	}
-
-	void console_handler::help(const std::string& cmd)
-	{
-		const command* c = get_command(cmd);
-		if (c) {
-			std::stringstream ss;
-			ss << ":" << cmd << " ";
-			if (c->help == "") {
-				ss << "no help available";
-			} else {
-				ss << c->help;
-			}
-			if (c->debug_only) {
-				ss << " (debug command)";
-			}
-			if (c->network_only) {
-				ss << " (network command)";
-			}
-			const std::vector<std::string> l = get_aliases(cmd);
-			if (!l.empty()) {
-				ss << " (aliases: " << utils::join(l,' ') << ")";
-			}
-			print("help", ss.str());
-		}
-	}
-
 	void menu_handler::do_command(const std::string& str,
 			const unsigned int team_num, mouse_handler& mousehandler)
 	{
 		// First, this will change the end of the history vector from a blank string to the most recent input
 		preferences::command_history().back() = str;
 
-		const std::string::const_iterator i = std::find(str.begin(),str.end(),' ');
-		const std::string cmd(str.begin(),i);
-		const std::string data(i == str.end() ? str.end() : i+1,str.end());
-		console_handler console(*this, mousehandler, cmd, data, team_num);
+		console_handler ch(*this, mousehandler, team_num);
+		ch.dispatch(str);
 	}
 
 	void console_handler::do_refresh() {
@@ -2443,9 +2545,8 @@ private:
 
 	void console_handler::do_droid() {
 		// :droid [<side> [on/off]]
-		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),' ');
-		const std::string side_s(data_.begin(),j);
-		const std::string action(j,data_.end());
+		const std::string side_s = get_arg(1);
+		const std::string action = get_arg(2);
 		// default to the current side if empty
 		const unsigned int side = side_s.empty() ?
 			team_num_ : lexical_cast_default<unsigned int>(side_s);
@@ -2475,10 +2576,10 @@ private:
 			menu_handler_.teams_[side - 1].make_human();
 		}
 	}
-	void console_handler::do_log() {
-		// :log <level> <domain>  Change the log level of a log domain.
-		menu_handler_.change_logging(data_);
-	}
+//	void console_handler::do_log() {
+//		// :log <level> <domain>  Change the log level of a log domain.
+//		menu_handler_.change_logging(data_);
+//	}
 	void console_handler::do_theme() {
 		preferences::show_theme_dialog(*menu_handler_.gui_);
 	}
@@ -2490,14 +2591,15 @@ private:
 	}
 	void console_handler::do_control() {
 		// :control <side> <nick>
+		if (network::nconnections() == 0) return;
 		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),' ');
 		if(j == data_.end())
 		{
 			print(_("error"), _("Usage: control <side> <nick>"));
 			return;
 		}
-		const std::string side(data_.begin(),j);
-		const std::string player(j+1,data_.end());
+		const std::string side = get_arg(1);
+		const std::string player = get_arg(2);
 		unsigned int side_num;
 		try {
 			side_num = lexical_cast<unsigned int>(side);

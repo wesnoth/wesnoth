@@ -102,6 +102,8 @@ Version 1.5.0-svn:
    * Changed logging to have less overhead when it is turned off (patch #1038)
    * Fixed error message for broken add-on campaigns (bug #11078)
    * Refactored the in-game console and added help function (patch #1036)
+   * Refactored chat /commands and added help.  Made :commands a superset 
+     of chat /commands
    * Added new commandline options (patch #1031)
      -s or --server [host] connect to host specified or to the first server
      in preferences
