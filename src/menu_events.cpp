@@ -1911,7 +1911,7 @@ private:
 			//safe n-th argunment getter
 			std::string get_arg(unsigned argn) const
 			{
-				return (argn >= 0 && argn < args_.size()) ? args_[argn] : "";
+				return (argn < args_.size()) ? args_[argn] : "";
 			}
 			//take aliases into account
 			std::string get_actual_cmd(const std::string& cmd) const
