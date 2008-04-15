@@ -6,11 +6,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.5.0-svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.4+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-13 16:22+0200\n"
-"PO-Revision-Date: 2008-03-06 10:56+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2008-03-26 23:08+0100\n"
+"Last-Translator: Nino  <nino.gunjaca@zg.t-com.hr>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,210 +21,214 @@ msgstr ""
 #. [editor_group]
 #: data/core/editor-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "sve"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:16
 msgid "water"
-msgstr ""
+msgstr "voda"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:28
 msgid "flat"
-msgstr ""
+msgstr "nizina"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:34
 msgid "desert"
-msgstr ""
+msgstr "pustinja"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:40
 msgid "forest"
-msgstr ""
+msgstr "šuma"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:46
 msgid "frozen"
-msgstr ""
+msgstr "zamrznuto"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:52
 msgid "rough"
-msgstr ""
+msgstr "neravan teren"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:58
 msgid "cave"
-msgstr ""
+msgstr "pećina"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:64
 msgid "village"
-msgstr ""
+msgstr "naselje"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:70
 msgid "castle"
-msgstr ""
+msgstr "dvorac"
 
 #. [menu]
 #: data/themes/editor.cfg:462
 msgid "File"
-msgstr ""
+msgstr "Datoteka"
 
 #. [menu]
 #: data/themes/editor.cfg:472
 msgid "Edit"
-msgstr ""
+msgstr "Uređivanje"
 
 #. [menu]
 #: data/themes/editor.cfg:481
 msgid "Settings"
-msgstr ""
+msgstr "Postavke"
 
 #. [label]
 #: data/themes/editor.cfg:500
 msgid "villages"
-msgstr ""
+msgstr "naselja"
 
 #: src/editor/editor.cpp:235
 msgid "Draw tiles"
-msgstr ""
+msgstr "Iscrtaj pločice (eng. tiles)"
 
 #: src/editor/editor.cpp:237
 msgid "Fill"
-msgstr ""
+msgstr "Ispuni"
 
 #: src/editor/editor.cpp:239
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Postavi početne pozicije Igrača"
 
 #: src/editor/editor.cpp:241
 msgid "Zoom in"
-msgstr ""
+msgstr "Uvećaj"
 
 #: src/editor/editor.cpp:243
 msgid "Zoom out"
-msgstr ""
+msgstr "Smanji"
 
 #: src/editor/editor.cpp:245
 msgid "Undo"
-msgstr ""
+msgstr "Poništi"
 
 #: src/editor/editor.cpp:247
 msgid "Redo"
-msgstr ""
+msgstr "Ponovi"
 
 #: src/editor/editor.cpp:249
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Podesi na uobičajenu veličinu pogleda"
 
 #: src/editor/editor.cpp:251
 msgid "Toggle grid"
-msgstr ""
+msgstr "Uključi/isključi pomoćnu mrežu"
 
 #: src/editor/editor.cpp:253
 msgid "Resize the map"
-msgstr ""
+msgstr "Promijeni veličinu mape"
 
 #: src/editor/editor.cpp:255
 msgid "Flip map"
-msgstr ""
+msgstr "Preokreni (zrcalno) mapu"
 
 #: src/editor/editor.cpp:257
 msgid "Update transitions"
-msgstr ""
+msgstr "Ažuriraj prijelaze"
 
 #: src/editor/editor.cpp:259
 msgid "Delay transition updates"
-msgstr ""
+msgstr "Odgodi ažuriranje prijelaza"
 
 #: src/editor/editor.cpp:475
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: src/editor/editor.cpp:476
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Odaberite svoj preferiran jezik:"
 
 #: src/editor/editor.cpp:493 src/editor/editor_main.cpp:303
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Bitka za Wesnoth uređivač"
 
 #: src/editor/editor.cpp:520
 msgid "Save the Map As"
-msgstr ""
+msgstr "Spremi mapu kao"
 
 #: src/editor/editor.cpp:531
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Mapa već postoji. Želite li zamijeniti postojeću mapu?"
 
 #: src/editor/editor.cpp:554
 msgid "None"
-msgstr ""
+msgstr "Ništa"
 
 #: src/editor/editor.cpp:559 src/editor/editor.cpp:1414
 msgid "Player"
-msgstr ""
+msgstr "Igrač"
 
 #: src/editor/editor.cpp:563
 msgid "Which Player?"
-msgstr ""
+msgstr "Koji Igrač?"
 
 #: src/editor/editor.cpp:564
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Kojem Igraču je ovo početna pozicija?"
 
 #: src/editor/editor.cpp:624
 msgid "Choose a Map to Load"
-msgstr ""
+msgstr "Odaberite mapu koju želite otvoriti"
 
 #: src/editor/editor.cpp:628
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
+"Upozorenje: Nedopušteni znakovi su locirani u nazivu mape. Molimo spremite "
+"pod drugačijim nazivom."
 
 #: src/editor/editor.cpp:641 src/editor/editor.cpp:721
 msgid "The file does not contain a valid map."
-msgstr ""
+msgstr "Datoteka ne sadrži valjanu mapu."
 
 #: src/editor/editor.cpp:1293
 msgid "Quit Editor"
-msgstr ""
+msgstr "Izađi iz uređivača"
 
 #: src/editor/editor.cpp:1297
 msgid "Do you want to save the map before quitting?"
-msgstr ""
+msgstr "Želite li spremiti mapu prije izlaska?"
 
 #: src/editor/editor.cpp:1345
 msgid "Map saved."
-msgstr ""
+msgstr "Mapa spremljena."
 
 #: src/editor/editor.cpp:1353
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Nije bilo moguće spremiti mapu: $msg"
 
 #: src/editor/editor.cpp:1368
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Greška: nedopušten znak u nazivu datoteke. "
 
 #: src/editor/editor_palettes.cpp:438
 msgid "FG"
-msgstr ""
+msgstr "Prednji plan"
 
 #: src/editor/editor_palettes.cpp:440
 msgid "BG"
-msgstr ""
+msgstr "Pozadina"
 
 #: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
 #: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
 msgid ""
 "Can't resize the map, the requested size is bigger than the maximum, size="
 msgstr ""
+"Nemoguće podesiti veličinu mape, tražena veličina je veća od maksimalno "
+"dozvoljene veličine ="
 
 #: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
 #: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
 msgid " maximum="
-msgstr ""
+msgstr "maksimalno="
