@@ -1801,6 +1801,78 @@ private:
 		gui_->add_chat_message(time, speaker, side, message, type, false);
 	}
 	
+	//simple command args parser, separated from command_handler for clarity.
+	//a word begins with a nonspace
+	//n-th arg is n-th word up to the next space
+	//n-th data is n-th word up to the end
+	//cmd is 0-th arg, begins at 0 always.
+	class cmd_arg_parser
+	{
+		public:
+			cmd_arg_parser()
+			: str_(""), args_end(false)
+			{
+				args.push_back(0);
+			}
+			explicit cmd_arg_parser(const std::string& str)
+			: str_(str), args_end(false)
+			{
+				args.push_back(0);
+			}
+			void parse(const std::string& str)
+			{
+				str_ = str;
+				args.clear();
+				args.push_back(0);
+				args_end = false;
+			}
+			
+			const std::string& get_str() const
+			{
+				return str_;
+			}
+			std::string get_arg(unsigned n) const
+			{
+				advance_to_arg(n);
+				if (n < args.size()) {
+					return std::string(str_, args[n], str_.find(' ', args[n]) - args[n]);
+				} else {
+					return "";
+				}
+			}
+			std::string get_data(unsigned n) const
+			{
+				advance_to_arg(n);
+				if (n < args.size()) {
+					return std::string(str_, args[n]);
+				} else {
+					return "";
+				}
+			}
+			std::string get_cmd() const
+			{
+				return get_arg(0);
+			}
+		private:
+			cmd_arg_parser& operator=(const cmd_arg_parser&);
+			cmd_arg_parser(const cmd_arg_parser&);
+			void advance_to_arg(unsigned n) const 
+			{
+				while (n < args.size() && !args_end) {
+					size_t first_space = str_.find_first_of(' ', args.back());
+					size_t next_arg_begin = str_.find_first_not_of(' ', first_space);
+					if (next_arg_begin != std::string::npos) {
+						args.push_back(next_arg_begin);
+					} else {
+						args_end = true;
+					}
+				}
+			}
+			std::string str_;
+			mutable std::vector<size_t> args;
+			mutable bool args_end;
+	};
+	
 	//A helper class template with a slim public interface
 	//This represents a map of strings to void()-member-function-of-Worker-pointers 
 	//with all the common functionality like general help, command help and aliases
@@ -1842,7 +1914,7 @@ private:
 			typedef std::map<std::string, command> command_map;
 			typedef std::map<std::string, std::string> command_alias_map;
 
-			map_command_handler()
+			map_command_handler() : cap_("")
 			{
 			}
 
@@ -1864,16 +1936,16 @@ private:
 					init_map_default();
 					init_map();
 				}				
-				if (cmd_.empty()) {
+				if (get_cmd().empty()) {
 					return;
 				}
-				std::string actual_cmd = get_actual_cmd(cmd_);
+				std::string actual_cmd = get_actual_cmd(get_cmd());
 				if (const command* c = get_command(actual_cmd)) {
 					if (is_enabled(*c)) {
 						(static_cast<Worker*>(this)->*(c->handler))();
 					}
 				} else if (help_on_unknown_) {
-					print("help", "Unknown command, try " + cmd_prefix_ + "help "
+					print("help", "Unknown command (" + get_cmd() + "), try " + cmd_prefix_ + "help "
 						"for a list of available commands");
 				}
 			}			
@@ -1900,21 +1972,27 @@ private:
 			}
 			//this should be overriden if e.g. flags are used to control command
 			//availability. Return false if the command should not be executed by dispach()
-			virtual bool is_enabled(const command& c) const 
+			virtual bool is_enabled(const command& /*c*/) const 
 			{
 				return true;
 			}
-			void parse_cmd(const std::string& cmd_string)
+			virtual void parse_cmd(const std::string& cmd_string)
 			{
-				args_ = utils::split(cmd_string, ' ');
-				cmd_ = args_.empty() ? "" : args_[0];
-				data_ = (cmd_string.begin() + cmd_.size() == cmd_string.end()) ? "" 
-					: std::string(cmd_string.begin() + cmd_.size() + 1, cmd_string.end());
+				cap_.parse(cmd_string);
 			}
 			//safe n-th argunment getter
-			std::string get_arg(unsigned argn) const
+			virtual std::string get_arg(unsigned argn) const
 			{
-				return (argn < args_.size()) ? args_[argn] : "";
+				return cap_.get_arg(argn);
+			}
+			//"data" is n-th arg and everything after it
+			virtual std::string get_data(unsigned argn = 1) const
+			{
+				return cap_.get_data(argn);
+			}
+			std::string get_cmd() const
+			{
+				return cap_.get_cmd();
 			}
 			//take aliases into account
 			std::string get_actual_cmd(const std::string& cmd) const
@@ -1970,9 +2048,7 @@ private:
 				}
 				return c != 0;
 			}
-			std::vector<std::string> args_;
-			std::string cmd_;
-			std::string data_;
+			cmd_arg_parser cap_;
 		protected:
 			//show a "try help" message on unknown command?
 			static void set_help_on_unknown(bool value)
@@ -2115,16 +2191,13 @@ private:
 			console_handler(menu_handler& menu_handler,
 				mouse_handler& mouse_handler, const unsigned int team_num)
 			: chmap(), chat_command_handler(menu_handler, true), menu_handler_(menu_handler), mouse_handler_(mouse_handler)
-				, team_num_(team_num), cmd_(chmap::cmd_), data_(chmap::data_), args_(chmap::args_)
+				, team_num_(team_num)
 			{
 			}
-			void dispatch(const std::string& cmd)
-			{
-				chat_command_handler::parse_cmd(cmd);
-				chmap::dispatch(cmd);
-			}		
+			using chmap::dispatch; //disambiguate
+
 		protected:
-			//chat_command_handler's init_map() will end up calling these.
+			//chat_command_handler's init_map() and hanlers will end up calling these.
 			//this makes sure the commands end up in our map
 			virtual void register_command(const std::string& cmd,
 				chat_command_handler::command_handler h, const std::string& help="", 
@@ -2140,12 +2213,24 @@ private:
 			{
 				chmap::register_alias(to_cmd, cmd);
 			}			
+			virtual std::string get_arg(unsigned i) const
+			{
+				return chmap::get_arg(i);
+			}
+			virtual std::string get_cmd() const
+			{
+				return chmap::get_cmd();
+			}
+			virtual std::string get_data(unsigned n = 1) const
+			{
+				return chmap::get_data(n);
+			}									
 			
 			//these are needed to avoid ambiguities introduced by inheriting from console_command_handler
 			using chmap::register_command;
 			using chmap::register_alias;
 			using chmap::help;
-			using chmap::get_arg;
+			using chmap::is_enabled;
 			
 			void do_refresh();
 			void do_droid();
@@ -2256,10 +2341,6 @@ private:
 			menu_handler& menu_handler_;
 			mouse_handler& mouse_handler_;
 			const unsigned int team_num_;
-			//these are needed to avoid ambiguities introduced by inhriting from console_command_handler
-			const std::string & cmd_;
-			const std::string & data_;
-			const std::vector<std::string> & args_;
 	};
 
 	chat_handler::chat_handler()
@@ -2342,19 +2423,19 @@ private:
 	}
 	void chat_command_handler::do_emote()
 	{
-		chat_handler_.send_chat_message("/me " + data_, allies_only_);
+		chat_handler_.send_chat_message("/me " + get_data(), allies_only_);
 	}
 	void chat_command_handler::do_network_send()
 	{
-		chat_handler_.send_command(cmd_, data_);
+		chat_handler_.send_command(get_cmd(), get_data());
 	}
 	void chat_command_handler::do_whisper()
 	{
-		if (args_.size() < 3) return;
+		if (get_data(2).empty()) return;
 		config cwhisper, data;
-		cwhisper["message"] = get_arg(2);
-		cwhisper["sender"] = preferences::login();
 		cwhisper["receiver"] = get_arg(1);
+		cwhisper["message"] = get_data(2);
+		cwhisper["sender"] = preferences::login();
 		data.add_child("whisper", cwhisper);
 		chat_handler_.add_chat_message(time(NULL), 
 			"whisper to " + cwhisper["receiver"], 0,
@@ -2363,7 +2444,7 @@ private:
 	}
 	void chat_command_handler::do_log()
 	{
-		chat_handler_.change_logging(data_);
+		chat_handler_.change_logging(get_data());
 	}
 	
 	void chat_command_handler::do_ignore()
@@ -2587,22 +2668,22 @@ private:
 		preferences::show_theme_dialog(*menu_handler_.gui_);
 	}
 	void console_handler::do_network_send_cmd() {
-		menu_handler_.send_command(cmd_);
+		menu_handler_.send_command(get_cmd());
 	}
 	void console_handler::do_network_send_cmd_data() {
-		menu_handler_.send_command(cmd_, data_);
+		menu_handler_.send_command(get_cmd(), get_data());
 	}
 	void console_handler::do_control() {
 		// :control <side> <nick>
 		if (network::nconnections() == 0) return;
-		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),' ');
-		if(j == data_.end())
+		const std::string side = get_arg(1);
+		const std::string player = get_arg(2);
+		if(player.empty())
 		{
 			print(_("error"), _("Usage: control <side> <nick>"));
 			return;
 		}
-		const std::string side = get_arg(1);
-		const std::string player = get_arg(2);
+
 		unsigned int side_num;
 		try {
 			side_num = lexical_cast<unsigned int>(side);
@@ -2644,7 +2725,7 @@ private:
 		menu_handler_.gui_->clear_chat_messages();
 	}
 	void console_handler::do_sunset() {
-		int delay = lexical_cast_default<int>(data_);
+		int delay = lexical_cast_default<int>(get_data());
 		menu_handler_.gui_->sunset(delay);
 	}
 	void console_handler::do_fps() {
@@ -2654,42 +2735,43 @@ private:
 		menu_handler_.gui_->toggle_benchmark();
 	}
 	void console_handler::do_save() {
-		menu_handler_.save_game(data_,gui::NULL_DIALOG);
+		menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
 	}
 	void console_handler::do_save_quit() {
-		menu_handler_.save_game(data_,gui::NULL_DIALOG);
+		menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
 		throw end_level_exception(QUIT);
 	}
 	void console_handler::do_quit() {
 		throw end_level_exception(QUIT);
 	}
 	void console_handler::do_ignore_replay_errors() {
-		game_config::ignore_replay_errors = (data_ != "off") ? true : false;
+		game_config::ignore_replay_errors = (get_data() != "off") ? true : false;
 	}
 	void console_handler::do_nosaves() {
-		game_config::disable_autosave = (data_ != "off") ? true : false;
+		game_config::disable_autosave = (get_data() != "off") ? true : false;
 	}
 	void console_handler::do_next_level() {
 		throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
 	}
 	void console_handler::do_debug() {
-		print(cmd_, _("Debug mode activated!"));
+		print(get_cmd(), _("Debug mode activated!"));
 		game_config::debug = true;
 	}
 	void console_handler::do_nodebug() {
-		print(cmd_, _("Debug mode deactivated!"));
+		print(get_cmd(), _("Debug mode deactivated!"));
 		game_config::debug = false;
 	}
 	void console_handler::do_set_var() {
-		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),'=');
-		if(j != data_.end()) {
-			const std::string name(data_.begin(),j);
-			const std::string value(j+1,data_.end());
+		const std::string data = get_data();
+		const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
+		if(j != data.end()) {
+			const std::string name(data.begin(),j);
+			const std::string value(j+1,data.end());
 			menu_handler_.gamestate_.set_variable(name,value);
 		}
 	}
 	void console_handler::do_show_var() {
-		gui::message_dialog to_show(*menu_handler_.gui_,"",menu_handler_.gamestate_.get_variable(data_));
+		gui::message_dialog to_show(*menu_handler_.gui_,"",menu_handler_.gamestate_.get_variable(get_data()));
 		to_show.show();
 	}
 	void console_handler::do_unit() {
@@ -2698,11 +2780,9 @@ private:
 			return;
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
 		if (i == menu_handler_.units_.end()) return;
-		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),'=');
-		if (j == data_.end()) return;
-
-		const std::string name(data_.begin(),j);
-		const std::string value(j+1,data_.end());
+		const std::string name = get_arg(1);
+		const std::string value = get_data(2);
+		if (value.empty()) return;
 		// FIXME: Avoids a core dump on display
 		// because alignment strings get reduced
 		// to an enum, then used to index an
@@ -2725,7 +2805,7 @@ private:
 	void console_handler::do_buff() {
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
 		if(i != menu_handler_.units_.end()) {
-			i->second.add_trait(data_);
+			i->second.add_trait(get_data());
 			menu_handler_.gui_->invalidate(i->first);
 			menu_handler_.gui_->invalidate_unit();
 		}
@@ -2741,7 +2821,7 @@ private:
 	}
 	void console_handler::do_create() {
 		if (menu_handler_.map_.on_board(mouse_handler_.get_last_hex())) {
-			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find(data_);
+			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find(get_data());
 			if(i == unit_type_data::types().end()) {
 				return;
 			}
@@ -2764,11 +2844,11 @@ private:
 		menu_handler_.gui_->redraw_everything();
 	}
 	void console_handler::do_gold() {
-		menu_handler_.teams_[team_num_ - 1].spend_gold(-lexical_cast_default<int>(data_,1000));
+		menu_handler_.teams_[team_num_ - 1].spend_gold(-lexical_cast_default<int>(get_data(),1000));
 		menu_handler_.gui_->redraw_everything();
 	}
 	void console_handler::do_event() {
-		game_events::fire(data_);
+		game_events::fire(get_data());
 		menu_handler_.gui_->redraw_everything();
 	}
 	void console_handler::do_version() {
