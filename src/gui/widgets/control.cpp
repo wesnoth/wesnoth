@@ -256,7 +256,7 @@ void tcontrol::draw(surface& surface)
 		// Next time when visible we grab the background again.
 		if(restorer_) {
 			DBG_G_D << "Control: drawing setting invisible.\n";
-			SDL_BlitSurface(restorer_, 0, surface, &rect);
+			blit_surface(restorer_, 0, surface, &rect);
 			restorer_ = 0;
 		}
 		return;
@@ -267,7 +267,7 @@ void tcontrol::draw(surface& surface)
 		restorer_ = get_surface_portion(surface, rect);
 	} 
 	if(full_redraw()) {
-		SDL_BlitSurface(restorer_, 0, surface, &rect);
+		blit_surface(restorer_, 0, surface, &rect);
 		rect = get_rect();
 	}
 
@@ -280,7 +280,7 @@ void tcontrol::draw(surface& surface)
 	}
 
 	canvas(get_state()).draw(true);
-	SDL_BlitSurface(canvas(get_state()).surf(), 0, surface, &rect);
+	blit_surface(canvas(get_state()).surf(), 0, surface, &rect);
 }
 
 } // namespace gui2

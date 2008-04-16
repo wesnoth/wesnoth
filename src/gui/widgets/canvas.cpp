@@ -616,7 +616,11 @@ void timage::draw(surface& canvas,
 		surf = image_;
 	}
 
-	SDL_BlitSurface(surf, &src_clip, canvas, &dst_clip);
+	// FIXME the scale and strech return an optimized surface which needs
+	// to be turned into a not optimized surface again, so it would be nice
+	// to add a parameter whether or not to optimize.
+	surf = make_neutral_surface(surf);
+	blit_surface(surf, &src_clip, canvas, &dst_clip);
 }
 
 
@@ -744,7 +748,7 @@ void ttext::draw(surface& canvas,
 	SDL_SetAlpha(surf, 0, 0);
 
 	SDL_Rect dst = { x, y, canvas->w, canvas->h };
-	SDL_BlitSurface(surf, 0, canvas, &dst);
+	blit_surface(surf, 0, canvas, &dst);
 }
 
 } // namespace
