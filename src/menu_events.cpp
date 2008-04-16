@@ -2235,8 +2235,6 @@ private:
 			void do_refresh();
 			void do_droid();
 			void do_theme();
-			void do_network_send_cmd();
-			void do_network_send_cmd_data();
 			void do_control();
 			void do_clear();
 			void do_sunset();
@@ -2265,7 +2263,8 @@ private:
 			std::string get_flags_description() const {
 				return "(D) - debug only";
 			}
-			std::string get_command_flags_description(const map::command& c) const
+			using chat_command_handler::get_command_flags_description; //silence a warning
+			std::string get_command_flags_description(const chmap::command& c) const
 			{
 				return std::string(c.has_flag('D') ? " (debug command)" : "");
 			}
@@ -2392,7 +2391,7 @@ private:
 		}
 	}
 
-	void chat_handler::send_command(const std::string& cmd, const std::string& args) {
+	void chat_handler::send_command(const std::string& cmd, const std::string& args /* = "" */) {
 		config data;
 		if (cmd == "muteall") {
 			data.add_child(cmd);
@@ -2660,18 +2659,8 @@ private:
 			menu_handler_.teams_[side - 1].make_human();
 		}
 	}
-//	void console_handler::do_log() {
-//		// :log <level> <domain>  Change the log level of a log domain.
-//		menu_handler_.change_logging(data_);
-//	}
 	void console_handler::do_theme() {
 		preferences::show_theme_dialog(*menu_handler_.gui_);
-	}
-	void console_handler::do_network_send_cmd() {
-		menu_handler_.send_command(get_cmd());
-	}
-	void console_handler::do_network_send_cmd_data() {
-		menu_handler_.send_command(get_cmd(), get_data());
 	}
 	void console_handler::do_control() {
 		// :control <side> <nick>
