@@ -1845,6 +1845,9 @@ private:
 			map_command_handler()
 			{
 			}
+
+			virtual ~map_command_handler() {}
+
 			bool empty() const
 			{
 				return command_map_.empty();
