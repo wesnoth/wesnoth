@@ -2690,6 +2690,9 @@ private:
 		to_show.show();
 	}
 	void console_handler::do_unit() {
+		// prevent SIGSEGV due to attempt to set HP during a fight 
+		if (events::commands_disabled > 0)
+			return;
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
 		if (i == menu_handler_.units_.end()) return;
 		const std::string::const_iterator j = std::find(data_.begin(),data_.end(),'=');
