@@ -1264,7 +1264,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(recruits_.size() == 1 && recruits_.front() == "") {
 		recruits_.clear();
 	}
-	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"]);
+
 	const config* mods = cfg.child("modifications");
 	if(mods) {
 		modifications_ = *mods;
@@ -1282,9 +1282,12 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		}
 	}
 	variation_ = cfg["variation"];
+
 	if(cfg["max_attacks"] != "") {
 		max_attacks_ = minimum<int>(1,lexical_cast_default<int>(cfg["max_attacks"]));
 	}
+	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"], max_attacks_);
+
 	if(cfg["zoc"] != "") {
 		emit_zoc_ = lexical_cast_default<int>(cfg["zoc"]);
 	}
