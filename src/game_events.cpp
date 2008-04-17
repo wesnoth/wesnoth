@@ -38,6 +38,7 @@
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
+#include "foreach.hpp"
 
 #include <cassert>
 #include <cstdlib>
@@ -1951,6 +1952,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 			std::vector<std::string>::iterator itSide;
 			size_t side;
+
 			// Check if any of side numbers are human controlled
 			for (itSide = side_for.begin(); itSide != side_for.end(); ++itSide)
 			{
@@ -2613,7 +2615,11 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	// Command to remove a variable
 	else if(cmd == "clear_variable") {
 		const std::string name = cfg["name"];
-		state_of_game->clear_variable(name);
+		std::vector<std::string> vars_to_clear = 
+		    utils::split(name, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+		foreach(const std::string& var, vars_to_clear) {
+		    state_of_game->clear_variable(var);
+		}
 	}
 
 	else if(cmd == "endlevel") {
@@ -3202,4 +3208,5 @@ bool entity_location::requires_unit() const
 }
 
 } // end namespace game_events (2)
+
 
