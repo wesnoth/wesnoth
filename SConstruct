@@ -476,7 +476,7 @@ elif env["PLATFORM"] == 'darwin':			# Mac OS X
     env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
 
 Export(Split("env have_client_prereqs have_X have_server_prereqs"))
-SConscript(dirs = ["src"])
+SConscript(dirs = Split("src doc"))
 Import(Split("sources wesnoth wesnoth_editor wesnothd cutter exploder campaignd"))
 
 #
@@ -843,27 +843,6 @@ deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + 
 uninstall = env.Command('uninstall', '', deletions)
 env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
-
-#
-# Making the manual
-#
-if "manual" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS:
-    env.Command("doc/manual/manual.en.xml", "doc/manual/manual.txt",
-    	"asciidoc -b docbook -d book -n -a toc -o $TARGET $SOURCE && dos2unix $TARGET")
-    manuals = glob("doc/manual/*.xml")
-    if "doc/manual/manual.en.xml" not in manuals: manuals.append("doc/manual/manual.en.xml")
-    for manual in manuals:
-        html = env.Command(manual.replace(".xml", ".html"), manual,
-    	    """xsltproc --nonet \
-            --stringparam callout.graphics 0 \
-            --stringparam navig.graphics 0 \
-            --stringparam admon.textlabel 1 \
-            --stringparam admon.graphics 0 \
-            --stringparam html.stylesheet ./styles/manual.css \
-            /etc/asciidoc/docbook-xsl/xhtml.xsl \
-            $SOURCE > $TARGET \
-            """)
-        env.Alias("manual", html)
 
 #
 # Making a distribution tarball.
