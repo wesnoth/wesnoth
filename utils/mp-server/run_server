@@ -69,6 +69,7 @@ do
 			./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
 			cd $SERVERBASE/build/
 		fi
+		for ip in $(cat $SERVERBASE/banlist 2> /dev/null); do $HOME/bin/send_server_command $SERVER ban $ip; done
 		# wait for the server to terminate
 		wait $PID
 		# need to use the recorded path since the build/ symlink might have changed
