@@ -33,7 +33,9 @@ class vconfig
 {
 public:
 	vconfig();
-	vconfig(const config* cfg, bool is_volatile=false);
+	vconfig(const vconfig& v);
+	vconfig(const config* cfg, const config* cache_key=NULL);
+	~vconfig();
 
 	vconfig& operator=(const vconfig cfg);
 	vconfig& operator=(const config* cfg);
@@ -52,7 +54,6 @@ public:
 	const t_string& get_attribute(const std::string& key) const { return (*cfg_)[key]; }
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
 	bool empty() const { return (null() || cfg_->empty()); }
-	bool is_volatile() const { return volatile_; }
 
 	struct all_children_iterator {
 		typedef std::pair<const std::string, const vconfig> value_type;
@@ -88,7 +89,7 @@ public:
 
 private:
 	const config* cfg_;
-	bool volatile_;
+	const config* cache_key_;
 };
 
 namespace variable

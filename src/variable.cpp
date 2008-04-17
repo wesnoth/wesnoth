@@ -34,29 +34,126 @@ namespace
 	//! @todo FIXME: the variable repository should be
 	// a class of variable.hpp, and not the game_state.
 	game_state* repos = NULL;
+
+	// map to track temp storage of inserted tags on the heap
+	std::map<config const *, int> config_cache;
+
+	// map by hash for equivalent inserted tags already in the cache
+	std::map<std::string *, config const *> hash_to_cache;
+
+	// map to remember config hashes that have already been calculated
+	std::map<config const *, std::string *> config_hashes;
+
+	config empty_config;
+
+	class hash_memory_manager {
+    public:
+	    std::vector<std::string *> mem;
+	    void clear() {
+	        hash_to_cache.clear();
+	        config_hashes.clear();
+            std::vector<std::string *>::iterator mem_it,
+                mem_end = mem.end();
+            for(mem_it = mem.begin(); mem_it != mem_end; ++mem_it) {
+                delete *mem_it;
+            }
+            mem.clear();
+	    }
+	    ~hash_memory_manager() {
+	        clear();
+	    }
+	};
+	hash_memory_manager hash_memory;
+}
+
+static std::string* get_hash_of(const config* cp) {
+	std::string *& hash_ref = config_hashes[cp];
+	if(hash_ref == NULL) {
+	    const std::string & temp_hash = cp->hash();
+	    std::vector<std::string *>::iterator hash_it,
+            hash_end = hash_memory.mem.end();
+	    for(hash_it = hash_memory.mem.begin(); hash_it != hash_end; ++hash_it) {
+	        if(temp_hash == **hash_it) {
+	            hash_ref = *hash_it;
+	            return hash_ref;
+	        }
+	    }
+        hash_ref = new std::string(temp_hash);
+        hash_memory.mem.push_back(hash_ref);
+	}
+    return hash_ref;
+}
+
+static void increment_config_usage(const config*& cp) {
+	if(cp == NULL) return;
+    std::map<config const *, int>::iterator this_usage =  config_cache.find(cp);
+    if(this_usage != config_cache.end()) {
+        ++this_usage->second;
+        return;
+    }
+    const config *& eq = hash_to_cache[get_hash_of(cp)];
+    if(eq == NULL) {
+        // this is a new one... allocate some memory for it
+        cp = new config(*cp);
+        // remember this cache to prevent an equivalent one from being created
+        eq = cp;
+    } else if(eq == cp || *eq==*cp) {
+        // swapping the pointer with an equivalent one already in the cache
+        cp = eq;
+    }
+	++(config_cache[cp]);
+}
+
+static void decrement_config_usage(const config* cp) {
+	if(cp == NULL) return;
+	std::map<config const *, int>::iterator this_usage = config_cache.find(cp);
+	assert(this_usage != config_cache.end());
+	if(--(this_usage->second) == 0) {
+		delete cp;
+		config_cache.erase(this_usage);
+		hash_to_cache.erase(get_hash_of(cp));
+	}
 }
 
 vconfig::vconfig() :
-	cfg_(NULL), volatile_(false)
+	cfg_(NULL), cache_key_(NULL)
 {
 }
 
-vconfig::vconfig(const config* cfg, bool is_volatile) :
-	cfg_(cfg), volatile_(is_volatile)
+vconfig::vconfig(const config* cfg, const config * cache_key) :
+	cfg_(cfg), cache_key_(cache_key)
 {
+    increment_config_usage(cache_key_);
+}
+
+vconfig::vconfig(const vconfig& v) :
+	cfg_(v.cfg_), cache_key_(v.cache_key_)
+{
+    increment_config_usage(cache_key_);
+}
+
+vconfig::~vconfig()
+{
+    decrement_config_usage(cache_key_);
 }
 
 vconfig& vconfig::operator=(const vconfig cfg)
 {
+    const config* prev_key = cache_key_;
 	cfg_ = cfg.cfg_;
-	volatile_ = cfg.volatile_;
+	cache_key_ = cfg.cache_key_;
+    increment_config_usage(cache_key_);
+    decrement_config_usage(prev_key);
 	return *this;
 }
 
 vconfig& vconfig::operator=(const config* cfg)
 {
-	cfg_ = cfg;
-	//is volatile? assume current setting
+    if(cfg_ != cfg) {
+        cfg_ = cfg;
+        decrement_config_usage(cache_key_);
+        cache_key_ = NULL;
+    }
 	return *this;
 }
 
@@ -76,18 +173,22 @@ const config vconfig::get_parsed_config() const
 
         const std::string &child_key = *(*child).first;
         if(child_key == "insert_tag") {
+            //! FIXME: need to prevent infinite recursion
+
             vconfig insert_cfg(child->second);
             const t_string& name = insert_cfg["name"];
-            variable_info vinfo(insert_cfg["variable"], true, variable_info::TYPE_CONTAINER);
-            if(vinfo.explicit_index) {
-                res.add_child(name, vconfig(&(vinfo.as_container()), true).get_parsed_config());
+            variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
+            if(!vinfo.is_valid) {
+                res.add_child(name); //add empty tag
+            } else if(vinfo.explicit_index) {
+                res.add_child(name, vconfig(&(vinfo.as_container())).get_parsed_config());
             } else {
                 variable_info::array_range range = vinfo.as_array();
                 if(range.first == range.second) {
                     res.add_child(name); //add empty tag
                 }
                 while(range.first != range.second) {
-                    res.add_child(name, vconfig(*range.first++, true).get_parsed_config());
+                    res.add_child(name, vconfig(*range.first++).get_parsed_config());
                 }
             }
         } else {
@@ -106,21 +207,26 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
     {
         const std::string &child_key = *(*child).first;
         if(child_key == key) {
-            res.push_back(vconfig(child->second, volatile_));
+            res.push_back(vconfig(child->second, cache_key_));
         } else if(child_key == "insert_tag") {
             vconfig insert_cfg(child->second);
             if(insert_cfg["name"] == key) {
-                variable_info vinfo(insert_cfg["variable"], true, variable_info::TYPE_CONTAINER);
-                if(vinfo.explicit_index) {
-                    res.push_back(vconfig(&(vinfo.as_container()), true));
+                variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
+                if(!vinfo.is_valid) {
+                    //push back an empty tag
+                    res.push_back(vconfig(&empty_config));
+                } else if(vinfo.explicit_index) {
+                    config * cp = &(vinfo.as_container());
+                    res.push_back(vconfig(cp, cp));
                 } else {
                     variable_info::array_range range = vinfo.as_array();
                     if(range.first == range.second) {
-                        //push back an empty (volatile) tag
-                        res.push_back(vconfig(&(vinfo.as_container()), true));
+                        //push back an empty tag
+                        res.push_back(vconfig(&empty_config));
                     }
                     while(range.first != range.second) {
-                        res.push_back(vconfig(*range.first++, true));
+                        config * cp = *range.first++;
+                        res.push_back(vconfig(cp, cp));
                     }
                 }
             }
@@ -134,15 +240,19 @@ vconfig vconfig::child(const std::string& key) const
     const config *natural = cfg_->child(key);
     if(natural)
     {
-        return vconfig(natural, volatile_);
+        return vconfig(natural, cache_key_);
     }
     for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
         chitors.first != chitors.second; ++chitors.first)
     {
         vconfig insert_cfg(*chitors.first);
         if(insert_cfg["name"] == key) {
-            variable_info vinfo(insert_cfg["variable"], true, variable_info::TYPE_CONTAINER);
-            return vconfig(&(vinfo.as_container()), true);
+            variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
+            if(!vinfo.is_valid) {
+                return vconfig(&empty_config);
+            }
+            config * cp = &(vinfo.as_container());
+            return vconfig(cp, cp);
         }
     }
     return vconfig();
@@ -227,11 +337,16 @@ const std::string vconfig::all_children_iterator::get_key() const
 const vconfig vconfig::all_children_iterator::get_child() const
 {
     if(i_.get_key() == "insert_tag") {
-        variable_info vinfo(vconfig(&i_.get_child())["variable"], true, variable_info::TYPE_CONTAINER);
-        if(inner_index_ == 0) {
-            return vconfig(&vinfo.as_container(), true);
+        config * cp;
+        variable_info vinfo(vconfig(&i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
+        if(!vinfo.is_valid) {
+            return vconfig(&empty_config);
+        } else if(inner_index_ == 0) {
+            cp = &(vinfo.as_container());
+            return vconfig(cp, cp);
         }
-        return vconfig(*(vinfo.as_array().first + inner_index_), true);
+        cp = *(vinfo.as_array().first + inner_index_);
+        return vconfig(cp, cp);
     }
     return vconfig(&i_.get_child());
 }
@@ -271,6 +386,7 @@ namespace variable
 	manager::~manager()
 	{
 		repos = NULL;
+		hash_memory.clear();
 	}
 }
 

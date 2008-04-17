@@ -355,11 +355,11 @@ std::deque<queued_event> events_queue;
 class event_handler
 {
 public:
-	event_handler(const config& cfg) :
+	event_handler(const vconfig& cfg) :
 		names_(utils::split(cfg["name"])),
 		first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
 		disabled_(false),rebuild_screen_(false),
-		cfg_(&cfg)
+		cfg_(cfg)
 	{}
 
 	void write(config& cfg) const
@@ -716,7 +716,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		std::string fog = cfg["fog"];
 		std::string shroud = cfg["shroud"];
 		std::string village_gold = cfg["village_gold"];
-		const config::child_list& ai = cfg.get_config().get_children("ai");
+		const config::child_list& ai = cfg.get_parsed_config().get_children("ai");
 		// TODO: also allow client to modify a side's colour if it
 		// is possible to change it on the fly without causing visual glitches
 
@@ -1311,7 +1311,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
         const t_string to_variable = cfg["to_variable"];
 		const vconfig::child_list values = cfg.get_children("value");
-		const config::child_list literals = cfg.get_config().get_children("literal");
+		const vconfig::child_list literals = cfg.get_children("literal");
 		const vconfig::child_list split_elements = cfg.get_children("split");
 
 		std::vector<config> data;
@@ -1329,9 +1329,9 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				data.push_back((*i).get_parsed_config());
 			}
 		} else if(!literals.empty()) {
-			for(config::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
+			for(vconfig::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
 			{
-				data.push_back(**i);
+				data.push_back(i->get_config());
 			}
 		} else if(!split_elements.empty()) {
             const vconfig split_element=split_elements.front();
@@ -1761,12 +1761,13 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "recall") {
 		LOG_NG << "recalling unit...\n";
 		bool unit_recalled = false;
-		config unit_filter(cfg.get_config());
+		config temp_config(cfg.get_config());
 		// Prevent the recall unit filter from using the location as a criterion
 		//! @todo FIXME: we should design the WML to avoid these types of collisions;
 		// filters should be named consistently and always have a distinct scope.
-		unit_filter["x"] = "";
-		unit_filter["y"] = "";
+		temp_config["x"] = "";
+		temp_config["y"] = "";
+		vconfig unit_filter(&temp_config);
 		for(int index = 0; !unit_recalled && index < int(teams->size()); ++index) {
 			LOG_NG << "for side " << index << "...\n";
 			const std::string player_id = (*teams)[index].save_id();
@@ -1783,7 +1784,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				DBG_NG << "checking unit against filter...\n";
 				u->set_game_context(units,game_map,status_ptr,teams);
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
-				if(game_events::unit_matches_filter(*u, &unit_filter, gamemap::location())) {
+				if(game_events::unit_matches_filter(*u, unit_filter, gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
@@ -2232,7 +2233,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 	// Adding of new events
 	else if(cmd == "event") {
-		new_handlers.push_back(event_handler(cfg.get_config()));
+		new_handlers.push_back(event_handler(cfg));
 	}
 
 	// Fire any events
@@ -2698,7 +2699,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			filter = cfg.child("primary_attack");
 			if(!filter.null()) {
 				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-					if(itor->matches_filter(filter.get_config())) {
+					if(itor->matches_filter(filter.get_parsed_config())) {
 						primary = &*itor;
 						break;
 					}
@@ -2708,7 +2709,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			filter = cfg.child("secondary_attack");
 			if(!filter.null()) {
 				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-					if(itor->matches_filter(filter.get_config())) {
+					if(itor->matches_filter(filter.get_parsed_config())) {
 						secondary = &*itor;
 						break;
 					}
@@ -2779,7 +2780,7 @@ static void commit_wmi_commands() {
 			if(!mref->command.empty()) {
 				mref->command["name"] = mref->name;
 				mref->command["first_time_only"] = "no";
-				event_handler new_handler(mref->command);
+				event_handler new_handler(&mref->command);
 				std::vector<std::string> names = new_handler.names();
 				std::vector<std::string>::iterator iter,end;
 				for (iter = names.begin(),end = names.end();
@@ -2988,7 +2989,7 @@ manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
 	const config::child_list& events_list = cfg.get_children("event");
 	for(config::child_list::const_iterator i = events_list.begin();
 	    i != events_list.end(); ++i) {
-		event_handler new_handler(**i);
+		event_handler new_handler(*i);
 		std::vector<std::string> names = new_handler.names();
 		std::vector<std::string>::iterator iter,end;
 		for (iter = names.begin(),end = names.end();
@@ -3022,7 +3023,7 @@ manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
 	std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
 	while(itor != state_of_game->wml_menu_items.end()) {
 		if(!itor->second->command.empty()) {
-			event_handler new_handler(itor->second->command);
+			event_handler new_handler(&itor->second->command);
 			std::vector<std::string> names = new_handler.names();
 			std::vector<std::string>::iterator iter,end;
 			for (iter = names.begin(),end = names.end();
@@ -3111,7 +3112,7 @@ void add_events(const config::child_list& cfgs,const std::string& id)
 		unit_wml_ids.insert(id);
 		for(config::child_list::const_iterator new_ev = cfgs.begin(); new_ev != cfgs.end(); ++ new_ev) {
 			unit_wml_configs.push_back(new config(**new_ev));
-			event_handler new_handler(*unit_wml_configs.back());
+			event_handler new_handler(&(*unit_wml_configs.back()));
 			std::vector<std::string> names = new_handler.names();
 			std::vector<std::string>::iterator iter,end;
 			for (iter = names.begin(),end = names.end();
