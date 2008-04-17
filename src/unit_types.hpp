@@ -318,7 +318,7 @@ public:
 
         private:
             unit_type_map_wrapper() { unit_cfg_ = NULL; }
-            unit_type_map_wrapper(unit_type_map_wrapper& utf) {}
+            unit_type_map_wrapper(unit_type_map_wrapper& /*utf*/) {}
 
             void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
             void set_unit_traits(const config::child_list unit_traits) { unit_traits_ = unit_traits; }

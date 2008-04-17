@@ -34,7 +34,7 @@
 
 namespace gui2{
 
-static Uint32 hover_callback(Uint32 interval, void *param)
+static Uint32 hover_callback(Uint32 /*interval*/, void *param)
 {
 	DBG_G_E << "Pushing hover event in queue.\n";
 
@@ -53,7 +53,7 @@ static Uint32 hover_callback(Uint32 interval, void *param)
 	return 0;
 }
 
-static Uint32 popup_callback(Uint32 interval, void*)
+static Uint32 popup_callback(Uint32 /*interval*/, void*)
 {
 	DBG_G_E << "Pushing popup removal event in queue.\n";
 
@@ -260,7 +260,7 @@ void tevent_handler::remove_help_popup()
 	do_remove_help_popup();
 }
 
-void tevent_handler::mouse_enter(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over)
 {
 	DBG_G_E << "Event: remove tooltip.\n";
 
@@ -272,7 +272,7 @@ void tevent_handler::mouse_enter(const SDL_Event& event, twidget* mouse_over)
 	set_hover();
 }
 
-void tevent_handler::mouse_hover(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_hover(const SDL_Event& event, twidget* /*mouse_over*/)
 {
 
 	const unsigned hover_id = *static_cast<unsigned*>(event.user.data1);
@@ -314,7 +314,7 @@ void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 	}
 }
 
-void tevent_handler::mouse_leave(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_leave(const SDL_Event& /*event*/, twidget* /*mouse_over*/)
 {
 	assert(mouse_focus_);
 
@@ -328,7 +328,7 @@ void tevent_handler::mouse_leave(const SDL_Event& event, twidget* mouse_over)
 	mouse_focus_ = 0;
 }
 
-void tevent_handler::mouse_left_button_down(const SDL_Event& event, twidget* mouse_over)
+void tevent_handler::mouse_left_button_down(const SDL_Event& /*event*/, twidget* mouse_over)
 {
 	if(mouse_left_button_down_) {
 		WRN_G_E << "In 'left button down' but the mouse "

@@ -525,7 +525,7 @@ public:
 	    : function_expression("null", args, 0, 0)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& /*variables*/) const {
 		return variant();
 	}
 };

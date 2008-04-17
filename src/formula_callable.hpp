@@ -64,7 +64,7 @@ public:
 		return do_compare(other) < 0;
 	}
 
-	virtual void get_inputs(std::vector<formula_input>* inputs) const {};
+	virtual void get_inputs(std::vector<formula_input>* /*inputs*/) const {};
 
 	void serialize(std::string& str) const {
 		serialize_to_string(str);
@@ -81,7 +81,7 @@ protected:
 		return this < callable ? -1 : (this == callable ? 0 : 1);
 	}
 
-	virtual void serialize_to_string(std::string& str) const {
+	virtual void serialize_to_string(std::string& /*str*/) const {
 		throw type_error("Tried to serialize type which cannot be serialized");
 	}
 private:

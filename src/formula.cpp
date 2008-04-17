@@ -28,7 +28,7 @@
 namespace game_logic
 {
 
-void formula_callable::set_value(const std::string& key, const variant& value)
+void formula_callable::set_value(const std::string& key, const variant& /*value*/)
 {
 	std::cerr << "ERROR: cannot set key '" << key << "' on object\n";
 }
@@ -74,7 +74,7 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& /*variables*/) const {
 		std::vector<variant> res;
 		std::vector<std::string> function_names = builtin_function_names();
 		std::vector<std::string> more_function_names = symbols_->get_function_names();
@@ -370,7 +370,7 @@ class null_expression : public formula_expression {
 public:
 	explicit null_expression() {};
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& /*variables*/) const {
 		return variant();
 	}
 };
@@ -381,7 +381,7 @@ public:
 	explicit integer_expression(int i) : i_(i)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& /*variables*/) const {
 		return variant(i_);
 	}
 

@@ -7,8 +7,8 @@ class reference_counted_object
 {
 public:
 	reference_counted_object() : count_(0) {}
-	reference_counted_object(const reference_counted_object& obj) : count_(0) {}
-	reference_counted_object& operator=(const reference_counted_object& obj) {
+	reference_counted_object(const reference_counted_object& /*obj*/) : count_(0) {}
+	reference_counted_object& operator=(const reference_counted_object& /*obj*/) {
 		return *this;
 	}
 	virtual ~reference_counted_object() {}

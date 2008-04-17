@@ -15,7 +15,7 @@ public: \
 	{} \
 	\
 	const klass& get_##klass() const { return object_; } \
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const \
+	void get_inputs(std::vector<game_logic::formula_input>* /*inputs*/) const \
 	{ \
 	} \
 	\

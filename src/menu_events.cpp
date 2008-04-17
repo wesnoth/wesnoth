@@ -1966,7 +1966,7 @@ private:
 				return "";
 			}
 			//this should return a string describing the flags of the given command
-			virtual std::string get_command_flags_description(const command& c) const
+			virtual std::string get_command_flags_description(const command& /*c*/) const
 			{
 				return "";
 			}
@@ -2845,7 +2845,7 @@ private:
 	}
 
 	void menu_handler::do_ai_formula(const std::string& str,
-			const unsigned int team_num, mouse_handler& mousehandler)
+			const unsigned int team_num, mouse_handler& /*mousehandler*/)
 	{
 		// First, this will change the end of the history vector from a blank string to the most recent input
 		preferences::formula_history().back() = str;

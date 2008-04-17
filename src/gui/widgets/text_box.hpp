@@ -41,7 +41,7 @@ public:
 		dragging_(false)
 	{}
 
-	void set_active(const bool active) { /*FIXME IMPLEMENT*/ };
+	void set_active(const bool /*active*/) { /*FIXME IMPLEMENT*/ };
 	bool get_active() const { return true; /* FIXME IMPLEMENT */ }
 	unsigned get_state() const { return state_; }
 
@@ -152,8 +152,8 @@ private:
 	virtual void handle_key_default(bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
 	// These are ignored by a single line edit box which is the default behaviour.
-	virtual void handle_key_page_up(SDLMod modifier, bool& handled) {}
-	virtual void handle_key_page_down(SDLMod modifier, bool& handled) {}
+	virtual void handle_key_page_up(SDLMod /*modifier*/, bool& /*handled*/) {}
+	virtual void handle_key_page_down(SDLMod /*modifier*/, bool& /*handled*/) {}
 };
 
 //! Class for text input history

@@ -378,7 +378,7 @@ private:
 class recruit_callable : public formula_callable {
 	gamemap::location loc_;
 	std::string type_;
-	variant get_value(const std::string& key) const { return variant(); }
+	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
 	recruit_callable(const gamemap::location& loc, const std::string& type)
 	  : loc_(loc), type_(type)
@@ -422,7 +422,7 @@ private:
 class set_var_callable : public formula_callable {
 	std::string key_;
 	variant value_;
-	variant get_value(const std::string& key) const { return variant(); }
+	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
 	set_var_callable(const std::string& key, const variant& value)
 	  : key_(key), value_(value)
@@ -445,7 +445,7 @@ private:
 
 class fallback_callable : public formula_callable {
 	std::string key_;
-	variant get_value(const std::string& key) const { return variant(); }
+	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
 	explicit fallback_callable(const std::string& key) : key_(key) {
 	}

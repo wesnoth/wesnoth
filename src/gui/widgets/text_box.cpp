@@ -102,7 +102,7 @@ void ttext_::mouse_left_button_double_click(tevent_handler&)
 
 }
 
-void ttext_::key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
+void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
 	DBG_G_E << "Text_box: key press.\n";
 
@@ -262,7 +262,7 @@ void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 }
 
 // Deletes the character in front of the cursor (if not at the beginning).
-void ttext_::handle_key_backspace(SDLMod modifier, bool& handled)
+void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 {
 	DBG_G_E << "Text_box: key press: backspace.\n";
 
@@ -276,7 +276,7 @@ void ttext_::handle_key_backspace(SDLMod modifier, bool& handled)
 }
 
 // Deletes either the selection or the character beyond the cursor
-void ttext_::handle_key_delete(SDLMod modifier, bool& handled)
+void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 {
 	DBG_G_E << "Text_box: key press: delete.\n";
 
@@ -288,7 +288,7 @@ void ttext_::handle_key_delete(SDLMod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_default(bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
+void ttext_::handle_key_default(bool& handled, SDLKey /*key*/, SDLMod /*modifier*/, Uint16 unicode)
 {
 	DBG_G_E << "Text_box: key press: default.\n";
 
@@ -431,7 +431,7 @@ void ttext_box::calculate_char_offset()
 	}
 }
 
-void ttext_box::handle_key_clear_line(SDLMod modifier, bool& handled)
+void ttext_box::handle_key_clear_line(SDLMod /*modifier*/, bool& handled)
 {
 	handled = true;
 
@@ -452,7 +452,7 @@ void ttext_box::load_config()
 	}
 }
 
-void ttext_box::handle_key_up_arrow(SDLMod modifier, bool& handled)
+void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 {
 	if (history_.get_enabled()) {
 		std::string s = history_.up(text());
@@ -465,7 +465,7 @@ void ttext_box::handle_key_up_arrow(SDLMod modifier, bool& handled)
 			
 }
 
-void ttext_box::handle_key_down_arrow(SDLMod modifier, bool& handled)
+void ttext_box::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 {
 	if (history_.get_enabled()) {
 		set_text(history_.down(text()));
