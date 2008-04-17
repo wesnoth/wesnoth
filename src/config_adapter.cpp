@@ -155,7 +155,6 @@ void get_player_info(const config& cfg, game_state& gamestate,
 		VALIDATE(units.count(start_pos) == 0,
 			 t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
 
-		new_unit.new_turn();
 		units.add(new std::pair<gamemap::location,unit>(map.starting_position(new_unit.side()), new_unit));
 		LOG_NG << "initializing side '" << cfg["side"] << "' at "
 			<< start_pos << '\n';
