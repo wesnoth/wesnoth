@@ -1,0 +1,150 @@
+# vi: syntax=python:et:ts=4
+from glob import glob
+from subprocess import Popen, PIPE
+import os
+import re
+Import("env")
+
+#
+# Gettext message catalog generation
+#
+
+textdomains = glob("*")
+textdomains.remove("wesnoth-manpages")
+textdomains.remove("wesnoth-manual")
+textdomains = filter(os.path.isdir, textdomains)
+lingua_re = re.compile(r".*/(.*)\.po")
+
+if "pot-update" in COMMAND_LINE_TARGETS:
+    for domain in textdomains:
+        sources = File(os.path.join(domain, "POTFILES.in")).get_contents().split("\n")
+        sources = filter(lambda x : x and not x.isspace(), sources)
+        sources = map(lambda x: File(x, Dir("..")), sources)
+        if sources:
+            source_pot = env.Command(
+                os.path.join(domain, domain + ".cpp.po"),
+                sources,
+                """xgettext --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
+                --from-code=UTF-8 --sort-by-file --keyword=sgettext \
+                --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
+                --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
+                --keyword=_ --keyword=N_ --output=$TARGET \
+                ;sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
+                """ % (domain, os.path.join("po", domain, "POTFILES.in"))
+                )
+        cfgs = []
+        FINDCFG = os.path.join(domain, "FINDCFG")
+        if os.path.exists(FINDCFG):
+            findcfg_process = Popen(["sh", os.path.join("po", FINDCFG)], stdout = PIPE, cwd = "..")
+            findcfg_process.wait()
+            cfgs = findcfg_process.stdout.read().split("\n")
+            cfgs.remove("")
+        cfgs = map(lambda x: File(x, Dir("..")), cfgs)
+        if cfgs:
+            wml_pot = env.Command(
+                os.path.join(domain, domain + ".wml.po"),
+                cfgs,
+                "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % domain
+                )
+
+        pot = os.path.join(domain, domain + ".pot")
+        env.Precious(pot)
+        NoClean(pot)
+        if cfgs and sources:
+            env.AddPostAction(
+                env.Command(
+                    pot,
+                    [source_pot, wml_pot],
+                    "msgcat --sort-by-file $SOURCES -o $TARGET"
+                    ),
+                        [
+                        Delete(wml_pot),
+                        Delete(source_pot)
+                        ]
+                )
+        elif cfgs:
+            env.AddPostAction(
+                env.InstallAs(pot, wml_pot),
+                    Delete(wml_pot)
+                )
+        else:
+            env.AddPostAction(
+                env.InstallAs(pot, source_pot),
+                    Delete(source_pot)
+                )
+
+        env.Alias("pot-update", pot)
+    env.Alias("pot-update", "../translations")
+
+if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
+    for domain in textdomains:
+        linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
+        for lingua in linguas:
+            lingua = lingua.rstrip("\n")
+            update_po = env.Command(
+                os.path.join(domain, lingua + ".po"),
+                os.path.join(domain, domain + ".pot"),
+                "msgmerge $TARGET $SOURCE -o $TARGET"
+                )
+            env.Precious(update_po)
+            NoClean(update_po)
+
+            env.Alias(lingua, update_po)
+            if lingua in COMMAND_LINE_TARGETS:
+                env.AlwaysBuild(update_po)
+
+    env.Alias("update-po", [])
+
+#
+# Manual and man pages translation
+#
+
+def parse_po4a_cfg(cfg_file):
+    cfg_file = cfg_file.replace("\\\n", "")
+    po4a_cfg_re = re.compile(r"^\[(.*)\] (.*)$", re.MULTILINE)
+    opts = dict(po4a_cfg_re.findall(cfg_file))
+    return opts
+
+if "update-po4a" in COMMAND_LINE_TARGETS:
+    linguas = parse_po4a_cfg(File("wesnoth-manual/wesnoth-manual.cfg").get_contents())["po4a_langs"].split()
+    po4a_targets = ["wesnoth-manual/wesnoth-manual.pot"]
+    for lingua in linguas:
+        po4a_targets.append(os.path.join("wesnoth-manual", lingua + ".po"))
+    env.Precious(po4a_targets)
+    NoClean(po4a_targets)
+    for lingua in linguas:
+        po4a_targets.append(os.path.join("../doc/manual", "manual." + lingua + ".xml"))
+    env.AlwaysBuild(env.Command(po4a_targets, "../doc/manual/manual.en.xml",
+                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manual.cfg""", chdir = "po/wesnoth-manual"))
+    env.Alias("update-po4a", "wesnoth-manual/wesnoth-manual.pot")
+
+    linguas = parse_po4a_cfg(File("wesnoth-manpages/wesnoth-manpages.cfg").get_contents())["po4a_langs"].split()
+    po4a_targets = ["wesnoth-manpages/wesnoth-manpages.pot"]
+    for lingua in linguas:
+        po4a_targets.append(os.path.join("wesnoth-manpages", lingua + ".po"))
+    env.Precious(po4a_targets)
+    NoClean(po4a_targets)
+    for lingua in linguas:
+        po4a_targets += [ os.path.join("../doc/man", lingua, x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ]
+    env.AlwaysBuild(env.Command(po4a_targets, [ os.path.join("../doc/man", x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ],
+                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manpages.cfg""", chdir = "po/wesnoth-manpages"))
+    env.Alias("update-po4a", "wesnoth-manpages/wesnoth-manpages.pot")
+
+#
+# If we have the right tool in place, create targets to invoke msgfmt to
+# compile message catalogs to binary format at installation time.
+# Without this step, the i18n support won't work.  Note, the actions
+# this generates should fire only when installing data.
+#
+if env["nls"]:
+    for domain in textdomains:
+        pos = glob(os.path.join(domain, "*.po"))
+        linguas = map(lingua_re.findall, pos)
+        for lingua in linguas:
+            lingua = lingua[0]
+            env.Command(
+                os.path.join("../translations", lingua, "LC_MESSAGES", domain+".mo"),
+                os.path.join(domain, lingua + ".po"),
+                "msgfmt -c --statistics -o $TARGET $SOURCE"
+                )
+

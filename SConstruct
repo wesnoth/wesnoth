@@ -476,7 +476,7 @@ elif env["PLATFORM"] == 'darwin':			# Mac OS X
     env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
 
 Export(Split("env have_client_prereqs have_X have_server_prereqs"))
-SConscript(dirs = Split("src doc"))
+SConscript(dirs = Split("src doc po"))
 Import(Split("sources wesnoth wesnoth_editor wesnothd cutter exploder campaignd"))
 
 #
@@ -486,134 +486,6 @@ Import(Split("sources wesnoth wesnoth_editor wesnothd cutter exploder campaignd"
 # Make a tags file for Emacs
 env.Command("TAGS", sources, 'etags -l c++ $SOURCES')
 env.Clean(all, 'TAGS')
-
-#
-# Gettext message catalog generation
-#
-
-textdomains = os.listdir("po")
-textdomains = filter(lambda x: x != ".svn", textdomains)
-textdomains.remove("wesnoth-manpages")
-textdomains.remove("wesnoth-manual")
-textdomains = map(lambda dir: os.path.join("po", dir),
-                           textdomains)
-textdomains = filter(os.path.isdir, textdomains)
-lingua_re = re.compile(r"po/.*/(.*)\.po")
-
-if "pot-update" in COMMAND_LINE_TARGETS:
-    for domain in textdomains:
-        name = os.path.basename(domain)
-        sources = File(os.path.join(domain, "POTFILES.in")).get_contents().split("\n")
-        sources = filter(lambda x : x and not x.isspace(), sources)
-        if sources:
-            source_pot = env.Command(
-                os.path.join(domain, name + ".cpp.po"),
-                sources,
-                """xgettext --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
-                --from-code=UTF-8 --sort-by-file --keyword=sgettext \
-                --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
-                --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
-                --keyword=_ --keyword=N_ --output=$TARGET \
-                ;sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
-                """ % (name, os.path.join(domain, "POTFILES.in"))
-                )
-        cfgs = []
-        FINDCFG = os.path.join(domain, "FINDCFG")
-        if os.path.exists(FINDCFG):
-            findcfg_process = Popen(["sh", FINDCFG], stdout = PIPE)
-            findcfg_process.wait()
-            cfgs = findcfg_process.stdout.read().split("\n")
-            cfgs.remove("")
-        if cfgs:
-            wml_pot = env.Command(
-                os.path.join(domain, name + ".wml.po"),
-                cfgs,
-                "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % name
-                )
-
-        pot = os.path.join(domain, name + ".pot")
-        env.Precious(pot)
-        NoClean(pot)
-        if cfgs and sources:
-            env.AddPostAction(
-                env.Command(
-                    pot,
-                    [source_pot, wml_pot],
-                    "msgcat --sort-by-file $SOURCES -o $TARGET"
-                    ),
-                        [
-                        Delete(os.path.join(domain, name + ".wml.po")),
-                        Delete(os.path.join(domain, name + ".cpp.po"))
-                        ]
-                )
-        elif cfgs:
-            env.AddPostAction(
-                env.InstallAs(pot, wml_pot),
-                    Delete(os.path.join(domain, name + ".wml.po"))
-                )
-        else:
-            env.AddPostAction(
-                env.InstallAs(pot, source_pot),
-                    Delete(os.path.join(domain, name + ".cpp.po"))
-                )
-
-        env.Alias("pot-update", pot)
-    env.Alias("pot-update", "translations")
-
-if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
-    for domain in textdomains:
-        name = os.path.basename(domain)
-        linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
-        for lingua in linguas:
-            lingua = lingua.rstrip("\n")
-            update_po = env.Command(
-                os.path.join(domain, lingua + ".po"),
-                os.path.join(domain, name + ".pot"),
-                "msgmerge $TARGET $SOURCE -o $TARGET"
-                )
-            env.Precious(update_po)
-            NoClean(update_po)
-
-            env.Alias(lingua, update_po)
-            if lingua in COMMAND_LINE_TARGETS:
-                env.AlwaysBuild(update_po)
-
-    env.Alias("update-po", [])
-
-#
-# Manual and man pages translation
-#
-
-def parse_po4a_cfg(cfg_file):
-    cfg_file = cfg_file.replace("\\\n", "")
-    po4a_cfg_re = re.compile(r"^\[(.*)\] (.*)$", re.MULTILINE)
-    opts = dict(po4a_cfg_re.findall(cfg_file))
-    return opts
-
-if "update-po4a" in COMMAND_LINE_TARGETS:
-    linguas = parse_po4a_cfg(File("po/wesnoth-manual/wesnoth-manual.cfg").get_contents())["po4a_langs"].split()
-    po4a_targets = ["po/wesnoth-manual/wesnoth-manual.pot"]
-    for lingua in linguas:
-        po4a_targets.append(os.path.join("po/wesnoth-manual", lingua + ".po"))
-    env.Precious(po4a_targets)
-    NoClean(po4a_targets)
-    for lingua in linguas:
-        po4a_targets.append(os.path.join("doc/manual", "manual." + lingua + ".xml"))
-    env.AlwaysBuild(env.Command(po4a_targets, "doc/manual/manual.en.xml",
-                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manual.cfg""", chdir = "po/wesnoth-manual"))
-    env.Alias("update-po4a", "po/wesnoth-manual/wesnoth-manual.pot")
-
-    linguas = parse_po4a_cfg(File("po/wesnoth-manpages/wesnoth-manpages.cfg").get_contents())["po4a_langs"].split()
-    po4a_targets = ["po/wesnoth-manpages/wesnoth-manpages.pot"]
-    for lingua in linguas:
-        po4a_targets.append(os.path.join("po/wesnoth-manpages", lingua + ".po"))
-    env.Precious(po4a_targets)
-    NoClean(po4a_targets)
-    for lingua in linguas:
-        po4a_targets += [ os.path.join("doc/man", lingua, x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ]
-    env.AlwaysBuild(env.Command(po4a_targets, [ os.path.join("doc/man", x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ],
-                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manpages.cfg""", chdir = "po/wesnoth-manpages"))
-    env.Alias("update-po4a", "po/wesnoth-manpages/wesnoth-manpages.pot")
 
 #
 # Dummy locales
@@ -813,25 +685,6 @@ for installable in ('wesnoth', 'wesnoth_editor',
                     'exploder', 'cutter'):
     if os.path.exists(installable) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
         install_env.Alias('install', install_env.Alias('install-'+installable))
-
-#
-# If we have the right tool in place, create targets to invoke msgfmt to
-# compile message catalogs to binary format at installation time.
-# Without this step, the i18n support won't work.  Note, the actions
-# this generates should firte only when installing data.
-#
-if env["nls"]:
-    for domain in textdomains:
-        pos = glob(os.path.join(domain, "*.po"))
-        linguas = map(lingua_re.findall, pos)
-        for lingua in linguas:
-            lingua = lingua[0]
-            name = os.path.basename(domain)
-            env.Command(
-                os.path.join("translations", lingua, "LC_MESSAGES", name+".mo"),
-                os.path.join("po", name, lingua + ".po"),
-                "msgfmt -c --statistics -o $TARGET $SOURCE"
-                )
 
 #
 # Un-installation
