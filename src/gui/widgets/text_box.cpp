@@ -18,6 +18,7 @@
 #include "foreach.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "game_preferences.hpp"
 
 #include <numeric>
 
@@ -448,6 +449,87 @@ void ttext_box::load_config()
 		}
 
 		set_canvas_text();
+	}
+}
+
+void ttext_box::handle_key_up_arrow(SDLMod modifier, bool& handled)
+{
+	if (history_.get_enabled()) {
+		std::string s = history_.up(text());
+		if (!s.empty()) {
+			set_text(s);
+		}
+				
+		handled = true;
+	}
+			
+}
+
+void ttext_box::handle_key_down_arrow(SDLMod modifier, bool& handled)
+{
+	if (history_.get_enabled()) {
+		set_text(history_.down(text()));
+		handled = true;
+	}
+}
+
+ttext_history ttext_history::get_history(const std::string& id, const bool enabled) 
+{
+	std::vector<std::string>* vec = preferences::get_history(id);
+	return ttext_history(vec, enabled);
+}
+
+void ttext_history::push(const std::string& text) 
+{
+	if (!enabled_) {
+		return; 
+	} else {		
+		if (!text.empty() && (history_->empty() || text != history_->back())) {
+			history_->push_back(text); 
+		}
+		
+		pos_ = history_->size();
+	}
+}
+
+std::string ttext_history::up(const std::string& text)
+{
+	
+	if (!enabled_) {
+		return "";
+	} else if (pos_ == history_->size()) {
+		unsigned curr = pos_;
+		push(text);
+		pos_ = curr;
+	}	
+
+	if (pos_ != 0) {
+		--pos_;
+	}
+	
+	return get_value();
+}
+
+// Will push text to history if it is pointing at the end of the vector.
+std::string ttext_history::down(const std::string& text)
+{
+	if (!enabled_) {
+		return "";
+	} else if (pos_ == history_->size()) {
+		push(text);
+	} else {
+		pos_++;
+	}
+		
+	return get_value();
+}
+
+std::string ttext_history::get_value() const 
+{
+	if (!enabled_ || pos_ == history_->size()) {
+		return "";
+	} else { 
+		return history_->at(pos_);
 	}
 }
 

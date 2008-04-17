@@ -51,6 +51,9 @@ std::vector<std::string> search_history_vector;
 std::vector<std::string> chat_history_vector;
 std::vector<std::string> command_history_vector;
 
+std::map<std::string, std::vector<std::string> > history_map;
+const unsigned max_history_saved = 50;
+
 //! Add a nick to the specified relation setting.
 void add_relation(const std::string nick, const std::string relation) {
 	std::vector<std::string> r = utils::split(preferences::get(relation));
@@ -91,6 +94,19 @@ manager::manager()
 	std::copy(terrain.begin(), terrain.end(),
 			std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
 
+	config* history = preferences::get_child("history");
+	if (history) {
+		const string_map& history_strings = history->values;
+		for (string_map::const_iterator iter = history_strings.begin(); iter != history_strings.end(); ++iter) {
+			std::vector<std::string> current_history = utils::paranthetical_split(iter->second.value(), ',', "(", ")");
+			std::vector<std::string>* history_ptr = get_history(iter->first);
+			for (std::vector<std::string>::iterator i = current_history.begin(); i != current_history.end(); ++i) {
+				// remove the enclosing parens
+				history_ptr->push_back(i->substr(1, i->size() - 2));
+			}			
+		}
+	}
+
 	network::ping_timeout = get_ping_timeout();
 }
 
@@ -104,6 +120,23 @@ manager::~manager()
 			  std::back_inserter(terrain));
 	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
 
+	config history;
+	std::map<std::string, std::vector<std::string> >::iterator iter;
+	for (iter = history_map.begin(); iter != history_map.end(); ++iter) {
+		std::stringstream history_stream;
+		std::vector<std::string>::iterator i;
+		for (i = iter->second.size() < max_history_saved ? iter->second.begin(): iter->second.end() - max_history_saved; i != iter->second.end(); ++i) {
+			history_stream << "(" << *i << ")";
+			if (i + 1 != iter->second.end()) {
+				history_stream << ",";
+			}
+		}
+		history[iter->first] = history_stream.str();
+	}
+	
+	preferences::set_child("history", history);
+
+	history_map.clear();
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
 	set_ping_timeout(network::ping_timeout);
@@ -690,6 +723,26 @@ std::vector<std::string> &chat_history() {
 
 std::vector<std::string> &command_history() {
 	return command_history_vector;
+}
+
+
+//! Returns a pointer to the history vector associated with given id
+//! making a new one if it doesn't exist.
+// FIXME only used for gui2. Could be used for the above histories.
+std::vector<std::string>* get_history(const std::string& id) {
+	std::map<std::string, std::vector<std::string> >::iterator iter;
+	iter = history_map.find(id);
+	
+	if (iter != history_map.end()) {
+		// a history with this id exists, so return it
+		return &iter->second;
+	} else {	
+		// no history matches this id, so make a new one		
+		std::pair<std::map<std::string, std::vector<std::string> >::iterator, bool> res;
+		res = history_map.insert(std::pair<std::string, std::vector<std::string> >(id, std::vector<std::string>()));
+			
+		return &res.first->second;
+	}	
 }
 
 bool green_confirm()

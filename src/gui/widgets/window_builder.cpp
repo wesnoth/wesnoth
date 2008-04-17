@@ -97,12 +97,14 @@ public:
 
 struct tbuilder_text_box : public tbuilder_control
 {
-
 private:
 	tbuilder_text_box();
+	std::string history_;
+
 public:
 	tbuilder_text_box(const config& cfg) :
-		tbuilder_control(cfg)
+		tbuilder_control(cfg),
+		history_(cfg["history"])
 	{}
 
 	twidget* build () const;
@@ -433,6 +435,10 @@ twidget* tbuilder_text_box::build() const
 
 	// A textbox doesn't have a label but a text
 	text_box->set_text(label);
+
+	if (!history_.empty()) {
+		text_box->set_history(history_);		
+	}
 
 	DBG_G << "Window builder: placed text box '" << id << "' with defintion '" 
 		<< definition << "'.\n";

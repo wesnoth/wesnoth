@@ -188,6 +188,8 @@ namespace preferences {
 	std::vector<std::string> &chat_history();
 	std::vector<std::string> &command_history();
 
+	std::vector<std::string>* get_history(const std::string& id);
+
 	std::string client_type();
 
 	std::string clock_format();

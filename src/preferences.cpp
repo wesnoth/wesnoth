@@ -78,6 +78,16 @@ void set(const std::string key, std::string value) {
 	prefs[key] = value;
 }
 
+void set_child(const std::string& key, const config& val) {
+	prefs.clear_children(key);
+	prefs.add_child(key, val);
+}
+
+config* get_child(const std::string& key)
+{
+	return prefs.child(key);
+}
+
 void erase(const std::string key) {
 	prefs.values.erase(key);
 }

@@ -45,6 +45,9 @@ void taddon_connect::show(CVideo& video)
 	retval_ = window.show(true);
 
 	if(host_widget) {
+		if(retval_ == tbutton::OK) {
+			host_widget->save_to_history();
+		}
 		host_name_= host_widget->get_text();
 	}
 }
