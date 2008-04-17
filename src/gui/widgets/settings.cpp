@@ -219,6 +219,18 @@ tcontrol_definition::tcontrol_definition(const config& cfg) :
 
 }
 
+template<class T>
+void tcontrol_definition::load_resolutions(const config::child_list& resolution_list)
+{
+
+	VALIDATE(!resolution_list.empty(), _("No resolution defined."));
+	for(std::vector<config*>::const_iterator itor = resolution_list.begin();
+			itor != resolution_list.end(); ++itor) {
+
+		resolutions.push_back(new T(**itor));
+	}
+}
+
 tbutton_definition::tbutton_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
@@ -228,13 +240,7 @@ tbutton_definition::tbutton_definition(const config& cfg) :
  */
 	DBG_G_P << "Parsing button " << id << '\n';
 
-	const config::child_list& cfgs = cfg.get_children("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = cfgs.begin();
-			itor != cfgs.end(); ++itor) {
-
-		resolutions.push_back(new tresolution(**itor));
-	}
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
 }
 
 void tbutton_definition::tresolution::read_extra(const config& cfg)
@@ -266,13 +272,7 @@ tlabel_definition::tlabel_definition(const config& cfg) :
 
 	DBG_G_P << "Parsing label " << id << '\n';
 
-	const config::child_list& cfgs = cfg.get_children("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = cfgs.begin();
-			itor != cfgs.end(); ++itor) {
-
-		resolutions.push_back(new tresolution(**itor));
-	}
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
 }
 
 tstate_definition::tstate_definition(const config* cfg) :
@@ -386,13 +386,7 @@ ttext_box_definition::ttext_box_definition(const config& cfg) :
 
 	DBG_G_P << "Parsing text_box " << id << '\n';
 
-	const config::child_list& cfgs = cfg.get_children("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = cfgs.begin();
-			itor != cfgs.end(); ++itor) {
-
-		resolutions.push_back(new tresolution(**itor));
-	}
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
 }
 
 void ttext_box_definition::tresolution::read_extra(const config& cfg)
@@ -422,13 +416,7 @@ ttooltip_definition::ttooltip_definition(const config& cfg) :
 
 	DBG_G_P << "Parsing tooltip " << id << '\n';
 
-	const config::child_list& cfgs = cfg.get_children("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = cfgs.begin();
-			itor != cfgs.end(); ++itor) {
-
-		resolutions.push_back(new tresolution(**itor));
-	}
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
 }
 
 void ttooltip_definition::tresolution::read_extra(const config& cfg)

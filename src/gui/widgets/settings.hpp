@@ -96,6 +96,9 @@ public:
 
 	tcontrol_definition(const config& cfg);
 
+	template<class T>
+	void load_resolutions(const config::child_list& resolution_list);
+
 	std::string id;
 	t_string description;
 
