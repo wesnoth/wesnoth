@@ -557,6 +557,7 @@ libwesnoth_sources = Split("""
     src/gui/widgets/event_handler.cpp
     src/gui/widgets/grid.cpp
     src/gui/widgets/label.cpp
+    src/gui/widgets/panel.cpp
     src/gui/widgets/settings.cpp
     src/gui/widgets/text_box.cpp
     src/gui/widgets/helper.cpp

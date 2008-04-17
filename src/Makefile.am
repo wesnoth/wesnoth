@@ -72,6 +72,7 @@ wesnoth_source = \
 	gui/widgets/event_handler.cpp \
 	gui/widgets/grid.cpp \
 	gui/widgets/label.cpp \
+	gui/widgets/panel.cpp \
 	gui/widgets/settings.cpp \
 	gui/widgets/text_box.cpp \
 	gui/widgets/tooltip.cpp \
