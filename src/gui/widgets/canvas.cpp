@@ -740,13 +740,6 @@ void ttext::draw(surface& canvas,
 		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
 	}
 
-	//FIXME make sure text is rendered properly.
-	//
-	// A hack to make the letters show up a bit readable it does however
-	// clear the back ground. This needs to be fixed but don't want to stall
-	// development too long on it.
-	SDL_SetAlpha(surf, 0, 0);
-
 	SDL_Rect dst = { x, y, canvas->w, canvas->h };
 	blit_surface(surf, 0, canvas, &dst);
 }
