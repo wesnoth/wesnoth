@@ -174,21 +174,23 @@ public:
 
 	unsigned int num_traits() const { return (num_traits_ ? num_traits_ : race_->num_traits()); }
 
-	std::string generate_name() const { return race_->generate_name(string_gender(cfg_["gender"])); }
-
 	//! The name of the unit in the current language setting.
 	const t_string& type_name() const { return type_name_; }
 
 	const std::string& id() const { return id_; }
+	const t_string& unit_description() const;
+	int hitpoints() const { return hitpoints_; }
+	int level() const { return level_; }
+	int movement() const { return movement_; }
+	int cost() const { return cost_; }
+	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
 	const std::string& image_profile() const;
-	const t_string& unit_description() const;
 
 	const std::vector<unit_animation>& animations() const;
 
 	const std::string& flag_rgb() const { return flag_rgb_; }
 
-	int hitpoints() const { return atoi(cfg_["hitpoints"].c_str()); }
 	std::vector<attack_type> attacks() const;
 	const unit_movement_type& movement_type() const { return movementType_; }
 
@@ -196,7 +198,6 @@ public:
 	std::vector<std::string> advances_to() const { return advances_to_; }
 	std::vector<std::string> advances_from() const { return advances_from_; }
 	const config::child_list& modification_advancements() const { return cfg_.get_children("advancement"); }
-	const std::string& usage() const { return cfg_["usage"]; }
 
 	struct experience_accelerator {
 		experience_accelerator(int modifier);
@@ -205,10 +206,6 @@ public:
 	private:
 		int old_value_;
 	};
-
-	int level() const { return atoi(cfg_["level"].c_str()); }
-	int movement() const { return atoi(cfg_["movement"].c_str()); }
-	int cost() const { return atoi(cfg_["cost"].c_str()); }
 
 	enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC };
 
@@ -249,6 +246,11 @@ private:
 	std::string id_;
     t_string type_name_;
     t_string description_;
+    int hitpoints_;
+    int level_;
+    int movement_;
+    int cost_;
+    std::string usage_;
     std::string undead_variation_;
 
     std::string image_;

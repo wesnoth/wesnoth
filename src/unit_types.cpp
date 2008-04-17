@@ -485,7 +485,8 @@ unit_type::unit_type()
 
 unit_type::unit_type(const unit_type& o)
     : cfg_(o.cfg_), id_(o.id_), type_name_(o.type_name_), description_(o.description_),
-      undead_variation_(o.undead_variation_),
+      hitpoints_(o.hitpoints_), level_(o.level_), movement_(o.movement_), cost_(o.cost_),
+      usage_(o.usage_), undead_variation_(o.undead_variation_),
       image_(o.image_), image_profile_(o.image_profile_), flag_rgb_(o.flag_rgb_),
       num_traits_(o.num_traits_), variations_(o.variations_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
@@ -584,14 +585,6 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 		gender_types_[unit_race::FEMALE] = new unit_type(f_cfg,mv_types,races,traits);
 	}
 
-	const std::vector<std::string> genders = utils::split(cfg["gender"]);
-	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
-		genders_.push_back(string_gender(*g));
-	}
-	if(genders_.empty()) {
-		genders_.push_back(unit_race::MALE);
-	}
-
 	const std::string& align = cfg["alignment"];
 	if(align == "lawful")
 		alignment_ = LAWFUL;
@@ -681,6 +674,11 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 	id_ = cfg_["id"];
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
+	hitpoints_ = atoi(cfg_["hitpoints"].c_str());
+	level_ = atoi(cfg_["level"].c_str());
+	movement_ = atoi(cfg_["movement"].c_str());
+	cost_ = atoi(cfg_["cost"].c_str());
+	usage_ = cfg_["usage"];
 	undead_variation_ = cfg_["undead_variation"];
 	image_ = cfg_["image"];
     image_profile_ = cfg_["profile"];
@@ -692,6 +690,14 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 	} else {
 		static const unit_race dummy_race;
 		race_ = &dummy_race;
+	}
+
+	const std::vector<std::string> genders = utils::split(cfg["gender"]);
+	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
+		genders_.push_back(string_gender(*g));
+	}
+	if(genders_.empty()) {
+		genders_.push_back(unit_race::MALE);
 	}
 
 	const config* abil_cfg = cfg.child("abilities");
@@ -924,10 +930,22 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
 			const std::string based_from = (*(**i.first).child("base_unit"))["id"];
 			config from_cfg = find_config(based_from);
 
+            config merge_cfg = from_cfg;
+            merge_cfg.merge_with(**i.first);
+            merge_cfg.clear_children("base_unit");
+            std::string id = merge_cfg["id"];
+            if(id.empty()) {
+                id = from_cfg["name"];
+            }
+
+            (**i.first) = merge_cfg;
+            (**i.first)["id"] = id;
+            /*
             //merge the base_unit config into this one
             (**i.first).merge_and_keep(from_cfg);
             (**i.first).clear_children("base_unit");
             (**i.first)["id"] = id;
+            */
 		}
         // we insert an empty unit_type and build it after the copy (for performance)
         std::pair<unit_type_map::iterator,bool> insertion =
