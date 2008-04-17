@@ -256,7 +256,7 @@ void tcontrol::draw(surface& surface)
 		// Next time when visible we grab the background again.
 		if(restorer_) {
 			DBG_G_D << "Control: drawing setting invisible.\n";
-			blit_surface(restorer_, 0, surface, &rect);
+			restore_background(surface);
 			restorer_ = 0;
 		}
 		return;
@@ -264,11 +264,9 @@ void tcontrol::draw(surface& surface)
 
 	DBG_G_D << "Control: drawing.\n";
 	if(!restorer_) {
-		restorer_ = get_surface_portion(surface, rect);
-	} 
-	if(full_redraw()) {
-		blit_surface(restorer_, 0, surface, &rect);
-		rect = get_rect();
+		save_background(surface);
+	} else if(full_redraw()) {
+		restore_background(surface);
 	}
 
 	if(multiline_label_) {
@@ -281,6 +279,75 @@ void tcontrol::draw(surface& surface)
 
 	canvas(get_state()).draw(true);
 	blit_surface(canvas(get_state()).surf(), 0, surface, &rect);
+}
+
+//! Saves the portion of the background.
+//!
+//! We expect an empty restorer and copy the part in get_rect() to the new 
+//! surface. We copy the data since we want to put it back 1:1 and not a blit
+//! so can't use get_surface_portion.
+//!
+//! @param src          background to save.
+void tcontrol::save_background(const surface& src)
+{
+	assert(src);
+	assert(!restorer_);
+
+	const SDL_Rect rect = get_rect();
+
+	restorer_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE, 
+		rect.w, rect.h, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+
+	{
+		// Extra scoping used for the surface_lock.
+		surface_lock src_lock(src);
+		surface_lock dst_lock(restorer_);
+
+		Uint32* src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
+		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+
+		unsigned offset = rect.y * src->w + rect.x;
+		for(unsigned y = 0; y < rect.h; ++y) {
+			for(unsigned x = 0; x < rect.w; ++x) {
+
+				*dst_pixels++ = src_pixels[offset + x];
+			
+			}
+		offset += src->w;
+		}
+	}
+}
+
+//! Restores a portion of the background.
+//!
+//! See save_background for more info.
+//! 
+//! @param dst          Background to restore.
+void tcontrol::restore_background(surface& dst)
+{
+	assert(restorer_);
+	assert(dst);
+
+	const SDL_Rect rect = get_rect();
+
+	{
+		// Extra scoping used for the surface_lock.
+		surface_lock src_lock(restorer_);
+		surface_lock dst_lock(dst);
+
+		Uint32* src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
+		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+
+		unsigned offset = rect.y * dst->w + rect.x;
+		for(unsigned y = 0; y < rect.h; ++y) {
+			for(unsigned x = 0; x < rect.w; ++x) {
+
+				dst_pixels[offset + x] = *src_pixels++;
+
+			}
+		offset += dst->w;
+		}
+	}
 }
 
 } // namespace gui2

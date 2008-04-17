@@ -139,6 +139,12 @@ private:
 	//! defines whether it's required or not.
 	surface restorer_;
 
+	//! Saves the portion of the background.
+	void save_background(const surface& src);
+
+	//! Restores a portion of the background.
+	void restore_background(surface& dst);
+
 	//! Contains a pointer to the configuration of this button at the 
 	//! current resolution.
  	tresolution_definition_* config_;
