@@ -1322,8 +1322,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	//remove ai_vars from private cfg
 	cfg_.clear_children("ai_vars");
 
-	const unit_type* ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
-
 	cfg_.clear_children("attack");
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
