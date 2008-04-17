@@ -18,6 +18,7 @@
 #ifndef __GUI_WIDGETS_SETTING_HPP_INCLUDED__
 #define __GUI_WIDGETS_SETTING_HPP_INCLUDED__
 
+#include "config.hpp"
 #include "gui/widgets/canvas.hpp"
 #include "gui/widgets/window_builder.hpp"
 #include "tstring.hpp"
@@ -25,9 +26,6 @@
 #include <map>
 #include <string>
 #include <vector>
-
-
-class config;
 
 namespace gui2 {
 
@@ -55,6 +53,7 @@ public:
 
 	tcanvas canvas;
 };
+
 
 //! Base class of a resolution, contains the common keys for a resolution.
 struct tresolution_definition_ : public reference_counted_object
@@ -89,34 +88,24 @@ private:
 	virtual void read_extra(const config& cfg) = 0;
 };
 
-struct tbutton_definition
+struct tcontrol_definition : public reference_counted_object
 {
+private:
+	tcontrol_definition();
+public:
+
+	tcontrol_definition(const config& cfg);
 
 	std::string id;
 	t_string description;
 
-	const std::string& read(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg) : 
-			tresolution_definition_(cfg)
-		{ read_extra(cfg); }
-
-	private:
-		void read_extra(const config& cfg);
-	};
-
 	std::vector<tresolution_definition_*> resolutions;
+
 };
 
-struct tlabel_definition
+struct tbutton_definition : public tcontrol_definition
 {
-
-	std::string id;
-	t_string description;
-
-	const std::string& read(const config& cfg);
+	tbutton_definition(const config& cfg);
 
 	struct tresolution : public tresolution_definition_
 	{
@@ -128,15 +117,12 @@ struct tlabel_definition
 		void read_extra(const config& cfg);
 	};
 
-	std::vector<tresolution_definition_*> resolutions;
 };
 
-struct ttext_box_definition
+struct tlabel_definition : public tcontrol_definition
 {
-	std::string id;
-	t_string description;
 
-	const std::string& read(const config& cfg);
+	tlabel_definition(const config& cfg);
 
 	struct tresolution : public tresolution_definition_
 	{
@@ -147,16 +133,12 @@ struct ttext_box_definition
 	private:
 		void read_extra(const config& cfg);
 	};
-
-	std::vector<tresolution_definition_*> resolutions;
 };
 
-struct ttooltip_definition
+struct ttext_box_definition : public tcontrol_definition
 {
-	std::string id;
-	t_string description;
 
-	const std::string& read(const config& cfg);
+	ttext_box_definition(const config& cfg);
 
 	struct tresolution : public tresolution_definition_
 	{
@@ -168,7 +150,21 @@ struct ttooltip_definition
 		void read_extra(const config& cfg);
 	};
 
-	std::vector<tresolution_definition_*> resolutions;
+};
+
+struct ttooltip_definition : public tcontrol_definition
+{
+	ttooltip_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg) : 
+			tresolution_definition_(cfg)
+		{ read_extra(cfg); }
+
+	private:
+		void read_extra(const config& cfg);
+	};
 };
 
 struct twindow_definition
@@ -225,19 +221,20 @@ struct tgui_definition
 
 	const std::string& read(const config& cfg);
 
-	std::map<std::string, tbutton_definition> buttons;
-	std::map<std::string, tlabel_definition> labels;
-	std::map<std::string, ttext_box_definition> text_boxs;
-	std::map<std::string, ttooltip_definition> tooltips;
+	
+	typedef std::map<std::string /*control type*/, std::map<std::string /*id*/, tcontrol_definition*> > tcontrol_definition_map;
+
+	tcontrol_definition_map control_definition;
+
 	std::map<std::string, twindow_definition> windows;
 
 	std::map<std::string, twindow_builder> window_types;
+private:
+	template<class T>
+	void load_definitions(const std::string& definition_type, const config::child_list& definition_list);
 };
 
-	tresolution_definition_* get_button(const std::string& definition);
-	tresolution_definition_* get_label(const std::string& definition);
-	tresolution_definition_* get_text_box(const std::string& definition);
-	tresolution_definition_* get_tooltip(const std::string& definition);
+	tresolution_definition_* get_control(const std::string& control_type, const std::string& definition);
 	std::vector<twindow_definition::tresolution>::const_iterator get_window(const std::string& definition);
 
 	std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type);

@@ -441,7 +441,7 @@ void ttext_box::handle_key_clear_line(SDLMod /*modifier*/, bool& handled)
 void ttext_box::load_config()
 {
 	if(!config()) {
-		set_config(get_text_box(definition()));
+		set_config(get_control("text_box", definition()));
 
 		assert(canvas().size() == config()->state.size());
 		for(size_t i = 0; i < canvas().size(); ++i) {

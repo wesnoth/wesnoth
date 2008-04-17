@@ -41,7 +41,7 @@ namespace gui2 {
 void ttooltip::load_config()
 {
 	if(!config()) {
-		set_config(get_tooltip(definition()));
+		set_config(get_control("tooltip", definition()));
 
 		assert(canvas().size() == config()->state.size());
 		for(size_t i = 0; i < canvas().size(); ++i) {

@@ -17,7 +17,6 @@
 
 #include "gui/widgets/settings.hpp"
 
-#include "config.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
@@ -73,7 +72,6 @@ namespace {
 	//! Vector with all known windows, these are validated on existance on startup.
 	//! The enum twindow_type is the index of the array.
 	std::vector<std::string> window_type_list(DUMMY);
-
 } // namespace 
 
 static void fill_window_types() 
@@ -157,53 +155,11 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	VALIDATE(windows.find("default") != windows.end(), _ ("No default window defined."));
 
-	/***** Button definitions *****/
-	const config::child_list& button_cfgs = cfg.get_children("button_definition");
-	for(std::vector<config*>::const_iterator itor = button_cfgs.begin();
-			itor != button_cfgs.end(); ++itor) {
-
-		std::pair<std::string, tbutton_definition> child;
-		child.first = child.second.read(**itor);
-		buttons.insert(child);
-	}
-
-	VALIDATE(buttons.find("default") != buttons.end(), _ ("No default button defined."));
-
-	/***** Label definitions *****/
-	const config::child_list& label_cfgs = cfg.get_children("label_definition");
-	for(std::vector<config*>::const_iterator itor = label_cfgs.begin();
-			itor != label_cfgs.end(); ++itor) {
-
-		std::pair<std::string, tlabel_definition> child;
-		child.first = child.second.read(**itor);
-		labels.insert(child);
-	}
-
-	VALIDATE(labels.find("default") != labels.end(), _ ("No default label defined."));
-
-	/***** Text box definitions *****/
-	const config::child_list& text_box_cfg = cfg.get_children("text_box_definition");
-	for(std::vector<config*>::const_iterator itor = text_box_cfg.begin();
-			itor != text_box_cfg.end(); ++itor) {
-
-		std::pair<std::string, ttext_box_definition> child;
-		child.first = child.second.read(**itor);
-		text_boxs.insert(child);
-	}
-
-	VALIDATE(text_boxs.find("default") != text_boxs.end(), _ ("No default text box defined."));
-
-	/***** Tooltip definitions *****/
-	const config::child_list& tooltip_cfg = cfg.get_children("tooltip_definition");
-	for(std::vector<config*>::const_iterator itor = tooltip_cfg.begin();
-			itor != tooltip_cfg.end(); ++itor) {
-
-		std::pair<std::string, ttooltip_definition> child;
-		child.first = child.second.read(**itor);
-		tooltips.insert(child);
-	}
-
-	VALIDATE(tooltips.find("default") != tooltips.end(), _ ("No default tooltip defined."));
+	/***** Control definitions *****/
+	load_definitions<tbutton_definition>("button", cfg.get_children("button_definition"));
+	load_definitions<tlabel_definition>("label", cfg.get_children("label_definition"));
+	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
+	load_definitions<ttooltip_definition>("tooltip", cfg.get_children("tooltip_definition"));
 
 	/***** Window types *****/
 	const config::child_list& window_instance_cfgs = cfg.get_children("window");
@@ -228,25 +184,48 @@ const std::string& tgui_definition::read(const config& cfg)
 	return id;
 }
 
-const std::string& tbutton_definition::read(const config& cfg)
+template<class T>
+void tgui_definition::load_definitions(const std::string& definition_type, const config::child_list& definition_list)
+{
+	for(std::vector<config*>::const_iterator itor = definition_list.begin();
+			itor != definition_list.end(); ++itor) {
+
+		T* def = new T(**itor);
+
+		control_definition[definition_type].insert(std::make_pair(def->id, def));
+	}
+
+	// FIXME use proper control name
+	VALIDATE(control_definition[definition_type].find("default") != control_definition[definition_type].end(), _ ("No default button defined."));
+}
+
+tcontrol_definition::tcontrol_definition(const config& cfg) :
+	id(cfg["id"]),
+	description(cfg["description"]),
+	resolutions()
 {
 /*WIKI
- * [button_definition]
- * The definition of a normal push button.
+ * The general defintion of a control.
  *
  *     id = (string = "")            Unique id for this gui (theme).
  *     description = (t_string = "") Unique translatable name for this gui.
  *
  *     [resolution]                  The definitions of the button in various
  *                                   resolutions.
- * [/button_definition]
  */
-	id = cfg["id"];
-	description = cfg["description"];
 
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
+}
+
+tbutton_definition::tbutton_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+/*WIKI
+ * The definition of a normal push button.
+ * See control_definition.
+ */
 	DBG_G_P << "Parsing button " << id << '\n';
 
 	const config::child_list& cfgs = cfg.get_children("resolution");
@@ -256,8 +235,6 @@ const std::string& tbutton_definition::read(const config& cfg)
 
 		resolutions.push_back(new tresolution(**itor));
 	}
-
-	return id;
 }
 
 void tbutton_definition::tresolution::read_extra(const config& cfg)
@@ -279,24 +256,13 @@ void tbutton_definition::tresolution::read_extra(const config& cfg)
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
 }
 
-const std::string& tlabel_definition::read(const config& cfg)
+tlabel_definition::tlabel_definition(const config& cfg) :
+	tcontrol_definition(cfg)
 {
 /*WIKI
- * [label_definition]
- * The definition of a normal push label.
- *
- *     id = (string = "")            Unique id for this gui (theme).
- *     description = (t_string = "") Unique translatable name for this gui.
- *
- *     [resolution]                  The definitions of the label in various
- *                                   resolutions.
- * [/label_definition]
+ * The definition of a normal label.
+ * See control_definition.
  */
-	id = cfg["id"];
-	description = cfg["description"];
-
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
 	DBG_G_P << "Parsing label " << id << '\n';
 
@@ -307,8 +273,6 @@ const std::string& tlabel_definition::read(const config& cfg)
 
 		resolutions.push_back(new tresolution(**itor));
 	}
-
-	return id;
 }
 
 tstate_definition::tstate_definition(const config* cfg) :
@@ -412,24 +376,13 @@ void tlabel_definition::tresolution::read_extra(const config& cfg)
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 }
 
-const std::string& ttext_box_definition::read(const config& cfg)
+ttext_box_definition::ttext_box_definition(const config& cfg) :
+	tcontrol_definition(cfg)
 {
 /*WIKI
- * [text_box_definition]
  * The definition of a normal text box.
- *
- *     id = (string = "")            Unique id for this gui (theme).
- *     description = (t_string = "") Unique translatable name for this gui.
- *
- *     [resolution]                  The definitions of the text_box in various
- *                                   resolutions.
- * [/text_box_definition]
+ * See control_definition.
  */
-	id = cfg["id"];
-	description = cfg["description"];
-
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
 	DBG_G_P << "Parsing text_box " << id << '\n';
 
@@ -440,8 +393,6 @@ const std::string& ttext_box_definition::read(const config& cfg)
 
 		resolutions.push_back(new tresolution(**itor));
 	}
-
-	return id;
 }
 
 void ttext_box_definition::tresolution::read_extra(const config& cfg)
@@ -461,24 +412,13 @@ void ttext_box_definition::tresolution::read_extra(const config& cfg)
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
 }
 
-const std::string& ttooltip_definition::read(const config& cfg)
+ttooltip_definition::ttooltip_definition(const config& cfg) : 
+	tcontrol_definition(cfg)
 {
 /*WIKI
- * [tooltip_definition]
- * The definition of a tooltip box.
- *
- *     id = (string = "")            Unique id for this gui (theme).
- *     description = (t_string = "") Unique translatable name for this gui.
- *
- *     [resolution]                  The definitions of the tooltip in various
- *                                   resolutions.
- * [/tooltip_definition]
+ * The definition of a tooltip.
+ * See control_definition.
  */
-	id = cfg["id"];
-	description = cfg["description"];
-
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
 	DBG_G_P << "Parsing tooltip " << id << '\n';
 
@@ -489,8 +429,6 @@ const std::string& ttooltip_definition::read(const config& cfg)
 
 		resolutions.push_back(new tresolution(**itor));
 	}
-
-	return id;
 }
 
 void ttooltip_definition::tresolution::read_extra(const config& cfg)
@@ -585,111 +523,26 @@ twindow_definition::tresolution::tlayer::tlayer(const config* cfg) :
 	canvas.set_cfg(*draw);
 }
 
-tresolution_definition_* get_button(const std::string& definition)
+tresolution_definition_* get_control(const std::string& control_type, const std::string& definition)
 {
-	std::map<std::string, tbutton_definition>::const_iterator 
-		button = current_gui->second.buttons.find(definition);
+	const tgui_definition::tcontrol_definition_map::const_iterator	
+		control_definition = current_gui->second.control_definition.find(control_type);
 
-	if(button == current_gui->second.buttons.end()) {
-		LOG_G << "Button: definition '" 
+	assert(control_definition != current_gui->second.control_definition.end());
+
+	std::map<std::string, tcontrol_definition*>::const_iterator 
+		control = control_definition->second.find(definition);
+
+	if(control == control_definition->second.end()) {
+		LOG_G << "Control: type '" << control_type << "' definition '" 
 			<< definition << "' not found, falling back to 'default'.\n";
-		button = current_gui->second.buttons.find("default");
-		assert(button != current_gui->second.buttons.end());
+		control = control_definition->second.find("default");
+		assert(control != control_definition->second.end());
 	}
 
 	for(std::vector<tresolution_definition_*>::const_iterator 
-			itor = button->second.resolutions.begin(),
-			end = button->second.resolutions.end();
-			itor != end;
-			++itor) {
-
-		if(screen_width <= (**itor).window_width &&
-				screen_height <= (**itor).window_height) {
-
-			return *itor;
-		} else if (itor == end - 1) {
-			return *itor;
-		}
-	}
-
-	assert(false);
-}
-
-tresolution_definition_* get_label(const std::string& definition)
-{
-	std::map<std::string, tlabel_definition>::const_iterator 
-		label = current_gui->second.labels.find(definition);
-
-	if(label == current_gui->second.labels.end()) {
-		LOG_G << "Label: definition '" 
-			<< definition << "' not found, falling back to 'default'.\n";
-		label = current_gui->second.labels.find("default");
-		assert(label != current_gui->second.labels.end());
-	}
-
-	for(std::vector<tresolution_definition_*>::const_iterator 
-			itor = label->second.resolutions.begin(),
-			end = label->second.resolutions.end();
-			itor != end;
-			++itor) {
-
-		if(screen_width <= (**itor).window_width &&
-				screen_height <= (**itor).window_height) {
-
-			return *itor;
-		} else if (itor == end - 1) {
-			return *itor;
-		}
-	}
-
-	assert(false);
-}
-
-tresolution_definition_* get_text_box(const std::string& definition)
-{
-	std::map<std::string, ttext_box_definition>::const_iterator 
-		text_box = current_gui->second.text_boxs.find(definition);
-
-	if(text_box == current_gui->second.text_boxs.end()) {
-		LOG_G << "Text_box: definition '" 
-			<< definition << "' not found, falling back to 'default'.\n";
-		text_box = current_gui->second.text_boxs.find("default");
-		assert(text_box != current_gui->second.text_boxs.end());
-	}
-
-	for(std::vector<tresolution_definition_*>::const_iterator 
-			itor = text_box->second.resolutions.begin(),
-			end = text_box->second.resolutions.end();
-			itor != end;
-			++itor) {
-
-		if(screen_width <= (**itor).window_width &&
-				screen_height <= (**itor).window_height) {
-
-			return *itor;
-		} else if (itor == end - 1) {
-			return *itor;
-		}
-	}
-
-	assert(false);
-}
-
-tresolution_definition_* get_tooltip(const std::string& definition)
-{
-	std::map<std::string, ttooltip_definition>::const_iterator 
-		tooltip = current_gui->second.tooltips.find(definition);
-
-	if(tooltip == current_gui->second.tooltips.end()) {
-		LOG_G << "Tooltip: definition '" 
-			<< definition << "' not found, falling back to 'default'.\n";
-		tooltip = current_gui->second.tooltips.find("default");
-		assert(tooltip != current_gui->second.tooltips.end());
-	}
-
-	for(std::vector<tresolution_definition_*>::const_iterator 
-			itor = tooltip->second.resolutions.begin(),
-			end = tooltip->second.resolutions.end();
+			itor = (*control->second).resolutions.begin(),
+			end = (*control->second).resolutions.end();
 			itor != end;
 			++itor) {
 
