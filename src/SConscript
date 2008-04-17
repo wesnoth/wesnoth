@@ -262,7 +262,7 @@ test_sources = Split("""
     tests/main.cpp
     tests/test_util.cpp
     """)
-test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth],
+test_env.Program("../test", test_sources + [libwesnoth_core, libwesnoth],
             CPPPATH = env["CPPPATH"] + ['/usr/include'],
             LIBS = env["LIBS"] + ['boost_unit_test_framework'])
 

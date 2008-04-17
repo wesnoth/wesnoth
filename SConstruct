@@ -161,7 +161,8 @@ def CheckBoostLib(context, boost_lib, require_version = None):
     backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
 
     boost_headers = { "regex" : "regex/config.hpp",
-                      "iostreams" : "iostreams/constants.hpp" }
+                      "iostreams" : "iostreams/constants.hpp",
+                      "unit_test_framework" : "test/unit_test.hpp" }
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("boost_suffix", "")
 
@@ -366,8 +367,7 @@ env.Append(CPPPATH = ["#/src"])
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
-    boost_test_dyn_link = conf.CheckCXXHeader('boost/test/unit_test.hpp')
-    boost_auto_test = conf.CheckCXXHeader('boost/test/unit_test.hpp')
+    boost_test_dyn_link = boost_auto_test = conf.CheckBoost('unit_test_framework')
 
 have_msgfmt = env.WhereIs("msgfmt")
 if not have_msgfmt:
