@@ -115,8 +115,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 				screen = make_neutral_surface(restorer_);
 
 				canvas_background_.draw();
-				SDL_Rect blit = {0, 0, screen->w, screen->h};
-				blit_surface(canvas_background_.surf(), 0, screen, &blit);
+				blit_surface(canvas_background_.surf(), 0, screen, 0);
 			}
 #if 0			
 			// Darkening for debugging redraw.
@@ -135,8 +134,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 			}
 			if(draw_foreground) {
 				canvas_foreground_.draw();
-				SDL_Rect blit = {0, 0, screen->w, screen->h};
-				blit_surface(canvas_foreground_.surf(), 0, screen, &blit);
+				blit_surface(canvas_foreground_.surf(), 0, screen, 0);
 			}
 			if(tooltip_.dirty()) {
 				tooltip_.draw(screen);
