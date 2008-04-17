@@ -109,9 +109,9 @@ static void decrement_config_usage(const config* cp) {
 	std::map<config const *, int>::iterator this_usage = config_cache.find(cp);
 	assert(this_usage != config_cache.end());
 	if(--(this_usage->second) == 0) {
-		delete cp;
 		config_cache.erase(this_usage);
 		hash_to_cache.erase(get_hash_of(cp));
+		delete cp;
 	}
 }
 
