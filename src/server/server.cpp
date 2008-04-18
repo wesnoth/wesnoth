@@ -894,7 +894,7 @@ std::string server::process_command(const std::string& query) {
 			}
 		} else {
 			bool banned = false;
-			const bool kick = (command == "kban" || command == "kickban")
+			const bool kick = (command == "kban" || command == "kickban");
 			// if we find 3 '.' consider it an ip mask
 			if (std::count(parameters.begin(), parameters.end(), '.') == 3) {
 				banned = true;
