@@ -131,7 +131,7 @@ wesnoth_SOURCES = \
 	game.cpp \
 	$(wesnoth_source)
 	
-wesnoth_LDADD = $(THELIBS) libwesnoth.a
+wesnoth_LDADD = $(THELIBS) -lwesnoth
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
@@ -151,7 +151,7 @@ wesnoth_editor_SOURCES = \
 	generic_event.cpp \
 	tooltips.cpp 
 
-wesnoth_editor_LDADD = $(THELIBS) libwesnoth.a
+wesnoth_editor_LDADD = $(THELIBS) -lwesnoth
 wesnoth_editor_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
@@ -222,7 +222,7 @@ test_SOURCES = \
 	tests/test_util.cpp \
 	$(wesnoth_source)
 
-test_LDADD = $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a 
+test_LDADD = $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) -lwesnoth 
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
