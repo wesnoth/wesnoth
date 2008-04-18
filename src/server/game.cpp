@@ -580,7 +580,7 @@ void game::mute_observer(const simple_wml::node& mute, const player_map::const_i
 	}
 	muted_observers_.push_back(user->first);
 	LOG_GAME << network::ip_address(muter->first) << "\t"
-		<< muter->second.name() << "muted: " << user->second.name()
+		<< muter->second.name() << " muted: " << user->second.name()
 		<< "\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
 	send_and_record_server_message((user->second.name() + " has been muted.").c_str());
 }

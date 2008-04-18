@@ -592,7 +592,7 @@ void server::run() {
 
 				games_and_users_list_.root().remove_child("user",index);
 			} else {
-				ERR_SERVER << ip << "ERROR: Could not find user: "
+				ERR_SERVER << ip << "ERROR: Could not find user to remove: "
 					<< pl_it->second.name() << " in games_and_users_list_.\n";
 			}
 			// Was the player in the lobby or a game?
@@ -797,7 +797,7 @@ void server::process_query(const network::connection sock,
                            simple_wml::node& query) {
 	const player_map::const_iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
-		DBG_SERVER << "ERROR: Could not find player with socket: " << sock << "\n";
+		DBG_SERVER << "ERROR: process_query(): Could not find player with socket: " << sock << "\n";
 		return;
 	}
 	const simple_wml::string_span& command(query["type"]);
@@ -887,7 +887,7 @@ std::string server::process_command(const std::string& query) {
 					<< stats.bytes_received << " bytes\n";
 			}
 		}
-	} else if (command == "ban" || command == "bans" || command == "kban") {
+	} else if (command == "ban" || command == "bans" || command == "kban" || command == "kickban") {
 		if (parameters == "") {
 			if (bans_.empty()) return "No bans set.";
 			out << "BAN LIST\n";
@@ -898,12 +898,13 @@ std::string server::process_command(const std::string& query) {
 			}
 		} else {
 			bool banned = false;
+			const bool kick = (command == "kban" || command == "kickban");
 			// if we find 3 '.' consider it an ip mask
 			if (std::count(parameters.begin(), parameters.end(), '.') == 3) {
 				banned = true;
 				out << "Set ban on '" << parameters << "'\n";
 				bans_.push_back(parameters);
-				if (command == "kban") {
+				if (kick) {
 					for (player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
 					{
@@ -924,7 +925,7 @@ std::string server::process_command(const std::string& query) {
 							bans_.push_back(ip);
 							out << "Set ban on '" << ip << "'.\n";
 						}
-						if (command == "kban") {
+						if (kick) {
 							out << "Kicked " << pl->second.name() << ".\n";
 							network::queue_disconnect(pl->first);
 						}
@@ -1191,7 +1192,7 @@ void server::process_data_game(const network::connection sock,
 	}
 	if (itor == games_.end()) {
 		ERR_SERVER << "ERROR: Could not find game for player: "
-			<< pl->second.name() << ". (socket:" << sock << ")\n";
+			<< pl->second.name() << ". (socket: " << sock << ")\n";
 		return;
 	}
 
@@ -1534,7 +1535,7 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 				send_diff = true;
 			}
 		} else {
-			ERR_SERVER << "ERROR: Could not find user in players_. (socket: "
+			ERR_SERVER << "ERROR: delete_game(): Could not find user in players_. (socket: "
 				<< *user << ")\n";
 		}
 	}
