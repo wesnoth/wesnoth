@@ -118,7 +118,7 @@ wesnoth_SOURCES = \
 	game.cpp \
 	$(wesnoth_source)
 	
-wesnoth_LDADD = $(INTERNALLIBS) libwesnoth.a $(THELIBS)
+wesnoth_LDADD = $(INTERNALLIBS) -lwesnoth $(THELIBS)
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
@@ -139,7 +139,7 @@ wesnoth_editor_SOURCES = \
 	generic_event.cpp \
 	tooltips.cpp 
 
-wesnoth_editor_LDADD = $(INTERNALLIBS) libwesnoth.a $(THELIBS)
+wesnoth_editor_LDADD = $(INTERNALLIBS) -lwesnoth $(THELIBS)
 wesnoth_editor_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
@@ -211,7 +211,7 @@ test_SOURCES = \
 	tests/test_network_worker.cpp \
 	$(wesnoth_source)
 
-test_LDADD = $(INTERNALLIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) libwesnoth.a $(THELIBS)  
+test_LDADD = $(INTERNALLIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) -lwesnoth $(THELIBS)  
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
