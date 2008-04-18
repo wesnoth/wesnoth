@@ -47,31 +47,21 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % domain
                 )
 
-        pot = os.path.join(domain, domain + ".pot")
+        pot = File(os.path.join(domain, domain + ".pot"))
         env.Precious(pot)
         NoClean(pot)
         if cfgs and sources:
-            env.AddPostAction(
-                env.Command(
-                    pot,
-                    [source_pot, wml_pot],
-                    "msgcat --sort-by-file $SOURCES -o $TARGET"
-                    ),
-                        [
-                        Delete(wml_pot),
-                        Delete(source_pot)
-                        ]
-                )
-        elif cfgs:
-            env.AddPostAction(
-                env.InstallAs(pot, wml_pot),
-                    Delete(wml_pot)
-                )
-        else:
-            env.AddPostAction(
-                env.InstallAs(pot, source_pot),
+            env.Command(pot, [source_pot, wml_pot],
+                [
+                    "msgcat --sort-by-file $SOURCES -o $TARGET",
+                    Delete(wml_pot),
                     Delete(source_pot)
-                )
+                ]
+            )
+        elif cfgs:
+            env.Command(pot, wml_pot, Move(pot.path, wml_pot))
+        else:
+            env.Command(pot, source_pot, Move(pot.path, source_pot))
 
         env.Alias("pot-update", pot)
     env.Alias("pot-update", "../translations")
