@@ -89,7 +89,7 @@ if __name__ == '__main__':
     else:
         (infilename, outfilename) = arguments
 
-    convertor += " " + infilename + " " + outfilename
+    convertor += " '" + infilename + "' '" + outfilename + "'"
     if verbose:
         print convertor
     if not dryrun:

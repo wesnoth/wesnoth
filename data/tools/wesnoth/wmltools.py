@@ -590,6 +590,15 @@ class CrossRef:
 # The disavantage is that it eats lots of core!
 #
 
+
+class TranslationError(Exception):
+    def __init__(self, textdomain, isocode):
+        self.isocode = isocode
+        self.textdomain = textdomain
+    def __str__(self):
+        return "No translations found for %s/%s.\n" % (
+            self.textdomain, self.isocode)
+
 class Translation(dict):
     "Parses a po file to create a translation dictionary."
     def __init__(self, textdomain, isocode, topdir=""):
@@ -607,9 +616,7 @@ class Translation(dict):
                 except IOError:
                     pass
             else:
-                sys.stderr.write("No translations found for %s. Aborting.\n" %
-                    isocode)
-                sys.exit(1)
+                raise TranslationError(textdomain, self.isocode)
 
             gettext = f.read().decode("utf8")
             matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
@@ -646,7 +653,11 @@ class Translations:
     def get(self, textdomain, isocode, key, default):
         t = (textdomain, isocode)
         if not t in self.translations:
-            self.translations[t] = Translation(textdomain, isocode, self.topdir)
+            try:
+                self.translations[t] = Translation(textdomain, isocode, self.topdir)
+            except TranslationError, e:
+                sys.stderr.write(str(e))
+                self.translations[t] = Translation(textdomain, "C", self.topdir)
         result = self.translations[t].get(key, default)   
         return result
 

@@ -15,294 +15,8 @@ import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 import wesnoth.wmltools as wmltools
 
-class ParserWithCoreMacros:
-    def __init__(self, isocode):
-        # Handle translations.
-        self.translations = wmltools.Translations()
-        def gettext(textdomain, x):
-            return self.translations.get(textdomain, isocode, x, x)
-        self.gettext = gettext
-
-        # Create a new parser for the macros.
-        parser = wmlparser.Parser(datadir)
-        parser.do_preprocessor_logic = True
-        parser.gettext = self.gettext
-        
-        # Parse core macros.
-        parser.parse_text("{core/macros/}\n")
-        parser.parse_top(None)
-        self.core_macros = parser.macros
-                
-    def parse(self, text_to_parse, ignore_macros = None):
-        # Create the real parser.
-        parser = wmlparser.Parser(datadir, userdir)
-        parser.do_preprocessor_logic = True
-        parser.gettext = self.gettext
-        parser.macros = copy.copy(self.core_macros)
-        
-        # Suppress complaints about undefined terrain macros
-        parser.set_macro_not_found_callback(lambda wmlparser, name, params:
-        name.startswith("TERRAIN") or name == "DISABLE_TRANSITIONS")
-        
-        if ignore_macros:
-            parser.macro_callback = ignore_macros
-
-        # Create a WML root element and parse the given text into it.
-        WML = wmldata.DataSub("WML")
-
-        parser.parse_text(text_to_parse)
-
-        parser.parse_top(WML)
- 
-        return WML
-
-class ImageCollector:
-    def __init__(self):
-        self.images = {}
-    def add(self, campaign, path):
-        self.images[(path, campaign)] = True
-    def copy_and_color_images(self, target_path):
-        for i, c in self.images.keys():
-            if c == "mainline": bases = ["core/images"]
-	    else:
-	        bases = ["campaigns/%s/images" % c,
-	        "%s/campaigns/%s/images" % (userdir, c),
-	        "campaigns/%s/images/units" % c,
-	        "core/images"]
-	    for base in bases:
-                ipath = os.path.join(os.path.join(datadir, "%s" % base), i)
-		if os.path.exists(ipath): break
-            opath = os.path.join(target_path, "pics", c, i)
-            try:
-                os.makedirs(os.path.dirname(opath))
-            except OSError:
-                pass
-            if os.path.exists(ipath):
-                #shutil.copy2(ipath, opath)
-                command = os.path.join(datadir, "tools/unit_tree/TeamColorizer") + " %s %s" % (
-                    ipath, opath)
-                os.system(command)
-            else:
-                sys.stderr.write(
-                    "Warning: Required image %s: \"%s\" does not exist.\n" % (c, i))
-
-image_collector = ImageCollector()
-
-class UnitList:
-    def __init__(self, isocode):
-        self.units_by_campaign = {}
-        self.unit_lookup = {}
-        self.race_lookup = {}
-        self.terrain_lookup = {}
-        self.movetype_lookup = {}
-        self.parser = ParserWithCoreMacros(isocode)
-        self.faction_lookup = {}
-        self.campaigns = {}
-
-    def add_terrains(self):
-        WML = self.parser.parse("{core/terrain.cfg}\n")
-
-        for terrain in WML.get_all("terrain"):
-            tid = terrain.get_text_val("id")
-            self.terrain_lookup[tid] = terrain
-
-    def add_factions(self):
-        WML = self.parser.parse("{multiplayer/eras.cfg}\n")
-
-        for era in WML.get_all("era"):
-            if era.get_text_val("id") == "era_default":
-                for multiplayer_side in era.get_all("multiplayer_side"):
-                    fid = multiplayer_side.get_text_val("id")
-                    if fid == "Random": continue
-                    self.faction_lookup[fid] = multiplayer_side
-                    recruit = multiplayer_side.get_text_val("recruit").strip()
-                    leader = multiplayer_side.get_text_val("leader").strip()
-                    units = recruit.split(",") + leader.split(",")
-                    multiplayer_side.units = {}
-                    for u in units:
-                        uid = u.strip()
-                        multiplayer_side.units[uid] = True
-
-    def add(self, text_to_parse, campaign):
-        "Collect all units in the specified namespace."
-        WML = self.parser.parse(text_to_parse)
-
-        # Collect unit data. First, we look for a [+units] section.
-        units = WML.get_first("+units")
-        self.campaigns[campaign] = WML
-	    # If no [+units] section, assume it is inside a [campaign].
-        if not units:
-            campaign_wml = WML.get_first("campaign")
-            if not campaign_wml:
-                # FIXME: The tutorial has no [campaign], need to special case it
-                # somehow. Currently, we ignore it.
-                return 0
-            self.campaigns[campaign] = campaign_wml
-            # Now we get the define - strange, but seems to be how Wesnoth
-            # works..
-            define = campaign_wml.get_text_val("define")
-
-            # Re-parse, this time with the define defined.
-            WML = self.parser.parse(
-                "#define %s\n#enddef\n%s" % (define, text_to_parse),
-                ignore_macros = lambda x: x.find("%s/scenarios" % campaign) == -1)
-            # This time, it oughta work.
-            units = WML.get_first("+units")
-            if not units:
-                # This campaign has no units. Nothing to do.
-                return 0
-
-        # Find all units types.
-        newunits = units.get_all("unit_type") + units.get_all("unit")
-        self.units_by_campaign[campaign] = []
-        for unit in newunits:
-            if unit.get_text_val("do_not_list", "no") == "no":
-                uid = unit.get_text_val("id")
-                self.units_by_campaign[campaign].append(unit)
-                self.unit_lookup[uid] = unit
-                unit.campaign = campaign
-
-        # Find all races.
-        newraces = units.get_all("race")
-        for race in newraces:
-            rid = race.get_text_val("id")
-            self.race_lookup[rid] = race
-        
-        # Find all movetypes.
-        newmovetypes = units.get_all("movetype")
-        for movetype in newmovetypes:
-            mtname = movetype.get_text_val("name")
-            self.movetype_lookup[mtname] = movetype
-
-        # Store race/movetype/faction of each unit for easier access later.
-        for unit in newunits:
-            uid = unit.get_text_val("id")
-            race = self.get_unit_value(unit, "race")
-            try: unit.race = self.race_lookup[race]
-            except KeyError:
-                unit.race = None
-                sys.stderr.write("Warning: No race \"%s\" found (%s).\n" % (
-                    race, unit.get_text_val("id")))
-            movetype = self.get_unit_value(unit, "movement_type")
-            try: unit.movetype = self.movetype_lookup[movetype]
-            except KeyError: unit.movetype = None
-            unit.factions = []
-            for fid, multiplayer_side in self.faction_lookup.items():
-                if uid in multiplayer_side.units:
-                    unit.factions.append(fid)
-
-        return len(newunits)
-
-    def add_external(self, addon):
-        return self.add("""#define MULTIPLAYER
-        #enddef
-        #define RANDOM_SIDE
-        #enddef
-        {~campaigns/%s.cfg}""" % addon, addon)
-
-    def get_base_unit(self, unit):
-        b = unit.get_first("base_unit")
-        if b:
-            buid = b.get_text_val("id")
-            try: baseunit = self.unit_lookup[buid]
-            except KeyError:
-                sys.stderr.write(
-                    "Warning: No baseunit \"%s\" for \"%s\".\n" % (
-                    buid, unit.get_text_val("id")))
-                return None
-            return baseunit
-        return None
-
-    def get_unit_value(self, unit, attribute, default = None):
-        value = unit.get_text_val(attribute, None)
-        if value == None:
-            baseunit = self.get_base_unit(unit)
-            if baseunit:
-                return self.get_unit_value(baseunit, attribute, default)
-            return default
-        return value
-
-class UnitForest:
-    """
-    Contains the forest of unit advancement trees.
-    """
-    def __init__(self):
-        self.trees = {}
-        self.lookup = {}
-
-    def add_node(self, un):
-        """
-        Add a new unit to the forest.
-        """
-        
-        self.lookup[un.id] = un
-
-        # First, we check if any of the new node's advancements already is in
-        # the forest. If so, remove it and attach it to the new node.
-        for cid in un.child_ids:
-            if cid in self.trees:
-                un.children.append(self.trees[cid])
-                self.lookup[cid].parent_ids.append(un.id)
-                del self.trees[cid]
-
-        # Next, we check if the node is an advancement of an existing node. If
-        # so, add it there.
-        for rootnode in self.trees.values():
-            if rootnode.try_add(un):
-                return
-
-        # Else, add a new tree with the new node as root.
-        self.trees[un.id] = un
-
-    def update_breadth(self):
-        self.breadth = sum([x.update_breadth() for x in self.trees.values()])
-        return self.breadth
-
-    def get_children(self, uid):
-        un = self.lookup[uid]
-        return un.child_ids
-    
-    def get_parents(self, uid):
-        un = self.lookup[uid]
-        return un.parent_ids
-
-class UnitNode:
-    """
-    A node in the advancement trees forest.
-    """
-    def __init__(self, unit):
-        self.unit = unit
-        self.children = []
-        self.id = unit.get_text_val("id")
-        self.child_ids = []
-        self.parent_ids = []
-        advanceto = unit.get_text_val("advanceto")
-        if advanceto and advanceto != "null":
-            for advance in advanceto.split(","):
-                advance = advance.strip()
-                self.child_ids.append(advance)
-
-    def try_add(self, un):
-        # A child of yours truly?
-        if un.id in self.child_ids:
-            self.children.append(un)
-            un.parent_ids.append(self.id)
-            return True
-        # A recursive child?
-        for child in self.children:
-            if child.try_add(un): return True
-        return False
-
-    def update_breadth(self):
-        if not self.children:
-            self.breadth = 1
-        else:
-            self.breadth = sum([x.update_breadth() for x in self.children])
-        return self.breadth   
-
-class RaceNode:
-    def __init__(self, race):
-        self.race = race
+sys.path.append(".")
+import unit_tree.helpers as helpers
 
 html_header = '''
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -313,47 +27,93 @@ html_header = '''
 </head>
 <body>'''.strip()
 
-html_footer = "</body></html>"
+html_footer = '''
+<div id="footer">
+<p><a href="http://www.wesnoth.org/wiki/Site_Map">Site map</a></p>
+<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2008 The Battle for Wesnoth</p>
+<p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
+<p><a href="http://www.ibiblio.org/"><img src="http://www.ibiblio.org/hosted/images/ibiblio_hosted-110x32.png" width="110" height="32" border="0" alt="hosted by ibiblio" /></a></p>
+</div>
+</body></html>
+'''.strip()
+
+class GroupByRace:
+    def __init__(self, wesnoth, campaign):
+        self.wesnoth = wesnoth
+        self.campaign = campaign
+
+    def unitfilter(self, unit):
+        if not self.campaign: return True
+        return unit.campaign == self.campaign
+
+    def groups(self, unit):
+        return [unit.race]
+
+    def group_name(self, group):
+        if not group: return "None"
+        return group.get_text_val("plural_name")
+
+class GroupByFaction:
+    def __init__(self, wesnoth, era):
+        self.wesnoth = wesnoth
+        self.era = era
+
+    def unitfilter(self, unit):
+        return self.era in unit.eras
+
+    def groups(self, unit):
+        return [x for x in unit.factions if x[0] == self.era]
+
+    def group_name(self, group):
+        era = self.wesnoth.era_lookup[group[0]]
+        faction = era.faction_lookup[group[1]]
+        name = faction.get_text_val("name")
+        name = name[name.rfind("=") + 1:]
+        name = era.get_text_val("name") + " / " + name
+        return name
 
 class HTMLOutput:
-    def __init__(self, isocode, output, campaign, unitlist, verbose = False):
+    def __init__(self, isocode, output, campaign, wesnoth, verbose = False):
         self.isocode = isocode
         self.output = output
         self.campaign = campaign
         self.verbose = verbose
         self.target = "index.html"
-        self.unitlist = unitlist
+        self.wesnoth = wesnoth
         self.forest = None
 
     def get_translation(self, textdomain, key):
-        return self.unitlist.parser.translations.get(textdomain, self.isocode,
+        return self.wesnoth.parser.translations.get(textdomain, self.isocode,
             key, key)
 
-    def analyze_units(self, group_by = "race"): 
+    def analyze_units(self, grouper): 
+        """
+        This takes all units belonging to a campaign, then groups them either
+        by race of faction, and creates an advancements tree out of it.
+        """
+
         # Build an advancement tree forest of all units.
-        forest = self.forest = UnitForest()
-        for u in self.unitlist.units_by_campaign[self.campaign]:
-            forest.add_node(UnitNode(u))
+        forest = self.forest = helpers.UnitForest()
+        for uid, u in self.wesnoth.unit_lookup.items():
+            if grouper.unitfilter(u):
+                forest.add_node(helpers.UnitNode(u))
         forest.update_breadth()
 
         # Partition trees by race/faction of first unit.
-        races = {}
-        if group_by == "race":
-            for tree in forest.trees.values():
-                u = tree.unit
-                # FIXME: use translated name for sorting
-                race = u.get_text_val("race")
-                if not race: continue
-                races[race] = races.get(race, []) + [tree]        
-        else:
-            for tree in forest.trees.values():
-                for faction in tree.unit.factions:     
-                    races[faction] = races.get(faction, []) + [tree]
+        groups = {}
+        breadth = 0
 
-        thelist = races.keys()
-        thelist.sort()  
+        for tree in forest.trees.values():
+            u = tree.unit            
+            ugroups = grouper.groups(u)
+            for group in ugroups:
+                groups[group] = groups.get(group, []) + [tree]
+                breadth += tree.breadth
 
-        rows_count = forest.breadth + len(thelist)
+        thelist = groups.keys()
+        thelist.sort()
+
+        rows_count = breadth + len(thelist)
         # Create empty grid.
         rows = []
         for j in range(rows_count):
@@ -374,7 +134,12 @@ class HTMLOutput:
         def grid_place(nodes, x):
             nodes.sort(by_name)
             for node in nodes:
-                level = int(node.unit.get_text_val("level"))
+                try:
+                    level = int(self.wesnoth.get_unit_value(node.unit, "level"))
+                except TypeError:
+                    level = 5
+                if level < 0: level = 5
+
                 rows[x][level] = (1, node.breadth, node)
                 for i in range(1, node.breadth):
                     rows[x + i][level] = (0, 0, node)
@@ -382,24 +147,15 @@ class HTMLOutput:
                 x += node.breadth
             return x
 
-        if group_by == "race":
-            lookup = self.unitlist.race_lookup
-            self.racelist = thelist
-        else:
-            lookup = self.unitlist.faction_lookup
-
         x = 0
-        for race in thelist:
-            node = RaceNode(lookup[race])
-            if group_by == "race":
-                node.name = node.race.get_text_val("plural_name")
-            else:
-                node.name = node.race.get_text_val("name")
-                node.name = node.name[node.name.rfind("=") + 1:]
+        for group in thelist:
+            node = helpers.GroupNode(group)
+            node.name = grouper.group_name(group)
+
             rows[x][0] = (6, 1, node)
             for i in range(1, 6):
                 rows[x][i] = (0, 0, None)
-            nodes = races[race]
+            nodes = groups[group]
             x += 1
             x = grid_place(nodes, x)
 
@@ -426,77 +182,109 @@ class HTMLOutput:
         write("<table class=\"navbar\">")
 
         write("<tr>\n")
+        
+        def abbrev(name):
+            abbrev = name[0]
+            for i in range(1, len(name)):
+                if name[i - 1] in [" ", "_"]:
+                    abbrev += name[i]
+            return abbrev
 
         # Campaigns
         x = _("TitleScreen button^Campaign")
         write("<th>%s</th></tr><tr><td>" % x)
-        for campaign in all_campaigns:
-            lang = self.isocode
-            if campaign == "mainline":
-                campname = self.get_translation("wesnoth", "Multiplayer")
-                campabbrev = campname
-            else:
-                campname = self.unitlist.campaigns[campaign].get_text_val("name")
-                if campname:
-                    campabbrev = self.unitlist.campaigns[campaign].get_text_val("abbrev")
+        for i in range(2):
+            cnames = self.wesnoth.campaign_lookup.keys()
+            if i == 0:
+                cnames = [x for x in cnames if x in self.wesnoth.is_mainline_campaign]
+            else: 
+                cnames = [x for x in cnames if not x in self.wesnoth.is_mainline_campaign]
+            cnames.sort()
+            for cname in cnames:
+                lang = self.isocode
+                if cname == "mainline":
+                    campname = self.get_translation("wesnoth", "Multiplayer")
+                    campabbrev = campname
                 else:
-                    campname = campaign
-                    campabbrev = campname[0]
-                    for i in range(1, len(campname)):
-                        if campname[i - 1] in [" ", "_"]:
-                            campabbrev += campname[i]
-            write(" <a title=\"%s\" href=\"../%s_%s/index.html\">%s</a><br/>\n" % (
-                campname, lang, campaign, campabbrev))
+                    campname = self.wesnoth.campaign_lookup[cname].get_text_val("name")
+                    if not campname:
+                        campname = cname
+                    campabbrev = self.wesnoth.campaign_lookup[cname].get_text_val("abbrev")
+                    if not campabbrev:
+                        campabbrev = abbrev(campname)
+
+                write(" <a title=\"%s\" href=\"../%s/%s.html\">%s</a><br/>\n" % (
+                    campname, lang, cname, campabbrev))
+            if i == 0:
+                write("-<br/>\n")
         write("</td>\n")
         write("</tr>\n")
 
-        if self.campaign == "mainline":
-            # Factions
-            write("<tr>\n")
-            x = _("Faction")
-            write("<th>%s</th></tr><tr><td>" % x)
-            write("<a href=\"factions.html\">%s</a><br/>\n" % (
-                self.get_translation("wesnoth-editor", "all")))
-            factions = self.unitlist.faction_lookup.values()
-            factions = [x.get_text_val("name") for x in factions]
-            factions = [x[x.rfind("=") + 1:] for x in factions]
-            factions.sort()
-            for faction in factions:
-                write(" <a href=\"factions.html#%s\">%s</a><br/>" % (
-                    faction, faction))
-            write("</td>\n")
-            write("</tr>\n")
+        # Eras
+        write("<tr>\n")
+        x = _("Era")
+        write("<th>%s</th></tr><tr><td>" % x)
+        eids = [[], []]
+        for eid in self.wesnoth.era_lookup.keys():
+            if eid in self.wesnoth.is_mainline_era:
+                eids[0].append(eid)
+            else:
+                eids[1].append(eid)
+        for i in range(2):
+            eranames = [(self.wesnoth.era_lookup[eid].get_text_val("name"),
+                eid) for eid in eids[i]]
+            eranames.sort()
+            for eraname, eid in eranames:
+                write(" <a title=\"%s\" href=\"../%s/%s.html\">%s</a><br/>" % (
+                        eraname, lang, eid, abbrev(eraname)))
+            if i == 0:
+                write("-<br/>\n")
+        write("</td>\n")
+        write("</tr>\n")
 
         # Races
-        write("<tr>\n")
-        x = _("Race")
-        write("<th>%s</th></tr><tr><td>" % x)
-        write("<a href=\"index.html\">%s</a><br/>\n" % (
-            self.get_translation("wesnoth-editor", "all")))
-        for rid in self.racelist:
-            race = self.unitlist.race_lookup[rid]
-            racename = race.get_text_val("plural_name")
-            write(" <a href=\"index.html#%s\">%s</a><br/>" % (
-                racename, racename))
-        write("</td>\n")
-        write("</tr>\n")
+        if self.campaign == "mainline":
+            write("<tr>\n")
+            x = _("Race")
+            write("<th>%s</th></tr><tr><td>" % x)
+            write("<a href=\"mainline.html\">%s</a><br/>\n" % (
+                self.get_translation("wesnoth-editor", "all")))
+            racenames = {}
+            for u in self.wesnoth.unit_lookup.values():
+                if u.campaign != self.campaign: continue
+                race = u.race
+                racename = race.get_text_val("plural_name")
+                racenames[racename] = race.get_text_val("id")
+            racenames = racenames.items()
+            racenames.sort()
+            
+            for racename, rid in racenames:                    
+                write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
+                    racename, racename))
+            write("</td>\n")
+            write("</tr>\n")
         
+        # Languages
         write("<tr>\n")
         x = _("Language")
         write("<th>%s</th></tr><tr><td>" % x)
         for lang in langlist:
-            write(" <a href=\"../%s_%s/%s\">%s</a><br/>\n" % (
-                lang, self.campaign, self.target, languages[lang]))
+            labb = lang
+            underscore = labb.find("_")
+            if underscore > 0: labb = labb[:underscore]
+            write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
+                languages[lang], lang, self.target,
+                    labb))
         write("</td>\n")
         write("</tr>\n")
 
         write("</table>\n")
 
     def pic(self, u, x):
-        image = self.unitlist.get_unit_value(x, "image")  
+        image = self.wesnoth.get_unit_value(x, "image")  
         if not image:
             if x.name == "female":
-                baseunit = self.unitlist.get_base_unit(u)
+                baseunit = self.wesnoth.get_base_unit(u)
                 if baseunit:
                     female = baseunit.get_first("female")
                     return self.pic(u, female)
@@ -504,9 +292,8 @@ class HTMLOutput:
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
             return None
-        image_collector.add(self.campaign, image)
-        image = os.path.join("../pics/%s" % self.campaign,
-            image)
+        picname = image_collector.add_image(u.campaign, image)
+        image = os.path.join("../pics", picname)
         return image
 
     def write_units(self):
@@ -530,7 +317,7 @@ class HTMLOutput:
                     elif vspan == 1:
                         attributes += " colspan=%d" % hspan
 
-                    if un and isinstance(un, RaceNode):
+                    if un and isinstance(un, helpers.GroupNode):
                         racename = un.name
                         attributes += " class=\"raceheader\""
                         write("<td%s>" % attributes)
@@ -541,18 +328,17 @@ class HTMLOutput:
                         attributes += " class=\"unitcell\""
                         write("<td%s>" % attributes)
 
-                        name = u.get_text_val("name")
-                        
                         uid = u.get_text_val("id")
-                        cost = u.get_text_val("cost")
-                        hp = u.get_text_val("hitpoints")
-                        mp = u.get_text_val("movement")
-                        xp = u.get_text_val("experience")
-                        level = u.get_text_val("level")
+                        name = self.wesnoth.get_unit_value(u, "name")
+                        cost = self.wesnoth.get_unit_value(u, "cost")
+                        hp = self.wesnoth.get_unit_value(u, "hitpoints")
+                        mp = self.wesnoth.get_unit_value(u, "movement")
+                        xp = self.wesnoth.get_unit_value(u, "experience")
+                        level = self.wesnoth.get_unit_value(u, "level")
+                        
                         
                         write("<div class=\"l\">L%s</div>" % level)
-                        link = "../%s_%s/%s.html" % (self.isocode,
-                            self.campaign, uid)
+                        link = "../%s/%s.html" % (self.isocode, uid)
                         write("<a href=\"%s\">%s</a><br/>" % (link, name))
                         
                         write('<div class="pic">')
@@ -576,22 +362,16 @@ class HTMLOutput:
             write("</tr>\n")
         write("</table>\n")
 
-    def write_unit_tree(self, group_by = "race"):
+    def write_units_tree(self, grouper, title):
         self.output.write(html_header % {"path" : "../"})
 
-        self.analyze_units(group_by)
+        self.analyze_units(grouper)
         self.write_navbar()
         
-        if self.campaign == "mainline":
-            campname = self.get_translation("wesnoth", "Multiplayer")
-        else:
-            campname = self.unitlist.campaigns[self.campaign].get_text_val("name")
-            if not campname:
-                campname = self.campaign
-        self.output.write("<h1>%s</h1>" % campname)
-        
+        self.output.write("<h1>%s</h1>" % title)
+
         self.write_units()
-            
+
         self.output.write(html_footer)
 
     def write_unit_report(self, output, unit):
@@ -618,7 +398,7 @@ class HTMLOutput:
 
         # Write unit name, picture and description.
         uid = unit.get_text_val("id")
-        uname = unit.get_text_val("name")
+        uname = self.wesnoth.get_unit_value(unit, "name")
         display_name = uname
 
         female = unit.get_first("female")
@@ -646,32 +426,38 @@ class HTMLOutput:
         write("<p>%s</p>\n" % description)
         
         # Base info.
-        
-        hp = self.unitlist.get_unit_value(unit, "hitpoints")
-        mp = self.unitlist.get_unit_value(unit, "movement")
-        xp = self.unitlist.get_unit_value(unit, "experience")
-        level = self.unitlist.get_unit_value(unit, "level")
-        alignment = self.unitlist.get_unit_value(unit, "alignment")  
+        hp = self.wesnoth.get_unit_value(unit, "hitpoints")
+        mp = self.wesnoth.get_unit_value(unit, "movement")
+        xp = self.wesnoth.get_unit_value(unit, "experience")
+        level = self.wesnoth.get_unit_value(unit, "level")
+        alignment = self.wesnoth.get_unit_value(unit, "alignment")  
 
         write("<table class=\"unitinfo\">\n")
         write("<tr>\n")
         write("<th>%s" % _("Advances from: "))
         write("</th><td>\n")
         for pid in self.forest.get_parents(uid):
-            link = "../%s_%s/%s.html" % (self.isocode, self.campaign, pid)
-            name = self.unitlist.unit_lookup[pid].get_text_val("name")
+            punit = self.wesnoth.unit_lookup[pid]
+            if unit.campaign == "mainline" and punit.campaign != "mainline":
+                continue
+            link = "../%s/%s.html" % (self.isocode, pid)
+            name = self.wesnoth.get_unit_value(punit, "name")
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr><tr>\n")
         write("<th>%s" % self.get_translation("wesnoth", "Advances to: "))
         write("</th><td>\n")
         for cid in self.forest.get_children(uid):
-            link = "../%s_%s/%s.html" % (self.isocode, self.campaign, cid)
+            link = "../%s/%s.html" % (self.isocode, cid)
             try:
-                name = self.unitlist.unit_lookup[cid].get_text_val("name")
+                cunit = self.wesnoth.unit_lookup[cid]
+                if unit.campaign == "mainline" and cunit.campaign != "mainline":
+                    continue
+                name = self.wesnoth.get_unit_value(cunit, "name")
             except KeyError:
                 sys.stderr.write("Warning: Unit %s not found.\n" % cid)
                 name = cid
+                if unit.campaign == "mainline": continue
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr>\n")
@@ -685,7 +471,7 @@ class HTMLOutput:
             ("alignment", _("Alignment: "))]:
             write("<tr>\n")
             write("<th>%s</th>" % text)
-            x = self.unitlist.get_unit_value(unit, val)
+            x = self.wesnoth.get_unit_value(unit, val)
             if val == "alignment": x = self.get_translation("wesnoth", x)
             write("<td>%s</td>" % x)
             write("</tr>\n")
@@ -702,8 +488,8 @@ class HTMLOutput:
             icon = attack.get_text_val("icon")
             if not icon:
                 icon = "attacks/%s.png" % aid
-            image_collector.add(self.campaign, icon)
-            icon = os.path.join("../pics/%s" % self.campaign, icon)
+            picname = image_collector.add_image(unit.campaign, icon)
+            icon = os.path.join("../pics", picname)
             write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % icon)
 
             write("<td>%s" % aname)
@@ -754,6 +540,7 @@ class HTMLOutput:
         write("</tr>\n")
         for rid in resistances:
             special, r = find_attr("resistance", rid)
+            if r == "-": r = 0
             try: r = "%d%%" % (100 - int(r))
             except ValueError:
                 sys.stderr.write("Warning: Invalid resistance %s for %s.\n" % (
@@ -773,7 +560,7 @@ class HTMLOutput:
             _("Terrain"), _("Movement Cost"), _("Defense") ))
         write("</tr>\n")
         
-        terrains = self.unitlist.terrain_lookup
+        terrains = self.wesnoth.terrain_lookup
         terrainlist = []
         for tid, t in terrains.items():
             if tid in ["off_map", "fog", "shroud"]: continue
@@ -790,6 +577,7 @@ class HTMLOutput:
             dcell = "td"
             not_from_race, d = find_attr("defense", tid)
 
+            if d == "-": d = 0
             try: d = "%d%%" % (100 - int(d))
             except ValueError:
                 sys.stderr.write("Warning: Invalid defense %s for %s.\n" % (
@@ -830,104 +618,164 @@ class MyFile:
     def write(self, x):
         x = x.encode("utf8")
         self.f.write(x)
+    def close(self):
+        self.f.close()
 
-def generate_report(out_path, isocode, campaign, unitlist):
-    if not campaign in unitlist.units_by_campaign: return
+def generate_campaign_report(out_path, isocode, campaign, wesnoth):
     print "Generating report for %s_%s." % (isocode, campaign)
-    path = os.path.join(out_path, isocode + "_" + campaign)
+    path = os.path.join(out_path, isocode )
     if not os.path.isdir(path): os.mkdir(path)
-    output = MyFile(os.path.join(path, "index.html"), "w")
-    html = HTMLOutput(isocode, output, campaign, unitlist)
-    html.write_unit_tree(group_by = "race")
+    output = MyFile(os.path.join(path, "%s.html" % campaign), "w")
+    html = HTMLOutput(isocode, output, campaign, wesnoth)
+    html.target = "%s.html" % campaign
+    grouper = GroupByRace(wesnoth, campaign)
     
-    html.output = MyFile(os.path.join(path, "factions.html"), "w")
-    html.write_unit_tree(group_by = "faction")
+    if campaign == "mainline":
+        title = html.get_translation("wesnoth", "Multiplayer")
+    else:
+        title = wesnoth.campaign_lookup[campaign].get_text_val("name")
+        if not title:
+            title = campaign
+                
+    html.write_units_tree(grouper, title)
+
+def generate_era_report(out_path, isocode, eid, wesnoth):
+    print "Generating report for %s_%s." % (isocode, eid)
+    path = os.path.join(out_path, isocode)
+    if not os.path.isdir(path): os.mkdir(path)
     
-    for unit in unitlist.units_by_campaign[campaign]:
-        uid = unit.get_text_val("id")
-        output = MyFile(os.path.join(path, "%s.html" % uid), "w")
+    era = wesnoth.era_lookup[eid]
+    ename = era.get_text_val("name")
+    output = MyFile(os.path.join(path, "%s.html" % eid), "w")
+
+    html = HTMLOutput(isocode, output, eid, wesnoth)
+    html.target = "%s.html" % eid
+    grouper = GroupByFaction(wesnoth, eid)
+    title = ename
+    html.write_units_tree(grouper, title)
+
+def generate_single_unit_reports(out_path, isocode, wesnoth):
+    
+    odir = os.path.join(out_path, isocode)
+    if not os.path.isdir(odir):
+        os.mkdir(odir)
+
+    html = HTMLOutput(isocode, None, "units", wesnoth)
+    grouper = GroupByRace(wesnoth, None)
+    html.analyze_units(grouper)
+
+    for uid, unit in wesnoth.unit_lookup.items():
+        output = MyFile(os.path.join(odir, "%s.html" % uid), "w")
         html.target = "%s.html" % uid
-        html.write_unit_report(output, unit)        
+        html.write_unit_report(output, unit)
 
 def write_index(out_path):
     output = MyFile(os.path.join(out_path, "index.html"), "w")
     output.write("""
     <html><head>
-    <meta http-equiv="refresh" content="0;url=C_mainline/index.html">
+    <meta http-equiv="refresh" content="0;url=C/mainline.html">
     </head>
     <body>
-    <a href="C_mainline/index.html">Redirecting to Wesnoth units database...</a>
+    <a href="C/mainline.html">Redirecting to Wesnoth units database...</a>
     </body>
     </html>
     """)
 
 def output(isocode):
-    global all_campaigns
+    """
+    We output:
+    * All mainline units sorted by race
+    * Each mainline era's units sorted by faction
+    * Each mainline campaign's units sorted by race
+    * Each addon era's units sorted by faction
+    * Each addon campaign's units sorted by race
+    """
+    print "WML parser language reset to %s." % isocode
 
-    unitlist = UnitList(isocode)
+    stuff = helpers.WesnothList(isocode, datadir, userdir)
+
+    # Parse some stuff we may need.
+    print "Parsing terrains ...",
+    n = stuff.add_terrains()
+    print "%d terrains found." % n
+    
+    print "Parsing mainline eras ...",
+    n = stuff.add_mainline_eras()
+    print "%d mainline eras found." % n
+    stuff.is_mainline_era = {}
+    for c in stuff.era_lookup.keys():
+        stuff.is_mainline_era[c] = True
+
+    print "Parsing mainline campaigns ...",
+    n = stuff.add_mainline_campaigns()
+    print "%d mainline campaigns found." % n
+    stuff.is_mainline_campaign = {}
+    for c in stuff.campaign_lookup.keys():
+        stuff.is_mainline_campaign[c] = True
 
     # Parse all unit data
-    # This reads in units.cfg, giving us all the mainline units.
-    all_campaigns = []
-    all_updated_campaigns = []
-    
-    print "Reading WML stuff."
-    unitlist.add_terrains()
-    unitlist.add_factions()
-
-    print "Reading mainline units ...",
-    n = unitlist.add("{core/units.cfg}", "mainline")
-    print n, "units found."
-    all_updated_campaigns.append("mainline")
-    all_campaigns.append("mainline")
+    # This reads in units.cfg, giving us all the mainline units.   
+    print "Parsing mainline units ...",
+    sys.stdout.flush()
+    WML = stuff.parser.parse("{core/units.cfg}")
+    n = stuff.add_units(WML, "mainline")
+    print n, "mainline units found."
 
     # Now we read each campaign in turn to get its units.
-    campaigns = glob.glob("data/campaigns/*")
-    for campaign in campaigns:
-        dirname = campaign[5:] # strip leading data/
-        description = dirname[10:]
-        if options.campaign == "all" or options.campaign == description:
-            print "Reading %s units ..." % description,
-            n = unitlist.add("{%s}" % dirname, description)
-            print n, "units found."
-            if n:
-                all_updated_campaigns.append(description)
-                all_campaigns.append(description)
+    cnames = stuff.campaign_lookup.keys()
+    for cname in cnames:
+        print "Parsing %s units ..." % cname,
+        sys.stdout.flush()
+        campaign = stuff.campaign_lookup[cname]
+        define = campaign.get_text_val("define")
+        WML = stuff.parser.parse("""
+            #define %s\n#enddef
+            {campaigns}""" % define,
+            ignore_macros = lambda x: x.find("/scenarios") == -1)
+        n = stuff.add_units(WML, cname)
+        image_collector.add_binary_pathes_from_WML(cname, WML)
+        print n, "units found."
 
-    if options.add:
-        for add in options.add:
-            description = add
-            print "Reading units from", add, "...",
-            n = unitlist.add_external(add)
-            print n, "units found."
-            if n:
-                all_updated_campaigns.append(description)
-                all_campaigns.append(description)
+    print "Parsing addons ...",
+    n = stuff.add_addons(image_collector)
+    print "%d units found." % n
+    
+    stuff.find_unit_factions()
 
     # Report generation
     if not os.path.isdir(options.output):
         os.mkdir(options.output)
     write_index(options.output)
 
-    if options.campaign == "all":
-        campaigns = all_updated_campaigns
-    else:
-        campaigns = [options.campaign]
+    
+    campaigns = stuff.campaign_lookup.keys()
 
-    if not campaigns:
-        sys.stderr.write("No such campaign: %s\n" % options.campaign)
-        sys.exit(1)    
+    generate_campaign_report(options.output, isocode, "mainline", stuff)
 
     for campaign in campaigns:
-        generate_report(options.output, isocode, campaign, unitlist)
+        generate_campaign_report(options.output, isocode, campaign, stuff)
+    
+    for eid in stuff.era_lookup.keys():
+        generate_era_report(options.output, isocode, eid, stuff)
+    
+    # Write a list with all unit ids, just for fun.
+    uids = stuff.unit_lookup.keys()
+    uids.sort()
+    f = MyFile(os.path.join(options.output, "uids.html"), "w")
+    f.write("<html><body>")
+    f.write("<ul>" + "\n".join(["<li>%s</li>" % x for x in uids]))
+    f.write("</body></html>")
+    f.close()
+        
+    # Single unit reports.
+    generate_single_unit_reports(options.output, isocode, stuff)
 
 if __name__ == '__main__':
     global options
+    global image_collector
     import optparse
 
     op = optparse.OptionParser()
-    op.add_option("-c", "--campaign", default = "all",
-        help = "Specify a campaign.")
     op.add_option("-l", "--language", default = "all",
         help = "Specify a language.")
     op.add_option("-o", "--output",
@@ -935,17 +783,15 @@ if __name__ == '__main__':
     op.add_option("-n", "--nocopy", action = "store_true",
         help = "No copying of files.")
     op.add_option("-d", "--datadir",
-        help = "Specify Wesnoth's data to use.")
+        help = "Specify Wesnoth's data to use. Default is to search current directory upwards.")
     op.add_option("-u", "--userdir",
-        help = "Specify user data dir to use. For example -u ~/.wesnoth/data")
-    op.add_option("-a", "--add", action = "append",
-        help = "Specify addons. For example -a Era_of_Myths. Can be used multiple times.")
+        help = "Specify user data dir to use, which is automatically scanned for addons. For example -u ~/.wesnoth/data")
     options, args = op.parse_args()
 
     if not options.output:
         op.print_help()
         sys.exit(-1)
-        
+
     options.output = os.path.expanduser(options.output)
 
     if not options.datadir:
@@ -958,20 +804,19 @@ if __name__ == '__main__':
     
     if options.language == "all":
         languages = find_languages().keys()
+        languages.sort()
     else:
         languages = [options.language]
-    
-    if not languages:
-        sys.stderr.write("No such language: %s\n" % options.language)
-        sys.exit(1)  
-    
+
+    image_collector = helpers.ImageCollector(datadir, userdir)
+
     for isocode in languages:
         output(isocode)
 
     if not options.nocopy:
         print "Copying files."
         image_collector.copy_and_color_images(options.output)
-        shutil.copy2(os.path.join(datadir, "tools/unit_tree/style.css"), options.output)
+        shutil.copy2(os.path.join("data", "tools/unit_tree/style.css"), options.output)
         for grab in [
             "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
             "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
@@ -981,5 +826,4 @@ if __name__ == '__main__':
                 print "Fetching", grab
                 url = urllib2.urlopen(grab)
                 file(local, "w").write(url.read())
-            
 
