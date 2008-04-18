@@ -9,7 +9,7 @@
 # 4. msgfmt(1) for making builds with i18n support.
 # 5. graph-includes for making the project dependency graph.
 
-import os, sys, shutil, sets, re
+import os, sys, shutil, sets, re, commands
 from glob import glob
 from subprocess import Popen, PIPE
 from os import access, F_OK
@@ -704,21 +704,15 @@ if 'dist' in COMMAND_LINE_TARGETS:	# Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
         # Start by getting a list of all files under version control
-        lst = commands.getoutput("svn -v status | awk '/^[^?]/ {print $4;}'")
-        # Omit everything with a data/ prefix to cut the list length below the
-        # shell argument limit, otherwise the archiver command will blow up.
-        lst = filter(lambda f: os.path.isfile(f) and not f.startswith("data/"),
-                     lst.split())
-        # Add data/ back to the end of the list.  This is safe only because we
-        # assume there will be no junk under data/.  But we'll filter out
-        # filenames with tildes in them (Emacs backup files) just in case.
-        lst.append("data/")
+        lst = commands.getoutput("svn -v status | awk '/^[^?]/ {print $4;}'").split()
+        lst = filter(os.path.isfile, lst)
         return lst
     dist_env = env.Clone()
-    dist_tarball = dist_env.Tar('wesnoth.tar.bz2',
-                           dist_manifest()+["src/revision.hpp"])
-    dist_env.Append(TARFLAGS='-j --exclude=".svn" --exclude="~"',
+    dist_tarball = dist_env.Tar('wesnoth.tar.bz2', [])
+    open("dist.manifest", "w").write("\n".join(dist_manifest() + ["src/revision.hpp"]))
+    dist_env.Append(TARFLAGS='-j -T dist.manifest',
                TARCOMSTR="Making distribution tarball...")
+    dist_env.AlwaysBuild(dist_tarball)
     env.Clean(all, 'wesnoth.tar.bz2')
     env.Alias('dist', dist_tarball)
 
