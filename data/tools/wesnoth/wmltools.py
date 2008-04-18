@@ -633,7 +633,12 @@ class Translation(dict):
                 return key[key.find("^") + 1:]
             return "?"
         else:
-            return self.gettext.get(key, dflt)
+            t = self.gettext.get(key, dflt)
+            if not t:
+                if key:
+                    return key[key.find("^") + 1:]
+                return "?"
+            return t
     def __getitem__(self, key):
         if self.isocode == "C":
             return key

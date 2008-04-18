@@ -11,11 +11,11 @@ class ParserWithCoreMacros:
     """
     A wrapper around the WML parser to do some things like we want.
     """
-    def __init__(self, isocode, datadir, userdir):
+    def __init__(self, isocode, datadir, userdir, transdir):
         self.datadir = datadir
         self.userdir = userdir
         # Handle translations.
-        self.translations = wmltools.Translations()
+        self.translations = wmltools.Translations(transdir)
         def gettext(textdomain, x):
             return self.translations.get(textdomain, isocode, x, x)
         self.gettext = gettext
@@ -134,14 +134,14 @@ class WesnothList:
     """
     Lists various Wesnoth stuff like units, campaigns, terrains, factions...
     """
-    def __init__(self, isocode, datadir, userdir):
+    def __init__(self, isocode, datadir, userdir, transdir):
         self.unit_lookup = {}
         self.race_lookup = {}
         self.terrain_lookup = {}
         self.movetype_lookup = {}
         self.era_lookup = {}
         self.campaign_lookup = {}
-        self.parser = ParserWithCoreMacros(isocode, datadir, userdir)
+        self.parser = ParserWithCoreMacros(isocode, datadir, userdir, transdir)
 
     def add_terrains(self):
         """

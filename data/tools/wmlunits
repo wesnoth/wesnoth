@@ -692,7 +692,7 @@ def output(isocode):
     """
     print "WML parser language reset to %s." % isocode
 
-    stuff = helpers.WesnothList(isocode, datadir, userdir)
+    stuff = helpers.WesnothList(isocode, datadir, userdir, transdir)
 
     # Parse some stuff we may need.
     print "Parsing terrains ...",
@@ -786,6 +786,8 @@ if __name__ == '__main__':
         help = "Specify Wesnoth's data to use. Default is to search current directory upwards.")
     op.add_option("-u", "--userdir",
         help = "Specify user data dir to use, which is automatically scanned for addons. For example -u ~/.wesnoth/data")
+    op.add_option("-t", "--transdir",
+        help = "Specify directory which has a po subfolder for translations.")
     options, args = op.parse_args()
 
     if not options.output:
@@ -801,6 +803,10 @@ if __name__ == '__main__':
         datadir = options.datadir
 
     userdir = options.userdir
+    if options.transdir:
+        transdir = options.transdir
+    else:
+        transdir = os.path.dirname(datadir)
     
     if options.language == "all":
         languages = find_languages().keys()
