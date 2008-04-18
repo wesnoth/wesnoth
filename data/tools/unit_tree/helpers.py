@@ -277,6 +277,13 @@ class WesnothList:
             movetype = self.get_unit_value(unit, "movement_type")
             try: unit.movetype = self.movetype_lookup[movetype]
             except KeyError: unit.movetype = None
+            
+            unit.advance = []
+            advanceto = unit.get_text_val("advanceto")
+            if advanceto and advanceto != "null":
+                for advance in advanceto.split(","):
+                    auid = advance.strip()
+                    if auid: unit.advance.append(auid)
 
         return len(newunits)
 
@@ -375,11 +382,7 @@ class UnitNode:
         self.id = unit.get_text_val("id")
         self.child_ids = []
         self.parent_ids = []
-        advanceto = unit.get_text_val("advanceto")
-        if advanceto and advanceto != "null":
-            for advance in advanceto.split(","):
-                advance = advance.strip()
-                self.child_ids.append(advance)
+        self.child_ids.extend(unit.advance)
 
     def try_add(self, un):
         # A child of yours truly?

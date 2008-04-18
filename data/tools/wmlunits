@@ -94,9 +94,23 @@ class HTMLOutput:
 
         # Build an advancement tree forest of all units.
         forest = self.forest = helpers.UnitForest()
+        units_added = {}
         for uid, u in self.wesnoth.unit_lookup.items():
             if grouper.unitfilter(u):
                 forest.add_node(helpers.UnitNode(u))
+                units_added[uid] = u
+                
+        # Always add any child units, even if they have been filtered out..
+        for uid, u in units_added.items():
+            for auid in u.advance:
+                if not auid in units_added:
+                    try:
+                        au = self.wesnoth.unit_lookup[auid]
+                    except KeyError:
+                        # FIXME: write error message
+                        continue
+                    forest.add_node(helpers.UnitNode(au))
+                    units_added[auid] = au
         forest.update_breadth()
 
         # Partition trees by race/faction of first unit.
@@ -422,6 +436,7 @@ class HTMLOutput:
         write('</div>\n')
                         
         description = unit.get_text_val("description")
+        if not description: description = unit.get_text_val("unit_description")
         if not description: description = "-"
         write("<p>%s</p>\n" % description)
         
