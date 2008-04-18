@@ -178,7 +178,7 @@ class WesnothList:
         return eid
 
     def add_campaign(self, campaign):
-        name = campaign.get_text_val("name")
+        name = campaign.get_text_val("id")
         self.campaign_lookup[name] = campaign
         return name
 
