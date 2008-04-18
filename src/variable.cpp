@@ -189,7 +189,7 @@ const config vconfig::get_parsed_config() const
         if(child_key == "insert_tag") {
             vconfig insert_cfg(child->second);
             const t_string& name = insert_cfg["name"];
-            std::string vname = insert_cfg["variable"];
+            const t_string& vname = insert_cfg["variable"];
             if(!recursion_.insert(vname).second) {
                 ERR_NG << "vconfig::get_parsed_config() infinite recursion detected, aborting"
                     << std::endl;
