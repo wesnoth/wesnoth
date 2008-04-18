@@ -139,6 +139,10 @@ private:
 
 	//! Widget for the help popup FIXME should be thelp_popup.
 	ttooltip help_popup_;
+
+	//! Inherited from tcontrol.
+	const std::string& get_control_type() const 
+		{ static const std::string type = "window"; return type; }
 };
 
 } // namespace gui2

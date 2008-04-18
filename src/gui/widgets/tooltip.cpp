@@ -38,19 +38,5 @@
 
 namespace gui2 {
 
-void ttooltip::load_config()
-{
-	if(!config()) {
-		set_config(get_control("tooltip", definition()));
-
-		assert(canvas().size() == config()->state.size());
-		for(size_t i = 0; i < canvas().size(); ++i) {
-			canvas(i) = config()->state[i].canvas;
-		}
-
-		set_canvas_text();
-	}
-}
-
 } // namespace gui2
 

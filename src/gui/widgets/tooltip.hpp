@@ -33,8 +33,10 @@ public:
 	bool get_active() const { return true; }
 	unsigned get_state() const { return 0; }
 
-	//! Inherited from twidget.
-	void load_config();
+private:	
+	//! Inherited from tcontrol.
+	const std::string& get_control_type() const 
+		{ static const std::string type = "tooltip"; return type; }
 };
 
 } // namespace gui2

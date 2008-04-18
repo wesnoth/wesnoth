@@ -62,9 +62,6 @@ public:
 	bool get_active() const;
 	unsigned get_state() const { return state_; }
 
-	//! Inherited from twidget.
-	void load_config();
-
 protected:
 	
 private:
@@ -75,6 +72,10 @@ private:
 	tstate state_;
  
 	int retval_;
+
+	//! Inherited from tcontrol.
+	const std::string& get_control_type() const 
+		{ static const std::string type = "button"; return type; }
 };
 
 

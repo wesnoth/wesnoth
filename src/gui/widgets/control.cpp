@@ -350,6 +350,22 @@ void tcontrol::restore_background(surface& dst)
 	}
 }
 
+void tcontrol::load_config()
+{
+	if(!config()) {
+		set_config(get_control(get_control_type(), definition()));
+
+		assert(canvas().size() == config()->state.size());
+		for(size_t i = 0; i < canvas().size(); ++i) {
+			canvas(i) = config()->state[i].canvas;
+		}
+
+		set_canvas_text();
+
+		load_config_extra();
+	}
+}
+
 } // namespace gui2
 
 

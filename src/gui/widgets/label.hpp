@@ -34,15 +34,16 @@ public:
 	bool get_active() const { return state_ == ENABLED; }
 	unsigned get_state() const { return state_; }
 
-	//! Inherited from twidget.
-	void load_config();
-
 private:
 	//! Note the order of the states must be the same as defined in settings.hpp.
 	enum tstate { ENABLED, DISABLED, COUNT };
 
 	void set_state(tstate state);
 	tstate state_;
+
+	//! Inherited from tcontrol.
+	const std::string& get_control_type() const 
+		{ static const std::string type = "label"; return type; }
 };
 
 } // namespace gui2

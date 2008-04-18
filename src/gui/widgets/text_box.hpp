@@ -241,9 +241,6 @@ protected:
 	void goto_end_of_line(const bool select = false) { goto_end_of_data(select); }
 	void goto_start_of_line(const bool select = false) { goto_start_of_data(select); }
 
-	//! Inherited from twidget.
-	void load_config();
-
 private:
 
 	void handle_key_up_arrow(SDLMod modifier, bool& handled);
@@ -259,6 +256,10 @@ private:
 	void calculate_char_offset();
 
 	ttext_history history_;
+
+	//! Inherited from tcontrol.
+	const std::string& get_control_type() const 
+		{ static const std::string type = "text_box"; return type; }
 };
 
 

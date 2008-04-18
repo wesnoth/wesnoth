@@ -438,20 +438,6 @@ void ttext_box::handle_key_clear_line(SDLMod /*modifier*/, bool& handled)
 	set_text("");
 }
 
-void ttext_box::load_config()
-{
-	if(!config()) {
-		set_config(get_control("text_box", definition()));
-
-		assert(canvas().size() == config()->state.size());
-		for(size_t i = 0; i < canvas().size(); ++i) {
-			canvas(i) = config()->state[i].canvas;
-		}
-
-		set_canvas_text();
-	}
-}
-
 void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 {
 	if (history_.get_enabled()) {

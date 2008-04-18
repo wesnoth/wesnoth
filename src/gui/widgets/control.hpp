@@ -87,6 +87,9 @@ public:
 	tpoint get_best_size() const;
 	tpoint get_maximum_size() const;
 
+	//! Inherited from twidget.
+	void load_config();
+
 private:
 	//! Helpers
 	tpoint get_single_line_best_size(const tpoint& config_size) const;
@@ -149,6 +152,15 @@ private:
 	//! current resolution.
  	tresolution_definition_* config_;
 
+	//! Once the config is loaded this function is called.
+	virtual void load_config_extra() {}
+
+	//! The control_type parameter for tgui_definition::get_control()
+	//! To keep the code more generic this type is required so the
+	//! controls need to return the proper string here.
+	//! Might be used at other parts as well the get the type of 
+	//! control involved.
+	virtual const std::string& get_control_type() const = 0;
 };
 
 } // namespace gui2
