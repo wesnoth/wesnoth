@@ -18,9 +18,12 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "log.hpp"
+#include "random.hpp"
 
+#include <sstream>
 #include <cassert>
 
+#define ERR_NG LOG_STREAM(err, engine)
 #define WRN_NG LOG_STREAM(warn, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -338,15 +341,13 @@ bool unit_map::const_xy_accessor::valid() {
 
 
 unit_map::unit_iterator unit_map::find(const gamemap::location &loc) {
-	lmap::const_iterator iter = lmap_.find(loc);
-	if (iter == lmap_.end()) {
+	lmap::const_iterator i = lmap_.find(loc);
+	if (i == lmap_.end()) {
 		return unit_iterator(map_.end(), this);
 	}
-	
-	umap::iterator i = map_.find(iter->second->second.underlying_id());
-	i->second.second->first = loc;
-	
-	return unit_iterator(i , this);
+ 
+	umap::iterator iter = map_.find(i->second);
+	return unit_iterator(iter , this);
 }
 
 
@@ -356,14 +357,30 @@ unit_map::const_unit_iterator unit_map::find(const gamemap::location &loc) const
 		return const_unit_iterator(map_.end(), this);
 	}
 	
-	umap::const_iterator i = map_.find(iter->second->second.underlying_id());
-	i->second.second->first = loc;
+	umap::const_iterator i = map_.find(iter->second);
 	
 	return const_unit_iterator(i , this);
 }
 
+unit_map::unit_iterator unit_map::find(const std::string &id) {
+	umap::iterator iter = map_.find(id);
+	if (iter == map_.end() || !iter->second.first) {
+		return unit_iterator(map_.end(), this);
+	}
+	return unit_iterator(iter, this);	
+}
+
+unit_map::const_unit_iterator unit_map::find(const std::string &id) const {
+	umap::const_iterator iter = map_.find(id);
+	if (iter == map_.end() || !iter->second.first) {
+		return const_unit_iterator(map_.end(), this);
+	}		
+	return const_unit_iterator(iter, this);	
+}
+
 unit_map::unit_iterator unit_map::begin() {		
-		// clean if there are more invalid than valid
+		// clean if there are more invalid than valid, this block just needs to go somewhere that is likely to be
+		// called when num_iters_ == 0. This seems as good a place as any.
 		if (num_invalid_ > lmap_.size() && num_iters_ == 0) {
 			clean_invalid();
 		}
@@ -378,20 +395,31 @@ unit_map::unit_iterator unit_map::begin() {
 
 void unit_map::add(std::pair<gamemap::location,unit> *p)
 {
-	std::pair<lmap::iterator,bool> res = lmap_.insert(std::pair<gamemap::location,std::pair<gamemap::location,unit>*>(p->first, p));
+	std::string unit_id = p->second.underlying_id();
+	umap::iterator iter = map_.find(unit_id);
+
+	if (iter == map_.end()) {
+		map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
+	} else {	
+		// if iter->second.first, then this is a duplicate underlying_id, or the map is already in an undefined
+		// state due to a different duplicate id entry. This is not allowed. By storing it with a different id it
+		// will not be accessible with find(std::string).
+		if (iter->second.first) {
+			std::stringstream id;
+			id << unit_id << "-duplicate-" << get_random();
+			id >> unit_id;
+			
+			map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
+			WRN_NG << "unit_map::add -- duplicate id in unit map: " << p->second.underlying_id() << "\n";
+		} else {
+			iter->second.second = p;
+			validate(iter);
+		}
+	
+	}
+
+	std::pair<lmap::iterator,bool> res = lmap_.insert(std::pair<gamemap::location,std::string>(p->first, unit_id));
 	assert(res.second);
-	
-	umap::iterator iter = map_.find(p->second.underlying_id());
-	
-	if (iter != map_.end() && iter->second.first && iter->second.second->first != p->first) {
-		WRN_NG << "unit_map::add -- duplicate unique id in unit_map: " << p->second.underlying_id() << "\n";
-	}
-	
-	if (iter != map_.end() && !iter->second.first) {
-		num_invalid_--;
-	}
-	
-	map_[p->second.underlying_id()] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);	
 }
 
 void unit_map::replace(std::pair<gamemap::location,unit> *p)
@@ -403,8 +431,8 @@ void unit_map::replace(std::pair<gamemap::location,unit> *p)
 
 void unit_map::delete_all()
 {
-	for (lmap::iterator i = lmap_.begin(); i != lmap_.end(); ++i) {
-		delete(i->second);
+	for (umap::iterator i = map_.begin(); i != map_.end(); ++i) {
+		if (i->second.first) delete(i->second.second);
 	}
 		
 	lmap_.clear();
@@ -417,14 +445,14 @@ std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &lo
 	lmap::iterator i = lmap_.find(loc);
 	if (i == lmap_.end())
 		return NULL;
-	std::pair<gamemap::location,unit> *res = i->second;	
-		
-	umap::iterator iter = map_.find(i->second->second.underlying_id());
+
+	umap::iterator iter = map_.find(i->second);
+	std::pair<gamemap::location,unit> *res = iter->second.second;	
 	
+	invalidate(iter);
 	lmap_.erase(i);	
 	
-	update_validity(iter);
-		
+	
 	return res;
 }
 
@@ -434,37 +462,14 @@ size_t unit_map::erase(const gamemap::location &loc)
 	if (i == lmap_.end())
 		return 0;
 			
-	umap::iterator iter = map_.find(i->second->second.underlying_id());
-			
-	delete i->second;
+	umap::iterator iter = map_.find(i->second);
+
+	invalidate(iter);
+	
+	delete iter->second.second;
 	lmap_.erase(i);
 	
-	update_validity(iter);
-	
 	return 1;
-}
-
-void unit_map::update_validity(umap::iterator iter)
-{
-	lmap::const_iterator i;
-	for (i = lmap_.begin(); i != lmap_.end(); ++i) {
-		if (i->second->second.underlying_id() == iter->first) {
-			iter->second.second = i->second;
-			break;
-		}
-	}
-	
-	if (i == lmap_.end()) {
-		if (iter->second.first) {
-			iter->second.first = false;
-			++num_invalid_;
-		}
-	} else {
-		if (!iter->second.first) {
-			iter->second.first = true;
-			--num_invalid_;
-		}
-	}
 }
 
 void unit_map::erase(xy_accessor pos)

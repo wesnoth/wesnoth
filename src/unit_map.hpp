@@ -31,6 +31,10 @@ class unit;
 // which acts like a map of units, not unit pointers,
 // except implemented with pointers and hence providing
 // a cheap move function.
+//
+// Further extended to prevent invalidating iterators when
+// changes are made to the map, and to add more powerful iterators/
+// accessors.
 
 class unit_map
 {
@@ -38,36 +42,31 @@ private:
 	
 	//! Used so unit_map can keep a count of iterators and clean invalid pointers when no iterators exist. Every iterator and accessor has a counter instance.
 	struct iterator_counter {
-			iterator_counter() : map_(NULL), has_map_(false) {}
-			iterator_counter(const unit_map* map) : map_(map), has_map_(true) 
+		iterator_counter() : map_(NULL) {}
+		iterator_counter(const unit_map* map) : map_(map)
 			{ map_->add_iter(); }
+		
+		iterator_counter(const iterator_counter& i) : map_(i.map_) {
+			if (map_) map_->add_iter();
+		}
+		
+		iterator_counter &operator =(const iterator_counter &that) {
+			if (this == &that)
+				return *this;
+	
+			if (map_) map_->remove_iter();
+	
+			map_=that.map_;
+			if (map_) map_->add_iter();
 			
-			iterator_counter(const iterator_counter& i) : has_map_(i.has_map_) 	{
-				if (has_map_) 
-					{ map_ = i.map_; map_->add_iter(); } 
-			}
-			
-			iterator_counter &operator =(const iterator_counter &that) {
-				if (this == &that)
-					return *this;
-				
-				if (has_map_) map_->remove_iter();
-				
-				has_map_ = that.has_map_;
-								
-				if (has_map_) {
-					map_=that.map_;
-					map_->add_iter();
-				}	
-				
-				return *this;			
-			}
-						
-			~iterator_counter() {if (has_map_) map_->remove_iter(); }
-		private:	
-			const unit_map* map_;
-			bool has_map_;			
+			return *this;
+		}
+
+		~iterator_counter() {if (map_) map_->remove_iter(); }
+	private:	
+		const unit_map* map_;		
 	};
+
 	
 public:
 	unit_map() : num_iters_(0), num_invalid_(0) { };
@@ -80,8 +79,8 @@ public:
 	//! Keyed with unit's underlying_id. bool flag is whether the following pair pointer is valid. pointer to pair used to imitate a map<location, unit>
 	typedef std::map<std::string,std::pair<bool, std::pair<gamemap::location,unit>*> > umap;
 	
-	//! Maintains only the valid pairs. Used to determine validity in umap, and for faster lookup by location.
-	typedef std::map<gamemap::location, std::pair<gamemap::location, unit>*> lmap;
+	//! Maps locations to the underlying_id() of the unit at that location.
+	typedef std::map<gamemap::location, std::string> lmap;
 		
 	struct const_unit_iterator;	
 	struct unit_xy_iterator;
@@ -166,7 +165,7 @@ public:
 	typedef unit_iterator iterator;
 	typedef const_unit_iterator const_iterator;
 	
-	//! Similar to unit_iterator, except that becomes invalid if unit is moved while the iterator points at it. Can update to the new position w/ update_loc().
+	//! Similar to unit_iterator, except that becomes invalid if unit is moved while the iterator points at it.
 	struct unit_xy_iterator
 	{
 		unit_xy_iterator(const unit_iterator &i);
@@ -292,9 +291,11 @@ public:
 	
 	//! Return object can be implicitly converted to any of the other iterators or accessors
 	unit_iterator find(const gamemap::location &loc) ;
+	unit_iterator find(const std::string &id);
 	
 	//! Return object can be implicity converted to any of the other const iterators or accessors
 	const_unit_iterator find(const gamemap::location &loc) const;
+	const_unit_iterator find(const std::string &id) const;
 	
 	size_t count(const gamemap::location &loc) const {
 		return lmap_.count(loc);
@@ -344,13 +345,17 @@ public:
 		map_.swap(o.map_);
 		lmap_.swap(o.lmap_);
 	}
-	
-	//! Removes invalid entries in map_. Called automatically when safe and needed.
-	void clean_invalid();
+
 		
 private:
+	//! Removes invalid entries in map_. Called automatically when safe and needed.
+	void clean_invalid();
 	
-	void update_validity(umap::iterator iter);	
+	void invalidate(umap::iterator i) 
+		{if(i == map_.end()) return; i->second.first = false; ++num_invalid_;} 
+	void validate(umap::iterator i) 
+		{if(i == map_.end()) return; i->second.first = true; --num_invalid_;}
+	
 	void delete_all();
 	
 	void add_iter() const { ++num_iters_; }
@@ -360,8 +365,8 @@ private:
 	//! Key: unit's underlying_id. bool indicates validity of pointer. pointer to pair used to imitate a map<location, unit>
 	std::map<std::string,std::pair<bool, std::pair<gamemap::location,unit>*> > map_;
 	
-	//! Maintains only the valid pairs. Used to determine validity in umap, and for faster lookup by location.
-	std::map<gamemap::location, std::pair<gamemap::location, unit>*> lmap_;
+	//! location -> unit.underlying_id(). Unit_map is usually used as though it is a map<location, unit> and so we need this map for efficient access/modification.
+	std::map<gamemap::location, std::string> lmap_;
 	
 	mutable size_t num_iters_;
 	size_t num_invalid_;

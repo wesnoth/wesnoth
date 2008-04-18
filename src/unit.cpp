@@ -271,15 +271,7 @@ unit::unit(unit_map* unitmap, const gamemap* map,
 	}
 	generate_traits(!use_traits);
 	apply_modifications();
-	if(underlying_id_.empty()){
-		char buf[80];
-		if(!name_.empty()){
-			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), name_.c_str());
-		} else {
-			snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
-		}
-		underlying_id_ = buf;
-	}
+	set_underlying_id();
 
 	unrenamable_ = false;
 	anim_ = NULL;
@@ -312,15 +304,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	}
 	generate_traits(!use_traits);
 	apply_modifications();
-	if(underlying_id_.empty()){
-		char buf[80];
-		if(!name_.empty()){
-			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), name_.c_str());
-		}else{
-			snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
-		}
-		underlying_id_ = buf;
-	}
+	set_underlying_id();
 
 	unrenamable_ = false;
 	next_idling_ = 0;
@@ -1219,13 +1203,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		custom_unit_desc = cfg["unit_description"];
 
 	underlying_id_ = id_;
-	if(underlying_id_.empty()){
-		char buf[80];
-		snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), state ?
-			state->rng().get_random() : get_random());
-		underlying_id_ = buf;
-	}
 	if(id_.empty()) {
+		set_underlying_id();
 		id_ = cfg["type"].c_str();
 	}
 
@@ -2827,6 +2806,19 @@ bool unit::invisible(const gamemap::location& loc,
 	}
 
 	return is_inv;
+}
+
+void unit::set_underlying_id() {
+	if(underlying_id_.empty()){
+		std::stringstream id;
+				
+		if(!name_.empty()){
+			id << type()->id() << "-" << get_random() << get_random() << "-" <<  name_;
+		} else {
+			id << type()->id() << "-" << get_random() << get_random();
+		}
+		id >> underlying_id_;
+	}
 }
 
 //! Returns the number of units of the given side (team).

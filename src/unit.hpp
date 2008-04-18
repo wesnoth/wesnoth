@@ -301,6 +301,8 @@ private:
 	bool has_ability_by_id(const std::string& ability) const;
 	void remove_ability_by_id(const std::string& ability);
 
+	void set_underlying_id();
+
 	config cfg_;
 	config movement_b_;
 	config defense_b_;
