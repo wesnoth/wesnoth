@@ -730,19 +730,7 @@ std::vector<std::string> &command_history() {
 //! making a new one if it doesn't exist.
 // FIXME only used for gui2. Could be used for the above histories.
 std::vector<std::string>* get_history(const std::string& id) {
-	std::map<std::string, std::vector<std::string> >::iterator iter;
-	iter = history_map.find(id);
-	
-	if (iter != history_map.end()) {
-		// a history with this id exists, so return it
-		return &iter->second;
-	} else {	
-		// no history matches this id, so make a new one		
-		std::pair<std::map<std::string, std::vector<std::string> >::iterator, bool> res;
-		res = history_map.insert(std::pair<std::string, std::vector<std::string> >(id, std::vector<std::string>()));
-			
-		return &res.first->second;
-	}	
+	return &history_map[id];		
 }
 
 bool green_confirm()
