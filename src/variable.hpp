@@ -20,10 +20,12 @@
 #include "tstring.hpp"
 
 #include <vector>
+#include <set>
 #include <string>
 
 class game_state;
 class unit_map;
+
 
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves
@@ -90,6 +92,7 @@ public:
 private:
 	const config* cfg_;
 	const config* cache_key_;
+	mutable std::set<std::string> recursion_;
 };
 
 namespace variable

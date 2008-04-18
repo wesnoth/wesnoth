@@ -39,47 +39,62 @@ namespace
 	std::map<config const *, int> config_cache;
 
 	// map by hash for equivalent inserted tags already in the cache
-	std::map<std::string *, config const *> hash_to_cache;
+	std::map<std::string const *, config const *> hash_to_cache;
 
 	// map to remember config hashes that have already been calculated
-	std::map<config const *, std::string *> config_hashes;
+	std::map<config const *, std::string const *> config_hashes;
 
 	config empty_config;
 
+    struct compare_str_ptr {
+        bool operator()(const std::string* s1, const std::string* s2) const
+        {
+            return (*s1) < (*s2);
+        }
+    };
+
 	class hash_memory_manager {
     public:
-	    std::vector<std::string *> mem;
+        const std::string *find(const std::string& str) const {
+            std::set<std::string const*, compare_str_ptr>::const_iterator itor = mem_.lower_bound(&str);
+            if(itor == mem_.end() || **itor != str) {
+                return NULL;
+            }
+            return *itor;
+        }
+        void insert(const std::string *newhash) {
+            mem_.insert(newhash);
+        }
 	    void clear() {
 	        hash_to_cache.clear();
 	        config_hashes.clear();
-            std::vector<std::string *>::iterator mem_it,
-                mem_end = mem.end();
-            for(mem_it = mem.begin(); mem_it != mem_end; ++mem_it) {
+            std::set<std::string const*, compare_str_ptr>::iterator mem_it,
+                mem_end = mem_.end();
+            for(mem_it = mem_.begin(); mem_it != mem_end; ++mem_it) {
                 delete *mem_it;
             }
-            mem.clear();
+            mem_.clear();
 	    }
 	    ~hash_memory_manager() {
 	        clear();
 	    }
+    private:
+        std::set<std::string const*, compare_str_ptr> mem_;
 	};
 	hash_memory_manager hash_memory;
 }
 
-static std::string* get_hash_of(const config* cp) {
-	std::string *& hash_ref = config_hashes[cp];
+static const std::string* get_hash_of(const config* cp) {
+	std::string const*& hash_ref = config_hashes[cp];
 	if(hash_ref == NULL) {
 	    const std::string & temp_hash = cp->hash();
-	    std::vector<std::string *>::iterator hash_it,
-            hash_end = hash_memory.mem.end();
-	    for(hash_it = hash_memory.mem.begin(); hash_it != hash_end; ++hash_it) {
-	        if(temp_hash == **hash_it) {
-	            hash_ref = *hash_it;
-	            return hash_ref;
-	        }
+	    std::string const* find_hash = hash_memory.find(temp_hash);
+	    if(find_hash != NULL) {
+            hash_ref = find_hash;
+            return hash_ref;
 	    }
         hash_ref = new std::string(temp_hash);
-        hash_memory.mem.push_back(hash_ref);
+        hash_memory.insert(hash_ref);
 	}
     return hash_ref;
 }
@@ -162,22 +177,26 @@ const config vconfig::get_parsed_config() const
 	config res;
 
 	for(string_map::const_iterator itor = cfg_->values.begin();
-			itor != cfg_->values.end(); ++itor) {
-
+        itor != cfg_->values.end(); ++itor)
+    {
 		res[itor->first] = expand(itor->first);
 	}
 
 	for(config::all_children_iterator child = cfg_->ordered_begin();
         child != cfg_->ordered_end(); ++child)
     {
-
         const std::string &child_key = *(*child).first;
         if(child_key == "insert_tag") {
-            //! FIXME: need to prevent infinite recursion
-
             vconfig insert_cfg(child->second);
             const t_string& name = insert_cfg["name"];
-            variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
+            std::string vname = insert_cfg["variable"];
+            if(!recursion_.insert(vname).second) {
+                ERR_NG << "vconfig::get_parsed_config() infinite recursion detected, aborting"
+                    << std::endl;
+                res.add_child("insert_tag", insert_cfg.get_config());
+                return res;
+            }
+            variable_info vinfo(vname, false, variable_info::TYPE_CONTAINER);
             if(!vinfo.is_valid) {
                 res.add_child(name); //add empty tag
             } else if(vinfo.explicit_index) {
@@ -191,6 +210,7 @@ const config vconfig::get_parsed_config() const
                     res.add_child(name, vconfig(*range.first++).get_parsed_config());
                 }
             }
+            recursion_.erase(vname);
         } else {
             res.add_child(child_key, vconfig((*child).second).get_parsed_config());
         }
