@@ -292,15 +292,8 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 {
 	assert(map_.on_board(loc));
 
-	// The location is not valid
-	// 1. if the loc is shrouded, or
-	// 2. if moving in it costs more than the total movement of the unit, or
-	// 3. if there is a visible enemy on the hex, or
-	// 4. if the unit is not a skirmisher and there is a visible enemy
-	//    with a ZoC on an adjacent hex in the middle of the route
-	// #4 is a bad criteria!  It should be that moving into a ZOC
-	// uses up the rest of your moves
-
+	// loc is shrouded, consider it impassable
+	// NOTE: This is why AI must avoid to use shroud
 	if (viewing_team_.shrouded(loc))
 		return getNoPathValue();
 
@@ -308,16 +301,28 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	int const base_cost = unit_.movement_cost(terrain);
 	// Pathfinding heuristic: the cost must be at least 1
 	VALIDATE(base_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
+
+	// costs more than the total movement of the unit, impassbale
 	if (total_movement_ < base_cost)
 		return getNoPathValue();
 
 	unit_map::const_iterator
-		enemy_unit = find_visible_unit(units_, loc, map_, teams_, viewing_team_),
-		units_end = units_.end();
+		other_unit = find_visible_unit(units_, loc, map_, teams_, viewing_team_);
 
-	if (enemy_unit != units_end && teams_[unit_.side()-1].is_enemy(enemy_unit->second.side()))
-		return getNoPathValue();
-
+	// We can't traverse visible enemy and we also prefer empty hexes
+	// (less blocking in multi-turn moves and better when exploring fog,
+	// because we can't stop on a friend)
+	int other_unit_subcost = 0;
+	if (other_unit != units_.end()) {
+		if (teams_[unit_.side()-1].is_enemy(other_unit->second.side()))
+			return getNoPathValue();
+		else
+			// This value will be used with the defense_subcost (see below)
+			// The 1 here means: consider occupied hex as a -1% defense
+			// (less important than 10% defense because friends may move)
+			other_unit_subcost = 1;
+	}
+	
 	// Compute how many movement points are left in the game turn
 	// needed to reach the previous hex.
 	// total_movement_ is not zero, thanks to the pathfinding heuristic
@@ -344,14 +349,15 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 		move_cost += need_new_turn ? total_movement_ : remaining_movement;
 	}
 
-	// we add a tiny cost based on terrain defense, so the pathfinding
-	// prefer good terrains between 2 with the same MP cost
-	// we divide defense by 100 * 100, because defense it's 100-based
-	// and we don't want any impact on move cost for less then 100-steps path
-	// (even ~200 since mean defense is around ~50%)
-	const double defense_cost = unit_.defense_modifier(terrain) / 10000.0;
+	// We will add a tiny cost based on terrain defense, so the pathfinding
+	// will prefer good terrains between 2 with the same MP cost
+	// Keep in mind that defense_modifier is inverted (= 100 - defense%)
+	const int defense_subcost = unit_.defense_modifier(terrain);
 
-	return move_cost + defense_cost;
+	// We divide subcosts by 100 * 100, because defense is 100-based and
+	// we don't want any impact on move cost for less then 100-steps path
+	// (even ~200 since mean defense is around ~50%)
+	return move_cost + (defense_subcost + other_unit_subcost) / 10000.0;
 }
 
 emergency_path_calculator::emergency_path_calculator(const unit& u, const gamemap& map)

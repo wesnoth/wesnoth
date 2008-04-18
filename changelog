@@ -26,7 +26,8 @@ Version 1.5.0-svn:
    * new history feature for entering searches, chat messages, commands, and
      AI formulas
    * optional cancelling of unit orders in load-game dialog (patch #1024)
-   * smarter pathfinding: if same MP cost, prefer terrains with better defense.
+   * smarter pathfinding: if same MP cost, prefer terrains with better defense
+     and empty hexes (less frequent multi-turn moves blocked by a friend)
  * language and i18n:
    * new translation: Croatian
    * updated translations: Chinese, Czech, Danish, Dutch, Finnish, French,
