@@ -1060,6 +1060,9 @@ const config& unit_type_data::unit_type_map_wrapper::find_config(const std::stri
     if (cfg != NULL)
         return *cfg;
 
+    DBG_UT << "unit type not found: " << key << "\n";
+    DBG_UT << *unit_cfg_ << "\n";
+
     // FIXME OBSOLETE compatibility hack to be removed in 1.5.3
     cfg = unit_cfg_->find_child("unit", "id", key);
 
@@ -1079,6 +1082,10 @@ void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS st
 unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const
 {
     unit_type_map::iterator ut = types_.find(key);
+
+    if (key == "dummy_unit")
+        return ut->second;
+
     const config& unit_cfg = find_config(key);
 
     switch (status){
