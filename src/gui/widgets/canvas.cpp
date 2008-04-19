@@ -55,68 +55,33 @@
 
 namespace gui2{
 
-namespace {
-
-//! Template class can hold a value or a formula calculating the value.
-template <class T>
-class tformula
+template<class T>
+tformula<T>::tformula(const std::string& str) :
+	formula_(),
+	value_()
 {
-public:	
-	tformula<T>(const std::string& str) : 
-		formula_(),
-		value_()
-	{
-		if(str.empty()) {
-			return;
-		}
-
-		if(str[0] == '(') {
-			formula_ = str;
-		} else {
-			convert(str);
-		}
-
+	if(str.empty()) {
+		return;
 	}
 
-	//! Returns the value, can only be used it the data is no formula.
-	//! 
-	//! Another option would be to cache the output of the formula in value_
-	//! and always allow this function. But for now decided that the caller
-	//! needs to do the caching. It might be changed later.
-	T operator()() const
-	{
-		assert(!has_formula());
+	if(str[0] == '(') {
+		formula_ = str;
+	} else {
+		convert(str);
+	}
+
+}
+
+template<class T>
+T tformula<T>::operator() (const game_logic::map_formula_callable& variables) const
+{
+	if(has_formula()) {
+		DBG_G_D << "Formula: execute '" << formula_ << "'.\n";
+		return execute(variables);
+	} else {
 		return value_;
 	}
-	
-	//! Returns the value, can always be used.
-	T operator() (const game_logic::map_formula_callable& variables) const
-	{
-		if(has_formula()) {
-			DBG_G_D << "Formula: execute '" << formula_ << "'.\n";
-			return execute(variables);
-		} else {
-			return value_;
-		}
-	}
-
-	//! Determine whether the class contains a formula.
-	bool has_formula() const { return !formula_.empty(); }
-
-private:
-	
-	//! Converts the string ot the template value.
-	void convert(const std::string& str);
-
-	T execute(const game_logic::map_formula_callable& variables) const;
-
-	//! If there is a formula it's stored in this string, empty if no formula.
-	std::string formula_;
-
-	//! If no formula it contains the value.
-	T value_;
-
-};
+}
 
 template<>
 bool tformula<bool>::execute(const game_logic::map_formula_callable& variables) const
@@ -743,8 +708,6 @@ void ttext::draw(surface& canvas,
 	SDL_Rect dst = { x, y, canvas->w, canvas->h };
 	blit_surface(surf, 0, canvas, &dst);
 }
-
-} // namespace
 
 tcanvas::tcanvas() :
 	shapes_(),

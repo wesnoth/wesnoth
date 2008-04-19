@@ -106,6 +106,47 @@ private:
 	bool dirty_;
 };
 
+//! Template class can hold a value or a formula calculating the value.
+//!
+//! Note since it's also instanciated in canvas.cpp declared the class here.
+template <class T>
+class tformula
+{
+public:	
+	tformula<T>(const std::string& str);
+
+	//! Returns the value, can only be used it the data is no formula.
+	//! 
+	//! Another option would be to cache the output of the formula in value_
+	//! and always allow this function. But for now decided that the caller
+	//! needs to do the caching. It might be changed later.
+	T operator()() const
+	{
+		assert(!has_formula());
+		return value_;
+	}
+	
+	//! Returns the value, can always be used.
+	T operator() (const game_logic::map_formula_callable& variables) const;
+
+	//! Determine whether the class contains a formula.
+	bool has_formula() const { return !formula_.empty(); }
+
+private:
+	
+	//! Converts the string ot the template value.
+	void convert(const std::string& str);
+
+	T execute(const game_logic::map_formula_callable& variables) const;
+
+	//! If there is a formula it's stored in this string, empty if no formula.
+	std::string formula_;
+
+	//! If no formula it contains the value.
+	T value_;
+
+};
+
 } // namespace gui2
 
 
