@@ -1308,7 +1308,7 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 		filename = filename_;
 		if(filename == "") {
 			edit_save_as();
-			return true;
+			return (filename_ != "");
 		}
 	}
 	else {
