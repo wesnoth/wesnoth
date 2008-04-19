@@ -426,6 +426,12 @@ void display::screenshot()
 
 void display::map_screenshot()
 {
+	if (map_.empty()) {
+		// Map Screenshot are big, abort and warn the user if he does strange things
+		std::cerr << "No map, can't do a Map Screenshot. If it was not wanted, check your hotkey.\n";
+		return;
+	}
+	
 	static int map_screenshot_counter = 0;
 	std::string filename = get_screenshot_dir() + "/" + _("Map_Screenshot") + "_";
 	filename = get_next_filename(filename, ".bmp", map_screenshot_counter);
