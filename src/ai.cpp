@@ -261,6 +261,9 @@ bool ai::recruit_usage(const std::string& usage)
 	log_scope2(ai, "recruiting troops");
 	LOG_AI << "recruiting '" << usage << "'\n";
 
+    //make sure id, usage and cost are known for the coming evaluation of unit types
+    unit_type_data::types().build_all(unit_type::HELP_INDEX);
+
 	std::vector<std::string> options;
 	bool found = false;
 	// Find an available unit that can be recruited,
@@ -280,8 +283,8 @@ bool ai::recruit_usage(const std::string& usage)
 				continue;
 			}
 
-			if (current_team().gold() - i->second.cost()>min_gold) {
-				LOG_AI << name << " rejected, cost too high\n";
+			if (current_team().gold() - i->second.cost() < min_gold) {
+				LOG_AI << name << " rejected, cost too high (cost: " << i->second.cost() << ", current gold: " << current_team().gold() <<", min_gold: " << min_gold << ")\n";
 				continue;
 			}
 
