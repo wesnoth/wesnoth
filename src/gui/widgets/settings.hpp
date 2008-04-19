@@ -81,11 +81,6 @@ public:
 	int text_font_style;
 
 	std::vector<tstate_definition> state;
-
-private:
-	//! All inherited classes need to override this and call it from
-	//! their constructor. This is needed to read the extra needed fields.
-	virtual void read_extra(const config& cfg) = 0;
 };
 
 struct tcontrol_definition : public reference_counted_object
@@ -112,12 +107,7 @@ struct tbutton_definition : public tcontrol_definition
 
 	struct tresolution : public tresolution_definition_
 	{
-		tresolution(const config& cfg) : 
-			tresolution_definition_(cfg)
-		{ read_extra(cfg); }
-
-	private:
-		void read_extra(const config& cfg);
+		tresolution(const config& cfg);
 	};
 
 };
@@ -129,12 +119,7 @@ struct tlabel_definition : public tcontrol_definition
 
 	struct tresolution : public tresolution_definition_
 	{
-		tresolution(const config& cfg) : 
-			tresolution_definition_(cfg)
-		{ read_extra(cfg); }
-
-	private:
-		void read_extra(const config& cfg);
+		tresolution(const config& cfg);
 	};
 };
 
@@ -145,12 +130,7 @@ struct ttext_box_definition : public tcontrol_definition
 
 	struct tresolution : public tresolution_definition_
 	{
-		tresolution(const config& cfg) : 
-			tresolution_definition_(cfg)
-		{ read_extra(cfg); }
-
-	private:
-		void read_extra(const config& cfg);
+		tresolution(const config& cfg);
 	};
 
 };
@@ -161,12 +141,7 @@ struct ttooltip_definition : public tcontrol_definition
 
 	struct tresolution : public tresolution_definition_
 	{
-		tresolution(const config& cfg) : 
-			tresolution_definition_(cfg)
-		{ read_extra(cfg); }
-
-	private:
-		void read_extra(const config& cfg);
+		tresolution(const config& cfg);
 	};
 };
 

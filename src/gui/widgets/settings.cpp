@@ -243,7 +243,8 @@ tbutton_definition::tbutton_definition(const config& cfg) :
 	load_resolutions<tresolution>(cfg.get_children("resolution"));
 }
 
-void tbutton_definition::tresolution::read_extra(const config& cfg)
+tbutton_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
 {
 /*WIKI
  * [button_definition][resolution]
@@ -362,7 +363,8 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
 		<< window_width << ", " << window_height << '\n';
 }
 
-void tlabel_definition::tresolution::read_extra(const config& cfg)
+tlabel_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
 {
 /*WIKI
  * [label_definition][resolution]
@@ -389,7 +391,8 @@ ttext_box_definition::ttext_box_definition(const config& cfg) :
 	load_resolutions<tresolution>(cfg.get_children("resolution"));
 }
 
-void ttext_box_definition::tresolution::read_extra(const config& cfg)
+ttext_box_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
 {
 /*WIKI
  * [label_definition][resolution]
@@ -419,7 +422,8 @@ ttooltip_definition::ttooltip_definition(const config& cfg) :
 	load_resolutions<tresolution>(cfg.get_children("resolution"));
 }
 
-void ttooltip_definition::tresolution::read_extra(const config& cfg)
+ttooltip_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
 {
 /*WIKI
  * [label_definition][resolution]
