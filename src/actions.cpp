@@ -655,9 +655,6 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 			chance_to_hit = 100;
 		}
 
-		if(chance_to_hit < 0) {
-			chance_to_hit = 0;
-		}
 		unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
 		chance_to_hit = cth_effects.get_composite_value();
