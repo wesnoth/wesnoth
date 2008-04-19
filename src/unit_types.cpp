@@ -132,6 +132,8 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const std::string& increase_attacks = cfg["increase_attacks"];
 	const std::string& set_attack_weight = cfg["attack_weight"];
 	const std::string& set_defense_weight = cfg["defense_weight"];
+	const std::string& increase_accuracy = cfg["increase_accuracy"];
+	const std::string& increase_parry = cfg["increase_parry"];
 
 	std::stringstream desc;
 
@@ -196,6 +198,22 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		if(description != NULL) {
 			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks
 				<< " " << _n("strike","strikes",lexical_cast<int>(increase_attacks));
+		}
+	}
+
+	if(increase_accuracy.empty() == false) {
+		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy, 1);
+
+		if(description != NULL) {
+			desc << (increase_accuracy[0] == '-' ? "" : "+") << increase_accuracy << " " << _n("accuracy","accuracy",lexical_cast<int>(increase_accuracy));
+		}
+	}
+
+	if(increase_parry.empty() == false) {
+		parry_ = utils::apply_modifier(parry_, increase_parry, 1);
+
+		if(description != NULL) {
+			desc << (increase_parry[0] == '-' ? "" : "+") << increase_parry << " " << _n("parry","parry",lexical_cast<int>(increase_parry));
 		}
 	}
 
