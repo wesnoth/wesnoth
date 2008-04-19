@@ -348,7 +348,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 							|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
 							 && (mod & KMOD_CTRL) == 0 && (mod & KMOD_ALT) == 0
 							 && (mod & KMOD_LMETA) == 0) {
-						gui::message_dialog(disp,"", _("Warning: screenshot hotkeys not combined with Control or Alt keys.")).show();
+						gui::message_dialog(disp,"", _("Warning: screenshot hotkeys not combined with Control, Alt or Meta keys.")).show();
 					}
 				}
 			}
