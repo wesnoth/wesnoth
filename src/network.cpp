@@ -46,6 +46,8 @@
 #else
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>  // for TCP_NODELAY
 #ifdef __BEOS__
 #include <socket.h>
 #else
@@ -363,6 +365,16 @@ void connect_operation::run()
 		                            "Could not connect to host";
 		return;
 	}
+
+#ifdef TCP_NODELAY
+	//set TCP_NODELAY to 0 because SDL_Net turns it off, causing packet
+	//flooding!
+	{
+	_TCPsocket* raw_sock = reinterpret_cast<_TCPsocket*>(sock);
+	int no = 0;
+	setsockopt(raw_sock->channel, IPPROTO_TCP, TCP_NODELAY, (char*)&no, sizeof(no));
+	}
+#endif
 
 // Use non blocking IO
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
