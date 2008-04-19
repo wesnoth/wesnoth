@@ -710,7 +710,7 @@ if 'dist' in COMMAND_LINE_TARGETS:	# Speedup, the manifest is expensive
     dist_env = env.Clone()
     dist_tarball = dist_env.Tar('wesnoth.tar.bz2', [])
     open("dist.manifest", "w").write("\n".join(dist_manifest() + ["src/revision.hpp"]))
-    dist_env.Append(TARFLAGS='-j -T dist.manifest',
+    dist_env.Append(TARFLAGS='-j -T dist.manifest --transform "s,^,wesnoth/,"',
                TARCOMSTR="Making distribution tarball...")
     dist_env.AlwaysBuild(dist_tarball)
     env.Clean(all, 'wesnoth.tar.bz2')
