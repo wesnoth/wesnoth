@@ -2817,7 +2817,7 @@ void unit::set_underlying_id() {
 		} else {
 			id << type()->id() << "-" << get_random() << get_random();
 		}
-		id >> underlying_id_;
+		underlying_id_ = id.str();
 	}
 }
 

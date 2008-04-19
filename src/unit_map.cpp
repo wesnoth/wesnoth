@@ -347,6 +347,8 @@ unit_map::unit_iterator unit_map::find(const gamemap::location &loc) {
 	}
  
 	umap::iterator iter = map_.find(i->second);
+
+	assert(iter->second.first);
 	return unit_iterator(iter , this);
 }
 
@@ -359,6 +361,7 @@ unit_map::const_unit_iterator unit_map::find(const gamemap::location &loc) const
 	
 	umap::const_iterator i = map_.find(iter->second);
 	
+	assert(i->second.first);
 	return const_unit_iterator(i , this);
 }
 
@@ -407,7 +410,7 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 		if (iter->second.first) {
 			std::stringstream id;
 			id << unit_id << "-duplicate-" << get_random();
-			id >> unit_id;
+			unit_id = id.str();
 			
 			map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
 			WRN_NG << "unit_map::add -- duplicate id in unit map: " << p->second.underlying_id() << "\n";
@@ -451,7 +454,6 @@ std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &lo
 	
 	invalidate(iter);
 	lmap_.erase(i);	
-	
 	
 	return res;
 }
