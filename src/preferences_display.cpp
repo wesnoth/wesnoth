@@ -334,7 +334,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
 
 				if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
-					gui::message_dialog(disp,"",_("This Hotkey is already in use.")).show();
+					std::stringstream msg;
+					msg << "   " << oldhk.get_description() << " : " << oldhk.get_name();
+					gui::message_dialog(disp,_("This Hotkey is already in use."),msg.str()).show();
 				} else {
 
 					newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
