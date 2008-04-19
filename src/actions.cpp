@@ -650,7 +650,14 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		}
 
 		// Compute chance to hit.
-		chance_to_hit = opp.defense_modifier(map.get_terrain(opp_loc));
+		chance_to_hit = opp.defense_modifier(map.get_terrain(opp_loc)) + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
+		if(chance_to_hit > 100) {
+			chance_to_hit = 100;
+		}
+
+		if(chance_to_hit < 0) {
+			chance_to_hit = 0;
+		}
 		unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
 		chance_to_hit = cth_effects.get_composite_value();

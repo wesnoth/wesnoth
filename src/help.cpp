@@ -1366,7 +1366,7 @@ public:
 				push_tab_pair(row, lang_weapon);
 				push_tab_pair(row, lang_type);
 				attack_ss.str(clear_stringstream);
-				attack_ss << attack_it->damage() << '-' << attack_it->num_attacks();
+				attack_ss << attack_it->damage() << '-' << attack_it->num_attacks() << " " << attack_it->accuracy_parry_description();
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
 				push_tab_pair(row, _((*attack_it).range().c_str()));

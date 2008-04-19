@@ -54,6 +54,8 @@ attack_type::attack_type(const config& cfg)
 			icon_ = "attacks/blank-attack.png";
 	}
 
+	accuracy_ = atol(cfg["accuracy"].c_str());
+	parry_ = atol(cfg["parry"].c_str());
 	range_ = cfg["range"].base_str();
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
@@ -69,6 +71,30 @@ attack_type::attack_type(const config& cfg)
 
 }
 
+std::string attack_type::accuracy_parry_description() const
+{
+	if(accuracy_ == 0 && parry_ == 0) {
+		return "";
+	}
+
+	std::ostringstream s;
+	if(accuracy_ > 0) {
+		s << "+";
+	}
+
+	s << accuracy_ << "%";
+
+	if(parry_ != 0) {
+		s << "/";
+		if(parry_ > 0) {
+			s << "+";
+		}
+
+		s << parry_ << "%";
+	}
+
+	return s.str();
+}
 
 bool attack_type::matches_filter(const config& cfg,bool self) const
 {

@@ -249,7 +249,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				nattacks = at_it->num_attacks();
 			}
 			str << nattacks;
-			str << " " << at_it->name();
+			str << " " << at_it->name() << " " << at_it->accuracy_parry_description();
 			tooltip << at_it->name() << "\n";
 			int effdmg;
 			if(utils::string_bool(u->second.get_state("slowed"))) {

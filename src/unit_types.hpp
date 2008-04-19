@@ -43,6 +43,9 @@ public:
 	const std::string& type() const { return type_; }
 	const std::string& icon() const { return icon_; }
 	const std::string& range() const { return range_; }
+	std::string accuracy_parry_description() const;
+	int accuracy() const { return accuracy_; }
+	int parry() const { return parry_; }
 	int damage() const { return damage_; }
 	int num_attacks() const { return num_attacks_; }
 	double attack_weight() const { return attack_weight_; }
@@ -100,6 +103,8 @@ private:
 	double attack_weight_;
 	double defense_weight_;
 
+	int accuracy_;
+	int parry_;
 };
 
 class unit_movement_type;
