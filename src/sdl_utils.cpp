@@ -648,21 +648,21 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb){
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
 
+		std::map<Uint32, Uint32>::const_iterator map_rgb_end = map_rgb.end();
+
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
 			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
 			if(alpha){	// don't recolor invisible pixels.
 				Uint32 oldrgb = (red<<16) + (green<<8) + (blue);
-				for(std::map<Uint32, Uint32>::const_iterator i=map_rgb.begin(); i!= map_rgb.end(); i++){
-					if(oldrgb==i->first){
-						Uint32 new_rgb = i->second;
-						Uint8 new_r = (new_rgb & 0x00FF0000)>>16;
-						Uint8 new_g = (new_rgb & 0x0000FF00)>>8;
-						Uint8 new_b = (new_rgb & 0x000000FF);
+				std::map<Uint32, Uint32>::const_iterator i = map_rgb.find(oldrgb);
+				if(i != map_rgb_end){
+					Uint32 new_rgb = i->second;
+					Uint8 new_r = (new_rgb & 0x00FF0000)>>16;
+					Uint8 new_g = (new_rgb & 0x0000FF00)>>8;
+					Uint8 new_b = (new_rgb & 0x000000FF);
 					*beg = SDL_MapRGBA(nsurf->format,new_r,new_g,new_b,alpha);
-					break; // no double replacements.
-					}
 				}
 			}
 		++beg;
