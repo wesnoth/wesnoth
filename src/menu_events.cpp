@@ -1607,6 +1607,10 @@ private:
 		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i) {
 			std::stringstream row;
 
+			// dummy unit is never build, so skip it.
+			if (i->first == "dummy_unit")
+				continue;
+
             unit_type_data::types().find(i->first, unit_type::WITHOUT_ANIMATIONS);
 
 			std::string race;
