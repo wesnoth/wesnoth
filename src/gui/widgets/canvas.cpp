@@ -180,9 +180,13 @@ tline::tline(const config& cfg) :
 	thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
 {
 /*WIKI
- * [line]
+ * @page = GUICanvasWML
+ *
+ * == Line ==
  * Definition of a line.
+ *
  * Keys: 
+ * @start_table = config
  *     x1 (f_unsigned = 0)             The x coordinate of the startpoint.
  *     y1 (f_unsigned = 0)             The y coordinate of the startpoint.
  *     x2 (f_unsigned = 0)             The x coordinate of the endpoint.
@@ -192,20 +196,22 @@ tline::tline(const config& cfg) :
  *                                     is drawn.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
+ * @end_table                                    
  *
- * Variables:
+ * <span id="general_variables">Variables:</span>.
+ * @start_table = formula
  *     width unsigned                  The width of the canvas.
  *     height unsigned                 The height of the canvas.
  *     text tstring                    The text to render on the widget.
+ *@end_table
  *
- * Note when drawing the valid coordinates are:
- * 0 -> width - 1
- * 0 -> height -1
+ * Note when drawing the valid coordinates are:<br>
+ * 0 -> width - 1 <br>
+ * 0 -> height -1 
  *
  * Drawing outside this area will result in unpredicatable results including
  * crashing. (That should be fixed, when encountered.)
  *
- * [/line]
  */
 
 /*WIKI
@@ -347,9 +353,13 @@ trectangle::trectangle(const config& cfg) :
 	fill_colour_(decode_colour(cfg["fill_colour"]))
 {
 /*WIKI
- * [rectangle]
+ * @page = GUICanvasWML
+ *
+ * == Rectangle ==
  * Definition of a rectangle.
+ *
  * Keys: 
+ * @start_table = config
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
  *     w (f_unsigned = 0)              The width of the rectangle.
@@ -362,11 +372,10 @@ trectangle::trectangle(const config& cfg) :
  *                                     it's not drawn.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
- *
+ * @end_table
  * Variables:
- * See [line].
+ * See [[#general_variables|Line]].
  *
- * [/rectangle]
  */
 	if(border_colour_ == 0) {
 		border_thickness_ = 0;
@@ -489,9 +498,13 @@ timage::timage(const config& cfg) :
 	stretch_(utils::string_bool(cfg["stretch"]))
 {
 /*WIKI
- * [image]
+ * @page = GUICanvasWML
+ *
+ * == Image ==
  * Definition of an image.
+ *
  * Keys: 
+ * @start_table = config
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
  *     w (f_unsigned = 0)              The width of the image, if not zero the
@@ -507,10 +520,10 @@ timage::timage(const config& cfg) :
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
  *
+ * @end_table
  * Variables:
- * See [line].
+ * See [[#general_variables|Line]].
  *
- * [/image]
  */
 
 	image_.assign(image::get_image(image::locator(cfg["name"])));
@@ -626,9 +639,13 @@ ttext::ttext(const config& cfg) :
 {
 
 /*WIKI
- * [text]
+ * @page = GUICanvasWML
+ *
+ * == Text ==
  * Definition of text.
+ *
  * Keys: 
+ * @start_table = config
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
  *     w (f_unsigned = 0)              The width of the rectangle.
@@ -639,15 +656,16 @@ ttext::ttext(const config& cfg) :
  *     text (tstring = "")             The text to draw (translatable).
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
- *
+ * @end_table
  * NOTE alignment can be done with the forumulas.
  *
  * Variables:
+ * @start_table = formula
  *     text_width unsigned             The width of the rendered text.
  *     text_height unsigned            The height of the renedered text.
- * And also the ones defined in [line].
+ * @end_table
+ * Also the general variables are available, see [[#general_variables|Line]].
  *
- * [/text]
  */
 
 	const std::string& debug = (cfg["debug"]);
