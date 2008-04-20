@@ -8,7 +8,7 @@ Version 1.5.0-svn:
      * Minor cosmetic fixes
    * Northern Rebirth:
      * Major WML cleanup and optimisation
-	 * New respawn mechanism for white mages
+     * New respawn mechanism for white mages
    * greatly updated the scenario music playlists in The Rise of Wesnoth,
      Descent into Darkness and The South Guard
    * Liberty
@@ -30,6 +30,8 @@ Version 1.5.0-svn:
      and empty hexes (less frequent multi-turn moves blocked by a friend)
    * New full map screenshot feature (no default hotkey).
    * When trying to define an already used hotkey, now tell where it's used.
+   * More info in hotkey message (what key already use it and a warning if bad
+     choice for screenshot key)
  * language and i18n:
    * new translation: Croatian
    * updated translations: Chinese, Czech, Danish, Dutch, Finnish, French,
@@ -104,6 +106,8 @@ Version 1.5.0-svn:
    * Add multiple types for events
    * Add allow a simple [clear_variable] to clear multiple variables (separated
      by comma)
+   * Fixed bug #11286 "Sighted events not firing when turning off delay shroud
+     updates". Which also means that user may fire sighted events in a new way.
  * miscellaneous and bug fixes:
    * Changed logging to have less overhead when it is turned off (patch #1038)
    * Fixed error message for broken add-on campaigns (bug #11078)
