@@ -2186,6 +2186,8 @@ static int play_game(int argc, char** argv)
 			<< "                               by id.\n"
 			<< "  --turns=value                sets the number of turns. The default is \"50\".\n"
 			<< "  --exit-at-end                exit Wesnoth at end of scenario.\n"
+			<< "  --new-widgets                there is a new WIP widget toolkit this switch enables the new toolkit\n"
+			<< "                               (VERY EXPERIMENTAL don't file bug reports since most are known).\n"
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {
