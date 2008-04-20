@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-05 20:48+0200\n"
+"POT-Creation-Date: 2008-04-20 13:28+0200\n"
 "PO-Revision-Date: 2008-03-29 21:28+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -69,7 +69,7 @@ msgid "Underground"
 msgstr "Podzemí"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:45 data/core/about.cfg:146
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:46 data/core/about.cfg:146
 msgid "Artwork and Graphics"
 msgstr "Kresby a grafika"
 
@@ -247,122 +247,122 @@ msgid "French Translation"
 msgstr "Francouzský překlad"
 
 #. [about]
-#: data/core/about.cfg:1229
+#: data/core/about.cfg:1235
 msgid "Galician Translation"
 msgstr "Galicijský překlad"
 
 #. [about]
-#: data/core/about.cfg:1241
+#: data/core/about.cfg:1247
 msgid "German Translation"
 msgstr "Německý překlad"
 
 #. [about]
-#: data/core/about.cfg:1289
+#: data/core/about.cfg:1295
 msgid "Greek Translation"
 msgstr "Řecký překlad"
 
 #. [about]
-#: data/core/about.cfg:1320
+#: data/core/about.cfg:1326
 msgid "Hebrew Translation"
 msgstr "Hebrejský překlad"
 
 #. [about]
-#: data/core/about.cfg:1330
+#: data/core/about.cfg:1336
 msgid "Hungarian Translation"
 msgstr "Maďarský překlad"
 
 #. [about]
-#: data/core/about.cfg:1400
+#: data/core/about.cfg:1406
 msgid "Indonesian Translation"
 msgstr "Estonský překlad"
 
 #. [about]
-#: data/core/about.cfg:1407
+#: data/core/about.cfg:1413
 msgid "Italian Translation"
 msgstr "Italský překlad"
 
 #. [about]
-#: data/core/about.cfg:1442
+#: data/core/about.cfg:1448
 msgid "Japanese Translation"
 msgstr "Japonský překlad"
 
 #. [about]
-#: data/core/about.cfg:1465
+#: data/core/about.cfg:1471
 msgid "Korean Translation"
 msgstr "Korejský překlad"
 
 #. [about]
-#: data/core/about.cfg:1472
+#: data/core/about.cfg:1478
 msgid "Latin Translation"
 msgstr "Latinský překlad"
 
 #. [about]
-#: data/core/about.cfg:1479
+#: data/core/about.cfg:1485
 msgid "Lithuanian Translation"
 msgstr "Litevský překlad"
 
 #. [about]
-#: data/core/about.cfg:1486
+#: data/core/about.cfg:1492
 msgid "Norwegian Translation"
 msgstr "Norský překlad"
 
 #. [about]
-#: data/core/about.cfg:1508
+#: data/core/about.cfg:1514
 msgid "Polish Translation"
 msgstr "Polský překlad"
 
 #. [about]
-#: data/core/about.cfg:1557
+#: data/core/about.cfg:1563
 msgid "Portuguese Translation"
 msgstr "Portugalský překlad"
 
 #. [about]
-#: data/core/about.cfg:1564
+#: data/core/about.cfg:1570
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalský (brazilský) překlad"
 
 #. [about]
-#: data/core/about.cfg:1599
+#: data/core/about.cfg:1605
 msgid "Russian Translation"
 msgstr "Ruský překlad"
 
 #. [about]
-#: data/core/about.cfg:1635
+#: data/core/about.cfg:1641
 msgid "Serbian Translation"
 msgstr "Srbský překlad"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1656
 msgid "Slovak Translation"
 msgstr "Slovenský překlad"
 
 #. [about]
-#: data/core/about.cfg:1667
+#: data/core/about.cfg:1673
 msgid "Slovenian Translation"
 msgstr "Slovinský překlad"
 
 #. [about]
-#: data/core/about.cfg:1677
+#: data/core/about.cfg:1683
 msgid "Spanish Translation"
 msgstr "Španělský překlad"
 
 #. [about]
-#: data/core/about.cfg:1725
+#: data/core/about.cfg:1731
 msgid "Swedish Translation"
 msgstr "Švédský překlad"
 
 #. [about]
-#: data/core/about.cfg:1754
+#: data/core/about.cfg:1760
 msgid "Turkish Translation"
 msgstr "Turecký překlad"
 
 #. [about]
-#: data/core/about.cfg:1776
+#: data/core/about.cfg:1782
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský překlad (jižní Katalánie)"
 
 #. [about]
-#: data/core/about.cfg:1792
+#: data/core/about.cfg:1798
 msgid "Bots"
 msgstr "Boti"
 
@@ -667,11 +667,12 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
+#, fuzzy
 msgid ""
 "\n"
 "\n"
-"Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
-"modify their statistics."
+"Recruited units come with two random <ref>dst=..traits_section text=Traits</"
+"ref> which modify their statistics."
 msgstr ""
 "\n"
 "\n"
@@ -8295,15 +8296,15 @@ msgstr "Hra více hráčů nemá určené strany"
 msgid "Choose your side:"
 msgstr "Vyber si svoji stranu:"
 
-#: src/network.cpp:105
+#: src/network.cpp:107
 msgid "invalid network handle"
 msgstr "neplatné síťové jméno"
 
-#: src/network.cpp:138
+#: src/network.cpp:140
 msgid "Client disconnected"
 msgstr "Klient odpojen"
 
-#: src/network.cpp:166
+#: src/network.cpp:168
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
@@ -8313,11 +8314,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Server neodpověděl na ping po $timeout vteřin. Spojení bylo přerušeno."
 
-#: src/network.cpp:530
+#: src/network.cpp:542
 msgid "Could not add socket to socket set"
 msgstr "Nepodařilo se přidat soket do souboru soketů"
 
-#: src/network.cpp:543
+#: src/network.cpp:555
 msgid "Could not send initial handshake"
 msgstr "Nemohu poslat žádost o spojení"
 

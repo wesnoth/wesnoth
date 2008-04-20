@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-05 20:48+0200\n"
+"POT-Creation-Date: 2008-04-20 13:28+0200\n"
 "PO-Revision-Date: 2008-03-25 16:50+0100\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -68,7 +68,7 @@ msgid "Underground"
 msgstr "Sottosuolo"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:45 data/core/about.cfg:146
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:46 data/core/about.cfg:146
 msgid "Artwork and Graphics"
 msgstr "Lavoro artistico e grafica"
 
@@ -247,122 +247,122 @@ msgid "French Translation"
 msgstr "Traduzione in francese"
 
 #. [about]
-#: data/core/about.cfg:1229
+#: data/core/about.cfg:1235
 msgid "Galician Translation"
 msgstr "Traduzione in galiziano"
 
 #. [about]
-#: data/core/about.cfg:1241
+#: data/core/about.cfg:1247
 msgid "German Translation"
 msgstr "Traduzione in tedesco"
 
 #. [about]
-#: data/core/about.cfg:1289
+#: data/core/about.cfg:1295
 msgid "Greek Translation"
 msgstr "Traduzione in greco"
 
 #. [about]
-#: data/core/about.cfg:1320
+#: data/core/about.cfg:1326
 msgid "Hebrew Translation"
 msgstr "Traduzione in ebraico"
 
 #. [about]
-#: data/core/about.cfg:1330
+#: data/core/about.cfg:1336
 msgid "Hungarian Translation"
 msgstr "Traduzione in ungherese"
 
 #. [about]
-#: data/core/about.cfg:1400
+#: data/core/about.cfg:1406
 msgid "Indonesian Translation"
 msgstr "Traduzione in indonesiano"
 
 #. [about]
-#: data/core/about.cfg:1407
+#: data/core/about.cfg:1413
 msgid "Italian Translation"
 msgstr "Traduzione in italiano"
 
 #. [about]
-#: data/core/about.cfg:1442
+#: data/core/about.cfg:1448
 msgid "Japanese Translation"
 msgstr "Traduzione in giapponese"
 
 #. [about]
-#: data/core/about.cfg:1465
+#: data/core/about.cfg:1471
 msgid "Korean Translation"
 msgstr "Traduzione in coreano"
 
 #. [about]
-#: data/core/about.cfg:1472
+#: data/core/about.cfg:1478
 msgid "Latin Translation"
 msgstr "Traduzione in latino"
 
 #. [about]
-#: data/core/about.cfg:1479
+#: data/core/about.cfg:1485
 msgid "Lithuanian Translation"
 msgstr "Traduzione in lituano"
 
 #. [about]
-#: data/core/about.cfg:1486
+#: data/core/about.cfg:1492
 msgid "Norwegian Translation"
 msgstr "Traduzione in norvegese"
 
 #. [about]
-#: data/core/about.cfg:1508
+#: data/core/about.cfg:1514
 msgid "Polish Translation"
 msgstr "Traduzione in polacco"
 
 #. [about]
-#: data/core/about.cfg:1557
+#: data/core/about.cfg:1563
 msgid "Portuguese Translation"
 msgstr "Traduzione in portoghese"
 
 #. [about]
-#: data/core/about.cfg:1564
+#: data/core/about.cfg:1570
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traduzione in portoghese (brasiliano)"
 
 #. [about]
-#: data/core/about.cfg:1599
+#: data/core/about.cfg:1605
 msgid "Russian Translation"
 msgstr "Traduzione in russo"
 
 #. [about]
-#: data/core/about.cfg:1635
+#: data/core/about.cfg:1641
 msgid "Serbian Translation"
 msgstr "Traduzione in serbo"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1656
 msgid "Slovak Translation"
 msgstr "Traduzione in slovacco"
 
 #. [about]
-#: data/core/about.cfg:1667
+#: data/core/about.cfg:1673
 msgid "Slovenian Translation"
 msgstr "Traduzione in sloveno"
 
 #. [about]
-#: data/core/about.cfg:1677
+#: data/core/about.cfg:1683
 msgid "Spanish Translation"
 msgstr "Traduzione in spagnolo"
 
 #. [about]
-#: data/core/about.cfg:1725
+#: data/core/about.cfg:1731
 msgid "Swedish Translation"
 msgstr "Traduzione in svedese"
 
 #. [about]
-#: data/core/about.cfg:1754
+#: data/core/about.cfg:1760
 msgid "Turkish Translation"
 msgstr "Traduzione in turco"
 
 #. [about]
-#: data/core/about.cfg:1776
+#: data/core/about.cfg:1782
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traduzione in valenciano (catalano del sud)"
 
 #. [about]
-#: data/core/about.cfg:1792
+#: data/core/about.cfg:1798
 msgid "Bots"
 msgstr "Automazioni"
 
@@ -678,11 +678,12 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
+#, fuzzy
 msgid ""
 "\n"
 "\n"
-"Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
-"modify their statistics."
+"Recruited units come with two random <ref>dst=..traits_section text=Traits</"
+"ref> which modify their statistics."
 msgstr ""
 "\n"
 "\n"
@@ -8416,15 +8417,15 @@ msgstr "Nessuna fazione per il gioco in rete trovata"
 msgid "Choose your side:"
 msgstr "Scegli il tuo esercito:"
 
-#: src/network.cpp:105
+#: src/network.cpp:107
 msgid "invalid network handle"
 msgstr "handle di rete non valido"
 
-#: src/network.cpp:138
+#: src/network.cpp:140
 msgid "Client disconnected"
 msgstr "Client disconnesso"
 
-#: src/network.cpp:166
+#: src/network.cpp:168
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
@@ -8432,11 +8433,11 @@ msgstr[0] ""
 msgstr[1] ""
 "Nessun ping del server negli ultimi $timeout secondi. Connessione scaduta."
 
-#: src/network.cpp:530
+#: src/network.cpp:542
 msgid "Could not add socket to socket set"
 msgstr "Impossibile aggiungere un socket"
 
-#: src/network.cpp:543
+#: src/network.cpp:555
 msgid "Could not send initial handshake"
 msgstr "Impossibile inviare l'handshake iniziale"
 

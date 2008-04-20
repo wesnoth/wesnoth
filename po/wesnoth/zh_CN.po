@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-05 20:48+0200\n"
+"POT-Creation-Date: 2008-04-20 13:28+0200\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -64,7 +64,7 @@ msgid "Underground"
 msgstr "地下"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:45 data/core/about.cfg:146
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:46 data/core/about.cfg:146
 msgid "Artwork and Graphics"
 msgstr "艺术与图像设计 "
 
@@ -241,122 +241,122 @@ msgid "French Translation"
 msgstr "法语"
 
 #. [about]
-#: data/core/about.cfg:1229
+#: data/core/about.cfg:1235
 msgid "Galician Translation"
 msgstr "巴伦西亚语"
 
 #. [about]
-#: data/core/about.cfg:1241
+#: data/core/about.cfg:1247
 msgid "German Translation"
 msgstr "德语"
 
 #. [about]
-#: data/core/about.cfg:1289
+#: data/core/about.cfg:1295
 msgid "Greek Translation"
 msgstr "希腊语"
 
 #. [about]
-#: data/core/about.cfg:1320
+#: data/core/about.cfg:1326
 msgid "Hebrew Translation"
 msgstr "希伯来语"
 
 #. [about]
-#: data/core/about.cfg:1330
+#: data/core/about.cfg:1336
 msgid "Hungarian Translation"
 msgstr "匈牙利语"
 
 #. [about]
-#: data/core/about.cfg:1400
+#: data/core/about.cfg:1406
 msgid "Indonesian Translation"
 msgstr "印度尼西亚语"
 
 #. [about]
-#: data/core/about.cfg:1407
+#: data/core/about.cfg:1413
 msgid "Italian Translation"
 msgstr "意大利语"
 
 #. [about]
-#: data/core/about.cfg:1442
+#: data/core/about.cfg:1448
 msgid "Japanese Translation"
 msgstr "日语"
 
 #. [about]
-#: data/core/about.cfg:1465
+#: data/core/about.cfg:1471
 msgid "Korean Translation"
 msgstr "韩语"
 
 #. [about]
-#: data/core/about.cfg:1472
+#: data/core/about.cfg:1478
 msgid "Latin Translation"
 msgstr "拉丁语"
 
 #. [about]
-#: data/core/about.cfg:1479
+#: data/core/about.cfg:1485
 msgid "Lithuanian Translation"
 msgstr "立陶宛语"
 
 #. [about]
-#: data/core/about.cfg:1486
+#: data/core/about.cfg:1492
 msgid "Norwegian Translation"
 msgstr "挪威语"
 
 #. [about]
-#: data/core/about.cfg:1508
+#: data/core/about.cfg:1514
 msgid "Polish Translation"
 msgstr "波兰语"
 
 #. [about]
-#: data/core/about.cfg:1557
+#: data/core/about.cfg:1563
 msgid "Portuguese Translation"
 msgstr "葡萄牙语"
 
 #. [about]
-#: data/core/about.cfg:1564
+#: data/core/about.cfg:1570
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙语(巴西)"
 
 #. [about]
-#: data/core/about.cfg:1599
+#: data/core/about.cfg:1605
 msgid "Russian Translation"
 msgstr "俄语"
 
 #. [about]
-#: data/core/about.cfg:1635
+#: data/core/about.cfg:1641
 msgid "Serbian Translation"
 msgstr "塞尔维亚语"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1656
 msgid "Slovak Translation"
 msgstr "斯洛伐克语"
 
 #. [about]
-#: data/core/about.cfg:1667
+#: data/core/about.cfg:1673
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚语"
 
 #. [about]
-#: data/core/about.cfg:1677
+#: data/core/about.cfg:1683
 msgid "Spanish Translation"
 msgstr "西班牙语"
 
 #. [about]
-#: data/core/about.cfg:1725
+#: data/core/about.cfg:1731
 msgid "Swedish Translation"
 msgstr "瑞典语"
 
 #. [about]
-#: data/core/about.cfg:1754
+#: data/core/about.cfg:1760
 msgid "Turkish Translation"
 msgstr "土耳其语"
 
 #. [about]
-#: data/core/about.cfg:1776
+#: data/core/about.cfg:1782
 msgid "Valencian (southern Catalan) Translation"
 msgstr " (西班牙)南加泰罗尼亚语"
 
 #. [about]
-#: data/core/about.cfg:1792
+#: data/core/about.cfg:1798
 msgid "Bots"
 msgstr "电脑"
 
@@ -640,11 +640,12 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
+#, fuzzy
 msgid ""
 "\n"
 "\n"
-"Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
-"modify their statistics."
+"Recruited units come with two random <ref>dst=..traits_section text=Traits</"
+"ref> which modify their statistics."
 msgstr ""
 "\n"
 "\n"
@@ -7690,25 +7691,25 @@ msgstr "没发现多人对战阵营"
 msgid "Choose your side:"
 msgstr "选择阵营："
 
-#: src/network.cpp:105
+#: src/network.cpp:107
 msgid "invalid network handle"
 msgstr "无效网络句柄"
 
-#: src/network.cpp:138
+#: src/network.cpp:140
 msgid "Client disconnected"
 msgstr "客户端断开连接"
 
-#: src/network.cpp:166
+#: src/network.cpp:168
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] "至少$timeout 秒都没能与服务器取得联系。连接超时。"
 msgstr[1] "至少$timeout秒都没能与服务器取得联系。连接超时。"
 
-#: src/network.cpp:530
+#: src/network.cpp:542
 msgid "Could not add socket to socket set"
 msgstr "无法向套接字(socket)集合中添加游戏要用的套接字"
 
-#: src/network.cpp:543
+#: src/network.cpp:555
 msgid "Could not send initial handshake"
 msgstr "不能发送初始化连接信息"
 

@@ -18,11 +18,11 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd "Vi?eigra?ki mre?ni domar ?Boja za Vesnot?"
+.TH WESNOTHD 6 2007 wesnothd "Višeigrački mrežni domar „Boja za Vesnot“"
 .
 .SH IME
 .
-wesnothd ? vi?eigra?ki mre?ni domar ?Boja za \fBVesnot\fP?
+wesnothd — višeigrački mrežni domar „Boja za \fBVesnot\fP“
 .
 .SH PREGLED
 .
@@ -33,7 +33,7 @@ wesnothd ? vi?eigra?ki mre?ni domar ?Boja za \fBVesnot\fP?
 .
 .SH OPIS
 .
-Upravlja vi?eigra?kim sesijama ?Boja za Vesnot?. Pogledajte
+Upravlja višeigračkim sesijama „Boja za Vesnot“. Pogledajte
 http://www.wesnoth.org/wiki/ServerAdministration za naredbe koje server
 prihvata preko klijenta ili soketa.
 .
@@ -42,17 +42,17 @@ prihvata preko klijenta ili soketa.
 .TP 
 \fB\-c\ \fP\fIputanja\fP\fB,\ \-\-config\fP\fI\ putanja\fP
 kazuje domaru gde se nalazi postavna datoteka. Za sintaksu pogledajte
-odeljak \fBPOSTAVA SERVERA\fP ispod. Postavu mo?ete ponovo u?itati slanjem
+odeljak \fBPOSTAVA SERVERA\fP ispod. Postavu možete ponovo učitati slanjem
 SIGHUP serverskom procesu.
 .TP 
 \fB\-d, \-\-daemon\fP
-pokre?e wesnothd kao domar.
+pokreće wesnothd kao domar.
 .TP 
 \fB\-h, \-\-help\fP
-govori vam ?ta ?ine opcije komandne linije.
+govori vam šta čine opcije komandne linije.
 .TP 
 \fB\-\-log\-\fP\fInivo\fP\fB=\fP\fIdomen1\fP\fB,\fP\fIdomen2\fP\fB,\fP\fI...\fP
-postavlja nivo ozbiljnosti domena bele?enja. \fBall\fP se mo?e upotrebiti za
+postavlja nivo ozbiljnosti domena beleženja. \fBall\fP se može upotrebiti za
 poklapanje svih domena, a dostupni su: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Podrazumevano se koristi \fBerror\fP, osim za domen \fBserver\fP gde
 \fBinfo\fP.
 .TP 
@@ -61,43 +61,43 @@ vezuje server za navedeni port. Ako se port ne navede, podrazumevano se
 koristi \fB15000\fP.
 .TP 
 \fB\-t\ \fP\fIbroj\fP\fB,\ \-\-threads\fP\fI\ broj\fP
-postavlja najve?i broj radnih niti na ?ekanju za mre?ni U/I (podrazumevano:
-\fB5\fP,\ najvi?e:\ \fB30\fP).
+postavlja najveći broj radnih niti na čekanju za mrežni U/I (podrazumevano:
+\fB5\fP,\ najviše:\ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fIbroj\fP\fB,\ \-\-max\-threads\fP\fI\ broj\fP
-postavlja najve?i broj radnih niti koje mogu biti stvorene; ako se zada
-\fB0\fP, nema ograni?enja (podrazumevano: \fB0\fP).
+postavlja najveći broj radnih niti koje mogu biti stvorene; ako se zada
+\fB0\fP, nema ograničenja (podrazumevano: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
 prikazuje broj verzije i izlazi.
 .TP 
 \fB\-v, \-\-verbose\fP
-uklju?uje ispravlja?ko bele?enje.
+uključuje ispravljačko beleženje.
 .
 .SH "POSTAVA SERVERA"
 .
-.SS "Op?ta sintaksa je:"
+.SS "Opšta sintaksa je:"
 .
 .P
 [\fIoznaka\fP]
 .IP
-klju?="\fIvrednost\fP"
+ključ="\fIvrednost\fP"
 .IP
-klju?="\fIvrednost\fP,\fIvrednost\fP,..."
+ključ="\fIvrednost\fP,\fIvrednost\fP,..."
 .P
 [/\fIoznaka\fP]
 .
-.SS "Globalni klju?evi:"
+.SS "Globalni ključevi:"
 .
 .TP 
 \fBconnections_allowed\fP
-broj dozvoljenih veza sa iste IP adrese, \fB0\fP zna?i bezbroj (podrazumevno:
+broj dozvoljenih veza sa iste IP adrese, \fB0\fP znači bezbroj (podrazumevno:
 \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-imena/nadimci koje server ne prihvata. Prihvataju se ?*? i ??? kao d?okeri
-(pogledajte \fBglob\fP(7) za vi?e detalja). Podrazumevane vrednosti, koje se
-koriste ako se ni?ta ne zada, su:
+imena/nadimci koje server ne prihvata. Prihvataju se ‘*’ i ‘?’ kao džokeri
+(pogledajte \fBglob\fP(7) za više detalja). Podrazumevane vrednosti, koje se
+koriste ako se ništa ne zada, su:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
@@ -112,12 +112,12 @@ vremenski period u sekundama koji se razmatra za otkrivanje poplave poruka
 poruka dana
 .TP 
 \fBpasswd\fP
-lozinka za sticanje administratorskih ovla??enja. Obi?no po?inje sa ?admin 
-?
+lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa ‘admin 
+’
 .TP 
 \fBversions_accepted\fP
 Zapetama razdvojen spisak niski verzija koje server prihvata. Prihvataju se
-?*? i ??? kao d?okeri (podrazumevana je verzija klijenta koja odgovara
+‘*’ i ‘?’ kao džokeri (podrazumevana je verzija klijenta koja odgovara
 verziji servera)
 .br
 Primer: \fBversions_accepted="*"\fP prihvata bilo koju nisku verzije.
@@ -125,7 +125,7 @@ Primer: \fBversions_accepted="*"\fP prihvata bilo koju nisku verzije.
 .SS "Globalne oznake:"
 .
 .P
-\fB[redirect]\fP oznaka za navo?enje servera na koji se preusmeravaju neke
+\fB[redirect]\fP oznaka za navođenje servera na koji se preusmeravaju neke
 verzije klijenta
 .RS
 .TP 
@@ -136,13 +136,13 @@ adresa servera na koji se preusmerava
 port na koji se povezuje
 .TP 
 \fBversion\fP
-zapetama razdvojen spisak verzija koje se preusmeravaju. Pona?a se isto kao
-i \fBversions_accepted\fP u pogledu d?okera
+zapetama razdvojen spisak verzija koje se preusmeravaju. Ponaša se isto kao
+i \fBversions_accepted\fP u pogledu džokera
 .RE
 .P
-\fB[proxy]\fP oznaka koja govori serveru da se pona?a kao posrednik i
-prosle?uje zahteve povezanih klijenata na odre?eni server. Prihvata iste
-klju?eve kao i \fB[redirect]\fP
+\fB[proxy]\fP oznaka koja govori serveru da se ponaša kao posrednik i
+prosleđuje zahteve povezanih klijenata na određeni server. Prihvata iste
+ključeve kao i \fB[redirect]\fP
 .
 .SH AUTOR
 .
@@ -152,7 +152,7 @@ Nils Knojper (Nils Kneuper) <crazy\-ivanovic@gmx.net>, ott
 stranu prvobitno je napisao Siril Butors (Cyril Bouthors)
 <cyril@bouthors.org>.
 .br
-Posetite zvani?nu doma?u stranu: http://www.wesnoth.org/
+Posetite zvaničnu domaću stranu: http://www.wesnoth.org/
 .
 .SH "AUTORSKA PRAVA"
 .
@@ -160,9 +160,9 @@ Autorska prava \(co 2003\-2007 Dejvid Vajt (David White)
 <davidnwhite@verizon.net>.
 .br
 Ovo je slobodan softver; licenciran je pod uslovima OJL verzije 2  (GPLv2),
-koju izdaje Zadu?bina za slobodni softver. Nema BILO KAKVE GARANCIJE; ?ak ni
-za KOMERCIJALNU VREDNOST ili ISPUNJAVANJE ODRE?ENE POTREBE.
+koju izdaje Zadužbina za slobodni softver. Nema BILO KAKVE GARANCIJE; čak ni
+za KOMERCIJALNU VREDNOST ili ISPUNJAVANJE ODREĐENE POTREBE.
 .
-.SH "POGLEDATI JO?"
+.SH "POGLEDATI JOŠ"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
