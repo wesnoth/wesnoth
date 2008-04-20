@@ -941,6 +941,12 @@ unit_type_data* unit_type_data::instance_ = NULL;
 unit_type_data::unit_type_data()
 {}
 
+unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper()
+{
+    unit_cfg_ = NULL;
+    dummy_unit_map_.insert(std::pair<const std::string,unit_type>("dummy_unit", unit_type()));
+}
+
 void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
 {
     DBG_UT << "unit_type_data::set_config, cfg:\n" << cfg;
@@ -1038,13 +1044,10 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
 
     //This might happen if units of another era are requested (for example for savegames)
     if (itor == types_.end()){
-        itor == types_.find("dummy_unit");
-        if (itor != types_.end())
-            return itor;
-        else{
-            types_.insert(std::pair<std::string, unit_type>("dummy_unit", unit_type()) );
-            return types_.find("dummy_unit");
-        }
+        lg::info(lg::config) << "key not found, returning dummy_unit\n";
+        itor = dummy_unit_map_.find("dummy_unit");
+        assert(itor != dummy_unit_map_.end());
+        return itor;
     }
 
     //check if the unit_type is constructed and build it if necessary

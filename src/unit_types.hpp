@@ -324,7 +324,7 @@ public:
             void build_all(unit_type::BUILD_STATUS status) const;
 
         private:
-            unit_type_map_wrapper() { unit_cfg_ = NULL; }
+            unit_type_map_wrapper();
             unit_type_map_wrapper(unit_type_map_wrapper& /*utf*/) {}
 
             void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
@@ -343,6 +343,7 @@ public:
             void add_advancement(const config& cfg, unit_type& to_unit) const;
 
             mutable unit_type_map types_;
+            mutable unit_type_map dummy_unit_map_;
             movement_type_map movement_types_;
             race_map races_;
             config::child_list unit_traits_;

@@ -1607,10 +1607,6 @@ private:
 		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i) {
 			std::stringstream row;
 
-			// dummy unit is never build, so skip it.
-			if (i->first == "dummy_unit")
-				continue;
-
             unit_type_data::types().find(i->first, unit_type::WITHOUT_ANIMATIONS);
 
 			std::string race;
@@ -1804,7 +1800,7 @@ private:
 	{
 		gui_->add_chat_message(time, speaker, side, message, type, false);
 	}
-	
+
 	//simple command args parser, separated from command_handler for clarity.
 	//a word begins with a nonspace
 	//n-th arg is n-th word up to the next space
@@ -1830,7 +1826,7 @@ private:
 				args.push_back(0);
 				args_end = false;
 			}
-			
+
 			const std::string& get_str() const
 			{
 				return str_;
@@ -1860,7 +1856,7 @@ private:
 		private:
 			cmd_arg_parser& operator=(const cmd_arg_parser&);
 			cmd_arg_parser(const cmd_arg_parser&);
-			void advance_to_arg(unsigned n) const 
+			void advance_to_arg(unsigned n) const
 			{
 				while (n < args.size() && !args_end) {
 					size_t first_space = str_.find_first_of(' ', args.back());
@@ -1876,9 +1872,9 @@ private:
 			mutable std::vector<size_t> args;
 			mutable bool args_end;
 	};
-	
+
 	//A helper class template with a slim public interface
-	//This represents a map of strings to void()-member-function-of-Worker-pointers 
+	//This represents a map of strings to void()-member-function-of-Worker-pointers
 	//with all the common functionality like general help, command help and aliases
 	//Usage (of a derived class): Derived(specific-arguments) d; d.dispatch(command);
 	//Derived classes should override virtual functions where noted.
@@ -1886,7 +1882,7 @@ private:
 	//i.e. class X : public map_command_handler<X>
 	//To add a new command in a derived class:
 	//  * add a new private void function() to the derived class
-	//  * add it to the function map in init_map there, setting flags like 
+	//  * add it to the function map in init_map there, setting flags like
 	//    "D" for debug only (checking the flag is also done in the derived class)
 	//  * remember to add some help and/or usage information in init_map()
 	template <class Worker>
@@ -1900,11 +1896,11 @@ private:
 				std::string help; //long help text
 				std::string usage; //only args info
 				std::string flags;
-				explicit command(command_handler h, const std::string help="", 
+				explicit command(command_handler h, const std::string help="",
 					const std::string& usage="", const std::string flags="")
 				: handler(h), help(help), usage(usage), flags(flags)
 				{
-				}								
+				}
 				bool has_flag(const char f) const
 				{
 					return flags.find(f) != flags.npos;
@@ -1939,7 +1935,7 @@ private:
 				if (empty()) {
 					init_map_default();
 					init_map();
-				}				
+				}
 				if (get_cmd().empty()) {
 					return;
 				}
@@ -1952,9 +1948,9 @@ private:
 					print("help", "Unknown command (" + get_cmd() + "), try " + cmd_prefix_ + "help "
 						"for a list of available commands");
 				}
-			}			
-		protected:						
-			void init_map_default() 
+			}
+		protected:
+			void init_map_default()
 			{
 				register_command("help", &map_command_handler<Worker>::help,
 					"Command list and help.", "[command]");
@@ -1962,7 +1958,7 @@ private:
 			//derived classes initialize the map overriding this function
 			virtual void init_map() = 0;
 			//overriden in derived classes to actually print the messages somwehere
-			virtual void print(const std::string& title, const std::string& message) = 0;			
+			virtual void print(const std::string& title, const std::string& message) = 0;
 			//should be overriden in derived classes if the commands have flags
 			//this should return a string describing what all the flags mean
 			virtual std::string get_flags_description() const
@@ -1976,7 +1972,7 @@ private:
 			}
 			//this should be overriden if e.g. flags are used to control command
 			//availability. Return false if the command should not be executed by dispach()
-			virtual bool is_enabled(const command& /*c*/) const 
+			virtual bool is_enabled(const command& /*c*/) const
 			{
 				return true;
 			}
@@ -2025,7 +2021,7 @@ private:
 				}
 				print("help", "Available commands " + get_flags_description() + ":");
 				print("help", ss.str());
-				print("help", "Type " + cmd_prefix_ + "help <command> for more info");				
+				print("help", "Type " + cmd_prefix_ + "help <command> for more info");
 			}
 			//returns true if the command exists.
 			bool help_command(const std::string& acmd)
@@ -2065,7 +2061,7 @@ private:
 				cmd_prefix_ = value;
 			}
 			virtual void register_command(const std::string& cmd,
-				command_handler h, const std::string& help="", 
+				command_handler h, const std::string& help="",
 				const std::string& usage="", const std::string& flags="")
 			{
 				command c = command(h, help, usage, flags);
@@ -2101,19 +2097,19 @@ private:
 			static command_map command_map_;
 			static command_alias_map command_alias_map_;
 			static bool help_on_unknown_;
-			static std::string cmd_prefix_;									
+			static std::string cmd_prefix_;
 	};
-	
+
 	//static member definitions
 	template <class Worker>
 	typename map_command_handler<Worker>::command_map map_command_handler<Worker>::command_map_;
-	
+
 	template <class Worker>
 	typename map_command_handler<Worker>::command_alias_map map_command_handler<Worker>::command_alias_map_;
-	
+
 	template <class Worker>
 	bool map_command_handler<Worker>::help_on_unknown_ = true;
-	
+
 	template <class Worker>
 	std::string map_command_handler<Worker>::cmd_prefix_;
 
@@ -2126,7 +2122,7 @@ private:
 			: map(), chat_handler_(chathandler), allies_only_(allies_only)
 			{
 			}
-			
+
 		protected:
 			void do_emote();
 			void do_network_send();
@@ -2144,7 +2140,7 @@ private:
 			}
 			void init_map()
 			{
-				set_cmd_prefix("/");				
+				set_cmd_prefix("/");
 				register_command("query", &chat_command_handler::do_network_send,
 					"");
 				register_command("ban", &chat_command_handler::do_network_send,
@@ -2157,10 +2153,10 @@ private:
 					"", "");
 				register_command("ping", &chat_command_handler::do_network_send,
 					"", "<nick>");
-				register_command("emote", &chat_command_handler::do_emote, 
+				register_command("emote", &chat_command_handler::do_emote,
 					"Send an emotion or personal action in chat.", "<message>");
 				register_alias("emote", "me");
-				register_command("whisper", &chat_command_handler::do_whisper, 
+				register_command("whisper", &chat_command_handler::do_whisper,
 					"Sends a private message. "
 					"You can't send messages to players that control "
 					"any side in a game.", "<nick> <message>");
@@ -2168,15 +2164,15 @@ private:
 				register_alias("whisper", "m");
 				register_command("log", &chat_command_handler::do_log,
 					"Change the log level of a log domain.", "<level> <domain>");
-				register_command("ignore", &chat_command_handler::do_ignore, 
+				register_command("ignore", &chat_command_handler::do_ignore,
 					"Add a nick to your ignores list.", "<nick>");
-				register_command("friend", &chat_command_handler::do_friend, 
+				register_command("friend", &chat_command_handler::do_friend,
 					"Add a nick to your friends list.", "<nick>");
-				register_command("remove", &chat_command_handler::do_remove, 
+				register_command("remove", &chat_command_handler::do_remove,
 					"Remove a nick from your ignores or friends list.", "<nick>");
-				register_command("remove-all", &chat_command_handler::do_clear, 
+				register_command("remove-all", &chat_command_handler::do_clear,
 					"Clear your complete ignores and friends list.");
-				register_command("list", &chat_command_handler::do_display, 
+				register_command("list", &chat_command_handler::do_display,
 					"Show your ignores and friends list.");
 				register_alias("list", "display");
 			}
@@ -2184,7 +2180,7 @@ private:
 			chat_handler& chat_handler_;
 			bool allies_only_;
 	};
-	
+
 	//command handler for user :commands. Also understands all chat commands
 	//via inheritance. This complicates some things a bit.
 	class console_handler : public map_command_handler<console_handler>, private chat_command_handler
@@ -2204,7 +2200,7 @@ private:
 			//chat_command_handler's init_map() and hanlers will end up calling these.
 			//this makes sure the commands end up in our map
 			virtual void register_command(const std::string& cmd,
-				chat_command_handler::command_handler h, const std::string& help="", 
+				chat_command_handler::command_handler h, const std::string& help="",
 				const std::string& usage="", const std::string& flags="")
 			{
 				chmap::register_command(cmd, h, help, usage, flags);
@@ -2216,7 +2212,7 @@ private:
 				const std::string& cmd)
 			{
 				chmap::register_alias(to_cmd, cmd);
-			}			
+			}
 			virtual std::string get_arg(unsigned i) const
 			{
 				return chmap::get_arg(i);
@@ -2228,14 +2224,14 @@ private:
 			virtual std::string get_data(unsigned n = 1) const
 			{
 				return chmap::get_data(n);
-			}									
-			
+			}
+
 			//these are needed to avoid ambiguities introduced by inheriting from console_command_handler
 			using chmap::register_command;
 			using chmap::register_alias;
 			using chmap::help;
 			using chmap::is_enabled;
-			
+
 			void do_refresh();
 			void do_droid();
 			void do_theme();
@@ -2305,7 +2301,7 @@ private:
 				register_command("save_quit", &console_handler::do_save_quit,
 					"Save and quit.");
 				register_alias("save_quit", "wq");
-				register_command("ignore_replay_errors", &console_handler::do_ignore_replay_errors, 
+				register_command("ignore_replay_errors", &console_handler::do_ignore_replay_errors,
 					"Ignore replay errors.");
 				register_command("nosaves", &console_handler::do_nosaves,
 					"Do not autosave.");
@@ -2440,7 +2436,7 @@ private:
 		cwhisper["message"] = get_data(2);
 		cwhisper["sender"] = preferences::login();
 		data.add_child("whisper", cwhisper);
-		chat_handler_.add_chat_message(time(NULL), 
+		chat_handler_.add_chat_message(time(NULL),
 			"whisper to " + cwhisper["receiver"], 0,
 			cwhisper["message"], game_display::MESSAGE_PRIVATE);
 		network::send_data(data, 0, true);
@@ -2449,7 +2445,7 @@ private:
 	{
 		chat_handler_.change_logging(get_data());
 	}
-	
+
 	void chat_command_handler::do_ignore()
 	{
 		if (get_arg(1).empty()) {
@@ -2768,7 +2764,7 @@ private:
 		to_show.show();
 	}
 	void console_handler::do_unit() {
-		// prevent SIGSEGV due to attempt to set HP during a fight 
+		// prevent SIGSEGV due to attempt to set HP during a fight
 		if (events::commands_disabled > 0)
 			return;
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
