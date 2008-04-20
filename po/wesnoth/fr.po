@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-20 13:28+0200\n"
-"PO-Revision-Date: 2008-04-06 14:58+0100\n"
-"Last-Translator: Damien J <guydelatourATgloireetpouvoir.com>\n"
+"PO-Revision-Date: 2008-04-20 15:52+0100\n"
+"Last-Translator: Damien J <guydelatourATgloireetpouvoirPTcom>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -535,11 +535,10 @@ msgid ""
 "will be shown explaining each item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"Pendant le jeu, sachez qu'en glissant le curseur sur différents éléments du "
-"jeu, comme par exemple les informations affichées dans le panneau d'état à "
-"droite, une brève explication apparaîtra. Cela est très utile quand vous "
-"voyez pour la première fois une nouvelle <ref>dst=abilities text='capacité'</"
-"ref>."
+"En cours de partie, une brève explication apparaîtra si vous glissez le "
+"curseur sur différents éléments du jeu, comme par exemple dans le panneau "
+"d'état, à droite. Cela est très utile quand vous voyez pour la première fois "
+"une nouvelle <ref>dst=abilities text='capacité'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:143
@@ -669,7 +668,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -678,8 +676,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités recrutées arrivent avec deux <ref>dst=traits text='traits'</ref> "
-"aléatoires qui modifient leurs caractéristiques."
+"Les unités recrutées arrivent avec deux <ref>dst=..traits_section "
+"text='traits'</ref> aléatoires qui modifient leurs caractéristiques."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -1121,8 +1119,8 @@ msgstr ""
 "Dans Wesnoth, il y a trois types de dégâts habituellement associés aux "
 "attaques physiques : tranchants, perforants et contondants. Trois autres "
 "types de dégâts sont communément associés aux attaques enchantées : feu, "
-"froid et sacrés. La résistance des différentes unités peut modifier la "
-"quantité de dégâts reçus suite aux différents types d'attaques."
+"froid et sacrés. La résistance des différentes unités modifie la quantité de "
+"dégâts reçus suite aux différents types d'attaques."
 
 #. [topic]
 #: data/core/help.cfg:240
@@ -1430,7 +1428,6 @@ msgstr ""
 "pouvez conserver de l'or d'un scénario au suivant. Il y a deux aspects à "
 "cela : le revenu et l'entretien."
 
-# Damien : pour les calculs qui suivent, j'ai utilisé les chiffres arabes (2, 10, 12...) pour plus de clarté.
 #. [topic]
 #: data/core/help.cfg:295
 msgid ""
@@ -5490,82 +5487,88 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:18
 msgid "$name's Bridge,$name's Crossing"
-msgstr "Pont de $name,Croisée de $name"
+msgstr "Pont de $name|,Croisée de $name|"
 
 # Noms de routes
 #. [language]
 #: data/hardwired/english.cfg:19
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "Route $name,Passe de $name,Chemin de $name,Sente de $name"
+msgstr ""
+"Route $name|,Passe de $name|,Chemin de $name|,Sente de $name|,Sentier de "
+"$name|,Voie de $name|,Traverse de $name|"
 
 # Noms de rivières
 #. [language]
 #: data/hardwired/english.cfg:20
 msgid "$name River,River $name"
-msgstr " $name|-la-rivière,Rivière $name"
+msgstr "$name|-la-rivière,Rivière $name,$name|rupt"
 
 # Noms de forêts
 #. [language]
 #: data/hardwired/english.cfg:21
 msgid "$name Forest,$name's Forest"
-msgstr "Forêt $name,Bois de $name,$name|-la-forêt,$name|-sous-bois"
+msgstr ""
+"Forêt $name|,Bois de $name|,$name|-la-forêt,$name|-sous-bois,$name|bosc"
 
 # Noms de lacs
 #. [language]
 #: data/hardwired/english.cfg:22
 msgid "$name Lake"
-msgstr "Lac $name,Étang $name,La mare $name"
+msgstr "Lac $name|,Étang $name|,Mare-$name|,$name|mare,$name|-les-Flots"
 
 # Noms de villages
 #. [language]
 #: data/hardwired/english.cfg:23
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
-"Saint-$name,Ker $name,$name le bas,$name le haut,$name|ville,$name|bourg"
+"Saint-$name|,Ker $name|,$name|-le-Bas,$name|-le-Haut,$name|ville,$name|bourg,"
+"$name|ange,$name|ey,$name|ac,Castel$name|,Château-$name|"
 
 # Noms de villages avec un lac
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name|harbor,$name|port"
-msgstr "Port $name,$name-sur-mer"
+msgstr "Port $name|,$name|-sur-Mer,Fos-sur-$name|,Baie-de-$name|"
 
 # Noms de villages avec une rivière
 #. [language]
 #: data/hardwired/english.cfg:25
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
-"Ker $name,Bord $name,La-croix-saint-$name,Font$river,Rive-de-$river,La-croix-"
-"sur-$river,$name|-le-port,Val-de-$river,$name|-sur-$river"
+"Ker$name|,Bord-$name|,La Croix-Saint-$name|,Font$river|,Rive-de-$river|,"
+"Croix-sur-$river|,$name|-le-Port,Val de $river,$name|-sur-$river|"
 
 # Noms de villages avec une rivière et un pont
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "Pont-de-$river,Bac-sur-$river,Ker$name,Saint-$name|-du-pont"
+msgstr ""
+"Pont-de-$river|,Bac-sur-$river|,Saint-$name|-du-pont, Le Pont de $river|"
 
 # Noms de villages dans des plaines
 #. [language]
 #: data/hardwired/english.cfg:27
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
-"Ker$name,$name le bas,$name le haut,$name| champs,Saint-$name|-des-champs,"
-"Plou$name,Loc$name,$name|ville,$name|bourg"
+"Ker$name|,$name|-le-Bas,$name|-le-Haut,$name|champs, $name|champ,Saint-"
+"$name|-des-Champs,Plou$name,Loc$name,$name|ville,$name|bourg,$name|pré"
 
 # Noms de villages dans une forêt
 #. [language]
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
-"Ker$name,$name le bas,$name le haut,Saint-$name|-du-bois,Forêt de $name,"
-"Saint-$name|-les-chênes"
+"Ker$name|,$name|-le-Bas,$name|-le-Haut,Saint-$name|-du-Bois,Forêt-de-$name|,"
+"Saint-$name|-les-Chênes,$name|ange,$name|ey,$name|ac"
 
 # Noms de villages dans des collines
 #. [language]
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
-"Ker$name,Saint-$name,$name le haut,$name|-du-mont,$name|-la-côte,Les hauts "
-"de $name,Les dessus de $name"
+"Ker$name|,Saint-$name|,$name|-le-Haut,$name|-du-mont,$name|-la-Côte,Les "
+"Hauts-de-$name|,Les Dessus-de-$name|,$name|ange,$name|ey,$name|ac,Roc$name|,"
+"$name|-sur-Crête, Col$name|,Castel$name|"
 
 # Noms de villages dans des montagnes
 #. [language]
@@ -5573,8 +5576,8 @@ msgstr ""
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"Saint-$name|-du-mont,$name le haut,Le-mont-saint-$name,Haute$name,L'aiguille "
-"du $name,Le pic du $name"
+"Saint-$name|-du-Mont,$name|-le-Haut,Mont-Saint-$name|,Haute$name|,Aiguille "
+"du $name|,Pic du name|,Col du $name|"
 
 #. [language]
 #: data/hardwired/english.cfg:33
@@ -5861,8 +5864,8 @@ msgid ""
 "a powerful and experienced army."
 msgstr ""
 "Vous pouvez utiliser des unités d'un scénario précédent en sélectionnant "
-"« Rappeler » dans le menu « Actions ». En rappelant toujours les mêmes unités "
-"vous pouvez constituer une armée expérimentée et puissante."
+"« Rappeler » dans le menu « Actions ». En rappelant toujours les mêmes "
+"unités vous pouvez constituer une armée expérimentée et puissante."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -5873,10 +5876,10 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Les unités ont généralement une « zone de contrôle » sur chacun des hexagones "
-"qui leur sont adjacents. Une unité qui se déplace dans la zone de contrôle "
-"ennemie ne peut faire aucun autre mouvement pour ce tour ; deux unités "
-"peuvent donc barrer un passage avec deux cases vides entre elles. Les "
+"Les unités ont généralement une « zone de contrôle » sur chacun des "
+"hexagones qui leur sont adjacents. Une unité qui se déplace dans la zone de "
+"contrôle ennemie ne peut faire aucun autre mouvement pour ce tour ; deux "
+"unités peuvent donc barrer un passage avec deux cases vides entre elles. Les "
 "tirailleurs sont quant à eux suffisamment habiles pour ignorer ces zones."
 
 #. [tip]
@@ -6595,7 +6598,7 @@ msgstr "%a %d %b %H:%M %Y"
 
 #: src/dialogs.cpp:548 src/dialogs.cpp:561
 msgid "#(Invalid)"
-msgstr "#(Invalide)"
+msgstr "#(Non valide)"
 
 #: src/dialogs.cpp:559
 msgid "Campaign: $campaign_name"
@@ -6726,7 +6729,7 @@ msgstr "Capture d'écran"
 
 #: src/game.cpp:457 src/game.cpp:1598
 msgid "The Battle for Wesnoth"
-msgstr "La Bataille pour Wesnoth"
+msgstr "Bataille pour Wesnoth"
 
 #: src/game.cpp:737
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
@@ -6818,7 +6821,7 @@ msgstr "Extension enlevée"
 
 #: src/game.cpp:1126
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr "L'extension n'a pu être enlevée : un fichier n'a pas été trouvé."
+msgstr "L'extension n'a pu être enlevée : fichier introuvable."
 
 #: src/game.cpp:1147 src/multiplayer.cpp:168 src/multiplayer.cpp:206
 msgid "Connecting to Server..."
@@ -7031,7 +7034,7 @@ msgstr "Chargement de l'écran de présentation"
 
 #: src/game_config.cpp:268
 msgid "Invalid color range: "
-msgstr "Plage de couleur invalide : "
+msgstr "Plage de couleur non valide : "
 
 #: src/game_events.cpp:930
 msgid "Victory:"
@@ -7336,7 +7339,7 @@ msgstr "Lecture des fichiers et création du cache"
 
 #: src/map.cpp:342
 msgid "A map without a header is not supported"
-msgstr "Les cartes sans en-tête ne sont pas supportées."
+msgstr "Une carte sans en-tête n'est pas supportée."
 
 #: src/mapgen.cpp:711
 msgid "Random maps with an odd width aren't supported."
@@ -7787,7 +7790,7 @@ msgstr "Impossible de trouver une note ou une unité contenant : « $search �
 
 #: src/menu_events.cpp:2159
 msgid "Can't droid invalid side: '$side'."
-msgstr "Impossible de robotiser ce camp invalide : « $side »."
+msgstr "Impossible de robotiser ce camp non valide : « $side »."
 
 #: src/menu_events.cpp:2165
 msgid "Can't droid networked side: '$side'."
@@ -8163,7 +8166,7 @@ msgstr "Jeu de $login"
 
 #: src/multiplayer_create.cpp:285
 msgid "Invalid era selected"
-msgstr "Ère invalide sélectionnée"
+msgstr "Ère sélectionnée non valide"
 
 #: src/multiplayer_create.cpp:324
 msgid "You must enter a name."
@@ -8309,7 +8312,7 @@ msgstr "Se connecter à cette partie requiert un mot de passe."
 
 #: src/multiplayer_ui.cpp:171
 msgid "Invalid Color"
-msgstr "Couleur invalide"
+msgstr "Couleur non valide"
 
 #: src/multiplayer_ui.cpp:379
 msgid "Send a private message to "
@@ -8361,7 +8364,7 @@ msgstr "Choisissez votre camp :"
 
 #: src/network.cpp:107
 msgid "invalid network handle"
-msgstr "identifiant réseau invalide"
+msgstr "identifiant réseau non valide"
 
 #: src/network.cpp:140
 msgid "Client disconnected"
@@ -8619,7 +8622,7 @@ msgstr "Balise [+element] non terminée"
 
 #: src/serialization/parser.cpp:195
 msgid "Invalid closing tag name"
-msgstr "Nom de balise de fermeture invalide"
+msgstr "Nom de balise de fermeture non valide"
 
 #: src/serialization/parser.cpp:198
 msgid "Unterminated closing tag"
@@ -8632,7 +8635,7 @@ msgstr "Balise de fermeture non attendue à cet endroit"
 #: src/serialization/parser.cpp:206
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
-"Balise de fermeture $tag2 invalide pour la balise $tag (ouverte en $pos)"
+"Balise de fermeture $tag2 non valide pour la balise $tag (ouverte en $pos)"
 
 #: src/serialization/parser.cpp:231 src/serialization/parser.cpp:243
 msgid "Empty variable name"
