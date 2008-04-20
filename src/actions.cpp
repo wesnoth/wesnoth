@@ -1895,13 +1895,13 @@ namespace {
 					 || teams[team].is_enemy(sighted->second.side()) == false)) {
 				//check if we know this unit, but we always know oursefl
 				//just in case we managed to move on a fogged hex (teleport)
-				if(!(seen_units == NULL || known_units == NULL)
+				if(seen_units != NULL && known_units != NULL
 						&& known_units->count(*it) == 0 && *it != loc) {
 					if (!utils::string_bool(sighted->second.get_state("stoned")))
 					{
 						seen_units->insert(*it);
 					}
-					else
+					else if (stoned_units != NULL)
 					{
 						stoned_units->insert(*it);
 					}
@@ -2347,26 +2347,73 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 	   This function works thusly:
 	   1. run through the list of undo_actions
 	   2. for each one, play back the unit's move
-	   3. for each location along the route, clear any "shrouded" squares that the unit can see
-	   4. clear the undo_list
-	   5. call clear_shroud to update the fog of war for each unit.
-	   6. fix up associated display stuff (done in a similar way to turn_info::undo())
-	   */
+	   3. for each location along the route, clear any "shrouded" hexes that the unit can see
+	      and record sighted events
+	   4. render shroud/fog cleared.
+	   5. pump all events
+	   6. call clear_shroud to update the fog of war for each unit
+	   7. fix up associated display stuff (done in a similar way to turn_info::undo())
+	*/
+
+	std::set<gamemap::location> known_units;
+	for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
+		if(teams[team].fogged(u->first) == false) {
+			known_units.insert(u->first);
+		}
+	}
+
+	bool cleared_shroud = false;  // for further optimization
+	bool sighted_event = false;
+
 	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
 		LOG_NG << "Turning an undo...\n";
+		//NOTE: for the moment shroud cleared during recall seems never delayed
 		if(un->is_recall() || un->is_recruit()) continue;
+
 		// We're not really going to mutate the unit, just temporarily
 		// set its moves to maximum, but then switch them back.
+		// TODO: do this for the temporary unit instead
+		// (and maybe move it instead or recreate it for each step ?)
 		const unit_movement_resetter move_resetter(un->affected_unit);
 
 		std::vector<gamemap::location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
+			// we search where is the unit now, before placing its temporary clone
+			unit_map::const_iterator real_unit = units.find(un->affected_unit.underlying_id());
+
 			// We have to swap out any unit that is already in the hex,
 			// so we can put our unit there, then we'll swap back at the end.
+			// FIXME: in other move functions, we are blind when traversing occupied hex
 			const temporary_unit_placer unit_placer(units,*step,un->affected_unit);
-			clear_shroud_unit(map,units,*step,teams,team,NULL,NULL);
 
-			//! @todo FIXME
+			// In theory we don't know this clone, but
+			// - he can't be in newly cleared locations
+			// - clear_shroud_unit skip "self-detection"
+			// so we normaly don't need to flood known_units with temporary stuff
+			// known_units.insert(*step);
+
+			// Clear the shroud, and collect new seen_units
+			//FIXME: we don't use a separate stoned_units because I don't see the point
+			// This avoid to change the sighted order (more risky here)
+			// but must be cleaned (the function or the call)
+			std::set<gamemap::location> seen_units;
+			cleared_shroud |= clear_shroud_unit(map,units,*step,teams,team,
+				&known_units,&seen_units,&seen_units);
+
+			for (std::set<gamemap::location>::iterator sight_it = seen_units.begin();
+				sight_it != seen_units.end(); ++sight_it)
+			{
+				known_units.insert(*sight_it);
+
+				unit_map::const_iterator new_unit = units.find(*sight_it);
+				assert(new_unit != units.end());
+				teams[team].see(new_unit->second.side()-1);
+				
+				game_events::raise("sighted",*sight_it,real_unit->first);
+				sighted_event = true;
+			}
+
+			// NOTE: (invalid now, we track the source, but let the warning for the moment)
 			// There is potential for a bug, here. If the "sighted"
 			// events, raised by the clear_shroud_unit function,
 			// loops on all units, changing them all, the unit which
@@ -2375,9 +2422,26 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 			// temporary_unit_placer scope, the "sighted" event will
 			// be raised with an invalid source unit, which is even
 			// worse.
-			game_events::pump();
+			// game_events::pump();
+
 		}
 	}
+
+	// TODO: optimization: nothing cleared, so no sighted, and we can skip redraw
+	// if (!cleared_shroud) return;
+
+	// render shroud/fog cleared before pumping events
+	// we don't refog yet to avoid hiding sighted stuff 
+	if(sighted_event && disp != NULL) {
+		disp->invalidate_unit();
+		disp->invalidate_all();
+		disp->recalculate_minimap();
+		disp->draw();
+	}
+
+	game_events::pump();
+
+	// refog and invalidate stuff
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate_game_status();
