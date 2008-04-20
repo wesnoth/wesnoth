@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-13 16:22+0200\n"
+"POT-Creation-Date: 2008-04-20 12:40+0200\n"
 "PO-Revision-Date: 2008-03-21 12:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -459,11 +459,11 @@ msgstr "Име: "
 msgid "Creation of the directory failed."
 msgstr "Стварање директоријума није успело."
 
-#: src/game_preferences.cpp:221
+#: src/game_preferences.cpp:254
 msgid "No server has been defined."
 msgstr "Сервер није задат."
 
-#: src/game_preferences.cpp:285
+#: src/game_preferences.cpp:318
 msgid "player"
 msgstr "играч"
 
@@ -881,77 +881,63 @@ msgstr "Нова тема ће се исказати у следећој нов�
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Нема познатих тема. Покушајте да промените у оквиру текуће игре."
 
-#: src/gui/widgets/canvas.cpp:331
+#: src/gui/widgets/canvas.cpp:296
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:433
+#: src/gui/widgets/canvas.cpp:398
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:728
+#: src/gui/widgets/canvas.cpp:697
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:119
+#: src/gui/widgets/settings.cpp:117
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Сервер није задат."
 
-#: src/gui/widgets/settings.cpp:158
+#: src/gui/widgets/settings.cpp:156
 #, fuzzy
 msgid "No default window defined."
 msgstr "Сервер није задат."
 
-#: src/gui/widgets/settings.cpp:170
+#: src/gui/widgets/settings.cpp:180
+msgid "Window not defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:199
 #, fuzzy
 msgid "No default button defined."
 msgstr "Сервер није задат."
 
-#: src/gui/widgets/settings.cpp:182
-#, fuzzy
-msgid "No default label defined."
-msgstr "Сервер није задат."
-
-#: src/gui/widgets/settings.cpp:194
-msgid "No default text box defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:206
-msgid "No default tooltip defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:224
-msgid "Window not defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:253 src/gui/widgets/settings.cpp:304
-#: src/gui/widgets/settings.cpp:437 src/gui/widgets/settings.cpp:486
-#: src/gui/widgets/settings.cpp:531 src/gui/widgets/window_builder.cpp:204
+#: src/gui/widgets/settings.cpp:226 src/gui/widgets/settings.cpp:461
+#: src/gui/widgets/window_builder.cpp:206
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Сервер није задат."
 
-#: src/gui/widgets/settings.cpp:332
+#: src/gui/widgets/settings.cpp:297
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Сервер није задат."
 
-#: src/gui/widgets/settings.cpp:583
+#: src/gui/widgets/settings.cpp:513
 #, fuzzy
 msgid "No layer or draw section defined."
 msgstr "Сервер није задат."
 
-#: src/gui/widgets/window_builder.cpp:238
+#: src/gui/widgets/window_builder.cpp:240
 #, fuzzy
 msgid "No grid defined."
 msgstr "Сервер није задат."
 
-#: src/gui/widgets/window_builder.cpp:353
+#: src/gui/widgets/window_builder.cpp:355
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:354
+#: src/gui/widgets/window_builder.cpp:356
 msgid "Number of columns differ."
 msgstr ""
 
@@ -1366,8 +1352,9 @@ msgstr ""
 msgid "Hotkey Settings"
 msgstr "Поставке пречица"
 
-#: src/preferences_display.cpp:237 src/preferences_display.cpp:310
-msgid "Press desired Hotkey"
+#: src/preferences_display.cpp:237 src/preferences_display.cpp:306
+#, fuzzy
+msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Притисни жељену пречицу"
 
 #: src/preferences_display.cpp:256
@@ -1382,15 +1369,25 @@ msgstr "свеза"
 msgid "Change Hotkey"
 msgstr "Промени пречицу"
 
-#: src/preferences_display.cpp:349
+#: src/preferences_display.cpp:272
+#, fuzzy
+msgid "Clear Hotkey"
+msgstr "Промени пречицу"
+
+#: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."
 msgstr "Пречица је већ у употреби."
 
-#: src/preferences_display.cpp:435
+#: src/preferences_display.cpp:351
+msgid ""
+"Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
+msgstr ""
+
+#: src/preferences_display.cpp:430
 msgid "There are no alternative video modes available"
 msgstr "Нема алтернативних видео режима"
 
-#: src/preferences_display.cpp:464
+#: src/preferences_display.cpp:459
 msgid "Choose Resolution"
 msgstr "Изабери резолуцију"
 
@@ -1431,6 +1428,10 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "У одељку ‘[$section|]’ није постављен обавезни кључ ‘$key|’."
+
+#, fuzzy
+#~ msgid "No default label defined."
+#~ msgstr "Сервер није задат."
 
 #, fuzzy
 #~ msgid "Automatically delete saves on SP victory or SP/MP defeat"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.x\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-13 16:22+0200\n"
+"POT-Creation-Date: 2008-04-20 12:40+0200\n"
 "PO-Revision-Date: 2008-01-07 13:15+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -106,8 +106,9 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:189
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
+#, fuzzy
 msgid ""
-"You are standing in the keep, and your mentor Delfador is on the East side "
+"You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
 "Du står i borgtårnet, og din mentor Delfador er på den østlige side af "
@@ -199,7 +200,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:253
-msgid "Left click on tile labelled HERE"
+#, fuzzy
+msgid "Left click on tile labeled HERE"
 msgstr "Venstreklik på feltet markeret med HER"
 
 #. [message]: speaker=narrator
@@ -343,13 +345,14 @@ msgstr "Figurskiven har en runde?"
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:463
+#, fuzzy
 msgid ""
 "Yes: it's a magical quintain.\n"
 "See the 3-5 in its description? The first number tells you that it does "
 "three points of damage when it hits. The second tells you that it gets five "
 "chances to hit you per combat round. \n"
-"If it hits every time, you'll drop from $student_hp to $future_hp hit "
-"points. Brace yourself!"
+"If it hits every time, you'll drop from $student_hp to $future_hp hitpoints. "
+"Brace yourself!"
 msgstr ""
 "Ja: Det er en magisk quintan.\n"
 "Læg mærke til 3-5 i dens beskrivelse? Det første nummer fortæller dig at den "
@@ -365,7 +368,8 @@ msgstr "Klik på afslut runde knappen nederst til højre"
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:487
-msgid "Ouch! I need to heal! Only $student_hp hp left!"
+#, fuzzy
+msgid "Ouch! I need to heal! Only $student_hp HP left!"
 msgstr "Ouch! Jeg har behov for helbredelse! Kun $student_hp liv tilbage!"
 
 #. [event]
@@ -589,10 +593,11 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:803
+#, fuzzy
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
 "attack, so the quintain defended with its melee attack (3-5).\n"
-"You should tell the other Elf to use the bow."
+"You should tell the other elf to use the bow."
 msgstr ""
 "Din elver brugte et sværd (5-4, eller 5 skade, 4 angreb), som er et "
 "nærkampsvåeb, så quintanen forsvarede sig med dets nærkampsangreb (3-5).\n"
@@ -601,7 +606,8 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:806
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
-msgid "Attack with the other Elf"
+#, fuzzy
+msgid "Attack with the other elf"
 msgstr "Angrib med den anden elver"
 
 #. [message]
@@ -842,7 +848,8 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
-msgid "Move a unit (fighter if possible) to the patch of forest"
+#, fuzzy
+msgid "Move a unit (the Fighter, if possible) to the patch of forest"
 msgstr "Flyt en enhed (kæmper hvis det er muligt til skovstien"
 
 #. [event]
@@ -869,7 +876,8 @@ msgstr "Jeg håber at jeg kan trække mig tilbage efter dette!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-msgid "One lucky attack by an Orcish Grunt and I'm done for!"
+#, fuzzy
+msgid "One lucky attack by an orcish Grunt and I'm done for!"
 msgstr "Et heldigt angreb af en orkergrunt og jeg er færdig!"
 
 #. [message]: speaker=second_unit
@@ -940,9 +948,15 @@ msgstr "Dette er ikke for sjov, Konrad! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
+msgid "This is no game, Li'sar! "
+msgstr "Dette er ikke for sjov, Li'sar! "
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:420
+#, fuzzy
 msgid ""
-"Orcs have encamped across the river. This is elven country: we Elves are "
+"Orcs have encamped across the river. This is elven country: we elves are "
 "fast and hard to hit in forests. They are fools to enter here. You must "
 "defeat their leader, so they never bother us again. I will advise you."
 msgstr ""
@@ -950,11 +964,6 @@ msgstr ""
 "elver er hurtige og svære at angribe i skovene. De er tåbelige at komme "
 "herind. Du må besejre deres leder, så de ikke chikanerer os igen. Jeg vil "
 "rådgive dig."
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
-msgid "This is no game, Li'sar! "
-msgstr "Dette er ikke for sjov, Li'sar! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:422
@@ -1317,8 +1326,9 @@ msgstr "Orker har ikke afstandsvåben så brug dine bueskytter mod dem"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:909
+#, fuzzy
 msgid ""
-"Attack the Orc with an Archer (move mouse over units to see description on "
+"Attack the orc with an Archer (move mouse over units to see description on "
 "right)"
 msgstr ""
 "Angrib orken med en bueskytte (flyt musen over enhederne for at se en "
@@ -1335,9 +1345,10 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:926
+#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about! Your "
-"unit would have an 80% chance of being hit when the Orc counter-attacks! "
+"unit would have an 80% chance of being hit when the orc counter-attacks! "
 "Cancel!"
 msgstr ""
 "Det er meget farligt at stå i vand når der er fjender tæt på! Din enhed "
@@ -1346,18 +1357,21 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:932
-msgid "Attack the Orc with the other Archer"
+#, fuzzy
+msgid "Attack the orc with the other Archer"
 msgstr "Angrib orken med den anden bueskytte"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
-msgid "Fighter to Here"
+#, fuzzy
+msgid "Fighter to HERE"
 msgstr "Kæmper hertil"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
+#, fuzzy
 msgid ""
-"Your other units cannot reach that Orc this turn. Send a Fighter to that "
+"Your other units cannot reach that orc this turn. Send a Fighter to that "
 "village to the far east: that will take two turns."
 msgstr ""
 "Din anden enhed kan ikke nå orken denne runde. Send en kæmper til landsbyen "
@@ -1388,12 +1402,14 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:966
-msgid "Move Fighter and Shaman south, then return Konrad to the Keep"
+#, fuzzy
+msgid "Move Fighter and Shaman south, then return Konrad to the keep"
 msgstr "Flyt kæmper og shaman sydpå, derpå returneres Konrad til borgtårnet"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:967
-msgid "Move Fighter and Shaman south, then return Li'sar to the Keep"
+#, fuzzy
+msgid "Move Fighter and Shaman south, then return Li'sar to the keep"
 msgstr "Flyt kæmper og shaman sydpå, derpå returneres Li'sar til borgtårnet"
 
 #. [event]
@@ -1425,9 +1441,10 @@ msgstr "Flyt LI'sar til en anden (neutral) landsby"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
+#, fuzzy
 msgid ""
-"The Orc is blocking the bridge! We must occupy that island before the wolf "
-"riders reach it."
+"The Orcish Grunt is blocking the bridge! We must occupy that island before "
+"the Wolf Riders reach it."
 msgstr "Orken blokerer broen! Vi må erobre den ø før ulverytterne når den."
 
 #. [event]
@@ -1460,7 +1477,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Attack the Orc with an Archer"
+#, fuzzy
+msgid "Attack the orc with an Archer"
 msgstr "Angrib orken med en bueskytte"
 
 #. [then]
@@ -1472,8 +1490,9 @@ msgstr "Ryk andre enheder frem og erobrer landsbyer, derpå afsluttes runden"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1064
+#, fuzzy
 msgid ""
-"No other units can reach that Orc: I hope my archer survives its counter-"
+"No other units can reach that orc: I hope my archer survives its counter-"
 "attack! I'd better grab more villages, and move everyone closer for next "
 "turn."
 msgstr ""
@@ -1525,9 +1544,10 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1141
+#, fuzzy
 msgid ""
 "We need to take that village on the island, otherwise they will take it next "
-"turn! Move your wounded unit to take it so it can heal, then kill that Orc!"
+"turn! Move your wounded unit to take it so it can heal, then kill that orc!"
 msgstr ""
 "Vi har behov for at indtage den landsby på øen, ellers vil de tage den næste "
 "runde! Flyt din sårede enhed ind på den, så den kan helbredes og dræb så den "
@@ -1535,8 +1555,9 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1153
+#, fuzzy
 msgid ""
-"Careful! It is now nighttime. Orcs are chaotic: their attacks are 25% "
+"Careful! It is now nighttime. orcs are chaotic: their attacks are 25% "
 "stronger at night, 25% weaker in the day. You are lawful: stronger by day. "
 "Elves are neutral: we are unaffected by night and day."
 msgstr ""
@@ -1570,8 +1591,9 @@ msgstr "Forsvar her"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1169
+#, fuzzy
 msgid ""
-"Beware those Orcs crossing the river! If they get into the forest they'll be "
+"Beware those orcs crossing the river! If they get into the forest they'll be "
 "hard to dislodge!"
 msgstr ""
 "Hold øje med de orker der krydser floden! Hvis de når skoven bliver de svære "
@@ -1604,9 +1626,10 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1204
+#, fuzzy
 msgid ""
 "Stay near the keep: you need to be on a keep to recruit more units, and I "
-"doubt the Orc leader will let you use his!"
+"doubt the orc leader will let you use his!"
 msgstr ""
 "Bliv nær borgtårnet: Du skal være på et borgtårn for at rekruttere enheder "
 "og jeg tvivler på at orklederen vil lade dig bruge sit!"
@@ -1753,17 +1776,19 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1599
-msgid "You took too long, we'll never be rid of these Orcs!"
+#, fuzzy
+msgid "You took too long, we'll never be rid of these orcs!"
 msgstr "Du var for lang tid om det, vi bliver aldrig af med disse orker!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1617
+#, fuzzy
 msgid ""
-"You have been victorious over the Orcs. Next, you may want to try one of the "
-"campaigns with a Beginner level, such as The South Guard, Two Brothers or "
-"Heir to The Throne. The South Guard was specifically designed as a "
-"beginner's campaign. Konrad, Li'sar and Delfador are characters from Heir To "
-"The Throne."
+"You have been victorious over the orcs. Next, you may want to try one of the "
+"campaigns with a Beginner level, such as An Orcish Incursion, The South "
+"Guard, A Take of Two Brothers or Heir to the Throne. The South Guard was "
+"specifically designed as a beginner's campaign. Konrad, Li'sar and Delfador "
+"are characters from Heir to The Throne."
 msgstr ""
 "Du har vundet over orkerne. Du kan nu prøve en af kampagnerne, som er skabt "
 "til begyndere, såsom Den sydlige vagtforpost, To brødre eller Tronarvingen. "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-13 16:22+0200\n"
+"POT-Creation-Date: 2008-04-20 12:40+0200\n"
 "PO-Revision-Date: 2007-01-31 13:09+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -467,11 +467,11 @@ msgstr ""
 msgid "Creation of the directory failed."
 msgstr "Nepodarilo sa vymazať súbor."
 
-#: src/game_preferences.cpp:221
+#: src/game_preferences.cpp:254
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:285
+#: src/game_preferences.cpp:318
 msgid "player"
 msgstr "hráč"
 
@@ -895,70 +895,57 @@ msgstr "Nová téma sa prejaví až pri najbližšom spustení alebo načítaní
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
-#: src/gui/widgets/canvas.cpp:331
+#: src/gui/widgets/canvas.cpp:296
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:433
+#: src/gui/widgets/canvas.cpp:398
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:728
+#: src/gui/widgets/canvas.cpp:697
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:119
+#: src/gui/widgets/settings.cpp:117
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:158
+#: src/gui/widgets/settings.cpp:156
 msgid "No default window defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:170
-msgid "No default button defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:182
-msgid "No default label defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:194
-msgid "No default text box defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:206
-msgid "No default tooltip defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:224
+#: src/gui/widgets/settings.cpp:180
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:253 src/gui/widgets/settings.cpp:304
-#: src/gui/widgets/settings.cpp:437 src/gui/widgets/settings.cpp:486
-#: src/gui/widgets/settings.cpp:531 src/gui/widgets/window_builder.cpp:204
+#: src/gui/widgets/settings.cpp:199
+msgid "No default button defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:226 src/gui/widgets/settings.cpp:461
+#: src/gui/widgets/window_builder.cpp:206
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Nepodarilo sa vytvoriť mapu."
 
-#: src/gui/widgets/settings.cpp:332
+#: src/gui/widgets/settings.cpp:297
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:583
+#: src/gui/widgets/settings.cpp:513
 msgid "No layer or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:238
+#: src/gui/widgets/window_builder.cpp:240
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:353
+#: src/gui/widgets/window_builder.cpp:355
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:354
+#: src/gui/widgets/window_builder.cpp:356
 msgid "Number of columns differ."
 msgstr ""
 
@@ -1381,8 +1368,9 @@ msgstr ""
 msgid "Hotkey Settings"
 msgstr "Nastavenie kláves"
 
-#: src/preferences_display.cpp:237 src/preferences_display.cpp:310
-msgid "Press desired Hotkey"
+#: src/preferences_display.cpp:237 src/preferences_display.cpp:306
+#, fuzzy
+msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Stlač požadovanú klávesu"
 
 #: src/preferences_display.cpp:256
@@ -1397,15 +1385,25 @@ msgstr "Pripájanie"
 msgid "Change Hotkey"
 msgstr "Zmeň klávesu"
 
-#: src/preferences_display.cpp:349
+#: src/preferences_display.cpp:272
+#, fuzzy
+msgid "Clear Hotkey"
+msgstr "Zmeň klávesu"
+
+#: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."
 msgstr "Táto klávesa sa už používa."
 
-#: src/preferences_display.cpp:435
+#: src/preferences_display.cpp:351
+msgid ""
+"Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
+msgstr ""
+
+#: src/preferences_display.cpp:430
 msgid "There are no alternative video modes available"
 msgstr "Alternatívne režimy obrazovky nie sú k dispozícii"
 
-#: src/preferences_display.cpp:464
+#: src/preferences_display.cpp:459
 msgid "Choose Resolution"
 msgstr "Vyber si rozlíšenie"
 

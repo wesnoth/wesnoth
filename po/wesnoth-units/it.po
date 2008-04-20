@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-13 16:22+0200\n"
+"POT-Creation-Date: 2008-04-20 12:40+0200\n"
 "PO-Revision-Date: 2008-03-16 08:29+0100\n"
 "Last-Translator: Antonio Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -3672,6 +3672,7 @@ msgstr ""
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Whelp.cfg:26
+#: data/core/units/trolls/Troll_Shaman.cfg:31
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
 msgstr "pugno"
@@ -4393,6 +4394,26 @@ msgstr ""
 "se disarmato. Le tipiche clave che i troll amano usare per combattere "
 "vengono usate come estensioni delle loro braccia, e servono allo scopo di "
 "portare alla resa i nemici."
+
+#. [unit_type]: race=troll
+#: data/core/units/trolls/Troll_Shaman.cfg:4
+#, fuzzy
+msgid "Troll Shaman"
+msgstr "Cucciolo di troll"
+
+#. [unit_type]: race=troll
+#: data/core/units/trolls/Troll_Shaman.cfg:24
+msgid ""
+"Troll shamans are the mystical leaders of the trolls. Though not as strong "
+"or tough as other trolls, their true power lies in their fire magic, which "
+"they use to blast enemies with gouts of fire."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/trolls/Troll_Shaman.cfg:41
+#, fuzzy
+msgid "flame blast"
+msgstr "esplosione magica"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
@@ -5230,9 +5251,6 @@ msgstr ""
 
 #~ msgid "magic_blast"
 #~ msgstr "esplosione_magica"
-
-#~ msgid "magic blast"
-#~ msgstr "esplosione magica"
 
 #~ msgid "impact"
 #~ msgstr "impatto"

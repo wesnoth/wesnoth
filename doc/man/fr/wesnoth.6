@@ -49,7 +49,7 @@ partagez\-les avec d'autres.
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign\fP
-skip menu, show directly the campaign menu.
+Saute le menu principal pour aller directement dans le menu des campagnes.
 .TP 
 \fB\-\-compress\fP\fI\ fichier_d'entrée\ fichier_de_sortie\fP
 Compresse une sauvegarde au format texte WML (\fIfichier_d'entrée\fP) en format
@@ -89,7 +89,7 @@ Charge le fichier de sauvegarde à partir du répertoire de sauvegarde par
 défaut.
 .TP 
 \fB\-\-with\-replay\fP
-replays the game loaded with \-\-load option.
+Rejoue la partie chargée avec l'option \-\-load.
 .TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomaine1\fP\fB,\fP\fIdomaine2\fP\fB,\fP\fI...\fP
 Définit le niveau d'alerte du débogueur. \fBall\fP permet de suivre tous les
@@ -118,9 +118,10 @@ Affiche le nom du répertoire principal du jeu et quitte le programme.
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-résolution\fP\ \fIX\fP\fBx\fP\fIY\fP
 Définit la résolution de l'écran. Exemple\ : \fB\-r 800x600\fP
 .TP 
-\fB\-s,\ \-\-server\ [host]\fP
-skip menu, connect to specified host if any, otherwise connect to the first
-server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+\fB\-s,\ \-\-server\ [serveur]\fP
+Saute le menu principal, se connecte au serveur s'il est spécifié ou bien au
+premier serveur stocké dans les preferences. Exemple\ : \fB\-\-server
+server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 Lance le jeu avec un petit scénario de test.

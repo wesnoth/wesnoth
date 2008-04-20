@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-13 16:22+0200\n"
+"POT-Creation-Date: 2008-04-20 12:40+0200\n"
 "PO-Revision-Date: 2008-02-22 10:15+1000\n"
 "Last-Translator: luojie <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -3250,6 +3250,7 @@ msgstr ""
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Whelp.cfg:26
+#: data/core/units/trolls/Troll_Shaman.cfg:31
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
 msgstr "拳头"
@@ -3891,6 +3892,25 @@ msgstr ""
 "那不自然的活力与力量背后的秘密。完全长成的巨魔身材比人类高大，即使没有武装，"
 "在战斗中也是一个不小的威胁。为了扩大攻击范围，他们常使用大木棒进行攻击，总之"
 "就是痛击对手，使其臣服。"
+
+#. [unit_type]: race=troll
+#: data/core/units/trolls/Troll_Shaman.cfg:4
+#, fuzzy
+msgid "Troll Shaman"
+msgstr "巨魔幼崽"
+
+#. [unit_type]: race=troll
+#: data/core/units/trolls/Troll_Shaman.cfg:24
+msgid ""
+"Troll shamans are the mystical leaders of the trolls. Though not as strong "
+"or tough as other trolls, their true power lies in their fire magic, which "
+"they use to blast enemies with gouts of fire."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/trolls/Troll_Shaman.cfg:41
+msgid "flame blast"
+msgstr ""
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
