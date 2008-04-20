@@ -104,6 +104,15 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 {
 	DBG_G_E << "Text_box: key press.\n";
 
+// For copy/paste we use a different key on the MAC. Other ctrl modifiers won't 
+// be modifed seems not to be required when I read the comment in 
+// widgets/textbox.cpp:516. Would be nice if somebody on a MAC would test it.
+#ifdef __APPLE__
+	const unsigned copypaste_modifier = KMOD_LMETA | KMOD_RMETA;
+#else
+	const unsigned copypaste_modifier = KMOD_CTRL;
+#endif
+
 	switch(key) {
 
 		case SDLK_LEFT :
@@ -175,7 +184,7 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 			break;
 
 		case SDLK_c :
-			if(!(modifier & KMOD_CTRL)) {
+			if(!(modifier & copypaste_modifier)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
@@ -187,7 +196,7 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 			break;
 
 		case SDLK_x :
-			if(!(modifier & KMOD_CTRL)) {
+			if(!(modifier & copypaste_modifier)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
@@ -198,7 +207,7 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 			break;
 
 		case SDLK_v :
-			if(!(modifier & KMOD_CTRL)) {
+			if(!(modifier & copypaste_modifier)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
