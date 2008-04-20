@@ -900,7 +900,8 @@ const std::string& unit_type::race() const
 // Allow storing "advances from" info for convenience in Help.
 void unit_type::add_advancesfrom(std::string unit_id)
 {
-	advances_from_.push_back(unit_id);
+	if (find(advances_from_.begin(), advances_from_.end(), unit_id) == advances_from_.end())
+		advances_from_.push_back(unit_id);
 }
 
 
