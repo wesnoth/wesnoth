@@ -1621,6 +1621,39 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	}
 	refreshing_ = true;
 
+
+	if(!anim_) {
+		set_standing(loc);
+	}
+	anim_->update_last_draw_time();
+	frame_parameters params; 
+	const t_translation::t_terrain terrain = map.get_terrain(loc);
+	const terrain_type& terrain_info = map.get_terrain_info(terrain);
+	// do not set to 0 so we can distinguih the flying from the "not on submerge terrain"
+	 params.submerge= is_flying() ? 0.01 : terrain_info.unit_submerge();
+
+	if(invisible(loc,disp.get_units(),disp.get_teams()) &&
+			params.highlight_ratio > 0.5) {
+		params.highlight_ratio = 0.5;
+	}
+	if(loc == disp.selected_hex() && params.highlight_ratio == 1.0) {
+		params.highlight_ratio = 1.5;
+	}
+	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
+	if (is_flying() && height_adjust < 0) {
+		height_adjust = 0;
+	}
+	params.y -= height_adjust;
+	params.halo_y -= height_adjust;
+	if (utils::string_bool(get_state("poisoned")) ){
+		params.blend_with = disp.rgb(0,255,0);
+		params.blend_ratio = 0.25;
+	}
+
+	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
+
+
+
 #ifndef LOW_MEM
 	bool facing_west = facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST;
 #else
@@ -1633,39 +1666,23 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	const int ydst = disp.get_location_y(dst);
 	const int drawing_order = gamemap::get_drawing_order(loc);
 
-	const t_translation::t_terrain terrain = map.get_terrain(loc);
-	const terrain_type& terrain_info = map.get_terrain_info(terrain);
-	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
-	if (is_flying() && height_adjust < 0) {
-		height_adjust = 0;
-	}
-	const int ysrc_adjusted = ysrc - height_adjust;
-
-	if(!anim_) {
-		set_standing(loc);
-	}
-	anim_->update_last_draw_time();
-	const frame_parameters params = anim_->get_current_params();
-	double submerge = params.submerge;
-	if(!submerge) submerge=	is_flying() ? 0.0 : terrain_info.unit_submerge();
 
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
 		frame_begin_time_ = anim_->get_current_frame_begin_time();
-		if(!params.sound.empty()) {
-			sound::play_sound(params.sound);
+		if(!adjusted_params.sound.empty()) {
+			sound::play_sound(adjusted_params.sound);
 		}
-		if(!params.text.empty()  ) {
-			game_display::get_singleton()->float_label(loc,params.text,
-			(params.text_color & 0x00FF0000) >> 16,
-			(params.text_color & 0x0000FF00) >> 8,
-			(params.text_color & 0x000000FF) >> 0);
+		if(!adjusted_params.text.empty()  ) {
+			game_display::get_singleton()->float_label(loc,adjusted_params.text,
+			(adjusted_params.text_color & 0x00FF0000) >> 16,
+			(adjusted_params.text_color & 0x0000FF00) >> 8,
+			(adjusted_params.text_color & 0x000000FF) >> 0);
 		}
 	}
 
-	const double tmp_offset = params.offset;
 	int d2 = disp.hex_size() / 2;
-	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
-	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2 - height_adjust;
+	const int x = static_cast<int>(adjusted_params.offset * xdst + (1.0-adjusted_params.offset) * xsrc) + d2;
+	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + d2;
 
 
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
@@ -1679,12 +1696,12 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		halo::remove(unit_anim_halo_);
 		unit_anim_halo_ = halo::NO_HALO;
 	}
-	if(!params.halo.empty()) {
-		int dx = static_cast<int>(params.halo_x * disp.get_zoom_factor());
-		int dy = static_cast<int>(params.halo_y * disp.get_zoom_factor());
+	if(!adjusted_params.halo.empty()) {
+		int dx = static_cast<int>(adjusted_params.halo_x * disp.get_zoom_factor());
+		int dy = static_cast<int>(adjusted_params.halo_y * disp.get_zoom_factor());
 		if (facing_west) dx = -dx;
 		unit_anim_halo_ = halo::add(x + dx, y+ dy,
-			params.halo, gamemap::location(-1, -1),
+			adjusted_params.halo, gamemap::location(-1, -1),
 			facing_west ? halo::HREVERSE : halo::NORMAL);
 	}
 
@@ -1692,12 +1709,12 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	image::locator image_loc = image::locator();
 #ifndef LOW_MEM
 	if(facing_ != gamemap::location::NORTH && facing_ != gamemap::location::SOUTH) {
-		image_loc = params.image_diagonal;
+		image_loc = adjusted_params.image_diagonal;
 	}
 	if(image_loc.is_void()|| image_loc.get_filename() == "") { // invalid diag image, or not diagonal
-		image_loc = params.image;
+		image_loc = adjusted_params.image;
 	}
-	if(image_loc.is_void()) {
+	if(image_loc.is_void()|| image_loc.get_filename() == "") {
 		image_loc = absolute_image();
 	}
 	std::string mod=image_mods();
@@ -1718,28 +1735,13 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 	bool stoned = utils::string_bool(get_state("stoned"));
 
-	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),ftofxp(params.highlight_ratio));
-	if(invisible(loc,disp.get_units(),disp.get_teams()) &&
-			highlight_ratio > ftofxp(0.5)) {
-		highlight_ratio = ftofxp(0.5);
-	}
-	if(loc == disp.selected_hex() && highlight_ratio == ftofxp(1.0)) {
-		highlight_ratio = ftofxp(1.5);
-	}
 
-	Uint32 blend_with = params.blend_with;
-	double blend_ratio = params.blend_ratio;
-	//if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
-	if (utils::string_bool(get_state("poisoned")) && blend_ratio == 0){
-		blend_with = disp.rgb(0,255,0);
-		blend_ratio = 0.25;
-	}
 
 	// We draw bars only if wanted, visible on the map view and not a fake unit
 	bool draw_bars = draw_bars_ && !fake;
 	if (draw_bars) {
 		const int d = disp.hex_size();
-		SDL_Rect unit_rect = {xsrc, ysrc_adjusted, d, d};
+		SDL_Rect unit_rect = {xsrc, ysrc +adjusted_params.y, d, d};
 		draw_bars = rects_overlap(unit_rect, disp.map_outside_area());
 	}
 
@@ -1750,7 +1752,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		// The division by 2 seems to have no real meaning,
 		// It just works fine with the current center of ellipse
 		// and prevent a too large adjust if submerge = 1.0
-		ellipse_floating = static_cast<int>(submerge * disp.hex_size() / 2);
+		ellipse_floating = static_cast<int>(adjusted_params.submerge * disp.hex_size() / 2);
 
 		std::string ellipse=image_ellipse();
 		if(ellipse.empty()){
@@ -1772,19 +1774,19 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 	if (ellipse_back != NULL) {
 		disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order,
-			display::tblit(xsrc, ysrc_adjusted-ellipse_floating, ellipse_back));
+			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back));
 	}
 
 	if (image != NULL) {
-		const int tmp_x = params.x +x - image->w/2;
-		const int tmp_y = params.y +y - image->h/2;
+		const int tmp_x = adjusted_params.x +x - image->w/2;
+		const int tmp_y = adjusted_params.y +y - image->h/2;
 		disp.render_unit_image(tmp_x, tmp_y, fake, drawing_order, image, facing_west, stoned,
-				highlight_ratio, blend_with, blend_ratio, submerge);
+				ftofxp(adjusted_params.highlight_ratio), adjusted_params.blend_with, adjusted_params.blend_ratio, adjusted_params.submerge);
 	}
 
 	if (ellipse_front != NULL) {
 		disp.drawing_buffer_add(display::LAYER_UNIT_FG, drawing_order,
-			display::tblit(xsrc, ysrc_adjusted-ellipse_floating, ellipse_front));
+			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front));
 	}
 
 	if(draw_bars) {
@@ -1813,7 +1815,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				drawing_order, display::tblit(xsrc, ysrc_adjusted, orb));
+				drawing_order, display::tblit(xsrc, ysrc +adjusted_params.y, orb));
 		}
 
 		double unit_energy = 0.0;
@@ -1829,7 +1831,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 		const fixed_t bar_alpha = (loc == disp.mouseover_hex() || loc == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
 
-		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted,
+		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc +adjusted_params.y,
 			drawing_order, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
@@ -1838,7 +1840,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / maximum<int>(level_,1));
 
 			SDL_Color colour=xp_color();
-			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted,
+			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
 				drawing_order, xp_bar_height, filled, colour, bar_alpha);
 		}
 
@@ -1849,7 +1851,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					drawing_order, display::tblit(xsrc, ysrc_adjusted, crown));
+					drawing_order, display::tblit(xsrc, ysrc +adjusted_params.y, crown));
 			}
 		}
 
@@ -1857,12 +1859,12 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					drawing_order, display::tblit(xsrc, ysrc_adjusted, ov_img));
+					drawing_order, display::tblit(xsrc, ysrc +adjusted_params.y, ov_img));
 			}
 		}
 	}
 
-	anim_->redraw();
+	anim_->redraw(params);
 	refreshing_ = false;
 }
 
@@ -1906,12 +1908,37 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 	}
 
 	// Very early calls, anim not initialized yet
-	double tmp_offset=0;
-	if(anim_)tmp_offset= anim_->get_current_params().offset;
+	frame_parameters params; 
+	game_display * disp =  game_display::get_singleton();
+	const gamemap & map = disp->get_map();
+	const t_translation::t_terrain terrain = map.get_terrain(loc);
+	const terrain_type& terrain_info = map.get_terrain_info(terrain);
+	if(!params.submerge) params.submerge=	is_flying() ? 0.0 : terrain_info.unit_submerge();
+
+	if(invisible(loc,disp->get_units(),disp->get_teams()) &&
+			params.highlight_ratio > 0.5) {
+		params.highlight_ratio = 0.5;
+	}
+	if(loc == disp->selected_hex() && params.highlight_ratio == 1.0) {
+		params.highlight_ratio = 1.5;
+	}
+	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp->get_zoom_factor());
+	if (is_flying() && height_adjust < 0) {
+		height_adjust = 0;
+	}
+	params.y -= height_adjust;
+	params.halo_y -= height_adjust;
+	if (utils::string_bool(get_state("poisoned")) ){
+		params.blend_with = disp->rgb(0,255,0);
+		params.blend_ratio = 0.25;
+	}
+
+	frame_parameters adjusted_params;
+	if(anim_) adjusted_params = anim_->get_current_params(params);
 
 	// Invalidate adjacent neighbours if we don't stay in our hex
-	if(tmp_offset != 0) {
-		gamemap::location::DIRECTION dir = (tmp_offset > 0) ? facing_ : loc.get_opposite_dir(facing_);
+	if(adjusted_params.offset != 0) {
+		gamemap::location::DIRECTION dir = (adjusted_params.offset > 0) ? facing_ : loc.get_opposite_dir(facing_);
 		gamemap::location adj_loc = loc.get_direction(dir);
 		over.insert(adj_loc);
 		gamemap::location arr[6];
@@ -1929,7 +1956,7 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 			over.insert(arr[i]);
 		}
 	}
-	if(get_animation()) get_animation()->invalidate();
+	if(get_animation()) get_animation()->invalidate(params);
 
 	return over;
 }

@@ -734,38 +734,38 @@ void unit_animation::restart_animation()
 		anim_itor->second.restart_animation();
 	}
 }
-void unit_animation::redraw()
+void unit_animation::redraw(const frame_parameters& value)
 {
 
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		anim_itor->second.redraw();
+		anim_itor->second.redraw( value);
 	}
 }
-void unit_animation::invalidate() const
+void unit_animation::invalidate(const frame_parameters& value) const
 {
 
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		anim_itor->second.invalidate();
+		anim_itor->second.invalidate(value);
 	}
 }
-void unit_animation::particule::redraw()
+void unit_animation::particule::redraw(const frame_parameters& value)
 {
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,src_,dst_,&halo_id_,default_val);
+		current_frame.redraw(get_current_frame_time(),true,src_,dst_,&halo_id_,default_val,value);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,src_,dst_,&halo_id_,default_val);
+		current_frame.redraw(get_current_frame_time(),false,src_,dst_,&halo_id_,default_val,value);
 	}
 }
-void unit_animation::particule::invalidate() const
+void unit_animation::particule::invalidate(const frame_parameters& value) const
 {
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
-	current_frame.invalidate(get_current_frame_time(),src_,dst_,default_val);
+	current_frame.invalidate(get_current_frame_time(),src_,dst_,default_val,value);
 }
 
 unit_animation::particule::~particule()

@@ -52,12 +52,12 @@ int progressive_string::duration() const
 	return total;
 
 }
-
-const std::string& progressive_string::get_current_element(int current_time,const std::string& default_val)const
+static const std::string empty_string ="";
+const std::string& progressive_string::get_current_element(int current_time)const
 {
 	int time = 0;
 	unsigned int sub_halo = 0;
-	if(data_.empty()) return default_val;
+	if(data_.empty()) return empty_string;
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		sub_halo++;
@@ -98,7 +98,7 @@ progressive_<T>::progressive_(const std::string &data, int duration)
 }
 
 template <class T>
-const T progressive_<T>::get_current_element(int current_time,const T default_val) const
+const T progressive_<T>::get_current_element(int current_time, T default_val) const
 {
 	int time = 0;
 	unsigned int sub_halo = 0;
@@ -189,25 +189,25 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 
 }
 
-const frame_parameters frame_builder::parameters(int current_time, const frame_parameters & default_val) const
+const frame_parameters frame_builder::parameters(int current_time) const
 {
 	frame_parameters result;
-	result.duration = duration_ == 0?default_val.duration:duration_;
-	result.image = image_.is_void()?default_val.image:image_;
-	result.image_diagonal = image_diagonal_.is_void()?default_val.image_diagonal:image_diagonal_;
-	result.halo = halo_.get_current_element(current_time,default_val.halo);
-	result.sound = sound_.empty()?default_val.sound:sound_;
-	result.text = text_.empty()?default_val.text:text_;
-	result.text_color = text_color_ == 0?default_val.text_color:text_color_;
-	result.halo_x = halo_x_.get_current_element(current_time,default_val.halo_x);
-	result.halo_y = halo_y_.get_current_element(current_time,default_val.halo_y);
-	result.blend_with = blend_with_ == 0?default_val.blend_with:blend_with_;
-	result.blend_ratio = blend_ratio_.get_current_element(current_time,default_val.blend_ratio);
-	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,default_val.highlight_ratio);
-	result.offset = offset_.get_current_element(current_time,default_val.offset);
-	result.submerge = submerge_.get_current_element(current_time,default_val.submerge);
-	result.x = x_.get_current_element(current_time,default_val.x);
-	result.y = y_.get_current_element(current_time,default_val.y);
+	result.duration = duration_;
+	result.image = image_;
+	result.image_diagonal = image_diagonal_;
+	result.halo = halo_.get_current_element(current_time);
+	result.sound = sound_;
+	result.text = text_;
+	result.text_color = text_color_;
+	result.halo_x = halo_x_.get_current_element(current_time);
+	result.halo_y = halo_y_.get_current_element(current_time);
+	result.blend_with = blend_with_;
+	result.blend_ratio = blend_ratio_.get_current_element(current_time);
+	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0);
+	result.offset = offset_.get_current_element(current_time);
+	result.submerge = submerge_.get_current_element(current_time);
+	result.x = x_.get_current_element(current_time);
+	result.y = y_.get_current_element(current_time);
 	return result;
 }
 frame_builder & frame_builder::image(const image::locator image )
@@ -315,7 +315,7 @@ bool frame_builder::need_update() const
 	return false;
 }
 
-void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & default_val)const
+void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -323,7 +323,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 	const int ydst = game_display::get_singleton()->get_location_y(dst);
 	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
 
-	const frame_parameters current_data = builder_.parameters(frame_time,default_val);
+	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
 	double tmp_offset = current_data.offset;
 	int d2 = game_display::get_singleton()->hex_size() / 2;
 
@@ -405,7 +405,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 		}
 	}
 }
-void unit_frame::invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & default_val) const
+void unit_frame::invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val) const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -413,7 +413,7 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 	const int ydst = game_display::get_singleton()->get_location_y(dst);
 	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
 
-	const frame_parameters current_data = builder_.parameters(frame_time,default_val);
+	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
 	double tmp_offset = current_data.offset;
 	//unused var - int d2 = game_display::get_singleton()->hex_size() / 2;
 
@@ -438,4 +438,69 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 		game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
 
 	}
+}
+
+
+
+const frame_parameters unit_frame::merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val, bool primary) const
+{
+	/*! this function merges the value provided by
+	 *  * the frame
+	 *  * the engine (poison, flying unit...)
+	 *  * the animation as a whole
+	 *  there is no absolute rule for merging, so creativity is the rule
+	 *  if a value is never provided by the engine, assert. (this way if it becomes used, people will easily find the right place to look)
+	 *  
+	 *  */
+	frame_parameters result;
+	const frame_parameters & current_value = builder_.parameters(current_time);
+	assert(engine_val.image.is_void() || engine_val.image.get_filename() == "");
+	result.image = current_value.image.is_void() || current_value.image.get_filename() == ""?animation_val.image:current_value.image;
+
+	assert(engine_val.image_diagonal.is_void() || engine_val.image_diagonal.get_filename() == "");
+	result.image_diagonal = current_value.image_diagonal.is_void()|| current_value.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_value.image_diagonal;
+
+	assert(engine_val.halo.empty());
+	result.halo = current_value.halo.empty()?animation_val.halo:current_value.halo;
+
+	assert(engine_val.sound.empty());
+	result.sound = current_value.sound.empty()?animation_val.sound:current_value.sound;
+
+	assert(engine_val.text.empty());
+	result.text = current_value.text.empty()?animation_val.text:current_value.text;
+
+	assert(engine_val.text_color == 0);
+	result.text_color = current_value.text_color?current_value.text_color:animation_val.text_color;
+
+	assert(engine_val.halo_x == 0);
+	result.halo_x =  current_value.halo_x?current_value.halo_x:animation_val.halo_x;
+
+	result.halo_y = current_value.halo_y?current_value.halo_y:animation_val.halo_y;
+	result.halo_y += engine_val.halo_y;
+
+	assert(engine_val.duration == 0);
+	result.duration = current_value.duration;
+
+	result.blend_with = current_value.blend_with?current_value.blend_with:animation_val.blend_with;
+	if(primary&& engine_val.blend_with) result.blend_with = engine_val.blend_with;
+
+	result.blend_ratio = current_value.blend_ratio?current_value.blend_ratio:animation_val.blend_ratio;
+	if(primary && engine_val.blend_ratio) result.blend_ratio += engine_val.blend_ratio;
+
+	result.highlight_ratio = current_value.highlight_ratio!=0.0?current_value.highlight_ratio:animation_val.highlight_ratio;
+	if(primary && engine_val.highlight_ratio != 1.0) result.highlight_ratio = result.highlight_ratio +engine_val.highlight_ratio - 1.0; // selected unit
+
+	assert(engine_val.offset == 0);
+	result.offset = current_value.offset?current_value.offset:animation_val.offset;
+
+	result.submerge = current_value.submerge?current_value.submerge:animation_val.submerge;
+	if(primary && engine_val.submerge) result.submerge = engine_val.submerge;
+
+	assert(engine_val.x == 0);
+	result.x = current_value.x?current_value.x:animation_val.x;
+
+	result.y = current_value.y?current_value.y:animation_val.y; 
+	result.y += engine_val.y;
+
+	return result;
 }

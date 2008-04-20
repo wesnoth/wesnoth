@@ -55,13 +55,13 @@ class unit_animation
                 void pause_animation();
                 void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
-		void redraw();
-		void invalidate( ) const;
+		void redraw(const frame_parameters& value);
+		void invalidate(const frame_parameters& value ) const;
 
 	friend class unit;
 	protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
-	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters()) const { return unit_anim_.parameters(default_val); };
+	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters(),bool primary = true) const { return unit_anim_.parameters(default_val,primary); };
 	private:
 		static config prepare_animation(const config &cfg,const std::string animation_tag);
 		explicit unit_animation(const config& cfg,const std::string frame_string ="");
@@ -82,10 +82,10 @@ class unit_animation
 			virtual ~particule();
 			bool need_update() const;
 			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
-			void redraw( );
-			void invalidate( ) const;
+			void redraw( const frame_parameters& value);
+			void invalidate(const frame_parameters& value ) const;
 			void start_animation(int start_time,const gamemap::location& src,const  gamemap::location& dst, bool cycles=false);
-			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time(),default_val)); };
+			const frame_parameters parameters(const frame_parameters & default_val,bool primary) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val,primary); };
 			bool accelerate;
 		private:
 

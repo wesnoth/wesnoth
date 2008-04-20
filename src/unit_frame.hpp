@@ -34,7 +34,7 @@ class progressive_string {
 	public:
 		progressive_string(const std::string& data = "",int duration = 0);
 		int duration() const;
-		const std::string & get_current_element(int time,const std::string& default_val="") const;
+		const std::string & get_current_element(int time) const;
 		bool does_not_change() const { return data_.size() <= 1; }
 		std::string get_original(){return input_;}
 	private:
@@ -50,7 +50,7 @@ class progressive_
 public:
 	progressive_(const std::string& data = "", int duration = 0);
 	int duration() const;
-	const T get_current_element(int time, const T default_val = 0) const;
+	const T get_current_element(int time,T default_val=0) const;
 	bool does_not_change() const;
 		std::string get_original(){return input_;}
 };
@@ -138,7 +138,7 @@ class frame_builder {
 		frame_builder & x(const std::string& x);
 		frame_builder & y(const std::string& y);
 		//! getters for the different parameters
-		const frame_parameters parameters(int current_time, const frame_parameters & default_val = frame_parameters()) const;
+		const frame_parameters parameters(int current_time) const ;
 
 		int duration() const{ return duration_;};
 		void recalculate_duration();
@@ -168,13 +168,14 @@ class unit_frame {
 	public:
 		// Constructors
 		unit_frame(const frame_builder builder=frame_builder()):builder_(builder){};
-		void redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & default_val)const;
-		const frame_parameters parameters(int current_time, const frame_parameters & default_val = frame_parameters()) const{return builder_.parameters(current_time,default_val); } ;
+		void redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const;
+		const frame_parameters merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val=frame_parameters(),bool primary=false) const;
+		const frame_parameters parameters(int current_time) const {return builder_.parameters(current_time);};
 
 		int duration() const { return builder_.duration();};
 		bool does_not_change() const{ return builder_.does_not_change();};
 		bool need_update() const{ return builder_.need_update();};
-		void invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & default_val) const;
+		void invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val) const;
 	private:
 		frame_builder builder_;
 
