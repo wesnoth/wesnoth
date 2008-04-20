@@ -392,7 +392,9 @@ ttext_box_definition::ttext_box_definition(const config& cfg) :
 }
 
 ttext_box_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
+	tresolution_definition_(cfg),
+	text_x_offset(cfg["text_x_offset"]), //FIXME document
+	text_y_offset(cfg["text_y_offset"])  //FIXME document
 {
 /*WIKI
  * [label_definition][resolution]

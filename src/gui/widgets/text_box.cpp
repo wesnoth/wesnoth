@@ -55,9 +55,7 @@ static surface render_text(const std::string& text, unsigned font_size)
 //! Inserts a character at the cursor.
 void ttext_box::insert_char(Uint16 unicode)
 {
-	if(sel_len() > 0) {
-		delete_selection();
-	}
+	delete_selection();
 
 	// Determine the width of the new character.
 	std::string tmp_text;
@@ -108,47 +106,142 @@ void ttext_box::delete_char(const bool before_cursor)
 //! Deletes the current selection.
 void ttext_box::delete_selection()
 {
-	assert(sel_len() != 0);
+	if(sel_len() == 0) {
+		return;
+	}
 
 	// If we have a negative range change it to a positive range.
 	// This makes the rest of the algoritms easier.
-	if(sel_len() < 0) {
-		sel_len() = - sel_len();
-		sel_start() -= sel_len();
-		set_cursor(sel_start(), false);
+	int len = sel_len();
+	unsigned  start = sel_start();
+	if(len < 0) {
+		len = - len;
+		start -= len;
 	}
 
 	// Update the text, we need to assume it's a wide string.
 	wide_string tmp = utils::string_to_wstring(text());
-	tmp.erase(tmp.begin() + sel_start(), tmp.begin() + sel_start() + sel_len());
-	text() = utils::wstring_to_string(tmp);
-
-	// Update the offsets
-	const unsigned width = character_offset_[sel_start() + sel_len() - 1] - 
-		(sel_start() ? character_offset_[sel_start() - 1] : 0);
-
-	character_offset_.erase(character_offset_.begin() + sel_start(), character_offset_.begin() + sel_start() + sel_len());
-	for(size_t i = sel_start(); i < character_offset_.size(); ++i) {
-		character_offset_[i] -= width;
-	}
-
-	sel_len() = 0;
-	set_canvas_text();
-	set_dirty();
+	tmp.erase(tmp.begin() + start, tmp.begin() + start + len);
+	const std::string& text = utils::wstring_to_string(tmp);
+	set_text(text);
+	set_cursor(start, false);
 }
 
 //! Inherited from tcontrol.
 void ttext_box::set_canvas_text()
 {
 	foreach(tcanvas& tmp, canvas()) {
+
+		// NOTE when sel_start() == - sel_len() then the offset calculation will
+		// access character_offset_[-1] so add special cases to use 0 instead.
+		// The same can happen if sel_start() == 0.
+
+		// Set the general variables.
 		tmp.set_variable("text", variant(text()));
-		//FIXME add selection info.
-		if(text().empty() || sel_start() == 0) {
+		tmp.set_variable("text_x_offset", variant(text_x_offset_));
+		tmp.set_variable("text_y_offset", variant(text_y_offset_));
+
+		// Set the cursor info.
+		const unsigned start = sel_start();
+		const int len = sel_len();
+		if(text().empty() || start + len == 0) {
 			tmp.set_variable("cursor_offset", variant(0));
 		} else {
-			tmp.set_variable("cursor_offset", variant(character_offset_[sel_start() -1] + 0));
+			tmp.set_variable("cursor_offset", variant(character_offset_[start - 1 + len]));
 		}
+
+		// Set the seleciton info
+		unsigned start_offset = 0;
+		unsigned end_offset = 0;
+		if(len == 0) {
+			// No nothing.
+		} else if(len > 0) {
+			start_offset = start == 0 ? 0 :character_offset_[start - 1];
+			end_offset = character_offset_[start - 1 + len];
+		} else {
+			start_offset = 
+				(start + len == 0) ? 0 : character_offset_[start - 1 + len];
+			end_offset = character_offset_[start - 1];
+		}
+		tmp.set_variable("selection_offset", variant(start_offset));
+		tmp.set_variable("selection_width", variant(end_offset  - start_offset ));
 	}
+}
+
+void ttext_box::set_size(const SDL_Rect& rect)
+{
+	// Inherited.
+	tcontrol::set_size(rect);
+
+	update_offsets();
+}	
+
+//! Handles the selection in a mouse down or mouse move event.
+void ttext_box::handle_mouse_selection(
+		tevent_handler& event, const bool start_selection)
+{
+	tpoint mouse = event.get_mouse();
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+	// FIXME we dont test for overflow in width
+	if(mouse.x < text_x_offset_ || mouse.y < text_y_offset_ 
+			|| mouse.y >= text_y_offset_ + text_height_) {
+		return;
+	}
+
+	int offset = get_character_offset_at(mouse.x - text_x_offset_);
+	if(offset < 0) {
+		return;
+	}
+
+
+	set_cursor(offset, !start_selection);
+	set_canvas_text();
+	set_dirty();
+	dragging_ |= start_selection;
+}
+
+//! Inherited from twidget.
+void ttext_box::mouse_left_button_down(tevent_handler& event)
+{
+	DBG_G_E << "Text box: left mouse down.\n";
+
+	handle_mouse_selection(event, true);
+}
+
+//! Inherited from twidget.
+void ttext_box::mouse_move(tevent_handler& event)
+{
+	DBG_G_E << "Text box: mouse move.\n";
+
+	if(!dragging_) {
+		return;
+	}
+
+	handle_mouse_selection(event, false);
+}
+
+//! Inherited from twidget.
+void ttext_box::mouse_left_button_up(tevent_handler& event)
+{
+	// FIXME there's a bug in the event code if the up occurs
+	// off widget we aren't fired (which should happen).
+	// No work arounds made need to fix the event code.
+	
+	DBG_G_E << "Text box: left mouse up.\n";
+
+	dragging_ = false;
+}
+
+//! Inherited from twidget.
+void ttext_box::mouse_left_button_double_click(tevent_handler&)
+{
+	// FIXME there's a bug in the event code, double clicks
+	// don't work it the widget doesn't capture the mouse.
+	
+	DBG_G_E << "Text box: left mouse double click.\n";
+
+	select_all();
 }
 
 //! Calculates the offsets of all chars.
@@ -165,7 +258,6 @@ void ttext_box::calculate_char_offset()
 	std::string rendered_text;
 	const unsigned font_size = config()->text_font_size;
 
-	// FIXME we assume the text start at offset 0!!!
 	foreach(const wchar_t& unicode, utils::string_to_wstring(text())) {
 		rendered_text.insert(rendered_text.end(), unicode);
 		surface surf = render_text(rendered_text, font_size);
@@ -173,6 +265,21 @@ void ttext_box::calculate_char_offset()
 		character_offset_.push_back(surf->w);
 
 	}
+}
+
+//! Gets the character at the wanted offset, everything beyond will
+//! select the last character.
+unsigned ttext_box::get_character_offset_at(const unsigned offset)
+{
+	unsigned result = 0;
+	foreach(unsigned off, character_offset_) {
+		if(offset < off) {
+			return result;
+		}
+
+		++result;
+	}
+	return text().size();
 }
 
 void ttext_box::handle_key_clear_line(SDLMod /*modifier*/, bool& handled)
@@ -201,6 +308,41 @@ void ttext_box::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 		set_text(history_.down(text()));
 		handled = true;
 	}
+}
+
+//! Inherited from tcontrol.
+void ttext_box::load_config_extra()
+{
+	update_offsets();
+}
+
+// Updates text_x_offset_ and text_x_offset_.
+void ttext_box::update_offsets()
+{
+	assert(config());
+
+	ttext_box_definition::tresolution* conf = 
+		dynamic_cast<ttext_box_definition::tresolution*>(config());
+	assert(conf);
+
+	text_height_ = font::get_max_height(conf->text_font_size);
+	
+	game_logic::map_formula_callable variables;
+	variables.add("height", variant(get_height()));
+	variables.add("width", variant(get_width()));
+	variables.add("text_font_height", variant(text_height_));
+
+	text_x_offset_ = conf->text_x_offset(variables);
+	text_y_offset_ = conf->text_y_offset(variables);
+
+	// Since this variable doesn't change set it here instead of in
+	// set_canvas_text().
+	foreach(tcanvas& tmp, canvas()) {
+		tmp.set_variable("text_font_height", variant(text_height_));
+	}
+ 
+ 	// Force an update of the canvas since now text_font_height is known.
+	set_canvas_text();
 }
 
 ttext_history ttext_history::get_history(const std::string& id, const bool enabled) 

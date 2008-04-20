@@ -72,9 +72,11 @@ public:
 
 	void set_height(const unsigned height);
 
+	//! Inherited from tevent_handler.
 	twindow& get_window() { return *this; }
+	const twindow& get_window() const { return *this; }
 
-	//! Inherited from tevent_handler
+	//! Inherited from tevent_handler.
 	twidget* get_widget(const tpoint& coordinate) { return tpanel::get_widget(coordinate); }
 
 	tpoint client_position(const tpoint& screen_position) const

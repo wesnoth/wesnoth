@@ -63,13 +63,15 @@ protected:
 	virtual void goto_start_of_line(const bool select = false) = 0;
 	void goto_start_of_data(const bool select = false) { set_cursor(0, select); }
 
+	void select_all() { sel_start_ = 0; goto_end_of_data(true); }
+
 	void set_cursor(const size_t offset, const bool select); // call set dirty
 
 	size_t get_sel_start() const { return sel_start_; }
 	void  set_sel_start(const size_t sel_start) { sel_start_ = sel_start; set_dirty(); }
 
 	size_t get_sel_len() const { return sel_len_; }
-	void  set_sel_len(const unsigned sel_len) { sel_len_ = sel_len; set_dirty(); }
+	void set_sel_len(const unsigned sel_len) { sel_len_ = sel_len; set_dirty(); }
 
 	//! Inserts a character at the cursor.
 	virtual void insert_char(Uint16 unicode) = 0;
@@ -79,6 +81,12 @@ protected:
 
 	//! Deletes the current selection.
 	virtual void delete_selection() = 0;
+
+	//! Copies the current selection.
+	virtual void copy_selection();
+
+	//! Pastes the current selection.
+	virtual void paste_selection();
 
 protected:
 

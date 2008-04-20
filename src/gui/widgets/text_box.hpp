@@ -71,8 +71,12 @@ public:
 	ttext_box() :
 		ttext_(),
 		character_offset_(),
-		history_()
-	{}
+		history_(),
+		text_x_offset_(0),
+		text_y_offset_(0),
+		text_height_(0),
+		dragging_(false)
+	{ set_wants_mouse_left_double_click(); }
 
 	void set_history(const std::string& id) 
 		{ history_ = ttext_history::get_history(id, true); }
@@ -102,8 +106,26 @@ protected:
 	//! Inherited from tcontrol.
 	void set_canvas_text();
 
+	//! Inherited from tcontrol..
+	void set_size(const SDL_Rect& rect);
+
 	void goto_end_of_line(const bool select = false) { goto_end_of_data(select); }
 	void goto_start_of_line(const bool select = false) { goto_start_of_data(select); }
+
+	//! Handles the selection in a mouse down or mouse move event.
+	void handle_mouse_selection(tevent_handler& event, const bool start_selection);
+
+	//! Inherited from twidget.
+	void mouse_left_button_down(tevent_handler& event);
+
+	//! Inherited from twidget.
+	void mouse_move(tevent_handler& event);
+
+	//! Inherited from twidget.
+	void mouse_left_button_up(tevent_handler&);
+
+	//! Inherited from twidget.
+	void mouse_left_button_double_click(tevent_handler&);
 
 private:
 
@@ -119,11 +141,27 @@ private:
 	//! Inherited from ttext_.
 	void calculate_char_offset();
 
+	//! Gets the character at the wanted offset, everything beyond will
+	//! select the last character.
+	unsigned get_character_offset_at(const unsigned offset);
+
 	ttext_history history_;
 
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 
 		{ static const std::string type = "text_box"; return type; }
+
+	//! Inherited from tcontrol.
+	void load_config_extra();
+	
+	unsigned text_x_offset_;
+	unsigned text_y_offset_;
+	unsigned text_height_;
+
+	// Updates text_x_offset_ and text_x_offset_.
+	void update_offsets();
+
+	bool dragging_;
 };
 
 

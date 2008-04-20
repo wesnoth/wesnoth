@@ -193,6 +193,11 @@ void tevent_handler::mouse_capture(const bool capture)
 	mouse_captured_ = capture;
 }
 
+tpoint tevent_handler::get_mouse() const
+{ 
+	return get_window().client_position(tpoint(mouse_x_, mouse_y_)); 
+}
+
 void tevent_handler::show_tooltip(const t_string& tooltip, const unsigned timeout)
 {
 	DBG_G_E << "Event: show tooltip.\n";

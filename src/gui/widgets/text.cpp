@@ -14,7 +14,9 @@
 
 #include "gui/widgets/text.hpp"
 
+#include "clipboard.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
 #define LOG_G LOG_STREAM_INDENT(info, gui)
@@ -44,11 +46,14 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 
 		if(sel_start_ == offset) {
 			sel_len_ = 0;
-		} else if (offset > sel_start_) {
-			sel_len_ = sel_start_ - offset;
-		} else { // sel_start_ < offset
+		} else {
 			sel_len_ = - (sel_start_ - offset);
 		}
+
+#ifdef __unix__
+		// selecting copies on UNIX systems.
+		copy_selection();
+#endif
 		set_canvas_text();
 		set_dirty();
 
@@ -168,7 +173,40 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 		case SDLK_DELETE :
 			handle_key_delete(modifier, handled);
 			break;
+
+		case SDLK_c :
+			if(!(modifier & KMOD_CTRL)) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
 			
+			// atm we don't care whether there is something to copy or paste
+			// if nothing is there we still don't want to be chained.
+			copy_selection();
+			handled = true;
+			break;
+
+		case SDLK_x :
+			if(!(modifier & KMOD_CTRL)) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+			
+			copy_selection();
+			delete_selection();
+			handled = true;
+			break;
+
+		case SDLK_v :
+			if(!(modifier & KMOD_CTRL)) {
+				handle_key_default(handled, key, modifier, unicode);
+				break;
+			}
+			
+			paste_selection();
+			handled = true;
+			break;
+
 		default :
 			handle_key_default(handled, key, modifier, unicode);
 
@@ -198,6 +236,41 @@ void ttext_::set_state(tstate state)
 	}
 }
 
+//! Copies the current selection.
+void ttext_::copy_selection()
+{
+	int len = sel_len();
+	unsigned start = sel_start();
+
+	if(len < 0) {
+		len = - len;
+		start -= len;
+	}
+
+	const wide_string& wtext = utils::string_to_wstring(text_);
+	const std::string& text = utils::wstring_to_string(wide_string(wtext.begin() + start, wtext.begin() + start +len));
+	copy_to_clipboard(text);
+}
+
+//! Pastes the current selection.
+void ttext_::paste_selection()
+{
+	const std::string& text = copy_from_clipboard();
+	if(text.empty()) {
+		return;
+	}
+
+	delete_selection();
+
+	text_.insert(sel_start_, text);
+
+	sel_start_ += utils::string_to_wstring(text).size();
+
+	calculate_char_offset(); 
+	set_canvas_text();
+	set_dirty(); 
+}
+
 // Go a character left of not at start of buffer else beep.
 // ctrl moves a word instead of character.
 // shift selects while moving.
@@ -207,7 +280,7 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 
 	handled = true;
 	if(sel_start_) {
-		set_cursor(sel_start_ - 1, modifier & KMOD_SHIFT);
+		set_cursor(sel_start_ - 1 + sel_len_, modifier & KMOD_SHIFT);
 	}
 }
 
@@ -220,7 +293,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 
 	handled = true;
 	if(sel_start_ < text_.size()) {
-		set_cursor(sel_start_ + 1, modifier & KMOD_SHIFT);
+		set_cursor(sel_start_ + 1 + sel_len_, modifier & KMOD_SHIFT);
 	}
 }
 

@@ -131,6 +131,9 @@ struct ttext_box_definition : public tcontrol_definition
 	struct tresolution : public tresolution_definition_
 	{
 		tresolution(const config& cfg);
+
+		tformula<unsigned> text_x_offset;
+		tformula<unsigned> text_y_offset;
 	};
 
 };

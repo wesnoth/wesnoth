@@ -43,11 +43,14 @@ public:
 	void handle_event(const SDL_Event& event);
 
 	virtual twindow& get_window() = 0;
+	virtual const twindow& get_window() const = 0;
 
 	virtual twidget* get_widget(const tpoint& coordinate) = 0;
 
 	void mouse_capture(const bool capture = true);
 	void keyboard_capture(twidget* widget) { keyboard_focus_ = widget; }
+
+	tpoint get_mouse() const;
 
 	//! We impement the handling of the tip, but call the do functions
 	//! which are virtual.
