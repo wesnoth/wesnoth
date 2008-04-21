@@ -805,7 +805,7 @@ void attack::fire_event(const std::string& n)
 			recalculate_fog(map_,units_,teams_,attacker_side-1);
 			recalculate_fog(map_,units_,teams_,defender_side-1);
 			gui_.recalculate_minimap();
-			gui_.update_display();
+			gui_.draw(true,true);
 		}
 		fire_event("attack_end");
 		throw attack_end_exception();
