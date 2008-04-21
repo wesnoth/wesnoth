@@ -19,40 +19,59 @@ Version 1.5.0-svn:
    * added a light shadow on the bar of the loading screen
    * new dungeon wall terrain
    * new city-themed village variation
+   * new progressive parameter for animations: submerge
+   * new progressive parameter for animations: x and y
+   * image_diagonal now also works with normal [frame]
+   * sub-frames now obey terrain height
+   * selecting a poisoned unit now does the selection anim properly
+   * convert the render engine to a z-ordered based engine, this allows to 
+     have multiple layers and the calculation and rendering are separated
+     which means things can be drawn in front of units.
+   * removed the now unused tilestack based drawing.
    * added a new experimental gui engine available when starting with
      --new-widgets. The engine doesn't do much yet.
- * user interface:
-   * placement of the counters and displays of the top panel optimized
-   * new history feature for entering searches, chat messages, commands, and
-     AI formulas
-   * optional cancelling of unit orders in load-game dialog (patch #1024)
-   * smarter pathfinding: if same MP cost, prefer terrains with better defense
-     and empty hexes (less frequent multi-turn moves blocked by a friend)
-   * New full map screenshot feature (no default hotkey).
-   * When trying to define an already used hotkey, now tell where it's used.
-   * More info in hotkey message (what key already use it and a warning if bad
-     choice for screenshot key)
+ * map editor:
+   * Fixed not working "Update transition" and made "Delay transition update"
+     directly trigger an update when toggled off.
+   * add-ons can now make their custom terrains available in the editor
+   * Draw base terrain under an overlay when ALT is pressed
+   * Implemented adjustable lighting levels (time of day)
+     (debian bug #458305 / gna bug #11408)
+ * game engine:
+   * Implemented lazy loading for unit_types
  * language and i18n:
    * new translation: Croatian
    * updated translations: Chinese, Czech, Danish, Dutch, Finnish, French,
      Galician, German, Greek, Hungarian, Italian, Lithuanian, Japanese, Polish,
      Russian, Serbian, Slovak, Spanish, Swedish, Turkish, Valencian
    * updated fonts: DejaVuSans 2.24
- * map editor:
-   * Fixed not working "Update transition" and make "Delay transition update"
-     directly trigger an update when toggled off.
-   * add-ons can now make their custom terrains available in the editor
-   * Draw base terrain under an overlay when ALT is pressed
-   * Implemented adjustable lighting levels (time of day)
-     (debian bug #458305 / gna bug #11408)
- * game engine
-   * Implemented lazy loading for unit_types
  * multiplayer:
-   * Removed Wesbowl
-   * Merged 4p A New Land by Bob_the_Mighty
+   * added maps: Howling Ghost Badlands
+   * revised maps: Sablestone Delta, Sullas Ruins,
+     Silverhead Crossing, The Freelands, The Manzivan Traps
+   * removed the Wesbowl scenario
+   * added the "A New Land" scenario by Bob_the_Mighty
+ * user interface:
+   * placement of the counters and displays of the top panel optimized
+   * new history feature for entering searches, chat messages, commands, and
+     AI formulas
+   * Refactored the in-game console and added help function (patch #1036)
+   * Refactored chat /commands and added help.  Made :commands a superset 
+     of chat /commands
+   * optional cancelling of unit orders in load-game dialog (patch #1024)
+   * fixed sub-optimal multi-turn pathfinding which avoided ZoC too much
+   * smarter pathfinding: if same MP cost, prefer terrains with better defense
+     and empty hexes (less frequent multi-turn moves blocked by a friend)
+   * New full map screenshot feature (no default hotkey).
+   * More info in hotkey message (where the key is currently used and a warning
+     if the screenshot hotkey does not use a modifier)
+   * Load-game dialog displays a campaign's translated name rather than its
+     internal id now
+   * the hardcoded resolution list now also includes tiny gui and small gui
+     resolutions if compiled with those switches
  * WML engine:
    * new tag [insert_tag] to place dynamic WML content
-   * Fixed most C++ probes for boolean WML attributes to use 
+   * Extended most C++ checks for boolean WML attributes to use 
      utils::string_bool() rather than true/false or yes/no string comparisons;
      as a result, they should accept true non-zero values, "on", "yes" or "true"
      strings; and "0", "off", "no" or "false" are considered false values.
@@ -96,7 +115,7 @@ Version 1.5.0-svn:
    * locations stored in variable now include ownership information for villages
    * new [switch] conditional command
    * new [fire_event] event tag to fire any custom event
-   * new [unit_side] theme element : this is the side of the current unit (flag)
+   * new [unit_side] theme element: this is the side of the current unit (flag)
    * Preprocessor now logs when it encounters an undefined macro, and when it
      fails opening a file.
    * Implemented prerecall/recall. Now prerecruit/recruit will no more trigger
@@ -104,33 +123,27 @@ Version 1.5.0-svn:
    * Add support for overlay terrains (terrains which can be placed above any
      base terrain)
    * Add multiple types for events
-   * Add allow a simple [clear_variable] to clear multiple variables (separated
-     by comma)
+   * Allow [clear_variable] to clear multiple variables (separated by comma)
    * Fixed bug #11286 "Sighted events not firing when turning off delay shroud
      updates". Which also means that user may fire sighted events in a new way.
  * miscellaneous and bug fixes:
    * Changed logging to have less overhead when it is turned off (patch #1038)
-   * Fixed error message for broken add-on campaigns (bug #11078)
-   * Refactored the in-game console and added help function (patch #1036)
-   * Refactored chat /commands and added help.  Made :commands a superset 
-     of chat /commands
+   * Fixed error message for broken add-ons (bug #11078)
    * Added new commandline options (patch #1031)
      -s or --server [host] connect to host specified or to the first server
      in preferences
      -c or --campaign skip menu and show campaign selection menu
-      --with-replay replays the file loaded with --load option.
+     --with-replay replays the file loaded with --load option.
    * INSTALL now describes the scons build.  autotools, while still present,
      is deprecated.
    * Removed spurious -R linker switch from command line generated by the Boost
      M4 macros
-   * Load-game dialog displays a scenario campaign's translated name rather than
-     its internal id now
-   * wmlxgettext now print some context information about the strings
+   * wmlxgettext now prints some context information about the strings
      extracted (patch #993)
-   * Fixed network_worker to span at least one thread (bug #11238)
+   * Fixed network_worker to spawn at least one thread (bug #11238)
    * more comprehensive terrain type naming to avoid confusing displays such
      as 'Road (Grassland)' or 'Impassable mountain (Cavewall)'
-     This also applies to the WML keys used in the stats :
+     This also applies to the WML keys used in the stats:
      - grassland becomes flat
      - tundra becomes frozen
      - canyon becomes unwalkable
@@ -152,26 +165,14 @@ Version 1.5.0-svn:
      (patch #1002)
    * added -Werror -Wno-unused -Wno-sign-compare to the default compiler
      flags, can be disabled with --disable-strict-compilation.
-   * the hardcoded resolution list now also includes tiny gui and small gui
-     resolutions if compiled with those switches
-   * learn the underlaying terrain so you'll not have a blank like in the unit
-     stats if you encounter a terain aliased to a unencountered terrain
-   * convert the render engine to a z-ordered based engine, this allows to 
-     have multiple layers and the calculation and rendering are separated
-     which means things can be drawn in front of units.
-   * removed the now unused tilestack based drawing.
+   * learn the underlying terrain so you'll not have a blank line in the unit
+     stats if you encounter a terrain aliased to an unencountered terrain
    * fixed an alignement issue which caused a SIGBUS on a Sparc (debian bug
      #426318)
    * wesnoth-pngcrush is now superseded by wesnoth-optipng
    * clean up gcc 4.3 warnings so the game now builds on fedora rawhide
-     with warnings treated as errors. A few of bugs were found in the
+     with warnings treated as errors. A few bugs were found in the
      process as well.
-   * new progressive parameter for animations : submerge
-   * new progressive parameter for animations : x and y
-   * image_diagonal now also works with normal [frame]
-   * fix sub-optimal multi-turns pathfinding which avoided ZoC too much
-   * sub-frames now obey terrain height
-   * selecting a poisoned unit now does the selection anim properly
 
 Version 1.4:
  * language and i18n:
