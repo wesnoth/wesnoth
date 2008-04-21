@@ -41,9 +41,6 @@ namespace
 	// map by hash for equivalent inserted tags already in the cache
 	std::map<std::string const *, config const *> hash_to_cache;
 
-	// map to remember config hashes that have already been calculated
-	std::map<config const *, std::string const *> config_hashes;
-
 	config empty_config;
 
     struct compare_str_ptr {
@@ -67,7 +64,6 @@ namespace
         }
 	    void clear() {
 	        hash_to_cache.clear();
-	        config_hashes.clear();
             std::set<std::string const*, compare_str_ptr>::iterator mem_it,
                 mem_end = mem_.end();
             for(mem_it = mem_.begin(); mem_it != mem_end; ++mem_it) {
@@ -85,18 +81,14 @@ namespace
 }
 
 static const std::string* get_hash_of(const config* cp) {
-	std::string const*& hash_ref = config_hashes[cp];
-	if(hash_ref == NULL) {
-	    const std::string & temp_hash = cp->hash();
-	    std::string const* find_hash = hash_memory.find(temp_hash);
-	    if(find_hash != NULL) {
-            hash_ref = find_hash;
-            return hash_ref;
-	    }
-        hash_ref = new std::string(temp_hash);
-        hash_memory.insert(hash_ref);
-	}
-    return hash_ref;
+    const std::string & temp_hash = cp->hash();
+    std::string const* find_hash = hash_memory.find(temp_hash);
+    if(find_hash != NULL) {
+        return find_hash;
+    }
+    std::string* new_hash = new std::string(temp_hash);
+    hash_memory.insert(new_hash);
+    return new_hash;
 }
 
 static void increment_config_usage(const config*& cp) {
