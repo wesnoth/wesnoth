@@ -68,8 +68,8 @@
 %
  * Shadow_Master attacks vonhalenbach. Critical hit! vonhalenbach dies. Shadow_Master gets 10 XP. 60/58 XP reached! Leveling up option: Shadow Master L6, Shadow Lawyer. Chose: Shadow Lawyer! Shadow_Master turns into a Shadow Lawyer
 <vonhalenbach>	You are a Lawyer?
-<Shadow_Master>	actually, no :P
 <esr>	AAARRGGHH!  Run for your lives!
+<Shadow_Master>	actually, no :P
 <vonhalenbach>	good.
 <Shadow_Master>	esr: :)
 <esr>	I'm married to a lawyer.
@@ -115,4 +115,36 @@ I ran apt-get upgrade and instead of upgrading Wesnoth, it seems to have erased 
 I imagine this will be fixed before too long. I certainly hope so. I am already going through withdrawl. /me goes to draw hexes on my kitchen floor, and pretend pieces of lint are orcs. --Glowing Fish
 %
 A number of people have noted a striking similarity in the appearance of the dark adepts and the new sprites for the ghosts.  Though this is partly due to an intent towards having a consistent visual appearance for the undead faction, it's also because of an desire to have a reliable repository for disobedient adepts.
+%
+00:19 <JarisSeagull> Is CIA a bot?
+00:21 <ilor_> JarisSeagull: yes, http://cia.vc/doc/
+00:21 <Ivanovic> ilor_: psst
+00:21 <Ivanovic> JarisSeagull: NO!
+00:22 <ilor_> Ivanovic?
+00:22 <Ivanovic> JarisSeagull: it is our personal slave which monitors the svn rep
+00:22 <Ivanovic> and it will tell us about all changes
+00:22 <ilor_> ah yeah sorry
+00:22 <Ivanovic> (slaves are nice to have...)
+00:22 <ilor_> the devs told him he'll get into gsoc if he does that for 3 months
+00:22 <Ivanovic> ilor_: you mixed things up: s/months/years
+00:23 <Ivanovic> ;)
+00:24 <JarisSeagull> Ivanovic> I see it's smart enough to keep track of transactions and summarise the commited changes ;-)
+00:26 <Ivanovic> JarisSeagull: you see, no bot would be able to do so, only real slaves do this
+00:27 <Ivanovic> JarisSeagull: but sometimes our slave is asleep, then you have to kick him to get the latest commits
+00:27  * Ivanovic kicks CIA-34
+00:27 <CIA-34> ow
+00:28 <JarisSeagull> Ivanovic> what do you feed it with so it doesn't die or you are replacing 'em?
+00:28 <Ivanovic> JarisSeagull: when it dies, we just use the next clone
+00:31 <JarisSeagull> Ivanovic> newbot = bot.clone(bot.id+1); std::cout << bot.dyingWish(); delete bot; bot=newbot; ?
+00:31 <JarisSeagull> Ivanovic> so 33 died so far?
+00:32 <Ivanovic> JarisSeagull: we did outsource this to our biotech labs
+00:32 <Ivanovic> you have to ask the cia for details
+00:33 <Ivanovic> (maybe the kgb knows about it, too)
+00:33  * JarisSeagull melted having heard of biology
+00:34 <Ivanovic> they are using some strange new approach of something they call "binary life"
+00:36 <Ivanovic> but i am just the release bot, so i don't care about those implementation details...
+00:36 <Ivanovic> and i now need to get some sleep, n8
+00:36 <grrr> convert(releaseBot, sleepBot)
+00:38 <JarisSeagull> Ivanovic> n8 =)
+  -- #wesnoth-dev, 2008-03-06
 %
