@@ -536,8 +536,7 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 							gui_->set_team(t-1);
 							gui_->recalculate_minimap();
 							gui_->invalidate_all();
-							gui_->draw();
-							gui_->update_display();
+							gui_->draw(true,true);
 						}
 					}
 				}
@@ -564,8 +563,7 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->set_team(player_number_ - 1);
 	gui_->recalculate_minimap();
 	gui_->invalidate_all();
-	gui_->draw();
-	gui_->update_display();
+	gui_->draw(true,true);
 
 	if (save) {
 		menu_handler_.autosave(gamestate_.label, status_.turn(), gamestate_.starting_pos);

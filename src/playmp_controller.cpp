@@ -106,8 +106,7 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 						gui_->set_team(t-1);
 						gui_->recalculate_minimap();
 						gui_->invalidate_all();
-						gui_->draw();
-						gui_->update_display();
+						gui_->draw(true,true);
 					}
 				}
 			}
@@ -289,8 +288,7 @@ void playmp_controller::linger(upload_log& log)
 	gui_->set_team(0,true);
 	gui_->recalculate_minimap();
 	gui_->invalidate_all();
-	gui_->draw();
-	gui_->update_display();
+	gui_->draw(true,true);
 
 	bool quit;
 	do {
