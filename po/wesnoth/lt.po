@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-20 12:39+0200\n"
-"PO-Revision-Date: 2008-03-19 18:00+0300\n"
+"PO-Revision-Date: 2008-04-18 00:07+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -426,6 +426,9 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Kai kurie ginklai turi ypatingų savybių, kurios padidina puolimo jais "
+"efektyvumą.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:110
@@ -443,7 +446,7 @@ msgstr ""
 "\n"
 "\n"
 "Šis dalinys šiuo metu nežinomas. Jūs privalote atrasti jį žaidime, kad "
-"būtumėte leistas pamatyti jo aprašymą."
+"galėtumėte pamatyti jo aprašymą."
 
 #. [topic]
 #: data/core/help.cfg:118
@@ -522,6 +525,13 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
+"Žaidimas vyksta mūšių serijomis, pavadintomis scenarijais. Kiekvienas "
+"scenarijus išbando jūsų karius prieš vieno ar kelių priešininkų karius. "
+"Galite žaisti prieš kompiuterį arba su draugais, paeiliui sėdėdami prie "
+"kompiuterio (karštos vietos žaidimas). Jeigu jūsų kompiuteris prijungtas "
+"prie kompiuterių tinklo, galite žaisi su kitais žmonėmis, prisijungusiais "
+"prie to tinklo. Jei jūsų kompiuteris turi ryšį su internetu, galite žaisti "
+"su kitais žaidėjais per internetą."
 
 #. [topic]
 #: data/core/help.cfg:146
@@ -543,7 +553,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:151
 msgid "Victory and Defeat"
-msgstr "Pergalė ir pralaimėjimas"
+msgstr "Pergalė ir Pralaimėjimas"
 
 #. [topic]
 #: data/core/help.cfg:152
@@ -599,12 +609,17 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Recruited units come with two random <ref>dst=..traits_section text=Traits</"
 "ref> which modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Pasamdyti daliniai turi du atsitiktinius <ref>dst=..traits_section "
+"text=Bruožus</ref>, kurie keičia jų statistiką."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -637,6 +652,8 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"Virš energijos juostos, rodomos šalia jūsų dalinių, yra rutulys. Daliniams, "
+"kuriuos jūs kontroliuojate, šis rutulys yra:"
 
 #. [topic]
 #: data/core/help.cfg:175
@@ -661,12 +678,12 @@ msgstr "Rutulys mėlynas, jei dalinys yra draugas, kurio jūs nevaldote."
 #. [topic]
 #: data/core/help.cfg:179
 msgid "Enemy units have no orb on top of their energy bar."
-msgstr ""
+msgstr "Priešo daliniai neturi rutulio virš jų energijos juostos."
 
 #. [topic]
 #: data/core/help.cfg:184
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Gyvybės taškai ir Patirtis"
 
 #. [topic]
 #: data/core/help.cfg:185
@@ -676,6 +693,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
+"Kiekvienas dalinys turi tam tikrą kiekį gyvybės taškų (GT). Jei dalinio "
+"gyvybės taškai nukrenta žemiau 1, dalinys miršta. Kiekvienas dalinys turi "
+"tam tikrą skaičių patirties taškų (PT). Naujai pasamdytas dalinys neturi "
+"patirties taškų ir įgauna patirties kovodamas su priešais."
 
 #. [topic]
 #: data/core/help.cfg:189
@@ -1013,6 +1034,8 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Turėkite omeny, kad kai kurie scenarijai vyksta požemyje, kur nuolat yra "
+"naktis!"
 
 #. [topic]
 #: data/core/help.cfg:268
@@ -1309,7 +1332,7 @@ msgstr "Atsparus"
 #. [topic]
 #: data/core/help.cfg:353
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "Atsparūs daliniai turi 4 GT plius 1 GT lygiui daugiau negu paprastai."
+msgstr "Atsparūs daliniai turi 4 GT plius 1 GT lygiui daugiau negu įprasta."
 
 #. [topic]
 #: data/core/help.cfg:355
@@ -1430,6 +1453,11 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Mechaniniai daliniai paprastai turi vienintelį bruožą „Mechaninis“. Kadangi "
+"mechaniniai daliniai iš tikrųjų neturi gyvybės, išsiurbimas, nuodai ir maras "
+"jų neveikia."
 
 #. [topic]
 #: data/core/help.cfg:398
@@ -1481,6 +1509,9 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"Žaidimo žemėlapiuose yra įvairių vietovių, kuriuos veikia ir dalinių "
+"judėjimą, ir dalinių gynybinius sugebėjimus mūšyje.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:423
@@ -1903,6 +1934,8 @@ msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Urvų sienos yra iš vientiso akmens, pagarsėjusio galimybe priešintis net "
+"ryžtingiausiam keliautojui."
 
 #. [topic]
 #: data/core/help.cfg:661
@@ -2267,7 +2300,7 @@ msgstr ""
 #. [hides]
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
 msgid "ambush"
-msgstr ""
+msgstr "pasala"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:384
@@ -2332,7 +2365,7 @@ msgstr ""
 #. [dummy]
 #: data/core/macros/abilities.cfg:474
 msgid "feeding"
-msgstr ""
+msgstr "maitinimasis"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:476
@@ -2341,6 +2374,9 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Maitinimasis:\n"
+"Šis dalinys gauna 1 gyvybės tašką, pridedamą prie jo maksimalaus, kai jis "
+"užmuša gyvą dalinį."
 
 #: data/core/macros/abilities.cfg:500
 msgid "+1 max HP"
@@ -2502,12 +2538,12 @@ msgstr "Daug aukso"
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:62
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
+msgstr "Aš noriu, kad ši auksinė moneta man grįžtų dešimteriopai."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:68
 msgid "Peace throughout Wesnoth."
-msgstr ""
+msgstr "Taikos visame Wesnothe."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:75
@@ -2517,7 +2553,7 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:81
 msgid "Don't make a wish."
-msgstr ""
+msgstr "Negalvoti noro."
 
 #. [object]
 #: data/core/macros/items.cfg:112
@@ -2579,7 +2615,7 @@ msgstr ""
 #. [object]
 #: data/core/macros/items.cfg:274
 msgid "This poor unit drank something really bad."
-msgstr ""
+msgstr "Šis vargšas dalinys išgėrė kažko labai blogo."
 
 #. [object]
 #: data/core/macros/items.cfg:309
@@ -2629,7 +2665,7 @@ msgstr ""
 #. [object]
 #: data/core/macros/items.cfg:429
 msgid "Only the mermen can use this item!"
-msgstr "Tik vandenis gali naudoti šį daiktą!"
+msgstr "Tik vandeniai gali naudoti šį daiktą!"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:442
@@ -2834,11 +2870,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:18
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr ""
+msgstr "Graa,Greaa,Gree,Kaaa,Kasšš,Kesšš,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
 #: data/core/macros/names.cfg:19
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
+msgstr "Kaasa,Kajja,Kejja,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -2993,6 +3029,13 @@ msgid ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 msgstr ""
+"Aliassė,Amailisė,Aksmailia,Blai,Blanalai,Bli,Bliana,Brassasė,Brissal,"
+"Gaksmailė,Griama,Grissa,Grissilai,Haila,Haina,Harksiasė,Huzi,Inai,Inalai,"
+"Issalai,Klezė,Krasė,Krezkpsė,Kzapė,Lamai,Lamaissa,Lekspekė,Liabra,Lilin,"
+"Linassa,Maissa,Malina,Mila,Milbra,Nildlasi,Okspelė,Poniazalė,Psalė,Psenė,"
+"Pzakpė,Riaa,Sallė,Sassalia,Saksiala,Saksririaa,Sekė,Skalė,Skepzė,Sla,Snelia,"
+"Srakė,Sralė,Szakė,Trikszedė,Vilaila,Vissalai,Vlanissa,Zabrakė,Zamalia,Zina,"
+"Zinasia,Znamasė,Zopknė,Zalspė,Zlekė,Zpsekė,Zsekpė"
 
 #: data/core/macros/names.cfg:42
 msgid ""
@@ -3003,6 +3046,13 @@ msgid ""
 "Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
 "Urkark"
 msgstr ""
+"Akoarkas,Akortas,Akzalkas,Arkarmas,Barkukas,Blokkaras,Borkukas,Bukkakas,"
+"Bulrukas,Korkkaras,Delkkakas,Garkukas,Gnukkas,Gorukas,Grakas,Gurkas,Gurmas,"
+"Kalkniksas,Karakas,Karbukas,Kargnakas,Karterakas,Kajrakas,Kelkraras,Kertas,"
+"Kilkraras,Kingrokas,Kirkas,Kludas,Kokkanas,Kolkas,Komakas,Korgnakas,Korkas,"
+"Korukas,Kramakas,Krogas,Krukrakas,Krumukas,Kuknukas,Kurkuras,Kurmakas,"
+"Makronas,Markaakas,Markukas,Merknikas,Nargakas,Olkas,Orkutas,Reknakas,"
+"Takolakas,Trabukas,Trakkonas,Urkaras,Urkarkas"
 
 #: data/core/macros/names.cfg:46
 msgid ""
@@ -3039,6 +3089,47 @@ msgid ""
 "Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
+"Badušas,Bagaras,Bagdišas,Baragas,Barbagas,Bartas,Bašnakas,Bidišas,Bidušas,"
+"Bikas,Bilgas,Bilo,Binakas,Binkas,Biolas,Birtas,Bogaras,Bogdišas,Bogdušas,"
+"Bogoras,Bokas,Bolgas,Bongas,Borgas,Borkas,Bortas,Bošnakas,Budušas,Bugdišas,"
+"Bukas,Bunakas,Bungas,Bunkas,Buragas,Burgas,Burkas,Buurkas,Eradašas,Eradišas,"
+"Eragdišas,Eragdušas,Eragoras,Eranakas,Erangas,Eraragas,Erargas,Erartas,"
+"Erigdušas,Erikas,Erinakas,Eriolas,Eriragas,Erirbagas,Erirgas,Erirtas,"
+"Erišnakas,Eriurkas,Erogdišas,Erogdušas,Erokas,Erongas,Eronkas,Erorbagas,"
+"Erudišas,Erudušas,Erugaras,Erugdušas,Erulo,Erunkas,Eruolas,Eruragas,Eruurkas,"
+"Gadašas,Gagaras,Gagdušas,Gagoras,Galo,Ganakas,Gankas,Gaolas,Garagas,Gašnakas,"
+"Gigoras,Ginakas,Gingas,Ginkas,Girtas,Gogdišas,Gogdušas,Gongas,Gorkas,Gortas,"
+"Gošnakas,Gradašas,Gragaras,Gragoras,Grakas,Gralgas,Gralo,Granakas,Graolas,"
+"Grarbagas,Gridašas,Gridišas,Gridušas,Grigaras,Grigoras,Grilgas,Grilo,Grinkas,"
+"Griragas,Grirgas,Grirkas,Grišnakas,Grodišas,Grogaras,Grogdišas,Grokas,"
+"Grolgas,Grongas,Gronkas,Groragas,Grorgas,Grorkas,Grortas,Grošnakas,Grudašas,"
+"Grugaras,Grugdišas,Grugdušas,Grukas,Grulo,Grunkas,Gruolas,Grurgas,Grurkas,"
+"Grurtas,Gruurkas,Gugdišas,Gugdušas,Gulgas,Gulo,Gunakas,Gurbagas,Gurtas,"
+"Gušnakas,Hadašas,Hadišas,Hadušas,Hagaras,Hagdušas,Hagoras,Hakas,Halgas,"
+"Hankas,Hašnakas,Hidašas,Hidišas,Hidušas,Higdušas,Hilgas,Hinakas,Hingas,"
+"Hinkas,Hiolas,Hiragas,Hirgas,Hodušas,Hogaras,Hogoras,Hongas,Hūlas,Horbagas,"
+"Horkas,Hortas,Hošnakas,Hudašas,Hudišas,Hugoras,Hukas,Hulgas,Hulo,Hunkas,"
+"Huolas,Huragas,Hurbagas,Hurkas,Hušnakas,Huurkas,Pagdišas,Pagoras,Palgas,Palo,"
+"Paolas,Paragas,Pašnakas,Pidušas,Pigdišas,Pigdušas,Pilgas,Pinakas,Pinkas,"
+"Pirbagas,Podašas,Podišas,Podušas,Pogdišas,Polgas,Porbagas,Porgas,Porkas,"
+"Portas,Pošnakas,Pradišas,Pragdušas,Pragoras,Pralgas,Pralo,Prangas,Praolas,"
+"Praragas,Prarbagas,Prargas,Prarkas,Prartas,Prašnakas,Praurkas,Pridišas,"
+"Prigaras,Prigdišas,Prigoras,Prilgas,Prilo,Prinakas,Priolas,Prirbagas,Prirgas,"
+"Prirtas,Priurkas,Prodašas,Prodiš,Produšas,Prolgas,Prolo,Pronakas,Prongas,"
+"Pronkas,Prūlas,Prourkas,Prudišas,Prugaras,Prugdišas,Prukas,Prunakas,Prunkas,"
+"Prurgas,Prurkas,Pruurkas,Pukas,Pulgas,Pulo,Punakas,Pungas,Punkas,Puragas,"
+"Purbagas,Purgas,Puurkas,Radašas,Ragaras,Ragdišas,Rakas,Rangas,Rankas,Raolas,"
+"Raragas,Rarbagas,Rarkas,Rašnakas,Raurkas,Rigoras,Rikas,Rilgas,Rinakas,Rinkas,"
+"Rirgas,Rirkas,Rodišas,Rodušas,Rogdišas,Rokas,Rolo,Ronakas,Rudašas,Rugaras,"
+"Rugdišas,Rukas,Rungas,Ruolas,Ruragas,Rušnakas,Vadašas,Vadišas,Vadušas,Vakas,"
+"Valo,Vankas,Varagas,Varbagas,Vigaras,Vigdišas,Vigoras,Vilgas,Viloas,Vinkas,"
+"Viragas,Virtas,Višnakas,Vogdišas,Vogoras,Vonakas,Vongas,Vorgas,Vorkas,"
+"Vošnakas,Vourkas,Vradašas,Vragaras,Vragdušas,Vragoras,Vralo,Vrangas,"
+"Vrarbagas,Vrargas,Vrartas,Vraurkas,Vridašas,Vridišas,Vrigoras,Vrikas,"
+"Vrinakas,Vringas,Vrirtas,Vrišnakas,Vriurkas,Vrodašas,Vrodišas,Vrogaras,"
+"Vrogoras,Vrolo,Vrongas,Vrorgas,Vrorkas,Vrudišas,Vrugdušas,Vrulgas,Vrungas,"
+"Vruolas,Vrurgas,Vrurtas,Vruurkas,Vudišas,Vukas,Vulgas,Vulo,Vunakas,Vuragas,"
+"Vurbagas,Vurgas,Vušnakas"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -3047,6 +3138,12 @@ msgid ""
 "Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
+"Ägas,Aghas,Bogas Ähas,Borbas,Bragas,Bragas Gohas,Brokas,Dakas,Drogas,Frokas,"
+"Ga,Gahas,Garkas,Gnarfas,Graras,Grokkas,Grumfas,Gulkas,Hakas,Haskas,Hotas,"
+"Hugas Bahas,Hu Kahas,Kak,Krakas,Krugas,Kubas,Kuhas,Lokas,Lukas,Nakas,Nukas "
+"Karas,Pagas,Rekas,Rokas,Rukas,Sarkas,Šakas,Šufas,Stu,Targas,Togas,Trufas,Tur,"
+"Tohgas,Torgas,Trokas,Tsokas,Tuhas,Tukas Ru,Uggas,Ühas,Urgas,Urghas,Urkas,"
+"Vakas,Zogas,Zuugas"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -3063,6 +3160,19 @@ msgid ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
+"Bludebalmenas,Boladrumbadrumas,Bolvuldelmanas,Bombempomgontoras,"
+"Bomtanbomkentonas,Bomtanbomtonumas,Bregaladas,Bremdebubde,Brenbasnudnemas,"
+"Brendumadoakas,Brommantendronnoras,Brumbendublunas,Brumennarunomas,"
+"Brummdlebroakas,Bumbadadabumas,Buomdumdenlolas,Carnimirië,Dabumdabumtamas,"
+"Dammantongonnuras,Danmonlulbamas,Debundbemunas,Delmduelmdelomas,Diblembumnde,"
+"Dolmannumbilas,Drongnoblemdu,Dulmandarūkas,Dulvulmendomas,Dumdumdumatumas,"
+"Elmarūmadrumas,Grelmadrumbumadumas,Gulladroamadoakas,Gumabeladrelmas,"
+"Laffalialomdiumas,Landunvonbamas,Lassemistas,Lefnublemdde,Libleddnummas,"
+"Lolmandindelas,Monlamvimdanas,Muldondindalas,Mundionalaflas,Mundumblemdumas,"
+"Munnamdulbonas,Nanmildaldumas,Nunmaldildunas,Orofarnië,Pambedrumne,"
+"Pomtamkomtrobumas,Rithramkamhanas,Tantondernintanas,Temtundembennas,"
+"Temtunnongetemas,Tondenkontenkonas,Trūmbadūmas,Tumtentantarunas,"
+"Tumtonnongatumas,Tumtumgamtomtomas,Vonrunmaldinas,Vudadūnoplas"
 
 #: data/core/macros/names.cfg:58
 msgid ""
@@ -3082,6 +3192,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"\n"
+"\n"
+"Ypatingos pastabos:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -3199,6 +3312,8 @@ msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
+" Šis dalinys sugeba sulėtinti savo priešus, dalydamas pusiau jų judėjimo "
+"greitį ir puolimo žalą, iki jų ėjimo pabaigos."
 
 #: data/core/macros/special-notes.cfg:68
 msgid ""
@@ -3234,6 +3349,8 @@ msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
+" Mūšio metu šis dalinys gali išsiurbti gyvybę iš savo aukų, kad atnaujintų "
+"savo jėgas."
 
 #: data/core/macros/special-notes.cfg:86
 msgid ""
@@ -3275,7 +3392,7 @@ msgstr "nemirėlė"
 #. [trait]
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 msgid "Immune to drain, poison and plague"
-msgstr ""
+msgstr "Atsparus išsiurbimui, nuodams ir marui"
 
 #. [trait]
 #: data/core/macros/traits.cfg:37
@@ -3623,7 +3740,7 @@ msgid ""
 msgstr ""
 "Lyginant su žmonėmis, elfai yra šiek tiek aukštesni, vikresni, bet mažiau "
 "tvirti. Jie turi šiek tiek smailias ausis, blankią odą ir paprastai šviesius "
-"plaukus. Mažai skirtumų taip žmonių ir elfų yra labiau išryškinti, nei "
+"plaukus. Mažai skirtumų tarp žmonių ir elfų yra labiau išryškinti, nei "
 "pastarųjų neįprastai ilgas gyvenimas – dauguma, nebent pasiglemžti ligos, "
 "nelaimingo atsitikimo ar karo, gyvena pilnus du šimtmečius. Nepaisant to, "
 "kad yra žinoma, kad kai kurie elfai, turintys aukštus magiškus gabumus, "
@@ -4021,7 +4138,7 @@ msgstr "Prisijungti prie serverio"
 #. [label]
 #: data/gui/default/window/addon.cfg:53 src/game.cpp:1103
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Jūs daabr prisijungsite prie serverio, kad atsisiųstumėte priedų."
 
 #. [label]
 #: data/gui/default/window/addon.cfg:83
@@ -4344,6 +4461,8 @@ msgstr "- Mūšio terminologijos karališkoji santrauka – II tomas, 212WM"
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
+"Kitais atžvilgiais pagirtinas planas gali nepavykti, jei pulsite netinkamu "
+"paros metu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
@@ -4511,7 +4630,8 @@ msgstr "- Karalius Konradas, 552WM"
 #: data/hardwired/tips.cfg:111
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr "Nebijokite atsitraukti ir persigrupuoti; tai dažnai raktas į pergalę."
+msgstr ""
+"Nebijokite atsitraukti ir persigrupuoti; tai dažnai yra raktas į pergalę."
 
 #. [tip]
 #: data/hardwired/tips.cfg:112
@@ -4686,6 +4806,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Jūs negalite atšaukti ėjimo, kuris atskleidžia kažkiek rūko arba užsklandos. "
+"Įjunkite „Atidėti uždangos atnaujinimą“ parinktį, kai jums reikia judinti "
+"dalinius, neprarandant galimybės atšaukti ėjimą."
 
 #. [tip]
 #: data/hardwired/tips.cfg:195
@@ -4882,7 +5005,7 @@ msgstr "Užverti"
 
 #: src/actions.cpp:144
 msgid "You don't have a leader to recruit with."
-msgstr ""
+msgstr "Neturite vado, su kuriuo galite samdyti."
 
 #: src/actions.cpp:151
 msgid "You must have your leader on a keep to recruit or recall units."
@@ -4978,7 +5101,7 @@ msgstr "Kuo mūsų pergalingas dalinys turi tapti?"
 
 #: src/dialogs.cpp:212
 msgid "No objectives available"
-msgstr ""
+msgstr "Nėra jokių tikslų"
 
 #: src/dialogs.cpp:233
 msgid "Save Game"
@@ -5205,8 +5328,9 @@ msgid "File I/O Error while reading the game"
 msgstr "Failo I/O klaida, nuskaitant žaidimą"
 
 #: src/game.cpp:956
+#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr ""
+msgstr "Nėra jokių tikslų"
 
 #: src/game.cpp:960
 msgid "Play a campaign"
@@ -5423,12 +5547,11 @@ msgid "Choose your preferred language:"
 msgstr "Pasirinkite pageidaujamą kalbą:"
 
 #: src/game.cpp:1865
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Šis priedas turėjo klaidų ir negali būti įkeltas:"
-msgstr[1] "Šis priedas turėjo klaidų ir negali būti įkeltas:"
-msgstr[2] "Šis priedas turėjo klaidų ir negali būti įkeltas:"
+msgstr[1] "Šis priedai turėjo klaidų ir negali būti įkelti:"
+msgstr[2] "Šis priedai turėjo klaidų ir negali būti įkelti:"
 
 #: src/game.cpp:1872
 msgid "ERROR DETAILS:"
@@ -5824,18 +5947,16 @@ msgid "Taken"
 msgstr ""
 
 #: src/menu_events.cpp:298 src/menu_events.cpp:301 src/menu_events.cpp:305
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "Ar tikrai norite ištrinti šį žaidimą?"
+msgstr "Ar tikrai norite atleisti jį?"
 
 #: src/menu_events.cpp:298
 msgid "My lord, this unit is loyal and requires no upkeep! "
 msgstr ""
 
 #: src/menu_events.cpp:299 src/menu_events.cpp:302 src/menu_events.cpp:306
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "Ar tikrai norite ištrinti šį žaidimą?"
+msgstr "Ar tikrai norite atleisti ją?"
 
 #: src/menu_events.cpp:301
 msgid "My lord, this unit is an experienced one, having advanced levels! "
@@ -6286,7 +6407,7 @@ msgstr ""
 #: src/multiplayer_connect.cpp:80 src/multiplayer_connect.cpp:442
 #: src/multiplayer_connect.cpp:539
 msgid "Normal"
-msgstr ""
+msgstr "Normalios"
 
 #: src/multiplayer_connect.cpp:438 src/multiplayer_connect.cpp:535
 #: src/multiplayer_wait.cpp:510 src/multiplayer_wait.cpp:518
@@ -7220,14 +7341,22 @@ msgstr ""
 msgid "Enable summary uploads"
 msgstr ""
 
-#~ msgid "Unknown command."
-#~ msgstr "Nežinoma komanda."
+#~ msgid "ruby of fire"
+#~ msgstr "ugnies rubinas"
+
+#~ msgid ""
+#~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
+#~ "me/emote <message>. Type /help [<command>] for detailed instructions."
+#~ msgstr ""
+#~ "Komandos: msg/whisper <slapyvardis> <pranešimas>, list <subkomanda> "
+#~ "[<argumentas>], me/emote <pranešimas>. Surinkite /help [<komanda>] "
+#~ "detalesnėms instrukcijoms."
+
+#~ msgid "Unknown subcommand."
+#~ msgstr "Nežinoma subkomanda."
 
 #~ msgid "Unknown command: "
 #~ msgstr "Nežinoma komanda: "
-
-#~ msgid "ruby of fire"
-#~ msgstr "ugnies rubinas"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
