@@ -41,6 +41,9 @@ namespace
 	// map by hash for equivalent inserted tags already in the cache
 	std::map<std::string const *, config const *> hash_to_cache;
 
+    // map to remember config hashes that have already been calculated
+    std::map<config const *, std::string const *> config_hashes;
+
 	config empty_config;
 
     struct compare_str_ptr {
@@ -64,6 +67,7 @@ namespace
         }
 	    void clear() {
 	        hash_to_cache.clear();
+	        config_hashes.clear();
             std::set<std::string const*, compare_str_ptr>::iterator mem_it,
                 mem_end = mem_.end();
             for(mem_it = mem_.begin(); mem_it != mem_end; ++mem_it) {
@@ -81,44 +85,60 @@ namespace
 }
 
 static const std::string* get_hash_of(const config* cp) {
+    //first see if the memory of a constant config hash exists
+    std::map<config const *, std::string const *>::iterator ch_it = config_hashes.find(cp);
+    if(ch_it != config_hashes.end()) {
+        return ch_it->second;
+    }
+    //next see if an equivalent hash string has been memorized
     const std::string & temp_hash = cp->hash();
     std::string const* find_hash = hash_memory.find(temp_hash);
     if(find_hash != NULL) {
         return find_hash;
     }
+    //finally, we just allocate a new hash string to memory
     std::string* new_hash = new std::string(temp_hash);
     hash_memory.insert(new_hash);
+    //do not insert into config_hashes (may be a variable config)
     return new_hash;
 }
 
-static void increment_config_usage(const config*& cp) {
-	if(cp == NULL) return;
-    std::map<config const *, int>::iterator this_usage =  config_cache.find(cp);
+static void increment_config_usage(const config*& key) {
+	if(key == NULL) return;
+    std::map<config const *, int>::iterator this_usage =  config_cache.find(key);
     if(this_usage != config_cache.end()) {
         ++this_usage->second;
         return;
     }
-    const config *& eq = hash_to_cache[get_hash_of(cp)];
-    if(eq == NULL) {
-        // this is a new one... allocate some memory for it
-        cp = new config(*cp);
+    const std::string *hash = get_hash_of(key);
+    const config *& cfg_store = hash_to_cache[hash];
+    if(cfg_store == NULL || (key != cfg_store && *key != *cfg_store)) {
+        // this is a new volatile config: allocate some memory & update key
+        key = new config(*key);
         // remember this cache to prevent an equivalent one from being created
-        eq = cp;
-    } else if(eq == cp || *eq==*cp) {
-        // swapping the pointer with an equivalent one already in the cache
-        cp = eq;
+        cfg_store = key;
+        // since the config is now constant, we can safely memorize the hash
+        config_hashes[key] = hash;
+    } else {
+        // swap the key with an equivalent or equal one in the cache
+        key = cfg_store;
     }
-	++(config_cache[cp]);
+	++(config_cache[key]);
 }
 
-static void decrement_config_usage(const config* cp) {
-	if(cp == NULL) return;
-	std::map<config const *, int>::iterator this_usage = config_cache.find(cp);
+static void decrement_config_usage(const config* key) {
+	if(key == NULL) return;
+	std::map<config const *, int>::iterator this_usage = config_cache.find(key);
 	assert(this_usage != config_cache.end());
 	if(--(this_usage->second) == 0) {
 		config_cache.erase(this_usage);
-		hash_to_cache.erase(get_hash_of(cp));
-		delete cp;
+		if(config_cache.empty()) {
+		    hash_memory.clear();
+		} else {
+            hash_to_cache.erase(get_hash_of(key));
+            config_hashes.erase(key);
+		}
+		delete key;
 	}
 }
 
