@@ -438,9 +438,6 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	// Stop the user from issuing any commands while the unit is moving.
 	const events::command_disabler disable_commands;
 
-	info_.disp.select_hex(from);
-	info_.disp.update_display();
-
 	log_scope2(ai, "move_unit");
 	unit_map::iterator u_it = info_.units.find(from);
 	if(u_it == info_.units.end()) {
@@ -543,6 +540,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 			if(show_move && unit_display::unit_visible_on_path(steps,
 						u_it->second, info_.units,info_.teams)) {
 
+				info_.disp.select_hex(from);
 				info_.disp.scroll_to_tiles(from,to);
 
 				unit_map::iterator up = info_.units.find(u_it->first);
