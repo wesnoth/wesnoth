@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-20 13:30+0200\n"
-"PO-Revision-Date: 2008-01-14 20:05+0100\n"
+"PO-Revision-Date: 2008-04-20 17:33+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,6 @@ msgstr ""
 
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
-#, fuzzy
 msgid "Son of the Black-Eye"
 msgstr "Syn Černého Oka"
 
@@ -40,7 +39,7 @@ msgstr "SotBE"
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
 msgid "Grunt"
-msgstr "Bručoun"
+msgstr "Pěšák"
 
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
@@ -50,7 +49,7 @@ msgstr "(nehratelná)"
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
 msgid "(Challenging)"
-msgstr "Výzva"
+msgstr "(nelehká)"
 
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
@@ -65,11 +64,10 @@ msgstr "Válečník"
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
 msgid "(Difficult)"
-msgstr "Obtížný"
+msgstr "(náročná)"
 
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:20
-#, fuzzy
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it's up to you to thwart the selfish designs of the humans "
@@ -79,7 +77,14 @@ msgid ""
 "shagger allies to the land of the dead!\n"
 "\n"
 "(Expert level, 18 scenarios.)"
-msgstr "Lidé vědomě porušili jejich dohodu se skřety "
+msgstr ""
+"Tvůj otec Karun Černé Oko byl největší skřetí velitel, jaký kdy žil. Teď je "
+"na tobě jako na jeho synovi, abys zkřížil plány sobecky vymyšlené lidmi, "
+"kteří porušili staré dohody se skřety a snaží se zabrat vaše země. Sjednoť "
+"soupeřící skřetí kmeny, svolej Skřetí Radu, pozvedni Velkou Hordu a pošli "
+"lidské červy a jejich odporné spojence do země mrtvých.\n"
+"\n"
+"(Obtížnost: Expert, 18 scénářů)"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:25
@@ -104,7 +109,7 @@ msgstr "Konec míru"
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:20
 msgid "Defeat Albert and his troops"
-msgstr "Poraž Alberta a jeho tlupu"
+msgstr "Poraz Alberta a jeho tlupu"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:36
@@ -179,17 +184,16 @@ msgstr "Albert"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:94
-#, fuzzy
 msgid ""
 "Rahul I, head of the Northern Alliance, concluded peace with orcs during the "
 "4th year of his leadership. He ended a 15-year war with Black-Eye Karun, "
 "ruler of the orcs. A peace treaty between the local humans and the orcs "
 "defined which lands were devoted to orcs or humans."
 msgstr ""
-"Král Wesnothu Rahul I. uzavřel se skřety mír ve čtvrtém roce své vlády. "
-"Ukončil tak patnáct let trvající válku s vládcem skřetů Karunem, zvaným též "
-"Černé oko. Mírová dohoda stanovila, které země patří lidem a které skřetům. "
-"Následující léta míru byla plná blahobytu."
+"Rahul I., vůdce Severní Aliance, uzavřel mír se skřety během čtvrtého roku "
+"své vlády. Ukončil tak patnáct let trvající válku s Karunem Černým Okem, "
+"vládcem skřetů. Mírová dohoda mezi místními lidmi a skřety stanovila, která "
+"země náleží skřetům a která lidem."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:99
@@ -204,6 +208,14 @@ msgid ""
 "deliberately set up this ambush in order to slay their paramount leader "
 "break the unity of the orcs."
 msgstr ""
+"Na Rahula tak zapůsobila inteligence prokázaná velitelem Karunem Černým "
+"Okem, že ho pozval, aby se přidal k Severní Alianci. Po dlouhém uvažování se "
+"Karun rozhodl nabídku přijmout. Ale na cestě do města Trpasličí Dveře - "
+"hlavního stanu Severní Aliance - byli Karun a jeho malá skupina strážců "
+"napadeni a vybiti do posledního muže. Neexistovali žádní přeživší, aby "
+"událost popsali, ale brzy se mezi skřety začalo věřit, že Severní Aliance "
+"nachystala léčku a rozkázali zabít jejich hlavního velitele, aby zničili "
+"jednotu skřetů."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:106
@@ -216,10 +228,15 @@ msgid ""
 "descended into inner squabbling. Thus the years that followed were "
 "relatively peaceful and prosperous - for the humans anyway."
 msgstr ""
+"Mírová dohoda stále platila, nicméně jen zčásti, protože dohoda - ačkoliv "
+"dohodnuta Severní Alianci - byla uzavřena mezi místními hrabstvími a neměla "
+"přímou spojitost se Severní Aliancí. Další - a možná hlavní - důvod, proč "
+"dohoda platila byl, že se smrtí Černého Oka se skřetí jednota rozpadla a oni "
+"znovu upadli do vzájemného handrkování. Tak byla následující léta víceméně "
+"klidná a prosperující - pro lidi rozhodně."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:111
-#, fuzzy
 msgid ""
 "In the thirteenth year of Howgarth III - the successor of Rahul I - tension "
 "began to rise between orcish tribes and the northern humans. Famine led "
@@ -227,66 +244,62 @@ msgid ""
 "country. The few orcish tribes who had remained part of the Allance, feeling "
 "the pressure, either left Alliance territory or revolted and were destroyed."
 msgstr ""
-"Ve třináctém roce vlády Howgartha III. začalo napětí mezi skřetími kmeny a "
-"severními lidskými hrabstvími opět narůstat. Hladomor dovedl lidi k "
-"osidlování skřetího území a vytlačování skřetů do pustých hor."
+"Ve třináctém roce vlády Howgarta III. - nástupce Rahula I. - začalo napětí "
+"mezi skřetími kmeny a severními lidskými hrabstvími opět narůstat. Hladomor "
+"dovedl lidi k osidlování skřetího území a jejich vytlačování do pustých hor. "
+"Pár skřetích kmenů, které ctily dohodu s Aliancí, pod nátlakem buď opustilo "
+"nové území Aliance nebo odporovalo a byli zničeno."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:116
-#, fuzzy
 msgid ""
 "Retailiating, the orcs systematically slaughtered human colonies and "
 "villages on their lands. Then, Earl Lanbec'h - the most powerful human "
 "warlord of the North - determined to abolish the orcish menace raised an "
 "army and conferred leadership of it to his son-in-law Baron Albert."
 msgstr ""
-"To samozřejmě způsobilo násilná skřetí povstání, při nichž skřeti důsledně "
-"vyvražďovali lidské osady a vesnice na svých územích. Potom se hrabě "
-"Lanbec'h rozhodl definitivně vypořádat se skřetí hrozbou, a do oblasti "
-"vyslal menší armádu pod vedením svého zetě Alberta."
+"To samozřejmě způsobilo, že skřeti důsledně vyvražďovali lidské osady a "
+"vesnice na svých územích. Poté se Hrabě Lanbec'h - nejmocnější lidský "
+"válečný lord Severu - rozhodl definitivně vypořádat se skřetí hrozbou, "
+"sestavil armádu a velitelem ustanovil svého zetě Barona Alberta."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:121
-#, fuzzy
 msgid ""
 "Baron Albert personally led a small vanguard with the mission to establish a "
 "base inside orcish lands."
 msgstr ""
-"Baron Albert osobně vedl malý předvoj, jehož cílem bylo vytvořit v zemi "
-"skřetů předsunutý tábor a provádět průzkum."
+"Baron Albert osobně vedl malý předvoj, jehož cílem bylo založit základnu ve "
+"skřetích zemích."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:126
-#, fuzzy
 msgid ""
 "By nightfall his troops reached a mountainous region under the authority of "
 "orcish leader Kapou'e, the son of the Black-Eye."
 msgstr ""
-"Uprostřed noci jeho skupina dorazila na úpatí hor: do oblasti, kde byl "
-"vůdcem skřetů Kapou'e, Syn Černého oka."
+"Za soumraku jednotky dosáhly hornatého území pod správou skřetího vůdce "
+"Kapou'eho, syna Černého Oka."
 
 #. [message]: description=Albert
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:148
-#, fuzzy
 msgid ""
 "Look, companions! Those orcs don't imagine they are living their last day. "
 "Let's slay them all and give this land back to our people!"
 msgstr ""
-"Hleďme! Tihle skřeti jistě netuší, že dnešek je jejich posledním dnem. "
-"Všechny je pobijme a navraťme tuto zemi našim lidem!"
+"Hleďme! Tihle skřeti jistě netuší, že žijí svůj poslední den. Pobijme je "
+"všechny a vrátíme tuto zemi našim lidem."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:152
 msgid "Who is this unlicked whelp? Grunts - kill him and bring me his head!"
 msgstr ""
+"Kdo je to nevychované štěně? Chlapi - zabijte ho a přineste mi jeho hlavu!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:163
-#, fuzzy
 msgid "Argh! I die! But other humans will come to slay you, filthy orcs!"
-msgstr ""
-"Uh. Argh. Umírám, ale lidé, kteří přijdou po nás, vás zničí, vy špinaví "
-"skřeti!"
+msgstr "Argh. Umírám! Ale přijdou další lidé, aby vás zničili, špinaví skřeti!"
 
 #. [message]: role=second
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:179
@@ -296,23 +309,22 @@ msgstr "Hohooo! Vítězství je naše!"
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:184
 msgid "Die, human-worm."
-msgstr ""
+msgstr "Chcípni, lidský červe."
 
 #. [unit]: type=Wolf Rider, description=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:196
-#, fuzzy
 msgid "Vrag"
-msgstr "Braga"
+msgstr "Vrag"
 
 #. [message]: description=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:206
 msgid " *pant* Chief! Chief!"
-msgstr ""
+msgstr "*lape po dechu* Náčelníku! Náčelníku!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:211
 msgid "Speak, rider."
-msgstr ""
+msgstr "Mluv, jezdče."
 
 #. [message]: description=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:216
@@ -320,12 +332,13 @@ msgid ""
 "There is a huge human army marching on us! They can't be more then one or "
 "two days march from here."
 msgstr ""
+"Pochoduje na nás obrovská lidská armáda! Nemůžou být dál než jeden nebo dva "
+"dny pochodu odsud."
 
 #. [message]: role=second
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:221
-#, fuzzy
 msgid "Uh oh! What should we do, Chief?"
-msgstr "A co bude dál, veliteli?"
+msgstr "Uh! Co budeme dělat, náčelníku?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:226
@@ -333,6 +346,8 @@ msgid ""
 "Don't be afraid. If any more human-worms come we'll deal with them the way "
 "we did the last batch!"
 msgstr ""
+"Nebojte se. Jestli nějací lidští červi přijdou, dohodneme se s nimi stejně "
+"jako s těmihle!"
 
 #. [message]: description=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:231
@@ -341,12 +356,14 @@ msgid ""
 "them are well-armed and seasoned veterans. It would be foolish to confront "
 "them with the forces we have on hand."
 msgstr ""
+"Uh, náčelníku, se vší úctou, tahle armáda je obrovská. A nejen to, ale velká "
+"část z nich jsou dobře vyzbrojení, ostřílení veteráni. Bylo by bláznovství "
+"se s nimi utkat s jednotkami, které máme."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:236
-#, fuzzy
 msgid "Hmmm..."
-msgstr "..."
+msgstr "Hmmm..."
 
 #. [option]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:239
@@ -354,6 +371,8 @@ msgid ""
 "If what you say is true, then there is no way our tribe can face such an "
 "army alone."
 msgstr ""
+"Jestli je to co říkáš pravda, pak není způsob jak by mohl náš kmen čelit "
+"takové armádě osamocen."
 
 #. [message]: description=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:244
@@ -361,48 +380,50 @@ msgid ""
 "Wise decision, Kapou'e. By the size of that army, this is no mere raid - it "
 "seems to me that the humans have decided to declare war on us."
 msgstr ""
+"Moudré rozhodnutí, Kapou'e. Při velikosti té armády to není jen nájezd - zdá "
+"se mi, že lidé se nám rozhodli vyhlásit válku."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:249
 msgid "If they want war, then they shall get war!"
-msgstr ""
+msgstr "Jestli chtějí válku, dostanou válku!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:254
-#, fuzzy
 msgid ""
 "Let us go to Barag Gór in the lands of the free tribes and ask the Great "
 "Council for assistance. With their help, we can raise troops from the free "
 "tribes and crush these humans."
 msgstr ""
-"Musíme odvést můj lid do bezpečí a požádat o pomoc Velký sněm. Někteří jeho "
-"členové žijí v Barag Gór, v zemi svobodných kmenů. Musíme odejít, hned teď!"
+"Půjdeme do Barag Gór do zemí svobodných kmenů a požádáme Velkou Radu o "
+"pomoc. S jejím svolením můžeme sebrat vojáky ze svobodných kmenů a rozdrtit "
+"lidi."
 
 #. [message]: role=second
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:259
-#, fuzzy
 msgid ""
 "But the free tribes are beyond the Mountains of Haag. These mountains are "
 "infested with dwarves and wild trolls."
 msgstr ""
-"Ale svobodné kmeny jsou až za pohořím Haag a ty hory se jenom hemží "
-"trpaslíky a divokými troly."
+"Ale svobodné kmeny jsou až za Horami Haag. Ty hory jsou zamořené trpaslíky a "
+"divokými trolly."
 
+# předpoklad ohledně jména...
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:264
-#, fuzzy
 msgid ""
 "Don't be afraid, $name.user_description. The trolls have been our allies in "
 "the past--maybe they will help us. And what true orc has ever feared "
 "dwarvish stinky-midgets? Hurry up, we must leave as soon as possible."
 msgstr ""
-"Nemáme na výběr. Jediná šance je projít. Snad alespoň trolové na nás nebudou "
-"útočit. Přece jen to kdysi bývali naši spojenci. A dost řečí, vyrazíme."
+"Neboj se, $name.user_description|e. Trollové byli v minulosti našimi "
+"spojenci - možná nám pomohou. A copak se někdy nějaký skřet bál trpasličích "
+"lakomých skrčků? Musíme spěchat a odejít co nejdříve."
 
 #. [option]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:277
 msgid "How can those human-worms be any sort of match for us!"
-msgstr ""
+msgstr "Jak by se nám ti lidští červi mohli nějak rovnat!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:282
@@ -410,23 +431,23 @@ msgid ""
 "Prepare for battle, my grunts! We shall show these humans what happens when "
 "you try to steal from Kapou'e, Son of the Black-Eye!"
 msgstr ""
+"Připravte se na bitvu, mí vojáci! Ukážeme těm lidem, co se stane, když se "
+"pokusíte krást u Kapou'eho, Syna Černého Oka!"
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:4
 msgid "The Human Army"
-msgstr ""
+msgstr "Lidská armáda"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:20
-#, fuzzy
 msgid "Defeat Lanbec'h"
-msgstr "Hrabě Lanbec'h"
+msgstr "Poraz Lanbec'ha"
 
 #. [side]: type=General, description=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:53
-#, fuzzy
 msgid "Lanbec'h"
-msgstr "Hrabě Lanbec'h"
+msgstr "Lanbec'h"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:68
@@ -434,6 +455,8 @@ msgid ""
 "Refusing to yield to fear, Kapou'e rallied his warriors in preparation for "
 "the upcoming battle."
 msgstr ""
+"Kapou'e se odmítl podat strachu a shromáždil své válečníky v přípravě pro "
+"nadcházející bitvu."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:73
@@ -442,19 +465,22 @@ msgid ""
 "arrived. Driven to a hungry rage due to the death of his son-in-law, Earl "
 "Lanbec'h led the army himself."
 msgstr ""
+"Nebyl zklamán. O pár dní později přijela hlavní část lidské armády. Hrabě "
+"Lanbec'h, rozzuřený k nepříčetnosti smrtí svého zetě, osobně vedl armádu."
 
 #. [message]: description=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:93
 msgid "So this is the bold orc who has dared kill my son-in-law."
-msgstr ""
+msgstr "Takže tohle je ten drzý skřet, který se odvážil zabít mého zetě."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:97
-#, fuzzy
 msgid ""
 "And this is that stupid human who dares march against Kapou'e - Son of the "
 "Black-Eye!"
-msgstr "Moudrá volba. Hodně štěstí, synu Černého oka."
+msgstr ""
+"A tohle je ten hloupý člověk, který se odvážil pochodovat proti Kapou'emu, "
+"Synu Černého Oka!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:101
@@ -467,16 +493,18 @@ msgid ""
 "As Kapou'e saw the hardened troops pour out of the human camp, he began to "
 "have second thoughts."
 msgstr ""
+"Když Kapou'e uviděl proudit z lidského tábora zocelené jednotky, změnil svůj "
+"názor."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:117
 msgid "That is many troops. I am not sure if we can handle them."
-msgstr ""
+msgstr "Tak mnoho jednotek. Nejsem si jistý, jestli je můžeme zadržet."
 
 #. [message]: description=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:122
 msgid "I told you so!"
-msgstr ""
+msgstr "Říkal jsem to!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:127
@@ -484,11 +512,14 @@ msgid ""
 "I have learned my lesson. I will no longer ignore the advice of my "
 "supporters. But what should we do now?"
 msgstr ""
+"Dostal jsem lekci. Nebudu už víckrát ignorovat rady mých následovníků. Ale "
+"co uděláme?"
 
 #. [message]: description=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:132
 msgid "We must flee! There is no way we can stand up against such a force."
 msgstr ""
+"Musíme uprchnout! Není šance, že bychom se udrželi proti tolika vojákům."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:137
@@ -496,23 +527,25 @@ msgid ""
 "The Son of the Black-Eye will never 'flee'. But making a 'strategic "
 "withdrawal' is another matter."
 msgstr ""
+"Syn Černého oka nikdy „neutíká“. Ale dát se na „strategický ústup“, to je "
+"jiná věc."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:142
-#, fuzzy
 msgid ""
 "My father often spoke of the shamans of the Great Council who live in Barag "
 "Gór in the lands of the free tribes. We shall go ask them for assistance. "
 "With their help, perhaps we can unite the orcish tribes and crush these "
 "humans."
 msgstr ""
-"Musíme odvést můj lid do bezpečí a požádat o pomoc Velký sněm. Někteří jeho "
-"členové žijí v Barag Gór, v zemi svobodných kmenů. Musíme odejít, hned teď!"
+"Můj otec často mluvil o šamanech Velké Rady, kteří žijí v Barag Gór v zemích "
+"svobodných kmenů. Měli bychom je požádat o pomoc. S nimi můžeme sjednotit "
+"skřetí kmeny a rozdrtit lidi."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:160
 msgid " $stored_helper.user_description|!"
-msgstr ""
+msgstr " $stored_helper.user_description|!"
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:165
@@ -525,42 +558,43 @@ msgid ""
 "You, gather up our people and assemble them on the road some distance north "
 "of here. We will hold back the humans here until you are finished."
 msgstr ""
+"Ty, sežeň naše lidi a shromáždi je na cestě na severu. Zadržíme lidi dokud "
+"nebudeš hotov."
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:175
 msgid "Ok."
-msgstr "Ok."
+msgstr "Jasně."
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:186
 msgid "Resist until your people are ready to go"
-msgstr ""
+msgstr "Odolávej, dokud nebudou tví lidé připraveni odejít"
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:216
 msgid "Chief, we have all our people ready to go. Come on, this way."
-msgstr ""
+msgstr "Náčelníku, všichni jsou připraveni na cestu. Pojďte, tudy."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:221
 msgid "Took you long enough. Let's go!"
-msgstr ""
+msgstr "Zabralo ti to dost času. Jdeme!"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:227
-#, fuzzy
 msgid "Move Kapou'e to the signpost in the Northeast"
-msgstr "Dostaň Kapou'e z hor ven"
+msgstr "Přesuň Kapou'eho k ukazateli na severovýchodě."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:255
 msgid "We'll be back, foul mud-sucking humans!"
-msgstr ""
+msgstr "My se vrátíme, odporní blátožroutští lidé!"
 
 #. [message]: description=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:260
 msgid "Ha ha! Run, you cowardly orcs! This land now belongs to humans!"
-msgstr ""
+msgstr "Ha ha! Utíkejte, zbabělí skřeti! Tato země teď patří lidem!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:265
@@ -568,6 +602,8 @@ msgid ""
 "In your dreams, human-worms. When the time comes you will pay for all this "
 "with your life!"
 msgstr ""
+"Jen ve snu, lidský červe. Až přijde čas, zaplatíte za to všechno svými "
+"životy."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:4
@@ -578,7 +614,7 @@ msgstr "Cesta pohořím Haag"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:28
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:266
 msgid "Move Kapou'e to the end of the mountains"
-msgstr "Dostaň Kapou'e z hor ven"
+msgstr "Dostaň Kapou'eho ven z hor"
 
 #. [side]: type=Dwarvish Lord, description=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:81
@@ -587,26 +623,22 @@ msgstr "Kwili"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:129
-#, fuzzy
 msgid ""
 "We have almost crossed the mountains. The lands of the free tribes must be "
 "near now. So far so good."
 msgstr ""
-"Už máme hory skoro za sebou. Zbývá projít poslední úsek k území svobodných "
-"kmenů. Ale dávejte pozor, stále ještě můžeme narazit na trpaslíky nebo "
-"troly. Honem! Vidím už značky označující jejich území."
+"Téměř jsme už prošli horami. Země svobodných kmenů musí být už blízko. "
+"Zvládneme to."
 
 #. [message]: description=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:133
-#, fuzzy
 msgid "Halt! Who goes there?"
-msgstr "Výtečně! A kdy dorazí sem?"
+msgstr "Stát! Kdo jste?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:138
-#, fuzzy
 msgid "It is I, Kapou'e, son of the Black-Eye Karun. What do you want, dwarf?"
-msgstr "Pozdravy od Kapou'eho, Syna Karuna Černého Oka."
+msgstr "Jsem Kapou'e, syn Karuna Černého Oka. Co chceš, trpaslíku?"
 
 #. [message]: description=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:143
@@ -614,6 +646,8 @@ msgid ""
 "Oh, so it's another group o' foul orcs, eh. Begone, or we shall stain our "
 "axes wi' yer blood."
 msgstr ""
+"Och, takže to je další skupina hloupých skřetů. Táhni, nebo potřísníme naše "
+"sekery vaší krví."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:148
@@ -621,11 +655,14 @@ msgid ""
 "Look, stinky-midget, we aren't out to kill you so why don't you just scamper "
 "away and hide in a cave or something. We'll be through here in a few hours."
 msgstr ""
+"Podívej, lakomý skrčku, nejsme tu abychom vás zabili, tak proč se prostě "
+"neodplazíte pryč a neschováte se do vašich jeskyní nebo tak něco? Projdeme "
+"během několika hodin."
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:153
 msgid " *snicker*"
-msgstr ""
+msgstr " *burácivý smích*"
 
 #. [message]: description=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:158
@@ -633,11 +670,13 @@ msgid ""
 "You orcs think you are so tough, don't you? Well we'll show you. Dwarves, "
 "let no orc pass this way alive!"
 msgstr ""
+"Vy skřeti si myslíte, že jste tak tvrdí? No, my vám ukážeme. Trpaslíci "
+"nenechají žádného skřeta projít živého!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:163
 msgid "It looks like we might have to fight them after all."
-msgstr ""
+msgstr "Vypadá to, že s nimi musíme bojovat."
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:168
@@ -645,11 +684,15 @@ msgid ""
 "Hey Chief, I was thinking - since all dwarves are pretty slow why don't we "
 "just bypass them?"
 msgstr ""
+"Hej, náčelníku, přemýšlel jsem. Trpaslíci jsou dost pomalí, proč přes ně "
+"prostě neprojdeme?"
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:173
 msgid "I mean, we could defeat them easily but it would just slow us down."
 msgstr ""
+"Tedy myslel jsem, že bychom je určitě snadno porazili, ale zpomalilo by nás "
+"to."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:178
@@ -658,6 +701,8 @@ msgid ""
 "opportunity to uh... 'collect taxes' from the locals. I am sure the gold "
 "would be useful in the future."
 msgstr ""
+"To bychom mohli, ale když je porazíme, budeme mít možnost „vybírat poplatky“ "
+"od místních. Jsem si jistý, že zlato bude v budoucnosti užitečné."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:183
@@ -665,14 +710,15 @@ msgid ""
 "Whatever else happens, we have to pass through these mountains and I dislike "
 "leaving enemies in our rear. Stab, smite, and slay!"
 msgstr ""
+"Ať se stane cokoliv, musíme projít skrz ty hory a já si nerad nechávám "
+"nepřátele v zádech. Bodejte, bijte a vražděte!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:197
-#, fuzzy
 msgid ""
 "I've never pushed so far. We are crossing the border of the Black-Eye lands."
 msgstr ""
-"Ještě nikdy jsem nebyl tak daleko. Za těmito značkami končí země Černého oka."
+"Ještě nikdy jsem nebyl tak daleko. Překračujeme hranice zemí Černého Oka."
 
 #. [unit]: description=Blemaker, type=Troll Warrior
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:205
@@ -719,13 +765,12 @@ msgstr ""
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:255
-#, fuzzy
 msgid ""
 "But, Father, we don't know what they are seeking there, maybe this is a good "
 "occasion to get rid of these dwarves."
 msgstr ""
-"Otče, sice nevíme, proč tady jsou, možná je to však dobrá příležitost "
-"vyřídit si to s těmi zákeřnými trpaslíky."
+"Ale otče, nevíme co tady hledají. Možná je to příležitost zbavit se "
+"trpaslíků."
 
 #. [message]: description=Blemaker
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:259
@@ -765,7 +810,7 @@ msgstr "Grüü zemře"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:290
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:80
 msgid "Argh! I'm done. My people are doomed!"
-msgstr "Ááá! Je po mně. Mí lidé jsou ztraceni!"
+msgstr "Ááá! Je po mně. Můj lid je ztracen!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:304
@@ -775,30 +820,30 @@ msgstr "Otče! Neeee!"
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:308
 msgid "Filthy dwarves! Now I'm to kill you to the last!"
-msgstr "Špinaví trpaslíci. Konečně vás zničíme!"
+msgstr "Špinaví trpaslíci. Vybiju vás do posledního!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:319
 msgid "Oh no, I'm defeated."
-msgstr "Ale ne, jsem poražen."
+msgstr "Ale ne, jsem poražen!"
 
 #. [message]: description=Blemaker
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:328
-#, fuzzy
 msgid ""
 "My son! I should have never brought him to this fight. Now we are to return "
 "to our caverns, and we will never return."
 msgstr ""
-"Můj synu! Nikdy jsem tě neměl pustit do této bitvy. Odebereme se do svých "
-"jeskyň a nikdy se již nevrátíme na tento krutý svět."
+"Můj synu! Nikdy jsem tě neměl pustit do této bitvy. Vrátíme se do našich "
+"jeskyní a nikdy se už neukážeme."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:337
-#, fuzzy
 msgid ""
 "Our troll friends are done. We will desperately need their help in the "
 "coming battles. Without them there is no hope."
-msgstr "Naši trolí přátelé byli poraženi. Bez nich nemáme žádnou naději."
+msgstr ""
+"Naši trollí přátelé byli poraženi. Budeme zoufale potřebovat jejich pomoc v "
+"nadcházejících bitvách.  Bez nich nemáme žádnou naději."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:351
@@ -814,34 +859,36 @@ msgid ""
 "still alive. The main body along with myself shall continue on to Barag Gór. "
 "Catch up to us when your task is completed."
 msgstr ""
+"Varovali jsme vás, trpaslíci. Jezdci, rozptylte se po okolí a vyberte "
+"poplatek z každého domu. Jestli někdo odmítne zaplatit, svažte ho a zlato "
+"seberte. Ujistěte se, že vědí, že je to jen má shovívavost, že jsou stále "
+"naživu. Hlavní část kmene bude se mnou pokračovat k Barag Gór. Dožeňte nás "
+"až budete hotoví."
 
 #. [message]: role=doggie
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:371
 msgid "Sounds like fun. Alright boys, let's go!"
-msgstr ""
+msgstr "To zní jako zábava. Dobře, hoši, jdeme na to!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:423
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:446
-#, fuzzy
 msgid ""
 "We've succeeded! We've passed through the Mountains of Haag! Look at these "
 "green hills! The land of the free tribes is near now. I can see the walls of "
 "Barag Gór in the distance."
 msgstr ""
-"Zvládli jsme to! Dokázali jsme projít pohořím Haag. Pohleďte na ty zelené "
-"vršky! Země svobodných kmenů už není daleko. V dálce už vidím hradby "
-"pevnosti Barag-Gor."
+"Zvládli jsme to! Prošli jsme pohořím Haag. Pohleďte na ty zelené vršky! Země "
+"volných kmenů už není daleko. V dálce už vidím hradby Barag Gór."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:427
-#, fuzzy
 msgid ""
 "Blemaker, many thanks for your help in this fight. Would you like to join us "
 "in our journey with your son? Your help would be very appreciated!"
 msgstr ""
-"Blemaku, díky za pomoc v boji. Nepřidáš se k nám na naší pouti se svým "
-"synem? Ocenili bychom vaši pomoc."
+"Blemakere, mnohokrát díky za pomoc v boji. Nepřidáš se k nám na naší pouti "
+"se svým synem? Ocenili bychom vaši pomoc."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:432
@@ -850,15 +897,14 @@ msgstr "Otče, rád bych se k nim přidal. Nejsi proti?"
 
 #. [message]: description=Blemaker
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:436
-#, fuzzy
 msgid ""
 "My son, you're old enough to discover the world. Me, I have to stay here. "
 "But take care, there are plenty of creatures that seek our end, like elves "
 "or humans. They are clever and merciless."
 msgstr ""
-"Synu, jsi už dost starý, aby ses vydal poznávat svět. Já, já musím zůstat "
-"zde. Ale dávej pozor, venku jistě potkáš spoustu zlořádů usilujících o náš "
-"konec, jako jsou elfové a lidé. A jsou stejně mazaní jako nelítostní."
+"Synu, jsi už dost starý, aby ses vydal poznávat svět. Já musím zůstat zde. "
+"Ale dávej pozor, venku jistě potkáš spoustu bytostí usilujících o náš konec, "
+"jako jsou elfové a lidé. A jsou stejně mazaní jako nelítostní."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:440
@@ -867,14 +913,13 @@ msgstr "Díky, otče, a neměj obavy. Dokážu se o sebe postarat."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:450
-#, fuzzy
 msgid ""
 "Grüü, many thanks for your help in this fight. I'm sorry for your father. "
 "Would you like to join us in our journey? Your help would be very "
 "appreciated!"
 msgstr ""
-"Grüü, mnohé díky za pomoc v této bitvě. Je mi moc líto, že se tvůj otec "
-"nedočkal této chvíle. Přidáš se k nám? Ocenili bychom tvou pomoc."
+"Grüü, mnohé díky za pomoc v této bitvě. Je mi moc líto tvého otce. Přidáš se "
+"k nám? Ocenili bychom tvou pomoc."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:454
@@ -892,10 +937,10 @@ msgstr "Obléhání pevnosti Barag Gór"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:22
-#, fuzzy
 msgid "Break the Siege of Barag Gór"
-msgstr "Obléhání pevnosti Barag Gór"
+msgstr "Prolom obležení Barag Gór"
 
+# prozkoumat co to přesně znamená - možná "jakýkoliv šaman zemře"
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:34
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:32
@@ -935,20 +980,19 @@ msgstr "Sammual"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:276
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:439
 msgid "Pirk"
-msgstr ""
+msgstr "Pirk"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:277
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:440
 msgid "Gork"
-msgstr ""
+msgstr "Gork"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:278
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:441
-#, fuzzy
 msgid "Vraurk"
-msgstr "Braga"
+msgstr "Vraurk"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:325
@@ -956,6 +1000,8 @@ msgid ""
 "When the party finally reached Barag Gór, they were met with a most "
 "startling sight."
 msgstr ""
+"Když část kmene konečně dosáhla Barag Góru, naskytla se jim překvapivá "
+"podívaná."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:331
@@ -964,28 +1010,31 @@ msgid ""
 "been jealous of our manly strength, but what reason do they have to attack "
 "us just now?"
 msgstr ""
+"Co to...! Barag Gór je obležen elfy. Věděl jsem, že elfové vždycky žárlili "
+"na naši mužnou sílu, ale jaký mají důvod k útoku právě teď?"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:335
 msgid "What can you expect, Chief, they're elves after all."
-msgstr ""
+msgstr "Co bys čekal, náčelníku. Jsou to koneckonců elfové."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:339
 msgid "Hmmm, $name.user_description go find out what they are up to."
-msgstr ""
+msgstr "Hmm, $name.user_description|e, běž zjistit co tu pohledávají."
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:344
-#, fuzzy
 msgid "Sure."
-msgstr "prokletí"
+msgstr "Jistě."
 
 #. [message]: description=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:382
 msgid ""
 "One more step and you are dead, flea-bag. Better run if you value your life."
 msgstr ""
+"Ještě krok a jsi mrtvý, ty blešivče. Radši utíkej, jestli si ceníš svého "
+"života."
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:387
@@ -993,6 +1042,8 @@ msgid ""
 "Quit your boasting, tree-shagger. The chief wants to know why you are here, "
 "instead of cowering in your dung-spattered forests."
 msgstr ""
+"Přestaň, ty nafoukaný stromomilče. Náčelník chce vědět, proč jste tady "
+"namísto schovávání se ve vašich hnojem páchnoucích lesích."
 
 #. [message]: description=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:392
@@ -1000,16 +1051,18 @@ msgid ""
 "Watch your mouth around your betters, goblin! And you can tell your chief to "
 "hand the shamans over to us if he wants to be alive by sundown."
 msgstr ""
+"Dávej si pozor na ústa před lepšími, gobline! A svému náčelníkovi můžeš "
+"říct, aby nám vydal šamany jestli se chce dožít západu slunce."
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:397
 msgid "What business do you high-and-mighty elves have with our shamans?"
-msgstr ""
+msgstr "Co chcete našim šamanům vy vysocí, mocní elfové?"
 
 #. [message]: description=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:402
 msgid "Our business with them is none of your concern."
-msgstr ""
+msgstr "Naše záležitosti s nimi se tě netýkají."
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:407
@@ -1018,55 +1071,57 @@ msgid ""
 "things; they are precious to us. If you want us to hand them over you'll "
 "have to tell us what you want with them."
 msgstr ""
+"Ale ano. Šamani střeží naše pradávné znalosti i posvátné předměty. Jsou pro "
+"nás důležití. Jestli chcete abychom vám je vydali, musíte nám říct co jim "
+"chcete."
 
 #. [message]: description=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:412
 msgid "Well... the humans want to.... meet with them."
-msgstr ""
+msgstr "Dobrá... lidé... se s nimi chtějí setkat."
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:417
 msgid "Oh, so they paid you to come and get them, have they?"
-msgstr ""
+msgstr "Oh, takže oni ti zaplatili abys sem přišel a zajal je?"
 
 #. [message]: description=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:422
-#, fuzzy
 msgid "Well..."
-msgstr "Hmmm... no..."
+msgstr "No..."
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:427
 msgid ""
 "So the 'great and mighty' elves are now nothing but a bunch of mercenaries."
-msgstr ""
+msgstr "Takže „velcí a mocní“ elfové nejsou nic než banda nájemných žoldáků."
 
 #. [message]: description=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:432
 msgid "KILL HIM!!!"
-msgstr ""
+msgstr "ZABTE HO!!!"
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:455
 msgid "Hahahahaha! If you can!"
-msgstr ""
+msgstr "Hahahahaha! Jestli to dokážeš!"
 
 #. [message]: description=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:490
 msgid "Blast it, he got away."
-msgstr ""
+msgstr "K čertu, utekl!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:500
 msgid "So, what news do you bring $name.user_description?"
-msgstr ""
+msgstr "Takže jaké zprávy jsi přinesl, $name.user_description|e?"
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:505
 msgid ""
 "The elves have been bribed by the humans to capture and deliver the shamans "
 "to them."
-msgstr ""
+msgstr "Elfové byli podplaceni lidmi, aby jim zajali a doručili naše šamany."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:510
@@ -1075,6 +1130,9 @@ msgid ""
 "can call up the Great Horde. If they are captured then all the orcs on this "
 "continent would surely be doomed."
 msgstr ""
+"Jen přes mou mrtvolu. Šamané Velké Rady jsou jediní, kteří mohou svolat "
+"Velkou Hordu. Jestli je zajmou, tak budou určitě všichni skřeti na tomhle "
+"kontinentě zničeni."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:515
@@ -1098,12 +1156,9 @@ msgstr "..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:532
-#, fuzzy
 msgid ""
 "Then, Kapou'e launched his desperate attack to break the siege of Barag Gór."
-msgstr ""
-"A tak Kapou'e vyrazil do beznadějně vypadajícího boje, aby vysvobodil Barag "
-"Gór z obležení."
+msgstr "Kapou'e vyrazil do zoufalého útoku, aby prolomil obležení Barag Góru."
 
 #. [unit]: description=Jetto, type=Orcish Assassin
 #. [message]: speaker=narrator
@@ -1117,19 +1172,17 @@ msgstr "Jetto"
 #. [message]: description=Jetto
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:570
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:734
-#, fuzzy
 msgid ""
 "Freedom! Many thanks, Son of the Black-Eye. I'm Jetto, master of assassins, "
 "now you can count on the assassins' guild to help you in your quest!"
 msgstr ""
-"Svoboda! Tisíceré díky, synu Černého Oka. Já jsem Jetto, mistr starobylého "
-"společenství zabijáků. Od této chvíle můžeš počítat s pomocí celého "
-"zabijáckého spolku."
+"Svoboda! Tisíceré díky, Synu Černého Oka. Jsem Jetto, mistr vrahů. Od této "
+"chvíle můžeš počítat s pomocí celého zabijáckého spolku."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:575
 msgid "Jetto, how did you get captured by the likes of these?"
-msgstr ""
+msgstr "Jetto, jak se jim podařilo tě takhle uvěznit?"
 
 #. [message]: description=Jetto
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:580
@@ -1138,23 +1191,25 @@ msgid ""
 "Unfortunately, I was captured. But now I am free and the elves shall feel my "
 "wrath!"
 msgstr ""
+"Velitel Barag Gór mne poslal, abych zabil elfské velitele. Naneštěstí jsem "
+"byl zajat. Ale teď jsem volný a elfové pocítí můj hněv!"
 
 #. [message]: description=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:606
 msgid "Hurrah! Reinforcements at last!"
-msgstr ""
+msgstr "Hurá! Posily v poslední chvíli."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:611
 msgid ""
 "That's right! Now let's drive those mincing tree-shaggers back into their "
 "forests!"
-msgstr ""
+msgstr "Pravda! Teď pojďme ty milovníky stromů vrátit do jejich lesů."
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:620
 msgid "At last! The siege has been broken."
-msgstr ""
+msgstr "Konečně! Obležení bylo prolomeno!"
 
 #. [message]: description=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:625
@@ -1162,27 +1217,31 @@ msgid ""
 "Thank you, Son of the Black-Eye. If you hadn't arrived when you did, I don't "
 "know what would be our fate."
 msgstr ""
+"Děkuji ti, synu Černého Oka. Kdyby jsi nepřijel, nevím co by nám osud "
+"přichystal."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:630
 msgid "No problem! It was fun, wasn't it, Grüü?"
-msgstr ""
+msgstr "Není zač! Byla ta zábava, nemám pravdu Grüü?"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:635
 msgid "Hahaha! Yeah!"
-msgstr ""
+msgstr "Hahaha! Jo!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:640
 msgid ""
 "But, actually, we have come all the way from our lands to seek your help."
 msgstr ""
+"Ale popravdě řečeno jsme ušli celou tu cestu z našich zemí, abychom "
+"vyhledali vaši pomoc."
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:645
 msgid "Why? What's wrong?"
-msgstr ""
+msgstr "Proč? Co se stalo?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:650
@@ -1190,6 +1249,8 @@ msgid ""
 "Those insolent humans have massed a huge army and attacked us. We defeated "
 "their vanguard but in the end we were forced to retreat."
 msgstr ""
+"Ti drzí lidé shromáždili obrovskou armádu a zaútočili na nás. Porazili jsme "
+"jejich předvoj, ale nakonec nás dohnali k ústupu."
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:655
@@ -1197,11 +1258,13 @@ msgid ""
 "Hmmmm, this situation is very serious. As you know by now, they have also "
 "hired these elves to attack us here."
 msgstr ""
+"Hmmm, situace je velmi vážná. Jak už teď víš, najali si také elfy, aby na "
+"nás útočili."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:660
 msgid "Yes. It seems to me that the humans are declaring all-out war on us."
-msgstr ""
+msgstr "Ano. Zdá se, že lidé nám vyhlásili válku."
 
 #. [message]: description=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:665
@@ -1209,17 +1272,19 @@ msgid ""
 "We must give this matter careful consideration. Come inside the city, and "
 "we'll discuss it."
 msgstr ""
+"Musíme o tomto problému důkladně přemýšlet. Pojď dovnitř města, promluvíme "
+"si o tom."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:683
 msgid ""
 "Son of the Black-Eye! Could I ask for my release from this blighted cage?"
-msgstr ""
+msgstr "Synu Černého Oka! Mohu požádat o propuštění z této zkažené klece?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:688
 msgid "How did you get captured by the likes of these?"
-msgstr ""
+msgstr "Jak se jim podařilo tě takhle uvěznit?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:699
@@ -1227,21 +1292,23 @@ msgid ""
 "The Barag Gór council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured."
 msgstr ""
+"Velitel Barag Gór mne poslal zabít elfské velitele. Naneštěstí jsem byl "
+"zajat."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:704
 msgid "Fine, someone go release him."
-msgstr ""
+msgstr "Dobrá, někdo běžte a propusťte ho."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:4
 msgid "To the harbour of Tirigaz"
-msgstr "Cesta do přístavu Tirigaz"
+msgstr "K přístavu Tirigaz"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:122
 msgid "Defeat all enemy leaders"
-msgstr "Poraž všechny nepřátelské velitele"
+msgstr "Poraz všechny nepřátelské velitele"
 
 #. [side]: type=Lich, description=Na-Mana
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:159
@@ -1261,6 +1328,9 @@ msgid ""
 "deal with this massive human incursion. However, in order to do that the "
 "entire Great Council would have to gather."
 msgstr ""
+"Kapou'e a šamané odpočívali a diskutovali o problému po tři dny. Nakonec "
+"rozhodli, že je nezbytné svolat Velkou Hordu k vyrovnání se s touto masivní "
+"lidskou invazí. Ale k vydání takového rozkazu se musí svolat celá Velká Rada."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:205
@@ -1270,6 +1340,9 @@ msgid ""
 "escort the shamans to the Harbor of Tirigaz where the rest of the council "
 "was residing."
 msgstr ""
+"Když bylo jasné, že lide udělají všechno co mohou, aby tomu zabránili tak, "
+"že zajmou či zabijí šamany, Kapou'e byl požádán, aby je doprovodil do "
+"přístavu Tirigaz, kde sídlil zbytek Rady."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:210
@@ -1277,12 +1350,15 @@ msgid ""
 "Leaving most of his people at Barag Gór, Kapou'e, accompinied by the shamans "
 "and his warriors set off to Tirigaz."
 msgstr ""
+"Opouštěje většinu jeho lidu v Barag Gór, Kapou'e doprovázený šamany a jeho "
+"válečníky se vydal k Tirigazu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:271
 msgid ""
 "A couple of days into their journey, the party halted to rest for the night."
 msgstr ""
+"Po několika dnech cesty společnost zastavila k odpočinku na zbytek noci."
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:277
@@ -1315,12 +1391,12 @@ msgstr "Skvěle! Čas na rozcvičku!"
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:315
 msgid "Uh... I don't think so. Let's get out of here!"
-msgstr ""
+msgstr "Uh... nemyslím. Měli bychom odtud zmizet!"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:320
 msgid "No way! Grüü want to crush some undead."
-msgstr ""
+msgstr "Ani nápad. Grüü chce rozdrtit nějaké nemrtvé."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:325
@@ -1330,12 +1406,15 @@ msgid ""
 "we don't know what lies ahead, so it is best not to leave any threats in our "
 "rear."
 msgstr ""
+"Grüü má pravdu přátelé. Není moudré nechat ty nemrtvé být, aby potom "
+"přerušili naši zásobovací linii a ústupovou cestu. V tyto časy nepokoje "
+"nevíme co leží před námi, takže je nejlepší nenechávat si žádnou hrozbu v "
+"zádech."
 
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:330
-#, fuzzy
 msgid "But..."
-msgstr "..."
+msgstr "Ale..."
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:335
@@ -1343,11 +1422,13 @@ msgid ""
 "Hush, Vraurk, We must trust the Son of the Black-Eye in these matters, for "
 "he is far more versed in them then we are."
 msgstr ""
+"Ticho, Vraurku. Musíme důvěřovat Synu Černého Oka v těchto záležitostech, ve "
+"kterých je mnohem zběhlejší než jsme my."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:340
 msgid "That's right, lets go!"
-msgstr ""
+msgstr "To je pravda. Jdeme na to!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:354
@@ -1367,7 +1448,7 @@ msgstr "Mám žízeň... *glo glo glo*"
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:366
 msgid "Ahhh, that was yummy!"
-msgstr "Fuj, to bylo dobré."
+msgstr "Ahhh, to bylo dobré."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:381
@@ -1380,16 +1461,15 @@ msgstr "Máme vyhráno. Přichází den, a ty noční potvory zalezou do svých 
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:385
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:402
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:419
-#, fuzzy
 msgid "Grüü, are you forgeting we are also night creatures?"
-msgstr "Grüe, zapomínáš snad že jsme TAKÉ noční tvorové?"
+msgstr "Grüe, zapomněl jsi, že jsme také noční tvorové?"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:389
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:406
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:423
 msgid "Err... well..."
-msgstr "Eee.. No jo..."
+msgstr "Eee... No jo..."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:26
@@ -1398,9 +1478,8 @@ msgstr "Černá vlajka"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:41
-#, fuzzy
 msgid "Defeat Slowhand and Harman"
-msgstr "Poraž Slowhanda"
+msgstr "Poraz Slowhanda a Harmana"
 
 #. [side]: type=General, description=Slowhand
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:75
@@ -1417,12 +1496,12 @@ msgstr "Dopravní galeona"
 #. [side]: type=General, description=Harman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:106
 msgid "Harman"
-msgstr ""
+msgstr "Harman"
 
 #. [unit]: type=Orcish Warrior, description=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:174
 msgid "Affman"
-msgstr ""
+msgstr "Affman"
 
 #. [unit]: description=Transport Galleon, type=Transport Galleon
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:217
@@ -1431,24 +1510,22 @@ msgstr "Doprava"
 
 #. [unit]: description=Landing Galleon, type=Transport Galleon
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:226
-#, fuzzy
 msgid "Landing Galleon"
-msgstr "Dopravní galeona"
+msgstr "Přistávající galeona "
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:235
 msgid "So, here is Tirigaz. But what in the world is going on?"
-msgstr ""
+msgstr "Tak tady je Tirigaz. Ale co se tu pro všechno na světě děje?"
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:239
-#, fuzzy
 msgid ""
 "Looks like humans have attacked here too. You were right, Kapou'e, the "
 "humans have declared all-out war on us."
 msgstr ""
-"Vypadá to, že tu zaútočili lidé. Měl jsi pravdu Kapou'e. Lidé nám vyhlásili "
-"válku."
+"Vypadá to, že i tady zaútočili lidé. Měl jsi pravdu Kapou'e, lidé nám "
+"vyhlásili válku."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:244
@@ -1458,85 +1535,75 @@ msgid ""
 "them. It will be faster and easier for us if we don't have to worry about "
 "protecting you."
 msgstr ""
-"Poslouchejte. Když půjdeme na setkání se zbytkem Velkého Koncilu můžeme "
-"zastavit ten útok. Vy šamané zůstanete zde, skryti v lese dokud je "
+"Poslouchejte. Jestli chceme jít na setkání se zbytkem Velké Rady musíme "
+"zastavit ten útok. Vy šamané zůstanete zde, skryti v lese, dokud je "
 "neporazíme. Bude to rychlejší a snazší, když vás nebudeme muset ochraňovat."
 
 #. [message]: description=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:248
-#, fuzzy
 msgid "This is a wise choice. Good luck, son of the Black-Eye."
-msgstr "Moudrá volba. Hodně štěstí, synu Černého oka."
+msgstr "Moudrá volba. Hodně štěstí, synu Černého oka. "
 
 #. [message]: description=Slowhand
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:252
-#, fuzzy
 msgid ""
 "Haha! Our plan is going well, let's surround them on land while our allies "
 "attack them from sea!"
 msgstr ""
-"Haha! Náš plán se daří. Obklíčíme je na břehu, zatímco naši spojenci na ně "
+"Haha! Náš plán se daří. Obklíčíme je na zemi, zatímco naši spojenci na ně "
 "zaútočí z moře!"
 
 #. [message]: description=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:283
-#, fuzzy
 msgid "Look, a party of our kind approaches from the North."
-msgstr "Podívejte! Část orků přichází od hor."
+msgstr "Vypadá to, že společnost našeho druhu se blíží ze severu."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:288
-#, fuzzy
 msgid "Greetings from Kapou'e, Son of the Black-Eye Karun."
-msgstr "Pozdravy od Kapou'eho, Syna Karuna Černého Oka."
+msgstr "Pozdravy od Kapou'eho, syna Karuna Černého Oka. "
 
 #. [message]: description=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:293
-#, fuzzy
 msgid "Son of the great Black-Eye Karun?! You do us honor, Chief."
-msgstr "Syn Karuna Černého Oka? Prokazujete nám poctu šéfe."
+msgstr "Syn Karuna Černého Oka? Prokazujete nám poctu, náčelníku."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:298
-#, fuzzy
 msgid "Do not grovel, just tell me what's going on here."
-msgstr "Ahhh. O to se nestarej. Prostě mi řekni co se to děje."
+msgstr "Neplaz se, jen mi řekni co se tu děje."
 
 #. [message]: description=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:303
-#, fuzzy
 msgid ""
 "I don't really know, one day all was calm and peaceful and the next a fleet "
 "of human ships showed up and began spewing out human-worms. We tried to hold "
 "them off as best we could, but they captured the Northern keep. And then "
 "human reinforcements arrived from their settlements to the South."
 msgstr ""
-"Já ve skutečnosti nevím. Jeden den byl klidný a mirumilovný a další připlula "
-"flotila lidských lodí a začala chrlit lidi. Zkoušeli jsme je zastavit jak to "
-"šlo, ale podařilo se jim dobýt a udržet sever. A další lidské posily přijely "
-"z jejich osad na jihu."
+"Vážně nevím. Jeden den byl klidný a mírumilovný a další připlula flotila "
+"lidských lodí a začala chrlit lidské červy. Zkoušeli jsme je zastavit jak to "
+"šlo, ale podařilo se jim obsadit sever. A další lidské posily přijely z "
+"jejich osad na jihu."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:308
-#, fuzzy
 msgid "Are the shamans safe?"
-msgstr "Záchrana šamana"
+msgstr "Jsou šamané v bezpečí?"
 
 #. [message]: description=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:313
-#, fuzzy
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them East to a place near the Mourned Hills along with most of our women and "
 "children. The rest of us remained here to buy them some time."
 msgstr ""
-"Když jsme si uvědomili,že není způsob jak lidi zadržet, poslali jsme "
-"východně na místo poblíž Mourned Hills s načimi ženami a dětmi. My jsme tu "
-"zůstali a pokoušíme se jim získat nějaký čas. "
+"Když jsme si uvědomili,že není způsob jak lidi zadržet, poslali jsme je "
+"východně na místo poblíž Truchlivých kopců s našimi ženami a dětmi. My jsme "
+"tu zůstali a pokoušíme se jim získat nějaký čas. "
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:318
-#, fuzzy
 msgid ""
 "Wise decision. We have actually come to speak to the shamans, but while we "
 "are here we must help our brothers in need. Grüü, help hold them while I run "
@@ -1544,16 +1611,15 @@ msgid ""
 "by sea without naval forces, but we can destroy the foothold they have "
 "gained on the land."
 msgstr ""
-"Moudré rozhodnutí. Přisli jsme, abychom hovořili se šamany, ale když už jsme "
-"tu musíme pomoci našim bratrům v nouzi. Gruu vám pomůže lidi zadržet dokud "
-"já nezorganizuji protiúder.Nemůžeme je sice porazit na moři, protože nemáme "
-"námořní jednotky, ale můžeme vypudit jejich vojáky ze země."
+"Moudré rozhodnutí. Přišli jsme, abychom hovořili se šamany, ale když už jsme "
+"tu, musíme pomoci našim bratrům v nouzi. Grüü vám pomůže lidi zadržet "
+"zatímco já budu organizovat protiúder. Nemůžeme je sice porazit na moři bez "
+"námořních jednotek, ale můžeme vypudit jejich vojáky ze země."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:322
-#, fuzzy
 msgid "I love this strategy, Chief!"
-msgstr "Miluji tuto strategii, veliteli!"
+msgstr "Miluji tuto strategii, náčelníku!"
 
 #. [unit]: type=Duelist, description=J'rem
 #. [unit]: description=J'rem, type=Fencer
@@ -1574,26 +1640,23 @@ msgstr "Aaargh! Umírám!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:419
-#, fuzzy
 msgid "Finally, you pay for what you did to my orc brothers!"
-msgstr "Teď jsi zaplatil za vše, cos provedl mým sktřetím bratům!"
+msgstr "Konečně zaplatíš za všechno, co jsi provedl mým skřetím bratrům!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:428
-#, fuzzy
 msgid ""
 "We are victorious at last. Someone go tell the shamans that they can come "
 "out now."
 msgstr ""
-"Nakonec jsme vyhráli. Někdo běžte a řekněte šamanům, že mohou vyjít ven."
+"Nakonec jsme vyhráli. Někdo běžte a řekněte šamanům, že už mohou vyjít ven."
 
 #. [message]: description=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:450
-#, fuzzy
 msgid ""
 "Congratulations on your victory, Kapou'e. You do honor to the memory of your "
 "father."
-msgstr "Gratuluji k vítězství Kapou'e. Tvůj otec by na tebe byl pyšný."
+msgstr "Kapou'e, gratuluji k vítězství. Děláš čest památce tvého otce."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:454
@@ -1602,29 +1665,29 @@ msgid ""
 "to be defeated, they sent the shamans to the Mourned Hills. If we want to "
 "meet them, we must go after them."
 msgstr ""
+"Děkuji, ale mám novinky. Jakmile se přiblížily jednotky, které jsme teď "
+"porazili, poslali šamany do Truchlivých kopců. Jestli se s nimi chceme "
+"setkat, musíme jít až tam."
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:458
-#, fuzzy
 msgid ""
 "Oh, great. That means we have to cross the Desert of Death which is full of "
 "poisonous giant scorpions and outlaws. And bypassing it would take ages! Not "
 "to mention after this desert, we'll have to cross the Silent Forest!"
 msgstr ""
-"Ale Mournedské hory leží až za pouští smrti. A ta se jen hemží obřími "
-"jedovatými škorpióny a zbojníky. Přejít tuhle poušť zabere celou věčnost. A "
-"to ani nemluvím o Mlčícím lese, kterým pak budeme muset projít, když se "
-"dostaneme přes poušť."
+"Oh, skvělé. To znamená překročit Poušť Smrti, která je plná obrovských "
+"jedovatých škorpionů a psanců. A obejít ji by zabralo celou věčnost! A to "
+"ani neříkám že po poušti musíme překročit Tichý Les!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:462
-#, fuzzy
 msgid ""
 "Well, we have no choice ... I've never tasted scorpions but I am sure they "
 "are good. This journey promises to be fun."
 msgstr ""
-"Nemáme na výběr... A škorpióny jsem ještě nikdy neokusil, takže tahle cesta "
-"slibuje dostatek povyražení."
+"Nemáme na výběr... Ještě nikdy jsem neochutnal škorpiona, ale jsem si jistý, "
+"že budou dobří. Tahle cesta slibuje zábavu."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:4
@@ -1633,15 +1696,14 @@ msgstr "Poušť smrti"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:20
-#, fuzzy
 msgid "Reach the Oasis"
-msgstr "Záchrana šamana"
+msgstr "Dostaň se do oázy"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:354
 msgid "Time Runs Out"
-msgstr ""
+msgstr "Vyprší počet kol"
 
 #. [side]: type=Assassin, type=Rogue, description=Ar Dant
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:63
@@ -1654,6 +1716,8 @@ msgid ""
 "Resting during the day and doing most of their marching by night, the party "
 "marched steadily through the sand for two days."
 msgstr ""
+"Společnost pochodovala po dva dny skrze písky. Ve dne odpočívali, v noci "
+"pochodovali."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:106
@@ -1662,6 +1726,8 @@ msgid ""
 "Fortunately, they didn't encounter any giant scorpions, but neither did they "
 "discover any source of food or water."
 msgstr ""
+"Teplo dne a chlad noci na skřety těžce doléhal. Naštěstí nenarazili na "
+"žádného obrovského škorpiona, ale neobjevili ani zdroj jídla nebo vody."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:111
@@ -1669,6 +1735,8 @@ msgid ""
 "By the dawn of the third day the party was hungry, tired and weary, but "
 "according to their map, a good-sized oasis was not far away."
 msgstr ""
+"Za úsvitu třetího dne byli hladoví, unavení a vyčerpaní, ale podle jejich "
+"mapy se poblíž nacházela velká oáza."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:116
@@ -1677,6 +1745,9 @@ msgid ""
 "fury, whipping hot sand up all around them. Visibility was reduced to zero "
 "and it began to seem they would be buried alive by smothering sand."
 msgstr ""
+"Právě vtom ale začal vát silný vítr. Ten se rychle změnil v běsnění bičující "
+"je horkým pískem. Viditelnost se rovnala nule a zdálo se, že budou pohřbeni "
+"zaživa pískem a udušeni."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:150
@@ -1685,32 +1756,29 @@ msgstr "Zatracený písek!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:154
-#, fuzzy
 msgid ""
 "I'm hungry and we found no giant scorpion yet. I'm sure it would be tasty."
 msgstr ""
-"Mám hlad a zatím jsme nenašli žádného pouštního škorpióna. Určitě by chutnal "
-"skvěle."
+"Mám hlad a zatím jsme nenašli žádného obrovského škorpióna. Určitě by "
+"chutnal skvěle."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:158
-#, fuzzy
 msgid ""
 "I hope we won't find one! They are terrible armored beasts; your troll clubs "
 "would be useless against their heavy shells."
 msgstr ""
-"Já doufám, že žádného ani nenajdeme. Jsou to obrovské obrněné potvory a s "
-"jejich tvrdým krunýřem si ani tvoje trolí palice neporadí."
+"Já doufám, že žádného ani nenajdeme. Jsou to strašlivé obrněné bestie a s "
+"jejich tvrdým krunýřem si ani tvoje trollí palice neporadí."
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:162
-#, fuzzy
 msgid ""
 "I've been told the best way to defeat them is to attack their eyes with "
 "sharp blades, or pierce them with arrows. But I hope too we won't meet them."
 msgstr ""
 "Slyšel jsem, že je lze nejsnáze zabít, když zaútočíš na jejich oči ostrou "
-"čepelím. Ale také doufám, že žádného nepotkáme."
+"čepelí nebo šípem. Ale také doufám, že žádného nepotkáme."
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:166
@@ -1719,11 +1787,14 @@ msgid ""
 "out of this sandstorm! These things can last for weeks, and if we aren't "
 "buried alive by all the sand we will die of hunger and thirst."
 msgstr ""
+"Nestaral bych se o škorpiony právě teď; staral bych se spíš o to jak se "
+"dostat z téhle písečné bouře. Tyhle věci mohou trvat týdny a jestli nás "
+"písek nepohřbí zaživa, zemřeme hladem a žízní."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:170
 msgid "Hurry then, break camp, we must get to the oasis!"
-msgstr ""
+msgstr "Rychle, strhněte tábor. Musíme se dostat do oázy!"
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:175
@@ -1733,31 +1804,31 @@ msgstr "Cože? Skrz všechen ten chaos?"
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:180
 msgid "We don't have any other choice. If we remain here we will surely die."
-msgstr ""
+msgstr "Nemáme jinou volbu. Když zůstaneme, kde jsme, zemřeme."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:203
-#, fuzzy
 msgid ""
 "Finally we've done it! Now let's wait out this sandstorm, resupply and get "
 "some rest before we continue on our journey."
 msgstr ""
-"Podařilo se! Předtím než budeme pokračovat v cestě si chvíli odpočineme."
+"Konečně, dokázali jsme to! Teď počkáme než skončí ta písečná bouře, doplníme "
+"zásoby a odpočineme si než budeme pokračovat v naší cestě."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:215
 msgid "There you go, Grüü, there is your giant scorpion!"
-msgstr ""
+msgstr "Tady ho máš Grüü, tvůj obrovský škorpion!"
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:220
 msgid "Oh great, perfect timing."
-msgstr "Oh skvěle. Perfektní načasování"
+msgstr "Oh skvěle. Perfektní načasování."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:225
 msgid "Yeah, I am really hungry."
-msgstr "Yeah. Mám hlad"
+msgstr "Jo, už mám docela hlad."
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:230
@@ -1766,14 +1837,13 @@ msgstr "To jsem nemyslel!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:247
-#, fuzzy
 msgid "Ahh, finally! Lunchtime!"
-msgstr "Konečně! Oběd!"
+msgstr "Konečně! Čas oběda!"
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:252
 msgid "You trolls are just sick!"
-msgstr ""
+msgstr "Vy trollové jste nechutní."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:257
@@ -1784,12 +1854,12 @@ msgstr "Ah. Odporné! Chutná to hrozně!"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:275
 msgid ""
 "I don't know if you should have eaten that Grüü, you don't look so good."
-msgstr "Nevím jestli jsi to měl jíst Gruu. Nevypadáš dobře."
+msgstr "Nevím jestli jsi to měl jíst, Grüü. Nevypadáš dobře."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:280
 msgid "Ugg... I feel sick."
-msgstr "Ugg. Je mi zle"
+msgstr "Ugg. Je mi zle."
 
 #. [message]: description=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:285
@@ -1799,25 +1869,24 @@ msgstr "Hmm. zdá se, že ti škorpioni jsou jedovatí."
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:290
 msgid "But what about Grüü?"
-msgstr "Ale co Gruu?"
+msgstr "Ale co Grüü?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:295
-#, fuzzy
 msgid ""
 "Ahh, he will be OK in a few minutes. He is a troll, after all. Right, Grüü?"
-msgstr "Ah. Za pár minut bude v pořádku. Je to přece troll. Správně Gruu?"
+msgstr "Ále, za pár minut bude v pořádku. Je to přece troll. Je to tak, Grüü?"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:300
 msgid " *puke*"
-msgstr "*Zvrací*"
+msgstr " *Zvrací*"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:312
 msgid ""
 "Hold it right there! This oasis is ours! Begone or you all will be killed!"
-msgstr ""
+msgstr "Stůj! Tahle oáza je naše. Táhni nebo tě zabijeme!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:317
@@ -1826,16 +1895,18 @@ msgid ""
 "out of food and water. There is no way we can keep going without stopping at "
 "this oasis."
 msgstr ""
+"Podívej, kamaráde. Jsme uprostřed písečné bouře a jsme téměř bez vody a "
+"jídla. Není způsob, jak bychom mohli pokračovat bez zastávky v oáze."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:322
 msgid "I don't care, get lost!"
-msgstr ""
+msgstr "To je mi jedno. Ztraťte se!"
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:327
 msgid "It's no use reasoning with them, Kapou'e, they aren't going to listen."
-msgstr ""
+msgstr "S nimi není rozumná domluva, Kapou'e, ani nás neposlouchají."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:332
@@ -1843,31 +1914,33 @@ msgid ""
 "Yeah, I can see that. Well, I guess we have to clean these rabble out of "
 "here. Stab, smite, slay!"
 msgstr ""
+"Ano, to vidím. Inu, hádám, že tu chátru musíme odsud vyklidit. Bodejte, "
+"bijte, vražděte!"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:338
 msgid "Defeat Ar Dant"
-msgstr "Poraž Ar Danta"
+msgstr "Poraz Ar Danta"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:365
 msgid "...food..."
-msgstr "..jídlo..."
+msgstr "...jídlo..."
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:370
 msgid "....water...."
-msgstr "..voda."
+msgstr ".....vodu....."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:375
 msgid "...Come... on .... people.... we have .... to .... keep.... going...."
-msgstr ""
+msgstr "...Pojďte... musíme... pokračovat... dál.."
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:380
 msgid ".... can't.... the .... heat.... is.... too..... much...."
-msgstr ""
+msgstr "...nemůžu... je... mi... příliš... vedro..."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:4
@@ -1876,9 +1949,8 @@ msgstr "Tichý les"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:20
-#, fuzzy
 msgid "Defeat the elves"
-msgstr "Poraž všechny nepřátelské velitele"
+msgstr "Poraz elfy"
 
 #. [side]: type=Elvish Shyde, description=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:90
@@ -1896,6 +1968,8 @@ msgid ""
 "As soon as the sandstorm died down, Kapou'e and his men - eager to escape "
 "the searing heat - left the oasis and continued on their trek."
 msgstr ""
+"Hned jak písečná bouře odezněla, Kapou'e a jeho muži - horliví uniknout "
+"pálivému teplu - opustili oázu a pokračovali v cestě."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:124
@@ -1906,71 +1980,75 @@ msgid ""
 "and all the natural sounds of the forest died away - leaving everything "
 "deathly quiet."
 msgstr ""
+"Byl to skvělý pohled, když konečně spatřili Tichý Les  večeru druhého dne. "
+"Rychle postavili tábor v naději získání tolik potřebného odpočinku. Ale "
+"jakmile se objevil úsvit, silná mlha se vyvalila a pohřbila všechny přírodní "
+"zvuky - zanechávajíc jen smrtelné ticho."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:158
 msgid ""
 "This fog and this silence is starting to unsettle me. What is the history "
 "behind this place, anyway?"
-msgstr ""
+msgstr "Ta mlha a ticho mne znervózňují. Jaká je historie tohoto místa?"
 
 #. [message]: description=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:162
-#, fuzzy
 msgid ""
 "It has not always been like this. A lot of hunters from tribes used to hunt "
 "there and fish in the Bork river. But that all changed a few years ago. Now, "
 "no one would enter there unless forced."
 msgstr ""
-"Řekl bych, že nebyl vždy tak tichý. Mnoho lovců z různých kmenů v něm lovilo "
-"a rybařilo v řece Bork. Teď by do něj však nikdo nevstoupil dobrovolně."
+"Nebylo to tu vždy takové. Mnoho lovců z různých kmenů tu lovilo a rybařilo v "
+"řece Bork. Ale všechno se změnilo před několika lety. Teď by do něj nikdo "
+"nevstoupil dobrovolně."
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:166
 msgid "What happened? Why did people stop coming here?"
-msgstr ""
+msgstr "Co se stalo? Proč sem lidé přestali chodit?"
 
 #. [message]: description=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:170
-#, fuzzy
 msgid ""
 "The fact is that few people entered this forest and returned home safe. I am "
 "not sure, but most likely, this forest is full of elvish renegades."
 msgstr ""
-"No, není moc těch, kteří vstoupili do toho lesa a šťastně se vrátili domů, "
-"ale to bude spíše tím, že je tam plno elfích odpadlíků."
+"Po pravdě není mnoho těch, kteří by vstoupili do tohoto lesa a vrátilo se "
+"bezpečně domů. Nejsem si jistý, ale nejspíše je tento les plný elfích "
+"odpadlíků."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:174
-#, fuzzy
 msgid ""
 "What would elves be doing so far into orcish territory? Anyway, we need some "
 "rest. We are sufficiently armed to cope with a bunch of elvish poachers. If "
 "we meet any, we'll cut them to pieces."
 msgstr ""
-"Tak i tak musíme najít místo k odpočinku. Ozbrojeni jsme dostatečně, a s "
-"partou efích zlodějíčků si poradíme. Uděláme jim takový tanec, že se zastaví "
-"až v řece Bork. Nejlépe na dně."
+"Co by elfové dělali tak daleko na skřetím území? Každopádně si musíme "
+"odpočinout. Tak i tak musíme najít místo k odpočinku. Jsme vyzbrojeni dost "
+"na zvládnutí party elfích pytláků. Jestli nějakého potkáme, rozsekáme ho na "
+"kusy."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:187
 msgid "Elves! You were right, Pirk, this place is infested with tree-shaggers."
-msgstr ""
+msgstr "Elfové! Měl jsi pravdu, Pirku, je tu plno těch stromomilců."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:192
 msgid "Blast it, the orcs have discovered us."
-msgstr ""
+msgstr "K čertu! Skřeti nás odhalili."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:197
 msgid "What is your purpose for trespassing on orcish territory?"
-msgstr ""
+msgstr "Proč jste vstoupili do skřetího teritoria?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:202
 msgid "Fool, do you really think we are going to tell you?"
-msgstr ""
+msgstr "Blázne. Vážně si myslíš, že ti to řekneme?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:207
@@ -1978,32 +2056,33 @@ msgid ""
 "Pah, men, capture one of these elves and interrogate him. I am sure that "
 "will get us some answers."
 msgstr ""
+"Pf, muži, zajměte jednoho z těch elfů a vyslechněte ho. Jsem si jistý, že "
+"nám dá nějaké odpovědi."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:219
-#, fuzzy
 msgid "OK, buddy, we want some answers."
-msgstr "OK, kámo. Chceme nějaké odpovědi!"
+msgstr "OK, příteli. Chceme nějaké odpovědi!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:224
 msgid "You might as well go ahead and kill me, I'm not telling you anything."
-msgstr ""
+msgstr "Stejně tak dobře mne můžete zabít. Neřeknu vám nic."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:229
 msgid "Very well then..."
-msgstr ""
+msgstr "Pak tedy..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:234
 msgid "Some time later..."
-msgstr ""
+msgstr "O chvíli později..."
 
 #. [message]: speaker=seccond_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:240
 msgid "So you elves have set up an enclave here have you. Why is that?"
-msgstr ""
+msgstr "Takže vy elfové jste vstoupili do našich zemí. Proč to?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:245
@@ -2013,6 +2092,9 @@ msgid ""
 "them they would give us a large chunk of your territory once the battle was "
 "over."
 msgstr ""
+"Před nějakým časem jsme se domluvili s lidmi. Plánovali velký útok na vás, "
+"paliče stromů, a nám slíbili, že dostaneme velký kus země, jakmile bitva "
+"skončí, když jim pomůžeme."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:250
@@ -2020,6 +2102,8 @@ msgid ""
 "Why would you elves want still more territory? You guys already have the "
 "undisputed rule of the whole elvish forest."
 msgstr ""
+"Proč by elfové chtěli více území? Vy chlapi máte nespornou vládu nad celým "
+"elfím lesem."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:255
@@ -2027,6 +2111,8 @@ msgid ""
 "Yes, but our prince has been banished from those lands for collaborating "
 "with humans. He now seeks to carve out an empire for himself."
 msgstr ""
+"Ano, ale náš princ byl vypuzen z těch zemí za spolupráci s lidmi. Teď se "
+"snaží založit svou vlastní říši."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:260
@@ -2034,23 +2120,25 @@ msgid ""
 "Hmmm, interesting. So you set up a base here to launch your attacks on us. "
 "Is that right?"
 msgstr ""
+"Hmmm, zajímavé. Takže jste tu postavili základnu, aby jste na nás mohli "
+"zaútočit. Je to pravda?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:265
 msgid "Yes, that is correct."
-msgstr ""
+msgstr "Ano, to je správně."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:270
 msgid ""
 "Well folks, it looks like we have our work cut out for us. We must destroy "
 "this enclave."
-msgstr ""
+msgstr "Dobrá, vypadá to, že tu máme práci. Musíme zničit tu enklávu."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:275
 msgid "With pleasure. But what should I do with this guy?"
-msgstr ""
+msgstr "S potěšením. Co mám udělat s tímhle chlapíkem?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:280
@@ -2060,22 +2148,23 @@ msgstr "Usekněte mu hlavu."
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:285
 msgid "Ahhhhh!"
-msgstr ""
+msgstr "Ahhhhh!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:293
-#, fuzzy
 msgid ""
 "Good work, men, we've done it! Now we don't have to worry about these elves "
 "attacking us. Let's get some rest and continue our journey."
 msgstr ""
-"Podařilo se! Předtím než budeme pokračovat v cestě si chvíli odpočineme."
+"Dobrá práce chlapi, zvládli jsme to. Teď už se nemusíme bát, že na nás ti "
+"elfové zaútočí. Odpočineme si a pak budeme pokračovat dál."
 
 #. [message]: description=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:305
 msgid ""
 "Ahhh! Flee; warn the prince that I have been slain and the enclave destroyed."
 msgstr ""
+"Ahhh! Uprchni! Varuj prince, že jsem byla zavražděna a enkláva zničena."
 
 #. [unit]: type=Elvish Scout, description=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:314
@@ -2085,17 +2174,17 @@ msgstr "Linduilas"
 #. [message]: description=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:319
 msgid "As you command, my lady."
-msgstr ""
+msgstr "Dle rozkazu, má paní."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:4
 msgid "Shan Taum The Smug"
-msgstr "Shan Tum zvaný Samolibý"
+msgstr "Šan Taum Samolibý"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:18
 msgid "Survive the Shan Taum menace for 20 turns"
-msgstr "Odolej silám Shan Tauma po 20 tahů"
+msgstr "Odolej silám Šan Tauma po 20 tahů"
 
 #. [side]: type=Orcish Warlord, description=Shan Taum
 #. [unit]: type=Orcish Warlord, description=Shan Taum
@@ -2103,7 +2192,7 @@ msgstr "Odolej silám Shan Tauma po 20 tahů"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:54
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:172
 msgid "Shan Taum"
-msgstr "Shan Taum"
+msgstr "Šan Taum"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:71
@@ -2113,41 +2202,38 @@ msgid ""
 "reached the city of Lmarig in the Mourned Hills, which was then ruled by "
 "Shan Taum the Smug."
 msgstr ""
+"Po vyčištění Tichého Lesa od elfů se Kapou'e a jeho společnost vydali na "
+"poslední část jejich cesty. Během pár dnů konečně dosáhli města Lmarig v "
+"Truchlivých kopcích, kterému vládl Šan Taum Samolibý."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:102
-#, fuzzy
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
-msgstr "Konečně, zde jsou ty oplakávané kopce! Snad bude všechno v pořádku."
+msgstr "Konečně, tady jsou Truchlivé Kopce! Můžeme jen doufat v nejlepší."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:106
 msgid "Why?"
-msgstr "Proč"
+msgstr "Proč?"
 
 #. [message]: description=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:110
-#, fuzzy
 msgid ""
 "You are a troll, so you don't know. These lands are ruled by Shan Taum the "
 "Smug, who was a rival of Black-Eye Karun."
 msgstr ""
-"Takhle se může zeptat jen trol... Tomu místu vládne Shan Tum, zvaný "
-"Samolibý. Dlouholetý soupeř Karuna Černé oko."
+"Jsi troll, takže to nemůžeš vědět - těmto zemím vládne Šan Taum Samolibý, "
+"který byl soupeřem Karuna Černého Oka."
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:114
-#, fuzzy
 msgid "I doubt he would welcome the son of the Black-Eye."
-msgstr "Pochybuji, že by rád uvítal syna Černého oka."
+msgstr "Pochybuji, že bude vítat jeho syna."
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:119
-#, fuzzy
 msgid "Who is that? Kapou'e! What are you doing in my lands you weakling runt?"
-msgstr ""
-"Koho to sem čerti nesou? Kapou'e! Copak hledá takový nanicovatý chcípáček v "
-"mé zemi?"
+msgstr "Kdo je to? Kapou'e! Co děláš na mém území, ty slabošský zakrslíku?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:123
@@ -2155,7 +2241,7 @@ msgid ""
 "Hold on, Shan Taum. We are not here to quarrel, we are here to escort our "
 "brothers and to deliberate about what we have to do."
 msgstr ""
-"Zadrž, Shan Tume. Nepřišli jsme se s tebou hádat. Jsme tu jako doprovod "
+"Zadrž, Šan Taume. Nepřišli jsme se s tebou hádat. Jsme tu jako doprovod "
 "našich bratrů a abychom se poradili, co uděláme."
 
 #. [message]: description=Shan Taum
@@ -2169,13 +2255,12 @@ msgstr ""
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:132
-#, fuzzy
 msgid ""
 "How can you talk that way about my father, you miserable coward?! I'll make "
 "a mug with your skull!"
 msgstr ""
-"Jak se opovažuješ takto mluvit o mém otci, ty ubohý zbabělče? Udělám si "
-"hrnek ze tvé lebky!"
+"Jak se opovažuješ takhle mluvit o mém otci, ty ubohý zbabělče? Udělám si "
+"pohár z tvé lebky!"
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:137
@@ -2187,36 +2272,35 @@ msgstr "Vážně? A co bys z něj pil? Mátový odvar?"
 msgid ""
 "Exasperated, Kapou'e launched an attack on his fellow orc Shan Taum the Smug."
 msgstr ""
-"A tak rozzuřený Kapou'e zaútočil na svého spojence, Shan Tuma samolibého."
+"A tak rozzuřený Kapou'e zaútočil na svého spojence, Šan Tauma Samolibého."
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:147
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:222
 msgid "Fabstep"
-msgstr ""
+msgstr "Fabstep"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:148
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:223
 msgid "Klebar"
-msgstr ""
+msgstr "Klebar"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:149
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:224
 msgid "Echarp"
-msgstr ""
+msgstr "Echarp"
 
 #. [message]: description=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:155
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:230
-#, fuzzy
 msgid ""
 "What is this? Are you mad!? Humans are to besiege our fortress at Prestim "
 "and you are fighting each other!?"
 msgstr ""
 "Co to má znamenat? Zešíleli jste? Lidé obléhají pevnost Prestim a vy tady "
-"bojujete mezi sebou?"
+"bojujete mezi sebou? "
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:159
@@ -2227,13 +2311,12 @@ msgstr "Hmmm... no..."
 #. [message]: description=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:163
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:238
-#, fuzzy
 msgid ""
 "Kapou'e, rumors tell you made a long trip to seek assistance from us, and "
 "escorting Pirk, Gork and Vraurk. The council is grateful for that."
 msgstr ""
-"Kapou'e. Slyšeli jsme, že jsi podstoupil dlouhou cestu, abys vyhledal naši "
-"pomoc a doprovodil Pirka, Gorka a Vraurka. Veliký sněm ti za to děkuje."
+"Kapou'e. Šeptá se, že jsi podnikl dlouhou cestu, abys vyhledal naši pomoc a "
+"doprovodil Pirka, Gorka a Vraurka. Velká Rada ti za to děkuje."
 
 #. [message]: description=Fabstep
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:167
@@ -2250,7 +2333,6 @@ msgstr "Opravdu? Ale moji lidé..."
 #. [message]: description=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:175
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:250
-#, fuzzy
 msgid ""
 "You don't understand. Orcs have been divided for ages. The only one who gave "
 "us some unity was your father, Black-Eye Karun. Hearing rumors from your "
@@ -2258,7 +2340,7 @@ msgid ""
 msgstr ""
 "Nechápeš to. Skřeti byli po dlouhá léta rozděleni. Jediný, kdo nás určitým "
 "způsobem sjednotil, byl tvůj otec Karun Černé oko. Podle toho, co jsme o "
-"tobě slyšeli, jsi opravdu hoden odkazu tvého otce."
+"tobě slyšeli, jsme pochopili, že jsi pravý syn svého otce."
 
 #. [message]: description=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:179
@@ -2296,7 +2378,6 @@ msgstr ""
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:195
-#, fuzzy
 msgid ""
 "Leave your people here Kapou'e - they are safe for the moment--and go defend "
 "Prestim. In the meantime, now that the council is complete again, we will "
@@ -2304,26 +2385,23 @@ msgid ""
 "leadership on it."
 msgstr ""
 "Nech své lidi zde, Kapou'e, pro tuto chvíli jsou v bezpečí, a jdi bránit "
-"Prestim. Náš sněm, který je nyní opět úplný, mezitím rozhodne, zda je nutné "
-"opět spojit naše vojska do Mocné hordy a učinit tě jejím velitelem."
+"Prestim. Teď, když je naše Rada kompletní, rozhodneme zda svoláme Velkou "
+"Hordu a dáme ti nad ní velení."
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:219
-#, fuzzy
 msgid "Nooo! Don't kill me, I surrender to you little earthworm."
-msgstr "Neee! Nezabíjejte mě. Vzdávám se, ty malý bídný červe."
+msgstr "Neee! Nezabíjejte mě. Vzdávám se ti, ty malý červe."
 
 #. [message]: description=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:270
-#, fuzzy
 msgid ""
 "Go defend Prestim Kapou'e. In the meantime, now that the council is complete "
 "again, we will decide. We may have to form the Great Horde again, and give "
 "you the leadership on it."
 msgstr ""
-"Nech své lidi zde, Kapou'e, pro tuto chvíli jsou v bezpečí, a jdi bránit "
-"Prestim. Náš sněm, který je nyní opět úplný, mezitím rozhodne, zda je nutné "
-"opět spojit naše vojska do Mocné hordy a učinit tě jejím velitelem."
+"Kapou'e, běž bránit Prestim. Naše Rada, která je nyní opět úplná, mezitím "
+"rozhodne. Snad můžeme znovu svolat Velkou Hordu a dát ti nad ní velení."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:97
@@ -2332,11 +2410,12 @@ msgstr "Záchrana Inarixe"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:117
-#, fuzzy
 msgid ""
 "In order to recruit saurians later on, bring Inarix and at least four "
 "saurians to the fort on River Gork"
-msgstr "Přiveď Inarixe a alespoň čtyři ještěráky do pevnosti na řece Gork"
+msgstr ""
+"Aby jsi mohl později rekrutovat ještěráky, přiveď Inarixe a nejméně čtyři "
+"ještěráky k pevnosti na řece Gork."
 
 #. [side]: type=Elvish Champion, description=Thelarion
 #. [unit]: type=Elvish Champion, description=Thelarion
@@ -2345,14 +2424,14 @@ msgstr "Přiveď Inarixe a alespoň čtyři ještěráky do pevnosti na řece Go
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:207
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:176
 msgid "Thelarion"
-msgstr ""
+msgstr "Thelarion"
 
 #. [side]: type=Dwarvish Steelclad, description=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:142
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:227
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:79
 msgid "Darstang"
-msgstr ""
+msgstr "Darstang"
 
 #. [unit]: type=Orcish Slayer, description=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:268
@@ -2366,27 +2445,25 @@ msgid ""
 "fortified bridge over the Gork river was taken this morning by a small "
 "commando of elves, we have already tried to assault it twice without success."
 msgstr ""
-"Posily, konečně! Ať jste kdo jste, vítejte v Prestimu! Opevněný most přes "
+"Posily! Konečně! Ať jste kdo jste, vítejte v Prestimu! Opevněný most přes "
 "řeku Gork byl dnes ráno napaden předvojem elfů. Dvakrát jsme se jej marně "
 "pokoušeli dobýt zpět."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:319
-#, fuzzy
 msgid "Ah! They are no match against my hammer."
-msgstr "Ále! Na můj palcát jsou krátcí."
+msgstr "Ah! Nejsou výzva pro mé kladivo."
 
 #. [message]: description=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:323
-#, fuzzy
 msgid ""
 "There is worse; our scouts report that our saurian allies led by Inarix are "
 "still trapped on the other side of the river some miles away. They won't be "
 "able to cross the river."
 msgstr ""
 "Je to horší, než se zdá. Zvědové přinesli zprávy, že ještěráci, naši "
-"přátelé, které vede Inarix, se dostali do obklíčení na druhém břehu řeky. "
-"Cestu k nám mají uzavřenu."
+"přátelé, které vede Inarix, se dostali do obklíčení na druhém břehu řeky "
+"několik mil odsud. Cestu k nám mají uzavřenu."
 
 #. [message]: description=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:327
@@ -2403,13 +2480,13 @@ msgid ""
 "If Inarix falls prey to those humans then we won't be able to count on their "
 "help in this struggle. We must do something!"
 msgstr ""
+"Jestli Inarix padne za oběť těm lidem, nebudeme moci počítat s jejich pomocí "
+"v tomto boji. Musíme něco udělat!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:335
-#, fuzzy
 msgid "I know what we must do. Kill elves and help Inarix cross."
-msgstr ""
-"Vím, co budeme dělat. Zabíjet elfy; tak pomůžeme Inarixovi přejít řeku."
+msgstr "Vím, co musíme dělat. Zabít elfy a pomoci Inarixovi přejít řeku."
 
 #. [message]: description=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:339
@@ -2423,8 +2500,8 @@ msgid ""
 "crossed. Any warriors trapped on the bridge or on the other side of the "
 "river will perish!"
 msgstr ""
-"Poškodíme jižní most, jakmile ho většina Ještěří armády překročí. Všichni "
-"bojovníci, kteří zůstanou na mostě nebo na opačné straně řeky zemřou!"
+"Poškodíme jižní most, jakmile ho většina Ještěrácké armády překročí. Všichni "
+"bojovníci, kteří zůstanou na mostě nebo na opačné straně řeky, zemřou!"
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:349
@@ -2433,6 +2510,9 @@ msgid ""
 "have reinforced Prestim. It is time to avenge the death of our fallen kin my "
 "friends - get them!"
 msgstr ""
+"Podívejte! Kmen skřetů, který zničil mou enklávu v Tichém Lese, přišel "
+"posílit Prestim. Je čas pomstím naše padlé bratry a sestry. Mí přátele - "
+"dostaňte je!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:354
@@ -2440,63 +2520,62 @@ msgid ""
 "Ahhh, it's 'the Prince' from the Silent Forest. Unfortunately, I don't think "
 "we can deal with him now, we have to focus on saving Inarix."
 msgstr ""
+"Ahhh, to je „Princ“ z Tichého Lesa. Naneštěstí si nemyslím, že se s ním teď "
+"můžeme vypořádat. Musíme se zaměřit na záchranu Inarixe."
 
 #. [unit]: type=Saurian Ambusher, description=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:377
-#, fuzzy
 msgid "Inarix"
-msgstr "Záchrana Inarixe"
+msgstr "Inarix"
 
 #. [message]: description=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:398
-#, fuzzy
 msgid ""
 "Here we are, my friends. Earl Lanbec'h and his kind is on our tails, we must "
 "hurry up."
 msgstr ""
-"Tak jsme tu, přátelé. Hrabě Lanbec'h a jeho jednotky jsou nám v patách. "
+"Tak jsme tu, mí přátelé. Hrabě Lanbec'h a jeho jednotky jsou nám v patách. "
 "Musíme si pospíšit."
 
 #. [message]: role=engineer
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:422
 msgid "The Saurians are safe, Chief, should we blow the bridge?"
-msgstr ""
+msgstr "Ještěráci jsou v bezpečí, náčelníku; máme zničit most?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:427
-#, fuzzy
 msgid "Ah...."
-msgstr "..."
+msgstr "Ah..."
 
 #. [option]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:430
 msgid "Let her blow!"
-msgstr ""
+msgstr "Zničte ho!"
 
 #. [option]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:444
 msgid "Just wait a sec."
-msgstr ""
+msgstr "Ještě chvíli počkejte."
 
 #. [message]: role=engineer
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:448
 msgid "Argh! Hurry up, let's get a move on this!"
-msgstr ""
+msgstr "Aargh! Rychle, pohněte sebou!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:453
 msgid "Shut up, I'm in charge here not you!"
-msgstr ""
+msgstr "Sklapni. Tady velím já!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:469
 msgid "Hurry up! The southern bridge is going to explode! Retreat! "
-msgstr "Rychle! Jižní most vyletí do vzduchu! Ústúúúp!"
+msgstr "Rychle! Jižní most vyletí do vzduchu! Ústup!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:484
 msgid "I hurry up!"
-msgstr ""
+msgstr "Spěchám!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:511
@@ -2504,6 +2583,8 @@ msgid ""
 "Blast it! The saurians have had too many casualties in order for them to be "
 "of any real help to us. We won't be able to recruit them in the future."
 msgstr ""
+"Odpal to! Ještěráci měli moc velké ztráty, než aby nám byli užiteční. V "
+"budoucnosti s námi nebudou moci bojovat."
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:544
@@ -2511,8 +2592,8 @@ msgid ""
 "This has taken too much time, we should send all of our troops and send "
 "these creatures back to hell."
 msgstr ""
-"To nám zabere příliš mnoho času, měli bychom použít všechny naše síly a "
-"poslat tyto stvoření do pekla."
+"Zabere nám to příliš mnoho času, měli bychom použít všechny naše síly a "
+"poslat ta stvoření do pekla."
 
 #. [message]: description=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:548
@@ -2532,9 +2613,8 @@ msgstr "Hrabě Lanbec'h"
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:598
-#, fuzzy
 msgid "At the saurians! Rip them to the last!"
-msgstr "Na ještěráky! Rozsekejte je do jednoho na kousky!"
+msgstr "Na ještěráky! Rozsekejte je všechny!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:602
@@ -2566,28 +2646,27 @@ msgstr "Plouf"
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:238
 msgid "Telamir"
-msgstr ""
+msgstr "Telamir"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:239
 msgid "Angthur"
-msgstr ""
+msgstr "Angthur"
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:247
-#, fuzzy
 msgid "So here we are, and they are preparing to assault."
-msgstr "Tak jsme tu. Přípravy na útok jsou v plném proudu."
+msgstr "Tak jsme tu. A oni se připravují k útoku."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:252
-#, fuzzy
 msgid "Prestim's walls are rock-hard, they'll waste themselves on them."
-msgstr "Zdi Prestimu jsou jako skála. Nikdo je nepokoří."
+msgstr ""
+"Zdi Prestimu jsou jako skála. Budou na nich mrhat silami, až z nich nic "
+"nezbude."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:257
-#, fuzzy
 msgid ""
 "I'm not that sure. Every fortress has its own weakness. Prestim's walls are "
 "built on three towers. If one of them is destroyed, a breach will allow "
@@ -2595,17 +2674,14 @@ msgid ""
 msgstr ""
 "Nejsem si tak jist. Každá pevnost má svou slabinu. Prestimské opevnění je "
 "založeno na třech věžích. Jakmile bude jedna zničena, průlom dovolí lidem "
-"dostat se do Prestimu ... a nemusím snad dodávat, že to by byl máš konec."
+"dostat se do Prestimu... a nemusím snad dodávat, že to by byl máš konec."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:262
-#, fuzzy
 msgid ""
 "We've received messengers from the Council, saying that they are gathering "
 "tribes into the Great Horde."
-msgstr ""
-"Obdržel jsem zprávu od Velikého sněmu. Kmeny spojily své síly v jedno "
-"vojsko, Mocnou hordu."
+msgstr "Obdržel jsem zprávu od Rady. Kmeny se shromažďují do Velké Hordy."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:267
@@ -2614,9 +2690,8 @@ msgstr "Výtečně! A kdy dorazí sem?"
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:272
-#, fuzzy
 msgid "In four days minimum. I fear it will be too late."
-msgstr "Bohužel nejdříve za čtyři dny. Obávám se, že už bude pozdě."
+msgstr "Nejdřív za čtyři dny. Obávám se, že to bude příliš pozdě."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:277
@@ -2630,13 +2705,12 @@ msgstr "Jaká?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:287
-#, fuzzy
 msgid ""
 "Most of their forces will cross the river by the ford where the bridge "
 "previously stood. If we can hold that ford, we might still have a chance."
 msgstr ""
-"Podle mě se nejvíce nepřátel pokusí přebrodit řeku v místech, kde dříve "
-"stávaly mosty. Jestliže ubráníme tato místa, máme šanci."
+"Většina jejich jednotek se pokusí dostat přes řeku brodem, na místě bývalého "
+"mostu. Pokud udržíme brod, máme šanci."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:292
@@ -2645,13 +2719,12 @@ msgstr "A když ne?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:297
-#, fuzzy
 msgid ""
 "Then, they will assault Prestim at five versus one. We'll just have to do "
 "the best we can."
 msgstr ""
-"Potom zaútočí na Prestim v přesile pět na jednoho, a nám zbudou jen modlitby "
-"k Matce zemi."
+"Potom zaútočí na Prestim v přesile pět na jednoho. Budeme prostě dělat vše "
+"co je v našich silách."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:302
@@ -2669,21 +2742,20 @@ msgstr "A tak začala bitva o Prestim."
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:417
 msgid "We arrive to honor our alliance, Earl Lanbec'h."
 msgstr ""
-"Hlásím, že jsme dorazili. Připraveni k boji za slávu naší aliance a hraběte "
-"Lanbec'ha."
+"Hlásím, že jsme dorazili. Připraveni k boji za slávu naší aliance, Hrabě "
+"Lanbec'hu."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:331
 msgid "Ahh shoot! They have mermen on their side."
-msgstr ""
+msgstr "Sakra! Mají vodní lid na své straně!"
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:421
 msgid ""
 "Reinforcements, at last. We don't have much time, the Orcish hordes are on "
 "their way. To the attack!"
-msgstr ""
-"Posily, konečně. Nemáme moc času, skřetí hordy jsou na cestě. Do útoku!"
+msgstr "Konečně posily. Nemáme moc času, skřetí hordy jsou na cestě. Do útoku!"
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:445
@@ -2699,7 +2771,7 @@ msgstr "Je jich příliš mnoho! ÚSTUP!"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:472
 msgid ""
 "The Great Horde at last! I was beginning to think they would never come."
-msgstr "Mocná horda, konečně! Už jsem se začínal bát, že nikdy nedorazí."
+msgstr "Konečně je tu Velká horda! Už jsem se začínal bát, že nikdy nedorazí."
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:477
@@ -2714,14 +2786,13 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:482
-#, fuzzy
 msgid ""
 "It is now time to show them who we are and to lead the Great Horde in "
 "pursuit. We will not rest until we destroy Earl Lanbec'h. Smite, stab, slay!"
 msgstr ""
-"Je načase jim ukázat, kdo je tu pánem. Vyšleme Mocnou hordu, aby "
-"pronásledovala ustupující jednotky. Nedáme jim spát, dokud nedostaneme "
-"hraběte Lanbec'ha!"
+"Je načase jim ukázat, kdo je tu pánem a vyslat Velkou Hordu, aby je "
+"pronásledovala. Nespočineme, dokud nezničíme Hraběte Lanbec'ha. Bodnout, "
+"Udeřit, Zabít!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:498
@@ -2731,16 +2802,15 @@ msgstr "Ne! Zdi Prestimu jsou v troskách. Jsme ztraceni!"
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:11
 msgid "Giving Some Back"
-msgstr ""
+msgstr "Splácení účtů."
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:26
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:19
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:507
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:19
-#, fuzzy
 msgid "Defeat All Enemy Leaders."
-msgstr "Poraž všechny nepřátelské velitele"
+msgstr "Poraz všechny nepřátelské velitele."
 
 #. [side]: type=Orcish Warlord, description=Al'Brock
 #. [unit]: type=Orcish Warlord, description=Al'Brock
@@ -2752,7 +2822,7 @@ msgstr "Poraž všechny nepřátelské velitele"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:348
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:53
 msgid "Al'Brock"
-msgstr "Al'Brock"
+msgstr "Al'Brok"
 
 #. [side]: type=Orcish Warlord, description=Flar'Tar
 #. [unit]: type=Orcish Warlord, description=Flar'Tar
@@ -2769,12 +2839,12 @@ msgstr "Flar'Tar"
 #. [side]: type=General, description=General Arthur
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:80
 msgid "General Arthur"
-msgstr ""
+msgstr "Generál Artur"
 
 #. [side]: type=Lieutenant, description=Lieutenant Hank
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:112
 msgid "Lieutenant Hank"
-msgstr ""
+msgstr "Poručík Hank"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:128
@@ -2782,6 +2852,8 @@ msgid ""
 "With the arrival of the Great Horde, and the humans having retreated, the "
 "united orcish forces held a council of war."
 msgstr ""
+"Po příjezdu Velké Hordy a ústupu lidí svolala sjednocená skřetí armáda "
+"válečnou poradu."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:133
@@ -2790,6 +2862,9 @@ msgid ""
 "reluctant to let this young upstart lead them - and a few consequent "
 "executions, the leadership of the horde was formally bestowed upon Kapou'e."
 msgstr ""
+"Po chvíli handrkování - někteří starší válečníci byli neochotní nechat se "
+"vést takovým mladíkem -  a několika následných popravách byl vůdcem Hordy "
+"jmenován Kapou'e."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:138
@@ -2797,6 +2872,8 @@ msgid ""
 "Riders were dispatched in all directions to gather intelligence and to "
 "pinpoint the exact location of the hostile forces."
 msgstr ""
+"Jezdi byli vysláni do všech směrů, aby shromáždili informace a určili "
+"přesnou pozici nepřátelských jednotek."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:143
@@ -2808,6 +2885,11 @@ msgid ""
 "invading the harbor of Tirigaz, and to stop any further human incursion into "
 "orcish territory."
 msgstr ""
+"Horda byla rozdělena na dvě části. Na radu šamanů dal Kapou'e vedení nad "
+"druhou skupinou Šan Taumovi Samolibému, který - navzdory jeho nepříjemné "
+"povaze - byl nelítostným a schopným vůdcem. Byl poslán do Bitoku, "
+"nejseverněji položeného skřetího města, aby odřízl lidi útočící na přístav "
+"Tirigaz a zastavil jakoukoliv budoucí lidskou invazi na skřetí území."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:148
@@ -2816,6 +2898,9 @@ msgid ""
 "north of the Mourned Hills - to organize any remaining orcish forces as well "
 "as create a arms and supply depot."
 msgstr ""
+"Šamané Pirk, Gork a Vraurk byli posláni zpět do Borstepu - města severně od "
+"Truchlivých kopců - k zorganizování zbylých skřetích sil, výrobě zbraní a "
+"vytvoření zásobovacího skladu."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:153
@@ -2824,12 +2909,17 @@ msgid ""
 "his remaining forces to Dorset, the human city due south of Prestim, to "
 "which Earl Lanbec'h had retreated."
 msgstr ""
+"Kapou'e osobně - toužící vyřešit tuto záležitost jednou provždy - vedl jeho "
+"jednotky k Dorsetu, lidskému městu jižně od Prestimu, ke kterému ustoupil "
+"Hrabě Lanbec'h."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:175
 msgid ""
 "Earl Lanbec'h, you slimy coward, come out and face me if you have the guts!"
 msgstr ""
+"Hrabě Lanbec'hu, ty slizký zbabělče, vyjdi ven a postav se mi, jestli máš "
+"odvahu."
 
 #. [message]: description=General Arthur
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:180
@@ -2837,6 +2927,8 @@ msgid ""
 "Sorry there, old chap. You're deemed too insignificant for the likes of the "
 "Earl to deal with. He's left that pleasure to me instead."
 msgstr ""
+"Promiň kamaráde, jsi považován za příliš bezvýznamného, než aby s tebou "
+"jednal někdo jako Hrabě. Místo toho tu zanechal mne."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:185
@@ -2844,6 +2936,8 @@ msgid ""
 "Foolish human. Attack, men, I want that city to be orcish territory within "
 "the week. Smite, stab, and slay!"
 msgstr ""
+"Bláhový člověče. Zaútočte! Chci aby to město bylo do týdne skřetím "
+"teritoriem. Bodejte a bijte!"
 
 #. [message]: description=Al'Brock
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:190
@@ -2851,17 +2945,19 @@ msgid ""
 "Easier said then done, Chief. There are many humans in that city. And they "
 "are well armed, too."
 msgstr ""
+"To se snadněji řekne než udělá, náčelníku. Ve městě je mnoho lidí. A jsou "
+"dobře ozbrojeni. "
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:195
 msgid "No matter. Horde smash!"
-msgstr ""
+msgstr "Na tom nezáleží. Horda je zničí."
 
 #. [message]: description=General Arthur
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:207
 msgid ""
 "The orcs are making headway. The city must not fall - call the reserves!"
-msgstr ""
+msgstr "Skřeti postupují. Město nesmí padnout - povolejte zálohy!"
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:4
@@ -2870,9 +2966,8 @@ msgstr "Trpasličí ležení"
 
 #. [side]: type=Bandit, description=Sam
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:91
-#, fuzzy
 msgid "Sam"
-msgstr "Sammual"
+msgstr "Sam"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:102
@@ -2880,6 +2975,8 @@ msgid ""
 "After conquering and occupying Dorset, Kapou'e and his men set themselves to "
 "stabilizing the area and bringing it firmly under the iron-hard orcish rule."
 msgstr ""
+"Po dobytí a zabrání Dorsetu, Kapou'e a jeho muži stabilizovali oblast a "
+"pevně ji přivedli pod železnou vládu skřetů."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:107
@@ -2890,6 +2987,10 @@ msgid ""
 "exhaustion - raced into Dorset with the news that Borstep was under siege by "
 "a large force of dwarves, outlaws and elves."
 msgstr ""
+"Po několika týdnech potlačování menších rebelií a čistění zbývajících "
+"lidských pevností napadl první sníh dlouhé severské zimy. Několik dní poté "
+"gobliní jezdec - napůl mrtev vyčerpáním - přijel do Dorsetu se zprávu, že "
+"Borstep se dostal do obležení silami trpaslíků, psanců a elfů."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:112
@@ -2900,6 +3001,10 @@ msgid ""
 "which was the rally point for orcish forces as well as their main arms and "
 "supply depot?"
 msgstr ""
+"Skřetí vůdci byli ohromeni. Jak se mohla tak velká nepřátelská síla dostat "
+"tak hluboko a daleko na skřetí teritorium, zvláště bez jeho znalosti? Jak "
+"také věděli, že mají zaútočit na Borstep, který byl shromaždištěm skřetích "
+"jednotek a stejně tak hlavní zbrojnicí a zásobovacím skladem?"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:117
@@ -2909,6 +3014,9 @@ msgid ""
 "force to defend Dorset while he and the main horde of orcs sped to the aid "
 "of Borstep."
 msgstr ""
+"Kapou'e předpokládal nějakou zradu. Očekával, že lidské útoky budou za tak "
+"krutého počasí minimální a proto v Dorsetu nechal jen malou posádku, aby ho "
+"bránila, zatímco on a hlavní část Hordy spěchala na pomoc Borstepu."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:122
@@ -2919,6 +3027,11 @@ msgid ""
 "river froze solid. Beaching their crafts, they marched the last leg of their "
 "journey through the deepening snow of the Mourned Hills."
 msgstr ""
+"Spěchajíc, aby dosáhli Borstepu než zamrzne řeka, skřeti se plavili řekou "
+"Gork k místu, kde se spojovala s řekou Bork. Pádlovali dnem i nocí a jen tak "
+"tak se dostali skrze Tichý Les než řeka dočista zamrzla. Vytáhli plavidla na "
+"břeh a začali pochodovat poslední část cesty prohlubujícím se sněhem "
+"Truchlivých kopců."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:127
@@ -2928,6 +3041,9 @@ msgid ""
 "smashed, houses burnt and its inhabitants driven out or slaughtered. Of the "
 "orcish shamans there was no sign."
 msgstr ""
+"Když minuli poslední kopec před městem, naskytla se jim zoufalá podívaná. Z "
+"Borstepu nic nezbylo. Zdi byly rozbity, domy spáleny a obyvatelé odvedeni "
+"nebo pobiti. Po skřetích šamanech ani stopa."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:132
@@ -2938,6 +3054,11 @@ msgid ""
 "picked up a trail of a large body of dwarves, elves and humans heading east "
 "through the mountains."
 msgstr ""
+"S očima hořícíma obavou a zlostí poslal Kapou'e jezdce prohledat zemi ve "
+"všech směrech, aby našli viníky, zatímco se zbytkem hordy postavil tábor. "
+"Jeden z jezdců se vrátil za pár hodin a hlásil, že nalezl stezku, kterou se "
+"ubíralo velké množství trpaslíků, elfů a lidí cestujících na východ skrz "
+"hory."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:137
@@ -2945,16 +3066,18 @@ msgid ""
 "Breaking camp the following dusk, the horde set out in hot pursuit. By the "
 "third day, they caught up with their enemies."
 msgstr ""
+"Zbourali tábor a za soumraku se jali pronásledovat nepřítele. Třetího dne je "
+"dostihli."
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:182
 msgid "Pelondras"
-msgstr ""
+msgstr "Pelondras"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:183
 msgid "Trithalsul"
-msgstr ""
+msgstr "Trithalsul"
 
 #. [message]: description=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:187
@@ -2962,11 +3085,13 @@ msgid ""
 "My my, look at this, two abandoned keeps. Probably built by those orcs in "
 "one of their pointless wars against each-other."
 msgstr ""
+"Podívejte na ty dvě opuštěné hlásky. Nejspíš je postavili skřeti v těch "
+"svých válkách proti sobě navzájem."
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:226
 msgid "Blast it, the orcs have caught up to us."
-msgstr ""
+msgstr "K četu, skřeti nás objevili."
 
 #. [message]: description=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:231
@@ -2975,6 +3100,9 @@ msgid ""
 "then your kind can. Take the orcish prisoners and hurry to Melmog. The "
 "dwarves shall stop this orcish menace!"
 msgstr ""
+"Elfe, náš druh se může pohybovat a bojovat lépe a rychleji v těchto "
+"podmínkách než vy. Vezmi skřetí zajatce a spěchej do Melmogu. Trpaslíci "
+"zastaví tu skřetí hrozbu."
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:236
@@ -2982,11 +3110,13 @@ msgid ""
 "Very well, but our human allies will also stay behind and help you. After "
 "all, we are dealing with the Son of the Black-Eye here."
 msgstr ""
+"Dobrá, ale našli lidští spojenci tu zůstanou také a pomohou ti. Jednáme tu "
+"přeci jenom se Synem Černého Oka."
 
 #. [message]: description=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:241
 msgid "Pah, have it your way then. Now, hurry on your way elf."
-msgstr ""
+msgstr "Pcha, jednej jak myslíš. Teď rychle, běž elfe."
 
 #. [message]: description=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:256
@@ -2995,16 +3125,19 @@ msgid ""
 "proposal. Good riddance too, those elves just get in the way. Come on men, "
 "it's time to show those Orcs our steel!"
 msgstr ""
+"Pff, zbabělí malí elfové. Žádný trpaslík nikdy nepřijal takovou nabídku. "
+"Dobře, že jsme se jich zbavili, tihle elfové se jen pletou do cesty. Do toho "
+"chlapi, je na čase ukázat skřetům naši ocel!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:261
 msgid "Ahhh, nice. I finally get chance to squash dwarves again."
-msgstr ""
+msgstr "Ahhh, skvěle. Konečně mám zase šanci rozmačkat nějakého trpaslíka."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:266
 msgid "Let's make them pay for what they did to our people. Blood and steel!"
-msgstr ""
+msgstr "Přinutíme je zaplatit za to co udělali našim lidem. Krev a ocel!"
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:4
@@ -3014,47 +3147,45 @@ msgstr "Zpátky doma"
 #. [side]: type=General, description=General Telthys
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:94
 msgid "General Telthys"
-msgstr ""
+msgstr "Generál Telthys"
 
 #. [side]: type=General, description=General Fredrick
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:118
 msgid "General Fredrick"
-msgstr ""
+msgstr "Generál Fredrik"
 
 #. [side]: type=General, description=General Georgy
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:130
 msgid "General Georgy"
-msgstr ""
+msgstr "Generál Georgy"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:142
-#, fuzzy
 msgid ""
 "Having broken the dwarvish blockade, the horde continued on the mountain "
 "pass. Kapou'e began to recognize the lands about them and sure enough, they "
 "soon found themselves back in Kapoue's home country."
 msgstr ""
 "Po rozdrcení trpasličí blokády horda pokračovala horským průsmykem. Kapou'e "
-"začal rozpoznávat krajinu okolo nich a byl si jistý, že vrzy budou zpět v "
+"začal rozpoznávat krajinu okolo nich a byl si jistý, že brzy budou zpět v "
 "jeho zemi."
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:150
 msgid "Valan"
-msgstr ""
+msgstr "Valan"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:233
-#, fuzzy
 msgid ""
 "Well, look at this boys, we are home. I told you we would return one day."
 msgstr ""
-"Koukejte na to chlapi, jsme doma. Říkal jsem vám, že se jednou vrátíme."
+"Koukejte na to chlapi, jsme doma. Říkal jsem vám, že se jednou vrátíme. "
 
 #. [message]: role=army
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:238
 msgid "Boy, have they ever built this place up."
-msgstr ""
+msgstr "Hele, podívejte co tu postavili."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:243
@@ -3062,96 +3193,88 @@ msgid ""
 "Hearken, men. Our main objective is to rescue the shamans. It won't work to "
 "take the human-worms head-on while they sneak the shamans out the back door."
 msgstr ""
+"Poslouchejte chlapi. Náš hlavní úkol je záchrana šamanů. Když na lidi "
+"zaútočíme zepředu, nebude to k ničemu, protože zatím odvedou šamany pryč."
 
 #. [message]: description=Flar'Tar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:248
-#, fuzzy
 msgid "What are you thinking, Chief?"
-msgstr "O čem jste přemýšlel šéfe?"
+msgstr "Co tím myslíte, náčelníku?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:253
-#, fuzzy
 msgid ""
 "My men know the land well. Flar'Tar and Al'Brock, both of you take a scout "
 "and circle around to the Northeast and Southeast respectively. Grüü, you "
 "take your trolls and circle around to the Northwest. If all goes well we "
 "shall surround them."
 msgstr ""
-"Moji muži znají dobře tuhle zemi. Flar'Tare a Al'Brocku vemte oba vaše zvědy "
-"a obejděte Northeast a Southeast každý jednu oblast.. Gruu ty vezmi své "
-"trolly a jděte kolem Northwest. Když půjdeme takhle, obklíčíme je."
+"Moji muži znají dobře tuhle zemi. Flar'Tare a Al'Broku, vemte oba zvědy a "
+"obejděte je ze severovýchodu a z jihovýchodu. Ty, Grüü, vezmi své trolly a "
+"jděte na severozápad. Když všechno půjde dobře, obklíčíme je."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:258
-#, fuzzy
 msgid "I like this plan, Chief!"
-msgstr "Miluji tuto strategii, veliteli!"
+msgstr "Ten plán se mi líbí, náčelníku!"
 
 #. [message]: role=army
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:263
-#, fuzzy
 msgid "You always like his plans, Grüü."
-msgstr "Tobě se vždycky líbí jeho plány Gruu."
+msgstr "Tobě se vždycky líbí jeho plány, Grüü."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:268
-#, fuzzy
 msgid ""
 "Of course. Squash elves, squash undead, squash dwarves, squash humans. "
 "Squash them all, Very good plan!"
 msgstr ""
-"Jasně, rozdrťte elfy, rozdrťte trpaslíky, roztříštěte nemrtvé, rozdrťte "
-"lidi. Rozdrťe je všechy! Vynikající plán."
+"Jasně, rozdrťte elfy, rozdrťte nemrtvé, rozdrťte trpaslíky, rozdrťte lidi. "
+"Rozdrťte je všechny! Vynikající plán!"
 
 #. [message]: role=army
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:273
-#, fuzzy
 msgid "Well, he has the right idea, anyway."
-msgstr "Dobrá, on měl každopádně dobrý nápad."
+msgstr "No, každopádně je to dobrý nápad."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:278
-#, fuzzy
 msgid ""
 "Good, everyone move out. I will begin the attack from here. I want everyone "
 "to be in position by first watch at the latest. Is that clear?"
 msgstr ""
-"Dobře, všichni se přesuňte. Já zůstanu tady a započnu útok. Chci každého na "
-"jeho pozici od první hlídky do poslední. Je to jasné?"
+"Dobrá, všichni přesunout. začnu s útokem odtud. Chci mít všechny na pozicích "
+"za první hlídky. Je to jasné?"
 
 #. [message]: description=Flar'Tar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:283
-#, fuzzy
 msgid "Yeah, sure."
-msgstr "Jo jasně"
+msgstr "Ano, jistě."
 
 #. [message]: description=Al'Brock
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:288
 msgid "Whatever."
-msgstr "Cokoliv"
+msgstr "Cokoliv."
 
 #. [message]: description=Al'Brock
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:369
-#, fuzzy
 msgid "I am in position, Chief."
-msgstr "Jsem na pozici šéfe"
+msgstr "Jsem na místě, náčelníku."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:374
-#, fuzzy
 msgid "Excellent. Now, where are the others?"
-msgstr "Děsné. A teď, kde jsou ostatní..."
+msgstr "Výborně. Kde jsou ostatní?"
 
 #. [message]: description=Flar'Tar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:416
 msgid "We made it."
-msgstr "Dokázali jsme to"
+msgstr "Dokázali jsme to."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:421
 msgid "Good, but where is Grüü?"
-msgstr "Dobře, ale kde je Gruu?"
+msgstr "Dobře, ale kde je Grüü?"
 
 #. [message]: description=Flar'Tar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:426
@@ -3160,32 +3283,30 @@ msgstr "Hloupí trollové. Nikdy se na ně nemůžeš spolehnout"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:476
-#, fuzzy
 msgid "I'm here, chief!"
-msgstr "Jsem tady šéfe!"
+msgstr "Jsem tady, náčelníku!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:481
-#, fuzzy
 msgid ""
 "Blood and stone, Grüü! You were supposed to be in position by first watch. "
 "It is now dawn!"
-msgstr "Sakra Gruu! Měl jsi být na pozici za první hlídky! A to je teď!"
+msgstr ""
+"Do háje, Grüü!  Měli jste být na pozici za první hlídky. Teď už je svítání!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:486
 msgid "Err, sorry, there were some humans in way. We squash, no problem."
-msgstr ""
+msgstr "Omlouvám se, zdrželi nás nějací lidé. Rozdrtili jsme je, bez problému."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:491
-#, fuzzy
 msgid ""
 "Better late then never. Now it's time to kill! Let nobody escape and "
 "everyone keep an eye out for the shamans."
 msgstr ""
-"Pořád je lepší pozdě než nikdy. Každopádně je máme. Nenechte nikoho uniknout "
-"a nespouštějte oči ze šamanů."
+"Lépe pozdě než nikdy. Teď je čas zabíjet! Nenechte nikoho uniknout a všichni "
+"se porozhlédněte po šamanech."
 
 #. [message]: description=Flar'Tar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:496
@@ -3194,9 +3315,8 @@ msgstr "Zní to dost jednoduše."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:534
-#, fuzzy
 msgid "Miserable elf, we want some answers!"
-msgstr "OK, kámo. Chceme nějaké odpovědi!"
+msgstr "Mizerný elfe, chceme nějaké odpovědi!"
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:539
@@ -3205,30 +3325,28 @@ msgstr "Ugh!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:544
-#, fuzzy
 msgid "SPEAK!"
-msgstr "HLEDEJ!"
+msgstr "MLUV!"
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:549
-#, fuzzy
 msgid "....well, what do you want to know?"
-msgstr "...no, co chcete vědět?"
+msgstr "...co chcete vědět?"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:554
 msgid "You can start by telling us who told you to strike at Borstep."
-msgstr "Můžeš začít s tím, kdo ti nařídil útok na Borstep."
+msgstr "Můžeš začít s tím, kdo vám poradil útočit na Borstep."
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:559
 msgid "Uh.... we have intelligence."
-msgstr ""
+msgstr "Uh... máme zvědy."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:564
 msgid "Don't make me hurt you more."
-msgstr ""
+msgstr "Nesnaž se mě rozčílit ještě víc."
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:569
@@ -3236,13 +3354,14 @@ msgid ""
 "OK OK, Shan Taum the Smug told us that that's where the shamans were, and "
 "that it was a rally point and weapons depot for you orcs."
 msgstr ""
+"Ok ok. Šan Taum Samolibý nám řekl, kde jsou šamané a že je to shromaždiště a "
+"sklad zbraní pro vás skřety."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:574
-#, fuzzy
 msgid ""
 "Pah, do not think you can break the unity of the horde with your stupid lies!"
-msgstr "Nepokoušej se rozbít jednotu hordy svým stupidním lhaním!"
+msgstr "Pf, nemysli si , že zničíš jednotu Hordy svými hloupými lžemi."
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:579
@@ -3251,22 +3370,22 @@ msgid ""
 "says all the shamans 'suck up' to him just because his father had a black "
 "eye or something like that."
 msgstr ""
-"Teď skutečně. Je to pravda. Je vyplašený z nějakého mladého povýšence "
-"zvaného Kapou'e. Rozkazuje všem šamanům jen protože jeho otec měl černé oko "
+"Ne, skutečně. Je to pravda. Je vyplašený z nějakého mladého povýšence "
+"zvaného Kapou'e. Rozkazuje všem šamanům, jen protože jeho otec měl černé oko "
 "nebo tak něco."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:584
-#, fuzzy
 msgid ""
 "Refer to Black-Eye Karun with respect, tree-shagger. Now, where are the "
 "shamans?"
-msgstr "Chovej se ke Karunovi Černému Oku s úctou ty dotěrný hmyze!"
+msgstr ""
+"Mluv o Karunovi Černém Oku s úctou, ty stromová kryso. Kde jsou tedy šamané?"
 
 #. [message]: description=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:589
 msgid "They're.... the humans killed them."
-msgstr "Oni jsou...lidé je pobili."
+msgstr "Oni jsou... lidé je pobili."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:594
@@ -3281,19 +3400,17 @@ msgstr "Ne to ne. Jejich těla jsou zmražená v támhletom jezeře."
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:604
 msgid "You had better go check it out."
-msgstr "Raději by jsi to měl zkontrolovat."
+msgstr "Raději bys to měl zkontrolovat."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:609
-#, fuzzy
 msgid "OK, Chief."
-msgstr "OK šéfe"
+msgstr "Dobrá, náčelníku."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:614
-#, fuzzy
 msgid "A few minutes later..."
-msgstr "*o pár minut později*"
+msgstr "O chvíli později..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:620
@@ -3302,25 +3419,24 @@ msgstr "Šéfe! Je to pravda! Šamané byli pobiti!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:625
-#, fuzzy
 msgid ""
 "WHAT! The human-worms and tree-shaggers have gone too far! BLOOD AND STEEL! "
 "I want every human and elf in this area slaughtered! Show no mercy or "
 "quarter!"
 msgstr ""
-"COŽE?! Ti bastardi zašli moc daleko. Chlapi, chci každého člověka a elfa v "
-"téhle oblasti mrtvého! Žádné slitování!"
+"COŽE! Ti lidští červi a milovníci stromů zašli příliš daleko. KREV A OCEL! "
+"Chci každého člověka a elfa v téhle oblasti mrtvého! Žádnou milost nebo "
+"shovívavost!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:630
-#, fuzzy
 msgid "What should I do with this one?"
-msgstr "A co bude dál, veliteli?"
+msgstr "Co mám udělat s ním, náčelníku?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:635
 msgid "Throw him in the lake. If he freezes to death, all the better."
-msgstr ""
+msgstr "Hoď ho do jezera. Jestli umrzne, tím líp."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:4
@@ -3329,15 +3445,13 @@ msgstr "Občanská válka"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:28
-#, fuzzy
 msgid "Defeat all rebel leaders and..."
-msgstr "Poraž všechny nepřátelské velitele"
+msgstr "Poraz všechny rebelské nepřátele a..."
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:32
-#, fuzzy
 msgid "Move Kapou'e to the end of the signpost at the southwest"
-msgstr "Dostaň Kapou'e z hor ven"
+msgstr "Přesuň Kapou'eho k ukazateli na jihozápadě."
 
 #. [side]: type=Orcish Warlord, description=Braga
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:73
@@ -3346,9 +3460,8 @@ msgstr "Braga"
 
 #. [side]: type=Orcish Warlord, description=Meato
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:86
-#, fuzzy
 msgid "Meato"
-msgstr "Jetto"
+msgstr "Meato"
 
 #. [side]: type=Orcish Warlord, description=Ragvan
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:99
@@ -3357,33 +3470,29 @@ msgstr "Ragvan"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:111
-#, fuzzy
 msgid ""
 "Infuriated by the murder of the shamans, the orcish horde massacred the "
 "humans and their allies. In their rage, they scoured the snow for hours "
 "looking for any survivors. Only when their rage was spent did the full "
 "implications of the shamans' deaths begin to sink in."
 msgstr ""
-"Rozčílení nad vraždou šamanů, orkská horda zmasakrovala všechny lidi a "
-"jejich spojence. V běsu rozhrnuli všechen snih na hodiny pohledu daleko a "
-"hledali přeživší. Nakonec se však uklidnili a důsledky smrti šamanů jim "
-"začaly docházet."
+"Ve vteku z vraždy šamanů skřetí horda zmasakrovala všechny lidi a jejich "
+"spojence. V běsu prohledávali sníh celé hodiny, hledajíc přeživší. Nakonec "
+"se však uklidnili a důsledky smrti šamanů jim začaly docházet."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:116
-#, fuzzy
 msgid ""
 "With the Council broken, there was now nothing left to hold the orcish "
 "forces together. And if the orcish forces began to fight amongst themselves "
 "as they so often did, then the humans would eradicate them with ease."
 msgstr ""
-"S rozpadlým koncilem nic není nic co by drželo orskské jednotky pohromadě. A "
-"když je jednotky rozpadnou a orkové začnou bojovat mezi sebou, lidé je "
+"Když se Rada rozpadla, nezbylo nic co by skřetí jednotky drželo pohromadě. A "
+"jestli začnou skřeti bojovat mezi sebou navzájem jak dříve dělali, lidé je "
 "snadno vyvraždí."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:121
-#, fuzzy
 msgid ""
 "Kapou'e vowed that this would not happen. Events had the smell of a "
 "treacherous plot aimed at destroying the unity of the orcs. Furthermore, if "
@@ -3394,16 +3503,15 @@ msgid ""
 "also give him a good chance to clobber the orcs together again - the old "
 "fashioned way."
 msgstr ""
-"Nicméně Kapou'e slíbil, že to se nestane. Ta celá záležitost záváněla "
-"zrádným spiknutím zaměřeným na zničení jednoty orků. A pokud byli elfově "
-"důvěryhodní, pak za tím vším stál Shum Taum. Co Shum Taum zamýšlel získat "
-"zničením vlastní rasy bylo Kapou'emu jedno, ale rozhodl se pochodovat k "
-"Bitoku a osobně se mu postavit. Navíc Bitok je na druhé straně orkského "
-"teritoria a to mu dávalo šanci stmelit orky znovu dohromady. "
+"Kapou'e přísahal, že to nedopustí. Ta celá záležitost zaváněla zrádným "
+"spiknutím zaměřeným na zničení jednoty skřetů. Navíc pokud měl ten milovník "
+"stromů pravdu, za vším stál Šan Taum Samolibý. Co zamýšlel získat zničením "
+"vlastní rasy bylo Kapou'emu jedno, ale rozhodl se pochodovat k Bitoku a "
+"osobně se mu postavit. Navíc Bitok je na druhé straně skřetího teritoria a "
+"to mu dávalo šanci stmelit skřety znovu dohromady - starou dobrou cestou."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:126
-#, fuzzy
 msgid ""
 "Furthermore, the troops who had been led by Kapou'e this far had grown to "
 "respect him as a wise and capable leader, and they proclaimed their loyalty "
@@ -3415,14 +3523,14 @@ msgid ""
 "direct southwest beeline towards Bitok. They were all to meet in Dorset that "
 "spring to repel the human attack that seemed certain to come."
 msgstr ""
-"Kapou'e si u svých jednotek vypěstoval repspekt jako moudrý a schopný vůdce "
-"a oni ho ujistili o své věrnosti. Potěšený Kapou'e jim vydal pokyny k "
-"shromáždění dalších kmenů i silou, když to bude nutné. Al'Brosk byl vyslán "
-"západně podél cesty, kde téměř před rokem Kapou'e zahnal lidské jednotky. "
-"Flar'Tar odešel přímo na jih, kde měl shromáždit kmeny podél Mountains of "
-"Haag a východně od Mourned Hills. Kapou'e přímou čarou zamířil k Bitoku. "
-"Všichni se měli sejít v Dorsetu toto jaro k odražení útoku lidí, který "
-"určitě příjde. "
+"Kapou'e si u svých jednotek vypěstoval respekt jako moudrý a schopný vůdce a "
+"jeho vojáci jej ujistili o své věrnosti. Potěšený Kapou'e jim vydal pokyny "
+"ke shromáždění dalších kmenů i silou, když to bude nutné. Al'Brok byl vyslán "
+"západně podél cesty, kudy téměř před rokem Kapou'e unikl lidským jednotkám. "
+"Flar'Tar odešel přímo na jih, kde měl shromáždit kmeny podél Pohoří Haag a "
+"východně od Truchlivých kopců. Sám Kapou'e přímou čarou zamířil "
+"severozápadně k Bitoku. Všichni se měli sejít v Dorsetu toho jara k odražení "
+"útoku lidí, který určitě přijde."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:131
@@ -3430,22 +3538,21 @@ msgid ""
 "Having thus made his plans, Kapou'e set out for Bitok to get to the root of "
 "this treachery."
 msgstr ""
-"Majíc vytvořený plám, Kapou'e se vydal směrem na Bitok, aby zakryl "
-"plánovanou lest."
+"Majíc vytvořený plán, Kapou'e se vydal směrem na Bitok, aby se dobral kořene "
+"zrady."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:144
-#, fuzzy
 msgid ""
 "If we are going to make it to Bitok, and then back to Dorset before spring "
 "we have to get a move on. Break camp as soon as possible. Destroy all "
 "opposition in your path, I want this area to be firmly under my control by "
 "the time we are through here."
 msgstr ""
-"Poslouchejte. Jestli to máme v Bitoku zvládno a vrátit se do Dorsetu než "
-"nastane jaro měli bychom se do toho dát. Tábor musíme založit co nejdřív to "
-"bude možné. Poražte každého nepřítele v cestě. Chci tuhle bolast pevně pod "
-"mojí kontrolou během doby co tu budeme. "
+"Jestli to máme v Bitoku zvládnout a vrátit se do Dorsetu než nastane jaro, "
+"měli bychom se do toho dát. Tábor musíme založit co nejdřív to bude možné. "
+"Porazte každého nepřítele v cestě. Chci tuhle oblast pevně pod mojí "
+"kontrolou během doby co tu budeme."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:176
@@ -3455,13 +3562,12 @@ msgstr "Tahle chátra už nebude dělat problémy. "
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:194
 msgid "Got this tribe under control."
-msgstr "Dostaň ty kmeny pod kontrolu. "
+msgstr "Tenhle kmen je zpacifikovaný."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:212
-#, fuzzy
 msgid "This is what you get for deserting the Son of the Black-Eye."
-msgstr "Moudrá volba. Hodně štěstí, synu Černého oka."
+msgstr "To je to, co se dostává za zradu Syna Černého Oka."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:4
@@ -3480,7 +3586,6 @@ msgstr "Orga"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:134
-#, fuzzy
 msgid ""
 "Kapou'e and his followers made a grueling march across the frozen "
 "Northlands. For the orcs it was a constant nightmare of freezing, marching "
@@ -3490,10 +3595,11 @@ msgid ""
 "to death."
 msgstr ""
 "Kapou'e a jeho následovníci vykonali vyčerpávající pochod napříč zmrzlými "
-"severními územími. Orkům to připadalo jako jako neustálá noční můra mrznutí, "
-"pochodování a bojování. Jídla bylo málo a zásoby získané od povstaleckých "
-"kmenů se dávalo by přesné příděly. Mnoho slabších orků, kteří nebyli zabiti "
-"v boji zemřeli vyčerpáním nebo zůstali vzadu a umrzli. "
+"severními územími. Skřetům to připadalo jako jako neustálá noční můra "
+"skládající se z mrznutí, pochodování a bojování. Jídla bylo málo a zásoby "
+"získané od povstaleckých kmenů se dávaly na přesné příděly. Mnoho slabších "
+"skřetů, kteří nebyli zabiti v boji, zemřelo vyčerpáním nebo zůstali vzadu a "
+"umrzli. "
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:139
@@ -3504,21 +3610,19 @@ msgid ""
 "way or another, since if they were separated and scattered, they would "
 "surely be exterminated."
 msgstr ""
-"I přes tu noční můru je Kapou'e řídil stejně nemilosrdně jak sám sebe. Jarní "
-"oblevy měli v zádech a nebylo pochyb, že lidská armáda se shromažďovala. "
-"Naštěstí zatím bylo orkové sjednoceni k jedné cestě. Kdyby se rozdělili a "
-"rozptálili jistě by zemřeli. "
+"I přes tuto noční můru je Kapou'e hnal stejně nemilosrdně jako sebe. Jarní "
+"oblevy měli v zádech a nebylo pochyb, že hrabě Lanbec'h shromažďuje lidskou "
+"armádu. Do té doby museli být skřeti sjednoceni bez ohledu na metodu, "
+"protože roztříštění a nejednotní by bezpochyby byli vyhlazeni."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:144
-#, fuzzy
 msgid ""
 "And so they marched on, persevering in weather that would kill even the most "
 "hardened human, and through fierce bloody battles with belligerent tribes."
 msgstr ""
-"A tak pochodovali v zdánlivě nekonečném rytmu dustou vlastních nohou v "
-"počasí, které by zlomilo i lidi, kteří byli zkaleni krvavými bitvami s "
-"agresivními kmeny. "
+"A tak pochodovali dál neúnavně v počasí, které by zabilo dokonce i ty "
+"nejtvrdší lidi, kteří prošli krvavými bitvami proti agresivním kmenům."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:149
@@ -3531,15 +3635,13 @@ msgstr ""
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:179
-#, fuzzy
 msgid "Good morning, Shan Taum."
-msgstr "Dobré ráno Shan Taume"
+msgstr "Dobré ráno, Šan Taume"
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:184
-#, fuzzy
 msgid "What... Kapou'e! What in the frozen northlands are you doing here."
-msgstr "Co... Kapou'e! Co pro všechno na zemi tady děláš?"
+msgstr "Co... Kapou'e! Co děláš v těchto zmrzlých severních zemích?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:189
@@ -3548,15 +3650,17 @@ msgid ""
 "father's old friend. How could I not, given his impressive list of recent "
 "accomplishments."
 msgstr ""
+"Ach, jen jsem myslel, že si dopřeji vzpružující zimní procházku a navštívím "
+"otcova starého přítele. Jak bych mohl, když jsem se doslechl o jeho "
+"působivých úspěších."
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:195
 msgid "Accomplishments?"
-msgstr ""
+msgstr "Úspěších?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:200
-#, fuzzy
 msgid ""
 "Well let's see, first he betrays the trust of his sworn sovereign and "
 "becomes no less then a bootlicking spy for the humans. Then goes on to "
@@ -3565,11 +3669,11 @@ msgid ""
 "best of all, he is directly responsible for a bloody civil war right at the "
 "time when his people are on the edge of total extermination!"
 msgstr ""
-"Oh, jen jsem si řikal, že bych se měl vydat na zimní procházku a navštívit "
-"otcova starého přítele, který dával informace lidem a který je zodpovědný za "
-"smrt poloviny Velkého Koncilu. Otcova starého přítele, který způsobil smrt "
-"stovek načich bratří a toho přítele, který je přímo zodpovědný za to že jsme "
-"na pokraji totální vyhlazení."
+"No podívejme se na to. Zaprvé zrada pána, kterému byl vázán přísahou a "
+"proměna v boty lízajícího špióna lidí. Potom jsi zařídil smrt poloviny Velké "
+"Rady a přitom jsi se stal zodpovědným za smrt stovek našich bratří. A "
+"nakonec to nejlepší ze všeho, rozpoutal krvavou občanskou válku, v čase kdy "
+"jsou jeho lidé na pokraji naprostého vyhlazení!"
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:206
@@ -3578,13 +3682,12 @@ msgstr "........"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:211
-#, fuzzy
 msgid ""
 "Tell you what, you ungrateful backstabbing traitor, if you surrender right "
 "now I will just cut off your head instead of torturing you to death."
 msgstr ""
-"Něco ti povím ty nevděčný, do zad bodající zrádče, když se zdáš právě teď a "
-"tady, jen ti uskenu hlavu namísto mučení k smrti. "
+"Něco ti povím ty nevděčný, do zad bodající zrádče, když se vzdáš právě teď a "
+"tady, jen ti useknu hlavu namísto toho abych tě umučil k smrti."
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:217
@@ -3594,17 +3697,16 @@ msgstr "LŽI! TO JSOU LŽI!"
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:222
 msgid "Right..... So what will it be, beheading or torture?"
-msgstr "Správně....Tak co to bude? Setnutí hlavy nebo mučení?"
+msgstr "Dobře... Tak co to bude? Setnutí hlavy nebo mučení?"
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:228
-#, fuzzy
 msgid ""
 "How dare you accuse me of being a traitor, you turdlicker! Orga, kill this "
 "kid for me. I'll be in my keep."
 msgstr ""
-"Jak se odvažuješ mne nařknout ze zrady ty podřadný bastarde. Orgu, zabíj ti "
-"děcko. Budu v mé pevnosti."
+"Jak se odvažuješ mne nařknout ze zrady, ty podřadný bastarde? Orgu, zabij "
+"pro mne to děcko. Budu v mé pevnosti."
 
 #. [message]: description=Orga
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:233
@@ -3614,7 +3716,7 @@ msgstr "Ano pane!"
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:248
 msgid "What! Fight like an orc, you gutless coward!"
-msgstr ""
+msgstr "Co?! Bojuj jako skřet, ty bezvýznamný zbabělče."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:259
@@ -3628,6 +3730,8 @@ msgid ""
 "men around. He was given control of half the Great Horde. Do you think they "
 "left him?"
 msgstr ""
+"Náčelníku, je to divné. Nezdá se, že by měl Šan Taum mnoho mužů kolem. Měl "
+"kontrolu nad polovinou Velké Hordy. Myslíte, že ho opustili?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:282
@@ -3636,6 +3740,8 @@ msgid ""
 "we did to clobber the other tribes to his rule. In any case, it will be "
 "convenient for us."
 msgstr ""
+"Pochybuji. Šan Taum ví jak se přetvařovat. Vsadím se, že je poslal získat "
+"další kmeny pod svou nadvládu."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:291
@@ -3643,26 +3749,28 @@ msgid ""
 "OK, we crushed this pocket of resistance too. Now where in the world did "
 "that coward Shan Taum run off to?"
 msgstr ""
+"OK, rozdrtili jsme i tohle ohnisko odporu. Teď kam na světě ten zbabělec Šan "
+"Taum utekl? "
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:6
 msgid "Hold it! What in the wide green world is going on here!"
-msgstr ""
+msgstr "Zadržte! O co tu pro všechno na světě jde!"
 
 #. [message]: description=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:11
 msgid " *groan* You guys always show up at the worst possible time."
-msgstr ""
+msgstr " *stén* Vy chlapi se vždycky ukážete v nejhorší možný čas."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:16
 msgid "Just who do you think you are, human-worm?"
-msgstr ""
+msgstr "Kdo si myslíš, že jsi, lidský červe?"
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:21
 msgid "I am Howgarth of the Northern Alliance, successor to the late Rahul I."
-msgstr ""
+msgstr "Jsem Howgart III., vůdce Severní Aliance, nástupce Rahula I."
 
 #. [message]: description=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:26
@@ -3670,6 +3778,8 @@ msgid ""
 "This is a strictly territorial matter, Howgarth. The Northern Alliance has "
 "no right to intervene in this affair."
 msgstr ""
+"Tohle je naprosto jasně místní problém, Howgarte. Severní Aliance nemá právo "
+"zasahovat do této záležitosti."
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:31
@@ -3679,6 +3789,10 @@ msgid ""
 "both of you are no doubt violating. It is our duty as the orchestrator and "
 "witness of this treaty to see that it is honored."
 msgstr ""
+"Sakra mám! Hrabě Lanbec'hu, Severní Aliance byla před dvaceti sedmi lety "
+"svědkem dohody mezi vašimi lidmi a skřety, kterou oba bez pochybnosti "
+"porušujete. Jako organizátor a svědek té smlouvy mám povinnost poznat, kdy "
+"je to vážné."
 
 #. [message]: description=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:36
@@ -3687,6 +3801,9 @@ msgid ""
 "your precious treaty as human territory. So if you are so keen on being all "
 "high and noble, then muster your men to help us push back this orcish menace."
 msgstr ""
+"Tím lépe pro vás. Fakt je, že tato země je jasně určená tvou drahocennou "
+"smlouvou jako lidské území. Takže jestli jsi tak horlivý být důležitý a "
+"vznešený, pak nám musí tví muži pomoci zatlačit skřetí hrozbu zpět."
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:41
@@ -3695,6 +3812,9 @@ msgid ""
 "war. But enough, it is time for all this to end. I call for both sides to "
 "parley and we shall discuss this matter."
 msgstr ""
+"Nech těch lží, Lanbec'hu. Víme, že jsi to byl ty, kdo začal tuhle válku. Ale "
+"teď je čas ji ukončit. Vyzývám obě strany k jednání, abychom mohli tuto "
+"záležitost projednat."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:46
@@ -3702,11 +3822,13 @@ msgid ""
 "Ha ha, very funny, human-worm. You think we are stupid enough to fall for "
 "that? We haven't forgotten what you people did to my father."
 msgstr ""
+"Ha ha, velice zábavné, lidský červe. Myslíš že jsme dost hloupí, abychom na "
+"to skočili? Nezapomněli jsme, co vaši lidé provedli mému otci."
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:51
 msgid "What in the world are you talking about?"
-msgstr ""
+msgstr "O čem to mluvíš?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:56
@@ -3714,6 +3836,8 @@ msgid ""
 "I am Kapou'e, son of the Black-Eye Karun. Twenty-seven years ago you people "
 "assassinated my father after inviting him to join the Northern Alliance."
 msgstr ""
+"Jsem Kapou'e, syn Karuna Černého Oka. Před dvaceti sedmi lety jste vy lidé "
+"zabili mého otce poté, co jste ho pozvali, aby se přidal k Severní Alianci."
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:61
@@ -3722,31 +3846,34 @@ msgid ""
 "of the matter. I know nothing of his assassination. As a matter of fact, I "
 "was there when the orcish messenger brought Rahul Karun's reply."
 msgstr ""
+"Cože? Obdrželi jsme zprávu, že odmítl naše pozvání a to byl konec té věci. "
+"Nevím nic o vraždě. Ve skutečnosti jsme tam byl, když skřetí posel přinesl "
+"Rahulovi Karunovu odpověď."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:66
 msgid "Messenger, what messenger?"
-msgstr ""
+msgstr "Posel? Jaký posel?"
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:71
 msgid "If I remember correctly, it was some orc named Shan Taum."
-msgstr ""
+msgstr "Jestli si pamatuji správně, byl to skřet jménem Šan Taum."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:76
 msgid "Funny, that names sounds oddly familiar..."
-msgstr ""
+msgstr "Zábavné. To jméno zní povědomě."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:82
 msgid "The Human Attack"
-msgstr ""
+msgstr "Lidský útok"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:101
 msgid "Hold off the Humans"
-msgstr ""
+msgstr "Zadrž lidi"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:175
@@ -3756,6 +3883,9 @@ msgid ""
 "mug out of the traitor's skull, Kapou'e gathered his men and headed for "
 "Dorset."
 msgstr ""
+"Jak Kapou'e očekával, jednotky, které porazily Šan Tauma ho nikde nenašly. "
+"Skřípajíc zuby a slibujíc, že z lebky zrádce udělá pohár, Kapou'e shromáždil "
+"své muže a zamířil k Dorsetu."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:180
@@ -3766,6 +3896,10 @@ msgid ""
 "remaining shamans of the Great Council were also present to help in whatever "
 "way they could to preserve the unity of the Horde."
 msgstr ""
+"Zároveň s ním dorazili jeho generálové Al'Brok a Flar'Tar, kteří přivedli "
+"stovky krvežíznivých skřetů. Válečníci kmenů, které Kapou'e donutil k pokoře "
+"zastrašováním, tu byli také. Navíc také přišli pomoci zbývající šamané Velké "
+"Rady, aby zachovali jednotu Hordy."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:185
@@ -3777,6 +3911,11 @@ msgid ""
 "Younger grunts especially worshiped him with such fervor that he found it "
 "almost frightening."
 msgstr ""
+"Jejich přítomnost se ukázala postradatelnou. Byl to šok, když Kapou'e po "
+"několika dnech zjistil, že jeho lidé ho chovají v úctě. Novinky o Kapou'eho "
+"smělých činech byly obecně známé - od záchrany šamanů u Barag Gór až po jeho "
+"pochod severními blizardy. Zvláště mladší vojáci ho uctívali s horlivostí, "
+"která byla skoro děsivá."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:190
@@ -3784,6 +3923,8 @@ msgid ""
 "Days passed, the snows melted and Kapou'e readied his defenses. A few weeks "
 "after Kapou'e's arrival, riders caught sight of Earl Lanbec'h's army."
 msgstr ""
+"Dny ubíhaly, sníh tál a Kapou'e připravil své obrany. Několik týdnu po "
+"Kapou'eho příjezdu, jezdci zahlédli armádu Hraběte Lanbec'ha."
 
 #. [message]: description=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:376
@@ -3792,36 +3933,39 @@ msgid ""
 "done to us. Attack and spare no orc! Let us take back this land which is "
 "rightfully ours!"
 msgstr ""
+"To je ono! Je čas, aby skřeti zaplatili za všechno co nám udělali. zaútočte "
+"a neušetřete žádného skřeta. Vezmeme si zpátky tuhle zemi, která je "
+"právoplatně naše."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:381
 msgid "Forward, men! Our wolves will feed well tonight!"
-msgstr ""
+msgstr "Vpřed, chlapi! Naši vlci se dnes večer dobře nažerou!"
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:386
 msgid "Come here, human softlings. Grüü has a little present for you..."
-msgstr ""
+msgstr "Tak pojďte lidští slaboši. Grüü pro vás má malý dárek..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:409
 msgid "As a fresh day dawned, more human forces arrived."
-msgstr ""
+msgstr "Za úsvitu nového dne začaly přijíždět lidské jednotky."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:505
 msgid "At the dawn of the third day, still more human forces arrived."
-msgstr ""
+msgstr "A při západu třetího stále přicházely další."
 
 #. [message]: description=Bruce
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:688
 msgid "We have arrived, my lord."
-msgstr ""
+msgstr "Přijeli jsme, můj pane."
 
 #. [message]: description=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:697
 msgid "Ahhh, perfect, more reinforcements."
-msgstr ""
+msgstr "Ahhh, skvělé. Další posily."
 
 #. [side]: type=General, description=Howgarth III
 #. [unit]: type=General, description=Howgarth III
@@ -3831,23 +3975,22 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:861
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:920
 msgid "Howgarth III"
-msgstr ""
+msgstr "Howgart III."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:4
 msgid "Northern Alliance"
-msgstr ""
+msgstr "Severní Aliance"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:23
 msgid "Kill Shan Taum and Earl Lanbec'h"
-msgstr ""
+msgstr "Zabij Šan Tauma a Hraběte Lanbec'ha."
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:35
-#, fuzzy
 msgid "Death of Howgarth III"
-msgstr "Inarix zemře"
+msgstr "Howgart III. zemře."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:130
@@ -3856,6 +3999,9 @@ msgid ""
 "brought along Grüü, as well as one of his most trusted solders. Earl "
 "Lanbec'h flatly refused to attend the parley."
 msgstr ""
+"Kapou'e souhlasil se setkáním s Howgartem III. Nicméně lidem stále "
+"nedůvěřoval a vzal si sebou Grüüa a jednoho ze svých nejdůvěryhodnějších "
+"vojáků. Hrabě Lanbec'h rozhodně odmítl výzvu k vyjednávání."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:135
@@ -3868,6 +4014,12 @@ msgid ""
 "had stolen from the orcs. Only then would he return Dorset and disperse the "
 "Horde."
 msgstr ""
+"Lidé přestali útočit a obě strany se setkaly ve středu bitevního pole. "
+"Howgart III. požadoval, aby Kapou'e odevzdal Dorset zpět lidem a vrátil se "
+"do vlastních zemí, určených dohodou. Kapou'e to odmítl udělat na tak dlouho, "
+"dokud budou lidé stále útočit na skřetí teritorium. Chtěl, aby lidé "
+"rozpustili své jednotky a vrátili všechny země, které ukradli skřetům. Jenom "
+"pak vrátí Dorset a rozptýlí Hordu."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:140
@@ -3876,6 +4028,9 @@ msgid ""
 "aggression, then under the dictates of the Northern Alliance, he himself "
 "would be forced to move against the Earl."
 msgstr ""
+"Howgart III. souhlasil a dále slíbil, že pokud Hrabě Lanbec'h bude "
+"pokračovat v agresi, v nesouladu s příkazy Severní Aliance, osobně povede "
+"jednotky Aliance proti Hraběti."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:145
@@ -3885,6 +4040,10 @@ msgid ""
 "Black-Eye Kauran was the message declining their invitation to join the "
 "Northern Alliance, brought by none other then Shan Taum himself."
 msgstr ""
+"Když skončili, Kapou'e přemýšlel o pravdě ohledně smrti jeho otce. Howgart "
+"III. zopakoval jeho příběh, ve kterém poslední věc, kterou slyšeli od Karuna "
+"Černého Oka byla zpráva odmítající jejich pozvání do Severní Aliance, "
+"pronesenou nikým jiným než Šan Taumem osobně."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:150
@@ -3892,6 +4051,8 @@ msgid ""
 "As they were discussing the matter, a group of orcs charged from the "
 "surrounding trees and hills and surrounded the parley."
 msgstr ""
+"Jak diskutovali o těchto záležitostech, skupina skřetů se vyhrnula z "
+"okolních stromů a kopců a obklopili vyjednávače."
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:531
@@ -3899,6 +4060,8 @@ msgid ""
 "Now now now, what do we have here. Collaborating with the enemy again just "
 "like your disgusting father, are you?"
 msgstr ""
+"Ale, Ale, Ale copak to tu máme. Spolupracuješ s lidmi stejně jako tvůj "
+"nechutný otec, že ano?"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:536
@@ -3906,21 +4069,22 @@ msgid ""
 "Collaborating with the humans, pfff. Look who is talking. What are you doing "
 "here, Shan Taum?"
 msgstr ""
+"Spolupráce s lidmi, pfff. Podívejme kdo to mluví. Co tu děláš, Šan Taume?"
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:541
 msgid "I am here to do to you what I did to your father."
-msgstr ""
+msgstr "Jsem tu, abych ti udělal to co jsem udělal tvému otci."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:546
 msgid "So you did kill my father then."
-msgstr ""
+msgstr "Takže to ty jsi zabil mého otce."
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:551
 msgid "What did I tell you, Kapou'e?"
-msgstr ""
+msgstr "Co jsem ti říkal, Kapou'e?"
 
 #. [message]: description=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:556
@@ -3928,6 +4092,8 @@ msgid ""
 "Ha ha! Good work Shan Taum. That will teach them. Attack, boys, I want "
 "Dorset recaptured by sunset."
 msgstr ""
+"Ha ha! Dobrá práce, Šan Taume! To je naučí. Útok, chlapci, chci Dorset znovu "
+"dobýt do západu slunce."
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:561
@@ -3939,6 +4105,12 @@ msgid ""
 "father before and I believe his blood will be trustworthy. And if that isn't "
 "enough, then we are here to protect you in case he violates the pact."
 msgstr ""
+"Zadrž, hrabě Lanbec'hu. Dosáhl jsem dohody s těmito skřety. Porušil jsi "
+"dohodu; musíš neprodleně rozpustit své jednotky a stáhnout se ze skřetího "
+"území. Jakmile se tak stane, Kapou'e ti vrátí Dorset a zastaví Hordu. Měli "
+"jsme dohodu s Kapou'eho otcem už předtím a věřím, že je tento rod "
+"důvěryhodný. A jestli to není dost, pak jsme tu my abychom ti pomohli v "
+"případě, že poruší úmluvu."
 
 #. [message]: description=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:566
@@ -3946,11 +4118,13 @@ msgid ""
 "You and your damned compromises can go to hell. Your beloved Kapou'e will be "
 "joining you shortly."
 msgstr ""
+"Ty a tvé zatracené kompromisy můžete táhnout do pekla. Tvůj milovaný Kapou'e "
+"se k tobě hned připojí."
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:571
 msgid "You leave us no choice but to take military action against you."
-msgstr ""
+msgstr "Nedáváš mi jinou možnost než vojenskou akci proti tobě."
 
 #. [message]: description=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:576
@@ -3959,11 +4133,14 @@ msgid ""
 "soon as my orc friend here gives the order. And then your men will "
 "automatically assume that Kapou'e tricked and killed you."
 msgstr ""
+"Ha ha! Zábavné, Howgarte. Rozhlédni se. Zemřeš hned, jak můj skřetí přítel "
+"vydá rozkaz. A tví muži pak budou automaticky předpokládat, že tě Kapou'e "
+"obelstil a zabil tě."
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:581
 msgid "Not today, my friend. *whistles*"
-msgstr ""
+msgstr "Ne dnes, můj příteli. *zapískání*"
 
 #. [message]: description=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:661
@@ -3975,11 +4152,16 @@ msgid ""
 "these traitors. Once they are dead and dispersed, then I trust you will cary "
 "out your agreement."
 msgstr ""
+"Kapou'e, je důležité, abych se vrátil do tábora a přinesl zprávy o naší nové "
+"dohodě a této zradě. Jeden z mých gryfoních jezdců mne tam vezme. Má osobní "
+"stráž a zbytek gryfonů ti pomůže se probojovat z této pasti. Jakmile se "
+"dostaneš zpět do tvého tábora, podnikneme společný útok na tyhle zrádce. Až "
+"budou mrtví nebo rozprášení, věřím, že dodržíš naši dohodu."
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:666
 msgid "Agreed. Let's get to it. BLOOD AND STEEL!"
-msgstr ""
+msgstr "Dohodnuto. Jdeme na to. KREV A OCEL!"
 
 #. [message]: description=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:685
@@ -3987,22 +4169,24 @@ msgid ""
 "Blast! The human has escaped. Men, kill this turd-licker Kapou'e and report "
 "back to me. I must get to my camp and assault the city."
 msgstr ""
+"Sakra! Ten člověk uprchl. Chlapi, zabijte lejnoolizovače Kapou'eho a hlaste "
+"se u mne. Musím se vrátit do tábora a zaútočit na město."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:698
 msgid "Shan Taum big coward. Never want to fight."
-msgstr ""
+msgstr "Šan Taum velký zbabělec. Nikdy nechce bojovat."
 
 #. [message]: description=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:820
 msgid "YEAH!"
-msgstr ""
+msgstr "JÓÓÓ!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:847
 msgid ""
 "Yeah, we finally got the coward. What do you want us to do with him chief?"
-msgstr ""
+msgstr "Konečně jsme toho zbabělce dostali. Co s ním chcete udělat, náčelníku?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:852
@@ -4010,12 +4194,13 @@ msgid ""
 "Stick his head at the end of a pike and let the buzzards pick it clean. I "
 "wasn't joking about making a mug from his skull."
 msgstr ""
+"Nabodněte jeho hlavu na kopí a nechte dravce ji očistit. Nežertoval jsem, "
+"když jsem říkal, že si z jeho lebky udělám pohár."
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:4
-#, fuzzy
 msgid "Epilogue"
-msgstr "Epilog"
+msgstr "Epilog "
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:88
@@ -4026,6 +4211,11 @@ msgid ""
 "the horde was dispersed he appointed three more shamans - with the unanimous "
 "consent of all - to make the Great Council complete again."
 msgstr ""
+"Jakmile byl hrabě Lanbec'h zabit, dostál Howgart III. svému slovu, rozpustil "
+"hraběcí jednotky a stáhl je ze skřetího území. Dle jeho části úmluvy Kapou'e "
+"odešel z Dorsetu a rozpustil Velkou Hordu. Avšak předtím než tak udělal, "
+"ustanovil tři další šamany - s jednomyslným souhlasem všech - aby byla Velká "
+"Rada opět kompletní."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:93
@@ -4035,6 +4225,9 @@ msgid ""
 "and, making that his capital, established himself as sovereign over all the "
 "northern tribes."
 msgstr ""
+"Stejně jako jeho otci, Howgart III. poslal pozvání Kapou'emu, aby se přidal "
+"k Severní Alianci. Kapou'e odmítl. Namísto toho odešel do Barag Gór, udělal "
+"z něj hlavní město a ustanovil se panovníkem všech severních kmenů."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:98
@@ -4046,6 +4239,11 @@ msgid ""
 "effect that orcs desiring to trade would have free passage anywhere in "
 "orcish territory without hinderance from other tribes."
 msgstr ""
+"Kapou'e vládl po mnoho let a tyto roky byly časem nebývalé skřetí prosperity "
+"a jednoty. Pod vedením Kapou'eho sjednocené skřetí síly důkladně prohlédaly "
+"a vyčistily jejich území od všech odpadlických band lidí, trpaslíků, elfů a "
+"nemrtvých. Dle dohody se skřeti toužící po obchodu mohli volně pohybovat "
+"všude po skřetím území bez překážek a obtěžování ostatními kmeny."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:103
@@ -4056,6 +4254,10 @@ msgid ""
 "orcs united - both attacks were quickly and decisively crushed, even before "
 "the Northern Alliance could intervene."
 msgstr ""
+"Během osmého a poté znovu během čtrnáctého roku Kapou'eho vlády byla skřetí "
+"teritoria znovu napadena. Poprvé elfy a poté znovu lidmi. Bylo to jako důkaz "
+"skřetí jednoty - oba útoky byly rychle a rozhodně rozdrceny, dokonce dříve "
+"než mohla Severní Aliance zasáhnout."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:108
@@ -4067,6 +4269,12 @@ msgid ""
 "of this and, consequently, those orcs thirsting for battle got more then "
 "enough to keep them from attacking their nearest neighbors."
 msgstr ""
+"Aby minimalizoval boje mezi kmeny, Kapou'e také sestavil obrovskou armádu z "
+"obyvatel ze všech koutů jeho říše. Aby si mohl dovolit vydržování tak velké "
+"armády, často pronajímal její části k boji v cizích bitvách. Národy všech "
+"ras to s výhodou využívaly a následkem toho skřeti žíznící po boji mohli "
+"bojovat proti jiným než svým nejbližším sousedům a přitom ukojit své bojovné "
+"choutky."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:113
@@ -4075,6 +4283,9 @@ msgid ""
 "cunning, and swift troll soon became even more well known than Kapou'e. "
 "Tales of his courage and cunning reached even as far as Wesnoth itself."
 msgstr ""
+"Grüü měl zvláštní zálibu v těchto výpadech. Obrovský, mazaný a rychlý troll "
+"se brzy stal dokonce známějším než Kapou'e. Příběhy o jeho odvaze a "
+"prohnanosti se donesly až do samotného Wesnothu."
 
 #. [unit]: race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
@@ -4094,11 +4305,11 @@ msgid ""
 msgstr ""
 "Skřetí šamani jsou strážci skřetí magie. Jsou respektovaní skřetími kmeny a "
 "jsou členy skřetího koncilu, který rozhoduje v důležitých záležitostech, "
-"týkajících se celé  komunity a soudí mnoho kmenových konfliktů, které lehce "
-"vznikají vzhledem k hádavé povaze této rasy. I když jsou skřeti obecně "
-"fyzicky dost slabí, jejich šamani jsou dobrými vrhači kouzel a mohou proklít "
-"své nepřátele a vysávat jejich život. Šamani začátečníci jsou mladí a "
-"energičtí, jejich schopnost vrhat kouzla však potřebuje zlepšit."
+"týkajících se celé komunity a soudí mnoho kmenových konfliktů, které lehce "
+"vznikají vzhledem k hádavé povaze této rasy. I když jsou obecně fyzicky dost "
+"slabí, šamani jsou dobrými vrhači kouzel a mohou proklít své nepřátele a "
+"vysávat jejich život. Šamani začátečníci jsou mladí a energičtí, jejich "
+"schopnost vrhat kouzla však potřebuje zlepšit."
 
 #. [attack]: type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:26
@@ -4132,11 +4343,11 @@ msgid ""
 msgstr ""
 "Skřetí šamani jsou strážci skřetí magie. Jsou respektovaní skřetími kmeny a "
 "jsou členy skřetího koncilu, který rozhoduje v důležitých záležitostech, "
-"týkajících se celé  komunity a soudí mnoho kmenových konfliktů, které lehce "
-"vznikají vzhledem k hádavé povaze této rasy. I když jsou skřeti obecně "
-"fyzicky dost slabí, jejich šamani jsou dobrými vrhači kouzel a mohou proklít "
-"své nepřátele a vysávat jejich život.Staří šamani jsou odborníci v magii, i "
-"když jejich fyzická síla již upadá."
+"týkajících se celé komunity a soudí mnoho kmenových konfliktů, které lehce "
+"vznikají vzhledem k hádavé povaze této rasy. I když jsou obecně fyzicky dost "
+"slabí, šamani jsou dobrými vrhači kouzel a mohou proklít své nepřátele a "
+"vysávat jejich život. Staří šamani jsou odborníci v magii, i když jejich "
+"fyzická síla již upadá."
 
 #. [unit]: race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
@@ -4155,10 +4366,10 @@ msgid ""
 msgstr ""
 "Skřetí šamani jsou strážci skřetí magie. Jsou respektovaní skřetími kmeny a "
 "jsou členy skřetího koncilu, který rozhoduje v důležitých záležitostech, "
-"týkajících se celé  komunity a soudí mnoho kmenových konfliktů, které lehce "
-"vznikají vzhledem k hádavé povaze této rasy. I když jsou skřeti obecně "
-"fyzicky dost slabí, jejich šamani jsou dobrými vrhači kouzel a mohou proklít "
-"své nepřátele a vysávat jejich život."
+"týkajících se celé komunity a soudí mnoho kmenových konfliktů, které lehce "
+"vznikají vzhledem k hádavé povaze této rasy. I když jsou obecně fyzicky dost "
+"slabí, šamani jsou dobrými vrhači kouzel a mohou proklít své nepřátele a "
+"vysávat jejich život."
 
 #. [unit]: race=mechanical
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:4
@@ -4171,7 +4382,7 @@ msgid ""
 "Watch Towers are good places from which to spot enemies and then shoot "
 "miscellaneous items at them with ballistas."
 msgstr ""
-"Strážní věže jsou vhodná místa k odhalení nepřátel a metání nejrůznějších "
+"Strážní věže jsou vhodná místa k pozorování nepřátel a metání nejrůznějších "
 "předmětů balistami."
 
 #. [attack]: type=pierce
@@ -4192,28 +4403,26 @@ msgstr "Au! To bolí!"
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:52
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:68
-#, fuzzy
 msgid "The Council will never be complete again. This is hopeless."
-msgstr "Sněm nebude nikdy úplný. Je to beznadějné."
+msgstr "Rada nebude nikdy znovu kompletní. Je to beznadějné."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:92
-#, fuzzy
 msgid "Oh no, I am defeated."
-msgstr "Ale ne, jsem poražen."
+msgstr "Ach ne. Byl jsem poražen."
 
 #. [message]: description=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:104
 msgid "Ahhh!"
-msgstr ""
+msgstr "Ahhh!"
 
 #. [message]: description=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:109
-#, fuzzy
 msgid ""
 "Blast it, without Inarix to lead his saurians, we can no longer count on "
 "their help."
-msgstr "Bez Inarixe, který by vedl své ještěráky, nemáme naději."
+msgstr ""
+"K čertu. Bez Inarixe vedoucího jeho národ nemůžeme počítat s jejich pomocí."
 
 #. [unit]: description=Pirate Galleon, type=Pirate Galleon
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:202
@@ -4223,15 +4432,9 @@ msgstr "Pirátská galeona"
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:380
 msgid "The green earth will curse you for this...."
-msgstr ""
+msgstr "Zelená země vás za to prokleje..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:392
 msgid "Curse you, foul orc!"
-msgstr ""
-
-#~ msgid "Mkel"
-#~ msgstr "Mkel"
-
-#~ msgid "Oumph"
-#~ msgstr "Oumph"
+msgstr "Proklínám vás, bláhoví skřeti!"
