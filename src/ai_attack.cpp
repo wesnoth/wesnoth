@@ -46,7 +46,7 @@ void ai::do_attack_analysis(
 	raise_user_interact();
 
 	if(cur_analysis.movements.size() >= size_t(attack_depth())) {
-		std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << attack_depth() << "\n";
+		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << attack_depth() << "\n";
 		return;
 	}
 
