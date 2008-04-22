@@ -1916,7 +1916,10 @@ namespace {
 
 void recalculate_fog(const gamemap& map,
 		unit_map& units,
-		std::vector<team>& teams, int team) {
+		std::vector<team>& teams, int team)
+{
+	if (teams[team].uses_fog() == false)
+		return;
 
 	teams[team].refog();
 
@@ -1927,6 +1930,10 @@ void recalculate_fog(const gamemap& map,
 			clear_shroud_unit(map,units,i->first,teams,team,NULL,NULL);
 		}
 	}
+
+	//FIXME: This pump don't catch any sighted events (they are not fired by
+	// clear_shroud_unit) and if it caches another old event, maybe the caller
+	// don't want to pump it here
 	game_events::pump();
 }
 
@@ -1946,6 +1953,10 @@ bool clear_shroud(game_display& disp, const gamemap& map,
 			result |= clear_shroud_unit(map,units,i->first,teams,team,NULL,NULL);
 		}
 	}
+
+	//FIXME: This pump don't catch any sighted events (they are not fired by
+	// clear_shroud_unit) and if it caches another old event, maybe the caller
+	// don't want to pump it here
 	game_events::pump();
 
 	if (teams[team].uses_fog()) {
