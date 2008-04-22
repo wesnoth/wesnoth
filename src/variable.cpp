@@ -41,88 +41,88 @@ namespace
 	// map by hash for equivalent inserted tags already in the cache
 	std::map<std::string const *, config const *> hash_to_cache;
 
-    // map to remember config hashes that have already been calculated
-    std::map<config const *, std::string const *> config_hashes;
+	// map to remember config hashes that have already been calculated
+	std::map<config const *, std::string const *> config_hashes;
 
 	config empty_config;
 
-    struct compare_str_ptr {
-        bool operator()(const std::string* s1, const std::string* s2) const
-        {
-            return (*s1) < (*s2);
-        }
-    };
+	struct compare_str_ptr {
+		bool operator()(const std::string* s1, const std::string* s2) const
+		{
+			return (*s1) < (*s2);
+		}
+	};
 
 	class hash_memory_manager {
-    public:
-        const std::string *find(const std::string& str) const {
-            std::set<std::string const*, compare_str_ptr>::const_iterator itor = mem_.lower_bound(&str);
-            if(itor == mem_.end() || **itor != str) {
-                return NULL;
-            }
-            return *itor;
-        }
-        void insert(const std::string *newhash) {
-            mem_.insert(newhash);
-        }
-	    void clear() {
-	        hash_to_cache.clear();
-	        config_hashes.clear();
-            std::set<std::string const*, compare_str_ptr>::iterator mem_it,
-                mem_end = mem_.end();
-            for(mem_it = mem_.begin(); mem_it != mem_end; ++mem_it) {
-                delete *mem_it;
-            }
-            mem_.clear();
-	    }
-	    ~hash_memory_manager() {
-	        clear();
-	    }
-    private:
-        std::set<std::string const*, compare_str_ptr> mem_;
+	public:
+		const std::string *find(const std::string& str) const {
+			std::set<std::string const*, compare_str_ptr>::const_iterator itor = mem_.lower_bound(&str);
+			if(itor == mem_.end() || **itor != str) {
+				return NULL;
+			}
+			return *itor;
+		}
+		void insert(const std::string *newhash) {
+			mem_.insert(newhash);
+		}
+		void clear() {
+			hash_to_cache.clear();
+			config_hashes.clear();
+			std::set<std::string const*, compare_str_ptr>::iterator mem_it,
+				mem_end = mem_.end();
+			for(mem_it = mem_.begin(); mem_it != mem_end; ++mem_it) {
+				delete *mem_it;
+			}
+			mem_.clear();
+		}
+		~hash_memory_manager() {
+			clear();
+		}
+	private:
+		std::set<std::string const*, compare_str_ptr> mem_;
 	};
 	hash_memory_manager hash_memory;
 }
 
 static const std::string* get_hash_of(const config* cp) {
-    //first see if the memory of a constant config hash exists
-    std::map<config const *, std::string const *>::iterator ch_it = config_hashes.find(cp);
-    if(ch_it != config_hashes.end()) {
-        return ch_it->second;
-    }
-    //next see if an equivalent hash string has been memorized
-    const std::string & temp_hash = cp->hash();
-    std::string const* find_hash = hash_memory.find(temp_hash);
-    if(find_hash != NULL) {
-        return find_hash;
-    }
-    //finally, we just allocate a new hash string to memory
-    std::string* new_hash = new std::string(temp_hash);
-    hash_memory.insert(new_hash);
-    //do not insert into config_hashes (may be a variable config)
-    return new_hash;
+	//first see if the memory of a constant config hash exists
+	std::map<config const *, std::string const *>::iterator ch_it = config_hashes.find(cp);
+	if(ch_it != config_hashes.end()) {
+		return ch_it->second;
+	}
+	//next see if an equivalent hash string has been memorized
+	const std::string & temp_hash = cp->hash();
+	std::string const* find_hash = hash_memory.find(temp_hash);
+	if(find_hash != NULL) {
+		return find_hash;
+	}
+	//finally, we just allocate a new hash string to memory
+	std::string* new_hash = new std::string(temp_hash);
+	hash_memory.insert(new_hash);
+	//do not insert into config_hashes (may be a variable config)
+	return new_hash;
 }
 
 static void increment_config_usage(const config*& key) {
 	if(key == NULL) return;
-    std::map<config const *, int>::iterator this_usage =  config_cache.find(key);
-    if(this_usage != config_cache.end()) {
-        ++this_usage->second;
-	    return;
-    }
-    const std::string *hash = get_hash_of(key);
-    const config *& cfg_store = hash_to_cache[hash];
-    if(cfg_store == NULL || (key != cfg_store && *key != *cfg_store)) {
-        // this is a new volatile config: allocate some memory & update key
-        key = new config(*key);
-        // remember this cache to prevent an equivalent one from being created
-        cfg_store = key;
-        // since the config is now constant, we can safely memorize the hash
-        config_hashes[key] = hash;
-    } else {
-        // swap the key with an equivalent or equal one in the cache
-        key = cfg_store;
-    }
+	std::map<config const *, int>::iterator this_usage =  config_cache.find(key);
+	if(this_usage != config_cache.end()) {
+		++this_usage->second;
+		return;
+	}
+	const std::string *hash = get_hash_of(key);
+	const config *& cfg_store = hash_to_cache[hash];
+	if(cfg_store == NULL || (key != cfg_store && *key != *cfg_store)) {
+		// this is a new volatile config: allocate some memory & update key
+		key = new config(*key);
+		// remember this cache to prevent an equivalent one from being created
+		cfg_store = key;
+		// since the config is now constant, we can safely memorize the hash
+		config_hashes[key] = hash;
+	} else {
+		// swap the key with an equivalent or equal one in the cache
+		key = cfg_store;
+	}
 	++(config_cache[key]);
 }
 
@@ -133,12 +133,12 @@ static void decrement_config_usage(const config* key) {
 	if(--(this_usage->second) == 0) {
 		config_cache.erase(this_usage);
 		if(config_cache.empty()) {
-		    hash_memory.clear();
+			hash_memory.clear();
 		} else {
-		    if(!hash_to_cache.empty()) {
-                hash_to_cache.erase(get_hash_of(key));
-		    }
-            config_hashes.erase(key);
+			if(!hash_to_cache.empty()) {
+				hash_to_cache.erase(get_hash_of(key));
+			}
+			config_hashes.erase(key);
 		}
 		delete key;
 	}
@@ -152,41 +152,41 @@ vconfig::vconfig() :
 vconfig::vconfig(const config* cfg, const config * cache_key) :
 	cfg_(cfg), cache_key_(cache_key)
 {
-    increment_config_usage(cache_key_);
-    if(cache_key_ != cache_key) {
-        //location of volatile cfg has moved
-        cfg_ = cache_key_;
-    }
+	increment_config_usage(cache_key_);
+	if(cache_key_ != cache_key) {
+		//location of volatile cfg has moved
+		cfg_ = cache_key_;
+	}
 }
 
 vconfig::vconfig(const vconfig& v) :
 	cfg_(v.cfg_), cache_key_(v.cache_key_)
 {
-    increment_config_usage(cache_key_);
+	increment_config_usage(cache_key_);
 }
 
 vconfig::~vconfig()
 {
-    decrement_config_usage(cache_key_);
+	decrement_config_usage(cache_key_);
 }
 
 vconfig& vconfig::operator=(const vconfig cfg)
 {
-    const config* prev_key = cache_key_;
+	const config* prev_key = cache_key_;
 	cfg_ = cfg.cfg_;
 	cache_key_ = cfg.cache_key_;
-    increment_config_usage(cache_key_);
-    decrement_config_usage(prev_key);
+	increment_config_usage(cache_key_);
+	decrement_config_usage(prev_key);
 	return *this;
 }
 
 vconfig& vconfig::operator=(const config* cfg)
 {
-    if(cfg_ != cfg) {
-        cfg_ = cfg;
-        decrement_config_usage(cache_key_);
-        cache_key_ = NULL;
-    }
+	if(cfg_ != cfg) {
+		cfg_ = cfg;
+		decrement_config_usage(cache_key_);
+		cache_key_ = NULL;
+	}
 	return *this;
 }
 
@@ -195,43 +195,43 @@ const config vconfig::get_parsed_config() const
 	config res;
 
 	for(string_map::const_iterator itor = cfg_->values.begin();
-        itor != cfg_->values.end(); ++itor)
-    {
+		itor != cfg_->values.end(); ++itor)
+	{
 		res[itor->first] = expand(itor->first);
 	}
 
 	for(config::all_children_iterator child = cfg_->ordered_begin();
-        child != cfg_->ordered_end(); ++child)
-    {
-        const std::string &child_key = *(*child).first;
-        if(child_key == "insert_tag") {
-            vconfig insert_cfg(child->second);
-            const t_string& name = insert_cfg["name"];
-            const t_string& vname = insert_cfg["variable"];
-            if(!recursion_.insert(vname).second) {
-                ERR_NG << "vconfig::get_parsed_config() infinite recursion detected, aborting"
-                    << std::endl;
-                res.add_child("insert_tag", insert_cfg.get_config());
-                return res;
-            }
-            variable_info vinfo(vname, false, variable_info::TYPE_CONTAINER);
-            if(!vinfo.is_valid) {
-                res.add_child(name); //add empty tag
-            } else if(vinfo.explicit_index) {
-                res.add_child(name, vconfig(&(vinfo.as_container())).get_parsed_config());
-            } else {
-                variable_info::array_range range = vinfo.as_array();
-                if(range.first == range.second) {
-                    res.add_child(name); //add empty tag
-                }
-                while(range.first != range.second) {
-                    res.add_child(name, vconfig(*range.first++).get_parsed_config());
-                }
-            }
-            recursion_.erase(vname);
-        } else {
-            res.add_child(child_key, vconfig((*child).second).get_parsed_config());
-        }
+		child != cfg_->ordered_end(); ++child)
+	{
+		const std::string &child_key = *(*child).first;
+		if(child_key == "insert_tag") {
+			vconfig insert_cfg(child->second);
+			const t_string& name = insert_cfg["name"];
+			const t_string& vname = insert_cfg["variable"];
+			if(!recursion_.insert(vname).second) {
+				ERR_NG << "vconfig::get_parsed_config() infinite recursion detected, aborting"
+					<< std::endl;
+				res.add_child("insert_tag", insert_cfg.get_config());
+				return res;
+			}
+			variable_info vinfo(vname, false, variable_info::TYPE_CONTAINER);
+			if(!vinfo.is_valid) {
+				res.add_child(name); //add empty tag
+			} else if(vinfo.explicit_index) {
+				res.add_child(name, vconfig(&(vinfo.as_container())).get_parsed_config());
+			} else {
+				variable_info::array_range range = vinfo.as_array();
+				if(range.first == range.second) {
+					res.add_child(name); //add empty tag
+				}
+				while(range.first != range.second) {
+					res.add_child(name, vconfig(*range.first++).get_parsed_config());
+				}
+			}
+			recursion_.erase(vname);
+		} else {
+			res.add_child(child_key, vconfig((*child).second).get_parsed_config());
+		}
 	}
 	return res;
 }
@@ -241,75 +241,75 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 	vconfig::child_list res;
 
 	for(config::all_children_iterator child = cfg_->ordered_begin();
-        child != cfg_->ordered_end(); ++child)
-    {
-        const std::string &child_key = *(*child).first;
-        if(child_key == key) {
-            res.push_back(vconfig(child->second, cache_key_));
-        } else if(child_key == "insert_tag") {
-            vconfig insert_cfg(child->second);
-            if(insert_cfg["name"] == key) {
-                variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
-                if(!vinfo.is_valid) {
-                    //push back an empty tag
-                    res.push_back(vconfig(&empty_config));
-                } else if(vinfo.explicit_index) {
-                    config * cp = &(vinfo.as_container());
-                    res.push_back(vconfig(cp, cp));
-                } else {
-                    variable_info::array_range range = vinfo.as_array();
-                    if(range.first == range.second) {
-                        //push back an empty tag
-                        res.push_back(vconfig(&empty_config));
-                    }
-                    while(range.first != range.second) {
-                        config * cp = *range.first++;
-                        res.push_back(vconfig(cp, cp));
-                    }
-                }
-            }
-        }
-    }
+		child != cfg_->ordered_end(); ++child)
+	{
+		const std::string &child_key = *(*child).first;
+		if(child_key == key) {
+			res.push_back(vconfig(child->second, cache_key_));
+		} else if(child_key == "insert_tag") {
+			vconfig insert_cfg(child->second);
+			if(insert_cfg["name"] == key) {
+				variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
+				if(!vinfo.is_valid) {
+					//push back an empty tag
+					res.push_back(vconfig(&empty_config));
+				} else if(vinfo.explicit_index) {
+					config * cp = &(vinfo.as_container());
+					res.push_back(vconfig(cp, cp));
+				} else {
+					variable_info::array_range range = vinfo.as_array();
+					if(range.first == range.second) {
+						//push back an empty tag
+						res.push_back(vconfig(&empty_config));
+					}
+					while(range.first != range.second) {
+						config * cp = *range.first++;
+						res.push_back(vconfig(cp, cp));
+					}
+				}
+			}
+		}
+	}
 	return res;
 }
 
 vconfig vconfig::child(const std::string& key) const
 {
-    const config *natural = cfg_->child(key);
-    if(natural)
-    {
-        return vconfig(natural, cache_key_);
-    }
-    for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
-        chitors.first != chitors.second; ++chitors.first)
-    {
-        vconfig insert_cfg(*chitors.first);
-        if(insert_cfg["name"] == key) {
-            variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
-            if(!vinfo.is_valid) {
-                return vconfig(&empty_config);
-            }
-            config * cp = &(vinfo.as_container());
-            return vconfig(cp, cp);
-        }
-    }
-    return vconfig();
+	const config *natural = cfg_->child(key);
+	if(natural)
+	{
+		return vconfig(natural, cache_key_);
+	}
+	for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
+		chitors.first != chitors.second; ++chitors.first)
+	{
+		vconfig insert_cfg(*chitors.first);
+		if(insert_cfg["name"] == key) {
+			variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
+			if(!vinfo.is_valid) {
+				return vconfig(&empty_config);
+			}
+			config * cp = &(vinfo.as_container());
+			return vconfig(cp, cp);
+		}
+	}
+	return vconfig();
 }
 
 bool vconfig::has_child(const std::string& key) const
 {
 	if(cfg_->child(key) != NULL) {
-	    return true;
+		return true;
 	}
-    for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
-        chitors.first != chitors.second; ++chitors.first)
-    {
-        vconfig insert_cfg(*chitors.first);
-        if(insert_cfg["name"] == key) {
-            return true;
-        }
-    }
-    return false;
+	for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
+		chitors.first != chitors.second; ++chitors.first)
+	{
+		vconfig insert_cfg(*chitors.first);
+		if(insert_cfg["name"] == key) {
+			return true;
+		}
+	}
+	return false;
 }
 
 const t_string vconfig::expand(const std::string& key) const
@@ -331,16 +331,16 @@ vconfig::all_children_iterator::all_children_iterator(config::all_children_itera
 
 vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 {
-    if(i_.get_key() == "insert_tag") {
-        variable_info vinfo(vconfig(&i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
-        if(vinfo.is_valid && !vinfo.explicit_index) {
-            variable_info::array_range range = vinfo.as_array();
-            if(range.first != range.second && range.first + (++inner_index_) != range.second) {
-                ++index_offset_;
-                return *this;
-            }
-        }
-    }
+	if(i_.get_key() == "insert_tag") {
+		variable_info vinfo(vconfig(&i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
+		if(vinfo.is_valid && !vinfo.explicit_index) {
+			variable_info::array_range range = vinfo.as_array();
+			if(range.first != range.second && range.first + (++inner_index_) != range.second) {
+				++index_offset_;
+				return *this;
+			}
+		}
+	}
 	++i_;
 	inner_index_ = 0;
 	return *this;
@@ -355,7 +355,7 @@ vconfig::all_children_iterator vconfig::all_children_iterator::operator++(int)
 
 std::pair<const std::string,const vconfig> vconfig::all_children_iterator::operator*() const
 {
-    return std::make_pair<const std::string, const vconfig>(get_key(), get_child());
+	return std::make_pair<const std::string, const vconfig>(get_key(), get_child());
 }
 
 vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator->() const
@@ -365,28 +365,28 @@ vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator
 
 const std::string vconfig::all_children_iterator::get_key() const
 {
-    const std::string& key = i_.get_key();
-    if(key == "insert_tag") {
-        return vconfig(&i_.get_child())["name"];
-    }
+	const std::string& key = i_.get_key();
+	if(key == "insert_tag") {
+		return vconfig(&i_.get_child())["name"];
+	}
 	return key;
 }
 
 const vconfig vconfig::all_children_iterator::get_child() const
 {
-    if(i_.get_key() == "insert_tag") {
-        config * cp;
-        variable_info vinfo(vconfig(&i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
-        if(!vinfo.is_valid) {
-            return vconfig(&empty_config);
-        } else if(inner_index_ == 0) {
-            cp = &(vinfo.as_container());
-            return vconfig(cp, cp);
-        }
-        cp = *(vinfo.as_array().first + inner_index_);
-        return vconfig(cp, cp);
-    }
-    return vconfig(&i_.get_child());
+	if(i_.get_key() == "insert_tag") {
+		config * cp;
+		variable_info vinfo(vconfig(&i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
+		if(!vinfo.is_valid) {
+			return vconfig(&empty_config);
+		} else if(inner_index_ == 0) {
+			cp = &(vinfo.as_container());
+			return vconfig(cp, cp);
+		}
+		cp = *(vinfo.as_array().first + inner_index_);
+		return vconfig(cp, cp);
+	}
+	return vconfig(&i_.get_child());
 }
 
 size_t vconfig::all_children_iterator::get_index() const
@@ -541,7 +541,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 			inner_index = static_cast<size_t>(lexical_cast_default<int>(index_str));
 			if(inner_index > game_config::max_loop) {
 				ERR_NG << "variable_info: index greater than " << game_config::max_loop
-				       << ", truncated\n";
+					   << ", truncated\n";
 				inner_index = game_config::max_loop;
 			}
 			element = std::string(element.begin(),index_start);
