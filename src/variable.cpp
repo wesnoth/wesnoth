@@ -108,7 +108,7 @@ static void increment_config_usage(const config*& key) {
     std::map<config const *, int>::iterator this_usage =  config_cache.find(key);
     if(this_usage != config_cache.end()) {
         ++this_usage->second;
-        return;
+	    return;
     }
     const std::string *hash = get_hash_of(key);
     const config *& cfg_store = hash_to_cache[hash];
@@ -135,7 +135,9 @@ static void decrement_config_usage(const config* key) {
 		if(config_cache.empty()) {
 		    hash_memory.clear();
 		} else {
-            hash_to_cache.erase(get_hash_of(key));
+		    if(!hash_to_cache.empty()) {
+                hash_to_cache.erase(get_hash_of(key));
+		    }
             config_hashes.erase(key);
 		}
 		delete key;
@@ -151,6 +153,10 @@ vconfig::vconfig(const config* cfg, const config * cache_key) :
 	cfg_(cfg), cache_key_(cache_key)
 {
     increment_config_usage(cache_key_);
+    if(cache_key_ != cache_key) {
+        //location of volatile cfg has moved
+        cfg_ = cache_key_;
+    }
 }
 
 vconfig::vconfig(const vconfig& v) :
