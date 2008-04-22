@@ -636,7 +636,8 @@ void ui::gamelist_updated(bool silent)
 
 	std::list<user_info>::const_iterator u_itor = u_list.begin();
 	while (u_itor != u_list.end()) {
-		const std::string game_str = (u_itor->state == LOBBY) ? "" : " (" + u_itor->location + ")";
+		const std::string name_str = u_itor->name +
+				(u_itor->state == LOBBY) ? "" : " (" + u_itor->location + ")";
 		std::string img_str = "";
 		std::string color_str = "";
 		switch (u_itor->state) {
@@ -646,14 +647,14 @@ void ui::gamelist_updated(bool silent)
 		}
 		if (preferences::iconize_list()) {
 			switch (u_itor->relation) {
-				case NEUTRAL: img_str = imgpre + "neutral.png" + COLUMN_SEPARATOR; break;
-				case IGNORED: img_str = imgpre + "ignore.png"  + COLUMN_SEPARATOR; break;
-				case FRIEND:  img_str = imgpre + "friend.png"  + COLUMN_SEPARATOR; break;
-				case ME:      img_str = imgpre + "self.png"    + COLUMN_SEPARATOR; break;
+				case NEUTRAL: img_str = imgpre + "neutral.png" + IMG_TEXT_SEPARATOR; break;
+				case IGNORED: img_str = imgpre + "ignore.png"  + IMG_TEXT_SEPARATOR; break;
+				case FRIEND:  img_str = imgpre + "friend.png"  + IMG_TEXT_SEPARATOR; break;
+				case ME:      img_str = imgpre + "self.png"    + IMG_TEXT_SEPARATOR; break;
 			}
 		}
 		user_strings.push_back(u_itor->name);
-		menu_strings.push_back(img_str + color_str + u_itor->name + game_str + HELP_STRING_SEPARATOR + u_itor->name + game_str);
+		menu_strings.push_back(img_str + color_str + name_str + HELP_STRING_SEPARATOR + name_str);
 		u_itor++;
 	}
 
