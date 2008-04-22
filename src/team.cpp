@@ -349,6 +349,14 @@ void team::team_info::write(config& cfg) const
 	cfg["colour"] = lexical_cast_default<std::string>(colour);
 }
 
+void team::replace_shroud_map_data(const std::string& shroud_data)
+{
+	//!@todo TODO: in the future I'd like to make external shroud data to be
+	//! combined with the current one instead of always replacing it.
+	shroud_.reset();
+	shroud_.read(shroud_data);
+}
+
 team::team(const config& cfg, int gold) : 
 		gold_(gold),
 		villages_(),

@@ -252,6 +252,10 @@ public:
 	void set_shroud(bool shroud) { shroud_.set_enabled(shroud); }
 	void set_fog(bool fog) { fog_.set_enabled(fog); }
 
+	//! Converts a WML shroud map into shroud data and applies it to
+	//! this player.
+	void replace_shroud_map_data(const std::string& shroud_data);
+
 	bool knows_about_team(size_t index) const;
 	bool copy_ally_shroud();
 

@@ -716,10 +716,11 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		std::string recruit_str = cfg["recruit"];
 		std::string fog = cfg["fog"];
 		std::string shroud = cfg["shroud"];
+		std::string shroud_data = cfg["shroud_data"];
 		std::string village_gold = cfg["village_gold"];
 		const config::child_list& ai = cfg.get_parsed_config().get_children("ai");
-		// TODO: also allow client to modify a side's colour if it
-		// is possible to change it on the fly without causing visual glitches
+		//!@todo also allow client to modify a side's colour if it
+		//!is possible to change it on the fly without causing visual glitches
 
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
@@ -761,6 +762,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			// Set shroud
 			if (!shroud.empty()) {
 				(*teams)[team_index].set_shroud( utils::string_bool(shroud, true) );
+			}
+			// Set shroud data
+			if (!shroud_data.empty()) {
+				(*teams)[team_index].replace_shroud_map_data(shroud_data);
 			}
 			// Set fog
 			if (!fog.empty()) {
