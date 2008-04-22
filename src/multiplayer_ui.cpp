@@ -637,7 +637,7 @@ void ui::gamelist_updated(bool silent)
 	std::list<user_info>::const_iterator u_itor = u_list.begin();
 	while (u_itor != u_list.end()) {
 		const std::string name_str = u_itor->name +
-				(u_itor->state == LOBBY) ? "" : " (" + u_itor->location + ")";
+				((u_itor->state == LOBBY) ? "" : " (" + u_itor->location + ")");
 		std::string img_str = "";
 		std::string color_str = "";
 		switch (u_itor->state) {
