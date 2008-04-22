@@ -1175,6 +1175,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 						if (clear_shroud(*gui_, map_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
 							clear_undo_stack();
 							gui_->invalidate_all();
+							gui_->recalculate_minimap();
 							gui_->draw();
 							//some new part of map discovered
 							for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
