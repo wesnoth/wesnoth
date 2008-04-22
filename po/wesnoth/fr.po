@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-21 18:09+0200\n"
-"PO-Revision-Date: 2008-04-20 15:52+0100\n"
-"Last-Translator: Damien J <guydelatourATgloireetpouvoirPTcom>\n"
+"PO-Revision-Date: 2008-04-22 15:20+0100\n"
+"Last-Translator: Damien J <guydelatourATgloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1853,7 +1853,7 @@ msgid ""
 "rest even when travelling."
 msgstr ""
 "Certains nains, connus pour leur vitalité, sont plus vigoureux que les "
-"autres et peuvent même récupérer plus vite lorsqu'ils voyagent."
+"autres et peuvent même récupérer lorsqu'ils se déplacent."
 
 #. [topic]
 #: data/core/help.cfg:409
@@ -5495,26 +5495,26 @@ msgstr "Pont de $name|,Croisée de $name|"
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr ""
 "Route $name|,Passe de $name|,Chemin de $name|,Sente de $name|,Sentier de "
-"$name|,Voie de $name|,Traverse de $name|"
+"$name|,Voie de $name|,Traverse de $name|, Chaussée de $name|,Défilé de $name|"
 
 # Noms de rivières
 #. [language]
 #: data/hardwired/english.cfg:20
 msgid "$name River,River $name"
-msgstr "$name|-la-rivière,Rivière $name,$name|rupt"
+msgstr "$name|-la-Rivière,Rivière $name,$name|rupt,Torrent de $name|"
 
 # Noms de forêts
 #. [language]
 #: data/hardwired/english.cfg:21
 msgid "$name Forest,$name's Forest"
 msgstr ""
-"Forêt $name|,Bois de $name|,$name|-la-forêt,$name|-sous-bois,$name|bosc"
+"Forêt $name|,Bois de $name|,$name|-la-Forêt,$name|bosc,Bosquet de $name|"
 
 # Noms de lacs
 #. [language]
 #: data/hardwired/english.cfg:22
 msgid "$name Lake"
-msgstr "Lac $name|,Étang $name|,Mare-$name|,$name|mare,$name|-les-Flots"
+msgstr "Lac $name|,Étang $name|,Mare $name|,Mer de $name|, Bassin du $name|"
 
 # Noms de villages
 #. [language]
@@ -5522,53 +5522,63 @@ msgstr "Lac $name|,Étang $name|,Mare-$name|,$name|mare,$name|-les-Flots"
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
 "Saint-$name|,Ker $name|,$name|-le-Bas,$name|-le-Haut,$name|ville,$name|bourg,"
-"$name|ange,$name|ey,$name|ac,Castel$name|,Château-$name|"
+"$name|ange,$name|ey,$name|ac,Castel-$name|,Château-$name|,$name|heim,$name|"
+"ar,Terre-$name|,Ville-$name|,$name|-la-Noire,$name|-le-Grand,$name|-le-Vif,"
+"$name|-la-Vive"
 
 # Noms de villages avec un lac
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name|harbor,$name|port"
-msgstr "Port $name|,$name|-sur-Mer,Fos-sur-$name|,Baie-de-$name|"
+msgstr ""
+"Port $name|,$name|-sur-Mer,Fos-sur-$name|,Baie-de-$name|,$name|-sur-Berge,"
+"Cap-de-$name|"
 
 # Noms de villages avec une rivière
 #. [language]
 #: data/hardwired/english.cfg:25
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
-"Ker$name|,Bord-$name|,La Croix-Saint-$name|,Font$river|,Rive-de-$river|,"
-"Croix-sur-$river|,$name|-le-Port,Val de $river,$name|-sur-$river|"
+"Bord-$name|,Croix-Saint-$name|,Fond-de-$river|,Rive-de-$river|,Croix-sur-"
+"$river|,$name|-le-Port,Val-$river|,$name|-sur-$river|,$name|-sur-Berge,"
+"$name|-la-Bièvre,$name|-le-Moulin,$name|-la-Chute,$name|-les-Cascades"
 
 # Noms de villages avec une rivière et un pont
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
-"Pont-de-$river|,Bac-sur-$river|,Saint-$name|-du-pont, Le Pont de $river|"
+"Pont-de-$river|,Bac-sur-$river|,Saint-$name|-du-pont,Pont de $river|,"
+"Traverse-du-$name|"
 
 # Noms de villages dans des plaines
 #. [language]
 #: data/hardwired/english.cfg:27
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
-"Ker$name|,$name|-le-Bas,$name|-le-Haut,$name|champs, $name|champ,Saint-"
-"$name|-des-Champs,Plou$name,Loc$name,$name|ville,$name|bourg,$name|pré"
+"Ker-$name|,$name|-le-Bas,$name|-le-Haut,$name|champs, $name|champ,Saint-"
+"$name|-des-Champs,Plou-$name,$name|ouse,$name|ville,$name|bourg,$name|pré,"
+"Moulin-$name|,$name|heim,$name|ar,Le Pas-du-$name|,$name|-le-Bel,$name|-la-"
+"Blanche,$name|-la-Friche"
 
 # Noms de villages dans une forêt
 #. [language]
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
-"Ker$name|,$name|-le-Bas,$name|-le-Haut,Saint-$name|-du-Bois,Forêt-de-$name|,"
-"Saint-$name|-les-Chênes,$name|ange,$name|ey,$name|ac"
+"Ker-$name|,$name|-le-Bas,$name|-le-Haut,Saint-$name|-du-Bois,Forêt-de-$name|,"
+"Saint-$name|-les-Chênes,$name|ange,$name|ey,$name|ac,$name|-le-Bosquet,"
+"$name|-des-Futaies,$name|-en-Taillis,$name|-sous-Bois"
 
 # Noms de villages dans des collines
 #. [language]
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
-"Ker$name|,Saint-$name|,$name|-le-Haut,$name|-du-mont,$name|-la-Côte,Les "
-"Hauts-de-$name|,Les Dessus-de-$name|,$name|ange,$name|ey,$name|ac,Roc$name|,"
-"$name|-sur-Crête, Col$name|,Castel$name|"
+"Ker $name|,Saint-$name|,$name|-le-Haut,$name|-du-Mont,$name|-la-Côte,Les "
+"Hauts-de-$name|,Les Dessus-de-$name|,$name|ange,$name|ey,$name|ac,Roc du "
+"$name|,$name|-sur-Crête,$name|col,Castel-$name|,Puy-du-$name|,Sommet de "
+"$name|"
 
 # Noms de villages dans des montagnes
 #. [language]
@@ -5576,8 +5586,9 @@ msgstr ""
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"Saint-$name|-du-Mont,$name|-le-Haut,Mont-Saint-$name|,Haute$name|,Aiguille "
-"du $name|,Pic du name|,Col du $name|"
+"Saint-$name|-du-Mont,$name|-le-Haut,Mont-Saint-$name|,Haute-$name|,Aiguille "
+"du $name|,Pic du $name|,Col du $name|,Puy du $name|,Piton de $name|,Percée "
+"de $name|,Gouffre de $name|,Dent de $name|,Sommet du $name|,$name|-les-Cieux"
 
 #. [language]
 #: data/hardwired/english.cfg:33
@@ -5864,8 +5875,8 @@ msgid ""
 "a powerful and experienced army."
 msgstr ""
 "Vous pouvez utiliser des unités d'un scénario précédent en sélectionnant "
-"« Rappeler » dans le menu « Actions ». En rappelant toujours les mêmes unités "
-"vous pouvez constituer une armée expérimentée et puissante."
+"« Rappeler » dans le menu « Actions ». En rappelant toujours les mêmes "
+"unités vous pouvez constituer une armée expérimentée et puissante."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -5876,10 +5887,10 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Les unités ont généralement une « zone de contrôle » sur chacun des hexagones "
-"qui leur sont adjacents. Une unité qui se déplace dans la zone de contrôle "
-"ennemie ne peut faire aucun autre mouvement pour ce tour ; deux unités "
-"peuvent donc barrer un passage avec deux cases vides entre elles. Les "
+"Les unités ont généralement une « zone de contrôle » sur chacun des "
+"hexagones qui leur sont adjacents. Une unité qui se déplace dans la zone de "
+"contrôle ennemie ne peut faire aucun autre mouvement pour ce tour ; deux "
+"unités peuvent donc barrer un passage avec deux cases vides entre elles. Les "
 "tirailleurs sont quant à eux suffisamment habiles pour ignorer ces zones."
 
 #. [tip]
@@ -6522,7 +6533,7 @@ msgstr ""
 
 #: src/config_adapter.cpp:156
 msgid "Duplicate side definition for side '$side|' found."
-msgstr "Doublon du camp « $side| » trouvée."
+msgstr "Doublon du camp « $side| » trouvé."
 
 #: src/dialogs.cpp:112
 msgid "Advance Unit"
@@ -6558,13 +6569,13 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
-"Les noms des sauvegardes de peuvent pas contenir de deux-points, de barres "
+"Les noms des sauvegardes ne peuvent pas contenir de deux-points, de barres "
 "obliques, ou de barres obliques inverses. Veuillez choisir un autre nom."
 
 #: src/dialogs.cpp:279
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
-"Les noms des sauvegardes de doivent pas finir par « .gz ». Veuillez choisir "
+"Les noms des sauvegardes ne doivent pas finir par « .gz ». Veuillez choisir "
 "un autre nom."
 
 #: src/dialogs.cpp:287
@@ -6915,7 +6926,7 @@ msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
 "Il y a eu un problème lors de la création des fichiers nécessaires à l'ajout "
-"de cette campagne."
+"de cette extension."
 
 #: src/game.cpp:1387 src/game.cpp:1458 src/multiplayer.cpp:248
 #: src/multiplayer_ui.cpp:73
