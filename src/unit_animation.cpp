@@ -305,12 +305,8 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
 		unit_animation tmp_anim = *itor;
 		// provide all default anims
-		animations.push_back(*itor);
-
-		tmp_anim = *itor;
-		//no event, providing a catch all anim
 		tmp_anim.unit_anim_.remove_frames_after(600);
-		animations.push_back(tmp_anim);
+		animations.push_back(*itor);
 
 		tmp_anim = *itor;
 		tmp_anim.event_ = utils::split("standing");

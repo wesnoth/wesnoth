@@ -254,7 +254,7 @@ void unit_attack(
 		animator.add_animation(&attacker,"attack",att->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
 		animator.add_animation(&defender,"defend",def->first,damage,true,false,text,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
 
-		if(leader_loc.valid()){
+		if(leader_loc.valid()&& leader_loc !=att->first && leader_loc != def->first){
 			leader = units.find(leader_loc);
 			leader->second.set_facing(leader_loc.get_relative_dir(a));
 			assert(leader != units.end());
