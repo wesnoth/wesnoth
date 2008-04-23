@@ -778,7 +778,7 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 		return;
 	}
 
-	unit_map single_unit(u_it->first, u_it->second);
+	// unit_map single_unit(u_it->first, u_it->second);
 
 	const std::pair<move_map::const_iterator,move_map::const_iterator> locs = srcdst.equal_range(u);
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
