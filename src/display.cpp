@@ -970,7 +970,7 @@ void display::clear_hex_overlay(const gamemap::location& loc)
 	}
 }
 
-void display::render_unit_image(int x, int y, const bool fake_unit,
+void display::render_unit_image(int x, int y, const bool /*fake_unit*/,
 		const int drawing_order, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged,bool vreverse)
@@ -1018,7 +1018,10 @@ void display::render_unit_image(int x, int y, const bool fake_unit,
 	
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
 
-	drawing_buffer_add(fake_unit ? LAYER_UNIT_FAKE: LAYER_UNIT_FIRST, drawing_order, tblit(x, y, surf, srcrect));
+	// NOTE: There is also a LAYER_UNIT_FAKE, but don't work well
+	// with the hack "foreground terrain in LAYER_UNIT_FIRST"
+	// (e.g. fake unit moving behind a keep)
+	drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order, tblit(x, y, surf, srcrect));
 
 	if(submerge_height != surf->h) {
 		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2),false));
@@ -1027,7 +1030,7 @@ void display::render_unit_image(int x, int y, const bool fake_unit,
 		srcrect.h = surf->h-submerge_height;
 		y += submerge_height;
 
-		drawing_buffer_add(fake_unit ? LAYER_UNIT_FAKE: LAYER_UNIT_FIRST, drawing_order, tblit(x, y, surf, srcrect));
+		drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order, tblit(x, y, surf, srcrect));
 	}
 
 }

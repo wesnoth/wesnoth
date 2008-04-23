@@ -1771,9 +1771,10 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
 	}
 
-
+	// FIXME: This is a hack, we draw ellipses in the unit layer
+	// but with a different drawing_order, so it's rendered behind/above unit
 	if (ellipse_back != NULL) {
-		disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, drawing_order-10,
 			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back));
 	}
 
@@ -1785,7 +1786,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	}
 
 	if (ellipse_front != NULL) {
-		disp.drawing_buffer_add(display::LAYER_UNIT_FG, drawing_order,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, drawing_order+10,
 			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front));
 	}
 
