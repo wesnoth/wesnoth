@@ -23,7 +23,7 @@ if __name__ == "__main__":
     options, args = optionparser.parse_args()
 
     files = ["data/core/about.cfg"]
-    files.extend(glob.glob("data/add-ons/*/_main.cfg"))
+    files.extend(glob.glob("data/campaigns/*/_main.cfg"))
 
     # Parse WML.
     class Section: pass

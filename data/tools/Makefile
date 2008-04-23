@@ -6,7 +6,7 @@ DATA = ../../data
 #
 # The MAINLINE definition should expand to all directories considered  
 # to be part of the mainline distribution.
-MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/add-ons/*
+MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 #
 # Define UMC to point to a local copy of user-made content to run checks on.
 # Note, this needs to expand to a list with one subdirectory per UMC campaign,
@@ -55,12 +55,12 @@ collisions:
 
 # Report a list of symbols and resources defined in mainline.
 definitions:
-	@./wmlscope --definitions --exclude data/scenarios --exclude data/add-ons $(MAINLINE)
+	@./wmlscope --definitions --exclude data/scenarios --exclude data/campaigns $(MAINLINE)
 
 # Generate a reference page for the utility macros.
 macro-reference.xhtml:
 	@cat helpheader.xhtml >macro-reference.xhtml
-	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/add-ons $(DATA)/core/macros/ >>macro-reference.xhtml
+	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/ >>macro-reference.xhtml
 	@cat helptrailer.xhtml >>macro-reference.xhtml
 
 # Report on unchecked macro calls

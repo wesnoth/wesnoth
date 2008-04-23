@@ -119,7 +119,7 @@ if ($exe) {
 	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
 	$unit_id{AdvanceTo} = 'AdvanceTo';
 	$link_back = '../';
-	$wesnoth_dir = $base_dir . '/userdata/data/add-ons/Extended_Era';
+	$wesnoth_dir = $base_dir . '/userdata/data/campaigns/Extended_Era';
 	$data_dir = $wesnoth_dir;
 	$units_dir = $data_dir . "/units";
 	$html_dir = "$html_dir/EXE";
@@ -159,7 +159,7 @@ if ($ime) {
 	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
 	$unit_id{AdvanceTo} = 'AdvanceTo';
 	$link_back = '';
-	$wesnoth_dir = $base_dir . '/userdata/data/add-ons/Imperial_Era';
+	$wesnoth_dir = $base_dir . '/userdata/data/campaigns/Imperial_Era';
 	$data_dir = $wesnoth_dir;
 	$units_dir = $data_dir . "/units";
 	$html_dir = "$html_dir/IME";
@@ -190,7 +190,7 @@ if ($eom) {
 	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
 	$unit_id{AdvanceTo} = 'AdvanceTo';
 	$link_back = '';
-	$wesnoth_dir = $base_dir . '/userdata/data/add-ons/Era_of_Myths';
+	$wesnoth_dir = $base_dir . '/userdata/data/campaigns/Era_of_Myths';
 	$data_dir = $wesnoth_dir;
 	$units_dir = $data_dir . "/units";
 	$html_dir = "$html_dir/EOM";

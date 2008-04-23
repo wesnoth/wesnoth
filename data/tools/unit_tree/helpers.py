@@ -194,11 +194,11 @@ class WesnothList:
             n += 1
         return n
 
-    def add_mainline_addons(self):
+    def add_mainline_campaigns(self):
         """
-        Find all mainline addons.
+        Find all mainline campaigns.
         """
-        WML = self.parser.parse("{add-ons}\n")
+        WML = self.parser.parse("{campaigns}\n")
         n = 0
         for campaign in WML.find_all("campaign"):
             self.add_campaign(campaign)
@@ -207,12 +207,12 @@ class WesnothList:
 
     def add_addons(self, image_collector):
         """
-        Find all campaigns and eras.
+        Find all addon eras and campaigns.
         """
         WML = self.parser.parse("""
             #define MULTIPLAYER\n#enddef
             #define RANDOM_SIDE\n#enddef
-            {~add-ons}
+            {~campaigns}
             """)
         n = 0
         for campaign in WML.find_all("campaign"):
