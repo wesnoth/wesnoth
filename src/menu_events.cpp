@@ -1955,7 +1955,7 @@ private:
 			void init_map_default()
 			{
 				register_command("help", &map_command_handler<Worker>::help,
-					"Command list and help.", "[command]");
+					"Available commands list and command-specific help. Use \"help all\" to include currently unavailable commands.", "[all|command]");
 			}
 			//derived classes initialize the map overriding this function
 			virtual void init_map() = 0;
@@ -2019,11 +2019,16 @@ private:
 					return;
 				}
 				std::stringstream ss;
+				bool show_unavail = show_unavailable_ || get_arg(1) == "all";
 				BOOST_FOREACH(typename command_map::value_type i, command_map_) {
-					ss << i.first << " ";
-					ss << i.second.usage << " ";
-					if (!i.second.flags.empty()) {
-						ss << "(" << i.second.flags << ") ";
+					if (show_unavail || is_enabled(i.second)) {		
+						ss << i.first << " ";
+						//ss << i.second.usage << " "; 
+						//uncomment the above to display usage information in command list
+						//which might clutter it somewhat
+						if (!i.second.flags.empty()) {
+							ss << "(" << i.second.flags << ") ";
+						}
 					}
 				}
 				print("help", "Available commands " + get_flags_description() + ":");
@@ -2062,6 +2067,11 @@ private:
 			{
 				help_on_unknown_ = value;
 			}
+			//show all commands in help regardless whether they are active
+			static void set_show_unavailable(bool value)
+			{
+				show_unavailable_ = value;
+			}			
 			//this is display-only
 			static void set_cmd_prefix(std::string value)
 			{
@@ -2104,6 +2114,7 @@ private:
 			static command_map command_map_;
 			static command_alias_map command_alias_map_;
 			static bool help_on_unknown_;
+			static bool show_unavailable_;
 			static std::string cmd_prefix_;
 	};
 
@@ -2116,6 +2127,9 @@ private:
 
 	template <class Worker>
 	bool map_command_handler<Worker>::help_on_unknown_ = true;
+
+	template <class Worker>
+	bool map_command_handler<Worker>::show_unavailable_ = false;
 
 	template <class Worker>
 	std::string map_command_handler<Worker>::cmd_prefix_;
