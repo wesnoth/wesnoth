@@ -1943,6 +1943,8 @@ private:
 				if (const command* c = get_command(actual_cmd)) {
 					if (is_enabled(*c)) {
 						(static_cast<Worker*>(this)->*(c->handler))();
+					} else {
+						print(get_cmd(), "This command is currently unavaliable");
 					}
 				} else if (help_on_unknown_) {
 					print("help", "Unknown command (" + get_cmd() + "), try " + cmd_prefix_ + "help "
@@ -2268,7 +2270,8 @@ private:
 			{
 				return std::string(c.has_flag('D') ? " (debug command)" : "");
 			}
-			bool is_enabled(const map::command& c) const
+			using map::is_enabled;
+			bool is_enabled(const chmap::command& c) const
 			{
 				return !(c.has_flag('D') && !game_config::debug);
 			}
