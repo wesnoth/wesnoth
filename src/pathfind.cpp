@@ -281,10 +281,12 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 
 
 shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t, unit_map const &units,
-                                                   std::vector<team> const &teams, gamemap const &map)
+                                                   std::vector<team> const &teams, gamemap const &map,
+                                                   const bool ignore_unit)
 	: unit_(u), viewing_team_(t), units_(units), teams_(teams), map_(map),
 	  movement_left_(unit_.movement_left()),
-	  total_movement_(unit_.total_movement())
+	  total_movement_(unit_.total_movement()),
+	  ignore_unit_(ignore_unit)
 {
 }
 
@@ -306,21 +308,24 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	if (total_movement_ < base_cost)
 		return getNoPathValue();
 
-	unit_map::const_iterator
-		other_unit = find_visible_unit(units_, loc, map_, teams_, viewing_team_);
-
-	// We can't traverse visible enemy and we also prefer empty hexes
-	// (less blocking in multi-turn moves and better when exploring fog,
-	// because we can't stop on a friend)
 	int other_unit_subcost = 0;
-	if (other_unit != units_.end()) {
-		if (teams_[unit_.side()-1].is_enemy(other_unit->second.side()))
-			return getNoPathValue();
-		else
-			// This value will be used with the defense_subcost (see below)
-			// The 1 here means: consider occupied hex as a -1% defense
-			// (less important than 10% defense because friends may move)
-			other_unit_subcost = 1;
+	if (!ignore_unit_) {
+		unit_map::const_iterator
+			other_unit = find_visible_unit(units_, loc, map_, teams_, viewing_team_);
+
+		// We can't traverse visible enemy and we also prefer empty hexes
+		// (less blocking in multi-turn moves and better when exploring fog,
+		// because we can't stop on a friend)
+
+		if (other_unit != units_.end()) {
+			if (teams_[unit_.side()-1].is_enemy(other_unit->second.side()))
+				return getNoPathValue();
+			else
+				// This value will be used with the defense_subcost (see below)
+				// The 1 here means: consider occupied hex as a -1% defense
+				// (less important than 10% defense because friends may move)
+				other_unit_subcost = 1;
+		}
 	}
 	
 	// Compute how many movement points are left in the game turn
@@ -342,7 +347,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	if (need_new_turn)
 		move_cost += remaining_movement;
 
-	if (enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
+	if (!ignore_unit_ && enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
 		// the ZoC cost all remaining movements, but if we already use them
 		// in the sacrified turn, we will spend all our fresh total movement

@@ -1644,14 +1644,17 @@ void ai::analyze_potential_recruit_movements()
 
 		const unit temp_unit(&get_info().units,&get_info().map,
 				&get_info().state, &get_info().teams, &info->second, team_num_);
-		unit_map units;
-		const temporary_unit_placer placer(units,start,temp_unit);
+		// since we now use the ignore_units switch, no need to use a empty unit_map
+		// unit_map units;
+		// const temporary_unit_placer placer(units,start,temp_unit);
+
+		// pathfinding ignoring other units
+		const shortest_path_calculator calc(temp_unit,current_team(),get_info().units,teams_,map_,true);
 
 		int cost = 0;
 		int targets_reached = 0;
 		int targets_missed = 0;
 
-		const shortest_path_calculator calc(temp_unit,current_team(),units,teams_,map_);
 		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
 			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
 			const paths::route& route = a_star_search(start, t->loc, 100.0, &calc,

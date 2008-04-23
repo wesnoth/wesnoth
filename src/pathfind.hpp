@@ -140,7 +140,7 @@ struct shortest_path_calculator : cost_calculator
 {
 	shortest_path_calculator(const unit& u, const team& t,
 	                         const unit_map& units, const std::vector<team>& teams,
-	                         const gamemap& map);
+	                         const gamemap& map, const bool ignore_unit = false);
 	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far) const;
 
 private:
@@ -151,6 +151,7 @@ private:
 	gamemap const &map_;
 	int const movement_left_;
 	int const total_movement_;
+	bool const ignore_unit_;
 };
 
 //! Function which only uses terrain, ignoring shroud, enemies, etc.
