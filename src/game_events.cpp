@@ -557,7 +557,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 		for (size_t side = 0; side != teams->size(); side++) {
 			if (clear_fog_side[side] && (*teams)[side].auto_shroud_updates()) {
-				recalculate_fog(*game_map,*units,*teams, side);
+				clear_shroud(*screen,*game_map,*units,*teams,side);
 			}
 		}
 	}
@@ -2672,7 +2672,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		assert(state_of_game != NULL);
 		if(side != "") {
 			const int side_num = lexical_cast_default<int>(side);
-			recalculate_fog(*game_map,*units,*teams,side_num-1);
+			clear_shroud(*screen,*game_map,*units,*teams,side_num-1);
 			screen->recalculate_minimap();
 		}
 		if(rebuild_screen_) {
