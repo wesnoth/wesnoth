@@ -487,7 +487,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.blend_ratio = current_value.blend_ratio?current_value.blend_ratio:animation_val.blend_ratio;
 	if(primary && engine_val.blend_ratio) result.blend_ratio += engine_val.blend_ratio;
 
-	result.highlight_ratio = current_value.highlight_ratio!=0.0?current_value.highlight_ratio:animation_val.highlight_ratio;
+	result.highlight_ratio = current_value.highlight_ratio!=1.0?current_value.highlight_ratio:animation_val.highlight_ratio;
 	if(primary && engine_val.highlight_ratio != 1.0) result.highlight_ratio = result.highlight_ratio +engine_val.highlight_ratio - 1.0; // selected unit
 
 	assert(engine_val.offset == 0);
