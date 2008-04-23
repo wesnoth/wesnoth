@@ -2007,6 +2007,11 @@ private:
 				typename command_map::const_iterator i = command_map_.find(cmd);
 				return i != command_map_.end() ? &i->second : 0;
 			}
+			command* get_command(const std::string& cmd)
+			{
+				typename command_map::iterator i = command_map_.find(cmd);
+				return i != command_map_.end() ? &i->second : 0;
+			}
 			void help()
 			{
 				//print command-specific help if available, otherwise list commands
@@ -2205,7 +2210,7 @@ private:
 				chat_command_handler::command_handler h, const std::string& help="",
 				const std::string& usage="", const std::string& flags="")
 			{
-				chmap::register_command(cmd, h, help, usage, flags);
+				chmap::register_command(cmd, h, help, usage, flags + "N"); //add chat commands as network_only
 			}
 			virtual void assert_existence(const std::string& cmd) {
 				chmap::assert_existence(cmd);
@@ -2263,17 +2268,19 @@ private:
 			void do_version();
 
 			std::string get_flags_description() const {
-				return "(D) - debug only";
+				return "(D) - debug only, (N) - network only";
 			}
 			using chat_command_handler::get_command_flags_description; //silence a warning
 			std::string get_command_flags_description(const chmap::command& c) const
 			{
-				return std::string(c.has_flag('D') ? " (debug command)" : "");
+				return std::string(c.has_flag('D') ? " (debug command)" : "")
+				     + std::string(c.has_flag('N') ? " (network only)" : "");
 			}
 			using map::is_enabled;
 			bool is_enabled(const chmap::command& c) const
 			{
-				return !(c.has_flag('D') && !game_config::debug);
+				return !(c.has_flag('D') && !game_config::debug
+					  || c.has_flag('N') && network::nconnections() == 0);
 			}
 			void print(const std::string& title, const std::string& message)
 			{
@@ -2282,6 +2289,7 @@ private:
 			void init_map()
 			{
 				chat_command_handler::init_map();//grab chat_ /command handlers
+				chmap::get_command("log")->flags = ""; //clear network-only flag from log
 				chmap::set_cmd_prefix(":");
 				register_command("refresh", &console_handler::do_refresh,
 					"Refresh gui.");
