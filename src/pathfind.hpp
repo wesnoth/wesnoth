@@ -138,9 +138,9 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 
 struct shortest_path_calculator : cost_calculator
 {
-	shortest_path_calculator(const unit& u, const team& t,
-	                         const unit_map& units, const std::vector<team>& teams,
-	                         const gamemap& map, const bool ignore_unit = false);
+	shortest_path_calculator(const unit& u, const team& t, const unit_map& units,
+                             const std::vector<team>& teams, const gamemap& map,
+                             bool ignore_unit = false, bool ignore_defense_ = false);
 	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far) const;
 
 private:
@@ -152,6 +152,7 @@ private:
 	int const movement_left_;
 	int const total_movement_;
 	bool const ignore_unit_;
+	bool const ignore_defense_;
 };
 
 //! Function which only uses terrain, ignoring shroud, enemies, etc.

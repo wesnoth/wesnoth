@@ -1648,8 +1648,8 @@ void ai::analyze_potential_recruit_movements()
 		// unit_map units;
 		// const temporary_unit_placer placer(units,start,temp_unit);
 
-		// pathfinding ignoring other units
-		const shortest_path_calculator calc(temp_unit,current_team(),get_info().units,teams_,map_,true);
+		// pathfinding ignoring other units and terrain defense
+		const shortest_path_calculator calc(temp_unit,current_team(),get_info().units,teams_,map_,true,true);
 
 		int cost = 0;
 		int targets_reached = 0;

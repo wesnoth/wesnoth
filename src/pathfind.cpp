@@ -280,13 +280,13 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 }
 
 
-shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t, unit_map const &units,
-                                                   std::vector<team> const &teams, gamemap const &map,
-                                                   const bool ignore_unit)
+shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
+		unit_map const &units, std::vector<team> const &teams, gamemap const &map,
+		bool ignore_unit, bool ignore_defense)
 	: unit_(u), viewing_team_(t), units_(units), teams_(teams), map_(map),
 	  movement_left_(unit_.movement_left()),
 	  total_movement_(unit_.total_movement()),
-	  ignore_unit_(ignore_unit)
+	  ignore_unit_(ignore_unit), ignore_defense_(ignore_defense)
 {
 }
 
@@ -357,7 +357,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	// We will add a tiny cost based on terrain defense, so the pathfinding
 	// will prefer good terrains between 2 with the same MP cost
 	// Keep in mind that defense_modifier is inverted (= 100 - defense%)
-	const int defense_subcost = unit_.defense_modifier(terrain);
+	const int defense_subcost = ignore_defense_ ? 0 : unit_.defense_modifier(terrain);
 
 	// We divide subcosts by 100 * 100, because defense is 100-based and
 	// we don't want any impact on move cost for less then 100-steps path
