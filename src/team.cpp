@@ -760,8 +760,8 @@ std::string team::shroud_map::write() const
 	return shroud_str.str();
 }
 
-void team::shroud_map::read(const std::string& str)
-{
+void team::shroud_map::read(const std::string& str) { 
+	data_.clear();
 	for(std::string::const_iterator sh = str.begin(); sh != str.end(); ++sh) {
 		if(*sh == '|')
 			data_.resize(data_.size()+1);
