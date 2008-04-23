@@ -1366,6 +1366,7 @@ def hack_syntax(filename, lines):
     level = None
     abilities = []
     specials = []
+    in_ability = False
     lastability = None
     lastspecial = None
     for i in range(len(lines)):
@@ -1373,6 +1374,10 @@ def hack_syntax(filename, lines):
             break
         if "[unit_type]" in lines[i]:
             abilities = []
+        if "[abilities]" in lines[i]:
+            in_abilities = True
+        elif "[/abilities]" in lines[i]:
+            in_abilities = False
         if "[attack]" in lines[i]:
             specials = []
         elif "[/attack]" in lines[i]:
@@ -1416,7 +1421,7 @@ def hack_syntax(filename, lines):
             (tag, value) = lines[i].strip().split("=")
             if tag == "level":
                 level = value
-            if tag == "ability":
+            if tag == "ability" and in_abilities:
                 abilities.append(value)
                 lastability = i
                 lines[i] = ""
