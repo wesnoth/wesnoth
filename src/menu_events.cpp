@@ -1944,18 +1944,19 @@ private:
 					if (is_enabled(*c)) {
 						(static_cast<Worker*>(this)->*(c->handler))();
 					} else {
-						print(get_cmd(), "This command is currently unavaliable");
+						print(get_cmd(), _("This command is currently unavailable."));
 					}
 				} else if (help_on_unknown_) {
 					print("help", "Unknown command (" + get_cmd() + "), try " + cmd_prefix_ + "help "
-						"for a list of available commands");
+						"for a list of available commands.");
 				}
 			}
 		protected:
 			void init_map_default()
 			{
 				register_command("help", &map_command_handler<Worker>::help,
-					"Available commands list and command-specific help. Use \"help all\" to include currently unavailable commands.", "[all|command]");
+					_("Available commands list and command-specific help. "
+					"Use \"help all\" to include currently unavailable commands."), "[all|<command>]");
 			}
 			//derived classes initialize the map overriding this function
 			virtual void init_map() = 0;
@@ -1973,7 +1974,7 @@ private:
 				return "";
 			}
 			//this should be overriden if e.g. flags are used to control command
-			//availability. Return false if the command should not be executed by dispach()
+			//availability. Return false if the command should not be executed by dispatch()
 			virtual bool is_enabled(const command& /*c*/) const
 			{
 				return true;
@@ -2021,19 +2022,21 @@ private:
 				std::stringstream ss;
 				bool show_unavail = show_unavailable_ || get_arg(1) == "all";
 				BOOST_FOREACH(typename command_map::value_type i, command_map_) {
-					if (show_unavail || is_enabled(i.second)) {		
-						ss << i.first << " ";
-						//ss << i.second.usage << " "; 
+					if (show_unavail || is_enabled(i.second)) {
+						ss << i.first;
+						//if (!i.second.usage.empty()) {
+						//	ss << " " << i.second.usage;
+						//}
 						//uncomment the above to display usage information in command list
 						//which might clutter it somewhat
 						if (!i.second.flags.empty()) {
-							ss << "(" << i.second.flags << ") ";
+							ss << " (" << i.second.flags << ") ";
 						}
 					}
+					ss << "; ";
 				}
-				print("help", "Available commands " + get_flags_description() + ":");
-				print("help", ss.str());
-				print("help", "Type " + cmd_prefix_ + "help <command> for more info");
+				print("help", "Available commands " + get_flags_description() + ":\n" + ss.str());
+				print("help", "Type " + cmd_prefix_ + "help <command> for more info.");
 			}
 			//returns true if the command exists.
 			bool help_command(const std::string& acmd)
@@ -2044,7 +2047,7 @@ private:
 					std::stringstream ss;
 					ss << cmd_prefix_ << cmd;
 					if (c->help.empty() && c->usage.empty()) {
-						ss << " No help available.";
+						ss << _(" No help available.");
 					} else {
 						ss << " - " << c->help;
 					}
@@ -2153,7 +2156,7 @@ private:
 			void do_friend();
 			void do_remove();
 			void do_display();
-			void do_clear();
+			void do_version();
 
 			void print(const std::string& title, const std::string& message)
 			{
@@ -2163,39 +2166,41 @@ private:
 			{
 				set_cmd_prefix("/");
 				register_command("query", &chat_command_handler::do_network_send,
-					"");
+					_("Send a query to the server. Without arguments the server"
+					" should tell you the available commands."));
 				register_command("ban", &chat_command_handler::do_network_send,
-					"", "<nick>");
+					_("Ban and kick a player or observer. If he is not in the"
+					" game but on the server he will only be banned."), "<nick>");
 				register_command("kick", &chat_command_handler::do_network_send,
-					"", "<nick>");
+					_("Kick a player or observer."), "<nick>");
 				register_command("mute", &chat_command_handler::do_network_send,
-					"", "<nick>");
+					_("Mute an observer."), "<nick>");
 				register_command("muteall", &chat_command_handler::do_network_send,
-					"", "");
+					_("Mute all observers."), "");
 				register_command("ping", &chat_command_handler::do_network_send,
-					"", "<nick>");
+					"");
 				register_command("emote", &chat_command_handler::do_emote,
-					"Send an emotion or personal action in chat.", "<message>");
+					_("Send an emotion or personal action in chat."), "<message>");
 				register_alias("emote", "me");
 				register_command("whisper", &chat_command_handler::do_whisper,
-					"Sends a private message. "
+					_("Sends a private message. "
 					"You can't send messages to players that control "
-					"any side in a game.", "<nick> <message>");
+					"a side in a running game you are in."), "<nick> <message>");
 				register_alias("whisper", "msg");
 				register_alias("whisper", "m");
 				register_command("log", &chat_command_handler::do_log,
-					"Change the log level of a log domain.", "<level> <domain>");
+					_("Change the log level of a log domain."), "<level> <domain>");
 				register_command("ignore", &chat_command_handler::do_ignore,
-					"Add a nick to your ignores list.", "<nick>");
+					_("Add a nick to your ignores list."), "<nick>");
 				register_command("friend", &chat_command_handler::do_friend,
-					"Add a nick to your friends list.", "<nick>");
+					_("Add a nick to your friends list."), "<nick>");
 				register_command("remove", &chat_command_handler::do_remove,
-					"Remove a nick from your ignores or friends list.", "<nick>");
-				register_command("remove-all", &chat_command_handler::do_clear,
-					"Clear your complete ignores and friends list.");
+					_("Remove a nick from your ignores or friends list."), "<nick>");
 				register_command("list", &chat_command_handler::do_display,
-					"Show your ignores and friends list.");
+					_("Show your ignores and friends list."));
 				register_alias("list", "display");
+				register_command("version", &chat_command_handler::do_version,
+					_("Display version information."));
 			}
 		private:
 			chat_handler& chat_handler_;
@@ -2279,7 +2284,6 @@ private:
 			void do_shroud();
 			void do_gold();
 			void do_event();
-			void do_version();
 
 			std::string get_flags_description() const {
 				return "(D) - debug only, (N) - network only";
@@ -2304,62 +2308,61 @@ private:
 			{
 				chat_command_handler::init_map();//grab chat_ /command handlers
 				chmap::get_command("log")->flags = ""; //clear network-only flag from log
+				chmap::get_command("version")->flags = ""; //clear network-only flag
 				chmap::set_cmd_prefix(":");
 				register_command("refresh", &console_handler::do_refresh,
-					"Refresh gui.");
+					_("Refresh gui."));
 				register_command("droid", &console_handler::do_droid,
-					"AI control of a side.", "[<side> [on/off]]", "D");
+					_("Switch a side to/from AI control."), "[<side> [on/off]]");
 				register_command("theme", &console_handler::do_theme);
 				register_command("control", &console_handler::do_control,
-					"Assign control of a side", "<side> <nick>");
+					_("Assign control of a side to a different player or observer."), "<side> <nick>", "N");
 				register_command("clear", &console_handler::do_clear,
-					"Clear chat history.");
+					_("Clear chat history."));
 				register_command("sunset", &console_handler::do_sunset,
-					"Change time of day.", "", "D");
+					_("Visualize the screen refresh procedure."), "", "D");
 				register_command("fps", &console_handler::do_fps, "Show fps.");
 				register_command("benchmark", &console_handler::do_benchmark);
-				register_command("save", &console_handler::do_save, "Save game.");
+				register_command("save", &console_handler::do_save, _("Save game."));
 				register_alias("save", "w");
-				register_command("quit", &console_handler::do_quit, "Quit game.");
+				register_command("quit", &console_handler::do_quit, _("Quit game."));
 				register_alias("quit", "q");
 				register_alias("quit", "q!");
 				register_command("save_quit", &console_handler::do_save_quit,
-					"Save and quit.");
+					_("Save and quit."));
 				register_alias("save_quit", "wq");
 				register_command("ignore_replay_errors", &console_handler::do_ignore_replay_errors,
-					"Ignore replay errors.");
+					_("Ignore replay errors."));
 				register_command("nosaves", &console_handler::do_nosaves,
-					"Do not autosave.");
+					_("Disable autosaves."));
 				register_command("next_level", &console_handler::do_next_level,
-					"Advance to next level", "", "D");
+					_("Advance to the next scenario."), "", "D");
 				register_alias("next_level", "n");
 				register_command("debug", &console_handler::do_debug,
-					"Turn on debug mode.");
+					_("Turn debug mode on."));
 				register_command("nodebug", &console_handler::do_nodebug,
-					"Turn off debug mode.");
+					_("Turn debug mode off."), "", "D");
 				register_command("set_var", &console_handler::do_set_var,
-					"Set scenario variable.", "<var>=<value>", "D");
+					_("Set a scenario variable."), "<var>=<value>", "D");
 				register_command("show_var", &console_handler::do_show_var,
-					"Show variable", "<var>", "D");
+					_("Show a scenario variable."), "<var>", "D");
 				register_command("unit", &console_handler::do_unit,
-					"Modify unit.", "", "D");
+					_("Modify a unit variable. (Only top level keys are supported.)"), "", "D");
 				register_command("buff", &console_handler::do_buff,
-					"Add unit trait.", "", "D");
+					_("Add a trait to a unit."), "", "D");
 				register_command("unbuff", &console_handler::do_unbuff,
-					"Remove unit trait.", "", "D");
+					_("Remove a trait from a unit. (Does not work yet.)"), "", "D");
 				register_command("create", &console_handler::do_create,
-					"Create unit.", "", "D");
+					_("Create a unit."), "", "D");
 				register_command("fog", &console_handler::do_fog,
-					"Toggle fog for current player.", "", "D");
+					_("Toggle fog for the current player."), "", "D");
 				register_command("shroud", &console_handler::do_shroud,
-					"Toggle shroud for current player.", "", "D");
+					_("Toggle shroud for the current player."), "", "D");
 				register_command("gold", &console_handler::do_gold,
-					"Give gold to current player.", "", "D");
+					_("Give gold to the current player."), "", "D");
 				register_command("throw", &console_handler::do_event,
-					"Fire game event.", "", "D");
+					_("Fire a game event."), "", "D");
 				register_alias("throw", "fire");
-				register_command("version", &console_handler::do_version,
-					"Display version information.");
 			}
 		private:
 			menu_handler& menu_handler_;
@@ -2515,16 +2518,8 @@ private:
 			print("list", _("There are no players on your friends or ignore list."));
 		}
 	}
-	void chat_command_handler::do_clear()
-	{
-		const std::string& text_friend = preferences::get_friends();
-		const std::string& text_ignore = preferences::get_ignores();
-		bool empty = text_friend.empty() && text_ignore.empty();
-		preferences::clear_friends();
-		preferences::clear_ignores();
-		if (!empty) {
-			print("list", "Friends and ignores lists cleared");
-		}
+	void chat_command_handler::do_version() {
+		print("version", game_config::revision);
 	}
 
 	void menu_handler::send_chat_message(const std::string& message, bool allies_only)
@@ -2867,9 +2862,6 @@ private:
 	void console_handler::do_event() {
 		game_events::fire(get_data());
 		menu_handler_.gui_->redraw_everything();
-	}
-	void console_handler::do_version() {
-		print("version", game_config::revision);
 	}
 
 	void menu_handler::do_ai_formula(const std::string& str,
