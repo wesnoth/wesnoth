@@ -673,7 +673,7 @@ class Translations:
 
 def scopelist():
     "Return a list of (separate) package scopes, core first."
-    return ["data/core"] + glob.glob("data/campaigns/*")
+    return ["data/core"] + glob.glob("data/add-ons/*")
 
 def is_namespace(name):
     "Is the name either a valid campaign name or core?"
@@ -684,13 +684,13 @@ def namespace_directory(name):
     if name == "core":
         return "data/core/"
     else:
-        return "data/campaigns/" + name + "/"
+        return "data/add-ons/" + name + "/"
 
 def directory_namespace(path):
     "Go from directory to namespace."
     if path.startswith("data/core/"):
         return "core"
-    elif path.startswith("data/campaigns/"):
+    elif path.startswith("data/add-ons/"):
         return path.split("/")[2]
     else:
         return None
