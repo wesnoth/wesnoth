@@ -353,7 +353,6 @@ void team::replace_shroud_map_data(const std::string& shroud_data)
 {
 	//!@todo TODO: in the future I'd like to make external shroud data to be
 	//! combined with the current one instead of always replacing it.
-	shroud_.reset();
 	shroud_.read(shroud_data);
 }
 
@@ -760,7 +759,8 @@ std::string team::shroud_map::write() const
 	return shroud_str.str();
 }
 
-void team::shroud_map::read(const std::string& str) { 
+void team::shroud_map::read(const std::string& str)
+{ 
 	data_.clear();
 	for(std::string::const_iterator sh = str.begin(); sh != str.end(); ++sh) {
 		if(*sh == '|')
