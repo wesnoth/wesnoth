@@ -3,18 +3,18 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.0-svn:
- * Language and translations:
+ * Language and translations
    * new translation: Croatian.
    * updated translations: Chinese, Chinese (Traditional), Czech, Danish,
      Dutch, Finnish, French, Galician, German, Greek, Hungarian, Italian,
      Lithuanian, Japanese, Polish, Russian, Serbian, Slovak, Spanish, Swedish,
      Turkish, Valencian.
 
- * Map editor:
+ * Map editor
    * Fixed not working "Update transition" and make "Delay transition update"
      directly trigger an update when toggled off.
 
- * Multiplayer:
+ * Multiplayer
    * Added maps: Howling Ghost Badlands.
    * Revised maps: Sablestone Delta, Sullas Ruins,
      Silverhead Crossing, The Freelands, The Manzivan Traps.
@@ -22,7 +22,10 @@ Version 1.5.0-svn:
    * Removed the "Wesbowl" scenario.
    * Added the "A New Land" scenario by Bob_the_Mighty
 
- * User interface:
+ * Unit changes and balancing
+   * Decreased the cost of the Giant Scorpion from 32 to 22.
+
+ * User interface
    * Smarter pathfinding: if same MP cost, prefer terrains with better defense
      and empty hexes (less frequent multi-turn moves blocked by a friend).
    * New full map screenshot feature (no default hotkey).
@@ -40,7 +43,7 @@ Version 1.4:
     * When generating a random map two teams could get the same starting
       position, this has been fixed.
 
-  * Sound and music:
+  * Sound and music
     * New music track, "Nunc Dimittis" by Jeremy Nicoll.
     * New music track, "The City Falls" by Doug Kaufman.
     * New music track, "Knalgan Theme" by Ryan Reilly.
