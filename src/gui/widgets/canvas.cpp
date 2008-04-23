@@ -231,29 +231,47 @@ tline::tline(const config& cfg) :
  *
  *
  *
- * types
- * unsigned                            Unsigned number (positive whole numbers
- *                                     and zero).
- * f_unsigned                          Unsinged number or formula returning an
- *                                     unsigned number.
- * int                                 Signed number (whole numbers).
- * f_int                               Signed number or formula returning an
- *                                     signed number.
- * bool                                A boolean value accepts the normal 
- *                                     values as the rest of the game.
- * string                              A text.
- * tstring                             A translatable string.
- * f_tstring                           Formula returning a translatable string.
  *
- * colour                              A string which constains the colour, this
+ * Formulas are a funtion between brackets, that way the engine can see whether
+ * there is standing a plain number or a formula eg:
+ * 0     A value of zero
+ * (0)   A formula returning zero
+ *
+ * When formulas are available the text should state the available variables
+ * which are available in that function.
+ */
+
+/*WIKI
+ * @page = GUIVariable
+ *
+ * = Variables =
+ *
+ * In various parts of the GUI engine the following table contains all valid 
+ * variable types. Note this page is automatically generated.
+ *
+ * @start_table = variable_types
+ *     unsigned                        Unsigned number (positive whole numbers
+ *                                     and zero).
+ *     f_unsigned                      Unsinged number or formula returning an
+ *                                     unsigned number.
+ *     int                             Signed number (whole numbers).
+ *     f_int                           Signed number or formula returning an
+ *                                     signed number.
+ *     bool                            A boolean value accepts the normal 
+ *                                     values as the rest of the game.
+ *     string                          A text.
+ *     tstring                         A translatable string.
+ *     f_tstring                       Formula returning a translatable string.
+ *
+ *     colour                          A string which constains the colour, this
  *                                     a group of 4 numbers between 0 and 255
  *                                     separated by a comma. The numbers are red
  *                                     component, green component, blue 
  *                                     component and alpha. A colour of 0 is not
- *                                     available. An alpha of 0 is fully 
+ *                                     available. An alpha of 255 is fully 
  *                                     transparent. Ommitted values are set to 0.
  *
- * font_style                          A string which contains the style of the
+ *     font_style                      A string which contains the style of the
  *                                     font:
  *                                     * normal    normal font
  *                                     * bold      bold font
@@ -266,13 +284,10 @@ tline::tline(const config& cfg) :
  *                                     list. If empty we default to the normal
  *                                     style.
  *
- * Formulas are a funtion between brackets, that way the engine can see whether
- * there is standing a plain number or a formula eg:
- * 0     A value of zero
- * (0)   A formula returning zero
- *
- * When formulas are available the text should state the available variables
- * which are available in that function.
+ *     section                         A section is a generic variable for a
+ *                                     WML section. The description should
+ *                                     explain the exact type.
+ * @end_table
  */
 
 	const std::string& debug = (cfg["debug"]);

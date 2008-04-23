@@ -92,7 +92,7 @@ if __name__ == "__main__":
         for i in range(len(res)):
             result += "|-\n"
             result += "|" + res[i][0] + "\n"
-            result += "|" + res[i][1] + "\n"
+            result += "|[[GUIVariable#" + res[i][1] + "|" + res[i][1] + "]]\n"
             if(res[i][2] == ""):
                 result += "|mandatory\n"
             else:
@@ -130,6 +130,30 @@ if __name__ == "__main__":
 
         return result
 
+    def create_variable_types_table(data):
+        """Creates a table for the variable types."""
+
+        #matches a line like
+        # int                             Signed number (whole numbers).
+        variable = "(?:[a-z]|[A-Z])(?:[a-z]|[A-Z]|[0-9]|_)*"
+        regex = re.compile(" *(" + variable +  ") +(.*)\n")
+        res = regex.findall(data)
+
+        # empty table
+        if(len(res) == 0):
+            return "Empty table."
+
+        result = '{| border="1"'
+        result += "\n!Variable\n!description\n"
+        for i in range(len(res)):
+            result += "|-\n"
+            result += "|<span id=\"" + res[i][0] + "\">" + res[i][0] + "</span>\n"
+            result += "|" + res[i][1] + "\n"
+        result += "|}"
+
+        return result
+        
+
     def create_table(table) :
         """Wrapper for creating tables."""
 
@@ -138,6 +162,8 @@ if __name__ == "__main__":
             return create_config_table(table.group(2))
         elif(type == "formula"):
             return create_formula_table(table.group(2))
+        elif(type == "variable_types"):
+            return create_variable_types_table(table.group(2))
         else:
             return "unknown table definition '" + type + "'."
 
