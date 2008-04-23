@@ -721,9 +721,9 @@ def output(isocode):
     for c in stuff.era_lookup.keys():
         stuff.is_mainline_era[c] = True
 
-    print "Parsing mainline campaigns ...",
-    n = stuff.add_mainline_campaigns()
-    print "%d mainline campaigns found." % n
+    print "Parsing mainline addons ...",
+    n = stuff.add_mainline_addons()
+    print "%d mainline addons found." % n
     stuff.is_mainline_campaign = {}
     for c in stuff.campaign_lookup.keys():
         stuff.is_mainline_campaign[c] = True
@@ -745,7 +745,7 @@ def output(isocode):
         define = campaign.get_text_val("define")
         WML = stuff.parser.parse("""
             #define %s\n#enddef
-            {campaigns}""" % define,
+            {add-ons}""" % define,
             ignore_macros = lambda x: x.find("/scenarios") == -1)
         n = stuff.add_units(WML, cname)
         image_collector.add_binary_pathes_from_WML(cname, WML)
