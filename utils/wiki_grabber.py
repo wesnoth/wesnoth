@@ -30,7 +30,7 @@ if __name__ == "__main__":
     output_directory = "/tmp/"
 
     # default directory to find the source files in, no trailing /.
-    src_directory = "../../src/gui"
+    src_directory = "../src/gui"
 
     def reindent( data):
         """Converts the raw input to an easier to use format.
