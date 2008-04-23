@@ -2831,6 +2831,7 @@ private:
 	}
 	void console_handler::do_shroud() {
 		menu_handler_.teams_[team_num_ - 1].set_shroud( !menu_handler_.teams_[team_num_ - 1].uses_shroud() );
+		menu_handler_.clear_shroud(team_num_);
 		menu_handler_.gui_->recalculate_minimap();
 		menu_handler_.gui_->redraw_everything();
 	}
