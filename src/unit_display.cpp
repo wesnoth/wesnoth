@@ -265,7 +265,7 @@ void unit_attack(
 	animator.start_animations();
 	animator.wait_for_end();
 
-	if(leader_loc.valid()) leader->second.set_standing(leader_loc);
+	if(leader_loc.valid()&& leader_loc !=att->first && leader_loc != def->first) leader->second.set_standing(leader_loc);
 	att->second.set_standing(a);
 	def->second.set_standing(b);
 }
