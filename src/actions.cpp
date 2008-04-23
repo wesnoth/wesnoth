@@ -1357,6 +1357,7 @@ attack::attack(game_display& gui, const gamemap& map,
 							newunit.add_modification("variation",mod);
 						}
 						units_.add(new std::pair<gamemap::location,unit>(death_loc,newunit));
+						preferences::encountered_units().insert(newunit.type_id());
 						if (update_display_){
 							gui_.invalidate(death_loc);
 						}
