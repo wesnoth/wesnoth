@@ -248,7 +248,8 @@ class WesnothList:
         # Find all unit types.
         newunits = getall("unit_type") + getall("unit")
         for unit in newunits:
-            if unit.get_text_val("do_not_list", "no") == "no":
+            if unit.get_text_val("do_not_list", "no") == "no" and\
+               unit.get_text_val("hide_help", "no") in ["no", "false"]:
                 uid = unit.get_text_val("id")
                 self.unit_lookup[uid] = unit
                 unit.campaign = campaign
@@ -344,7 +345,7 @@ class UnitForest:
         self.lookup[un.id] = un
 
         # First, we check if any of the new node's advancements already is in
-        # the forest. If so, remove it and attach it to the new node.
+        # the tree. If so, attach it to the new node.
         for cid in un.child_ids:
             if cid in self.trees:
                 un.children.append(self.trees[cid])
@@ -354,8 +355,9 @@ class UnitForest:
         # Next, we check if the node is an advancement of an existing node. If
         # so, add it there.
         for rootnode in self.trees.values():
-            if rootnode.try_add(un):
-                return
+            # Because multiple units might advance into this one, we do not
+            # stop after a successful insertion.
+            rootnode.try_add(un)
 
         # Else, add a new tree with the new node as root.
         self.trees[un.id] = un

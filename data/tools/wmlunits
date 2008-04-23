@@ -418,7 +418,7 @@ class HTMLOutput:
         female = unit.get_first("female")
         if female:
             fname = female.get_text_val("name")
-            if fname != uname:
+            if fname and fname != uname:
                 display_name += "<br/>" + fname
 
         write("<h1>%s</h1>\n" % display_name)
@@ -755,7 +755,7 @@ def output(isocode):
     n = stuff.add_addons(image_collector)
     print "%d units found." % n
     
-    stuff.find_unit_factions()
+    stuff.find_unit_factions()       
 
     # Report generation
     if not os.path.isdir(options.output):
@@ -798,9 +798,11 @@ if __name__ == '__main__':
     op.add_option("-n", "--nocopy", action = "store_true",
         help = "No copying of files.")
     op.add_option("-d", "--datadir",
-        help = "Specify Wesnoth's data to use. Default is to search current directory upwards.")
+        help = "Specify Wesnoth's data to use. Default is to search current "+\
+        "directory upwards.")
     op.add_option("-u", "--userdir",
-        help = "Specify user data dir to use, which is automatically scanned for addons. For example -u ~/.wesnoth/data")
+        help = "Specify user data dir to use, which is automatically scanned "+\
+        "for addons. For example -u ~/.wesnoth/data")
     op.add_option("-t", "--transdir",
         help = "Specify directory which has a po subfolder for translations.")
     options, args = op.parse_args()
