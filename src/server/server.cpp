@@ -256,7 +256,7 @@ private:
 	
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
 	bool is_ip_banned(const std::string& ip) const;
-	std::vector<std::string> bans_;
+	std::map<std::string,std::string> bans_;
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;
@@ -417,13 +417,14 @@ bool server::ip_exceeds_connection_limit(const std::string& ip) const {
 }
 
 bool server::is_ip_banned(const std::string& ip) const {
-	for (std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
-		DBG_SERVER << "comparing ban '" << *i << "' vs '" << ip << "'\t";
-		if (utils::wildcard_string_match(ip,*i)) {
-			DBG_SERVER << "banned\n";
+	for (std::map<std::string,std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
+		std::stringstream ss;
+		ss << "Comparing ban '" << i->first << "' vs '..." << ip << "'\t";
+		if (utils::wildcard_string_match(ip, i->first)) {
+			DBG_SERVER << ss.str() << "banned.\n";
 			return true;
 		}
-		DBG_SERVER << "not banned\n";
+		DBG_SERVER << ss.str() << "not banned.\n";
 	}
 	return false;
 }
@@ -448,7 +449,7 @@ void server::run() {
 			// Process commands from the server socket/fifo
 			std::string admin_cmd;
 			if (input_.read_line(admin_cmd)) {
-				LOG_SERVER << process_command(admin_cmd) << std::endl;
+				process_command(admin_cmd);
 			}
 
 			time_t now = time(NULL);
@@ -836,9 +837,10 @@ std::string server::process_command(const std::string& query) {
 	const std::string command(query.begin(),i);
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
-	const std::string& help_msg = "Available commands are: (k)ban(s) [<mask>],"
-			"kick <mask>, help, metrics, netstats, (lobby)msg <message>, motd [<message>],"
-			"status [<mask>], unban <ipmask>";
+	const std::string& help_msg = "Available commands are: ban(s) [<mask>],"
+			"kick <mask>, k(ick)ban [<mask>], help, metrics, netstats,"
+			" (lobby)msg <message>, motd [<message>], status [<mask>],"
+			" unban <ipmask>";
 	if (command == "shut_down") {
 		throw network::error("shut down");
 	} else if (command == "help") {
@@ -887,24 +889,29 @@ std::string server::process_command(const std::string& query) {
 		if (parameters == "") {
 			if (bans_.empty()) return "No bans set.";
 			out << "BAN LIST\n";
-			for (std::vector<std::string>::const_iterator i = bans_.begin();
+			for (std::map<std::string,std::string>::const_iterator i = bans_.begin();
 				i != bans_.end(); ++i)
 			{
-				out << *i << "\n";
+				out << "IP: '" << i->first << "' reason: '" << i->second << "'\n";
 			}
 		} else {
 			bool banned = false;
 			const bool kick = (command == "kban" || command == "kickban");
-			// if we find 3 '.' consider it an ip mask
-			if (std::count(parameters.begin(), parameters.end(), '.') == 3) {
+			const std::string::iterator i = std::find(parameters.begin(), parameters.end(), ' ');
+			const std::string target(parameters.begin(), i);
+			std::string reason = (i == parameters.end() ? "" : std::string(i + 1, parameters.end()));
+			utils::strip(reason);
+			// if we find a '.' consider it an ip mask 
+			//! @todo  FIXME: should also check for only numbers
+			if (std::count(target.begin(), target.end(), '.') >= 1) {
 				banned = true;
-				out << "Set ban on '" << parameters << "'\n";
-				bans_.push_back(parameters);
+				out << "Set ban on '" << target << "' with reason: '" << reason << "'.\n";
+				bans_[target] = reason;
 				if (kick) {
 					for (player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
 					{
-						if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
+						if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
 							out << "Kicked " << pl->second.name() << ".\n";
 							network::queue_disconnect(pl->first);
 						}
@@ -914,11 +921,11 @@ std::string server::process_command(const std::string& query) {
 				for (player_map::const_iterator pl = players_.begin();
 					pl != players_.end(); ++pl)
 				{
-					if (utils::wildcard_string_match(pl->second.name(), parameters)) {
+					if (utils::wildcard_string_match(pl->second.name(), target)) {
 						banned = true;
 						const std::string& ip = network::ip_address(pl->first);
 						if (!is_ip_banned(ip)) {
-							bans_.push_back(ip);
+							bans_[ip] = reason;
 							out << "Set ban on '" << ip << "'.\n";
 						}
 						if (kick) {
@@ -928,7 +935,7 @@ std::string server::process_command(const std::string& query) {
 					}
 				}
 				if (!banned) {
-					out << "Nickmask '" << parameters << "'did not match, no bans set.";
+					out << "Nickmask '" << target << "' did not match, no bans set.";
 				}
 			}
 		}
@@ -936,12 +943,10 @@ std::string server::process_command(const std::string& query) {
 		if (parameters == "") {
 			return "You must enter an ipmask to unban.";
 		}
-		const std::vector<std::string>::iterator itor = 
-			std::remove(bans_.begin(), bans_.end(), parameters);
-		if (itor == bans_.end()) {
+		const int n = bans_.erase(parameters);
+		if (n == 0) {
 			out << "There is no ban on '" << parameters << "'.";
 		} else {
-			bans_.erase(itor, bans_.end());
 			out << "Ban on '" << parameters << "' removed.";
 		}
 	} else if (command == "kick") {
@@ -949,8 +954,8 @@ std::string server::process_command(const std::string& query) {
 			return "You must enter a mask to kick.";
 		}
 		bool kicked = false;
-		// if we find 3 '.' consider it an ip mask
-		if (std::count(parameters.begin(), parameters.end(), '.') == 3) {
+		// if we find a '.' consider it an ip mask
+		if (std::count(parameters.begin(), parameters.end(), '.') >= 1) {
 			for (player_map::const_iterator pl = players_.begin();
 				pl != players_.end(); ++pl)
 			{
@@ -995,6 +1000,7 @@ std::string server::process_command(const std::string& query) {
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
 
+	LOG_SERVER << out.str();
 	return out.str();
 }
 
