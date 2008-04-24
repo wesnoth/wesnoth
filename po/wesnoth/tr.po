@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-20 12:39+0200\n"
-"PO-Revision-Date: 2008-03-27 20:32+0200\n"
+"PO-Revision-Date: 2008-04-22 17:22+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -664,7 +664,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -673,8 +672,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Askere alınan birimler istatistiklerini değiştiren iki rastgele "
-"<ref>dst=traits text=karakterle</ref> gelirler."
+"Askere alınan birimler istatistiklerini değiştiren iki rastgele <ref>dst=.."
+"traits_section text=karakterle</ref> gelirler."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -948,7 +947,7 @@ msgid ""
 msgstr ""
 "Battle for Wesnoth’ta döğüş her zaman birbirinin yanındaki birimler arasında "
 "cereyan eder. Biriminize tıkladıktan sonra saldırmak istediğiniz düşman "
-"birimine tıklrsanız, biriminiz düşman birimine doğru gider ve yanyana "
+"birimine tıklarsanız, biriminiz düşman birimine doğru gider ve yanyana "
 "geldikleri zaman döğüş başlar. Saldıran ve savunan kendi vuruş sayıları "
 "dolana kadar karşılıklı vuruşurlar. Saldıran saldıracak bir silahını seçer "
 "ve savunan aynı türden bir saldırısı ile karşılık verir. İki saldırı türü "
@@ -1190,7 +1189,7 @@ msgstr ""
 "\n"
 "\n"
 "Günün saati durum çubuğundaki mini haritadan takip edilebilir. Normal gece-"
-"gündüz dönüşümü için, sabah ve öğle gündüz; gece ve sabaha karşı ise gece "
+"gündüz dönüşümü için, sabah ve ikindi gündüz; gece ve sabaha karşı ise gece "
 "sayılır.\n"
 
 #. [time]
@@ -1209,7 +1208,7 @@ msgstr "Sabah"
 #. [topic]
 #: data/core/help.cfg:258 data/core/macros/schedules.cfg:32
 msgid "Afternoon"
-msgstr "Öğle"
+msgstr "İkindi"
 
 #. [time]
 #. [topic]
@@ -1227,7 +1226,7 @@ msgstr "Gece"
 #. [topic]
 #: data/core/help.cfg:261 data/core/macros/schedules.cfg:71
 msgid "Second Watch"
-msgstr "Sabaha karşı"
+msgstr "Sabaha Karşı"
 
 #. [topic]
 #: data/core/help.cfg:263
@@ -1604,7 +1603,7 @@ msgstr "Hızlı"
 #: data/core/help.cfg:345
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Hızlı birimlerin normalden 1 fazla hareket puanına karşın %10 daha az yaşam "
+"Hızlı birimlerin normalden 1 fazla hareket puanına karşın %5 daha az yaşam "
 "puanı olur."
 
 #. [topic]
@@ -1730,7 +1729,7 @@ msgstr ""
 "\n"
 "Seferberlikler sırasında, bazı birimler kendi istekleriyle oyuncunun "
 "kuvvetlerine katılırlar. Bu birimler sadık mizaçlıdırlar. Her ne kadar "
-"çağrılmak için ödenek isterlerse de, asla herhangi bir bakım masrafınasebep "
+"çağrılmak için ödenek isterlerse de, asla herhangi bir bakım masrafına sebep "
 "olmazlar. Bu onları uzun seferberliklerde paranın kıt olduğu zamanlarda paha "
 "biçilmez yapar. Bu mizaç asla askere alınan birimlere verilmez, bu yüzden "
 "onları aptalca bir ölüme göndermek veya azletmek akıllıca bir iş değildir."
@@ -3035,7 +3034,6 @@ msgid "backstab"
 msgstr "destekli"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3143,7 +3141,6 @@ msgid "charge"
 msgstr "yükleme"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -4302,7 +4299,6 @@ msgstr ""
 "ölene kadar saldırı devam ettirilir."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4339,7 +4335,6 @@ msgstr ""
 "arttırır."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -6670,11 +6665,10 @@ msgid "Choose your preferred language:"
 msgstr "Tercih ettiğiniz dili seçiniz:"
 
 #: src/game.cpp:1865
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Şu eklenti hatalı ve yüklenemedi:"
-msgstr[1] "Şu eklenti hatalı ve yüklenemedi:"
+msgstr[1] "Şu eklentiler hatalı ve yüklenemedi:"
 
 #: src/game.cpp:1872
 msgid "ERROR DETAILS:"
@@ -7494,7 +7488,7 @@ msgstr "Silah seçiniz:"
 
 #: src/multiplayer.cpp:100
 msgid "View List"
-msgstr "Görünüm Listesi"
+msgstr "Listeyi Göster"
 
 #: src/multiplayer.cpp:106
 msgid "List of Servers"
@@ -7502,7 +7496,7 @@ msgstr "Sunucu Listesi"
 
 #: src/multiplayer.cpp:107
 msgid "Choose a known server from the list"
-msgstr "Listeden bilinen bir sunucuyu seçiniz"
+msgstr "Bağlanmak istediğiniz sunucuyu seçiniz"
 
 #: src/multiplayer.cpp:110
 msgid "Address"
@@ -8486,6 +8480,9 @@ msgstr "Wesnoth’u sizin için daha iyi hale getirmemize yardım edin!"
 msgid "Enable summary uploads"
 msgstr "Özet göndermeyi etkinleştir"
 
+#~ msgid "ruby of fire"
+#~ msgstr "ateş yakutu"
+
 #~ msgid ""
 #~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
 #~ "me/emote <message>. Type /help [<command>] for detailed instructions."
@@ -8539,17 +8536,5 @@ msgstr "Özet göndermeyi etkinleştir"
 #~ msgstr ""
 #~ "Sohbette bir duygu veya kişisel eylem gönderir. Kullanımı: /me <ileti>"
 
-#~ msgid "Unknown command."
-#~ msgstr "Bilinmeyen komut."
-
 #~ msgid "Unknown command: "
 #~ msgstr "Bilinmeyen Komut: "
-
-#, fuzzy
-#~ msgid ""
-#~ " This unit is capable of basic healing, though it can only delay the "
-#~ "effects of poison, not cure them entirely."
-#~ msgstr " Bu birim komşu birimlerdeki zehrin etkisini yokeder."
-
-#~ msgid "ruby of fire"
-#~ msgstr "ateş yakutu"
