@@ -2032,8 +2032,8 @@ private:
 						if (!i.second.flags.empty()) {
 							ss << " (" << i.second.flags << ") ";
 						}
+						ss << "; ";
 					}
-					ss << "; ";
 				}
 				print("help", "Available commands " + get_flags_description() + ":\n" + ss.str());
 				print("help", "Type " + cmd_prefix_ + "help <command> for more info.");
