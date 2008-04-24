@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-21 18:09+0200\n"
-"PO-Revision-Date: 2008-03-27 20:32+0200\n"
+"PO-Revision-Date: 2008-04-22 17:22+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -664,7 +664,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -673,8 +672,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Askere alınan birimler istatistiklerini değiştiren iki rastgele "
-"<ref>dst=traits text=karakterle</ref> gelirler."
+"Askere alınan birimler istatistiklerini değiştiren iki rastgele <ref>dst=.."
+"traits_section text=karakterle</ref> gelirler."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -948,7 +947,7 @@ msgid ""
 msgstr ""
 "Battle for Wesnoth’ta döğüş her zaman birbirinin yanındaki birimler arasında "
 "cereyan eder. Biriminize tıkladıktan sonra saldırmak istediğiniz düşman "
-"birimine tıklrsanız, biriminiz düşman birimine doğru gider ve yanyana "
+"birimine tıklarsanız, biriminiz düşman birimine doğru gider ve yanyana "
 "geldikleri zaman döğüş başlar. Saldıran ve savunan kendi vuruş sayıları "
 "dolana kadar karşılıklı vuruşurlar. Saldıran saldıracak bir silahını seçer "
 "ve savunan aynı türden bir saldırısı ile karşılık verir. İki saldırı türü "
@@ -1190,7 +1189,7 @@ msgstr ""
 "\n"
 "\n"
 "Günün saati durum çubuğundaki mini haritadan takip edilebilir. Normal gece-"
-"gündüz dönüşümü için, sabah ve öğle gündüz; gece ve sabaha karşı ise gece "
+"gündüz dönüşümü için, sabah ve ikindi gündüz; gece ve sabaha karşı ise gece "
 "sayılır.\n"
 
 #. [time]
@@ -1209,7 +1208,7 @@ msgstr "Sabah"
 #. [topic]
 #: data/core/help.cfg:258 data/core/macros/schedules.cfg:32
 msgid "Afternoon"
-msgstr "Öğle"
+msgstr "İkindi"
 
 #. [time]
 #. [topic]
@@ -1227,7 +1226,7 @@ msgstr "Gece"
 #. [topic]
 #: data/core/help.cfg:261 data/core/macros/schedules.cfg:71
 msgid "Second Watch"
-msgstr "Sabaha karşı"
+msgstr "Sabaha Karşı"
 
 #. [topic]
 #: data/core/help.cfg:263
@@ -1604,7 +1603,7 @@ msgstr "Hızlı"
 #: data/core/help.cfg:345
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Hızlı birimlerin normalden 1 fazla hareket puanına karşın %10 daha az yaşam "
+"Hızlı birimlerin normalden 1 fazla hareket puanına karşın %5 daha az yaşam "
 "puanı olur."
 
 #. [topic]
@@ -1730,7 +1729,7 @@ msgstr ""
 "\n"
 "Seferberlikler sırasında, bazı birimler kendi istekleriyle oyuncunun "
 "kuvvetlerine katılırlar. Bu birimler sadık mizaçlıdırlar. Her ne kadar "
-"çağrılmak için ödenek isterlerse de, asla herhangi bir bakım masrafınasebep "
+"çağrılmak için ödenek isterlerse de, asla herhangi bir bakım masrafına sebep "
 "olmazlar. Bu onları uzun seferberliklerde paranın kıt olduğu zamanlarda paha "
 "biçilmez yapar. Bu mizaç asla askere alınan birimlere verilmez, bu yüzden "
 "onları aptalca bir ölüme göndermek veya azletmek akıllıca bir iş değildir."
@@ -7490,7 +7489,7 @@ msgstr "Silah seçiniz:"
 
 #: src/multiplayer.cpp:100
 msgid "View List"
-msgstr "Görünüm Listesi"
+msgstr "Listeyi Göster"
 
 #: src/multiplayer.cpp:106
 msgid "List of Servers"
@@ -7498,7 +7497,7 @@ msgstr "Sunucu Listesi"
 
 #: src/multiplayer.cpp:107
 msgid "Choose a known server from the list"
-msgstr "Listeden bilinen bir sunucuyu seçiniz"
+msgstr "Bağlanmak istediğiniz sunucuyu seçiniz"
 
 #: src/multiplayer.cpp:110
 msgid "Address"

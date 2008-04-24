@@ -1,0 +1,170 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH wesnothd 6 2008 wesnothd "Wesnoth Savaþý çok oyunculu að sunucusu"
+.
+.SH ÝSÝM
+.
+wesnothd \- \fBWesnoth\fPSavaþý çok oyunculu að sunucusu
+.
+.SH KULLANIM
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIdosya\-yolu\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+[\|\fB\-t\fP \fIsayý\fP\|] [\|\fB\-T\fP \fIsayý\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH AÇIKLAMA
+.
+Wesnoth Savaþý çok oyunculu oyunlarýný yönetir. Wesnoth istemcisinden veya
+soket üzerinden hangi komutlarýn kabul edildiðini öðrenmek için
+http://www.wesnoth.org/wiki/ServerAdministration adresine bakýnýz.
+.
+.SH SEÇENEKLER
+.
+.TP 
+\fB\-c\ \fP\fIdosya\-yolu\fP\fB,\ \-\-config\fP\fI\ dosya\-yolu\fP
+wesnothd'ye yapýlandýrma dosyasýný bulacaðý yeri söyler. Sözdizimi için
+aþaðýdaki \fBSUNUCU YAPILANDIRMASI\fP bölümüne bakýnýz. Artalan sürecine SIGHUP
+sinyali göndererek yapýlandýrmayý yeniden yükleyebilirsiniz.
+.TP 
+\fB\-d, \-\-daemon\fP
+ wesnothd'yi bir artalan süreci olarak çalýþtýrýr.
+.TP 
+\fB\-h, \-\-help\fP
+Komut satýrý seçeneklerini basar ve çýkar.
+.TP 
+\fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
+Günlük alanlarýnýn önem seviyelerini ayarlar. Bütün günlük alanlarýný
+kapsamak üzere \fBall\fP belirtilebilir. Olasý önem seviyeleri: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. \fBerror\fP seviyesi öntanýmlýdýr ve \fBserver\fP
+alaný için \fBinfo\fP seviyesi kullanýlýr.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+Sunucunun belirtilen portu dinlemesini saðlar. Bir port belirtilmezse
+\fB15000\fP öntanýmlýdýr.
+.TP 
+\fB\-t\ \fP\fIsayý\fP\fB,\ \-\-threads\fP\fI\ sayý\fP
+Að G/Ç için bekleyen iþ evrelerinin azami sayýsýný belirler. (\fB5\fP
+öntanýmlýdýr. En çok \fB30\fP belirtilebilir.)
+.TP 
+\fB\-T\ \fP\fIsayý\fP\fB,\ \-\-max\-threads\fP\fI\ sayý\fP
+Oluþturulacak iþ evrelerinin azami sayýsýný belirler. \fB0\fP bir sýnýr
+olmadýðýný belirtir ve öntanýmlýdýr.
+.TP 
+\fB\-V, \-\-version\fP
+Sürüm numarasýný gösterir ve çýkar.
+.TP 
+\fB\-v, \-\-verbose\fP
+Hata ayýklama günlüðünü açar.
+.
+.SH "SUNUCU YAPILANDIRMASI"
+.
+.SS "Genel sözdizimi þöyledir:"
+.
+.P
+[\fIetiket\fP]
+.IP
+key="\fIvalue\fP"
+.IP
+key="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fIetiket\fP]
+.
+.SS "Genel anahtar isimleri:"
+.
+.TP 
+\fBconnections_allowed\fP
+Ayný IP adresinden izin verilen baðlantý sayýsý. \fB0\fP sonsuz anlamýna
+gelir. \fB5\fP öntanýmlýdýr.
+.TP 
+\fBdisallow_names\fP
+Sunucu tarafýndan kabul edilmeyen isimler/rumuzlar. Dosya ismi kalýp
+karakterlerinden `*' ve `?' desteklenir. Daha ayrýntýlý bilgi için
+\fBglob\fP(7) sayfasýna bakýnýz. Öntanýmlý (bir þey belirtilmezse kullanýlacak)
+deðerler: \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP
+.TP 
+\fBmax_messages\fP
+ \fBmessages_time_period\fP süresince izin verilen ileti sayýsý. \fB4\fP
+öntanýmlýdýr.
+.TP 
+\fBmessages_time_period\fP
+Saldýrý olarak algýlanmayacak ileti sayýsýnýn geçebileceði süre (saniye
+cinsinden). \fB10\fP saniye öntanýmlýdýr.
+.TP 
+\fBmotd\fP
+Günün sözü.
+.TP 
+\fBpasswd\fP
+Yönetici yetkilerini kazanmak için kullanýlacak parola. Genellikle `admin '
+ile baþlar.
+.TP 
+\fBversions_accepted\fP
+Sunucu tarafýndan kabul edilen sürüm dizgelerinin virgül ayraçlý
+listesi. Dosya ismi kalýp karakterlerinden `*' ve `?'
+desteklenir. (Daðýtýldýðý wesnoth sürümü öntanýmlýdýr.)
+.br
+Örnek: \fBversions_accepted="*"\fP her sürüm dizgesi kabul edilir..
+.
+.SS "Genel etiket isimleri:"
+.
+.P
+\fB[redirect]\fP Belli istemci sürümlerinin yönlendirileceði sunucularýn
+belirtildiði etiket.
+.RS
+.TP 
+\fBhost\fP
+Yönlendirilecek sunucunun adresi.
+.TP 
+\fBport\fP
+Baðlanýlacak port.
+.TP 
+\fBversion\fP
+Yönlendirilecek sürümlerin virgül ayraçlý listesi. Dosya kalýbý karakterleri
+bakýmýndan \fBversions_accepted\fP ile ayný yöntem kullanýlýr.
+.RE
+.P
+\fB[proxy]\fP Sunucuya bir vekil sunucu gibi çalýþacaðýný ve baðlanan
+istemcilerin isteklerini belirtilen sunucuya yönelteceðini söyleyen
+etiket. \fB[redirect]\fP için kullanýlan anahtarlar kullanýlýr.
+.
+.SH YAZAN
+.
+Program David White <davidnwhite@verizon.net> tarafýndan yazýlmýþ,
+Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> ve
+Soliton <soliton.de@gmail.com> tarafýndan düzenlenmiþtir. Bu kýlavuz
+sayfasý ilk defa Cyril Bouthors <cyril@bouthors.org> tarafýndan
+yazýlmýþ Nilgün Belma Bugüner <nilgun@belgeler.org> tarafýndan
+Türkçe'ye çevrilmiþtir.
+.br
+Oyunun ana sayfasýný ziyaret etmeyi unutmayýn: http://www.wesnoth.org/
+.
+.SH "TELÝF HAKKI"
+.
+Copyright © 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Bu bir özgür yazýlýmdýr; GNU Genel Kamu Lisansýnýn
+&lt;http://www.gnu.org/licenses/gpl.html> koþullarýna baðlý kalarak
+kopyalarýný yeniden daðýtabilirsiniz. Yasalarýn izin verdiði ölçüde hiçbir
+garantisi yoktur; hatta SATILABÝLÝRLÝÐÝ veya ÞAHSÝ KULLANIMINIZA UYGUNLUÐU
+için bile garanti verilmez.
+.
+.SH "ÝLGÝLÝ BELGELER"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
