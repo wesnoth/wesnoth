@@ -18,6 +18,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "config.hpp"
+#include "cursor.hpp"
 #include "font.hpp"
 #include "gui/widgets/settings.hpp"
 #include "log.hpp"
@@ -200,7 +201,12 @@ void twindow::flip()
 {
 	// fixme we need to add the option to either call
 	// video_.flip() or display.flip()
+	
+	const surface frameBuffer = get_video_surface();
+	
+	cursor::draw(frameBuffer);
 	video_.flip();
+	cursor::undraw(frameBuffer);
 }
 
 void twindow::window_resize(tevent_handler&, 
