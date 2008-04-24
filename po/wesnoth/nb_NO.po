@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-20 12:39+0200\n"
+"POT-Creation-Date: 2008-04-24 21:02+0200\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -5562,8 +5562,8 @@ msgstr "Scenario hos annen spiller"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:368 src/unit.cpp:2445
-#: src/unit.cpp:2619
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:368 src/unit.cpp:2473
+#: src/unit.cpp:2647
 msgid "HP"
 msgstr "HP"
 
@@ -5746,51 +5746,51 @@ msgstr "forsinket"
 msgid "stone"
 msgstr "forsteinet"
 
-#: src/actions.cpp:2216
+#: src/actions.cpp:2228
 msgid "Ambushed!"
 msgstr "Bakhold!"
 
-#: src/actions.cpp:2223
+#: src/actions.cpp:2235
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2262
+#: src/actions.cpp:2274
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Vennlig enhet i sikte"
 msgstr[1] "Vennlig enhet i sikte"
 
-#: src/actions.cpp:2265
+#: src/actions.cpp:2277
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Fiendtlig enhet i sikte!"
 msgstr[1] "Fiendtlig enhet i sikte!"
 
-#: src/actions.cpp:2270
+#: src/actions.cpp:2282
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2271
+#: src/actions.cpp:2283
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2272
+#: src/actions.cpp:2284
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enheter i sikte! ($friends vennlige, $enemies fiendtlige)"
 
-#: src/actions.cpp:2281
+#: src/actions.cpp:2293
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(tast $hotkey for å fortsette)"
 
-#: src/ai.cpp:1555
+#: src/ai.cpp:1551
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Ukjent scenario"
@@ -6321,19 +6321,19 @@ msgstr "' (Spillet avsluttes)"
 msgid "Loading data files"
 msgstr "Leser enhetsbeskrivelser."
 
-#: src/game.cpp:2192
+#: src/game.cpp:2194
 msgid "Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:2385
+#: src/game.cpp:2387
 msgid "Loading game configuration."
 msgstr "Feil ved lasting av spillkonfigurasjon."
 
-#: src/game.cpp:2391
+#: src/game.cpp:2393
 msgid "Re-initialize fonts for the current language."
 msgstr "Installer skrift for gjeldende språk på nytt."
 
-#: src/game.cpp:2405
+#: src/game.cpp:2407
 msgid "Loading title screen."
 msgstr "Laster hovedmeny."
 
@@ -6342,11 +6342,11 @@ msgstr "Laster hovedmeny."
 msgid "Invalid color range: "
 msgstr "Ugyldig farge"
 
-#: src/game_events.cpp:952
+#: src/game_events.cpp:957
 msgid "Victory:"
 msgstr "Seier:"
 
-#: src/game_events.cpp:955
+#: src/game_events.cpp:960
 msgid "Defeat:"
 msgstr "Nederlag:"
 
@@ -6670,7 +6670,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
 #: src/menu_events.cpp:58 src/menu_events.cpp:875 src/menu_events.cpp:877
-#: src/play_controller.cpp:829 src/playcampaign.cpp:114
+#: src/play_controller.cpp:833 src/playcampaign.cpp:114
 msgid "Auto-Save"
 msgstr "Lagre automatisk"
 
@@ -7006,112 +7006,306 @@ msgstr "Navngi enhet"
 msgid "Race"
 msgstr "stridskølle"
 
-#: src/menu_events.cpp:1634
+#: src/menu_events.cpp:1630
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1678
+#: src/menu_events.cpp:1674
 msgid "Place Label"
 msgstr "Lag merkelapp"
 
-#: src/menu_events.cpp:1681 src/menu_events.cpp:1684
+#: src/menu_events.cpp:1677 src/menu_events.cpp:1680
 #, fuzzy
 msgid "Label: "
 msgstr "Merkelapp:"
 
-#: src/menu_events.cpp:1686
+#: src/menu_events.cpp:1682
 #, fuzzy
 msgid "Team only"
 msgstr "Turkis"
 
-#: src/menu_events.cpp:1787
+#: src/menu_events.cpp:1783
 msgid "Search"
 msgstr "Søk"
 
-#: src/menu_events.cpp:2374
+#: src/menu_events.cpp:1947
+#, fuzzy
+msgid "This command is currently unavailable."
+msgstr "Ingen mål tilgjengelig."
+
+#: src/menu_events.cpp:1958
+msgid ""
+"Available commands list and command-specific help. Use \"help all\" to "
+"include currently unavailable commands."
+msgstr ""
+
+#: src/menu_events.cpp:2050
+#, fuzzy
+msgid " No help available."
+msgstr "Ingen mål tilgjengelig."
+
+#: src/menu_events.cpp:2169
+msgid ""
+"Send a query to the server. Without arguments the server should tell you the "
+"available commands."
+msgstr ""
+
+#: src/menu_events.cpp:2172
+msgid ""
+"Ban and kick a player or observer. If he is not in the game but on the "
+"server he will only be banned."
+msgstr ""
+
+#: src/menu_events.cpp:2175
+msgid "Kick a player or observer."
+msgstr ""
+
+#: src/menu_events.cpp:2177
+msgid "Mute an observer."
+msgstr ""
+
+#: src/menu_events.cpp:2179
+msgid "Mute all observers."
+msgstr ""
+
+#: src/menu_events.cpp:2183
+#, fuzzy
+msgid "Send an emotion or personal action in chat."
+msgstr ""
+"Sender en personlig handling.\n"
+"'/emote [message]' for å vise \"Brukernavn [message]\" i snakkevinduet"
+
+#: src/menu_events.cpp:2186
+#, fuzzy
+msgid ""
+"Sends a private message. You can't send messages to players that control a "
+"side in a running game you are in."
+msgstr ""
+"Sender en privat beskjed. Du kan ikke sende private beskjeder til spillere "
+"som kontrollerer lag i aktive spill.\n"
+"'/whisper [brukernavn] [melding]'"
+
+#: src/menu_events.cpp:2192
+msgid "Change the log level of a log domain."
+msgstr ""
+
+#: src/menu_events.cpp:2194
+#, fuzzy
+msgid "Add a nick to your ignores list."
+msgstr ""
+"Legger til en spiller på ignoreringslisten.\n"
+"'/ignore add [brukernavn]'"
+
+#: src/menu_events.cpp:2196
+#, fuzzy
+msgid "Add a nick to your friends list."
+msgstr "Lagt til på ignoreringsliste:"
+
+#: src/menu_events.cpp:2198
+#, fuzzy
+msgid "Remove a nick from your ignores or friends list."
+msgstr ""
+"Fjern en spiller fra ignoreringslisten.\n"
+"'/ignore remove [brukernavn]'"
+
+#: src/menu_events.cpp:2200
+#, fuzzy
+msgid "Show your ignores and friends list."
+msgstr ""
+"Viser listen over ignorerte brukere.\n"
+"'/ignore list'"
+
+#: src/menu_events.cpp:2203
+#, fuzzy
+msgid "Display version information."
+msgstr "Ingen epoker funnet"
+
+#: src/menu_events.cpp:2318
+msgid "Refresh gui."
+msgstr ""
+
+#: src/menu_events.cpp:2320
+msgid "Switch a side to/from AI control."
+msgstr ""
+
+#: src/menu_events.cpp:2323
+msgid "Assign control of a side to a different player or observer."
+msgstr ""
+
+#: src/menu_events.cpp:2325
+#, fuzzy
+msgid "Clear chat history."
+msgstr ""
+"\n"
+"Visk ut meldinger."
+
+#: src/menu_events.cpp:2327
+msgid "Visualize the screen refresh procedure."
+msgstr ""
+
+#: src/menu_events.cpp:2330
+#, fuzzy
+msgid "Save game."
+msgstr "Lagre spill"
+
+#: src/menu_events.cpp:2332
+#, fuzzy
+msgid "Quit game."
+msgstr "Avslutt spillet"
+
+#: src/menu_events.cpp:2336
+msgid "Save and quit."
+msgstr ""
+
+#: src/menu_events.cpp:2339
+msgid "Ignore replay errors."
+msgstr ""
+
+#: src/menu_events.cpp:2341
+msgid "Disable autosaves."
+msgstr ""
+
+#: src/menu_events.cpp:2343
+#, fuzzy
+msgid "Advance to the next scenario."
+msgstr "Venter på at spillet starter..."
+
+#: src/menu_events.cpp:2346
+#, fuzzy
+msgid "Turn debug mode on."
+msgstr "Generelle kommandoer"
+
+#: src/menu_events.cpp:2348
+msgid "Turn debug mode off."
+msgstr ""
+
+#: src/menu_events.cpp:2350
+msgid "Set a scenario variable."
+msgstr ""
+
+#: src/menu_events.cpp:2352
+msgid "Show a scenario variable."
+msgstr ""
+
+#: src/menu_events.cpp:2354
+msgid "Modify a unit variable. (Only top level keys are supported.)"
+msgstr ""
+
+#: src/menu_events.cpp:2356
+msgid "Add a trait to a unit."
+msgstr ""
+
+#: src/menu_events.cpp:2358
+msgid "Remove a trait from a unit. (Does not work yet.)"
+msgstr ""
+
+#: src/menu_events.cpp:2360
+#, fuzzy
+msgid "Create a unit."
+msgstr "Opprett spill"
+
+#: src/menu_events.cpp:2362
+#, fuzzy
+msgid "Toggle fog for the current player."
+msgstr "Installer skrift for gjeldende språk på nytt."
+
+#: src/menu_events.cpp:2364
+#, fuzzy
+msgid "Toggle shroud for the current player."
+msgstr "Installer skrift for gjeldende språk på nytt."
+
+#: src/menu_events.cpp:2366
+msgid "Give gold to the current player."
+msgstr ""
+
+#: src/menu_events.cpp:2368
+msgid "Fire a game event."
+msgstr ""
+
+#: src/menu_events.cpp:2402
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2376 src/menu_events.cpp:2385 src/menu_events.cpp:2644
-#: src/menu_events.cpp:2650 src/menu_events.cpp:2676 src/menu_events.cpp:2686
-#: src/menu_events.cpp:2693
+#: src/menu_events.cpp:2404 src/menu_events.cpp:2413 src/menu_events.cpp:2656
+#: src/menu_events.cpp:2662 src/menu_events.cpp:2688 src/menu_events.cpp:2698
+#: src/menu_events.cpp:2705
 #, fuzzy
 msgid "error"
 msgstr "Feil"
 
-#: src/menu_events.cpp:2383
+#: src/menu_events.cpp:2411
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2392
+#: src/menu_events.cpp:2420
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2460
+#: src/menu_events.cpp:2488
 msgid "Added to ignore list: "
 msgstr "Lagt til på ignoreringsliste:"
 
-#: src/menu_events.cpp:2460 src/menu_events.cpp:2473
+#: src/menu_events.cpp:2488 src/menu_events.cpp:2501
 msgid "Invalid username: "
 msgstr "Ugyldig brukernavn: "
 
-#: src/menu_events.cpp:2473
+#: src/menu_events.cpp:2501
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Lagt til på ignoreringsliste:"
 
-#: src/menu_events.cpp:2482
+#: src/menu_events.cpp:2510
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Fjernet fra ignoreringsliste:"
 
-#: src/menu_events.cpp:2494
+#: src/menu_events.cpp:2522
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2627
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kunne ikke finne merke eller enhet som inneholdt '$search'."
 
-#: src/menu_events.cpp:2645
+#: src/menu_events.cpp:2657
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2651
+#: src/menu_events.cpp:2663
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2676
+#: src/menu_events.cpp:2688
 msgid "Usage: control <side> <nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2687
+#: src/menu_events.cpp:2699
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2694
+#: src/menu_events.cpp:2706
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2750
+#: src/menu_events.cpp:2762
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Generelle kommandoer"
 
-#: src/menu_events.cpp:2754
+#: src/menu_events.cpp:2766
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Generelle kommandoer"
 
-#: src/menu_events.cpp:2865 src/menu_events.cpp:2867
+#: src/menu_events.cpp:2874 src/menu_events.cpp:2876
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:2873 src/menu_events.cpp:2879
+#: src/menu_events.cpp:2882 src/menu_events.cpp:2888
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/menu_events.cpp:2898
+#: src/menu_events.cpp:2907
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Kommandoer"
@@ -7161,15 +7355,15 @@ msgstr "Ingen brukbare våpen"
 msgid "Chance of being unscathed"
 msgstr "Sjanse for å være uskadet"
 
-#: src/mouse_events.cpp:668 src/mouse_events.cpp:1402
+#: src/mouse_events.cpp:668 src/mouse_events.cpp:1403
 msgid "Damage Calculations"
 msgstr "Skadeberegninger"
 
-#: src/mouse_events.cpp:1413
+#: src/mouse_events.cpp:1414
 msgid "Attack Enemy"
 msgstr "Angrip fiende"
 
-#: src/mouse_events.cpp:1414
+#: src/mouse_events.cpp:1415
 msgid "Choose weapon:"
 msgstr "Velg våpen:"
 
@@ -7694,7 +7888,7 @@ msgstr "Kunne ikke koble til (Could not add socket to socket set)"
 msgid "Could not send initial handshake"
 msgstr "Kunne ikke sende håndtrykk"
 
-#: src/pathfind.cpp:303
+#: src/pathfind.cpp:305
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
@@ -7711,11 +7905,11 @@ msgstr ""
 msgid "Starting game"
 msgstr "Avbryt spill"
 
-#: src/play_controller.cpp:837
+#: src/play_controller.cpp:841
 msgid "Back to start"
 msgstr "Tilbake til start"
 
-#: src/play_controller.cpp:839
+#: src/play_controller.cpp:843
 msgid "Back to turn "
 msgstr "Tilbake til tur "
 
@@ -7765,17 +7959,17 @@ msgstr "Navn:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ukjent scenario: '"
 
-#: src/playmp_controller.cpp:249
+#: src/playmp_controller.cpp:248
 #, fuzzy
 msgid "End scenario"
 msgstr "Scenario hos annen spiller"
 
-#: src/playmp_controller.cpp:357
+#: src/playmp_controller.cpp:355
 #, fuzzy
 msgid "Waiting for next scenario..."
 msgstr "Venter på at spillet starter..."
 
-#: src/playmp_controller.cpp:483
+#: src/playmp_controller.cpp:481
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7875,7 +8069,7 @@ msgstr ""
 "Det har skjedd en frakobling fra nettverket, og spillet kan ikke fortsette. "
 "Vil du lagre spillet?"
 
-#: src/playsingle_controller.cpp:579
+#: src/playsingle_controller.cpp:577
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Det er din tur"
@@ -8096,38 +8290,38 @@ msgstr "Statistikk"
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjelp utviklerne ved å sende oss informasjon"
 
-#: src/unit.cpp:383 src/unit.cpp:1158 src/unit.cpp:2364
+#: src/unit.cpp:383 src/unit.cpp:1158 src/unit.cpp:2392
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2402 src/unit.cpp:2607 src/unit.cpp:2663
+#: src/unit.cpp:2430 src/unit.cpp:2635 src/unit.cpp:2691
 #, fuzzy
 msgid " and "
 msgstr "Sand"
 
-#: src/unit.cpp:2413
+#: src/unit.cpp:2441
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2478
+#: src/unit.cpp:2506
 #, fuzzy
 msgid "moves"
 msgstr "Flytt"
 
-#: src/unit.cpp:2496 src/unit.cpp:2634
+#: src/unit.cpp:2524 src/unit.cpp:2662
 msgid "XP to advance"
 msgstr "XP til forfremmelse"
 
-#: src/unit.cpp:2626
+#: src/unit.cpp:2654
 #, fuzzy
 msgid " move"
 msgstr "Flytt"
 
-#: src/unit.cpp:2642
+#: src/unit.cpp:2670
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2672
+#: src/unit.cpp:2700
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -8200,15 +8394,6 @@ msgstr "Tillat sammendragsopplasting"
 
 #, fuzzy
 #~ msgid ""
-#~ "Sends a private message. You can't send messages to players that control "
-#~ "any side in a game. Usage: /msg <nick> <message>"
-#~ msgstr ""
-#~ "Sender en privat beskjed. Du kan ikke sende private beskjeder til "
-#~ "spillere som kontrollerer lag i aktive spill.\n"
-#~ "'/whisper [brukernavn] [melding]'"
-
-#, fuzzy
-#~ msgid ""
 #~ "Ignore messages from players on the ignore list and highlight players on "
 #~ "the friends list. Usage: /list <subcommand> [<argument>] Subcommands: "
 #~ "addfriend, addignore, remove, display, clear. Type /help list "
@@ -8224,40 +8409,14 @@ msgstr "Tillat sammendragsopplasting"
 #~ "'/ignore add [brukernavn]'"
 
 #, fuzzy
-#~ msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
-#~ msgstr ""
-#~ "Legger til en spiller på ignoreringslisten.\n"
-#~ "'/ignore add [brukernavn]'"
-
-#, fuzzy
-#~ msgid ""
-#~ "Remove a nick from your ignores or friends list. Usage: /list remove "
-#~ "<nick>"
-#~ msgstr ""
-#~ "Fjern en spiller fra ignoreringslisten.\n"
-#~ "'/ignore remove [brukernavn]'"
-
-#, fuzzy
 #~ msgid "Clear your complete ignores and friends list. Usage: /list clear"
 #~ msgstr ""
 #~ "Fjern alle navn på ignoreringslisten.\n"
 #~ "'/ignore clear'"
 
 #, fuzzy
-#~ msgid "Show your ignores and friends list. Usage: /list display"
-#~ msgstr ""
-#~ "Viser listen over ignorerte brukere.\n"
-#~ "'/ignore list'"
-
-#, fuzzy
 #~ msgid "Unknown subcommand."
 #~ msgstr "Ukjent underkommando"
-
-#, fuzzy
-#~ msgid "Send an emotion or personal action in chat. Usage: /me <message>"
-#~ msgstr ""
-#~ "Sender en personlig handling.\n"
-#~ "'/emote [message]' for å vise \"Brukernavn [message]\" i snakkevinduet"
 
 #, fuzzy
 #~ msgid "Unknown command."

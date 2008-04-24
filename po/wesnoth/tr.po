@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-20 12:39+0200\n"
+"POT-Creation-Date: 2008-04-24 21:02+0200\n"
 "PO-Revision-Date: 2008-04-22 17:22+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -5964,8 +5964,8 @@ msgstr "Senaryoyu Bitir"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:368 src/unit.cpp:2445
-#: src/unit.cpp:2619
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:368 src/unit.cpp:2473
+#: src/unit.cpp:2647
 msgid "HP"
 msgstr "YP"
 
@@ -6149,47 +6149,47 @@ msgstr "yavaş"
 msgid "stone"
 msgstr "taş"
 
-#: src/actions.cpp:2216
+#: src/actions.cpp:2228
 msgid "Ambushed!"
 msgstr "Pusuya düştü!"
 
-#: src/actions.cpp:2223
+#: src/actions.cpp:2235
 msgid "Failed teleport! Exit not empty"
 msgstr "Işınlanamadı! Çıkış boş değil"
 
-#: src/actions.cpp:2262
+#: src/actions.cpp:2274
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Dost birim göründü"
 msgstr[1] "Dost birim göründü"
 
-#: src/actions.cpp:2265
+#: src/actions.cpp:2277
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Düşman birimi göründü!"
 msgstr[1] "Düşman birimi göründü!"
 
-#: src/actions.cpp:2270
+#: src/actions.cpp:2282
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 dost"
 msgstr[1] "1 dost"
 
-#: src/actions.cpp:2271
+#: src/actions.cpp:2283
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 düşman"
 msgstr[1] "1 düşman"
 
-#: src/actions.cpp:2272
+#: src/actions.cpp:2284
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Birimler göründü! ($friends dost, $enemies düşman)"
 
-#: src/actions.cpp:2281
+#: src/actions.cpp:2293
 msgid "(press $hotkey to keep moving)"
 msgstr "(devam etmek için $hotkey tuşuna basınız)"
 
-#: src/ai.cpp:1555
+#: src/ai.cpp:1551
 msgid "Unknown unit type : "
 msgstr "Bilinmeyen birim türü: "
 
@@ -6690,19 +6690,19 @@ msgstr "’ (Şimdi oyundan çıkılıyor)"
 msgid "Loading data files"
 msgstr "Veri dosyaları yükleniyor"
 
-#: src/game.cpp:2192
+#: src/game.cpp:2194
 msgid "Battle for Wesnoth"
 msgstr "Wesnoth Savaşı"
 
-#: src/game.cpp:2385
+#: src/game.cpp:2387
 msgid "Loading game configuration."
 msgstr "Oyun yapılandırması yükleniyor."
 
-#: src/game.cpp:2391
+#: src/game.cpp:2393
 msgid "Re-initialize fonts for the current language."
 msgstr "Yazıtipleri geçerli dil için yeniden ilklendirildi."
 
-#: src/game.cpp:2405
+#: src/game.cpp:2407
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
@@ -6710,11 +6710,11 @@ msgstr "Ana ekran yükleniyor."
 msgid "Invalid color range: "
 msgstr "Geçersiz renk aralığı: "
 
-#: src/game_events.cpp:952
+#: src/game_events.cpp:957
 msgid "Victory:"
 msgstr "Galibiyet:"
 
-#: src/game_events.cpp:955
+#: src/game_events.cpp:960
 msgid "Defeat:"
 msgstr "Mağlubiyet:"
 
@@ -7016,7 +7016,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr "Tek sayılı genişliğe sahip rasgele haritalar desteklenmiyor."
 
 #: src/menu_events.cpp:58 src/menu_events.cpp:875 src/menu_events.cpp:877
-#: src/play_controller.cpp:829 src/playcampaign.cpp:114
+#: src/play_controller.cpp:833 src/playcampaign.cpp:114
 msgid "Auto-Save"
 msgstr "Otomatik Kayıt"
 
@@ -7328,105 +7328,307 @@ msgstr "Birimin ismini değiştir"
 msgid "Race"
 msgstr "Irk"
 
-#: src/menu_events.cpp:1634
+#: src/menu_events.cpp:1630
 msgid "Create Unit (Debug!)"
 msgstr "Birim Oluştur (Hata Ayıklama!)"
 
-#: src/menu_events.cpp:1678
+#: src/menu_events.cpp:1674
 msgid "Place Label"
 msgstr "Etiket Koy"
 
-#: src/menu_events.cpp:1681 src/menu_events.cpp:1684
+#: src/menu_events.cpp:1677 src/menu_events.cpp:1680
 msgid "Label: "
 msgstr "Etiket: "
 
-#: src/menu_events.cpp:1686
+#: src/menu_events.cpp:1682
 msgid "Team only"
 msgstr "Sadece ekip"
 
-#: src/menu_events.cpp:1787
+#: src/menu_events.cpp:1783
 msgid "Search"
 msgstr "Ara"
 
-#: src/menu_events.cpp:2374
+#: src/menu_events.cpp:1947
+#, fuzzy
+msgid "This command is currently unavailable."
+msgstr "Hiçbir Amaç yok"
+
+#: src/menu_events.cpp:1958
+msgid ""
+"Available commands list and command-specific help. Use \"help all\" to "
+"include currently unavailable commands."
+msgstr ""
+
+#: src/menu_events.cpp:2050
+#, fuzzy
+msgid " No help available."
+msgstr "Hiçbir Amaç yok"
+
+#: src/menu_events.cpp:2169
+msgid ""
+"Send a query to the server. Without arguments the server should tell you the "
+"available commands."
+msgstr ""
+
+#: src/menu_events.cpp:2172
+msgid ""
+"Ban and kick a player or observer. If he is not in the game but on the "
+"server he will only be banned."
+msgstr ""
+
+#: src/menu_events.cpp:2175
+msgid "Kick a player or observer."
+msgstr ""
+
+#: src/menu_events.cpp:2177
+msgid "Mute an observer."
+msgstr ""
+
+#: src/menu_events.cpp:2179
+msgid "Mute all observers."
+msgstr ""
+
+#: src/menu_events.cpp:2183
+#, fuzzy
+msgid "Send an emotion or personal action in chat."
+msgstr "Sohbette bir duygu veya kişisel eylem gönderir. Kullanımı: /me <ileti>"
+
+#: src/menu_events.cpp:2186
+#, fuzzy
+msgid ""
+"Sends a private message. You can't send messages to players that control a "
+"side in a running game you are in."
+msgstr ""
+"Özel mesajlar gönderir. Oyunu oynayan kullanıcılara mesaj gönderemezsiniz. "
+"Kullanım: /msg <oyuncu> <ileti>"
+
+#: src/menu_events.cpp:2192
+msgid "Change the log level of a log domain."
+msgstr ""
+
+#: src/menu_events.cpp:2194
+#, fuzzy
+msgid "Add a nick to your ignores list."
+msgstr "Gözardı listenize oyuncu ekler. Kullanım: /list ignore <oyuncu>"
+
+#: src/menu_events.cpp:2196
+#, fuzzy
+msgid "Add a nick to your friends list."
+msgstr "Arkadaş listenize eklenen: "
+
+#: src/menu_events.cpp:2198
+#, fuzzy
+msgid "Remove a nick from your ignores or friends list."
+msgstr ""
+"Arkadaşlar veya gözardı listenizden oyuncu kaldırır. Kullanım: /list remove "
+"<oyuncu>"
+
+#: src/menu_events.cpp:2200
+#, fuzzy
+msgid "Show your ignores and friends list."
+msgstr "Gözardı ve arkadaşlar listenizi gösterir. Kullanım: /list display"
+
+#: src/menu_events.cpp:2203
+#, fuzzy
+msgid "Display version information."
+msgstr "Devir bilgisi yok."
+
+#: src/menu_events.cpp:2318
+msgid "Refresh gui."
+msgstr ""
+
+#: src/menu_events.cpp:2320
+msgid "Switch a side to/from AI control."
+msgstr ""
+
+#: src/menu_events.cpp:2323
+msgid "Assign control of a side to a different player or observer."
+msgstr ""
+
+#: src/menu_events.cpp:2325
+#, fuzzy
+msgid "Clear chat history."
+msgstr ""
+"\n"
+"Sohbet iletilerini temizler.\n"
+"\n"
+
+#: src/menu_events.cpp:2327
+msgid "Visualize the screen refresh procedure."
+msgstr ""
+
+#: src/menu_events.cpp:2330
+#, fuzzy
+msgid "Save game."
+msgstr "Oyunu Kaydet"
+
+#: src/menu_events.cpp:2332
+#, fuzzy
+msgid "Quit game."
+msgstr "Oyundan Çık"
+
+#: src/menu_events.cpp:2336
+msgid "Save and quit."
+msgstr ""
+
+#: src/menu_events.cpp:2339
+msgid "Ignore replay errors."
+msgstr ""
+
+#: src/menu_events.cpp:2341
+msgid "Disable autosaves."
+msgstr ""
+
+#: src/menu_events.cpp:2343
+#, fuzzy
+msgid "Advance to the next scenario."
+msgstr "Sonraki senaryo bekleniyor..."
+
+#: src/menu_events.cpp:2346
+#, fuzzy
+msgid "Turn debug mode on."
+msgstr "Hata Ayıklama Kipi Komutları"
+
+#: src/menu_events.cpp:2348
+msgid "Turn debug mode off."
+msgstr ""
+
+#: src/menu_events.cpp:2350
+#, fuzzy
+msgid "Set a scenario variable."
+msgstr ""
+"\n"
+"Bir oyun durum değişkeninin değerini gösterir.\n"
+"\n"
+
+#: src/menu_events.cpp:2352
+#, fuzzy
+msgid "Show a scenario variable."
+msgstr ""
+"\n"
+"Bir oyun durum değişkeninin değerini gösterir.\n"
+"\n"
+
+#: src/menu_events.cpp:2354
+msgid "Modify a unit variable. (Only top level keys are supported.)"
+msgstr ""
+
+#: src/menu_events.cpp:2356
+msgid "Add a trait to a unit."
+msgstr ""
+
+#: src/menu_events.cpp:2358
+msgid "Remove a trait from a unit. (Does not work yet.)"
+msgstr ""
+
+#: src/menu_events.cpp:2360
+#, fuzzy
+msgid "Create a unit."
+msgstr "Oyun Aç"
+
+#: src/menu_events.cpp:2362
+#, fuzzy
+msgid "Toggle fog for the current player."
+msgstr ""
+"\n"
+"Geçerli taraf için örtü/savaş dumanını açıp kapar.\n"
+"\n"
+
+#: src/menu_events.cpp:2364
+#, fuzzy
+msgid "Toggle shroud for the current player."
+msgstr ""
+"\n"
+"Geçerli taraf için örtü/savaş dumanını açıp kapar.\n"
+"\n"
+
+#: src/menu_events.cpp:2366
+msgid "Give gold to the current player."
+msgstr ""
+
+#: src/menu_events.cpp:2368
+msgid "Fire a game event."
+msgstr ""
+
+#: src/menu_events.cpp:2402
 msgid "Unknown debug level: '$level'."
 msgstr "Bilinmeyen hata ayıklama seviyesi: ‘$level’."
 
-#: src/menu_events.cpp:2376 src/menu_events.cpp:2385 src/menu_events.cpp:2644
-#: src/menu_events.cpp:2650 src/menu_events.cpp:2676 src/menu_events.cpp:2686
-#: src/menu_events.cpp:2693
+#: src/menu_events.cpp:2404 src/menu_events.cpp:2413 src/menu_events.cpp:2656
+#: src/menu_events.cpp:2662 src/menu_events.cpp:2688 src/menu_events.cpp:2698
+#: src/menu_events.cpp:2705
 msgid "error"
 msgstr "Hata"
 
-#: src/menu_events.cpp:2383
+#: src/menu_events.cpp:2411
 msgid "Unknown debug domain: '$domain'."
 msgstr "Bilinmeye hata ayıklama alanı: ‘$domain’."
 
-#: src/menu_events.cpp:2392
+#: src/menu_events.cpp:2420
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Geçilen alan: ‘$domain’, geçilen seviye: ‘$level’."
 
-#: src/menu_events.cpp:2460
+#: src/menu_events.cpp:2488
 msgid "Added to ignore list: "
 msgstr "Gözardı listenize eklenen: "
 
-#: src/menu_events.cpp:2460 src/menu_events.cpp:2473
+#: src/menu_events.cpp:2488 src/menu_events.cpp:2501
 msgid "Invalid username: "
 msgstr "Geçersiz kullanıcı ismi: "
 
-#: src/menu_events.cpp:2473
+#: src/menu_events.cpp:2501
 msgid "Added to friends list: "
 msgstr "Arkadaş listenize eklenen: "
 
-#: src/menu_events.cpp:2482
+#: src/menu_events.cpp:2510
 msgid "Removed from list: "
 msgstr "Listenizden silinen: "
 
-#: src/menu_events.cpp:2494
+#: src/menu_events.cpp:2522
 msgid "There are no players on your friends or ignore list."
 msgstr "Arkadaşlar ve Gözardı listenizde kimse yok."
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2627
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "‘$search’ dizgesini içeren etiket veya birim bulunamadı."
 
-#: src/menu_events.cpp:2645
+#: src/menu_events.cpp:2657
 msgid "Can't droid invalid side: '$side'."
 msgstr "Geçersiz ‘$side’ tarafı droid başarısız."
 
-#: src/menu_events.cpp:2651
+#: src/menu_events.cpp:2663
 msgid "Can't droid networked side: '$side'."
 msgstr "Ağdaki ‘$side’ tarafı için droid başarısız."
 
-#: src/menu_events.cpp:2676
+#: src/menu_events.cpp:2688
 msgid "Usage: control <side> <nick>"
 msgstr "Kullanımı: control <taraf> <kullanıcı>"
 
-#: src/menu_events.cpp:2687
+#: src/menu_events.cpp:2699
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Geçersiz ‘$side’ tarafının denetimi değiştirilemiyor."
 
-#: src/menu_events.cpp:2694
+#: src/menu_events.cpp:2706
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Kapsamdışı ‘$side’ tarafının denetimi değiştirilemiyor."
 
-#: src/menu_events.cpp:2750
+#: src/menu_events.cpp:2762
 msgid "Debug mode activated!"
 msgstr "Hata ayıklama kipi etkin kılındı!"
 
-#: src/menu_events.cpp:2754
+#: src/menu_events.cpp:2766
 msgid "Debug mode deactivated!"
 msgstr "Hata ayıklama kipinden çıkıldı!"
 
-#: src/menu_events.cpp:2865 src/menu_events.cpp:2867
+#: src/menu_events.cpp:2874 src/menu_events.cpp:2876
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:2873 src/menu_events.cpp:2879
+#: src/menu_events.cpp:2882 src/menu_events.cpp:2888
 msgid "prompt^Command:"
 msgstr "Komut:"
 
-#: src/menu_events.cpp:2898
+#: src/menu_events.cpp:2907
 msgid "User-Command#3"
 msgstr "3. Kullanıcı Komutu"
 
@@ -7474,15 +7676,15 @@ msgstr "Kullanılabilir silah yok"
 msgid "Chance of being unscathed"
 msgstr "Yarasız kurtulma şansı"
 
-#: src/mouse_events.cpp:668 src/mouse_events.cpp:1402
+#: src/mouse_events.cpp:668 src/mouse_events.cpp:1403
 msgid "Damage Calculations"
 msgstr "Hasar Hesaplamaları"
 
-#: src/mouse_events.cpp:1413
+#: src/mouse_events.cpp:1414
 msgid "Attack Enemy"
 msgstr "Düşmana Saldır"
 
-#: src/mouse_events.cpp:1414
+#: src/mouse_events.cpp:1415
 msgid "Choose weapon:"
 msgstr "Silah seçiniz:"
 
@@ -7990,7 +8192,7 @@ msgstr "Soket, soket kümesine eklenemedi"
 msgid "Could not send initial handshake"
 msgstr "İlk tokalaşma gönderilemedi"
 
-#: src/pathfind.cpp:303
+#: src/pathfind.cpp:305
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Hareket bedeli 1’den küçük arazi saptandı."
 
@@ -8006,11 +8208,11 @@ msgstr "Ekran ilklendiriliyor"
 msgid "Starting game"
 msgstr "Oyun başlatılıyor"
 
-#: src/play_controller.cpp:837
+#: src/play_controller.cpp:841
 msgid "Back to start"
 msgstr "Başa geri dön"
 
-#: src/play_controller.cpp:839
+#: src/play_controller.cpp:843
 msgid "Back to turn "
 msgstr "Ele geri dön: "
 
@@ -8054,15 +8256,15 @@ msgstr "İsim:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Bilinmeyen Senaryo: ‘$scenario|’"
 
-#: src/playmp_controller.cpp:249
+#: src/playmp_controller.cpp:248
 msgid "End scenario"
 msgstr "Senaryoyu Bitir"
 
-#: src/playmp_controller.cpp:357
+#: src/playmp_controller.cpp:355
 msgid "Waiting for next scenario..."
 msgstr "Sonraki senaryo bekleniyor..."
 
-#: src/playmp_controller.cpp:483
+#: src/playmp_controller.cpp:481
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8175,7 +8377,7 @@ msgstr ""
 "Bir ağ bağlantı kopması oluştu ve oyun devam edemeyecek. Oyunu kaydetmek "
 "istiyor musunuz?"
 
-#: src/playsingle_controller.cpp:579
+#: src/playsingle_controller.cpp:577
 msgid "It is now $name|'s turn"
 msgstr "Sıra $name|’de"
 
@@ -8384,35 +8586,35 @@ msgstr "İstatistikleri yollar"
 msgid "Help Wesnoth by sending us information"
 msgstr "Bize bilgi göndererek Wesnoth’a yardım edebilirsiniz"
 
-#: src/unit.cpp:383 src/unit.cpp:1158 src/unit.cpp:2364
+#: src/unit.cpp:383 src/unit.cpp:1158 src/unit.cpp:2392
 msgid "Unknown unit type '$type|'"
 msgstr "Bilinmeyen birim türü: ‘$type|’"
 
-#: src/unit.cpp:2402 src/unit.cpp:2607 src/unit.cpp:2663
+#: src/unit.cpp:2430 src/unit.cpp:2635 src/unit.cpp:2691
 msgid " and "
 msgstr " ve "
 
-#: src/unit.cpp:2413
+#: src/unit.cpp:2441
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2478
+#: src/unit.cpp:2506
 msgid "moves"
 msgstr "hareket"
 
-#: src/unit.cpp:2496 src/unit.cpp:2634
+#: src/unit.cpp:2524 src/unit.cpp:2662
 msgid "XP to advance"
 msgstr "terfi için gerekli TP"
 
-#: src/unit.cpp:2626
+#: src/unit.cpp:2654
 msgid " move"
 msgstr " hareket"
 
-#: src/unit.cpp:2642
+#: src/unit.cpp:2670
 msgid "$effect_description per level"
 msgstr "seviye başına $effect_description"
 
-#: src/unit.cpp:2672
+#: src/unit.cpp:2700
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -8491,13 +8693,6 @@ msgstr "Özet göndermeyi etkinleştir"
 #~ "me/emote <ileti>. Ayrıntılı bilgi için: /help [<komut>]."
 
 #~ msgid ""
-#~ "Sends a private message. You can't send messages to players that control "
-#~ "any side in a game. Usage: /msg <nick> <message>"
-#~ msgstr ""
-#~ "Özel mesajlar gönderir. Oyunu oynayan kullanıcılara mesaj "
-#~ "gönderemezsiniz. Kullanım: /msg <oyuncu> <ileti>"
-
-#~ msgid ""
 #~ "Ignore messages from players on the ignore list and highlight players on "
 #~ "the friends list. Usage: /list <subcommand> [<argument>] Subcommands: "
 #~ "addfriend, addignore, remove, display, clear. Type /help list "
@@ -8513,28 +8708,11 @@ msgstr "Özet göndermeyi etkinleştir"
 #~ msgstr ""
 #~ "Arkadaşlar listenize oyuncu ekler. Kullanım: /list addfriend <oyuncu>"
 
-#~ msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
-#~ msgstr "Gözardı listenize oyuncu ekler. Kullanım: /list ignore <oyuncu>"
-
-#~ msgid ""
-#~ "Remove a nick from your ignores or friends list. Usage: /list remove "
-#~ "<nick>"
-#~ msgstr ""
-#~ "Arkadaşlar veya gözardı listenizden oyuncu kaldırır. Kullanım: /list "
-#~ "remove <oyuncu>"
-
 #~ msgid "Clear your complete ignores and friends list. Usage: /list clear"
 #~ msgstr "Gözardı ve arkadaşlar listenizi temizler. Kullanım: /list clear"
 
-#~ msgid "Show your ignores and friends list. Usage: /list display"
-#~ msgstr "Gözardı ve arkadaşlar listenizi gösterir. Kullanım: /list display"
-
 #~ msgid "Unknown subcommand."
 #~ msgstr "Bilinmeyen alt komut."
-
-#~ msgid "Send an emotion or personal action in chat. Usage: /me <message>"
-#~ msgstr ""
-#~ "Sohbette bir duygu veya kişisel eylem gönderir. Kullanımı: /me <ileti>"
 
 #~ msgid "Unknown command: "
 #~ msgstr "Bilinmeyen Komut: "

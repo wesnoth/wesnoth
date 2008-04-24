@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-13 16:22+0200\n"
+"POT-Creation-Date: 2008-04-24 21:05+0200\n"
 "PO-Revision-Date: 2008-02-26 20:16+0100\n"
 "Last-Translator: Joeri Melis <joeri_melis@hotmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -138,6 +138,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:122
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:31
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:42
+#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:54
 msgid "teamname^North"
 msgstr "Noorden"
 
@@ -161,6 +162,7 @@ msgstr "Noorden"
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:64
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:20
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:53
+#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:65
 msgid "teamname^South"
 msgstr "Zuiden"
 
@@ -811,7 +813,6 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
@@ -828,6 +829,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:38
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
+#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 msgid " Recommended setting of 2 gold per village."
 msgstr " Aanbevolen wordt 2 goud per dorp in te stellen."
@@ -911,6 +913,18 @@ msgid ""
 msgstr ""
 "Spelers moeten hun weg vinden over het gemêleerde terrein van dit kleine "
 "maar topografisch rijke eiland."
+
+#. [multiplayer]
+#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
+msgid "2p - Howling Ghost Badlands"
+msgstr ""
+
+#. [multiplayer]
+#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
+msgid ""
+"Little remains of this once wealthy mining colony, now a haven for raiders "
+"and thieves. "
+msgstr ""
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -1094,9 +1108,6 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:20
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:53
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:18
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:40
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:62
 #: data/multiplayer/scenarios/8p_Morituri.cfg:18
 #: data/multiplayer/scenarios/8p_Morituri.cfg:62
 #: data/multiplayer/scenarios/8p_Morituri.cfg:73
@@ -1110,9 +1121,6 @@ msgstr "Ploeg 1"
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:31
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:42
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:29
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:51
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:73
 #: data/multiplayer/scenarios/8p_Morituri.cfg:29
 #: data/multiplayer/scenarios/8p_Morituri.cfg:40
 #: data/multiplayer/scenarios/8p_Morituri.cfg:51
@@ -1393,20 +1401,6 @@ msgstr "5p - Bos vol Vrees"
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "In dit gemêleerde landschap strijden vijf legers om de macht."
-
-#. [multiplayer]
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:5
-msgid "6p - Amohsad Caldera"
-msgstr "6p - Amohsad Caldera"
-
-#. [multiplayer]
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
-msgid ""
-"Only a true tactician will survive in this deadly and confining battlefield, "
-"where six boxed-in armies come to a head."
-msgstr ""
-"Alleen een ware tacticus zal overleven in dit dodelijke en besloten "
-"slagveld, waar zes ingesloten legers recht tegenover elkaar komen te staan."
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
@@ -1748,6 +1742,17 @@ msgid ""
 msgstr ""
 "Een wesnoth benchmark, gebruik --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "6p - Amohsad Caldera"
+#~ msgstr "6p - Amohsad Caldera"
+
+#~ msgid ""
+#~ "Only a true tactician will survive in this deadly and confining "
+#~ "battlefield, where six boxed-in armies come to a head."
+#~ msgstr ""
+#~ "Alleen een ware tacticus zal overleven in dit dodelijke en besloten "
+#~ "slagveld, waar zes ingesloten legers recht tegenover elkaar komen te "
+#~ "staan."
 
 #~ msgid "2p - Wesbowl"
 #~ msgstr "2p - Wesbowl"

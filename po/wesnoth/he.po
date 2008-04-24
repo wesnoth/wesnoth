@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-20 12:39+0200\n"
+"POT-Creation-Date: 2008-04-24 21:02+0200\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -5398,8 +5398,8 @@ msgstr "תרחיש לא ידוע"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:368 src/unit.cpp:2445
-#: src/unit.cpp:2619
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:368 src/unit.cpp:2473
+#: src/unit.cpp:2647
 msgid "HP"
 msgstr "נק\"פ"
 
@@ -5584,51 +5584,51 @@ msgstr "מואט"
 msgid "stone"
 msgstr "איבון"
 
-#: src/actions.cpp:2216
+#: src/actions.cpp:2228
 msgid "Ambushed!"
 msgstr "נכנסנו למארב!"
 
-#: src/actions.cpp:2223
+#: src/actions.cpp:2235
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2262
+#: src/actions.cpp:2274
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "יחידה ידידותית נראתה"
 msgstr[1] "יחידה ידידותית נראתה"
 
-#: src/actions.cpp:2265
+#: src/actions.cpp:2277
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "יחידת אויב נראתה!"
 msgstr[1] "יחידת אויב נראתה!"
 
-#: src/actions.cpp:2270
+#: src/actions.cpp:2282
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2271
+#: src/actions.cpp:2283
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2272
+#: src/actions.cpp:2284
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "יחידות נראו! ($friends ידידותיות, $enemies  אוייבות)"
 
-#: src/actions.cpp:2281
+#: src/actions.cpp:2293
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(להמשיך לחץ על $hotkey)"
 
-#: src/ai.cpp:1555
+#: src/ai.cpp:1551
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "תרחיש לא ידוע"
@@ -6151,20 +6151,20 @@ msgstr "' (המשחק יסתיים עתה)"
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:2192
+#: src/game.cpp:2194
 msgid "Battle for Wesnoth"
 msgstr "הקרב על ווסנות'"
 
-#: src/game.cpp:2385
+#: src/game.cpp:2387
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "שגיאה בטעינת קבצי תצורה: "
 
-#: src/game.cpp:2391
+#: src/game.cpp:2393
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:2405
+#: src/game.cpp:2407
 msgid "Loading title screen."
 msgstr ""
 
@@ -6173,11 +6173,11 @@ msgstr ""
 msgid "Invalid color range: "
 msgstr "צבע לא חוקי"
 
-#: src/game_events.cpp:952
+#: src/game_events.cpp:957
 msgid "Victory:"
 msgstr "ניצחון:"
 
-#: src/game_events.cpp:955
+#: src/game_events.cpp:960
 msgid "Defeat:"
 msgstr "תבוסה:"
 
@@ -6498,7 +6498,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
 #: src/menu_events.cpp:58 src/menu_events.cpp:875 src/menu_events.cpp:877
-#: src/play_controller.cpp:829 src/playcampaign.cpp:114
+#: src/play_controller.cpp:833 src/playcampaign.cpp:114
 msgid "Auto-Save"
 msgstr "שמירה אוטומטית"
 
@@ -6834,111 +6834,283 @@ msgstr "שנה שם יחידה"
 msgid "Race"
 msgstr "אלה"
 
-#: src/menu_events.cpp:1634
+#: src/menu_events.cpp:1630
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1678
+#: src/menu_events.cpp:1674
 msgid "Place Label"
 msgstr "מקם תגית"
 
-#: src/menu_events.cpp:1681 src/menu_events.cpp:1684
+#: src/menu_events.cpp:1677 src/menu_events.cpp:1680
 #, fuzzy
 msgid "Label: "
 msgstr "תגית:"
 
-#: src/menu_events.cpp:1686
+#: src/menu_events.cpp:1682
 #, fuzzy
 msgid "Team only"
 msgstr "צוות"
 
-#: src/menu_events.cpp:1787
+#: src/menu_events.cpp:1783
 msgid "Search"
 msgstr "חיפוש"
 
-#: src/menu_events.cpp:2374
+#: src/menu_events.cpp:1947
+#, fuzzy
+msgid "This command is currently unavailable."
+msgstr "אין מטרות זמינות"
+
+#: src/menu_events.cpp:1958
+msgid ""
+"Available commands list and command-specific help. Use \"help all\" to "
+"include currently unavailable commands."
+msgstr ""
+
+#: src/menu_events.cpp:2050
+#, fuzzy
+msgid " No help available."
+msgstr "אין מטרות זמינות"
+
+#: src/menu_events.cpp:2169
+msgid ""
+"Send a query to the server. Without arguments the server should tell you the "
+"available commands."
+msgstr ""
+
+#: src/menu_events.cpp:2172
+msgid ""
+"Ban and kick a player or observer. If he is not in the game but on the "
+"server he will only be banned."
+msgstr ""
+
+#: src/menu_events.cpp:2175
+msgid "Kick a player or observer."
+msgstr ""
+
+#: src/menu_events.cpp:2177
+msgid "Mute an observer."
+msgstr ""
+
+#: src/menu_events.cpp:2179
+msgid "Mute all observers."
+msgstr ""
+
+#: src/menu_events.cpp:2183
+msgid "Send an emotion or personal action in chat."
+msgstr ""
+
+#: src/menu_events.cpp:2186
+msgid ""
+"Sends a private message. You can't send messages to players that control a "
+"side in a running game you are in."
+msgstr ""
+
+#: src/menu_events.cpp:2192
+msgid "Change the log level of a log domain."
+msgstr ""
+
+#: src/menu_events.cpp:2194
+msgid "Add a nick to your ignores list."
+msgstr ""
+
+#: src/menu_events.cpp:2196
+msgid "Add a nick to your friends list."
+msgstr ""
+
+#: src/menu_events.cpp:2198
+msgid "Remove a nick from your ignores or friends list."
+msgstr ""
+
+#: src/menu_events.cpp:2200
+msgid "Show your ignores and friends list."
+msgstr ""
+
+#: src/menu_events.cpp:2203
+#, fuzzy
+msgid "Display version information."
+msgstr "לא נמצאו תקופות"
+
+#: src/menu_events.cpp:2318
+msgid "Refresh gui."
+msgstr ""
+
+#: src/menu_events.cpp:2320
+msgid "Switch a side to/from AI control."
+msgstr ""
+
+#: src/menu_events.cpp:2323
+msgid "Assign control of a side to a different player or observer."
+msgstr ""
+
+#: src/menu_events.cpp:2325
+msgid "Clear chat history."
+msgstr ""
+
+#: src/menu_events.cpp:2327
+msgid "Visualize the screen refresh procedure."
+msgstr ""
+
+#: src/menu_events.cpp:2330
+#, fuzzy
+msgid "Save game."
+msgstr "שמור משחק"
+
+#: src/menu_events.cpp:2332
+#, fuzzy
+msgid "Quit game."
+msgstr "צא מהמשחק"
+
+#: src/menu_events.cpp:2336
+msgid "Save and quit."
+msgstr ""
+
+#: src/menu_events.cpp:2339
+msgid "Ignore replay errors."
+msgstr ""
+
+#: src/menu_events.cpp:2341
+msgid "Disable autosaves."
+msgstr ""
+
+#: src/menu_events.cpp:2343
+#, fuzzy
+msgid "Advance to the next scenario."
+msgstr "ממתין לתחילת המשחק..."
+
+#: src/menu_events.cpp:2346
+#, fuzzy
+msgid "Turn debug mode on."
+msgstr "גנרל"
+
+#: src/menu_events.cpp:2348
+msgid "Turn debug mode off."
+msgstr ""
+
+#: src/menu_events.cpp:2350
+msgid "Set a scenario variable."
+msgstr ""
+
+#: src/menu_events.cpp:2352
+msgid "Show a scenario variable."
+msgstr ""
+
+#: src/menu_events.cpp:2354
+msgid "Modify a unit variable. (Only top level keys are supported.)"
+msgstr ""
+
+#: src/menu_events.cpp:2356
+msgid "Add a trait to a unit."
+msgstr ""
+
+#: src/menu_events.cpp:2358
+msgid "Remove a trait from a unit. (Does not work yet.)"
+msgstr ""
+
+#: src/menu_events.cpp:2360
+#, fuzzy
+msgid "Create a unit."
+msgstr "צור משחק"
+
+#: src/menu_events.cpp:2362
+msgid "Toggle fog for the current player."
+msgstr ""
+
+#: src/menu_events.cpp:2364
+msgid "Toggle shroud for the current player."
+msgstr ""
+
+#: src/menu_events.cpp:2366
+msgid "Give gold to the current player."
+msgstr ""
+
+#: src/menu_events.cpp:2368
+msgid "Fire a game event."
+msgstr ""
+
+#: src/menu_events.cpp:2402
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2376 src/menu_events.cpp:2385 src/menu_events.cpp:2644
-#: src/menu_events.cpp:2650 src/menu_events.cpp:2676 src/menu_events.cpp:2686
-#: src/menu_events.cpp:2693
+#: src/menu_events.cpp:2404 src/menu_events.cpp:2413 src/menu_events.cpp:2656
+#: src/menu_events.cpp:2662 src/menu_events.cpp:2688 src/menu_events.cpp:2698
+#: src/menu_events.cpp:2705
 #, fuzzy
 msgid "error"
 msgstr "שגיאה"
 
-#: src/menu_events.cpp:2383
+#: src/menu_events.cpp:2411
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2392
+#: src/menu_events.cpp:2420
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2460
+#: src/menu_events.cpp:2488
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:2460 src/menu_events.cpp:2473
+#: src/menu_events.cpp:2488 src/menu_events.cpp:2501
 #, fuzzy
 msgid "Invalid username: "
 msgstr "שם תג לא חוקי "
 
-#: src/menu_events.cpp:2473
+#: src/menu_events.cpp:2501
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:2482
+#: src/menu_events.cpp:2510
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:2494
+#: src/menu_events.cpp:2522
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2627
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "לא ניתן למצוא תגית או יחידה שמכילים את המחרוזת '$search'."
 
-#: src/menu_events.cpp:2645
+#: src/menu_events.cpp:2657
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2651
+#: src/menu_events.cpp:2663
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2676
+#: src/menu_events.cpp:2688
 msgid "Usage: control <side> <nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2687
+#: src/menu_events.cpp:2699
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2694
+#: src/menu_events.cpp:2706
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2750
+#: src/menu_events.cpp:2762
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "גנרל"
 
-#: src/menu_events.cpp:2754
+#: src/menu_events.cpp:2766
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "גנרל"
 
-#: src/menu_events.cpp:2865 src/menu_events.cpp:2867
+#: src/menu_events.cpp:2874 src/menu_events.cpp:2876
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:2873 src/menu_events.cpp:2879
+#: src/menu_events.cpp:2882 src/menu_events.cpp:2888
 msgid "prompt^Command:"
 msgstr "פקודה:"
 
-#: src/menu_events.cpp:2898
+#: src/menu_events.cpp:2907
 #, fuzzy
 msgid "User-Command#3"
 msgstr "מפקד"
@@ -6994,15 +7166,15 @@ msgstr "בחירת נשק:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:668 src/mouse_events.cpp:1402
+#: src/mouse_events.cpp:668 src/mouse_events.cpp:1403
 msgid "Damage Calculations"
 msgstr "חישובי נזק"
 
-#: src/mouse_events.cpp:1413
+#: src/mouse_events.cpp:1414
 msgid "Attack Enemy"
 msgstr "יש לתקוף את האויב"
 
-#: src/mouse_events.cpp:1414
+#: src/mouse_events.cpp:1415
 msgid "Choose weapon:"
 msgstr "בחירת נשק:"
 
@@ -7533,7 +7705,7 @@ msgstr "הוספת נקודת חיבור (socket) לנקודות הקיימות 
 msgid "Could not send initial handshake"
 msgstr "שליחת לחיצת יד ראשונית נכשלה"
 
-#: src/pathfind.cpp:303
+#: src/pathfind.cpp:305
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
@@ -7550,11 +7722,11 @@ msgstr ""
 msgid "Starting game"
 msgstr "נטוש את המשחק"
 
-#: src/play_controller.cpp:837
+#: src/play_controller.cpp:841
 msgid "Back to start"
 msgstr ""
 
-#: src/play_controller.cpp:839
+#: src/play_controller.cpp:843
 msgid "Back to turn "
 msgstr ""
 
@@ -7604,17 +7776,17 @@ msgstr "שם:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "תרחיש לא ידוע: "
 
-#: src/playmp_controller.cpp:249
+#: src/playmp_controller.cpp:248
 #, fuzzy
 msgid "End scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/playmp_controller.cpp:357
+#: src/playmp_controller.cpp:355
 #, fuzzy
 msgid "Waiting for next scenario..."
 msgstr "ממתין לתחילת המשחק..."
 
-#: src/playmp_controller.cpp:483
+#: src/playmp_controller.cpp:481
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7712,7 +7884,7 @@ msgid ""
 "want to save the game?"
 msgstr "התרחש ניתוק מהרשת, והמשחק אינו יכול להמשך. האם ברצונך לשמור את המשחק?"
 
-#: src/playsingle_controller.cpp:579
+#: src/playsingle_controller.cpp:577
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "עכשיו תורך"
@@ -7933,38 +8105,38 @@ msgstr "סטטיסטיקות"
 msgid "Help Wesnoth by sending us information"
 msgstr "עזור לווסנות' על ידי שליחת מידע אלינו"
 
-#: src/unit.cpp:383 src/unit.cpp:1158 src/unit.cpp:2364
+#: src/unit.cpp:383 src/unit.cpp:1158 src/unit.cpp:2392
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2402 src/unit.cpp:2607 src/unit.cpp:2663
+#: src/unit.cpp:2430 src/unit.cpp:2635 src/unit.cpp:2691
 #, fuzzy
 msgid " and "
 msgstr "חול"
 
-#: src/unit.cpp:2413
+#: src/unit.cpp:2441
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2478
+#: src/unit.cpp:2506
 #, fuzzy
 msgid "moves"
 msgstr "מהלכים"
 
-#: src/unit.cpp:2496 src/unit.cpp:2634
+#: src/unit.cpp:2524 src/unit.cpp:2662
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
-#: src/unit.cpp:2626
+#: src/unit.cpp:2654
 #, fuzzy
 msgid " move"
 msgstr "מהלכים"
 
-#: src/unit.cpp:2642
+#: src/unit.cpp:2670
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2672
+#: src/unit.cpp:2700
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

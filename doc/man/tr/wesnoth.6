@@ -1,0 +1,212 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2008 wesnoth "Wesnoth Savaþý"
+.
+.SH ÝSÝM
+wesnoth \- Wesnoth Savaþý, sýrayla oynanan fantastik bir strateji oyunu
+.
+.SH KULLANIM
+.
+\fBwesnoth\fP [\fIseçenekler\fP] [\fIdata_dizini\fP]
+.
+.SH AÇIKLAMA
+.
+\fBWesnoth\fP Savaþý, sýrayla oynanan fantastik bir strateji oyunudur.
+
+Oyunda iyi seçilmiþ bir asker kadrosu kullanýlarak tüm düþman liderleri
+yenilmeye çalýþýlýr. Bunun için köyler ve altýn kaynak olarak
+kullanýlýr. Bütün birimlerin kendilerine özgü kuvvetli ve zayýf yetenekleri
+vardýr. Kazanmak için kuvvetlerinizi düþmana karþý avantaj saðlayacak
+yerlere konuþlandýrmalýsýnýz. Birimler deneyim kazandýkça yeni yetenekler
+kazanýr ve daha güçlü hale gelirler. Oyunu kendi dilinizde oynayabilir,
+yeteneklerinizi bilgisayara karþý veya Wesnoth'un çevrimiçi oyuncularýna
+karþý sýnayabilirsiniz. Kendi özel birimlerinizi, senaryolarýnýzý veya
+seferberliklerinizi yazabilir ve bunlarý baþkalarý ile paylaþabilirsiniz.
+.
+.SH SEÇENEKLER
+.
+.TP 
+\fB\-\-bpp\fP\fI\ sayý\fP
+Benek baþýna düþen bit sayýsýný ayarlar. Örnek: \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign\fP
+skip menu, show directly the campaign menu.
+.TP 
+\fB\-\-compress\fP\fI\ girdi\-dosyasý\ çýktý\-dosyasý\fP
+Metin biçimli senaryo kaydýný (\fIgirdi\-dosyasý\fP) ikilik biçimde
+\fIçýktý\-dosyasý\fP adýyla kaydeder.
+.TP 
+\fB\-d, \-\-debug\fP
+Fazladan hata ayýklama bilgileri gösterir ve ek olarak oyun içi komut kipi
+seçeneklerini etkin kýlar (komut kipi hakkýnda bilgi edinmek için
+http://www.wesnoth.org/wiki/CommandMode adresine bakýnýz).
+.TP 
+\fB\-\-decompress\fP\fI\ girdi\-dosyasý\ çýktý\-dosyasý\fP
+Ýkilik senaryo kaydýný (\fIgirdi\-dosyasý\fP) açýp metin biçimli olarak
+(\fIçýktý\-dosyasý\fP) kaydeder.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+Oyunu tam ekran çalýþtýrýr.
+.TP 
+\fB\-\-fps\fP
+Çalýþmakta olan oyunda ekranýn saniyede kaç kere yeniden çizildiðini ekranýn
+bir köþesinde gösterir.
+.TP 
+\fB\-\-gunzip\fP\fI\ girdi\-dosyasý.gz\fP
+Gzipli bir dosyanýn sýkýþtýrmasýný açar ve .gz uzantýsýz olarak
+kaydeder. \fIgirdi\-dosyasý.gz\fP dosyasýný da siler.
+.TP 
+\fB\-\-gzip\fP\fI\ girdi\-dosyasý\fP
+Bir dosyayý \fIgirdi\-dosyasý\fP.gz adýyla sýkýþtýrarak kaydeder ve
+\fIgirdi\-dosyasý\fPný siler.
+.TP 
+\fB\-h, \-\-help\fP
+Komut satýrý seçeneklerini standart çýktýya listeler ve çýkar.
+.TP 
+\fB\-\-load\fP\fI\ oyun\-kaydý\fP
+Standart oyun kayýt dizininden bir oyun kaydýný yükler.
+.TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with \-\-load option.
+.TP 
+\fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
+Günlük alanlarýnýn önem seviyelerini ayarlar. Bütün günlük alanlarýný
+kapsamak üzere \fBall\fP belirtilebilir. Olasý önem seviyeleri: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. \fBerror\fP seviyesi öntanýmlýdýr.
+.TP 
+\fB\-\-logdomains\fP
+Tüm günlük alanlarýnýn bir listesini basar ve çýkar.
+.TP 
+\fB\-\-max\-fps\fP
+Oyun sýrasýnda ekranýn azami kare hýzýdýr. Deðer 1 ile 1000 arasýnda
+olmalýdýr. \fB50\fP öntanýmlýdýr.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+Bir çok oyunculu oyunu çalýþtýrýr. Bu seçenekle birlikte, aþaðýda açýklanan
+seçenekler belirtilebilir.
+.TP 
+\fB\-\-nocache\fP
+Oyun verisinin belleklenmesini iptal eder.
+.TP 
+\fB\-\-nosound\fP
+Oyunu sesler ve müzikler olmaksýzýn çalýþtýrýr.
+.TP 
+\fB\-\-path\fP
+Oyun data dizininin yerini basar ve çýkar.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+Ekran çözünürlüðünü ayarlar. Örnek: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+skip menu, connect to specified host if any, otherwise connect to the first
+server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-t, \-\-test\fP
+Oyunu küçük bir deneme senaryosuyla baþlatýr.
+.TP 
+\fB\-v, \-\-version\fP
+Sürüm numarasýný gösterir ve çýkar.
+.TP 
+\fB\-w, \-\-windowed\fP
+Oyunu pencereli kipte çalýþtýrýr.
+.TP 
+\fB\-\-no\-delay\fP
+Çizgesel baþarýmý ölçümlemek amacýyla oyunu gecikmeler olmaksýzýn
+çalýþtýrýr. Bu seçenek \fB\-\-nogui\fP seçeneði tarafýndan kendiliðinden etkin
+kýlýnýr.
+.TP 
+\fB\-\-nogui\fP
+Oyunu çizgesel arayüz olmaksýzýn çalýþtýrýr. Ýstenen etkiyi saðlamak için
+\fB\-\-multiplayer\fP seçeneðiyle kullanýlmalýdýr.
+.TP 
+\fB\-\-exit\-at\-end\fP
+Oyuncunun týklamasýný gerektiren zafer/yenilgi penceresi gösterilmeden
+senaryo bitiminde oyundan çýkýlýr. Bu ayrýca betikli baþarým ölçümlemesi
+yapýlýrken de kullanýlýr.
+.
+.SH "\-\-multiplayer ile belirtilebilecek seçenekler"
+.
+Taraf belirtilen çok oyunculu seçenekleri \fItaraf\fP ile imlenmiþtir. \fItaraf\fP
+yerine ilgili tarafýn numarasý yazýlýr. Seçilen senaryodaki olasý oyuncu
+sayýsýna baðlý olmakla birlikte bu im genellikle 1 veya 2 olur.
+.TP 
+\fB\-\-algorithm\fP\fItaraf\fP\fB=\fP\fIdeðer\fP
+Taraf için AI (saldýrý arayüzü) tarafýndan kullanýlacak standartdýþý
+algoritmayý belirtmek için kullanýlýr. Olasý deðerler: \fBidle_ai\fP ve
+\fBsample_ai\fP
+.TP  
+\fB\-\-controller\fP\fItaraf\fP\fB=\fP\fIdeðer\fP
+Tarafý kimin oynayacaðý belirtilir. Olasý deðerler: \fBhuman\fP ve \fBai\fP
+(sýrayla insan ve bilgisayar).
+.TP  
+\fB\-\-era=\fP\fIdeðer\fP
+Bu seçenek oyunu öntanýmlý (\fBDefault\fP) çað yerine \fIdeðer\fP ile belirtilen
+çaðda oynamak için kullanýlýr. Çað bir kimlik ile belirtilir. Çaðlar
+\fBdata/multiplayer/eras.cfg\fP dosyasýnda tanýmlanmýþtýr.
+.TP 
+<\-\-parm>\fItaraf\fP\fB=\fP\fIisim\fP\fB:\fP\fIdeðer\fP
+Tarafla ilgili ek parametreleri ayarlar. Bu parametreler \fB\-\-controller\fP ve
+\fB\-\-algorithm\fP seçenekleri ile kullanýlan seçeneklerle ilgilidir. Sadece
+kendi saldýrý arayüzünü tasarlamak isteyen kiþilerin iþine yarar. (Yeterince
+iyi belgelenmemiþtir.)
+.TP 
+\fB\-\-scenario=\fP\fIdeðer\fP
+Kimliði belirtilen çok oyunculu senaryoyu seçer. Öntanýmlý senaryo kimliði
+\fBmultiplayer_The_Freelands\fP'dýr.
+.TP 
+<\-\-side>\fItaraf\fP\fB=\fP\fIdeðer\fP
+Bu taraf için geçerli çaðdan bir ýrk seçmek için kullanýlýr. Irklar
+kimlikleriyle belirtilirler. Irklar \fBdata/multiplayer.cfg\fP dosyasýnda
+tanýmlanmýþtýr.
+.TP 
+\fB\-\-turns=\fP\fIdeðer\fP
+Seçilen senaryonun el sayýsýný sýnýrlamak için kullanýlýr. \fB50\fP
+öntanýmlýdýr.
+.TP 
+Çizgesel arayüzü baþlatmaksýzýn kendi saldýrý arayüzünüzü öntanýmlý saldýrý arayüzüne karþý denemek için komut satýrý örneði:
+\fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/benim_python_ai.py\fP
+.
+.SH YAZAN
+.
+Oyun David White <davidnwhite@verizon.net> tarafýndan yazýlmýþtýr.
+.br
+Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> ve
+Soliton <soliton.de@gmail.com> tarafýndan düzenlenmiþtir.
+.br
+Bu kýlavuz sayfasý ilk defa Cyril Bouthors <cyril@bouthors.org>
+tarafýndan yazýlmýþ ve Nilgün Belma Bugüner <nilgun@belgeler.org>
+tarafýndan Türkçe'ye çevrilmiþtir.
+.br
+Oyunun ana sayfasýný ziyaret etmeyi unutmayýn: http://www.wesnoth.org/
+.
+.SH "TELÝF HAKKI"
+.
+Copyright © 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Bu bir özgür yazýlýmdýr; GNU Genel Kamu Lisansýnýn
+&lt;http://www.gnu.org/licenses/gpl.html> koþullarýna baðlý kalarak
+kopyalarýný yeniden daðýtabilirsiniz. Yasalarýn izin verdiði ölçüde hiçbir
+garantisi yoktur; hatta SATILABÝLÝRLÝÐÝ veya ÞAHSÝ KULLANIMINIZA UYGUNLUÐU
+için bile garanti verilmez.
+.
+.SH "ÝLGÝLÝ BELGELER"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)
