@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -156,6 +156,7 @@ namespace hotkey {
 
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 
+const std::string CLEARED_TEXT = "__none__";
 
 hotkey_item::hotkey_item(HOTKEY_COMMAND id, 
 		const std::string& command, const std::string& description, bool hidden) :
@@ -192,7 +193,11 @@ void hotkey_item::load_from_config(const config& cfg)
 	if (!key.empty()) {
 		// They may really want a specific key on the keyboard: we assume
 		// that any single character keyname is a character.
-		if (key.size() > 1) {
+		if (key == CLEARED_TEXT)
+		{
+			type_ = hotkey_item::CLEARED;
+		}
+		else if (key.size() > 1) {
 			type_ = BY_KEYCODE;
 
 			keycode_ = sdl_keysym_from_name(key);
@@ -256,7 +261,7 @@ void hotkey_item::set_description(const std::string& description)
 }
 void hotkey_item::clear_hotkey()
 {
-	type_ = UNBOUND;
+	type_ = CLEARED;
 }
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
@@ -349,6 +354,12 @@ void save_hotkeys(config& cfg)
 
 		config& item = cfg.add_child("hotkey");
 		item["command"] = i->get_command();
+		
+		if (i->get_type() == hotkey_item::CLEARED)
+		{
+			item["key"] = CLEARED_TEXT;
+			continue;
+		}
 
 		if (i->get_type() == hotkey_item::BY_KEYCODE) {
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
@@ -840,7 +851,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		case HOTKEY_QUIT_GAME: {
 			if(disp.in_game()) {
-				ERR_G << "is in game -- showing quit message\n";
+				DBG_G << "is in game -- showing quit message\n";
 				const int res = gui::dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
 				if(res == 0) {
 					throw end_level_exception(QUIT);
