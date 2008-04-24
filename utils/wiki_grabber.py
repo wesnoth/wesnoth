@@ -32,6 +32,12 @@ if __name__ == "__main__":
     # default directory to find the source files in, no trailing /.
     src_directory = "../src/gui"
 
+    # current file being processed
+    current_file = ""
+
+    # current block being processed
+    current_block = ""
+
     def reindent( data):
         """Converts the raw input to an easier to use format.
         
@@ -185,11 +191,15 @@ if __name__ == "__main__":
             header = process_header(res[0][0])
             body = process_body(res[0][1])
         else:
-            print "Invalid wiki block, discarded."
+            print "File: "  + current_file
+            print "Block:\n"  + current_block
+            print "\n\nInvalid wiki block, discarded."
             return
 
         if(header[0] == None):
-            print "No page defined, dropped."
+            print "File: "  + current_file
+            print "Block:\n"  + current_block
+            print "\n\nNo page defined, dropped."
             return
 
         if(file_map.has_key(header[0]) == False):
@@ -210,6 +220,8 @@ if __name__ == "__main__":
     def process_file(name):
         """Processes all wiki blocks (if any) of a file."""
 
+        global current_file
+        current_file = name
         file = open(name, "r")
         data = file.read()
         file.close()
@@ -218,10 +230,10 @@ if __name__ == "__main__":
         res = regex.findall(data)
         if(res != None):
             for i in range(len(res)):
+                global current_block
+                current_block = res[i][0]
                 section = reindent(res[i][1])
                 wiki_info = process(section)
-        else:
-            print "No Wiki block found."
 
     def process_directory(dir):
         """Processes a directory.
