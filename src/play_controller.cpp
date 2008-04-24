@@ -276,10 +276,14 @@ void play_controller::show_help(){
 }
 
 void play_controller::undo(){
+	// deselect unit (only here, not to be done when undoing attack-move)
+	mouse_handler_.deselect_hex();
 	menu_handler_.undo(player_number_);
 }
 
 void play_controller::redo(){
+	// deselect unit (only here, not to be done when undoing attack-move)
+	mouse_handler_.deselect_hex();
 	menu_handler_.redo(player_number_);
 }
 
@@ -416,7 +420,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		gui_->invalidate_all();
 	}
 
-	if (!recorder.is_skipping()){
+	if (!recorder.is_skipping() && !skip_replay_){
 		gui_->scroll_to_leader(units_, player_number_);
 	}
 }
