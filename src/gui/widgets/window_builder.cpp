@@ -180,19 +180,22 @@ namespace {
 const std::string& twindow_builder::read(const config& cfg)
 {
 /*WIKI
- * [window]
+ * @page = GUIToolkitWML
+ * @order = 1_window
+ *
+ * = Window defintion =
  *
  * A window defines how a window looks in the game.
  *
+ * @start_table = config
+ *     id (string)                   Unique id for this window.
+ *     description (t_string)        Unique translatable name for this window.
  *
- *     id = (string = "")            Unique id for this window.
- *     description = (t_string = "") Unique translatable name for this window.
+ *     resolution (section)          The definitions of the window in various
+ *                                   resolutions.
+ * @end_table
  *
- *
- *
- * [/window]
  */
-
 
 	id_ = cfg["id"];
 	description_ = cfg["description"];
@@ -222,19 +225,25 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	grid(0) //new tbuilder_grid(cfg.child("grid")))
 {
 /*WIKI
- * [resolution]
- *     window_width = (unsigned = 0) Width of the application window.
- *     window_height = (unsigned = 0) 
- *                                   Height of the application window.
- *     width = (unsigned)            Width of the window to show.
- *     height = (unsigned)           Height of the window to show.
+ * @page = GUIToolkitWML
+ * @order = 1_window
  *
- *     definition = (string = "default")
- *                                   Definition of the window which we want to show.
+ * == Resolution ==
  *
- *     [grid]                        The grid with the widgets to show.
+ * @start_table = config
+ *     window_width (unsigned = 0)   Width of the application window.
+ *     window_height (unsigned = 0)  Height of the application window.
+ *     width (unsigned)              Width of the window to show.
+ *     height (unsigned)             Height of the window to show.
  *
- * [/resolution]
+ *     definition (string = "default")
+ *                                   Definition of the window which we want to 
+ *                                   show.
+ *
+ *     grid (section)                The grid with the widgets to show. FIXME 
+ *                                   the grid needs its own documentation page.
+ * @end_table
+ *
  */
 
 	VALIDATE(cfg.child("grid"), _("No grid defined."));

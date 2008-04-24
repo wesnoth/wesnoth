@@ -152,7 +152,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *
  *     widget_definitions (section)  The defintions of all 
  *                                   [[#widget_list|widgets]].
- *     window_definitions (section)  The defintions of all 
+ *     window (section)              The defintions of all 
  *                                   [[#window_list|windows]].
  * @end_table
  *
@@ -165,7 +165,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     window_definition             A window.
  * @end_table
  *
- * <span id="widget_list"></span>List of available widgets:
+ * <span id="window_list"></span>List of available windows:
  * @start_table = window_definition
  *     addon_connect                 The dialog to connect to the addon server
  *                                   and maintain locally installed addons.
