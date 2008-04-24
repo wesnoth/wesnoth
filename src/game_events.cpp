@@ -763,9 +763,9 @@ void event_handler::handle_event_command(const queued_event& event_info,
 			if (!shroud.empty()) {
 				(*teams)[team_index].set_shroud( utils::string_bool(shroud, true) );
 			}
-			// Set shroud data
+			// Merge shroud data
 			if (!shroud_data.empty()) {
-				(*teams)[team_index].replace_shroud_map_data(shroud_data);
+				(*teams)[team_index].merge_shroud_map_data(shroud_data);
 			}
 			// Set fog
 			if (!fog.empty()) {

@@ -349,11 +349,9 @@ void team::team_info::write(config& cfg) const
 	cfg["colour"] = lexical_cast_default<std::string>(colour);
 }
 
-void team::replace_shroud_map_data(const std::string& shroud_data)
+void team::merge_shroud_map_data(const std::string& shroud_data)
 {
-	//!@todo TODO: in the future I'd like to make external shroud data to be
-	//! combined with the current one instead of always replacing it.
-	shroud_.read(shroud_data);
+	shroud_.merge(shroud_data);
 }
 
 team::team(const config& cfg, int gold) : 
@@ -771,6 +769,22 @@ void team::shroud_map::read(const std::string& str)
 				data_.back().push_back(true);
 			else if(*sh == '0')
 				data_.back().push_back(false);
+		}
+	}
+}
+
+void team::shroud_map::merge(const std::string& str)
+{ 
+	int x=0, y=0;
+	for(std::string::const_iterator sh = str.begin(); sh != str.end(); ++sh) {
+		if(*sh == '|' && sh != str.begin()) {
+			y=0;
+			x++;
+		} else if(*sh == '1') {
+			clear(x,y);
+			y++;
+		} else if(*sh == '0') {
+			y++;
 		}
 	}
 }
