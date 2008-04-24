@@ -122,18 +122,55 @@ void load_settings()
 const std::string& tgui_definition::read(const config& cfg)
 {
 /*WIKI
- * [gui]
+ * @page = GUIToolkitWML
+ * @order = 1
+ *
+ * = GUI =
+ *
  * The gui class contains the definitions of all widgets and windows used in
- * the game. The standard gui has the id 'default' and used as fallback it
- * another gui doesn't define a specific item. NOTE things might look odd when
- * that happens.
+ * the game. This can be seen as a skin and it allows the user to define the
+ * visual aspect of the various items. The visual aspect can be determined
+ * depending on the size of the game window.
+ * 
+ * Widgets have a definition and an instance, the definition contains the 
+ * general info/looks of a widget and the instance the actual looks. Eg the
+ * where the button text is placed is the same for every button, but the
+ * text of every button might differ. 
  *
+ * The default gui has the id ''default'' and must exist, in the default gui
+ * there must a definition of every widget with the id ''default'' and every
+ * window needs to be defined. If the definition of a widget with a certain
+ * id doesn't exist it will fall back to default in the current gui, if it's
+ * not defined there either it will fall back to the default widget in the
+ * default theme. That way it's possible to slowly create your own gui and
+ * test it.
  *
- *     id = (string = "")            Unique id for this gui (theme).
- *     description = (t_string = "") Unique translatable name for this gui.
+ * The gui has the following data:
+ * @start_table = config
+ *     id (string)                   Unique id for this gui (theme).
+ *     description (t_string)        Unique translatable name for this gui.
  *
- *     [button_definition]           The definitions of the buttons in this gui.
- * [/gui]
+ *     widget_definitions (section)  The defintions of all 
+ *                                   [[#widget_list|widgets]].
+ *     window_definitions (section)  The defintions of all 
+ *                                   [[#window_list|windows]].
+ * @end_table
+ *
+ * <span id="widget_list"></span>List of available widgets:
+ * @start_table = widget_definition
+ *     button_definition             A push button.
+ *     label_definition              A label.
+ *     text_box_definition           A single line text box.
+ *     tooltip_definition            A small tooltip with help.
+ *     window_definition             A window.
+ * @end_table
+ *
+ * <span id="widget_list"></span>List of available widgets:
+ * @start_table = window_definition
+ *     addon_connect                 The dialog to connect to the addon server
+ *                                   and maintain locally installed addons.
+ * @end_table
+ *
  */
 	id = cfg["id"];
 	description = cfg["description"];
@@ -205,98 +242,27 @@ tcontrol_definition::tcontrol_definition(const config& cfg) :
 	resolutions()
 {
 /*WIKI
- * The general defintion of a control.
+ * @page = GUIToolkitWML
+ * @order = 1_widget
  *
- *     id = (string = "")            Unique id for this gui (theme).
- *     description = (t_string = "") Unique translatable name for this gui.
+ * = Widget defintion =
  *
- *     [resolution]                  The definitions of the button in various
+ * Every widget has some parts in common, first of all every definition has the
+ * following fields.
+ *
+ * @start_table = config
+ *     id (string)                   Unique id for this gui (theme).
+ *     description (t_string)        Unique translatable name for this gui.
+ *
+ *     resolution (section)          The definitions of the widget in various
  *                                   resolutions.
+ * @end_table
+ *
  */
 
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
-}
-
-template<class T>
-void tcontrol_definition::load_resolutions(const config::child_list& resolution_list)
-{
-
-	VALIDATE(!resolution_list.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = resolution_list.begin();
-			itor != resolution_list.end(); ++itor) {
-
-		resolutions.push_back(new T(**itor));
-	}
-}
-
-tbutton_definition::tbutton_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-/*WIKI
- * The definition of a normal push button.
- * See control_definition.
- */
-	DBG_G_P << "Parsing button " << id << '\n';
-
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
-}
-
-tbutton_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg)
-{
-/*WIKI
- * [button_definition][resolution]
- *     [state_enabled]               Settings for the enabled state.
- *     [state_disabled]              Settings for the disabled state.
- *     [state_pressed]               Settings for the pressed state.
- *     [state_focussed]              Settings for the focussed state (happens
- *                                   when the mouse moves over the button).
- * [/resolution][/button_definition]
- */
-
-	// Note the order should be the same as the enum tstate is button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focussed")));
-}
-
-tlabel_definition::tlabel_definition(const config& cfg) :
-	tcontrol_definition(cfg)
-{
-/*WIKI
- * The definition of a normal label.
- * See control_definition.
- */
-
-	DBG_G_P << "Parsing label " << id << '\n';
-
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
-}
-
-tstate_definition::tstate_definition(const config* cfg) :
-	full_redraw(cfg ? utils::string_bool((*cfg)["full_redraw"]) : false),
-	canvas()
-{
-/*WIKI
- * [state]
- * Definition of a state. A state contains the info what to do in a state.
- * Atm this is rather focussed on the drawing part, might change later.
- * Keys: 
- *     full_redraw (bool = false)      Does this state need a full redraw when
- *                                     it's being drawn? Normally only required
- *                                     if the widget is (partly) transparent.
- *     [draw]                          Section with drawing directions for a canvas.
- * [/state]
- */
-
-	const config* draw = cfg ? cfg->child("draw") : 0;
-
-	VALIDATE(draw, _("No state or draw section defined."));
-
-	canvas.set_cfg(*draw);
 }
 
 tresolution_definition_::tresolution_definition_(const config& cfg) :
@@ -315,7 +281,11 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
 	state()
 {
 /*WIKI
- * [resolution]
+ * @page = GUIToolkitWML
+ * @order = 1_widget
+ *
+ * == Resolution ==
+ *
  * Depending on the resolution a widget can look different. Resolutions are
  * evaluated in order of appearance. The ''window_width'' and ''window_height''
  * are the upper limit this resolution is valid for. When one of the sizes
@@ -328,33 +298,36 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  * the wanted default size and the size needed for the text. The size of the
  * text differs per used widget so needs to be determined per button. 
  *
- *     window_width = (unsigned = 0) Width of the application window.
- *     window_height = (unsigned = 0) 
+ * @start_table = config
+ *     window_width (unsigned = 0)   Width of the application window.
+ *     window_height (unsigned = 0) 
  *                                   Height of the application window.
- *     min_width = (unsigned = 0)    The minimum width of the widget.
- *     min_height = (unsigned = 0)   The minimum height of the widget.
+ *     min_width (unsigned = 0)      The minimum width of the widget.
+ *     min_height (unsigned = 0)     The minimum height of the widget.
  *
- *     default_width = (unsigned = 0)
- *                                   The default width of the widget.
- *     default_height = (unsigned = 0)
- *                                   The default height of the widget.
+ *     default_width (unsigned = 0)  The default width of the widget.
+ *     default_height (unsigned = 0) The default height of the widget.
  *
- *     max_width = (unsigned = 0)    The maximum width of the widget.
- *     max_height = (unsigned = 0)   The maximum height of the widget.
+ *     max_width (unsigned = 0)      The maximum width of the widget.
+ *     max_height (unsigned = 0)     The maximum height of the widget.
  *
- *     text_extra_width = (unsigned = 0)
+ *     text_extra_width (unsigned = 0)
  *                                   The extra width needed to determine the 
  *                                   minimal size for the text.
- *     text_extra_height = (unsigned = 0)
+ *     text_extra_height (unsigned = 0)
  *                                   The extra height needed to determine the
  *                                   minimal size for the text.
- *     text_font_size = (unsigned)   The font size, which needs to be used to 
+ *     text_font_size (unsigned)     The font size, which needs to be used to 
  *                                   determine the minimal size for the text.
  *     text_font_style (font_style = "")  
  *                                   The font style, which needs to be used to
  *                                   determine the minimal size for the text.
  *
- * [/resolution]
+ *     state (section)               Every widget has one or more state sections.
+ *                                   Note they aren't called state but state_xxx
+ *                                   the exact names are listed per widget.
+ * @end_table
+ *
  */
 
 	VALIDATE(text_font_size, missing_mandatory_wml_key("resolution", "text_font_size"));
@@ -363,14 +336,119 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
 		<< window_width << ", " << window_height << '\n';
 }
 
+template<class T>
+void tcontrol_definition::load_resolutions(const config::child_list& resolution_list)
+{
+
+	VALIDATE(!resolution_list.empty(), _("No resolution defined."));
+	for(std::vector<config*>::const_iterator itor = resolution_list.begin();
+			itor != resolution_list.end(); ++itor) {
+
+		resolutions.push_back(new T(**itor));
+	}
+}
+
+tstate_definition::tstate_definition(const config* cfg) :
+	full_redraw(cfg ? utils::string_bool((*cfg)["full_redraw"]) : false),
+	canvas()
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget
+ *
+ * == State ==
+ *
+ * Definition of a state. A state contains the info what to do in a state.
+ * Atm this is rather focussed on the drawing part, might change later.
+ * Keys: 
+ * @start_table = config
+ *     full_redraw (bool = false)      Does this state need a full redraw when
+ *                                     it's being drawn? Normally only required
+ *                                     if the widget is (partly) transparent.
+ *     draw (section)                  Section with drawing directions for a canvas.
+ * @end_table
+ *
+ */
+
+	const config* draw = cfg ? cfg->child("draw") : 0;
+
+	VALIDATE(draw, _("No state or draw section defined."));
+
+	canvas.set_cfg(*draw);
+}
+
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget
+ *
+ * = Example =
+ *
+ * FIXME add a example here.
+ * 
+ * = List of widgets =
+ *
+ * Below the list of available widgets.
+ *
+ */
+
+tbutton_definition::tbutton_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_G_P << "Parsing button " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+tbutton_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget_button
+ *
+ * == Button ==
+ *
+ * The definition of a normal push button.
+ *
+ * The following states exist:
+ * * state_enabled, the button is enabled.
+ * * state_disabled, the button is disabled.
+ * * state_pressed, the left mouse button is down.
+ * * state_focussed, the mouse is over the button.
+ *
+ */
+
+	// Note the order should be the same as the enum tstate is button.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_pressed")));
+	state.push_back(tstate_definition(cfg.child("state_focussed")));
+}
+
+tlabel_definition::tlabel_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_G_P << "Parsing label " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+
 tlabel_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * [label_definition][resolution]
- *     [state_enabled]               Settings for the enabled state.
- *     [state_disabled]              Settings for the disabled state.
- * [/resolution][/label_definition]
+ * @page = GUIToolkitWML
+ * @order = 1_widget_label
+ *
+ * == Label ==
+ *
+ * The definition of a normal label.
+ * 
+ * The following states exist:
+ * * state_enabled, the label is enabled.
+ * * state_disabled, the label is disabled.
+ *
  */
 
 	// Note the order should be the same as the enum tstate is label.hpp.
@@ -381,11 +459,6 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
 ttext_box_definition::ttext_box_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-/*WIKI
- * The definition of a normal text box.
- * See control_definition.
- */
-
 	DBG_G_P << "Parsing text_box " << id << '\n';
 
 	load_resolutions<tresolution>(cfg.get_children("resolution"));
@@ -393,16 +466,33 @@ ttext_box_definition::ttext_box_definition(const config& cfg) :
 
 ttext_box_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg),
-	text_x_offset(cfg["text_x_offset"]), //FIXME document
-	text_y_offset(cfg["text_y_offset"])  //FIXME document
+	text_x_offset(cfg["text_x_offset"]),
+	text_y_offset(cfg["text_y_offset"])
 {
 /*WIKI
- * [label_definition][resolution]
- *     [state_enabled]               Settings for the enabled state.
- *     [state_disabled]              Settings for the disabled state.
- *     [state_focussed]              Settings for the focussed state (happens
- *                                   when the it captures the keyboard).
- * [/resolution][/label_definition]
+ * @page = GUIToolkitWML
+ * @order = 1_widget_text_box
+ *
+ * == Text box ==
+ *
+ * The definition of a text box.
+ *
+ * The resolution for a text box also contains the following keys:
+ * @start_table = config
+ *     text_x_offset (f_unsigned = "") The x offset of the text in the text
+ *                                     box. This is needed for the code to 
+ *                                     determine where in the text the mouse 
+ *                                     clicks, so it can set the cursor
+ *                                     properly.
+ *     text_y_offset (f_unsigned = "") The y offset of the text in the text
+ *                                     box.
+ * @end_table
+ *
+ * The following states exist:
+ * * state_enabled, the text box is enabled.
+ * * state_disabled, the text box is disabled.
+ * * state_focussed, the text box has the focus of the keyboard.
+ *
  */
 
 	// Note the order should be the same as the enum tstate is text_box.hpp.
@@ -414,11 +504,6 @@ ttext_box_definition::tresolution::tresolution(const config& cfg) :
 ttooltip_definition::ttooltip_definition(const config& cfg) : 
 	tcontrol_definition(cfg)
 {
-/*WIKI
- * The definition of a tooltip.
- * See control_definition.
- */
-
 	DBG_G_P << "Parsing tooltip " << id << '\n';
 
 	load_resolutions<tresolution>(cfg.get_children("resolution"));
@@ -428,19 +513,25 @@ ttooltip_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * [label_definition][resolution]
- *     [state_enabled]               Settings for the enabled state.
- * [/resolution][/label_definition]
+ * @page = GUIToolkitWML
+ * @order = 1_widget_tooltip
+ *
+ * == Tooltip ==
+ *
+ * The definition of a tooltip.
+ *
+ * The following states exist:
+ * * state_enabled, the tooltip has only one state, it's either shown or hidden.
+ *
  */
 
 	// Note only one state for a tooltip.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
-
 const std::string& twindow_definition::read(const config& cfg)
 {
-/*WIKI
+/*WIKI (FIXME cleanup)
  * [window_definition]
  * The definition of a normal push window.
  *
@@ -482,7 +573,7 @@ twindow_definition::tresolution::tresolution(const config& cfg) :
 	background(cfg.child("background")),
 	foreground(cfg.child("foreground"))
 {
-/*WIKI
+/*WIKI (FIXME cleanup)
  * [resolution]
  *     window_width = (unsigned = 0) Width of the application window.
  *     window_height = (unsigned = 0) 
