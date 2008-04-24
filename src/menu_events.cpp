@@ -2309,6 +2309,10 @@ private:
 				chat_command_handler::init_map();//grab chat_ /command handlers
 				chmap::get_command("log")->flags = ""; //clear network-only flag from log
 				chmap::get_command("version")->flags = ""; //clear network-only flag
+				chmap::get_command("ignore")->flags = ""; //clear network-only flag
+				chmap::get_command("friend")->flags = ""; //clear network-only flag
+				chmap::get_command("list")->flags = ""; //clear network-only flag
+				chmap::get_command("remove")->flags = ""; //clear network-only flag
 				chmap::set_cmd_prefix(":");
 				register_command("refresh", &console_handler::do_refresh,
 					_("Refresh gui."));
