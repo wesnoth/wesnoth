@@ -26,7 +26,6 @@ class unit_map;
 #include <string>
 #include <utility>
 #include <set>
-#include <vector>
 
 namespace preferences {
 
@@ -183,10 +182,6 @@ namespace preferences {
 
 	std::set<std::string> &encountered_units();
 	std::set<t_translation::t_terrain> &encountered_terrains();
-	std::vector<std::string> &formula_history();
-	std::vector<std::string> &search_history();
-	std::vector<std::string> &chat_history();
-	std::vector<std::string> &command_history();
 
 	std::vector<std::string>* get_history(const std::string& id);
 

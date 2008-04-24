@@ -22,8 +22,6 @@
 
 #include "SDL.h"
 
-#include <vector>
-
 namespace gui {
 
 class textbox : public scrollarea
@@ -33,8 +31,6 @@ public:
 	virtual ~textbox();
 
 	const std::string text() const;
-	int get_history_cursor()				{ return history_cursor_; }
-	std::vector<std::string> get_history()			{ return history_vector_; }
 	void set_text(const std::string& text);
 	void append_text(const std::string& text,bool auto_scroll = false);
 	void clear();
@@ -53,8 +49,6 @@ public:
 	//an inline forwarding function instead
 	void set_location(int x, int y) { widget::set_location(x,y); }
 
-	void set_history(std::vector<std::string> hist) { history_vector_ = hist;
-							  history_cursor_ = hist.size() - 1;}
 protected:
 	virtual void draw_contents();
 	virtual void set_inner_location(SDL_Rect const &);
@@ -69,7 +63,6 @@ private:
 
 	// mutable unsigned int firstOnScreen_;
 	int cursor_;
-	int history_cursor_;
 	int selstart_;
 	int selend_;
 	bool grabmouse_;
@@ -94,8 +87,6 @@ private:
 
 	double alpha_;
 	double alpha_focus_;
-
-	std::vector<std::string> history_vector_;
 
 	void handle_event(const SDL_Event& event);
 

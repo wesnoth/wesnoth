@@ -2528,9 +2528,6 @@ private:
 
 	void menu_handler::send_chat_message(const std::string& message, bool allies_only)
 	{
-		// First, this will change the end of the history vector from a blank string to the most recent input
-		preferences::chat_history().back() = message;
-
 		config cfg;
 		cfg["id"] = preferences::login();
 		cfg["message"] = message;
@@ -2553,14 +2550,12 @@ private:
 		recorder.speak(cfg);
 		add_chat_message(time(NULL), cfg["id"], side, message,
 				private_message ? game_display::MESSAGE_PRIVATE : game_display::MESSAGE_PUBLIC);
+
 	}
 
 
 	void menu_handler::do_search(const std::string& new_search)
 	{
-		// First, this will change the end of the history vector from a blank string to the most recent input
-		preferences::search_history().back() = new_search;
-
 		if(new_search.empty() == false && new_search != last_search_)
 			last_search_ = new_search;
 
@@ -2638,9 +2633,6 @@ private:
 	void menu_handler::do_command(const std::string& str,
 			const unsigned int team_num, mouse_handler& mousehandler)
 	{
-		// First, this will change the end of the history vector from a blank string to the most recent input
-		preferences::command_history().back() = str;
-
 		console_handler ch(*this, mousehandler, team_num);
 		ch.dispatch(str);
 	}
@@ -2871,9 +2863,6 @@ private:
 	void menu_handler::do_ai_formula(const std::string& str,
 			const unsigned int team_num, mouse_handler& /*mousehandler*/)
 	{
-		// First, this will change the end of the history vector from a blank string to the most recent input
-		preferences::formula_history().back() = str;
-
 		replay dummy_replay;
 		replay_network_sender dummy_sender(dummy_replay);
 		undo_list dummy_undo;

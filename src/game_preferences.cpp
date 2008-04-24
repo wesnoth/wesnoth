@@ -46,11 +46,6 @@ bool haloes = true;
 std::set<std::string> encountered_units_set;
 std::set<t_translation::t_terrain> encountered_terrains_set;
 
-std::vector<std::string> formula_history_vector;
-std::vector<std::string> search_history_vector;
-std::vector<std::string> chat_history_vector;
-std::vector<std::string> command_history_vector;
-
 std::map<std::string, std::vector<std::string> > history_map;
 const unsigned max_history_saved = 50;
 
@@ -707,22 +702,6 @@ std::set<std::string> &encountered_units() {
 
 std::set<t_translation::t_terrain> &encountered_terrains() {
 	return encountered_terrains_set;
-}
-
-std::vector<std::string> &formula_history() {
-	return formula_history_vector;
-}
-
-std::vector<std::string> &search_history() {
-	return search_history_vector;
-}
-
-std::vector<std::string> &chat_history() {
-	return chat_history_vector;
-}
-
-std::vector<std::string> &command_history() {
-	return command_history_vector;
 }
 
 
