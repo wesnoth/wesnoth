@@ -755,7 +755,7 @@ void attack::fire_event(const std::string& n)
 		dat.add_child("first");
 		dat.add_child("second");
 		if(a_ != units_.end()) {
-			(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
+			(*(dat.child("first")))["weapon"]= a_stats_->weapon ? a_stats_->weapon->id() : "none";
 
 		}
 		if(d_ != units_.end()) {
