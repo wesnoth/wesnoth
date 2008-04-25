@@ -694,6 +694,21 @@ def write_index(out_path):
     </html>
     """)
 
+def copy_images():
+    if not options.nocopy:
+        print "Copying files."
+        image_collector.copy_and_color_images(options.output)
+        shutil.copy2(os.path.join("data", "tools/unit_tree/style.css"), options.output)
+        for grab in [
+            "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
+            "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
+            "http://www.wesnoth.org/mw/skins/glamdrol/navbg.png"]:        
+            local = os.path.join(options.output, grab[grab.rfind("/") + 1:])
+            if not os.path.exists(local):
+                print "Fetching", grab
+                url = urllib2.urlopen(grab)
+                file(local, "w").write(url.read())
+
 def output(isocode):
     """
     We output:
@@ -831,20 +846,11 @@ if __name__ == '__main__':
 
     image_collector = helpers.ImageCollector(datadir, userdir)
 
+    did_images = False
     for isocode in languages:
         output(isocode)
-
-    if not options.nocopy:
-        print "Copying files."
-        image_collector.copy_and_color_images(options.output)
-        shutil.copy2(os.path.join("data", "tools/unit_tree/style.css"), options.output)
-        for grab in [
-            "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
-            "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
-            "http://www.wesnoth.org/mw/skins/glamdrol/navbg.png"]:        
-            local = os.path.join(options.output, grab[grab.rfind("/") + 1:])
-            if not os.path.exists(local):
-                print "Fetching", grab
-                url = urllib2.urlopen(grab)
-                file(local, "w").write(url.read())
+        if not did_images:
+            copy_images()
+            did_images = True
+        
 
