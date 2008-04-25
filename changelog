@@ -68,8 +68,8 @@ Version 1.5.0-svn:
    * smarter pathfinding: if same MP cost, prefer terrains with better defense
      and empty hexes (less frequent multi-turn moves blocked by a friend)
    * New full map screenshot feature (no default hotkey).
-   * More info in hotkey message (where the key is currently used and a warning
-     if the screenshot hotkey does not use a modifier)
+   * Screenshots show a pop-up with the url and size of the file created.
+   * When trying to define an already used hotkey, now tell where it's used.
    * Load-game dialog displays a campaign's translated name rather than its
      internal id now
    * the hardcoded resolution list now also includes tiny gui and small gui
@@ -180,6 +180,7 @@ Version 1.5.0-svn:
      process as well.
    * "fog" and "shroud" debug commands now also update the minimap, and
      "shroud" stop shrouding your units.
+   * Fixed shroud not directly cleared in minimap after a move+attack action.
 
 Version 1.4:
  * language and i18n:
