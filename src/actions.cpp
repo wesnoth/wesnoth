@@ -788,7 +788,9 @@ void attack::fire_event(const std::string& n)
 	dat.add_child("second");
 	(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
 	(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
-	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,attacker_,defender_,dat));
+	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
+								game_events::entity_location(attacker_,a_id_),
+								game_events::entity_location(defender_,d_id_),dat));
 
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist
