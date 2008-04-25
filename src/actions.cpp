@@ -218,7 +218,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 
 			config cfg_unit1;
 			new_unit.write(cfg_unit1);
-			DBG_NG << cfg_unit1;
+			DBG_NG << cfg_unit1.debug();
 			if (!game_config::ignore_replay_errors) {
 				throw replay::error("OOS while recruiting.");
 			}
@@ -1327,7 +1327,11 @@ attack::attack(game_display& gui, const gamemap& map,
 				fire_event("attack_end");
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc));
 
-				refresh_bc();
+				// Don't try to call refresh_bc() here the attacker or defender might have
+				// been replaced by another unit, which might have a lower number of weapons.
+                // In that case refresh_bc() will terminate with an invalid selected weapon.
+				a_ = units_.find(attacker_);
+				d_ = units_.find(defender_);refresh_bc();
 
 				if(a_ == units_.end() || !death_loc.matches_unit(a_->second)) {
 					// WML has invalidated the dying unit, abort
@@ -1847,23 +1851,42 @@ namespace {
 
 			// We clear one past the edge of the board, so that the half-hexes
 			// at the edge can also be cleared of fog/shroud.
-			if (on_board_loc || map.on_board(adj[i])) {
+			if (on_board_loc || map.on_board(adj[i],true)) {
 				// Both functions should be executed so don't use || which
 				// uses short-cut evaluation.
 				const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
 
-				if(res && cleared != NULL) {
-					cleared->push_back(adj[i]);
+				if(res) {
+					if(res) {
+						result = true;
+						// If we're near the corner it might be the corner also needs to be cleared
+						// this always happens at the lower left corner and depending on the with
+						// at the upper or lower right corner.
+						if(adj[i].x == 0 && adj[i].y == map.h() - 1) { // Lower left corner
+							const gamemap::location corner(-1 , map.h());
+							tm.clear_shroud(corner);
+							tm.clear_fog(corner);
+						} else if(map.w() % 2 && adj[i].x == map.w() - 1 && adj[i].y == map.h() - 1) { // Lower right corner
+							const gamemap::location corner(map.w() , map.h());
+							tm.clear_shroud(corner);
+							tm.clear_fog(corner);
+						} else if(!(map.w() % 2) && adj[i].x == map.w() - 1 && adj[i].y == 0) { // Upper right corner
+							const gamemap::location corner(map.w() , -1);
+							tm.clear_shroud(corner);
+							tm.clear_fog(corner);
+						}
+						if(cleared) {
+							cleared->push_back(adj[i]);
+						}
+					}
 				}
-
-				result |= res;
 			}
 		}
 
 		return result;
 	}
 
-	//! Returns true iff some shroud is cleared.
+	//! Returns true if some shroud is cleared.
 	//! seen_units will return new units that have been seen by this unit.
 	//! If known_units is NULL, seen_units can be NULL and will not be changed.
 	bool clear_shroud_unit(const gamemap& map,
@@ -1894,7 +1917,7 @@ namespace {
 			if(sighted != units.end() &&
 					(sighted->second.invisible(*it,units,teams) == false
 					 || teams[team].is_enemy(sighted->second.side()) == false)) {
-				//check if we know this unit, but we always know oursefl
+				//check if we know this unit, but we always know ourself
 				//just in case we managed to move on a fogged hex (teleport)
 				if(seen_units != NULL && known_units != NULL
 						&& known_units->count(*it) == 0 && *it != loc) {
@@ -1922,6 +1945,7 @@ void recalculate_fog(const gamemap& map,
 	if (teams[team].uses_fog() == false)
 		return;
 
+	assert(team >= 0 && static_cast<size_t>(team) < teams.size());
 	teams[team].refog();
 
 	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
