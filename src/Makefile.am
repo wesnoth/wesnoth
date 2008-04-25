@@ -35,7 +35,9 @@ noinst_LIBRARIES = libwesnoth-core.a libwesnoth.a
 
 pkgdatadir=$(datadir)/@DATADIR@
 
-THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
+INTERNALLIBS = -lwesnoth-core
+
+THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(LIBINTL) \
 	$(BOOST_IOSTREAMS_LIBS) $(BOOST_REGEX_LIBS)
 
@@ -132,7 +134,7 @@ wesnoth_SOURCES = \
 	game.cpp \
 	$(wesnoth_source)
 	
-wesnoth_LDADD = $(THELIBS) -lwesnoth
+wesnoth_LDADD = $(INTERNALLIBS) -lwesnoth $(THELIBS)
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
