@@ -38,7 +38,6 @@ public:
 	void mouse_left_button_down(tevent_handler& event);
 	void mouse_left_button_up(tevent_handler&);
 	void mouse_left_button_click(tevent_handler&);
-	void mouse_left_button_double_click(tevent_handler&); //FIXME remove
 
 	void set_retval(const int retval) { retval_ = retval; }
 

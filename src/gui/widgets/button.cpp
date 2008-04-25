@@ -86,11 +86,6 @@ void tbutton::mouse_left_button_click(tevent_handler&)
 	// Do the custom handling (not implemented yet) FIXME
 }
 
-void tbutton::mouse_left_button_double_click(tevent_handler&) 
-{ 
-	DBG_G_E << "Button: left mouse button double click.\n"; 
-}
-
 tbutton::RETVAL tbutton::get_retval_by_id(const std::string& id)
 {
 	//! Note it might change to a map later depending on the number
