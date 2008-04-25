@@ -24,6 +24,7 @@
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
+#include "filesystem.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
 #include "preferences_display.hpp"
@@ -795,7 +796,8 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index)
 {
 	const int zoom_amount = 4;
-
+	bool map_screenshot = false;
+	
 	if(executor != NULL) {
 		if(!executor->can_execute_command(command, index) || executor->execute_command(command, index))
 		return;
@@ -813,14 +815,25 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_FULLSCREEN:
 			preferences::set_fullscreen(!preferences::fullscreen());
 			break;
+		case HOTKEY_MAP_SCREENSHOT:
+			if (!disp.in_game() && !disp.in_editor())
+				break;
+			map_screenshot = true;
+		case HOTKEY_SCREENSHOT: {
+			std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
+			std::string filename = get_screenshot_dir() + "/" + name + "_";
+			filename = get_next_filename(filename, ".bmp");
+			int size = disp.screenshot(filename, map_screenshot);
+			if (size > 0) {
+				std::stringstream res;
+				res << filename << " ( " << size/1000000 <<" "<< (size/1000)%1000 << " KB )";
+				gui::dialog(disp,_("Screenshot done"),res.str(),gui::MESSAGE).show();
+			} else
+				gui::dialog(disp,_("Screenshot failed"),"",gui::MESSAGE).show();
+			break;
+		}
 		case HOTKEY_MOUSE_SCROLL:
 			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
-			break;
-		case HOTKEY_SCREENSHOT:
-			disp.screenshot();
-			break;
-		case HOTKEY_MAP_SCREENSHOT:
-			disp.map_screenshot();
 			break;
 		case HOTKEY_ACCELERATED:
 			preferences::set_turbo(!preferences::turbo());

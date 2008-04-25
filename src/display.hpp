@@ -72,6 +72,7 @@ public:
 	surface get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
 
 	virtual bool in_game() const { return false; }
+	virtual bool in_editor() const { return false; }
 
 	// the dimensions of the display. x and y are width/height.
 	// mapx is the width of the portion of the display which shows the game area.
@@ -170,11 +171,8 @@ public:
 	//! that bind the visible area of the map.
 	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
 
-	//! Make a screenshot and save it in a default location.
-	void screenshot();
-
-	//! Make a map-screenshot and save it in a default location.
-	void map_screenshot();
+	//! Save a (map-)screenshot and return the estimated file size
+	int screenshot(std::string filename, bool map_screenshot = false);
 
 	//! Invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
@@ -583,6 +581,8 @@ class editor_display : public display
 public:
 	editor_display(CVideo& video, const gamemap& map, const config& theme_cfg,
 			const config& cfg, const config& level);
+
+	bool in_editor() const { return true; }
 
 	//! draw() for the editor display.
 	//! It only has to know about terrain.

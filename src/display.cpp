@@ -21,7 +21,6 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
-#include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
@@ -415,61 +414,60 @@ void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::locati
 	get_rect_hex_bounds(r, topleft, bottomright);
 }
 
-void display::screenshot()
+int display::screenshot(std::string filename, bool map_screenshot)
 {
-	static int screenshot_counter = 0;
-	std::string filename = get_screenshot_dir() + "/" + _("Screenshot") + "_";
-	filename = get_next_filename(filename, ".bmp", screenshot_counter);
+	int size = 0;
+	if (!map_screenshot) {
+		surface screenshot_surf = screen_.getSurface();
+		SDL_SaveBMP(screenshot_surf, filename.c_str());
+		size = screenshot_surf->w * screenshot_surf->h;
+	} else {
+		if (map_.empty()) {
+			// Map Screenshot are big, abort and warn the user if he does strange things
+			std::cerr << "No map, can't do a Map Screenshot. If it was not wanted, check your hotkey.\n";
+			return -1;
+		}
 
-	SDL_SaveBMP(screen_.getSurface(), filename.c_str());
-}
+		SDL_Rect area = max_map_area();
+		map_screenshot_surf_ = create_compatible_surface(screen_.getSurface(), area.w, area.h);
+		
+		if (map_screenshot_surf_ == NULL) {
+			// Memory problem ?
+			std::cerr << "Can't create the screenshot surface. Maybe too big, try dezooming.\n";
+			return -1;
+		}
+		size = map_screenshot_surf_->w * map_screenshot_surf_->h;
 
-void display::map_screenshot()
-{
-	if (map_.empty()) {
-		// Map Screenshot are big, abort and warn the user if he does strange things
-		std::cerr << "No map, can't do a Map Screenshot. If it was not wanted, check your hotkey.\n";
-		return;
+		// back up the current map view position and move to top-left
+		int old_xpos = xpos_;
+		int old_ypos = ypos_;
+		xpos_ = 0;
+		ypos_ = 0;
+
+		// we reroute render output to the screenshot surface and invalidate all
+		map_screenshot_= true ;
+		invalidateAll_ = true;
+		DBG_DP << "draw() with map_screenshot\n";
+		draw(true,true);
+
+		// finally save the image on disk
+		SDL_SaveBMP(map_screenshot_surf_, filename.c_str());
+
+		//NOTE: need to be sure that we free this huge surface (is it enough?)
+		map_screenshot_surf_ = NULL;
+
+		// restore normal rendering
+		map_screenshot_= false;
+		xpos_ = old_xpos;
+		ypos_ = old_ypos;
+		// some drawing functions are confused by the temporary change
+		// of the map_area and thus affect the UI outside of the map
+		redraw_everything();
 	}
-	
-	static int map_screenshot_counter = 0;
-	std::string filename = get_screenshot_dir() + "/" + _("Map_Screenshot") + "_";
-	filename = get_next_filename(filename, ".bmp", map_screenshot_counter);
 
-	SDL_Rect area = max_map_area();
-	map_screenshot_surf_ = create_compatible_surface(screen_.getSurface(), area.w, area.h);
-
-	if (map_screenshot_surf_ == NULL) {
-		std::cerr << "Can't create the screenshot surface. Maybe too big, try dezooming.\n";
-		return;
-	}
-
-	// back up the current map view position and move to top-left
-	int old_xpos = xpos_;
-	int old_ypos = ypos_;
-	xpos_ = 0;
-	ypos_ = 0;
-
-	// we reroute render output to the screenshot surface and invalidate all
-	map_screenshot_= true ;
-	invalidateAll_ = true;
-
-	DBG_DP << "draw() with map_screenshot\n";
-	draw(true,true);
-
-	// save the screenshot surface
-	SDL_SaveBMP(map_screenshot_surf_, filename.c_str());
-	//NOTE: need to be sure that we free this huge surface (enough?)
-	map_screenshot_surf_ = NULL;
-
-	// restore normal rendering
-	map_screenshot_= false;
-	xpos_ = old_xpos;
-	ypos_ = old_ypos;
-	// some drawing functions are confused by the temporary change
-	// of the map_area and thus affect the UI outside of the map
-	redraw_everything();
-	draw(true, true);
+	// convert pixel size to BMP size
+	size = (2048 + size*3);
+	return size;
 }
 
 gui::button* display::find_button(const std::string& id)
