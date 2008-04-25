@@ -286,6 +286,14 @@ class WesnothList:
                     auid = advance.strip()
                     if auid: unit.advance.append(auid)
 
+            # level
+            try:
+                level = int(self.get_unit_value(unit, "level"))
+            except TypeError:
+                level = 5
+            if level < 0: level = 5
+            unit.level = level
+
         return len(newunits)
 
     def find_unit_factions(self):
@@ -341,28 +349,52 @@ class UnitForest:
         """
         Add a new unit to the forest.
         """
-        
         self.lookup[un.id] = un
 
-        # First, we check if any of the new node's advancements already is in
-        # the tree. If so, attach it to the new node.
-        for cid in un.child_ids:
-            if cid in self.trees:
-                un.children.append(self.trees[cid])
-                self.lookup[cid].parent_ids.append(un.id)
-                del self.trees[cid]
+    def create_network(self):
+        """
+        Assuming that each node which has been added to the tree only has a
+        valid list of children in unit.child_ids, also fill in unit.parent_ids
+        and update the unit.children shortcut.
+        """
+        
+        # Complete the network
+        for uid, u in self.lookup.items():
+            for cid in u.child_ids:
+                c = self.lookup.get(cid, None)
+                if not c: continue
+                u.children.append(c)
+                if not uid in c.parent_ids:
+                    c.parent_ids.append(uid)
+            
 
-        # Next, we check if the node is an advancement of an existing node. If
-        # so, add it there.
-        for rootnode in self.trees.values():
-            # Because multiple units might advance into this one, we do not
-            # stop after a successful insertion.
-            rootnode.try_add(un)
+        # Put all roots into the forest
+        for uid, u in self.lookup.items():
+            if not u.parent_ids:
+                self.trees[uid] = u
+        
+        # Sanity check because some argGRRxxx addons have units who advance to
+        # themselves.
 
-        # Else, add a new tree with the new node as root.
-        self.trees[un.id] = un
+        def recurse(u, already):
+            already2 = already.copy()
+            for c in u.children[:]:
+                already2[c.id] = True
+                if c.id in already:
+                    sys.stderr.write(
+                        "Warning: Unit %s advances to unit %s in a loop.\n" %
+                        (u.id, c.id))
+                    sys.stderr.write("    Removing advancement %s.\n" % c.id)
+                    u.children.remove(c)
+            for c in u.children:
+                recurse(c, already2)
+        for u in self.trees.values():
+            already = {u.id : True}
+            recurse(u, already)
 
-    def update_breadth(self):
+    def update(self):
+        self.create_network()       
+    
         self.breadth = sum([x.update_breadth() for x in self.trees.values()])
         return self.breadth
 
@@ -385,17 +417,6 @@ class UnitNode:
         self.child_ids = []
         self.parent_ids = []
         self.child_ids.extend(unit.advance)
-
-    def try_add(self, un):
-        # A child of yours truly?
-        if un.id in self.child_ids:
-            self.children.append(un)
-            un.parent_ids.append(self.id)
-            return True
-        # A recursive child?
-        for child in self.children:
-            if child.try_add(un): return True
-        return False
 
     def update_breadth(self):
         if not self.children:
