@@ -342,6 +342,24 @@ namespace events{
 		return textbox_info_;
 	}
 
+	std::string menu_handler::get_title_suffix(int team_num)
+	{
+		int controlled_recruiters = 0;
+		for(size_t i = 0; i < teams_.size(); ++i) {
+			if(teams_[i].is_human() && !teams_[i].recruits().empty()
+			&& team_leader(i+1, units_) != units_.end()) {
+			++controlled_recruiters;
+			}
+		}
+		std::stringstream msg;
+		if(controlled_recruiters >= 2) {
+			const unit_map::const_iterator leader = team_leader(team_num, units_);
+			if(leader != units_.end() && !leader->second.name().empty()) {
+				msg << " (" << leader->second.name(); msg << ")";
+			}
+		}
+		return msg.str();
+	}
 	void menu_handler::objectives(const unsigned int team_num)
 	{
 		dialogs::show_objectives(*gui_, level_, teams_[team_num - 1].objectives());
@@ -589,7 +607,8 @@ private:
 			}
 			str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
 			    << teams_[n].current_player() << COLUMN_SEPARATOR
-			    << data.teamname << COLUMN_SEPARATOR;
+			    << (data.teamname.empty() ? teams_[n].team_name() : data.teamname)
+			    << COLUMN_SEPARATOR;
 
 			if(!known && !game_config::debug) {
 				// We don't spare more info (only name)
@@ -1018,7 +1037,7 @@ private:
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
-			gui::dialog rmenu(*gui_,_("Recruit"),
+			gui::dialog rmenu(*gui_,_("Recruit") + get_title_suffix(team_num),
 					  _("Select unit:") + std::string("\n"),
 					  gui::OK_CANCEL,
 					  gui::dialog::default_style);
@@ -1169,7 +1188,7 @@ private:
 
 			{
 				dialogs::units_list_preview_pane unit_preview(*gui_,&map_,recall_list);
-				gui::dialog rmenu(*gui_,_("Recall"),
+				gui::dialog rmenu(*gui_,_("Recall") + get_title_suffix(team_num),
 						  _("Select unit:") + std::string("\n"),
 						  gui::OK_CANCEL,
 						  gui::dialog::default_style);
@@ -1516,7 +1535,7 @@ private:
 		}
 
 		//Ask for confirmation if the player hasn't made any moves (other than gotos).
-		if(false && preferences::confirm_no_moves() && units_alive && !some_units_have_moved) {
+		if (preferences::confirm_no_moves() && units_alive && !some_units_have_moved) {
 			const int res = gui::dialog(*gui_,"",_("You have not started your turn yet. Do you really want to end your turn?"), gui::YES_NO).show();
 			if(res != 0) {
 				return false;
@@ -2714,14 +2733,7 @@ private:
 			if (player == preferences::login())
 				return;
 			menu_handler_.change_side_controller(side,player,true);
-			menu_handler_.teams_[side_num - 1].make_network();
 			menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
-			if(team_num_ == side_num) {
-				//if it is our turn at the moment, we have to indicate to the
-				//play_controller, that we are no longer in control
-				menu_handler_.gui_->set_team(0);
-				throw end_turn_exception(side_num);
-			}
 		} else {
 			//it is not our side, the server will decide if we can change the
 			//controller (that is if we are host of the game)
