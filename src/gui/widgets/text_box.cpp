@@ -236,9 +236,6 @@ void ttext_box::mouse_left_button_up(tevent_handler& event)
 //! Inherited from twidget.
 void ttext_box::mouse_left_button_double_click(tevent_handler&)
 {
-	// FIXME there's a bug in the event code, double clicks
-	// don't work it the widget doesn't capture the mouse.
-	
 	DBG_G_E << "Text box: left mouse double click.\n";
 
 	select_all();

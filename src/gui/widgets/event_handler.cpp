@@ -359,6 +359,28 @@ void tevent_handler::mouse_left_button_down(const SDL_Event& /*event*/, twidget*
 	}
 }
 
+void tevent_handler::mouse_left_click(twidget* widget)
+{
+	if(widget->wants_mouse_left_double_click()) {
+		Uint32 stamp = SDL_GetTicks();
+		if(last_left_click_ + 500 >= stamp) { // FIXME 500 should be variable
+
+			widget->mouse_left_button_double_click(*this);
+			last_left_click_ = 0;
+
+		} else {
+
+			widget->mouse_left_button_click(*this);
+			last_left_click_ = stamp;
+		}
+
+	} else {
+	
+		widget->mouse_left_button_click(*this);
+	}
+
+}
+
 void tevent_handler::mouse_left_button_up(const SDL_Event& event, twidget* mouse_over)
 {
 	if(!mouse_left_button_down_) {
@@ -371,7 +393,6 @@ void tevent_handler::mouse_left_button_up(const SDL_Event& event, twidget* mouse
 	if(!mouse_focus_) {
 		return;
 	}
-
 	mouse_focus_->mouse_left_button_up(*this);
 
 	if(mouse_captured_) {
@@ -387,30 +408,13 @@ void tevent_handler::mouse_left_button_up(const SDL_Event& event, twidget* mouse
 				}
 			}
 		} else {
-
-			if(mouse_focus_->wants_mouse_left_double_click()) {
-				Uint32 stamp = SDL_GetTicks();
-				if(last_left_click_ + 500 >= stamp) { // FIXME 500 should be variable
-		
-					mouse_focus_->mouse_left_button_double_click(*this);
-					last_left_click_ = 0;
-
-				} else {
-
-					mouse_focus_->mouse_left_button_click(*this);
-					last_left_click_ = stamp;
-				}
-
-			} else {
-			
-				mouse_focus_->mouse_left_button_click(*this);
-			}
-
+			mouse_left_click(mouse_focus_);
 		}
+	} else {
+		mouse_left_click(mouse_over);
 	}
 
 	set_hover();
-
 }
 
 void tevent_handler::set_hover(const bool test_on_widget)

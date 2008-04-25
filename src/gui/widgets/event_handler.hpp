@@ -99,6 +99,7 @@ private:
 
 	void mouse_left_button_down(const SDL_Event& event, twidget* mouse_over);
 	void mouse_left_button_up(const SDL_Event& event, twidget* mouse_over);
+	void mouse_left_click(twidget* widget);
 
 	void set_hover(const bool test_on_widget = false);
 
