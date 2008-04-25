@@ -301,9 +301,7 @@ int main(int argc, char** argv)
 
 	// Set the caption of the window
 	wm_title_string = _("Battle for Wesnoth Map Editor");
-	wm_title_string += " - " + game_config::version
-			+ (game_config::revision.empty() ? "" :
-			" (" + game_config::revision + ")");
+	wm_title_string += " - " + game_config::revision;
 	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 
 	//Read the configuration af
