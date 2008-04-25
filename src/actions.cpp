@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2007 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -218,7 +218,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 
 			config cfg_unit1;
 			new_unit.write(cfg_unit1);
-			DBG_NG << cfg_unit1.debug();
+			DBG_NG << cfg_unit1;
 			if (!game_config::ignore_replay_errors) {
 				throw replay::error("OOS while recruiting.");
 			}
@@ -2157,6 +2157,7 @@ size_t move_unit(game_display* disp,
 	p->first = steps.back();
 	units.add(p);
 	ui = units.find(p->first);
+	unit::clear_status_caches();
 
 	if(move_recorder != NULL) {
 		move_recorder->add_movement(steps.front(),steps.back());

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2007 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2008 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -1308,6 +1308,7 @@ private:
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
 			units_.add(up);
+			unit::clear_status_caches();
 			up->second.set_standing(up->first);
 			gui_->invalidate(route.back());
 			gui_->draw();
@@ -1424,6 +1425,7 @@ private:
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
 			units_.add(up);
+			unit::clear_status_caches();
 			up->second.set_standing(up->first);
 
 			if(map_.is_village(route.back())) {
