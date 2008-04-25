@@ -1333,7 +1333,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				// been replaced by another unit, which might have a lower number of weapons.
                 // In that case refresh_bc() will terminate with an invalid selected weapon.
 				a_ = units_.find(attacker_);
-				d_ = units_.find(defender_);refresh_bc();
+				d_ = units_.find(defender_);
 
 				if(a_ == units_.end() || !death_loc.matches_unit(a_->second)) {
 					// WML has invalidated the dying unit, abort
