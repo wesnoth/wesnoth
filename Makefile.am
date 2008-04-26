@@ -14,6 +14,8 @@ finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \!
 # List non-installable utility files
 findnoinst=(cd $(top_srcdir) && find utils $(findfilterflags) -print )
 findnoinst_headers=(cd $(top_srcdir) && find src -name "*.hpp" -print )
+findsconscript=(cd $(top_srcdir) && find . -name "SConscript" -print )
+findsconstruct=(cd $(top_srcdir) && find . -name "SConstruct" -print )
 
 # Find files derived from the manual that should go in a distribution
 finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.txt")
@@ -146,7 +148,7 @@ endif
 
 dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
-	( $(finddata); $(finddocdist); $(findnoinst); $(findnoinst_headers); $(findextrapo) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
+	( $(finddata); $(finddocdist); $(findnoinst); $(findnoinst_headers); $(findextrapo); $(findsconscript); $(findsconstruct) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
 dist_noinst_DATA = copyright changelog players_changelog SConstruct campaign_server.dsp editor.dev editor_gcc4.dev map_editor.dsp server.dev server.dsp unit_test.dev wesnothd.dev wesnoth.dev wesnothd_gcc4.dev wesnoth.dsp wesnoth.dsw wesnoth_gcc4.dev wesnoth.kdevelop
 
