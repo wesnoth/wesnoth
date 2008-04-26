@@ -1004,7 +1004,7 @@ std::string server::process_command(const std::string& query) {
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
 
-	LOG_SERVER << out.str(); << "\n";
+	LOG_SERVER << out.str() << "\n";
 	return out.str();
 }
 
