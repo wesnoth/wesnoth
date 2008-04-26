@@ -13,6 +13,9 @@ Version 1.5.0-svn:
      Descent into Darkness and The South Guard
    * Liberty
      * Fix graphic artifact bug #11438
+ * Formula AI
+   * added support for Formula AI language, more info available at:
+     http://www.wesnoth.org/wiki/FormulaAI
  * graphics:
    * Fixed broken TC on transport-galleon and drake walking corpse graphics
    * New portraits: Elvish Sorceress
@@ -74,8 +77,6 @@ Version 1.5.0-svn:
      internal id now
    * the hardcoded resolution list now also includes tiny gui and small gui
      resolutions if compiled with those switches
- * added support for Formula AI language, more info available at:
-     http://www.wesnoth.org/wiki/FormulaAI
  * WML engine:
    * new tag [insert_tag] to place dynamic WML content
    * Extended most C++ checks for boolean WML attributes to use 
