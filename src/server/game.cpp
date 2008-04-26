@@ -1279,7 +1279,7 @@ void game::send_server_message(const char* message, network::connection sock, si
 		simple_wml::node& cmd = doc.root().add_child("turn");
 		simple_wml::node& cfg = cmd.add_child("command");
 		simple_wml::node& msg = cfg.add_child("speak");
-		msg.set_attr("id", "server");
+		msg.set_attr("description", "server");
 		msg.set_attr_dup("message", message);
 	} else {
 		simple_wml::node& msg = doc.root().add_child("message");
