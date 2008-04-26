@@ -225,7 +225,7 @@ test_SOURCES = \
 	tests/test_util.cpp \
 	$(wesnoth_source)
 
-test_LDADD = $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) -lwesnoth 
+test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) -lwesnoth 
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
