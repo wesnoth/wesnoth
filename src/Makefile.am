@@ -233,7 +233,8 @@ test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 #############################################################################
 
 noinst_HEADERS = \
-	wesconfig.h
+	wesconfig.h \
+	animated.i
 
 #############################################################################
 #    Headers
