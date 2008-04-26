@@ -17,6 +17,7 @@ import wesnoth.wmltools as wmltools
 
 sys.path.append(".")
 import unit_tree.helpers as helpers
+import unit_tree.animations as animations
 
 html_header = '''
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -781,7 +782,6 @@ def output(isocode):
     if not os.path.isdir(options.output):
         os.mkdir(options.output)
     write_index(options.output)
-
     
     campaigns = stuff.campaign_lookup.keys()
 
@@ -792,18 +792,11 @@ def output(isocode):
     
     for eid in stuff.era_lookup.keys():
         generate_era_report(options.output, isocode, eid, stuff)
-    
-    # Write a list with all unit ids, just for fun.
-    uids = stuff.unit_lookup.keys()
-    uids.sort()
-    f = MyFile(os.path.join(options.output, "uids.html"), "w")
-    f.write("<html><body>")
-    f.write("<ul>" + "\n".join(["<li>%s</li>" % x for x in uids]))
-    f.write("</body></html>")
-    f.close()
-        
+
     # Single unit reports.
     generate_single_unit_reports(options.output, isocode, stuff)
+    
+    return stuff
 
 if __name__ == '__main__':
     global options
@@ -853,11 +846,46 @@ if __name__ == '__main__':
 
     image_collector = helpers.ImageCollector(datadir, userdir)
 
-    did_images = False
+    once_without_translation = False
     for isocode in languages:
-        output(isocode)
-        if not did_images:
+        wesnoth = output(isocode)
+        if not once_without_translation:
             copy_images()
-            did_images = True
+            once_without_translation = True
+            for u in wesnoth.unit_lookup.values():
+                r = u.race
+                if r: r = r.get_text_val("id", "none")
+                else: r = "none"
+                # Store rid and id for each units so we have it easier
+                u.rid = r
+                u.id = u.get_text_val("id")
+            
+            # Write a list with all unit ids, just for fun.
+            uids = wesnoth.unit_lookup.keys()
+            def by_race(u1, u2):
+                r = cmp(wesnoth.unit_lookup[u1].rid,
+                    wesnoth.unit_lookup[u2].rid)
+                if r == 0: r = cmp(u1, u2)
+                return r
+            uids.sort(by_race)
+            race = None
+            f = MyFile(os.path.join(options.output, "uids.html"), "w")
+            f.write("<html><body>")
+            for uid in uids:
+                u = wesnoth.unit_lookup[uid]
+                if u.race != race:
+                    if race != None: f.write("</ul>")
+                    f.write("<p>%s</p>\n" % u.rid)
+                    f.write("<ul>")
+                    race = u.race
+                f.write("<li>%s</li>\n" % uid)
+            f.write("</ul>")
+            f.write("</body></html>")
+            f.close()
+            
+            # Write animation statistics
+            f = MyFile(os.path.join(options.output, "animations.html"), "w")
+            animations.write_table(f, wesnoth)
+            f.close()
         
 
