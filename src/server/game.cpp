@@ -877,6 +877,7 @@ void game::add_player(const network::connection player, bool observer) {
 	}
 	user->second.mark_available(id_, name_);
 	DBG_GAME << debug_player_info();
+	bool became_observer = false;
 	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
@@ -885,7 +886,7 @@ void game::add_player(const network::connection player, bool observer) {
 	} else if (!allow_observers()) {
 		return; //false;
 	} else {
-		observer = true;
+		if (!observer) became_observer = true;
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
 
@@ -915,7 +916,7 @@ void game::add_player(const network::connection player, bool observer) {
 		send_user_list();
 	}
 
-	if (observer && end_turn_ == 0) {
+	if (became_observer) {
 		// in case someone took the last slot right before this player
 		send_server_message("You are an observer.", player);
 	}
