@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-24 21:04+0200\n"
+"POT-Creation-Date: 2008-04-26 13:45+0200\n"
 "PO-Revision-Date: 2008-01-15 23:03+0800\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
@@ -363,7 +363,7 @@ msgid "Close Window"
 msgstr "关闭窗口"
 
 #: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:61
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Preferences"
 msgstr "选项"
 
@@ -372,7 +372,7 @@ msgid "Scroll Speed:"
 msgstr "滚屏速度"
 
 #: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:160
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Toggle Full Screen"
 msgstr "全屏显示"
 
@@ -405,7 +405,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Resize Map"
 msgstr "改变地图大小"
 
@@ -927,343 +927,358 @@ msgstr ""
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Next Unit"
 msgstr "下一单位"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Previous Unit"
 msgstr "上一单位"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Hold Position"
 msgstr "保持位置"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "End Unit Turn"
 msgstr "结束单位的回合"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Leader"
 msgstr "领袖"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Undo"
 msgstr "撤销"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Redo"
 msgstr "重试"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Zoom In"
 msgstr "放大"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Zoom Out"
 msgstr "缩小"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Default Zoom"
 msgstr "默认缩放比例"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66 src/hotkeys.cpp:823
 msgid "Screenshot"
 msgstr "屏幕截图"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "屏幕截图"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Accelerated"
 msgstr "加速"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Unit Description"
 msgstr "单位说明"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Rename Unit"
 msgstr "单位重命名"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Save Game"
 msgstr "保存游戏"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Save Replay"
 msgstr "保存录像"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Save The Map"
 msgstr "保存地图"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Load Game"
 msgstr "读取游戏"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Recruit"
 msgstr "征募"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Repeat Recruit"
 msgstr "重复征募"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Recall"
 msgstr "召回"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "End Turn"
 msgstr "结束本回合"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Toggle Grid"
 msgstr "开/关网格"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Mouse Scrolling"
 msgstr "鼠标滚屏"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Status Table"
 msgstr "状态列表"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Mute"
 msgstr "静音"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Speak"
 msgstr "聊天"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Create Unit (Debug!)"
 msgstr "创建单位（调试！）"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Change Unit Side (Debug!)"
 msgstr "改变单位阵营（调试！）"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Scenario Objectives"
 msgstr "场景目标"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Unit List"
 msgstr "单位列表"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Statistics"
 msgstr "数据"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Quit Game"
 msgstr "退出游戏"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Set Team Label"
 msgstr "设置团队标记"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Set Label"
 msgstr "标记"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Clear Labels"
 msgstr "清除所有标记"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Show Enemy Moves"
 msgstr "显示敌方移动范围"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Best Possible Enemy Moves"
 msgstr "显示敌方最大可能移动范围"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Play"
 msgstr "播放"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Reset"
 msgstr "重置"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Stop"
 msgstr "停止"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Next Turn"
 msgstr "下一回合"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Next Side"
 msgstr "下一阵营"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Full map"
 msgstr "全地图"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Each team"
 msgstr "每一组"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Team 1"
 msgstr "第一组"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Skip animation"
 msgstr "略过动画"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Set Terrain"
 msgstr "设定地形"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Quit Editor"
 msgstr "退度编辑器"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "New Map"
 msgstr "新地图"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Load Map"
 msgstr "载入地图"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Save Map"
 msgstr "保存地图"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Save As"
 msgstr "另存为"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Set Player's keep"
 msgstr "设定玩家要塞"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Flood Fill"
 msgstr "填充"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Fill Selection"
 msgstr "填充选择区域"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Rotate Selection"
 msgstr "旋转选择区域"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Cut"
 msgstr "剪切"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Copy"
 msgstr "复制"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Revert from Disk"
 msgstr "重新读取文件"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Flip Map"
 msgstr "翻转地图"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Select All"
 msgstr "全选"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Draw Terrain"
 msgstr "绘制地形"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Refresh Image Cache"
 msgstr "刷新图像缓存"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Delay transition updates"
 msgstr "暂缓刷新战争迷雾"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Update transitions"
 msgstr "刷新战争迷雾"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Delay Shroud Updates"
 msgstr "暂缓刷新战争迷雾"
 
 # personally i like the original translation阴影区域, gonna discuss about this
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Update Shroud Now"
 msgstr "立即刷新战争迷雾"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Continue Move"
 msgstr "继续移动"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Find Label or Unit"
 msgstr "查找标记或单位"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Speak to Ally"
 msgstr "与盟友聊天"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Speak to All"
 msgstr "与所有人聊天"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Help"
 msgstr "帮助"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "View Chat Log"
 msgstr "察看聊天纪录"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Change the language"
 msgstr "切换语言"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Enter user command"
 msgstr "输入用户命令"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Clear messages"
 msgstr "清除所有信息"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "User-Command#2"
 msgstr "玩家命令#2"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "User-Command#3"
 msgstr "玩家命令#3"
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Do you really want to quit?"
 msgstr "您要退出吗？"
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Quit"
 msgstr "退出"
+
+#: src/hotkeys.cpp:823
+#, fuzzy
+msgid "Map-Screenshot"
+msgstr "屏幕截图"
+
+#: src/hotkeys.cpp:830
+#, fuzzy
+msgid "Screenshot done"
+msgstr "屏幕截图"
+
+#: src/hotkeys.cpp:832
+#, fuzzy
+msgid "Screenshot failed"
+msgstr "屏幕截图"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Map Generator"

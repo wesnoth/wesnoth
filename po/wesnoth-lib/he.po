@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-24 21:04+0200\n"
+"POT-Creation-Date: 2008-04-26 13:45+0200\n"
 "PO-Revision-Date: 2006-02-14 22:10+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -368,7 +368,7 @@ msgid "Close Window"
 msgstr "סגור חלון"
 
 #: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:61
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Preferences"
 msgstr "העדפות"
 
@@ -377,7 +377,7 @@ msgid "Scroll Speed:"
 msgstr "מהירות גלילה:"
 
 #: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:160
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Toggle Full Screen"
 msgstr "החלף מצב מסך מלא"
 
@@ -410,7 +410,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Resize Map"
 msgstr "שנה גודל מפה"
 
@@ -949,349 +949,364 @@ msgstr ""
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Next Unit"
 msgstr "היחידה הבאה"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Previous Unit"
 msgstr "היחידה הקודמת"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Hold Position"
 msgstr "המתן במקום"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "End Unit Turn"
 msgstr "סיים את תור היחידה"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Leader"
 msgstr "מנהיג"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Undo"
 msgstr "ביטול פעולה"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Redo"
 msgstr "שחזור פעולה"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Zoom In"
 msgstr "הגדלה"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Zoom Out"
 msgstr "הקטנה"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Default Zoom"
 msgstr "גודל רגיל"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66 src/hotkeys.cpp:823
 msgid "Screenshot"
 msgstr "צילום מסך"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "צילום מסך"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Accelerated"
 msgstr "מואץ"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Unit Description"
 msgstr "תיאור היחידה"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Rename Unit"
 msgstr "שנה שם יחידה"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Save Game"
 msgstr "שמור משחק"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 #, fuzzy
 msgid "Save Replay"
 msgstr "שמירת מקשי קיצור"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 #, fuzzy
 msgid "Save The Map"
 msgstr "שמור מפה"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Load Game"
 msgstr "טען משחק"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Recruit"
 msgstr "גייס"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Repeat Recruit"
 msgstr "חזור על גיוס"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Recall"
 msgstr "החזר"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "End Turn"
 msgstr "סוף תור"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Toggle Grid"
 msgstr "הצגת/כיבוי סריג"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Mouse Scrolling"
 msgstr ""
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Status Table"
 msgstr "טבלת מצב"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Mute"
 msgstr "השתק"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Speak"
 msgstr "דבר"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Create Unit (Debug!)"
 msgstr "צור יחידה (דיבג!)"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Change Unit Side (Debug!)"
 msgstr "החלפת צדדים של יחידה (דיבג!)"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Scenario Objectives"
 msgstr "מטרות התרחיש"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Unit List"
 msgstr "רשימת יחידות"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Statistics"
 msgstr "סטטיסטיקה"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Quit Game"
 msgstr "צא מהמשחק"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 #, fuzzy
 msgid "Set Team Label"
 msgstr "קביעת תגית"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Set Label"
 msgstr "קביעת תגית"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Clear Labels"
 msgstr "נקה תגית"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Show Enemy Moves"
 msgstr "הראה תנועות אוייב"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Best Possible Enemy Moves"
 msgstr "מהלכי האויב המיטביים"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Play"
 msgstr "הרץ"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Reset"
 msgstr "התחל מחדש"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Stop"
 msgstr "עצור"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Next Turn"
 msgstr "התור הבא"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Next Side"
 msgstr "הצד הבא"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 #, fuzzy
 msgid "Full map"
 msgstr "הפיכת מפה"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Each team"
 msgstr ""
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Team 1"
 msgstr ""
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Skip animation"
 msgstr "דלג על האנימציה"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Set Terrain"
 msgstr "קביעת קרקע"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Quit Editor"
 msgstr "צא מהעורך"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "New Map"
 msgstr "מפה חדשה"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Load Map"
 msgstr "טען מפה"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Save Map"
 msgstr "שמור מפה"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Save As"
 msgstr "שמור בשם"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Set Player's keep"
 msgstr "קביעת המצודה של השחקן"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Flood Fill"
 msgstr "הצפה"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Fill Selection"
 msgstr "מלא את הבחירה"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "מלא את הבחירה"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Cut"
 msgstr "גזור"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Copy"
 msgstr "העתק"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Paste"
 msgstr "הדבק"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Revert from Disk"
 msgstr "שחזר מהדיסק"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Flip Map"
 msgstr "הפיכת מפה"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Select All"
 msgstr "בחר הכל"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Draw Terrain"
 msgstr "צייר קרקע"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Refresh Image Cache"
 msgstr "רענן מטמון דמויות"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 #, fuzzy
 msgid "Delay transition updates"
 msgstr "השהיית עדכון הסתרה"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Update transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Delay Shroud Updates"
 msgstr "השהיית עדכון הסתרה"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Update Shroud Now"
 msgstr "עדכון הסתרה מיידי"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Continue Move"
 msgstr "המשך תנועה"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Find Label or Unit"
 msgstr "חיפוש תגית או יחידה"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Speak to Ally"
 msgstr "דבר לבן ברית"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Speak to All"
 msgstr "דבר לכולם"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Help"
 msgstr "עזרה"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "View Chat Log"
 msgstr "הצג רישום שיחות"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Change the language"
 msgstr "החלף שפה"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Enter user command"
 msgstr "הכנס פקודת משתמש"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 #, fuzzy
 msgid "Clear messages"
 msgstr "נקה תגית"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Do you really want to quit?"
 msgstr "האם באמת ברצונך לצאת?"
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Quit"
 msgstr "צא"
+
+#: src/hotkeys.cpp:823
+#, fuzzy
+msgid "Map-Screenshot"
+msgstr "צילום מסך"
+
+#: src/hotkeys.cpp:830
+#, fuzzy
+msgid "Screenshot done"
+msgstr "צילום מסך"
+
+#: src/hotkeys.cpp:832
+#, fuzzy
+msgid "Screenshot failed"
+msgstr "צילום מסך"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Map Generator"

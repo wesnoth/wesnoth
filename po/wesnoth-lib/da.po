@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-24 21:04+0200\n"
+"POT-Creation-Date: 2008-04-26 13:45+0200\n"
 "PO-Revision-Date: 2008-01-13 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -364,7 +364,7 @@ msgid "Close Window"
 msgstr "Luk vindue"
 
 #: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:61
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Preferences"
 msgstr "Indstillinger"
 
@@ -374,7 +374,7 @@ msgid "Scroll Speed:"
 msgstr "Panoreringshastighed:"
 
 #: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:160
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Toggle Full Screen"
 msgstr "Skift til/fra fuldskærm"
 
@@ -407,7 +407,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Resize Map"
 msgstr "Skift størrelse på kort"
 
@@ -937,343 +937,358 @@ msgstr ""
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Next Unit"
 msgstr "Næste enhed"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Previous Unit"
 msgstr "Forrige enhed"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Hold Position"
 msgstr "Fasthold position"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "End Unit Turn"
 msgstr "Afslut enhedens runde"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Leader"
 msgstr "Leder"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Undo"
 msgstr "Fortryd"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Redo"
 msgstr "Gentag"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Zoom In"
 msgstr "Forstør"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Zoom Out"
 msgstr "Formindsk"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Default Zoom"
 msgstr "Standard zoom"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66 src/hotkeys.cpp:823
 msgid "Screenshot"
 msgstr "Skærmbillede"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Skærmbillede"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Accelerated"
 msgstr "Accelereret"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Unit Description"
 msgstr "Enhedsbeskrivelse"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Rename Unit"
 msgstr "Omdøb enhed"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Save Game"
 msgstr "Gem spil"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Save Replay"
 msgstr "Gem spilresume"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Save The Map"
 msgstr "Gem kortet"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Load Game"
 msgstr "Indlæs spil"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Recruit"
 msgstr "Rekrutter"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Repeat Recruit"
 msgstr "Gentag rekruttering"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Recall"
 msgstr "Tilbagekald"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "End Turn"
 msgstr "Afslut runde"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Toggle Grid"
 msgstr "Slå net til/fra"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Mouse Scrolling"
 msgstr "Musepanorering"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Status Table"
 msgstr "Statustabel"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Mute"
 msgstr "Stille"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Speak"
 msgstr "Tal"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Create Unit (Debug!)"
 msgstr "Opret enhed (Debug!)"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Change Unit Side (Debug!)"
 msgstr "Skift enheds side (Debug!)"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Scenario Objectives"
 msgstr "Scenarie-mål"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Unit List"
 msgstr "Enhedsliste"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Quit Game"
 msgstr "Afslut spil"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Set Team Label"
 msgstr "Sæt holdmærkat"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Set Label"
 msgstr "Sæt mærkat"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Clear Labels"
 msgstr "Slet mærkat"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Show Enemy Moves"
 msgstr "Vis fjendetræk"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Best Possible Enemy Moves"
 msgstr "Fjendernes bedst mulige træk"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Play"
 msgstr "Spil"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Reset"
 msgstr "Nulstille"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Stop"
 msgstr "Stop"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Next Turn"
 msgstr "Næste runde"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Next Side"
 msgstr "Næste side"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Full map"
 msgstr "Helt kort"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Each team"
 msgstr "Hver hold"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Team 1"
 msgstr "Hold 1"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Skip animation"
 msgstr "Undlad animation"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Set Terrain"
 msgstr "Indstil terræn"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Quit Editor"
 msgstr "Afslut redigeringsprogram"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "New Map"
 msgstr "Nyt kort"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Load Map"
 msgstr "Indlæs kort"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Save Map"
 msgstr "Gem kort"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Save As"
 msgstr "Gem som"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Set Player's keep"
 msgstr "Vælg spillers tårn"
 
 # Man skal nok have en sammenhæng for at lure den der... :-)
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Flood Fill"
 msgstr "Udfyld"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Fill Selection"
 msgstr "Udfyld det markerede"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Rotate Selection"
 msgstr "Roter det markerede"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Cut"
 msgstr "Klip"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Paste"
 msgstr "Indsæt"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Revert from Disk"
 msgstr "Genindlæs fra disk"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Flip Map"
 msgstr "Vend kort"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Select All"
 msgstr "Vælg alt"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Draw Terrain"
 msgstr "Tegn terræn"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Refresh Image Cache"
 msgstr "Opfrisk billed-cache"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Delay transition updates"
 msgstr "Udskyd overgangsopdateringer"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Update transitions"
 msgstr "Opdater overgange"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Delay Shroud Updates"
 msgstr "Udskyd sløringsopdateringer"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Update Shroud Now"
 msgstr "Opdater sløring"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Continue Move"
 msgstr "Fortsæt bevægelse"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Find Label or Unit"
 msgstr "Find mærkat eller enhed"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Speak to Ally"
 msgstr "Tal til allierede"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Speak to All"
 msgstr "Tal til alle"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Help"
 msgstr "Hjælp"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "View Chat Log"
 msgstr "Vis snakke-log"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Change the language"
 msgstr "Skift sprog"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Enter user command"
 msgstr "Indtast brugerkomando"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Clear messages"
 msgstr "Ryd beskeder"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "User-Command#2"
 msgstr "Bruger kommando#2"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "User-Command#3"
 msgstr "Bruger kommando#3"
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Do you really want to quit?"
 msgstr "Er du sikker på at du vil afslutte?"
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Quit"
 msgstr "Afslut"
+
+#: src/hotkeys.cpp:823
+#, fuzzy
+msgid "Map-Screenshot"
+msgstr "Skærmbillede"
+
+#: src/hotkeys.cpp:830
+#, fuzzy
+msgid "Screenshot done"
+msgstr "Skærmbillede"
+
+#: src/hotkeys.cpp:832
+#, fuzzy
+msgid "Screenshot failed"
+msgstr "Skærmbillede"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Map Generator"

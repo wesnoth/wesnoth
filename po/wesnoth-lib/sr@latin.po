@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-24 21:04+0200\n"
+"POT-Creation-Date: 2008-04-26 13:45+0200\n"
 "PO-Revision-Date: 2008-03-21 12:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -365,7 +365,7 @@ msgid "Close Window"
 msgstr "Zatvori prozor"
 
 #: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:61
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Preferences"
 msgstr "Podešavanja"
 
@@ -374,7 +374,7 @@ msgid "Scroll Speed:"
 msgstr "Brzina klizanja:"
 
 #: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:160
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Toggle Full Screen"
 msgstr "Preko celog ekrana"
 
@@ -407,7 +407,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Resize Map"
 msgstr "Promeni veličinu mape"
 
@@ -941,342 +941,357 @@ msgstr ""
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Next Unit"
 msgstr "Sledeća jedinica"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Previous Unit"
 msgstr "Prethodna jedinica"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Hold Position"
 msgstr "Drži položaj"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "End Unit Turn"
 msgstr "Kraj poteza jedinice"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Leader"
 msgstr "Vođ"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Undo"
 msgstr "Opozovi"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Redo"
 msgstr "Ponovi"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Zoom In"
 msgstr "Uvećaj"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Zoom Out"
 msgstr "Umanji"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Default Zoom"
 msgstr "Osnovno uvećanje"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66 src/hotkeys.cpp:823
 msgid "Screenshot"
 msgstr "Snimi ekran"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Snimi ekran"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Accelerated"
 msgstr "Ubrzano"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Unit Description"
 msgstr "Opis jedinice"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Rename Unit"
 msgstr "Preimenuj jedinicu"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Save Game"
 msgstr "Sačuvaj igru"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Save Replay"
 msgstr "Sačuvaj snimak"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Save The Map"
 msgstr "Sačuvaj mapu"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Load Game"
 msgstr "Učitaj igru"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Recruit"
 msgstr "Unajmi"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Repeat Recruit"
 msgstr "Ponovi najam"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Recall"
 msgstr "Sazovi"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "End Turn"
 msgstr "Gotovo"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Toggle Grid"
 msgstr "Prikaz mreže"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Mouse Scrolling"
 msgstr "Klizanje mišem"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Status Table"
 msgstr "Tabela stanja"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Mute"
 msgstr "Utišaj"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Speak"
 msgstr "Pričaj"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Create Unit (Debug!)"
 msgstr "Stvori jedinicu (ispr.!)"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Change Unit Side (Debug!)"
 msgstr "Promeni stranu jedinici (ispr.!)"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Scenario Objectives"
 msgstr "Ciljevi scenarija"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Unit List"
 msgstr "Spisak jedinica"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Quit Game"
 msgstr "Napusti igru"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Set Team Label"
 msgstr "Etiketiraj tim"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Set Label"
 msgstr "Etiketiraj"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Clear Labels"
 msgstr "Ukloni etikete"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Show Enemy Moves"
 msgstr "Prikaži protivničke poteze"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Best Possible Enemy Moves"
 msgstr "Najbolji protivnički potezi"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Play"
 msgstr "Igraj"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Reset"
 msgstr "Resetuj"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Stop"
 msgstr "Stani"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Next Turn"
 msgstr "Sledeći potez"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Next Side"
 msgstr "Sledeća strana"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Full map"
 msgstr "Cela mapa"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Each team"
 msgstr "Svaki tim"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Team 1"
 msgstr "Tim 1"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Skip animation"
 msgstr "Preskoči animaciju"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Set Terrain"
 msgstr "Postavi teren"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Quit Editor"
 msgstr "Napusti uređivač"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "New Map"
 msgstr "Nova mapa"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Load Map"
 msgstr "Učitaj mapu"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Save Map"
 msgstr "Sačuvaj mapu"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Save As"
 msgstr "Sačuvaj kao"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Set Player's keep"
 msgstr "Postavi igračev zamak"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Flood Fill"
 msgstr "Poplavi"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Fill Selection"
 msgstr "Ispuni izbor"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Rotate Selection"
 msgstr "Zaokreni izbor"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Cut"
 msgstr "Iseci"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Copy"
 msgstr "Umnoži"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Paste"
 msgstr "Nalepi"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Revert from Disk"
 msgstr "Vrati prema disku"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Flip Map"
 msgstr "Prevrni mapu"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Select All"
 msgstr "Izaberi sve"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Draw Terrain"
 msgstr "Iscrtaj teren"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Refresh Image Cache"
 msgstr "Osveži keš slika"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Delay transition updates"
 msgstr "Zastoj ažuriranja prelaza"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Update transitions"
 msgstr "Ažuriraj prelaze"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Delay Shroud Updates"
 msgstr "Zastoj ažuriranja pokrova"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Update Shroud Now"
 msgstr "Ažuriraj pokrov sada"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Continue Move"
 msgstr "Nastavi potez"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Find Label or Unit"
 msgstr "Nađi etiketu ili jedinicu"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Speak to Ally"
 msgstr "Pričaj savezniku"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Speak to All"
 msgstr "Pričaj svima"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Help"
 msgstr "Pomoć"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "View Chat Log"
 msgstr "Prikaži dnevnik ćaskanja"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Change the language"
 msgstr "Promeni jezik"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Enter user command"
 msgstr "Unesi korisničku naredbu"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Clear messages"
 msgstr "Očisti poruke"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "User-Command#2"
 msgstr "Korisnička-naredba#2"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "User-Command#3"
 msgstr "Korisnička-naredba#3"
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Do you really want to quit?"
 msgstr "Stvarno bi da otiđeš?"
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Quit"
 msgstr "Napuštanje"
+
+#: src/hotkeys.cpp:823
+#, fuzzy
+msgid "Map-Screenshot"
+msgstr "Snimi ekran"
+
+#: src/hotkeys.cpp:830
+#, fuzzy
+msgid "Screenshot done"
+msgstr "Snimi ekran"
+
+#: src/hotkeys.cpp:832
+#, fuzzy
+msgid "Screenshot failed"
+msgstr "Snimi ekran"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Map Generator"

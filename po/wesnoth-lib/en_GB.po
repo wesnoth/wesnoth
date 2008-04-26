@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-24 21:04+0200\n"
+"POT-Creation-Date: 2008-04-26 13:45+0200\n"
 "PO-Revision-Date: 2007-01-04 19:24+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -365,7 +365,7 @@ msgid "Close Window"
 msgstr "Close Window"
 
 #: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:61
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Preferences"
 msgstr "Preferences"
 
@@ -374,7 +374,7 @@ msgid "Scroll Speed:"
 msgstr "Scroll Speed:"
 
 #: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:160
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Toggle Full Screen"
 msgstr "Toggle Full Screen"
 
@@ -407,7 +407,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Resize Map"
 msgstr "Resize Map"
 
@@ -945,349 +945,364 @@ msgstr ""
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Next Unit"
 msgstr "Next Unit"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Previous Unit"
 msgstr "Previous Unit"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Hold Position"
 msgstr "Hold Position"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "End Unit Turn"
 msgstr "End Unit Turn"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Leader"
 msgstr "Leader"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Undo"
 msgstr "Undo"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Redo"
 msgstr "Redo"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Zoom In"
 msgstr "Zoom In"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Zoom Out"
 msgstr "Zoom Out"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Default Zoom"
 msgstr "Default Zoom"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66 src/hotkeys.cpp:823
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Screenshot"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Accelerated"
 msgstr "Accelerated"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Unit Description"
 msgstr "Unit Description"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Rename Unit"
 msgstr "Rename Unit"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Save Game"
 msgstr "Save Game"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 #, fuzzy
 msgid "Save Replay"
 msgstr "Save Hotkeys"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 #, fuzzy
 msgid "Save The Map"
 msgstr "Save Map"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Load Game"
 msgstr "Load Game"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Recruit"
 msgstr "Recruit"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Repeat Recruit"
 msgstr "Repeat Recruit"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Recall"
 msgstr "Recall"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "End Turn"
 msgstr "End Turn"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Toggle Grid"
 msgstr "Toggle Grid"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Mouse Scrolling"
 msgstr "Mouse Scrolling"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Status Table"
 msgstr "Status Table"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Mute"
 msgstr "Mute"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Speak"
 msgstr "Speak"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Create Unit (Debug!)"
 msgstr "Create Unit (Debug!)"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Change Unit Side (Debug!)"
 msgstr "Change Unit Side (Debug!)"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Scenario Objectives"
 msgstr "Scenario Objectives"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Unit List"
 msgstr "Unit List"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Statistics"
 msgstr "Statistics"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Quit Game"
 msgstr "Quit Game"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 #, fuzzy
 msgid "Set Team Label"
 msgstr "Set Label"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Set Label"
 msgstr "Set Label"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Clear Labels"
 msgstr "Clear Labels"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Show Enemy Moves"
 msgstr "Show Enemy Moves"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Best Possible Enemy Moves"
 msgstr "Best Possible Enemy Moves"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Play"
 msgstr "Play"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Reset"
 msgstr "Reset"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Stop"
 msgstr "Stop"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Next Turn"
 msgstr "Next Turn"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Next Side"
 msgstr "Next Side"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 #, fuzzy
 msgid "Full map"
 msgstr "Flip Map"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Each team"
 msgstr ""
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Team 1"
 msgstr ""
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Skip animation"
 msgstr "Skip animation"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Set Terrain"
 msgstr "Set Terrain"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Quit Editor"
 msgstr "Quit Editor"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "New Map"
 msgstr "New Map"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Load Map"
 msgstr "Load Map"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Save Map"
 msgstr "Save Map"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Save As"
 msgstr "Save As"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Set Player's keep"
 msgstr "Set Player's keep"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Flood Fill"
 msgstr "Flood Fill"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Fill Selection"
 msgstr "Fill Selection"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Fill Selection"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Cut"
 msgstr "Cut"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Copy"
 msgstr "Copy"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Paste"
 msgstr "Paste"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Revert from Disk"
 msgstr "Revert from Disk"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Flip Map"
 msgstr "Flip Map"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Select All"
 msgstr "Select All"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Draw Terrain"
 msgstr "Draw Terrain"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Refresh Image Cache"
 msgstr "Refresh Image Cache"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 #, fuzzy
 msgid "Delay transition updates"
 msgstr "Delay Shroud Updates"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Update transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Delay Shroud Updates"
 msgstr "Delay Shroud Updates"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Update Shroud Now"
 msgstr "Update Shroud Now"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Continue Move"
 msgstr "Continue Move"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Find Label or Unit"
 msgstr "Find Label or Unit"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Speak to Ally"
 msgstr "Speak to Ally"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Speak to All"
 msgstr "Speak to All"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Help"
 msgstr "Help"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "View Chat Log"
 msgstr "View Chat Log"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Change the language"
 msgstr "Change the language"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Enter user command"
 msgstr "Enter user command"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 #, fuzzy
 msgid "Clear messages"
 msgstr "Clear Labels"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Do you really want to quit?"
 msgstr "Do you really want to quit?"
 
-#: src/hotkeys.cpp:514 src/hotkeys.cpp:844
+#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
 msgid "Quit"
 msgstr "Quit"
+
+#: src/hotkeys.cpp:823
+#, fuzzy
+msgid "Map-Screenshot"
+msgstr "Screenshot"
+
+#: src/hotkeys.cpp:830
+#, fuzzy
+msgid "Screenshot done"
+msgstr "Screenshot"
+
+#: src/hotkeys.cpp:832
+#, fuzzy
+msgid "Screenshot failed"
+msgstr "Screenshot"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Map Generator"

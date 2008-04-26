@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-24 21:02+0200\n"
+"POT-Creation-Date: 2008-04-26 13:45+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -5675,7 +5675,7 @@ msgstr "Отдалечена мисия"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:368 src/unit.cpp:2473
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:386 src/unit.cpp:2473
 #: src/unit.cpp:2647
 msgid "HP"
 msgstr "Здраве"
@@ -5683,8 +5683,8 @@ msgstr "Здраве"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
-#: data/themes/experimental.cfg:190 src/menu_events.cpp:369
-#: src/menu_events.cpp:1136
+#: data/themes/experimental.cfg:190 src/menu_events.cpp:387
+#: src/menu_events.cpp:1155
 msgid "XP"
 msgstr "Опит"
 
@@ -5820,7 +5820,7 @@ msgid "+  "
 msgstr "+  "
 
 #: src/about.cpp:187 src/help.cpp:2984 src/menu_events.cpp:167
-#: src/menu_events.cpp:486 src/menu_events.cpp:509
+#: src/menu_events.cpp:504 src/menu_events.cpp:527
 msgid "Close"
 msgstr "Затвори"
 
@@ -5846,55 +5846,55 @@ msgstr ""
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:992 src/actions.cpp:1244
+#: src/actions.cpp:994 src/actions.cpp:1246
 msgid "poisoned"
 msgstr "отровен"
 
-#: src/actions.cpp:996 src/actions.cpp:1248
+#: src/actions.cpp:998 src/actions.cpp:1250
 msgid "slowed"
 msgstr "забавен"
 
-#: src/actions.cpp:1002 src/actions.cpp:1254
+#: src/actions.cpp:1004 src/actions.cpp:1256
 msgid "stone"
 msgstr "вкаменен"
 
-#: src/actions.cpp:2228
+#: src/actions.cpp:2255
 msgid "Ambushed!"
 msgstr "Засада!"
 
-#: src/actions.cpp:2235
+#: src/actions.cpp:2262
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2274
+#: src/actions.cpp:2301
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Забелязана приятелска единица"
 msgstr[1] "$friends приятелски единици забелязани"
 
-#: src/actions.cpp:2277
+#: src/actions.cpp:2304
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Забелязана вражеска единица!"
 msgstr[1] "$enemies вражески единици забелязани"
 
-#: src/actions.cpp:2282
+#: src/actions.cpp:2309
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 приятелска"
 msgstr[1] "$friends приятелски"
 
-#: src/actions.cpp:2283
+#: src/actions.cpp:2310
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 вражеска"
 msgstr[1] "$enemies вражески"
 
-#: src/actions.cpp:2284
+#: src/actions.cpp:2311
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Забелязани единици! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2293
+#: src/actions.cpp:2320
 msgid "(press $hotkey to keep moving)"
 msgstr "(натиснете $hotkey , за да продължите)"
 
@@ -5936,7 +5936,7 @@ msgid "Ignore All"
 msgstr "Игнорирай всички"
 
 #: src/dialogs.cpp:269 src/dialogs.cpp:277 src/game.cpp:1223
-#: src/menu_events.cpp:746 src/multiplayer_create.cpp:533
+#: src/menu_events.cpp:765 src/multiplayer_create.cpp:533
 msgid "Error"
 msgstr "Грешка"
 
@@ -5960,7 +5960,7 @@ msgstr ""
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Записът съществува. Желаете ли да го заместите с нов?"
 
-#: src/dialogs.cpp:287 src/menu_events.cpp:734 src/playcampaign.cpp:422
+#: src/dialogs.cpp:287 src/menu_events.cpp:753 src/playcampaign.cpp:422
 #, fuzzy
 msgid "Name: "
 msgstr "Име:"
@@ -6008,11 +6008,11 @@ msgstr "Игра в мрежа"
 msgid "Tutorial"
 msgstr "Обучение"
 
-#: src/dialogs.cpp:578 src/menu_events.cpp:720
+#: src/dialogs.cpp:578 src/menu_events.cpp:739
 msgid "replay"
 msgstr "повторение"
 
-#: src/dialogs.cpp:580 src/menu_events.cpp:722
+#: src/dialogs.cpp:580 src/menu_events.cpp:741
 msgid "Turn"
 msgstr "Ход"
 
@@ -6062,8 +6062,8 @@ msgstr ""
 msgid "Date"
 msgstr "Дата"
 
-#: src/dialogs.cpp:667 src/game.cpp:1279 src/menu_events.cpp:366
-#: src/menu_events.cpp:1134 src/multiplayer.cpp:110
+#: src/dialogs.cpp:667 src/game.cpp:1279 src/menu_events.cpp:384
+#: src/menu_events.cpp:1153 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Име"
 
@@ -6121,15 +6121,6 @@ msgstr "Ходове: "
 #: src/dialogs.cpp:1194 src/game.cpp:1056
 msgid "KB"
 msgstr "КБ"
-
-#: src/display.cpp:421
-msgid "Screenshot"
-msgstr "Снимка на екрана"
-
-#: src/display.cpp:436
-#, fuzzy
-msgid "Map_Screenshot"
-msgstr "Снимка на екрана"
 
 #: src/game.cpp:499 src/game.cpp:1707
 msgid "The Battle for Wesnoth"
@@ -6615,8 +6606,8 @@ msgstr "Атаки"
 msgid "unit help^Name"
 msgstr "Име"
 
-#: src/help.cpp:1350 src/menu_events.cpp:365 src/menu_events.cpp:1133
-#: src/menu_events.cpp:1604
+#: src/help.cpp:1350 src/menu_events.cpp:383 src/menu_events.cpp:1152
+#: src/menu_events.cpp:1625
 msgid "Type"
 msgstr "Тип"
 
@@ -6668,7 +6659,7 @@ msgstr ""
 "\n"
 "<header>text='Вероятност за попадение'</header>"
 
-#: src/help.cpp:2502 src/menu_events.cpp:699
+#: src/help.cpp:2502 src/menu_events.cpp:718
 msgid " < Back"
 msgstr " < Назад"
 
@@ -6756,7 +6747,7 @@ msgstr ""
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
-#: src/menu_events.cpp:58 src/menu_events.cpp:875 src/menu_events.cpp:877
+#: src/menu_events.cpp:58 src/menu_events.cpp:894 src/menu_events.cpp:896
 #: src/play_controller.cpp:833 src/playcampaign.cpp:114
 msgid "Auto-Save"
 msgstr "Автоматично запазване"
@@ -6839,209 +6830,209 @@ msgstr ""
 "Господарю, на тази единица единица остава малко, за да повиши нивото си. "
 "Наистина ли искате да освободите $noun?"
 
-#: src/menu_events.cpp:357
+#: src/menu_events.cpp:375
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/menu_events.cpp:367
+#: src/menu_events.cpp:385
 #, fuzzy
 msgid "Level^Lv."
 msgstr "Ниво"
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:388
 msgid "unit list^Traits"
 msgstr "Качества"
 
-#: src/menu_events.cpp:371
+#: src/menu_events.cpp:389
 msgid "Moves"
 msgstr "Ходове"
 
-#: src/menu_events.cpp:372
+#: src/menu_events.cpp:390
 #, fuzzy
 msgid "Location^Loc."
 msgstr "Местоположение"
 
-#: src/menu_events.cpp:373
+#: src/menu_events.cpp:391
 msgid "Status"
 msgstr "Статус"
 
-#: src/menu_events.cpp:481
+#: src/menu_events.cpp:499
 msgid "Unit List"
 msgstr "Списък с единици"
 
-#: src/menu_events.cpp:484 src/menu_events.cpp:505
+#: src/menu_events.cpp:502 src/menu_events.cpp:523
 msgid "Scroll To"
 msgstr ""
 
-#: src/menu_events.cpp:534
+#: src/menu_events.cpp:552
 msgid "Leader"
 msgstr "Водач"
 
-#: src/menu_events.cpp:535 src/multiplayer_connect.cpp:917
+#: src/menu_events.cpp:553 src/multiplayer_connect.cpp:917
 msgid "Team"
 msgstr "Отбор"
 
-#: src/menu_events.cpp:536 src/multiplayer_connect.cpp:928
+#: src/menu_events.cpp:554 src/multiplayer_connect.cpp:928
 #: src/multiplayer_wait.cpp:514
 msgid "Gold"
 msgstr "Злато"
 
-#: src/menu_events.cpp:537
+#: src/menu_events.cpp:555
 msgid "Villages"
 msgstr "Селища"
 
-#: src/menu_events.cpp:538
+#: src/menu_events.cpp:556
 msgid "status^Units"
 msgstr "Единици"
 
-#: src/menu_events.cpp:539
+#: src/menu_events.cpp:557
 msgid "Upkeep"
 msgstr "Издръжки"
 
-#: src/menu_events.cpp:540 src/multiplayer_connect.cpp:929
+#: src/menu_events.cpp:558 src/multiplayer_connect.cpp:929
 #: src/multiplayer_wait.cpp:518
 msgid "Income"
 msgstr "Приход"
 
-#: src/menu_events.cpp:617
+#: src/menu_events.cpp:636
 #, fuzzy
 msgid "Current Status"
 msgstr "Настоящ координатор"
 
-#: src/menu_events.cpp:618
+#: src/menu_events.cpp:637
 #, fuzzy
 msgid "More >"
 msgstr "Ходове: "
 
-#: src/menu_events.cpp:636
+#: src/menu_events.cpp:655
 #, fuzzy
 msgid "scenario settings^Leader"
 msgstr "Използвай специфични настройките на сценария"
 
-#: src/menu_events.cpp:638
+#: src/menu_events.cpp:657
 #, fuzzy
 msgid "scenario settings^Side"
 msgstr "Използвай специфични настройките на сценария"
 
-#: src/menu_events.cpp:639
+#: src/menu_events.cpp:658
 #, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr "Начало на мисията"
 
-#: src/menu_events.cpp:640
+#: src/menu_events.cpp:659
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
 
-#: src/menu_events.cpp:641
+#: src/menu_events.cpp:660
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
 
-#: src/menu_events.cpp:642
+#: src/menu_events.cpp:661
 #, fuzzy
 msgid "scenario settings^Fog"
 msgstr "Използвай специфични настройките на сценария"
 
-#: src/menu_events.cpp:643
+#: src/menu_events.cpp:662
 #, fuzzy
 msgid "scenario settings^Shroud"
 msgstr "Използвай специфични настройките на сценария"
 
-#: src/menu_events.cpp:688 src/menu_events.cpp:689
+#: src/menu_events.cpp:707 src/menu_events.cpp:708
 #, fuzzy
 msgid "no"
 msgstr "Сняг"
 
-#: src/menu_events.cpp:688 src/menu_events.cpp:689
+#: src/menu_events.cpp:707 src/menu_events.cpp:708
 msgid "yes"
 msgstr ""
 
-#: src/menu_events.cpp:696
+#: src/menu_events.cpp:715
 #, fuzzy
 msgid "Scenario Settings"
 msgstr "Начало на мисията"
 
-#: src/menu_events.cpp:743
+#: src/menu_events.cpp:762
 msgid "Saved"
 msgstr "Запазена"
 
-#: src/menu_events.cpp:743
+#: src/menu_events.cpp:762
 msgid "The game has been saved"
 msgstr "Играта бе запазена"
 
-#: src/menu_events.cpp:746 src/playcampaign.cpp:568
+#: src/menu_events.cpp:765 src/playcampaign.cpp:568
 msgid "The game could not be saved"
 msgstr "Играта не бе запазена"
 
-#: src/menu_events.cpp:761
+#: src/menu_events.cpp:780
 msgid "Save the Map As"
 msgstr "Запис на картата като"
 
-#: src/menu_events.cpp:766
+#: src/menu_events.cpp:785
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Картата съществува. Искате ли да я замените с нова?"
 
-#: src/menu_events.cpp:778
+#: src/menu_events.cpp:797
 msgid "Map saved."
 msgstr "Картата запазена."
 
-#: src/menu_events.cpp:782
+#: src/menu_events.cpp:801
 msgid "Could not save the map: $msg"
 msgstr "Картата на бе запазена: $msg"
 
-#: src/menu_events.cpp:882
+#: src/menu_events.cpp:901
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Автоматичното запазване на играта е невъзможно. Моля запазете играта ръчно."
 
-#: src/menu_events.cpp:911
+#: src/menu_events.cpp:930
 msgid "Chat Log"
 msgstr "Дневник на разговорите"
 
-#: src/menu_events.cpp:921
+#: src/menu_events.cpp:940
 msgid "Message:"
 msgstr "Съобщение:"
 
-#: src/menu_events.cpp:922
+#: src/menu_events.cpp:941
 msgid "Send to allies only"
 msgstr "Изпращане само на съюзници"
 
-#: src/menu_events.cpp:922
+#: src/menu_events.cpp:941
 msgid "Send to observers only"
 msgstr "Изпращане само на наблюдатели"
 
-#: src/menu_events.cpp:1002
+#: src/menu_events.cpp:1021
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "злато"
 msgstr[1] "Злато"
 
-#: src/menu_events.cpp:1009
+#: src/menu_events.cpp:1028
 msgid "You have no units available to recruit."
 msgstr "Не разполагате с единици за набор."
 
-#: src/menu_events.cpp:1021
+#: src/menu_events.cpp:1040
 msgid "Recruit"
 msgstr "Набор"
 
-#: src/menu_events.cpp:1022 src/menu_events.cpp:1173
+#: src/menu_events.cpp:1041 src/menu_events.cpp:1192
 msgid "Select unit:"
 msgstr "Избери единица:"
 
-#: src/menu_events.cpp:1067
+#: src/menu_events.cpp:1086
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Нямате достатъчно злато за да наемете тази единица"
 
-#: src/menu_events.cpp:1126
+#: src/menu_events.cpp:1145
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Разделени сте от вашите войници и не можете да ги привиквате "
 
-#: src/menu_events.cpp:1128
+#: src/menu_events.cpp:1147
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7049,111 +7040,111 @@ msgstr ""
 "Не разполагате с бойци за привикване. \n"
 "(Трябва да имате оцелели ветерани от предишни битки)"
 
-#: src/menu_events.cpp:1135
+#: src/menu_events.cpp:1154
 msgid "Level"
 msgstr "Ниво"
 
-#: src/menu_events.cpp:1167
+#: src/menu_events.cpp:1186
 msgid "Dismiss Unit"
 msgstr "Освободи единицата"
 
-#: src/menu_events.cpp:1172
+#: src/menu_events.cpp:1191
 msgid "Recall"
 msgstr "Привикване"
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1208
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Трябва да имате поне 1 златна монета за да привикате единица"
 msgstr[1] "Трябва да имате поне $cost златни монети за да привикате единица"
 
-#: src/menu_events.cpp:1518
+#: src/menu_events.cpp:1539
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Все още не сте започнали хода си. Наистина ли искате да го прекратите?"
 
-#: src/menu_events.cpp:1526 src/menu_events.cpp:1531
+#: src/menu_events.cpp:1547 src/menu_events.cpp:1552
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Някои единици имат неизразходвани точки движение. Наистина ли искате да "
 "прекратите хода?"
 
-#: src/menu_events.cpp:1566
+#: src/menu_events.cpp:1587
 msgid "Rename Unit"
 msgstr "Преименувай единица"
 
-#: src/menu_events.cpp:1603
+#: src/menu_events.cpp:1624
 msgid "Race"
 msgstr "Раса"
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1651
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1674
+#: src/menu_events.cpp:1695
 msgid "Place Label"
 msgstr "Обозначи"
 
-#: src/menu_events.cpp:1677 src/menu_events.cpp:1680
+#: src/menu_events.cpp:1698 src/menu_events.cpp:1701
 #, fuzzy
 msgid "Label: "
 msgstr "Знак:"
 
-#: src/menu_events.cpp:1682
+#: src/menu_events.cpp:1703
 msgid "Team only"
 msgstr "Само отбора"
 
-#: src/menu_events.cpp:1783
+#: src/menu_events.cpp:1804
 msgid "Search"
 msgstr "Търсене"
 
-#: src/menu_events.cpp:1947
+#: src/menu_events.cpp:1968
 #, fuzzy
 msgid "This command is currently unavailable."
 msgstr "Няма цели"
 
-#: src/menu_events.cpp:1958
+#: src/menu_events.cpp:1979
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
 
-#: src/menu_events.cpp:2050
+#: src/menu_events.cpp:2071
 #, fuzzy
 msgid " No help available."
 msgstr "Няма цели"
 
-#: src/menu_events.cpp:2169
+#: src/menu_events.cpp:2190
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:2172
+#: src/menu_events.cpp:2193
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:2175
+#: src/menu_events.cpp:2196
 msgid "Kick a player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2177
+#: src/menu_events.cpp:2198
 msgid "Mute an observer."
 msgstr ""
 
-#: src/menu_events.cpp:2179
+#: src/menu_events.cpp:2200
 msgid "Mute all observers."
 msgstr ""
 
-#: src/menu_events.cpp:2183
+#: src/menu_events.cpp:2204
 #, fuzzy
 msgid "Send an emotion or personal action in chat."
 msgstr ""
 "Пращане на емоция или действие в разговор. Употреба /emote [ съобщение]"
 
-#: src/menu_events.cpp:2186
+#: src/menu_events.cpp:2207
 #, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control a "
@@ -7162,221 +7153,221 @@ msgstr ""
 "Праща лично съобщение. Не може да пращате съобщения до играчи, които "
 "контролират някоя страна в игра. Употреба: /whisper [псевдоним] [съобщение]"
 
-#: src/menu_events.cpp:2192
+#: src/menu_events.cpp:2213
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2215
 #, fuzzy
 msgid "Add a nick to your ignores list."
 msgstr "Добавяне играч към черният списък. Употреба: /list ignore [аргумент]"
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2217
 #, fuzzy
 msgid "Add a nick to your friends list."
 msgstr "Добавен към списъка с приятели: "
 
-#: src/menu_events.cpp:2198
+#: src/menu_events.cpp:2219
 #, fuzzy
 msgid "Remove a nick from your ignores or friends list."
 msgstr ""
 "Премахване на играч от черният списък или списъка с приятели. Употреба: /"
 "list remove [аргумент]"
 
-#: src/menu_events.cpp:2200
+#: src/menu_events.cpp:2221
 #, fuzzy
 msgid "Show your ignores and friends list."
 msgstr "Показване на черният списък и списъка с приятели: /list display"
 
-#: src/menu_events.cpp:2203
+#: src/menu_events.cpp:2224
 #, fuzzy
 msgid "Display version information."
 msgstr "Не са открити ери"
 
-#: src/menu_events.cpp:2318
+#: src/menu_events.cpp:2339
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:2320
+#: src/menu_events.cpp:2341
 msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:2323
+#: src/menu_events.cpp:2344
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2325
+#: src/menu_events.cpp:2346
 #, fuzzy
 msgid "Clear chat history."
 msgstr ""
 "\n"
 "Изчиства съобщенията в чата."
 
-#: src/menu_events.cpp:2327
+#: src/menu_events.cpp:2348
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
-#: src/menu_events.cpp:2330
+#: src/menu_events.cpp:2351
 #, fuzzy
 msgid "Save game."
 msgstr "Запази играта"
 
-#: src/menu_events.cpp:2332
+#: src/menu_events.cpp:2353
 #, fuzzy
 msgid "Quit game."
 msgstr "Изход от играта"
 
-#: src/menu_events.cpp:2336
+#: src/menu_events.cpp:2357
 msgid "Save and quit."
 msgstr ""
 
-#: src/menu_events.cpp:2339
+#: src/menu_events.cpp:2360
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2362
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2364
 #, fuzzy
 msgid "Advance to the next scenario."
 msgstr "Изчакване началото на играта..."
 
-#: src/menu_events.cpp:2346
+#: src/menu_events.cpp:2367
 #, fuzzy
 msgid "Turn debug mode on."
 msgstr "Общи команди"
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2369
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2371
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2352
+#: src/menu_events.cpp:2373
 msgid "Show a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2375
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2356
+#: src/menu_events.cpp:2377
 msgid "Add a trait to a unit."
 msgstr ""
 
-#: src/menu_events.cpp:2358
+#: src/menu_events.cpp:2379
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
 
-#: src/menu_events.cpp:2360
+#: src/menu_events.cpp:2381
 #, fuzzy
 msgid "Create a unit."
 msgstr "Създай игра"
 
-#: src/menu_events.cpp:2362
+#: src/menu_events.cpp:2383
 #, fuzzy
 msgid "Toggle fog for the current player."
 msgstr "Обновяване на шрифтовете за текущият език."
 
-#: src/menu_events.cpp:2364
+#: src/menu_events.cpp:2385
 #, fuzzy
 msgid "Toggle shroud for the current player."
 msgstr "Обновяване на шрифтовете за текущият език."
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2387
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2368
+#: src/menu_events.cpp:2389
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2402
+#: src/menu_events.cpp:2423
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2404 src/menu_events.cpp:2413 src/menu_events.cpp:2656
-#: src/menu_events.cpp:2662 src/menu_events.cpp:2688 src/menu_events.cpp:2698
-#: src/menu_events.cpp:2705
+#: src/menu_events.cpp:2425 src/menu_events.cpp:2434 src/menu_events.cpp:2677
+#: src/menu_events.cpp:2683 src/menu_events.cpp:2709 src/menu_events.cpp:2719
+#: src/menu_events.cpp:2726
 #, fuzzy
 msgid "error"
 msgstr "Грешка"
 
-#: src/menu_events.cpp:2411
+#: src/menu_events.cpp:2432
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2420
+#: src/menu_events.cpp:2441
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2488
+#: src/menu_events.cpp:2509
 msgid "Added to ignore list: "
 msgstr "Добавен към черният списък: "
 
-#: src/menu_events.cpp:2488 src/menu_events.cpp:2501
+#: src/menu_events.cpp:2509 src/menu_events.cpp:2522
 msgid "Invalid username: "
 msgstr "Невалиден потребител: "
 
-#: src/menu_events.cpp:2501
+#: src/menu_events.cpp:2522
 msgid "Added to friends list: "
 msgstr "Добавен към списъка с приятели: "
 
-#: src/menu_events.cpp:2510
+#: src/menu_events.cpp:2531
 msgid "Removed from list: "
 msgstr "Премахнат от списъка с приятели: "
 
-#: src/menu_events.cpp:2522
+#: src/menu_events.cpp:2543
 msgid "There are no players on your friends or ignore list."
 msgstr "Няма играчи в списъка с приятели или черният списък."
 
-#: src/menu_events.cpp:2627
+#: src/menu_events.cpp:2648
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Не бе открит знак или единица съдържащ/а текста '$search'."
 
-#: src/menu_events.cpp:2657
+#: src/menu_events.cpp:2678
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2663
+#: src/menu_events.cpp:2684
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2688
+#: src/menu_events.cpp:2709
 msgid "Usage: control <side> <nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2699
+#: src/menu_events.cpp:2720
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2706
+#: src/menu_events.cpp:2727
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2762
+#: src/menu_events.cpp:2776
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Общи команди"
 
-#: src/menu_events.cpp:2766
+#: src/menu_events.cpp:2780
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Общи команди"
 
-#: src/menu_events.cpp:2874 src/menu_events.cpp:2876
+#: src/menu_events.cpp:2888 src/menu_events.cpp:2890
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:2882 src/menu_events.cpp:2888
+#: src/menu_events.cpp:2896 src/menu_events.cpp:2902
 msgid "prompt^Command:"
 msgstr "Команда:"
 
-#: src/menu_events.cpp:2907
+#: src/menu_events.cpp:2921
 msgid "User-Command#3"
 msgstr "Команди"
 
@@ -8441,6 +8432,13 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Позволи качване на обобщения"
+
+#~ msgid "Screenshot"
+#~ msgstr "Снимка на екрана"
+
+#, fuzzy
+#~ msgid "Map_Screenshot"
+#~ msgstr "Снимка на екрана"
 
 #, fuzzy
 #~ msgid ""
