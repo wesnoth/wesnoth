@@ -880,7 +880,7 @@ void game::add_player(const network::connection player, bool observer) {
 	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
-		send_and_record_server_message((user->second.name()
+		send_server_message((user->second.name()
 				+ " has joined the game.").c_str(), player);
 	} else if (!allow_observers()) {
 		return; //false;
@@ -1257,7 +1257,7 @@ void game::send_and_record_server_message(const char* message,
 	simple_wml::document* doc = new simple_wml::document;
 	send_server_message(message, 0, doc);
 	send_data(*doc, exclude);
-	record_data(doc);
+	if (started_) record_data(doc);
 }
 
 void game::send_server_message_to_all(const char* message, network::connection exclude) const
@@ -1275,9 +1275,17 @@ void game::send_server_message(const char* message, network::connection sock, si
 	}
 
 	simple_wml::document& doc = *docptr;
-	simple_wml::node& msg = doc.root().add_child("message");
-	msg.set_attr("sender", "server");
-	msg.set_attr_dup("message", message);
+	if (started_) {
+		simple_wml::node& cmd = doc.root().add_child("turn");
+		simple_wml::node& cfg = cmd.add_child("command");
+		simple_wml::node& msg = cfg.add_child("speak");
+		msg.set_attr("id", "server");
+		msg.set_attr_dup("message", message);
+	} else {
+		simple_wml::node& msg = doc.root().add_child("message");
+		msg.set_attr("sender", "server");
+		msg.set_attr_dup("message", message);
+	}
 
 	if(sock) {
 		send_to_one(doc, sock);
