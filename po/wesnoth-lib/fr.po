@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-26 13:45+0200\n"
-"PO-Revision-Date: 2008-04-21 21:20+0200\n"
+"PO-Revision-Date: 2008-04-26 16:25+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -292,7 +292,7 @@ msgstr "Gelé"
 #. [terrain]
 #: data/core/terrain.cfg:1085
 msgid "Impassable"
-msgstr "Infranchissables"
+msgstr "Infranchissable"
 
 #. [terrain]
 #: data/core/terrain.cfg:1091
@@ -520,7 +520,7 @@ msgstr "Ajouter comme ignoré"
 
 #: src/game_preferences_display.cpp:175
 msgid "Remove"
-msgstr "Refaire le mouvement"
+msgstr "Enlever"
 
 #: src/game_preferences_display.cpp:176
 msgid "Show Floating Labels"
@@ -740,7 +740,7 @@ msgstr "Signaler toute arrivée de joueur au vestibule"
 
 #: src/game_preferences_display.cpp:365
 msgid "View and edit your friends and ignores list"
-msgstr "Mdifier la liste des amis et des ignorés"
+msgstr "Modifier la liste des amis et des ignorés"
 
 #: src/game_preferences_display.cpp:366
 msgid "Back to the multiplayer options"
@@ -885,11 +885,11 @@ msgstr "Le texte ne commence pas dans le cadre."
 
 #: src/gui/widgets/settings.cpp:117
 msgid "No default gui defined."
-msgstr "Aucune IHM définie."
+msgstr "Aucune IHM définie par défaut."
 
 #: src/gui/widgets/settings.cpp:193
 msgid "No default window defined."
-msgstr "Aucune fenêtre par défaut définie."
+msgstr "Aucune fenêtre définie par défaut."
 
 #: src/gui/widgets/settings.cpp:217
 msgid "Window not defined."
@@ -897,7 +897,7 @@ msgstr "Fenêtre non définie."
 
 #: src/gui/widgets/settings.cpp:236
 msgid "No default button defined."
-msgstr "Aucun bouton par défaut défini."
+msgstr "Aucun bouton défini par défaut."
 
 #: src/gui/widgets/settings.cpp:343 src/gui/widgets/settings.cpp:554
 #: src/gui/widgets/window_builder.cpp:209
@@ -910,7 +910,7 @@ msgstr "Aucun état ou zone de dessin défini."
 
 #: src/gui/widgets/settings.cpp:606
 msgid "No layer or draw section defined."
-msgstr "Aucune couche ou zone de dessin défini."
+msgstr "Aucune couche ou zone de dessin définie."
 
 #: src/gui/widgets/window_builder.cpp:249
 msgid "No grid defined."
@@ -1086,7 +1086,7 @@ msgstr "Jouer"
 
 #: src/hotkeys.cpp:97
 msgid "Reset"
-msgstr "Remise à zéro"
+msgstr "Remettre à zéro"
 
 #: src/hotkeys.cpp:98
 msgid "Stop"
@@ -1142,7 +1142,7 @@ msgstr "Sauvegarder sous"
 
 #: src/hotkeys.cpp:115
 msgid "Set Player's keep"
-msgstr "Sélectionner le donjon du joueur"
+msgstr "Définir le donjon du joueur"
 
 #: src/hotkeys.cpp:116
 msgid "Flood Fill"
@@ -1262,19 +1262,16 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: src/hotkeys.cpp:823
-#, fuzzy
 msgid "Map-Screenshot"
 msgstr "Capture d'écran de la carte"
 
 #: src/hotkeys.cpp:830
-#, fuzzy
 msgid "Screenshot done"
-msgstr "Capture d'écran"
+msgstr "Capture d'écran effectuée"
 
 #: src/hotkeys.cpp:832
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "Capture d'écran"
+msgstr "La capture d'écran a échoué"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Map Generator"
@@ -1332,7 +1329,7 @@ msgstr "Insulaire"
 
 #: src/marked-up_text.cpp:357
 msgid "The maximum text width is less than 1."
-msgstr "La largeur maximum du texte est inféreure à 1."
+msgstr "La largeur maximum du texte est inférieure à 1."
 
 #: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
@@ -1360,7 +1357,7 @@ msgstr "Configuration des raccourcis clavier"
 
 #: src/preferences_display.cpp:237 src/preferences_display.cpp:306
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Taper le raccourci désiré (Echap annule)"
+msgstr "Taper le raccourci désiré (Échap annule)"
 
 #: src/preferences_display.cpp:256
 msgid "Action"
@@ -1387,7 +1384,7 @@ msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Attention : le raccourci de capture d'écran ne doit pas être combiné avec "
-"les touches Control, Alt ou Meta."
+"les touches Control, Alt ou Méta."
 
 #: src/preferences_display.cpp:430
 msgid "There are no alternative video modes available"
@@ -1431,20 +1428,11 @@ msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"Dans la section « [$section|] » où « $primary_key| = $primary_value », la clé "
-"obligatoire « $key » n'est pas renseignée."
+"Dans la section « [$section|] » où « $primary_key| = $primary_value », la "
+"clé obligatoire « $key » n'est pas renseignée."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Dans la section « [$section|] » la clé obligatoire « $key » n'est pas "
 "renseignée."
-
-#~ msgid "No default label defined."
-#~ msgstr "Aucun libellé par défaut défini."
-
-#~ msgid "No default text box defined."
-#~ msgstr "Aucune boite de texte par défaut définie."
-
-#~ msgid "No default tooltip defined."
-#~ msgstr "Aucune bulle par défaut définie."
