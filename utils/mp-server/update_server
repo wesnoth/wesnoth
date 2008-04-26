@@ -57,19 +57,19 @@ mkdir -p $BUILD
 if [ "$SCONS" = "yes" ]; then
 	mkdir -p $BUILD/var/run
 	# need to remove .scons-option-cache when parameters get removed!
-	CXXFLAGS=$CXXFLAGS LDFLAGS=$LDFLAGS scons install-wesnothd prefix=$BUILD fifodir=$BUILD/var/run boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt raw_sockets=1 profile=0 fribidi=0 python=0 localedir= prefsdir= | tee $BUILD/scons.log || exit 1
+	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-wesnothd prefix=$BUILD fifodir=$BUILD/var/run boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt raw_sockets=1 profile=0 fribidi=0 python=0 localedir= prefsdir= | tee $BUILD/scons.log || exit 1
 	echo "adding '$SERVER' suffix..."
 	mv $BUILD/bin/wesnothd $BUILD/bin/wesnothd-$SERVER || exit 1
 else
 	echo 'autogen.sh and configure...'
 	./autogen.sh > $BUILD/autogen.log
-	./configure --prefix=$BUILD --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/var/run --disable-nls --enable-lite --enable-profile --with-boost=$HOME/tools > $BUILD/configure.log CXXFLAGS=$CXXFLAGS LDFLAGS=$LDFLAGS || exit 1
+	./configure --prefix=$BUILD --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/var/run --disable-nls --enable-lite --enable-profile --with-boost=$HOME/tools > $BUILD/configure.log CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" || exit 1
 	make clean > /dev/null
 
 	echo 'make...'
-	make > $BUILD/$DIR/make.log || exit 1
+	make > $BUILD/make.log || exit 1
 	echo 'make install...'
-	make install > $BUILD/$DIR/install.log || exit 1
+	make install > $BUILD/install.log || exit 1
 fi
 
 # remove the man pages
