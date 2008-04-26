@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $# -gt 2 -o $# -lt 1 ]; then
-	echo "Syntax: $0 <server version> [<revision>]"
+	echo "Syntax: $0 <server version> [<revision>]" >&2
 	exit 1
 fi
 
@@ -11,12 +11,12 @@ SOURCE=$HOME/source
 SOCKET=$SERVERBASE/build/var/run/socket
 
 if ! [ -d $SERVERBASE ]; then
-	echo "$SERVER server not found."
+	echo "$SERVER server not found." >&2
 	exit 1
 fi
 
 if ! [ -d $SOURCE ]; then
-	echo "$SOURCE not found."
+	echo "$SOURCE not found." >&2
 	exit 1
 fi
 # only really needed on server.wesnoth.org
@@ -28,7 +28,7 @@ case $SERVER in
 	;;
 	1.4 )   cd $SOURCE/1.4   || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
-		#SCONS=yes
+		SCONS=yes
 	;;
 	*   )   cd $SOURCE/trunk || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0"
@@ -42,10 +42,10 @@ if [ "$2" != "" ]; then
 fi
 echo -n 'svn update... '
 svn up $REVISION > /dev/null
-rev=$(svnversion -n src/)
+rev=$(svnversion -cn src/ | cut -d: -f2)
 echo "to $rev"
 if [ "$rev" = "" ]; then
-	echo "No revision information found."
+	echo "No revision information found." >&2
 	exit 1
 fi
 # reminder for local changes

@@ -1,6 +1,6 @@
 #!/bin/sh
 if ! [ $# -eq 1 ]; then
-	echo "Syntax: $0 <server version>"
+	echo "Syntax: $0 <server version>" >&2
 	exit 1
 fi
 
@@ -8,7 +8,7 @@ SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
 
 if ! [ -d $SERVERBASE ]; then
-	echo "$SERVER server not found."
+	echo "$SERVER server not found." >&2
 	exit 1
 fi
 

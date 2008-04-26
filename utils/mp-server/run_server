@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ $# -lt 1 ]; then
-	echo "Syntax: $0 <server version> [<additional parameters for wesnothd>]"
+	echo "Syntax: $0 <server version> [<additional parameters for wesnothd>]" >&2
 	exit 1
 fi
 
@@ -11,7 +11,7 @@ SERVERBASE=$HOME/servers/$SERVER
 SOURCE=$HOME/source/trunk
 
 if ! [ -d "$SERVERBASE" ]; then
-	echo "Server '$SERVER' not found."
+	echo "Server '$SERVER' not found." >&2
 	exit 1
 fi
 [ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
@@ -30,7 +30,6 @@ case $SERVER in
 		;;
 	* )
 esac
-OPTIONS="-c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
 
 ulimit -Ss 2048
 ulimit -c unlimited
@@ -43,18 +42,20 @@ do
 	if ps -C wesnothd-$SERVER >/dev/null; then
 		sleep 10
 	else
-		DATE=$(date +"%Y%m%d-%H%M%S")
-		BUILDDIR=$(ls -l $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
-		REV=$(ls -l $SERVERBASE/build | sed -e 's,.*wesnothd-\(svn-.*\)_.*/,\1,')
-		LOG=wesnothd.$DATE.$REV.log
 		cd $SERVERBASE/build || exit 1
 		if ! [ -x bin/wesnothd-$SERVER ]; then
-			echo "Executable 'bin/wesnothd-$SERVER' not found."
+			echo "Executable 'bin/wesnothd-$SERVER' not found." >&2
 			exit 1
 		fi
-		nice -n 3 bin/wesnothd-$SERVER $OPTIONS > $SERVERBASE/logs/$LOG 2>&1 &
+		DATE=$(date +"%Y%m%d-%H%M%S")
+		PORT=$(sed -re '/port=/!d;s/[ \t]*port="?([0-9]+)"?/\1/' $SERVERBASE/redirect.cfg)
+		BUILDDIR=$(ls -l $SERVERBASE/build | cut -d ' ' -f 12)
+		REV=r$(echo "$BUILDDIR" | sed -re "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,")
+		LOG=wesnothd.$DATE.$REV.log
+		COMMAND="bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
+		nice -n 3 $COMMAND > $SERVERBASE/logs/$LOG 2>&1 &
 		PID=$!
-		echo -n "started $SERVER server (revision: $REV, pid: $PID) at: "; date
+		echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) at: $DATE"
 		ln -s ../../$SERVER/logs/$LOG $LOG.$PID
 		rm -f $SERVERBASE/old.log
 		mv $SERVERBASE/current.log $SERVERBASE/old.log > /dev/null 2>&1
