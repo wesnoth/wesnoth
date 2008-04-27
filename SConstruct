@@ -222,14 +222,15 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
 
     backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
 
-    sdldir = context.env.get("SDLDIR", "/usr/")
+    sdldir = context.env.get("SDLDIR", "")
     if sdl_lib == "SDL": 
         if require_version:
             context.Message("Checking for Simple DirectMedia Layer library version >= %d.%d.%d... " % (major_version, minor_version, patchlevel))
         else:
             context.Message("Checking for Simple DirectMedia Layer library... ")
         env = context.env
-        env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL")], LIBPATH = [os.path.join(sdldir, "lib")])
+        if sdldir:
+            env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL")], LIBPATH = [os.path.join(sdldir, "lib")])
         if env["PLATFORM"] == "posix" or env["PLATFORM"] == "darwin":
             env.ParseConfig("sdl-config --cflags --libs")
         if env["PLATFORM"] == "win32":
