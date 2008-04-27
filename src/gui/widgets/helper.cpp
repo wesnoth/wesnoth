@@ -105,35 +105,5 @@ Uint32 decode_colour(const std::string& colour)
 	return result;
 }
 
-namespace {
-
-// Surface locker class based on surface_locker in sdl_utils.hpp.
-struct surface_lock
-{
-	surface_lock(SDL_Surface* surf) : surface_(surf), locked_(false)
-	{
-		if(SDL_MUSTLOCK(surface_)) {
-			const int res = SDL_LockSurface(surface_);
-			if(res == 0) {
-				locked_ = true;
-			}
-		}
-	}
-
-	~surface_lock()
-	{
-		if(locked_) {
-			SDL_UnlockSurface(surface_);
-		}
-	}
-
-	Uint32* pixels() { return reinterpret_cast<Uint32*>(surface_->pixels); }
-private:
-	SDL_Surface* surface_;
-	bool locked_;
-};
-
-} // namespace
-
 } // namespace gui2
 

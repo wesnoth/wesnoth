@@ -1232,6 +1232,36 @@ surface create_compatible_surface(surface const &surf, int width, int height)
 		                        surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
 }
 
+namespace {
+
+// Surface locker class based on surface_locker in sdl_utils.hpp.
+// FIXME maybe use a template class.
+struct sdl_surface_lock
+{
+	sdl_surface_lock(SDL_Surface* surf) : surface_(surf), locked_(false)
+	{
+		if(SDL_MUSTLOCK(surface_)) {
+			const int res = SDL_LockSurface(surface_);
+			if(res == 0) {
+				locked_ = true;
+			}
+		}
+	}
+
+	~sdl_surface_lock()
+	{
+		if(locked_) {
+			SDL_UnlockSurface(surface_);
+		}
+	}
+
+	Uint32* pixels() { return reinterpret_cast<Uint32*>(surface_->pixels); }
+private:
+	SDL_Surface* surface_;
+	bool locked_;
+};
+
+} // namespace
 //! Replacement for SDL_BlitSurface.
 //!
 //! SDL_BlitSurface has problems with blitting partly transparent surfaces so
@@ -1281,8 +1311,8 @@ void blit_surface(SDL_Surface* src,
 
 	{
 		// Extra scoping used for the surface_lock.
-		surface_lock src_lock(src);
-		surface_lock dst_lock(dst);
+		sdl_surface_lock src_lock(src);
+		sdl_surface_lock dst_lock(dst);
 
 		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
 		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
