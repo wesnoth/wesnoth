@@ -15,7 +15,6 @@
 #ifndef __GUI_WIDGETS_WIDGET_HPP_INCLUDED__
 #define __GUI_WIDGETS_WIDGET_HPP_INCLUDED__
 
-#include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl_utils.hpp"
 
@@ -23,8 +22,9 @@
 
 #include <string>
 
-
 namespace gui2 {
+
+class tevent_handler;
 
 //! Base class with all possible events, most widgets can ignore most of
 //! these, but they are available.

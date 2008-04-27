@@ -20,6 +20,7 @@
 
 #include "events.hpp"
 #include "gui/widgets/helper.hpp"
+#include "gui/widgets/widget.hpp"
 
 #include "SDL.h"
 
@@ -27,7 +28,6 @@ class t_string;
 
 namespace gui2{
 
-class twidget;
 class twindow;
 
 class tevent_handler : public events::handler
@@ -60,6 +60,50 @@ public:
 	void remove_help_popup();
 
 private:
+
+	struct tmouse_button {
+		
+		tmouse_button(const std::string& name, 
+			void (tevent_executor::*down) (tevent_handler&),
+			void (tevent_executor::*up) (tevent_handler&),
+			void (tevent_executor::*click) (tevent_handler&),
+			void (tevent_executor::*double_click) (tevent_handler&),
+			bool (tevent_executor::*wants_double_click) () const) :
+				last_click_stamp(0),
+				focus(0),
+				name(name),
+				down(down),
+				up(up),
+				click(click),
+				double_click(double_click),
+				wants_double_click(wants_double_click),
+				is_down(false)
+			{}
+
+		//! The time of the last click used for double clicking.
+		Uint32 last_click_stamp;
+
+		//! If the mouse isn't captured we need to verify the up
+		//! is on the same widget as the down so we send a proper
+		//! click, also needed to send the up to the right widget.
+		twidget* focus;
+
+		//! used for debug messages.
+		const std::string name;
+
+		//! Pointers to member functions, this way we can call the proper
+		//! function indirect without writing a case for which button to
+		//! use.
+		void (tevent_executor::*down) (tevent_handler&);
+		void (tevent_executor::*up) (tevent_handler&);
+		void (tevent_executor::*click) (tevent_handler&);
+		void (tevent_executor::*double_click) (tevent_handler&);
+		bool (tevent_executor::*wants_double_click) () const;
+
+		//! Is the button down?
+		bool is_down;
+	};
+
 	//! we create a new event context so we're always modal.
 	//! Maybe this has to change, but not sure yet.
 	events::event_context event_context_;
@@ -67,13 +111,9 @@ private:
 	int mouse_x_;                      //! The current mouse x.
 	int mouse_y_;                      //! The current mouse y.
 
-	bool mouse_left_button_down_;      //! Is the left mouse button down?
-	bool mouse_middle_button_down_;    //! Is the middle mouse button down?
-	bool mouse_right_button_down_;     //! Is the right mouse button down?
-
-	Uint32 last_left_click_;	
-	Uint32 last_middle_click_;	
-	Uint32 last_right_click_;	
+	tmouse_button left_;
+	tmouse_button middle_;
+	tmouse_button right_;
 
 	bool hover_pending_;			   //! Is there a hover event pending?
 	unsigned hover_id_;                //! Id of the pending hover event.
@@ -97,9 +137,9 @@ private:
 	void mouse_leave(const SDL_Event& event, twidget* mouse_over);
 
 
-	void mouse_left_button_down(const SDL_Event& event, twidget* mouse_over);
-	void mouse_left_button_up(const SDL_Event& event, twidget* mouse_over);
-	void mouse_left_click(twidget* widget);
+	void mouse_button_down(const SDL_Event& event, twidget* mouse_over, tmouse_button& button);
+	void mouse_button_up(const SDL_Event& event, twidget* mouse_over, tmouse_button& button);
+	void mouse_click(twidget* widget, tmouse_button& button);
 
 	void set_hover(const bool test_on_widget = false);
 

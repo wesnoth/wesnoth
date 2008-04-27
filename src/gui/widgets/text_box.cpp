@@ -16,6 +16,7 @@
 
 #include "font.hpp"
 #include "foreach.hpp"
+#include "gui/widgets/event_handler.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_preferences.hpp"
@@ -224,10 +225,6 @@ void ttext_box::mouse_move(tevent_handler& event)
 //! Inherited from twidget.
 void ttext_box::mouse_left_button_up(tevent_handler& event)
 {
-	// FIXME there's a bug in the event code if the up occurs
-	// off widget we aren't fired (which should happen).
-	// No work arounds made need to fix the event code.
-	
 	DBG_G_E << "Text box: left mouse up.\n";
 
 	dragging_ = false;

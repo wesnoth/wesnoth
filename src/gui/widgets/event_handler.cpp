@@ -81,12 +81,24 @@ tevent_handler::tevent_handler() :
 	event_context_(),
 	mouse_x_(-1),
 	mouse_y_(-1),
-	mouse_left_button_down_(false),
-	mouse_middle_button_down_(false),
-	mouse_right_button_down_(false),
-	last_left_click_(0),
-	last_middle_click_(0),
-	last_right_click_(0),
+	left_("left",
+		&tevent_executor::mouse_left_button_down,
+		&tevent_executor::mouse_left_button_up,
+		&tevent_executor::mouse_left_button_click,
+		&tevent_executor::mouse_left_button_double_click,
+		&tevent_executor::wants_mouse_left_double_click),
+	middle_("middle",
+		&tevent_executor::mouse_middle_button_down,
+		&tevent_executor::mouse_middle_button_up,
+		&tevent_executor::mouse_middle_button_click,
+		&tevent_executor::mouse_middle_button_double_click,
+		&tevent_executor::wants_mouse_middle_double_click),
+	right_("right",
+		&tevent_executor::mouse_right_button_down,
+		&tevent_executor::mouse_right_button_up,
+		&tevent_executor::mouse_right_button_click,
+		&tevent_executor::mouse_right_button_double_click,
+		&tevent_executor::wants_mouse_right_double_click),
 	hover_pending_(false),
 	hover_id_(0),
 	hover_box_(),
@@ -132,12 +144,19 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			switch(event.button.button) {
 				case SDL_BUTTON_LEFT : 
-					mouse_left_button_down(event, mouse_over);
+					mouse_button_down(event, mouse_over, left_);
+					break;
+				case SDL_BUTTON_MIDDLE :
+					mouse_button_down(event, mouse_over, middle_);
+					break;
+				case SDL_BUTTON_RIGHT :
+					mouse_button_down(event, mouse_over, right_);
 					break;
 				default:
 					// cast to avoid being printed as char.
 					WRN_G_E << "Unhandled 'mouse button down' event for button " 
 						<< static_cast<Uint32>(event.button.button) << ".\n";
+					assert(false);
 					break;
 			}
 			break;
@@ -152,12 +171,19 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			switch(event.button.button) {
 
 				case SDL_BUTTON_LEFT : 
-					mouse_left_button_up(event, mouse_over);
+					mouse_button_up(event, mouse_over, left_);
+					break;
+				case SDL_BUTTON_MIDDLE :
+					mouse_button_up(event, mouse_over, middle_);
+					break;
+				case SDL_BUTTON_RIGHT :
+					mouse_button_up(event, mouse_over, right_);
 					break;
 				default:
 					// cast to avoid being printed as char.
 					WRN_G_E << "Unhandled 'mouse button up' event for button " 
 						<< static_cast<Uint32>(event.button.button) << ".\n";
+					assert(false);
 					break;
 			}
 			break;
@@ -333,18 +359,19 @@ void tevent_handler::mouse_leave(const SDL_Event& /*event*/, twidget* /*mouse_ov
 	mouse_focus_ = 0;
 }
 
-void tevent_handler::mouse_left_button_down(const SDL_Event& /*event*/, twidget* mouse_over)
+void tevent_handler::mouse_button_down(const SDL_Event& event, twidget* mouse_over, tmouse_button& button)
 {
-	if(mouse_left_button_down_) {
-		WRN_G_E << "In 'left button down' but the mouse "
-			<< "button is already down, we missed an event.\n";
+	if(button.is_down) {
+		WRN_G_E << "In 'button down' for button '" << button.name 
+			<< "' but the mouse button is already down, we missed an event.\n";
 		return;
 	}
-	mouse_left_button_down_ = true;
+	button.is_down = true;
 	hover_pending_ = false;
 
 	if(mouse_captured_) {
-		mouse_focus_->mouse_left_button_down(*this);
+		button.focus = mouse_focus_;
+		(mouse_focus_->*button.down)(*this);
 	} else {
 		if(!mouse_over) {
 			return;
@@ -355,50 +382,28 @@ void tevent_handler::mouse_left_button_down(const SDL_Event& /*event*/, twidget*
 				<< "and mouse not captured, we missed events.\n";
 		}
 
-		mouse_over->mouse_left_button_down(*this);
+		button.focus = mouse_over;
+		(mouse_over->*button.down)(*this);
 	}
 }
 
-void tevent_handler::mouse_left_click(twidget* widget)
+void tevent_handler::mouse_button_up(const SDL_Event& event, twidget* mouse_over, tmouse_button& button)
 {
-	if(widget->wants_mouse_left_double_click()) {
-		Uint32 stamp = SDL_GetTicks();
-		if(last_left_click_ + 500 >= stamp) { // FIXME 500 should be variable
-
-			widget->mouse_left_button_double_click(*this);
-			last_left_click_ = 0;
-
-		} else {
-
-			widget->mouse_left_button_click(*this);
-			last_left_click_ = stamp;
-		}
-
-	} else {
-	
-		widget->mouse_left_button_click(*this);
-	}
-
-}
-
-void tevent_handler::mouse_left_button_up(const SDL_Event& event, twidget* mouse_over)
-{
-	if(!mouse_left_button_down_) {
-		WRN_G_E << "In 'left button up' but the mouse "
-			<< "button is already up, we missed an event.\n";
+	if(!button.is_down) {
+		WRN_G_E << "In 'button up' for button '" << button.name 
+			<< "' but the mouse button is already up, we missed an event.\n";
 		return;
 	}
 
-	mouse_left_button_down_ = false;
-	if(!mouse_focus_) {
-		return;
+	button.is_down = false;
+	if(button.focus) {
+		(button.focus->*button.up)(*this);
 	}
-	mouse_focus_->mouse_left_button_up(*this);
 
 	if(mouse_captured_) {
 
 		if(mouse_focus_ != mouse_over) {
-			if (!mouse_middle_button_down_ && !mouse_right_button_down_) {
+			if (!left_.is_down && !middle_.is_down && !right_.is_down) {
 				mouse_captured_ = false;
 
 				mouse_leave(event, mouse_over);
@@ -408,13 +413,35 @@ void tevent_handler::mouse_left_button_up(const SDL_Event& event, twidget* mouse
 				}
 			}
 		} else {
-			mouse_left_click(mouse_focus_);
+			mouse_click(mouse_focus_, button);
 		}
-	} else {
-		mouse_left_click(mouse_over);
+	} else if(button.focus && button.focus == mouse_over) {
+		mouse_click(button.focus, button);
 	}
 
+	button.focus = 0;
 	set_hover();
+}
+
+void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)
+{
+	if((widget->*button.wants_double_click)()) {
+		Uint32 stamp = SDL_GetTicks();
+		if(button.last_click_stamp + 500 >= stamp) { // FIXME 500 should be variable
+
+			(widget->*button.double_click)(*this);
+			button.last_click_stamp = 0;
+
+		} else {
+
+			(widget->*button.click)(*this);
+			button.last_click_stamp = stamp;
+		}
+
+	} else {
+	
+		widget->mouse_left_button_click(*this);
+	}
 }
 
 void tevent_handler::set_hover(const bool test_on_widget)
@@ -435,7 +462,7 @@ void tevent_handler::set_hover(const bool test_on_widget)
 	}
 
 	// Mouse down, no hovering
-	if(mouse_left_button_down_ || mouse_middle_button_down_ || mouse_right_button_down_) {
+	if(left_.is_down || middle_.is_down || right_.is_down) {
 		return;
 	} 
 
@@ -609,7 +636,7 @@ void tevent_handler::key_down(const SDL_Event& event)
  * |              |              
  * |              V
  * |     --------------------        -------------------- 
- * |    | moves on widget    | -->  / fire mouse move  /
+ * |    | moves on widget    | -->  / fire mouse move   /
  * |     --------------------      ---------------------
  * |                                        |
  * |               --------------------------------------------------
