@@ -144,12 +144,15 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			switch(event.button.button) {
 				case SDL_BUTTON_LEFT : 
+					DBG_G_E << "Event: Left button down.\n";
 					mouse_button_down(event, mouse_over, left_);
 					break;
 				case SDL_BUTTON_MIDDLE :
+					DBG_G_E << "Event: Middle button down.\n";
 					mouse_button_down(event, mouse_over, middle_);
 					break;
 				case SDL_BUTTON_RIGHT :
+					DBG_G_E << "Event: Right button down.\n";
 					mouse_button_down(event, mouse_over, right_);
 					break;
 				default:
@@ -171,12 +174,15 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			switch(event.button.button) {
 
 				case SDL_BUTTON_LEFT : 
+					DBG_G_E << "Event: Left button up.\n";
 					mouse_button_up(event, mouse_over, left_);
 					break;
 				case SDL_BUTTON_MIDDLE :
+					DBG_G_E << "Event: Middle button up.\n";
 					mouse_button_up(event, mouse_over, middle_);
 					break;
 				case SDL_BUTTON_RIGHT :
+					DBG_G_E << "Event: Right button up.\n";
 					mouse_button_up(event, mouse_over, right_);
 					break;
 				default:
@@ -359,7 +365,7 @@ void tevent_handler::mouse_leave(const SDL_Event& /*event*/, twidget* /*mouse_ov
 	mouse_focus_ = 0;
 }
 
-void tevent_handler::mouse_button_down(const SDL_Event& event, twidget* mouse_over, tmouse_button& button)
+void tevent_handler::mouse_button_down(const SDL_Event& /*event*/, twidget* mouse_over, tmouse_button& button)
 {
 	if(button.is_down) {
 		WRN_G_E << "In 'button down' for button '" << button.name 
@@ -440,7 +446,7 @@ void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)
 
 	} else {
 	
-		widget->mouse_left_button_click(*this);
+		(widget->*button.click)(*this);
 	}
 }
 

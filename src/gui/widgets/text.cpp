@@ -101,6 +101,16 @@ void ttext_::mouse_left_button_double_click(tevent_handler&)
 
 }
 
+void ttext_::mouse_middle_button_click(tevent_handler&)
+{
+	DBG_G_E << "Text_box: middle mouse button click.\n";
+#ifdef __unix__
+		// pastes on UNIX systems.
+		paste_selection();
+#endif
+
+}
+
 void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
 	DBG_G_E << "Text_box: key press.\n";
