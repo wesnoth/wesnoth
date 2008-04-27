@@ -22,6 +22,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/spacer.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window_builder.hpp"
 #include "log.hpp"
@@ -160,6 +161,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @start_table = widget_definition
  *     button_definition             A push button.
  *     label_definition              A label.
+ *     spacer_definition             A spacer.
  *     text_box_definition           A single line text box.
  *     tooltip_definition            A small tooltip with help.
  *     window_definition             A window.
@@ -195,6 +197,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	/***** Control definitions *****/
 	load_definitions<tbutton_definition>("button", cfg.get_children("button_definition"));
 	load_definitions<tlabel_definition>("label", cfg.get_children("label_definition"));
+	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
 	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
 	load_definitions<ttooltip_definition>("tooltip", cfg.get_children("tooltip_definition"));
 
@@ -454,6 +457,31 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
 	// Note the order should be the same as the enum tstate is label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
+}
+
+tspacer_definition::tspacer_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_G_P << "Parsing spacer " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+
+tspacer_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget_spacer
+ *
+ * == Spacer ==
+ *
+ * The definition of a normal spacer.
+ *
+ * A spacer has no states so nothing to load.
+ * 
+ */
 }
 
 ttext_box_definition::ttext_box_definition(const config& cfg) :

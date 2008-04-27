@@ -76,6 +76,7 @@ wesnoth_source = \
 	gui/widgets/label.cpp \
 	gui/widgets/panel.cpp \
 	gui/widgets/settings.cpp \
+	gui/widgets/spacer.cpp \
 	gui/widgets/text.cpp \
 	gui/widgets/text_box.cpp \
 	gui/widgets/tooltip.cpp \

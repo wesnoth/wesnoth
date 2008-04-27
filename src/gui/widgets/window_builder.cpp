@@ -19,6 +19,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/spacer.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
@@ -88,6 +89,20 @@ private:
 	tbuilder_label();
 public:
 	tbuilder_label(const config& cfg) :
+		tbuilder_control(cfg)
+	{}
+
+	twidget* build () const;
+
+};
+
+struct tbuilder_spacer : public tbuilder_control
+{
+
+private:
+	tbuilder_spacer();
+public:
+	tbuilder_spacer(const config& cfg) :
 		tbuilder_control(cfg)
 	{}
 
@@ -346,6 +361,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
 			} else if((**col_itor).child("label")) {
 				widgets.push_back(new tbuilder_label(*((**col_itor).child("label"))));
+			} else if((**col_itor).child("spacer")) {
+				widgets.push_back(new tbuilder_spacer(*((**col_itor).child("spacer"))));
 			} else if((**col_itor).child("text_box")) {
 				widgets.push_back(new tbuilder_text_box(*((**col_itor).child("text_box"))));
 			} else if((**col_itor).child("grid")) {
@@ -434,6 +451,18 @@ twidget* tbuilder_label::build() const
 		<< definition << "'.\n";
 
 	return tmp_label;
+}
+
+twidget* tbuilder_spacer::build() const
+{
+	tspacer *spacer = new tspacer();
+
+	init_control(spacer);
+
+	DBG_G << "Window builder: placed spacer '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	return spacer;
 }
 
 twidget* tbuilder_text_box::build() const
