@@ -49,7 +49,7 @@ do
 		fi
 		DATE=$(date +"%Y%m%d-%H%M%S")
 		PORT=$(sed -re '/port=/!d;s/[ \t]*port="?([0-9]+)"?/\1/' $SERVERBASE/redirect.cfg)
-		BUILDDIR=$(ls -l $SERVERBASE/build | cut -d ' ' -f 12)
+		BUILDDIR=$(ls -l $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
 		REV=r$(echo "$BUILDDIR" | sed -re "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,")
 		LOG=wesnothd.$DATE.$REV.log
 		COMMAND="bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
