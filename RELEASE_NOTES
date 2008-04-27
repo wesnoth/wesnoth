@@ -10,14 +10,3 @@ is making sure that spelling/grammer/whatever is usable and that you are using
 
 The release team should empty this file after each release.
 
-New (heavy) map-screenshot:
-The new map-screenshot feature (Hotkey : "Map Screenshot") may create heavy BMP image for big maps, so if you have limited diskspace, it's better to dezoom before using it.
-
-Smarter pathfinding:
-Try to avoid terrains with bad defense or to be blocked by friends (this help multi-turns moves)
-
-
-Notes for packagers (not sure whether needed in normal notes as well)
-* We now depend on boost_regex >= 1.33.0
-* We now depend on libsdl-ttf >= 2.0.8
-* We now depend on zlib >= 1.0 (with development files)
