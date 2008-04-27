@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "util.hpp"
+#include "sdl_utils.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
 #define LOG_G LOG_STREAM_INDENT(info, gui)

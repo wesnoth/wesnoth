@@ -20,6 +20,7 @@
 #include "config.hpp"
 #include "font.hpp"
 #include "formula.hpp"
+#include "sdl_utils.hpp"
 #include "image.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"

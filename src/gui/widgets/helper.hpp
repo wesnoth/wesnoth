@@ -59,10 +59,6 @@ Uint32 decode_colour(const std::string& colour);
 
 int decode_font_style(const std::string& style);
 
-//! Replacement for SDL_BlitSurface.
-void blit_surface(SDL_Surface* src, 
-	const SDL_Rect* srcrect, SDL_Surface* dst, const SDL_Rect* dstrect);
-
 } // namespace gui2
 
 #endif

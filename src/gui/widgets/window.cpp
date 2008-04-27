@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"
+#include "sdl_utils.hpp"
 
 #include <cassert>
 
