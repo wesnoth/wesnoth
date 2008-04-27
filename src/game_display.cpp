@@ -382,9 +382,11 @@ void game_display::draw(bool update,bool force)
 			}
 
 			if(!is_shrouded) {
-				// FIXME: This is a hack, we draw terrain in the unit layer
+				// NOTE: A possible hack is to draw terrain in the unit layer
 				// but with a higher drawing_order, so it's rendered on top of the unit
-				drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order+100, tblit(xpos, ypos,
+				// drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order+100, tblit(xpos, ypos,
+				//	get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
+				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
 					get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
 			}
 

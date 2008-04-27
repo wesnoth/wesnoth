@@ -1017,8 +1017,7 @@ void display::render_unit_image(int x, int y, const bool /*fake_unit*/,
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
 
 	// NOTE: There is also a LAYER_UNIT_FAKE, but don't work well
-	// with the hack "foreground terrain in LAYER_UNIT_FIRST"
-	// (e.g. fake unit moving behind a keep)
+	// when the fake unit move behind an other
 	drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order, tblit(x, y, surf, srcrect));
 
 	if(submerge_height != surf->h) {
