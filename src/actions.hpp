@@ -279,7 +279,7 @@ int combat_modifier(const gamestatus& status,
 
 //! Records information to be able to undo a movement.
 struct undo_action {
-	undo_action(unit u,
+	undo_action(const unit& u,
 		const std::vector<gamemap::location>& rt,
 		int sm, int timebonus = 0, int orig = -1) :
 			route(rt),
