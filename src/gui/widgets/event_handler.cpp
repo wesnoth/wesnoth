@@ -19,6 +19,7 @@
 
 #include "gui/widgets/event_handler.hpp"
 
+#include "clipboard.hpp"
 #include "config.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
@@ -210,6 +211,15 @@ void tevent_handler::handle_event(const SDL_Event& event)
 		case SDL_VIDEORESIZE:
 			get_window().window_resize(*this, event.resize.w, event.resize.h);
 			break;
+
+#if defined(_X11) && !defined(__APPLE__)
+			case SDL_SYSWMEVENT: {
+				DBG_G_E << "Event: System event.\n";
+				//clipboard support for X11
+				handle_system_event(event);
+				break;
+			}
+#endif
 
 		default:
 		
