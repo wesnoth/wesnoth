@@ -841,8 +841,8 @@ std::string server::process_command(const std::string& query) {
 	const std::string command(query.begin(),i);
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
-	const std::string& help_msg = "Available commands are: ban(s) [<mask>],"
-			"kick <mask>, k(ick)ban [<mask>], help, metrics, netstats,"
+	const std::string& help_msg = "Available commands are: ban(s) [<mask>] [<reason>],"
+			"kick <mask>, k(ick)ban [<mask>] [<reason>], help, metrics, netstats,"
 			" (lobby)msg <message>, motd [<message>], status [<mask>],"
 			" unban <ipmask>";
 	if (command == "shut_down") {
@@ -930,7 +930,8 @@ std::string server::process_command(const std::string& query) {
 						const std::string& ip = network::ip_address(pl->first);
 						if (!is_ip_banned(ip)) {
 							bans_[ip] = reason;
-							out << "Set ban on '" << ip << "'.\n";
+							out << "Set ban on '" << ip << "' with reason: '"
+								<< reason << "'.\n";
 						}
 						if (kick) {
 							out << "Kicked " << pl->second.name() << ".\n";
