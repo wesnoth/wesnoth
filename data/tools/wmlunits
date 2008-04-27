@@ -356,7 +356,6 @@ class HTMLOutput:
                         xp = self.wesnoth.get_unit_value(u, "experience")
                         level = self.wesnoth.get_unit_value(u, "level")
                         
-                        
                         write("<div class=\"l\">L%s</div>" % level)
                         link = "../%s/%s.html" % (self.isocode, uid)
                         write("<a href=\"%s\">%s</a><br/>" % (link, name))
@@ -375,6 +374,33 @@ class HTMLOutput:
                             self.get_translation("wesnoth", "MP: "), mp))
                         write("%s%s<br />" % (
                             self.get_translation("wesnoth", "XP: "), xp))
+                            
+                        write("\n<div style=\"clear:both\">")
+                        # Write info about attacks.
+                        for attack in u.get_all("attack"):
+                            t = attack.get_text_val("type")
+                            write("%s " % self.get_translation("wesnoth", t))
+
+                            n = attack.get_text_val("number")
+                            x = attack.get_text_val("damage")
+                            x = "%s - %s" % (x, n)
+                            write("%s " % x)
+
+                            r = attack.get_text_val("range")
+                            write("%s" % self.get_translation("wesnoth", r))
+
+                            s = []
+                            specials = attack.get_first("specials")
+                            if specials:
+                                for special in specials.children():
+                                    sname = special.get_text_val("name")
+                                    if sname:
+                                        s.append(sname)
+                                s = ", ".join(s)
+                                write(" (%s)" % s)
+                            write("<br />")
+                        write("</div>")
+
                         write("</div>")
                         write("</td>\n")
                     else:
