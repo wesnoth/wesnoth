@@ -20,6 +20,7 @@
 #include "../config.hpp"
 #include "../game_config.hpp"
 #include "../log.hpp"
+#include "../map.hpp" // gamemap::MAX_PLAYERS
 #include "../network.hpp"
 #include "../filesystem.hpp"
 #include "../serialization/parser.hpp"
@@ -1210,15 +1211,26 @@ void server::process_data_game(const network::connection sock,
 		if (!g->is_owner(sock)) {
 			return;
 		}
-
-		const bool is_init = g->level_init();
+		size_t nsides = 0;
+		const simple_wml::node::child_list& sides = data.root().children("side");
+		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
+	        	++nsides;
+		}
+		if (nsides > gamemap::MAX_PLAYERS) {
+			delete_game(itor);
+			std::stringstream msg;
+			msg << "This server does not support games with more than "
+				<< gamemap::MAX_PLAYERS << " sides.";
+			lobby_.send_server_message(msg.str().c_str(), sock);
+			return;
+		}
 		// If this game is having its level data initialized
 		// for the first time, and is ready for players to join.
 		// We should currently have a summary of the game in g->level().
 		// We want to move this summary to the games_and_users_list_, and
 		// place a pointer to that summary in the game's description.
 		// g->level() should then receive the full data for the game.
-		if (!is_init) {
+		if (!g->level_init()) {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tcreated game:\t\"" << g->name() << "\" ("
 				<< g->id() << ").\n";
@@ -1306,6 +1318,19 @@ void server::process_data_game(const network::connection sock,
 				<< pl->second.name() << "\tsent [store_next_scenario] in game:\t\""
 				<< g->name() << "\" (" << g->id()
 				<< ") while the scenario is not yet initialized.";
+			return;
+		}
+		size_t nsides = 0;
+		const simple_wml::node::child_list& sides = data.root().children("side");
+		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
+	        	++nsides;
+		}
+		if (nsides > gamemap::MAX_PLAYERS) {
+			delete_game(itor);
+			std::stringstream msg;
+			msg << "This server does not support games with more than "
+				<< gamemap::MAX_PLAYERS << " sides.";
+			lobby_.send_server_message(msg.str().c_str(), sock);
 			return;
 		}
 		const simple_wml::node& s = *data.child("store_next_scenario");
