@@ -843,7 +843,8 @@ if __name__ == '__main__':
         help = "Specify user data dir to use, which is automatically scanned "+\
         "for addons. For example -u ~/.wesnoth/data")
     op.add_option("-t", "--transdir",
-        help = "Specify directory which has a po subfolder for translations.")
+        help = "Specify the directory which has a po subfolder for translations."+\
+        "(Defaults to the current directory.)")
     options, args = op.parse_args()
 
     if not options.output:
@@ -862,7 +863,7 @@ if __name__ == '__main__':
     if options.transdir:
         transdir = options.transdir
     else:
-        transdir = os.path.dirname(datadir)
+        transdir = os.path.dirname(os.getcwd())
     
     if options.language == "all":
         languages = find_languages().keys()
