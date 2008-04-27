@@ -235,7 +235,8 @@ test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 noinst_HEADERS = \
 	wesconfig.h \
-	animated.i
+	animated.i \
+	filesystem_win32.ii
 
 #############################################################################
 #    Headers
