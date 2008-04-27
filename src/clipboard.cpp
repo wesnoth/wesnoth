@@ -240,8 +240,11 @@ void handle_system_event(const SDL_Event& event)
 	if (xev.type == SelectionClear) {
 		UseX x11;
 
-		if (xev.xselectionclear.selection == x11->XA_CLIPBOARD())
+		if (xev.xselectionclear.selection == x11->XA_CLIPBOARD() 
+				|| xev.xselectionclear.selection == XA_PRIMARY) {
+
 			clipboard_string = ""; //We no longer own the clipboard, don't try in-process C&P
+		}
 	}
 }
 
