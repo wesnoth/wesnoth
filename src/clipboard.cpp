@@ -178,6 +178,12 @@ public:
 */
 static std::string clipboard_string;
 
+/**
+ The following string is used for the mouse selection aka PRIMARY
+ Unix behaviour is mouse selection is stored in primary 
+ active selection goes to CLIPBOARD.
+*/
+static std::string primary_string;
 
 void handle_system_event(const SDL_Event& event)
 {
@@ -221,15 +227,19 @@ void handle_system_event(const SDL_Event& event)
 			// The encoding of XA_TEXT and XA_COMPOUND_TEXT is not specified
 			// by the ICCCM... So we assume wesnoth native/utf-8 for simplicity.
 			// Modern apps are going to use UTF8_STRING anyway.
-			if (xev.xselectionrequest.target == x11->XA_TEXT() ||
-			    xev.xselectionrequest.target == x11->XA_COMPOUND_TEXT() ||
-			    xev.xselectionrequest.target == x11->UTF8_STRING()) {
+			if (xev.xselectionrequest.target == x11->XA_TEXT()
+			    	|| xev.xselectionrequest.target == x11->XA_COMPOUND_TEXT()
+			    	|| xev.xselectionrequest.target == x11->UTF8_STRING()) {
+
 				responseEvent.xselection.property = xev.xselectionrequest.property;
+
+				std::string& selection = (xev.xselectionrequest.selection == XA_PRIMARY) ?
+					primary_string : clipboard_string;
 
 				XChangeProperty(x11->dpy(), responseEvent.xselection.requestor,
 					xev.xselectionrequest.property,
 					xev.xselectionrequest.target, 8, PropModeReplace,
-					reinterpret_cast<const unsigned char*>(clipboard_string.c_str()), clipboard_string.length());
+					reinterpret_cast<const unsigned char*>(selection.c_str()), selection.length());
 			}
 
 			XSendEvent(x11->dpy(), xev.xselectionrequest.requestor, False, NoEventMask,
@@ -238,34 +248,38 @@ void handle_system_event(const SDL_Event& event)
 	}
 
 	if (xev.type == SelectionClear) {
+		//We no longer own the clipboard, don't try in-process C&P
 		UseX x11;
 
-		if (xev.xselectionclear.selection == x11->XA_CLIPBOARD() 
-				|| xev.xselectionclear.selection == XA_PRIMARY) {
-
-			clipboard_string = ""; //We no longer own the clipboard, don't try in-process C&P
+		if(xev.xselectionclear.selection == x11->XA_CLIPBOARD()) {
+			clipboard_string.clear(); 
+		} else if(xev.xselectionclear.selection == XA_PRIMARY) {
+			primary_string.clear();
 		}
 	}
 }
 
-void copy_to_clipboard(const std::string& text)
+void copy_to_clipboard(const std::string& text, const bool mouse)
 {
 	if (text.empty()) {
 		return;
 	}
 
-	clipboard_string = text;
-
 	UseX x11;
 
-	XSetSelectionOwner(x11->dpy(), XA_PRIMARY, x11->window(), CurrentTime);
-	XSetSelectionOwner(x11->dpy(), x11->XA_CLIPBOARD(), x11->window(), CurrentTime);
+	if(mouse) {
+		primary_string = text;
+		XSetSelectionOwner(x11->dpy(), XA_PRIMARY, x11->window(), CurrentTime);
+	} else {		
+		clipboard_string = text;
+		XSetSelectionOwner(x11->dpy(), x11->XA_CLIPBOARD(), x11->window(), CurrentTime);
+	}
 }
 
 
 //! Tries to grab a given target. 
 //! Returns true if successful, false otherwise.
-static bool try_grab_target(Atom target, std::string& ret)
+static bool try_grab_target(Atom source, Atom target, std::string& ret)
 {
 	UseX x11;
 
@@ -276,7 +290,7 @@ static bool try_grab_target(Atom target, std::string& ret)
 	//std::cout<<"We request target:"<<XGetAtomName(x11->dpy(), target)<<"\n";
 
 	// Request information
-	XConvertSelection(x11->dpy(), x11->XA_CLIPBOARD(), target,
+	XConvertSelection(x11->dpy(), source, target,
 	                  x11->WES_PASTE(), x11->window(), CurrentTime);
 
 	// Wait (with timeout) for a response SelectionNotify
@@ -324,25 +338,31 @@ static bool try_grab_target(Atom target, std::string& ret)
 	return false;
 }
 
-std::string copy_from_clipboard()
-{
-	if (!clipboard_string.empty())
-		return clipboard_string; 	// in-wesnoth copy-paste
-
-	std::string ret;
+std::string copy_from_clipboard(const bool mouse)
+{	
+	// in-wesnoth copy-paste
+	if(mouse && !primary_string.empty()) {
+		return primary_string;
+	}
+	if (!mouse && !clipboard_string.empty()) {
+		return clipboard_string; 	
+	}
 
 	UseX x11;
 
-	if (try_grab_target(x11->UTF8_STRING(), ret))
+	std::string ret;
+	const Atom& source = mouse ?  XA_PRIMARY : x11->XA_CLIPBOARD();
+
+	if (try_grab_target(source, x11->UTF8_STRING(), ret))
 		return ret;
 
-	if (try_grab_target(x11->XA_COMPOUND_TEXT(), ret))
+	if (try_grab_target(source, x11->XA_COMPOUND_TEXT(), ret))
 		return ret;
 
-	if (try_grab_target(x11->XA_TEXT(), ret))
+	if (try_grab_target(source, x11->XA_TEXT(), ret))
 		return ret;
 
-	if (try_grab_target(XA_STRING, ret)) 	// acroread only provides this
+	if (try_grab_target(source, XA_STRING, ret)) 	// acroread only provides this
 		return ret;
 
 
@@ -358,7 +378,7 @@ std::string copy_from_clipboard()
 void handle_system_event(const SDL_Event& )
 {}
 
-void copy_to_clipboard(const std::string& text)
+void copy_to_clipboard(const std::string& text, const bool)
 {
 	if(text.empty())
 		return;
@@ -393,7 +413,7 @@ void copy_to_clipboard(const std::string& text)
 	CloseClipboard();
 }
 
-std::string copy_from_clipboard()
+std::string copy_from_clipboard(const bool)
 {
 	if(!IsClipboardFormatAvailable(CF_TEXT))
 		return "";
@@ -427,7 +447,7 @@ std::string copy_from_clipboard()
 
 #define CLIPBOARD_FUNCS_DEFINED
 
-void copy_to_clipboard(const std::string& text)
+void copy_to_clipboard(const std::string& text, const bool)
 {
 	BMessage *clip;
 	if (be_clipboard->Lock())
@@ -442,7 +462,7 @@ void copy_to_clipboard(const std::string& text)
 	}
 }
 
-std::string copy_from_clipboard()
+std::string copy_from_clipboard(const bool)
 {
 	const char* data;
 	ssize_t size;
@@ -464,7 +484,7 @@ std::string copy_from_clipboard()
 
 #include <Carbon/Carbon.h>
 
-void copy_to_clipboard(const std::string& text)
+void copy_to_clipboard(const std::string& text, const bool)
 {
 	std::string new_str;
 	new_str.reserve(text.size());
@@ -486,7 +506,7 @@ void copy_to_clipboard(const std::string& text)
 	PutScrapFlavor(scrap, kScrapFlavorTypeText, kScrapFlavorMaskNone, text.size(), new_str.c_str());
 }
 
-std::string copy_from_clipboard()
+std::string copy_from_clipboard(const bool)
 {
 	ScrapRef curscrap = kScrapRefNone;
 	Size scrapsize = 0;
@@ -515,11 +535,11 @@ void handle_system_event(const SDL_Event& event)
 
 #ifndef CLIPBOARD_FUNCS_DEFINED
 
-void copy_to_clipboard(const std::string& text)
+void copy_to_clipboard(const std::string& text, const bool)
 {
 }
 
-std::string copy_from_clipboard()
+std::string copy_from_clipboard(const bool)
 {
 	return "";
 }

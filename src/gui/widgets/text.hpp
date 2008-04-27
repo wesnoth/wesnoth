@@ -85,10 +85,10 @@ protected:
 	virtual void delete_selection() = 0;
 
 	//! Copies the current selection.
-	virtual void copy_selection();
+	virtual void copy_selection(const bool mouse);
 
 	//! Pastes the current selection.
-	virtual void paste_selection();
+	virtual void paste_selection(const bool mouse);
 
 protected:
 

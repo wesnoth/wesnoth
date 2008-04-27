@@ -21,8 +21,20 @@
 #include <string>
 #include "SDL.h"
 #include "serialization/string_utils.hpp"
-void copy_to_clipboard(const std::string& text);
-std::string copy_from_clipboard();
+//! Copies text to the clipboard.
+//!
+//! @param text         The text to copy.
+//! @param mouse        Is the selection done by the mouse? On UNIX systems there
+//!                     are multiple clipboards and the mouse selction uses a 
+//!                     different clipboard. Ignored on other systems.
+void copy_to_clipboard(const std::string& text, const bool mouse);
+
+//! Copies text from the clipboard.
+//!
+//! @param mouse        Is the pasting done by the mouse?
+//! 
+//! @returns            String on clipbaord.
+std::string copy_from_clipboard(const bool mouse);
 
 #if defined(_X11) && !defined(__APPLE__)
 void handle_system_event(const SDL_Event& ev);

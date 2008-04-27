@@ -53,7 +53,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 
 #ifdef __unix__
 		// selecting copies on UNIX systems.
-		copy_selection();
+		copy_selection(true);
 #endif
 		set_canvas_text();
 		set_dirty();
@@ -106,7 +106,7 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 	DBG_G_E << "Text_box: middle mouse button click.\n";
 #ifdef __unix__
 		// pastes on UNIX systems.
-		paste_selection();
+		paste_selection(true);
 #endif
 
 }
@@ -202,7 +202,7 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 			
 			// atm we don't care whether there is something to copy or paste
 			// if nothing is there we still don't want to be chained.
-			copy_selection();
+			copy_selection(false);
 			handled = true;
 			break;
 
@@ -212,7 +212,7 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 				break;
 			}
 			
-			copy_selection();
+			copy_selection(false);
 			delete_selection();
 			handled = true;
 			break;
@@ -223,7 +223,7 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 				break;
 			}
 			
-			paste_selection();
+			paste_selection(false);
 			handled = true;
 			break;
 
@@ -257,7 +257,7 @@ void ttext_::set_state(tstate state)
 }
 
 //! Copies the current selection.
-void ttext_::copy_selection()
+void ttext_::copy_selection(const bool mouse)
 {
 	int len = sel_len();
 	unsigned start = sel_start();
@@ -269,13 +269,13 @@ void ttext_::copy_selection()
 
 	const wide_string& wtext = utils::string_to_wstring(text_);
 	const std::string& text = utils::wstring_to_string(wide_string(wtext.begin() + start, wtext.begin() + start +len));
-	copy_to_clipboard(text);
+	copy_to_clipboard(text, mouse);
 }
 
 //! Pastes the current selection.
-void ttext_::paste_selection()
+void ttext_::paste_selection(const bool mouse)
 {
-	const std::string& text = copy_from_clipboard();
+	const std::string& text = copy_from_clipboard(mouse);
 	if(text.empty()) {
 		return;
 	}

@@ -554,7 +554,7 @@ void textbox::handle_event(const SDL_Event& event)
 				if(is_selection())
 					erase_selection();
 
-				std::string str = copy_from_clipboard();
+				std::string str = copy_from_clipboard(false);
 
 				//cut off anything after the first newline
 				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
@@ -580,7 +580,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 				wide_string ws = wide_string(text_.begin() + beg, text_.begin() + end);
 				std::string s = utils::wstring_to_string(ws);
-				copy_to_clipboard(s);
+				copy_to_clipboard(s, false);
 				}
 				break;
 			}
