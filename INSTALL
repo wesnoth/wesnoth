@@ -130,8 +130,8 @@ Fine tuning of the installation directories:
   --datadir=DIR          datadir=DIR [PREFIX/share]
   --infodir=DIR          N/A
   --localedir=DIR        localedir=DIR [PREFIX/share/locale]
-  --mandir=DIR           N/A
-  --docdir=DIR           N/A
+  --mandir=DIR           mandir=DIR
+  --docdir=DIR           docdir=DIR
   --htmldir=DIR          N/A
   --dvidir=DIR           N/A
   --pdfdir=DIR           N/A
@@ -201,7 +201,7 @@ Optional Packages:
   --with-x                        N/A
   --with-freetype-prefix=PFX      N/A
   --with-freetype-exec-prefix=PFX N/A
-  --with-boost=DIR                boostdir, boostlibdir, boost_suffix
+  --with-boost=DIR                boostdir=DIR boostlibdir=DIR boost_suffix=DIR
 
 Notes on the deprecated autotools build:
 

@@ -39,6 +39,8 @@ opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-def
 opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "share/icons", PathOption.PathAccept))
 opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
+opts.Add(PathOption('mandir', 'sets the man pages directory to a non-default location', "share/man", PathOption.PathAccept))
+opts.Add(PathOption('docdir', 'sets the doc directory to a non-default location', "share/doc/wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('nls','enable compile/install of gettext message catalogs',True))
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
@@ -442,13 +444,13 @@ if env['dummy_locales']:
     env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
 
 # Simulate autools-like behavior of prefix on various paths
-for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir"):
+for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir"):
      if not os.path.isabs(env[d]):
           env[d] = os.path.join(env["prefix"], env[d])
 
 env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
 
-for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir"):
+for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir"):
     env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
 env["prefix"] = os.path.join("/", env["destdir"], env["prefix"].lstrip("/"))
 
@@ -520,14 +522,14 @@ if env["dummy_locales"]:
 bindir = env['bindir']
 pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
 datadir = env['datadir']
-docdir = os.path.join(env['prefix'], "share/doc/wesnoth")
+docdir = env['docdir']
 installable_subs = Split('data fonts icons images sounds')
 if env['nls']:
     installable_subs.append("translations")
 if env['dummy_locales']:
     installable_subs.append("locales")
 fifodir = env['fifodir']
-mandir = os.path.join(env["prefix"], "share/man")
+mandir = env["mandir"]
 clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
