@@ -1093,21 +1093,42 @@ surface cut_surface(surface const &surf, SDL_Rect const &r)
 	size_t rbpp = res->format->BytesPerPixel;
 	size_t rpitch = res->pitch;
 
+	// compute the areas to copy
+	SDL_Rect src_rect = r;
+	SDL_Rect dst_rect = { 0, 0, r.w, r.h };
+
+	if (src_rect.x < 0) {
+		if (src_rect.x + src_rect.w <= 0)
+			return res;
+		dst_rect.x -= src_rect.x;
+		dst_rect.w += src_rect.x;
+		src_rect.w += src_rect.x;
+		src_rect.x = 0;
+	}
+	if (src_rect.y < 0) {
+		if (src_rect.y + src_rect.h <= 0)
+			return res;
+		dst_rect.y -= src_rect.y;
+		dst_rect.h += src_rect.y;
+		src_rect.h += src_rect.y;
+		src_rect.y = 0;
+	}
+
+	if(src_rect.x >= surf->w || src_rect.y >= surf->h)
+		return res;
+
 	surface_lock slock(surf);
 	surface_lock rlock(res);
 
 	Uint8* src = reinterpret_cast<Uint8 *>(slock.pixels());
 	Uint8* dest = reinterpret_cast<Uint8 *>(rlock.pixels());
 
-	if(r.x >= surf->w)
-		return res;
+	for(int y = 0; y < src_rect.h && (src_rect.y + y) < surf->h; ++y) {
+		Uint8* line_src  = src  + (src_rect.y + y) * spitch + src_rect.x * sbpp;
+		Uint8* line_dest = dest + (dst_rect.y + y) * rpitch + dst_rect.x * rbpp;
+		size_t size = src_rect.w + src_rect.x <= surf->w ? src_rect.w : surf->w - src_rect.x;
 
-	for(int y = 0; y < r.h && (r.y + y) < surf->h; ++y) {
-		Uint8* line_src = src + (r.y + y) * spitch + r.x * sbpp;
-		Uint8* line_dest = dest + y * rpitch;
-		size_t size = r.w + r.x <= surf->w ? r.w : surf->w - r.x;
-
-		assert(rpitch >= r.w * rbpp);
+		assert(rpitch >= src_rect.w * rbpp);
 		memcpy(line_dest, line_src, size * rbpp);
 	}
 
@@ -1241,8 +1262,7 @@ surface create_compatible_surface(surface const &surf, int width, int height)
 //! The rectangles are const and will not be modified.
 //!
 //! @param src          The surface to blit.
-//! @param srcrect      The size of the surface to blit, only width and height
-//!                     are used.
+//! @param srcrect      The region of the surface to blit
 //! @param dst          The surface to blit on.
 //! @param dstrect      The offset to blit the surface on, only x and y are used.
 void blit_surface(const surface& src, 
@@ -1262,22 +1282,57 @@ void blit_surface(const surface& src,
 		dst_rect.y = dstrect->y;
 		dst_rect.h -= dstrect->y;
 
-		assert(dst_rect.x >= 0);
-		assert(dst_rect.y >= 0);
 	}
 
 	SDL_Rect src_rect = { 0, 0, src->w, src->h };
 	if(srcrect && srcrect->w && srcrect->h) { 
+		src_rect.x = srcrect->x;
+		src_rect.y = srcrect->y;
+
 		src_rect.w = srcrect->w;
 		src_rect.h = srcrect->h;
 
-		assert(src_rect.w <= src->w);
-		assert(src_rect.h <= src->h);
+		if (src_rect.x < 0) {
+            if (src_rect.x + src_rect.w <= 0 || src_rect.x + dst_rect.w <= 0 )
+                return;
+			dst_rect.x -= src_rect.x;
+			dst_rect.w += src_rect.x;
+			src_rect.w += src_rect.x;
+			src_rect.x = 0;
+		}
+		if (src_rect.y < 0) {
+            if (src_rect.y + src_rect.h <= 0 || src_rect.y + dst_rect.h <= 0 )
+                return;
+			dst_rect.y -= src_rect.y;
+			dst_rect.h += src_rect.y;
+			src_rect.h += src_rect.y;
+			src_rect.y = 0;
+		}
+		if (src_rect.x + src_rect.w > src->w) {
+            if (src_rect.x >= src->w)
+                return;
+			src_rect.w = src->w - src_rect.x;
+		}
+		if (src_rect.y + src_rect.h > src->h) {
+            if (src_rect.y >= src->h)
+                return;
+			src_rect.h = src->h - src_rect.y;
+		}
 	}
+
+	assert(dst_rect.x >= 0);
+	assert(dst_rect.y >= 0);
 
 	// Get the blit size limits.
 	const unsigned width = minimum(src_rect.w, dst_rect.w);
 	const unsigned height = minimum(src_rect.h, dst_rect.h);
+// 	std::cout << width << " -- " << height << "\n";
+// 	std::cout << src->w << " -- " << src->h << "\n";
+// 	std::cout << srcrect->x << "," << srcrect->y << " - " << srcrect->w << "x" << srcrect->h << " - " "\n";
+// 	if (dstrect)
+// 		std::cout << dstrect->x << "," << dstrect->y << " - " << dstrect->w << "x" << dstrect->h << " - " "\n";
+// 	std::cout << src_rect.x << "," << src_rect.y << " - " << src_rect.w << "x" << src_rect.h << " - " "\n";
+// 	std::cout << dst_rect.x << "," << dst_rect.y << " - " << dst_rect.w << "x" << dst_rect.h << " - " "\n";
 
 	{
 		// Extra scoping used for the surface_lock.
