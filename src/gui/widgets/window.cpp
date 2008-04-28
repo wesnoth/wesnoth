@@ -91,7 +91,21 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 
 	// Update all configs.
 	load_config();
-	
+
+	// FIXME hack to load config stuff here
+	tcontrol::load_config();
+
+	const twindow_definition::tresolution* conf = dynamic_cast<const twindow_definition::tresolution*>(config());
+	assert(conf);
+	canvas_background_ = conf->background.canvas;
+	canvas_background_.set_width(get_width());
+	canvas_background_.set_height(get_height());
+
+	canvas_foreground_ = conf->foreground.canvas;
+	canvas_foreground_.set_width(get_width());
+	canvas_foreground_.set_height(get_height());
+	// End of hack
+
 	// We cut a piece of the screen and use that, that way all coordinates
 	// are relative to the window.
 	SDL_Rect rect = get_rect();
@@ -111,7 +125,6 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 			const bool draw_foreground = need_layout_;
 			if(need_layout_) {
 				DBG_G << "Window: layout client area.\n";
-				resolve_definition();
 				layout(get_client_rect());
 
 				screen = make_neutral_surface(restorer_);
@@ -218,31 +231,16 @@ void twindow::window_resize(tevent_handler&,
 	need_layout_ = true;
 }
 
-void twindow::resolve_definition()
-{
-	if(definition_ == std::vector<twindow_definition::tresolution>::const_iterator()) {
-		definition_ = gui2::get_window(definition());
-
-		canvas_background_ = definition_->background.canvas;
-		canvas_background_.set_width(get_width());
-		canvas_background_.set_height(get_height());
-
-		canvas_foreground_ = definition_->foreground.canvas;
-		canvas_foreground_.set_width(get_width());
-		canvas_foreground_.set_height(get_height());
-	}
-
-}
-
 SDL_Rect twindow::get_client_rect() const
 {
-	assert(definition_ != std::vector<twindow_definition::tresolution>::const_iterator());
+	const twindow_definition::tresolution* conf = dynamic_cast<const twindow_definition::tresolution*>(config());
+	assert(conf);
 
 	SDL_Rect result = get_rect();
-	result.x = definition_->left_border;
-	result.y = definition_->top_border;
-	result.w -= definition_->left_border + definition_->right_border;
-	result.h -= definition_->top_border + definition_->bottom_border;
+	result.x = conf->left_border;
+	result.y = conf->top_border;
+	result.w -= conf->left_border + conf->right_border;
+	result.h -= conf->top_border + conf->bottom_border;
 
 	// FIXME validate for an available client area.
 	

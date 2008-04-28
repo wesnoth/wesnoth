@@ -126,10 +126,6 @@ private:
 		canvas_background_,
 		canvas_foreground_;
 
-	std::vector<twindow_definition::tresolution>::const_iterator definition_;
-
-	void resolve_definition();
-
 	//! Inherited from tevent_handler.
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
 	void do_remove_tooltip() { tooltip_.set_visible(false); }

@@ -159,33 +159,20 @@ struct ttooltip_definition : public tcontrol_definition
 	};
 };
 
-struct twindow_definition
+struct twindow_definition : public tcontrol_definition
 {
 
-	std::string id;
-	t_string description;
+	twindow_definition(const config& cfg);
 
-	const std::string& read(const config& cfg);
-
-	struct tresolution 
+	struct tresolution : public tresolution_definition_
 	{
-	private:
-		tresolution();
-
-	public:
 		tresolution(const config& cfg);
-
-		unsigned window_width;
-		unsigned window_height;
 
 		unsigned top_border;
 		unsigned bottom_border;
 
 		unsigned left_border;
 		unsigned right_border;
-
-		unsigned min_width;
-		unsigned min_height;
 
 		struct tlayer
 		{
@@ -200,10 +187,7 @@ struct twindow_definition
 
 		tlayer background;
 		tlayer foreground;
-
 	};
-
-	std::vector<tresolution> resolutions;
 };
 
 struct tgui_definition
@@ -227,7 +211,6 @@ private:
 };
 
 	tresolution_definition_* get_control(const std::string& control_type, const std::string& definition);
-	std::vector<twindow_definition::tresolution>::const_iterator get_window(const std::string& definition);
 
 	std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type);
 

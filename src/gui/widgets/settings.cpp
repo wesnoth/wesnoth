@@ -182,24 +182,13 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	DBG_G_P << "Parsing gui " << id << '\n';
 
-	/***** Window definitions *****/
-	const config::child_list& window_cfgs = cfg.get_children("window_definition");
-	for(std::vector<config*>::const_iterator itor = window_cfgs.begin();
-			itor != window_cfgs.end(); ++itor) {
-
-		std::pair<std::string, twindow_definition> child;
-		child.first = child.second.read(**itor);
-		windows.insert(child);
-	}
-
-	VALIDATE(windows.find("default") != windows.end(), _ ("No default window defined."));
-
 	/***** Control definitions *****/
 	load_definitions<tbutton_definition>("button", cfg.get_children("button_definition"));
 	load_definitions<tlabel_definition>("label", cfg.get_children("label_definition"));
 	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
 	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
 	load_definitions<ttooltip_definition>("tooltip", cfg.get_children("tooltip_definition"));
+	load_definitions<twindow_definition>("window", cfg.get_children("window_definition"));
 
 	/***** Window types *****/
 	const config::child_list& window_instance_cfgs = cfg.get_children("window");
@@ -320,7 +309,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  *     text_extra_height (unsigned = 0)
  *                                   The extra height needed to determine the
  *                                   minimal size for the text.
- *     text_font_size (unsigned)     The font size, which needs to be used to 
+ *     text_font_size (unsigned = 0) The font size, which needs to be used to 
  *                                   determine the minimal size for the text.
  *     text_font_style (font_style = "")  
  *                                   The font style, which needs to be used to
@@ -332,8 +321,6 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  * @end_table
  *
  */
-
-	VALIDATE(text_font_size, missing_mandatory_wml_key("resolution", "text_font_size"));
 
 	DBG_G_P << "Parsing resolution " 
 		<< window_width << ", " << window_height << '\n';
@@ -557,7 +544,8 @@ ttooltip_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
-const std::string& twindow_definition::read(const config& cfg)
+twindow_definition::twindow_definition(const config& cfg) : 
+	tcontrol_definition(cfg)
 {
 /*WIKI (FIXME cleanup)
  * [window_definition]
@@ -570,34 +558,18 @@ const std::string& twindow_definition::read(const config& cfg)
  *                                   resolutions.
  * [/window_definition]
  */
-	id = cfg["id"];
-	description = cfg["description"];
-
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
 	DBG_G_P << "Parsing window " << id << '\n';
 
-	const config::child_list& cfgs = cfg.get_children("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = cfgs.begin();
-			itor != cfgs.end(); ++itor) {
-
-		resolutions.push_back(tresolution(**itor));
-	}
-
-	return id;
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
 }
 
 twindow_definition::tresolution::tresolution(const config& cfg) :
-	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
-	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
+	tresolution_definition_(cfg),
 	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
 	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
 	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
 	right_border(lexical_cast_default<unsigned>(cfg["right_border"])),
-	min_width(lexical_cast_default<unsigned>(cfg["min_width"])),
-	min_height(lexical_cast_default<unsigned>(cfg["min_height"])),
 	background(cfg.child("background")),
 	foreground(cfg.child("foreground"))
 {
@@ -671,36 +643,6 @@ tresolution_definition_* get_control(const std::string& control_type, const std:
 	assert(false);
 }
 
-std::vector<twindow_definition::tresolution>::const_iterator get_window(const std::string& definition)
-{
-	std::map<std::string, twindow_definition>::const_iterator 
-		window = current_gui->second.windows.find(definition);
-
-	if(window == current_gui->second.windows.end()) {
-		LOG_G << "Window: definition '" 
-			<< definition << "' not found, falling back to 'default'.\n";
-		window = current_gui->second.windows.find("default");
-		assert(window != current_gui->second.windows.end());
-	}
-
-	for(std::vector<twindow_definition::tresolution>::const_iterator 
-			itor = window->second.resolutions.begin(),
-			end = window->second.resolutions.end();
-			itor != end;
-			++itor) {
-
-		if(screen_width <= itor->window_width &&
-				screen_height <= itor->window_height) {
-
-			return itor;
-		} else if (itor == end - 1) {
-			return itor;
-		}
-	}
-
-	assert(false);
-}
-
 std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type)
 {
 	std::map<std::string, twindow_builder>::const_iterator 
@@ -729,6 +671,5 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(con
 
 	assert(false);
 }
-
 
 } // namespace gui2
