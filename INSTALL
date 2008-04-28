@@ -89,6 +89,120 @@ A plain 'install' installs all binary executables that exist -- so
 'scons install' after a plain 'scons' installs game and editor, but
 after 'scons all' it will install all binaries.
 
+Notes on scons for autotools users
+
+The scons build process works in a different way than configure.  It runs
+in one step, checking your configuration amnd building, rather than (as
+autotools does) generating makefiles to be run later.  So not all autotools
+options have exact scons equivalents.  
+
+But here is a translation key, autotools configure options on the left
+and scons command-line options on the right.  Defaults are given in square
+brackets, and are the same as those for corresponding configure options.  
+Configure options with no scons equivalents are marked N/A
+
+Configuration:
+  -h, --help              --help
+      --help=short        N/A
+      --help=recursive    N/A
+  -V, --version           -v, --version
+  -q, --quiet, --silent   -Q
+      --cache-file=FILE   N/A
+  -C, --config-cache      N/A
+  -n, --no-create         -n, --no-create, --just-print, --dry-run, --recon
+      --srcdir=DIR        N/A
+
+Installation directories:
+  --prefix=PREFIX         prefix=PREFIX  [/usr/local]
+  --exec-prefix=EPREFIX   N/A
+
+Fine tuning of the installation directories:
+  --bindir=DIR           bindir=DIR [EPREFIX/bin]
+  --sbindir=DIR          N/A
+  --libexecdir=DIR       N/A
+  --sysconfdir=DIR       N/A
+  --sharedstatedir=DIR   N/A
+  --localstatedir=DIR    N/A
+  --libdir=DIR           libdir=DIR [PREFIX/lib]
+  --includedir=DIR       N/A
+  --oldincludedir=DIR    N/A
+  --datarootdir=DIR      N/A
+  --datadir=DIR          datadir=DIR [PREFIX/share]
+  --infodir=DIR          N/A
+  --localedir=DIR        localedir=DIR [PREFIX/share/locale]
+  --mandir=DIR           N/A
+  --docdir=DIR           N/A
+  --htmldir=DIR          N/A
+  --dvidir=DIR           N/A
+  --pdfdir=DIR           N/A
+  --psdir=DIR            N/A
+
+Program names:
+  --program-prefix=PREFIX            N/A
+  --program-suffix=SUFFIX            N/A
+  --program-transform-name=PROGRAM   N/A
+
+X features:
+  --x-includes=DIR    N/A
+  --x-libraries=DIR   N/A
+
+System types:
+  --build=BUILD     N/A
+  --host=HOST       N/A
+  --target=TARGET   N/A
+
+Optional Features:
+  --disable-FEATURE         N/A (but see instances below)
+  --enable-FEATURE[=ARG]    N/A (but see instances below)
+  --disable-nls             nls=no
+  --disable-dependency-tracking  N/A
+  --enable-dependency-tracking   N/A
+  --disable-rpath           N/A
+  --enable-debug            debug=yes
+  --enable-profile          profile=yes
+  --enable-tests            (See --help documentation on choice of targets)
+  --enable-static           static=yes
+  --disable-python          python=no
+  --enable-python-install   N/A
+  --enable-lite             N/A
+  --enable-tinygui          tinygui=yes
+  --enable-smallgui         smallgui=yes
+  --enable-optipng          N/A
+  --enable-lowmem           lowmem=yes
+  --disable-game            (See --help documentation on choice of targets)
+  --enable-server           (See --help documentation on choice of targets)
+  --enable-campaign-server  (See --help documentation on choice of targets)
+  --enable-editor           (See --help documentation on choice of targets)
+  --enable-tools            (See --help documentation on choice of targets)
+  --enable-dummy-locales    dummy_locales=yes
+  --enable-internal-data    internal_data=yes
+  --enable-display-revision N/A
+  --enable-raw-sockets      raw_sockets=yes
+  --disable-desktop-entry   desktop_entry=no
+  --disable-sdltest         N/A
+
+Optional Packages:
+  --with-PACKAGE[=ARG]            N/A
+  --without-PACKAGE               N/A
+  --with-gnu-ld                   N/A
+  --with-libiconv-prefix[=DIR]    N/A
+  --without-libiconv-prefix       N/A
+  --with-libintl-prefix[=DIR]     N/A
+  --without-libintl-prefix        N/A
+  --with-datadir-name[=DIR]       datadir=DIR
+  --with-localedir[=DIR]          localedir=DIR
+  --with-fifodir                  fifodir=DIR
+  --with-server-uid               server_uid=ID
+  --with-server-gid               server_gid=ID
+  --without-fribidi               fribidi=no
+  --with-preferences-dir          prefsdir=DIR
+  --with-icondir[=DIR]            icondir=DIR
+  --with-desktopdir[=DIR]         desktopdir=DIR
+  --with-x                        N/A
+  --with-freetype-prefix=PFX      N/A
+  --with-freetype-exec-prefix=PFX N/A
+  --with-boost=DIR                N/A
+
 Notes on the deprecated autotools build:
 
 The autotools build machinery is deprecated, unsupported, and will be
