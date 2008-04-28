@@ -681,7 +681,7 @@ void terrain_builder::parse_config(const config &cfg)
 		// add_images_from_config(pbr.images, **br);
 
 		if(!((**br)["x"].empty() || (**br)["y"].empty()))
-			pbr.location_constraints = gamemap::location(atoi((**br)["x"].c_str()), atoi((**br)["y"].c_str()));
+			pbr.location_constraints = gamemap::location(atoi((**br)["x"].c_str())-1, atoi((**br)["y"].c_str())-1);
 
 		pbr.probability = (**br)["probability"].empty() ? -1 : atoi((**br)["probability"].c_str());
 		pbr.precedence = (**br)["precedence"].empty() ? 0 : atoi((**br)["precedence"].c_str());
@@ -926,11 +926,6 @@ void terrain_builder::build_terrains()
 	for(r = building_rules_.begin(); r != building_rules_.end(); ++r) {
 
 		const building_rule& rule = r->second;
-
-		if (rule.location_constraints.valid()) {
-			apply_rule(rule, rule.location_constraints);
-			continue;
-		}
 
 		// Find the constraint that contains the less terrain of all terrain rules.
 		// We will keep a track of the matching terrains of this constraint
