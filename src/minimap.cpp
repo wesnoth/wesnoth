@@ -98,9 +98,9 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 							r.x = 0;
 							r.y = 0;
 							SDL_BlitSurface(tile, NULL, combined, &r);
-							r.x = (tile->w - overlay->w)/2;
-							r.y = (tile->h - overlay->h)/2;
-							SDL_BlitSurface(overlay, NULL, combined, &r);
+							r.x = maximum(0, (tile->w - overlay->w)/2);
+							r.y = maximum(0, (tile->h - overlay->h)/2);
+							blit_surface(overlay, NULL, combined, &r);
 							tile = combined;
 						}
 
