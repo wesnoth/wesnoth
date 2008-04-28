@@ -43,6 +43,7 @@ opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra func
 opts.Add(BoolOption('nls','enable compile/install of gettext message catalogs',True))
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
 opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
+opts.Add(PathOption('destdir', 'prefix to add to all installation paths.', "", PathOption.PathAccept))
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
 opts.Add(BoolOption('profile', 'Set to build for debugging', False))
 #opts.Add('program_suffix', 'suffix to append to names of installed programs',"")
@@ -447,6 +448,9 @@ for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir"):
           env[d] = os.path.join(env["prefix"], env[d])
 
 env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
+
+for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir"):
+    env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
 
 if 'CXXFLAGS' in os.environ:
     env.Append(CXXFLAGS = os.environ['CXXFLAGS'])
