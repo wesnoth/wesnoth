@@ -335,6 +335,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	const size_t versiony = screen.h() - version_area.h;
 
 	if(versiony < size_t(screen.h())) {
+		draw_solid_tinted_rectangle(0, versiony, version_area.w, version_area.h,0,0,0,0.75,screen.video().getSurface());
 		font::draw_text(&screen.video(),screen.screen_area(),
 				font::SIZE_TINY, font::NORMAL_COLOUR,
 				version_str,0,versiony);
