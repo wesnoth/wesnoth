@@ -451,6 +451,7 @@ env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
 
 for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir"):
     env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
+env["prefix"] = os.path.join("/", env["destdir"], env["prefix"].lstrip("/"))
 
 if 'CXXFLAGS' in os.environ:
     env.Append(CXXFLAGS = os.environ['CXXFLAGS'])
