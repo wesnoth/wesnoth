@@ -165,8 +165,8 @@ Optional Features:
   --disable-python          python=no
   --enable-python-install   N/A
   --enable-lite             N/A
-  --enable-tinygui          tinygui=yes
-  --enable-smallgui         smallgui=yes
+  --enable-tinygui          gui=tiny
+  --enable-smallgui         gui=small
   --enable-optipng          N/A
   --enable-lowmem           lowmem=yes
   --disable-game            (See --help documentation on choice of targets)
@@ -201,7 +201,7 @@ Optional Packages:
   --with-x                        N/A
   --with-freetype-prefix=PFX      N/A
   --with-freetype-exec-prefix=PFX N/A
-  --with-boost=DIR                N/A
+  --with-boost=DIR                boostdir, boostlibdir, boost_suffix
 
 Notes on the deprecated autotools build:
 

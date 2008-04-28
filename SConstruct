@@ -51,10 +51,9 @@ opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
 opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
-opts.Add(BoolOption('smallgui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0), images normal size', False))
+opts.Add(EnumOption('gui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs)', "normal", ["normal", "small", "tiny"]))
 opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
 opts.Add(BoolOption('strict', 'Set to strict compilation', False))
-opts.Add(BoolOption('tinygui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing', False))
 opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', False))
 opts.Add(PathOption('boostdir', 'Directory of boost installation.', '/usr/include'))
 opts.Add(PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'))
@@ -407,10 +406,10 @@ if env['profile']:
 if env['strict']:
     env.AppendUnique(CXXFLAGS = Split("-Werror -Wno-unused -Wno-sign-compare"))
 
-if env['tinygui']:
+if env['gui'] == 'tiny':
     env.Append(CPPDEFINES = "USE_TINY_GUI")
 
-if env['smallgui']:
+if env['gui'] == 'small':
     env.Append(CPPDEFINES = "USE_SMALL_GUI")
 
 if env['lowmem']:
@@ -560,7 +559,7 @@ def InstallFilteredHook(target, source, env):
                  os.makedirs(target)
             map(lambda f: InstallFilteredHook(target, os.path.join(str(source), f), env), os.listdir(str(source)))
     elif CopyFilter(source):
-        if env["tinygui"] and (source.endswith("jpg") or source.endswith("png")):
+        if (env["gui"] == "tiny") and (source.endswith("jpg") or source.endswith("png")):
              (status, output) = commands.getstatusoutput("file "+ source)
              output = output.replace(" x ", "x")
              target = os.path.join(target, os.path.basename(source))
