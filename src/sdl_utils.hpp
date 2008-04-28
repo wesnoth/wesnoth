@@ -147,8 +147,8 @@ surface flip_surface(surface const &surf);
 surface flop_surface(surface const &surf);
 surface create_compatible_surface(surface const &surf, int width = -1, int height = -1);
 //! Replacement for SDL_BlitSurface.
-void blit_surface(SDL_Surface* src, 
-	const SDL_Rect* srcrect, SDL_Surface* dst, const SDL_Rect* dstrect);
+void blit_surface(const surface& src, 
+	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
 void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target);
 
