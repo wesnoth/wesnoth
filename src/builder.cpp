@@ -48,12 +48,14 @@ static const int UNITPOS = 36 + 18;
  */
 static const int BASE_Y_INTERVAL = 100000;
 
-terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image) :
+terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy) :
 	layer(layer),
 	basex(x),
 	basey(y),
 	variants(),
-	global_image(global_image)
+	global_image(global_image),
+	center_x(cx),
+	center_y(cy)
 {}
 
 terrain_builder::tile::tile() :
@@ -306,7 +308,7 @@ bool terrain_builder::start_animation(building_rule &rule)
 						time = 100;
 					}
 					if(image->global_image) {
-						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str + ".png",constraint->second.loc)));
+						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str + ".png",constraint->second.loc, image->center_x, image->center_y)));
 					} else {
 						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str + ".png")));
 					}
@@ -535,8 +537,17 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			}
 		}
 
-		images.push_back(rule_image(layer, basex - dx, basey - dy, global));
+		int center_x = -1, center_y = -1;
+		if( !(**img)["center"].empty()) {
+			std::vector<std::string> center = utils::split((**img)["center"]);
 
+			if(center.size() >= 2) {
+				center_x = atoi(center[0].c_str());
+				center_y = atoi(center[1].c_str());
+			}
+		}
+
+		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y));
 
 		// Adds the main (default) variant of the image, if present
 		images.back().variants.insert(std::pair<std::string, rule_image_variant>("", rule_image_variant(name,"")));

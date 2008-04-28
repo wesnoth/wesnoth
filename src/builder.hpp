@@ -169,7 +169,7 @@ public:
 	 * The rule_image structure represents one such image.
 	 */
 	struct rule_image {
-		rule_image(int layer, int x, int y, bool global_image=false);
+		rule_image(int layer, int x, int y, bool global_image=false, int center_x=-1, int center_y=-1);
 
 		/** The layer of the image for horizontal layering */
 		int layer;
@@ -186,6 +186,10 @@ public:
 		 * [terrain_graphics] tag, set to false if it was defined as a
 		 * child of a [tile] tag */
 		bool global_image;
+
+		/** The position where the center of the image base should be
+		 */
+		int center_x, center_y;
 	};
 
 	/**

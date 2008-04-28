@@ -186,6 +186,12 @@ locator::locator(const std::string &filename, const gamemap::location &loc, cons
 	init_index();
 }
 
+    locator::locator(const std::string &filename, const gamemap::location &loc, int center_x, int center_y, const std::string& modifications) :
+        val_(filename, loc, center_x, center_y, modifications)
+{
+	init_index();
+}
+
 locator& locator::operator=(const locator &a)
 {
 	index_ = a.index_;
@@ -196,7 +202,8 @@ locator& locator::operator=(const locator &a)
 
 locator::value::value(const locator::value& a) :
   type_(a.type_), filename_(a.filename_), loc_(a.loc_),
-  modifications_(a.modifications_)
+  modifications_(a.modifications_), 
+  center_x_(a.center_x_), center_y_(a.center_y_)
 {
 }
 
@@ -230,6 +237,11 @@ locator::value::value(const std::string& filename, const gamemap::location& loc,
 {
 }
 
+locator::value::value(const std::string& filename, const gamemap::location& loc, int center_x, int center_y, const std::string& modifications) :
+  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), center_x_(center_x), center_y_(center_y)
+{	
+}
+
 bool locator::value::operator==(const value& a) const
 {
 	if(a.type_ != type_) {
@@ -237,7 +249,8 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_;
+	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_ 
+          && center_x_ == a.center_x_ && center_y_ == a.center_y_;
 	} else {
 		return false;
 	}
@@ -254,6 +267,11 @@ bool locator::value::operator<(const value& a) const
 			return filename_ < a.filename_;
 		if(loc_ != a.loc_)
 		        return loc_ < a.loc_;
+        if(center_x_ != a.center_x_)
+            return center_x_ < a.center_x_;
+        if(center_y_ != a.center_y_)
+            return center_y_ < a.center_y_;
+
 		return(modifications_ < a.modifications_);
 	} else {
 		return false;
@@ -298,7 +316,19 @@ surface locator::load_image_sub_file() const
 		return surface(NULL);
 
 	surface surf=mother_surface;
-	if(val_.loc_.x>-1 && val_.loc_.y>-1){
+	if(val_.loc_.x>-1 && val_.loc_.y>-1 && val_.center_x_>-1 && val_.center_y_>-1){
+		int offset_x = mother_surface->w/2 - val_.center_x_;
+		int offset_y = mother_surface->h/2 - val_.center_y_;
+		SDL_Rect srcrect = {
+			((tile_size*3) / 4) * val_.loc_.x + offset_x,
+			tile_size * val_.loc_.y + (tile_size/2) * (val_.loc_.x % 2) + offset_y,
+			tile_size, tile_size
+		};
+
+		surface tmp(cut_surface(mother_surface, srcrect));
+		surf=mask_surface(tmp, mask);
+	}
+	else if(val_.loc_.x>-1 && val_.loc_.y>-1 ){
 	  SDL_Rect srcrect = {
 	    ((tile_size*3) / 4) * val_.loc_.x,
 	    tile_size * val_.loc_.y + (tile_size/2) * (val_.loc_.x % 2),
@@ -308,6 +338,7 @@ surface locator::load_image_sub_file() const
 	  surface tmp(cut_surface(mother_surface, srcrect));
 	  surf=mask_surface(tmp, mask);
 	}
+
 
 	if(val_.modifications_.size()){
 		bool xflip = false;

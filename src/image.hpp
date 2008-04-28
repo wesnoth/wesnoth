@@ -67,6 +67,7 @@ namespace image {
 			value(const std::string& filename);
 		     value(const std::string& filename, const std::string& modifications);
 			value(const std::string& filename, const gamemap::location& loc, const std::string& modifications);
+			value(const std::string& filename, const gamemap::location& loc, int center_x, int center_y, const std::string& modifications);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
@@ -75,6 +76,8 @@ namespace image {
 			std::string filename_;
 			gamemap::location loc_;
 			std::string modifications_;
+			int center_x_;
+			int center_y_;
 		};
 
 		// Constructing locators is somewhat slow, accessing image
@@ -88,6 +91,7 @@ namespace image {
 		locator(const std::string& filename);
 		locator(const std::string& filename, const std::string& modifications);
 		locator(const std::string& filename, const gamemap::location& loc, const std::string& modifications="");
+		locator(const std::string& filename, const gamemap::location& loc, int center_x, int center_y, const std::string& modifications="");
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }
