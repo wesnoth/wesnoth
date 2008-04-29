@@ -542,7 +542,8 @@ timage::timage(const config& cfg) :
  *
  */
 
-	image_.assign(image::get_image(image::locator(cfg["name"])));
+	image_.assign(make_neutral_surface(
+		image::get_image(image::locator(cfg["name"]))));
 	src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
 
 	const std::string& debug = (cfg["debug"]);
@@ -580,7 +581,7 @@ void timage::draw(surface& canvas,
 				DBG_G_D << "Image: vertical stretch from " << image_->w 
 					<< ',' << image_->h << " to a height of " << h << ".\n";
 
-				surf = stretch_surface_vertical(image_, h);	
+				surf = stretch_surface_vertical(image_, h, false);	
 				done = true;
 			}
 			w = image_->w;
@@ -591,7 +592,7 @@ void timage::draw(surface& canvas,
 				DBG_G_D << "Image: horizontal stretch from " << image_->w 
 					<< ',' << image_->h << " to a width of " << w << ".\n";
 
-				surf = stretch_surface_horizontal(image_, w);	
+				surf = stretch_surface_horizontal(image_, w, false);	
 				done = true;
 			}
 			h = image_->h;
@@ -602,7 +603,7 @@ void timage::draw(surface& canvas,
 			DBG_G_D << "Image: scaling from " << image_->w 
 				<< ',' << image_->h << " to " << w << ',' << h << ".\n";
 
-			surf = scale_surface(image_, w, h);
+			surf = scale_surface(image_, w, h, false);
 		}
 		src_clip.w = w;
 		src_clip.h = h;
@@ -610,14 +611,8 @@ void timage::draw(surface& canvas,
 		surf = image_;
 	}
 
-	// FIXME the scale and strech return an optimized surface which needs
-	// to be turned into a not optimized surface again, so it would be nice
-	// to add a parameter whether or not to optimize.
-	surf = make_neutral_surface(surf);
 	blit_surface(surf, &src_clip, canvas, &dst_clip);
 }
-
-
 
 //! Definition of a text shape.
 class ttext : public tcanvas::tshape
