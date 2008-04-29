@@ -137,11 +137,23 @@ col.col5 {
 div.l {
     color: gray;
     font-weight: normal;
-    font-size: xx-small;
+    font-size: small;
     border: 1px solid;
     float: right;
     margin: 0px;
     }
+div.i {
+    padding: 4px;
+    font-weight: normal;
+    font-size: small;
+    border: 1px solid white;
+    float: left;
+    margin: 0px;
+    }
+div.i a {
+    color: #8080ff;
+    text-decoration: underline;
+}
 div.attributes {
     font-size: small;
     font-weight: normal;

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#encoding: utf8
 """
 wmlunits -- tool to output information on all units in HTML
 
@@ -324,6 +325,7 @@ class HTMLOutput:
         for i in range(6):
             write("<col class=\"col%d\" />" % i)
         write("</colgroup>")
+        ms = None
         for row in range(len(rows)):
             write("<tr>\n")
             for column in range(6):
@@ -338,6 +340,15 @@ class HTMLOutput:
                         attributes += " colspan=%d" % hspan
 
                     if un and isinstance(un, helpers.GroupNode):
+                        # Find the current multiplayer side so we can show the
+                        # little crowns..
+                        ms = None
+                        try:
+                            eid, fid = un.data
+                            era = self.wesnoth.era_lookup[eid]
+                            ms = era.faction_lookup[fid]
+                        except TypeError:
+                            pass
                         racename = un.name
                         attributes += " class=\"raceheader\""
                         write("<td%s>" % attributes)
@@ -356,8 +367,17 @@ class HTMLOutput:
                         xp = self.wesnoth.get_unit_value(u, "experience")
                         level = self.wesnoth.get_unit_value(u, "level")
 
-                        write("<div class=\"l\">L%s</div>" % level)
+                        crown = ""
+                        if ms:
+                            if un.id in ms.units:
+                                crown = u" ♟"
+                            if un.id in ms.is_leader:
+                                crown = u" ♛"
+
                         link = "../%s/%s.html" % (self.isocode, uid)
+                        write("<div class=\"i\"><a href=\"%s\" title=\"%s\">%s</a></div>" % (
+                            link, uid, u"ℹ"))
+                        write("<div class=\"l\">L%s%s</div>" % (level, crown))
                         write("<a href=\"%s\">%s</a><br/>" % (link, name))
 
                         write('<div class="pic">')
@@ -374,9 +394,22 @@ class HTMLOutput:
                             self.get_translation("wesnoth", "MP: "), mp))
                         write("%s%s<br />" % (
                             self.get_translation("wesnoth", "XP: "), xp))
-
-                        write("\n<div style=\"clear:both\">")
+                            
+                        # Write info about abilities.
+                        anames = []
+                        for abilities in u.get_all("abilities"):
+                            for ability in abilities.children():
+                                name = ability.get_text_val("name")
+                                if not name: name = ability.get_text_val("id")
+                                if not name: name = ability.name
+                                anames.append(name)
+                        if anames:
+                            write("\n<div style=\"clear:both\">")
+                            write(", ".join(anames))
+                            write("</div>")
+                        
                         # Write info about attacks.
+                        write("\n<div style=\"clear:both\">")
                         for attack in u.get_all("attack"):
                             t = attack.get_text_val("type")
                             write("%s " % self.get_translation("wesnoth", t))
@@ -522,6 +555,21 @@ class HTMLOutput:
             if val == "alignment": x = self.get_translation("wesnoth", x)
             write("<td>%s</td>" % x)
             write("</tr>\n")
+        
+        # Write info about abilities.
+        anames = []
+        for abilities in unit.get_all("abilities"):
+            for ability in abilities.children():
+                name = ability.get_text_val("name")
+                if not name: name = ability.get_text_val("id")
+                if not name: name = ability.name
+                anames.append(name)
+
+        write("<tr>\n")
+        write("<th>%s</th>" % _("Abilities: "))
+        write("<td>" + (", ".join(anames)) + "</td>")
+        write("</tr>\n")
+
         write("</table>\n")
 
         # Write info about attacks.

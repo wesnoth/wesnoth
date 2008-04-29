@@ -169,12 +169,19 @@ class WesnothList:
             era.faction_lookup[fid] = multiplayer_side
             recruit = multiplayer_side.get_text_val("recruit").strip()
             leader = multiplayer_side.get_text_val("leader").strip()
-            units = recruit.split(",") + leader.split(",")
+            units = recruit.split(",")
+            leaders = leader.split(",")
             multiplayer_side.units = {}
+            multiplayer_side.is_leader = {}
             for u in units:
                 uid = u.strip()
                 if uid:
                     multiplayer_side.units[uid] = True
+            for u in leaders:
+                uid = u.strip()
+                if uid:
+                    multiplayer_side.units[uid] = True
+                    multiplayer_side.is_leader[uid] = True
         return eid
 
     def add_campaign(self, campaign):
