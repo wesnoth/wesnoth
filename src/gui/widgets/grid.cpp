@@ -363,17 +363,6 @@ void tgrid::draw(surface& surface)
 	set_dirty(false);
 }
 
-void tgrid::load_config()
-{
-	for(std::vector<tchild>::iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-
-		if(itor->widget()) {
-			itor->widget()->load_config();
-		}
-	}
-}
-
 void tgrid::clear_cache()
 {
 	best_row_height_.clear();

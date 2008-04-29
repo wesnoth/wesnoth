@@ -27,10 +27,10 @@ public:
 	tpanel() : 
 		tcontrol(0),
 		grid_(0, 0, 0, 0)
-		{
-			grid_.set_parent(this);
-		}
-
+	{
+		//load_config();
+		grid_.set_parent(this);
+	}
 	
 	// Inherited from twidget.
 	twidget* get_widget(const tpoint& coordinate) { return grid_.get_widget(coordinate); }
@@ -77,10 +77,6 @@ public:
 	//! Inherited from twidget.
 	//FIXME we also need to load our own config
 	void draw(surface& surface) { grid_.draw(surface); }
-
-	//! Inherited from twidget.
-	//FIXME we also need to load our own config
-	void load_config() { grid_.load_config(); }
 
 private:
 	tgrid grid_;

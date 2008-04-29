@@ -71,12 +71,25 @@ twindow::twindow(CVideo& video,
 	set_height(h);
 
 	tooltip_.set_definition("default");
-	tooltip_.load_config();
 	tooltip_.set_visible(false);
 
 	help_popup_.set_definition("default");
-	help_popup_.load_config();
 	help_popup_.set_visible(false);
+
+	load_config();
+
+	// FIXME hack to load config stuff here
+	const twindow_definition::tresolution* conf = dynamic_cast<const twindow_definition::tresolution*>(config());
+	assert(conf);
+	canvas_background_ = conf->background.canvas;
+	canvas_background_.set_width(get_width());
+	canvas_background_.set_height(get_height());
+
+	canvas_foreground_ = conf->foreground.canvas;
+	canvas_foreground_.set_width(get_width());
+	canvas_foreground_.set_height(get_height());
+	// End of hack
+
 }
 
 int twindow::show(const bool restore, void* /*flip_function*/)
@@ -88,23 +101,6 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 		// FIXME throw an exception
 
 	}
-
-	// Update all configs.
-	load_config();
-
-	// FIXME hack to load config stuff here
-	tcontrol::load_config();
-
-	const twindow_definition::tresolution* conf = dynamic_cast<const twindow_definition::tresolution*>(config());
-	assert(conf);
-	canvas_background_ = conf->background.canvas;
-	canvas_background_.set_width(get_width());
-	canvas_background_.set_height(get_height());
-
-	canvas_foreground_ = conf->foreground.canvas;
-	canvas_foreground_.set_width(get_width());
-	canvas_foreground_.set_height(get_height());
-	// End of hack
 
 	// We cut a piece of the screen and use that, that way all coordinates
 	// are relative to the window.

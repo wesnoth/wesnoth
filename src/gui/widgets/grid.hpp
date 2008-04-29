@@ -104,9 +104,6 @@ public:
 	//! Inherited from twidget.
 	void draw(surface& surface);
 
-	//! Inherited from twidget.
-	void load_config();
-
 private:
 	class tchild 
 	{

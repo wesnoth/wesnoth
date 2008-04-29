@@ -32,7 +32,8 @@ public:
 		history_(0), 
 		pos_(0), 
 		enabled_(false) 
-	{}
+	{
+	}
 	
 	//! Push string into the history if it is non-empty and is not the same as the last item
 	//! updates position to end of history.
@@ -76,7 +77,10 @@ public:
 		text_y_offset_(0),
 		text_height_(0),
 		dragging_(false)
-	{ set_wants_mouse_left_double_click(); }
+	{ 
+		load_config();
+		set_wants_mouse_left_double_click(); 
+	}
 
 	void set_history(const std::string& id) 
 		{ history_ = ttext_history::get_history(id, true); }

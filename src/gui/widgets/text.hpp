@@ -36,7 +36,8 @@ public:
 		sel_len_(0),
 		max_length_(std::string::npos),
 		dragging_(false)
-	{}
+	{
+	}
 
 	void set_active(const bool /*active*/) { /*FIXME IMPLEMENT*/ };
 	bool get_active() const { return true; /* FIXME IMPLEMENT */ }

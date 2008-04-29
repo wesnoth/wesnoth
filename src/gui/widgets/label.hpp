@@ -28,7 +28,9 @@ public:
 	tlabel() :
 		tcontrol(COUNT),
 		state_(ENABLED)
-	{}
+	{
+		load_config();
+	}
 
 	void set_active(const bool active) { set_state(active ? ENABLED : DISABLED); };
 	bool get_active() const { return state_ == ENABLED; }

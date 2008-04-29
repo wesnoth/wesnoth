@@ -351,6 +351,11 @@ void tcontrol::restore_background(surface& dst)
 	}
 }
 
+//! Inherited from twidget.
+//!
+//! All classes which use this class as base should call this function in
+//! their constructor. Abstract classes shouldn't call this routine. The 
+//! classes which call this routine should also define get_control_type().
 void tcontrol::load_config()
 {
 	if(!config()) {

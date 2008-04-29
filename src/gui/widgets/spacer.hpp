@@ -27,8 +27,9 @@ class tspacer : public tcontrol
 public:
 	tspacer() : 
 		tcontrol(0)
-		{
-		}
+	{
+		load_config();
+	}
 
 	//! Inherited from tcontrol.
 	// We are always active, might not be visible but always active.

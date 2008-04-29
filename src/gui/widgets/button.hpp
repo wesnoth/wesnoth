@@ -29,8 +29,9 @@ public:
 		tcontrol(COUNT),
 		state_(ENABLED),
 		retval_(0)
-		{
-		}
+	{
+		load_config();
+	}
 
 	void mouse_enter(tevent_handler&);
 	void mouse_leave(tevent_handler&);

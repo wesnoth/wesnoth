@@ -241,11 +241,6 @@ void ttext_box::mouse_left_button_double_click(tevent_handler&)
 //! Calculates the offsets of all chars.
 void ttext_box::calculate_char_offset()
 {
-	// If the text is set before the config is loaded do it ourselves.
-	// This isn't really clean solution, maybe fix it later.
-	if(!config()) {
-		load_config();
-	}
 	assert(config());
 	character_offset_.clear();
 

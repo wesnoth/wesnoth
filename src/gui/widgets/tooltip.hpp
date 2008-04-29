@@ -25,7 +25,10 @@ public:
 
 	ttooltip() :
 		tcontrol(1)
-		{ set_multiline_label(); }
+	{
+		load_config();
+		set_multiline_label();
+	}
 
 	//! Inherited from tcontrol.
 	// We are always active, might not be visible but always active.
