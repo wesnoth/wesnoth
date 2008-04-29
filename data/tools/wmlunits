@@ -375,7 +375,7 @@ class HTMLOutput:
                                 crown = u" ♛"
 
                         link = "../%s/%s.html" % (self.isocode, uid)
-                        write("<div class=\"i\"><a href=\"%s\" title=\"%s\">%s</a></div>" % (
+                        write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a></div>" % (
                             link, uid, u"ℹ"))
                         write("<div class=\"l\">L%s%s</div>" % (level, crown))
                         write("<a href=\"%s\">%s</a><br/>" % (link, name))
@@ -548,7 +548,8 @@ class HTMLOutput:
             ("movement", _("Movement") + ": "),
             ("experience", _("XP: ")),
             ("level", _("Level") + ": "),
-            ("alignment", _("Alignment: "))]:
+            ("alignment", _("Alignment: ")),
+            ("id", "ID")]:
             write("<tr>\n")
             write("<th>%s</th>" % text)
             x = self.wesnoth.get_unit_value(unit, val)
