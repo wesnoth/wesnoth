@@ -156,8 +156,8 @@ def restore_env(env, backup):
     for var in backup.keys():
         env[var] = backup[var]
 
-def CheckCPlusPlus(context):
-    context.Message("Checking whether C++ compiler works... ")
+def CheckCPlusPlus(context, gcc_version = None):
+    message = "Checking whether C++ compiler works "
     test_program = """
     #include <iostream>
     int main()
@@ -165,6 +165,24 @@ def CheckCPlusPlus(context):
     std::cout << "Hello, world\\n";
     }
     """
+    if gcc_version and "gcc" in context.env["TOOLS"]:
+        message += "(g++ version >= %s required)" % gcc_version
+        import operator
+        version = gcc_version.split(".", 3)
+        version = map(int, version)
+        version = map(lambda x,y: x or y, version, (0,0,0))
+        multipliers = (10000, 100, 1)
+        version_num = sum(map(operator.mul, version, multipliers))
+        test_program += """
+        #define GCC_VERSION (__GNUC__ * 10000 \\
+                           + __GNUC_MINOR__ * 100 \\
+                           + __GNUC_PATCHLEVEL__)
+        #if GCC_VERSION < %d
+        #error Compiler version is too old!
+        #endif
+        \n""" % version_num
+    message += "... "
+    context.Message(message)
     if context.TryBuild(context.env.Program, test_program, ".cpp") == 1:
         context.Result("yes")
         return True
@@ -358,7 +376,7 @@ conf = Configure(env, custom_tests = { 'CheckCPlusPlus' : CheckCPlusPlus,
 #    conf.CheckPKGConfig('0.15.0') or Die("Base prerequisites are not met.")
 
 if env["prereqs"]:
-    conf.CheckCPlusPlus() and \
+    conf.CheckCPlusPlus(gcc_version = "3.3") and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
 
@@ -486,13 +504,6 @@ if boost_test_dyn_link:
     else:
         test_env.Append(CPPDEFINES = "WESNOTH_BOOST_TEST_MAIN")
 Export("test_env")
-
-cc_version = env["CCVERSION"]
-if env["CC"] == "gcc":
-    (major, minor, rev) = map(int, cc_version.split("."))
-    if major*10+minor < 33:
-        print "Your compiler version is too old"
-        Exit(1)
 
 # Platform-specific support, straight from configure.ac
 if env["PLATFORM"] == 'win32':				# Microsoft Windows
