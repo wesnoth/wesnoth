@@ -564,8 +564,11 @@ surface greyscale_image(surface const &surf)
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+			Uint8 r, g, b, a;
+			a = (*beg) >> 24;
+			r = (*beg) >> 16;
+			g = (*beg) >> 8;
+			b = (*beg);
 
 			//const Uint8 avg = (red+green+blue)/3;
 
@@ -574,12 +577,11 @@ surface greyscale_image(surface const &surf)
 			// The correct formula being:
 			// gray=0.299red+0.587green+0.114blue
 			const Uint8 avg = static_cast<Uint8>((
-				77 * static_cast<Uint16>(red) +
-				150 * static_cast<Uint16>(green) +
-				29 * static_cast<Uint16>(blue)) / 256);
+				77  * static_cast<Uint16>(r) +
+				150 * static_cast<Uint16>(g) +
+				29  * static_cast<Uint16>(b)  ) / 256);
 
-
-			*beg = SDL_MapRGBA(nsurf->format,avg,avg,avg,alpha);
+			*beg = (a << 24) | (avg << 16) | (avg << 8) | avg;
 
 			++beg;
 		}
@@ -605,8 +607,11 @@ surface darken_image(surface const &surf)
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+			Uint8 r, g, b, a;
+			a = (*beg) >> 24;
+			r = (*beg) >> 16;
+			g = (*beg) >> 8;
+			b = (*beg);
 
 			//const Uint8 avg = (red+green+blue)/3;
 
@@ -615,16 +620,16 @@ surface darken_image(surface const &surf)
 			// The correct formula being:
 			// gray=0.299red+0.587green+0.114blue
 			const Uint8 avg = static_cast<Uint8>((
-				77 * static_cast<Uint16>(red) +
-				150 * static_cast<Uint16>(green) +
-				29 * static_cast<Uint16>(blue)) / 256);
+				77  * static_cast<Uint16>(r) +
+				150 * static_cast<Uint16>(g) +
+				29  * static_cast<Uint16>(b)  ) / 256);
 			// then tint 77%, 67%, 72%
-			const Uint8 r= ((avg * 196) >> 8);
-			const Uint8 g= ((avg * 171) >> 8);
-			const Uint8 b= ((avg * 184) >> 8);
+			r = ((avg * 196) >> 8);
+			g = ((avg * 171) >> 8);
+			b = ((avg * 184) >> 8);
 
 
-			*beg = SDL_MapRGBA(nsurf->format,r,g,b,alpha);
+			*beg = (a << 24) | (r << 16) | (g << 8) | b;
 
 			++beg;
 		}
@@ -1153,24 +1158,27 @@ surface blend_surface(surface const &surf, double amount, Uint32 colour)
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
 
-		Uint8 red2, green2, blue2, alpha2;
-		SDL_GetRGBA(colour,nsurf->format,&red2,&green2,&blue2,&alpha2);
+		Uint8 red, green, blue, alpha;
+		SDL_GetRGBA(colour,nsurf->format,&red,&green,&blue,&alpha);
 
-		red2 = Uint8(red2*amount);
-		green2 = Uint8(green2*amount);
-		blue2 = Uint8(blue2*amount);
+		red   = Uint8(red   * amount);
+		green = Uint8(green * amount);
+		blue  = Uint8(blue  * amount);
 
 		amount = 1.0 - amount;
 
 		while(beg != end) {
-			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+			Uint8 r, g, b, a;
+			a = (*beg) >> 24;
+			r = (*beg) >> 16;
+			g = (*beg) >> 8;
+			b = (*beg);
 
-			red = Uint8(red*amount) + red2;
-			green = Uint8(green*amount) + green2;
-			blue = Uint8(blue*amount) + blue2;
+			r = Uint8(r * amount) + red;
+			g = Uint8(g * amount) + green;
+			b = Uint8(b * amount) + blue;
 
-			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
+			*beg = (a << 24) | (r << 16) | (g << 8) | b;
 
 			++beg;
 		}
@@ -1470,16 +1478,13 @@ namespace {
 
 struct not_alpha
 {
-	not_alpha(SDL_PixelFormat& format) : fmt_(format) {}
+	not_alpha() {}
 
+	// we assume neutral format
 	bool operator()(Uint32 pixel) const {
-		Uint8 r, g, b, a;
-		SDL_GetRGBA(pixel,&fmt_,&r,&g,&b,&a);
-		return a != 0x00;
+		Uint8 alpha = pixel >> 24;
+		return alpha != 0x00;
 	}
-
-private:
-	SDL_PixelFormat& fmt_;
 };
 
 }
@@ -1493,7 +1498,7 @@ SDL_Rect get_non_transparent_portion(surface const &surf)
 		return res;
 	}
 
-	const not_alpha calc(*(nsurf->format));
+	const not_alpha calc;
 
 	surface_lock lock(nsurf);
 	const Uint32* const pixels = lock.pixels();
