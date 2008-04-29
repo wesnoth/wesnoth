@@ -184,7 +184,9 @@ tline::tline(const config& cfg) :
  * @page = GUICanvasWML
  *
  * == Line ==
- * Definition of a line.
+ * Definition of a line. When drawing a line it doesn't get blended on the
+ * surface but replaces the pixels instead. A blitting flag might be added later
+ * if needed.
  *
  * Keys: 
  * @start_table = config
@@ -372,7 +374,10 @@ trectangle::trectangle(const config& cfg) :
  * @page = GUICanvasWML
  *
  * == Rectangle ==
- * Definition of a rectangle.
+ *
+ * Definition of a rectangle. When drawing a rectangle it doesn't get blended on
+ * the surface but replaces the pixels instead. A blitting flag might be added
+ * later if needed.
  *
  * Keys: 
  * @start_table = config
