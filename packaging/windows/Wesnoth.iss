@@ -3,18 +3,19 @@
 
 [Setup]
 AppName=Battle for Wesnoth
-AppVerName=Battle for Wesnoth 1.4.1
+AppVerName=Battle for Wesnoth 1.5.0
 AppPublisher=David White
 AppPublisherURL=http://www.wesnoth.org
 AppSupportURL=http://www.wesnoth.org
 AppUpdatesURL=http://www.wesnoth.org
-DefaultDirName={pf}\Wesnoth 1.4.1
-DefaultGroupName=Wesnoth 1.4.1
-LicenseFile=C:\Entwicklung\Wesnoth\Release 1.4.1\COPYING
-OutputBaseFilename=wesnoth-1.4.1-windows
+DefaultDirName={pf}\Wesnoth 1.5.0
+DefaultGroupName=Wesnoth 1.5.0
+LicenseFile=C:\Entwicklung\Wesnoth\Release 1.5.0\COPYING
+OutputBaseFilename=wesnoth-1.5.0-windows
+OutputDir=C:\Entwicklung\Wesnoth\Temp
 Compression=lzma
 SolidCompression=yes
-SourceDir=C:\Entwicklung\Wesnoth\Release 1.4.1
+SourceDir=C:\Entwicklung\Wesnoth\Release 1.5.0
 UsePreviousAppDir=no
 UsePreviousGroup=no
 WizardImageFile=C:\Entwicklung\Wesnoth\Wesnoth_SVN_Work\packaging\windows\WindowsInstallerGraphic.bmp
@@ -30,37 +31,38 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: "Main"
 
 [Icons]
-Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_i486.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\486"
-Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_p2.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\P2"
-Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_p4.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\P4"
-Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_k6.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\K6"
-Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\wesnoth.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Main";
-Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_i486.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\486"
-Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_p2.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\P2"
-Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_p4.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\P4"
-Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_k6.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\K6"
-Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_athlon.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\Athlon"
-Name: "{group}\Battle for Wesnoth (All Processors)"; Filename: "{app}\bin\wesnoth.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Main"
-Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_i486.exe"; WorkingDir: "{app}"; IconFilename: "{app}\editor.ico"; Components: "Processor\486"
-Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_p2.exe"; WorkingDir: "{app}"; IconFilename: "{app}\editor.ico"; Components: "Processor\P2"
-Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_p4.exe"; WorkingDir: "{app}"; IconFilename: "{app}\editor.ico"; Components: "Processor\P4"
-Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_k6.exe"; WorkingDir: "{app}"; IconFilename: "{app}\editor.ico"; Components: "Processor\K6"
-Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_athlon.exe"; WorkingDir: "{app}"; IconFilename: "{app}\editor.ico"; Components: "Processor\Athlon"
-Name: "{group}\Map Editor (All Processors)"; Filename: "{app}\bin\editor.exe"; WorkingDir: "{app}"; IconFilename: "{app}\editor.ico"; Components: "Main"
+Name: "{group}\Battle for Wesnoth (Fullscreen, Safe Mode)"; Filename: "{app}\bin\wesnoth.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Main"
+Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_i486.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\486"
+Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_p2.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\P2"
+Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_p4.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\P4"
+Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_k6.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\K6"
+Name: "{group}\Battle for Wesnoth (Fullscreen)"; Filename: "{app}\bin\wesnoth_athlon.exe"; Parameters: "--fullscreen"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\Athlon"
+Name: "{group}\Battle for Wesnoth (Windowed, Safe Mode)"; Filename: "{app}\wesnoth.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Main";
+Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_i486.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\486"
+Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_p2.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\P2"
+Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_p4.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\P4"
+Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_k6.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\K6"
+Name: "{group}\Battle for Wesnoth (Windowed)"; Filename: "{app}\bin\wesnoth_athlon.exe"; Parameters: "--windowed"; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\Athlon"
+Name: "{group}\Map Editor (Safe Mode)"; Filename: "{app}\bin\editor.exe"; WorkingDir: "{app}"; IconFilename: "{app}\bin\editor.ico"; Components: "Main"
+Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_i486.exe"; WorkingDir: "{app}"; IconFilename: "{app}\bin\editor.ico"; Components: "Processor\486"
+Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_p2.exe"; WorkingDir: "{app}"; IconFilename: "{app}\bin\editor.ico"; Components: "Processor\P2"
+Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_p4.exe"; WorkingDir: "{app}"; IconFilename: "{app}\bin\editor.ico"; Components: "Processor\P4"
+Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_k6.exe"; WorkingDir: "{app}"; IconFilename: "{app}\bin\editor.ico"; Components: "Processor\K6"
+Name: "{group}\Map Editor"; Filename: "{app}\bin\editor_athlon.exe"; WorkingDir: "{app}"; IconFilename: "{app}\bin\editor.ico"; Components: "Processor\Athlon"
+Name: "{group}\Multiplayer Server (Safe Mode)"; Filename: "{app}\bin\wesnothd.exe"; WorkingDir: "{app}"; Components: "Main"
 Name: "{group}\Multiplayer Server"; Filename: "{app}\bin\wesnothd_i486.exe"; WorkingDir: "{app}"; Components: "Processor\486"
 Name: "{group}\Multiplayer Server"; Filename: "{app}\bin\wesnothd_p2.exe"; WorkingDir: "{app}"; Components: "Processor\P2"
 Name: "{group}\Multiplayer Server"; Filename: "{app}\bin\wesnothd_p4.exe"; WorkingDir: "{app}"; Components: "Processor\P4"
 Name: "{group}\Multiplayer Server"; Filename: "{app}\bin\wesnothd_k6.exe"; WorkingDir: "{app}"; Components: "Processor\K6"
 Name: "{group}\Multiplayer Server"; Filename: "{app}\bin\wesnothd_athlon.exe"; WorkingDir: "{app}"; Components: "Processor\Athlon"
-Name: "{group}\Multiplayer Server"; Filename: "{app}\bin\wesnothd.exe"; WorkingDir: "{app}"; Components: "Main"
 Name: "{group}\Manual"; Filename: "{app}\manual_html\manual.en.html"; WorkingDir: "{app}"; Components: "Main"
 Name: "{group}\Uninstall Battle for Wesnoth"; Filename: "{uninstallexe}"
-Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_i486.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\486"
-Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_p2.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\P2"
-Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_p4.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\P4"
-Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_k6.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\K6"
-Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_athlon.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Processor\Athlon"
-Name: "{userdesktop}\Battle for Wesnoth (All Processors)"; Filename: "{app}\bin\wesnoth.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\wesnoth.ico"; Components: "Main"
+Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_i486.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\486"
+Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_p2.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\P2"
+Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_p4.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\P4"
+Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_k6.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\K6"
+Name: "{userdesktop}\Battle for Wesnoth"; Filename: "{app}\bin\wesnoth_athlon.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Processor\Athlon"
+Name: "{userdesktop}\Battle for Wesnoth (Safe Mode)"; Filename: "{app}\bin\wesnoth.exe"; Tasks: desktopicon; WorkingDir: "{app}"; IconFilename: "{app}\bin\wesnoth.ico"; Components: "Main"
 
 [Run]
 Filename: "{app}\bin\wesnoth_i486.exe"; Description: "Launch Battle for Wesnoth"; Flags: nowait postinstall skipifsilent; WorkingDir: "{app}"; Components: "Processor\486"

@@ -2,16 +2,16 @@ Option Explicit
 
 Dim SourceDirectory, DLLDirectory, PythonDirectory, GetTextDirectory
 Dim DestinationDirectory
-Dim PoFile, MoFile, ExecuteString, domains, languages, domain, language
+Dim File, PoFile, MoFile, ExecuteString, domains, languages, domain, language
 Dim fso, shell
 
 'on error resume next
 
 'Initialization
-SourceDirectory = "C:\Entwicklung\Wesnoth\wesnoth-1.4.1\"
+SourceDirectory = "C:\Entwicklung\Wesnoth\wesnoth-1.5.0\"
 DLLDirectory = "C:\Entwicklung\Wesnoth\DLL\mingw\"
 PythonDirectory = "C:\Entwicklung\Wesnoth\DLL\python\"
-DestinationDirectory = "C:\Entwicklung\Wesnoth\Release 1.4.1\"
+DestinationDirectory = "C:\Entwicklung\Wesnoth\Release 1.5.0\"
 GetTextDirectory = "D:\Programme\GnuWin32\bin\"
 Set fso = CreateObject("Scripting.FileSystemObject")
 Set shell = CreateObject("WScript.Shell")
@@ -46,8 +46,9 @@ If fso.FolderExists(DestinationDirectory + "po") = False Then
 	Call fso.CreateFolder(DestinationDirectory + "po")
 End If
 
-domains = Array("wesnoth", "wesnoth-aoi", "wesnoth-did", "wesnoth-editor", "wesnoth-ei", "wesnoth-httt", "wesnoth-l", "wesnoth-lib", "wesnoth-multiplayer", "wesnoth-nr", "wesnoth-sof", "wesnoth-sotbe", "wesnoth-tb", "wesnoth-thot", "wesnoth-trow", "wesnoth-tsg", "wesnoth-tutorial", "wesnoth-units", "wesnoth-utbs")
-languages = Array("af", "bg", "ca", "ca_ES@valencia", "cs", "da", "de", "el", "en_GB", "eo", "es", "et", "eu", "fi", "fr", "gl_ES", "he", "hr", "hu", "id", "it", "ja", "ko", "la", "nb_NO", "nl", "pl", "pt", "pt_BR", "ro", "ru", "sk", "sl", "sr", "sr@latin", "sv", "tl", "tr", "zh_CN", "zh_TW")
+domains = Array("wesnoth", "wesnoth-anl", "wesnoth-aoi", "wesnoth-did", "wesnoth-editor", "wesnoth-ei", "wesnoth-httt", "wesnoth-l", "wesnoth-lib", "wesnoth-multiplayer", "wesnoth-nr", "wesnoth-sof", "wesnoth-sotbe", "wesnoth-tb", "wesnoth-thot", "wesnoth-trow", "wesnoth-tsg", "wesnoth-tutorial", "wesnoth-units", "wesnoth-utbs")
+Set File = fso.OpenTextFile(SourceDirectory + "po\wesnoth\LINGUAS", 1)
+languages = split(File.ReadLine(), " ")
 
 For Each domain In domains
 	For Each language In languages
@@ -57,7 +58,7 @@ For Each domain In domains
 		If fso.FolderExists(DestinationDirectory + "po\" + language + "\LC_MESSAGES") = False Then
 			fso.CreateFolder(DestinationDirectory + "po\" + language + "\LC_MESSAGES")
 		End If
-	
+
 		PoFile = SourceDirectory + "po\" + domain + "\" + language + ".po"
 		MoFile = DestinationDirectory + "po\" + language + "\LC_MESSAGES\" + domain + ".mo"
 		shell.Run """" + GetTextDirectory + "msgfmt.exe"" " + """" + PoFile + """ -o """ + MoFile + """", 1, True
