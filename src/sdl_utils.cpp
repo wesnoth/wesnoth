@@ -509,9 +509,9 @@ surface scale_surface_blended(surface const &surf, int w, int h)
 	return create_optimized_surface(dst);
 }
 
-surface adjust_surface_colour(surface const &surf, int r, int g, int b)
+surface adjust_surface_colour(surface const &surf, int red, int green, int blue)
 {
-	if((r == 0 && g == 0 && b == 0) || surf == NULL)
+	if((red == 0 && green == 0 && blue == 0) || surf == NULL)
 		return create_optimized_surface(surf);
 
 	surface nsurf(make_neutral_surface(surf));
@@ -527,18 +527,20 @@ surface adjust_surface_colour(surface const &surf, int r, int g, int b)
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 red, green, blue, alpha;
-			alpha = (*beg) >> 24;
-			red   = (*beg) >> 16;
-			green = (*beg) >> 8;
-			blue  = (*beg) >> 0;
+			Uint8 alpha = (*beg) >> 24;
 
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg) >> 0;
 
-			red = maximum<int>(0,minimum<int>(255,int(red)+r));
-			green = maximum<int>(0,minimum<int>(255,int(green)+g));
-			blue  = maximum<int>(0,minimum<int>(255,int(blue)+b));
+				r = maximum<int>(0,minimum<int>(255,int(r)+red));
+				g = maximum<int>(0,minimum<int>(255,int(g)+green));
+				b = maximum<int>(0,minimum<int>(255,int(b)+blue));
 
-			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
 
 			++beg;
 		}
@@ -564,24 +566,26 @@ surface greyscale_image(surface const &surf)
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 r, g, b, a;
-			a = (*beg) >> 24;
-			r = (*beg) >> 16;
-			g = (*beg) >> 8;
-			b = (*beg);
+			Uint8 alpha = (*beg) >> 24;
 
-			//const Uint8 avg = (red+green+blue)/3;
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
+				//const Uint8 avg = (red+green+blue)/3;
 
-			// Use the correct formula for RGB to grayscale conversion.
-			// Ok, this is no big deal :)
-			// The correct formula being:
-			// gray=0.299red+0.587green+0.114blue
-			const Uint8 avg = static_cast<Uint8>((
-				77  * static_cast<Uint16>(r) +
-				150 * static_cast<Uint16>(g) +
-				29  * static_cast<Uint16>(b)  ) / 256);
+				// Use the correct formula for RGB to grayscale conversion.
+				// Ok, this is no big deal :)
+				// The correct formula being:
+				// gray=0.299red+0.587green+0.114blue
+				const Uint8 avg = static_cast<Uint8>((
+					77  * static_cast<Uint16>(r) +
+					150 * static_cast<Uint16>(g) +
+					29  * static_cast<Uint16>(b)  ) / 256);
 
-			*beg = (a << 24) | (avg << 16) | (avg << 8) | avg;
+				*beg = (alpha << 24) | (avg << 16) | (avg << 8) | avg;
+			}
 
 			++beg;
 		}
@@ -607,29 +611,31 @@ surface darken_image(surface const &surf)
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 r, g, b, a;
-			a = (*beg) >> 24;
-			r = (*beg) >> 16;
-			g = (*beg) >> 8;
-			b = (*beg);
+			Uint8 alpha = (*beg) >> 24;
 
-			//const Uint8 avg = (red+green+blue)/3;
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
 
-			// Use the correct formula for RGB to grayscale conversion.
-			// Ok, this is no big deal :)
-			// The correct formula being:
-			// gray=0.299red+0.587green+0.114blue
-			const Uint8 avg = static_cast<Uint8>((
-				77  * static_cast<Uint16>(r) +
-				150 * static_cast<Uint16>(g) +
-				29  * static_cast<Uint16>(b)  ) / 256);
-			// then tint 77%, 67%, 72%
-			r = ((avg * 196) >> 8);
-			g = ((avg * 171) >> 8);
-			b = ((avg * 184) >> 8);
+				//const Uint8 avg = (red+green+blue)/3;
 
+				// Use the correct formula for RGB to grayscale conversion.
+				// Ok, this is no big deal :)
+				// The correct formula being:
+				// gray=0.299red+0.587green+0.114blue
+				const Uint8 avg = static_cast<Uint8>((
+					77  * static_cast<Uint16>(r) +
+					150 * static_cast<Uint16>(g) +
+					29  * static_cast<Uint16>(b)  ) / 256);
+				// then tint 77%, 67%, 72%
+				r = ((avg * 196) >> 8);
+				g = ((avg * 171) >> 8);
+				b = ((avg * 184) >> 8);
 
-			*beg = (a << 24) | (r << 16) | (g << 8) | b;
+				*beg = (alpha << 24) | (r << 16) | (g << 8) | b;
+			}
 
 			++beg;
 		}
@@ -693,17 +699,20 @@ surface brighten_image(surface const &surf, fixed_t amount)
 
 		if (amount < 0) amount = 0;
 		while(beg != end) {
-			Uint8 red, green, blue, alpha;
-			alpha = (*beg) >> 24;
-			red   = (*beg) >> 16;
-			green = (*beg) >> 8;
-			blue  = (*beg) >> 0;
+			Uint8 alpha = (*beg) >> 24;
 
-			red = minimum<unsigned>(unsigned(fxpmult(red,amount)),255);
-			green = minimum<unsigned>(unsigned(fxpmult(green,amount)),255);
-			blue = minimum<unsigned>(unsigned(fxpmult(blue,amount)),255);
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
 
-			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
+				r = minimum<unsigned>(unsigned(fxpmult(r, amount)),255);
+				g = minimum<unsigned>(unsigned(fxpmult(g, amount)),255);
+				b = minimum<unsigned>(unsigned(fxpmult(b, amount)),255);
+
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
 
 			++beg;
 		}
@@ -732,15 +741,17 @@ surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize)
 
 		if (amount < 0) amount = 0;
 		while(beg != end) {
-			Uint8 red, green, blue, alpha;
-			alpha = (*beg) >> 24;
-			red   = (*beg) >> 16;
-			green = (*beg) >> 8;
-			blue  = (*beg) >> 0;
+			Uint8 alpha = (*beg) >> 24;
 
-			alpha = minimum<unsigned>(unsigned(fxpmult(alpha,amount)),255);
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
 
-			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
+				alpha = minimum<unsigned>(unsigned(fxpmult(alpha,amount)),255);
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
 
 			++beg;
 		}
@@ -772,15 +783,17 @@ surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize)
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 red, green, blue, alpha;
-			alpha = (*beg) >> 24;
-			red   = (*beg) >> 16;
-			green = (*beg) >> 8;
-			blue  = (*beg) >> 0;
+			Uint8 alpha = (*beg) >> 24;
 
-			alpha = Uint8(maximum<int>(0,minimum<int>(255,int(alpha) + amount)));
-
-			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
+				
+				alpha = Uint8(maximum<int>(0,minimum<int>(255,int(alpha) + amount)));
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
 
 			++beg;
 		}
@@ -823,20 +836,20 @@ surface mask_surface(surface const &surf, surface const &mask)
 		Uint32* mend = mbeg + nmask->w*nmask->h;
 
 		while(beg != end && mbeg != mend) {
-			Uint8 red, green, blue, alpha;
-			Uint8 malpha;
+			Uint8 alpha = (*beg) >> 24;
 
-			alpha = (*beg) >> 24;
-			red   = (*beg) >> 16;
-			green = (*beg) >> 8;
-			blue  = (*beg) >> 0;
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
 
-			malpha = (*mbeg) >> 24;
+				Uint8 malpha = (*mbeg) >> 24;
+				if (alpha > malpha) alpha = malpha;
 
-			alpha = Uint8(minimum<int>(malpha, alpha));
-
-			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
-
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
+			
 			++beg;
 			++mbeg;
 		}
