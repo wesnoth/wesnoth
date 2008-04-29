@@ -126,25 +126,25 @@ surface stretch_surface_horizontal(const surface& surf, const unsigned w);
 //! Streches a surface in the vertical direction.
 surface stretch_surface_vertical(const surface& surf, const unsigned h);
 
-surface scale_surface(surface const &surf, int w, int h);
-surface scale_surface_blended(surface const &surf, int w, int h);
-surface adjust_surface_colour(surface const &surf, int r, int g, int b);
-surface greyscale_image(surface const &surf);
-surface darken_image(surface const &surf);
-surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb);
+surface scale_surface(surface const &surf, int w, int h, bool optimize=true);
+surface scale_surface_blended(surface const &surf, int w, int h, bool optimize=true);
+surface adjust_surface_colour(surface const &surf, int r, int g, int b, bool optimize=true);
+surface greyscale_image(surface const &surf, bool optimize=true);
+surface darken_image(surface const &surf, bool optimize=true);
+surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize=true);
 
-surface brighten_image(surface const &surf, fixed_t amount);
+surface brighten_image(surface const &surf, fixed_t amount, bool optimize=true);
 // send NULL if the portion is outside of the surface
 surface get_surface_portion(surface const &surf, SDL_Rect &rect);
 surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize=true);
 surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize=true);
 surface mask_surface(surface const &surf, surface const &mask);
-surface blur_surface(surface const &surf, int depth = 1);
-surface blur_alpha_surface(surface const &surf, int depth = 1);
+surface blur_surface(surface const &surf, int depth = 1, bool optimize=true);
+surface blur_alpha_surface(surface const &surf, int depth = 1, bool optimize=true);
 surface cut_surface(surface const &surf, SDL_Rect const &r);
-surface blend_surface(surface const &surf, double amount, Uint32 colour);
-surface flip_surface(surface const &surf);
-surface flop_surface(surface const &surf);
+surface blend_surface(surface const &surf, double amount, Uint32 colour, bool optimize=true);
+surface flip_surface(surface const &surf, bool optimize=true);
+surface flop_surface(surface const &surf, bool optimize=true);
 surface create_compatible_surface(surface const &surf, int width = -1, int height = -1);
 //! Replacement for SDL_BlitSurface.
 void blit_surface(const surface& src, 

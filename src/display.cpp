@@ -988,22 +988,22 @@ void display::render_unit_image(int x, int y, const bool /*fake_unit*/,
 		surf = image::reverse_image(surf);
 	}
 	if(vreverse) {
-		surf = flop_surface(surf);
+		surf = flop_surface(surf, false);
 	}
 
 	if(greyscale) {
-		surf = greyscale_image(surf);
+		surf = greyscale_image(surf, false);
 	}
 
 	if(blend_ratio != 0) {
-		surf = blend_surface(surf, blend_ratio, blendto);
+		surf = blend_surface(surf, blend_ratio, blendto, false);
 	}
 	if(alpha > ftofxp(1.0)) {
-		surf = brighten_image(surf,alpha);
+		surf = brighten_image(surf, alpha, false);
 	//} else if(alpha != 1.0 && blendto != 0) {
 	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
 	} else if(alpha != ftofxp(1.0)) {
-		surf = adjust_surface_alpha(surf,alpha,false);
+		surf = adjust_surface_alpha(surf, alpha, false);
 	}
 
 	if(surf == NULL) {
