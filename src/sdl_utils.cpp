@@ -158,12 +158,15 @@ surface create_optimized_surface(surface const &surf)
 //! This means only the first column of the original is used for the destination.
 //! @param surf              The source surface.
 //! @param w                 The width of the resulting surface.
+//! @param optimize          Should the return surface be RLE optimized.
 //!
 //! @return                  An optimized surface.
 //!                          returned. 
 //! @retval 0                Returned upon error.
-//! @retval surf             Returned if w == surf->w.
-surface stretch_surface_horizontal(const surface& surf, const unsigned w)
+//! @retval surf             Returned if w == surf->w, note this ignores the 
+//!                          optimize flag.
+surface stretch_surface_horizontal(
+		const surface& surf, const unsigned w, const bool optimize)
 {
 	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
 	assert(SDL_ALPHA_TRANSPARENT==0);
@@ -205,7 +208,7 @@ surface stretch_surface_horizontal(const surface& surf, const unsigned w)
 		}
 	}
 
-	return create_optimized_surface(dst);
+	return optimize ? create_optimized_surface(dst) : dst;
 }
 
 //! Streches a surface in the vertical direction.
@@ -215,12 +218,15 @@ surface stretch_surface_horizontal(const surface& surf, const unsigned w)
 //! This means only the first row of the original is used for the destination.
 //! @param surf              The source surface.
 //! @param h                 The height of the resulting surface.
+//! @param optimize          Should the return surface be RLE optimized.
 //!
 //! @return                  An optimized surface.
 //!                          returned. 
 //! @retval 0                Returned upon error.
-//! @retval surf             Returned if h == surf->h.
-surface stretch_surface_vertical(const surface& surf, const unsigned h)
+//! @retval surf             Returned if h == surf->h, note this ignores the 
+//!                          optimize flag.
+surface stretch_surface_vertical(
+		const surface& surf, const unsigned h, const bool optimize)
 {
 	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
 	assert(SDL_ALPHA_TRANSPARENT==0);
@@ -260,9 +266,8 @@ surface stretch_surface_vertical(const surface& surf, const unsigned h)
 		}
 	}
 
-	return create_optimized_surface(dst);
+	return optimize ? create_optimized_surface(dst) : dst;
 }
-
 
 // NOTE: Don't pass this function 0 scaling arguments.
 surface scale_surface(surface const &surf, int w, int h, bool optimize)

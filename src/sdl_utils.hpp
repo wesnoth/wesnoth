@@ -121,10 +121,12 @@ surface make_neutral_surface(surface const &surf);
 surface create_optimized_surface(surface const &surf);
 
 //! Streches a surface in the horizontal direction.
-surface stretch_surface_horizontal(const surface& surf, const unsigned w);
+surface stretch_surface_horizontal(
+	const surface& surf, const unsigned w, const bool optimize = true);
 
 //! Streches a surface in the vertical direction.
-surface stretch_surface_vertical(const surface& surf, const unsigned h);
+surface stretch_surface_vertical(
+	const surface& surf, const unsigned h, const bool optimize = true);
 
 surface scale_surface(surface const &surf, int w, int h, bool optimize=true);
 surface scale_surface_blended(surface const &surf, int w, int h, bool optimize=true);
