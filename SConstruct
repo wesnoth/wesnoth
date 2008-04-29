@@ -156,6 +156,22 @@ def restore_env(env, backup):
     for var in backup.keys():
         env[var] = backup[var]
 
+def CheckCPlusPlus(context):
+    context.Message("Checking whether C++ compiler works... ")
+    test_program = """
+    #include <iostream>
+    int main()
+    {
+    std::cout << "Hello, world\\n";
+    }
+    """
+    if context.TryBuild(context.env.Program, test_program, ".cpp") == 1:
+        context.Result("yes")
+        return True
+    else:
+        context.Result("no")
+        return False
+
 def CheckBoostLib(context, boost_lib, require_version = None):
     env = context.env
     boostdir = env.get("boostdir", "/usr/include")
@@ -330,7 +346,8 @@ def Warning(message):
     print message
     return False
 
-conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
+conf = Configure(env, custom_tests = { 'CheckCPlusPlus' : CheckCPlusPlus,
+                                       'CheckPKGConfig' : CheckPKGConfig,
                                        'CheckPKG' : CheckPKG,
                                        'CheckSDL' : CheckSDL,
                                        'CheckOgg' : CheckOgg,
@@ -341,6 +358,7 @@ conf = Configure(env, custom_tests = { 'CheckPKGConfig' : CheckPKGConfig,
 #    conf.CheckPKGConfig('0.15.0') or Die("Base prerequisites are not met.")
 
 if env["prereqs"]:
+    conf.CheckCPlusPlus() and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
 
