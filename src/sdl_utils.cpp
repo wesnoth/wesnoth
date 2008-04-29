@@ -534,7 +534,7 @@ surface adjust_surface_colour(surface const &surf, int r, int g, int b)
 			blue  = (*beg) >> 0;
 
 
-			red = maximum<int>(8,minimum<int>(255,int(red)+r));
+			red = maximum<int>(0,minimum<int>(255,int(red)+r));
 			green = maximum<int>(0,minimum<int>(255,int(green)+g));
 			blue  = maximum<int>(0,minimum<int>(255,int(blue)+b));
 
