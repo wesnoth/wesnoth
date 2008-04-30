@@ -783,16 +783,7 @@ void tcanvas::draw(const bool force)
 		variables_.add("height",variant(h_));
 	}
 
-	// set surface sizes (do nothing now)
-#if 0	
-	if(fixme test whether -> can be used otherwise we crash w_ != canvas_->w || h_ != canvas_->h) {
-		// create new
-
-	} else {
-		// fill current
-	}
-#endif
-	// instead we overwrite the entire thing for now
+	// create surface
 	DBG_G_D << "Canvas: create new empty canvas.\n";
 	canvas_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE, w_, h_, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
 
@@ -837,7 +828,6 @@ void tcanvas::parse_cfg(const config& cfg)
 
 void tcanvas::tshape::put_pixel(ptrdiff_t start, Uint32 colour, unsigned w, unsigned x, unsigned y)
 {
-	// fixme the 4 is true due to Uint32..
 	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
 }
 

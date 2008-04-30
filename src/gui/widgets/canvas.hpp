@@ -16,8 +16,6 @@
 //! This file contains the canvas object which is the part where the widgets
 //! draw (tempory) images on.
 
-// FIXME look at SDL_gfx it might have some nice functions that same me work.
-
 #ifndef __GUI_WIDGETS_CANVAS_HPP_INCLUDED__
 #define __GUI_WIDGETS_CANVAS_HPP_INCLUDED__
 

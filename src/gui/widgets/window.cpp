@@ -77,11 +77,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 {
 	log_scope2(gui_draw, "Window: show.");	
 
-	// Sanity
-	if(status_ != NEW) {
-		// FIXME throw an exception
-
-	}
+	assert(status_ == NEW);
 
 	// We cut a piece of the screen and use that, that way all coordinates
 	// are relative to the window.
@@ -93,7 +89,6 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 	for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
 		process_events();
 
-		// fixme manual destroy
 		if(status_ == REQUEST_CLOSE) {
 			break;
 		}

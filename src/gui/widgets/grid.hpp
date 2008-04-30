@@ -18,6 +18,8 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/control.hpp"
 
+#include <cassert>
+
 namespace gui2 {
 
 //! Base container class which needs to size children
@@ -75,15 +77,21 @@ public:
 	void set_rows_cols(const unsigned rows, const unsigned cols);
 
 	void set_row_grow_factor(const unsigned row, const unsigned factor)
-		{ row_grow_factor_[row] = factor; set_dirty(); } //FIXME add assert.
+	{ 
+		assert(row < row_grow_factor_.size()); 
+		row_grow_factor_[row] = factor; 
+		set_dirty(); 
+	} 
 
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
-		{ col_grow_factor_[col] = factor; set_dirty(); } //FIXME add assert.
+	{ 
+		assert(col< col_grow_factor_.size());
+		col_grow_factor_[col] = factor; 
+		set_dirty(); 
+	}
 
 	void remove_child(const unsigned row, const unsigned col);
 	void remove_child(const std::string& id, const bool find_all = false);
-
-	//FIXME  add the option to set the proportional growth for each row and column
 
 	//! Inherited from twidget.
 	tpoint get_minimum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 

@@ -20,6 +20,8 @@
 #include "gui/widgets/widget.hpp"
 #include "tstring.hpp"
 
+#include <cassert>
+
 namespace gui2 {
 
 //! Base class for all visible items.
@@ -62,7 +64,8 @@ public:
 	const t_string& help_message() const { return help_message_; }
 
 	std::vector<tcanvas>& canvas() { return canvas_; }
-	tcanvas& canvas(const unsigned index) { return canvas_[index]; } // FIXME an assert would be nice
+	tcanvas& canvas(const unsigned index) 
+		{ assert(index < canvas_.size()); return canvas_[index]; }
 
 	//! Inherited from twidget.
 	void draw(surface& surface);
@@ -122,10 +125,10 @@ private:
 	//! The label associated with a lot of widgets to show a (non editable) text.
 	t_string label_;
 
-	//! When hovering a tooltip with extra information can show up. (FIXME implement)
+	//! When hovering a tooltip with extra information can show up.
 	t_string tooltip_;
 
-	//! When the user presses help a tooltip with even more info can be shown. (FIXME implement)
+	//! When the user presses help a tooltip with even more info can be shown.
 	t_string help_message_;
 
 	//! Holds all canvas objects for a control. 

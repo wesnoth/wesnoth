@@ -79,9 +79,6 @@ void ttext_::mouse_left_button_down(tevent_handler& event)
 { 
 	DBG_G_E << "Text_box: left mouse button down.\n"; 
 
-	//FIXME place cursor
-	//set select  mode
-
 	event.keyboard_capture(this);
 	event.mouse_capture();
 }
@@ -355,8 +352,6 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 	handled = true;
 	if(sel_start_){
 		delete_char(true);
-	} else {
-		// FIXME beep
 	}
 
 }
@@ -383,9 +378,6 @@ void ttext_::handle_key_default(bool& handled, SDLKey /*key*/, SDLMod /*modifier
 		insert_char(unicode);
 	}
 }
-
-
-
 
 } // namespace gui2
 
