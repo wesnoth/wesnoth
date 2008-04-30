@@ -2295,6 +2295,7 @@ private:
 			void do_next_level();
 			void do_debug();
 			void do_nodebug();
+			void do_custom();
 			void do_set_var();
 			void do_show_var();
 			void do_unit();
@@ -2367,6 +2368,8 @@ private:
 					_("Turn debug mode on."));
 				register_command("nodebug", &console_handler::do_nodebug,
 					_("Turn debug mode off."), "", "D");
+				register_command("custom", &console_handler::do_custom,
+					_("Set the command used by the custom command hotkey"), "<command>");
 				register_command("set_var", &console_handler::do_set_var,
 					_("Set a scenario variable."), "<var>=<value>", "D");
 				register_command("show_var", &console_handler::do_show_var,
@@ -2780,6 +2783,9 @@ private:
 		print(get_cmd(), _("Debug mode deactivated!"));
 		game_config::debug = false;
 	}
+	void console_handler::do_custom() {
+		preferences::set("custom_command", get_data());
+	}
 	void console_handler::do_set_var() {
 		const std::string data = get_data();
 		const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
@@ -2894,6 +2900,11 @@ private:
 	void menu_handler::user_command()
 	{
 		textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
+	}
+
+	void menu_handler::custom_command(mouse_handler& mousehandler, const unsigned int team_num)
+	{
+		do_command(preferences::custom_command(), team_num, mousehandler);
 	}
 
 	void menu_handler::ai_formula()

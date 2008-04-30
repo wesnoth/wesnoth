@@ -136,6 +136,7 @@ public:
 	void end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num);
 	void search();
 	void user_command();
+	void custom_command(mouse_handler& mousehandler, const unsigned int team_num);
 	void ai_formula();
 	void clear_messages();
 #ifdef USRCMD2

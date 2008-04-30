@@ -704,6 +704,13 @@ std::set<t_translation::t_terrain> &encountered_terrains() {
 	return encountered_terrains_set;
 }
 
+std::string custom_command() {
+	return preferences::get("custom_command");
+}
+
+void set_custom_command(const std::string& command) {
+	return preferences::set("custom_command", command);
+}
 
 //! Returns a pointer to the history vector associated with given id
 //! making a new one if it doesn't exist.

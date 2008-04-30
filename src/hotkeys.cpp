@@ -139,6 +139,7 @@ const struct {
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true },
 
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
+	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom command"), false },
 	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run AI formula"), false },
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear messages"), false },
 #ifdef USRCMD2
@@ -674,6 +675,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			break;
 		case HOTKEY_USER_CMD:
 			user_command();
+			break;
+		case HOTKEY_CUSTOM_CMD:
+			custom_command();
 			break;
 //%%
 		case HOTKEY_AI_FORMULA:
