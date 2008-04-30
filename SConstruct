@@ -29,7 +29,7 @@ opts = Options('.scons-option-cache')
 
 opts.Add(PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept))
 opts.Add('cachedir', 'Directory that contains a cache of derived files.', '')
-opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/wesnoth", PathOption.PathAccept))
+opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/$datadirname", PathOption.PathAccept))
 opts.Add(BoolOption('debug', 'Set to build for debugging', False))
 opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
 opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
@@ -42,7 +42,7 @@ opts.Add(PathOption('icondir', 'sets the icons directory to a non-default locati
 opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
 opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
 opts.Add(PathOption('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathOption.PathAccept))
-opts.Add(PathOption('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/$datadirname", PathOption.PathAccept))
+opts.Add(PathOption('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathOption.PathAccept))
 opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
 opts.Add(BoolOption('nls','enable compile/install of gettext message catalogs',True))
 opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
@@ -669,10 +669,10 @@ install_env.TargetSignatures('build')
 
 # Now the actual installation productions
 
-install_data = install_env.InstallFiltered(Dir(datadir),
+install_data = install_env.InstallFiltered(Dir(install_env.subst(datadir)),
                                        map(Dir, installable_subs))
 
-install_manual = install_env.InstallFiltered(Dir(docdir),
+install_manual = install_env.InstallFiltered(Dir(install_env.subst(docdir)),
                                        Dir("doc/manual"))
 
 # The game and associated resources
