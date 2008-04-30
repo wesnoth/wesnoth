@@ -599,67 +599,20 @@ ttooltip_definition::tresolution::tresolution(const config& cfg) :
 }
 
 twindow_definition::twindow_definition(const config& cfg) : 
-	tcontrol_definition(cfg)
+	tpanel_definition(cfg)
 {
-/*WIKI (FIXME cleanup)
- * [window_definition]
- * The definition of a normal push window.
+/*WIKI 
+ * @page = GUIToolkitWML
+ * @order = 1_widget_window
  *
- *     id = (string = "")            Unique id for this gui (theme).
- *     description = (t_string = "") Unique translatable name for this gui.
+ * == Window ==
  *
- *     [resolution]                  The definitions of the window in various
- *                                   resolutions.
- * [/window_definition]
+ * The definition of a window. A window is a kind of panel see the panel for
+ * which fields exist
+ *
  */
 
 	DBG_G_P << "Parsing window " << id << '\n';
-
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
-}
-
-twindow_definition::tresolution::tresolution(const config& cfg) :
-	tresolution_definition_(cfg),
-	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
-	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
-	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
-	right_border(lexical_cast_default<unsigned>(cfg["right_border"])),
-	background(cfg.child("background")),
-	foreground(cfg.child("foreground"))
-{
-/*WIKI (FIXME cleanup)
- * [resolution]
- *     window_width = (unsigned = 0) Width of the application window.
- *     window_height = (unsigned = 0) 
- *                                   Height of the application window.
- *     min_width = (unsigned = 0)    The minimum width of the windows.
- *     min_height = (unsigned = 0)   The minimum height of the windows.
- *
- *     top_border = (unsigned = 0)   The size which isn't used for the client area.
- *     bottom_border = (unsigned = 0)The size which isn't used for the client area.
- *     left_border = (unsigned = 0)  The size which isn't used for the client area.
- *     right_border = (unsigned = 0) The size which isn't used for the client area.
- *
- *     [background]                  The things drawn on the window before
- *                                   the widgets are drawn.
- *     [foreground]                  The things drawn on the window on top
- *                                   of the widgets.
- *
- * [/resolution]
- */
-
-	DBG_G_P << "Parsing resolution " 
-		<< window_width << ", " << window_height << '\n';
-}
-
-twindow_definition::tresolution::tlayer::tlayer(const config* cfg) :
-	canvas()
-{
-	const config* draw = cfg ? cfg->child("draw") : 0;
-
-	VALIDATE(draw, _("No layer or draw section defined."));
-
-	canvas.set_cfg(*draw);
 }
 
 tresolution_definition_* get_control(const std::string& control_type, const std::string& definition)

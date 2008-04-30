@@ -53,18 +53,20 @@ namespace gui2{
 
 twindow::twindow(CVideo& video, 
 		const int x, const int y, const int w, const int h) :
-	tpanel(false, 0),
+	tpanel(false),
 	tevent_handler(),
 	video_(video),
 	status_(NEW),
 	retval_(0),
 	need_layout_(true),
 	restorer_(),
-	canvas_background_(),
-	canvas_foreground_(),
+//	canvas_background_(),
+//	canvas_foreground_(),
 	tooltip_(),
 	help_popup_()
 {
+	load_config();
+
 	set_x(x);
 	set_y(y);
 	set_width(w);
@@ -75,21 +77,6 @@ twindow::twindow(CVideo& video,
 
 	help_popup_.set_definition("default");
 	help_popup_.set_visible(false);
-
-	load_config();
-
-	// FIXME hack to load config stuff here
-	const twindow_definition::tresolution* conf = dynamic_cast<const twindow_definition::tresolution*>(config());
-	assert(conf);
-	canvas_background_ = conf->background.canvas;
-	canvas_background_.set_width(get_width());
-	canvas_background_.set_height(get_height());
-
-	canvas_foreground_ = conf->foreground.canvas;
-	canvas_foreground_.set_width(get_width());
-	canvas_foreground_.set_height(get_height());
-	// End of hack
-
 }
 
 int twindow::show(const bool restore, void* /*flip_function*/)
@@ -126,8 +113,8 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 
 				screen = make_neutral_surface(restorer_);
 
-				canvas_background_.draw();
-				blit_surface(canvas_background_.surf(), 0, screen, 0);
+				canvas(0).draw();
+				blit_surface(canvas(0).surf(), 0, screen, 0);
 			}
 #if 0			
 			// Darkening for debugging redraw.
@@ -145,8 +132,8 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 				itor->draw(screen);
 			}
 			if(draw_foreground) {
-				canvas_foreground_.draw();
-				blit_surface(canvas_foreground_.surf(), 0, screen, 0);
+				canvas(1).draw();
+				blit_surface(canvas(1).surf(), 0, screen, 0);
 			}
 			if(tooltip_.dirty()) {
 				tooltip_.draw(screen);
@@ -186,26 +173,6 @@ void twindow::layout(const SDL_Rect position)
 		<< ',' << position.h << ".\n";
 
 	set_client_size(position); 
-}
-
-void twindow::set_width(const unsigned width)
-{
-	canvas_background_.set_width(width);
-	canvas_foreground_.set_width(width);
-	need_layout_ = true;
-
-	// inherited
-	tcontrol::set_width(width);
-}
-
-void twindow::set_height(const unsigned height)
-{
-	canvas_background_.set_height(height);
-	canvas_foreground_.set_height(height);
-	need_layout_ = true;
-
-	// inherited
-	tcontrol::set_height(height);
 }
 
 void twindow::flip()

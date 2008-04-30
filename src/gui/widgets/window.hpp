@@ -68,10 +68,6 @@ public:
 	void set_retval(const int retval, const bool close_window = true)
 		{ retval_ = retval; if(close_window) close(); }
 
-	void set_width(const unsigned width);
-
-	void set_height(const unsigned height);
-
 	//! Inherited from tevent_handler.
 	twindow& get_window() { return *this; }
 	const twindow& get_window() const { return *this; }
@@ -122,10 +118,6 @@ private:
 	bool need_layout_;
 
 	surface restorer_;
-	
-	tcanvas
-		canvas_background_,
-		canvas_foreground_;
 
 	//! Inherited from tevent_handler.
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);

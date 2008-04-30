@@ -176,35 +176,9 @@ struct ttooltip_definition : public tcontrol_definition
 	};
 };
 
-struct twindow_definition : public tcontrol_definition
+struct twindow_definition : public tpanel_definition
 {
-
 	twindow_definition(const config& cfg);
-
-	struct tresolution : public tresolution_definition_
-	{
-		tresolution(const config& cfg);
-
-		unsigned top_border;
-		unsigned bottom_border;
-
-		unsigned left_border;
-		unsigned right_border;
-
-		struct tlayer
-		{
-		private:
-			tlayer();
-
-		public:
-			tlayer(const config* cfg);
-
-			tcanvas canvas;
-		};
-
-		tlayer background;
-		tlayer foreground;
-	};
 };
 
 struct tgui_definition
