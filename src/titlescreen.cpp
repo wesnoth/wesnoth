@@ -41,6 +41,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include <algorithm>
+#include <vector>
 
 #include "SDL_ttf.h"
 
@@ -304,17 +305,25 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		int logo_x = game_config::title_logo_x * screen.w() / 1024,
 		    logo_y = game_config::title_logo_y * screen.h() / 768;
 
-		surface const title_surface(scale_surface(
-			image::get_image(game_config::game_title),
-			screen.w(), screen.h()));
+		/*Select a random game_title*/
+		std::vector<std::string> game_title_list =
+		    utils::split(game_config::game_title, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 
-		
-		if (title_surface.null()) {
-			ERR_DP << "Could not find title image\n";
+		if(game_title_list.empty()) {
+		    ERR_CONFIG << "No title image defined\n";
 		} else {
-			screen.video().blit_surface(0, 0, title_surface);
-			update_rect(screen_area());
-			LOG_DP << "displayed title image\n";
+		    surface const title_surface(scale_surface(
+			    image::get_image(game_title_list[rand()%game_title_list.size()]),
+			    screen.w(), screen.h()));
+		
+		
+		    if (title_surface.null()) {
+				ERR_DP << "Could not find title image\n";
+		    } else {
+				screen.video().blit_surface(0, 0, title_surface);
+				update_rect(screen_area());
+				LOG_DP << "displayed title image\n";
+		    }
 		}
 
 		fade_failed = !fade_logo(screen, logo_x, logo_y);
