@@ -85,11 +85,11 @@ public:
 		const unsigned col, const unsigned flags, const unsigned border_size)
 		{ grid_.add_child(widget, row, col, flags, border_size); }
 	
-	void set_row_scaling(const unsigned row, const unsigned scale) 
-		{ grid_.set_row_scaling(row, scale); }
+	void set_row_grow_factor(const unsigned row, const unsigned factor) 
+		{ grid_.set_row_grow_factor(row, factor); }
 
-	void set_col_scaling(const unsigned col, const unsigned scale)
-		{ grid_.set_col_scaling(col, scale); }
+	void set_col_grow_factor(const unsigned col, const unsigned factor)
+		{ grid_.set_col_grow_factor(col, factor); }
 
 private:
 	tgrid grid_;

@@ -55,8 +55,8 @@ tgrid::tgrid(const unsigned rows, const unsigned cols,
 	minimum_col_width_(),
 	row_height_(),
 	col_width_(),
-	row_scaling_(),
-	col_scaling_(),
+	row_grow_factor_(),
+	col_grow_factor_(),
 	children_(rows * cols)
 {
 }
@@ -133,8 +133,8 @@ void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
 
 	rows_ = rows;
 	cols_ = cols;
-	row_scaling_.resize(rows);
-	col_scaling_.resize(cols);
+	row_grow_factor_.resize(rows);
+	col_grow_factor_.resize(cols);
 	children_.resize(rows_ * cols_);
 	clear_cache();
 }
@@ -231,8 +231,8 @@ void tgrid::set_size(const SDL_Rect& rect)
 
 	assert(row_height_.size() == rows_);
 	assert(col_width_.size() == cols_);
-	assert(row_scaling_.size() == rows_);
-	assert(col_scaling_.size() == cols_);
+	assert(row_grow_factor_.size() == rows_);
+	assert(col_grow_factor_.size() == cols_);
 	if(best_size == size) {
 		row_height_ = best_row_height_;
 		col_width_ = best_col_width_;
@@ -248,12 +248,12 @@ void tgrid::set_size(const SDL_Rect& rect)
 		// expand it.
 		if(size.x > best_size.x) {
 			const unsigned w = size.x - best_size.x;
-			unsigned w_size = std::accumulate(col_scaling_.begin(), col_scaling_.end(), 0);
+			unsigned w_size = std::accumulate(col_grow_factor_.begin(), col_grow_factor_.end(), 0);
 			DBG_G << "Grid: extra width " << w << " will be divided amount " << w_size << " units in " << cols_ << " columns.\n";
 
 			if(w_size == 0) {
 				// If all sizes are 0 reset them to 1
-				foreach(unsigned& val, col_scaling_) {
+				foreach(unsigned& val, col_grow_factor_) {
 					val = 1;
 				}
 				w_size = cols_;
@@ -262,21 +262,21 @@ void tgrid::set_size(const SDL_Rect& rect)
 			// but we ignore that part for now.
 			const unsigned w_normal = w / w_size;
 			for(unsigned i = 0; i < cols_; ++i) {
-				col_width_[i] += w_normal * col_scaling_[i];
-				DBG_G << "Grid: column " << i << " with scale factor " 
-					<< col_scaling_[i] << " set width to " << col_width_[i] << ".\n";
+				col_width_[i] += w_normal * col_grow_factor_[i];
+				DBG_G << "Grid: column " << i << " with grow factor " 
+					<< col_grow_factor_[i] << " set width to " << col_width_[i] << ".\n";
 			}
 
 		}
 
 		if(size.y > best_size.y) {
 			const unsigned h = size.y - best_size.y;
-			unsigned h_size = std::accumulate(row_scaling_.begin(), row_scaling_.end(), 0);
+			unsigned h_size = std::accumulate(row_grow_factor_.begin(), row_grow_factor_.end(), 0);
 			DBG_G << "Grid: extra height " << h << " will be divided amount " << h_size << " units in " << rows_ << " rows.\n";
 
 			if(h_size == 0) {
 				// If all sizes are 0 reset them to 1
-				foreach(unsigned& val, row_scaling_) {
+				foreach(unsigned& val, row_grow_factor_) {
 					val = 1;
 				}
 				h_size = rows_;
@@ -285,9 +285,9 @@ void tgrid::set_size(const SDL_Rect& rect)
 			// but we ignore that part for now.
 			const unsigned h_normal = h / h_size;
 			for(unsigned i = 0; i < rows_; ++i) {
-				row_height_[i] += h_normal * row_scaling_[i];
-				DBG_G << "Grid: row " << i  << " with scale factor "
-					<< row_scaling_[i] << " set height to " << row_height_[i] << ".\n";
+				row_height_[i] += h_normal * row_grow_factor_[i];
+				DBG_G << "Grid: row " << i  << " with grow factor "
+					<< row_grow_factor_[i] << " set height to " << row_height_[i] << ".\n";
 			}
 		}
 

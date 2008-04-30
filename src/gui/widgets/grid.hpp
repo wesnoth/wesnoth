@@ -74,11 +74,11 @@ public:
 
 	void set_rows_cols(const unsigned rows, const unsigned cols);
 
-	void set_row_scaling(const unsigned row, const unsigned scale)
-		{ row_scaling_[row] = scale; set_dirty(); } //FIXME add assert.
+	void set_row_grow_factor(const unsigned row, const unsigned factor)
+		{ row_grow_factor_[row] = factor; set_dirty(); } //FIXME add assert.
 
-	void set_col_scaling(const unsigned col, const unsigned scale)
-		{ col_scaling_[col] = scale; set_dirty(); } //FIXME add assert.
+	void set_col_grow_factor(const unsigned col, const unsigned factor)
+		{ col_grow_factor_[col] = factor; set_dirty(); } //FIXME add assert.
 
 	void remove_child(const unsigned row, const unsigned col);
 	void remove_child(const std::string& id, const bool find_all = false);
@@ -225,8 +225,8 @@ private:
 	std::vector<unsigned> col_width_;
 
 	//! The resize factors for rows / cols.
-	std::vector<unsigned> row_scaling_;
-	std::vector<unsigned> col_scaling_;
+	std::vector<unsigned> row_grow_factor_;
+	std::vector<unsigned> col_grow_factor_;
 
 	//! Contains all cells.
 	std::vector<tchild> children_;

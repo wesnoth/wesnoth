@@ -148,9 +148,9 @@ public:
 	unsigned rows;
 	unsigned cols;
 
-	//! The scale factor for the rows / columns.
-	std::vector<unsigned> row_scale;
-	std::vector<unsigned> col_scale;
+	//! The grow factor for the rows / columns.
+	std::vector<unsigned> row_grow_factor;
+	std::vector<unsigned> col_grow_factor;
 
 	//! The flags per grid cell.
 	std::vector<unsigned> flags;
@@ -185,11 +185,11 @@ twindow build(CVideo& video, const std::string& type)
 	window.set_rows_cols(rows, cols);
 
 	for(unsigned x = 0; x < rows; ++x) {
-		window.set_row_scaling(x, definition->grid->row_scale[x]);
+		window.set_row_grow_factor(x, definition->grid->row_grow_factor[x]);
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
-				window.set_col_scaling(y, definition->grid->col_scale[y]);
+				window.set_col_grow_factor(y, definition->grid->col_grow_factor[y]);
 			}
 
 			twidget* widget = definition->grid->widgets[x * cols + y]->build();
@@ -344,8 +344,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 	tbuilder_widget(cfg),
 	rows(0),
 	cols(0),
-	row_scale(),
-	col_scale(),
+	row_grow_factor(),
+	col_grow_factor(),
 	flags(),
 	border_size(),
 	widgets()
@@ -358,7 +358,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 
 		unsigned col = 0;
 
-		row_scale.push_back(lexical_cast_default<unsigned>((**row_itor)["scale"]));
+		row_grow_factor.push_back(lexical_cast_default<unsigned>((**row_itor)["grow_factor"]));
 
 		const config::child_list& col_cfgs = (**row_itor).get_children("column");
 		for(std::vector<config*>::const_iterator col_itor = col_cfgs.begin();
@@ -367,7 +367,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 			flags.push_back(read_flags(**col_itor));
 			border_size.push_back(lexical_cast_default<unsigned>((**col_itor)["border_size"]));
 			if(rows == 0) {
-				col_scale.push_back(lexical_cast_default<unsigned>((**col_itor)["scale"]));
+				col_grow_factor.push_back(lexical_cast_default<unsigned>((**col_itor)["grow_factor"]));
 			}
 
 			if((**col_itor).child("button")) {
@@ -495,11 +495,11 @@ twidget* tbuilder_panel::build() const
 	panel->set_rows_cols(rows, cols);
 
 	for(unsigned x = 0; x < rows; ++x) {
-		panel->set_row_scaling(x, grid->row_scale[x]);
+		panel->set_row_grow_factor(x, grid->row_grow_factor[x]);
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
-				panel->set_col_scaling(y, grid->col_scale[y]);
+				panel->set_col_grow_factor(y, grid->col_grow_factor[y]);
 			}
 
 			twidget* widget = grid->widgets[x * cols + y]->build();
@@ -553,11 +553,11 @@ twidget* tbuilder_grid::build() const
 		<< cols << " columns.\n";
 
 	for(unsigned x = 0; x < rows; ++x) {
-		grid->set_row_scaling(x, row_scale[x]);
+		grid->set_row_grow_factor(x, row_grow_factor[x]);
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
-				grid->set_col_scaling(y, col_scale[y]);
+				grid->set_col_grow_factor(y, col_grow_factor[y]);
 			}
 
 			DBG_G << "Window builder: adding child at " << x << ',' << y << ".\n";
