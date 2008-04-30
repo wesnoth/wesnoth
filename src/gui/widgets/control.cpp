@@ -69,28 +69,6 @@ void tcontrol::help_key(tevent_handler& event)
 	event.show_help_popup(help_message_, 0); //FIXME timout should be a parameter
 }
 
-void tcontrol::set_width(const unsigned width)
-{ 
-	// resize canvasses
-	foreach(tcanvas& canvas, canvas_) {
-		canvas.set_width(width);
-	}
-
-	// inherited
-	twidget::set_width(width);
-}
-
-void tcontrol::set_height(const unsigned height) 
-{ 
-	// resize canvasses
-	foreach(tcanvas& canvas, canvas_) {
-		canvas.set_height(height);
-	}
-
-	// inherited
-	twidget::set_height(height);
-}
-
 void tcontrol::set_size(const SDL_Rect& rect)
 {
 	// resize canvasses

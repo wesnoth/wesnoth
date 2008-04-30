@@ -150,20 +150,9 @@ public:
 	// virtual bool does_hit(const int x, const int y) const { return false; }
 
 
-//	virtual void handle_event(const SDL_Event& event) { std::cerr << "x\n";}
-	// moving an object doesn't dirty it, it should dirty the parent container...
-	virtual void set_x(const int x) { x_ = x; }
 	int get_x() const { return x_; }
-
-	virtual void set_y(const int y) { y_ = y; }
 	int get_y() const { return y_; }
-
-	// resizing an object dirties it
-	// note most items should not be resized manually but with a sizer
-	virtual void set_width(const unsigned width) { w_ = width; set_dirty(); }
 	unsigned get_width() const { return w_; }
-
-	virtual void set_height(const unsigned height) { h_ = height; set_dirty(); }
 	unsigned get_height() const { return h_; }
 
 	//! Is the widget dirty?

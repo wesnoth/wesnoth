@@ -60,17 +60,12 @@ twindow::twindow(CVideo& video,
 	retval_(0),
 	need_layout_(true),
 	restorer_(),
-//	canvas_background_(),
-//	canvas_foreground_(),
 	tooltip_(),
 	help_popup_()
 {
 	load_config();
 
-	set_x(x);
-	set_y(y);
-	set_width(w);
-	set_height(h);
+	set_size(::create_rect(x, y, w, h));
 
 	tooltip_.set_definition("default");
 	tooltip_.set_visible(false);

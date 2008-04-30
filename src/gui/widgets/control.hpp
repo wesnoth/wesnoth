@@ -39,12 +39,6 @@ public:
 	void help_key(tevent_handler& event);
 
 	//! Inherited from twidget.
-	void set_width(const unsigned width);
-
-	//! Inherited from twidget.
-	void set_height(const unsigned height);
-
-	//! Inherited from twidget.
 	void set_size(const SDL_Rect& rect);
 
 	void set_visible(const bool visible = true) 

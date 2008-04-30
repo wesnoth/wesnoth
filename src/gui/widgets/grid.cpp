@@ -218,6 +218,10 @@ void tgrid::set_size(const SDL_Rect& rect)
 
 	twidget::set_size(rect);
 
+	if(!rows_ || !cols_) {
+		return;
+	}
+
 	const tpoint orig(rect.x, rect.y);
 	const tpoint size(rect.w, rect.h);
 
