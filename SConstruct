@@ -48,7 +48,7 @@ opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOp
 opts.Add(PathOption('destdir', 'prefix to add to all installation paths.', "", PathOption.PathAccept))
 opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
 opts.Add(BoolOption('profile', 'Set to build for profiling', False))
-#opts.Add('program_suffix', 'suffix to append to names of installed programs',"")
+opts.Add('program_suffix', 'suffix to append to names of installed programs',"")
 opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
 opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
 opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
@@ -644,6 +644,13 @@ def InstallFilteredHook(target, source, env):
     return None
 env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
 
+def InstallWithSuffix(env, target, source):
+    return env.InstallAs(os.path.join(target, source[0].name + env["program_suffix"]), source)
+
+#env.AddMethod(InstallWithSuffix)
+from SCons.Script.SConscript import SConsEnvironment
+SConsEnvironment.InstallWithSuffix = InstallWithSuffix
+
 def InstallLocalizedManPage(alias, page, env):
     actions = []
     for (sourcedir, targetdir) in localized_man_dirs.items():
@@ -668,7 +675,7 @@ install_manual = install_env.InstallFiltered(Dir(docdir),
 
 # The game and associated resources
 install_env.Alias("install-wesnoth", [
-    install_env.Install(bindir, wesnoth),
+    install_env.InstallWithSuffix(bindir, wesnoth),
     install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
     install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
@@ -687,7 +694,7 @@ InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
 # The editor and associated resources
 install_env.Alias("install-wesnoth_editor", [
-    install_env.Install(bindir, wesnoth_editor),
+    install_env.InstallWithSuffix(bindir, wesnoth_editor),
     install_env.Install(os.path.join(mandir, "man6"),
                                 "doc/man/wesnoth_editor.6"),
     install_data, install_manual])
@@ -714,7 +721,7 @@ install_env.Alias("install-pytools", [
     ])
 
 # Wesnoth MP server install
-install_wesnothd = install_env.Install(bindir, wesnothd)
+install_wesnothd = install_env.InstallWithSuffix(bindir, wesnothd)
 install_env.Alias("install-wesnothd", [
                                 install_wesnothd,
                                 install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6")
@@ -734,11 +741,11 @@ if not access(fifodir, F_OK):
         ])
 
 # Wesnoth campaign server
-install_env.Alias("install-campaignd", Install(bindir, campaignd))
+install_env.Alias("install-campaignd", install_env.InstallWithSuffix(bindir, campaignd))
 
 # And the artists' tools
-install_env.Alias("install-cutter", Install(bindir, cutter))
-install_env.Alias("install-exploder", Install(bindir, exploder))
+install_env.Alias("install-cutter", install_env.InstallWithSuffix(bindir, cutter))
+install_env.Alias("install-exploder", install_env.InstallWithSuffix(bindir, exploder))
 
 # Compute things for default install based on which targets have been created.
 install_env.Alias('install', [])
