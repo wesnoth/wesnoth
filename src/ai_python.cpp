@@ -51,6 +51,7 @@
 #include "menu_events.hpp"
 #include "game_events.hpp"
 #include "game_config.hpp"
+#include "settings.hpp"
 
 #include <cassert>
 #include <fstream>
@@ -898,6 +899,17 @@ static PyObject* wrapper_getmap_is_castle( wesnoth_gamemap* map, PyObject* args 
 	return Py_BuildValue(INTVALUE, map->map_->is_castle(*location->location_) ? 1 : 0);
 }
 
+static PyObject* wrapper_getmap_is_border( wesnoth_gamemap* map, PyObject* args )
+{
+	wesnoth_location* location;
+	bool on_board, on_board_without_borders;
+	if ( !PyArg_ParseTuple( args, OBVALUE, &wesnoth_location_type, &location ) )
+		return NULL;
+	on_board = map->map_->on_board(*location->location_, true);
+	on_board_without_borders = map->map_->on_board(*location->location_, false);
+	return Py_BuildValue(INTVALUE, on_board && !on_board_without_borders ? 1 : 0);
+}
+
 static PyMethodDef gamemap_methods[] = {
 	MDEF("is_village", wrapper_getmap_is_village,
 		"Parameters: location\n"
@@ -913,6 +925,10 @@ static PyMethodDef gamemap_methods[] = {
 		"Returns: result\n"
 		"Returns True if the given location is a castle tile (where units are "
 		"recruited to), False otherwise.")
+	MDEF("is_border", wrapper_getmap_is_border,
+		"Parameters: location\n"
+		"Returns: result\n"
+		"Returns True if the given location is a border tile, False otherwise.")
 	{ NULL, NULL, 0, NULL }
 };
 
@@ -1210,6 +1226,11 @@ static PyObject* wrapper_gamestatus_previous_lawful_bonus(wesnoth_gamestatus* st
 	return Py_BuildValue(INTVALUE, status->status_->get_previous_time_of_day().lawful_bonus);
 }
 
+static PyObject* wrapper_gamestatus_gold_per_village(wesnoth_gamestatus* status, void* /*closure*/)
+{
+	return Py_BuildValue(INTVALUE, settings::get_village_gold(""));
+}
+
 static PyGetSetDef gamestatus_getseters[] = {
     GSDEF("turn", wrapper_gamestatus_turn,	"The current turn.")
     GSDEF("number_of_turns", wrapper_gamestatus_number_of_turns,
@@ -1220,6 +1241,8 @@ static PyGetSetDef gamestatus_getseters[] = {
         "units (alignment = 2). Neutral units (alignment = 1) are not affected.")
     GSDEF("previous_lawful_bonus", wrapper_gamestatus_previous_lawful_bonus,
 		"The value of lawful_bonus in the previous turn.")
+	GSDEF("gold_per_village", wrapper_gamestatus_gold_per_village,
+		"The gold a village generates each turn.")
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
