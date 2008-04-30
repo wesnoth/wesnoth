@@ -2904,7 +2904,11 @@ private:
 
 	void menu_handler::custom_command(mouse_handler& mousehandler, const unsigned int team_num)
 	{
-		do_command(preferences::custom_command(), team_num, mousehandler);
+		std::vector<std::string> commands = utils::split(preferences::custom_command(), ';');
+		std::vector<std::string>::iterator c = commands.begin();
+		for (; c != commands.end() ; ++c) {
+			do_command(*c, team_num, mousehandler);
+		}
 	}
 
 	void menu_handler::ai_formula()
