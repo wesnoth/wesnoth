@@ -28,43 +28,28 @@ class tgrid : public virtual twidget
 
 public:
 	// ***** ***** FLAGS ***** *****
-//	static const unsigned VERTICAL_RESIZE_GROW           = 1 << 1;
-	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT   = 1 << 2;
+	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT   = 1 << 0;
 
-	static const unsigned VERTICAL_ALIGN_TOP             = 3 << 4;   
-	static const unsigned VERTICAL_ALIGN_CENTER          = 2 << 4;   
-	static const unsigned VERTICAL_ALIGN_BOTTOM          = 1 << 4;   
-//	static const unsigned VERTICAL_ALIGN_LANGUAGE        = 0 << 4;   
+	static const unsigned VERTICAL_ALIGN_TOP             = 3 << 1;   
+	static const unsigned VERTICAL_ALIGN_CENTER          = 2 << 1;   
+	static const unsigned VERTICAL_ALIGN_BOTTOM          = 1 << 1;   
 
+	static const unsigned HORIZONTAL_GROW_SEND_TO_CLIENT = 1 << 3;
 
-//	static const unsigned HORIZONTAL_RESIZE_GROW         = 1 << 16;
-	static const unsigned HORIZONTAL_GROW_SEND_TO_CLIENT = 1 << 17;
+	static const unsigned HORIZONTAL_ALIGN_LEFT          = 3 << 4;   
+	static const unsigned HORIZONTAL_ALIGN_CENTER        = 2 << 4;   
+	static const unsigned HORIZONTAL_ALIGN_RIGHT         = 1 << 4;   
 
-	static const unsigned HORIZONTAL_ALIGN_LEFT          = 3 << 18;   
-	static const unsigned HORIZONTAL_ALIGN_CENTER        = 2 << 18;   
-	static const unsigned HORIZONTAL_ALIGN_RIGHT         = 1 << 18;   
-//	static const unsigned HORIZONTAL_ALIGN_LANGUAGE      = 0 << 18;   
-
-
-	static const unsigned BORDER_TOP                     = 1 << 24;
-	static const unsigned BORDER_BOTTOM                  = 1 << 25;
-	static const unsigned BORDER_LEFT                    = 1 << 26;
-	static const unsigned BORDER_RIGHT                   = 1 << 27;
+	static const unsigned BORDER_TOP                     = 1 << 6;
+	static const unsigned BORDER_BOTTOM                  = 1 << 7;
+	static const unsigned BORDER_LEFT                    = 1 << 8;
+	static const unsigned BORDER_RIGHT                   = 1 << 9;
 
 	
-	tgrid(const unsigned rows, const unsigned cols, 
-		const unsigned default_flags, const unsigned default_border_size);
+	tgrid(const unsigned rows = 0, const unsigned cols = 0); 
 
 	virtual ~tgrid();
 
-#if 0
-	// FIXME if these are really not needed remove them.
-	void add_child(twidget* widget, const unsigned row, const unsigned col, const unsigned flags)
-		{ add_child(widget, row, col, flags, default_border_size_); }
-	 
-	void add_child(twidget* widget, const unsigned row, const unsigned col)
-		{ add_child(widget, row, col, default_flags_, default_border_size_); }
-#endif
 	void add_child(twidget* widget, const unsigned row, 
 		const unsigned col, const unsigned flags, const unsigned border_size);
 	
@@ -213,12 +198,6 @@ private:
 	//! The number of rows / columns.
 	unsigned rows_;
 	unsigned cols_;
-
-	//! Default flags for a grid cell.
-	const unsigned default_flags_;
-
-	//! Default border size for a grid cell.
-	const unsigned default_border_size_;
 
 	//! The optimal row heights / col widths.
 	mutable std::vector<unsigned> best_row_height_; //FIXME implement

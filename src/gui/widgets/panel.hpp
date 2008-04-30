@@ -31,7 +31,7 @@ public:
 	//! @param canvas_count  The canvas count for tcontrol.
 	tpanel(const bool load_conf = true, const unsigned canvas_count = 2) : 
 		tcontrol(canvas_count),
-		grid_(0, 0, 0, 0)
+		grid_()
 	{
 		if(load_conf) load_config();
 		grid_.set_parent(this);
@@ -73,14 +73,7 @@ public:
 
 	void set_rows_cols(const unsigned rows, const unsigned cols)
 		{ grid_.set_rows_cols(rows, cols); }
-#if 0
-	// FIXME if these are really not needed remove them.
-	void add_child(twidget* widget, const unsigned row, const unsigned col)
-		{ grid_.add_child(widget, row, col); }
 
-	void add_child(twidget* widget, const unsigned row, const unsigned col, const unsigned flags)
-		{ grid_.add_child(widget, row, col, flags); }
-#endif
 	void add_child(twidget* widget, const unsigned row, 
 		const unsigned col, const unsigned flags, const unsigned border_size)
 		{ grid_.add_child(widget, row, col, flags, border_size); }

@@ -43,12 +43,9 @@
 
 namespace gui2 {
 
-tgrid::tgrid(const unsigned rows, const unsigned cols, 
-		const unsigned default_flags, const unsigned default_border_size) :
+tgrid::tgrid(const unsigned rows, const unsigned cols) :
 	rows_(rows),
 	cols_(cols),
-	default_flags_(default_flags),
-	default_border_size_(default_border_size),
 	best_row_height_(),
 	best_col_width_(),
 	minimum_row_height_(),

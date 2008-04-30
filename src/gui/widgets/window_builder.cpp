@@ -543,7 +543,7 @@ twidget* tbuilder_text_box::build() const
 
 twidget* tbuilder_grid::build() const
 {
-	tgrid *grid = new tgrid(0, 0, 0, 0);
+	tgrid *grid = new tgrid();
 
 	grid->set_rows_cols(rows, cols);
 
