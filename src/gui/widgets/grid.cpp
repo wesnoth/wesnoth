@@ -534,3 +534,206 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 } // namespace gui2
 
 
+/*WIKI
+ * @page = GUILayout
+ * 
+ * = Abstract =
+ *
+ * In the widget library the placement and sizes of elements is determined by
+ * a grid. Therefore most widgets have no fixed size.
+ *
+ *
+ * = Theory =
+ *
+ * We have two examples for the addon dialog, the first example the lower 
+ * buttons are in one grid, that means if the remove button gets wider 
+ * (due to translations) the connect button (4.1 - 2.2) will be aligned 
+ * to the left of the remove button. In the second example the connect
+ * button will be partial underneath the remove button.
+ *
+ * A grid exists of x rows and y columns for all rows the number of columns
+ * needs to be the same, there is no column (nor row) span. If spanning is
+ * required place a nested grid to do so. In the examples every row has 1 column
+ * but rows 3, 4 (and in the second 5) have a nested grid to add more elements
+ * per row. 
+ *
+ * In the grid every cell needs to have a widget, if no widget is wanted place
+ * the special widget ''spacer''. This is a non-visible item which normally
+ * shouldn't have a size. It is possible to give a spacer a size as well but
+ * that is discussed elsewhere.
+ *
+ * Every row and column has a ''grow_factor'', since all columns in a grid are
+ * aligned only the columns in the first row need to define their grow factor.
+ * The grow factor is used to determine with the extra size available in a
+ * dialog. The algorithm determines the extra size work like this:
+ *
+ * * determine the extra size
+ * * determine the sum of the grow factors
+ * * if this sum is 0 set the grow factor for every item to 1 and sum to sum of items.
+ * * divide the extra size with the sum of grow factors
+ * * for every item multiply the grow factor with the division value
+ * 
+ * eg
+ *  extra size 100
+ *  grow factors 1, 1, 2, 1
+ *  sum 5
+ *  division 100 / 5 = 20
+ *  extra sizes 20, 20, 40, 20
+ *
+ * Since we force the factors to 1 if all zero it's not possible to have non
+ * growing cells. This can be solved by adding an extra cell with a spacer and a
+ * grow factor of 1. This is used for the buttons in the examples.
+ * 
+ * Every cell has a ''border_size'' and ''border'' the ''border_size'' is the
+ * number of pixels in the cell which aren't available for the widget. This is
+ * used to make sure the items in different cells aren't put side to side. With
+ * ''border'' it can be determined which sides get the border. So a border is
+ * either 0 or ''border_size''.
+ *
+ * If the widget doesn't grow when there's more space available the alignment
+ * determines where in the cell the widget is placed.
+ *
+ * == Examples ==
+ *
+ *  |---------------------------------------|
+ *  | 1.1                                   |
+ *  |---------------------------------------|
+ *  | 2.1                                   |
+ *  |---------------------------------------|
+ *  | |-----------------------------------| |
+ *  | | 3.1 - 1.1          | 3.1 - 1.2    | |
+ *  | |-----------------------------------| |
+ *  |---------------------------------------|
+ *  | |-----------------------------------| |
+ *  | | 4.1 - 1.1 | 4.1 - 1.2 | 4.1 - 1.3 | |
+ *  | |-----------------------------------| |
+ *  | | 4.1 - 2.1 | 4.1 - 2.2 | 4.1 - 2.3 | |
+ *  | |-----------------------------------| |
+ *  |---------------------------------------| 
+ *
+ *
+ *  1.1       label : title 
+ *  2.1       label : description 
+ *  3.1 - 1.1 label : server
+ *  3.1 - 1.2 text box : server to connect to
+ *  4.1 - 1.1 spacer
+ *  4.1 - 1.2 spacer
+ *  4.1 - 1.3 button : remove addon
+ *  4.2 - 2.1 spacer
+ *  4.2 - 2.2 button : connect
+ *  4.2 - 2.3 button : cancel
+ *
+ *
+ *  |---------------------------------------|
+ *  | 1.1                                   |
+ *  |---------------------------------------|
+ *  | 2.1                                   |
+ *  |---------------------------------------|
+ *  | |-----------------------------------| |
+ *  | | 3.1 - 1.1          | 3.1 - 1.2    | |
+ *  | |-----------------------------------| |
+ *  |---------------------------------------|
+ *  | |-----------------------------------| |
+ *  | | 4.1 - 1.1         | 4.1 - 1.2     | |
+ *  | |-----------------------------------| |
+ *  |---------------------------------------|
+ *  | |-----------------------------------| |
+ *  | | 5.1 - 1.1 | 5.1 - 1.2 | 5.1 - 2.3 | |
+ *  | |-----------------------------------| |
+ *  |---------------------------------------| 
+ *
+ *
+ *  1.1       label : title 
+ *  2.1       label : description 
+ *  3.1 - 1.1 label : server
+ *  3.1 - 1.2 text box : server to connect to
+ *  4.1 - 1.1 spacer
+ *  4.1 - 1.2 button : remove addon
+ *  5.2 - 1.1 spacer
+ *  5.2 - 1.2 button : connect
+ *  5.2 - 1.3 button : cancel
+ *
+ *  = Praxis =
+ *
+ * This is the code needed to create the skeleton for the structure the extra
+ * flags are ommitted. 
+ *
+ *  	[grid]
+ *  		[row]
+ *  			[column]
+ *  				[label] 
+ *  					# 1.1
+ *  				[/label]
+ *  			[/column]
+ *  		[/row]
+ *  		[row]
+ *  			[column]
+ *  				[label]
+ *  					# 2.1
+ *  				[/label]
+ *  			[/column]
+ *  		[/row]
+ *  		[row]
+ *  			[column]
+ *  				[grid]
+ *  					[row]
+ *  						[column]
+ *  							[label]
+ *  								# 3.1 - 1.1
+ *  							[/label]
+ *  						[/column]
+ *  						[column]
+ *  							[text_box]
+ *  								# 3.1 - 1.2
+ *  							[/text_box]
+ *  						[/column]
+ *  					[/row]
+ *  				[/grid]
+ *  			[/column]
+ *  		[/row]
+ *  		[row]
+ *  			[column]
+ *  				[grid]
+ *  					[row]
+ *  						[column]
+ *  							[spacer]
+ *  								# 4.1 - 1.1
+ *  							[/spacer]
+ *  						[/column]
+ *  						[column]
+ *  							[spacer]
+ *  								# 4.1 - 1.2
+ *  							[/spacer]
+ *  						[/column]
+ *  						[column]
+ *  							[button]
+ *  								# 4.1 - 1.3
+ *  							[/button]
+ *  						[/column]
+ *  					[/row]
+ *  					[row]
+ *  						[column]
+ *  							[spacer]
+ *  								# 4.1 - 2.1
+ *  							[/spacer]
+ *  						[/column]
+ *  						[column]
+ *  							[button]
+ *  								# 4.1 - 2.2
+ *  							[/button]
+ *  						[/column]
+ *  						[column]
+ *  							[button]
+ *  								# 4.1 - 2.3
+ *  							[/button]
+ *  						[/column]
+ *  					[/row]
+ *  				[/grid]
+ *  			[/column]
+ *  		[/row]
+ *  	[/grid]
+ *
+ *
+ * [[Category:WML Reference]]
+ * [[Category:Generated]]
+ */
