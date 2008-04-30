@@ -38,6 +38,46 @@
 
 namespace gui2 {
 
+void tpanel::draw(surface& surface)
+{
+	// Need to preserve the state and inherited draw clear the flag.
+	const bool is_dirty = dirty();
+	// background.
+	if(is_dirty) {
+		tcontrol::draw(surface);
+	}
+
+	// children
+	grid_.draw(surface);
+
+	// foreground
+	if(is_dirty) {
+		SDL_Rect rect = get_rect();
+    	canvas(1).draw(true);
+	    blit_surface(canvas(1).surf(), 0, surface, &rect);
+	}
+}
+
+SDL_Rect tpanel::get_client_rect() const
+{
+	const tpanel_definition::tresolution* conf = dynamic_cast<const tpanel_definition::tresolution*>(config());
+	assert(conf);
+
+	SDL_Rect result = get_rect();
+	result.x += conf->left_border;
+	result.y += conf->top_border;
+	result.w -= conf->left_border + conf->right_border;
+	result.h -= conf->top_border + conf->bottom_border;
+
+	return result;
+}
+
+void tpanel::set_size(const SDL_Rect& rect) 
+{
+	tcontrol::set_size(rect);
+
+	grid_.set_size(get_client_rect());
+}
 
 } // namespace gui2
 

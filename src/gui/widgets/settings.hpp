@@ -123,6 +123,23 @@ struct tlabel_definition : public tcontrol_definition
 	};
 };
 
+struct tpanel_definition : public tcontrol_definition
+{
+
+	tpanel_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+
+		unsigned top_border;
+		unsigned bottom_border;
+
+		unsigned left_border;
+		unsigned right_border;
+	};
+};
+
 struct tspacer_definition : public tcontrol_definition
 {
 

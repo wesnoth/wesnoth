@@ -53,7 +53,7 @@ namespace gui2{
 
 twindow::twindow(CVideo& video, 
 		const int x, const int y, const int w, const int h) :
-	tpanel(),
+	tpanel(false, 0),
 	tevent_handler(),
 	video_(video),
 	status_(NEW),
@@ -122,6 +122,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 			if(need_layout_) {
 				DBG_G << "Window: layout client area.\n";
 				layout(get_client_rect());
+				need_layout_ = false;
 
 				screen = make_neutral_surface(restorer_);
 

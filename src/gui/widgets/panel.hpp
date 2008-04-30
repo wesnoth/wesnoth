@@ -24,11 +24,16 @@ class tpanel : public tcontrol
 {
 
 public:
-	tpanel() : 
-		tcontrol(0),
+	//! Constructor.
+	//!
+	//! @param load_conf     When a class inherits from a panel that
+	//!                      config should be loaded, so set this to false.
+	//! @param canvas_count  The canvas count for tcontrol.
+	tpanel(const bool load_conf = true, const unsigned canvas_count = 2) : 
+		tcontrol(canvas_count),
 		grid_(0, 0, 0, 0)
 	{
-		//load_config();
+		if(load_conf) load_config();
 		grid_.set_parent(this);
 	}
 	
@@ -41,10 +46,22 @@ public:
 	// Inherited from twidget.
 	bool dirty() const { return twidget::dirty() || grid_.dirty(); }
 
+	//! A panel is always active atm so ignore the request.
+	void set_active(const bool /*active*/) {}
+	bool get_active() const { return true; }
+	unsigned get_state() const { return 0; }
+
+	//! Inherited from tcontrol.
+	void draw(surface& surface);
+
+	//! Inherited from tcontrol.
+	void set_size(const SDL_Rect& rect);
 
 	//***** **** wrappers to the grid **** ****
 	tgrid::iterator begin() { return grid_.begin(); }
 	tgrid::iterator end() { return grid_.end(); }
+
+	SDL_Rect get_client_rect() const;
 
 	void set_client_size(const SDL_Rect& rect) { grid_.set_size(rect); }
 
@@ -74,13 +91,12 @@ public:
 	void set_col_scaling(const unsigned col, const unsigned scale)
 		{ grid_.set_col_scaling(col, scale); }
 
-	//! Inherited from twidget.
-	//FIXME we also need to load our own config
-	void draw(surface& surface) { grid_.draw(surface); }
-
 private:
 	tgrid grid_;
 
+	//! Inherited from tcontrol.
+	const std::string& get_control_type() const 
+		{ static const std::string type = "panel"; return type; }
 }; 
 
 } // namespace gui2

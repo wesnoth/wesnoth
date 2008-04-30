@@ -102,6 +102,7 @@ public:
 
 	//! Gets the coordinates of the client area, for external use the height
 	//! and the width are the most interesting things.
+	//FIXME this can be removed it the panel defintion inherites from panel defintion
 	SDL_Rect get_client_rect() const;
 
 protected:

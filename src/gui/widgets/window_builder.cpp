@@ -96,6 +96,19 @@ public:
 
 };
 
+struct tbuilder_panel : public tbuilder_control
+{
+
+private:
+	tbuilder_panel();
+public:
+	tbuilder_panel(const config& cfg);
+
+	twidget* build () const;
+
+	tbuilder_grid* grid;
+};
+
 struct tbuilder_spacer : public tbuilder_control
 {
 
@@ -361,6 +374,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
 			} else if((**col_itor).child("label")) {
 				widgets.push_back(new tbuilder_label(*((**col_itor).child("label"))));
+			} else if((**col_itor).child("panel")) {
+				widgets.push_back(new tbuilder_panel(*((**col_itor).child("panel"))));
 			} else if((**col_itor).child("spacer")) {
 				widgets.push_back(new tbuilder_spacer(*((**col_itor).child("spacer"))));
 			} else if((**col_itor).child("text_box")) {
@@ -451,6 +466,48 @@ twidget* tbuilder_label::build() const
 		<< definition << "'.\n";
 
 	return tmp_label;
+}
+
+tbuilder_panel::tbuilder_panel(const config& cfg) :
+	tbuilder_control(cfg),
+	grid(0)
+{
+	VALIDATE(cfg.child("grid"), _("No grid defined."));
+
+	grid = new tbuilder_grid(*(cfg.child("grid")));
+}
+
+twidget* tbuilder_panel::build() const
+{
+	tpanel *panel = new tpanel();
+
+	init_control(panel);
+
+	DBG_G << "Window builder: placed panel '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+
+	log_scope2(gui, "Window builder: building grid for panel.");
+
+	const unsigned rows = grid->rows;
+	const unsigned cols = grid->cols;
+
+	panel->set_rows_cols(rows, cols);
+
+	for(unsigned x = 0; x < rows; ++x) {
+		panel->set_row_scaling(x, grid->row_scale[x]);
+		for(unsigned y = 0; y < cols; ++y) {
+
+			if(x == 0) {
+				panel->set_col_scaling(y, grid->col_scale[y]);
+			}
+
+			twidget* widget = grid->widgets[x * cols + y]->build();
+			panel->add_child(widget, x, y, grid->flags[x * cols + y],  grid->border_size[x * cols + y]);
+		}
+	}
+
+	return panel;
 }
 
 twidget* tbuilder_spacer::build() const

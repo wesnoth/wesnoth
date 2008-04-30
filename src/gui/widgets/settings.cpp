@@ -22,6 +22,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/panel.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window_builder.hpp"
@@ -161,6 +162,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @start_table = widget_definition
  *     button_definition             A push button.
  *     label_definition              A label.
+ *     panel_definition              A panel.
  *     spacer_definition             A spacer.
  *     text_box_definition           A single line text box.
  *     tooltip_definition            A small tooltip with help.
@@ -185,6 +187,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	/***** Control definitions *****/
 	load_definitions<tbutton_definition>("button", cfg.get_children("button_definition"));
 	load_definitions<tlabel_definition>("label", cfg.get_children("label_definition"));
+	load_definitions<tpanel_definition>("panel", cfg.get_children("panel_definition"));
 	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
 	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
 	load_definitions<ttooltip_definition>("tooltip", cfg.get_children("tooltip_definition"));
@@ -224,8 +227,14 @@ void tgui_definition::load_definitions(const std::string& definition_type, const
 		control_definition[definition_type].insert(std::make_pair(def->id, def));
 	}
 
-	// FIXME use proper control name
-	VALIDATE(control_definition[definition_type].find("default") != control_definition[definition_type].end(), _ ("No default button defined."));
+	utils::string_map symbols;
+	symbols["definition"] = definition_type;
+	symbols["id"] = "default";
+	t_string msg(vgettext(
+		"Widget defintion '$definition' doesn't contain the defintion for '$id'.",
+		symbols));
+	VALIDATE(control_definition[definition_type].find("default") 
+		!= control_definition[definition_type].end(), msg);
 }
 
 tcontrol_definition::tcontrol_definition(const config& cfg) :
@@ -444,6 +453,51 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
 	// Note the order should be the same as the enum tstate is label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
+}
+
+tpanel_definition::tpanel_definition(const config& cfg) : 
+	tcontrol_definition(cfg)
+{
+
+	DBG_G_P << "Parsing panel " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+tpanel_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg),
+	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
+	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
+	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
+	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
+{
+/*WIKI 
+ * @page = GUIToolkitWML
+ * @order = 1_widget_panel
+ *
+ * == Panel ==
+ *
+ * The definition of a panel. A panel is a container hold other elements in it's
+ * grid. A panel is always enabled and can't be disabled. Instead it uses the
+ * states as layers to draw on.
+ *
+ * The resolution for a text box also contains the following keys:
+ * @start_table = config
+ *     top_border (unsigned = 0)     The size which isn't used for the client area.
+ *     bottom_border (unsigned = 0)  The size which isn't used for the client area.
+ *     left_border (unsigned = 0)    The size which isn't used for the client area.
+ *     right_border (unsigned = 0)   The size which isn't used for the client area.
+ * @end_table
+ *
+ *
+ * The following layers exist:
+ * * background, the background of the panel.
+ * * foreground, the foreground of the panel/
+ */
+
+	// The panel needs to know the order.
+	state.push_back(tstate_definition(cfg.child("background")));
+	state.push_back(tstate_definition(cfg.child("foreground")));
 }
 
 tspacer_definition::tspacer_definition(const config& cfg) :
