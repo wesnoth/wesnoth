@@ -317,8 +317,23 @@ class HTMLOutput:
         image = os.path.join("../pics", picname)
         return image
 
+    def get_abilities(self, u):
+        anames = []
+        already = {}
+        for abilities in u.get_all("abilities"):
+            for ability in abilities.children():
+                id = ability.get_text_val("id")
+                if id in already: continue
+                already[id] = True
+                name = ability.get_text_val("name")
+                if not name: name = id
+                if not name: name = ability.name
+                anames.append(name)
+        return anames
+
     def write_units(self):
         def write(x): self.output.write(x)
+        def _(x): return self.get_translation("wesnoth", x)
         rows = self.unitgrid
         write("<table class=\"units\">\n")
         write("<colgroup>")
@@ -396,13 +411,7 @@ class HTMLOutput:
                             self.get_translation("wesnoth", "XP: "), xp))
                             
                         # Write info about abilities.
-                        anames = []
-                        for abilities in u.get_all("abilities"):
-                            for ability in abilities.children():
-                                name = ability.get_text_val("name")
-                                if not name: name = ability.get_text_val("id")
-                                if not name: name = ability.name
-                                anames.append(name)
+                        anames = self.get_abilities(u)
                         if anames:
                             write("\n<div style=\"clear:both\">")
                             write(", ".join(anames))
@@ -411,8 +420,7 @@ class HTMLOutput:
                         # Write info about attacks.
                         write("\n<div style=\"clear:both\">")
                         for attack in u.get_all("attack"):
-                            t = attack.get_text_val("type")
-                            write("%s " % self.get_translation("wesnoth", t))
+                            
 
                             n = attack.get_text_val("number")
                             x = attack.get_text_val("damage")
@@ -420,7 +428,8 @@ class HTMLOutput:
                             write("%s " % x)
 
                             r = attack.get_text_val("range")
-                            write("%s" % self.get_translation("wesnoth", r))
+                            t = attack.get_text_val("type")
+                            write("%s (%s)" % (_(r), _(t)))
 
                             s = []
                             specials = attack.get_first("specials")
@@ -558,13 +567,7 @@ class HTMLOutput:
             write("</tr>\n")
         
         # Write info about abilities.
-        anames = []
-        for abilities in unit.get_all("abilities"):
-            for ability in abilities.children():
-                name = ability.get_text_val("name")
-                if not name: name = ability.get_text_val("id")
-                if not name: name = ability.name
-                anames.append(name)
+        anames = self.get_abilities(unit)
 
         write("<tr>\n")
         write("<th>%s</th>" % _("Abilities: "))
