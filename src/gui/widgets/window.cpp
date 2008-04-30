@@ -59,7 +59,6 @@ twindow::twindow(CVideo& video,
 	status_(NEW),
 	retval_(0),
 	need_layout_(true),
-	restorer_(),
 	tooltip_(),
 	help_popup_()
 {
@@ -87,7 +86,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 	// We cut a piece of the screen and use that, that way all coordinates
 	// are relative to the window.
 	SDL_Rect rect = get_rect();
-	restorer_ = get_surface_portion(video_.getSurface(), rect);
+	surface restorer = get_surface_portion(video_.getSurface(), rect);
 	surface screen;
 
 	// Start our loop drawing will happen here as well.
@@ -100,47 +99,10 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 		}
 
 		if(dirty() || need_layout_) {
-			const bool draw_foreground = need_layout_;
 			if(need_layout_) {
-				DBG_G << "Window: layout client area.\n";
-				layout(get_client_rect());
-				need_layout_ = false;
-
-				screen = make_neutral_surface(restorer_);
-
-				canvas(0).draw();
-				blit_surface(canvas(0).surf(), 0, screen, 0);
+				screen = make_neutral_surface(restorer);
 			}
-#if 0			
-			// Darkening for debugging redraw.
-			SDL_Rect temp_rect = {0, 0, screen->w, screen->h};
-			fill_rect_alpha(temp_rect, 0, 1, screen);
-#endif
-			// FIXME call grid().draw() and it do it's drawing.
-			for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
-				if(! *itor || !itor->dirty()) {
-					continue;
-				}
-
-				log_scope2(gui_draw, "Window: draw child.");
-
-				itor->draw(screen);
-			}
-			if(draw_foreground) {
-				canvas(1).draw();
-				blit_surface(canvas(1).surf(), 0, screen, 0);
-			}
-			if(tooltip_.dirty()) {
-				tooltip_.draw(screen);
-			}
-			if(help_popup_.dirty()) {
-				help_popup_.draw(screen);
-			}
-
-			rect = get_rect();
-			SDL_BlitSurface(screen, 0, video_.getSurface(), &rect);
-			update_rect(get_rect());
-			set_dirty(false);
+			draw(screen);
 		}
 
 		// delay until it's our frame see display.ccp code for how to do that
@@ -151,7 +113,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 	// restore area
 	if(restore) {
 		rect = get_rect();
-		SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
+		SDL_BlitSurface(restorer, 0, video_.getSurface(), &rect);
 		update_rect(get_rect());
 		flip();
 	}
@@ -168,6 +130,45 @@ void twindow::layout(const SDL_Rect position)
 		<< ',' << position.h << ".\n";
 
 	set_client_size(position); 
+	need_layout_ = false;
+}
+
+//! Inherited from tpanel.
+void twindow::draw(surface& surface)
+{
+	const bool draw_foreground = need_layout_;
+	if(need_layout_) {
+		DBG_G << "Window: layout client area.\n";
+		layout(get_client_rect());
+
+		canvas(0).draw();
+		blit_surface(canvas(0).surf(), 0, surface, 0);
+	}
+	
+	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
+		if(! *itor || !itor->dirty()) {
+			continue;
+		}
+
+		log_scope2(gui_draw, "Window: draw child.");
+
+		itor->draw(surface);
+	}
+	if(draw_foreground) {
+		canvas(1).draw();
+		blit_surface(canvas(1).surf(), 0, surface, 0);
+	}
+	if(tooltip_.dirty()) {
+		tooltip_.draw(surface);
+	}
+	if(help_popup_.dirty()) {
+		help_popup_.draw(surface);
+	}
+
+	SDL_Rect rect = get_rect();
+	SDL_BlitSurface(surface, 0, video_.getSurface(), &rect);
+	update_rect(get_rect());
+	set_dirty(false);
 }
 
 void twindow::flip()

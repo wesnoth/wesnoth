@@ -91,6 +91,9 @@ public:
 	unsigned get_state() const { return 0; }
 	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
+	//! Inherited from tpanel.
+	void draw(surface& surface);
+
 	//! Inherited from twidget.
 	tpoint get_minimum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
 	tpoint get_best_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
@@ -117,7 +120,6 @@ private:
 	//! When set the form needs a full layout redraw cycle.
 	bool need_layout_;
 
-	surface restorer_;
 
 	//! Inherited from tevent_handler.
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
