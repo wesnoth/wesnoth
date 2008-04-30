@@ -748,7 +748,7 @@ install_env.Alias("install-cutter", install_env.InstallWithSuffix(bindir, cutter
 install_env.Alias("install-exploder", install_env.InstallWithSuffix(bindir, exploder))
 
 # Compute things for default install based on which targets have been created.
-install_env.Alias('install', [])
+install = install_env.Alias('install', [])
 for installable in ('wesnoth', 'wesnoth_editor',
                     'wesnothd', 'campaignd',
                     'exploder', 'cutter'):
@@ -758,11 +758,15 @@ for installable in ('wesnoth', 'wesnoth_editor',
 #
 # Un-installation
 #
-deletions = map(lambda x: Delete(os.path.join(bindir, str(x[0]))), clientside + daemons) \
-            + [Delete(datadir), Delete(pythonlib), Delete(fifodir), Delete(docdir)] \
-            + map(lambda x: Delete(os.path.join(mandir, "man6", x)), [ "wesnoth.6", "wesnoth_editor.6", "wesnothd.6" ]) \
-            + Flatten(map(lambda mandir : map(lambda x: Delete(os.path.join(mandir, x)), [ "wesnoth.6", "wesnoth_editor.6", "wesnothd.6" ]), localized_man_dirs.values()))
-uninstall = env.Command('uninstall', '', deletions)
+def Uninstall(nodes):
+    deletes = []
+    for node in nodes:
+        if node.__class__ == install[0].__class__:
+            deletes.append(Uninstall(node.sources))
+        else:
+            deletes.append(Delete(str(node)))
+    return deletes
+uninstall = env.Command('uninstall', '', Flatten(Uninstall(Alias("install"))))
 env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
 
