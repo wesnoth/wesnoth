@@ -2121,7 +2121,9 @@ private:
 			virtual void register_alias(const std::string& to_cmd,
 				const std::string& cmd)
 			{
-				assert_existence(to_cmd);
+				// disable the assert to allow alias to "command + args"
+				// the fonction assert_existence seems unused now
+				//assert_existence(to_cmd);
 				command_alias_map_.insert(
 					command_alias_map::value_type(cmd,to_cmd));
 			}
