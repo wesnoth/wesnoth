@@ -24,6 +24,7 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
+#include "util.hpp"
 #include "wml_exception.hpp"
 
 #include <cassert>
@@ -49,6 +50,11 @@
 #define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
 
 namespace gui2 {
+
+static unsigned get_v_align(const std::string& v_align);
+static unsigned get_h_align(const std::string& h_align);
+static unsigned get_border(const std::vector<std::string>& border);
+static unsigned read_flags(const config& cfg);
 
 struct tbuilder_control : public tbuilder_widget
 {
@@ -209,9 +215,9 @@ twindow build(CVideo& video, const std::string& type)
 	std::vector<twindow_builder::tresolution>::const_iterator 
 		definition = get_window_builder(type);
 
-
-	twindow window(video, 100, 100, definition->width, definition->height); // FIXME use proper origin
-//	twindow window(video, 0, 0, definition->width, definition->height); // FIXME use proper origin
+	// We set the values from the defintion since we can only determine the 
+	// best size (if needed) after all widgets have been placed.
+	twindow window(video, definition->x, definition->y, definition->width, definition->height);
 
 	log_scope2(gui, "Window builder: building grid for window");
 
@@ -233,13 +239,45 @@ twindow build(CVideo& video, const std::string& type)
 		}
 	}
 
+	if(definition->automatic_placement) {
+		
+		tpoint size = window.get_best_size();
+		size.x = size.x < screen_width ? size.x : screen_width;
+		size.y = size.y < screen_height ? size.y : screen_height;
+
+		tpoint position(0, 0);
+		switch(definition->horizontal_placement) {
+			case tgrid::HORIZONTAL_ALIGN_LEFT :
+				// Do nothing
+				break;
+			case tgrid::HORIZONTAL_ALIGN_CENTER :
+				position.x = (screen_width - size.x) / 2;
+				break;
+			case tgrid::HORIZONTAL_ALIGN_RIGHT :
+				position.x = screen_width - size.x;
+				break;
+			default :
+				assert(false);
+		}
+		switch(definition->vertical_placement) {
+			case tgrid::VERTICAL_ALIGN_TOP :
+				// Do nothing
+				break;
+			case tgrid::VERTICAL_ALIGN_CENTER :
+				position.y = (screen_height - size.y) / 2;
+				break;
+			case tgrid::VERTICAL_ALIGN_BOTTOM :
+				position.y = screen_height - size.y;
+				break;
+			default :
+				assert(false);
+		}
+
+		window.set_size(create_rect(position, size));
+	}
+
 	return window;
 }
-
-namespace {
-
-} // namespace
-
 
 const std::string& twindow_builder::read(const config& cfg)
 {
@@ -283,8 +321,13 @@ const std::string& twindow_builder::read(const config& cfg)
 twindow_builder::tresolution::tresolution(const config& cfg) :
 	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
 	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
+	automatic_placement(utils::string_bool(cfg["automatic_placement"], true)),
+	x(lexical_cast_default<unsigned>(cfg["x"])),
+	y(lexical_cast_default<unsigned>(cfg["y"])),
 	width(lexical_cast_default<unsigned>(cfg["width"])),
 	height(lexical_cast_default<unsigned>(cfg["height"])),
+	vertical_placement(get_v_align(cfg["vertical_placement"])),
+	horizontal_placement(get_h_align(cfg["horizontal_placement"])),
 	definition(cfg["definition"]),
 	grid(0)
 {
@@ -297,8 +340,25 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * @start_table = config
  *     window_width (unsigned = 0)   Width of the application window.
  *     window_height (unsigned = 0)  Height of the application window.
- *     width (unsigned)              Width of the window to show.
- *     height (unsigned)             Height of the window to show.
+ *
+ *     automatic_placement (bool = true)
+ *                                   Automatically calculate the best size for
+ *                                   the window and place it. If automatically
+ *                                   placed ''vertical_placement'' and
+ *                                   ''horizontal_placement'' can be used to
+ *                                   modify the final placement. If not
+ *                                   automatically placed the ''width'' and
+ *                                   ''height'' are mandatory.
+ *
+ *     x (unsigned = 0)              X coordinate of the window to show.
+ *     y (unsigned = 0)              Y coordinate of the window to show.
+ *     width (unsigned = 0)          Width of the window to show.
+ *     height (unsigned = 0)         Height of the window to show.
+ *
+ *     vertical_placement (v_align = "")
+ *                                   The vertical placement of the window.
+ *     horizontal_placement (h_align = "")
+ *                                   The horizontal placement of the window.
  *
  *     definition (string = "default")
  *                                   Definition of the window which we want to 
@@ -313,6 +373,11 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	VALIDATE(cfg.child("grid"), _("No grid defined."));
 
 	grid = new tbuilder_grid(*(cfg.child("grid")));
+
+	if(!automatic_placement) {
+		VALIDATE(width, missing_mandatory_wml_key("resulution", "width"));
+		VALIDATE(height, missing_mandatory_wml_key("resulution", "height"));
+	}
 
 	DBG_G_P << "Window builder: parsing resolution " 
 		<< window_width << ',' << window_height << '\n';

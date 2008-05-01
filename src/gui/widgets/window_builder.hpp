@@ -66,16 +66,17 @@ public:
 		unsigned window_width;
 		unsigned window_height;
 
+		bool automatic_placement;
+
+		unsigned x;
+		unsigned y;
 		unsigned width;
 		unsigned height;
 
-		// note x, y hardcoded.
-		
-		// FIXME add min max and default size
-		// the we can use best size to get the best.
+		unsigned vertical_placement;
+		unsigned horizontal_placement;
 		
 		std::string definition;
-
 	
 		tbuilder_grid* grid;
 	};
