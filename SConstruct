@@ -27,41 +27,43 @@ if os.path.exists('.scons-option-cache'):
 
 opts = Options('.scons-option-cache')
 
-opts.Add(PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept))
-opts.Add('cachedir', 'Directory that contains a cache of derived files.', '')
-opts.Add(PathOption('datadir', 'read-only architecture-independent game data', "share/$datadirname", PathOption.PathAccept))
-opts.Add(BoolOption('debug', 'Set to build for debugging', False))
-opts.Add(BoolOption('dummy_locales','Set to enable Wesnoth private locales', False))
-opts.Add(PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept))
-opts.Add(BoolOption('fribidi','Clear to disable bidirectional-language support', True))
-opts.Add(BoolOption('desktop_entry','Clear to disable desktop-entry', True))
-opts.Add(PathOption('datarootdir', 'sets the root of data directories to a non-default location', "share", PathOption.PathAccept))
-opts.Add(PathOption('datadirname', 'sets the name of data directory', "wesnoth", PathOption.PathAccept))
-opts.Add(PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathOption.PathAccept))
-opts.Add(PathOption('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathOption.PathAccept))
-opts.Add(BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False))
-opts.Add(PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept))
-opts.Add(PathOption('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathOption.PathAccept))
-opts.Add(PathOption('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathOption.PathAccept))
-opts.Add(BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False))
-opts.Add(BoolOption('nls','enable compile/install of gettext message catalogs',True))
-opts.Add(PathOption('prefix', 'autotools-style installation prefix', "/usr/local"))
-opts.Add(PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept))
-opts.Add(PathOption('destdir', 'prefix to add to all installation paths.', "", PathOption.PathAccept))
-opts.Add(BoolOption('prereqs','abort if prerequisites cannot be detected',True))
-opts.Add(BoolOption('profile', 'Set to build for profiling', False))
-opts.Add('program_suffix', 'suffix to append to names of installed programs',"")
-opts.Add(BoolOption('python', 'Enable in-game python extensions.', True))
-opts.Add(BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False))
-opts.Add('server_gid', 'group id of the user who runs wesnothd', "")
-opts.Add('server_uid', 'user id of the user who runs wesnothd', "")
-opts.Add(EnumOption('gui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs)', "normal", ["normal", "small", "tiny"]))
-opts.Add(BoolOption('static', 'Set to enable static building of Wesnoth', False))
-opts.Add(BoolOption('strict', 'Set to strict compilation', False))
-opts.Add(BoolOption('verbose', 'Emit progress messages during data installation.', False))
-opts.Add(PathOption('boostdir', 'Directory of boost installation.', '/usr/include'))
-opts.Add(PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'))
-opts.Add('boost_suffix', 'Suffix of boost libraries.')
+opts.AddOptions(
+    PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept),
+    ('cachedir', 'Directory that contains a cache of derived files.', ''),
+    PathOption('datadir', 'read-only architecture-independent game data', "share/$datadirname", PathOption.PathAccept),
+    BoolOption('debug', 'Set to build for debugging', False),
+    BoolOption('dummy_locales','Set to enable Wesnoth private locales', False),
+    PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept),
+    BoolOption('fribidi','Clear to disable bidirectional-language support', True),
+    BoolOption('desktop_entry','Clear to disable desktop-entry', True),
+    PathOption('datarootdir', 'sets the root of data directories to a non-default location', "share", PathOption.PathAccept),
+    PathOption('datadirname', 'sets the name of data directory', "wesnoth", PathOption.PathAccept),
+    PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathOption.PathAccept),
+    PathOption('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathOption.PathAccept),
+    BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False),
+    PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept),
+    PathOption('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathOption.PathAccept),
+    PathOption('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathOption.PathAccept),
+    BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
+    BoolOption('nls','enable compile/install of gettext message catalogs',True),
+    PathOption('prefix', 'autotools-style installation prefix', "/usr/local"),
+    PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept),
+    PathOption('destdir', 'prefix to add to all installation paths.', "", PathOption.PathAccept),
+    BoolOption('prereqs','abort if prerequisites cannot be detected',True),
+    BoolOption('profile', 'Set to build for profiling', False),
+    ('program_suffix', 'suffix to append to names of installed programs',""),
+    BoolOption('python', 'Enable in-game python extensions.', True),
+    BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False),
+    ('server_gid', 'group id of the user who runs wesnothd', ""),
+    ('server_uid', 'user id of the user who runs wesnothd', ""),
+    EnumOption('gui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs)', "normal", ["normal", "small", "tiny"]),
+    BoolOption('static', 'Set to enable static building of Wesnoth', False),
+    BoolOption('strict', 'Set to strict compilation', False),
+    BoolOption('verbose', 'Emit progress messages during data installation.', False),
+    PathOption('boostdir', 'Directory of boost installation.', '/usr/include'),
+    PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'),
+    ('boost_suffix', 'Suffix of boost libraries.'),
+    )
 
 #
 # Setup
