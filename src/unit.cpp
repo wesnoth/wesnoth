@@ -678,9 +678,6 @@ void unit::new_turn()
 	attacks_left_ = max_attacks_;
 	set_state("hides","yes");
 
-	if(incapacitated()) {
-		set_attacks(0);
-	}
 	if (hold_position_) {
 		end_turn_ = true;
 	}
