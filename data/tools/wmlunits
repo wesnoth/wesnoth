@@ -340,6 +340,9 @@ class HTMLOutput:
         for i in range(6):
             write("<col class=\"col%d\" />" % i)
         write("</colgroup>")
+        
+        pic = image_collector.add_image("mainline", "misc/hero-icon.png")
+        crownimage = os.path.join("../pics", pic)
         ms = None
         for row in range(len(rows)):
             write("<tr>\n")
@@ -387,19 +390,28 @@ class HTMLOutput:
                             if un.id in ms.units:
                                 crown = u" ♟"
                             if un.id in ms.is_leader:
-                                crown = u" ♛"
+                                crown = u" ♚"
 
                         link = "../%s/%s.html" % (self.isocode, uid)
-                        write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a></div>" % (
+                        write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a>" % (
                             link, uid, u"ℹ"))
+                        write("</div>")
                         write("<div class=\"l\">L%s%s</div>" % (level, crown))
                         write("<a href=\"%s\">%s</a><br/>" % (link, name))
 
                         write('<div class="pic">')
                         image = self.pic(u, u)
-                        write('<a href=\"%s\"><img src="%s" alt="(image)" /></a>\n' % (
-                            link, image))
-                        write('</div>\n')
+                        
+                        write('<a href=\"%s\">' % link)
+
+                        if crown == u" ♚":
+                            write('<div style="background: url(%s)">' % image)
+                            write('<img src="%s" alt="(image)" />' % crownimage)
+                            write("</div>")
+                        else:
+                            write('<img src="%s" alt="(image)" />' % image)
+                            
+                        write('</a>\n</div>\n')
                         write("<div class=\"attributes\">")
                         write("%s%s<br />" % (
                             self.get_translation("wesnoth", "Cost: "), cost))
