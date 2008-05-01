@@ -2124,8 +2124,7 @@ private:
 				// disable the assert to allow alias to "command + args"
 				// the fonction assert_existence seems unused now
 				//assert_existence(to_cmd);
-				command_alias_map_.insert(
-					command_alias_map::value_type(cmd,to_cmd));
+				command_alias_map_[cmd] = to_cmd;
 			}
 			//get all aliases of a command.
 			static const std::vector<std::string> get_aliases(const std::string& cmd)
