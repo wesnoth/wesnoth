@@ -2222,14 +2222,14 @@ variant ai_interface::get_value(const std::string& key) const
 	} else if(key == "units") {
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
-			vars.push_back(variant(new unit_callable(*i, info_.teams[info_.team_num-1], info_.team_num)));
+			vars.push_back(variant(new unit_callable(*i)));
 		}
 		return variant(&vars);
 	} else if(key == "my_units") {
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
 			if(i->second.side() == info_.team_num) {
-				vars.push_back(variant(new unit_callable(*i, info_.teams[info_.team_num-1], info_.team_num)));
+				vars.push_back(variant(new unit_callable(*i)));
 			}
 		}
 		return variant(&vars);
@@ -2237,7 +2237,7 @@ variant ai_interface::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
 			if(info_.teams[info_.team_num-1].is_enemy(i->second.side())) {
-				vars.push_back(variant(new unit_callable(*i, info_.teams[info_.team_num-1], info_.team_num)));
+				vars.push_back(variant(new unit_callable(*i)));
 			}
 		}
 		return variant(&vars);

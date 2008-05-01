@@ -209,7 +209,7 @@ private:
 		while (un != end) {
 			if (distance_between(loc, un->first) <= range) {
 				if (un->second.side() != ai_.get_info().team_num) {
-					vars.push_back(variant(new unit_callable(*un, ai_.current_team(), un->second.side())));
+					vars.push_back(variant(new unit_callable(*un)));
 				}
 			}
 			++un;			
@@ -555,7 +555,7 @@ private:
 		const location_callable* loc = convert_variant<location_callable>(args()[0]->evaluate(variables));
 		const unit_map::const_iterator i = ai_.get_info().units.find(loc->loc());
 		if(i != ai_.get_info().units.end()) {
-			return variant(new unit_callable(*i, ai_.current_team(), ai_.get_info().team_num));
+			return variant(new unit_callable(*i));
 		} else {
 			return variant();
 		}
@@ -608,7 +608,7 @@ private:
 			unit_map::const_iterator un = ai_.get_info().units.find(range.first->second);
 			assert(un != ai_.get_info().units.end());
 			const int side = un->second.side();
-			vars.push_back(variant(new unit_callable(*un, ai_.get_info().teams[side-1], side)));
+			vars.push_back(variant(new unit_callable(*un)));
 			++range.first;
 		}
 
@@ -810,7 +810,7 @@ void formula_ai::play_turn()
 			game_logic::map_formula_callable callable(this);
 			unit_candidate_moves.push_back(formula);
 			callable.add_ref();
-			callable.add("me", variant(new unit_callable(*i, current_team(), get_info().team_num)));
+			callable.add("me", variant(new unit_callable(*i)));
 			make_move(formula, callable);
 		}
 		candidate_moves.insert(std::pair<const std::string, std::vector<game_logic::const_formula_ptr> >
@@ -1079,7 +1079,7 @@ variant formula_ai::get_value(const std::string& key) const
 			return variant();
 		}
 
-		return variant(new unit_callable(*i, current_team(), get_info().team_num));
+		return variant(new unit_callable(*i));
 	} else if(key == "vars") {
 		return variant(&vars_);
 	} else if(key == "keeps") {

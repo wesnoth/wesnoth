@@ -38,6 +38,8 @@
 #include "sdl_utils.hpp"
 #include "terrain_filter.hpp"
 #include "variable.hpp"
+#include "callable_objects.hpp"
+#include "formula.hpp"
 
 #include <cassert>
 #include <climits>
@@ -1134,6 +1136,13 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			if(ch_itors.first == ch_itors.second) {
 				return false;
 			}
+		}
+	}
+	if(cfg.has_attribute("formula")) {
+		const unit_callable callable(std::pair<gamemap::location, unit>(loc,*this));
+		const game_logic::formula form(cfg["formula"]);
+		if(!form.execute(callable).as_bool()) {
+			return false;
 		}
 	}
 

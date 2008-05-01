@@ -127,8 +127,8 @@ public:
 class unit_callable : public game_logic::formula_callable {
 public:
 	typedef gamemap::location location;
-	unit_callable(const std::pair<location, unit>& pair, const team& current_team, unsigned int side)
-	  : loc_(pair.first), u_(pair.second), team_(current_team), side_(side)
+	unit_callable(const std::pair<location, unit>& pair)
+	  : loc_(pair.first), u_(pair.second)
 	{}
 
 	const unit& get_unit() const { return u_; }
@@ -137,8 +137,6 @@ public:
 private:
 	const location& loc_;
 	const unit& u_;
-	const team& team_;
-	unsigned int side_;
 };
 
 #endif

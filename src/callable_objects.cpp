@@ -106,10 +106,6 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.movement_left());
 	} else if(key == "side") {
 		return variant(u_.side());
-	} else if(key == "is_enemy") {
-		return variant(team_.is_enemy(u_.side()));
-	} else if(key == "is_mine") {
-		return variant(side_ == u_.side());
 	} else if(key == "value") {
 		return variant(u_.cost());
 	} else if(key == "vars") {
@@ -139,8 +135,6 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("movement_left", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("side", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("is_enemy", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("is_mine", FORMULA_READ_ONLY));
 }
 
 variant terrain_callable::get_value(const std::string& key) const
