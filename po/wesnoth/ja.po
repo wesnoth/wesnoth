@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-21 18:09+0200\n"
-"PO-Revision-Date: 2008-03-02 19:00+0900\n"
+"PO-Revision-Date: 2008-04-22 10:44+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -192,9 +192,8 @@ msgstr "中国語翻訳"
 
 #. [about]
 #: data/core/about.cfg:889
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "中国語翻訳"
+msgstr "中国語（台湾）翻訳"
 
 #. [about]
 #: data/core/about.cfg:896
@@ -663,7 +662,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -672,8 +670,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"雇用されたユニットは、その特性値を変化させる２つのランダムな<ref>dst=traits "
-"text=特性</ref>を持ちます。"
+"雇用されたユニットはその数値を変化させる 2 つのランダムな<ref>dst=.."
+"traits_section text=特性</ref>を持ちます。"
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -1130,7 +1128,7 @@ msgstr ""
 "\n"
 "\n"
 "例えば、スケルトンは斬撃と貫通に対しては高い抵抗力を持ちます。 しかし、打撃と"
-"火炎には弱く、さらに神聖に対しては非常に脆弱です。"
+"火炎には弱く、さらに秘術に対しては非常に脆弱です。"
 
 #. [topic]
 #: data/core/help.cfg:244
@@ -2454,7 +2452,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2872,15 +2869,14 @@ msgstr "瞬間移動"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "瞬間移動:\n"
-"このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
-"できます。"
+"このユニットは１回の移動を使用して、 その陣営が所有する誰もいない2つの村の間"
+"を瞬間移動することができます。"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
@@ -2997,7 +2993,6 @@ msgid "backstab"
 msgstr "奇襲"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3005,9 +3000,9 @@ msgid ""
 "incapacitated (e.g. turned to stone)."
 msgstr ""
 "奇襲:\n"
-"もし攻撃対象の反対側にその対象の敵がいて、かつその反対側のユニットが能力を奪"
-"われて（例えば石化しているなど）いない場合、この攻撃は２倍のダメージとなりま"
-"す。"
+"攻撃時に使用された場合、もし攻撃対象の反対側にその対象の敵がいて、かつその反"
+"対側のユニットが能力を奪われて（例えば石化しているなど）いない場合、この攻撃"
+"は 2 倍のダメージとなります。"
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
@@ -3065,7 +3060,7 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "石化:\n"
-"この攻撃は攻撃目標を石にします。 石化したユニットは移動や攻撃はできません。"
+"この攻撃は標的を石にします。 石化したユニットは移動や攻撃はできません。"
 
 #: data/core/macros/abilities.cfg:602
 msgid "marksman"
@@ -3077,7 +3072,7 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "射撃:\n"
-"攻撃時に使用され、 この攻撃は命中率が最低60%はあるようになります。"
+"攻撃時に使用された場合、この攻撃は命中率が最低 60% はあるようになります。"
 
 #: data/core/macros/abilities.cfg:629
 msgid "swarm"
@@ -3101,15 +3096,14 @@ msgid "charge"
 msgstr "突撃"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "突撃:\n"
-"この攻撃は攻撃目標への与えるダメージが２倍となります。 攻撃目標からの反撃の与"
-"えられるダメージも２倍となります。"
+"攻撃時に使用された場合、この攻撃は標的への与えるダメージが 2 倍となります。 "
+"標的からの反撃によって受けるダメージも 2 倍となります。"
 
 #: data/core/macros/abilities.cfg:654
 msgid "drains"
@@ -3137,9 +3131,9 @@ msgid ""
 "a unit."
 msgstr ""
 "毒:\n"
-"この攻撃は生きている攻撃目標を毒状態にします。 毒を受けているユニットは解毒す"
-"るかHPが１になるまで、 毎ターンHPが８減っていきます。毒そのものでは、ユニット"
-"が死ぬことはありません。"
+"この攻撃は生きている標的を毒状態にします。 毒を受けているユニットは解毒するか"
+"HPが１になるまで、 毎ターンHPが８減っていきます。毒そのものでは、ユニットが死"
+"ぬことはありません。"
 
 #. [advancement]
 #: data/core/macros/amla.cfg:10
@@ -3238,7 +3232,7 @@ msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
-"この水により、シナリオの終わりまで格闘攻撃の武器に「神聖」ダメージタイプがつ"
+"この水により、シナリオの終わりまで格闘攻撃の武器に「秘術」ダメージタイプがつ"
 "きます。"
 
 #. [object]
@@ -4142,14 +4136,12 @@ msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" このユニットの神聖な攻撃は魔法で作られた者に著しいダメージを与えます。 また"
-"この世の生物にさえもかなりのダメージを与えます。"
+" このユニットの秘術による攻撃は魔法で作られた者に著しいダメージを与えます。 "
+"またこの世の生物にさえもかなりのダメージを与えます。"
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
+msgstr " このユニットには簡易な回復能力があります。"
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4180,14 +4172,13 @@ msgstr ""
 "ます。 しかし、防御時のみです。"
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of below the leadership "
 "level."
 msgstr ""
-"このユニットの統率力により、隣接する友好的なユニットは戦闘においてより大きな "
-"ダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
+" このユニットの統率力により、隣接する友好的なユニットは戦闘においてより大き"
+"な ダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
 "す。"
 
 #: data/core/macros/special-notes.cfg:32
@@ -4203,14 +4194,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " 照明は隣接する領域を明るくします。"
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"瞬間移動:\n"
-"このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
-"できます。"
+" このユニットは１回の移動を使用して、 その陣営に支配されている誰もいない2つの"
+"村の間を瞬間移動することができます。"
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4258,14 +4247,13 @@ msgstr ""
 "れるまで攻撃し続けます。"
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" 標的のユニットの反対側にそのユニットの敵がいれば、このユニットはその敵の背後"
-"に忍び寄ることで、 2倍のダメージを与えるふい打ちをくらわせます。"
+" 攻撃時に標的のユニットの反対側にそのユニットの敵がいれば、奇襲を食らわせ、2"
+"倍のダメージを与えるでしょう。"
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -4294,12 +4282,11 @@ msgstr ""
 "し、攻撃側の場合だけです。"
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" このユニットの投射攻撃は魔法攻撃であり、常に高い確率で敵に命中します。"
+" このユニットは魔法攻撃を保有し、その攻撃は常に高い確率で敵に命中します。"
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4537,7 +4524,6 @@ msgstr "ドレーク族"
 
 #. [race]
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4650,7 +4636,7 @@ msgstr ""
 "くにつれてより無謀になっていきます。おそらく、彼らの種族の英雄の伝説に確実に"
 "彼らの場所を確保するために。\n"
 "\n"
-"<header>text='地形'</header>\n"
+"<header>text='地理'</header>\n"
 "ドレーク族の起源は大洋の Morogor 島にあります。しかしながら、島は何世紀にもわ"
 "たってゆっくりと沈んでいたため、ドレークのコロニーは徐々に大陸へと広がってい"
 "きました。ドレーク族は彼らの卵、幼生、鍛冶場を守るために火山の近くの山岳の洞"
@@ -5141,7 +5127,6 @@ msgstr "アンデッド"
 
 #. [race]
 #: data/core/units.cfg:246
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5169,17 +5154,28 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 "アンデッドは単一の生き物の種族というわけではありませんが、しばしばそのような"
-"ものとして扱われます。ほとんどどんな死んだ生き物でも、十分に経験を積んだネク"
-"ロマンサーによって、生き返り、アンデッドとなってふたたび立ち上がることができ"
-"ます。アンデッドは大部分において自然に反する、しかし心のない構造物で、彼らを"
-"作った者ならば誰でも、質問することも考えることもなく従います。黒魔術のより大"
-"きな謎はネクロマンサーからの持続的な作用なしにどのように構造物が動き続けられ"
-"るのかということです。アンデッドの生き物は命令し、持ちこたえるためにネクロマ"
-"ンサーから継続的な注意を必要とせず、主人の命令に従って独立的に働くことができ"
-"ます。ただまれに、おそらく数ヶ月に一度、ネクロマンサーは彼の創造物を維持する"
-"必要があります。\n"
+"ものとして扱われます。どんな死んだ生き物でも、ほとんどが十分に経験を積んだネ"
+"クロマンサーによって、生き返り、アンデッドとなってふたたび立ち上がることがで"
+"きます。アンデッドは大部分において自然に反する、しかし心のない構造物で、彼ら"
+"を作った者ならば誰でも、質問することも考えることもなく従います。黒魔術のより"
+"大きな謎はネクロマンサーからの持続的な作用なしにどのように構造物が動き続けら"
+"れるのかということです。アンデッドの生き物は命令し、持ちこたえるためにネクロ"
+"マンサーから継続的な注意を必要とせず、主人の命令に従って独立的に働くことがで"
+"きます。ただまれに、おそらく数ヶ月に一度、ネクロマンサーは彼の創造物を維持す"
+"る必要があります。\n"
 "\n"
-"黒魔術はほとんどもっぱら人間に限られています。"
+"降霊術を使うのはほとんどもっぱら人間に限られています。魔法に長けた種族である"
+"エルフ族やマーマンの伝説においてさえ、彼らの種族で黒魔術を深く研究したという"
+"者はほとんどいません。降霊術の魔法を使うためには適応力があり、柔軟な精神が必"
+"要なのだと推測することができます。こういった特徴の究極のものは、ほぼ一般的に"
+"人間に見受けられます。ほとんどのネクロマンサーにとっての究極の目標は命を保つ"
+"とともに命を吹き込むこの同じ魔法を彼ら自身にかけ、どんな代償を払ってでも、彼"
+"ら自身の頭脳と精神を保ったまま死を究極的に逃れられるように彼ら自身を変えるこ"
+"とです。\n"
+"\n"
+"<header>text='地理'</header>\n"
+"相当な数のアンデッドの支配者たちが大陸に到着したのは Haldric I 世の後であり、"
+"それ以前にはエルフ族もドワーフ族もまったく聞いたことがありませんでした。"
 
 #. [race]: description=
 #: data/core/units.cfg:254
@@ -5344,7 +5340,7 @@ msgstr "冷気"
 #. [language]
 #: data/hardwired/english.cfg:42
 msgid "arcane"
-msgstr "神聖"
+msgstr "秘術"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -5545,11 +5541,11 @@ msgid ""
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
-"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして神聖の攻撃がある。それぞ"
-"れのユニットは攻撃の種類によって異なる弱点を持っている。ユニットの上で右ク"
-"リックして、「ユニットの解説」を選択すると、ユニットがそれぞれの攻撃の種類に"
-"対してどのくらい抵抗力を持っているか、またどの種類も最も影響されるかを見るこ"
-"とができる。"
+"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして秘術による攻撃がある。そ"
+"れぞれのユニットは攻撃の種類によって異なる弱点を持っている。ユニットの上で右"
+"クリックして、「ユニットの解説」を選択すると、ユニットがそれぞれの攻撃の種類"
+"に対してどのくらい抵抗力を持っているか、またどの種類も最も影響されるかを見る"
+"ことができる。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:59
@@ -5759,8 +5755,8 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"スケルトンは、貫通、斬撃、冷気による攻撃に耐性があるが、打撃、火炎、神聖の攻"
-"撃には弱い。"
+"スケルトンは、貫通、斬撃、冷気による攻撃に耐性があるが、打撃、火炎、秘術によ"
+"る攻撃には弱い。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:127
@@ -5843,7 +5839,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:159
 msgid "Arcane attacks are very powerful against undead."
-msgstr "神聖な攻撃はアンデッドに対して大変強力である。"
+msgstr "秘術による攻撃はアンデッドに対して大変強力である。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
@@ -6640,9 +6636,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Wesnothの公式マルチプレイサーバーにログオンします。"
 
 #: src/game.cpp:1492
-#, fuzzy
 msgid "Join a different server"
-msgstr "公式サーバーに参加"
+msgstr "別のサーバーに参加"
 
 #: src/game.cpp:1494
 msgid "Local Game"
@@ -6677,7 +6672,6 @@ msgid "Choose your preferred language:"
 msgstr "お好みの言語を選んで下さい:"
 
 #: src/game.cpp:1756
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
