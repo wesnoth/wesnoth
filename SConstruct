@@ -296,7 +296,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         if sdldir:
             env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL")], LIBPATH = [os.path.join(sdldir, "lib")])
         if env["PLATFORM"] == "posix" or env["PLATFORM"] == "darwin":
-            env.ParseConfig("sdl-config --cflags --libs")
+            env.ParseConfig("pkg-config --cflags --libs sdl")
         if env["PLATFORM"] == "win32":
             env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
             env.AppendUnique(LIBS = Split("mingw32 SDLmain SDL"))
@@ -401,12 +401,10 @@ conf = Configure(env, custom_tests = { 'CheckCPlusPlus' : CheckCPlusPlus,
                                        'CheckPNG' : CheckPNG,
                                        'CheckBoost' : CheckBoost })
 
-#if env["prereqs"]:
-#    conf.CheckPKGConfig('0.15.0') or Die("Base prerequisites are not met.")
-
 if env["prereqs"]:
     conf.CheckCPlusPlus(gcc_version = "3.3") and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
+    conf.CheckPKGConfig('0.15.0') and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
 
     have_client_prereqs = \
