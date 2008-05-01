@@ -299,6 +299,10 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  * the wanted default size and the size needed for the text. The size of the
  * text differs per used widget so needs to be determined per button. 
  *
+ * Container widgets like panels and windows have other rules for their sizes.
+ * Their sizes are based on the size of their children (and the border they need
+ * themselves). It's wise to set all sizes to 0 for these kind of widgets.
+ *
  * @start_table = config
  *     window_width (unsigned = 0)   Width of the application window.
  *     window_height (unsigned = 0) 
@@ -488,7 +492,6 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
  *     left_border (unsigned = 0)    The size which isn't used for the client area.
  *     right_border (unsigned = 0)   The size which isn't used for the client area.
  * @end_table
- *
  *
  * The following layers exist:
  * * background, the background of the panel.

@@ -88,6 +88,15 @@ struct tbuilder_label : public tbuilder_control
 private:
 	tbuilder_label();
 public:
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_label
+ *
+ * == Label ==
+ *
+ * A label has no special fields.
+ *
+ */
 	tbuilder_label(const config& cfg) :
 		tbuilder_control(cfg)
 	{}
@@ -115,6 +124,15 @@ struct tbuilder_spacer : public tbuilder_control
 private:
 	tbuilder_spacer();
 public:
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_spacer
+ *
+ * == Spacer ==
+ *
+ * A spacer has no special fields.
+ *
+ */
 	tbuilder_spacer(const config& cfg) :
 		tbuilder_control(cfg)
 	{}
@@ -130,6 +148,24 @@ private:
 	std::string history_;
 
 public:
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_text_box
+ *
+ * == Text box ==
+ *
+ * @start_table = config
+ *     label (tstring = "")            The initial text of the text box.
+ *     history (string = "")           The name of the history for the text box.
+ *                                     A history saves the data entered in a
+ *                                     text box between the games. With the up
+ *                                     and down arrow it can be accessed. To
+ *                                     create a new history item just add a new
+ *                                     unique name for this field and the engine
+ *                                     will handle the rest.
+ * @end_table
+ *
+ */
 	tbuilder_text_box(const config& cfg) :
 		tbuilder_control(cfg),
 		history_(cfg["history"])
@@ -250,7 +286,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	width(lexical_cast_default<unsigned>(cfg["width"])),
 	height(lexical_cast_default<unsigned>(cfg["height"])),
 	definition(cfg["definition"]),
-	grid(0) //new tbuilder_grid(cfg.child("grid")))
+	grid(0)
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -287,47 +323,68 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	
 }
 
+static unsigned get_v_align(const std::string& v_align)
+{
+
+	if(v_align == "top") {
+		return tgrid::VERTICAL_ALIGN_TOP;
+	} else if(v_align == "bottom") {
+		return tgrid::VERTICAL_ALIGN_BOTTOM;
+	} else {
+		if(!v_align.empty() && v_align != "center") {
+			ERR_G_E << "Invalid vertical alignment '" 
+				<< v_align << "' falling back to 'center'.\n";
+		}
+		return tgrid::VERTICAL_ALIGN_CENTER;
+	}
+}
+
+static unsigned get_h_align(const std::string& h_align)
+{
+	if(h_align == "left") {
+		return tgrid::HORIZONTAL_ALIGN_LEFT;
+	} else if(h_align == "right") {
+		return tgrid::HORIZONTAL_ALIGN_RIGHT;
+	} else {
+		if(!h_align.empty() && h_align != "center") {
+			ERR_G_E << "Invalid horizontal alignment '" 
+				<< h_align << "' falling back to 'center'.\n";
+		}
+		return tgrid::HORIZONTAL_ALIGN_CENTER;
+	}
+}
+
+static unsigned get_border(const std::vector<std::string>& border)
+{
+	if(std::find(border.begin(), border.end(), "all") != border.end()) {
+		return tgrid::BORDER_TOP 
+			| tgrid::BORDER_BOTTOM | tgrid::BORDER_LEFT | tgrid::BORDER_RIGHT;
+	} else {
+		if(std::find(border.begin(), border.end(), "top") != border.end()) {
+			return tgrid::BORDER_TOP;
+		}
+		if(std::find(border.begin(), border.end(), "bottom") != border.end()) {
+			return tgrid::BORDER_BOTTOM;
+		}
+		if(std::find(border.begin(), border.end(), "left") != border.end()) {
+			return tgrid::BORDER_LEFT;
+		}
+		if(std::find(border.begin(), border.end(), "right") != border.end()) {
+			return tgrid::BORDER_RIGHT;
+		}
+	}
+
+	return 0;
+}
+
 static unsigned read_flags(const config& cfg)
 {
 	unsigned flags = 0;
 
 	// Read the flags. FIXME document.
-	std::string v_align = cfg["vertical_alignment"];
-	if(v_align == "top") {
-		flags |= tgrid::VERTICAL_ALIGN_TOP;
-	} else if(v_align == "bottom") {
-		flags |= tgrid::VERTICAL_ALIGN_BOTTOM;
-	} else {
-		flags |= tgrid::VERTICAL_ALIGN_CENTER;
-	}
-
-	std::string h_align = cfg["horizontal_alignment"];
-	if(h_align == "left") {
-		flags |= tgrid::HORIZONTAL_ALIGN_LEFT;
-	} else if(h_align == "right") {
-		flags |= tgrid::HORIZONTAL_ALIGN_RIGHT;
-	} else {
-		flags |= tgrid::HORIZONTAL_ALIGN_CENTER;
-	}
-
-	std::vector<std::string> border = utils::split(cfg["border"]);
-	if(std::find(border.begin(), border.end(), "all") != border.end()) {
-		flags |= tgrid::BORDER_TOP 
-			| tgrid::BORDER_BOTTOM | tgrid::BORDER_LEFT | tgrid::BORDER_RIGHT;
-	} else {
-		if(std::find(border.begin(), border.end(), "top") != border.end()) {
-			flags |= tgrid::BORDER_TOP;
-		}
-		if(std::find(border.begin(), border.end(), "bottom") != border.end()) {
-			flags |= tgrid::BORDER_BOTTOM;
-		}
-		if(std::find(border.begin(), border.end(), "left") != border.end()) {
-			flags |= tgrid::BORDER_LEFT;
-		}
-		if(std::find(border.begin(), border.end(), "right") != border.end()) {
-			flags |= tgrid::BORDER_RIGHT;
-		}
-	}
+	flags |= get_v_align(cfg["vertical_alignment"]);
+	flags |= get_h_align(cfg["horizontal_alignment"]);
+	flags |= get_border( utils::split(cfg["border"]));
 
 	if(utils::string_bool(cfg["vertical_grow"])) {
 		flags |= tgrid::VERTICAL_GROW_SEND_TO_CLIENT;
@@ -350,6 +407,67 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 	border_size(),
 	widgets()
 {
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 2_cell
+ *
+ * = Cell =
+ *
+ * Every grid cell has some cell configuration values and one widget in the grid
+ * cell. Here we describe the what is available more information about the usage
+ * can be found here [[GUILayout]].
+ *
+ * == Row values ==
+ *
+ * For every row the following variables are available:
+ *
+ * @start_table = config
+ *     grow_factor (unsigned = 0)      The grow factor for a row.
+ * @end_table
+ *
+ * == Cell values ==
+ *
+ * For every column the following variables are available:
+ * @start_table = config
+ *     grow_factor (unsigned = 0)      The grow factor for a column, this value
+ *                                     is only read for the first row.
+ *
+ *     border_size (unsigned = 0)      The border size for this grid cell.
+ *     border (border = "")            Where to place the border in this grid
+ *                                     cell.
+ *
+ *     vertical_alignment (v_align = "")
+ *                                     The vertical alignment of the widget in
+ *                                     the grid cell.
+ *     horizontal_alignment (h_align = "")
+ *                                     The horizontal alignment of the widget in
+ *                                     the grid cell.
+ *    
+ *     vertical_grow (bool = false)    Does the widget grow in vertical
+ *                                     direction when the grid cell grows in the
+ *                                     vertical directon. This is used if the
+ *                                     grid cell is wider as the best width for
+ *                                     the widget.
+ *     horizontal_grow (bool = false)  Does the widget grow in horizontal
+ *                                     direction when the grid cell grows in the
+ *                                     horizontal directon. This is used if the
+ *                                     grid cell is higher as the best width for
+ *                                     the widget.
+ * @end_table
+ *
+ * == Widget ==
+ *
+ * The widget is one of the following items:
+ * * button a button.
+ * * grid a grid, this is used to nest items.
+ * * label a label.
+ * * panel a panel (a grid which can be drawn on).
+ * * spacer a filler item. 
+ * * text_box a text box.
+ *
+ * More details about the widgets is in the next section.
+ *
+ */
 	log_scope2(gui_parse, "Window builder: parsing a grid");
 
 	const config::child_list& row_cfgs = cfg.get_children("row");
@@ -411,6 +529,48 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 	tooltip(cfg["tooltip"]),
 	help(cfg["help"])
 {
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget
+ *
+ * = Widget =
+ *
+ * All widgets placed in the cell have some values in common:
+ * @start_table = config
+ *     id (string = "")                This value is used for the engine to
+ *                                     identify 'special' items. This means that
+ *                                     for example a text_box can get the proper
+ *                                     initial value. This value should be
+ *                                     unique or empty. Those special values are
+ *                                     documented at the window definition that
+ *                                     uses them.
+ *
+ *     definition (string = "default") The id of the widget definition to use.
+ *                                     This way it's possible to select a
+ *                                     specific version of the widget eg a title
+ *                                     label when the label is used as title.
+ *
+ *     label (tstring = "")            Most widgets have some text accosiated
+ *                                     with them, this field contain the value
+ *                                     of that text. Some widgets use this value
+ *                                     for other purposes, this is documented
+ *                                     at the widget.
+ *
+ *     tooptip (tstring = "")          If you hover over a widget a while (the 
+ *                                     time it takes can differ per widget) a
+ *                                     short help can show up.This defines the
+ *                                     text of that message.
+ *
+ *
+ *     help (tstring = "")             If you hover over a widget and press F1 a
+ *                                     help message can show up. This help
+ *                                     message might be the same as the tooltip
+ *                                     but in general (if used) this message
+ *                                     should show more help. This defines the
+ *                                     text of that message.
+ * @end_table
+ *
+ */
 
 	if(definition.empty()) {
 		definition = "default";
@@ -454,6 +614,26 @@ tbuilder_button::tbuilder_button(const config& cfg) :
 	tbuilder_control(cfg),
 	retval_(lexical_cast_default<int>(cfg["return_value"]))
 {
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_button
+ *
+ * == Button ==
+ *
+ * Definition of a button. When a button has a return value it sets the retour
+ * value for the window. Normally this closes the window and returns this value
+ * to the caller. The return value can either be defined by the user or
+ * determined from the id of the button. The return value has a higher
+ * precedence as the one defined by the id. (Of course it's weird to give a
+ * button an id and then override it's return value.)
+ *
+ * List with the button specific variables:
+ * @start_table = config
+ *     return_value (int = 0)          The return value.
+ *
+ * @end_table
+ *
+ */
 }
 
 twidget* tbuilder_label::build() const
@@ -472,6 +652,22 @@ tbuilder_panel::tbuilder_panel(const config& cfg) :
 	tbuilder_control(cfg),
 	grid(0)
 {
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_panel
+ *
+ * == Panel ==
+ *
+ * A panel is an item which can hold other items. The difference between a grid
+ * and a panel is that it's possible to define how a panel looks. A grid in an
+ * invisible container to just hold the items.
+ *
+ * @start_table = config
+ *     grid (section)                  Defines the grid with the widgets to
+ *                                     place on the panel.
+ * @end_table                                   
+ *
+ */
 	VALIDATE(cfg.child("grid"), _("No grid defined."));
 
 	grid = new tbuilder_grid(*(cfg.child("grid")));
@@ -571,4 +767,12 @@ twidget* tbuilder_grid::build() const
 }	
 
 } // namespace gui2
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = ZZZZZZ_footer
+ *
+ * [[Category: WML Reference]]
+ * [[Category: Generated]]
+ *
+ */
 

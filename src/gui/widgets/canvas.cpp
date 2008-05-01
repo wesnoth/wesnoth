@@ -290,6 +290,32 @@ tline::tline(const config& cfg) :
  *     section                         A section is a generic variable for a
  *                                     WML section. The description should
  *                                     explain the exact type.
+ *
+ *     v_align                         Vertical alignment; how an item is
+ *                                     aligned vertically in the available
+ *                                     space. Possible values:
+ *                                     * top    aligned at the top  
+ *                                     * bottom aligned at the bottom
+ *                                     * center centered 
+ *                                     When nothing is set or an another value
+ *                                     as in the list the item is centred.
+ *
+ *     h_align                         Horizontal alignment; how an item is
+ *                                     aligned horizontal in the available
+ *                                     space. Possible values:
+ *                                     * top    aligned at the top  
+ *                                     * bottom aligned at the bottom
+ *                                     * center centered 
+ *
+ *     border                          Comma separated list of borders to use.
+ *                                     Possible values:
+ *                                     * left   border at the left side
+ *                                     * right  border at the right side
+ *                                     * top    border at the top
+ *                                     * bottom border at the bottom
+ *                                     * all    alias for "left, right, top,
+ *                                     bottom"
+ *
  * @end_table
  */
 
