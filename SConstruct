@@ -296,7 +296,9 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         if sdldir:
             env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL")], LIBPATH = [os.path.join(sdldir, "lib")])
         if env["PLATFORM"] == "posix" or env["PLATFORM"] == "darwin":
-            env.ParseConfig("pkg-config --cflags --libs sdl")
+            result, output = context.TryAction("pkg-config --cflags --libs sdl > $TARGET")
+            if result == 1:
+                env.MergeFlags(output)
         if env["PLATFORM"] == "win32":
             env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
             env.AppendUnique(LIBS = Split("mingw32 SDLmain SDL"))
