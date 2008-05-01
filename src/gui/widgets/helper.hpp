@@ -35,12 +35,18 @@ struct tpoint
 	int y;
 
 	bool operator==(const tpoint& point) const { return x == point.x && y == point.y; }
+	bool operator!=(const tpoint& point) const { return x != point.x || y != point.y; }
 	bool operator<(const tpoint& point) const 
 		{ return x < point.x || (x == point.x && y < point.y); }
 
 	bool operator<=(const tpoint& point) const 
 		{ return x < point.x || (x == point.x && y <= point.y); }
 		
+	tpoint operator+(const tpoint& point) const 
+		{ return tpoint(x + point.x, y + point.y); }
+
+	tpoint& operator+=(const tpoint& point);
+
 };
 
 

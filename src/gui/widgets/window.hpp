@@ -94,11 +94,6 @@ public:
 	//! Inherited from tpanel.
 	void draw(surface& surface);
 
-	//! Inherited from twidget.
-	tpoint get_minimum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
-	tpoint get_best_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
-	tpoint get_maximum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); }
-
 	//! Gets the coordinates of the client area, for external use the height
 	//! and the width are the most interesting things.
 	//FIXME this can be removed it the panel defintion inherites from panel defintion

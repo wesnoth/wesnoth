@@ -79,9 +79,9 @@ public:
 	void remove_child(const std::string& id, const bool find_all = false);
 
 	//! Inherited from twidget.
-	tpoint get_minimum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); } 
+	tpoint get_minimum_size() const;
 	tpoint get_best_size() const;
-	tpoint get_maximum_size() const { /*FIXME IMPLEMENT*/ return tpoint(0,0); }
+	tpoint get_maximum_size() const;
 
 	//! Inherited from twidget.
 	void set_size(const SDL_Rect& rect);
@@ -108,6 +108,7 @@ private:
 			widget_(0),
 			best_size_(0, 0),
 			minimum_size_(0, 0),
+			maximum_size_(0, 0),
 			clip_()
 
 			// Fixme make a class wo we can store some properties in the cache 
@@ -127,9 +128,14 @@ private:
 		twidget* widget() { return widget_; }
 		void set_widget(twidget* widget) { widget_ = widget; set_dirty(); }
 
-		//! Gets the best size for the cell, not const since we modify the internal
-		//! state, might use mutable later (if really needed).
+		//! Returns the best size for the cell.
 		tpoint get_best_size() const;
+
+		//! Returns the minimum size for the cell.
+		tpoint get_minimum_size() const;
+
+		//! Returns the maximum size for the cell.
+		tpoint get_maximum_size() const;
 
 		void set_size(tpoint orig, tpoint size);
 
@@ -154,6 +160,12 @@ private:
 		//! The minimum size for this cell, like best_size_.
 		mutable tpoint minimum_size_;
 
+		//! The maximum size for this cell, like best_size_.
+		mutable tpoint maximum_size_;
+
+		//! Returns the space needed for the border.
+		tpoint border_space() const;
+
 		//! The clipping area for the widget. This is also the size of 
 		//! the container.
 		SDL_Rect clip_;
@@ -164,6 +176,7 @@ private:
 		{ 
 			best_size_ = tpoint(0, 0); 
 			minimum_size_ = tpoint(0, 0); 
+			maximum_size_ = tpoint(0, 0);
 		}
 
 	}; // class tchild
@@ -200,12 +213,12 @@ private:
 	unsigned cols_;
 
 	//! The optimal row heights / col widths.
-	mutable std::vector<unsigned> best_row_height_; //FIXME implement
-	mutable std::vector<unsigned> best_col_width_; //FIXME implement
+	mutable std::vector<unsigned> best_row_height_;
+	mutable std::vector<unsigned> best_col_width_;
 
 	//! The minimal row heights / col widths.
-	mutable std::vector<unsigned> minimum_row_height_; //FIXME implement
-	mutable std::vector<unsigned> minimum_col_width_; //FIXME implement
+	mutable std::vector<unsigned> minimum_row_height_;
+	mutable std::vector<unsigned> minimum_col_width_;
 
 	//! The row heights / col widths currently used.
 	std::vector<unsigned> row_height_;
@@ -225,6 +238,10 @@ private:
 	void clear_cache();
 
 	void layout(const tpoint& origin);
+
+	//! Helper function to get the best or minimum size.
+	tpoint get_size(const std::string& id, std::vector<unsigned>& width, 
+		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const) const;
 };
 
 } // namespace gui2

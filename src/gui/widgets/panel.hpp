@@ -52,6 +52,12 @@ public:
 	unsigned get_state() const { return 0; }
 
 	//! Inherited from tcontrol.
+	tpoint get_minimum_size() const;
+	tpoint get_best_size() const;
+
+	// get_maximum_size is inherited from tcontrol.
+
+	//! Inherited from tcontrol.
 	void draw(surface& surface);
 
 	//! Inherited from tcontrol.
@@ -90,6 +96,9 @@ private:
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 
 		{ static const std::string type = "panel"; return type; }
+
+	//! Returns the space used by the border.
+	tpoint border_space() const;
 }; 
 
 } // namespace gui2
