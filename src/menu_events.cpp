@@ -2301,6 +2301,7 @@ private:
 			void do_debug();
 			void do_nodebug();
 			void do_custom();
+			void do_set_alias();
 			void do_set_var();
 			void do_show_var();
 			void do_unit();
@@ -2375,6 +2376,8 @@ private:
 					_("Turn debug mode off."), "", "D");
 				register_command("custom", &console_handler::do_custom,
 					_("Set the command used by the custom command hotkey"), "<command>");
+				register_command("alias", &console_handler::do_set_alias,
+					_("Set a alias to a command"), "<name>=<command>");
 				register_command("set_var", &console_handler::do_set_var,
 					_("Set a scenario variable."), "<var>=<value>", "D");
 				register_command("show_var", &console_handler::do_show_var,
@@ -2790,6 +2793,15 @@ private:
 	}
 	void console_handler::do_custom() {
 		preferences::set("custom_command", get_data());
+	}
+	void console_handler::do_set_alias() {
+		const std::string data = get_data();
+		const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
+		if(j != data.end()) {
+			const std::string alias(data.begin(),j);
+			const std::string command(j+1,data.end());
+			register_alias(command, alias);
+		}
 	}
 	void console_handler::do_set_var() {
 		const std::string data = get_data();
