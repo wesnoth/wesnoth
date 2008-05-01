@@ -1957,8 +1957,16 @@ private:
 					init_map();
 				}
 
-				std::string actual_cmd = get_actual_cmd(cmd);
-				parse_cmd(actual_cmd);
+				// We recursively resolve alias (100 max to avoid infinite recursion)
+				for (int i=0; i < 100; ++i) {
+					parse_cmd(cmd);
+					std::string actual_cmd = get_actual_cmd(get_cmd());
+					if (actual_cmd == get_cmd())
+						break;
+					std::string data = get_data(1);
+					// translate the command and add space + data if any
+					cmd = actual_cmd + (data.empty() ? "" : " ") + data;
+				}
 
 				if (get_cmd().empty()) {
 					return;
