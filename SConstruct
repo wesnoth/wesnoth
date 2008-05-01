@@ -185,7 +185,7 @@ def CheckCPlusPlus(context, gcc_version = None):
         \n""" % version_num
     message += "... "
     context.Message(message)
-    if context.TryBuild(context.env.Program, test_program, ".cpp") == 1:
+    if context.TryBuild(context.env.Program, test_program, ".cpp") == 1 and context.lastTarget.get_contents() != "":
         context.Result("yes")
         return True
     else:
@@ -647,6 +647,8 @@ def InstallFilteredHook(target, source, env):
 env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
 
 def InstallWithSuffix(env, target, source):
+    if not source:
+        return source
     return env.InstallAs(os.path.join(target, source[0].name + env["program_suffix"]), source)
 
 #env.AddMethod(InstallWithSuffix)
