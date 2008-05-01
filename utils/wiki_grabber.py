@@ -103,7 +103,7 @@ if __name__ == "__main__":
                 result += "|mandatory\n"
             else:
                 result += "|" + res[i][2] + "\n"
-            result += "|" + res[i][3] + "\n"
+            result += "|" + re.sub(r'@\*', "\n*", res[i][3]) + "\n"
         result += "|}"
 
         return result
@@ -131,7 +131,7 @@ if __name__ == "__main__":
             result += "|-\n"
             result += "|" + res[i][0] + "\n"
             result += "|" + res[i][1] + "\n"
-            result += "|" + res[i][2] + "\n"
+            result += "|" + re.sub(r'@\*', "\n*", res[i][2]) + "\n"
         result += "|}"
 
         return result
@@ -154,7 +154,7 @@ if __name__ == "__main__":
         for i in range(len(res)):
             result += "|-\n"
             result += "|<span id=\"" + res[i][0] + "\">" + res[i][0] + "</span>\n"
-            result += "|" + res[i][1] + "\n"
+            result += "|" + re.sub(r'@\*', "\n*", res[i][1]) + "\n"
         result += "|}"
 
         return result
@@ -177,7 +177,7 @@ if __name__ == "__main__":
         for i in range(len(res)):
             result += "|-\n"
             result += "|" + res[i][0] + "\n"
-            result += "|" + res[i][1] + "\n"
+            result += "|" + re.sub(r'@\*', "\n*", res[i][1]) + "\n"
         result += "|}"
 
         return result
