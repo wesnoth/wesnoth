@@ -57,8 +57,16 @@
 
 namespace gui2 {
 
-unsigned screen_width = 0;
-unsigned screen_height = 0;
+namespace settings {
+	unsigned screen_width = 0;
+	unsigned screen_height = 0;
+
+	unsigned popup_show_delay = 0;
+	unsigned popup_show_time = 0;
+	unsigned help_show_time = 0;
+	unsigned double_click_time = 0;
+
+} // namespace settings
 
 namespace {
 
@@ -92,12 +100,14 @@ void load_settings()
 {
 	LOG_G << "Setting: init gui.\n";
 
+	// Init.
 	fill_window_types();
 
 	const SDL_Rect rect = screen_area();
-	screen_width = rect.w;
-	screen_height = rect.h;
+	settings::screen_width = rect.w;
+	settings::screen_height = rect.h;
 
+	// Read file.
 	config cfg;
 	const std::string& filename = "data/gui/default.cfg";
 	try {
@@ -107,6 +117,7 @@ void load_settings()
 		ERR_G_P << "Setting: could not read file '" << filename << "'.\n";
 	}
 
+	// Parse guis
 	const config::child_list& gui_cfgs = cfg.get_children("gui");
 	for(std::vector<config*>::const_iterator itor = gui_cfgs.begin();
 			itor != gui_cfgs.end(); ++itor) {
@@ -119,6 +130,7 @@ void load_settings()
 	VALIDATE(guis.find("default") != guis.end(), _ ("No default gui defined."));
 
 	current_gui = guis.find("default");
+	current_gui->second.activate();
 }
 
 const std::string& tgui_definition::read(const config& cfg)
@@ -156,6 +168,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   [[#widget_list|widgets]].
  *     window (section)              The defintions of all 
  *                                   [[#window_list|windows]].
+ *     settings (section)            The settings for the gui.
  * @end_table
  *
  * <span id="widget_list"></span>List of available widgets:
@@ -213,11 +226,48 @@ const std::string& tgui_definition::read(const config& cfg)
 		}
 	}
 
+	/***** settings *****/
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1
+ *
+ * A setting section has the following variables:
+ * @start_table = config
+ *     popup_show_delay (unsigned = 0) The time it take before the popup shows
+ *                                     if the mouse moves over the widget. 0 
+ *                                     means show directly.
+ *     popup_show_time (unsigned = 0)  The time a shown popup remains visible.
+ *                                     0 means until the mouse leaves the 
+ *                                     widget.
+ *     help_show_time (unsigned = 0)   The time a shown help remains visible.
+ *                                     0 means until the mouse leaves the 
+ *                                     widget.
+ *     double_click_time (unsigned)    The time between two clicks to still be a
+ *                                     double click.
+ */
+	const config& settings = *cfg.child("settings");
+
+	popup_show_delay_ = lexical_cast_default<unsigned>(settings["popup_show_delay"]);
+	popup_show_time_ = lexical_cast_default<unsigned>(settings["popup_show_time"]);
+	help_show_time_ = lexical_cast_default<unsigned>(settings["help_show_time"]);
+	double_click_time_ = lexical_cast_default<unsigned>(settings["double_click_time"]);
+
+	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
+
 	return id;
 }
 
+void tgui_definition::activate() const
+{
+	settings::popup_show_delay = popup_show_delay_;
+	settings::popup_show_time = popup_show_time_;
+	settings::help_show_time = help_show_time_;
+	settings::double_click_time = double_click_time_;
+}
+
 template<class T>
-void tgui_definition::load_definitions(const std::string& definition_type, const config::child_list& definition_list)
+void tgui_definition::load_definitions(
+	const std::string& definition_type, const config::child_list& definition_list)
 {
 	for(std::vector<config*>::const_iterator itor = definition_list.begin();
 			itor != definition_list.end(); ++itor) {
@@ -641,8 +691,8 @@ tresolution_definition_* get_control(const std::string& control_type, const std:
 			itor != end;
 			++itor) {
 
-		if(screen_width <= (**itor).window_width &&
-				screen_height <= (**itor).window_height) {
+		if(settings::screen_width <= (**itor).window_width &&
+				settings::screen_height <= (**itor).window_height) {
 
 			return *itor;
 		} else if (itor == end - 1) {
@@ -670,8 +720,8 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(con
 			itor != end;
 			++itor) {
 
-		if(screen_width <= itor->window_width &&
-				screen_height <= itor->window_height) {
+		if(settings::screen_width <= itor->window_width &&
+				settings::screen_height <= itor->window_height) {
 
 			return itor;
 		} else if (itor == end - 1) {

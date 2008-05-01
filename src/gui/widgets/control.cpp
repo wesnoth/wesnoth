@@ -60,13 +60,13 @@ tcontrol::tcontrol(const unsigned canvas_count) :
 void tcontrol::mouse_hover(tevent_handler& event)
 {
 	DBG_G_E << "Control: mouse hover.\n"; 
-	event.show_tooltip(tooltip_, 5000); //FIXME timout should be a parameter
+	event.show_tooltip(tooltip_, settings::popup_show_time);
 }
 
 void tcontrol::help_key(tevent_handler& event)
 {
 	DBG_G_E << "Control: help key.\n"; 
-	event.show_help_popup(help_message_, 0); //FIXME timout should be a parameter
+	event.show_help_popup(help_message_, settings::help_show_time);
 }
 
 void tcontrol::set_size(const SDL_Rect& rect)

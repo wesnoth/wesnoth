@@ -183,13 +183,27 @@ struct twindow_definition : public tpanel_definition
 
 struct tgui_definition
 {
+	tgui_definition() : 
+		id(),
+		description(),
+		popup_show_delay_(0),
+		popup_show_time_(0),
+		help_show_time_(0),
+		double_click_time_(0)
+	{
+	}
+
 	std::string id;
 	t_string description;
 
 	const std::string& read(const config& cfg);
 
+	//! Activates a gui.
+	void activate() const;
 	
-	typedef std::map<std::string /*control type*/, std::map<std::string /*id*/, tcontrol_definition*> > tcontrol_definition_map;
+	typedef std::map <std::string /*control type*/, 
+		std::map<std::string /*id*/, tcontrol_definition*> > 
+		tcontrol_definition_map;
 
 	tcontrol_definition_map control_definition;
 
@@ -198,20 +212,38 @@ struct tgui_definition
 	std::map<std::string, twindow_builder> window_types;
 private:
 	template<class T>
-	void load_definitions(const std::string& definition_type, const config::child_list& definition_list);
+	void load_definitions(const std::string& definition_type, 
+		const config::child_list& definition_list);
+
+	unsigned popup_show_delay_;
+	unsigned popup_show_time_;
+	unsigned help_show_time_;
+	unsigned double_click_time_;
 };
 
-	tresolution_definition_* get_control(const std::string& control_type, const std::string& definition);
+	tresolution_definition_* get_control(
+		const std::string& control_type, const std::string& definition);
 
-	std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type);
+	std::vector<twindow_builder::tresolution>::const_iterator 
+		get_window_builder(const std::string& type);
 
 	//! Loads the setting for the theme.
 	void load_settings();
 
-	//! The screen resolution should be available for all widgets since their
-	//! drawing method will depend on it.
-	extern unsigned screen_width;
-	extern unsigned screen_height;
+
+	// This namespace contains the 'global' settings.
+	namespace settings {
+		//! The screen resolution should be available for all widgets since their
+		//! drawing method will depend on it.
+		extern unsigned screen_width;
+		extern unsigned screen_height;
+
+		//! These are copied from the active gui.
+		extern unsigned popup_show_delay;
+		extern unsigned popup_show_time;
+		extern unsigned help_show_time;
+		extern unsigned double_click_time;
+	}
 
 } // namespace gui2
 

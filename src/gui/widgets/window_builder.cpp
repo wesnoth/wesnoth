@@ -242,8 +242,8 @@ twindow build(CVideo& video, const std::string& type)
 	if(definition->automatic_placement) {
 		
 		tpoint size = window.get_best_size();
-		size.x = size.x < screen_width ? size.x : screen_width;
-		size.y = size.y < screen_height ? size.y : screen_height;
+		size.x = size.x < settings::screen_width ? size.x : settings::screen_width;
+		size.y = size.y < settings::screen_height ? size.y : settings::screen_height;
 
 		tpoint position(0, 0);
 		switch(definition->horizontal_placement) {
@@ -251,10 +251,10 @@ twindow build(CVideo& video, const std::string& type)
 				// Do nothing
 				break;
 			case tgrid::HORIZONTAL_ALIGN_CENTER :
-				position.x = (screen_width - size.x) / 2;
+				position.x = (settings::screen_width - size.x) / 2;
 				break;
 			case tgrid::HORIZONTAL_ALIGN_RIGHT :
-				position.x = screen_width - size.x;
+				position.x = settings::screen_width - size.x;
 				break;
 			default :
 				assert(false);
@@ -264,10 +264,10 @@ twindow build(CVideo& video, const std::string& type)
 				// Do nothing
 				break;
 			case tgrid::VERTICAL_ALIGN_CENTER :
-				position.y = (screen_height - size.y) / 2;
+				position.y = (settings::screen_height - size.y) / 2;
 				break;
 			case tgrid::VERTICAL_ALIGN_BOTTOM :
-				position.y = screen_height - size.y;
+				position.y = settings::screen_height - size.y;
 				break;
 			default :
 				assert(false);

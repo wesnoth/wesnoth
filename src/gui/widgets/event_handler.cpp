@@ -443,7 +443,7 @@ void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)
 {
 	if((widget->*button.wants_double_click)()) {
 		Uint32 stamp = SDL_GetTicks();
-		if(button.last_click_stamp + 500 >= stamp) { // FIXME 500 should be variable
+		if(button.last_click_stamp + settings::double_click_time >= stamp) {
 
 			(widget->*button.double_click)(*this);
 			button.last_click_stamp = 0;
@@ -497,8 +497,7 @@ void tevent_handler::set_hover(const bool test_on_widget)
 	*hover = hover_id;
 	hover_id_ = hover_id++;
 			
-	// Fixme delay show be a setting
-	SDL_AddTimer(1500, hover_callback, hover);
+	SDL_AddTimer(settings::popup_show_delay, hover_callback, hover);
 }
 
 void tevent_handler::key_down(const SDL_Event& event)

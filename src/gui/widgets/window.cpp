@@ -181,8 +181,8 @@ void twindow::flip()
 void twindow::window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height)
 {
-	screen_width = new_width;
-	screen_height = new_height;
+	settings::screen_width = new_width;
+	settings::screen_height = new_height;
 	need_layout_ = true;
 }
 
