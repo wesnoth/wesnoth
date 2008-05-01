@@ -61,7 +61,7 @@ const int ButtonVPadding = 10;
 const dialog_frame::style dialog_frame::default_style("opaque", 0);
 const dialog_frame::style dialog_frame::message_style("translucent65", 3);
 const dialog_frame::style dialog_frame::preview_style("../misc/selection", 0);
-const dialog_frame::style dialog_frame::titlescreen_style("translucent54", 0);
+const dialog_frame::style dialog_frame::titlescreen_style("translucent54", 1);
 
 const int dialog_frame::title_border_w = 10;
 const int dialog_frame::title_border_h = 5;
