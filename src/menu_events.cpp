@@ -1952,16 +1952,19 @@ private:
 			//actual work function
 			void dispatch(std::string cmd)
 			{
-				parse_cmd(cmd);
 				if (empty()) {
 					init_map_default();
 					init_map();
 				}
+
+				std::string actual_cmd = get_actual_cmd(cmd);
+				parse_cmd(actual_cmd);
+
 				if (get_cmd().empty()) {
 					return;
 				}
-				std::string actual_cmd = get_actual_cmd(get_cmd());
-				if (const command* c = get_command(actual_cmd)) {
+
+				if (const command* c = get_command(get_cmd())) {
 					if (is_enabled(*c)) {
 						(static_cast<Worker*>(this)->*(c->handler))();
 					} else {
