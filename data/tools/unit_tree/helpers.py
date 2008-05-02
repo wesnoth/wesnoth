@@ -79,7 +79,6 @@ class ImageCollector:
             bases = [os.path.join(self.datadir, "core/images")]
         else:
             bases = [os.path.join(self.datadir, "core/images")]
-            bases += [os.path.join(self.datadir, "core/images/attacks")]
             binpaths = self.pathes_per_campaign.get(c, [])
             binpaths.reverse()
             for x in binpaths:
@@ -93,11 +92,12 @@ class ImageCollector:
             if os.path.exists(ipath): return ipath, None
         return None, bases
 
-    def add_image(self, campaign, path):
-        if (campaign, path) in self.notfound: return self.notfound[(campaign, path)]
+    def add_image_check(self, campaign, path):
+        if (campaign, path) in self.notfound:
+            return self.notfound[(campaign, path)], True
         ipath, error = self.find_image(path, campaign)
         if ipath in self.ipathes:
-            return self.ipathes[ipath]
+            return self.ipathes[ipath], False
     
         name = "%05d_" % self.id
         name += os.path.basename(path)
@@ -106,8 +106,13 @@ class ImageCollector:
         self.images[name] = ipath, path, campaign, error
         if ipath:
             self.ipathes[ipath] = name
+            return name, False
         else:
             self.notfound[(campaign, path)] = name
+            return name, True
+        
+    def add_image(self, campaign, path):
+        name, error = self.add_image_check(campaign, path)
         return name
 
     def copy_and_color_images(self, target_path):
