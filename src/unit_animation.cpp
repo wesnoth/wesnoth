@@ -240,7 +240,6 @@ int unit_animation::matches(const game_display &disp,const gamemap::location& lo
 		}
 		std::vector<config>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); myitor++) {
-			printf("%s\n",my_unit->id().c_str());
 			if(!my_unit->matches_filter(&(*myitor),loc)) return MATCH_FAIL;
 			result++;
 		}
