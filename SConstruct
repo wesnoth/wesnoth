@@ -46,7 +46,7 @@ opts.AddOptions(
     PathOption('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathOption.PathAccept),
     BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolOption('nls','enable compile/install of gettext message catalogs',True),
-    PathOption('prefix', 'autotools-style installation prefix', "/usr/local"),
+    PathOption('prefix', 'autotools-style installation prefix', "/usr/local", PathOption.PathAccept),
     PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept),
     PathOption('destdir', 'prefix to add to all installation paths.', "", PathOption.PathAccept),
     BoolOption('prereqs','abort if prerequisites cannot be detected',True),
@@ -60,6 +60,7 @@ opts.AddOptions(
     BoolOption('static', 'Set to enable static building of Wesnoth', False),
     BoolOption('strict', 'Set to strict compilation', False),
     BoolOption('verbose', 'Emit progress messages during data installation.', False),
+    PathOption('sdldir', 'Directory of SDL installation.', "", PathOption.PathAccept),
     PathOption('boostdir', 'Directory of boost installation.', '/usr/include'),
     PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'),
     ('boost_suffix', 'Suffix of boost libraries.'),
@@ -69,7 +70,11 @@ opts.AddOptions(
 # Setup
 #
 
-env = Environment(options = opts)
+env = Environment(tools=["tar"], options = opts)
+if env["PLATFORM"] == "win32":
+    env.Tool("mingw")
+else:
+    env.Tool("default")
 
 opts.Save('.scons-option-cache', env)
 
@@ -122,11 +127,6 @@ for example, to point scons at non-default library locations.
 
 if env["cachedir"]:
     CacheDir(env["cachedir"])
-
-# Omits the 'test' target 
-all = env.Alias("all", ["wesnoth", "wesnoth_editor", "wesnothd", "campaignd",
-                        "cutter", "exploder"])
-env.Default(["wesnoth", "wesnothd"])
 
 env.TargetSignatures('content')
 
@@ -259,7 +259,10 @@ def CheckPython(context):
     version = distutils.sysconfig.get_config_var("VERSION")
     if not version:
         version = sys.version[:3]
-    env.AppendUnique(LIBPATH = distutils.sysconfig.get_config_var("LIBDIR"))
+    if env["PLATFORM"] == "win32":
+        version = version.replace('.', '')
+    env.AppendUnique(LIBPATH = distutils.sysconfig.get_config_var("LIBDIR") or \
+                               os.path.join(distutils.sysconfig.get_config_var("prefix"), "libs") )
     env.AppendUnique(LIBS = "python" + version)
     test_program = """
     #include <Python.h>
@@ -288,7 +291,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
 
     backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
 
-    sdldir = context.env.get("SDLDIR", "")
+    sdldir = context.env.get("sdldir", "")
     if sdl_lib == "SDL": 
         if require_version:
             context.Message("Checking for Simple DirectMedia Layer library version >= %d.%d.%d... " % (major_version, minor_version, patchlevel))
@@ -341,8 +344,9 @@ def CheckOgg(context):
     int main(int argc, char **argv)
     {
         Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
-        if (music == NULL)
+        if (music == NULL) {
             exit(1);
+        }
         exit(0);
     }
 \n
@@ -408,7 +412,6 @@ conf = Configure(env, custom_tests = { 'CheckCPlusPlus' : CheckCPlusPlus,
 if env["prereqs"]:
     conf.CheckCPlusPlus(gcc_version = "3.3") and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
-    conf.CheckPKGConfig('0.15.0') and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
 
     have_client_prereqs = \
@@ -416,8 +419,7 @@ if env["prereqs"]:
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
         conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
-        conf.CheckOgg() and \
-        conf.CheckPNG() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
+        conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
 
     have_X = conf.CheckLib('X11') or Warning("wesnoth_editor cannot be built.")
     if env['fribidi']:
@@ -457,6 +459,7 @@ env = conf.Finish()
 env.Append(LINKFLAGS = "-Wl,--as-needed")
 
 # Later in the recipe we will guarantee that src/revision.hpp exists 
+env.Replace(CPPDEFINES = [])
 env.Append(CPPDEFINES = 'HAVE_REVISION')
 
 if env["debug"]:
@@ -544,6 +547,11 @@ elif env["PLATFORM"] == 'darwin':			# Mac OS X
 Export(Split("env have_client_prereqs have_X have_server_prereqs"))
 SConscript(dirs = Split("src doc po"))
 Import(Split("sources wesnoth wesnoth_editor wesnothd cutter exploder campaignd"))
+
+# Omits the 'test' target 
+all = env.Alias("all", [wesnoth, wesnoth_editor, wesnothd, campaignd,
+                        cutter, exploder])
+env.Default([wesnoth, wesnothd])
 
 #
 # Utility productions (Unix-like systems only)
