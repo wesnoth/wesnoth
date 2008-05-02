@@ -10,6 +10,17 @@ INCLUDE_DIRECTORIES( ${ZLIB_INCLUDE_DIR} )
 # needed to get include paths in the subfolders correct
 INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/ )
 
+SET( the-external-libs
+    -lSDL_image 
+    -lSDL_mixer
+    -lSDL_net
+    -lSDL_ttf
+    -lSDL -lpthread
+    -lpython2.5
+    -lboost_iostreams-mt
+    -lboost_regex-mt
+)
+
 ########### libwesnoth-core ###############
 
 SET(libwesnoth-core_STAT_SRC
@@ -188,7 +199,7 @@ SET(wesnoth_SRC
 )
 
 ADD_EXECUTABLE(wesnoth ${wesnoth_SRC})
-TARGET_LINK_LIBRARIES(wesnoth wesnoth-core wesnoth-game)
+TARGET_LINK_LIBRARIES(wesnoth wesnoth-core wesnoth-game ${the-external-libs})
 
 ########### Editor ###############
 
@@ -207,7 +218,7 @@ SET(wesnoth_editor_SRC
 )
 
 ADD_EXECUTABLE(wesnoth_editor ${wesnoth_editor_SRC})
-TARGET_LINK_LIBRARIES(wesnoth_editor wesnoth-core)
+TARGET_LINK_LIBRARIES(wesnoth_editor wesnoth-core wesnoth-game ${the-external-libs})
 
 ########### Wesnothd Server ###############
 
@@ -225,7 +236,7 @@ SET(wesnothd_SRC
 )
 
 ADD_EXECUTABLE(wesnothd ${wesnothd_SRC})
-TARGET_LINK_LIBRARIES(wesnothd wesnoth-core)
+TARGET_LINK_LIBRARIES(wesnothd wesnoth-core ${the-external-libs})
 
 ########### Campaign Server ###############
 
@@ -238,7 +249,7 @@ SET(campaignd_SRC
 )
 
 ADD_EXECUTABLE(campaignd ${campaignd_SRC})
-TARGET_LINK_LIBRARIES(campaignd wesnoth-core)
+TARGET_LINK_LIBRARIES(campaignd wesnoth-core ${the-external-libs})
 
 ########### Castle building helpers ###############
 
@@ -253,7 +264,7 @@ SET(exploder_SRC
 )
 
 ADD_EXECUTABLE(exploder ${exploder_SRC})
-TARGET_LINK_LIBRARIES(exploder wesnoth-core)
+TARGET_LINK_LIBRARIES(exploder wesnoth-core ${the-external-libs} -lpng12)
 
 SET(cutter_SRC
     tools/cutter.cpp
@@ -265,7 +276,7 @@ SET(cutter_SRC
 )
 
 ADD_EXECUTABLE(cutter ${cutter_SRC})
-TARGET_LINK_LIBRARIES(cutter wesnoth-core)
+TARGET_LINK_LIBRARIES(cutter wesnoth-core ${the-external-libs} -lpng12)
 
 ########### Unit tests ###############
 
@@ -276,7 +287,7 @@ SET(exploder_SRC
 )
 
 ADD_EXECUTABLE(test ${wesnoth_SRC})
-TARGET_LINK_LIBRARIES(test wesnoth-core wesnoth-game)
+TARGET_LINK_LIBRARIES(test wesnoth-core wesnoth-game ${the-external-libs})
 
 ########### install files ###############
 
