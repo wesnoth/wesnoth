@@ -1945,12 +1945,12 @@ private:
 			{
 				return command_map_.empty();
 			}
-			bool has_command(std::string& cmd) const
+			bool has_command(const std::string& cmd) const
 			{
 				return get_command(cmd) != 0;
 			}
 			//actual work function
-			void dispatch(std::string cmd)
+			void dispatch(const std::string& cmd)
 			{
 				if (empty()) {
 					init_map_default();
@@ -2028,6 +2028,19 @@ private:
 			std::string get_cmd() const
 			{
 				return cap_.get_cmd();
+			}
+			//command error reporting shorthands
+			void command_failed(const std::string& message)
+			{
+				print(get_cmd(), "Error: " + message);
+			}
+			void command_failed_need_arg(int argn)
+			{
+				command_failed("Missing argument " + lexical_cast<std::string>(argn));
+			}
+			void print_usage()
+			{
+				help_command(get_cmd());
 			}
 			//take aliases into account
 			std::string get_actual_cmd(const std::string& cmd) const
@@ -2290,6 +2303,8 @@ private:
 			using chmap::register_alias;
 			using chmap::help;
 			using chmap::is_enabled;
+			using chmap::command_failed;
+			using chmap::command_failed_need_arg;
 
 			void do_refresh();
 			void do_droid();
@@ -2501,7 +2516,8 @@ private:
 	}
 	void chat_command_handler::do_whisper()
 	{
-		if (get_data(2).empty()) return;
+		if (get_data(1).empty()) return command_failed_need_arg(1);
+		if (get_data(2).empty()) return command_failed_need_arg(2);
 		config cwhisper, data;
 		cwhisper["receiver"] = get_arg(1);
 		cwhisper["message"] = get_data(2);
@@ -2523,10 +2539,11 @@ private:
 			const std::string& tmp = preferences::get_ignores();
 			print("ignores list", tmp.empty() ? "(empty)" : tmp);
 		} else {
-			const std::string msg =	(preferences::add_ignore(get_arg(1))
-				? _("Added to ignore list: ") : _("Invalid username: "))
-				+ get_arg(1);
-			print("list", msg);
+			if (preferences::add_ignore(get_arg(1))) {
+				print("ignore",  _("Added to ignore list: ") + get_arg(1));
+			} else {
+				command_failed(_("Invalid username: ") + get_arg(1));
+			}
 		}
 	}
 	void chat_command_handler::do_friend()
@@ -2535,11 +2552,11 @@ private:
 			const std::string& tmp = preferences::get_friends();
 			print("friends list", tmp.empty() ? "(empty)" : tmp);
 		} else {
-			const std::string msg =
-				(preferences::add_friend(get_arg(1))
-				? _("Added to friends list: ") : _("Invalid username: "))
-				+ get_arg(1);
-			print("list", msg);
+			if (preferences::add_friend(get_arg(1))) {
+				print("friend",  _("Added to friends list: ") + get_arg(1));
+			} else {
+				command_failed(_("Invalid username: ") + get_arg(1));
+			}
 		}
 	}
 	void chat_command_handler::do_remove()
@@ -2692,14 +2709,12 @@ private:
 		if (side < 1 || side > menu_handler_.teams_.size()) {
 			utils::string_map symbols;
 			symbols["side"] = side_s;
-			print(_("error"), vgettext(
-					"Can't droid invalid side: '$side'.", symbols));
+			command_failed(vgettext("Can't droid invalid side: '$side'.", symbols));
 			return;
 		} else if (menu_handler_.teams_[side - 1].is_network()) {
 			utils::string_map symbols;
 			symbols["side"] = lexical_cast<std::string>(side);
-			print(_("error"), vgettext(
-					"Can't droid networked side: '$side'.", symbols));
+			command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
 			return;
 		} else if (menu_handler_.teams_[side - 1].is_human() && action != " off") {
 			//this is our side, so give it to AI
@@ -2724,7 +2739,7 @@ private:
 		const std::string player = get_arg(2);
 		if(player.empty())
 		{
-			print(_("error"), _("Usage: control <side> <nick>"));
+			command_failed_need_arg(2);
 			return;
 		}
 
@@ -2734,16 +2749,13 @@ private:
 		} catch(bad_lexical_cast&) {
 			utils::string_map symbols;
 			symbols["side"] = side;
-			print(_("error"), vgettext(
-					"Can't change control of invalid side: '$side'.", symbols));
+			command_failed(vgettext("Can't change control of invalid side: '$side'.", symbols));
 			return;
 		}
 		if (side_num < 1 || side_num > menu_handler_.teams_.size()) {
 			utils::string_map symbols;
 			symbols["side"] = side;
-			print(_("error"), vgettext(
-					"Can't change control of out-of-bounds side: '$side'.",
-					symbols));
+			command_failed(vgettext("Can't change control of out-of-bounds side: '$side'.",	symbols));
 			return;
 		}
 		//if this is our side we are always allowed to change the controller
@@ -2791,12 +2803,18 @@ private:
 		throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
 	}
 	void console_handler::do_debug() {
-		print(get_cmd(), _("Debug mode activated!"));
-		game_config::debug = true;
+		if (network::nconnections() == 0) {
+			print(get_cmd(), _("Debug mode activated!"));
+			game_config::debug = true;
+		} else {
+			command_failed(_("Debug mode not available in network games"));
+		}
 	}
 	void console_handler::do_nodebug() {
-		print(get_cmd(), _("Debug mode deactivated!"));
-		game_config::debug = false;
+		if (game_config::debug) {
+			print(get_cmd(), _("Debug mode deactivated!"));
+			game_config::debug = false;
+		}
 	}
 	void console_handler::do_custom() {
 		preferences::set("custom_command", get_data());
@@ -2812,11 +2830,17 @@ private:
 	}
 	void console_handler::do_set_var() {
 		const std::string data = get_data();
+		if (data.empty()) {
+			command_failed_need_arg(1);
+			return;
+		}
 		const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
 		if(j != data.end()) {
 			const std::string name(data.begin(),j);
 			const std::string value(j+1,data.end());
 			menu_handler_.gamestate_.set_variable(name,value);
+		} else {
+			command_failed("Variable not found");
 		}
 	}
 	void console_handler::do_show_var() {
@@ -2840,8 +2864,7 @@ private:
 		// changed to allow general string
 		// alignments for UMC.
 		if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic")) {
-			ERR_NG << "Invalid alignment: '" << value
-				<< "', needs to be one of lawful, neutral or chaotic.\n";
+			command_failed("Invalid alignment: '" + value + "', needs to be one of lawful, neutral or chaotic.");
 			return;
 		}
 		config cfg;
@@ -2857,6 +2880,8 @@ private:
 			i->second.add_trait(get_data());
 			menu_handler_.gui_->invalidate(i->first);
 			menu_handler_.gui_->invalidate_unit();
+		} else {
+			command_failed("No unit selected");
 		}
 	}
 	void console_handler::do_unbuff() {
@@ -2866,12 +2891,15 @@ private:
 
 			menu_handler_.gui_->invalidate(i->first);
 			menu_handler_.gui_->invalidate_unit();
+		} else {
+			command_failed("No unit selected");
 		}
 	}
 	void console_handler::do_create() {
 		if (menu_handler_.map_.on_board(mouse_handler_.get_last_hex())) {
 			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find(get_data());
 			if(i == unit_type_data::types().end()) {
+				command_failed("Invalid unit type");
 				return;
 			}
 
@@ -2881,6 +2909,8 @@ private:
 				unit(&menu_handler_.units_,&menu_handler_.map_,&menu_handler_.status_,&menu_handler_.teams_,&i->second,1,false)));
 			menu_handler_.gui_->invalidate(mouse_handler_.get_last_hex());
 			menu_handler_.gui_->invalidate_unit();
+		} else {
+			command_failed("Invalid location");
 		}
 	}
 	void console_handler::do_fog() {
