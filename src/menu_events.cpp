@@ -1950,7 +1950,7 @@ private:
 				return get_command(cmd) != 0;
 			}
 			//actual work function
-			void dispatch(const std::string& cmd)
+			void dispatch(std::string cmd)
 			{
 				if (empty()) {
 					init_map_default();
