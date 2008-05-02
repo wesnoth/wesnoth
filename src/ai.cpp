@@ -2249,6 +2249,12 @@ variant ai_interface::get_value(const std::string& key) const
 		return villages_from_set(info_.map.villages(), &current_team().villages());
 	} else if(key == "map") {
 		return variant(new gamemap_callable(info_.map));
+	} else if(key == "teams") {
+		std::vector<variant> vars;
+		for(std::vector<team>::const_iterator i = info_.state.teams->begin(); i != info_.state.teams->end(); ++i) {
+			vars.push_back(variant(new team_callable(*i)));
+		}
+		return variant(&vars);
 	}
 	return variant();
 }
@@ -2264,6 +2270,7 @@ void ai_interface::get_inputs(std::vector<game_logic::formula_input>* inputs) co
 	inputs->push_back(game_logic::formula_input("my_villages", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("teams", FORMULA_READ_ONLY));
 }
 
 variant ai::attack_analysis::get_value(const std::string& key) const

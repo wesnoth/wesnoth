@@ -6,6 +6,7 @@
 #include "formula_callable.hpp"
 #include "map.hpp"
 #include "unit.hpp"
+#include "foreach.hpp"
 
 #define CALLABLE_WRAPPER_START(klass) \
 class klass##_callable : public game_logic::formula_callable { \
@@ -15,8 +16,14 @@ public: \
 	{} \
 	\
 	const klass& get_##klass() const { return object_; } \
-	void get_inputs(std::vector<game_logic::formula_input>* /*inputs*/) const \
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const \
 	{ \
+		using game_logic::FORMULA_READ_ONLY;
+
+#define CALLABLE_WRAPPER_INPUT(VAR) \
+	inputs->push_back(game_logic::formula_input(#VAR, FORMULA_READ_ONLY));
+
+#define CALLABLE_WRAPPER_INPUT_END \
 	} \
 	\
 	variant get_value(const std::string& key) const {
@@ -30,6 +37,8 @@ public: \
 	if(key == #VAR) { \
 		return variant(object_.VAR()); \
 	} else
+
+
 
 #define CALLABLE_WRAPPER_END \
 		{ return variant(); } \
@@ -51,6 +60,10 @@ private:
 };
 
 CALLABLE_WRAPPER_START(gamemap)
+CALLABLE_WRAPPER_INPUT(terrain)
+CALLABLE_WRAPPER_INPUT(w)
+CALLABLE_WRAPPER_INPUT(h)
+CALLABLE_WRAPPER_INPUT_END
 	if(key == "terrain") {
 		int w = object_.w();
 		int h = object_.h();
@@ -139,4 +152,25 @@ private:
 	const unit& u_;
 };
 
+CALLABLE_WRAPPER_START(team)
+CALLABLE_WRAPPER_INPUT(gold)
+CALLABLE_WRAPPER_INPUT(start_gold)
+CALLABLE_WRAPPER_INPUT(base_income)
+CALLABLE_WRAPPER_INPUT(village_gold)
+CALLABLE_WRAPPER_INPUT(name)
+CALLABLE_WRAPPER_INPUT(is_human)
+CALLABLE_WRAPPER_INPUT(is_ai)
+CALLABLE_WRAPPER_INPUT(is_network)
+CALLABLE_WRAPPER_INPUT_END
+CALLABLE_WRAPPER_FN(gold)
+	if(key == "start_gold") { \
+		return variant(lexical_cast<int>(object_.start_gold())); \
+	} else
+CALLABLE_WRAPPER_FN(base_income)
+CALLABLE_WRAPPER_FN(village_gold)
+CALLABLE_WRAPPER_FN(name)
+CALLABLE_WRAPPER_FN(is_human)
+CALLABLE_WRAPPER_FN(is_ai)
+CALLABLE_WRAPPER_FN(is_network)
+CALLABLE_WRAPPER_END
 #endif
