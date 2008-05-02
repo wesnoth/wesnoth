@@ -324,8 +324,8 @@ class DataSub(Data):
 
     def insert_text(self, name, data, translatable = False,
             textdomain = ""):
-        data = DataText(name, data, translatable = translatable,
-            textdomain = textdomain)
+        data = DataText(name, data, translatable = translatable)
+        data.textdomain = textdomain)
         self.insert(data)
 
     def insert_macro(self, name, args = None):
