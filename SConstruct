@@ -460,7 +460,6 @@ env.Append(LINKFLAGS = "-Wl,--as-needed")
 
 # Later in the recipe we will guarantee that src/revision.hpp exists 
 env.Replace(CPPDEFINES = [])
-env.Append(CPPDEFINES = 'HAVE_REVISION')
 
 if env["debug"]:
     env.AppendUnique(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"))

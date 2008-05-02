@@ -268,14 +268,18 @@ test_env.Program("../test", test_sources + [libwesnoth_core, libwesnoth],
             CPPPATH = env["CPPPATH"] + ['/usr/include'],
             LIBS = env["LIBS"] + ['boost_unit_test_framework'])
 
-# FIXME: Currently this will only work under Linux
-env["svnrev"] = commands.getoutput("LC_ALL=C svnversion -n . 2>/dev/null")
-revision_define = ""
+try:
+    env["svnrev"] = commands.getoutput("LC_ALL=C svnversion -n . 2>/dev/null")
+except:
+    env["svnrev"] = ""
+
 if env["svnrev"] != "" and env["svnrev"] != "exported":
     revision_define = "#define REVISION \"%s\"\n" % env["svnrev"]
-r = env.Command("revision.hpp", [],
+    r = env.Command("revision.hpp", [],
                 lambda target, source, env: open(str(target[0]), "w").write(revision_define))
-env.AlwaysBuild(r)
+    env.Append(CPPDEFINES = 'HAVE_REVISION')
+    env.AlwaysBuild(r)
+
 env.TargetSignatures('content')
 
 #
