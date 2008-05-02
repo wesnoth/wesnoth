@@ -2,23 +2,24 @@ Prerequisites:
 
 You'll need to have these libraries (with equivalent devel versions) to build Wesnoth:
 
- libsdl1.2.7
- libsdl-image1.2 (with png support)
- libsdl-mixer1.2 (with Vorbis support)
+ libsdl >= 1.2.7
+ libsdl-image >= 1.2 (with png support)
+ libsdl-mixer >= 1.2 (with Vorbis support)
  libsdl-net
- libsdl-ttf2.0.8
+ libsdl-ttf >= 2.0.8
  libz
  boost_iostreams >= 1.33.0
  boost_regex >= 1.33.0
 
 You will need the following tools:
- 
- python2.4
+
+ python >=2.4
  scons
 
 SDL* libraries can be found at http://www.libsdl.org . libfreetype can be found
-at http://www.freetype.org/ . python can be found at http://www.python.org .
-The boost libraries can be found at http://www.boost.org .
+at http://www.freetype.org/ . Python can be found at http://www.python.org .
+The boost libraries can be found at http://www.boost.org . SCons can be found
+at http://www.scons.org/ .
 
 You will also need to have a working installation of GNU gettext to build the
 translations.
@@ -32,7 +33,7 @@ If you see lots of messages like "Type 'svnversion --help' for usage.",
 you have a Subversion client installed but it is not implementing the 
 -n option of svnversion. Time to update it.
 
-Sourcecode:
+Source-code:
 
 You can get it here:
 
@@ -207,7 +208,7 @@ Notes on the deprecated autotools build:
 The autotools build machinery is deprecated, unsupported, and will be
 removed in a future release.  You will need autoconf (>= 2.60) and
 automake (>= 1.9). Run './autogen.sh' to generate the configure
-files.  Then 
+files.  Then
 
  $ ./configure
  $ make
