@@ -10,15 +10,17 @@ INCLUDE_DIRECTORIES( ${ZLIB_INCLUDE_DIR} )
 # needed to get include paths in the subfolders correct
 INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/ )
 
+LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
+
 SET( the-external-libs
-    -lSDL_image 
-    -lSDL_mixer
-    -lSDL_net
-    -lSDL_ttf
-    -lSDL -lpthread
-    -lpython2.5
-    -lboost_iostreams-mt
-    -lboost_regex-mt
+    SDL_image 
+    SDL_mixer
+    SDL_net
+    SDL_ttf
+    SDL pthread
+    ${PYTHON_LIBRARIES}
+    boost_iostreams-mt
+    boost_regex-mt
 )
 
 ########### libwesnoth-core ###############
