@@ -554,15 +554,20 @@ void save_preview_pane::draw_contents()
 		str << "\n";
 
 		if(campaign_type == "scenario") {
-			const config* campaign = game_config_->find_child("campaign","id",summary["campaign"]);
+			const std::string campaign_id = summary["campaign"];
+			const config* campaign = campaign_id.empty() ? NULL : game_config_->find_child("campaign", "id", campaign_id);
+			utils::string_map symbols;
 			if (campaign != NULL) {
-				utils::string_map symbols;
 				symbols["campaign_name"] = (*campaign)["name"];
-				//!@todo FIXME: this is a superfluous manner of making the string, however, I'll keep it
-				//! for the sake of not messing with the human side of i18n
-				str << vgettext("Campaign: $campaign_name", symbols);	// FIXME: isn't this superfluous?
 			} else {
-				str << _("#(unknown campaign)");
+				// Fallback to nontranslatable campaign id.
+				symbols["campaign_name"] = "(" + campaign_id + ")";
+			}
+			str << vgettext("Campaign: $campaign_name", symbols);
+
+			// Display internal id for debug purposes if we didn't above
+			if (game_config::debug && (campaign != NULL)) {
+				str << '\n' << "(" << campaign_id << ")";
 			}
 		} else if(campaign_type == "multiplayer") {
 			str << _("Multiplayer");
