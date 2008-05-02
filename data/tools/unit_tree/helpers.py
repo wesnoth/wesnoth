@@ -79,6 +79,7 @@ class ImageCollector:
             bases = [os.path.join(self.datadir, "core/images")]
         else:
             bases = [os.path.join(self.datadir, "core/images")]
+            bases += [os.path.join(self.datadir, "core/images/attacks")]
             binpaths = self.pathes_per_campaign.get(c, [])
             binpaths.reverse()
             for x in binpaths:
