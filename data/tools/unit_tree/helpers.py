@@ -222,12 +222,16 @@ class WesnothList:
         """
         Find all addon eras and campaigns.
         """
-        WML = self.parser.parse("""
-            #define MULTIPLAYER\n#enddef
-            #define RANDOM_SIDE\n#enddef
-            {~campaigns}
-            """)
         n = 0
+        try:
+            WML = self.parser.parse("""
+                #define MULTIPLAYER\n#enddef
+                #define RANDOM_SIDE\n#enddef
+                {~campaigns}
+                """)
+        except Exception, e:
+            print e
+            return n
         for campaign in WML.find_all("campaign"):
             cid = self.add_campaign(campaign)
             n += 1
