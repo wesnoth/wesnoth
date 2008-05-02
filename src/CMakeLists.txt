@@ -13,14 +13,14 @@ INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/ )
 LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 
 SET( the-external-libs
-    SDL_image 
-    SDL_mixer
-    SDL_net
-    SDL_ttf
-    SDL pthread
+    ${SDLIMAGE_LIBRARY}
+    ${SDLMIXER_LIBRARY}
+    ${SDLNET_LIBRARY}
+    ${SDLTTF_LIBRARY}
+    ${SDL_LIBRARY}
     ${PYTHON_LIBRARIES}
-    boost_iostreams-mt
-    boost_regex-mt
+    boost_iostreams
+    boost_regex
 )
 
 ########### libwesnoth-core ###############
@@ -266,7 +266,7 @@ SET(exploder_SRC
 )
 
 ADD_EXECUTABLE(exploder ${exploder_SRC})
-TARGET_LINK_LIBRARIES(exploder wesnoth-core ${the-external-libs} -lpng12)
+TARGET_LINK_LIBRARIES(exploder wesnoth-core ${the-external-libs} png12)
 
 SET(cutter_SRC
     tools/cutter.cpp
@@ -278,7 +278,7 @@ SET(cutter_SRC
 )
 
 ADD_EXECUTABLE(cutter ${cutter_SRC})
-TARGET_LINK_LIBRARIES(cutter wesnoth-core ${the-external-libs} -lpng12)
+TARGET_LINK_LIBRARIES(cutter wesnoth-core ${the-external-libs} png12)
 
 ########### Unit tests ###############
 
