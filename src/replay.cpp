@@ -406,7 +406,7 @@ void replay::add_event(const std::string& name, const gamemap::location& loc)
 		config& source = ev.add_child("source");
 		loc.write(source);
 	}
-	(*cmd)["undo"] = "no";
+	(*cmd)["undo"] = "yes";
 }
 
 void replay::add_checksum_check(const gamemap::location& loc)
