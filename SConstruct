@@ -64,6 +64,7 @@ opts.AddOptions(
     PathOption('boostdir', 'Directory of boost installation.', '/usr/include'),
     PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'),
     ('boost_suffix', 'Suffix of boost libraries.'),
+    PathOption('gettext_includedir', 'Directory where libintl.h is located.', "", PathOption.PathAccept), 
     )
 
 #
@@ -300,10 +301,15 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         env = context.env
         if sdldir:
             env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL")], LIBPATH = [os.path.join(sdldir, "lib")])
-        if env["PLATFORM"] == "posix" or env["PLATFORM"] == "darwin":
-            result, output = context.TryAction("pkg-config --cflags --libs sdl > $TARGET")
-            if result == 1:
-                env.MergeFlags(output)
+        else:
+            for foo_config in [
+                "pkg-config --cflags --libs sdl > $TARGET",
+                "sdl-config --cflags --libs > $TARGET"
+                ]:
+                result, output = context.TryAction(foo_config)
+                if result == 1:
+                    env.MergeFlags(output)
+                    break
         if env["PLATFORM"] == "win32":
             env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
             env.AppendUnique(LIBS = Split("mingw32 SDLmain SDL"))
@@ -410,8 +416,11 @@ conf = Configure(env, custom_tests = { 'CheckCPlusPlus' : CheckCPlusPlus,
                                        'CheckBoost' : CheckBoost })
 
 if env["prereqs"]:
+    if env["gettext_includedir"]:
+        env.AppendUnique(CPPPATH = env["gettext_includedir"])
     conf.CheckCPlusPlus(gcc_version = "3.3") and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
+    conf.CheckCHeader("libintl.h", "<>") and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
 
     have_client_prereqs = \
@@ -458,13 +467,13 @@ env = conf.Finish()
 # Link only on demand, so we don't need separate link lists for each binary
 env.Append(LINKFLAGS = "-Wl,--as-needed")
 
-# Later in the recipe we will guarantee that src/revision.hpp exists 
 env.Replace(CPPDEFINES = [])
 
 if env["debug"]:
     env.AppendUnique(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"))
 else:
-    env.AppendUnique(CXXFLAGS = Split("-O2 -ansi"))
+    if env["PLATFORM"] != "win32":
+        env.AppendUnique(CXXFLAGS = Split("-O2 -ansi"))
 
 if env['static']:
     env.AppendUnique(LINKFLAGS = "-all-static")
@@ -516,7 +525,8 @@ for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "do
      if not os.path.isabs(env[d]):
           env[d] = os.path.join(env["prefix"], env[d])
 
-env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
+if env["PLATFORM"] != "win32":
+    env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
 
 for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir"):
     env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
@@ -538,9 +548,9 @@ if boost_test_dyn_link:
 Export("test_env")
 
 # Platform-specific support, straight from configure.ac
-if env["PLATFORM"] == 'win32':				# Microsoft Windows
-    env.Append(LIBS = "unicows")			# Windows Unicode lib
-elif env["PLATFORM"] == 'darwin':			# Mac OS X
+#if env["PLATFORM"] == 'win32':				# Microsoft Windows
+#    env.Append(LIBS = "unicows")			# Windows Unicode lib
+if env["PLATFORM"] == 'darwin':			# Mac OS X
     env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
 
 Export(Split("env have_client_prereqs have_X have_server_prereqs"))
