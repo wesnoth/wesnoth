@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-21 18:09+0200\n"
+"POT-Creation-Date: 2008-05-03 12:49+0200\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -6082,63 +6082,63 @@ msgstr "Ne demandu denove!"
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %J"
 
-#: src/dialogs.cpp:548 src/dialogs.cpp:561
+#: src/dialogs.cpp:548
 msgid "#(Invalid)"
 msgstr "#(Nevalida)"
 
-#: src/dialogs.cpp:559
+#: src/dialogs.cpp:562
 msgid "Campaign: $campaign_name"
 msgstr "Kampanjo: $campaign_name"
 
-#: src/dialogs.cpp:564 src/game.cpp:1501
+#: src/dialogs.cpp:569 src/game.cpp:1501
 msgid "Multiplayer"
 msgstr "Komuna ludo"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:571
 msgid "Tutorial"
 msgstr "Trejnado"
 
-#: src/dialogs.cpp:574 src/menu_events.cpp:737
+#: src/dialogs.cpp:579 src/menu_events.cpp:737
 msgid "replay"
 msgstr "registro"
 
-#: src/dialogs.cpp:576 src/menu_events.cpp:739
+#: src/dialogs.cpp:581 src/menu_events.cpp:739
 msgid "Turn"
 msgstr "turno"
 
-#: src/dialogs.cpp:578
+#: src/dialogs.cpp:583
 msgid "Scenario Start"
 msgstr "Komenco de scenejo"
 
-#: src/dialogs.cpp:581
+#: src/dialogs.cpp:586
 msgid "Difficulty: "
 msgstr "Komplikeco:"
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:588
 msgid "Version: "
 msgstr "Versio:"
 
-#: src/dialogs.cpp:607 src/dialogs.cpp:623
+#: src/dialogs.cpp:612 src/dialogs.cpp:628
 msgid "%b %d %y"
 msgstr "%t.  %m. %j"
 
-#: src/dialogs.cpp:613
+#: src/dialogs.cpp:618
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:616
+#: src/dialogs.cpp:621
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:619
+#: src/dialogs.cpp:624
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:647
+#: src/dialogs.cpp:652
 msgid "No Saved Games"
 msgstr "Nenio estas registrita"
 
-#: src/dialogs.cpp:648
+#: src/dialogs.cpp:653
 #, fuzzy
 msgid ""
 "There are no saved games to load.\n"
@@ -6148,62 +6148,62 @@ msgstr ""
 "Ne eblas alŝuti ludon, ĉar nenia estas savita.\n"
 "(Ludo saviĝas aŭtomate post trairo de scenejo)"
 
-#: src/dialogs.cpp:663
+#: src/dialogs.cpp:668
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:663 src/game.cpp:1182 src/menu_events.cpp:382
+#: src/dialogs.cpp:668 src/game.cpp:1182 src/menu_events.cpp:382
 #: src/menu_events.cpp:1150 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Nomo"
 
-#: src/dialogs.cpp:683 src/multiplayer_create.cpp:105
+#: src/dialogs.cpp:688 src/multiplayer_create.cpp:105
 msgid "Load Game"
 msgstr "Legi ludon"
 
-#: src/dialogs.cpp:684
+#: src/dialogs.cpp:689
 msgid "Choose the game to load"
 msgstr "Elektu ludon, kiun vi povas legi"
 
-#: src/dialogs.cpp:693 src/dialogs.cpp:695
+#: src/dialogs.cpp:698 src/dialogs.cpp:700
 msgid "Show replay"
 msgstr "Montru registron"
 
-#: src/dialogs.cpp:698 src/multiplayer_create.cpp:87
+#: src/dialogs.cpp:703 src/multiplayer_create.cpp:87
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:699 src/dialogs.cpp:1153 src/dialogs.cpp:1255
+#: src/dialogs.cpp:704 src/dialogs.cpp:1158 src/dialogs.cpp:1260
 #: src/multiplayer_connect.cpp:933 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:195
 msgid "Cancel"
 msgstr "Nuligo"
 
-#: src/dialogs.cpp:702
+#: src/dialogs.cpp:707
 msgid "Delete Save"
 msgstr "Forviŝu registritan"
 
-#: src/dialogs.cpp:739
+#: src/dialogs.cpp:744
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/dialogs.cpp:831 src/help.cpp:1224
+#: src/dialogs.cpp:836 src/help.cpp:1224
 msgid "level"
 msgstr "Nivelo"
 
-#: src/dialogs.cpp:844 src/help.cpp:1330
+#: src/dialogs.cpp:849 src/help.cpp:1330
 msgid "HP: "
 msgstr "Sano:"
 
-#: src/dialogs.cpp:847
+#: src/dialogs.cpp:852
 msgid "XP: "
 msgstr "Spertoj:"
 
-#: src/dialogs.cpp:851 src/help.cpp:1331
+#: src/dialogs.cpp:856 src/help.cpp:1331
 msgid "Moves: "
 msgstr "Movoj:"
 
-#: src/dialogs.cpp:1177 src/game.cpp:973
+#: src/dialogs.cpp:1182 src/game.cpp:973
 msgid "KB"
 msgstr "KB"
 
@@ -8130,67 +8130,67 @@ msgstr "Nia vilaĝo"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr ""
 
-#: src/titlescreen.cpp:348
+#: src/titlescreen.cpp:349
 msgid "TitleScreen button^Tutorial"
 msgstr "Trejnado"
 
-#: src/titlescreen.cpp:349
+#: src/titlescreen.cpp:350
 msgid "TitleScreen button^Campaign"
 msgstr "Batalkampanjo"
 
-#: src/titlescreen.cpp:350
+#: src/titlescreen.cpp:351
 msgid "TitleScreen button^Multiplayer"
 msgstr "Batalo"
 
-#: src/titlescreen.cpp:351
+#: src/titlescreen.cpp:352
 msgid "TitleScreen button^Load"
 msgstr "Legi ludon"
 
-#: src/titlescreen.cpp:352
+#: src/titlescreen.cpp:353
 msgid "TitleScreen button^Add-ons"
 msgstr "Aldonaĵoj"
 
-#: src/titlescreen.cpp:353
+#: src/titlescreen.cpp:354
 msgid "TitleScreen button^Language"
 msgstr "Lingvo"
 
-#: src/titlescreen.cpp:354
+#: src/titlescreen.cpp:355
 msgid "TitleScreen button^Preferences"
 msgstr "Agordaĵoj"
 
-#: src/titlescreen.cpp:355
+#: src/titlescreen.cpp:356
 msgid "TitleScreen button^Credits"
 msgstr ""
 
-#: src/titlescreen.cpp:356
+#: src/titlescreen.cpp:357
 msgid "TitleScreen button^Quit"
 msgstr "Eliri"
 
-#: src/titlescreen.cpp:359
+#: src/titlescreen.cpp:360
 msgid "TitleScreen button^Previous"
 msgstr "Antaŭa"
 
-#: src/titlescreen.cpp:360
+#: src/titlescreen.cpp:361
 msgid "TitleScreen button^Next"
 msgstr "Sekva"
 
-#: src/titlescreen.cpp:361
+#: src/titlescreen.cpp:362
 msgid "TitleScreen button^Help"
 msgstr "Helpo"
 
-#: src/titlescreen.cpp:363
+#: src/titlescreen.cpp:364
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Helpi al Vesnot'"
 
-#: src/titlescreen.cpp:365
+#: src/titlescreen.cpp:366
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Startu komenctrejnado por konatiĝo kun ludo"
 
-#: src/titlescreen.cpp:366
+#: src/titlescreen.cpp:367
 msgid "Start a new single player campaign"
 msgstr "Startu novan kampanjon por unu ludanto"
 
-#: src/titlescreen.cpp:367
+#: src/titlescreen.cpp:368
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -8198,43 +8198,43 @@ msgstr ""
 "Ludo inter kelkaj ludantoj (alterne, sur loka reto aŭ interrete), aŭ kontraŭ "
 "komputilo"
 
-#: src/titlescreen.cpp:368
+#: src/titlescreen.cpp:369
 msgid "Load a saved game"
 msgstr "Legi konservitan ludon"
 
-#: src/titlescreen.cpp:369
+#: src/titlescreen.cpp:370
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 
-#: src/titlescreen.cpp:370
+#: src/titlescreen.cpp:371
 msgid "Change the language"
 msgstr "Ŝanĝu lingvon"
 
-#: src/titlescreen.cpp:371
+#: src/titlescreen.cpp:372
 msgid "Configure the game's settings"
 msgstr "Ŝanĝi  eblojn  de ludo"
 
-#: src/titlescreen.cpp:372
+#: src/titlescreen.cpp:373
 msgid "View the credits"
 msgstr "Kiu kreis la ludon"
 
-#: src/titlescreen.cpp:373
+#: src/titlescreen.cpp:374
 msgid "Quit the game"
 msgstr "Fini la ludon"
 
-#: src/titlescreen.cpp:374
+#: src/titlescreen.cpp:375
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:375
+#: src/titlescreen.cpp:376
 msgid "Show Battle for Wesnoth help"
 msgstr "Montri helpon de Batalo por Vesnot'"
 
-#: src/titlescreen.cpp:376
+#: src/titlescreen.cpp:377
 msgid "Upload statistics"
 msgstr "Alŝuti statistikon"
 
-#: src/titlescreen.cpp:432
+#: src/titlescreen.cpp:433
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 

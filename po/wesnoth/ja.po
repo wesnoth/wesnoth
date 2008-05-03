@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-21 18:09+0200\n"
+"POT-Creation-Date: 2008-05-03 12:49+0200\n"
 "PO-Revision-Date: 2008-04-22 10:44+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -6293,63 +6293,63 @@ msgstr "二度と聞かないで！"
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y年%m月%d日(%a) %H:%M"
 
-#: src/dialogs.cpp:548 src/dialogs.cpp:561
+#: src/dialogs.cpp:548
 msgid "#(Invalid)"
 msgstr "#(無効)"
 
-#: src/dialogs.cpp:559
+#: src/dialogs.cpp:562
 msgid "Campaign: $campaign_name"
 msgstr "キャンペーン: $campaign_name"
 
-#: src/dialogs.cpp:564 src/game.cpp:1501
+#: src/dialogs.cpp:569 src/game.cpp:1501
 msgid "Multiplayer"
 msgstr "マルチプレイヤー"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:571
 msgid "Tutorial"
 msgstr "チュートリアル"
 
-#: src/dialogs.cpp:574 src/menu_events.cpp:737
+#: src/dialogs.cpp:579 src/menu_events.cpp:737
 msgid "replay"
 msgstr "リプレイ"
 
-#: src/dialogs.cpp:576 src/menu_events.cpp:739
+#: src/dialogs.cpp:581 src/menu_events.cpp:739
 msgid "Turn"
 msgstr "ターン"
 
-#: src/dialogs.cpp:578
+#: src/dialogs.cpp:583
 msgid "Scenario Start"
 msgstr "シナリオ開始"
 
-#: src/dialogs.cpp:581
+#: src/dialogs.cpp:586
 msgid "Difficulty: "
 msgstr "難易度: "
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:588
 msgid "Version: "
 msgstr "バージョン: "
 
-#: src/dialogs.cpp:607 src/dialogs.cpp:623
+#: src/dialogs.cpp:612 src/dialogs.cpp:628
 msgid "%b %d %y"
 msgstr "%y年%m月%d日"
 
-#: src/dialogs.cpp:613
+#: src/dialogs.cpp:618
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:616
+#: src/dialogs.cpp:621
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:619
+#: src/dialogs.cpp:624
 msgid "%b %d"
 msgstr "%m月%d日"
 
-#: src/dialogs.cpp:647
+#: src/dialogs.cpp:652
 msgid "No Saved Games"
 msgstr "保存されたゲームはありません"
 
-#: src/dialogs.cpp:648
+#: src/dialogs.cpp:653
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -6359,62 +6359,62 @@ msgstr ""
 "\n"
 "(シナリオを制覇すると、 自動的にゲームは保存されます)"
 
-#: src/dialogs.cpp:663
+#: src/dialogs.cpp:668
 msgid "Date"
 msgstr "日付"
 
-#: src/dialogs.cpp:663 src/game.cpp:1182 src/menu_events.cpp:382
+#: src/dialogs.cpp:668 src/game.cpp:1182 src/menu_events.cpp:382
 #: src/menu_events.cpp:1150 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "名前"
 
-#: src/dialogs.cpp:683 src/multiplayer_create.cpp:105
+#: src/dialogs.cpp:688 src/multiplayer_create.cpp:105
 msgid "Load Game"
 msgstr "ロード"
 
-#: src/dialogs.cpp:684
+#: src/dialogs.cpp:689
 msgid "Choose the game to load"
 msgstr "ロードするゲームを選択して下さい"
 
-#: src/dialogs.cpp:693 src/dialogs.cpp:695
+#: src/dialogs.cpp:698 src/dialogs.cpp:700
 msgid "Show replay"
 msgstr "リプレイを見る"
 
-#: src/dialogs.cpp:698 src/multiplayer_create.cpp:87
+#: src/dialogs.cpp:703 src/multiplayer_create.cpp:87
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:699 src/dialogs.cpp:1153 src/dialogs.cpp:1255
+#: src/dialogs.cpp:704 src/dialogs.cpp:1158 src/dialogs.cpp:1260
 #: src/multiplayer_connect.cpp:933 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:195
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/dialogs.cpp:702
+#: src/dialogs.cpp:707
 msgid "Delete Save"
 msgstr "保存データの削除"
 
-#: src/dialogs.cpp:739
+#: src/dialogs.cpp:744
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/dialogs.cpp:831 src/help.cpp:1224
+#: src/dialogs.cpp:836 src/help.cpp:1224
 msgid "level"
 msgstr "レベル"
 
-#: src/dialogs.cpp:844 src/help.cpp:1330
+#: src/dialogs.cpp:849 src/help.cpp:1330
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:847
+#: src/dialogs.cpp:852
 msgid "XP: "
 msgstr "経験: "
 
-#: src/dialogs.cpp:851 src/help.cpp:1331
+#: src/dialogs.cpp:856 src/help.cpp:1331
 msgid "Moves: "
 msgstr "移動: "
 
-#: src/dialogs.cpp:1177 src/game.cpp:973
+#: src/dialogs.cpp:1182 src/game.cpp:973
 msgid "KB"
 msgstr "Kバイト"
 
@@ -8330,67 +8330,67 @@ msgstr "自軍所有の村"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size は 0.0 から 0.5 の間であるべきです。"
 
-#: src/titlescreen.cpp:348
+#: src/titlescreen.cpp:349
 msgid "TitleScreen button^Tutorial"
 msgstr "チュートリアル"
 
-#: src/titlescreen.cpp:349
+#: src/titlescreen.cpp:350
 msgid "TitleScreen button^Campaign"
 msgstr "キャンペーン"
 
-#: src/titlescreen.cpp:350
+#: src/titlescreen.cpp:351
 msgid "TitleScreen button^Multiplayer"
 msgstr "マルチプレイ"
 
-#: src/titlescreen.cpp:351
+#: src/titlescreen.cpp:352
 msgid "TitleScreen button^Load"
 msgstr "再開"
 
-#: src/titlescreen.cpp:352
+#: src/titlescreen.cpp:353
 msgid "TitleScreen button^Add-ons"
 msgstr "アドオン"
 
-#: src/titlescreen.cpp:353
+#: src/titlescreen.cpp:354
 msgid "TitleScreen button^Language"
 msgstr "言語"
 
-#: src/titlescreen.cpp:354
+#: src/titlescreen.cpp:355
 msgid "TitleScreen button^Preferences"
 msgstr "設定"
 
-#: src/titlescreen.cpp:355
+#: src/titlescreen.cpp:356
 msgid "TitleScreen button^Credits"
 msgstr "クレジット"
 
-#: src/titlescreen.cpp:356
+#: src/titlescreen.cpp:357
 msgid "TitleScreen button^Quit"
 msgstr "終了"
 
-#: src/titlescreen.cpp:359
+#: src/titlescreen.cpp:360
 msgid "TitleScreen button^Previous"
 msgstr "前"
 
-#: src/titlescreen.cpp:360
+#: src/titlescreen.cpp:361
 msgid "TitleScreen button^Next"
 msgstr "次"
 
-#: src/titlescreen.cpp:361
+#: src/titlescreen.cpp:362
 msgid "TitleScreen button^Help"
 msgstr "ヘルプ"
 
-#: src/titlescreen.cpp:363
+#: src/titlescreen.cpp:364
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Wesnoth への支援"
 
-#: src/titlescreen.cpp:365
+#: src/titlescreen.cpp:366
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "ゲームに慣れるためのチュートリアルを開始します"
 
-#: src/titlescreen.cpp:366
+#: src/titlescreen.cpp:367
 msgid "Start a new single player campaign"
 msgstr "新たに一人用キャンペーンを開始します"
 
-#: src/titlescreen.cpp:367
+#: src/titlescreen.cpp:368
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -8398,44 +8398,44 @@ msgstr ""
 "マルチプレイヤーゲーム（交互に一台か、LAN、あるいはインターネット）、またはAI"
 "との対戦で単一シナリオをプレイします"
 
-#: src/titlescreen.cpp:368
+#: src/titlescreen.cpp:369
 msgid "Load a saved game"
 msgstr "保存されたゲームを読み込みます"
 
-#: src/titlescreen.cpp:369
+#: src/titlescreen.cpp:370
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 "ユーザーが作成したキャンペーン、時代、マップのパッケージをダウンロードします"
 
-#: src/titlescreen.cpp:370
+#: src/titlescreen.cpp:371
 msgid "Change the language"
 msgstr "言語を変更します"
 
-#: src/titlescreen.cpp:371
+#: src/titlescreen.cpp:372
 msgid "Configure the game's settings"
 msgstr "ゲームの設定を行います"
 
-#: src/titlescreen.cpp:372
+#: src/titlescreen.cpp:373
 msgid "View the credits"
 msgstr "クレジットを表示します"
 
-#: src/titlescreen.cpp:373
+#: src/titlescreen.cpp:374
 msgid "Quit the game"
 msgstr "ゲームを終了します"
 
-#: src/titlescreen.cpp:374
+#: src/titlescreen.cpp:375
 msgid "Show next tip of the day"
 msgstr "次のヒントを表示します"
 
-#: src/titlescreen.cpp:375
+#: src/titlescreen.cpp:376
 msgid "Show Battle for Wesnoth help"
 msgstr "Battle for Wesnoth のヘルプを表示します"
 
-#: src/titlescreen.cpp:376
+#: src/titlescreen.cpp:377
 msgid "Upload statistics"
 msgstr "統計情報をアップロードします"
 
-#: src/titlescreen.cpp:432
+#: src/titlescreen.cpp:433
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-21 18:09+0200\n"
+"POT-Creation-Date: 2008-05-03 12:49+0200\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -5964,63 +5964,63 @@ msgstr "不要再问我！"
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:548 src/dialogs.cpp:561
+#: src/dialogs.cpp:548
 msgid "#(Invalid)"
 msgstr "#（无效的）"
 
-#: src/dialogs.cpp:559
+#: src/dialogs.cpp:562
 msgid "Campaign: $campaign_name"
 msgstr "战役: $campaign_name"
 
-#: src/dialogs.cpp:564 src/game.cpp:1501
+#: src/dialogs.cpp:569 src/game.cpp:1501
 msgid "Multiplayer"
 msgstr "多人对战"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:571
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/dialogs.cpp:574 src/menu_events.cpp:737
+#: src/dialogs.cpp:579 src/menu_events.cpp:737
 msgid "replay"
 msgstr "游戏录像"
 
-#: src/dialogs.cpp:576 src/menu_events.cpp:739
+#: src/dialogs.cpp:581 src/menu_events.cpp:739
 msgid "Turn"
 msgstr "回合"
 
-#: src/dialogs.cpp:578
+#: src/dialogs.cpp:583
 msgid "Scenario Start"
 msgstr "场景开始"
 
-#: src/dialogs.cpp:581
+#: src/dialogs.cpp:586
 msgid "Difficulty: "
 msgstr "难度： "
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:588
 msgid "Version: "
 msgstr "版本： "
 
-#: src/dialogs.cpp:607 src/dialogs.cpp:623
+#: src/dialogs.cpp:612 src/dialogs.cpp:628
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:613
+#: src/dialogs.cpp:618
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:616
+#: src/dialogs.cpp:621
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:619
+#: src/dialogs.cpp:624
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:647
+#: src/dialogs.cpp:652
 msgid "No Saved Games"
 msgstr "没有存档"
 
-#: src/dialogs.cpp:648
+#: src/dialogs.cpp:653
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -6029,62 +6029,62 @@ msgstr ""
 "没有存档，无法载入。\n"
 "（当您完成一个场景时会自动存档）"
 
-#: src/dialogs.cpp:663
+#: src/dialogs.cpp:668
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:663 src/game.cpp:1182 src/menu_events.cpp:382
+#: src/dialogs.cpp:668 src/game.cpp:1182 src/menu_events.cpp:382
 #: src/menu_events.cpp:1150 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "名称"
 
-#: src/dialogs.cpp:683 src/multiplayer_create.cpp:105
+#: src/dialogs.cpp:688 src/multiplayer_create.cpp:105
 msgid "Load Game"
 msgstr "载入游戏"
 
-#: src/dialogs.cpp:684
+#: src/dialogs.cpp:689
 msgid "Choose the game to load"
 msgstr "选择要载入的游戏"
 
-#: src/dialogs.cpp:693 src/dialogs.cpp:695
+#: src/dialogs.cpp:698 src/dialogs.cpp:700
 msgid "Show replay"
 msgstr "显示游戏录像"
 
-#: src/dialogs.cpp:698 src/multiplayer_create.cpp:87
+#: src/dialogs.cpp:703 src/multiplayer_create.cpp:87
 msgid "OK"
 msgstr "确定"
 
-#: src/dialogs.cpp:699 src/dialogs.cpp:1153 src/dialogs.cpp:1255
+#: src/dialogs.cpp:704 src/dialogs.cpp:1158 src/dialogs.cpp:1260
 #: src/multiplayer_connect.cpp:933 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:195
 msgid "Cancel"
 msgstr "取消"
 
-#: src/dialogs.cpp:702
+#: src/dialogs.cpp:707
 msgid "Delete Save"
 msgstr "删除存档"
 
-#: src/dialogs.cpp:739
+#: src/dialogs.cpp:744
 msgid "Profile"
 msgstr "资料"
 
-#: src/dialogs.cpp:831 src/help.cpp:1224
+#: src/dialogs.cpp:836 src/help.cpp:1224
 msgid "level"
 msgstr "等级"
 
-#: src/dialogs.cpp:844 src/help.cpp:1330
+#: src/dialogs.cpp:849 src/help.cpp:1330
 msgid "HP: "
 msgstr "生命值："
 
-#: src/dialogs.cpp:847
+#: src/dialogs.cpp:852
 msgid "XP: "
 msgstr "经验值："
 
-#: src/dialogs.cpp:851 src/help.cpp:1331
+#: src/dialogs.cpp:856 src/help.cpp:1331
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/dialogs.cpp:1177 src/game.cpp:973
+#: src/dialogs.cpp:1182 src/game.cpp:973
 msgid "KB"
 msgstr "KB"
 
@@ -7985,109 +7985,109 @@ msgstr "拥有的村庄"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size 应设为0.0到0.5之间的数值"
 
-#: src/titlescreen.cpp:348
+#: src/titlescreen.cpp:349
 msgid "TitleScreen button^Tutorial"
 msgstr "教程"
 
-#: src/titlescreen.cpp:349
+#: src/titlescreen.cpp:350
 msgid "TitleScreen button^Campaign"
 msgstr "战役"
 
-#: src/titlescreen.cpp:350
+#: src/titlescreen.cpp:351
 msgid "TitleScreen button^Multiplayer"
 msgstr "多人对战"
 
-#: src/titlescreen.cpp:351
+#: src/titlescreen.cpp:352
 msgid "TitleScreen button^Load"
 msgstr "载入"
 
-#: src/titlescreen.cpp:352
+#: src/titlescreen.cpp:353
 msgid "TitleScreen button^Add-ons"
 msgstr "下载插件"
 
-#: src/titlescreen.cpp:353
+#: src/titlescreen.cpp:354
 msgid "TitleScreen button^Language"
 msgstr "语言"
 
-#: src/titlescreen.cpp:354
+#: src/titlescreen.cpp:355
 msgid "TitleScreen button^Preferences"
 msgstr "设置"
 
-#: src/titlescreen.cpp:355
+#: src/titlescreen.cpp:356
 msgid "TitleScreen button^Credits"
 msgstr "工作人员"
 
-#: src/titlescreen.cpp:356
+#: src/titlescreen.cpp:357
 msgid "TitleScreen button^Quit"
 msgstr "退出"
 
-#: src/titlescreen.cpp:359
+#: src/titlescreen.cpp:360
 msgid "TitleScreen button^Previous"
 msgstr "上一个"
 
-#: src/titlescreen.cpp:360
+#: src/titlescreen.cpp:361
 msgid "TitleScreen button^Next"
 msgstr "下一个"
 
-#: src/titlescreen.cpp:361
+#: src/titlescreen.cpp:362
 msgid "TitleScreen button^Help"
 msgstr "帮助"
 
-#: src/titlescreen.cpp:363
+#: src/titlescreen.cpp:364
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "帮助韦诺之战团队"
 
-#: src/titlescreen.cpp:365
+#: src/titlescreen.cpp:366
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "通过教程来熟悉游戏"
 
-#: src/titlescreen.cpp:366
+#: src/titlescreen.cpp:367
 msgid "Start a new single player campaign"
 msgstr "开始一个新的单人游戏战役"
 
-#: src/titlescreen.cpp:367
+#: src/titlescreen.cpp:368
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "进行多人对战（热座，局域网或Internet）， 或与电脑进行单人场景对战"
 
-#: src/titlescreen.cpp:368
+#: src/titlescreen.cpp:369
 msgid "Load a saved game"
 msgstr "载入游戏存档"
 
-#: src/titlescreen.cpp:369
+#: src/titlescreen.cpp:370
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "下载用户自定的战役、时代或地图集"
 
-#: src/titlescreen.cpp:370
+#: src/titlescreen.cpp:371
 msgid "Change the language"
 msgstr "切换语言"
 
-#: src/titlescreen.cpp:371
+#: src/titlescreen.cpp:372
 msgid "Configure the game's settings"
 msgstr "更改游戏设置"
 
-#: src/titlescreen.cpp:372
+#: src/titlescreen.cpp:373
 msgid "View the credits"
 msgstr "查看协作者名单"
 
-#: src/titlescreen.cpp:373
+#: src/titlescreen.cpp:374
 msgid "Quit the game"
 msgstr "退出游戏"
 
-#: src/titlescreen.cpp:374
+#: src/titlescreen.cpp:375
 msgid "Show next tip of the day"
 msgstr "显示下一个每日提示"
 
-#: src/titlescreen.cpp:375
+#: src/titlescreen.cpp:376
 msgid "Show Battle for Wesnoth help"
 msgstr "显示韦诺之战的帮助"
 
-#: src/titlescreen.cpp:376
+#: src/titlescreen.cpp:377
 msgid "Upload statistics"
 msgstr "上传统计资料"
 
-#: src/titlescreen.cpp:432
+#: src/titlescreen.cpp:433
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 

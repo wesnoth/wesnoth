@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-21 18:09+0200\n"
+"POT-Creation-Date: 2008-05-03 12:49+0200\n"
 "PO-Revision-Date: 2007-01-13 00:26+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -5119,64 +5119,64 @@ msgstr "Ära minu käest enam küsi!"
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:548 src/dialogs.cpp:561
+#: src/dialogs.cpp:548
 msgid "#(Invalid)"
 msgstr "#(Vigane)"
 
-#: src/dialogs.cpp:559
+#: src/dialogs.cpp:562
 #, fuzzy
 msgid "Campaign: $campaign_name"
 msgstr "Sõjakäikude kavandamise tööriist"
 
-#: src/dialogs.cpp:564 src/game.cpp:1501
+#: src/dialogs.cpp:569 src/game.cpp:1501
 msgid "Multiplayer"
 msgstr "Mitu mängijat"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:571
 msgid "Tutorial"
 msgstr "Õpetus"
 
-#: src/dialogs.cpp:574 src/menu_events.cpp:737
+#: src/dialogs.cpp:579 src/menu_events.cpp:737
 msgid "replay"
 msgstr "kordus"
 
-#: src/dialogs.cpp:576 src/menu_events.cpp:739
+#: src/dialogs.cpp:581 src/menu_events.cpp:739
 msgid "Turn"
 msgstr "Käik"
 
-#: src/dialogs.cpp:578
+#: src/dialogs.cpp:583
 msgid "Scenario Start"
 msgstr "Stsenaariumi algus"
 
-#: src/dialogs.cpp:581
+#: src/dialogs.cpp:586
 msgid "Difficulty: "
 msgstr "Raskusaste:"
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:588
 msgid "Version: "
 msgstr "Versioon:"
 
-#: src/dialogs.cpp:607 src/dialogs.cpp:623
+#: src/dialogs.cpp:612 src/dialogs.cpp:628
 msgid "%b %d %y"
 msgstr ""
 
-#: src/dialogs.cpp:613
+#: src/dialogs.cpp:618
 msgid "%H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:616
+#: src/dialogs.cpp:621
 msgid "%A, %H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:619
+#: src/dialogs.cpp:624
 msgid "%b %d"
 msgstr ""
 
-#: src/dialogs.cpp:647
+#: src/dialogs.cpp:652
 msgid "No Saved Games"
 msgstr "Salvestatud mänge pole"
 
-#: src/dialogs.cpp:648
+#: src/dialogs.cpp:653
 #, fuzzy
 msgid ""
 "There are no saved games to load.\n"
@@ -5186,62 +5186,62 @@ msgstr ""
 "Salvestatud mängud puuduvad.\n"
 "(Mänge salvestatakse automaatselt iga stsenaariumi lõpus)"
 
-#: src/dialogs.cpp:663
+#: src/dialogs.cpp:668
 msgid "Date"
 msgstr "Kuupäev"
 
-#: src/dialogs.cpp:663 src/game.cpp:1182 src/menu_events.cpp:382
+#: src/dialogs.cpp:668 src/game.cpp:1182 src/menu_events.cpp:382
 #: src/menu_events.cpp:1150 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Nimi"
 
-#: src/dialogs.cpp:683 src/multiplayer_create.cpp:105
+#: src/dialogs.cpp:688 src/multiplayer_create.cpp:105
 msgid "Load Game"
 msgstr "Lae mäng"
 
-#: src/dialogs.cpp:684
+#: src/dialogs.cpp:689
 msgid "Choose the game to load"
 msgstr "Vali milline mäng laadida"
 
-#: src/dialogs.cpp:693 src/dialogs.cpp:695
+#: src/dialogs.cpp:698 src/dialogs.cpp:700
 msgid "Show replay"
 msgstr "Näita mängude korduseid"
 
-#: src/dialogs.cpp:698 src/multiplayer_create.cpp:87
+#: src/dialogs.cpp:703 src/multiplayer_create.cpp:87
 msgid "OK"
 msgstr "Nõus"
 
-#: src/dialogs.cpp:699 src/dialogs.cpp:1153 src/dialogs.cpp:1255
+#: src/dialogs.cpp:704 src/dialogs.cpp:1158 src/dialogs.cpp:1260
 #: src/multiplayer_connect.cpp:933 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:195
 msgid "Cancel"
 msgstr "Tühista"
 
-#: src/dialogs.cpp:702
+#: src/dialogs.cpp:707
 msgid "Delete Save"
 msgstr "Kustuta salvestus"
 
-#: src/dialogs.cpp:739
+#: src/dialogs.cpp:744
 msgid "Profile"
 msgstr "profiil"
 
-#: src/dialogs.cpp:831 src/help.cpp:1224
+#: src/dialogs.cpp:836 src/help.cpp:1224
 msgid "level"
 msgstr "tase"
 
-#: src/dialogs.cpp:844 src/help.cpp:1330
+#: src/dialogs.cpp:849 src/help.cpp:1330
 msgid "HP: "
 msgstr "HP:"
 
-#: src/dialogs.cpp:847
+#: src/dialogs.cpp:852
 msgid "XP: "
 msgstr "XP:"
 
-#: src/dialogs.cpp:851 src/help.cpp:1331
+#: src/dialogs.cpp:856 src/help.cpp:1331
 msgid "Moves: "
 msgstr "Käigud:"
 
-#: src/dialogs.cpp:1177 src/game.cpp:973
+#: src/dialogs.cpp:1182 src/game.cpp:973
 msgid "KB"
 msgstr "KB"
 
@@ -7246,118 +7246,118 @@ msgstr "Oma külad"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr ""
 
-#: src/titlescreen.cpp:348
+#: src/titlescreen.cpp:349
 msgid "TitleScreen button^Tutorial"
 msgstr "Õpetus"
 
-#: src/titlescreen.cpp:349
+#: src/titlescreen.cpp:350
 msgid "TitleScreen button^Campaign"
 msgstr "Sõjakäigud"
 
-#: src/titlescreen.cpp:350
+#: src/titlescreen.cpp:351
 msgid "TitleScreen button^Multiplayer"
 msgstr "Mitu mängijat"
 
-#: src/titlescreen.cpp:351
+#: src/titlescreen.cpp:352
 msgid "TitleScreen button^Load"
 msgstr "Laadimine"
 
-#: src/titlescreen.cpp:352
+#: src/titlescreen.cpp:353
 #, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "Lisade allalaadimine"
 
-#: src/titlescreen.cpp:353
+#: src/titlescreen.cpp:354
 msgid "TitleScreen button^Language"
 msgstr "Keel"
 
-#: src/titlescreen.cpp:354
+#: src/titlescreen.cpp:355
 msgid "TitleScreen button^Preferences"
 msgstr "Eelistused"
 
-#: src/titlescreen.cpp:355
+#: src/titlescreen.cpp:356
 #, fuzzy
 msgid "TitleScreen button^Credits"
 msgstr "Välju"
 
-#: src/titlescreen.cpp:356
+#: src/titlescreen.cpp:357
 msgid "TitleScreen button^Quit"
-msgstr "Välju"
-
-#: src/titlescreen.cpp:359
-#, fuzzy
-msgid "TitleScreen button^Previous"
 msgstr "Välju"
 
 #: src/titlescreen.cpp:360
 #, fuzzy
-msgid "TitleScreen button^Next"
+msgid "TitleScreen button^Previous"
 msgstr "Välju"
 
 #: src/titlescreen.cpp:361
 #, fuzzy
+msgid "TitleScreen button^Next"
+msgstr "Välju"
+
+#: src/titlescreen.cpp:362
+#, fuzzy
 msgid "TitleScreen button^Help"
 msgstr "Laadimine"
 
-#: src/titlescreen.cpp:363
+#: src/titlescreen.cpp:364
 #, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Laadimine"
 
-#: src/titlescreen.cpp:365
+#: src/titlescreen.cpp:366
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Mänguga tutvumiseks alusta õpetusest"
 
-#: src/titlescreen.cpp:366
+#: src/titlescreen.cpp:367
 msgid "Start a new single player campaign"
 msgstr "Alusta uut üksikmängija sõjakäiku"
 
-#: src/titlescreen.cpp:367
+#: src/titlescreen.cpp:368
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "Mängige mitmekesi (ühe arvuti taga, kohtvõrgus, Internetis...)"
 
-#: src/titlescreen.cpp:368
+#: src/titlescreen.cpp:369
 #, fuzzy
 msgid "Load a saved game"
 msgstr "Lae üksikmängija salvestatud mäng"
 
-#: src/titlescreen.cpp:369
+#: src/titlescreen.cpp:370
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 
-#: src/titlescreen.cpp:370
+#: src/titlescreen.cpp:371
 msgid "Change the language"
 msgstr "Muuda kasutatavat keelt"
 
-#: src/titlescreen.cpp:371
+#: src/titlescreen.cpp:372
 msgid "Configure the game's settings"
 msgstr "Muuda mängu seadeid"
 
-#: src/titlescreen.cpp:372
+#: src/titlescreen.cpp:373
 msgid "View the credits"
 msgstr "Vaata tiitreid"
 
-#: src/titlescreen.cpp:373
+#: src/titlescreen.cpp:374
 msgid "Quit the game"
 msgstr "Välju mängust"
 
-#: src/titlescreen.cpp:374
+#: src/titlescreen.cpp:375
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:375
+#: src/titlescreen.cpp:376
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Wesnothi Lahingu käsiraamat"
 
-#: src/titlescreen.cpp:376
+#: src/titlescreen.cpp:377
 #, fuzzy
 msgid "Upload statistics"
 msgstr "Statistika"
 
-#: src/titlescreen.cpp:432
+#: src/titlescreen.cpp:433
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
