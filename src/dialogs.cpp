@@ -883,8 +883,13 @@ void unit_preview_pane::draw_contents()
 			if (!special.empty()) {
 				text << "<166,146,117>  " << special << "\n";
 			}
+			std::string accuracy = at_it->accuracy_parry_description();
+			if(accuracy.empty() == false) {
+				accuracy += " ";
+			}
+
 			text << "<166,146,117>  " << at_it->damage() << "-" << at_it->num_attacks()
-				<< " -- " << _(at_it->range().c_str()) << "\n";
+				<< " " << accuracy << "-- " << _(at_it->range().c_str()) << "\n";
 		}
 	}
 
