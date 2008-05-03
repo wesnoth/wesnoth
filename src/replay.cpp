@@ -406,7 +406,7 @@ void replay::add_event(const std::string& name, const gamemap::location& loc)
 		config& source = ev.add_child("source");
 		loc.write(source);
 	}
-	(*cmd)["undo"] = "yes";
+	(*cmd)["undo"] = "no";
 }
 
 void replay::add_checksum_check(const gamemap::location& loc)
@@ -534,9 +534,9 @@ void replay::undo()
 	// even if not marked explicitely with undo=no.
 	//! @todo Change undo= to default to "no" and explicitely mark all
 	//! undoable commands with yes.
-	while((cmd.first != cmd.second && (**(cmd.second-1))["undo"] == "no")
+	while(cmd.first != cmd.second && ((**(cmd.second-1))["undo"] == "no"
 		|| (**(cmd.second-1))["async"] == "yes"
-		|| (**(cmd.second-1))["sent"] == "yes")
+		|| (**(cmd.second-1))["sent"] == "yes"))
 	{
 		if ((**(cmd.second-1))["async"] == "yes")
 			async_cmds.push_back(cmd.second-1);
