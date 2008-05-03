@@ -32,7 +32,6 @@ const size_t max_login_size = 18;
  *
  * @param disp        The global display
  * @param game_config The global, top-level WML configuration for the game
- * @param data        The global game data (unit types, etc)
  * @param default_controller The default controller type
  * @param is_server   Whether to open a port to the outside, or not.
  */
@@ -43,7 +42,6 @@ void start_server(game_display& disp, const config& game_config,
  *
  * @param disp        The global display
  * @param game_config The global, top-level WML configuration for the game
- * @param data        The global game data (unit types, etc)
  * @param host        The host to connect to.
  */
 void start_client(game_display& disp, const config& game_config,

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file settings.hpp
+//! @file src/settings.hpp
 //! General settings and defaults for scenarios.
 
 #ifndef SETTINGS_HPP_INCLUDED

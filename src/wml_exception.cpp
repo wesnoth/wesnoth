@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-//! @file wml_exeption.cpp
-//! Implementation for wml_exeption.hpp.
+//! @file wml_exception.cpp
+//! Implementation for wml_exception.hpp.
 
 #include "global.hpp"
 #include "wml_exception.hpp"

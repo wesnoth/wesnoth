@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file wml_exeption.hpp
+//! @file wml_exception.hpp
 //! Add a special kind of assert to validate whether the input from WML
 //! doesn't contain any problems that might crash the game.
 

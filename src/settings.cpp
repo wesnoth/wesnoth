@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file settings.cpp
+//! @file src/settings.cpp
 //! General settings and defaults for scenarios.
 
 #include "global.hpp"
