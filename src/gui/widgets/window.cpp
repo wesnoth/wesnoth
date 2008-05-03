@@ -20,7 +20,6 @@
 #include "config.hpp"
 #include "cursor.hpp"
 #include "font.hpp"
-#include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"

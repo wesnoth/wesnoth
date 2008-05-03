@@ -17,8 +17,6 @@
 
 #include "gui/widgets/control.hpp"
 
-#include "gui/widgets/settings.hpp"
-
 namespace gui2 {
 
 // Class for a spacer

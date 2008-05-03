@@ -15,7 +15,6 @@
 #include "gui/widgets/widget.hpp"
 
 #include "filesystem.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"

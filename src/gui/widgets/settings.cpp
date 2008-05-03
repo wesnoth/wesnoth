@@ -19,13 +19,7 @@
 
 #include "filesystem.hpp"
 #include "gettext.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/helper.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/panel.hpp"
-#include "gui/widgets/spacer.hpp"
-#include "gui/widgets/widget.hpp"
-#include "gui/widgets/window_builder.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
