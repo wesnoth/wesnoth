@@ -1542,6 +1542,8 @@ void calculate_healing(game_display& disp, const gamemap& map,
 		std::vector<unit_map::iterator> healers;
 
 		int healing = 0;
+		int rest_healing = 0;
+
 		std::string curing;
 
 		unit_ability_list heal = i->second.get_abilities("heals",i->first);
@@ -1628,24 +1630,25 @@ void calculate_healing(game_display& disp, const gamemap& map,
 				curer = units.end();
 			}
 			if(i->second.resting()) {
-				healing += game_config::rest_heal_amount;
+				rest_healing = game_config::rest_heal_amount;
+				healing += rest_healing;
 			}
 		}
 		if(is_poisoned) {
 			if(curing == "cured") {
 				i->second.set_state("poisoned","");
-				healing = 0;
+				healing = rest_healing;
 				healers.clear();
 				healers.push_back(curer);
 			} else if(curing == "slowed") {
-				healing = 0;
+				healing = rest_healing;
 				healers.clear();
 				healers.push_back(curer);
 			} else {
 				healers.clear();
-				healing = 0;
+				healing = rest_healing;
 				if(i->second.side() == side) {
-					healing = -game_config::poison_amount;
+					healing -= game_config::poison_amount;
 				}
 			}
 		}
@@ -2447,7 +2450,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());
 				teams[team].see(new_unit->second.side()-1);
-				
+
 				game_events::raise("sighted",*sight_it,real_unit->first);
 				sighted_event = true;
 			}
@@ -2470,7 +2473,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 	// if (!cleared_shroud) return;
 
 	// render shroud/fog cleared before pumping events
-	// we don't refog yet to avoid hiding sighted stuff 
+	// we don't refog yet to avoid hiding sighted stuff
 	if(sighted_event && disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate_all();
