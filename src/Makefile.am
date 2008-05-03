@@ -73,14 +73,16 @@ wesnoth_source = \
 	gui/widgets/control.cpp \
 	gui/widgets/event_handler.cpp \
 	gui/widgets/grid.cpp \
+	gui/widgets/helper.cpp \
 	gui/widgets/label.cpp \
 	gui/widgets/panel.cpp \
 	gui/widgets/settings.cpp \
+	gui/widgets/scrollbar.cpp \
 	gui/widgets/spacer.cpp \
 	gui/widgets/text.cpp \
 	gui/widgets/text_box.cpp \
 	gui/widgets/tooltip.cpp \
-	gui/widgets/helper.cpp \
+	gui/widgets/vertical_scrollbar.cpp \
 	gui/widgets/widget.cpp \
 	gui/widgets/window.cpp \
 	gui/widgets/window_builder.cpp \

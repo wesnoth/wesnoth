@@ -21,6 +21,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
@@ -175,6 +176,28 @@ public:
 	tbuilder_text_box(const config& cfg) :
 		tbuilder_control(cfg),
 		history_(cfg["history"])
+	{}
+
+	twidget* build () const;
+}
+;
+struct tbuilder_vertical_scrollbar : public tbuilder_control
+{
+private:
+	tbuilder_vertical_scrollbar();
+
+public:
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_vertical_scrollbar
+ *
+ * == Vertical scrollbar ==
+ *
+ * A vertical scrollbar has no special fields.
+ *
+ */
+	tbuilder_vertical_scrollbar(const config& cfg) :
+		tbuilder_control(cfg)
 	{}
 
 	twidget* build () const;
@@ -529,6 +552,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * * panel a panel (a grid which can be drawn on).
  * * spacer a filler item. 
  * * text_box a text box.
+ * * vertical_scrollbar a vertical scrollbar.
  *
  * More details about the widgets is in the next section.
  *
@@ -563,6 +587,9 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				widgets.push_back(new tbuilder_spacer(*((**col_itor).child("spacer"))));
 			} else if((**col_itor).child("text_box")) {
 				widgets.push_back(new tbuilder_text_box(*((**col_itor).child("text_box"))));
+			} else if((**col_itor).child("vertical_scrollbar")) {
+				widgets.push_back(
+					new tbuilder_vertical_scrollbar(*((**col_itor).child("vertical_scrollbar"))));
 			} else if((**col_itor).child("grid")) {
 				widgets.push_back(new tbuilder_grid(*((**col_itor).child("grid"))));
 			} else {
@@ -800,6 +827,18 @@ twidget* tbuilder_text_box::build() const
 		<< definition << "'.\n";
 
 	return text_box;
+}
+
+twidget* tbuilder_vertical_scrollbar::build() const
+{
+	tvertical_scrollbar *vertical_scrollbar = new tvertical_scrollbar();
+
+	init_control(vertical_scrollbar);
+
+	DBG_G << "Window builder: placed text box '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	return vertical_scrollbar;
 }
 
 twidget* tbuilder_grid::build() const
