@@ -1,4 +1,4 @@
-Battle for Wesnoth User's Manual
+﻿Battle for Wesnoth User's Manual
 ================================
 
 Preface
@@ -958,7 +958,7 @@ recover up to a total of 10 hit points per turn.
 
 There are two basic ways for a unit to be healed:
 
- - Resting in a village. The unit will heal 8 hitpoints every turn.
+ - Waiting in a village. The unit will heal 8 hitpoints every turn.
  - Being adjacent to units with the 'heals' ability. The number of
    hitpoints healed is specified in the unit's ability description. This
    is invariably 'heals +4' or 'heals +8'.
@@ -977,11 +977,12 @@ Poison
 
 Some attacks can inflict poison damage on your unit. When this happens
 the poisoned unit will take 8 damage each turn until it is cured. Poison
-can be cured by resting on a village or being next to a unit with the 'cures'
+can be cured by waiting on a village or being next to a unit with the 'cures'
 ability. Units with the 'heals' ability can only prevent the poison from
 causing damage that turn, not cure it. When poison is cured the unit does
 not gain or lose hitpoints on that turn due to healing/poisoning. A unit
-can not be healed normally until it is cured of poisoning.
+can not be healed normally until it is cured of poisoning. Resting is still
+allowed, although it will not substantially diminish the poison's effect.
 
 Some other hints about healing:
 
