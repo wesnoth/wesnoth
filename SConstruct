@@ -129,8 +129,6 @@ for example, to point scons at non-default library locations.
 if env["cachedir"]:
     CacheDir(env["cachedir"])
 
-env.TargetSignatures('content')
-
 #
 # Generic pkg-config support is not presentluy used, but might be in the future
 #
@@ -682,12 +680,7 @@ def InstallLocalizedManPage(alias, page, env):
         if os.path.isfile(sourcefile):
             env.Alias(alias, env.Install(targetdir, sourcefile))
 
-# TargetSignatures('content') causes a crash in the install
-# production, at least in scons 0.97, right after the actions finish
-# (thus, probably, at target-signature generation time).  So
-# disable it for installation productions.
 install_env = env.Clone()
-install_env.TargetSignatures('build')
 
 # Now the actual installation productions
 

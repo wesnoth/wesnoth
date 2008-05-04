@@ -283,8 +283,6 @@ if env["svnrev"] != "" and env["svnrev"] != "exported":
     env.Append(CPPDEFINES = 'HAVE_REVISION')
     env.AlwaysBuild(r)
 
-env.TargetSignatures('content')
-
 #
 # File inventory, for archive makes abd analysis tools
 #
