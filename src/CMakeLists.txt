@@ -18,10 +18,15 @@ SET( the-external-libs
     ${SDLNET_LIBRARY}
     ${SDLTTF_LIBRARY}
     ${SDL_LIBRARY}
-    ${PYTHON_LIBRARIES}
     ${Boost_IOSTREAMS_LIBRARY}
     ${Boost_REGEX_LIBRARY}
 )
+
+IF(ENABLE_PYTHON AND PYTHON_LIBRARY)
+  SET(the-external-libs ${the-external-libs} ${PYTHON_LIBRARY})
+ENDIF(ENABLE_PYTHON AND PYTHON_LIBRARY)
+
+
 
 ########### libwesnoth-core ###############
 
