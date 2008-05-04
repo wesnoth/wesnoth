@@ -202,35 +202,6 @@ public:
 	twidget* build () const;
 };
 
-struct tbuilder_grid : public tbuilder_widget
-{
-private:
-	tbuilder_grid();
-
-public:
-	tbuilder_grid(const config& cfg);
-	unsigned rows;
-	unsigned cols;
-
-	//! The grow factor for the rows / columns.
-	std::vector<unsigned> row_grow_factor;
-	std::vector<unsigned> col_grow_factor;
-
-	//! The flags per grid cell.
-	std::vector<unsigned> flags;
-
-	//! The border size per grid cell.
-	std::vector<unsigned> border_size;
-
-	//! The widgets per grid cell.
-	std::vector<tbuilder_widget_ptr> widgets;
-
-	twidget* build () const;
-
-private:
-	//! After reading the general part in the constructor read extra data.
-	void read_extra(const config& cfg);
-};
 
 twindow build(CVideo& video, const std::string& type)
 {
