@@ -64,7 +64,7 @@ opts.AddOptions(
     PathOption('boostdir', 'Directory of boost installation.', '/usr/include'),
     PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'),
     ('boost_suffix', 'Suffix of boost libraries.'),
-    PathOption('gettext_includedir', 'Directory where libintl.h is located.', "", PathOption.PathAccept), 
+    PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", PathOption.PathAccept), 
     )
 
 #
@@ -416,8 +416,10 @@ conf = Configure(env, custom_tests = { 'CheckCPlusPlus' : CheckCPlusPlus,
                                        'CheckBoost' : CheckBoost })
 
 if env["prereqs"]:
-    if env["gettext_includedir"]:
-        env.AppendUnique(CPPPATH = env["gettext_includedir"])
+    if env["gettextdir"]:
+        env.AppendUnique(CPPPATH = os.path.join(env["gettextdir"], "include"),
+                         LIBPATH = os.path.join(env["gettextdir"], "lib"),
+                         LIBS = ["intl"])
     conf.CheckCPlusPlus(gcc_version = "3.3") and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
     conf.CheckCHeader("libintl.h", "<>") and \
@@ -547,9 +549,8 @@ if boost_test_dyn_link:
         test_env.Append(CPPDEFINES = "WESNOTH_BOOST_TEST_MAIN")
 Export("test_env")
 
-# Platform-specific support, straight from configure.ac
-#if env["PLATFORM"] == 'win32':				# Microsoft Windows
-#    env.Append(LIBS = "unicows")			# Windows Unicode lib
+if env["PLATFORM"] == 'win32':
+    env.Append(LIBS = ["wsock32", "intl"])
 if env["PLATFORM"] == 'darwin':			# Mac OS X
     env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
 

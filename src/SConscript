@@ -1,6 +1,7 @@
 # vi: syntax=python:et:ts=4
 
 import commands
+from subprocess import Popen, PIPE
 
 Import(Split("env test_env have_client_prereqs have_X have_server_prereqs"))
 
@@ -271,7 +272,7 @@ test_env.Program("../test", test_sources + [libwesnoth_core, libwesnoth],
             LIBS = env["LIBS"] + ['boost_unit_test_framework'])
 
 try:
-    env["svnrev"] = commands.getoutput("LC_ALL=C svnversion -n . 2>/dev/null")
+    env["svnrev"] = Popen(Split("svnversion -n ."), stdout=PIPE).communicate()[0]
 except:
     env["svnrev"] = ""
 
