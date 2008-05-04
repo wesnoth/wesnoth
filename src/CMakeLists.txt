@@ -19,8 +19,8 @@ SET( the-external-libs
     ${SDLTTF_LIBRARY}
     ${SDL_LIBRARY}
     ${PYTHON_LIBRARIES}
-    boost_iostreams
-    boost_regex
+    ${Boost_IOSTREAMS_LIBRARY}
+    ${Boost_REGEX_LIBRARY}
 )
 
 ########### libwesnoth-core ###############

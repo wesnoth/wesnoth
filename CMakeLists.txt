@@ -12,7 +12,7 @@ FIND_PACKAGE( SDL_ttf 2.0.8 REQUIRED )
 # setting python to a "must have" for the moment, can later on be changed to be optional
 FIND_PACKAGE( PythonInterp 2.4 )
 FIND_PACKAGE( PythonLibs 2.4 )
-FIND_PACKAGE( Boost 1.33 REQUIRED COMPONENTS boost_iostream boost_regex )
+FIND_PACKAGE( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
 FIND_PACKAGE( ZLIB REQUIRED )
 FIND_PACKAGE( PNG REQUIRED )
 
