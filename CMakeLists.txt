@@ -1,5 +1,8 @@
 # this is a preliminary version of the CMake build stuff and was originally created by am2cmake
 
+# use our own version of FindBoost.cmake
+CMAKE_MODULE_PATH( ${CMAKE_SOURCE_DIR}/cmake )
+
 # find all deps needed
 FIND_PACKAGE( SDL 1.2.7 REQUIRED )
 FIND_PACKAGE( SDL_image 1.2 REQUIRED )
