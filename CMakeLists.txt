@@ -43,7 +43,7 @@ endif(NOT IS_ABSOLUTE LOCALEDIR)
 
 if(PREFERENCES_DIR)
   add_definitions(-DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"')
-  message("set -DPREFERENCES_DIR=='\"${PREFERENCES_DIR}\"'")
+  message("set -DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"'")
 endif(PREFERENCES_DIR)
 
 
@@ -87,7 +87,7 @@ add_subdirectory(src)
 #install(FILES  copyright changelog players_changelog campaign_server.dsp editor.dev editor_gcc4.dev map_editor.dsp server.dev server.dsp unit_test.dev wesnothd.dev wesnoth.dev wesnothd_gcc4.dev wesnoth.dsp wesnoth.dsw wesnoth_gcc4.dev wesnoth.kdevelop DESTINATION )
 #install(FILES  DESTINATION /share/@DATADIR@)
 
-install(DIRECTORY data fonts images sounds translations DESTINATION ${DATADIR})
+install(DIRECTORY data fonts images sounds translations DESTINATION ${DATADIR} PATTERN ".svn" EXCLUDE )
 
 
 #original Makefile.am contents follow:
