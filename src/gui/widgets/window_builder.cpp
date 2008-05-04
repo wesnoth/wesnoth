@@ -202,7 +202,6 @@ public:
 	twidget* build () const;
 };
 
-
 twindow build(CVideo& video, const std::string& type)
 {
 	std::vector<twindow_builder::tresolution>::const_iterator 
@@ -654,24 +653,6 @@ void tbuilder_control::init_control(tcontrol* control) const
 	control->set_help_message(help);
 }
 
-twidget* tbuilder_button::build() const
-{
-	tbutton *button = new tbutton();
-
-	init_control(button);
-
-	if(retval_) {
-		button->set_retval(retval_);
-	} else {
-		button->set_retval(tbutton::get_retval_by_id(id));
-	}
-
-	DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
-		<< definition << "'.\n";
-
-	return button;
-}
-
 tbuilder_button::tbuilder_button(const config& cfg) :
 	tbuilder_control(cfg),
 	retval_(lexical_cast_default<int>(cfg["return_value"]))
@@ -696,6 +677,24 @@ tbuilder_button::tbuilder_button(const config& cfg) :
  * @end_table
  *
  */
+}
+
+twidget* tbuilder_button::build() const
+{
+	tbutton *button = new tbutton();
+
+	init_control(button);
+
+	if(retval_) {
+		button->set_retval(retval_);
+	} else {
+		button->set_retval(tbutton::get_retval_by_id(id));
+	}
+
+	DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	return button;
 }
 
 twidget* tbuilder_label::build() const
