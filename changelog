@@ -12,6 +12,9 @@ Version 1.5.0+svn:
    * Implemented a function which detects if a location is on the map border.
    * Implemented a function which gives the game's gold parameters.
  * terrains:
+   * Fixed city village not being alias of the village terrain type; this was
+     causing a duplicate "Village" terrain being displayed in the defense ratios
+     section of unit descriptions in game help
    * Reorganisation of the terrain macros including more consistent image
      naming. The old macros are kept for now for compatibility.
    * New terrain: cave path
