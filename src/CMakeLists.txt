@@ -46,7 +46,7 @@ SET(libwesnoth-core_STAT_SRC
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
-add_library(wesnoth-core STATIC ${libwesnoth-core_STAT_SRC})
+add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 
 ########### libwesnoth-game ###############
 # rename libwesnoth.a to libwesnoth-game.a to have clearer targets
@@ -104,9 +104,11 @@ SET(libwesnoth-game_STAT_SRC
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
-add_library(wesnoth-game STATIC ${libwesnoth-game_STAT_SRC})
+add_library(wesnoth-game STATIC EXCLUDE_FROM_ALL ${libwesnoth-game_STAT_SRC})
 
 ########### Wesnoth ###############
+
+IF(ENABLE_GAME)
 
 SET(wesnoth-main_SRC
     about.cpp
@@ -205,7 +207,13 @@ SET(wesnoth_SRC
 ADD_EXECUTABLE(wesnoth ${wesnoth_SRC})
 TARGET_LINK_LIBRARIES(wesnoth wesnoth-core wesnoth-game ${the-external-libs})
 
+INSTALL(TARGETS wesnoth DESTINATION ${BINDIR})
+
+ENDIF(ENABLE_GAME)
+
 ########### Editor ###############
+
+IF(ENABLE_EDITOR)
 
 SET(wesnoth_editor_SRC
     editor/editor.cpp
@@ -224,7 +232,13 @@ SET(wesnoth_editor_SRC
 ADD_EXECUTABLE(wesnoth_editor ${wesnoth_editor_SRC})
 TARGET_LINK_LIBRARIES(wesnoth_editor wesnoth-core wesnoth-game ${the-external-libs})
 
+INSTALL(TARGETS wesnoth_editor DESTINATION ${BINDIR})
+
+ENDIF(ENABLE_EDITOR)
+
 ########### Wesnothd Server ###############
+
+IF(ENABLE_SERVER)
 
 SET(wesnothd_SRC
     server/game.cpp
@@ -242,7 +256,13 @@ SET(wesnothd_SRC
 ADD_EXECUTABLE(wesnothd ${wesnothd_SRC})
 TARGET_LINK_LIBRARIES(wesnothd wesnoth-core ${the-external-libs})
 
+INSTALL(TARGETS wesnothd DESTINATION ${BINDIR})
+
+ENDIF(ENABLE_SERVER)
+
 ########### Campaign Server ###############
+
+IF(ENABLE_CAMPAIGN_SERVER)
 
 SET(campaignd_SRC
     campaign_server/campaign_server.cpp
@@ -255,7 +275,13 @@ SET(campaignd_SRC
 ADD_EXECUTABLE(campaignd ${campaignd_SRC})
 TARGET_LINK_LIBRARIES(campaignd wesnoth-core ${the-external-libs})
 
+INSTALL(TARGETS campaignd DESTINATION ${BINDIR})
+
+ENDIF(ENABLE_CAMPAIGN_SERVER)
+
 ########### Castle building helpers ###############
+
+IF(ENABLE_TOOLS)
 
 SET(exploder_SRC
     tools/exploder.cpp
@@ -270,6 +296,8 @@ SET(exploder_SRC
 ADD_EXECUTABLE(exploder ${exploder_SRC})
 TARGET_LINK_LIBRARIES(exploder wesnoth-core ${the-external-libs} png12)
 
+INSTALL(TARGETS exploder DESTINATION ${BINDIR})
+
 SET(cutter_SRC
     tools/cutter.cpp
     tools/exploder_utils.cpp
@@ -282,16 +310,26 @@ SET(cutter_SRC
 ADD_EXECUTABLE(cutter ${cutter_SRC})
 TARGET_LINK_LIBRARIES(cutter wesnoth-core ${the-external-libs} png12)
 
+INSTALL(TARGETS cutter DESTINATION ${BINDIR})
+
+ENDIF(ENABLE_TOOLS)
+
 ########### Unit tests ###############
 
-SET(exploder_SRC
+IF(ENABLE_TESTS)
+
+ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK)
+
+SET(test_SRC
     tests/main.cpp
     tests/test_util.cpp
     ${wesnoth-main_SRC}
 )
 
-ADD_EXECUTABLE(test ${wesnoth_SRC})
-TARGET_LINK_LIBRARIES(test wesnoth-core wesnoth-game ${the-external-libs})
+ADD_EXECUTABLE(test ${test_SRC})
+TARGET_LINK_LIBRARIES(test wesnoth-core wesnoth-game ${the-external-libs} boost_unit_test_framework)
+
+ENDIF(ENABLE_TESTS)
 
 ########### install files ###############
 
