@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-26 13:45+0200\n"
-"PO-Revision-Date: 2008-03-25 16:50+0100\n"
+"PO-Revision-Date: 2008-05-04 15:26+0200\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -678,7 +678,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -687,8 +686,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le unità reclutate hanno due <ref>dst=traits text=Qualità</ref> casuali che "
-"modificano le loro caratteristiche."
+"Le unità reclutate hanno due <ref>dst=..traits_section text=Qualità</ref> "
+"casuali che modificano le loro caratteristiche."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -3137,7 +3136,6 @@ msgid "backstab"
 msgstr "attacco alle spalle"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3246,7 +3244,6 @@ msgid "charge"
 msgstr "carica"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -4409,7 +4406,6 @@ msgstr ""
 "fino a che uno dei due combattenti muore."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4446,7 +4442,6 @@ msgstr ""
 "colpire i nemici presi di mira, ma solo durante l'attacco."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -7095,11 +7090,11 @@ msgid "Choose your preferred language:"
 msgstr "Scegli la lingua che preferisci:"
 
 #: src/game.cpp:1865
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "La seguente estensione ha degli errori e non può essere caricata:"
-msgstr[1] "La seguente estensione ha degli errori e non può essere caricata:"
+msgstr[1] ""
+"Le seguenti estensioni hanno degli errori e non possono essere caricate:"
 
 #: src/game.cpp:1872
 msgid "ERROR DETAILS:"
@@ -7782,9 +7777,8 @@ msgid "Search"
 msgstr "Cerca"
 
 #: src/menu_events.cpp:1968
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Nessun obiettivo disponibile"
+msgstr ""
 
 #: src/menu_events.cpp:1979
 msgid ""
@@ -9128,11 +9122,10 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
 
-#~ msgid "Screenshot"
-#~ msgstr "Anteprima"
+#~ msgid "ruby of fire"
+#~ msgstr "rubino di fuoco"
 
-#, fuzzy
-#~ msgid "Map_Screenshot"
+#~ msgid "Screenshot"
 #~ msgstr "Anteprima"
 
 #~ msgid ""
@@ -9167,9 +9160,6 @@ msgstr "Abilita l'invio del sommario"
 #~ msgid "Unknown subcommand."
 #~ msgstr "Sottocomando sconosciuto."
 
-#~ msgid "Unknown command."
-#~ msgstr "Comando sconosciuto."
-
 #~ msgid "Unknown command: "
 #~ msgstr "Comando sconosciuto: "
 
@@ -9179,9 +9169,6 @@ msgstr "Abilita l'invio del sommario"
 #~ msgstr ""
 #~ " Questa unità è in grado di offrire cure di base, tuttavia può solo "
 #~ "rallentare gli effetti del veleno, non può curarlo del tutto."
-
-#~ msgid "ruby of fire"
-#~ msgstr "rubino di fuoco"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
