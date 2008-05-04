@@ -59,9 +59,9 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 ]
             )
         elif cfgs:
-            env.Command(pot, wml_pot, Move(pot.path, wml_pot))
+            env.Command(pot, wml_pot, Move(pot.path, wml_pot[0].path))
         else:
-            env.Command(pot, source_pot, Move(pot.path, source_pot))
+            env.Command(pot, source_pot, Move(pot.path, source_pot[0].path))
 
         env.Alias("pot-update", pot)
     env.Alias("pot-update", "../translations")
