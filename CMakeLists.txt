@@ -27,22 +27,22 @@ set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.w
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
 
 if(NOT WIN32)
-  if(IS_ABSOLUTE DATADIR)
+  if(${IS_ABSOLUTE DATADIR})
     add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
     message("set -DWESNOTH_PATH='\"${DATADIR}\"'")
-  else(IS_ABSOLUTE DATADIR)
+  else(${IS_ABSOLUTE DATADIR})
     add_definitions(-DWESNOTH_PATH='\"${CMAKE_INSTALL_PREFIX}/${DATADIR}\"')
     message("set -DWESNOTH_PATH='\"${CMAKE_INSTALL_PREFIX}/${DATADIR}\"'")
-  endif(IS_ABSOLUTE DATADIR)
+  endif(${IS_ABSOLUTE DATADIR})
 endif(NOT WIN32)
 
 add_definitions(-DLOCALEDIR=='\"${LOCALEDIR}\"')
 message("set -DLOCALEDIR='\"${LOCALEDIR}\"'")
 
-if(NOT IS_ABSOLUTE LOCALEDIR)
+if(NOT IS_ABSOLUTE ${LOCALEDIR})
   add_definitions(-DHAS_RELATIVE_LOCALEDIR)
   message("set -DHAS_RELATIVE_LOCALEDIR")
-endif(NOT IS_ABSOLUTE LOCALEDIR)
+endif(NOT IS_ABSOLUTE ${LOCALEDIR})
 
 if(PREFERENCES_DIR)
   add_definitions(-DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"')
