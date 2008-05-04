@@ -680,77 +680,75 @@ def InstallLocalizedManPage(alias, page, env):
         if os.path.isfile(sourcefile):
             env.Alias(alias, env.Install(targetdir, sourcefile))
 
-install_env = env.Clone()
-
 # Now the actual installation productions
 
-install_data = install_env.InstallFiltered(Dir(install_env.subst(datadir)),
-                                       map(Dir, installable_subs))
+install_data = env.InstallFiltered(Dir(env.subst(datadir)),
+                               map(Dir, installable_subs))
 
-install_manual = install_env.InstallFiltered(Dir(install_env.subst(docdir)),
-                                       Dir("doc/manual"))
+install_manual = env.InstallFiltered(Dir(env.subst(docdir)),
+                                     Dir("doc/manual"))
 
 # The game and associated resources
-install_env.Alias("install-wesnoth", [
-    install_env.InstallWithSuffix(bindir, wesnoth),
-    install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
-    install_data, install_manual])
+env.Alias("install-wesnoth", [
+    env.InstallWithSuffix(bindir, wesnoth),
+    env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
+                install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
-         install_env.Alias("install-wesnoth",
-                               install_env.Install(env["icondir"],
-                                              "icons/wesnoth-icon-Mac.png"))
+         env.Alias("install-wesnoth",
+            env.Install(env["icondir"],
+                            "icons/wesnoth-icon-Mac.png"))
      else:
-         install_env.Alias("install-wesnoth",
-                              install_env.Install(env["icondir"],
-                                             "icons/wesnoth-icon.png"))
-     install_env.Alias("install-wesnoth",
-               install_env.Install(env["desktopdir"],
-                                      "icons/wesnoth.desktop"))
+         env.Alias("install-wesnoth",
+            env.Install(env["icondir"],
+                            "icons/wesnoth-icon.png"))
+     env.Alias("install-wesnoth",
+         env.Install(env["desktopdir"],
+                         "icons/wesnoth.desktop"))
 InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
 # The editor and associated resources
-install_env.Alias("install-wesnoth_editor", [
-    install_env.InstallWithSuffix(bindir, wesnoth_editor),
-    install_env.Install(os.path.join(mandir, "man6"),
-                                "doc/man/wesnoth_editor.6"),
-    install_data, install_manual])
+env.Alias("install-wesnoth_editor", [
+    env.InstallWithSuffix(bindir, wesnoth_editor),
+    env.Install(os.path.join(mandir, "man6"),
+                                     "doc/man/wesnoth_editor.6"),
+                                     install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
-     if sys.platform == "darwin":
-          install_env.Alias("install-wesnoth_editor",
-                               install_env.Install(env["icondir"],
-                                              "icons/wesnoth_editor-icon-Mac.png"))
-     else:
-          install_env.Alias("install-wesnoth_editor",
-                               install_env.Install(env["icondir"],
-                                              "icons/wesnoth_editor-icon.png"))
-     install_env.Alias("install-wesnoth_editor",
-                          install_env.Install(env["desktopdir"],
-                                         "icons/wesnoth_editor.desktop"))
+    if sys.platform == "darwin":
+        env.Alias("install-wesnoth_editor",
+            env.Install(env["icondir"],
+                            "icons/wesnoth_editor-icon-Mac.png"))
+    else:
+        env.Alias("install-wesnoth_editor",
+            env.Install(env["icondir"],
+                            "icons/wesnoth_editor-icon.png"))
+    env.Alias("install-wesnoth_editor",
+        env.Install(env["desktopdir"],
+                        "icons/wesnoth_editor.desktop"))
 InstallLocalizedManPage("install-wesnoth_editor", "wesnoth_editor.6", env)
 
 # Python tools
-install_env.Alias("install-pytools", [
-    install_env.Install(bindir,
-                      map(lambda tool: 'data/tools/' + tool, pythontools)),
-    install_env.Install(pythonlib,
-                      map(lambda module: 'data/tools/wesnoth/' + module, pythonmodules)),
+env.Alias("install-pytools", [
+    env.Install(bindir,
+                map(lambda tool: 'data/tools/' + tool, pythontools)),
+    env.Install(pythonlib,
+                map(lambda module: 'data/tools/wesnoth/' + module, pythonmodules)),
     ])
 
 # Wesnoth MP server install
-install_wesnothd = install_env.InstallWithSuffix(bindir, wesnothd)
-install_env.Alias("install-wesnothd", [
-                                install_wesnothd,
-                                install_env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6")
-                                ])
+install_wesnothd = env.InstallWithSuffix(bindir, wesnothd)
+env.Alias("install-wesnothd", [
+                           install_wesnothd,
+                           env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6")
+                           ])
 for lang in filter(CopyFilter, os.listdir("doc/man")):
-     sourcefile = os.path.join("doc/man", lang, "wesnothd.6")
-     if os.path.isfile(sourcefile):
-          targetdir = os.path.join(mandir, lang, "man6")
-          install_env.Alias('install-wesnothd',
-               install_env.Install(targetdir, sourcefile))
+    sourcefile = os.path.join("doc/man", lang, "wesnothd.6")
+    if os.path.isfile(sourcefile):
+        targetdir = os.path.join(mandir, lang, "man6")
+        env.Alias('install-wesnothd',
+            env.Install(targetdir, sourcefile))
 if not access(fifodir, F_OK):
-    install_env.AddPostAction(install_wesnothd, [
+    env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
         Chmod(fifodir, 0700),
         Action("chown %s:%s %s" %
@@ -758,19 +756,19 @@ if not access(fifodir, F_OK):
         ])
 
 # Wesnoth campaign server
-install_env.Alias("install-campaignd", install_env.InstallWithSuffix(bindir, campaignd))
+env.Alias("install-campaignd", env.InstallWithSuffix(bindir, campaignd))
 
 # And the artists' tools
-install_env.Alias("install-cutter", install_env.InstallWithSuffix(bindir, cutter))
-install_env.Alias("install-exploder", install_env.InstallWithSuffix(bindir, exploder))
+env.Alias("install-cutter", env.InstallWithSuffix(bindir, cutter))
+env.Alias("install-exploder", env.InstallWithSuffix(bindir, exploder))
 
 # Compute things for default install based on which targets have been created.
-install = install_env.Alias('install', [])
+install = env.Alias('install', [])
 for installable in ('wesnoth', 'wesnoth_editor',
                     'wesnothd', 'campaignd',
                     'exploder', 'cutter'):
     if os.path.exists(installable) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
-        install_env.Alias('install', install_env.Alias('install-'+installable))
+        env.Alias('install', env.Alias('install-'+installable))
 
 #
 # Un-installation
