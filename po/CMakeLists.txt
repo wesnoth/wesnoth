@@ -1,7 +1,7 @@
 INCLUDE(TranslationTargets)
 set(XGETTEXT_OPTIONS "--from-code=UTF-8 --sort-by-file --keyword=sgettext --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2")
 
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/pot-update.sh.in ${CMAKE_CURRENT_SOURCE_DIR}/pot-update.sh)
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/pot-update.sh.in ${CMAKE_CURRENT_BINARY_DIR}/pot-update.sh)
 
 add_custom_target(update-pot)
 add_custom_target(update-po)
