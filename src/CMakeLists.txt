@@ -23,7 +23,7 @@ SET( the-external-libs
 )
 
 IF(ENABLE_PYTHON AND PYTHON_LIBRARY)
-  SET(the-external-libs ${the-external-libs} ${PYTHON_LIBRARY})
+  SET(the-external-libs ${the-external-libs} ${PYTHON_LIBRARIES})
 ENDIF(ENABLE_PYTHON AND PYTHON_LIBRARY)
 
 
