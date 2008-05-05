@@ -28,6 +28,8 @@ if os.path.exists('.scons-option-cache'):
 opts = Options('.scons-option-cache')
 
 opts.AddOptions(
+    ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
+        "wesnoth,wesnothd", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder")),
     PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathOption('datadir', 'read-only architecture-independent game data', "share/$datadirname", PathOption.PathAccept),
@@ -562,7 +564,7 @@ Import(Split("sources wesnoth wesnoth_editor wesnothd cutter exploder campaignd"
 # Omits the 'test' target 
 all = env.Alias("all", [wesnoth, wesnoth_editor, wesnothd, campaignd,
                         cutter, exploder])
-env.Default([wesnoth, wesnothd])
+env.Default(map(eval, env["default_targets"]))
 
 #
 # Utility productions (Unix-like systems only)
