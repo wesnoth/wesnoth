@@ -397,14 +397,20 @@ class Parser:
                 params += [read]
 
             elif sep == "(":
+                in_string = False
                 balance = 1
                 param = read
                 while balance:
                     c = self.read_next()
-                    if c == "(":
-                        balance += 1
-                    elif c == ")":
-                        balance -= 1
+                    # Ignore () within strings
+                    if c == '"':
+                        in_string = not in_string
+                        
+                    if not in_string:
+                        if c == "(":
+                            balance += 1
+                        elif c == ")":
+                            balance -= 1
                     param += c
                 params += [param[:-1]]
 
