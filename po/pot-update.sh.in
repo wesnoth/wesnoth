@@ -1,0 +1,55 @@
+#!/bin/sh
+DOMAIN=$1
+XGETTEXT=@GETTEXT_XGETTEXT_EXECUTABLE@
+WMLXGETTEXT=@CMAKE_SOURCE_DIR@/utils/wmlxgettext
+XGETTEXT_OPTIONS="@XGETTEXT_OPTIONS@"
+TOP_SRCDIR=@CMAKE_SOURCE_DIR@
+CURRENT_SRCDIR=$(pwd)
+COPYRIGHT_HOLDER="Wesnoth development team"
+
+if test -n '$(MSGID_BUGS_ADDRESS)' || test '$(PACKAGE_BUGREPORT)' = '@'PACKAGE_BUGREPORT'@'; then
+	msgid_bugs_address='$(MSGID_BUGS_ADDRESS)';
+else
+	msgid_bugs_address='$(PACKAGE_BUGREPORT)';
+fi;
+
+$XGETTEXT --default-domain=$DOMAIN --directory=$TOP_SRCDIR \
+--add-comments=TRANSLATORS: $XGETTEXT_OPTIONS \
+--files-from=$CURRENT_SRCDIR/POTFILES.in \
+--copyright-holder='$COPYRIGHT_HOLDER' \
+--msgid-bugs-address="$msgid_bugs_address" \
+--keyword=_ --keyword=N_ \
+--output=$DOMAIN.cpp.po
+
+if test -f $DOMAIN.cpp.po ; then
+	sed s/charset=CHARSET/charset=UTF-8/ $DOMAIN.cpp.po > $DOMAIN.cpp1.po
+fi
+
+if test -r $FINDCFG ; then 
+    $WMLXGETTEXT --directory=$TOP_SRCDIR --domain=$DOMAIN `cd $TOP_SRCDIR && sh $CURRENT_SRCDIR/FINDCFG` > $DOMAIN.wml.po;
+fi
+
+if test -f $DOMAIN.wml.po -a -f $DOMAIN.cpp1.po ; then
+	msgcat --sort-by-file $DOMAIN.cpp1.po $DOMAIN.wml.po -o $DOMAIN.po
+elif test -f $DOMAIN.wml.po ; then
+	mv $DOMAIN.wml.po $DOMAIN.po
+else
+	mv $DOMAIN.cpp1.po $DOMAIN.po
+fi
+
+rm -f $DOMAIN.cpp.po $DOMAIN.cpp1.po $DOMAIN.wml.po
+test ! -f $DOMAIN.po || {
+	if test -f $DOMAIN.pot; then
+	    sed -f remove-potcdate.sed < $DOMAIN.pot > $DOMAIN.1po &&
+	    sed -f remove-potcdate.sed < $DOMAIN.po > $DOMAIN.2po &&
+	    if cmp $DOMAIN.1po $DOMAIN.2po >/dev/null 2>&1; then
+	        rm -f $DOMAIN.1po $DOMAIN.2po $DOMAIN.po;
+	    else
+	        rm -f $DOMAIN.1po $DOMAIN.2po $DOMAIN.pot &&
+	        mv $DOMAIN.po $DOMAIN.pot;
+	    fi;
+	else
+	    mv $DOMAIN.po $DOMAIN.pot;
+	fi;
+}
+

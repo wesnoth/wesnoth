@@ -21,7 +21,7 @@ FIND_PACKAGE( PNG REQUIRED )
 set(BINDIR "bin" CACHE STRING "Where to install binaries")
 set(DATAROOTDIR "share" CACHE STRING "Sets the root of data directories to a non-default location")
 set(DATADIR "${DATAROOTDIR}/wesnoth" CACHE STRING "Read-only architecture-independent game data")
-set(LOCALEDIR "${DATADIR}/translations" CACHE STRING "sets the locale data directory to a non-default location")
+set(LOCALEDIR "translations" CACHE STRING "sets the locale data directory to a non-default location")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
@@ -42,6 +42,9 @@ message("set -DLOCALEDIR='\"${LOCALEDIR}\"'")
 if(NOT IS_ABSOLUTE ${LOCALEDIR})
   add_definitions(-DHAS_RELATIVE_LOCALEDIR)
   message("set -DHAS_RELATIVE_LOCALEDIR")
+  set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
+else(NOT IS_ABSOLUTE ${LOCALEDIR})
+  set(LOCALE_INSTALL ${LOCALEDIR})
 endif(NOT IS_ABSOLUTE ${LOCALEDIR})
 
 if(PREFERENCES_DIR)
@@ -74,7 +77,7 @@ endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
 #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 # only one of the subdirs working so far...
-#add_subdirectory(po)
+add_subdirectory(po)
 #add_subdirectory(m4)
 add_subdirectory(src)
 #add_subdirectory(doc)
@@ -90,7 +93,7 @@ add_subdirectory(src)
 #install(FILES  copyright changelog players_changelog campaign_server.dsp editor.dev editor_gcc4.dev map_editor.dsp server.dev server.dsp unit_test.dev wesnothd.dev wesnoth.dev wesnothd_gcc4.dev wesnoth.dsp wesnoth.dsw wesnoth_gcc4.dev wesnoth.kdevelop DESTINATION )
 #install(FILES  DESTINATION /share/@DATADIR@)
 
-install(DIRECTORY data fonts images sounds translations DESTINATION ${DATADIR} PATTERN ".svn" EXCLUDE )
+install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} PATTERN ".svn" EXCLUDE )
 
 
 #original Makefile.am contents follow:
