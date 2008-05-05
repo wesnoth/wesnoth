@@ -103,6 +103,7 @@ class Parser:
             u = text.decode("latin1")
         text = u
         text = text.replace("\r\n", "\n").replace("\t", " ")
+        if text[-1] != "\n": text += "\n"
         return text
 
     def set_macro_not_found_callback(self, callback):
