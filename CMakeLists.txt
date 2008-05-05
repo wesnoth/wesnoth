@@ -68,7 +68,7 @@ endif(GUI STREQUAL "tiny")
 
 option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
-option(ENABLE_SERVER "Enable compilation of server")
+option(ENABLE_SERVER "Enable compilation of server" ON)
 option(ENABLE_EDITOR "Enable compilation of map editor")
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
