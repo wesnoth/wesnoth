@@ -283,11 +283,18 @@ class Parser:
         innermost macro?
         """
         params = []
-        macro = self.read_until("}")
-        if macro[-1] != "}":
-            raise Error(self, "Unclosed macro")
-            return
-        
+        balance = 1
+        macro = ""
+        while balance > 0:
+            macro += self.read_until("{}")
+            if macro[-1] == "{":
+                balance += 1
+            elif macro[-1] == "}":
+                balance -= 1
+            else:
+                raise Error(self, "Unclosed macro")
+                return
+
         if self.just_parse:
             # We do not execute any macros or file inclusions.
             return None
