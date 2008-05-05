@@ -173,8 +173,8 @@ class WesnothList:
             fid = multiplayer_side.get_text_val("id")
             if fid == "Random": continue
             era.faction_lookup[fid] = multiplayer_side
-            recruit = multiplayer_side.get_text_val("recruit").strip()
-            leader = multiplayer_side.get_text_val("leader").strip()
+            recruit = multiplayer_side.get_text_val("recruit", "").strip()
+            leader = multiplayer_side.get_text_val("leader", "").strip()
             units = recruit.split(",")
             leaders = leader.split(",")
             multiplayer_side.units = {}
