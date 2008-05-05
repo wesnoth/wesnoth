@@ -430,7 +430,10 @@ if env["prereqs"]:
         conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
         conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
 
-    have_X = conf.CheckLib('X11') or Warning("wesnoth_editor cannot be built.")
+    if env["PLATFORM"] == "win32":
+        have_X = True
+    else:
+        have_X = conf.CheckLib('X11') or Warning("wesnoth_editor cannot be built.")
     if env['fribidi']:
         env['fribidi'] = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Warning("Can't find libfribidi, disabling freebidi support.")
 
