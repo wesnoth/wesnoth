@@ -5,7 +5,7 @@
 # * some other smaller stuff
 # * nice INSTALL howto
 
-# use our own version of FindBoost.cmake
+# use our own version of FindBoost.cmake and other Find* scripts
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # find all deps needed
@@ -14,7 +14,6 @@ FIND_PACKAGE( SDL_image 1.2 REQUIRED )
 FIND_PACKAGE( SDL_mixer 1.2 REQUIRED )
 FIND_PACKAGE( SDL_net  REQUIRED )
 FIND_PACKAGE( SDL_ttf 2.0.8 REQUIRED )
-# setting python to a "must have" for the moment, can later on be changed to be optional
 FIND_PACKAGE( PythonInterp 2.4 )
 FIND_PACKAGE( PythonLibs 2.4 )
 FIND_PACKAGE( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
@@ -31,6 +30,16 @@ set(LOCALEDIR "translations" CACHE STRING "sets the locale data directory to a n
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
+
+option(ENABLE_GAME "Enable compilation of the game" ON)
+option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
+option(ENABLE_SERVER "Enable compilation of server" ON)
+option(ENABLE_EDITOR "Enable compilation of map editor")
+option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
+option(ENABLE_TESTS "Build unit tests")
+
+option(ENABLE_PYTHON  "Enable in-game python extensions" ON)
+
 
 if(NOT WIN32)
   if(IS_ABSOLUTE ${DATADIR})
@@ -58,27 +67,16 @@ if(PREFERENCES_DIR)
   message("set -DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"'")
 endif(PREFERENCES_DIR)
 
-
 if(GUI STREQUAL "tiny")
   add_definitions(-DUSE_TINY_GUI)
 elseif(GUI STREQUAL "small")
   add_definitions(-DUSE_SMALL_GUI)
 endif(GUI STREQUAL "tiny")
 
-
-option(ENABLE_GAME "Enable compilation of the game" ON)
-option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
-option(ENABLE_SERVER "Enable compilation of server" ON)
-option(ENABLE_EDITOR "Enable compilation of map editor")
-option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
-option(ENABLE_TESTS "Build unit tests")
-option(ENABLE_PYTHON  "Enable in-game python extensions" ON)
-
 if(ENABLE_PYTHON AND PYTHON_LIBRARY)
   add_definitions(-DHAVE_PYTHON)
   message("set -DHAVE_PYTHON")
 endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
-
 
 #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
@@ -86,6 +84,7 @@ endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
 add_subdirectory(po)
 add_subdirectory(src)
 #add_subdirectory(doc)
+
 
 ########### install files ###############
 
