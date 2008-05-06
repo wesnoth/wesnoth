@@ -250,35 +250,6 @@ def CheckBoost(context, boost_lib, require_version = None):
         context.Result("no")
     return check_result
 
-def CheckPython(context):
-    env = context.env
-    backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
-    context.Message("Checking for Python... ")
-    import distutils.sysconfig
-    env.AppendUnique(CPPPATH = distutils.sysconfig.get_python_inc())
-    version = distutils.sysconfig.get_config_var("VERSION")
-    if not version:
-        version = sys.version[:3]
-    if env["PLATFORM"] == "win32":
-        version = version.replace('.', '')
-    env.AppendUnique(LIBPATH = distutils.sysconfig.get_config_var("LIBDIR") or \
-                               os.path.join(distutils.sysconfig.get_config_var("prefix"), "libs") )
-    env.AppendUnique(LIBS = "python" + version)
-    test_program = """
-    #include <Python.h>
-    int main()
-    {
-        Py_Initialize();
-    }
-    \n"""
-    if context.TryLink(test_program, ".c"):
-        context.Result("yes")
-        return True
-    else:
-        context.Result("no")
-        restore_env(context.env, backup)
-        return False
-
 def CheckSDL(context, sdl_lib = "SDL", require_version = None):
     if require_version:
         version = require_version.split(".", 2)
@@ -405,14 +376,18 @@ def Warning(message):
     print message
     return False
 
-conf = Configure(env, custom_tests = { 'CheckCPlusPlus' : CheckCPlusPlus,
-                                       'CheckPython' : CheckPython,
-                                       'CheckPKGConfig' : CheckPKGConfig,
-                                       'CheckPKG' : CheckPKG,
-                                       'CheckSDL' : CheckSDL,
-                                       'CheckOgg' : CheckOgg,
-                                       'CheckPNG' : CheckPNG,
-                                       'CheckBoost' : CheckBoost })
+sys.path.append("./scons")
+from metasconf import init_metasconf
+custom_checks = { 'CheckCPlusPlus' : CheckCPlusPlus,
+                  'CheckPKGConfig' : CheckPKGConfig,
+                        'CheckPKG' : CheckPKG,
+                        'CheckSDL' : CheckSDL,
+                        'CheckOgg' : CheckOgg,
+                        'CheckPNG' : CheckPNG,
+                      'CheckBoost' : CheckBoost }
+custom_checks.update(init_metasconf(env, ["python_devel"]))
+
+conf = Configure(env, custom_tests = custom_checks)
 
 if env["prereqs"]:
     if env["gettextdir"]:
