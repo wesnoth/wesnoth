@@ -11,9 +11,8 @@
 
 import os, sys, shutil, sets, re, commands
 from glob import glob
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE, call
 from os import access, F_OK
-from SCons.Script import *
 
 # Warn user of current set of build options.
 if os.path.exists('.scons-option-cache'):
@@ -660,7 +659,7 @@ def InstallFilteredHook(target, source, env):
                       command = command % ("50%", source, target)
                  if env["verbose"]:
                       print command
-                 os.system(command)
+                 call(command)
                  return None
         # Just copy non-images, and images if tinygui is off
         if env["verbose"]:
