@@ -80,7 +80,7 @@ if(NOT WIN32)
   endif(IS_ABSOLUTE ${DATADIR})
 endif(NOT WIN32)
 
-add_definitions(-DLOCALEDIR=='\"${LOCALEDIR}\"')
+add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
 message("set -DLOCALEDIR='\"${LOCALEDIR}\"'")
 
 if(NOT IS_ABSOLUTE ${LOCALEDIR})
