@@ -659,7 +659,7 @@ def InstallFilteredHook(target, source, env):
                       command = command % ("50%", source, target)
                  if env["verbose"]:
                       print command
-                 call(command)
+                 call(Split(command))
                  return None
         # Just copy non-images, and images if tinygui is off
         if env["verbose"]:
