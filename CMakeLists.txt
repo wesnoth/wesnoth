@@ -5,6 +5,16 @@
 # * some other smaller stuff
 # * nice INSTALL howto
 
+# set minimum version and make sure that things work with cmake 2.6, too
+if(COMMAND cmake_minimum_required)
+    cmake_minimum_required(VERSION 2.4)
+endif(COMMAND cmake_minimum_required)
+
+if(COMMAND cmake_policy)
+    cmake_policy(SET CMP0003 NEW)
+    cmake_policy(SET CMP0005 OLD)
+endif(COMMAND cmake_policy)
+
 # use our own version of FindBoost.cmake and other Find* scripts
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
