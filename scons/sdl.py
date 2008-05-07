@@ -1,4 +1,5 @@
 # vi: syntax=python:et:ts=4
+import os
 from config_check_utils import *
 
 def CheckSDL(context, sdl_lib = "SDL", require_version = None):
@@ -24,12 +25,14 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
             env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL")], LIBPATH = [os.path.join(sdldir, "lib")])
         else:
             for foo_config in [
-                "pkg-config --cflags --libs sdl > $TARGET",
-                "sdl-config --cflags --libs > $TARGET"
+                "pkg-config --cflags --libs sdl",
+                "sdl-config --cflags --libs"
                 ]:
-                result, output = context.TryAction(foo_config)
-                if result == 1:
-                    env.MergeFlags(output)
+                try:
+                    env.ParseConfig(foo_config)
+                except OSError:
+                    pass
+                else:
                     break
         if env["PLATFORM"] == "win32":
             env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
