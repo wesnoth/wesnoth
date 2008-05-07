@@ -303,9 +303,12 @@ for build in env["build"]:
     binary_nodes = map(eval, binaries)
     if build == "release" : build_suffix = ""
     else                  : build_suffix = "-" + build
-    map(lambda bin, node : Alias(bin, node, Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
-    env.Alias("all", map(env.Alias, binaries))
-    env.Default(map(env.Alias, env["default_targets"]))
+    bin_aliases = map(lambda bin, node : Alias(bin + build, node, Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
+    env.Alias("all", bin_aliases)
+    env.Default([env.Alias(bin + build) for bin in env["default_targets"]])
+# Separate loop because those aliases screw Import
+for build in env["build"]:
+    map(env.Alias, binaries, [env.Alias(bin + build) for bin in binaries])
 
 all = env.Alias("all")
 
