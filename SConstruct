@@ -29,10 +29,10 @@ opts = Options('.scons-option-cache')
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder")),
+    ListOption('build', 'Build variant: debug or release', "release", ["release", "debug"]),
     PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathOption('datadir', 'read-only architecture-independent game data', "share/$datadirname", PathOption.PathAccept),
-    BoolOption('debug', 'Set to build for debugging', False),
     BoolOption('dummy_locales','Set to enable Wesnoth private locales', False),
     PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept),
     BoolOption('fribidi','Clear to disable bidirectional-language support', True),
@@ -205,12 +205,6 @@ env.Append(LINKFLAGS = "-Wl,--as-needed")
 
 env.Replace(CPPDEFINES = [])
 
-if env["debug"]:
-    env.AppendUnique(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"))
-else:
-    if env["PLATFORM"] != "win32":
-        env.AppendUnique(CXXFLAGS = Split("-O2 -ansi"))
-
 if env['static']:
     env.AppendUnique(LINKFLAGS = "-all-static")
 
@@ -288,14 +282,32 @@ if env["PLATFORM"] == 'win32':
 if env["PLATFORM"] == 'darwin':			# Mac OS X
     env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
 
-Export(Split("env have_client_prereqs have_X have_server_prereqs"))
-SConscript(dirs = Split("src doc po"))
-Import(Split("sources wesnoth wesnoth_editor wesnothd cutter exploder campaignd"))
+try:
+    env["svnrev"] = Popen(Split("svnversion -n ."), stdout=PIPE).communicate()[0]
+except:
+    env["svnrev"] = ""
 
-# Omits the 'test' target 
-all = env.Alias("all", [wesnoth, wesnoth_editor, wesnothd, campaignd,
-                        cutter, exploder])
-env.Default(map(eval, env["default_targets"]))
+Export(Split("env have_client_prereqs have_X have_server_prereqs"))
+SConscript(dirs = Split("doc po"))
+
+binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd")
+builds = {
+    "debug"   : Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"),
+    "release" : Split("-O2 -ansi")
+    }
+for build in env["build"]:
+    build_env = env.Clone()
+    build_env.AppendUnique(CXXFLAGS = builds[build])
+    SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = {"env":build_env})
+    Import(binaries + ["sources"])
+    binary_nodes = map(eval, binaries)
+    if build == "release" : build_suffix = ""
+    else                  : build_suffix = "-" + build
+    map(lambda bin, node : Alias(bin, node, Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
+    env.Alias("all", map(env.Alias, binaries))
+    env.Default(map(env.Alias, env["default_targets"]))
+
+all = env.Alias("all")
 
 #
 # Utility productions (Unix-like systems only)

@@ -196,7 +196,7 @@ wesnoth_sources = Split("""
 #
 
 if have_client_prereqs:
-    wesnoth = env.Program("../wesnoth", ["game.cpp"] + wesnoth_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd])
+    wesnoth = env.Program("wesnoth", ["game.cpp"] + wesnoth_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd])
 else:
     wesnoth = None
 Export("wesnoth")
@@ -213,7 +213,7 @@ wesnoth_editor_sources = Split("""
     animated_editor.cpp
     """)
 if have_client_prereqs and have_X:
-    wesnoth_editor = env.Program("../wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth])
+    wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth])
 else:
     wesnoth_editor = None
 Export("wesnoth_editor")
@@ -222,7 +222,7 @@ campaignd_sources = Split("""
     campaign_server/campaign_server.cpp
     """)
 if have_server_prereqs:
-    campaignd = env.Program("../campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libwesnoth])
+    campaignd = env.Program("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libwesnoth])
 else:
     campaignd = None
 Export("campaignd")
@@ -237,7 +237,7 @@ wesnothd_sources = Split("""
     server/simple_wml.cpp
     """)
 if have_server_prereqs:
-    wesnothd = env.Program("../wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd])
+    wesnothd = env.Program("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd])
 else:
     wesnothd = None
 Export("wesnothd")
@@ -246,7 +246,7 @@ cutter_sources = Split("""
     tools/cutter.cpp
     """)
 if have_client_prereqs:
-    cutter = env.Program("../cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
+    cutter = env.Program("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
         LIBS = env["LIBS"] + ["png"])
 else:
     cutter = None
@@ -257,7 +257,7 @@ exploder_sources = Split("""
     tools/exploder_composer.cpp
     """)
 if have_client_prereqs:
-    exploder = env.Program("../exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
+    exploder = env.Program("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
         LIBS = env["LIBS"] + ["png"])
 else:
     exploder = None
@@ -267,14 +267,9 @@ test_sources = Split("""
     tests/main.cpp
     tests/test_util.cpp
     """)
-test_env.Program("../test", test_sources + [libwesnoth_core, libwesnoth],
+test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth],
             CPPPATH = env["CPPPATH"] + ['/usr/include'],
             LIBS = env["LIBS"] + ['boost_unit_test_framework'])
-
-try:
-    env["svnrev"] = Popen(Split("svnversion -n ."), stdout=PIPE).communicate()[0]
-except:
-    env["svnrev"] = ""
 
 if env["svnrev"] != "" and env["svnrev"] != "exported":
     revision_define = "#define REVISION \"%s\"\n" % env["svnrev"]
