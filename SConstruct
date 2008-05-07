@@ -45,6 +45,7 @@ opts.AddOptions(
     PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept),
     PathOption('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathOption.PathAccept),
     PathOption('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathOption.PathAccept),
+    PathOption('pythonlibdir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathOption.PathAccept),
     BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolOption('nls','enable compile/install of gettext message catalogs',True),
     PathOption('prefix', 'autotools-style installation prefix', "/usr/local", PathOption.PathAccept),
@@ -251,16 +252,14 @@ if env['dummy_locales']:
     env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
 
 # Simulate autools-like behavior of prefix on various paths
-for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir"):
-     if not os.path.isabs(env[d]):
-          env[d] = os.path.join(env["prefix"], env[d])
+for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir", "pythonlibdir"):
+    env[d] = os.path.join(env["prefix"], env[d])
 
 if env["PLATFORM"] != "win32":
     env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
 
-for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir"):
+for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir", "pythonlibdir"):
     env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
-env["prefix"] = os.path.join("/", env["destdir"], env["prefix"].lstrip("/"))
 
 if 'CXXFLAGS' in os.environ:
     env.Append(CXXFLAGS = os.environ['CXXFLAGS'])
@@ -346,7 +345,7 @@ if env["dummy_locales"]:
 #
 
 bindir = env['bindir']
-pythonlib = os.path.join(env['prefix'] + "/lib/python/site-packages/wesnoth")
+pythonlib = env['pythonlibdir']
 datadir = env['datadir']
 docdir = env['docdir']
 installable_subs = Split('data fonts icons images sounds')
