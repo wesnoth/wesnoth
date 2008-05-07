@@ -268,6 +268,7 @@ BPath be_path;
 // for getenv
 #include <cstdlib>
 #include <cerrno>
+#include <string>
 #include <cstring>
 #include <algorithm>
 #include <fstream>

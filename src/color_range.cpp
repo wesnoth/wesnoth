@@ -25,6 +25,7 @@
 #include <cassert>
 #include <set>
 #include <string>
+#include <cstring>
 #include <vector>
 
 std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::vector<Uint32>& old_rgb){

@@ -28,6 +28,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <streambuf>
 
 namespace {
 

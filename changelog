@@ -5,6 +5,8 @@ Version 1.4.2+svn:
    * starting a campaing without any installed now gives an error.
    * fixed an alignement issue which caused a SIGBUS on a Sparc 
      (debian bug #426318)
+   * added some includes to fix compilation problems with Sun Studio 12 
+     (patch #1066)
 
 Version 1.4.2:
  * campaigns
