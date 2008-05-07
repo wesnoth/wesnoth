@@ -67,6 +67,8 @@ set(DATAROOTDIR "share" CACHE STRING "Sets the root of data directories to a non
 set(DATADIR "${DATAROOTDIR}/wesnoth" CACHE STRING "Read-only architecture-independent game data")
 set(LOCALEDIR "translations" CACHE STRING "sets the locale data directory to a non-default location")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
+set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
+set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
 

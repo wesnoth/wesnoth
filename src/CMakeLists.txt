@@ -209,10 +209,10 @@ SET(wesnoth_SRC
     ${wesnoth-main_SRC}
 )
 
-ADD_EXECUTABLE(wesnoth ${wesnoth_SRC})
-TARGET_LINK_LIBRARIES(wesnoth wesnoth-core wesnoth-game ${the-external-libs})
+ADD_EXECUTABLE(${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} ${wesnoth_SRC})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} wesnoth-core wesnoth-game ${the-external-libs})
 
-INSTALL(TARGETS wesnoth DESTINATION ${BINDIR})
+INSTALL(TARGETS ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
 ENDIF(ENABLE_GAME)
 
@@ -234,10 +234,10 @@ SET(wesnoth_editor_SRC
     tooltips.cpp 
 )
 
-ADD_EXECUTABLE(wesnoth_editor ${wesnoth_editor_SRC})
-TARGET_LINK_LIBRARIES(wesnoth_editor wesnoth-core wesnoth-game ${the-external-libs})
+ADD_EXECUTABLE(${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX} ${wesnoth_editor_SRC})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX} wesnoth-core wesnoth-game ${the-external-libs})
 
-INSTALL(TARGETS wesnoth_editor DESTINATION ${BINDIR})
+INSTALL(TARGETS ${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
 ENDIF(ENABLE_EDITOR)
 
@@ -258,10 +258,10 @@ SET(wesnothd_SRC
     loadscreen_empty.cpp 
 )
 
-ADD_EXECUTABLE(wesnothd ${wesnothd_SRC})
-TARGET_LINK_LIBRARIES(wesnothd wesnoth-core ${the-external-libs})
+ADD_EXECUTABLE(${BINARY_PREFIX}wesnothd${BINARY_SUFFIX} ${wesnothd_SRC})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnothd${BINARY_SUFFIX} wesnoth-core ${the-external-libs})
 
-INSTALL(TARGETS wesnothd DESTINATION ${BINDIR})
+INSTALL(TARGETS ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
 ENDIF(ENABLE_SERVER)
 
@@ -277,10 +277,10 @@ SET(campaignd_SRC
     loadscreen_empty.cpp
 )
 
-ADD_EXECUTABLE(campaignd ${campaignd_SRC})
-TARGET_LINK_LIBRARIES(campaignd wesnoth-core ${the-external-libs})
+ADD_EXECUTABLE(${BINARY_PREFIX}campaignd${BINARY_SUFFIX} ${campaignd_SRC})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}campaignd${BINARY_SUFFIX} wesnoth-core ${the-external-libs})
 
-INSTALL(TARGETS campaignd DESTINATION ${BINDIR})
+INSTALL(TARGETS ${BINARY_PREFIX}campaignd${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
 ENDIF(ENABLE_CAMPAIGN_SERVER)
 
@@ -298,10 +298,10 @@ SET(exploder_SRC
     loadscreen_empty.cpp
 )
 
-ADD_EXECUTABLE(exploder ${exploder_SRC})
-TARGET_LINK_LIBRARIES(exploder wesnoth-core ${the-external-libs} png12)
+ADD_EXECUTABLE(${BINARY_PREFIX}exploder${BINARY_SUFFIX} ${exploder_SRC})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}exploder${BINARY_SUFFIX} wesnoth-core ${the-external-libs} png12)
 
-INSTALL(TARGETS exploder DESTINATION ${BINDIR})
+INSTALL(TARGETS ${BINARY_PREFIX}exploder${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
 SET(cutter_SRC
     tools/cutter.cpp
@@ -312,10 +312,10 @@ SET(cutter_SRC
     loadscreen_empty.cpp
 )
 
-ADD_EXECUTABLE(cutter ${cutter_SRC})
-TARGET_LINK_LIBRARIES(cutter wesnoth-core ${the-external-libs} png12)
+ADD_EXECUTABLE(${BINARY_PREFIX}cutter${BINARY_SUFFIX} ${cutter_SRC})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}cutter${BINARY_SUFFIX} wesnoth-core ${the-external-libs} png12)
 
-INSTALL(TARGETS cutter DESTINATION ${BINDIR})
+INSTALL(TARGETS ${BINARY_PREFIX}cutter${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
 ENDIF(ENABLE_TOOLS)
 
@@ -331,8 +331,8 @@ SET(test_SRC
     ${wesnoth-main_SRC}
 )
 
-ADD_EXECUTABLE(test ${test_SRC})
-TARGET_LINK_LIBRARIES(test wesnoth-core wesnoth-game ${the-external-libs} boost_unit_test_framework)
+ADD_EXECUTABLE(${BINARY_PREFIX}test${BINARY_SUFFIX} ${test_SRC})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}test${BINARY_SUFFIX} wesnoth-core wesnoth-game ${the-external-libs} boost_unit_test_framework)
 
 ENDIF(ENABLE_TESTS)
 
