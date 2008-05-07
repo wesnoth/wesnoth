@@ -29,7 +29,9 @@ Version 1.5.0+svn:
      the new widget library also uses it.
    * Removed bug introduced in 1.5.0 that allowed use of :debug commands during
      network play
-	
+   * added some includes to fix compilation problems with Sun Studio 12
+     (patch #1066)
+
 Version 1.5.0:
  * campaigns:
    * synchronize all campaign ids with their directory name

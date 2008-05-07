@@ -26,6 +26,7 @@
 #include <algorithm>
 #include <ctime>
 #include <sstream>
+#include <streambuf>
 
 namespace {
 

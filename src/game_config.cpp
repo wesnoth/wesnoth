@@ -26,7 +26,9 @@
 #endif /* HAVE_REVISION */
 
 #include <cstdlib>
+#include <string>
 #include <sstream>
+#include <ostream>
 
 #define DBG_NG LOG_STREAM(debug, engine)
 #define ERR_NG LOG_STREAM(err, engine)
