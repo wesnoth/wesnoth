@@ -878,7 +878,7 @@ std::string server::process_command(const std::string& query) {
 			" unban <ipmask>, shut_down [now], restart";
 	if (command == "shut_down") {
 		
-		if (parameter == "now")
+		if (parameters == "now")
 			throw network::error("shut down");
 		else
 		{
