@@ -61,13 +61,17 @@ static bool command_active()
 // Conversion routine for both unscatched and damage change percentage.
 static void format_prob(char str_buf[10], const float prob)
 {
-	const char *prob_str_format = NULL;
 
-	if(prob > 0.9995) prob_str_format = "100 %%";
-	else if(prob >= 0.1) prob_str_format = "%4.1f %%";
-	else prob_str_format = " %3.1f %%";
+	if(prob > 0.9995) {
+		snprintf(str_buf, 10, "100 %%");
+	} else if(prob >= 0.1) { 
+		snprintf(str_buf, 10, "%4.1f %%", 
+			static_cast<float>(100.0 * (prob + 0.0005)));
+	} else { 
+		snprintf(str_buf, 10, " %3.1f %%", 
+			static_cast<float>(100.0 * (prob + 0.0005)));
+	}
 
-	snprintf(str_buf, 10, prob_str_format, static_cast<float>(100.0 * (prob + 0.0005)));
 	str_buf[9] = '\0';  //prevents _snprintf error
 }
 
