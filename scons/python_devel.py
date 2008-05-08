@@ -1,4 +1,5 @@
 # vi: syntax=python:et:ts=4
+import sys, os
 from config_check_utils import *
 
 def CheckPython(context):

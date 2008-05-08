@@ -1,5 +1,6 @@
 # vi: syntax=python:et:ts=4
 import os
+from SCons.Script import *
 from config_check_utils import *
 
 def CheckSDL(context, sdl_lib = "SDL", require_version = None):

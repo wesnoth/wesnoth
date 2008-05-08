@@ -300,8 +300,8 @@ for build in env["build"]:
     SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = {"env":build_env})
     Import(binaries + ["sources"])
     binary_nodes = map(eval, binaries)
-    if build == "release" : build_suffix = ""
-    else                  : build_suffix = "-" + build
+    if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
+    else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
     bin_aliases = map(lambda bin, node : Alias(bin + build, node, Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
     env.Alias("all", bin_aliases)
     env.Default([env.Alias(bin + build) for bin in env["default_targets"]])
