@@ -875,9 +875,21 @@ std::string server::process_command(const std::string& query) {
 	const std::string& help_msg = "Available commands are: ban(s) [<mask>] [<reason>],"
 			"kick <mask>, k(ick)ban [<mask>] [<reason>], help, metrics, netstats,"
 			" (lobby)msg <message>, motd [<message>], status [<mask>],"
-			" unban <ipmask>";
+			" unban <ipmask>, shut_down [now], restart";
 	if (command == "shut_down") {
-		throw network::error("shut down");
+		
+		if (parameter == "now")
+			throw network::error("shut down");
+		else
+		{
+			// Gracefull shut down
+			server_.stop();
+			input_.stop();
+			gracefull_restart = true;
+			process_command("msg Server is shuting down. No more new games.");
+			out << "Server is doing gracefull shutdown\n";
+		}
+
 #ifndef _WIN32  // Not sure if this works on windows
 		// TODO: check if this works in windows.
 	} else if (command == "restart") {
