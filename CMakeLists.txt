@@ -64,8 +64,8 @@ endif(PYTHON_EXECUTABLE AND NOT PYTHON_LIBRARY)
 
 set(BINDIR "bin" CACHE STRING "Where to install binaries")
 set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
-set(DATADIRNAME "wesnoth" CACHE STRING "Name of the directory for the read-only architecture-independent game data")
-set(LOCALEDIR "translations" CACHE STRING "sets the locale data directory to a non-default location")
+set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
+set(LOCALEDIRNAME "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
@@ -83,6 +83,9 @@ option(ENABLE_PYTHON "Enable in-game python extensions" ON)
 
 # compose datadir path of datarootdir and datadirname
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
+# compose localedir path of datarootdir and localedirname
+set(LOCALEDIR ${DATAROOTDIR}/${LOCALEDIRNAME})
+
 if(NOT WIN32)
   add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
   message("set -DWESNOTH_PATH='\"${DATADIR}\"'")
@@ -90,14 +93,7 @@ endif(NOT WIN32)
 
 add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
 message("set -DLOCALEDIR='\"${LOCALEDIR}\"'")
-
-if(NOT IS_ABSOLUTE ${LOCALEDIR})
-  add_definitions(-DHAS_RELATIVE_LOCALEDIR)
-  message("set -DHAS_RELATIVE_LOCALEDIR")
-  set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
-else(NOT IS_ABSOLUTE ${LOCALEDIR})
-  set(LOCALE_INSTALL ${LOCALEDIR})
-endif(NOT IS_ABSOLUTE ${LOCALEDIR})
+set(LOCALE_INSTALL ${LOCALEDIR})
 
 if(PREFERENCES_DIR)
   add_definitions(-DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"')
