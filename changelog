@@ -18,10 +18,17 @@ Version 1.5.0+svn:
    * Reorganisation of the terrain macros including more consistent image
      naming. The old macros are kept for now for compatibility.
    * New terrain: cave path
+   * Fixed a ToD coloring bug preventing to use red channel below 8 (on 255)
+   * Fixed some bugs with location-specific terrain-graphic rules
  * units:
    * balancing changes:
      * decreased the ranged attack of the Mage of Light from 15-3 to 12-3
      * decreased the melee attack of the Merman Warrior from 8-4 to 10-3
+ * user interface:
+   * Add a hotkey "Custom Command" and a command ":custom <command>" to assign
+     a command to this hotkey. Also accept sequence of commands ("this; that").
+   * Add a command "alias <name>=<command>". Also accept incomplete command and
+     pass parameters (ex: "alias hp=unit hitpoints", then use "hp 100")
  * WML engine:
    * titlescreen is now randomly loaded
  * miscellaneous and bug fixes:
@@ -36,6 +43,7 @@ Version 1.5.0+svn:
      network play
    * added some includes to fix compilation problems with Sun Studio 12
      (patch #1066)
+   * Fixed unstoned units not having their attacks at their first turn
 
 Version 1.5.0:
  * campaigns:
