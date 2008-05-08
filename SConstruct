@@ -42,7 +42,7 @@ opts.AddOptions(
     PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathOption.PathAccept),
     PathOption('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathOption.PathAccept),
     BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False),
-    PathOption('localedir', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept),
+    PathOption('localedirname', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept),
     PathOption('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathOption.PathAccept),
     PathOption('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathOption.PathAccept),
     PathOption('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathOption.PathAccept),
@@ -243,9 +243,9 @@ if env['fifodir']:
 if env['python']:
     env.Append(CPPDEFINES = "HAVE_PYTHON")
 
-if env['localedir']:
-    env.Append(CPPDEFINES = "LOCALEDIR='\"%s\"'" % env['localedir'] )
-    if not os.path.isabs(env['localedir']):
+if env['localedirname']:
+    env.Append(CPPDEFINES = "LOCALEDIR='\"%s\"'" % env['localedirname'] )
+    if not os.path.isabs(env['localedirname']):
         env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
 
 if env['dummy_locales']:
