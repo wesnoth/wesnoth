@@ -92,6 +92,8 @@ if(NOT WIN32)
 endif(NOT WIN32)
 
 add_definitions(-DHAS_RELATIVE_LOCALEDIR)
+add_definitions(-DLOCALEDIR=${LOCALEDIR})
+message("set -DLOCALEDIR='\"${LOCALEDIR}\"'")
 set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
 
 if(PREFERENCES_DIR)
