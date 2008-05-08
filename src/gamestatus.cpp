@@ -934,6 +934,7 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 	out["snapshot"] = has_snapshot ? "yes" : "no";
 
 	out["label"] = gamestate.label;
+	out["campaign"] = gamestate.campaign;
 	out["campaign_type"] = gamestate.campaign_type;
 	out["scenario"] = gamestate.scenario;
 	out["difficulty"] = gamestate.difficulty;
@@ -1014,7 +1015,6 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["snapshot"] = has_snapshot ? "yes" : "no";
 
 	cfg_summary["label"] = cfg_save["label"];
-	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
 	cfg_summary["scenario"] = cfg_save["scenario"];
 	cfg_summary["campaign"] = cfg_save["campaign"];
