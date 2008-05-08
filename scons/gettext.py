@@ -7,7 +7,7 @@ def exists():
     return True
 
 def generate(env):
-    env.AppendENVPath("PATH", os.path.join(env["gettextdir"], "bin"))
+    env.AppendENVPath("PATH", join(env["gettextdir"], "bin"))
     env["MSGFMT"] = WhereIs("msgfmt")
     msgfmt = Builder(
         action = "$MSGFMT -c --statistics -o $TARGET $SOURCE",
@@ -16,3 +16,12 @@ def generate(env):
         single_source = True
         )
     env["BUILDERS"]["Msgfmt"] = msgfmt
+
+    env["MSGMERGE"] = WhereIs("msgmerge")
+    msgmerge = Builder(
+        action = "$MSGMERGE $TARGET $SOURCE -o $TARGET",
+        src_suffix = ".pot",
+        suffix = ".po",
+        single_source = True
+        )
+    env["BUILDERS"]["MsgMerge"] = msgmerge

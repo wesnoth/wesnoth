@@ -9,7 +9,7 @@ Import("env")
 # Gettext message catalog generation
 #
 
-textdomains = glob("*")
+textdomains = glob("wesnoth*")
 textdomains.remove("wesnoth-manpages")
 textdomains.remove("wesnoth-manual")
 textdomains = filter(os.path.isdir, textdomains)
@@ -71,10 +71,9 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
         linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
         for lingua in linguas:
             lingua = lingua.rstrip("\n")
-            update_po = env.Command(
-                os.path.join(domain, lingua + ".po"),
-                os.path.join(domain, domain + ".pot"),
-                "msgmerge $TARGET $SOURCE -o $TARGET"
+            update_po = env.MsgMerge(
+                os.path.join(domain, lingua),
+                os.path.join(domain, domain)
                 )
             env.Precious(update_po)
             NoClean(update_po)
