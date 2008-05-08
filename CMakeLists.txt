@@ -63,8 +63,8 @@ endif(PYTHON_EXECUTABLE AND NOT PYTHON_LIBRARY)
 #Options
 
 set(BINDIR "bin" CACHE STRING "Where to install binaries")
-set(DATAROOTDIR "share" CACHE STRING "Sets the root of data directories to a non-default location")
-set(DATADIR "${DATAROOTDIR}/wesnoth" CACHE STRING "Read-only architecture-independent game data")
+set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
+set(DATADIRNAME "wesnoth" CACHE STRING "Name of the directory for the read-only architecture-independent game data")
 set(LOCALEDIR "translations" CACHE STRING "sets the locale data directory to a non-default location")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
@@ -79,17 +79,13 @@ option(ENABLE_EDITOR "Enable compilation of map editor")
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
 
-option(ENABLE_PYTHON  "Enable in-game python extensions" ON)
+option(ENABLE_PYTHON "Enable in-game python extensions" ON)
 
-
+# compose datadir path of datarootdir and datadirname
+set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 if(NOT WIN32)
-  if(IS_ABSOLUTE ${DATADIR})
-    add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
-    message("set -DWESNOTH_PATH='\"${DATADIR}\"'")
-  else(IS_ABSOLUTE ${DATADIR})
-    add_definitions(-DWESNOTH_PATH='\"${CMAKE_INSTALL_PREFIX}/${DATADIR}\"')
-    message("set -DWESNOTH_PATH='\"${CMAKE_INSTALL_PREFIX}/${DATADIR}\"'")
-  endif(IS_ABSOLUTE ${DATADIR})
+  add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
+  message("set -DWESNOTH_PATH='\"${DATADIR}\"'")
 endif(NOT WIN32)
 
 add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
