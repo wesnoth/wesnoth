@@ -160,6 +160,7 @@ static void check_timeout()
 	// Reset last_ping if we didn't check for the last 10s.
 	if (last_ping_check + 10 <= now) last_ping = now;
 	if (static_cast<time_t>(last_ping + network::ping_timeout) <= now) {
+
 		int timeout = now - last_ping;
 		ERR_NW << "No server ping since " << timeout
 				<< " seconds. Connection timed out.\n";
@@ -292,9 +293,15 @@ server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(fa
 
 server_manager::~server_manager()
 {
+	stop();
+}
+
+void server_manager::stop()
+{
 	if(free_) {
 		SDLNet_TCP_Close(server_socket);
 		server_socket = 0;
+		free_ = false;
 	}
 }
 
@@ -448,7 +455,9 @@ void connect_operation::run()
 	while(!notify_finished()) {};
 }
 
+
 } // end namespace
+
 
 connection connect(const std::string& host, int port)
 {

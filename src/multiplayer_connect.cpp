@@ -1081,6 +1081,11 @@ void connect::process_network_data(const config& data, const network::connection
 {
 	ui::process_network_data(data, sock);
 
+	if(data.child("leave_game")) {
+		set_result(QUIT);
+		return;
+	}
+
 	if (!data["side_drop"].empty()) {
 		const int side_drop = lexical_cast_default<int>(data["side_drop"], 0) - 1;
 		if(side_drop >= 0 && side_drop < int(sides_.size())) {

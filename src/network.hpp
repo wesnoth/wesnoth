@@ -79,6 +79,7 @@ struct server_manager {
 	~server_manager();
 
 	bool is_running() const;
+	void stop();
 
 private:
 	bool free_;

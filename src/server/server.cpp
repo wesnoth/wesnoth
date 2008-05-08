@@ -224,7 +224,7 @@ private:
 	void send_error(network::connection sock, const char* msg) const;
 	void send_error_dup(network::connection sock, const std::string& msg) const;
 	const network::manager net_manager_;
-	const network::server_manager server_;
+	network::server_manager server_;
 
 	//! std::map<network::connection,player>
 	player_map players_;
@@ -252,6 +252,8 @@ private:
 	size_t default_max_messages_;
 	size_t default_time_period_;
 	size_t concurrent_connections_;
+	bool gracefull_restart;
+	std::string restart_command;
 	//! Parse the server config into local variables.
 	void load_config();
 	
@@ -289,6 +291,8 @@ private:
 	void delete_game(std::vector<game*>::iterator game_it);
 
 	void update_game_in_lobby(const game* g, network::connection exclude=0);
+
+	void start_new_server();
 };
 
 server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads)
@@ -299,6 +303,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	input_(input), 
 	config_file_(config_file),
 	cfg_(read_config()), 
+	gracefull_restart(false),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
 	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED), 
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
@@ -373,6 +378,10 @@ void server::load_config() {
 			lexical_cast_default<size_t>(cfg_["messages_time_period"],10);
 	concurrent_connections_ =
 			lexical_cast_default<size_t>(cfg_["connections_allowed"],5);
+	// Example config line: 
+	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
+	// remember to make new one as a daemon or it will block old one
+	restart_command = cfg_["restart_command"];
 
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
@@ -439,9 +448,22 @@ void server::dump_stats(const time_t& now) {
 }
 
 void server::run() {
+	int gracefull_counter = 0;
 	for (int loop = 0;; ++loop) {
 		SDL_Delay(20);
 		try {
+			// We are going to waith 10 seconds before shutting down so users can get out of game.
+			if (gracefull_restart && games_.size() == 0 && ++gracefull_counter > 500 )
+			{
+				// TODO: We should implement client side autoreconnect.
+				// Idea:
+				// server should send [reconnect]host=host,port=number[/reconnect]
+				// Then client would reconnect to new server automaticaly.
+				// This would also allow server to move to new port or address if there is need
+
+				lobby_.send_server_message("Server is restarting. You can connect to new server now.");
+				throw network::error("shut down");
+			}
 			if (config_reload == 1) {
 				cfg_ = read_config();
 				load_config();
@@ -549,7 +571,7 @@ void server::run() {
 				{
 					network::disconnect(pl->first);
 				}
-				std::cout << "Shutting server down.\n";
+				LOG_SERVER << "Shutting server down.\n";
 				break;
 			}
 			if (!e.socket) {
@@ -832,6 +854,18 @@ void server::process_query(const network::connection sock,
 	lobby_.send_server_message(response.str().c_str(), sock);
 }
 
+void server::start_new_server() {
+	if (restart_command.empty())
+		return;
+
+	// Example config line: 
+	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
+	// remember to make new one as a daemon or it will block old one
+	std::system(restart_command.c_str());
+
+	LOG_SERVER << "New server started with command: " << restart_command << "\n";
+}
+
 std::string server::process_command(const std::string& query) {
 	std::ostringstream out;
 	const std::string::const_iterator i = std::find(query.begin(),query.end(),' ');
@@ -844,6 +878,26 @@ std::string server::process_command(const std::string& query) {
 			" unban <ipmask>";
 	if (command == "shut_down") {
 		throw network::error("shut down");
+#ifndef _WIN32  // Not sure if this works on windows
+		// TODO: check if this works in windows.
+	} else if (command == "restart") {
+		if (restart_command.empty())
+		{
+			out << "Server isn't configured for restart\n";
+		}
+		else
+		{
+			LOG_SERVER << "Gracefull restart requested\n";
+			gracefull_restart = true;
+			// stop listening socket
+			server_.stop();
+			input_.stop();
+			// start new server
+			start_new_server();
+			process_command("msg Server has been restarted. You can continue playing but new players cannot join this server.");
+			out << "New server strated.\n";
+		}
+#endif
 	} else if (command == "help") {
 		out << help_msg;
 	} else if (command == "metrics") {
@@ -1220,6 +1274,7 @@ void server::process_data_game(const network::connection sock,
 			lobby_.send_server_message(msg.str().c_str(), sock);
 			return;
 		}
+		
 		// If this game is having its level data initialized
 		// for the first time, and is ready for players to join.
 		// We should currently have a summary of the game in g->level().
@@ -1301,6 +1356,11 @@ void server::process_data_game(const network::connection sock,
 		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
 		lobby_.send_data(diff);
 
+		if (gracefull_restart)
+		{
+			delete_game(itor);
+			lobby_.send_server_message("You aren't allowed to make new game because server has been resarted. Please, reconnect to new server.", sock);
+		}
 		//! @todo FIXME: Why not save the level data in the history_?
 		return;
 // Everything below should only be processed if the game is already intialized.
@@ -1550,7 +1610,7 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 		gamelist->remove_child("game", index);
 	} else {
 		// Can happen when the game ends before the scenario was transfered.
-		DBG_SERVER << "Could not find game (" << (*game_it)->id()
+		LOG_SERVER << "Could not find game (" << (*game_it)->id()
 			<< ") to delete in games_and_users_list_.\n";
 	}
 	const user_vector& users = (*game_it)->all_game_users();

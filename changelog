@@ -29,6 +29,8 @@ Version 1.5.0+svn:
      (bug #11386)
    * Implemented the option to use the mouse selection clipboard in X11
      the new widget library also uses it.
+   * added restart command to server that does gracefull restart
+   * fixed multiplayer_connect to handle leave_game command from server
    * Removed bug introduced in 1.5.0 that allowed use of :debug commands during
      network play
    * added some includes to fix compilation problems with Sun Studio 12

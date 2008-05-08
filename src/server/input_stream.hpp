@@ -25,6 +25,7 @@ public:
 	~input_stream();
 
 	bool read_line(std::string& str);
+	void stop();
 
 private:
 	input_stream(const input_stream&);
