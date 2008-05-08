@@ -91,8 +91,7 @@ if(NOT WIN32)
   message("set -DWESNOTH_PATH='\"${DATADIR}\"'")
 endif(NOT WIN32)
 
-add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
-message("set -DLOCALEDIR='\"${LOCALEDIR}\"'")
+add_definitions(-DHAS_RELATIVE_LOCALEDIR)
 set(LOCALE_INSTALL ${LOCALEDIR})
 
 if(PREFERENCES_DIR)
