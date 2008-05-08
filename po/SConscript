@@ -132,9 +132,8 @@ if env["nls"]:
         linguas = map(lingua_re.findall, pos)
         for lingua in linguas:
             lingua = lingua[0]
-            env.Command(
-                os.path.join("../translations", lingua, "LC_MESSAGES", domain+".mo"),
-                os.path.join(domain, lingua + ".po"),
-                "msgfmt -c --statistics -o $TARGET $SOURCE"
+            env.Msgfmt(
+                os.path.join("../translations", lingua, "LC_MESSAGES", domain),
+                os.path.join(domain, lingua)
                 )
 

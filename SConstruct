@@ -73,7 +73,7 @@ opts.AddOptions(
 # Setup
 #
 
-env = Environment(tools=["tar"], options = opts)
+env = Environment(tools=["tar", "gettext"], options = opts, toolpath = ["scons"])
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
 else:
@@ -186,7 +186,7 @@ boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
     boost_test_dyn_link = boost_auto_test = conf.CheckBoost('unit_test_framework')
 
-have_msgfmt = env.WhereIs("msgfmt")
+have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
      env["nls"] = False
 if not have_msgfmt:
