@@ -24,7 +24,10 @@ namespace gui {
 enum TITLE_RESULT { TUTORIAL = 0,		//!< Start special campaign 'tutorial'
 					NEW_CAMPAIGN,		//!< Let user select a campaign to play
 					MULTIPLAYER,		//!< Play single scenario against humans or AI
-					LOAD_GAME, GET_ADDONS,
+					LOAD_GAME, GET_ADDONS, 
+#ifdef MAP_EDITOR
+					START_MAP_EDITOR,
+#endif
                     CHANGE_LANGUAGE, EDIT_PREFERENCES,
 					SHOW_ABOUT,			//!< Show credits
 					QUIT_GAME,

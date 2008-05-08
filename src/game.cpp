@@ -2495,6 +2495,11 @@ static int play_game(int argc, char** argv)
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();
 			continue;
+#ifdef MAP_EDITOR
+		} else if(res == gui::START_MAP_EDITOR) {
+			gui::show_error_message(game.disp(), "The map editor is not available. Yet.");
+			continue;
+#endif
 		}
 
 		if (recorder.at_end()){
