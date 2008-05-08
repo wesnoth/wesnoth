@@ -397,7 +397,7 @@ def InstallFilteredHook(target, source, env):
              if status == 0:
                  for (large, small) in (("1024x768","320x240"),
                                         ("640x480","240x180"),
-                                        ("205x205","240x180")):
+                                        ("205x205","80x80")):
                       if large in output:
                            command = command % (small, source, target)
                            break
