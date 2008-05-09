@@ -412,7 +412,7 @@ void game_display::draw(bool update,bool force)
 			// that we want to attack.
 			if (!is_shrouded && !reach_map_.empty()
 					&& reach_map_.find(*it) == reach_map_.end() && *it != attack_indicator_dst_) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_TERRAIN_TMP_FG, drawing_order, tblit(xpos, ypos,
 					image::get_image(game_config::unreachable_image,image::UNMASKED)));
 			}
 
