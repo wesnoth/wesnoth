@@ -52,9 +52,17 @@ input_stream::input_stream(const std::string& path) : fd_(-1), path_(path)
 input_stream::~input_stream()
 {
 #ifndef _WIN32
+	stop();
+#endif
+}
+
+void input_stream::stop()
+{
+#ifndef _WIN32
 	if(fd_ != -1) {
 		close(fd_);
 		unlink(path_.c_str());
+		fd_ = -1;
 	}
 #endif
 }

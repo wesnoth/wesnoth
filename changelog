@@ -5,6 +5,7 @@ Version 1.4.2+svn:
    * starting a campaing without any installed now gives an error.
    * fixed issues with campaign info in non-compressed saved games
      (bug #11386)
+   * Backported gracefull restart feature to server
    * fixed an alignement issue which caused a SIGBUS on a Sparc 
      (debian bug #426318)
    * added some includes to fix compilation problems with Sun Studio 12 

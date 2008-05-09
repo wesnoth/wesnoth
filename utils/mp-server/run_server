@@ -1,4 +1,10 @@
 #!/bin/sh
+#
+#Example wesnothd.cfg
+#versions_accepted="1.5.0+svn"
+#restart_command="/home/user/source/trunk/utils/mp-server/run_server 1.5 &"
+#
+
 if [ $# -lt 1 ]; then
 	echo "Syntax: $0 <server version> [<additional parameters for wesnothd>]"
 	exit 1
@@ -29,9 +35,6 @@ trap "$HOME/bin/send_server_message $SERVER; sleep 2; $HOME/bin/send_server_comm
 
 while [ true ] 
 do
-	if ps -C wesnothd-$SERVER >/dev/null; then
-		sleep 10
-	else
 		DATE=$(date +"%Y%m%d-%H%M%S")
 		PORT=$(cat $SERVERBASE/port)
 		REV=$(ls -l $SERVERBASE/build | sed -e 's,.*wesnothd-\(svn-.*\)_.*/,\1,')
@@ -55,6 +58,13 @@ do
 		fi
 		# wait for the server to terminate
 		wait $PID
+		EXIT_CODE=$?
+		echo "wesnoth exited with code: ${EXIT_CODE}"
 		cd
-	fi
+
+		# check for return code if not zero server should be restarted
+		if [ "$EXIT_CODE" = "0" ]; then
+			echo "script shutting down"
+			exit 0
+		fi
 done
