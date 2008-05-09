@@ -76,6 +76,11 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
 
+if(NOT CONFIGURED)
+  set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
+endif(NOT CONFIGURED)
+
+
 option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
 option(ENABLE_SERVER "Enable compilation of server" ON)
@@ -190,3 +195,5 @@ endif(GUI STREQUAL "tiny")
 INCLUDE(CPack)
 SET(CPACK_GENERATOR "TGZ")
 SET(CPACK_SOURCE_GENERATOR "TGZ")
+
+set(CONFIGURED ON CACHE INTERNAL "")
