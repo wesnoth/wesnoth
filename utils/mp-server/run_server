@@ -1,4 +1,11 @@
 #!/bin/sh
+#
+#Example wesnothd.cfg
+#versions_accepted="1.5.0+svn"
+#restart_command="/home/user/source/trunk/utils/mp-server/run_server 1.5 &"
+#
+
+
 if [ $# -lt 1 ]; then
 	echo "Syntax: $0 <server version> [<additional parameters for wesnothd>]" >&2
 	exit 1
@@ -14,11 +21,16 @@ if ! [ -d "$SERVERBASE" ]; then
 	echo "Server '$SERVER' not found." >&2
 	exit 1
 fi
-[ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
+
+if ! [ -d "$SERVERBASE/logs" ]; then
+       mkdir $SERVERBASE/logs
+fi
 
 THREADS=4
+PORT=15000
+
 case $SERVER in
-	1.2 )	PORT=14999
+	1.2 )	PORT=14997
 		THREADS=30
 		SOURCE=$HOME/source/1.2
 		;;
@@ -39,41 +51,46 @@ trap "$HOME/bin/send_server_message $SERVER; sleep 2; killall wesnothd-$SERVER -
 
 while [ true ] 
 do
-	if ps -C wesnothd-$SERVER >/dev/null; then
-		sleep 10
-	else
-		cd $SERVERBASE/build || exit 1
-		if ! [ -x bin/wesnothd-$SERVER ]; then
-			echo "Executable 'bin/wesnothd-$SERVER' not found." >&2
-			exit 1
-		fi
-		DATE=$(date +"%Y%m%d-%H%M%S")
+	cd $SERVERBASE/build || exit 1
+	if ! [ -x bin/wesnothd-$SERVER ]; then
+		echo "Executable 'bin/wesnothd-$SERVER' not found." >&2
+		exit 1
+	fi
+	DATE=$(date +"%Y%m%d-%H%M%S")
+	if [ -d "$SERVERBASE/redirect.cfg" ]; then
 		PORT=$(sed -re '/port=/!d;s/[ \t]*port="?([0-9]+)"?/\1/' $SERVERBASE/redirect.cfg)
-		BUILDDIR=$(ls -l $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
-		REV=r$(echo "$BUILDDIR" | sed -re "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,")
-		LOG=wesnothd.$DATE.$REV.log
-		COMMAND="bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
-		nice -n 3 $COMMAND > $SERVERBASE/logs/$LOG 2>&1 &
-		PID=$!
-		echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) at: $DATE"
-		ln -s ../../$SERVER/logs/$LOG $LOG.$PID
-		rm -f $SERVERBASE/old.log
-		mv $SERVERBASE/current.log $SERVERBASE/old.log > /dev/null 2>&1
-		ln -s logs/$LOG ../../$SERVER/current.log
-		# wait a bit so the server is likely up and listening
-		sleep 1
-		if [ "$SERVER" = "1.2" ]; then
-			rm -f $SERVERBASE/oldlobby.log
-			mv $SERVERBASE/currentlobby.log $SERVERBASE/oldlobby.log > /dev/null 2>&1
-			ln -s $SERVERBASE/logs/lobby.$DATE.$REV.log $SERVERBASE/currentlobby.log
-			cd $SOURCE/utils/
-			./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
-			cd $SERVERBASE/build/
-		fi
-		cat $SERVERBASE/banlist 2> /dev/null | while read -r ip reason; do $HOME/bin/send_server_command $SERVER ban "$ip $reason"; done
-		# wait for the server to terminate
-		wait $PID
-		# need to use the recorded path since the build/ symlink might have changed
-		mv $SERVERBASE/$BUILDDIR/gmon.out $SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out > /dev/null 2>&1
+	fi
+	BUILDDIR=$(ls -l $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
+	REV=r$(echo "$BUILDDIR" | sed -re "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,")
+	LOG="wesnothd.${DATE}.${REV}.log"
+	COMMAND="bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
+	nice -n 3 $COMMAND > $SERVERBASE/logs/$LOG 2>&1 &
+	PID=$!
+	echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) at: $DATE"
+	ln -s $SERVERBASE/logs/$LOG $LOG.$PID
+	rm -f $SERVERBASE/old.log
+	mv $SERVERBASE/current.log $SERVERBASE/old.log > /dev/null 2>&1
+	ln -s logs/$LOG $SERVERBASE/current.log
+	# wait a bit so the server is likely up and listening
+	sleep 1
+	if [ "$SERVER" = "1.2" ]; then
+		rm -f $SERVERBASE/oldlobby.log
+		mv $SERVERBASE/currentlobby.log $SERVERBASE/oldlobby.log > /dev/null 2>&1
+		ln -s $SERVERBASE/logs/lobby.$DATE.$REV.log $SERVERBASE/currentlobby.log
+		cd $SOURCE/utils/
+		./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
+		cd $SERVERBASE/build/
+	fi
+	cat $SERVERBASE/banlist 2> /dev/null | while read -r ip reason; do $HOME/bin/send_server_command $SERVER ban "$ip $reason"; done
+	# wait for the server to terminate
+	wait $PID
+	EXIT_CODE=$?
+	echo "wesnoth exited with code: ${EXIT_CODE}"
+	# need to use the recorded path since the build/ symlink might have changed
+	mv $SERVERBASE/$BUILDDIR/gmon.out $SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out > /dev/null 2>&1
+	# check for return code if not zero server should be restarted
+	if [ "$EXIT_CODE" = "0" ]; then
+		echo "script shutting down"
+		exit 0
 	fi
 done
