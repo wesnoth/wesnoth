@@ -83,6 +83,12 @@ namespace preferences {
 	const std::string& language();
 	void set_language(const std::string& s);
 
+	bool adjust_gamma();
+	void _set_adjust_gamma(bool val);
+
+	int gamma();
+	void _set_gamma(int gamma);
+
 	// Don't rename it to sound() because of a gcc-3.3 branch bug,
 	// which will cause it to conflict with the sound namespace.
 	bool sound_on();
@@ -127,6 +133,9 @@ namespace preferences {
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);
 	
+	bool mouse_scroll_enabled();
+	void enable_mouse_scroll(bool value);
+
 	//! Set editor red tint level.
 	void set_editor_r(int value);
 	//! Set editor green tint level.

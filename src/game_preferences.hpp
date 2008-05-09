@@ -37,12 +37,6 @@ namespace preferences {
 		base_manager base;
 	};
 
-	bool adjust_gamma();
-	void _set_adjust_gamma(bool val);
-
-	int gamma();
-	void _set_gamma(int gamma);
-
 	bool show_lobby_join(const std::string& sender, const std::string& message);
 	int lobby_joins();
 	void _set_lobby_joins(int show);
@@ -78,9 +72,6 @@ namespace preferences {
 
 	const std::string login();
 	void set_login(const std::string& username);
-
-	bool mouse_scroll_enabled();
-	void enable_mouse_scroll(bool value);
 
 	bool turn_dialog();
 	void set_turn_dialog(bool ison);
