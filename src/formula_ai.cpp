@@ -607,7 +607,6 @@ private:
 		while(range.first != range.second) {
 			unit_map::const_iterator un = ai_.get_info().units.find(range.first->second);
 			assert(un != ai_.get_info().units.end());
-			const int side = un->second.side();
 			vars.push_back(variant(new unit_callable(*un)));
 			++range.first;
 		}

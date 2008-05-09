@@ -223,7 +223,7 @@ void ttext_box::mouse_move(tevent_handler& event)
 }
 
 //! Inherited from twidget.
-void ttext_box::mouse_left_button_up(tevent_handler& event)
+void ttext_box::mouse_left_button_up(tevent_handler& /*event*/)
 {
 	DBG_G_E << "Text box: left mouse up.\n";
 

@@ -1226,7 +1226,7 @@ static PyObject* wrapper_gamestatus_previous_lawful_bonus(wesnoth_gamestatus* st
 	return Py_BuildValue(INTVALUE, status->status_->get_previous_time_of_day().lawful_bonus);
 }
 
-static PyObject* wrapper_gamestatus_gold_per_village(wesnoth_gamestatus* status, void* /*closure*/)
+static PyObject* wrapper_gamestatus_gold_per_village(wesnoth_gamestatus* /*status*/, void* /*closure*/)
 {
 	return Py_BuildValue(INTVALUE, settings::get_village_gold(""));
 }
