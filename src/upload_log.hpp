@@ -26,8 +26,9 @@ struct upload_log
 {
 public:
 	struct manager {
-		manager() { };
+		manager() {upload_log::manager_ =  this;}
 		~manager();
+		void manage();
 	};
 
 	// We only enable logging when playing campaigns.
@@ -47,6 +48,7 @@ public:
 	// Argument passed to upload thread.
 	struct thread_info {
 		threading::thread *t;
+		bool shutdown;
 		std::string lastfile;
 	};
 
@@ -55,6 +57,7 @@ private:
 	bool game_finished(config *game);
 
 	static struct thread_info thread_;
+	static manager* manager_;
 	friend struct manager;
 
 	config config_;

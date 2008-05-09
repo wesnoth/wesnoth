@@ -176,7 +176,10 @@ team::team_info::team_info(const config& cfg) :
 	else if (control == "network")
 		controller = NETWORK;
 	else if (control == "null")
+	{
+		disallow_observers = true;
 		controller = EMPTY;
+	}
 	else
 		controller = AI;
 

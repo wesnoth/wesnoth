@@ -44,13 +44,27 @@
 #define TARGET_PORT 80
 
 struct upload_log::thread_info upload_log::thread_;
+upload_log::manager* upload_log::manager_ = 0;
 
 // On exit, kill the upload thread if it's still going.
 upload_log::manager::~manager()
 {
+	upload_log::manager_ = 0;
 	threading::thread *t = thread_.t;
 	if (t)
-		t->kill();
+		t->join();
+}
+
+void upload_log::manager::manage()
+{
+
+	// We have to wait for thread so it won't leak
+	if (thread_.shutdown)
+	{
+		thread_.t->join();
+		thread_.shutdown = false;
+		thread_.t = 0;
+	}
 }
 
 static void send_string(TCPsocket sock, const std::string &str)
@@ -118,14 +132,17 @@ static int upload_logs(void *_ti)
 
 	if (sock)
 		SDLNet_TCP_Close(sock);
-	ti->t = NULL;
+	ti->shutdown = true;
 	return 0;
 }
+
 
 // Currently only enabled when playing campaigns.
 upload_log::upload_log(bool enable) : game_(NULL), enabled_(enable)
 {
 	filename_ = next_filename(get_upload_dir(), 100);
+	if (upload_log::manager_)
+		upload_log::manager_->manage();
 	if (preferences::upload_log() && !thread_.t) {
 		// Thread can outlive us; it uploads everything up to the
 		// next filename, and unsets thread_.t when it's finished.
@@ -151,6 +168,9 @@ upload_log::~upload_log()
 		std::ostream *out = ostream_file(filename_);
 		write(*out, config_);
 		delete out;
+
+		if (upload_log::manager_)
+			upload_log::manager_->manage();
 
 		// Try to upload latest log before exit.
 		if (preferences::upload_log() && !thread_.t) {
