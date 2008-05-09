@@ -114,6 +114,7 @@ public:
 
 	void reset_game_cfg();
 	void reset_defines_map();
+	void reload_changed_game_config();
 
 	bool is_loading() const;
 	bool load_game();
@@ -1079,6 +1080,17 @@ static std::string format_file_size(const std::string& size_str)
 
 namespace
 {
+	void game_controller::reload_changed_game_config()
+	{
+		//force a reload of configuration information
+		old_defines_map_.clear();
+		reset_defines_map();
+		data_tree_checksum(true); // Reload checksums
+		refresh_game_cfg();
+		::init_textdomains(game_config_);
+		paths_manager_.set_paths(game_config_);
+		clear_binary_paths_cache();
+	}
 
 	// Manage add-ons
 	void game_controller::manage_addons()
@@ -1199,15 +1211,7 @@ namespace
 			if (delete_success)
 			{
 				delete_success &= delete_directory(campaign_dir + filename + ".cfg");
-				//force a reload of configuration information
-				const bool old_cache = use_caching_;
-				use_caching_ = false;
-				old_defines_map_.clear();
-				refresh_game_cfg();
-				use_caching_ = old_cache;
-				::init_textdomains(game_config_);
-				paths_manager_.set_paths(game_config_);
-				clear_binary_paths_cache();
+				reload_changed_game_config();
 
 				std::string message = _("Add-on '$addon|' deleted.");
 				utils::string_map symbols;
@@ -1437,16 +1441,7 @@ void game_controller::download_campaigns(std::string host)
 		//put a break at line below to see that it really works.
 		unarchive_campaign(cfg);
 
-		//force a reload of configuration information
-		const bool old_cache = use_caching_;
-		use_caching_ = false;
-		old_defines_map_.clear();
-		refresh_game_cfg();
-		use_caching_ = old_cache;
-		::init_textdomains(game_config_);
-		paths_manager_.set_paths(game_config_);
-
-		clear_binary_paths_cache();
+		reload_changed_game_config();
 
 		std::string warning = "";
 		std::vector<config *> scripts = find_scripts(cfg, ".unchecked");

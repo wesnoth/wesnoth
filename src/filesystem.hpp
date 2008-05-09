@@ -103,6 +103,8 @@ struct file_tree_checksum
 	file_tree_checksum();
 	explicit file_tree_checksum(const class config& cfg);
 	void write(class config& cfg) const;
+	void reset() {nfiles = 0;modified = 0;sum_size=0;};
+	// @todo: make variables private!
 	size_t nfiles, sum_size;
 	time_t modified;
 };
@@ -112,7 +114,7 @@ bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
 
 
 //! Get the time at which the data/ tree was last modified at.
-const file_tree_checksum& data_tree_checksum();
+const file_tree_checksum& data_tree_checksum(bool reset = false);
 
 //! Returns the size of a file, or -1 if the file doesn't exist.
 int file_size(const std::string& fname);
