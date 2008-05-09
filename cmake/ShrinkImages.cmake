@@ -1,4 +1,3 @@
-message("Creating resized images for tinygui.")
 separate_arguments(IMAGE_FILES)
 file(GLOB_RECURSE IMAGES RELATIVE ${CMAKE_SOURCE_DIR} ${IMAGE_FILES})
 

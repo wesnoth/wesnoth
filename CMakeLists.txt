@@ -89,17 +89,14 @@ set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 
 if(NOT WIN32)
   add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
-  message("set -DWESNOTH_PATH='\"${DATADIR}\"'")
 endif(NOT WIN32)
 
 add_definitions(-DHAS_RELATIVE_LOCALEDIR)
 add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
-message("set -DLOCALEDIR='\"${LOCALEDIR}\"'")
 set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
 
 if(PREFERENCES_DIR)
   add_definitions(-DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"')
-  message("set -DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"'")
 endif(PREFERENCES_DIR)
 
 if(GUI STREQUAL "tiny")
@@ -110,7 +107,6 @@ endif(GUI STREQUAL "tiny")
 
 if(ENABLE_PYTHON AND PYTHON_LIBRARY)
   add_definitions(-DHAVE_PYTHON)
-  message("set -DHAVE_PYTHON")
 endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
 
 #create dummy-locales
@@ -166,8 +162,8 @@ if(GUI STREQUAL "tiny")
   add_custom_target(shrink-images ALL 
                     COMMAND ${CMAKE_COMMAND}
                     ARGS -DIMAGE_FILES="${IMAGE_FILES}" -DIMAGE_BUILD_DIR="${IMAGE_BUILD_DIR}" -DIMAGEMAGICK_IDENTIFY_EXECUTABLE="${IMAGEMAGICK_IDENTIFY_EXECUTABLE}" -DIMAGEMAGICK_CONVERT_EXECUTABLE="${IMAGEMAGICK_CONVERT_EXECUTABLE}" -P "${CMAKE_SOURCE_DIR}/cmake/ShrinkImages.cmake"
-                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-
+                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+                    COMMENT "Creating resized images for tinygui.")
 
   ########### install files ###############
 
