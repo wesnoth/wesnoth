@@ -177,7 +177,7 @@ team::team_info::team_info(const config& cfg) :
 		controller = NETWORK;
 	else if (control == "null")
 	{
-		disallow_observers = true;
+		disallow_observers = utils::string_bool(cfg["disallow_observers"],true);
 		controller = EMPTY;
 	}
 	else
