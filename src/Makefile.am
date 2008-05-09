@@ -81,6 +81,7 @@ wesnoth_source = \
 	gui/widgets/spacer.cpp \
 	gui/widgets/text.cpp \
 	gui/widgets/text_box.cpp \
+	gui/widgets/toggle_button.cpp \
 	gui/widgets/tooltip.cpp \
 	gui/widgets/vertical_scrollbar.cpp \
 	gui/widgets/widget.cpp \

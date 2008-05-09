@@ -20,6 +20,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
@@ -178,8 +179,30 @@ public:
 	{}
 
 	twidget* build () const;
-}
-;
+};
+
+struct tbuilder_toggle_button : public tbuilder_control
+{
+private:
+	tbuilder_toggle_button();
+
+public:
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_toggle_button
+ *
+ * == Toggle button ==
+ *
+ * A toggle button has no special fields.
+ *
+ */
+	tbuilder_toggle_button(const config& cfg) :
+		tbuilder_control(cfg)
+	{}
+
+	twidget* build () const;
+};
+
 struct tbuilder_vertical_scrollbar : public tbuilder_control
 {
 private:
@@ -556,6 +579,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				widgets.push_back(new tbuilder_spacer(*((**col_itor).child("spacer"))));
 			} else if((**col_itor).child("text_box")) {
 				widgets.push_back(new tbuilder_text_box(*((**col_itor).child("text_box"))));
+			} else if((**col_itor).child("toggle_button")) {
+				widgets.push_back(new tbuilder_toggle_button(*((**col_itor).child("toggle_button"))));
 			} else if((**col_itor).child("vertical_scrollbar")) {
 				widgets.push_back(
 					new tbuilder_vertical_scrollbar(*((**col_itor).child("vertical_scrollbar"))));
@@ -681,7 +706,7 @@ tbuilder_button::tbuilder_button(const config& cfg) :
 
 twidget* tbuilder_button::build() const
 {
-	tbutton *button = new tbutton();
+	tbutton* button = new tbutton();
 
 	init_control(button);
 
@@ -699,7 +724,7 @@ twidget* tbuilder_button::build() const
 
 twidget* tbuilder_label::build() const
 {
-	tlabel *tmp_label = new tlabel();
+	tlabel* tmp_label = new tlabel();
 
 	init_control(tmp_label);
 
@@ -736,7 +761,7 @@ tbuilder_panel::tbuilder_panel(const config& cfg) :
 
 twidget* tbuilder_panel::build() const
 {
-	tpanel *panel = new tpanel();
+	tpanel* panel = new tpanel();
 
 	init_control(panel);
 
@@ -769,7 +794,7 @@ twidget* tbuilder_panel::build() const
 
 twidget* tbuilder_spacer::build() const
 {
-	tspacer *spacer = new tspacer();
+	tspacer* spacer = new tspacer();
 
 	init_control(spacer);
 
@@ -779,9 +804,21 @@ twidget* tbuilder_spacer::build() const
 	return spacer;
 }
 
+twidget* tbuilder_toggle_button::build() const
+{
+	ttoggle_button *toggle_button = new ttoggle_button();
+
+	init_control(toggle_button);
+
+	DBG_G << "Window builder: placed toggle button '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	return toggle_button;
+}
+
 twidget* tbuilder_text_box::build() const
 {
-	ttext_box *text_box = new ttext_box();
+	ttext_box* text_box = new ttext_box();
 
 	init_control(text_box);
 
@@ -812,7 +849,7 @@ twidget* tbuilder_vertical_scrollbar::build() const
 
 twidget* tbuilder_grid::build() const
 {
-	tgrid *grid = new tgrid();
+	tgrid* grid = new tgrid();
 
 	grid->set_rows_cols(rows, cols);
 

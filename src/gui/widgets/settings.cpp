@@ -172,6 +172,9 @@ const std::string& tgui_definition::read(const config& cfg)
  *     panel_definition              A panel.
  *     spacer_definition             A spacer.
  *     text_box_definition           A single line text box.
+ *     toggle_button_definition      A kind of button with two 'states' up and 
+ *                                   down. This is a more generic widget which
+ *                                   is used for eg checkboxes and radioboxes.
  *     tooltip_definition            A small tooltip with help.
  *     vertical_scrollbar_definition A vertical scrollbar.
  *     window_definition             A window.
@@ -198,6 +201,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<tpanel_definition>("panel", cfg.get_children("panel_definition"));
 	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
 	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
+	load_definitions<ttoggle_button_definition>("toggle_button", cfg.get_children("toggle_button_definition"));
 	load_definitions<ttooltip_definition>("tooltip", cfg.get_children("tooltip_definition"));
 	load_definitions<tvertical_scrollbar_definition>
 		("vertical_scrollbar", cfg.get_children("vertical_scrollbar_definition"));
@@ -618,6 +622,45 @@ ttext_box_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
+}
+
+ttoggle_button_definition::ttoggle_button_definition(const config& cfg) : 
+	tcontrol_definition(cfg)
+{
+	DBG_G_P << "Parsing toggle button " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
+
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget_toggle_button
+ *
+ * == Toogle button ==
+ *
+ * The definition of a toggle button.
+ *
+ * The following states exist:
+ * * state_enabled_up, the button is enabled and in the upwards position.
+ * * state_disabled_up, the button is disabled and in the upwards position.
+ * * state_focussed_up, the mouse is over the button and the button is in the upwards position.
+ *
+ * The same three states exist with down for the downwardsposition.
+ *
+ */
+
+	// Note the order should be the same as the enum tstate is toggle_button.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled_up")));
+	state.push_back(tstate_definition(cfg.child("state_disabled_up")));
+	state.push_back(tstate_definition(cfg.child("state_focussed_up")));
+
+	state.push_back(tstate_definition(cfg.child("state_enabled_down")));
+	state.push_back(tstate_definition(cfg.child("state_disabled_down")));
+	state.push_back(tstate_definition(cfg.child("state_focussed_down")));
 }
 
 ttooltip_definition::ttooltip_definition(const config& cfg) : 

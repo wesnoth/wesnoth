@@ -166,6 +166,16 @@ struct ttext_box_definition : public tcontrol_definition
 
 };
 
+struct ttoggle_button_definition : public tcontrol_definition
+{
+	ttoggle_button_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+	};
+};
+
 struct ttooltip_definition : public tcontrol_definition
 {
 	ttooltip_definition(const config& cfg);
