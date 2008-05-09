@@ -64,8 +64,8 @@ if "pot-update" in COMMAND_LINE_TARGETS:
     env.Alias("pot-update", "../translations")
 
 if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
+    linguas = Split(open("LINGUAS").read())
     for domain in textdomains:
-        linguas = Split(open(join(domain, "LINGUAS")).read())
         for lingua in linguas:
             update_po = env.MsgMerge(
                 os.path.join(domain, lingua),
