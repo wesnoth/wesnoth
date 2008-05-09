@@ -15,6 +15,8 @@ if(COMMAND cmake_policy)
     cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
 
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+
 # use our own version of FindBoost.cmake and other Find* scripts
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
@@ -80,11 +82,10 @@ option(ENABLE_TOOLS "Enable building and installation of tools for artists and W
 option(ENABLE_TESTS "Build unit tests")
 
 option(ENABLE_PYTHON "Enable in-game python extensions" ON)
+option(ENABLE_DUMMY_LOCALES "Create dummy locales")
 
 # compose datadir path of datarootdir and datadirname
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
-# compose localedir path of datarootdir and localedirname
-set(LOCALEDIR ${DATAROOTDIR}/${LOCALEDIRNAME})
 
 if(NOT WIN32)
   add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
@@ -111,6 +112,37 @@ if(ENABLE_PYTHON AND PYTHON_LIBRARY)
   add_definitions(-DHAVE_PYTHON)
   message("set -DHAVE_PYTHON")
 endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
+
+#create dummy-locales
+if(ENABLE_DUMMY_LOCALES)
+  add_definitions(-DUSE_DUMMYLOCALES)
+  set(DUMMY_LOCALE_C_DIR ${CMAKE_SOURCE_DIR}/locales/C)
+
+  add_custom_command(OUTPUT ${DUMMY_LOCALE_C_DIR}
+                     COMMAND mkdir -p ${DUMMY_LOCALE_C_DIR} 
+                     && echo | localedef --force ${DUMMY_LOCALE_C_DIR} 2> /dev/null || true)
+
+  file(GLOB_RECURSE LANGS RELATIVE ${CMAKE_SOURCE_DIR}/data/languages data/languages/*.cfg)
+
+  set(DUMMY_LOCALES)
+  foreach(LANGFILE ${LANGS})
+    string(REGEX REPLACE "(.*)\\.cfg" "\\1" LANG ${LANGFILE})
+    if(NOT LANG STREQUAL "C")
+      set(DUMMY_LOCALE_DIR ${CMAKE_SOURCE_DIR}/locales/${LANG})
+      add_custom_command(OUTPUT ${DUMMY_LOCALE_DIR}
+                         COMMAND ln -s 
+                         ARGS ${DUMMY_LOCALE_C_DIR} ${DUMMY_LOCALE_DIR}
+                         DEPENDS ${DUMMY_LOCALE_C_DIR})
+
+      set(DUMMY_LOCALES ${DUMMY_LOCALES} ${DUMMY_LOCALE_DIR})
+    endif(NOT LANG STREQUAL "C")
+
+  endforeach(LANGFILE ${LANGS})
+  add_custom_target(create-dummy-locales ALL DEPENDS ${DUMMY_LOCALES})
+
+  install(DIRECTORY locales DESTINATION ${DATADIR} )
+
+endif(ENABLE_DUMMY_LOCALES)
 
 #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
@@ -144,7 +176,7 @@ if(GUI STREQUAL "tiny")
           PATTERN "*.png" EXCLUDE
           PATTERN "*.jpg" EXCLUDE
           PATTERN ".svn" EXCLUDE )
-else(GUI STREQUAL "tiny")
+else()
 
   install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} PATTERN ".svn" EXCLUDE )
 
