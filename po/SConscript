@@ -3,6 +3,7 @@ from glob import glob
 from subprocess import Popen, PIPE
 import os
 import re
+from os.path import join
 Import("env")
 
 #
@@ -17,12 +18,11 @@ lingua_re = re.compile(r".*/(.*)\.po")
 
 if "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
-        sources = File(os.path.join(domain, "POTFILES.in")).get_contents().split("\n")
-        sources = filter(lambda x : x and not x.isspace(), sources)
+        sources = Split(open(join(domain, "POTFILES.in")).read())
         sources = map(lambda x: File(x, Dir("..")), sources)
         if sources:
             source_pot = env.Command(
-                os.path.join(domain, domain + ".cpp.po"),
+                join(domain, domain + ".cpp.po"),
                 sources,
                 """xgettext --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
                 --from-code=UTF-8 --sort-by-file --keyword=sgettext \
@@ -30,24 +30,21 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
                 --keyword=_ --keyword=N_ --output=$TARGET \
                 ;sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
-                """ % (domain, os.path.join("po", domain, "POTFILES.in"))
+                """ % (domain, join("po", domain, "POTFILES.in"))
                 )
         cfgs = []
-        FINDCFG = os.path.join(domain, "FINDCFG")
+        FINDCFG = join(domain, "FINDCFG")
         if os.path.exists(FINDCFG):
-            findcfg_process = Popen(["sh", os.path.join("po", FINDCFG)], stdout = PIPE, cwd = "..")
-            findcfg_process.wait()
-            cfgs = findcfg_process.stdout.read().split("\n")
-            cfgs.remove("")
+            cfgs = Split(Popen(["sh", join("po", FINDCFG)], stdout = PIPE, cwd = "..").communicate()[0])
         cfgs = map(lambda x: File(x, Dir("..")), cfgs)
         if cfgs:
             wml_pot = env.Command(
-                os.path.join(domain, domain + ".wml.po"),
+                join(domain, domain + ".wml.po"),
                 cfgs,
                 "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % domain
                 )
 
-        pot = File(os.path.join(domain, domain + ".pot"))
+        pot = File(join(domain, domain + ".pot"))
         env.Precious(pot)
         NoClean(pot)
         if cfgs and sources:
@@ -68,9 +65,8 @@ if "pot-update" in COMMAND_LINE_TARGETS:
 
 if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
-        linguas = open(os.path.join(domain, "LINGUAS")).read().split(" ")
+        linguas = Split(open(join(domain, "LINGUAS")).read())
         for lingua in linguas:
-            lingua = lingua.rstrip("\n")
             update_po = env.MsgMerge(
                 os.path.join(domain, lingua),
                 os.path.join(domain, domain)
@@ -132,7 +128,7 @@ if env["nls"]:
         for lingua in linguas:
             lingua = lingua[0]
             env.Msgfmt(
-                os.path.join("../translations", lingua, "LC_MESSAGES", domain),
-                os.path.join(domain, lingua)
+                join("../translations", lingua, "LC_MESSAGES", domain),
+                join(domain, lingua)
                 )
 
