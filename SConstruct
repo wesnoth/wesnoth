@@ -387,26 +387,24 @@ def InstallFilteredHook(target, source, env):
             map(lambda f: InstallFilteredHook(target, os.path.join(str(source), f), env), os.listdir(str(source)))
     elif CopyFilter(source):
         if (env["gui"] == "tiny") and (source.endswith("jpg") or source.endswith("png")):
-             (status, output) = commands.getstatusoutput("file "+ source)
-             output = output.replace(" x ", "x")
+             image_info = Popen(["identify", "-verbose", source], stdout = PIPE).communicate()[0]
              target = os.path.join(target, os.path.basename(source))
-             if "RGBA" in output or "alpha" in output:
+             if "Alpha: " in image_info:
                  command = "convert -filter point -resize %s %s %s"
              else:
-                 command = "convert -filter point -resize %s %s %s"
-             if status == 0:
-                 for (large, small) in (("1024x768","320x240"),
-                                        ("640x480","240x180"),
-                                        ("205x205","80x80")):
-                      if large in output:
-                           command = command % (small, source, target)
-                           break
-                 else:
-                      command = command % ("50%", source, target)
-                 if env["verbose"]:
-                      print command
-                 call(Split(command))
-                 return None
+                 command = "convert -resize %s %s %s"
+             for (large, small) in (("1024x768","320x240"),
+                                    ("640x480","240x180"),
+                                    ("205x205","80x80")):
+                if ("Geometry: " + large) in image_info:
+                    command = command % (small, source, target)
+                    break
+             else:
+                    command = command % ("50%", source, target)
+             if env["verbose"]:
+                print command
+                call(Split(command))
+                return None
         # Just copy non-images, and images if tinygui is off
         if env["verbose"]:
              print "cp %s %s" % (str(source), target)
