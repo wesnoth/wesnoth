@@ -82,6 +82,7 @@
 
 #define ERR_CONFIG LOG_STREAM(err, config)
 #define WRN_CONFIG LOG_STREAM(warn, config)
+#define DBG_CONFIG LOG_STREAM(debug, config)
 #define LOG_CONFIG LOG_STREAM(info, config)
 #define LOG_GENERAL LOG_STREAM(info, general)
 #define DBG_GENERAL LOG_STREAM(debug, general)
@@ -1084,7 +1085,7 @@ namespace
 	{
 		//force a reload of configuration information
 		old_defines_map_.clear();
-		reset_defines_map();
+		reset_game_cfg();
 		data_tree_checksum(true); // Reload checksums
 		refresh_game_cfg();
 		::init_textdomains(game_config_);
@@ -1778,7 +1779,7 @@ void game_controller::read_game_cfg(bool use_cache)
 				LOG_CONFIG << "skipping cache validation (forced)\n";
 			}
 
-			if(use_cache && file_exists(fname) && (force_valid_cache_ || (file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum()))) {
+			if(use_cache && file_exists(fname) && (force_valid_cache_ || (dir_checksum == data_tree_checksum()))) {
 				LOG_CONFIG << "found valid cache at '" << fname << "' using it\n";
 				log_scope("read cache");
 				try {
@@ -1793,8 +1794,8 @@ void game_controller::read_game_cfg(bool use_cache)
 				}
 			}
 
-			LOG_CONFIG << "no valid cache found. Writing cache to '" << fname << "'\n";
-
+			LOG_CONFIG << "no valid cache found. Writing cache to '" << fname << " with defines_map "<< str.str() << "'\n";
+			DBG_CONFIG << ((use_cache && file_exists(fname)) ? "yes":"no ") << " " << dir_checksum.modified << "==" << data_tree_checksum().modified << "  " << dir_checksum.nfiles << "==" << data_tree_checksum().nfiles << "  " << dir_checksum.sum_size << "==" << data_tree_checksum().sum_size << "\n";
 			preproc_map defines_map(defines_map_);
 
 			std::string error_log, user_error_log;

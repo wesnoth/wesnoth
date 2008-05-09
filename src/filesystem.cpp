@@ -704,7 +704,9 @@ static void get_file_tree_checksum_internal(const std::string& path, file_tree_c
 const file_tree_checksum& data_tree_checksum(bool reset)
 {
 	static file_tree_checksum checksum;
-	if(checksum.nfiles == 0 || reset) {
+	if (reset)
+		checksum.reset();
+	if(checksum.nfiles == 0) {
 		get_file_tree_checksum_internal("data/",checksum);
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
 		LOG_FS << "calculated data tree checksum: "
