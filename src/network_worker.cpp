@@ -100,7 +100,7 @@ unsigned int waiting_threads[NUM_SHARDS];
 size_t min_threads = 0;
 size_t max_threads = 0;
 
-int get_shard(TCPsocket sock) { return intptr_t(sock)%NUM_SHARDS; }
+size_t get_shard(TCPsocket sock) { return static_cast<uintptr_t>(sock)%NUM_SHARDS; }
 
 struct buffer {
 	explicit buffer(TCPsocket sock) : 
@@ -294,7 +294,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 	while(true) {
 #endif
 		{
-			const int shard = get_shard(sock);
+			const size_t shard = get_shard(sock);
 			// check if the socket is still locked
 			const threading::lock lock(*shard_mutexes[shard]);
 			if(sockets_locked[shard][sock] != SOCKET_LOCKED)
@@ -405,7 +405,7 @@ static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 
 inline void check_socket_result(TCPsocket& sock, SOCKET_STATE& result)
 {
-	const int shard = get_shard(sock);
+	const size_t shard = get_shard(sock);
 	const threading::lock lock(*shard_mutexes[shard]);
 	socket_state_map::iterator lock_it = sockets_locked[shard].find(sock);
 	assert(lock_it != sockets_locked[shard].end());
@@ -417,7 +417,7 @@ inline void check_socket_result(TCPsocket& sock, SOCKET_STATE& result)
 
 static int process_queue(void* shard_num)
 {
-	int shard = static_cast<int>(reinterpret_cast<intptr_t>(shard_num));
+	size_t shard = static_cast<size_t>(reinterpret_cast<uintptr_t>(shard_num));
 	DBG_NW << "thread started...\n";
 	for(;;) {
 
@@ -583,10 +583,10 @@ manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 			p_min_threads = 1;
 		}
 
-		for(int shard = 0; shard != NUM_SHARDS; ++shard) {
+		for(size_t shard = 0; shard != NUM_SHARDS; ++shard) {
 			const threading::lock lock(*shard_mutexes[shard]);
 			for(size_t n = 0; n != p_min_threads; ++n) {
-				threading::thread * tmp = new threading::thread(process_queue,(void*)intptr_t(shard));
+				threading::thread * tmp = new threading::thread(process_queue,(void*)uintptr_t(shard));
 				threads[shard][tmp->get_id()] = tmp;
 			}
 		}
@@ -599,7 +599,7 @@ manager::~manager()
 		
 		managed = false;
 
-		for(int shard = 0; shard != NUM_SHARDS; ++shard) {
+		for(size_t shard = 0; shard != NUM_SHARDS; ++shard) {
 			{
 				const threading::lock lock(*shard_mutexes[shard]);
 				socket_errors[shard] = 0;
@@ -641,7 +641,7 @@ network::pending_statistics get_pending_stats()
 	network::pending_statistics stats;
 	stats.npending_sends = 0;
 	stats.nbytes_pending_sends = 0;
-	for(int shard = 0; shard != NUM_SHARDS; ++shard) {
+	for(size_t shard = 0; shard != NUM_SHARDS; ++shard) {
 		const threading::lock lock(*shard_mutexes[shard]);
 		stats.npending_sends += outgoing_bufs[shard].size();
 		for(buffer_set::const_iterator i = outgoing_bufs[shard].begin(); i != outgoing_bufs[shard].end(); ++i) {
@@ -660,7 +660,7 @@ void set_raw_data_only()
 void receive_data(TCPsocket sock)
 {
 	{
-		const int shard = get_shard(sock);
+		const size_t shard = get_shard(sock);
 		const threading::lock lock(*shard_mutexes[shard]);
 		pending_receives[shard].push_back(sock);
 
@@ -723,7 +723,7 @@ void queue_raw_data(TCPsocket sock, const char* buf, int len)
 	buffer* queued_buf = new buffer(sock);
 	assert(*buf == 31);
 	make_network_buffer(buf, len, queued_buf->raw_buffer);
-	const int shard = get_shard(sock);
+	const size_t shard = get_shard(sock);
 	const threading::lock lock(*shard_mutexes[shard]);
 	outgoing_bufs[shard].push_back(queued_buf);
 	socket_state_map::const_iterator i = sockets_locked[shard].insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY)).first;
@@ -741,7 +741,7 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
 	queued_buf->gzipped = gzipped;
 	{
-		const int shard = get_shard(sock);
+		const size_t shard = get_shard(sock);
 		const threading::lock lock(*shard_mutexes[shard]);
 
 		outgoing_bufs[shard].push_back(queued_buf);
@@ -761,7 +761,7 @@ namespace
 void remove_buffers(TCPsocket sock)
 {
 	{
-		const int shard = get_shard(sock);
+		const size_t shard = get_shard(sock);
 		for(buffer_set::iterator i = outgoing_bufs[shard].begin(); i != outgoing_bufs[shard].end();) {
 			if ((*i)->sock == sock)
 			{
@@ -794,7 +794,7 @@ void remove_buffers(TCPsocket sock)
 } // anonymous namespace
 
 bool is_locked(const TCPsocket sock) {
-	const int shard = get_shard(sock);
+	const size_t shard = get_shard(sock);
 	const threading::lock lock(*shard_mutexes[shard]);
 	const socket_state_map::iterator lock_it = sockets_locked[shard].find(sock);
 	if (lock_it == sockets_locked[shard].end()) return false;
@@ -804,7 +804,7 @@ bool is_locked(const TCPsocket sock) {
 bool close_socket(TCPsocket sock, bool force)
 {
 	{
-		const int shard = get_shard(sock);
+		const size_t shard = get_shard(sock);
 		const threading::lock lock(*shard_mutexes[shard]);
 
 		pending_receives[shard].erase(std::remove(pending_receives[shard].begin(),pending_receives[shard].end(),sock),pending_receives[shard].end());
@@ -834,7 +834,7 @@ bool close_socket(TCPsocket sock, bool force)
 
 TCPsocket detect_error()
 {
-	for(int shard = 0; shard != NUM_SHARDS; ++shard) {
+	for(size_t shard = 0; shard != NUM_SHARDS; ++shard) {
 		const threading::lock lock(*shard_mutexes[shard]);
 		if(socket_errors[shard] > 0) {
 			for(socket_state_map::iterator i = sockets_locked[shard].begin(); i != sockets_locked[shard].end();) {
