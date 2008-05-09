@@ -134,6 +134,9 @@ void tscrollbar_::set_size(const SDL_Rect& rect)
 
 void tscrollbar_::set_item_position(const unsigned item_position)
 {
+	// Set the value always execute since we update a part of the state.
+	item_position_ = item_position;
+
 	// Adjust the item position.
 	if(item_position_ >= item_count_) {
 		item_position_ = item_count_ - 1;
