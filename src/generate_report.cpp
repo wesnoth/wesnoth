@@ -148,10 +148,11 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		str << font::color2markup( u->second.hp_color() );
 		str << u->second.hitpoints() << "/" << u->second.max_hitpoints();
 
-		std::vector<std::string> resistances_table;
+		std::set<std::string> resistances_table;
 
 		string_map resistances = u->second.get_base_resistances();
 
+		bool att_def_diff = false;
 		for(string_map::iterator resist = resistances.begin();
 				resist != resistances.end(); ++resist) {
 			std::stringstream line;
@@ -165,13 +166,18 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				line << res_def << "%\n";
 			} else {
 				line << res_att << "% / " << res_def << "%\n";
+				att_def_diff = true;
 			}
-			resistances_table.push_back(line.str());
+			resistances_table.insert(line.str());
 		}
 
-		tooltip << _("Resistances: ") << "\n";
-		std::sort(resistances_table.begin(),resistances_table.end());
-		for(std::vector<std::string>::iterator line = resistances_table.begin();
+		tooltip << _("Resistances: ");
+		if (att_def_diff) 
+			tooltip << _("(Att / Def)");
+		tooltip << "\n";
+
+		// the STL set will give alphabetical sorting
+		for(std::set<std::string>::iterator line = resistances_table.begin();
 				line != resistances_table.end(); ++line) {
 			tooltip << (*line);
 		}
