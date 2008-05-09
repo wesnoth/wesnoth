@@ -34,7 +34,7 @@
 
 namespace map_editor {
 
-bool is_invalid_terrain(t_translation::t_terrain c) {
+static bool is_invalid_terrain(t_translation::t_terrain c) {
 	return (c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 

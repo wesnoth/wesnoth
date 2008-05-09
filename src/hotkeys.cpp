@@ -473,7 +473,8 @@ hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 #endif
 			);
 }
-void _get_visible_hotkey_itor(int index, std::vector<hotkey_item>::iterator& itor)
+
+static void _get_visible_hotkey_itor(int index, std::vector<hotkey_item>::iterator& itor)
 {
 	int counter = 0;
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {

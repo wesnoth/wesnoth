@@ -102,7 +102,7 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
 
 namespace unit_abilities {
 
-bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
+static bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
 {
 	if (side == other_side)
 		return utils::string_bool(cfg["affect_allies"], true);

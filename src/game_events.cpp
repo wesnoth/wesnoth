@@ -166,7 +166,7 @@ game_state* get_state_of_game()
 	return state_of_game;
 }
 
-bool internal_conditional_passed(const unit_map* units,
+static bool internal_conditional_passed(const unit_map* units,
                         const vconfig cond, bool& backwards_compat)
 {
 

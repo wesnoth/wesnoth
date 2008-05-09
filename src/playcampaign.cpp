@@ -121,7 +121,7 @@ static void clean_saves(const std::string &label)
 	}
 }
 
-LEVEL_RESULT playsingle_scenario(const config& game_config,
+static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
 		const std::vector<config*>& story, upload_log& log, bool skip_replay)
 {
@@ -153,7 +153,7 @@ LEVEL_RESULT playsingle_scenario(const config& game_config,
 }
 
 
-LEVEL_RESULT playmp_scenario(const config& game_config,
+static LEVEL_RESULT playmp_scenario(const config& game_config,
 		config const* level, display& disp, game_state& state_of_game,
 		const config::child_list& story, upload_log& log, bool skip_replay,
 		io_type_t& io_type)

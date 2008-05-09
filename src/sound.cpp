@@ -507,7 +507,7 @@ void play_music()
 	fadingout_time=current_track.ms_after;
 }
 
-void play_new_music()
+static void play_new_music()
 {
 	music_start_time = 0; //reset status: no start time
 	want_new_music = true;

@@ -1161,7 +1161,7 @@ void campaign_preview_pane::draw_contents()
 	}
 }
 
-network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
+static network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
 {
 #ifdef USE_TINY_GUI
 	const size_t width = 200;

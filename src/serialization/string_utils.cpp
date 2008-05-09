@@ -406,7 +406,7 @@ bool string_bool(const std::string& str, bool def) {
 	return def;
 }
 
-bool is_username_char(char c) {
+static bool is_username_char(char c) {
 	return ((c == '_') || (c == '-'));
 }
 
@@ -477,7 +477,7 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
 	return text_start;
 }
 
-bool is_word_boundary(char c) {
+static bool is_word_boundary(char c) {
 	return (c == ' ' || c == ',' || c == ':' || c == '\'' || c == '"' || c == '-');
 }
 
@@ -612,7 +612,7 @@ std::vector< std::pair< int, int > > parse_ranges(std::string const &str)
 	return to_return;
 }
 
-int byte_size_from_utf8_first(unsigned char ch)
+static int byte_size_from_utf8_first(unsigned char ch)
 {
 	int count;
 

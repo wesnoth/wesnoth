@@ -91,18 +91,18 @@ clock_t get_cpu_time(bool active) {
 
 sig_atomic_t config_reload = 0;
 
-void reload_config(int signal) {
+static void reload_config(int signal) {
 	assert(signal == SIGHUP);
 	config_reload = 1;
 }
 
-void exit_sigint(int signal) {
+static void exit_sigint(int signal) {
 	assert(signal == SIGINT);
 	LOG_SERVER << "SIGINT caught, exiting without cleanup immediately.\n";
 	exit(1);
 }
 
-void exit_sigterm(int signal) {
+static void exit_sigterm(int signal) {
 	assert(signal == SIGTERM);
 	LOG_SERVER << "SIGTERM caught, exiting without cleanup immediately.\n";
 	exit(1);

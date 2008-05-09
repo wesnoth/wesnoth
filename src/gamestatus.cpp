@@ -799,7 +799,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	}
 }
 
-void copy_era(config &cfg)
+static void copy_era(config &cfg)
 {
 	if (cfg.child("replay_start")
 		&& cfg.child("replay_start")->child("era")

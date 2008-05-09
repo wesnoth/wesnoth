@@ -23,12 +23,12 @@
 #include <time.h>
 #include <iostream>
 
-bool operator<(const metrics::sample& s, const simple_wml::string_span& name)
+static bool operator<(const metrics::sample& s, const simple_wml::string_span& name)
 {
 	return s.name < name;
 }
 
-bool operator<(const simple_wml::string_span& name, const metrics::sample& s)
+static bool operator<(const simple_wml::string_span& name, const metrics::sample& s)
 {
 	return name < s.name;
 }

@@ -41,7 +41,7 @@ namespace about
 
 // Given a vector of strings, and a config representing an [about] section,
 // add all the credits lines from the about section to the list of strings.
-void add_lines(std::vector<std::string> &res, config const &c) {
+static void add_lines(std::vector<std::string> &res, config const &c) {
 	std::string title=c["title"];
 	if(title.size()) {
 		title = N_("+" + title);
