@@ -100,7 +100,7 @@ unsigned int waiting_threads[NUM_SHARDS];
 size_t min_threads = 0;
 size_t max_threads = 0;
 
-size_t get_shard(TCPsocket sock) { return static_cast<uintptr_t>(sock)%NUM_SHARDS; }
+size_t get_shard(TCPsocket sock) { return reinterpret_cast<uintptr_t>(sock)%NUM_SHARDS; }
 
 struct buffer {
 	explicit buffer(TCPsocket sock) : 
