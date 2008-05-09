@@ -92,7 +92,7 @@ if(NOT WIN32)
 endif(NOT WIN32)
 
 add_definitions(-DHAS_RELATIVE_LOCALEDIR)
-add_definitions(-DLOCALEDIR=${LOCALEDIR})
+add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
 message("set -DLOCALEDIR='\"${LOCALEDIR}\"'")
 set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
 
@@ -119,14 +119,44 @@ add_subdirectory(po)
 add_subdirectory(src)
 #add_subdirectory(doc)
 
+#shrink images
+if(GUI STREQUAL "tiny")
+  FIND_PACKAGE( ImageMagick REQUIRED )
+
+  if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+    set(IMAGE_BUILD_DIR ${CMAKE_SOURCE_DIR}/tiny_images)
+  else(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+    set(IMAGE_BUILD_DIR ${CMAKE_BINARY_DIR})
+  endif(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+
+  set(IMAGE_FILES data/*.jpg data/*.png images/*.jpg images/*.png)
+
+  add_custom_target(shrink-images ALL 
+                    COMMAND ${CMAKE_COMMAND}
+                    ARGS -DIMAGE_FILES="${IMAGE_FILES}" -DIMAGE_BUILD_DIR="${IMAGE_BUILD_DIR}" -DIMAGEMAGICK_IDENTIFY_EXECUTABLE="${IMAGEMAGICK_IDENTIFY_EXECUTABLE}" -DIMAGEMAGICK_CONVERT_EXECUTABLE="${IMAGEMAGICK_CONVERT_EXECUTABLE}" -P "${CMAKE_SOURCE_DIR}/cmake/ShrinkImages.cmake"
+                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+
+  ########### install files ###############
+
+  install(DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images DESTINATION ${DATADIR})
+  install(DIRECTORY data fonts sounds DESTINATION ${DATADIR} 
+          PATTERN "*.png" EXCLUDE
+          PATTERN "*.jpg" EXCLUDE
+          PATTERN ".svn" EXCLUDE )
+else(GUI STREQUAL "tiny")
+
+  install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} PATTERN ".svn" EXCLUDE )
+
+endif(GUI STREQUAL "tiny")
+
+
+
+#
+# Packaging stuff
+#
+
 
 INCLUDE(CPack)
 SET(CPACK_GENERATOR "TGZ")
 SET(CPACK_SOURCE_GENERATOR "TGZ")
-
-# some stuff from am2cmake
-
-########### install files ###############
-
-install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} PATTERN ".svn" EXCLUDE )
-
