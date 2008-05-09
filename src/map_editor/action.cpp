@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2008 by Tomasz Œniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file action.hpp
+//! @file action.cpp
 //! Editor action classes
 
 #include "action.hpp"
@@ -31,13 +31,13 @@ void editor_action_whole_map::perform_without_undo(editor_map& m) {
 
 editor_action_chain::~editor_action_chain()
 {
-	BOOST_FOREACH(editor_action* a, actions_) {
+	foreach (editor_action* a, actions_) {
 		delete a;
 	}
 }
 editor_action_chain* editor_action_chain::perform(editor_map& m) {
 	std::vector<editor_action*> undo;
-	BOOST_FOREACH(editor_action* a, actions_) {
+	foreach (editor_action* a, actions_) {
 		undo.push_back(a->perform(m));
 	}
 	std::reverse(undo.begin(), undo.end());
@@ -45,7 +45,7 @@ editor_action_chain* editor_action_chain::perform(editor_map& m) {
 }
 void editor_action_chain::perform_without_undo(editor_map& m)
 {
-    BOOST_FOREACH(editor_action* a, actions_) {
+    foreach (editor_action* a, actions_) {
 		a->perform_without_undo(m);
 	}
 }
