@@ -184,7 +184,7 @@ namespace preferences {
 	std::set<t_translation::t_terrain> &encountered_terrains();
 
 	std::string custom_command();
-	void set_custom_command(const std::string command);
+	void set_custom_command(const std::string& command);
 
 	std::vector<std::string>* get_history(const std::string& id);
 
