@@ -1,6 +1,5 @@
 # most stuff should be implemented so far, mgoe should know the details (he has done all the work...)
 # what is not working so far:
-# * revision.hpp generation
 # * building/installing manpages
 # * building/installing manual
 # * fribidi support

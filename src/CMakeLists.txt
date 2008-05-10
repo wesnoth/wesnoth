@@ -26,6 +26,21 @@ IF(ENABLE_PYTHON AND PYTHON_LIBRARY)
   SET(the-external-libs ${the-external-libs} ${PYTHON_LIBRARIES})
 ENDIF(ENABLE_PYTHON AND PYTHON_LIBRARY)
 
+find_program(SVNVERSION_EXECUTABLE "svnversion")
+
+if(SVNVERSION_EXECUTABLE)
+  execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
+                  OUTPUT_VARIABLE SVN_VERSION)
+  if(SVN_VERSION MATCHES [0-9]+.*)
+    add_custom_target(revision ALL
+                      COMMAND ${CMAKE_COMMAND}
+                      -DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -P "${CMAKE_SOURCE_DIR}/cmake/revision.cmake"
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                      COMMENT "Updating revision.hpp")
+    add_definitions(-DHAVE_REVISION)
+  endif(SVN_VERSION MATCHES [0-9]+.*)
+  
+endif(SVNVERSION_EXECUTABLE)
 
 
 ########### libwesnoth-core ###############
