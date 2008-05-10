@@ -223,6 +223,24 @@ private:
 
 };
 
+/**
+ * Small abstract helper class.
+ *
+ * Parts of the engine inherit this class so we can have generic
+ * selectable items.
+ */
+class tselectable_ 
+{
+public:
+	virtual ~tselectable_() {}
+
+	/** Is the control selected? */
+	virtual bool is_selected() const = 0;
+
+	/** Select the control */
+	virtual void set_selected(const bool = true) = 0;
+};
+
 } // namespace gui2
 
 #endif

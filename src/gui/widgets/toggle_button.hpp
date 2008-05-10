@@ -20,7 +20,7 @@
 namespace gui2 {
 
 // Class for a toggle button
-class ttoggle_button : public tcontrol
+class ttoggle_button : public tcontrol, public tselectable_
 {
 public:
 	ttoggle_button() : 
@@ -40,11 +40,11 @@ public:
 		{ return state_ != DISABLED_UP && state_ != DISABLED_DOWN; }
 	unsigned get_state() const { return state_; }
 
-	/** Is the widget in the up state. */
-	bool is_up() const { return state_ < ENABLED_DOWN; }
+	/** Inherited from tselectable_ */
+	bool is_selected() const { return state_ < ENABLED_DOWN; }
 
-	/** Set the button in the wanted state. */
-	void set_up(const bool up = true);
+	/** Inherited from tselectable_ */
+	void set_selected(const bool selected = true);
 
 protected:
 	
