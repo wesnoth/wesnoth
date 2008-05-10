@@ -28,15 +28,24 @@ ENDIF(ENABLE_PYTHON AND PYTHON_LIBRARY)
 
 find_program(SVNVERSION_EXECUTABLE "svnversion")
 
+set(REVISION_FILE)
 if(SVNVERSION_EXECUTABLE)
   execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
                   OUTPUT_VARIABLE SVN_VERSION)
   if(SVN_VERSION MATCHES [0-9]+.*)
     add_custom_target(revision ALL
                       COMMAND ${CMAKE_COMMAND}
-                      -DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -P "${CMAKE_SOURCE_DIR}/cmake/revision.cmake"
-                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                      COMMENT "Updating revision.hpp")
+                      -DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -DSRC_DIR="${CMAKE_SOURCE_DIR}"
+                      -P "${CMAKE_SOURCE_DIR}/cmake/revision.cmake"
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                      COMMENT "Updating revision")
+
+    add_custom_command(OUTPUT revision.hpp
+                       COMMAND ${CMAKE_COMMAND}
+                       -E copy ${CMAKE_CURRENT_BINARY_DIR}/revision ${CMAKE_CURRENT_SOURCE_DIR}/revision.hpp
+                       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/revision)
+
+    set(REVISION_FILE revision.hpp)
     add_definitions(-DHAVE_REVISION)
   endif(SVN_VERSION MATCHES [0-9]+.*)
   
@@ -62,6 +71,7 @@ SET(libwesnoth-core_STAT_SRC
     serialization/preprocessor.cpp
     serialization/string_utils.cpp
     serialization/tokenizer.cpp
+    ${REVISION_FILE}
 )
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
