@@ -14,7 +14,7 @@ textdomains = glob("wesnoth*")
 textdomains.remove("wesnoth-manpages")
 textdomains.remove("wesnoth-manual")
 textdomains = filter(os.path.isdir, textdomains)
-lingua_re = re.compile(r".*/(.*)\.po")
+lingua_re = re.compile(r".*(/|\\)(.*)\.po")
 
 if "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
@@ -126,7 +126,7 @@ if env["nls"]:
         pos = glob(os.path.join(domain, "*.po"))
         linguas = map(lingua_re.findall, pos)
         for lingua in linguas:
-            lingua = lingua[0]
+            lingua = lingua[0][1]
             env.Msgfmt(
                 join("../translations", lingua, "LC_MESSAGES", domain),
                 join(domain, lingua)

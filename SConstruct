@@ -294,6 +294,8 @@ builds = {
     "debug"   : Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"),
     "release" : Split("-O2 -ansi")
     }
+if sys.platform == "win32":
+    builds["release"] = [] # Both -O2 and -ansi cause Bad Things to happen on windows
 for build in env["build"]:
     build_env = env.Clone()
     build_env.AppendUnique(CXXFLAGS = builds[build])
