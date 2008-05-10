@@ -2069,7 +2069,7 @@ game_controller::~game_controller()
 // this is needed to allow identical functionality with clean refactoring
 // play_game only returns on an error, all returns within play_game can
 // be replaced with this
-void safe_exit(int res) {
+static void safe_exit(int res) {
 
 	LOG_GENERAL << "exiting with code " << res << "\n";
 #ifdef OS2 /* required to correctly shutdown SDL on OS/2 */
@@ -2079,7 +2079,7 @@ void safe_exit(int res) {
 }
 
 // maybe this should go in a util file somewhere?
-void gzip_codec(const std::string & input_file, const std::string & output_file, bool encode)
+static void gzip_codec(const std::string & input_file, const std::string & output_file, bool encode)
 {
 	try {
 	std::ofstream ofile(output_file.c_str(), std::ios_base::out
@@ -2100,12 +2100,12 @@ void gzip_codec(const std::string & input_file, const std::string & output_file,
 	}
 }
 
-void gzip_encode(const std::string & input_file, const std::string & output_file)
+static void gzip_encode(const std::string & input_file, const std::string & output_file)
 {
 	gzip_codec(input_file, output_file, true);
 }
 
-void gzip_decode(const std::string & input_file, const std::string & output_file)
+static void gzip_decode(const std::string & input_file, const std::string & output_file)
 {
 	gzip_codec(input_file, output_file, false);
 }
@@ -2273,24 +2273,7 @@ static int play_game(int argc, char** argv)
 
 			const std::string input_file(argv[arg + 1]);
 			const std::string output_file(input_file + ".gz");
-
-			try {
-			std::ofstream ofile(output_file.c_str(), std::ios_base::out
-					| std::ios_base::binary | std::ios_base::binary);
-
-				std::ifstream ifile(input_file.c_str(),
-					std::ios_base::in | std::ios_base::binary);
-				boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
-				in.push(boost::iostreams::gzip_compressor());
-				in.push(ifile);
-				boost::iostreams::copy(in, ofile);
-
-				ifile.close();
-				return remove(input_file.c_str());
-
-			}  catch(io_exception& e) {
-				std::cerr << "IO error: " << e.what() << "\n";
-			}
+			gzip_encode(input_file, output_file); 
 
 		} else if(val == "--gunzip") {
 			if(argc != arg + 2) {
@@ -2307,23 +2290,7 @@ static int play_game(int argc, char** argv)
 			const std::string output_file(
 				input_file, 0, input_file.length() - 3);
 
-			try {
-				std::ofstream ofile(output_file.c_str(), std::ios_base::out
-					| std::ios_base::binary | std::ios_base::binary);
-
-				std::ifstream ifile(input_file.c_str(),
-					std::ios_base::in | std::ios_base::binary);
-				boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
-				in.push(boost::iostreams::gzip_decompressor());
-				in.push(ifile);
-				boost::iostreams::copy(in, ofile);
-
-				ifile.close();
-				return remove(input_file.c_str());
-
-			}  catch(io_exception& e) {
-                std::cerr << "IO error: " << e.what() << "\n";
-			}
+			gzip_decode(input_file, output_file);
 
 		} else if(val == "--logdomains") {
 			std::cout << lg::list_logdomains() << "\n";
