@@ -44,9 +44,9 @@ void ttoggle_button::mouse_enter(tevent_handler&)
 	DBG_G_E << "Toggle button: mouse enter.\n"; 
 
 	if(is_selected()) {
-		set_state(FOCUSSED_UP);
+		set_state(FOCUSSED_SELECTED);
 	} else {
-		set_state(FOCUSSED_DOWN);
+		set_state(FOCUSSED);
 	}
 }
 
@@ -55,9 +55,9 @@ void ttoggle_button::mouse_leave(tevent_handler&)
 	DBG_G_E << "Toggle button: mouse leave.\n"; 
 
 	if(is_selected()) {
-		set_state(ENABLED_UP);
+		set_state(ENABLED_SELECTED);
 	} else {
-		set_state(ENABLED_DOWN);
+		set_state(ENABLED);
 	}
 }
 
@@ -66,9 +66,9 @@ void ttoggle_button::mouse_left_button_click(tevent_handler&)
 	DBG_G_E << "Toggle button: left mouse button click.\n"; 
 
 	if(is_selected()) {
-		set_state(ENABLED_DOWN);
+		set_state(ENABLED);
 	} else {
-		set_state(ENABLED_UP);
+		set_state(ENABLED_SELECTED);
 	}
 
 	if(callback_mouse_left_click_) {
@@ -80,15 +80,15 @@ void ttoggle_button::set_active(const bool active)
 {
 	if(active) {
 		if(is_selected()) {
-			set_state(ENABLED_UP);
+			set_state(ENABLED_SELECTED);
 		} else {
-			set_state(ENABLED_DOWN);
+			set_state(ENABLED);
 		}
 	} else {
 		if(is_selected()) {
-			set_state(DISABLED_UP);
+			set_state(DISABLED_SELECTED);
 		} else {
-			set_state(DISABLED_DOWN);
+			set_state(DISABLED);
 		}
 	}
 }
@@ -100,9 +100,9 @@ void ttoggle_button::set_selected(const bool selected)
 	}
 
 	if(selected) {
-		set_state(static_cast<tstate>(state_ - ENABLED_DOWN));
+		set_state(static_cast<tstate>(state_ + ENABLED_SELECTED));
 	} else {
-		set_state(static_cast<tstate>(state_ + ENABLED_DOWN));
+		set_state(static_cast<tstate>(state_ - ENABLED_SELECTED));
 	}
 }
 

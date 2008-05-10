@@ -25,7 +25,7 @@ class ttoggle_button : public tcontrol, public tselectable_
 public:
 	ttoggle_button() : 
 		tcontrol(COUNT),
-		state_(ENABLED_UP),
+		state_(ENABLED),
 		callback_mouse_left_click_(0)
 	{
 		load_config();
@@ -38,11 +38,11 @@ public:
 
 	void set_active(const bool active);
 	bool get_active() const
-		{ return state_ != DISABLED_UP && state_ != DISABLED_DOWN; }
+		{ return state_ != DISABLED && state_ != DISABLED_SELECTED; }
 	unsigned get_state() const { return state_; }
 
 	/** Inherited from tselectable_ */
-	bool is_selected() const { return state_ < ENABLED_DOWN; }
+	bool is_selected() const { return state_ >= ENABLED_SELECTED; }
 
 	/** Inherited from tselectable_ */
 	void set_selected(const bool selected = true);
@@ -55,9 +55,9 @@ private:
 	//! Also note the internals do assume the order for up and down to be the same
 	//! and also that 'up' is before 'down'.
 	enum tstate { 
-		ENABLED_UP,   DISABLED_UP,   FOCUSSED_UP, 
-		ENABLED_DOWN, DISABLED_DOWN, FOCUSSED_DOWN, 
-		COUNT };
+		ENABLED,          DISABLED,          FOCUSSED, 
+		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED, 
+		COUNT};
 
 	void set_state(tstate state);
 	tstate state_;

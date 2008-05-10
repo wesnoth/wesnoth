@@ -172,9 +172,10 @@ const std::string& tgui_definition::read(const config& cfg)
  *     panel_definition              A panel.
  *     spacer_definition             A spacer.
  *     text_box_definition           A single line text box.
- *     toggle_button_definition      A kind of button with two 'states' up and 
- *                                   down. This is a more generic widget which
- *                                   is used for eg checkboxes and radioboxes.
+ *     toggle_button_definition      A kind of button with two 'states' normal 
+ *                                   and selected. This is a more generic widget
+ *                                   which is used for eg checkboxes and
+ *                                   radioboxes.
  *     tooltip_definition            A small tooltip with help.
  *     vertical_scrollbar_definition A vertical scrollbar.
  *     window_definition             A window.
@@ -645,22 +646,24 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
  * The definition of a toggle button.
  *
  * The following states exist:
- * * state_enabled_up, the button is enabled and in the upwards position.
- * * state_disabled_up, the button is disabled and in the upwards position.
- * * state_focussed_up, the mouse is over the button and the button is in the upwards position.
+ * * state_enabled, the button is enabled and not selected.
+ * * state_disabled, the button is disabled and not selected.
+ * * state_focussed, the mouse is over the button and not selected.
  *
- * The same three states exist with down for the downwardsposition.
+ * * state_enabled_selected, the button is enabled and selected.
+ * * state_disabled_selected, the button is disabled and selected.
+ * * state_focussed_selected, the mouse is over the button and selected.
  *
  */
 
 	// Note the order should be the same as the enum tstate is toggle_button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled_up")));
-	state.push_back(tstate_definition(cfg.child("state_disabled_up")));
-	state.push_back(tstate_definition(cfg.child("state_focussed_up")));
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_focussed")));
 
-	state.push_back(tstate_definition(cfg.child("state_enabled_down")));
-	state.push_back(tstate_definition(cfg.child("state_disabled_down")));
-	state.push_back(tstate_definition(cfg.child("state_focussed_down")));
+	state.push_back(tstate_definition(cfg.child("state_enabled_selected")));
+	state.push_back(tstate_definition(cfg.child("state_disabled_selected")));
+	state.push_back(tstate_definition(cfg.child("state_focussed_selected")));
 }
 
 ttooltip_definition::ttooltip_definition(const config& cfg) : 
