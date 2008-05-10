@@ -97,6 +97,14 @@ public:
 	//! Inherited from twidget.
 	void draw(surface& surface);
 
+	/** Returns the widget in the selected cell. */
+	const twidget* widget(const unsigned row, const unsigned col) const
+		{ return child(row, col).widget(); }
+
+	/** Returns the widget in the selected cell. */
+	twidget* widget(const unsigned row, const unsigned col) 
+		{ return child(row, col).widget(); }
+
 private:
 	class tchild 
 	{
@@ -125,7 +133,9 @@ private:
 		void set_border_size(const unsigned border_size) 
 			{  border_size_ = border_size; set_dirty(); }
 
+		const twidget* widget() const { return widget_; }
 		twidget* widget() { return widget_; }
+
 		void set_widget(twidget* widget) { widget_ = widget; set_dirty(); }
 
 		//! Returns the best size for the cell.
