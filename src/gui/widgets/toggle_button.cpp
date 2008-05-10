@@ -71,7 +71,9 @@ void ttoggle_button::mouse_left_button_click(tevent_handler&)
 		set_state(ENABLED_UP);
 	}
 
-	// Do the custom handling (not implemented yet) FIXME
+	if(callback_mouse_left_click_) {
+		callback_mouse_left_click_(this);
+	}
 }
 
 void ttoggle_button::set_active(const bool active)

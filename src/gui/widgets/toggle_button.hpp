@@ -25,7 +25,8 @@ class ttoggle_button : public tcontrol, public tselectable_
 public:
 	ttoggle_button() : 
 		tcontrol(COUNT),
-		state_(ENABLED_UP)
+		state_(ENABLED_UP),
+		callback_mouse_left_click_(0)
 	{
 		load_config();
 	}
@@ -46,7 +47,8 @@ public:
 	/** Inherited from tselectable_ */
 	void set_selected(const bool selected = true);
 
-protected:
+	void set_callback_mouse_left_click(void (*callback) (twidget*)) 
+		{ callback_mouse_left_click_ = callback; }
 	
 private:
 	//! Note the order of the states must be the same as defined in settings.hpp.
@@ -60,9 +62,13 @@ private:
 	void set_state(tstate state);
 	tstate state_;
  
+ 	/** This callback is used when the control gets a left click. */
+	void (*callback_mouse_left_click_) (twidget*);
+
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 
 		{ static const std::string type = "toggle_button"; return type; }
+
 };
 
 
