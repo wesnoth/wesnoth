@@ -83,7 +83,9 @@ void tbutton::mouse_left_button_click(tevent_handler&)
 		}
 	}
 
-	// Do the custom handling (not implemented yet) FIXME
+	if(callback_mouse_left_click_) {
+		callback_mouse_left_click_(this);
+	}
 }
 
 tbutton::RETVAL tbutton::get_retval_by_id(const std::string& id)

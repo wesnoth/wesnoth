@@ -26,7 +26,8 @@ public:
 	tbutton() : 
 		tcontrol(COUNT),
 		state_(ENABLED),
-		retval_(0)
+		retval_(0),
+		callback_mouse_left_click_(0)
 	{
 		load_config();
 	}
@@ -60,8 +61,9 @@ public:
 	bool get_active() const;
 	unsigned get_state() const { return state_; }
 
-protected:
-	
+	void set_callback_mouse_left_click(void (*callback) (twidget*))
+		{ callback_mouse_left_click_ = callback; }
+
 private:
 	//! Note the order of the states must be the same as defined in settings.hpp.
 	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
@@ -70,6 +72,12 @@ private:
 	tstate state_;
  
 	int retval_;
+
+	/** 
+	 * This callback is used when the control gets a left click. Except when the
+	 * button has a retval_, then retval_ is set.
+	 */
+	void (*callback_mouse_left_click_) (twidget*);
 
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 
