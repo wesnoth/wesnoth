@@ -236,31 +236,33 @@ if env['raw_sockets']:
 if env['internal_data']:
     env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
-if env['prefsdir']:
-    env.Append(CPPDEFINES = "PREFERENCES_DIR='\"%s\"'" % env['prefsdir'] )
-
-if env['fifodir']:
-    env.Append(CPPDEFINES = "FIFODIR='\"%s\"'" % env['fifodir'] )
-
 if env['python']:
     env.Append(CPPDEFINES = "HAVE_PYTHON")
 
-if env['localedirname']:
-    env.Append(CPPDEFINES = "LOCALEDIR='\"%s\"'" % env['localedirname'] )
-    if not os.path.isabs(env['localedirname']):
-        env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
+if sys.platform != "win32":
+    if env['prefsdir']:
+        env.Append(CPPDEFINES = "PREFERENCES_DIR='\"%s\"'" % env['prefsdir'] )
+
+    if env['fifodir']:
+        env.Append(CPPDEFINES = "FIFODIR='\"%s\"'" % env['fifodir'] )
+
+    if env['localedirname']:
+        env.Append(CPPDEFINES = "LOCALEDIR='\"%s\"'" % env['localedirname'] )
+        if not os.path.isabs(env['localedirname']):
+            env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
 
 if env['dummy_locales']:
     env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
 
 # Simulate autools-like behavior of prefix on various paths
-for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir", "python_site_packages_dir"):
+installdirs = Split("bindir datadir fifodir icondir desktopdir mandir docdir python_site_packages_dir")
+for d in installdirs:
     env[d] = os.path.join(env["prefix"], env[d])
 
 if env["PLATFORM"] != "win32":
     env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
 
-for d in ("bindir", "datadir", "fifodir", "icondir", "desktopdir", "mandir", "docdir", "python_site_packages_dir"):
+for d in installdirs:
     env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
 
 if 'CXXFLAGS' in os.environ:
