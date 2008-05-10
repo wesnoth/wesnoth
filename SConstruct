@@ -30,6 +30,8 @@ opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder")),
     ListOption('build', 'Build variant: debug or release', "release", ["release", "debug"]),
+    ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
+    ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathOption('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathOption.PathAccept),
@@ -299,6 +301,7 @@ if sys.platform == "win32":
 for build in env["build"]:
     build_env = env.Clone()
     build_env.AppendUnique(CXXFLAGS = builds[build])
+    build_env.MergeFlags(env["extra_flags_" + build])
     SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = {"env":build_env})
     Import(binaries + ["sources"])
     binary_nodes = map(eval, binaries)
