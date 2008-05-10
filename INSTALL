@@ -1,4 +1,12 @@
-Prerequisites:
+Contents:
+  1. Prerequisites
+  2. Common instructions
+  3. Scons build
+  4. CMake build
+  5. Autotools build
+
+
+1. Prerequisites:
 
 You'll need to have these libraries (with equivalent devel versions) to build Wesnoth:
 
@@ -11,15 +19,19 @@ You'll need to have these libraries (with equivalent devel versions) to build We
  boost_iostreams >= 1.33.0
  boost_regex >= 1.33.0
 
-You will need the following tools:
+There are currently three ways to build wesnoth:
+ * The old autotools system
+ * scons
+ * cmake (still incomplete, but most stuff works)
 
- python >=2.4
- scons
+
+2. Common steps:
+
+In the future, autotools will be replaced with either scons or cmake.
 
 SDL* libraries can be found at http://www.libsdl.org . libfreetype can be found
 at http://www.freetype.org/ . Python can be found at http://www.python.org .
-The boost libraries can be found at http://www.boost.org . SCons can be found
-at http://www.scons.org/ .
+The boost libraries can be found at http://www.boost.org . 
 
 You will also need to have a working installation of GNU gettext to build the
 translations.
@@ -49,6 +61,16 @@ First untar the package:
 then
 
  $ cd wesnoth-x.y.z
+
+
+3. Scons build
+
+You will need the following tools:
+
+ python >=2.4
+ scons
+
+SCons can be found at http://www.scons.org/ .
 
 Simply type 'scons' in the top-level directory to build the game and
 editor. It is possible to select individual targets by naming them as
@@ -203,7 +225,47 @@ Optional Packages:
   --with-freetype-exec-prefix=PFX N/A
   --with-boost=DIR                boostdir=DIR boostlibdir=DIR boost_suffix=suffix
 
-Notes on the deprecated autotools build:
+
+4. CMake build
+
+To build with cmake, you need cmake >= 2.4-patch 8 . You can get cmake at 
+http://www.cmake.org .
+
+There are two ways to build wesnoth with cmake: Inside the source tree or outside.
+Out of source builds have the advantage that you can have builds with different options
+from one source directory.
+
+To build wesnoth out of source:
+
+ $ mkdir build && cd build
+ $ cmake ..
+ $ make
+ $ make install
+
+To build wesnoth in the source directory:
+
+ $ cmake .
+ $ make
+ $ make install
+
+To change build options, you can either pass the options on the command line:
+
+ $ cmake .. -DOPTION=value
+
+or use the ccmake frontend which displays all options with their cached values.
+
+ $ ccmake ..
+
+Build options:
+
+!TODO!
+Use "ccmake .." to view a list of all build options with help texts.
+
+Debug builds:
+Set CMAKE_BUILD_TYPE to "debug"
+
+
+5. Autotools build
 
 The autotools build machinery is deprecated, unsupported, and will be
 removed in a future release.  You will need autoconf (>= 2.60) and
