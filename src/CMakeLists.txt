@@ -170,6 +170,7 @@ SET(wesnoth-main_SRC
     gui/widgets/button.cpp
     gui/widgets/canvas.cpp
     gui/widgets/control.cpp
+    gui/widgets/container.cpp
     gui/widgets/event_handler.cpp
     gui/widgets/grid.cpp
     gui/widgets/helper.cpp
