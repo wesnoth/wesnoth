@@ -252,7 +252,7 @@ private:
 	size_t default_max_messages_;
 	size_t default_time_period_;
 	size_t concurrent_connections_;
-	bool gracefull_restart;
+	bool graceful_restart;
 	std::string restart_command;
 	//! Parse the server config into local variables.
 	void load_config();
@@ -303,7 +303,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	input_(input), 
 	config_file_(config_file),
 	cfg_(read_config()), 
-	gracefull_restart(false),
+	graceful_restart(false),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
 	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED), 
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
@@ -448,12 +448,12 @@ void server::dump_stats(const time_t& now) {
 }
 
 void server::run() {
-	int gracefull_counter = 0;
+	int graceful_counter = 0;
 	for (int loop = 0;; ++loop) {
 		SDL_Delay(20);
 		try {
 			// We are going to waith 10 seconds before shutting down so users can get out of game.
-			if (gracefull_restart && games_.size() == 0 && ++gracefull_counter > 500 )
+			if (graceful_restart && games_.size() == 0 && ++graceful_counter > 500 )
 			{
 				// TODO: We should implement client side autoreconnect.
 				// Idea:
@@ -461,7 +461,7 @@ void server::run() {
 				// Then client would reconnect to new server automaticaly.
 				// This would also allow server to move to new port or address if there is need
 
-				lobby_.send_server_message("Server is restarting. You can connect to new server now.");
+				process_command("msg All games ended. Shutting down now. Reconnect to the new server.");
 				throw network::error("shut down");
 			}
 			if (config_reload == 1) {
@@ -877,37 +877,32 @@ std::string server::process_command(const std::string& query) {
 			" (lobby)msg <message>, motd [<message>], status [<mask>],"
 			" unban <ipmask>, shut_down [now], restart";
 	if (command == "shut_down") {
-		
-		if (parameters == "now")
+		if (parameters == "now") {
 			throw network::error("shut down");
-		else
-		{
-			// Gracefull shut down
+		} else {
+			// Graceful shut down.
 			server_.stop();
 			input_.stop();
-			gracefull_restart = true;
-			process_command("msg Server is shuting down. No more new games.");
-			out << "Server is doing gracefull shutdown\n";
+			graceful_restart = true;
+			process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.");
+			out << "Server is doing graceful shut down.";
 		}
 
 #ifndef _WIN32  // Not sure if this works on windows
 		// TODO: check if this works in windows.
 	} else if (command == "restart") {
-		if (restart_command.empty())
-		{
-			out << "Server isn't configured for restart\n";
-		}
-		else
-		{
-			LOG_SERVER << "Gracefull restart requested\n";
-			gracefull_restart = true;
+		if (restart_command.empty()) {
+			out << "No restart_command configured! Not restarting.";
+		} else {
+			LOG_SERVER << "Graceful restart requested.";
+			graceful_restart = true;
 			// stop listening socket
 			server_.stop();
 			input_.stop();
 			// start new server
 			start_new_server();
-			process_command("msg Server has been restarted. You can continue playing but new players cannot join this server.");
-			out << "New server strated.\n";
+			process_command("msg The server has been restarted. You may finish your games but can't start new ones and new players can't join this server.");
+			out << "New server started.";
 		}
 #endif
 	} else if (command == "help") {
@@ -1139,10 +1134,17 @@ void server::process_data_lobby(const network::connection sock,
 	}
 
 	if (data.root().child("create_game")) {
+		if (graceful_restart) {
+			static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
+			send_doc(leave_game_doc, sock);
+			lobby_.send_server_message("This server is shutting down. You aren't allowed to make new games. Please reconnect to the new server.", sock);
+			send_doc(games_and_users_list_, sock);
+			return;
+		}
 		const std::string game_name = (*data.root().child("create_game"))["name"].to_string();
 		const std::string game_password = (*data.root().child("create_game"))["password"].to_string();
 		DBG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-			<< "\tcreates a new game: " << game_name << ".\n";
+			<< "\tcreates a new game: \"" << game_name << "\".\n";
 		// Create the new game, remove the player from the lobby
 		// and set the player as the host/owner.
 		games_.push_back(new game(players_, sock, game_name));
@@ -1368,11 +1370,6 @@ void server::process_data_game(const network::connection sock,
 		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
 		lobby_.send_data(diff);
 
-		if (gracefull_restart)
-		{
-			delete_game(itor);
-			lobby_.send_server_message("You aren't allowed to make new game because server has been resarted. Please, reconnect to new server.", sock);
-		}
 		//! @todo FIXME: Why not save the level data in the history_?
 		return;
 // Everything below should only be processed if the game is already intialized.
