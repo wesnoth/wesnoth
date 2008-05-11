@@ -123,6 +123,22 @@ struct tlabel_definition : public tcontrol_definition
 	};
 };
 
+struct tlistbox_definition : public tcontrol_definition
+{
+
+	tlistbox_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+
+		// NOTE maybe we need the borders...
+
+		tbuilder_grid* scrollbar;
+
+	};
+};
+
 struct tpanel_definition : public tcontrol_definition
 {
 

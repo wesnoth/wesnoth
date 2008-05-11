@@ -169,6 +169,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @start_table = widget_definition
  *     button_definition             A push button.
  *     label_definition              A label.
+ *     listbox_definition            A listbox.
  *     panel_definition              A panel.
  *     spacer_definition             A spacer.
  *     text_box_definition           A single line text box.
@@ -199,6 +200,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	/***** Control definitions *****/
 	load_definitions<tbutton_definition>("button", cfg.get_children("button_definition"));
 	load_definitions<tlabel_definition>("label", cfg.get_children("label_definition"));
+	load_definitions<tlistbox_definition>("listbox", cfg.get_children("listbox_definition"));
 	load_definitions<tpanel_definition>("panel", cfg.get_children("panel_definition"));
 	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
 	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
@@ -509,6 +511,51 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
 	// Note the order should be the same as the enum tstate is label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
+}
+
+tlistbox_definition::tlistbox_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_G_P << "Parsing listbox " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+tlistbox_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg),
+	scrollbar(0) //cfg.child("scrollbar"))
+
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget_listbox
+ *
+ * == Listbox ==
+ *
+ * The definition of a normal listbox. A listbox is multiwidget class which
+ * means that it's build from multiple items.  The definition of a listbox
+ * contains the definition of it's scrollbar. 
+ *
+ * The resolution for a text box also contains the following keys:
+ * @start_table = config
+ *     scrollbar (section)             A grid containing the widgets for the
+ *                                     scrollbar.
+ * @end_table
+ *
+ * The following states exist:
+ * * state_enabled, the listbox is enabled.
+ * * state_disabled, the listbox is disabled.
+ *
+ */
+
+	// Note the order should be the same as the enum tstate is listbox.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+
+	const config* grid = cfg.child("scrollbar");
+	VALIDATE(grid, _("No scrollbar defined."));
+
+	scrollbar = new tbuilder_grid(*grid);
 }
 
 tpanel_definition::tpanel_definition(const config& cfg) : 

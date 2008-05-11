@@ -18,6 +18,7 @@
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -110,6 +111,25 @@ public:
 
 	twidget* build () const;
 
+};
+
+struct tbuilder_listbox : public tbuilder_control
+{
+
+private:
+	tbuilder_listbox();
+public:
+	tbuilder_listbox(const config& cfg);
+
+	twidget* build () const;
+
+	tbuilder_grid* header;
+	tbuilder_grid* list;
+	tbuilder_grid* footer;
+
+	tbuilder_grid* list_builder;
+
+	const bool assume_fixed_row_size;
 };
 
 struct tbuilder_panel : public tbuilder_control
@@ -509,6 +529,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * * button a button.
  * * grid a grid, this is used to nest items.
  * * label a label.
+ * * listbox a listbox.
  * * panel a panel (a grid which can be drawn on).
  * * spacer a filler item. 
  * * text_box a text box.
@@ -541,6 +562,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
 			} else if((**col_itor).child("label")) {
 				widgets.push_back(new tbuilder_label(*((**col_itor).child("label"))));
+			} else if((**col_itor).child("listbox")) {
+				widgets.push_back(new tbuilder_listbox(*((**col_itor).child("listbox"))));
 			} else if((**col_itor).child("panel")) {
 				widgets.push_back(new tbuilder_panel(*((**col_itor).child("panel"))));
 			} else if((**col_itor).child("spacer")) {
@@ -700,6 +723,128 @@ twidget* tbuilder_label::build() const
 		<< definition << "'.\n";
 
 	return tmp_label;
+}
+
+tbuilder_listbox::tbuilder_listbox(const config& cfg) :
+	tbuilder_control(cfg),
+	header(cfg.child("header") ? new tbuilder_grid(*(cfg.child("header"))) : 0),
+	list(0),
+	footer(cfg.child("footer") ? new tbuilder_grid(*(cfg.child("footer"))) : 0),
+	list_builder(0),
+	assume_fixed_row_size(utils::string_bool(cfg["assume_fixed_row_size"]))
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_listbox
+ *
+ * == Listbox ==
+ *
+ * Definition of a listbox. 
+ *
+ * List with the listbox specific variables:
+ * @start_table = config
+ *     scrollbar_mode (foo)            The mode for the scrollbar
+ *                                     @* always_show the srollbar is always 
+ *                                     shown even if all items can be shown. The
+ *                                     scrollbar will be disabled in this case.
+ *                                     @* auto_show the scrollbar is shown if
+ *                                     more items are in the listbox as can be
+ *                                     shown.  
+ *                                     @* never_show the scrollbar is
+ *                                     never shown even not if more items are
+ *                                     available as visible.
+ *     header (section = [])           Defines the grid for the optional header.
+ *     list (section)                  Defines the grid for the list data.
+ *     footer (section = [])           Defines the grid for the optional footer.
+ *    
+ *     list_definition (section)       The list can be a hardcoded list (uses
+ *                                     list) or a definition is which case the
+ *                                     engine knows how to 'build' the widget.
+ *                                     When both exist [list] and
+ *                                     [list_definition] the results are
+ *                                     unexpected.
+ *
+ *     assume_fixed_row_size (bool = true)    
+ *                                     If not all rows can be shown this value
+ *                                     becomes important. If fixed size we
+ *                                     always show X rows and no half rows are
+ *                                     shown. This doesn't mean the rows need to
+ *                                     be fixed size eg the addon dialog might
+ *                                     get the option to show verbose info in
+ *                                     the same listbox in that case it's still
+ *                                     allowed to set the value.
+ *
+ * @end_table
+ *
+ *
+ * Inside the list section there are only the following widgets allowed
+ * * grid (to nest)
+ * * selectable widgets which are
+ * ** toggle_button 
+ *
+ */
+
+//	VALIDATE(cfg.child("list"), _("No list defined."));
+
+	if(cfg.child("list_definition")) {
+		list_builder = new tbuilder_grid(*(cfg.child("list_definition")));
+	} else if(cfg.child("list")) {
+		list = new tbuilder_grid(*(cfg.child("list")));
+	} else {
+		VALIDATE(false, _("No 'list_builder' nor a 'list' section defined."));
+	}
+}
+
+twidget* tbuilder_listbox::build() const
+{
+	tlistbox *listbox = new tlistbox();
+
+	init_control(listbox);
+
+	listbox->set_list_builder(list_builder);
+
+	listbox->set_assume_fixed_row_size(assume_fixed_row_size);
+
+	DBG_G << "Window builder: placed listbox '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	tlistbox_definition::tresolution* conf = static_cast<tlistbox_definition::tresolution*>(listbox->config());
+	assert(conf);
+
+	tgrid* scrollbar = dynamic_cast<tgrid*>(conf->scrollbar->build());
+	assert(scrollbar);
+
+	scrollbar->set_id("_scroll");
+
+	twidget* list_area = 0;
+	if(list_builder) {
+		list_area = new tspacer();
+	} else {
+		assert(list);
+		/*tgrid* */list_area = dynamic_cast<tgrid*>(list->build());
+	}
+
+	assert(list_area);
+	list_area->set_id("_list");
+
+	listbox->grid().set_rows_cols(1, 2);
+	listbox->grid().add_child(list_area, 0, 0, 
+		tgrid::VERTICAL_GROW_SEND_TO_CLIENT 
+		| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
+		| tgrid::VERTICAL_ALIGN_CENTER
+		| tgrid::HORIZONTAL_ALIGN_CENTER
+		, 0);
+	listbox->grid().add_child(scrollbar, 0, 1, 
+		tgrid::VERTICAL_GROW_SEND_TO_CLIENT
+		| tgrid::VERTICAL_ALIGN_CENTER
+		| tgrid::HORIZONTAL_ALIGN_CENTER
+		, 0);
+
+	if(!list_builder) {
+		listbox->finalize_setup();
+	}
+
+	return listbox;
 }
 
 tbuilder_panel::tbuilder_panel(const config& cfg) :
