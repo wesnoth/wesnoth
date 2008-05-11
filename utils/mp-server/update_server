@@ -20,18 +20,22 @@ if ! [ -d $SOURCE ]; then
 	exit 1
 fi
 # only really needed on server.wesnoth.org
-CXXFLAGS="$CXXFLAGS -I$HOME/tools/include"
-LDFLAGS="$LDFLAGS -L$HOME/tools/lib"
+#CXXFLAGS="$CXXFLAGS -I$HOME/tools/include"
+#LDFLAGS="$LDFLAGS -L$HOME/tools/lib"
 case $SERVER in
 	1.2 )   cd $SOURCE/1.2   || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3"
 	;;
 	1.4 )   cd $SOURCE/1.4   || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
+		#SCONS=yes
+	;;
+	trunk ) cd $SOURCE/trunk || exit 1
+		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0"
 		SCONS=yes
 	;;
 	*   )   cd $SOURCE/trunk || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0"
+		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
 		SCONS=yes
 	;;
 esac
@@ -57,15 +61,13 @@ mkdir -p $BUILD
 if [ "$SCONS" = "yes" ]; then
 	mkdir -p $BUILD/var/run
 	# need to remove .scons-option-cache when parameters get removed!
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-wesnothd prefix=$BUILD fifodir=$BUILD/var/run boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt raw_sockets=1 profile=0 fribidi=0 python=0 localedir= prefsdir= | tee $BUILD/scons.log || exit 1
-	echo "adding '$SERVER' suffix..."
-	mv $BUILD/bin/wesnothd $BUILD/bin/wesnothd-$SERVER || exit 1
+	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-wesnothd prefix=$BUILD fifodir=$BUILD/var/run raw_sockets=1 program_suffix=-$SERVER profile=0 fribidi=0 python=0 localedir= prefsdir= > $BUILD/scons.log || exit 1
+#	boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt
 else
 	echo 'autogen.sh and configure...'
 	./autogen.sh > $BUILD/autogen.log
-	./configure --prefix=$BUILD --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/var/run --disable-nls --enable-lite --enable-profile --with-boost=$HOME/tools > $BUILD/configure.log CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" || exit 1
+	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=$BUILD --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/var/run --disable-nls --enable-lite --disable-profile --with-boost=$HOME/tools > $BUILD/configure.log || exit 1
 	make clean > /dev/null
-
 	echo 'make...'
 	make > $BUILD/make.log || exit 1
 	echo 'make install...'
