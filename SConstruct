@@ -29,7 +29,7 @@ opts = Options('.scons-option-cache')
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder")),
-    ListOption('build', 'Build variant: debug or release', "release", ["release", "debug"]),
+    EnumOption('build', 'Build variant: debug or release', "release", ["release", "debug"]),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept),
@@ -300,22 +300,18 @@ builds = {
     }
 if sys.platform == "win32":
     builds["release"] = [] # Both -O2 and -ansi cause Bad Things to happen on windows
-for build in env["build"]:
-    build_env = env.Clone()
-    build_env.AppendUnique(CXXFLAGS = builds[build])
-    build_env.MergeFlags(env["extra_flags_" + build])
-    SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = {"env":build_env})
-    Import(binaries + ["sources"])
-    binary_nodes = map(eval, binaries)
-    if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
-    else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
-    bin_aliases = map(lambda bin, node : Alias(bin + build, node, Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
-    env.Alias("all", bin_aliases)
-    env.Default([env.Alias(bin + build) for bin in env["default_targets"]])
-# Separate loop because those aliases screw Import
-for build in env["build"]:
-    map(env.Alias, binaries, [env.Alias(bin + build) for bin in binaries])
-
+build = env["build"]
+build_env = env.Clone()
+build_env.AppendUnique(CXXFLAGS = builds[build])
+build_env.MergeFlags(env["extra_flags_" + build])
+SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = {"env":build_env})
+Import(binaries + ["sources"])
+binary_nodes = map(eval, binaries)
+if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
+else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
+map(lambda bin, node: Alias(bin, node, node and Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
+env.Alias("all", map(Alias, binaries))
+env.Default(map(Alias, binaries))
 all = env.Alias("all")
 
 #
