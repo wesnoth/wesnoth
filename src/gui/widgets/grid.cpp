@@ -108,6 +108,17 @@ void tgrid::set_rows(const unsigned rows)
 	set_rows_cols(rows, cols_);
 }
 
+unsigned tgrid::add_row(const unsigned count)
+{
+	assert(count);
+
+	//FIXME the warning in set_rows_cols should be killed.
+	
+	unsigned result = rows_;
+	set_rows_cols(rows_ + count, cols_);
+	return result;
+}
+
 void tgrid::set_cols(const unsigned cols)
 {
 	if(cols == cols_) {

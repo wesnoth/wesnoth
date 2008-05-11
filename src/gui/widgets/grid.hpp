@@ -56,6 +56,15 @@ public:
 	void set_rows(const unsigned rows);
 	unsigned int get_rows() const { return rows_; }
 
+	/**
+	 * Addes a row to end of the grid.
+	 *
+	 * @param count               Number of rows to add, should be > 0.
+	 *
+	 * @returns                   The row number of the first row added.
+	 */
+	unsigned add_row(const unsigned count = 1);
+
 	void set_cols(const unsigned cols);
 	unsigned int get_cols() const { return cols_; }
 
