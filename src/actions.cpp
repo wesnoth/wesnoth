@@ -917,6 +917,19 @@ attack::attack(game_display& gui, const gamemap& map,
 	DBG_NG << "getting attack statistics\n";
 	statistics::attack_context attack_stats(a_->second, d_->second, a_stats_->chance_to_hit, d_stats_->chance_to_hit);
 
+#ifdef MABOUL_STATS	
+	{
+		// Calculate stats for battle
+		combatant attacker(bc_->get_attacker_stats());
+		combatant defender(bc_->get_defender_stats());
+		attacker.fight(defender);
+		const double attacker_inflict = static_cast<double>(d_->second.hitpoints()) - defender.average_hp();
+		const double defender_inflict = static_cast<double>(a_->second.hitpoints()) - attacker.average_hp();
+	
+		attack_stats.attack_excepted_damage(attacker_inflict,defender_inflict);
+	}
+#endif
+
 	orig_attacks_ = a_stats_->num_blows;
 	orig_defends_ = d_stats_->num_blows;
 	n_attacks_ = orig_attacks_;
@@ -1010,10 +1023,13 @@ attack::attack(game_display& gui, const gamemap& map,
 						*a_stats_->weapon,d_stats_->weapon,
 						abs_n_attack_,float_text,a_stats_->drains,"");
 			}
+
+			const int drains_damage = a_stats_->drains ? damage_defender_takes / 2 : 0;
+			const int damage_done = minimum<int>(d_->second.hitpoints(), damage_defender_takes);
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
-					: statistics::attack_context::MISSES, attacker_damage_);
+					: statistics::attack_context::MISSES, damage_done,drains_damage);
 
 			if(ran_results == NULL) {
 				log_scope2(engine, "setting random results");
@@ -1261,6 +1277,8 @@ attack::attack(game_display& gui, const gamemap& map,
 						*d_stats_->weapon,a_stats_->weapon,
 						abs_n_defend_,float_text,d_stats_->drains,"");
 			}
+			const int drains_damage = d_stats_->drains ? damage_attacker_takes / 2 : 0;
+			const int damage_done   = minimum<int>(a_->second.hitpoints(), damage_attacker_takes);
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(dies) {
@@ -1305,7 +1323,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				refresh_bc();
 			}
 			attack_stats.defend_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
-					: statistics::attack_context::MISSES, defender_damage_);
+					: statistics::attack_context::MISSES, damage_done, drains_damage);
 			if(hits || dies){
 				int amount_drained = d_stats_->drains ? defender_damage_ / 2 : 0;
 

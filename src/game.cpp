@@ -117,6 +117,7 @@ public:
 	void reset_game_cfg();
 	void reset_defines_map();
 	void reload_changed_game_config();
+	void read_configs(std::string&);
 
 	bool is_loading() const;
 	bool load_game();
@@ -1751,6 +1752,91 @@ void game_controller::show_upload_begging()
 	disp().redraw_everything();
 }
 
+
+void game_controller::read_configs(std::string& error_log)
+{
+	preproc_map defines_map(defines_map_);
+
+	std::string user_error_log;
+	//read the file and then write to the cache
+	scoped_istream stream = preprocess_file("data/", &defines_map, &error_log);
+
+	//reset the parse counter before reading the game files
+	if (loadscreen::global_loadscreen) {
+		loadscreen::global_loadscreen->parser_counter = 0;
+	}
+
+	read(game_config_, *stream, &error_log);
+
+	//load usermade add-ons
+	const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
+	std::vector<std::string> user_campaigns, error_campaigns;
+	get_files_in_dir(user_campaign_dir,NULL,&user_campaigns,ENTIRE_FILE_PATH);
+	for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
+		std::string oldstyle_cfg = *uc + ".cfg";
+		std::string main_cfg = *uc + "/_main.cfg";
+		std::string toplevel;
+		if (file_exists(oldstyle_cfg))
+			toplevel = oldstyle_cfg;
+		else if (file_exists(main_cfg))
+			toplevel = main_cfg;
+		else
+			continue;
+
+		try {
+			preproc_map user_defines_map(defines_map);
+			scoped_istream stream = preprocess_file(toplevel, &user_defines_map);
+
+			std::string campaign_error_log;
+
+			config user_campaign_cfg;
+			read(user_campaign_cfg,*stream,&campaign_error_log);
+
+			if(campaign_error_log.empty()) {
+				game_config_.append(user_campaign_cfg);
+			} else {
+				user_error_log += campaign_error_log;
+				error_campaigns.push_back(*uc);
+			}
+		} catch(config::error& err) {
+			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
+			error_campaigns.push_back(*uc);
+
+			user_error_log += err.message + "\n";
+		} catch(preproc_config::error&) {
+			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
+			error_campaigns.push_back(*uc);
+			//no need to modify the error log here, already done by the preprocessor
+
+		} catch(io_exception&) {
+			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
+			error_campaigns.push_back(*uc);
+		}
+	}
+
+	if(error_campaigns.empty() == false) {
+		std::stringstream msg;
+		msg << _n("The following add-on had errors and could not be loaded:",
+				"The following add-ons had errors and could not be loaded:",
+				error_campaigns.size());
+		for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
+			msg << "\n" << *i;
+		}
+
+		msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
+
+		gui::show_error_message(disp(),msg.str());
+	}
+
+	game_config_.merge_children("units");
+
+	config& hashes = game_config_.add_child("multiplayer_hashes");
+	for(config::child_list::const_iterator ch = game_config_.get_children("multiplayer").begin(); ch != game_config_.get_children("multiplayer").end(); ++ch) {
+		hashes[(**ch)["id"]] = (*ch)->hash();
+	}
+
+}
+
 //this function reads the game configuration, searching for valid cached copies first
 void game_controller::read_game_cfg(bool use_cache)
 {
@@ -1816,86 +1902,10 @@ void game_controller::read_game_cfg(bool use_cache)
 
 			LOG_CONFIG << "no valid cache found. Writing cache to '" << fname << " with defines_map "<< str.str() << "'\n";
 			DBG_CONFIG << ((use_cache && file_exists(fname)) ? "yes":"no ") << " " << dir_checksum.modified << "==" << data_tree_checksum().modified << "  " << dir_checksum.nfiles << "==" << data_tree_checksum().nfiles << "  " << dir_checksum.sum_size << "==" << data_tree_checksum().sum_size << "\n";
-			preproc_map defines_map(defines_map_);
 
-			std::string error_log, user_error_log;
+			std::string error_log;
 
-			//read the file and then write to the cache
-			scoped_istream stream = preprocess_file("data/", &defines_map, &error_log);
-
-			//reset the parse counter before reading the game files
-			if (loadscreen::global_loadscreen) {
-				loadscreen::global_loadscreen->parser_counter = 0;
-			}
-
-			read(game_config_, *stream, &error_log);
-
-			//load usermade add-ons
-			const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
-			std::vector<std::string> user_campaigns, error_campaigns;
-			get_files_in_dir(user_campaign_dir,NULL,&user_campaigns,ENTIRE_FILE_PATH);
-			for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
-				std::string oldstyle_cfg = *uc + ".cfg";
-				std::string main_cfg = *uc + "/_main.cfg";
-				std::string toplevel;
-				if (file_exists(oldstyle_cfg))
-					toplevel = oldstyle_cfg;
-				else if (file_exists(main_cfg))
-					toplevel = main_cfg;
-				else
-					continue;
-
-				try {
-					preproc_map user_defines_map(defines_map);
-					scoped_istream stream = preprocess_file(toplevel, &user_defines_map);
-
-					std::string campaign_error_log;
-
-					config user_campaign_cfg;
-					read(user_campaign_cfg,*stream,&campaign_error_log);
-
-					if(campaign_error_log.empty()) {
-						game_config_.append(user_campaign_cfg);
-					} else {
-						user_error_log += campaign_error_log;
-						error_campaigns.push_back(*uc);
-					}
-				} catch(config::error& err) {
-					ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-					error_campaigns.push_back(*uc);
-
-					user_error_log += err.message + "\n";
-				} catch(preproc_config::error&) {
-					ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-					error_campaigns.push_back(*uc);
-                    //no need to modify the error log here, already done by the preprocessor
-
-				} catch(io_exception&) {
-					ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-					error_campaigns.push_back(*uc);
-				}
-			}
-
-			if(error_campaigns.empty() == false) {
-				std::stringstream msg;
-				msg << _n("The following add-on had errors and could not be loaded:",
-						"The following add-ons had errors and could not be loaded:",
-						error_campaigns.size());
-				for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
-					msg << "\n" << *i;
-				}
-
-				msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
-
-				gui::show_error_message(disp(),msg.str());
-			}
-
-			game_config_.merge_children("units");
-
-			config& hashes = game_config_.add_child("multiplayer_hashes");
-			for(config::child_list::const_iterator ch = game_config_.get_children("multiplayer").begin(); ch != game_config_.get_children("multiplayer").end(); ++ch) {
-				hashes[(**ch)["id"]] = (*ch)->hash();
-			}
+			read_configs(error_log);
 
 			if(!error_log.empty()) {
 				gui::show_error_message(disp(),
@@ -1915,15 +1925,22 @@ void game_controller::read_game_cfg(bool use_cache)
 				}
 			}
 
-            set_unit_data();
+			set_unit_data();
 			return;
 		}
 	}
 
 	ERR_CONFIG << "caching cannot be done. Reading file\n";
-	preproc_map defines_map(defines_map_);
-	scoped_istream stream = preprocess_file("data/", &defines_map);
-	read(game_config_, *stream);
+
+	std::string error_log;
+
+	read_configs(error_log);
+	if(!error_log.empty()) {
+		gui::show_error_message(disp(),
+				_("Warning: Errors occurred while loading game configuration files: '") +
+				font::nullify_markup(error_log));
+
+	}
 	set_unit_data();
 }
 

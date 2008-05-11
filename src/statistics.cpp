@@ -398,7 +398,24 @@ stats& attack_context::defender_stats()
 	return get_stats(defender_side);
 }
 
-void attack_context::attack_result(attack_context::ATTACK_RESULT res, int damage)
+#ifdef MABOUL_STATS
+void attack_context::attack_excepted_damage(double attacker_inflict, double defender_inflict)
+{
+	attacker_inflict *= 100.0;
+	defender_inflict *= 100.0;
+	attacker_stats().expected_damage_inflicted	+= attacker_inflict;
+	attacker_stats().expected_damage_taken		+= defender_inflict;
+	defender_stats().expected_damage_inflicted	+= defender_inflict;
+	defender_stats().expected_damage_taken		+= attacker_inflict;
+	attacker_stats().turn_expected_damage_inflicted	+= attacker_inflict;
+	attacker_stats().turn_expected_damage_taken		+= defender_inflict;
+	defender_stats().turn_expected_damage_inflicted	+= defender_inflict;
+	defender_stats().turn_expected_damage_taken		+= attacker_inflict;
+}
+
+#endif
+
+void attack_context::attack_result(attack_context::ATTACK_RESULT res, int damage, int drain)
 {
 	if(stats_disabled > 0)
 		return;
@@ -406,16 +423,24 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res, int damage
 	push_back(attacker_res,(res == MISSES ? '0' : '1'));
 
 	if(res != MISSES) {
+#ifdef MABOUL_STATS
+		attacker_stats().damage_taken -= drain;
+		defender_stats().damage_inflicted -= drain;
+		attacker_stats().turn_damage_taken -= drain;
+		defender_stats().turn_damage_inflicted -= drain;
+#endif
 		attacker_stats().damage_inflicted += damage;
 		defender_stats().damage_taken += damage;
 		attacker_stats().turn_damage_inflicted += damage;
 		defender_stats().turn_damage_taken += damage;
 	}
+#ifndef MABOUL_STATS
 	const int exp_damage = damage * chance_to_hit_defender;
 	attacker_stats().expected_damage_inflicted += exp_damage;
 	defender_stats().expected_damage_taken += exp_damage;
 	attacker_stats().turn_expected_damage_inflicted += exp_damage;
 	defender_stats().turn_expected_damage_taken += exp_damage;
+#endif
 
 	if(res == KILLS) {
 		attacker_stats().killed[defender_type]++;
@@ -423,24 +448,33 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res, int damage
 	}
 }
 
-void attack_context::defend_result(attack_context::ATTACK_RESULT res, int damage)
+void attack_context::defend_result(attack_context::ATTACK_RESULT res, int damage, int drain)
 {
 	if(stats_disabled > 0)
 		return;
 
 	push_back(defender_res,(res == MISSES ? '0' : '1'));
 
+
 	if(res != MISSES) {
+#ifdef MABOUL_STATS
+		defender_stats().damage_taken -= drain;
+		attacker_stats().damage_inflicted -= drain;
+		defender_stats().turn_damage_taken -= drain;
+		attacker_stats().turn_damage_inflicted -= drain;
+#endif
 		attacker_stats().damage_taken += damage;
 		defender_stats().damage_inflicted += damage;
 		attacker_stats().turn_damage_taken += damage;
 		defender_stats().turn_damage_inflicted += damage;
 	}
+#ifndef MABOUL_STATS
 	const int exp_damage = damage * chance_to_hit_attacker;
 	attacker_stats().expected_damage_taken += exp_damage;
 	defender_stats().expected_damage_inflicted += exp_damage;
 	attacker_stats().turn_expected_damage_taken += exp_damage;
 	defender_stats().turn_expected_damage_inflicted += exp_damage;
+#endif
 
 	if(res == KILLS) {
 		attacker_stats().deaths[attacker_type]++;

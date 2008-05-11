@@ -160,7 +160,7 @@ team::team_info::team_info(const config& cfg) :
 	if(village_income.empty())
 		income_per_village = game_config::village_income;
 	else
-		income_per_village = atoi(village_income.c_str());
+		income_per_village = lexical_cast_default<int>(village_income, game_config::village_income);
 
 	const std::string& enemies_list = cfg["enemy"];
 	if(!enemies_list.empty()) {

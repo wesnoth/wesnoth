@@ -41,8 +41,9 @@ Version 1.5.0+svn:
    * fixed multiplayer_connect to handle leave_game command from server
    * improved reloading of game configs after installing or removing addons
    * fixed threading bug in upload_logs
-   * dissallow_observers is forced on if side has controller=null
+   * dissallow_observers is on as default if side has controller=null
    * Fixed null-pointer reference in network code
+   * Added possibility to use per fight EV statistics proposed by maboul
    * Removed bug introduced in 1.5.0 that allowed use of :debug commands during
      network play
    * added some includes to fix compilation problems with Sun Studio 12

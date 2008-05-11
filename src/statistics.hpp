@@ -85,8 +85,11 @@ namespace statistics
 
 		enum ATTACK_RESULT { MISSES, HITS, KILLS };
 
-		void attack_result(ATTACK_RESULT res, int damage);
-		void defend_result(ATTACK_RESULT res, int damage);
+#ifdef MABOUL_STATS
+		void attack_excepted_damage(double attacker_inflict, double defender_inflict);
+#endif
+		void attack_result(ATTACK_RESULT res, int damage, int drain);
+		void defend_result(ATTACK_RESULT res, int damage, int drain);
 
 	private:
 

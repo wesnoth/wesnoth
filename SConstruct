@@ -57,6 +57,7 @@ opts.AddOptions(
     BoolOption('profile', 'Set to build for profiling', False),
     ('program_suffix', 'suffix to append to names of installed programs',""),
     BoolOption('python', 'Enable in-game python extensions.', True),
+	BoolOption('maboul_stats', 'Enable alternative excpeted damage calculations', False),
     BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False),
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
@@ -238,6 +239,9 @@ if env['internal_data']:
 
 if env['python']:
     env.Append(CPPDEFINES = "HAVE_PYTHON")
+
+if env['maboul_stats']:
+	env.Append(CPPDEFINES = "MABOUL_STATS")
 
 if sys.platform != "win32":
     if env['prefsdir']:
