@@ -311,7 +311,7 @@ if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
 else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
 map(lambda bin, node: Alias(bin, node, node and Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
 env.Alias("all", map(Alias, binaries))
-env.Default(map(Alias, binaries))
+env.Default(map(Alias, env["default_targets"]))
 all = env.Alias("all")
 
 #
