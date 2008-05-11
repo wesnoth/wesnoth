@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
-"POT-Creation-Date: 2008-04-13 16:21+0200\n"
+"POT-Creation-Date: 2008-05-11 16:22+0200\n"
 "PO-Revision-Date: 2008-04-05 10:27+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: none\n"
@@ -25,7 +25,8 @@ msgstr "sv"
 
 # type: Content of: <book><bookinfo><title>
 #: ../../doc/manual/manual.en.xml:6
-msgid "Battle for Wesnoth User's Manual"
+#, fuzzy
+msgid "﻿Battle for Wesnoth User's Manual"
 msgstr "Användarmanual för Kampen om Wesnoth"
 
 # type: Content of: <book><preface><title>
@@ -216,10 +217,25 @@ msgstr ""
 "spelar; spela därefter kampanjen \"Sagan om Två bröder\" genom att klicka på "
 "\"Kampanj\" och välja den från listan som visas."
 
-# type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:97
-msgid "<phrase>Main Menu</phrase>"
-msgstr "<phrase>Huvudmeny</phrase>"
+# type: Content of: <book><chapter><section><simpara><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:93
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu.jpg"
+"\"/> </imageobject>"
+msgstr ""
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+#: ../../doc/manual/manual.en.xml:98 ../../doc/manual/manual.en.xml:320
+#: ../../doc/manual/manual.en.xml:374 ../../doc/manual/manual.en.xml:387
+#: ../../doc/manual/manual.en.xml:453 ../../doc/manual/manual.en.xml:1016
+#: ../../doc/manual/manual.en.xml:1132 ../../doc/manual/manual.en.xml:1154
+#: ../../doc/manual/manual.en.xml:1176 ../../doc/manual/manual.en.xml:1198
+#: ../../doc/manual/manual.en.xml:1220 ../../doc/manual/manual.en.xml:1242
+#: ../../doc/manual/manual.en.xml:1264 ../../doc/manual/manual.en.xml:1986
+#: ../../doc/manual/manual.en.xml:2002 ../../doc/manual/manual.en.xml:2018
+#: ../../doc/manual/manual.en.xml:2034 ../../doc/manual/manual.en.xml:2050
+msgid "</inlinemediaobject>"
+msgstr ""
 
 #: ../../doc/manual/manual.en.xml:103
 msgid "Tutorial"
@@ -532,10 +548,12 @@ msgstr ""
 "Det finns flera möjliga inställningar som du kan göra när klickar på "
 "\"gruppspels\"-knappen:"
 
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:319
-msgid "<phrase>Multiplayer dialog</phrase>"
-msgstr "<phrase>Gruppspelsrutan</phrase>"
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:315
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer.jpg"
+"\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:323
@@ -645,10 +663,12 @@ msgstr ""
 msgid "The Game Screen"
 msgstr "Spelskärmen"
 
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:373
-msgid "<phrase>Game Screen</phrase>"
-msgstr "<phrase>Spelskärmen</phrase>"
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:369
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen.jpg"
+"\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:376
@@ -665,10 +685,12 @@ msgstr ""
 "användbar information om spelet och som är beskriven i mer detalj här "
 "nedanför."
 
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:386
-msgid "<phrase>Top Panel</phrase>"
-msgstr "<phrase>Övre panelen</phrase>"
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:382
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane.jpg\"/"
+"> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:389
@@ -732,10 +754,12 @@ msgstr "Aktuell rut-typ"
 msgid "Current hex position (x-coordinate, y-coordinate)"
 msgstr "Aktuell rutposition (x-koordinat, y-koordinat)"
 
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:452
-msgid "<phrase>Right Panel</phrase>"
-msgstr "<phrase>Högra panelen</phrase>"
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:448
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane.jpg"
+"\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:455
@@ -806,8 +830,8 @@ msgstr ""
 "all trupper du har tillgång till. Varje rekryt placeras på en tom borgruta. "
 "När du har fyllt upp din borg kan du, till trupperna flyttar på sig, inte "
 "längre rekrytera. Din motståndares ledare är placerad på ett liknande sätt "
-"på sin borgs kärntorn och kommer börja rekrytera trupper &#8212; så sitt inte "
-"och vela eller titta på utsikten, det finns ett slag att vinna!"
+"på sin borgs kärntorn och kommer börja rekrytera trupper &#8212; så sitt "
+"inte och vela eller titta på utsikten, det finns ett slag att vinna!"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:500
@@ -1482,6 +1506,12 @@ msgstr "Sätt på/stäng av ljudet"
 msgid ":"
 msgstr ":"
 
+# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
+#: ../../doc/manual/manual.en.xml:994
+msgid ""
+"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</ulink>"
+msgstr ""
+
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1003
 msgid ""
@@ -1501,10 +1531,12 @@ msgstr ""
 msgid "Recruiting and Recalling"
 msgstr "Rekrytera och återkalla"
 
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1015
-msgid "<phrase>Recruit dialog</phrase>"
-msgstr "<phrase>Reykryteringsdialogen</phrase>"
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1011
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit.jpg\"/"
+"> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1018
@@ -1693,10 +1725,12 @@ msgstr "Ljusskygg"
 msgid "1"
 msgstr "1"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1131
-msgid "<phrase>images/schedule-dawn.jpg</phrase>"
-msgstr "<phrase>images/schedule-dawn.jpg</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1127
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
+"jpg\"/> </imageobject>"
+msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1135
 msgid "Dawn"
@@ -1714,10 +1748,12 @@ msgstr "&#8212;"
 msgid "2"
 msgstr "2"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1153
-msgid "<phrase>images/schedule-morning.jpg</phrase>"
-msgstr "<phrase>images/schedule-morning.jpg</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1149
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"morning.jpg\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1157
@@ -1744,10 +1780,12 @@ msgstr "-25%"
 msgid "3"
 msgstr "3"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1175
-msgid "<phrase>images/schedule-afternoon.jpg</phrase>"
-msgstr "<phrase>images/schedule-afternoon.jpg</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1171
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"afternoon.jpg\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1179
@@ -1760,10 +1798,12 @@ msgstr "Dag (eftermiddag)"
 msgid "4"
 msgstr "4"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1197
-msgid "<phrase>images/schedule-dusk.jpg</phrase>"
-msgstr "<phrase>images/schedule-dusk.jpg</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1193
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
+"jpg\"/> </imageobject>"
+msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1201
 msgid "Dusk"
@@ -1775,10 +1815,12 @@ msgstr "Skymning"
 msgid "5"
 msgstr "5"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1219
-msgid "<phrase>images/schedule-firstwatch.jpg</phrase>"
-msgstr "<phrase>images/schedule-firstwatch.jpg</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1215
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"firstwatch.jpg\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1223
@@ -1791,10 +1833,12 @@ msgstr "Natt (första vakten)"
 msgid "6"
 msgstr "6"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1241
-msgid "<phrase>images/schedule-secondwatch.jpg</phrase>"
-msgstr "<phrase>images/schedule-secondwatch.jpg</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1237
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"secondwatch.jpg\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1245
@@ -1806,10 +1850,12 @@ msgstr "Natt (andra vakten)"
 msgid "Special"
 msgstr "Särskild"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1263
-msgid "<phrase>images/schedule-underground.jpg</phrase>"
-msgstr "<phrase>images/schedule-underground.jpg</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1259
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"underground.jpg\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1267
@@ -2518,7 +2564,7 @@ msgstr ""
 "använda en av sina förflyttningspoäng."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:1780 ../../doc/manual/manual.en.xml:2430
+#: ../../doc/manual/manual.en.xml:1780 ../../doc/manual/manual.en.xml:2431
 msgid "Experience"
 msgstr "Erfarenhet"
 
@@ -2742,11 +2788,12 @@ msgstr ""
 msgid "Green"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:1985
-#, fuzzy
-msgid "<phrase>Green orb</phrase>"
-msgstr "<phrase>grön glob</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1981
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-green.jpg"
+"\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1989
@@ -2762,11 +2809,12 @@ msgstr ""
 msgid "Yellow"
 msgstr "Sakta ner"
 
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:2001
-#, fuzzy
-msgid "<phrase>Yellow orb</phrase>"
-msgstr "<phrase>gul glob</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:1997
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-yellow.jpg"
+"\"/> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2005
@@ -2783,11 +2831,12 @@ msgstr ""
 msgid "Red"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:2017
-#, fuzzy
-msgid "<phrase>Red orb</phrase>"
-msgstr "<phrase>röd glob</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:2013
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-red.jpg\"/"
+"> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2021
@@ -2803,11 +2852,12 @@ msgstr ""
 msgid "Blue"
 msgstr "Pest"
 
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:2033
-#, fuzzy
-msgid "<phrase>Blue orb</phrase>"
-msgstr "<phrase>blå glob</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:2029
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/"
+"> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2037
@@ -2816,11 +2866,12 @@ msgid "If the unit is an ally you do not control"
 msgstr ""
 "</inlinemediaobject> blå om truppen är en allierad som du inte kontrollerar."
 
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#: ../../doc/manual/manual.en.xml:2049
-#, fuzzy
-msgid "<phrase>No orb</phrase>"
-msgstr "<phrase>ingen glob</phrase>"
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: ../../doc/manual/manual.en.xml:2045
+msgid ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-none.jpg\"/"
+"> </imageobject>"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2053
@@ -3071,7 +3122,7 @@ msgstr ""
 "Att använda den bästa attacktypen mot fiendetrupper kommer avsevärt att öka "
 "din chanser att döda dem."
 
-#: ../../doc/manual/manual.en.xml:2178 ../../doc/manual/manual.en.xml:2608
+#: ../../doc/manual/manual.en.xml:2178 ../../doc/manual/manual.en.xml:2609
 msgid "Healing"
 msgstr "Läkande"
 
@@ -3097,7 +3148,8 @@ msgstr "Det finns två grundläggande sätt för trupper att helas:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2190
-msgid "Resting in a village. The unit will heal 8 hitpoints every turn."
+#, fuzzy
+msgid "Waiting in a village. The unit will heal 8 hitpoints every turn."
 msgstr "Att vila i en by. Truppen kommer att hela 8 hälsopoäng varje drag."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
@@ -3134,15 +3186,17 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2212
+#, fuzzy
 msgid ""
 "Some attacks can inflict poison damage on your unit. When this happens the "
 "poisoned unit will take 8 damage each turn until it is cured. Poison can be "
-"cured by resting on a village or being next to a unit with the "
+"cured by waiting on a village or being next to a unit with the "
 "<emphasis>cures</emphasis> ability. Units with the <emphasis>heals</"
 "emphasis> ability can only prevent the poison from causing damage that turn, "
 "not cure it. When poison is cured the unit does not gain or lose hitpoints "
 "on that turn due to healing/poisoning. A unit can not be healed normally "
-"until it is cured of poisoning."
+"until it is cured of poisoning. Resting is still allowed, although it will "
+"not substantially diminish the poison's effect."
 msgstr ""
 "Några attacker kan orsaka giftskador på din trupp. När det här händer kommer "
 "den truppen att ta 8 skada varje drag tills den har botats. Gift kan botas "
@@ -3154,17 +3208,17 @@ msgstr ""
 "helas normalt tills den har botats från sin förgiftning."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2220
+#: ../../doc/manual/manual.en.xml:2221
 msgid "Some other hints about healing:"
 msgstr "Några fler tips gällande helning:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2225
+#: ../../doc/manual/manual.en.xml:2226
 msgid "A unit may take several turns to be fully healed."
 msgstr "Det kan ta en trupp flera turer att bli fullt helade."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2230
+#: ../../doc/manual/manual.en.xml:2231
 msgid ""
 "Healers (Elvish Shaman, Elvish Druid, Elvish Shyde, White Mage, Mage of "
 "Light, Paladin) heal all wounded units around them, so you can keep units "
@@ -3175,22 +3229,22 @@ msgstr ""
 "striden utan att förlora dem."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2237
+#: ../../doc/manual/manual.en.xml:2238
 msgid "Healers do not heal enemy units."
 msgstr "Helare kan inte hela fiendetrupper."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2242
+#: ../../doc/manual/manual.en.xml:2243
 msgid "Healers cannot heal themselves, but see next point."
 msgstr "Helare kan inte hela sig själva, men se nästa punkt."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2247
+#: ../../doc/manual/manual.en.xml:2248
 msgid "Use your healers in pairs, so they can heal each other if needed."
 msgstr "Använda dina helare i par så kan de hela varandra om det behövs."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2252
+#: ../../doc/manual/manual.en.xml:2253
 msgid ""
 "Multiple healers from different sides can heal the same unit and speed up "
 "healing."
@@ -3199,27 +3253,27 @@ msgstr ""
 "går snabbare."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2257
+#: ../../doc/manual/manual.en.xml:2258
 msgid "Trolls and Woses cannot regenerate other units."
 msgstr "Troll och enter kan inte regenerera andra trupper."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2262
+#: ../../doc/manual/manual.en.xml:2263
 msgid "Trolls and Woses cure themselves from poison as a village does."
 msgstr "Troll och enter kan bota sig själva från gift, precis som en by gör."
 
 # type: Content of: <book><chapter><title>
-#: ../../doc/manual/manual.en.xml:2270
+#: ../../doc/manual/manual.en.xml:2271
 msgid "Strategy and Tips"
 msgstr "Strategi och tips"
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:2272
+#: ../../doc/manual/manual.en.xml:2273
 msgid "Basic Strategy"
 msgstr "Grundläggande strategi"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2273
+#: ../../doc/manual/manual.en.xml:2274
 msgid ""
 "The following basic combat principles and tips are intended to help starting "
 "off your career as a Wesnothian battle veteran. The minor concrete examples "
@@ -3230,12 +3284,12 @@ msgstr ""
 "som finns är mest avsedda för kampanjen \"Tronarvingen\"."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2278
+#: ../../doc/manual/manual.en.xml:2279
 msgid "Don't waste units"
 msgstr "Slösa inte trupper"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2279
+#: ../../doc/manual/manual.en.xml:2280
 msgid ""
 "Do not send wounded units to a sure death. Once a unit loses more than half "
 "of its hit points (HP), you should seriously consider retreating it to "
@@ -3249,7 +3303,7 @@ msgstr ""
 "helare (som en Alvshaman eller en Vit magiker). Helare är väldigt användbara!"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2285
+#: ../../doc/manual/manual.en.xml:2286
 msgid ""
 "This is for practical reasons: a heavily wounded unit cannot hold back or "
 "kill the enemy. During attack and counterattack, it most often will perish. "
@@ -3268,12 +3322,12 @@ msgstr ""
 "borta från fronten. Så slösa inte bort dina trupper."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2295
+#: ../../doc/manual/manual.en.xml:2296
 msgid "Out of the enemy's reach"
 msgstr "Utom räckhåll för fienden"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2296
+#: ../../doc/manual/manual.en.xml:2297
 msgid ""
 "How do you guard wounded units? They are best guarded by being out of the "
 "adversary's reach. No enemy can attack them if enemies cannot even come near "
@@ -3286,7 +3340,7 @@ msgstr ""
 "begränsa fiendens förflyttningar."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2301
+#: ../../doc/manual/manual.en.xml:2302
 msgid ""
 "In the Action menu, you can select \"Show Enemy Moves\" to highlight all "
 "possible hexes your adversary can actually move to. This takes your zone of "
@@ -3300,7 +3354,7 @@ msgstr ""
 "flytta sig när den."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2307
+#: ../../doc/manual/manual.en.xml:2308
 msgid ""
 "When your armies meet, you may want to try to be the first to attack. So try "
 "to end your move out of striking range of the enemy army. He cannot attack "
@@ -3311,12 +3365,12 @@ msgstr ""
 "antagligen att gå närmare så han kan anfallas nästa gång."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2313
+#: ../../doc/manual/manual.en.xml:2314
 msgid "Shield with your zone of control (ZOC)"
 msgstr "Skydda dig med din kontrollzon (ZOC)"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2314
+#: ../../doc/manual/manual.en.xml:2315
 msgid ""
 "Every unit of level 1 or higher maintains a zone of control (ZOC) covering "
 "all 6 neighboring hexes. This means that once an enemy moves into one of the "
@@ -3329,7 +3383,7 @@ msgstr ""
 "(enbart fiender med en ovanliga stigfinnar-förmågan kan ignorera detta)."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2319
+#: ../../doc/manual/manual.en.xml:2320
 msgid ""
 "Because of ZOC, an enemy may not slip between two units which are aligned on "
 "a north-south or diagonal line and have exactly 1 or 2 hexes between them. "
@@ -3347,12 +3401,12 @@ msgstr ""
 "själv."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2329
+#: ../../doc/manual/manual.en.xml:2330
 msgid "Maintain a defensive line"
 msgstr "Upprätthåll en försvarslinje"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2330
+#: ../../doc/manual/manual.en.xml:2331
 msgid ""
 "By lining up many units directly adjacent or with at most 1 hex space "
 "between them, you can build up a powerful defensive line. Note that, because "
@@ -3366,7 +3420,7 @@ msgstr ""
 "diagonala linjerna."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2336
+#: ../../doc/manual/manual.en.xml:2337
 msgid ""
 "Coming from one side, the enemy may attack any single of your units in the "
 "line with only 2 of his units at a time. As a rule of thumb, a healthy unit "
@@ -3379,7 +3433,7 @@ msgstr ""
 "normala fiendetrupper på samma eller lägre nivå utan att dödas."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2341
+#: ../../doc/manual/manual.en.xml:2342
 msgid ""
 "Unfortunately, your line often has to bend to form a wedge or to fit the "
 "terrain. At these corner points, 3 enemy units may attack. This also happens "
@@ -3396,7 +3450,7 @@ msgstr ""
 "trupper med inga eller få erfarenhetspoäng (XP) för detta syfte."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2348
+#: ../../doc/manual/manual.en.xml:2349
 msgid ""
 "Lining your troops up also prevents the enemy from surrounding any one of "
 "them. For ZOC reasons, a unit with one enemy behind it and one in front is "
@@ -3407,12 +3461,12 @@ msgstr ""
 "en framför sig fångad."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2354
+#: ../../doc/manual/manual.en.xml:2355
 msgid "Rotate your troops"
 msgstr "Rotera dina trupper"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2355
+#: ../../doc/manual/manual.en.xml:2356
 msgid ""
 "When a unit in the front line is heavily damaged you can move him safely "
 "behind your defensive line. To hold up the line, you will most likely have "
@@ -3427,19 +3481,19 @@ msgstr ""
 "sig fortare."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2361
+#: ../../doc/manual/manual.en.xml:2362
 msgid "Note that your units can pass through hexes containing your own troops."
 msgstr ""
 "Notera att dina trupper kan passera genom rutor som innehåller dina egna "
 "trupper."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2365
+#: ../../doc/manual/manual.en.xml:2366
 msgid "Use the terrain"
 msgstr "Använd terrängen"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2366
+#: ../../doc/manual/manual.en.xml:2367
 msgid ""
 "Try to position your troops so that they are attacking from a hex with high "
 "defense against an enemy in a hex with low terrain. That way, the enemy's "
@@ -3450,7 +3504,7 @@ msgstr ""
 "chans att fiendernas motdrag skadar."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2370
+#: ../../doc/manual/manual.en.xml:2371
 msgid ""
 "For example, you might position your elves just inside of a forest edge so "
 "that attacking orcs must stand on grassland while your elves enjoy the high "
@@ -3461,12 +3515,12 @@ msgstr ""
 "av skogens försvar."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2376
+#: ../../doc/manual/manual.en.xml:2377
 msgid "Attacking and choosing your targets"
 msgstr "Anfalla och välja dina mål"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2377
+#: ../../doc/manual/manual.en.xml:2378
 msgid ""
 "Advancing and attacking is of course the most interesting part of your way "
 "to victory. Kill or weaken enemies in your path and move your defensive line "
@@ -3478,7 +3532,7 @@ msgstr ""
 "tillbaka när det är hans drag."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2382
+#: ../../doc/manual/manual.en.xml:2383
 msgid ""
 "Often, you will throw several units at a single enemy unit to finish him "
 "off, but these were forming your defensive line which is now partly broken. "
@@ -3495,7 +3549,7 @@ msgstr ""
 "tillbaka. Kanske en ryttare kan ge det dödande slaget."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2389
+#: ../../doc/manual/manual.en.xml:2390
 msgid ""
 "Striking first is an advantage because it allows you the choice of which "
 "units will face off. Take advantage of enemy weakness: e.g. direct your "
@@ -3512,7 +3566,7 @@ msgstr ""
 "utnyttja."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2396
+#: ../../doc/manual/manual.en.xml:2397
 msgid ""
 "For example, Horsemen can hold up the line against Orcish Grunts and Troll "
 "Whelps very well because they have some resistances against blade and "
@@ -3525,7 +3579,7 @@ msgstr ""
 "Spjutvättar."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2401
+#: ../../doc/manual/manual.en.xml:2402
 msgid ""
 "It usually pays off if you can definitively kill (or almost kill) the faced "
 "unit. If you are unsure of finishing off the enemy in one turn, either "
@@ -3543,7 +3597,7 @@ msgstr ""
 "mest skada på fienden."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2409
+#: ../../doc/manual/manual.en.xml:2410
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "The computer's default choice only looks for the most damage you can deal, "
@@ -3555,12 +3609,12 @@ msgstr ""
 "göra, så att använda den resulterar ofta i att dina trupper tar mer skada än "
 "nödvändigt."
 
-#: ../../doc/manual/manual.en.xml:2416
+#: ../../doc/manual/manual.en.xml:2417
 msgid "Time of Day"
 msgstr "Dygnets gång"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2417
+#: ../../doc/manual/manual.en.xml:2418
 msgid ""
 "Remember that Lawful units like humans fight better at daytime and Chaotic "
 "units like orcs or undead fight better at night. Ideally you want to first "
@@ -3577,7 +3631,7 @@ msgstr ""
 "tryck framåt."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2424
+#: ../../doc/manual/manual.en.xml:2425
 msgid ""
 "For example, elves might hold out a forest during a nightly orcish onslaught "
 "and advance on sunrise. You may even note that the computer AI actively "
@@ -3588,7 +3642,7 @@ msgstr ""
 "datormotståndaren aktivt retirerar sina orcher under dagen."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2431
+#: ../../doc/manual/manual.en.xml:2432
 msgid ""
 "Over the course of a campaign, it is critical that you build up a seasoned "
 "force. Later scenarios will assume you have level 2 and 3 units available "
@@ -3599,7 +3653,7 @@ msgstr ""
 "tillgängliga att återkalla."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2435
+#: ../../doc/manual/manual.en.xml:2436
 msgid ""
 "Your units gain most experience points (XP) from killing an enemy unit (8XP "
 "per level of the unit killed). As such, it often makes sense to have your "
@@ -3614,7 +3668,7 @@ msgstr ""
 "emphasis> avslut för att avancera till en högre nivå."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2441
+#: ../../doc/manual/manual.en.xml:2442
 msgid ""
 "At the beginning (when you probably have no high level units), try to give "
 "most kills to a small handful of your units. This will fast-track them to "
@@ -3625,7 +3679,7 @@ msgstr ""
 "den att bli nivå 2-trupper, och de kan sen hjälpa andra."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2445
+#: ../../doc/manual/manual.en.xml:2446
 msgid ""
 "Don't neglect to earn your leader experience. You need to keep him safe, but "
 "if you coddle him too much he will be too low level to survive future "
@@ -3636,12 +3690,12 @@ msgstr ""
 "låg nivå för att överleva framtida scenarion."
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:2452
+#: ../../doc/manual/manual.en.xml:2453
 msgid "Getting the Most Fun Out of the Game"
 msgstr "Ha så roligt det går medan du spelar"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2453
+#: ../../doc/manual/manual.en.xml:2454
 msgid ""
 "Remember, the idea of a game is to have fun! Here are some recommendations "
 "from the development team on how to get the most fun out of the game:"
@@ -3650,7 +3704,7 @@ msgstr ""
 "från utvecklingsteamet om hur man har roligast medan spelar spelet:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2459
+#: ../../doc/manual/manual.en.xml:2460
 msgid ""
 "Consider playing the campaign on \"Medium\" difficulty level, especially if "
 "you have prior experience with strategy games. We feel you'll find it much "
@@ -3661,7 +3715,7 @@ msgstr ""
 "mycket mer givande."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2466
+#: ../../doc/manual/manual.en.xml:2467
 msgid ""
 "Don't sweat it too much when you lose some units. The campaign was designed "
 "to accommodate the player losing some units along the way."
@@ -3670,7 +3724,7 @@ msgstr ""
 "konstruerad för att spelare skulle kunna förlora några trupper längs vägen."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2472
+#: ../../doc/manual/manual.en.xml:2473
 msgid ""
 "Don't abuse saved games. Long ago, Wesnoth only allowed saving the game at "
 "the end of a scenario. Mid-scenario saving was added as a convenience to use "
@@ -3688,7 +3742,7 @@ msgstr ""
 "balansera riskerna! Det är en del i strategin."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2483
+#: ../../doc/manual/manual.en.xml:2484
 msgid ""
 "If you must load a saved game, we recommend going back to the start of the "
 "scenario, so that you choose a new strategy that works, rather than simply "
@@ -3699,7 +3753,7 @@ msgstr ""
 "som gynnar dig."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2490
+#: ../../doc/manual/manual.en.xml:2491
 msgid ""
 "But remember, the aim is to have fun! You may have different tastes than the "
 "developers, so do what you enjoy most! If you enjoy loading the saved game "
@@ -3712,12 +3766,12 @@ msgstr ""
 "emphasis> spelet där du aldrig förlorar en enhet, för all del, sätt igång!"
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2498
+#: ../../doc/manual/manual.en.xml:2499
 msgid "At the start of a scenario"
 msgstr "I början av ett scenario"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2502
+#: ../../doc/manual/manual.en.xml:2503
 msgid ""
 "First, read the scenario objectives. Sometimes you do not have to kill enemy "
 "leaders; instead it is enough that you survive for a certain number of "
@@ -3728,7 +3782,7 @@ msgstr ""
 "ett speciellt föremål"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2509
+#: ../../doc/manual/manual.en.xml:2510
 msgid ""
 "Look at the map: the terrain, the position of your leader and the other "
 "leader(s)."
@@ -3737,7 +3791,7 @@ msgstr ""
 "position."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2515
+#: ../../doc/manual/manual.en.xml:2516
 msgid ""
 "Then, begin to recruit units. Cheap units are useful to soak up the first "
 "wave of an enemy's attack; advanced units can then be brought in as support. "
@@ -3750,12 +3804,12 @@ msgstr ""
 "utforska kartan och för att snabbare ta över byar."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2524
+#: ../../doc/manual/manual.en.xml:2525
 msgid "During the scenario"
 msgstr "Under ett scenario"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2528
+#: ../../doc/manual/manual.en.xml:2529
 msgid ""
 "Try to capture and keep control of as many villages as possible to keep the "
 "gold coming in."
@@ -3764,7 +3818,7 @@ msgstr ""
 "flöda in."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2534
+#: ../../doc/manual/manual.en.xml:2535
 msgid ""
 "Keep units in packs so the enemy cannot attack from as many sides, and so "
 "you can outnumber each enemy unit. Put your units in a line so that the "
@@ -3776,7 +3830,7 @@ msgstr ""
 "två sidor."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2541
+#: ../../doc/manual/manual.en.xml:2542
 msgid ""
 "Different units have different strengths and weaknesses depending on terrain "
 "and who they are attacking; right click on units and select \"Unit "
@@ -3787,7 +3841,7 @@ msgstr ""
 "reda på mer."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2548
+#: ../../doc/manual/manual.en.xml:2549
 msgid ""
 "You can use lower level units as cannon fodder, to slow down enemy. e.g. you "
 "can use them to block enemy reaching your important units"
@@ -3797,7 +3851,7 @@ msgstr ""
 "viktiga trupper."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2554
+#: ../../doc/manual/manual.en.xml:2555
 msgid ""
 "You can cause damage to enemies with advanced units and then finish them "
 "with lower level units - to give them more experience (and finally make them "
@@ -3808,7 +3862,7 @@ msgstr ""
 "till nästa nivå)."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2561
+#: ../../doc/manual/manual.en.xml:2562
 msgid ""
 "When you have a White Mage (advances from Mage) or Druid (advances from "
 "Shaman), put it in the middle of a circle of units to heal them as they move "
@@ -3820,27 +3874,27 @@ msgstr ""
 "också, men inte lika bra)."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2568
+#: ../../doc/manual/manual.en.xml:2569
 msgid "Losing units is expected, even advanced units."
 msgstr "Att förlora trupper är väntat, och då även avancerade trupper."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2573
+#: ../../doc/manual/manual.en.xml:2574
 msgid "Time of day really matters:"
 msgstr "Tid på dagen spelar stor roll:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2578
+#: ../../doc/manual/manual.en.xml:2579
 msgid "lawful units do more damage at day and less damage at night"
 msgstr "redbara trupper gör mer skada på dagen och mindre på natten"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2583
+#: ../../doc/manual/manual.en.xml:2584
 msgid "chaotic units do more damage at night and less damage at day"
 msgstr "ljusskygga trupper gör mer skada på natten och mindre på dagen"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2588
+#: ../../doc/manual/manual.en.xml:2589
 msgid ""
 "remember to always check the time of day on the right side of the screen. "
 "Plan ahead - think about what it's going to be next turn as well as this "
@@ -3851,7 +3905,7 @@ msgstr ""
 "detta drag."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2597
+#: ../../doc/manual/manual.en.xml:2598
 msgid ""
 "Some units are resistant or vulnerable to different kind of attacks. Mounted "
 "units are weak vs pierce attacks. Fire and arcane attacks destroy undead. To "
@@ -3867,7 +3921,7 @@ msgstr ""
 "attacker."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2609
+#: ../../doc/manual/manual.en.xml:2610
 msgid ""
 "An important part of succeeding at Battle for Wesnoth is keeping your units "
 "healthy. When your units take damage you can heal them by moving them onto "
@@ -3882,12 +3936,12 @@ msgstr ""
 "Troll, har förmågan att naturligt hela dem själva."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2617
+#: ../../doc/manual/manual.en.xml:2618
 msgid "Winning a scenario"
 msgstr "Vinna ett scenario"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2621
+#: ../../doc/manual/manual.en.xml:2622
 msgid ""
 "Advanced units are needed to quickly kill enemy commanders, and to avoid "
 "losing lots of units."
@@ -3896,7 +3950,7 @@ msgstr ""
 "undvika att förlora massa trupper."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2627
+#: ../../doc/manual/manual.en.xml:2628
 msgid ""
 "The quicker you win a scenario, the more gold you get; you will get more "
 "gold from winning early than from all of the map's villages for the rest of "
@@ -3906,17 +3960,17 @@ msgstr ""
 "från att vinna tidigt än från alla byar på kartan de resterande av dragen."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2634
+#: ../../doc/manual/manual.en.xml:2635
 msgid "Killing all enemy leaders usually gives instant victory."
 msgstr "Att döda fiendens ledare leder oftast direkt till vinst."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2640
+#: ../../doc/manual/manual.en.xml:2641
 msgid "More general tips"
 msgstr "Fler allmänna tips"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2644
+#: ../../doc/manual/manual.en.xml:2645
 msgid ""
 "After slaughtering scenarios (where you take lots of punishment) there are "
 "usually \"breathing room\" scenarios where you can rather easily gain some "
@@ -3927,7 +3981,7 @@ msgstr ""
 "erfarenhet (avancerade trupper)"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2651
+#: ../../doc/manual/manual.en.xml:2652
 msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
@@ -3936,16 +3990,92 @@ msgstr ""
 "guldstycke per nivå), lojala trupper är ett undantag."
 
 # type: Content of: <book><glossary><title>
-#: ../../doc/manual/manual.en.xml:2660
+#: ../../doc/manual/manual.en.xml:2661
 msgid "Glossary"
 msgstr "Ordförklaringar"
 
-# type: Content of: <book><glossary><glossentry>
-#: ../../doc/manual/manual.en.xml:2662
-msgid "<glossterm> ZOC </glossterm>"
-msgstr "<glossterm> ZOC </glossterm>"
-
 # type: Content of: <book><glossary><glossentry><glossdef><simpara>
-#: ../../doc/manual/manual.en.xml:2667
+#: ../../doc/manual/manual.en.xml:2668
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr "<link linkend=\"zoc\">Kontrollzon</link>."
+
+# type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>Main Menu</phrase>"
+#~ msgstr "<phrase>Huvudmeny</phrase>"
+
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>Multiplayer dialog</phrase>"
+#~ msgstr "<phrase>Gruppspelsrutan</phrase>"
+
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>Game Screen</phrase>"
+#~ msgstr "<phrase>Spelskärmen</phrase>"
+
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>Top Panel</phrase>"
+#~ msgstr "<phrase>Övre panelen</phrase>"
+
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>Right Panel</phrase>"
+#~ msgstr "<phrase>Högra panelen</phrase>"
+
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>Recruit dialog</phrase>"
+#~ msgstr "<phrase>Reykryteringsdialogen</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-dawn.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-dawn.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-morning.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-morning.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-afternoon.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-afternoon.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-dusk.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-dusk.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-firstwatch.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-firstwatch.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-secondwatch.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-secondwatch.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-underground.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-underground.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
+#, fuzzy
+#~ msgid "<phrase>Green orb</phrase>"
+#~ msgstr "<phrase>grön glob</phrase>"
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
+#, fuzzy
+#~ msgid "<phrase>Yellow orb</phrase>"
+#~ msgstr "<phrase>gul glob</phrase>"
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
+#, fuzzy
+#~ msgid "<phrase>Red orb</phrase>"
+#~ msgstr "<phrase>röd glob</phrase>"
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
+#, fuzzy
+#~ msgid "<phrase>Blue orb</phrase>"
+#~ msgstr "<phrase>blå glob</phrase>"
+
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
+#, fuzzy
+#~ msgid "<phrase>No orb</phrase>"
+#~ msgstr "<phrase>ingen glob</phrase>"
+
+# type: Content of: <book><glossary><glossentry>
+#~ msgid "<glossterm> ZOC </glossterm>"
+#~ msgstr "<glossterm> ZOC </glossterm>"

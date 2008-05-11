@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-04-26 13:45+0200\n"
+"POT-Creation-Date: 2008-05-11 16:12+0200\n"
 "PO-Revision-Date: 2008-01-15 23:03+0800\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
@@ -207,97 +207,103 @@ msgid "Cave Lit"
 msgstr "明亮的洞穴"
 
 #. [terrain]
-#: data/core/terrain.cfg:732 data/core/terrain.cfg:740
+#: data/core/terrain.cfg:732
+#, fuzzy
+msgid "Cave path"
+msgstr "明亮的洞穴"
+
+#. [terrain]
+#: data/core/terrain.cfg:741 data/core/terrain.cfg:749
 msgid "Mushroom Grove"
 msgstr "蘑菇林"
 
 #. [terrain]
-#: data/core/terrain.cfg:749
+#: data/core/terrain.cfg:758
 msgid "Mushroom Grove Lit"
 msgstr "蘑菇林层"
 
 #. [terrain]
-#: data/core/terrain.cfg:759
+#: data/core/terrain.cfg:768
 msgid "Rockbound Cave"
 msgstr "岩石洞穴"
 
 #. [terrain]
-#: data/core/terrain.cfg:769
+#: data/core/terrain.cfg:778
 msgid "Rockbound Cave Lit"
 msgstr "明亮的岩石洞穴"
 
 #. [terrain]
-#: data/core/terrain.cfg:786 data/core/terrain.cfg:797
-#: data/core/terrain.cfg:810 data/core/terrain.cfg:821
-#: data/core/terrain.cfg:834 data/core/terrain.cfg:845
-#: data/core/terrain.cfg:855 data/core/terrain.cfg:865
-#: data/core/terrain.cfg:876 data/core/terrain.cfg:887
-#: data/core/terrain.cfg:898 data/core/terrain.cfg:911
-#: data/core/terrain.cfg:922 data/core/terrain.cfg:933
-#: data/core/terrain.cfg:945 data/core/terrain.cfg:960
-#: data/core/terrain.cfg:971
+#: data/core/terrain.cfg:795 data/core/terrain.cfg:806
+#: data/core/terrain.cfg:819 data/core/terrain.cfg:830
+#: data/core/terrain.cfg:843 data/core/terrain.cfg:854
+#: data/core/terrain.cfg:864 data/core/terrain.cfg:875
+#: data/core/terrain.cfg:886 data/core/terrain.cfg:897
+#: data/core/terrain.cfg:908 data/core/terrain.cfg:921
+#: data/core/terrain.cfg:932 data/core/terrain.cfg:943
+#: data/core/terrain.cfg:955 data/core/terrain.cfg:970
+#: data/core/terrain.cfg:981
 msgid "Village"
 msgstr "村庄"
 
 #. [terrain]
-#: data/core/terrain.cfg:986
+#: data/core/terrain.cfg:996
 msgid "Deep Water"
 msgstr "深水"
 
 #. [terrain]
-#: data/core/terrain.cfg:996
+#: data/core/terrain.cfg:1006
 msgid "Shallow Water"
 msgstr "浅水"
 
 #. [terrain]
-#: data/core/terrain.cfg:1006
+#: data/core/terrain.cfg:1016
 msgid "River Ford"
 msgstr "河滩"
 
 #. [terrain]
-#: data/core/terrain.cfg:1021
+#: data/core/terrain.cfg:1031
 msgid "Impassable Mountains"
 msgstr "高不可攀的大山"
 
 #. [terrain]
-#: data/core/terrain.cfg:1030
+#: data/core/terrain.cfg:1040
 msgid "Impassable Desert Mountains"
 msgstr "高不可攀的沙漠山脉"
 
 #. [terrain]
-#: data/core/terrain.cfg:1040
+#: data/core/terrain.cfg:1050
 msgid "Cave Wall"
 msgstr "洞穴墙壁"
 
 #. [terrain]
-#: data/core/terrain.cfg:1050
+#: data/core/terrain.cfg:1060
 #, fuzzy
 msgid "Wall"
 msgstr "洞穴墙壁"
 
 #. [terrain]
-#: data/core/terrain.cfg:1060
+#: data/core/terrain.cfg:1070
 msgid "Void"
 msgstr "无效力的"
 
 #. [terrain]
-#: data/core/terrain.cfg:1073
+#: data/core/terrain.cfg:1083
 msgid "Flat"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1079
+#: data/core/terrain.cfg:1089
 msgid "Frozen"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1085
+#: data/core/terrain.cfg:1095
 #, fuzzy
 msgid "Impassable"
 msgstr "高不可攀的大山"
 
 #. [terrain]
-#: data/core/terrain.cfg:1091
+#: data/core/terrain.cfg:1101
 msgid "Unwalkable"
 msgstr ""
 
@@ -867,63 +873,52 @@ msgstr "新主题在下次新建或载入游戏时生效。"
 msgid "No known themes. Try changing from within an existing game."
 msgstr "当前无已知主题。请尝试在游戏时切换主题。"
 
-#: src/gui/widgets/canvas.cpp:317
+#: src/gui/widgets/canvas.cpp:346
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:422
+#: src/gui/widgets/canvas.cpp:454
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:730
+#: src/gui/widgets/canvas.cpp:757
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:117
+#: src/gui/widgets/settings.cpp:124
 #, fuzzy
 msgid "No default gui defined."
 msgstr "没有已定义的服务器"
 
-#: src/gui/widgets/settings.cpp:193
-#, fuzzy
-msgid "No default window defined."
-msgstr "没有已定义的服务器"
-
-#: src/gui/widgets/settings.cpp:217
+#: src/gui/widgets/settings.cpp:227
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:236
-#, fuzzy
-msgid "No default button defined."
-msgstr "没有已定义的服务器"
+#: src/gui/widgets/settings.cpp:286
+msgid "Widget defintion '$definition' doesn't contain the defintion for '$id'."
+msgstr ""
 
-#: src/gui/widgets/settings.cpp:343 src/gui/widgets/settings.cpp:554
-#: src/gui/widgets/window_builder.cpp:209
+#: src/gui/widgets/settings.cpp:398 src/gui/widgets/window_builder.cpp:294
 #, fuzzy
 msgid "No resolution defined."
 msgstr "没有已定义的服务器"
 
-#: src/gui/widgets/settings.cpp:375
+#: src/gui/widgets/settings.cpp:430
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "没有已定义的服务器"
 
-#: src/gui/widgets/settings.cpp:606
-#, fuzzy
-msgid "No layer or draw section defined."
-msgstr "没有已定义的服务器"
-
-#: src/gui/widgets/window_builder.cpp:249
+#: src/gui/widgets/window_builder.cpp:356
+#: src/gui/widgets/window_builder.cpp:725
 #, fuzzy
 msgid "No grid defined."
 msgstr "没有已定义的服务器"
 
-#: src/gui/widgets/window_builder.cpp:364
+#: src/gui/widgets/window_builder.cpp:568
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:365
+#: src/gui/widgets/window_builder.cpp:569
 msgid "Number of columns differ."
 msgstr ""
 
@@ -967,7 +962,7 @@ msgstr "缩小"
 msgid "Default Zoom"
 msgstr "默认缩放比例"
 
-#: src/hotkeys.cpp:66 src/hotkeys.cpp:823
+#: src/hotkeys.cpp:66 src/hotkeys.cpp:828
 msgid "Screenshot"
 msgstr "屏幕截图"
 
@@ -1242,40 +1237,45 @@ msgid "Enter user command"
 msgstr "输入用户命令"
 
 #: src/hotkeys.cpp:142
+#, fuzzy
+msgid "Custom command"
+msgstr "输入用户命令"
+
+#: src/hotkeys.cpp:143
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Clear messages"
 msgstr "清除所有信息"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "User-Command#2"
 msgstr "玩家命令#2"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 msgid "User-Command#3"
 msgstr "玩家命令#3"
 
-#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
+#: src/hotkeys.cpp:528 src/hotkeys.cpp:873
 msgid "Do you really want to quit?"
 msgstr "您要退出吗？"
 
-#: src/hotkeys.cpp:526 src/hotkeys.cpp:868
+#: src/hotkeys.cpp:528 src/hotkeys.cpp:873
 msgid "Quit"
 msgstr "退出"
 
-#: src/hotkeys.cpp:823
+#: src/hotkeys.cpp:828
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "屏幕截图"
 
-#: src/hotkeys.cpp:830
+#: src/hotkeys.cpp:835
 #, fuzzy
 msgid "Screenshot done"
 msgstr "屏幕截图"
 
-#: src/hotkeys.cpp:832
+#: src/hotkeys.cpp:837
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "屏幕截图"
@@ -1429,6 +1429,18 @@ msgstr ""
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在区块'[$section|]'中，必须设的值'$key|'没有设置。"
+
+#, fuzzy
+#~ msgid "No default window defined."
+#~ msgstr "没有已定义的服务器"
+
+#, fuzzy
+#~ msgid "No default button defined."
+#~ msgstr "没有已定义的服务器"
+
+#, fuzzy
+#~ msgid "No layer or draw section defined."
+#~ msgstr "没有已定义的服务器"
 
 #, fuzzy
 #~ msgid "No default label defined."
