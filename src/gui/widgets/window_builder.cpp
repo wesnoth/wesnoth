@@ -230,9 +230,12 @@ twindow build(CVideo& video, const std::string& type)
 	std::vector<twindow_builder::tresolution>::const_iterator 
 		definition = get_window_builder(type);
 
-	// We set the values from the defintion since we can only determine the 
+	// We set the values from the definition since we can only determine the 
 	// best size (if needed) after all widgets have been placed.
-	twindow window(video, definition->x, definition->y, definition->width, definition->height);
+	twindow window(video, 
+		definition->x, definition->y, definition->width, definition->height, 
+		definition->automatic_placement, 
+		definition->horizontal_placement, definition->vertical_placement);
 
 	log_scope2(gui, "Window builder: building grid for window");
 
@@ -254,42 +257,7 @@ twindow build(CVideo& video, const std::string& type)
 		}
 	}
 
-	if(definition->automatic_placement) {
-		
-		tpoint size = window.get_best_size();
-		size.x = size.x < settings::screen_width ? size.x : settings::screen_width;
-		size.y = size.y < settings::screen_height ? size.y : settings::screen_height;
-
-		tpoint position(0, 0);
-		switch(definition->horizontal_placement) {
-			case tgrid::HORIZONTAL_ALIGN_LEFT :
-				// Do nothing
-				break;
-			case tgrid::HORIZONTAL_ALIGN_CENTER :
-				position.x = (settings::screen_width - size.x) / 2;
-				break;
-			case tgrid::HORIZONTAL_ALIGN_RIGHT :
-				position.x = settings::screen_width - size.x;
-				break;
-			default :
-				assert(false);
-		}
-		switch(definition->vertical_placement) {
-			case tgrid::VERTICAL_ALIGN_TOP :
-				// Do nothing
-				break;
-			case tgrid::VERTICAL_ALIGN_CENTER :
-				position.y = (settings::screen_height - size.y) / 2;
-				break;
-			case tgrid::VERTICAL_ALIGN_BOTTOM :
-				position.y = settings::screen_height - size.y;
-				break;
-			default :
-				assert(false);
-		}
-
-		window.set_size(create_rect(position, size));
-	}
+	window.recalculate_size();
 
 	return window;
 }
@@ -300,7 +268,7 @@ const std::string& twindow_builder::read(const config& cfg)
  * @page = GUIToolkitWML
  * @order = 1_window
  *
- * = Window defintion =
+ * = Window definition =
  *
  * A window defines how a window looks in the game.
  *

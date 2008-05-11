@@ -51,7 +51,10 @@
 namespace gui2{
 
 twindow::twindow(CVideo& video, 
-		const int x, const int y, const int w, const int h) :
+		const int x, const int y, const int w, const int h,
+		const bool automatic_placement, 
+		const unsigned horizontal_placement,
+		const unsigned vertical_placement) :
 	tpanel(false),
 	tevent_handler(),
 	video_(video),
@@ -59,7 +62,10 @@ twindow::twindow(CVideo& video,
 	retval_(0),
 	need_layout_(true),
 	tooltip_(),
-	help_popup_()
+	help_popup_(),
+	automatic_placement_(automatic_placement),
+	horizontal_placement_(horizontal_placement),
+	vertical_placement_(vertical_placement)
 {
 	load_config();
 
@@ -200,6 +206,46 @@ SDL_Rect twindow::get_client_rect() const
 	
 	return result;
 
+}
+
+void twindow::recalculate_size()
+{
+	if(automatic_placement_) {
+		
+		tpoint size = get_best_size();
+		size.x = size.x < settings::screen_width ? size.x : settings::screen_width;
+		size.y = size.y < settings::screen_height ? size.y : settings::screen_height;
+
+		tpoint position(0, 0);
+		switch(horizontal_placement_) {
+			case tgrid::HORIZONTAL_ALIGN_LEFT :
+				// Do nothing
+				break;
+			case tgrid::HORIZONTAL_ALIGN_CENTER :
+				position.x = (settings::screen_width - size.x) / 2;
+				break;
+			case tgrid::HORIZONTAL_ALIGN_RIGHT :
+				position.x = settings::screen_width - size.x;
+				break;
+			default :
+				assert(false);
+		}
+		switch(vertical_placement_) {
+			case tgrid::VERTICAL_ALIGN_TOP :
+				// Do nothing
+				break;
+			case tgrid::VERTICAL_ALIGN_CENTER :
+				position.y = (settings::screen_height - size.y) / 2;
+				break;
+			case tgrid::VERTICAL_ALIGN_BOTTOM :
+				position.y = settings::screen_height - size.y;
+				break;
+			default :
+				assert(false);
+		}
+
+		set_size(create_rect(position, size));
+	}
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)

@@ -52,7 +52,11 @@ namespace gui2{
 class twindow : public tpanel, public tevent_handler
 {
 public:
-	twindow(CVideo& video, const int x, const int y, const int w, const int h);
+	twindow(CVideo& video, 
+		const int x, const int y, const int w, const int h,
+		const bool automatic_placement, 
+		const unsigned horizontal_placement,
+		const unsigned vertical_placement);
 
 	// show the window
 	// The flip function is the disp_.flip() if ommitted the video_flip() is used
@@ -99,6 +103,15 @@ public:
 	//FIXME this can be removed it the panel defintion inherites from panel defintion
 	SDL_Rect get_client_rect() const;
 
+	/** 
+	 * Updates the size of the window.
+	 * 
+	 * If the window has automatic placement set this function recacluates the
+	 * window. To be used after creation and after modification or items which
+	 * can have different sizes eg listboxes.
+	 */
+	void recalculate_size();
+
 protected:
 private:
 
@@ -131,6 +144,27 @@ private:
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 
 		{ static const std::string type = "window"; return type; }
+
+
+	/** Do we wish to place the widget automatically? */
+	const bool automatic_placement_;
+
+	/**
+	 * Sets the horizontal placement.
+	 *
+	 * Only used if automatic_placement_ is true.
+	 * The value should be a tgrid placement flag.
+	 */
+	const unsigned horizontal_placement_;
+
+	/**
+	 * Sets the vertical placement.
+	 *
+	 * Only used if automatic_placement_ is true.
+	 * The value should be a tgrid placement flag.
+	 */
+	const unsigned vertical_placement_;
+
 };
 
 } // namespace gui2
