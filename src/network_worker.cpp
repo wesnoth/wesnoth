@@ -181,7 +181,7 @@ int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 }
 
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
-		bool update_stats=false, int timeout_ms=10000)
+		bool update_stats=false, int timeout_ms=60000)
 {
 	int startTicks = SDL_GetTicks();
 	int time_used = 0;
