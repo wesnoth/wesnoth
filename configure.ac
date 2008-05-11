@@ -274,6 +274,11 @@ AC_ARG_ENABLE([raw-sockets],
 	      [raw_sockets=$enableval],
 	      [raw_sockets=no])
 
+AC_ARG_ENABLE([mabul_stats],
+			  AS_HELP_STRING([--enable-maboul-stats], [replace excepted battle result calcualtions per fight version]),
+			  [maboul_stats=$enableval],
+			  [maboul_stats=no])
+
 if test "x$raw_sockets" = "xyes"
 then
 	CPPFLAGS="$CPPFLAGS -DNETWORK_USE_RAW_SOCKETS"
@@ -291,6 +296,7 @@ AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
+AM_CONDITIONAL([MABOUL_STATS], [test x$maboul_stats = xyes])
 
 if test x$dummylocales = xyes; then
   AC_DEFINE([USE_DUMMYLOCALES],,[Define if the game should not use system locales])
