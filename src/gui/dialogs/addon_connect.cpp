@@ -20,6 +20,7 @@
 #include "gui/widgets/window_builder.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/vertical_scrollbar.hpp"
 #include "log.hpp"
 #include "video.hpp"
 
@@ -40,6 +41,16 @@ void taddon_connect::show(CVideo& video)
 	if(host_widget) {
 		host_widget->set_text(host_name_);
 		window.keyboard_capture(host_widget);
+	}
+
+	tvertical_scrollbar* test_widget = dynamic_cast<tvertical_scrollbar*>(window.get_widget_by_id("test"));
+	if(test_widget) {
+		std::cerr << "testing scrollbar\n";
+		
+		test_widget->set_visible_items(10);
+		test_widget->set_item_count(200);
+		test_widget->set_item_position(0);
+		test_widget->set_step_size(1);
 	}
 
 	retval_ = window.show(true);

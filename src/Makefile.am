@@ -68,6 +68,7 @@ wesnoth_source = \
 	generate_report.cpp \
 	generic_event.cpp \
 	gui/dialogs/addon_connect.cpp \
+	gui/dialogs/language_selection.cpp \
 	gui/widgets/button.cpp \
 	gui/widgets/canvas.cpp \
 	gui/widgets/control.cpp \

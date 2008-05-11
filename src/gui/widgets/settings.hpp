@@ -31,6 +31,7 @@ namespace gui2 {
 
 enum twindow_type {
 	ADDON_CONNECT,           //<! The addon connection dialog.
+	LANGUAGE_SELECTION,      //<! The language selection dialog.
 
 	DUMMY                    //<! Dummy always the last one.
 };

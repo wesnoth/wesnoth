@@ -81,6 +81,7 @@ namespace {
 static void fill_window_types() 
 {
 	window_type_list[ADDON_CONNECT] = "addon_connect";
+	window_type_list[LANGUAGE_SELECTION] = "language_selection";
 }
 
 const std::string& get_id(const twindow_type window_type)
@@ -186,6 +187,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @start_table = window_definition
  *     addon_connect                 The dialog to connect to the addon server
  *                                   and maintain locally installed addons.
+ *     language_selection            The dialog to select the primairy language.  
  * @end_table
  *
  */
