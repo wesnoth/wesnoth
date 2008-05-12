@@ -103,6 +103,9 @@ public:
 	//! Override base class.
 	twidget* get_widget_by_id(const std::string& id);
 
+	/** Inherited from twidget.*/
+	bool has_widget(const twidget* widget) const;
+
 	//! Inherited from twidget.
 	void draw(surface& surface);
 

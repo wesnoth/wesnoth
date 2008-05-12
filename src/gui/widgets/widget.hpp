@@ -188,6 +188,14 @@ public:
 	virtual twidget* get_widget_by_id(const std::string& id)
 		{ return id_ == id ? this : 0; }
 
+	/** 
+	 * Does the widget contain the widget.
+	 *
+	 * This makes more sence in container classes.
+	 */
+	virtual bool has_widget(const twidget* widget) const 
+		{ return widget == this; }
+
 	//! The toplevel item should always be a window if not null is returned
 	twindow* get_window();
 

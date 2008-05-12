@@ -49,6 +49,10 @@ public:
 		return result ? result : grid_.get_widget_by_id(id); 
 	}
 
+	/** Inherited from twidget.*/
+	bool has_widget(const twidget* widget) const 
+		{ return grid_.has_widget(widget); }
+
 	/** Inherited from tcontrol. */
 	tpoint get_minimum_size() const { return grid_.get_minimum_size(); }
 

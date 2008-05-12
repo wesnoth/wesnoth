@@ -393,6 +393,18 @@ twidget* tgrid::get_widget_by_id(const std::string& id)
 	return twidget::get_widget_by_id(id);
 }
 
+bool tgrid::has_widget(const twidget* widget) const
+{
+	for(std::vector<tchild>::const_iterator itor = children_.begin();
+			itor != children_.end(); ++itor) {
+	
+		if(itor->widget() == widget) {
+			return true;
+		}
+	}
+	return false;
+}
+
 void tgrid::draw(surface& surface)
 {
 	for(iterator itor = begin(); itor != end(); ++itor) {
