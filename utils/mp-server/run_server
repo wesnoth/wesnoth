@@ -51,7 +51,7 @@ do
 		exit 1
 	fi
 	DATE=$(date +"%Y%m%d-%H%M%S")
-	if [ -d "$SERVERBASE/redirect.cfg" ]; then
+	if [ -f "$SERVERBASE/redirect.cfg" ]; then
 		PORT=$(sed -re '/port=/!d;s/[ \t]*port="?([0-9]+)"?/\1/' $SERVERBASE/redirect.cfg)
 	fi
 	BUILDDIR=$(ls -l $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
