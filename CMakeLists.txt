@@ -3,6 +3,10 @@
 # * building/installing manpages
 # * building/installing manual
 # * fribidi support
+# * Support for server uid and server gid for game server
+# * Support for alternate location for game server process id file
+# * "uninstall" target
+# * Strict compilation (-Werror)
 # * some other smaller stuff
 # * nice INSTALL howto
 
