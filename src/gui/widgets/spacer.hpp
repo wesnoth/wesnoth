@@ -24,7 +24,8 @@ class tspacer : public tcontrol
 {
 public:
 	tspacer() : 
-		tcontrol(0)
+		tcontrol(0),
+		best_size_(0, 0)
 	{
 		load_config();
 	}
@@ -37,7 +38,16 @@ public:
 
 	void draw(surface&) {}
 	
+	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }
+	
+	/** Inherited from tcontrol. */
+	tpoint get_best_size() const 
+		{ return best_size_ != tpoint(0, 0) ? best_size_ : tcontrol::get_best_size(); }
+
 private:
+
+	/** When we're used as a fixed size item, this holds the best size. */
+	tpoint best_size_;
 
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 
