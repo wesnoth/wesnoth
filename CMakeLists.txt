@@ -6,7 +6,7 @@
 # * Support for server uid and server gid for game server
 # * Support for alternate location for game server process id file
 # * "uninstall" target
-# * Strict compilation (-Werror)
+# * Strict compilation (-Werror -Wno-unused -Wno-sign-compare)
 # * some other smaller stuff
 # * nice INSTALL howto
 
