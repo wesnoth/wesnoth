@@ -1023,9 +1023,11 @@ attack::attack(game_display& gui, const gamemap& map,
 						*a_stats_->weapon,d_stats_->weapon,
 						abs_n_attack_,float_text,a_stats_->drains,"");
 			}
-
-			const int drains_damage = a_stats_->drains ? damage_defender_takes / 2 : 0;
-			const int damage_done = minimum<int>(d_->second.hitpoints(), damage_defender_takes);
+			
+			// Used for stat calcualtion
+			const int drains_damage = a_stats_->drains ? 
+				minimum<int>(damage_defender_takes / 2,a_->second.max_hitpoints() - a_->second.hitpoints()) : 0;
+			const int damage_done = minimum<int>(d_->second.hitpoints(), attacker_damage_);
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
@@ -1277,8 +1279,10 @@ attack::attack(game_display& gui, const gamemap& map,
 						*d_stats_->weapon,a_stats_->weapon,
 						abs_n_defend_,float_text,d_stats_->drains,"");
 			}
-			const int drains_damage = d_stats_->drains ? damage_attacker_takes / 2 : 0;
-			const int damage_done   = minimum<int>(a_->second.hitpoints(), damage_attacker_takes);
+
+			// used for stats calculation
+			const int drains_damage = d_stats_->drains ? minimum<int>(damage_attacker_takes / 2,d_->second.max_hitpoints() - d_->second.hitpoints()): 0;
+			const int damage_done   = minimum<int>(a_->second.hitpoints(), defender_damage_);
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(dies) {
