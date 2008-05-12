@@ -19,6 +19,8 @@
 
 namespace gui2 {
 
+class tscrollbar_;
+
 //! @todo list
 //! header row + footer row same width as client data
 //! cell or row select
@@ -31,15 +33,7 @@ class tlistbox : public tcontainer_
 	friend class tbuilder_listbox;
 public:
 	
-	tlistbox() :
-		tcontainer_(COUNT),
-		state_(ENABLED),
-		list_builder_(0),
-		assume_fixed_row_size_(true),
-		selected_row_(-1)
-	{
-		load_config();
-	}
+	tlistbox();
 
 	void set_active(const bool active) { set_state(active ? ENABLED : DISABLED); };
 	bool get_active() const { return state_ != DISABLED; }
@@ -61,6 +55,18 @@ public:
 	void set_assume_fixed_row_size(bool assume = true) 
 		{ assume_fixed_row_size_ = assume; }
 
+	/** Inherited from tcontainer. */
+	tpoint get_best_size() const;
+
+	/** Inherited from tcontainer. */
+	void draw(surface& surface);
+
+	/** Inherited from tcontainer. */
+	void set_size(const SDL_Rect& rect);
+
+	/** Inherited from tcontainer. */
+	twidget* get_widget(const tpoint& coordinate);
+
 	/**
 	 * Adds an item to the list, it requires the builder_list to be defined. 
 	 * NOTE this is for a listbox with one item per row, for multiple items
@@ -72,13 +78,18 @@ public:
 	 */
 	void add_item(const std::string& label);
 
-	unsigned get_item_count() /*const*/;
+	unsigned get_item_count() const { return rows_.size(); }
 
-	/** Selects an entire row. */
-	void select_row(const unsigned row, const bool select = true);
-
-	/** Selects a single cell */
-	void select_cell(const unsigned row, const unsigned column, const bool select = true);
+	/** 
+	 * Selects an entire row. 
+	 *
+	 * @param row                 The row to (de)select.
+	 * @param select              true select, false deselect.
+	 *
+	 * @returns                   false if deselecting wasn't allowed.
+	 *                            true otherwise.
+	 */
+	bool select_row(const unsigned row, const bool select = true);
 
 	unsigned get_selected_row() const { return selected_row_; }
 
@@ -92,15 +103,70 @@ private:
 	/** It's possible to let the engine build the contents, we need the builder in that case */
 	tbuilder_grid* list_builder_;
 
+	/** Returns the scrollbar widget */
+	tscrollbar_* scrollbar();
+
 	bool assume_fixed_row_size_;
 
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 
 		{ static const std::string type = "listbox"; return type; }
 
-	void select_in_grid(tgrid* grid, const bool select);
-
+	/** The (lastly) selected row */
 	unsigned selected_row_;
+
+	/** Number of items selected */
+	unsigned selection_count_;
+
+	/** Select per cell or an entire row */
+	bool row_select_;
+
+	/** At least 1 item must be selected */
+	bool must_select_;
+
+	/** Multiple items can be selected */
+	bool multi_select_; 
+	
+	/** The sizes of the spacer. */
+	SDL_Rect list_rect_;
+
+	/** The background of the list, needed for redrawing. */
+	surface list_background_;
+
+	class trow {
+
+	public:
+		trow(const tbuilder_grid& list_builder_, const std::string& label);
+
+		void select(const bool sel = true);
+	
+		tgrid* grid() { return grid_; }
+		const tgrid* grid() const { return grid_; }
+
+		void set_height(const unsigned height) { height_ = height; }
+		unsigned get_height() const { return height_; }
+
+		const surface& canvas() const { return canvas_; }
+		surface& canvas() { return canvas_; }
+
+		bool get_selected() const { return selected_; }
+	private:
+
+		tgrid* grid_;
+
+		unsigned height_;
+
+		surface canvas_;
+
+		bool selected_;
+
+		void init_in_grid(tgrid* grid, const std::string& label);
+
+		void select_in_grid(tgrid* grid, const bool sel);
+	};
+
+	std::vector<trow> rows_;
+
 };
 
 } // namespace gui2

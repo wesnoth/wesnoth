@@ -840,9 +840,7 @@ twidget* tbuilder_listbox::build() const
 		| tgrid::HORIZONTAL_ALIGN_CENTER
 		, 0);
 
-	if(!list_builder) {
-		listbox->finalize_setup();
-	}
+	listbox->finalize_setup();
 
 	return listbox;
 }
