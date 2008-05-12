@@ -172,6 +172,12 @@ void tscrollbar_::load_config_extra()
 //! Updates the size of the scroll bar.
 void tscrollbar_::recalculate()
 {
+	// We can be called before the size has been set up in that case we can't do
+	// the proper recalcultion so stop before we die with an assert.
+	if(!get_length()) {
+		return;
+	}
+
 	// Get the available size for the slider to move.
 	int available_length = 
 		get_length() - offset_before() - minimum_positioner_length() - offset_after();
