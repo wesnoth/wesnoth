@@ -29,6 +29,7 @@ class metrics
 {
 public:
 	metrics();
+	~metrics();
 
 	void service_request();
 	void no_requests();
