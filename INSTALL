@@ -24,10 +24,11 @@ There are currently three ways to build wesnoth:
  * scons
  * cmake (still incomplete, but most stuff works)
 
-
 2. Common steps:
 
-In the future, autotools will be replaced with either scons or cmake.
+In the future, autotools will probably replaced with either scons or cmake.
+Once scons and cmake are complete all build systems will be evaluated and
+one build system will choosen as the official build system.
 
 SDL* libraries can be found at http://www.libsdl.org . libfreetype can be found
 at http://www.freetype.org/ . Python can be found at http://www.python.org .
@@ -267,10 +268,8 @@ Set CMAKE_BUILD_TYPE to "debug"
 
 5. Autotools build
 
-The autotools build machinery is deprecated, unsupported, and will be
-removed in a future release.  You will need autoconf (>= 2.60) and
-automake (>= 1.9). Run './autogen.sh' to generate the configure
-files.  Then
+You will need autoconf (>= 2.60) and automake (>= 1.9). Run './autogen.sh' to
+generate the configure files.  Then
 
  $ ./configure
  $ make
