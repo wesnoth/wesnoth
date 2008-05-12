@@ -1,0 +1,18 @@
+SET(MANPAGES)
+if(ENABLE_GAME)
+  SET(MANPAGES ${MANPAGES} wesnoth.6)
+endif()
+if(ENABLE_EDITOR)
+  SET(MANPAGES ${MANPAGES} wesnoth_editor.6)
+endif()
+if(ENABLE_SERVER)
+  SET(MANPAGES ${MANPAGES} wesnothd.6)
+endif(ENABLE_EDITOR)
+
+foreach(MANPAGE ${MANPAGES})
+  install(FILES ${MANPAGE} DESTINATION "${MANDIR}/man6/")
+
+  foreach(LANG ${LINGUAS})
+    install(FILES ${LANG}/${MANPAGE} DESTINATION "${MANDIR}/${LANG}/man6/" OPTIONAL)
+  endforeach(LANG ${LINGUAS})
+endforeach(MANPAGE ${MANPAGES})

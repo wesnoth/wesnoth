@@ -1,26 +1,38 @@
-find_program(PO4A_EXECUTABLE "po4a")
+find_program(PO4A_GETTEXTTIZE_EXECUTABLE "po4a-gettextize")
+find_program(PO4A_TRANSLATE_EXECUTABLE "po4a-translate")
 
 #get domain from current dir
 file(RELATIVE_PATH REL ${CMAKE_SOURCE_DIR}/po ${CMAKE_CURRENT_SOURCE_DIR} )
 set(DOMAIN ${REL})
 
-if(PO4A_EXECUTABLE)
-  set(PO4A_ARGS --rm-backups --copyright-holder "Wesnoth Development Team")
+ADD_PO_TARGETS(${DOMAIN} ${LINGUAS})
 
-  add_custom_target(update-po4a-${DOMAIN}
-                    COMMAND ${PO4A_EXECUTABLE}
-                    ${PO4A_ARGS} ${DOMAIN}.cfg
-                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+if(ASCIIDOC_EXECUTABLE AND DOS2UNIX_EXECUTABLE AND XSLTPROC_EXECUTABLE)
+  set(CAN_GENERATE_DOC TRUE)
+endif()
 
-  add_dependencies(update-po4a update-po4a-${DOMAIN})
+if(PO4A_GETTEXTTIZE_EXECUTABLE AND PO4A_TRANSLATE_EXECUTABLE)
+  if(EXISTS "${CMAKE_BINARY_DIR}/doc/manual/manual.en.xml" OR CAN_GENERATE_DOC)
 
-  add_custom_target(update-pot-${DOMAIN}
-                    COMMAND ${PO4A_EXECUTABLE}
-                    ${PO4A_ARGS} --no-translations ${DOMAIN}.cfg
-                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    set(FILES "${CMAKE_BINARY_DIR}/doc/manual/manual.en.xml")
+    set(MANUAL_CHARSET_default utf-8)
 
-  #po4a creates po- and pot-files at the same time, so add it to both targets
-  add_dependencies(update-pot update-pot-${DOMAIN})
-  add_dependencies(update-po update-pot-${DOMAIN})
+    ADD_PO4A_POT_TARGET("${FILES}" ${DOMAIN} docbook "-M utf-8")
 
-endif(PO4A_EXECUTABLE)
+    add_custom_target(update-po4a-${DOMAIN})
+    set(LANG)
+    ADD_PO4A_TRANSLATE_TARGET("${CMAKE_BINARY_DIR}/doc/manual/manual.en.xml" 
+                              "${CMAKE_BINARY_DIR}/doc/manual/manual.@LANG@.xml"
+                              "${CMAKE_BINARY_DIR}/doc/manual/manual.@LANG@.xml.stamp"
+                              ${DOMAIN} docbook "MANUAL_CHARSET" "-k 80" ${LINGUAS})
+
+    add_dependencies(update-po4a-${DOMAIN} update-po4a-manual.en.xml)
+    add_dependencies(update-po4a update-po4a-${DOMAIN})
+
+    if(CAN_GENERATE_DOC)
+      add_dependencies(update-pot-${DOMAIN} manual.xml)
+      add_dependencies(update-po4a-manual.en.xml manual.xml)
+    endif(CAN_GENERATE_DOC)
+
+  endif()
+endif()

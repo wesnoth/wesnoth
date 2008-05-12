@@ -3,10 +3,6 @@ set(XGETTEXT_OPTIONS "--from-code=UTF-8 --sort-by-file --keyword=sgettext --keyw
 
 CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/pot-update.sh.in ${CMAKE_CURRENT_BINARY_DIR}/pot-update.sh)
 
-file(READ LINGUAS LINGUAS)
-string(REPLACE "\n" "" LINGUAS ${LINGUAS})
-separate_arguments(LINGUAS)
-
 add_custom_target(update-pot)
 add_custom_target(update-po)
 add_custom_target(update-po4a)

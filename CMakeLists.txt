@@ -1,7 +1,5 @@
 # most stuff should be implemented so far, mgoe should know the details (he has done all the work...)
 # what is not working so far:
-# * building/installing manpages
-# * building/installing manual
 # * fribidi support
 # * Support for server uid and server gid for game server
 # * Support for alternate location for game server process id file
@@ -70,19 +68,15 @@ endif(PYTHON_EXECUTABLE AND NOT PYTHON_LIBRARY)
 #Options
 
 set(BINDIR "bin" CACHE STRING "Where to install binaries")
+set(MANDIR "man" CACHE STRING "Where to install manpages")
 set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
+set(DOCDIR "${DATAROOTDIR}/doc/wesnoth" CACHE STRING "Sets the doc directory to a non-default location.")
 set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
 set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
-
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
-
-if(NOT CONFIGURED)
-  set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
-endif(NOT CONFIGURED)
-
 
 option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
@@ -93,6 +87,10 @@ option(ENABLE_TESTS "Build unit tests")
 
 option(ENABLE_PYTHON "Enable in-game python extensions" ON)
 option(ENABLE_DUMMY_LOCALES "Create dummy locales")
+
+if(NOT CONFIGURED)
+  set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
+endif(NOT CONFIGURED)
 
 # compose datadir path of datarootdir and datadirname
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
@@ -118,6 +116,8 @@ endif(GUI STREQUAL "tiny")
 if(ENABLE_PYTHON AND PYTHON_LIBRARY)
   add_definitions(-DHAVE_PYTHON)
 endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
+
+
 
 #create dummy-locales
 if(ENABLE_DUMMY_LOCALES)
@@ -146,16 +146,20 @@ if(ENABLE_DUMMY_LOCALES)
   endforeach(LANGFILE ${LANGS})
   add_custom_target(create-dummy-locales ALL DEPENDS ${DUMMY_LOCALES})
 
+  # this is a workaround for a bug in 2.4-7
+  file(MAKE_DIRECTORY locales)
   install(DIRECTORY locales DESTINATION ${DATADIR} )
 
 endif(ENABLE_DUMMY_LOCALES)
 
 #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+file(READ po/LINGUAS LINGUAS)
+string(REPLACE "\n" "" LINGUAS ${LINGUAS})
+separate_arguments(LINGUAS)
 
-# only one of the subdirs working so far...
+add_subdirectory(doc)
 add_subdirectory(po)
 add_subdirectory(src)
-#add_subdirectory(doc)
 
 #shrink images
 if(GUI STREQUAL "tiny")
@@ -163,7 +167,7 @@ if(GUI STREQUAL "tiny")
 
   if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     set(IMAGE_BUILD_DIR ${CMAKE_SOURCE_DIR}/tiny_images)
-  else(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+  else()
     set(IMAGE_BUILD_DIR ${CMAKE_BINARY_DIR})
   endif(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 
@@ -177,6 +181,8 @@ if(GUI STREQUAL "tiny")
 
   ########### install files ###############
 
+  # this is a workaround for a bug in 2.4-7
+  file(MAKE_DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images)
   install(DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images DESTINATION ${DATADIR})
   install(DIRECTORY data fonts sounds DESTINATION ${DATADIR} 
           PATTERN "*.png" EXCLUDE
