@@ -285,7 +285,7 @@ if boost_test_dyn_link:
 Export("test_env")
 
 if env["PLATFORM"] == 'win32':
-    env.Append(LIBS = ["wsock32", "intl"])
+    env.Append(LIBS = ["wsock32", "intl"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
 if env["PLATFORM"] == 'darwin':			# Mac OS X
     env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
 
