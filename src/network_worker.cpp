@@ -711,6 +711,7 @@ TCPsocket get_received_data(std::vector<char>& out)
 	received_data_queue.pop_front();
 	out.swap(buf->raw_buffer);
 	const TCPsocket res = buf->sock;
+	delete buf;
 	return res;
 }
 
