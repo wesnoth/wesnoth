@@ -11,13 +11,19 @@ Import("env")
 #
 
 textdomains = glob("wesnoth*")
-textdomains.remove("wesnoth-manpages")
-textdomains.remove("wesnoth-manual")
+po4a_domains = Split("wesnoth-manpages wesnoth-manual")
 textdomains = filter(os.path.isdir, textdomains)
 lingua_re = re.compile(r".*(/|\\)(.*)\.po")
 
 if "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
+        pot = File(join(domain, domain + ".pot"))
+        env.Precious(pot)
+        NoClean(pot)
+        env.Alias("pot-update", pot)
+        if domain in po4a_domains:
+            continue
+
         sources = Split(open(join(domain, "POTFILES.in")).read())
         sources = map(lambda x: File(x, Dir("..")), sources)
         if sources:
@@ -44,9 +50,6 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % domain
                 )
 
-        pot = File(join(domain, domain + ".pot"))
-        env.Precious(pot)
-        NoClean(pot)
         if cfgs and sources:
             env.Command(pot, [source_pot, wml_pot],
                 [
@@ -60,12 +63,13 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         else:
             env.Command(pot, source_pot, Move(pot.path, source_pot[0].path))
 
-        env.Alias("pot-update", pot)
     env.Alias("pot-update", "../translations")
 
 if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     linguas = Split(open("LINGUAS").read())
     for domain in textdomains:
+        if ("update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS) and domain in po4a_domains:
+            continue
         for lingua in linguas:
             update_po = env.MsgMerge(
                 os.path.join(domain, lingua),
@@ -74,7 +78,7 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
             env.Precious(update_po)
             NoClean(update_po)
 
-            env.Alias(lingua, update_po)
+            env.Alias(lingua, [update_po, join("../translations", lingua)])
             if lingua in COMMAND_LINE_TARGETS:
                 env.AlwaysBuild(update_po)
 
@@ -90,7 +94,7 @@ def parse_po4a_cfg(cfg_file):
     opts = dict(po4a_cfg_re.findall(cfg_file))
     return opts
 
-if "update-po4a" in COMMAND_LINE_TARGETS:
+if "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     linguas = parse_po4a_cfg(File("wesnoth-manual/wesnoth-manual.cfg").get_contents())["po4a_langs"].split()
     po4a_targets = ["wesnoth-manual/wesnoth-manual.pot"]
     for lingua in linguas:
