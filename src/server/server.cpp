@@ -412,10 +412,7 @@ void server::load_config() {
 	// remember to make new one as a daemon or it will block old one
 	restart_command = cfg_["restart_command"];
 
-	if (!cfg_["ms_per_frame"].empty())
-	{
-		fps_limit_.set_ms_per_frame(lexical_cast_default<size_t>(cfg_["ms_per_Frame"],20));
-	}
+	fps_limit_.set_ms_per_frame(lexical_cast_default<size_t>(cfg_["ms_per_frame"],20));
 
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
