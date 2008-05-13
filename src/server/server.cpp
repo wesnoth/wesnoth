@@ -214,6 +214,34 @@ bool make_change_diff(const simple_wml::node& src,
 }
 
 }
+class fps_limiter {
+	size_t start_ticks_;
+	size_t ms_per_frame_;
+public:
+	fps_limiter(size_t ms_per_frame = 20) : ms_per_frame_(ms_per_frame)
+	{}
+
+	void limit() {
+		size_t current_ticks = SDL_GetTicks();
+		if (current_ticks - start_ticks_ < ms_per_frame_) {
+			SDL_Delay(ms_per_frame_ - (current_ticks - start_ticks_));
+			start_ticks_ += ms_per_frame_;
+		} else {
+			start_ticks_ = current_ticks;
+		}
+	}
+
+	void set_ms_per_frame(size_t ms_per_frame)
+	{
+		ms_per_frame_ = ms_per_frame;
+	}
+
+	void set_fps(size_t fps)
+	{
+		ms_per_frame_ = 1000 / fps;
+	}
+};
+
 
 class server
 {
@@ -267,6 +295,7 @@ private:
 	simple_wml::document games_and_users_list_;
 
 	metrics metrics_;
+	fps_limiter fps_limit_;
 
 	time_t last_ping_;
 	time_t last_stats_;
@@ -383,6 +412,11 @@ void server::load_config() {
 	// remember to make new one as a daemon or it will block old one
 	restart_command = cfg_["restart_command"];
 
+	if (!cfg_["ms_per_frame"].empty())
+	{
+		fps_limit_.set_ms_per_frame(lexical_cast_default<size_t>(cfg_["ms_per_Frame"],20));
+	}
+
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
 	if (versions.empty() == false) {
@@ -449,15 +483,10 @@ void server::dump_stats(const time_t& now) {
 
 void server::run() {
 	int graceful_counter = 0;
-	size_t current_ticks, start_ticks = 0;
-	const size_t ms_per_frame = 20;
 	for (int loop = 0;; ++loop) {
 		// Try to run with 50 FPS all the time
 		// Server will respond a bit faster under heavy load
-		current_ticks = SDL_GetTicks();
-		if (current_ticks - start_ticks < ms_per_frame)
-			SDL_Delay(ms_per_frame - (current_ticks - start_ticks));
-		start_ticks = SDL_GetTicks();
+		fps_limit_.limit();
 		try {
 			// We are going to waith 10 seconds before shutting down so users can get out of game.
 			if (graceful_restart && games_.size() == 0 && ++graceful_counter > 500 )
