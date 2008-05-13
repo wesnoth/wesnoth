@@ -45,6 +45,17 @@ metrics::metrics() : most_consecutive_requests_(0),
                      nrequests_waited_(0), started_at_(time(NULL))
 {}
 
+metrics::~metrics()
+{
+
+	for(std::vector<sample>::iterator itor = samples_.begin();
+			itor != samples_.end(); ++itor)
+	{
+		delete[] itor->name.begin();
+	}
+	samples_.clear();
+}
+
 void metrics::service_request()
 {
 	if(current_requests_ > 0) {

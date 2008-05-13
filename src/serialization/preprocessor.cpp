@@ -916,13 +916,16 @@ struct preprocessor_deleter: std::basic_istream<char>
 {
 	preprocessor_streambuf *buf_;
 	preproc_map *defines_;
+	std::vector<std::string> *callstack_;
 	std::string *error_log;
-	preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines);
+	preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines, std::vector<std::string>*);
 	~preprocessor_deleter();
 };
 
-preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines)
-	: std::basic_istream<char>(buf), buf_(buf), defines_(defines), error_log(buf->error_log)
+preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf, 
+		preproc_map *defines, 
+		std::vector<std::string> *callstack)
+	: std::basic_istream<char>(buf), buf_(buf), defines_(defines), callstack_(callstack), error_log(buf->error_log)
 {
 }
 
@@ -931,6 +934,7 @@ preprocessor_deleter::~preprocessor_deleter()
 	rdbuf(NULL);
 	delete buf_;
 	delete defines_;
+	delete callstack_;
 }
 
 
@@ -952,6 +956,6 @@ std::istream *preprocess_file(std::string const &fname,
 	new preprocessor_file(*buf, callstack, fname);
 	if(error_log!=NULL&&error_log->empty()==false)
 		throw preproc_config::error("Error preprocessing files.");
-	return new preprocessor_deleter(buf, owned_defines);
+	return new preprocessor_deleter(buf, owned_defines,callstack);
 }
 
