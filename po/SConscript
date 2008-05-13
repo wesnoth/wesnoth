@@ -13,7 +13,7 @@ Import("env")
 textdomains = glob("wesnoth*")
 po4a_domains = Split("wesnoth-manpages wesnoth-manual")
 textdomains = filter(os.path.isdir, textdomains)
-lingua_re = re.compile(r".*(/|\\)(.*)\.po")
+linguas = Split(open("LINGUAS").read())
 
 if "pot-update" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
@@ -66,12 +66,11 @@ if "pot-update" in COMMAND_LINE_TARGETS:
     env.Alias("pot-update", "../translations")
 
 if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
-    linguas = Split(open("LINGUAS").read())
     for domain in textdomains:
         if ("update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS) and domain in po4a_domains:
             continue
         for lingua in linguas:
-            update_po = env.MsgMerge(
+            update_po = env.MsgInitMerge(
                 os.path.join(domain, lingua),
                 os.path.join(domain, domain)
                 )
@@ -127,10 +126,7 @@ if "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS
 #
 if env["nls"]:
     for domain in textdomains:
-        pos = glob(os.path.join(domain, "*.po"))
-        linguas = map(lingua_re.findall, pos)
         for lingua in linguas:
-            lingua = lingua[0][1]
             env.Msgfmt(
                 join("../translations", lingua, "LC_MESSAGES", domain),
                 join(domain, lingua)
