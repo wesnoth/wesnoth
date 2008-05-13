@@ -1,0 +1,1064 @@
+# Language fur translations for Battle for Wesnoth package
+# Copyright (C) 2008 Wesnoth Development Team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 1.5.0-svn\n"
+"POT-Creation-Date: 2008-04-13 16:21+0200\n"
+"PO-Revision-Date: 2008-04-13 16:21+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# type: TH
+#: ../../doc/man/wesnoth.6:16
+#, no-wrap
+msgid "WESNOTH"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnoth_editor.6:16
+#: ../../doc/man/wesnothd.6:16
+#, no-wrap
+msgid "2007"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnoth.6:16
+#, no-wrap
+msgid "wesnoth"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnoth.6:16
+#, no-wrap
+msgid "Battle for Wesnoth"
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
+#: ../../doc/man/wesnothd.6:18
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:20
+msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
+#: ../../doc/man/wesnothd.6:24
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:26
+msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:27
+#: ../../doc/man/wesnothd.6:40
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:32
+msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:42
+msgid ""
+"Defeat all enemy leaders using a well-chosen cadre of troops, taking care to "
+"manage your resources of gold and villages. All units have their own "
+"strengths and weaknesses; to win, deploy your forces to their best advantage "
+"while denying your foes the chance to do the same. As units gain experience, "
+"they acquire new abilities and become more powerful. Play in your own "
+"language and test your skill against a smart computer opponent, or join "
+"Wesnoth's large community of on-line players. Create your own custom units, "
+"scenarios or campaigns, and share them with others."
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:32
+#: ../../doc/man/wesnothd.6:45
+#, no-wrap
+msgid "OPTIONS"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:45
+#, no-wrap
+msgid "B<--bpp>I<\\ number>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:49 ../../doc/man/wesnoth_editor.6:38
+msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:49
+#, no-wrap
+msgid "B<-c, --campaign>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:52
+msgid "skip menu, show directly the campaign menu."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:52
+#, no-wrap
+msgid "B<--compress>I<\\ infile\\ outfile>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:58
+msgid ""
+"compresses a savefile (I<infile>)  that is in text WML format into binary "
+"WML format (I<outfile>)."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:58
+#, no-wrap
+msgid "B<-d, --debug>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:63
+msgid ""
+"shows extra debugging information and enables additional command mode "
+"options in-game (see the website at http://www.wesnoth.org/wiki/CommandMode "
+"for more information about command mode)."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:63
+#, no-wrap
+msgid "B<--decompress>I<\\ infile\\ outfile>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:69
+msgid ""
+"decompresses a savefile (I<infile>)  that is in binary WML format into text "
+"WML format (I<outfile>)."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:69
+#, no-wrap
+msgid "B<-f, --fullscreen>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:72
+msgid "runs the game in full screen mode."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:72
+#, no-wrap
+msgid "B<--fps>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:76
+msgid ""
+"displays the number of frames per second the game is currently running at, "
+"in a corner of the screen."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:76
+#, no-wrap
+msgid "B<--gunzip>I<\\ infile.gz>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:82
+msgid ""
+"decompresses a file which should be in gzip format and stores it without "
+"the .gz suffix. The I<infile.gz> will be removed."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:82
+#, no-wrap
+msgid "B<--gzip>I<\\ infile>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:88
+msgid ""
+"compresses a file in gzip format, stores it as I<infile>.gz and removes "
+"I<infile>."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:88 ../../doc/man/wesnothd.6:55
+#, no-wrap
+msgid "B<-h, --help>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:91
+msgid ""
+"displays a summary of command line options to standard output, and exits."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:91
+#, no-wrap
+msgid "B<--load>I<\\ savegame>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:94
+msgid "loads the file savegame from the standard save game directory."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:94
+#, no-wrap
+msgid "B<--with-replay>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:97
+msgid "replays the game loaded with --load option."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:97 ../../doc/man/wesnothd.6:58
+#, no-wrap
+msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:106 ../../doc/man/wesnoth_editor.6:56
+msgid ""
+"sets the severity level of the log domains.  B<all> can be used to match any "
+"log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+"B<debug>.  By default the B<error> level is used."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:106 ../../doc/man/wesnoth_editor.6:56
+#, no-wrap
+msgid "B<--logdomains>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:109 ../../doc/man/wesnoth_editor.6:59
+msgid "Dumps a list of all log domains and exits."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:109
+#, no-wrap
+msgid "B<--max-fps>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:114
+msgid ""
+"the number of frames per second the game can show, the value should be "
+"between the 1 and 1000, the default is B<50>."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:114
+#, no-wrap
+msgid "B<-m, --multiplayer>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:120
+msgid ""
+"runs a multiplayer game. There are additional options that can be used "
+"together with B<--multiplayer> as explained below."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:120
+#, no-wrap
+msgid "B<--nocache>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:123
+msgid "disables caching of game data."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:123
+#, no-wrap
+msgid "B<--nosound>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:126
+msgid "runs the game without sounds and music."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:126 ../../doc/man/wesnoth_editor.6:59
+#, no-wrap
+msgid "B<--path>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:129 ../../doc/man/wesnoth_editor.6:62
+msgid "prints the name of the game data directory and exits."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:129 ../../doc/man/wesnoth_editor.6:62
+#, no-wrap
+msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:133
+msgid "sets the screen resolution. Example: B<-r 800x600>"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:133
+#, no-wrap
+msgid "B<-s,\\ --server\\ [host]>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:137
+msgid ""
+"skip menu, connect to specified host if any, otherwise connect to the first "
+"server in preferences. Example: B<--server server.wesnoth.org>"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:137
+#, no-wrap
+msgid "B<-t, --test>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:140
+msgid "runs the game in a small test scenario."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:140
+#, no-wrap
+msgid "B<-v, --version>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:143
+msgid "shows the version number and exits."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:143
+#, no-wrap
+msgid "B<-w, --windowed>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:146
+msgid "runs the game in windowed mode."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:146
+#, no-wrap
+msgid "B<--no-delay>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:150
+msgid ""
+"runs the game without any delays for graphic benchmarking.  This is "
+"automatically enabled by B<--nogui>."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:150
+#, no-wrap
+msgid "B<--nogui>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:155
+msgid ""
+"runs the game without the GUI. Must appear before B<--multiplayer> to have "
+"the desired effect."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:155
+#, no-wrap
+msgid "B<--exit-at-end>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:158
+msgid ""
+"exits once the scenario is over, without displaying victory/defeat dialog "
+"which requires the user to click OK.  This is also used for scriptable "
+"benchmarking."
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnoth.6:159
+#, no-wrap
+msgid "Options for --multiplayer"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:166
+msgid ""
+"The side-specific multiplayer options are marked with I<number>.  I<number> "
+"has to be replaced by a side number. It usually is 1 or 2 but depends on the "
+"number of players possible in the chosen scenario."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:166
+#, no-wrap
+msgid "B<--algorithm>I<number>B<=>I<value>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:173
+msgid ""
+"selects a non-standard algorithm to be used by the AI controller for this "
+"side. Available values: B<idle_ai> and B<sample_ai>."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:173
+#, no-wrap
+msgid "B<--controller>I<number>B<=>I<value>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:179
+msgid ""
+"selects the controller for this side. Available values: B<human> and B<ai>."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:179
+#, no-wrap
+msgid "B<--era=>I<value>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:186
+msgid ""
+"use this option to play in the selected era instead of the B<Default> era. "
+"The era is chosen by an id. Eras are described in the B<data/multiplayer/"
+"eras.cfg> file."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:186
+#, no-wrap
+msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:195
+msgid ""
+"sets additional parameters for this side. This parameter depends on the "
+"options used with B<--controller> and B<--algorithm>.  It should only be "
+"useful for people designing their own AI. (not yet documented completely)"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:195
+#, no-wrap
+msgid "B<--scenario=>I<value>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:199
+msgid ""
+"selects a multiplayer scenario by id. The default scenario id is "
+"B<multiplayer_The_Freelands>."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:199
+#, no-wrap
+msgid "B<--side>I<number>B<=>I<value>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:204
+msgid ""
+"selects a faction of the current era for this side. The faction is chosen by "
+"an id. Factions are described in the data/multiplayer.cfg file."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:204
+#, no-wrap
+msgid "B<--turns=>I<value>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:208
+msgid "sets the number of turns for the chosen scenario. The default is B<50>."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:208
+#, no-wrap
+msgid "Example to test your own AI against the default AI without starting the GUI:"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:211
+msgid ""
+"B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnoth.6:212 ../../doc/man/wesnoth_editor.6:74
+#: ../../doc/man/wesnothd.6:163
+#, no-wrap
+msgid "AUTHOR"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:215 ../../doc/man/wesnoth_editor.6:77
+msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:217
+msgid ""
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:219 ../../doc/man/wesnoth_editor.6:81
+msgid ""
+"This manual page was originally written by Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:221 ../../doc/man/wesnoth_editor.6:83
+#: ../../doc/man/wesnothd.6:170
+msgid "Visit the official homepage: http://www.wesnoth.org/"
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnoth.6:222 ../../doc/man/wesnoth_editor.6:84
+#: ../../doc/man/wesnothd.6:171
+#, no-wrap
+msgid "COPYRIGHT"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:225 ../../doc/man/wesnoth_editor.6:87
+#: ../../doc/man/wesnothd.6:174
+msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:228 ../../doc/man/wesnoth_editor.6:90
+#: ../../doc/man/wesnothd.6:177
+msgid ""
+"This is Free Software; this software is licensed under the GPL version 2, as "
+"published by the Free Software Foundation.  There is NO warranty; not even "
+"for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnoth.6:229 ../../doc/man/wesnoth_editor.6:91
+#: ../../doc/man/wesnothd.6:178
+#, no-wrap
+msgid "SEE ALSO"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:232
+msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnoth_editor.6:16
+#, no-wrap
+msgid "WESNOTH_EDITOR"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnoth_editor.6:16
+#, no-wrap
+msgid "wesnoth_editor"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnoth_editor.6:16
+#, no-wrap
+msgid "Battle for Wesnoth map editor"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:20
+msgid "wesnoth_editor - Battle for Wesnoth map editor"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:26
+msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:31
+msgid "Battle for B<Wesnoth> map editor."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:34
+#, no-wrap
+msgid "B<--bpp>\\ number"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:38
+#, no-wrap
+msgid "B<--datadir>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:41
+msgid "selects the data directory to use."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:41
+#, no-wrap
+msgid "B<-f>,B<\\ --fullscreen>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:44
+msgid "runs the editor in full screen mode."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:44
+#, no-wrap
+msgid "B<-h>,B<\\ --help>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:47 ../../doc/man/wesnothd.6:58
+msgid "tells you what the command line options do."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:47
+#, no-wrap
+msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:66
+msgid "sets screen resolution. Example: B<-r 800x600>"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:66
+#, no-wrap
+msgid "B<-v>,B<\\ --version>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:69
+msgid "prints version number and exits."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:69
+#, no-wrap
+msgid "B<-w>,B<\\ --windowed>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:72
+msgid "runs the editor in windowed mode."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:79
+msgid ""
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
+"E<lt>ott@gaon.netE<gt>."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:94
+msgid "B<wesnoth>(6), B<wesnothd>(6)"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnothd.6:16
+#, no-wrap
+msgid "WESNOTHD"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnothd.6:16
+#, no-wrap
+msgid "wesnothd"
+msgstr ""
+
+# type: TH
+#: ../../doc/man/wesnothd.6:16
+#, no-wrap
+msgid "Battle for Wesnoth multiplayer network daemon"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:23
+msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:36
+msgid ""
+"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:39
+msgid "B<wesnothd> B<-V>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:44
+msgid ""
+"Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
+"wiki/ServerAdministration on what commands the server accepts via the "
+"wesnoth client or the socket."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:47
+#, no-wrap
+msgid "B<-c\\ >I<path>B<,\\ --config>I<\\ path>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:52
+msgid ""
+"tells wesnothd where to find the config file to use. See the section "
+"B<SERVER CONFIG> below for the syntax. You can reload the config with "
+"sending SIGHUP to the server process."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:52
+#, no-wrap
+msgid "B<-d, --daemon>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:55
+msgid "runs wesnothd as a daemon."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:72
+msgid ""
+"sets the severity level of the log domains.  B<all> can be used to match any "
+"log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+"B<debug>.  By default the B<error> level is used and the B<info> level for "
+"the B<server> domain."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:72
+#, no-wrap
+msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:77
+msgid ""
+"binds the server to the specified port. If no port is specified, port "
+"B<15000> will be used."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:77
+#, no-wrap
+msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:81
+msgid ""
+"sets the maximum number of waiting worker threads for network I/O to n "
+"(default: B<5>,\\ max:\\ B<30>)."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:81
+#, no-wrap
+msgid "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:88
+msgid ""
+"sets the maximum number of worker threads that will be created.  If set to "
+"B<0> there will be no limit (default: B<0>)."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:88
+#, no-wrap
+msgid "B<-V, --version>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:91
+msgid "shows version number and exits."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:91
+#, no-wrap
+msgid "B<-v, --verbose>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:94
+msgid "turns debug logging on."
+msgstr ""
+
+# type: SH
+#: ../../doc/man/wesnothd.6:95
+#, no-wrap
+msgid "SERVER CONFIG"
+msgstr ""
+
+# type: SS
+#: ../../doc/man/wesnothd.6:97
+#, no-wrap
+msgid "The general syntax is:"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:101
+msgid "[I<tag>]"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:103
+msgid "key=\"I<value>\""
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:105
+msgid "key=\"I<value>,I<value>,...\""
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:107
+msgid "[/I<tag>]"
+msgstr ""
+
+# type: SS
+#: ../../doc/man/wesnothd.6:108
+#, no-wrap
+msgid "Global keys:"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:110
+#, no-wrap
+msgid "B<connections_allowed>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:113
+msgid ""
+"The number of allowed connections from the same IP. B<0> means infinite. "
+"(default: B<5>)"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:113
+#, no-wrap
+msgid "B<disallow_names>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:120
+msgid ""
+"Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
+"patterns are supported. See B<glob>(7)  for more details.  Default values "
+"(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
+"computer,human,network,player>."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:120
+#, no-wrap
+msgid "B<max_messages>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:123
+msgid ""
+"The number of allowed messages in B<messages_time_period>. (default: B<4>)"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:123
+#, no-wrap
+msgid "B<messages_time_period>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:126
+msgid ""
+"The time period (in seconds) message flooding is detected in. (default: "
+"B<10> seconds)"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:126
+#, no-wrap
+msgid "B<motd>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:129
+msgid "The message of the day."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:129
+#, no-wrap
+msgid "B<passwd>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:132
+msgid ""
+"The password used to gain admin privileges. Usually it starts with `admin '."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:132
+#, no-wrap
+msgid "B<versions_accepted>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:136
+msgid ""
+"A comma separated list of version strings to be accepted by the server. `*' "
+"and `?' from wildcard patterns are supported.  (defaults to the "
+"corresponding wesnoth version)"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:138
+msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
+msgstr ""
+
+# type: SS
+#: ../../doc/man/wesnothd.6:139
+#, no-wrap
+msgid "Global tags:"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:144
+msgid ""
+"B<[redirect]> A tag to specify a server to redirect certain client versions "
+"to."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:145
+#, no-wrap
+msgid "B<host>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:148
+msgid "The address of the server to redirect to."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:148
+#, no-wrap
+msgid "B<port>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:151
+msgid "The port to connect to."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:151
+#, no-wrap
+msgid "B<version>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:156
+msgid ""
+"A comma separated list of versions to redirect. Behaves the same way as "
+"B<versions_accepted> in regard to wildcard patterns."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:162
+msgid ""
+"B<[proxy]> A tag to tell the server to act as a proxy and forward the "
+"connected client's requests to the specified server.  Accepts the same keys "
+"as B<[redirect]>."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:168
+msgid ""
+"Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
+"Soliton E<lt>soliton.de@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:181
+msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+msgstr ""
