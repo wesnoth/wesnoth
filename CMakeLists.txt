@@ -211,9 +211,9 @@ else()
 endif(GUI STREQUAL "tiny")
 
 if(ENABLE_SERVER AND FIFO_DIR)
-  install(CODE "execute_process(COMMAND mkdir ${FIFO_DIR})")
+  install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
   if(SERVER_UID AND SERVER_GID)
-    install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} ${FIFO_DIR})")
+    install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")
   endif(SERVER_UID AND SERVER_GID)
 endif(ENABLE_SERVER AND FIFO_DIR)
 
