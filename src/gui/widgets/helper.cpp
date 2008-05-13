@@ -13,9 +13,10 @@
 */
 
 #include "gui/widgets/helper.hpp"
-#include "gui/widgets/settings.hpp"
-#include "serialization/string_utils.hpp"
 
+#include "gui/widgets/settings.hpp"
+#include "sdl_utils.hpp"
+#include "serialization/string_utils.hpp"
 #include "log.hpp"
 
 #include "SDL_ttf.h"
@@ -109,6 +110,68 @@ Uint32 decode_colour(const std::string& colour)
 	}
 
 	return result;
+}
+
+surface save_background(const surface& background, const SDL_Rect& rect)
+{
+	assert(background);
+	assert((background->flags & SDL_RLEACCEL) == 0);
+	assert(rect.x + rect.w < background->w);
+	assert(rect.y + rect.h < background->h);
+
+	surface result(SDL_CreateRGBSurface(SDL_SWSURFACE, 
+		rect.w, rect.h, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+
+	{
+		// Extra scoping used for the surface_lock.
+		surface_lock src_lock(background);
+		surface_lock dst_lock(result);
+
+		Uint32* src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
+		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+
+		unsigned offset = rect.y * background->w + rect.x;
+		for(unsigned y = 0; y < rect.h; ++y) {
+			for(unsigned x = 0; x < rect.w; ++x) {
+
+				*dst_pixels++ = src_pixels[offset + x];
+			
+			}
+			offset += background->w;
+		}
+	}
+
+	return result;
+}
+
+void restore_background(const surface& restorer, 
+		surface& background, const SDL_Rect& rect)
+{
+	assert(background);
+	assert(restorer);
+	assert((background->flags & SDL_RLEACCEL) == 0);
+	assert((restorer->flags & SDL_RLEACCEL) == 0);
+	assert(rect.x + rect.w < background->w);
+	assert(rect.y + rect.h < background->h);
+
+	{
+		// Extra scoping used for the surface_lock.
+		surface_lock src_lock(restorer);
+		surface_lock dst_lock(background);
+
+		Uint32* src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
+		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+
+		unsigned offset = rect.y * background->w + rect.x;
+		for(unsigned y = 0; y < rect.h; ++y) {
+			for(unsigned x = 0; x < rect.w; ++x) {
+
+				dst_pixels[offset + x] = *src_pixels++;
+
+			}
+			offset += background->w;
+		}
+	}
 }
 
 } // namespace gui2

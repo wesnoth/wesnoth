@@ -16,6 +16,7 @@
 
 #include "font.hpp"
 #include "foreach.hpp"
+#include "gui/widgets/helper.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -269,32 +270,9 @@ void tcontrol::draw(surface& surface)
 //! @param src          background to save.
 void tcontrol::save_background(const surface& src)
 {
-	assert(src);
 	assert(!restorer_);
 
-	const SDL_Rect rect = get_rect();
-
-	restorer_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE, 
-		rect.w, rect.h, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
-
-	{
-		// Extra scoping used for the surface_lock.
-		surface_lock src_lock(src);
-		surface_lock dst_lock(restorer_);
-
-		Uint32* src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
-		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
-
-		unsigned offset = rect.y * src->w + rect.x;
-		for(unsigned y = 0; y < rect.h; ++y) {
-			for(unsigned x = 0; x < rect.w; ++x) {
-
-				*dst_pixels++ = src_pixels[offset + x];
-			
-			}
-		offset += src->w;
-		}
-	}
+	restorer_ = gui2::save_background(src, get_rect());
 }
 
 //! Restores a portion of the background.
@@ -304,29 +282,7 @@ void tcontrol::save_background(const surface& src)
 //! @param dst          Background to restore.
 void tcontrol::restore_background(surface& dst)
 {
-	assert(restorer_);
-	assert(dst);
-
-	const SDL_Rect rect = get_rect();
-
-	{
-		// Extra scoping used for the surface_lock.
-		surface_lock src_lock(restorer_);
-		surface_lock dst_lock(dst);
-
-		Uint32* src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
-		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
-
-		unsigned offset = rect.y * dst->w + rect.x;
-		for(unsigned y = 0; y < rect.h; ++y) {
-			for(unsigned x = 0; x < rect.w; ++x) {
-
-				dst_pixels[offset + x] = *src_pixels++;
-
-			}
-		offset += dst->w;
-		}
-	}
+	gui2::restore_background(restorer_, dst, get_rect());
 }
 
 //! Inherited from twidget.
