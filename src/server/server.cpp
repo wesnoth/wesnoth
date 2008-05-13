@@ -449,8 +449,15 @@ void server::dump_stats(const time_t& now) {
 
 void server::run() {
 	int graceful_counter = 0;
+	size_t current_ticks, start_ticks = 0;
+	const size_t ms_per_frame = 20;
 	for (int loop = 0;; ++loop) {
-		SDL_Delay(20);
+		// Try to run with 50 FPS all the time
+		// Server will respond a bit faster under heavy load
+		current_ticks = SDL_GetTicks();
+		if (current_ticks - start_ticks < ms_per_frame)
+			SDL_Delay(ms_per_frame - (current_ticks - start_ticks));
+		start_ticks = SDL_GetTicks();
 		try {
 			// We are going to waith 10 seconds before shutting down so users can get out of game.
 			if (graceful_restart && games_.size() == 0 && ++graceful_counter > 500 )

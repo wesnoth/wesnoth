@@ -541,7 +541,7 @@ namespace {
 				LOG_CS << "error in receiving data...\n";
 			}
 
-			SDL_Delay(500);
+			SDL_Delay(20);
 		}
 	}
 
