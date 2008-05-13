@@ -262,6 +262,17 @@ void tscrollbar_::move_positioner(const int distance)
 
 	std::cerr << " sets positioner at " << positioner_offset_ << ".\n";
 
+	const unsigned position =
+		static_cast<unsigned>(positioner_offset_ / pixels_per_step_); 
+
+	if(position != item_position_) {
+		item_position_ = position; 
+
+		if(callback_positioner_move_) {
+			callback_positioner_move_(this);
+		}
+	}
+
 	update_canvas();
 }
 

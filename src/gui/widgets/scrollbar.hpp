@@ -41,7 +41,8 @@ public:
 		pixels_per_step_(0.0),
 		mouse_(0, 0),
 		positioner_offset_(0),
-		positioner_length_(0)
+		positioner_length_(0),
+		callback_positioner_move_(0)
 	{
 	}
 
@@ -101,6 +102,9 @@ public:
 	//! might be true at the same time.
 	bool at_end() const 
 		{ return item_position_ + visible_items_ + 1 == item_count_; }
+
+	void set_callback_positioner_move(void (*callback) (twidget*)) 
+		{ callback_positioner_move_ = callback; }
 
 protected:
 	unsigned get_positioner_offset() const { return positioner_offset_; }
@@ -189,6 +193,11 @@ private:
 	//! @param distance                The distance moved, negative to begin,
 	//!                                positive to end.
 	void move_positioner(const int distance);
+
+ 	/** 
+	 * This callback is used when the positioner is moved by the user.
+	 */
+	void (*callback_positioner_move_) (twidget*);
 };
 
 } // namespace gui2
