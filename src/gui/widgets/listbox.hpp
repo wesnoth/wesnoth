@@ -46,6 +46,11 @@ public:
 	 */
 	void list_item_selected(twidget* caller);
 
+	/**
+	 * Callback when the scrollbar moves.
+	 */
+	void scrollbar_moved(twidget* /*caller*/) { set_dirty(); }
+
 	/** The builder needs to call us so we can write in the proper callbacks. */
 	void finalize_setup();
 

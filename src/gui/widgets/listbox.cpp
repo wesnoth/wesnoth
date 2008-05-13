@@ -15,9 +15,10 @@
 #include "gui/widgets/listbox.hpp"
 
 #include "foreach.hpp"
-#include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/helper.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "log.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
@@ -40,20 +41,28 @@
 #define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
 #define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
 
-
 namespace gui2 {
+
+static tlistbox* get_listbox(twidget* widget)
+{
+	do {
+		widget = widget->parent();
+
+	} while (widget && !dynamic_cast<tlistbox*>(widget));
+	
+	tlistbox* listbox = dynamic_cast<tlistbox*>(widget);
+	assert(listbox);
+	return listbox;
+}
 
 static void callback_select_list_item(twidget* caller)
 {
-	twidget* parent = caller;
-	do {
-		parent = parent->parent();
+	get_listbox(caller)->list_item_selected(caller);
+}
 
-	} while (parent && !dynamic_cast<tlistbox*>(parent));
-	
-	tlistbox* listbox = dynamic_cast<tlistbox*>(parent);
-	assert(listbox);
-	listbox->list_item_selected(caller);
+static void callback_scrollbar(twidget* caller)
+{
+	get_listbox(caller)->scrollbar_moved(caller);
 }
 
 tlistbox::tlistbox() :
@@ -75,13 +84,14 @@ tlistbox::tlistbox() :
 
 void tlistbox::list_item_selected(twidget* caller)
 {
-	// FIXME we only need to test the visible rows
-	for(unsigned i = 0; i < rows_.size(); ++i) {
+	for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
 
-		assert(rows_[i].grid());
-		if(rows_[i].grid()->has_widget(caller)) {
+		const unsigned row = i + scrollbar()->get_item_position();
 
-			if(!select_row(i, !rows_[i].get_selected())) {
+		assert(rows_[row].grid());
+		if(rows_[row].grid()->has_widget(caller)) {
+
+			if(!select_row(row, !rows_[row].get_selected())) {
 				// if not allowed to deselect reselect.
 				tselectable_* selectable = dynamic_cast<tselectable_*>(caller);
 				assert(selectable);
@@ -137,6 +147,8 @@ void tlistbox::finalize_setup()
 		tspacer* spacer = dynamic_cast<tspacer*>(get_widget_by_id("_list"));
 		assert(spacer);
 	}
+
+	scrollbar()->set_callback_positioner_move(callback_scrollbar);
 }
 
 /**
@@ -174,6 +186,11 @@ tpoint tlistbox::get_best_size() const
 		height += best_size.y;
 	}
 
+	// Hack to limit us to 15 items.
+	if(height) { // if we have a height there are items a height there are items.
+		height = 15 * height / get_item_count();
+	}
+
 	set_spacer_size(tpoint(width, height), grid());
 
 	// Now the container will return the wanted result.
@@ -185,23 +202,18 @@ void tlistbox::draw(surface& surface)
 	// Inherit.
 	tcontainer_::draw(surface);
 
+	// Handle our full redraw for the spacer area.
 	if(!list_background_) {
-		//normal_rgb_(0x000000), selected_rgb_(0x000099), heading_rgb_(0x333333
-		SDL_Rect rect = list_rect_;
-		list_background_.assign(make_neutral_surface(get_surface_portion(surface, rect)));
-		// Note since the background is transparent atm it fails so force it black.
-		SDL_FillRect(list_background_, 0, 0xff000000);
+		list_background_.assign(gui2::save_background(surface, list_rect_));
 	} else {
-		// Full redraw.
-//		blit_surface(list_background_, 0, surface, &list_rect_);
+		gui2::restore_background(list_background_, surface, list_rect_);
 	}
 	
-	// Hack to force a redraw every run
-	blit_surface(list_background_, 0, surface, &list_rect_);
-
 	// Now paint the list over the spacer.
 	unsigned offset = list_rect_.y;
-	foreach(trow& row, rows_) {
+	for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
+		trow& row = rows_[i + scrollbar()->get_item_position()];
+
 		assert(row.grid());
 		if(row.grid()->dirty()) {
 			row.grid()->draw(row.canvas());
@@ -209,9 +221,6 @@ void tlistbox::draw(surface& surface)
 		
 		// draw background
 		const SDL_Rect rect = {list_rect_.x, offset, list_rect_.w, row.get_height() };
-//		const SDL_Rect background_rect = {0, offset - list_rect_.y, 0, 0 };
-//		blit_surface(list_background_, 0/*&background_rect*/, surface, 0/*&rect*/);
-//		blit_surface(list_background_, &background_rect, surface, &rect);
 
 		// draw widget
 		blit_surface(row.canvas(), 0, surface, &rect);
@@ -252,11 +261,14 @@ twidget* tlistbox::get_widget(const tpoint& coordinate)
 
 		int offset = coordinate.y - list_rect_.y;
 		assert(offset >= 0);
-		foreach(trow& row, rows_) {
+		for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
+
+			trow& row = rows_[i + scrollbar()->get_item_position()];
 			
 			if(offset < row.get_height()) {
 				assert(row.grid());
-				return row.grid()->get_widget(tpoint(coordinate.x - list_rect_.x, offset));
+				return row.grid()->get_widget(
+					tpoint(coordinate.x - list_rect_.x, offset));
 			} else {
 				offset -= row.get_height();
 			}
@@ -264,7 +276,6 @@ twidget* tlistbox::get_widget(const tpoint& coordinate)
 	}
 
 	return result;
-
 }
 
 void tlistbox::add_item(const std::string& label)
@@ -283,7 +294,12 @@ void tlistbox::add_item(const std::string& label)
 		select_row(get_item_count() - 1);
 	}
 
-	scrollbar()->set_visible_items(get_item_count());
+	scrollbar()->set_item_count(get_item_count());
+
+	// Hack to limit the number of visible items.
+	if(get_item_count() <= 15) {
+		scrollbar()->set_visible_items(get_item_count());
+	}
 }
 
 tscrollbar_* tlistbox::scrollbar()

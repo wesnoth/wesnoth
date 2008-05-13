@@ -42,9 +42,7 @@ void tlanguage_selection::show(CVideo& video)
 	tlistbox* list = dynamic_cast<tlistbox*>(window.get_widget_by_id("language_list"));
 	VALIDATE(list, "No list defined.");
 
-	// Note we only do 15 lines since the listbox can't handle scrolling (yet).
-	/*const*/ std::vector<language_def>/*&*/ languages = get_languages();
-	languages.resize(15);
+	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
 	foreach(const language_def& lang, languages) {
 
