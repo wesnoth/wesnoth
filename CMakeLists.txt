@@ -1,8 +1,6 @@
 # most stuff should be implemented so far, mgoe should know the details (he has done all the work...)
 # what is not working so far:
 # * fribidi support
-# * Support for server uid and server gid for game server
-# * Support for alternate location for game server process id file
 # * "uninstall" target
 # * Strict compilation (-Werror -Wno-unused -Wno-sign-compare)
 # * some other smaller stuff
@@ -65,8 +63,11 @@ else(PYTHON_EXECUTABLE AND NOT PYTHON_LIBRARY)
   set(PYTHON_LIBRARIES ${PYTHON_LIBRARY})
 endif(PYTHON_EXECUTABLE AND NOT PYTHON_LIBRARY)
 
-#Options
+#
+# Options
+#
 
+#Path options
 set(BINDIR "bin" CACHE STRING "Where to install binaries")
 set(MANDIR "man" CACHE STRING "Where to install manpages")
 set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
@@ -74,10 +75,22 @@ set(DOCDIR "${DATAROOTDIR}/doc/wesnoth" CACHE STRING "Sets the doc directory to 
 set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
 set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
+
+#Common options
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
+option(ENABLE_PYTHON "Enable in-game python extensions" ON)
+option(ENABLE_DUMMY_LOCALES "Create dummy locales")
+
+#Game options
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
 
+#server options
+set(SERVER_UID "" CACHE STRING "User id of the user who runs wesnothd")
+set(SERVER_GID "" CACHE STRING "Group id of the user who runs wesnothd")
+set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo socket file")
+
+#build options
 option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
 option(ENABLE_SERVER "Enable compilation of server" ON)
@@ -85,9 +98,11 @@ option(ENABLE_EDITOR "Enable compilation of map editor")
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
 
-option(ENABLE_PYTHON "Enable in-game python extensions" ON)
-option(ENABLE_DUMMY_LOCALES "Create dummy locales")
+#
+# Handle options (set paths/definitions/etc...)
+#
 
+# Set default debug flags at first run
 if(NOT CONFIGURED)
   set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
 endif(NOT CONFIGURED)
@@ -103,6 +118,8 @@ add_definitions(-DHAS_RELATIVE_LOCALEDIR)
 add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
 set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
 
+add_definitions(-DFIFODIR='\"${FIFO_DIR}\"')
+
 if(PREFERENCES_DIR)
   add_definitions(-DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"')
 endif(PREFERENCES_DIR)
@@ -116,7 +133,6 @@ endif(GUI STREQUAL "tiny")
 if(ENABLE_PYTHON AND PYTHON_LIBRARY)
   add_definitions(-DHAVE_PYTHON)
 endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
-
 
 
 #create dummy-locales
@@ -152,7 +168,7 @@ if(ENABLE_DUMMY_LOCALES)
 
 endif(ENABLE_DUMMY_LOCALES)
 
-#configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+# read languages
 file(READ po/LINGUAS LINGUAS)
 string(REPLACE "\n" "" LINGUAS ${LINGUAS})
 separate_arguments(LINGUAS)
@@ -194,7 +210,12 @@ else()
 
 endif(GUI STREQUAL "tiny")
 
-
+if(ENABLE_SERVER AND FIFO_DIR)
+  install(CODE "execute_process(COMMAND mkdir ${FIFO_DIR})")
+  if(SERVER_UID AND SERVER_GID)
+    install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} ${FIFO_DIR})")
+  endif(SERVER_UID AND SERVER_GID)
+endif(ENABLE_SERVER AND FIFO_DIR)
 
 #
 # Packaging stuff
