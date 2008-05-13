@@ -143,6 +143,7 @@ IF(ENABLE_GAME)
 SET(wesnoth-main_SRC
     about.cpp
     actions.cpp
+    addons_manager.cpp
     ai.cpp
     ai_dfool.cpp
     ai_attack.cpp

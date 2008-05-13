@@ -133,6 +133,7 @@ libcutter = env.Library("cutter", libcutter_sources)
 wesnoth_sources = Split("""
     about.cpp
     actions.cpp
+    addons_manager.cpp
     ai.cpp
     ai_dfool.cpp
     ai_attack.cpp
