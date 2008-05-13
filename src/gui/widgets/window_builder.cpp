@@ -834,6 +834,7 @@ twidget* tbuilder_listbox::build() const
 		| tgrid::VERTICAL_ALIGN_CENTER
 		| tgrid::HORIZONTAL_ALIGN_CENTER
 		, 0);
+	listbox->grid().set_col_grow_factor(0, 1);
 	listbox->grid().add_child(scrollbar, 0, 1, 
 		tgrid::VERTICAL_GROW_SEND_TO_CLIENT
 		| tgrid::VERTICAL_ALIGN_CENTER
