@@ -29,9 +29,10 @@ opts = Options('.scons-option-cache')
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder")),
-    EnumOption('build', 'Build variant: debug or release', "release", ["release", "debug"]),
+    EnumOption('build', 'Build variant: debug, release or profile', "release", ["release", "debug", "profile"]),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
+    ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathOption('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathOption.PathAccept),
@@ -54,7 +55,6 @@ opts.AddOptions(
     PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept),
     PathOption('destdir', 'prefix to add to all installation paths.', "", PathOption.PathAccept),
     BoolOption('prereqs','abort if prerequisites cannot be detected',True),
-    BoolOption('profile', 'Set to build for profiling', False),
     ('program_suffix', 'suffix to append to names of installed programs',""),
     BoolOption('python', 'Enable in-game python extensions.', True),
 	BoolOption('maboul_stats', 'Enable alternative excpeted damage calculations', False),
@@ -212,10 +212,6 @@ env.Replace(CPPDEFINES = [])
 if env['static']:
     env.AppendUnique(LINKFLAGS = "-all-static")
 
-if env['profile']:
-    env.AppendUnique(CXXFLAGS = "-pg")
-    env.AppendUnique(LINKFLAGS = "-pg")
-
 if env['strict']:
     env.AppendUnique(CXXFLAGS = Split("-Werror -Wno-unused -Wno-sign-compare"))
 
@@ -300,15 +296,16 @@ SConscript(dirs = Split("doc po"))
 binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd")
 builds = {
     "debug"   : Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"),
-    "release" : Split("-O2 -ansi")
+    "release" : Split("-O2 -ansi"),
+    "profile" : "-pg"
     }
 if sys.platform == "win32":
     builds["release"] = [] # Both -O2 and -ansi cause Bad Things to happen on windows
 build = env["build"]
-build_env = env.Clone()
-build_env.AppendUnique(CXXFLAGS = builds[build])
-build_env.MergeFlags(env["extra_flags_" + build])
-SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = {"env":build_env})
+env.AppendUnique(CXXFLAGS = builds[build])
+if build == "profile": env.AppendUnique(LINKFLAGS = "-pg")
+env.MergeFlags(env["extra_flags_" + build])
+SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = "env")
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
 if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
