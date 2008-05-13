@@ -509,7 +509,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					units->add(up);
 					unit_mutations++;
 					if(game_map->is_village(vacant_dst)) {
-						get_village(vacant_dst, *screen,*teams,side,*units);
+						get_village(vacant_dst, *screen,*teams,side-1,*units);
 					}
 
 					if(utils::string_bool(cfg["clear_shroud"],true)) {
