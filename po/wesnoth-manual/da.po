@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.x\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2008-03-15 09:57+0200\n"
+"PO-Revision-Date: 2008-05-12 09:57+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -867,7 +867,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:523
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Sejr og nederlag"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:524
@@ -879,6 +879,12 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"Vær speciel opmærksom på missionsmålene der vises i starten af hver "
+"scenarie. Du opnår normalt sejr ved at dræbe alle fjendtlige leder, og taber "
+"normalt hvis din egen leder bliver dræbt. Men de enkelte scenarier kan have "
+"andre sejrskrav - at få din leder til et bestemt sted, at redde nogen, eller "
+"løse en gåde, eller holde ud mod en belejring indtil et bestemt antal runder "
+"er passeret."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:532
@@ -889,6 +895,11 @@ msgid ""
 "multiplayer game)  chatting with other players before pressing that button "
 "to advance."
 msgstr ""
+"Når du vinder et scenarie, vil kortet blive gråligt og <emphasis>Afslut "
+"runde</emphasis>-knappen vil ændre sig til <emphasis>Afslut scenarie</"
+"emphasis>. Du kan nu foretage ting som ændring af dine gem-indstillinger "
+"eller (hvis du spiller flerspiller) snakke med de andre spillere før du "
+"trykker på tasten for at fortsætte."
 
 #: ../../doc/manual/manual.en.xml:539 ../../doc/manual/manual.en.xml:1002
 msgid "Gold"
@@ -937,6 +948,13 @@ msgid ""
 "Just remember, a good Battle for Wesnoth player never needs to save during a "
 "scenario. However, most beginners tend to do so rather often."
 msgstr ""
+"I begyndelsen af hvert scenarie har du valgmuligheden for at gemme "
+"scenariet. Hvis du besejres, kan du indlæse igen og forsøge dig igen. Når "
+"det er lykkedes, bliver du igen spurgt om du ønsker at gemme før det næste "
+"scenarie. Hvis du bliver nød til at afbryde midt i et scenarie, kan du gemme "
+"din runde og indlæse herfra senere. Husk at en god Kampen om Wesnoth-spiller "
+"aldrig behøver at gemme under et scenarie. De fleste begyndere har dog en "
+"tendens til at gøre det ret ofte."
 
 # type: Content of: <book><chapter><title>
 #: ../../doc/manual/manual.en.xml:566
@@ -1224,7 +1242,7 @@ msgstr "Ctrl-a"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:786
 msgid "Toggle accelerated game mode"
-msgstr ""
+msgstr "Slå til/fra forøget spilhastighed"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:791 ../../doc/manual/manual.en.xml:911
@@ -1234,7 +1252,7 @@ msgstr "Ctrl-g"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:794 ../../doc/manual/manual.en.xml:914
 msgid "Toggle grid"
-msgstr ""
+msgstr "Til/fra gitter"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:799
@@ -1244,7 +1262,7 @@ msgstr "Ctrl-c"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:802
 msgid "Clear onscreen labels"
-msgstr ""
+msgstr "Ryd etiketer på skærmen"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:807
@@ -1304,7 +1322,7 @@ msgstr "t"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:850
 msgid "Continue interrupted unit move"
-msgstr ""
+msgstr "Fortsæt afbrydt enhedsbevægelse"
 
 #: ../../doc/manual/manual.en.xml:855
 msgid "+"
@@ -1480,6 +1498,12 @@ msgid ""
 "ended the previous scenario with, and a minimum amount defined by the "
 "scenario, which is typically lower as the difficulty level increases."
 msgstr ""
+"Hver side tildeles en sum guldstykker som startbeholdning og modtager 2 "
+"guldstykker per runde, plus 1 yderligere for hver landsby siden "
+"kontrollerer. I en kampagne udgør guldbeholdningen 80 % af det guld du "
+"afsluttede det tidligere scenarie med eller hvis højere et minimumsbeløb "
+"defineret at scenariet; der dog normalt er mindre efterhånden som "
+"sværhedsgraden forøges."
 
 #: ../../doc/manual/manual.en.xml:1010
 msgid "Recruiting and Recalling"
@@ -1488,7 +1512,7 @@ msgstr "Rekruttering og Tilbagekaldelse"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
 #: ../../doc/manual/manual.en.xml:1015
 msgid "<phrase>Recruit dialog</phrase>"
-msgstr ""
+msgstr "<phrase>Rekrutteringsdialg</phrase>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1018
@@ -1498,6 +1522,10 @@ msgid ""
 "recruited or recalled when the leader is on a keep whose castle has at least "
 "one vacant castle hex."
 msgstr ""
+"Den væsentligste brug af guld er til at opbygge din hær ved at rekruttere "
+"nye enheder eller tilbagekalde enheder fra tidligere scenarier i en "
+"kampagne. Enheder kan rekrutteres eller tilbagekaldes når lederen står på et "
+"borgtårn, hvis borg har mindst et ledigt felt."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1026
@@ -1506,6 +1534,9 @@ msgid ""
 "from the list that is presented. The cost to Recruit depends on the unit, "
 "but is usually between 10 and 20 gold."
 msgstr ""
+"Højreklik på et tomt borgfelt og vælg Rekruttér for at rekruttere nye "
+"enheder fra den viste liste. Prisen for at rekruttere varierer med enheden, "
+"men er normalt mellem 10 og 20 guldstykker."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1033
@@ -1514,6 +1545,10 @@ msgid ""
 "previous scenarios. Recalling costs 20 pieces of gold per unit. See <link "
 "linkend=\"unit_recall\">recalling units</link> for more information."
 msgstr ""
+"Højreklik på et tomt borgfelt og vælg Tilbagekald for at tilbagekalde "
+"enheder fra tidligere scenarier. Tilbagekaldelse koster 20 guldstykker per "
+"enhed. Se <link linkend=\"unit_recall\">Enhedstilbagekaldelse</link> for "
+"yderligere information."
 
 #: ../../doc/manual/manual.en.xml:1041
 msgid "Upkeep"
@@ -1530,6 +1565,14 @@ msgid ""
 "the number of villages that side controls. Upkeep paid is the difference "
 "between the number of villages and the upkeep cost."
 msgstr ""
+"Hver enhed har en vedligeholdelsesomkostning. Denne svarer normalt til "
+"enhedens niveau, medmindre enheden har \"Loyal\"-karaktertrækket (<link "
+"linkend=\"traits\">se nedenfor</link>). Enheder som ikke oprindeligt er "
+"blevet rekrutteret - f.eks. lederen eller dem som melder sig frivilligt - "
+"har normalt loyal-karaktertrækket. Vedligeholdelse betales kun hvis den "
+"totale sum er større end antallet af landsbyer under kontrol. Den betalte "
+"vedligeholdelse udgør forskellen mellem antallet af landsbyer og "
+"vedligeholdelsesomkostningen."
 
 #: ../../doc/manual/manual.en.xml:1051
 msgid "Income"
@@ -1804,6 +1847,13 @@ msgid ""
 "(<literal>12 * 0.75</literal>) or 9 points. During First or Second Watch, "
 "the Lawful unit would do 9 points compared to the Chaotic unit's 15."
 msgstr ""
+"For eksempel: En kamp mellem en hæderlig enhed og en kaotisk enhed hvor "
+"begge har en grundskade på 12. Ved morgengry og skumring vil de begge give "
+"12 point skade hvis de rammer. Om morgenen og eftermiddagen, vil den "
+"hæderlige enhed gøre (<literal>12 * 1,25</literal>) eller 15 point skade, "
+"mens den kaotiske enhed vil gøre (<literal>12 * 0,75</literal>) eller 9 "
+"point skade. Ved første og anden vagt vil den hæderlige enhed gøre 9 point "
+"skade mod den kaotiske enheds 15 point skade."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1289
@@ -2067,15 +2117,14 @@ msgstr "Snigangreb"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1470
-#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (e.g. turned to stone)."
 msgstr ""
-"Dette angreb yder dobbelt skade, hvis der er en fjende på den modsatte side "
-"af enheden, der bliver angrebet med denne evne, og denne enhed ikke er "
-"paralyseret (det vil sige gjort til sten)."
+"Når det bruges offensivt yder dette angreb dobbelt skade, hvis der er en "
+"fjende på den modsatte side af enheden og denne enhed ikke er paralyseret "
+"(det vil sige gjort til sten)."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1478
@@ -2098,13 +2147,12 @@ msgstr "Storm"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1494
-#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
-"Dette angreb giver dobbelt skade til modstanderen. Det gør også, at enheden "
-"selv modtager dobbelt skade fra modstanderens modangreb."
+"Når brugt offensivt yder dette angreb dobbelt skade til modstanderen. Det "
+"gør også, at enheden selv modtager dobbelt skade fra modstanderens modangreb."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1501
@@ -2729,7 +2777,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:1994
 msgid "Ellipses, Team Colors, and Hero Icons"
-msgstr ""
+msgstr "Ellipsper, holdfarver, og helteikoner"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1995
@@ -2739,6 +2787,10 @@ msgid ""
 "team color will also show up in parts of the unit's clothing, or possibly on "
 "a shield insignia."
 msgstr ""
+"Under hver enhed vil der normalt være en farvet ellipse eller base. Farven "
+"viser holdet; i et kampagnespil, er menneskesidens farve rød. Holdfarven vil "
+"også vise sig som en del af enhedens klædedragt, eller måske på et skjolds "
+"insignie."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2000
@@ -2747,6 +2799,8 @@ msgid ""
 "ellipse that has broken lines. This indicates that the unit has no Zone of "
 "Control."
 msgstr ""
+"Normalt vil ellipsen være fuldstændig. På niveau 0 enheder vil du se en "
+"ellipse som er striplet. Dette viser at enheden ingen kontrolzone har."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2004
@@ -2757,6 +2811,12 @@ msgid ""
 "mark heroes. Still others have no specific hero indicator at all. Which (if "
 "any) is used is a stylistic choice left to campaign designers."
 msgstr ""
+"Nogle kampagner anvender en stjerneformet base som tegn på ledere og helte "
+"(enheder som på en eller anden måde er specielle og for eksempel ikke må dø "
+"under scenariet); andre har en sølvkroneikon over energibjælken for at "
+"markere en helt. Andre har ingen speciel markering af helte. Hvilken (hvis "
+"nogen overhoveder) der anvendes er et stilvalg som overlades til "
+"kampagnedesignerne."
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2014
@@ -2813,6 +2873,9 @@ msgid ""
 "attacker and defender will be killed, by clicking on the \"Damage "
 "Calculations\" button in the fight window."
 msgstr ""
+"Du kan opnå yderligere information, inklusiv sandsynligheden for at "
+"angriberen og forsvareren vil blive dræbt, ved at klikke på \"Skadeberegnings"
+"\"-knappen i kampvinduet."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2048
@@ -2826,6 +2889,9 @@ msgid ""
 "used to chop pieces of meat from a foe. Examples: dagger, scimitar, saber, "
 "drake claws."
 msgstr ""
+"<emphasis role=\"strong\">Klinge</emphasis>: Våben med en skarp kant, som "
+"anvendes til at slå stykker af kød fra fjenden. For eksempel: daggert, "
+"scimitar, sabel, hestedragekløer."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2058
@@ -2834,6 +2900,10 @@ msgid ""
 "and either a long handle or a missile, used to perforate foe's body and "
 "damage internal organs. Examples: Knight or infantry pike, arrow."
 msgstr ""
+"<emphasis role=\"strong\">Stikvåben</emphasis>: Våben med en skarp spids og "
+"enten et langt håndtag eller et missil, som bruges til at gennemtrænge "
+"fjendens krop og skade de indre organer. For eksempel: Ridder eller "
+"infanteri med pike eller pil."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2065
@@ -2849,6 +2919,8 @@ msgid ""
 "<emphasis role=\"strong\">Cold</emphasis>: Weapons based on cold or ice "
 "missiles. Example: A wizard's ice bolt."
 msgstr ""
+"<emphasis role=\"strong\">Kulde</emphasis>: Våben som anvender kulde eller "
+"is som et missil. For eksempel: En troldmands iskugle."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2078
@@ -2856,6 +2928,8 @@ msgid ""
 "<emphasis role=\"strong\">Fire</emphasis>: Weapons using fire to roast the "
 "foe like a chicken. Example: A drake's fire breath."
 msgstr ""
+"<emphasis role=\"strong\">Ild</emphasis>: Våben som anvender ild til at "
+"riste fjenden. For eksempel: En hestedrages ildånde."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2084
@@ -3228,6 +3302,11 @@ msgid ""
 "front line. If you have healers, damaged units in the second line will "
 "quickly recover."
 msgstr ""
+"Når en enhed i frontlinjen er stærkt skadet kan du flytte ham i sikkerhed "
+"bag din defensive linje. For at bevare linjen vil du sikkert skulle erstatte "
+"ham med en reserve, så hold et par enheder tilbage fra frontlinjen til dette "
+"formål. Hvis du har helbredere vil beskadiged enheder i anden linje hurtigt "
+"kunne gøres klar til kamp igen."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2294
@@ -3275,6 +3354,10 @@ msgid ""
 "to victory. Kill or weaken enemies in your path and move your defensive line "
 "forward. This can become tricky as the enemy gets to attack back on his turn."
 msgstr ""
+"Erobring og angreb er selvfølgelig den mest interessante del af din vej mod "
+"sejr. Dræb dine fjender eller gør dem svage på din vej og flyt din defensive "
+"linje fremad. Dette kan være svært, da fjenden får mulighed for at angribe "
+"tilbage i sin tur."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2315
@@ -3286,6 +3369,12 @@ msgid ""
 "and next turn, he is going to strike back. Perhaps a Horseman can deliver "
 "the killing blow."
 msgstr ""
+"Ofte vil du sende flere enheder mod en enkelt fjende for at gøre det af med "
+"ham, men disse var en del af din defensive linje og den er nu delvis brudt. "
+"Måske betyder det ikke noget hvis du er uden for afstand af den næste "
+"fjendtlige enhed. Måske betyder det noget fordi du kun lykkedes i at svække "
+"en meget stærk fjende og i næste runde vil han slå tilbage. Måske kan en "
+"rytter levere det endelige stød."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2322
@@ -3297,6 +3386,12 @@ msgid ""
 "get to attack back on their turn, so you might have weaknesses the enemy may "
 "exploit."
 msgstr ""
+"At slå først er en fordel fordi det giver mulighed for at bestemme hvilke "
+"enheder som møder hinanden. Få fordel af fjendens svagheder: For eksempel "
+"kan du sende dine afstandsvåben af sted mod fjender uden afstandsvåben. Tag "
+"fordel af svagheder som rytteres svaghed mod stikvåben. Men husk at de får "
+"mulighed for at slå igen i deres runde, så du kan også have svagheder som "
+"fjenden kan udnytte."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2329
@@ -3306,6 +3401,9 @@ msgid ""
 "impact. But your Horseman may quite quickly fall to Orcish Archers and "
 "Goblin Spearmen."
 msgstr ""
+"For eksempel kan ryttere holde linjen mod orksoldater og troldehvalpe da de "
+"har modstandskraft mod klinge- og stødvåben. Men din rytter kan hurtig falde "
+"mod orkbueskytter og goblinspydmænd."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2334
@@ -3317,6 +3415,13 @@ msgid ""
 "often wise to attack at the range that allows the enemy to do least damage "
 "to you, rather than choosing the maximum expected damage to the enemy."
 msgstr ""
+"Det kan normalt betale sig endegyldigt at gøre det af med en enhed (eller "
+"næsten dræbe den). Hvis du er usikker på om du kan besejre en enhed på en "
+"runde så vær sikker på at din enhed kan modstå returangrebet eller beslut "
+"dig for at du er villig til at ofre enheden. For at kunne modstå fjendes "
+"angreb den næste runde er det ofte den bedste løsning at angribe med den "
+"afstand som giver fjenden mulighed for at give dig mindst skade, fremfor at "
+"vælge den afstand som giver den maksimale forventede skade til fjenden."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2342
@@ -3326,6 +3431,10 @@ msgid ""
 "so using it will often result in your units taking more damage than "
 "necessary."
 msgstr ""
+"Specielt skal du bruge afstandsvåben hvis fjende intet afstandsvåben har. "
+"Computerens standardindstilling vælger kun ud fra den maksimale skade du kan "
+"give, så brug af denne vil ofte resultere i at dine enheder modtager mere "
+"skade end nødvendigt."
 
 #: ../../doc/manual/manual.en.xml:2349
 msgid "Time of Day"
@@ -3341,6 +3450,12 @@ msgid ""
 "defensive position. When its weak time is about to arise, your advance will "
 "push forth."
 msgstr ""
+"Husk at hæderlige enheder som mennesker kæmper bedre om dagen og kaotiske "
+"enheder som orker og udøde kæmper bedre om natten. Det er bedst at møde "
+"fjenden når du er stærk og/eller når fjenden er svag. Når fjenden har sin "
+"stærke tid på dagen, kan det ofte betale sig at styrke dine linjer og "
+"indtage en defensiv position. Når fjendes svage tid er på vej kan din "
+"fremgang sættes i gang."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2357
@@ -3360,6 +3475,9 @@ msgid ""
 "force. Later scenarios will assume you have level 2 and 3 units available "
 "for recall."
 msgstr ""
+"Igennem en kampagne er det altafgørende at du opbygger en stærk styrke. "
+"Senere scenarier vil antage at du har niveau 2 og 3 enheder som du kan "
+"tilbagekalde."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2368
@@ -3370,6 +3488,12 @@ msgid ""
 "of the XP. Healers in particular are often weak in combat and often need to "
 "<emphasis>steal</emphasis> kills in this way to advance levels."
 msgstr ""
+"Dine enheder opnår flest erfaringspoint (EP) ved at dræbe en fjendtlig enhed "
+"(8 EP per niveau hos den dræbte enhed). Derfor giver det ofte mening at lade "
+"dine enheder med højt niveau gøre en fjende mør, men overlade drabet til en "
+"enhed med mere brug for flere erfaringspoint. Helbredere er ofte svage i "
+"kamp og har ofte bruge for at <emphasis>stjæle</emphasis> drab for at "
+"avancere igennem niveauerne."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2374
@@ -3378,6 +3502,9 @@ msgid ""
 "most kills to a small handful of your units. This will fast-track them to "
 "becoming Level 2 units, and they can then shepherd others."
 msgstr ""
+"I begyndelsen (da du sikkert ikke har nogen enheder med højt niveau), forsøg "
+"at give flest drab til en lille håndfuld af dine enheder. Det vil hurtigt få "
+"dem til niveau 2, og de kan derefter hjælpe andre enheder med at stige."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2378
@@ -3386,6 +3513,9 @@ msgid ""
 "if you coddle him too much he will be too low level to survive future "
 "scenarios anyway."
 msgstr ""
+"Forsøm ikke at give dine ledere erfaring. Du har brug for at holde ham i "
+"sikkerhed, men hvis du holder ham for meget tilbage, er han måske ikke på et "
+"højt nok niveau, til at han også kan overleve i fremtidige scenarier."
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2385
@@ -3431,6 +3561,13 @@ msgid ""
 "your White Mage keeps getting killed. Learn to protect your White Mage "
 "instead, and balance risks! That is part of the strategy."
 msgstr ""
+"Misbrug ikke muligheden for at gemme spillet. For lang tid siden tillod "
+"Wesnoth kun at gemme spillet ved afslutningen af et scenarie. Muligheden for "
+"at gemme midt i et scenarie blev tilføjet som en mulighed for at kunne "
+"fortsætte spillet en anden dag, eller for at beskytte mod nedbrud. Vi "
+"anbefaler ikke at man indlæser gemte spil igen og igen fordi du mister en "
+"bestemt enhed. Lær at beskytte dine enheder i steden for og balancere dine "
+"risikovalg! Det er en del af strategien i spillet."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2416
@@ -3439,6 +3576,9 @@ msgid ""
 "scenario, so that you choose a new strategy that works, rather than simply "
 "finding random numbers that favor you."
 msgstr ""
+"Hvis du må hente et gemt spil, så anbefaler vi at gå tilbage til starten af "
+"scenariet, så du kan vælge en ny strategi som vil virke, fremfor at sætte "
+"lid til tilfældige numre i din favør."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2423
@@ -3448,6 +3588,10 @@ msgid ""
 "every time you make a mistake, looking for the <emphasis>perfect</emphasis> "
 "game where you never lose a unit, by all means, go right ahead!"
 msgstr ""
+"Husk at formålet er at have det sjovt! Du har måske andre præferencer end "
+"udviklerne, så gør hvad du finder sjovest! Hvis du kan li' at hente et gemt "
+"spil hver gang du foretager en fejl, for at finde det <emphasis>perfekte</"
+"emphasis> spil hvor du aldrig mister en enhed, så gå bare i gang!"
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2431
@@ -3461,6 +3605,9 @@ msgid ""
 "leaders; instead it is enough that you survive for a certain number of "
 "turns, or pick up a particular object"
 msgstr ""
+"Først, læs scenariemålene. Nogle gange skal du ikke dræbe de fjendtlige "
+"ledere; i steden for er det nok at du overlever et vis antal runder eller "
+"samler et bestemt objekt op."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2442
@@ -3479,6 +3626,10 @@ msgid ""
 "Fast units can be used as scouts, for exploring the map and to quickly "
 "conquer villages."
 msgstr ""
+"Begynd at rekruttere enheder. Billige enheder er brugbare til at bløde "
+"fjendens første angreb op; mere avancerede enheder kan så sendes frem som "
+"støtte. Hurtige enheder kan bruges som spejedere, til at undersøge kortet og "
+"til hurtigt at erobre landsbyer."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2457
@@ -3534,6 +3685,9 @@ msgid ""
 "with lower level units - to give them more experience (and finally make them "
 "advance to next level)."
 msgstr ""
+"Du kan påføre skade til fjender med mere avancerede enheder og så slå dem "
+"ihjel med lavererangerende enheder - for at give dem mere erfarling (og "
+"dermed få dem op på det næste niveau)."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2494
@@ -3542,6 +3696,10 @@ msgid ""
 "Shaman), put it in the middle of a circle of units to heal them as they move "
 "across the map (Shamans can do this too, but not as well)."
 msgstr ""
+"Når du har en hvid troldmand (højere niveau af en troldmand) eller druide "
+"(højere niveau af en shaman), så placer den i midten af en cirkel af enheder "
+"som skal helbredes efterhånden som de går igennem kortet (shamaner kan også "
+"gøre dette men ikke så effektivt)."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2501
@@ -3676,28 +3834,3 @@ msgstr "<glossterm> KZ </glossterm>"
 #: ../../doc/manual/manual.en.xml:2600
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr "<link linkend=\"zoc\">Kontrolzone</link>."
-
-# type: Content of: <book><chapter><section><section><title>
-#~ msgid "Money"
-#~ msgstr "Penge"
-
-# type: Content of: <book><chapter><section><section><section><title>
-#~ msgid "Host Networked Game"
-#~ msgstr "Afvikle netværksspil"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#~ msgid "Healers will first heal their own units and then all friendly ones."
-#~ msgstr ""
-#~ "Healere vil først hele egne enheder og derefter venligsindede enheder."
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#~ msgid "Trolls and Woses can be healed by healers and a village."
-#~ msgstr "Trolde og træsjæle kan kureres af healere og i en landsby."
-
-# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#~ msgid "View defensive ratings of current unit against attacks"
-#~ msgstr "Vis forsvarsniveau for enhed imod angreb"
-
-# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#~ msgid "Show terrain table"
-#~ msgstr "Vis terræntabel"
