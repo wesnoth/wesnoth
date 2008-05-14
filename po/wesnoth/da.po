@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-11 16:11+0200\n"
-"PO-Revision-Date: 2008-03-22 13:44+0200\n"
+"PO-Revision-Date: 2008-05-12 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -661,7 +661,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -670,8 +669,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rekrutterede enheder får to tilfældige <ref>dst=traits text=karaktertræk</"
-"ref>, som påvirker deres egenskaber."
+"Rekrutterede enheder får to tilfældige <ref>dst=..traits_section "
+"text=karaktertræk</ref>, som påvirker deres egenskaber."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -3052,7 +3051,6 @@ msgid "backstab"
 msgstr "snigangreb"
 
 #: data/core/macros/abilities.cfg:545
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3159,15 +3157,14 @@ msgid "charge"
 msgstr "storm"
 
 #: data/core/macros/abilities.cfg:643
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Storm:\n"
-"Dette angreb giver dobbelt skade til modstanderen. Det gør også, at enheden "
-"selv modtager dobbelt skade fra modstanderens modangreb."
+"Når anvendt offensivt giver dette angreb dobbelt skade til modstanderen. Det "
+"gør også, at enheden selv modtager dobbelt skade fra modstanderens modangreb."
 
 #: data/core/macros/abilities.cfg:655
 msgid "drains"
@@ -4219,9 +4216,8 @@ msgstr ""
 "også til nogle levende skabninger."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr " Denne enhed kan helbrede enheder omkring den, og rense dem for gift."
+msgstr " Denne enhed kan udføre grundlæggende helbredelse."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4253,11 +4249,12 @@ msgstr ""
 "forsvarer sig."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Lederskabet hos denne enhed gør at vendlige enheder tæt på den giver mere "
+" Lederskabet hos denne enhed gør, at venlige enheder tæt på den giver mere "
 "skade i kamp. Det gælder dog kun for lavererangerende enheder."
 
 #: data/core/macros/special-notes.cfg:32
@@ -4327,7 +4324,6 @@ msgstr ""
 "enten den eller dens fjende er død."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4365,7 +4361,6 @@ msgstr ""
 "fjender, men kun under angreb."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -6754,13 +6749,12 @@ msgid "Choose your preferred language:"
 msgstr "Vælg dit foretrukne sprog:"
 
 #: src/game.cpp:1861
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 "Følgende udvidelsesmodul indeholder fejl og kunne derfor ikke indlæses:"
 msgstr[1] ""
-"Følgende udvidelsesmodul indeholder fejl og kunne derfor ikke indlæses:"
+"Følgende udvidelsesmoduler indeholder fejl og kunne derfor ikke indlæses:"
 
 #: src/game.cpp:1868
 msgid "ERROR DETAILS:"
@@ -7457,9 +7451,8 @@ msgid "Search"
 msgstr "Søg"
 
 #: src/menu_events.cpp:1979
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Ingen tilgængelige mål"
+msgstr ""
 
 #: src/menu_events.cpp:1990
 msgid ""
@@ -8808,30 +8801,10 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
 
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "Standard computer"
-
-#, fuzzy
-#~ msgid "name :"
-#~ msgstr "Navn:"
-
-#, fuzzy
-#~ msgid "cancel"
-#~ msgstr "Anullér"
-
-#, fuzzy
-#~ msgid "#(unknown campaign)"
-#~ msgstr "Ukendt kommando."
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Brug: control <side> <nick>"
+#~ msgid "ruby of fire"
+#~ msgstr "ildrubin"
 
 #~ msgid "Screenshot"
-#~ msgstr "Skærmbillede"
-
-#, fuzzy
-#~ msgid "Map_Screenshot"
 #~ msgstr "Skærmbillede"
 
 #~ msgid ""
@@ -8867,15 +8840,15 @@ msgstr "Slå sending af resumer til"
 #~ msgid "Unknown command: "
 #~ msgstr "Ukendt kommando: "
 
+#~ msgid "Usage: control <side> <nick>"
+#~ msgstr "Brug: control <side> <nick>"
+
 #~ msgid ""
 #~ " This unit is capable of basic healing, though it can only delay the "
 #~ "effects of poison, not cure them entirely."
 #~ msgstr ""
 #~ " Denne enhed er i stand til at foretage elementær helbredelse, men kan "
 #~ "kun forsinke effekten af gift, ikke helbrede en forgiftning fuldstændig."
-
-#~ msgid "ruby of fire"
-#~ msgstr "ildrubin"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
