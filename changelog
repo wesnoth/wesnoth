@@ -1,4 +1,7 @@
 Version 1.4.2+svn:
+ * campaigns:
+   * The Rise of Wesnoth:
+     * fixed the Wesfolk Outcast line's distract ability not working
  * language and i18n:
    * new translations: Friulian, Macedonian
    * updated translations: Danish, French, Russian, Slovak
@@ -106,9 +109,9 @@ Version 1.4:
      (bug #11150)
    * Fixed UI sounds toggle crash on Windows
    * when a new unit is spawned when the attacker dies and the new unit has
-     a lower number of weapons then the weapon number used in the attack an 
+     a lower number of weapons then the weapon number used in the attack an
      wml_exception was thrown (bug #10926).
-   * truncate names in the load dialog utf8 aware, might be related to 
+   * truncate names in the load dialog utf8 aware, might be related to
      bug #11186
    * fix bug #11187 play_once=yes and fix musical cross-fading
 
