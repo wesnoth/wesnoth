@@ -42,7 +42,7 @@ if(SVNVERSION_EXECUTABLE)
   execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
                   OUTPUT_VARIABLE SVN_VERSION)
   if(SVN_VERSION MATCHES [0-9]+.*)
-    add_custom_target(revision ALL
+    add_custom_target(revision-stamp ALL
                       COMMAND ${CMAKE_COMMAND}
                       -DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -DSRC_DIR="${CMAKE_SOURCE_DIR}"
                       -P "${CMAKE_SOURCE_DIR}/cmake/revision.cmake"
@@ -51,8 +51,8 @@ if(SVNVERSION_EXECUTABLE)
 
     add_custom_command(OUTPUT revision.hpp
                        COMMAND ${CMAKE_COMMAND}
-                       -E copy ${CMAKE_CURRENT_BINARY_DIR}/revision ${CMAKE_CURRENT_SOURCE_DIR}/revision.hpp
-                       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/revision)
+                       -E copy ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp ${CMAKE_CURRENT_SOURCE_DIR}/revision.hpp
+                       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp)
 
     set(REVISION_FILE revision.hpp)
     add_definitions(-DHAVE_REVISION)

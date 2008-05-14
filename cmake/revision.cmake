@@ -1,6 +1,6 @@
-if (EXISTS revision)
-  file(READ revision OLD_VERSION)
-endif (EXISTS revision)
+if (EXISTS revision-stamp)
+  file(READ revision-stamp OLD_VERSION)
+endif (EXISTS revision-stamp)
 
 execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${SRC_DIR}
                 OUTPUT_VARIABLE SVN_VERSION)
@@ -8,7 +8,7 @@ execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${SRC_DIR}
 if(SVN_VERSION MATCHES [0-9]+.*)
 
   if(NOT OLD_VERSION MATCHES ".*\"${SVN_VERSION}\".*")
-    file(WRITE revision "#define REVISION \"${SVN_VERSION}\"\n")
+    file(WRITE revision-stamp "#define REVISION \"${SVN_VERSION}\"\n")
   endif(NOT OLD_VERSION MATCHES ".*${SVN_VERSION}.*")
 
 endif(SVN_VERSION MATCHES [0-9]+.*)
