@@ -100,6 +100,7 @@ public:
 protected:
 	void action(gui::dialog_process_info &dp_info);
 private:
+	void make_damage_line(std::vector<std::string>&,const std::string&,const long long&,const long long&,const long long&,const long long&);
 	gui::dialog_button *detail_btn_;
 	std::string player_name_;
 	statistics::stats stats_;
@@ -215,59 +216,67 @@ team_num_(team), unit_count_(5,0)
 		    << COLUMN_SEPARATOR << _("This Turn");
 		items.push_back(str.str());
 	}
-	{
-		const int dsa = 100 * stats_.damage_inflicted
-		              - stats_.expected_damage_inflicted;
-		const int dst = 100 * stats_.turn_damage_inflicted
-		              - stats_.turn_expected_damage_inflicted;
-		std::stringstream str;
-        str << _("Inflicted") << COLUMN_SEPARATOR
-		    << stats_.damage_inflicted << " / "
-		    << (stats_.expected_damage_inflicted / 100.0)
-		    << COLUMN_SEPARATOR
-		    << ((dsa > 0) ? "+" : "")
-		    << ((stats_.expected_damage_inflicted == 0) ? 0
-		        : 100 * dsa / stats_.expected_damage_inflicted)
-		    << "%" << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR
-		    << stats_.turn_damage_inflicted << " / "
-		    << (stats_.turn_expected_damage_inflicted / 100.0)
-		    << COLUMN_SEPARATOR
-		    << ((dst > 0) ? "+" : "")
-		    << ((stats_.turn_expected_damage_inflicted == 0) ? 0
-		        : 100 * dst / stats_.turn_expected_damage_inflicted)
-		    << "%";
-		items.push_back(str.str());
-	}
-	{
-		const int dsa = 100 * stats_.damage_taken
-		              - stats_.expected_damage_taken;
-		const int dst = 100 * stats_.turn_damage_taken
-		              - stats_.turn_expected_damage_taken;
-		std::stringstream str;
-        str << _("Taken") << COLUMN_SEPARATOR
-		    << stats_.damage_taken << " / "
-		    << (stats_.expected_damage_taken / 100.0)
-		    << COLUMN_SEPARATOR
-		    << ((dsa > 0) ? "+" : "")
-		    << ((stats_.expected_damage_taken == 0) ? 0
-		        : 100 * dsa / stats_.expected_damage_taken)
-		    << "%" << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR
-		    << stats_.turn_damage_taken << " / "
-		    << (stats_.turn_expected_damage_taken / 100.0)
-		    << COLUMN_SEPARATOR
-		    << ((dst > 0) ? "+" : "")
-		    << ((stats_.turn_expected_damage_taken == 0) ? 0
-		        : 100 * dst / stats_.turn_expected_damage_taken)
-		    << "%";
-		items.push_back(str.str());
-	}
+	
+	statistics_dialog::make_damage_line(items, _("Inflicted"), 
+			stats_.damage_inflicted, 
+			stats_.expected_damage_inflicted,
+			stats_.turn_damage_inflicted,
+			stats_.turn_expected_damage_inflicted);
+	statistics_dialog::make_damage_line(items, _("Taken"), 
+			stats_.damage_taken, 
+			stats_.expected_damage_taken,
+			stats_.turn_damage_taken,
+			stats_.turn_expected_damage_taken);
+	items.push_back("New stats:");
+	
+	statistics_dialog::make_damage_line(items, _("Inflicted"), 
+			stats_.damage_inflicted, 
+			stats_.new_expected_damage_inflicted,
+			stats_.turn_damage_inflicted,
+			stats_.new_turn_expected_damage_inflicted);
+	statistics_dialog::make_damage_line(items, _("Taken"), 
+			stats_.damage_taken, 
+			stats_.new_expected_damage_taken,
+			stats_.turn_damage_taken,
+			stats_.new_turn_expected_damage_taken);
 	set_menu(items);
 }
 
 statistics_dialog::~statistics_dialog()
 {
+}
+
+void statistics_dialog::make_damage_line(std::vector<std::string>& items, 
+					 const std::string& header,
+					 const long long& damage, 
+					 const long long& expected,
+					 const long long& turn_damage, 
+					 const long long& turn_expected)
+{
+	const int dsa = statistics::stats::desimal_shift * damage
+	              - expected;
+	const int dst = statistics::stats::desimal_shift * turn_damage
+	              - turn_expected;
+
+	std::stringstream str;
+	str << header << COLUMN_SEPARATOR
+		<< damage << " / "
+		<< (expected / (double)statistics::stats::desimal_shift)
+		<< COLUMN_SEPARATOR
+		<< ((dsa > 0) ? "+" : "")
+		<< ((expected == 0) ? 0
+				: statistics::stats::desimal_shift * dsa / expected)
+		<< "%" << COLUMN_SEPARATOR
+		<< COLUMN_SEPARATOR
+		<< turn_damage << " / "
+		<< (turn_expected / (double)statistics::stats::desimal_shift)
+		<< COLUMN_SEPARATOR
+		<< ((dst > 0) ? "+" : "")
+		<< ((turn_expected == 0) ? 0
+				: statistics::stats::desimal_shift * dst / turn_expected)
+		<< "%";
+	items.push_back(str.str());
+
 }
 
 } // end anonymous namespace

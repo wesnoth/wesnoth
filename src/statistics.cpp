@@ -235,29 +235,51 @@ config stats::write() const
 	res.add_child("attacks",write_battle_result_map(attacks));
 	res.add_child("defends",write_battle_result_map(defends));
 
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",recruit_cost);
-	res["recruit_cost"] = buf;
-	snprintf(buf,sizeof(buf),"%d",recall_cost);
-	res["recall_cost"] = buf;
+	std::stringstream ss;	
+	ss << recruit_cost;
+	res["recruit_cost"] = ss.str();
+	ss.str(std::string());
+	ss << recall_cost;
+	res["recall_cost"] = ss.str();
 
-	snprintf(buf,sizeof(buf),"%d",damage_inflicted);
-	res["damage_inflicted"] = buf;
-	snprintf(buf,sizeof(buf),"%d",damage_taken);
-	res["damage_taken"] = buf;
-	snprintf(buf,sizeof(buf),"%d",expected_damage_inflicted);
-	res["expected_damage_inflicted"] = buf;
-	snprintf(buf,sizeof(buf),"%d",expected_damage_taken);
-	res["expected_damage_taken"] = buf;
+	ss.str(std::string());
+	ss << damage_inflicted;
+	res["damage_inflicted"] = ss.str();
+	ss.str(std::string());
+	ss << damage_taken;
+	res["damage_taken"] = ss.str();
+	ss.str(std::string());
+	ss << expected_damage_inflicted;
+	res["expected_damage_inflicted"] = ss.str();
+	ss.str(std::string());
+	ss << expected_damage_taken;
+	res["expected_damage_taken"] = ss.str();
+	ss.str(std::string());
+	ss << turn_damage_inflicted;
 
-	snprintf(buf,sizeof(buf),"%d",turn_damage_inflicted);
-	res["turn_damage_inflicted"] = buf;
-	snprintf(buf,sizeof(buf),"%d",turn_damage_taken);
-	res["turn_damage_taken"] = buf;
-	snprintf(buf,sizeof(buf),"%d",turn_expected_damage_inflicted);
-	res["turn_expected_damage_inflicted"] = buf;
-	snprintf(buf,sizeof(buf),"%d",turn_expected_damage_taken);
-	res["turn_expected_damage_taken"] = buf;
+	res["turn_damage_inflicted"] = ss.str();
+	ss.str(std::string());
+	ss << turn_damage_taken;
+	res["turn_damage_taken"] = ss.str();
+	ss.str(std::string());
+	ss << turn_expected_damage_inflicted;
+	res["turn_expected_damage_inflicted"] = ss.str();
+	ss.str(std::string());
+	ss << turn_expected_damage_taken;
+	res["turn_expected_damage_taken"] = ss.str();
+
+	ss.str(std::string());
+	ss << new_expected_damage_inflicted;
+	res["new_expected_damage_inflicted"] = ss.str();
+	ss.str(std::string());
+	ss << new_expected_damage_taken;
+	res["new_expected_damage_taken"] = ss.str();
+	ss.str(std::string());
+	ss << new_turn_expected_damage_inflicted;
+	res["new_turn_expected_damage_inflicted"] = ss.str();
+	ss.str(std::string());
+	ss << new_turn_expected_damage_taken;
+	res["new_turn_expected_damage_taken"] = ss.str();
 
 	return res;
 }
@@ -286,29 +308,52 @@ void stats::write(config_writer &out) const
 	write_battle_result_map(out, defends);
 	out.close_child("defends");
 
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",recruit_cost);
-	out.write_key_val("recruit_cost", buf);
-	snprintf(buf,sizeof(buf),"%d",recall_cost);
-	out.write_key_val("recall_cost", buf);
+	std::stringstream ss;	
+	ss << recruit_cost;
+	out.write_key_val("recruit_cost", ss.str());
+	ss.str(std::string());
+	ss << recall_cost;
+	out.write_key_val("recall_cost", ss.str());
 
-	snprintf(buf,sizeof(buf),"%d",damage_inflicted);
-	out.write_key_val("damage_inflicted", buf);
-	snprintf(buf,sizeof(buf),"%d",damage_taken);
-	out.write_key_val("damage_taken", buf);
-	snprintf(buf,sizeof(buf),"%d",expected_damage_inflicted);
-	out.write_key_val("expected_damage_inflicted", buf);
-	snprintf(buf,sizeof(buf),"%d",expected_damage_taken);
-	out.write_key_val("expected_damage_taken", buf);
+	ss.str(std::string());
+	ss << damage_inflicted;
+	out.write_key_val("damage_inflicted", ss.str());
+	ss.str(std::string());
+	ss << damage_taken;
+	out.write_key_val("damage_taken", ss.str());
+	ss.str(std::string());
+	ss << expected_damage_inflicted;
+	out.write_key_val("expected_damage_inflicted", ss.str());
+	ss.str(std::string());
+	ss << expected_damage_taken;
+	out.write_key_val("expected_damage_taken", ss.str());
+	ss.str(std::string());
+	ss << turn_damage_inflicted;
 
-	snprintf(buf,sizeof(buf),"%d",turn_damage_inflicted);
-	out.write_key_val("turn_damage_inflicted", buf);
-	snprintf(buf,sizeof(buf),"%d",turn_damage_taken);
-	out.write_key_val("turn_damage_taken", buf);
-	snprintf(buf,sizeof(buf),"%d",turn_expected_damage_inflicted);
-	out.write_key_val("turn_expected_damage_inflicted", buf);
-	snprintf(buf,sizeof(buf),"%d",turn_expected_damage_taken);
-	out.write_key_val("turn_expected_damage_taken", buf);
+	out.write_key_val("turn_damage_inflicted", ss.str());
+	ss.str(std::string());
+	ss << turn_damage_taken;
+	out.write_key_val("turn_damage_taken", ss.str());
+	ss.str(std::string());
+	ss << turn_expected_damage_inflicted;
+	out.write_key_val("turn_expected_damage_inflicted", ss.str());
+	ss.str(std::string());
+	ss << turn_expected_damage_taken;
+	out.write_key_val("turn_expected_damage_taken", ss.str());
+
+	ss.str(std::string());
+	ss << new_expected_damage_inflicted;
+	out.write_key_val("new_expected_damage_inflicted", ss.str());
+	ss.str(std::string());
+	ss << new_expected_damage_taken;
+	out.write_key_val("new_expected_damage_taken", ss.str());
+	ss.str(std::string());
+	ss << new_turn_expected_damage_inflicted;
+	out.write_key_val("new_turn_expected_damage_inflicted", ss.str());
+	ss.str(std::string());
+	ss << new_turn_expected_damage_taken;
+	out.write_key_val("new_turn_expected_damage_taken", ss.str());
+
 }
 
 void stats::read(const config& cfg)
@@ -338,18 +383,23 @@ void stats::read(const config& cfg)
 		defends = read_battle_result_map(*cfg.child("defends"));
 	}
 
-	recruit_cost = atoi(cfg["recruit_cost"].c_str());
-	recall_cost = atoi(cfg["recall_cost"].c_str());
+	recruit_cost = lexical_cast<long long>(cfg["recruit_cost"]);
+	recall_cost = lexical_cast<long long>(cfg["recall_cost"]);
 
-	damage_inflicted = atoi(cfg["damage_inflicted"].c_str());
-	damage_taken = atoi(cfg["damage_taken"].c_str());
-	expected_damage_inflicted = atoi(cfg["expected_damage_inflicted"].c_str());
-	expected_damage_taken = atoi(cfg["expected_damage_taken"].c_str());
+	damage_inflicted = lexical_cast<long long>(cfg["damage_inflicted"]);
+	damage_taken = lexical_cast<long long>(cfg["damage_taken"]);
+	expected_damage_inflicted = lexical_cast<long long>(cfg["expected_damage_inflicted"]);
+	expected_damage_taken = lexical_cast<long long>(cfg["expected_damage_taken"]);
 
-	turn_damage_inflicted = atoi(cfg["turn_damage_inflicted"].c_str());
-	turn_damage_taken = atoi(cfg["turn_damage_taken"].c_str());
-	turn_expected_damage_inflicted = atoi(cfg["turn_expected_damage_inflicted"].c_str());
-	turn_expected_damage_taken = atoi(cfg["turn_expected_damage_taken"].c_str());
+	turn_damage_inflicted = lexical_cast<long long>(cfg["turn_damage_inflicted"]);
+	turn_damage_taken = lexical_cast<long long>(cfg["turn_damage_taken"]);
+	turn_expected_damage_inflicted = lexical_cast<long long>(cfg["turn_expected_damage_inflicted"]);
+	turn_expected_damage_taken = lexical_cast<long long>(cfg["turn_expected_damage_taken"]);
+	
+	new_expected_damage_inflicted = lexical_cast_default<long long>(cfg["new_expected_damage_inflicted"],expected_damage_inflicted);
+	new_expected_damage_taken = lexical_cast_default<long long>(cfg["new_expected_damage_taken"],expected_damage_taken);
+	new_turn_expected_damage_inflicted = lexical_cast_default<long long>(cfg["new_turn_expected_damage_inflicted"],turn_expected_damage_inflicted);
+	new_turn_expected_damage_taken = lexical_cast_default<long long>(cfg["new_turn_expected_damage_taken"],turn_expected_damage_taken);
 }
 
 disabler::disabler() { stats_disabled++; }
@@ -398,24 +448,22 @@ stats& attack_context::defender_stats()
 	return get_stats(defender_side);
 }
 
-#ifdef MABOUL_STATS
-void attack_context::attack_excepted_damage(double attacker_inflict, double defender_inflict)
+void attack_context::attack_excepted_damage(double attacker_inflict_, double defender_inflict_)
 {
-	attacker_inflict *= 100.0;
-	defender_inflict *= 100.0;
-	attacker_stats().expected_damage_inflicted	+= attacker_inflict;
-	attacker_stats().expected_damage_taken		+= defender_inflict;
-	defender_stats().expected_damage_inflicted	+= defender_inflict;
-	defender_stats().expected_damage_taken		+= attacker_inflict;
-	attacker_stats().turn_expected_damage_inflicted	+= attacker_inflict;
-	attacker_stats().turn_expected_damage_taken		+= defender_inflict;
-	defender_stats().turn_expected_damage_inflicted	+= defender_inflict;
-	defender_stats().turn_expected_damage_taken		+= attacker_inflict;
+	const long long attacker_inflict = static_cast<long long>(attacker_inflict_ * stats::desimal_shift);
+	const long long defender_inflict = static_cast<long long>(defender_inflict_ * stats::desimal_shift);
+	attacker_stats().new_expected_damage_inflicted	+= attacker_inflict;
+	attacker_stats().new_expected_damage_taken	+= defender_inflict;
+	defender_stats().new_expected_damage_inflicted	+= defender_inflict;
+	defender_stats().new_expected_damage_taken	+= attacker_inflict;
+	attacker_stats().new_turn_expected_damage_inflicted += attacker_inflict;
+	attacker_stats().new_turn_expected_damage_taken	    += defender_inflict;
+	defender_stats().new_turn_expected_damage_inflicted += defender_inflict;
+	defender_stats().new_turn_expected_damage_taken	    += attacker_inflict;
 }
 
-#endif
 
-void attack_context::attack_result(attack_context::ATTACK_RESULT res, int damage, int drain)
+void attack_context::attack_result(attack_context::ATTACK_RESULT res, long long damage, long long drain)
 {
 	if(stats_disabled > 0)
 		return;
@@ -423,24 +471,30 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res, int damage
 	push_back(attacker_res,(res == MISSES ? '0' : '1'));
 
 	if(res != MISSES) {
-#ifdef MABOUL_STATS
+		// handle drain
 		attacker_stats().damage_taken -= drain;
 		defender_stats().damage_inflicted -= drain;
 		attacker_stats().turn_damage_taken -= drain;
 		defender_stats().turn_damage_inflicted -= drain;
-#endif
+		
 		attacker_stats().damage_inflicted += damage;
 		defender_stats().damage_taken += damage;
 		attacker_stats().turn_damage_inflicted += damage;
 		defender_stats().turn_damage_taken += damage;
 	}
-#ifndef MABOUL_STATS
-	const int exp_damage = damage * chance_to_hit_defender;
+	const int exp_damage = damage * chance_to_hit_defender * 10;
+	const int exp_drain  = drain  * chance_to_hit_defender * 10;
+
+	attacker_stats().expected_damage_taken -= exp_drain;
+	defender_stats().expected_damage_inflicted -= exp_drain;
+	attacker_stats().turn_expected_damage_taken -= exp_drain;
+	defender_stats().turn_expected_damage_inflicted -= exp_drain;
+
+	// handle drain
 	attacker_stats().expected_damage_inflicted += exp_damage;
 	defender_stats().expected_damage_taken += exp_damage;
 	attacker_stats().turn_expected_damage_inflicted += exp_damage;
 	defender_stats().turn_expected_damage_taken += exp_damage;
-#endif
 
 	if(res == KILLS) {
 		attacker_stats().killed[defender_type]++;
@@ -448,7 +502,7 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res, int damage
 	}
 }
 
-void attack_context::defend_result(attack_context::ATTACK_RESULT res, int damage, int drain)
+void attack_context::defend_result(attack_context::ATTACK_RESULT res, long long damage, long long drain)
 {
 	if(stats_disabled > 0)
 		return;
@@ -457,24 +511,29 @@ void attack_context::defend_result(attack_context::ATTACK_RESULT res, int damage
 
 
 	if(res != MISSES) {
-#ifdef MABOUL_STATS
+		//handle drain
 		defender_stats().damage_taken -= drain;
 		attacker_stats().damage_inflicted -= drain;
 		defender_stats().turn_damage_taken -= drain;
 		attacker_stats().turn_damage_inflicted -= drain;
-#endif
+		
 		attacker_stats().damage_taken += damage;
 		defender_stats().damage_inflicted += damage;
 		attacker_stats().turn_damage_taken += damage;
 		defender_stats().turn_damage_inflicted += damage;
 	}
-#ifndef MABOUL_STATS
-	const int exp_damage = damage * chance_to_hit_attacker;
+	const long long exp_damage = damage * chance_to_hit_attacker * 10;
+	const long long exp_drain = drain * chance_to_hit_attacker * 10;
+	//handle drain
+	defender_stats().expected_damage_taken -= exp_drain;
+	attacker_stats().expected_damage_inflicted -= exp_drain;	
+	defender_stats().turn_expected_damage_taken -= exp_drain;
+	attacker_stats().turn_expected_damage_inflicted -= exp_drain;
+	
 	attacker_stats().expected_damage_taken += exp_damage;
 	defender_stats().expected_damage_inflicted += exp_damage;
 	attacker_stats().turn_expected_damage_taken += exp_damage;
 	defender_stats().turn_expected_damage_inflicted += exp_damage;
-#endif
 
 	if(res == KILLS) {
 		attacker_stats().deaths[attacker_type]++;

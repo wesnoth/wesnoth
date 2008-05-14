@@ -50,17 +50,21 @@ namespace statistics
 
 		battle_result_map attacks, defends;
 
-		int damage_inflicted, damage_taken;
-		int turn_damage_inflicted, turn_damage_taken;
+		long long damage_inflicted, damage_taken;
+		long long turn_damage_inflicted, turn_damage_taken;
 
-		// Expected value for damage inflicted/taken * 100, based on
+		static const long long desimal_shift = 1000;
+
+		// Expected value for damage inflicted/taken * 1000, based on
 		// probability to hit,
 		// Use this long term to see how lucky a side is.
 		//! @todo FIXME: Since integers are used, rounding errors accumulate.
 		// Also, slow isn't accounted for properly.
 		// Rusty's simulator could be used obtain valid values.
-		int expected_damage_inflicted, expected_damage_taken;
-		int turn_expected_damage_inflicted, turn_expected_damage_taken;
+		long long expected_damage_inflicted, expected_damage_taken;
+		long long turn_expected_damage_inflicted, turn_expected_damage_taken;
+		long long new_expected_damage_inflicted, new_expected_damage_taken;
+		long long new_turn_expected_damage_inflicted, new_turn_expected_damage_taken;
 	};
 
 	int sum_str_int_map(const stats::str_int_map& m);
@@ -85,11 +89,9 @@ namespace statistics
 
 		enum ATTACK_RESULT { MISSES, HITS, KILLS };
 
-#ifdef MABOUL_STATS
 		void attack_excepted_damage(double attacker_inflict, double defender_inflict);
-#endif
-		void attack_result(ATTACK_RESULT res, int damage, int drain);
-		void defend_result(ATTACK_RESULT res, int damage, int drain);
+		void attack_result(ATTACK_RESULT res, long long damage, long long drain);
+		void defend_result(ATTACK_RESULT res, long long damage, long long drain);
 
 	private:
 
