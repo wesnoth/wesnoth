@@ -29,12 +29,13 @@ def generate(env):
 
     env["MSGINIT"] = WhereIs("msginit")
     msginit = Builder(
-        action = "$MSGINIT -i $SOURCE -o $TARGET",
+        action = "$MSGINIT -i $SOURCE -o $TARGET --no-translator",
         src_suffix = ".pot",
         suffix = ".po",
         single_source = True
         )
     env["BUILDERS"]["MsgInit"] = msginit
+    env["ENV"]["LANG"] = os.environ.get("LANG")
 
     def MsgInitMerge(env, target, source):
         if os.path.exists(target + ".po"):
