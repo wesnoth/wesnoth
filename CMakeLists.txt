@@ -1,6 +1,5 @@
 # most stuff should be implemented so far, mgoe should know the details (he has done all the work...)
 # what is not working so far:
-# * fribidi support
 # * "uninstall" target
 # * Strict compilation (-Werror -Wno-unused -Wno-sign-compare)
 # * some other smaller stuff
@@ -141,7 +140,10 @@ if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
   add_definitions(-DHAVE_FRIBIDI)
 endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 
+#
 #create dummy-locales
+#
+
 if(ENABLE_DUMMY_LOCALES)
   add_definitions(-DUSE_DUMMYLOCALES)
   set(DUMMY_LOCALE_C_DIR ${CMAKE_SOURCE_DIR}/locales/C)
@@ -185,7 +187,10 @@ if (GETTEXT_FOUND AND ENABLE_NLS)
 endif (GETTEXT_FOUND AND ENABLE_NLS)
 add_subdirectory(src)
 
-#shrink images
+#
+# shrink images for tinygui
+#
+
 if(GUI STREQUAL "tiny")
   FIND_PACKAGE( ImageMagick REQUIRED )
 
@@ -225,10 +230,23 @@ if(ENABLE_SERVER AND FIFO_DIR)
   endif(SERVER_UID AND SERVER_GID)
 endif(ENABLE_SERVER AND FIFO_DIR)
 
+
+#
+# uninstall
+#
+
+configure_file(
+  "${CMAKE_SOURCE_DIR}/cmake/uninstall.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake"
+  IMMEDIATE @ONLY)
+
+add_custom_target(uninstall
+  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake")
+
+
 #
 # Packaging stuff
 #
-
 
 INCLUDE(CPack)
 SET(CPACK_GENERATOR "TGZ")
