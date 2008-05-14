@@ -1996,6 +1996,7 @@ void python_ai::play_turn()
 		"\t\tsys.stderr.write(\"Python: Could not create pyerr.txt in current directory.\\n\")\n"
 		"\tbackup = sys.path[:]\n"
 		"\tsys.path.append(\"" + path + "/data/ais\")\n"
+		"\tsys.path.append(\"data/ais\")\n"
 		"\ttry:\n"
 		"\t\timport parse, safe\n"
 		"\t\tparse.pathes = [\"" + path + "\"]\n"
