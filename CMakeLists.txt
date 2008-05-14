@@ -30,7 +30,8 @@ FIND_PACKAGE( SDL_ttf 2.0.8 REQUIRED )
 FIND_PACKAGE( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
 FIND_PACKAGE( ZLIB REQUIRED )
 FIND_PACKAGE( PNG REQUIRED )
-FIND_PACKAGE( Gettext REQUIRED )
+FIND_PACKAGE( Gettext )
+FIND_PACKAGE( FriBiDi )
 
 
 #Really find  python
@@ -81,6 +82,8 @@ set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 option(ENABLE_PYTHON "Enable in-game python extensions" ON)
 option(ENABLE_DUMMY_LOCALES "Create dummy locales")
+option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
+option(ENABLE_NLS "Enable building of tranlations" ON)
 
 #Game options
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
@@ -134,6 +137,9 @@ if(ENABLE_PYTHON AND PYTHON_LIBRARY)
   add_definitions(-DHAVE_PYTHON)
 endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
 
+if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
+  add_definitions(-DHAVE_FRIBIDI)
+endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 
 #create dummy-locales
 if(ENABLE_DUMMY_LOCALES)
@@ -174,7 +180,9 @@ string(REPLACE "\n" "" LINGUAS ${LINGUAS})
 separate_arguments(LINGUAS)
 
 add_subdirectory(doc)
-add_subdirectory(po)
+if (GETTEXT_FOUND AND ENABLE_NLS)
+  add_subdirectory(po)
+endif (GETTEXT_FOUND AND ENABLE_NLS)
 add_subdirectory(src)
 
 #shrink images

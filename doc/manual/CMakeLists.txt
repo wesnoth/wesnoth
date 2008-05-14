@@ -23,29 +23,42 @@ if(ASCIIDOC_EXECUTABLE AND DOS2UNIX_EXECUTABLE AND XSLTPROC_EXECUTABLE)
                              manual.en.xml > ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.html
                      MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/manual.en.xml)
 
-  set(TRANSLATED)
-  foreach(LANG ${LINGUAS})
-    set(INFILE manual.${LANG}.xml)
-    set(OUTFILE ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LANG}.html)
-    set(STAMPFILE ${CMAKE_CURRENT_BINARY_DIR}/manual.${LANG}.xml.stamp)
 
-    set_source_files_properties(${STAMPFILE} PROPERTIES GENERATED TRUE)
-    add_custom_command(OUTPUT ${OUTFILE}
-                       COMMAND test -f ${INFILE} && 
-                       ${XSLTPROC_EXECUTABLE} ${XSLTOPTS} /etc/asciidoc/docbook-xsl/xhtml.xsl 
-                       ${INFILE} > ${OUTFILE} || true
-                       MAIN_DEPENDENCY ${STAMPFILE})
+  if(ENABLE_NLS)
+    set(TRANSLATED)
+    foreach(LANG ${LINGUAS})
+      set(INFILE manual.${LANG}.xml)
+      set(OUTFILE ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LANG}.html)
+      set(STAMPFILE ${CMAKE_CURRENT_BINARY_DIR}/manual.${LANG}.xml.stamp)
 
-    list(APPEND TRANSLATED ${OUTFILE})
-  endforeach(LANG ${LINGUAS})
+      #only build the manual if the xml file for that language is really present
+      set_source_files_properties(${STAMPFILE} PROPERTIES GENERATED TRUE)
+      add_custom_command(OUTPUT ${OUTFILE}
+                         COMMAND test -f ${INFILE} && 
+                         ${XSLTPROC_EXECUTABLE} ${XSLTOPTS} /etc/asciidoc/docbook-xsl/xhtml.xsl 
+                         ${INFILE} > ${OUTFILE} || true
+                         MAIN_DEPENDENCY ${STAMPFILE})
 
-  add_custom_target(docs DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.html ${TRANSLATED})
-  add_dependencies(docs update-po4a-wesnoth-manual)
+      list(APPEND TRANSLATED ${OUTFILE})
+    endforeach(LANG ${LINGUAS})
+
+    add_custom_target(docs DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.html ${TRANSLATED})
+    #add translated documents as dependency
+    find_program(PO4A_TRANSLATE_EXECUTABLE "po4a-translate")
+    if(PO4A_TRANSLATE_EXECUTABLE)
+      add_dependencies(docs update-po4a-wesnoth-manual)
+    endif(PO4A_TRANSLATE_EXECUTABLE)
+  else()
+    add_custom_target(docs DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.html)
+  endif(ENABLE_NLS)
+
 endif(ASCIIDOC_EXECUTABLE AND DOS2UNIX_EXECUTABLE AND XSLTPROC_EXECUTABLE)
 
 install(FILES manual.en.html DESTINATION "${DOCDIR}")
 install(DIRECTORY images styles DESTINATION "${DOCDIR}")
 
-foreach(LANG ${LINGUAS})
-  install(FILES manual.${LANG}.html DESTINATION "${DOCDIR}" OPTIONAL)
-endforeach(LANG ${LINGUAS})
+if(ENABLE_NLS)
+  foreach(LANG ${LINGUAS})
+    install(FILES manual.${LANG}.html DESTINATION "${DOCDIR}" OPTIONAL)
+  endforeach(LANG ${LINGUAS})
+endif(ENABLE_NLS)

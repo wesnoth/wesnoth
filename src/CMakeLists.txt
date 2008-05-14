@@ -1,18 +1,17 @@
 ## some includes ##
-INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
-INCLUDE_DIRECTORIES( ${PYTHON_INCLUDE_PATH} )
-INCLUDE_DIRECTORIES( ${SDLIMAGE_INCLUDE_DIR} )
-INCLUDE_DIRECTORIES( ${SDLMIXER_INCLUDE_DIR} )
-INCLUDE_DIRECTORIES( ${SDLNET_INCLUDE_DIR} )
-INCLUDE_DIRECTORIES( ${SDLTTF_INCLUDE_DIR} )
-INCLUDE_DIRECTORIES( ${SDL_INCLUDE_DIR} )
-INCLUDE_DIRECTORIES( ${ZLIB_INCLUDE_DIR} )
+include_directories( ${Boost_INCLUDE_DIR} )
+include_directories( ${SDLIMAGE_INCLUDE_DIR} )
+include_directories( ${SDLMIXER_INCLUDE_DIR} )
+include_directories( ${SDLNET_INCLUDE_DIR} )
+include_directories( ${SDLTTF_INCLUDE_DIR} )
+include_directories( ${SDL_INCLUDE_DIR} )
+include_directories( ${ZLIB_INCLUDE_DIR} )
 # needed to get include paths in the subfolders correct
-INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/ )
+include_directories( ${CMAKE_SOURCE_DIR}/src/ )
 
-LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
 
-SET( the-external-libs
+set( the-external-libs
     ${SDLIMAGE_LIBRARY}
     ${SDLMIXER_LIBRARY}
     ${SDLNET_LIBRARY}
@@ -22,9 +21,19 @@ SET( the-external-libs
     ${Boost_REGEX_LIBRARY}
 )
 
-IF(ENABLE_PYTHON AND PYTHON_LIBRARY)
-  SET(the-external-libs ${the-external-libs} ${PYTHON_LIBRARIES})
-ENDIF(ENABLE_PYTHON AND PYTHON_LIBRARY)
+if(ENABLE_PYTHON AND PYTHON_LIBRARY)
+  include_directories( ${PYTHON_INCLUDE_PATH} )
+  set(the-external-libs ${the-external-libs} ${PYTHON_LIBRARIES})
+endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
+
+if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
+  include_directories( ${FRIBIDI_INCLUDE_PATH} )
+  set(the-external-libs ${the-external-libs} ${FRIBIDI_LIBRARIES})
+endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
+
+#
+# Create targets for revision.hpp
+#
 
 find_program(SVNVERSION_EXECUTABLE "svnversion")
 
