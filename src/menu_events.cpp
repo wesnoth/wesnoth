@@ -261,19 +261,19 @@ void statistics_dialog::make_damage_line(std::vector<std::string>& items,
 	std::stringstream str;
 	str << header << COLUMN_SEPARATOR
 		<< damage << " / "
-		<< (expected / (double)statistics::stats::desimal_shift)
+		<< (expected/100 / (double)statistics::stats::desimal_shift * 100.0)
 		<< COLUMN_SEPARATOR
 		<< ((dsa > 0) ? "+" : "")
 		<< ((expected == 0) ? 0
-				: statistics::stats::desimal_shift * dsa / expected)
+				: 100 * dsa / expected)
 		<< "%" << COLUMN_SEPARATOR
 		<< COLUMN_SEPARATOR
 		<< turn_damage << " / "
-		<< (turn_expected / (double)statistics::stats::desimal_shift)
+		<< (turn_expected/100 / (double)statistics::stats::desimal_shift * 100.0)
 		<< COLUMN_SEPARATOR
 		<< ((dst > 0) ? "+" : "")
 		<< ((turn_expected == 0) ? 0
-				: statistics::stats::desimal_shift * dst / turn_expected)
+				: 100 * dst / turn_expected)
 		<< "%";
 	items.push_back(str.str());
 

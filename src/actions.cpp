@@ -917,7 +917,6 @@ attack::attack(game_display& gui, const gamemap& map,
 	DBG_NG << "getting attack statistics\n";
 	statistics::attack_context attack_stats(a_->second, d_->second, a_stats_->chance_to_hit, d_stats_->chance_to_hit);
 
-#ifdef MABOUL_STATS	
 	{
 		// Calculate stats for battle
 		combatant attacker(bc_->get_attacker_stats());
@@ -928,7 +927,6 @@ attack::attack(game_display& gui, const gamemap& map,
 	
 		attack_stats.attack_excepted_damage(attacker_inflict,defender_inflict);
 	}
-#endif
 
 	orig_attacks_ = a_stats_->num_blows;
 	orig_defends_ = d_stats_->num_blows;

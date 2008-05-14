@@ -207,6 +207,11 @@ static void merge_stats(stats& a, const stats& b)
 	a.turn_damage_taken += b.turn_damage_taken;
 	a.turn_expected_damage_inflicted += b.turn_expected_damage_inflicted;
 	a.turn_expected_damage_taken += b.turn_expected_damage_taken;
+	
+	a.new_expected_damage_inflicted += b.new_expected_damage_inflicted;
+	a.new_expected_damage_taken += b.new_expected_damage_taken;
+	a.new_turn_expected_damage_inflicted += b.new_turn_expected_damage_inflicted;
+	a.new_turn_expected_damage_taken += b.new_turn_expected_damage_taken;
 }
 
 namespace statistics
@@ -216,7 +221,9 @@ stats::stats() : recruit_cost(0), recall_cost(0),
                  damage_inflicted(0), damage_taken(0),
                  turn_damage_inflicted(0), turn_damage_taken(0),
                  expected_damage_inflicted(0), expected_damage_taken(0),
-                 turn_expected_damage_inflicted(0), turn_expected_damage_taken(0)
+                 turn_expected_damage_inflicted(0), turn_expected_damage_taken(0),
+                 new_expected_damage_inflicted(0), new_expected_damage_taken(0),
+                 new_turn_expected_damage_inflicted(0), new_turn_expected_damage_taken(0)
 {}
 
 stats::stats(const config& cfg)
@@ -598,6 +605,8 @@ void reset_turn_stats(int side)
 	s.turn_damage_taken = 0;
 	s.turn_expected_damage_inflicted = 0;
 	s.turn_expected_damage_taken = 0;
+	s.new_turn_expected_damage_inflicted = 0;
+	s.new_turn_expected_damage_taken = 0;
 }
 
 stats calculate_stats(int category, int side)
