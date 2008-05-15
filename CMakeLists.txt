@@ -1,7 +1,10 @@
 # most stuff should be implemented so far, mgoe should know the details (he has done all the work...)
 # what is not working so far:
-# * "uninstall" target
+# * "uninstall" target (this is at least partially done)
 # * Strict compilation (-Werror -Wno-unused -Wno-sign-compare)
+# * The fribidi check doesn't distinguish between version 1 and version 2
+#   Wesnoth only works with version 1 currently, so if version 2 is installed,
+#   it should be treated the same as if it wasn't present.
 # * some other smaller stuff
 # * nice INSTALL howto
 
