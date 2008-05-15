@@ -7,9 +7,7 @@
 # * nice INSTALL howto
 
 # set minimum version and make sure that things work with cmake 2.6, too
-if(COMMAND cmake_minimum_required)
-    cmake_minimum_required(VERSION 2.4)
-endif(COMMAND cmake_minimum_required)
+cmake_minimum_required(VERSION 2.4.6)
 
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 NEW)
