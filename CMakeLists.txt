@@ -2,7 +2,7 @@
 # what is not working so far:
 # * The fribidi check doesn't distinguish between version 1 and version 2
 #   Wesnoth only works with version 1 currently, so if version 2 is installed,
-#   it should be treated the same as if it wasn't present.
+#   it should be treated the same as if it wasn't present. (This should be fixed, please test)
 # * some other smaller stuff
 # * nice INSTALL howto
 
@@ -22,40 +22,12 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # find all deps needed
-FIND_PACKAGE( SDL 1.2.7 REQUIRED )
-FIND_PACKAGE( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
-FIND_PACKAGE( Gettext )
-FIND_PACKAGE( FriBiDi )
-
-#Really find  python
-FIND_PACKAGE( PythonInterp 2.4 )
-if(PYTHON_EXECUTABLE AND NOT PYTHON_LIBRARY)
-  execute_process(COMMAND ${PYTHON_EXECUTABLE} 
-                  -c "import distutils.sysconfig; import os.path; print os.path.join(distutils.sysconfig.get_config_var('LIBDIR'), distutils.sysconfig.get_config_var('LDLIBRARY'));"
-                  OUTPUT_VARIABLE PYTHON_LIBDIR)
-  string(REPLACE "\n" "" PYTHON_LIBDIR ${PYTHON_LIBDIR})
-
-  if(PYTHON_LIBDIR)
-    execute_process(COMMAND ${PYTHON_EXECUTABLE} 
-                    -c "import distutils.sysconfig; print distutils.sysconfig.get_python_inc();"
-                    OUTPUT_VARIABLE PYTHON_INC)
-    string(REPLACE "\n" "" PYTHON_INC ${PYTHON_INC})
-
-    file(TO_CMAKE_PATH ${PYTHON_LIBDIR} PYTHON_LIBRARIES)
-    file(TO_CMAKE_PATH ${PYTHON_INC} PYTHON_INC)
-
-    set(PYTHON_LIBRARY ${PYTHON_LIBRARIES} CACHE FILEPATH "bla")
-    set(PYTHON_INCLUDE_PATH ${PYTHON_INC} CACHE PATH "bla")
-
-  else(PYTHON_LIBDIR)
-    FIND_PACKAGE( PythonLibs 2.4 )
-  endif(PYTHON_LIBDIR)
-
-elseif(NOT PYTHON_EXECUTABLE)
-  FIND_PACKAGE( PythonLibs 2.4 )
-else(PYTHON_EXECUTABLE AND NOT PYTHON_LIBRARY)
-  set(PYTHON_LIBRARIES ${PYTHON_LIBRARY})
-endif(PYTHON_EXECUTABLE AND NOT PYTHON_LIBRARY)
+find_package( SDL 1.2.7 REQUIRED )
+find_package( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
+find_package( Gettext )
+find_package( FriBiDi )
+find_package( PythonInterp 2.4 )
+find_package( PythonCustom )
 
 #
 # Options
@@ -70,15 +42,10 @@ set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the
 set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 
-#Common options
-set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
-set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
-option(ENABLE_PYTHON "Enable in-game python extensions" ON)
-option(ENABLE_DUMMY_LOCALES "Create dummy locales")
-option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
-option(ENABLE_NLS "Enable building of tranlations" ON)
-
 #Game options
+option(ENABLE_PYTHON "Enable in-game python extensions" ON)
+option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
+option(ENABLE_DUMMY_LOCALES "Create dummy locales")
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
 
 #server options
@@ -93,20 +60,24 @@ option(ENABLE_SERVER "Enable compilation of server" ON)
 option(ENABLE_EDITOR "Enable compilation of map editor")
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
+option(ENABLE_NLS "Enable building of tranlations" ON)
+
+set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
+set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 
 #
 # Handle options (set paths/definitions/etc...)
 #
 
-# Set default debug flags at first run
+# Set our own default debug flags at first run
 if(NOT CONFIGURED)
   set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
 endif(NOT CONFIGURED)
 
-#Build-type: DEBUGSTRICT
+#Add build-type: DEBUGSTRICT
 set(CMAKE_CXX_FLAGS_DEBUGSTRICT "-O0 -DDEBUG -ggdb3 -W -Wall -ansi -Werror -Wno-unused -Wno-sign-compare" CACHE STRING "Flags used by the compiler during strict debug builds.")
 set(CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT "${CMAKE_EXE_LINKER_FLAGS_DEBUG}" CACHE STRING "Flags used for linking binaries during strict debug builds.")
-MARK_AS_ADVANCED(CMAKE_CXX_FLAGS_DEBUGSTRICT CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT)
+mark_as_advanced(CMAKE_CXX_FLAGS_DEBUGSTRICT CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT)
 
 # compose datadir path of datarootdir and datadirname
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
@@ -131,33 +102,51 @@ elseif(GUI STREQUAL "small")
   add_definitions(-DUSE_SMALL_GUI)
 endif(GUI STREQUAL "tiny")
 
-if(ENABLE_PYTHON AND PYTHON_LIBRARY)
+if(ENABLE_PYTHON AND PYTHON_LIBRARIES)
   add_definitions(-DHAVE_PYTHON)
-endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
+elseif(ENABLE_PYTHON AND NOT PYTHON_LIBRARIES)
+  message("Could not find Python. Disabling Python support.")
+endif()
 
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
   add_definitions(-DHAVE_FRIBIDI)
-endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
+elseif(ENABLE_FRIBIDI AND NOT FRIBIDI_LIBRARIES)
+  message("Could not find FriBiDi. Disabling FriBiDi support.")
+endif()
 
 #
 # Libraries that are only required by some targets
 #
 
 if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_EDITOR OR ENABLE_TESTS)
-  FIND_PACKAGE( SDL_image 1.2 REQUIRED )
+  find_package( SDL_image 1.2 REQUIRED )
 endif()
 if(ENABLE_GAME OR ENABLE_EDITOR OR ENABLE_TESTS)
-  FIND_PACKAGE( SDL_mixer 1.2 REQUIRED )
-  FIND_PACKAGE( SDL_ttf 2.0.8 REQUIRED )
+  find_package( SDL_mixer 1.2 REQUIRED )
+  find_package( SDL_ttf 2.0.8 REQUIRED )
 endif()
 if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
-  FIND_PACKAGE( SDL_net  REQUIRED )
+  find_package( SDL_net REQUIRED )
 endif()
 if(ENABLE_TOOLS)
-  FIND_PACKAGE( ZLIB REQUIRED )
-  FIND_PACKAGE( PNG REQUIRED )
+  find_package( ZLIB REQUIRED )
+  find_package( PNG REQUIRED )
 endif()
 
+# get languages
+file(READ po/LINGUAS LINGUAS)
+string(REPLACE "\n" "" LINGUAS ${LINGUAS})
+separate_arguments(LINGUAS)
+
+#
+# Include subdirectories
+#
+
+add_subdirectory(doc)
+if (GETTEXT_FOUND AND ENABLE_NLS)
+  add_subdirectory(po)
+endif (GETTEXT_FOUND AND ENABLE_NLS)
+add_subdirectory(src)
 
 #
 #create dummy-locales
@@ -184,27 +173,16 @@ if(ENABLE_DUMMY_LOCALES)
                          DEPENDS ${DUMMY_LOCALE_C_DIR})
 
       set(DUMMY_LOCALES ${DUMMY_LOCALES} ${DUMMY_LOCALE_DIR})
-    endif(NOT LANG STREQUAL "C")
+    endif()
 
-  endforeach(LANGFILE ${LANGS})
-  add_custom_target(create-dummy-locales ALL DEPENDS ${DUMMY_LOCALES})
+  endforeach()
+  add_custom_target(dummy-locales ALL DEPENDS ${DUMMY_LOCALES})
 
   # this is a workaround for a bug in 2.4-7
   file(MAKE_DIRECTORY locales)
   install(DIRECTORY locales DESTINATION ${DATADIR} )
 
-endif(ENABLE_DUMMY_LOCALES)
-
-# read languages
-file(READ po/LINGUAS LINGUAS)
-string(REPLACE "\n" "" LINGUAS ${LINGUAS})
-separate_arguments(LINGUAS)
-
-add_subdirectory(doc)
-if (GETTEXT_FOUND AND ENABLE_NLS)
-  add_subdirectory(po)
-endif (GETTEXT_FOUND AND ENABLE_NLS)
-add_subdirectory(src)
+endif()
 
 #
 # shrink images for tinygui
@@ -217,7 +195,7 @@ if(GUI STREQUAL "tiny")
     set(IMAGE_BUILD_DIR ${CMAKE_SOURCE_DIR}/tiny_images)
   else()
     set(IMAGE_BUILD_DIR ${CMAKE_BINARY_DIR})
-  endif(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+  endif()
 
   set(IMAGE_FILES data/*.jpg data/*.png images/*.jpg images/*.png)
 
@@ -227,7 +205,9 @@ if(GUI STREQUAL "tiny")
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
                     COMMENT "Creating resized images for tinygui.")
 
-  ########### install files ###############
+  #
+  # Install files (exclude images from data-dir, we install them from our build dir)
+  #
 
   # this is a workaround for a bug in 2.4-7
   file(MAKE_DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images)
@@ -238,17 +218,20 @@ if(GUI STREQUAL "tiny")
           PATTERN ".svn" EXCLUDE )
 else()
 
+  #
+  # Install files
+  #
   install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} PATTERN ".svn" EXCLUDE )
 
-endif(GUI STREQUAL "tiny")
+endif()
+
 
 if(ENABLE_SERVER AND FIFO_DIR)
   install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
   if(SERVER_UID AND SERVER_GID)
     install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")
-  endif(SERVER_UID AND SERVER_GID)
-endif(ENABLE_SERVER AND FIFO_DIR)
-
+  endif()
+endif()
 
 #
 # uninstall
@@ -262,13 +245,12 @@ configure_file(
 add_custom_target(uninstall
   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake")
 
-
 #
 # Packaging stuff
 #
 
-INCLUDE(CPack)
-SET(CPACK_GENERATOR "TGZ")
-SET(CPACK_SOURCE_GENERATOR "TGZ")
+include(CPack)
+set(CPACK_GENERATOR "TGZ")
+set(CPACK_SOURCE_GENERATOR "TGZ")
 
 set(CONFIGURED ON CACHE INTERNAL "")
