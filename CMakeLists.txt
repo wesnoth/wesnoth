@@ -1,7 +1,5 @@
 # most stuff should be implemented so far, mgoe should know the details (he has done all the work...)
 # what is not working so far:
-# * "uninstall" target (this is at least partially done)
-# * Strict compilation (-Werror -Wno-unused -Wno-sign-compare)
 # * The fribidi check doesn't distinguish between version 1 and version 2
 #   Wesnoth only works with version 1 currently, so if version 2 is installed,
 #   it should be treated the same as if it wasn't present.
@@ -25,16 +23,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # find all deps needed
 FIND_PACKAGE( SDL 1.2.7 REQUIRED )
-FIND_PACKAGE( SDL_image 1.2 REQUIRED )
-FIND_PACKAGE( SDL_mixer 1.2 REQUIRED )
-FIND_PACKAGE( SDL_net  REQUIRED )
-FIND_PACKAGE( SDL_ttf 2.0.8 REQUIRED )
 FIND_PACKAGE( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
-FIND_PACKAGE( ZLIB REQUIRED )
-FIND_PACKAGE( PNG REQUIRED )
 FIND_PACKAGE( Gettext )
 FIND_PACKAGE( FriBiDi )
-
 
 #Really find  python
 FIND_PACKAGE( PythonInterp 2.4 )
@@ -112,6 +103,11 @@ if(NOT CONFIGURED)
   set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
 endif(NOT CONFIGURED)
 
+#Build-type: DEBUGSTRICT
+set(CMAKE_CXX_FLAGS_DEBUGSTRICT "-O0 -DDEBUG -ggdb3 -W -Wall -ansi -Werror -Wno-unused -Wno-sign-compare" CACHE STRING "Flags used by the compiler during strict debug builds.")
+set(CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT "${CMAKE_EXE_LINKER_FLAGS_DEBUG}" CACHE STRING "Flags used for linking binaries during strict debug builds.")
+MARK_AS_ADVANCED(CMAKE_CXX_FLAGS_DEBUGSTRICT CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT)
+
 # compose datadir path of datarootdir and datadirname
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 
@@ -142,6 +138,26 @@ endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
   add_definitions(-DHAVE_FRIBIDI)
 endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
+
+#
+# Libraries that are only required by some targets
+#
+
+if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_EDITOR OR ENABLE_TESTS)
+  FIND_PACKAGE( SDL_image 1.2 REQUIRED )
+endif()
+if(ENABLE_GAME OR ENABLE_EDITOR OR ENABLE_TESTS)
+  FIND_PACKAGE( SDL_mixer 1.2 REQUIRED )
+  FIND_PACKAGE( SDL_ttf 2.0.8 REQUIRED )
+endif()
+if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
+  FIND_PACKAGE( SDL_net  REQUIRED )
+endif()
+if(ENABLE_TOOLS)
+  FIND_PACKAGE( ZLIB REQUIRED )
+  FIND_PACKAGE( PNG REQUIRED )
+endif()
+
 
 #
 #create dummy-locales

@@ -1,34 +1,69 @@
 ## some includes ##
 include_directories( ${Boost_INCLUDE_DIR} )
-include_directories( ${SDLIMAGE_INCLUDE_DIR} )
-include_directories( ${SDLMIXER_INCLUDE_DIR} )
-include_directories( ${SDLNET_INCLUDE_DIR} )
-include_directories( ${SDLTTF_INCLUDE_DIR} )
 include_directories( ${SDL_INCLUDE_DIR} )
-include_directories( ${ZLIB_INCLUDE_DIR} )
+
+#optional dependencies
+if(SDLIMAGE_INCLUDE_DIR)
+  include_directories( ${SDLIMAGE_INCLUDE_DIR} )
+endif()
+if(SDLMIXER_INCLUDE_DIR)
+  include_directories( ${SDLMIXER_INCLUDE_DIR} )
+endif()
+if(SDLNET_INCLUDE_DIR)
+  include_directories( ${SDLNET_INCLUDE_DIR} )
+endif()
+if(SDLTTF_INCLUDE_DIR)
+  include_directories( ${SDLTTF_INCLUDE_DIR} )
+endif()
+if(ZLIB_INCLUDE_DIR)
+  include_directories( ${ZLIB_INCLUDE_DIR} )
+endif()
+
 # needed to get include paths in the subfolders correct
 include_directories( ${CMAKE_SOURCE_DIR}/src/ )
 
 link_directories(${Boost_LIBRARY_DIRS})
 
-set( the-external-libs
-    ${SDLIMAGE_LIBRARY}
-    ${SDLMIXER_LIBRARY}
-    ${SDLNET_LIBRARY}
-    ${SDLTTF_LIBRARY}
+set( common-external-libs
     ${SDL_LIBRARY}
     ${Boost_IOSTREAMS_LIBRARY}
     ${Boost_REGEX_LIBRARY}
 )
 
+set( game-external-libs
+    ${common-external-libs}
+    ${SDLIMAGE_LIBRARY}
+    ${SDLMIXER_LIBRARY}
+    ${SDLNET_LIBRARY}
+    ${SDLTTF_LIBRARY}
+)
+
+set( server-external-libs
+    ${common-external-libs}
+    ${SDLNET_LIBRARY}
+)
+
+set( editor-external-libs
+    ${common-external-libs}
+    ${SDLIMAGE_LIBRARY}
+    ${SDLMIXER_LIBRARY}
+    ${SDLTTF_LIBRARY}
+)
+
+set( tools-external-libs
+    ${common-external-libs}
+    ${SDLIMAGE_LIBRARY}
+)
+
 if(ENABLE_PYTHON AND PYTHON_LIBRARY)
   include_directories( ${PYTHON_INCLUDE_PATH} )
-  set(the-external-libs ${the-external-libs} ${PYTHON_LIBRARIES})
+  set(game-external-libs ${game-external-libs} ${PYTHON_LIBRARIES})
 endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
 
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
   include_directories( ${FRIBIDI_INCLUDE_PATH} )
-  set(the-external-libs ${the-external-libs} ${FRIBIDI_LIBRARIES})
+  set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
+  set(editor-external-libs ${editor-external-libs} ${FRIBIDI_LIBRARIES})
 endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 
 #
@@ -249,7 +284,7 @@ SET(wesnoth_SRC
 )
 
 ADD_EXECUTABLE(${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} ${wesnoth_SRC})
-TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} wesnoth-core wesnoth-game ${the-external-libs})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} wesnoth-core wesnoth-game ${game-external-libs})
 
 INSTALL(TARGETS ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
@@ -274,7 +309,7 @@ SET(wesnoth_editor_SRC
 )
 
 ADD_EXECUTABLE(${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX} ${wesnoth_editor_SRC})
-TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX} wesnoth-core wesnoth-game ${the-external-libs})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX} wesnoth-core wesnoth-game ${editor-external-libs})
 
 INSTALL(TARGETS ${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
@@ -298,7 +333,7 @@ SET(wesnothd_SRC
 )
 
 ADD_EXECUTABLE(${BINARY_PREFIX}wesnothd${BINARY_SUFFIX} ${wesnothd_SRC})
-TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnothd${BINARY_SUFFIX} wesnoth-core ${the-external-libs})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}wesnothd${BINARY_SUFFIX} wesnoth-core ${server-external-libs})
 
 INSTALL(TARGETS ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
@@ -317,7 +352,7 @@ SET(campaignd_SRC
 )
 
 ADD_EXECUTABLE(${BINARY_PREFIX}campaignd${BINARY_SUFFIX} ${campaignd_SRC})
-TARGET_LINK_LIBRARIES(${BINARY_PREFIX}campaignd${BINARY_SUFFIX} wesnoth-core ${the-external-libs})
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}campaignd${BINARY_SUFFIX} wesnoth-core ${server-external-libs})
 
 INSTALL(TARGETS ${BINARY_PREFIX}campaignd${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
@@ -338,7 +373,7 @@ SET(exploder_SRC
 )
 
 ADD_EXECUTABLE(${BINARY_PREFIX}exploder${BINARY_SUFFIX} ${exploder_SRC})
-TARGET_LINK_LIBRARIES(${BINARY_PREFIX}exploder${BINARY_SUFFIX} wesnoth-core ${the-external-libs} png12)
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}exploder${BINARY_SUFFIX} wesnoth-core png12 ${tools-external-libs})
 
 INSTALL(TARGETS ${BINARY_PREFIX}exploder${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
@@ -352,7 +387,7 @@ SET(cutter_SRC
 )
 
 ADD_EXECUTABLE(${BINARY_PREFIX}cutter${BINARY_SUFFIX} ${cutter_SRC})
-TARGET_LINK_LIBRARIES(${BINARY_PREFIX}cutter${BINARY_SUFFIX} wesnoth-core ${the-external-libs} png12)
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}cutter${BINARY_SUFFIX} wesnoth-core png12 ${tools-external-libs})
 
 INSTALL(TARGETS ${BINARY_PREFIX}cutter${BINARY_SUFFIX} DESTINATION ${BINDIR})
 
@@ -371,7 +406,7 @@ SET(test_SRC
 )
 
 ADD_EXECUTABLE(${BINARY_PREFIX}test${BINARY_SUFFIX} ${test_SRC})
-TARGET_LINK_LIBRARIES(${BINARY_PREFIX}test${BINARY_SUFFIX} wesnoth-core wesnoth-game ${the-external-libs} boost_unit_test_framework)
+TARGET_LINK_LIBRARIES(${BINARY_PREFIX}test${BINARY_SUFFIX} wesnoth-core wesnoth-game ${game-external-libs} boost_unit_test_framework)
 
 ENDIF(ENABLE_TESTS)
 
