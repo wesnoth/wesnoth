@@ -278,7 +278,7 @@ twidget* tlistbox::get_widget(const tpoint& coordinate)
 	return result;
 }
 
-void tlistbox::add_item(const std::string& label)
+void tlistbox::add_item(const t_string& label)
 {
 	std::cerr << "Adding '" << label << "'.\n";
 
@@ -346,7 +346,7 @@ bool tlistbox::select_row(const unsigned row, const bool select)
 	return true;
 }
 
-tlistbox::trow::trow(const tbuilder_grid& list_builder_,const std::string& label) :
+tlistbox::trow::trow(const tbuilder_grid& list_builder_,const t_string& label) :
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),
 	height_(0),
 	selected_(false)
@@ -355,7 +355,7 @@ tlistbox::trow::trow(const tbuilder_grid& list_builder_,const std::string& label
 	init_in_grid(grid_, label);
 }
 
-void tlistbox::trow::init_in_grid(tgrid* grid, const std::string& label) 
+void tlistbox::trow::init_in_grid(tgrid* grid, const t_string& label) 
 {
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {

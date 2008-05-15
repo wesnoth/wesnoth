@@ -17,6 +17,8 @@
 
 #include "gui/widgets/container.hpp"
 
+class t_string;
+
 namespace gui2 {
 
 class tscrollbar_;
@@ -81,7 +83,7 @@ public:
 	 *
 	 * Probably the hardcoded list will disappear as well at some point
 	 */
-	void add_item(const std::string& label);
+	void add_item(const t_string& label);
 
 	unsigned get_item_count() const { return rows_.size(); }
 
@@ -141,7 +143,7 @@ private:
 	class trow {
 
 	public:
-		trow(const tbuilder_grid& list_builder_, const std::string& label);
+		trow(const tbuilder_grid& list_builder_, const t_string& label);
 
 		void select(const bool sel = true);
 	
@@ -165,7 +167,7 @@ private:
 
 		bool selected_;
 
-		void init_in_grid(tgrid* grid, const std::string& label);
+		void init_in_grid(tgrid* grid, const t_string& label);
 
 		void select_in_grid(tgrid* grid, const bool sel);
 	};
