@@ -44,7 +44,6 @@ THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 wesnoth_source = \
 	about.cpp \
 	actions.cpp \
-	addons_manager.cpp \
 	ai.cpp \
 	ai_dfool.cpp \
 	ai_attack.cpp \
