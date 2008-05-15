@@ -44,6 +44,7 @@
 #include <set>
 #include <sstream>
 #include <vector>
+#include <queue>
 
 #include <csignal>
 
@@ -218,7 +219,7 @@ class fps_limiter {
 	size_t start_ticks_;
 	size_t ms_per_frame_;
 public:
-	fps_limiter(size_t ms_per_frame = 20) : ms_per_frame_(ms_per_frame)
+	fps_limiter(size_t ms_per_frame = 20) : start_ticks_(0),ms_per_frame_(ms_per_frame)
 	{}
 
 	void limit() {
@@ -242,6 +243,280 @@ public:
 	}
 };
 
+class banned;
+
+typedef std::map<std::string, banned*> ban_map;
+typedef std::priority_queue<banned*> ban_time_queue;
+
+class banned {
+	std::string ip_;
+	time_t end_time_;
+	std::string reason_;
+	bool deleted_;
+	static ban_map bans_;
+	static ban_time_queue time_queue_;
+
+	// @todo: these should loaded from configs
+	static time_t short_ban; // 6 hours
+	static time_t medium_ban; // 3 days
+	static time_t long_ban; // a month
+
+	banned() {}
+
+public:
+	banned(const std::string& ip, const time_t end_time, const std::string& reason) : ip_(ip), end_time_(end_time), reason_(reason), deleted_(false)
+	{
+		ban_map::iterator ban;
+		if ((ban = bans_.find(ip_)) != bans_.end())
+		{
+			// Already exsiting ban for ip. We have to first remove it
+			ban->second->remove_ban();
+			bans_.erase(ban);
+		}
+		bans_.insert(ban_map::value_type(ip_,this));
+		time_queue_.push(this);
+	}
+
+	time_t get_end_time() const
+	{
+		return end_time_;
+	}
+
+	std::string get_human_end_time() const
+	{
+		char buf[30];
+		struct tm* local;
+		local = localtime(&end_time_);
+		strftime(buf,30,"%H:%M:%S %d.%m.%Y", local );
+		return std::string(buf);
+	}
+
+	std::string get_reason() const
+	{
+		return reason_;
+	}
+
+	std::string get_ip() const 
+	{
+		return ip_;
+	}
+
+	void remove_ban()
+	{
+		deleted_ = true;
+	}
+
+	bool is_deleted() const
+	{
+		return deleted_;
+	}
+
+	static time_t parse_time(std::string time_in)
+	{
+		time_t ret;
+		ret = time(NULL);
+		if (time_in.substr(0,3) == "UTC")
+		{
+			struct tm* loc;
+			loc = localtime(&ret);
+
+			std::string::iterator i = time_in.begin() + 3;
+			while (i != time_in.end())
+			{
+				size_t number = 0;
+				size_t next_number = 0;
+				try {
+					for (; i != time_in.end(); ++i)
+					{
+						next_number = lexical_cast<size_t>(*i);
+						number = number * 10  +  next_number;
+					}
+				}
+				catch (...)
+				{
+					switch(*i)
+					{
+						case 'Y':
+							loc->tm_year = number;
+							break;
+						case 'M':
+							loc->tm_mon = number;
+							break;
+						case 'D':
+							loc->tm_mday = number;
+							break;
+						case 'h':
+							loc->tm_hour = number;
+							break;
+						case 'm':
+							loc->tm_min = number;
+							break;
+						case 's':
+							loc->tm_sec = number;
+							break;
+						default:
+							LOG_SERVER << "Wrong time code for ban: " << *i << "\n";
+							break;
+					}
+					++i;
+				}
+
+			}
+			return mktime(loc);
+		}	
+		if (time_in == "short")
+			ret += short_ban;
+		else if (time_in == "medium")
+			ret += medium_ban;
+		else if (time_in == "long")
+			ret += long_ban;
+		else
+		{
+			size_t multipler = 60; // default minutes
+			std::string::iterator i = time_in.begin();
+			while (i != time_in.end())
+			{
+				size_t number = 0;
+				size_t next_number = 0;
+				try {
+					for (; i != time_in.end(); ++i)
+					{
+						next_number = lexical_cast<size_t>(*i);
+						number = number * 10  +  next_number;
+					}
+				}
+				catch (...)
+				{
+					switch(*i)
+					{
+						case 'M':
+							multipler = 30*24*60*60; // 30 days
+							break;
+						case 'D':
+							multipler = 24*60*60;
+							break;
+						case 'h':
+							multipler = 60*60;
+							break;
+						case 'm':
+							multipler = 60;
+							break;
+						case 's':
+							multipler = 1;
+							break;
+						default:
+							LOG_SERVER << "Wrong time multipler code given: " << *i << "\n";
+							break;
+					}
+					++i;
+				}
+				ret += number * multipler;
+			}
+		}
+		return ret;
+	}
+
+	static void unban(std::ostringstream& os, const std::string& ip)
+	{
+		ban_map::iterator ban = bans_.find(ip);
+		if (ban == bans_.end())
+		{
+			os << "There is no ban on '" << ip << "'.";
+			return;
+		}
+		ban->second->remove_ban();
+		bans_.erase(ban);
+
+		os << "Ban on '" << ip << "' removed.";
+	}
+
+	static void check_ban_times(time_t time_now)
+	{
+		while (!time_queue_.empty())
+		{
+			banned* ban = time_queue_.top();
+
+			if (ban->is_deleted())
+			{
+				// This was allready deleted have to free memory;
+				time_queue_.pop();
+				delete ban;
+				continue;
+			}
+
+			if (ban->get_end_time() > time_now)
+			{
+				// No bans going to expire
+				DBG_SERVER << " No bans removed. time: " << time_now << " end_time " << ban->get_end_time() << "\n";
+				break;
+			}
+
+			// This ban is going to expire so delete it.
+			DBG_SERVER << "Remove a ban " << ban->get_ip() << ". time: " << time_now << " end_time " << ban->get_end_time() << "\n";
+
+			bans_.erase(bans_.find(ban->get_ip()));
+			time_queue_.pop();
+			delete ban;
+
+		}
+	}
+
+	static void list_bans(std::ostringstream& out)
+	{
+		if (bans_.empty()) 
+		{ 
+			out << "No bans set.";
+			return;
+		}
+
+		out << "BAN LIST\n";
+		for (ban_map::const_iterator i = bans_.begin();
+				i != bans_.end(); ++i)
+		{
+			out << "IP: '" << i->second->get_ip() << 
+				"' end_time: '" << i->second->get_human_end_time() <<
+				"' reason: '" << i->second->get_reason() << "'\n";
+		}
+
+	}
+
+	static bool is_ip_banned(std::string ip)
+	{
+		for (ban_map::const_iterator i = banned::bans_.begin(); i != banned::bans_.end(); ++i) {
+			if (utils::wildcard_string_match(ip, i->first)) {
+				DBG_SERVER << "Comparing ban '" << i->first << "' vs '..." << ip << "'\t" << "banned.\n";
+				return true;
+			}
+			DBG_SERVER << "Comparing ban '" << i->first << "' vs '..." << ip << "'\t" << "not banned.\n";
+		}
+		return false;
+	}
+
+	static void shut_down()
+	{
+		bans_.clear();
+		while(!time_queue_.empty())
+		{
+			banned* ban = time_queue_.top();
+			delete ban;
+			time_queue_.pop();
+		}
+	}
+
+	//! Notice that comparision is done wrong way to make the smallest value in top of heap
+	bool operator<(const banned& b) const
+	{
+		return end_time_ > b.get_end_time();
+	}
+
+};
+
+ban_map banned::bans_;
+ban_time_queue banned::time_queue_;
+
+time_t banned::short_ban  = 6*60*60; // 6 hours
+time_t banned::medium_ban = 3*24*60*60; // 3 days
+time_t banned::long_ban   = 30*24*60*60; // a month
 
 class server
 {
@@ -287,7 +562,6 @@ private:
 	
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
 	bool is_ip_banned(const std::string& ip) const;
-	std::map<std::string,std::string> bans_;
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;
@@ -458,16 +732,7 @@ bool server::ip_exceeds_connection_limit(const std::string& ip) const {
 }
 
 bool server::is_ip_banned(const std::string& ip) const {
-	for (std::map<std::string,std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
-		std::stringstream ss;
-		ss << "Comparing ban '" << i->first << "' vs '..." << ip << "'\t";
-		if (utils::wildcard_string_match(ip, i->first)) {
-			DBG_SERVER << ss.str() << "banned.\n";
-			return true;
-		}
-		DBG_SERVER << ss.str() << "not banned.\n";
-	}
-	return false;
+	return banned::is_ip_banned(ip);
 }
 
 void server::dump_stats(const time_t& now) {
@@ -509,9 +774,13 @@ void server::run() {
 			}
 
 			time_t now = time(NULL);
-			if ((loop%100) == 0 && last_ping_ + 10 <= now) {
+			if (last_ping_ + 15 <= now) {
+				// and check if bans have expired
+				banned::check_ban_times(now);
 				// Make sure we log stats every 5 minutes
-				if (last_stats_ + 5*60 <= now) dump_stats(now);
+				if (last_stats_ + 5*60 <= now) {
+					dump_stats(now);
+				}
 				// send a 'ping' to all players to detect ghosts
 				config ping;
 				ping["ping"] = lexical_cast<std::string>(now);
@@ -982,26 +1251,33 @@ std::string server::process_command(const std::string& query) {
 		}
 	} else if (command == "ban" || command == "bans" || command == "kban" || command == "kickban") {
 		if (parameters == "") {
-			if (bans_.empty()) return "No bans set.";
-			out << "BAN LIST\n";
-			for (std::map<std::string,std::string>::const_iterator i = bans_.begin();
-				i != bans_.end(); ++i)
-			{
-				out << "IP: '" << i->first << "' reason: '" << i->second << "'\n";
-			}
+			banned::list_bans(out);
 		} else {
-			bool banned = false;
+			bool banned_ = false;
+			const std::string help_ban = "ban <ip|nickname> <time> [<reason>]\nTime is give in formar ‰d[‰s‰d‰s...] (where ‰sis s, m, h, D or M).\nIf no time modifier is given minutes are used.\nYou can also use short, medium and long for standard ban times.\nban 127.0.0.1 2H20m flooded lobby\nban 127.0.0.2 medium flooded lobby again\n";
 			const bool kick = (command == "kban" || command == "kickban");
-			const std::string::iterator i = std::find(parameters.begin(), parameters.end(), ' ');
-			const std::string target(parameters.begin(), i);
-			std::string reason = (i == parameters.end() ? "" : std::string(i + 1, parameters.end()));
+			const std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+			if (first_space == parameters.end())
+			{
+				return help_ban;
+			}
+			std::string::iterator second_space = std::find(first_space+1, parameters.end(), ' ');
+			const std::string target(parameters.begin(), first_space);
+			const std::string time(first_space+1,second_space);
+			if (second_space == parameters.end())
+			{
+				--second_space;
+			}
+			std::string reason(second_space + 1, parameters.end());
 			utils::strip(reason);
 			// if we find a '.' consider it an ip mask 
 			//! @todo  FIXME: should also check for only numbers
 			if (std::count(target.begin(), target.end(), '.') >= 1) {
-				banned = true;
-				out << "Set ban on '" << target << "' with reason: '" << reason << "'.\n";
-				bans_[target] = reason;
+				banned_ = true;
+				out << "Set ban on '" << target << "' with time '" << time << "'  with reason: '" << reason << "'.\n";
+
+				new banned(target, banned::parse_time(time), reason);
+				
 				if (kick) {
 					for (player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
@@ -1017,11 +1293,11 @@ std::string server::process_command(const std::string& query) {
 					pl != players_.end(); ++pl)
 				{
 					if (utils::wildcard_string_match(pl->second.name(), target)) {
-						banned = true;
+						banned_ = true;
 						const std::string& ip = network::ip_address(pl->first);
-						if (!is_ip_banned(ip)) {
-							bans_[ip] = reason;
-							out << "Set ban on '" << ip << "' with reason: '"
+						if (!banned::is_ip_banned(ip)) {
+							new banned(ip,banned::parse_time(time), reason);
+							out << "Set ban on '" << ip << "' with time '" << time << "' with reason: '"
 								<< reason << "'.\n";
 						}
 						if (kick) {
@@ -1030,7 +1306,7 @@ std::string server::process_command(const std::string& query) {
 						}
 					}
 				}
-				if (!banned) {
+				if (!banned_) {
 					out << "Nickmask '" << target << "' did not match, no bans set.";
 				}
 			}
@@ -1039,12 +1315,7 @@ std::string server::process_command(const std::string& query) {
 		if (parameters == "") {
 			return "You must enter an ipmask to unban.";
 		}
-		const int n = bans_.erase(parameters);
-		if (n == 0) {
-			out << "There is no ban on '" << parameters << "'.";
-		} else {
-			out << "Ban on '" << parameters << "' removed.";
-		}
+		banned::unban(out, parameters);
 	} else if (command == "kick") {
 		if (parameters == "") {
 			return "You must enter a mask to kick.";
@@ -1825,6 +2096,7 @@ int main(int argc, char** argv) {
 		ERR_SERVER << "Caught unknown error while server was running. Aborting.\n";
 		return -1;
 	}
+	banned::shut_down();
 
 	return 0;
 }
