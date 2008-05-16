@@ -233,6 +233,7 @@ else:
 Export("campaignd")
 
 wesnothd_sources = Split("""
+	server/ban.cpp
     server/game.cpp
     server/input_stream.cpp
     server/metrics.cpp

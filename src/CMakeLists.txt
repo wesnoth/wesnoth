@@ -319,6 +319,7 @@ ENDIF(ENABLE_EDITOR)
 IF(ENABLE_SERVER)
 
 SET(wesnothd_SRC
+	server/ban.cpp
     server/game.cpp
     server/input_stream.cpp
     server/metrics.cpp
