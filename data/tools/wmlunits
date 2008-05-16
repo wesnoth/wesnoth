@@ -112,7 +112,7 @@ class HTMLOutput:
                             au = self.wesnoth.unit_lookup[auid]
                         except KeyError:
                             sys.stderr.write(
-                                "Warning:Unit %s not found as advancement of %s" %
+                                "Warning: Unit %s not found as advancement of %s\n" %
                                 (auid, uid))
                             continue
                         forest.add_node(helpers.UnitNode(au))
@@ -321,7 +321,9 @@ class HTMLOutput:
         anames = []
         already = {}
         for abilities in u.get_all("abilities"):
-            for ability in abilities.children():
+            try: c = abilities.children()
+            except AttributeError: c = []
+            for ability in c:
                 id = ability.get_text_val("id")
                 if id in already: continue
                 already[id] = True
@@ -879,7 +881,7 @@ def output(isocode):
     n = stuff.add_units(WML, "mainline")
     print n, "mainline units found."
 
-    # Now we read each campaign in turn to get its units.
+    # Now we read each mainline campaign in turn to get its units.
     cnames = stuff.campaign_lookup.keys()
     for cname in cnames:
         print "Parsing %s units ..." % cname,
@@ -894,9 +896,28 @@ def output(isocode):
         image_collector.add_binary_pathes_from_WML(cname, WML)
         print n, "units found."
 
+    sys.stderr.flush()
     print "Parsing addons ...",
+    sys.stdout.flush()
     n = stuff.add_addons(image_collector)
     print "%d units found." % n
+    
+    # Now we read each addon campaign in turn to get its units.
+    cnames = stuff.campaign_lookup.keys()
+    for cname in cnames:
+        if cname in stuff.is_mainline_campaign: continue
+        campaign = stuff.campaign_lookup[cname]
+        print "Parsing %s units ..." % cname,
+        sys.stdout.flush()
+
+        define = campaign.get_text_val("define")
+        WML = stuff.parser.parse("""
+            #define %s\n#enddef
+            {~campaigns}""" % define,
+            ignore_macros = lambda x: x.find("/scenarios") == -1)
+        n = stuff.add_units(WML, cname)
+        image_collector.add_binary_pathes_from_WML(cname, WML)
+        print n, "units found."
 
     stuff.find_unit_factions()
 

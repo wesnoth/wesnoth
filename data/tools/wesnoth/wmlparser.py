@@ -75,11 +75,9 @@ class Parser:
         # is expected to return a translation.
         self.gettext = None
 
-        # If set, we actually do preprocessor logic with #ifdef and so on.
-        # Otherwise, they get included in the parse tree as nodes.
-        self.do_preprocessor_logic = False
-        # Internal flag while inside a non-parsed block
-        self.just_parse = False
+        # A list containing the stacked up #ifdefs.
+        self.preprocessor_nesting = []
+        self.stay_in_file = False
 
         # If set, included files are only parsed when under the given directory.
         self.only_expand_pathes = []
@@ -102,7 +100,7 @@ class Parser:
         except UnicodeDecodeError:
             u = text.decode("latin1")
         text = u
-        text = text.replace("\r\n", "\n").replace("\t", " ")
+        text = text.replace("\r\n", "\n").replace("\t", " ").replace("\r", "\n")
         if text[-1] != "\n": text += "\n"
         return text
 
@@ -127,7 +125,7 @@ class Parser:
         Set the parser to parse from a file object.
         """
         text = stream.read()
-        text = text.replace("\r\n", "\n").replace("\t", " ")
+        text = text.replace("\r\n", "\n").replace("\t", " ").replace("\r", "\n")
         self.push_text("inline", text)
 
     def parse_text(self, text):
@@ -188,7 +186,7 @@ class Parser:
         if c == "\n":
             self.line += 1
         if self.textpos == len(self.text):
-            if len(self.texts): self.pop_text()
+            if len(self.texts) and not self.stay_in_file: self.pop_text()
         return c
 
     def at_end(self):
@@ -196,12 +194,17 @@ class Parser:
         Return True if the parser is at the very end of the input, that is the
         last character of the topmost input text has been read.
         """
-        return len(self.texts) == 0 and self.textpos == len(self.text)
+        return (len(self.texts) == 0
+            or self.stay_in_file) and self.textpos == len(self.text)
+
+    def check_end(self):
+        if self.textpos == len(self.text):
+            if len(self.texts): self.pop_text()
 
     def peek_next(self):
         """Like read_next, but does not consume."""
         if self.textpos >= len(self.text):
-            if len(self.texts):
+            if len(self.texts) and not self.stay_in_file:
                 ts = self.texts[-1]
                 if ts.textpos >= len(ts.text): return ""
                 return ts.text[ts.textpos]
@@ -214,14 +217,14 @@ class Parser:
             found = mob.group(0)
             self.line += found.count("\n")
             self.textpos = mob.end(0)
-            if self.textpos == len(self.text):
+            if self.textpos == len(self.text) and not self.stay_in_file:
                 if len(self.texts): self.pop_text()
             return found
         else:
             found = self.text[self.textpos:]
             self.line += found.count("\n")
             self.textpos = len(self.text)
-            if len(self.texts):
+            if len(self.texts) and not self.stay_in_file:
                 self.pop_text()
                 found += self.read_until(sep)
             return found
@@ -240,18 +243,63 @@ class Parser:
     def skip_whitespace_and_newlines(self):
         self.read_while(" \t\r\n")
 
+    preprocessor_commands = ["#define", "#undef", "#textdomain", "#ifdef",
+        "#ifndef", "#else", "#enddef", "#endif"]
+
+    def read_lines_until(self, string):
+        """
+        Read lines until one contains the given string, but throw away any
+        comments.
+        """
+        text = ""
+        in_string = False
+        while 1:
+            if self.at_end():
+                return None
+            line = self.read_until("\n")
+
+            line_start = 0
+            if in_string:
+                string_end = line.find('"')
+                if string_end < 0:
+                    text += line
+                    continue
+                in_string = False
+                line_start = string_end + 1
+
+            elif line.lstrip().startswith("#"):
+                possible_comment = line.lstrip()
+                for com in self.preprocessor_commands:
+                    if possible_comment.startswith(com):
+                        break
+                else:
+                    continue
+            
+            
+            quotation = line.find('"', line_start)
+            while quotation >= 0:
+                in_string = True
+                string_end = line.find('"', quotation + 1)
+                if string_end < 0: break
+                line_start = string_end + 1
+                in_string = False
+                quotation = line.find('"', line_start)
+            
+            if not in_string:
+                end = line.find(string, line_start)
+                if end >= 0:
+                    text += line[:end]
+                    break
+            text += line
+        return text
+
     def skip_whitespace_inside_statement(self):
         self.read_while(" \t\r\n")
         if not self.at_end():
             c = self.peek_next()
             if c == "#":
-                if self.check_for("#define"): return
-                if self.check_for("#undef"): return
-                if self.check_for("#textdomain"): return
-                if self.check_for("#ifdef"): return
-                if self.check_for("#ifndef"): return
-                if self.check_for("#else"): return
-                if self.check_for("#end"): return
+                for command in self.preprocessor_commands:
+                    if self.check_for(command): return
                 self.read_until("\n")
                 self.skip_whitespace_inside_statement()
 
@@ -261,18 +309,6 @@ class Parser:
     def check_for(self, str):
         """Compare the following text with str."""
         return self.text[self.textpos:self.textpos + len(str)] == str
-
-    def read_upto_string(self, str):
-        """Read input up to and including the given string."""
-        pos = self.text.find(str, self.textpos)
-        if pos == -1:
-            return None
-        found = self.text[self.textpos:pos]
-        self.textpos = pos + len(str)
-        self.line += found.count("\n")
-        if self.textpos == len(self.text):
-            self.pop_text()
-        return found
 
     def parse_macro(self):
         """No recursive macro processing is done here. If a macro is passed as
@@ -294,10 +330,6 @@ class Parser:
             else:
                 raise Error(self, "Unclosed macro")
                 return
-
-        if self.just_parse:
-            # We do not execute any macros or file inclusions.
-            return None
 
         preserve = macro
         macro = macro[:-1] # Get rid of final }
@@ -448,8 +480,8 @@ class Parser:
                     rep = self.gettext(self.textdomain, rep[q + 1:qe])
                     rep = '"' + rep + '"'
                 if self.verbose:                        
-                    s = "Replacing {%s} with %s" % (macro.params[i], rep)
-                    print s.encode("utf8")
+                    s = "Replacing {%s} with %s\n" % (macro.params[i], rep)
+                    sys.stderr.write(s.encode("utf8"))
                 text = text.replace("{%s}" % macro.params[i], rep)
 
             if text:
@@ -507,6 +539,7 @@ class Parser:
             elif not got_assign:
                 if c == "=":
                     variables += [variable.rstrip()]
+                    if variables[-1] == "mode": fuck = True
                     got_assign = True
                     translatable = False
                     self.skip_whitespace()
@@ -567,11 +600,15 @@ class Parser:
         data = []
         j = 0
         for i in range(len(variables)):
-            data += [wmldata.DataText(variables[i], values[j])]
+            try:
+                data += [wmldata.DataText(variables[i], values[j])]
+            except IndexError:
+                raise Error(self, "Assignement does not match: %s = %s" % (
+                    str(variables), str(values)))
             j += 1
         return data
 
-    def parse_top(self, data, state = None, dont_parse_else = False):
+    def parse_top(self, data, state = None):
         while 1:
             self.skip_whitespace_and_newlines()
             if self.at_end():
@@ -588,20 +625,21 @@ class Parser:
                         if name: params += [name]
                         if sep == "\n": break
                         self.read_while(" ")
-                    text = self.read_upto_string("#enddef")
+                        
+                    text = self.read_lines_until("#enddef")
                     if text == None:
                         raise Error(self, "#define without #enddef")
-                        return
-                    if not self.just_parse:
-                        self.macros[params[0]] = self.Macro(
-                            params[0], params[1:], text, self.textdomain)
-                        if self.verbose:
-                            sys.stderr.write("New macro: %s.\n" % params[0])
+
+                    self.macros[params[0]] = self.Macro(
+                        params[0], params[1:], text, self.textdomain)
+                    if self.verbose:
+                        sys.stderr.write("New macro: %s.\n" % params[0])
 
                 elif self.check_for("undef "):
                     self.read_until(" ")
                     name = self.read_until(" \n")
-                    self.macros[name] = None
+                    name = name.rstrip()
+                    if name in self.macros: del self.macros[name]
                 elif self.check_for("ifdef ") or self.check_for("ifndef"):
 
                     what = "#" + self.read_until(" ").rstrip()
@@ -610,58 +648,75 @@ class Parser:
                     if name[-1] == " ": self.read_while(" \n")
                     name = name[:-1]
 
-                    subdata = wmldata.DataIfDef(name, [], "then")
-                    
-                    dont_parse_else = False
-                    if self.do_preprocessor_logic:
-                        dont_parse_else = True
-                        prev = self.just_parse
-                        if what == "#ifdef":
-                            if not name in self.macros:
-                                self.just_parse = True
-                                dont_parse_else = prev
-                        elif what == "#ifndef":
-                            if name in self.macros:
-                                self.just_parse = True
-                                dont_parse_else = prev
+                    condition_failed = False
+                    if what == "#ifdef":
+                        if name in self.macros:
+                            pass
+                        else:
+                            condition_failed = True
+                    else: # what == "#ifndef"
+                        if not name in self.macros:
+                            pass
+                        else:
+                            condition_failed = True
 
-                    self.parse_top(subdata, what, dont_parse_else)
+                    self.preprocessor_nesting.append((what, condition_failed))
 
-                    if self.do_preprocessor_logic:
-                        self.just_parse = prev
-                        if self.just_parse == False:
-                            elses = subdata.get_ifdefs("else")
-                            if dont_parse_else:
-                                if elses:
-                                    subdata.remove(elses[0])
-                                data.append(subdata)
-                            else:
-                                if elses:
-                                    data.append(elses[0])
-                    else:
-                        data.insert(subdata)
+                    # If the condition is true, we simply continue parsing. At
+                    # some point we will either hit an #else or #endif, and
+                    # things continue there. If the condition failed, we skip
+                    # over everything until we find the matching #else or
+                    # endif.
+                    if condition_failed:
+                        self.stay_in_file = True
+                        balance = 1
+                        while balance > 0 and not self.at_end():
+                            line = self.read_until("\n")
+                            line = line.lstrip()
+                            if line.startswith("#ifdef"): balance += 1
+                            if line.startswith("#ifndef"): balance += 1
+                            if line.startswith("#endif"): balance -= 1
+                            if line.startswith("#else"):
+                                if balance == 1:
+                                    balance = -1
+                                    break
+
+                        self.stay_in_file = False
+                        if balance == 0:
+                            self.preprocessor_nesting.pop()
+                        if balance > 0:
+                            raise Error(self, "Missing  #endif for %s" % what)
+
+                        self.check_end()
 
                 elif self.check_for("else"):
+                    if not self.preprocessor_nesting:
+                        raise Error(self, "#else without #ifdef")
 
                     self.read_until("\n")
-                    if state != "#ifdef" and state != "#ifndef":
-                        raise Error(self, "#else without #ifdef")
-                    subdata = wmldata.DataIfDef("else", [], "else")
                     
-                    if self.do_preprocessor_logic:
-                        self.just_parse = dont_parse_else
-                    self.parse_top(subdata, "#else")
+                    # We seen an #else - that means we are at the end of a
+                    # conditional preprocessor block which has executed. So
+                    # we should now ignore everything up to the #endif.
+                    balance = 1
+                    self.stay_in_file = True
+                    while balance > 0 and not self.at_end():
+                        line = self.read_until("\n")
+                        line = line.lstrip()
+                        if line.startswith("#ifdef"): balance += 1
+                        if line.startswith("#ifndef"): balance += 1
+                        if line.startswith("#endif"): balance -= 1
+                    self.stay_in_file = False
+                    if balance != 0:
+                        raise Error(self, "Missing #endif for #else")
 
-                    data.insert(subdata)
-                    return
+                    self.check_end()
 
                 elif self.check_for("endif"):
+                    if not self.preprocessor_nesting:
+                        raise Error(self, "#endif without #ifdef")
+                    self.preprocessor_nesting.pop()
                     self.read_until("\n")
-                    if state != "#ifdef" and state != "#else" and state !=\
-                        "#ifndef":
-                        self.read_until("\n")
-                        raise Error(self, "#endif without #ifdef or #else")
-                    return
 
                 elif self.check_for("textdomain"):
                     self.read_until(" ")

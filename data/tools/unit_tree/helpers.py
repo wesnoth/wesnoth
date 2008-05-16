@@ -22,7 +22,6 @@ class ParserWithCoreMacros:
 
         # Create a new parser for the macros.
         parser = wmlparser.Parser(datadir)
-        parser.do_preprocessor_logic = True
         parser.gettext = self.gettext
         
         # Parse core macros.
@@ -33,9 +32,10 @@ class ParserWithCoreMacros:
     def parse(self, text_to_parse, ignore_macros = None):
         # Create the real parser.
         parser = wmlparser.Parser(self.datadir, self.userdir)
-        parser.do_preprocessor_logic = True
         parser.gettext = self.gettext
         parser.macros = copy.copy(self.core_macros)
+        
+        #parser.verbose = True
         
         # Suppress complaints about undefined terrain macros
         parser.set_macro_not_found_callback(lambda wmlparser, name, params:
@@ -136,6 +136,7 @@ class ImageCollector:
                 sys.stderr.write("Warning: Looked at the following locations:\n")
                 sys.stderr.write("\n".join(bases) + "\n")
 
+blah = 1
 class WesnothList:
     """
     Lists various Wesnoth stuff like units, campaigns, terrains, factions...
@@ -192,6 +193,10 @@ class WesnothList:
 
     def add_campaign(self, campaign):
         name = campaign.get_text_val("id")
+        if not name:
+            global blah
+            name = "noid%d" % blah
+            blah += 1
         self.campaign_lookup[name] = campaign
         return name
 
@@ -229,18 +234,15 @@ class WesnothList:
                 #define RANDOM_SIDE\n#enddef
                 {~campaigns}
                 """)
-        except Exception, e:
+        except wmlparser.Error, e:
             print e
             return n
         for campaign in WML.find_all("campaign"):
             cid = self.add_campaign(campaign)
-            n += 1
-            image_collector.add_binary_pathes_from_WML(cid, WML)
         
         for era in WML.find_all("era"):
             eid = self.add_era(era)
             image_collector.add_binary_pathes_from_WML(eid, WML)
-            n += 1
             
         n = self.add_units(WML, "addons")
         
