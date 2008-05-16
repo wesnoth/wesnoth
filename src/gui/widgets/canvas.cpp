@@ -19,16 +19,14 @@
 
 #include "config.hpp"
 #include "font.hpp"
-#include "formula.hpp"
-#include "sdl_utils.hpp"
 #include "image.hpp"
 #include "gettext.hpp"
+#include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
 #include "log.hpp"
+#include "sdl_utils.hpp"
 #include "serialization/parser.hpp"
 #include "wml_exception.hpp"
-
-#include <boost/static_assert.hpp>
 
 #include <algorithm>
 #include <cassert>
@@ -53,99 +51,7 @@
 #define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
 #define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
 
-
 namespace gui2{
-
-template<class T>
-tformula<T>::tformula(const std::string& str) :
-	formula_(),
-	value_()
-{
-	if(str.empty()) {
-		return;
-	}
-
-	if(str[0] == '(') {
-		formula_ = str;
-	} else {
-		convert(str);
-	}
-
-}
-
-template<class T>
-T tformula<T>::operator() (const game_logic::map_formula_callable& variables) const
-{
-	if(has_formula()) {
-		DBG_G_D << "Formula: execute '" << formula_ << "'.\n";
-		return execute(variables);
-	} else {
-		return value_;
-	}
-}
-
-template<>
-bool tformula<bool>::execute(const game_logic::map_formula_callable& variables) const
-{
-	return game_logic::formula(formula_).execute(variables).as_bool();
-}
-
-template<>
-int tformula<int>::execute(const game_logic::map_formula_callable& variables) const
-{
-	return game_logic::formula(formula_).execute(variables).as_int();
-}
-
-template<>
-unsigned tformula<unsigned>::execute(const game_logic::map_formula_callable& variables) const
-{
-	return game_logic::formula(formula_).execute(variables).as_int();
-}
-
-template<>
-std::string tformula<std::string>::execute(const game_logic::map_formula_callable& variables) const
-{
-	return game_logic::formula(formula_).execute(variables).as_string();
-}
-
-template<>
-t_string tformula<t_string>::execute(const game_logic::map_formula_callable& variables) const
-{
-	return game_logic::formula(formula_).execute(variables).as_string();
-}
-
-template<class T>
-T tformula<T>::execute(const game_logic::map_formula_callable& variables) const
-{
-	// Every type needs it's own execute function avoid instantiation of the
-	// default execute.
-	BOOST_STATIC_ASSERT(sizeof(T) == 0);
-	return T();
-}
-
-template<>
-void tformula<bool>::convert(const std::string& str)
-{
-	value_ = utils::string_bool(str);
-}
-
-template<>
-void tformula<std::string>::convert(const std::string& str)
-{
-	value_ = str;
-}
-
-template<>
-void tformula<t_string>::convert(const std::string& str)
-{
-	value_ = str;
-}
-
-template<class T>
-void tformula<T>::convert(const std::string& str)
-{ 
-	value_ = lexical_cast_default<T>(str); 
-}
 
 //! Definition of a line shape.
 class tline : public tcanvas::tshape
