@@ -31,6 +31,29 @@ namespace wesnothd {
 	{
 	}
 
+	banned::banned(const config& cfg)
+	{
+		read(cfg);
+	}
+
+	void banned::read(const config& cfg)
+	{
+		ip_ 	  = cfg["ip"];
+		end_time_ = lexical_cast<time_t>(cfg["end_time"]);
+		reason_	  = cfg["reason"];
+		deleted_  = utils::string_bool(cfg["deleted"]);
+	}
+
+	void banned::write(config& cfg) const
+	{
+		std::stringstream ss;
+		cfg["ip"]		= ip_;
+		ss << end_time_;
+		cfg["end_time"] = ss.str();
+		cfg["reason"]	= reason_;
+		cfg["deleted"]	= deleted_ ? "yes":"no";
+	}
+
 	std::string banned::get_human_end_time() const
 	{
 		char buf[30];
@@ -44,17 +67,42 @@ namespace wesnothd {
 	{
 		return end_time_ > b.get_end_time();
 	}
+	
+	void ban_manager::read(const config& cfg)
+	{
+		const config::child_list& bans = cfg.get_children("ban");
+		for (config::child_list::const_iterator itor = bans.begin();
+				itor != bans.end(); ++itor)
+		{
+			banned* new_ban = new banned(**itor);
+			if (!new_ban->is_deleted())
+			{
+				bans_[new_ban->get_ip()] = new_ban;
+			}
+			time_queue_.push(new_ban);
+		}
+	}
+
+	void ban_manager::write(config& cfg) const
+	{
+		for (ban_map::const_iterator itor = bans_.begin();
+				itor != bans_.end(); ++itor)
+		{
+			config& child = cfg.add_child("ban");
+			itor->second->write(child);
+		}
+	}
 
 	time_t ban_manager::parse_time(std::string time_in) const
 	{
 		time_t ret;
 		ret = time(NULL);
-		if (time_in.substr(0,3) == "UTC")
+		if (time_in.substr(0,4) == "TIME")
 		{
 			struct tm* loc;
 			loc = localtime(&ret);
 
-			std::string::iterator i = time_in.begin() + 3;
+			std::string::iterator i = time_in.begin() + 4;
 			size_t number = 0;
 			for (; i != time_in.end(); ++i)
 			{
@@ -109,6 +157,9 @@ namespace wesnothd {
 				} else {
 					switch(*i)
 					{
+						case 'Y':
+							multipler = 365*24*60*60; // a year;
+							break;
 						case 'M':
 							multipler = 30*24*60*60; // 30 days
 							break;
@@ -218,6 +269,7 @@ namespace wesnothd {
 
 	}
 
+
 	bool ban_manager::is_ip_banned(std::string ip) const 
 	{
 		for (ban_map::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
@@ -232,7 +284,7 @@ namespace wesnothd {
 	
 	void ban_manager::init_ban_help()
 	{
-		ban_help_ = "ban <ip|nickname> <time> [<reason>]\nTime is give in formar ‰d[‰s‰d‰s...] (where ‰sis s, m, h, D or M).\nIf no time modifier is given minutes are used.\n";
+		ban_help_ = "ban <ip|nickname> <time> [<reason>]\nTime is give in formar ‰d[‰s‰d‰s...] (where ‰s is s, m, h, D, M or Y).\nIf no time modifier is given minutes are used.\n";
 		default_ban_times::iterator itor = ban_times_.begin();
 		if (itor != ban_times_.end())
 		{

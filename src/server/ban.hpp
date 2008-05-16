@@ -43,6 +43,10 @@ namespace wesnothd {
 
 	public:
 		banned(const std::string& ip, const time_t end_time, const std::string& reason);
+		banned(const config&);
+
+		void read(const config&);
+		void write(config&) const;
 
 		time_t get_end_time() const
 		{ return end_time_;	}
@@ -82,6 +86,9 @@ namespace wesnothd {
 	public:
 		ban_manager();
 		~ban_manager();
+		
+		void read(const config&);
+		void write(config&) const;
 
 		time_t parse_time(std::string time_in) const;
 
