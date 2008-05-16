@@ -87,6 +87,9 @@ public:
 	void remove_child(const unsigned row, const unsigned col);
 	void remove_child(const std::string& id, const bool find_all = false);
 
+	/** Inherited from twidget. */
+	bool has_vertical_scrollbar() const;
+
 	//! Inherited from twidget.
 	tpoint get_minimum_size() const;
 	tpoint get_best_size() const;

@@ -41,6 +41,9 @@ public:
 	bool get_active() const { return state_ != DISABLED; }
 	unsigned get_state() const { return state_; }
 
+	/** Inherited from twidget. */
+	bool has_vertical_scrollbar() const { return true; }
+
 	/** 
 	 * When an item in the list is selected by the user we need to
 	 * update the state. We installed a callback handler which 
@@ -139,6 +142,9 @@ private:
 
 	/** The background of the list, needed for redrawing. */
 	surface list_background_;
+
+	/** The best size for the spacer, if not set it's calculated. */
+	tpoint best_spacer_size_;
 
 	class trow {
 

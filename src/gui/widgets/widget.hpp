@@ -205,6 +205,14 @@ public:
 	SDL_Rect get_rect() const 
 		{ return ::create_rect( x_, y_, w_, h_ ); }
 
+
+	/** 
+	 * If the best size doesn't fit we want to use the best size for normal 
+	 * widgets, and resize those who own a scrollbar. 
+	 */
+	virtual bool has_vertical_scrollbar() const { return false; }
+	virtual bool has_horizontal_scrollbar() const { return false; }
+
 protected:	
 	virtual void set_dirty(const bool dirty = true) 
 	{ 

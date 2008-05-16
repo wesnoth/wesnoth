@@ -24,7 +24,8 @@ namespace gui2 {
  * A generic container base class.
  *
  * A container is a class build with multiple items either acting as one 
- * widget .
+ * widget.
+ *
  */
 class tcontainer_ : public tcontrol
 {
@@ -52,6 +53,15 @@ public:
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const 
 		{ return grid_.has_widget(widget); }
+
+	/** 
+	 * Inherited from twidget. 
+	 * 
+	 * Since we can't define a good default behaviour we force the inheriting
+	 * classes to define this function. So inheriting classes act as one widget
+	 * others as a collection of multiple objects.
+	 */
+	bool has_vertical_scrollbar() const = 0;
 
 	/** Inherited from tcontrol. */
 	tpoint get_minimum_size() const { return grid_.get_minimum_size(); }

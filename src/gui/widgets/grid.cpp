@@ -174,6 +174,27 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 	}
 }
 
+bool tgrid::has_vertical_scrollbar() const 
+{
+	for(std::vector<tchild>::const_iterator itor = children_.begin();
+			itor != children_.end(); ++itor) {
+		// FIXME we should check per row and the entire row
+		// should have the flag!!!!
+		if(itor->widget()) {
+			 std::cerr << "Widget type " << typeid(*(itor->widget())).name()
+			 	<< "has scrollbar " 
+				<< itor->widget()->has_vertical_scrollbar() << ".\n";
+		}
+		if(itor->widget() && itor->widget()->has_vertical_scrollbar()) {
+			return true;
+		} 
+
+	}
+	
+	// Inherit
+	return twidget::has_vertical_scrollbar();
+}
+
 tpoint tgrid::get_minimum_size() const
 {
 	return get_size("minimum", minimum_col_width_, 
@@ -337,6 +358,33 @@ void tgrid::set_size(const SDL_Rect& rect)
 		return;
 
 	}
+
+	if((best_size.x <= size.x /*|| has_horizontal_scrollbar()*/) 
+			&& (best_size.y <= size.y || has_vertical_scrollbar())) {
+
+		// FIXME we only do the height atm, the width will be added when needed.
+		const unsigned over_shoot = best_size.y - size.y;
+
+		bool set = false;
+		row_height_ = best_row_height_;
+		col_width_ = best_col_width_;
+		// FIXME we assume 1 item per row.
+		for(unsigned i = 0; i < rows_; ++i) {
+			twidget* row = widget(i, 0);
+			if(row && row->has_vertical_scrollbar()) {
+				row_height_[i] -= over_shoot; // Assume this row can be resized enough
+				set = true;
+				break;
+			}
+			
+		}
+
+		assert(set);
+		layout(orig);
+		return;
+	}
+
+
 
 
 	// FIXME make other cases work as well

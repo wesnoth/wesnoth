@@ -77,6 +77,7 @@ tlistbox::tlistbox() :
 	multi_select_(false),
 	list_rect_(),
 	list_background_(),
+	best_spacer_size_(0, 0),
 	rows_()
 {
 	load_config();
@@ -171,26 +172,36 @@ static void set_spacer_size(const tpoint& size, const tgrid& const_grid)
 	spacer->set_best_size(size);
 }
 
-tpoint tlistbox::get_best_size() const
+static tpoint get_spacer_size(const tgrid& const_grid)
 {
+	tgrid& grid = const_cast<tgrid&>(const_grid);
+
+	tspacer* spacer = dynamic_cast<tspacer*>(grid.get_widget_by_id("_list"));
+	assert(spacer);
+	return spacer->get_best_size(); //tpoint(spacer->get_width(), spacer->get_height());
+}
+
+tpoint tlistbox::get_best_size() const 
+{
+
 	// Set the size of the spacer to the wanted size for the list.
 	unsigned width = 0;
 	unsigned height = 0;
 
-	// NOTE we should look at the number of visible items etc
-	foreach(const trow& row, rows_) {
-		assert(row.grid());
-		const tpoint best_size = row.grid()->get_best_size();
-		width = width >= best_size.x ? width : best_size.x;
+	if(best_spacer_size_ != tpoint(0, 0)) {
+		// We got a best size set use that instead of calculating it.
+		height = best_spacer_size_.y;
+		width = best_spacer_size_.x;
+	} else {
+		// NOTE we should look at the number of visible items etc
+		foreach(const trow& row, rows_) {
+			assert(row.grid());
+			const tpoint best_size = row.grid()->get_best_size();
+			width = width >= best_size.x ? width : best_size.x;
 
-		height += best_size.y;
+			height += best_size.y;
+		}
 	}
-
-	// Hack to limit us to 15 items.
-	if(height) { // if we have a height there are items a height there are items.
-		height = 15 * height / get_item_count();
-	}
-
 	set_spacer_size(tpoint(width, height), grid());
 
 	// Now the container will return the wanted result.
@@ -231,8 +242,32 @@ void tlistbox::draw(surface& surface)
 
 void tlistbox::set_size(const SDL_Rect& rect)
 {
+	// Since we allow to be resized we need to determine the real size we get.
+	assert(best_spacer_size_ == tpoint(0, 0));
+	SDL_Rect best_rect = rect;
+	if(rows_.size()) {
+
+		const tpoint best_size = get_best_size();
+
+		if(best_size.y > rect.h) {
+			best_spacer_size_ = get_spacer_size(grid());
+			best_spacer_size_.y -= (best_size.y - rect.h);
+			if(assume_fixed_row_size_) {
+				const unsigned row_height = rows_[0].grid()->get_best_size().y;
+				const unsigned orig_height = best_spacer_size_.y;
+				best_spacer_size_.y = (best_spacer_size_.y / row_height) * row_height;
+				best_rect.h -= (orig_height - best_spacer_size_.y);
+			
+				// This call is required to update the best size.
+				get_best_size();
+			}
+		}
+	}
+
 	// Inherit.
-	tcontainer_::set_size(rect);
+	tcontainer_::set_size(best_rect);
+
+	best_spacer_size_ = tpoint(0, 0);
 
 	// Now set the items in the spacer.
 	tspacer* spacer = dynamic_cast<tspacer*>(get_widget_by_id("_list"));
@@ -248,6 +283,14 @@ void tlistbox::set_size(const SDL_Rect& rect)
 		row.grid()->set_size(::create_rect(0, 0, list_rect_.w, height));
 		row.canvas().assign(SDL_CreateRGBSurface(SDL_SWSURFACE, 
 			list_rect_.w, height, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+	}
+
+	// FIXME we assume fixed row height atm.
+	if(rows_.size() > 0) {
+		const unsigned rows = get_spacer_size(grid()).y / rows_[0].get_height();
+		scrollbar()->set_visible_items(rows);
+	} else {
+		scrollbar()->set_visible_items(1);
 	}
 }
 
@@ -280,8 +323,6 @@ twidget* tlistbox::get_widget(const tpoint& coordinate)
 
 void tlistbox::add_item(const t_string& label)
 {
-	std::cerr << "Adding '" << label << "'.\n";
-
 	assert(list_builder_);
 
 	trow row(*list_builder_, label);
@@ -295,11 +336,6 @@ void tlistbox::add_item(const t_string& label)
 	}
 
 	scrollbar()->set_item_count(get_item_count());
-
-	// Hack to limit the number of visible items.
-	if(get_item_count() <= 15) {
-		scrollbar()->set_visible_items(get_item_count());
-	}
 }
 
 tscrollbar_* tlistbox::scrollbar()
