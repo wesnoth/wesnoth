@@ -321,7 +321,6 @@ void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over
 
 void tevent_handler::mouse_hover(const SDL_Event& event, twidget* /*mouse_over*/)
 {
-
 	const unsigned hover_id = *static_cast<unsigned*>(event.user.data1);
 	delete static_cast<unsigned*>(event.user.data1);
 
@@ -417,16 +416,15 @@ void tevent_handler::mouse_button_up(const SDL_Event& event, twidget* mouse_over
 	}
 
 	if(mouse_captured_) {
+		if (!left_.is_down && !middle_.is_down && !right_.is_down) {
+			mouse_captured_ = false;
+		}
 
 		if(mouse_focus_ != mouse_over) {
-			if (!left_.is_down && !middle_.is_down && !right_.is_down) {
-				mouse_captured_ = false;
+			mouse_leave(event, mouse_over);
 
-				mouse_leave(event, mouse_over);
-
-				if(mouse_over) {
-					mouse_enter(event, mouse_over);
-				}
+			if(mouse_over) {
+				mouse_enter(event, mouse_over);
 			}
 		} else {
 			mouse_click(mouse_focus_, button);
