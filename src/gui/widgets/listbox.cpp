@@ -15,6 +15,7 @@
 #include "gui/widgets/listbox.hpp"
 
 #include "foreach.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
@@ -65,6 +66,11 @@ static void callback_scrollbar(twidget* caller)
 	get_listbox(caller)->scrollbar_moved(caller);
 }
 
+static void callback_scrollbar_button(twidget* caller)
+{
+	get_listbox(caller)->scrollbar_click(caller);
+}
+
 tlistbox::tlistbox() :
 	tcontainer_(COUNT),
 	state_(ENABLED),
@@ -104,6 +110,31 @@ void tlistbox::list_item_selected(twidget* caller)
 
 	// we aren't supposed to get here.
 	assert(false);
+}
+
+void tlistbox::scrollbar_click(twidget* caller)
+{
+	if(caller->id() == "_begin") {
+		scrollbar()->scroll(tscrollbar_::BEGIN);
+	} else if(caller->id() == "_line_up") {
+		scrollbar()->scroll(tscrollbar_::ITEM_BACKWARDS);
+	} else if(caller->id() == "_half_page_up") {
+		scrollbar()->scroll(tscrollbar_::HALF_JUMP_BACKWARDS);
+	} else if(caller->id() == "_page_up") {
+		scrollbar()->scroll(tscrollbar_::JUMP_BACKWARDS);
+	} else if(caller->id() == "_end") {
+		scrollbar()->scroll(tscrollbar_::END);
+	} else if(caller->id() == "_line_down") {
+		scrollbar()->scroll(tscrollbar_::ITEM_FORWARD);
+	} else if(caller->id() == "_half_page_down") {
+		scrollbar()->scroll(tscrollbar_::HALF_JUMP_FORWARD);
+	} else if(caller->id() == "_page_down") {
+		scrollbar()->scroll(tscrollbar_::JUMP_FORWARD);
+	} else {
+		assert(false);
+	}
+
+	set_scrollbar_button_status();
 }
 
 void tlistbox::finalize_setup()
@@ -149,6 +180,61 @@ void tlistbox::finalize_setup()
 	}
 
 	scrollbar()->set_callback_positioner_move(callback_scrollbar);
+
+	static std::vector<std::string> button_names;
+	if(button_names.empty()) {
+		button_names.push_back("_begin");
+		button_names.push_back("_line_up");
+		button_names.push_back("_half_page_up");
+		button_names.push_back("_page_up");
+
+		button_names.push_back("_end");
+		button_names.push_back("_line_down");
+		button_names.push_back("_half_page_down");
+		button_names.push_back("_page_down");
+	}
+
+	foreach(const std::string& name, button_names) {
+		tbutton* button = dynamic_cast<tbutton*>(get_widget_by_id(name));
+		if(button) {
+			button->set_callback_mouse_left_click(callback_scrollbar_button);
+		}
+	}
+}
+
+void tlistbox::set_scrollbar_button_status()
+{
+	// Set scroll up button status
+	static std::vector<std::string> button_up_names;
+	if(button_up_names.empty()) {
+		button_up_names.push_back("_begin");
+		button_up_names.push_back("_line_up");
+		button_up_names.push_back("_half_page_up");
+		button_up_names.push_back("_page_up");
+	}
+
+	foreach(const std::string& name, button_up_names) {
+		tbutton* button = dynamic_cast<tbutton*>(get_widget_by_id(name));
+		if(button) {
+			button->set_active(!scrollbar()->at_begin());
+		}
+	}
+
+	// Set scroll down button status
+	static std::vector<std::string> button_down_names;
+	if(button_down_names.empty()) {
+		button_down_names.push_back("_end");
+		button_down_names.push_back("_line_down");
+		button_down_names.push_back("_half_page_down");
+		button_down_names.push_back("_page_down");
+	}
+
+	foreach(const std::string& name, button_down_names) {
+		tbutton* button = dynamic_cast<tbutton*>(get_widget_by_id(name));
+		if(button) {
+			button->set_active(!scrollbar()->at_end());
+		}
+	}
 }
 
 /**
@@ -335,6 +421,7 @@ void tlistbox::add_item(const t_string& label)
 	}
 
 	scrollbar()->set_item_count(get_item_count());
+	set_scrollbar_button_status();
 }
 
 tscrollbar_* tlistbox::scrollbar()

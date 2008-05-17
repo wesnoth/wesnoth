@@ -525,7 +525,7 @@ tlistbox_definition::tlistbox_definition(const config& cfg) :
 
 tlistbox_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg),
-	scrollbar(0) //cfg.child("scrollbar"))
+	scrollbar(0)
 
 {
 /*WIKI
@@ -541,7 +541,35 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  * The resolution for a text box also contains the following keys:
  * @start_table = config
  *     scrollbar (section)             A grid containing the widgets for the
- *                                     scrollbar.
+ *                                     scrollbar. The scrollbar has some special
+ *                                     widgets so it can make default behaviour
+ *                                     for certain widgets.
+ * @end_table
+ *
+ * @start_table = container
+ *     [_begin] button                 Moves the position to the beginning of
+ *                                     the list.
+ *     [_line_up] button               Move the position one item up. (NOTE if
+ *                                     too many items to move per item it might
+ *                                     be more items.)
+ *     [_half_page_up] button          Move the position half the number of the 
+ *                                     visible items up. (See note at _line_up.)
+ *     [_page_up] button               Move the position the number of visible
+ *                                     items up. (See note at _line_up.)
+ *
+ *
+ *     [_end] button                   Moves the position to the end of the
+ *                                     list.
+ *     [_line_down] button             Move the position one item down.(See note
+ *                                     at _line_up.) 
+ *     [_half_page_down] button        Move the position half the number of the 
+ *                                     visible items down. (See note at _line_up.)
+ *     [_page_down] button             Move the position the number of visible
+ *                                     items down. (See note at _line_up.)
+ *
+ *     (_scrollbar) vertical_scrollbar This is the scrollbar so the user can
+ *                                     scroll through the list.
+ *
  * @end_table
  *
  * The following states exist:

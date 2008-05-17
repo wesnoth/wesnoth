@@ -620,7 +620,10 @@ tbuilder_control::tbuilder_control(const config& cfg) :
  *                                     initial value. This value should be
  *                                     unique or empty. Those special values are
  *                                     documented at the window definition that
- *                                     uses them.
+ *                                     uses them. NOTE items starting with an
+ *                                     underscore are used for composed witdgets
+ *                                     and these should be unique per composed
+ *                                     widget.
  *
  *     definition (string = "default") The id of the widget definition to use.
  *                                     This way it's possible to select a

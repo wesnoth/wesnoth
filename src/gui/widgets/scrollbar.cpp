@@ -135,12 +135,9 @@ void tscrollbar_::set_size(const SDL_Rect& rect)
 void tscrollbar_::set_item_position(const unsigned item_position)
 {
 	// Set the value always execute since we update a part of the state.
-	item_position_ = item_position;
+	item_position_ = item_position + visible_items_ > item_count_ ? 
+		item_count_ - visible_items_ : item_position;
 
-	// Adjust the item position.
-	if(item_position_ >= item_count_) {
-		item_position_ = item_count_ - 1;
-	}
 	item_position_ = (item_position_ + step_size_ - 1) / step_size_;
 	std::cerr << "Item position: " << item_position_ << ".\n";
 
@@ -149,6 +146,50 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 	std::cerr << "Positioner offset: " << positioner_offset_ << ".\n";
 
 	update_canvas();
+}
+
+void tscrollbar_::scroll(const tscroll scroll)
+{
+	switch(scroll) {
+		case BEGIN : 
+			set_item_position(0);
+			break;
+
+		case ITEM_BACKWARDS :
+			if(item_position_) {
+				set_item_position(item_position_ - 1);
+			}
+			break;
+
+		case HALF_JUMP_BACKWARDS :
+			set_item_position(item_position_ > (visible_items_ / 2) ? 
+				item_position_ - (visible_items_ / 2) : 0);
+			break;
+
+		case JUMP_BACKWARDS :
+			set_item_position(item_position_ > visible_items_ ? 
+				item_position_ - visible_items_  : 0);
+			break;
+
+		case END :
+			set_item_position(item_count_ - 1);
+			break;
+			
+		case ITEM_FORWARD :
+			set_item_position(item_position_ + 1);
+			break;
+
+		case HALF_JUMP_FORWARD :
+			set_item_position(item_position_ +  (visible_items_ / 2));
+			break;
+
+		case JUMP_FORWARD :
+			set_item_position(item_position_ +  visible_items_ );
+			break;
+
+		default :
+			assert(false);
+		}
 }
 
 void tscrollbar_::set_state(const tstate state)

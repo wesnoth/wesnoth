@@ -87,6 +87,19 @@ public:
 	//! the step size is honoured. The value will be rouded down
 	void set_item_position(const unsigned item_position);
 
+	enum tscroll { 
+		BEGIN,               /**< Go to begin position. */
+		ITEM_BACKWARDS,      /**< Go one item towards the begin. */
+		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin. */
+		JUMP_BACKWARDS,      /**< Go the visibile items towards the begin. */
+		END,                 /**< Go to the end position. */
+		ITEM_FORWARD,        /**< Go one item towards the end. */
+		HALF_JUMP_FORWARD,   /**< Go half the visible items towards the end. */
+		JUMP_FORWARD };      /**< Go the visible items towards the end. */
+
+	/** Sets the item position. */ 
+	void scroll(const tscroll scroll);
+
 	unsigned get_visible_items() const { return visible_items_; }
 	void set_visible_items(const unsigned visible_items)
 		{ visible_items_ = visible_items; recalculate(); }
@@ -101,7 +114,7 @@ public:
 	//! Is the positioner at the and of the scrollbar, note both begin and end
 	//! might be true at the same time.
 	bool at_end() const 
-		{ return item_position_ + visible_items_ + 1 == item_count_; }
+		{ return item_position_ + visible_items_ == item_count_; }
 
 	void set_callback_positioner_move(void (*callback) (twidget*)) 
 		{ callback_positioner_move_ = callback; }

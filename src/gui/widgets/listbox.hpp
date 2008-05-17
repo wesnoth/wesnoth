@@ -54,7 +54,14 @@ public:
 	/**
 	 * Callback when the scrollbar moves.
 	 */
-	void scrollbar_moved(twidget* /*caller*/) { set_dirty(); }
+	void scrollbar_moved(twidget* /*caller*/)
+		{ set_scrollbar_button_status(); set_dirty(); }
+
+	/** 
+	 * When an item scrollbar control button is clicked we need to move the
+	 * scrollbar and update the list. 
+	 */
+	void scrollbar_click(twidget* caller);
 
 	/** The builder needs to call us so we can write in the proper callbacks. */
 	void finalize_setup();
@@ -104,6 +111,15 @@ public:
 	unsigned get_selected_row() const { return selected_row_; }
 
 private:
+
+	/** 
+	 * Sets the status of the scrollbar buttons.
+	 *
+	 * This is needed after the scrollbar moves so the status of the buttons
+	 * will be active or inactive as needed.
+	 */
+	void set_scrollbar_button_status();
+
 	//! Note the order of the states must be the same as defined in settings.hpp.
 	enum tstate { ENABLED, DISABLED, COUNT };
 
