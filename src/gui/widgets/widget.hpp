@@ -139,7 +139,7 @@ public:
 
 	//! This should not be changed after the widget is shown, strange things
 	//! might occur.
-	void set_definition(const std::string& definition) 
+	virtual void set_definition(const std::string& definition) 
 		{ definition_ = definition; }
 
 	//! Draws a widget.

@@ -27,7 +27,6 @@ public:
 		tcontrol(COUNT),
 		state_(ENABLED)
 	{
-		load_config();
 	}
 
 	void set_active(const bool active) { set_state(active ? ENABLED : DISABLED); };

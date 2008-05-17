@@ -27,7 +27,6 @@ public:
 		tcontrol(0),
 		best_size_(0, 0)
 	{
-		load_config();
 	}
 
 	//! Inherited from tcontrol.

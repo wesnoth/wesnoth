@@ -819,12 +819,14 @@ twidget* tbuilder_listbox::build() const
 	twidget* list_area = 0;
 	if(list_builder) {
 		list_area = new tspacer();
+		assert(list_area);
+		list_area->set_definition("default");
 	} else {
 		assert(list);
-		/*tgrid* */list_area = dynamic_cast<tgrid*>(list->build());
+		list_area = dynamic_cast<tgrid*>(list->build());
+		assert(list_area);
 	}
 
-	assert(list_area);
 	list_area->set_id("_list");
 
 	listbox->grid().set_rows_cols(1, 2);

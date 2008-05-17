@@ -27,7 +27,6 @@ public:
 	tvertical_scrollbar() :
 		tscrollbar_() 
 	{
-		load_config();
 	}
 
 private:

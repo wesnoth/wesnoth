@@ -67,6 +67,17 @@ public:
 	tcanvas& canvas(const unsigned index) 
 		{ assert(index < canvas_.size()); return canvas_[index]; }
 
+	/** 
+	 * Inherited from twidget. 
+	 * 
+	 * This function sets the defintion of a control and should be called soon
+	 * after creating the object since a lot of internal functions depend on the
+	 * definition.
+	 *
+	 * This function should be called one time only!!!
+	 */
+	void set_definition(const std::string& definition);
+
 	//! Inherited from twidget.
 	void draw(surface& surface);
 
@@ -84,7 +95,11 @@ public:
 	tpoint get_best_size() const;
 	tpoint get_maximum_size() const;
 
-	//! Inherited from twidget.
+	/**
+	 * Inherited from twidget.
+	 *
+	 * This function shouldn't be called directly it's called by set_definition().
+	 */
 	void load_config();
 
 private:

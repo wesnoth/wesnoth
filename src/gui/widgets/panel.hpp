@@ -26,14 +26,11 @@ class tpanel : public tcontrol
 public:
 	//! Constructor.
 	//!
-	//! @param load_conf     When a class inherits from a panel that
-	//!                      config should be loaded, so set this to false.
 	//! @param canvas_count  The canvas count for tcontrol.
-	tpanel(const bool load_conf = true, const unsigned canvas_count = 2) : 
+	tpanel(const unsigned canvas_count = 2) : 
 		tcontrol(canvas_count),
 		grid_()
 	{
-		if(load_conf) load_config();
 		grid_.set_parent(this);
 	}
 	

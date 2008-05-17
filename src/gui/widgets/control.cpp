@@ -224,6 +224,14 @@ void tcontrol::set_canvas_text()
 	}
 }
 
+void tcontrol::set_definition(const std::string& definition)
+{
+	assert(!config());
+	twidget::set_definition(definition);
+	load_config();
+	assert(config());
+}
+
 void tcontrol::draw(surface& surface)
 {
 	assert(config_);

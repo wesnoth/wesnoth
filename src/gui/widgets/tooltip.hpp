@@ -26,7 +26,6 @@ public:
 	ttooltip() :
 		tcontrol(1)
 	{
-		load_config();
 		set_multiline_label();
 	}
 

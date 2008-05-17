@@ -80,7 +80,6 @@ tlistbox::tlistbox() :
 	best_spacer_size_(0, 0),
 	rows_()
 {
-	load_config();
 }
 
 void tlistbox::list_item_selected(twidget* caller)

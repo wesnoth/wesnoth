@@ -29,7 +29,6 @@ public:
 		retval_(0),
 		callback_mouse_left_click_(0)
 	{
-		load_config();
 	}
 
 	void mouse_enter(tevent_handler&);

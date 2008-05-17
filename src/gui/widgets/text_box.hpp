@@ -78,7 +78,6 @@ public:
 		text_height_(0),
 		dragging_(false)
 	{ 
-		load_config();
 		set_wants_mouse_left_double_click(); 
 	}
 
