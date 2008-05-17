@@ -536,6 +536,9 @@ env.Precious(uninstall)
 #
 # Making a distribution tarball.
 #
+config_h_re = re.compile(r"^#define\s*(\S*)\s*\"(\S*)\"$", re.MULTILINE)
+build_config = dict( config_h_re.findall(File("config.h.dummy").get_contents()) )
+env["version"] = build_config["PACKAGE_VERSION"]
 if 'dist' in COMMAND_LINE_TARGETS:	# Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
@@ -543,12 +546,11 @@ if 'dist' in COMMAND_LINE_TARGETS:	# Speedup, the manifest is expensive
         lst = commands.getoutput("svn -v status | awk '/^[^?]/ {print $4;}'").split()
         lst = filter(os.path.isfile, lst)
         return lst
-    dist_env = env.Clone()
-    dist_tarball = dist_env.Tar('wesnoth.tar.bz2', [])
+    dist_tarball = env.Tar('wesnoth-${version}.tar.bz2', [])
     open("dist.manifest", "w").write("\n".join(dist_manifest() + ["src/revision.hpp"]))
-    dist_env.Append(TARFLAGS='-j -T dist.manifest --transform "s,^,wesnoth/,"',
+    env.Append(TARFLAGS='-j -T dist.manifest --transform "s,^,wesnoth-$version/,"',
                TARCOMSTR="Making distribution tarball...")
-    dist_env.AlwaysBuild(dist_tarball)
+    env.AlwaysBuild(dist_tarball)
     env.Clean(all, 'wesnoth.tar.bz2')
     env.Alias('dist', dist_tarball)
 
