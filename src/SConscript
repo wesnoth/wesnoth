@@ -227,7 +227,7 @@ campaignd_sources = Split("""
     campaign_server/campaign_server.cpp
     """)
 if have_server_prereqs:
-    campaignd = env.Program("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libwesnoth])
+    campaignd = env.Program("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd])
 else:
     campaignd = None
 Export("campaignd")
