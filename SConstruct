@@ -536,7 +536,7 @@ env.Precious(uninstall)
 #
 # Making a distribution tarball.
 #
-config_h_re = re.compile(r"^#define\s*(\S*)\s*\"(\S*)\"$", re.MULTILINE)
+config_h_re = re.compile(r"^.*#define\s*(\S*)\s*\"(\S*)\".*$", re.MULTILINE)
 build_config = dict( config_h_re.findall(File("config.h.dummy").get_contents()) )
 env["version"] = build_config["PACKAGE_VERSION"]
 if 'dist' in COMMAND_LINE_TARGETS:	# Speedup, the manifest is expensive
