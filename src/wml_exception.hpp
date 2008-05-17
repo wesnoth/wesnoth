@@ -46,6 +46,20 @@ class display;
 void wml_exception(const char* cond, const char* file, 
 	const int line, const char* function, const t_string& message);
 
+//! Helper function, don't call this directly.
+inline void wml_exception(const char* cond, const char* file, 
+	const int line, const char* function, const char* message)
+{
+	wml_exception(cond, file, line, function, t_string(message));
+}
+
+//! Helper function, don't call this directly.
+inline void wml_exception(const char* cond, const char* file, 
+	const int line, const char* function, const std::string& message)
+{
+	wml_exception(cond, file, line, function, t_string(message));
+}
+
 //! Helper class, don't construct this directly.
 struct twml_exception 
 {
