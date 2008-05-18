@@ -274,7 +274,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 				find.push_back(leader_);
 				search_field = "leader";
 			}
-
+			// Pick the first faction with the greater amount of data matching the criteria
 			int faction_index = 0;
 			int best_score = 0;
 			std::vector<config*>::const_iterator faction = parent.era_sides_.begin();

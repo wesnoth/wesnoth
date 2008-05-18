@@ -51,6 +51,8 @@ Version 1.5.0+svn:
  * WML engine:
    * titlescreen is now randomly loaded
    * fix [teleport] capturing villages with the wrong side (bug #11683)
+   * SideWML recruit= no longer locks the faction except if explicitely wanted
+     with the new key faction_from_recruit=yes
  * wesnothd
    * added expiration time to bans
    * added restart command to server that does gracefull restart
