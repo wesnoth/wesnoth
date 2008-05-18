@@ -391,14 +391,14 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 				break;
 		}
 		if(direction != gamemap::location::SOUTH_WEST && direction != gamemap::location::NORTH_WEST) {
-			*halo_id = halo::add(x+current_data.halo_x,
-					y+current_data.halo_y,
+			*halo_id = halo::add(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor(),
+					y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor(),
 					current_data.halo,
 					gamemap::location(-1, -1),
 					orientation);
 		} else {
-			*halo_id = halo::add(x-current_data.halo_x,
-					y+current_data.halo_y,
+			*halo_id = halo::add(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor(),
+					y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor(),
 					current_data.halo,
 					gamemap::location(-1, -1),
 					orientation);
