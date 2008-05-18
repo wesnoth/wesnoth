@@ -2769,6 +2769,35 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					   label.colour());
 	}
 
+	else if(cmd== "heal_unit") {
+	  	
+		const vconfig filter = cfg.child("filter");
+		unit_map::iterator u;
+		
+		if (filter.null()) {
+			// Try to take the unit at loc1
+			u = units->find(event_info.loc1);
+		}
+		else {
+			for(u  = units->begin(); u != units->end(); ++u) {
+				if(game_events::unit_matches_filter(u, filter))
+					break;
+			}
+		}
+
+		// We have found a unit
+		if(u != units->end()) {
+		  	int amount = lexical_cast_default<int>(cfg["amount"],1);
+			int real_amount = u->second.hitpoints();
+			u->second.heal(amount);
+			real_amount = u->second.hitpoints() - real_amount;
+			gamemap::location healed_loc = u->second.get_interrupted_move();
+			unit_display::unit_healing(u->second,u->first,std::vector<unit_map::iterator>(),real_amount);
+			state_of_game->set_variable("heal_amount",
+						    str_cast<int>(real_amount));
+		}
+	}
+
 	DBG_NG << "done handling command...\n";
 }
 
