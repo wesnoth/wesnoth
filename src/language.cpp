@@ -44,10 +44,8 @@ static bool has_locale(const char* s) {
 		// The way to find out whether a locale is available is to set it and
 		// hope not runtime error gets thrown.
 		std::locale dummy(s);
-		std::cerr << "Locale : " << s << " found.\n";
 		return true;
 	} catch (std::runtime_error&) {
-		std::cerr << "Locale : " << s << " not found.\n";
 		return false;
 	}
 }		
