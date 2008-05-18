@@ -204,7 +204,6 @@ tpoint tcontrol::get_multi_line_best_size(const tpoint& config_size) const
 	surface surf = font::get_rendered_text(wrapped_message, config_->text_font_size, col);
 	assert(surf);
 
-	std::cerr << "Multiline size for width: " << width << " surface size: "  << surf->w << ',' << surf->h << ".\n";
 	return tpoint(surf->w + config_->text_extra_width, surf->h + config_->text_extra_height);
 }
 

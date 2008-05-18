@@ -203,11 +203,6 @@ bool tgrid::has_vertical_scrollbar() const
 			itor != children_.end(); ++itor) {
 		// FIXME we should check per row and the entire row
 		// should have the flag!!!!
-		if(itor->widget()) {
-			 std::cerr << "Widget type " << typeid(*(itor->widget())).name()
-			 	<< "has scrollbar " 
-				<< itor->widget()->has_vertical_scrollbar() << ".\n";
-		}
 		if(itor->widget() && itor->widget()->has_vertical_scrollbar()) {
 			return true;
 		} 

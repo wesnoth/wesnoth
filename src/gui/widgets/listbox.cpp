@@ -471,12 +471,6 @@ const tscrollbar_* tlistbox::scrollbar() const
 
 bool tlistbox::select_row(const unsigned row, const bool select)
 {
-/*
-	std::cerr << "Selecting row " << row << " select " << select 
-		<< " must_select " << must_select_
-		<< " multi_select " << multi_select_
-		<< " selection_count " << selection_count_ << ".\n";
-*/
 	if(!select && must_select_ && selection_count_ < 2) {
 		return false;
 	}

@@ -139,11 +139,9 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 		item_count_ - visible_items_ : item_position;
 
 	item_position_ = (item_position_ + step_size_ - 1) / step_size_;
-	std::cerr << "Item position: " << item_position_ << ".\n";
 
 	// Determine the pixel offset of the item position.
 	positioner_offset_ = static_cast<unsigned>(item_position_ * pixels_per_step_);
-	std::cerr << "Positioner offset: " << positioner_offset_ << ".\n";
 
 	update_canvas();
 }
@@ -223,13 +221,10 @@ void tscrollbar_::recalculate()
 	int available_length = 
 		get_length() - offset_before() - minimum_positioner_length() - offset_after();
 
-	std::cerr << "Available length: " << available_length << ".\n";
-
 	assert(available_length > 0);
 
 	// All visible.
 	if(item_count_ <= visible_items_) {
-		std::cerr << "Show all.\n";
 		positioner_offset_ = offset_before();
 		positioner_length_ = available_length + minimum_positioner_length();
 		item_position_ = 0;
@@ -240,37 +235,25 @@ void tscrollbar_::recalculate()
 	assert(step_size_);
 	assert(visible_items_);
 
-	const unsigned steps = 
-		(item_count_ + step_size_ - 1) / step_size_;
-	std::cerr << "Steps: " << steps << "\n";
-	std::cerr << "Step size: " << step_size_ << ".\n";
+	const unsigned steps = (item_count_ + step_size_ - 1) / step_size_;
+
 	if(steps < available_length) {
 
 		// We can show them all.
-		std::cerr << "All steps can be shown.\n";
-
 		available_length += minimum_positioner_length();
 
 		pixels_per_step_ = available_length / steps;
-		std::cerr << "Pixels per step: " << pixels_per_step_ << ".\n";
 
 		positioner_length_ = static_cast<unsigned>(pixels_per_step_ * visible_items_) + available_length % steps;
-		std::cerr << "Positioner length: " << positioner_length_ << ".\n";
 
 	} else {
 
 		// We'll skip some.
-		std::cerr << "Some steps will be skipped.\n";
-
 		WRN_G << "The scrollbar is too small for the"
 			" number of items, movement might seem jerky.\n";
 		
 		pixels_per_step_ = available_length / steps;
-		std::cerr << "Pixels per step: " << pixels_per_step_ << ".\n";
-
 		positioner_length_ = minimum_positioner_length();
-		std::cerr << "Positioner length: " << positioner_length_ << ".\n";
-	
 	}
 
 	set_item_position(item_position_);
@@ -287,9 +270,6 @@ void tscrollbar_::update_canvas() {
 
 void tscrollbar_::move_positioner(const int distance)
 {
-
-	std::cerr << "Positioner at " << positioner_offset_ << " move for " << distance;
-
 	if(distance < 0 && -distance > positioner_offset_) {
 		positioner_offset_ = 0;
 	} else {
@@ -300,8 +280,6 @@ void tscrollbar_::move_positioner(const int distance)
 	if(positioner_offset_ + positioner_length_ > length) {
 		positioner_offset_ = length - positioner_length_;
 	}
-
-	std::cerr << " sets positioner at " << positioner_offset_ << ".\n";
 
 	const unsigned position =
 		static_cast<unsigned>(positioner_offset_ / pixels_per_step_); 
