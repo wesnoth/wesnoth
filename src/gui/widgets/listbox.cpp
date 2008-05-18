@@ -505,6 +505,13 @@ bool tlistbox::select_row(const unsigned row, const bool select)
 	return true;
 }
 
+void tlistbox::set_row_active(const unsigned row, const bool active)
+{
+	assert(row < get_item_count());
+	assert(rows_[row].grid());
+	rows_[row].grid()->set_active(active);
+}
+
 tlistbox::trow::trow(const tbuilder_grid& list_builder_,const t_string& label) :
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),
 	height_(0),
