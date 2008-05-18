@@ -69,6 +69,7 @@ public:
 	bool is_combined() const { return combined_; }
 
 	t_translation::t_terrain default_base() const { return editor_default_base_; }
+	t_translation::t_terrain terrain_with_default_base() const;
 
 private:
 	//! The image used in the minimap

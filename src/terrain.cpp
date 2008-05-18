@@ -223,6 +223,12 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	
 }
 
+t_translation::t_terrain terrain_type::terrain_with_default_base() const {
+	if(overlay_ && editor_default_base_ != t_translation::NONE_TERRAIN) {
+		return t_translation::t_terrain(editor_default_base_.base, number_.overlay);
+	}
+	return number_;
+}
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,

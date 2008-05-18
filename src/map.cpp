@@ -412,22 +412,11 @@ void gamemap::read(const std::string& data)
 			
 			// Is the terrain valid? 
 			if(tcodeToTerrain_.count(tiles_[x][y]) == 0) {
-				const std::map<t_translation::t_terrain, terrain_type>::const_iterator base_iter = 
-					tcodeToTerrain_.find(t_translation::t_terrain(tiles_[x][y].base, t_translation::NO_LAYER));
-				const std::map<t_translation::t_terrain, terrain_type>::const_iterator overlay_iter = 
-					tcodeToTerrain_.find(t_translation::t_terrain(t_translation::NO_LAYER, tiles_[x][y].overlay));
-
-				if(base_iter == tcodeToTerrain_.end() || overlay_iter == tcodeToTerrain_.end()) {
+				if(!try_merge_terrains(tiles_[x][y])) {
 					ERR_CF << "Illegal character in map: (" << t_translation::write_terrain_code(tiles_[x][y])
 						   << ") '" << tiles_[x][y] << "'\n";
 					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 				}
-
-				terrain_type new_terrain(base_iter->second, overlay_iter->second); 
-				terrainList_.push_back(new_terrain.number());
-				tcodeToTerrain_.insert(std::pair<t_translation::t_terrain, terrain_type>(
-											new_terrain.number(), new_terrain));
-
 			}
 
 			// Is it a village?
@@ -733,6 +722,10 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_t
 		return;
 	}
 
+	if(!try_merge_terrains(terrain)) {
+		return;
+	}
+
 	if(on_board(loc, false)) {
 		const bool old_village = is_village(loc);
 		const bool new_village = is_village(terrain);
@@ -762,32 +755,7 @@ void gamemap::set_overlay(const gamemap::location& loc, const t_translation::t_t
 		return;
 	}
 
-	//check if base only is a valid terrain
-	const std::map<t_translation::t_terrain, terrain_type>::const_iterator base_iter = 
-		tcodeToTerrain_.find(t_translation::t_terrain(tiles_[loc.x + border_size_][loc.y + border_size_].base, t_translation::NO_LAYER));
-	//check if overlay only is a valid terrain
-	const std::map<t_translation::t_terrain, terrain_type>::const_iterator overlay_iter = 
-		tcodeToTerrain_.find(t_translation::t_terrain(t_translation::NO_LAYER, terrain.overlay));
-	//check if base^overlay is already a valid terrain
-	const std::map<t_translation::t_terrain, terrain_type>::const_iterator all_iter = 
-		tcodeToTerrain_.find(t_translation::t_terrain(tiles_[loc.x + border_size_][loc.y + border_size_].base, terrain.overlay));
-	
-	// if neither, return
-	if((base_iter == tcodeToTerrain_.end() || overlay_iter == tcodeToTerrain_.end())
-	   && all_iter == tcodeToTerrain_.end()) {
-		return;
-	}
-
-	//Create new terrain
-	if (all_iter == tcodeToTerrain_.end()) {
-		terrain_type new_terrain(base_iter->second, overlay_iter->second); 
-		terrainList_.push_back(new_terrain.number());
-		tcodeToTerrain_.insert(std::pair<t_translation::t_terrain, terrain_type>(
-								   new_terrain.number(), new_terrain));
-	}
-
 	set_terrain(loc, t_translation::t_terrain(tiles_[loc.x + border_size_][loc.y + border_size_].base, terrain.overlay));
-
 }
 
 void gamemap::set_base(const gamemap::location& loc, const t_translation::t_terrain terrain)
@@ -797,32 +765,7 @@ void gamemap::set_base(const gamemap::location& loc, const t_translation::t_terr
 		return;
 	}
 
-	//check if base only is a valid terrain
-	const std::map<t_translation::t_terrain, terrain_type>::const_iterator base_iter = 
-		tcodeToTerrain_.find(t_translation::t_terrain(terrain.base, t_translation::NO_LAYER));
-	//check if overlay only is a valid terrain
-	const std::map<t_translation::t_terrain, terrain_type>::const_iterator overlay_iter = 
-		tcodeToTerrain_.find(t_translation::t_terrain(t_translation::NO_LAYER, tiles_[loc.x + border_size_][loc.y + border_size_].overlay));
-	//check if base^overlay is already a valid terrain
-	const std::map<t_translation::t_terrain, terrain_type>::const_iterator all_iter = 
-		tcodeToTerrain_.find(t_translation::t_terrain(terrain.base, tiles_[loc.x + border_size_][loc.y + border_size_].overlay));
-	
-	// if neither, return
-	if((base_iter == tcodeToTerrain_.end() || overlay_iter == tcodeToTerrain_.end())
-	   && all_iter == tcodeToTerrain_.end()) {
-		return;
-	}
-
-	//Create new terrain
-	if (all_iter == tcodeToTerrain_.end()) {
-		terrain_type new_terrain(base_iter->second, overlay_iter->second); 
-		terrainList_.push_back(new_terrain.number());
-		tcodeToTerrain_.insert(std::pair<t_translation::t_terrain, terrain_type>(
-								   new_terrain.number(), new_terrain));
-	}
-
 	set_terrain(loc, t_translation::t_terrain(terrain.base, tiles_[loc.x + border_size_][loc.y + border_size_].overlay));
-
 }
 
 
@@ -887,5 +830,26 @@ const std::map<t_translation::t_terrain, size_t>& gamemap::get_weighted_terrain_
 	}
 
 	return terrainFrequencyCache_;
+}
+
+bool gamemap::try_merge_terrains(const t_translation::t_terrain terrain) {
+
+	if(tcodeToTerrain_.count(terrain) == 0) {
+		const std::map<t_translation::t_terrain, terrain_type>::const_iterator base_iter = 
+			tcodeToTerrain_.find(t_translation::t_terrain(terrain.base, t_translation::NO_LAYER));
+		const std::map<t_translation::t_terrain, terrain_type>::const_iterator overlay_iter = 
+			tcodeToTerrain_.find(t_translation::t_terrain(t_translation::NO_LAYER, terrain.overlay));
+		
+		if(base_iter == tcodeToTerrain_.end() || overlay_iter == tcodeToTerrain_.end()) {
+			return false;
+		}
+		
+		terrain_type new_terrain(base_iter->second, overlay_iter->second); 
+		terrainList_.push_back(new_terrain.number());
+		tcodeToTerrain_.insert(std::pair<t_translation::t_terrain, terrain_type>(
+								   new_terrain.number(), new_terrain));
+		return true;
+	}
+	return true; // Terrain already exists, nothing to do
 }
 

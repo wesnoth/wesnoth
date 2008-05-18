@@ -582,8 +582,11 @@ void map_editor::edit_set_start_pos() {
 }
 
 void map_editor::perform_flood_fill(const t_translation::t_terrain fill_with) {
+
+	t_translation::t_terrain fill_with_final = map_.get_terrain_info(fill_with).terrain_with_default_base();
+
 	terrain_log log;
-	flood_fill(map_, selected_hex_, fill_with, &log);
+	flood_fill(map_, selected_hex_, fill_with_final, &log);
 	map_undo_action action;
 	for (terrain_log::iterator it = log.begin(); it != log.end(); it++) {
 		action.add_terrain((*it).second, palette_.selected_fg_terrain(),
@@ -607,7 +610,9 @@ void map_editor::edit_quit() {
 }
 
 void map_editor::edit_new_map() {
-	const std::string map = new_map_dialog(gui_, palette_.selected_bg_terrain(),
+    t_translation::t_terrain bg_fill = map_.get_terrain_info(palette_.selected_bg_terrain()).terrain_with_default_base();
+
+	const std::string map = new_map_dialog(gui_, bg_fill,
 	                                       changed_since_save(), game_config_);
 	if (map != "") {
 		num_operations_since_save_ = 0;
@@ -732,9 +737,10 @@ void map_editor::edit_resize() {
 			// before the map gets modified.
 			const std::string old_data = map_.write();
 
+            t_translation::t_terrain bg_fill = map_.get_terrain_info(palette_.selected_bg_terrain()).terrain_with_default_base();
 			const std::string resized_map =
 				resize_map(map_, width, height, x_offset, y_offset,
-				do_expand, palette_.selected_bg_terrain());
+				do_expand, bg_fill);
 
 			if (resized_map != "") {
 				map_undo_action action;
@@ -1215,26 +1221,24 @@ void map_editor::draw_terrain(const t_translation::t_terrain terrain,
                               const std::vector<gamemap::location> &hexes, const bool one_layer_only)
 {
 	map_undo_action undo_action;
-	
+    t_translation::t_terrain final_terrain = terrain;
+    if(!one_layer_only) {
+        final_terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
+    }
+
 	for(std::vector<gamemap::location>::const_iterator it = hexes.begin();
 			it != hexes.end(); ++it) {
 		const t_translation::t_terrain old_terrain = map_.get_terrain(*it);
-		if(terrain != old_terrain) {
-			undo_action.add_terrain(old_terrain, terrain, *it);
-			if (terrain.base == t_translation::NO_LAYER) {
-				map_.set_overlay(*it, terrain);
-                
-                const terrain_type& t_info = map_.get_terrain_info(terrain);
-
-                if (!one_layer_only && t_info.default_base() != t_translation::NONE_TERRAIN) {
-                    map_.set_base(*it, t_info.default_base());
-                }
+		if(final_terrain != old_terrain) {
+			undo_action.add_terrain(old_terrain, final_terrain, *it);
+			if (final_terrain.base == t_translation::NO_LAYER) {
+				map_.set_overlay(*it, final_terrain);
 			}
 			else if (one_layer_only) {
-				map_.set_base(*it, terrain);
+				map_.set_base(*it, final_terrain);
 			}
 			else {
-				map_.set_terrain(*it, terrain);
+				map_.set_terrain(*it, final_terrain);
 			}
 
 			// always rebuild localy to show the drawing progress

@@ -269,6 +269,10 @@ private:
 	const t_translation::t_list operator[](int index) const
 		{ return tiles_[index + border_size_]; }
 
+	//! Tries to find out if "terrain" can be created by combining two existing terrains
+	//! Will add the resulting terrain to the terrain list if successfull
+	bool try_merge_terrains(const t_translation::t_terrain terrain);
+
 	t_translation::t_list terrainList_;
 	std::map<t_translation::t_terrain, terrain_type> tcodeToTerrain_;
 	std::vector<location> villages_;
