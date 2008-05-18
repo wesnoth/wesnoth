@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-11 16:11+0200\n"
-"PO-Revision-Date: 2008-04-02 12:00+0200\n"
+"PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -494,9 +494,9 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Ove stranice daju osvrt na sve što je nephodno znati da zaigrate „Boj za "
+"Ove strane daju osvrt na sve što je nephodno znati da zaigrate „Boj za "
 "Vesnot“ — način igranja i osnovnu mehaniku koja pogoni igru. Dok budete "
-"igrali, ove strane će biti dopunjavane podacima koji će predstavljati nove "
+"igrali, strane će biti dopunjavane podacima koji će predstavljati nove "
 "uglove igre na koje budete nailazili. Zaželite li detaljnije informacije o "
 "posebnim okolnostima i izuzecima, možete ispratiti ubačene veze."
 
@@ -661,7 +661,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -670,8 +669,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Unajmljene jedinice pristižu sa dve nasumične <ref>dst=traits text=osobine</"
-"ref>, koje utiču na njihove karakteristike."
+"Unajmljene jedinice pristižu sa dve nasumične <ref>dst=..traits_section "
+"text=osobine</ref>, koje utiču na njihove karakteristike."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -1263,7 +1262,7 @@ msgstr ""
 "\n"
 "Jedinicama je potrebna izvesna količina iskustva da bi napredovale (20% "
 "manje za jedinice sa osobinom oštroumnosti). Kada dostignu tu količinu, "
-"odmah napreduju na sledeći nivo, takođe bivajući potpuno izlečene. U nekim "
+"odmah napreduju na sledeći nivo, bivajući usto potpuno izlečene. U nekim "
 "slučajevima, daće vam se da izaberete pravac napredovanja."
 
 #. [topic]
@@ -3021,7 +3020,6 @@ msgid "backstab"
 msgstr "nož u leđa"
 
 #: data/core/macros/abilities.cfg:545
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3125,7 +3123,6 @@ msgid "charge"
 msgstr "juriš"
 
 #: data/core/macros/abilities.cfg:643
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -4278,7 +4275,6 @@ msgstr ""
 "borbu dok ili sama ili njen neprijatelj ne nastrada."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4315,7 +4311,6 @@ msgstr ""
 "neprijatelja, ali samo u napadu."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -6850,13 +6845,12 @@ msgid "Choose your preferred language:"
 msgstr "Izaberite jezik koji želite:"
 
 #: src/game.cpp:1861
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[1] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[2] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
-msgstr[3] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
+msgstr[3] "Sledeći dodatak ima grešku i ne može se učitati:"
 
 #: src/game.cpp:1868
 msgid "ERROR DETAILS:"
@@ -7562,9 +7556,8 @@ msgid "Search"
 msgstr "Traži"
 
 #: src/menu_events.cpp:1979
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Nema ciljeva"
+msgstr ""
 
 #: src/menu_events.cpp:1990
 msgid ""
@@ -8929,30 +8922,10 @@ msgstr "Pomozite nam da poboljšamo Vesnot za vas!"
 msgid "Enable summary uploads"
 msgstr "Uključi slanje sažetaka"
 
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "osnovna VI"
-
-#, fuzzy
-#~ msgid "name :"
-#~ msgstr "Ime:"
-
-#, fuzzy
-#~ msgid "cancel"
-#~ msgstr "Odustani"
-
-#, fuzzy
-#~ msgid "#(unknown campaign)"
-#~ msgstr "Nepoznata naredba."
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Upotreba: control <strana> <nadimak>"
+#~ msgid "ruby of fire"
+#~ msgstr "vatreni rubin"
 
 #~ msgid "Screenshot"
-#~ msgstr "Snimak ekrana"
-
-#, fuzzy
-#~ msgid "Map_Screenshot"
 #~ msgstr "Snimak ekrana"
 
 #~ msgid ""
@@ -8989,15 +8962,15 @@ msgstr "Uključi slanje sažetaka"
 #~ msgid "Unknown command: "
 #~ msgstr "Nepoznata naredba: "
 
+#~ msgid "Usage: control <side> <nick>"
+#~ msgstr "Upotreba: control <strana> <nadimak>"
+
 #~ msgid ""
 #~ " This unit is capable of basic healing, though it can only delay the "
 #~ "effects of poison, not cure them entirely."
 #~ msgstr ""
 #~ " Ova jedinica sposobna je za osnovno lečenje. Može odlagati uticaj "
 #~ "otrova, ali ne i isceliti ga."
-
-#~ msgid "ruby of fire"
-#~ msgstr "vatreni rubin"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-11 16:11+0200\n"
-"PO-Revision-Date: 2008-04-02 12:00+0200\n"
+"PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -494,11 +494,11 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Ове странице дају осврт на све што је непходно знати да заиграте „Бој за "
+"Ове стране дају осврт на све што је непходно знати да заиграте „Бој за "
 "Веснот“ — начин играња и основну механику која погони игру. Док будете "
-"играли, ове стране ће бити допуњаване подацима који ће представљати нове "
-"углове игре на које будете наилазили. Зажелите ли детаљније информације о "
-"посебним околностима и изузецима, можете испратити убачене везе."
+"играли, стране ће бити допуњаване подацима који ће представљати нове углове "
+"игре на које будете наилазили. Зажелите ли детаљније информације о посебним "
+"околностима и изузецима, можете испратити убачене везе."
 
 #. [topic]
 #: data/core/help.cfg:135
@@ -661,7 +661,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -670,8 +669,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Унајмљене јединице пристижу са две насумичне <ref>dst=traits text=особине</"
-"ref>, које утичу на њихове карактеристике."
+"Унајмљене јединице пристижу са две насумичне <ref>dst=..traits_section "
+"text=особине</ref>, које утичу на њихове карактеристике."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -1262,7 +1261,7 @@ msgstr ""
 "\n"
 "Јединицама је потребна извесна количина искуства да би напредовале (20% мање "
 "за јединице са особином оштроумности). Када достигну ту количину, одмах "
-"напредују на следећи ниво, такође бивајући потпуно излечене. У неким "
+"напредују на следећи ниво, бивајући усто потпуно излечене. У неким "
 "случајевима, даће вам се да изаберете правац напредовања."
 
 #. [topic]
@@ -3015,7 +3014,6 @@ msgid "backstab"
 msgstr "нож у леђа"
 
 #: data/core/macros/abilities.cfg:545
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3119,7 +3117,6 @@ msgid "charge"
 msgstr "јуриш"
 
 #: data/core/macros/abilities.cfg:643
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -4271,7 +4268,6 @@ msgstr ""
 "борбу док или сама или њен непријатељ не настрада."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4308,7 +4304,6 @@ msgstr ""
 "непријатеља, али само у нападу."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -6839,13 +6834,12 @@ msgid "Choose your preferred language:"
 msgstr "Изаберите језик који желите:"
 
 #: src/game.cpp:1861
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следећи додаци имају грешку и не могу се учитати:"
 msgstr[1] "Следећи додаци имају грешку и не могу се учитати:"
 msgstr[2] "Следећи додаци имају грешку и не могу се учитати:"
-msgstr[3] "Следећи додаци имају грешку и не могу се учитати:"
+msgstr[3] "Следећи додатак има грешку и не може се учитати:"
 
 #: src/game.cpp:1868
 msgid "ERROR DETAILS:"
@@ -7550,9 +7544,8 @@ msgid "Search"
 msgstr "Тражи"
 
 #: src/menu_events.cpp:1979
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Нема циљева"
+msgstr ""
 
 #: src/menu_events.cpp:1990
 msgid ""
@@ -8916,30 +8909,10 @@ msgstr "Помозите нам да побољшамо Веснот за вас
 msgid "Enable summary uploads"
 msgstr "Укључи слање сажетака"
 
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "основна ВИ"
-
-#, fuzzy
-#~ msgid "name :"
-#~ msgstr "Име:"
-
-#, fuzzy
-#~ msgid "cancel"
-#~ msgstr "Одустани"
-
-#, fuzzy
-#~ msgid "#(unknown campaign)"
-#~ msgstr "Непозната наредба."
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Употреба: control <страна> <надимак>"
+#~ msgid "ruby of fire"
+#~ msgstr "ватрени рубин"
 
 #~ msgid "Screenshot"
-#~ msgstr "Снимак екрана"
-
-#, fuzzy
-#~ msgid "Map_Screenshot"
 #~ msgstr "Снимак екрана"
 
 #~ msgid ""
@@ -8976,15 +8949,15 @@ msgstr "Укључи слање сажетака"
 #~ msgid "Unknown command: "
 #~ msgstr "Непозната наредба: "
 
+#~ msgid "Usage: control <side> <nick>"
+#~ msgstr "Употреба: control <страна> <надимак>"
+
 #~ msgid ""
 #~ " This unit is capable of basic healing, though it can only delay the "
 #~ "effects of poison, not cure them entirely."
 #~ msgstr ""
 #~ " Ова јединица способна је за основно лечење. Може одлагати утицај отрова, "
 #~ "али не и исцелити га."
-
-#~ msgid "ruby of fire"
-#~ msgstr "ватрени рубин"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
