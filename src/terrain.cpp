@@ -51,7 +51,8 @@ terrain_type::terrain_type() :
 		castle_(false), 
 		keep_(false),
 		overlay_(false), 
-		combined_(false)
+		combined_(false),
+		editor_default_base_(t_translation::VOID_TERRAIN)
 {}
 
 terrain_type::terrain_type(const config& cfg) :
@@ -75,7 +76,8 @@ terrain_type::terrain_type(const config& cfg) :
 		editor_group_(cfg["editor_group"]),
 		village_(utils::string_bool(cfg["gives_income"])),
 		castle_(utils::string_bool(cfg["recruit_onto"])),
-		keep_(utils::string_bool(cfg["recruit_from"]))
+		keep_(utils::string_bool(cfg["recruit_from"])),
+		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"]))
 {
 //! @todo reenable these validations. The problem is that all MP 
 //! scenarios/campaigns share the same namespace and one rogue scenario

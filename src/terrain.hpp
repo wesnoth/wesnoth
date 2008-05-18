@@ -68,6 +68,8 @@ public:
 	bool is_overlay() const { return overlay_; }
 	bool is_combined() const { return combined_; }
 
+	t_translation::t_terrain default_base() const { return editor_default_base_; }
+
 private:
 	//! The image used in the minimap
 	std::string minimap_image_;
@@ -104,6 +106,7 @@ private:
 	bool village_, castle_, keep_;
 
 	bool overlay_, combined_;
+	t_translation::t_terrain editor_default_base_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

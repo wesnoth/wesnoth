@@ -415,7 +415,7 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 	else if ( (key_[SDLK_RALT] || key_[SDLK_LALT]) && l_button_func_ == DRAW) {
 		reset_mouseover_overlay();
 		draw_on_mouseover_hexes(palette_.selected_fg_terrain(), true);
-		l_button_held_func_ = DRAW_BASE_TERRAIN;
+		l_button_held_func_ = DRAW_TERRAIN_LAYER;
 	}
 	else if (selected_hexes_.find(hex_clicked) != selected_hexes_.end()) {
 		l_button_held_func_ = MOVE_SELECTION;
@@ -1184,7 +1184,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 		reset_mouseover_overlay();
 		draw_on_mouseover_hexes(palette_.selected_fg_terrain());
 	}
-	else if (l_button_held_func_ == DRAW_BASE_TERRAIN && mouse_moved_) {
+	else if (l_button_held_func_ == DRAW_TERRAIN_LAYER && mouse_moved_) {
 		reset_mouseover_overlay();
 		draw_on_mouseover_hexes(palette_.selected_fg_terrain(), true);
 	}
@@ -1203,16 +1203,16 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	}
 }
 
-void map_editor::draw_on_mouseover_hexes(const t_translation::t_terrain terrain, const bool base_only) {
+void map_editor::draw_on_mouseover_hexes(const t_translation::t_terrain terrain, const bool one_layer_only) {
 	if(map_.on_board(selected_hex_, true)) {
 		std::vector<gamemap::location> hexes =
 			get_tiles(map_, selected_hex_, brush_.selected_brush_size());
-		draw_terrain(terrain, hexes, base_only);
+		draw_terrain(terrain, hexes, one_layer_only);
 	}
 }
 
 void map_editor::draw_terrain(const t_translation::t_terrain terrain,
-                              const std::vector<gamemap::location> &hexes, const bool base_only)
+                              const std::vector<gamemap::location> &hexes, const bool one_layer_only)
 {
 	map_undo_action undo_action;
 	
@@ -1223,8 +1223,14 @@ void map_editor::draw_terrain(const t_translation::t_terrain terrain,
 			undo_action.add_terrain(old_terrain, terrain, *it);
 			if (terrain.base == t_translation::NO_LAYER) {
 				map_.set_overlay(*it, terrain);
+                
+                const terrain_type& t_info = map_.get_terrain_info(terrain);
+
+                if (!one_layer_only && t_info.default_base() != t_translation::NONE_TERRAIN) {
+                    map_.set_base(*it, t_info.default_base());
+                }
 			}
-			else if (base_only) {
+			else if (one_layer_only) {
 				map_.set_base(*it, terrain);
 			}
 			else {
