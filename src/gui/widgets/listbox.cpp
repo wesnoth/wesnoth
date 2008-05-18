@@ -175,8 +175,8 @@ void tlistbox::finalize_setup()
 			}
 		}
 	} else {
-		tspacer* spacer = dynamic_cast<tspacer*>(tcontainer_::find_widget("_list", false));
-		assert(spacer);
+		// Validate the existance.
+		tspacer* spacer = tlistbox::list();
 	}
 
 	scrollbar()->set_callback_positioner_move(callback_scrollbar);
@@ -240,33 +240,6 @@ void tlistbox::set_scrollbar_button_status()
 	scrollbar()->set_active(!(scrollbar()->at_begin() && scrollbar()->at_end()));
 }
 
-/**
- * Helper function to avoid a const problem.
- *
- * get_best_size is const but we use a spacer so we can use the generic routine.
- * So we drop the const and set the size of the spacer, a bit and a cleaner 
- * solution might be needed. We could make set_best_size() const but 
- * get_widget_by_id is also not available in a const version.
- *
- * @param size                    The new size for the spacer.
- * @param const_grid              The grid containing a spacer with id "_list".
- */
-static void set_spacer_size(const tpoint& size, const tgrid& const_grid)
-{
-	tgrid& grid = const_cast<tgrid&>(const_grid);
-
-	tspacer* spacer = dynamic_cast<tspacer*>(grid.find_widget("_list", false));
-	assert(spacer);
-	spacer->set_best_size(size);
-}
-
-static tpoint get_spacer_size(const tgrid& grid)
-{
-	const tspacer* spacer = dynamic_cast<const tspacer*>(grid.find_widget("_list", false));
-	assert(spacer);
-	return spacer->get_best_size();
-}
-
 tpoint tlistbox::get_best_size() const 
 {
 
@@ -288,7 +261,12 @@ tpoint tlistbox::get_best_size() const
 			height += best_size.y;
 		}
 	}
-	set_spacer_size(tpoint(width, height), grid());
+	
+	// Kind of a hack, we edit the spacer in a const function.
+	// Of course we could cache the list and make it mutable instead.
+	// But since the spacer is a kind of cache the const_cast doesn't 
+	// look too ugly.
+	const_cast<tspacer*>(list())->set_best_size(tpoint(width, height));
 
 	// Now the container will return the wanted result.
 	return tcontainer_::get_best_size();
@@ -336,7 +314,7 @@ void tlistbox::set_size(const SDL_Rect& rect)
 		const tpoint best_size = get_best_size();
 
 		if(best_size.y > rect.h) {
-			best_spacer_size_ = get_spacer_size(grid());
+			best_spacer_size_ = list()->get_best_size();
 			best_spacer_size_.y -= (best_size.y - rect.h);
 			if(assume_fixed_row_size_) {
 				const unsigned row_height = rows_[0].grid()->get_best_size().y;
@@ -356,8 +334,7 @@ void tlistbox::set_size(const SDL_Rect& rect)
 	best_spacer_size_ = tpoint(0, 0);
 
 	// Now set the items in the spacer.
-	tspacer* spacer = dynamic_cast<tspacer*>(tcontainer_::find_widget("_list", false));
-	assert(spacer);
+	tspacer* spacer = list();
 	list_rect_ = spacer->get_rect();
 
 	foreach(trow& row, rows_) {
@@ -373,7 +350,7 @@ void tlistbox::set_size(const SDL_Rect& rect)
 
 	// FIXME we assume fixed row height atm.
 	if(rows_.size() > 0) {
-		const unsigned rows = get_spacer_size(grid()).y / rows_[0].get_height();
+		const unsigned rows = list()->get_best_size().y / rows_[0].get_height();
 		scrollbar()->set_visible_items(rows);
 	} else {
 		scrollbar()->set_visible_items(1);
@@ -467,6 +444,22 @@ const tscrollbar_* tlistbox::scrollbar() const
 		dynamic_cast<const tscrollbar_*>(tcontainer_::find_widget("_scrollbar", false));
 	assert(result);
 	return result;
+}
+
+tspacer* tlistbox::list()
+{
+	tspacer* list = 
+		dynamic_cast<tspacer*>(tcontainer_::find_widget("_list", false));
+	assert(list);
+	return list;
+}
+
+const tspacer* tlistbox::list() const
+{
+	const tspacer* list = 
+		dynamic_cast<const tspacer*>(tcontainer_::find_widget("_list", false));
+	assert(list);
+	return list;
 }
 
 bool tlistbox::select_row(const unsigned row, const bool select)

@@ -22,6 +22,7 @@ class t_string;
 namespace gui2 {
 
 class tscrollbar_;
+class tspacer;
 
 //! @todo list
 //! header row + footer row same width as client data
@@ -156,6 +157,12 @@ private:
 
 	/** Returns the scrollbar widget */
 	const tscrollbar_* scrollbar() const;
+
+	/** Returns the spacer widget which is used to reserve space of the real list. */
+	tspacer* list();
+
+	/** Returns the spacer widget which is used to reserve space of the real list. */
+	const tspacer* list() const;
 
 	bool assume_fixed_row_size_;
 
