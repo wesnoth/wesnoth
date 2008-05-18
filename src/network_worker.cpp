@@ -236,7 +236,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 		} else {
 
 			buf += bytes_read;
-			if(update_stats) {
+			if(update_stats && !raw_data_only) {
 				const threading::lock lock(*stats_mutex);
 				transfer_stats[s].second.transfer(static_cast<size_t>(bytes_read));
 			}
@@ -284,6 +284,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 	size_t upto = 0;
 	size_t size = buf.size();
 
+	if (!raw_data_only)
 	{
 		const threading::lock lock(*stats_mutex);
 		transfer_stats[sock].first.fresh_current(size);
@@ -302,7 +303,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 		}
 		const int res = SDLNet_TCP_Send(sock, &buf[upto], static_cast<int>(size - upto));
 
-		if(res == static_cast<int>(size - upto)) {
+		if(!raw_data_only && res == static_cast<int>(size - upto)) {
 			{
 				const threading::lock lock(*stats_mutex);
 				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
@@ -317,6 +318,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 		{
 			// update how far we are
 			upto += static_cast<size_t>(res);
+			if (!raw_data_only)
 			{
 				const threading::lock lock(*stats_mutex);
 				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
@@ -390,6 +392,7 @@ static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	char* beg = &buf[0];
 	const char* const end = beg + len;
 
+	if (!raw_data_only)
 	{
 		const threading::lock lock(*stats_mutex);
 		transfer_stats[sock].second.fresh_current(len);
