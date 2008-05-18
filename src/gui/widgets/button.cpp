@@ -110,20 +110,6 @@ tbutton::RETVAL tbutton::get_retval_by_id(const std::string& id)
 	}
 }
 
-void tbutton::set_active(const bool active)
-{
-	if(active && state_ == DISABLED) {
-		set_state(ENABLED);
-	} else if(!active && state_ != DISABLED) {
-		set_state(DISABLED);
-	}
-}
-
-bool tbutton::get_active() const
-{
-	return state_ != DISABLED;
-}
-
 void tbutton::set_state(tstate state)
 {
 	if(state != state_) {

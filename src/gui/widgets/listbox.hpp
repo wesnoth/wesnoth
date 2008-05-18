@@ -37,6 +37,7 @@ public:
 	
 	tlistbox();
 
+	// FIXME this might not the right thing to do.
 	void set_active(const bool active) { set_state(active ? ENABLED : DISABLED); };
 	bool get_active() const { return state_ != DISABLED; }
 	unsigned get_state() const { return state_; }

@@ -56,8 +56,10 @@ public:
 	//! Gets the retval for the default buttons.
 	static RETVAL get_retval_by_id(const std::string& id);
 
-	void set_active(const bool active);
-	bool get_active() const;
+	//! Inherited from tcontrol.
+	void set_active(const bool active) 
+		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+	bool get_active() const { return state_ != DISABLED; }
 	unsigned get_state() const { return state_; }
 
 	void set_callback_mouse_left_click(void (*callback) (twidget*))
