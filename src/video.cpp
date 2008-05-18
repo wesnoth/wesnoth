@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file video.cpp
-//! Video-testprogram, standalone
+/**
+ *  @file video.cpp
+ *  Video-testprogram, standalone
+ */
 
 #include "global.hpp"
 
