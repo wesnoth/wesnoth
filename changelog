@@ -50,6 +50,8 @@ Version 1.5.0+svn:
      pass parameters (ex: "alias hp=unit hitpoints", then use "hp 100")
  * WML engine:
    * titlescreen is now randomly loaded
+   * removeitem now can take an image key so that overlays can be removed one at
+     a time. (patch #1067)
    * fix [teleport] capturing villages with the wrong side (bug #11683)
    * SideWML recruit= no longer locks the faction except if explicitely wanted
      with the new key faction_from_recruit=yes

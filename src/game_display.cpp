@@ -97,7 +97,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		std::string side_color = team::get_side_colour_index(i+1);
 		side_colors.push_back(side_color);
-
 		std::string flag = teams_[i].flag();
 		std::string old_rgb = game_config::flag_rgb;
 		std::string new_rgb = side_color;
@@ -1131,6 +1130,26 @@ void game_display::remove_overlay(const gamemap::location& loc)
 	}
 
 	overlays_.erase(loc);
+}
+
+void game_display::remove_single_overlay(const gamemap::location& loc, const std::string& toDelete)
+{
+	//Iterate through the values with key of loc
+	typedef overlay_map::iterator Itor;
+	overlay_map::iterator iteratorCopy;
+	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
+	while(itors.first != itors.second) {
+		//If image or halo of overlay struct matches toDelete, remove the overlay
+		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete) {
+			iteratorCopy = itors.first;
+			++itors.first;
+			halo::remove(iteratorCopy->second.halo_handle);
+			overlays_.erase(iteratorCopy);
+		}
+		else {
+			++itors.first;
+		}
+	}
 }
 
 void game_display::write_overlays(config& cfg) const

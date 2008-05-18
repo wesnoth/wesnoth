@@ -143,6 +143,8 @@ public:
 	void add_overlay(const gamemap::location& loc, const std::string& image, const std::string& halo="");
 	//! remove_overlay will remove all overlays on a tile.
 	void remove_overlay(const gamemap::location& loc);
+	//! remove_single_overlay will remove a single overlay from a tile
+	void remove_single_overlay(const gamemap::location& loc, const std::string& toDelete);
 
 	//! Function to serialize overlay data.
 	void write_overlays(config& cfg) const;

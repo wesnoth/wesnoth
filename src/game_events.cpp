@@ -1544,12 +1544,20 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "removeitem") {
+		std::string img = cfg["image"];
+		assert(state_of_game != NULL);
 		gamemap::location loc = cfg_to_loc(cfg);
+
 		if(!loc.valid()) {
-			loc = event_info.loc1;
+				loc = event_info.loc1;
 		}
 
-		screen->remove_overlay(loc);
+		if(!img.empty()) { //If image key is set remove that one item
+			screen->remove_single_overlay(loc, img);
+		}
+		else { //Else remove the overlay completely
+			screen->remove_overlay(loc);
+		}
 	}
 
 	else if(cmd == "unit_overlay") {
