@@ -50,6 +50,13 @@ struct language_def
 	t_string language;
 	bool rtl;		// A right to left language? (e.g: Hebrew)
 	bool operator== (const language_def&) const;
+	
+	/**
+	 * Is the locale available on the system?
+	 *
+	 * If the dummy locales are selected we always return true.
+	 */
+	bool available() const;
 };
 
 std::string languagedef_name (const language_def& def);

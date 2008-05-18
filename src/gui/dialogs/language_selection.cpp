@@ -51,6 +51,8 @@ void tlanguage_selection::show(CVideo& video)
 			std::cerr << "select row " << list->get_item_count() - 1 << ".\n";
 			list->select_row(list->get_item_count() - 1);
 		}
+
+		list->set_row_active(list->get_item_count() - 1, lang.available());
 	}
 
 	window.recalculate_size();

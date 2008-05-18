@@ -17,10 +17,14 @@ Version 1.5.0+svn:
  * graphics:
    * new ford graphics from Syntax_Error
    * added a sea serpent portrait by Pic
+   * various improvements to the new widget library
  * language and i18n:
    * new translations: Friulian, Macedonian
    * updated translations: Chinese, Czech, Danish, Finnish, French, German, Italian,
      Polish, Russian, Slovak, Spanish, Turkish
+   * the new widget library supports disabling of rows in a listbox, this is
+     used to deactivate not available languages. This feature is experimental
+     and only available when started with --new-widgets (bug #11212)
  * multiplayer:
    * revised maps: Den of Onis
  * Python AI:

@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
@@ -35,6 +36,41 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <stdexcept>
+
+/** Tests one locale to be available. */
+static bool has_locale(const char* s) {
+	try {
+		// The way to find out whether a locale is available is to set it and
+		// hope not runtime error gets thrown.
+		std::locale dummy(s);
+		std::cerr << "Locale : " << s << " found.\n";
+		return true;
+	} catch (std::runtime_error&) {
+		std::cerr << "Locale : " << s << " not found.\n";
+		return false;
+	}
+}		
+
+/** Test the locale for a language and it's utf-8 variations. */
+static bool has_language(const std::string& language)
+{
+	if(has_locale(language.c_str())) {
+		return true;
+	}
+
+	std::string utf = language + ".utf-8";
+	if(has_locale(utf.c_str())) {
+		return true;
+	}
+
+	utf = language + ".UTF-8";
+	if(has_locale(utf.c_str())) {
+		return true;
+	}
+	
+	return false;
+}
 
 namespace {
 	language_def current_language;
@@ -56,6 +92,25 @@ bool current_language_rtl()
 bool language_def::operator== (const language_def& a) const
 {
 	return ((language == a.language) /* && (localename == a.localename) */ );
+}
+
+bool language_def::available() const
+{
+#ifdef USE_DUMMYLOCALES
+	// Dummy has every language available.
+	return true;
+#else
+	if(has_language(localename)) {
+		return true;
+	} else {
+		foreach(const std::string& lang, alternates) {
+			if(has_language(lang)) {
+				return true;
+			}
+		}
+	}
+	return false;
+#endif
 }
 
 symbol_table string_table;
