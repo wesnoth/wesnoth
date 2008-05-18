@@ -174,6 +174,29 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 	}
 }
 
+void tgrid::set_active(const bool active)
+{
+	for(std::vector<tchild>::iterator itor = children_.begin();
+			itor != children_.end(); ++itor) {
+
+		twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
+		}
+
+		tgrid* grid = dynamic_cast<tgrid*>(widget);
+		if(grid) {
+			grid->set_active(active);
+			continue;
+		}
+
+		tcontrol* control =  dynamic_cast<tcontrol*>(widget);
+		if(control) {
+			control->set_active(active);
+		}
+	}
+}
+
 bool tgrid::has_vertical_scrollbar() const 
 {
 	for(std::vector<tchild>::const_iterator itor = children_.begin();

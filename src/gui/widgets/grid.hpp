@@ -87,6 +87,16 @@ public:
 	void remove_child(const unsigned row, const unsigned col);
 	void remove_child(const std::string& id, const bool find_all = false);
 
+	/**
+	 * Activates all children.
+	 *
+	 * If a child inherits from tcontrol or is a tgrid it will call
+	 * set_active() for the child otherwise it ignores the widget.
+	 *
+	 * @param active              Parameter for set_active.
+	 */
+	void set_active(const bool active);
+
 	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const;
 
