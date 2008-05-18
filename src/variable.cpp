@@ -14,8 +14,10 @@
    See the COPYING file for more details.
 */
 
-//! @file variable.cpp
-//! Manage WML-variables.
+/**
+ *  @file variable.cpp
+ *  Manage WML-variables.
+ */
 
 #include "global.hpp"
 
@@ -31,8 +33,10 @@
 
 namespace
 {
-	//! @todo FIXME: the variable repository should be
-	// a class of variable.hpp, and not the game_state.
+	/** 
+	 * @todo FIXME: the variable repository should be
+	 * a class of variable.hpp, and not the game_state.
+	 */
 	game_state* repos = NULL;
 
 	// map to track temp storage of inserted tags on the heap
@@ -494,7 +498,7 @@ void scoped_recall_unit::activate()
 namespace {
 bool recursive_activation = false;
 
-//! Turns on any auto-stored variables
+/** Turns on any auto-stored variables */
 void activate_scope_variable(std::string var_name)
 {
 	if(recursive_activation)

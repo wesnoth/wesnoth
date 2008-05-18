@@ -85,7 +85,7 @@ public:
 		unsigned index_offset_;
 	};
 
-	//! In-order iteration over all children.
+	/** In-order iteration over all children. */
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
 
