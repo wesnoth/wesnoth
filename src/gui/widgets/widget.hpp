@@ -177,15 +177,53 @@ public:
 		dirty_ = true;
 	}
 
-	//! Gets the widget at the wanted coordinates.
-	virtual twidget* get_widget(const tpoint& coordinate) 
+	/**
+	 * Gets the widget at the wanted coordinates.
+	 *
+	 * @param coordinate          The coordinate which should be inside the
+	 *                            widget.
+	 * @param must_be_active      The widget should be active, not all widgets
+	 *                            have an active flag, those who don't ignore
+	 *                            flag.
+	 * 
+	 * @returns                   The widget with the id.
+	 * @retval 0                  No widget at the wanted coordinate found (or
+	 *                            not active if must_be_active was set).
+	 */
+	virtual twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) 
 	{ 
 		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
 			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
 	}
 
-	//! Gets a widget with the wanted id.
-	virtual twidget* get_widget_by_id(const std::string& id)
+	/** The const version of find_widget. */
+	virtual const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const
+	{ 
+		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
+			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
+	}
+
+	/**
+	 * Gets a widget with the wanted id.
+	 *
+	 * @param id                  The id of the widget to find.
+	 * @param must_be_active      The widget should be active, not all widgets
+	 *                            have an active flag, those who don't ignore
+	 *                            flag.
+	 * 
+	 * @returns                   The widget with the id.
+	 * @retval 0                  No widget with the id found (or not active if
+	 *                            must_be_active was set).
+	 */
+	virtual twidget* find_widget(const std::string& id, 
+			const bool must_be_active)
+		{ return id_ == id ? this : 0; }
+
+	/** The const version of find_widget. */
+	virtual const twidget* find_widget(const std::string& id, 
+			const bool must_be_active) const
 		{ return id_ == id ? this : 0; }
 
 	/** 

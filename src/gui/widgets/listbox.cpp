@@ -140,7 +140,7 @@ void tlistbox::scrollbar_click(twidget* caller)
 void tlistbox::finalize_setup()
 {
 	// If we have a list already set up wire in the callback routine.
-	tgrid* list = dynamic_cast<tgrid*>(get_widget_by_id("_list"));
+	tgrid* list = dynamic_cast<tgrid*>(tcontainer_::find_widget("_list", false));
 	if(list) {
 		const unsigned col_count = list->get_cols();
 		const unsigned row_count = list->get_rows();
@@ -175,7 +175,7 @@ void tlistbox::finalize_setup()
 			}
 		}
 	} else {
-		tspacer* spacer = dynamic_cast<tspacer*>(get_widget_by_id("_list"));
+		tspacer* spacer = dynamic_cast<tspacer*>(tcontainer_::find_widget("_list", false));
 		assert(spacer);
 	}
 
@@ -195,7 +195,7 @@ void tlistbox::finalize_setup()
 	}
 
 	foreach(const std::string& name, button_names) {
-		tbutton* button = dynamic_cast<tbutton*>(get_widget_by_id(name));
+		tbutton* button = dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
 		if(button) {
 			button->set_callback_mouse_left_click(callback_scrollbar_button);
 		}
@@ -214,7 +214,7 @@ void tlistbox::set_scrollbar_button_status()
 	}
 
 	foreach(const std::string& name, button_up_names) {
-		tbutton* button = dynamic_cast<tbutton*>(get_widget_by_id(name));
+		tbutton* button = dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
 		if(button) {
 			button->set_active(!scrollbar()->at_begin());
 		}
@@ -230,7 +230,7 @@ void tlistbox::set_scrollbar_button_status()
 	}
 
 	foreach(const std::string& name, button_down_names) {
-		tbutton* button = dynamic_cast<tbutton*>(get_widget_by_id(name));
+		tbutton* button = dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
 		if(button) {
 			button->set_active(!scrollbar()->at_end());
 		}
@@ -252,18 +252,16 @@ static void set_spacer_size(const tpoint& size, const tgrid& const_grid)
 {
 	tgrid& grid = const_cast<tgrid&>(const_grid);
 
-	tspacer* spacer = dynamic_cast<tspacer*>(grid.get_widget_by_id("_list"));
+	tspacer* spacer = dynamic_cast<tspacer*>(grid.find_widget("_list", false));
 	assert(spacer);
 	spacer->set_best_size(size);
 }
 
-static tpoint get_spacer_size(const tgrid& const_grid)
+static tpoint get_spacer_size(const tgrid& grid)
 {
-	tgrid& grid = const_cast<tgrid&>(const_grid);
-
-	tspacer* spacer = dynamic_cast<tspacer*>(grid.get_widget_by_id("_list"));
+	const tspacer* spacer = dynamic_cast<const tspacer*>(grid.find_widget("_list", false));
 	assert(spacer);
-	return spacer->get_best_size(); //tpoint(spacer->get_width(), spacer->get_height());
+	return spacer->get_best_size();
 }
 
 tpoint tlistbox::get_best_size() const 
@@ -355,7 +353,7 @@ void tlistbox::set_size(const SDL_Rect& rect)
 	best_spacer_size_ = tpoint(0, 0);
 
 	// Now set the items in the spacer.
-	tspacer* spacer = dynamic_cast<tspacer*>(get_widget_by_id("_list"));
+	tspacer* spacer = dynamic_cast<tspacer*>(tcontainer_::find_widget("_list", false));
 	assert(spacer);
 	list_rect_ = spacer->get_rect();
 
@@ -379,14 +377,13 @@ void tlistbox::set_size(const SDL_Rect& rect)
 	}
 }
 
-twidget* tlistbox::get_widget(const tpoint& coordinate)
+twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_be_active) 
 { 
 	// Inherited
-	twidget* result = tcontainer_::get_widget(coordinate);
+	twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
 
 	// if on the panel we need to do special things.
 	if(result && result->id() == "_list") {
-
 		int offset = coordinate.y - list_rect_.y;
 		assert(offset >= 0);
 		for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
@@ -395,8 +392,34 @@ twidget* tlistbox::get_widget(const tpoint& coordinate)
 			
 			if(offset < row.get_height()) {
 				assert(row.grid());
-				return row.grid()->get_widget(
-					tpoint(coordinate.x - list_rect_.x, offset));
+				return row.grid()->find_widget(
+					tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
+			} else {
+				offset -= row.get_height();
+			}
+		}
+	}
+
+	return result;
+}
+
+const twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_be_active) const
+{
+	// Inherited
+	const twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
+
+	// if on the panel we need to do special things.
+	if(result && result->id() == "_list") {
+		int offset = coordinate.y - list_rect_.y;
+		assert(offset >= 0);
+		for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
+
+			const trow& row = rows_[i + scrollbar()->get_item_position()];
+			
+			if(offset < row.get_height()) {
+				assert(row.grid());
+				return row.grid()->find_widget(
+					tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
 			} else {
 				offset -= row.get_height();
 			}
@@ -427,7 +450,17 @@ void tlistbox::add_item(const t_string& label)
 tscrollbar_* tlistbox::scrollbar()
 {
 	// Note we don't cache the result, we might want change things later.	
-	tscrollbar_* result = dynamic_cast<tscrollbar_*>(get_widget_by_id("_scrollbar"));
+	tscrollbar_* result = 
+		dynamic_cast<tscrollbar_*>(tcontainer_::find_widget("_scrollbar", false));
+	assert(result);
+	return result;
+}
+
+const tscrollbar_* tlistbox::scrollbar() const
+{
+	// Note we don't cache the result, we might want change things later.	
+	const tscrollbar_* result = 
+		dynamic_cast<const tscrollbar_*>(tcontainer_::find_widget("_scrollbar", false));
 	assert(result);
 	return result;
 }

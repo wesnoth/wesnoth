@@ -76,9 +76,24 @@ public:
 	twindow& get_window() { return *this; }
 	const twindow& get_window() const { return *this; }
 
-	//! Inherited from tevent_handler.
-	twidget* get_widget(const tpoint& coordinate) { return tpanel::get_widget(coordinate); }
+	/** Inherited from tevent_handler. */
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
+		{ return tpanel::find_widget(coordinate, must_be_active); }
 
+	/** Inherited from tevent_handler. */
+	const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const
+		{ return tpanel::find_widget(coordinate, must_be_active); }
+
+	/** Inherited from tpanel. */
+	twidget* find_widget(const std::string& id, const bool must_be_active) 
+		{ return tpanel::find_widget(id, must_be_active); }
+	
+	/** Inherited from tpanel. */
+	const twidget* find_widget(const std::string& id, 
+			const bool must_be_active) const 
+		{ return tpanel::find_widget(id, must_be_active); }
+	
 	tpoint client_position(const tpoint& screen_position) const
 		{ return tpoint(screen_position.x - get_x(), screen_position.y - get_y()); }
 

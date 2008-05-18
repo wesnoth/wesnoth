@@ -395,50 +395,88 @@ void tgrid::set_size(const SDL_Rect& rect)
 */		
 }
 
-twidget* tgrid::get_widget(const tpoint& coordinate)
+twidget* tgrid::find_widget(const tpoint& coordinate, const bool must_be_active) 
 {
-	//! FIXME use iterator.
-	for(unsigned row = 0; row < rows_; ++row) {
-		for(unsigned col = 0; col < cols_; ++col) {
+	for(std::vector<tchild>::iterator itor = children_.begin(); 
+			itor != children_.end(); ++itor) {
 
-			twidget* widget = child(row, col).widget();
-			if(!widget) {
-				continue;
-			}
-			
-			widget = widget->get_widget(coordinate);
-			if(widget) { 
-				clear_cache();
-				return widget;
-			}
+		twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
 		}
+
+		widget = widget->find_widget(coordinate, must_be_active);
+		if(widget) { 
+			clear_cache();
+			return widget;
+		}
+		
 	}
 	
 	return 0;
 }
 
-//! Gets a widget with the wanted id.
-//! Override base class.
-twidget* tgrid::get_widget_by_id(const std::string& id)
-{
-	//! FIXME use iterator.
-	for(unsigned row = 0; row < rows_; ++row) {
-		for(unsigned col = 0; col < cols_; ++col) {
+const twidget* tgrid::find_widget(const tpoint& coordinate, 
+		const bool must_be_active) const
+{	
+	for(std::vector<tchild>::const_iterator itor = children_.begin(); 
+			itor != children_.end(); ++itor) {
 
-			twidget* widget = child(row, col).widget();
-			if(!widget) {
-				continue;
-			}
-			
-			widget = widget->get_widget_by_id(id);
-			if(widget) { 
-				clear_cache();
-				return widget;
-			}
+		const twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
 		}
+
+		widget = widget->find_widget(coordinate, must_be_active);
+		if(widget) { 
+			return widget;
+		}
+		
 	}
 	
-	return twidget::get_widget_by_id(id);
+	return 0;
+}
+
+twidget* tgrid::find_widget(const std::string& id, const bool must_be_active)
+{
+	for(std::vector<tchild>::iterator itor = children_.begin(); 
+			itor != children_.end(); ++itor) {
+
+		twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
+		}
+
+		widget = widget->find_widget(id, must_be_active);
+		if(widget) { 
+			clear_cache();
+			return widget;
+		}
+		
+	}
+	
+	return 0;
+}
+
+const twidget* tgrid::find_widget(const std::string& id, 
+		const bool must_be_active) const
+{
+	for(std::vector<tchild>::const_iterator itor = children_.begin(); 
+			itor != children_.end(); ++itor) {
+
+		const twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
+		}
+
+		widget = widget->find_widget(id, must_be_active);
+		if(widget) { 
+			return widget;
+		}
+		
+	}
+	
+	return 0;
 }
 
 bool tgrid::has_widget(const twidget* widget) const

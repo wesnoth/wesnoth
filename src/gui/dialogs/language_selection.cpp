@@ -39,7 +39,7 @@ void tlanguage_selection::show(CVideo& video)
 
 	twindow window = build(video, get_id(LANGUAGE_SELECTION));
 
-	tlistbox* list = dynamic_cast<tlistbox*>(window.get_widget_by_id("language_list"));
+	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
 	VALIDATE(list, "No list defined.");
 
 	const std::vector<language_def>& languages = get_languages();

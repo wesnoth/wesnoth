@@ -36,7 +36,7 @@ void taddon_connect::show(CVideo& video)
 	gui2::init();
 
 	twindow window = build(video, get_id(ADDON_CONNECT));
-	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.get_widget_by_id("host_name"));
+	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
 	if(host_widget) {
 		host_widget->set_text(host_name_);
 		window.keyboard_capture(host_widget);

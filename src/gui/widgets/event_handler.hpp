@@ -45,7 +45,13 @@ public:
 	virtual twindow& get_window() = 0;
 	virtual const twindow& get_window() const = 0;
 
-	virtual twidget* get_widget(const tpoint& coordinate) = 0;
+	/** See twidget::find_widget() for the description. */
+	virtual twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) = 0;
+
+	/** The const version of find_widget. */
+	virtual const twidget* find_widget(const tpoint& coordinate, 
+		const bool must_be_active) const = 0;
 
 	void mouse_capture(const bool capture = true);
 	void keyboard_capture(twidget* widget) { keyboard_focus_ = widget; }

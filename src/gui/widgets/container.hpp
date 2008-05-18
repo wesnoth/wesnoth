@@ -39,15 +39,27 @@ public:
 	/** Inherited from twidget. */
 	bool dirty() const { return twidget::dirty() || grid_.dirty(); }
 
-	/** Inherited from twidget. */
-	twidget* get_widget(const tpoint& coordinate) 
-		{ return grid_.get_widget(coordinate); }
+	/** Inherited from tcontrol. */
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
+		{ return grid_.find_widget(coordinate, must_be_active); }
 
-	/** Inherited from twidget.*/
-	twidget* get_widget_by_id(const std::string& id)
+	/** Inherited from tcontrol. */
+	const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const
+		{ return grid_.find_widget(coordinate, must_be_active); }
+
+	/** Inherited from tcontrol.*/
+	twidget* find_widget(const std::string& id, const bool must_be_active)
 	{ 
-		twidget* result = twidget::get_widget_by_id(id);
-		return result ? result : grid_.get_widget_by_id(id); 
+		twidget* result = tcontrol::find_widget(id, must_be_active);
+		return result ? result : grid_.find_widget(id, must_be_active); 
+	}
+
+	/** Inherited from tcontrol.*/
+	const twidget* find_widget(const std::string& id, const bool must_be_active) const
+	{ 
+		const twidget* result = tcontrol::find_widget(id, must_be_active);
+		return result ? result : grid_.find_widget(id, must_be_active); 
 	}
 
 	/** Inherited from twidget.*/

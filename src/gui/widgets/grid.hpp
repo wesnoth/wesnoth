@@ -98,13 +98,19 @@ public:
 	//! Inherited from twidget.
 	void set_size(const SDL_Rect& rect);
 
-	//! Gets the widget at the wanted coordinates.
-	//! Override base class.
-	twidget* get_widget(const tpoint& coordinate);
+	/** Inherited from twidget. */
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
-	//! Gets a widget with the wanted id.
-	//! Override base class.
-	twidget* get_widget_by_id(const std::string& id);
+	/** Inherited from twidget. */
+	const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const;
+
+	/** Inherited from twidget.*/
+	twidget* find_widget(const std::string& id, const bool must_be_active);
+
+	/** Inherited from twidget.*/
+	const twidget* find_widget(const std::string& id, 
+			const bool must_be_active) const;
 
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const;

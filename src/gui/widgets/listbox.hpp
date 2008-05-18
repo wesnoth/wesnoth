@@ -82,7 +82,18 @@ public:
 	void set_size(const SDL_Rect& rect);
 
 	/** Inherited from tcontainer. */
-	twidget* get_widget(const tpoint& coordinate);
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
+
+	/** Inherited from tcontainer. */
+	const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const;
+
+	/*
+	 * NOTE twidget* find_widget(const std::string& id, const bool must_be_active);
+	 * and it's const version are inherited from tcontainer_ but gcc isn't too 
+	 * happy with that so we need to call tcontainer_::find_widget() so when
+	 * it's required to override those, check that the tcontainer_:: is dropped.
+	 */
 
 	/**
 	 * Adds an item to the list, it requires the builder_list to be defined. 
@@ -131,6 +142,9 @@ private:
 
 	/** Returns the scrollbar widget */
 	tscrollbar_* scrollbar();
+
+	/** Returns the scrollbar widget */
+	const tscrollbar_* scrollbar() const;
 
 	bool assume_fixed_row_size_;
 
@@ -195,7 +209,6 @@ private:
 	};
 
 	std::vector<trow> rows_;
-
 };
 
 } // namespace gui2

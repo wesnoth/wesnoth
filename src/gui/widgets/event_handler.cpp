@@ -130,7 +130,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			mouse_x_ = event.motion.x;
 			mouse_y_ = event.motion.y;
 			mouse_over =
-				get_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)));
+				find_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)), true);
 
 			mouse_move(event, mouse_over);
 
@@ -141,7 +141,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
 			mouse_over =
-				get_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)));
+				find_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)), true);
 
 			switch(event.button.button) {
 				case SDL_BUTTON_LEFT : 
@@ -170,7 +170,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
 			mouse_over =
-				get_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)));
+				find_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)), true);
 
 			switch(event.button.button) {
 

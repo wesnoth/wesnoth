@@ -43,6 +43,36 @@ public:
 	//! Inherited from twidget.
 	void set_size(const SDL_Rect& rect);
 
+	/** Inherited from twidget. */
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
+	{
+		return (twidget::find_widget(coordinate, must_be_active) 
+			&& (!must_be_active || get_active())) ? this : 0;
+	}
+
+	/** Inherited from twidget. */
+	const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const
+	{
+		return (twidget::find_widget(coordinate, must_be_active) 
+			&& (!must_be_active || get_active())) ? this : 0;
+	}
+
+	/** Inherited from twidget.*/
+	twidget* find_widget(const std::string& id, const bool must_be_active)
+	{
+		return (twidget::find_widget(id, must_be_active) 
+			&& (!must_be_active || get_active())) ? this : 0;
+	}
+
+	/** Inherited from twidget.*/
+	const twidget* find_widget(const std::string& id, 
+			const bool must_be_active) const
+	{
+		return (twidget::find_widget(id, must_be_active) 
+			&& (!must_be_active || get_active())) ? this : 0;
+	}
+
 	void set_visible(const bool visible = true) 
 		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
 	bool get_visible() const { return visible_; }
