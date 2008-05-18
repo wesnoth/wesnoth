@@ -506,7 +506,7 @@ namespace{
 		height = 5 + (fs + 2) * hp_prob_vector.size();
 
 		// Create the surface.
-		surf = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height,
+		surf = SDL_CreateRGBSurface(SDL_HWSURFACE, width, height,
 									image::pixel_format->BitsPerPixel,
 								image::pixel_format->Rmask,
 								image::pixel_format->Gmask,

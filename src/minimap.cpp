@@ -35,7 +35,7 @@ surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 		return surface(NULL);
 	}
 
-	surface minimap(SDL_CreateRGBSurface(SDL_SWSURFACE,
+	surface minimap(SDL_CreateRGBSurface(SDL_HWSURFACE,
 	                               map_width,map_height,
 	                               pixel_format->BitsPerPixel,
 	                               pixel_format->Rmask,

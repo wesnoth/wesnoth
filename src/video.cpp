@@ -22,6 +22,8 @@
 #include "log.hpp"
 #include "video.hpp"
 
+#include <SDL_gp2x.h>
+
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_DP LOG_STREAM(err, display)
 
@@ -74,9 +76,8 @@ unsigned int get_flags(unsigned int flags)
 {
 	//SDL under Windows doesn't seem to like hardware surfaces for
 	//some reason.
-#if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__) || defined(GP2X))
-		flags |= SDL_HWSURFACE;
-#endif
+	flags |= SDL_HWSURFACE;
+
 	if((flags&SDL_FULLSCREEN) == 0)
 		flags |= SDL_RESIZABLE;
 
@@ -248,7 +249,7 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 void CVideo::make_fake()
 {
 	fake_screen = true;
-	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,24,0xFF0000,0xFF00,0xFF,0);
+	frameBuffer = SDL_CreateRGBSurface(SDL_HWSURFACE,1,1,24,0xFF0000,0xFF00,0xFF,0);
 	image::set_pixel_format(frameBuffer->format);
 }
 
@@ -267,6 +268,8 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	if( res == 0 )
 		return 0;
+
+	SDL_GP2X_AllowGfxMemory(NULL, 0);
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
 	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
@@ -340,11 +343,12 @@ void CVideo::flip()
 		}
 
 		const size_t redraw_whole_screen_threshold = 80;
-		if(sum > ((getx()*gety())*redraw_whole_screen_threshold)/100) {
+/*		if(sum > ((getx()*gety())*redraw_whole_screen_threshold)/100) {
 			::SDL_Flip(frameBuffer);
 		} else {
 			SDL_UpdateRects(frameBuffer,update_rects.size(),&update_rects[0]);
-		}
+		}*/
+		::SDL_Flip(frameBuffer);
 	}
 
 	clear_updates();
