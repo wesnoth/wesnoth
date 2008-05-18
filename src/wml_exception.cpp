@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file wml_exception.cpp
-//! Implementation for wml_exception.hpp.
+/**
+ *  @file wml_exception.cpp
+ *  Implementation for wml_exception.hpp.
+ */
 
 #include "global.hpp"
 #include "wml_exception.hpp"
@@ -25,13 +27,6 @@
 #include <cassert>
 #include <sstream>
 
-//! Helper function, don't call this directly.
-//!
-//! @param cond         The textual presentation of the test that failed.
-//! @param file         The file in which the test failed.
-//! @param line         The line at which the test failed.
-//! @param function     The funtion in which the test failed.
-//! @param message      The translatable message to show the user.
 void wml_exception(const char* cond, const char* file, 
 	const int line, const char* function, const t_string& message)
 {
@@ -48,9 +43,6 @@ twml_exception::twml_exception(const t_string& user_msg, const std::string& dev_
 {
 }
 
-//! Shows the error in a dialog.
-//!
-//! @param disp         The display object to show the message on.
 void twml_exception::show(display &disp)
 {
 	std::stringstream sstr;
@@ -65,16 +57,6 @@ void twml_exception::show(display &disp)
 	gui::show_error_message(disp, sstr.str());
 }
 
-//! Returns a standard message for a missing wml key.
-//!
-//! @param section      The section is which the key should appear.
-//! @param key          The ommitted key.
-//! @param primary_key  The primary key of the section.
-//! @param primary_value
-//!                     The value of the primary key (mandatory if primary key
-//!                     isn't empty).
-//!
-//! @return             The error message.
 t_string missing_mandatory_wml_key(const std::string& section, const std::string& key,
 		const std::string& primary_key, const std::string& primary_value)
 {
