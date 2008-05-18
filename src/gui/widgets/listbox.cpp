@@ -235,6 +235,9 @@ void tlistbox::set_scrollbar_button_status()
 			button->set_active(!scrollbar()->at_end());
 		}
 	}
+
+	// Set the scrollbar itself
+	scrollbar()->set_active(!(scrollbar()->at_begin() && scrollbar()->at_end()));
 }
 
 /**
@@ -375,6 +378,7 @@ void tlistbox::set_size(const SDL_Rect& rect)
 	} else {
 		scrollbar()->set_visible_items(1);
 	}
+	set_scrollbar_button_status();
 }
 
 twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_be_active) 
