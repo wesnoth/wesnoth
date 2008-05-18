@@ -265,7 +265,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 				// Choose based on faction
 				find.push_back(cfg_["faction"]);
 				search_field = "id";
-			} else if(!cfg_.get_attribute("recruit").empty()) {
+			} else if(utils::string_bool(cfg["faction_from_recruit"]) && !cfg_.get_attribute("recruit").empty()) {
 				// Choose based on recruit
 				find = utils::split(cfg_["recruit"]);
 				search_field = "recruit";
@@ -275,30 +275,35 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 				search_field = "leader";
 			}
 
-			std::vector<std::string>::const_iterator search = find.begin();
-			while(search != find.end()) {
-				int faction_index = 0;
-				std::vector<config*>::const_iterator faction = parent.era_sides_.begin();
-				while(faction_ == 0 && faction != parent.era_sides_.end()) {
-					const config& side = (**faction);
-					std::vector<std::string> recruit;
-					recruit = utils::split(side[search_field]);
+			int faction_index = 0;
+			int best_score = 0;
+			std::vector<config*>::const_iterator faction = parent.era_sides_.begin();
+			while(faction != parent.era_sides_.end()) {
+				int faction_score = 0;
+				const config& side = (**faction);
+				std::vector<std::string> recruit;
+				recruit = utils::split(side[search_field]);
+				std::vector<std::string>::const_iterator search = find.begin();
+				while(search != find.end()) {
 					for(itor = recruit.begin(); itor != recruit.end(); ++itor) {
 						if(*itor == *search) {
-							faction_ = faction_index;
-							llm_.update_leader_list(faction_);
-							llm_.update_gender_list(llm_.get_leader());
-							combo_faction_.enable(false);
+							faction_score++;
+							break;
 						}
 					}
-					++faction;
-					faction_index++;
+					++search;
 				}
-				// Exit outmost loop if we've found a faction
-				if(!combo_faction_.enabled()) {
-					break;
+				if(faction_score > best_score) {
+					best_score = faction_score;
+					faction_ = faction_index;
 				}
-				++search;
+				++faction;
+				faction_index++;
+			}
+			if (faction_) {
+				llm_.update_leader_list(faction_);
+				llm_.update_gender_list(llm_.get_leader());
+				combo_faction_.enable(false);
 			}
 		} else {
 			combo_faction_.enable(false);
