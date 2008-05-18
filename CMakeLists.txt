@@ -3,6 +3,9 @@
 # * The fribidi check doesn't distinguish between version 1 and version 2
 #   Wesnoth only works with version 1 currently, so if version 2 is installed,
 #   it should be treated the same as if it wasn't present. (This should be fixed, please test)
+#   The fribidi test for fribidi_utf8_to_unicode succeeds when it shouldn't.
+#   I looked through the header files for that string and didn't find it,
+#   so I don't know why the test is succeeding.
 # * some other smaller stuff
 # * nice INSTALL howto
 
