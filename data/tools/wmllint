@@ -1366,7 +1366,7 @@ def hack_syntax(filename, lines):
     level = None
     abilities = []
     specials = []
-    in_ability = False
+    in_abilities = False
     lastability = None
     lastspecial = None
     for i in range(len(lines)):
