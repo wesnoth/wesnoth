@@ -2771,28 +2771,48 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd== "heal_unit") {
 	  	
-		const vconfig filter = cfg.child("filter");
+		const bool animated = utils::string_bool(cfg["animate"],false);
+		
+		const vconfig healed_filter = cfg.child("filter");
 		unit_map::iterator u;
 		
-		if (filter.null()) {
+		if (healed_filter.null()) {
 			// Try to take the unit at loc1
 			u = units->find(event_info.loc1);
 		}
 		else {
 			for(u  = units->begin(); u != units->end(); ++u) {
-				if(game_events::unit_matches_filter(u, filter))
+				if(game_events::unit_matches_filter(u, healed_filter))
 					break;
+			}
+		}
+
+		const vconfig healers_filter = cfg.child("secondary_unit_filter");
+		unit_map::iterator v;
+		std::vector<unit_map::iterator> healers;
+
+		if (!healers_filter.null()) {
+			for(v  = units->begin(); v != units->end(); ++v) {
+				if(game_events::unit_matches_filter(v, healers_filter) &&
+				   v->second.has_ability_type("heals")) {
+					healers.push_back(v);
+				}
 			}
 		}
 
 		// We have found a unit
 		if(u != units->end()) {
-		  	int amount = lexical_cast_default<int>(cfg["amount"],1);
+		  	int amount = lexical_cast_default<int>(cfg["amount"],0);
 			int real_amount = u->second.hitpoints();
 			u->second.heal(amount);
 			real_amount = u->second.hitpoints() - real_amount;
-			gamemap::location healed_loc = u->second.get_interrupted_move();
-			unit_display::unit_healing(u->second,u->first,std::vector<unit_map::iterator>(),real_amount);
+
+			if (animated) {
+				unit_display::unit_healing(u->second,u->first,
+							   healers,
+							   real_amount);
+			}
+
 			state_of_game->set_variable("heal_amount",
 						    str_cast<int>(real_amount));
 		}
