@@ -408,7 +408,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 		}
 	}
 }
-void unit_frame::invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val) const
+void unit_frame::invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -416,7 +416,7 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 	const int ydst = game_display::get_singleton()->get_location_y(dst);
 	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
 
-	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
+	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
 	//unused var - int d2 = game_display::get_singleton()->hex_size() / 2;
 
@@ -430,15 +430,24 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 
 	surface image;
 	if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
+		//! TODO cache handling: here we will use the image again soon
+		// we should cache it here and release it (if needed) after redrawn
 		image=image::get_image(image_loc,
 				image::SCALED_TO_ZOOM,
 				false
 				);
 	}
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x;
-	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.x;
+	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y;
 	if (image != NULL) {
-		game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
+		//! optimization for most common case
+	       if(x==xsrc && y == ysrc && 
+			       image->w  == game_display::get_singleton()->hex_size() &&
+			       image->h  == game_display::get_singleton()->hex_size()) {
+		       game_display::get_singleton()->invalidate(src);
+	       } else {
+		       game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
+	       }
 
 	}
 }
