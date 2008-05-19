@@ -1655,6 +1655,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		params.blend_with = disp.rgb(0,255,0);
 		params.blend_ratio = 0.25;
 	}
+	params.image_mod = image_mods();
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
 
@@ -1723,10 +1724,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	if(image_loc.is_void()|| image_loc.get_filename() == "") {
 		image_loc = absolute_image();
 	}
-	std::string mod=image_mods();
-	if(mod.size()){
-		image_loc = image::locator(image_loc,mod);
-	}
+	image_loc = image::locator(image_loc,adjusted_params.image_mod);
 #else
 	image_loc = absolute_image();
 #endif

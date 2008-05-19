@@ -68,12 +68,13 @@ class frame_parameters{
 	frame_parameters():
 	image(""),
 	image_diagonal(""),
+	image_mod(""),
 	halo(""),
+	halo_x(0),
+	halo_y(0),
 	sound(""),
 	text(""),
 	text_color(0),
-	halo_x(0),
-	halo_y(0),
 	duration(0),
 	blend_with(0),
 	blend_ratio(0.0),
@@ -86,12 +87,13 @@ class frame_parameters{
 
 	image::locator image;
 	image::locator image_diagonal;
+	std::string image_mod;
 	std::string halo;
+	int halo_x;
+	int halo_y;
 	std::string sound;
 	std::string text;
 	Uint32 text_color;
-	int halo_x;
-	int halo_y;
 	int duration;
 	Uint32 blend_with;
 	double blend_ratio;
@@ -108,12 +110,13 @@ class frame_builder {
 		frame_builder():
 		image_(image::locator()),
 		image_diagonal_(image::locator()),
+		image_mod_(""),
 		halo_(""),
+		halo_x_(""),
+		halo_y_(""),
 		sound_(""),
 		text_(""),
 		text_color_(0),
-		halo_x_(""),
-		halo_y_(""),
 		duration_(1),
 		blend_with_(0),
 		blend_ratio_(""),
@@ -125,8 +128,8 @@ class frame_builder {
 	{};
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		//! allow easy chained modifications will raised assert if used after initialization
-		frame_builder & image(const image::locator image );
-		frame_builder & image_diagonal(const image::locator image_diagonal);
+		frame_builder & image(const image::locator image ,const std::string & image_mod="");
+		frame_builder & image_diagonal(const image::locator image_diagonal,const std::string & image_mod="");
 		frame_builder & sound(const std::string& sound);
 		frame_builder & text(const std::string& text,const  Uint32 text_color);
 		frame_builder & halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y);
@@ -147,12 +150,13 @@ class frame_builder {
 	private:
 		image::locator image_;
 		image::locator image_diagonal_;
+		std::string image_mod_;
 		progressive_string halo_;
+		progressive_int halo_x_;
+		progressive_int halo_y_;
 		std::string sound_;
 		std::string text_;
 		Uint32 text_color_;
-		progressive_int halo_x_;
-		progressive_int halo_y_;
 		int duration_;
 		Uint32 blend_with_;
 		progressive_double blend_ratio_;

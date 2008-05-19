@@ -158,8 +158,8 @@ template class progressive_<double>;
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 {
-	image(image::locator(cfg[frame_string+"image"]));
-	image_diagonal(image::locator(cfg[frame_string+"image_diagonal"]));
+	image(image::locator(cfg[frame_string+"image"]),cfg[frame_string+"image_mod"]);
+	image_diagonal(image::locator(cfg[frame_string+"image_diagonal"]),cfg[frame_string+"image_mod"]);
 	sound(cfg[frame_string+"sound"]);
 	std::vector<std::string> tmp_string_vect=utils::split(cfg[frame_string+"text_color"]);
 	if(tmp_string_vect.size() ==3) {
@@ -195,12 +195,13 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.duration = duration_;
 	result.image = image_;
 	result.image_diagonal = image_diagonal_;
+	result.image_mod = image_mod_;
 	result.halo = halo_.get_current_element(current_time);
+	result.halo_x = halo_x_.get_current_element(current_time);
+	result.halo_y = halo_y_.get_current_element(current_time);
 	result.sound = sound_;
 	result.text = text_;
 	result.text_color = text_color_;
-	result.halo_x = halo_x_.get_current_element(current_time);
-	result.halo_y = halo_y_.get_current_element(current_time);
 	result.blend_with = blend_with_;
 	result.blend_ratio = blend_ratio_.get_current_element(current_time);
 	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0);
@@ -210,14 +211,16 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.y = y_.get_current_element(current_time);
 	return result;
 }
-frame_builder & frame_builder::image(const image::locator image )
+frame_builder & frame_builder::image(const image::locator image ,const std::string & image_mod)
 {
 	image_ = image;
+	image_mod_ = image_mod;
 	return *this;
 }
-frame_builder & frame_builder::image_diagonal(const image::locator image_diagonal)
+frame_builder & frame_builder::image_diagonal(const image::locator image_diagonal,const std::string& image_mod)
 {
 	image_diagonal_ = image_diagonal;
+	image_mod_ = image_mod;
 	return *this;
 }
 frame_builder & frame_builder::sound(const std::string& sound)
@@ -341,10 +344,10 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 	}
 	image::locator image_loc;
 	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
-		image_loc = current_data.image_diagonal;
+		image_loc = image::locator(current_data.image_diagonal,current_data.image_mod);
 	} 
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
-		image_loc = current_data.image;
+		image_loc = image::locator(current_data.image,current_data.image_mod);
 	}
 
 	surface image;
@@ -453,53 +456,55 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	 *  
 	 *  */
 	frame_parameters result;
-	const frame_parameters & current_value = builder_.parameters(current_time);
+	const frame_parameters & current_val = builder_.parameters(current_time);
 	assert(engine_val.image.is_void() || engine_val.image.get_filename() == "");
-	result.image = current_value.image.is_void() || current_value.image.get_filename() == ""?animation_val.image:current_value.image;
+	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;
 
 	assert(engine_val.image_diagonal.is_void() || engine_val.image_diagonal.get_filename() == "");
-	result.image_diagonal = current_value.image_diagonal.is_void()|| current_value.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_value.image_diagonal;
+	result.image_diagonal = current_val.image_diagonal.is_void()|| current_val.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_val.image_diagonal;
+
+	result.image_mod = engine_val.image_mod + current_val.image_mod +animation_val.image_mod;
 
 	assert(engine_val.halo.empty());
-	result.halo = current_value.halo.empty()?animation_val.halo:current_value.halo;
-
-	assert(engine_val.sound.empty());
-	result.sound = current_value.sound.empty()?animation_val.sound:current_value.sound;
-
-	assert(engine_val.text.empty());
-	result.text = current_value.text.empty()?animation_val.text:current_value.text;
-
-	assert(engine_val.text_color == 0);
-	result.text_color = current_value.text_color?current_value.text_color:animation_val.text_color;
+	result.halo = current_val.halo.empty()?animation_val.halo:current_val.halo;
 
 	assert(engine_val.halo_x == 0);
-	result.halo_x =  current_value.halo_x?current_value.halo_x:animation_val.halo_x;
+	result.halo_x =  current_val.halo_x?current_val.halo_x:animation_val.halo_x;
 
-	result.halo_y = current_value.halo_y?current_value.halo_y:animation_val.halo_y;
+	result.halo_y = current_val.halo_y?current_val.halo_y:animation_val.halo_y;
 	result.halo_y += engine_val.halo_y;
 
 	assert(engine_val.duration == 0);
-	result.duration = current_value.duration;
+	result.duration = current_val.duration;
 
-	result.blend_with = current_value.blend_with?current_value.blend_with:animation_val.blend_with;
+	assert(engine_val.sound.empty());
+	result.sound = current_val.sound.empty()?animation_val.sound:current_val.sound;
+
+	assert(engine_val.text.empty());
+	result.text = current_val.text.empty()?animation_val.text:current_val.text;
+
+	assert(engine_val.text_color == 0);
+	result.text_color = current_val.text_color?current_val.text_color:animation_val.text_color;
+
+	result.blend_with = current_val.blend_with?current_val.blend_with:animation_val.blend_with;
 	if(primary&& engine_val.blend_with) result.blend_with = engine_val.blend_with;
 
-	result.blend_ratio = current_value.blend_ratio?current_value.blend_ratio:animation_val.blend_ratio;
+	result.blend_ratio = current_val.blend_ratio?current_val.blend_ratio:animation_val.blend_ratio;
 	if(primary && engine_val.blend_ratio) result.blend_ratio += engine_val.blend_ratio;
 
-	result.highlight_ratio = current_value.highlight_ratio!=1.0?current_value.highlight_ratio:animation_val.highlight_ratio;
+	result.highlight_ratio = current_val.highlight_ratio!=1.0?current_val.highlight_ratio:animation_val.highlight_ratio;
 	if(primary && engine_val.highlight_ratio != 1.0) result.highlight_ratio = result.highlight_ratio +engine_val.highlight_ratio - 1.0; // selected unit
 
 	assert(engine_val.offset == 0);
-	result.offset = current_value.offset?current_value.offset:animation_val.offset;
+	result.offset = current_val.offset?current_val.offset:animation_val.offset;
 
-	result.submerge = current_value.submerge?current_value.submerge:animation_val.submerge;
+	result.submerge = current_val.submerge?current_val.submerge:animation_val.submerge;
 	if(primary && engine_val.submerge) result.submerge = engine_val.submerge;
 
 	assert(engine_val.x == 0);
-	result.x = current_value.x?current_value.x:animation_val.x;
+	result.x = current_val.x?current_val.x:animation_val.x;
 
-	result.y = current_value.y?current_value.y:animation_val.y; 
+	result.y = current_val.y?current_val.y:animation_val.y; 
 	result.y += engine_val.y;
 
 	return result;
