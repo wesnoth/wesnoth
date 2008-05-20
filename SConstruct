@@ -287,7 +287,7 @@ except:
     env["svnrev"] = ""
 
 Export(Split("env have_client_prereqs have_X have_server_prereqs"))
-SConscript(dirs = Split("doc po"))
+SConscript(dirs = Split("po doc"))
 
 binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd")
 builds = {
