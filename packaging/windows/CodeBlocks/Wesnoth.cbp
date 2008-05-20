@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Wesnoth 1.4.2" />
+		<Option platforms="Windows;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\bin\wesnoth" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.4.2" />
+				<Option object_output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+			</Target>
+			<Target title="Release i486">
+				<Option output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\bin\wesnoth_i486" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.4.2" />
+				<Option object_output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=i486" />
+				</Compiler>
+			</Target>
+			<Target title="Release P2">
+				<Option output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\bin\wesnoth_p2" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.4.2" />
+				<Option object_output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=pentium2" />
+				</Compiler>
+			</Target>
+			<Target title="Release P4">
+				<Option output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\bin\wesnoth_p4" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.4.2" />
+				<Option object_output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=pentium4" />
+				</Compiler>
+			</Target>
+			<Target title="Release K6">
+				<Option output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\bin\wesnoth_k6" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.4.2" />
+				<Option object_output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=k6" />
+				</Compiler>
+			</Target>
+			<Target title="Release Athlon">
+				<Option output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\bin\wesnoth_athlon" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.4.2" />
+				<Option object_output="C:\Entwicklung\wesnoth\wesnoth-1.4.2\obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=athlon" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-O2" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fasynchronous-unwind-tables" />
+			<Add option="-mthreads" />
+			<Add option="-DUSE_GZIP" />
+			<Add option="-DHAVE_FRIBIDI" />
+			<Add option="-DHAVE_PYTHON" />
+			<Add directory="P:\Programme\Python24\include" />
+			<Add directory="P:\Programme\Dev-Cpp\include" />
+			<Add directory="C:\Entwicklung\Wesnoth\Wesnoth-1.4.2\src" />
+		</Compiler>
+		<Linker>
+			<Add option="-s" />
+			<Add library="mingw32" />
+			<Add library="mingwthrd" />
+			<Add library="winmm" />
+			<Add library="win32k" />
+			<Add library="kernel32" />
+			<Add library="wsock32" />
+			<Add library="SDLmain" />
+			<Add library="SDL.dll" />
+			<Add library="P:\Programme\Dev-Cpp\lib\SDL_ttf.lib" />
+			<Add library="P:\Programme\Dev-Cpp\lib\SDL_net.lib" />
+			<Add library="P:\Programme\Dev-Cpp\lib\SDL_image.lib" />
+			<Add library="P:\Programme\Dev-Cpp\lib\SDL_mixer.lib" />
+			<Add library="P:\Programme\Dev-Cpp\lib\intl.lib" />
+			<Add library="P:\Programme\Dev-Cpp\lib\libpng.lib" />
+			<Add library="P:\Programme\Dev-Cpp\lib\libboost_iostreams-mgw34-mt-s-1_34_1.a" />
+			<Add library="P:\Programme\Dev-Cpp\lib\libboost_regex-mgw34-mt-d-1_34_1.a" />
+			<Add library="C:\Entwicklung\Wesnoth\lib\zlib1.lib" />
+			<Add library="P:\Programme\Dev-Cpp\lib\libfreetype.dll.a" />
+			<Add library="P:\Programme\Python24\MinGW\python24.dll" />
+			<Add library="P:\Programme\Dev-Cpp\lib\fribidi.lib" />
+			<Add directory="P:\Programme\Dev-Cpp\lib" />
+		</Linker>
+		<Unit filename="cb.bmp" />
+		<Unit filename="resource.h" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\about.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\about.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\actions.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\actions.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai_attack.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai_dfool.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai_dfool.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai_interface.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai_move.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai_python.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai_python.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\ai_village.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\animated.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\animated_game.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\astarnode.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\astarnode.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\astarsearch.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\attack_prediction.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\attack_prediction.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\builder.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\builder.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\callable_objects.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\cavegen.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\cavegen.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\clipboard.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\clipboard.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\color_range.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\color_range.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\config.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\config.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\config_adapter.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\config_adapter.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\construct_dialog.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\construct_dialog.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\cursor.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\cursor.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\dialogs.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\dialogs.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\display.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\display.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\events.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\events.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\file_chooser.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\filechooser.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\filesystem.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\filesystem.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\floating_textbox.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\floating_textbox.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\font.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\font.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\formula.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\formula_ai.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\formula_callable.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\formula_callable_fwd.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\formula_function.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\formula_fwd.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\formula_tokenizer.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_config.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_config.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_display.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_display.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_events.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_events.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_preferences.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_preferences.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\game_preferences_display.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gamestatus.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gamestatus.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\generate_report.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\generic_event.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\generic_event.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gettext.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gettext.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\global.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\dialogs\addon_connect.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\button.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\canvas.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\control.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\event_handler.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\grid.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\helper.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\label.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\panel.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\settings.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\text.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\text_box.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\tooltip.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\widget.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\window.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\gui\widgets\window_builder.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\halo.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\halo.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\help.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\help.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\hotkeys.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\hotkeys.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\image.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\image.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\intro.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\intro.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\key.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\key.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\language.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\language.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\leader_list.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\leader_list.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\loadscreen.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\loadscreen.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\log.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\log.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\map.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\map.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\map_create.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\map_create.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\map_label.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\map_label.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\mapgen.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\mapgen.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\mapgen_dialog.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\mapgen_dialog.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\marked-up_text.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\marked-up_text.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\menu_events.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\menu_events.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\minimap.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\minimap.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\mouse_events.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\mouse_events.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_connect.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_connect.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_create.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_create.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_lobby.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_lobby.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_ui.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_ui.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_wait.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\multiplayer_wait.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\network.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\network.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\network_worker.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\network_worker.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\pathfind.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\pathfind.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\pathutils.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\pathutils.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\play_controller.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\play_controller.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\playcampaign.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\playcampaign.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\playmp_controller.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\playmp_controller.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\playsingle_controller.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\playsingle_controller.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\playturn.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\playturn.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\preferences.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\preferences.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\preferences_display.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\preferences_display.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\publish_campaign.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\publish_campaign.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\race.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\race.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\random.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\random.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\replay.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\replay.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\replay_controller.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\replay_controller.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\reports.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\reports.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\sdl_utils.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\sdl_utils.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\binary_or_text.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\binary_or_text.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\binary_wml.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\binary_wml.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\parser.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\parser.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\preprocessor.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\preprocessor.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\string_utils.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\string_utils.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\tokenizer.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\serialization\tokenizer.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\settings.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\settings.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\sha1.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\sha1.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\show_dialog.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\show_dialog.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\sound.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\sound.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\soundsource.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\soundsource.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\statistics.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\statistics.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\team.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\team.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\terrain.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\terrain.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\terrain_filter.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\terrain_filter.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\terrain_translation.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\terrain_translation.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\theme.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\theme.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\thread.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\thread.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\titlescreen.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\titlescreen.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\tooltips.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\tooltips.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\tstring.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\tstring.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_abilities.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_abilities.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_animation.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_animation.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_display.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_display.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_frame.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_frame.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_map.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_map.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_types.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\unit_types.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\upload_log.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\upload_log.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\util.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\util.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\variable.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\variable.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\variant.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\video.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\video.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\button.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\button.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\combo.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\combo.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\file_menu.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\file_menu.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\label.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\label.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\menu.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\menu.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\menu_style.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\progressbar.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\progressbar.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\scrollarea.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\scrollarea.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\scrollbar.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\scrollbar.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\scrollpane.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\scrollpane.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\slider.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\slider.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\textbox.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\textbox.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\widget.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\widgets\widget.hpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\wml_exception.cpp" />
+		<Unit filename="..\..\..\..\wesnoth-1.4.2\src\wml_exception.hpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
