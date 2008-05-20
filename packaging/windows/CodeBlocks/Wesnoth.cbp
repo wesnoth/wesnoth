@@ -8,80 +8,66 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Release">
-				<Option output="..\bin\wesnoth" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\wesnoth-1.5.0" />
+				<Option output="bin\wesnoth" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.5.0" />
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
-				<Compiler>
-					<Add option="-DHAVE_FRIBIDI" />
-					<Add option="-DHAVE_PYTHON" />
-				</Compiler>
 			</Target>
 			<Target title="Release i486">
-				<Option output="..\bin\wesnoth_i486" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\wesnoth-1.5.0" />
+				<Option output="bin\wesnoth_i486" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.5.0" />
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-march=i486" />
-					<Add option="-DHAVE_FRIBIDI" />
-					<Add option="-DHAVE_PYTHON" />
 				</Compiler>
 			</Target>
 			<Target title="Release P2">
-				<Option output="..\bin\wesnoth_p2" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\wesnoth-1.5.0" />
+				<Option output="bin\wesnoth_p2" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.5.0" />
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-march=pentium2" />
-					<Add option="-DHAVE_FRIBIDI" />
-					<Add option="-DHAVE_PYTHON" />
 				</Compiler>
 			</Target>
 			<Target title="Release P4">
-				<Option output="..\bin\wesnoth_p4" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\wesnoth-1.5.0" />
+				<Option output="bin\wesnoth_p4" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.5.0" />
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-march=pentium4" />
-					<Add option="-DHAVE_FRIBIDI" />
-					<Add option="-DHAVE_PYTHON" />
 				</Compiler>
 			</Target>
 			<Target title="Release K6">
-				<Option output="..\bin\wesnoth_k6" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\wesnoth-1.5.0" />
+				<Option output="bin\wesnoth_k6" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.5.0" />
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-march=k6" />
-					<Add option="-DHAVE_FRIBIDI" />
-					<Add option="-DHAVE_PYTHON" />
 				</Compiler>
 			</Target>
 			<Target title="Release Athlon">
-				<Option output="..\bin\wesnoth_athlon" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\wesnoth-1.5.0" />
+				<Option output="bin\wesnoth_athlon" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\Entwicklung\wesnoth\wesnoth-1.5.0" />
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-march=athlon" />
-					<Add option="-DHAVE_FRIBIDI" />
-					<Add option="-DHAVE_PYTHON" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -92,6 +78,8 @@
 			<Add option="-fasynchronous-unwind-tables" />
 			<Add option="-mthreads" />
 			<Add option="-DUSE_GZIP" />
+			<Add option="-DHAVE_FRIBIDI" />
+			<Add option="-DHAVE_PYTHON" />
 			<Add directory="P:\Programme\Python24\include" />
 			<Add directory="P:\Programme\Dev-Cpp\include" />
 			<Add directory="C:\Entwicklung\Wesnoth\Wesnoth-1.5.0\src" />
@@ -120,6 +108,11 @@
 			<Add library="P:\Programme\Dev-Cpp\lib\fribidi.lib" />
 			<Add directory="P:\Programme\Dev-Cpp\lib" />
 		</Linker>
+		<Unit filename="cb.bmp" />
+		<Unit filename="resource.h" />
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="..\src\about.cpp" />
 		<Unit filename="..\src\about.hpp" />
 		<Unit filename="..\src\actions.cpp" />
@@ -413,11 +406,6 @@
 		<Unit filename="..\src\widgets\widget.hpp" />
 		<Unit filename="..\src\wml_exception.cpp" />
 		<Unit filename="..\src\wml_exception.hpp" />
-		<Unit filename="cb.bmp" />
-		<Unit filename="resource.h" />
-		<Unit filename="resource.rc">
-			<Option compilerVar="WINDRES" />
-		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
