@@ -319,7 +319,8 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 		send_len = minimum<int>(system_send_buffer_size,  static_cast<int>(size - upto));
 		const int res = SDLNet_TCP_Send(sock, &buf[upto],send_len);
 
-		if(!raw_data_only && res == static_cast<int>(size - upto)) {
+		if( res == static_cast<int>(size - upto)) {
+			if (!raw_data_only)
 			{
 				const threading::lock lock(*stats_mutex);
 				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
