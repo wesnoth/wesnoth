@@ -189,7 +189,7 @@ void check_send_buffer_size(TCPsocket& s)
 	socklen_t len = sizeof(system_send_buffer_size);
 	getsockopt(sock->channel, SOL_SOCKET, SO_RCVBUF,&system_send_buffer_size, &len);
 	--system_send_buffer_size;
-	std::cerr << "send buffer size: " << system_send_buffer_size << "\n";
+	DBG_NW << "send buffer size: " << system_send_buffer_size << "\n";
 }
 
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
