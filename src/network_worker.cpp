@@ -162,6 +162,7 @@ threading::condition* cond[NUM_SHARDS];
 
 std::map<Uint32,threading::thread*> threads[NUM_SHARDS];
 std::vector<Uint32> to_clear[NUM_SHARDS];
+int system_send_buffer_size = 0;
 
 int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 {
@@ -177,6 +178,18 @@ int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 #else
 	return SDLNet_TCP_Recv(s, buf, nbytes);
 #endif
+}
+
+
+void check_send_buffer_size(TCPsocket& s)
+{
+	if (system_send_buffer_size)
+		return;
+	_TCPsocket* sock = reinterpret_cast<_TCPsocket*>(s);
+	socklen_t len = sizeof(system_send_buffer_size);
+	getsockopt(sock->channel, SOL_SOCKET, SO_RCVBUF,&system_send_buffer_size, &len);
+	--system_send_buffer_size;
+	std::cerr << "send buffer size: " << system_send_buffer_size << "\n";
 }
 
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
@@ -281,8 +294,10 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif
+	check_send_buffer_size(sock);
 	size_t upto = 0;
 	size_t size = buf.size();
+	int send_len = 0;
 
 	if (!raw_data_only)
 	{
@@ -301,7 +316,8 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 			if(sockets_locked[shard][sock] != SOCKET_LOCKED)
 				return SOCKET_ERRORED;
 		}
-		const int res = SDLNet_TCP_Send(sock, &buf[upto], static_cast<int>(size - upto));
+		send_len = minimum<int>(system_send_buffer_size,  static_cast<int>(size - upto));
+		const int res = SDLNet_TCP_Send(sock, &buf[upto],send_len);
 
 		if(!raw_data_only && res == static_cast<int>(size - upto)) {
 			{
