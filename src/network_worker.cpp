@@ -51,7 +51,7 @@
 #  undef INADDR_NONE
 #  include <windows.h>
 #  define USE_SELECT 1
-typedef socklen_t int;
+typedef int socklen_t;
 #else
 #  include <sys/types.h>
 #  include <sys/socket.h>
