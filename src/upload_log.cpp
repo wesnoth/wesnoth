@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file upload_log.cpp
-//! Manage logfiles for uploading as feedback, e.g.\ for champaign-balancing.
+/**
+ *  @file upload_log.cpp
+ *  Manage logfiles for uploading as feedback, e.g.\ for champaign-balancing.
+ */
 
 #include "global.hpp"
 
@@ -232,7 +234,7 @@ void upload_log::start(game_state &state, const team &team,
 		}
 	}
 
-	//! @todo FIXME: Assumes first player is "us"; is that valid?
+	/** @todo FIXME: Assumes first player is "us"; is that valid? */
 	player_info &player = state.players.begin()->second;
 	for (std::vector<unit>::iterator it = player.available_units.begin();
 		 it != player.available_units.end();
@@ -309,7 +311,7 @@ void upload_log::quit(int turn)
 	add_game_result("quit", turn);
 }
 
-//! Ask user for permission to upload his game-stats.
+/** Ask user for permission to upload his game-stats. */
 void upload_log_dialog::show_beg_dialog(display& disp)
 {
 	std::string msg = std::string(_("Wesnoth relies on volunteers like yourself for feedback, especially beginners and new players. Wesnoth keeps summaries of your games: you can help us improve game play by giving permission to send these summaries (anonymously) to wesnoth.org.\n"))
