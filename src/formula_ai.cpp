@@ -405,6 +405,107 @@ private:
 	}
 };
 
+class unit_chooser_function : public function_expression {
+public:
+	explicit unit_chooser_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("unit_chooser", args, 1, 1), ai_(ai)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant input = args()[0]->evaluate(variables);
+
+		gamemap::location loc;
+
+		if ( !input.is_map() || (input.num_elements() == 0))
+		{
+			return variant();
+		}
+
+		if (input.num_elements() == 1)
+		{
+			return variant(new recruit_callable(loc, input.get_keys()[0].as_string() )); 
+		} else 
+		{ 
+			std::map<std::string, int> current_units;
+			std::map<std::string, int>::iterator unit_it;
+			int unit_count = 0;
+			
+			for(unit_map::unit_iterator i = ai_.get_info().units.begin() ; i != ai_.get_info().units.end() ; ++i)
+			{
+				if (i->second.side() == ai_.get_info().team_num)
+				{
+					std::string unit = i->second.type_id();
+					unit_it = current_units.find(unit);
+					if ( unit_it != current_units.end() )
+					{
+						unit_it->second++;
+					} else
+					{
+						current_units[ unit ] = 1;
+					}
+					unit_count++;
+				}
+			}
+
+			std::map<variant, variant> input_map = input.get_map();
+
+			for(unit_it = current_units.begin() ; unit_it != current_units.end() ; ++unit_it)
+			{			
+				unit_it->second = (unit_it->second * 100) / unit_count;
+				//std::cerr << unit_it->first << " " << unit_it->second << std::endl;
+			}
+
+			for(unit_it = current_units.begin(); unit_it != current_units.end(); ++unit_it)
+			{
+				std::map<variant, variant>::iterator i = input_map.find( variant(unit_it->first) );
+				if ( i != input_map.end() )
+				{
+					if( unit_it->second >= i->second.as_int() )
+					{
+						input_map.erase(i);
+						if (input_map.size() == 0)
+							break;
+					} else
+					{
+						int number = i->second.as_int() - unit_it->second;
+						i->second = variant(number);
+					}
+				}
+			}
+
+			if (input_map.size() == 0)
+			{
+				//std::cerr << "input_map became empty, calculating best posible recruit option using base input\n";
+				input_map = input.get_map();
+			}
+
+
+			if (input_map.size() == 1)
+			{
+				return variant(new recruit_callable(loc, input_map.begin()->first.as_string() )); 
+			} else
+			{
+				int max = 0;
+				std::map<variant, variant>::iterator max_it = input_map.begin(); 
+	
+				for(std::map<variant, variant>::iterator i = input_map.begin(); i != input_map.end(); ++i)
+				{
+					if (i->second.as_int() > max)
+					{
+						max = i->second.as_int();
+						max_it = i;
+					}
+				}
+				
+				return variant(new recruit_callable(loc, max_it->first.as_string() )); 
+			}
+
+		}
+	}
+
+	const formula_ai& ai_;
+};
+
 class move_function : public function_expression {
 public:
 	explicit move_function(const args_list& args)
@@ -714,6 +815,8 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new attack_function(args, ai_));
 		} else if(fn == "recruit") {
 			return expression_ptr(new recruit_function(args));
+		} else if(fn == "unit_chooser") {
+			return expression_ptr(new unit_chooser_function(args, ai_));
 		} else if(fn == "is_village") {
 			return expression_ptr(new is_village_function(args));
 		} else if(fn == "unit_at") {

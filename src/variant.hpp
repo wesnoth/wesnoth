@@ -103,6 +103,7 @@ public:
 	bool operator<=(const variant&) const;
 	bool operator>=(const variant&) const;
 
+	std::map<variant, variant> get_map() const;
 	variant get_keys() const;
 	variant get_values() const;
 

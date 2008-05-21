@@ -239,6 +239,12 @@ const variant& variant::operator[](const variant v) const
 	}	
 }
 
+std::map<variant, variant> variant::get_map() const 
+{  
+	must_be(TYPE_MAP); 
+	return map_->elements; 
+}
+
 variant variant::get_keys() const
 {
 	must_be(TYPE_MAP);
