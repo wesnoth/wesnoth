@@ -1,0 +1,4 @@
+import sys
+from subprocess import call
+print "scons --directory=.. " + " ".join(sys.argv[1:])
+Exit(call(Split("scons --directory=..") + sys.argv[1:]))
