@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_map.hpp
-//!
+/** @file unit_map.hpp */
 
 #ifndef UNIT_MAP_H_INCLUDED
 #define UNIT_MAP_H_INCLUDED
@@ -40,7 +39,11 @@ class unit_map
 {
 private:
 	
-	//! Used so unit_map can keep a count of iterators and clean invalid pointers when no iterators exist. Every iterator and accessor has a counter instance.
+	/**
+	 * Used so unit_map can keep a count of iterators and clean invalid pointers
+	 * when no iterators exist. Every iterator and accessor has a counter
+	 * instance.
+	 */
 	struct iterator_counter {
 		iterator_counter() : map_(NULL) {}
 		iterator_counter(const unit_map* map) : map_(map)
@@ -72,14 +75,17 @@ public:
 	unit_map() : num_iters_(0), num_invalid_(0) { };
 	unit_map(const unit_map &that);
 	unit_map &operator =(const unit_map &that);
-	//! A unit map with a single unit in it.
+	/** A unit map with a copy of a single unit in it. */
 	explicit unit_map(const gamemap::location &loc, const unit &u);
 	~unit_map();
 	
-	//! Keyed with unit's underlying_id. bool flag is whether the following pair pointer is valid. pointer to pair used to imitate a map<location, unit>
+	/**
+	 * Keyed with unit's underlying_id. bool flag is whether the following pair
+	 * pointer is valid. pointer to pair used to imitate a map<location, unit>
+	 */
 	typedef std::map<std::string,std::pair<bool, std::pair<gamemap::location,unit>*> > umap;
 	
-	//! Maps locations to the underlying_id() of the unit at that location.
+	/** Maps locations to the underlying_id() of the unit at that location. */
 	typedef std::map<gamemap::location, std::string> lmap;
 		
 	struct const_unit_iterator;	
@@ -88,7 +94,10 @@ public:
 	struct xy_accessor;
 	struct const_xy_accessor;
 
-	//! For iterating over every unit. Iterator is valid as long as there is there is a unit w/ matching underlying_id in the map.
+	/**
+	 * For iterating over every unit. Iterator is valid as long as there is
+	 * there is a unit w/ matching underlying_id in the map.
+	 */
 	struct unit_iterator
 	{
 		unit_iterator() { }
@@ -165,7 +174,10 @@ public:
 	typedef unit_iterator iterator;
 	typedef const_unit_iterator const_iterator;
 	
-	//! Similar to unit_iterator, except that becomes invalid if unit is moved while the iterator points at it.
+	/**
+	 * Similar to unit_iterator, except that becomes invalid if unit is moved
+	 * while the iterator points at it.
+	 */
 	struct unit_xy_iterator
 	{
 		unit_xy_iterator(const unit_iterator &i);
@@ -245,7 +257,10 @@ public:
 		gamemap::location loc_;	
 	};
 	
-	//! Used to access the unit at a given position. Is valid as long as any unit is in that position. Can switch from invalid to valid.
+	/**
+	 * Used to access the unit at a given position. Is valid as long as any unit
+	 * is in that position. Can switch from invalid to valid.
+	 */
 	struct xy_accessor
 	{
 		xy_accessor(const unit_iterator &i);
@@ -289,11 +304,17 @@ public:
 		gamemap::location loc_;		
 	};
 	
-	//! Return object can be implicitly converted to any of the other iterators or accessors
+	/**
+	 * Return object can be implicitly converted to any of the other iterators
+	 * or accessors
+	 */
 	unit_iterator find(const gamemap::location &loc) ;
 	unit_iterator find(const std::string &id);
 	
-	//! Return object can be implicity converted to any of the other const iterators or accessors
+	/**
+	 * Return object can be implicity converted to any of the other const
+	 * iterators or accessors
+	 */
 	const_unit_iterator find(const gamemap::location &loc) const;
 	const_unit_iterator find(const std::string &id) const;
 	
@@ -301,10 +322,16 @@ public:
 		return lmap_.count(loc);
 	}
 
-	//! Return object can be implicitly converted to any of the other iterators or accessors
+	/**
+	 * Return object can be implicitly converted to any of the other iterators
+	 * or accessors
+	 */
 	unit_iterator begin();
 
-	//! Return object can be implicity converted to any of the other const iterators or accessors
+	/**
+	 * Return object can be implicity converted to any of the other const
+	 * iterators or accessors
+	 */
 	const_unit_iterator begin() const {
 		umap::const_iterator i = map_.begin();
 		while (i != map_.end() && !i->second.first) { 
@@ -313,12 +340,18 @@ public:
 		return const_unit_iterator(i, this);
 	}
 
-	//! Return object can be implicitly converted to any of the other iterators or accessors
+	/**
+	 * Return object can be implicitly converted to any of the other iterators
+	 * or accessors
+	 */
 	unit_iterator end() {
 		return iterator(map_.end(), this);
 	}
 
-	//! Return object can be implicity converted to any of the other const iterators or accessors
+	/**
+	 * Return object can be implicity converted to any of the other const
+	 * iterators or accessors
+	 */
 	const_unit_iterator end() const {
 		return const_iterator(map_.end(), this);
 	}	
@@ -329,13 +362,16 @@ public:
 
 	void clear();
 
-	//! Extract (like erase, only don't delete).
+	/** Extract (like erase, but don't delete). */
 	std::pair<gamemap::location,unit> *extract(const gamemap::location &loc);
 
-	//! Map owns pointer after this.  Loc must be currently empty. unit's underlying_id should not be present in the map already
+	/**
+	 * Map owns pointer after this.  Loc must be currently empty. unit's
+	 * underlying_id should not be present in the map already
+	 */
 	void add(std::pair<gamemap::location,unit> *p);
 
-	//! Like add, but loc must be occupied (implicitly erased).
+	/** Like add, but loc must be occupied (implicitly erased). */
 	void replace(std::pair<gamemap::location,unit> *p);
 
 	void erase(xy_accessor pos);
@@ -348,7 +384,7 @@ public:
 
 		
 private:
-	//! Removes invalid entries in map_. Called automatically when safe and needed.
+	/** Removes invalid entries in map_. Called automatically when safe and needed. */
 	void clean_invalid();
 	
 	void invalidate(umap::iterator i) 
@@ -362,10 +398,16 @@ private:
 	void remove_iter() const { --num_iters_; }
 
 	
-	//! Key: unit's underlying_id. bool indicates validity of pointer. pointer to pair used to imitate a map<location, unit>
+	/**
+	 * Key: unit's underlying_id. bool indicates validity of pointer. pointer to
+	 * pair used to imitate a map<location, unit>
+	 */
 	std::map<std::string,std::pair<bool, std::pair<gamemap::location,unit>*> > map_;
 	
-	//! location -> unit.underlying_id(). Unit_map is usually used as though it is a map<location, unit> and so we need this map for efficient access/modification.
+	/** location -> unit.underlying_id(). Unit_map is usually used as though it
+	 * is a map<location, unit> and so we need this map for efficient
+	 * access/modification.
+	 */
 	std::map<gamemap::location, std::string> lmap_;
 	
 	mutable size_t num_iters_;

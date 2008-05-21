@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_map.cpp
-//!
+/** @file unit_map.cpp */
 
 #include "unit.hpp"
 #include "unit_map.hpp"
@@ -29,7 +28,6 @@
 
 typedef std::pair<std::string, std::pair<bool, std::pair<gamemap::location, unit>*> > umap_pair;
 
-//! A unit map with a copy of a single unit in it.
 unit_map::unit_map(const gamemap::location &loc, const unit &u) : num_iters_(0), num_invalid_(0)
 {
 	add(new std::pair<gamemap::location,unit>(loc, u));
@@ -442,7 +440,6 @@ void unit_map::delete_all()
 	map_.clear();
 }
 
-//! Extract (like erase, but don't delete).
 std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &loc)
 {
 	lmap::iterator i = lmap_.find(loc);
