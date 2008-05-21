@@ -376,6 +376,35 @@ void terrain_palette::draw(bool force) {
 	int y = terrain_start_;
 	for(unsigned int counter = starting; counter < ending; counter++){
 		const t_translation::t_terrain terrain = terrains_[counter];
+		const t_translation::t_terrain base_terrain = map_.get_terrain_info(terrain).default_base();
+
+		const int counter_from_zero = counter - starting;
+		SDL_Rect dstrect;
+		dstrect.x = loc.x + (counter_from_zero % size_specs_.terrain_width) * size_specs_.terrain_space;
+		dstrect.y = y;
+		dstrect.w = size_specs_.terrain_size;
+		dstrect.h = size_specs_.terrain_size;
+
+		//Draw default base for overlay terrains
+		if(base_terrain != t_translation::NONE_TERRAIN) {
+			const std::string base_filename = "terrain/" + map_.get_terrain_info(base_terrain).editor_image() + ".png";
+			surface base_image(image::get_image(base_filename));
+
+			if(base_image == NULL) {
+				std::cerr << "image for terrain " << counter << ": '" << base_filename << "' not found\n";
+				return;
+			}
+
+			if(static_cast<unsigned>(base_image->w) != size_specs_.terrain_size ||
+			   static_cast<unsigned>(base_image->h) != size_specs_.terrain_size) {
+
+				base_image.assign(scale_surface(base_image,
+				   size_specs_.terrain_size, size_specs_.terrain_size));
+			}
+
+			SDL_BlitSurface(base_image, NULL, screen, &dstrect);
+		}
+
 		const std::string filename = "terrain/" + map_.get_terrain_info(terrain).editor_image() + ".png";
 		surface image(image::get_image(filename));
 		if(image == NULL) {
@@ -390,14 +419,8 @@ void terrain_palette::draw(bool force) {
 				size_specs_.terrain_size, size_specs_.terrain_size));
 		}
 
-		const int counter_from_zero = counter - starting;
-		SDL_Rect dstrect;
-		dstrect.x = loc.x + (counter_from_zero % size_specs_.terrain_width) * size_specs_.terrain_space;
-		dstrect.y = y;
-		dstrect.w = image->w;
-		dstrect.h = image->h;
-
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
+
 		SDL_Surface* const screen = gui_.video().getSurface();
 		Uint32 color;
 		if (terrain == selected_bg_terrain() && terrain == selected_fg_terrain()) {
