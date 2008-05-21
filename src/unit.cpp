@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file unit.cpp
-//! Routines to manage units.
+/**
+ *  @file unit.cpp
+ *  Routines to manage units.
+ */
 
 #include "global.hpp"
 
@@ -60,9 +62,11 @@ namespace {
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
 										sizeof(*ModificationTypes);
 
-	//! Pointers to units which have data in their internal caches.
-	// The destructor of an unit removes itself from the cache,
-	// so the pointers are always valid.
+	/**
+	 * Pointers to units which have data in their internal caches. The
+	 * destructor of an unit removes itself from the cache, so the pointers are
+	 * always valid.
+	 */
 	static std::vector<const unit *> units_with_cache;
 }
 
@@ -179,7 +183,6 @@ unit::unit(const unit& o):
 	unit_anim_halo_ = halo::NO_HALO;
 }
 
-//! Initilizes a unit from a config.
 unit::unit(unit_map* unitmap, const gamemap* map,
 	const gamestatus* game_status, const std::vector<team>* teams,const config& cfg,
 	bool use_traits, game_state* state) :
@@ -249,7 +252,6 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 	}
 }
 
-//! Initializes a unit from a unit type.
 unit::unit(unit_map* unitmap, const gamemap* map,
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t,
            int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
@@ -462,7 +464,6 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	}
 }
 
-//! Advance this unit to another type
 void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
@@ -581,7 +582,6 @@ const unit_type* unit::type() const
 	return NULL;
 }
 
-//! The unit's profile.
 const std::string& unit::profile() const
 {
 	if(cfg_["profile"] != "" && cfg_["profile"] != "unit_image") {
@@ -590,7 +590,6 @@ const std::string& unit::profile() const
 	return absolute_image();
 }
 
-//! Colors for the unit's hitpoints.
 SDL_Colour unit::hp_color() const
 {
 	double unit_energy = 0.0;
@@ -628,7 +627,6 @@ SDL_Colour unit::hp_color() const
 	return energy_colour;
 }
 
-//! Colors for the unit's XP.
 SDL_Colour unit::xp_color() const
 {
 	const SDL_Color near_advance_colour = {255,255,255,0};
@@ -1149,11 +1147,6 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	return true;
 }
 
-
-//! Initialize this unit from a cfg object.
-//!
-//! @param cfg			Configuration object from which to read the unit
-//- @param use_traits	??
 void unit::read(const config& cfg, bool use_traits, game_state* state)
 {
 	if(cfg["type"].empty()) {
@@ -2314,7 +2307,7 @@ size_t unit::modification_count(const std::string& type, const std::string& id) 
 	return res;
 }
 
-//! Helper function for add_modifications
+/** Helper function for add_modifications */
 static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 {
 	string_map::const_iterator iter = mod.values.begin();
@@ -2780,8 +2773,10 @@ bool unit::invisible(const gamemap::location& loc,
 		const unit_map& units,const std::vector<team>& teams, bool see_all) const
 {
 	// Fetch from cache
-	//! @todo FIXME: We use the cache only when using the default see_all=true
-	// Maybe add a second cache if the see_all=false become more frequent.
+	/**
+	 * @todo FIXME: We use the cache only when using the default see_all=true
+	 * Maybe add a second cache if the see_all=false become more frequent.
+	 */
 	if(see_all) {
 		std::map<gamemap::location, bool>::const_iterator itor = invisibility_cache_.find(loc);
 		if(itor != invisibility_cache_.end()) {
@@ -2833,7 +2828,6 @@ void unit::set_underlying_id() {
 	}
 }
 
-//! Returns the number of units of the given side (team).
 int team_units(const unit_map& units, unsigned int side)
 {
 	int res = 0;
