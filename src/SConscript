@@ -4,7 +4,7 @@ import commands, os
 from subprocess import Popen, PIPE
 from glob import glob
 
-Import(Split("env test_env have_client_prereqs have_X have_server_prereqs"))
+Import("*")
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
@@ -201,7 +201,7 @@ wesnoth_sources = Split("""
 #
 
 if have_client_prereqs:
-    wesnoth = env.Program("wesnoth", ["game.cpp"] + wesnoth_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd])
+    wesnoth = env.Program("wesnoth", ["game.cpp"] + wesnoth_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd] + wesnoth_res)
 else:
     wesnoth = None
 Export("wesnoth")
@@ -218,7 +218,7 @@ wesnoth_editor_sources = Split("""
     animated_editor.cpp
     """)
 if have_client_prereqs and have_X:
-    wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth])
+    wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth] + wesnoth_editor_res)
 else:
     wesnoth_editor = None
 Export("wesnoth_editor")
