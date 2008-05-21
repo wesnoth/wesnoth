@@ -159,27 +159,29 @@ public:
 
 	~unit_type();
 
-	//! Load data into an empty unit_type
+	/** Load data into an empty unit_type */
 	void build_full(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
-	//! Partially load data into an empty unit_type
+	/** Partially load data into an empty unit_type */
     void build_help_index(const config& cfg, const race_map& races);
 
-	//! Adds an additional advancement path to a unit type.
-	//! This is used to implement the [advancefrom] tag.
+	/**
+	 * Adds an additional advancement path to a unit type.
+	 * This is used to implement the [advancefrom] tag.
+	 */
 	void add_advancement(const unit_type &advance_to,int experience);
 
-	//! Adds units that this unit advances from, for help file purposes.
+	/** Adds units that this unit advances from, for help file purposes. */
 	void add_advancesfrom(std::string unit_id);
 
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
-	//! Info on the type of unit that the unit reanimates as.
+	/** Info on the type of unit that the unit reanimates as. */
 	const std::string& undead_variation() const { return undead_variation_; }
 
 	unsigned int num_traits() const { return (num_traits_ ? num_traits_ : race_->num_traits()); }
 
-	//! The name of the unit in the current language setting.
+	/** The name of the unit in the current language setting. */
 	const t_string& type_name() const { return type_name_; }
 
 	const std::string& id() const { return id_; }

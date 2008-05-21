@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_types.cpp
-//! Handle unit-type specific attributes, animations, advancement.
+/**
+ *  @file unit_types.cpp
+ *  Handle unit-type specific attributes, animations, advancement.
+ */
 
 #include "global.hpp"
 
