@@ -225,7 +225,7 @@ bool is_illegal_file_char(char c)
 {
 	return c == '/' || c == '\\' || c == ':'
  	#ifdef WIN32
-	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*'
+	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*' || c == '"'
 	#endif
 	;
 }
