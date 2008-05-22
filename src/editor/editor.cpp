@@ -873,7 +873,7 @@ void map_editor::perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
 		if (map_.on_board(*it, true)) {
 			undo_action.add_terrain(map_.get_terrain(*it), terrain, *it);
 			if (terrain.base == t_translation::NO_LAYER) {
-				map_.set_overlay(*it, terrain);
+				map_.set_terrain(*it, terrain, gamemap::OVERLAY);
             }
 			else {
 				map_.set_terrain(*it, terrain);
@@ -1002,7 +1002,7 @@ void map_editor::redo() {
 					action.redo_terrains().begin();
 				it != action.redo_terrains().end(); ++it) {
                 if (it->second.base == t_translation::NO_LAYER) {
-                    map_.set_overlay(it->first, it->second);
+                    map_.set_terrain(it->first, it->second, gamemap::OVERLAY);
                 }
                 else {
                     map_.set_terrain(it->first, it->second);
@@ -1232,10 +1232,10 @@ void map_editor::draw_terrain(const t_translation::t_terrain terrain,
 		if(final_terrain != old_terrain) {
 			undo_action.add_terrain(old_terrain, final_terrain, *it);
 			if (final_terrain.base == t_translation::NO_LAYER) {
-				map_.set_overlay(*it, final_terrain);
+				map_.set_terrain(*it, final_terrain, gamemap::OVERLAY);
 			}
 			else if (one_layer_only) {
-				map_.set_base(*it, final_terrain);
+				map_.set_terrain(*it, final_terrain, gamemap::BASE);
 			}
 			else {
 				map_.set_terrain(*it, final_terrain);

@@ -148,6 +148,12 @@ public:
 		IS_MASK
 		};
 
+	enum tmerge_mode {
+		BASE,
+		OVERLAY,    
+        BOTH
+		};
+
 	//! Loads a map, with the given terrain configuration.
 	//! Data should be a series of lines, with each character 
 	//! representing one hex on the map. 
@@ -215,17 +221,8 @@ public:
 		{ return terrainList_; }
 
 	//! Clobbers over the terrain at location 'loc', with the given terrain.
-	void set_terrain(const location& loc, const t_translation::t_terrain terrain);
-
-	//! clobbers over the overlay terrain at location 'loc', with the given terrain.
-	//! This method checks if the base and new overlay can be combined, or if
-	//! base+new overlay are already valid, if it isn't it will fail silently.
-	void set_overlay(const location& loc, const t_translation::t_terrain terrain);
-
-	//! clobbers over the base terrain at location 'loc', with the given terrain.
-	//! This method checks if the new base and old overlay can be combined, or if
-	//! new base+overlay are already valid, if it isn't it will fail silently.
-	void set_base(const location& loc, const t_translation::t_terrain terrain);
+	//! Uses mode and replace_if_failed like merge_terrains().
+	void set_terrain(const location& loc, const t_translation::t_terrain terrain, const tmerge_mode mode=BOTH, bool replace_if_failed = false);
 
 	//! Returns a list of the frequencies of different terrain types on the map, 
 	//! with terrain nearer the center getting weighted higher.
@@ -249,6 +246,14 @@ public:
 	static const std::string default_map_header;
 	//! The default border style for a map
 	static const tborder default_border;
+
+	//! Tries to merge old and new terrain using the merge_settings config
+    //! Relevant parameters are "layer" and "replace_conflicting"
+    //! "layer" specifies the layer that should be replaced (base or overlay, default is both). 
+    //! If "replace_conflicting" is true the new terrain will replace the old one if merging failed
+    //! (using the default base if new terrain is an overlay terrain)
+    //! Will return the resulting terrain or NONE_TERRAIN if merging failed
+    t_translation::t_terrain merge_terrains(const t_translation::t_terrain old_t, const t_translation::t_terrain new_t, const tmerge_mode mode, bool replace_if_failed = false);
 
 protected:
 	t_translation::t_map tiles_;
