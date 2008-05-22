@@ -228,23 +228,25 @@ ELSE (_boost_IN_CACHE)
       # Extract Boost_VERSION and Boost_LIB_VERSION from version.hpp
       # Read the whole file:
       #
-      SET(BOOST_VERSION 0)
-      SET(BOOST_LIB_VERSION "")
-      FILE(READ "${Boost_INCLUDE_DIR}/boost/version.hpp" _boost_VERSION_HPP_CONTENTS)
+      IF(Boost_INCLUDE_DIR)
+        SET(BOOST_VERSION 0)
+        SET(BOOST_LIB_VERSION "")
+        FILE(READ "${Boost_INCLUDE_DIR}/boost/version.hpp" _boost_VERSION_HPP_CONTENTS)
 
-      STRING(REGEX REPLACE ".*#define BOOST_VERSION ([0-9]+).*" "\\1" Boost_VERSION "${_boost_VERSION_HPP_CONTENTS}")
-      STRING(REGEX REPLACE ".*#define BOOST_LIB_VERSION \"([0-9_]+)\".*" "\\1" Boost_LIB_VERSION "${_boost_VERSION_HPP_CONTENTS}")
+        STRING(REGEX REPLACE ".*#define BOOST_VERSION ([0-9]+).*" "\\1" Boost_VERSION "${_boost_VERSION_HPP_CONTENTS}")
+        STRING(REGEX REPLACE ".*#define BOOST_LIB_VERSION \"([0-9_]+)\".*" "\\1" Boost_LIB_VERSION "${_boost_VERSION_HPP_CONTENTS}")
 
-      SET(Boost_LIB_VERSION ${Boost_LIB_VERSION} CACHE STRING "The library version string for boost libraries")
-      SET(Boost_VERSION ${Boost_VERSION} CACHE STRING "The version number for boost libraries")
-      
-      IF(NOT "${Boost_VERSION}" STREQUAL "0")
-        MATH(EXPR Boost_MAJOR_VERSION "${Boost_VERSION} / 100000")
-        MATH(EXPR Boost_MINOR_VERSION "${Boost_VERSION} / 100 % 1000")
-        MATH(EXPR Boost_SUBMINOR_VERSION "${Boost_VERSION} % 100")
-      ENDIF(NOT "${Boost_VERSION}" STREQUAL "0")
+        SET(Boost_LIB_VERSION ${Boost_LIB_VERSION} CACHE STRING "The library version string for boost libraries")
+        SET(Boost_VERSION ${Boost_VERSION} CACHE STRING "The version number for boost libraries")
+        
+        IF(NOT "${Boost_VERSION}" STREQUAL "0")
+          MATH(EXPR Boost_MAJOR_VERSION "${Boost_VERSION} / 100000")
+          MATH(EXPR Boost_MINOR_VERSION "${Boost_VERSION} / 100 % 1000")
+          MATH(EXPR Boost_SUBMINOR_VERSION "${Boost_VERSION} % 100")
+        ENDIF(NOT "${Boost_VERSION}" STREQUAL "0")
 
 
+      ENDIF(Boost_INCLUDE_DIR)
     ENDIF( NOT Boost_INCLUDE_DIR )
   ENDFOREACH(_boost_VER)
 
