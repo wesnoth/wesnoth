@@ -281,7 +281,7 @@ ELSE (_boost_IN_CACHE)
             ARGS --version
             OUTPUT_VARIABLE _boost_COMPILER_VERSION
         )
-        STRING(REGEX REPLACE ".* ([0-9])\\.([0-9])\\.[0-9] .*" "\\1\\2"
+        STRING(REGEX REPLACE ".* ([0-9])\\.([0-9])\\.[0-9].*" "\\1\\2"
                _boost_COMPILER_VERSION ${_boost_COMPILER_VERSION})
         SET (_boost_COMPILER "-gcc${_boost_COMPILER_VERSION}")
       ENDIF (NOT CMAKE_COMPILER_IS_GNUCC)
