@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_display.cpp
-//!
+/** @file unit_display.cpp */
 
 #include "global.hpp"
 
