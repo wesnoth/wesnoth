@@ -523,8 +523,10 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 				if(!terrain.empty()) {
 					new_terrain = terrain[0];
 				}
-
-				set_terrain(location(x2,y2), new_terrain, mode, utils::string_bool(cfg["replace_if_failed"]));
+				
+				if(!utils::string_bool(cfg["use_old"])) {
+					set_terrain(location(x2,y2), new_terrain, mode, utils::string_bool(cfg["replace_if_failed"]));
+				}
 
 			} else {
 				set_terrain(location(x2,y2),t);
@@ -858,8 +860,9 @@ t_translation::t_terrain gamemap::merge_terrains(const t_translation::t_terrain 
 			result = t;
 		}
 	}
-	else if(mode == BOTH) {
-		if(new_t.base != t_translation::NO_LAYER && tcodeToTerrain_.count(new_t) > 0) {
+	else if(mode == BOTH && new_t.base != t_translation::NO_LAYER) {
+		// We need to merge here, too, because the dest terrain might be a combined one.
+		if (try_merge_terrains(new_t)) {
 			result = new_t;
 		}
 	}
@@ -869,7 +872,10 @@ t_translation::t_terrain gamemap::merge_terrains(const t_translation::t_terrain 
 	// or with (default base)^(new overlay)
 	if(result == t_translation::NONE_TERRAIN && replace_if_failed && tcodeToTerrain_.count(new_t) > 0) {
 		if(new_t.base != t_translation::NO_LAYER) {
-			result = new_t;
+			// Same as above
+			if (try_merge_terrains(new_t)) {
+				result = new_t;
+			}
 		}	
 		else if (get_terrain_info(new_t).default_base() != t_translation::NONE_TERRAIN) {
 			result = get_terrain_info(new_t).terrain_with_default_base();
