@@ -274,56 +274,34 @@ static void draw_tip_of_day(game_display& screen,
 	}
 }
 
-namespace gui {
-
-//! Show titlepage with logo and background, menu-buttons and tip-of-the-day.
-//!
-//! After the page is shown, this routine waits
-//! for the user to click one of the menu-buttons,
-//! or a keypress.
-//!
-//! @param	screen			surface to write on
-//! @param	tips_of_day		list of tips
-//! @param	ntip			number of the tip to show
-//!
-//! @return	the value of the menu-item the user has choosen.
-//! @retval	see @ref TITLE_RESULT for possible values
-//!
-TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
+//! Draw the map image background, revision number
+//! and fade the log the first time
+static void draw_background(game_display& screen)
 {
-	cursor::set(cursor::NORMAL);
-
-	const preferences::display_manager disp_manager(&screen);
-	const hotkey::basic_handler key_handler(&screen);
-
-	const font::floating_label_context label_manager;
-
-	screen.video().modeChanged(); // resets modeChanged value
-
 	bool fade_failed = false;
 	do {
 		int logo_x = game_config::title_logo_x * screen.w() / 1024,
-		    logo_y = game_config::title_logo_y * screen.h() / 768;
+			logo_y = game_config::title_logo_y * screen.h() / 768;
 
 		/*Select a random game_title*/
 		std::vector<std::string> game_title_list =
-		    utils::split(game_config::game_title, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+			utils::split(game_config::game_title, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 
 		if(game_title_list.empty()) {
-		    ERR_CONFIG << "No title image defined\n";
+			ERR_CONFIG << "No title image defined\n";
 		} else {
-		    surface const title_surface(scale_surface(
-			    image::get_image(game_title_list[rand()%game_title_list.size()]),
-			    screen.w(), screen.h()));
-		
-		
-		    if (title_surface.null()) {
+			surface const title_surface(scale_surface(
+				image::get_image(game_title_list[rand()%game_title_list.size()]),
+				screen.w(), screen.h()));
+
+
+			if (title_surface.null()) {
 				ERR_DP << "Could not find title image\n";
-		    } else {
+			} else {
 				screen.video().blit_surface(0, 0, title_surface);
 				update_rect(screen_area());
 				LOG_DP << "displayed title image\n";
-		    }
+			}
 		}
 
 		fade_failed = !fade_logo(screen, logo_x, logo_y);
@@ -347,6 +325,37 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	}
 
 	LOG_DP << "drew version number\n";
+}
+
+
+namespace gui {
+
+//! Show titlepage with logo and background, menu-buttons and tip-of-the-day.
+//!
+//! After the page is shown, this routine waits
+//! for the user to click one of the menu-buttons,
+//! or a keypress.
+//!
+//! @param	screen			display object
+//! @param	tips_of_day		list of tips
+//! @param	redraw_background redraw background and buttons box, see draw_background()
+//!
+//! @return	the value of the menu-item the user has choosen.
+//! @retval	see @ref TITLE_RESULT for possible values
+//!
+TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_background)
+{
+	cursor::set(cursor::NORMAL);
+
+	const preferences::display_manager disp_manager(&screen);
+	const hotkey::basic_handler key_handler(&screen);
+
+	const font::floating_label_context label_manager;
+
+	screen.video().modeChanged(); // resets modeChanged value
+
+	if (redraw_background)
+		draw_background(screen);
 
 	//- Texts for the menu-buttons.
 	//- Members of this array must correspond to the enumeration TITLE_RESULT
@@ -418,8 +427,13 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 
 	gui::dialog_frame main_frame(screen.video(), "", gui::dialog_frame::titlescreen_style, false);
 	main_frame.layout(main_dialog_area);
-	main_frame.draw_background();
-	main_frame.draw_border();
+
+	// we only redraw transparent parts when asked,
+	// to prevent alpha growing
+	if (redraw_background) {
+		main_frame.draw_background();
+		main_frame.draw_border();
+	}
 
 	for(b = 0; b != nbuttons; ++b) {
 		buttons[b].set_width(max_width);
@@ -505,7 +519,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		// If the resolution has changed due to the user resizing the screen,
 		// or from changing between windowed and fullscreen:
 		if(screen.video().modeChanged()) {
-			return TIP_NEXT;
+			return REDRAW_BACKGROUND;
 		}
 
 		screen.delay(20);

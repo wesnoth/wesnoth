@@ -2410,6 +2410,8 @@ static int play_game(int argc, char** argv)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
+	bool redraw_background = true;
+
 	for(int first_time = true;;first_time = false){
         //init_config already processed the configs, so we don't need to do it for the
         //first loop pass.
@@ -2447,14 +2449,20 @@ static int play_game(int argc, char** argv)
 			continue; //Go to main menu
 		}
 
+		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
 
-		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TIP_NEXT;
-
-		while(res == gui::TIP_NEXT) {
-			res = gui::show_title(game.disp(),tips_of_day);
+		while(res == gui::NOTHING) {
+			res = gui::show_title(game.disp(),tips_of_day, redraw_background);
+			if (res == gui::REDRAW_BACKGROUND) {
+				redraw_background = true;
+				res = gui::NOTHING;
+			} else {
+				redraw_background = false;
+			}
 		}
 
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
+
 		if(res == gui::QUIT_GAME) {
 			LOG_GENERAL << "quitting game...\n";
 			return 0;
@@ -2472,7 +2480,12 @@ static int play_game(int argc, char** argv)
 			}
 		} else if(res == gui::MULTIPLAYER) {
 			if(game.play_multiplayer() == false) {
-				continue;
+				// Need a redraw because we can left the lobby without playing.
+				// (the redraw is only useless when canceling the multiplayer dialog)
+				// FIXME: game.play_multiplayer() always return false (why?),
+				// perhaps change this to identify real "cancel" cases?
+				redraw_background = true;
+				continue;	
 			}
 		} else if(res == gui::CHANGE_LANGUAGE) {
 			if(game.change_language() == true) {
@@ -2481,6 +2494,9 @@ static int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::EDIT_PREFERENCES) {
 			game.show_preferences();
+			if (game.disp().video().modeChanged()) {
+				redraw_background = true;
+			}
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
 			about::show_about(game.disp());
@@ -2498,6 +2514,7 @@ static int play_game(int argc, char** argv)
 #ifdef MAP_EDITOR
 		} else if(res == gui::START_MAP_EDITOR) {
 			gui::show_error_message(game.disp(), "The map editor is not available. Yet.");
+			//NOTE: will probably need a "redraw_background = true";
 			continue;
 #endif
 		}
@@ -2508,6 +2525,9 @@ static int play_game(int argc, char** argv)
 		else{
 			game.play_replay();
 		}
+
+		// We played something, refresh background
+		redraw_background = true;
 	}
 
 	return 0;

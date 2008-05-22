@@ -31,14 +31,16 @@ enum TITLE_RESULT { TUTORIAL = 0,		//!< Start special campaign 'tutorial'
                     CHANGE_LANGUAGE, EDIT_PREFERENCES,
 					SHOW_ABOUT,			//!< Show credits
 					QUIT_GAME,
-					TIP_PREVIOUS,	//!< Show previous tip-of-the-day
-					TIP_NEXT,		//!< Show next tip-of-the-day
+					TIP_PREVIOUS,		//!< Show previous tip-of-the-day
+					TIP_NEXT,			//!< Show next tip-of-the-day
 					SHOW_HELP,
-					BEG_FOR_UPLOAD		//!< Ask user for permission to upload game-stats as feedback
+					BEG_FOR_UPLOAD,		//!< Ask user for permission to upload game-stats as feedback
+					REDRAW_BACKGROUND,	//!< Used after an action needing a redraw (ex: fullscreen)
+					NOTHING				//!< Default, nothing done, no redraw needed
 				  };
 
-//! Show titlepage with logo & background, menu-buttons and tip-of-day.
-TITLE_RESULT show_title(game_display& screen, config& tips_of_day);
+//! Show titlepage with logo & background, revision number, menu-buttons and tip-of-day.
+TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_background);
 }
 
 #endif
