@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_frame.hpp
-//! Frame for unit's animation sequence.
+/**
+ *  @file unit_frame.hpp
+ *  Frame for unit's animation sequence.
+ */
 
 #ifndef UNIT_FRAME_H_INCLUDED
 #define UNIT_FRAME_H_INCLUDED
@@ -29,7 +31,6 @@ class config;
 #include <string>
 #include <vector>
 
-//
 class progressive_string {
 	public:
 		progressive_string(const std::string& data = "",int duration = 0);
@@ -62,7 +63,7 @@ typedef progressive_<double> progressive_double;
 // This hack prevents MSVC++ 6 to issue several warnings
 #ifndef UNIT_FRAME_H_PART2
 #define UNIT_FRAME_H_PART2
-//! All parameters from a frame at a given instant
+/** All parameters from a frame at a given instant */
 class frame_parameters{
 	public:
 	frame_parameters():
@@ -103,10 +104,13 @@ class frame_parameters{
 	int x;
 	int y;
 } ;
-//! keep most parameters in a separate class to simplify handling of large number of parameters
+/**
+ * keep most parameters in a separate class to simplify handling of large
+ * number of parameters
+ */
 class frame_builder {
 	public:
-		//! initial constructor
+		/** initial constructor */
 		frame_builder():
 		image_(image::locator()),
 		image_diagonal_(image::locator()),
@@ -127,7 +131,7 @@ class frame_builder {
 		y_("")
 	{};
 		frame_builder(const config& cfg,const std::string &frame_string = "");
-		//! allow easy chained modifications will raised assert if used after initialization
+		/** allow easy chained modifications will raised assert if used after initialization */
 		frame_builder & image(const image::locator image ,const std::string & image_mod="");
 		frame_builder & image_diagonal(const image::locator image_diagonal,const std::string & image_mod="");
 		frame_builder & sound(const std::string& sound);
@@ -140,7 +144,7 @@ class frame_builder {
 		frame_builder & submerge(const std::string& submerge);
 		frame_builder & x(const std::string& x);
 		frame_builder & y(const std::string& y);
-		//! getters for the different parameters
+		/** getters for the different parameters */
 		const frame_parameters parameters(int current_time) const ;
 
 		int duration() const{ return duration_;};
@@ -167,7 +171,8 @@ class frame_builder {
 		progressive_int y_;
 
 };
-//! Describe a unit's animation sequence.
+
+/** Describe a unit's animation sequence. */
 class unit_frame {
 	public:
 		// Constructors

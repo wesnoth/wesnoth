@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_frame.cpp
-//!
+/** @file unit_frame.cpp */
 
 #include "global.hpp"
 #include "sound.hpp"
@@ -430,8 +429,10 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 
 	surface image;
 	if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
-		//! TODO cache handling: here we will use the image again soon
-		// we should cache it here and release it (if needed) after redrawn
+		/**
+		 * @todo cache handling: here we will use the image again soon we
+		 * should cache it here and release it (if needed) after redrawn
+		 */
 		image=image::get_image(image_loc,
 				image::SCALED_TO_ZOOM,
 				false
@@ -440,14 +441,15 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y;
 	if (image != NULL) {
-		//! optimization for most common case
-	       if(x==xsrc && y == ysrc && 
-			       image->w  == game_display::get_singleton()->hex_size() &&
-			       image->h  == game_display::get_singleton()->hex_size()) {
-		       game_display::get_singleton()->invalidate(src);
-	       } else {
-		       game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
-	       }
+		// optimization for most common case
+		if(x==xsrc && y == ysrc && 
+				image->w  == game_display::get_singleton()->hex_size() &&
+				image->h  == game_display::get_singleton()->hex_size()) {
+
+			game_display::get_singleton()->invalidate(src);
+		} else {
+			game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
+		}
 
 	}
 }
@@ -456,14 +458,15 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 
 const frame_parameters unit_frame::merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val, bool primary) const
 {
-	/*! this function merges the value provided by
+	/** 
+	 * this function merges the value provided by
 	 *  * the frame
 	 *  * the engine (poison, flying unit...)
 	 *  * the animation as a whole
 	 *  there is no absolute rule for merging, so creativity is the rule
 	 *  if a value is never provided by the engine, assert. (this way if it becomes used, people will easily find the right place to look)
 	 *  
-	 *  */
+	 */
 	frame_parameters result;
 	const frame_parameters & current_val = builder_.parameters(current_time);
 	assert(engine_val.image.is_void() || engine_val.image.get_filename() == "");
