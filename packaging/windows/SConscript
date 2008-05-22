@@ -13,3 +13,14 @@ for bin in binaries:
         res = []
     locals()[bin + "_res"] = res
     Export(bin + "_res")
+
+if "windows-release" in COMMAND_LINE_TARGETS:
+    env.Tool("scanreplace", toolpath = ["../../scons"])
+    env["packaging_dir"] = Dir(".").abspath
+    iss = env.ScanReplace(join(env["destdir"], "Wesnoth.iss"), "Wesnoth.iss.in")
+    Depends(iss, Value(env.Dictionary()))
+    Alias("windows-release", iss)
+    
+    docs = [ File(doc, "../..") for doc in Split("README COPYING COPYRIGHT") ]
+    datadirs = [ Dir(dir, "../..") for dir in Split("data fonts images sounds translations") ]
+    Alias("windows-release", env.Install(env["destdir"], docs + datadirs))
