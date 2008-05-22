@@ -47,5 +47,37 @@ void tcontainer_::draw(surface& surface)
 	grid_.draw(surface);
 }
 
+tpoint tcontainer_::get_minimum_size() const
+{
+	tpoint size = grid_.get_maximum_size();
+	tpoint border_size = border_space();
+
+	if(size.x) {
+		size.x += border_size.x;
+	}
+
+	if(size.y) {
+		size.y += border_size.y;
+	}
+
+	return size;
+}
+
+tpoint tcontainer_::get_best_size() const
+{
+	tpoint size = grid_.get_best_size();
+	tpoint border_size = border_space();
+
+	if(size.x) {
+		size.x += border_size.x;
+	}
+
+	if(size.y) {
+		size.y += border_size.y;
+	}
+
+	return size;
+}
+
 } // namespace gui2
 

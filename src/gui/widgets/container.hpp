@@ -76,17 +76,20 @@ public:
 	bool has_vertical_scrollbar() const = 0;
 
 	/** Inherited from tcontrol. */
-	tpoint get_minimum_size() const { return grid_.get_minimum_size(); }
+	tpoint get_minimum_size() const;
 
 	/** Inherited from tcontrol. */
-	tpoint get_best_size() const { return grid_.get_best_size(); }
+	tpoint get_best_size() const;
 
 	/** Inherited from tcontrol. */
 	void set_size(const SDL_Rect& rect) 
 	{	
 		tcontrol::set_size(rect);
-		grid_.set_size(rect);
+		set_client_size(get_client_rect());
 	}
+
+	/** FIXME see whether needed to be exported. */
+	void set_client_size(const SDL_Rect& rect) { grid_.set_size(rect); }
 
 	/** Inherited from tcontrol. */
 	void draw(surface& surface);
@@ -108,6 +111,17 @@ public:
 	void set_rows_cols(const unsigned rows, const unsigned cols)
 		{ grid_.set_rows_cols(rows, cols); }
 
+	void add_child(twidget* widget, const unsigned row, 
+		const unsigned col, const unsigned flags, const unsigned border_size)
+		{ grid_.add_child(widget, row, col, flags, border_size); }
+
+	void set_row_grow_factor(const unsigned row, const unsigned factor) 
+		{ grid_.set_row_grow_factor(row, factor); }
+
+	void set_col_grow_factor(const unsigned col, const unsigned factor)
+		{ grid_.set_col_grow_factor(col, factor); }
+
+	virtual SDL_Rect get_client_rect() const { return get_rect(); }
 protected:
 	const tgrid& grid() const { return grid_; }
 	tgrid& grid() { return grid_; }
@@ -115,6 +129,9 @@ protected:
 private:
 
 	tgrid grid_;
+
+	//! Returns the space used by the border.
+	virtual tpoint border_space() const { return tpoint(0, 0); }
 };
 
 } // namespace gui2

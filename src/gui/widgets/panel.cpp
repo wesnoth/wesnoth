@@ -38,49 +38,12 @@
 
 namespace gui2 {
 
-tpoint tpanel::get_minimum_size() const
-{
-	const tpoint max_size = get_maximum_size();
-	tpoint size = grid_.get_minimum_size() + border_space();
-
-	if(max_size.x) {
-		size.x = minimum(size.x, max_size.x);
-	}
-
-	if(max_size.y) {
-		size.y = minimum(size.y, max_size.y);
-	}
-
-	return size;
-}
-
-tpoint tpanel::get_best_size() const
-{
-	const tpoint max_size = get_maximum_size();
-	tpoint size = grid_.get_best_size() + border_space();
-
-	if(max_size.x) {
-		size.x = minimum(size.x, max_size.x);
-	}
-
-	if(max_size.y) {
-		size.y = minimum(size.y, max_size.y);
-	}
-
-	return size;
-}
-
 void tpanel::draw(surface& surface)
 {
 	// Need to preserve the state and inherited draw clear the flag.
 	const bool is_dirty = dirty();
-	// background.
-	if(is_dirty) {
-		tcontrol::draw(surface);
-	}
 
-	// children
-	grid_.draw(surface);
+	tcontainer_::draw(surface);
 
 	// foreground
 	if(is_dirty) {
@@ -103,13 +66,6 @@ SDL_Rect tpanel::get_client_rect() const
 	result.h -= conf->top_border + conf->bottom_border;
 
 	return result;
-}
-
-void tpanel::set_size(const SDL_Rect& rect) 
-{
-	tcontrol::set_size(rect);
-
-	grid_.set_size(get_client_rect());
 }
 
 tpoint tpanel::border_space() const
