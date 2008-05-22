@@ -171,12 +171,14 @@ ELSE (_boost_IN_CACHE)
     # cdrom inserted it will popup a very annoying dialog
     #D:/boost/include
     /sw/local/include
+    /usr/local/include
   )
 
   SET(_boost_LIBRARIES_SEARCH_DIRS
     C:/boost/lib
     "C:/Program Files/boost/boost_${Boost_REQUIRED_VERSION}/lib"
     /sw/local/lib
+    /usr/local/lib
   )
 
   IF( NOT $ENV{Boost_ROOT} STREQUAL "" )
