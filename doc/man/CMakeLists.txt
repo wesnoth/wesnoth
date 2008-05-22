@@ -7,7 +7,7 @@ if(ENABLE_EDITOR)
 endif()
 if(ENABLE_SERVER)
   SET(MANPAGES ${MANPAGES} wesnothd.6)
-endif(ENABLE_EDITOR)
+endif()
 
 foreach(MANPAGE ${MANPAGES})
   install(FILES ${MANPAGE} DESTINATION "${MANDIR}/man6/")
