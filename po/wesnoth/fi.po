@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-04 15:19+0200\n"
-"PO-Revision-Date: 2008-03-31 23:38+0200\n"
-"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
+"PO-Revision-Date: 2008-05-22 18:09+0200\n"
+"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -189,9 +189,8 @@ msgstr "Kiinankielinen käännös"
 
 #. [about]
 #: data/core/about.cfg:889
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Kiinankielinen käännös"
+msgstr "Taiwanin kiinankielinen käännös"
 
 #. [about]
 #: data/core/about.cfg:896
@@ -665,7 +664,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -674,8 +672,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Värvätyt yksiköt saavat kaksi satunnaista <ref>dst=traits text=ominaisuutta</"
-"ref>, jotka vaikuttavat niiden kykyihin."
+"Värvätyt yksiköt saavat kaksi satunnaista <ref>dst=..traits_section "
+"text=ominaisuutta</ref>, jotka vaikuttavat niiden kykyihin."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -3066,7 +3064,6 @@ msgid "backstab"
 msgstr "selkäänpuukotus"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3075,7 +3072,8 @@ msgid ""
 msgstr ""
 "Selkäänpuukotus:\n"
 "Tämä hyökkäys tekee kaksinkertaisen vahingon, jos kohteen vastakkaisella "
-"puolella on sille vihamielinen, taistelukykyinen yksikkö."
+"puolella on sille vihamielinen ja taistelukykyinen yksikkö (esim. yksikköä "
+"ei ole muutettu kiveksi)."
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
@@ -3172,15 +3170,14 @@ msgid "charge"
 msgstr "rynnäkkö"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Rynnäkkö:\n"
-"Tämä hyökkäys tekee kaksinkertaisen vahingon kohteelle, mutta tämä yksikkö "
-"myös vastaanottaa kaksinkertaisen vahingon kohteen vastahyökkäyksestä."
+"Tämä hyökkäys tekee kaksinkertaisen vahingon kohteelle, mutta aiheuttaa myös "
+"kaksinkertaisen vahingon yksikölle vastahyökkäyksessä."
 
 #: data/core/macros/abilities.cfg:654
 msgid "drains"
@@ -4219,11 +4216,8 @@ msgstr ""
 "olennoille, ja jopa joillekin maallisille olennoille."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-"Tämä yksikkö pystyy hoivaamaan ympärillään olevia yksiköitä ja parantamaan "
-"myrkytykset."
+msgstr "Tämä yksikkö kykenee perustason hoivaamiseen."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4257,14 +4251,14 @@ msgstr ""
 "joistain hyökkäyksistä."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of below the leadership "
 "level."
 msgstr ""
-"Tämä yksikkö on johtaja. Sen ympärillä olevat matalampitasoiset yksiköt "
-"tekevät enemmän vahinkoa taistelussa."
+"Tämä yksikön johtamistaidot mahdollistavat viereisten ystävällisten "
+"yksiköitten tekvän enemmän vahinkoa taistelussa, vaikkakin tämä pätee vain "
+"yhtä tasoa alempiin yksiköihin. "
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4334,14 +4328,11 @@ msgstr ""
 "kunnes vihollinen tai se itse on tuhottu."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-"Tämä yksikkö voi hiipiä täsmälleen vihollisen toiselle puolelle ja aiheuttaa "
-"kaksinkertaiset vauriot puukottamalla vihollista selkään."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -4373,13 +4364,12 @@ msgstr ""
 "viholliseen maastosta riippumatta."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-"Tämä yksikkö käyttää loitsuhyökkäystä. Sen kaukohyökkäys osuu aina melko "
-"varmasti."
+"Tällä yksiköllä on maagisia hyökkäyksiä, joilla on aina suuri mahdollisuus "
+"osua vastustajaan."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -6953,10 +6943,9 @@ msgid "Choose your preferred language:"
 msgstr "Valitse haluamasi kieli:"
 
 #: src/game.cpp:1756
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "Seuraavissa lisäosissa oli virheitä, eikä niitä voitu ladata:"
+msgstr[0] "Seuraavassa lisäosassa oli virhe, eikä sitä voitu ladata:"
 msgstr[1] "Seuraavissa lisäosissa oli virheitä, eikä niitä voitu ladata:"
 
 #: src/game.cpp:1763
