@@ -1686,7 +1686,6 @@ bool game_controller::change_language()
 			dlg.show(disp().video());
 			
 			if(dlg.get_retval() == gui2::tbutton::OK) {
-				std::cerr << "OK\n";
 				if(!no_gui_) {
 					std::string wm_title_string = _("The Battle for Wesnoth");
 					wm_title_string += " - " + game_config::revision;
@@ -1694,8 +1693,6 @@ bool game_controller::change_language()
 				}
 
 				refresh_game_cfg(true);
-			} else {
-				std::cerr << "Cancel\n";
 			}
 
 	} else {
