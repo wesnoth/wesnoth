@@ -2,7 +2,6 @@
 from os.path import join
 Import("env")
 
-env["IM_CONVERT"] = '"' + WhereIs("convert") + '"'
 binaries = ["wesnoth", "wesnoth_editor"]
 for bin in binaries:
     #icon = env.Command(bin + "-icon.ico", join("../../icons", bin + "-icon.png"), "$IM_CONVERT $SOURCE $TARGET")
