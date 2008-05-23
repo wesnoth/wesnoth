@@ -20,26 +20,39 @@ class game_display;
 
 namespace gui {
 
-//! Values for the menu-items of the main menu.
-enum TITLE_RESULT { TUTORIAL = 0,		//!< Start special campaign 'tutorial'
-					NEW_CAMPAIGN,		//!< Let user select a campaign to play
-					MULTIPLAYER,		//!< Play single scenario against humans or AI
+/** Values for the menu-items of the main menu. */
+enum TITLE_RESULT { TUTORIAL = 0,		/**< Start special campaign 'tutorial' */
+					NEW_CAMPAIGN,		/**< Let user select a campaign to play */
+					MULTIPLAYER,		/**< Play single scenario against humans or AI */
 					LOAD_GAME, GET_ADDONS, 
 #ifdef MAP_EDITOR
 					START_MAP_EDITOR,
 #endif
                     CHANGE_LANGUAGE, EDIT_PREFERENCES,
-					SHOW_ABOUT,			//!< Show credits
+					SHOW_ABOUT,			/**< Show credits */
 					QUIT_GAME,
-					TIP_PREVIOUS,		//!< Show previous tip-of-the-day
-					TIP_NEXT,			//!< Show next tip-of-the-day
+					TIP_PREVIOUS,		/**< Show previous tip-of-the-day */
+					TIP_NEXT,			/**< Show next tip-of-the-day */
 					SHOW_HELP,
-					BEG_FOR_UPLOAD,		//!< Ask user for permission to upload game-stats as feedback
-					REDRAW_BACKGROUND,	//!< Used after an action needing a redraw (ex: fullscreen)
-					NOTHING				//!< Default, nothing done, no redraw needed
+					BEG_FOR_UPLOAD,		/**< Ask user for permission to upload game-stats as feedback */
+					REDRAW_BACKGROUND,	/**< Used after an action needing a redraw (ex: fullscreen) */
+					NOTHING				/**< Default, nothing done, no redraw needed */
 				  };
 
-//! Show titlepage with logo & background, revision number, menu-buttons and tip-of-day.
+/**
+ *  Show titlepage with logo and background, menu-buttons and tip-of-the-day.
+ * 
+ *  After the page is shown, this routine waits
+ *  for the user to click one of the menu-buttons,
+ *  or a keypress.
+ * 
+ *  @param	screen			display object
+ *  @param	tips_of_day		list of tips
+ *  @param	redraw_background redraw background and buttons box, see draw_background()
+ * 
+ *  @return	the value of the menu-item the user has choosen.
+ *  @retval	see @ref TITLE_RESULT for possible values
+ */ 
 TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_background);
 }
 

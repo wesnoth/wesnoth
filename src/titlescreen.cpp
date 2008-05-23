@@ -12,11 +12,14 @@
    See the COPYING file for more details.
 */
 
-//! @file titlescreen.cpp
-//! Shows the titlescreen, with main-menu and tip-of-the-day.
-//!
-//! The menu consists of buttons, such als Start-Tutorial, Start-Campaign, Load-Game, etc. \n
-//! As decoration, the wesnoth-logo and a landmap in the background are shown.
+/**
+ *  @file titlescreen.cpp
+ *  Shows the titlescreen, with main-menu and tip-of-the-day.
+ * 
+ *  The menu consists of buttons, such als Start-Tutorial, Start-Campaign,
+ *  Load-Game, etc.  As decoration, the wesnoth-logo and a landmap in the
+ *  background are shown.
+ */
 
 #include "global.hpp"
 
@@ -45,26 +48,27 @@
 
 #include "SDL_ttf.h"
 
-//! Log info-messages to stdout during the game, mainly for debugging
+/** Log info-messages to stdout during the game, mainly for debugging */
 #define LOG_DP LOG_STREAM(info, display)
-//! Log error-messages to stdout during the game, mainly for debugging
+/** Log error-messages to stdout during the game, mainly for debugging */
 #define ERR_DP LOG_STREAM(err, display)
 #define LOG_CONFIG LOG_STREAM(info, config)
 #define ERR_CONFIG LOG_STREAM(err, config)
 
-//! Fade-in the wesnoth-logo.
-//!
-//! Animation-effect: scroll-in from right. \n
-//! Used only once, after the game is started.
-//!
-//! @param	screen	surface to operate on
-//! @param	xpos	x-position of logo
-//! @param	ypos	y-position of logo
-//!
-//! @return		Result of running the routine
-//! @retval true	operation finished (successful or not)
-//! @retval false	operation failed (because modeChanged), need to retry
-//!
+/**
+ *  Fade-in the wesnoth-logo.
+ * 
+ *  Animation-effect: scroll-in from right. \n
+ *  Used only once, after the game is started.
+ * 
+ *  @param	screen	surface to operate on
+ *  @param	xpos	x-position of logo
+ *  @param	ypos	y-position of logo
+ * 
+ *  @return		Result of running the routine
+ *  @retval true	operation finished (successful or not)
+ *  @retval false	operation failed (because modeChanged), need to retry
+ */ 
 static bool fade_logo(game_display& screen, int xpos, int ypos)
 {
 	const surface logo(image::get_image(game_config::game_logo));
@@ -125,7 +129,7 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 }
 
 
-//! Read the file with the tips-of-the-day.
+/** Read the file with the tips-of-the-day. */
 static void read_tips_of_day(config& tips_of_day)
 {
 	tips_of_day.clear();
@@ -144,7 +148,7 @@ static void read_tips_of_day(config& tips_of_day)
 	}
 }
 
-//! Go to the next tips-of-the-day
+/** Go to the next tips-of-the-day */
 static void next_tip_of_day(config& tips_of_day, bool reverse = false)
 {
 	// we just rotate the tip list, to avoid the need to keep track
@@ -156,7 +160,7 @@ static void next_tip_of_day(config& tips_of_day, bool reverse = false)
 	}
 }
 
-//! Return the text for one of the tips-of-the-day.
+/** Return the text for one of the tips-of-the-day. */
 static const config* get_tip_of_day(config& tips_of_day)
 {
 	if (tips_of_day.empty()) {
@@ -194,8 +198,10 @@ static const config* get_tip_of_day(config& tips_of_day)
 	return NULL;
 }
 
-//! Show one tip-of-the-day in a frame on the titlescreen.
-//! This frame has 2 buttons: Next-Tip, and Show-Help.
+/**
+ *  Show one tip-of-the-day in a frame on the titlescreen.
+ *  This frame has 2 buttons: Next-Tip, and Show-Help.
+ */
 static void draw_tip_of_day(game_display& screen,
 							config& tips_of_day,
 							const gui::dialog_frame::style& style,
@@ -274,8 +280,10 @@ static void draw_tip_of_day(game_display& screen,
 	}
 }
 
-//! Draw the map image background, revision number
-//! and fade the log the first time
+/**
+ *  Draw the map image background, revision number
+ *  and fade the log the first time
+ */
 static void draw_background(game_display& screen)
 {
 	bool fade_failed = false;
@@ -330,19 +338,6 @@ static void draw_background(game_display& screen)
 
 namespace gui {
 
-//! Show titlepage with logo and background, menu-buttons and tip-of-the-day.
-//!
-//! After the page is shown, this routine waits
-//! for the user to click one of the menu-buttons,
-//! or a keypress.
-//!
-//! @param	screen			display object
-//! @param	tips_of_day		list of tips
-//! @param	redraw_background redraw background and buttons box, see draw_background()
-//!
-//! @return	the value of the menu-item the user has choosen.
-//! @retval	see @ref TITLE_RESULT for possible values
-//!
 TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_background)
 {
 	cursor::set(cursor::NORMAL);
@@ -453,7 +448,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_b
 	gui::button help_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
 	help_tip_button.set_help_string( sgettext(button_labels[b] ));
 
-	//! @todo FIXME: Translatable string is here because we WILL put text in before 1.2!
+	/** @todo FIXME: Translatable string is here because we WILL put text in before 1.2! */
 	gui::button beg_button(screen.video(),("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
 	beg_button.set_help_string(_("Help Wesnoth by sending us information"));
 
