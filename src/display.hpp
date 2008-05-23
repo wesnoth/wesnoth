@@ -478,8 +478,11 @@ public:
 		                           //!< the unit.
 		LAYER_TERRAIN_TMP_FG,      //!< Layer which holds stuff that needs to be
 		                           //!< sorted out further, but on top of units
+		LAYER_REACHMAP,            //!< "black stripes" on unreachable hexes
+		LAYER_FOG_SHROUD,          //!< Fog and shroud
 		LAYER_UNIT_BAR,            //!< Unit bars and overlays are drawn on
 		                           //!< this layer (for testing here).
+		LAYER_MOVE_INFO,           //!< Movement info (defense%, ect...)
 		LAYER_LINGER_OVERLAY,      //!< The overlay used for the linger mode.
 		
 		LAYER_LAST_LAYER           //!< Don't draw to this layer it's a dummy

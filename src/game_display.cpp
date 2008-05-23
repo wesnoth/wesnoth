@@ -411,7 +411,7 @@ void game_display::draw(bool update,bool force)
 			// that we want to attack.
 			if (!is_shrouded && !reach_map_.empty()
 					&& reach_map_.find(*it) == reach_map_.end() && *it != attack_indicator_dst_) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_FG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_REACHMAP, drawing_order, tblit(xpos, ypos,
 					image::get_image(game_config::unreachable_image,image::UNMASKED)));
 			}
 
@@ -452,23 +452,24 @@ void game_display::draw(bool update,bool force)
 			if(is_shrouded) {
 				// We apply void also on off-map tiles
 				// to shroud the half-hexes too
-				drawing_buffer_add(LAYER_TERRAIN_TMP_FG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
 					image::get_image(shroud_image, image::SCALED_TO_HEX)));
 			} else if(fogged(*it)) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_FG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
 					image::get_image(fog_image, image::SCALED_TO_HEX)));
-			} 
+			}
+
+			if(!is_shrouded) {
+				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
+					get_terrain_images(*it, tod.id, image::SCALED_TO_HEX, ADJACENT_FOGSHROUD)));
+			}
+
 			// Linger overlay unconditionally otherwise it might give glitches
 			// so it's drawn over the shroud and fog.
 			if(game_mode_ != RUNNING) {
 				blit.surf.push_back(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
 				drawing_buffer_add(LAYER_LINGER_OVERLAY, drawing_order, blit);
 				blit.surf.clear();
-			}
-
-			if(!is_shrouded) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_FG, drawing_order, tblit(xpos, ypos,
-					get_terrain_images(*it, tod.id, image::SCALED_TO_HEX, ADJACENT_FOGSHROUD)));
 			}
 
 			// Show def% and turn to reach infos
@@ -715,23 +716,23 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 			// With 11 colors, the last one will be used only for def=100
 			int val = (game_config::defense_color_scale.size()-1) * def/100;
 			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
-			draw_text_in_hex(loc, LAYER_TERRAIN_TMP_BG, def_text.str(), 18, color);
+			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), 18, color);
 
 			int xpos = get_location_x(loc);
 			int ypos = get_location_y(loc);
 
             if (w->second.invisible) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_MOVE_INFO, drawing_order, tblit(xpos, ypos,
 					image::get_image("misc/hidden.png", image::UNMASKED)));
 			}
 
 			if (w->second.zoc) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_MOVE_INFO, drawing_order, tblit(xpos, ypos,
 					image::get_image("misc/zoc.png", image::UNMASKED)));
 			}
 
 			if (w->second.capture) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_MOVE_INFO, drawing_order, tblit(xpos, ypos,
 					image::get_image("misc/capture.png", image::UNMASKED)));
 			}
 
@@ -739,7 +740,7 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 			if (w->second.turns > 1 || loc != route_.steps.back()) {
 				std::stringstream turns_text;
 				turns_text << w->second.turns;
-				draw_text_in_hex(loc, LAYER_TERRAIN_TMP_BG, turns_text.str(), 17, font::NORMAL_COLOUR, 0.5,0.8);
+				draw_text_in_hex(loc, LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOUR, 0.5,0.8);
 			}
 			// The hex is full now, so skip the "show enemy moves"
 			return;
@@ -750,7 +751,7 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach != reach_map_.end() && reach->second > 1) {
 			const std::string num = lexical_cast<std::string>(reach->second);
-			draw_text_in_hex(loc, LAYER_TERRAIN_TMP_BG, num, 16, font::YELLOW_COLOUR);
+			draw_text_in_hex(loc, LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOUR);
 		}
 	}
 }
