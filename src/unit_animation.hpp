@@ -28,7 +28,7 @@ class attack_type;
 
 class unit_animation
 {		
-		//! Shouldn't be used so only declared.
+		/** Shouldn't be used so only declared. */
 		unit_animation();
 	public:
 		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1} variation_type;
