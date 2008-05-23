@@ -181,7 +181,6 @@ wesnoth_sources = Split("""
     statistics.cpp
     team.cpp
     terrain_filter.cpp
-	time.cpp
     titlescreen.cpp
     unit.cpp
     unit_abilities.cpp
@@ -217,7 +216,6 @@ wesnoth_editor_sources = Split("""
     editor/editor_dialogs.cpp
     editor/editor_undo.cpp
     animated_editor.cpp
-	time.cpp
     """)
 if have_client_prereqs and have_X:
     wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth] + wesnoth_editor_res)
