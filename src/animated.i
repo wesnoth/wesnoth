@@ -22,6 +22,7 @@
 
 #include "SDL.h"
 #include "animated.hpp"
+#include "time.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -31,7 +32,8 @@ namespace {
 
 void new_animation_frame()
 {
-	current_ticks = SDL_GetTicks();
+    ntime::source::get_source().start_frame();
+	current_ticks = ntime::source::get_source().get_time();
 }
 
 int get_current_animation_tick()
