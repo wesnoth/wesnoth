@@ -48,7 +48,6 @@ void tlanguage_selection::show(CVideo& video)
 
 		list->add_item(lang.language);
 		if(lang == current_language) {
-			std::cerr << "select row " << list->get_item_count() - 1 << ".\n";
 			list->select_row(list->get_item_count() - 1);
 		}
 
