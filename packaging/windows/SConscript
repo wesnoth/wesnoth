@@ -1,5 +1,6 @@
 # vi: syntax=python:et:ts=4
 from os.path import join
+from glob import glob
 Import("env")
 
 binaries = ["wesnoth", "wesnoth_editor"]
@@ -22,4 +23,6 @@ if "windows-release" in COMMAND_LINE_TARGETS:
     
     docs = [ File(doc, "../..") for doc in Split("README COPYING COPYRIGHT") ]
     datadirs = [ Dir(dir, "../..") for dir in Split("data fonts images sounds translations") ]
-    Alias("windows-release", env.Install(env["destdir"], docs + datadirs))
+    dlls = glob("../../*.dll")
+    Alias("windows-release", env.InstallFiltered(Dir(env["destdir"]), datadirs))
+    Alias("windows-release", env.Install(env["destdir"], docs + dlls))
