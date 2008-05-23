@@ -31,6 +31,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
+#include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
@@ -1578,36 +1579,55 @@ bool game_controller::play_multiplayer()
 	state_.campaign_type = "multiplayer";
 	state_.campaign_define = "MULTIPLAYER";
 
+
+
 	//Print Gui only if the user hasn't specified any server
 	if( multiplayer_server_.empty() ){
-		std::vector<std::string> host_or_join;
-		std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
-		char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;
+		if(new_widgets) {
+			gui2::tmp_method_selection dlg;
 
-		host_or_join.push_back(pre + "server.png"
-			+ sep1 + _("Join Official Server")
-			+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
-		host_or_join.push_back(pre + "serverother.png"
-			+ sep1 + _("Connect to Server")
-			+ sep2 + _("Join a different server"));
-		host_or_join.push_back(pre + "hotseat.png"
-			+ sep1 + _("Local Game")
-			+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
+				dlg.show(disp().video());
+				
+				if(dlg.get_retval() == gui2::tbutton::OK) {
+					std::cerr << "OK\n";
+					res = dlg.get_choice();
+				} else {
+					std::cerr << "CANCEL\n";
+					return false;
 
-		std::string login = preferences::login();
+				}
 
-		{
-			gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
-			d.set_menu(host_or_join);
-			d.set_textbox(_("Login: "), login, mp::max_login_size, font::relative_size(250));
-			res = d.show();
-			login = d.textbox_text();
+		} else {
+
+			std::vector<std::string> host_or_join;
+			std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
+			char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;
+
+			host_or_join.push_back(pre + "server.png"
+				+ sep1 + _("Join Official Server")
+				+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
+			host_or_join.push_back(pre + "serverother.png"
+				+ sep1 + _("Connect to Server")
+				+ sep2 + _("Join a different server"));
+			host_or_join.push_back(pre + "hotseat.png"
+				+ sep1 + _("Local Game")
+				+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
+
+			std::string login = preferences::login();
+
+			{
+				gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
+				d.set_menu(host_or_join);
+				d.set_textbox(_("Login: "), login, mp::max_login_size, font::relative_size(250));
+				res = d.show();
+				login = d.textbox_text();
+			}
+			if (res < 0)
+				return false;
+
+
+			preferences::set_login(login);
 		}
-		if (res < 0)
-			return false;
-
-
-		preferences::set_login(login);
 
 	}else{
 		res = 3;

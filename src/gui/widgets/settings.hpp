@@ -33,6 +33,8 @@ namespace gui2 {
 enum twindow_type {
 	ADDON_CONNECT,           //<! The addon connection dialog.
 	LANGUAGE_SELECTION,      //<! The language selection dialog.
+	MP_METHOD_SELECTION,     //<! The dialog which allows you to choose the kind
+	                         //!  mp game the user wants to play.
 
 	DUMMY                    //<! Dummy always the last one.
 };

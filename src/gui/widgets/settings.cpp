@@ -82,6 +82,7 @@ static void fill_window_types()
 {
 	window_type_list[ADDON_CONNECT] = "addon_connect";
 	window_type_list[LANGUAGE_SELECTION] = "language_selection";
+	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
 }
 
 const std::string& get_id(const twindow_type window_type)
