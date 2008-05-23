@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file tstring.cpp
-//! Routines for translatable strings.
+/**
+ *  @file tstring.cpp
+ *  Routines for translatable strings.
+ */
 
 #include "global.hpp"
 
