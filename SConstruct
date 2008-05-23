@@ -54,6 +54,7 @@ opts.AddOptions(
     PathOption('prefix', 'autotools-style installation prefix', "/usr/local", PathOption.PathAccept),
     PathOption('prefsdir', 'user preferences directory', ".wesnoth", PathOption.PathAccept),
     PathOption('destdir', 'prefix to add to all installation paths.', "", PathOption.PathAccept),
+    PathOption('windows_release_dir', 'Directory where windows release will be prepared.', "", PathOption.PathAccept),
     BoolOption('prereqs','abort if prerequisites cannot be detected',True),
     ('program_suffix', 'suffix to append to names of installed programs',""),
     BoolOption('python', 'Enable in-game python extensions.', True),
