@@ -901,7 +901,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	d_->second.set_resting(false);
 
 	// If the attacker was invisible, she isn't anymore!
-	a_->second.set_state("hides","");
+	a_->second.set_state("hidden","");
 
 	bc_ = new battle_context(map_, teams_, units_, state_, attacker_, defender_, attack_with_, defend_with_);
 	a_stats_ = &bc_->get_attacker_stats();

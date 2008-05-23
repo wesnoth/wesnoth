@@ -676,7 +676,7 @@ void unit::new_turn()
 	end_turn_ = false;
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
-	set_state("hides","yes");
+	set_state("hidden","yes");
 
 	if (hold_position_) {
 		end_turn_ = true;
@@ -1304,9 +1304,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
 		for(string_map::const_iterator st = status_flags->values.begin(); st != status_flags->values.end(); ++st) {
-			// backwards compatibility
-			if(st->first == "stone") {
-				states_["stoned"] = st->second;
+			// backwards compatibility (to be dropped after 1.5.2)
+			if(st->first == "hides") {
+				states_["hidden"] = st->second;
 			} else {
 				states_[st->first] = st->second;
 			}
@@ -2786,7 +2786,7 @@ bool unit::invisible(const gamemap::location& loc,
 
 	// Test hidden status
 	static const std::string hides("hides");
-	bool is_inv = (utils::string_bool(get_state(hides)) && get_ability_bool(hides,loc));
+	bool is_inv = (utils::string_bool(get_state("hidden")) && get_ability_bool(hides,loc));
 	if(is_inv){
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {
