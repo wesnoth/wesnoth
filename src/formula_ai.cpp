@@ -388,6 +388,71 @@ public:
 	const std::string& type() const { return type_; }
 };
 
+class evaluate_village_possession_function : public function_expression { //TODO
+public:
+	evaluate_village_possession_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("evaluate_village_possession", args, 0, 0), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+
+		int villages_number = ai_.get_info().map.villages().size();
+
+		//in case there are few villages, ignore this evaluation
+		if (villages_number < 6)
+			return variant(50);
+
+		int allied_villages_number = 0;
+		int opponents_villages_number = 0;
+		int allies = 0;
+
+		int teams_number = ai_.get_info().teams.size();
+		for( int i = 0; i < teams_number; ++i)
+		{
+			if ( ai_.current_team().is_enemy(i+1) )
+			{
+				opponents_villages_number += ai_.get_info().teams[i].villages().size();
+			} else
+			{
+				++allies;
+				allied_villages_number += ai_.get_info().teams[i].villages().size();
+			}
+		}
+
+		int controlled_villages = allied_villages_number + opponents_villages_number;
+
+		//how important is each village, but multipled by 50
+		int single_village_ratio = 0;
+
+		if (villages_number != 0)
+			single_village_ratio = 5000/villages_number;
+
+		int village_state = allied_villages_number - opponents_villages_number;
+
+		//up to this point, vilage_state contains state of the villages in AI's team
+		//now check how the AI is doing compared to its allies
+
+		int ai_villages = ai_.current_team().villages().size();
+
+		int ai_desired_villages = allied_villages_number / allies;
+
+		village_state += ai_villages - ai_desired_villages;
+
+		//calculate evaluation
+		int evaluation = 50 + (village_state * single_village_ratio)/100;
+
+		if (evaluation > 100)
+			evaluation = 100;
+		if (evaluation < 0)
+			evaluation = 0;
+
+		return variant(evaluation);
+	}
+
+	const formula_ai& ai_;
+};
+
 class recruit_function : public function_expression {
 public:
 	explicit recruit_function(const args_list& args)
@@ -809,6 +874,8 @@ class ai_function_symbol_table : public function_symbol_table {
 			return expression_ptr(new outcomes_function(args, ai_));
 		} else if(fn == "evaluate_for_position") {
 			return expression_ptr(new evaluate_for_position_function(args, ai_));
+		} else if(fn == "evaluate_village_possession") {
+			return expression_ptr(new evaluate_village_possession_function(args, ai_));
 		} else if(fn == "move") {
 			return expression_ptr(new move_function(args));
 		} else if(fn == "attack") {
