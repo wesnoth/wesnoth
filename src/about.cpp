@@ -34,14 +34,15 @@
 //! to the game will be presented to the user.
 namespace about
 {
+	const gui::dialog_frame::style scroll_area_frame_style("translucent54", 0);
 
 	static config about_list = config();
 	static std::map<std::string , std::string> images;
 	static std::string images_default;
 
-// Given a vector of strings, and a config representing an [about] section,
-// add all the credits lines from the about section to the list of strings.
-static void add_lines(std::vector<std::string> &res, config const &c) {
+	// Given a vector of strings, and a config representing an [about] section,
+	// add all the credits lines from the about section to the list of strings.
+	static void add_lines(std::vector<std::string> &res, config const &c) {
 	std::string title=c["title"];
 	if(title.size()) {
 		title = N_("+" + title);
@@ -249,7 +250,7 @@ void show_about(display &disp, std::string campaign)
 			map_rect.w * 13 / 16,
 			map_rect.h - top_margin - bottom_margin
 		};
-		gui::dialog_frame f(disp.video(), "", gui::dialog_frame::titlescreen_style, false);
+		gui::dialog_frame f(disp.video(), "", about::scroll_area_frame_style, false);
 		f.layout(frame_area);
         f.draw_background();
 
