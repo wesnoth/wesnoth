@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file terrain_translation.hpp
-//!
+/** @file terrain_translation.hpp */
 
 #ifndef TERRAIN_TRANSLATION_H_INCLUDED
 #define TERRAIN_TRANSLATION_H_INCLUDED
@@ -85,7 +84,7 @@ namespace t_translation {
 		bool is_empty;
 	};
 
-	//!  Contains an x and y coordinate used for starting positions in maps.
+	/**  Contains an x and y coordinate used for starting positions in maps. */
 	struct coordinate {
 		size_t x;
 		size_t y;

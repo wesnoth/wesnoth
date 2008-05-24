@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file terrain_translation.cpp
-//! Routines for terrain-conversion.
+/**
+ *  @file terrain_translation.cpp
+ *  Routines for terrain-conversion.
+ */
 
 #include "global.hpp"
 #include "gettext.hpp"
