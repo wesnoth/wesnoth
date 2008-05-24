@@ -34,15 +34,13 @@
 //! to the game will be presented to the user.
 namespace about
 {
-	const gui::dialog_frame::style scroll_area_frame_style("translucent54", 0);
-
 	static config about_list = config();
 	static std::map<std::string , std::string> images;
 	static std::string images_default;
 
-	// Given a vector of strings, and a config representing an [about] section,
-	// add all the credits lines from the about section to the list of strings.
-	static void add_lines(std::vector<std::string> &res, config const &c) {
+// Given a vector of strings, and a config representing an [about] section,
+// add all the credits lines from the about section to the list of strings.
+static void add_lines(std::vector<std::string> &res, config const &c) {
 	std::string title=c["title"];
 	if(title.size()) {
 		title = N_("+" + title);
@@ -226,8 +224,25 @@ void show_about(display &disp, std::string campaign)
 	SDL_Rect lower_src = {0, map_rect.h - bottom_margin, map_rect.w, bottom_margin};
 	SDL_Rect lower_dest = {map_rect.x, map_rect.y + map_rect.h - bottom_margin, map_rect.w, bottom_margin};
 
+	SDL_Rect frame_area = {
+		map_rect.x + map_rect.w * 3/32,
+		map_rect.y + top_margin,
+		map_rect.w * 13 / 16,
+		map_rect.h - top_margin - bottom_margin
+	};
+
+	// we use a dialog to contains the text. Strange idea but at least the style
+	// will be consistent with the titlescreen
+	gui::dialog_frame f(disp.video(), "", gui::dialog_frame::titlescreen_style, false);
+	f.layout(frame_area);
+
 	CKey key;
 	bool last_escape;
+	
+	surface textbox = create_compatible_surface(video.getSurface(), middle_dest.w, middle_dest.h);
+	SDL_SetAlpha(textbox, SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
+	bool recalculate_textbox = true;
+
 	int image_count=0;
 	do {
 		last_escape = key[SDLK_ESCAPE] != 0;
@@ -240,19 +255,17 @@ void show_about(display &disp, std::string campaign)
 			image_count++;
 			surface temp=surface(scale_surface(image::get_image(image_list[image_count]), disp.w(), disp.h()));
 			map_image=temp?temp:map_image;
+			recalculate_textbox = true;
+		}
+
+		if (recalculate_textbox) {
+			SDL_BlitSurface(map_image, &middle_src, video.getSurface(), &middle_dest);
+			f.draw_background();
+			SDL_BlitSurface(video.getSurface(), &middle_dest, textbox, NULL);
+			recalculate_textbox = false;
 		}
 		// draw map to screen, thus erasing all text
-
-		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
-		SDL_Rect frame_area = {
-			map_rect.x + map_rect.w * 3/32,
-			map_rect.y + top_margin,
-			map_rect.w * 13 / 16,
-			map_rect.h - top_margin - bottom_margin
-		};
-		gui::dialog_frame f(disp.video(), "", about::scroll_area_frame_style, false);
-		f.layout(frame_area);
-        f.draw_background();
+		SDL_BlitSurface(textbox, NULL, video.getSurface(), &middle_dest);
 
 		// draw one screen full of text
 		const int line_spacing = 5;
@@ -261,8 +274,6 @@ void show_about(display &disp, std::string campaign)
 		int cur_line = 0;
 
 		do {
-//			SDL_Rect tr2 = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
-//						text[line], map_rect.x + map_rect.w / 8 + 1,y + 1);
 			SDL_Rect tr = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::NORMAL_COLOUR,
 					              text[line], map_rect.x + map_rect.w / 8,y);
 
