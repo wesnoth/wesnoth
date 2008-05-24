@@ -12,10 +12,10 @@ $msgfmt="/usr/bin/msgfmt";
 
 $branch="1.4";
 
-$trunkbasedir="/public/vhost/w/wesnoth/source/trunk/";
-$branchbasedir="/public/vhost/w/wesnoth/source/$branch/";
-$extratbasedir="/public/vhost/w/wesnoth/source/wescamp-i18n/trunk/"; //trunk
-$extrabbasedir="/public/vhost/w/wesnoth/source/wescamp-i18n/branches/$branch/"; //branch
+$trunkbasedir="/home/wesnoth/source/trunk/";
+$branchbasedir="/home/wesnoth/source/$branch/";
+$extratbasedir="/home/wesnoth/source/wescamp-i18n/trunk/"; //trunk
+$extrabbasedir="/home/wesnoth/source/wescamp-i18n/branches/$branch/"; //branch
 
 //$packages = file_get_contents($basedir . "/po/DOMAINS");
 //$packages = substr($packages, 0, strlen($packages)-1);
