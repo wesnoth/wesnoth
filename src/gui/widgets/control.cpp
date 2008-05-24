@@ -152,7 +152,8 @@ tpoint tcontrol::get_single_line_best_size(const tpoint& config_size) const
 	} else if(!config_size.y) {
 		size = tpoint(maximum(config_size.x, text_size.x), text_size.y);
 	} else {
-		size = maximum(config_size, text_size);
+		size.x = maximum(config_size.x, text_size.x);
+		size.y = maximum(config_size.y, text_size.y);
 	}
 
 	// Honour the maximum.
