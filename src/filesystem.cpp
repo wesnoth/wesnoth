@@ -392,10 +392,12 @@ std::string get_user_data_dir()
 		_mkdir("userdata/editor/maps");
 		_mkdir("userdata/data");
 		_mkdir("userdata/data/ais");
+		_mkdir("userdata/data/campaigns");
 		_mkdir("userdata/data/scenarios");
 		_mkdir("userdata/data/scenarios/multiplayer");
 		_mkdir("userdata/data/maps");
 		_mkdir("userdata/data/maps/multiplayer");
+		_mkdir("userdata/data/units");
 		_mkdir("userdata/saves");
 		inited_dirs = true;
 	}
@@ -455,10 +457,12 @@ std::string get_user_data_dir()
 		mkdir((dir_path + "/editor/maps").c_str(),AccessMode);
 		mkdir((dir_path + "/data").c_str(),AccessMode);
 		mkdir((dir_path + "/data/ais").c_str(),AccessMode);
+		mkdir((dir_path + "/data/campaigns").c_str(),AccessMode);
 		mkdir((dir_path + "/data/scenarios").c_str(),AccessMode);
 		mkdir((dir_path + "/data/scenarios/multiplayer").c_str(),AccessMode);
 		mkdir((dir_path + "/data/maps").c_str(),AccessMode);
 		mkdir((dir_path + "/data/maps/multiplayer").c_str(),AccessMode);
+		mkdir((dir_path + "/data/units").c_str(),AccessMode);
 		mkdir((dir_path + "/saves").c_str(),AccessMode);
 		if(res == 0) {
 			dir = opendir(dir_path.c_str());
