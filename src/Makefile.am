@@ -180,6 +180,7 @@ wesnothd_SOURCES = \
 	server/simple_wml.cpp \
 	network.cpp \
 	network_worker.cpp \
+	time.cpp \
 	loadscreen_empty.cpp 
 
 wesnothd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)

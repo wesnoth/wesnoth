@@ -331,6 +331,7 @@ SET(wesnothd_SRC
     server/server.cpp
     server/simple_wml.cpp
     network.cpp
+	time.cpp
     network_worker.cpp
     loadscreen_empty.cpp 
 )
