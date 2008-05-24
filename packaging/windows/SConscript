@@ -27,7 +27,7 @@ if "windows-release" in COMMAND_LINE_TARGETS:
     Alias("windows-release", env.InstallFiltered(Dir(env["windows_release_dir"]), datadirs))
     Alias("windows-release", env.Install(env["windows_release_dir"], docs + dlls))
 
-    release_binaries = ["wesnoth", "wesnoth_editor"]
+    release_binaries = ["wesnoth", "wesnoth_editor", "wesnothd"]
     builds = {
         ""        : "",
         "_i486"   : "-march=i486",
