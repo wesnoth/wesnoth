@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file theme.cpp
-//!
+/** @file theme.cpp */
 
 #include "global.hpp"
 

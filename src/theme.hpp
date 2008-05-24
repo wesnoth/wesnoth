@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file theme.hpp
-//! Definitions related to theme-support.
+/**
+ *  @file theme.hpp
+ *  Definitions related to theme-support.
+ */
 
 #ifndef THEME_HPP_INCLUDED
 #define THEME_HPP_INCLUDED
