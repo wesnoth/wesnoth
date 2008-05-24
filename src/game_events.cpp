@@ -718,7 +718,8 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		std::string shroud = cfg["shroud"];
 		std::string shroud_data = cfg["shroud_data"];
 		std::string village_gold = cfg["village_gold"];
-		const config::child_list& ai = cfg.get_parsed_config().get_children("ai");
+		const config& parsed = cfg.get_parsed_config();
+		const config::child_list& ai = parsed.get_children("ai");
 		//!@todo also allow client to modify a side's colour if it
 		//!is possible to change it on the fly without causing visual glitches
 
@@ -1701,7 +1702,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					preferences::encountered_terrains().insert(new_terrain);
 					const bool old_village = game_map->is_village(*loc);
 					const bool new_village = game_map->is_village(new_terrain);
-					
+
 					if(old_village && !new_village) {
 						int owner = village_owner(*loc, *teams);
 						if(owner != -1) {
@@ -2262,7 +2263,8 @@ void event_handler::handle_event_command(const queued_event& event_info,
 
 	// Adding of new events
 	else if(cmd == "event") {
-		new_handlers.push_back(event_handler(cfg));
+		const config &parsed = cfg.get_parsed_config();
+		new_handlers.push_back(event_handler(vconfig(&parsed, &parsed)));
 	}
 
 	// Fire any events
@@ -2642,7 +2644,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	// Command to remove a variable
 	else if(cmd == "clear_variable") {
 		const std::string name = cfg["name"];
-		std::vector<std::string> vars_to_clear = 
+		std::vector<std::string> vars_to_clear =
 		    utils::split(name, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 		foreach(const std::string& var, vars_to_clear) {
 		    state_of_game->clear_variable(var);
@@ -2784,12 +2786,12 @@ void event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd== "heal_unit") {
-	  	
+
 		const bool animated = utils::string_bool(cfg["animate"],false);
-		
+
 		const vconfig healed_filter = cfg.child("filter");
 		unit_map::iterator u;
-		
+
 		if (healed_filter.null()) {
 			// Try to take the unit at loc1
 			u = units->find(event_info.loc1);
