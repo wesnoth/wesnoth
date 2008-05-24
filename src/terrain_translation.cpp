@@ -72,7 +72,8 @@ namespace t_translation {
 	 * @param filler			if the terrain has only 1 layer then the filler will be used
 	 *							as the second layer.
 	 *
-	 * @return					the terrain code found in the string
+	 * @return					the terrain code found in the string if no
+	 *                          valid terrain is found VOID will be returned.
 	 */
 	static t_terrain string_to_number_(std::string str, int& start_position, const t_layer filler);
 	static t_terrain string_to_number_(const std::string& str, const t_layer filler = NO_LAYER);
@@ -728,7 +729,7 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 		try {
 			start_position = lexical_cast<int>(str.substr(0, offset));
 		} catch(bad_lexical_cast&) {
-			goto terrain_error;
+			return VOID_TERRAIN;
 		}
 		str.erase(0, offset + 1);
 	}
@@ -737,7 +738,7 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
     if(offset !=  std::string::npos) {
 		// If either string is longer than 4 characters bail out
 		if(offset > 4 || (str.size() - offset) > 5) {
-			goto terrain_error;
+			return VOID_TERRAIN;
 		}
 		const std::string base_str(str, 0, offset);
 		const std::string overlay_str(str, offset + 1, str.size());
@@ -745,7 +746,7 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 	} else {
 		// If the string is longer than 4 characters bail out
 		if(str.size() > 4) {
-			goto terrain_error;
+			return VOID_TERRAIN;
 		}
 		result = t_terrain(str, filler);
 
@@ -758,14 +759,6 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 	}
 
 	return result;
-
-terrain_error:
-	// When this string is removed, also test
-	// whether the gettext include is still required
-	//! @todo 1.5 remove this test and let the wml_exception to the test
-	lg::wml_error << _("Invalid terrain found probably an 1.2 terrain format, "
-		"terrain = ") << input << '\n';
-	return VOID_TERRAIN;
 }
 
 static std::string number_to_string_(t_terrain terrain, const int start_position)
