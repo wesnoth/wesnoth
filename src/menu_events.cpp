@@ -37,7 +37,6 @@
 #include "replay.hpp"
 #include "sound.hpp"
 #include "team.hpp"
-#include "time.hpp"
 #include "unit_display.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
@@ -2317,7 +2316,6 @@ private:
 			using chmap::command_failed;
 			using chmap::command_failed_need_arg;
 
-			void do_animode();
 			void do_refresh();
 			void do_droid();
 			void do_theme();
@@ -2387,7 +2385,6 @@ private:
 					_("Clear chat history."));
 				register_command("sunset", &console_handler::do_sunset,
 					_("Visualize the screen refresh procedure."), "", "D");
-				register_command("animode", &console_handler::do_animode, "Change animation time mode");
 				register_command("fps", &console_handler::do_fps, "Show fps.");
 				register_command("benchmark", &console_handler::do_benchmark);
 				register_command("save", &console_handler::do_save, _("Save game."));
@@ -2798,18 +2795,6 @@ private:
 	}
 	void console_handler::do_save() {
 		menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
-	}
-	void console_handler::do_animode(){
-		if (ntime::source::get_source().get_time_mode() == ntime::source::REAL_TIME)
-		{
-			ntime::source::get_source().set_time_mode(ntime::source::SMOOTH_TIME);
-			print(get_cmd(), "Smooth rendering");
-		}
-		else
-		{
-			ntime::source::get_source().set_time_mode(ntime::source::REAL_TIME);
-			print(get_cmd(), "Realtime rendering");
-		}
 	}
 	void console_handler::do_save_quit() {
 		menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
