@@ -156,10 +156,19 @@ const token& tokenizer::next_token()
 				break;
 			if(current_ == '"' && peek_char() == '"')
 				next_char_fast();
-			if (current_ == 254) {
-				skip_comment();
-				--lineno_;
-				continue;
+			if (current_ == 254 && 
+					(peek_char() == 'l' || peek_char() == 't')) {
+				next_char_fast();
+				if ((current_ == 'l' && peek_char() == 'i') || (current_ == 't' && peek_char() == 'e'))
+				{
+					skip_comment();
+					--lineno_;
+					continue;
+				}
+				else
+				{
+					token_.value += 254;
+				}
 			}
 
 			token_.value += current_;

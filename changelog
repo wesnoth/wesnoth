@@ -12,6 +12,7 @@ Version 1.4.2+svn:
  * campaignd
    * made campaign server use gzip compression for networking
  * miscellaneous and bug fixes:
+   * fixed parser bug that prevented loading binary data strings
    * starting a campaing without any installed now gives an error.
    * fixed issues with campaign info in non-compressed saved games
      (bug #11386)
