@@ -395,7 +395,7 @@ public:
 	}
 
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& /*variables*/) const {
 
 		int villages_number = ai_.get_info().map.villages().size();
 
@@ -419,8 +419,6 @@ private:
 				allied_villages_number += ai_.get_info().teams[i].villages().size();
 			}
 		}
-
-		int controlled_villages = allied_villages_number + opponents_villages_number;
 
 		//how important is each village, but multipled by 50
 		int single_village_ratio = 0;
