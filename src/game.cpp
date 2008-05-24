@@ -2210,7 +2210,8 @@ static int play_game(int argc, char** argv)
 			<< "  --nosound                    runs the game without sounds and music.\n"
 			<< "  --max-fps                    the maximum fps the game tries to run at the value\n"
 			<< "                               should be between the 1 and 1000, the default is 50.\n"
-			<< "  --path                       prints the name of the game data directory and exits.\n"
+			<< "  --config-path                prints the path to the game config directory and exits.\n"
+			<< "  --path                       prints the path to the game data directory and exits.\n"
 #ifdef HAVE_PYTHON
 			<< "  --python-api                 prints the runtime documentation for the python API.\n"
 #endif
@@ -2243,6 +2244,9 @@ static int play_game(int argc, char** argv)
 		} else if(val == "--version" || val == "-v") {
 			std::cout << _("Battle for Wesnoth") << " " << game_config::version
 			          << "\n";
+			return 0;
+		} else if (val == "--config-path") {
+			std::cout << get_user_data_dir() << '\n';
 			return 0;
 		} else if(val == "--path") {
 			std::cout <<  game_config::path
