@@ -69,6 +69,7 @@ Version 1.5.0+svn:
  * campaignd
    * made campaign server use gzip compression for networking
  * miscellaneous and bug fixes:
+   * fixed parser bug that prevented loading binary data strings
    * fixed issues with campaign info in non-compressed saved games
      (bug #11386)
    * Implemented the option to use the mouse selection clipboard in X11

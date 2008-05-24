@@ -23,6 +23,7 @@
 #include "../map.hpp" // gamemap::MAX_PLAYERS
 #include "../network.hpp"
 #include "../filesystem.hpp"
+#include "../time.hpp"
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
@@ -297,7 +298,6 @@ private:
 	simple_wml::document games_and_users_list_;
 
 	metrics metrics_;
-	fps_limiter fps_limit_;
 
 	time_t last_ping_;
 	time_t last_stats_;
@@ -414,7 +414,7 @@ void server::load_config() {
 	// remember to make new one as a daemon or it will block old one
 	restart_command = cfg_["restart_command"];
 
-	fps_limit_.set_ms_per_frame(lexical_cast_default<size_t>(cfg_["ms_per_frame"],20));
+	ntime::source::get_source().set_frame_time(lexical_cast_default<size_t>(cfg_["ms_per_frame"],20));
 
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
@@ -477,7 +477,7 @@ void server::run() {
 	for (int loop = 0;; ++loop) {
 		// Try to run with 50 FPS all the time
 		// Server will respond a bit faster under heavy load
-		fps_limit_.limit();
+		ntime::source::get_source().start_frame();
 		try {
 			// We are going to waith 10 seconds before shutting down so users can get out of game.
 			if (graceful_restart && games_.size() == 0 && ++graceful_counter > 500 )
@@ -502,7 +502,7 @@ void server::run() {
 				process_command(admin_cmd);
 			}
 
-			time_t now = time(NULL);
+			time_t now = time(NULL); 
 			if (last_ping_ + 15 <= now) {
 				// and check if bans have expired
 				ban_manager_.check_ban_times(now);
