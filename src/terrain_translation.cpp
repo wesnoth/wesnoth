@@ -39,40 +39,41 @@ namespace t_translation {
 	/**
 	 * Get the mask for a single layer.
 	 *
-	 * @param terrain	1 layer of a terrain, might have a wildcard
+	 * @param terrain   1 layer of a terrain, might have a wildcard.
 	 *
-	 * @return			mask for that layer
+	 * @return          Mask for that layer.
 	 */
 	static t_layer get_layer_mask_(t_layer terrain); //inlined
 
 	/**
 	 * Gets a mask for a terrain, this mask is used for wildcard matching.
 	 *
-	 * @param terrain	the terrain which might have a wildcard
+	 * @param terrain   The terrain which might have a wildcard.
 	 *
-	 * @return			the mask for this terrain
+	 * @return          The mask for this terrain.
 	 */
 	static t_terrain get_mask_(const t_terrain& terrain);
 
 	/**
 	 * Converts a string to a layer.
 	 *
-	 * @param str		the terrain string to convert, but needs to be sanitized
-	 *					so no spaces and only the terrain to convert
+	 * @param str       The terrain string to convert, but needs to be
+	 *                  sanitized so no spaces and only the terrain to convert.
 	 *
-	 * @return			the converted layer
+	 * @return          The converted layer.
 	 */
 	static t_layer string_to_layer_(const std::string& str);
 
 	/**
 	 * Converts a terrain string to a number.
-	 * @param str				the terrain string with an optional number
-	 * @param start_position	returns the start_position, the caller should set it on -1
-	 *						and it's only changed it there is a starting position found
-	 * @param filler			if the terrain has only 1 layer then the filler will be used
-	 *							as the second layer.
+	 * @param str               The terrain string with an optional number.
+	 * @param start_position    Returns the start_position, the caller should 
+	 *                          set it on -1 and it's only changed it there is
+	 *                          a starting position found.
+	 * @param filler            If the terrain has only 1 layer then the filler
+	 *                          will be used as the second layer.
 	 *
-	 * @return					the terrain code found in the string if no
+	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
 	 */
 	static t_terrain string_to_number_(std::string str, int& start_position, const t_layer filler);
@@ -81,13 +82,15 @@ namespace t_translation {
 	/**
 	 * Converts a terrain number to a string
 	 *
-	 * @param terrain				the terrain number to convert
-	 * @param start_position		the starting position, if smaller than 0 it's
-	 *								ignored else it's written
-	 * @param min_size				padds the results with spaces if required,
-	 *								until the result has a length of min_size.
-	 * @return						the converted string, if no starting position
-	 *								given it's padded to 4 chars else padded to 7 chars
+	 * @param terrain               The terrain number to convert.
+	 * @param start_position        The starting position, if smaller than 0
+	 *                              it's ignored else it's written.
+	 * @param min_size              Padds the results with spaces if required,
+	 *                              until the result has a length of min_size.
+	 *
+	 * @return                      The converted string, if no starting
+	 *                              position given it's padded to 4 chars else
+	 *                              padded to 7 chars.
 	 */
 	static std::string number_to_string_(t_terrain terrain, const int start_position, const size_t min_size);
 	static std::string number_to_string_(t_terrain terrain, const int start_position = -1);
@@ -96,9 +99,9 @@ namespace t_translation {
 	 * Converts a terrain string to a number for the builder.
 	 * The translation rules differ from the normal conversion rules
 	 *
-	 * @param str	the terrain string
+	 * @param str   The terrain string.
 	 *
-	 * @return		number for the builder map
+	 * @return      Number for the builder map.
 	 */
 	static t_terrain string_to_builder_number_(std::string str);
 
