@@ -106,7 +106,7 @@ public:
 	 *
 	 * Probably the hardcoded list will disappear as well at some point
 	 */
-	void add_item(const t_string& label);
+	void add_item(const t_string& label, const std::string& icon = "");
 
 	unsigned get_item_count() const { return rows_.size(); }
 
@@ -197,7 +197,8 @@ private:
 	class trow {
 
 	public:
-		trow(const tbuilder_grid& list_builder_, const t_string& label);
+		trow(const tbuilder_grid& list_builder_, 
+			const t_string& label, const std::string& icon);
 
 		void select(const bool sel = true);
 	
@@ -221,7 +222,8 @@ private:
 
 		bool selected_;
 
-		void init_in_grid(tgrid* grid, const t_string& label);
+		void init_in_grid(tgrid* grid, 
+			const t_string& label, const std::string& icon);
 
 		void select_in_grid(tgrid* grid, const bool sel);
 	};

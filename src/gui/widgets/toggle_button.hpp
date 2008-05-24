@@ -26,7 +26,8 @@ public:
 	ttoggle_button() : 
 		tcontrol(COUNT),
 		state_(ENABLED),
-		callback_mouse_left_click_(0)
+		callback_mouse_left_click_(0),
+		icon_name_()
 	{
 	}
 
@@ -48,6 +49,13 @@ public:
 
 	void set_callback_mouse_left_click(void (*callback) (twidget*)) 
 		{ callback_mouse_left_click_ = callback; }
+
+	/** Inherited from tcontrol. */
+	void set_canvas_text();
+	
+	void set_icon_name(const std::string& icon_name) 
+		{ icon_name_ = icon_name; set_canvas_text(); }
+	const std::string& icon_name() const { return icon_name_; }
 	
 private:
 	//! Note the order of the states must be the same as defined in settings.hpp.
@@ -63,6 +71,12 @@ private:
  
  	/** This callback is used when the control gets a left click. */
 	void (*callback_mouse_left_click_) (twidget*);
+
+	/** 
+	 * The toggle button can contain an icon next to the text.
+	 * Maybe this will move the the tcontrol class if deemed needed.
+	 */
+	std::string icon_name_;
 
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 

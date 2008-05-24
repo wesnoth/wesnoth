@@ -215,12 +215,19 @@ public:
  *
  * A toggle button has no special fields.
  *
+ * @start_table = config
+ *     icon (f_string = "")            The name of the icon file to show.
+ * @end_table
  */
 	tbuilder_toggle_button(const config& cfg) :
-		tbuilder_control(cfg)
+		tbuilder_control(cfg),
+		icon_name_(cfg["icon"])
 	{}
 
 	twidget* build () const;
+
+private:	
+	std::string icon_name_;
 };
 
 struct tbuilder_vertical_scrollbar : public tbuilder_control
@@ -926,6 +933,8 @@ twidget* tbuilder_toggle_button::build() const
 	ttoggle_button *toggle_button = new ttoggle_button();
 
 	init_control(toggle_button);
+
+	toggle_button->set_icon_name(icon_name_);
 
 	DBG_G << "Window builder: placed toggle button '" << id << "' with defintion '" 
 		<< definition << "'.\n";

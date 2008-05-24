@@ -14,6 +14,9 @@
 
 #include "gui/widgets/toggle_button.hpp"
 
+#include "foreach.hpp"
+#include "gui/widgets/canvas.hpp"
+
 #include "log.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
@@ -111,6 +114,17 @@ void ttoggle_button::set_state(tstate state)
 	if(state != state_) {
 		state_ = state;
 		set_dirty(true);
+	}
+}
+
+void ttoggle_button::set_canvas_text()
+{
+	// Inherit.
+	tcontrol::set_canvas_text();
+
+	// set icon in canvases
+	foreach(tcanvas& canvas, tcontrol::canvas()) {
+		canvas.set_variable("icon", variant(icon_name_));
 	}
 }
 
