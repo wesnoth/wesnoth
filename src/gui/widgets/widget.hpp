@@ -191,7 +191,7 @@ public:
 	 *                            not active if must_be_active was set).
 	 */
 	virtual twidget* find_widget(const tpoint& coordinate, 
-			const bool must_be_active) 
+			const bool /*must_be_active*/) 
 	{ 
 		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
 			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
@@ -199,7 +199,7 @@ public:
 
 	/** The const version of find_widget. */
 	virtual const twidget* find_widget(const tpoint& coordinate, 
-			const bool must_be_active) const
+			const bool /*must_be_active*/) const
 	{ 
 		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
 			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
@@ -218,12 +218,12 @@ public:
 	 *                            must_be_active was set).
 	 */
 	virtual twidget* find_widget(const std::string& id, 
-			const bool must_be_active)
+			const bool /*must_be_active*/)
 		{ return id_ == id ? this : 0; }
 
 	/** The const version of find_widget. */
 	virtual const twidget* find_widget(const std::string& id, 
-			const bool must_be_active) const
+			const bool /*must_be_active*/) const
 		{ return id_ == id ? this : 0; }
 
 	/** 
