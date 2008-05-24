@@ -437,6 +437,15 @@ private:
 	SDL_Rect dst_clip_;
 	surface image_;
 
+	/** 
+	 * Name of the image.
+	 *
+	 * This value is only used when the image name is a formula. If it isn't a
+	 * formula the image will be loaded at construction. If a formula it will
+	 * be loaded every draw cycles. This allows 'changing' images.
+	 */
+	tformula<std::string> image_name_;
+
 	bool stretch_;
 };
 
@@ -448,6 +457,7 @@ timage::timage(const config& cfg) :
 	src_clip_(),
 	dst_clip_(),
 	image_(),
+	image_name_(cfg["name"]),
 	stretch_(utils::string_bool(cfg["stretch"]))
 {
 /*WIKI
@@ -469,7 +479,7 @@ timage::timage(const config& cfg) :
  *                                     that's the case use stretch. It only works
  *                                     if only the heigth or the width is not zero.
  *                                     It will copy the first pixel the the others.
- *     name (string = "")              The name of the image.
+ *     name (f_string = "")            The name of the image.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
  *
@@ -478,10 +488,19 @@ timage::timage(const config& cfg) :
  * See [[#general_variables|Line]].
  *
  */
+	if(!image_name_.has_formula()) {
+		surface tmp(image::get_image(image::locator(cfg["name"])));
+		
+		if(!tmp) {
+			ERR_G_D << "Image: '" << cfg["name"] 
+				<< "'not found and won't be drawn.\n";
+			return;
+		}
 
-	image_.assign(make_neutral_surface(
-		image::get_image(image::locator(cfg["name"]))));
-	src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
+		image_.assign(make_neutral_surface(tmp));
+		assert(image_);
+		src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
+	}
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -497,6 +516,30 @@ void timage::draw(surface& canvas,
 	//@todo formulas are now recalculated every draw cycle which is a 
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
+	if(image_name_.has_formula()) {
+		const std::string& name = image_name_(variables);
+
+		if(name.empty()) {
+			ERR_G_D << "Image: formula returned no value, will not be drawn.\n";
+			return;
+		}
+
+		surface tmp(image::get_image(image::locator(name)));
+		
+		if(!tmp) {
+			ERR_G_D << "Image: formula returned name '" 
+				<< name << "'not found and won't be drawn.\n";
+			return;
+		}
+
+		image_.assign(make_neutral_surface(tmp));
+		assert(image_);
+		src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
+	} else if(!image_){ 
+		// The warning about no image should already have taken place
+		// so leave silently.
+		return;
+	}
 	const unsigned x = x_(variables);
 	const unsigned y = y_(variables);
 	unsigned w = w_(variables);
