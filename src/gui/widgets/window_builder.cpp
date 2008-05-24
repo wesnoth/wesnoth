@@ -124,7 +124,6 @@ public:
 	twidget* build () const;
 
 	tbuilder_grid* header;
-	tbuilder_grid* list;
 	tbuilder_grid* footer;
 
 	tbuilder_grid* list_builder;
@@ -738,7 +737,6 @@ twidget* tbuilder_label::build() const
 tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 	tbuilder_control(cfg),
 	header(cfg.child("header") ? new tbuilder_grid(*(cfg.child("header"))) : 0),
-	list(0),
 	footer(cfg.child("footer") ? new tbuilder_grid(*(cfg.child("footer"))) : 0),
 	list_builder(0),
 	assume_fixed_row_size(utils::string_bool(cfg["assume_fixed_row_size"]))
@@ -764,7 +762,6 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *                                     never shown even not if more items are
  *                                     available as visible.
  *     header (section = [])           Defines the grid for the optional header.
- *     list (section)                  Defines the grid for the list data.
  *     footer (section = [])           Defines the grid for the optional footer.
  *    
  *     list_definition (section)       The list can be a hardcoded list (uses
@@ -794,15 +791,8 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *
  */
 
-//	VALIDATE(cfg.child("list"), _("No list defined."));
-
-	if(cfg.child("list_definition")) {
-		list_builder = new tbuilder_grid(*(cfg.child("list_definition")));
-	} else if(cfg.child("list")) {
-		list = new tbuilder_grid(*(cfg.child("list")));
-	} else {
-		VALIDATE(false, _("No 'list_builder' nor a 'list' section defined."));
-	}
+	VALIDATE(cfg.child("list_definition"), _("No list defined."));
+	list_builder = new tbuilder_grid(*(cfg.child("list_definition")));
 }
 
 twidget* tbuilder_listbox::build() const
@@ -826,17 +816,9 @@ twidget* tbuilder_listbox::build() const
 
 	scrollbar->set_id("_scroll");
 
-	twidget* list_area = 0;
-	if(list_builder) {
-		list_area = new tspacer();
-		assert(list_area);
-		list_area->set_definition("default");
-	} else {
-		assert(list);
-		list_area = dynamic_cast<tgrid*>(list->build());
-		assert(list_area);
-	}
-
+	twidget* list_area = new tspacer();
+	assert(list_area);
+	list_area->set_definition("default");
 	list_area->set_id("_list");
 
 	listbox->grid().set_rows_cols(1, 2);

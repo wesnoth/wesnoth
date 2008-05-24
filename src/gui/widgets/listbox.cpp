@@ -139,46 +139,6 @@ void tlistbox::scrollbar_click(twidget* caller)
 
 void tlistbox::finalize_setup()
 {
-	// If we have a list already set up wire in the callback routine.
-	tgrid* list = dynamic_cast<tgrid*>(tcontainer_::find_widget("_list", false));
-	if(list) {
-		const unsigned col_count = list->get_cols();
-		const unsigned row_count = list->get_rows();
-
-		// We need to validate the stuff put inside us, we expect
-		// * panels or grids with more nested items.
-		// * selectable items.
-		for(unsigned row = 0; row < row_count; ++row) {
-			for(unsigned col = 0; col < col_count; ++col) {
-				twidget* widget = list->widget(row, col);
-				assert(widget);
-
-
-				tgrid* grid = dynamic_cast<tgrid*>(widget);
-				tselectable_* selectable = dynamic_cast<tselectable_*>(widget);
-
-				if(selectable) {
-					
-					// FIXME move the callback also in the selectable class
-					ttoggle_button* btn = dynamic_cast<ttoggle_button*>(widget);
-					assert(btn);
-
-					btn->set_callback_mouse_left_click(callback_select_list_item);
-
-				} else if(grid) {
-					// Grid not allowed atm.
-					assert(false);
-				} else {
-					std::cerr << "Widget type " << typeid(*widget).name() << ".\n";
-					assert(false);
-				}
-			}
-		}
-	} else {
-		// Validate the existance.
-		tspacer* spacer = tlistbox::list();
-	}
-
 	scrollbar()->set_callback_positioner_move(callback_scrollbar);
 
 	static std::vector<std::string> button_names;
