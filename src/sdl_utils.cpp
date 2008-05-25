@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file sdl_utils.cpp
-//! Support-routines for the SDL-graphics-library.
+/**
+ *  @file sdl_utils.cpp
+ *  Support-routines for the SDL-graphics-library.
+ */
 
 #include "global.hpp"
 
@@ -89,9 +91,6 @@ SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 	return res;
 }
 
-//! Creates an empty SDL_Rect.
-//!
-//! Since SDL_Rect can't be created as temp variable in one step create this wrapper.
 SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 {
 	SDL_Rect rect = { x, y, w, h };
@@ -151,20 +150,6 @@ surface create_optimized_surface(surface const &surf)
 	return result;
 }
 
-//! Streches a surface in the horizontal direction.
-//!
-//! The stretches a surface it uses the first pixel in the horizontal
-//! direction of the original surface and copies that to the destination.
-//! This means only the first column of the original is used for the destination.
-//! @param surf              The source surface.
-//! @param w                 The width of the resulting surface.
-//! @param optimize          Should the return surface be RLE optimized.
-//!
-//! @return                  An optimized surface.
-//!                          returned. 
-//! @retval 0                Returned upon error.
-//! @retval surf             Returned if w == surf->w, note this ignores the 
-//!                          optimize flag.
 surface stretch_surface_horizontal(
 		const surface& surf, const unsigned w, const bool optimize)
 {
@@ -211,20 +196,6 @@ surface stretch_surface_horizontal(
 	return optimize ? create_optimized_surface(dst) : dst;
 }
 
-//! Streches a surface in the vertical direction.
-//!
-//! The stretches a surface it uses the first pixel in the vertical
-//! direction of the original surface and copies that to the destination.
-//! This means only the first row of the original is used for the destination.
-//! @param surf              The source surface.
-//! @param h                 The height of the resulting surface.
-//! @param optimize          Should the return surface be RLE optimized.
-//!
-//! @return                  An optimized surface.
-//!                          returned. 
-//! @retval 0                Returned upon error.
-//! @retval surf             Returned if h == surf->h, note this ignores the 
-//!                          optimize flag.
 surface stretch_surface_vertical(
 		const surface& surf, const unsigned h, const bool optimize)
 {
@@ -804,7 +775,6 @@ surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-//! Applies a mask on a surface.
 surface mask_surface(surface const &surf, surface const &mask)
 {
 	if(surf == NULL) {
@@ -861,7 +831,6 @@ surface mask_surface(surface const &surf, surface const &mask)
 	//return create_optimized_surface(nsurf);
 }
 
-//! Cross-fades a surface.
 surface blur_surface(surface const &surf, int depth, bool optimize)
 {
 	if(surf == NULL) {
@@ -978,9 +947,6 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 	return optimize ? create_optimized_surface(res) : res;
 }
 
-//! Cross-fades a surface with alpha channel.
-//! @todo FIXME: This is just an adapted copy-paste
-//! of the normal blur but with blur alpha channel too
 surface blur_alpha_surface(surface const &surf, int depth, bool optimize)
 {
 	if(surf == NULL) {
@@ -1103,7 +1069,6 @@ surface blur_alpha_surface(surface const &surf, int depth, bool optimize)
 	return optimize ? create_optimized_surface(res) : res;
 }
 
-//! Cuts a rectangle from a surface.
 surface cut_surface(surface const &surf, SDL_Rect const &r)
 {
 	surface res = create_compatible_surface(surf, r.w, r.h);
@@ -1276,18 +1241,6 @@ surface create_compatible_surface(surface const &surf, int width, int height)
 		                        surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
 }
 
-//! Replacement for SDL_BlitSurface.
-//!
-//! SDL_BlitSurface has problems with blitting partly transparent surfaces so
-//! this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY 
-//! flags. src and dst will have the SDL_RLEACCEL flag removed.
-//! The return value of SDL_BlistSurface is normally ignored so no return value.
-//! The rectangles are const and will not be modified.
-//!
-//! @param src          The surface to blit.
-//! @param srcrect      The region of the surface to blit
-//! @param dst          The surface to blit on.
-//! @param dstrect      The offset to blit the surface on, only x and y are used.
 void blit_surface(const surface& src, 
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect)
 {
