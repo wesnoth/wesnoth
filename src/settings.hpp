@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file src/settings.hpp
-//! General settings and defaults for scenarios.
+/**
+ *  @file src/settings.hpp
+ *  General settings and defaults for scenarios.
+ */
 
 #ifndef SETTINGS_HPP_INCLUDED
 #define SETTINGS_HPP_INCLUDED
