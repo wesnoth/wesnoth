@@ -41,10 +41,6 @@ namespace reports {
 	const std::string& report_name(TYPE type);
 
 	struct element {
-	private:
-		//! Shouldn't be used so only declared.
-		element();
-	public:		
 		explicit element(const std::string& text) : 
 				image(),
 				text(text),
