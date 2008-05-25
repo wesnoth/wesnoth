@@ -1649,6 +1649,10 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		params.blend_ratio = 0.25;
 	}
 	params.image_mod = image_mods();
+#ifdef LOW_MEM
+	params.image= absolute_image();
+	params.image_diagonal= absolute_image();
+#endif
 	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
@@ -1708,7 +1712,6 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 
 	image::locator image_loc = image::locator();
-#ifndef LOW_MEM
 	if(facing_ != gamemap::location::NORTH && facing_ != gamemap::location::SOUTH) {
 		image_loc = adjusted_params.image_diagonal;
 	}
@@ -1719,9 +1722,6 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		image_loc = absolute_image();
 	}
 	image_loc = image::locator(image_loc,adjusted_params.image_mod);
-#else
-	image_loc = absolute_image();
-#endif
 
 	// The caching used to be disabled for the lowmem case but that actually
 	// resulted in a higher memory usage see bug ##11022.
