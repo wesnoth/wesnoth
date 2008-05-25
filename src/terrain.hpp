@@ -72,12 +72,14 @@ public:
 	t_translation::t_terrain terrain_with_default_base() const;
 
 private:
-	//! The image used in the minimap
+	/** The image used in the minimap */
 	std::string minimap_image_;
 	std::string minimap_image_overlay_;
 
-	//! The image used in the editor pallete if not defined in WML it will
-	//! be initialized with the value of minimap_image_
+	/**
+	 *  The image used in the editor pallete if not defined in WML it will be
+	 *  initialized with the value of minimap_image_
+	 */
 	std::string editor_image_;
 	std::string id_;
 	t_string name_;

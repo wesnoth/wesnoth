@@ -79,10 +79,12 @@ terrain_type::terrain_type(const config& cfg) :
 		keep_(utils::string_bool(cfg["recruit_from"])),
 		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"]))
 {
-//! @todo reenable these validations. The problem is that all MP 
-//! scenarios/campaigns share the same namespace and one rogue scenario
-//! can avoid the player to create a MP game. So every scenario/campaign
-//! should get it's own namespace to be save. 
+/**
+ *  @todo reenable these validations. The problem is that all MP 
+ *  scenarios/campaigns share the same namespace and one rogue scenario
+ *  can avoid the player to create a MP game. So every scenario/campaign
+ *  should get it's own namespace to be save. 
+ */
 #if 0
 	VALIDATE(number_ != t_translation::NONE_TERRAIN, 
 		missing_mandatory_wml_key("terrain", "string"));
