@@ -21,9 +21,15 @@
 class sha1_hash
 {
 public:
+
+	/** Make a hash from a string */
 	sha1_hash(const std::string& str);
+
+	/** Display the hash */
 	std::string display();
 private:
+
+	/** Process the next 512 bits block */
 	void next(Uint8 block[64]);
 	Uint32 H0, H1, H2, H3, H4;
 
