@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file statistics.cpp
-//! Manage statistics: recruitments, recalls, kills, losses, etc.
+/**
+ *  @file statistics.cpp
+ *  Manage statistics: recruitments, recalls, kills, losses, etc.
+ */
 
 #include "global.hpp"
 #include "config.hpp"
