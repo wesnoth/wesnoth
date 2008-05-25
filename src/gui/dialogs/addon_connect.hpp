@@ -12,8 +12,8 @@
    see the copying file for more details.
 */
 
-#ifndef __GUI_DIALOGS_ADDON_CONNECT_HPP_INCLUDED__
-#define __GUI_DIALOGS_ADDON_CONNECT_HPP_INCLUDED__
+#ifndef GUI_DIALOGS_ADDON_CONNECT_HPP_INCLUDED
+#define GUI_DIALOGS_ADDON_CONNECT_HPP_INCLUDED
 
 #include <string>
 

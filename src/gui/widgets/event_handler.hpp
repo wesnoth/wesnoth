@@ -15,8 +15,8 @@
 //! @file event_handler.hpp
 //! Contains the information with an event.
 
-#ifndef __GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED__
-#define __GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED__
+#ifndef GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED
+#define GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED
 
 #include "events.hpp"
 #include "gui/widgets/helper.hpp"

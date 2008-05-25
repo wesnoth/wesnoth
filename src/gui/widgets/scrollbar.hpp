@@ -12,8 +12,8 @@
    see the copying file for more details.
 */
 
-#ifndef __GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED__
-#define __GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED__
+#ifndef GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
+#define GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 
 #include "gui/widgets/control.hpp"
 

@@ -16,8 +16,8 @@
 //! This file contains the window object, this object is a top level container 
 //! which has the event management as well.
 
-#ifndef __GUI_WIDGETS_WINDOW_HPP_INCLUDED__
-#define __GUI_WIDGETS_WINDOW_HPP_INCLUDED__
+#ifndef GUI_WIDGETS_WINDOW_HPP_INCLUDED
+#define GUI_WIDGETS_WINDOW_HPP_INCLUDED
 
 #include "gui/widgets/canvas.hpp"
 #include "gui/widgets/event_handler.hpp"

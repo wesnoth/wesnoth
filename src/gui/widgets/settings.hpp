@@ -15,8 +15,8 @@
 //! @file setting.hpp
 //! This file contains the settings handling of the widget library.
 
-#ifndef __GUI_WIDGETS_SETTING_HPP_INCLUDED__
-#define __GUI_WIDGETS_SETTING_HPP_INCLUDED__
+#ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
+#define GUI_WIDGETS_SETTING_HPP_INCLUDED
 
 #include "config.hpp"
 #include "gui/widgets/canvas.hpp"

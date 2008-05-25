@@ -16,8 +16,8 @@
 //! This file contains the canvas object which is the part where the widgets
 //! draw (tempory) images on.
 
-#ifndef __GUI_WIDGETS_CANVAS_HPP_INCLUDED__
-#define __GUI_WIDGETS_CANVAS_HPP_INCLUDED__
+#ifndef GUI_WIDGETS_CANVAS_HPP_INCLUDED
+#define GUI_WIDGETS_CANVAS_HPP_INCLUDED
 
 #include "formula_callable.hpp"
 #include "reference_counted_object.hpp"

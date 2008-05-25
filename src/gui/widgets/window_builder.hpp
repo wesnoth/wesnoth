@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef __GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED__
-#define __GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED__
+#ifndef GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED
+#define GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED
 
 #include "reference_counted_object.hpp"
 #include "tstring.hpp"
