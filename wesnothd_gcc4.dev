@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnothd_gcc4.dev
 Name=wesnothd
-UnitCount=25
+UnitCount=28
 Type=1
 Ver=1
 ObjFiles=
@@ -2332,7 +2332,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit26]
-FileName=src\font.cpp
+FileName=src\server\ban.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2342,7 +2342,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit27]
-FileName=src\image.cpp
+FileName=src\server\ban.hpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2513,6 +2513,16 @@ BuildCmd=
 
 [Unit24]
 FileName=src\util.cpp
+CompileCpp=1
+Folder=wesnothd
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit28]
+FileName=src\time.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
