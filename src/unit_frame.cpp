@@ -470,15 +470,15 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	frame_parameters result;
 	const frame_parameters & current_val = builder_.parameters(current_time);
 
-	//! engine provides an image to force the base image in low mem, so always force it
+	/** engine provides an image to force the base image in low mem, so always force it */
 	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;
 	if(!engine_val.image.is_void() && !engine_val.image.get_filename().empty()) result.image = engine_val.image;
 
-	//! engine provides an image to force the base image in low mem, so always force it
+	/** engine provides an image to force the base image in low mem, so always force it */
 	result.image_diagonal = current_val.image_diagonal.is_void()|| current_val.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_val.image_diagonal;
 	if(!engine_val.image_diagonal.is_void() && !engine_val.image_diagonal.get_filename().empty()) result.image_diagonal = engine_val.image_diagonal;
 
-	//! engine provides a string for "stoned" and "team color" modifications
+	/** engine provides a string for "stoned" and "team color" modifications */
 	result.image_mod = current_val.image_mod +animation_val.image_mod;
 	if(primary)result.image_mod += engine_val.image_mod;
 
@@ -488,7 +488,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	assert(engine_val.halo_x == 0);
 	result.halo_x =  current_val.halo_x?current_val.halo_x:animation_val.halo_x;
 
-	//! the engine provide y modification for terrain with height adjust and flying units
+	/** the engine provide y modification for terrain with height adjust and flying units */
 	result.halo_y = current_val.halo_y?current_val.halo_y:animation_val.halo_y;
 	result.halo_y += engine_val.halo_y;
 
@@ -504,29 +504,29 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	assert(engine_val.text_color == 0);
 	result.text_color = current_val.text_color?current_val.text_color:animation_val.text_color;
 
-	//! engine provide a blend colour for poisoned units
+	/** engine provide a blend colour for poisoned units */
 	result.blend_with = current_val.blend_with?current_val.blend_with:animation_val.blend_with;
 	if(primary&& engine_val.blend_with) result.blend_with = engine_val.blend_with;
 
-	//! engine provide a blend colour for poisoned units
+	/** engine provide a blend colour for poisoned units */
 	result.blend_ratio = current_val.blend_ratio?current_val.blend_ratio:animation_val.blend_ratio;
 	if(primary && engine_val.blend_ratio) result.blend_ratio += engine_val.blend_ratio;
 
-	//! engine provide a highlight ratio for selected units and visible "invisible" units
+	/** engine provide a highlight ratio for selected units and visible "invisible" units */
 	result.highlight_ratio = current_val.highlight_ratio!=1.0?current_val.highlight_ratio:animation_val.highlight_ratio;
 	if(primary && engine_val.highlight_ratio != 1.0) result.highlight_ratio = result.highlight_ratio +engine_val.highlight_ratio - 1.0; // selected unit
 
 	assert(engine_val.offset == 0);
 	result.offset = current_val.offset?current_val.offset:animation_val.offset;
 
-	//! engine provides a submerge for units in water
+	/** engine provides a submerge for units in water */
 	result.submerge = current_val.submerge?current_val.submerge:animation_val.submerge;
 	if(primary && engine_val.submerge) result.submerge = engine_val.submerge;
 
 	assert(engine_val.x == 0);
 	result.x = current_val.x?current_val.x:animation_val.x;
 
-	//! the engine provide y modification for terrain with height adjust and flying units
+	/** the engine provide y modification for terrain with height adjust and flying units */
 	result.y = current_val.y?current_val.y:animation_val.y; 
 	result.y += engine_val.y;
 
