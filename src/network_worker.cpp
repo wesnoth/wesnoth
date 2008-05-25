@@ -510,9 +510,10 @@ static int process_queue(void* shard_num)
 
 		if(sent_buf) {
 			if(sent_buf->raw_buffer.empty()) {
+				output_to_buffer(sent_buf->sock, sent_buf->config_buf, sent_buf->stream, sent_buf->gzipped);
 				const std::string &value = sent_buf->stream.str();
 				make_network_buffer(value.c_str(), value.size(), sent_buf->raw_buffer);
-			}
+			} 
 
 			result = send_buffer(sent_buf->sock, sent_buf->raw_buffer);
 			delete sent_buf;
@@ -539,6 +540,7 @@ static int process_queue(void* shard_num)
 			try {
 				if(stream.peek() == 31) {
 					read_gz(received_data->config_buf, stream);
+					received_data->gzipped = true;
 				} else {
 					compression_schema *compress;
 					{
@@ -546,6 +548,7 @@ static int process_queue(void* shard_num)
 						compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
 					}
 					read_compressed(received_data->config_buf, stream, *compress);
+					received_data->gzipped = false;
 				}
 			} catch(config::error &e)
 			{
@@ -671,7 +674,7 @@ void receive_data(TCPsocket sock)
 	}
 }
 
-TCPsocket get_received_data(TCPsocket sock, config& cfg)
+TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped)
 {
 	assert(!raw_data_only);
 	const threading::lock lock_received(*received_mutex);
@@ -696,6 +699,10 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 	} else {
 		cfg.swap((*itor)->config_buf);
 		const TCPsocket res = (*itor)->sock;
+		if (gzipped)
+		{
+			*gzipped = (*itor)->gzipped;
+		}
 		buffer* buf = *itor;
 		received_data_queue.erase(itor);
 		delete buf;
@@ -734,12 +741,13 @@ void queue_raw_data(TCPsocket sock, const char* buf, int len)
 
 }
 
-void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
+void queue_data(TCPsocket sock,const config& buf, const bool gzipped)
 {
 	DBG_NW << "queuing data...\n";
 
 	buffer* queued_buf = new buffer(sock);
-	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
+	queued_buf->config_buf = buf;
+//	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
 	queued_buf->gzipped = gzipped;
 	{
 		const size_t shard = get_shard(sock);

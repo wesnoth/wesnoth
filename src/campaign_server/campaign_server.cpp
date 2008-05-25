@@ -238,6 +238,7 @@ namespace {
 
 	void campaign_server::run()
 	{
+		bool gzipped;
 		for(int increment = 0; ; ++increment) {
 			try {
 				//write config to disk every ten minutes
@@ -254,7 +255,7 @@ namespace {
 				}
 
 				config data;
-				while((sock = network::receive_data(data)) != network::null_connection) {
+				while((sock = network::receive_data(data, 0, &gzipped)) != network::null_connection) {
 					if(const config* req = data.child("request_campaign_list")) {
 						LOG_CS << "sending campaign list to " << network::ip_address(sock) << "\n";
 						time_t epoch = time(NULL);
@@ -324,7 +325,7 @@ namespace {
 							read_compressed(cfg, *stream);
 							add_license(cfg);
 
-							network::send_data(cfg, sock, true);
+							network::send_data(cfg, sock, gzipped);
 
 							const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
 							(*campaign)["downloads"] = lexical_cast<std::string>(downloads);
