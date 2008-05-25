@@ -253,7 +253,7 @@ public:
 	void set_shroud(bool shroud) { shroud_.set_enabled(shroud); }
 	void set_fog(bool fog) { fog_.set_enabled(fog); }
 
-	//! Merge a WML shroud map with the shroud data of this player.
+	/** Merge a WML shroud map with the shroud data of this player. */
 	void merge_shroud_map_data(const std::string& shroud_data);
 
 	bool knows_about_team(size_t index) const;

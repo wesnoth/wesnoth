@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file team.cpp
-//! Team-management, allies, setup at start of scenario.
+/**
+ *  @file team.cpp
+ *  Team-management, allies, setup at start of scenario.
+ */
 
 #include "global.hpp"
 
