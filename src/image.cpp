@@ -343,6 +343,7 @@ surface locator::load_image_sub_file() const
 	if(val_.modifications_.size()){
 		bool xflip = false;
 		bool yflip = false;
+		bool greyscale = false;
 		std::map<Uint32, Uint32> recolor_map;
 		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
 		for(std::vector<std::string>::const_iterator i=modlist.begin();
@@ -406,6 +407,9 @@ surface locator::load_image_sub_file() const
 						yflip = !yflip;
 					}
 				}
+				if("GS" == function){	// Flip layer
+					greyscale=true;
+				}
 			}
 		}
 		surf = recolor_image(surf,recolor_map);
@@ -414,6 +418,9 @@ surface locator::load_image_sub_file() const
 		}
 		if(yflip) {
 			surf = flop_surface(surf);
+		}
+		if(greyscale) {
+			surf = greyscale_image(surf);
 		}
 	}
 	return surf;
