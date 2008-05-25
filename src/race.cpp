@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file race.cpp
-//! Generate race-specific unit-names.
+/**
+ *  @file race.cpp
+ *  Generate race-specific unit-names.
+ */
 
 #include "global.hpp"
 
@@ -153,9 +155,11 @@ unit_race::unit_race(const config& cfg) :
 		global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
 
 {
-	//! @todo FIXME remove support after branching 1.4.
-	//! 2 versions with lg::wml_error
-	//! VALIDATE after that
+	/**
+	 * @todo FIXME remove support after branching 1.4.
+	 *  2 versions with lg::wml_error
+	 *  VALIDATE after that
+	 */
 	if(id_.empty()) {
 		// This code is only for compatibility with old race defs.
 		id_ = (cfg["name"]);
