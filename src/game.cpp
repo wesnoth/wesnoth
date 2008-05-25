@@ -1589,10 +1589,8 @@ bool game_controller::play_multiplayer()
 				dlg.show(disp().video());
 				
 				if(dlg.get_retval() == gui2::tbutton::OK) {
-					std::cerr << "OK\n";
 					res = dlg.get_choice();
 				} else {
-					std::cerr << "CANCEL\n";
 					return false;
 
 				}

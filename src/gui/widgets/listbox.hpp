@@ -108,6 +108,13 @@ public:
 	 */
 	void add_item(const t_string& label, const std::string& icon = "");
 
+	/**
+	 * Adds one or more items to the listbox.
+	 *
+	 * Just a proof-of-concept version to add a list of items to a listbox.
+	 */
+	void add_items(const std::vector< std::map<std::string, t_string> >& data);
+
 	unsigned get_item_count() const { return rows_.size(); }
 
 	/** 

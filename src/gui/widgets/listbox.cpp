@@ -388,6 +388,24 @@ void tlistbox::add_item(const t_string& label, const std::string& icon)
 	set_scrollbar_button_status();
 }
 
+void tlistbox::add_items(const std::vector< std::map<std::string, t_string> >& data)
+{
+	// foreach(const std::map<std::string, t_string>& cell, data) {
+	// doesn't compile it sees 3 paramters instead of 2 so use a typedef.
+	typedef std::map<std::string, t_string> hack ;
+	foreach(const hack& cell, data) {
+		std::map<std::string, t_string >::const_iterator itor = cell.find("icon");
+		assert(itor != cell.end());
+		const t_string& icon = itor->second;
+
+		itor = cell.find("label");
+		assert(itor != cell.end());
+		const std::string& label = itor->second;
+
+		add_item(label, icon);
+	}
+}
+
 tscrollbar_* tlistbox::scrollbar()
 {
 	// Note we don't cache the result, we might want change things later.	

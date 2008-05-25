@@ -51,11 +51,6 @@ void tmp_method_selection::show(CVideo& video)
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
 	VALIDATE(list, "No list defined.");
 
-	list->add_item("Join Official Server", "icons/icon-server.png");
-	list->add_item("Connect to Server", "icons/icon-serverother.png");
-	list->add_item("Local Game", "icons/icon-hotseat.png");
-	list->select_row(0);
-
 	window.recalculate_size();
 
 	retval_ = window.show(true);

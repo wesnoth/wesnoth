@@ -15,6 +15,7 @@
 #include "gui/widgets/window_builder.hpp"
 
 #include "config.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -127,6 +128,14 @@ public:
 	tbuilder_grid* footer;
 
 	tbuilder_grid* list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to 
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<std::map<std::string /*key*/, t_string/*value*/> >list_data;
 
 	const bool assume_fixed_row_size;
 };
@@ -739,6 +748,7 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 	header(cfg.child("header") ? new tbuilder_grid(*(cfg.child("header"))) : 0),
 	footer(cfg.child("footer") ? new tbuilder_grid(*(cfg.child("footer"))) : 0),
 	list_builder(0),
+	list_data(),
 	assume_fixed_row_size(utils::string_bool(cfg["assume_fixed_row_size"]))
 {
 /*WIKI
@@ -764,12 +774,14 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *     header (section = [])           Defines the grid for the optional header.
  *     footer (section = [])           Defines the grid for the optional footer.
  *    
- *     list_definition (section)       The list can be a hardcoded list (uses
- *                                     list) or a definition is which case the
- *                                     engine knows how to 'build' the widget.
- *                                     When both exist [list] and
- *                                     [list_definition] the results are
- *                                     unexpected.
+ *     list_definition (section)       This defines how a listboxs list data 
+ *                                     looks. It must contain the grid
+ *                                     definition for 1 row of the list.
+ *
+ *     list_data(section = [])         A grid alike section which stores the
+ *                                     initial data for the listbox. Every row
+ *                                     must have the same number of columns as
+ *                                     the 'list_definition'.
  *
  *     assume_fixed_row_size (bool = true)    
  *                                     If not all rows can be shown this value
@@ -793,6 +805,30 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 
 	VALIDATE(cfg.child("list_definition"), _("No list defined."));
 	list_builder = new tbuilder_grid(*(cfg.child("list_definition")));
+	assert(list_builder);
+	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
+
+	const config *data = cfg.child("list_data");
+	if(data) {
+
+		const config::child_list& row_cfgs = data->get_children("row");
+		for(std::vector<config*>::const_iterator row_itor = row_cfgs.begin();
+				row_itor != row_cfgs.end(); ++row_itor) {
+
+			unsigned col = 0;
+
+			const config::child_list& col_cfgs = (**row_itor).get_children("column");
+			for(std::vector<config*>::const_iterator col_itor = col_cfgs.begin();
+					col_itor != col_cfgs.end(); ++col_itor) {
+
+				list_data.push_back((**col_itor).values);
+				++col;
+			}
+			
+			VALIDATE(col == list_builder->cols, _("'list_data' must have "
+				"the same number of columns as the 'list_definition'."));
+		}
+	}
 }
 
 twidget* tbuilder_listbox::build() const
@@ -802,7 +838,6 @@ twidget* tbuilder_listbox::build() const
 	init_control(listbox);
 
 	listbox->set_list_builder(list_builder);
-
 	listbox->set_assume_fixed_row_size(assume_fixed_row_size);
 
 	DBG_G << "Window builder: placed listbox '" << id << "' with defintion '" 
@@ -834,6 +869,10 @@ twidget* tbuilder_listbox::build() const
 		| tgrid::VERTICAL_ALIGN_CENTER
 		| tgrid::HORIZONTAL_ALIGN_CENTER
 		, 0);
+
+	if(!list_data.empty()) {
+		listbox->add_items(list_data);
+	}
 
 	listbox->finalize_setup();
 
