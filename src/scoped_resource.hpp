@@ -12,9 +12,11 @@
    See the COPYING file for more details.
 */
 
-//! @file scoped_resource.hpp
-//! scoped_resource: class template, functions, helper policies etc.\ for
-//! resource management.
+/**
+ *  @file scoped_resource.hpp
+ *  scoped_resource: class template, functions, helper policies etc.\ for
+ *  resource management.
+ */
 
 #ifndef SCOPED_RESOURCE_H_INCLUDED
 #define SCOPED_RESOURCE_H_INCLUDED
