@@ -12,10 +12,12 @@
    See the COPYING file for more details.
 */
 
-//! @file replay.cpp
-//! Replay control code.
-//!
-//! See http://www.wesnoth.org/wiki/ReplayWML for more info.
+/**
+ *  @file replay.cpp
+ *  Replay control code.
+ * 
+ *  See http://www.wesnoth.org/wiki/ReplayWML for more info.
+ */
 
 #include "global.hpp"
 
@@ -532,8 +534,11 @@ void replay::undo()
 	// Remember commands not yet synced and skip over them.
 	// We assume that all already sent (sent=yes) data isn't undoable
 	// even if not marked explicitely with undo=no.
-	//! @todo Change undo= to default to "no" and explicitely mark all
-	//! undoable commands with yes.
+	
+	/**
+	 * @todo Change undo= to default to "no" and explicitely mark all
+	 * undoable commands with yes.
+	 */
 	while(cmd.first != cmd.second && ((**(cmd.second-1))["undo"] == "no"
 		|| (**(cmd.second-1))["async"] == "yes"
 		|| (**(cmd.second-1))["sent"] == "yes"))
