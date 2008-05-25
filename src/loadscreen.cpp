@@ -24,6 +24,8 @@
 
 #include <iostream>
 
+#include <SDL_image.h>
+
 #define MIN_PERCENTAGE   0
 #define MAX_PERCENTAGE 100
 
