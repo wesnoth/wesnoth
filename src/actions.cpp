@@ -943,6 +943,8 @@ attack::attack(game_display& gui, const gamemap& map,
 	static const std::string poison_string("poison");
 
 	LOG_NG << "Fight: (" << attacker << ") vs (" << defender << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
+	
+	game_state* game_state = game_events::get_state_of_game();
 
 	while(n_attacks_ > 0 || n_defends_ > 0) {
 		DBG_NG << "start of attack loop...\n";
@@ -955,6 +957,8 @@ attack::attack(game_display& gui, const gamemap& map,
 			int damage_defender_takes;
 			if(hits) {
 				damage_defender_takes = attacker_damage_;
+				game_state->set_variable("damage_inflicted",
+							 str_cast<int>(damage_defender_takes));
 			} else {
 				damage_defender_takes = 0;
 			}
@@ -1212,6 +1216,9 @@ attack::attack(game_display& gui, const gamemap& map,
 			int damage_attacker_takes;
 			if(hits) {
 				damage_attacker_takes = defender_damage_;
+				
+				game_state->set_variable("damage_inflicted",
+							 str_cast<int>(damage_attacker_takes));
 			} else {
 				damage_attacker_takes = 0;
 			}
