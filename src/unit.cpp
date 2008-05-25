@@ -1649,6 +1649,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		params.blend_ratio = 0.25;
 	}
 	params.image_mod = image_mods();
+	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
 
@@ -1730,7 +1731,6 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		image = still_image(true);
 	}
 
-	bool stoned = utils::string_bool(get_state("stoned"));
 
 
 
@@ -1779,7 +1779,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	if (image != NULL) {
 		const int tmp_x = adjusted_params.x +x - image->w/2;
 		const int tmp_y = adjusted_params.y +y - image->h/2;
-		disp.render_unit_image(tmp_x, tmp_y, fake, drawing_order, image, facing_west, stoned,
+		disp.render_unit_image(tmp_x, tmp_y, fake, drawing_order, image, facing_west, false,
 				ftofxp(adjusted_params.highlight_ratio), adjusted_params.blend_with, adjusted_params.blend_ratio, adjusted_params.submerge);
 	}
 

@@ -475,7 +475,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	assert(engine_val.image_diagonal.is_void() || engine_val.image_diagonal.get_filename() == "");
 	result.image_diagonal = current_val.image_diagonal.is_void()|| current_val.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_val.image_diagonal;
 
-	result.image_mod = engine_val.image_mod + current_val.image_mod +animation_val.image_mod;
+	result.image_mod = current_val.image_mod +animation_val.image_mod;
+	if(primary)result.image_mod += engine_val.image_mod;
 
 	assert(engine_val.halo.empty());
 	result.halo = current_val.halo.empty()?animation_val.halo:current_val.halo;
