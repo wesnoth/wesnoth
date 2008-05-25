@@ -290,7 +290,7 @@ except:
 Export(Split("env have_client_prereqs have_X have_server_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows"))
 
-binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd")
+binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd test")
 builds = {
     "debug"   : Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"),
     "release" : Split("-O2 -ansi"),
@@ -308,6 +308,7 @@ binary_nodes = map(eval, binaries)
 if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
 else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
 map(lambda bin, node: Alias(bin, node, node and Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
+binaries.remove("test")
 env.Alias("all", map(Alias, binaries))
 env.Default(map(Alias, env["default_targets"]))
 all = env.Alias("all")

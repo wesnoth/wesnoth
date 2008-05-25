@@ -275,9 +275,8 @@ test_sources = Split("""
     tests/main.cpp
     tests/test_util.cpp
     """)
-test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth],
-            CPPPATH = env["CPPPATH"] + ['/usr/include'],
-            LIBS = env["LIBS"] + ['boost_unit_test_framework'])
+test = test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth])
+Export("test")
 
 if env["svnrev"] != "" and env["svnrev"] != "exported":
     revision_define = "#define REVISION \"%s\"\n" % env["svnrev"]
@@ -287,7 +286,11 @@ if env["svnrev"] != "" and env["svnrev"] != "exported":
                     ))
     env.Append(CPPDEFINES = 'HAVE_REVISION')
 
-sources = Flatten([glob(os.path.join(root, "*.cpp")) + glob(os.path.join(root, "*.hpp")) for (root, dir, files) in os.walk(".")])
+sources = []
+if "TAGS" in COMMAND_LINE_TARGETS:
+    EnsureSConsVersion(0, 98)
+    patterns = [ os.path.join(dir, file) for dir in ["", "*", "*/*"] for file in ["*.cpp", "*.hpp"] ]
+    sources = [ Glob(pattern, source=True, ondisk=False) for pattern in patterns ]
 
 Export("sources")
 
