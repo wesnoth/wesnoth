@@ -49,7 +49,7 @@ void write_possibly_compressed(std::ostream &out, config &cfg, bool compress)
 }
 
 config_writer::config_writer(
-	std::ostream &out, bool compress, const std::string &textdomain) :
+	std::ostream &out, bool compress, const std::string &textdomain,int level) :
 		filter_(),
 		out_ptr_(compress ? &filter_ : &out), //ternary indirection creates a temporary
 		out_(*out_ptr_), //now MSVC will allow binding to the reference member
@@ -58,7 +58,11 @@ config_writer::config_writer(
 		textdomain_(textdomain)
 {
 	if(compress_) {
-		filter_.push(boost::iostreams::gzip_compressor());
+		if (level >=0)
+			filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(level)));
+		else
+			filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params()));
+
 		filter_.push(out);
 	}
 }

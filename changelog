@@ -12,6 +12,8 @@ Version 1.4.2+svn:
  * campaignd
    * made campaign server use gzip compression for networking
    * made campaign server detect if client can receive gzipped data
+   * made campaign server use gzip for storing addons
+   * added configuraion option to choose gzip compression level
  * miscellaneous and bug fixes:
    * fixed parser bug that prevented loading binary data strings
    * starting a campaing without any installed now gives an error.
