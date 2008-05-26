@@ -21,7 +21,7 @@
 #include "formula_callable.hpp"
 
 namespace game_logic {
-	typedef	std::map<const std::string, std::vector<const_formula_ptr> > candidate_move_map;
+	typedef	std::map<const std::string, const_formula_ptr> candidate_move_map;
 }
 
 class formula_ai : public ai {

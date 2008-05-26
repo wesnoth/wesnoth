@@ -865,6 +865,7 @@ private:
 class ai_function_symbol_table : public function_symbol_table {
 	formula_ai& ai_;
 	std::set<std::string> move_functions;
+	candidate_move_map candidate_move_evals;
 
 	expression_ptr create_function(const std::string& fn,
 	                               const std::vector<expression_ptr>& args) const {
@@ -919,15 +920,16 @@ class ai_function_symbol_table : public function_symbol_table {
 	
 public:
 
-	void add_formula_function(const std::string& name, const_formula_ptr formula, 
-							  const_formula_ptr precondition, const std::vector<std::string>& args)
+	void register_candidate_move(const std::string name, 
+			const_formula_ptr formula, const_formula_ptr eval, 
+			const_formula_ptr precondition, const std::vector<std::string>& args)
 	{
-		if(boost::regex_search(name,boost::regex("^ai_move"))) {
-			move_functions.insert(name);
-		}
-		function_symbol_table::add_formula_function(name, formula, precondition, args);
+		candidate_move_evals.insert(std::pair<const std::string, 
+				                         game_logic::const_formula_ptr>
+								         (name, eval));
+		function_symbol_table::add_formula_function(name, formula, 
+				                                    precondition, args);
 	}
-
 
 	explicit ai_function_symbol_table(formula_ai& ai) : ai_(ai)
 	{}
@@ -944,9 +946,30 @@ formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false)
 void formula_ai::play_turn()
 {
 	ai_function_symbol_table function_table(*this);
-	game_logic::candidate_move_map candidate_moves;
-
 	const config& ai_param = current_team().ai_parameters();
+
+	// Register candidate moves in function symbol table
+	config::const_child_itors rc_moves = 
+		ai_param.child_range("register_candidate_move");
+
+	for(config::const_child_iterator i = rc_moves.first; 
+			i != rc_moves.second; ++i) {
+		const t_string& name = (**i)["name"];
+		const t_string& inputs = (**i)["inputs"];
+		std::vector<std::string> args = utils::split(inputs);
+		const formula_ptr action_formula = 
+			  game_logic::formula::create_optional_formula((**i)["action"], 
+												           &function_table);
+		const formula_ptr eval_formula =
+			  game_logic::formula::create_optional_formula((**i)["evaluation"], 
+					  									   &function_table);
+		const formula_ptr precondition_formula = 
+			  game_logic::formula::create_optional_formula((**i)["precondition"],
+					                                       &function_table);
+		function_table.register_candidate_move(name, action_formula, eval_formula, 
+								precondition_formula, args);
+	}
+
 	config::const_child_itors team_formula = ai_param.child_range("team_formula");
 	if(team_formula.first != team_formula.second) {
 		std::string formula_string = (**team_formula.first)["rulebase"];
@@ -969,19 +992,14 @@ void formula_ai::play_turn()
 
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{
-		std::vector<game_logic::const_formula_ptr> unit_candidate_moves; 
-		unit_candidate_moves.push_back(move_formula_);
 		if ( (i->second.side() == get_info().team_num) && i->second.has_formula() )
 		{
 			game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
 			game_logic::map_formula_callable callable(this);
-			unit_candidate_moves.push_back(formula);
 			callable.add_ref();
 			callable.add("me", variant(new unit_callable(*i)));
 			make_move(formula, callable);
 		}
-		candidate_moves.insert(std::pair<const std::string, std::vector<game_logic::const_formula_ptr> >
-					(i->second.underlying_id(), unit_candidate_moves));
 	}
 
 	game_logic::map_formula_callable callable(this);
