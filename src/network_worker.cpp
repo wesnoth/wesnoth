@@ -817,16 +817,16 @@ bool close_socket(TCPsocket sock, bool force)
 		const threading::lock lock(*shard_mutexes[shard]);
 
 		pending_receives[shard].erase(std::remove(pending_receives[shard].begin(),pending_receives[shard].end(),sock),pending_receives[shard].end());
-		const socket_state_map::iterator lock_it = sockets_locked[shard].find(sock);
-		if(lock_it == sockets_locked[shard].end()) {
-			remove_buffers(sock);
-			return true;
-		}
 		{	
 			const threading::lock lock_schemas(*schemas_mutex);
 			schemas.erase(sock);
 		}
 
+		const socket_state_map::iterator lock_it = sockets_locked[shard].find(sock);
+		if(lock_it == sockets_locked[shard].end()) {
+			remove_buffers(sock);
+			return true;
+		}
 		if (!(lock_it->second == SOCKET_LOCKED || lock_it->second == SOCKET_INTERRUPT) || force) {
 			sockets_locked[shard].erase(lock_it);
 			remove_buffers(sock);
