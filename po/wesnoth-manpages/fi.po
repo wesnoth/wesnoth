@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
-"POT-Creation-Date: 2008-04-13 16:21+0200\n"
+"POT-Creation-Date: 2008-05-26 18:41+0200\n"
 "PO-Revision-Date: 2007-08-07 22:19+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
@@ -354,71 +354,83 @@ msgid "prints the name of the game data directory and exits."
 msgstr "tulostaa pelidatan polun ja lopettaa."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:129 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:129
+#, fuzzy, no-wrap
+msgid "B<--config-path>"
+msgstr "B<--path>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:132
+#, fuzzy
+msgid "prints the name of the user configuration directory and exits."
+msgstr "tulostaa pelidatan polun ja lopettaa."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:132 ../../doc/man/wesnoth_editor.6:62
 #, fuzzy, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r>, B<--resolution>\\ I<XxY>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:133
+#: ../../doc/man/wesnoth.6:136
 #, fuzzy
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "asettaa resoluution. Esimerkki: -r 800x600"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:133
+#: ../../doc/man/wesnoth.6:136
 #, fuzzy, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-v>, B<--version>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:137
+#: ../../doc/man/wesnoth.6:140
 msgid ""
 "skip menu, connect to specified host if any, otherwise connect to the first "
 "server in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:137
+#: ../../doc/man/wesnoth.6:140
 #, fuzzy, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t>, B<--test>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:140
+#: ../../doc/man/wesnoth.6:143
 msgid "runs the game in a small test scenario."
 msgstr "käynnistää pelin pienessä testiskenaariossa."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:140
+#: ../../doc/man/wesnoth.6:143
 #, fuzzy, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v>, B<--version>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:143
+#: ../../doc/man/wesnoth.6:146
 msgid "shows the version number and exits."
 msgstr "tulostaa versiotiedot ja lopettaa."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:143
+#: ../../doc/man/wesnoth.6:146
 #, fuzzy, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w>, B<--windowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:146
+#: ../../doc/man/wesnoth.6:149
 msgid "runs the game in windowed mode."
 msgstr "käynnistää pelin sovellusikkunassa."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:146
+#: ../../doc/man/wesnoth.6:149
 #, no-wrap
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:150
+#: ../../doc/man/wesnoth.6:153
 #, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
@@ -428,26 +440,26 @@ msgstr ""
 "automaattisesti päällä --nogui :n ajaessa. "
 
 # type: TP
-#: ../../doc/man/wesnoth.6:150
+#: ../../doc/man/wesnoth.6:153
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:155
+#: ../../doc/man/wesnoth.6:158
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:155
+#: ../../doc/man/wesnoth.6:158
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:161
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -458,13 +470,13 @@ msgstr ""
 "suorituskykytestausta varten. "
 
 # type: SH
-#: ../../doc/man/wesnoth.6:159
+#: ../../doc/man/wesnoth.6:162
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Valitsimen --multiplayer kanssa käytettävät valitsimet"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:166
+#: ../../doc/man/wesnoth.6:169
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -472,13 +484,13 @@ msgid ""
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:166
+#: ../../doc/man/wesnoth.6:169
 #, fuzzy, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithmE<lt>pelaajaE<gt>=arvo>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:173
+#: ../../doc/man/wesnoth.6:176
 #, fuzzy
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
@@ -486,26 +498,26 @@ msgid ""
 msgstr "asettaa pelaajan ohjaajan. Sallittuja arvoja ovat human ja ai."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:173
+#: ../../doc/man/wesnoth.6:176
 #, fuzzy, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controllerE<lt>pelaajaE<gt>=arvo>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:179
+#: ../../doc/man/wesnoth.6:182
 #, fuzzy
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "asettaa pelaajan ohjaajan. Sallittuja arvoja ovat human ja ai."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:179
+#: ../../doc/man/wesnoth.6:182
 #, fuzzy, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=arvo>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:189
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -513,13 +525,13 @@ msgid ""
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:189
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:195
+#: ../../doc/man/wesnoth.6:198
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -527,69 +539,69 @@ msgid ""
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:195
+#: ../../doc/man/wesnoth.6:198
 #, fuzzy, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--era=arvo>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:202
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:202
 #, fuzzy, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--algorithmE<lt>pelaajaE<gt>=arvo>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:204
+#: ../../doc/man/wesnoth.6:207
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:204
+#: ../../doc/man/wesnoth.6:207
 #, fuzzy, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--era=arvo>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:208
+#: ../../doc/man/wesnoth.6:211
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:208
+#: ../../doc/man/wesnoth.6:211
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:211
+#: ../../doc/man/wesnoth.6:214
 msgid ""
 "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:212 ../../doc/man/wesnoth_editor.6:74
+#: ../../doc/man/wesnoth.6:215 ../../doc/man/wesnoth_editor.6:74
 #: ../../doc/man/wesnothd.6:163
 #, no-wrap
 msgid "AUTHOR"
 msgstr "TEKIJÄT"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:215 ../../doc/man/wesnoth_editor.6:77
+#: ../../doc/man/wesnoth.6:218 ../../doc/man/wesnoth_editor.6:77
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Kirjoittanut David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:217
+#: ../../doc/man/wesnoth.6:220
 #, fuzzy
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
@@ -600,7 +612,7 @@ msgstr ""
 "Suomentanut Niklas Laxström <lt>niklas.laxstrom+wesnoth@gmail.com</gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:219 ../../doc/man/wesnoth_editor.6:81
+#: ../../doc/man/wesnoth.6:222 ../../doc/man/wesnoth_editor.6:81
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -609,20 +621,20 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:221 ../../doc/man/wesnoth_editor.6:83
+#: ../../doc/man/wesnoth.6:224 ../../doc/man/wesnoth_editor.6:83
 #: ../../doc/man/wesnothd.6:170
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Käy virallisella sivustolla: http://www.wesnoth.org/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:222 ../../doc/man/wesnoth_editor.6:84
+#: ../../doc/man/wesnoth.6:225 ../../doc/man/wesnoth_editor.6:84
 #: ../../doc/man/wesnothd.6:171
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "TEKIJÄNOIKEUS"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:225 ../../doc/man/wesnoth_editor.6:87
+#: ../../doc/man/wesnoth.6:228 ../../doc/man/wesnoth_editor.6:87
 #: ../../doc/man/wesnothd.6:174
 #, fuzzy
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -630,7 +642,7 @@ msgstr ""
 "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:228 ../../doc/man/wesnoth_editor.6:90
+#: ../../doc/man/wesnoth.6:231 ../../doc/man/wesnoth_editor.6:90
 #: ../../doc/man/wesnothd.6:177
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
@@ -642,14 +654,14 @@ msgstr ""
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:229 ../../doc/man/wesnoth_editor.6:91
+#: ../../doc/man/wesnoth.6:232 ../../doc/man/wesnoth_editor.6:91
 #: ../../doc/man/wesnothd.6:178
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "KATSO MYÖS"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:232
+#: ../../doc/man/wesnoth.6:235
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr ""
 
