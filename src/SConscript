@@ -226,6 +226,7 @@ Export("wesnoth_editor")
 
 campaignd_sources = Split("""
     campaign_server/campaign_server.cpp
+    server/input_stream.cpp
     """)
 if have_server_prereqs:
     campaignd = env.Program("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd])

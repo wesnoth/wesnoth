@@ -129,7 +129,7 @@ void queue_disconnect(connection connection_num);
 //! Returns the connection that data was received from,
 //! or 0 if timeout occurred.
 //! Throws error if an error occurred.
-connection receive_data(config& cfg, connection connection_num=0);
+connection receive_data(config& cfg, connection connection_num=0, bool* gzipped = 0);
 connection receive_data(config& cfg, connection connection_num, unsigned int timeout);
 connection receive_data(std::vector<char>& buf);
 

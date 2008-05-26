@@ -18,9 +18,13 @@
 #include "network.hpp"
 #include "publish_campaign.hpp"
 #include "util.hpp"
+#include "scoped_resource.hpp"
 #include "serialization/binary_wml.hpp"
+#include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "game_config.hpp"
+
+#include "server/input_stream.hpp"
 
 #include "SDL.h"
 
@@ -62,12 +66,17 @@ namespace {
 		public:
 			explicit campaign_server(const std::string& cfgfile,size_t min_thread = 10,size_t max_thread = 0);
 			void run();
+			~campaign_server()
+			{
+				delete input_;
+			}
 		private:
 			/**
 			 * Fires a script, if no script defined it will always return true
 			 * If a script is defined but can't be executed it will return false
 			 */
 			void fire(const std::string& hook, const std::string& addon);
+			void convert_binary_to_gzip();
 			int load_config(); // return the server port
 			const config& campaigns() const { return *cfg_.child("campaigns"); }
 			config& campaigns() { return *cfg_.child("campaigns"); }
@@ -76,6 +85,8 @@ namespace {
 			const network::manager net_manager_;
 			const network::server_manager server_manager_;
 			std::map<std::string, std::string> hooks_;
+			input_stream* input_;
+			int compress_level_;
 
 	};
 
@@ -121,11 +132,14 @@ namespace {
 	{
 		scoped_istream stream = istream_file(file_);
 		read(cfg_, *stream);
+ 		/** Seems like compression level above 6 is waste of cpu cycle */
+ 		compress_level_ = lexical_cast_default<int>(cfg_["compress_level"],6);
+ 		cfg_["compress_level"] = lexical_cast<std::string>(compress_level_);
 		return lexical_cast_default<int>(cfg_["port"], 15003);
 	}
 
 	campaign_server::campaign_server(const std::string& cfgfile,size_t min_thread,size_t max_thread)
-		: file_(cfgfile), net_manager_(min_thread,max_thread), server_manager_(load_config())
+		: file_(cfgfile), net_manager_(min_thread,max_thread), server_manager_(load_config()), input_(0)
 	{
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
@@ -163,7 +177,7 @@ namespace {
 			// Campaign contains python scripts.
 			config old_campaign;
 			scoped_istream stream = istream_file(filename);
-			read_compressed(old_campaign, *stream);
+			read_gz(old_campaign, *stream);
 			std::vector<config *> old_scripts = find_scripts(old_campaign, ".py");
 			std::string script_names = "";
 			std::vector<config *>::iterator i, j;
@@ -235,26 +249,70 @@ namespace {
 				", path is \"" << game_config::path << "\"\n";
 		}
 	}
+ 	void campaign_server::convert_binary_to_gzip()
+ 	{
+ 		if (cfg_["converted_to_gzipped_data"] != "yes")
+ 		{
+			// Convert all addons to gzip
+ 			config::child_list camps = campaigns().get_children("campaign");
+ 			LOG_CS << "Converting all stored addons to gzip format. Number of addons: " << camps.size() <<"\n";
+ 
+ 			for (config::child_list::iterator itor = camps.begin();
+ 					itor != camps.end(); ++itor)
+ 			{
+ 				LOG_CS << "Converting " << (**itor)["name"] << "\n";
+ 				scoped_istream binary_stream = istream_file((**itor)["filename"]);
+ 				config data;
+ 				if (binary_stream->peek() == 31) //This is gzip file allready
+ 				{
+ 					LOG_CS << "All ready converted\n";
+ 					continue;
+ 				}
+ 				read_compressed(data, *binary_stream);
+ 
+ 				scoped_ostream gzip_stream = ostream_file((**itor)["filename"]);
+ 				config_writer writer(*gzip_stream, true, "",compress_level_);
+ 				writer.write(data);
+ 			}
+ 			
+ 			cfg_["converted_to_gzipped_data"] = "yes";
+ 		}
+ 	}
 
 	void campaign_server::run()
 	{
+ 		convert_binary_to_gzip();
+ 		
+ 		if (!cfg_["control_socket"].empty())
+ 			input_ = new input_stream(cfg_["control_socket"]); 
+		bool gzipped;
+		network::connection sock = 0;
 		for(int increment = 0; ; ++increment) {
 			try {
-				//write config to disk every ten minutes
-				if((increment%(60*10*2)) == 0) {
+ 				std::string admin_cmd;
+ 				if (input_ && input_->read_line(admin_cmd))
+ 				{
+ 					// process command
+ 					if (admin_cmd == "shut_down")
+ 					{
+ 						break;
+ 					}
+ 				}
+			//write config to disk every ten minutes
+				if((increment%(60*10*50)) == 0) {
 					scoped_ostream cfgfile = ostream_file(file_);
 					write(*cfgfile, cfg_);
 				}
 
 				network::process_send_queue();
 
-				network::connection sock = network::accept_connection();
+				sock = network::accept_connection();
 				if(sock) {
 					LOG_CS << "received connection from " << network::ip_address(sock) << "\n";
 				}
 
 				config data;
-				while((sock = network::receive_data(data)) != network::null_connection) {
+				while((sock = network::receive_data(data, 0, &gzipped)) != network::null_connection) {
 					if(const config* req = data.child("request_campaign_list")) {
 						LOG_CS << "sending campaign list to " << network::ip_address(sock) << "\n";
 						time_t epoch = time(NULL);
@@ -310,26 +368,33 @@ namespace {
 
 						config response;
 						response.add_child("campaigns",campaign_list);
-						network::send_data(response, sock, true);
+						network::send_data(response, sock, gzipped);
 					} else if(const config* req = data.child("request_campaign")) {
 						LOG_CS << "sending campaign '" << (*req)["name"] << "' to " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 						if(campaign == NULL) {
-							network::send_data(construct_error("Add-on '" + (*req)["name"] + "'not found."), sock, true);
+							network::send_data(construct_error("Add-on '" + (*req)["name"] + "'not found."), sock, gzipped);
 						} else {
-							config cfg;
-							scoped_istream stream = istream_file((*campaign)["filename"]);
-							read_compressed(cfg, *stream);
-							add_license(cfg);
-							network::send_data(cfg, sock, true);
-
+ 							size_t size = file_size((*campaign)["filename"]);
+  							scoped_istream stream = istream_file((*campaign)["filename"]);
+ 							if (gzipped)
+ 							{
+ 								util::scoped_resource<char*,util::delete_array> buf(new char[size+1]);
+ 								stream->read(buf,size);
+  
+ 								network::send_raw_data(buf, size, sock);
+ 							} else {
+ 								config cfg;
+ 								read_gz(cfg, *stream);
+ 								network::send_data(cfg, sock, false);
+ 							}
 							const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
 							(*campaign)["downloads"] = lexical_cast<std::string>(downloads);
 						}
 
 					} else if(data.child("request_terms") != NULL) {
 						LOG_CS << "sending terms " << network::ip_address(sock) << "\n";
-						network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."), sock, true);
+						network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."), sock, gzipped);
 						LOG_CS << " Done\n";
 					} else if(config* upload = data.child("upload")) {
 						LOG_CS << "uploading campaign '" << (*upload)["name"] << "' from " << network::ip_address(sock) << ".\n";
@@ -337,13 +402,13 @@ namespace {
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 						if(data == NULL) {
 							LOG_CS << "Upload aborted no data.\n";
-							network::send_data(construct_error("No add-on data was supplied."), sock, true);
+							network::send_data(construct_error("No add-on data was supplied."), sock, gzipped);
 						} else if(campaign_name_legal((*upload)["name"]) == false) {
 							LOG_CS << "Upload aborted invalid name.\n";
-							network::send_data(construct_error("The name of the add-on is invalid"), sock, true);
+							network::send_data(construct_error("The name of the add-on is invalid"), sock, gzipped);
 						} else if(check_names_legal(*data) == false) {
 							LOG_CS << "Upload aborted invalid file name.\n";
-							network::send_data(construct_error("The add-on contains an illegal file or directory name."), sock, true);
+							network::send_data(construct_error("The add-on contains an illegal file or directory name."), sock, gzipped);
 						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 							// the user password failed, now test for the master password, in master password
 							// mode the upload behaves different since it's only intended to update translations.
@@ -367,18 +432,22 @@ namespace {
 								(*campaign).clear_children("translation");
 								find_translations(*data, *campaign);
 
+								add_license(*data);
+
 								scoped_ostream campaign_file = ostream_file(filename);
-								write_compressed(*campaign_file, *data);
+								config_writer writer(*campaign_file, true, "",compress_level_);
+								writer.write(*data);
+//								write_compressed(*campaign_file, *data);
 
 								(*campaign)["size"] = lexical_cast<std::string>(
 										file_size(filename));
 								scoped_ostream cfgfile = ostream_file(file_);
 								write(*cfgfile, cfg_);
-								network::send_data(construct_message(message), sock, true);
+								network::send_data(construct_message(message), sock, gzipped);
 
 							} else {
 								LOG_CS << "Upload aborted invalid passphrase.\n";
-								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."), sock, true);
+								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."), sock, gzipped);
 							}
 						} else {
 							LOG_CS << "Upload is owner upload.\n";
@@ -423,14 +492,19 @@ namespace {
 							if ((*campaign)["python"] != "allowed") {
 								message += check_python_scripts(*data, filename);
 							}
+
+							add_license(*data);
+
 							scoped_ostream campaign_file = ostream_file(filename);
-							write_compressed(*campaign_file, *data);
+							config_writer writer(*campaign_file, true, "",compress_level_);
+							writer.write(*data);
+//							write_compressed(*campaign_file, *data);
 
 							(*campaign)["size"] = lexical_cast<std::string>(
 									file_size(filename));
 							scoped_ostream cfgfile = ostream_file(file_);
 							write(*cfgfile, cfg_);
-							network::send_data(construct_message(message), sock, true);
+							network::send_data(construct_message(message), sock, gzipped);
 
 							fire("hook_post_upload", (*upload)["name"]);
 						}
@@ -438,7 +512,7 @@ namespace {
 						LOG_CS << "deleting campaign '" << (*erase)["name"] << "' requested from " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*erase)["name"]);
 						if(campaign == NULL) {
-							network::send_data(construct_error("The add-on does not exist."), sock, true);
+							network::send_data(construct_error("The add-on does not exist."), sock, gzipped);
 							continue;
 						}
 
@@ -446,7 +520,7 @@ namespace {
 								&& (campaigns()["master_password"] == ""
 								|| campaigns()["master_password"] != (*erase)["passphrase"])) {
 
-							network::send_data(construct_error("The passphrase is incorrect."), sock, true);
+							network::send_data(construct_error("The passphrase is incorrect."), sock, gzipped);
 							continue;
 						}
 
@@ -459,50 +533,52 @@ namespace {
 						campaigns().remove_child("campaign",index);
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
-						network::send_data(construct_message("Add-on deleted."), sock, true);
+						network::send_data(construct_message("Add-on deleted."), sock, gzipped);
 
 						fire("hook_post_erase", (*erase)["name"]);
 
 					} else if(const config* cpass = data.child("change_passphrase")) {
 						config* campaign = campaigns().find_child("campaign","name",(*cpass)["name"]);
 						if(campaign == NULL) {
-							network::send_data(construct_error("No add-on with that name exists."), sock, true);
+							network::send_data(construct_error("No add-on with that name exists."), sock, gzipped);
 						} else if((*campaign)["passphrase"] != (*cpass)["passphrase"]) {
-							network::send_data(construct_error("Your old passphrase was incorrect."), sock, true);
+							network::send_data(construct_error("Your old passphrase was incorrect."), sock, gzipped);
 						} else if((const t_string)(*cpass)["new_passphrase"] == "") {
-							network::send_data(construct_error("No new passphrase was supplied."), sock, true);
+							network::send_data(construct_error("No new passphrase was supplied."), sock, gzipped);
 						} else {
 							(*campaign)["passphrase"] = (*cpass)["new_passphrase"];
 							scoped_ostream cfgfile = ostream_file(file_);
 							write(*cfgfile, cfg_);
-							network::send_data(construct_message("Passphrase changed."), sock, true);
+							network::send_data(construct_message("Passphrase changed."), sock, gzipped);
 						}
 					} else if(const config* cvalidate = data.child("validate_scripts")) {
 						config* campaign = campaigns().find_child("campaign","name",(*cvalidate)["name"]);
 						if(campaign == NULL) {
 							network::send_data(construct_error(
-										"No add-on with that name exists."), sock, true);
+										"No add-on with that name exists."), sock, gzipped);
 						} else if(campaigns()["master_password"] == "") {
 							network::send_data(construct_error(
-										"Sever does not allow scripts."), sock, true);
+										"Sever does not allow scripts."), sock, gzipped);
 						} else if (campaigns()["master_password"] != (*cvalidate)["master_password"]) {
 							network::send_data(construct_error(
-										"Password was incorrect."), sock, true);
+										"Password was incorrect."), sock, gzipped);
 						} else {
 							// Read the campaign from disk.
 							config campaign_file;
 							scoped_istream stream = istream_file((*campaign)["filename"]);
-							read_compressed(campaign_file, *stream);
+							read_gz(campaign_file, *stream);
 							std::string scripts = validate_all_python_scripts(campaign_file);
 							if (!scripts.empty()) {
 								// Write the campaign with changed filenames back to disk
 								scoped_ostream ostream = ostream_file((*campaign)["filename"]);
-								write_compressed(*ostream, campaign_file);
+								config_writer writer(*ostream, true, "",compress_level_);
+								writer.write(campaign_file);
+//								write_compressed(*ostream, campaign_file);
 
 								network::send_data(construct_message("The following scripts have been validated: " +
-											scripts), sock, true);
+											scripts), sock, gzipped);
 							} else {
-								network::send_data(construct_message("No unchecked scripts found!"), sock, true);
+								network::send_data(construct_message("No unchecked scripts found!"), sock, gzipped);
 							}
 						}
 					}
@@ -517,6 +593,7 @@ namespace {
 				}
 			} catch(config::error& /*e*/) {
 				LOG_CS << "error in receiving data...\n";
+				network::disconnect(sock);
 			}
 
 			SDL_Delay(20);

@@ -192,6 +192,7 @@ wesnothd_DEPENDENCIES=libwesnoth-core.a
 
 campaignd_SOURCES = \
 	campaign_server/campaign_server.cpp \
+	server/input_stream.cpp \
 	network.cpp \
 	network_worker.cpp \
 	publish_campaign.cpp \

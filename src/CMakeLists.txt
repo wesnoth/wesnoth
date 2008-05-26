@@ -350,6 +350,7 @@ IF(ENABLE_CAMPAIGN_SERVER)
 
 SET(campaignd_SRC
     campaign_server/campaign_server.cpp
+    server/input_stream.cpp
     network.cpp
     network_worker.cpp
     publish_campaign.cpp

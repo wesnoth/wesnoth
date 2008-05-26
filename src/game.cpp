@@ -1260,7 +1260,7 @@ void game_controller::download_campaigns(std::string host)
 		config cfg;
 		cfg.add_child("request_campaign_list");
 		// @todo Should be enabled once the campaign server can be recompiled.
-		network::send_data(cfg, sock, false);
+		network::send_data(cfg, sock, true);
 
 		network::connection res = dialogs::network_receive_dialog(disp(),_("Asking for list of add-ons"),cfg,sock);
 		if(!res) {
@@ -1407,7 +1407,7 @@ void game_controller::download_campaigns(std::string host)
 		config request;
 		request.add_child("request_campaign")["name"] = campaigns[index];
 		// @todo Should be enabled once the campaign server can be recompiled.
-		network::send_data(request, sock, false);
+		network::send_data(request, sock, true);
 
 		res = dialogs::network_receive_dialog(disp(),_("Downloading add-on..."),cfg,sock);
 		if(!res) {
@@ -1476,7 +1476,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	config request_terms;
 	request_terms.add_child("request_terms");
 	// @todo Should be enabled once the campaign server can be recompiled.
-	network::send_data(request_terms, sock, false);
+	network::send_data(request_terms, sock, true);
 	config data;
 	sock = network::receive_data(data,sock,5000);
 	if(!sock) {
@@ -1519,7 +1519,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 
 	LOG_NET << "uploading campaign...\n";
 	// @todo Should be enabled once the campaign server can be recompiled.
-	network::send_data(data, sock, false);
+	network::send_data(data, sock, true);
 
 	sock = dialogs::network_send_dialog(disp(),_("Sending add-on"),data,sock);
 	if(!sock) {
@@ -1547,7 +1547,7 @@ void game_controller::delete_campaign(const std::string& campaign, network::conn
 	data.add_child("delete",msg);
 
 	// @todo Should be enabled once the campaign server can be recompiled.
-	network::send_data(data, sock, false);
+	network::send_data(data, sock, true);
 
 	sock = network::receive_data(data,sock,5000);
 	if(!sock) {

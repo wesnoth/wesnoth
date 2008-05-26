@@ -559,6 +559,7 @@ static int process_queue(void* shard_num)
 			try {
 				if(stream.peek() == 31) {
 					read_gz(received_data->config_buf, stream);
+					received_data->gzipped = true;
 				} else {
 					compression_schema *compress;
 					{
@@ -566,6 +567,7 @@ static int process_queue(void* shard_num)
 						compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
 					}
 					read_compressed(received_data->config_buf, stream, *compress);
+					received_data->gzipped = false;
 				}
 			} catch(config::error &e)
 			{
@@ -696,7 +698,7 @@ void receive_data(TCPsocket sock)
 	}
 }
 
-TCPsocket get_received_data(TCPsocket sock, config& cfg)
+TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped)
 {
 	assert(!raw_data_only);
 	const threading::lock lock_received(*received_mutex);
@@ -715,6 +717,8 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 		// throw the error in parent thread
 		std::string error = (*itor)->config_error;
 		buffer* buf = *itor;
+		if (gzipped)
+			*gzipped = buf->gzipped;
 		received_data_queue.erase(itor);
 		delete buf;
 		throw config::error(error);
