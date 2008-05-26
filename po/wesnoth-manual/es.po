@@ -1,5 +1,5 @@
 # Spanish translations for Battle for Wesnoth package
-# Copyright (C) 2007 Wesnoth Development Team
+# Copyright (C) 2007, 2008 Wesnoth Development Team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Sergi March <sergi.march@gmail.com>, 2008
 #
@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-05-11 16:22+0200\n"
-"PO-Revision-Date: 2008-05-03 08:52+0100\n"
+"PO-Revision-Date: 2008-05-25 13:24+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -67,11 +67,11 @@ msgid ""
 "Orcish tribe to victory against the humans who dared despoil your lands."
 msgstr ""
 "Wesnoth tiene muchas sagas diferentes a la espera de ser jugadas. Puede "
-"luchar contra orcos, no-muertos, y bandidos en los límites del Reino de "
+"luchar contra orcos, no muertos, y bandidos en los límites del Reino de "
 "Wesnoth; lucha junto a los dragones de los elevados picos, elfos en las "
 "zonas verdes de la Aethenwood, enanos en los grandes salones de Knalga, o "
 "incluso sirénidos en la Bahía de las Perlas. Puedes luchar para recuperar el "
-"trono de Wesnoth, o usar tu poder terrorífico sobre los no-muertos para "
+"trono de Wesnoth, o usar tu poder terrorífico sobre los no muertos para "
 "dominar la tierra de los mortales, o conducir a tu gloriosa tribu de Orcos a "
 "la victoria contra los humanos que se atreven despojar tus tierras. "
 
@@ -175,7 +175,7 @@ msgid ""
 msgstr ""
 "En el mundo de Wesnoth moran los seres humanos, elfos, enanos, orcos, "
 "dracos, saurios, sirénidos, nagas, y muchas otras razas aún más ocultas y "
-"maravillosas. En las tierras malditas caminan los no-muertos, fantasmas y "
+"maravillosas. En las tierras malditas caminan los no muertos, fantasmas y "
 "espectros. Cada una se ha adaptado a terrenos particulares. Los seres "
 "humanos habitan principalmente las praderas de clima templado. En las "
 "colinas, montañas y cuevas subterráneas orcos y enanos son mayoría. En los "
@@ -1568,6 +1568,12 @@ msgid ""
 "ended the previous scenario with, and a minimum amount defined by the "
 "scenario, which is typically lower as the difficulty level increases."
 msgstr ""
+"Cada una de las partes recibe una cierta cantidad de oro para empezar, y "
+"recibe 2 piezas de oro por turno, más 1 pieza de oro más por cada aldea que "
+"tenga bajo su control. En una campaña el oro inicial es lo que sea más alto "
+"entre el 80% del oro restante del escenario anterior y la cantidad mínima "
+"definida en el escenario, que es típicamente más baja cuando el nivel de "
+"dificultad se incrementa."
 
 #: ../../doc/manual/manual.en.xml:1010
 msgid "Recruiting and Recalling"
@@ -1588,6 +1594,10 @@ msgid ""
 "recruited or recalled when the leader is on a keep whose castle has at least "
 "one vacant castle hex."
 msgstr ""
+"El principal uso del oro es para construir tu ejército reclutando nuevas "
+"unidades o reincorporando unidades de escenarios previos en una campaña. Las "
+"unidades pueden ser reclutadas o reincorporadas cuando el líder esté en un "
+"torreón cuyo castillo tiene por lo menos un hexágono vacante."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1026
@@ -1596,6 +1606,9 @@ msgid ""
 "from the list that is presented. The cost to Recruit depends on the unit, "
 "but is usually between 10 and 20 gold."
 msgstr ""
+"Clica con el botón derecho en un hexágono vacío y selecciona Reclutar para "
+"reclutar nuevas unidades de la lista que se te presenta. El coste de "
+"Reclutar depende de la unidad, pero generalmente está entre 10 y 20 de oro."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1033
@@ -1604,6 +1617,10 @@ msgid ""
 "previous scenarios. Recalling costs 20 pieces of gold per unit. See <link "
 "linkend=\"unit_recall\">recalling units</link> for more information."
 msgstr ""
+"Clica con el botón derecho en un hexágono de castillo vacío y seleccione "
+"Rincorporar para reincorporar unidades de un escenario previo. Reincorporar "
+"cuesta 20 piezas de oro por unidad. Ver <link linkend=\"unit_recall"
+"\">reincorporando unidades</link> para obtener más información. "
 
 #: ../../doc/manual/manual.en.xml:1041
 msgid "Upkeep"
@@ -1620,6 +1637,15 @@ msgid ""
 "the number of villages that side controls. Upkeep paid is the difference "
 "between the number of villages and the upkeep cost."
 msgstr ""
+"Cada unidad tiene también un coste de mantenimiento. El coste de "
+"mantenimiento es generalmente igual al nivel de la unidad, a menos que la "
+"unidad tiene el rasgo \"Leal\" (<link linkend=\"traits\">véase más adelante</"
+"link>). Las unidades que no son reclutadas inicialmente - es decir, el líder "
+"o los que se unen voluntariamente - por lo general tienen el rasgo Leal. El "
+"mantenimiento sólo se pagará si el mantenimiento total de las unidades de un "
+"bando es mayor que el número de aldeas que el bando controla. El "
+"mantenimiento pagado es la diferencia entre el número de aldeas y el coste "
+"de mantenimiento."
 
 #: ../../doc/manual/manual.en.xml:1051
 msgid "Income"
@@ -1628,13 +1654,15 @@ msgstr "Ingresos"
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1052
 msgid "So, the formula for determining the income per turn is"
-msgstr ""
+msgstr "Por tanto, la fórmula para determinar los ingresos por turno es"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1055
 msgid ""
 "where upkeep is equal to the sum of the levels of all your non-loyal units."
 msgstr ""
+"donde el mantenimiento es igual a la suma de los niveles de todas tus "
+"unidades no-leales."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1058
@@ -1642,6 +1670,8 @@ msgid ""
 "If the upkeep cost is greater than the number of villages+2 then the side "
 "starts losing gold, if it is equal, no income is gained or lost."
 msgstr ""
+"Si el coste de mantenimiento es mayor que el número de aldeas +2 entonces el "
+"bando empieza a perder oro, si es igual, no hay ganancia ni pérdida."
 
 #: ../../doc/manual/manual.en.xml:1064
 msgid "Units"
@@ -1656,6 +1686,12 @@ msgid ""
 "other units of the same type. Finally, campaign designers can add unique "
 "units to their campaigns to further expand the options available to players."
 msgstr ""
+"Battle for Wesnoth tiene cientos de tipos de unidades que se caracterizan "
+"por un rico conjunto de estadísticas. Además, las unidades individuales "
+"pueden tener <link linkend=\"traits\"> rasgos</link>específicos que los "
+"hacen sutilmente diferentes de otras unidades del mismo tipo. Por último, "
+"los diseñadores de campañas puede agregar unidades únicas para sus campañas "
+"para seguir ampliando las opciones disponibles para los jugadores."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1071
@@ -1665,11 +1701,16 @@ msgid ""
 "In addition, units have other characteristics, such as alignment and special "
 "abilities, that are described in more detail below."
 msgstr ""
+"Las estadísticas básicas de una unidad incluyen sus puntos de vida puntos "
+"(PV), el número de puntos de movimiento que tiene, y las armas que puede "
+"utilizar y el daño que hacen. Además, las unidades tienen otras "
+"características, como la alineación y habilidades especiales, que se "
+"describen en mayor detalle más adelante."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:1077
 msgid "Alignment"
-msgstr ""
+msgstr "Alineación"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1078
@@ -1679,6 +1720,11 @@ msgid ""
 "the time of day. Lawful units do more damage during the day and less at "
 "night. Chaotic units do more damage at night and less during the day."
 msgstr ""
+"Cada unidad tiene una alineación: legal, neutral o caótico. La alineación "
+"afecta a cómo las unidades se comportan en diferentes momentos del día. Las "
+"unidades neutrales no se ven afectadas por la hora del día. Las unidades "
+"Legales hacen más daño durante el día y menos por la noche. Las unidades "
+"Caóticas hacen más daño por la noche y menos durante el día."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1084
@@ -1687,6 +1733,9 @@ msgid ""
 "Afternoon and First Watch, Second Watch, by the positions of the sun and "
 "moon in the time of day graphic."
 msgstr ""
+"Las dos fases de \"día\" y \"noche\" están diferenciadas como la Mañana, "
+"Tarde y Anochecer y Noche Cerrada, por las posiciones del sol y la luna en "
+"la hora del día gráfica."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1088
@@ -1694,11 +1743,13 @@ msgid ""
 "The following table shows the effects of different times of the day on the "
 "damage dealt by lawful and chaotic units:"
 msgstr ""
+"La siguiente tabla muestra los efectos de diferentes momentos del día en el "
+"daño infligido por unidades legales y caóticas:"
 
 # type: Content of: <book><chapter><section><section><table><title>
 #: ../../doc/manual/manual.en.xml:1095
 msgid "Time of the day and damage"
-msgstr ""
+msgstr "Momento del día y daño"
 
 #: ../../doc/manual/manual.en.xml:1105
 msgid "Turn"
@@ -1707,28 +1758,28 @@ msgstr "Turno"
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:1108 ../../doc/manual/manual.en.xml:1968
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:1111
 msgid "Day-phase"
-msgstr ""
+msgstr "Fase del Día"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:1114
 msgid "Lawful"
-msgstr ""
+msgstr "Legal"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:1117
 msgid "Chaotic"
-msgstr ""
+msgstr "Caótico"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1124 ../../doc/manual/manual.en.xml:1825
 #: ../../doc/manual/manual.en.xml:1831
 msgid "1"
-msgstr ""
+msgstr "1"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1127
@@ -1745,13 +1796,13 @@ msgstr "Amanecer"
 #: ../../doc/manual/manual.en.xml:1138 ../../doc/manual/manual.en.xml:1141
 #: ../../doc/manual/manual.en.xml:1204 ../../doc/manual/manual.en.xml:1207
 msgid "&#8212;"
-msgstr ""
+msgstr "&#8212;"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1146 ../../doc/manual/manual.en.xml:1836
 #: ../../doc/manual/manual.en.xml:1842
 msgid "2"
-msgstr ""
+msgstr "2"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1149
@@ -1763,27 +1814,27 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1157
 msgid "Day (morning)"
-msgstr ""
+msgstr "Día (mañana)"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1160 ../../doc/manual/manual.en.xml:1182
 #: ../../doc/manual/manual.en.xml:1229 ../../doc/manual/manual.en.xml:1251
 #: ../../doc/manual/manual.en.xml:1273
 msgid "+25%"
-msgstr ""
+msgstr "+25%"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1163 ../../doc/manual/manual.en.xml:1185
 #: ../../doc/manual/manual.en.xml:1226 ../../doc/manual/manual.en.xml:1248
 #: ../../doc/manual/manual.en.xml:1270
 msgid "-25%"
-msgstr ""
+msgstr "-25%"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1168 ../../doc/manual/manual.en.xml:1847
 #: ../../doc/manual/manual.en.xml:1853
 msgid "3"
-msgstr ""
+msgstr "3"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1171
@@ -1795,13 +1846,13 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1179
 msgid "Day (afternoon)"
-msgstr ""
+msgstr "Día (tarde)"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1190 ../../doc/manual/manual.en.xml:1817
 #: ../../doc/manual/manual.en.xml:1858 ../../doc/manual/manual.en.xml:1864
 msgid "4"
-msgstr ""
+msgstr "4"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1193
@@ -1818,7 +1869,7 @@ msgstr "Ocaso"
 #: ../../doc/manual/manual.en.xml:1212 ../../doc/manual/manual.en.xml:1869
 #: ../../doc/manual/manual.en.xml:1875
 msgid "5"
-msgstr ""
+msgstr "5"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1215
@@ -1830,13 +1881,13 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1223
 msgid "Night (first watch)"
-msgstr ""
+msgstr "Noche (anochecer)"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1234 ../../doc/manual/manual.en.xml:1880
 #: ../../doc/manual/manual.en.xml:1886
 msgid "6"
-msgstr ""
+msgstr "6"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1237
@@ -1848,12 +1899,12 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1245
 msgid "Night (second watch)"
-msgstr ""
+msgstr "Noche (noche cerrada)"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1256
 msgid "Special"
-msgstr ""
+msgstr "Especial"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1259
@@ -1865,7 +1916,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1267
 msgid "Underground"
-msgstr ""
+msgstr "Bajo Tierra"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1279
@@ -1873,6 +1924,8 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Ten en cuenta que algunos escenarios se juegan bajo tierra, donde es "
+"perpetuamente de noche!"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1282
@@ -1884,6 +1937,13 @@ msgid ""
 "(<literal>12 * 0.75</literal>) or 9 points. During First or Second Watch, "
 "the Lawful unit would do 9 points compared to the Chaotic unit's 15."
 msgstr ""
+"Por ejemplo: considera una pelea entre una unidad Legal y una Caótica cuando "
+"ambas tienen un daño base de 12. Al amanecer y al anochecer, ambos harán 12 "
+"puntos de daño si consiguen golpear. Durante la Mañana o la Tarde, la unidad "
+"Legal hará (<literal>12 * 1.25</literal>) o 15 puntos, mientras que la "
+"unidad Caótica hará (<literal>12 * 0.75</literal>) o 9 puntos. Durante el "
+"Anochecer o la Noche Cerrada, la unidad Legal hará 9 puntos en comparación "
+"con la unidad Caótica que hará 15."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1289
@@ -1891,6 +1951,8 @@ msgid ""
 "If an equivalent Neutral unit were fighting, it would always do 12 points of "
 "damage regardless of the hour."
 msgstr ""
+"Si una unidad equivalente Neutral estuviera luchando, siempre haría 12 "
+"puntos de daño, independientemente de la hora."
 
 #: ../../doc/manual/manual.en.xml:1294
 msgid "Traits"
@@ -1903,11 +1965,15 @@ msgid ""
 "assigned randomly to units when they are created. Most units receive two "
 "traits."
 msgstr ""
+"Las unidades tienen rasgos que reflejan aspectos de su carácter. Los rasgos "
+"son asignados al azar a las unidades cuando se crean. La mayoría de las "
+"unidades reciben dos rasgos."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1299
 msgid "The possible traits for most units are as follows:"
 msgstr ""
+"Los rasgos posibles para la mayoría de las unidades son los siguientes:"
 
 #: ../../doc/manual/manual.en.xml:1304
 msgid "Intelligent"
@@ -1924,6 +1990,14 @@ msgid ""
 "you have many <emphasis>maximum level</emphasis> units you may wish to "
 "recall units with more useful traits."
 msgstr ""
+"Las unidades Inteligentes requieren 20% menos de experiencia que las "
+"unidades habituales para avanzar de nivel (Los trolls no reciben esta "
+"característica). Las unidades inteligentes son muy útiles en el inicio de "
+"una campaña puesto que puedan avanzar a niveles superiores más rápidamente. "
+"Más adelante en las campañas la inteligencia no es tan útil porque el Avance "
+"Sobre El Nivel Máximo (ASNM) no es un cambio tan importante como el avance "
+"de un nivel. Si tiene muchas unidades de <emphasis>nivel máximo</emphasis> "
+"puede que desee reincorporar unidades con rasgos más útiles"
 
 #: ../../doc/manual/manual.en.xml:1320
 msgid "Quick"
@@ -1940,6 +2014,14 @@ msgid ""
 "without this trait and are subsequently less good at holding contested "
 "positions."
 msgstr ""
+"Las unidades rápidas tienen 1 punto extra movimiento, pero el 5% menos de PV "
+"de lo habitual. Rápido es el rasgo más notable, sobre todo en las unidades "
+"de movimiento más lento, como trolls o infantería pesada. Las unidades con "
+"el rasgo rápido a menudo han aumentado considerablemente la movilidad en "
+"terreno áspero, lo que puede ser importante a tener en cuenta la hora de "
+"desplegar tus fuerzas. Asimismo, las unidades rápidas no son tan duras como "
+"las unidades sin este rasgo y son por lo tanto menos buenas manteniendo "
+"posiciones ganadas."
 
 #: ../../doc/manual/manual.en.xml:1336
 msgid "Resilient"
@@ -1955,6 +2037,13 @@ msgid ""
 "resistances. Resilient units are especially useful for holding strategic "
 "positions against opponents."
 msgstr ""
+"Las unidades Resistentes tienen 4 PV más 1 PV por nivel más de lo habitual. "
+"Las unidades Resistentes pueden ser útiles en todas las fases de una "
+"campaña, y este es un rasgo útil para todas las unidades. El rasgo "
+"Resistente a menudo es más útil como rasgo cuando aparece en una unidad que "
+"tiene una combinación de puntos de vida bajos, buena defensa, o alta "
+"resistencia. Las unidades Resistentes son especialmente útiles para mantener "
+"posiciones estratégicas contra los oponentes."
 
 #: ../../doc/manual/manual.en.xml:1351
 msgid "Strong"
@@ -1969,6 +2058,12 @@ msgid ""
 "Fighter. Strong units can be very useful when a tiny bit of extra damage is "
 "all that is needed to turn a damaging stroke into a killing blow."
 msgstr ""
+"Las unidades Fuertes hacen 1 más de daño por cada golpe con éxito en la "
+"lucha cuerpo a cuerpo, y tienen un PV más. Aunque útil para las unidades de "
+"combate cercano, el rasgo Fuerte es más eficaz para las unidades que tienen "
+"un alto número de golpes tales como el Luchador Elfo. Las unidades Fuertes "
+"pueden ser de mucha utilidad cuando un poquito de daño extra es todo lo que "
+"se necesita para convertir un golpe de daño en un golpe letal."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1365
@@ -1976,6 +2071,8 @@ msgid ""
 "There are also some traits that are assigned only for certain units or only "
 "for units of a certain race. These are:"
 msgstr ""
+"También hay algunos rasgos que son asignados sólo para ciertas unidades o "
+"sólo para las unidades de una determinada raza. Estos son:"
 
 #: ../../doc/manual/manual.en.xml:1371
 msgid "Dextrous"
@@ -1990,6 +2087,12 @@ msgid ""
 "however, are gifted with natural talent that exceeds their brethren. These "
 "elves inflict an additional point of damage with each arrow."
 msgstr ""
+"Las unidades Diestras hacen 1 más de daño por cada golpe con éxito en "
+"combate a distancia. Diestro es un rasgo que poseen sólo los Elfos. Los "
+"Elfos son conocidos por su extraordinario don, y su gran facilidad con el "
+"arco. Algunos, sin embargo, están dotados con un talento natural que excede "
+"sus hermanos. Estos elfos infligen un punto adicional de daño con cada "
+"flecha."
 
 #: ../../doc/manual/manual.en.xml:1385
 msgid "Healthy"
@@ -2002,6 +2105,10 @@ msgid ""
 "rest even when traveling.  Healthy units have 2 more HP than usual and rest "
 "heal 2 additional HP after each turn they did not fight."
 msgstr ""
+"Conocidos por su vitalidad, algunos enanos son más resistentes que otros y "
+"pueden descansar incluso cuando viajan. Las unidades Vitales cuentan con 2 "
+"PV más de lo habitual y curan por descanso adicionalmente 2 PV después de "
+"cada turno en el que no luchen."
 
 #: ../../doc/manual/manual.en.xml:1398
 msgid "Fearless"
@@ -2013,6 +2120,8 @@ msgid ""
 "Does not suffer from a negative attack bonus during its unfavorable time of "
 "day (Trolls, Walking Corpses)."
 msgstr ""
+"No sufre de una penalización de ataque durante su hora del día desfavorable "
+"(Trolls, Muertos Andantes)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1408
@@ -2021,6 +2130,9 @@ msgid ""
 "either be assigned by the scenario designer or are always assigned based on "
 "the unit type:"
 msgstr ""
+"También hay algunos rasgos que no son asignados al azar. Estos rasgos pueden "
+"ser asignados por el diseñador de escenarios o  siempre son asignados "
+"basándose en el tipo de unidad:"
 
 #: ../../doc/manual/manual.en.xml:1415
 msgid "Loyal"
@@ -2038,11 +2150,21 @@ msgid ""
 "supply.  This trait is never given to recruited units, so it may be unwise "
 "to dismiss such units or to send them to a foolish death."
 msgstr ""
+"Las unidades Leales no incurren en mantenimiento. La mayoría de las unidades "
+"incurren en un coste de mantenimiento al final de cada turno, que es igual a "
+"su nivel. Las unidades Leales no incurren en este coste. Durante las "
+"campañas, algunas unidades pueden optar por sumarse a las fuerzas del "
+"jugador por su propia voluntad. Estas unidades están marcadas con el rasgo "
+"Leal. A pesar de se que puede exigir el pago para ser reincorporadas, nunca "
+"se incurrirá en gastos de mantenimiento. Esto puede hacer de ellas "
+"inestimables durante una larga campaña, cuando el oro escasea. Este rasgo "
+"nunca es dado a las unidades reclutadas, por lo que puede ser imprudente "
+"despedir a esas unidades para enviarlas a un tonta muerte."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1433
 msgid "Undead"
-msgstr ""
+msgstr "No Muertos"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1437
@@ -2053,11 +2175,17 @@ msgid ""
 "poison has no effect upon them. This can make them invaluable in dealing "
 "with foes who use poison in conjunction with their attacks."
 msgstr ""
+"Las unidades No Muertas son inmunes al veneno, tampoco funciona sobre ellas "
+"el drenado y la plaga. Las unidades No Muertas suelen tener como único rasgo "
+"el de <emphasis>No Muerto</emphasis>. Puesto que las unidades No Muertas son "
+"los cuerpos de los muertos, levantados para luchar de nuevo, el veneno no "
+"tiene ningún efecto sobre ellos. Esto puede hacer de ellos inestimables en "
+"la lucha contra enemigos que usen veneno en conjunto con sus ataques."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1447
 msgid "Mechanical"
-msgstr ""
+msgstr "Mecánicos"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1451
@@ -2066,21 +2194,26 @@ msgid ""
 "plague doesn't work on them.  Mechanical units generally have "
 "<emphasis>Mechanical</emphasis> as their only trait."
 msgstr ""
+"Las unidades Mecánicas no están vivas y, por tanto, son inmunes al veneno, "
+"también el drenado y la plaga no funcionan en ellos. Las unidades Mecánicas "
+"generalmente tienen el rasgo <emphasis> Mecánico</emphasis> como su único "
+"rasgo."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:1460
 msgid "Unit Specialties"
-msgstr ""
+msgstr "Especialidades de las Unidades"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1461
 msgid "Certain units have special attacks. These are listed below:"
 msgstr ""
+"Algunas unidades tienen ataques especiales. Estos se enumeran a continuación:"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1466
 msgid "Backstab"
-msgstr ""
+msgstr "Apuñalar por la espalda"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1470
@@ -2089,11 +2222,14 @@ msgid ""
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (e.g. turned to stone)."
 msgstr ""
+"Cuando se usa de manera ofensiva, este ataque proporciona el doble de daño "
+"si hay un enemigo del objetivo en el lado opuesto de éste, y esa unidad no "
+"está incapacitada (por ejemplo, convertida en piedra)."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1478
 msgid "Berserk"
-msgstr ""
+msgstr "Berserk"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1482
@@ -2101,11 +2237,14 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"Ya sea utilizada ofensiva o defensivamente, este ataque continúa el "
+"enfrentamiento hasta que uno de los combatientes es asesinado, o se han "
+"producido 30 rondas de ataques."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1490
 msgid "Charge"
-msgstr ""
+msgstr "Carga"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1494
@@ -2113,11 +2252,14 @@ msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
+"Cuando se usa ofensivamente, este ataque proporciona el doble de daño al "
+"objetivo. También causa que esta unidad reciba el doble de daño del "
+"contraataque del objetivo."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1501
 msgid "Drain"
-msgstr ""
+msgstr "Drenar"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1505
@@ -2125,22 +2267,26 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
+"Esta unidad drena salud de las unidades vivientes, curandose a sí misma por "
+"la cantidad de daño que causa dividida por la mitad (redondeada hacia abajo)."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1512
 msgid "Firststrike"
-msgstr ""
+msgstr "Ataca primero"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1516
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Esta unidad siempre golpea primero con este ataque, aun cuando está "
+"defendiendo."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1522
 msgid "Magical"
-msgstr ""
+msgstr "Mágico"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1526
@@ -2148,22 +2294,27 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
+"Este ataque siempre tiene un 70% de posibilidades de éxito, "
+"independientemente de la capacidad defensiva de la unidad que está siendo "
+"atacada."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1533
 msgid "Marksman"
-msgstr ""
+msgstr "Tirador"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1537
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"Cuando se usa ofensivamente, este ataque siempre tiene al menos un 60% de "
+"posibilidades de éxito."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1543
 msgid "Plague"
-msgstr ""
+msgstr "Plaga"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1547
@@ -2172,6 +2323,9 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
+"Cuando una unidad es asesinada por un ataque de Plaga, esa unidad se "
+"reemplaza por una Muerto Andante en el mismo lado que la unidad con el "
+"ataque de Plaga. Esto no funciona con No Muertos o unidades en las aldeas."
 
 #: ../../doc/manual/manual.en.xml:1555 ../../doc/manual/manual.en.xml:2211
 msgid "Poison"
@@ -2184,11 +2338,14 @@ msgid ""
 "they are cured or are reduced to 1 HP. Poison can not, of itself, kill a "
 "unit."
 msgstr ""
+"Este ataque envenena el objetivo. Las unidades Envenenadas pierden 8 PV cada "
+"turno hasta que se curan o se reducen a 1 PV. El veneno no puede, por sí "
+"solo, matar una unidad."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1567
 msgid "Slow"
-msgstr ""
+msgstr "Ralentizar"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1571
@@ -2198,11 +2355,15 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
+"Este ataque ralentiza el objetivo hasta que termina el turno. Ralentizar "
+"reduce el daño causado a la mitad por los ataques y el coste de movimiento "
+"de una unidad ralentizada se duplica. Una que ha sido ralentizada tendrá un "
+"icono de caracol en su barra lateral de información cuando sea seleccionada."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1580
 msgid "Stone"
-msgstr ""
+msgstr "Petrificar"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1584
@@ -2210,11 +2371,13 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"Este ataque convierte el objetivo en piedra. Las unidades que han sido "
+"convertidas en piedra no se pueden mover ni atacar."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1591
 msgid "Swarm"
-msgstr ""
+msgstr "Enjambre"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1595
@@ -2224,6 +2387,10 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
+"El número de golpes de este ataque disminuye cuando la unidad es herida. El "
+"número de golpes es proporcional al % de PV / máximos PV que la unidad "
+"tiene. Por ejemplo, una unidad con 3/4 de su máximos PV obtendrá 3/4 del "
+"número de golpes."
 
 #: ../../doc/manual/manual.en.xml:1605
 msgid "Abilities"
@@ -2236,11 +2403,14 @@ msgid ""
 "an effect on how the unit interacts with other units. These abilities are "
 "listed below:"
 msgstr ""
+"Algunas unidades tienen habilidades que o bien afectan directamente a otras "
+"unidades, o tienen efecto sobre la forma en que la unidad interactúa con "
+"otras unidades. Estas habilidades se enumeran a continuación:"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1613
 msgid "Ambush"
-msgstr ""
+msgstr "Emboscar"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1617
@@ -2250,11 +2420,16 @@ msgid ""
 "next to it. Any enemy unit that first discovers this unit immediately loses "
 "all its remaining movement."
 msgstr ""
+"Esta unidad puede esconderse en los bosques, y no ser detectada por sus "
+"enemigos. Las unidades enemigas no pueden ver esta unidad mientras está en "
+"los bosques, excepto si tienen unidades a su lado. Cualquier unidad enemiga "
+"que primero descubre esta unidad inmediatamente pierde todo el resto de su "
+"movimiento."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1626
 msgid "Concealment"
-msgstr ""
+msgstr "Ocultación"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1630
@@ -2265,11 +2440,17 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Esta unidad puede ocultarse en las aldeas (con la excepción de las aldeas "
+"acuáticas), y no ser detectada por sus enemigos, a excepción de los que se "
+"encuentren junto a ella. Las unidades enemigas no pueden ver esta unidad "
+"mientras está en un pueblo, excepto si tienen unidades a su lado. Cualquier "
+"unidad enemiga que primero descubra esta unidad inmediatamente perderá todo "
+"el resto de su movimiento."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1640
 msgid "Cures"
-msgstr ""
+msgstr "Cura"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1644
@@ -2277,11 +2458,13 @@ msgid ""
 "A unit which can cure an ally of poison, although the ally will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Una unidad que puede curar el veneno a un aliado, aunque el aliado no "
+"recibirá curación adicional en el turno que ha sido curado de veneno"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1651
 msgid "Heals +4"
-msgstr ""
+msgstr "Sana +4"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1655
@@ -2292,11 +2475,16 @@ msgid ""
 "its poison by a healer, and must seek the care of a village or a unit that "
 "can cure."
 msgstr ""
+"Permite a la unidad sanar las unidades amigas adyacentes al principio de "
+"cada turno. Una unidad que ha sido tocada por este sanador puede sanarse "
+"hasta 4 PV por turno, o impedir que el veneno haga su efecto ese turno. Una "
+"unidad envenenada no puede curarse de su veneno por un sanador, y debe "
+"buscar la atención de un pueblo o una unidad que pueda curar."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1666
 msgid "Heals +8"
-msgstr ""
+msgstr "Sana +8"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1670
@@ -2307,11 +2495,17 @@ msgid ""
 "that turn.  A poisoned unit cannot be cured of its poison by a healer, and "
 "must seek the care of a village or a unit that can cure."
 msgstr ""
+"Esta unidad combina hierbas medicinales con magia para sanar unidades más "
+"rápidamente de lo que es normalmente posible en el campo de batalla. Una "
+"unidad al cuidado de este sanador puede sanar hasta 8 PV por turno, o "
+"impedir que el veneno tenga efecto ese turno. Una unidad envenenada no puede "
+"curarse de su veneno por un sanador, y debe buscar la atención de un pueblo "
+"o una unidad que pueda curar."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1681
 msgid "Illuminates"
-msgstr ""
+msgstr "Ilumina"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1685
@@ -2321,6 +2515,10 @@ msgid ""
 "fight as if it were dusk when it is night, and as if it were day when it is "
 "dusk."
 msgstr ""
+"Esta unidad ilumina el área que le rodea, haciendo que las unidades legales "
+"luchen mejor, y las caóticas peor.Cualquier unidad adyacente a ésta luchará "
+"como si estuviera atardeciendo cuando es de noche, y como si fuera de día "
+"cuando está atardeciendo."
 
 #: ../../doc/manual/manual.en.xml:1694
 msgid "Leadership"
@@ -2335,11 +2533,16 @@ msgid ""
 "side as a unit with Leadership engages in combat, its attacks do 25% more "
 "damage times the difference in their levels."
 msgstr ""
+"Esta unidad puede liderar a las unidades amigas cercanas, haciendo que "
+"luchen mejor. Las unidades adyacentes de nivel inferior harán más daño en "
+"combate. Cuando una unidad adyacente de menor nivel, y en el mismo bando que "
+"la unidad con liderazgo, entre en combate, sus ataques hacen un 25% más de "
+"daño por cada nivel que las separe."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1709
 msgid "Nightstalk"
-msgstr ""
+msgstr "Acecho nocturno"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1713
@@ -2348,11 +2551,15 @@ msgid ""
 "at night, except if they have units next to it. Any enemy unit that first "
 "discovers this unit immediately loses all its remaining movement."
 msgstr ""
+"Esta unidad se vuelve invisible durante la noche. Las unidades enemigas no "
+"pueden ver esta unidad cuando es de noche, excepto si tienen unidades "
+"cercanas a ella. La primera unidad enemiga que descubra a esta unidad, "
+"pierde inmediatamente todo su movimiento restante."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1722
 msgid "Regenerates"
-msgstr ""
+msgstr "Regenera"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1726
@@ -2360,11 +2567,13 @@ msgid ""
 "This unit will heal itself 8HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"La unidad recuperará cada turno 8 PV por sí misma. Si está envenenada, "
+"eliminará el veneno en lugar de sanarse."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1733
 msgid "Skirmisher"
-msgstr ""
+msgstr "Hostigador"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1737
@@ -2372,11 +2581,13 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"Esta unidad tiene la habilidad de moverse entre los enemigos rápidamente e "
+"ignora todas las zonas de control del enemigo."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1744
 msgid "Steadfast"
-msgstr ""
+msgstr "Firme"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1748
@@ -2384,11 +2595,13 @@ msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
+"La resistencia de esta unidad es el doble, hasta un máximo de un 50%, cuando "
+"se defiende. Las vulnerabilidades no se ven afectadas."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1755
 msgid "Submerge"
-msgstr ""
+msgstr "Sumergirse"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1759
@@ -2398,11 +2611,16 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Esta unidad puede ocultarse en aguas profundas, y que sus enemigos no le "
+"detecten.Las unidades enemigas no pueden ver a esta unidad cuando se "
+"encuentra en aguas profundas, excepto si tienen unidades cercanas a ella. La "
+"primera unidad enemiga que descubra a esta unidad, pierde inmediatamente "
+"todo su movimiento restante."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1768
 msgid "Teleport"
-msgstr ""
+msgstr "Teletransporte"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1772
@@ -2410,11 +2628,13 @@ msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
+"Esta unidad puede teletransportarse entre dos aldeas vacías de un bando "
+"instantáneamente en uno de sus movimientos."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:1780 ../../doc/manual/manual.en.xml:2431
 msgid "Experience"
-msgstr ""
+msgstr "Experiencia"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1781
@@ -2427,61 +2647,70 @@ msgid ""
 "a battle without killing their opponents are awarded 1 experience point per "
 "level of the enemy. In other words:"
 msgstr ""
+"A las unidades se les adjudica experiencia por luchar. Después de obtener la "
+"suficiente experiencia, avanzarán un nivel y se volverán más poderosas. La "
+"cantidad de experiencia adquirida depende del nivel de la unidad enemiga y "
+"el resultado de la batalla: si una unidad mata a su oponente, recibe 8 "
+"puntos de experiencia por nivel del enemigo (4 si el enemigo es de nivel 0), "
+"mientras que las unidades que sobreviven a una batalla sin matar a sus "
+"oponentes se adjudican 1 punto de experiencia por nivel del enemigo. En "
+"otras palabras:"
 
 # type: Content of: <book><chapter><section><section><table><title>
 #: ../../doc/manual/manual.en.xml:1793
 msgid "Experience bonuses for killing or fighting enemies of different levels"
 msgstr ""
+"Bonus de experiencia por matar o luchar a enemigos de diferentes niveles"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:1801
 msgid "enemy level"
-msgstr ""
+msgstr "nivel del enemigo"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:1804
 msgid "kill bonus"
-msgstr ""
+msgstr "bonus por matar"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:1807
 msgid "fighting bonus"
-msgstr ""
+msgstr "bonus por luchar"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1828
 msgid "8"
-msgstr ""
+msgstr "8"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1839
 msgid "16"
-msgstr ""
+msgstr "16"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1850
 msgid "24"
-msgstr ""
+msgstr "24"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1861
 msgid "32"
-msgstr ""
+msgstr "32"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1872
 msgid "40"
-msgstr ""
+msgstr "40"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1883
 msgid "48"
-msgstr ""
+msgstr "48"
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:1894
 msgid "Recalling units"
-msgstr ""
+msgstr "Reincorporar unidades"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1895
@@ -2492,11 +2721,17 @@ msgid ""
 "previous Level, Experience Points, (sometimes) any magic items acquired, and "
 "will arrive with full hitpoints."
 msgstr ""
+"Después de completar un escenario, todas las unidades sobrevivientes se "
+"pondrán a disposición de ser reincorporadas en el próximo escenario. No "
+"puedes mover o atacar con una unidad en el turno que reclutas o reincorporas "
+"esa unidad. Una unidad reincorporada conserva su nivel anterior, puntos de "
+"experiencia, (a veces) todos los objetos mágicos adquiridos, y llegará con "
+"los puntos de vida al completo."
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:1904
 msgid "Moving"
-msgstr ""
+msgstr "Movimiento"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1905
@@ -2515,6 +2750,21 @@ msgid ""
 "top of a unit's energy bar provide a quick way to see which of your units "
 "have already moved or can move further in the current turn."
 msgstr ""
+"Al hacer clic en una unidad identificas todos los lugares a los que puede "
+"mover en su actual turno oscureciendo hexágonos inalcanzables (presionando "
+"las teclas numéricas 2-7 identificarás los hexágonos adicionales a los que "
+"se pueden alcanzar en ese número de turnos de manera similar). Si bien en "
+"este modo, moviendo el cursor sobre un hexágono identificarás el camino que "
+"tu unidad tomará hacia ese hexágono, así como información adicional de los "
+"bonus defensivos de tu unidad en ese hexágono y que, en caso de que tenga "
+"lugar más de un turno, el número de turnos que tardará tu unidad en llegar. "
+"Si no deseas mover la unidad de este modo puedes cancelarlo seleccionando "
+"otra unidad (haciendo clic en la nueva unidad o usando las teclas "
+"<literal>n</literal> o <literal>N</literal>) o haciendo clic con el botón "
+"derecho (Comando + clic en un Mac) en cualquier lugar en el mapa. El <link "
+"linkend=\"orbs\">orbs</link> en la parte superior de la barra de energía de "
+"la unidad proporciona una forma rápida de conocer cuáles de sus unidades ya "
+"han movido o pueden avanzar más en el actual turno."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1919
@@ -2529,6 +2779,16 @@ msgid ""
 "selecting that unit and choosing a new destination or clicking the unit "
 "again to cancel the <emphasis>goto</emphasis>."
 msgstr ""
+"Si decides mover la unidad seleccionada, haz clic en el hexágono al que "
+"quieres moverte y tu unidad se moverá hacia ese espacio. Si seleccionas un "
+"destino que está más allá del alcance en el turno actual, la unidad se "
+"desplazará en la medida de lo que pueda en el turno actual, y entrará en "
+"<emphasis>modo ir-a</emphasis>. En <emphasis>modo ir-a</emphasis> tu unidad "
+"seguirá avanzando hacia su destino en los siguientes turnos. Puedes "
+"fácilmente deshacer movimientos de ir-a en el siguiente turno. También "
+"puedes cambiar el destino de una unidad seleccionando esa unidad y elegiendo "
+"un nuevo destino o clicando de nuevo en la unidad para cancelar el "
+"<emphasis> ir-a </emphasis>."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1929
@@ -2536,6 +2796,8 @@ msgid ""
 "Moving onto a village that is neutral or owned by an enemy will take "
 "ownership of it and end your move for that unit."
 msgstr ""
+"Moverse a una aldea que es neutral o propiedad de un enemigo tomarás "
+"propiedad de la aldea finalizará el movimiento para esa unidad."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1932
@@ -2545,11 +2807,15 @@ msgid ""
 "reflected in both the path that is displayed for your unit and the hexes it "
 "may move to on the current turn."
 msgstr ""
+"La mayoría de las unidades ejercen una zona de control que afecta a los "
+"hexágonos que tu unidad puede alcanzar y la ruta que tu unidad toma. Estas "
+"restricciones se reflejan automáticamente en tanto el camino que se "
+"visualiza para la unidad y los hexágonos que podrá mover en el turno actual."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:1938
 msgid "Zone of Control"
-msgstr ""
+msgstr "Zona de Control"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1939
@@ -2561,6 +2827,14 @@ msgid ""
 "units are considered too feeble to generate a zone of control and all units "
 "are able to move through the hexes around an enemy level 0 unit freely."
 msgstr ""
+"La Zona de Control de una unidad se extiende a los seis hexágonos "
+"inmediatamente adyacentes a la unidad, y las unidades que se mueven a una "
+"zona de control de un enemigo son obligadas a detenerse. Las unidades con la "
+"capacidad de hostigador son capaces de moverse libremente a través de ellos "
+"sin haber sido obligados a detenerse. Las unidades de nivel 0 se consideran "
+"demasiado débiles para generar una zona de control y todas las unidades son "
+"capaces de desplazarse por los hexágonos en torno a un enemigo de nivel 0 "
+"libremente."
 
 #: ../../doc/manual/manual.en.xml:1949 ../../doc/manual/manual.en.xml:1957
 msgid "Orbs"
@@ -2572,6 +2846,8 @@ msgid ""
 "On the top of the energy bar shown next to each unit of yours is an orb. "
 "This orb is:"
 msgstr ""
+"En la parte superior de la barra de energía se muestra junto a cada unidad "
+"de la suya es una orbe. Este orbe es:"
 
 #: ../../doc/manual/manual.en.xml:1965
 #, fuzzy
@@ -2595,15 +2871,19 @@ msgid ""
 "\"/> </imageobject>"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1989
+#, fuzzy
 msgid "If you control the unit and it hasn't moved this turn"
 msgstr ""
+"</inlinemediaobject> verde si controlas la unidad y no se ha movido este "
+"turno,"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+# type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1994
+#, fuzzy
 msgid "Yellow"
-msgstr ""
+msgstr "Ralentizar"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1997
@@ -2612,12 +2892,15 @@ msgid ""
 "\"/> </imageobject>"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2005
+#, fuzzy
 msgid ""
 "If you control the unit and it has moved this turn, but could still move "
 "further or attack"
 msgstr ""
+"</inlinemediaobject> amarillo si controlas la unidad y se ha movido este "
+"turno, pero puedes seguir moviéndola o atacar."
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:2010
@@ -2631,15 +2914,19 @@ msgid ""
 "> </imageobject>"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2021
+#, fuzzy
 msgid "If you control the unit, but it has used all its movement this turn"
 msgstr ""
+"</inlinemediaobject> rojo si controlas la unidad, pero ha usado todo su "
+"movimiento este turno, o"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+# type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:2026
+#, fuzzy
 msgid "Blue"
-msgstr ""
+msgstr "Plaga"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2029
@@ -2648,10 +2935,11 @@ msgid ""
 "> </imageobject>"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2037
+#, fuzzy
 msgid "If the unit is an ally you do not control"
-msgstr ""
+msgstr "</inlinemediaobject> azul si la unidad es un aliado que no controlas."
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2045
@@ -2660,15 +2948,18 @@ msgid ""
 "> </imageobject>"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+# type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2053
+#, fuzzy
 msgid "Enemy units have no orb on the top of their energy bar"
 msgstr ""
+"</inlinemediaobject> Las unidades enemigas no tienen orbe en lo alto de su "
+"barra de energía."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2061
 msgid "Ellipses, Team Colors, and Hero Icons"
-msgstr ""
+msgstr "Elipses, Colores de Equipo, y Iconos de Heroes"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2062
@@ -2678,6 +2969,10 @@ msgid ""
 "team color will also show up in parts of the unit's clothing, or possibly on "
 "a shield insignia."
 msgstr ""
+"Debajo de cada unidad existe normalmente, una elipse coloreada o base. El "
+"color identifica a tu equipo; en una campaña de juego, el jugador humano es "
+"de color rojo. El color del equipo se muestra también en partes de la ropa "
+"de la unidad, o posiblemente en la insignia del escudo."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2067
@@ -2686,6 +2981,9 @@ msgid ""
 "ellipse that has broken lines. This indicates that the unit has no Zone of "
 "Control."
 msgstr ""
+"Por lo general, la elipse será un disco sólido. En unidades de nivel 0, "
+"verás una elipse de líneas discontinuas. Esto indica que la unidad no tiene "
+"Zona de Control."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2071
@@ -2696,11 +2994,18 @@ msgid ""
 "mark heroes. Still others have no specific hero indicator at all. Which (if "
 "any) is used is a stylistic choice left to campaign designers."
 msgstr ""
+"Algunas campañas utilizan una base en forma de estrella para indicar los "
+"líderes y los héroes (las unidades que son especiales de alguna manera y, "
+"por ejemplo, no se permite que mueran en el transcurso del escenario); otras "
+"utilizan una corona de plata por encima del icono de la barra de energía "
+"para marcar héroes. Por último, otros no tienen ningún indicador específico "
+"de héroe en absoluto. El cual (si procede) utilizarse es una opción "
+"estilística que se deja a los diseñadores de campaña."
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2081
 msgid "Fighting"
-msgstr ""
+msgstr "Luchar"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2082
@@ -2712,6 +3017,12 @@ msgid ""
 "swords, are melee weapons, and some weapons, such as bows, are ranged "
 "weapons."
 msgstr ""
+"Si te mueves junto a una unidad enemiga, puedes atacarla. Haz clic en la "
+"unidad que está junto a una unidad enemiga, y haz clic en el enemigo que "
+"quieres atacar - Se abrirá una ventana que presenta nuevas opciones para la "
+"lucha. Cada unidad tiene una o más armas para atacar. Algunas armas, como "
+"espadas, son armas cuerpo a cuerpo, y algunas armas, como arcos, son armas a "
+"distancia."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2089
@@ -2722,6 +3033,11 @@ msgid ""
 "enemy does not have a weapon of the same type as the one you attack with, "
 "they will be unable to strike back and do any damage to you in that fight."
 msgstr ""
+"Si atacas con armas cuerpo a cuerpo, el enemigo que atacas será capaz de "
+"devolverte el ataque con su arma de cuerpo a cuerpo. Si atacas con armas a "
+"distancia, el enemigo pueda devolver los ataques con sus armas a distancia. "
+"Si un enemigo no tiene un arma del mismo tipo que el que ataque, no podrán "
+"devolver el ataque y no te hará ningún daño en el ataque."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2096
@@ -2732,6 +3048,11 @@ msgid ""
 "strike 4 blows with the sword in one exchange. This is written as 5-4, "
 "meaning 5 damage per hit, and 4 strikes."
 msgstr ""
+"Distintos tipos de ataques hacen distintas cantidades de daño, y un cierto "
+"número de golpes pueden hacerse con cada arma. Por ejemplo, un Luchador Elfo "
+"hace 5 puntos de daño con su espada cada vez que golpea, y puede golpear 4 "
+"veces con la espada en un intercambio. Esto se escribe como 5-4, en el "
+"sentido de 5 de daño por golpe certero y 4 golpes."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2102
@@ -2744,6 +3065,14 @@ msgid ""
 "displayed as a percentage value in the status pane, as well as shown over "
 "the terrain hex."
 msgstr ""
+"Cada unidad tiene una probabilidad de ser afectada basándose sobre el "
+"terreno donde se encuentra. Por ejemplo, las unidades en los castillos y "
+"pueblos tienen una menor probabilidad de ser dañadas, y los Elfos en el "
+"bosque tienen una baja probabilidad de ser dañados. Para ver la probabilidad "
+"de defensa de una unidad (es decir, posibilidad de no ser golpeado) en el "
+"terreno, haga clic en la unidad y, a continuación, mueve el puntero del "
+"ratón sobre el terreno que te interese  y se mostrará el porcentaje de "
+"defensa en el panel de estado así como encima del hexágono."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2110
@@ -2752,11 +3081,14 @@ msgid ""
 "attacker and defender will be killed, by clicking on the \"Damage "
 "Calculations\" button in the fight window."
 msgstr ""
+"Puedes obtener información adicional, incluida la posibilidad de que el "
+"atacante y el defensor sean asesinados, haciendo clic en el botón de "
+"\"cálculo de daño\" en la ventana de lucha."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2115
 msgid "Attack types"
-msgstr ""
+msgstr "Tipos de Ataques"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2119
@@ -2765,6 +3097,9 @@ msgid ""
 "used to chop pieces of meat from a foe. Examples: dagger, scimitar, saber, "
 "drake claws."
 msgstr ""
+"<emphasis role=\"strong\">De corte</emphasis>: Armas con un filo de corte, "
+"utilizado para cortar trozos de carne. Ejemplos: daga, cimitarra, sable, "
+"garras de draco."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2125
@@ -2773,6 +3108,10 @@ msgid ""
 "and either a long handle or a missile, used to perforate foe's body and "
 "damage internal organs. Examples: Knight or infantry pike, arrow."
 msgstr ""
+"<emphasis role=\"strong\">Penetrante</emphasis>: Armas con un punto cortante "
+"y, o bien un mango largo o un misil, que se utilizan para perforar el cuerpo "
+"del enemigo y causar daños en los órganos internos. Ejemplos: Pica de "
+"caballero o de infantería, flecha."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2132
@@ -2781,6 +3120,9 @@ msgid ""
 "point nor a cutting edge, but heavy enough to break an enemy's bones. "
 "Examples: mace, staff, Troll fist."
 msgstr ""
+"<emphasis role=\"strong\">Impacto</emphasis>: Armas que no tienen un punto "
+"penetrante ni un borde cortante, pero lo suficientemente pesadas para romper "
+"los huesos del enemigo. Ejemplos: maza, vara, puño de Troll."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2139
@@ -2788,6 +3130,8 @@ msgid ""
 "<emphasis role=\"strong\">Cold</emphasis>: Weapons based on cold or ice "
 "missiles. Example: A wizard's ice bolt."
 msgstr ""
+"<emphasis role=\"strong\">Frío</emphasis>: Armas basadas en frío o misiles "
+"de hielo. Ejemplo: Una descarga de hielo de un mago."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2145
@@ -2795,6 +3139,8 @@ msgid ""
 "<emphasis role=\"strong\">Fire</emphasis>: Weapons using fire to roast the "
 "foe like a chicken. Example: A drake's fire breath."
 msgstr ""
+"<emphasis role=\"strong\">Fuego</emphasis>: Armas usadas para hornear al "
+"enemigo como a un pollo Ejemplo: El aliento de fuego de un draco."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2151
@@ -2803,6 +3149,9 @@ msgid ""
 "magic animating zombies, specters, and other undead creatures. Example: A "
 "white mage's magic attack."
 msgstr ""
+"<emphasis role=\"strong\">Arcano</emphasis>: Un ataque que disipa la magia "
+"que da vida a los zombies, espectros, y otras criaturas No Muertas. Ejemplo: "
+"El ataque mágico de un mago blanco."
 
 #: ../../doc/manual/manual.en.xml:2158
 msgid "Resistance"
@@ -2817,6 +3166,12 @@ msgid ""
 "unit will suffer less damages from the attack type. A negative resistance "
 "figure indicates that the unit is especially vulnerable to this attack type."
 msgstr ""
+"Cada unidad es más o menos vulnerables a los diferentes tipos de ataques. 6 "
+"cifras en la descripción de unidad mostrar la fuerza y la debilidad de la "
+"unidad contra los 6 tipos de ataques. Una cifra positiva de resistencia "
+"indica que la unidad va a sufrir menos daños de ese tipo de ataque. Una "
+"cifra de resistencia negativa indica que la unidad es especialmente "
+"vulnerable a este tipo de ataque."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2166
@@ -2827,6 +3182,12 @@ msgid ""
 "are very resistant to blade and piercing weapon but very vulnerable to "
 "impact attacks and arcane attacks."
 msgstr ""
+"Ejemplos: Las escamas de draco protegen de la mayoría de los tipos de ataque "
+"excepto de perforación, y armas de frío. Las unidades de Caballería humanas "
+"por lo general están bien protegidas, excepto de ataques de perforación que "
+"son su punto débil. Los No Muertos son muy resistentes a los ataques con "
+"armas de hoja y perforación, pero muy vulnerables a los ataques de impacto y "
+"arcanos."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2172
@@ -2834,6 +3195,8 @@ msgid ""
 "Using the best attack type against enemy units will substantially increase "
 "your chances of killing them."
 msgstr ""
+"Utilizando el mejor tipo de ataque contra el enemigo aumentará unidades "
+"aumentar notablemente tus posibilidades de matarles."
 
 #: ../../doc/manual/manual.en.xml:2178 ../../doc/manual/manual.en.xml:2609
 msgid "Healing"
@@ -2848,16 +3211,24 @@ msgid ""
 "added on top of hitpoints recovered through healing so it is possible for a "
 "unit to recover up to a total of 10 hit points per turn."
 msgstr ""
+"Una unidad puede ser sanada un máximo de 8 puntos de vida por turno. Una "
+"unidad que no se mueva o luche durante un turno está <emphasis>descansando</"
+"emphasis> y recupera 2 puntos de vida. Los puntos de vida recuperados a "
+"través del <emphasis>descanso</emphasis> se añaden en la parte a los puntos "
+"de vida recuperados a traves del sanado por lo que es posible que una unidad "
+"pueda recuperar hasta un total de 10 puntos de vida por turno."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2185
 msgid "There are two basic ways for a unit to be healed:"
-msgstr ""
+msgstr "Hay dos maneras básicas de sanar una unidad:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2190
+#, fuzzy
 msgid "Waiting in a village. The unit will heal 8 hitpoints every turn."
 msgstr ""
+"Descansar en una aldea. La unidad recuperará 8 puntos de vida por turno."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2195
@@ -2867,11 +3238,15 @@ msgid ""
 "This is invariably <emphasis>heals +4</emphasis> or <emphasis>heals +8</"
 "emphasis>."
 msgstr ""
+"Estar adyacente a las unidades con la habilidad de <emphasis>sanación</"
+"emphasis>. El número de puntos de vida que se sanan se especifica en la "
+"descripción de la habilidad de la unidad. Esto es de manera fija siempre "
+"<emphasis>sana +4</emphasis> o <emphasis>sana +8</emphasis> "
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2202
 msgid "Regeneration"
-msgstr ""
+msgstr "Regeneración"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2203
@@ -2882,9 +3257,15 @@ msgid ""
 "and Woses gain no additional benefit from being on a village or next to a "
 "healing unit."
 msgstr ""
+"Trolls y Woses tienen la capacidad de curarse a sí mismos a través de la "
+"regeneración natural. Sanarán 8 puntos cada turno si están heridos. Tenga en "
+"cuenta que debido a que todas las unidades sólo pueden curar un máximo de 8 "
+"puntos por turno, Los Trolls y los Woses no obtienen ningún beneficio "
+"adicional por estar en un pueblo o junto a una unidad de sanación. "
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2212
+#, fuzzy
 msgid ""
 "Some attacks can inflict poison damage on your unit. When this happens the "
 "poisoned unit will take 8 damage each turn until it is cured. Poison can be "
@@ -2896,16 +3277,25 @@ msgid ""
 "until it is cured of poisoning. Resting is still allowed, although it will "
 "not substantially diminish the poison's effect."
 msgstr ""
+"Algunos ataques pueden infligir daños de veneno en tu unidad. Cuando esto "
+"sucede el envenenado perderá 8 puntos de vida cada turno hasta que esté "
+"curado. El veneno puede curarse descansando en una aldea o estando junto a "
+"una unidad con la habilidad de <emphasis>curación</emphasis>. Las unidades "
+"con la habilidad de  <emphasis>sanar</emphasis> sólo pueden impedir los "
+"daños del veneno durante ese turno, pero no curarla. Cuando el veneno se "
+"cura la unidad no gana o pierde puntos de vida ese turno debido a la "
+"curación / envenenamiento. Una unidad no puede ser sanada normalmente hasta "
+"que no se cura del veneno."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2221
 msgid "Some other hints about healing:"
-msgstr ""
+msgstr "Algunos otros consejos acerca de la curación:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2226
 msgid "A unit may take several turns to be fully healed."
-msgstr ""
+msgstr "Una unidad puede tardar varios turnos en ser completamente curada. "
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2231
@@ -2914,21 +3304,28 @@ msgid ""
 "Light, Paladin) heal all wounded units around them, so you can keep units "
 "close to the battle without losing them."
 msgstr ""
+"Los sanadores (Chamán Élfica, Druida Élfica, Conjuradora Élfica, Mago "
+"Blanco, Mago de la Luz, Paladin) sanan todas las unidades heridas a su "
+"alrededor, por tanto puedes mantener las unidades cerca de la batalla sin "
+"perderlas."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2238
 msgid "Healers do not heal enemy units."
-msgstr ""
+msgstr "Los Sanadores no curan a unidades enemigas."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2243
 msgid "Healers cannot heal themselves, but see next point."
 msgstr ""
+"Los Sanadores no pueden curarse a sí mismos, pero mira el punto siguiente."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2248
 msgid "Use your healers in pairs, so they can heal each other if needed."
 msgstr ""
+"Usa tus sanadores por parejas, para que se puedan curar entre ellos si es "
+"necesario."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2253
@@ -2936,26 +3333,28 @@ msgid ""
 "Multiple healers from different sides can heal the same unit and speed up "
 "healing."
 msgstr ""
+"Múltiples sanadores de distintos bandos puedan curar la misma unidad y "
+"acelerar la sanación."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2258
 msgid "Trolls and Woses cannot regenerate other units."
-msgstr ""
+msgstr "Trolls y Woses no pueden regenerar a otras unidades."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2263
 msgid "Trolls and Woses cure themselves from poison as a village does."
-msgstr ""
+msgstr "Trolls y Woses se curan a sí mismos del veneno como lo hace una aldea."
 
 # type: Content of: <book><chapter><title>
 #: ../../doc/manual/manual.en.xml:2271
 msgid "Strategy and Tips"
-msgstr ""
+msgstr "Estrategia y Consejos"
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2273
 msgid "Basic Strategy"
-msgstr ""
+msgstr "Estrategia Básica"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2274
@@ -2964,11 +3363,15 @@ msgid ""
 "off your career as a Wesnothian battle veteran. The minor concrete examples "
 "are somewhat tied to the \"Heir to the Throne\" campaign."
 msgstr ""
+"Los siguientes principios básicos de combate y consejos tienen por objeto "
+"ayudarte a empezar tu carrera como un veterano de batalla Wesnothiano. Los "
+"ejemplos menores concretos están de alguna manera vinculados a la campaña "
+"\"Heredero al Trono\"."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2279
 msgid "Don't waste units"
-msgstr ""
+msgstr "No malgastes unidades."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2280
@@ -2979,6 +3382,11 @@ msgid ""
 "care of a healer (like Elvish Shamans or White Mages). Healers are very "
 "useful!"
 msgstr ""
+"No envíes las unidades heridas a una muerte segura. Una vez que una unidad "
+"pierde más de la mitad de sus puntos de vida (PV), debes considerar "
+"seriamente la posibilidad de retirarla a un lugar seguro estacionarla ya sea "
+"en una aldea para sanarse o darla al cuidado de un sanador (como Chamanes "
+"Élficos o Magos Blancos). Los sanadores son muy útiles!"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2286
@@ -2991,11 +3399,18 @@ msgid ""
 "a replacement, it is most often far away from the battle front. So don't "
 "waste your units."
 msgstr ""
+"Esto es por razones prácticas: una unidad fuertemente herida no pueden "
+"detener o matar al enemigo. Durante el ataque y contraataque, la mayoría de "
+"las veces perecerá. Además, enviándola a una muerte seguro, su experiencia "
+"reunida (PX) se habrán perdido. La reclutación de un sustituto puede ser "
+"imposible porque el líder no esté en su torreón o porque los fondos se estén "
+"agotando. Incluso si puedes reclutar a un sustituto, es muy probable que "
+"esté lejos de la batalla. Así que no desperdicies tus unidades."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2296
 msgid "Out of the enemy's reach"
-msgstr ""
+msgstr "Fuera del alcance enemigo"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2297
@@ -3005,6 +3420,10 @@ msgid ""
 "them. The next section about zone of control (ZOC) shows how to restrict the "
 "enemy's moves."
 msgstr ""
+"¿Cómo proteges a las unidades heridas? Son protegidas mejor estando fuera "
+"del alcance del adversario. Los enemigos no pueden atacarles si ni siquiera "
+"pueden llegar cerca de ellas. La siguiente sección sobre la zona de control "
+"(ZDC) muestra cómo restringir los movimientos del enemigo."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2302
@@ -3014,6 +3433,11 @@ msgid ""
 "control into account. Thus you can check that your near death unit, which is "
 "behind, indeed cannot be attacked as the enemy cannot move close to it."
 msgstr ""
+"En el menú de Acciones, puede seleccionar \"Mostrar Movimientos del Enemigo"
+"\" para mostrar todos los posibles hexágonos a los que puede moverse tu "
+"adversario. Esto tiene en cuenta su zona de control. Así puedes comprobar "
+"que tu unidad que está cercana a la muerte, que está detrás, de hecho no "
+"puede ser atacada puesto que el enemigo no puede acercarse a ella."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2308
@@ -3022,11 +3446,15 @@ msgid ""
 "to end your move out of striking range of the enemy army. He cannot attack "
 "but most likely will close into your striking range."
 msgstr ""
+"Cuando tus ejércitos se encuentran, puede que quieras tratar de ser el "
+"primero en atacar. Por lo tanto, tratar de finalizar tu movimiento fuera del "
+"alcance de golpe del ejército enemigo. Él no puede atacar, pero muy "
+"probablemente se introducirá en tu rango de golpear."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2314
 msgid "Shield with your zone of control (ZOC)"
-msgstr ""
+msgstr "Protégete con tu zona de control (ZDC)"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2315
@@ -3036,6 +3464,11 @@ msgid ""
 "six neighboring tiles, it is forced to halt and its movement phase ends "
 "(only enemies with the rare skirmisher ability ignore this)."
 msgstr ""
+"Cada unidad de nivel 1 o superior mantiene una zona de control (ZOC), que "
+"abarca los 6 hexágonos vecinos. Esto significa que, una vez que un enemigo "
+"se mueve en uno de los seis hexágonos vecinos, se ve obligado a detenerse y "
+"termina termina su fase de movimiento (sólo con los enemigos con la rara "
+"habilidad de hostigador ignoran esto)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2320
@@ -3047,11 +3480,18 @@ msgid ""
 "He has to defeat the units imposing the ZOC first. If the enemy can barely "
 "reach it, even a single unit may shield a small region behind itself."
 msgstr ""
+"Debido a la ZDC, un enemigo no podrá deslizarse entre dos unidades que están "
+"alineadas en sentido norte-sur o línea diagonal y tienen exactamente 1 o 2 "
+"hexágonos entre ellos. Mediante la combinación de estos pares en un largo "
+"muro o usándolos en diferentes direcciones, se puede impedir que el enemigo "
+"llegue a una unidad herida detrás. Él tiene que derrotar a las unidades que "
+"imponen la ZDC primero. Si el enemigo apenas puede llegar a ella, incluso "
+"una sola unidad puede proteger a una pequeña región detrás de sí misma."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2330
 msgid "Maintain a defensive line"
-msgstr ""
+msgstr "Mantener una linea defensiva"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2331
@@ -3061,6 +3501,11 @@ msgid ""
 "Wesnoth uses hexes, a east-to-west \"line\" is not a straight line but a zig-"
 "zag curve. The north south line and the diagonals are the \"real\" lines."
 msgstr ""
+"Alineando muchas unidades adyacentes directamente con como mucho 1 hexágono "
+"de espacio entre ellas, podrás construir una potente línea defensiva. Ten en "
+"cuenta que, debido a Wesnoth usa hexágonos, la \"línea\" este-oeste no es "
+"una línea recta sino un zig-zag. La línea Norte-Sur y las diagonales son los "
+"\"verdaderas\" líneas."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2337
@@ -3070,6 +3515,10 @@ msgid ""
 "without particular weakness can withstand an attack from two normal enemy "
 "units of the same level or lower without getting killed."
 msgstr ""
+"Viniendo de un lado, el enemigo puede atacar cualquiera de tus unidades en "
+"la linea con sólo 2 de sus unidades cada vez. Como regla general, una unidad "
+"sana, sin debilidades particulares puede soportar un ataque de dos unidades "
+"enemiga normales del mismo nivel o inferior sin morir."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2342
@@ -3081,6 +3530,14 @@ msgid ""
 "points. These are the most likely to be killed, so use units with no or few "
 "experience points (XP) for this purpose."
 msgstr ""
+"Por desgracia, tu línea a menudo tiene que doblar para formar una cuña o "
+"para encajar el terreno. En estos puntos de esquina, 3 unidades enemigas "
+"pueden atacar. Esto también ocurre en los extremos de una línea si la línea "
+"es demasiado corta. Utiliza unidades con elevados puntos de vida en el "
+"terreno adecuado o con las resistencias adecuadas para contrarrestar estos "
+"puntos débiles. Estas unidades son las más probables de que acaben muertas, "
+"por tanto usa unidades con pocos puntos de experiencia (PE) para este "
+"propósito."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2349
@@ -3089,11 +3546,14 @@ msgid ""
 "them. For ZOC reasons, a unit with one enemy behind it and one in front is "
 "trapped."
 msgstr ""
+"Alinear tus tropas también impide que al enemigo rodear a cualquiera de "
+"ellas. Por razones de ZDC, una unidad con un enemigo detrás de ella y uno en "
+"frente se encuentra atrapada."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2355
 msgid "Rotate your troops"
-msgstr ""
+msgstr "Releva tus tropas"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2356
@@ -3104,16 +3564,24 @@ msgid ""
 "front line. If you have healers, damaged units in the second line will "
 "quickly recover."
 msgstr ""
+"Cuando una unidad en la primera línea está muy dañada puedes moverla a un "
+"lugar seguro detrás de tu línea defensiva. Para aguantar la línea, lo más "
+"probable es que tengas que reemplazarla con una reserva, por tanto guarda un "
+"par de unidades en la parte de atrás de la línea de frente. Si tienes "
+"sanadores, las unidades dañadas en la segunda línea se recuperaran "
+"rápidamente."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2362
 msgid "Note that your units can pass through hexes containing your own troops."
 msgstr ""
+"Ten en cuenta que tus unidades puedan pasar a través de hexágonos que "
+"contienen tus propias tropas."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2366
 msgid "Use the terrain"
-msgstr ""
+msgstr "Utiliza el terreno"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2367
@@ -3122,6 +3590,9 @@ msgid ""
 "defense against an enemy in a hex with low terrain. That way, the enemy's "
 "counterstrikes will be less likely to do damage."
 msgstr ""
+"Intenta posicionar tus tropas para que ataquen desde un hexágono con defensa "
+"alta contra un enemigo con un hexágono con bajo terreno. De esta manera, los "
+"contraataques del enemigo serán menos propensos a hacer daño."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2371
@@ -3130,11 +3601,14 @@ msgid ""
 "that attacking orcs must stand on grassland while your elves enjoy the high "
 "forest defenses."
 msgstr ""
+"Por ejemplo, puedes posicionar tus elfos dentro de los límites de un bosque "
+"para que los orcos atacantes tengan que estar en la hierba mientras tus "
+"elfos disfrutan de las altas defensas del bosque."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2377
 msgid "Attacking and choosing your targets"
-msgstr ""
+msgstr "Atacando y seleccionando tus objetivos"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2378
@@ -3143,6 +3617,10 @@ msgid ""
 "to victory. Kill or weaken enemies in your path and move your defensive line "
 "forward. This can become tricky as the enemy gets to attack back on his turn."
 msgstr ""
+"Avanzar y atacar es, por supuesto, la parte más interesante de tu camino a "
+"la victoria. Mata o debilita los enemigos en tu camino y mueve tu línea "
+"defensiva hacia adelante. Esto puede resultar complicado cuando el enemigo "
+"consiga atacar de nuevo en su turno."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2383
@@ -3154,6 +3632,12 @@ msgid ""
 "and next turn, he is going to strike back. Perhaps a Horseman can deliver "
 "the killing blow."
 msgstr ""
+"A menudo, lanzarás varias unidades a una sola unidad enemiga para acabar con "
+"ella, pero estas formaban tu linea defensiva que ahora está parcialmente "
+"rota. Tal vez esto no importa, porque estás fuera del alcance de la próxima "
+"unidad enemiga. Tal vez sí importa porque lo único que has logrado es "
+"debilitar un enemigo muy fuerte y al turno siguiente su vez, va a golpear de "
+"nuevo. Tal vez un Jinete pueda dar el golpe de muerte."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2390
@@ -3165,6 +3649,12 @@ msgid ""
 "get to attack back on their turn, so you might have weaknesses the enemy may "
 "exploit."
 msgstr ""
+"Golpear primero es una ventaja porque permite la elección de las unidades "
+"que se enfrentan. Toma ventaja de la debilidad del enemigo: por ejemplo, "
+"dirige tus ataques a distancia contra los enemigos sin armas a distancia. "
+"Toma ventaja de los puntos débiles, como la vulnerabilidad de Jinetes a la "
+"perforación. Pero recuerda que ellos atacan de nuevo en su turno, por lo que "
+"podrías tener puntos débiles que el enemigo podría sacar partido."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2397
@@ -3174,6 +3664,10 @@ msgid ""
 "impact. But your Horseman may quite quickly fall to Orcish Archers and "
 "Goblin Spearmen."
 msgstr ""
+"Por ejemplo, los Jinetes pueden mantener la línea frente a Guerreros Orcos y "
+"Crías de Troll muy bien porque tienen algunas resistencias contra la hoja y "
+"impacto. Pero tu Jinete puede caer bastante rápido ante los Arqueros Orcos y "
+"los Lanceros Goblin."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2402
@@ -3185,6 +3679,13 @@ msgid ""
 "often wise to attack at the range that allows the enemy to do least damage "
 "to you, rather than choosing the maximum expected damage to the enemy."
 msgstr ""
+"Por lo general, vale la pena si puedes matar definitivamente (o casi matar) "
+"la unidad a la que te enfrentas. Si no estás seguro de acabar con el enemigo "
+"en un turno, o bien asegúrate de que tu unidad pueda devolver los ataques "
+"siguientes o decide que estás dispuesto a perder esa unidad. Para resistir "
+"los ataques del enemigo el siguiente turno, a menudo es prudente atacar en "
+"el rango que permita al enemigo hacerte menos daño, en lugar de elegir el "
+"máximo daño esperado para el enemigo."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2410
@@ -3194,6 +3695,10 @@ msgid ""
 "so using it will often result in your units taking more damage than "
 "necessary."
 msgstr ""
+"En particular, usa tus armas a distancia si el enemigo no tiene ataques a "
+"distancia. El ordenador por defecto solo busca el mayor daño que puedes "
+"hacer frente, de manera que usarlo puede a menudo resultar en que tus "
+"unidades reciban más daño del necesario."
 
 #: ../../doc/manual/manual.en.xml:2417
 msgid "Time of Day"
@@ -3209,6 +3714,12 @@ msgid ""
 "defensive position. When its weak time is about to arise, your advance will "
 "push forth."
 msgstr ""
+"Recuerda que las unidades legales como los humanos luchan mejor durante el "
+"día y las caóticas como orcos o no muertos luchan mejor por la noche. Lo "
+"ideal sería atacar al enemigo cuando estés fuerte y/o él está débil. Cuando "
+"el enemigo tiene su momento fuerte, a menudo vale la pena para reforzar tus "
+"líneas y mantener una posición favorable defensivamente. Cuando su momento "
+"débil está a punto de surgir, tu avance te impulsará con éxito."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2425
@@ -3217,6 +3728,9 @@ msgid ""
 "and advance on sunrise. You may even note that the computer AI actively "
 "retreats his orcs during day."
 msgstr ""
+"Por ejemplo, los elfos podrían mantenerse en un bosque durante un ataque "
+"nocturno de orcos y avanzar en el amanecer. Puedes incluso darte cuenta que "
+"la IA del ordenador retira activamente sus orcos durante el día."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2432
@@ -3225,6 +3739,9 @@ msgid ""
 "force. Later scenarios will assume you have level 2 and 3 units available "
 "for recall."
 msgstr ""
+"En el transcurso de una campaña, es fundamental que construyas una fuerza "
+"vigorosa. Más tarde, los escenarios asumen que tendrás unidades de nivel 2 y "
+"3 disponibles para reincorporar."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2436
@@ -3235,6 +3752,12 @@ msgid ""
 "of the XP. Healers in particular are often weak in combat and often need to "
 "<emphasis>steal</emphasis> kills in this way to advance levels."
 msgstr ""
+"Tus unidades ganan más puntos de experiencia (PE) por matar a un enemigo "
+"(8PE por nivel de la unidad matada). Como tal, a menudo tiene sentido tener "
+"a tus unidades de nivel más alto debilitando al enemigo, pero cediendo el "
+"hecho de matarla a una unidad que necesite más los PE. Los sanadores, en "
+"particular, a menudo son débiles en combate y, a menudo, <emphasis>roban</"
+"emphasis> muertes de esta manera para avanzar niveles."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2442
@@ -3243,6 +3766,10 @@ msgid ""
 "most kills to a small handful of your units. This will fast-track them to "
 "becoming Level 2 units, and they can then shepherd others."
 msgstr ""
+"Al principio (cuando probablemente no tienes unidades de nivel alto), trata "
+"de dar más golpes finales a un pequeño puñado de tus unidades. Esto será la "
+"vía rápida para convertirlas en unidades de Nivel 2, y pueden entonces hacer "
+"de pastor para las otras."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2446
@@ -3251,11 +3778,14 @@ msgid ""
 "if you coddle him too much he will be too low level to survive future "
 "scenarios anyway."
 msgstr ""
+"No olvides ganar experiencia para tu líder. Tendrás que mentenerlo seguro, "
+"pero si le proteges demasiado tendrá un nivel demasiado bajo para sobrevivir "
+"escenarios futuros de todos modos."
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2453
 msgid "Getting the Most Fun Out of the Game"
-msgstr ""
+msgstr "Conseguir lo más Divertido del Juego"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:2454
@@ -3263,6 +3793,9 @@ msgid ""
 "Remember, the idea of a game is to have fun! Here are some recommendations "
 "from the development team on how to get the most fun out of the game:"
 msgstr ""
+"Recuerda, la idea de un juego es para divertirse! He aquí algunas "
+"recomendaciones del equipo de desarrollo sobre la forma de obtener el mayor "
+"diversión del juego:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2460
@@ -3271,6 +3804,9 @@ msgid ""
 "you have prior experience with strategy games. We feel you'll find it much "
 "more rewarding."
 msgstr ""
+"Considera la posibilidad de jugar en la campaña el nivel \"Medio\" de "
+"dificultad, sobre todo si tienes experiencia previa con los juegos de "
+"estrategia. Creemos que lo encontrarás mucho más gratificante."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2467
@@ -3278,6 +3814,8 @@ msgid ""
 "Don't sweat it too much when you lose some units. The campaign was designed "
 "to accommodate the player losing some units along the way."
 msgstr ""
+"No sufras demasiado cuando pierdas algunas unidades. La campaña fue diseñada "
+"para dar cabida al jugador a perder algunas unidades a lo largo del camino."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2473
@@ -3289,6 +3827,13 @@ msgid ""
 "your White Mage keeps getting killed. Learn to protect your White Mage "
 "instead, and balance risks! That is part of the strategy."
 msgstr ""
+"No abuses de juegos guardados. Hace mucho tiempo, Wesnoth sólo permitía "
+"salvar el juego al final de un escenario. El guardado a mitad del escenario "
+"se añadió como una conveniencia para el uso si tuviera que seguir el juego "
+"otro día, o para protegerse contra accidentes. No se recomienda la carga a "
+"mediados de los juegos guardados escenario una y otra vez porque tu Mago "
+"Blanco sigue siendo asesinado. En lugar de ello aprende a proteger tu Mago "
+"Blanco, ¡los riesgos y el equilibrio! Eso es parte de la estrategia."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2484
@@ -3297,6 +3842,9 @@ msgid ""
 "scenario, so that you choose a new strategy that works, rather than simply "
 "finding random numbers that favor you."
 msgstr ""
+"Si tienes que cargar un juego salvado, te recomendamos que te remontes al "
+"comienzo del escenario, para que elijas una nueva estrategia que funcione, "
+"en lugar de limitarte a la búsqueda de números aleatorios que te favorezcan."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2491
@@ -3306,11 +3854,16 @@ msgid ""
 "every time you make a mistake, looking for the <emphasis>perfect</emphasis> "
 "game where you never lose a unit, by all means, go right ahead!"
 msgstr ""
+"¡Pero recuerda, el objetivo es divertirse! ¡Puedes tener diferentes gustos "
+"que los desarrolladores, a fin de hacer lo que más disfrutable! Si te gusta "
+"cargar el juego guardado cada vez que cometas un error, buscando el juego "
+"<emphasis>perfecto</emphasis> en el que nunca pierdas una unidad, por todos "
+"los medios, ¡adelante!"
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2499
 msgid "At the start of a scenario"
-msgstr ""
+msgstr "Al principio de un escenario"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2503
@@ -3319,6 +3872,9 @@ msgid ""
 "leaders; instead it is enough that you survive for a certain number of "
 "turns, or pick up a particular object"
 msgstr ""
+"En primer lugar, lee los objetivos del escenario. A veces no tienes que "
+"matar a los líderes enemigos, sino que es suficiente que sobrevivas durante "
+"un determinado número de turnos, o recojas un objeto particular"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2510
@@ -3326,6 +3882,7 @@ msgid ""
 "Look at the map: the terrain, the position of your leader and the other "
 "leader(s)."
 msgstr ""
+"Mira el mapa: el terreno, la posición de tu líder y de los otro(s) líder(es)."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2516
@@ -3335,11 +3892,15 @@ msgid ""
 "Fast units can be used as scouts, for exploring the map and to quickly "
 "conquer villages."
 msgstr ""
+"Luego, comienzas a reclutar unidades. Las unidades baratas son útiles para "
+"afrontar la primera oleada de un ataque del enemigo; las unidades avanzadas "
+"pueden ser llevadas para el apoyo. Las unidades rápidas se pueden utilizar "
+"como escoltas, para explorar el mapa y rápidamente a conquistar los pueblos."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2525
 msgid "During the scenario"
-msgstr ""
+msgstr "Durante el escenario"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2529
@@ -3347,6 +3908,8 @@ msgid ""
 "Try to capture and keep control of as many villages as possible to keep the "
 "gold coming in."
 msgstr ""
+"Trata de capturar y mantener el control del mayor número posible de pueblos "
+"para mantener los ingresos del oro."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2535
@@ -3355,6 +3918,10 @@ msgid ""
 "you can outnumber each enemy unit. Put your units in a line so that the "
 "enemy cannot attack any one of your units from more than two sides."
 msgstr ""
+"Mantén las unidades en packs para que el enemigo no pueda atacar desde "
+"muchos flancos, y por lo tanto puedas superar en número cada unidad enemiga. "
+"Pon tus unidades en una línea de modo que el enemigo no pueda atacar a "
+"cualquier de tus unidades desde más de dos lados."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2542
@@ -3363,6 +3930,10 @@ msgid ""
 "and who they are attacking; right click on units and select \"Unit "
 "Description\" to learn more."
 msgstr ""
+"Unidades diferentes tienen diferentes puntos fuertes y débiles en función "
+"del terreno y a quien se está atacando; clica con el botón derecho sobre las "
+"unidades y selecciona la opción \"Describir Unidad\" para obtener más "
+"información."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2549
@@ -3370,6 +3941,9 @@ msgid ""
 "You can use lower level units as cannon fodder, to slow down enemy. e.g. you "
 "can use them to block enemy reaching your important units"
 msgstr ""
+"Puedes utilizar unidades de nivel inferior como carne de cañón, para frenar "
+"el enemigo. Por ejemplo, puedes usarlas para bloquear a tu enemigo y que no "
+"llegue a tus unidades importantes"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2555
@@ -3378,6 +3952,9 @@ msgid ""
 "with lower level units - to give them more experience (and finally make them "
 "advance to next level)."
 msgstr ""
+"Puedes causar daños al enemigo con las unidades avanzadas y, a continuación, "
+"terminarlas con las unidades de nivel inferior - para darles más experiencia "
+"(y, por último, los hacen avanzar al siguiente nivel)."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2562
@@ -3386,26 +3963,33 @@ msgid ""
 "Shaman), put it in the middle of a circle of units to heal them as they move "
 "across the map (Shamans can do this too, but not as well)."
 msgstr ""
+"Cuando tengas un Mago Blanco (avanza desde Mago) o Druida (avanza desde "
+"Chamán), ponlo en el centro de un círculo de unidades para sanarlas mientras "
+"se mueven a través del mapa (los chamanes puede hacer esto también, pero no "
+"tan bien) ."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2569
 msgid "Losing units is expected, even advanced units."
-msgstr ""
+msgstr "Perder unidades es habitual, incluso unidades avanzadas."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2574
 msgid "Time of day really matters:"
-msgstr ""
+msgstr "El momento del día realmente importa:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2579
 msgid "lawful units do more damage at day and less damage at night"
 msgstr ""
+"unidades legales hacen más daño durante el día y menos daño durante la noche"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2584
 msgid "chaotic units do more damage at night and less damage at day"
 msgstr ""
+"las unidades caóticas hacen más daño durante la noche y menos daño durante "
+"el día"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2589
@@ -3414,6 +3998,9 @@ msgid ""
 "Plan ahead - think about what it's going to be next turn as well as this "
 "turn."
 msgstr ""
+"Recuerda siempre comprobar el momento del día en la parte derecha de la "
+"pantalla. Planifica con anticipación - piensa en como irá el siguiente "
+"turno, así como el actual."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2598
@@ -3424,6 +4011,13 @@ msgid ""
 "\"Unit Description\", then select \"Resistance\". It will show you how "
 "resistant a unit is to different types of attacks."
 msgstr ""
+"Algunas unidades son resistentes o vulnerables a diferentes tipos de "
+"ataques. Unidades montadas son débiles frente a los ataques de perforación. "
+"Ataques de fuego y arcanos destruyen a los no muertos. Para ver cuánto "
+"resiste una unidad a un ataque de un tipo, haga clic derecho en la unidad, "
+"seleccione \"Descripción de Unidad\", a continuación, seleccione "
+"\"Resistencia\". Se le mostrará cómo de resistente es una unidad frente a "
+"diferentes tipos de ataques."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2610
@@ -3434,11 +4028,17 @@ msgid ""
 "Mage). Some other units you will encounter, such as Trolls, have the ability "
 "to heal themselves naturally."
 msgstr ""
+"Una parte importante del éxito en La Batalla por Wesnoth es mantener tus "
+"unidades saludables. Cuando tus unidades reciben daño puedes sanarlas "
+"desplazándolas hacia las aldeas o junto a las unidades especiales de "
+"sanación (por ejemplo, la Chamán Élfica y el Mago Blanco). Algunas otras "
+"unidades que te encuentres, como Trolls, tienen la capacidad de curarse a sí "
+"mismos de manera natural."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2618
 msgid "Winning a scenario"
-msgstr ""
+msgstr "Ganar un escenario"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2622
@@ -3446,6 +4046,8 @@ msgid ""
 "Advanced units are needed to quickly kill enemy commanders, and to avoid "
 "losing lots of units."
 msgstr ""
+"Las unidades Avanzadas son necesarias para matar rápidamente los comandantes "
+"enemigos, y para evitar la pérdida de gran cantidad de unidades."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2628
@@ -3454,16 +4056,20 @@ msgid ""
 "gold from winning early than from all of the map's villages for the rest of "
 "the turns."
 msgstr ""
+"Cuanto más rápido ganes un escenario, más oro obtendrás; obtendrás más oro "
+"por ganar temprano que por todas las aldeas del mapa por el resto de los "
+"turnos."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2635
 msgid "Killing all enemy leaders usually gives instant victory."
 msgstr ""
+"Matar a todos los líderes enemigos habitualmente da victoria inmediata."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2641
 msgid "More general tips"
-msgstr ""
+msgstr "Más consejos generales"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2645
@@ -3472,6 +4078,9 @@ msgid ""
 "usually \"breathing room\" scenarios where you can rather easily gain some "
 "gold and experience (advanced units)"
 msgstr ""
+"Después de escenarios sacrificantes (donde se recibe un montón de castigo) "
+"generalmente hay escenarios de \"respiro\" donde se puede ganar bastante "
+"fácilmente oro y experiencia (unidades avanzadas)"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2652
@@ -3479,16 +4088,18 @@ msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
 msgstr ""
+"Unidades avanzadas tienen un mayor mantenimiento que las unidades de nivel "
+"inferior (1 punto de oro por nivel), las unidades leales son una excepción."
 
 # type: Content of: <book><glossary><title>
 #: ../../doc/manual/manual.en.xml:2661
 msgid "Glossary"
-msgstr ""
+msgstr "Glosario"
 
 # type: Content of: <book><glossary><glossentry><glossdef><simpara>
 #: ../../doc/manual/manual.en.xml:2668
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
-msgstr ""
+msgstr "<link linkend=\"zdc\">Zone De Control</link>."
 
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject>
 #~ msgid "<phrase>Main Menu</phrase>"
@@ -3511,26 +4122,57 @@ msgstr ""
 #~ msgstr "<phrase>Panel Derecho</phrase>"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Green orb</phrase>"
-#~ msgstr "<phrase>Pantalla de Juego</phrase>"
+#~ msgid "<phrase>Recruit dialog</phrase>"
+#~ msgstr "<phrase>Diálogo de Reclutar</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-dawn.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-dawn.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-morning.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-morning.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-afternoon.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-afternoon.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-dusk.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-dusk.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-firstwatch.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-firstwatch.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-secondwatch.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-secondwatch.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
+#~ msgid "<phrase>images/schedule-underground.jpg</phrase>"
+#~ msgstr "<phrase>images/schedule-underground.jpg</phrase>"
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>green orb</phrase>"
+#~ msgstr "<phrase>orbe verde</phrase>"
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>yellow orb</phrase>"
+#~ msgstr "<phrase>orbe amarillo</phrase>"
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>red orb</phrase>"
+#~ msgstr "<phrase>orbe rojo</phrase>"
+
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
+#~ msgid "<phrase>blue orb</phrase>"
+#~ msgstr "<phrase>orbe azul</phrase>"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Yellow orb</phrase>"
-#~ msgstr "<phrase>Pantalla de Juego</phrase>"
+#~ msgid "<phrase>no orb</phrase>"
+#~ msgstr "<phrase>sin orbe</phrase>"
 
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Red orb</phrase>"
-#~ msgstr "<phrase>Pantalla de Juego</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Blue orb</phrase>"
-#~ msgstr "<phrase>Pantalla de Juego</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>No orb</phrase>"
-#~ msgstr "<phrase>Panel Superior</phrase>"
+# type: Content of: <book><glossary><glossentry>
+#~ msgid "<glossterm> ZOC </glossterm>"
+#~ msgstr "<glossterm>ZDC</glossterm>"
