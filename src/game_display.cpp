@@ -418,7 +418,7 @@ void game_display::draw(bool update,bool force)
 			// Draw cross images for debug highlights
 			if(game_config::debug && debugHighlights_.count(*it)) {
 				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
-					image::get_image(game_config::cross_image, image::SCALED_TO_HEX)));
+					image::get_image(game_config::cross_image, image::UNMASKED)));
 			}
 
 			// Add the top layer overlay surfaces
@@ -453,15 +453,15 @@ void game_display::draw(bool update,bool force)
 				// We apply void also on off-map tiles
 				// to shroud the half-hexes too
 				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
-					image::get_image(shroud_image, image::SCALED_TO_HEX)));
+					image::get_image(shroud_image, image_type)));
 			} else if(fogged(*it)) {
 				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
-					image::get_image(fog_image, image::SCALED_TO_HEX)));
+					image::get_image(fog_image, image_type)));
 			}
 
 			if(!is_shrouded) {
 				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
-					get_terrain_images(*it, tod.id, image::SCALED_TO_HEX, ADJACENT_FOGSHROUD)));
+					get_terrain_images(*it, tod.id, image_type, ADJACENT_FOGSHROUD)));
 			}
 
 			// Linger overlay unconditionally otherwise it might give glitches
