@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-26 18:38+0200\n"
-"PO-Revision-Date: 2008-04-22 15:20+0100\n"
-"Last-Translator: Damien J <guydelatourATgloireetpouvoir.com>\n"
+"PO-Revision-Date: 2008-05-26 21:12+0200\n"
+"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3408,13 +3408,12 @@ msgstr "trident des tempêtes"
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:540
 msgid "Pick it up"
-msgstr ""
+msgstr "Le prendre"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:557
-#, fuzzy
 msgid "Leave it"
-msgstr "Caverne éclairée"
+msgstr "Le laisser"
 
 #: data/core/macros/names.cfg:3
 msgid ""
@@ -5888,8 +5887,8 @@ msgid ""
 "a powerful and experienced army."
 msgstr ""
 "Vous pouvez utiliser des unités d'un scénario précédent en sélectionnant "
-"« Rappeler » dans le menu « Actions ». En rappelant toujours les mêmes unités "
-"vous pouvez constituer une armée expérimentée et puissante."
+"« Rappeler » dans le menu « Actions ». En rappelant toujours les mêmes "
+"unités vous pouvez constituer une armée expérimentée et puissante."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -5900,10 +5899,10 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Les unités ont généralement une « zone de contrôle » sur chacun des hexagones "
-"qui leur sont adjacents. Une unité qui se déplace dans la zone de contrôle "
-"ennemie ne peut faire aucun autre mouvement pour ce tour ; deux unités "
-"peuvent donc barrer un passage avec deux cases vides entre elles. Les "
+"Les unités ont généralement une « zone de contrôle » sur chacun des "
+"hexagones qui leur sont adjacents. Une unité qui se déplace dans la zone de "
+"contrôle ennemie ne peut faire aucun autre mouvement pour ce tour ; deux "
+"unités peuvent donc barrer un passage avec deux cases vides entre elles. Les "
 "tirailleurs sont quant à eux suffisamment habiles pour ignorer ces zones."
 
 #. [tip]
@@ -7138,7 +7137,7 @@ msgstr "Résistances : "
 
 #: src/generate_report.cpp:176
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Att / Déf)"
 
 #: src/generate_report.cpp:195 src/multiplayer_create.cpp:399
 msgid "Experience Modifier: "
@@ -7157,18 +7156,16 @@ msgstr[0] "attaque"
 msgstr[1] "attaques"
 
 #: src/generate_report.cpp:271
-#, fuzzy
 msgid "tooltip^accuracy"
 msgid_plural "accuracy"
-msgstr[0] "attaque"
-msgstr[1] "attaques"
+msgstr[0] "précision"
+msgstr[1] "précisions"
 
 #: src/generate_report.cpp:276
-#, fuzzy
 msgid "tooltip^parry"
 msgid_plural "parry"
-msgstr[0] "dégât"
-msgstr[1] "dégâts"
+msgstr[0] "parade"
+msgstr[1] "parades"
 
 #: src/generate_report.cpp:287
 msgid "weapon range: "
@@ -7718,9 +7715,8 @@ msgid "Search"
 msgstr "Rechercher"
 
 #: src/menu_events.cpp:1989
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Aucune campagne disponible.\n"
+msgstr "Cette commande n'est pas disponible."
 
 #: src/menu_events.cpp:2000
 msgid ""
@@ -7729,9 +7725,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2105
-#, fuzzy
 msgid " No help available."
-msgstr "Aucun objectif disponible"
+msgstr "Aucune aide disponible"
 
 #: src/menu_events.cpp:2225
 msgid ""
@@ -7779,27 +7774,20 @@ msgid "Change the log level of a log domain."
 msgstr ""
 
 #: src/menu_events.cpp:2250
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr ""
-"Ajoute le joueur à la liste des ignorés. Utilisation : /list ignore <nom>"
+msgstr "Ajoute un joueur à la liste des ignorés."
 
 #: src/menu_events.cpp:2252
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Ajouté à la liste des amis : "
+msgstr "Ajoute un joueur à la liste des amis."
 
 #: src/menu_events.cpp:2254
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Retire le joueur de la liste des amis ou ignorés. Utilisation : /list remove "
-"<nom>"
+msgstr "Retire un joueur de la liste des amis ou ignorés."
 
 #: src/menu_events.cpp:2256
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Affiche votre liste d'amis et d'ignorés. Utilisation : /list display"
+msgstr "Affiche votre liste d'amis et d'ignorés."
 
 #: src/menu_events.cpp:2259
 #, fuzzy
@@ -7831,18 +7819,16 @@ msgid "Visualize the screen refresh procedure."
 msgstr ""
 
 #: src/menu_events.cpp:2390
-#, fuzzy
 msgid "Save game."
-msgstr "Sauvegarder le jeu"
+msgstr "Sauvegarde le jeu."
 
 #: src/menu_events.cpp:2392
-#, fuzzy
 msgid "Quit game."
-msgstr "Quitter le jeu"
+msgstr "Quitte le jeu."
 
 #: src/menu_events.cpp:2396
 msgid "Save and quit."
-msgstr ""
+msgstr "Sauvegarde et quitte le jeu."
 
 #: src/menu_events.cpp:2399
 msgid "Ignore replay errors."
@@ -7850,21 +7836,19 @@ msgstr ""
 
 #: src/menu_events.cpp:2401
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Désactive les sauvegardes automatiques."
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "Advance to the next scenario."
-msgstr "En attente du scénario suivant..."
+msgstr "Passe au scénario suivant."
 
 #: src/menu_events.cpp:2406
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Commandes du mode débug"
+msgstr "Active le mode débug."
 
 #: src/menu_events.cpp:2408
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Désactive le mode débug."
 
 #: src/menu_events.cpp:2410
 msgid "Set the command used by the custom command hotkey"
@@ -7896,16 +7880,15 @@ msgstr ""
 
 #: src/menu_events.cpp:2420
 msgid "Add a trait to a unit."
-msgstr ""
+msgstr "Ajouter un trait à une unité."
 
 #: src/menu_events.cpp:2422
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
 
 #: src/menu_events.cpp:2424
-#, fuzzy
 msgid "Create a unit."
-msgstr "Créer une partie"
+msgstr "Crée une unité."
 
 #: src/menu_events.cpp:2426
 #, fuzzy
@@ -8881,9 +8864,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Extensions"
 
 #: src/titlescreen.cpp:364
-#, fuzzy
 msgid "TitleScreen button^Editor"
-msgstr "Quitter"
+msgstr "Éditeur"
 
 #: src/titlescreen.cpp:366
 msgid "TitleScreen button^Language"
@@ -8943,7 +8925,7 @@ msgstr "Téléchargement d'ères, de campagnes, ou de cartes additionnelles"
 
 #: src/titlescreen.cpp:384
 msgid "Start the map editor"
-msgstr ""
+msgstr "Ouvrir l'éditeur de cartes"
 
 #: src/titlescreen.cpp:386
 msgid "Change the language"
@@ -9023,11 +9005,10 @@ msgstr[1] "attaques"
 
 # Benoît : j'ai du mal à piger l'anglais ici
 #: src/unit_types.cpp:210
-#, fuzzy
 msgid "accuracy"
 msgid_plural "accuracy"
 msgstr[0] "précision"
-msgstr[1] "précision"
+msgstr[1] "précisions"
 
 #: src/unit_types.cpp:218
 msgid "parry"
