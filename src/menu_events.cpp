@@ -1042,7 +1042,7 @@ private:
 		int recruit_res = 0;
 
 		{
-			dialogs::unit_types_preview_pane unit_preview(*gui_,&map_,sample_units,team_num);
+			dialogs::unit_types_preview_pane unit_preview(*gui_,&map_,sample_units,NULL,team_num);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
@@ -1653,19 +1653,27 @@ private:
 
 		int choice = 0;
 		{
+			gui::dialog umenu(*gui_, _("Create Unit (Debug!)"), "", gui::OK_CANCEL);
+
 			gui::menu::basic_sorter sorter;
 			sorter.set_alpha_sort(0).set_alpha_sort(1);
-
-			dialogs::unit_types_preview_pane unit_preview(*gui_, &map_, unit_choices);
-			gui::dialog umenu(*gui_, _("Create Unit (Debug!)"), "", gui::OK_CANCEL);
 			umenu.set_menu(options, &sorter);
-			umenu.add_pane(&unit_preview);
+
+			gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
+				_("Filter: "), options, options, umenu, 200);
+			umenu.set_textbox(filter);
+
 			//sort by race then by type name
 			umenu.get_menu().sort_by(1);
 			umenu.get_menu().sort_by(0);
 			umenu.get_menu().reset_selection();
+
+			dialogs::unit_types_preview_pane unit_preview(*gui_, &map_, unit_choices, filter, 1, dialogs::unit_types_preview_pane::SHOW_ALL);
+			umenu.add_pane(&unit_preview);
 			unit_preview.set_selection(umenu.get_menu().selection());
+
 			choice = umenu.show();
+			choice = filter->get_index(choice);
 		}
 
 		if (size_t(choice) < unit_choices.size()) {

@@ -117,6 +117,31 @@ private:
 	label *label_;
 };
 
+class dialog;
+
+class filter_textbox : public gui::dialog_textbox {
+public:
+	filter_textbox(CVideo& video, const std::string& header,
+		const std::vector<std::string>& items, const std::vector<std::string>& to_filter_items,
+		dialog& dialog, int width = 250)
+		: dialog_textbox(new label(video, header), video, width),
+		items_(items),
+		to_filter_items_(to_filter_items),
+		dialog_(dialog),
+		first_time_(true)
+	{
+		set_text("");
+	}
+
+	int get_index(int index) const;
+private:
+	std::vector<std::string> items_, to_filter_items_, filtered_items_;
+	std::vector<int> index_map_;
+	gui::dialog& dialog_;
+	bool first_time_;
+	virtual void handle_text_changed(const wide_string& text);
+};
+
 class dialog_button : public button {
 public:
 	dialog_button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,

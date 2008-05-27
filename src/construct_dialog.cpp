@@ -850,6 +850,40 @@ void dialog_image::draw_contents()
 	video().blit_surface(location().x, location().y, surf_);
 }
 
+int filter_textbox::get_index(int index) const {
+	// don't translate special values
+	if(index < 0) {
+		return index;
+	}
+	//we must add one to the index to ignore the header row, and
+	//then subtract one from the result to return the index not including
+	//the header row.
+	index++;
+	
+	if (size_t(index) >= index_map_.size()) {
+		return -1; // bad index, cancel
+	}
+
+	return index_map_[index]-1;
+}
+
+void filter_textbox::handle_text_changed(const wide_string& text) {
+	filtered_items_.clear();
+	index_map_.clear();
+	const std::string t = utils::wstring_to_string(text);
+	for(size_t n = 0; n != to_filter_items_.size(); ++n) {
+		if(n == 0 || std::search(to_filter_items_[n].begin(), to_filter_items_[n].end(),
+								 t.begin(), t.end(),
+								 chars_equal_insensitive) != to_filter_items_[n].end())
+		{
+			filtered_items_.push_back(to_filter_items_[n]);
+			index_map_.push_back(n);
+		}
+	}
+	
+	dialog_.set_menu_items(filtered_items_);
+}
+
 int message_dialog::show(msecs minimum_lifetime)
 {
 	prevent_misclick_until_ = SDL_GetTicks() + minimum_lifetime;

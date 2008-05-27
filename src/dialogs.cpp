@@ -305,71 +305,22 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 //! Class to handle deleting a saved game.
 namespace {
 
-class load_game_filter_textbox : public gui::dialog_textbox {
-public:
-	load_game_filter_textbox(CVideo& video, const std::vector<std::string>& items, gui::dialog& dialog)
-	  : gui::dialog_textbox(new gui::label(video, _("Filter: ")), video, 250),
-	    items_(items),
-	    dialog_(dialog),
-		first_time_(true)
-	{
-		sorter_.set_alpha_sort(0).set_id_sort(1);
-		set_text("");
-	}
-
-	int get_save_index(int index) const {
-		//we must add one to the index to ignore the header row, and
-		//then subtract one from the result to return the index not including
-		//the header row.
-		++index;
-		if(size_t(index) >= index_map_.size()) {
-			return -1;
-		}
-		return index_map_[index]-1;
-	}
-private:
-	std::vector<std::string> items_, filtered_items_;
-	std::vector<int> index_map_;
-	gui::dialog& dialog_;
-	gui::menu::basic_sorter sorter_;
-	bool first_time_;
-	virtual void handle_text_changed(const wide_string& text) {
-		filtered_items_.clear();
-		index_map_.clear();
-		const std::string t = utils::wstring_to_string(text);
-		for(size_t n = 0; n != items_.size(); ++n) {
-			if(n == 0 || std::search(items_[n].begin(), items_[n].end(),
-			                         t.begin(), t.end(), chars_equal_insensitive) != items_[n].end()) {
-				filtered_items_.push_back(items_[n]);
-				index_map_.push_back(n);
-			}
-		}
-
-		if(first_time_) {
-			dialog_.set_menu(filtered_items_, &sorter_);
-			first_time_ = false;
-		} else {
-			dialog_.set_menu_items(filtered_items_);
-		}
-	}
-};
-
 class delete_save : public gui::dialog_button_action
 {
 public:
-	delete_save(display& disp, load_game_filter_textbox& filter, std::vector<save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries), filter_(filter) {}
+	delete_save(display& disp, gui::filter_textbox& filter, std::vector<save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries), filter_(filter) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	std::vector<save_info>& saves_;
 	std::vector<config*>& summaries_;
-	load_game_filter_textbox& filter_;
+	gui::filter_textbox& filter_;
 };
 
 gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection)
 {
-	const size_t index = size_t(filter_.get_save_index(menu_selection));
+	const size_t index = size_t(filter_.get_index(menu_selection));
 	if(index < saves_.size()) {
 
 		// See if we should ask the user for deletion confirmation
@@ -411,7 +362,7 @@ class save_preview_pane : public gui::preview_pane
 {
 public:
 	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
-	                  const std::vector<save_info>& info, const std::vector<config*>& summaries, const load_game_filter_textbox& textbox)
+	                  const std::vector<save_info>& info, const std::vector<config*>& summaries, const gui::filter_textbox& textbox)
 		: gui::preview_pane(video), game_config_(&game_config), map_(map), info_(&info), summaries_(&summaries), index_(0), textbox_(textbox)
 	{
 		set_measurements(minimum<int>(200,video.getx()/4),
@@ -420,7 +371,7 @@ public:
 
 	void draw_contents();
 	void set_selection(int index) {
-		index_ = textbox_.get_save_index(index);
+		index_ = textbox_.get_index(index);
 		set_dirty();
 	}
 
@@ -433,7 +384,7 @@ private:
 	const std::vector<config*>* summaries_;
 	int index_;
 	std::map<std::string,surface> map_cache_;
-	const load_game_filter_textbox& textbox_;
+	const gui::filter_textbox& textbox_;
 };
 
 void save_preview_pane::draw_contents()
@@ -686,9 +637,6 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 		items.push_back(str.str());
 	}
 
-	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(0).set_id_sort(1);
-
 	gamemap map_obj(game_config, "");
 
 
@@ -696,9 +644,15 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 			  _("Load Game"),
 			  _("Choose the game to load"), gui::NULL_DIALOG);
 	lmenu.set_basic_behavior(gui::OK_CANCEL);
-	load_game_filter_textbox* filter = new load_game_filter_textbox(disp.video(), items, lmenu);
-	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,summaries,*filter);
+
+	gui::menu::basic_sorter sorter;
+	sorter.set_alpha_sort(0).set_id_sort(1);
+	lmenu.set_menu(items, &sorter);
+
+	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(), _("Filter: "), items, items, lmenu);
 	lmenu.set_textbox(filter);
+
+	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,summaries,*filter);
 	lmenu.add_pane(&save_preview);
 	// create an option for whether the replay should be shown or not
 	if(show_replay != NULL) {
@@ -734,7 +688,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	if(res == -1)
 		return "";
 
-	res = filter->get_save_index(res);
+	res = filter->get_index(res);
 	int option_index = 0;
 	if(show_replay != NULL) {
 	  *show_replay = lmenu.option_checked(option_index++);
@@ -757,10 +711,12 @@ namespace {
 
 //! Show unit-stats in a side-pane to unit-list, recall-list, etc.
 
-unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map, TYPE type, bool on_left_side)
+unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map,
+		const gui::filter_textbox* filter, TYPE type, bool on_left_side)
 				    : gui::preview_pane(disp.video()), disp_(disp), map_(map), index_(0),
-				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
-				      left_(on_left_side), weapons_(type == SHOW_ALL)
+				      details_button_(disp.video(), _("Profile"),
+				      gui::button::TYPE_PRESS,"lite_small", gui::button::MINIMUM_SPACE),
+				      filter_(filter), weapons_(type == SHOW_ALL), left_(on_left_side)
 {
 	unsigned w = font::relative_size(weapons_ ? 200 : 190);
 	unsigned h = font::relative_size(weapons_ ? 370 : 140);
@@ -788,6 +744,9 @@ bool unit_preview_pane::left_side() const
 void unit_preview_pane::set_selection(int index)
 {
 	index = minimum<int>(int(size()-1),index);
+	if (filter_) {
+		index = filter_->get_index(index);
+	}
 	if(index != index_ && index >= 0) {
 		index_ = index;
 		set_dirty();
@@ -919,15 +878,17 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
-					: unit_preview_pane(disp, map, type, on_left_side),
+units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map,
+		const unit& u, TYPE type, bool on_left_side)
+					: unit_preview_pane(disp, map, NULL, type, on_left_side),
 					  units_(&unit_store_)
 {
 	unit_store_.push_back(u);
 }
 
-units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map, std::vector<unit>& units, TYPE type, bool on_left_side)
-					: unit_preview_pane(disp, map, type, on_left_side),
+units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map,
+		std::vector<unit>& units, const gui::filter_textbox* filter, TYPE type, bool on_left_side)
+					: unit_preview_pane(disp, map, filter, type, on_left_side),
 					  units_(&units)
 {}
 
@@ -936,7 +897,6 @@ size_t units_list_preview_pane::size() const
 	return (units_!=NULL) ? units_->size() : 0;
 }
 
-//unit_preview_pane::
 const unit_preview_pane::details units_list_preview_pane::get_details() const
 {
 	unit& u = (*units_)[index_];
@@ -979,8 +939,10 @@ void units_list_preview_pane::process_event()
 	}
 }
 
-unit_types_preview_pane::unit_types_preview_pane(game_display& disp, const gamemap* map, std::vector<const unit_type*>& unit_types, int side, TYPE type, bool on_left_side)
-					: unit_preview_pane(disp, map, type, on_left_side),
+unit_types_preview_pane::unit_types_preview_pane(game_display& disp, const gamemap* map,
+					std::vector<const unit_type*>& unit_types, const gui::filter_textbox* filter,
+					int side, TYPE type, bool on_left_side)
+					: unit_preview_pane(disp, map, filter, type, on_left_side),
 					  unit_types_(&unit_types), side_(side)
 {}
 

@@ -82,7 +82,8 @@ public:
 		std::vector<attack_type> attacks;
 	};
 
-	unit_preview_pane(game_display &disp, const gamemap* map, TYPE type=SHOW_ALL, bool left_side=true);
+	unit_preview_pane(game_display &disp, const gamemap* map, const gui::filter_textbox* filter=NULL,
+			TYPE type=SHOW_ALL, bool left_side=true);
 
 	bool show_above() const;
 	bool left_side() const;
@@ -103,15 +104,19 @@ private:
 
 	void draw_contents();
 
-	bool left_;
+	const gui::filter_textbox* filter_;
 	bool weapons_;
+	bool left_;
 };
 
 class units_list_preview_pane : public dialogs::unit_preview_pane
 {
 public:
-	units_list_preview_pane(game_display &disp, const gamemap* map, const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
-	units_list_preview_pane(game_display &disp, const gamemap* map, std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
+	units_list_preview_pane(game_display &disp, const gamemap* map,
+			const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
+	units_list_preview_pane(game_display &disp, const gamemap* map,
+			std::vector<unit>& units, const gui::filter_textbox* filter=NULL,
+			TYPE type=SHOW_ALL, bool left_side=true);
 
 private:
 	size_t size() const;
@@ -126,7 +131,9 @@ private:
 class unit_types_preview_pane : public dialogs::unit_preview_pane
 {
 public:
-	unit_types_preview_pane(game_display &disp, const gamemap* map, std::vector<const unit_type*>& unit_types, int side = 1, TYPE type=SHOW_ALL, bool left_side=true);
+	unit_types_preview_pane(game_display &disp, const gamemap* map,
+			std::vector<const unit_type*>& unit_types, const gui::filter_textbox* filterbox=NULL,
+			int side = 1, TYPE type=SHOW_ALL, bool left_side=true);
 
 private:
 	size_t size() const;
