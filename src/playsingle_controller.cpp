@@ -44,7 +44,7 @@ playsingle_controller::playsingle_controller(const config& level, game_state& st
 	// game may need to start in linger mode
 	if (state_of_game.completion == "victory" || state_of_game.completion == "defeat")
 	{
-		std::cerr << "Setting linger mode.\n";
+		LOG_NG << "Setting linger mode.\n";
 		browse_ = linger_ = true;
 	}
 }
