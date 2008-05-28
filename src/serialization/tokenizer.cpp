@@ -155,12 +155,12 @@ const token& tokenizer::next_token()
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
 			}
-			if(current_ == '"' && peek_char_no_strip() != '"')
+			if(current_ == '"' && peek_char() != '"')
 				break;
-			if(current_ == '"' && peek_char_no_strip() == '"')
+			if(current_ == '"' && peek_char() == '"')
 				next_char_fast_no_strip();
 			if (current_ == 254 && 
-					(peek_char_no_strip() == 'l' || peek_char_no_strip() == 't')) {
+					(peek_char() == 'l' || peek_char() == 't')) {
 				next_char_fast_no_strip();
 				if ((current_ == 'l' && peek_char_no_strip() == 'i') || (current_ == 't' && peek_char_no_strip() == 'e'))
 				{
