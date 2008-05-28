@@ -381,15 +381,17 @@ namespace {
 
 							network::send_data(construct_error("Add-on '" + (*req)["name"] + "'not found."), sock, gzipped);
 						} else {
-							size_t size = file_size((*campaign)["filename"]);
-							scoped_istream stream = istream_file((*campaign)["filename"]);
 							if (gzipped)
 							{
+								network::send_file((*campaign)["filename"], sock);
+#if 0
 								util::scoped_resource<char*,util::delete_array> buf(new char[size+1]);
 								stream->read(buf,size);
 
 								network::send_raw_data(buf, size, sock);
+#endif
 							} else {
+								scoped_istream stream = istream_file((*campaign)["filename"]);
 								config cfg;
 								read_gz(cfg, *stream);
 								network::send_data(cfg, sock, false);
@@ -510,8 +512,8 @@ namespace {
 
 							add_license(*data);
 
-							scoped_ostream campaign_file = ostream_file(filename);
 							{
+								scoped_ostream campaign_file = ostream_file(filename);
 								config_writer writer(*campaign_file, true, "",compress_level_);
 								writer.write(*data);
 							}
@@ -598,8 +600,8 @@ namespace {
 							std::string scripts = validate_all_python_scripts(campaign_file);
 							if (!scripts.empty()) {
 								// Write the campaign with changed filenames back to disk
-								scoped_ostream ostream = ostream_file((*campaign)["filename"]);
 								{
+									scoped_ostream ostream = ostream_file((*campaign)["filename"]);
 									config_writer writer(*ostream, true, "",compress_level_);
 									writer.write(campaign_file);
 								}

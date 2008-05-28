@@ -21,6 +21,7 @@ Version 1.4.2+svn:
      (bug #11386)
    * Backported gracefull restart feature to server
    * Improved connection stability with slow connections.
+   * Implemented send_file to reduce memory usage when sending files
    * Fixed a mememory leak in networking code
    * fixed an alignement issue which caused a SIGBUS on a Sparc 
      (debian bug #426318)

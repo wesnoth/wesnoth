@@ -46,6 +46,8 @@ void receive_data(TCPsocket sock);
 TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped = 0);
 TCPsocket get_received_data(std::vector<char>& buf);
 
+void queue_file(TCPsocket sock, const std::string&);
+
 void queue_raw_data(TCPsocket sock, const char* buf, int len);
 void queue_data(TCPsocket sock, const config& buf, const bool gzipped);
 bool is_locked(const TCPsocket sock);
