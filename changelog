@@ -87,6 +87,8 @@ Version 1.5.0+svn:
    * dissallow_observers is on as default if side has controller=null
    * Fixed null-pointer reference in network code
    * Made networking code check system buffer size and limit send length
+   * Fixed tokenizer not to strip CR from quoted string becaue it would
+     destroy images transfered over network
    * Added possibility to use per fight EV statistics proposed by maboul
    * Added smoother FPS limit to server
    * Fixed a mememory leak in networking code

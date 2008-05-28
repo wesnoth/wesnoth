@@ -146,7 +146,10 @@ const token& tokenizer::next_token()
 	case '"':
 		token_.type = token::QSTRING;
 		while (1) {
-			next_char();
+			/** Have to use next_char_no_strip 
+			 * because we will break image ifwe do striping
+			 **/
+			next_char_no_strip();
 
 			if(current_ == EOF) {
 				token_.type = token::UNTERMINATED_QSTRING;
@@ -155,10 +158,10 @@ const token& tokenizer::next_token()
 			if(current_ == '"' && peek_char() != '"')
 				break;
 			if(current_ == '"' && peek_char() == '"')
-				next_char_fast();
+				next_char_fast_no_strip();
 			if (current_ == 254 && 
 					(peek_char() == 'l' || peek_char() == 't')) {
-				next_char_fast();
+				next_char_fast_no_strip();
 				if ((current_ == 'l' && peek_char() == 'i') || (current_ == 't' && peek_char() == 'e'))
 				{
 					skip_comment();
