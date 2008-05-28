@@ -2501,7 +2501,7 @@ static int play_game(int argc, char** argv)
 			if(game.play_multiplayer() == false) {
 				// Need a redraw because we can left the lobby without playing.
 				// (the redraw is only useless when canceling the multiplayer dialog)
-				// FIXME: game.play_multiplayer() always return false (why?),
+				// TODO: game.play_multiplayer() always return false (why?),
 				// perhaps change this to identify real "cancel" cases?
 				redraw_background = true;
 				continue;	
@@ -2526,6 +2526,9 @@ static int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::GET_ADDONS) {
 			game.manage_addons();
+			// after the loadscreen, need a redraw
+			// TODO: detect cancel action, to avoid the redraw when possible
+			redraw_background = true;
 			continue;
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();
