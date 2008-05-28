@@ -162,7 +162,7 @@ const token& tokenizer::next_token()
 			if (current_ == 254 && 
 					(peek_char() == 'l' || peek_char() == 't')) {
 				next_char_fast_no_strip();
-				if ((current_ == 'l' && peek_char_no_strip() == 'i') || (current_ == 't' && peek_char_no_strip() == 'e'))
+				if ((current_ == 'l' && peek_char() == 'i') || (current_ == 't' && peek_char() == 'e'))
 				{
 					skip_comment();
 					--lineno_;
