@@ -133,6 +133,8 @@ connection receive_data(config& cfg, connection connection_num=0, bool* gzipped 
 connection receive_data(config& cfg, connection connection_num, unsigned int timeout);
 connection receive_data(std::vector<char>& buf);
 
+void send_file(const std::string&, connection);
+
 //! Function to send data down a given connection,
 //! or broadcast to all peers if connection_num is 0.
 //! Throws error.

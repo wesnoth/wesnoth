@@ -819,6 +819,24 @@ connection receive_data(std::vector<char>& buf)
 	return result;
 }
 
+void send_file(const std::string& filename, connection connection_num)
+{
+	assert(connection_num > 0);
+	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
+		return;
+	}
+
+	const connection_map::iterator info = connections.find(connection_num);
+	if (info == connections.end()) {
+		ERR_NW << "Error: socket: " << connection_num
+			<< "\tnot found in connection_map. Not sending...\n";
+		return;
+	}
+
+	network_worker_pool::queue_file(info->second.sock, filename);
+	
+}
+
 //! @todo Note the gzipped parameter should be removed later, we want to send
 //! all data gzipped. This can be done once the campaign server is also updated
 //! to work with gzipped data.

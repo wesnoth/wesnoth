@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "network_worker.hpp"
 #include "network.hpp"
+#include "filesystem.hpp"
 #include "thread.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
@@ -37,6 +38,10 @@
 #include <iostream>
 #include <map>
 #include <vector>
+
+#ifdef USE_SENDFILE
+#include <sys/sendfile.h>
+#endif
 
 #include <boost/iostreams/filter/gzip.hpp>
 
@@ -294,7 +299,7 @@ static void make_network_buffer(const char* input, int len, std::vector<char>& b
 	buf.back() = 0;
 }
 
-static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
+static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_size = -1)
 {
 #ifdef __BEOS__
 	int timeout = 15000;
@@ -302,6 +307,8 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 	check_send_buffer_size(sock);
 	size_t upto = 0;
 	size_t size = buf.size();
+	if (in_size != -1)
+		size = in_size;
 	int send_len = 0;
 
 	if (!raw_data_only)
@@ -385,6 +392,43 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf)
 
 		return SOCKET_ERRORED;
 	}
+}
+
+static SOCKET_STATE send_file(buffer* buf)
+{
+	size_t upto = 0;
+	int send_size = 0;
+	size_t filesize = file_size(buf->config_error);
+
+#ifdef USE_SENDFILE
+	std::vector<char>& buffer;
+	buffer.reserve(4);
+	SDLNet_Write32(filesize,&buffer[0]);
+#else
+	SDLNet_Write32(filesize,&buf->raw_buffer[0]);
+	scoped_istream file_stream = istream_file(buf->config_error);
+	send_buffer(buf->sock, buf->raw_buffer, 4);
+#endif
+	while (true)
+	{
+#ifdef USE_SENDFILE
+#else
+		// read data
+		file_stream->read(&buf->raw_buffer[0], buf->raw_buffer.size());
+		send_size = file_stream->gcount();
+		upto += send_size;
+		// send data to socket
+		send_buffer(buf->sock, buf->raw_buffer, send_size);
+		if (upto == filesize)
+		{
+			buf->raw_buffer[0] = 0;
+			send_buffer(buf->sock, buf->raw_buffer, 1);
+			break;
+		}
+
+#endif
+	}
+	return SOCKET_READY;
 }
 
 static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
@@ -529,12 +573,19 @@ static int process_queue(void* shard_num)
 		std::vector<char> buf;
 
 		if(sent_buf) {
-			if(sent_buf->raw_buffer.empty()) {
-				const std::string &value = sent_buf->stream.str();
-				make_network_buffer(value.c_str(), value.size(), sent_buf->raw_buffer);
-			}
 
-			result = send_buffer(sent_buf->sock, sent_buf->raw_buffer);
+ 			if(!sent_buf->config_error.empty())
+ 			{
+ 				// We have file to send over net
+ 				send_file(sent_buf);
+			} else {
+				if(sent_buf->raw_buffer.empty()) {
+					const std::string &value = sent_buf->stream.str();
+					make_network_buffer(value.c_str(), value.size(), sent_buf->raw_buffer);
+				}
+
+				result = send_buffer(sent_buf->sock, sent_buf->raw_buffer);
+			}
 			delete sent_buf;
 		} else {
 			result = receive_buf(sock,buf);
@@ -748,11 +799,8 @@ TCPsocket get_received_data(std::vector<char>& out)
 	return res;
 }
 
-void queue_raw_data(TCPsocket sock, const char* buf, int len)
+static void queue_buffer(TCPsocket sock, buffer* queued_buf)
 {
-	buffer* queued_buf = new buffer(sock);
-	assert(*buf == 31);
-	make_network_buffer(buf, len, queued_buf->raw_buffer);
 	const size_t shard = get_shard(sock);
 	const threading::lock lock(*shard_mutexes[shard]);
 	outgoing_bufs[shard].push_back(queued_buf);
@@ -763,6 +811,28 @@ void queue_raw_data(TCPsocket sock, const char* buf, int len)
 
 }
 
+void queue_raw_data(TCPsocket sock, const char* buf, int len)
+{
+	buffer* queued_buf = new buffer(sock);
+	assert(*buf == 31);
+	make_network_buffer(buf, len, queued_buf->raw_buffer);
+	queue_buffer(sock, queued_buf);
+}
+
+
+void queue_file(TCPsocket sock, const std::string& filename)
+{
+ 	buffer* queued_buf = new buffer(sock);
+ 	queued_buf->config_error = filename;
+#ifndef USE_SENDFILE
+	// We reserve buffer in main thread
+ 	// this helps in memory problems with threads
+ 	// We use 8KB buffer
+ 	queued_buf->raw_buffer.resize(1024*8);
+#endif
+ 	queue_buffer(sock, queued_buf);
+}
+ 
 void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 {
 	DBG_NW << "queuing data...\n";
@@ -770,18 +840,7 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 	buffer* queued_buf = new buffer(sock);
 	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
 	queued_buf->gzipped = gzipped;
-	{
-		const size_t shard = get_shard(sock);
-		const threading::lock lock(*shard_mutexes[shard]);
-
-		outgoing_bufs[shard].push_back(queued_buf);
-
-		socket_state_map::const_iterator i = sockets_locked[shard].insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY)).first;
-		if(i->second == SOCKET_READY || i->second == SOCKET_ERRORED) {
-			cond[shard]->notify_one();
-		}
-	}
-
+	queue_buffer(sock, queued_buf);
 }
 
 namespace
