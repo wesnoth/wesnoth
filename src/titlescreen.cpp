@@ -338,7 +338,14 @@ static void draw_background(game_display& screen)
 
 namespace gui {
 
-TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_background)
+
+static bool background_is_dirty_ = true;
+void set_background_dirty() {
+	background_is_dirty_ = true;
+}
+
+
+TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 {
 	cursor::set(cursor::NORMAL);
 
@@ -349,8 +356,9 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_b
 
 	screen.video().modeChanged(); // resets modeChanged value
 
-	if (redraw_background)
+	if (background_is_dirty_) {
 		draw_background(screen);
+	}
 
 	//- Texts for the menu-buttons.
 	//- Members of this array must correspond to the enumeration TITLE_RESULT
@@ -425,7 +433,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_b
 
 	// we only redraw transparent parts when asked,
 	// to prevent alpha growing
-	if (redraw_background) {
+	if (background_is_dirty_) {
 		main_frame.draw_background();
 		main_frame.draw_border();
 	}
@@ -471,6 +479,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_b
 	bool last_escape = key[SDLK_ESCAPE] != 0;
 
 	update_whole_screen();
+	background_is_dirty_ = false;
 
 	LOG_DP << "entering interactive loop...\n";
 

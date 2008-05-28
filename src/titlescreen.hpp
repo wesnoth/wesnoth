@@ -39,6 +39,9 @@ enum TITLE_RESULT { TUTORIAL = 0,		/**< Start special campaign 'tutorial' */
 					NOTHING				/**< Default, nothing done, no redraw needed */
 				  };
 
+/** Mark the titlescreen background as dirty */
+void set_background_dirty();
+
 /**
  *  Show titlepage with logo and background, menu-buttons and tip-of-the-day.
  * 
@@ -48,12 +51,11 @@ enum TITLE_RESULT { TUTORIAL = 0,		/**< Start special campaign 'tutorial' */
  * 
  *  @param	screen			display object
  *  @param	tips_of_day		list of tips
- *  @param	redraw_background redraw background and buttons box, see draw_background()
- * 
+ *
  *  @return	the value of the menu-item the user has choosen.
  *  @retval	see @ref TITLE_RESULT for possible values
  */ 
-TITLE_RESULT show_title(game_display& screen, config& tips_of_day, bool redraw_background);
+TITLE_RESULT show_title(game_display& screen, config& tips_of_day);
 }
 
 #endif

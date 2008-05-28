@@ -1968,6 +1968,10 @@ void game_controller::set_unit_data(){
 
 void game_controller::refresh_game_cfg(bool reset_translations)
 {
+	// The loadscreen will erase the titlescreen
+	// NOTE: even without loadscreen, needed after MP lobby
+	gui::set_background_dirty();
+
 	try {
 		if(old_defines_map_.empty() || defines_map_ != old_defines_map_ || reset_translations) {
 			cursor::setter cur(cursor::WAIT);
@@ -2429,8 +2433,6 @@ static int play_game(int argc, char** argv)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	bool redraw_background = true;
-
 	for(int first_time = true;;first_time = false){
         //init_config already processed the configs, so we don't need to do it for the
         //first loop pass.
@@ -2471,12 +2473,10 @@ static int play_game(int argc, char** argv)
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
 
 		while(res == gui::NOTHING) {
-			res = gui::show_title(game.disp(),tips_of_day, redraw_background);
+			res = gui::show_title(game.disp(),tips_of_day);
 			if (res == gui::REDRAW_BACKGROUND) {
-				redraw_background = true;
+				gui::set_background_dirty();
 				res = gui::NOTHING;
-			} else {
-				redraw_background = false;
 			}
 		}
 
@@ -2499,12 +2499,7 @@ static int play_game(int argc, char** argv)
 			}
 		} else if(res == gui::MULTIPLAYER) {
 			if(game.play_multiplayer() == false) {
-				// Need a redraw because we can left the lobby without playing.
-				// (the redraw is only useless when canceling the multiplayer dialog)
-				// TODO: game.play_multiplayer() always return false (why?),
-				// perhaps change this to identify real "cancel" cases?
-				redraw_background = true;
-				continue;	
+				continue;
 			}
 		} else if(res == gui::CHANGE_LANGUAGE) {
 			if(game.change_language() == true) {
@@ -2514,7 +2509,7 @@ static int play_game(int argc, char** argv)
 		} else if(res == gui::EDIT_PREFERENCES) {
 			game.show_preferences();
 			if (game.disp().video().modeChanged()) {
-				redraw_background = true;
+				gui::set_background_dirty();
 			}
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
@@ -2526,9 +2521,6 @@ static int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::GET_ADDONS) {
 			game.manage_addons();
-			// after the loadscreen, need a redraw
-			// TODO: detect cancel action, to avoid the redraw when possible
-			redraw_background = true;
 			continue;
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();
@@ -2536,7 +2528,7 @@ static int play_game(int argc, char** argv)
 #ifdef MAP_EDITOR
 		} else if(res == gui::START_MAP_EDITOR) {
 			gui::show_error_message(game.disp(), "The map editor is not available. Yet.");
-			//NOTE: will probably need a "redraw_background = true";
+			gui::set_background_dirty()
 			continue;
 #endif
 		}
@@ -2547,9 +2539,6 @@ static int play_game(int argc, char** argv)
 		else{
 			game.play_replay();
 		}
-
-		// We played something, refresh background
-		redraw_background = true;
 	}
 
 	return 0;
