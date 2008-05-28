@@ -69,6 +69,8 @@ namespace {
 			~campaign_server()
 			{
 				delete input_;
+				scoped_ostream cfgfile = ostream_file(file_);
+				write(*cfgfile, cfg_);
 			}
 		private:
 			/**
@@ -443,10 +445,11 @@ namespace {
 								find_translations(*data, *campaign);
 
 								add_license(*data);
-
-								scoped_ostream campaign_file = ostream_file(filename);
-								config_writer writer(*campaign_file, true, "",compress_level_);
-								writer.write(*data);
+								{
+									scoped_ostream campaign_file = ostream_file(filename);
+									config_writer writer(*campaign_file, true, "",compress_level_);
+									writer.write(*data);
+								}
 //								write_compressed(*campaign_file, *data);
 
 								(*campaign)["size"] = lexical_cast<std::string>(
@@ -508,8 +511,10 @@ namespace {
 							add_license(*data);
 
 							scoped_ostream campaign_file = ostream_file(filename);
-							config_writer writer(*campaign_file, true, "",compress_level_);
-							writer.write(*data);
+							{
+								config_writer writer(*campaign_file, true, "",compress_level_);
+								writer.write(*data);
+							}
 //							write_compressed(*campaign_file, *data);
 
 							(*campaign)["size"] = lexical_cast<std::string>(
@@ -594,9 +599,13 @@ namespace {
 							if (!scripts.empty()) {
 								// Write the campaign with changed filenames back to disk
 								scoped_ostream ostream = ostream_file((*campaign)["filename"]);
-								config_writer writer(*ostream, true, "",compress_level_);
-								writer.write(campaign_file);
+								{
+									config_writer writer(*ostream, true, "",compress_level_);
+									writer.write(campaign_file);
+								}
 //								write_compressed(*ostream, campaign_file);
+								(*campaign)["size"] = lexical_cast<std::string>(
+										file_size((*campaign)["filename"]));
 
 
 								network::send_data(construct_message("The following scripts have been validated: " +
