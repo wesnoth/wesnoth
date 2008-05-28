@@ -16,10 +16,10 @@ Version 1.4.2+svn:
    * added configuraion option to choose gzip compression level
  * miscellaneous and bug fixes:
    * fixed parser bug that prevented loading binary data strings
-   * starting a campaing without any installed now gives an error.
+   * starting a campaign without any installed now gives an error.
    * fixed issues with campaign info in non-compressed saved games
      (bug #11386)
-   * Backported gracefull restart feature to server
+   * Backported graceful restart feature to server
    * Improved connection stability with slow connections.
    * Implemented send_file to reduce memory usage when sending files
    * Fixed a mememory leak in networking code
