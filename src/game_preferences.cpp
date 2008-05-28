@@ -98,7 +98,7 @@ manager::manager()
 			for (std::vector<std::string>::iterator i = current_history.begin(); i != current_history.end(); ++i) {
 				// remove the enclosing parens
 				history_ptr->push_back(i->substr(1, i->size() - 2));
-			}			
+			}
 		}
 	}
 
@@ -128,7 +128,7 @@ manager::~manager()
 		}
 		history[iter->first] = history_stream.str();
 	}
-	
+
 	preferences::set_child("history", history);
 
 	history_map.clear();
@@ -166,11 +166,11 @@ void remove_ignore(const std::string nick) {
 }
 
 void clear_friends() {
-	preferences::set("friends", "");	
+	preferences::set("friends", "");
 }
 
 void clear_ignores() {
-	preferences::set("ignores", "");	
+	preferences::set("ignores", "");
 }
 
 bool is_friend(const std::string nick) {
@@ -442,7 +442,7 @@ void set_countdown_reservoir_time(int value)
 int countdown_turn_bonus()
 {
 	return lexical_cast_in_range<int>(
-		preferences::get("mp_countdown_turn_bonus"), 40, 0, 300);
+		preferences::get("mp_countdown_turn_bonus"), 60, 0, 300);
 }
 
 void set_countdown_turn_bonus(int value)
@@ -716,7 +716,7 @@ void set_custom_command(const std::string& command) {
 //! making a new one if it doesn't exist.
 // FIXME only used for gui2. Could be used for the above histories.
 std::vector<std::string>* get_history(const std::string& id) {
-	return &history_map[id];		
+	return &history_map[id];
 }
 
 bool green_confirm()
