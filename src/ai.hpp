@@ -31,6 +31,7 @@ public:
 	virtual ~ai() {}
 
 	virtual void play_turn();
+	virtual void new_turn(info& info);
 
 	struct target {
 		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
@@ -248,11 +249,11 @@ protected:
 	virtual int rate_terrain(const unit& u, const location& loc);
 
 	game_display& disp_;
-	const gamemap& map_;
+	gamemap& map_;
 	unit_map& units_;
 	std::vector<team>& teams_;
 	unsigned int team_num_;
-	const gamestatus& state_;
+	gamestatus& state_;
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
 

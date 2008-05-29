@@ -252,6 +252,28 @@ ai::ai(ai_interface::info& info) :
 	attack_depth_(0)
 {}
 
+void ai::new_turn(info& info) 
+{
+	ai_interface::new_turn(info);
+	defensive_position_cache_.clear();
+	threats_found_ = false;
+	attacks_.clear();
+	map_ = info.map;
+	units_ = info.units;
+	teams_ = info.teams;
+	team_num_ = info.team_num;
+	state_ = info.state;
+	consider_combat_ = true;
+	additional_targets_.clear();
+	unit_movement_scores_.clear();
+	not_recommended_units_.clear();
+	unit_combat_scores_.clear();
+	keeps_.clear();
+	avoid_.clear();
+	unit_stats_cache_.clear();
+	attack_depth_ = 0;
+}
+
 bool ai::recruit_usage(const std::string& usage)
 {
 	raise_user_interact();
