@@ -66,10 +66,11 @@ Version 1.5.0+svn:
     [terrain_mask] actions.
    * rename the "hides" status as "hidden"
    * add a new image path function : GS to greyscale the image
+   * [store_map_dimensions] also stores map border size now.
  * wesnothd
    * added expiration time to bans
-   * added restart command to server that does gracefull restart
-   * added option to do gracefull shut down for server
+   * added restart command to server that does graceful restart
+   * added option to do graceful shut down for server
  * campaignd
    * made campaign server use gzip compression for networking
    * detect client connection mode and ue same for sending data
