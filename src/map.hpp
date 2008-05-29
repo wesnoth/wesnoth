@@ -167,12 +167,17 @@ public:
 	//! Overlays another map onto this one at the given position.
 	void overlay(const gamemap& m, const config& rules, const int x=0, const int y=0);
 
-	//! Effective dimensions of the map.
+	//! Effective map width.
 	int w() const { return w_; }
+	//! Effective map height.
 	int h() const { return h_; }
 
-	//! Real dimension of the map, including borders
+	//! Size of the map border.
+	int border_size() const { return border_size_; }
+
+	//! Real width of the map, including borders.
 	int total_width()  const { return total_width_; }
+	//! Real height of the map, including borders
 	int total_height() const { return total_height_; }
 
 	const t_translation::t_terrain operator[](const gamemap::location& loc) const
