@@ -122,11 +122,10 @@ class dialog;
 class filter_textbox : public gui::dialog_textbox {
 public:
 	filter_textbox(CVideo& video, const std::string& header,
-		const std::vector<std::string>& items, const std::vector<std::string>& to_filter_items,
+		const std::vector<std::string>& items,
 		dialog& dialog, int width = 250)
 		: dialog_textbox(new label(video, header), video, width),
 		items_(items),
-		to_filter_items_(to_filter_items),
 		dialog_(dialog),
 		first_time_(true)
 	{
@@ -135,7 +134,7 @@ public:
 
 	int get_index(int index) const;
 private:
-	std::vector<std::string> items_, to_filter_items_, filtered_items_;
+	std::vector<std::string> items_, filtered_items_;
 	std::vector<int> index_map_;
 	gui::dialog& dialog_;
 	bool first_time_;

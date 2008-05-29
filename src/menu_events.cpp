@@ -1660,7 +1660,7 @@ private:
 			umenu.set_menu(options, &sorter);
 
 			gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
-				_("Filter: "), options, options, umenu, 200);
+				_("Filter: "), options, umenu, 200);
 			umenu.set_textbox(filter);
 
 			//sort by race then by type name
