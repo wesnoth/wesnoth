@@ -25,6 +25,7 @@ class gamemap;
 #include "generic_event.hpp"
 #include "pathfind.hpp"
 #include "gamestatus.hpp"
+#include "playturn.hpp"
 
 class ai_interface : public game_logic::formula_callable {
 public:
@@ -38,8 +39,8 @@ public:
 	//! info is structure which holds references to all the important objects
 	//! that an AI might need access to, in order to make and implement its decisions.
 	struct info {
-		info(game_display& disp, const gamemap& map, unit_map& units,
-			std::vector<team>& teams, unsigned int team_num, const gamestatus& state, class turn_info& turn_data, class game_state& game_state)
+		info(game_display& disp, gamemap& map, unit_map& units,
+			std::vector<team>& teams, unsigned int team_num, gamestatus& state, class turn_info& turn_data, class game_state& game_state)
 			: disp(disp), map(map), units(units), teams(teams),
 			  team_num(team_num), state(state), turn_data_(turn_data), game_state_(game_state)		{}
 
@@ -47,7 +48,7 @@ public:
 		game_display& disp;
 
 		//! The map of the game -- use this object to find the terrain at any location.
-		const gamemap& map;
+		gamemap& map;
 
 		//! The map of units. It maps locations -> units.
 		unit_map& units;
@@ -61,7 +62,7 @@ public:
 		unsigned int team_num;
 
 		//! Information about what turn it is, and what time of day.
-		const gamestatus& state;
+		gamestatus& state;
 
 		//! The object that allows the player to interact with the game.
 		//! Should not be used outside of ai_interface.
@@ -82,6 +83,18 @@ public:
 	//! Function that is called when the AI must play its turn.
 	//! Derived classes should implement their AI algorithm in this function.
 	virtual void play_turn() = 0;
+
+	//! Function called when a a new turn is played 
+	//! Derived persistant AIs should call this function each turn (expect first)
+	virtual void new_turn(info& i) {
+		last_interact_ = 0;
+		info_.map = i.map;
+		info_.units = i.units;
+		info_.teams = i.teams;
+		info_.team_num = i.team_num;
+		info_.state = i.state;
+		info_.game_state_ = i.game_state_;
+	}
 
 	//! Return a reference to the 'team' object for the AI.
 	team& current_team() { return info_.teams[info_.team_num-1]; }

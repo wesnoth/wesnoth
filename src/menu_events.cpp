@@ -2960,7 +2960,7 @@ private:
 		undo_list dummy_undo;
 
 		turn_info turn_data(gamestate_, status_, *gui_, const_cast<gamemap&>(map_), teams_, team_num, units_, dummy_sender, dummy_undo);
-		ai_interface::info info(*gui_, map_, units_, teams_, team_num, status_, turn_data, gamestate_);
+		ai_interface::info info(*gui_, const_cast<gamemap&>(map_), units_, teams_, team_num,  const_cast<gamestatus&>(status_), turn_data, gamestate_);
 		formula_ai eval(info);
 		try {
 			add_chat_message(time(NULL), _("ai"), 0, eval.evaluate(str));
