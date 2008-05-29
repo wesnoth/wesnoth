@@ -2153,23 +2153,19 @@ size_t move_unit(game_display* disp,
 			if(adjacent[i] == ui->first)
 				continue;
 
-			const unit_map::iterator it = units.find(adjacent[i]);
+			const unit_map::const_iterator it = units.find(adjacent[i]);
 			if(it != units.end() && team.is_enemy(it->second.side()) &&
 					it->second.invisible(it->first,units,teams)) {
 				discovered_unit = true;
 				should_clear_stack = true;
 				moves_left = 0;
 
-				it->second.set_state("hidden","no");
+				unit_ability_list hides = it->second.get_abilities("hides",it->first);
 
+				std::vector<std::pair<config*,gamemap::location> >::const_iterator hide_it = hides.cfgs.begin();
 				// we only use the first valid alert message
-				if (ambushed_string.empty()) {
-					unit_ability_list hides = it->second.get_abilities("hides",it->first);
-					
-					for(std::vector<std::pair<config*,gamemap::location> >::const_iterator hide_it = hides.cfgs.begin();
-							hide_it != hides.cfgs.end(); ++hide_it) {
-						ambushed_string =(*hide_it->first)["alert"];
-					}
+				for(;hide_it != hides.cfgs.end() && !ambushed_string.empty(); ++hide_it) {
+					ambushed_string = (*hide_it->first)["alert"];
 				}
 			}
 		}
