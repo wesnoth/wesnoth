@@ -2225,11 +2225,19 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					}
 					if(utils::string_bool(cfg["fire_event"])) {
 						game_events::entity_location death_loc(un);
-						game_events::fire("die", death_loc, death_loc);
-						un = units->find(death_loc);
-						if(un != units->end() && death_loc.matches_unit(un->second)) {
-							units->erase(un);
-							unit_mutations++;
+						// Prevent infinite recursion of 'die' events
+						if (event_info.loc1 == death_loc && event_info.name == "die" && !this->first_time_only_)
+						{
+							ERR_NG << "tried to fire 'die' event on primary_unit inside its own 'die' event with 'first_time_only' set to false!\n";
+						}
+						else
+						{
+							game_events::fire("die", death_loc, death_loc);
+							un = units->find(death_loc);
+							if(un != units->end() && death_loc.matches_unit(un->second)) {
+								units->erase(un);
+								unit_mutations++;
+							}
 						}
 					} else {
 						units->erase(un);
