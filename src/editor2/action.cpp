@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2008 by Tomasz Œniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #include "action.hpp"
 #include "../foreach.hpp"
 
-namespace map_editor {
+namespace editor2 {
 	
 editor_action_whole_map* editor_action_whole_map::perform(editor_map& m) {
 	editor_action_whole_map* undo = new editor_action_whole_map(m);
@@ -122,4 +122,4 @@ void editor_action_plot_route::perform_without_undo(editor_map& map)
 	throw editor_action_not_implemented();
 }
 
-} //namespace map_editor
+} //end namespace editor2

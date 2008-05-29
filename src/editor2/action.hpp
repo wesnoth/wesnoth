@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2008 by Tomasz Œniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,13 +15,24 @@
 //! @file action.hpp
 //! Editor action classes
 
+#ifndef EDITOR2_ACTION_HPP
+#define EDITOR2_ACTION_HPP
+
 #include "action_base.hpp"
 #include "../map.hpp"
 #include "../terrain.hpp"
 
-namespace map_editor {
+namespace editor2 {
 	
-//Replace contents of the entirem map action
+class editor_map : public gamemap
+{
+};
+
+class brush
+{
+};
+	
+//Replace contents of the entire map action
 //useful as a fallback undo method when something else would be impractical
 class editor_action_whole_map : public editor_action
 {
@@ -50,6 +61,35 @@ class editor_action_chain : public editor_action
     protected:
         std::vector<editor_action*> actions_;
 };
+
+//class editor_action_chain_whole_map : public editor_action_chain
+//{
+//	public:
+//		explicit editor_action_chain_whole_map(std::vector<editor_action*> actions)
+//		: editor_action_chain(actions)
+//		{
+//		}
+//		editor_action_whole_map* perform(editor_map& m)
+//		{
+//			editor_action_whole_map* undo = new editor_action_whole_map(m);
+//			perform_without_undo(m);
+//			return undo;
+//		}
+//	
+//};
+
+//class editor_action_undo_wrapper : public editor_action
+//{
+//	public:
+//		editor_action_undo_wrapper(editor_action* undo, editor_action* redo)
+//		: undo_(undo)
+//		, redo_(redo)
+//		{
+//		}
+//		~editor_action_undo_wrapper();
+//	protected:
+//		
+//};
 
 //common base classes for actions with common behaviour
 
@@ -199,4 +239,6 @@ class editor_action_plot_route : public editor_action_location_terrain
 		gamemap::location loc2_;
 };
 
-} //namespace map_editor
+} //end namespace editor2
+
+#endif

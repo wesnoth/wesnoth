@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2008 by Tomasz Œniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,9 +22,12 @@
 //! Code that only deals with actions polymorphically should only need to 
 //! include this header file.
 
+#ifndef EDITOR2_ACTION_BASE_HPP_INCLUDED
+#define EDITOR2_ACTION_BASE_HPP_INCLUDED
+
 #include "editor_common.hpp"
 
-namespace map_editor {
+namespace editor2 {
 
 //base class (interface) for editor actions.
 class editor_action
@@ -56,4 +59,6 @@ struct editor_action_creation_fail : public editor_action_exception
 {
 };
 
-} //namespace map_editor
+} //end namespace editor2
+
+#endif

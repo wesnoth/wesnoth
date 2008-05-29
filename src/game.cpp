@@ -66,6 +66,10 @@
 #include "ai_python.hpp"
 #endif
 
+#ifdef MAP_EDITOR
+#include "editor2/editor_main.hpp"
+#endif
+
 #include "wesconfig.h"
 
 #include <clocale>
@@ -139,6 +143,9 @@ public:
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
+#ifdef MAP_EDITOR
+	editor2::EXIT_STATUS start_editor();
+#endif
 	const config& game_config(){return game_config_;};
 
 private:
@@ -2016,6 +2023,11 @@ void game_controller::reset_game_cfg()
 		defines_map_["NORMAL"] = preproc_define();
 		defines_map_["MEDIUM"] = preproc_define();
 	}
+#ifdef MAP_EDITOR
+	defines_map_["EDITOR"] = preproc_define();
+	defines_map_["NORMAL"] = preproc_define();
+	defines_map_["MEDIUM"] = preproc_define();
+#endif
 
 	//refresh_game_cfg();
 }
@@ -2115,6 +2127,13 @@ void game_controller::play_replay()
 		e.show(disp());
 	}
 }
+
+#ifdef MAP_EDITOR
+editor2::EXIT_STATUS game_controller::start_editor()
+{
+	editor2::start(game_config_, video_);
+}
+#endif
 
 game_controller::~game_controller()
 {
@@ -2527,8 +2546,9 @@ static int play_game(int argc, char** argv)
 			continue;
 #ifdef MAP_EDITOR
 		} else if(res == gui::START_MAP_EDITOR) {
-			gui::show_error_message(game.disp(), "The map editor is not available. Yet.");
-			gui::set_background_dirty()
+			//@todo editor can ask the game to quit completely
+			game.start_editor();
+			gui::set_background_dirty();
 			continue;
 #endif
 		}
