@@ -77,7 +77,7 @@ struct twml_exception
 {
 	twml_exception(const t_string& user_msg, const std::string& dev_msg);
 	
-	/*
+	/**
 	 *  The message for the user explaining what went wrong. This message can
 	 *  be translated so the user gets a explanation in his/her native tongue.
 	 */
