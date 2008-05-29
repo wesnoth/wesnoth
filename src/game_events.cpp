@@ -2529,6 +2529,7 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		assert(state_of_game != NULL);
 		state_of_game->get_variable(variable + ".width") = str_cast<int>(game_map->w());
 		state_of_game->get_variable(variable + ".height") = str_cast<int>(game_map->h());
+		state_of_game->get_variable(variable + ".border_size") = str_cast<int>(game_map->border_size());
 	}
 
 	else if(cmd == "store_starting_location") {
