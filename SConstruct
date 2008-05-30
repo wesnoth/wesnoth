@@ -318,7 +318,7 @@ all = env.Alias("all")
 #
 
 # Make a tags file for Emacs
-env.Command("TAGS", sources, 'etags -l c++ $SOURCES')
+env.Command("TAGS", sources, 'etags -l c++ $SOURCES.srcpath')
 env.Clean(all, 'TAGS')
 
 #
