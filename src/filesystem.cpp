@@ -592,12 +592,8 @@ bool is_directory(const std::string& fname)
 
 bool file_exists(const std::string& name)
 {
-	std::ifstream file(name.c_str(),std::ios_base::binary);
-	if (file.rdstate() != 0) {
-		return false;
-	}
-	file.close();
-	return true;
+	struct stat st;
+	return (::stat(name.c_str(), &st) != -1);
 }
 
 time_t file_create_time(const std::string& fname)
