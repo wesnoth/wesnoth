@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-26 18:39+0200\n"
-"PO-Revision-Date: 2008-05-22 18:09+0200\n"
+"PO-Revision-Date: 2008-05-30 19:22+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -4333,6 +4333,8 @@ msgid ""
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
+"Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
+"yksikkö voi puukottaa aiheuttaen kaksinkertaisen vahingon."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -6638,7 +6640,7 @@ msgstr "Nimi"
 
 #: src/dialogs.cpp:693 src/multiplayer_create.cpp:105
 msgid "Load Game"
-msgstr "Lataa peli"
+msgstr "Tallennukset"
 
 #: src/dialogs.cpp:694
 msgid "Choose the game to load"
@@ -6719,9 +6721,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Peliä luettaessa tiedoston I/O -virhe"
 
 #: src/game.cpp:901
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "Ei tavoitteita saatavana"
+msgstr "Yhtään kampanjaa ei ole saatavilla.\n"
 
 #: src/game.cpp:905
 msgid "Play a campaign"
@@ -6941,7 +6942,7 @@ msgstr "Karttaa ei voitu ladata: "
 
 #: src/game.cpp:1590
 msgid "Language"
-msgstr "Kieli"
+msgstr "Valitse kieli"
 
 #: src/game.cpp:1591
 msgid "Choose your preferred language:"
@@ -7213,7 +7214,7 @@ msgstr "<header>text='Samanlajiset yksiköt'</header>"
 
 #: src/help.cpp:2514 src/menu_events.cpp:716
 msgid " < Back"
-msgstr "< Takaisin"
+msgstr " < Takaisin"
 
 #: src/help.cpp:2515
 msgid "Forward >"
@@ -8619,7 +8620,7 @@ msgstr "Tutoriaali"
 
 #: src/titlescreen.cpp:350
 msgid "TitleScreen button^Campaign"
-msgstr "Kampanja"
+msgstr "Kampanjat"
 
 #: src/titlescreen.cpp:351
 msgid "TitleScreen button^Multiplayer"
@@ -8627,7 +8628,7 @@ msgstr "Moninpeli"
 
 #: src/titlescreen.cpp:352
 msgid "TitleScreen button^Load"
-msgstr "Lataa"
+msgstr "Tallennukset"
 
 #: src/titlescreen.cpp:353
 msgid "TitleScreen button^Add-ons"
@@ -8635,7 +8636,7 @@ msgstr "Lisäosat"
 
 #: src/titlescreen.cpp:354
 msgid "TitleScreen button^Language"
-msgstr "Kieli"
+msgstr "Vaihda kieli"
 
 #: src/titlescreen.cpp:355
 msgid "TitleScreen button^Preferences"
