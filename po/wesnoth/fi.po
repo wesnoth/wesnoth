@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-26 18:38+0200\n"
-"PO-Revision-Date: 2008-05-22 18:09+0200\n"
+"PO-Revision-Date: 2008-05-30 19:22+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -4351,6 +4351,8 @@ msgid ""
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
+"Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
+"yksikkö voi puukottaa aiheuttaen kaksinkertaisen vahingon."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -6652,7 +6654,7 @@ msgstr "Nimi"
 
 #: src/dialogs.cpp:696 src/multiplayer_create.cpp:105
 msgid "Load Game"
-msgstr "Lataa peli"
+msgstr "Tallennukset"
 
 #: src/dialogs.cpp:697
 msgid "Choose the game to load"
@@ -6734,9 +6736,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Peliä luettaessa tiedoston I/O -virhe"
 
 #: src/game.cpp:961
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "Ei tavoitteita saatavana"
+msgstr "Yhtään kampanjaa ei ole saatavilla.\n"
 
 #: src/game.cpp:965
 msgid "Play a campaign"
@@ -6956,7 +6957,7 @@ msgstr "Karttaa ei voitu ladata: "
 
 #: src/game.cpp:1729
 msgid "Language"
-msgstr "Kieli"
+msgstr "Valitse kieli"
 
 #: src/game.cpp:1730
 msgid "Choose your preferred language:"
@@ -7247,7 +7248,7 @@ msgstr "<header>text='Samanlajiset yksiköt'</header>"
 
 #: src/help.cpp:2502 src/menu_events.cpp:727
 msgid " < Back"
-msgstr "< Takaisin"
+msgstr " < Takaisin"
 
 #: src/help.cpp:2503
 msgid "Forward >"
@@ -7663,8 +7664,9 @@ msgid "Search"
 msgstr "Etsi"
 
 #: src/menu_events.cpp:1989
+#, fuzzy
 msgid "This command is currently unavailable."
-msgstr ""
+msgstr "Yhtään kampanjaa ei ole saatavilla.\n"
 
 #: src/menu_events.cpp:2000
 msgid ""
@@ -8800,7 +8802,7 @@ msgstr "Tutoriaali"
 
 #: src/titlescreen.cpp:359
 msgid "TitleScreen button^Campaign"
-msgstr "Kampanja"
+msgstr "Kampanjat"
 
 #: src/titlescreen.cpp:360
 msgid "TitleScreen button^Multiplayer"
@@ -8808,7 +8810,7 @@ msgstr "Moninpeli"
 
 #: src/titlescreen.cpp:361
 msgid "TitleScreen button^Load"
-msgstr "Lataa"
+msgstr "Tallennukset"
 
 #: src/titlescreen.cpp:362
 msgid "TitleScreen button^Add-ons"
@@ -8821,7 +8823,7 @@ msgstr "Lopeta"
 
 #: src/titlescreen.cpp:366
 msgid "TitleScreen button^Language"
-msgstr "Kieli"
+msgstr "Vaihda kieli"
 
 #: src/titlescreen.cpp:367
 msgid "TitleScreen button^Preferences"
