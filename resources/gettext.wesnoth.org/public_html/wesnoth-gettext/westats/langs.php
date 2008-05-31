@@ -1,5 +1,6 @@
 <?php
 $langs['af'] = 'Afrikaans';
+$langs['ar'] = 'Arabic';
 $langs['bg'] = 'Bulgarian';
 $langs['ca'] = 'Catalan';
 $langs['ca_ES@valencia'] = 'Valencian Catalan';
