@@ -1,0 +1,228 @@
+# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# Arabic translations for Battle for Wesnoth package.
+# Copyright (C) 2008 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 1.4.2+svn\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2008-03-25 14:27+0100\n"
+"PO-Revision-Date: 2008-03-25 14:27+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:11
+msgid "all"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:17
+msgid "water"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:29
+msgid "flat"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:35
+msgid "desert"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:41
+msgid "forest"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:47
+msgid "frozen"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:53
+msgid "rough"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:59
+msgid "cave"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:65
+msgid "village"
+msgstr ""
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:71
+msgid "castle"
+msgstr ""
+
+#. [menu]
+#: data/themes/editor.cfg:462
+msgid "File"
+msgstr ""
+
+#. [menu]
+#: data/themes/editor.cfg:472
+msgid "Edit"
+msgstr ""
+
+#. [menu]
+#: data/themes/editor.cfg:481
+msgid "Settings"
+msgstr ""
+
+#. [label]
+#: data/themes/editor.cfg:500
+msgid "villages"
+msgstr ""
+
+#: src/editor/editor.cpp:236
+msgid "Draw tiles"
+msgstr ""
+
+#: src/editor/editor.cpp:238
+msgid "Fill"
+msgstr ""
+
+#: src/editor/editor.cpp:240
+msgid "Set player's starting position"
+msgstr ""
+
+#: src/editor/editor.cpp:242
+msgid "Zoom in"
+msgstr ""
+
+#: src/editor/editor.cpp:244
+msgid "Zoom out"
+msgstr ""
+
+#: src/editor/editor.cpp:246
+msgid "Undo"
+msgstr ""
+
+#: src/editor/editor.cpp:248
+msgid "Redo"
+msgstr ""
+
+#: src/editor/editor.cpp:250
+msgid "Zoom to default view"
+msgstr ""
+
+#: src/editor/editor.cpp:252
+msgid "Toggle grid"
+msgstr ""
+
+#: src/editor/editor.cpp:254
+msgid "Resize the map"
+msgstr ""
+
+#: src/editor/editor.cpp:256
+msgid "Flip map"
+msgstr ""
+
+#: src/editor/editor.cpp:258
+msgid "Update transitions"
+msgstr ""
+
+#: src/editor/editor.cpp:260
+msgid "Delay transition updates"
+msgstr ""
+
+#: src/editor/editor.cpp:470
+msgid "Language"
+msgstr ""
+
+#: src/editor/editor.cpp:471
+msgid "Choose your preferred language:"
+msgstr ""
+
+#: src/editor/editor.cpp:488 src/editor/editor_main.cpp:305
+msgid "Battle for Wesnoth Map Editor"
+msgstr ""
+
+#: src/editor/editor.cpp:516
+msgid "Save the Map As"
+msgstr ""
+
+#: src/editor/editor.cpp:527
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: src/editor/editor.cpp:550
+msgid "None"
+msgstr ""
+
+#: src/editor/editor.cpp:555 src/editor/editor.cpp:1442
+msgid "Player"
+msgstr ""
+
+#: src/editor/editor.cpp:559
+msgid "Which Player?"
+msgstr ""
+
+#: src/editor/editor.cpp:560
+msgid "Which player should start here?"
+msgstr ""
+
+#: src/editor/editor.cpp:621
+msgid "Choose a Map to Load"
+msgstr ""
+
+#: src/editor/editor.cpp:625
+msgid ""
+"Warning: Illegal characters found in the map name. Please save under a "
+"different name."
+msgstr ""
+
+#: src/editor/editor.cpp:638 src/editor/editor.cpp:719
+msgid "The file does not contain a valid map."
+msgstr ""
+
+#: src/editor/editor.cpp:1321
+msgid "Quit Editor"
+msgstr ""
+
+#: src/editor/editor.cpp:1325
+msgid "Do you want to save the map before quitting?"
+msgstr ""
+
+#: src/editor/editor.cpp:1373
+msgid "Map saved."
+msgstr ""
+
+#: src/editor/editor.cpp:1381
+msgid "Could not save the map: $msg"
+msgstr ""
+
+#: src/editor/editor.cpp:1396
+msgid "Error: Illegal character in filename."
+msgstr ""
+
+#: src/editor/editor_palettes.cpp:433
+msgid "FG"
+msgstr ""
+
+#: src/editor/editor_palettes.cpp:435
+msgid "BG"
+msgstr ""
+
+#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
+#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
+msgid ""
+"Can't resize the map, the requested size is bigger than the maximum, size="
+msgstr ""
+
+#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
+#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
+msgid " maximum="
+msgstr ""
