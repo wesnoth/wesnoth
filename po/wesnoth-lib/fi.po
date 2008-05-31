@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-26 18:38+0200\n"
-"PO-Revision-Date: 2008-05-30 18:58+0200\n"
+"PO-Revision-Date: 2008-05-31 21:51+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1415,26 +1415,37 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
+"Yli neljän merkin pituinen maastoheksa on löydetty, tämä vaikuttaa "
+"seuraavaan maastoon :"
 
 #: src/wml_exception.cpp:52
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Virhe mahdollisesti epäkelvosta WML:stä johtuen\n"
+"Virheviesti: "
 
 #: src/wml_exception.cpp:54
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
+"Raportoidessasi ohjelmavirhettä sisällytä seuraava virheviesti raporttiin:"
 
 #: src/wml_exception.cpp:72
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"Alueella '[$section]' jossa '$primary_key| = $primary value', pakollinen "
+"avain $key| ei ole asetettu."
 
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
+msgstr "Alueella '[$section]' pakollinen avain '$key|' ei ole asetettu."
 
 #~ msgid "Rockbound Cave Lit"
 #~ msgstr "valaistua louhikkoluolaa"
+
+#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
+#~ msgstr ""
+#~ "Epäkelpo maasto löydetty, mahdollisesti version 1.2 formaatissa, maasto = "
