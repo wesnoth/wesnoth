@@ -44,3 +44,15 @@ def generate(env):
             return env.MsgInit(target, source)
     from SCons.Script.SConscript import SConsEnvironment
     SConsEnvironment.MsgInitMerge = MsgInitMerge
+
+    env["PO4A_GETTEXTIZE"] = WhereIs("po4a-gettextize")
+    po4a_gettextize = Builder(
+        action = "$PO4A_GETTEXTIZE -f $PO4A_FORMAT ${''.join([' -m ' + str(source) for source in SOURCES])} -p $TARGET",
+        )
+    env["BUILDERS"]["Po4aGettextize"] = po4a_gettextize
+
+    env["PO4A_TRANSLATE"] = WhereIs("po4a-translate")
+    po4a_translate = Builder(
+        action = "$PO4A_TRANSLATE -f $PO4A_FORMAT -L $PO4A_CHARSET -m ${SOURCES[0]} -p ${SOURCES[1]} -l $TARGET"
+        )
+    env["BUILDERS"]["Po4aTranslate"] = po4a_translate

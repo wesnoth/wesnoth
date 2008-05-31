@@ -65,10 +65,8 @@ if "pot-update" in COMMAND_LINE_TARGETS:
 
     env.Alias("pot-update", "../translations")
 
-if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
+if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
-        if ("update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS) and domain in po4a_domains:
-            continue
         for lingua in linguas:
             update_po = env.MsgInitMerge(
                 os.path.join(domain, lingua),
@@ -87,36 +85,27 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
 # Manual and man pages translation
 #
 
-def parse_po4a_cfg(cfg_file):
-    cfg_file = cfg_file.replace("\\\n", "")
-    po4a_cfg_re = re.compile(r"^\[(.*)\] (.*)$", re.MULTILINE)
-    opts = dict(po4a_cfg_re.findall(cfg_file))
-    return opts
-
 if "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
-    linguas = parse_po4a_cfg(File("wesnoth-manual/wesnoth-manual.cfg").get_contents())["po4a_langs"].split()
-    po4a_targets = ["wesnoth-manual/wesnoth-manual.pot"]
+    env.Po4aGettextize("wesnoth-manual/wesnoth-manual.pot", "../doc/manual/manual.en.xml", PO4A_FORMAT = "docbook")
     for lingua in linguas:
-        po4a_targets.append(os.path.join("wesnoth-manual", lingua + ".po"))
-    env.Precious(po4a_targets)
-    NoClean(po4a_targets)
-    for lingua in linguas:
-        po4a_targets.append(os.path.join("../doc/manual", "manual." + lingua + ".xml"))
-    env.AlwaysBuild(env.Command(po4a_targets, "../doc/manual/manual.en.xml",
-                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manual.cfg""", chdir = "po/wesnoth-manual"))
-    env.Alias("update-po4a", "wesnoth-manual/wesnoth-manual.pot")
+        env.Po4aTranslate("../doc/manual/manual." + lingua + ".xml",
+            ["../doc/manual/manual.en.xml", join("wesnoth-manual", lingua + ".po")],
+            PO4A_CHARSET = "utf8", PO4A_FORMAT = "docbook")
+    Alias("update-po4a", Alias("manual"))
 
-    linguas = parse_po4a_cfg(File("wesnoth-manpages/wesnoth-manpages.cfg").get_contents())["po4a_langs"].split()
-    po4a_targets = ["wesnoth-manpages/wesnoth-manpages.pot"]
+    manpages = Split("wesnoth.6 wesnoth_editor.6 wesnothd.6")
+    charsets = { "ar":"utf8", "bg":"cp1251", "ca_ES@valencia":"iso-8859-15", "cs":"iso-8859-2", "el":"iso-8859-7",
+		  "he":"iso-8859-8", "hr":"utf8", "hu":"iso-8859-2", "ja":"euc-jp", "ko":"euc-kr", "lt":"iso-8859-13", "pl":"iso-8859-2",
+		  "ro":"iso-8859-2", "ru":"iso-8859-5", "sk":"iso-8859-2", "sl":"iso-8859-2", "sr":"utf8", "sr@latin":"utf8",
+          "tr":"iso-8859-9", "zh_CN":"gb2312" }
+    env.Po4aGettextize("wesnoth-manpages/wesnoth-manpages.pot",
+        [join("../doc/man", man) for man in manpages], PO4A_FORMAT = "man")
     for lingua in linguas:
-        po4a_targets.append(os.path.join("wesnoth-manpages", lingua + ".po"))
-    env.Precious(po4a_targets)
-    NoClean(po4a_targets)
-    for lingua in linguas:
-        po4a_targets += [ os.path.join("../doc/man", lingua, x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ]
-    env.AlwaysBuild(env.Command(po4a_targets, [ os.path.join("../doc/man", x) for x in ["wesnoth.6", "wesnoth_editor.6", "wesnothd.6"] ],
-                """po4a --no-backups --copyright-holder "Wesnoth Development Team" wesnoth-manpages.cfg""", chdir = "po/wesnoth-manpages"))
-    env.Alias("update-po4a", "wesnoth-manpages/wesnoth-manpages.pot")
+        for man in manpages:
+            env.Po4aTranslate(join("../doc/man", lingua, man),
+            [join("../doc/man", man), join("wesnoth-manpages", lingua + ".po")],
+            PO4A_CHARSET = charsets.get(lingua, "iso-8859-1"), PO4A_FORMAT = "man")
+    Alias("update-po4a", "../doc/man")
 
 #
 # If we have the right tool in place, create targets to invoke msgfmt to
