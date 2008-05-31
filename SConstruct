@@ -79,6 +79,7 @@ opts.AddOptions(
 env = Environment(tools=["tar", "gettext", "install"], options = opts, toolpath = ["scons"])
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
+    env['ENV']['PATH'] = os.environ["PATH"]
 else:
     env.Tool("default")
 
