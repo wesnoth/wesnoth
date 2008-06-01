@@ -1146,7 +1146,7 @@ static network::connection network_data_dialog(display& disp, const std::string&
 	gui::button cancel_button(disp.video(),_("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
-	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, false, &buttons_ptr);
+	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, true, &buttons_ptr);
 	frame.layout(left,top,width,height);
 	frame.draw();
 
@@ -1248,7 +1248,7 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	gui::button cancel_button(disp.video(),_("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
-	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, false, &buttons_ptr);
+	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, true, &buttons_ptr);
 	frame.layout(left,top,width,height);
 	frame.draw();
 
