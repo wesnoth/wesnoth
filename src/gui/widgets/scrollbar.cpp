@@ -237,7 +237,7 @@ void tscrollbar_::recalculate()
 
 	const unsigned steps = (item_count_ + step_size_ - 1) / step_size_;
 
-	if(steps < available_length) {
+	if(static_cast<int>(steps) < available_length) {
 
 		// We can show them all.
 		available_length += minimum_positioner_length();
@@ -270,7 +270,7 @@ void tscrollbar_::update_canvas() {
 
 void tscrollbar_::move_positioner(const int distance)
 {
-	if(distance < 0 && -distance > positioner_offset_) {
+  if(distance < 0 && -distance > static_cast<int>(positioner_offset_)) {
 		positioner_offset_ = 0;
 	} else {
 		positioner_offset_ += distance;

@@ -214,8 +214,8 @@ void twindow::recalculate_size()
 	if(automatic_placement_) {
 		
 		tpoint size = get_best_size();
-		size.x = size.x < settings::screen_width ? size.x : settings::screen_width;
-		size.y = size.y < settings::screen_height ? size.y : settings::screen_height;
+		size.x = size.x < static_cast<int>(settings::screen_width) ? size.x : static_cast<int>(settings::screen_width);
+		size.y = size.y < static_cast<int>(settings::screen_height) ? size.y : static_cast<int>(settings::screen_height);
 
 		tpoint position(0, 0);
 		switch(horizontal_placement_) {

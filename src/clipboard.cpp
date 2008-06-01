@@ -535,7 +535,7 @@ void handle_system_event(const SDL_Event& event)
 
 #ifndef CLIPBOARD_FUNCS_DEFINED
 
-void copy_to_clipboard(const std::string& text, const bool)
+void copy_to_clipboard(const std::string& /*text*/, const bool)
 {
 }
 
@@ -544,7 +544,7 @@ std::string copy_from_clipboard(const bool)
 	return "";
 }
 
-void handle_system_event(const SDL_Event& event)
+void handle_system_event(const SDL_Event& /*event*/)
 {
 }
 

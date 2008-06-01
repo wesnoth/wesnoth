@@ -144,7 +144,7 @@ void make_add_diff(const simple_wml::node& src, const char* gamelist,
 		index = children.size() - 1;
 	}
 
-	assert(index < children.size());
+	assert(index < static_cast<int>(children.size()));
 	insert.set_attr_int("index", index);
 	children[index]->copy_into(insert.add_child(type));
 }

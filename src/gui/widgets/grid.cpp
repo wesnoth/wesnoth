@@ -258,11 +258,11 @@ tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width,
 
 				const tpoint size = (child(row, col).*size_proc)();
 
-				if(size.x > width[col]) {
+				if(size.x > static_cast<int>(width[col])) {
 					width[col] = size.x;
 				}
 
-				if(size.y > height[row]) {
+				if(size.y > static_cast<int>(height[row])) {
 					height[row] = size.y;
 				}
 

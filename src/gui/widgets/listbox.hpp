@@ -153,7 +153,7 @@ private:
 	//! Note the order of the states must be the same as defined in settings.hpp.
 	enum tstate { ENABLED, DISABLED, COUNT };
 
-	void set_state(tstate state) {} // FIXME implement
+	void set_state(tstate /*state*/) {} // FIXME implement
 	tstate state_;
 
 	/** It's possible to let the engine build the contents, we need the builder in that case */

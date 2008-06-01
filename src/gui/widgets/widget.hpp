@@ -193,16 +193,16 @@ public:
 	virtual twidget* find_widget(const tpoint& coordinate, 
 			const bool /*must_be_active*/) 
 	{ 
-		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
-			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
+		return coordinate.x >= x_ && coordinate.x < (x_ + static_cast<int>(w_)) &&
+			coordinate.y >= y_ && coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
 	}
 
 	/** The const version of find_widget. */
 	virtual const twidget* find_widget(const tpoint& coordinate, 
 			const bool /*must_be_active*/) const
 	{ 
-		return coordinate.x >= x_ && coordinate.x < (x_ + w_) &&
-			coordinate.y >= y_ && coordinate.y < (y_ + h_) ? this : 0;
+		return coordinate.x >= x_ && coordinate.x < (x_ + static_cast<int>(w_)) &&
+			coordinate.y >= y_ && coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
 	}
 
 	/**

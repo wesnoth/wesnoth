@@ -248,8 +248,11 @@ void tline::draw(surface& canvas,
 		<< x1 << ',' << y1 << " to " << x2 << ',' << y2 
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(x1 < canvas->w && x2 < canvas->w && y1 < canvas->h 
-		&& y2 < canvas->h, _("Line doesn't fit on canvas."));
+	VALIDATE(static_cast<int>(x1) < canvas->w && 
+		 static_cast<int>(x2) < canvas->w && 
+		 static_cast<int>(y1) < canvas->h &&
+		 static_cast<int>(y2) < canvas->h, 
+		 _("Line doesn't fit on canvas."));
 
 	// FIXME respect the thickness.
 
@@ -356,8 +359,11 @@ void trectangle::draw(surface& canvas,
 		<< " width " << w << " height " << h 
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(x < canvas->w && x + w <= canvas->w && y < canvas->h 
-		&& y + h <= canvas->h, _("Rectangle doesn't fit on canvas."));
+	VALIDATE(static_cast<int>(x) < canvas->w && 
+		 static_cast<int>(x + w) <= canvas->w && 
+		 static_cast<int>(y) < canvas->h &&
+		 static_cast<int>(y + h) <= canvas->h, 
+		 _("Rectangle doesn't fit on canvas."));
 
 
 	surface_lock locker(canvas);
@@ -697,20 +703,22 @@ void ttext::draw(surface& canvas,
 	const unsigned y = y_(local_variables);
 	const unsigned w = w_(local_variables);
 	const unsigned h = h_(local_variables);
-
+	
 	DBG_G_D << "Text: drawing text '" << text
 		<< "' drawn from " << x << ',' << y
 		<< " width " << w << " height " << h 
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(x < canvas->w && y < canvas->h, _("Text doesn't start on canvas."));
+	VALIDATE(static_cast<int>(x) < canvas->w && 
+		 static_cast<int>(y) < canvas->h,
+		 _("Text doesn't start on canvas."));
 
 	// A text might be to long and will be clipped.
-	if(surf->w > w) {
+	if(surf->w > static_cast<int>(w)) {
 		WRN_G_D << "Text: text is too wide for the canvas and will be clipped.\n";
 	}
 	
-	if(surf->h > h) {
+	if(surf->h > static_cast<int>(h)) {
 		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
 	}
 
@@ -826,10 +834,10 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 		<< " canvas width " << w << " canvas height "
 		<< canvas->h << ".\n";
 
-	assert(x1 < canvas->w);
-	assert(x2 < canvas->w);
-	assert(y1 < canvas->h);
-	assert(y2 < canvas->h);
+	assert(static_cast<int>(x1) < canvas->w);
+	assert(static_cast<int>(x2) < canvas->w);
+	assert(static_cast<int>(y1) < canvas->h);
+	assert(static_cast<int>(y2) < canvas->h);
 
 	// use a special case for vertical lines
 	if(x1 == x2) {

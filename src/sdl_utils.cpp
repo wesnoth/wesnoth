@@ -159,7 +159,7 @@ surface stretch_surface_horizontal(
 	if(surf == NULL)
 		return NULL;
 
-	if(w == surf->w) {
+	if(static_cast<int>(w) == surf->w) {
 		return surf;
 	}
 	assert(w > 0);
@@ -183,7 +183,7 @@ surface stretch_surface_horizontal(
 		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
 		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
 
-		for(unsigned y = 0; y < src->h; ++y) {
+		for(unsigned y = 0; y < static_cast<unsigned>(src->h); ++y) {
 			const Uint32 pixel = src_pixels [y * src->w];
 			for(unsigned x = 0; x < w; ++x) {
 
@@ -205,7 +205,7 @@ surface stretch_surface_vertical(
 	if(surf == NULL)
 		return NULL;
 
-	if(h == surf->h) {
+	if(static_cast<int>(h) == surf->h) {
 		return surf;
 	}
 	assert(h > 0);
@@ -229,8 +229,8 @@ surface stretch_surface_vertical(
 		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
 		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
 
-		for(unsigned y = 0; y < h; ++y) {
-			for(unsigned x = 0; x < src->w; ++x) {
+		for(unsigned y = 0; y < static_cast<unsigned>(h); ++y) {
+		  for(unsigned x = 0; x < static_cast<unsigned>(src->w); ++x) {
 
 				*dst_pixels++ = src_pixels[x];
 			}

@@ -185,12 +185,13 @@ void ttext_box::handle_mouse_selection(
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 	// FIXME we dont test for overflow in width
-	if(mouse.x < text_x_offset_ || mouse.y < text_y_offset_ 
-			|| mouse.y >= text_y_offset_ + text_height_) {
+	if(mouse.x < static_cast<int>(text_x_offset_) || 
+	   mouse.y < static_cast<int>(text_y_offset_) ||
+	   mouse.y >= static_cast<int>(text_y_offset_ + text_height_)) {
 		return;
 	}
 
-	int offset = get_character_offset_at(mouse.x - text_x_offset_);
+	int offset = get_character_offset_at(mouse.x - static_cast<int>(text_x_offset_));
 	if(offset < 0) {
 		return;
 	}

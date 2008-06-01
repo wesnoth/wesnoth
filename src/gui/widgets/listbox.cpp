@@ -216,9 +216,10 @@ tpoint tlistbox::get_best_size() const
 		foreach(const trow& row, rows_) {
 			assert(row.grid());
 			const tpoint best_size = row.grid()->get_best_size();
-			width = width >= best_size.x ? width : best_size.x;
+			width = (static_cast<int>(width) >= best_size.x) ? 
+			  width : static_cast<int>(best_size.x);
 
-			height += best_size.y;
+			height += static_cast<int>(best_size.y);
 		}
 	}
 	
@@ -331,7 +332,7 @@ twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_be_acti
 
 			trow& row = rows_[i + scrollbar()->get_item_position()];
 			
-			if(offset < row.get_height()) {
+			if(offset < static_cast<int>(row.get_height())) {
 				assert(row.grid());
 				return row.grid()->find_widget(
 					tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
@@ -357,7 +358,7 @@ const twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_b
 
 			const trow& row = rows_[i + scrollbar()->get_item_position()];
 			
-			if(offset < row.get_height()) {
+			if(offset < static_cast<int>(row.get_height())) {
 				assert(row.grid());
 				return row.grid()->find_widget(
 					tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
