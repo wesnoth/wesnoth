@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-01 11:40+0200\n"
-"PO-Revision-Date: 2008-04-25 14:08+0100\n"
+"PO-Revision-Date: 2008-06-01 17:19+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -178,9 +178,8 @@ msgstr "Afrikánský překlad"
 
 #. [about]
 #: data/core/about.cfg:839
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "Srbský překlad"
+msgstr "Arabský překlad"
 
 #. [about]
 #: data/core/about.cfg:846
@@ -2114,13 +2113,14 @@ msgstr "Led"
 
 #. [topic]
 #: data/core/help.cfg:516
+#, fuzzy
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_snow text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 "Ledem je jakákoliv struktura zamrzlé vody. Pro hraní hry má identické "
-"vlastnosti jako <ref>dst=terrain_snow text=Sníh</ref>. Pamatujte, že "
+"vlastnosti jako <ref>dst=terrain_tundra text=Sníh</ref>. Pamatujte, že "
 "jednotky schopné plavání, vyjma těch co mohou dýchat pod vodou, nemohou "
 "plavat pod ledem."
 
@@ -2596,7 +2596,7 @@ msgstr ""
 "Uloží hru (bez dotazu).\n"
 "\n"
 
-# dvakrát ještě \n
+# dvakrát ještě \n\n?
 #. [topic]
 #: data/core/help.cfg:706
 msgid ""
@@ -2677,7 +2677,7 @@ msgid ""
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Přepíná umlčení všech pozorovatelů."
+"Zapíná/vypíná umlčení všech pozorovatelů."
 
 #. [topic]
 #: data/core/help.cfg:731
@@ -3071,7 +3071,7 @@ msgstr ""
 "Útok zezadu:\n"
 "Tento útok působí dvojnásobné poranění, když se na opačné straně cíle útoku "
 "nachází bojeschopná jednotka (nebyla kupříkladu proměněna v kámen) k ní "
-"nepřátelská. Platí to však pouze pro útočné použití."
+"nepřátelská. Platí to však pouze pro útok."
 
 #: data/core/macros/abilities.cfg:557 data/core/macros/abilities.cfg:569
 msgid "plague"
@@ -3225,6 +3225,7 @@ msgstr "Maximální bonus HP +"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
+#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr ""
 "Přišel jsi ke studně přání.\n"
@@ -4267,13 +4268,14 @@ msgstr ""
 "některými typy útoků, ale pouze při obraně."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
 " Schopnost velení této jednotky umožňuje spřáteleným jednotkám v její těsné "
-"blízkosti způsobovat v boji větší poškození, toto však platí pouze pro "
-"jednotky nižší úrovně."
+"blízkosti způsobovat v boji větší poškození, i když toto platí pouze pro "
+"jednotky s nižší úrovní."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4621,6 +4623,7 @@ msgstr "Drakonidé"
 
 #. [race]
 #: data/core/units.cfg:66
+#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4734,13 +4737,13 @@ msgstr ""
 "legendách.\n"
 "\n"
 "<header>text='Geografie'</header>\n"
-"Drakonidé původně pocházejí z řetězce ostrovů nalézajícího se ve Velkém "
-"oceánu. Populační tlaky a pozvolné ubývání obyvatelné půdy však drakonidy "
-"donutilo tak postupně přesídlit na Velký kontinent, kde zakládají kolonie a "
-"zvolna se šíří. Nejraději mají jeskynní komplexy v blízkosti činných sopek, "
-"které jim skýtají ochranu a kde je jim příjemně teplo. Jejich vnitřní žár "
-"jim však umožňuje žít i v relativně chladném klimatu, díky čemuž obývají i "
-"kraje dálného severu Velkého kontinentu."
+"Drakonidé pocházejí z ostrova Morogor, který se nalézá ve Velkém oceánu. "
+"Tento ostrov se však již po staletí pomalu potápí, a drakonidé tak postupně "
+"přesidlují na Velký kontinent, kde zakládají kolonie a zvolna se šíří. "
+"Nejraději mají jeskynní komplexy v blízkosti činných sopek, které jim "
+"skýtají ochranu a kde je jim příjemně teplo. Jejich vnitřní žár jim však "
+"umožňuje žít i v relativně chladném klimatu, díky čemuž obývají i kraje "
+"dálného severu Velkého kontinentu."
 
 #. [race]
 #: data/core/units.cfg:73
@@ -6636,8 +6639,9 @@ msgid "Show replay"
 msgstr "Ukaž záznamy"
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:669
+#, fuzzy
 msgid "Cancel orders"
-msgstr "Zrušit příkazy"
+msgstr "Zrušit"
 
 #: src/dialogs.cpp:672 src/multiplayer_create.cpp:87
 msgid "OK"
@@ -6936,8 +6940,8 @@ msgstr "Vyber si preferovaný jazyk:"
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Následující rozšíření obsahovalo chybu a nemohlo být nahráno:"
-msgstr[1] "Následující rozšíření obsahovala chybu a nemohla být nahrána:"
-msgstr[2] "Následující rozšíření obsahovala chybu a nemohla být nahrána:"
+msgstr[1] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
+msgstr[2] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
 
 #: src/game.cpp:1848
 msgid "ERROR DETAILS:"
@@ -7015,9 +7019,7 @@ msgstr "neviditelný: "
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
-msgstr ""
-"Tato jednotka byla zpomalena. Způsobuje v boji pouze polovinu běžného "
-"poškození a pohyb ji stojí dvakrát více."
+msgstr "Tato jednotka byla zpomalena. Způsobuje polovinu normálního poškození."
 
 #: src/generate_report.cpp:107
 msgid "slowed: "
@@ -7371,8 +7373,9 @@ msgid "Do you really want to dismiss him?"
 msgstr "Určitě se jej chceš zbavit?"
 
 #: src/menu_events.cpp:307
+#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Můj pane, tato jednotka je věrná a nevyžaduje žold!"
+msgstr "Můj pane, tato jednotka má již jen krůček k povýšení!"
 
 #: src/menu_events.cpp:308 src/menu_events.cpp:311 src/menu_events.cpp:315
 msgid "Do you really want to dismiss her?"
@@ -7651,8 +7654,9 @@ msgid "Search"
 msgstr "Najdi popisek nebo jednotku"
 
 #: src/menu_events.cpp:1997
+#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Tento příkaz není v tuto chvíli dostupný."
+msgstr "K dispozici nejsou žádná tažení.\n"
 
 #: src/menu_events.cpp:2008
 msgid ""
@@ -7672,97 +7676,107 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2236
-#, fuzzy
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
-"Odpojí a zakáže hráče či pozorovatele. Pokud není přímo ve hře, ale pouze na "
-"serveru, je jen zakázán."
 
 #: src/menu_events.cpp:2239
 msgid "Kick a player or observer."
-msgstr "Odpojí hráče nebo pozorovatele."
+msgstr ""
 
 #: src/menu_events.cpp:2241
 msgid "Mute an observer."
-msgstr "Umlčí pozorovatele."
+msgstr ""
 
 #: src/menu_events.cpp:2243
 msgid "Mute all observers."
-msgstr "Umlčí všechny pozorovatele."
+msgstr ""
 
 #: src/menu_events.cpp:2247
 #, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr "Napiš, co děláš, nebo jak se cítíš, do chatu."
+msgstr "Napiš, co děláš, nebo jak se cítíš, do chatu. Použití: /me <message>"
 
 #: src/menu_events.cpp:2250
+#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control a "
 "side in a running game you are in."
 msgstr ""
-"Pošle soukromou zprávu. Nelze poslat zprávu hráči, který hraje za jakoukoli "
-"stranu ve hře."
+"Pošli soukromou zprávu. Nelze poslat zprávu hráči, který hraje za jakoukoli "
+"stranu ve hře. Použití: /msg <přezdívka> <zpráva>"
 
 #: src/menu_events.cpp:2256
-#, fuzzy
 msgid "Change the log level of a log domain."
-msgstr "Přepíná logovací kategorii na jinou úroveň logování."
+msgstr ""
 
 # nekonzistence addignore/ignore i v angl
 #: src/menu_events.cpp:2258
+#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr "Přidá uživatele do seznamu otrapů."
+msgstr "Přidej uživatele do seznamu otrapů. Použití: /list ignore <uživatel>"
 
 #: src/menu_events.cpp:2260
+#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Přidá uživatele do seznamu přátel."
+msgstr "Přidáni do seznamu přátel: "
 
 #: src/menu_events.cpp:2262
+#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr "Smaže uživatele ze seznamu otrapů nebo přátel."
+msgstr ""
+"Smaž uživatele ze seznamu otrapů nebo přátel. Použití: /list remove "
+"<uživatel>"
 
 #: src/menu_events.cpp:2264
+#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Zobrazí seznam otrapů a přátel."
+msgstr "Zobraz seznam otrapů a přátel. Použití: /list display"
 
 # Když nedostane klient v datech která éra je použita.
 #: src/menu_events.cpp:2267
+#, fuzzy
 msgid "Display version information."
-msgstr "Zobrazí informace o verzi."
+msgstr "Nenalezeny žádné informace o věku."
 
 #: src/menu_events.cpp:2386
 msgid "Refresh gui."
-msgstr "Překreslí uživatelské rozhraní (GUI)."
+msgstr ""
 
 #: src/menu_events.cpp:2388
 msgid "Switch a side to/from AI control."
-msgstr "Přepíná řízení strany počítačem (AI)."
+msgstr ""
 
 #: src/menu_events.cpp:2391
 msgid "Assign control of a side to a different player or observer."
-msgstr "Předá kontrolu strany jinému hráči či pozorovateli."
+msgstr ""
 
 #: src/menu_events.cpp:2393
+#, fuzzy
 msgid "Clear chat history."
-msgstr "Smaže zprávy rozhovoru."
+msgstr ""
+"\n"
+"Smaže zprávy rozhovoru.\n"
+"\n"
 
 #: src/menu_events.cpp:2395
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
 #: src/menu_events.cpp:2398
+#, fuzzy
 msgid "Save game."
-msgstr "Uloží hru."
+msgstr "Ulož hru"
 
 #: src/menu_events.cpp:2400
+#, fuzzy
 msgid "Quit game."
-msgstr "Ukončí hru."
+msgstr "Ukončit hru"
 
 #: src/menu_events.cpp:2404
 msgid "Save and quit."
-msgstr "Uloží a ukončí hru."
+msgstr ""
 
 #: src/menu_events.cpp:2407
 msgid "Ignore replay errors."
@@ -7770,19 +7784,21 @@ msgstr ""
 
 #: src/menu_events.cpp:2409
 msgid "Disable autosaves."
-msgstr "Vypne automatícké ukládání."
+msgstr ""
 
 #: src/menu_events.cpp:2411
+#, fuzzy
 msgid "Advance to the next scenario."
-msgstr "Postoupí do dalšího scénáře tažení."
+msgstr "Čekám na další scénář..."
 
 #: src/menu_events.cpp:2414
+#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Zapíná ladící mód."
+msgstr "Příkazy ladícího módu"
 
 #: src/menu_events.cpp:2416
 msgid "Turn debug mode off."
-msgstr "Vypne ladící mód."
+msgstr ""
 
 #: src/menu_events.cpp:2418
 msgid "Set the command used by the custom command hotkey"
@@ -7793,40 +7809,57 @@ msgid "Set a alias to a command"
 msgstr ""
 
 #: src/menu_events.cpp:2422
+#, fuzzy
 msgid "Set a scenario variable."
-msgstr "Nastaví proměnnou scénáře."
+msgstr ""
+"\n"
+"Zobrazí proměnnou stavu hry.\n"
+"\n"
 
 #: src/menu_events.cpp:2424
+#, fuzzy
 msgid "Show a scenario variable."
-msgstr "Zobrazí proměnnou scénáře."
+msgstr ""
+"\n"
+"Zobrazí proměnnou stavu hry.\n"
+"\n"
 
 #: src/menu_events.cpp:2426
 msgid "Modify a unit variable. (Only top level keys are supported.)"
-msgstr "Změní proměnné jednotky. (Dostupné jsou pouze ty nevnořené.)"
+msgstr ""
 
 #: src/menu_events.cpp:2428
 msgid "Add a trait to a unit."
-msgstr "Přidá jednotce vlastnost."
+msgstr ""
 
 #: src/menu_events.cpp:2430
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr "Odebere jednotce vlastnost. (Zatím nefunkční!)"
+msgstr ""
 
 #: src/menu_events.cpp:2432
+#, fuzzy
 msgid "Create a unit."
-msgstr "Vytvoří jednotku."
+msgstr "Vytvoř hru"
 
 #: src/menu_events.cpp:2434
+#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr "Přepíná zobrazování mlhy pro aktivní stranu."
+msgstr ""
+"\n"
+"Přepíná zobrazování mlhy/tmy pro aktivní stranu.\n"
+"\n"
 
 #: src/menu_events.cpp:2436
+#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr "Přepíná zobrazování tmy pro aktivní stranu."
+msgstr ""
+"\n"
+"Přepíná zobrazování mlhy/tmy pro aktivní stranu.\n"
+"\n"
 
 #: src/menu_events.cpp:2438
 msgid "Give gold to the current player."
-msgstr "Přidá hrající straně zlato."
+msgstr ""
 
 #: src/menu_events.cpp:2440
 msgid "Fire a game event."
@@ -7902,7 +7935,7 @@ msgstr "Ladící mód byl ukončen!"
 
 #: src/menu_events.cpp:2966 src/menu_events.cpp:2968
 msgid "ai"
-msgstr "AI"
+msgstr ""
 
 #: src/menu_events.cpp:2974 src/menu_events.cpp:2989
 msgid "prompt^Command:"
@@ -8989,38 +9022,11 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
 
-#~ msgid "Default"
-#~ msgstr "Standardní"
-
-#~ msgid "name :"
-#~ msgstr "Jméno:"
-
-#, fuzzy
-#~ msgid "manage addons"
-#~ msgstr "Správa rozšíření"
-
-#~ msgid "connect"
-#~ msgstr "připojit"
-
-#~ msgid "cancel"
-#~ msgstr "Zrušit"
-
-# zkontrolovat !!!!
-#~ msgid "#(unknown campaign)"
-#~ msgstr "#(neznámé tažení)"
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Použití: control <strana> <jméno>"
+#~ msgid "ruby of fire"
+#~ msgstr "Ohnivý rubín"
 
 #~ msgid "Screenshot"
 #~ msgstr "sejmutý obrázek"
-
-#, fuzzy
-#~ msgid "Map_Screenshot"
-#~ msgstr "sejmutý obrázek"
-
-#~ msgid "ruby of fire"
-#~ msgstr "Ohnivý rubín"
 
 #~ msgid ""
 #~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
@@ -9050,32 +9056,11 @@ msgstr "Povolit posílání souhrnů"
 #~ msgid "Unknown subcommand."
 #~ msgstr "Neznámý podpříkaz."
 
-#~ msgid "Unknown command: "
-#~ msgstr "Neznámý příkaz: "
-
-#~ msgid "Troll Shaman"
-#~ msgstr "Trollí šaman"
-
-#~ msgid ""
-#~ "Troll shamans are the mystical leaders of the trolls. Though not as "
-#~ "strong or tough as other trolls, their true power lies in their fire "
-#~ "magic, which they use to blast enemies with gouts of fire."
-#~ msgstr ""
-#~ "Trollí šamani jsou duchovní a mystičtí vůdcové trollů. I když nejsou tak "
-#~ "silní jako ostatní trollové, jejich skutečná síla spočívá v ohnivé magii, "
-#~ "kterou používají ke smetení nepřátel vlnami ohně."
-
-#~ msgid "fist"
-#~ msgstr "pěst"
-
-#~ msgid "flame blast"
-#~ msgstr "vlna ohně"
-
 #~ msgid "Unknown command."
 #~ msgstr "Neznámý příkaz."
 
-#, fuzzy
-#~ msgid ""
-#~ " This unit is capable of basic healing, though it can only delay the "
-#~ "effects of poison, not cure them entirely."
-#~ msgstr " Tato jednotka dokáže uzdravovat okolní jednotky z otravy."
+#~ msgid "Unknown command: "
+#~ msgstr "Neznámý příkaz: "
+
+#~ msgid "Usage: control <side> <nick>"
+#~ msgstr "Použití: control <strana> <jméno>"
