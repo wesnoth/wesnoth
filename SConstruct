@@ -263,12 +263,6 @@ if env["PLATFORM"] != "win32":
 for d in installdirs:
     env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
 
-if 'CXXFLAGS' in os.environ:
-    env.Append(CXXFLAGS = os.environ['CXXFLAGS'])
-
-if 'LDFLAGS' in os.environ:
-    env.Append(LINKFLAGS = os.environ['LDFLAGS'])
-
 test_env = env.Clone()
 if boost_test_dyn_link:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
@@ -302,6 +296,12 @@ if sys.platform == "win32":
 build = env["build"]
 env.AppendUnique(CXXFLAGS = builds[build])
 if build == "profile": env.AppendUnique(LINKFLAGS = "-pg")
+if 'CXXFLAGS' in os.environ:
+    env.Append(CXXFLAGS = os.environ['CXXFLAGS'])
+
+if 'LDFLAGS' in os.environ:
+    env.Append(LINKFLAGS = os.environ['LDFLAGS'])
+
 env.MergeFlags(env["extra_flags_" + build])
 SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = "env")
 Import(binaries + ["sources"])
