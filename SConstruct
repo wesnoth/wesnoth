@@ -289,22 +289,18 @@ SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd test")
 builds = {
-    "debug"   : Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi"),
-    "release" : Split("-O2 -ansi"),
-    "profile" : "-pg"
+    "debug"   : dict(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")),
+    "release" : dict(CXXFLAGS = Split("-O2 -ansi")),
+    "profile" : dict(CXXFLAGS = "-pg", LINKFLAGS = "-pg")
     }
 if sys.platform == "win32":
-    builds["release"] = [] # Both -O2 and -ansi cause Bad Things to happen on windows
+    builds["release"] = {} # Both -O2 and -ansi cause Bad Things to happen on windows
 build = env["build"]
-env.AppendUnique(CXXFLAGS = builds[build])
-if build == "profile": env.AppendUnique(LINKFLAGS = "-pg")
-if 'CXXFLAGS' in os.environ:
-    env.Append(CXXFLAGS = os.environ['CXXFLAGS'])
 
-if 'LDFLAGS' in os.environ:
-    env.Append(LINKFLAGS = os.environ['LDFLAGS'])
-
+env.AppendUnique(**builds[build])
+env.Append(CXXFLAGS = os.environ.get('CXXFLAGS', []), LINKFLAGS = os.environ.get('LDFLAGS', []))
 env.MergeFlags(env["extra_flags_" + build])
+
 SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = "env")
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
