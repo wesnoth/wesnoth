@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-01 11:40+0200\n"
-"PO-Revision-Date: 2008-06-01 12:12+0200\n"
+"PO-Revision-Date: 2008-06-03 20:55+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -7747,7 +7747,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2239
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "Éjecte un joueur ou un observateur."
 
 #: src/menu_events.cpp:2241
 msgid "Mute an observer."
@@ -7795,7 +7795,7 @@ msgstr "Affiche la version."
 
 #: src/menu_events.cpp:2386
 msgid "Refresh gui."
-msgstr ""
+msgstr "Rafraîchit l'IHM."
 
 #: src/menu_events.cpp:2388
 msgid "Switch a side to/from AI control."
@@ -7851,23 +7851,15 @@ msgstr ""
 
 #: src/menu_events.cpp:2420
 msgid "Set a alias to a command"
-msgstr ""
+msgstr "Crée un alias vers une commande"
 
 #: src/menu_events.cpp:2422
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"Affiche une variable d'état du jeu.\n"
-"\n"
+msgstr "Change une variable du scénario."
 
 #: src/menu_events.cpp:2424
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"Affiche une variable d'état du jeu.\n"
-"\n"
+msgstr "Affiche une variable du scénario."
 
 #: src/menu_events.cpp:2426
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -7886,28 +7878,20 @@ msgid "Create a unit."
 msgstr "Crée une unité."
 
 #: src/menu_events.cpp:2434
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"Active/désactive voile et brouillard pour le joueur en train de jouer.\n"
-"\n"
+msgstr "Active/désactive le brouillard pour le joueur en train de jouer."
 
 #: src/menu_events.cpp:2436
-#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr ""
-"\n"
-"Active/désactive voile et brouillard pour le joueur en train de jouer.\n"
-"\n"
+msgstr "Active/désactive le voile pour le joueur en train de jouer."
 
 #: src/menu_events.cpp:2438
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "Donne de l'or au joueur en train de jouer."
 
 #: src/menu_events.cpp:2440
 msgid "Fire a game event."
-msgstr ""
+msgstr "Déclencher un événement du jeu."
 
 #: src/menu_events.cpp:2474
 msgid "Unknown debug level: '$level'."
@@ -7971,7 +7955,7 @@ msgstr "Mode debug activé !"
 
 #: src/menu_events.cpp:2828
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Mode debug non disponible lors des parties réseau"
 
 #: src/menu_events.cpp:2833
 msgid "Debug mode deactivated!"
