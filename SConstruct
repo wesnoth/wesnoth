@@ -90,7 +90,10 @@ Switches apply to the entire build regrdless of where they are in the order.
 Important switches include:
 
     prefix=/usr     probably what you want for production tools
-    debug=yes       enable compiler and linker debugging switches
+    build=release   build release build variant with appropriante flags
+                        in build/release and copy resulting binaries
+                        into distribution/working copy root.
+    build=debug     same for debug build variant, binaries will be copied with -debug suffix
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
@@ -128,8 +131,7 @@ invocations.  The file is editable. Delete it to start fresh.  Current option
 values can be listed with 'scons -h'.
 
 If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
-be appended to the appropriate variables within scons.  You can use this,
-for example, to point scons at non-default library locations.
+be appended to the appropriate variables within scons.
 """ + opts.GenerateHelpText(env))
 
 if env["cachedir"]:
