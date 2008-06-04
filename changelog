@@ -90,6 +90,7 @@ Version 1.5.0+svn:
    * Fixed null-pointer reference in network code
    * Made networking code check system buffer size and limit send length
    * Implemented send_file to reduce memory usage when sending files
+   * Implemented send_file using sendfile() system call 
    * Fixed tokenizer not to strip CR from quoted string becaue it would
      destroy images transfered over network
    * Added possibility to use per fight EV statistics proposed by maboul

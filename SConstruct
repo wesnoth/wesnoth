@@ -177,6 +177,8 @@ if env["prereqs"]:
     if env['fribidi']:
         env['fribidi'] = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Warning("Can't find libfribidi, disabling freebidi support.")
 
+    env['sendfile'] = conf.CheckLibWithHeader('sendfile', 'sys/sendfile.h', 'C', 'sendfile(0,0,0,0);') or Warning("Can't find sendfile, disabling sendfile support.")
+
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
     if env["python"]:
@@ -238,6 +240,9 @@ if env['internal_data']:
 
 if env['python']:
     env.Append(CPPDEFINES = "HAVE_PYTHON")
+
+if env['sendfile']:
+    env.Append(CPPDEFINES = "USE_SENDFILE")
 
 if sys.platform != "win32":
     if env['prefsdir']:
