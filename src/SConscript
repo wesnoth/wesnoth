@@ -218,7 +218,7 @@ wesnoth_editor_sources = Split("""
     editor/editor_undo.cpp
     animated_editor.cpp
     """)
-if have_client_prereqs and have_X:
+if have_client_prereqs:
     wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth] + wesnoth_editor_res)
 else:
     wesnoth_editor = None
