@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-01 11:40+0200\n"
-"PO-Revision-Date: 2008-03-10 17:47+0100\n"
+"PO-Revision-Date: 2008-06-03 14:49+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -181,9 +181,8 @@ msgstr "Traducción afrikáans"
 
 #. [about]
 #: data/core/about.cfg:839
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "Traducción serbia"
+msgstr "Traducción Arábica"
 
 #. [about]
 #: data/core/about.cfg:846
@@ -688,7 +687,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -697,8 +695,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Las unidades reclutadas aparecen con dos <ref>dst=traits text=rasgos</ref> "
-"aleatorios que modifican sus estadísticas."
+"Las unidades reclutadas aparecen con dos <ref>dst=..traits_section "
+"text=Rasgos</ref> aleatorios que modifican sus estadísticas."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -3149,7 +3147,6 @@ msgid "backstab"
 msgstr "apuñalar por la espalda"
 
 #: data/core/macros/abilities.cfg:545
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3157,9 +3154,9 @@ msgid ""
 "incapacitated (e.g. turned to stone)."
 msgstr ""
 "Apuñalar por la espalda:\n"
-"Este ataque causa el doble de daño si una unidad amiga está en el extremo "
-"opuesto del objetivo y esa unidad no está incapacitada (p.ej., convertida en "
-"piedra)."
+"Cuando se usa ofensivamente, este ataque causa el doble de daño si una "
+"unidad amiga está en el extremo opuesto del objetivo y esa unidad no está "
+"incapacitada (p.ej., convertida en piedra)."
 
 #: data/core/macros/abilities.cfg:557 data/core/macros/abilities.cfg:569
 msgid "plague"
@@ -3257,15 +3254,15 @@ msgid "charge"
 msgstr "carga"
 
 #: data/core/macros/abilities.cfg:643
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Carga:\n"
-"Este ataque causa el doble de daño al enemigo. También hace que esta unidad "
-"reciba el doble de daño de los contraataques enemigos."
+"Cuando se usa ofensivamente, este ataque causa el doble de daño al enemigo. "
+"También hace que esta unidad reciba el doble de daño de los contraataques "
+"enemigos."
 
 #: data/core/macros/abilities.cfg:655
 msgid "drains"
@@ -4325,11 +4322,8 @@ msgstr ""
 "algo de daño a las criaturas vivas."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" Esta unidad es capaz de sanar a todos aquellos a su alrededor y curarles "
-"del veneno."
+msgstr "Esta unidad es capaz de realizar sanamiento básico."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4363,13 +4357,14 @@ msgstr ""
 "mientras se defiende."
 
 #: data/core/macros/special-notes.cfg:29
+#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
 " El liderazgo de esta unidad permite que las unidades amigas próximas a él "
 "hagan más daño en combate, aunque esto sólo se aplica a unidades de menor "
-"nivel."
+"nivel de liderazgo."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4440,15 +4435,14 @@ msgstr ""
 "de los dos haya muerto."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Si hay un enemigo del objetivo en el lado opuesto de dicho objetivo, esta "
-"unidad puede apuñalar al objetivo por la espalda, infligiéndole así el doble "
-"de daño."
+" Si hay un enemigo del objetivo en el lado opuesto de dicho objetivo, "
+"mientras se le ataca, esta unidad puede apuñalar al objetivo por la espalda, "
+"infligiéndole así el doble de daño, por el hecho de atacar por detrás."
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -4479,13 +4473,12 @@ msgstr ""
 "los enemigos fijados como blanco, pero sólo durante el ataque."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Los ataques a distancia de esta unidad son mágicos, y siempre tienen una "
-"alta probabilidad de golpear a un oponente."
+" La unidad tiene ataques mágicos, que siempre tienen una alta probabilidad "
+"de golpear a un oponente."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -6872,9 +6865,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Error de E/S en el fichero mientras se intentaba leer"
 
 #: src/game.cpp:968
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "No hay objetivos disponibles"
+msgstr "No hay campañas disponibles.\n"
 
 #: src/game.cpp:972
 msgid "Play a campaign"
@@ -7104,15 +7096,11 @@ msgid "Choose your preferred language:"
 msgstr "Elija su idioma preferido:"
 
 #: src/game.cpp:1841
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] ""
-"La(s) siguiente(s) expansión(es) contiene(n) errores y no se ha(n) podido "
-"cargar:"
+msgstr[0] "La siguiente expansión contiene errores y no se ha podido cargar:"
 msgstr[1] ""
-"La(s) siguiente(s) expansión(es) contiene(n) errores y no se ha(n) podido "
-"cargar:"
+"Las siguientes expansiones contienen errores y no se han podido cargar:"
 
 #: src/game.cpp:1848
 msgid "ERROR DETAILS:"
@@ -7819,7 +7807,7 @@ msgstr "Búsqueda"
 #: src/menu_events.cpp:1997
 #, fuzzy
 msgid "This command is currently unavailable."
-msgstr "No hay objetivos disponibles"
+msgstr "No hay campañas disponibles.\n"
 
 #: src/menu_events.cpp:2008
 msgid ""
@@ -9178,30 +9166,10 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
 
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "Inteligencia artificial predeterminada"
-
-#, fuzzy
-#~ msgid "name :"
-#~ msgstr "Nombre:"
-
-#, fuzzy
-#~ msgid "cancel"
-#~ msgstr "Cancelar"
-
-#, fuzzy
-#~ msgid "#(unknown campaign)"
-#~ msgstr "Orden desconocida"
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Uso: control <bando> <apodo>"
+#~ msgid "ruby of fire"
+#~ msgstr "rubí de fuego"
 
 #~ msgid "Screenshot"
-#~ msgstr "Captura de pantalla"
-
-#, fuzzy
-#~ msgid "Map_Screenshot"
 #~ msgstr "Captura de pantalla"
 
 #~ msgid ""
@@ -9239,15 +9207,15 @@ msgstr "Permitir envíos de resúmenes"
 #~ msgid "Unknown command: "
 #~ msgstr "Orden desconocida: "
 
+#~ msgid "Usage: control <side> <nick>"
+#~ msgstr "Uso: control <bando> <apodo>"
+
 #~ msgid ""
 #~ " This unit is capable of basic healing, though it can only delay the "
 #~ "effects of poison, not cure them entirely."
 #~ msgstr ""
 #~ "Esta unidad tiene una capacidad básica de sanación, por lo que sólo puede "
 #~ "retrasar los efectos del veneno, no curarlos por completo."
-
-#~ msgid "ruby of fire"
-#~ msgstr "rubí de fuego"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
