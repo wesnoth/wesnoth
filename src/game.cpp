@@ -66,7 +66,7 @@
 #include "ai_python.hpp"
 #endif
 
-#ifdef MAP_EDITOR
+#ifdef USE_EDITOR2
 #include "editor2/editor_main.hpp"
 #endif
 
@@ -141,7 +141,7 @@ public:
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
-#ifdef MAP_EDITOR
+#ifdef USE_EDITOR2
 	editor2::EXIT_STATUS start_editor();
 #endif
 	const config& game_config(){return game_config_;};
@@ -2021,11 +2021,6 @@ void game_controller::reset_game_cfg()
 		defines_map_["NORMAL"] = preproc_define();
 		defines_map_["MEDIUM"] = preproc_define();
 	}
-#ifdef MAP_EDITOR
-	defines_map_["EDITOR"] = preproc_define();
-	defines_map_["NORMAL"] = preproc_define();
-	defines_map_["MEDIUM"] = preproc_define();
-#endif
 
 	//refresh_game_cfg();
 }
@@ -2126,9 +2121,11 @@ void game_controller::play_replay()
 	}
 }
 
-#ifdef MAP_EDITOR
+#ifdef USE_EDITOR2
 editor2::EXIT_STATUS game_controller::start_editor()
 {
+	defines_map_["EDITOR"] = preproc_define();
+	refresh_game_cfg();
 	editor2::start(game_config_, video_);
 }
 #endif
@@ -2542,7 +2539,7 @@ static int play_game(int argc, char** argv)
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();
 			continue;
-#ifdef MAP_EDITOR
+#ifdef USE_EDITOR2
 		} else if(res == gui::START_MAP_EDITOR) {
 			//@todo editor can ask the game to quit completely
 			game.start_editor();

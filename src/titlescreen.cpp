@@ -368,7 +368,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 					       N_("TitleScreen button^Multiplayer"),
 					       N_("TitleScreen button^Load"),
 					       N_("TitleScreen button^Add-ons"),
-#ifdef MAP_EDITOR
+#ifdef USE_EDITOR2
 					       N_("TitleScreen button^Editor"),
 #endif
 					       N_("TitleScreen button^Language"),
@@ -388,7 +388,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
 						    N_("Load a saved game"),
 						    N_("Download usermade campaigns, eras, or map packs"),
-#ifdef MAP_EDITOR
+#ifdef USE_EDITOR2
 						    N_("Start the map editor"),
 #endif
 						    N_("Change the language"),
