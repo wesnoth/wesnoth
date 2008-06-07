@@ -35,8 +35,6 @@ namespace gui2 {
 
 void tlanguage_selection::show(CVideo& video)
 {
-	gui2::init();
-
 	twindow window = build(video, get_id(LANGUAGE_SELECTION));
 
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));

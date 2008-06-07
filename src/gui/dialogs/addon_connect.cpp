@@ -32,9 +32,6 @@ namespace gui2 {
 
 void taddon_connect::show(CVideo& video)
 {
-
-	gui2::init();
-
 	twindow window = build(video, get_id(ADDON_CONNECT));
 	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
 	if(host_widget) {

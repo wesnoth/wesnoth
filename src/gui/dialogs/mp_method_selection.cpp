@@ -36,9 +36,6 @@ namespace gui2 {
 
 void tmp_method_selection::show(CVideo& video)
 {
-
-	gui2::init();
-
 	twindow window = build(video, get_id(MP_METHOD_SELECTION));
 
 	user_name_ = preferences::login();

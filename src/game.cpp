@@ -2412,6 +2412,10 @@ static int play_game(int argc, char** argv)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
+	if(gui2::new_widgets) {
+		gui2::init();
+	}
+
 	loadscreen::global_loadscreen = new loadscreen(game.disp().video());
 	loadscreen::global_loadscreen->clear_screen();
 
