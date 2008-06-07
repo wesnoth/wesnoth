@@ -1106,10 +1106,8 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if(random.empty() == false) {
 			// random is deprecated but will be available in the 1.4 branch
 			// so enable the message after forking
-			//! @todo Enable after branching and once rand works fully in MP
-			//! including synchronizing.
-			//lg::wml_error << "Usage of 'random' is deprecated use 'rand' instead, "
-			//	"support will be removed in 1.5.2.\n";
+			lg::wml_error << "Usage of 'random' is deprecated use 'rand' instead, "
+				"support will be removed in 1.5.3.\n";
 			std::string random_value;
 			// If we're not replaying, create a random number
 			if(get_replay_source().at_end()) {
