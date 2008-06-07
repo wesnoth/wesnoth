@@ -2415,7 +2415,7 @@ private:
 				register_command("nodebug", &console_handler::do_nodebug,
 					_("Turn debug mode off."), "", "D");
 				register_command("custom", &console_handler::do_custom,
-					_("Set the command used by the custom command hotkey"), "<command>");
+					_("Set the command used by the custom command hotkey"), "<command>[;<command>...]");
 				register_command("alias", &console_handler::do_set_alias,
 					_("Set or show alias to a command"), "<name>[=<command>]");
 				register_command("set_var", &console_handler::do_set_var,
