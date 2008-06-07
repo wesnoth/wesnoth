@@ -153,6 +153,7 @@ terrain_builder::terrain_builder(const config& cfg, const config& level,
 	// since it might give problems (or not?)
 	//image::flush_cache();
 
+	image::precache_file_existence("terrain/");
 	parse_config(cfg);
 	parse_config(level);
 	add_off_map_rule(offmap_image);
@@ -268,7 +269,8 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 				std::string s = variant->second.image_string;
 				s = s.substr(0, s.find_first_of(",:"));
 
-				if(!image::exists("terrain/" + s + ".png"))
+				// we already precached file existence in the constructor
+				if(!image::exists("terrain/" + s + ".png", true))
 					return false;
 			}
 		}

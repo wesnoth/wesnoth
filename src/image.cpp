@@ -48,7 +48,10 @@ image::image_cache brightened_images_,semi_brightened_images_;
 
 // const int cache_version_ = 0;
 
-std::map<image::locator,bool> image_existance_map;
+std::map<image::locator,bool> image_existence_map;
+
+// directories where we already cached file existence
+std::set<std::string> precached_dirs;
 
 std::map<surface, surface> reversed_images_;
 
@@ -97,7 +100,8 @@ void flush_cache()
 	mini_terrain_cache.clear();
 	mini_fogged_terrain_cache.clear();
 	reversed_images_.clear();
-	image_existance_map.clear();
+	image_existence_map.clear();
+	precached_dirs.clear();
 }
 
 int locator::last_index_ = 0;
@@ -737,20 +741,63 @@ surface reverse_image(const surface& surf)
 	return rev;
 }
 
-bool exists(const image::locator& i_locator)
+bool exists(const image::locator& i_locator, bool precached)
 {
 	typedef image::locator loc;
 	loc::type type = i_locator.get_type();
 	if (type != loc::FILE && type != loc::SUB_FILE)
 		return false;
 
+	if (precached) {
+		std::map<image::locator,bool>::const_iterator b =  image_existence_map.find(i_locator);
+		if (b != image_existence_map.end())
+			return b->second;
+		else
+			return false;
+	}
+
 	// The insertion will fail if there is already an element in the cache
 	std::pair< std::map< image::locator, bool >::iterator, bool >
-		it = image_existance_map.insert(std::make_pair(i_locator, false));
+		it = image_existence_map.insert(std::make_pair(i_locator, false));
 	bool &cache = it.first->second;
 	if (it.second)
 		cache = !get_binary_file_location("images", i_locator.get_filename()).empty();
 	return cache;
+}
+
+void precache_file_existence_internal(const std::string& dir, const std::string& subdir)
+{
+	const std::string checked_dir = dir + "/" + subdir;
+	if (precached_dirs.find(checked_dir) != precached_dirs.end())
+		return;
+	precached_dirs.insert(checked_dir);
+
+	std::vector<std::string> files_found;
+	std::vector<std::string> dirs_found;
+	get_files_in_dir(checked_dir, &files_found, &dirs_found,
+			FILE_NAME_ONLY, NO_FILTER, DONT_REORDER);
+
+	for(std::vector<std::string>::const_iterator f = files_found.begin();
+			f != files_found.end(); ++f) {
+		image_existence_map[subdir + *f] = true;
+	}
+
+	for(std::vector<std::string>::const_iterator d = dirs_found.begin();
+			d != dirs_found.end(); ++d) {
+		precache_file_existence_internal(dir, subdir + *d + "/");
+	}
+}
+
+void precache_file_existence(const std::string& subdir)
+{
+	const std::vector<std::string>& paths = get_binary_paths("images");
+
+	for(std::vector<std::string>::const_iterator p = paths.begin();
+			 p != paths.end(); ++p) {
+
+		const std::string dir = *p + "/" + subdir;
+		precache_file_existence_internal(*p, subdir);
+	}
 }
 
 

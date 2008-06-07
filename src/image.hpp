@@ -210,8 +210,12 @@ namespace image {
 	///and must be freed using SDL_FreeSurface()
 	surface reverse_image(const surface &surf);
 
-	//returns true if the given image actually exists, without loading it.
-	bool exists(const locator& i_locator);
+	///returns true if the given image actually exists, without loading it.
+	/// precached : if we already have precached the directory containing the file
+	bool exists(const locator& i_locator, bool precached = false);
+
+	/// precache the existence of files in the subdir (ex: "terrain/")
+	void precache_file_existence(const std::string& subdir = "");
 }
 
 #endif
