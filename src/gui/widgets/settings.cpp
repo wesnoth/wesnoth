@@ -51,6 +51,8 @@
 
 namespace gui2 {
 
+bool new_widgets = false;
+
 namespace settings {
 	unsigned screen_width = 0;
 	unsigned screen_height = 0;

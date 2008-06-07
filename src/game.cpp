@@ -103,8 +103,6 @@ static bool less_campaigns_rank(const config* a, const config* b) {
 
 namespace {
 
-static bool new_widgets = false;
-
 class game_controller
 {
 public:
@@ -312,7 +310,7 @@ game_controller::game_controller(int argc, char** argv)
 			no_sound = true;
 		} else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
-			new_widgets = true;
+			gui2::new_widgets = true;
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -1108,7 +1106,7 @@ namespace
 	{
 		int res;
 		std::string host;
-		if(new_widgets) {
+		if(gui2::new_widgets) {
 			gui2::taddon_connect addon_dlg;
 			
 			addon_dlg.set_host_name(preferences::campaign_server());
@@ -1590,7 +1588,7 @@ bool game_controller::play_multiplayer()
 
 	//Print Gui only if the user hasn't specified any server
 	if( multiplayer_server_.empty() ){
-		if(new_widgets) {
+		if(gui2::new_widgets) {
 			gui2::tmp_method_selection dlg;
 
 				dlg.show(disp().video());
@@ -1705,7 +1703,7 @@ bool game_controller::play_multiplayer()
 
 bool game_controller::change_language()
 {
-	if(new_widgets) {
+	if(gui2::new_widgets) {
 			gui2::tlanguage_selection dlg;
 
 			dlg.show(disp().video());

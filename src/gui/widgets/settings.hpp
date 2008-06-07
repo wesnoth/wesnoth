@@ -30,6 +30,9 @@
 
 namespace gui2 {
 
+/** Do we wish to use the new library or not. */
+extern bool new_widgets;
+
 enum twindow_type {
 	ADDON_CONNECT,           //<! The addon connection dialog.
 	LANGUAGE_SELECTION,      //<! The language selection dialog.
