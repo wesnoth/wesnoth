@@ -2417,7 +2417,7 @@ private:
 				register_command("custom", &console_handler::do_custom,
 					_("Set the command used by the custom command hotkey"), "<command>");
 				register_command("alias", &console_handler::do_set_alias,
-					_("Set a alias to a command"), "<name>=<command>");
+					_("Set or show alias to a command"), "<name>[=<command>]");
 				register_command("set_var", &console_handler::do_set_var,
 					_("Set a scenario variable."), "<var>=<value>", "D");
 				register_command("show_var", &console_handler::do_show_var,
@@ -2439,6 +2439,14 @@ private:
 				register_command("throw", &console_handler::do_event,
 					_("Fire a game event."), "", "D");
 				register_alias("throw", "fire");
+
+				config* alias_list = preferences::get_alias();
+				if (alias_list != NULL) {
+					string_map::const_iterator a = alias_list->values.begin();
+					for (; a != alias_list->values.end(); ++a) {
+						register_alias(a->second, a->first);
+					}
+				}
 			}
 		private:
 			menu_handler& menu_handler_;
@@ -2840,10 +2848,24 @@ private:
 	void console_handler::do_set_alias() {
 		const std::string data = get_data();
 		const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
+		const std::string alias(data.begin(),j);
 		if(j != data.end()) {
-			const std::string alias(data.begin(),j);
 			const std::string command(j+1,data.end());
-			register_alias(command, alias);
+			if (!command.empty()) {
+				register_alias(command, alias);
+			} else {
+				// "alias something=" deactivate this alias. We just set it
+				// equal to itself here. Later preferences will filter empty alias.
+				register_alias(alias, alias);
+			}
+			preferences::add_alias(alias, command);
+			// directly save it for the moment, but will slow commands sequence
+			preferences::write_preferences();
+		} else {
+			// "alias something" display its value
+			// if no alias, will be "'something' = 'something'"
+			const std::string command = chmap::get_actual_cmd(alias);
+			print(get_cmd(), "'"+alias+"'" + " = " + "'"+command+"'");
 		}
 	}
 	void console_handler::do_set_var() {

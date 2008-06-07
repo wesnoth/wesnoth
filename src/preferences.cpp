@@ -535,6 +535,19 @@ void save_hotkeys() {
 	hotkey::save_hotkeys(prefs);
 }
 
+void add_alias(const std::string& alias, const std::string& command) {
+	config* alias_list = prefs.child("alias");
+	if (alias_list == NULL) {
+		alias_list = &(prefs.add_child("alias"));
+	}
+	alias_list->values[alias] = command;
+}
+
+
+config* get_alias() {
+	return prefs.child("alias");
+}
+
 unsigned int sample_rate()
 {
 	return lexical_cast_default<unsigned int>(preferences::get("sample_rate"), 44100);

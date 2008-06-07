@@ -127,6 +127,9 @@ namespace preferences {
 	void load_hotkeys();
 	void save_hotkeys();
 
+	void add_alias(const std::string& alias, const std::string& command);
+	config* get_alias();
+
 	bool use_colour_cursors();
 	void _set_colour_cursors(bool value);
 
