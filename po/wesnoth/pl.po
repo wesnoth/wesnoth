@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-01 11:40+0200\n"
-"PO-Revision-Date: 2008-05-01 21:26+0100\n"
+"PO-Revision-Date: 2008-06-05 20:40+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -172,9 +172,8 @@ msgstr "Tłumaczenie afrikaans"
 
 #. [about]
 #: data/core/about.cfg:839
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "Tłumaczenie serbskie"
+msgstr "Tłumaczenie arabskie"
 
 #. [about]
 #: data/core/about.cfg:846
@@ -6784,9 +6783,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Błąd odczytu pliku podczas wczytywania gry"
 
 #: src/game.cpp:968
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "Brak celów"
+msgstr "Brak dostępnych kampanii.\n"
 
 #: src/game.cpp:972
 msgid "Play a campaign"
@@ -7725,8 +7723,9 @@ msgid "Search"
 msgstr "Szukaj"
 
 #: src/menu_events.cpp:1997
+#, fuzzy
 msgid "This command is currently unavailable."
-msgstr ""
+msgstr "Brak dostępnych kampanii.\n"
 
 #: src/menu_events.cpp:2008
 msgid ""
@@ -9092,25 +9091,6 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym!"
 msgid "Enable summary uploads"
 msgstr "Włącz wysyłanie podsumowań"
 
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "Domyślna SI"
-
-#, fuzzy
-#~ msgid "name :"
-#~ msgstr "Nazwa:"
-
-#, fuzzy
-#~ msgid "cancel"
-#~ msgstr "Anuluj"
-
-#, fuzzy
-#~ msgid "#(unknown campaign)"
-#~ msgstr "Nieznane polecenie."
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Składnia: control <strona> <ksywka>"
-
 #~ msgid "ruby of fire"
 #~ msgstr "rubin ognia"
 
@@ -9148,8 +9128,14 @@ msgstr "Włącz wysyłanie podsumowań"
 #~ msgid "Unknown subcommand."
 #~ msgstr "Nieznane podpolecenie."
 
+#~ msgid "Unknown command."
+#~ msgstr "Nieznane polecenie."
+
 #~ msgid "Unknown command: "
 #~ msgstr "Nieznane polecenie: "
+
+#~ msgid "Usage: control <side> <nick>"
+#~ msgstr "Składnia: control <strona> <ksywka>"
 
 #~ msgid ""
 #~ " This unit is capable of basic healing, though it can only delay the "
