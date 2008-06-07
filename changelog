@@ -49,10 +49,13 @@ Version 1.5.0+svn:
      * decreased the ranged attack of the Mage of Light from 15-3 to 12-3
      * decreased the melee attack of the Merman Warrior from 8-4 to 10-3
  * user interface:
-   * Add a hotkey "Custom Command" and a command ":custom <command>" to assign
+   * Add a hotkey "Custom Command" and a command "custom <command>" to assign
      a command to this hotkey. Also accept sequence of commands ("this; that").
-   * Add a command "alias <name>=<command>". Also accept incomplete command and
-     pass parameters (ex: "alias hp=unit hitpoints", then use "hp 100")
+   * Add a command "alias <name>[=<command>]". To set or show shorter alias to
+     a command. Also accept incomplete command and pass parameters (ex: "alias
+     hp=unit hitpoints", then use "hp 100")
+   * Add a filter text box for the "Create Unit" dialog
+   * Also highlight the fog under the mouse (not just the terrain)
  * WML engine:
    * titlescreen is now randomly loaded
    * removeitem now can take an image key so that overlays can be removed one at
@@ -108,7 +111,9 @@ Version 1.5.0+svn:
    * fix a bug with variable substitution time of [event]-within-[event]
    * fix a crash with [ai] in [modify_side]
    * prevent infinite recursion when [kill] fire_event=yes is used to kill
-     primary_unit on its own 'die' event (Gna! bug #11207 / Debian bug #448193 
+     primary_unit on its own 'die' event (Gna! bug #11207 / Debian bug #448193
+   * Optimize titlescreen and credits rendering.
+   * Give its name to the "Fog clearer" (fixing blank in "Create Unit" dialog)
 
 Version 1.5.0:
  * campaigns:
