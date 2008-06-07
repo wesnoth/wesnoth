@@ -197,6 +197,21 @@ wesnoth_sources = Split("""
     widgets/scrollpane.cpp
     """)
 
+# used with editor2 option in the wesnoth target
+wesnoth_editor2_sources = Split("""
+    editor2/editor_main.cpp
+    editor/editor.cpp
+    editor/editor_layout.cpp
+    editor/map_manip.cpp
+    editor/editor_display.cpp
+    editor/editor_palettes.cpp
+    editor/editor_dialogs.cpp
+    editor/editor_undo.cpp
+    """)
+    
+if env['editor2']:
+    wesnoth_sources += wesnoth_editor2_sources
+
 #
 # Target declarations
 #

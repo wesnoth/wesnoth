@@ -43,6 +43,7 @@ opts.AddOptions(
     PathOption('datarootdir', 'sets the root of data directories to a non-default location', "share", PathOption.PathAccept),
     PathOption('datadirname', 'sets the name of data directory', "wesnoth", PathOption.PathAccept),
     PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathOption.PathAccept),
+    BoolOption('editor2', 'set to build the new map editor in the "wesnoth" target', False),
     PathOption('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathOption.PathAccept),
     BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False),
     PathOption('localedirname', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept),
@@ -263,6 +264,9 @@ if sys.platform != "win32":
 
 if env['dummy_locales']:
     env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
+    
+if env['editor2']:
+    env.Append(CPPDEFINES = "USE_EDITOR2")
 
 # Simulate autools-like behavior of prefix on various paths
 installdirs = Split("bindir datadir fifodir icondir desktopdir mandir docdir python_site_packages_dir")
