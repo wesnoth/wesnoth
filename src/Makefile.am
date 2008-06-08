@@ -44,6 +44,8 @@ THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 wesnoth_source = \
 	about.cpp \
 	actions.cpp \
+	addon_checks.cpp \
+	addon_management.cpp \
 	ai.cpp \
 	ai_dfool.cpp \
 	ai_attack.cpp \
@@ -111,7 +113,6 @@ wesnoth_source = \
 	playmp_controller.cpp \
 	playsingle_controller.cpp \
 	playturn.cpp \
-	publish_campaign.cpp \
 	replay.cpp \
 	replay_controller.cpp \
 	sha1.cpp \
@@ -191,11 +192,11 @@ wesnothd_DEPENDENCIES=libwesnoth-core.a
 #############################################################################
 
 campaignd_SOURCES = \
+	addon_checks.cpp \
 	campaign_server/campaign_server.cpp \
 	server/input_stream.cpp \
 	network.cpp \
 	network_worker.cpp \
-	publish_campaign.cpp \
 	loadscreen_empty.cpp 
 
 campaignd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)

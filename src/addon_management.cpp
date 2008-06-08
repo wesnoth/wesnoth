@@ -25,29 +25,16 @@
 #include <cstring>
 
 namespace {
-	std::string get_addon_type_parent(ADDON_GROUP addon_type)
-	{
-		switch (addon_type)
-		{
-			case ADDON_MULTIPLAYER:
-				return get_addon_campaigns_dir();
-			case ADDON_SINGLEPLAYER:
-			default:
-				return get_addon_campaigns_dir();
-		}
-	}
-
 	void setup_addon_dirs()
 	{
 		make_directory(get_user_data_dir() + "/data");
 		make_directory(get_addon_campaigns_dir());
-		make_directory(get_mp_addons_dir());
 	}
 }
 
-void get_addon_info(const std::string& addon_name, ADDON_GROUP addon_type, config& cfg)
+void get_addon_info(const std::string& addon_name, config& cfg)
 {
-	const std::string parentd = get_addon_type_parent(addon_type);
+	const std::string parentd = get_addon_campaigns_dir();
 
 	// Cope with old-style or new-style file organization 
 	std::string exterior = parentd + "/" + addon_name + ".pbl";
@@ -58,46 +45,28 @@ void get_addon_info(const std::string& addon_name, ADDON_GROUP addon_type, confi
 	read(cfg, *stream);
 }
 
-void set_addon_info(const std::string& addon_name, ADDON_GROUP addon_type, const config& cfg)
+void set_addon_info(const std::string& addon_name, const config& cfg)
 {
-	const std::string parentd = get_addon_type_parent(addon_type);
+	const std::string parentd = get_addon_campaigns_dir();
 
 	scoped_ostream stream = ostream_file(parentd + "/" + addon_name + ".pbl");
 	write(*stream, cfg);
 }
 
-void remove_local_addon(const std::string& addon, ADDON_GROUP addon_type)
+void remove_local_addon(const std::string& addon)
 {
-	const std::string addon_dir = get_addon_type_parent(addon_type) + "/" + addon;
+	const std::string addon_dir = get_addon_campaigns_dir() + "/" + addon;
 
 	delete_directory(addon_dir);
 	if (file_exists(addon_dir + ".cfg"))
 		delete_directory(addon_dir + ".cfg");
 }
 
-std::vector< addon_list_item > enumerate_all_available_addons()
-{
-	const std::vector< std::string > mp_addons_v = available_addons(ADDON_MULTIPLAYER);
-	const std::vector< std::string > sp_addons_v = available_addons(ADDON_SINGLEPLAYER);
-	std::vector< addon_list_item > result;
-
-	std::vector< std::string >::const_iterator i;
-
-	for (i = mp_addons_v.begin(); i != mp_addons_v.end(); ++i) {
-		result.push_back(std::make_pair(*i, ADDON_MULTIPLAYER));
-	}
-	for (i = sp_addons_v.begin(); i != sp_addons_v.end(); ++i) {
-		result.push_back(std::make_pair(*i, ADDON_SINGLEPLAYER));
-	}
-
-	return result;
-}
-
-std::vector<std::string> available_addons(ADDON_GROUP addons_type)
+std::vector<std::string> available_addons()
 {
 	std::vector<std::string> res;
 	std::vector<std::string> files, dirs;
-	const std::string parentd = get_addon_type_parent(addons_type);
+	const std::string parentd = get_addon_campaigns_dir();
 	get_files_in_dir(parentd,&files,&dirs);
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
@@ -114,10 +83,10 @@ std::vector<std::string> available_addons(ADDON_GROUP addons_type)
 	return res;
 }
 
-std::vector<std::string> installed_addons(ADDON_GROUP addons_type)
+std::vector<std::string> installed_addons()
 {
 	std::vector<std::string> res;
-	const std::string parentd = get_addon_type_parent(addons_type);
+	const std::string parentd = get_addon_campaigns_dir();
 	std::vector<std::string> files, dirs;
 	get_files_in_dir(parentd,&files,&dirs);
 
@@ -175,9 +144,9 @@ static std::string unencode_binary(const std::string& str)
 	return res;
 }
 
-static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignore_patterns(const std::string& addon_name, ADDON_GROUP addon_type)
+static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignore_patterns(const std::string& addon_name)
 {
-	const std::string parentd = get_addon_type_parent(addon_type);
+	const std::string parentd = get_addon_campaigns_dir();
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > patterns;
 	std::string exterior = parentd + "/" + addon_name + ".ign";
@@ -264,9 +233,9 @@ static void archive_dir(const std::string& path, const std::string& dirname, con
 	}
 }
 
-void archive_addon(const std::string& addon_name, ADDON_GROUP addon_type, config& cfg)
+void archive_addon(const std::string& addon_name, config& cfg)
 {
-	const std::string parentd = get_addon_type_parent(addon_type);
+	const std::string parentd = get_addon_campaigns_dir();
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > ignore_patterns;
 	// External .cfg may not exist; newer campaigns have a _main.cfg
@@ -274,7 +243,7 @@ void archive_addon(const std::string& addon_name, ADDON_GROUP addon_type, config
 	if (file_exists(parentd + "/" + external_cfg)) {
 		archive_file(parentd, external_cfg, cfg.add_child("file"));
 	}
-	ignore_patterns = read_ignore_patterns(addon_name, addon_type);
+	ignore_patterns = read_ignore_patterns(addon_name);
 	archive_dir(parentd, addon_name, cfg.add_child("dir"), ignore_patterns);
 }
 
@@ -306,8 +275,7 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 
 void unarchive_addon(const config& cfg)
 {
-	ADDON_GROUP addon_type = is_addon_sp_or_mp(get_addon_type(cfg["type"]));
-	const std::string parentd = get_addon_type_parent(addon_type);
+	const std::string parentd = get_addon_campaigns_dir();
 	setup_addon_dirs();
 	unarchive_dir(parentd, cfg);
 }

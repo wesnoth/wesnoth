@@ -45,7 +45,7 @@
 #include "network.hpp"
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
-#include "publish_campaign.hpp"
+#include "addon_management.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
@@ -131,7 +131,8 @@ public:
 	bool goto_multiplayer();
 	bool play_multiplayer();
 	void manage_addons();
-	void download_campaigns(std::string host);
+	void remove_addons();
+	void download_addons(std::string host);
 	bool change_language();
 
 	void show_help();
@@ -154,9 +155,10 @@ private:
 	void refresh_game_cfg(bool reset_translations=false);
     void set_unit_data();
 
-	void upload_campaign(const std::string& campaign, network::connection sock);
-	void delete_campaign(const std::string& campaign, network::connection sock);
-	void remove_campaign(const std::string& campaign);
+	void upload_addon(const std::string& addon, network::connection sock);
+	void delete_addon(const std::string& addon, network::connection sock);
+	void remove_addon(const std::string& addon);
+	bool addon_dependencies_met(const std::vector<std::string>& deplist);
 
 	const int argc_;
 	int arg_;
@@ -1089,6 +1091,43 @@ static std::string format_file_size(const std::string& size_str)
 
 namespace
 {
+	// Strip the ".cfg" extension and replace "_" with " " for display.
+	void prepare_addons_list_for_display(std::vector<std::string>& files, std::vector<std::string>& dirs, const std::string& parent_dir)
+	{
+		// Strip the ".cfg" extension and replace "_" with " " for display.
+		std::vector<std::string>::iterator i = files.begin();
+		while(i != files.end())
+		{
+			std::string::size_type pos = i->rfind(".cfg", i->size());
+			if(pos == std::string::npos) {
+				i = files.erase(i);
+			} else {
+				i->erase(pos);
+				// remove it from the directory list too
+				for(std::vector<std::string>::iterator j = dirs.begin(); j != dirs.end() ; ++j) {
+					if (*i == *j) {
+						dirs.erase(j);
+						break;
+					}
+				};
+				std::replace(i->begin(), i->end(), '_', ' ');
+				i++;
+			}
+		}
+		// process items of type Addon/_main.cfg too
+		i = dirs.begin();
+		while(i != dirs.end())
+		{
+			if (file_exists(parent_dir + *i + "/_main.cfg")) {
+				std::replace(i->begin(), i->end(), '_', ' ');
+				files.push_back(*i);
+				i++;
+			} else {
+				i = dirs.erase(i);
+			}
+		}
+	}
+
 	void game_controller::reload_changed_game_config()
 	{
 		//force a reload of configuration information
@@ -1101,6 +1140,78 @@ namespace
 		clear_binary_paths_cache();
 	}
 
+	void game_controller::remove_addons()
+	{
+		std::vector<std::string> campaigns;
+		std::vector<std::string> campaign_dirs;
+
+		const std::string parentdir = get_addon_campaigns_dir() + "/";
+
+		get_files_in_dir(parentdir, &campaigns, &campaign_dirs, FILE_NAME_ONLY);
+		prepare_addons_list_for_display(campaigns, campaign_dirs, parentdir);
+
+		if (campaigns.empty()) {
+			gui::show_error_message(disp(), _("You have no add-ons installed."));
+			return;
+		}
+
+		gui::menu::basic_sorter sorter;
+		sorter.set_alpha_sort(1);
+
+		int index = 0;
+		int res;
+
+		do
+		{
+			gui::dialog addon_dialog(disp(),
+							_("Remove add-ons"), _("Choose the add-on to remove."),
+							gui::OK_CANCEL);
+			gui::menu::imgsel_style &addon_style = gui::menu::bluebg_style;
+
+			gui::menu *addon_menu = new gui::menu(disp().video(), campaigns, false, -1,
+					gui::dialog::max_menu_width, &sorter, &addon_style, false);
+			addon_dialog.set_menu(addon_menu);
+			index = addon_dialog.show();
+
+			if(index < 0)
+				return;
+
+			std::string confirm_message = _("Are you sure you want to remove the add-on '$addon|'?");
+			utils::string_map symbols;
+			symbols["addon"] = campaigns.at(index);
+			confirm_message = utils::interpolate_variables_into_string(confirm_message, &symbols);
+			res = gui::dialog(disp(), _("Confirm"),	confirm_message, gui::YES_NO).show();
+		} while (res != 0);
+
+		bool delete_success = true;
+
+		// Put underscores back in the name and remove the addon
+		std::string filename = campaigns.at(index);
+		std::replace(filename.begin(), filename.end(), ' ', '_');
+		delete_success &= delete_directory(parentdir + filename);
+		// Report results
+		if (delete_success)
+		{
+			delete_success &= delete_directory(parentdir + filename + ".cfg");
+			reload_changed_game_config();
+
+			std::string message = _("Add-on '$addon|' deleted.");
+			utils::string_map symbols;
+			symbols["addon"] = campaigns.at(index);
+			message = utils::interpolate_variables_into_string(message, &symbols);
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::dialog dlg(disp(), _("Add-on deleted"), message, gui::OK_ONLY);
+			dlg.show();
+		}
+		else
+		{
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::dialog dlg2(disp(), _("Error"), _("Add-on could not be deleted -- a file was not found."),
+					gui::OK_ONLY);
+			dlg2.show();
+		}
+	}
+
 	// Manage add-ons
 	void game_controller::manage_addons()
 	{
@@ -1108,23 +1219,22 @@ namespace
 		std::string host;
 		if(gui2::new_widgets) {
 			gui2::taddon_connect addon_dlg;
-			
+
 			addon_dlg.set_host_name(preferences::campaign_server());
 			addon_dlg.show(disp().video());
-			
+
 			res = addon_dlg.get_retval();
 			if(res == gui2::tbutton::OK) {
 				res = 0;
 				host = addon_dlg.host_name();
-			} 
+			}
 		} else {
-
 			gui::dialog d(disp(),
 						_("Connect to Server"),
 						_("You will now connect to a server to download add-ons."),
 						gui::OK_CANCEL);
 			d.set_textbox(_("Server: "), preferences::campaign_server());
-			d.add_button( new gui::dialog_button(disp().video(), _("Remove Add-ons"),
+			d.add_button( new gui::dialog_button(disp().video(), _("Uninstall add-ons"),
 				gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
 			res = d.show();
 			host = d.textbox_text();
@@ -1132,117 +1242,19 @@ namespace
 
 		if (res == 0 )	// Get Add-Ons
 		{
-			download_campaigns(host);
+			download_addons(host);
 		}
-		else if (res == 2) // Manage Add-Ons
+		else if (res == 2) // Manage SP Add-Ons
 		{
-
-			std::vector<std::string> addons;
-			std::vector<std::string> addon_dirs;
-
-			const std::string campaign_dir = get_user_data_dir() + "/data/campaigns/";
-
-			get_files_in_dir(campaign_dir, &addons, &addon_dirs, FILE_NAME_ONLY);
-
-			// Strip the ".cfg" extension and replace "_" with " " for display.
-			std::vector<std::string>::iterator i = addons.begin();
-			while(i != addons.end())
-			{
-				std::string::size_type pos = i->rfind(".cfg", i->size());
-				if(pos == std::string::npos) {
-					i = addons.erase(i);
-				} else {
-					i->erase(pos);
-					// remove it from the directory list too
-					for(std::vector<std::string>::iterator j = addon_dirs.begin(); j != addon_dirs.end() ; ++j) {
-						if (*i == *j) {
-							addon_dirs.erase(j);
-							break;
-						}
-					};
-					std::replace(i->begin(), i->end(), '_', ' ');
-					i++;
-				}
-			}
-			// process the addons of type Addon/_main.cfg
-			i = addon_dirs.begin();
-			while(i != addon_dirs.end())
-			{
-				if (file_exists(campaign_dir + *i + "/_main.cfg")) {
-					std::replace(i->begin(), i->end(), '_', ' ');
-					addons.push_back(*i);
-					i++;
-				} else {
-					i = addon_dirs.erase(i);
-				}
-			}
-
-			if (addons.empty())
-			{
-				gui::show_error_message(disp(), _("You have no Add-ons installed."));
-				return;
-			}
-
-			gui::menu::basic_sorter sorter;
-			sorter.set_alpha_sort(1);
-
-
-			int index = 0;
-
-			do
-			{
-				gui::dialog addon_dialog(disp(),
-							 _("Remove Add-ons"), _("Choose the add-on to remove."),
-							 gui::OK_CANCEL);
-				gui::menu::imgsel_style &addon_style = gui::menu::bluebg_style;
-
-				gui::menu *addon_menu = new gui::menu(disp().video(), addons, false, -1,
-						gui::dialog::max_menu_width, &sorter, &addon_style, false);
-				addon_dialog.set_menu(addon_menu);
-				index = addon_dialog.show();
-
-				if(index < 0) return;
-
-				std::string confirm_message = _("Are you sure you want to remove the add-on '$addon|'?");
-				utils::string_map symbols;
-				symbols["addon"] = addons.at(index);
-				confirm_message = utils::interpolate_variables_into_string(confirm_message, &symbols);
-				res = gui::dialog(disp(), _("Confirm"),	confirm_message, gui::YES_NO).show();
-			} while (res != 0);
-
-			bool delete_success = true;
-
-			//Put underscores back in the name and remove the addon
-			std::string filename = addons.at(index);
-			std::replace(filename.begin(), filename.end(), ' ', '_');
-			delete_success &= delete_directory(campaign_dir + filename);
-			//Report results
-			if (delete_success)
-			{
-				delete_success &= delete_directory(campaign_dir + filename + ".cfg");
-				reload_changed_game_config();
-
-				std::string message = _("Add-on '$addon|' deleted.");
-				utils::string_map symbols;
-				symbols["addon"] = addons.at(index);
-				message = utils::interpolate_variables_into_string(message, &symbols);
-				/* GCC-3.3 needs a temp var otherwise compilation fails */
-				gui::dialog dlg(disp(), _("Add-on deleted"), message, gui::OK_ONLY);
-				dlg.show();
-			}
-			else
-			{
-				/* GCC-3.3 needs a temp var otherwise compilation fails */
-				gui::dialog dlg2(disp(), _("Error"), _("Add-on could not be deleted -- a file was not found."),
-						gui::OK_ONLY);
-				dlg2.show();
-			}
-	}
+			remove_addons();
+		}
 		else // Cancel or unexpected result
+		{
 			return;
+		}
 	}
 
-void game_controller::download_campaigns(std::string host)
+void game_controller::download_addons(std::string host)
 {
 	const std::vector<std::string> items = utils::split(host, ':');
 	if(items.empty()) {
@@ -1284,28 +1296,30 @@ void game_controller::download_campaigns(std::string host)
 			return;
 		}
 
-		std::vector<std::string> campaigns, versions, uploads, options;
+		std::vector<std::string> campaigns, versions, uploads, types, options;
 
 		std::string sep(1, COLUMN_SEPARATOR);
 
 		std::stringstream heading;
 		heading << HEADING_PREFIX << sep << _("Name") << sep << _("Version") << sep
-				<< _("Author") << sep << _("Downloads") << sep << _("Size");
+				<< _("Author") << sep << _("Type") << sep << _("Downloads") << sep << _("Size");
 
 		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
-		const std::vector<std::string>& publish_options = available_campaigns();
 
-		std::vector<std::string> delete_options;
+		const std::vector< std::string >& publish_options = available_addons();
+		std::vector< std::string > delete_options;
 
 		std::vector<int> sizes;
 
 		for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
 			const std::string& name = (**i)["name"];
+			const ADDON_TYPE type = get_addon_type((**i)["type"]);
 			campaigns.push_back(name);
 			versions.push_back((**i)["version"]);
 			uploads.push_back((**i)["uploads"]);
+			types.push_back((**i)["types"]);
 
-			if(std::count(publish_options.begin(),publish_options.end(),name) != 0) {
+			if(std::count(publish_options.begin(), publish_options.end(), name) != 0) {
 				delete_options.push_back(name);
 			}
 
@@ -1331,21 +1345,54 @@ void game_controller::download_campaigns(std::string host)
 				//a hack to prevent magenta icons, because they look awful
 				icon.append("~RC(magenta>red)");
 			}
+			std::string addon_type_label;
+			switch (type) {
+				case ADDON_SP_CAMPAIGN:
+					addon_type_label = _("addon_type^Campaign");
+					break;
+				case ADDON_SP_SCENARIO:
+					addon_type_label = _("addon_type^Scenario");
+					break;
+				case ADDON_MP_ERA:
+					addon_type_label = _("addon_type^MP Era");
+					break;
+				case ADDON_MP_FACTION:
+					addon_type_label = _("addon_type^MP Faction");
+					break;
+				case ADDON_MP_MAPS:
+					addon_type_label = _("addon_type^MP Map-pack");
+					break;
+				case ADDON_MP_SCENARIO:
+					addon_type_label = _("addon_type^MP scenario");
+					break;
+				case ADDON_MP_CAMPAIGN:
+					addon_type_label = _("addon_type^MP campaign");
+					break;
+				case ADDON_MEDIA:
+					addon_type_label = _("addon_type^Resources");
+					break;
+				default:
+					addon_type_label = _("addon_type^(unknown)");
+					break;
+			}
 			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR +
 			                  title + COLUMN_SEPARATOR +
 			                  version + COLUMN_SEPARATOR +
 			                  author + COLUMN_SEPARATOR +
+			                  addon_type_label + COLUMN_SEPARATOR +
 			                  (**i)["downloads"].str() + COLUMN_SEPARATOR +
-			                  format_file_size((**i)["size"]));
+			                  format_file_size((**i)["size"]) + COLUMN_SEPARATOR);
 		}
 
 		options.push_back(heading.str());
 
-		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
+		std::string pub_option_text, del_option_text;
+
+		for(std::vector< std::string >::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
 			options.push_back(sep + _("Publish add-on: ") + *j);
 		}
 
-		for(std::vector<std::string>::const_iterator d = delete_options.begin(); d != delete_options.end(); ++d) {
+		for(std::vector< std::string >::const_iterator d = delete_options.begin(); d != delete_options.end(); ++d) {
 			options.push_back(sep + _("Delete add-on: ") + *d);
 		}
 
@@ -1355,7 +1402,7 @@ void game_controller::download_campaigns(std::string host)
 		}
 
 		gui::menu::basic_sorter sorter;
-		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
+		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4).set_numeric_sort(5).set_position_sort(6,sizes);
 
 		gui::dialog addon_dialog(disp(), _("Get Add-ons"),
 					       _("Choose the add-on to download."),
@@ -1372,43 +1419,29 @@ void game_controller::download_campaigns(std::string host)
 			return;
 		}
 
+		// Handle deletion option
 		if(index >= int(campaigns.size() + publish_options.size())) {
-			delete_campaign(delete_options[index - int(campaigns.size() + publish_options.size())],sock);
+			const std::string& addon = delete_options[index - int(campaigns.size() + publish_options.size())];
+			//const ADDON_GROUP addon_type = delete_options[index - int(campaigns.size() + publish_options.size())].second;
+			delete_addon(addon, sock);
 			return;
 		}
 
+		// Handle publish option
 		if(index >= int(campaigns.size())) {
-			upload_campaign(publish_options[index - int(campaigns.size())],sock);
+			const std::string& addon = publish_options[index - int(campaigns.size())];
+			upload_addon(addon, sock);
 			return;
 		}
 
-		// Get all dependencies of the campaign selected for download.
+		// Get all dependencies of the addon/campaign selected for download.
 		const config *selected_campaign = campaigns_cfg->find_child("campaign", "name", campaigns[index]);
+		// Get all dependencies which are not already installed.
+		// TODO: Somehow determine if the version is outdated.
 		std::vector<std::string> dependencies = utils::split((*selected_campaign)["dependencies"]);
-		if (!dependencies.empty()) {
-			// Get all dependencies which are not already installed.
-			// TODO: Somehow determine if the version is outdated.
-			const std::vector<std::string>& installed = installed_campaigns();
-			std::vector<std::string>::iterator i;
-			std::string missing = "";
-			for (i = dependencies.begin(); i != dependencies.end(); i++) {
-				if (std::find(installed.begin(), installed.end(), *i) == installed.end()) {
-					missing += "\n" + *i;
-				}
-			}
-			// If there are any, display a message.
-			// TODO: Somehow offer to automatically download
-			// the missing dependencies.
-			if (!missing.empty()) {
-				if (gui::dialog(disp(),
-						      _("Dependencies"),
-						      std::string(_("This add-on requires the following additional dependencies:")) +
-							"\n" + missing +
-							"\n" + _("Do you still want to download it?"), gui::OK_CANCEL).show())
-					return;
-			}
-		}
+		if (!addon_dependencies_met(dependencies)) return;
 
+		// Proceed to download and install
 		config request;
 		request.add_child("request_campaign")["name"] = campaigns[index];
 		// @todo Should be enabled once the campaign server can be recompiled.
@@ -1431,24 +1464,27 @@ void game_controller::download_campaigns(std::string host)
 
 		//remove any existing versions of the just downloaded campaign
 		//assuming it consists of a dir and a cfg file
-		remove_campaign(campaigns[index]);
+		remove_addon(campaigns[index]);
 
 		//add revision info to the addon
-                config *maindir = cfg.find_child("dir", "name", campaigns[index]);
-                if (maindir) {
-                    config f;
-                    f["name"] = "info.cfg";
-                    std::string s;
-                    s += "[info]\n";
-                    s += "version=\"" + versions[index] + "\"\n";
-                    s += "uploads=\"" + uploads[index] + "\"\n";
-                    s += "[/info]\n";
-                    f["contents"] = s;
-                    maindir->add_child("file", f);
-                }
+		config *maindir = cfg.find_child("dir", "name", campaigns[index]);
+		if (maindir) {
+			config f;
+			f["name"] = "info.cfg";
+			std::string s;
+			s += "[info]\n";
+			if(!types[index].empty()) {
+			s += "    type=\"" + types[index] + "\"\n";
+			}
+			s += "    uploads=\"" + uploads[index] + "\"\n";
+			s += "    version=\"" + versions[index] + "\"\n";
+			s += "[/info]\n";
+			f["contents"] = s;
+			maindir->add_child("file", f);
+		}
 
 		//put a break at line below to see that it really works.
-		unarchive_campaign(cfg);
+		unarchive_addon(cfg);
 
 		reload_changed_game_config();
 
@@ -1476,7 +1512,40 @@ void game_controller::download_campaigns(std::string host)
 	}
 }
 
-void game_controller::upload_campaign(const std::string& campaign, network::connection sock)
+bool game_controller::addon_dependencies_met(const std::vector<std::string>& deplist)
+{
+
+	const std::vector<std::string>& installed = installed_addons();
+	std::vector<std::string>::const_iterator i;
+	std::string missing = "";
+	uint count_missing;
+
+	for (i = deplist.begin(); i != deplist.end(); i++) {
+		if (std::find(installed.begin(), installed.end(), *i) == installed.end()) {
+			missing += "\n" + *i;
+			++count_missing;
+		}
+	}
+	// If there are any, display a message.
+	// TODO: Somehow offer to automatically download
+	// the missing dependencies.
+	if (!missing.empty()) {
+		const std::string msg_title = _("Dependencies");
+		const std::string msg_entrytxt = _n("This add-on depends upon the following add-on which you have not installed yet:",
+		                                    "This add-on depends upon the following add-ons which you have not installed yet:",
+		                                    count_missing);
+		if (gui::dialog(disp(),
+						msg_title,
+						msg_entrytxt +
+					"\n" + missing +
+					"\n" + _("Do you still want to download it?"), gui::OK_CANCEL).show())
+			return false;
+	}
+
+	return true;
+}
+
+void game_controller::upload_addon(const std::string& addon, network::connection sock)
 {
 	config request_terms;
 	request_terms.add_child("request_terms");
@@ -1502,7 +1571,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	}
 
 	config cfg;
-	get_campaign_info(campaign,cfg);
+	get_addon_info(addon,cfg);
 
 	std::string passphrase = cfg["passphrase"];
 	if(passphrase.empty()) {
@@ -1511,18 +1580,18 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 			passphrase[n] = 'a' + (rand()%26);
 		}
 		cfg["passphrase"] = passphrase;
-		set_campaign_info(campaign,cfg);
+		set_addon_info(addon,cfg);
 	}
 
-	cfg["name"] = campaign;
+	cfg["name"] = addon;
 
-	config campaign_data;
-	archive_campaign(campaign,campaign_data);
+	config addon_data;
+	archive_addon(addon,addon_data);
 
 	data.clear();
-	data.add_child("upload",cfg).add_child("data",campaign_data);
+	data.add_child("upload",cfg).add_child("data",addon_data);
 
-	LOG_NET << "uploading campaign...\n";
+	LOG_NET << "uploading add-on...\n";
 	// @todo Should be enabled once the campaign server can be recompiled.
 	network::send_data(data, sock, true);
 
@@ -1539,13 +1608,13 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	}
 }
 
-void game_controller::delete_campaign(const std::string& campaign, network::connection sock)
+void game_controller::delete_addon(const std::string& addon, network::connection sock)
 {
 	config cfg;
-	get_campaign_info(campaign,cfg);
+	get_addon_info(addon,cfg);
 
 	config msg;
-	msg["name"] = campaign;
+	msg["name"] = addon;
 	msg["passphrase"] = cfg["passphrase"];
 
 	config data;
@@ -1567,12 +1636,9 @@ void game_controller::delete_campaign(const std::string& campaign, network::conn
 	}
 }
 
-void game_controller::remove_campaign(const std::string& campaign)
+void game_controller::remove_addon(const std::string& addon)
 {
-	const std::string campaign_dir = get_user_data_dir() + "/data/campaigns/" + campaign;
-	delete_directory(campaign_dir);
-	if (file_exists(campaign_dir + ".cfg"))
-		delete_directory(campaign_dir + ".cfg");
+	remove_local_addon(addon);
 }
 
 
@@ -1592,7 +1658,7 @@ bool game_controller::play_multiplayer()
 			gui2::tmp_method_selection dlg;
 
 				dlg.show(disp().video());
-				
+
 				if(dlg.get_retval() == gui2::tbutton::OK) {
 					res = dlg.get_choice();
 				} else {
@@ -1707,7 +1773,7 @@ bool game_controller::change_language()
 			gui2::tlanguage_selection dlg;
 
 			dlg.show(disp().video());
-			
+
 			if(dlg.get_retval() == gui2::tbutton::OK) {
 				if(!no_gui_) {
 					std::string wm_title_string = _("The Battle for Wesnoth");
@@ -1775,6 +1841,12 @@ void game_controller::show_upload_begging()
 
 void game_controller::read_configs(std::string& error_log)
 {
+	// We need this as soon as possible for loading MP binary_paths
+	// only when they are needed.
+	if(multiplayer_mode_) {
+		defines_map_["MULTIPLAYER"] = preproc_define();
+	}
+
 	preproc_map defines_map(defines_map_);
 
 	std::string user_error_log;
@@ -1788,11 +1860,16 @@ void game_controller::read_configs(std::string& error_log)
 
 	read(game_config_, *stream, &error_log);
 
-	//load usermade add-ons
-	const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
-	std::vector<std::string> user_campaigns, error_campaigns;
-	get_files_in_dir(user_campaign_dir,NULL,&user_campaigns,ENTIRE_FILE_PATH);
-	for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
+	// load usermade add-ons
+	const std::string user_campaign_dir = get_addon_campaigns_dir();
+	std::vector< std::string > error_addons;
+	// Scan addon directories
+	std::vector<std::string> user_addons;
+
+	get_files_in_dir(user_campaign_dir,NULL,&user_addons,ENTIRE_FILE_PATH);
+
+	// Load the addons
+	for(std::vector<std::string>::const_iterator uc = user_addons.begin(); uc != user_addons.end(); ++uc) {
 		std::string oldstyle_cfg = *uc + ".cfg";
 		std::string main_cfg = *uc + "/_main.cfg";
 		std::string toplevel;
@@ -1804,48 +1881,45 @@ void game_controller::read_configs(std::string& error_log)
 			continue;
 
 		try {
-			preproc_map user_defines_map(defines_map);
-			scoped_istream stream = preprocess_file(toplevel, &user_defines_map);
+			preproc_map addon_defines_map(defines_map);
+			scoped_istream stream = preprocess_file(toplevel, &addon_defines_map);
 
-			std::string campaign_error_log;
+			std::string addon_error_log;
 
-			config user_campaign_cfg;
-			read(user_campaign_cfg,*stream,&campaign_error_log);
+			config umc_cfg;
+			read(umc_cfg, *stream, &addon_error_log);
 
-			if(campaign_error_log.empty()) {
-				game_config_.append(user_campaign_cfg);
+			if (addon_error_log.empty()) {
+				game_config_.append(umc_cfg);
 			} else {
-				user_error_log += campaign_error_log;
-				error_campaigns.push_back(*uc);
+				user_error_log += addon_error_log;
+				error_addons.push_back(*uc);
 			}
 		} catch(config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-			error_campaigns.push_back(*uc);
-
+			error_addons.push_back(*uc);
 			user_error_log += err.message + "\n";
 		} catch(preproc_config::error&) {
 			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-			error_campaigns.push_back(*uc);
+			error_addons.push_back(*uc);
 			//no need to modify the error log here, already done by the preprocessor
-
 		} catch(io_exception&) {
 			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-			error_campaigns.push_back(*uc);
+			error_addons.push_back(*uc);
 		}
-	}
+		if(error_addons.empty() == false) {
+			std::stringstream msg;
+			msg << _n("The following add-on had errors and could not be loaded:",
+					"The following add-ons had errors and could not be loaded:",
+					error_addons.size());
+			for(std::vector<std::string>::const_iterator i = error_addons.begin(); i != error_addons.end(); ++i) {
+				msg << "\n" << *i;
+			}
 
-	if(error_campaigns.empty() == false) {
-		std::stringstream msg;
-		msg << _n("The following add-on had errors and could not be loaded:",
-				"The following add-ons had errors and could not be loaded:",
-				error_campaigns.size());
-		for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
-			msg << "\n" << *i;
+			msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
+
+			gui::show_error_message(disp(),msg.str());
 		}
-
-		msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
-
-		gui::show_error_message(disp(),msg.str());
 	}
 
 	game_config_.merge_children("units");
@@ -1854,7 +1928,6 @@ void game_controller::read_configs(std::string& error_log)
 	for(config::child_list::const_iterator ch = game_config_.get_children("multiplayer").begin(); ch != game_config_.get_children("multiplayer").end(); ++ch) {
 		hashes[(**ch)["id"]] = (*ch)->hash();
 	}
-
 }
 
 //this function reads the game configuration, searching for valid cached copies first
@@ -2347,7 +2420,7 @@ static int play_game(int argc, char** argv)
 
 			const std::string input_file(argv[arg + 1]);
 			const std::string output_file(input_file + ".gz");
-			gzip_encode(input_file, output_file); 
+			gzip_encode(input_file, output_file);
 
 		} else if(val == "--gunzip") {
 			if(argc != arg + 2) {

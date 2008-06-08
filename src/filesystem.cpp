@@ -252,6 +252,21 @@ std::string get_cache_dir()
 	return get_dir(dir_path);
 }
 
+std::string get_addon_campaigns_dir()
+{
+	const std::string dir_path = get_user_data_dir() + "/data/campaigns";
+	return get_dir(dir_path);
+}
+
+std::vector< std::string > get_addon_dirs()
+{
+	std::vector< std::string > ret;
+
+	ret.push_back(get_addon_campaigns_dir());
+
+	return ret;
+}
+
 std::string get_intl_dir()
 {
 #ifdef _WIN32
@@ -393,8 +408,7 @@ std::string get_user_data_dir()
 		_mkdir("userdata/data");
 		_mkdir("userdata/data/ais");
 		_mkdir("userdata/data/campaigns");
-		_mkdir("userdata/data/scenarios");
-		_mkdir("userdata/data/scenarios/multiplayer");
+		_mkdir("userdata/data/multiplayer");
 		_mkdir("userdata/data/maps");
 		_mkdir("userdata/data/maps/multiplayer");
 		_mkdir("userdata/saves");
@@ -457,8 +471,7 @@ std::string get_user_data_dir()
 		mkdir((dir_path + "/data").c_str(),AccessMode);
 		mkdir((dir_path + "/data/ais").c_str(),AccessMode);
 		mkdir((dir_path + "/data/campaigns").c_str(),AccessMode);
-		mkdir((dir_path + "/data/scenarios").c_str(),AccessMode);
-		mkdir((dir_path + "/data/scenarios/multiplayer").c_str(),AccessMode);
+		mkdir((dir_path + "/data/multiplayer").c_str(),AccessMode);
 		mkdir((dir_path + "/data/maps").c_str(),AccessMode);
 		mkdir((dir_path + "/data/maps/multiplayer").c_str(),AccessMode);
 		mkdir((dir_path + "/saves").c_str(),AccessMode);

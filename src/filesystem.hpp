@@ -60,6 +60,11 @@ std::string get_saves_dir();
 std::string get_cache_dir();
 std::string get_intl_dir();
 std::string get_screenshot_dir();
+std::string get_addon_campaigns_dir();
+
+// Wrapper around get_mp_addons_dir() and get_addon_campaigns_dir() intended
+// for massive operations with add-ons, e.g. enumerating for publishing.
+std::vector< std::string > get_addon_dirs();
 
 //! Get the next free filename using "name + number (3 digits) + extension"
 //! maximum 1000 files then start always giving 999

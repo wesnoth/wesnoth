@@ -187,6 +187,8 @@ IF(ENABLE_GAME)
 SET(wesnoth-main_SRC
     about.cpp
     actions.cpp
+    addon_checks.cpp
+    addon_management.cpp
     ai.cpp
     ai_dfool.cpp
     ai_attack.cpp
@@ -254,7 +256,6 @@ SET(wesnoth-main_SRC
     playmp_controller.cpp
     playsingle_controller.cpp
     playturn.cpp
-    publish_campaign.cpp
     replay.cpp
     replay_controller.cpp
     sha1.cpp
@@ -349,11 +350,11 @@ ENDIF(ENABLE_SERVER)
 IF(ENABLE_CAMPAIGN_SERVER)
 
 SET(campaignd_SRC
+    addon_checks.cpp
     campaign_server/campaign_server.cpp
     server/input_stream.cpp
     network.cpp
     network_worker.cpp
-    publish_campaign.cpp
     loadscreen_empty.cpp
 )
 

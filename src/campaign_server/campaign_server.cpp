@@ -16,14 +16,13 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "network.hpp"
-#include "publish_campaign.hpp"
 #include "util.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "game_config.hpp"
-
+#include "addon_checks.hpp"
 #include "server/input_stream.hpp"
 
 #include "SDL.h"
@@ -366,6 +365,7 @@ namespace {
 						for(config::child_list::iterator j = cmps.begin(); j != cmps.end(); ++j) {
 							(**j)["passphrase"] = "";
 							(**j)["upload_ip"] = "";
+							(**j)["email"] = "";
 						}
 
 						config response;
@@ -401,7 +401,7 @@ namespace {
 						if(data == NULL) {
 							LOG_CS << "Upload aborted no data.\n";
 							network::send_data(construct_error("No add-on data was supplied."), sock, gzipped);
-						} else if(campaign_name_legal((*upload)["name"]) == false) {
+						} else if(addon_name_legal((*upload)["name"]) == false) {
 							LOG_CS << "Upload aborted invalid name.\n";
 							network::send_data(construct_error("The name of the add-on is invalid"), sock, gzipped);
 						} else if(check_names_legal(*data) == false) {
@@ -427,6 +427,7 @@ namespace {
 								(*data)["timestamp"] = (*campaign)["timestamp"];
 								(*data)["icon"] = (*campaign)["icon"];
 								(*data)["translate"] = (*campaign)["translate"];
+								(*data)["type"] = (*campaign)["type"];
 								(*campaign).clear_children("translation");
 								find_translations(*data, *campaign);
 
@@ -466,6 +467,8 @@ namespace {
 							(*campaign)["translate"] = (*upload)["translate"];
 							(*campaign)["dependencies"] = (*upload)["dependencies"];
 							(*campaign)["upload_ip"] = network::ip_address(sock);
+							(*campaign)["type"] = (*upload)["type"];
+							(*campaign)["email"] = (*upload)["email"];
 
 							if((*campaign)["downloads"].empty()) {
 								(*campaign)["downloads"] = "0";
@@ -484,6 +487,7 @@ namespace {
 							(*data)["version"] = (*campaign)["version"];
 							(*data)["timestamp"] = (*campaign)["timestamp"];
 							(*data)["icon"] = (*campaign)["icon"];
+							(*data)["type"] = (*campaign)["type"];
 							(*campaign).clear_children("translation");
 							find_translations(*data, *campaign);
 
