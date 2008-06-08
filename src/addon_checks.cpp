@@ -1,0 +1,106 @@
+/* $Id$ */
+/*
+   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+                 2008 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2
+   or at your option any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#include "global.hpp"
+#include "addon_checks.hpp"
+#include "config.hpp"
+#include <algorithm>
+
+static bool two_dots(char a, char b)
+{
+	return a == '.' && b == '.';
+}
+
+bool addon_name_legal(const std::string& name)
+{
+	if(name == "" || strlen(name.c_str()) == 0 || name == "." ||
+	   std::find(name.begin(),name.end(),'/') != name.end() ||
+	   std::find(name.begin(),name.end(),'\\') != name.end() ||
+	   std::find(name.begin(),name.end(),':') != name.end() ||
+	   std::adjacent_find(name.begin(),name.end(),two_dots) != name.end()) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+bool check_names_legal(const config& dir)
+{
+	const config::child_list& files = dir.get_children("file");
+	for(config::child_list::const_iterator i = files.begin(); i != files.end(); ++i) {
+			if (!addon_name_legal((**i)["name"])) return false;
+	}
+	const config::child_list& dirs = dir.get_children("dir");
+	{
+		for(config::child_list::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
+				if (!addon_name_legal((**i)["name"])) return false;
+				if (!check_names_legal(**i)) return false;
+		}
+	}
+	return true;
+}
+
+ADDON_TYPE get_addon_type(const std::string& str)
+{
+	if (str.empty())
+		return ADDON_UNKNOWN;
+	else if (str == "campaign")
+		return ADDON_SP_CAMPAIGN;
+	else if (str == "scenario")
+		return ADDON_SP_SCENARIO;
+	else if (str == "era" || str == "era_mp")
+		return ADDON_MP_ERA;
+	else if (str == "faction" || str == "faction_mp")
+		return ADDON_MP_FACTION;
+	else if (str == "maps_mp" || str == "maps" || str == "map_pack" || str == "map_pack_mp")
+		return ADDON_MP_MAPS;
+	else if (str == "scenario_mp")
+		return ADDON_MP_SCENARIO;
+	else if (str == "campaign_mp")
+		return ADDON_MP_CAMPAIGN;
+	else if (str == "media")
+		return ADDON_MEDIA;
+// 	else if (str == "mod")
+// 		return ADDON_MOD;
+// 	else if (str == "gui")
+// 		return ADDON_GUI;
+	else
+		return ADDON_UNKNOWN;
+}
+
+std::vector<config *> find_scripts(const config &cfg, std::string extension)
+{
+	std::vector<config *> python_scripts;
+	const config::child_list& dirs = cfg.get_children("dir");
+	config::child_list::const_iterator i;
+	for(i = dirs.begin(); i != dirs.end(); ++i) {
+		const config::child_list& files = (**i).get_children("file");
+		config::child_list::const_iterator j;
+		for(j = files.begin(); j != files.end(); ++j) {
+			std::string filename = (**j)["name"].str();
+			if (filename.length() > extension.length()) {
+				if (filename.substr(filename.length() - extension.length()) ==
+					extension) {
+					python_scripts.push_back(*j);
+				}
+			}
+		}
+		// Recursively look for files in sub directories.
+		std::vector<config *> childs = find_scripts(**i, extension);
+		python_scripts.insert(python_scripts.end(),
+			childs.begin(), childs.end());
+	}
+	return python_scripts;
+}
