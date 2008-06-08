@@ -172,7 +172,7 @@ public:
 	void add_advancement(const unit_type &advance_to,int experience);
 
 	/** Adds units that this unit advances from, for help file purposes. */
-	void add_advancesfrom(std::string unit_id);
+	void add_advancesfrom(const std::string& unit_id);
 
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
