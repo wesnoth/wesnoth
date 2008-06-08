@@ -203,8 +203,9 @@ class HTMLOutput:
 
         def abbrev(name):
             abbrev = name[0]
+            word_seperators = [" ", "_", "+", "(", ")"]
             for i in range(1, len(name)):
-                if name[i] in ["(", ")"] or name[i - 1] in [" ", "_", "(", ")"]:
+                if name[i] in ["+", "(", ")"] or name[i - 1] in word_seperators and name[i] not in word_seperators:
                     abbrev += name[i]
             return abbrev
 
