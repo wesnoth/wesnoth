@@ -30,17 +30,17 @@ namespace gui {
 struct dialog_process_info
 {
 public:
-	dialog_process_info() : 
+	dialog_process_info() :
 		key(),
-		left_button(true), 
-		right_button(true), 
+		left_button(true),
+		right_button(true),
 		key_down(true),
-		first_time(true), 
+		first_time(true),
 		double_clicked(false),
 		new_left_button(false),
 		new_right_button(false),
 		new_key_down(false),
-		selection(-1), 
+		selection(-1),
 		clear_buttons_(false)
 	{}
 
@@ -132,7 +132,11 @@ public:
 		set_text("");
 	}
 
-	int get_index(int index) const;
+	// current menu selection is based on a possibly filtered view,
+	// and thus may differ from the original, unfiltered index
+	int get_index(int selection) const;
+	void delete_item(int selection);
+
 private:
 	std::vector<std::string> items_, filtered_items_;
 	std::vector<int> index_map_;

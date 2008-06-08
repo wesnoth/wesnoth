@@ -340,6 +340,9 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 			}
 		}
 
+		// Remove the item from filter_textbox memory
+		filter_.delete_item(menu_selection);
+
 		// Delete the file
 		delete_game(saves_[index].name);
 

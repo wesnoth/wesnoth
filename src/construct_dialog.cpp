@@ -87,10 +87,10 @@ dialog_textbox::~dialog_textbox()
 }
 
 dialog::dimension_measurements::dimension_measurements() :
-	x(-1), 
-	y(-1), 
+	x(-1),
+	y(-1),
 	interior(empty_rect),
-	message(empty_rect), 
+	message(empty_rect),
 	textbox(empty_rect),
 	menu_width(0),
 	panes(),
@@ -111,8 +111,8 @@ dialog::dimension_measurements::dimension_measurements() :
 }
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
-		const DIALOG_TYPE type, const style& dialog_style) : 
-	disp_(disp), 
+		const DIALOG_TYPE type, const style& dialog_style) :
+	disp_(disp),
 	image_(NULL),
 	title_(title),
 	style_(dialog_style),
@@ -850,21 +850,32 @@ void dialog_image::draw_contents()
 	video().blit_surface(location().x, location().y, surf_);
 }
 
-int filter_textbox::get_index(int index) const {
+int filter_textbox::get_index(int selection) const {
 	// don't translate special values
-	if(index < 0) {
-		return index;
+	if(selection < 0) {
+		return selection;
 	}
 	//we must add one to the index to ignore the header row, and
 	//then subtract one from the result to return the index not including
 	//the header row.
-	index++;
-	
-	if (size_t(index) >= index_map_.size()) {
+
+	size_t header = 1; // for now, just assume there's a header row
+
+	if (size_t(selection+header) >= index_map_.size()) {
 		return -1; // bad index, cancel
 	}
 
-	return index_map_[index]-1;
+	return index_map_[selection+header]-header;
+}
+
+void filter_textbox::delete_item(int selection) {
+	size_t header = 1; // for now, just assume there's a header row
+	filtered_items_.erase(filtered_items_.begin() + selection+header);
+	items_.erase(items_.begin() + index_map_[selection+header]);
+	index_map_.erase(index_map_.begin() + selection+header);
+
+	//for now, assume the dialog menu item is deleted using DELETE_ITEM
+	/* dialog_.set_menu_items(filtered_items_); */
 }
 
 void filter_textbox::handle_text_changed(const wide_string& text) {
@@ -880,7 +891,7 @@ void filter_textbox::handle_text_changed(const wide_string& text) {
 			index_map_.push_back(n);
 		}
 	}
-	
+
 	dialog_.set_menu_items(filtered_items_);
 }
 
