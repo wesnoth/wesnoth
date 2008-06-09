@@ -62,35 +62,45 @@
 
 namespace {
 
-game_display* screen = NULL;
-soundsource::manager* soundsources = NULL;
-gamemap* game_map = NULL;
-unit_map* units = NULL;
-std::vector<team>* teams = NULL;
-game_state* state_of_game = NULL;
-gamestatus* status_ptr = NULL;
-int floating_label = 0;
-Uint32 unit_mutations = 0;
+	game_display* screen = NULL;
+	soundsource::manager* soundsources = NULL;
+	gamemap* game_map = NULL;
+	unit_map* units = NULL;
+	std::vector<team>* teams = NULL;
+	game_state* state_of_game = NULL;
+	gamestatus* status_ptr = NULL;
+	int floating_label = 0;
+	Uint32 unit_mutations = 0;
 
-class event_handler;
-std::vector< event_handler > new_handlers;
-typedef std::pair< std::string, config* > wmi_command_change;
-std::vector< wmi_command_change > wmi_command_changes;
+	class queued_event;
+	class event_handler;
+	std::vector< event_handler > new_handlers;
+	typedef std::pair< std::string, config* > wmi_command_change;
+	std::vector< wmi_command_change > wmi_command_changes;
 
-const gui::msecs prevent_misclick_duration = 10;
-const gui::msecs average_frame_time = 30;
+	typedef void (*wml_handler_function)(
+			const queued_event& event_info,
+			const vconfig& cfg,
+			bool& skip_messages);
 
-class wml_event_dialog : public gui::message_dialog {
-public:
-	wml_event_dialog(game_display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
-		: message_dialog(disp, title, message, type)
-	{}
-	void action(gui::dialog_process_info &info) {
-		if(result() == gui::CLOSE_DIALOG && !info.key_down && info.key[SDLK_ESCAPE]) {
-			set_result(gui::ESCAPE_DIALOG);
-		}
-	}
-};
+	typedef std::map<std::string, wml_handler_function> call_map;
+
+	static call_map function_call_map;
+
+	const gui::msecs prevent_misclick_duration = 10;
+	const gui::msecs average_frame_time = 30;
+
+	class wml_event_dialog : public gui::message_dialog {
+		public:
+			wml_event_dialog(game_display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
+				: message_dialog(disp, title, message, type)
+			{}
+			void action(gui::dialog_process_info &info) {
+				if(result() == gui::CLOSE_DIALOG && !info.key_down && info.key[SDLK_ESCAPE]) {
+					set_result(gui::ESCAPE_DIALOG);
+				}
+			}
+	};
 
 } // end anonymous namespace (1)
 
@@ -455,52 +465,42 @@ namespace {
 
 std::multimap<std::string,event_handler> events_map;
 
-//! Handles all the different types of actions that can be triggered by an event.
-void event_handler::handle_event_command(const queued_event& event_info,
-		const std::string& cmd, const vconfig cfg, bool& mutated, bool& skip_messages)
+static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
-	log_scope2(engine, "handle_event_command");
-	LOG_NG << "handling command: '" << cmd << "'\n";
 
-	// Sub commands that need to be handled in a guaranteed ordering
-	if(cmd == "command") {
-		if(!handle_event(event_info, cfg)) {
-			mutated = false;
-		}
-	}
+	std::string side = cfg["side"];
+	assert(state_of_game != NULL);
+	const int side_num = lexical_cast_default<int>(side,1);
+	const size_t index = side_num-1;
 
-	// Allow undo sets the flag saying whether the event has mutated the game to false
-	else if(cmd == "allow_undo") {
-		mutated = false;
-	}
-	// Change shroud settings for portions of the map
-	else if(cmd == "remove_shroud" || cmd == "place_shroud") {
-		const bool remove = cmd == "remove_shroud";
-
-		std::string side = cfg["side"];
-		assert(state_of_game != NULL);
-		const int side_num = lexical_cast_default<int>(side,1);
-		const size_t index = side_num-1;
-
-		if(index < teams->size()) {
-			const std::vector<gamemap::location>& locs = multiple_locs(cfg);
-			for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
-				if(remove) {
-					(*teams)[index].clear_shroud(*j);
-				} else {
-					(*teams)[index].place_shroud(*j);
-				}
+	if(index < teams->size()) {
+		const std::vector<gamemap::location>& locs = multiple_locs(cfg);
+		for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+			if(remove) {
+				(*teams)[index].clear_shroud(*j);
+			} else {
+				(*teams)[index].place_shroud(*j);
 			}
 		}
-
-		screen->labels().recalculate_shroud();
-		screen->invalidate_all();
 	}
 
+	screen->labels().recalculate_shroud();
+	screen->invalidate_all();
+}
 
-	// Teleport a unit from one location to another
-	else if(cmd == "teleport") {
 
+static void wml_func_remove_shroud(const queued_event& event_info, const vconfig& cfg, bool&)
+{
+	toggle_shroud(true,cfg);
+}
+
+static void wml_func_place_shroud(const queued_event& event_info, const vconfig& cfg, bool&)
+{
+	toggle_shroud(false,cfg );
+}
+
+static void wml_func_teleport(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		unit_map::iterator u = units->find(event_info.loc1);
 
 		// Search for a valid unit filter, and if we have one, look for the matching unit
@@ -538,11 +538,11 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				}
 			}
 		}
-	}
+}
 
-	// Remove units from being turned to stone
-	else if(cmd == "unstone") {
-		const vconfig filter = cfg.child("filter");
+static void wml_func_unstone(const queued_event& event_info, const vconfig& cfg, bool&)
+{
+        const vconfig filter = cfg.child("filter");
 		// Store which side will need a shroud/fog update
 		std::vector<bool> clear_fog_side(teams->size(),false);
 
@@ -560,10 +560,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				clear_shroud(*screen,*game_map,*units,*teams,side);
 			}
 		}
-	}
+}
 
-	// Allow a side to recruit a new type of unit
-	else if(cmd == "allow_recruit") {
+static void wml_func_allow_recruit(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
@@ -584,10 +584,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				player->can_recruit.insert(*i);
 			}
 		}
-	}
+}
 
-	// Remove the ability to recruit a unit from a certain side
-	else if(cmd == "disallow_recruit") {
+static void wml_func_disallow_recruit(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
@@ -606,10 +606,11 @@ void event_handler::handle_event_command(const queued_event& event_info,
 				player->can_recruit.erase(*i);
 			}
 		}
-	}
+}
 
-	else if(cmd == "set_recruit") {
-		std::string side = cfg["side"];
+static void wml_func_set_recruit(const queued_event& event_info, const vconfig& cfg, bool&)
+{
+        std::string side = cfg["side"];
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
@@ -629,20 +630,23 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if(player) {
 			player->can_recruit = can_recruit;
 		}
-	}
+}
 
-	else if(cmd == "music") {
+static void wml_func_music(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		sound::play_music_config(cfg.get_parsed_config());
-	}
+}
 
-	else if(cmd == "sound") {
+static void wml_func_sound(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		std::string sound = cfg["name"];
 		const int repeats = lexical_cast_default<int>(cfg["repeat"], 0);
 		assert(state_of_game != NULL);
 		sound::play_sound(sound, sound::SOUND_FX, repeats);
-	}
+}
 
-	else if(cmd == "colour_adjust") {
+static void wml_func_colour_adjust(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		std::string red = cfg["red"];
 		std::string green = cfg["green"];
 		std::string blue = cfg["blue"];
@@ -653,16 +657,18 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		screen->adjust_colours(r,g,b);
 		screen->invalidate_all();
 		screen->draw(true,true);
-	}
+}
 
-	else if(cmd == "delay") {
+static void wml_func_delay(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		std::string delay_string = cfg["time"];
 		assert(state_of_game != NULL);
 		const int delay_time = atoi(delay_string.c_str());
 		screen->delay(delay_time);
-	}
+}
 
-	else if(cmd == "scroll") {
+static void wml_func_scroll(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		assert(state_of_game != NULL);
@@ -670,16 +676,18 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		const int yoff = atoi(y.c_str());
 		screen->scroll(xoff,yoff);
 		screen->draw(true,true);
-	}
+}
 
-	else if(cmd == "scroll_to") {
+static void wml_func_scroll_to(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		assert(state_of_game != NULL);
 		const gamemap::location loc = cfg_to_loc(cfg);
 		std::string check_fogged = cfg["check_fogged"];
 		screen->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
-	}
+}
 
-	else if(cmd == "scroll_to_unit") {
+static void wml_func_scroll_to_unit(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		unit_map::const_iterator u;
 		for(u = units->begin(); u != units->end(); ++u){
 			if(game_events::unit_matches_filter(u,cfg))
@@ -689,10 +697,10 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if(u != units->end()) {
 			screen->scroll_to_tile(u->first,game_display::SCROLL,utils::string_bool(check_fogged,false));
 		}
-	}
+}
 
-	// An award of gold to a particular side
-	else if(cmd == "gold") {
+static void wml_func_gold(const queued_event& event_info, const vconfig& cfg, bool&)
+{
 		std::string side = cfg["side"];
 		std::string amount = cfg["amount"];
 		assert(state_of_game != NULL);
@@ -702,6 +710,54 @@ void event_handler::handle_event_command(const queued_event& event_info,
 		if(team_index < teams->size()) {
 			(*teams)[team_index].spend_gold(-amount_num);
 		}
+}
+
+static void init_function_call_map()
+{
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("teleport", &wml_func_teleport));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("unstone", &wml_func_unstone));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("allow_recruit", &wml_func_allow_recruit));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("disallow_recruit", &wml_func_disallow_recruit));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("set_recruit", &wml_func_set_recruit));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("music", &wml_func_music));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("sound", &wml_func_sound));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("colour_adjust", &wml_func_colour_adjust));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("remove_shroud", &wml_func_remove_shroud));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("place_shroud", &wml_func_place_shroud));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("delay", &wml_func_delay));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("scroll", &wml_func_scroll));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("scroll_to", &wml_func_scroll_to));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("scroll_to_unit", &wml_func_scroll_to_unit));
+	function_call_map.insert(std::pair<std::string, wml_handler_function>("gold", &wml_func_gold));
+}
+
+//! Handles all the different types of actions that can be triggered by an event.
+void event_handler::handle_event_command(const queued_event& event_info,
+		const std::string& cmd, const vconfig cfg, bool& mutated, bool& skip_messages)
+{
+	log_scope2(engine, "handle_event_command");
+	LOG_NG << "handling command: '" << cmd << "'\n";
+
+    call_map::iterator func = function_call_map.find(cmd);
+    
+	if (func != function_call_map.end())
+	{
+        DBG_NG << "Found command handling function\n";  
+		(*(*func->second))(event_info, cfg, skip_messages);
+		return;
+	}
+
+	// Sub commands that need to be handled in a guaranteed ordering
+	if(cmd == "command") {
+		if(!handle_event(event_info, cfg)) {
+			mutated = false;
+		}
+	}
+
+
+	// Allow undo sets the flag saying whether the event has mutated the game to false
+	else if(cmd == "allow_undo") {
+		mutated = false;
 	}
 
 	// Modifications of some attributes of a side: gold, income, team name
@@ -3070,6 +3126,13 @@ bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 static config::child_list unit_wml_configs;
 static std::set<std::string> unit_wml_ids;
 
+
+static void clear_function_call_map()
+{
+	function_call_map.clear();
+}
+
+
 manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
 		 soundsource::manager& sndsources_,
                  unit_map& units_,
@@ -3077,6 +3140,7 @@ manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
                  game_state& state_of_game_, gamestatus& status) :
 	variable_manager(&state_of_game_)
 {
+	init_function_call_map();
 	const config::child_list& events_list = cfg.get_children("event");
 	for(config::child_list::const_iterator i = events_list.begin();
 	    i != events_list.end(); ++i) {
@@ -3163,6 +3227,7 @@ void write_events(config& cfg)
 }
 
 manager::~manager() {
+	clear_function_call_map();
 	events_queue.clear();
 	events_map.clear();
 	screen = NULL;
@@ -3293,5 +3358,6 @@ bool entity_location::requires_unit() const
 }
 
 } // end namespace game_events (2)
+
 
 
