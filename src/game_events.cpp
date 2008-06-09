@@ -2915,7 +2915,7 @@ namespace {
 			vconfig::child_list events = option_events[option_chosen];
 			for(vconfig::child_list::const_iterator itor = events.begin();
 					itor != events.end(); ++itor) {
-				if(!ihandler.handle_event(event_info, *itor)) {
+				if(!handler.handle_event(event_info, *itor)) {
 					handler.mutated() = false;
 				}
 			}
