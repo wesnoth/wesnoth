@@ -3000,6 +3000,9 @@ namespace {
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("redraw", &wml_func_redraw));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("animate_unit", &wml_func_animate_unit));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("label", &wml_func_label));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("heal_unit", &wml_func_heal_unit));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("command", &wml_func_command));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("allow_undo", &wml_func_allow_undo));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("if", &wml_func_if));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("while", &wml_func_while));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("switch", &wml_func_switch));
