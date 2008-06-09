@@ -164,11 +164,11 @@ def actualtype(a):
         atype = "range"
     elif a in ("lawful", "neutral", "chaotic"):
         atype = "alignment"
-    elif a.startswith("{") and a.endswith("}") or a.startswith("$"):
+    elif a.startswith("{") or a.endswith("}") or a.startswith("$"):
         atype = None	# Can't tell -- it's a macro expansion
     elif re.match(image_reference, a):
         atype = "image"
-    elif re.match(r"[A-Z][a-z]+\^[A-Z][a-z\\|/]+\Z", a):
+    elif re.match(r"(\*|[A-Z][a-z]+)\^[A-Z][a-z\\|/]+\Z", a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
@@ -500,6 +500,9 @@ class CrossRef:
                                 print "%s: more than one definition of %s is visible here." % (Reference(ns, fn, n), name)
                         if candidates == 0:
                             self.unresolved.append((name,Reference(ns,fn,n+1,args=args)))
+                    # Don't be fooled by HTML image references in help strings.
+                    if "<img>" in line:
+                        continue
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
