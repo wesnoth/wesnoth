@@ -368,8 +368,8 @@ namespace {
 			event_handler(const vconfig& cfg) :
 				names_(utils::split(cfg["name"])),
 				first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
-				disabled_(false),skip_messages_(false),
-				mutated_(true),rebuild_screen_(false),
+				disabled_(false),mutated_(true),
+				skip_messages_(false),rebuild_screen_(false),
 				cfg_(cfg)
 		{}
 
