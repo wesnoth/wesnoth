@@ -1810,7 +1810,7 @@ namespace {
 			}
 		}
 	}
-	static void wml_func_object(event_handler& current_handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_object(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
 	{
 		const vconfig filter = cfg.child("filter");
 
@@ -1888,7 +1888,7 @@ namespace {
 		for(vconfig::child_list::const_iterator cmd = commands.begin();
 				cmd != commands.end(); ++cmd) {
 			if(!handler.handle_event(event_info, *cmd)) {
-				current_handler.mutated() = false;
+				handler.mutated() = false;
 			}
 		}
 	}
@@ -3074,7 +3074,7 @@ namespace {
 
 } // end anonymous namespace (4)
 
-	static bool process_event(event_handler& current_handler, const queued_event& ev)
+	static bool process_event(event_handler& handler, const queued_event& ev)
 	{
 		if(handler.disabled())
 			return false;
