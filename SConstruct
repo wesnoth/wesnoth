@@ -152,7 +152,7 @@ def Warning(message):
 
 sys.path.append("./scons")
 from metasconf import init_metasconf
-conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost"]))
+conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost"]), config_h = "config.h")
 
 if env["prereqs"]:
     if env["gettextdir"]:
@@ -179,8 +179,12 @@ if env["prereqs"]:
         env['fribidi'] = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Warning("Can't find libfribidi, disabling freebidi support.")
 
     env['sendfile'] = False
-    if sys.platform == "linux2":
-        env['sendfile'] = conf.CheckCHeader('sys/sendfile.h', '<>') or Warning("Can't find sendfile, disabling sendfile support.")
+    if env["PLATFORM"] == "posix":
+        conf.CheckCHeader("poll.h", "<>")
+        conf.CheckCHeader("sys/poll.h", "<>")
+        conf.CheckCHeader("sys/select.h", "<>")
+        if sys.platform == "linux2":
+            env['sendfile'] = conf.CheckCHeader('sys/sendfile.h', '<>') or Warning("Can't find sendfile, disabling sendfile support.")
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
@@ -191,7 +195,7 @@ else:
     have_X = True
     have_server_prereqs = True
 
-env.Append(CPPPATH = ["#/src"])
+env.Append(CPPPATH = ["#/src", "#/"])
 
 boost_test_dyn_link = boost_auto_test = False
 if 'test' in COMMAND_LINE_TARGETS:
@@ -215,7 +219,7 @@ env = conf.Finish()
 # Link only on demand, so we don't need separate link lists for each binary
 env.Append(LINKFLAGS = "-Wl,--as-needed")
 
-env.Replace(CPPDEFINES = [])
+env.Replace(CPPDEFINES = ["HAVE_CONFIG_H"])
 
 if env['static']:
     env.AppendUnique(LINKFLAGS = "-all-static")

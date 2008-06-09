@@ -18,12 +18,12 @@
 #ifdef HAVE_CONFIG_H
 # include "config.h"
 #else
-# define VERSION "1.5.0+svn"
-# define PACKAGE "wesnoth"
 # ifndef LOCALEDIR
 #  define LOCALEDIR "translations"
 # endif
 #endif
+#define VERSION "1.5.0+svn"
+#define PACKAGE "wesnoth"
 
 /**
  * Some older savegames of Wesnoth cannot be loaded anymore,
