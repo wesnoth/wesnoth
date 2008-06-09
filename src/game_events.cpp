@@ -368,7 +368,8 @@ namespace {
 			event_handler(const vconfig& cfg) :
 				names_(utils::split(cfg["name"])),
 				first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
-				disabled_(false),mutated_(true),rebuild_screen_(false),
+				disabled_(false),skip_messages_(false),
+				mutated_(true),rebuild_screen_(false),
 				cfg_(cfg)
 		{}
 
@@ -435,14 +436,16 @@ namespace {
 
 			bool& rebuild_screen() {return rebuild_screen_;}
 			bool& mutated() {return mutated_;}
+			bool& skip_messages() {return skip_messages_;}
 
 		private:
-			void handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& skip_messages);
+			void handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg);
 
 			std::vector< std::string > names_;
 			bool first_time_only_;
 			bool disabled_;
 			bool mutated_;
+			bool skip_messages_;
 			bool rebuild_screen_;
 			vconfig cfg_;
 	};
@@ -2582,11 +2585,363 @@ namespace {
 		}
 	}
 
+		// Sub commands that need to be handled in a guaranteed ordering
+	static void wml_func_command(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	{
+		if(!handler.handle_event(event_info, cfg)) {
+			handler.mutated() = false;
+		}
+	}
+
+
+		// Allow undo sets the flag saying whether the event has mutated the game to false
+	static void wml_func_allow_undo(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	{
+		handler.mutated() = false;
+	}
+		// Conditional statements
+	static void if_while_handler(bool is_if, event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	{
+		const size_t max_iterations = (is_if ? 1 : game_config::max_loop);
+		const std::string pass = (is_if ? "then" : "do");
+		const std::string fail = (is_if ? "else" : "");
+		for(size_t i = 0; i != max_iterations; ++i) {
+			const std::string type = game_events::conditional_passed(
+					units,cfg) ? pass : fail;
+
+			if(type == "") {
+				break;
+			}
+
+			// If the if statement passed, then execute all 'then' statements,
+			// otherwise execute 'else' statements
+			const vconfig::child_list commands = cfg.get_children(type);
+			for(vconfig::child_list::const_iterator cmd = commands.begin();
+					cmd != commands.end(); ++cmd) {
+				if(!handler.handle_event(event_info, *cmd)) {
+					handler.mutated() = false;
+				}
+			}
+		}
+	}
+		
+	static void wml_func_if(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	{
+		log_scope("if");
+		if_while_handler(true, handler, event_info, cfg);
+	}
+	static void wml_func_while(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	{
+		log_scope("while");
+		if_while_handler(false, handler, event_info, cfg);
+	}
+
+	static void wml_func_switch(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	{
+		assert(state_of_game != NULL);
+
+		const std::string var_name = cfg["variable"];
+		const std::string& var = state_of_game->get_variable_const(var_name);
+
+		bool not_found = true;
+		const vconfig::child_list& cases = cfg.get_children("case");
+		// execute all cases where the value matches
+		for(vconfig::child_list::const_iterator c = cases.begin(); c != cases.end(); ++c) {
+			const std::string value = (*c)["value"];
+			if (var == value) {
+				not_found = false;
+				if(!handler.handle_event(event_info, *c)) {
+					handler.mutated() = false;
+				}
+			}
+		}
+		if (not_found) {
+			// otherwise execute 'else' statements
+			const vconfig::child_list elses = cfg.get_children("else");
+			for(vconfig::child_list::const_iterator e = elses.begin(); e != elses.end(); ++e) {
+				if(!handler.handle_event(event_info, *e)) {
+					handler.mutated() = false;
+				}
+			}
+		}
+	}
+
+
+		// Display a message dialog
+	static void wml_func_message(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	{
+		// Check if there is any input to be made, if not the message may be skipped
+		const vconfig::child_list menu_items = cfg.get_children("option");
+
+		const vconfig::child_list text_input_elements = cfg.get_children("text_input");
+		const bool has_text_input = (text_input_elements.size() == 1);
+
+		bool has_input= (has_text_input || !menu_items.empty() );
+
+		if (handler.skip_messages() && !has_input ) {
+			return;
+		}
+
+		// Check if this message is for this side
+		std::string side_for_raw = cfg["side_for"];
+		bool side_for_show = true;
+		if (!side_for_raw.empty())
+		{
+
+			assert(state_of_game != 0);
+			side_for_show = false;
+
+			std::vector<std::string> side_for =
+				utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+			std::vector<std::string>::iterator itSide;
+			size_t side;
+
+			// Check if any of side numbers are human controlled
+			for (itSide = side_for.begin(); itSide != side_for.end(); ++itSide)
+			{
+				side = lexical_cast_default<size_t>(*itSide);
+				// Make sanity check that side number is good
+				// then check if this side is human controlled.
+				if (side > 0
+						&& side <= teams->size()
+						&& (*teams)[side-1].is_human())
+				{
+					side_for_show = true;
+					break;
+				}
+			}
+			if (!side_for_show)
+			{
+				DBG_NG << "player isn't controlling side which should get message\n";
+			}
+		}
+		unit_map::iterator speaker = units->end();
+
+		std::string speaker_str = cfg["speaker"];
+		assert(state_of_game != NULL);
+		if(speaker_str == "unit") {
+			speaker = units->find(event_info.loc1);
+		} else if(speaker_str == "second_unit") {
+			speaker = units->find(event_info.loc2);
+		} else if(speaker_str != "narrator") {
+			for(speaker = units->begin(); speaker != units->end(); ++speaker){
+				if(game_events::unit_matches_filter(speaker,cfg))
+					break;
+			}
+		}
+
+		if(speaker == units->end() && speaker_str != "narrator") {
+			// No matching unit found, so the dialog can't come up.
+			// Continue onto the next message.
+			WRN_NG << "cannot show message\n";
+			return;
+		}
+
+		if(speaker != units->end()) {
+			LOG_NG << "set speaker to '" << speaker->second.name() << "'\n";
+		} else {
+			LOG_NG << "no speaker\n";
+		}
+
+		std::string sfx = cfg["sound"];
+		if(sfx != "") {
+			sound::play_sound(sfx);
+		}
+
+		std::string image = cfg["image"];
+		std::string caption = cfg["caption"];
+
+		if(speaker != units->end()) {
+			LOG_DP << "scrolling to speaker..\n";
+			screen->highlight_hex(speaker->first);
+			const int offset_from_center = maximum<int>(0, speaker->first.y - 1);
+			screen->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
+			screen->highlight_hex(speaker->first);
+
+			if(image.empty()) {
+				image = speaker->second.profile();
+				if(image == speaker->second.absolute_image()) {
+					std::stringstream ss;
+
+#ifdef LOW_MEM
+					ss	<< image;
+#else
+					ss	<< image << speaker->second.image_mods();
+#endif
+
+					image = ss.str();
+				}
+			}
+
+			if(caption.empty()) {
+				caption = speaker->second.name();
+				if(caption.empty()) {
+					caption = speaker->second.type_name();
+				}
+			}
+			LOG_DP << "done scrolling to speaker...\n";
+		} else {
+			screen->highlight_hex(gamemap::location::null_location);
+		}
+		screen->draw(false);
+
+		std::vector<std::string> options;
+		std::vector<vconfig::child_list> option_events;
+
+		for(vconfig::child_list::const_iterator mi = menu_items.begin();
+				mi != menu_items.end(); ++mi) {
+			std::string msg_str = (*mi)["message"];
+			if(!(*mi).has_child("show_if")
+					|| game_events::conditional_passed(units,(*mi).child("show_if"))) {
+				options.push_back(msg_str);
+				option_events.push_back((*mi).get_children("command"));
+			}
+		}
+
+		if(text_input_elements.size()>1) {
+			lg::wml_error << "too many text_input tags, only one accepted\n";
+		}
+
+		const vconfig text_input_element = has_text_input ?
+			text_input_elements.front() : vconfig();
+
+		surface surface(NULL);
+		if(image.empty() == false) {
+			surface.assign(image::get_image(image));
+		}
+
+		int option_chosen = -1;
+		std::string text_input_result;
+
+		DBG_DP << "showing dialog...\n";
+
+		// If we're not replaying, or if we are replaying
+		// and there is no input to be made, show the dialog.
+		if(get_replay_source().at_end() || (options.empty() && !has_text_input) ) {
+
+			if (side_for_show && !get_replay_source().is_skipping())
+			{
+				const t_string msg = cfg["message"];
+				const std::string duration_str = cfg["duration"];
+				const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
+				const SDL_Rect& map_area = screen->map_outside_area();
+
+				try {
+					wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
+							msg, ((options.empty()&& !has_text_input)? gui::MESSAGE : gui::OK_ONLY));
+					if(!surface.null()) {
+						to_show.set_image(surface, caption);
+					}
+					if(!options.empty()) {
+						to_show.set_menu(options);
+					}
+					if(has_text_input) {
+						std::string text_input_label=text_input_element["label"];
+						std::string text_input_content=text_input_element["text"];
+						std::string max_size_str=text_input_element["max_length"];
+						int input_max_size=lexical_cast_default<int>(max_size_str, 256);
+						if(input_max_size>1024||input_max_size<1){
+							lg::wml_error << "invalid maximum size for input "<<input_max_size<<"\n";
+							input_max_size=256;
+						}
+						to_show.set_textbox(text_input_label, text_input_content, input_max_size);
+					}
+					gui::dialog::dimension_measurements dim = to_show.layout();
+					to_show.get_menu().set_width( dim.menu_width );
+					to_show.get_menu().set_max_width( dim.menu_width );
+					to_show.get_menu().wrap_words();
+					static const int dialog_top_offset = 26;
+					to_show.layout(-1, map_area.y + dialog_top_offset);
+					option_chosen = to_show.show(lifetime);
+					if(has_text_input) {
+						text_input_result=to_show.textbox_text();
+					}
+					LOG_DP << "showed dialog...\n";
+
+					if (option_chosen == gui::ESCAPE_DIALOG) {
+						handler.skip_messages() = true;
+					}
+
+					if(!options.empty()) {
+						recorder.choose_option(option_chosen);
+					}
+					if(has_text_input) {
+						recorder.text_input(text_input_result);
+					}
+				} catch(utils::invalid_utf8_exception&) {
+					// we already had a warning so do nothing.
+				}
+			}
+
+			// Otherwise if an input has to be made, get it from the replay data
+		} else {
+			//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
+			const t_string& side_str = state_of_game->get_variable("side_number");
+			const int side = lexical_cast_default<int>(side_str.base_str(), -1);
+
+
+
+			if(!options.empty()) {
+				do_replay_handle(*screen,*game_map,*units,*teams,
+						side ,*status_ptr,*state_of_game,std::string("choose"));
+				const config* action = get_replay_source().get_next_action();
+				if(action == NULL || action->get_children("choose").empty()) {
+					replay::throw_error("choice expected but none found\n");
+				}
+				const std::string& val = (*(action->get_children("choose").front()))["value"];
+				option_chosen = atol(val.c_str());
+			}
+			if(has_text_input) {
+				do_replay_handle(*screen,*game_map,*units,*teams,
+						side ,*status_ptr,*state_of_game,std::string("input"));
+				const config* action = get_replay_source().get_next_action();
+				if(action == NULL || action->get_children("input").empty()) {
+					replay::throw_error("input expected but none found\n");
+				}
+				text_input_result = (*(action->get_children("input").front()))["text"];
+			}
+		}
+
+		// Implement the consequences of the choice
+		if(options.empty() == false) {
+			if(size_t(option_chosen) >= menu_items.size()) {
+				std::stringstream errbuf;
+				errbuf << "invalid choice (" << option_chosen
+					<< ") was specified, choice 0 to " << (menu_items.size() - 1)
+					<< " was expected.\n";
+				replay::throw_error(errbuf.str());
+			}
+
+			vconfig::child_list events = option_events[option_chosen];
+			for(vconfig::child_list::const_iterator itor = events.begin();
+					itor != events.end(); ++itor) {
+				if(!ihandler.handle_event(event_info, *itor)) {
+					handler.mutated() = false;
+				}
+			}
+		}
+		if(has_text_input) {
+			std::string variable_name=text_input_element["variable"];
+			if(variable_name.empty())
+				variable_name="input";
+			state_of_game->set_variable(variable_name, text_input_result);
+		}
+	}
+
+		// Adding of new events
+	static void wml_func_event(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	{
+		const config &parsed = cfg.get_parsed_config();
+		new_handlers.push_back(event_handler(vconfig(&parsed, &parsed)));
+	}
 
 
 
 
-
+	/**
+	 * Adds all default wml function handlers to map
+	 * for event handling to find
+	 **/
 	static void init_function_call_map()
 	{
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("teleport", &wml_func_teleport));
@@ -2635,6 +2990,7 @@ namespace {
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("set_menu_item", &wml_func_set_menu_item));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_unit", &wml_func_store_unit));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("unstore_unit", &wml_func_role));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_map_dimesions", &wml_func_store_map_dimensions));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_starting_location", &wml_func_store_starting_location));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_villages", &wml_func_store_villages));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_locations", &wml_func_store_locations));
@@ -2644,359 +3000,31 @@ namespace {
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("redraw", &wml_func_redraw));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("animate_unit", &wml_func_animate_unit));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("label", &wml_func_label));
-		function_call_map.insert(std::pair<std::string, wml_handler_function>("heal_unit", &wml_func_heal_unit));
-		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_map_dimesions", &wml_func_store_map_dimensions));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("if", &wml_func_if));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("while", &wml_func_while));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("switch", &wml_func_switch));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("message", &wml_func_message));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("event", &wml_func_event));
 	}
 
 
 	//! Handles all the different types of actions that can be triggered by an event.
 	void event_handler::handle_event_command(const queued_event& event_info,
-			const std::string& cmd, const vconfig cfg, bool& skip_messages)
+			const std::string& cmd, const vconfig cfg)
 	{
 		log_scope2(engine, "handle_event_command");
 		LOG_NG << "handling command: '" << cmd << "'\n";
 
 		call_map::iterator func = function_call_map.find(cmd);
 
-		if (func != function_call_map.end())
+		if (func == function_call_map.end())
 		{
-			DBG_NG << "Found command handling function\n";  
-			(*(*func->second))(*this,event_info, cfg);
+			ERR_NG << "Didn't found handler function for wml tag: "<< cmd <<"\n";  
+			return;
 		}
+		
+		(*(*func->second))(*this,event_info, cfg);
 
-		// Sub commands that need to be handled in a guaranteed ordering
-		else if(cmd == "command") {
-			if(!handle_event(event_info, cfg)) {
-				mutated_ = false;
-			}
-		}
-
-
-		// Allow undo sets the flag saying whether the event has mutated the game to false
-		else if(cmd == "allow_undo") {
-			mutated_ = false;
-		}
-		// Conditional statements
-		else if(cmd == "if" || cmd == "while") {
-			log_scope(cmd);
-			const size_t max_iterations = (cmd == "if" ? 1 : game_config::max_loop);
-			const std::string pass = (cmd == "if" ? "then" : "do");
-			const std::string fail = (cmd == "if" ? "else" : "");
-			for(size_t i = 0; i != max_iterations; ++i) {
-				const std::string type = game_events::conditional_passed(
-						units,cfg) ? pass : fail;
-
-				if(type == "") {
-					break;
-				}
-
-				// If the if statement passed, then execute all 'then' statements,
-				// otherwise execute 'else' statements
-				const vconfig::child_list commands = cfg.get_children(type);
-				for(vconfig::child_list::const_iterator cmd = commands.begin();
-						cmd != commands.end(); ++cmd) {
-					if(!handle_event(event_info, *cmd)) {
-						mutated_ = false;
-					}
-				}
-			}
-		}
-
-		else if(cmd == "switch") {
-			assert(state_of_game != NULL);
-
-			const std::string var_name = cfg["variable"];
-			const std::string& var = state_of_game->get_variable_const(var_name);
-
-			bool not_found = true;
-			const vconfig::child_list& cases = cfg.get_children("case");
-			// execute all cases where the value matches
-			for(vconfig::child_list::const_iterator c = cases.begin(); c != cases.end(); ++c) {
-				const std::string value = (*c)["value"];
-				if (var == value) {
-					not_found = false;
-					if(!handle_event(event_info, *c)) {
-						mutated_ = false;
-					}
-				}
-			}
-			if (not_found) {
-				// otherwise execute 'else' statements
-				const vconfig::child_list elses = cfg.get_children("else");
-				for(vconfig::child_list::const_iterator e = elses.begin(); e != elses.end(); ++e) {
-					if(!handle_event(event_info, *e)) {
-						mutated_ = false;
-					}
-				}
-			}
-		}
-
-
-		// Display a message dialog
-		else if(cmd == "message") {
-			// Check if there is any input to be made, if not the message may be skipped
-			const vconfig::child_list menu_items = cfg.get_children("option");
-
-			const vconfig::child_list text_input_elements = cfg.get_children("text_input");
-			const bool has_text_input = (text_input_elements.size() == 1);
-
-			bool has_input= (has_text_input || !menu_items.empty() );
-
-			if (skip_messages && !has_input ) {
-				return;
-			}
-
-			// Check if this message is for this side
-			std::string side_for_raw = cfg["side_for"];
-			bool side_for_show = true;
-			if (!side_for_raw.empty())
-			{
-
-				assert(state_of_game != 0);
-				side_for_show = false;
-
-				std::vector<std::string> side_for =
-					utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-				std::vector<std::string>::iterator itSide;
-				size_t side;
-
-				// Check if any of side numbers are human controlled
-				for (itSide = side_for.begin(); itSide != side_for.end(); ++itSide)
-				{
-					side = lexical_cast_default<size_t>(*itSide);
-					// Make sanity check that side number is good
-					// then check if this side is human controlled.
-					if (side > 0
-							&& side <= teams->size()
-							&& (*teams)[side-1].is_human())
-					{
-						side_for_show = true;
-						break;
-					}
-				}
-				if (!side_for_show)
-				{
-					DBG_NG << "player isn't controlling side which should get message\n";
-				}
-			}
-			unit_map::iterator speaker = units->end();
-
-			std::string speaker_str = cfg["speaker"];
-			assert(state_of_game != NULL);
-			if(speaker_str == "unit") {
-				speaker = units->find(event_info.loc1);
-			} else if(speaker_str == "second_unit") {
-				speaker = units->find(event_info.loc2);
-			} else if(speaker_str != "narrator") {
-				for(speaker = units->begin(); speaker != units->end(); ++speaker){
-					if(game_events::unit_matches_filter(speaker,cfg))
-						break;
-				}
-			}
-
-			if(speaker == units->end() && speaker_str != "narrator") {
-				// No matching unit found, so the dialog can't come up.
-				// Continue onto the next message.
-				WRN_NG << "cannot show message\n";
-				return;
-			}
-
-			if(speaker != units->end()) {
-				LOG_NG << "set speaker to '" << speaker->second.name() << "'\n";
-			} else {
-				LOG_NG << "no speaker\n";
-			}
-
-			std::string sfx = cfg["sound"];
-			if(sfx != "") {
-				sound::play_sound(sfx);
-			}
-
-			std::string image = cfg["image"];
-			std::string caption = cfg["caption"];
-
-			if(speaker != units->end()) {
-				LOG_DP << "scrolling to speaker..\n";
-				screen->highlight_hex(speaker->first);
-				const int offset_from_center = maximum<int>(0, speaker->first.y - 1);
-				screen->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
-				screen->highlight_hex(speaker->first);
-
-				if(image.empty()) {
-					image = speaker->second.profile();
-					if(image == speaker->second.absolute_image()) {
-						std::stringstream ss;
-
-#ifdef LOW_MEM
-						ss	<< image;
-#else
-						ss	<< image << speaker->second.image_mods();
-#endif
-
-						image = ss.str();
-					}
-				}
-
-				if(caption.empty()) {
-					caption = speaker->second.name();
-					if(caption.empty()) {
-						caption = speaker->second.type_name();
-					}
-				}
-				LOG_DP << "done scrolling to speaker...\n";
-			} else {
-				screen->highlight_hex(gamemap::location::null_location);
-			}
-			screen->draw(false);
-
-			std::vector<std::string> options;
-			std::vector<vconfig::child_list> option_events;
-
-			for(vconfig::child_list::const_iterator mi = menu_items.begin();
-					mi != menu_items.end(); ++mi) {
-				std::string msg_str = (*mi)["message"];
-				if(!(*mi).has_child("show_if")
-						|| game_events::conditional_passed(units,(*mi).child("show_if"))) {
-					options.push_back(msg_str);
-					option_events.push_back((*mi).get_children("command"));
-				}
-			}
-
-			if(text_input_elements.size()>1) {
-				lg::wml_error << "too many text_input tags, only one accepted\n";
-			}
-
-			const vconfig text_input_element = has_text_input ?
-				text_input_elements.front() : vconfig();
-
-			surface surface(NULL);
-			if(image.empty() == false) {
-				surface.assign(image::get_image(image));
-			}
-
-			int option_chosen = -1;
-			std::string text_input_result;
-
-			DBG_DP << "showing dialog...\n";
-
-			// If we're not replaying, or if we are replaying
-			// and there is no input to be made, show the dialog.
-			if(get_replay_source().at_end() || (options.empty() && !has_text_input) ) {
-
-				if (side_for_show && !get_replay_source().is_skipping())
-				{
-					const t_string msg = cfg["message"];
-					const std::string duration_str = cfg["duration"];
-					const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-					const SDL_Rect& map_area = screen->map_outside_area();
-
-					try {
-						wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
-								msg, ((options.empty()&& !has_text_input)? gui::MESSAGE : gui::OK_ONLY));
-						if(!surface.null()) {
-							to_show.set_image(surface, caption);
-						}
-						if(!options.empty()) {
-							to_show.set_menu(options);
-						}
-						if(has_text_input) {
-							std::string text_input_label=text_input_element["label"];
-							std::string text_input_content=text_input_element["text"];
-							std::string max_size_str=text_input_element["max_length"];
-							int input_max_size=lexical_cast_default<int>(max_size_str, 256);
-							if(input_max_size>1024||input_max_size<1){
-								lg::wml_error << "invalid maximum size for input "<<input_max_size<<"\n";
-								input_max_size=256;
-							}
-							to_show.set_textbox(text_input_label, text_input_content, input_max_size);
-						}
-						gui::dialog::dimension_measurements dim = to_show.layout();
-						to_show.get_menu().set_width( dim.menu_width );
-						to_show.get_menu().set_max_width( dim.menu_width );
-						to_show.get_menu().wrap_words();
-						static const int dialog_top_offset = 26;
-						to_show.layout(-1, map_area.y + dialog_top_offset);
-						option_chosen = to_show.show(lifetime);
-						if(has_text_input) {
-							text_input_result=to_show.textbox_text();
-						}
-						LOG_DP << "showed dialog...\n";
-
-						if (option_chosen == gui::ESCAPE_DIALOG) {
-							skip_messages = true;
-						}
-
-						if(!options.empty()) {
-							recorder.choose_option(option_chosen);
-						}
-						if(has_text_input) {
-							recorder.text_input(text_input_result);
-						}
-					} catch(utils::invalid_utf8_exception&) {
-						// we already had a warning so do nothing.
-					}
-				}
-
-				// Otherwise if an input has to be made, get it from the replay data
-			} else {
-				//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
-				const t_string& side_str = state_of_game->get_variable("side_number");
-				const int side = lexical_cast_default<int>(side_str.base_str(), -1);
-
-
-
-				if(!options.empty()) {
-					do_replay_handle(*screen,*game_map,*units,*teams,
-							side ,*status_ptr,*state_of_game,std::string("choose"));
-					const config* action = get_replay_source().get_next_action();
-					if(action == NULL || action->get_children("choose").empty()) {
-						replay::throw_error("choice expected but none found\n");
-					}
-					const std::string& val = (*(action->get_children("choose").front()))["value"];
-					option_chosen = atol(val.c_str());
-				}
-				if(has_text_input) {
-					do_replay_handle(*screen,*game_map,*units,*teams,
-							side ,*status_ptr,*state_of_game,std::string("input"));
-					const config* action = get_replay_source().get_next_action();
-					if(action == NULL || action->get_children("input").empty()) {
-						replay::throw_error("input expected but none found\n");
-					}
-					text_input_result = (*(action->get_children("input").front()))["text"];
-				}
-			}
-
-			// Implement the consequences of the choice
-			if(options.empty() == false) {
-				if(size_t(option_chosen) >= menu_items.size()) {
-					std::stringstream errbuf;
-					errbuf << "invalid choice (" << option_chosen
-						<< ") was specified, choice 0 to " << (menu_items.size() - 1)
-						<< " was expected.\n";
-					replay::throw_error(errbuf.str());
-				}
-
-				vconfig::child_list events = option_events[option_chosen];
-				for(vconfig::child_list::const_iterator itor = events.begin();
-						itor != events.end(); ++itor) {
-					if(!handle_event(event_info, *itor)) {
-						mutated_ = false;
-					}
-				}
-			}
-			if(has_text_input) {
-				std::string variable_name=text_input_element["variable"];
-				if(variable_name.empty())
-					variable_name="input";
-				state_of_game->set_variable(variable_name, text_input_result);
-			}
-		}
-
-		// Adding of new events
-		else if(cmd == "event") {
-			const config &parsed = cfg.get_parsed_config();
-			new_handlers.push_back(event_handler(vconfig(&parsed, &parsed)));
-		}
 		DBG_NG << "done handling command...\n";
 	}
 
@@ -3053,7 +3081,6 @@ namespace {
 		{
 			disable();
 		}
-		bool skip_messages = false;
 
 		vconfig cfg = conf;
 		if(cfg.null()) {
@@ -3062,8 +3089,7 @@ namespace {
 		for(vconfig::all_children_iterator i = cfg.ordered_begin();
 				i != cfg.ordered_end(); ++i) {
 
-			//mutated and skip_messages will be modified
-			handle_event_command(event_info, i.get_key(), i.get_child(), skip_messages);
+			handle_event_command(event_info, i.get_key(), i.get_child());
 		}
 
 		// We do this once the event has completed any music alterations
