@@ -1518,7 +1518,7 @@ bool game_controller::addon_dependencies_met(const std::vector<std::string>& dep
 	const std::vector<std::string>& installed = installed_addons();
 	std::vector<std::string>::const_iterator i;
 	std::string missing = "";
-	size_t count_missing;
+	size_t count_missing = 0;
 
 	for (i = deplist.begin(); i != deplist.end(); i++) {
 		if (std::find(installed.begin(), installed.end(), *i) == installed.end()) {
