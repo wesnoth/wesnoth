@@ -271,7 +271,7 @@ std::string get_intl_dir()
 {
 #ifdef _WIN32
 	return get_cwd() + "/translations";
-#endif
+#else
 
 #ifdef USE_INTERNAL_DATA
 	return get_cwd() + "/" LOCALEDIR;
@@ -284,6 +284,7 @@ std::string get_intl_dir()
 #endif
 
 	return res;
+#endif
 }
 
 std::string get_screenshot_dir()
