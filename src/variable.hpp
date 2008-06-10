@@ -85,6 +85,10 @@ public:
 		unsigned index_offset_;
 	};
 
+	struct recursion_error : public config::error {
+		recursion_error(const std::string& msg) : error(msg) {}
+	};
+
 	/** In-order iteration over all children. */
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
@@ -92,7 +96,6 @@ public:
 private:
 	const config* cfg_;
 	const config* cache_key_;
-	mutable std::set<std::string> recursion_;
 };
 
 namespace variable

@@ -46,7 +46,7 @@ unit_map &unit_map::operator =(const unit_map &that)
 	for (umap::const_iterator i = that.map_.begin(); i != that.map_.end(); i++) {
 		if (i->second.first) {
 			add(i->second.second);
-		} 
+		}
 	}
 	return *this;
 }
@@ -69,27 +69,27 @@ std::pair<gamemap::location,unit>& unit_map::unit_iterator::operator*() const
 }
 
 unit_map::unit_iterator unit_map::unit_iterator::operator++() {
-	
+
 	assert(i_ != map_->map_.end());
-	
+
 	++i_;
-	while (i_ != map_->map_.end() && !valid()) { 
-		++i_; 
+	while (i_ != map_->map_.end() && !valid()) {
+		++i_;
 	}
-	
+
 	return *this;
 }
-	
+
 unit_map::unit_iterator unit_map::unit_iterator::operator++(int){
-	
+
 	assert(i_ != map_->map_.end());
-	
+
 	umap::iterator iter(i_);
 	++i_;
-	while (i_ != map_->map_.end() && !valid()) { 
-		++i_; 
+	while (i_ != map_->map_.end() && !valid()) {
+		++i_;
 	}
-	
+
 	return unit_iterator(iter, map_);
 }
 
@@ -107,46 +107,46 @@ const std::pair<gamemap::location,unit>& unit_map::const_unit_iterator::operator
 }
 
 unit_map::const_unit_iterator unit_map::const_unit_iterator::operator++() {
-	
+
 	assert(i_ != map_->map_.end());
-	
+
 	++i_;
-	while (i_ != map_->map_.end() && !valid()) { 
-		++i_; 
+	while (i_ != map_->map_.end() && !valid()) {
+		++i_;
 	}
-	
+
 	return *this;
 }
 
 unit_map::const_unit_iterator unit_map::const_unit_iterator::operator--() {
-	
+
 	umap::const_iterator begin = map_->begin().i_;
-	
+
 	assert(i_ != begin);
-	
-	--i_;	
-	while (i_ != begin && !valid()) { 
-		--i_; 
+
+	--i_;
+	while (i_ != begin && !valid()) {
+		--i_;
 	}
-	
+
 	return *this;
 }
-	
+
 unit_map::const_unit_iterator unit_map::const_unit_iterator::operator++(int){
-	
+
 	assert(i_ != map_->map_.end());
-	
+
 	umap::const_iterator iter(i_);
 	++i_;
-	while (i_ != map_->map_.end() && !valid()) { 
-		++i_; 
+	while (i_ != map_->map_.end() && !valid()) {
+		++i_;
 	}
-	
+
 	return const_unit_iterator(iter, map_);
 }
 
-unit_map::unit_xy_iterator::unit_xy_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) { 
-	if (i.valid()) loc_ = i->first; 
+unit_map::unit_xy_iterator::unit_xy_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+	if (i.valid()) loc_ = i->first;
 }
 
 
@@ -163,49 +163,49 @@ std::pair<gamemap::location,unit>& unit_map::unit_xy_iterator::operator*() const
 }
 
 unit_map::unit_xy_iterator unit_map::unit_xy_iterator::operator++() {
-	
+
 	assert(i_ != map_->map_.end());
-	
-	++i_;	
-	while (i_ != map_->map_.end() && !valid()) { 
-		++i_; 
+
+	++i_;
+	while (i_ != map_->map_.end() && !valid()) {
+		++i_;
 	}
-	
+
 	if (i_ != map_->map_.end()) {
 		loc_ = i_->second.second->first;
 	}
-	
+
 	return *this;
 }
-	
+
 unit_map::unit_xy_iterator unit_map::unit_xy_iterator::operator++(int){
-	
+
 	assert(i_ != map_->map_.end());
-	
+
 	umap::iterator iter(i_);
 	gamemap::location pre_loc = loc_;
 	++i_;
-	while (i_ != map_->map_.end() && !valid()) { 
-		++i_; 
+	while (i_ != map_->map_.end() && !valid()) {
+		++i_;
 	}
-	
+
 	if (i_ != map_->map_.end()) {
 		loc_ = i_->second.second->first;
 	}
-	
+
 	return unit_xy_iterator(iter, map_, pre_loc);
 }
 
-bool unit_map::unit_xy_iterator::valid() const { 
-	return i_ != map_->map_.end() && i_->second.first && loc_ == i_->second.second->first; 
+bool unit_map::unit_xy_iterator::valid() const {
+	return i_ != map_->map_.end() && i_->second.first && loc_ == i_->second.second->first;
 }
 
-unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) { 
-	if (i.valid()) loc_ = i->first; 
+unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+	if (i.valid()) loc_ = i->first;
 }
 
-unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const const_unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_)  { 
-	if (i.valid()) loc_ = i->first; 
+unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const const_unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_)  {
+	if (i.valid()) loc_ = i->first;
 }
 
 const std::pair<gamemap::location,unit>* unit_map::const_unit_xy_iterator::operator->() const {
@@ -219,54 +219,54 @@ const std::pair<gamemap::location,unit>& unit_map::const_unit_xy_iterator::opera
 }
 
 unit_map::const_unit_xy_iterator unit_map::const_unit_xy_iterator::operator++() {
-	
+
 	assert(i_ != map_->map_.end());
-	
+
 	++i_;
-	while (i_ != map_->map_.end() && !valid()) { 
-		++i_; 
+	while (i_ != map_->map_.end() && !valid()) {
+		++i_;
 	}
-	
+
 	if (i_ != map_->map_.end()) {
 		loc_ = i_->second.second->first;
 	}
-	
+
 	return *this;
 }
-	
+
 unit_map::const_unit_xy_iterator unit_map::const_unit_xy_iterator::operator++(int){
-	
+
 	assert(i_ != map_->map_.end());
-	
+
 	gamemap::location pre_loc = loc_;
-	
-	umap::const_iterator iter(i_);	
+
+	umap::const_iterator iter(i_);
 	++i_;
-	while (i_ != map_->map_.end() && !valid()) { 
-		++i_; 
+	while (i_ != map_->map_.end() && !valid()) {
+		++i_;
 	}
-	
+
 	if (i_ != map_->map_.end()) {
 		loc_ = i_->second.second->first;
 	}
-	
+
 	return const_unit_xy_iterator(iter, map_, pre_loc);
 }
 
-bool unit_map::const_unit_xy_iterator::valid() const { 
-	return i_ != map_->map_.end() && i_->second.first && loc_ == i_->second.second->first; 
+bool unit_map::const_unit_xy_iterator::valid() const {
+	return i_ != map_->map_.end() && i_->second.first && loc_ == i_->second.second->first;
 }
 
 
 unit_map::xy_accessor::xy_accessor(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
-	if (i.valid()) loc_ = i->first; 
+	if (i.valid()) loc_ = i->first;
 }
 
 unit_map::xy_accessor::xy_accessor(const unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
-	if (i.valid()) loc_ = i->first; 
+	if (i.valid()) loc_ = i->first;
 }
-	
-		
+
+
 std::pair<gamemap::location,unit>* unit_map::xy_accessor::operator->() {
 	if (!valid()) { assert(0); }
 	return i_->second.second;
@@ -276,40 +276,40 @@ std::pair<gamemap::location,unit>& unit_map::xy_accessor::operator*() {
 	if (!valid()) { assert(0); }
 	return *i_->second.second;
 }
-		
-		
+
+
 bool unit_map::xy_accessor::valid() {
 	if (i_->second.first && i_->second.second->first == loc_) {
 		return true;
 	}
-	
+
 	unit_iterator u_iter = map_->find(loc_);
-	
+
 	if (u_iter.valid()) {
 		i_ = u_iter.i_;
 		loc_ = i_->second.second->first;
 		return true;
 	}
-	
-	return false;	
+
+	return false;
 }
 
 unit_map::const_xy_accessor::const_xy_accessor(const const_unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
-	if (i.valid()) loc_ = i->first; 
+	if (i.valid()) loc_ = i->first;
 }
 
 unit_map::const_xy_accessor::const_xy_accessor(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
-	if (i.valid()) loc_ = i->first; 
+	if (i.valid()) loc_ = i->first;
 }
 
 unit_map::const_xy_accessor::const_xy_accessor(const const_unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
-	if (i.valid()) loc_ = i->first; 
+	if (i.valid()) loc_ = i->first;
 }
 
 unit_map::const_xy_accessor::const_xy_accessor(const unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
-	if (i.valid()) loc_ = i->first; 
-}	
-		
+	if (i.valid()) loc_ = i->first;
+}
+
 const std::pair<gamemap::location,unit>* unit_map::const_xy_accessor::operator->() {
 	if (!valid()) { assert(0); }
 	return i_->second.second;
@@ -319,22 +319,22 @@ const std::pair<gamemap::location,unit>& unit_map::const_xy_accessor::operator*(
 	if (!valid()) { assert(0); }
 	return *i_->second.second;
 }
-		
-		
+
+
 bool unit_map::const_xy_accessor::valid() {
 	if (i_->second.first && i_->second.second->first == loc_) {
 		return true;
 	}
-	
+
 	const_unit_iterator u_iter = map_->find(loc_);
-	
+
 	if (u_iter.valid()) {
 		i_ = u_iter.i_;
 		loc_ = i_->second.second->first;
 		return true;
 	}
-	
-	return false;	
+
+	return false;
 }
 
 
@@ -343,7 +343,7 @@ unit_map::unit_iterator unit_map::find(const gamemap::location &loc) {
 	if (i == lmap_.end()) {
 		return unit_iterator(map_.end(), this);
 	}
- 
+
 	umap::iterator iter = map_.find(i->second);
 
 	assert(iter->second.first);
@@ -356,9 +356,9 @@ unit_map::const_unit_iterator unit_map::find(const gamemap::location &loc) const
 	if (iter == lmap_.end()) {
 		return const_unit_iterator(map_.end(), this);
 	}
-	
+
 	umap::const_iterator i = map_.find(iter->second);
-	
+
 	assert(i->second.first);
 	return const_unit_iterator(i , this);
 }
@@ -368,27 +368,27 @@ unit_map::unit_iterator unit_map::find(const std::string &id) {
 	if (iter == map_.end() || !iter->second.first) {
 		return unit_iterator(map_.end(), this);
 	}
-	return unit_iterator(iter, this);	
+	return unit_iterator(iter, this);
 }
 
 unit_map::const_unit_iterator unit_map::find(const std::string &id) const {
 	umap::const_iterator iter = map_.find(id);
 	if (iter == map_.end() || !iter->second.first) {
 		return const_unit_iterator(map_.end(), this);
-	}		
-	return const_unit_iterator(iter, this);	
+	}
+	return const_unit_iterator(iter, this);
 }
 
-unit_map::unit_iterator unit_map::begin() {		
+unit_map::unit_iterator unit_map::begin() {
 		// clean if there are more invalid than valid, this block just needs to go somewhere that is likely to be
 		// called when num_iters_ == 0. This seems as good a place as any.
 		if (num_invalid_ > lmap_.size() && num_iters_ == 0) {
 			clean_invalid();
 		}
-		
+
 		umap::iterator i = map_.begin();
-		while (i != map_.end() && !i->second.first) { 
-			++i; 
+		while (i != map_.end() && !i->second.first) {
+			++i;
 		}
 		return unit_iterator(i, this);
 }
@@ -401,22 +401,22 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 
 	if (iter == map_.end()) {
 		map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
-	} else {	
+	} else if(!iter->second.first) {
+		iter->second.second = p;
+		validate(iter);
+	} else if(iter->second.second->first == p->first) {
+		replace(p);
+		return;
+	} else {
 		// if iter->second.first, then this is a duplicate underlying_id, or the map is already in an undefined
 		// state due to a different duplicate id entry. This is not allowed. By storing it with a different id it
 		// will not be accessible with find(std::string).
-		if (iter->second.first) {
-			std::stringstream id;
-			id << unit_id << "-duplicate-" << get_random();
-			unit_id = id.str();
-			
-			map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
-			WRN_NG << "unit_map::add -- duplicate id in unit map: " << p->second.underlying_id() << "\n";
-		} else {
-			iter->second.second = p;
-			validate(iter);
-		}
-	
+		std::stringstream id;
+		id << unit_id << "-duplicate-" << get_random();
+		unit_id = id.str();
+
+		map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
+		WRN_NG << "unit_map::add -- duplicate id in unit map: " << p->second.underlying_id() << "\n";
 	}
 
 	std::pair<lmap::iterator,bool> res = lmap_.insert(std::pair<gamemap::location,std::string>(p->first, unit_id));
@@ -435,7 +435,7 @@ void unit_map::delete_all()
 	for (umap::iterator i = map_.begin(); i != map_.end(); ++i) {
 		if (i->second.first) delete(i->second.second);
 	}
-		
+
 	lmap_.clear();
 	map_.clear();
 }
@@ -447,11 +447,11 @@ std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &lo
 		return NULL;
 
 	umap::iterator iter = map_.find(i->second);
-	std::pair<gamemap::location,unit> *res = iter->second.second;	
-	
+	std::pair<gamemap::location,unit> *res = iter->second.second;
+
 	invalidate(iter);
-	lmap_.erase(i);	
-	
+	lmap_.erase(i);
+
 	return res;
 }
 
@@ -460,21 +460,21 @@ size_t unit_map::erase(const gamemap::location &loc)
 	lmap::iterator i = lmap_.find(loc);
 	if (i == lmap_.end())
 		return 0;
-			
+
 	umap::iterator iter = map_.find(i->second);
 
 	invalidate(iter);
-	
+
 	delete iter->second.second;
 	lmap_.erase(i);
-	
+
 	return 1;
 }
 
 void unit_map::erase(xy_accessor pos)
 {
 	assert(pos.valid());
-	
+
 	if (erase(pos->first) != 1)
 		assert(0);
 }
@@ -486,7 +486,7 @@ void unit_map::clear()
 
 void unit_map::clean_invalid() {
 	size_t num_cleaned = 0;
-	
+
 	umap::iterator iter;
 	for (iter = map_.begin(); iter != map_.end(); ++iter) {
 		if (!iter->second.first) {
@@ -494,9 +494,9 @@ void unit_map::clean_invalid() {
 			num_cleaned++;
 		}
 	}
-	
+
 	num_invalid_ -= num_cleaned;
-	
+
 	LOG_NG << "unit_map::clean_invalid - removed " << num_cleaned << " invalid map entries.\n";
 }
-			
+

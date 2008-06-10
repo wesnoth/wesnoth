@@ -33,11 +33,14 @@
 
 namespace
 {
-	/** 
+	/**
 	 * @todo FIXME: the variable repository should be
 	 * a class of variable.hpp, and not the game_state.
 	 */
 	game_state* repos = NULL;
+
+	// keeps track of insert_tag variables used by get_parsed_config
+	std::set<std::string> vconfig_recursion;
 
 	// map to track temp storage of inserted tags on the heap
 	std::map<config const *, int> config_cache;
@@ -212,27 +215,35 @@ const config vconfig::get_parsed_config() const
 			vconfig insert_cfg(child->second);
 			const t_string& name = insert_cfg["name"];
 			const t_string& vname = insert_cfg["variable"];
-			if(!recursion_.insert(vname).second) {
-				ERR_NG << "vconfig::get_parsed_config() infinite recursion detected, aborting"
-					<< std::endl;
-				res.add_child("insert_tag", insert_cfg.get_config());
-				return res;
+			if(!vconfig_recursion.insert(vname).second) {
+				throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 			}
-			variable_info vinfo(vname, false, variable_info::TYPE_CONTAINER);
-			if(!vinfo.is_valid) {
-				res.add_child(name); //add empty tag
-			} else if(vinfo.explicit_index) {
-				res.add_child(name, vconfig(&(vinfo.as_container())).get_parsed_config());
-			} else {
-				variable_info::array_range range = vinfo.as_array();
-				if(range.first == range.second) {
+			try {
+				variable_info vinfo(vname, false, variable_info::TYPE_CONTAINER);
+				if(!vinfo.is_valid) {
 					res.add_child(name); //add empty tag
+				} else if(vinfo.explicit_index) {
+					res.add_child(name, vconfig(&(vinfo.as_container())).get_parsed_config());
+				} else {
+					variable_info::array_range range = vinfo.as_array();
+					if(range.first == range.second) {
+						res.add_child(name); //add empty tag
+					}
+					while(range.first != range.second) {
+						res.add_child(name, vconfig(*range.first++).get_parsed_config());
+					}
 				}
-				while(range.first != range.second) {
-					res.add_child(name, vconfig(*range.first++).get_parsed_config());
+				vconfig_recursion.erase(vname);
+			} catch(recursion_error &err) {
+				vconfig_recursion.erase(vname);
+				WRN_NG << err.message << std::endl;
+				if(vconfig_recursion.empty()) {
+					res.add_child("insert_tag", insert_cfg.get_config());
+				} else {
+					// throw to the top [insert_tag] which started the recursion
+					throw err;
 				}
 			}
-			recursion_.erase(vname);
 		} else {
 			res.add_child(child_key, vconfig((*child).second).get_parsed_config());
 		}
