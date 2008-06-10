@@ -406,7 +406,10 @@ static SOCKET_STATE send_file(buffer* buf)
 		poll_res = poll(&fd, 1, 600000);
 	} while(poll_res == -1 && errno == EINTR);
 
-	SOCKET_STATE result = send_buffer(buf->sock, buffer, 4);
+	if (poll_res > 0)
+		SOCKET_STATE result = send_buffer(buf->sock, buffer, 4);
+	else
+		result = SOCKET_ERRORED;
 	
 	
 	if (result != SOCKET_READY)
@@ -443,6 +446,14 @@ static SOCKET_STATE send_file(buffer* buf)
 
 
 		int bytes = ::sendfile(socket, in_file, 0, filesize);
+	
+		if (bytes == -1)
+		{
+			if (errno == EAGAIN)
+				continue;
+			result = SOCKET_ERRORED;
+			break;
+		}
 
 		upto += bytes;
 
