@@ -3022,7 +3022,10 @@ namespace {
 
 		if (func == function_call_map.end())
 		{
-			ERR_NG << "Didn't found handler function for wml tag: "<< cmd <<"\n";  
+			// don't give error message for filters because they are handled allready
+			if (cmd == "filter" || cmd == "filter_second")
+				return;
+			ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";  
 			return;
 		}
 		
