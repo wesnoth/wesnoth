@@ -420,8 +420,9 @@ static SOCKET_STATE send_file(buffer* buf)
 		poll_res = poll(&fd, 1, 600000);
 	} while(poll_res == -1 && errno == EINTR);
 
+	SOCKET_STATE result;
 	if (poll_res > 0)
-		SOCKET_STATE result = send_buffer(buf->sock, buffer, 4);
+		result = send_buffer(buf->sock, buffer, 4);
 	else
 		result = SOCKET_ERRORED;
 	
