@@ -2989,7 +2989,7 @@ namespace {
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("fire_event", &wml_func_fire_event));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("set_menu_item", &wml_func_set_menu_item));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_unit", &wml_func_store_unit));
-		function_call_map.insert(std::pair<std::string, wml_handler_function>("unstore_unit", &wml_func_role));
+		function_call_map.insert(std::pair<std::string, wml_handler_function>("unstore_unit", &wml_func_unstore_unit));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_map_dimesions", &wml_func_store_map_dimensions));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_starting_location", &wml_func_store_starting_location));
 		function_call_map.insert(std::pair<std::string, wml_handler_function>("store_villages", &wml_func_store_villages));
