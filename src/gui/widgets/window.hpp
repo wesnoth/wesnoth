@@ -40,6 +40,9 @@
 #include <map>
 
 namespace gui2{
+
+class tdialog;
+
 /**
  * base class of top level items, the only item 
  * which needs to store the final canvase to draw on
@@ -75,6 +78,11 @@ public:
 	//! Inherited from tevent_handler.
 	twindow& get_window() { return *this; }
 	const twindow& get_window() const { return *this; }
+
+	void set_owner(tdialog* owner) { owner_ = owner; }
+
+	/** Inherited from twidget. */
+	tdialog* dialog() { return owner_; }
 
 	/** Inherited from tevent_handler. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
@@ -140,9 +148,11 @@ private:
 	// return value of the window, 0 default.
 	int retval_;
 
+	/** The dialog that owns the window. */
+	tdialog* owner_;
+
 	//! When set the form needs a full layout redraw cycle.
 	bool need_layout_;
-
 
 	//! Inherited from tevent_handler.
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);

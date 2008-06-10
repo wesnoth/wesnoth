@@ -24,7 +24,9 @@
 
 namespace gui2 {
 
+class tdialog;
 class tevent_handler;
+class twindow;
 
 //! Base class with all possible events, most widgets can ignore most of
 //! these, but they are available.
@@ -109,8 +111,6 @@ private:
 	bool wants_mouse_middle_double_click_;
 	bool wants_mouse_right_double_click_;
 };
-
-class twindow;
 
 //! Base class for all widgets.
 //! This is a non visible widget but it does have dimentions and size hints.
@@ -236,6 +236,18 @@ public:
 
 	//! The toplevel item should always be a window if not null is returned
 	twindow* get_window();
+
+	/** 
+	 * Returns the toplevel dialog.
+	 *
+	 * A window is most of the time created by a dialog, this function returns
+	 * that dialog.
+	 *
+	 * @returns                   The toplevel dialog.
+	 * @retval 0                  No toplevel window or the toplevel window is
+	 *                            not owned by a dialog.
+	 */
+	tdialog* dialog();
 
 	//! loads the configuration of the widget, mainly used for controls.
 	virtual void load_config() {} 

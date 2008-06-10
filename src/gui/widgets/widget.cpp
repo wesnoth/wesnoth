@@ -58,4 +58,10 @@ twindow* twidget::get_window()
 	return dynamic_cast<twindow*>(result);
 }
 
+tdialog* twidget::dialog()
+{
+	twindow* window = get_window();
+	return window ? window->dialog() : 0;
+}
+
 } // namespace gui2
