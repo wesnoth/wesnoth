@@ -305,7 +305,7 @@ static void make_network_buffer(const char* input, int len, std::vector<char>& b
 static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_size = -1)
 {
 #ifdef __BEOS__
-	int timeout = 15000;
+	int timeout = 60000;
 #endif
 //	check_send_buffer_size(sock);
 	size_t upto = 0;
@@ -345,7 +345,11 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 			}
 			return SOCKET_READY;
 		}
-	
+#if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)
+	        if(errno == EAGAIN)
+#elif defined(EWOULDBLOCK)
+		if(errno == EWOULDBLOCK)
+#endif
 		{
 			// update how far we are
 			upto += static_cast<size_t>(res);
@@ -359,7 +363,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 			struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT, 0 };
 			int poll_res;
 			do {
-				poll_res = poll(&fd, 1, 15000);
+				poll_res = poll(&fd, 1, 60000);
 			} while(poll_res == -1 && errno == EINTR);
 
 			
@@ -371,7 +375,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 			FD_SET(((_TCPsocket*)sock)->channel, &writefds);
 			int retval;
 			struct timeval tv;
-			tv.tv_sec = 15;
+			tv.tv_sec = 60;
 			tv.tv_usec = 0;
 
 			do {
@@ -383,7 +387,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 #elif defined(__BEOS__)
 			if(res > 0) {
 				// some data was sent, reset timeout
-				timeout = 15000;
+				timeout = 60000;
 			} else {
 				// sleep for 100 milliseconds
 				SDL_Delay(100);
