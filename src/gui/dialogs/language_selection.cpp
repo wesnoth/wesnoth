@@ -33,12 +33,28 @@
 
 namespace gui2 {
 
-void tlanguage_selection::show(CVideo& video)
+/*WIKI
+ * @page = GUIWindowWML
+ * @order = 2_language_selection
+ *
+ * == Language selection ==
+ *
+ * This shows the dialog to select the language to use.
+ * 
+ * @start_table = container
+ *     language_list listbox           This text contains the list with 
+ *                                     available languages.
+ * @end_table
+ */
+twindow tlanguage_selection::build_window(CVideo& video)
 {
-	twindow window = build(video, get_id(LANGUAGE_SELECTION));
+	return build(video, get_id(LANGUAGE_SELECTION));
+}
 
+void tlanguage_selection::pre_show(CVideo& video, twindow& window)
+{
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
-	VALIDATE(list, "No list defined.");
+	VALIDATE(list, missing_widget("language_list"));
 
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
@@ -53,16 +69,20 @@ void tlanguage_selection::show(CVideo& video)
 	}
 
 	window.recalculate_size();
+}
 
-	retval_ = window.show(true);
+void tlanguage_selection::post_show(twindow& window)
+{
+	if(get_retval() == tbutton::OK) {
+		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
+		assert(list);
 
-	if(retval_ == tbutton::OK) {
 		const unsigned res = list->get_selected_row();
 
+		const std::vector<language_def>& languages = get_languages();
 		::set_language(languages[res]);
 		preferences::set_language(languages[res].localename);
 	}
 }
-
 
 } // namespace gui2

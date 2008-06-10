@@ -15,23 +15,16 @@
 #ifndef GUI_DIALOGS_ADDON_CONNECT_HPP_INCLUDED
 #define GUI_DIALOGS_ADDON_CONNECT_HPP_INCLUDED
 
-#include <string>
-
-class CVideo;
+#include "gui/dialogs/dialog.hpp"
 
 namespace gui2 {
 
-class taddon_connect
+class taddon_connect : public tdialog
 {
 public:
 	taddon_connect() : 
-		retval_(0),
 		host_name_()
 	{}
-
-	void show(CVideo& video);
-
-	int get_retval() const { return retval_; }
 
 	const std::string& host_name() const { return host_name_; }
 
@@ -39,9 +32,16 @@ public:
 		{ host_name_ = host_name; }
 
 private:
-	int retval_;
 	std::string host_name_;
 
+	/** Inherited from tdialog. */
+	twindow build_window(CVideo& video);
+
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
+
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
 };
 
 } // namespace gui2

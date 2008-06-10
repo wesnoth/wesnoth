@@ -20,6 +20,7 @@
 #include <string>
 
 class surface;
+class t_string;
 
 namespace gui2 {
 
@@ -93,6 +94,14 @@ surface save_background(const surface& background, const SDL_Rect& rect);
  */
 void restore_background(const surface& restorer, 
 		surface& background,const SDL_Rect& rect);
+
+/**
+ * Returns a default error message if a mandatory widget is ommited.
+ *
+ * @param id                      The id of the omitted widget.
+ * @returns                       The error message.
+ */
+t_string missing_widget(const std::string& id);
 
 } // namespace gui2
 

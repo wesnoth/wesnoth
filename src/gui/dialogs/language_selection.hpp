@@ -15,26 +15,25 @@
 #ifndef GUI_DIALOGS_LANGUAGE_SELECTION_HPP_INCLUDED
 #define GUI_DIALOGS_LANGUAGE_SELECTION_HPP_INCLUDED
 
-#include <string>
-
-class CVideo;
+#include "gui/dialogs/dialog.hpp"
 
 namespace gui2 {
 
-class tlanguage_selection
+class tlanguage_selection : public tdialog
 {
 public:
-	tlanguage_selection() : 
-		retval_(0)
-	{}
-
-	void show(CVideo& video);
-
-	int get_retval() const { return retval_; }
+	tlanguage_selection() {}
 
 private:
-	int retval_;
 
+	/** Inherited from tdialog. */
+	twindow build_window(CVideo& video);
+
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
+
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
 };
 
 } // namespace gui2

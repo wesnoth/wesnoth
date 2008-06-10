@@ -14,9 +14,11 @@
 
 #include "gui/widgets/helper.hpp"
 
+#include "gettext.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sdl_utils.hpp"
 #include "serialization/string_utils.hpp"
+#include "tstring.hpp"
 #include "log.hpp"
 
 #include "SDL_ttf.h"
@@ -172,6 +174,14 @@ void restore_background(const surface& restorer,
 			offset += background->w;
 		}
 	}
+}
+
+t_string missing_widget(const std::string& id)
+{
+	utils::string_map symbols;
+	symbols["id"] = id;
+
+	return t_string(vgettext("Mandatory widget '$id' hasn't been defined.", symbols));
 }
 
 } // namespace gui2

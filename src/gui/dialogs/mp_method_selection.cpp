@@ -34,25 +34,49 @@
 
 namespace gui2 {
 
-void tmp_method_selection::show(CVideo& video)
+/*WIKI
+ * @page = GUIWindowWML
+ * @order = 2_mp_method_selection
+ *
+ * == MP method selection ==
+ *
+ * This shows the dialog to select the kind of MP game the user wants to play.
+ * 
+ * @start_table = container
+ *     user_name text_box              This text contains the name the user on 
+ *                                     the MP server.
+ *     method_list listbox             The list with possible game methods.
+ * @end_table
+ */
+twindow tmp_method_selection::build_window(CVideo& video)
 {
-	twindow window = build(video, get_id(MP_METHOD_SELECTION));
+	return build(video, get_id(MP_METHOD_SELECTION));
+}
 
+void tmp_method_selection::pre_show(CVideo& video, twindow& window)
+{
 	user_name_ = preferences::login();
 	ttext_box* user_widget = dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
-	if(user_widget) {
-		user_widget->set_text(user_name_);
-		window.keyboard_capture(user_widget);
-	}
+	VALIDATE(user_widget, missing_widget("user_name"));
+
+	user_widget->set_text(user_name_);
+	window.keyboard_capture(user_widget);
 
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
-	VALIDATE(list, "No list defined.");
+	VALIDATE(list, missing_widget("method_list"));
 
 	window.recalculate_size();
+}
 
-	retval_ = window.show(true);
+void tmp_method_selection::post_show(twindow& window)
+{
+	if(get_retval() == tbutton::OK) {
 
-	if(retval_ == tbutton::OK) {
+		ttext_box* user_widget = dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
+		assert(user_widget);
+
+		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
+		assert(list);
 
 		choice_ = list->get_selected_row();
 		user_widget->save_to_history();

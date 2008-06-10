@@ -21,7 +21,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "log.hpp"
-#include "video.hpp"
+#include "wml_exception.hpp"
 
 #define DBG_GUI LOG_STREAM_INDENT(debug, widget)
 #define LOG_GUI LOG_STREAM_INDENT(info, widget)
@@ -30,24 +30,45 @@
 
 namespace gui2 {
 
-void taddon_connect::show(CVideo& video)
+/*WIKI
+ * @page = GUIWindowWML
+ * @order = 2_addon_connect
+ *
+ * == Addon connect ==
+ *
+ * This shows the dialog for managing addons and connecting to the addon server.
+ * 
+ * @start_table = container
+ *     [] button (2)                   This button closes the dialog and starts
+ *                                     the addon manager.
+ *     host_name text_box              This text contains the name of the server
+ *                                     to connect to.
+ * @end_table
+ */
+
+twindow taddon_connect::build_window(CVideo& video)
 {
-	twindow window = build(video, get_id(ADDON_CONNECT));
+	return build(video, get_id(ADDON_CONNECT));
+}
+
+void taddon_connect::pre_show(CVideo& video, twindow& window)
+{
 	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
-	if(host_widget) {
-		host_widget->set_text(host_name_);
-		window.keyboard_capture(host_widget);
-	}
+	VALIDATE(host_widget, missing_widget("host_name"));
 
-	retval_ = window.show(true);
+	host_widget->set_text(host_name_);
+	window.keyboard_capture(host_widget);
+}
 
-	if(host_widget) {
-		if(retval_ == tbutton::OK) {
-			host_widget->save_to_history();
-		}
+void taddon_connect::post_show(twindow& window)
+{
+	if(get_retval() == tbutton::OK) {
+		ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
+		assert(host_widget);
+
+		host_widget->save_to_history();
 		host_name_= host_widget->get_text();
 	}
 }
-
 
 } // namespace gui2

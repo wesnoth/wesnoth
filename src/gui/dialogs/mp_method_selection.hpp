@@ -15,34 +15,35 @@
 #ifndef GUI_DIALOGS_MP_METHOD_SELECTION_HPP_INCLUDED
 #define GUI_DIALOGS_MP_METHOD_SELECTION_HPP_INCLUDED
 
-
-#include <string>
-
-class CVideo;
+#include "gui/dialogs/dialog.hpp"
 
 namespace gui2 {
 
-class tmp_method_selection
+class tmp_method_selection : public tdialog
 {
 public:
 	tmp_method_selection() : 
-		retval_(0),
 		user_name_(),
 		choice_(-1)
 	{}
-
-	void show(CVideo& video);
-
-	int get_retval() const { return retval_; }
 
 	const std::string& user_name() const { return user_name_; }
 
 	int get_choice() const { return choice_; }
 
 private:
-	int retval_;
 	std::string user_name_;
 	int choice_;
+
+
+	/** Inherited from tdialog. */
+	twindow build_window(CVideo& video);
+
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
+
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
 };
 
 } // namespace gui2
