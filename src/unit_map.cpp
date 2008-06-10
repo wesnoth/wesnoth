@@ -416,7 +416,10 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 		unit_id = id.str();
 
 		map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
-		WRN_NG << "unit_map::add -- duplicate id in unit map: " << p->second.underlying_id() << "\n";
+		WRN_NG << "unit_map::add -- duplicate id in unit map: " << p->second.underlying_id()
+			<< " added to location: (" << p->first.x+1 << "," << p->first.y+1
+			<< ") but exists already at: (" << iter->second.second->first.x+1
+			<< "," << iter->second.second->first.y+1 << ").\n";
 	}
 
 	std::pair<lmap::iterator,bool> res = lmap_.insert(std::pair<gamemap::location,std::string>(p->first, unit_id));
