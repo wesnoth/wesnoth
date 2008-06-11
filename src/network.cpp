@@ -82,19 +82,6 @@ struct connection_details {
 	int remote_handle;
 
 	int connected_at;
-
-	bool operator>(const connection_details& o)
-	{ return activity_key > o.get_key(); }
-
-	size_t get_key()
-	{ return activity_key; }
-
-	void set_activity()
-	{ }
-
-private:
-	size_t last_activity;
-	size_t activity_key;
 };
 
 typedef std::map<network::connection,connection_details> connection_map;
