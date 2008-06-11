@@ -13,6 +13,7 @@
 */
 
 #include "editor_main.hpp"
+#include "editor_common.hpp"
 
 #include "../editor/editor.hpp"
 
@@ -29,22 +30,9 @@ namespace editor2 {
 	
 EXIT_STATUS start(config& game_conf, CVideo& video)
 {
-	preproc_map defines_map;
-	// define editor to do conditionnal loading in the main cfg
-	defines_map["EDITOR"] = preproc_define();
-	
-	defines_map["MEDIUM"] = preproc_define();
-	defines_map["NORMAL"] = preproc_define();
-		
-#if defined(__APPLE__)
-	defines_map["APPLE"] = preproc_define();
-#endif
+	SCOPE_ED;
 	std::string mapdata = map_editor::new_map(22, 22, t_translation::GRASS_LAND);
-	config cfg;
-	scoped_istream stream = preprocess_file("data/", &defines_map);
-//	read(cfg, *stream);			
-	cfg = game_conf;
-	config* theme_cfg = cfg.find_child("theme", "name", "editor");
+	config* theme_cfg = game_conf.find_child("theme", "name", "editor");
 	config dummy_theme;
 	if (!theme_cfg) {
 		std::cerr << "Editor theme could not be loaded." << std::endl;
@@ -56,9 +44,9 @@ EXIT_STATUS start(config& game_conf, CVideo& video)
 		
 	for(;;) {
 		try {
-			editormap map(cfg, mapdata);
-			editor_display gui(video, map, *theme_cfg, cfg, config());
-			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);
+			editormap map(game_conf, mapdata);
+			editor_display gui(video, map, *theme_cfg, game_conf, config());
+			map_editor::map_editor editor(gui, map, *theme_cfg, game_conf);
 			editor.set_file_to_save_as(filename, from_scenario);
 			editor.main_loop();
 			break;

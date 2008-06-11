@@ -23,7 +23,7 @@
 #define LOG_ED LOG_STREAM_INDENT(info, editor)
 #define WRN_ED LOG_STREAM_INDENT(warn, editor)
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
-#define SCOPE_ED log_scope(__FUNCTION__)
+#define SCOPE_ED log_scope2(editor, __FUNCTION__)
 
 
 namespace editor2 {
@@ -34,7 +34,6 @@ struct editor_exception
 
 
 // forward declarations
-class editor_display;
 class editor_map;
 class brush;
 

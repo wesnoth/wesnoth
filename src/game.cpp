@@ -2093,6 +2093,9 @@ void game_controller::reset_game_cfg()
 	} else {
 		defines_map_["NORMAL"] = preproc_define();
 		defines_map_["MEDIUM"] = preproc_define();
+#ifdef USE_EDITOR2
+		defines_map_["EDITOR2"] = preproc_define();
+#endif
 	}
 
 	//refresh_game_cfg();
@@ -2197,8 +2200,6 @@ void game_controller::play_replay()
 #ifdef USE_EDITOR2
 editor2::EXIT_STATUS game_controller::start_editor()
 {
-	defines_map_["EDITOR"] = preproc_define();
-	refresh_game_cfg();
 	editor2::start(game_config_, video_);
 }
 #endif
