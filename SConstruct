@@ -178,13 +178,10 @@ if env["prereqs"]:
     if env['fribidi']:
         env['fribidi'] = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Warning("Can't find libfribidi, disabling freebidi support.")
 
-    env['sendfile'] = False
     if env["PLATFORM"] == "posix":
         conf.CheckCHeader("poll.h", "<>")
         conf.CheckCHeader("sys/poll.h", "<>")
         conf.CheckCHeader("sys/select.h", "<>")
-        if sys.platform == "linux2":
-            env['sendfile'] = conf.CheckCHeader('sys/sendfile.h', '<>') or Warning("Can't find sendfile, disabling sendfile support.")
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
@@ -247,9 +244,6 @@ if env['internal_data']:
 
 if env['python']:
     env.Append(CPPDEFINES = "HAVE_PYTHON")
-
-if env['sendfile']:
-    env.Append(CPPDEFINES = "USE_SENDFILE")
 
 if have_X:
     env.Append(CPPDEFINES = "_X11")

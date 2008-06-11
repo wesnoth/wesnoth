@@ -17,10 +17,8 @@
 
 // Check if sendfile function is implemented by glibc
 // It is linux only extension
-#ifdef __GNUC_PREREQ
-#if __GNUC_PREREQ(2,1)
+#if defined(__linux__) && defined(__GNUC_PREREQ) && __GNUC_PREREQ(2,1)
 #define USE_SENDFILE
-#endif
 #endif
 
 
