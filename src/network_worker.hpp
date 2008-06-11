@@ -15,6 +15,15 @@
 #ifndef NETWORK_WORKER_HPP_INCLUDED
 #define NETWORK_WORKER_HPP_INCLUDED
 
+// Check if sendfile function is implemented by glibc
+// It is linux only extension
+#ifdef __GNUC_PREREQ
+#if __GNUC_PREREQ(2,1)
+#define USE_SENDFILE
+#endif
+#endif
+
+
 #include <map>
 #include <vector>
 #include "config.hpp"
