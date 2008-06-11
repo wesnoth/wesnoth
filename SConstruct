@@ -311,8 +311,6 @@ builds = {
     "release" : dict(CXXFLAGS = Split("-O2 -ansi")),
     "profile" : dict(CXXFLAGS = "-pg", LINKFLAGS = "-pg")
     }
-if sys.platform == "win32":
-    builds["release"] = {} # Both -O2 and -ansi cause Bad Things to happen on windows
 build = env["build"]
 
 env.AppendUnique(**builds[build])

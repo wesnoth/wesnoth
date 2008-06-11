@@ -38,6 +38,10 @@
 #include <iostream>
 #include <stdexcept>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 /** Tests one locale to be available. */
 static bool has_locale(const char* s) {
 	try {
@@ -192,8 +196,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 #endif
 
 #ifdef _WIN32
-	const std::string env = "LANG=" + slocale;
-	putenv(env.c_str());
+	SetEnvironmentVariable("LANG", slocale.c_str());
 #endif
 
 #ifdef USE_DUMMYLOCALES

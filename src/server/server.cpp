@@ -1773,7 +1773,7 @@ int main(int argc, char** argv) {
 				<< "\n";
 			return 0;
 		} else if (val == "--daemon" || val == "-d") {
-#ifdef WIN32
+#ifdef _WIN32
 			ERR_SERVER << "Running as a daemon is not supported on this platform\n";
 			return -1;
 #else
