@@ -493,17 +493,17 @@ namespace {
 	}
 
 
-	static void wml_func_remove_shroud(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_remove_shroud(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		toggle_shroud(true,cfg);
 	}
 
-	static void wml_func_place_shroud(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_place_shroud(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		toggle_shroud(false,cfg );
 	}
 
-	static void wml_func_teleport(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_teleport(event_handler& /*handler*/, const queued_event& event_info, const vconfig& cfg)
 	{
 		unit_map::iterator u = units->find(event_info.loc1);
 
@@ -544,7 +544,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_unstone(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_unstone(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		const vconfig filter = cfg.child("filter");
 		// Store which side will need a shroud/fog update
@@ -566,7 +566,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_allow_recruit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_allow_recruit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -590,7 +590,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_disallow_recruit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_disallow_recruit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -612,7 +612,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_set_recruit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_set_recruit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -636,12 +636,12 @@ namespace {
 		}
 	}
 
-	static void wml_func_music(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_music(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		sound::play_music_config(cfg.get_parsed_config());
 	}
 
-	static void wml_func_sound(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_sound(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string sound = cfg["name"];
 		const int repeats = lexical_cast_default<int>(cfg["repeat"], 0);
@@ -649,7 +649,7 @@ namespace {
 		sound::play_sound(sound, sound::SOUND_FX, repeats);
 	}
 
-	static void wml_func_colour_adjust(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_colour_adjust(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string red = cfg["red"];
 		std::string green = cfg["green"];
@@ -663,7 +663,7 @@ namespace {
 		screen->draw(true,true);
 	}
 
-	static void wml_func_delay(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_delay(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string delay_string = cfg["time"];
 		assert(state_of_game != NULL);
@@ -671,7 +671,7 @@ namespace {
 		screen->delay(delay_time);
 	}
 
-	static void wml_func_scroll(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_scroll(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
@@ -682,7 +682,7 @@ namespace {
 		screen->draw(true,true);
 	}
 
-	static void wml_func_scroll_to(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_scroll_to(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		assert(state_of_game != NULL);
 		const gamemap::location loc = cfg_to_loc(cfg);
@@ -690,7 +690,7 @@ namespace {
 		screen->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
 	}
 
-	static void wml_func_scroll_to_unit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_scroll_to_unit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		unit_map::const_iterator u;
 		for(u = units->begin(); u != units->end(); ++u){
@@ -703,7 +703,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_gold(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_gold(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string side = cfg["side"];
 		std::string amount = cfg["amount"];
@@ -716,7 +716,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_modify_side(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_modify_side(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string side = cfg["side"];
 		std::string income = cfg["income"];
@@ -795,7 +795,7 @@ namespace {
 		}
 	}
 
-	static void store_gold_side(bool store_side, const queued_event& event_info, const vconfig& cfg)
+	static void store_gold_side(bool store_side, const vconfig& cfg)
 	{
 		t_string *gold_store;
 		std::string side = cfg["side"];
@@ -831,17 +831,17 @@ namespace {
 	}
 
 
-	static void wml_func_store_side(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_store_side(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
-		store_gold_side(true, event_info, cfg);
+		store_gold_side(true, cfg);
 	}
 
-	static void wml_func_store_gold(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_store_gold(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{	
-		store_gold_side(false, event_info,cfg);
+		store_gold_side(false, cfg);
 	}
 
-	static void wml_func_modify_turns(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_modify_turns(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{	
 		std::string value = cfg["value"];
 		std::string add = cfg["add"];
@@ -855,7 +855,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_store_turns(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_store_turns(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{	
 		std::string var_name = cfg["variable"];
 		if(var_name.empty()) {
@@ -869,7 +869,7 @@ namespace {
 
 	// Moving a 'unit' - i.e. a dummy unit
 	// that is just moving for the visual effect
-	static void wml_func_move_unit_fake(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_move_unit_fake(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{	
 		std::string type = cfg["type"];
 		std::string side = cfg["side"];
@@ -968,7 +968,7 @@ namespace {
 	 * but only to the player whose objectives did change,
 	 * and only when it's this player's turn.
 	 **/
-	static void wml_func_objectives(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_objectives(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{	
 		const std::string win_str = "@";
 		const std::string lose_str = "#";
@@ -1040,7 +1040,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_set_variable(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_set_variable(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{	
 		assert(state_of_game != NULL);
 
@@ -1334,7 +1334,7 @@ namespace {
 	}
 
 
-	static void wml_func_set_variables(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_set_variables(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		assert(state_of_game != NULL);
 
@@ -1440,7 +1440,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_role(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_role(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 
 		// Get a list of the types this unit can be
@@ -1520,7 +1520,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_removeitem(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_removeitem(event_handler& /*handler*/, const queued_event& event_info, const vconfig& cfg)
 	{
 		std::string img = cfg["image"];
 		assert(state_of_game != NULL);
@@ -1538,7 +1538,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_unit_overlay(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_unit_overlay(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string img = cfg["image"];
 		assert(state_of_game != NULL);
@@ -1550,7 +1550,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_remove_unit_overlay(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_remove_unit_overlay(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string img = cfg["image"];
 		assert(state_of_game != NULL);
@@ -1562,7 +1562,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_hide_unit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_hide_unit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		// Hiding units
 		const gamemap::location loc = cfg_to_loc(cfg);
@@ -1574,7 +1574,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_unhide_unit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_unhide_unit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		const gamemap::location loc = cfg_to_loc(cfg);
 		unit_map::iterator u;
@@ -1587,7 +1587,7 @@ namespace {
 	}
 
 	// Adding new items
-	static void wml_func_item(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_item(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		gamemap::location loc = cfg_to_loc(cfg);
 		std::string img = cfg["image"];
@@ -1600,7 +1600,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_sound_source(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_sound_source(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string sounds = cfg["sounds"];
 		std::string id = cfg["id"];
@@ -1651,13 +1651,13 @@ namespace {
 		}
 	}
 
-	static void wml_func_remove_sound_source(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_remove_sound_source(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		soundsources->remove(cfg["id"]);
 	}
 
 	// Changing the terrain
-	static void wml_func_terrain(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_terrain(event_handler& handler, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
 
@@ -1708,7 +1708,7 @@ namespace {
 	}
 
 	// Creating a mask of the terrain
-	static void wml_func_terrain_mask(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_terrain_mask(event_handler& handler, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
 
@@ -1729,7 +1729,7 @@ namespace {
 	}
 
 	// If we should spawn a new unit on the map somewhere
-	static void wml_func_unit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_unit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		assert(units != NULL);
 		assert(game_map != NULL);
@@ -1774,7 +1774,7 @@ namespace {
 	}
 
 	// If we should recall units that match a certain description
-	static void wml_func_recall(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_recall(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		LOG_NG << "recalling unit...\n";
 		bool unit_recalled = false;
@@ -1895,7 +1895,7 @@ namespace {
 			}
 		}
 	}
-	static void wml_func_print(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_print(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		// Display a message on-screen
 		std::string text = cfg["text"];
@@ -1926,14 +1926,14 @@ namespace {
 		}
 	}
 
-	static void wml_func_deprecated_message(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_deprecated_message(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		// Note: no need to translate the string, since only used for deprecated things.
 		const std::string message = cfg["message"];
 		lg::wml_error << message << '\n';
 	}
 
-	static void wml_func_debug_message(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_debug_message(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		const std::string log_level = cfg["logger"];
 		const std::string log_message = cfg["message"];
@@ -2002,7 +2002,7 @@ namespace {
 	}
 
 	// Fire any events
-	static void wml_func_fire_event(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_fire_event(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		gamemap::location loc1,loc2;
 		config data;
@@ -2028,7 +2028,7 @@ namespace {
 	}
 
 	// Setting of menu items
-	static void wml_func_set_menu_item(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_set_menu_item(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		/*
 		   [set_menu_item]
@@ -2076,7 +2076,7 @@ namespace {
 	}
 	// Unit serialization to and from variables
 	//! @todo FIXME: Check that store is automove bug safe
-	static void wml_func_store_unit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_store_unit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		const config empty_filter;
 		vconfig filter = cfg.child("filter");
@@ -2143,7 +2143,7 @@ namespace {
 		varinfo.vars->append(to_store);
 	}
 
-	static void wml_func_unstore_unit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_unstore_unit(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		assert(state_of_game != NULL);
 		const config& var = state_of_game->get_variable_cfg(cfg["variable"]);
@@ -2259,7 +2259,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_store_map_dimensions(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_store_map_dimensions(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
@@ -2271,7 +2271,7 @@ namespace {
 		state_of_game->get_variable(variable + ".border_size") = str_cast<int>(game_map->border_size());
 	}
 
-	static void wml_func_store_starting_location(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_store_starting_location(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string side = cfg["side"];
 		std::string variable = cfg["variable"];
@@ -2301,7 +2301,7 @@ namespace {
 	 * - side: if present, the village should be owned by this side (0=unowned villages)
 	 * - terrain: if present, filter the village types against this list of terrain types
 	 */
-	static void wml_func_store_villages(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_store_villages(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		log_scope("store_villages");
 		std::string variable = cfg["variable"];
@@ -2339,7 +2339,7 @@ namespace {
 		varinfo.vars->append(to_store);
 	}
 
-	static void wml_func_store_locations(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_store_locations(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
@@ -2367,7 +2367,7 @@ namespace {
 	}
 
 	// Command to take control of a village for a certain side
-	static void wml_func_capture_village(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_capture_village(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -2386,7 +2386,7 @@ namespace {
 	}
 
 	// Command to remove a variable
-	static void wml_func_clear_variable(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_clear_variable(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		const std::string name = cfg["name"];
 		std::vector<std::string> vars_to_clear =
@@ -2396,7 +2396,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_endlevel(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_endlevel(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		// Remove 0-hp units from the unit map to avoid the following problem:
 		// In case a die event triggers an endlevel the dead unit is still as a
@@ -2437,7 +2437,7 @@ namespace {
 		}
 	}
 
-	static void wml_func_redraw(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_redraw(event_handler& handler, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -2455,7 +2455,7 @@ namespace {
 		screen->draw(true,true);
 	}
 
-	static void wml_func_animate_unit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_animate_unit(event_handler& /*handler*/, const queued_event& event_info, const vconfig& cfg)
 	{
 
 		unit_map::iterator u = units->find(event_info.loc1);
@@ -2522,7 +2522,7 @@ namespace {
 			events::pump();
 		}
 	}
-	static void wml_func_label(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_label(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 
 		terrain_label label(screen->labels(),
@@ -2535,7 +2535,7 @@ namespace {
 				label.colour());
 	}
 
-	static void wml_func_heal_unit(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_heal_unit(event_handler& /*handler*/, const queued_event& event_info, const vconfig& cfg)
 	{
 
 		const bool animated = utils::string_bool(cfg["animate"],false);
@@ -2595,7 +2595,7 @@ namespace {
 
 
 		// Allow undo sets the flag saying whether the event has mutated the game to false
-	static void wml_func_allow_undo(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_allow_undo(event_handler& handler, const queued_event& /*event_info*/, const vconfig& /*cfg*/)
 	{
 		handler.mutated() = false;
 	}
@@ -2929,7 +2929,7 @@ namespace {
 	}
 
 		// Adding of new events
-	static void wml_func_event(event_handler& handler, const queued_event& event_info, const vconfig& cfg)
+	static void wml_func_event(event_handler& /*handler*/, const queued_event& /*event_info*/, const vconfig& cfg)
 	{
 		const config &parsed = cfg.get_parsed_config();
 		new_handlers.push_back(event_handler(vconfig(&parsed, &parsed)));
