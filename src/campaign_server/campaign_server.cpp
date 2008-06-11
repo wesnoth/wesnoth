@@ -315,7 +315,7 @@ namespace {
 				config data;
 				while((sock = network::receive_data(data, 0, &gzipped)) != network::null_connection) {
 					if(const config* req = data.child("request_campaign_list")) {
-						LOG_CS << "sending campaign list to " << network::ip_address(sock) << "\n";
+						LOG_CS << "sending campaign list to " << network::ip_address(sock) << (gzipped?" using gzip":"") << "\n";
 						time_t epoch = time(NULL);
 						config campaign_list;
 						(campaign_list)["timestamp"] = lexical_cast<std::string>(epoch);
@@ -372,7 +372,7 @@ namespace {
 						response.add_child("campaigns",campaign_list);
 						network::send_data(response, sock, gzipped);
 					} else if(const config* req = data.child("request_campaign")) {
-						LOG_CS << "sending campaign '" << (*req)["name"] << "' to " << network::ip_address(sock) << "\n";
+						LOG_CS << "sending campaign '" << (*req)["name"] << "' to " << network::ip_address(sock)  << (gzipped?" using gzip":"") << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 						if(campaign == NULL) {
 							network::send_data(construct_error("Add-on '" + (*req)["name"] + "'not found."), sock, gzipped);
