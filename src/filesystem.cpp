@@ -91,7 +91,8 @@ void get_files_in_dir(const std::string directory,
 					  std::vector<std::string>* dirs,
 					  FILE_NAME_MODE mode,
 					  FILE_FILTER filter,
-					  FILE_REORDER_OPTION reorder)
+					  FILE_REORDER_OPTION reorder,
+					  file_tree_checksum* checksum)
 {
 	// If we have a path to find directories in, 
 	// then convert relative pathnames to be rooted 
@@ -100,7 +101,7 @@ void get_files_in_dir(const std::string directory,
 	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 		const std::string& dir = game_config::path + "/" + directory;
 		if(is_directory(dir)) {
-			get_files_in_dir(dir,files,dirs,mode,filter,reorder);
+			get_files_in_dir(dir,files,dirs,mode,filter,reorder,checksum);
 			return;
 		}
 	}
@@ -181,6 +182,13 @@ void get_files_in_dir(const std::string directory,
 					else
 						files->push_back(basename);
 				}
+				if (checksum != NULL) {
+					if(st.st_mtime > checksum->modified) {
+						checksum->modified = st.st_mtime;
+					}
+					checksum->sum_size += st.st_size;
+					checksum->nfiles++;
+				}	
 			} else if (S_ISDIR(st.st_mode)) {
 				if (filter == SKIP_MEDIA_DIR
 						&& (basename == "images"|| basename == "sounds"))
@@ -696,21 +704,10 @@ bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
 
 static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)
 {
-	std::vector<std::string> files, dirs;
-	get_files_in_dir(path,&files,&dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR);
+
+	std::vector<std::string> dirs;
+	get_files_in_dir(path,NULL,&dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DONT_REORDER, &res);
 	increment_filesystem_progress();
-	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-		++res.nfiles;
-
-		struct stat buf;
-		if(::stat(i->c_str(),&buf) != -1) {
-			if(buf.st_mtime > res.modified) {
-				res.modified = buf.st_mtime;
-			}
-
-			res.sum_size += buf.st_size;
-		}
-	}
 
 	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 		get_file_tree_checksum_internal(*j,res);

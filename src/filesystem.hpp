@@ -35,6 +35,8 @@ private:
 	std::string message;
 };
 
+struct file_tree_checksum;
+
 enum FILE_NAME_MODE { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
 enum FILE_FILTER { NO_FILTER, SKIP_MEDIA_DIR};
 enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
@@ -43,13 +45,17 @@ enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
 //! 'dirs' with all the directories in dir. 
 //! If files or dirs are NULL they will not be used.
 //!
-//! Mode determines whether the entire path or just the filename is retrieved.
+//! mode: determines whether the entire path or just the filename is retrieved.
+//! filter: determines if we skip images and sounds directories
+//! reorder: triggers the special handling of _main.cfg and _final.cfg
+//! checksum: can be used to store checksum info
 void get_files_in_dir(const std::string dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=NULL,
                       FILE_NAME_MODE mode=FILE_NAME_ONLY,
-                      FILE_FILTER = NO_FILTER,
-                      FILE_REORDER_OPTION reorder=DONT_REORDER);
+                      FILE_FILTER filter = NO_FILTER,
+                      FILE_REORDER_OPTION reorder=DONT_REORDER,
+                      file_tree_checksum* checksum = NULL);
 
 std::string get_dir(const std::string &dir);
 
