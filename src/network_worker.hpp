@@ -46,6 +46,7 @@ private:
 network::pending_statistics get_pending_stats();
 
 void set_raw_data_only();
+void set_use_system_sendfile(bool);
 
 //! Function to asynchronously received data to the given socket.
 void receive_data(TCPsocket sock);

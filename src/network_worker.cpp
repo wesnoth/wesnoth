@@ -172,6 +172,7 @@ threading::condition* cond[NUM_SHARDS];
 std::map<Uint32,threading::thread*> threads[NUM_SHARDS];
 std::vector<Uint32> to_clear[NUM_SHARDS];
 int system_send_buffer_size = 0;
+bool network_use_system_sendfile = false;
 
 int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 {
@@ -410,35 +411,80 @@ static SOCKET_STATE send_file(buffer* buf)
 	size_t upto = 0;
 	size_t filesize = file_size(buf->config_error);
 #ifdef USE_SENDFILE
-	std::vector<char> buffer;
-	buffer.reserve(4);
-	SDLNet_Write32(filesize,&buffer[0]);
-	int socket = reinterpret_cast<_TCPsocket*>(buf->sock)->channel;
-	int in_file = open(buf->config_error.c_str(),O_NOATIME | O_RDONLY);
-	int cock = 1;
-	int poll_res;
-	struct pollfd fd = {socket, POLLOUT, 0 };
-	setsockopt(socket, IPPROTO_TCP, TCP_CORK, &cock, sizeof(cock));;
-	do {
-		poll_res = poll(&fd, 1, 600000);
-	} while(poll_res == -1 && errno == EINTR);
-
-	SOCKET_STATE result;
-	if (poll_res > 0)
-		result = send_buffer(buf->sock, buffer, 4);
-	else
-		result = SOCKET_ERRORED;
-	
-	
-	if (result != SOCKET_READY)
+	// implements linux sendfile support
+	if (network_use_system_sendfile)
 	{
+		std::vector<char> buffer;
+		buffer.reserve(4);
+		SDLNet_Write32(filesize,&buffer[0]);
+		int socket = reinterpret_cast<_TCPsocket*>(buf->sock)->channel;
+		int in_file = open(buf->config_error.c_str(),O_NOATIME | O_RDONLY);
+		int cock = 1;
+		int poll_res;
+		struct pollfd fd = {socket, POLLOUT, 0 };
+		setsockopt(socket, IPPROTO_TCP, TCP_CORK, &cock, sizeof(cock));;
+		do {
+			poll_res = poll(&fd, 1, 600000);
+		} while(poll_res == -1 && errno == EINTR);
+
+		SOCKET_STATE result;
+		if (poll_res > 0)
+			result = send_buffer(buf->sock, buffer, 4);
+		else
+			result = SOCKET_ERRORED;
+
+
+		if (result != SOCKET_READY)
+		{
+			close(in_file);
+			cock = 0;
+			setsockopt(socket, IPPROTO_TCP, TCP_CORK, &cock, sizeof(cock));
+			return result;
+		}
+		result = SOCKET_READY;
+
+		while (true)
+		{
+
+			do {
+				poll_res = poll(&fd, 1, 600000);
+			} while(poll_res == -1 && errno == EINTR);
+
+			if (poll_res <= 0 )
+			{
+				result = SOCKET_ERRORED;
+				break;
+			}
+
+
+			int bytes = ::sendfile(socket, in_file, 0, filesize);
+
+			if (bytes == -1)
+			{
+				if (errno == EAGAIN)
+					continue;
+				result = SOCKET_ERRORED;
+				break;
+			}
+			upto += bytes;
+
+
+			if (upto == filesize)
+			{
+				buf->raw_buffer.push_back(0);
+				result = send_buffer(buf->sock, buf->raw_buffer, 1);
+				break;
+			}
+		}
+
 		close(in_file);
 		cock = 0;
 		setsockopt(socket, IPPROTO_TCP, TCP_CORK, &cock, sizeof(cock));
 		return result;
 	}
-	result = SOCKET_READY;
-#else
+#endif
+	// default sendfile implementation 
+	// if no system implementation is enabled
 	int send_size = 0;
 	SDLNet_Write32(filesize,&buf->raw_buffer[0]);
 	scoped_istream file_stream = istream_file(buf->config_error);
@@ -448,41 +494,8 @@ static SOCKET_STATE send_file(buffer* buf)
 	{
 		return result;
 	}
-#endif
 	while (true)
 	{
-#ifdef USE_SENDFILE
-
-		do {
-			poll_res = poll(&fd, 1, 600000);
-		} while(poll_res == -1 && errno == EINTR);
-
-		if (poll_res <= 0 )
-		{
-			result = SOCKET_ERRORED;
-			break;
-		}
-
-
-		int bytes = ::sendfile(socket, in_file, 0, filesize);
-
-		if (bytes == -1)
-		{
-			if (errno == EAGAIN)
-				continue;
-			result = SOCKET_ERRORED;
-			break;
-		}
-		upto += bytes;
-
-
-		if (upto == filesize)
-		{
-			buf->raw_buffer.push_back(0);
-			result = send_buffer(buf->sock, buf->raw_buffer, 1);
-			break;
-		}
-#else
 		// read data
 		file_stream->read(&buf->raw_buffer[0], buf->raw_buffer.size());
 		send_size = file_stream->gcount();
@@ -500,13 +513,7 @@ static SOCKET_STATE send_file(buffer* buf)
 			break;
 		}
 
-#endif
 	}
-#ifdef USE_SENDFILE
-	close(in_file);
-	cock = 0;
-	setsockopt(socket, IPPROTO_TCP, TCP_CORK, &cock, sizeof(cock));
-#endif
 	return result;
 }
 
@@ -812,6 +819,11 @@ network::pending_statistics get_pending_stats()
 void set_raw_data_only()
 {
 	raw_data_only = true;
+}
+
+void set_use_system_sendfile(bool use)
+{
+	network_use_system_sendfile = use;
 }
 
 void receive_data(TCPsocket sock)

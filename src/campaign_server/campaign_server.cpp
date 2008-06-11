@@ -16,6 +16,7 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "network.hpp"
+#include "network_worker.hpp"
 #include "util.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/binary_wml.hpp"
@@ -133,6 +134,9 @@ namespace {
 	{
 		scoped_istream stream = istream_file(file_);
 		read(cfg_, *stream);
+		bool network_use_system_sendfile = utils::string_bool(cfg_["network_use_system_sendfile"],false);
+		network_worker_pool::set_use_system_sendfile(network_use_system_sendfile);
+ 		cfg_["network_use_system_sendfile"] = (network_use_system_sendfile?"yes":"no");
  		/** Seems like compression level above 6 is waste of cpu cycle */
  		compress_level_ = lexical_cast_default<int>(cfg_["compress_level"],6);
  		cfg_["compress_level"] = lexical_cast<std::string>(compress_level_);
