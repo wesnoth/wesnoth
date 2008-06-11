@@ -208,8 +208,10 @@ void check_send_buffer_size(TCPsocket& s)
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 		bool update_stats=false, int timeout_ms=60000)
 {
+#if !defined(USE_POLL) && !defined(USE_SELECT) 
 	int startTicks = SDL_GetTicks();
 	int time_used = 0;
+#endif
 	while(nbytes > 0) {
 		const int bytes_read = receive_bytes(s, buf, nbytes);
 		if(bytes_read == 0) {
@@ -224,37 +226,37 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 			if(true)
 #endif
 			{
-				//TODO: consider replacing this with a select call
-				time_used = SDL_GetTicks() - startTicks;
-				if(time_used >= timeout_ms) {
-					return false;
-				}
 #ifdef USE_POLL
 				struct pollfd fd = { ((_TCPsocket*)s)->channel, POLLIN, 0 };
 				int poll_res;
 				do {
-					time_used = SDL_GetTicks() - startTicks;
-					poll_res = poll(&fd, 1, timeout_ms - time_used);
+					poll_res = poll(&fd, 1, timeout_ms);
 				} while(poll_res == -1 && errno == EINTR);
 
+				if (poll_res < 1)
+					return false;
 #elif defined(USE_SELECT)
 				fd_set readfds;
 				FD_ZERO(&readfds);
 				FD_SET(((_TCPsocket*)s)->channel, &readfds);
 				int retval;
-				int time_left;
 				struct timeval tv;
 
+				tv.tv_sec = timeout_ms/1000;
+				tv.tv_usec = timeout_ms % 1000;
 				do {
-					time_used = SDL_GetTicks() - startTicks;
-					time_left = timeout_ms - time_used;
-					tv.tv_sec = time_left/1000;
-					tv.tv_usec = time_left % 1000;
 					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, NULL, NULL, &tv);
 				} while(retval == -1 && errno == EINTR);
 
+				if (retval < 1)
+					return false;
 #elif
-				SDL_Delay(5);
+				//TODO: consider replacing this with a select call
+				time_used = SDL_GetTicks() - startTicks;
+				if(time_used >= timeout_ms) {
+					return false;
+				}
+				SDL_Delay(20);
 #endif
 			} else {
 				return false;
@@ -272,7 +274,9 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 			}
 			nbytes -= bytes_read;
 			// We got some data from server so reset start time so slow conenction won't timeout.
+#if !defined(USE_POLL) && !defined(USE_SELECT) 
 			startTicks = SDL_GetTicks();
+#endif
 		}
 	}
 
@@ -404,7 +408,6 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 static SOCKET_STATE send_file(buffer* buf)
 {
 	size_t upto = 0;
-	int send_size = 0;
 	size_t filesize = file_size(buf->config_error);
 #ifdef USE_SENDFILE
 	std::vector<char> buffer;
@@ -436,6 +439,7 @@ static SOCKET_STATE send_file(buffer* buf)
 	}
 	result = SOCKET_READY;
 #else
+	int send_size = 0;
 	SDLNet_Write32(filesize,&buf->raw_buffer[0]);
 	scoped_istream file_stream = istream_file(buf->config_error);
 	SOCKET_STATE result = send_buffer(buf->sock, buf->raw_buffer, 4);
