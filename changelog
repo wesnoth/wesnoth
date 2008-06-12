@@ -101,7 +101,7 @@ Version 1.5.0+svn:
    * Made networking code check system buffer size and limit send length
    * Implemented send_file to reduce memory usage when sending files
    * Implemented send_file using sendfile() system call 
-   * Fixed tokenizer not to strip CR from quoted string becaue it would
+   * Fixed tokenizer not to strip CR from quoted string because it would
      destroy images transfered over network
    * Added possibility to use per fight EV statistics proposed by maboul
    * Added smoother FPS limit to server
@@ -122,6 +122,7 @@ Version 1.5.0+svn:
    * Optimize titlescreen and credits rendering.
    * Give its name to the "Fog clearer" (fixing blank in "Create Unit" dialog)
    * fix bug with filter + delete savegame (Gna! bug #11779)
+   * Optimize cache validation and first display initialization.
 
 Version 1.5.0:
  * campaigns:
