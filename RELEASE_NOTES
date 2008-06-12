@@ -22,3 +22,10 @@ compatible with recent changes to the addon server.
 Now content authors can specify the type of their addons. See the documentation
 updates at http://www.wesnoth.org/wiki/PblWML for details.
 
+Windows users: the location of the user preferences dir has been changed
+from <install dir>\userdata to <user dir>\My Documents\Wesnoth\<VERSION> for
+better compatibility with multi-user installations. The old behavior can
+be enabled using a command line switch, --local-userdir, for people who need
+it for running Wesnoth from portable locations such as USB disks.
+
+
