@@ -107,6 +107,19 @@ namespace {
 
 static bool needs_escaping(char c) { return c == 0 || c == escape_char; }
 
+bool IsCR(const char& c)
+{
+	return c == 13;
+}
+static std::string strip_cr(std::string str, bool strip)
+{
+	if(!strip)
+		return str;
+	std::string::iterator new_end = std::remove_if(str.begin(), str.end(), IsCR);
+	str.erase(new_end, str.end());
+	return str;
+}
+
 static std::string encode_binary(const std::string& str)
 {
 	std::string res;
@@ -196,7 +209,8 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 static void archive_file(const std::string& path, const std::string& fname, config& cfg)
 {
 	cfg["name"] = fname;
-	cfg["contents"] = encode_binary(read_file(path + '/' + fname));
+	bool is_cfg = (fname.size() > 4 ? (fname.substr(fname.size() - 4) == ".cfg") :false);
+	cfg["contents"] = encode_binary(strip_cr(read_file(path + '/' + fname),is_cfg));
 }
 
 static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, std::pair<std::vector<std::string>, std::vector<std::string> >& ignore_patterns)
