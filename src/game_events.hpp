@@ -44,56 +44,225 @@ class unit;
 
 namespace game_events
 {
-// The game event manager loads the scenario configuration object,
-// and ensures that events are handled according to the
-// scenario configuration for its lifetime.
-//
-// Thus, a manager object should be created when a scenario is played,
-// and destroyed at the end of the scenario.
-struct manager {
-	// Note that references will be maintained,
-	// and must remain valid for the life of the object.
-	manager(const config& scenario_cfg, game_display& disp, gamemap& map,
-			soundsource::manager& sndsources, unit_map& units, std::vector<team>& teams,
-			game_state& state_of_game, gamestatus& status);
-	~manager();
+	// The game event manager loads the scenario configuration object,
+	// and ensures that events are handled according to the
+	// scenario configuration for its lifetime.
+	//
+	// Thus, a manager object should be created when a scenario is played,
+	// and destroyed at the end of the scenario.
+	struct manager {
+		// Note that references will be maintained,
+		// and must remain valid for the life of the object.
+		manager(const config& scenario_cfg, game_display& disp, gamemap& map,
+				soundsource::manager& sndsources, unit_map& units, std::vector<team>& teams,
+				game_state& state_of_game, gamestatus& status);
+		~manager();
 
-	variable::manager variable_manager;
-};
+		variable::manager variable_manager;
+	};
 
-struct entity_location : public gamemap::location {
-	entity_location(gamemap::location loc, const std::string& id="");
-	explicit entity_location(unit_map::iterator itor);
-	bool requires_unit() const;
-	bool matches_unit(const unit& u) const;
-private:
-	std::string id_;
-};
+	struct entity_location : public gamemap::location {
+		entity_location(gamemap::location loc, const std::string& id="");
+		explicit entity_location(unit_map::iterator itor);
+		bool requires_unit() const;
+		bool matches_unit(const unit& u) const;
+		private:
+		std::string id_;
+	};
 
-game_state* get_state_of_game();
-void write_events(config& cfg);
-void add_events(const config::child_list& cfgs,const std::string& id);
 
-bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
+	struct queued_event {
+		queued_event(const std::string& name, const game_events::entity_location& loc1,
+				const game_events::entity_location& loc2,
+				const config& data)
+			: name(name), loc1(loc1), loc2(loc2),data(data) {}
 
-//! Function to fire an event.
-// Events may have up to two arguments, both of which must be locations.
-bool fire(const std::string& event,
-          const entity_location& loc1=gamemap::location::null_location,
-          const entity_location& loc2=gamemap::location::null_location,
-		  const config& data=config());
+		std::string name;
+		game_events::entity_location loc1;
+		game_events::entity_location loc2;
+		config data;
+	};
 
-void raise(const std::string& event,
-          const entity_location& loc1=gamemap::location::null_location,
-          const entity_location& loc2=gamemap::location::null_location,
-		  const config& data=config());
 
-bool conditional_passed(const unit_map* units,
-                        const vconfig cond, bool backwards_compat=true);
-bool pump();
+	class event_handler
+	{
+		public:
+			event_handler(const vconfig& cfg) :
+				names_(utils::split(cfg["name"])),
+				first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
+				disabled_(false),mutated_(true),
+				skip_messages_(false),rebuild_screen_(false),
+				cfg_(cfg)
+		{}
 
-// The count of game event mutations to the unit_map
-Uint32 mutations();
+			void write(config& cfg) const
+			{
+				if(disabled_)
+					return;
+
+				cfg = cfg_.get_config();
+			}
+
+			const std::vector< std::string >& names() const { return names_; }
+
+			bool first_time_only() const { return first_time_only_; }
+
+			void disable() { disabled_ = true; }
+			bool disabled() const { return disabled_; }
+
+			bool is_menu_item() const; 
+			const vconfig::child_list first_arg_filters()
+			{
+				return cfg_.get_children("filter");
+			}
+			const vconfig::child_list first_special_filters()
+			{
+				vconfig::child_list kids;
+				kids = cfg_.get_children("filter_attack");
+				// FIXME OBSOLETE: remove in 1.5.3
+				if (!kids.empty())
+					return kids;
+				else
+					return cfg_.get_children("special_filter");
+
+			}
+
+			const vconfig::child_list second_arg_filters()
+			{
+				return cfg_.get_children("filter_second");
+			}
+			const vconfig::child_list second_special_filters()
+			{
+				vconfig::child_list kids;
+				kids = cfg_.get_children("filter_second_attack");
+				// FIXME OBSOLETE: remove in 1.5.3
+				if (!kids.empty())
+					return kids;
+				else
+					return cfg_.get_children("special_filter_second");
+			}
+
+			bool handle_event(const queued_event& event_info,
+					const vconfig cfg = vconfig());
+
+			bool& rebuild_screen() {return rebuild_screen_;}
+			bool& mutated() {return mutated_;}
+			bool& skip_messages() {return skip_messages_;}
+
+		private:
+			void handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg);
+
+			std::vector< std::string > names_;
+			bool first_time_only_;
+			bool disabled_;
+			bool mutated_;
+			bool skip_messages_;
+			bool rebuild_screen_;
+			vconfig cfg_;
+	};
+
+	typedef void (*wml_handler_function)(event_handler& eh,
+			const queued_event& event_info,
+			const vconfig& cfg);
+
+
+	/**
+	 * WML_HANDLER_FUNCTION macro handles auto registeration magic
+	 * for wml handler functions. 
+	 * First comes forwardeclaration of function.
+	 * Second comes register class that handles registeration
+	 * Third comes function defination
+	 * macro has to be followed by function body
+	 *
+	 * You are warned! This is evil macro magic!
+	 *
+	 * ready code looks like for [foo]
+	 * void wml_func_foo(...);
+	 * struct wml_func_register_foo {
+	 *   wml_func_resgister_foo() {
+	 *     command_handlers::get().add_handler("foo",&wml_func_foo); }
+	 *   } wml_func_register_foo;
+	 * void wml_func_foo(...)
+	 **/
+#define WML_HANDLER_FUNCTION(pname, peh, pei, pcfg) \
+	void wml_func_ ## pname \
+	(game_events::event_handler& peh, \
+	const game_events::queued_event& pei,\
+	const vconfig& pcfg);\
+	struct wml_func_register_ ## pname \
+	{ \
+		wml_func_register_ ## pname () \
+		{ \
+			game_events::command_handlers::get().add_handler( \
+			# pname , &wml_func_ ## pname ); \
+		}\
+	} wml_func_register_ ## pname ;  \
+	void wml_func_ ## pname \
+	(game_events::event_handler& peh, \
+	const game_events::queued_event& pei,\
+	const vconfig& pcfg) 
+
+
+	class command_handlers {
+		command_handlers();
+		command_handlers(const command_handlers&);
+		~command_handlers();
+
+		typedef std::map<std::string, wml_handler_function> call_map;
+		call_map function_call_map_;
+
+		//	typedef std::vector<std::string> runtime_handlers;
+		//	runtime_handlers runtime_;
+		//	bool in_scenario_;
+
+		static command_handlers* manager_;
+
+		// It might be good optimization to use hash instead 
+		// of string as key for map
+		//	static size_t make_hash_key(const std::string&);
+		public:
+		/**
+		 * gets and creates the singleton storage manager
+		 **/
+		static command_handlers& get();
+
+		void add_handler(const std::string&, wml_handler_function);
+		void clear_all();
+
+		//	void start_scenario();
+		//	void end_scenario();
+
+		/**
+		 * calls handler if it is registered
+		 * @return true if command handler was found
+		 **/
+		bool call_handler(const std::string&, event_handler&, const queued_event&, const vconfig&);
+	};
+
+	game_state* get_state_of_game();
+	void write_events(config& cfg);
+	void add_events(const config::child_list& cfgs,const std::string& id);
+
+	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
+
+	//! Function to fire an event.
+	// Events may have up to two arguments, both of which must be locations.
+	bool fire(const std::string& event,
+			const entity_location& loc1=gamemap::location::null_location,
+			const entity_location& loc2=gamemap::location::null_location,
+			const config& data=config());
+
+	void raise(const std::string& event,
+			const entity_location& loc1=gamemap::location::null_location,
+			const entity_location& loc2=gamemap::location::null_location,
+			const config& data=config());
+
+	bool conditional_passed(const unit_map* units,
+			const vconfig cond, bool backwards_compat=true);
+	bool pump();
+
+	// The count of game event mutations to the unit_map
+	Uint32 mutations();
 
 } // end namespace game_events
 

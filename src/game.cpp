@@ -2499,8 +2499,8 @@ static int play_game(int argc, char** argv)
 		gui2::init();
 	}
 
-	loadscreen::global_loadscreen = new loadscreen(game.disp().video());
-	loadscreen::global_loadscreen->clear_screen();
+
+	loadscreen::global_loadscreen_manager loadscreen_manager(game.disp().video());
 
 	res = game.init_language();
 	if(res == false) {
@@ -2529,8 +2529,6 @@ static int play_game(int argc, char** argv)
 	config tips_of_day;
 
 	loadscreen::global_loadscreen->set_progress(100, _("Loading title screen."));
-	delete loadscreen::global_loadscreen;
-	loadscreen::global_loadscreen = 0;
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
@@ -2570,6 +2568,7 @@ static int play_game(int argc, char** argv)
 		if(game.goto_multiplayer() == false){
 			continue; //Go to main menu
 		}
+		loadscreen_manager.reset();
 
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
 
