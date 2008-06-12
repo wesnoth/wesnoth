@@ -420,6 +420,7 @@ std::string get_user_data_dir()
 		_mkdir("userdata/data/multiplayer");
 		_mkdir("userdata/data/maps");
 		_mkdir("userdata/data/maps/multiplayer");
+		_mkdir("userdata/data/units");
 		_mkdir("userdata/saves");
 		inited_dirs = true;
 	}

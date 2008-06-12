@@ -112,7 +112,8 @@ Version 1.5.0+svn:
      (patch #1066)
    * Fixed unstoned units not having their attacks at their first turn
    * Prevent steadfast ability from lowering resistance if already over 50%
-   * <user data dir>/data/campaigns directory is created on first run
+   * <user data dir>/data/campaigns and <user data dir>/data/units
+     directories are npw created on first run
    * added command line parameter --config-path, which prints the path to the
      config directory and exits
    * fix a bug with variable substitution time of [event]-within-[event]
