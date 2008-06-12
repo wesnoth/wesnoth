@@ -167,14 +167,22 @@ namespace game_events
 
 
 	/**
-	 * WML_HANDLER_FUNCTION macro handles auto registeration magic
-	 * for wml handler functions. 
-	 * First comes forwardeclaration of function.
-	 * Second comes register class that handles registeration
-	 * Third comes function defination
-	 * macro has to be followed by function body
+	 * WML_HANDLER_FUNCTION macro handles auto registeration for wml handlers
+	 *
+	 * @param pname wml tag name
+	 * @param peh the variable name of game_events::event_handler object inside function
+	 * @param pei the variable name of game_events::queued_event object inside function
+	 * @param pcfg the variable name of config object inside function
 	 *
 	 * You are warned! This is evil macro magic!
+	 *
+	 * For [foo] tag macro is used like:
+	 *
+	 * // comment out unused parameters to prevent compiler warnings
+	 * WML_HANDLER_FUNCTION(foo, /*handler * /,/*event_info * /, cfg)
+	 * {
+	 *    // code for foo
+	 * }
 	 *
 	 * ready code looks like for [foo]
 	 * void wml_func_foo(...);
@@ -183,6 +191,9 @@ namespace game_events
 	 *     command_handlers::get().add_handler("foo",&wml_func_foo); }
 	 *   } wml_func_register_foo;
 	 * void wml_func_foo(...)
+	 * {
+	 *    // code for foo
+	 * }
 	 **/
 #define WML_HANDLER_FUNCTION(pname, peh, pei, pcfg) \
 	void wml_func_ ## pname \
@@ -202,7 +213,14 @@ namespace game_events
 	const game_events::queued_event& pei,\
 	const vconfig& pcfg) 
 
-
+	/**
+	 * Stores wml tag handler functions
+	 * call_handler method searches function for tag and calls it
+	 * This could be easily extended for runtime wml handler registeration
+	 * and unregisteration.
+	 *
+	 * command_handlers uses singleton implementation
+	 **/
 	class command_handlers {
 		command_handlers();
 		command_handlers(const command_handlers&);
@@ -226,11 +244,27 @@ namespace game_events
 		 **/
 		static command_handlers& get();
 
+		/**
+		 * adds new handler function
+		 **/
 		void add_handler(const std::string&, wml_handler_function);
+		/**
+		 * removes all handler functions
+		 **/
 		void clear_all();
 
-		//	void start_scenario();
-		//	void end_scenario();
+		/**
+		 * called in start of scenario so command_handlers knows to mark
+		 * new handlers after this for removal.
+		 * Not implemented yet!
+		 **/
+		void start_scenario();
+		/**
+		 * called in end of scenario so command_handler knows to clean
+		 * up handlers registered in scenario.
+		 * Not implemented yet!
+		 **/
+		void end_scenario();
 
 		/**
 		 * calls handler if it is registered
