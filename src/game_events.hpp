@@ -179,7 +179,7 @@ namespace game_events
 	 * For [foo] tag macro is used like:
 	 *
 	 * // comment out unused parameters to prevent compiler warnings
-	 * WML_HANDLER_FUNCTION(foo, /*handler * /,/*event_info * /, cfg)
+	 * WML_HANDLER_FUNCTION(foo, handler, event_info, cfg)
 	 * {
 	 *    // code for foo
 	 * }

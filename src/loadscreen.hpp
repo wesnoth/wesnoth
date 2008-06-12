@@ -67,8 +67,8 @@ class loadscreen {
 		struct global_loadscreen_manager {
 			explicit global_loadscreen_manager(CVideo& screen);
 			~global_loadscreen_manager();
-			static global_loadscreen_manager& get()
-			{ assert(manager); return *manager; }
+			static global_loadscreen_manager* get()
+			{ return manager; }
 			void reset();
 private:
 			static global_loadscreen_manager* manager;
