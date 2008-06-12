@@ -314,7 +314,13 @@ game_controller::game_controller(int argc, char** argv)
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
 			no_sound = true;
-		} else if(val == "--new-widgets") {
+		}
+#ifdef _WIN32
+		else if(val == "--local-userdir") {
+			// redundant but it must be recognized...
+		}
+#endif /* _WIN32 */
+		else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
 		} else if(val[0] == '-') {
@@ -2331,6 +2337,11 @@ static int play_game(int argc, char** argv)
 			<< "                               by id.\n"
 			<< "  --turns=value                sets the number of turns. The default is \"50\".\n"
 			<< "  --exit-at-end                exit Wesnoth at end of scenario.\n"
+#ifdef _WIN32
+			<< "  --local-userdir              Windows only: use directory \"userdata\" in the\n"
+			<< "                               working path instead of per-user\n"
+			<< "                               \"My Documents\\Wesnoth\"\n"
+#endif
 			<< "  --new-widgets                there is a new WIP widget toolkit this switch enables the new toolkit\n"
 			<< "                               (VERY EXPERIMENTAL don't file bug reports since most are known).\n"
 			;
@@ -2448,7 +2459,11 @@ static int play_game(int argc, char** argv)
 			std::cout << lg::list_logdomains() << "\n";
 			return 0;
 		}
-
+#ifdef _WIN32
+		else if(val == "--local-userdir") {
+			set_local_userdata(true);
+		}
+#endif /* _WIN32 */
 	}
 
 	srand(time(NULL));

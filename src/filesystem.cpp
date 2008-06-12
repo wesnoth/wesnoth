@@ -28,6 +28,8 @@
 
 #ifdef _WIN32
 #include "filesystem_win32.ii"
+#include <shlobj.h>
+#include "SDL_syswm.h"
 #else /* !_WIN32 */
 #include <unistd.h>
 #include <dirent.h>
@@ -404,36 +406,83 @@ std::string get_cwd()
 	}
 }
 
+namespace {
+// stuff for local userdata
+bool use_local_userdata = false;
+bool userdata_status_inited = false;
+}
+
+void set_local_userdata(bool use_local)
+{
+	use_local_userdata = use_local;
+	userdata_status_inited = true;
+}
+
 std::string get_user_data_dir()
 {
 #ifdef _WIN32
-
 	static bool inited_dirs = false;
+	char buf[MAX_PATH + 1];
+	if(use_local_userdata) {
+        // use local
+		if(!inited_dirs) {
+			_mkdir("userdata");
+			_mkdir("userdata/editor");
+			_mkdir("userdata/editor/maps");
+			_mkdir("userdata/data");
+			_mkdir("userdata/data/ais");
+			_mkdir("userdata/data/campaigns");
+			_mkdir("userdata/data/multiplayer");
+			_mkdir("userdata/data/maps");
+			_mkdir("userdata/data/maps/multiplayer");
+			_mkdir("userdata/data/units");
+			_mkdir("userdata/saves");
+			inited_dirs = true;
+		}
+		const char* const res = getcwd(buf,sizeof(buf));
 
-	if(!inited_dirs) {
-		_mkdir("userdata");
-		_mkdir("userdata/editor");
-		_mkdir("userdata/editor/maps");
-		_mkdir("userdata/data");
-		_mkdir("userdata/data/ais");
-		_mkdir("userdata/data/campaigns");
-		_mkdir("userdata/data/multiplayer");
-		_mkdir("userdata/data/maps");
-		_mkdir("userdata/data/maps/multiplayer");
-		_mkdir("userdata/data/units");
-		_mkdir("userdata/saves");
-		inited_dirs = true;
-	}
-
-	char buf[256];
-	const char* const res = getcwd(buf,sizeof(buf));
-
-	if(res != NULL) {
-		std::string cur_path(res);
-		std::replace(cur_path.begin(),cur_path.end(),'\\','/');
-		return cur_path + "/userdata";
+		if(res != NULL) {
+			std::string cur_path(res);
+			std::replace(cur_path.begin(),cur_path.end(),'\\','/');
+			return cur_path + "/userdata";
+		} else {
+			return "userdata";
+		}
 	} else {
-		return "userdata";
+		// use per-user folder
+		SDL_SysWMinfo wmInfo;
+
+		SDL_GetWMInfo(&wmInfo); // need some handle for win api
+		if (SHGetSpecialFolderPath(wmInfo.window, buf, CSIDL_PERSONAL, true)) {
+			// CSIDL_PERSONAL === My Documents
+			std::string usr_path(buf);
+			LOG_FS << "Retrieved Windows user directory: " << usr_path << "\n";
+			std::replace(usr_path.begin(),usr_path.end(),'\\','/');
+			if(usr_path.empty()) {
+				// fallback to local if something didn't work
+				return "userdata";
+			} else {
+				// all OK
+				usr_path += "/Wesnoth/";
+				usr_path += VERSION;
+				// sort userdata by version
+				if(!inited_dirs) {
+					_mkdir(usr_path.c_str());
+					_mkdir((usr_path + "/editor").c_str());
+					_mkdir((usr_path + "/editor/maps").c_str());
+					_mkdir((usr_path + "/data").c_str());
+					_mkdir((usr_path + "/data/ais").c_str());
+					_mkdir((usr_path + "/data/campaigns").c_str());
+					_mkdir((usr_path + "/data/multiplayer").c_str());
+					_mkdir((usr_path + "/data/maps").c_str());
+					_mkdir((usr_path + "/data/maps/multiplayer").c_str());
+					_mkdir((usr_path + "/data/units").c_str());
+					_mkdir((usr_path + "/saves").c_str());
+					inited_dirs = true;
+				}
+				return usr_path;
+			}
+		}
 	}
 #elif defined(__BEOS__)
 	if (be_path.InitCheck() != B_OK) {
