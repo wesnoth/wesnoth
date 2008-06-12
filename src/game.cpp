@@ -2200,7 +2200,7 @@ void game_controller::play_replay()
 #ifdef USE_EDITOR2
 editor2::EXIT_STATUS game_controller::start_editor()
 {
-	editor2::start(game_config_, video_);
+	return editor2::start(game_config_, video_);
 }
 #endif
 
